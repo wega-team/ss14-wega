@@ -1,0 +1,38 @@
+- type: vendingMachineInventory
+  id: IntimatInventory
+  startingInventory:
+    RandomDildo: 5
+    DildoAvian: 3
+    DildoCanine: 3
+    DildoDragon: 3
+    DildoEquine: 3
+    DildoHuman: 3
+    DildoTentacle: 3
+    PolyDildoSmall: 3
+    PolyDildoMedium: 3
+    PolyDildoBig: 3
+    DildoDouble: 2
+    ClothingAnalMetal: 2
+    ClothingAnalPink: 2
+    ClothingAnalTeal: 2
+    ClothingAnalYellow: 2
+    ClothingAnalGreen: 2
+    ClothingAnalTail: 2
+    FleshlightGreen: 2
+    FleshlightPink: 2
+    FleshlightRed: 2
+    FleshlightTeal: 2
+    FleshlightYellow: 2
+    VibratorMagicwand: 2
+    VibratorGreen: 2
+    VibratorTeal: 2
+    VibratorPink: 2
+    VibratorRed: 2
+    VibratorYellow: 2
+    VibratorEggPink: 2
+    VibratorEggTeal: 2
+    VibratorRingPink: 2
+    VibratorRingTeal: 2
+    HoloprojectorSex: 1
+  #contrabandInventory:
+    #Сюда что надо, если надо, но потом

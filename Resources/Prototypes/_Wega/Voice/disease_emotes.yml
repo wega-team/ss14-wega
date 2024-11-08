@@ -1,0 +1,17 @@
+- type: emote
+  id: Moan
+  name: chat-emote-name-moan
+  icon: Interface/Emotes/vocal.png
+  category: Vocal
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: ["chat-emote-msg-moan"]
+  chatTriggers:
+    - moan
+    - moans
+    - стонет
+    - стонать

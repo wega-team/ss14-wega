@@ -8,6 +8,11 @@
   - CaptainJumpsuit
   - CaptainBackpack
   - CaptainOuterClothing
+  # Corvax-Wega-start
+  - CaptainTop
+  - CaptainBottom
+  - CaptainSocks
+  # Corvax-Wega-end
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
@@ -22,6 +27,11 @@
   - HoPJumpsuit
   - HoPBackpack
   - HoPOuterClothing
+  # Corvax-Wega-start
+  - HoPTop
+  - HoPBottom
+  - HoPSocks
+  # Corvax-Wega-end
   - Glasses
   - Survival
   - Trinkets
@@ -49,6 +59,11 @@
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
+  # Corvax-Wega-start
+  - Top
+  - Bottom
+  - Socks
+  # Corvax-Wega-end
 
 - type: roleLoadout
   id: JobBartender
@@ -63,6 +78,11 @@
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
+  # Corvax-Wega-start
+  - Top
+  - Bottom
+  - Socks
+  # Corvax-Wega-end
 
 - type: roleLoadout
   id: JobServiceWorker
@@ -75,6 +95,11 @@
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
+  # Corvax-Wega-start
+  - Top
+  - Bottom
+  - Socks
+  # Corvax-Wega-end
 
 - type: roleLoadout
   id: JobChef
@@ -90,6 +115,11 @@
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
+  # Corvax-Wega-start
+  - Top
+  - Bottom
+  - Socks
+  # Corvax-Wega-end
 
 - type: roleLoadout
   id: JobLibrarian
@@ -102,6 +132,11 @@
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
+  # Corvax-Wega-start
+  - Top
+  - Bottom
+  - Socks
+  # Corvax-Wega-end
 
 - type: roleLoadout
   id: JobLawyer
@@ -115,6 +150,11 @@
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
+  # Corvax-Wega-start
+  - Top
+  - Bottom
+  - Socks
+  # Corvax-Wega-end
 
 - type: roleLoadout
   id: JobChaplain
@@ -131,6 +171,11 @@
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
+  # Corvax-Wega-start
+  - Top
+  - Bottom
+  - Socks
+  # Corvax-Wega-end
 
 - type: roleLoadout
   id: JobJanitor
@@ -147,6 +192,11 @@
   - Trinkets
   - JanitorPlunger
   - GroupSpeciesBreathTool
+  # Corvax-Wega-start
+  - Top
+  - Bottom
+  - Socks
+  # Corvax-Wega-end
 
 - type: roleLoadout
   id: JobBotanist
@@ -161,6 +211,11 @@
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
+  # Corvax-Wega-start
+  - Top
+  - Bottom
+  - Socks
+  # Corvax-Wega-end
 
 - type: roleLoadout
   id: JobClown
@@ -175,6 +230,11 @@
   - Glasses
   - SurvivalClown
   - Trinkets
+  # Corvax-Wega-start
+  - Top
+  - Bottom
+  - Socks
+  # Corvax-Wega-end
 
 - type: roleLoadout
   id: JobMime
@@ -190,6 +250,11 @@
   - Glasses
   - SurvivalMime
   - Trinkets
+  # Corvax-Wega-start
+  - Top
+  - Bottom
+  - Socks
+  # Corvax-Wega-end
 
 - type: roleLoadout
   id: JobMusician
@@ -204,6 +269,11 @@
   - Trinkets
   - Instruments
   - GroupSpeciesBreathTool
+  # Corvax-Wega-start
+  - Top
+  - Bottom
+  - Socks
+  # Corvax-Wega-end
 
 # Cargo
 - type: roleLoadout
@@ -217,6 +287,11 @@
   - CargoTechnicianBackpack
   - QuartermasterOuterClothing
   - QuartermasterShoes
+  # Corvax-Wega-start
+  - QuartermasterTop
+  - QuartermasterBottom
+  - QuartermasterSocks
+  # Corvax-Wega-end
   - Glasses
   - Survival
   - Trinkets
@@ -236,6 +311,11 @@
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
+  # Corvax-Wega-start
+  - Top
+  - Bottom
+  - Socks
+  # Corvax-Wega-end
 
 - type: roleLoadout
   id: JobSalvageSpecialist
@@ -249,6 +329,11 @@
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
+  # Corvax-Wega-start
+  - Top
+  - Bottom
+  - Socks
+  # Corvax-Wega-end
 
 # Engineering
 - type: roleLoadout
@@ -262,6 +347,11 @@
   - ChiefEngineerNeck
   - ChiefEngineerOuterClothing
   - ChiefEngineerShoes
+  # Corvax-Wega-start
+  - ChiefEngineerTop
+  - ChiefEngineerBottom
+  - ChiefEngineerSocks
+  # Corvax-Wega-end
   - SurvivalExtended
   - Trinkets
   - GroupSpeciesBreathTool
@@ -276,6 +366,11 @@
   - SurvivalExtended
   - Trinkets
   - GroupSpeciesBreathTool
+  # Corvax-Wega-start
+  - Top
+  - Bottom
+  - Socks
+  # Corvax-Wega-end
 
 - type: roleLoadout
   id: JobStationEngineer
@@ -291,6 +386,11 @@
   - SurvivalExtended
   - Trinkets
   - GroupSpeciesBreathTool
+  # Corvax-Wega-start
+  - Top
+  - Bottom
+  - Socks
+  # Corvax-Wega-end
 
 - type: roleLoadout
   id: JobAtmosphericTechnician
@@ -304,6 +404,11 @@
   - SurvivalExtended
   - Trinkets
   - GroupSpeciesBreathTool
+  # Corvax-Wega-start
+  - Top
+  - Bottom
+  - Socks
+  # Corvax-Wega-end
 
 # Science
 - type: roleLoadout
@@ -318,6 +423,11 @@
   - ResearchDirectorOuterClothing
   - ScientistGloves
   - ResearchDirectorShoes
+  # Corvax-Wega-start
+  - ResearchDirectorTop
+  - ResearchDirectorBottom
+  - ResearchDirectorSocks
+  # Corvax-Wega-end
   - Glasses
   - Survival
   - Trinkets
@@ -340,6 +450,11 @@
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
+  # Corvax-Wega-start
+  - Top
+  - Bottom
+  - Socks
+  # Corvax-Wega-end
 
 - type: roleLoadout
   id: JobResearchAssistant
@@ -352,6 +467,11 @@
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
+  # Corvax-Wega-start
+  - Top
+  - Bottom
+  - Socks
+  # Corvax-Wega-end
 
 # Security
 - type: roleLoadout
@@ -365,6 +485,11 @@
   - SecurityBelt
   - HeadofSecurityOuterClothing
   - SecurityShoes
+  # Corvax-Wega-start
+  - HeadofSecurityTop
+  - HeadofSecurityBottom
+  - HeadofSecuritySocks
+  # Corvax-Wega-end
   - SurvivalSecurity
   - Trinkets
   - SecurityStar
@@ -384,6 +509,11 @@
   - Trinkets
   - SecurityStar
   - GroupSpeciesBreathToolSecurity
+  # Corvax-Wega-start
+  - Top
+  - Bottom
+  - Socks
+  # Corvax-Wega-end
 
 - type: roleLoadout
   id: JobSecurityOfficer
@@ -400,6 +530,11 @@
   - Trinkets
   - SecurityStar
   - GroupSpeciesBreathToolSecurity
+  # Corvax-Wega-start
+  - Top
+  - Bottom
+  - Socks
+  # Corvax-Wega-end
 
 - type: roleLoadout
   id: JobDetective
@@ -416,6 +551,11 @@
   - Trinkets
   - SecurityStar
   - GroupSpeciesBreathToolSecurity
+  # Corvax-Wega-start
+  - Top
+  - Bottom
+  - Socks
+  # Corvax-Wega-end
 
 - type: roleLoadout
   id: JobSecurityCadet
@@ -426,6 +566,11 @@
   - SurvivalSecurity
   - Trinkets
   - GroupSpeciesBreathToolSecurity
+  # Corvax-Wega-start
+  - Top
+  - Bottom
+  - Socks
+  # Corvax-Wega-end
 
 # Medical
 - type: roleLoadout
@@ -441,6 +586,11 @@
   - ChiefMedicalOfficerOuterClothing
   - ChiefMedicalOfficerNeck
   - ChiefMedicalOfficerShoes
+  # Corvax-Wega-start
+  - ChiefMedicalOfficerTop
+  - ChiefMedicalOfficerBottom
+  - ChiefMedicalOfficerSocks
+  # Corvax-Wega-end
   - Glasses
   - SurvivalMedical
   - Trinkets
@@ -463,6 +613,11 @@
   - SurvivalMedical
   - Trinkets
   - GroupSpeciesBreathToolMedical
+  # Corvax-Wega-start
+  - Top
+  - Bottom
+  - Socks
+  # Corvax-Wega-end
 
 - type: roleLoadout
   id: JobMedicalIntern
@@ -475,6 +630,11 @@
   - SurvivalMedical
   - Trinkets
   - GroupSpeciesBreathToolMedical
+  # Corvax-Wega-start
+  - Top
+  - Bottom
+  - Socks
+  # Corvax-Wega-end
 
 - type: roleLoadout
   id: JobChemist
@@ -490,6 +650,11 @@
   - SurvivalMedical
   - Trinkets
   - GroupSpeciesBreathToolMedical
+  # Corvax-Wega-start
+  - Top
+  - Bottom
+  - Socks
+  # Corvax-Wega-end
 
 - type: roleLoadout
   id: JobParamedic
@@ -507,6 +672,11 @@
   - SurvivalMedical
   - Trinkets
   - GroupSpeciesBreathToolMedical
+  # Corvax-Wega-start
+  - Top
+  - Bottom
+  - Socks
+  # Corvax-Wega-end
 
 # Wildcards
 - type: roleLoadout
@@ -519,6 +689,11 @@
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
+  # Corvax-Wega-start
+  - Top
+  - Bottom
+  - Socks
+  # Corvax-Wega-end
 
 - type: roleLoadout
   id: JobReporter
@@ -531,6 +706,11 @@
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
+  # Corvax-Wega-start
+  - Top
+  - Bottom
+  - Socks
+  # Corvax-Wega-end
 
 - type: roleLoadout
   id: JobPsychologist
@@ -543,6 +723,11 @@
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
+  # Corvax-Wega-start
+  - Top
+  - Bottom
+  - Socks
+  # Corvax-Wega-end
 
 - type: roleLoadout
   id: JobBoxer
@@ -556,6 +741,11 @@
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
+  # Corvax-Wega-start
+  - Top
+  - Bottom
+  - Socks
+  # Corvax-Wega-end
 
 # These loadouts are used for non-crew spawns, like off-station antags and event mobs
 # They will be used without player configuration, thus they will only ever apply what is forced by MinLimit

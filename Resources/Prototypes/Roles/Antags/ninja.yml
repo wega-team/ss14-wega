@@ -23,6 +23,7 @@
     pocket1: SpiderCharge
     pocket2: PinpointerStation
     belt: EnergyKatana
+    underwearbottom: ClothingUnderBottomNinja # Corvax-Wega
   inhand:
     - JetpackBlackFilled
   storage:

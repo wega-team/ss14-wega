@@ -1,0 +1,318 @@
+- type: entity
+  parent: Clothing
+  id: ClothingUnderTopBase
+  abstract: true
+  components:
+  - type: Item
+    size: Small
+  - type: Clothing
+    equipSound: /Audio/Items/jumpsuit_equip.ogg
+    equipDelay: 2
+    unequipDelay: 2
+    quickEquip: false
+    slots:
+    - underweartop
+  - type: Sprite
+    state: icon
+  - type: Butcherable
+    butcheringType: Knife
+    spawned:
+    - id: MaterialCloth1
+      amount: 2
+  - type: Food
+    requiresSpecialDigestion: true
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 10
+        reagents:
+        - ReagentId: Fiber
+          Quantity: 10
+
+- type: entity
+  parent: ClothingUnderTopBase
+  id: ClothingUnderTopBraGrey
+  name: grey bra
+  description: "The only and irreplaceable bra that is always with you."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Top/grey.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Top/grey.rsi
+
+- type: entity
+  parent: ClothingUnderTopBase
+  id: ClothingUnderTopBraAssblastusa
+  name: bra
+  description: "An element of lingerie that supports the breasts and creates comfort. It is made of soft materials and has various details."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Top/assblastusa.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Top/assblastusa.rsi
+
+- type: entity
+  parent: ClothingUnderTopBase
+  id: ClothingUnderTopBikini
+  name: bikini
+  description: "An element of a bathing suit that supports the chest."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Top/bikini.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Top/bikini.rsi
+
+- type: entity
+  parent: ClothingUnderTopBase
+  id: ClothingUnderTopBraChast
+  name: bra
+  description: "An element of lingerie that supports the breasts and creates comfort. It is made of soft materials and has various details."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Top/brachast.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Top/brachast.rsi
+
+- type: entity
+  parent: ClothingUnderTopBase
+  id: ClothingUnderTopBraLatex
+  name: latex bra
+  description: "An element of lingerie that supports the breasts and creates comfort. It is made of soft materials and has various details."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Top/bralatex.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Top/bralatex.rsi
+
+- type: entity
+  parent: ClothingUnderTopBase
+  id: ClothingUnderTopBraStripped
+  name: stripped bra
+  description: "An element of lingerie that supports the breasts and creates comfort. It is made of soft materials and has various details."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Top/brastripped.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Top/brastripped.rsi
+
+- type: entity
+  parent: ClothingUnderTopBase
+  id: ClothingUnderTopBraCommie
+  name: bra
+  description: "An element of lingerie that supports the breasts and creates comfort. It is made of soft materials and has various details."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Top/commie.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Top/commie.rsi
+
+- type: entity
+  parent: ClothingUnderTopBase
+  id: ClothingUnderTopCorset
+  name: corset
+  description: "This is a piece of clothing that fits around the waist and creates a silhouette effect. It usually has rigid elements for support and is decorated with lace."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Top/corset.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Top/corset.rsi
+
+- type: entity
+  parent: ClothingUnderTopBase
+  id: ClothingUnderTopBraFishnet
+  name: fishnet bra
+  description: "An element of lingerie that supports the breasts and creates comfort. It is made of soft materials and has various details."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Top/fishnetbody.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Top/fishnetbody.rsi
+
+- type: entity
+  parent: ClothingUnderTopBase
+  id: ClothingUnderTopBraKinky
+  name: bra
+  description: "An element of lingerie that supports the breasts and creates comfort. It is made of soft materials and has various details."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Top/kinky.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Top/kinky.rsi
+
+- type: entity
+  parent: ClothingUnderTopBase
+  id: ClothingUnderTopBraLace
+  name: bra
+  description: "An element of lingerie that supports the breasts and creates comfort. It is made of soft materials and has various details."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Top/lace.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Top/lace.rsi
+
+- type: entity
+  parent: ClothingUnderTopBase
+  id: ClothingUnderTopBraLizard
+  name: bra
+  description: "An element of lingerie that supports the breasts and creates comfort. It is made of soft materials and has various details."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Top/lizarded.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Top/lizarded.rsi
+
+- type: entity
+  parent: ClothingUnderTopBase
+  id: ClothingUnderTopBraNekoBlack
+  name: bra
+  description: "An element of lingerie that supports the breasts and creates comfort. It is made of soft materials and has various details."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Top/nekoblack.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Top/nekoblack.rsi
+
+- type: entity
+  parent: ClothingUnderTopBase
+  id: ClothingUnderTopBraNekoWhite
+  name: bra
+  description: "An element of lingerie that supports the breasts and creates comfort. It is made of soft materials and has various details."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Top/nekowhite.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Top/nekowhite.rsi
+
+- type: entity
+  parent: ClothingUnderTopBase
+  id: ClothingUnderTopBraPasties
+  name: bra
+  description: "Small decorative elements that are designed to hide nipples under clothing."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Top/pasties.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Top/pasties.rsi
+
+- type: entity
+  parent: ClothingUnderTopBase
+  id: ClothingUnderTopBraSport
+  name: bra
+  description: "An element of lingerie that supports the breasts and creates comfort. It is made of soft materials and has various details."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Top/sport.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Top/sport.rsi
+
+- type: entity
+  parent: ClothingUnderTopBase
+  id: ClothingUnderTopBraStrapless
+  name: strapless bra
+  description: "An element of lingerie that supports the breasts and creates comfort. It is made of soft materials and has various details."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Top/strapless.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Top/strapless.rsi
+
+- type: entity
+  parent: ClothingUnderTopBase
+  id: ClothingUnderTopBraThong
+  name: bra
+  description: "An element of lingerie that supports the breasts and creates comfort. It is made of soft materials and has various details."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Top/thong.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Top/thong.rsi
+
+### Heads
+
+- type: entity
+  parent: ClothingUnderTopBase
+  id: ClothingUnderTopBraBso
+  name: blue shield bra
+  description: "An element of lingerie that supports the breasts and creates comfort. It is made of soft materials and has various details."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Top/Head/bso.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Top/Head/bso.rsi
+
+- type: entity
+  parent: ClothingUnderTopBase
+  id: ClothingUnderTopBraCap
+  name: captain bra
+  description: "An element of lingerie that supports the breasts and creates comfort. It is made of soft materials and has various details."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Top/Head/captain.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Top/Head/captain.rsi
+
+- type: entity
+  parent: ClothingUnderTopBase
+  id: ClothingUnderTopBraCe
+  name: chief engineer bra
+  description: "An element of lingerie that supports the breasts and creates comfort. It is made of soft materials and has various details."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Top/Head/ce.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Top/Head/ce.rsi
+
+- type: entity
+  parent: ClothingUnderTopBase
+  id: ClothingUnderTopBraCmo
+  name: chief medical officer bra
+  description: "An element of lingerie that supports the breasts and creates comfort. It is made of soft materials and has various details."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Top/Head/cmo.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Top/Head/cmo.rsi
+
+- type: entity
+  parent: ClothingUnderTopBase
+  id: ClothingUnderTopBraHop
+  name: head of personnel bra
+  description: "An element of lingerie that supports the breasts and creates comfort. It is made of soft materials and has various details."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Top/Head/hop.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Top/Head/hop.rsi
+
+- type: entity
+  parent: ClothingUnderTopBase
+  id: ClothingUnderTopBraHos
+  name: head of security bra
+  description: "An element of lingerie that supports the breasts and creates comfort. It is made of soft materials and has various details."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Top/Head/hos.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Top/Head/hos.rsi
+
+- type: entity
+  parent: ClothingUnderTopBase
+  id: ClothingUnderTopBraQm
+  name: quartermaster bra
+  description: "An element of lingerie that supports the breasts and creates comfort. It is made of soft materials and has various details."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Top/Head/qm.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Top/Head/qm.rsi
+
+- type: entity
+  parent: ClothingUnderTopBase
+  id: ClothingUnderTopBraRd
+  name: research director bra
+  description: "An element of lingerie that supports the breasts and creates comfort. It is made of soft materials and has various details."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Top/Head/rd.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Top/Head/rd.rsi

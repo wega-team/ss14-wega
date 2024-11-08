@@ -1,0 +1,11 @@
+- type: localizedDataset
+  id: IntimatGoodbyes
+  values:
+    prefix: thankyou-intimat-
+    count: 21
+
+- type: localizedDataset
+  id: CosinessGoodbyes
+  values:
+    prefix: thankyou-cosinessmat-
+    count: 20

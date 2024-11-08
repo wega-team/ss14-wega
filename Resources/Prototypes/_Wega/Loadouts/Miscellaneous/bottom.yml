@@ -1,0 +1,144 @@
+- type: loadout
+  id: ClothingUnderBottomGrey
+  equipment:
+    underwearbottom: ClothingUnderBottomGrey
+
+- type: loadout
+  id: ClothingUnderBottomBabydoll
+  equipment:
+    underwearbottom: ClothingUnderBottomBabydoll
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+
+- type: loadout
+  id: ClothingUnderBottomBoxers
+  equipment:
+    underwearbottom: ClothingUnderBottomBoxers
+
+- type: loadout
+  id: ClothingUnderBottomFAssblastusa
+  equipment:
+    underwearbottom: ClothingUnderBottomFAssblastusa
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+
+- type: loadout
+  id: ClothingUnderBottomFBriefs
+  equipment:
+    underwearbottom: ClothingUnderBottomFBriefs
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+
+- type: loadout
+  id: ClothingUnderBottomFCommie
+  equipment:
+    underwearbottom: ClothingUnderBottomFCommie
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+
+- type: loadout
+  id: ClothingUnderBottomFishnet
+  equipment:
+    underwearbottom: ClothingUnderBottomFishnet
+
+- type: loadout
+  id: ClothingUnderBottomFKinky
+  equipment:
+    underwearbottom: ClothingUnderBottomFKinky
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+
+- type: loadout
+  id: ClothingUnderBottomHearts
+  equipment:
+    underwearbottom: ClothingUnderBottomHearts
+
+- type: loadout
+  id: ClothingUnderBottomLace
+  equipment:
+    underwearbottom: ClothingUnderBottomLace
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+
+- type: loadout
+  id: ClothingUnderBottomLatex
+  equipment:
+    underwearbottom: ClothingUnderBottomLatex
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+
+- type: loadout
+  id: ClothingUnderBottomLizard
+  equipment:
+    underwearbottom: ClothingUnderBottomLizard
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+
+- type: loadout
+  id: ClothingUnderBottomMankiny
+  equipment:
+    underwearbottom: ClothingUnderBottomMankiny
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: MaleRequired
+
+- type: loadout
+  id: ClothingUnderBottomMAssblastusa
+  equipment:
+    underwearbottom: ClothingUnderBottomMAssblastusa
+
+- type: loadout
+  id: ClothingUnderBottomMBriefs
+  equipment:
+    underwearbottom: ClothingUnderBottomMBriefs
+
+- type: loadout
+  id: ClothingUnderBottomMCommie
+  equipment:
+    underwearbottom: ClothingUnderBottomMCommie
+
+- type: loadout
+  id: ClothingUnderBottomMKinky
+  equipment:
+    underwearbottom: ClothingUnderBottomMKinky
+
+- type: loadout
+  id: ClothingUnderBottomNekoBlack
+  equipment:
+    underwearbottom: ClothingUnderBottomNekoWhite
+
+- type: loadout
+  id: ClothingUnderBottomPanties
+  equipment:
+    underwearbottom: ClothingUnderBottomPanties
+
+- type: loadout
+  id: ClothingUnderBottomSport
+  equipment:
+    underwearbottom: ClothingUnderBottomSport
+
+- type: loadout
+  id: ClothingUnderBottomStripe
+  equipment:
+    underwearbottom: ClothingUnderBottomStripe
+
+- type: loadout
+  id: ClothingUnderBottomStrippedPanties
+  equipment:
+    underwearbottom: ClothingUnderBottomStrippedPanties
+
+- type: loadout
+  id: ClothingUnderBottomThong
+  equipment:
+    underwearbottom: ClothingUnderBottomThong
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired

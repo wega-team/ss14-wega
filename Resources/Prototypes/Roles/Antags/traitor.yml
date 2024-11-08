@@ -33,6 +33,7 @@
     back: ClothingBackpackSyndicate
     shoes: ClothingShoesBootsCombatFilled
     gloves: ClothingHandsGlovesColorBlack
+    underwearbottom: ClothingUnderBottomTacticool # Corvax-Wega
   storage:
     back:
     - WeaponPistolViper
@@ -46,6 +47,7 @@
     back: ClothingBackpackSyndicate
     shoes: ClothingShoesBootsSyndieFilled
     gloves: ClothingHandsGlovesColorBlack
+    underwearbottom: ClothingUnderBottomTacticool # Corvax-Wega
 
 - type: startingGear
   id: SyndicateReinforcementMedic

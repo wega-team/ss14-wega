@@ -30,7 +30,7 @@ namespace Content.Shared.Preferences
         private static readonly Regex ICNameCaseRegex = new(@"^(?<word>\w)|\b(?<word>\w)(?=\w*$)");
 
         public const int MaxNameLength = 32;
-        public const int MaxDescLength = 512;
+        public const int MaxDescLength = 1024; // Corvax-Wega
 
         /// <summary>
         /// Job preferences for initial spawn.
@@ -90,6 +90,11 @@ namespace Content.Shared.Preferences
         [DataField]
         public Gender Gender { get; private set; } = Gender.Male;
 
+        // Corvax-Wega-start
+        [DataField]
+        public Status Status { get; private set; } = Status.No;
+        // Corvax-Wega-end
+
         /// <summary>
         /// <see cref="Appearance"/>
         /// </summary>
@@ -137,6 +142,7 @@ namespace Content.Shared.Preferences
             int age,
             Sex sex,
             Gender gender,
+            Status status, // Corvax-Wega
             HumanoidCharacterAppearance appearance,
             SpawnPriorityPreference spawnPriority,
             Dictionary<ProtoId<JobPrototype>, JobPriority> jobPriorities,
@@ -152,6 +158,7 @@ namespace Content.Shared.Preferences
             Age = age;
             Sex = sex;
             Gender = gender;
+            Status = status; // Corvax-Wega
             Appearance = appearance;
             SpawnPriority = spawnPriority;
             _jobPriorities = jobPriorities;
@@ -184,6 +191,7 @@ namespace Content.Shared.Preferences
                 other.Age,
                 other.Sex,
                 other.Gender,
+                other.Status, // Corvax-Wega
                 other.Appearance.Clone(),
                 other.SpawnPriority,
                 new Dictionary<ProtoId<JobPrototype>, JobPriority>(other.JobPriorities),
@@ -253,6 +261,8 @@ namespace Content.Shared.Preferences
 
             var gender = Gender.Epicene;
 
+            var status = Status.No; // Corvax-Wega
+
             switch (sex)
             {
                 case Sex.Male:
@@ -273,6 +283,7 @@ namespace Content.Shared.Preferences
                 Gender = gender,
                 Species = species,
                 Voice = voiceId, // Corvax-TTS
+                Status = status, // Corvax-Wega
                 Appearance = HumanoidCharacterAppearance.Random(species, sex),
             };
         }
@@ -306,6 +317,13 @@ namespace Content.Shared.Preferences
         {
             return new(this) { Species = species };
         }
+
+        // Corvax-Wega-start
+        public HumanoidCharacterProfile WithStatus(Status status)
+        {
+            return new(this) { Status = status };
+        }
+        // Corvax-Wega-end
 
         // Corvax-TTS-Start
         public HumanoidCharacterProfile WithVoice(string voice)
@@ -482,6 +500,7 @@ namespace Content.Shared.Preferences
             if (Age != other.Age) return false;
             if (Sex != other.Sex) return false;
             if (Gender != other.Gender) return false;
+            if (Status != other.Status) return false; // Corvax-Wega
             if (Species != other.Species) return false;
             if (PreferenceUnavailable != other.PreferenceUnavailable) return false;
             if (SpawnPriority != other.SpawnPriority) return false;
@@ -534,6 +553,16 @@ namespace Content.Shared.Preferences
                 Gender.Neuter => Gender.Neuter,
                 _ => Gender.Epicene // Invalid enum values.
             };
+
+            // Corvax-Wega-start
+            var status = Status switch
+            {
+                Status.No => Status.No,
+                Status.Semi => Status.Semi,
+                Status.Full => Status.Full,
+                _ => Status.No
+            };
+            // Corvax-Wega-end
 
             string name;
             if (string.IsNullOrEmpty(Name))
@@ -628,6 +657,7 @@ namespace Content.Shared.Preferences
             Age = age;
             Sex = sex;
             Gender = gender;
+            Status = status; // Corvax-Wega
             Appearance = appearance;
             SpawnPriority = spawnPriority;
 

@@ -1,0 +1,43 @@
+#Top
+- type: loadout
+  id: ClothingUnderTopBraRd
+  equipment:
+    underweartop: ClothingUnderTopBraRd
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+
+#Bottom
+- type: loadout
+  id: ClothingUnderBottomMRd
+  equipment:
+    underwearbottom: ClothingUnderBottomMRd
+
+- type: loadout
+  id: ClothingUnderBottomFRd
+  equipment:
+    underwearbottom: ClothingUnderBottomFRd
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+
+#Socks
+- type: loadout
+  id: ClothingUnderSocksRdKnee
+  equipment:
+    socks: ClothingUnderSocksRdKnee
+
+- type: loadout
+  id: ClothingUnderSocksRdNorm
+  equipment:
+    socks: ClothingUnderSocksRdNorm
+
+- type: loadout
+  id: ClothingUnderSocksRdShort
+  equipment:
+    socks: ClothingUnderSocksRdShort
+
+- type: loadout
+  id: ClothingUnderSocksRdThigh
+  equipment:
+    socks: ClothingUnderSocksRdThigh

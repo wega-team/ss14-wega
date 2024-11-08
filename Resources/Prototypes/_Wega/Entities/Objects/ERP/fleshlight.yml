@@ -1,0 +1,85 @@
+- type: entity
+  parent: BaseItem
+  id: BaseFleshlight
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/ERP/fleshlight.rsi
+  - type: SexToy
+    prototype:
+    - fleshlight
+
+- type: entity
+  parent: BaseFleshlight
+  id: FleshlightGreen
+  name: green fleshlight
+  description: "A stretchy and elastic «toy» made from the softest and most elastic materials in the sector. Do not forget to lubricate before use."
+  components:
+  - type: Sprite
+    state: green
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left-green
+      right:
+      - state: inhand-right-green
+
+- type: entity
+  parent: BaseFleshlight
+  id: FleshlightPink
+  name: pink fleshlight
+  description: "A stretchy and elastic «toy» made from the softest and most elastic materials in the sector. Do not forget to lubricate before use."
+  components:
+  - type: Sprite
+    state: pink
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left-pink
+      right:
+      - state: inhand-right-pink
+
+- type: entity
+  parent: BaseFleshlight
+  id: FleshlightRed
+  name: red fleshlight
+  description: "A stretchy and elastic «toy» made from the softest and most elastic materials in the sector. Do not forget to lubricate before use."
+  components:
+  - type: Sprite
+    state: red
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left-red
+      right:
+      - state: inhand-right-red
+
+- type: entity
+  parent: BaseFleshlight
+  id: FleshlightTeal
+  name: teal fleshlight
+  description: "A stretchy and elastic «toy» made from the softest and most elastic materials in the sector. Do not forget to lubricate before use."
+  components:
+  - type: Sprite
+    state: teal
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left-teal
+      right:
+      - state: inhand-right-teal
+
+- type: entity
+  parent: BaseFleshlight
+  id: FleshlightYellow
+  name: yellow fleshlight
+  description: "A stretchy and elastic «toy» made from the softest and most elastic materials in the sector. Do not forget to lubricate before use."
+  components:
+  - type: Sprite
+    state: yellow
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left-yellow
+      right:
+      - state: inhand-right-yellow

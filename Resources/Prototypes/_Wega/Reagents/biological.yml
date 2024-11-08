@@ -1,0 +1,24 @@
+- type: reagent
+  id: Cum
+  name: reagent-name-cum
+  group: Biological
+  desc: reagent-desc-cum
+  physicalDesc: reagent-physical-desc-slimy
+  flavor: cum
+  color: "#DFDFDF"
+  recognizable: true
+  slippery: false
+  metabolisms:
+    Drink:
+      effects:
+      - !type:SatiateThirst
+        factor: 4
+    Food:
+      effects:
+        - !type:AdjustReagent
+          reagent: UncookedAnimalProteins
+          amount: 0.1
+  footstepSound:
+    collection: FootstepBlood
+    params:
+      volume: 6

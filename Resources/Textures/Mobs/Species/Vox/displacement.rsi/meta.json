@@ -1,4 +1,4 @@
-﻿{
+{
     "version": 1,
     "license": "CC-BY-SA-3.0",
     "copyright": "jumpsuit state made by PJB3005. back, hand, head, and eyes states made by Flareguy, ears and shoes made by TheShuEd",
@@ -36,6 +36,18 @@
         },
         {
             "name": "shoes",
+            "directions": 4
+        },
+        {
+            "name": "underweartop",
+            "directions": 4
+        },
+        {
+            "name": "underwearbottom",
+            "directions": 4
+        },
+        {
+            "name": "socks",
             "directions": 4
         }
     ]

@@ -1,0 +1,10 @@
+ent-FleshlightGreen = зеленая карманная вагина
+    .desc = Растягивающая и эластичная  «игрушка» сделанная из самых мягких и эластичных материалов в секторе. Не забывайте смазать перед использованием. 
+ent-FleshlightPink = розовая карманная вагина
+    .desc = { ent-FleshlightGreen.desc }
+ent-FleshlightRed = красная карманная вагина
+    .desc = { ent-FleshlightGreen.desc }
+ent-FleshlightTeal = берюзовая карманная вагина
+    .desc = { ent-FleshlightGreen.desc }
+ent-FleshlightYellow = желтая карманная вагина
+    .desc = { ent-FleshlightGreen.desc }

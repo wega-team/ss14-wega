@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Sprites taken from https://github.com/SPLURT-Station/S.P.L.U.R.T-Station-13/tree/master",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "vibrator_off"
+    },
+    {
+      "name": "vibrator_on",
+      "delays": [ [ 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25 ] ]
+    },
+    {
+      "name": "inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "inhand-right",
+      "directions": 4
+    }
+  ]
+}

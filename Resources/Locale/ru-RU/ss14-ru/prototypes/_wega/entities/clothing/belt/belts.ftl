@@ -1,0 +1,10 @@
+ent-ClothingBeltStraponAvian = птичий страпон
+    .desc = Такой же мягкий и эластичный дилдо, но находящийся на поясе. Перед использованием рекомендуется обязательное смазывание!
+ent-ClothingBeltStraponCanine = собачий страпон
+    .desc = { ent-ClothingBeltStraponAvian.desc }
+ent-ClothingBeltStraponDragon = драконий страпон
+    .desc = { ent-ClothingBeltStraponAvian.desc }
+ent-ClothingBeltStraponEquine = лошадиный страпон
+    .desc = { ent-ClothingBeltStraponAvian.desc }
+ent-ClothingBeltStraponHuman = человеческий страпон
+    .desc = { ent-ClothingBeltStraponAvian.desc }

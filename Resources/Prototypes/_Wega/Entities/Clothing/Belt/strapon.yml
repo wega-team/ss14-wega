@@ -1,0 +1,105 @@
+- type: entity
+  parent: ClothingBeltBase
+  id: ClothingBeltStraponBase
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Belt/strapon.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Belt/strapon.rsi
+  - type: Strapon
+
+- type: entity
+  parent: ClothingBeltStraponBase
+  id: ClothingBeltStraponAvian
+  name: avain strapon
+  description: "The same soft and elastic dildo, but located on the belt. Mandatory lubrication is recommended before use!"
+  components:
+  - type: Sprite
+    state: avian
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left-avian
+      right:
+      - state: inhand-right-avian
+  - type: Clothing
+    clothingVisuals:
+      belt:
+      - state: equipped-BELT-avian
+
+- type: entity
+  parent: ClothingBeltStraponBase
+  id: ClothingBeltStraponCanine
+  name: canine strapon
+  description: "The same soft and elastic dildo, but located on the belt. Mandatory lubrication is recommended before use!"
+  components:
+  - type: Sprite
+    state: canine
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left-canine
+      right:
+      - state: inhand-right-canine
+  - type: Clothing
+    clothingVisuals:
+      belt:
+      - state: equipped-BELT-canine
+
+- type: entity
+  parent: ClothingBeltStraponBase
+  id: ClothingBeltStraponDragon
+  name: dragon strapon
+  description: "The same soft and elastic dildo, but located on the belt. Mandatory lubrication is recommended before use!"
+  components:
+  - type: Sprite
+    state: dragon
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left-dragon
+      right:
+      - state: inhand-right-dragon
+  - type: Clothing
+    clothingVisuals:
+      belt:
+      - state: equipped-BELT-dragon
+
+- type: entity
+  parent: ClothingBeltStraponBase
+  id: ClothingBeltStraponEquine
+  name: equine strapon
+  description: "The same soft and elastic dildo, but located on the belt. Mandatory lubrication is recommended before use!"
+  components:
+  - type: Sprite
+    state: equine
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left-equine
+      right:
+      - state: inhand-right-equine
+  - type: Clothing
+    clothingVisuals:
+      belt:
+      - state: equipped-BELT-equine
+
+- type: entity
+  parent: ClothingBeltStraponBase
+  id: ClothingBeltStraponHuman
+  name: human strapon
+  description: "The same soft and elastic dildo, but located on the belt. Mandatory lubrication is recommended before use!"
+  components:
+  - type: Sprite
+    state: human
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left-human
+      right:
+      - state: inhand-right-human
+  - type: Clothing
+    clothingVisuals:
+      belt:
+      - state: equipped-BELT-human

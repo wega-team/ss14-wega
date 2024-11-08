@@ -58,6 +58,7 @@
     id: SyndiPDA
     pocket2: PlushieCarp
     belt: ClothingBeltMilitaryWebbing
+    underwearbottom: ClothingUnderBottomTacticool # Corvax-Wega
   storage:
     back:
     - WeaponPistolViper

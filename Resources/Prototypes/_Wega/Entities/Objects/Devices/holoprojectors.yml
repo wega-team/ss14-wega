@@ -1,0 +1,27 @@
+- type: entity
+  parent: Holoprojector
+  id: HoloprojectorSex
+  name: holobarrier projector
+  description: Creates a solid but fragile holographic barrier.
+  components:
+    - type: HolosignProjector
+      signProto: HolosignSex
+      chargeUse: 120
+    - type: Sprite
+      sprite: _Wega/Objects/Devices/Holoprojectors/sex.rsi
+      state: icon
+    - type: Tag
+      tags:
+        - HolofanProjector
+    - type: StaticPrice
+      price: 50
+
+- type: entity
+  parent: HoloprojectorSex
+  id: HoloprojectorSexEmpty
+  suffix: Empty
+  components:
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default

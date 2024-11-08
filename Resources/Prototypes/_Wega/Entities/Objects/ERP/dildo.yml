@@ -1,0 +1,202 @@
+- type: entity
+  parent: BaseItem
+  id: BaseDildo
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/ERP/dildo.rsi
+  - type: MeleeWeapon
+    soundHit:
+      path: /Audio/_Wega/Items/klonk.ogg
+      params:
+          variation: 0.03
+          volume: -2
+    soundNoDamage:
+      path: /Audio/_Wega/Items/klonk.ogg
+      params:
+          variation: 0.03
+          volume: -2
+    damage:
+      types:
+        Blunt: 0
+  - type: SexToy
+    prototype:
+    - dildo
+
+- type: entity
+  parent: BaseDildo
+  id: RandomDildo
+  name: dildo
+  description: "An elastic «toy» made from the softest and most elastic materials in the sector. Do not forget to lubricate before use."
+  components:
+  - type: Sprite
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: dildo_flared_1
+  - type: RandomSprite
+    available:
+      - enum.DamageStateVisualLayers.Base:
+            dildo_flared_1: Sixteen
+            dildo_flared_2: Sixteen
+            dildo_flared_3: Sixteen
+            dildo_flared_4: Sixteen
+            dildo_flared_5: Sixteen
+            dildo_human_1: Sixteen
+            dildo_human_2: Sixteen
+            dildo_human_3: Sixteen
+            dildo_knotted_1: Sixteen
+            dildo_knotted_2: Sixteen
+            dildo_knotted_3: Sixteen
+            dildo_plain_1: Sixteen
+            dildo_plain_2: Sixteen
+            dildo_plain_3: Sixteen
+
+- type: entity
+  parent: BaseDildo
+  id: DildoAvian
+  name: avian dildo
+  description: "An elastic «toy» made from the softest and most elastic materials in the sector. Do not forget to lubricate before use."
+  components:
+  - type: Sprite
+    state: dildo_avian
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left-avian
+      right:
+      - state: inhand-right-avian
+
+- type: entity
+  parent: BaseDildo
+  id: DildoCanine
+  name: canine dildo
+  description: "An elastic «toy» made from the softest and most elastic materials in the sector. Do not forget to lubricate before use."
+  components:
+  - type: Sprite
+    state: dildo_canine
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left-canine
+      right:
+      - state: inhand-right-canine
+
+- type: entity
+  parent: BaseDildo
+  id: DildoDragon
+  name: dragon dildo
+  description: "An elastic «toy» made from the softest and most elastic materials in the sector. Do not forget to lubricate before use."
+  components:
+  - type: Sprite
+    state: dildo_dragon
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left-dragon
+      right:
+      - state: inhand-right-dragon
+
+- type: entity
+  parent: BaseDildo
+  id: DildoEquine
+  name: equine dildo
+  description: "An elastic «toy» made from the softest and most elastic materials in the sector. Do not forget to lubricate before use."
+  components:
+  - type: Sprite
+    state: dildo_equine
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left-equine
+      right:
+      - state: inhand-right-equine
+
+- type: entity
+  parent: BaseDildo
+  id: DildoHuman
+  name: equine dildo
+  description: "An elastic «toy» made from the softest and most elastic materials in the sector. Do not forget to lubricate before use."
+  components:
+  - type: Sprite
+    state: dildo_human
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left-human
+      right:
+      - state: inhand-right-human
+
+- type: entity
+  parent: BaseDildo
+  id: DildoTentacle
+  name: tentacle dildo
+  description: "An elastic «toy» made from the softest and most elastic materials in the sector. Do not forget to lubricate before use."
+  components:
+  - type: Sprite
+    state: dildo_tentacle
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left-tentacle
+      right:
+      - state: inhand-right-tentacle
+
+- type: entity
+  parent: BaseDildo
+  id: PolyDildoSmall
+  name: polydildo small
+  description: "An elastic «toy» made from the softest and most elastic materials in the sector. Do not forget to lubricate before use."
+  components:
+  - type: Sprite
+    state: polydildo_small
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left-small
+      right:
+      - state: inhand-right-small
+
+- type: entity
+  parent: BaseDildo
+  id: PolyDildoMedium
+  name: polydildo medium
+  description: "An elastic «toy» made from the softest and most elastic materials in the sector. Do not forget to lubricate before use."
+  components:
+  - type: Sprite
+    state: polydildo_medium
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left-medium
+      right:
+      - state: inhand-right-medium
+
+- type: entity
+  parent: BaseDildo
+  id: PolyDildoBig
+  name: polydildo big
+  description: "An elastic «toy» made from the softest and most elastic materials in the sector. Do not forget to lubricate before use."
+  components:
+  - type: Sprite
+    state: polydildo_big
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left-big
+      right:
+      - state: inhand-right-big
+
+- type: entity
+  parent: BaseDildo
+  id: DildoDouble
+  name: double dildo
+  description: "An elastic «toy» made from the softest and most elastic materials in the sector. Do not forget to lubricate before use."
+  components:
+  - type: Sprite
+    state: dildo_double
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left-double
+      right:
+      - state: inhand-right-double

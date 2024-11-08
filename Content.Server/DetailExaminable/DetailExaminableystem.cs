@@ -2,6 +2,7 @@ using Content.Shared.Examine;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Verbs;
 using Robust.Shared.Utility;
+using Content.Shared.Humanoid; // Corvax-Wega
 
 namespace Content.Server.DetailExaminable
 {
@@ -23,12 +24,23 @@ namespace Content.Server.DetailExaminable
 
             var detailsRange = _examineSystem.IsInDetailsRange(args.User, uid);
 
+            // Corvax-Wega-start
+            var appearanceComponent = EntityManager.TryGetComponent<HumanoidAppearanceComponent>(uid, out var humanoidAppearance) 
+                ? humanoidAppearance 
+                : null;
+
+            var statusText = appearanceComponent != null 
+                ? GetStatusText(appearanceComponent.Status) 
+                : string.Empty;
+            // Corvax-Wega-end
+
             var verb = new ExamineVerb()
             {
                 Act = () =>
                 {
                     var markup = new FormattedMessage();
                     markup.AddMarkupOrThrow(component.Content);
+                    markup.AddMarkupOrThrow(statusText); // Corvax-Wega
                     _examineSystem.SendExamineTooltip(args.User, uid, markup, false, false);
                 },
                 Text = Loc.GetString("detail-examinable-verb-text"),
@@ -40,5 +52,18 @@ namespace Content.Server.DetailExaminable
 
             args.Verbs.Add(verb);
         }
+
+        // Corvax-Wega-start
+        private string GetStatusText(Status status)
+        {
+            return status switch
+            {
+                Status.No => "\n" + ($"[color=red]{Loc.GetString("humanoid-profile-editor-status-no-text")}[/color]"),
+                Status.Semi => "\n" + ($"[color=yellow]{Loc.GetString("humanoid-profile-editor-status-semi-text")}[/color]"),
+                Status.Full => "\n" + ($"[color=green]{Loc.GetString("humanoid-profile-editor-status-full-text")}[/color]"),
+                _ => string.Empty,
+            };
+        }
+        // Corvax-Wega-end
     }
 }

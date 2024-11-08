@@ -1,0 +1,260 @@
+# Base
+- type: loadoutGroup
+  id: Top
+  name: loadout-group-top
+  loadouts:
+  - ClothingUnderTopBraGrey # default
+  - ClothingUnderTopBraAssblastusa
+  - ClothingUnderTopBikini
+  - ClothingUnderTopBraChast
+  - ClothingUnderTopBraLatex
+  - ClothingUnderTopBraStripped
+  - ClothingUnderTopBraCommie
+  - ClothingUnderTopCorset
+  - ClothingUnderTopBraFishnet
+  - ClothingUnderTopBraKinky
+  - ClothingUnderTopBraLace
+  - ClothingUnderTopBraLizard
+  - ClothingUnderTopBraNekoBlack
+  - ClothingUnderTopBraNekoWhite
+  - ClothingUnderTopBraPasties
+  - ClothingUnderTopBraSport
+  - ClothingUnderTopBraStrapless
+  - ClothingUnderTopBraThong
+
+- type: loadoutGroup
+  id: Bottom
+  name: loadout-group-bottom
+  loadouts:
+  - ClothingUnderBottomGrey # default
+  - ClothingUnderBottomBabydoll
+  - ClothingUnderBottomBoxers
+  - ClothingUnderBottomFAssblastusa
+  - ClothingUnderBottomFBriefs
+  - ClothingUnderBottomFCommie
+  - ClothingUnderBottomFishnet
+  - ClothingUnderBottomFKinky
+  - ClothingUnderBottomHearts
+  - ClothingUnderBottomLace
+  - ClothingUnderBottomLatex
+  - ClothingUnderBottomLizard
+  - ClothingUnderBottomMankiny
+  - ClothingUnderBottomMAssblastusa
+  - ClothingUnderBottomMBriefs
+  - ClothingUnderBottomMCommie
+  - ClothingUnderBottomMKinky
+  - ClothingUnderBottomNekoBlack
+  - ClothingUnderBottomNekoWhite
+  - ClothingUnderBottomPanties
+  - ClothingUnderBottomSport
+  - ClothingUnderBottomStripe
+  - ClothingUnderBottomStrippedPanties
+  - ClothingUnderBottomThong
+
+- type: loadoutGroup
+  id: Socks
+  name: loadout-group-socks
+  minLimit: 0
+  loadouts:
+  - ClothingUnderSocksBeeKnee
+  - ClothingUnderSocksBee
+  - ClothingUnderSocksBlackKnee
+  - ClothingUnderSocksBlackNorm
+  - ClothingUnderSocksBlackShort
+  - ClothingUnderSocksBlackThigh
+  - ClothingUnderSocksWhiteNorm
+  - ClothingUnderSocksWhiteShort
+  - ClothingUnderSocksWhiteKnee
+  - ClothingUnderSocksWhiteThigh
+  - ClothingUnderSocksCoder
+  - ClothingUnderSocksBlue
+  - ClothingUnderSocksCyan
+  - ClothingUnderSocksGreen
+  - ClothingUnderSocksOrange
+  - ClothingUnderSocksPink
+  - ClothingUnderSocksPurple
+  - ClothingUnderSocksYellow
+  - ClothingUnderSocksRainbowKnee
+  - ClothingUnderSocksRainbowThigh
+  - ClothingUnderSocksCommieKnee
+  - ClothingUnderSocksCommieThigh
+  - ClothingUnderSocksAssblastusaKnee
+  - ClothingUnderSocksAssblastusaThigh
+  - ClothingUnderSocksStripedKnee
+  - ClothingUnderSocksStripedThigh
+  - ClothingUnderSocksThinKnee
+  - ClothingUnderSocksThinThigh
+  - ClothingUnderSocksFishnet
+  - ClothingUnderSocksFishnetKnee
+  - ClothingUnderSocksFishnetThigh
+  - ClothingUnderSocksPantyhose
+
+# Heads
+
+#Captain
+- type: loadoutGroup
+  id: CaptainTop
+  name: loadout-group-captain-top
+  loadouts:
+  - ClothingUnderTopBraCap
+
+- type: loadoutGroup
+  id: CaptainBottom
+  name: loadout-group-captain-bottom
+  loadouts:
+  - ClothingUnderBottomMCaptain
+  - ClothingUnderBottomFCaptain
+
+- type: loadoutGroup
+  id: CaptainSocks
+  name: loadout-group-captain-socks
+  minLimit: 0
+  loadouts:
+  - ClothingUnderSocksCapKnee
+  - ClothingUnderSocksCapNorm
+  - ClothingUnderSocksCapShort
+  - ClothingUnderSocksCapThigh
+
+#HoP
+- type: loadoutGroup
+  id: HoPTop
+  name: loadout-group-hop-top
+  loadouts:
+  - ClothingUnderTopBraHop
+
+- type: loadoutGroup
+  id: HoPBottom
+  name: loadout-group-hop-bottom
+  loadouts:
+  - ClothingUnderBottomMHop
+  - ClothingUnderBottomFHop
+
+- type: loadoutGroup
+  id: HoPSocks
+  name: loadout-group-hop-socks
+  minLimit: 0
+  loadouts:
+  - ClothingUnderSocksHopKnee
+  - ClothingUnderSocksHopNorm
+  - ClothingUnderSocksHopShort
+  - ClothingUnderSocksHopThigh
+
+#Quartermaster
+- type: loadoutGroup
+  id: QuartermasterTop
+  name: loadout-group-quartermaster-top
+  loadouts:
+  - ClothingUnderTopBraQm
+
+- type: loadoutGroup
+  id: QuartermasterBottom
+  name: loadout-group-quartermaster-bottom
+  loadouts:
+  - ClothingUnderBottomMQm
+  - ClothingUnderBottomFQm
+
+- type: loadoutGroup
+  id: QuartermasterSocks
+  name: loadout-group-quartermaster-socks
+  minLimit: 0
+  loadouts:
+  - ClothingUnderSocksQmKnee
+  - ClothingUnderSocksQmNorm
+  - ClothingUnderSocksQmShort
+  - ClothingUnderSocksQmThigh
+
+#ChiefEngineer
+- type: loadoutGroup
+  id: ChiefEngineerTop
+  name: loadout-group-chief-engineer-top
+  loadouts:
+  - ClothingUnderTopBraCe
+
+- type: loadoutGroup
+  id: ChiefEngineerBottom
+  name: loadout-group-chief-engineer-bottom
+  loadouts:
+  - ClothingUnderBottomMCe
+  - ClothingUnderBottomFCe
+
+- type: loadoutGroup
+  id: ChiefEngineerSocks
+  name: loadout-group-chief-engineer-socks
+  minLimit: 0
+  loadouts:
+  - ClothingUnderSocksCeKnee
+  - ClothingUnderSocksCeNorm
+  - ClothingUnderSocksCeShort
+  - ClothingUnderSocksCeThigh
+
+#ResearchDirector
+- type: loadoutGroup
+  id: ResearchDirectorTop
+  name: loadout-group-research-director-top
+  loadouts:
+  - ClothingUnderTopBraRd
+
+- type: loadoutGroup
+  id: ResearchDirectorBottom
+  name: loadout-group-research-director-bottom
+  loadouts:
+  - ClothingUnderBottomMRd
+  - ClothingUnderBottomFRd
+
+- type: loadoutGroup
+  id: ResearchDirectorSocks
+  name: loadout-group-research-director-socks
+  minLimit: 0
+  loadouts:
+  - ClothingUnderSocksRdKnee
+  - ClothingUnderSocksRdNorm
+  - ClothingUnderSocksRdShort
+  - ClothingUnderSocksRdThigh
+
+#HeadofSecurity
+- type: loadoutGroup
+  id: HeadofSecurityTop
+  name: loadout-group-head-of-security-top
+  loadouts:
+  - ClothingUnderTopBraHos
+
+- type: loadoutGroup
+  id: HeadofSecurityBottom
+  name: loadout-group-head-of-security-bottom
+  loadouts:
+  - ClothingUnderBottomMHos
+  - ClothingUnderBottomFHos
+
+- type: loadoutGroup
+  id: HeadofSecuritySocks
+  name: loadout-group-head-of-security-socks
+  minLimit: 0
+  loadouts:
+  - ClothingUnderSocksHosKnee
+  - ClothingUnderSocksHosNorm
+  - ClothingUnderSocksHosShort
+  - ClothingUnderSocksHosThigh
+
+#ChiefMedicalOfficer
+- type: loadoutGroup
+  id: ChiefMedicalOfficerTop
+  name: loadout-group-chief-medical-officer-top
+  loadouts:
+  - ClothingUnderTopBraCmo
+
+- type: loadoutGroup
+  id: ChiefMedicalOfficerBottom
+  name: loadout-group-chief-medical-officer-bottom
+  loadouts:
+  - ClothingUnderBottomMCmo
+  - ClothingUnderBottomFCmo
+
+- type: loadoutGroup
+  id: ChiefMedicalOfficerSocks
+  name: loadout-group-chief-medical-officer-socks
+  minLimit: 0
+  loadouts:
+  - ClothingUnderSocksCmoKnee
+  - ClothingUnderSocksCmoNorm
+  - ClothingUnderSocksCmoShort
+  - ClothingUnderSocksCmoThigh

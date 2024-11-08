@@ -1,0 +1,144 @@
+- type: entity
+  parent: BaseItem
+  id: BaseVibrator
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/ERP/Vibrators/magicwand.rsi
+    layers:
+    - state: vibrator_off
+      map: [ "enum.ToggleVisuals.Layer" ]
+  - type: Icon
+    sprite: _Wega/Objects/ERP/Vibrators/magicwand.rsi
+    state: vibrator_off
+  - type: Vibrator
+  - type: UseDelay
+  - type: Appearance
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 2
+    soundHit:
+      collection: MetalThud
+  - type: ItemToggle
+    soundActivate:
+      path: /Audio/Machines/button.ogg
+      params:
+        variation: 0.125
+        volume: -4
+    soundDeactivate:
+      path: /Audio/Machines/button.ogg
+      params:
+        variation: 0.125
+        volume: -4
+  - type: GenericVisualizer
+    visuals:
+      enum.ToggleVisuals.Toggled:
+        enum.ToggleVisuals.Layer:
+          True: { state: vibrator_on }
+          False: { state: vibrator_off }
+
+- type: entity
+  parent: BaseVibrator
+  id: VibratorMagicwand
+  name: magicwand
+  description: "A powerful vibrating «toy» capable of replacing any partner. It is recommended to use the ovoid side, it is not necessary to lubricate."
+
+- type: entity
+  parent: BaseVibrator
+  id: VibratorGreen
+  name: green vibrator
+  description: "An elastic and vibrating «toy» made from the softest and most elastic materials in the sector. For extreme sensations, it is not necessary to lubricate."
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/ERP/Vibrators/green.rsi
+  - type: Icon
+    sprite: _Wega/Objects/ERP/Vibrators/green.rsi
+
+- type: entity
+  parent: BaseVibrator
+  id: VibratorTeal
+  name: teal vibrator
+  description: "An elastic and vibrating «toy» made from the softest and most elastic materials in the sector. For extreme sensations, it is not necessary to lubricate."
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/ERP/Vibrators/teal.rsi
+  - type: Icon
+    sprite: _Wega/Objects/ERP/Vibrators/teal.rsi
+
+- type: entity
+  parent: BaseVibrator
+  id: VibratorPink
+  name: pink vibrator
+  description: "An elastic and vibrating «toy» made from the softest and most elastic materials in the sector. For extreme sensations, it is not necessary to lubricate."
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/ERP/Vibrators/pink.rsi
+  - type: Icon
+    sprite: _Wega/Objects/ERP/Vibrators/pink.rsi
+
+- type: entity
+  parent: BaseVibrator
+  id: VibratorRed
+  name: red vibrator
+  description: "An elastic and vibrating «toy» made from the softest and most elastic materials in the sector. For extreme sensations, it is not necessary to lubricate."
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/ERP/Vibrators/red.rsi
+  - type: Icon
+    sprite: _Wega/Objects/ERP/Vibrators/red.rsi
+
+- type: entity
+  parent: BaseVibrator
+  id: VibratorYellow
+  name: yellow vibrator
+  description: "An elastic and vibrating «toy» made from the softest and most elastic materials in the sector. For extreme sensations, it is not necessary to lubricate."
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/ERP/Vibrators/yellow.rsi
+  - type: Icon
+    sprite: _Wega/Objects/ERP/Vibrators/yellow.rsi
+
+- type: entity
+  parent: BaseVibrator
+  id: VibratorEggPink
+  name: pink vibrator
+  description: "A vibrating egg-shaped «toy». Some people confuse this with a large caliber bullet. It is not subject to lubrication."
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/ERP/Vibrators/eggpink.rsi
+  - type: Icon
+    sprite: _Wega/Objects/ERP/Vibrators/eggpink.rsi
+
+- type: entity
+  parent: BaseVibrator
+  id: VibratorEggTeal
+  name: teal vibrator
+  description: "A vibrating egg-shaped «toy». Some people confuse this with a large caliber bullet. It is not subject to lubrication."
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/ERP/Vibrators/eggteal.rsi
+  - type: Icon
+    sprite: _Wega/Objects/ERP/Vibrators/eggteal.rsi
+
+- type: entity
+  parent: BaseVibrator
+  id: VibratorRingPink
+  name: ring pink vibrator
+  description: "A vibrating egg-shaped «toy». Some people confuse this with a large caliber bullet. It is not subject to lubrication."
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/ERP/Vibrators/ringpink.rsi
+  - type: Icon
+    sprite: _Wega/Objects/ERP/Vibrators/ringpink.rsi
+
+- type: entity
+  parent: BaseVibrator
+  id: VibratorRingTeal
+  name: ring teal vibrator
+  description: "A vibrating egg-shaped «toy». Some people confuse this with a large caliber bullet. It is not subject to lubrication."
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/ERP/Vibrators/ringteal.rsi
+  - type: Icon
+    sprite: _Wega/Objects/ERP/Vibrators/ringteal.rsi

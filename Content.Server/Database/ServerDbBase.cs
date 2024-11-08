@@ -200,6 +200,12 @@ namespace Content.Server.Database
             if (Enum.TryParse<Gender>(profile.Gender, true, out var genderVal))
                 gender = genderVal;
 
+            // Corvax-Wega-start
+            var status = Status.No;
+            if (Enum.TryParse<Status>(profile.Status, true, out var statusVal))
+                status = statusVal;
+            // Corvax-Wega-end
+
             // Corvax-TTS-Start
             var voice = profile.Voice;
             if (voice == String.Empty)
@@ -253,6 +259,7 @@ namespace Content.Server.Database
                 profile.Age,
                 sex,
                 gender,
+                status, // Corvax-Wega
                 new HumanoidCharacterAppearance
                 (
                     profile.HairName,
@@ -287,6 +294,7 @@ namespace Content.Server.Database
             profile.FlavorText = humanoid.FlavorText;
             profile.Species = humanoid.Species;
             profile.Voice = humanoid.Voice; // Corvax-TTS
+            profile.Status = humanoid.Status.ToString(); // Corvax-Wega
             profile.Age = humanoid.Age;
             profile.Sex = humanoid.Sex.ToString();
             profile.Gender = humanoid.Gender.ToString();

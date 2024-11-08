@@ -1,0 +1,45 @@
+- type: entity
+  parent: BaseItem
+  id: BaseCondom
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/ERP/condom.rsi
+  - type: Item
+    size: Tiny
+  - type: SexToy
+    prototype:
+    - condom
+
+- type: entity
+  parent: BaseCondom
+  id: Condom
+  name: condom
+  description: "An irreplaceable and even unique thing made of the thinnest latex, which does not allow liquid to flow out."
+  components:
+  - type: Sprite
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: condom
+  - type: RandomSprite
+    available:
+      - enum.DamageStateVisualLayers.Base:
+            condom: Sixteen
+
+- type: entity
+  parent: BaseCondom
+  id: PinkCondom
+  name: pink condom
+  description: "An irreplaceable and even unique thing made of the thinnest latex, which does not allow liquid to flow out."
+  components:
+  - type: Sprite
+    state: condom_pink
+
+- type: entity
+  parent: BaseCondom
+  id: TealCondom
+  name: teal condom
+  description: "An irreplaceable and even unique thing made of the thinnest latex, which does not allow liquid to flow out."
+  components:
+  - type: Sprite
+    state: condom_teal

@@ -1,0 +1,159 @@
+- type: loadout
+  id: ClothingUnderSocksBeeKnee
+  equipment:
+    socks: ClothingUnderSocksBeeKnee
+
+- type: loadout
+  id: ClothingUnderSocksBee
+  equipment:
+    socks: ClothingUnderSocksBee
+
+- type: loadout
+  id: ClothingUnderSocksBlackKnee
+  equipment:
+    socks: ClothingUnderSocksBlackKnee
+
+- type: loadout
+  id: ClothingUnderSocksBlackNorm
+  equipment:
+    socks: ClothingUnderSocksBlackNorm
+
+- type: loadout
+  id: ClothingUnderSocksBlackShort
+  equipment:
+    socks: ClothingUnderSocksBlackShort
+
+- type: loadout
+  id: ClothingUnderSocksBlackThigh
+  equipment:
+    socks: ClothingUnderSocksBlackThigh
+
+- type: loadout
+  id: ClothingUnderSocksWhiteNorm
+  equipment:
+    socks: ClothingUnderSocksWhiteNorm
+
+- type: loadout
+  id: ClothingUnderSocksWhiteShort
+  equipment:
+    socks: ClothingUnderSocksWhiteShort
+
+- type: loadout
+  id: ClothingUnderSocksWhiteKnee
+  equipment:
+    socks: ClothingUnderSocksWhiteKnee
+
+- type: loadout
+  id: ClothingUnderSocksWhiteThigh
+  equipment:
+    socks: ClothingUnderSocksWhiteThigh
+
+- type: loadout
+  id: ClothingUnderSocksCoder
+  equipment:
+    socks: ClothingUnderSocksCoder
+
+- type: loadout
+  id: ClothingUnderSocksBlue
+  equipment:
+    socks: ClothingUnderSocksBlue
+
+- type: loadout
+  id: ClothingUnderSocksCyan
+  equipment:
+    socks: ClothingUnderSocksCyan
+
+- type: loadout
+  id: ClothingUnderSocksGreen
+  equipment:
+    socks: ClothingUnderSocksGreen
+
+- type: loadout
+  id: ClothingUnderSocksOrange
+  equipment:
+    socks: ClothingUnderSocksOrange
+
+- type: loadout
+  id: ClothingUnderSocksPink
+  equipment:
+    socks: ClothingUnderSocksPink
+
+- type: loadout
+  id: ClothingUnderSocksPurple
+  equipment:
+    socks: ClothingUnderSocksPurple
+
+- type: loadout
+  id: ClothingUnderSocksYellow
+  equipment:
+    socks: ClothingUnderSocksYellow
+
+- type: loadout
+  id: ClothingUnderSocksRainbowKnee
+  equipment:
+    socks: ClothingUnderSocksRainbowKnee
+
+- type: loadout
+  id: ClothingUnderSocksRainbowThigh
+  equipment:
+    socks: ClothingUnderSocksRainbowThigh
+
+- type: loadout
+  id: ClothingUnderSocksCommieKnee
+  equipment:
+    socks: ClothingUnderSocksCommieKnee
+
+- type: loadout
+  id: ClothingUnderSocksCommieThigh
+  equipment:
+    socks: ClothingUnderSocksCommieThigh
+
+- type: loadout
+  id: ClothingUnderSocksAssblastusaKnee
+  equipment:
+    socks: ClothingUnderSocksAssblastusaKnee
+
+- type: loadout
+  id: ClothingUnderSocksAssblastusaThigh
+  equipment:
+    socks: ClothingUnderSocksAssblastusaThigh
+
+- type: loadout
+  id: ClothingUnderSocksStripedKnee
+  equipment:
+    socks: ClothingUnderSocksStripedKnee
+
+- type: loadout
+  id: ClothingUnderSocksStripedThigh
+  equipment:
+    socks: ClothingUnderSocksStripedThigh
+
+- type: loadout
+  id: ClothingUnderSocksThinKnee
+  equipment:
+    socks: ClothingUnderSocksThinKnee
+
+- type: loadout
+  id: ClothingUnderSocksThinThigh
+  equipment:
+    socks: ClothingUnderSocksThinThigh
+
+- type: loadout
+  id: ClothingUnderSocksFishnet
+  equipment:
+    socks: ClothingUnderSocksFishnet
+
+- type: loadout
+  id: ClothingUnderSocksFishnetKnee
+  equipment:
+    socks: ClothingUnderSocksFishnetKnee
+
+- type: loadout
+  id: ClothingUnderSocksFishnetThigh
+  equipment:
+    socks: ClothingUnderSocksFishnetThigh
+
+- type: loadout
+  id: ClothingUnderSocksPantyhose
+  equipment:
+    socks: ClothingUnderSocksPantyhose

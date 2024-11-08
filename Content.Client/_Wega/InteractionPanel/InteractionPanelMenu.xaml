@@ -1,0 +1,34 @@
+<DefaultWindow
+    xmlns="https://spacestation14.io"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+    x:Class="Content.Client.Interaction.Panel.Ui.InteractionPanelMenu"
+    Title="{Loc 'interaction-ui-default-title'}"
+    MinSize="512 512"
+    SetSize="512 512">
+
+    <BoxContainer Orientation="Vertical" VerticalExpand="True" Margin="4">
+
+        <BoxContainer Name="Names" HorizontalExpand="True">
+        </BoxContainer>
+        <BoxContainer Name="UpperBlock" HorizontalExpand="True">
+            <BoxContainer Name="UserSpriteView" />
+            <Control HorizontalExpand="True" />
+            <BoxContainer Name="TargetSpriteView" />
+        </BoxContainer>
+
+        <LineEdit Name="SearchBar" Margin="4" PlaceHolder="Search"/>
+
+        <!-- Контейнер для взаимодействия -->
+        <PanelContainer VerticalExpand="True">
+            <PanelContainer.PanelOverride>
+                <gfx:StyleBoxFlat BackgroundColor="#80808005" />
+            </PanelContainer.PanelOverride>
+
+            <ScrollContainer Name="Scroll" HScrollEnabled="False" VerticalExpand="True">
+                <BoxContainer Name="InteractionContainer" Orientation="Vertical" VerticalExpand="True">
+                </BoxContainer>
+            </ScrollContainer>
+        </PanelContainer>
+    </BoxContainer>
+</DefaultWindow>

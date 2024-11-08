@@ -8,6 +8,7 @@
     id: PiratePDA
     belt: ClothingBeltUtility
     pocket1: AppraisalTool
+    underwearbottom: ClothingUnderBottomHearts # Corvax-Wega
 
 - type: startingGear
   id: PirateCaptainGear

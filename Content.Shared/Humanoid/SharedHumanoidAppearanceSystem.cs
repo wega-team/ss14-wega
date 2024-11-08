@@ -317,6 +317,23 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
         }
     }
 
+    // Corvax-Wega-start
+    public void SetStatus(EntityUid uid, Status status, bool sync = true, HumanoidAppearanceComponent? humanoid = null)
+    {
+        if (!Resolve(uid, ref humanoid) || humanoid.Status == status)
+            return;
+
+        var oldStatus = humanoid.Status;
+        humanoid.Status = status;
+        RaiseLocalEvent(uid, new StatusChangedEvent(oldStatus, status));
+
+        if (sync)
+        {
+            Dirty(uid, humanoid);
+        }
+    }
+    // Corvax-Wega-end
+
     /// <summary>
     ///     Loads a humanoid character profile directly onto this humanoid mob.
     /// </summary>
@@ -335,6 +352,7 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
 
         SetSpecies(uid, profile.Species, false, humanoid);
         SetSex(uid, profile.Sex, false, humanoid);
+        SetStatus(uid, profile.Status, false, humanoid); // Corvax-Wega
         humanoid.EyeColor = profile.Appearance.EyeColor;
 
         SetSkinColor(uid, profile.Appearance.SkinColor, false);

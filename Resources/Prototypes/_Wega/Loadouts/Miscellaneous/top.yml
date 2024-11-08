@@ -1,0 +1,143 @@
+- type: loadout
+  id: ClothingUnderTopBraGrey
+  equipment:
+    underweartop: ClothingUnderTopBraGrey
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+
+- type: loadout
+  id: ClothingUnderTopBraAssblastusa
+  equipment:
+    underweartop: ClothingUnderTopBraAssblastusa
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+
+- type: loadout
+  id: ClothingUnderTopBikini
+  equipment:
+    underweartop: ClothingUnderTopBikini
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+
+- type: loadout
+  id: ClothingUnderTopBraChast
+  equipment:
+    underweartop: ClothingUnderTopBraChast
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+
+- type: loadout
+  id: ClothingUnderTopBraLatex
+  equipment:
+    underweartop: ClothingUnderTopBraLatex
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+
+- type: loadout
+  id: ClothingUnderTopBraStripped
+  equipment:
+    underweartop: ClothingUnderTopBraStripped
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+
+- type: loadout
+  id: ClothingUnderTopBraCommie
+  equipment:
+    underweartop: ClothingUnderTopBraCommie
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+
+- type: loadout
+  id: ClothingUnderTopCorset
+  equipment:
+    underweartop: ClothingUnderTopCorset
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+
+- type: loadout
+  id: ClothingUnderTopBraFishnet
+  equipment:
+    underweartop: ClothingUnderTopBraFishnet
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+
+- type: loadout
+  id: ClothingUnderTopBraKinky
+  equipment:
+    underweartop: ClothingUnderTopBraKinky
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+
+- type: loadout
+  id: ClothingUnderTopBraLace
+  equipment:
+    underweartop: ClothingUnderTopBraLace
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+
+- type: loadout
+  id: ClothingUnderTopBraLizard
+  equipment:
+    underweartop: ClothingUnderTopBraLizard
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+
+- type: loadout
+  id: ClothingUnderTopBraNekoBlack
+  equipment:
+    underweartop: ClothingUnderTopBraNekoBlack
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+
+- type: loadout
+  id: ClothingUnderTopBraNekoWhite
+  equipment:
+    underweartop: ClothingUnderTopBraNekoWhite
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+
+- type: loadout
+  id: ClothingUnderTopBraPasties
+  equipment:
+    underweartop: ClothingUnderTopBraPasties
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+
+- type: loadout
+  id: ClothingUnderTopBraSport
+  equipment:
+    underweartop: ClothingUnderTopBraSport
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+
+- type: loadout
+  id: ClothingUnderTopBraStrapless
+  equipment:
+    underweartop: ClothingUnderTopBraStrapless
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+
+- type: loadout
+  id: ClothingUnderTopBraThong
+  equipment:
+    underweartop: ClothingUnderTopBraThong
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired

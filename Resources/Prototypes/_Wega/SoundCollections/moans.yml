@@ -1,0 +1,17 @@
+- type: soundCollection
+  id: MaleMoans
+  files:
+    - /Audio/_Wega/Voice/moan_m1.ogg
+    - /Audio/_Wega/Voice/moan_m2.ogg
+    - /Audio/_Wega/Voice/moan_m3.ogg
+
+- type: soundCollection
+  id: FemaleMoans
+  files:
+    - /Audio/_Wega/Voice/moan_f1.ogg
+    - /Audio/_Wega/Voice/moan_f2.ogg
+    - /Audio/_Wega/Voice/moan_f3.ogg
+    - /Audio/_Wega/Voice/moan_f4.ogg
+    - /Audio/_Wega/Voice/moan_f5.ogg
+    - /Audio/_Wega/Voice/moan_f6.ogg
+    - /Audio/_Wega/Voice/moan_f7.ogg

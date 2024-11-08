@@ -109,6 +109,11 @@ public sealed partial class SpeciesPrototype : IPrototype
     [DataField]
     public List<Sex> Sexes { get; private set; } = new() { Sex.Male, Sex.Female };
 
+    // Corvax-Wega-start
+    [DataField]
+    public List<Status> Statuses { get; private set; } = new() { Status.No, Status.Semi, Status.Full };
+    // Corvax-Wega-end
+
     /// <summary>
     ///     Characters younger than this are too young to be hired by Nanotrasen.
     /// </summary>

@@ -1,0 +1,30 @@
+- type: entity
+  id: HolosignSex
+  parent: HolosignWetFloor
+  name: holographic barrier
+  description: A barrier of hard light that blocks movement, but pretty weak.
+  components:
+    - type: Physics
+      bodyType: Static
+      canCollide: true
+    - type: Sprite
+      sprite: _Wega/Structures/Holo/sex.rsi
+      state: icon
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            !type:PhysShapeAabb
+            bounds: "-0.3,-0.3,0.3,0.3"
+          mask:
+            - TableMask
+          layer:
+            - TableLayer
+    - type: TimedDespawn
+      lifetime: 90
+    - type: PointLight
+      enabled: true
+      radius: 3
+      color: "#df37cf"
+    - type: Climbable
+    - type: Clickable

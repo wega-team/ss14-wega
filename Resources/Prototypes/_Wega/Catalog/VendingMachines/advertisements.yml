@@ -1,0 +1,11 @@
+- type: localizedDataset
+  id: IntimatAds
+  values:
+    prefix: advertisement-intimat-
+    count: 20
+
+- type: localizedDataset
+  id: CosinessAds
+  values:
+    prefix: advertisement-cosinessmat-
+    count: 20

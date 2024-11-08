@@ -1,0 +1,61 @@
+- type: entity
+  parent: VendingMachine
+  id: VendingMachineIntimat
+  name: intimat
+  description: "Everything you need to satisfy carnal pleasures."
+  components:
+  - type: VendingMachine
+    pack: IntimatInventory
+    offState: off
+    brokenState: broken
+    normalState: normal-unshaded
+  - type: Advertise
+    pack: IntimatAds
+  - type: SpeakOnUIClosed
+    pack: IntimatGoodbyes
+  - type: Speech
+  - type: Sprite
+    sprite: _Wega/Structures/Machines/VendingMachines/intimat.rsi
+    layers:
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.Base"]
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
+      shader: unshaded
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: PointLight
+    radius: 1.8
+    energy: 1.6
+    color: "#e590b9"
+
+- type: entity
+  parent: VendingMachine
+  id: VendingMachineCosinessmat
+  name: cosinessmat
+  description: "A vending machine for fast shopping of underwear and socks."
+  components:
+  - type: VendingMachine
+    pack: CosinessInventory
+    offState: off
+    brokenState: broken
+    normalState: normal-unshaded
+  - type: Advertise
+    pack: CosinessAds
+  - type: SpeakOnUIClosed
+    pack: CosinessGoodbyes
+  - type: Speech
+  - type: Sprite
+    sprite: _Wega/Structures/Machines/VendingMachines/cosinessmat.rsi
+    layers:
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.Base"]
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
+      shader: unshaded
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: PointLight
+    radius: 1.8
+    energy: 1.6
+    color: "#e590b9"

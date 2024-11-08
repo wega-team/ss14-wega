@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Sprites taken from https://github.com/SPLURT-Station/S.P.L.U.R.T-Station-13/tree/master, the missing sprites have been created by svarshiksatanist on discord",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "avian"
+    },
+    {
+      "name": "canine"
+    },
+    {
+      "name": "dragon"
+    },
+    {
+      "name": "equine"
+    },
+    {
+      "name": "human"
+    },
+    {
+      "name": "equipped-BELT-avian",
+      "directions": 4
+    },
+    {
+      "name": "equipped-BELT-canine",
+      "directions": 4
+    },
+    {
+      "name": "equipped-BELT-dragon",
+      "directions": 4
+    },
+    {
+      "name": "equipped-BELT-equine",
+      "directions": 4
+    },
+    {
+      "name": "equipped-BELT-human",
+      "directions": 4
+    },
+    {
+      "name": "inhand-left-avian",
+      "directions": 4
+    },
+    {
+      "name": "inhand-right-avian",
+      "directions": 4
+    },
+    {
+      "name": "inhand-left-canine",
+      "directions": 4
+    },
+    {
+      "name": "inhand-right-canine",
+      "directions": 4
+    },
+    {
+      "name": "inhand-left-dragon",
+      "directions": 4
+    },
+    {
+      "name": "inhand-right-dragon",
+      "directions": 4
+    },
+    {
+      "name": "inhand-left-equine",
+      "directions": 4
+    },
+    {
+      "name": "inhand-right-equine",
+      "directions": 4
+    },
+    {
+      "name": "inhand-left-human",
+      "directions": 4
+    },
+    {
+      "name": "inhand-right-human",
+      "directions": 4
+    }
+  ]
+}

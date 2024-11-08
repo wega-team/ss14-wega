@@ -1,0 +1,15 @@
+- type: loadoutEffectGroup
+  id: FemaleRequired
+  effects:
+  - !type:SexLoadoutEffect
+    allowedSexes:
+    - Female
+    - Unsexed
+
+- type: loadoutEffectGroup
+  id: MaleRequired
+  effects:
+  - !type:SexLoadoutEffect
+    allowedSexes:
+    - Male
+    - Unsexed

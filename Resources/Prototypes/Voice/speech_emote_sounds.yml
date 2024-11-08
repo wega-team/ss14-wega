@@ -38,6 +38,8 @@
       collection: MaleGasp
     DefaultDeathgasp:
       collection: MaleDeathGasp
+    Moan: # Corvax-Wega
+      collection: MaleMoans # Corvax-Wega
 
 - type: emoteSounds
   id: FemaleHuman
@@ -78,6 +80,8 @@
       collection: FemaleGasp
     DefaultDeathgasp:
       collection: FemaleDeathGasp
+    Moan: # Corvax-Wega
+      collection: FemaleMoans # Corvax-Wega
 
 - type: emoteSounds
   id: MaleReptilian
@@ -162,6 +166,8 @@
       collection: MaleGasp
     DefaultDeathgasp:
       collection: MaleDeathGasp
+    Moan: # Corvax-Wega
+      collection: MaleMoans # Corvax-Wega
   params:
     variation: 0.125
 
@@ -204,6 +210,8 @@
       collection: FemaleGasp
     DefaultDeathgasp:
       collection: FemaleDeathGasp
+    Moan: # Corvax-Wega
+      collection: FemaleMoans # Corvax-Wega
   params:
     variation: 0.125
 
@@ -293,6 +301,8 @@
       collection: MaleGasp
     DefaultDeathgasp:
       collection: MaleDeathGasp
+    Moan: # Corvax-Wega
+      collection: MaleMoans # Corvax-Wega
   params:
     variation: 0.125
     pitch: 0.75
@@ -334,6 +344,8 @@
       collection: FemaleGasp
     DefaultDeathgasp:
       collection: FemaleDeathGasp
+    Moan: # Corvax-Wega
+      collection: FemaleMoans # Corvax-Wega
   params:
     variation: 0.125
     pitch: 0.75

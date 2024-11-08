@@ -26,6 +26,12 @@ public enum SlotFlags
     LEGS = 1 << 13,
     FEET = 1 << 14,
     SUITSTORAGE = 1 << 15,
+    /// Corvax-Wega-start
+    UNDERWEARTOP = 1 << 16,
+    UNDERWEARBOTTOM = 1 << 17,
+    SOCKS = 1 << 18,
+    ANAL = 1 << 19,
+    /// Corvax-Wega-end
     All = ~NONE,
 
     WITHOUT_POCKET = All & ~POCKET

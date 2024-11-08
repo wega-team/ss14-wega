@@ -1,0 +1,87 @@
+- type: entity
+  parent: Clothing
+  id: ClothingAnalBase
+  abstract: true
+  components:
+  - type: Item
+    size: Small
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - anal
+  - type: Sprite
+    layers:
+    - state: icon
+      map: [ "enum.DamageStateVisualLayers.Base" ]
+  - type: RandomSprite
+    available:
+      - enum.DamageStateVisualLayers.Base:
+          icon: ""
+          icon-1: ""
+          icon-2: ""
+
+- type: entity
+  parent: ClothingAnalBase
+  id: ClothingAnalGreen
+  name: green plug
+  description: ""
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Anal/green.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Anal/green.rsi
+
+- type: entity
+  parent: ClothingAnalBase
+  id: ClothingAnalMetal
+  name: metal plug
+  description: ""
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Anal/metal.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Anal/metal.rsi
+
+- type: entity
+  parent: ClothingAnalBase
+  id: ClothingAnalPink
+  name: pink plug
+  description: ""
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Anal/pink.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Anal/pink.rsi
+
+- type: entity
+  parent: ClothingAnalBase
+  id: ClothingAnalTail
+  name: plug tail
+  description: ""
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Anal/tail.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Anal/tail.rsi
+
+- type: entity
+  parent: ClothingAnalBase
+  id: ClothingAnalTeal
+  name: teal plug
+  description: ""
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Anal/teal.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Anal/teal.rsi
+
+- type: entity
+  parent: ClothingAnalBase
+  id: ClothingAnalYellow
+  name: yellow plug
+  description: ""
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Anal/yellow.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Anal/yellow.rsi

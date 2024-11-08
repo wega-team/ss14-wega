@@ -211,6 +211,22 @@ namespace Content.Client.Lobby.UI
 
             #endregion Gender
 
+            // Corvax-Wega-start
+            #region Status
+
+            StatusButton.AddItem(Loc.GetString("humanoid-profile-editor-status-no-text"), (int) Status.No);
+            StatusButton.AddItem(Loc.GetString("humanoid-profile-editor-status-semi-text"), (int) Status.Semi);
+            StatusButton.AddItem(Loc.GetString("humanoid-profile-editor-status-full-text"), (int) Status.Full);
+
+            StatusButton.OnItemSelected += args =>
+            {
+                StatusButton.SelectId(args.Id);
+                SetStatus((Status) args.Id);
+            };
+
+            #endregion Status
+            // Corvax-Wega-end
+
             // Corvax-TTS-Start
             #region Voice
 
@@ -770,6 +786,7 @@ namespace Content.Client.Lobby.UI
             UpdateHairPickers();
             UpdateCMarkingsHair();
             UpdateCMarkingsFacialHair();
+            UpdateStatusControls(); // Corvax-Wega
 
             RefreshAntags();
             RefreshJobs();
@@ -1197,6 +1214,31 @@ namespace Content.Client.Lobby.UI
             ReloadPreview();
         }
 
+        // Corvax-Wega-start
+        private void SetStatus(Status newStatus)
+        {
+            Profile = Profile?.WithStatus(newStatus);
+            switch (newStatus)
+            {
+                case Status.No:
+                    Profile = Profile?.WithStatus(Status.No);
+                    break;
+                case Status.Semi:
+                    Profile = Profile?.WithStatus(Status.Semi);
+                    break;
+                case Status.Full:
+                    Profile = Profile?.WithStatus(Status.Full);
+                    break;
+                default:
+                    Profile = Profile?.WithStatus(Status.No);
+                    break;
+            }
+
+            UpdateStatusControls();
+            ReloadPreview();
+        }
+        // Corvax-Wega-end
+
         private void SetGender(Gender newGender)
         {
             Profile = Profile?.WithGender(newGender);
@@ -1420,6 +1462,18 @@ namespace Content.Client.Lobby.UI
 
             PronounsButton.SelectId((int) Profile.Gender);
         }
+
+        // Corvax-Wega-start
+        private void UpdateStatusControls()
+        {
+            if (Profile == null)
+            {
+                return;
+            }
+
+            StatusButton.SelectId((int) Profile.Status);
+        }
+        // Corvax-Wega-end
 
         private void UpdateSpawnPriorityControls()
         {

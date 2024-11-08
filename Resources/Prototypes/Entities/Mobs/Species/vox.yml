@@ -59,9 +59,14 @@
     - map: [ "enum.HumanoidVisualLayers.LArm" ]
     - map: [ "enum.HumanoidVisualLayers.RLeg" ]
     - map: [ "enum.HumanoidVisualLayers.LLeg" ]
-    - map: [ "jumpsuit" ]
+    # Corvax-Wega-start
+    - map: [ "socks" ]
+    - map: [ "underwearbottom" ]
+    - map: [ "underweartop" ]
+    # Corvax-Wega-end
     - map: [ "enum.HumanoidVisualLayers.LFoot" ]
     - map: [ "enum.HumanoidVisualLayers.RFoot" ]
+    - map: [ "jumpsuit" ] # Corvax-Wega
     - map: [ "enum.HumanoidVisualLayers.LHand" ]
     - map: [ "enum.HumanoidVisualLayers.RHand" ]
     - map: [ "gloves" ]
@@ -130,6 +135,21 @@
           32:
             sprite: Mobs/Species/Vox/displacement.rsi
             state: shoes
+      underweartop:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Vox/displacement.rsi
+            state: underweartop
+      underwearbottom:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Vox/displacement.rsi
+            state: underwearbottom
+      socks:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Vox/displacement.rsi
+            state: socks
 
 - type: entity
   parent: BaseSpeciesDummy
@@ -178,3 +198,18 @@
           32:
             sprite: Mobs/Species/Vox/displacement.rsi
             state: shoes
+      underweartop:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Vox/displacement.rsi
+            state: underweartop
+      underwearbottom:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Vox/displacement.rsi
+            state: underwearbottom
+      socks:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Vox/displacement.rsi
+            state: socks

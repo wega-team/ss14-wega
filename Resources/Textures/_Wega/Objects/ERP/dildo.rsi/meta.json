@@ -1,0 +1,163 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Sprites taken from https://github.com/SPLURT-Station/S.P.L.U.R.T-Station-13/tree/master",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "dildo_flared_1"
+    },
+    {
+      "name": "dildo_flared_2"
+    },
+    {
+      "name": "dildo_flared_3"
+    },
+    {
+      "name": "dildo_flared_4"
+    },
+    {
+      "name": "dildo_flared_5"
+    },
+    {
+      "name": "dildo_human_1"
+    },
+    {
+      "name": "dildo_human_2"
+    },
+    {
+      "name": "dildo_human_3"
+    },
+    {
+      "name": "dildo_knotted_1"
+    },
+    {
+      "name": "dildo_knotted_2"
+    },
+    {
+      "name": "dildo_knotted_3"
+    },
+    {
+      "name": "dildo_plain_1"
+    },
+    {
+      "name": "dildo_plain_2"
+    },
+    {
+      "name": "dildo_plain_3"
+    },
+    {
+      "name": "dildo_avian"
+    },
+    {
+      "name": "dildo_canine"
+    },
+    {
+      "name": "dildo_equine"
+    },
+    {
+      "name": "dildo_dragon"
+    },
+    {
+      "name": "dildo_human"
+    },
+    {
+      "name": "dildo_tentacle"
+    },
+    {
+      "name": "polydildo_small"
+    },
+    {
+      "name": "polydildo_medium"
+    },
+    {
+      "name": "polydildo_big"
+    },
+    {
+      "name": "dildo_double"
+    },
+    {
+      "name": "inhand-left-avian",
+      "directions": 4
+    },
+    {
+      "name": "inhand-right-avian",
+      "directions": 4
+    },
+    {
+      "name": "inhand-left-canine",
+      "directions": 4
+    },
+    {
+      "name": "inhand-right-canine",
+      "directions": 4
+    },
+    {
+      "name": "inhand-left-dragon",
+      "directions": 4
+    },
+    {
+      "name": "inhand-right-dragon",
+      "directions": 4
+    },
+    {
+      "name": "inhand-left-equine",
+      "directions": 4
+    },
+    {
+      "name": "inhand-right-equine",
+      "directions": 4
+    },
+    {
+      "name": "inhand-left-human",
+      "directions": 4
+    },
+    {
+      "name": "inhand-right-human",
+      "directions": 4
+    },
+    {
+      "name": "inhand-left-tentacle",
+      "directions": 4
+    },
+    {
+      "name": "inhand-right-tentacle",
+      "directions": 4
+    },
+    {
+      "name": "inhand-left-small",
+      "directions": 4
+    },
+    {
+      "name": "inhand-right-small",
+      "directions": 4
+    },
+    {
+      "name": "inhand-left-medium",
+      "directions": 4
+    },
+    {
+      "name": "inhand-right-medium",
+      "directions": 4
+    },
+    {
+      "name": "inhand-left-big",
+      "directions": 4
+    },
+    {
+      "name": "inhand-right-big",
+      "directions": 4
+    },
+    {
+      "name": "inhand-left-double",
+      "directions": 4
+    },
+    {
+      "name": "inhand-right-double",
+      "directions": 4
+    }
+  ]
+}

@@ -79,6 +79,14 @@
                                     <Control HorizontalExpand="True"/>
                                     <OptionButton Name="PronounsButton" HorizontalAlignment="Right" />
                                 </BoxContainer>
+                                <!-- Corvax-Wega-start -->
+                                <!-- Status -->
+                                <BoxContainer HorizontalExpand="True">
+                                    <Label Text="{Loc 'humanoid-profile-editor-status-label'}" />
+                                    <Control HorizontalExpand="True"/>
+                                    <OptionButton Name="StatusButton" HorizontalAlignment="Right" />
+                                </BoxContainer>
+                                <!-- Corvax-Wega-end -->
                                 <!-- Show clothing -->
                                 <BoxContainer HorizontalExpand="True">
                                     <Label Text="{Loc 'humanoid-profile-editor-clothing'}" />

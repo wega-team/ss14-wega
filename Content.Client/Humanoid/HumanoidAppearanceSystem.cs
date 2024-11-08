@@ -197,6 +197,7 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
         humanoid.Species = profile.Species;
         humanoid.SkinColor = profile.Appearance.SkinColor;
         humanoid.EyeColor = profile.Appearance.EyeColor;
+        humanoid.Status = profile.Status; // Corvax-Wega
 
         UpdateSprite(humanoid, Comp<SpriteComponent>(uid));
     }

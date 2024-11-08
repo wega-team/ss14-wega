@@ -1,4 +1,4 @@
-﻿using Content.Client.Administration.Managers;
+using Content.Client.Administration.Managers;
 using Content.Client.Changelog;
 using Content.Client.Chat.Managers;
 using Content.Client.Clickable;

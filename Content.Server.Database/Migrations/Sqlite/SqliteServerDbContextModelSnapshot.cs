@@ -483,19 +483,6 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.ToTable("assigned_user_id", (string)null);
                 });
 
-            modelBuilder.Entity("Content.Server.Database.Blacklist",
-                b =>
-                {
-                    b.Property<Guid>("UserId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("user_id");
-
-                    b.HasKey("UserId")
-                        .HasName("PK_blacklist");
-
-                    b.ToTable("blacklist", (string) null);
-                });
             modelBuilder.Entity("Content.Server.Database.BanTemplate", b =>
                 {
                     b.Property<int>("Id")
@@ -537,6 +524,19 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasName("PK_ban_template");
 
                     b.ToTable("ban_template", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.Blacklist", b =>
+                {
+                    b.Property<Guid>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("user_id");
+
+                    b.HasKey("UserId")
+                        .HasName("PK_blacklist");
+
+                    b.ToTable("blacklist", (string)null);
                 });
 
             modelBuilder.Entity("Content.Server.Database.ConnectionLog", b =>
@@ -820,6 +820,13 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .IsRequired()
                         .HasColumnType("TEXT")
                         .HasColumnName("species");
+
+                    // Corvax-Wega-start
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("status");
+                    // Corvax-Wega-end
 
                     // Corvax-TTS-Start
                     b.Property<string>("Voice")
