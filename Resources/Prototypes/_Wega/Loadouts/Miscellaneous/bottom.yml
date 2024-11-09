@@ -113,6 +113,11 @@
 - type: loadout
   id: ClothingUnderBottomNekoBlack
   equipment:
+    underwearbottom: ClothingUnderBottomNekoBlack
+
+- type: loadout
+  id: ClothingUnderBottomNekoWhite
+  equipment:
     underwearbottom: ClothingUnderBottomNekoWhite
 
 - type: loadout
