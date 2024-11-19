@@ -1,11 +1,8 @@
 using System.Linq;
 using System.Numerics;
-using Content.Client.Chat.Managers;
-using Content.Shared.Chat;
 using Content.Shared.Chat.Prototypes;
 using Content.Shared.Humanoid;
 using Content.Shared.IdentityManagement;
-using Content.Shared.IdentityManagement.Components;
 using Content.Shared.Interaction;
 using Robust.Client.GameObjects;
 using Robust.Client.Player;
@@ -13,11 +10,8 @@ using Robust.Client.ResourceManagement;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.CustomControls;
 using Robust.Client.UserInterface.XAML;
-using Robust.Shared.GameObjects;
-using Robust.Shared.IoC;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 
 namespace Content.Client.Interaction.Panel.Ui
@@ -28,7 +22,6 @@ namespace Content.Client.Interaction.Panel.Ui
         [Dependency] private readonly IEntityManager _entManager = default!;
         [Dependency] private readonly IEntityNetworkManager _entityNetworkManager = default!;
         [Dependency] private readonly IPlayerManager _playerManager = default!;
-        [Dependency] private readonly IGameTiming _gameTiming = default!;
 
         private BoxContainer _names;
         private BoxContainer _upperBlock;
@@ -41,7 +34,6 @@ namespace Content.Client.Interaction.Panel.Ui
         private Label _targetLabel = new Label();
         private Label _userGenderLabel = new Label();
         private Label _targetGenderLabel = new Label();
-        private TimeSpan _nextUpdateTime;
         private LineEdit _searchBar;
 
         public InteractionPanelMenu()
@@ -63,19 +55,14 @@ namespace Content.Client.Interaction.Panel.Ui
 
             _userSpriteView = CreateSpriteView();
             _userModel.AddChild(_userSpriteView);
-
             _userGenderLabel = CreateLabel("");
             _userModel.AddChild(_userGenderLabel);
-
             _targetGenderLabel = CreateLabel("");
             _targetModel.AddChild(_targetGenderLabel);
-
             _targetSpriteView = CreateSpriteView();
             _targetModel.AddChild(_targetSpriteView);
 
             _playerManager.PlayerStatusChanged += OnUserStatusChanged;
-
-            _nextUpdateTime = _gameTiming.RealTime + TimeSpan.FromSeconds(4);
 
             PopulateInteractions();
             UpdateTarget();
@@ -163,21 +150,6 @@ namespace Content.Client.Interaction.Panel.Ui
             };
         }
 
-        /// <summary>
-        /// Блок апдейта не совсем работает, поправить в будущем
-        /// </summary>
-        public void Update()
-        {
-            if (_gameTiming.RealTime >= _nextUpdateTime)
-            {
-                UpdateTarget();
-                _nextUpdateTime = _gameTiming.RealTime + TimeSpan.FromSeconds(4);
-            }
-        }
-
-        /// <summary>
-        /// Аналогично с прошлым
-        /// </summary>
         private void UpdateTarget()
         {
             var session = IoCManager.Resolve<IPlayerManager>().LocalSession;
@@ -266,7 +238,6 @@ namespace Content.Client.Interaction.Panel.Ui
                 UpdateUser(e.Session.AttachedEntity.Value);
                 UpdateTarget();
             }
-            Update();
         }
 
         public void UpdateUser(EntityUid user)
@@ -343,7 +314,6 @@ namespace Content.Client.Interaction.Panel.Ui
                     if (!_entManager.TryGetComponent<HumanoidAppearanceComponent>(targetEntityUid, out var nearestAppearanceComponent))
                         continue;
 
-                    /// В целом пока не работает, но логика не сильно горит
                     if (prototype.TargetEntityId != null && !prototype.TargetEntityId.Contains(target.Value.ToString()))
                         continue;
 
@@ -351,24 +321,30 @@ namespace Content.Client.Interaction.Panel.Ui
                 }
 
                 bool isSpeciesAllowed = prototype.AllowedSpecies?.Contains("all") == true ||
-                                        (appearanceComponent != null && prototype.AllowedSpecies?.Contains(appearanceComponent.Species) == true);
+                    (appearanceComponent != null && prototype.AllowedSpecies?.Contains(appearanceComponent.Species) == true);
 
                 bool isGenderAllowed = prototype.AllowedGenders?.Contains("all") == true ||
-                                    (appearanceComponent != null && prototype.AllowedGenders?.Contains(appearanceComponent.Sex.ToString()) == true);
+                    (appearanceComponent != null && prototype.AllowedGenders?.Contains(appearanceComponent.Sex.ToString()) == true);
 
                 bool isNearestSpeciesAllowed = prototype.NearestAllowedSpecies?.Contains("all") == true ||
-                                            (nearestAppearance != null && prototype.NearestAllowedSpecies?.Contains(nearestAppearance.Species) == true);
+                    (nearestAppearance != null && prototype.NearestAllowedSpecies?.Contains(nearestAppearance.Species) == true);
 
                 bool isNearestGenderAllowed = prototype.NearestAllowedGenders?.Contains("all") == true ||
-                                            (nearestAppearance != null && prototype.NearestAllowedGenders?.Contains(nearestAppearance.Sex.ToString()) == true);
+                    (nearestAppearance != null && prototype.NearestAllowedGenders?.Contains(nearestAppearance.Sex.ToString()) == true);
 
                 bool isTargetEntityAllowed = prototype.TargetEntityId == null ||
-                                            (target.HasValue && prototype.TargetEntityId.Contains(target.Value.ToString()));
+                    (target.HasValue && prototype.TargetEntityId.Contains(target.Value.ToString()));
 
                 var isErpAllowed = prototype.ERP && appearanceComponent != null && appearanceComponent.Status != Status.No &&
-                                (user != null && _entManager.TryGetComponent<HumanoidAppearanceComponent>(user, out var userAppearanceComponent) && userAppearanceComponent.Status != Status.No);
+                    _entManager.TryGetComponent(user, out HumanoidAppearanceComponent? userAppearanceComponent) &&
+                    userAppearanceComponent?.Status != Status.No;
 
-                if (!isSpeciesAllowed || !isGenderAllowed || !isNearestSpeciesAllowed || !isNearestGenderAllowed || !isTargetEntityAllowed || (prototype.ERP && !isErpAllowed))
+                if (!isSpeciesAllowed
+                    || !isGenderAllowed
+                    || !isNearestSpeciesAllowed
+                    || !isNearestGenderAllowed
+                    || !isTargetEntityAllowed
+                    || (prototype.ERP && !isErpAllowed))
                     continue;
 
                 var buttonContainer = new BoxContainer

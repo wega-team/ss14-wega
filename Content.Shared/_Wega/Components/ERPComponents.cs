@@ -1,7 +1,4 @@
 using Content.Shared.DoAfter;
-using Content.Shared.Inventory;
-using Robust.Shared.Player;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared.ERP.Components

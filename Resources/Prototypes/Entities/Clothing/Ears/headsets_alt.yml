@@ -100,6 +100,14 @@
       - EncryptionKeySecurity
       - EncryptionKeyCommand
       - EncryptionKeyCommon
+  # Corvax-Wega-Headset-start
+  - type: Headset
+    sound:
+      path: /Audio/_Wega/Items/radio_security.ogg
+      params:
+        volume: -5
+        variation: 0.025
+  # Corvax-Wega-Headset-end
   - type: Sprite
     sprite: Clothing/Ears/Headsets/security.rsi
   - type: Clothing

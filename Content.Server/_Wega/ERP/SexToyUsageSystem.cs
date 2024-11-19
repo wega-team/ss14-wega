@@ -6,13 +6,11 @@ using Content.Shared.Interaction;
 using Content.Shared.Inventory;
 using Content.Shared.Popups;
 using Content.Server.Popups;
-using Robust.Shared.GameObjects;
-using Robust.Shared.IoC;
 using Robust.Shared.Player;
 
 namespace Content.Server.SexToy.System
 {
-    public class SexToyUsageSystem : EntitySystem
+    public sealed class SexToyUsageSystem : EntitySystem
     {
         [Dependency] private readonly IEntityManager _entManager = default!;
         [Dependency] private readonly PopupSystem _popupSystem = default!;
@@ -80,7 +78,7 @@ namespace Content.Server.SexToy.System
 
         private void UseSexToy(EntityUid toyEntity, EntityUid user, EntityUid? target)
         {
-            if (!_entManager.TryGetComponent<SexToyComponent>(toyEntity, out var SexToyComponent))
+            if (!_entManager.TryGetComponent<SexToyComponent>(toyEntity, out var sexToyComponent))
                 return;
 
             var noHumanoidMessage = Loc.GetString("interaction-impossible");
@@ -145,7 +143,7 @@ namespace Content.Server.SexToy.System
                     Loc.GetString("interaction-dildo-target-vagina-2", ("user", userName))
                 };
 
-                switch (SexToyComponent.Prototype.FirstOrDefault())
+                switch (sexToyComponent.Prototype.FirstOrDefault())
                 {
                     case "dildo":
                         if (targetAppearance.Species == "Vox")

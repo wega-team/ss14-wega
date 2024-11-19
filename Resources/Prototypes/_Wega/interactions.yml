@@ -8,6 +8,15 @@
   - underwearbottom
 
 - type: interaction
+  id: BaseCheckClothingAnal
+  abstract: true
+  requiredClothingSlots:
+  - jumpsuit
+  - outerClothing
+  - underwearbottom
+  - anal
+
+- type: interaction
   id: BaseCheckErpStatus
   abstract: true
   erp: true
@@ -18,7 +27,7 @@
   allowedSpecies:
   - Human
   - Dwarf
-  #- Felinid Not yet
+  - Felinid
   - Moth
   - Reptilian
   - SlimePerson
@@ -31,7 +40,7 @@
   id: BaseUserHasTail
   abstract: true
   nearestAllowedSpecies:
-  #- Felinid Not yet
+  - Felinid
   - Reptilian
   - Vulpkanin
   - Vox
@@ -40,7 +49,7 @@
   id: BaseTargetHasTail
   abstract: true
   nearestAllowedSpecies:
-  #- Felinid Not yet
+  - Felinid
   - Reptilian
   - Vulpkanin
   - Vox
@@ -49,7 +58,7 @@
   id: BaseTargetHasEars
   abstract: true
   nearestAllowedSpecies:
-  #- Felinid Not yet
+  - Felinid
   - Vulpkanin
 
 - type: interaction
@@ -58,7 +67,7 @@
   allowedSpecies:
   - Human
   - Dwarf
-  #- Felinid Not yet
+  - Felinid
   - Moth
   - Reptilian
   - SlimePerson
@@ -71,7 +80,7 @@
   nearestAllowedSpecies:
   - Human
   - Dwarf
-  #- Felinid Not yet
+  - Felinid
   - Moth
   - Reptilian
   - SlimePerson
@@ -83,7 +92,7 @@
   allowedSpecies:
   - Human
   - Dwarf
-  #- Felinid Not yet
+  - Felinid
   - Moth
   - Reptilian
   - SlimePerson
@@ -96,7 +105,7 @@
   nearestAllowedSpecies:
   - Human
   - Dwarf
-  #- Felinid Not yet
+  - Felinid
   - Moth
   - Reptilian
   - SlimePerson
@@ -150,12 +159,6 @@
   name: interaction-bow
   userMessages: ["chat-interaction-bow-message"]
   targetMessages: ["chat-interaction-bow-message-target"]
-
-- type: interaction
-  id: InteractionGift
-  name: interaction-gift
-  userMessages: ["chat-interaction-gift-message"]
-  targetMessages: ["chat-interaction-gift-message-target"]
 
 - type: interaction
   id: InteractionTickles
@@ -230,7 +233,7 @@
   allowedSpecies:
   - Human
   - Dwarf
-  #- Felinid Not yet
+  - Felinid
   - SlimePerson
   - Vulpkanin
 
@@ -359,13 +362,13 @@
   allowedSpecies:
   - Human
   - Dwarf
-  #- Felinid Not yet
+  - Felinid
   - SlimePerson
   - Vulpkanin
 
 # ERP
 - type: interaction
-  parent: [ BaseCheckErpStatus, BaseCheckClothing, BaseMaleOnly ]
+  parent: [ BaseCheckErpStatus, BaseCheckClothingAnal, BaseMaleOnly ]
   id: InteractionAnalEnterSlowly
   name: interaction-anal-enter-slowly
   userMessages: ["chat-interaction-anal-enter-message"]
@@ -374,7 +377,7 @@
   points: 2
 
 - type: interaction
-  parent: [ BaseCheckErpStatus, BaseCheckClothing, BaseMaleOnly ]
+  parent: [ BaseCheckErpStatus, BaseCheckClothingAnal, BaseMaleOnly ]
   id: InteractionAnalEnterFaster
   name: interaction-anal-enter-faster
   userMessages: ["chat-interaction-anal-enter-faster-message"]
@@ -489,7 +492,7 @@
   points: 2
 
 - type: interaction
-  parent: [ BaseCheckErpStatus, BaseCheckClothing, BaseHumanoid ]
+  parent: [ BaseCheckErpStatus, BaseCheckClothingAnal, BaseHumanoid ]
   id: InteractionLickAnal
   name: interaction-lick-anal
   userMessages: ["chat-interaction-lick-anal-message"]
@@ -859,7 +862,7 @@
   - Vox
 
 - type: interaction
-  parent: [ BaseCheckErpStatus, BaseUserHasTail, BaseCheckClothing, BaseHumanoid ]
+  parent: [ BaseCheckErpStatus, BaseUserHasTail, BaseCheckClothingAnal, BaseHumanoid ]
   id: InteractionInsertTailAnal
   name: interaction-insert-tail-anal
   userMessages: ["chat-interaction-insert-tail-anal-message"]
@@ -945,7 +948,7 @@
 
 # Strapon
 - type: interaction
-  parent: [ BaseCheckErpStatus, BaseCheckClothing ]
+  parent: [ BaseCheckErpStatus, BaseCheckClothingAnal ]
   id: InteractionStraponEnterAnalSlowly
   name: interaction-strapon-enter-anal-slowly
   userMessages: ["chat-interaction-strapon-enter-anal-slowly-message"]
@@ -955,14 +958,14 @@
   nearestAllowedSpecies:
   - Human
   - Dwarf
-  #- Felinid Not yet
+  - Felinid
   - Moth
   - Reptilian
   - SlimePerson
   - Vulpkanin #/~UwU~\
 
 - type: interaction
-  parent: [ BaseCheckErpStatus, BaseCheckClothing ]
+  parent: [ BaseCheckErpStatus, BaseCheckClothingAnal ]
   id: InteractionStraponEnterAnalFaster
   name: interaction-strapon-enter-anal-faster
   userMessages: ["chat-interaction-strapon-enter-anal-faster-message"]
@@ -972,7 +975,7 @@
   nearestAllowedSpecies:
   - Human
   - Dwarf
-  #- Felinid Not yet
+  - Felinid
   - Moth
   - Reptilian
   - SlimePerson
@@ -991,7 +994,7 @@
   nearestAllowedSpecies:
   - Human
   - Dwarf
-  #- Felinid Not yet
+  - Felinid
   - Moth
   - Reptilian
   - SlimePerson
@@ -1010,7 +1013,7 @@
   nearestAllowedSpecies:
   - Human
   - Dwarf
-  #- Felinid Not yet
+  - Felinid
   - Moth
   - Reptilian
   - SlimePerson

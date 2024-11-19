@@ -1,7 +1,5 @@
 using System.Linq;
-using System.Numerics;
 using System.Text.RegularExpressions;
-using Content.Shared.Chat;
 using Content.Shared.Chat.Prototypes;
 using Content.Shared.Humanoid;
 using Content.Shared.IdentityManagement;
@@ -13,15 +11,12 @@ using Content.Server.Chat.Systems;
 using Content.Server.Popups;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
-using Robust.Shared.GameObjects;
-using Robust.Shared.IoC;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
-using Robust.Server.Player;
 
 namespace Content.Server.Interaction.Panel
 {
-    public class InteractionPanelSystem : EntitySystem
+    public sealed class InteractionPanelSystem : EntitySystem
     {
         [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
         [Dependency] private readonly IEntityManager _entManager = default!;
@@ -30,7 +25,6 @@ namespace Content.Server.Interaction.Panel
         [Dependency] private readonly ChatSystem _chatSystem = default!;
         [Dependency] private readonly InventorySystem _inventorySystem = default!;
 
-        private static readonly Random _random = new Random();
         private readonly Dictionary<NetEntity, DateTime> _lastInteractionTimes = new();
         private readonly Dictionary<NetEntity, int> _userPoints = new();
 

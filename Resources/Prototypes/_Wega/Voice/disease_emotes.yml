@@ -1,3 +1,4 @@
+# Corvax-Wega
 - type: emote
   id: Moan
   name: chat-emote-name-moan
@@ -15,3 +16,67 @@
     - moans
     - стонет
     - стонать
+
+# Felinid
+- type: emote
+  id: Meows
+  name: chat-emote-name-meows
+  category: Vocal
+  available: false
+  icon: Clothing/Head/Hats/catears.rsi/icon.png
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: ["chat-emote-msg-meows"]
+  chatTriggers:
+    - meows
+    - meowed
+    - meow
+    - мяукает
+    - замяукал
+    - мяу
+
+- type: emote
+  id: Purring
+  name: chat-emote-name-purring
+  category: Vocal
+  available: false
+  icon: Clothing/Head/Hats/catears.rsi/icon.png
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: ["chat-emote-msg-purring"]
+  chatTriggers:
+    - purring
+    - purred
+    - мурчит
+    - мурлыкает
+    - замурлыкал
+    - замурлыкала
+    - мур
+
+- type: emote
+  id: Hisses
+  name: chat-emote-name-hisses
+  category: Vocal
+  available: false
+  icon: Clothing/Head/Hats/catears.rsi/icon.png
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: ["chat-emote-msg-hisses"]
+  chatTriggers:
+    - hisses
+    - hissed
+    - шипит
+    - зашипел
+    - зашипела

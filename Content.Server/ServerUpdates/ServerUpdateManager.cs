@@ -95,6 +95,7 @@ public sealed class ServerUpdateManager : IPostInjectInit
                 ServerEmptyUpdateRestartCheck("last player disconnect");
                 break;
         }
+        _cfg.SetCVar("wega.respawn_time", GetNewRespawnTime(_playerManager.PlayerCount)); // Corvax-Wega-GhostRespawn
     }
 
     private void WatchdogOnUpdateReceived()
@@ -148,4 +149,13 @@ public sealed class ServerUpdateManager : IPostInjectInit
     {
         _sawmill = _logManager.GetSawmill("restart");
     }
+
+    float GetNewRespawnTime(int playerCount) =>
+        playerCount switch
+        {
+            > 50 => 1200.0f,
+            > 30 => 900.0f,
+            > 20 => 600.0f,
+            <= 20 => 300.0f,
+        };
 }

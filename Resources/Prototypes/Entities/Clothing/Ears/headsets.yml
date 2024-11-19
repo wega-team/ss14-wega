@@ -13,6 +13,13 @@
       key_slots:
       - EncryptionKeyCommon
   - type: Headset
+    # Corvax-Wega-Headset-start
+    sound:
+      path: /Audio/_Wega/Items/radio_common.ogg
+      params:
+        volume: -5
+        variation: 0.025
+    # Corvax-Wega-Headset-end
   - type: EncryptionKeyHolder
     keySlots: 4
   - type: Sprite
@@ -236,6 +243,14 @@
       key_slots:
       - EncryptionKeySecurity
       - EncryptionKeyCommon
+  # Corvax-Wega-Headset-start
+  - type: Headset
+    sound:
+      path: /Audio/_Wega/Items/radio_security.ogg
+      params:
+        volume: -5
+        variation: 0.025
+  # Corvax-Wega-Headset-end
   - type: Sprite
     sprite: Clothing/Ears/Headsets/security.rsi
   - type: Clothing
@@ -253,6 +268,14 @@
       - EncryptionKeyMedical
       - EncryptionKeySecurity
       - EncryptionKeyCommon
+  # Corvax-Wega-Headset-start
+  - type: Headset
+    sound:
+      path: /Audio/_Wega/Items/radio_security.ogg
+      params:
+        volume: -5
+        variation: 0.025
+  # Corvax-Wega-Headset-end
   - type: Sprite
     sprite: Clothing/Ears/Headsets/brigmedic.rsi
   - type: Clothing

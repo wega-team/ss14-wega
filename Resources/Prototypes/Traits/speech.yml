@@ -10,6 +10,7 @@
   - type: Accentless
     removes:
     - type: LizardAccent
+    - type: OwOAccent # Corvax-Wega-Felinid
     - type: MothAccent
     - type: ReplacementAccent
       accent: dwarf

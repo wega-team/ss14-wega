@@ -31,4 +31,6 @@
       - VendingMachineSoda
       - VendingMachineStarkist
       - VendingMachineSpaceUp
+      - VendingMachineIntimat # Corvax-Wega
+      - VendingMachineCosinessmat # Corvax-Wega
     chance: 1

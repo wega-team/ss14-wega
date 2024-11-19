@@ -9,6 +9,7 @@ using Content.Shared.Movement.Events;
 using Content.Shared.Resist;
 using Content.Shared.Storage;
 using Robust.Shared.Containers;
+using Content.Server.Carrying; // Corvax-Wega-Carrying
 
 namespace Content.Server.Resist;
 
@@ -19,6 +20,7 @@ public sealed class EscapeInventorySystem : EntitySystem
     [Dependency] private readonly SharedContainerSystem _containerSystem = default!;
     [Dependency] private readonly ActionBlockerSystem _actionBlockerSystem = default!;
     [Dependency] private readonly SharedHandsSystem _handsSystem = default!;
+    [Dependency] private readonly CarryingSystem _carryingSystem = default!; // Corvax-Wega-Carrying
 
     public override void Initialize()
     {
@@ -56,7 +58,7 @@ public sealed class EscapeInventorySystem : EntitySystem
             AttemptEscape(uid, container.Owner, component);
     }
 
-    private void AttemptEscape(EntityUid user, EntityUid container, CanEscapeInventoryComponent component, float multiplier = 1f)
+    public void AttemptEscape(EntityUid user, EntityUid container, CanEscapeInventoryComponent component, float multiplier = 1f)
     {
         if (component.IsEscaping)
             return;
@@ -81,6 +83,14 @@ public sealed class EscapeInventorySystem : EntitySystem
 
         if (args.Handled || args.Cancelled)
             return;
+
+        // Corvax-Wega-Carrying-start
+        if (TryComp<BeingCarriedComponent>(uid, out var carried))
+        {
+            _carryingSystem.DropCarried(carried.Carrier, uid);
+            return;
+        }
+        // Corvax-Wega-Carrying-end
 
         _containerSystem.AttachParentToContainerOrGrid((uid, Transform(uid)));
         args.Handled = true;

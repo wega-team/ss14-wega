@@ -1,0 +1,25 @@
+- type: entity
+  id: LeftLegFelinid
+  name: "left human leg"
+  parent: [PartHuman, BaseLeftLeg]
+  noSpawn: true
+  components:
+  - type: Sprite
+    sprite: Mobs/Species/Human/parts.rsi
+    state: "l_leg"
+  - type: MovementBodyPart
+    walkSpeed : 3
+    sprintSpeed : 5
+
+- type: entity
+  id: RightLegFelinid
+  name: "right human leg"
+  parent: [PartHuman, BaseRightLeg]
+  noSpawn: true
+  components:
+  - type: Sprite
+    sprite: Mobs/Species/Human/parts.rsi
+    state: "r_leg"
+  - type: MovementBodyPart
+    walkSpeed : 3
+    sprintSpeed : 5

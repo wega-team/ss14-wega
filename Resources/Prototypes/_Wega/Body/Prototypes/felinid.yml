@@ -1,0 +1,49 @@
+- type: body
+  id: Felinid
+  name: "felinid"
+  root: torso
+  slots:
+    head:
+      part: HeadHuman
+      connections:
+      - torso
+      organs:
+        brain: OrganHumanBrain
+        eyes: OrganHumanEyes
+    torso:
+      part: TorsoHuman
+      connections:
+      - left_arm
+      - right_arm
+      - left_leg
+      - right_leg
+      organs:
+        heart: OrganAnimalHeart
+        lungs: OrganHumanLungs
+        stomach: OrganAnimalHumanoidStomach
+        liver: OrganAnimalLiver
+        kidneys: OrganHumanKidneys
+    right_arm:
+      part: RightArmHuman
+      connections:
+      - right_hand
+    left_arm:
+      part: LeftArmHuman
+      connections:
+      - left_hand
+    right_hand:
+      part: RightHandHuman
+    left_hand:
+      part: LeftHandHuman
+    right_leg:
+      part: RightLegFelinid
+      connections:
+      - right_foot
+    left_leg:
+      part: LeftLegFelinid
+      connections:
+      - left_foot
+    right_foot:
+      part: RightFootHuman
+    left_foot:
+      part: LeftFootHuman

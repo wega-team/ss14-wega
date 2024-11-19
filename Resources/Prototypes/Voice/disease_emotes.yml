@@ -3,6 +3,8 @@
   name: chat-emote-name-sneeze
   category: Vocal
   chatMessages: ["chat-emote-msg-sneeze"]
+  chatTriggers: # Corvax-Wega
+    - чихает # Corvax-Wega
 
 - type: emote
   id: Cough

@@ -45,8 +45,8 @@ public sealed class ClientClothingSystem : ClothingSystem
         {"shoes", "FEET"},
         /// Corvax-Wega-start
 	    {"socks", "SOCKS"},
-	    {"underweartop", "UNDERWEARTOP"},
-	    {"underwearbottom", "UNDERWEARBOTTOM"},
+        {"underweartop", "UNDERWEARTOP"},
+        {"underwearbottom", "UNDERWEARBOTTOM"},
         {"anal", "ANAL"},
         /// Corvax-Wega-end
         {"id", "IDCARD"},

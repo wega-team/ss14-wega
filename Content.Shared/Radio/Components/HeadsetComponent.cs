@@ -1,4 +1,5 @@
 using Content.Shared.Inventory;
+using Robust.Shared.Audio;
 
 namespace Content.Shared.Radio.Components;
 
@@ -15,4 +16,7 @@ public sealed partial class HeadsetComponent : Component
 
     [DataField("requiredSlot")]
     public SlotFlags RequiredSlot = SlotFlags.EARS;
+
+    [DataField] // Corvax-Wega-Headset
+    public SoundSpecifier Sound; // Corvax-Wega-Headset
 }

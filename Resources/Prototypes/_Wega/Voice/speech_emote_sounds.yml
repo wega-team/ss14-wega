@@ -1,0 +1,75 @@
+- type: emoteSounds
+  id: FelinidSoundM
+  params:
+    variation: 0.125
+  sounds:
+    Scream:
+      collection: FelinidScreamSound
+    Purring:
+      collection: FelinidPurringSound
+    Hisses:
+      collection: FelinidHissesSound
+    Meows:
+      collection: FelinidMeowsSound
+    Sneeze:
+      collection: MaleSneezes
+    Laugh:
+      collection: MaleLaugh
+    Cough:
+      collection: MaleCoughs
+    MonkeyScreeches:
+      collection: MonkeyScreeches
+    RobotBeep:
+      collection: RobotBeeps
+    Yawn:
+      collection: MaleYawn
+    Snore:
+      collection: Snores
+    Honk:
+      collection: BikeHorn
+    Sigh:
+      collection: MaleSigh
+    Crying:
+      collection: MaleCry
+    Whistle:
+      collection: Whistles
+    Moan:
+      collection: MaleMoans
+
+- type: emoteSounds
+  id: FelinidSoundF
+  params:
+    variation: 0.125
+  sounds:
+    Scream:
+      collection: FelinidScreamSound
+    Purring:
+      collection: FelinidPurringSound
+    Hisses:
+      collection: FelinidHissesSound
+    Meows:
+      collection: FelinidMeowsSound
+    Sneeze:
+      collection: FelinidSneezeSound
+    Laugh:
+      collection: FemaleLaugh
+    Cough:
+      collection: FemaleCoughs
+    MonkeyScreeches:
+      collection: MonkeyScreeches
+    RobotBeep:
+      collection: RobotBeeps
+    Yawn:
+      collection: FemaleYawn
+    Snore:
+      collection: Snores
+    Honk:
+      collection: CluwneHorn
+    Sigh:
+      collection: FemaleSigh
+    Crying:
+      collection: FemaleCry
+    Whistle:
+      collection: Whistles
+    Moan:
+      collection: FemaleMoans

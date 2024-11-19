@@ -3,16 +3,30 @@
   id: ClothingUnderBottomBase
   abstract: true
   components:
-  - type: Item
-    size: Small
+  - type: Sprite
+    state: icon
   - type: Clothing
     equipDelay: 2
     unequipDelay: 2
     quickEquip: false
     slots:
     - underwearbottom
-  - type: Sprite
-    state: icon
+  - type: Item
+    size: Small
+  - type: Storage
+    grid:
+    - 0,0,0,0
+    maxItemSize: Tiny
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+        ents: []
+  - type: UserInterface
+    interfaces:
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+  - type: UseDelay
+    delay: 0.5
   - type: Butcherable
     butcheringType: Knife
     spawned:

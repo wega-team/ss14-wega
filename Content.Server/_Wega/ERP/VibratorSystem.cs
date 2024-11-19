@@ -6,13 +6,11 @@ using Content.Shared.Inventory;
 using Content.Shared.Item.ItemToggle.Components;
 using Content.Shared.Popups;
 using Content.Server.Popups;
-using Robust.Shared.GameObjects;
-using Robust.Shared.IoC;
 using Robust.Shared.Player;
 
 namespace Content.Server.Vibrator.System
 {
-    public class VibratorUsageSystem : EntitySystem
+    public sealed class VibratorUsageSystem : EntitySystem
     {
         [Dependency] private readonly IEntityManager _entManager = default!;
         [Dependency] private readonly PopupSystem _popupSystem = default!;

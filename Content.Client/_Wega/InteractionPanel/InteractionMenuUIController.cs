@@ -4,13 +4,8 @@ using Content.Client.UserInterface.Controls;
 using Content.Shared.Input;
 using JetBrains.Annotations;
 using Robust.Client.Player;
-using Robust.Client.UserInterface;
-using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.Controllers;
 using Robust.Shared.Input.Binding;
-using Robust.Shared.Input;
-using Robust.Shared.Player;
-using Robust.Shared.Prototypes;
 using static Robust.Client.UserInterface.Controls.BaseButton;
 
 namespace Content.Client.UserInterface.Systems.Interaction;

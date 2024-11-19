@@ -7,6 +7,7 @@ using Content.Shared.Radio.Components;
 using Content.Shared.Radio.EntitySystems;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
+using Robust.Shared.Audio.Systems; // Corvax-Wega-Headset
 
 namespace Content.Server.Radio.EntitySystems;
 
@@ -14,6 +15,7 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
 {
     [Dependency] private readonly INetManager _netMan = default!;
     [Dependency] private readonly RadioSystem _radio = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!; // Corvax-Wega-Headset
 
     public override void Initialize()
     {
@@ -99,8 +101,17 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
 
     private void OnHeadsetReceive(EntityUid uid, HeadsetComponent component, ref RadioReceiveEvent args)
     {
-        if (TryComp(Transform(uid).ParentUid, out ActorComponent? actor))
-            _netMan.ServerSendMessage(args.ChatMsg, actor.PlayerSession.Channel);
+        // Corvax-Wega-Headset-start
+        if (!TryComp<ActorComponent>(Transform(uid).ParentUid, out var actor))
+            return;
+
+        _netMan.ServerSendMessage(args.ChatMsg, actor.PlayerSession.Channel);
+
+        if (uid == args.RadioSource)
+            return;
+
+        _audio.PlayEntity(component.Sound, actor.PlayerSession, uid);
+        // Corvax-Wega-Headset-end
     }
 
     private void OnEmpPulse(EntityUid uid, HeadsetComponent component, ref EmpPulseEvent args)

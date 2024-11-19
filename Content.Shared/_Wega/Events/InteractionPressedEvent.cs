@@ -8,6 +8,7 @@ namespace Content.Shared.Interaction
         public NetEntity User { get; }
         public string InteractionId { get; }
         public NetEntity? Target { get; }
+
         public InteractionPressedEvent(NetEntity user, string interactionId, NetEntity? target)
         {
             User = user;

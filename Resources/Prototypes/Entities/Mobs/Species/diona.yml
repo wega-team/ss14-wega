@@ -9,6 +9,7 @@
     species: Diona
   - type: Hunger
     baseDecayRate: 0.0083
+  - type: Carriable # Corvax-Wega-Carrying
   - type: Thirst
     baseDecayRate: 0.0083
   - type: Icon

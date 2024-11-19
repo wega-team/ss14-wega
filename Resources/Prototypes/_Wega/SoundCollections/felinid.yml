@@ -1,0 +1,38 @@
+- type: soundCollection
+  id: FelinidScreamSound
+  files:
+    - /Audio/_Wega/Voice/Felinid/screammeow_1.ogg
+    - /Audio/_Wega/Voice/Felinid/screammeow_2.ogg
+    - /Audio/_Wega/Voice/Felinid/screammeow_3.ogg
+
+- type: soundCollection
+  id: FelinidPurringSound
+  files:
+    - /Audio/_Wega/Voice/Felinid/purring_1.ogg
+    - /Audio/_Wega/Voice/Felinid/purring_2.ogg
+    - /Audio/_Wega/Voice/Felinid/purring_3.ogg
+    - /Audio/_Wega/Voice/Felinid/purring_4.ogg
+
+- type: soundCollection
+  id: FelinidHissesSound
+  files:
+    - /Audio/_Wega/Voice/Felinid/hissing_1.ogg
+    - /Audio/_Wega/Voice/Felinid/hissing_2.ogg
+    - /Audio/_Wega/Voice/Felinid/hissing_3.ogg
+
+- type: soundCollection
+  id: FelinidMeowsSound
+  files:
+    - /Audio/_Wega/Voice/Felinid/meow_1.ogg
+    - /Audio/_Wega/Voice/Felinid/meow_2.ogg
+    - /Audio/_Wega/Voice/Felinid/meow_3.ogg
+    - /Audio/_Wega/Voice/Felinid/meow_4.ogg
+    - /Audio/_Wega/Voice/Felinid/meow_5.ogg
+    - /Audio/_Wega/Voice/Felinid/meow_6.ogg
+
+- type: soundCollection
+  id: FelinidSneezeSound
+  files:
+    - /Audio/_Wega/Voice/Felinid/catsneeze_1.ogg
+    - /Audio/_Wega/Voice/Felinid/catsneeze_2.ogg
+    - /Audio/_Wega/Voice/Felinid/catsneeze_3.ogg

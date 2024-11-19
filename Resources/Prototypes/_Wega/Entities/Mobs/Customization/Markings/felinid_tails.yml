@@ -1,0 +1,55 @@
+- type: marking
+  id: FelinidTail
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Felinid]
+  coloring:
+    default:
+      type:
+        !type:CategoryColoring
+          category: Hair
+      fallbackTypes:
+        - !type:CategoryColoring
+          category: FacialHair
+        - !type:SkinColoring
+  sprites:
+  - sprite: _Wega/Mobs/Customization/felinid_parts.rsi
+    state: tail_cat_wag
+
+- type: marking
+  id: FelinidWaggingTail
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Felinid]
+  coloring:
+    default:
+      type:
+        !type:CategoryColoring
+          category: Hair
+      fallbackTypes:
+        - !type:CategoryColoring
+          category: FacialHair
+        - !type:SkinColoring
+  sprites:
+  - sprite: Mobs/Customization/cat_parts.rsi
+    state: tail_cat_wag
+
+- type: marking
+  id: FelinidWaggingTailStripes
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Felinid]
+  coloring:
+    default:
+      type:
+        !type:CategoryColoring
+        category: Hair
+      fallbackTypes:
+        - !type:CategoryColoring
+          category: FacialHair
+        - !type:SkinColoring
+  sprites:
+    - sprite: Corvax/Mobs/Customization/cat_parts.rsi
+      state: tail_cat_wag_stripes_prime
+    - sprite: Corvax/Mobs/Customization/cat_parts.rsi
+      state: tail_cat_wag_stripes_second
