@@ -2,7 +2,7 @@
   id: LeftLegFelinid
   name: "left human leg"
   parent: [PartHuman, BaseLeftLeg]
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: Mobs/Species/Human/parts.rsi
@@ -15,7 +15,7 @@
   id: RightLegFelinid
   name: "right human leg"
   parent: [PartHuman, BaseRightLeg]
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: Mobs/Species/Human/parts.rsi
