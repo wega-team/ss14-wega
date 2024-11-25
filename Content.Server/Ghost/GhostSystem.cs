@@ -499,7 +499,7 @@ namespace Content.Server.Ghost
             return ghost;
         }
 
-        // Corvax-Wega-GhostBar
+        // Corvax-Wega-GhostBar-start
         private void OnGhostSpawnGhostBar(EntityUid uid, GhostComponent component, ToggleGhostBarEvent args)
         {
             var spawnPointPrototype = args.SpawnPoint;
@@ -560,7 +560,7 @@ namespace Content.Server.Ghost
                 _chatManager.DispatchServerMessage(targetActor, Loc.GetString("ghost-bar-spawn-message"));
             }
         }
-        // Corvax-Wega-GhostBar
+        // Corvax-Wega-GhostBar-end
 
         public bool OnGhostAttempt(EntityUid mindId, bool canReturnGlobal, bool viaCommand = false, MindComponent? mind = null)
         {
