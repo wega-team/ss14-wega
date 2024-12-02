@@ -1,0 +1,8 @@
+- type: startingGear
+  id: GhostBarGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitBartender
+    shoes: ClothingShoesColorBlack
+    underwearbottom: ClothingUnderBottomHearts
+    ears: ClothingHeadsetGrey
+    pocket1: ClothingMaskBreath

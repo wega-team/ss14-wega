@@ -33,6 +33,14 @@ public sealed partial class GhostComponent : Component
     [DataField]
     public EntityUid? ToggleGhostHearingActionEntity;
 
+    // Crovax-Wega-GhostBar-start
+    [DataField]
+    public EntProtoId ToggleGhostBarAction = "ActionGhostBar";
+
+    [DataField]
+    public EntityUid? ToggleGhostBarActionEntity;
+    // Crovax-Wega-GhostBar-end
+
     [DataField]
     public EntProtoId BooAction = "ActionGhostBoo";
 
@@ -102,5 +110,13 @@ public sealed partial class ToggleLightingActionEvent : InstantActionEvent { }
 public sealed partial class ToggleGhostHearingActionEvent : InstantActionEvent { }
 
 public sealed partial class ToggleGhostVisibilityToAllEvent : InstantActionEvent { }
+
+// Crovax-Wega-GhostBar-start
+public sealed partial class ToggleGhostBarEvent : InstantActionEvent
+{
+    [DataField]
+    public EntProtoId SpawnPoint = "GhostBarSpawnPoint";
+}
+// Crovax-Wega-GhostBar-end
 
 public sealed partial class BooActionEvent : InstantActionEvent { }

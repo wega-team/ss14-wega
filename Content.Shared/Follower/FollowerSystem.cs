@@ -8,6 +8,7 @@ using Content.Shared.Movement.Events;
 using Content.Shared.Movement.Pulling.Events;
 using Content.Shared.Tag;
 using Content.Shared.Verbs;
+using Content.Shared.Humanoid; // Corvax-Wega-GhostBar
 using Robust.Shared.Containers;
 using Robust.Shared.GameStates;
 using Robust.Shared.Map;
@@ -149,6 +150,9 @@ public sealed class FollowerSystem : EntitySystem
     /// <param name="entity">The entity to be followed</param>
     public void StartFollowingEntity(EntityUid follower, EntityUid entity)
     {
+        if (HasComp<HumanoidAppearanceComponent>(follower)) // Corvax-Wega-GhostBar
+            return; // Corvax-Wega-GhostBar
+
         // No recursion for you
         var targetXform = Transform(entity);
         while (targetXform.ParentUid.IsValid())

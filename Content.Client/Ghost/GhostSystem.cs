@@ -131,6 +131,7 @@ namespace Content.Client.Ghost
             _actions.RemoveAction(uid, component.ToggleFoVActionEntity);
             _actions.RemoveAction(uid, component.ToggleGhostsActionEntity);
             _actions.RemoveAction(uid, component.ToggleGhostHearingActionEntity);
+            _actions.RemoveAction(uid, component.ToggleGhostBarActionEntity); // Corvax-Wega-GhostBar
 
             if (uid != _playerManager.LocalEntity)
                 return;

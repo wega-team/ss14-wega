@@ -2,6 +2,7 @@ using Content.Server.Administration.Logs;
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
 using Content.Server.Ghost.Components;
+using Content.Server.Station.Systems; // Corvax-Wega-GhostBar
 using Content.Server.Mind;
 using Content.Server.Roles.Jobs;
 using Content.Server.Warps;
@@ -23,6 +24,10 @@ using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Events;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Storage.Components;
+using Content.Shared.CombatMode.Pacification; // Corvax-Wega-GhostBar
+using Content.Shared.Roles; // Corvax-Wega-GhostBar
+using Content.Shared.Clothing; // Corvax-Wega-GhostBar
+using Content.Shared.Humanoid; // Corvax-Wega-GhostBar
 using Robust.Server.GameObjects;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
@@ -60,6 +65,9 @@ namespace Content.Server.Ghost
         [Dependency] private readonly SharedMindSystem _mind = default!;
         [Dependency] private readonly GameTicker _gameTicker = default!;
         [Dependency] private readonly DamageableSystem _damageable = default!;
+        [Dependency] private readonly IEntityManager _entityManager = default!; // Corvax-Wega-GhostBar
+        [Dependency] private readonly StationSpawningSystem _spawning = default!; // Corvax-Wega-GhostBar
+        [Dependency] private readonly LoadoutSystem _loadout = default!; // Corvax-Wega-GhostBar
 
         private EntityQuery<GhostComponent> _ghostQuery;
         private EntityQuery<PhysicsComponent> _physicsQuery;
@@ -90,6 +98,7 @@ namespace Content.Server.Ghost
 
             SubscribeLocalEvent<GhostComponent, BooActionEvent>(OnActionPerform);
             SubscribeLocalEvent<GhostComponent, ToggleGhostHearingActionEvent>(OnGhostHearingAction);
+            SubscribeLocalEvent<GhostComponent, ToggleGhostBarEvent>(OnGhostSpawnGhostBar); // Corvax-Wega-GhostBar
             SubscribeLocalEvent<GhostComponent, InsertIntoEntityStorageAttemptEvent>(OnEntityStorageInsertAttempt);
 
             SubscribeLocalEvent<RoundEndTextAppendEvent>(_ => MakeVisible(true));
@@ -213,11 +222,15 @@ namespace Content.Server.Ghost
 
         private void OnMapInit(EntityUid uid, GhostComponent component, MapInitEvent args)
         {
+            if (HasComp<HumanoidAppearanceComponent>(uid)) // Corvax-Wega-GhostBar
+                return; // Corvax-Wega-GhostBar
+
             _actions.AddAction(uid, ref component.BooActionEntity, component.BooAction);
             _actions.AddAction(uid, ref component.ToggleGhostHearingActionEntity, component.ToggleGhostHearingAction);
             _actions.AddAction(uid, ref component.ToggleLightingActionEntity, component.ToggleLightingAction);
             _actions.AddAction(uid, ref component.ToggleFoVActionEntity, component.ToggleFoVAction);
             _actions.AddAction(uid, ref component.ToggleGhostsActionEntity, component.ToggleGhostsAction);
+            _actions.AddAction(uid, ref component.ToggleGhostBarActionEntity, component.ToggleGhostBarAction); // Corvax-Wega-GhostBar
         }
 
         private void OnGhostExamine(EntityUid uid, GhostComponent component, ExaminedEvent args)
@@ -323,6 +336,9 @@ namespace Content.Server.Ghost
 
         private void WarpTo(EntityUid uid, EntityUid target)
         {
+            if (HasComp<HumanoidAppearanceComponent>(uid)) // Corvax-Wega-GhostBar
+                return; // Corvax-Wega-GhostBar
+
             if ((TryComp(target, out WarpPointComponent? warp) && warp.Follow) || HasComp<MobStateComponent>(target))
             {
                 _followerSystem.StartFollowingEntity(uid, target);
@@ -482,6 +498,69 @@ namespace Content.Server.Ghost
             Log.Debug($"Spawned ghost \"{ToPrettyString(ghost)}\" for {mind.Comp.CharacterName}.");
             return ghost;
         }
+
+        // Corvax-Wega-GhostBar-start
+        private void OnGhostSpawnGhostBar(EntityUid uid, GhostComponent component, ToggleGhostBarEvent args)
+        {
+            var spawnPointPrototype = args.SpawnPoint;
+
+            var spawnPoints = _entityManager.EntityQuery<TransformComponent>()
+                .Where(x =>
+                {
+                    var metaData = _entityManager.GetComponentOrNull<MetaDataComponent>(x.Owner);
+                    return metaData?.EntityPrototype?.ID != null && metaData.EntityPrototype.ID == spawnPointPrototype;
+                })
+                .Select(x => x.Owner)
+                .ToList();
+
+            if (spawnPoints.Count == 0)
+                return;
+
+            var spawnPoint = spawnPoints[0];
+            var transform = _entityManager.GetComponent<TransformComponent>(spawnPoint);
+            var coords = transform.Coordinates;
+
+            if (!coords.IsValid(_entityManager)
+                || _transformSystem.GetMapId(coords) == MapId.Nullspace
+                || !_playerManager.TryGetSessionByEntity(uid, out var targetActor))
+                return;
+
+            var targetUserId = targetActor.UserId;
+            var profile = _gameTicker.GetPlayerProfile(targetActor);
+
+            var spawnedMob = _spawning.SpawnPlayerMob(coords, null, profile, null);
+
+            if (spawnedMob != EntityUid.Invalid)
+            {
+                var targetMind = _mind.GetMind(targetUserId);
+                _entityManager.EnsureComponent<PacifiedComponent>(spawnedMob);
+                var ghostComponent = _entityManager.EnsureComponent<GhostComponent>(spawnedMob);
+                ghostComponent.CanGhostInteract = true;
+
+                if (targetMind != null)
+                {
+                    _mind.TransferTo(targetMind.Value, spawnedMob, true);
+                    args.Handled = true;
+                }
+                else
+                {
+                    var mindId = _mind.CreateMind(targetUserId);
+                    _mind.TransferTo(mindId, spawnedMob, true);
+                    args.Handled = true;
+                }
+
+                var ghostBarGear = new ProtoId<StartingGearPrototype>("GhostBarGear");
+
+                if (_loadout != null)
+                {
+                    List<ProtoId<StartingGearPrototype>> gear = new() { ghostBarGear };
+                    _loadout.Equip(spawnedMob, gear, null);
+                }
+
+                _chatManager.DispatchServerMessage(targetActor, Loc.GetString("ghost-bar-spawn-message"));
+            }
+        }
+        // Corvax-Wega-GhostBar-end
 
         public bool OnGhostAttempt(EntityUid mindId, bool canReturnGlobal, bool viaCommand = false, MindComponent? mind = null)
         {

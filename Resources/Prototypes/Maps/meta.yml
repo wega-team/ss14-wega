@@ -1,7 +1,7 @@
 - type: gameMap
   id: Meta
   mapName: 'Meta Station'
-  mapPath: /Maps/meta.yml
+  mapPath: /Maps/_Wega/wegameta.yml #Corvax-Wega
   minPlayers: 50
   stations:
     Meta:

@@ -1,0 +1,6 @@
+- type: entity
+  parent: BaseGameRule
+  id: BaseStationEventGhostBarSpawn
+  components:
+  - type: LoadMapRule
+    mapPath: /Maps/_Wega/wegabar.yml

@@ -353,6 +353,7 @@
     - id: BasicTrashVariationPass
     - id: SolidWallRustingVariationPass
     - id: ReinforcedWallRustingVariationPass
+    - id: BaseStationEventGhostBarSpawn # Corvax-Wega-GhostBar
     - id: BasicPuddleMessVariationPass
       prob: 0.99
       orGroup: puddleMess

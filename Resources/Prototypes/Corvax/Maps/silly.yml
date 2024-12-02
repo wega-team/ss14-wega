@@ -1,7 +1,7 @@
 - type: gameMap
   id: CorvaxSilly
   mapName: 'Silly Island'
-  mapPath: /Maps/corvax_silly.yml
+  mapPath: /Maps/_Wega/wegasilly.yml #Corvax-Wega 
   maxRandomOffset: 0
   randomRotation: false
   minPlayers: 0

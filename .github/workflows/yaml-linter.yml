@@ -11,7 +11,7 @@ jobs:
   build:
     name: YAML Linter
     if: github.actor != 'IanComradeBot' && github.event.pull_request.draft == false
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux]
     steps:
       - uses: actions/checkout@v3.6.0
       - name: Setup submodule
