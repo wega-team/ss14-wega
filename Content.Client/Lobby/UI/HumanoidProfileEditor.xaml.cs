@@ -217,6 +217,7 @@ namespace Content.Client.Lobby.UI
             StatusButton.AddItem(Loc.GetString("humanoid-profile-editor-status-no-text"), (int) Status.No);
             StatusButton.AddItem(Loc.GetString("humanoid-profile-editor-status-semi-text"), (int) Status.Semi);
             StatusButton.AddItem(Loc.GetString("humanoid-profile-editor-status-full-text"), (int) Status.Full);
+            StatusButton.AddItem(Loc.GetString("humanoid-profile-editor-status-absolute-text"), (int) Status.Absolute);
 
             StatusButton.OnItemSelected += args =>
             {
@@ -1220,18 +1221,11 @@ namespace Content.Client.Lobby.UI
             Profile = Profile?.WithStatus(newStatus);
             switch (newStatus)
             {
-                case Status.No:
-                    Profile = Profile?.WithStatus(Status.No);
-                    break;
-                case Status.Semi:
-                    Profile = Profile?.WithStatus(Status.Semi);
-                    break;
-                case Status.Full:
-                    Profile = Profile?.WithStatus(Status.Full);
-                    break;
-                default:
-                    Profile = Profile?.WithStatus(Status.No);
-                    break;
+                case Status.No: Profile = Profile?.WithStatus(Status.No); break;
+                case Status.Semi: Profile = Profile?.WithStatus(Status.Semi); break;
+                case Status.Full: Profile = Profile?.WithStatus(Status.Full); break;
+                case Status.Absolute: Profile = Profile?.WithStatus(Status.Absolute); break;
+                default: Profile = Profile?.WithStatus(Status.No); break;
             }
 
             UpdateStatusControls();

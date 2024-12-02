@@ -560,6 +560,7 @@ namespace Content.Shared.Preferences
                 Status.No => Status.No,
                 Status.Semi => Status.Semi,
                 Status.Full => Status.Full,
+                Status.Absolute => Status.Absolute,
                 _ => Status.No
             };
             // Corvax-Wega-end

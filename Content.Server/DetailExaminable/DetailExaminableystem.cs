@@ -25,12 +25,12 @@ namespace Content.Server.DetailExaminable
             var detailsRange = _examineSystem.IsInDetailsRange(args.User, uid);
 
             // Corvax-Wega-start
-            var appearanceComponent = EntityManager.TryGetComponent<HumanoidAppearanceComponent>(uid, out var humanoidAppearance) 
-                ? humanoidAppearance 
+            var appearanceComponent = EntityManager.TryGetComponent<HumanoidAppearanceComponent>(uid, out var humanoidAppearance)
+                ? humanoidAppearance
                 : null;
 
-            var statusText = appearanceComponent != null 
-                ? GetStatusText(appearanceComponent.Status) 
+            var statusText = appearanceComponent != null
+                ? GetStatusText(appearanceComponent.Status)
                 : string.Empty;
             // Corvax-Wega-end
 
@@ -59,8 +59,9 @@ namespace Content.Server.DetailExaminable
             return status switch
             {
                 Status.No => "\n" + ($"[color=red]{Loc.GetString("humanoid-profile-editor-status-no-text")}[/color]"),
-                Status.Semi => "\n" + ($"[color=yellow]{Loc.GetString("humanoid-profile-editor-status-semi-text")}[/color]"),
-                Status.Full => "\n" + ($"[color=green]{Loc.GetString("humanoid-profile-editor-status-full-text")}[/color]"),
+                Status.Semi => "\n" + ($"[color=orange]{Loc.GetString("humanoid-profile-editor-status-semi-text")}[/color]"),
+                Status.Full => "\n" + ($"[color=blue]{Loc.GetString("humanoid-profile-editor-status-full-text")}[/color]"),
+                Status.Absolute => "\n" + ($"[color=purple]{Loc.GetString("humanoid-profile-editor-status-absolute-text")}[/color]"),
                 _ => string.Empty,
             };
         }

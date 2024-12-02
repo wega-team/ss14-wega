@@ -1,0 +1,192 @@
+- type: entity
+  parent: [ ClothingNeckBase, BaseFoldable ]
+  id: ClothingNeckChokerBase
+  abstract: true
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: _Wega/Clothing/Neck/Misc/chokers.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Neck/Misc/chokers.rsi
+  - type: Appearance
+  - type: Foldable
+    canFoldInsideContainer: true
+    unfoldVerbText: fold-zip-verb
+    foldVerbText: fold-unzip-verb
+
+- type: entity
+  parent: ClothingNeckChokerBase
+  id: ClothingNeckChokerBlack
+  name: black choker
+  description: "A sleek and stylish black choker, perfect for a bold look."
+  components:
+  - type: Sprite
+    layers:
+    - state: black
+      map: [ "unfoldedLayer" ]
+    - state: black-lock
+      map: ["foldedLayer"]
+      visible: false
+  - type: Clothing
+    equippedPrefix: black
+
+- type: entity
+  parent: ClothingNeckChokerBase
+  id: ClothingNeckChokerCyan
+  name: cyan choker
+  description: "A vibrant cyan choker, adding a pop of color to your outfit."
+  components:
+  - type: Sprite
+    layers:
+    - state: cyan
+      map: [ "unfoldedLayer" ]
+    - state: cyan-lock
+      map: ["foldedLayer"]
+      visible: false
+  - type: Clothing
+    equippedPrefix: cyan
+
+- type: entity
+  parent: ClothingNeckChokerBase
+  id: ClothingNeckChokerGreen
+  name: green choker
+  description: "A fresh green choker, offering a touch of nature and elegance."
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+      map: [ "unfoldedLayer" ]
+    - state: green-lock
+      map: ["foldedLayer"]
+      visible: false
+  - type: Clothing
+    equippedPrefix: green
+
+- type: entity
+  parent: ClothingNeckChokerBase
+  id: ClothingNeckChokerLatex
+  name: latex choker
+  description: "A bold latex choker, perfect for an edgy, modern look."
+  components:
+  - type: Sprite
+    layers:
+    - state: latex
+      map: [ "unfoldedLayer" ]
+    - state: latex-lock
+      map: ["foldedLayer"]
+      visible: false
+  - type: Clothing
+    equippedPrefix: latex
+
+- type: entity
+  parent: ClothingNeckChokerBase
+  id: ClothingNeckChokerOrange
+  name: orange choker
+  description: "A bright orange choker that brings a playful and energetic vibe."
+  components:
+  - type: Sprite
+    layers:
+    - state: orange
+      map: [ "unfoldedLayer" ]
+    - state: orange-lock
+      map: ["foldedLayer"]
+      visible: false
+  - type: Clothing
+    equippedPrefix: orange
+
+- type: entity
+  parent: ClothingNeckChokerBase
+  id: ClothingNeckChokerPurple
+  name: purple choker
+  description: "A rich purple choker, adding a touch of luxury and mystery."
+  components:
+  - type: Sprite
+    layers:
+    - state: purple
+      map: [ "unfoldedLayer" ]
+    - state: purple-lock
+      map: ["foldedLayer"]
+      visible: false
+  - type: Clothing
+    equippedPrefix: purple
+
+- type: entity
+  parent: ClothingNeckChokerBase
+  id: ClothingNeckChokerRed
+  name: red choker
+  description: "A passionate red choker, perfect for making a statement."
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+      map: [ "unfoldedLayer" ]
+    - state: red-lock
+      map: ["foldedLayer"]
+      visible: false
+  - type: Clothing
+    equippedPrefix: red
+
+- type: entity
+  parent: ClothingNeckChokerBase
+  id: ClothingNeckChokerSpike
+  name: spike choker
+  description: "A rebellious spike choker, designed for a bold and edgy look."
+  components:
+  - type: Sprite
+    layers:
+    - state: spike
+      map: [ "unfoldedLayer" ]
+    - state: spike-lock
+      map: ["foldedLayer"]
+      visible: false
+  - type: Clothing
+    equippedPrefix: spike
+
+- type: entity
+  parent: ClothingNeckChokerBase
+  id: ClothingNeckChokerTealBlack
+  name: tealblack choker
+  description: "A unique teal and black choker, combining elegance with a hint of mystery."
+  components:
+  - type: Sprite
+    layers:
+    - state: tealblack
+      map: [ "unfoldedLayer" ]
+    - state: tealblack-lock
+      map: ["foldedLayer"]
+      visible: false
+  - type: Clothing
+    equippedPrefix: tealblack
+
+- type: entity
+  parent: ClothingNeckChokerBase
+  id: ClothingNeckChokerWhite
+  name: white choker
+  description: "A delicate white choker, perfect for adding a fresh and clean touch to your look."
+  components:
+  - type: Sprite
+    layers:
+    - state: white
+      map: [ "unfoldedLayer" ]
+    - state: white-lock
+      map: ["foldedLayer"]
+      visible: false
+  - type: Clothing
+    equippedPrefix: white
+
+- type: entity
+  parent: ClothingNeckChokerBase
+  id: ClothingNeckChokerYellow
+  name: yellow choker
+  description: "A sunny yellow choker, ideal for a bright and cheerful appearance."
+  components:
+  - type: Sprite
+    layers:
+    - state: yellow
+      map: [ "unfoldedLayer" ]
+    - state: yellow-lock
+      map: ["foldedLayer"]
+      visible: false
+  - type: Clothing
+    equippedPrefix: yellow

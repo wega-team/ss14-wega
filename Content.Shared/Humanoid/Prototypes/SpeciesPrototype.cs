@@ -111,7 +111,7 @@ public sealed partial class SpeciesPrototype : IPrototype
 
     // Corvax-Wega-start
     [DataField]
-    public List<Status> Statuses { get; private set; } = new() { Status.No, Status.Semi, Status.Full };
+    public List<Status> Statuses { get; private set; } = new() { Status.No, Status.Semi, Status.Full, Status.Absolute };
     // Corvax-Wega-end
 
     /// <summary>

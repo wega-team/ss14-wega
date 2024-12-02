@@ -5,6 +5,7 @@ namespace Content.Shared.Humanoid
         No,
         Semi,
         Full,
+        Absolute,
     }
 
     public record struct StatusChangedEvent(Status OldStatus, Status NewStatus);
