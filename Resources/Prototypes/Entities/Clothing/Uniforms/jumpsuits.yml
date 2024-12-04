@@ -261,7 +261,7 @@
   - type: Sprite
     sprite: Clothing/Uniforms/Jumpsuit/cmo.rsi
   - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/cmo.rsi\
+    sprite: Clothing/Uniforms/Jumpsuit/cmo.rsi
   - type: DiseaseProtection # Corvax-Wega-Disease
     protection: 0.15 # Corvax-Wega-Disease
 
