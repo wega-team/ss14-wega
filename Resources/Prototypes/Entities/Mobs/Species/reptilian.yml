@@ -39,6 +39,8 @@
       Male: MaleReptilian
       Female: FemaleReptilian
       Unsexed: MaleReptilian
+  - type: DiseaseCarrier # Corvax-Wega-Disease
+    diseaseResist: 0.1 # Corvax-Wega-Disease
   - type: BodyEmotes
     soundsId: ReptilianBodyEmotes
   - type: Damageable

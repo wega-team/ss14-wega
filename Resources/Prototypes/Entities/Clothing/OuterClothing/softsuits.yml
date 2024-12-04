@@ -118,6 +118,8 @@
         Heat: 0.90
         Radiation: 0.75
         Caustic: 0.5
+  - type: DiseaseProtection # Corvax-Wega-Disease
+    protection: 0.15 # Corvax-Wega-Disease
   - type: GroupExamine
   - type: StealTarget
     stealGroup: ClothingOuterHardsuitVoidParamed

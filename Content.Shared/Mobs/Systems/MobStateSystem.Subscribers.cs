@@ -2,6 +2,8 @@
 using Content.Shared.Buckle.Components;
 using Content.Shared.CombatMode.Pacification;
 using Content.Shared.Damage.ForceSay;
+using Content.Shared.Disease.Events; // Corvax-Wega-Disease
+using Content.Shared.DragDrop; // Corvax-Wega-Disease
 using Content.Shared.Emoting;
 using Content.Shared.Hands;
 using Content.Shared.Interaction;
@@ -44,6 +46,7 @@ public partial class MobStateSystem
         SubscribeLocalEvent<MobStateComponent, TryingToSleepEvent>(OnSleepAttempt);
         SubscribeLocalEvent<MobStateComponent, CombatModeShouldHandInteractEvent>(OnCombatModeShouldHandInteract);
         SubscribeLocalEvent<MobStateComponent, AttemptPacifiedAttackEvent>(OnAttemptPacifiedAttack);
+        SubscribeLocalEvent<MobStateComponent, AttemptSneezeCoughEvent>(OnSneezeAttempt); // Corvax-Wega-Disease
 
         SubscribeLocalEvent<MobStateComponent, UnbuckleAttemptEvent>(OnUnbuckleAttempt);
     }
@@ -127,6 +130,14 @@ public partial class MobStateSystem
         if (IsDead(target, component))
             args.Cancelled = true;
     }
+
+    // Corvax-Wega-Disease-start
+    private void OnSneezeAttempt(EntityUid target, MobStateComponent component, ref AttemptSneezeCoughEvent args)
+    {
+        if (IsDead(target, component))
+            args.Cancelled = true;
+    }
+    // Corvax-Wega-Disease-end
 
     private void OnGettingStripped(EntityUid target, MobStateComponent component, BeforeGettingStrippedEvent args)
     {

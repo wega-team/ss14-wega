@@ -6,6 +6,8 @@
   description: They mostly come at night. Mostly.
   components:
   - type: Insulated
+  - type: DiseaseProtection # Corvax-Wega-Disease
+    protection: 1 # Corvax-Wega-Disease
   - type: CombatMode
   - type: InputMover
   - type: MobMover

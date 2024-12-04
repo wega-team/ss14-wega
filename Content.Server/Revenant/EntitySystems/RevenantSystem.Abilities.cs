@@ -3,6 +3,8 @@ using Content.Shared.Damage;
 using Content.Shared.Revenant;
 using Robust.Shared.Random;
 using Content.Shared.Tag;
+using Content.Server.Disease; // Corvax-Wega-Disease
+using Content.Server.Disease.Components; // Corvax-Wega-Disease
 using Content.Server.Storage.Components;
 using Content.Server.Light.Components;
 using Content.Server.Ghost;
@@ -43,6 +45,7 @@ public sealed partial class RevenantSystem
     [Dependency] private readonly TileSystem _tile = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
     [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
+    [Dependency] private readonly DiseaseSystem _disease = default!; // Corvax-Wega-Disease
 
     private void InitializeAbilities()
     {
@@ -319,7 +322,14 @@ public sealed partial class RevenantSystem
             return;
 
         args.Handled = true;
-        // TODO: When disease refactor is in.
+        // Corvax-Wega-Disease-start
+        var emo = GetEntityQuery<DiseaseCarrierComponent>();
+        foreach (var ent in _lookup.GetEntitiesInRange(uid, component.BlightRadius))
+        {
+            if (emo.TryGetComponent(ent, out var comp))
+                _disease.TryAddDisease(ent, component.BlightDiseasePrototypeId, comp);
+        }
+        // Corvax-Wega-Disease-end
     }
 
     private void OnMalfunctionAction(EntityUid uid, RevenantComponent component, RevenantMalfunctionActionEvent args)

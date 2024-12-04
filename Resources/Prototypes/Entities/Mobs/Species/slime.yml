@@ -117,6 +117,12 @@
           32:
             sprite: Mobs/Species/Human/displacement.rsi
             state: jumpsuit-female
+  # Corvax-Wega-Disease-start
+  - type: DiseaseCarrier
+    naturalImmunities:
+    - Ultragigacancer
+    - BleedersBite
+  # Corvax-Wega-Disease-end
 
 - type: entity
   parent: MobHumanDummy

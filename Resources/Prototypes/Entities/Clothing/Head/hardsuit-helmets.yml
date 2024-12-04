@@ -282,6 +282,8 @@
   - type: PressureProtection
     highPressureMultiplier: 0.6
     lowPressureMultiplier: 1000
+  - type: DiseaseProtection # Corvax-Wega-Disease
+    protection: 0.15 # Corvax-Wega-Disease
 
 #Research Director's Hardsuit
 - type: entity
@@ -299,6 +301,8 @@
   - type: PressureProtection
     highPressureMultiplier: 0.60
     lowPressureMultiplier: 1000
+  - type: DiseaseProtection # Corvax-Wega-Disease
+    protection: 0.15 # Corvax-Wega-Disease
 
 #Head of Security's hardsuit
 - type: entity
@@ -683,6 +687,8 @@
         Slash: 0.9
         Piercing: 0.9
         Heat: 0.9
+  - type: DiseaseProtection # Corvax-Wega-Disease
+    protection: 0.25 # Corvax-Wega-Disease
 
 #Deathsquad Hardsuit
 - type: entity
@@ -760,3 +766,5 @@
     color: "#f4ffad"
     radius: 5
     energy: 2
+  - type: DiseaseProtection # Corvax-Wega-Disease
+    protection: 0.20 # Corvax-Wega-Disease

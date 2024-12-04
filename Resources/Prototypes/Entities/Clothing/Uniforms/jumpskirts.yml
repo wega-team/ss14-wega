@@ -118,6 +118,8 @@
     sprite: Clothing/Uniforms/Jumpskirt/cmo.rsi
   - type: Clothing
     sprite: Clothing/Uniforms/Jumpskirt/cmo.rsi
+  - type: DiseaseProtection # Corvax-Wega-Disease
+    protection: 0.15 # Corvax-Wega-Disease
 
 - type: entity
   parent: [ClothingUniformSkirtBase, BaseCommandContraband]
@@ -253,6 +255,8 @@
     sprite: Clothing/Uniforms/Jumpskirt/medical.rsi
   - type: Clothing
     sprite: Clothing/Uniforms/Jumpskirt/medical.rsi
+  - type: DiseaseProtection # Corvax-Wega-Disease
+    protection: 0.1 # Corvax-Wega-Disease
 
 - type: entity
   parent: ClothingUniformSkirtBase
@@ -275,6 +279,8 @@
     sprite: Clothing/Uniforms/Jumpskirt/paramedic.rsi
   - type: Clothing
     sprite: Clothing/Uniforms/Jumpskirt/paramedic.rsi
+  - type: DiseaseProtection # Corvax-Wega-Disease
+    protection: 0.1 # Corvax-Wega-Disease
 
 - type: entity
   parent: ClothingUniformSkirtBase
@@ -286,6 +292,8 @@
     sprite: Clothing/Uniforms/Jumpskirt/brigmedic.rsi
   - type: Clothing
     sprite: Clothing/Uniforms/Jumpskirt/brigmedic.rsi
+  - type: DiseaseProtection # Corvax-Wega-Disease
+    protection: 0.1 # Corvax-Wega-Disease
 
 - type: entity
   parent: ClothingUniformBase
@@ -678,6 +686,8 @@
     sprite: Clothing/Uniforms/Jumpskirt/senior_physician.rsi
   - type: Clothing
     sprite: Clothing/Uniforms/Jumpskirt/senior_physician.rsi
+  - type: DiseaseProtection # Corvax-Wega-Disease
+    protection: 0.1 # Corvax-Wega-Disease
 
 - type: entity
   parent: [ClothingUniformSkirtBase, BaseRestrictedContraband]

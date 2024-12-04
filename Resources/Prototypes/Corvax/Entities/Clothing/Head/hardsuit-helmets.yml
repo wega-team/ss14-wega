@@ -40,3 +40,5 @@
         Shock: 0.1
         Cold: 0.2
         Radiation: 0.2
+  - type: DiseaseProtection # Corvax-Wega-Disease
+    protection: 0.3 # Corvax-Wega-Disease

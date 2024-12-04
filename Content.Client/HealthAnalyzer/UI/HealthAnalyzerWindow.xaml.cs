@@ -6,6 +6,7 @@ using Content.Client.UserInterface.Controls;
 using Content.Shared.Alert;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
+using Content.Shared.Disease.Components; // Corvax-Wega-Disease
 using Content.Shared.FixedPoint;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Prototypes;
@@ -107,6 +108,14 @@ namespace Content.Client.HealthAnalyzer.UI
             // Total Damage
 
             DamageLabel.Text = damageable.TotalDamage.ToString();
+
+            // Corvax-Wega-Disease-start
+            // Status Effects / Components
+            StatusEffectsLabel.Text =
+                _entityManager.HasComponent<DiseasedComponent>(target)
+                    ? Loc.GetString("disease-scanner-diseased")
+                    : Loc.GetString("disease-scanner-not-diseased");
+            // Corvax-Wega-Disease-end
 
             // Alerts
 

@@ -109,6 +109,21 @@
     spawned:
     - id: ClothingHeadHatFancyCrown #how did that get there?
       amount: 1
+  # Corvax-Wega-Disease-start
+  - type: DiseaseCarrier
+    naturalImmunities:
+    - ActiveHonkVirus
+    carrierDiseases:
+    - VentCough
+    - AMIV
+    - SpaceCold
+    - SpaceFlu
+    - BirdFlew
+    - VanAusdallsRobovirus
+    - BleedersBite
+    - Plague
+    - TongueTwister
+  # Corvax-Wega-Disease-end
   - type: MobPrice
     price: 2500 # rat wealth
   - type: RandomMetadata
@@ -271,6 +286,21 @@
     spawned:
     - id: FoodMeatRat
       amount: 1
+  # Corvax-Wega-Disease-start
+  - type: DiseaseCarrier
+    naturalImmunities:
+    - ActiveHonkVirus
+    carrierDiseases:
+    - VentCough
+    - AMIV
+    - SpaceCold
+    - SpaceFlu
+    - BirdFlew
+    - VanAusdallsRobovirus
+    - BleedersBite
+    - Plague
+    - TongueTwister
+  # Corvax-Wega-Disease-end
   - type: Vocal
     sounds:
       Male: Mouse

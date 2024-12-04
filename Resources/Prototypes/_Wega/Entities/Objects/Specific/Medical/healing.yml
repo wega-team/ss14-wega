@@ -1,0 +1,12 @@
+- type: entity
+  suffix: spaceacillin
+  parent: BaseSyringe
+  id: SyringeSpaceacillin
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      injector:
+        maxVol: 15
+        reagents:
+        - ReagentId: Spaceacillin
+          Quantity: 15

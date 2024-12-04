@@ -9,6 +9,8 @@
     sprite: Clothing/OuterClothing/Bio/general.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Bio/general.rsi
+  - type: DiseaseProtection # Corvax-Wega-Disease
+    protection: 0.2 # Corvax-Wega-Disease
   - type: Armor
     modifiers:
       coefficients:
@@ -25,6 +27,8 @@
     sprite: Clothing/OuterClothing/Bio/cmo.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Bio/cmo.rsi
+  - type: DiseaseProtection # Corvax-Wega-Disease
+    protection: 0.5 # Corvax-Wega-Disease
 
 - type: entity
   parent: ClothingOuterBioGeneral
@@ -49,6 +53,8 @@
     sprite: Clothing/OuterClothing/Bio/scientist.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Bio/scientist.rsi
+  - type: DiseaseProtection # Corvax-Wega-Disease
+    protection: 0.3 # Corvax-Wega-Disease
 
 - type: entity
   parent: ClothingOuterBioGeneral
@@ -61,6 +67,8 @@
     sprite: Clothing/OuterClothing/Bio/security.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Bio/security.rsi
+  - type: DiseaseProtection # Corvax-Wega-Disease
+    protection: 0.3 # Corvax-Wega-Disease
 
 - type: entity
   parent: ClothingOuterBioGeneral
@@ -73,3 +81,5 @@
     sprite: Clothing/OuterClothing/Bio/virology.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Bio/virology.rsi
+  - type: DiseaseProtection # Corvax-Wega-Disease
+    protection: 0.5 # Corvax-Wega-Disease

@@ -7,6 +7,8 @@
   components:
   - type: HumanoidAppearance
     species: Vulpkanin
+  - type: Carriable # Corvax-Wega-Carrying
+  - type: DiseaseCarrier # Corvax-Wega-Disease
   - type: Hunger # on 1.5x more
     thresholds:
       Overfed: 250

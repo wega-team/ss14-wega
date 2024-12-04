@@ -219,6 +219,19 @@
             Caustic: 1
     Gas:
       effects:
+      # Corvax-Wega-Disease-start
+      - !type:ChemAtmosPoolSource
+        conditions:
+        - !type:OrganType
+          type: Rat
+          shouldHave: false
+        - !type:OrganType
+          type: Vox
+          shouldHave: false
+        - !type:ReagentThreshold
+          reagent: Ammonia
+          min: 1
+      # Corvax-Wega-Disease-end
       - !type:HealthChange
         conditions:
         - !type:OrganType

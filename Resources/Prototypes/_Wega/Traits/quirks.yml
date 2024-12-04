@@ -1,0 +1,12 @@
+- type: trait
+  id: UncontrollableSneezing
+  name: trait-sneezing-name
+  description: trait-sneezing-desc
+  category: Quirks
+  whitelist:
+    components:
+      - DiseaseCarrier
+  components:
+    - type: UncontrollableSnough
+      emote: Sneeze
+      timeBetweenIncidents: 0.3, 300

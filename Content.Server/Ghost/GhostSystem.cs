@@ -1,5 +1,6 @@
 using Content.Server.Administration.Logs;
 using Content.Server.Chat.Managers;
+using Content.Server.Disease.Components; // Corvax-Wega-Disease
 using Content.Server.GameTicking;
 using Content.Server.Ghost.Components;
 using Content.Server.Station.Systems; // Corvax-Wega-GhostBar
@@ -536,6 +537,9 @@ namespace Content.Server.Ghost
                 _entityManager.EnsureComponent<PacifiedComponent>(spawnedMob);
                 var ghostComponent = _entityManager.EnsureComponent<GhostComponent>(spawnedMob);
                 ghostComponent.CanGhostInteract = true;
+
+                if (TryComp<DiseaseCarrierComponent>(spawnedMob, out var carrier))
+                    _entityManager.RemoveComponent<DiseaseCarrierComponent>(spawnedMob);
 
                 if (targetMind != null)
                 {

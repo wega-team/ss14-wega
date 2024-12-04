@@ -303,6 +303,8 @@
   - type: StorageFill
     contents:
       - id: DefibrillatorSyndicate
+      - id: SyringeSpaceacillin # Corvax-Wega-Disease
+        amount: 2 # Corvax-Wega-Disease
       - id: MedkitCombatFilled
         amount: 4
       - id: Tourniquet

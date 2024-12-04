@@ -12,6 +12,7 @@
     species: Arachnid
   - type: Hunger
   - type: Carriable # Corvax-Wega-Carrying
+  - type: DiseaseCarrier # Corvax-Wega-Disease
   - type: Thirst
   - type: Sericulture
     action: ActionSericulture

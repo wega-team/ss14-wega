@@ -11,6 +11,8 @@
   - type: BreathMask
   - type: IngestionBlocker
   - type: IdentityBlocker
+  - type: DiseaseProtection # Corvax-Wega-Disease
+    protection: 0.05 # Corvax-Wega-Disease
   - type: Tag
     tags:
     - HamsterWearable
@@ -87,6 +89,8 @@
     sprite: Clothing/Mask/gascaptain.rsi
   - type: BreathMask
   - type: IngestionBlocker
+  - type: DiseaseProtection # Corvax-Wega-Disease
+    protection: 0.05 # Corvax-Wega-Disease
 
 - type: entity
   parent: [ ClothingMaskGasAtmos, BaseCentcommContraband ]
@@ -100,6 +104,8 @@
     sprite: Clothing/Mask/gascentcom.rsi
   - type: BreathMask
   - type: IngestionBlocker
+  - type: DiseaseProtection # Corvax-Wega-Disease
+    protection: 0.05 # Corvax-Wega-Disease
 
 - type: entity
   parent: [ClothingMaskGas, BaseCargoContraband]
@@ -133,6 +139,8 @@
     sprite: Clothing/Mask/medical.rsi
   - type: BreathMask
   - type: IngestionBlocker
+  - type: DiseaseProtection # Corvax-Wega-Disease
+    protection: 0.10 # Corvax-Wega-Disease
   - type: Tag
     tags:
     - PetWearable
@@ -157,6 +165,8 @@
         Slash: 0.95
         Piercing: 0.95
         Heat: 0.95
+  - type: DiseaseProtection # Corvax-Wega-Disease
+    protection: 0.10 # Corvax-Wega-Disease
 
 - type: entity
   parent: ClothingMaskPullableBase
@@ -172,6 +182,8 @@
     sprite: Clothing/Mask/breath.rsi
   - type: BreathMask
   - type: IngestionBlocker
+  - type: DiseaseProtection # Corvax-Wega-Disease
+    protection: 0.05 # Corvax-Wega-Disease
   - type: Tag
     tags:
     - PetWearable
@@ -299,6 +311,8 @@
     size: Tiny
   - type: IdentityBlocker
     coverage: MOUTH
+  - type: DiseaseProtection # Corvax-Wega-Disease
+    protection: 0.1 # Corvax-Wega-Disease
   - type: PhysicalComposition
     materialComposition:
       Plastic: 25
@@ -338,6 +352,8 @@
   - type: BreathMask
   - type: IngestionBlocker
   - type: IdentityBlocker
+  - type: DiseaseProtection # Corvax-Wega-Disease
+    protection: 0.1 # Corvax-Wega-Disease
   - type: HideLayerClothing
     slots:
     - Snout

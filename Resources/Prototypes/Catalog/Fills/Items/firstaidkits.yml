@@ -43,6 +43,7 @@
   components:
   - type: StorageFill
     contents:
+      - id: SyringeSpaceacillin # Corvax-Wega-Disease
       - id: SyringeIpecac
       - id: SyringeEthylredoxrazine
       - id: AntiPoisonMedipen

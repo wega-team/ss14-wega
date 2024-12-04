@@ -5,6 +5,7 @@
   components:
   - type: Hunger
   - type: Carriable # Corvax-Wega-Carrying
+  - type: DiseaseCarrier # Corvax-Wega-Disease
   - type: Thirst
   - type: Icon
     sprite: Mobs/Species/Vox/parts.rsi

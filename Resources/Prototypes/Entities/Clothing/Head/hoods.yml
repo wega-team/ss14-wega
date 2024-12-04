@@ -11,6 +11,8 @@
     sprite: Clothing/Head/Hoods/Bio/general.rsi
   - type: BreathMask
   - type: IngestionBlocker
+  - type: DiseaseProtection # Corvax-Wega-Disease
+    protection: 0.15 # Corvax-Wega-Disease
   - type: Tag
     tags:
     - WhitelistChameleon
@@ -33,6 +35,8 @@
     sprite: Clothing/Head/Hoods/Bio/cmo.rsi
   - type: Clothing
     sprite: Clothing/Head/Hoods/Bio/cmo.rsi
+  - type: DiseaseProtection # Corvax-Wega-Disease
+    protection: 0.25 # Corvax-Wega-Disease
 
 - type: entity
   parent: ClothingHeadHatHoodBioGeneral
@@ -85,6 +89,8 @@
     sprite: Clothing/Head/Hoods/Bio/virology.rsi
   - type: Clothing
     sprite: Clothing/Head/Hoods/Bio/virology.rsi
+  - type: DiseaseProtection # Corvax-Wega-Disease
+    protection: 0.25 # Corvax-Wega-Disease
 
 - type: entity
   parent: ClothingHeadBase

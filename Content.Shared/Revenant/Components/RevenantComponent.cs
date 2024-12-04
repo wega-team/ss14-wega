@@ -1,5 +1,6 @@
 using System.Numerics;
 using Content.Shared.Alert;
+using Content.Shared.Disease; // Corvax-Wega-Disease
 using Content.Shared.FixedPoint;
 using Content.Shared.Store;
 using Content.Shared.Whitelist;
@@ -164,6 +165,14 @@ public sealed partial class RevenantComponent : Component
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite), DataField("blightRadius")]
     public float BlightRadius = 3.5f;
+
+    // Corvax-Wega-Disease-start
+    /// <summary>
+    /// The disease that is given to the victims of the ability.
+    /// </summary>
+    [ViewVariables(VVAccess.ReadWrite), DataField("blightDiseasePrototypeId", customTypeSerializer: typeof(PrototypeIdSerializer<DiseasePrototype>))]
+    public string BlightDiseasePrototypeId = "SpectralTiredness";
+    // Corvax-Wega-Disease-end
     #endregion
 
     #region Malfunction Ability

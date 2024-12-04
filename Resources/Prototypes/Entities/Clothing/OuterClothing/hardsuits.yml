@@ -238,6 +238,8 @@
         Blunt: 0.8
         Slash: 0.8
         Piercing: 0.7
+  - type: DiseaseProtection # Corvax-Wega-Disease
+    protection: 0.2 # Corvax-Wega-Disease
   - type: ClothingSpeedModifier
     walkModifier: 0.65
     sprintModifier: 0.65
@@ -359,6 +361,8 @@
     modifiers:
       coefficients:
         Caustic: 0.1
+  - type: DiseaseProtection # Corvax-Wega-Disease
+    protection: 0.2 # Corvax-Wega-Disease
   - type: ClothingSpeedModifier
     walkModifier: 0.9
     sprintModifier: 0.95
@@ -529,6 +533,8 @@
     tags:
     - Hardsuit
     - WhitelistChameleon
+  - type: DiseaseProtection # Corvax-Wega-Disease
+    protection: 0.2 # Corvax-Wega-Disease
 
 #Syndicate Elite Hardsuit
 - type: entity
@@ -568,6 +574,8 @@
   - type: HeldSpeedModifier
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitSyndieElite
+  - type: DiseaseProtection # Corvax-Wega-Disease
+    protection: 0.2 # Corvax-Wega-Disease
 
 #Syndicate Commander Hardsuit
 - type: entity
@@ -802,6 +810,8 @@
     sprite: Clothing/OuterClothing/Hardsuits/ERTSuits/ertengineer.rsi
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitERTEngineer
+  - type: DiseaseProtection # Corvax-Wega-Disease
+    protection: 0.4 # Corvax-Wega-Disease
 
 #ERT Medic Hardsuit
 - type: entity
@@ -816,6 +826,8 @@
     sprite: Clothing/OuterClothing/Hardsuits/ERTSuits/ertmedical.rsi
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitERTMedical
+  - type: DiseaseProtection # Corvax-Wega-Disease
+    protection: 0.25 # Corvax-Wega-Disease
 
 #ERT Security Hardsuit
 - type: entity

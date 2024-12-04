@@ -42,6 +42,10 @@
                     <Label Name="BloodLabel" />
                     <Label Text="{Loc 'health-analyzer-window-entity-damage-total-text'}" />
                     <Label Name="DamageLabel" />
+                    <!-- Corvax-Wega-Disease-start -->
+                    <Label Text="{Loc 'health-analyzer-window-entity-disease-text'}" />
+                    <Label Name="StatusEffectsLabel" />
+                    <!-- Corvax-Wega-Disease-end -->
                 </GridContainer>
             </BoxContainer>
 

@@ -1745,6 +1745,12 @@
   - type: Bloodstream
     bloodMaxVolume: 50
   - type: CanEscapeInventory
+   # Corvax-Wega-Disease-start
+  - type: DiseaseCarrier #The other class lab animal and disease vector
+    naturalImmunities:
+      - AMIV
+      - ActiveHonkVirus
+   # Corvax-Wega-Disease-end
   - type: MobPrice
     price: 50
   - type: BadFood
@@ -1818,6 +1824,7 @@
   - type: Item
     size: Tiny
     heldPrefix: 1
+  - type: DiseaseCarrier # Corvax-Wega-Disease
 
 - type: entity
   parent: MobMouse
@@ -1847,6 +1854,7 @@
   - type: Item
     size: Tiny
     heldPrefix: 2
+  - type: DiseaseCarrier # Corvax-Wega-Disease
 
 - type: entity
   name: cancer mouse
