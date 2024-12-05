@@ -1,10 +1,13 @@
 ﻿using Content.Shared.Database;
 using Content.Shared.Mobs.Components;
+using Content.Shared.Speech.EntitySystems;
 
 namespace Content.Shared.Mobs.Systems;
 
 public partial class MobStateSystem
 {
+    [Dependency] private readonly SharedStutteringSystem _stutteringSystem = default!;
+
     #region Public API
 
     /// <summary>
@@ -66,6 +69,13 @@ public partial class MobStateSystem
     protected virtual void OnEnterState(EntityUid entity, MobStateComponent component, MobState state)
     {
         OnStateEnteredSubscribers(entity, component, state);
+
+        // Corvax-Wega-PreCritical-start
+        if (state == MobState.PreCritical)
+            ApplyStutteringEffect(entity);
+        else
+            RemoveStutteringEffect(entity);
+        // Corvax-Wega-PreCritical-end
     }
 
     /// <summary>
@@ -116,6 +126,20 @@ public partial class MobStateSystem
     }
 
     #endregion
+
+     // Corvax-Wega-PreCritical-start
+    #region PreCritical Effect
+    private void ApplyStutteringEffect(EntityUid target)
+    {
+        _stutteringSystem.DoStutter(target, TimeSpan.FromSeconds(5), refresh: true);
+    }
+
+    private void RemoveStutteringEffect(EntityUid target)
+    {
+        _stutteringSystem.DoRemoveStutterTime(target, 5);
+    }
+    #endregion
+     // Corvax-Wega-PreCritical-end
 }
 
 /// <summary>

@@ -26,6 +26,7 @@ namespace Content.Shared.Mobs.Components
         public HashSet<MobState> AllowedStates = new()
             {
                 MobState.Alive,
+                MobState.PreCritical, // Corvax-Wega-PreCritical
                 MobState.Critical,
                 MobState.Dead
             };

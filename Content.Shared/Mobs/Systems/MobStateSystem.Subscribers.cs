@@ -77,6 +77,11 @@ public partial class MobStateSystem
             case MobState.Alive:
                 //unused
                 break;
+            // Corvax-Wega-PreCritical-start
+            case MobState.PreCritical:
+                //unused
+                break;
+            // Corvax-Wega-PreCritical-end
             case MobState.Critical:
                 _standing.Stand(target);
                 break;
@@ -106,6 +111,12 @@ public partial class MobStateSystem
                 _standing.Stand(target);
                 _appearance.SetData(target, MobStateVisuals.State, MobState.Alive);
                 break;
+            // Corvax-Wega-PreCritical-start
+            case MobState.PreCritical:
+                _standing.Stand(target);
+                _appearance.SetData(target, MobStateVisuals.State, MobState.Critical);
+                break;
+            // Corvax-Wega-PreCritical-end
             case MobState.Critical:
                 _standing.Down(target);
                 _appearance.SetData(target, MobStateVisuals.State, MobState.Critical);
@@ -142,10 +153,14 @@ public partial class MobStateSystem
     private void OnGettingStripped(EntityUid target, MobStateComponent component, BeforeGettingStrippedEvent args)
     {
         // Incapacitated or dead targets get stripped two or three times as fast. Makes stripping corpses less tedious.
+        // Corvax-Wega-PreCritical-change-start
         if (IsDead(target, component))
-            args.Multiplier /= 3;
+            args.Multiplier /= 4;
         else if (IsCritical(target, component))
+            args.Multiplier /= 3;
+        else if (IsPreCritical(target, component))
             args.Multiplier /= 2;
+        // Corvax-Wega-PreCritical-change-end
     }
 
     private void OnSpeakAttempt(EntityUid uid, MobStateComponent component, SpeakAttemptEvent args)

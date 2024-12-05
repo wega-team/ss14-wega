@@ -43,6 +43,15 @@ public partial class MobStateSystem : EntitySystem
         return component.CurrentState == MobState.Alive;
     }
 
+    // Corvax-Wega-PreCritical-start
+    public bool IsPreCritical(EntityUid target, MobStateComponent? component = null)
+    {
+        if (!_mobStateQuery.Resolve(target, ref component, false))
+            return false;
+        return component.CurrentState == MobState.PreCritical;
+    }
+    // Corvax-Wega-PreCritical-end
+
     /// <summary>
     ///  Check if a Mob is Critical
     /// </summary>

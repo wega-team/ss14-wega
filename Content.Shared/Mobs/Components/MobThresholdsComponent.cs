@@ -28,6 +28,7 @@ public sealed partial class MobThresholdsComponent : Component
     public Dictionary<MobState, ProtoId<AlertPrototype>> StateAlertDict = new()
     {
         {MobState.Alive, "HumanHealth"},
+        {MobState.PreCritical, "HumanCrit"}, // Corvax-Wega-PreCritical
         {MobState.Critical, "HumanCrit"},
         {MobState.Dead, "HumanDead"},
     };

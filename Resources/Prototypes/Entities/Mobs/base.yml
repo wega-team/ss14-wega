@@ -89,7 +89,8 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      100: Critical
+      100: PreCritical # Corvax-Wega-PreCritical
+      125: Critical # Corvax-Wega-PreCritical
       200: Dead
   - type: MobStateActions
     actions:
