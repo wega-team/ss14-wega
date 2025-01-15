@@ -3,11 +3,12 @@
   maps:
   # Highpop
   - WegaKerberos
-  - CorvaxAvrite
+  - #CorvaxAvrite
   - WegaCyberiad
   - WegaCereStation
   # Midpop
   - CorvaxPaper
+  - Core
   - Bagel
   - Marathon
   # Lowpop
