@@ -1,11 +1,11 @@
 - type: gameMap
-  id: Core
+  id: WegaCore
   mapName: 'Core'
   mapPath: Maps\_Wega\wegacore.yml
   minPlayers: 35
   maxPlayers: 70
   stations:
-    Core:
+    WegaCore:
       stationProto: StandardNanotrasenStation
       components:
         - type: StationNameSetup

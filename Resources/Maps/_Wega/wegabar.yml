@@ -39,7 +39,7 @@ entities:
   - uid: 1
     components:
     - type: MetaData
-      name: Map Entity
+      name: ""
     - type: Transform
     - type: Map
     - type: PhysicsMap
