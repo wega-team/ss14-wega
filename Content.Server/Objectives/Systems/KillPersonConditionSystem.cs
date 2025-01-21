@@ -8,6 +8,7 @@ using Content.Shared.Mind;
 using Content.Shared.Objectives.Components;
 using Robust.Shared.Configuration;
 using Robust.Shared.Random;
+using System.Linq;
 
 namespace Content.Server.Objectives.Systems;
 
@@ -59,6 +60,17 @@ public sealed class KillPersonConditionSystem : EntitySystem
         var allHumans = _mind.GetAliveHumans(args.MindId)
             .Where(human => !HasComp<GhostComponent>(human))
             .ToList();
+
+        // Can't have multiple objectives to kill the same person
+        foreach (var objective in args.Mind.Objectives)
+        {
+            if (HasComp<KillPersonConditionComponent>(objective) && TryComp<TargetObjectiveComponent>(objective, out var kill))
+            {
+                allHumans.RemoveAll(human => human.Owner == kill.Target); // Corvax-Wega-Edit
+            }
+        }
+
+        // no other humans to kill
         if (allHumans.Count == 0)
         {
             args.Cancelled = true;

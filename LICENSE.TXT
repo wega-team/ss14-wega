@@ -27,8 +27,3 @@ In the event of any claims, damages, or other liabilities arising from the use o
 
 All work related to the Corvax Wega project, including but not limited to the source code, modifications, improvements, and additions, is the property of the Corvax Wega project and its creators.
 Any changes to the code, improvements, fixes, or other additions will transfer the rights to those modifications to the Corvax Wega project.
-
-6. Exception for Author's Code
-
-Author's Code and APGL License: If the Corvax Wega project includes code licensed under terms other than MIT, including the Affero General Public License (AGPL), the author of such code retains all rights to their work. If the author requests the removal of their code from the builds using the Corvax Wega project, this request will be fulfilled immediately and without question.
-Borrowed Code with Author's Permission: Any code borrowed with the explicit permission of the owner will be marked with appropriate notices indicating ownership and licensing. All terms of use under the MIT license or any applicable licenses will be fully adhered to. If the author modifies the terms or requests the removal of their code, it will be promptly implemented.

@@ -48,8 +48,6 @@ entities:
     - type: Broadphase
     - type: OccluderTree
     - type: LoadedMap
-    - type: FTLDestination
-      enabled: False
   - uid: 2
     components:
     - type: MetaData
@@ -65,7 +63,7 @@ entities:
           version: 6
         0,-1:
           ind: 0,-1
-          tiles: AQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAnQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAQAAAAAAAQAAAAAAkQAAAAAAngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAQAAAAAAAQAAAAAAkQAAAAAAngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAQAAAAAAAQAAAAAAkQAAAAAAngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAQAAAAAAAQAAAAAAngAAAAAAngAAAAAAnQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAkgAAAAAAkgAAAAAAkgAAAAAAkgAAAAAAkQAAAAAAngAAAAAAnQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAkgAAAAAAkgAAAAAAkgAAAAAAkgAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAkgAAAAAAkgAAAAAAkgAAAAAAkgAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAngAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkgAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAngAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkgAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAngAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkgAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAngAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkgAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAngAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAngAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAWwAAAAAAWwAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAngAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAWwAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAA
+          tiles: AQAAAAAAAQAAAAAAkQAAAAAAkQAAAAAAnQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAQAAAAAAAQAAAAAAkQAAAAAAngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAQAAAAAAAQAAAAAAkQAAAAAAngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAQAAAAAAAQAAAAAAkQAAAAAAngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAQAAAAAAAQAAAAAAngAAAAAAngAAAAAAnQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAngAAAAAAnQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAngAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkgAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAngAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkgAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAngAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkgAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAngAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkgAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAngAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAngAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAWwAAAAAAWwAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAngAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAWwAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAA
           version: 6
         -1,0:
           ind: -1,0
@@ -73,7 +71,7 @@ entities:
           version: 6
         -1,-1:
           ind: -1,-1
-          tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAAAAAAAAngAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAngAAAAAAPgAAAAAAkQAAAAAAkQAAAAAAnQAAAAAAnQAAAAAAnQAAAAAAnQAAAAAAnQAAAAAAnQAAAAAAnQAAAAAAngAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAngAAAAAAPgAAAAAAkQAAAAAAkQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAAAAAAAAngAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAngAAAAAAPgAAAAAAkQAAAAAAkQAAAAAAAAAAAAAAnQAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAngAAAAAAPgAAAAAAkQAAAAAAkQAAAAAAngAAAAAAngAAAAAAOgAAAAAAOgAAAAAAOgAAAAAAOgAAAAAAOgAAAAAAkQAAAAAAngAAAAAAngAAAAAAngAAAAAAkQAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAOgAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAOgAAAAAAngAAAAAAkgAAAAAAkgAAAAAAkgAAAAAAkgAAAAAAkgAAAAAAngAAAAAAOgAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAOgAAAAAAngAAAAAAkgAAAAAAkgAAAAAAkgAAAAAAkgAAAAAAkgAAAAAAngAAAAAAOgAAAAAAkQAAAAAAkQAAAAAAOgAAAAAAOgAAAAAAOgAAAAAAkQAAAAAAkQAAAAAAOgAAAAAAngAAAAAAkgAAAAAAkgAAAAAAkgAAAAAAkgAAAAAAkgAAAAAAngAAAAAAOgAAAAAAkQAAAAAAkQAAAAAAOgAAAAAAOgAAAAAAOgAAAAAAkQAAAAAAkQAAAAAAOgAAAAAAngAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAngAAAAAAngAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAngAAAAAAOgAAAAAAOgAAAAAAOgAAAAAAOgAAAAAAOgAAAAAAOgAAAAAAOgAAAAAAngAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAWwAAAAAAWwAAAAAAWwAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAngAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAWwAAAAAAWwAAAAAAWwAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAWwAAAAAAWwAAAAAAWwAAAAAAkQAAAAAAWwAAAAAAWwAAAAAAWwAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAA
+          tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAAAAAAAAngAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAngAAAAAAPgAAAAAAkQAAAAAAkQAAAAAAnQAAAAAAnQAAAAAAnQAAAAAAnQAAAAAAnQAAAAAAnQAAAAAAnQAAAAAAngAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAngAAAAAAPgAAAAAAkQAAAAAAkQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAAAAAAAAngAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAngAAAAAAPgAAAAAAkQAAAAAAkQAAAAAAAAAAAAAAnQAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAngAAAAAAPgAAAAAAkQAAAAAAkQAAAAAAngAAAAAAngAAAAAAOgAAAAAAOgAAAAAAOgAAAAAAOgAAAAAAOgAAAAAAkQAAAAAAngAAAAAAngAAAAAAngAAAAAAkQAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAOgAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAOgAAAAAAngAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAngAAAAAAOgAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAOgAAAAAAngAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAngAAAAAAOgAAAAAAkQAAAAAAkQAAAAAAOgAAAAAAOgAAAAAAOgAAAAAAkQAAAAAAkQAAAAAAOgAAAAAAngAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAngAAAAAAOgAAAAAAkQAAAAAAkQAAAAAAOgAAAAAAOgAAAAAAOgAAAAAAkQAAAAAAkQAAAAAAOgAAAAAAngAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAngAAAAAAngAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAngAAAAAAOgAAAAAAOgAAAAAAOgAAAAAAOgAAAAAAOgAAAAAAOgAAAAAAOgAAAAAAngAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAWwAAAAAAWwAAAAAAWwAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAngAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAWwAAAAAAWwAAAAAAWwAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAWwAAAAAAWwAAAAAAWwAAAAAAkQAAAAAAWwAAAAAAWwAAAAAAWwAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAA
           version: 6
         -1,1:
           ind: -1,1
@@ -97,7 +95,7 @@ entities:
           version: 6
         -1,-2:
           ind: -1,-2
-          tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAAAAAAAAnQAAAAAAngAAAAAAngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAAAAAAAAngAAAAAAAgAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAAAAAAAAngAAAAAAAgAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAAAAAAAAngAAAAAAAgAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAAAAAAAAngAAAAAAAgAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAnQAAAAAAngAAAAAAngAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAAAAAAAAngAAAAAAAQAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAAAAAAAAngAAAAAAAQAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAAAAAAAAngAAAAAAngAAAAAAngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAAAAAAAAngAAAAAAAwAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAAAAAAAAngAAAAAAAwAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAAAAAAAAngAAAAAAAwAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAAAAAAAAngAAAAAAAwAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAnQAAAAAAnQAAAAAAnQAAAAAAnQAAAAAAnQAAAAAAnQAAAAAAnQAAAAAAngAAAAAAAwAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAAAAAAAAngAAAAAAngAAAAAAngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAAAAAAAAnQAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAkQAAAAAAkQAAAAAA
+          tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAAAAAAAAnQAAAAAAngAAAAAAngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAAAAAAAAngAAAAAAAgAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAAAAAAAAngAAAAAAAgAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAAAAAAAAngAAAAAAAgAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAAAAAAAAngAAAAAAAgAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAnQAAAAAAngAAAAAAngAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAAAAAAAAngAAAAAAkQAAAAAAkQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAAAAAAAAngAAAAAAkQAAAAAAkQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAAAAAAAAngAAAAAAngAAAAAAngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAAAAAAAAngAAAAAAAwAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAAAAAAAAngAAAAAAAwAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAAAAAAAAngAAAAAAAwAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAAAAAAAAngAAAAAAAwAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAnQAAAAAAnQAAAAAAnQAAAAAAnQAAAAAAnQAAAAAAnQAAAAAAnQAAAAAAngAAAAAAAwAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAAAAAAAAngAAAAAAngAAAAAAngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAAAAAAAAnQAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAkQAAAAAAkQAAAAAA
           version: 6
         -3,-1:
           ind: -3,-1
@@ -117,7 +115,7 @@ entities:
           version: 6
         0,-2:
           ind: 0,-2
-          tiles: ngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAnQAAAAAAAAAAAAAAnQAAAAAAAgAAAAAAngAAAAAAAgAAAAAAAgAAAAAAAgAAAAAAngAAAAAAAgAAAAAAAgAAAAAAAgAAAAAAngAAAAAABAAAAAAABAAAAAAABAAAAAAAngAAAAAAAAAAAAAAnQAAAAAAAgAAAAAAngAAAAAAAgAAAAAAAgAAAAAAAgAAAAAAngAAAAAAAgAAAAAAAgAAAAAAAgAAAAAAngAAAAAABAAAAAAABAAAAAAABAAAAAAAngAAAAAAAAAAAAAAnQAAAAAAAgAAAAAAngAAAAAAAgAAAAAAAgAAAAAAAgAAAAAAngAAAAAAAgAAAAAAAgAAAAAAAgAAAAAAngAAAAAABAAAAAAABAAAAAAABAAAAAAAngAAAAAAnQAAAAAAnQAAAAAAAgAAAAAAngAAAAAAAgAAAAAAAgAAAAAAAgAAAAAAngAAAAAAAgAAAAAAAgAAAAAAAgAAAAAAngAAAAAABAAAAAAABAAAAAAABAAAAAAAngAAAAAAAAAAAAAAnQAAAAAAngAAAAAAngAAAAAAngAAAAAAAgAAAAAAngAAAAAAngAAAAAAngAAAAAAAgAAAAAAngAAAAAAngAAAAAAngAAAAAAAgAAAAAAngAAAAAAngAAAAAAAAAAAAAAnQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAngAAAAAAAAAAAAAAnQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAngAAAAAAnQAAAAAAnQAAAAAAngAAAAAAngAAAAAAAQAAAAAAAQAAAAAAngAAAAAAngAAAAAAAgAAAAAAngAAAAAAngAAAAAAngAAAAAAAgAAAAAAngAAAAAAngAAAAAAnQAAAAAAAAAAAAAAnQAAAAAAAwAAAAAAngAAAAAAAQAAAAAAAQAAAAAAngAAAAAAAgAAAAAAAgAAAAAAAgAAAAAAngAAAAAAAgAAAAAAAgAAAAAAAgAAAAAAngAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAwAAAAAAngAAAAAAAQAAAAAAAQAAAAAAngAAAAAAAgAAAAAAAgAAAAAAAgAAAAAAngAAAAAAAgAAAAAAAgAAAAAAAgAAAAAAngAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAwAAAAAAAwAAAAAAAQAAAAAAAQAAAAAAngAAAAAAAgAAAAAAAgAAAAAAAgAAAAAAngAAAAAAAgAAAAAAAgAAAAAAAgAAAAAAngAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAwAAAAAAngAAAAAAAQAAAAAAAQAAAAAAngAAAAAAAgAAAAAAAgAAAAAAAgAAAAAAngAAAAAAAgAAAAAAAgAAAAAAAgAAAAAAngAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAwAAAAAAngAAAAAAAQAAAAAAAQAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAnQAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAngAAAAAAngAAAAAAAQAAAAAAAQAAAAAAngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAkQAAAAAAAQAAAAAAAQAAAAAAAQAAAAAAngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAA
+          tiles: ngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAnQAAAAAAAAAAAAAAnQAAAAAAAgAAAAAAngAAAAAAAgAAAAAAAgAAAAAAAgAAAAAAngAAAAAAAgAAAAAAAgAAAAAAAgAAAAAAngAAAAAABAAAAAAABAAAAAAABAAAAAAAngAAAAAAAAAAAAAAnQAAAAAAAgAAAAAAngAAAAAAAgAAAAAAAgAAAAAAAgAAAAAAngAAAAAAAgAAAAAAAgAAAAAAAgAAAAAAngAAAAAABAAAAAAABAAAAAAABAAAAAAAngAAAAAAAAAAAAAAnQAAAAAAAgAAAAAAngAAAAAAAgAAAAAAAgAAAAAAAgAAAAAAngAAAAAAAgAAAAAAAgAAAAAAAgAAAAAAngAAAAAABAAAAAAABAAAAAAABAAAAAAAngAAAAAAnQAAAAAAnQAAAAAAAgAAAAAAngAAAAAAAgAAAAAAAgAAAAAAAgAAAAAAngAAAAAAAgAAAAAAAgAAAAAAAgAAAAAAngAAAAAABAAAAAAABAAAAAAABAAAAAAAngAAAAAAAAAAAAAAnQAAAAAAngAAAAAAngAAAAAAngAAAAAAAgAAAAAAngAAAAAAngAAAAAAngAAAAAAAgAAAAAAngAAAAAAngAAAAAAngAAAAAAAgAAAAAAngAAAAAAngAAAAAAAAAAAAAAnQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAngAAAAAAAAAAAAAAnQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAkQAAAAAAngAAAAAAnQAAAAAAnQAAAAAAngAAAAAAngAAAAAAkQAAAAAAkQAAAAAAngAAAAAAngAAAAAAAgAAAAAAngAAAAAAngAAAAAAngAAAAAAAgAAAAAAngAAAAAAngAAAAAAnQAAAAAAAAAAAAAAnQAAAAAAAwAAAAAAngAAAAAAkQAAAAAAkQAAAAAAngAAAAAAAgAAAAAAAgAAAAAAAgAAAAAAngAAAAAAAgAAAAAAAgAAAAAAAgAAAAAAngAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAwAAAAAAngAAAAAAkQAAAAAAkQAAAAAAngAAAAAAAgAAAAAAAgAAAAAAAgAAAAAAngAAAAAAAgAAAAAAAgAAAAAAAgAAAAAAngAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAwAAAAAAAwAAAAAAkQAAAAAAkQAAAAAAngAAAAAAAgAAAAAAAgAAAAAAAgAAAAAAngAAAAAAAgAAAAAAAgAAAAAAAgAAAAAAngAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAwAAAAAAngAAAAAAkQAAAAAAkQAAAAAAngAAAAAAAgAAAAAAAgAAAAAAAgAAAAAAngAAAAAAAgAAAAAAAgAAAAAAAgAAAAAAngAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAAwAAAAAAngAAAAAAkQAAAAAAkQAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAngAAAAAAnQAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAngAAAAAAngAAAAAAkQAAAAAAkQAAAAAAngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAAkQAAAAAAAQAAAAAAkQAAAAAAkQAAAAAAngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnQAAAAAA
           version: 6
         1,-1:
           ind: 1,-1
@@ -1834,6 +1832,7 @@ entities:
     - type: GasTileOverlay
     - type: RadiationGridResistance
     - type: ProtectedGrid
+    - type: NightLightning
 - proto: ActionToggleLight
   entities:
   - uid: 2529
@@ -2330,6 +2329,7 @@ entities:
       pos: -0.5,9.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 2775
     components:
@@ -2337,6 +2337,7 @@ entities:
       pos: 11.5,-19.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 2776
     components:
@@ -2344,6 +2345,7 @@ entities:
       pos: 7.5,-19.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 2779
     components:
@@ -2351,6 +2353,7 @@ entities:
       pos: 2.5,-29.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 2780
     components:
@@ -2358,6 +2361,7 @@ entities:
       pos: -1.5,-30.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 2782
     components:
@@ -2365,6 +2369,7 @@ entities:
       pos: -0.5,-18.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 2791
     components:
@@ -2372,6 +2377,7 @@ entities:
       pos: 8.5,-28.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 3281
     components:
@@ -2379,6 +2385,7 @@ entities:
       pos: 10.5,-29.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
 - proto: BedsheetSpawner
   entities:
@@ -2426,6 +2433,7 @@ entities:
       parent: 2
     missingComponents:
     - Destructible
+    - Construction
 - proto: BlastDoor
   entities:
   - uid: 2497
@@ -2434,6 +2442,7 @@ entities:
       pos: -7.5,14.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
 - proto: BoozeDispenser
   entities:
@@ -2461,6 +2470,8 @@ entities:
     - type: Transform
       pos: -15.12743,11.593699
       parent: 2
+    missingComponents:
+    - Construction
 - proto: BoxCleanerGrenades
   entities:
   - uid: 2546
@@ -2468,11 +2479,15 @@ entities:
     - type: Transform
       pos: -19.779076,7.609375
       parent: 2
+    missingComponents:
+    - Construction
   - uid: 2558
     components:
     - type: Transform
       pos: -2.3409,6.627845
       parent: 2
+    missingComponents:
+    - Construction
 - proto: BoxTrashbag
   entities:
   - uid: 2545
@@ -2480,11 +2495,15 @@ entities:
     - type: Transform
       pos: -19.341576,7.625
       parent: 2
+    missingComponents:
+    - Construction
   - uid: 2559
     components:
     - type: Transform
       pos: -2.762775,6.627845
       parent: 2
+    missingComponents:
+    - Construction
 - proto: Bucket
   entities:
   - uid: 959
@@ -9618,6 +9637,7 @@ entities:
     missingComponents:
     - Construction
     - Destructible
+    - RCDDeconstructable
   - uid: 524
     components:
     - type: Transform
@@ -9627,6 +9647,7 @@ entities:
     missingComponents:
     - Construction
     - Destructible
+    - RCDDeconstructable
   - uid: 525
     components:
     - type: Transform
@@ -9636,6 +9657,7 @@ entities:
     missingComponents:
     - Construction
     - Destructible
+    - RCDDeconstructable
   - uid: 526
     components:
     - type: Transform
@@ -9645,6 +9667,7 @@ entities:
     missingComponents:
     - Construction
     - Destructible
+    - RCDDeconstructable
   - uid: 527
     components:
     - type: Transform
@@ -9654,6 +9677,7 @@ entities:
     missingComponents:
     - Construction
     - Destructible
+    - RCDDeconstructable
   - uid: 528
     components:
     - type: Transform
@@ -9663,6 +9687,7 @@ entities:
     missingComponents:
     - Construction
     - Destructible
+    - RCDDeconstructable
   - uid: 529
     components:
     - type: Transform
@@ -9672,6 +9697,7 @@ entities:
     missingComponents:
     - Construction
     - Destructible
+    - RCDDeconstructable
   - uid: 533
     components:
     - type: Transform
@@ -9681,6 +9707,7 @@ entities:
     missingComponents:
     - Construction
     - Destructible
+    - RCDDeconstructable
   - uid: 534
     components:
     - type: Transform
@@ -9690,6 +9717,7 @@ entities:
     missingComponents:
     - Construction
     - Destructible
+    - RCDDeconstructable
   - uid: 535
     components:
     - type: Transform
@@ -9699,6 +9727,7 @@ entities:
     missingComponents:
     - Construction
     - Destructible
+    - RCDDeconstructable
   - uid: 536
     components:
     - type: Transform
@@ -9708,6 +9737,7 @@ entities:
     missingComponents:
     - Construction
     - Destructible
+    - RCDDeconstructable
   - uid: 537
     components:
     - type: Transform
@@ -9717,6 +9747,7 @@ entities:
     missingComponents:
     - Construction
     - Destructible
+    - RCDDeconstructable
   - uid: 538
     components:
     - type: Transform
@@ -9726,6 +9757,7 @@ entities:
     missingComponents:
     - Construction
     - Destructible
+    - RCDDeconstructable
   - uid: 539
     components:
     - type: Transform
@@ -9735,6 +9767,7 @@ entities:
     missingComponents:
     - Construction
     - Destructible
+    - RCDDeconstructable
   - uid: 540
     components:
     - type: Transform
@@ -9744,6 +9777,7 @@ entities:
     missingComponents:
     - Construction
     - Destructible
+    - RCDDeconstructable
   - uid: 541
     components:
     - type: Transform
@@ -9753,6 +9787,7 @@ entities:
     missingComponents:
     - Construction
     - Destructible
+    - RCDDeconstructable
   - uid: 3293
     components:
     - type: Transform
@@ -9761,6 +9796,7 @@ entities:
     missingComponents:
     - Construction
     - Destructible
+    - RCDDeconstructable
   - uid: 3299
     components:
     - type: Transform
@@ -9769,6 +9805,7 @@ entities:
     missingComponents:
     - Construction
     - Destructible
+    - RCDDeconstructable
   - uid: 3388
     components:
     - type: Transform
@@ -9777,6 +9814,7 @@ entities:
     missingComponents:
     - Construction
     - Destructible
+    - RCDDeconstructable
   - uid: 3389
     components:
     - type: Transform
@@ -9785,6 +9823,7 @@ entities:
     missingComponents:
     - Construction
     - Destructible
+    - RCDDeconstructable
   - uid: 3390
     components:
     - type: Transform
@@ -9793,6 +9832,7 @@ entities:
     missingComponents:
     - Construction
     - Destructible
+    - RCDDeconstructable
   - uid: 3391
     components:
     - type: Transform
@@ -9801,6 +9841,7 @@ entities:
     missingComponents:
     - Construction
     - Destructible
+    - RCDDeconstructable
   - uid: 3392
     components:
     - type: Transform
@@ -9809,6 +9850,7 @@ entities:
     missingComponents:
     - Construction
     - Destructible
+    - RCDDeconstructable
   - uid: 3393
     components:
     - type: Transform
@@ -9817,6 +9859,7 @@ entities:
     missingComponents:
     - Construction
     - Destructible
+    - RCDDeconstructable
   - uid: 3394
     components:
     - type: Transform
@@ -9825,6 +9868,7 @@ entities:
     missingComponents:
     - Construction
     - Destructible
+    - RCDDeconstructable
   - uid: 3395
     components:
     - type: Transform
@@ -9833,6 +9877,7 @@ entities:
     missingComponents:
     - Construction
     - Destructible
+    - RCDDeconstructable
   - uid: 3396
     components:
     - type: Transform
@@ -9841,6 +9886,7 @@ entities:
     missingComponents:
     - Construction
     - Destructible
+    - RCDDeconstructable
   - uid: 3397
     components:
     - type: Transform
@@ -9849,6 +9895,7 @@ entities:
     missingComponents:
     - Construction
     - Destructible
+    - RCDDeconstructable
   - uid: 3398
     components:
     - type: Transform
@@ -9857,6 +9904,7 @@ entities:
     missingComponents:
     - Construction
     - Destructible
+    - RCDDeconstructable
   - uid: 3399
     components:
     - type: Transform
@@ -9865,6 +9913,7 @@ entities:
     missingComponents:
     - Construction
     - Destructible
+    - RCDDeconstructable
   - uid: 3400
     components:
     - type: Transform
@@ -9873,6 +9922,7 @@ entities:
     missingComponents:
     - Construction
     - Destructible
+    - RCDDeconstructable
   - uid: 3401
     components:
     - type: Transform
@@ -9881,6 +9931,7 @@ entities:
     missingComponents:
     - Construction
     - Destructible
+    - RCDDeconstructable
   - uid: 3402
     components:
     - type: Transform
@@ -9889,6 +9940,7 @@ entities:
     missingComponents:
     - Construction
     - Destructible
+    - RCDDeconstructable
   - uid: 3403
     components:
     - type: Transform
@@ -9897,6 +9949,7 @@ entities:
     missingComponents:
     - Construction
     - Destructible
+    - RCDDeconstructable
   - uid: 3404
     components:
     - type: Transform
@@ -9905,6 +9958,7 @@ entities:
     missingComponents:
     - Construction
     - Destructible
+    - RCDDeconstructable
   - uid: 3405
     components:
     - type: Transform
@@ -9913,6 +9967,7 @@ entities:
     missingComponents:
     - Construction
     - Destructible
+    - RCDDeconstructable
   - uid: 3406
     components:
     - type: Transform
@@ -9921,6 +9976,7 @@ entities:
     missingComponents:
     - Construction
     - Destructible
+    - RCDDeconstructable
   - uid: 3407
     components:
     - type: Transform
@@ -9929,6 +9985,7 @@ entities:
     missingComponents:
     - Construction
     - Destructible
+    - RCDDeconstructable
   - uid: 3408
     components:
     - type: Transform
@@ -9937,6 +9994,7 @@ entities:
     missingComponents:
     - Construction
     - Destructible
+    - RCDDeconstructable
   - uid: 3409
     components:
     - type: Transform
@@ -9945,6 +10003,7 @@ entities:
     missingComponents:
     - Construction
     - Destructible
+    - RCDDeconstructable
   - uid: 3410
     components:
     - type: Transform
@@ -9953,6 +10012,7 @@ entities:
     missingComponents:
     - Construction
     - Destructible
+    - RCDDeconstructable
   - uid: 3411
     components:
     - type: Transform
@@ -9961,6 +10021,7 @@ entities:
     missingComponents:
     - Construction
     - Destructible
+    - RCDDeconstructable
   - uid: 3413
     components:
     - type: Transform
@@ -9969,6 +10030,7 @@ entities:
     missingComponents:
     - Construction
     - Destructible
+    - RCDDeconstructable
   - uid: 3626
     components:
     - type: Transform
@@ -9977,6 +10039,7 @@ entities:
     missingComponents:
     - Construction
     - Destructible
+    - RCDDeconstructable
   - uid: 3627
     components:
     - type: Transform
@@ -9985,6 +10048,7 @@ entities:
     missingComponents:
     - Construction
     - Destructible
+    - RCDDeconstructable
   - uid: 3628
     components:
     - type: Transform
@@ -9993,6 +10057,7 @@ entities:
     missingComponents:
     - Construction
     - Destructible
+    - RCDDeconstructable
 - proto: Chair
   entities:
   - uid: 3259
@@ -10599,6 +10664,7 @@ entities:
       parent: 2
     missingComponents:
     - Destructible
+    - Construction
   - uid: 965
     components:
     - type: Transform
@@ -10606,6 +10672,7 @@ entities:
       parent: 2
     missingComponents:
     - Destructible
+    - Construction
   - uid: 1793
     components:
     - type: Transform
@@ -10613,6 +10680,7 @@ entities:
       parent: 2
     missingComponents:
     - Destructible
+    - Construction
   - uid: 2628
     components:
     - type: Transform
@@ -10620,6 +10688,7 @@ entities:
       parent: 2
     missingComponents:
     - Destructible
+    - Construction
   - uid: 2629
     components:
     - type: Transform
@@ -10627,6 +10696,7 @@ entities:
       parent: 2
     missingComponents:
     - Destructible
+    - Construction
 - proto: ChurchOrganInstrument
   entities:
   - uid: 3378
@@ -11666,6 +11736,7 @@ entities:
       pos: 10.5,-31.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 2825
     components:
@@ -11673,6 +11744,7 @@ entities:
       pos: 11.5,-31.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 2826
     components:
@@ -11680,6 +11752,7 @@ entities:
       pos: 12.5,-31.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
 - proto: CurtainsBlue
   entities:
@@ -11689,6 +11762,7 @@ entities:
       pos: -2.5,-19.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 2837
     components:
@@ -11696,6 +11770,7 @@ entities:
       pos: -2.5,-21.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 2838
     components:
@@ -11703,6 +11778,7 @@ entities:
       pos: -2.5,-20.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
 - proto: CurtainsGreen
   entities:
@@ -11713,6 +11789,7 @@ entities:
       pos: 11.5,-18.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 2970
     components:
@@ -11721,6 +11798,7 @@ entities:
       pos: 10.5,-18.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 2971
     components:
@@ -11729,6 +11807,7 @@ entities:
       pos: 9.5,-18.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
 - proto: CurtainsPink
   entities:
@@ -11738,6 +11817,7 @@ entities:
       pos: -1.5,-31.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 2833
     components:
@@ -11745,6 +11825,7 @@ entities:
       pos: -0.5,-31.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 2834
     components:
@@ -11752,6 +11833,7 @@ entities:
       pos: 0.5,-31.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
 - proto: CurtainsPurple
   entities:
@@ -11761,6 +11843,7 @@ entities:
       pos: 5.5,-18.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 2822
     components:
@@ -11768,6 +11851,7 @@ entities:
       pos: 6.5,-18.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 2823
     components:
@@ -11775,6 +11859,7 @@ entities:
       pos: 7.5,-18.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
 - proto: CurtainsRed
   entities:
@@ -11784,6 +11869,7 @@ entities:
       pos: 7.5,-31.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 2827
     components:
@@ -11791,6 +11877,7 @@ entities:
       pos: 8.5,-31.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 2828
     components:
@@ -11798,6 +11885,7 @@ entities:
       pos: 6.5,-31.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
 - proto: CurtainsWhite
   entities:
@@ -11808,6 +11896,7 @@ entities:
       pos: -19.5,-7.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 2553
     components:
@@ -11816,6 +11905,7 @@ entities:
       pos: -19.5,-8.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 2829
     components:
@@ -11823,6 +11913,7 @@ entities:
       pos: 2.5,-31.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 2830
     components:
@@ -11830,6 +11921,7 @@ entities:
       pos: 3.5,-31.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 2831
     components:
@@ -11837,6 +11929,7 @@ entities:
       pos: 4.5,-31.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
 - proto: d20Dice
   entities:
@@ -13525,6 +13618,7 @@ entities:
       pos: -0.5,6.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 506
     components:
@@ -13532,6 +13626,7 @@ entities:
       pos: 8.5,-6.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 507
     components:
@@ -13539,6 +13634,7 @@ entities:
       pos: 8.5,3.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 508
     components:
@@ -13546,6 +13642,7 @@ entities:
       pos: 5.5,4.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 509
     components:
@@ -13553,6 +13650,7 @@ entities:
       pos: 6.5,-8.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 511
     components:
@@ -13560,6 +13658,7 @@ entities:
       pos: 1.5,7.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 785
     components:
@@ -13567,6 +13666,7 @@ entities:
       pos: -6.5,-12.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 786
     components:
@@ -13574,6 +13674,7 @@ entities:
       pos: -2.5,-10.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 787
     components:
@@ -13581,6 +13682,7 @@ entities:
       pos: -14.5,-5.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 788
     components:
@@ -13588,6 +13690,7 @@ entities:
       pos: -9.5,4.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1063
     components:
@@ -13595,6 +13698,7 @@ entities:
       pos: -23.5,-5.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1569
     components:
@@ -13602,6 +13706,7 @@ entities:
       pos: -37.5,-3.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 2451
     components:
@@ -13609,6 +13714,7 @@ entities:
       pos: -46.5,-5.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 2707
     components:
@@ -13616,6 +13722,7 @@ entities:
       pos: -1.5,-16.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 2819
     components:
@@ -13623,6 +13730,7 @@ entities:
       pos: -1.5,-24.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 2820
     components:
@@ -13630,6 +13738,7 @@ entities:
       pos: 12.5,-25.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 3096
     components:
@@ -13637,6 +13746,7 @@ entities:
       pos: -1.5,-16.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
 - proto: DisposalYJunction
   entities:
@@ -15199,6 +15309,8 @@ entities:
     - type: Transform
       pos: -15.310974,4.663521
       parent: 2
+    missingComponents:
+    - Construction
 - proto: FoodMealPigblanket
   entities:
   - uid: 1787
@@ -22324,6 +22436,7 @@ entities:
       parent: 2
     missingComponents:
     - Destructible
+    - Construction
 - proto: Grille
   entities:
   - uid: 38
@@ -26173,6 +26286,7 @@ entities:
       parent: 2
     missingComponents:
     - Destructible
+    - Construction
   - uid: 961
     components:
     - type: Transform
@@ -26181,6 +26295,7 @@ entities:
       parent: 2
     missingComponents:
     - Destructible
+    - Construction
   - uid: 962
     components:
     - type: Transform
@@ -26189,6 +26304,7 @@ entities:
       parent: 2
     missingComponents:
     - Destructible
+    - Construction
 - proto: JanitorialTrolley
   entities:
   - uid: 2519
@@ -26362,6 +26478,7 @@ entities:
       parent: 2
     missingComponents:
     - Destructible
+    - Construction
   - uid: 3368
     components:
     - type: Transform
@@ -26369,6 +26486,7 @@ entities:
       parent: 2
     missingComponents:
     - Destructible
+    - Construction
   - uid: 3369
     components:
     - type: Transform
@@ -26376,6 +26494,7 @@ entities:
       parent: 2
     missingComponents:
     - Destructible
+    - Construction
 - proto: KitchenElectricGrill
   entities:
   - uid: 2624
@@ -26385,6 +26504,7 @@ entities:
       parent: 2
     missingComponents:
     - Destructible
+    - Construction
   - uid: 2625
     components:
     - type: Transform
@@ -26392,6 +26512,7 @@ entities:
       parent: 2
     missingComponents:
     - Destructible
+    - Construction
 - proto: KitchenMicrowave
   entities:
   - uid: 2626
@@ -26401,6 +26522,7 @@ entities:
       parent: 2
     missingComponents:
     - Destructible
+    - Construction
   - uid: 2627
     components:
     - type: Transform
@@ -26408,6 +26530,7 @@ entities:
       parent: 2
     missingComponents:
     - Destructible
+    - Construction
 - proto: KitchenReagentGrinder
   entities:
   - uid: 12
@@ -26417,6 +26540,7 @@ entities:
       parent: 2
     missingComponents:
     - Destructible
+    - Construction
   - uid: 964
     components:
     - type: Transform
@@ -26424,6 +26548,7 @@ entities:
       parent: 2
     missingComponents:
     - Destructible
+    - Construction
   - uid: 1694
     components:
     - type: Transform
@@ -26431,6 +26556,7 @@ entities:
       parent: 2
     missingComponents:
     - Destructible
+    - Construction
   - uid: 1695
     components:
     - type: Transform
@@ -26438,6 +26564,7 @@ entities:
       parent: 2
     missingComponents:
     - Destructible
+    - Construction
 - proto: KitchenSpike
   entities:
   - uid: 1701
@@ -26447,6 +26574,7 @@ entities:
       parent: 2
     missingComponents:
     - Destructible
+    - Construction
   - uid: 1702
     components:
     - type: Transform
@@ -26454,6 +26582,7 @@ entities:
       parent: 2
     missingComponents:
     - Destructible
+    - Construction
 - proto: KnifePlastic
   entities:
   - uid: 1727
@@ -26573,6 +26702,8 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
+    missingComponents:
+    - Construction
   - uid: 3255
     components:
     - type: Transform
@@ -26580,6 +26711,8 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
+    missingComponents:
+    - Construction
 - proto: KvassTankFull
   entities:
   - uid: 212
@@ -26825,6 +26958,8 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
+    missingComponents:
+    - Construction
   - uid: 3258
     components:
     - type: Transform
@@ -26832,6 +26967,8 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
+    missingComponents:
+    - Construction
 - proto: MopItem
   entities:
   - uid: 2560
@@ -26995,6 +27132,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 1445
     components:
     - type: Transform
@@ -27003,6 +27141,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 1446
     components:
     - type: Transform
@@ -27011,6 +27150,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 1570
     components:
     - type: Transform
@@ -27019,6 +27159,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 1571
     components:
     - type: Transform
@@ -27027,6 +27168,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 1572
     components:
     - type: Transform
@@ -27035,6 +27177,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 1573
     components:
     - type: Transform
@@ -27043,6 +27186,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
 - proto: Pen
   entities:
   - uid: 559
@@ -27242,57 +27386,77 @@ entities:
       rot: 3.141592653589793 rad
       pos: 4.5,-11.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 380
     components:
     - type: Transform
       pos: 4.5,-10.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 391
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 6.5,-10.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 407
     components:
     - type: Transform
       pos: -21.5,16.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 632
     components:
     - type: Transform
       pos: 6.5,-9.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 1075
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -35.5,-13.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 1078
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -33.5,-13.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 1080
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -33.5,-14.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 1081
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -35.5,-12.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 1082
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -36.5,-12.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
 - proto: PlastitaniumWindowIndestructible
   entities:
   - uid: 5
@@ -27300,409 +27464,557 @@ entities:
     - type: Transform
       pos: 7.5,-1.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 39
     components:
     - type: Transform
       pos: 7.5,8.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 54
     components:
     - type: Transform
       pos: 3.5,11.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 221
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -11.5,16.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 223
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -12.5,16.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 224
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -13.5,16.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 225
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -16.5,16.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 254
     components:
     - type: Transform
       pos: -21.5,11.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 255
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -15.5,16.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 257
     components:
     - type: Transform
       pos: -18.5,16.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 283
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -17.5,16.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 289
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -14.5,16.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 365
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 5.5,-10.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 410
     components:
     - type: Transform
       pos: -21.5,14.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 414
     components:
     - type: Transform
       pos: -21.5,15.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 517
     components:
     - type: Transform
       pos: 7.5,7.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 518
     components:
     - type: Transform
       pos: 7.5,9.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 519
     components:
     - type: Transform
       pos: 5.5,11.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 520
     components:
     - type: Transform
       pos: 4.5,11.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 733
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -6.5,-16.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 734
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -5.5,-16.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 745
     components:
     - type: Transform
       pos: -20.5,16.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 746
     components:
     - type: Transform
       pos: -19.5,16.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 747
     components:
     - type: Transform
       pos: -21.5,13.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 748
     components:
     - type: Transform
       pos: -21.5,12.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 933
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -25.5,-14.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 1070
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -27.5,-14.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 1071
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -28.5,-14.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 1072
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -29.5,-14.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 1073
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -26.5,-14.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 1074
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -31.5,-14.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 1076
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -30.5,-14.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 1077
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -32.5,-14.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 1079
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -34.5,-13.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 1083
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -36.5,-10.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 1084
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -36.5,-9.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 1085
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -36.5,-8.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 1086
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -36.5,-7.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 1087
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -36.5,-11.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 1839
     components:
     - type: Transform
       pos: -2.5,-20.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 1847
     components:
     - type: Transform
       pos: -2.5,-21.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 2632
     components:
     - type: Transform
       pos: -0.5,-31.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 2635
     components:
     - type: Transform
       pos: 0.5,-31.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 2640
     components:
     - type: Transform
       pos: 8.5,-31.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 2643
     components:
     - type: Transform
       pos: -2.5,-19.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 2658
     components:
     - type: Transform
       pos: -1.5,-31.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 2669
     components:
     - type: Transform
       pos: 5.5,-18.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 2670
     components:
     - type: Transform
       pos: 10.5,-18.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 2671
     components:
     - type: Transform
       pos: 11.5,-18.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 2677
     components:
     - type: Transform
       pos: 9.5,-18.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 2681
     components:
     - type: Transform
       pos: 10.5,-31.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 2683
     components:
     - type: Transform
       pos: 12.5,-31.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 2684
     components:
     - type: Transform
       pos: 11.5,-31.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 2685
     components:
     - type: Transform
       pos: 7.5,-18.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 2686
     components:
     - type: Transform
       pos: 6.5,-18.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 2723
     components:
     - type: Transform
       pos: 4.5,-31.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 2724
     components:
     - type: Transform
       pos: 2.5,-31.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 2725
     components:
     - type: Transform
       pos: 3.5,-31.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 2735
     components:
     - type: Transform
       pos: 6.5,-31.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 2736
     components:
     - type: Transform
       pos: 7.5,-31.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 3313
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 14.5,6.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 3314
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 13.5,6.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 3316
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 13.5,-9.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 3317
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 14.5,-9.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 3318
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 12.5,6.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 3319
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 10.5,6.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 3320
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 9.5,6.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 3321
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 11.5,6.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 3322
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 8.5,6.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 3323
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 8.5,-9.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 3324
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 9.5,-9.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 3325
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 10.5,-9.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 3326
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 11.5,-9.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
   - uid: 3327
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 12.5,-9.5
       parent: 2
+    missingComponents:
+    - RCDDeconstructable
 - proto: PottedPlantRandom
   entities:
   - uid: 243
@@ -27839,6 +28151,7 @@ entities:
       parent: 2
     missingComponents:
     - Construction
+    - RCDDeconstructable
     - Destructible
   - uid: 2292
     components:
@@ -27847,6 +28160,7 @@ entities:
       parent: 2
     missingComponents:
     - Construction
+    - RCDDeconstructable
     - Destructible
   - uid: 2293
     components:
@@ -27855,6 +28169,7 @@ entities:
       parent: 2
     missingComponents:
     - Construction
+    - RCDDeconstructable
     - Destructible
   - uid: 2294
     components:
@@ -27864,6 +28179,7 @@ entities:
       parent: 2
     missingComponents:
     - Construction
+    - RCDDeconstructable
     - Destructible
   - uid: 2295
     components:
@@ -27873,6 +28189,7 @@ entities:
       parent: 2
     missingComponents:
     - Construction
+    - RCDDeconstructable
     - Destructible
   - uid: 2296
     components:
@@ -27882,7 +28199,14 @@ entities:
       parent: 2
     missingComponents:
     - Construction
+    - RCDDeconstructable
     - Destructible
+  - uid: 2301
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 8.5,-5.5
+      parent: 2
   - uid: 2303
     components:
     - type: Transform
@@ -27891,6 +28215,7 @@ entities:
       parent: 2
     missingComponents:
     - Construction
+    - RCDDeconstructable
     - Destructible
   - uid: 2304
     components:
@@ -27899,6 +28224,7 @@ entities:
       parent: 2
     missingComponents:
     - Construction
+    - RCDDeconstructable
     - Destructible
   - uid: 2305
     components:
@@ -27908,6 +28234,7 @@ entities:
       parent: 2
     missingComponents:
     - Construction
+    - RCDDeconstructable
     - Destructible
   - uid: 2306
     components:
@@ -27916,6 +28243,7 @@ entities:
       parent: 2
     missingComponents:
     - Construction
+    - RCDDeconstructable
     - Destructible
   - uid: 2307
     components:
@@ -27925,6 +28253,7 @@ entities:
       parent: 2
     missingComponents:
     - Construction
+    - RCDDeconstructable
     - Destructible
   - uid: 2308
     components:
@@ -27934,6 +28263,7 @@ entities:
       parent: 2
     missingComponents:
     - Construction
+    - RCDDeconstructable
     - Destructible
   - uid: 2309
     components:
@@ -27943,6 +28273,7 @@ entities:
       parent: 2
     missingComponents:
     - Construction
+    - RCDDeconstructable
     - Destructible
   - uid: 2314
     components:
@@ -27952,6 +28283,7 @@ entities:
       parent: 2
     missingComponents:
     - Construction
+    - RCDDeconstructable
     - Destructible
   - uid: 2315
     components:
@@ -27961,6 +28293,7 @@ entities:
       parent: 2
     missingComponents:
     - Construction
+    - RCDDeconstructable
     - Destructible
   - uid: 2316
     components:
@@ -27970,6 +28303,7 @@ entities:
       parent: 2
     missingComponents:
     - Construction
+    - RCDDeconstructable
     - Destructible
   - uid: 2317
     components:
@@ -27978,6 +28312,7 @@ entities:
       parent: 2
     missingComponents:
     - Construction
+    - RCDDeconstructable
     - Destructible
   - uid: 2320
     components:
@@ -27987,6 +28322,7 @@ entities:
       parent: 2
     missingComponents:
     - Construction
+    - RCDDeconstructable
     - Destructible
   - uid: 2321
     components:
@@ -27996,6 +28332,7 @@ entities:
       parent: 2
     missingComponents:
     - Construction
+    - RCDDeconstructable
     - Destructible
   - uid: 2323
     components:
@@ -28005,6 +28342,7 @@ entities:
       parent: 2
     missingComponents:
     - Construction
+    - RCDDeconstructable
     - Destructible
   - uid: 2324
     components:
@@ -28013,6 +28351,7 @@ entities:
       parent: 2
     missingComponents:
     - Construction
+    - RCDDeconstructable
     - Destructible
   - uid: 2327
     components:
@@ -28022,6 +28361,7 @@ entities:
       parent: 2
     missingComponents:
     - Construction
+    - RCDDeconstructable
     - Destructible
   - uid: 2328
     components:
@@ -28031,6 +28371,7 @@ entities:
       parent: 2
     missingComponents:
     - Construction
+    - RCDDeconstructable
     - Destructible
   - uid: 2329
     components:
@@ -28040,6 +28381,7 @@ entities:
       parent: 2
     missingComponents:
     - Construction
+    - RCDDeconstructable
     - Destructible
   - uid: 2330
     components:
@@ -28048,6 +28390,7 @@ entities:
       parent: 2
     missingComponents:
     - Construction
+    - RCDDeconstructable
     - Destructible
   - uid: 2334
     components:
@@ -28057,6 +28400,7 @@ entities:
       parent: 2
     missingComponents:
     - Construction
+    - RCDDeconstructable
     - Destructible
   - uid: 2335
     components:
@@ -28066,6 +28410,7 @@ entities:
       parent: 2
     missingComponents:
     - Construction
+    - RCDDeconstructable
     - Destructible
   - uid: 2336
     components:
@@ -28075,6 +28420,7 @@ entities:
       parent: 2
     missingComponents:
     - Construction
+    - RCDDeconstructable
     - Destructible
   - uid: 3089
     components:
@@ -28084,6 +28430,7 @@ entities:
       parent: 2
     missingComponents:
     - Construction
+    - RCDDeconstructable
     - Destructible
   - uid: 3090
     components:
@@ -28093,6 +28440,7 @@ entities:
       parent: 2
     missingComponents:
     - Construction
+    - RCDDeconstructable
     - Destructible
   - uid: 3094
     components:
@@ -28102,6 +28450,7 @@ entities:
       parent: 2
     missingComponents:
     - Construction
+    - RCDDeconstructable
     - Destructible
   - uid: 3098
     components:
@@ -28110,6 +28459,7 @@ entities:
       parent: 2
     missingComponents:
     - Construction
+    - RCDDeconstructable
     - Destructible
   - uid: 3099
     components:
@@ -28118,6 +28468,7 @@ entities:
       parent: 2
     missingComponents:
     - Construction
+    - RCDDeconstructable
     - Destructible
   - uid: 3629
     components:
@@ -28127,6 +28478,7 @@ entities:
       parent: 2
     missingComponents:
     - Construction
+    - RCDDeconstructable
     - Destructible
   - uid: 3630
     components:
@@ -28136,6 +28488,7 @@ entities:
       parent: 2
     missingComponents:
     - Construction
+    - RCDDeconstructable
     - Destructible
   - uid: 3631
     components:
@@ -28145,6 +28498,7 @@ entities:
       parent: 2
     missingComponents:
     - Construction
+    - RCDDeconstructable
     - Destructible
   - uid: 3632
     components:
@@ -28154,6 +28508,7 @@ entities:
       parent: 2
     missingComponents:
     - Construction
+    - RCDDeconstructable
     - Destructible
   - uid: 3633
     components:
@@ -28163,6 +28518,7 @@ entities:
       parent: 2
     missingComponents:
     - Construction
+    - RCDDeconstructable
     - Destructible
   - uid: 3634
     components:
@@ -28172,7 +28528,25 @@ entities:
       parent: 2
     missingComponents:
     - Construction
+    - RCDDeconstructable
     - Destructible
+  - uid: 3636
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 8.5,2.5
+      parent: 2
+  - uid: 3989
+    components:
+    - type: Transform
+      pos: -9.5,0.5
+      parent: 2
+  - uid: 3992
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -0.5,-10.5
+      parent: 2
 - proto: PoweredSmallLight
   entities:
   - uid: 2297
@@ -28184,15 +28558,13 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 2298
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -2.5,-10.5
+      rot: -1.5707963267948966 rad
+      pos: -37.5,-3.5
       parent: 2
-    missingComponents:
-    - Destructible
-    - Construction
   - uid: 2299
     components:
     - type: Transform
@@ -28202,15 +28574,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
-  - uid: 2301
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 8.5,2.5
-      parent: 2
-    missingComponents:
-    - Destructible
-    - Construction
+    - RCDDeconstructable
   - uid: 2311
     components:
     - type: Transform
@@ -28220,6 +28584,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 2312
     components:
     - type: Transform
@@ -28229,6 +28594,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 2313
     components:
     - type: Transform
@@ -28238,6 +28604,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 2318
     components:
     - type: Transform
@@ -28247,6 +28614,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 2319
     components:
     - type: Transform
@@ -28256,6 +28624,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 2322
     components:
     - type: Transform
@@ -28265,6 +28634,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 2325
     components:
     - type: Transform
@@ -28274,6 +28644,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 2331
     components:
     - type: Transform
@@ -28282,6 +28653,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 2332
     components:
     - type: Transform
@@ -28290,6 +28662,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 2333
     components:
     - type: Transform
@@ -28299,6 +28672,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 2337
     components:
     - type: Transform
@@ -28307,6 +28681,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 2338
     components:
     - type: Transform
@@ -28316,6 +28691,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 2513
     components:
     - type: Transform
@@ -28325,6 +28701,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 2549
     components:
     - type: Transform
@@ -28334,6 +28711,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 3088
     components:
     - type: Transform
@@ -28342,6 +28720,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 3091
     components:
     - type: Transform
@@ -28351,6 +28730,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 3092
     components:
     - type: Transform
@@ -28360,6 +28740,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 3093
     components:
     - type: Transform
@@ -28369,6 +28750,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 3095
     components:
     - type: Transform
@@ -28378,6 +28760,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 3102
     components:
     - type: Transform
@@ -28387,6 +28770,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 3103
     components:
     - type: Transform
@@ -28396,6 +28780,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 3104
     components:
     - type: Transform
@@ -28405,6 +28790,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 3105
     components:
     - type: Transform
@@ -28414,15 +28800,55 @@ entities:
     missingComponents:
     - Destructible
     - Construction
-  - uid: 3636
+    - RCDDeconstructable
+  - uid: 3878
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
-      pos: 8.5,-5.5
+      pos: -40.5,0.5
       parent: 2
-    missingComponents:
-    - Destructible
-    - Construction
+  - uid: 3987
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -35.5,0.5
+      parent: 2
+  - uid: 3988
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -31.5,0.5
+      parent: 2
+  - uid: 3990
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -25.5,0.5
+      parent: 2
+  - uid: 3991
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -29.5,0.5
+      parent: 2
+  - uid: 3993
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -13.5,12.5
+      parent: 2
+  - uid: 3994
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -17.5,8.5
+      parent: 2
+  - uid: 3995
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -11.5,8.5
+      parent: 2
 - proto: Rack
   entities:
   - uid: 32
@@ -28496,6 +28922,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 319
     components:
     - type: Transform
@@ -28505,6 +28932,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 330
     components:
     - type: Transform
@@ -28514,6 +28942,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 332
     components:
     - type: Transform
@@ -28523,6 +28952,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 449
     components:
     - type: Transform
@@ -28532,6 +28962,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 497
     components:
     - type: Transform
@@ -28541,6 +28972,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 499
     components:
     - type: Transform
@@ -28550,6 +28982,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 1185
     components:
     - type: Transform
@@ -28558,6 +28991,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 1186
     components:
     - type: Transform
@@ -28566,6 +29000,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 1187
     components:
     - type: Transform
@@ -28574,6 +29009,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 1212
     components:
     - type: Transform
@@ -28583,6 +29019,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 1290
     components:
     - type: Transform
@@ -28591,6 +29028,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 1291
     components:
     - type: Transform
@@ -28600,6 +29038,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 1292
     components:
     - type: Transform
@@ -28608,6 +29047,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 1293
     components:
     - type: Transform
@@ -28616,6 +29056,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 1294
     components:
     - type: Transform
@@ -28624,6 +29065,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 1312
     components:
     - type: Transform
@@ -28632,6 +29074,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 1329
     components:
     - type: Transform
@@ -28640,6 +29083,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 1470
     components:
     - type: Transform
@@ -28648,6 +29092,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 1471
     components:
     - type: Transform
@@ -28656,6 +29101,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 1472
     components:
     - type: Transform
@@ -28664,6 +29110,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 1473
     components:
     - type: Transform
@@ -28672,6 +29119,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 1474
     components:
     - type: Transform
@@ -28681,6 +29129,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 1475
     components:
     - type: Transform
@@ -28690,6 +29139,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 1481
     components:
     - type: Transform
@@ -28698,6 +29148,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 1482
     components:
     - type: Transform
@@ -28707,6 +29158,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 1858
     components:
     - type: Transform
@@ -28716,6 +29168,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
 - proto: RailingCorner
   entities:
   - uid: 201
@@ -28727,6 +29180,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 313
     components:
     - type: Transform
@@ -28736,6 +29190,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 314
     components:
     - type: Transform
@@ -28745,6 +29200,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 1519
     components:
     - type: Transform
@@ -28754,6 +29210,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 1863
     components:
     - type: Transform
@@ -28763,6 +29220,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
 - proto: RailingCornerSmall
   entities:
   - uid: 197
@@ -28774,6 +29232,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 316
     components:
     - type: Transform
@@ -28782,6 +29241,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 318
     components:
     - type: Transform
@@ -28790,6 +29250,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 1306
     components:
     - type: Transform
@@ -28799,6 +29260,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 1313
     components:
     - type: Transform
@@ -28808,6 +29270,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 1476
     components:
     - type: Transform
@@ -28817,6 +29280,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 1479
     components:
     - type: Transform
@@ -28825,6 +29289,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 1480
     components:
     - type: Transform
@@ -28834,6 +29299,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 3180
     components:
     - type: Transform
@@ -28843,6 +29309,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
 - proto: RandomArcade
   entities:
   - uid: 616
@@ -29080,11 +29547,15 @@ entities:
     - type: Transform
       pos: -20.416386,4.832426
       parent: 2
+    missingComponents:
+    - Construction
   - uid: 1697
     components:
     - type: Transform
       pos: -14.689896,4.769926
       parent: 2
+    missingComponents:
+    - Construction
 - proto: Salt1
   entities:
   - uid: 1518
@@ -29445,6 +29916,7 @@ entities:
       heatCapacity: 7000
     missingComponents:
     - Destructible
+    - Construction
 - proto: SpoonPlastic
   entities:
   - uid: 1744
@@ -31015,6 +31487,7 @@ entities:
           ents: []
     missingComponents:
     - Destructible
+    - Construction
 - proto: TimpaniInstrument
   entities:
   - uid: 1872
@@ -31210,6 +31683,7 @@ entities:
         - Middle: Off
     missingComponents:
     - Destructible
+    - Construction
 - proto: UprightPianoInstrument
   entities:
   - uid: 3385
@@ -31781,6 +32255,7 @@ entities:
       parent: 2
     missingComponents:
     - Construction
+    - Destructible
 - proto: WallPlastitanium
   entities:
   - uid: 15
@@ -31958,6 +32433,7 @@ entities:
       parent: 2
     missingComponents:
     - Destructible
+    - Construction
   - uid: 492
     components:
     - type: Transform
@@ -31966,6 +32442,7 @@ entities:
       parent: 2
     missingComponents:
     - Destructible
+    - Construction
   - uid: 3291
     components:
     - type: Transform
@@ -31974,6 +32451,7 @@ entities:
       parent: 2
     missingComponents:
     - Destructible
+    - Construction
   - uid: 3300
     components:
     - type: Transform
@@ -31982,6 +32460,7 @@ entities:
       parent: 2
     missingComponents:
     - Destructible
+    - Construction
   - uid: 3301
     components:
     - type: Transform
@@ -31990,6 +32469,7 @@ entities:
       parent: 2
     missingComponents:
     - Destructible
+    - Construction
   - uid: 3340
     components:
     - type: Transform
@@ -31998,6 +32478,7 @@ entities:
       parent: 2
     missingComponents:
     - Destructible
+    - Construction
   - uid: 3341
     components:
     - type: Transform
@@ -32006,6 +32487,7 @@ entities:
       parent: 2
     missingComponents:
     - Destructible
+    - Construction
   - uid: 3353
     components:
     - type: Transform
@@ -32014,6 +32496,7 @@ entities:
       parent: 2
     missingComponents:
     - Destructible
+    - Construction
   - uid: 3354
     components:
     - type: Transform
@@ -32022,6 +32505,7 @@ entities:
       parent: 2
     missingComponents:
     - Destructible
+    - Construction
 - proto: WallPlastitaniumDiagonalIndestructible
   entities:
   - uid: 216
@@ -34230,6 +34714,7 @@ entities:
       pos: -24.5,2.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 711
     components:
@@ -34237,6 +34722,7 @@ entities:
       pos: -25.5,2.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 712
     components:
@@ -34244,6 +34730,7 @@ entities:
       pos: -36.5,2.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 713
     components:
@@ -34251,6 +34738,7 @@ entities:
       pos: -33.5,2.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 714
     components:
@@ -34258,6 +34746,7 @@ entities:
       pos: -29.5,2.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 715
     components:
@@ -34265,6 +34754,7 @@ entities:
       pos: -36.5,-1.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 716
     components:
@@ -34272,6 +34762,7 @@ entities:
       pos: -26.5,2.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 717
     components:
@@ -34279,6 +34770,7 @@ entities:
       pos: -24.5,1.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 719
     components:
@@ -34286,6 +34778,7 @@ entities:
       pos: -28.5,2.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 720
     components:
@@ -34293,6 +34786,7 @@ entities:
       pos: -36.5,-0.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 721
     components:
@@ -34300,6 +34794,7 @@ entities:
       pos: -31.5,2.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 723
     components:
@@ -34307,6 +34802,7 @@ entities:
       pos: -32.5,2.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 724
     components:
@@ -34314,6 +34810,7 @@ entities:
       pos: -36.5,0.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 725
     components:
@@ -34321,6 +34818,7 @@ entities:
       pos: -27.5,2.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 726
     components:
@@ -34328,6 +34826,7 @@ entities:
       pos: -24.5,0.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 994
     components:
@@ -34335,6 +34834,7 @@ entities:
       pos: -25.5,-1.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 995
     components:
@@ -34342,6 +34842,7 @@ entities:
       pos: -28.5,-1.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 996
     components:
@@ -34349,6 +34850,7 @@ entities:
       pos: -26.5,-1.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 997
     components:
@@ -34356,6 +34858,7 @@ entities:
       pos: -36.5,1.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 998
     components:
@@ -34363,6 +34866,7 @@ entities:
       pos: -32.5,-1.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 999
     components:
@@ -34370,6 +34874,7 @@ entities:
       pos: -31.5,-1.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1000
     components:
@@ -34377,6 +34882,7 @@ entities:
       pos: -35.5,-1.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1001
     components:
@@ -34384,6 +34890,7 @@ entities:
       pos: -34.5,-1.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1002
     components:
@@ -34391,6 +34898,7 @@ entities:
       pos: -29.5,-1.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1003
     components:
@@ -34399,6 +34907,7 @@ entities:
       pos: -38.5,-6.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1004
     components:
@@ -34407,6 +34916,7 @@ entities:
       pos: -36.5,-3.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1006
     components:
@@ -34415,6 +34925,7 @@ entities:
       pos: -36.5,-6.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1007
     components:
@@ -34422,6 +34933,7 @@ entities:
       pos: -30.5,-0.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1008
     components:
@@ -34429,6 +34941,7 @@ entities:
       pos: -30.5,-1.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1009
     components:
@@ -34436,6 +34949,7 @@ entities:
       pos: -30.5,0.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1016
     components:
@@ -34443,6 +34957,7 @@ entities:
       pos: -36.5,-2.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1060
     components:
@@ -34450,6 +34965,7 @@ entities:
       pos: -24.5,-0.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1066
     components:
@@ -34457,6 +34973,7 @@ entities:
       pos: -30.5,2.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1067
     components:
@@ -34464,6 +34981,7 @@ entities:
       pos: -35.5,2.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1068
     components:
@@ -34471,6 +34989,7 @@ entities:
       pos: -30.5,1.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1069
     components:
@@ -34478,6 +34997,7 @@ entities:
       pos: -34.5,2.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1111
     components:
@@ -34486,6 +35006,7 @@ entities:
       pos: -37.5,2.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1112
     components:
@@ -34494,6 +35015,7 @@ entities:
       pos: -38.5,2.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1114
     components:
@@ -34501,6 +35023,7 @@ entities:
       pos: -41.5,1.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1115
     components:
@@ -34509,6 +35032,7 @@ entities:
       pos: -43.5,2.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1116
     components:
@@ -34517,6 +35041,7 @@ entities:
       pos: -39.5,2.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1117
     components:
@@ -34525,6 +35050,7 @@ entities:
       pos: -42.5,2.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1118
     components:
@@ -34533,6 +35059,7 @@ entities:
       pos: -41.5,2.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1119
     components:
@@ -34541,6 +35068,7 @@ entities:
       pos: -40.5,2.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1120
     components:
@@ -34549,6 +35077,7 @@ entities:
       pos: -44.5,2.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1121
     components:
@@ -34557,6 +35086,7 @@ entities:
       pos: -40.5,-6.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1122
     components:
@@ -34565,6 +35095,7 @@ entities:
       pos: -39.5,-6.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1123
     components:
@@ -34573,6 +35104,7 @@ entities:
       pos: -43.5,-6.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1124
     components:
@@ -34581,6 +35113,7 @@ entities:
       pos: -42.5,-6.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1125
     components:
@@ -34589,6 +35122,7 @@ entities:
       pos: -41.5,-6.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1126
     components:
@@ -34597,6 +35131,7 @@ entities:
       pos: -37.5,-6.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1134
     components:
@@ -34605,6 +35140,7 @@ entities:
       pos: -44.5,-6.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1135
     components:
@@ -34612,6 +35148,7 @@ entities:
       pos: -42.5,-4.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1172
     components:
@@ -34619,6 +35156,7 @@ entities:
       pos: -41.5,-0.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1223
     components:
@@ -34626,6 +35164,7 @@ entities:
       pos: -37.5,-2.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1226
     components:
@@ -34633,6 +35172,7 @@ entities:
       pos: -42.5,-2.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1229
     components:
@@ -34640,6 +35180,7 @@ entities:
       pos: -42.5,-3.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1268
     components:
@@ -34647,6 +35188,7 @@ entities:
       pos: -41.5,-1.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1270
     components:
@@ -34654,6 +35196,7 @@ entities:
       pos: -40.5,-2.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1307
     components:
@@ -34661,6 +35204,7 @@ entities:
       pos: -41.5,0.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1314
     components:
@@ -34668,6 +35212,7 @@ entities:
       pos: -41.5,-2.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1343
     components:
@@ -34675,6 +35220,7 @@ entities:
       pos: -45.5,2.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1344
     components:
@@ -34682,6 +35228,7 @@ entities:
       pos: -46.5,2.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1369
     components:
@@ -34689,6 +35236,7 @@ entities:
       pos: -45.5,-6.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1370
     components:
@@ -34696,6 +35244,7 @@ entities:
       pos: -47.5,-6.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1371
     components:
@@ -34703,6 +35252,7 @@ entities:
       pos: -48.5,-6.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1372
     components:
@@ -34710,6 +35260,7 @@ entities:
       pos: -49.5,-6.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1373
     components:
@@ -34717,6 +35268,7 @@ entities:
       pos: -46.5,-6.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1374
     components:
@@ -34724,6 +35276,7 @@ entities:
       pos: -50.5,-6.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1375
     components:
@@ -34731,6 +35284,7 @@ entities:
       pos: -51.5,-6.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1376
     components:
@@ -34738,6 +35292,7 @@ entities:
       pos: -51.5,-5.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1377
     components:
@@ -34745,6 +35300,7 @@ entities:
       pos: -51.5,-3.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1378
     components:
@@ -34752,6 +35308,7 @@ entities:
       pos: -51.5,-2.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1379
     components:
@@ -34759,6 +35316,7 @@ entities:
       pos: -51.5,-1.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1380
     components:
@@ -34766,6 +35324,7 @@ entities:
       pos: -51.5,-0.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1381
     components:
@@ -34773,6 +35332,7 @@ entities:
       pos: -51.5,0.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1382
     components:
@@ -34780,6 +35340,7 @@ entities:
       pos: -51.5,1.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1383
     components:
@@ -34787,6 +35348,7 @@ entities:
       pos: -51.5,2.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1384
     components:
@@ -34794,6 +35356,7 @@ entities:
       pos: -51.5,-4.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1385
     components:
@@ -34801,6 +35364,7 @@ entities:
       pos: -50.5,2.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1386
     components:
@@ -34808,6 +35372,7 @@ entities:
       pos: -49.5,2.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1387
     components:
@@ -34815,6 +35380,7 @@ entities:
       pos: -48.5,2.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
   - uid: 1388
     components:
@@ -34822,6 +35388,7 @@ entities:
       pos: -47.5,2.5
       parent: 2
     missingComponents:
+    - Construction
     - Destructible
 - proto: WaterTankHighCapacity
   entities:
@@ -34944,6 +35511,7 @@ entities:
       parent: 2
     missingComponents:
     - Construction
+    - RCDDeconstructable
     - Destructible
   - uid: 153
     components:
@@ -34953,6 +35521,7 @@ entities:
       parent: 2
     missingComponents:
     - Construction
+    - RCDDeconstructable
     - Destructible
   - uid: 154
     components:
@@ -34961,6 +35530,7 @@ entities:
       parent: 2
     missingComponents:
     - Construction
+    - RCDDeconstructable
     - Destructible
   - uid: 155
     components:
@@ -34969,6 +35539,7 @@ entities:
       parent: 2
     missingComponents:
     - Construction
+    - RCDDeconstructable
     - Destructible
   - uid: 156
     components:
@@ -34978,6 +35549,7 @@ entities:
       parent: 2
     missingComponents:
     - Construction
+    - RCDDeconstructable
     - Destructible
   - uid: 157
     components:
@@ -34987,6 +35559,7 @@ entities:
       parent: 2
     missingComponents:
     - Construction
+    - RCDDeconstructable
     - Destructible
 - proto: WoodDoor
   entities:
@@ -34998,6 +35571,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
   - uid: 1062
     components:
     - type: Transform
@@ -35006,6 +35580,7 @@ entities:
     missingComponents:
     - Destructible
     - Construction
+    - RCDDeconstructable
 - proto: WoodenBench
   entities:
   - uid: 1420
