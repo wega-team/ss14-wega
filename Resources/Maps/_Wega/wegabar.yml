@@ -42,6 +42,7 @@ entities:
       name: ""
     - type: Transform
     - type: Map
+      mapPaused: False
     - type: PhysicsMap
     - type: GridTree
     - type: MovedGrids
@@ -9309,6 +9310,21 @@ entities:
       parent: 2
     missingComponents:
     - Destructible
+  - uid: 4000
+    components:
+    - type: Transform
+      pos: -27.5,-0.5
+      parent: 2
+  - uid: 4001
+    components:
+    - type: Transform
+      pos: -27.5,-1.5
+      parent: 2
+  - uid: 4002
+    components:
+    - type: Transform
+      pos: -27.5,-2.5
+      parent: 2
 - proto: CarpetGreen
   entities:
   - uid: 2966
@@ -9494,6 +9510,21 @@ entities:
       parent: 2
     missingComponents:
     - Destructible
+  - uid: 3996
+    components:
+    - type: Transform
+      pos: -33.5,-0.5
+      parent: 2
+  - uid: 3997
+    components:
+    - type: Transform
+      pos: -33.5,-1.5
+      parent: 2
+  - uid: 3998
+    components:
+    - type: Transform
+      pos: -33.5,-2.5
+      parent: 2
 - proto: CarpetPurple
   entities:
   - uid: 2914
