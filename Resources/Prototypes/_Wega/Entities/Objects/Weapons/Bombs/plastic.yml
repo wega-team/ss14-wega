@@ -1,6 +1,6 @@
 - type: entity
   name: sticky bomb
-  description: an extremely sticky bomb that can be attached to anything.
+  description: An extremely sticky bomb that can be attached to anything.
   parent: [BasePlasticExplosive, BaseSyndicateContraband]
   id: StickyBomb
   components:

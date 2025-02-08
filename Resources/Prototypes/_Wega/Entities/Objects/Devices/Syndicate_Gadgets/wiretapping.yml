@@ -45,7 +45,7 @@
 
 - type: entity
   name: wiretapping camera 
-  description: 
+  description: A small camera that clearly isn't watching you. Don't forget to set it up before installing.
   parent: [ BaseItem, BaseSyndicateContraband ]
   id: WiretappingCamera
   components:
