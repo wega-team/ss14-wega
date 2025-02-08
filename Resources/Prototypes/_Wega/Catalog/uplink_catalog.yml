@@ -1,0 +1,12 @@
+- type: listing
+  id: UplinkStickyBomb
+  name: uplink-StickyBomb-name
+  description: uplink-StickyBomb-desc
+  productEntity: StickyBomb
+  discountCategory: veryRareDiscounts
+  discountDownTo:
+    Telecrystal: 1
+  cost:
+    Telecrystal: 3
+  categories:
+  - UplinkExplosives

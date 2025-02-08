@@ -1,0 +1,34 @@
+- type: entity
+  name: sticky bomb
+  description: an extremely sticky bomb that can be attached to anything.
+  parent: [BasePlasticExplosive, BaseSyndicateContraband]
+  id: StickyBomb
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Bombs/stickybomb.rsi
+    state: icon
+    layers:
+    - state: icon
+      map: ["base"]
+  - type: OnUseTimerTrigger
+    delay: 10
+    delayOptions: [10, 30, 60, 120]
+    startOnStick: true
+    canToggleStartOnStick: true
+  - type: TimerStartOnSignal
+  - type: DeviceLinkSink
+    ports:
+      - Timer
+  - type: Explosive
+    explosionType: Default 
+    totalIntensity: 35
+    intensitySlope: 10
+    maxIntensity: 7.5
+    canCreateVacuum: false
+  - type: ExplodeOnTrigger
+  - type: Sticky
+    stickDelay: 1
+    unstickDelay: 3
+    blacklist:
+      components:
+      - Sticky
