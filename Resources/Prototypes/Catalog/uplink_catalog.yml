@@ -1003,11 +1003,11 @@
   name: uplink-antimov-law-name
   description: uplink-antimov-law-desc
   productEntity: AntimovCircuitBoard
-  discountCategory: usualDiscounts
+  discountCategory: veryRareDiscounts #Corvax-Wega-Syndicate Ai Laws
   discountDownTo:
-    Telecrystal: 10
+    Telecrystal: 5
   cost:
-    Telecrystal: 14
+    Telecrystal: 9  #Corvax-Wega-Syndicate Ai Laws
   categories:
   - UplinkDisruption
   conditions:
