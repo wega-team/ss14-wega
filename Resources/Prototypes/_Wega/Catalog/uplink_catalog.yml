@@ -35,7 +35,7 @@
   name: uplink-syndicate-law-name
   description: uplink-syndicate-law-desc
   productEntity: SyndicateCircuitBoard
-  discountCategory: usualDiscounts
+  discountCategory: rareDiscounts
   discountDownTo:
     Telecrystal: 12
   cost:
@@ -47,3 +47,17 @@
      blacklist:
        tags:
        - NukeOpsUplink
+
+- type: listing
+  id: UplinkWiretappingKit
+  name: uplink-wiretapping-kit-name
+  description: uplink-wiretapping-kit-desc
+  productEntity: WiretappingKit
+  discountCategory: usualDiscounts
+  discountDownTo:
+    Telecrystal: 3
+  cost:
+    Telecrystal: 6
+  categories:
+  - UplinkDeception
+  

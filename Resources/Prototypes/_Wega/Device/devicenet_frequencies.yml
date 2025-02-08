@@ -1,0 +1,11 @@
+- type: deviceFrequency
+  id: SurveillanceCameraSyndicate
+  name: device-frequency-prototype-name-surveillance-camera-syndicate
+  frequency: 1981
+
+- type: deviceFrequency
+  id: SurveillanceCameraSyndicatewiretapping
+  name: device-frequency-prototype-name-surveillance-camera-syndicate-wiretapping
+  frequency: 1982  
+
+# Don't use 1984 frequency, it's freelance channel

@@ -1,0 +1,14 @@
+- type: entity
+  id: WiretappingKit
+  parent: [BoxCardboard, BaseSyndicateContraband]
+  name: Wiretapping Kit
+  suffix: Filled
+  components:
+    - type: StorageFill
+      contents:
+        - id: WiretappingServer
+          amount: 1
+        - id: WiretappingTerminal
+          amount: 1
+        - id: WiretappingCamera
+          amount: 4
