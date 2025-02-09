@@ -1,5 +1,7 @@
 using System.Linq;
 using Content.Server.Administration.Logs;
+using Content.Server.Atmos.Components;
+using Content.Server.Atmos.EntitySystems;
 using Content.Server.Atmos.Rotting;
 using Content.Server.Bible.Components;
 using Content.Server.Body.Components;
@@ -7,12 +9,14 @@ using Content.Server.Body.Systems;
 using Content.Server.Chat.Systems;
 using Content.Server.Nutrition.EntitySystems;
 using Content.Server.Polymorph.Systems;
-using Content.Server.Store.Systems;
 using Content.Shared.Actions;
+using Content.Shared.Alert;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Systems;
+using Content.Shared.Chat.Prototypes;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
+using Content.Shared.Chemistry.Reaction;
 using Content.Shared.Damage;
 using Content.Shared.Database;
 using Content.Shared.DoAfter;
@@ -27,7 +31,6 @@ using Content.Shared.IdentityManagement;
 using Content.Shared.NullRod.Components;
 using Content.Shared.Popups;
 using Content.Shared.Stunnable;
-using Content.Shared.Store.Components;
 using Content.Shared.Vampire;
 using Content.Shared.Vampire.Components;
 using Robust.Shared.Audio;
@@ -41,8 +44,10 @@ namespace Content.Server.Vampire;
 public sealed partial class VampireSystem : SharedVampireSystem
 {
     [Dependency] private readonly IAdminLogManager _admin = default!;
-    [Dependency] private readonly FoodSystem _food = default!;
+    [Dependency] private readonly AlertsSystem _alerts = default!;
     [Dependency] private readonly BloodstreamSystem _blood = default!;
+    [Dependency] private readonly FlammableSystem _flammable = default!;
+    [Dependency] private readonly FoodSystem _food = default!;
     [Dependency] private readonly RottingSystem _rotting = default!;
     [Dependency] private readonly StomachSystem _stomach = default!;
     [Dependency] private readonly PolymorphSystem _polymorph = default!;
@@ -62,7 +67,6 @@ public sealed partial class VampireSystem : SharedVampireSystem
     [Dependency] private readonly DamageableSystem _damage = default!;
     [Dependency] private readonly MobThresholdSystem _mobThreshold = default!;
     [Dependency] private readonly EntityLookupSystem _entityLookup = default!;
-    [Dependency] private readonly StoreSystem _store = default!;
 
     private readonly Dictionary<EntityUid, Dictionary<EntityUid, FixedPoint2>> _bloodConsumedTracker = new();
     private bool _isDamageBeingHandled = false;
@@ -71,12 +75,12 @@ public sealed partial class VampireSystem : SharedVampireSystem
     {
         base.Initialize();
 
+        // Start
+        SubscribeLocalEvent<VampireComponent, ComponentStartup>(OnStartup);
+
         // Drinking Blood
         SubscribeLocalEvent<VampireComponent, VampireDrinkingBloodActionEvent>(OnDrinkBlood);
         SubscribeLocalEvent<VampireComponent, VampireDrinkingBloodDoAfterEvent>(DrinkDoAfter);
-
-        //Store
-        SubscribeLocalEvent<VampireComponent, VampireShopActionEvent>(OnShop);
 
         // Distribute Damage
         SubscribeLocalEvent<VampireComponent, DamageChangedEvent>(OnDamageChanged);
@@ -88,6 +92,68 @@ public sealed partial class VampireSystem : SharedVampireSystem
         InitializePowers();
     }
 
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        var vampireQuery = EntityQueryEnumerator<VampireComponent>();
+        while (vampireQuery.MoveNext(out var uid, out var vampireComponent))
+        {
+            if (IsInSpace(uid))
+            {
+                if (vampireComponent.NextSpaceDamageTick <= 0)
+                {
+                    vampireComponent.NextSpaceDamageTick = 1;
+                    DoSpaceDamage((uid, vampireComponent));
+                }
+                vampireComponent.NextSpaceDamageTick -= frameTime;
+            }
+
+            if (vampireComponent.NullDamage > 0)
+            {
+                if (vampireComponent.NextNullDamageTick <= 0)
+                {
+                    vampireComponent.NextNullDamageTick = 2;
+                    vampireComponent.NullDamage -= FixedPoint2.New(2);
+                    if (vampireComponent.NullDamage < 0)
+                    {
+                        vampireComponent.NullDamage = FixedPoint2.Zero;
+                    }
+                }
+                vampireComponent.NextNullDamageTick -= frameTime;
+            }
+        }
+
+        var holyPointQuery = EntityQueryEnumerator<HolyPointComponent>();
+        while (holyPointQuery.MoveNext(out var uid, out var holyPoint))
+        {
+            if (holyPoint.NextTimeTick <= 0)
+            {
+                holyPoint.NextTimeTick = 10;
+                var vampires = _entityLookup.GetEntitiesInRange<VampireComponent>(Transform(uid).Coordinates, holyPoint.Range);
+                foreach (var vampire in vampires)
+                {
+                    if (vampire.Comp.TruePowerActive) continue;
+
+                    if (TryComp(vampire.Owner, out FlammableComponent? flammable))
+                    {
+                        flammable.FireStacks = flammable.MaximumFireStacks;
+                        _flammable.Ignite(vampire.Owner, uid);
+                        _chat.TryEmoteWithoutChat(vampire, _prototypeManager.Index<EmotePrototype>("Scream"), true);
+                        _popup.PopupEntity(Loc.GetString("vampire-holy-point"), vampire.Owner, vampire.Owner, PopupType.LargeCaution);
+                    }
+                }
+            }
+            holyPoint.NextTimeTick -= frameTime;
+        }
+    }
+
+    // Update Alerts
+    private void OnStartup(EntityUid uid, VampireComponent component, ComponentStartup args)
+    {
+        _alerts.ShowAlert(uid, component.BloodAlert);
+    }
+
     #region Drinking blood
     private void OnDrinkBlood(EntityUid uid, VampireComponent component, VampireDrinkingBloodActionEvent args)
     {
@@ -95,7 +161,7 @@ public sealed partial class VampireSystem : SharedVampireSystem
         {
             var doAfterDelay = TimeSpan.FromSeconds(3);
             var doAfterEventArgs = new DoAfterArgs(EntityManager, uid, doAfterDelay,
-                new VampireDrinkingBloodDoAfterEvent() { Volume = component.MouthVolume },
+                new VampireDrinkingBloodDoAfterEvent() { Volume = 5f },
                 eventTarget: uid,
                 target: args.Target,
                 used: args.Target)
@@ -180,7 +246,7 @@ public sealed partial class VampireSystem : SharedVampireSystem
         _audio.PlayPvs(component.BloodDrainSound, uid, AudioParams.Default.WithVolume(-3f));
         _blood.TryModifyBloodLevel(args.Target.Value, -(byte)(volumeToConsume * 0.5f));
 
-        if (HasComp<BibleUserComponent>(args.Target))
+        if (HasComp<BibleUserComponent>(args.Target) && !component.TruePowerActive)
         {
             _damage.TryChangeDamage(uid, VampireComponent.HolyDamage, true);
             _popup.PopupEntity(Loc.GetString("vampire-ingest-holyblood"), uid, uid, PopupType.LargeCaution);
@@ -242,25 +308,19 @@ public sealed partial class VampireSystem : SharedVampireSystem
     }
     #endregion
 
-    #region Store
-    private void OnShop(EntityUid uid, VampireComponent component, VampireShopActionEvent args)
-    {
-        if (!TryComp<StoreComponent>(uid, out var store))
-            return;
-        _store.ToggleUi(uid, uid, store);
-    }
-
+    #region Blood Manipulation
     private bool AddBloodEssence(EntityUid uid, FixedPoint2 quantity)
     {
-        if (quantity < 0 || !TryComp<StoreComponent>(uid, out var store)
-            || !store.CurrencyWhitelist.Contains(VampireComponent.CurrencyProto))
+        if (quantity < 0 || !TryComp<VampireComponent>(uid, out var vampireComponent))
             return false;
 
-        var bloodCurrencyProto = VampireComponent.CurrencyProto;
-        store.Balance[bloodCurrencyProto] = store.Balance.GetValueOrDefault(bloodCurrencyProto, FixedPoint2.Zero) + quantity;
+        vampireComponent.CurrentBlood += quantity;
+        vampireComponent.TotalBloodDrank += (float)quantity;
 
-        if (TryComp<VampireComponent>(uid, out var vampireComponent))
-            vampireComponent.TotalBloodDrank += (float)quantity;
+        Dirty(uid, vampireComponent);
+        _alerts.ShowAlert(uid, vampireComponent.BloodAlert);
+
+        UpdatePowers(uid, vampireComponent);
 
         return true;
     }
@@ -270,14 +330,14 @@ public sealed partial class VampireSystem : SharedVampireSystem
         if (!TryComp<VampireComponent>(uid, out var vampireComponent))
             return false;
 
-        var bloodCurrencyProto = VampireComponent.CurrencyProto;
         var adjustedQuantity = quantity * (1 + vampireComponent.NullDamage.Float() / 100);
-        if (adjustedQuantity <= 0 || !TryComp<StoreComponent>(uid, out var store)
-            || !store.CurrencyWhitelist.Contains(bloodCurrencyProto)
-            || store.Balance.GetValueOrDefault(bloodCurrencyProto, FixedPoint2.Zero) < adjustedQuantity)
+        if (adjustedQuantity <= 0 || vampireComponent.CurrentBlood < adjustedQuantity)
             return false;
 
-        store.Balance[bloodCurrencyProto] -= adjustedQuantity;
+        vampireComponent.CurrentBlood -= adjustedQuantity;
+
+        Dirty(uid, vampireComponent);
+        _alerts.ShowAlert(uid, vampireComponent.BloodAlert);
 
         return true;
     }
@@ -287,53 +347,108 @@ public sealed partial class VampireSystem : SharedVampireSystem
         if (!TryComp<VampireComponent>(uid, out var vampireComponent))
             return false;
 
-        if (TryComp<StoreComponent>(uid, out var store))
+        var adjustedQuantity = quantity * (1 + vampireComponent.NullDamage.Float() / 100);
+        return vampireComponent.CurrentBlood >= adjustedQuantity;
+    }
+
+    private void UpdatePowers(EntityUid uid, VampireComponent component)
+    {
+        if (component.CurrentEvolution == null)
+            return;
+
+        var currentBlood = component.CurrentBlood;
+        var vampireClass = component.CurrentEvolution;
+        var thresholds = GetThresholdsForClass(vampireClass);
+        foreach (var threshold in thresholds)
         {
-            var bloodCurrencyProto = VampireComponent.CurrencyProto;
-            var adjustedQuantity = quantity * (1 + vampireComponent.NullDamage.Float() / 100);
-            var currentBlood = store.Balance.GetValueOrDefault(bloodCurrencyProto, FixedPoint2.Zero);
-            if (currentBlood >= adjustedQuantity)
-                return true;
+            if (currentBlood >= threshold.Key)
+            {
+                foreach (var skill in threshold.Value)
+                {
+                    if (!HasSkill(component, skill))
+                    {
+                        AddSkill(uid, component, skill);
+                        _admin.Add(LogType.Action, LogImpact.Low, $"{ToPrettyString(uid)}: added {skill} for {vampireClass}.");
+                    }
+                }
+            }
         }
 
-        return false;
+        if (currentBlood >= 1000 && !component.TruePowerActive)
+        {
+            MakeImmuneToHoly(uid, component);
+        }
+    }
+
+    private bool HasSkill(VampireComponent component, string skill)
+    {
+        return component.AcquiredSkills.Contains(skill);
+    }
+
+    private void AddSkill(EntityUid uid, VampireComponent component, string skill)
+    {
+        if (!HasSkill(component, skill))
+        {
+            component.AcquiredSkills.Add(skill);
+            _action.AddAction(uid, skill);
+        }
+    }
+
+    private Dictionary<float, List<string>> GetThresholdsForClass(string vampireClass)
+    {
+        switch (vampireClass)
+        {
+            case "Hemomancer":
+                return new Dictionary<float, List<string>>
+                {
+                    { 150f, new List<string> { "ActionVampireClaws" } },
+                    { 250f, new List<string> { "ActionVampireBloodTendrils", "ActionVampireBloodBarrier" } },
+                    { 400f, new List<string> { "ActionVampireSanguinePool" } },
+                    { 600f, new List<string> { "ActionVampirePredatorSenses" } },
+                    { 800f, new List<string> { "ActionVampireBloodEruption" } },
+                    { 1000f, new List<string> { "ActionVampireBloodBringersRite" } }
+                };
+
+            case "Umbrae":
+                return new Dictionary<float, List<string>>
+                {
+                    { 150f, new List<string> { "ActionVampireCloakOfDarkness" } },
+                    { 250f, new List<string> { "ActionVampireShadowSnare", "ActionVampireSoulAnchor" } },
+                    { 400f, new List<string> { "ActionVampireDarkPassage" } },
+                    { 600f, new List<string> { "ActionVampireExtinguish" } },
+                    { 800f, new List<string> { "ActionVampireShadowBoxing" } },
+                    { 1000f, new List<string> { "ActionVampireEternalDarkness" } }
+                };
+
+            case "Gargantua":
+                return new Dictionary<float, List<string>>
+                {
+                    { 150f, new List<string> { "ActionVampireBloodSwell" } },
+                    { 250f, new List<string> { "ActionVampireBloodRush", "ActionVampireSeismicStomp" } },
+                    { 400f, new List<string> { "ActionVampireBloodSwellAdvanced" } },
+                    { 600f, new List<string> { "ActionVampireOverwhelmingForce" } },
+                    { 800f, new List<string> { "ActionDemonicGrasp" } },
+                    { 1000f, new List<string> { "ActionVampireCharge" } }
+                };
+
+            case "Dantalion":
+                return new Dictionary<float, List<string>>
+                {
+                    { 150f, new List<string> { "ActionEnthrall", "ActionCommune" } },
+                    { 250f, new List<string> { "ActionPacify", "ActionSubspaceSwap" } },
+                    { 400f, new List<string> { /*"ActionDeployDecoy",*/"ActionMaxThrallCountUpdate1" } },
+                    { 600f, new List<string> { "ActionRallyThralls", "ActionMaxThrallCountUpdate2" } },
+                    { 800f, new List<string> { "ActionBloodBond" } },
+                    { 1000f, new List<string> { "ActionMassHysteria", "ActionMaxThrallCountUpdate3" } }
+                };
+
+            default:
+                return new Dictionary<float, List<string>>();
+        }
     }
     #endregion
 
     #region Space Damage
-    public override void Update(float frameTime)
-    {
-        base.Update(frameTime);
-
-        var vampireQuery = EntityQueryEnumerator<VampireComponent>();
-        while (vampireQuery.MoveNext(out var uid, out var vampireComponent))
-        {
-            if (IsInSpace(uid))
-            {
-                if (vampireComponent.NextSpaceDamageTick <= 0)
-                {
-                    vampireComponent.NextSpaceDamageTick = 1;
-                    DoSpaceDamage((uid, vampireComponent));
-                }
-                vampireComponent.NextSpaceDamageTick -= frameTime;
-            }
-
-            if (vampireComponent.NullDamage > 0)
-            {
-                if (vampireComponent.NextNullDamageTick <= 0)
-                {
-                    vampireComponent.NextNullDamageTick = 2;
-                    vampireComponent.NullDamage -= FixedPoint2.New(2);
-                    if (vampireComponent.NullDamage < 0)
-                    {
-                        vampireComponent.NullDamage = FixedPoint2.Zero;
-                    }
-                }
-                vampireComponent.NextNullDamageTick -= frameTime;
-            }
-        }
-    }
-
     private void DoSpaceDamage(Entity<VampireComponent> vampire)
     {
         _damage.TryChangeDamage(vampire, VampireComponent.SpaceDamage, true, origin: vampire);
@@ -356,7 +471,9 @@ public sealed partial class VampireSystem : SharedVampireSystem
     #region Distribute Damage
     private void OnDamageChanged(EntityUid uid, VampireComponent component, ref DamageChangedEvent args)
     {
-        if (args.Origin.HasValue && TryComp<HandsComponent>(args.Origin.Value, out var hands))
+        // Null Rode Damage
+        if (args.Origin.HasValue && TryComp<HandsComponent>(args.Origin.Value, out var hands)
+            && HasComp<BibleUserComponent>(args.Origin.Value) && !component.TruePowerActive)
         {
             foreach (var hand in hands.Hands.Values)
             {
@@ -376,6 +493,7 @@ public sealed partial class VampireSystem : SharedVampireSystem
             }
         }
 
+        // Distribute Damage
         if (_isDamageBeingHandled || !component.IsDamageSharingActive
             || component.ThrallOwned.Count == 0 || args.DamageDelta is null
             || IsNegativeDamage(args.DamageDelta))
@@ -451,6 +569,24 @@ public sealed partial class VampireSystem : SharedVampireSystem
             _stun.TryParalyze(uid, stunTime, true);
             _popup.PopupEntity(Loc.GetString("thrall-break-control", ("name", name)), uid);
         }
+    }
+    #endregion
+
+    #region True Power
+    private void MakeImmuneToHoly(EntityUid vampire, VampireComponent component)
+    {
+        if (TryComp<ReactiveComponent>(vampire, out var reactive))
+        {
+            if (reactive.ReactiveGroups == null)
+                return;
+
+            reactive.ReactiveGroups.Remove("Unholy");
+        }
+
+        component.TruePowerActive = true;
+        RemComp<UnholyComponent>(vampire);
+
+        _popup.PopupEntity(Loc.GetString("vampire-true-power"), vampire, vampire, PopupType.Medium);
     }
     #endregion
 }

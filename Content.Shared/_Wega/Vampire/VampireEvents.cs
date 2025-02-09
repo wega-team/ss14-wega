@@ -6,8 +6,6 @@ using Robust.Shared.Serialization;
 namespace Content.Shared.Vampire;
 
 // Base
-public sealed partial class VampireShopActionEvent : InstantActionEvent { }
-
 public sealed partial class VampireSelectClassActionEvent : InstantActionEvent { }
 
 public sealed partial class VampireRejuvenateActionEvent : InstantActionEvent { }

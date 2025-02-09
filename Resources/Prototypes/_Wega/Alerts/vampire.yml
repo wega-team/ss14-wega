@@ -1,0 +1,24 @@
+- type: alert
+  id: BloodAlert
+  category: Counter
+  icons:
+  - sprite: /Textures/_Wega/Interface/Alerts/bloodcounter.rsi
+    state: blood0
+  alertViewEntity: AlertBloodSpriteView
+  name: alerts-vampire-blood-name
+  description: alerts-vampire-blood-desc
+
+- type: entity
+  id: AlertBloodSpriteView
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: /Textures/_Wega/Interface/Alerts/bloodcounter.rsi
+    layers:
+    - map: [ "enum.AlertVisualLayers.Base" ]
+    - map: [ "enum.VampireVisualLayers.Digit1" ]
+      offset: 0.2, 0.25
+    - map: [ "enum.VampireVisualLayers.Digit2" ]
+      offset: 0.325, 0.25
+    - map: [ "enum.VampireVisualLayers.Digit3" ]
+      offset: 0.45, 0.25

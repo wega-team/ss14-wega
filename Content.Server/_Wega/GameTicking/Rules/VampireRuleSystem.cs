@@ -6,7 +6,6 @@ using Content.Server.GameTicking.Rules.Components;
 using Content.Server.Roles;
 using Content.Server.Temperature.Components;
 using Content.Server.Actions;
-using Content.Shared.Actions;
 using Content.Shared.Atmos;
 using Content.Shared.Atmos.Rotting;
 using Content.Shared.Body.Components;
@@ -20,7 +19,6 @@ using Content.Shared.Humanoid;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Temperature.Components;
 using Content.Shared.Vampire.Components;
-using Robust.Shared.Timing;
 
 namespace Content.Server.GameTicking.Rules
 {
@@ -31,7 +29,6 @@ namespace Content.Server.GameTicking.Rules
         [Dependency] private readonly MetabolizerSystem _metabolism = default!;
         [Dependency] private readonly ActionsSystem _actions = default!;
         [Dependency] private readonly DamageableSystem _damage = default!;
-        [Dependency] private readonly IGameTiming _timing = default!;
 
         public override void Initialize()
         {
@@ -39,12 +36,6 @@ namespace Content.Server.GameTicking.Rules
 
             SubscribeLocalEvent<VampireRuleComponent, AfterAntagEntitySelectedEvent>(OnVampireSelected);
             SubscribeLocalEvent<VampireRoleComponent, GetBriefingEvent>(OnVampireBriefing);
-        }
-
-        protected override void Started(EntityUid uid, VampireRuleComponent component, GameRuleComponent gameRule, GameRuleStartedEvent args)
-        {
-            base.Started(uid, component, gameRule, args);
-            component.CommandCheck = _timing.CurTime + component.TimerWait;
         }
 
         private void OnVampireSelected(Entity<VampireRuleComponent> mindId, ref AfterAntagEntitySelectedEvent args)
@@ -131,7 +122,7 @@ namespace Content.Server.GameTicking.Rules
                 {
                     if (TryComp<MetabolizerComponent>(organ.Id, out var metabolizer))
                     {
-                        if (TryComp<StomachComponent>(organ.Id, out var stomachComponent))
+                        if (TryComp<StomachComponent>(organ.Id, out _))
                             _metabolism.ClearMetabolizerTypes(metabolizer);
 
                         _metabolism.TryAddMetabolizerType(metabolizer, VampireComponent.MetabolizerVampire);
@@ -140,7 +131,7 @@ namespace Content.Server.GameTicking.Rules
             }
         }
 
-        private void SetVampireComponents(EntityUid vampire, VampireComponent vampireComponent)
+        private void SetVampireComponents(EntityUid vampire, VampireComponent _)
         {
             if (TryComp<TemperatureComponent>(vampire, out var temperatureComponent))
                 temperatureComponent.ColdDamageThreshold = Atmospherics.TCMB;
@@ -175,7 +166,6 @@ namespace Content.Server.GameTicking.Rules
             var actionPrototypes = new[]
             {
                 VampireComponent.DrinkActionPrototype,
-                VampireComponent.StoreActionPrototype,
                 VampireComponent.SelectClassActionPrototype,
                 VampireComponent.RejuvenateActionPrototype,
                 VampireComponent.GlareActionPrototype
@@ -183,11 +173,7 @@ namespace Content.Server.GameTicking.Rules
 
             foreach (var actionPrototype in actionPrototypes)
             {
-                var action = _actions.AddAction(vampire, actionPrototype);
-                if (action.HasValue && TryComp<InstantActionComponent>(action, out var instantActionComponent))
-                {
-                    var actionEvent = instantActionComponent.Event;
-                }
+                _actions.AddAction(vampire, actionPrototype);
             }
         }
     }

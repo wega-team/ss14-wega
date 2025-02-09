@@ -1,3 +1,4 @@
+using Content.Client.Alerts;
 using Content.Client.Movement.Systems;
 using Content.Shared.StatusIcon.Components;
 using Content.Shared.Vampire;
@@ -19,6 +20,7 @@ public sealed class VampireSystem : SharedVampireSystem
         SubscribeNetworkEvent<VampireToggleFovEvent>(OnToggleFoV);
         SubscribeLocalEvent<VampireComponent, GetStatusIconsEvent>(GetVampireIcons);
         SubscribeLocalEvent<ThrallComponent, GetStatusIconsEvent>(GetThrallIcons);
+        SubscribeLocalEvent<VampireComponent, UpdateAlertSpriteEvent>(OnUpdateAlert);
     }
 
     private void OnToggleFoV(VampireToggleFovEvent args)
@@ -41,5 +43,17 @@ public sealed class VampireSystem : SharedVampireSystem
 
         var iconPrototype = _prototype.Index(ent.Comp.StatusIcon);
         args.StatusIcons.Add(iconPrototype);
+    }
+
+    private void OnUpdateAlert(Entity<VampireComponent> ent, ref UpdateAlertSpriteEvent args)
+    {
+        if (args.Alert.ID != ent.Comp.BloodAlert)
+            return;
+
+        var sprite = args.SpriteViewEnt.Comp;
+        var blood = Math.Clamp(ent.Comp.CurrentBlood.Int(), 0, 999);
+        sprite.LayerSetState(VampireVisualLayers.Digit1, $"{(blood / 100) % 10}");
+        sprite.LayerSetState(VampireVisualLayers.Digit2, $"{(blood / 10) % 10}");
+        sprite.LayerSetState(VampireVisualLayers.Digit3, $"{blood % 10}");
     }
 }

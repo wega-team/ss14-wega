@@ -13,7 +13,6 @@ using Content.Shared.Actions;
 using Content.Shared.Body.Components;
 using Content.Shared.Chat.Prototypes;
 using Content.Shared.Chemistry.Components;
-using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Clothing;
 using Content.Shared.CombatMode;
 using Content.Shared.CombatMode.Pacification;
@@ -38,8 +37,6 @@ using Content.Shared.Stealth;
 using Content.Shared.Stealth.Components;
 using Content.Shared.StatusEffect;
 using Content.Shared.Standing;
-using Content.Shared.Store;
-using Content.Shared.Store.Components;
 using Content.Shared.Stunnable;
 using Content.Shared.Vampire;
 using Content.Shared.Vampire.Components;
@@ -63,7 +60,6 @@ namespace Content.Server.Vampire;
 public sealed partial class VampireSystem
 {
     [Dependency] private readonly IEntityManager _entityManager = default!;
-    [Dependency] private readonly IEntityNetworkManager _entityNetworkManager = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly LoadoutSystem _loadout = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
@@ -75,7 +71,6 @@ public sealed partial class VampireSystem
     [Dependency] private readonly TileSystem _tile = default!;
     [Dependency] private readonly PrayerSystem _prayerSystem = default!;
     [Dependency] private readonly QuickDialogSystem _quickDialog = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
     [Dependency] private readonly AntagSelectionSystem _antag = default!;
     [Dependency] private readonly HallucinationsSystem _hallucinations = default!;
     [Dependency] private readonly StatusEffectsSystem _statusEffect = default!;
@@ -137,18 +132,15 @@ public sealed partial class VampireSystem
     #region Select Class
     private void SelectClass(EntityUid uid, VampireComponent component, VampireSelectClassActionEvent args)
     {
-        if (TryComp<StoreComponent>(uid, out var store))
+        if (component.CurrentBlood >= 150)
         {
-            if (store.Balance.TryGetValue(VampireComponent.CurrencyProto, out var bloodEssence) && bloodEssence >= 150)
-            {
-                var netEntity = _entityManager.GetNetEntity(uid);
-                RaiseNetworkEvent(new SelectClassPressedEvent(netEntity));
-            }
-            else
-            {
-                _popup.PopupEntity(Loc.GetString("vampire-hungry"), uid, uid, PopupType.SmallCaution);
-                return;
-            }
+            var netEntity = _entityManager.GetNetEntity(uid);
+            RaiseNetworkEvent(new SelectClassPressedEvent(netEntity));
+        }
+        else
+        {
+            _popup.PopupEntity(Loc.GetString("vampire-hungry"), uid, uid, PopupType.SmallCaution);
+            return;
         }
         args.Handled = true;
     }
@@ -156,7 +148,7 @@ public sealed partial class VampireSystem
     private void OnClassSelected(VampireSelectClassMenuClosedEvent args, EntitySessionEventArgs eventArgs)
     {
         var uid = _entityManager.GetEntity(args.Uid);
-        if (!TryComp<ActionsContainerComponent>(uid, out var cont))
+        if (!TryComp<ActionsContainerComponent>(uid, out var cont) || !TryComp<VampireComponent>(uid, out var vampire))
             return;
 
         var container = cont?.Container;
@@ -176,11 +168,8 @@ public sealed partial class VampireSystem
             }
         }
 
-        if (TryComp<StoreComponent>(uid, out var storeComponent))
-        {
-            var selectedCategory = GetClassCategory(args.SelectedClass);
-            storeComponent.Categories.Add(selectedCategory);
-        }
+        vampire.CurrentEvolution = args.SelectedClass;
+        UpdatePowers(uid, vampire);
 
         if (args.SelectedClass is "Gargantua")
         {
@@ -204,11 +193,7 @@ public sealed partial class VampireSystem
                             _action.RemoveAction(uid, actionId);
                             _container.Remove(actionId, container);
 
-                            var newAction = _action.AddAction(uid, "ActionVampireRejuvenateAdvanced");
-                            if (newAction.HasValue && TryComp<InstantActionComponent>(newAction.Value, out var newInstantActionComponent))
-                            {
-                                var newActionEvent = newInstantActionComponent.Event;
-                            }
+                            _action.AddAction(uid, "ActionVampireRejuvenateAdvanced");
                             break;
                         }
                     }
@@ -216,25 +201,12 @@ public sealed partial class VampireSystem
             }
         }
     }
-
-    private ProtoId<StoreCategoryPrototype> GetClassCategory(string selectedClass)
-    {
-        return selectedClass switch
-        {
-            "Hemomancer" => "VampireHemomancer",
-            "Umbrae" => "VampireUmbrae",
-            "Gargantua" => "VampireGargantua",
-            "Dantalion" => "VampireDantalion",
-            //"Bestia" => "VampireBestia",
-            _ => throw new ArgumentException(nameof(selectedClass))
-        };
-    }
     #endregion
 
     #region Basic Abilities
     private void OnRejuvenate(EntityUid uid, VampireComponent component, VampireRejuvenateActionEvent args)
     {
-        if (!_mobThreshold.TryGetThresholdForState(uid, MobState.Dead, out var health))
+        if (!_mobThreshold.TryGetThresholdForState(uid, MobState.Dead, out _))
         {
             _popup.PopupEntity(Loc.GetString("vampire-heal-dead"), uid, uid, PopupType.SmallCaution);
             return;
@@ -247,8 +219,7 @@ public sealed partial class VampireSystem
             TryRemoveKnockdown(uid);
         }
 
-        if (TryComp<StoreComponent>(uid, out var store) &&
-            store.Balance.TryGetValue(VampireComponent.CurrencyProto, out var bloodEssence) && bloodEssence >= 200)
+        if (component.CurrentBlood >= 200)
         {
             var damageTypes = new[] { "Asphyxiation", "Blunt", "Slash", "Piercing", "Heat", "Poison" };
 
@@ -280,7 +251,7 @@ public sealed partial class VampireSystem
         if (HasComp<VampireComponent>(target) || HasComp<FlashImmunityComponent>(target))
             return;
 
-        if (HasComp<BibleUserComponent>(target))
+        if (HasComp<BibleUserComponent>(target) && !component.TruePowerActive)
         {
             _stun.TryParalyze(vampire, TimeSpan.FromSeconds(5f), true);
             _chat.TryEmoteWithoutChat(vampire, _prototypeManager.Index<EmotePrototype>("Scream"), true);
@@ -366,7 +337,6 @@ public sealed partial class VampireSystem
         }
 
         var targetCoords = args.Coords.Value;
-
         if (args.UseCasterDirection)
         {
             var transform = Transform(uid);
@@ -391,9 +361,6 @@ public sealed partial class VampireSystem
 
     public void OnSanguinePoolAction(EntityUid uid, VampireComponent component, VampireSanguinePoolActionEvent args)
     {
-        if (Deleted(uid))
-            return;
-
         if (!CheckBloodEssence(uid, 30))
         {
             _popup.PopupEntity(Loc.GetString("vampire-blood-sacrifice-insufficient-blood"), uid, uid, PopupType.SmallCaution);
@@ -401,7 +368,6 @@ public sealed partial class VampireSystem
         }
 
         var polymorphedEntity = _polymorph.PolymorphEntity(uid, args.PolymorphProto);
-
         if (polymorphedEntity is null)
             return;
 
@@ -432,8 +398,7 @@ public sealed partial class VampireSystem
             }
         }
 
-        /// TODO почнить это говно
-
+        /// TODO почнить это говно -> Реально говно
         /*if (nearbyHumanoids is null)
         {
             var mapId = _transform.GetMapId(uid);
@@ -506,18 +471,14 @@ public sealed partial class VampireSystem
             return;
         }
 
-        var originCoords = _transform.GetMapCoordinates(uid);
         var puddlesInRange = _entityLookup
-            .GetEntitiesInRange<PuddleComponent>(originCoords, 4f)
-            .Where(puddle =>
-                TryComp(puddle.Owner, out ContainerManagerComponent? containerManager) &&
-                containerManager.Containers.TryGetValue("solution@puddle", out var container) &&
-                container.ContainedEntities.Any(containedEntity =>
-                    TryComp(containedEntity, out SolutionComponent? solutionComponent) &&
-                    (solutionComponent.Solution.ContainsReagent(new ReagentId("Blood", null)) ||
-                    solutionComponent.Solution.ContainsReagent(new ReagentId("CopperBlood", null)))
-                )
-            )
+            .GetEntitiesInRange<PuddleComponent>(Transform(uid).Coordinates, 4f)
+            .Where(puddle => TryComp(puddle.Owner, out ContainerManagerComponent? containerManager) &&
+                            containerManager.Containers.TryGetValue("solution@puddle", out var container) &&
+                            container.ContainedEntities.Any(containedEntity =>
+                                TryComp(containedEntity, out SolutionComponent? solutionComponent) &&
+                                solutionComponent.Solution.Contents.Any(r =>
+                                    r.Reagent.Prototype == "Blood" || r.Reagent.Prototype == "CopperBlood")))
             .ToList();
 
         foreach (var puddleEntity in puddlesInRange)
@@ -549,14 +510,14 @@ public sealed partial class VampireSystem
 
     private void OnBloodBringersRite(EntityUid uid, VampireComponent component, VampireBloodBringersRiteActionEvent args)
     {
-        if (component.IsTruePowerActive)
+        if (component.PowerActive)
         {
-            component.IsTruePowerActive = false;
+            component.PowerActive = false;
             args.Handled = true;
             return;
         }
 
-        component.IsTruePowerActive = true;
+        component.PowerActive = true;
         _popup.PopupEntity(Loc.GetString("vampire-blood-true-power-started"), uid, uid, PopupType.SmallCaution);
 
         bool bloodSpawned = false;
@@ -566,18 +527,16 @@ public sealed partial class VampireSystem
 
         void ExecuteTick()
         {
-            if (Deleted(uid) || !component.IsTruePowerActive)
+            if (Deleted(uid) || !component.PowerActive)
             {
-                component.IsTruePowerActive = false;
+                component.PowerActive = false;
                 return;
             }
 
-            if (!TryComp(uid, out StoreComponent? store) ||
-                !store.Balance.TryGetValue(VampireComponent.CurrencyProto, out var bloodEssence) ||
-                bloodEssence < 10)
+            if (component.CurrentBlood < 10)
             {
                 _popup.PopupEntity(Loc.GetString("vampire-blood-sacrifice-insufficient-blood"), uid, uid, PopupType.SmallCaution);
-                component.IsTruePowerActive = false;
+                component.PowerActive = false;
                 return;
             }
 
@@ -635,44 +594,34 @@ public sealed partial class VampireSystem
             return;
         }
 
-        if (TryComp<StealthComponent>(uid, out var stealthComponent))
+        if (!HasComp<StealthComponent>(uid))
         {
-            if (TryComp(uid, out MovementSpeedModifierComponent? speedmodComponent))
-            {
-                var originalWalkSpeed = speedmodComponent.CurrentWalkSpeed;
-                var originalSprintSpeed = speedmodComponent.CurrentSprintSpeed;
-
-                if (stealthComponent.Enabled)
-                {
-                    _stealth.SetEnabled(uid, false, stealthComponent);
-                    _speed.ChangeBaseSpeed(uid, originalWalkSpeed - 0.78f, originalSprintSpeed - 1.32f, speedmodComponent.Acceleration, speedmodComponent);
-                    _popup.PopupEntity(Loc.GetString("vampire-stealth-disabled"), uid, uid, PopupType.Small);
-                }
-                else
-                {
-                    _stealth.SetEnabled(uid, true, stealthComponent);
-                    _speed.ChangeBaseSpeed(uid, originalWalkSpeed + 0.78f, originalSprintSpeed + 1.32f, speedmodComponent.Acceleration, speedmodComponent);
-                    _popup.PopupEntity(Loc.GetString("vampire-stealth-enabled"), uid, uid, PopupType.Small);
-                    SubtractBloodEssence(uid, 10);
-                }
-            }
+            var newStealth = EnsureComp<StealthComponent>(uid);
+            _stealth.SetVisibility(uid, 0.3f, newStealth);
+            _stealth.SetEnabled(uid, false, newStealth);
         }
-        else
+
+        if (TryComp(uid, out MovementSpeedModifierComponent? speedmodComponent))
         {
-            var newStealth = AddComp<StealthComponent>(uid);
-            if (newStealth != null)
+            var originalWalkSpeed = speedmodComponent.BaseWalkSpeed;
+            var originalSprintSpeed = speedmodComponent.BaseSprintSpeed;
+            var stealthComponent = _entityManager.GetComponent<StealthComponent>(uid);
+            if (TryComp(uid, out MobStateComponent? mobState) && mobState.CurrentState == MobState.PreCritical)
             {
-                _stealth.SetVisibility(uid, 0.3f, newStealth);
-                _stealth.SetEnabled(uid, true, newStealth);
+                args.Handled = true;
+                return;
+            }
 
-                if (TryComp(uid, out MovementSpeedModifierComponent? speedmodComponent))
-                {
-                    var originalWalkSpeed = speedmodComponent.CurrentWalkSpeed;
-                    var originalSprintSpeed = speedmodComponent.CurrentSprintSpeed;
-
-                    _speed.ChangeBaseSpeed(uid, originalWalkSpeed + 0.78f, originalSprintSpeed + 1.32f, speedmodComponent.Acceleration, speedmodComponent);
-                }
-
+            if (stealthComponent.Enabled)
+            {
+                _stealth.SetEnabled(uid, false, stealthComponent);
+                _speed.ChangeBaseSpeed(uid, originalWalkSpeed / 1.3f, originalSprintSpeed / 1.3f, speedmodComponent.Acceleration, speedmodComponent);
+                _popup.PopupEntity(Loc.GetString("vampire-stealth-disabled"), uid, uid, PopupType.Small);
+            }
+            else
+            {
+                _stealth.SetEnabled(uid, true, stealthComponent);
+                _speed.ChangeBaseSpeed(uid, originalWalkSpeed * 1.3f, originalSprintSpeed * 1.3f, speedmodComponent.Acceleration, speedmodComponent);
                 _popup.PopupEntity(Loc.GetString("vampire-stealth-enabled"), uid, uid, PopupType.Small);
                 SubtractBloodEssence(uid, 10);
             }
@@ -732,7 +681,7 @@ public sealed partial class VampireSystem
         }
 
         args.Handled = true;
-        _doAfterSystem.TryStartDoAfter(new DoAfterArgs(EntityManager, uid, TimeSpan.FromSeconds(15f), new SoulAnchorDoAfterEvent(), uid)
+        _doAfter.TryStartDoAfter(new DoAfterArgs(EntityManager, uid, TimeSpan.FromSeconds(15f), new SoulAnchorDoAfterEvent(), uid)
         {
             BreakOnMove = false,
             NeedHand = false,
@@ -857,31 +806,31 @@ public sealed partial class VampireSystem
     private void OnEternalDarkness(EntityUid uid, VampireComponent component, VampireEternalDarknessActionEvent args)
     {
         var netEntity = _entityManager.GetNetEntity(uid);
-        if (component.IsTruePowerActive)
+        if (component.PowerActive)
         {
-            component.IsTruePowerActive = false;
+            component.PowerActive = false;
             RaiseNetworkEvent(new VampireToggleFovEvent(netEntity));
             args.Handled = true;
             return;
         }
 
-        component.IsTruePowerActive = true;
+        component.PowerActive = true;
         RaiseNetworkEvent(new VampireToggleFovEvent(netEntity));
         _popup.PopupEntity(Loc.GetString("vampire-blood-true-power-started"), uid, uid, PopupType.SmallCaution);
 
         void ExecuteTick()
         {
-            if (Deleted(uid) || !component.IsTruePowerActive)
+            if (Deleted(uid) || !component.PowerActive)
             {
-                component.IsTruePowerActive = false;
+                component.PowerActive = false;
                 args.Handled = true;
                 return;
             }
 
-            if (!TryComp(uid, out StoreComponent? store) || !store.Balance.TryGetValue(VampireComponent.CurrencyProto, out var bloodEssence) || bloodEssence < 5)
+            if (component.CurrentBlood < 5)
             {
                 _popup.PopupEntity(Loc.GetString("vampire-blood-sacrifice-insufficient-blood"), uid, uid, PopupType.SmallCaution);
-                component.IsTruePowerActive = false;
+                component.PowerActive = false;
                 RaiseNetworkEvent(new VampireToggleFovEvent(netEntity));
                 return;
             }
@@ -913,9 +862,7 @@ public sealed partial class VampireSystem
             TryRemoveKnockdown(uid);
         }
 
-        if (TryComp<StoreComponent>(uid, out var store) &&
-            store.Balance.TryGetValue(VampireComponent.CurrencyProto, out var bloodEssence) && bloodEssence >= 200 &&
-            TryComp<DamageableComponent>(uid, out var damageableComponent))
+        if (component.CurrentBlood >= 200 && TryComp<DamageableComponent>(uid, out var damageableComponent))
         {
             var totalDamage = damageableComponent.Damage.DamageDict.Values.Sum(d => d.Float());
 
@@ -1129,8 +1076,7 @@ public sealed partial class VampireSystem
 
     private void OnDemonicGrasp(EntityUid uid, VampireComponent component, VampireDemonicGraspActionEvent args)
     {
-        if (!TryComp<CombatModeComponent>(uid, out var combatMode) || !TryComp<TransformComponent>(uid, out var vampireTransform)
-            || !TryComp<TransformComponent>(args.Target, out var targetTransform))
+        if (!TryComp<CombatModeComponent>(uid, out var combatMode))
             return;
 
         if (!CheckBloodEssence(uid, 10))
@@ -1197,13 +1143,13 @@ public sealed partial class VampireSystem
             return;
         }
 
-        if (_entityManager.TryGetComponent(targetEntity, out DestructibleComponent? destructible))
+        if (_entityManager.TryGetComponent(targetEntity, out DestructibleComponent? _))
         {
             var damage = new DamageSpecifier { DamageDict = { { "Structural", 150 } } };
             _damage.TryChangeDamage(targetEntity, damage, origin: uid);
         }
 
-        if (_entityManager.TryGetComponent(targetEntity, out BodyComponent? body))
+        if (_entityManager.TryGetComponent(targetEntity, out BodyComponent? _))
         {
             var damage = new DamageSpecifier { DamageDict = { { "Blunt", 60 } } };
             _damage.TryChangeDamage(targetEntity, damage, ignoreResistances: false, origin: uid);
@@ -1266,7 +1212,7 @@ public sealed partial class VampireSystem
         args.Handled = true;
         var netTarget = _entityManager.GetNetEntity(target);
         _popup.PopupEntity(Loc.GetString("vampire-blooddrink-countion"), uid, args.Target, PopupType.MediumCaution);
-        _doAfterSystem.TryStartDoAfter(new DoAfterArgs(EntityManager, uid, TimeSpan.FromSeconds(15f), new EnthrallDoAfterEvent(netTarget), uid)
+        _doAfter.TryStartDoAfter(new DoAfterArgs(EntityManager, uid, TimeSpan.FromSeconds(15f), new EnthrallDoAfterEvent(netTarget), uid)
         {
             BreakOnMove = true,
             BreakOnDamage = true,
@@ -1281,7 +1227,7 @@ public sealed partial class VampireSystem
         if (args.Cancelled) return;
 
         var target = _entityManager.GetEntity(args.Target);
-        if (!TryComp<ActorComponent>(target, out var playerActor))
+        if (!TryComp<ActorComponent>(target, out _))
             return;
 
         EnsureComp<UnholyComponent>(target);
@@ -1402,16 +1348,13 @@ public sealed partial class VampireSystem
 
     private void OnRallyThralls(EntityUid uid, VampireComponent component, VampireRallyThrallsActionEvent args)
     {
-        if (!TryComp<TransformComponent>(uid, out var vampireTransform))
-            return;
-
         if (!CheckBloodEssence(uid, 40))
         {
             _popup.PopupEntity(Loc.GetString("vampire-blood-sacrifice-insufficient-blood"), uid, uid, PopupType.SmallCaution);
             return;
         }
 
-        var thrallsInRange = _entityLookup.GetEntitiesInRange<ThrallComponent>(vampireTransform.Coordinates, 7f);
+        var thrallsInRange = _entityLookup.GetEntitiesInRange<ThrallComponent>(Transform(uid).Coordinates, 7f);
         foreach (var thrallEntity in thrallsInRange)
         {
             if (TryComp<StaminaComponent>(thrallEntity.Owner, out var staminaComponent))
@@ -1434,31 +1377,31 @@ public sealed partial class VampireSystem
             return;
         }
 
-        if (component.IsTruePowerActive)
+        if (component.PowerActive)
         {
-            component.IsTruePowerActive = false;
+            component.PowerActive = false;
             component.IsDamageSharingActive = false;
 
             args.Handled = true;
             return;
         }
 
-        component.IsTruePowerActive = true;
+        component.PowerActive = true;
         component.IsDamageSharingActive = true;
 
         void ExecuteTick()
         {
-            if (Deleted(uid) || !component.IsTruePowerActive)
+            if (Deleted(uid) || !component.PowerActive)
             {
-                component.IsTruePowerActive = false;
+                component.PowerActive = false;
                 component.IsDamageSharingActive = false;
                 return;
             }
 
-            if (!TryComp(uid, out StoreComponent? store) || !store.Balance.TryGetValue(VampireComponent.CurrencyProto, out var bloodEssence) || bloodEssence < 5)
+            if (component.CurrentBlood < 5)
             {
                 _popup.PopupEntity(Loc.GetString("vampire-blood-sacrifice-insufficient-blood"), uid, uid, PopupType.SmallCaution);
-                component.IsTruePowerActive = false;
+                component.PowerActive = false;
                 component.IsDamageSharingActive = false;
                 return;
             }
@@ -1475,9 +1418,6 @@ public sealed partial class VampireSystem
 
     private void OnMassHysteria(EntityUid uid, VampireComponent component, VampireMassHysteriaActionEvent args)
     {
-        if (!TryComp<TransformComponent>(uid, out var vampireTransform))
-            return;
-
         if (!CheckBloodEssence(uid, 40))
         {
             _popup.PopupEntity(Loc.GetString("vampire-blood-sacrifice-insufficient-blood"), uid, uid, PopupType.SmallCaution);
@@ -1485,7 +1425,7 @@ public sealed partial class VampireSystem
         }
 
         var victimInRange = _entityLookup
-            .GetEntitiesInRange<BodyComponent>(vampireTransform.Coordinates, 8f)
+            .GetEntitiesInRange<BodyComponent>(Transform(uid).Coordinates, 8f)
             .Where(entity => entity.Owner != uid)
             .ToList();
         foreach (var victimEntity in victimInRange)

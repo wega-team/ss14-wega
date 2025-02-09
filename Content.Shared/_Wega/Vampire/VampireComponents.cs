@@ -1,20 +1,19 @@
+using Content.Shared.Alert;
 using Content.Shared.Body.Prototypes;
 using Content.Shared.Damage;
 using Content.Shared.FixedPoint;
 using Content.Shared.StatusIcon;
-using Content.Shared.Store;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared.Vampire.Components;
 
 [RegisterComponent, NetworkedComponent]
+[AutoGenerateComponentState]
 public sealed partial class VampireComponent : Component
 {
-    [ValidatePrototypeId<CurrencyPrototype>]
-    public static readonly string CurrencyProto = "BloodEssence";
-
     [ValidatePrototypeId<MetabolizerTypePrototype>]
     public static readonly string MetabolizerVampire = "Vampire";
 
@@ -32,9 +31,6 @@ public sealed partial class VampireComponent : Component
     public static readonly string DrinkActionPrototype = "ActionDrinkBlood";
 
     [ValidatePrototypeId<EntityPrototype>]
-    public static readonly string StoreActionPrototype = "ActionVampireShop";
-
-    [ValidatePrototypeId<EntityPrototype>]
     public static readonly string SelectClassActionPrototype = "ActionVampireSelectClass";
 
     [ValidatePrototypeId<EntityPrototype>]
@@ -48,16 +44,34 @@ public sealed partial class VampireComponent : Component
         new AudioParams() { Volume = -3f, MaxDistance = 3f }
     );
 
+    [DataField, ViewVariables(VVAccess.ReadOnly)]
+    public string? CurrentEvolution { get; set; }
+
+    /// <summary>
+    /// The current amount of blood in the vampire's account.
+    /// </summary>
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    [AutoNetworkedField]
+    public FixedPoint2 CurrentBlood = 0;
+
     [DataField("vampireStatusIcon")]
     public ProtoId<FactionIconPrototype> StatusIcon { get; set; } = "VampireFaction";
 
+    [DataField]
+    public ProtoId<AlertPrototype> BloodAlert = "BloodAlert";
+
+    /// <summary>
+    /// Fields for counting the total amount of blood consumed after the end of the round
+    /// </summary>
     public float TotalBloodDrank = 0;
 
     public float NextSpaceDamageTick { get; set; }
 
     public float NextNullDamageTick { get; set; }
 
-    public bool IsTruePowerActive = false;
+    public bool TruePowerActive = false;
+
+    public bool PowerActive = false;
 
     public bool IsDamageSharingActive = false;
 
@@ -65,37 +79,47 @@ public sealed partial class VampireComponent : Component
     public FixedPoint2 NullDamage = 0;
 
     [DataField]
-    public float MouthVolume = 5;
-
-    [DataField]
     public int ThrallCount = 0;
 
     [DataField]
     public int MaxThrallCount = 1;
 
-    [DataField]
+    [DataField, ViewVariables(VVAccess.ReadOnly)]
     public List<EntityUid> ThrallOwned = new();
-}
 
-[RegisterComponent, NetworkedComponent]
-public sealed partial class ThrallComponent : Component
-{
-    [DataField]
-    public EntityUid? VampireOwner = null;
-
-    [DataField]
-    public ProtoId<FactionIconPrototype> StatusIcon = "ThrallFaction";
+    [DataField, ViewVariables(VVAccess.ReadOnly)]
+    public List<string> AcquiredSkills = new List<string>();
 }
 
 /// <summary>
 /// Marks an entity as taking damage when hit by a bible, rather than being healed
 /// </summary>
 [RegisterComponent]
-public sealed partial class UnholyComponent : Component { }
+public sealed partial class UnholyComponent : Component;
 
 [RegisterComponent]
 public sealed partial class BeaconSoulComponent : Component
 {
     [DataField]
     public EntityUid VampireOwner = EntityUid.Invalid;
+}
+
+/// <summary>
+/// A component for testing vampire arson near holy sites.
+/// </summary>
+[RegisterComponent]
+public sealed partial class HolyPointComponent : Component
+{
+    [DataField]
+    public float Range = 6f;
+
+    public float NextTimeTick { get; set; }
+}
+
+[Serializable, NetSerializable]
+public enum VampireVisualLayers : byte
+{
+    Digit1,
+    Digit2,
+    Digit3
 }

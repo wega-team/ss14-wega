@@ -61,7 +61,9 @@ ent-ActionVampireCharge = [color=purple]Рывок[/color]
     .desc = Сделайте рывок.
 
 # Dantalion
-ent-ActionMaxThrallCountUpdateEvent = [color=purple]Улучшить траллов[/color]
+ent-ActionMaxThrallCountUpdate1 = [color=purple]Улучшить траллов[/color]
+ent-ActionMaxThrallCountUpdate2 = [color=purple]Улучшить траллов[/color]
+ent-ActionMaxThrallCountUpdate3 = [color=purple]Улучшить траллов[/color]
 ent-ActionEnthrall = [color=purple]Порабощение[/color]
     .desc = Обратите человека на свою сторону.
 ent-ActionCommune = [color=purple]Общение[/color]

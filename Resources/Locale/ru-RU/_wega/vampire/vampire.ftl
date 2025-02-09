@@ -5,8 +5,8 @@ select-class-gargantua = Гаргантюа
 select-class-dantalion = Данталион
 
 # System
+vampire-holy-point = СВЯТАЯ СИЛА ВОСПЛАМЕНЯЕТ ВАШУ КОЖУ!
 vampire-blooddrink-countion = Клыки впиваются в вашу шею
-
 vampire-blooddrink-self = Вы не можете пить свою кровь
 vampire-blooddrink-rotted = Оно гниет!
 vampire-blooddrink-not-vampire = Вы не можете испить кровь вампира
@@ -16,13 +16,14 @@ vampire-blooddrink-maxed-out = Вы уже насытились достаточ
 vampire-ingest-holyblood = ВЫ НЕ МОЖЕТЕ ПИТЬ СВЯТУЮ КРОВЬ!!!
 vampire-full-stomach = Вы не можете пить больше
 vampire-startlight-burning = ВАША КОЖА ПОЛЫХАЕТ!
+vampire-true-power = Вы чувствуете истинную силу
 
 # Abilities
 vampire-hungry = Вы ещё слишком голодны для эволюции
 vampire-blooddrink-countion-doafter = Вы чувствуете как становится холоднее
 vampire-heal-dead = Вы мертвы
 vampire-blood-sacrifice-insufficient-blood = У вас недостаточно крови для использования
-vampire-predator-senses-warning = Вы чувствуете что жертва рядом с { $location }
+vampire-predator-senses-warning = Вы чувствуете что жертва { $location }
 vampire-predator-senses-nobody = Вы не чувствуете жертв по близости
 vampire-predator-senses-puddle = Под вашими ногами образуется лужа крови. Это не к добру...
 vampire-blood-eruption-effect-message = Кровь бурлящая под вашими ногами поражает вас и сбивает с ног

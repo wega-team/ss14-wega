@@ -1,0 +1,9 @@
+- type: entity
+  name: holy point marker
+  id: HolyPointMarker
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: blue
+  - type: HolyPoint

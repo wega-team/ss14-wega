@@ -1,3 +1,4 @@
+# Base / Dont Touch
 - type: entity
   parent: BaseGameRule
   id: BaseStationEventGhostBarSpawn
@@ -5,6 +6,7 @@
   - type: LoadMapRule
     mapPath: /Maps/_Wega/wegabar.yml
 
+# Rules
 - type: entity
   parent: BaseGameRule
   id: Vampire
@@ -36,17 +38,6 @@
         - type: NpcFactionMember
           factions:
           - Vampire
-        - type: UserInterface
-          interfaces:
-            enum.HumanoidMarkingModifierKey.Key:
-              type: HumanoidMarkingModifierBoundUserInterface
-            enum.StrippingUiKey.Key:
-              type: StrippableBoundUserInterface
-            enum.StoreUiKey.Key:
-              type: StoreBoundUserInterface
-        - type: Store
-          currencyWhitelist:
-          - BloodEssence
         mindRoles:
         - MindRoleVampire
         briefing:

@@ -1,15 +1,5 @@
 # Basic
 - type: entity
-  id: ActionVampireShop
-  name: "[color=purple]Shop[/color]"
-  description: "Opens the ability shop."
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: InstantAction
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "store" }
-    event: !type:VampireShopActionEvent
-
-- type: entity
   id: ActionVampireSelectClass
   name: "[color=purple]Select class[/color]"
   description: "Select your class."
@@ -342,7 +332,7 @@
 
 # Dantalion
 - type: entity
-  id: ActionMaxThrallCountUpdateEvent
+  id: ActionMaxThrallCountUpdate1
   name: "[color=purple]Upgrade thralls[/color]"
   categories: [ HideSpawnMenu ]
   components:
@@ -350,6 +340,27 @@
     icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "enthrall" }
     itemIconStyle: BigAction
     event: !type:MaxThrallCountUpdateEvent
+
+- type: entity
+  id: ActionMaxThrallCountUpdate2
+  name: "[color=purple]Upgrade thralls[/color]"
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "enthrall" }
+    itemIconStyle: BigAction
+    event: !type:MaxThrallCountUpdateEvent
+
+- type: entity
+  id: ActionMaxThrallCountUpdate3
+  name: "[color=purple]Upgrade thralls[/color]"
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "enthrall" }
+    itemIconStyle: BigAction
+    event: !type:MaxThrallCountUpdateEvent
+
 
 - type: entity
   id: ActionEnthrall
