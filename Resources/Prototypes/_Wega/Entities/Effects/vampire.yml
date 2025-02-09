@@ -136,7 +136,7 @@
         Blunt: 20
 
 - type: entity
-  parent: BaseItem
+  parent: BaseStructure
   id: BeaconSoul
   name: beacon soul
   components:

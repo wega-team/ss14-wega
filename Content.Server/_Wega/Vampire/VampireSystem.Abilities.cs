@@ -588,12 +588,6 @@ public sealed partial class VampireSystem
     #region Umbrae Abilities
     private void OnCloakOfDarkness(EntityUid uid, VampireComponent component, VampireCloakOfDarknessActionEvent args)
     {
-        if (!CheckBloodEssence(uid, 10))
-        {
-            _popup.PopupEntity(Loc.GetString("vampire-blood-sacrifice-insufficient-blood"), uid, uid, PopupType.SmallCaution);
-            return;
-        }
-
         if (!HasComp<StealthComponent>(uid))
         {
             var newStealth = EnsureComp<StealthComponent>(uid);
@@ -620,6 +614,12 @@ public sealed partial class VampireSystem
             }
             else
             {
+                if (!CheckBloodEssence(uid, 10))
+                {
+                    _popup.PopupEntity(Loc.GetString("vampire-blood-sacrifice-insufficient-blood"), uid, uid, PopupType.SmallCaution);
+                    return;
+                }
+
                 _stealth.SetEnabled(uid, true, stealthComponent);
                 _speed.ChangeBaseSpeed(uid, originalWalkSpeed * 1.3f, originalSprintSpeed * 1.3f, speedmodComponent.Acceleration, speedmodComponent);
                 _popup.PopupEntity(Loc.GetString("vampire-stealth-enabled"), uid, uid, PopupType.Small);
