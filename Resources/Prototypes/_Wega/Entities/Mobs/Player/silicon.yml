@@ -10,3 +10,15 @@
   - type: SiliconLawProvider
     laws: SyndicateStatic
     lawUploadSound: /Audio/Ambience/Antag/emagged_borg.ogg
+
+- type: entity
+  id: ThiefimovCircuitBoard
+  parent: BaseElectronics
+  name: law board (Thiefimov)
+  description: An electronics board containing the Thiefimov lawset.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/module.rsi
+    state: std_mod
+  - type: SiliconLawProvider
+    laws: Thiefimov

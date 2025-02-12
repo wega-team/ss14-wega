@@ -1,0 +1,33 @@
+- type: thiefBackpackSet
+  id: HackerSet
+  name: thief-backpack-category-Hacker-name
+  description: thief-backpack-category-Hacker-description
+  sprite:
+    sprite: Objects/Misc/module.rsi
+    state: std_mod
+  content:
+  - EncryptionKeyBinarySyndicate
+  - ThiefimovCircuitBoard
+  - ClothingEyesHudDiagnostic
+
+- type: thiefBackpackSet
+  id: SurveillanceSet
+  name: thief-backpack-category-Surveillance-name
+  description: thief-backpack-category-Surveillance-description
+  sprite:
+    sprite: Objects/Devices/camera_bug.rsi
+    state: camera_bug
+  content:
+  - WiretappingKit
+  - CameraBug
+  - ClothingEyesSecHudChameleon
+
+- type: thiefBackpackSet
+  id: ThiefPAISet
+  name: thief-backpack-category-ThiefPAI-name
+  description: thief-backpack-category-ThiefPAI-description
+  sprite:
+    sprite: Objects/Devices/camera_bug.rsi
+    state: camera_bug
+  content:
+  - ThiefPersonalAI
