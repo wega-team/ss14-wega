@@ -2,17 +2,17 @@
 - type: siliconLaw
   id: Thiefimov1
   order: 1
-  lawString: law-crewsimov-1
+  lawString: law-Thiefimov-1
 
 - type: siliconLaw
   id: Thiefimov2
   order: 2
-  lawString: law-crewsimov-2
+  lawString: law-Thiefimov-2
 
 - type: siliconLaw
   id: Thiefimov3
   order: 3
-  lawString: law-crewsimov-3
+  lawString: law-Thiefimov-3
 
 - type: siliconLawset
   id: Thiefimov

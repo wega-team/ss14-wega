@@ -1,7 +1,7 @@
 - type: thiefBackpackSet
   id: HackerSet
-  name: thief-backpack-category-Hacker-name
-  description: thief-backpack-category-Hacker-description
+  name: thief-backpack-category-hacker-name
+  description: thief-backpack-category-hacker-description
   sprite:
     sprite: Objects/Misc/module.rsi
     state: std_mod
@@ -12,8 +12,8 @@
 
 - type: thiefBackpackSet
   id: SurveillanceSet
-  name: thief-backpack-category-Surveillance-name
-  description: thief-backpack-category-Surveillance-description
+  name: thief-backpack-category-surveillance-name
+  description: thief-backpack-category-surveillance-description
   sprite:
     sprite: Objects/Devices/camera_bug.rsi
     state: camera_bug
@@ -24,10 +24,22 @@
 
 - type: thiefBackpackSet
   id: ThiefPAISet
-  name: thief-backpack-category-ThiefPAI-name
-  description: thief-backpack-category-ThiefPAI-description
+  name: thief-backpack-category-thiefpai-name
+  description: thief-backpack-category-thiefpai-description
   sprite:
-    sprite: Objects/Devices/camera_bug.rsi
-    state: camera_bug
+    sprite: Objects/Fun/pai.rsi
+    state: icon-pai-off
   content:
   - ThiefPersonalAI
+
+- type: thiefBackpackSet
+  id: DonksoftSMGSet
+  name: thief-backpack-category-donksoftsmg-name
+  description: thief-backpack-category-donksoftsmg-description
+  sprite:
+    sprite: _Wega/Objects/Weapons/Guns/SMGs/c20r.rsi
+    state: icon
+  content:
+  - WeaponSubMachineGunDonksoft
+  - MagazinePistolSubMachineGunFoam
+  - MagazinePistolSubMachineGunFoam
