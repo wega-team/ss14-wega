@@ -37,7 +37,7 @@
   name: thief-backpack-category-donksoftsmg-name
   description: thief-backpack-category-donksoftsmg-description
   sprite:
-    sprite: _Wega/Objects/Weapons/Guns/SMGs/c20r.rsi
+    sprite: _Wega/Objects/Weapons/Guns/SMGs/donksoft_smg.rsi
     state: icon
   content:
   - WeaponSubMachineGunDonksoft

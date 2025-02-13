@@ -1,23 +1,23 @@
 # Thiefimov
 - type: siliconLaw
-  id: Thiefimov1
+  id: thiefimov1
   order: 1
-  lawString: law-Thiefimov-1
+  lawString: law-thiefimov-1
 
 - type: siliconLaw
-  id: Thiefimov2
+  id: thiefimov2
   order: 2
-  lawString: law-Thiefimov-2
+  lawString: law-thiefimov-2
 
 - type: siliconLaw
-  id: Thiefimov3
+  id: thiefimov3
   order: 3
-  lawString: law-Thiefimov-3
+  lawString: law-thiefimov-3
 
 - type: siliconLawset
-  id: Thiefimov
+  id: thiefimov
   laws:
-  - Thiefimov1
-  - Thiefimov2
-  - Thiefimov3
+  - thiefimov1
+  - thiefimov2
+  - thiefimov3
   obeysTo: laws-owner-thief

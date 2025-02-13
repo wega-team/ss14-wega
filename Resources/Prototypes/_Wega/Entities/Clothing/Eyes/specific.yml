@@ -3,7 +3,7 @@
   id: ClothingEyesSecHudChameleon
   name: sun glasses
   description: Useful both for security and cargonia.
-  suffix: Chameleon, Thief
+  suffix: Chameleon, hud
   components:
   - type: EyeProtection
     protectionTime: 5

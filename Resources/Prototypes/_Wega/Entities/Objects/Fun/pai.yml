@@ -1,6 +1,7 @@
 - type: entity
   parent: [PersonalAI, ShowSecurityIcons, ShowMedicalIcons]
   id: ThiefPersonalAI
+  suffix: Thief
   components:
   - type: ToggleableGhostRole
     roleName: pai-system-role-name-thief
@@ -27,3 +28,8 @@
       whitelistMind:
         mindRoles:
         - ThiefRole
+    - label: corvax-hidden-desc-thief-pai-research
+      jobRequired:
+        - ResearchAssistant
+        - ResearchDirector
+        - Scientist

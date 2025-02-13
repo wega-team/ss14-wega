@@ -2,18 +2,17 @@
   name: Donksoft SMG
   parent: BaseWeaponSubMachineGun
   id: WeaponSubMachineGunDonksoft
-  description: A toy submachine gun that strongly resembles the C-20R, which is often used by the infamous nuclear operatives.
-  # Игрушечнный пистолет пулемёт, что сильно напоминает c-20r, которое часто используют печально известные ядерные оперативники.
+  description: A toy submachine gun that strongly resembles the C-20R, which is often used by the infamous nuclear operatives. Uses .35 auto.
   components:
   - type: Sprite
-    sprite: _Wega/Objects/Weapons/Guns/SMGs/c20r.rsi
+    sprite: _Wega/Objects/Weapons/Guns/SMGs/donksoft_smg.rsi
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
     - state: mag-0
       map: ["enum.GunVisualLayers.Mag"]
   - type: Clothing
-    sprite: Objects/Weapons/Guns/SMGs/c20r.rsi
+    sprite: Objects/Weapons/Guns/SMGs/donksoft_smg.rsi
   - type: Wieldable
     unwieldOnUse: false
   - type: GunWieldBonus

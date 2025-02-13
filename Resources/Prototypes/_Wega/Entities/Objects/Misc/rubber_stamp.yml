@@ -1,0 +1,23 @@
+- type: entity
+  name: gretyide stamp
+  parent: RubberStampBase
+  id: RubberStampChameleon
+  suffix: Chameleon
+  components:
+  - type: Stamp
+    stampedName: chameleon-stamp-default-name
+    stampedColor: "#BB3232"
+    stampState: "paper_stamp-greytide"
+  - type: Sprite
+    state: stamp-greytide 
+  - type: HiddenDescription
+    entries:
+    - label: corvax-hidden-desc-chameleon-stamp
+      whitelistMind:
+        mindRoles:
+        - ThiefRole
+    - label: corvax-hidden-desc-chameleon-stamp-research
+      jobRequired:
+        - ResearchAssistant
+        - ResearchDirector
+        - Scientist

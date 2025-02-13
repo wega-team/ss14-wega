@@ -1,6 +1,6 @@
 - type: entity
   id: MagazinePistolSubMachineGunFoam
-  name: SMG magazine (foam)
+  name: SMG magazine (.35 foam)
   parent: BaseMagazinePistolSubMachineGun
   components:
   - type: BallisticAmmoProvider
