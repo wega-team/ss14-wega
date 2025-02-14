@@ -172,6 +172,13 @@
     - SleeperSet
     - CommunicatorSet
     - SmugglerSet
+    # Corvax-Wega-MoreThiefSet-start
+    - HackerSet
+    - SurveillanceSet
+    - ThiefPAISet
+    - DonksoftSMGSet
+    - BureaucracySet
+    # Corvax-Wega-MoreThiefSet-end
   - type: ActivatableUI
     key: enum.ThiefBackpackUIKey.Key
   - type: UserInterface

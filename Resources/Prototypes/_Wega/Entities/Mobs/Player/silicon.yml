@@ -21,4 +21,4 @@
     sprite: Objects/Misc/module.rsi
     state: std_mod
   - type: SiliconLawProvider
-    laws: Thiefimov
+    laws: thiefimov

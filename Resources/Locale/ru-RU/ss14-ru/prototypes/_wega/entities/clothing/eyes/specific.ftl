@@ -1,3 +1,3 @@
-ent-ClothingEyesSecHudChameleon = sun glasses
-    .desc = Useful both for security and cargonia.
+ent-ClothingEyesSecHudChameleon = { ent-ClothingEyesGlassesSunglasses }
+    .desc = { ent-ClothingEyesGlassesSunglasses-desc }
     .suffix = Хамелеон, СБ Hud 

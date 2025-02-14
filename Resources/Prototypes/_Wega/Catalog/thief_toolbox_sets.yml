@@ -9,6 +9,7 @@
   - EncryptionKeyBinarySyndicate
   - ThiefimovCircuitBoard
   - ClothingEyesHudDiagnostic
+  - Emag #TODO: Заменить в наборе синдиката емаг на обходчиков доступов полсе апстрима
 
 - type: thiefBackpackSet
   id: SurveillanceSet
@@ -43,3 +44,19 @@
   - WeaponSubMachineGunDonksoft
   - MagazinePistolSubMachineGunFoam
   - MagazinePistolSubMachineGunFoam
+
+- type: thiefBackpackSet
+  id: BureaucracySet
+  name: thief-backpack-category-bureaucracy-name
+  description: thief-backpack-category-bureaucracy-description
+  sprite:
+    sprite: Structures/Machines/fax_machine.rsi
+    state: icon
+  content:
+  - CyberPen
+  - RubberStampChameleon
+  - RubberStampApproved
+  - RubberStampDenied
+  - Multitool
+  - FaxMachineFlatpack
+  - Paper

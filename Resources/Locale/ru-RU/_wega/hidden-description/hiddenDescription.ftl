@@ -1,0 +1,3 @@
+corvax-hidden-desc-chameleon-stamp-research = [color=#D381C9]Вы можете обнаружить скрытый интерфейс, позволяющий выборочно изменять тип печати.[/color]
+corvax-hidden-desc-thief-pai =  [color=#1c9c51]Этот пИИ сильно модифицирован и имеет множество полезных скрытых функций.[/color]
+corvax-hidden-desc-thief-pai-research =  [color=#D381C9]В этот пИИ установлены дополнительные несертифицированные модули и расширенный доступ к рации.[/color]
