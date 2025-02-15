@@ -12,9 +12,9 @@
   - Emag #TODO: Заменить в наборе синдиката емаг на обходчиков доступов полсе апстрима
 
 - type: thiefBackpackSet
-  id: SurveillanceSet
-  name: thief-backpack-category-surveillance-name
-  description: thief-backpack-category-surveillance-description
+  id: SpySet
+  name: thief-backpack-category-spy-name
+  description: thief-backpack-category-spy-description
   sprite:
     sprite: Objects/Devices/camera_bug.rsi
     state: camera_bug

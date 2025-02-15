@@ -4,8 +4,8 @@ thief-backpack-category-hacker-description =
     Пусть Станционный ИИ станет вашим лучшим другом.
     В набор входит: Двоичный ключ шифрования, визор диагностики, емаг
     и плата законов "Воримов".
-thief-backpack-category-surveillance-name = Набор наблюдения
-thief-backpack-category-surveillance-description =
+thief-backpack-category-spy-name = Набор шпиона
+thief-backpack-category-spy-description =
     Наблюдайте за на наблюдателями,
     ничто не скроется от вашего взгляда.
     В набор входит: Набор прослушки, камера жучок и

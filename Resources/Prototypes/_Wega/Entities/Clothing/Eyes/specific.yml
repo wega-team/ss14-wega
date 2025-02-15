@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ClothingEyesChameleon, ShowSecurityIcons]
+  parent: ClothingEyesChameleon
   id: ClothingEyesSecHudChameleon
   name: sun glasses
   description: Useful both for security and cargonia.
@@ -8,3 +8,4 @@
   - type: EyeProtection
     protectionTime: 5
   - type: FlashImmunity
+  - type: ShowJobIcons

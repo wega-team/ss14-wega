@@ -1,2 +1,2 @@
-ent-MagazinePistolSubMachineGunFoam = автопистолетный магазин (.35 пена)
+ent-MagazinePistolSubMachineGunFoam = магазин ПП (.35 пена)
     .desc = { ent-BaseItem.desc }

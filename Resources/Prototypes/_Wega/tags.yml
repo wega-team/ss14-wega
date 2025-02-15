@@ -12,3 +12,9 @@
 
 - type: Tag
   id: Peaceflower
+
+- type: Tag
+  id: MagazinePistolSubMachineGunFoam
+
+- type: Tag
+  id: CartridgePistolFoam

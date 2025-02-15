@@ -12,3 +12,6 @@
        - state: tip
          map: [ "enum.AmmoVisualLayers.Tip" ]
          color: "#b5bcc7"
+  - type: Tag
+    tags:
+      - CartridgePistolFoam

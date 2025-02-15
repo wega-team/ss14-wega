@@ -1,3 +1,3 @@
-ent-RubberStampChameleon = { ent-RubberStampGreytide }
-    .desc = { ent-RubberStampGreytide.desc }
+ent-RubberStampChameleon = печать вора
+    .desc = { ent-RubberStampBase.desc }
     .suffix = Хамелеон

@@ -8,7 +8,7 @@
     proto: CartridgePistolFoam
     whitelist:
       tags:
-        - CartridgePistol
+        - CartridgePistolFoam
     soundInsert:
       path: /Audio/Weapons/Guns/MagIn/bullet_insert.ogg
   - type: Sprite
@@ -17,3 +17,6 @@
       map: ["enum.GunVisualLayers.Base"]
     - state: mag-1
       map: ["enum.GunVisualLayers.Mag"]
+  - type: Tag
+    tags:
+      - MagazinePistolSubMachineGunFoam
