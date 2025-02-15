@@ -12,3 +12,18 @@
     duration: 1
     earliestStart: 25
   - type: DiseaseOutbreakRule
+
+- type: entity
+  id: EvilTwin
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: StationEvent
+    minimumPlayers: 2
+    weight: 5
+    duration: 1
+    earliestStart: 40
+  - type: VentCrittersRule
+    specialEntries:
+      - id: SpawnPointEvilTwin
+        prob: 0.0

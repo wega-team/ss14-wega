@@ -6,6 +6,9 @@ ghost-role-information-construct-rules =
     Вы [color=red]Конструкт[/color], создание душу которого перенесли в новую оболочку.
     Вы обязаны слушать все что вам говорят члены культа крови.
     Вы НЕ можете вредить членам культа крови.
+ghost-role-information-evil-twin-rules =
+    Старайтесь действовать скрытно, никто не должен прознать о подмене!
+    Действуйте от лица вашего оригинала, хитрите, подставляйте, запутывайте.
 
 ghost-role-information-narsie = Нар'Си
 ghost-role-information-narsie-desc = Конец...
@@ -29,3 +32,5 @@ ghost-role-information-harvester-name = Жнец
 ghost-role-information-harvester-description = Самокопирующися союзник.
 ghost-role-information-proteon-name = Протеон
 ghost-role-information-proteon-description = Слаб.
+ghost-role-information-evil-twin-name = Злой Двойник
+ghost-role-information-evil-twin-description = Вы - злой двойник какой-то другой персоны.
