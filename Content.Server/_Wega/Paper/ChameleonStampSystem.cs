@@ -1,5 +1,5 @@
 using System.Text.RegularExpressions;
-using Content.Shared.Verbs; // Corvax-Wega-Bureaucracy-end
+using Content.Shared.Verbs;
 using Robust.Shared.Player;
 using Content.Shared.Paper;
 using Content.Server.Administration;
