@@ -62,6 +62,19 @@ public sealed partial class RevenantMalfunctionActionEvent : InstantActionEvent
 {
 }
 
+// Corvax-Wega-Revenant-start
+public sealed partial class RevenantTransmitActionEvent : EntityTargetActionEvent
+{
+}
+
+public sealed partial class RevenantHauntActionEvent : InstantActionEvent
+{
+}
+
+public sealed partial class RevenantHallucinationActionEvent : InstantActionEvent
+{
+}
+// Corvax-Wega-Revenant-end
 
 [NetSerializable, Serializable]
 public enum RevenantVisuals : byte

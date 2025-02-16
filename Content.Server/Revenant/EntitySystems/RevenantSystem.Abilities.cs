@@ -31,6 +31,23 @@ using Robust.Shared.Physics.Components;
 using Robust.Shared.Utility;
 using Robust.Shared.Map.Components;
 using Content.Shared.Whitelist;
+// Corvax-Wega-Revenant-start
+using Content.Server.Administration;
+using Content.Server.Hallucinations;
+using Content.Server.NPC.HTN;
+using Content.Server.NPC.Systems;
+using Content.Server.Prayer;
+using Content.Shared.Body.Components;
+using Content.Shared.CombatMode;
+using Content.Shared.NPC.Components;
+using Content.Shared.NPC.Systems;
+using Content.Shared.Movement.Components;
+using Content.Shared.Weapons.Melee;
+using Robust.Server.GameObjects;
+using Robust.Shared.Player;
+using Robust.Shared.Prototypes;
+using Robust.Shared.Timing;
+// Corvax-Wega-Revenant-end
 
 namespace Content.Server.Revenant.EntitySystems;
 
@@ -47,6 +64,17 @@ public sealed partial class RevenantSystem
     [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
     [Dependency] private readonly SharedMapSystem _mapSystem = default!;
     [Dependency] private readonly DiseaseSystem _disease = default!; // Corvax-Wega-Disease
+    // Corvax-Wega-Revenant-start
+    [Dependency] private readonly HallucinationsSystem _hallucinations = default!;
+    [Dependency] private readonly HTNSystem _htn = default!;
+    [Dependency] private readonly SharedPointLightSystem _light = default!;
+    [Dependency] private readonly NPCSystem _npc = default!;
+    [Dependency] private readonly NpcFactionSystem _npcFaction = default!;
+    [Dependency] private readonly PrayerSystem _prayerSystem = default!;
+    [Dependency] private readonly QuickDialogSystem _quickDialog = default!;
+    // Corvax-Wega-Revenant-end
+
+    private static readonly ProtoId<HTNCompoundPrototype> HauntRootTask = "SimpleHostileCompound"; // Corvax-Wega-Revenant
 
     private void InitializeAbilities()
     {
@@ -58,6 +86,11 @@ public sealed partial class RevenantSystem
         SubscribeLocalEvent<RevenantComponent, RevenantOverloadLightsActionEvent>(OnOverloadLightsAction);
         SubscribeLocalEvent<RevenantComponent, RevenantBlightActionEvent>(OnBlightAction);
         SubscribeLocalEvent<RevenantComponent, RevenantMalfunctionActionEvent>(OnMalfunctionAction);
+        // Corvax-Wega-Revenant-start
+        SubscribeLocalEvent<RevenantComponent, RevenantTransmitActionEvent>(OnTransmitAction);
+        SubscribeLocalEvent<RevenantComponent, RevenantHauntActionEvent>(OnHauntAction);
+        SubscribeLocalEvent<RevenantComponent, RevenantHallucinationActionEvent>(OnHallucinationAction);
+        // Corvax-Wega-Revenant-end
     }
 
     private void OnInteract(EntityUid uid, RevenantComponent component, UserActivateInWorldEvent args)
@@ -356,4 +389,141 @@ public sealed partial class RevenantSystem
             _emag.DoEmagEffect(uid, ent); //it does not emag itself. adorable.
         }
     }
+
+    // Corvax-Wega-Revenant-start
+    private void OnTransmitAction(EntityUid uid, RevenantComponent component, RevenantTransmitActionEvent args)
+    {
+        var target = args.Target;
+        if (args.Handled || !HasComp<HumanoidAppearanceComponent>(target)
+            || !TryComp<ActorComponent>(uid, out var playerActor))
+            return;
+
+        args.Handled = true;
+
+        var playerSession = playerActor.PlayerSession;
+        _quickDialog.OpenDialog(playerSession, Loc.GetString("revenant-transmit-title"), Loc.GetString("revenant-transmit-prompt"),
+            (string message) =>
+            {
+                var finalMessage = string.IsNullOrWhiteSpace(message)
+                    ? Loc.GetString("revenant-transmit-default-message")
+                    : message;
+
+                if (!TryComp<ActorComponent>(target, out var targetActor))
+                    return;
+
+                _prayerSystem.SendSubtleMessage(targetActor.PlayerSession, targetActor.PlayerSession, finalMessage, Loc.GetString("revenant-transmit-default-message"));
+
+                _popup.PopupEntity(Loc.GetString("revenant-transmit-sent"), uid, args.Performer, PopupType.Medium);
+            });
+    }
+
+    private void OnHauntAction(EntityUid uid, RevenantComponent component, RevenantHauntActionEvent args)
+    {
+        if (args.Handled)
+            return;
+
+        if (!TryUseAbility(uid, component, component.HauntCost, component.HauntDebuffs))
+            return;
+
+        args.Handled = true;
+        var itemsInRange = _lookup.GetEntitiesInRange<ItemComponent>(Transform(uid).Coordinates, component.HauntRadius)
+            .ToList();
+        if (itemsInRange.Count == 0)
+            return;
+
+        var randomItems = itemsInRange.OrderBy(x => _random.Next()).Take(_random.Next(1, 5))
+            .ToList();
+        foreach (var item in randomItems)
+        {
+            var itemEntity = item.Owner;
+            if (HasComp<HTNComponent>(itemEntity))
+                continue;
+
+            var npcFaction = EnsureComp<NpcFactionMemberComponent>(itemEntity);
+            _npcFaction.ClearFactions((itemEntity, npcFaction), false);
+            _npcFaction.AddFaction((itemEntity, npcFaction), component.HauntFaction);
+
+            EnsureComp<HTNComponent>(itemEntity, out var htn);
+            htn.RootTask = new HTNCompoundTask { Task = HauntRootTask };
+            _npc.WakeNPC(itemEntity, htn);
+            _htn.Replan(htn);
+
+            EnsureComp<CombatModeComponent>(itemEntity);
+            EnsureComp<InputMoverComponent>(itemEntity);
+            EnsureComp<MobMoverComponent>(itemEntity);
+            EnsureComp<MovementSpeedModifierComponent>(itemEntity);
+            EnsureComp<MovementAlwaysTouchingComponent>(itemEntity);
+
+            bool addedLight = false;
+            if (!HasComp<PointLightComponent>(itemEntity))
+            {
+                EnsureComp<PointLightComponent>(itemEntity, out var light);
+                var itemColor = new Color(147, 112, 219, 255);
+                _light.SetColor(itemEntity, itemColor, light);
+                _light.SetSoftness(itemEntity, 2f, light);
+                addedLight = true;
+            }
+
+            bool addedWeapon = false;
+            if (!HasComp<MeleeWeaponComponent>(itemEntity))
+            {
+                EnsureComp<MeleeWeaponComponent>(itemEntity, out var meleeWeaponComponent);
+                var damage = new DamageSpecifier { DamageDict = { { "Blunt", 2 } } };
+                meleeWeaponComponent.Damage = damage;
+                addedWeapon = true;
+            }
+
+            var name = Name(itemEntity);
+            _popup.PopupEntity(Loc.GetString("revenant-haunt-alive", ("name", name)), itemEntity, PopupType.Small);
+
+            Timer.Spawn(20000, () =>
+            {
+                if (!Exists(itemEntity))
+                    return;
+
+                var componentsToRemove = new[]
+                {
+                    typeof(HTNComponent),
+                    typeof(CombatModeComponent),
+                    typeof(NpcFactionMemberComponent),
+                    typeof(InputMoverComponent),
+                    typeof(MobMoverComponent),
+                    typeof(MovementSpeedModifierComponent),
+                    typeof(MovementAlwaysTouchingComponent)
+                };
+
+                foreach (var compType in componentsToRemove)
+                {
+                    if (HasComp(itemEntity, compType))
+                        RemComp(itemEntity, compType);
+                }
+
+                if (addedLight)
+                    RemComp<PointLightComponent>(itemEntity);
+                if (addedWeapon)
+                    RemComp<MeleeWeaponComponent>(itemEntity);
+
+                _popup.PopupEntity(Loc.GetString("revenant-haunt-end", ("name", name)), itemEntity, PopupType.Small);
+            });
+        }
+    }
+
+    private void OnHallucinationAction(EntityUid uid, RevenantComponent component, RevenantHallucinationActionEvent args)
+    {
+        if (args.Handled)
+            return;
+
+        if (!TryUseAbility(uid, component, component.HallucinationCost, component.HallucinationDebuffs))
+            return;
+
+        args.Handled = true;
+        var victimInRange = _lookup.GetEntitiesInRange<BodyComponent>(Transform(uid).Coordinates, component.HallucinationRadius)
+            .Where(entity => entity.Owner != uid)
+            .ToList();
+        foreach (var victimEntity in victimInRange)
+        {
+            _hallucinations.StartHallucinations(victimEntity, "Hallucinations", TimeSpan.FromSeconds(30f), true, "MindBreaker");
+        }
+    }
+    // Corvax-Wega-Revenant-end
 }

@@ -48,6 +48,8 @@ public sealed partial class RevenantSystem : EntitySystem
 
     [ValidatePrototypeId<EntityPrototype>]
     private const string RevenantShopId = "ActionRevenantShop";
+    [ValidatePrototypeId<EntityPrototype>] // Corvax-Wega-Revenant
+    private const string TransmitId = "ActionRevenantTransmit"; // Corvax-Wega-Revenant
 
     public override void Initialize()
     {
@@ -93,6 +95,7 @@ public sealed partial class RevenantSystem : EntitySystem
     private void OnMapInit(EntityUid uid, RevenantComponent component, MapInitEvent args)
     {
         _action.AddAction(uid, ref component.Action, RevenantShopId);
+        _action.AddAction(uid, TransmitId); // Corvax-Wega-Revenant
     }
 
     private void OnStatusAdded(EntityUid uid, RevenantComponent component, StatusEffectAddedEvent args)

@@ -1,0 +1,25 @@
+- type: listing
+  id: RevenantHauntObjects
+  name: revenant-haunt-objects-name
+  description: revenant-haunt-objects-desc
+  productAction: ActionRevenantHauntObjects
+  cost:
+    StolenEssence: 150
+  categories:
+  - RevenantAbilities
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: RevenantHallucinationAura
+  name: revenant-hallucination-aura-name
+  description: revenant-hallucination-aura-desc
+  productAction: ActionRevenantHallucinationAura
+  cost:
+    StolenEssence: 50
+  categories:
+  - RevenantAbilities
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1

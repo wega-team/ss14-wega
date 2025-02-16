@@ -10,6 +10,13 @@ revenant-soul-yield-average = { CAPITALIZE($target) } имеет среднюю 
 revenant-soul-yield-low = { CAPITALIZE($target) } имеет душу ниже среднего.
 revenant-soul-begin-harvest = { CAPITALIZE($target) } внезапно приподнимается в воздух, а кожа становится пепельно серой.
 revenant-soul-finish-harvest = { CAPITALIZE($target) } падает на землю!
+# Corvax-Wega-Revenant
+revenant-transmit-title = Передать
+revenant-transmit-prompt = Сообщение
+revenant-transmit-default-message = Вы слышите голос у себя в голове...
+revenant-transmit-sent = Послание отправлено
+revenant-haunt-alive = { $name } обретает сознание
+revenant-haunt-end = { $name } безжизненно падает
 #UI
 revenant-user-interface-title = Магазин способностей
 revenant-user-interface-essence-amount = [color=plum]{ $amount }[/color] украденной эссенции

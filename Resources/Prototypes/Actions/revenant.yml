@@ -14,6 +14,7 @@
   components:
   - type: InstantAction
     icon: Interface/Actions/defile.png
+    itemIconStyle: BigAction # Corvax-Wega-Revenant
     event: !type:RevenantDefileActionEvent
     useDelay: 15
 
@@ -24,10 +25,11 @@
   components:
   - type: InstantAction
     icon: Interface/Actions/overloadlight.png
+    itemIconStyle: BigAction # Corvax-Wega-Revenant
     event: !type:RevenantOverloadLightsActionEvent
     useDelay: 20
 
-# Corvax-Wega-Disease
+# Corvax-Wega-Disease-start
 - type: entity
   id: ActionRevenantBlight
   name: Blight
@@ -35,8 +37,10 @@
   components:
   - type: InstantAction
     icon: Interface/Actions/blight.png
+    itemIconStyle: BigAction
     event: !type:RevenantBlightActionEvent
     useDelay: 20
+# Corvax-Wega-Disease-end
 
 - type: entity
   id: ActionRevenantMalfunction
@@ -45,5 +49,6 @@
   components:
   - type: InstantAction
     icon: Interface/Actions/malfunction.png
+    itemIconStyle: BigAction # Corvax-Wega-Revenant
     event: !type:RevenantMalfunctionActionEvent
     useDelay: 20

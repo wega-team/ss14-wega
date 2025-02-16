@@ -2,6 +2,7 @@ using System.Numerics;
 using Content.Shared.Alert;
 using Content.Shared.Disease; // Corvax-Wega-Disease
 using Content.Shared.FixedPoint;
+using Content.Shared.NPC.Prototypes; // Corvax-Wega-Revenant
 using Content.Shared.Store;
 using Content.Shared.Whitelist;
 using Robust.Shared.GameStates;
@@ -209,6 +210,55 @@ public sealed partial class RevenantComponent : Component
     [DataField]
     public EntityWhitelist? MalfunctionBlacklist;
     #endregion
+
+    // Corvax-Wega-Revenant-start
+    #region Haunt Ability
+    /// <summary>
+    /// The amount of essence that is needed to use the ability.
+    /// </summary>
+    [ViewVariables(VVAccess.ReadWrite), DataField("hauntCost")]
+    public FixedPoint2 HauntCost = 50;
+
+    /// <summary>
+    /// The status effects applied after the ability
+    /// the first float corresponds to amount of time the entity is stunned.
+    /// the second corresponds to the amount of time the entity is made solid.
+    /// </summary>
+    [DataField("hauntDebuffs")]
+    public Vector2 HauntDebuffs = new(3, 10);
+
+    /// <summary>
+    /// The radius around the user that this ability affects
+    /// </summary>
+    [ViewVariables(VVAccess.ReadWrite), DataField("hauntRadius")]
+    public float HauntRadius = 4f;
+
+    [DataField]
+    public ProtoId<NpcFactionPrototype> HauntFaction = "SimpleHostile";
+    #endregion
+
+    #region Hallucination Ability
+    /// <summary>
+    /// The amount of essence that is needed to use the ability.
+    /// </summary>
+    [ViewVariables(VVAccess.ReadWrite), DataField("hallucinationCost")]
+    public FixedPoint2 HallucinationCost = 25;
+
+    /// <summary>
+    /// The status effects applied after the ability
+    /// the first float corresponds to amount of time the entity is stunned.
+    /// the second corresponds to the amount of time the entity is made solid.
+    /// </summary>
+    [DataField("hallucinationDebuffs")]
+    public Vector2 HallucinationDebuffs = new(1, 3);
+
+    /// <summary>
+    /// The radius around the user that this ability affects
+    /// </summary>
+    [ViewVariables(VVAccess.ReadWrite), DataField("hallucinationRadius")]
+    public float HallucinationRadius = 7f;
+    #endregion
+    // Corvax-Wega-Revenant-end
 
     [DataField]
     public ProtoId<AlertPrototype> EssenceAlert = "Essence";

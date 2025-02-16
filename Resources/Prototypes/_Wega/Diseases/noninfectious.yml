@@ -27,7 +27,7 @@
       probability: 0.03
       key: ForcedSleep
       component: ForcedSleeping
-      time: 3
+      time: 9
       type: Add
     - !type:DiseaseSnough
       probability: 0.025

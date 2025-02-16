@@ -5,10 +5,19 @@
         "y": 32
     },
     "license": "CC-BY-SA-3.0",
-    "copyright": "Sprite created by svarshiksatanist on discord",
+    "copyright": "Sprite created by svarshiksatanist on discord, other sprites taken from https://github.com/ss220-space/Paradise",
     "states": [
         {
             "name": "ghostbar"
+        },
+        {
+            "name": "hallucination"
+        },
+        {
+            "name": "haunt"
+        },
+        {
+            "name": "transmit"
         }
     ]
 }
