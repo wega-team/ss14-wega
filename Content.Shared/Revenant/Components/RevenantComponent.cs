@@ -143,7 +143,7 @@ public sealed partial class RevenantComponent : Component
     /// How close to the light the entity has to be in order to be zapped.
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite), DataField("overloadZapRadius")]
-    public float OverloadZapRadius = 2f;
+    public float OverloadZapRadius = 3.5f; // Corvax-Wega-Revenant-Edit
     #endregion
 
     #region Blight Ability
