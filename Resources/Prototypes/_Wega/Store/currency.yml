@@ -1,0 +1,4 @@
+- type: currency
+  id: TacticalResource
+  displayName: store-currency-display-tactical-resource
+  canWithdraw: false

@@ -1,0 +1,21 @@
+#ERT
+
+- type: storeCategory
+  id: ERTSquad
+  name: store-category-ert-squad
+  priority: 0
+
+- type: storeCategory
+  id: ERTEquipment
+  name: store-category-ert-equipment
+  priority: 1
+
+- type: storeCategory
+  id: ERTEngineering
+  name: store-category-ert-engineering
+  priority: 2
+
+- type: storeCategory
+  id: ERTMedicine
+  name: store-category-ert-medicine
+  priority: 3
