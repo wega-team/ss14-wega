@@ -1,0 +1,74 @@
+- type: entity
+  parent: [BaseItem, StorePresetTacticalInterface, BaseRestrictedContraband]
+  id: BaseTacticalInterface
+  name: tactical interface
+  abstract: true
+  description: Terminal for teleportation of ERT equipment using bluespace technology.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Devices/ert.rsi
+    layers:
+    - state: tactical-interface
+  - type: Item
+    sprite: _Wega/Objects/Devices/ert.rsi
+    heldPrefix: tactical-interface
+  - type: UserInterface
+    interfaces:
+      enum.StoreUiKey.Key:
+        type: StoreBoundUserInterface
+  - type: ActivatableUI
+    key: enum.StoreUiKey.Key
+  - type: Store
+    balance:
+      TacticalResource: 0
+  - type: Tag
+    tags:
+    - ERTTacticalInterface
+
+- type: entity
+  parent: [BaseTacticalInterface]
+  id: TacticalInterfacePatrol
+  suffix: Patrol, 60
+  components:
+  - type: Store
+    balance:
+      TacticalResource: 60
+
+- type: entity
+  parent: [BaseTacticalInterface]
+  id: TacticalInterfaceScout
+  suffix: Scout, 120
+  components:
+  - type: Store
+    balance:
+      TacticalResource: 120
+
+- type: entity
+  parent: [BaseTacticalInterface]
+  id: TacticalInterfaceCombat
+  suffix: Combat, 240
+  components:
+  - type: Store
+    balance:
+      TacticalResource: 240
+
+- type: entity
+  parent: [BaseTacticalInterface]
+  id: TacticalInterfaceSpecialist
+  suffix: Specialist, 200
+  components:
+  - type: Store
+    balance:
+      TacticalResource: 200
+
+- type: entity
+  parent: [BaseTacticalInterface]
+  id: TacticalInterfaceCBURN
+  suffix: CBURN, 185
+  components:
+  - type: Store
+    balance:
+      TacticalResource: 185
+  - type: Tag
+    tags:
+    - CBURNTacticalInterface

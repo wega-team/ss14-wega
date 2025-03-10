@@ -9,3 +9,16 @@
         - state: idbarber
     - type: PresetIdCard
       job: Barber
+
+- type: entity
+  parent: CentcomIDCard
+  id: CBURNLeaderIDcard
+  name: CBURN Leader ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: centcom
+  - type: Item
+    heldPrefix: blue
+  - type: PresetIdCard
+    job: CBURNLeader

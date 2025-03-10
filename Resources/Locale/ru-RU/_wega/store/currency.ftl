@@ -1,0 +1,1 @@
+store-currency-display-tactical-resource = Тактический ресурс

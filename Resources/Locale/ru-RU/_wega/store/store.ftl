@@ -1,0 +1,1 @@
+store-preset-name-tactical-interface = Тактический интерфейс

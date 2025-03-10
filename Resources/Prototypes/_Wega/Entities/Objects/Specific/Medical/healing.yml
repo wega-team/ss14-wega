@@ -10,3 +10,16 @@
         reagents:
         - ReagentId: Spaceacillin
           Quantity: 15
+
+- type: entity
+  name: pill canister
+  parent: PillCanister
+  id: PillCanisterAmbuzol
+  suffix: Ambuzol 10u, 5
+  components:
+  - type: Label
+    currentLabel: ambuzol 10u
+  - type: StorageFill
+    contents:
+    - id: PillAmbuzol
+      amount: 5

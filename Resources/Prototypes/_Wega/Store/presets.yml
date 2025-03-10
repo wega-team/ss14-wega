@@ -11,3 +11,5 @@
     - ERTMedicine
     currencyWhitelist:
     - TacticalResource
+    balance:
+      TacticalResource: 0

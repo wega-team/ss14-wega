@@ -37,7 +37,7 @@
     - MedicatedSuture
     - RegenerativeMesh
     - BoxZiptie
-    - CrowbarRed
+#    - CrowbarRed # Corvax-Wega-CombatCrowbar
     - MagazineMagnum
 
 - type: startingGear
@@ -45,7 +45,7 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTLeader
     back: ClothingBackpackERTLeader
-    shoes: ClothingShoesBootsMagAdv
+    shoes: ClothingShoesBootsMagCombat # Corvax-Wega-MagCombat
     mask: ClothingMaskGasERT
     eyes: ClothingEyesGlassesSecurity
     neck: ClothingNeckMantleERTLeader # Corvax-Clothing
@@ -63,7 +63,7 @@
     - MedicatedSuture
     - RegenerativeMesh
     - BoxZiptie
-    - CrowbarRed
+#    - CrowbarRed # Corvax-Wega-CombatCrowbar
     - MagazineMagnum
 
 - type: startingGear
@@ -71,7 +71,7 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTLeader
     back: ClothingBackpackERTLeader
-    shoes: ClothingShoesBootsMagAdv
+    shoes: ClothingShoesBootsMagCombat # Corvax-Wega-MagCombat
     mask: ClothingMaskGasERT
     eyes: ClothingEyesGlassesSecurity
     neck: ClothingNeckMantleERTLeader # Corvax-Clothing
@@ -91,7 +91,7 @@
     - MedicatedSuture
     - RegenerativeMesh
     - BoxZiptie
-    - CrowbarRed
+#    - CrowbarRed # Corvax-Wega-CombatCrowbar
     - MagazineMagnum
 
 # Chaplain
@@ -139,7 +139,7 @@
     - Lantern
     - Lantern
     - Bible
-    - CrowbarRed
+#    - CrowbarRed # Corvax-Wega-CombatCrowbar
     - FoodBakedBunHotX
     - FoodBakedBunHotX
     - FoodBakedBunHotX
@@ -151,7 +151,7 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTChaplain
     back: ClothingBackpackERTChaplain
-    shoes: ClothingShoesBootsMagAdv
+    shoes: ClothingShoesBootsMagCombat # Corvax-Wega-MagCombat
     mask: ClothingMaskGasERT
     eyes: ClothingEyesGlasses
     neck: ClothingNeckStoleChaplain
@@ -171,7 +171,7 @@
     - Lantern
     - Lantern
     - Bible
-    - CrowbarRed
+#    - CrowbarRed # Corvax-Wega-CombatCrowbar
     - FoodBakedBunHotX
     - FoodBakedBunHotX
     - FoodBakedBunHotX
@@ -228,7 +228,7 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTEngineer
     back: ClothingBackpackERTEngineer
-    shoes: ClothingShoesBootsMagAdv
+    shoes: ClothingShoesBootsMagCombat # Corvax-Wega-MagCombat
     mask: ClothingMaskGasERT
     eyes: ClothingEyesGlassesMeson
     gloves: ClothingHandsGlovesCombat
@@ -290,7 +290,7 @@
     - MedicatedSuture
     - RegenerativeMesh
     - BoxZiptie
-    - CrowbarRed
+#    - CrowbarRed # Corvax-Wega-CombatCrowbar
     - MagazinePistol
 
 - type: startingGear
@@ -315,7 +315,7 @@
     - MedicatedSuture
     - RegenerativeMesh
     - BoxZiptie
-    - CrowbarRed
+#    - CrowbarRed # Corvax-Wega-CombatCrowbar
     - MagazinePistol
 
 - type: startingGear
@@ -342,7 +342,7 @@
     - MedicatedSuture
     - RegenerativeMesh
     - BoxZiptie
-    - CrowbarRed
+#    - CrowbarRed # Corvax-Wega-CombatCrowbar
     - MagazinePistol
 
 # Medical
@@ -381,7 +381,7 @@
     - Hypospray
     - MedkitCombatFilled
     - MedkitCombatFilled
-    - CrowbarRed
+#    - CrowbarRed # Corvax-Wega-CombatCrowbar
     - OmnizineChemistryBottle
     - EpinephrineChemistryBottle
     - EpinephrineChemistryBottle
@@ -406,7 +406,7 @@
     - Hypospray
     - MedkitCombatFilled
     - MedkitCombatFilled
-    - CrowbarRed
+#    - CrowbarRed # Corvax-Wega-CombatCrowbar
     - OmnizineChemistryBottle
     - EpinephrineChemistryBottle
     - EpinephrineChemistryBottle
@@ -447,7 +447,7 @@
     - BoxLightMixed
     - BoxLightMixed
     - Soap
-    - CrowbarRed
+#    - CrowbarRed # Corvax-Wega-CombatCrowbar
     - AdvMopItem
 
 - type: startingGear
@@ -470,5 +470,5 @@
     - BoxLightMixed
     - BoxLightMixed
     - Soap
-    - CrowbarRed
+#    - CrowbarRed # Corvax-Wega-CombatCrowbar
     - AdvMopItem

@@ -1,0 +1,15 @@
+ent-RandomHumanoidSpawnerERTLeaderPatrol = ОБР лидер
+    .suffix = Патрульный, интерфейс
+    .desc = { ent-RandomHumanoidSpawnerERTLeader.desc }
+ent-RandomHumanoidSpawnerERTLeaderScout = ОБР лидер
+    .suffix = Разведывательный, интерфейс
+    .desc = { ent-RandomHumanoidSpawnerERTLeader.desc }
+ent-RandomHumanoidSpawnerERTLeaderCombat = ОБР лидер
+    .suffix = Боевой, интерфейс
+    .desc = { ent-RandomHumanoidSpawnerERTLeader.desc }
+ent-RandomHumanoidSpawnerERTLeaderSpecialist = ОБР лидер
+    .suffix = Специалисты, интерфейс
+    .desc = { ent-RandomHumanoidSpawnerERTLeader.desc }
+ent-RandomHumanoidSpawnerCBURNLeader = Лидер РХБЗЗ
+    .suffix = РХБЗЗ, интерфейс
+    .desc = { ent-RandomHumanoidSpawnerERTLeader.desc }

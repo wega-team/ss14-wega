@@ -1,0 +1,94 @@
+- type: entity
+  parent: BaseFlatpack
+  id: BaseEngineeringFlatpack
+  abstract: true
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+    - state: overlay
+      color: "#EFB341"
+      map: ["enum.FlatpackVisualLayers.Overlay"]
+    - state: icon-default
+
+- type: entity
+  parent: BaseEngineeringFlatpack
+  id: PortableGeneratorSuperPacmanFlatpack
+  name: generator S.U.P.E.R.P.A.C.M.A.N flatpack
+  description: A flatpack used for constructing a portable generator S.U.P.E.R.P.A.C.M.A.N.
+  components:
+  - type: Flatpack
+    entity: PortableGeneratorSuperPacman
+
+- type: entity
+  parent: BaseEngineeringFlatpack
+  id: PortableGeneratorPacmanFlatpack
+  name: generator P.A.C.M.A.N flatpack
+  description: A flatpack used for constructing a portable generator P.A.C.M.A.N.
+  components:
+  - type: Flatpack
+    entity: PortableGeneratorPacman
+- type: entity
+  parent: BaseEngineeringFlatpack
+  id: PortableGeneratorJrPacmanFlatpack
+  name: generator J.R.P.A.C.M.A.N flatpack
+  description: A flatpack used for constructing a portable generator J.R.P.A.C.M.A.N.
+  components:
+  - type: Flatpack
+    entity: PortableGeneratorJrPacman
+
+- type: entity
+  parent: BaseEngineeringFlatpack
+  id: TegCirculatorFlatpack
+  name: circulator flatpack
+  description: A flatpack used for constructing a TEG circulator.
+  components:
+  - type: Flatpack
+    entity: TegCirculator
+
+- type: entity
+  parent: BaseEngineeringFlatpack
+  id: TegCenterFlatpack
+  name: thermo-electric generator flatpack
+  description: A flatpack used for constructing a center of thermo-electric generator.
+  components:
+  - type: Flatpack
+    entity: TegCenter
+
+- type: entity
+  parent: BaseEngineeringFlatpack
+  id: TelecomServerFlatpack
+  name: telecom server flatpack
+  description: A flatpack used for constructing a telecom server.
+  components:
+  - type: Flatpack
+    entity: TelecomServer
+
+- type: entity
+  parent: BaseEngineeringFlatpack
+  id: SMESAdvancedEmptyFlatpack
+  name: advanced SMES flatpack
+  description: A flatpack used for constructing a advanced SMES.
+  components:
+  - type: Flatpack
+    entity: SMESAdvancedEmpty
+
+- type: entity
+  parent: BaseEngineeringFlatpack
+  id: SMESAdvancedFlatpack
+  name: advanced SMES flatpack
+  description: A flatpack used for constructing a advanced SMES.
+  suffix: Filled
+  components:
+  - type: Flatpack
+    entity: SMESAdvanced
+
+- type: entity
+  parent: BaseEngineeringFlatpack
+  id: SubstationFlatpack
+  name: substation flatpack
+  description: A flatpack used for constructing a substation.
+  suffix: Filled
+  components:
+  - type: Flatpack
+    entity: SubstationBasicEmpty
