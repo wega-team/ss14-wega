@@ -37,7 +37,7 @@
     - MedicatedSuture
     - RegenerativeMesh
     - BoxZiptie
-#    - CrowbarRed # Corvax-Wega-CombatCrowbar
+    - CombatCrowbar # Corvax-Wega-CombatCrowbar
     - MagazineMagnum
 
 - type: startingGear
@@ -139,7 +139,7 @@
     - Lantern
     - Lantern
     - Bible
-#    - CrowbarRed # Corvax-Wega-CombatCrowbar
+    - CombatCrowbar # Corvax-Wega-CombatCrowbar
     - FoodBakedBunHotX
     - FoodBakedBunHotX
     - FoodBakedBunHotX
@@ -290,7 +290,7 @@
     - MedicatedSuture
     - RegenerativeMesh
     - BoxZiptie
-#    - CrowbarRed # Corvax-Wega-CombatCrowbar
+    - CombatCrowbar # Corvax-Wega-CombatCrowbar
     - MagazinePistol
 
 - type: startingGear
@@ -315,7 +315,7 @@
     - MedicatedSuture
     - RegenerativeMesh
     - BoxZiptie
-#    - CrowbarRed # Corvax-Wega-CombatCrowbar
+    - CombatCrowbar # Corvax-Wega-CombatCrowbar
     - MagazinePistol
 
 - type: startingGear
@@ -342,7 +342,7 @@
     - MedicatedSuture
     - RegenerativeMesh
     - BoxZiptie
-#    - CrowbarRed # Corvax-Wega-CombatCrowbar
+    - CombatCrowbar # Corvax-Wega-CombatCrowbar
     - MagazinePistol
 
 # Medical
@@ -381,7 +381,7 @@
     - Hypospray
     - MedkitCombatFilled
     - MedkitCombatFilled
-#    - CrowbarRed # Corvax-Wega-CombatCrowbar
+    - CombatCrowbar # Corvax-Wega-CombatCrowbar
     - OmnizineChemistryBottle
     - EpinephrineChemistryBottle
     - EpinephrineChemistryBottle
@@ -406,7 +406,7 @@
     - Hypospray
     - MedkitCombatFilled
     - MedkitCombatFilled
-#    - CrowbarRed # Corvax-Wega-CombatCrowbar
+    - CombatCrowbar # Corvax-Wega-CombatCrowbar
     - OmnizineChemistryBottle
     - EpinephrineChemistryBottle
     - EpinephrineChemistryBottle
@@ -447,7 +447,7 @@
     - BoxLightMixed
     - BoxLightMixed
     - Soap
-#    - CrowbarRed # Corvax-Wega-CombatCrowbar
+    - CombatCrowbar # Corvax-Wega-CombatCrowbar
     - AdvMopItem
 
 - type: startingGear
@@ -470,5 +470,5 @@
     - BoxLightMixed
     - BoxLightMixed
     - Soap
-#    - CrowbarRed # Corvax-Wega-CombatCrowbar
+    - CombatCrowbar # Corvax-Wega-CombatCrowbar
     - AdvMopItem

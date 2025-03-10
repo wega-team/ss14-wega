@@ -14,4 +14,4 @@ ent-TacticalInterfaceSpecialist = { ent-BaseTacticalInterface }
     .suffix = Специалисты, 200
 ent-TacticalInterfaceCBURN = { ent-BaseTacticalInterface }
     .desc = { ent-BaseTacticalInterface.desc }
-    .suffix = РХБЗЗ, 240
+    .suffix = РХБЗЗ, 185
