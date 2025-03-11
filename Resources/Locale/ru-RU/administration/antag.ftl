@@ -14,3 +14,4 @@ admin-verb-text-make-pirate = Сделать пиратом
 admin-verb-text-make-head-rev = Сделать Главой революции
 admin-verb-text-make-thief = Сделать вором
 admin-overlay-antag-classic = АНТАГ
+admin-verb-make-veil-cultist = Сделать праведником Ратвара

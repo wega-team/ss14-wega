@@ -17,3 +17,14 @@
   - SimpleHostile
   - Xeno
   - Dragon
+
+- type: npcFaction
+  id: VeilCult
+  hostile:
+  - NanoTrasen
+  - Zombie
+  - Vampire
+  - SimpleHostile
+  - Xeno
+  - Dragon
+  - BloodCult

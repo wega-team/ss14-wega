@@ -69,3 +69,30 @@
         - MindRoleBloodCultist
         briefing:
           sound: "/Audio/_Wega/Ambience/Antag/bloodcult_start.ogg"
+
+- type: entity
+  parent: BaseGameRule
+  id: VeilCult
+  components:
+  - type: GameRule
+    minPlayers: 30
+  - type: VeilCultRule
+  - type: AntagSelection
+    definitions:
+      - prefRoles: [ VeilCultist ]
+        max: 4
+        playerRatio: 10
+        blacklist:
+          components:
+          - AntagImmune
+          - BibleUser
+        lateJoinAdditional: true
+        components:
+        - type: VeilCultist
+        - type: NpcFactionMember
+          factions:
+          - VeilCult
+        mindRoles:
+        - MindRoleVeilCultist
+        briefing:
+          sound: "/Audio/_Wega/Ambience/Antag/veilcult_start.ogg"

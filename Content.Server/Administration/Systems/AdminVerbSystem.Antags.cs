@@ -39,6 +39,9 @@ public sealed partial class AdminVerbSystem
     [ValidatePrototypeId<EntityPrototype>] // Corvax-Wega-Blood-Cult
     private const string DefaultBloodCultRule = "BloodCult"; // Corvax-Wega-Blood-Cult
 
+    [ValidatePrototypeId<EntityPrototype>] // что то тут ругается
+    private const string DefaultVeilCultRule = "VeilCult"; // Corvax-Wega-Veil-Cult
+
     [ValidatePrototypeId<StartingGearPrototype>]
     private const string PirateGearId = "PirateGear";
 
@@ -188,5 +191,20 @@ public sealed partial class AdminVerbSystem
         };
         args.Verbs.Add(bloodcultist);
         // Corvax-Wega-Blood-Cult-end
+                // Corvax-Wega-Veil-Cult-start
+        Verb veilcultist = new()
+        {
+            Text = Loc.GetString("admin-verb-text-make-veil-cultist"),
+            Category = VerbCategory.Antag,
+            Icon = new SpriteSpecifier.Rsi(new ResPath("_Wega/Objects/Weapons/Melee/veilculthud.rsi"), "icon"),
+            Act = () =>
+            {
+                _antag.ForceMakeAntag<VeilCultRuleComponent>(targetPlayer, DefaultVeilCultRule);
+            },
+            Impact = LogImpact.High,
+            Message = Loc.GetString("admin-verb-make-veil-cultist"),
+        };
+        args.Verbs.Add(veilcultist);
+        // Corvax-Wega-Veil-Cult-end
     }
 }
