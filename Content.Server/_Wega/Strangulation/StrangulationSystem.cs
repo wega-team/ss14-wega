@@ -103,17 +103,22 @@ namespace Content.Server.Strangulation
                 NeedHand = true
             };
             _doAfterSystem.TryStartDoAfter(doAfterEventArgs);
+            if (!doAfterEventArgs.Used.HasValue)
+                StopStrangle(strangler, target);
         }
 
         private void StrangleDoAfter(EntityUid strangler, RespiratorComponent component, ref StrangulationDoAfterEvent args)
         {
-            if (args.Cancelled)
+            if (args.Handled || args.Cancelled)
                 return;
 
+            var target = args.Target ?? default(EntityUid);
+            Strangle(args.User, target);
             // урон пока реализован так
-            var damage = new DamageSpecifier { DamageDict = { { "Asphyxiation", 5 } } };
-            _damageableSys.TryChangeDamage(args.Target, damage, false);
+            /*var damage = new DamageSpecifier { DamageDict = { { "Asphyxiation", 5 } } };
+            _damageableSys.TryChangeDamage(args.Target, damage, false);*/
 
+            args.Handled = true;
             args.Repeat = true;
         }
 
@@ -123,6 +128,18 @@ namespace Content.Server.Strangulation
             if (!component.IsStrangled)
                 return false;
             return true;
+        }
+
+        private void Strangle(EntityUid strangler, EntityUid target)
+        {
+            EnsureComp<StrangulationComponent>(target);
+            var damage = new DamageSpecifier { DamageDict = { { "Asphyxiation", 5 } } };
+            _damageableSys.TryChangeDamage(target, damage, false);
+        }
+
+        private void StopStrangle(EntityUid strangler, EntityUid target)
+        {
+            RemComp<StrangulationComponent>(target);
         }
 
     }
