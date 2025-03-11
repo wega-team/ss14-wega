@@ -355,8 +355,10 @@
 
 - type: randomHumanoidSettings
   id: ERTSecurity
-  speciesBlacklist: # Corvax-MRP
+  speciesBlacklist: # Corvax-wega-ERT
     - Diona
+    - Felinid
+    - Resomi
   parent: ERTLeader
   components:
     - type: GhostRole
@@ -502,8 +504,10 @@
       settings: CBURNAgent
 
 - type: randomHumanoidSettings
-  speciesBlacklist: # Corvax-MRP
+  speciesBlacklist: # Corvax-wega-ERT
     - Diona
+    - Felinid
+    - Resomi
   id: CBURNAgent
   parent: EventHumanoidMindShielded
   components:

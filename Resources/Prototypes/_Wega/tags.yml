@@ -33,3 +33,12 @@
 
 - type: Tag
   id: ERTTacticalInterface
+
+- type: Tag
+  id: ERTTacticalInterfaceNotEVA
+
+- type: Tag
+  id: ERTTacticalInterfaceEVA
+
+- type: Tag
+  id: ERTTacticalInterfaceCombat

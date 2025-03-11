@@ -1,10 +1,10 @@
-tactical-interface-ert-security-basic-name = Офицер безопасности (Базовый)
+tactical-interface-ert-security-basic-name = Офицер безопасности
 tactical-interface-ert-security-basic-desc = Офицер безопазности ОБР, снаряженный самым базовым снаряжением.
 
 tactical-interface-ert-security-name = Офицер безопасности
 tactical-interface-ert-security-desc = Офицер безопазности ОБР, снаряженный скафандром и автоматом Лектер.
 
-tactical-interface-ert-medic-basic-name = Медик (Базовый)
+tactical-interface-ert-medic-basic-name = Медик
 tactical-interface-ert-medic-basic-desc = Медик ОБР, снаряженный самым базовым снаряжением.
 
 tactical-interface-ert-medic-name = Медик
@@ -12,12 +12,6 @@ tactical-interface-ert-medic-desc = Медик ОБР, снаряженный с
 
 tactical-interface-ert-engineer-name = Инженер
 tactical-interface-ert-engineer-desc = Инженер ОБР, снаряженный скафандром.
-
-tactical-interface-ert-chaplain-basic-name = Священник (Базовый)
-tactical-interface-ert-chaplain-basic-desc = вященник ОБР, снаряженный самым базовым снаряжением.
-
-tactical-interface-ert-chaplain-name = Священник 
-tactical-interface-ert-chaplain-desc = Священник ОБР, снаряженный скафандром.
 
 tactical-interface-ert-janitor-basic-name = Уборщик
 tactical-interface-ert-janitor-basic-desc = Уборщик ОБР, снаряженный самым базовым снаряжением.
@@ -60,9 +54,6 @@ tactical-interface-enforcer-ammo-lethal-desc = { ent-BoxLethalshot.desc }
 
 tactical-interface-enforcer-ammo-incendiary-name = ружейные патроны (зажигательные)
 tactical-interface-enforcer-ammo-incendiary-desc = { ent-BoxShotgunIncendiary.desc }
-
-tactical-interface-enforcer-ammo-tranquilizer-name = ружейные патроны (транквилизаторы)
-tactical-interface-enforcer-ammo-tranquilizer-desc = { ent-BoxShellTranquilizer.desc }
 
 tactical-interface-pulse-pistol-name = Импульсный пистолет
 tactical-interface-pulse-pistol-desc = { ent-WeaponPulsePistol.desc }

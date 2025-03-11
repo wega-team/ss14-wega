@@ -17,6 +17,9 @@
     whitelist:
       tags:
       - ERTTacticalInterface
+    blacklist:
+      tags:
+      - ERTTacticalInterfaceEVA
 
 - type: listing
   id: ERTSecurity
@@ -32,6 +35,9 @@
     whitelist:
       tags:
       - ERTTacticalInterface
+    blacklist:
+      tags:
+      - ERTTacticalInterfaceNotEVA
 
 - type: listing
   id: ERTMedicBasic
@@ -39,7 +45,7 @@
   description: tactical-interface-ert-medic-basic-desc
   productEntity: RandomHumanoidSpawnerERTMedical
   cost:
-    TacticalResource: 20
+    TacticalResource: 23
   categories:
   - ERTSquad
   conditions:
@@ -47,6 +53,9 @@
     whitelist:
       tags:
       - ERTTacticalInterface
+    blacklist:
+      tags:
+      - ERTTacticalInterfaceEVA
 
 - type: listing
   id: ERTMedic
@@ -54,7 +63,7 @@
   description: tactical-interface-ert-medic-desc
   productEntity: RandomHumanoidSpawnerERTMedicalEVA
   cost:
-    TacticalResource: 30
+    TacticalResource: 33
   categories:
   - ERTSquad
   conditions:
@@ -62,6 +71,9 @@
     whitelist:
       tags:
       - ERTTacticalInterface
+    blacklist:
+      tags:
+      - ERTTacticalInterfaceNotEVA
 
 - type: listing
   id: ERTEngineer
@@ -69,7 +81,7 @@
   description: tactical-interface-ert-engineer-desc
   productEntity: RandomHumanoidSpawnerERTEngineerEVA
   cost:
-    TacticalResource: 28
+    TacticalResource: 32
   categories:
   - ERTSquad
   conditions:
@@ -77,38 +89,9 @@
     whitelist:
       tags:
       - ERTTacticalInterface
-
-# Оно проклято. Пусть админы сами их спавнят.
-#- type: listing
-#  id: ERTChaplainBasic
-#  name: tactical-interface-ert-chaplain-basic-name
-#  description: tactical-interface-ert-chaplain-basic-desc
-#  productEntity: RandomHumanoidSpawnerERTChaplain
-#  cost:
-#    TacticalResource: 22
-#  categories:
-#  - ERTSquad
-#  conditions:
-#  - !type:StoreWhitelistCondition
-#    whitelist:
-#      tags:
-#      - ERTTacticalInterface
-
-#- type: listing
-#  id: ERTChaplain
-#  name: tactical-interface-ert-chaplain-name
-#  description: tactical-interface-ert-chaplain-desc
-#  productEntity: RandomHumanoidSpawnerERTChaplainEVA
-#  cost:
-#    TacticalResource: 32
-#  categories:
-#  - ERTSquad
-#  conditions:
-#  - !type:StoreWhitelistCondition
-#    whitelist:
-#      tags:
-#      - ERTTacticalInterface
-
+    blacklist:
+      tags:
+      - ERTTacticalInterfaceCombat
 
 - type: listing
   id: ERTJanitorBasic
@@ -124,7 +107,10 @@
     whitelist:
       tags:
       - ERTTacticalInterface
-
+    blacklist:
+      tags:
+      - ERTTacticalInterfaceCombat
+      - ERTTacticalInterfaceEVA
 
 - type: listing
   id: ERTJanitor
@@ -140,6 +126,10 @@
     whitelist:
       tags:
       - ERTTacticalInterface
+    blacklist:
+      tags:
+      - ERTTacticalInterfaceCombat
+      - ERTTacticalInterfaceNotEVA
 
 - type: listing
   id: CBURNAgent
@@ -263,16 +253,6 @@
   productEntity: BoxShotgunIncendiary
   cost:
     TacticalResource: 2
-  categories:
-  - ERTEquipment
-
-- type: listing
-  id: ERTTranquilizerAmmo
-  name: tactical-interface-enforcer-ammo-tranquilizer-name
-  description: tactical-interface-enforcer-ammo-tranquilizer-desc
-  productEntity: BoxShellTranquilizer
-  cost:
-    TacticalResource: 5
   categories:
   - ERTEquipment
 

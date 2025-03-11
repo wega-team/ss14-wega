@@ -38,7 +38,6 @@
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltSecurityFilled
     pocket1: TacticalInterfaceScout
-    pocket2: FlashlightSeclite
     underwearbottom: ClothingUnderBottomHearts
   storage:
     back:
@@ -54,7 +53,6 @@
     jumpsuit: ClothingUniformJumpsuitERTLeader
     back: ClothingBackpackERTLeader
     shoes: ClothingShoesBootsMagCombat
-    head: ClothingHeadHelmetERTLeader
     mask: ClothingMaskGasERT
     eyes: ClothingEyesGlassesSecurity
     neck: ClothingNeckMantleERTLeader
@@ -64,7 +62,6 @@
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltSecurityFilled
     pocket1: TacticalInterfaceCombat
-    pocket2: FlashlightSeclite
     underwearbottom: ClothingUnderBottomHearts
   storage:
     back:
@@ -80,7 +77,6 @@
     jumpsuit: ClothingUniformJumpsuitERTLeader
     back: ClothingBackpackERTLeader
     shoes: ClothingShoesBootsMagCombat
-    head: ClothingHeadHelmetERTLeader
     mask: ClothingMaskGasERT
     eyes: ClothingEyesGlassesSecurity
     neck: ClothingNeckMantleERTLeader
@@ -90,7 +86,6 @@
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltSecurityFilled
     pocket1: TacticalInterfaceSpecialist
-    pocket2: FlashlightSeclite
     underwearbottom: ClothingUnderBottomHearts
   storage:
     back:

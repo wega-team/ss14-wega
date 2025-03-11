@@ -30,7 +30,7 @@
     belt: ClothingBeltBandolier
   storage:
     back:
-    - WeaponShotgunDoubleBarreled
+    - WeaponShotgunKammerer # Corvax-Wega-ERT
     - BoxShotgunIncendiary
     - GrenadeFlashBang
     - PillAmbuzolPlus

@@ -289,9 +289,9 @@
     - WeaponDisabler
     - MedicatedSuture
     - RegenerativeMesh
-    - BoxZiptie
+#    - BoxZiptie # Corvax-Wega-ERT
     - CombatCrowbar # Corvax-Wega-CombatCrowbar
-    - MagazinePistol
+    - MagazinePistol # Corvax-Wega-ERT
 
 - type: startingGear
   id: ERTSecurityGearEVA
@@ -306,7 +306,7 @@
     id: ERTSecurityPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltSecurityFilled
-    pocket1: WeaponPistolMk58
+#    pocket1: WeaponPistolMk58 # Corvax-Wega-ERT
     pocket2: FlashlightSeclite
     underwearbottom: ClothingUnderBottomHearts # Corvax-Wega
   storage:
@@ -314,9 +314,9 @@
     - WeaponDisabler
     - MedicatedSuture
     - RegenerativeMesh
-    - BoxZiptie
+#    - BoxZiptie # Corvax-Wega-ERT
 #    - CrowbarRed # Corvax-Wega-CombatCrowbar
-    - MagazinePistol
+#    - MagazinePistol # Corvax-Wega-ERT
 
 - type: startingGear
   id: ERTSecurityGearEVALecter
@@ -331,19 +331,21 @@
     id: ERTSecurityPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltSecurityFilled
-    pocket1: MagazineRifle
-    pocket2: MagazineRifle
     underwearbottom: ClothingUnderBottomHearts # Corvax-Wega
-  inhand:
-    - WeaponRifleLecter
   storage:
     back:
     - WeaponDisabler
     - MedicatedSuture
     - RegenerativeMesh
-    - BoxZiptie
-#    - CrowbarRed # Corvax-Wega-CombatCrowbar
-    - MagazinePistol
+    # Corvax-Wega-ERT-start
+    - WeaponRifleLecter
+    - MagazineRifle
+    - MagazineRifle
+#    - BoxZiptie
+#    - CrowbarRed
+#    - MagazinePistol
+    # Corvax-Wega-ERT-end
+    
 
 # Medical
 - type: job
@@ -378,10 +380,14 @@
     underwearbottom: ClothingUnderBottomHearts # Corvax-Wega
   storage:
     back:
-    - Hypospray
-    - MedkitCombatFilled
-    - MedkitCombatFilled
-    - CombatCrowbar # Corvax-Wega-CombatCrowbar
+    # Corvax-Wega-ERT-start
+#    - Hypospray
+    - SyringeBluespace
+#    - MedkitCombatFilled
+#    - MedkitCombatFilled
+    - MedkitAdvancedFilled
+    - CombatCrowbar
+    # Corvax-Wega-ERT-end
     - OmnizineChemistryBottle
     - EpinephrineChemistryBottle
     - EpinephrineChemistryBottle
@@ -403,8 +409,8 @@
     underwearbottom: ClothingUnderBottomHearts # Corvax-Wega
   storage:
     back:
-    - Hypospray
-    - MedkitCombatFilled
+#    - Hypospray # Corvax-Wega-ERT
+    - SyringeBluespace # Corvax-Wega-ERT
     - MedkitCombatFilled
 #    - CrowbarRed # Corvax-Wega-CombatCrowbar
     - OmnizineChemistryBottle
