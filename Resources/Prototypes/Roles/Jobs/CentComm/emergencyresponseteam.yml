@@ -298,7 +298,7 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTSecurity
     back: ClothingBackpackERTSecurity
-    shoes: ClothingShoesBootsMag
+    shoes: ClothingShoesBootsMagCombat # Corvax-Wega-MagCombat
     mask: ClothingMaskGasERT
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesCombat
@@ -315,7 +315,7 @@
     - MedicatedSuture
     - RegenerativeMesh
     - BoxZiptie
-    - CombatCrowbar # Corvax-Wega-CombatCrowbar
+#    - CrowbarRed # Corvax-Wega-CombatCrowbar
     - MagazinePistol
 
 - type: startingGear
@@ -323,7 +323,7 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTSecurity
     back: ClothingBackpackERTSecurity
-    shoes: ClothingShoesBootsMag
+    shoes: ClothingShoesBootsMagCombat # Corvax-Wega-MagCombat
     mask: ClothingMaskGasERT
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesCombat
@@ -342,7 +342,7 @@
     - MedicatedSuture
     - RegenerativeMesh
     - BoxZiptie
-    - CombatCrowbar # Corvax-Wega-CombatCrowbar
+#    - CrowbarRed # Corvax-Wega-CombatCrowbar
     - MagazinePistol
 
 # Medical
@@ -391,7 +391,7 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTMedic
     back: ClothingBackpackERTMedical
-    shoes: ClothingShoesBootsMag
+    shoes: ClothingShoesBootsMagCombat # Corvax-Wega-MagCombat
     mask: ClothingMaskGasERT
     eyes: ClothingEyesHudMedical
     gloves: ClothingHandsGlovesNitrile
@@ -406,7 +406,7 @@
     - Hypospray
     - MedkitCombatFilled
     - MedkitCombatFilled
-    - CombatCrowbar # Corvax-Wega-CombatCrowbar
+#    - CrowbarRed # Corvax-Wega-CombatCrowbar
     - OmnizineChemistryBottle
     - EpinephrineChemistryBottle
     - EpinephrineChemistryBottle
@@ -455,7 +455,7 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTJanitor
     back: ClothingBackpackERTJanitor
-    shoes: ClothingShoesBootsMag
+    shoes: ClothingShoesBootsMagCombat # Corvax-Wega-MagCombat
     mask: ClothingMaskGasERT
     gloves: ClothingHandsGlovesColorPurple
     outerClothing: ClothingOuterHardsuitERTJanitor
@@ -470,5 +470,5 @@
     - BoxLightMixed
     - BoxLightMixed
     - Soap
-    - CombatCrowbar # Corvax-Wega-CombatCrowbar
+#    - CrowbarRed # Corvax-Wega-CombatCrowbar
     - AdvMopItem

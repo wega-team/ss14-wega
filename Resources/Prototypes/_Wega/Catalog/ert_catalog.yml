@@ -217,6 +217,26 @@
   - ERTEquipment
 
 - type: listing
+  id: ERWt550
+  name: tactical-interface-Wt550-name
+  description: tactical-interface-Wt550-desc
+  productEntity: WeaponSubMachineGunWt550
+  cost:
+    TacticalResource: 4
+  categories:
+  - ERTEquipment
+
+- type: listing
+  id: ERTWt550Ammo
+  name: tactical-interface-Wt550-ammo-name
+  description: tactical-interface-Wt550-ammo-desc
+  productEntity: BoxMagazinePistolSubMachineGunTopMounted
+  cost:
+    TacticalResource: 2
+  categories:
+  - ERTEquipment
+
+- type: listing
   id: ERTEnforcer
   name: tactical-interface-enforcer-name
   description: tactical-interface-enforcer-desc
@@ -322,7 +342,7 @@
   description: tactical-interface-riot-shield-desc
   productEntity: RiotShield
   cost:
-    TacticalResource: 2
+    TacticalResource: 1
   categories:
   - ERTEquipment
 
@@ -332,7 +352,7 @@
   description: tactical-interface-riot-laser-shield-desc
   productEntity: RiotLaserShield
   cost:
-    TacticalResource: 2
+    TacticalResource: 1
   categories:
   - ERTEquipment
 
@@ -342,7 +362,17 @@
   description: tactical-interface-riot-bullet-shield-desc
   productEntity: RiotBulletShield
   cost:
-    TacticalResource: 2
+    TacticalResource: 1
+  categories:
+  - ERTEquipment
+
+- type: listing
+  id: ERTTelescopicShield
+  name: tactical-interface-telescopic-shield-name
+  description: tactical-interface-telescopic-shield-desc
+  productEntity: TelescopicShield
+  cost:
+    TacticalResource: 3
   categories:
   - ERTEquipment
 

@@ -46,6 +46,12 @@ tactical-interface-drozd-desc = { ent-WeaponSubMachineGunDrozd.desc }
 tactical-interface-drozd-ammo-name = магазины для ПП .35 авто
 tactical-interface-drozd-ammo-desc = { ent-BoxMagazinePistolSubMachineGun.desc }
 
+tactical-interface-Wt550-name = { ent-WeaponSubMachineGunWt550 }
+tactical-interface-Wt550-desc = { ent-WeaponSubMachineGunWt550.desc }
+
+tactical-interface-Wt550-ammo-name = { ent-BoxMagazinePistolSubMachineGunTopMounted }
+tactical-interface-Wt550-ammo-desc = { ent-BoxMagazinePistolSubMachineGunTopMounted.desc }
+
 tactical-interface-enforcer-name = Силовик
 tactical-interface-enforcer-desc = { ent-WeaponShotgunEnforcer.desc }
 
@@ -78,6 +84,9 @@ tactical-interface-riot-laser-shield-desc = { ent-RiotLaserShield.desc }
 
 tactical-interface-riot-bullet-shield-name = Баллистический щит
 tactical-interface-riot-bullet-shield-desc = { ent-RiotBulletShield.desc }
+
+tactical-interface-telescopic-shield-name = { ent-TelescopicShield }
+tactical-interface-telescopic-shield-desc = { ent-TelescopicShield.desc }
 
 tactical-interface-grenade-incendiary-name = Зажигательная граната
 tactical-interface-grenade-incendiary-desc = { ent-GrenadeIncendiary.desc }

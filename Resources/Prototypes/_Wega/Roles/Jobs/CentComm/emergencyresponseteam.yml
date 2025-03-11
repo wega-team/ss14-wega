@@ -28,7 +28,7 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTLeader
     back: ClothingBackpackERTLeader
-    shoes: ClothingShoesBootsCombatFilled
+    shoes: ClothingShoesBootsMagCombat
     head: ClothingHeadHatERTLeaderBeret
     eyes: ClothingEyesGlassesSecurity
     neck: ClothingNeckMantleERTLeader
@@ -53,7 +53,7 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTLeader
     back: ClothingBackpackERTLeader
-    shoes: ClothingShoesBootsCombatFilled
+    shoes: ClothingShoesBootsMagCombat
     head: ClothingHeadHelmetERTLeader
     mask: ClothingMaskGasERT
     eyes: ClothingEyesGlassesSecurity
@@ -79,7 +79,7 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTLeader
     back: ClothingBackpackERTLeader
-    shoes: ClothingShoesBootsCombatFilled
+    shoes: ClothingShoesBootsMagCombat
     head: ClothingHeadHelmetERTLeader
     mask: ClothingMaskGasERT
     eyes: ClothingEyesGlassesSecurity
