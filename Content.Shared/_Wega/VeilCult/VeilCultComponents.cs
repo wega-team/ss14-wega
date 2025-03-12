@@ -9,4 +9,6 @@ namespace Content.Shared.Veil.Cult.Components;
 [RegisterComponent, NetworkedComponent]
 public sealed partial class VeilCultistComponent : Component
 {
+    [DataField("veilStatusIcon")]
+    public ProtoId<FactionIconPrototype> StatusIcon { get; set; } = "VeilCultistFaction";
 }

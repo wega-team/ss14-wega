@@ -17,6 +17,7 @@
   - SimpleHostile
   - Xeno
   - Dragon
+  - VeilCult
 
 - type: npcFaction
   id: VeilCult

@@ -61,4 +61,4 @@
   locationPreference: Right
   icon:
     sprite: /Textures/_Wega/Interface/Misc/veilcult_icons.rsi
-    state: hudveil
+    state: Hudveil
