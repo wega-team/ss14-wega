@@ -91,6 +91,9 @@ tactical-interface-tear-gas-grenade-desc = { ent-TearGasGrenade.desc }
 tactical-interface-grenade-shrapnel-name = Осколочная граната
 tactical-interface-grenade-shrapnel-desc = { ent-GrenadeShrapnel.desc }
 
+tactical-interface-mini-jetpkac-name = { ent-JetpackMiniFilled }
+tactical-interface-mini-jetpkac-desc = { ent-JetpackMiniFilled.desc }
+
 tactical-interface-rcd-name = РСУ
 tactical-interface-rcd-desc = { ent-RCD.desc }
 
@@ -120,6 +123,9 @@ tactical-interface-gold-desc = { ent-CrateMaterialGold.desc }
 
 tactical-interface-silver-name = Серебро
 tactical-interface-silver-desc = { ent-CrateMaterialSilver.desc }
+
+tactical-interface-uranium-name = Уран
+tactical-interface-uranium-desc = { ent-CrateMaterialUranium.desc }
 
 tactical-interface-cable-name = Кабели
 tactical-interface-cable-desc = { ent-CrateEngineeringCableBulk.desc }

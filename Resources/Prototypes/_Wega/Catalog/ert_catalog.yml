@@ -212,7 +212,7 @@
   description: tactical-interface-Wt550-desc
   productEntity: WeaponSubMachineGunWt550
   cost:
-    TacticalResource: 4
+    TacticalResource: 7
   categories:
   - ERTEquipment
 
@@ -222,7 +222,7 @@
   description: tactical-interface-Wt550-ammo-desc
   productEntity: BoxMagazinePistolSubMachineGunTopMounted
   cost:
-    TacticalResource: 2
+    TacticalResource: 3
   categories:
   - ERTEquipment
 
@@ -396,6 +396,16 @@
   - ERTEquipment
 
 - type: listing
+  id: ERTJetpackMini
+  name: tactical-interface-mini-jetpkac-name
+  description: tactical-interface-mini-jetpkac-desc
+  productEntity: JetpackMiniFilled
+  cost:
+    TacticalResource: 2
+  categories:
+  - ERTEquipment
+
+- type: listing
   id: ERTRCD
   name: tactical-interface-rcd-name
   description: tactical-interface-rcd-desc
@@ -492,6 +502,16 @@
   productEntity: CrateMaterialSilver
   cost:
     TacticalResource: 4
+  categories:
+  - ERTEngineering
+
+- type: listing
+  id: ERTUranium
+  name: tactical-interface-uranium-name
+  description: tactical-interface-uranium-desc
+  productEntity: CrateMaterialUranium
+  cost:
+    TacticalResource: 3
   categories:
   - ERTEngineering
 

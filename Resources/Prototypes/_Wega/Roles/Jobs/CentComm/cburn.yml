@@ -23,15 +23,14 @@
     ears: ClothingHeadsetAltCentCom
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitCBURNLeader
-    shoes: ClothingShoesBootsCombatFilled
+    shoes: ClothingShoesBootsMagCombat # Corvax-Wega-ERT
     id: CBURNLeaderPDA
     pocket1: TacticalInterfaceCBURN
     pocket2: WeaponAdvancedLaser
-    neck: ClothingNeckMantleERTLeader
     belt: ClothingBeltBandolier
   storage:
     back:
-    - WeaponShotgunDoubleBarreled
+    - WeaponShotgunKammerer
     - BoxShotgunIncendiary
     - GrenadeFlashBang
     - PillAmbuzolPlus
