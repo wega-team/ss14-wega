@@ -406,6 +406,26 @@
   - ERTEquipment
 
 - type: listing
+  id: ERTDoubleEmergencyOxygenTank
+  name: tactical-interface-double-tank-oxygen-name
+  description: tactical-interface-double-tank-oxygen-desc
+  productEntity: DoubleEmergencyOxygenTankFilled
+  cost:
+    TacticalResource: 1
+  categories:
+  - ERTEquipment
+
+- type: listing
+  id: ERTDoubleEmergencyNitrogenTankFilled
+  name: tactical-interface-double-tank-nitrogen-name
+  description: tactical-interface-double-tank-nitrogen-desc
+  productEntity: DoubleEmergencyNitrogenTankFilled
+  cost:
+    TacticalResource: 1
+  categories:
+  - ERTEquipment  
+
+- type: listing
   id: ERTRCD
   name: tactical-interface-rcd-name
   description: tactical-interface-rcd-desc

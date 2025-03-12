@@ -94,6 +94,12 @@ tactical-interface-grenade-shrapnel-desc = { ent-GrenadeShrapnel.desc }
 tactical-interface-mini-jetpkac-name = { ent-JetpackMiniFilled }
 tactical-interface-mini-jetpkac-desc = { ent-JetpackMiniFilled.desc }
 
+tactical-interface-double-tank-oxygen-name = { ent-DoubleEmergencyOxygenTankFilled }
+tactical-interface-double-tank-oxygen-desc = { ent-DoubleEmergencyOxygenTankFilled.desc }
+
+tactical-interface-double-tank-nitrogen-name = { ent-DoubleEmergencyNitrogenTankFilled }
+tactical-interface-double-tank-nitrogen-desc = { ent-DoubleEmergencyNitrogenTankFilled.desc }
+
 tactical-interface-rcd-name = РСУ
 tactical-interface-rcd-desc = { ent-RCD.desc }
 
