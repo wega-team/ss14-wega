@@ -49,3 +49,16 @@
   icon:
     sprite: /Textures/_Wega/Interface/Misc/bloodcult_icons.rsi
     state: Cultist
+
+- type: factionIcon
+  id: VeilCultistFaction
+  isShaded: true
+  priority: 11
+  showTo:
+    components:
+      - VeilCultist
+      # - ShowCultistIcons
+  locationPreference: Right
+  icon:
+    sprite: /Textures/_Wega/Interface/Misc/veilcult_icons.rsi
+    state: hudveil

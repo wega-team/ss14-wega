@@ -8,6 +8,7 @@ using Content.Shared.Clumsy;
 using Content.Shared.CombatMode.Pacification;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Mobs;
+using Content.Shared.Humanoid;
 using Content.Shared.NPC.Prototypes;
 using Content.Shared.Zombies;
 using Robust.Shared.Prototypes;
@@ -33,12 +34,6 @@ namespace Content.Server.GameTicking.Rules
             SubscribeLocalEvent<VeilCultistComponent, ComponentRemove>(OnComponentRemove);
             SubscribeLocalEvent<VeilCultistComponent, MobStateChangedEvent>(OnMobStateChanged);
             SubscribeLocalEvent<VeilCultistComponent, EntityZombifiedEvent>(OnOperativeZombified);
-        }
-
-        private void OnCultistSelected(Entity<VeilCultRuleComponent> mindId, ref AfterAntagEntitySelectedEvent args)
-        {
-            var ent = args.EntityUid;
-            MakeCultist(ent);
         }
 
         private void MakeCultist(EntityUid ent)
@@ -152,6 +147,25 @@ namespace Content.Server.GameTicking.Rules
             {
                 CheckCultLose(ruleUid, cult);
             }
+        }
+
+        private void OnCultistSelected(Entity<VeilCultRuleComponent> mindId, ref AfterAntagEntitySelectedEvent args)
+        {
+            var ent = args.EntityUid;
+
+            MakeCultist(ent);
+            _antag.SendBriefing(ent, MakeBriefing(ent), Color.LightGoldenrodYellow, null);
+        }
+
+        private string MakeBriefing(EntityUid ent)
+        {
+            var query = QueryActiveRules();
+            var isHuman = HasComp<HumanoidAppearanceComponent>(ent);
+            var briefing = isHuman
+                ? Loc.GetString("veil-cult-role-greeting-human")
+                : Loc.GetString("veil-cult-role-greeting-animal");
+
+            return briefing;
         }
 
         private void CheckCultLose(EntityUid uid, VeilCultRuleComponent cult)
