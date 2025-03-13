@@ -6,6 +6,7 @@
     "configurations": [
 
 
+
         {
             "name": "Client",
             "type": "coreclr",

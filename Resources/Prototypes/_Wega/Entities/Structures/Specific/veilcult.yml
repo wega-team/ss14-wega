@@ -1,0 +1,54 @@
+- type: entity
+  id: BaseVeilCultStructure
+  parent: BaseStructure
+  abstract: true
+  components:
+  # - type: Anchorable
+  #   tool: BloodDagger
+  - type: Physics
+    bodyType: Dynamic
+  - type: InteractionOutline
+
+- type: entity
+  id: VeilCultStructureAltar
+  parent: BaseVeilCultStructure
+  name: mechanical altar
+  description: The altar of a certain god.
+  suffix: DO NOT MAP
+  components:
+  - type: Sprite
+    sprite: _Wega/Structures/Specific/veilcult_structures.rsi
+    state: altar
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 125
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/break_stone.ogg
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Fixtures
+    fixtures:
+      fix1:
+        hard: false
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        density: 190
+        mask:
+        - MachineMask
+        layer:
+          - MachineLayer
+  - type: PointLight
+    radius: 1.1
+    energy: 1
+    color: "#a58b17"
+  - type: Construction
+    graph: VeilCultStructureAltarGraph
+    node: VeilCultStructureAltar

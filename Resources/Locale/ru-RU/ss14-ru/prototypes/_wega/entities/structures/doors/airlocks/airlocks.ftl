@@ -3,4 +3,4 @@ ent-AirlockBloodCult = { ent-Airlock }
     .desc = { ent-Airlock.desc }
 ent-AirlockBloodCultGlass = { ent-AirlockGlass  }
     .suffix = Культ
-    .desc = { ent-AirlockGlass .desc }
+    .desc = { ent-AirlockGlass.desc }

@@ -1,0 +1,23 @@
+- type: constructionGraph
+  id: VeilCultStructureAltarGraph
+  start: start
+  graph:
+    - node: start
+      actions:
+        - !type:DestroyEntity {}
+      edges:
+        - to: VeilCultStructureAltar
+          completed:
+            - !type:SnapToGrid { }
+          steps:
+            - material: Brass
+              amount: 5
+              doAfter: 4
+    - node: VeilCultStructureAltar
+      entity: VeilCultStructureAltar
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: Brass
+              amount: 5

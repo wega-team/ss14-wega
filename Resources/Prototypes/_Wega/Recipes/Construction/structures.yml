@@ -35,6 +35,24 @@
     - !type:TileNotBlocked
 
 - type: construction
+  name: mechanical altar
+  id: VeilCultStructureAltar
+  graph: VeilCultStructureAltarGraph
+  startNode: start
+  targetNode: VeilCultStructureAltar
+  category: construction-category-structures
+  description: Altar of the Godmachine Ratvar!
+  icon:
+    sprite: _Wega/Structures/Specific/veilcult_structures.rsi
+    state: altar
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
   name: archives
   id: BloodCultStructureArchives
   graph: BloodCultStructureArchivesGraph

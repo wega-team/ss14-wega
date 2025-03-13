@@ -17,7 +17,7 @@ revenant-transmit-default-message = Вы слышите голос у себя �
 revenant-transmit-sent = Послание отправлено
 revenant-haunt-alive = { $name } обретает сознание
 revenant-haunt-end = { $name } безжизненно падает
-#UI
+# UI
 revenant-user-interface-title = Магазин способностей
 revenant-user-interface-essence-amount = [color=plum]{ $amount }[/color] украденной эссенции
 revenant-user-interface-cost = { $price } эссенции
