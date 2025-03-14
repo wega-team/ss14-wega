@@ -19,3 +19,14 @@
     sprite: _Wega/Clothing/Head/Hoods/Coat/flagellanthood.rsi
   - type: Clothing
     sprite: _Wega/Clothing/Head/Hoods/Coat/flagellanthood.rsi
+
+- type: entity
+  parent: [ClothingHeadHatHoodWinterBase, BaseRestrictedContraband]
+  id: ClothingHeadHatHelmetClockworkCuirass
+  categories: [ HideSpawnMenu ]
+  name: cuirass helmet
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Head/Hoods/Coat/clockwork_hood.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Head/Hoods/Coat/clockwork_hood.rsi

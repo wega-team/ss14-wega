@@ -15,3 +15,28 @@
         Slash: 0.5
         Piercing: 0.6
         Heat: 0.5
+
+- type: entity
+  parent: ClothingOuterBaseLarge
+  id: ClothingOuterArmorClockworkCuirass
+  name: clockwork cuirass
+  description: Thy'God!
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Armor/cuirass.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/OuterClothing/Armor/cuirass.rsi
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHatHelmetClockworkCuirass
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.6
+        Slash: 0.6
+        Piercing: 0.5
+        Heat: 0.7
+  - type: ExplosionResistance
+    damageCoefficient: 0.8
+  - type: ClothingSpeedModifier
+    walkModifier: 0.8
+    sprintModifier: 0.8
