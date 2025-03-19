@@ -30,3 +30,14 @@
     sprite: _Wega/Clothing/Head/Hoods/Coat/clockwork_hood.rsi
   - type: Clothing
     sprite: _Wega/Clothing/Head/Hoods/Coat/clockwork_hood.rsi
+
+- type: entity
+  parent: [ClothingHeadHatHoodWinterBase, BaseRestrictedContraband]
+  id: ClothingHeadHatHoodVeilCultRobes
+  categories: [ HideSpawnMenu ]
+  name: old clockwork hood
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Head/Hoods/Coat/clockworkold_hood.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Head/Hoods/Coat/clockworkold_hood.rsi

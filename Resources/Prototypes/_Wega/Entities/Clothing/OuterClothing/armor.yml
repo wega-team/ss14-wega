@@ -34,9 +34,9 @@
         Blunt: 0.6
         Slash: 0.6
         Piercing: 0.5
-        Heat: 0.7
+        Heat: 0.6
   - type: ExplosionResistance
     damageCoefficient: 0.8
   - type: ClothingSpeedModifier
-    walkModifier: 0.8
-    sprintModifier: 0.8
+    walkModifier: 0.85
+    sprintModifier: 0.85
