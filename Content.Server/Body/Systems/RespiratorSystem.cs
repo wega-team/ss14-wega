@@ -18,6 +18,7 @@ using Content.Shared.Mobs.Systems;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
+using Content.Server.Strangulation;
 
 namespace Content.Server.Body.Systems;
 
@@ -76,7 +77,8 @@ public sealed class RespiratorSystem : EntitySystem
 
             UpdateSaturation(uid, -(float) respirator.UpdateInterval.TotalSeconds, respirator);
 
-            if (!_mobState.IsIncapacitated(uid)) // cannot breathe in crit.
+            if (!_mobState.IsIncapacitated(uid) // cannot breathe in crit.
+                && !HasComp<StrangulationComponent>(uid)) // cannot breathe when strangled
             {
                 switch (respirator.Status)
                 {
@@ -294,7 +296,11 @@ public sealed class RespiratorSystem : EntitySystem
             }
         }
 
-        _damageableSys.TryChangeDamage(ent, ent.Comp.Damage, interruptsDoAfters: false);
+        var comp = CompOrNull<StrangulationComponent>(ent);
+        if (HasComp<StrangulationComponent>(ent) && comp != null)
+            _damageableSys.TryChangeDamage(ent, comp.Damage, interruptsDoAfters: false);
+        else
+            _damageableSys.TryChangeDamage(ent, ent.Comp.Damage, interruptsDoAfters: false);
     }
 
     private void StopSuffocation(Entity<RespiratorComponent> ent)

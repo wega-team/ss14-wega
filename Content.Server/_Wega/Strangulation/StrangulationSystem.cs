@@ -6,6 +6,10 @@ using Content.Shared.Strangulation;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Hands.Components;
 using Content.Shared.Popups;
+using Content.Server.Chat.Systems;
+using System;
+using Robust.Shared.Timing;
+using System.Threading;
 
 
 /// Система пока сырая. Рабочий, но надо много еще сделать: ограничения "душителя" и "жертвы", базовые ограничения
@@ -21,18 +25,25 @@ namespace Content.Server.Strangulation
         [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
         [Dependency] private readonly DamageableSystem _damageableSys = default!;
         [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
+        [Dependency] private readonly ChatSystem _chat = default!;
+        [Dependency] private readonly IGameTiming _gameTiming = default!;
 
         public override void Initialize()
         {
             base.Initialize();
             SubscribeLocalEvent<RespiratorComponent, GetVerbsEvent<AlternativeVerb>>(AddStrangleVerb);
-            SubscribeLocalEvent<RespiratorComponent, StrangulationActionEvent>(OnStrangle);  //пока пустышка
             SubscribeLocalEvent<RespiratorComponent, StrangulationDoAfterEvent>(StrangleDoAfter);
         }
 
         private void AddStrangleVerb(EntityUid uid, RespiratorComponent component, GetVerbsEvent<AlternativeVerb> args)
         {
             if (!args.CanInteract || !args.CanAccess)
+                return;
+
+            if (!CanStrangle(args.User, uid, component))
+                return;
+
+            if (!_mobStateSystem.IsAlive(args.User))
                 return;
 
             AlternativeVerb verb = new()
@@ -47,34 +58,12 @@ namespace Content.Server.Strangulation
             args.Verbs.Add(verb);
         }
 
-        //пока метод-пустышка
-        private void OnStrangle(EntityUid strangler, RespiratorComponent component, StrangulationActionEvent args)
+        private bool CanStrangle(EntityUid strangler, EntityUid target, RespiratorComponent? component = null)
         {
-            /*if (TryStrangle(strangler, component, args))
-            {
-                var doAfterDelay = TimeSpan.FromSeconds(3);
-                var doAfterEventArgs = new DoAfterArgs(EntityManager, strangler, doAfterDelay,
-                    new StrangulationDoAfterEvent(),
-                    eventTarget: strangler,
-                    target: args.Target,
-                    used: args.Target)
-                {
-                    BreakOnMove = true,
-                    BreakOnDamage = true,
-                    MovementThreshold = 0.01f,
-                    DistanceThreshold = 0.5f,
-                    NeedHand = true
-                };
+            if (!Resolve(target, ref component, false))
+                return false;
 
-                _doAfterSystem.TryStartDoAfter(doAfterEventArgs);
-                _popupSystem.PopupEntity(Loc.GetString("strangle-start"), args.Target, args.Target);
-            }*/
-        }
-
-        //пока метод-пустышка
-        private bool TryStrangle(EntityUid strangler, RespiratorComponent component, StrangulationActionEvent args)
-        {
-            if (!_mobStateSystem.IsAlive(args.Target))
+            if (HasComp<StrangulationComponent>(target))
                 return false;
 
             if (!TryComp<HandsComponent>(strangler, out var hands))
@@ -103,20 +92,21 @@ namespace Content.Server.Strangulation
                 NeedHand = true
             };
             _doAfterSystem.TryStartDoAfter(doAfterEventArgs);
-            if (!doAfterEventArgs.Used.HasValue)
-                StopStrangle(strangler, target);
         }
 
         private void StrangleDoAfter(EntityUid strangler, RespiratorComponent component, ref StrangulationDoAfterEvent args)
         {
-            if (args.Handled || args.Cancelled)
+            if (args.Handled)
                 return;
 
-            var target = args.Target ?? default(EntityUid);
-            Strangle(args.User, target);
-            // урон пока реализован так
-            /*var damage = new DamageSpecifier { DamageDict = { { "Asphyxiation", 5 } } };
-            _damageableSys.TryChangeDamage(args.Target, damage, false);*/
+            var target = args.Target ?? default;
+            Strangle(args.User, target, component);
+
+            if (args.Cancelled)
+            {
+                RemComp<StrangulationComponent>(target);
+                return;
+            }
 
             args.Handled = true;
             args.Repeat = true;
@@ -130,17 +120,17 @@ namespace Content.Server.Strangulation
             return true;
         }
 
-        private void Strangle(EntityUid strangler, EntityUid target)
+        private void Strangle(EntityUid strangler, EntityUid target, RespiratorComponent component)
         {
             EnsureComp<StrangulationComponent>(target);
-            var damage = new DamageSpecifier { DamageDict = { { "Asphyxiation", 5 } } };
-            _damageableSys.TryChangeDamage(target, damage, false);
-        }
+            /*if (_gameTiming.CurTime >= component.LastGaspEmoteTime + component.GaspEmoteCooldown)
+            {
+                component.LastGaspEmoteTime = _gameTiming.CurTime;
+                _chat.TryEmoteWithChat(target, "Gasp", ChatTransmitRange.HideChat, ignoreActionBlocker: true);
+            }
 
-        private void StopStrangle(EntityUid strangler, EntityUid target)
-        {
-            RemComp<StrangulationComponent>(target);
+            DamageSpecifier damage = new DamageSpecifier { DamageDict = { { "Asphyxiation", 5 } } };
+            _damageableSys.TryChangeDamage(target, damage, false);*/
         }
-
     }
 }
