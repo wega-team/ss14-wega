@@ -1,0 +1,15 @@
+- type: entity
+  parent: [ClothingShoesBase, ClothingSlotBase]
+  id: ClothingShoesClockworkTreads
+  name: clockwork treads
+  description: Heavy shoes worn by clockwork cultists.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Shoes/Boots/clockwork_treads.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Shoes/Boots/clockwork_treads.rsi
+  - type: ClothingSlowOnDamageModifier
+    modifier: 0.5
+  - type: FootstepModifier # Corvax-Sounds
+    footstepSoundCollection:
+      collection: FootstepBoots
