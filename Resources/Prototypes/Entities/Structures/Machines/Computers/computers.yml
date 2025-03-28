@@ -704,10 +704,10 @@
     access: [[ "NuclearOperative" ]]
   - type: CommunicationsConsole
     title: comms-console-announcement-title-nukie
-    color: "#ff0000"
+    color: "#ccee0c" # Corvax-Wega-AprilFools color change
     canShuttle: false
     global: true #announce to everyone they're about to fuck shit up
-    sound: /Audio/Announcements/war.ogg
+    sound: /Audio/Announcements/war.ogg # Corvax-Wega-AprilFools
   - type: Computer
     board: SyndicateCommsComputerCircuitboard
   - type: PointLight
@@ -737,10 +737,10 @@
     access: [[ "Wizard" ]]
   - type: CommunicationsConsole
     title: comms-console-announcement-title-wizard
-    color: "#ff00ff"
+    color: "#fffb00"
     canShuttle: false
     global: true #announce to everyone they're about to fuck shit up
-    sound: /Audio/Announcements/war.ogg
+    sound: /Audio/Announcements/war_april.ogg # Corvax-Wega-AprilFools
   - type: Computer
     board: WizardCommsComputerCircuitboard
   - type: PointLight
