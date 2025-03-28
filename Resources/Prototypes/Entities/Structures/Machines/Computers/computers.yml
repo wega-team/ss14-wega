@@ -1199,6 +1199,11 @@
         type: CargoPalletConsoleBoundUserInterface
       enum.WiresUiKey.Key:
         type: WiresBoundUserInterface
+  - type: EmitSoundOnUIOpen
+    sound: /Audio/_Wega/Misc/interaction_april.ogg #Corvax-Wega-April
+    blacklist:
+      tags:
+      - NoConsoleSound
   - type: Computer
     board: CargoSaleComputerCircuitboard
   - type: PointLight
