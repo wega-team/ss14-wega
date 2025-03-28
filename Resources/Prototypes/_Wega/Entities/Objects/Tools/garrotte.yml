@@ -1,0 +1,16 @@
+- type: entity
+  name: garrotte
+  description: Used to detain criminals and other assholes.
+  id: Garrotte
+  parent: [BaseItem]
+  components:
+  - type: Item
+    size: Small
+    storedRotation: 90
+  - type: Sprite
+    sprite: Objects/Misc/handcuffs.rsi
+    state: handcuff
+  - type: Garrotte
+    garrotteDamage:
+      types:
+        Asphyxiation: 10

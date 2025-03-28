@@ -18,7 +18,7 @@ using Content.Shared.Mobs.Systems;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
-using Content.Server.Strangulation;
+using Content.Shared.Strangulation;
 
 namespace Content.Server.Body.Systems;
 
