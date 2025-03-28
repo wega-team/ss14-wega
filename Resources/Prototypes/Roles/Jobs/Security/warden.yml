@@ -24,6 +24,20 @@
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
+  # Corvax-Wega-AprilFools-Start
+  - !type:AddComponentSpecial
+    components:
+    - type: Clumsy
+      gunShootFailDamage:
+        types:
+          Blunt: 5
+          Piercing: 4
+        groups:
+          Burn: 3
+    - type: SleepEmitSound
+      snore: /Audio/Voice/Misc/silly_snore.ogg
+      interval: 10
+    # Corvax-Wega-AprilFools-End
 
 - type: startingGear
   id: WardenGear

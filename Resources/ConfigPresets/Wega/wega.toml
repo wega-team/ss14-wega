@@ -51,6 +51,9 @@ rules_file = "WegaRuleset"
 [atmos]
 max_explosion_range = 5
 space_wind = true
+# AprilFools
+space_wind_max_velocity - 150
+space_wind_max_push_force = 100
 
 [shuttle]
 emergency_early_launch_allowed = true

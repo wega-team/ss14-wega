@@ -431,7 +431,7 @@
     heldPrefix: peel
   - type: Slippery
     slipSound:
-      path: /Audio/Effects/slip.ogg
+      path: /Audio/_Wega/Effects/metal_pipe.ogg # // Corvax-Wega-AprilFools
       params:
         volume: -100
 

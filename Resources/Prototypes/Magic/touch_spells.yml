@@ -67,7 +67,7 @@
     canTargetSelf: false
     interactOnMiss: false
     sound: !type:SoundPathSpecifier
-      path: /Audio/Effects/slip.ogg
+      path: /Audio/_Wega/Effects/metal_pipe.ogg # // Corvax-Wega-AprilFools 
     icon:
       sprite: Objects/Specific/Janitorial/soap.rsi
       state: omega-4

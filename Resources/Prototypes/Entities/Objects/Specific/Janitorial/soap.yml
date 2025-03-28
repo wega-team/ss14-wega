@@ -218,8 +218,8 @@
   - type: SolutionContainerVisuals
     fillBaseName: omega-
   - type: Slippery
-    paralyzeTime: 5.0
-    launchForwardsMultiplier: 3.0
+    paralyzeTime: 5
+    launchForwardsMultiplier: 15.0 # Corvax-Wega-AprilFools  3 -> 15
   - type: Item
     heldPrefix: omega
   - type: SolutionContainerManager
