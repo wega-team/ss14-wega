@@ -201,10 +201,14 @@
       params:
         volume: -3
         variation: 0.250
-    activatedDamage:
+  #Corvax-Wega-AprilFools-edit-start
+    activatedDamage: 
       types:
-        Slash: 10
-        Heat: 10
+        Slash: 0
+        Heat: 0
+  - type: StaminaDamageOnHit
+    damage: 8
+  #Corvax-Wega-AprilFools-edit-end
   - type: ComponentToggler
     components:
     - type: Sharp
