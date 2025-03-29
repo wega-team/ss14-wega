@@ -1,0 +1,239 @@
+- type: entity
+  parent: [ BaseMachinePowered, ConstructibleMachine, RandomAlertGeneratorComp ]
+  id: RandomAlertGeneratorServer
+  name: random alert generator server
+  description: "A device for injecting conspiracy theories into a corporate chat. Version 2.3 with improved algorithm 'What if...?"
+  components:
+  - type: Sprite
+    sprite: Structures/Machines/telecomms.rsi
+    snapCardinals: true
+    layers:
+    - state: icon
+    - state: unlit
+      shader: unshaded
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        enum.PowerDeviceVisualLayers.Powered:
+          True: { visible: true }
+          False: { visible: false }
+  - type: Appearance
+  - type: AmbientOnPowered
+  - type: AmbientSound
+    volume: -9
+    range: 5
+    sound:
+      path: /Audio/Ambience/Objects/server_fans.ogg
+  - type: WiresVisuals
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        density: 190
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:ChangeConstructionNodeBehavior
+        node: machineFrame
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: Machine
+    board: RandomAlertGeneratorCircuitboard
+  - type: WiresPanel
+  - type: Transform
+    anchored: true
+  - type: Pullable
+  - type: ContainerContainer
+    containers:
+      machine_board: !type:Container
+      machine_parts: !type:Container
+
+- type: entity
+  id: RandomAlertGeneratorComp
+  abstract: true
+  components:
+  - type: RandomAlertGenerator
+    messages:
+      ### Общие тревоги
+      - april-fools-alert-1
+      - april-fools-alert-2
+      - april-fools-alert-3
+      - april-fools-alert-4
+      - april-fools-alert-5
+      ### Технические алерты
+      - april-fools-alert-6
+      - april-fools-alert-7
+      - april-fools-alert-8
+      - april-fools-alert-9
+      - april-fools-alert-10
+      ### Корпоративный абсурд
+      - april-fools-alert-11
+      - april-fools-alert-12
+      - april-fools-alert-13
+      - april-fools-alert-14
+      - april-fools-alert-15
+      ### Фальшивые угрозы
+      - april-fools-alert-16
+      - april-fools-alert-17
+      - april-fools-alert-18
+      - april-fools-alert-19
+      - april-fools-alert-20
+      ### Абсолютный бред
+      - april-fools-alert-21
+      - april-fools-alert-22
+      - april-fools-alert-23
+      - april-fools-alert-24
+      - april-fools-alert-25
+      ### Официальные шутки
+      - april-fools-alert-26
+      - april-fools-alert-27
+      - april-fools-alert-28
+      - april-fools-alert-29
+      - april-fools-alert-30
+      ### Для одного игрока
+      - april-fools-solo-1
+      - april-fools-solo-2
+      - april-fools-solo-3
+      - april-fools-solo-4
+      - april-fools-solo-5
+      - april-fools-solo-6
+      - april-fools-solo-7
+      - april-fools-solo-8
+      - april-fools-solo-9
+      - april-fools-solo-10
+      - april-fools-solo-11
+      - april-fools-solo-12
+      - april-fools-solo-13
+      - april-fools-solo-14
+      - april-fools-solo-15
+      - april-fools-solo-16
+      - april-fools-solo-17
+      - april-fools-solo-18
+      - april-fools-solo-19
+      - april-fools-solo-20
+      ### Для двух игроков (обычные)
+      - april-fools-pair-1
+      - april-fools-pair-2
+      - april-fools-pair-3
+      - april-fools-pair-4
+      - april-fools-pair-5
+      - april-fools-pair-6
+      - april-fools-pair-7
+      - april-fools-pair-8
+      - april-fools-pair-9
+      - april-fools-pair-10
+      - april-fools-pair-11
+      - april-fools-pair-12
+      - april-fools-pair-13
+      - april-fools-pair-14
+      - april-fools-pair-15
+      - april-fools-pair-16
+      - april-fools-pair-17
+      - april-fools-pair-18
+      - april-fools-pair-19
+      - april-fools-pair-20
+      - april-fools-pair-21
+      - april-fools-pair-22
+      - april-fools-pair-23
+      - april-fools-pair-24
+      - april-fools-pair-25
+      ### Особые события
+      - april-fools-event-1
+      - april-fools-event-2
+      - april-fools-event-3
+      - april-fools-event-4
+      - april-fools-event-5
+      - april-fools-event-6
+      - april-fools-event-7
+      - april-fools-event-8
+      - april-fools-event-9
+      - april-fools-event-10
+      ### ERP-флейвор (18+)
+      - april-fools-erp-alert-1
+      - april-fools-erp-alert-2
+      - april-fools-erp-alert-3
+      - april-fools-erp-alert-4
+      - april-fools-erp-alert-5
+      - april-fools-erp-alert-6
+      - april-fools-erp-alert-7
+      - april-fools-erp-alert-8
+      - april-fools-erp-alert-9
+      - april-fools-erp-alert-10
+      - april-fools-erp-alert-11
+      - april-fools-erp-alert-12
+      - april-fools-erp-alert-13
+      - april-fools-erp-alert-14
+      - april-fools-erp-alert-15
+      - april-fools-erp-alert-16
+      - april-fools-erp-alert-17
+      - april-fools-erp-alert-18
+      - april-fools-erp-alert-19
+      - april-fools-erp-alert-20
+      - april-fools-erp-alert-21
+      - april-fools-erp-alert-22
+      - april-fools-erp-alert-23
+      - april-fools-erp-alert-24
+      - april-fools-erp-alert-25
+      - april-fools-erp-pair-1
+      - april-fools-erp-pair-2
+      - april-fools-erp-pair-3
+      - april-fools-erp-pair-4
+      - april-fools-erp-pair-5
+      - april-fools-erp-pair-6
+      - april-fools-erp-pair-7
+      - april-fools-erp-pair-8
+      - april-fools-erp-pair-9
+      - april-fools-erp-pair-10
+      - april-fools-erp-pair-11
+      - april-fools-erp-pair-12
+      - april-fools-erp-pair-13
+      - april-fools-erp-pair-14
+      - april-fools-erp-pair-15
+      - april-fools-erp-pair-16
+      - april-fools-erp-pair-17
+      - april-fools-erp-pair-18
+      - april-fools-erp-pair-19
+      - april-fools-erp-pair-20
+      - april-fools-erp-pair-21
+      - april-fools-erp-pair-22
+      - april-fools-erp-pair-23
+      - april-fools-erp-pair-24
+      - april-fools-erp-pair-25
+      - april-fools-erp-pair-26
+      - april-fools-erp-pair-27
+      - april-fools-erp-pair-28
+      - april-fools-erp-pair-29
+      - april-fools-erp-pair-30
+      - april-fools-erp-pair-31
+      - april-fools-erp-pair-32
+      - april-fools-erp-pair-33
+      - april-fools-erp-pair-34
+      - april-fools-erp-pair-35
+      - april-fools-erp-pair-36
+      - april-fools-erp-pair-37
+      - april-fools-erp-pair-38
+      - april-fools-erp-pair-39
+      - april-fools-erp-pair-40
+      - april-fools-erp-pair-41
+      - april-fools-erp-pair-42
+      - april-fools-erp-pair-43
+      - april-fools-erp-pair-44
+      - april-fools-erp-pair-45
+      - april-fools-erp-pair-46

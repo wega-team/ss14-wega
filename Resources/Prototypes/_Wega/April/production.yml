@@ -1,0 +1,13 @@
+- type: entity
+  id: RandomAlertGeneratorCircuitboard
+  parent: BaseMachineCircuitboard
+  name: random alert generator server machine board
+  description: ""
+  components:
+  - type: Sprite
+    state: engineering
+  - type: MachineBoard
+    prototype: RandomAlertGeneratorServer
+    stackRequirements:
+      Steel: 1
+      Cable: 2
