@@ -10,6 +10,7 @@ using Content.Shared.Speech.Synthesis.Components; // Corvax-Wega-Barks
 using Content.Shared.Corvax.TTS;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Preferences;
+using Content.Shared.Actions;
 using Robust.Shared;
 using Robust.Shared.Configuration;
 using Robust.Shared.GameObjects.Components.Localization;
@@ -39,6 +40,7 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly ISerializationManager _serManager = default!;
     [Dependency] private readonly MarkingManager _markingManager = default!;
+    [Dependency] private readonly SharedActionsSystem _actions = default!;
     private ISharedSponsorsManager? _sponsors;
 
     [ValidatePrototypeId<SpeciesPrototype>]
@@ -455,6 +457,13 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
         }
 
         humanoid.Age = profile.Age;
+
+        // Corvax-Wega-AprilFools-Start
+        if (profile.Age > 29 && profile.Status == Status.No)
+        {
+            _actions.AddAction(uid, "ActionFireball");
+        }
+        // Corvax-Wega-AprilFools-End
 
         Dirty(uid, humanoid);
     }

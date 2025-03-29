@@ -20,7 +20,7 @@ namespace Content.Shared.Slippery
         /// </summary>
         [DataField, AutoNetworkedField]
         [Access(Other = AccessPermissions.ReadWriteExecute)]
-        public SoundSpecifier SlipSound = new SoundPathSpecifier("/Audio/Effects/slip.ogg");
+        public SoundSpecifier SlipSound = new SoundPathSpecifier("/Audio/_Wega/Effects/metal_pipe.ogg"); // Corvax-Wega-AprilFools
 
         /// <summary>
         /// How many seconds the mob will be paralyzed for.

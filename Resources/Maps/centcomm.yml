@@ -46261,6 +46261,13 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 7.5,8.5
       parent: 1668
+- proto: RandomAlertGeneratorServer
+  entities:
+  - uid: 9682
+    components:
+    - type: Transform
+      pos: -9.5,6.5
+      parent: 1668
 - proto: RandomDrinkBottle
   entities:
   - uid: 6199

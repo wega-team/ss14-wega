@@ -62,7 +62,7 @@
       announcement: alert-level-epsilon-announcement
       selectable: false
       sound:
-        path: /Audio/Misc/epsilon.ogg
+        path: /Audio/_Wega/Misc/pepsilon.ogg # Corvax-Wega-AprilFools
         params:
           volume: -2
       disableSelection: true

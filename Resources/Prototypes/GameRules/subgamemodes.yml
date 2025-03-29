@@ -30,7 +30,7 @@
       mindRoles:
       - MindRoleThief
       briefing:
-        sound: "/Audio/Misc/thief_greeting.ogg"
+        sound: "/Audio/Misc/thief_greeting_april.ogg" #Corvax-Wega-April
 
 # Needs testing
 - type: entity

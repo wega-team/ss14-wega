@@ -1,6 +1,8 @@
 - type: gameMapPool
   id: WegaDefaultMapPool
   maps:
+  # Highpop ++++++++++ / April Fools
+  - WegaShnake
   # Highpop
   - WegaKerberos
   #- CorvaxAvrite

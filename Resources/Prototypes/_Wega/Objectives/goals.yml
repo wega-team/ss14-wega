@@ -1,0 +1,4 @@
+- type: stationGoal
+  id: ShnakeExpansion
+  text: station-goal-shnake-expansion
+  minPlayers: 0
