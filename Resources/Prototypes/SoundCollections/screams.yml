@@ -20,9 +20,17 @@
 - type: soundCollection
   id: ZombieScreams
   files:
-    - /Audio/Voice/Zombie/zombie-1.ogg
-    - /Audio/Voice/Zombie/zombie-2.ogg
-    - /Audio/Voice/Zombie/zombie-3.ogg
+#Corvax-Wega-AprilFools-edit-start
+    #- /Audio/Voice/Zombie/zombie-1.ogg
+    #- /Audio/Voice/Zombie/zombie-2.ogg
+    #- /Audio/Voice/Zombie/zombie-3.ogg
+    - /Audio/_Wega/Voice/Felinid/meow_1.ogg
+    - /Audio/_Wega/Voice/Felinid/meow_2.ogg
+    - /Audio/_Wega/Voice/Felinid/meow_3.ogg
+    - /Audio/_Wega/Voice/Felinid/meow_4.ogg
+    - /Audio/_Wega/Voice/Felinid/meow_5.ogg
+    - /Audio/_Wega/Voice/Felinid/meow_6.ogg
+#Corvax-Wega-AprilFools-edit-end
 
 - type: soundCollection
   id: CluwneScreams
