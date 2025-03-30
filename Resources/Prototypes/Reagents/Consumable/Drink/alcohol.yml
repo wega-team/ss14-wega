@@ -139,6 +139,7 @@
   color: "#b05b3c"
   boilingPoint: 78.2
   meltingPoint: -114.1
+  #Corvax-Wega-AprilFools-edit-start
   #metabolisms:
   #  Alcohol:
   #    effects:
@@ -183,6 +184,7 @@
   #        shouldHave: false
   #    - !type:Drunk
   #      boozePower: 2
+  #Corvax-Wega-AprilFools-edit-end
 
 - type: reagent
   id: Gin

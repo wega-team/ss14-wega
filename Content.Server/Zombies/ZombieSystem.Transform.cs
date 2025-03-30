@@ -38,7 +38,6 @@ using Content.Shared.Traits.Assorted;
 using Robust.Shared.Audio.Systems;
 using Content.Shared.Ghost.Roles.Components;
 using Content.Shared.Tag;
-using Content.Shared.Inventory;
 
 namespace Content.Server.Zombies;
 

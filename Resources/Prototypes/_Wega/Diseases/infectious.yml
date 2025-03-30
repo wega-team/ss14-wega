@@ -269,10 +269,10 @@
       reagent: Ephedrine
       amount: 1
     - !type:DiseaseSnough
-      probability: 0.01
+      probability: 0.2
       emote: CatMeow
     - !type:DiseaseSnough
-      probability: 0.01
+      probability: 0.2
       emote: CatHisses
   cures:
     - !type:DiseaseBodyTemperatureCure
