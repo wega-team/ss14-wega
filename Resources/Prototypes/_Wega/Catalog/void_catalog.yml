@@ -1,0 +1,526 @@
+# Survival
+- type: listing
+  id: UplinkOxygenTankFilledVoid
+  name: uplink-void-oxygen-tank-name
+  description: uplink-void-oxygen-tank-desc
+  productEntity: OxygenTankFilled
+  cost:
+    Credit: 450
+  categories:
+  - UplinkVoidSurvival
+
+- type: listing
+  id: UplinkNitrogenTankFilledVoid
+  name: uplink-void-nitrogen-tank-name
+  description: uplink-void-nitrogen-tank-desc
+  productEntity: NitrogenTankFilled
+  cost:
+    Credit: 450
+  categories:
+  - UplinkVoidSurvival
+
+- type: listing
+  id: UplinkFuelTankVoid
+  name: uplink-void-fuel-tank-name
+  description: uplink-void-fuel-tank-desc
+  productEntity: WeldingFuelTankFull
+  cost:
+    Credit: 2500
+  categories:
+  - UplinkVoidSurvival
+
+- type: listing
+  id: UplinkOxygenCanisterVoid
+  name: uplink-void-oxygen-can-name
+  description: uplink-void-oxygen-can-desc
+  productEntity: OxygenCanister
+  cost:
+    Credit: 2500
+  categories:
+  - UplinkVoidSurvival
+
+- type: listing
+  id: UplinkNitrogenCanisterVoid
+  name: uplink-void-nitrogen-can-name
+  description: uplink-void-nitrogen-can-desc
+  productEntity: NitrogenCanister
+  cost:
+    Credit: 2500
+  categories:
+  - UplinkVoidSurvival
+
+- type: listing
+  id: UplinkCrateMaterialSteelVoid
+  name: uplink-void-steel-crate-name
+  description: uplink-void-steel-crate-desc
+  productEntity: CrateMaterialSteel
+  cost:
+    Credit: 3500
+  categories:
+  - UplinkVoidSurvival
+
+- type: listing
+  id: UplinkCrateMaterialGlassVoid
+  name: uplink-void-glass-crate-name
+  description: uplink-void-glass-crate-desc
+  productEntity: CrateMaterialGlass
+  cost:
+    Credit: 3500
+  categories:
+  - UplinkVoidSurvival
+
+- type: listing
+  id: UplinkCrateMaterialPlasteelVoid
+  name: uplink-void-plasteel-crate-name
+  description: uplink-void-plasteel-crate-desc
+  productEntity: CrateMaterialPlasteel
+  cost:
+    Credit: 11500
+  categories:
+  - UplinkVoidSurvival
+
+# Food
+- type: listing
+  id: UplinkBoxMREVoid
+  name: uplink-void-mre-name
+  description: uplink-void-mre-desc
+  productEntity: BoxMRE
+  cost:
+    Credit: 450
+  categories:
+  - UplinkVoidEatPoint
+
+- type: listing
+  id: UplinkCrateFoodMREVoid
+  name: uplink-void-mre-crate-name
+  description: uplink-void-mre-crate-desc
+  productEntity: CrateFoodMRE
+  cost:
+    Credit: 2200
+  categories:
+  - UplinkVoidEatPoint
+
+- type: listing
+  id: UplinkDrinkGrapeCanVoid
+  name: uplink-void-grape-name
+  description: uplink-void-grape-desc
+  productEntity: DrinkGrapeCan
+  cost:
+    Credit: 50
+  categories:
+  - UplinkVoidEatPoint
+
+- type: listing
+  id: UplinkVendingMachineRestockRobustSoftdrinksVoid
+  name: uplink-void-softdrinks-name
+  description: uplink-void-softdrinks-desc
+  productEntity: VendingMachineRestockRobustSoftdrinks
+  cost:
+    Credit: 450
+  categories:
+  - UplinkVoidEatPoint
+
+- type: listing
+  id: UplinkFoodPizzaMushroomVoid
+  name: uplink-void-pizza-name
+  description: uplink-void-pizza-desc
+  productEntity: FoodPizzaMushroom
+  cost:
+    Credit: 400
+  categories:
+  - UplinkVoidEatPoint
+
+- type: listing
+  id: UplinkFoodBoxDonkpocketVoid
+  name: uplink-void-donkpocket-name
+  description: uplink-void-donkpocket-desc
+  productEntity: FoodBoxDonkpocket
+  cost:
+    Credit: 450
+  categories:
+  - UplinkVoidEatPoint
+
+# Equipment
+- type: listing
+  id: UplinkMultitoolVoid
+  name: uplink-void-multitool-name
+  description: uplink-void-multitool-desc
+  productEntity: Multitool
+  cost:
+    Credit: 300
+  categories:
+  - UplinkVoidEquipment
+
+- type: listing
+  id: UplinkHandheldGPSVoid
+  name: uplink-void-gps-name
+  description: uplink-void-gps-desc
+  productEntity: HandheldGPSBasic
+  cost:
+    Credit: 300
+  categories:
+  - UplinkVoidEquipment
+
+- type: listing
+  id: UplinkBoxFlareVoid
+  name: uplink-void-box-flare-name
+  description: uplink-void-box-flare-desc
+  productEntity: BoxFlare
+  cost:
+    Credit: 300
+  categories:
+  - UplinkVoidEquipment
+
+- type: listing
+  id: UplinkRadioHandheldVoid
+  name: uplink-void-radio-name
+  description: uplink-void-radio-desc
+  productEntity: RadioHandheld
+  cost:
+    Credit: 400
+  categories:
+  - UplinkVoidEquipment
+
+- type: listing
+  id: UplinkJetpackMiniVoid
+  name: uplink-void-jetpack-mini-name
+  description: uplink-void-jetpack-mini-desc
+  productEntity: JetpackMiniFilled
+  cost:
+    Credit: 500
+  categories:
+  - UplinkVoidEquipment
+
+- type: listing
+  id: UplinkOreBagVoid
+  name: uplink-void-ore-bag-name
+  description: uplink-void-ore-bag-desc
+  productEntity: OreBag
+  cost:
+    Credit: 550
+  categories:
+  - UplinkVoidEquipment
+
+- type: listing
+  id: UplinkPowerCellVoid
+  name: uplink-void-power-cell-name
+  description: uplink-void-power-cell-desc
+  productEntity: PowerCellMedium
+  cost:
+    Credit: 600
+  categories:
+  - UplinkVoidEquipment
+
+- type: listing
+  id: UplinkGlassesMesonVoid
+  name: uplink-void-glasses-meson-name
+  description: uplink-void-glasses-meson-desc
+  productEntity: ClothingEyesGlassesMeson
+  cost:
+    Credit: 600
+  categories:
+  - UplinkVoidEquipment
+
+- type: listing
+  id: UplinkSuitEmergencyVoid
+  name: uplink-void-suit-emergency-name
+  description: uplink-void-suit-emergency-desc
+  productEntity: ClothingOuterSuitEmergency
+  cost:
+    Credit: 600
+  categories:
+  - UplinkVoidEquipment
+
+- type: listing
+  id: UplinkPickaxeVoid
+  name: uplink-void-pickaxe-name
+  description: uplink-void-pickaxe-desc
+  productEntity: Pickaxe
+  cost:
+    Credit: 750
+  categories:
+  - UplinkVoidEquipment
+
+- type: listing
+  id: UplinkGlovesColorYellowVoid
+  name: uplink-void-gloves-yellow-name
+  description: uplink-void-gloves-yellow-desc
+  productEntity: ClothingHandsGlovesColorYellow
+  cost:
+    Credit: 800
+  categories:
+  - UplinkVoidEquipment
+
+- type: listing
+  id: UplinkOreBoxVoid
+  name: uplink-void-ore-box-name
+  description: uplink-void-ore-box-desc
+  productEntity: OreBox
+  cost:
+    Credit: 1000
+  categories:
+  - UplinkVoidEquipment
+
+- type: listing
+  id: UplinkBeltUtilityVoid
+  name: uplink-void-utility-belt-name
+  description: uplink-void-utility-belt-desc
+  productEntity: ClothingBeltUtilityFilled
+  cost:
+    Credit: 1000
+  categories:
+  - UplinkVoidEquipment
+
+- type: listing
+  id: UplinkBootsMagVoid
+  name: uplink-void-boots-mag-name
+  description: uplink-void-boots-mag-desc
+  productEntity: ClothingShoesBootsMag
+  cost:
+    Credit: 1200
+  categories:
+  - UplinkVoidEquipment
+
+- type: listing
+  id: UplinkJetpackVoid
+  name: uplink-void-jetpack-name
+  description: uplink-void-jetpack-desc
+  productEntity: JetpackMiningFilled
+  cost:
+    Credit: 2000
+  categories:
+  - UplinkVoidEquipment
+
+- type: listing
+  id: UplinkMassScannerVoid
+  name: uplink-void-mass-scanner-name
+  description: uplink-void-mass-scanner-desc
+  productEntity: HandHeldMassScannerEmpty
+  cost:
+    Credit: 2000
+  categories:
+  - UplinkVoidEquipment
+
+- type: listing
+  id: UplinkDrillVoid
+  name: uplink-void-drill-name
+  description: uplink-void-drill-desc
+  productEntity: PowerDrill
+  cost:
+    Credit: 7500
+  categories:
+  - UplinkVoidEquipment
+
+- type: listing
+  id: UplinkWelderExperimentalVoid
+  name: uplink-void-welder-experimental-name
+  description: uplink-void-welder-experimental-desc
+  productEntity: WelderExperimental
+  cost:
+    Credit: 7500
+  categories:
+  - UplinkVoidEquipment
+
+- type: listing
+  id: UplinkHardsuittVoid
+  name: uplink-void-hardsuit-void-name
+  description: uplink-void-hardsuit-void-desc
+  productEntity: ClothingOuterHardsuitVoid
+  cost:
+    Credit: 25000
+  categories:
+  - UplinkVoidEquipment
+
+- type: listing
+  id: UplinkSalvageMagnetVoid
+  name: uplink-void-salvage-magnet-name
+  description: uplink-void-salvage-magnet-desc
+  productEntity: SalvageMagnetMachineCircuitboard
+  cost:
+    Credit: 50000
+  categories:
+  - UplinkVoidEquipment
+
+# Medical
+- type: listing
+  id: UplinkBrutepackVoid
+  name: uplink-void-brutepack-name
+  description: uplink-void-brutepack-desc
+  productEntity: Brutepack
+  cost:
+    Credit: 200
+  categories:
+  - UplinkVoidMedical
+
+- type: listing
+  id: UplinkOintmentVoid
+  name: uplink-void-ointment-name
+  description: uplink-void-ointment-desc
+  productEntity: Ointment
+  cost:
+    Credit: 200
+  categories:
+  - UplinkVoidMedical
+
+- type: listing
+  id: UplinkHealthAnalyzerVoid
+  name: uplink-void-health-analyzer-name
+  description: uplink-void-health-analyzer-desc
+  productEntity: HandheldHealthAnalyzer
+  cost:
+    Credit: 300
+  categories:
+  - UplinkVoidMedical
+
+- type: listing
+  id: UplinkBloodpackVoid
+  name: uplink-void-bloodpack-name
+  description: uplink-void-bloodpack-desc
+  productEntity: Bloodpack
+  cost:
+    Credit: 350
+  categories:
+  - UplinkVoidMedical
+
+- type: listing
+  id: UplinkMedicalSuppliesVoid
+  name: uplink-void-medical-supplies-name
+  description: uplink-void-medical-supplies-desc
+  productEntity: CrateMedicalSupplies
+  cost:
+    Credit: 2400
+  categories:
+  - UplinkVoidMedical
+
+- type: listing
+  id: UplinkMedkitAdvancedVoid
+  name: uplink-void-medkit-advanced-name
+  description: uplink-void-medkit-advanced-desc
+  productEntity: MedkitAdvancedFilled
+  cost:
+    Credit: 4800
+  categories:
+  - UplinkVoidMedical
+
+# Weapon
+- type: listing
+  id: UplinkSurvivalKnifeVoid
+  name: uplink-void-survival-knife-name
+  description: uplink-void-survival-knife-desc
+  productEntity: SurvivalKnife
+  cost:
+    Credit: 500
+  categories:
+  - UplinkVoidWeapon
+
+- type: listing
+  id: UplinkMacheteVoid
+  name: uplink-void-machete-name
+  description: uplink-void-machete-desc
+  productEntity: Machete
+  cost:
+    Credit: 750
+  categories:
+  - UplinkVoidWeapon
+
+- type: listing
+  id: UplinkSniperMosinVoid
+  name: uplink-void-sniper-mosin-name
+  description: uplink-void-sniper-mosin-desc
+  productEntity: WeaponSniperMosin
+  cost:
+    Credit: 8000
+  categories:
+  - UplinkVoidWeapon
+
+# Shuttle
+- type: listing
+  id: UplinkAPCElectronicsVoid
+  name: uplink-void-apc-name
+  description: uplink-void-apc-desc
+  productEntity: APCElectronics
+  cost:
+    Credit: 400
+  categories:
+  - UplinkVoidShuttle
+
+- type: listing
+  id: UplinkBoxLightVoid
+  name: uplink-void-box-light-name
+  description: uplink-void-box-light-desc
+  productEntity: BoxLightMixed
+  cost:
+    Credit: 800
+  categories:
+  - UplinkVoidShuttle
+
+- type: listing
+  id: UplinkThrusterVoid
+  name: uplink-void-thruster-name
+  description: uplink-void-thruster-desc
+  productEntity: ClothingBackpackDuffelVoidThruster
+  cost:
+    Credit: 5000
+  categories:
+  - UplinkVoidShuttle
+
+- type: listing
+  id: UplinkGyroscopeVoid
+  name: uplink-void-gyroscope-name
+  description: uplink-void-gyroscope-desc
+  productEntity: ClothingBackpackDuffelVoidGyroscope
+  cost:
+    Credit: 5000
+  categories:
+  - UplinkVoidShuttle
+
+# Special
+- type: listing
+  id: UplinkMagazineLightRifleVoid
+  name: uplink-void-magazine-light-rifle-name
+  description: uplink-void-magazine-light-rifle-desc
+  productEntity: MagazineBoxLightRifle
+  cost:
+    Credit: 4000
+  categories:
+  - UplinkVoidSpecial
+
+- type: listing
+  id: UplinkCombatMedipenVoid
+  name: uplink-void-combat-medipen-name
+  description: uplink-void-combat-medipen-desc
+  productEntity: CombatMedipen
+  cost:
+    Credit: 5000
+  categories:
+  - UplinkVoidSpecial
+
+- type: listing
+  id: UplinkJawsOfLifeVoid
+  name: uplink-void-jaws-of-life-name
+  description: uplink-void-jaws-of-life-desc
+  productEntity: SyndicateJawsOfLife
+  cost:
+    Credit: 8000
+  categories:
+  - UplinkVoidSpecial
+
+- type: listing
+  id: UplinkGasVoiceChameleonVoid
+  name: uplink-void-gas-voice-chameleon-name
+  description: uplink-void-gas-voice-chameleon-desc
+  productEntity: ClothingMaskGasVoiceChameleon
+  cost:
+    Credit: 18500
+  categories:
+  - UplinkVoidSpecial
+
+- type: listing
+  id: UplinkNocturineVoid
+  name: uplink-void-nocturine-name
+  description: uplink-void-nocturine-desc
+  productEntity: NocturineChemistryBottle
+  cost:
+    Credit: 20000
+  categories:
+  - UplinkVoidSpecial

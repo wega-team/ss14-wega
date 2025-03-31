@@ -1,0 +1,57 @@
+- type: entity
+  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
+  id: ClothingHeadHelmetHardsuitVoid
+  name: void space suit helmet
+  categories: [ HideSpawnMenu ]
+  description: "An old battered void suit helmet."
+  components:
+  - type: BreathMask
+  - type: Sprite
+    sprite: _Wega/Clothing/Head/Hardsuits/voidhardsuit.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Head/Hardsuits/voidhardsuit.rsi
+  - type: PointLight
+    color: "#8b00ff"
+  - type: PressureProtection
+    highPressureMultiplier: 0.08
+    lowPressureMultiplier: 1000
+  - type: TemperatureProtection
+    coefficient: 0.005
+  - type: FireProtection
+    reduction: 0.2
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9
+
+- type: entity
+  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
+  id: ClothingHeadHelmetHardsuitVoidAdvanced
+  name: advanced void space suit helmet
+  categories: [ HideSpawnMenu ]
+  description: "An improved void suit helmet."
+  components:
+  - type: BreathMask
+  - type: Sprite
+    sprite: _Wega/Clothing/Head/Hardsuits/advancedvoidhardsuit.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Head/Hardsuits/advancedvoidhardsuit.rsi
+  - type: PointLight
+    color: "#42aaff"
+  - type: PressureProtection
+    highPressureMultiplier: 0.08
+    lowPressureMultiplier: 1000
+  - type: TemperatureProtection
+    coefficient: 0.005
+  - type: FireProtection
+    reduction: 0.2
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9

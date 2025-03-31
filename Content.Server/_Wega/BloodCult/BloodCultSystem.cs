@@ -402,7 +402,8 @@ public sealed partial class BloodCultSystem : EntitySystem
         var user = args.User;
         if (!TryComp<BloodCultistComponent>(user, out _))
         {
-            RaiseLocalEvent(user, new DropHandItemsEvent());
+            var dropEvent = new DropHandItemsEvent();
+            RaiseLocalEvent(user, ref dropEvent);
             var damage = new DamageSpecifier { DamageDict = { { "Slash", 5 } } };
             _damage.TryChangeDamage(user, damage, true);
             _popup.PopupEntity(Loc.GetString("blood-dagger-failed-interact"), user, user, PopupType.SmallCaution);
@@ -637,7 +638,8 @@ public sealed partial class BloodCultSystem : EntitySystem
         var user = args.User;
         if (args.Handled || !TryComp<BloodCultistComponent>(user, out _))
         {
-            RaiseLocalEvent(user, new DropHandItemsEvent());
+            var dropEvent = new DropHandItemsEvent();
+            RaiseLocalEvent(user, ref dropEvent);
             return;
         }
 

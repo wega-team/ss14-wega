@@ -12,7 +12,7 @@ loadout-group-captain-socks = Капитан, носки
 loadout-group-hop-top = Глава персонала, верхнее белье
 loadout-group-hop-bottom = Глава персонала, нижнее белье
 loadout-group-hop-socks = Глава персонала, носки
-# Medical
+# Service
 loadout-group-barber-outerclothing = Барбер, верхняя одежда
 # Cargo
 loadout-group-quartermaster-top = Квартирмейстер, верхнее белье
@@ -38,6 +38,9 @@ loadout-group-brigmedic-outerclothing = Бригмедик, верхняя од�
 loadout-group-chief-medical-officer-top = Главный врач, верхнее белье
 loadout-group-chief-medical-officer-bottom = Главный врач, нижнее белье
 loadout-group-chief-medical-officer-socks = Главный врач, носки
+loadout-group-genetics-jumpsuit = Генетик, комбинезон
+loadout-group-genetics-backpack = Генетик, рюкзак
+loadout-group-genetics-outerclothing = Генетик, верхняя одежда
 
 # Effects
 loadout-group-allowed-sex-restriction = Этот предмет недоступен для вашего текущего пола.

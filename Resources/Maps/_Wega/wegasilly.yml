@@ -1,6 +1,19 @@
 meta:
-  format: 6
-  postmapinit: false
+  format: 7
+  category: Map
+  engineVersion: 248.0.2
+  forkId: ""
+  forkVersion: ""
+  time: 03/24/2025 13:02:28
+  entityCount: 6969
+maps:
+- 1
+grids:
+- 2
+- 5384
+- 6631
+orphans: []
+nullspace: []
 tilemap:
   0: Space
   7: FloorAsteroidSand
@@ -77,7 +90,6 @@ entities:
     - type: MovedGrids
     - type: Broadphase
     - type: OccluderTree
-    - type: LoadedMap
     - type: MapAtmosphere
       space: False
       mixture:
@@ -14339,6 +14351,13 @@ entities:
     - type: Transform
       pos: -2.4814332,1.8588014
       parent: 2
+- proto: CargoMailTeleporter
+  entities:
+  - uid: 4095
+    components:
+    - type: Transform
+      pos: 20.5,8.5
+      parent: 2
 - proto: Carpet
   entities:
   - uid: 1388
@@ -17129,6 +17148,13 @@ entities:
     - type: Transform
       pos: -0.118377686,0.45568848
       parent: 5384
+- proto: ClothingMaskBlushingMime
+  entities:
+  - uid: 1803
+    components:
+    - type: Transform
+      pos: -17.342733,-0.3427291
+      parent: 2
 - proto: ClothingMaskGasSyndicate
   entities:
   - uid: 1796
@@ -17177,13 +17203,6 @@ entities:
     components:
     - type: Transform
       pos: -17.358358,-0.3427291
-      parent: 2
-- proto: ClothingMaskSexyMime
-  entities:
-  - uid: 1803
-    components:
-    - type: Transform
-      pos: -17.342733,-0.3427291
       parent: 2
 - proto: ClothingNeckCloakHos
   entities:
@@ -34932,6 +34951,12 @@ entities:
     - type: Transform
       pos: 20.5,22.5
       parent: 2
+    - type: ContainerContainer
+      containers:
+        machine_board: !type:Container
+          ents: []
+        machine_parts: !type:Container
+          ents: []
 - proto: Screwdriver
   entities:
   - uid: 6051
@@ -35994,11 +36019,6 @@ entities:
       parent: 2
 - proto: SpawnPointCargoTechnician
   entities:
-  - uid: 4095
-    components:
-    - type: Transform
-      pos: 19.5,9.5
-      parent: 2
   - uid: 4096
     components:
     - type: Transform
@@ -36013,6 +36033,16 @@ entities:
     components:
     - type: Transform
       pos: 29.5,6.5
+      parent: 2
+  - uid: 6968
+    components:
+    - type: Transform
+      pos: 20.5,9.5
+      parent: 2
+  - uid: 6969
+    components:
+    - type: Transform
+      pos: 16.5,12.5
       parent: 2
 - proto: SpawnPointChaplain
   entities:

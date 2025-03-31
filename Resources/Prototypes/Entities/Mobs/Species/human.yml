@@ -29,6 +29,11 @@
           32:
             sprite: Mobs/Species/Human/displacement.rsi
             state: jumpsuit-female
+  # Corvax-Wega-Genetics-start
+  - type: DnaModifier
+    upper: MobHuman
+    lowest: MobMonkey
+  # Corvax-Wega-Genetics-end
 
 
 - type: entity

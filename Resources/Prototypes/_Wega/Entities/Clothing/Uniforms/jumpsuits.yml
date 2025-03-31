@@ -1,0 +1,10 @@
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitVoid
+  name: void suit
+  description: "It stinks of poverty..."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpsuit/runner.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpsuit/runner.rsi

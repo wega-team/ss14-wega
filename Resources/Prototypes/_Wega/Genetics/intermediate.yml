@@ -1,0 +1,42 @@
+# Intermediate
+- type: structuralEnzymes
+  id: GeneticsChameleonIntermediate
+  message: genetics-chameleon-message
+  typeDeviation: Intermediate
+  chanceAssimilation: 0.15
+  costInstability: 10
+  addComponent:
+  - type: ChameleonGen
+
+- type: structuralEnzymes
+  id: GeneticsCloakOfDarknessIntermediate
+  message: genetics-cloak-of-darkness-messag
+  typeDeviation: Intermediate
+  chanceAssimilation: 0.25
+  costInstability: 10
+  addComponent:
+  - type: CloakOfDarknessGen
+
+- type: structuralEnzymes
+  id: GeneticsColdResistanceIntermediate
+  message: genetics-cold-resistance-message
+  typeDeviation: Intermediate
+  costInstability: 10
+  addComponent:
+  - type: ColdResistanceGen
+
+- type: structuralEnzymes
+  id: GeneticsRegenerationIntermediate
+  message: genetics-regenerate-message
+  typeDeviation: Intermediate
+  costInstability: 10
+  addComponent:
+  - type: RegenerationGen
+
+- type: structuralEnzymes
+  id: GeneticsSpeedUpIntermediate
+  message: genetics-super-speed-message
+  typeDeviation: Intermediate
+  costInstability: 15
+  addComponent:
+  - type: SpeedUpGen

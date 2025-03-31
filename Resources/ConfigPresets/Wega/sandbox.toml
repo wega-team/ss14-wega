@@ -16,6 +16,9 @@ limit = 25.0
 [viewport]
 maximum_width = 26
 
+[admin]
+admins_count_in_playercount = true
+
 [game.panic_bunker]
 enabled = true
 show_reason = true

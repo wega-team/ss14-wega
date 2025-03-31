@@ -1,0 +1,71 @@
+- type: gameMap
+  id: WegaEmerald
+  mapName: 'Emerald Station'
+  mapPath: /Maps/_Wega/wegaemerald.yml
+  minPlayers: 60
+  stations:
+    Emerald:
+      stationProto: StandardNanotrasenStation
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: '{0} Эмеральд {1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: 'TZ'
+        - type: StationEmergencyShuttle
+          emergencyShuttlePath: /Maps/_Wega/Shuttles/emeraldemergency.yml
+        - type: StationJobs
+          overflowJobs:
+            - Passenger
+          availableJobs:
+            #service
+            Captain: [ 1, 1 ]
+            IAA: [ 1, 1 ] # Corvax-IAA
+            HeadOfPersonnel: [ 1, 1 ]
+            Bartender: [ 2, 2 ]
+            Botanist: [ 3, 4 ]
+            Chef: [ 2, 2 ]
+            Janitor: [ 3, 3 ]
+            Chaplain: [ 1, 1 ]
+            Librarian: [ 1, 1 ]
+            ServiceWorker: [ 3, 3 ]
+            #engineering
+            ChiefEngineer: [ 1, 1 ]
+            AtmosphericTechnician: [ 2, 3 ]
+            StationEngineer: [ 6, 6 ]
+            TechnicalAssistant: [ 3, 3 ]
+            #medical
+            ChiefMedicalOfficer: [ 1, 1 ]
+            Geneticist: [ 2, 2 ]
+            Chemist: [ 2, 2 ]
+            MedicalDoctor: [ 5, 5 ]
+            Paramedic: [ 1, 1 ]
+            MedicalIntern: [ 3, 3 ]
+            Psychologist: [ 1, 1 ]
+            #science
+            ResearchDirector: [ 1, 1 ]
+            Scientist: [ 6, 6 ]
+            ResearchAssistant: [ 3, 3 ]
+            #security
+            HeadOfSecurity: [ 1, 1 ]
+            Warden: [ 1, 1 ]
+            SecurityOfficer: [ 6, 6 ]
+            Detective: [ 1, 1 ]
+            SecurityCadet: [ 3, 3 ]
+            Pilot: [ 1, 1 ]
+            Brigmedic: [ 1, 1 ]
+            #supply
+            Quartermaster: [ 1, 1 ]
+            SalvageSpecialist: [ 3, 3 ]
+            CargoTechnician: [ 4, 4 ]
+            #civilian
+            Passenger: [ -1, -1 ]
+            Clown: [ 1, 1 ]
+            Mime: [ 1, 1 ]
+            Reporter: [ 2, 2 ]
+            Musician: [ 2, 2 ]
+            Boxer: [ 2, 2 ]
+            Barber: [ 1, 1 ]
+            # silicon
+            StationAi: [ 1, 1 ]
+            Borg: [ 2, 3 ]

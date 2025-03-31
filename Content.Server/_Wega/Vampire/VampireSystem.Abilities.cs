@@ -275,7 +275,8 @@ public sealed partial class VampireSystem
 
         var vampireClawsGear = new ProtoId<StartingGearPrototype>("VampireClawsGear");
 
-        RaiseLocalEvent(uid, new DropHandItemsEvent());
+        var dropEvent = new DropHandItemsEvent();
+        RaiseLocalEvent(uid, ref dropEvent);
         List<ProtoId<StartingGearPrototype>> gear = new() { vampireClawsGear };
         _loadout.Equip(uid, gear, null);
 

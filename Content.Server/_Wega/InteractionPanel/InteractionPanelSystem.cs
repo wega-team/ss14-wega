@@ -18,6 +18,7 @@ using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
 
 namespace Content.Server.Interaction.Panel
 {
@@ -30,6 +31,7 @@ namespace Content.Server.Interaction.Panel
         [Dependency] private readonly ChatSystem _chatSystem = default!;
         [Dependency] private readonly InventorySystem _inventorySystem = default!;
         [Dependency] private readonly SharedInteractionSystem _interaction = default!;
+        [Dependency] private readonly IRobustRandom _random = default!;
 
         private readonly Dictionary<NetEntity, DateTime> _lastInteractionTimes = new();
         private readonly Dictionary<NetEntity, int> _userPoints = new();
@@ -254,7 +256,7 @@ namespace Content.Server.Interaction.Panel
                 }
                 else
                 {
-                    emoteCommand = interactionPrototype.UserMessages[0];
+                    emoteCommand = _random.Pick(interactionPrototype.UserMessages);
                     if (emoteCommand.Contains("$target"))
                     {
                         emoteCommand = emoteCommand.Replace("$target", Name(Identity.Entity(target, _entManager)));

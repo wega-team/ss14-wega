@@ -14,6 +14,9 @@ public sealed class DiseaseProtectionSystem : EntitySystem
 
     private void OnMaskToggled(Entity<DiseaseProtectionComponent> ent, ref ItemMaskToggledEvent args)
     {
-        ent.Comp.IsActive = !args.IsToggled;
+        if (args.Mask.Comp is not { } maskComp)
+            return;
+
+        ent.Comp.IsActive = maskComp.IsToggled;
     }
 }

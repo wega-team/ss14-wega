@@ -345,7 +345,7 @@
 #    - CrowbarRed
 #    - MagazinePistol
     # Corvax-Wega-ERT-end
-    
+
 
 # Medical
 - type: job
@@ -388,9 +388,9 @@
     - MedkitAdvancedFilled
     - CombatCrowbar
     # Corvax-Wega-ERT-end
-    - OmnizineChemistryBottle
-    - EpinephrineChemistryBottle
-    - EpinephrineChemistryBottle
+    - ChemistryBottleOmnizine
+    - ChemistryBottleEpinephrine
+    - ChemistryBottleEpinephrine
 
 - type: startingGear
   id: ERTMedicalGearEVA
@@ -413,9 +413,9 @@
     - SyringeBluespace # Corvax-Wega-ERT
     - MedkitCombatFilled
 #    - CrowbarRed # Corvax-Wega-CombatCrowbar
-    - OmnizineChemistryBottle
-    - EpinephrineChemistryBottle
-    - EpinephrineChemistryBottle
+    - ChemistryBottleOmnizine
+    - ChemistryBottleEpinephrine
+    - ChemistryBottleEpinephrine
 
 # Janitor
 - type: job

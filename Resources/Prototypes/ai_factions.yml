@@ -45,6 +45,7 @@
   - Xeno
   - AllHostile
   - Wizard
+  - Dragon
 
 - type: npcFaction
   id: SimpleHostile
@@ -57,6 +58,7 @@
   - Revolutionary
   - AllHostile
   - Wizard
+  - Dragon
   - Vampire # Corvax-Wega-Vampire
   - BloodCult # Corvax-Wega-Blood-Cult
 
@@ -86,6 +88,7 @@
   - Revolutionary
   - AllHostile
   - Wizard
+  - Dragon
   - Vampire # Corvax-Wega-Vampire
   - BloodCult # Corvax-Wega-Blood-Cult
 
@@ -101,6 +104,7 @@
   - Revolutionary
   - AllHostile
   - Wizard
+  - Dragon
   - Vampire # Corvax-Wega-Vampire
   - BloodCult # Corvax-Wega-Blood-Cult
 

@@ -1,6 +1,17 @@
 meta:
-  format: 6
-  postmapinit: false
+  format: 7
+  category: Map
+  engineVersion: 248.0.2
+  forkId: ""
+  forkVersion: ""
+  time: 03/24/2025 12:57:37
+  entityCount: 15474
+maps:
+- 126
+grids:
+- 2
+orphans: []
+nullspace: []
 tilemap:
   0: Space
   3: FloorArcadeRed
@@ -6926,7 +6937,6 @@ entities:
     - type: MovedGrids
     - type: Broadphase
     - type: OccluderTree
-    - type: LoadedMap
 - proto: AccordionInstrument
   entities:
   - uid: 13494
@@ -33408,6 +33418,13 @@ entities:
     - type: Transform
       pos: 58.5,10.5
       parent: 2
+- proto: CargoMailTeleporter
+  entities:
+  - uid: 15474
+    components:
+    - type: Transform
+      pos: 17.5,22.5
+      parent: 2
 - proto: Carpet
   entities:
   - uid: 3
@@ -39159,6 +39176,13 @@ entities:
     - type: Transform
       pos: 102.40892,-16.268303
       parent: 2
+- proto: ClothingMaskBlushingMime
+  entities:
+  - uid: 8345
+    components:
+    - type: Transform
+      pos: 25.245346,6.3236885
+      parent: 2
 - proto: ClothingMaskBreathMedical
   entities:
   - uid: 12657
@@ -39204,13 +39228,6 @@ entities:
     components:
     - type: Transform
       pos: 81.53254,11.610725
-      parent: 2
-- proto: ClothingMaskSexyMime
-  entities:
-  - uid: 8345
-    components:
-    - type: Transform
-      pos: 25.245346,6.3236885
       parent: 2
 - proto: ClothingMaskSterile
   entities:
@@ -77297,6 +77314,12 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 6.5,39.5
       parent: 2
+    - type: ContainerContainer
+      containers:
+        machine_board: !type:Container
+          ents: []
+        machine_parts: !type:Container
+          ents: []
 - proto: Saw
   entities:
   - uid: 12333

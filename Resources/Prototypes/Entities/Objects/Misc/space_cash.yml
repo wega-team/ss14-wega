@@ -44,6 +44,9 @@
         mask:
         - ItemMask
   - type: Appearance
+  - type: Currency
+    price:
+      Credit: 1
 
 - type: material
   id: Credit

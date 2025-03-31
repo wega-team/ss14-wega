@@ -19,3 +19,39 @@
   id: ERTMedicine
   name: store-category-ert-medicine
   priority: 3
+
+#Void
+- type: storeCategory
+  id: UplinkVoidSurvival
+  name: store-category-void-survival
+  priority: 0
+
+- type: storeCategory
+  id: UplinkVoidEatPoint
+  name: store-category-void-food
+  priority: 1
+
+- type: storeCategory
+  id: UplinkVoidEquipment
+  name: store-category-void-equipment
+  priority: 2
+
+- type: storeCategory
+  id: UplinkVoidMedical
+  name: store-category-void-medical
+  priority: 3
+
+- type: storeCategory
+  id: UplinkVoidWeapon
+  name: store-category-void-weapon
+  priority: 4
+
+- type: storeCategory
+  id: UplinkVoidShuttle
+  name: store-category-void-shuttle
+  priority: 5
+
+- type: storeCategory
+  id: UplinkVoidSpecial
+  name: store-category-void-special
+  priority: 6

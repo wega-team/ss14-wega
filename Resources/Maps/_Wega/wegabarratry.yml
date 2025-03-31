@@ -1,6 +1,17 @@
 meta:
-  format: 6
-  postmapinit: false
+  format: 7
+  category: Map
+  engineVersion: 248.0.2
+  forkId: ""
+  forkVersion: ""
+  time: 03/24/2025 12:25:18
+  entityCount: 15494
+maps:
+- 5005
+grids:
+- 1
+orphans: []
+nullspace: []
 tilemap:
   0: Space
   2: FloorArcadeBlue2
@@ -11729,7 +11740,6 @@ entities:
     - type: MovedGrids
     - type: Broadphase
     - type: OccluderTree
-    - type: LoadedMap
 - proto: AcousticGuitarInstrument
   entities:
   - uid: 14704
@@ -34177,6 +34187,13 @@ entities:
     components:
     - type: Transform
       pos: 26.766502,24.344301
+      parent: 1
+- proto: CargoMailTeleporter
+  entities:
+  - uid: 14400
+    components:
+    - type: Transform
+      pos: -36.5,0.5
       parent: 1
 - proto: Carpet
   entities:
@@ -73786,6 +73803,13 @@ entities:
     - type: Transform
       pos: -37.5,3.5
       parent: 1
+- proto: HolopadCargoMailroom
+  entities:
+  - uid: 14399
+    components:
+    - type: Transform
+      pos: -37.5,0.5
+      parent: 1
 - proto: HolopadCargoSalvageBay
   entities:
   - uid: 14222
@@ -85818,6 +85842,12 @@ entities:
     - type: Transform
       pos: -49.5,-15.5
       parent: 1
+    - type: ContainerContainer
+      containers:
+        machine_board: !type:Container
+          ents: []
+        machine_parts: !type:Container
+          ents: []
 - proto: SalvageSpawnerScrapValuable75
   entities:
   - uid: 9265

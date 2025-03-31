@@ -138,6 +138,11 @@ namespace Content.Server.Forensics
             {
                 dest.Fingerprints.Add(print);
             }
+
+            foreach (var residue in src.Residues)
+            {
+                dest.Residues.Add(residue);
+            }
         }
 
         public List<string> GetSolutionsDNA(EntityUid uid)
@@ -273,12 +278,12 @@ namespace Content.Server.Forensics
 
         public string GenerateDNA()
         {
-            var letters = new[] { "A", "C", "G", "T" };
+            var hexChars = "0123456789ABCDEF";
             var DNA = string.Empty;
 
-            for (var i = 0; i < 16; i++)
+            for (var i = 0; i < 32; i++)
             {
-                DNA += letters[_random.Next(letters.Length)];
+                DNA += hexChars[_random.Next(hexChars.Length)];
             }
 
             return DNA;

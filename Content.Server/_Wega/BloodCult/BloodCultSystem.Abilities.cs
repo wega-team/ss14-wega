@@ -230,7 +230,8 @@ public sealed partial class BloodCultSystem
     {
         var spellGear = new ProtoId<StartingGearPrototype>("BloodCultSpellStunGear");
 
-        RaiseLocalEvent(cultist, new DropHandItemsEvent());
+        var dropEvent = new DropHandItemsEvent();
+        RaiseLocalEvent(cultist, ref dropEvent);
         List<ProtoId<StartingGearPrototype>> gear = new() { spellGear };
         _loadout.Equip(cultist, gear, null);
 
@@ -242,7 +243,8 @@ public sealed partial class BloodCultSystem
     {
         var spellGear = new ProtoId<StartingGearPrototype>("BloodCultSpellTeleportGear");
 
-        RaiseLocalEvent(cultist, new DropHandItemsEvent());
+        var dropEvent = new DropHandItemsEvent();
+        RaiseLocalEvent(cultist, ref dropEvent);
         List<ProtoId<StartingGearPrototype>> gear = new() { spellGear };
         _loadout.Equip(cultist, gear, null);
 
@@ -270,7 +272,8 @@ public sealed partial class BloodCultSystem
     {
         var spellGear = new ProtoId<StartingGearPrototype>("BloodCultSpellShadowShacklesGear");
 
-        RaiseLocalEvent(cultist, new DropHandItemsEvent());
+        var dropEvent = new DropHandItemsEvent();
+        RaiseLocalEvent(cultist, ref dropEvent);
         List<ProtoId<StartingGearPrototype>> gear = new() { spellGear };
         _loadout.Equip(cultist, gear, null);
 
@@ -282,7 +285,8 @@ public sealed partial class BloodCultSystem
     {
         var spellGear = new ProtoId<StartingGearPrototype>("BloodCultSpellTwistedConstructionGear");
 
-        RaiseLocalEvent(cultist, new DropHandItemsEvent());
+        var dropEvent = new DropHandItemsEvent();
+        RaiseLocalEvent(cultist, ref dropEvent);
         List<ProtoId<StartingGearPrototype>> gear = new() { spellGear };
         _loadout.Equip(cultist, gear, null);
 
@@ -294,7 +298,8 @@ public sealed partial class BloodCultSystem
     {
         var spellGear = new ProtoId<StartingGearPrototype>("BloodCultSpellSummonEquipmentGear");
 
-        RaiseLocalEvent(cultist, new DropHandItemsEvent());
+        var dropEvent = new DropHandItemsEvent();
+        RaiseLocalEvent(cultist, ref dropEvent);
         List<ProtoId<StartingGearPrototype>> gear = new() { spellGear };
         _loadout.Equip(cultist, gear, null);
 
@@ -417,7 +422,8 @@ public sealed partial class BloodCultSystem
     {
         var spellGear = new ProtoId<StartingGearPrototype>("BloodCultSpellBloodRitesGear");
 
-        RaiseLocalEvent(cultist, new DropHandItemsEvent());
+        var dropEvent = new DropHandItemsEvent();
+        RaiseLocalEvent(cultist, ref dropEvent);
         List<ProtoId<StartingGearPrototype>> gear = new() { spellGear };
         _loadout.Equip(cultist, gear, null);
 
@@ -573,7 +579,8 @@ public sealed partial class BloodCultSystem
         }
 
         var boltBarrageGear = new ProtoId<StartingGearPrototype>("BloodCultSpellBloodBarrageGear");
-        RaiseLocalEvent(cultist, new DropHandItemsEvent());
+        var dropEvent = new DropHandItemsEvent();
+        RaiseLocalEvent(cultist, ref dropEvent);
         List<ProtoId<StartingGearPrototype>> gear = new() { boltBarrageGear };
         _loadout.Equip(cultist, gear, null);
 
@@ -716,7 +723,8 @@ public sealed partial class BloodCultSystem
                 break;
             case "summonequipment":
                 _entityManager.DeleteEntity(entity);
-                RaiseLocalEvent(target, new DropHandItemsEvent());
+                var dropEvent = new DropHandItemsEvent();
+                RaiseLocalEvent(target, ref dropEvent);
                 ProtoId<StartingGearPrototype> selectedGear = GetCurrentGod() switch
                 {
                     "Narsie" => new ProtoId<StartingGearPrototype>("BloodCultWeaponBloodGear"),

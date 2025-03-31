@@ -267,6 +267,29 @@
   loadouts:
   - BarberOuterApronBar
 
+# Medical
+- type: loadoutGroup
+  id: GeneticsJumpsuit
+  name: loadout-group-genetics-jumpsuit
+  loadouts:
+  - GeneticsJumpsuit
+  - GeneticsJumpskirt
+
+- type: loadoutGroup
+  id: GeneticsBackpack
+  name: loadout-group-genetics-backpack
+  loadouts:
+  - GeneticsBackpack
+  - GeneticsSatchel
+  - GeneticsDuffel
+
+- type: loadoutGroup
+  id: GeneticsOuterClothing
+  name: loadout-group-genetics-outerclothing
+  loadouts:
+  - GeneticsOuterClothingLab
+  - GeneticsOuterClothingWinter
+
 # Security
 - type: loadoutGroup
   id: BrigmedicHead

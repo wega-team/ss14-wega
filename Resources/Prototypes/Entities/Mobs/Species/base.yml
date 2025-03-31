@@ -146,6 +146,7 @@
     - Drowsiness
     - Adrenaline
     - Hallucinations # Corvax-Wega-Hallucinations
+    - Dizzy # Corvax-Wega-Dizzy
   - type: Body
     prototype: Human
     requiredLegs: 2
@@ -178,6 +179,7 @@
   - type: StandingState
   - type: SpeechSynthesis # Corvax-Wega-Barks
   - type: Dna
+  - type: DnaModifier
   - type: MindContainer
     showExamineInfo: true
   - type: CanEnterCryostorage
@@ -275,7 +277,7 @@
     sweatHeatRegulation: 2000
     shiveringHeatRegulation: 2000
     normalBodyTemperature: 310.15
-    thermalRegulationTemperatureThreshold: 25
+    thermalRegulationTemperatureThreshold: 2
   - type: Perishable
   - type: Butcherable
     butcheringType: Spike # TODO human.

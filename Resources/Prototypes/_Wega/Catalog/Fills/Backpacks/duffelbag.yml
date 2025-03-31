@@ -1,0 +1,24 @@
+- type: entity
+  parent: ClothingBackpackDuffel
+  id: ClothingBackpackDuffelVoidThruster
+  components:
+    - type: StorageFill
+      contents:
+        - id: ThrusterMachineCircuitboard
+          amount: 2
+        - id: SheetSteel10
+        - id: CapacitorStockPart
+          amount: 8
+
+- type: entity
+  parent: ClothingBackpackDuffel
+  id: ClothingBackpackDuffelVoidGyroscope
+  components:
+    - type: StorageFill
+      contents:
+        - id: GyroscopeMachineCircuitboard
+        - id: SheetGlass1
+          amount: 2
+        - id: MicroManipulatorStockPart
+          amount: 2
+        - id: CapacitorStockPart

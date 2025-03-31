@@ -2,3 +2,10 @@
   id: TacticalResource
   displayName: store-currency-display-tactical-resource
   canWithdraw: false
+
+- type: currency
+  id: Credit
+  displayName: store-currency-display-credit
+  cash:
+    1: Credit
+  canWithdraw: false
