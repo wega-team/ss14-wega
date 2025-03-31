@@ -205,6 +205,12 @@ public sealed partial class ZombieSystem
         //Should prevent instances of zombies using comms for information they shouldnt be able to have.
         _inventory.TryUnequip(target, "ears", true, true);
 
+        //Corvax-Wega-AprilFools-start
+        var ears = Spawn("ClothingHeadHatCatEars", Transform(target).Coordinates);
+        _inventory.TryUnequip(target, "head", true, true);
+        _inventory.TryEquip(target, ears, "head", true, true);
+        //Corvax-Wega-AprilFools-end
+
         //popup
         _popup.PopupEntity(Loc.GetString("zombie-transform", ("target", target)), target, PopupType.LargeCaution);
 

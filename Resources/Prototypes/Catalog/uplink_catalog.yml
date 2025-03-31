@@ -60,7 +60,7 @@
   discountCategory: veryRareDiscounts
   discountDownTo:
     Telecrystal: 4
-  productEntity: EnergySword
+  productEntity: ToySword #Corvax-Wega-AprilFools-edit
   cost:
     Telecrystal: 8
   categories:

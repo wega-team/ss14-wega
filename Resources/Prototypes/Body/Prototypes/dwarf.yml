@@ -1,4 +1,4 @@
-﻿- type: body
+- type: body
   id: Dwarf
   name: "dwarf"
   root: torso
@@ -20,7 +20,8 @@
       organs:
         heart: OrganDwarfHeart
         lungs: OrganHumanLungs
-        stomach: OrganDwarfStomach
+        #stomach: OrganDwarfStomach #Corvax-Wega-AprilFools-edit
+        stomach: OrganHumanStomach  #Corvax-Wega-AprilFools-edit
         liver: OrganDwarfLiver
         kidneys: OrganHumanKidneys
     right arm:
