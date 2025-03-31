@@ -12,7 +12,7 @@
   - type: Projectile
     damage:
       types:
-        Heat: 10
+        Heat: 1
   - type: Sprite
     sprite: Objects/Weapons/Guns/Projectiles/magic.rsi
     layers:
@@ -20,15 +20,15 @@
       shader: unshaded
   - type: Explosive
     explosionType: Default
-    maxIntensity: 40
-    intensitySlope: 6
-    totalIntensity: 200
+    maxIntensity: 4
+    intensitySlope: 0.6
+    totalIntensity: 20
     maxTileBreak: 0
   - type: IgnitionSource
-    temperature: 400
+    temperature: 40
     ignited: true
   - type: IgniteOnCollide
-    fireStacks: 0.35
+    fireStacks: 0.035
 
 - type: entity
   categories: [ HideSpawnMenu ]
