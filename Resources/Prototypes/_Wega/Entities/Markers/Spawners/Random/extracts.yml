@@ -1,0 +1,17 @@
+- type: entity
+  id: RandomMetalSheet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: RandomSpawner
+    prototypes:
+      - SheetSteel1
+      - SheetPlasteel1
+
+- type: entity
+  id: RandomGlassSheet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: RandomSpawner
+    prototypes:
+      - SheetGlass1
+      - SheetRGlass1

@@ -1,0 +1,260 @@
+# Gray
+- type: reaction
+  id: CreateMonkeyCube
+  impact: Low
+  quantized: true
+  conserveEnergy: false
+  reactants:
+    SlimeExtractGray:
+      amount: 3
+    Blood:
+      amount: 6
+  effects:
+    - !type:CreateEntityReactionEffect
+      entity: MonkeyCube
+
+- type: reaction
+  id: CreateGraySlime
+  impact: Low
+  quantized: true
+  conserveEnergy: false
+  reactants:
+    SlimeExtractGray:
+      amount: 5
+    Plasma:
+      amount: 10
+  effects:
+    - !type:CreateEntityReactionEffect
+      entity: MobXenoSlimeCheck # Поменить потом
+
+- type: reaction
+  id: EpinephrineAlt
+  reactants:
+    SlimeExtractGray:
+      amount: 1
+    Water:
+      amount: 2
+  products:
+    Epinephrine: 1
+
+# Orange
+- type: reaction
+  id: TearGas # Alternative
+  reactants:
+    SlimeExtractOrange:
+      amount: 5
+    Blood:
+      amount: 10
+  effects:
+  - !type:AreaReactionEffect
+    duration: 10
+    prototypeId: AdminInstantEffectTearGas
+    sound:
+      path: /Audio/Effects/smoke.ogg
+
+- type: reaction
+  id: FireEffect
+  reactants:
+    SlimeExtractOrange:
+      amount: 1
+    Plasma:
+      amount: 2
+  effects:
+  - !type:CreateGas
+    gas: Plasma
+  - !type:ExplosionReactionEffect
+    explosionType: Default
+    maxIntensity: 20
+    intensityPerUnit: 0.5
+    intensitySlope: 0.5
+    maxTotalIntensity: 20
+
+# Purple
+- type: reaction
+  id: SlimeSteroid
+  reactants:
+    SlimeExtractPurple:
+      amount: 1
+    Plasma:
+      amount: 2
+  products:
+    SlimeSteroid: 1
+
+# Blue
+- type: reaction
+  id: SlimeStabilizer
+  reactants:
+    SlimeExtractBlue:
+      amount: 1
+    Blood:
+      amount: 2
+  products:
+    SlimeStabilizer: 1
+
+  # Skip Frost Oil
+
+# Metallic
+- type: reaction
+  id: MetalSheet
+  impact: Low
+  quantized: true
+  conserveEnergy: false
+  reactants:
+    SlimeExtractMetallic:
+      amount: 1
+    Plasma:
+      amount: 2
+  effects:
+    - !type:CreateEntityReactionEffect
+      entity: RandomMetalSheet
+
+- type: reaction
+  id: GlassSheet
+  impact: Low
+  quantized: true
+  conserveEnergy: false
+  reactants:
+    SlimeExtractMetallic:
+      amount: 1
+    Water:
+      amount: 2
+  effects:
+    - !type:CreateEntityReactionEffect
+      entity: RandomGlassSheet
+
+# Yellow
+- type: reaction
+  id: SlimeEmpExplosion
+  reactants:
+    SlimeExtractYellow:
+      amount: 1
+    Blood:
+      amount: 2
+  effects:
+    - !type:EmpReactionEffect
+      rangePerUnit: 0.2
+      maxRange: 6
+      energyConsumption: 12500
+      duration: 15
+
+- type: reaction
+  id: CreateSlimePowerCell
+  impact: Low
+  quantized: true
+  conserveEnergy: false
+  reactants:
+    SlimeExtractYellow:
+      amount: 5
+    Plasma:
+      amount: 10
+  effects:
+    - !type:CreateEntityReactionEffect
+      entity: SlimePowerCell
+
+- type: reaction
+  id: SlimeLightEffect
+  reactants:
+    SlimeExtractYellow:
+      amount: 1
+    Water:
+      amount: 2
+  effects:
+    - !type:FlashReactionEffect
+
+# Dark Purple
+- type: reaction
+  id: SheetPlasma
+  impact: Low
+  quantized: true
+  conserveEnergy: false
+  reactants:
+    SlimeExtractDarkPurple:
+      amount: 1
+    Plasma:
+      amount: 2
+  effects:
+    - !type:CreateEntityReactionEffect
+      entity: SheetPlasma1
+
+- type: reaction
+  id: SheetPlasmaGlass
+  impact: Low
+  quantized: true
+  conserveEnergy: false
+  reactants:
+    SlimeExtractDarkPurple:
+      amount: 1
+    Water:
+      amount: 2
+  effects:
+    - !type:CreateEntityReactionEffect
+      entity: SheetPGlass1
+
+# Dark Blue
+- type: reaction
+  id: SlimeFrozenEffect
+  reactants:
+    SlimeExtractDarkBlue:
+      amount: 1
+    Plasma:
+      amount: 2
+  effects:
+  - !type:CreateGas
+    gas: Frezon # Alternative
+
+- type: reaction
+  id: ChillPotion
+  reactants:
+    SlimeExtractDarkBlue:
+      amount: 5
+    Water:
+      amount: 10
+  products:
+    ChillPotion: 3
+
+# Silver
+- type: reaction
+  id: RandomFoodSingle
+  impact: Low
+  quantized: true
+  conserveEnergy: false
+  reactants:
+    SlimeExtractSilver:
+      amount: 1
+    Plasma:
+      amount: 2
+  effects:
+    - !type:CreateEntityReactionEffect
+      entity: RandomFoodSingle
+
+- type: reaction
+  id: RandomDrinkGlass
+  impact: Low
+  quantized: true
+  conserveEnergy: false
+  reactants:
+    SlimeExtractSilver:
+      amount: 1
+    Water:
+      amount: 2
+  effects:
+    - !type:CreateEntityReactionEffect
+      entity: RandomDrinkGlass
+
+# Bluespace
+# Empty
+
+# Sepia
+- type: reaction
+  id: FloorSepia
+  impact: Low
+  quantized: true
+  conserveEnergy: false
+  reactants:
+    SlimeExtractSepia:
+      amount: 1
+    Blood:
+      amount: 2
+  effects:
+    - !type:CreateEntityReactionEffect
+      entity: FloorTileItemSepia

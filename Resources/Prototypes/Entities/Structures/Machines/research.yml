@@ -49,6 +49,7 @@
             max: 2
   - type: Appearance
   - type: DiseaseServer # Corvax-Wega-Disease
+  - type: CellServer
   - type: AmbientOnPowered
   - type: AmbientSound
     volume: -9

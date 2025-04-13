@@ -1,0 +1,33 @@
+- type: entity
+  name: basic slime
+  id: MobXenoSlimes
+  parent: BaseMobAdultSlimes
+  abstract: true
+  description: It looks so much like jelly. I wonder what it tastes like?
+  components:
+  #- type: ReplacementAccent
+  #  accent: slimes
+  - type: Speech
+    speechVerb: Slime
+    speechSounds: Slime
+    allowedEmotes: ['Squish']
+  - type: TypingIndicator
+    proto: slime
+  - type: NpcFactionMember
+    factions:
+    - SimpleNeutral
+  - type: HTN
+    rootTask:
+      task: SlimeRootCompound
+  - type: SlimeHunger
+  - type: SlimeSocial
+  - type: SlimeGrowth
+  - type: TTS # Corvax-TTS
+    voice: Chen
+
+- type: entity
+  name: basic slime
+  id: MobXenoSlimeCheck
+  parent: MobXenoSlimes
+  description: It looks so much like jelly. I wonder what it tastes like?
+  suffix: Check

@@ -1,0 +1,19 @@
+- type: tile
+  id: FloorSepia
+  name: tiles-sepia-floor
+  sprite: /Textures/_Wega/Tiles/sepia.png
+  color: "#FFFFFF"
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: FloorTileItemSepia
+  mobAcceleration: 3
+  heatCapacity: 10000

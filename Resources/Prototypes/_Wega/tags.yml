@@ -27,3 +27,6 @@
 
 - type: Tag
   id: Jetpack
+
+- type: Tag
+  id: Dish

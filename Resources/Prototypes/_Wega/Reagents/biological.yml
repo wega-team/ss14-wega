@@ -34,3 +34,201 @@
   recognizable: true
   physicalDesc: reagent-physical-desc-slimy
   slippery: false
+
+- type: reagent
+  id: SlimeExtractGray
+  name: gray slime essence
+  group: Biological
+  desc: Concentrated essence of a gray slime. Contains trace silicon compounds.
+  color: "#808080"
+  physicalDesc: reagent-physical-desc-gooey
+  flavor: metallic
+
+- type: reagent
+  id: SlimeExtractBlue
+  name: blue slime essence
+  group: Biological
+  desc: Icy essence from a blue slime. Chills everything it touches.
+  color: "#1E90FF"
+  physicalDesc: reagent-physical-desc-cold-goo
+  flavor: minty
+
+- type: reagent
+  id: SlimeExtractPurple
+  name: purple slime essence
+  group: Biological
+  desc: Toxic essence from a purple slime. Handle with extreme caution.
+  color: "#800080"
+  physicalDesc: reagent-physical-desc-toxic-sludge
+  flavor: bitter
+
+- type: reagent
+  id: SlimeExtractOrange
+  name: orange slime essence
+  group: Biological
+  desc: Fiery essence from an orange slime. Warm to the touch.
+  color: "#FFA500"
+  physicalDesc: reagent-physical-desc-warm-goo
+  flavor: spicy
+
+- type: reagent
+  id: SlimeExtractMetallic
+  name: metallic slime essence
+  group: Biological
+  desc: Dense metallic essence from a metal slime. Surprisingly heavy.
+  color: "#7E7E7E"
+  physicalDesc: reagent-physical-desc-metallic-goo
+  flavor: iron
+
+- type: reagent
+  id: SlimeExtractDarkPurple
+  name: dark slime essence
+  group: Biological
+  desc: Highly toxic essence from a dark purple slime. Extremely dangerous.
+  color: "#400040"
+  physicalDesc: reagent-physical-desc-toxic-sludge
+  flavor: acrid
+
+- type: reagent
+  id: SlimeExtractGreen
+  name: green slime essence
+  group: Biological
+  desc: Radioactive essence from a green slime. Glows faintly.
+  color: "#00FF00"
+  physicalDesc: reagent-physical-desc-glowing-goo
+  flavor: sour
+
+- type: reagent
+  id: SlimeExtractDarkBlue
+  name: dark blue slime essence
+  group: Biological
+  desc: Freezing essence from a dark blue slime. Cools everything rapidly.
+  color: "#00008B"
+  physicalDesc: reagent-physical-desc-freezing-goo
+  flavor: cold
+
+- type: reagent
+  id: SlimeExtractPink
+  name: pink slime essence
+  group: Biological
+  desc: Strange essence from a pink slime. Causes unusual effects.
+  color: "#FFC0CB"
+  physicalDesc: reagent-physical-desc-bubbly-goo
+  flavor: sweet
+
+- type: reagent
+  id: SlimeExtractRed
+  name: red slime essence
+  group: Biological
+  desc: Burning essence from a red slime. Hot to the touch.
+  color: "#FF0000"
+  physicalDesc: reagent-physical-desc-hot-goo
+  flavor: fiery
+
+- type: reagent
+  id: SlimeExtractYellow
+  name: yellow slime essence
+  group: Biological
+  desc: Electric essence from a yellow slime. Crackles with energy.
+  color: "#FFFF00"
+  physicalDesc: reagent-physical-desc-sparking-goo
+  flavor: zesty
+
+- type: reagent
+  id: SlimeExtractGold
+  name: gold slime essence
+  group: Biological
+  desc: Valuable essence from a gold slime. Shimmers beautifully.
+  color: "#FFD700"
+  physicalDesc: reagent-physical-desc-shiny-goo
+  flavor: rich
+
+- type: reagent
+  id: SlimeExtractSilver
+  name: silver slime essence
+  group: Biological
+  desc: Precious essence from a silver slime. Reflects light oddly.
+  color: "#C0C0C0"
+  physicalDesc: reagent-physical-desc-reflective-goo
+  flavor: crisp
+
+- type: reagent
+  id: SlimeExtractBlack
+  name: black slime essence
+  group: Biological
+  desc: Dark essence from a black slime. Absorbs all light.
+  color: "#000000"
+  physicalDesc: reagent-physical-desc-dark-goo
+  flavor: smoky
+
+- type: reagent
+  id: SlimeExtractSepia
+  name: sepia slime essence
+  group: Biological
+  desc: Ancient essence from a sepia slime. Smells like old books.
+  color: "#704214"
+  physicalDesc: reagent-physical-desc-viscous-goo
+  flavor: musty
+
+- type: reagent
+  id: SlimeExtractOil
+  name: oil slime essence
+  group: Biological
+  desc: Slick essence from an oil slime. Highly flammable.
+  color: "#303030"
+  physicalDesc: reagent-physical-desc-oily-goo
+  flavor: petroleum
+
+- type: reagent
+  id: SlimeExtractBluespace
+  name: bluespace slime essence
+  group: Biological
+  desc: Unstable essence from a bluespace slime. Warps reality.
+  color: "#0000FF"
+  physicalDesc: reagent-physical-desc-warping-goo
+  flavor: strange
+
+- type: reagent
+  id: SlimeExtractAdamantine
+  name: adamantine slime essence
+  group: Biological
+  desc: Dense essence from an adamantine slime. Nearly indestructible.
+  color: "#66FF66"
+  physicalDesc: reagent-physical-desc-heavy-goo
+  flavor: robust
+
+- type: reagent
+  id: SlimeExtractPyrite
+  name: pyrite slime essence
+  group: Biological
+  desc: Deceptive essence from a pyrite slime. Not what it seems.
+  color: "#FAFAD2"
+  physicalDesc: reagent-physical-desc-glittery-goo
+  flavor: metallic
+
+- type: reagent
+  id: SlimeExtractAzure
+  name: azure slime essence
+  group: Biological
+  desc: Deep blue essence from an azure slime. Cold as the void.
+  color: "#007FFF"
+  physicalDesc: reagent-physical-desc-freezing-goo
+  flavor: crisp
+
+- type: reagent
+  id: SlimeExtractLightPink
+  name: light pink slime essence
+  group: Biological
+  desc: Calming essence from a light pink slime. Soothing properties.
+  color: "#FFB6C1"
+  physicalDesc: reagent-physical-desc-soft-goo
+  flavor: sweet
+
+- type: reagent
+  id: SlimeExtractRainbow
+  name: rainbow slime essence
+  group: Biological
+  desc: Prismatic essence from a rainbow slime. Contains traces of all elements.
+  color: "#FFFFFF"
+  physicalDesc: reagent-physical-desc-shifting-goo
+  flavor: chaotic

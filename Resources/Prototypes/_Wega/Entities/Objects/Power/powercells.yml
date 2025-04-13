@@ -1,0 +1,25 @@
+- type: entity
+  id: SlimePowerCell
+  parent: BaseItem
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Consumable/Food/extracts.rsi
+    state: yellow
+  - type: Battery
+    maxCharge: 720
+    startingCharge: 720
+    pricePerJoule: 0.15
+  - type: BatterySelfRecharger
+    autoRecharge: true
+    autoRechargeRate: 12
+  - type: PowerCell
+  - type: Explosive
+    explosionType: Default
+    maxIntensity: 200
+    intensitySlope: 1.5
+  - type: Tag
+    tags:
+      - PowerCell
+  - type: HitscanBatteryAmmoProvider
+    proto: RedLightLaser
+    fireCost: 50
