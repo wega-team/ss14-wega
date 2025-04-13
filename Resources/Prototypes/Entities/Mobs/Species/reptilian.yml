@@ -11,6 +11,7 @@
     - Snout
     - HeadTop
     - HeadSide
+    undergarmentBottom: UndergarmentBottomBoxersReptilian
   - type: Hunger
   - type: Puller
     needsHands: false
@@ -97,6 +98,11 @@
             sprite: Corvax/Mobs/Species/displacement.rsi
             state: shoes
     # Corvax-Displacements-End
+  # Corvax-Wega-Genetics-start
+  - type: DnaModifier
+    upper: MobReptilian
+    lowest: MobKobold
+  # Corvax-Wega-Genetics-end
 
 - type: entity
   parent: BaseSpeciesDummy
@@ -110,6 +116,7 @@
     - Snout
     - HeadTop
     - HeadSide
+    undergarmentBottom: UndergarmentBottomBoxersReptilian
   - type: Inventory
     speciesId: reptilian
     femaleDisplacements:

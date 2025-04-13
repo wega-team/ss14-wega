@@ -19,7 +19,7 @@
 
 # Felinid
 - type: emote
-  id: Meows
+  id: FilinidMeows
   name: chat-emote-name-meows
   category: Vocal
   available: false
@@ -40,7 +40,7 @@
     - мяу
 
 - type: emote
-  id: Purring
+  id: FilinidPurring
   name: chat-emote-name-purring
   category: Vocal
   available: false

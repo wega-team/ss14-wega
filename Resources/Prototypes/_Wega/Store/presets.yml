@@ -1,0 +1,34 @@
+- type: entity
+  id: StorePresetTacticalInterface
+  abstract: true
+  components:
+  - type: Store
+    name: store-preset-name-tactical-interface
+    categories:
+    - ERTSquad
+    - ERTEquipment
+    - ERTEngineering
+    - ERTMedicine
+    currencyWhitelist:
+    - TacticalResource
+    balance:
+      TacticalResource: 0
+
+- type: entity
+  id: StorePresetGeneralVoid
+  abstract: true
+  components:
+  - type: Store
+    name: store-preset-name-general-void
+    categories:
+    - UplinkVoidSurvival
+    - UplinkVoidEatPoint
+    - UplinkVoidEquipment
+    - UplinkVoidMedical
+    - UplinkVoidWeapon
+    - UplinkVoidShuttle
+    - UplinkVoidSpecial
+    currencyWhitelist:
+    - Credit
+    balance:
+      Telecrystal: 0

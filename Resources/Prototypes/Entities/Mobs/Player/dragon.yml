@@ -164,6 +164,9 @@
   - type: Dragon
     spawnRiftAction: ActionSpawnRift
     pushAction: ActionPush # Corvax-Wega-DragonPushSkill
+  - type: GhostRole
+    mindRoles:
+    - MindRoleDragon
   - type: ActionGun
     action: ActionDragonsBreath
     gunProto: DragonsBreathGun

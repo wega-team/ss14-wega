@@ -31,6 +31,7 @@
   hostile:
   - PetsNT
   - AllHostile
+  - Wizard
 
 - type: npcFaction
   id: Passive
@@ -43,6 +44,8 @@
   - Zombie
   - Xeno
   - AllHostile
+  - Wizard
+  - Dragon
 
 - type: npcFaction
   id: SimpleHostile
@@ -55,6 +58,7 @@
   - Revolutionary
   - AllHostile
   - Wizard
+  - Dragon
   - Vampire # Corvax-Wega-Vampire
   - BloodCult # Corvax-Wega-Blood-Cult
 
@@ -84,6 +88,7 @@
   - Revolutionary
   - AllHostile
   - Wizard
+  - Dragon
   - Vampire # Corvax-Wega-Vampire
   - BloodCult # Corvax-Wega-Blood-Cult
 
@@ -99,6 +104,7 @@
   - Revolutionary
   - AllHostile
   - Wizard
+  - Dragon
   - Vampire # Corvax-Wega-Vampire
   - BloodCult # Corvax-Wega-Blood-Cult
 
@@ -137,7 +143,11 @@
   hostile:
   - NanoTrasen
   - Dragon
+  - Mouse
+  - Passive
+  - PetsNT
   - SimpleHostile
+  - SimpleNeutral
   - Syndicate
   - Xeno
   - Zombie

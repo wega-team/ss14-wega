@@ -70,7 +70,7 @@
     - id: FoodMeatHuman
       amount: 5
   - type: Speech
-    allowedEmotes: ['Meows', 'Purring', 'Hisses']
+    allowedEmotes: ['FilinidMeows', 'FilinidPurring', 'FilinidHisses']
   - type: Vocal
     sounds:
       Male: FelinidSoundM

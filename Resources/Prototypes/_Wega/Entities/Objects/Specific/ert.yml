@@ -1,0 +1,91 @@
+- type: entity
+  parent: [BaseItem, StorePresetTacticalInterface, BaseRestrictedContraband]
+  id: BaseTacticalInterface
+  name: tactical interface
+  abstract: true
+  description: Terminal for teleportation of ERT equipment using bluespace technology.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Devices/ert.rsi
+    layers:
+    - state: tactical-interface
+  - type: Item
+    sprite: _Wega/Objects/Devices/ert.rsi
+    heldPrefix: tactical-interface
+  - type: UserInterface
+    interfaces:
+      enum.StoreUiKey.Key:
+        type: StoreBoundUserInterface
+  - type: ActivatableUI
+    key: enum.StoreUiKey.Key
+  - type: Store
+    balance:
+      TacticalResource: 0
+  - type: Tag
+    tags:
+    - ERTTacticalInterface
+
+- type: entity
+  parent: [BaseTacticalInterface]
+  id: TacticalInterfacePatrol
+  suffix: Patrol, 50
+  components:
+  - type: Store
+    balance:
+      TacticalResource: 50
+  - type: Tag
+    tags:
+    - ERTTacticalInterface
+    - ERTTacticalInterfaceNotEVA
+
+- type: entity
+  parent: [BaseTacticalInterface]
+  id: TacticalInterfaceScout
+  suffix: Scout, 90
+  components:
+  - type: Store
+    balance:
+      TacticalResource: 90
+  - type: Tag
+    tags:
+    - ERTTacticalInterface
+    - ERTTacticalInterfaceNotEVA
+
+- type: entity
+  parent: [BaseTacticalInterface]
+  id: TacticalInterfaceCombat
+  suffix: Combat, 240
+  components:
+  - type: Store
+    balance:
+      TacticalResource: 250
+  - type: Tag
+    tags:
+    - ERTTacticalInterface
+    - ERTTacticalInterfaceCombat
+    - ERTTacticalInterfaceEVA
+
+- type: entity
+  parent: [BaseTacticalInterface]
+  id: TacticalInterfaceSpecialist
+  suffix: Specialist, 200
+  components:
+  - type: Store
+    balance:
+      TacticalResource: 200
+  - type: Tag
+    tags:
+    - ERTTacticalInterface
+    - ERTTacticalInterfaceEVA
+
+- type: entity
+  parent: [BaseTacticalInterface]
+  id: TacticalInterfaceCBURN
+  suffix: CBURN, 185
+  components:
+  - type: Store
+    balance:
+      TacticalResource: 185
+  - type: Tag
+    tags:
+    - CBURNTacticalInterface

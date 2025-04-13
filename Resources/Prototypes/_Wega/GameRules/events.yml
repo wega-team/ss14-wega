@@ -12,3 +12,16 @@
     duration: 1
     earliestStart: 25
   - type: DiseaseOutbreakRule
+
+- type: entity
+  parent: BaseGameRule
+  id: VoidOccurrence
+  components:
+  - type: StationEvent
+    weight: 5.5
+    duration: 1
+    earliestStart: 30
+    reoccurrenceDelay: 120
+    minimumPlayers: 120
+  - type: LoadMapRule
+    mapPath: /Maps/_Wega/Shuttles/voidshuttle.yml

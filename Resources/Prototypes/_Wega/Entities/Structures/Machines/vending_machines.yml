@@ -59,3 +59,37 @@
     radius: 1.8
     energy: 1.6
     color: "#e590b9"
+
+- type: entity
+  parent: [ VendingMachine, StorePresetGeneralVoid ]
+  id: BaseUsVoidPat
+  name: P.A.T.
+  description: The Void Trading Machine has a bluespace component that allows you to trade with different galaxies.
+  components:
+  - type: Sprite
+    sprite: _Wega/Structures/Machines/VendingMachines/pat.rsi
+    layers:
+    - state: base
+    - state: unshaded
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+      shader: unshaded
+  - type: PointLight
+    radius: 1.8
+    energy: 1.6
+    color: "#386d35"
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        enum.PowerDeviceVisualLayers.Powered:
+          True: { visible: true }
+          False: { visible: false }
+  - type: UserInterface
+    interfaces:
+      enum.StoreUiKey.Key:
+        type: StoreBoundUserInterface
+  - type: ActivatableUI
+    key: enum.StoreUiKey.Key
+  - type: Store
+    preset: StorePresetGeneralVoid
+    balance:
+      Credit: 5000

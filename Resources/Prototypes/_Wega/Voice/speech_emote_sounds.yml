@@ -5,11 +5,11 @@
   sounds:
     Scream:
       collection: FelinidScreamSound
-    Purring:
+    FilinidPurring:
       collection: FelinidPurringSound
     FilinidHisses:
       collection: FelinidHissesSound
-    Meows:
+    FilinidMeows:
       collection: FelinidMeowsSound
     Sneeze:
       collection: MaleSneezes
@@ -43,11 +43,11 @@
   sounds:
     Scream:
       collection: FelinidScreamSound
-    Purring:
+    FilinidPurring:
       collection: FelinidPurringSound
     FilinidHisses:
       collection: FelinidHissesSound
-    Meows:
+    FilinidMeows:
       collection: FelinidMeowsSound
     Sneeze:
       collection: FelinidSneezeSound

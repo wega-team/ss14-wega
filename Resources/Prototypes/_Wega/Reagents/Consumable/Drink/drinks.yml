@@ -149,3 +149,22 @@
       effects:
       - !type:SatiateThirst
         factor: 2
+
+- type: reagent
+  id: Glace
+  parent: BaseJuice
+  name: reagent-name-glace
+  group: Drinks
+  desc: reagent-desc-glace
+  physicalDesc: reagent-physical-desc-creamy
+  flavor: ice
+  color: "#ffddc1"
+  metamorphicSprite:
+    sprite: _Wega/Objects/Consumable/Drinks/glaceglass.rsi
+    state: icon
+  metamorphicChangeColor: false
+  metabolisms:
+    Drink:
+      effects:
+      - !type:SatiateThirst
+        factor: 2

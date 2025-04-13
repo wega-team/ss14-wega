@@ -13,6 +13,9 @@
   - AllAccess
   access:
   - CentralCommand
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, DeathRattleImplantCentcomm ]
 
 - type: startingGear
   id: ERTLeaderGear
@@ -37,7 +40,7 @@
     - MedicatedSuture
     - RegenerativeMesh
     - BoxZiptie
-    - CrowbarRed
+    - CombatCrowbar # Corvax-Wega-CombatCrowbar
     - MagazineMagnum
 
 - type: startingGear
@@ -45,7 +48,7 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTLeader
     back: ClothingBackpackERTLeader
-    shoes: ClothingShoesBootsMagAdv
+    shoes: ClothingShoesBootsMagCombat # Corvax-Wega-MagCombat
     mask: ClothingMaskGasERT
     eyes: ClothingEyesGlassesSecurity
     neck: ClothingNeckMantleERTLeader # Corvax-Clothing
@@ -63,7 +66,7 @@
     - MedicatedSuture
     - RegenerativeMesh
     - BoxZiptie
-    - CrowbarRed
+#    - CrowbarRed # Corvax-Wega-CombatCrowbar
     - MagazineMagnum
 
 - type: startingGear
@@ -71,7 +74,7 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTLeader
     back: ClothingBackpackERTLeader
-    shoes: ClothingShoesBootsMagAdv
+    shoes: ClothingShoesBootsMagCombat # Corvax-Wega-MagCombat
     mask: ClothingMaskGasERT
     eyes: ClothingEyesGlassesSecurity
     neck: ClothingNeckMantleERTLeader # Corvax-Clothing
@@ -91,7 +94,7 @@
     - MedicatedSuture
     - RegenerativeMesh
     - BoxZiptie
-    - CrowbarRed
+#    - CrowbarRed # Corvax-Wega-CombatCrowbar
     - MagazineMagnum
 
 # Chaplain
@@ -113,6 +116,8 @@
   - !type:AddComponentSpecial
     components:
     - type: BibleUser #Lets them heal with bibles
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, DeathRattleImplantCentcomm ]
 
 - type: startingGear
   id: ERTChaplainGear
@@ -139,7 +144,7 @@
     - Lantern
     - Lantern
     - Bible
-    - CrowbarRed
+    - CombatCrowbar # Corvax-Wega-CombatCrowbar
     - FoodBakedBunHotX
     - FoodBakedBunHotX
     - FoodBakedBunHotX
@@ -151,7 +156,7 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTChaplain
     back: ClothingBackpackERTChaplain
-    shoes: ClothingShoesBootsMagAdv
+    shoes: ClothingShoesBootsMagCombat # Corvax-Wega-MagCombat
     mask: ClothingMaskGasERT
     eyes: ClothingEyesGlasses
     neck: ClothingNeckStoleChaplain
@@ -171,7 +176,7 @@
     - Lantern
     - Lantern
     - Bible
-    - CrowbarRed
+#    - CrowbarRed # Corvax-Wega-CombatCrowbar
     - FoodBakedBunHotX
     - FoodBakedBunHotX
     - FoodBakedBunHotX
@@ -193,6 +198,9 @@
   - AllAccess
   access:
   - CentralCommand
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, DeathRattleImplantCentcomm ]
 
 - type: startingGear
   id: ERTEngineerGear
@@ -228,7 +236,7 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTEngineer
     back: ClothingBackpackERTEngineer
-    shoes: ClothingShoesBootsMagAdv
+    shoes: ClothingShoesBootsMagCombat # Corvax-Wega-MagCombat
     mask: ClothingMaskGasERT
     eyes: ClothingEyesGlassesMeson
     gloves: ClothingHandsGlovesCombat
@@ -267,6 +275,9 @@
   - AllAccess
   access:
   - CentralCommand
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, DeathRattleImplantCentcomm ]
 
 - type: startingGear
   id: ERTSecurityGear
@@ -289,16 +300,16 @@
     - WeaponDisabler
     - MedicatedSuture
     - RegenerativeMesh
-    - BoxZiptie
-    - CrowbarRed
-    - MagazinePistol
+#    - BoxZiptie # Corvax-Wega-ERT
+    - CombatCrowbar # Corvax-Wega-CombatCrowbar
+    - MagazinePistol # Corvax-Wega-ERT
 
 - type: startingGear
   id: ERTSecurityGearEVA
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTSecurity
     back: ClothingBackpackERTSecurity
-    shoes: ClothingShoesBootsMag
+    shoes: ClothingShoesBootsMagCombat # Corvax-Wega-MagCombat
     mask: ClothingMaskGasERT
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesCombat
@@ -306,7 +317,7 @@
     id: ERTSecurityPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltSecurityFilled
-    pocket1: WeaponPistolMk58
+#    pocket1: WeaponPistolMk58 # Corvax-Wega-ERT
     pocket2: FlashlightSeclite
     underwearbottom: ClothingUnderBottomHearts # Corvax-Wega
   storage:
@@ -314,16 +325,16 @@
     - WeaponDisabler
     - MedicatedSuture
     - RegenerativeMesh
-    - BoxZiptie
-    - CrowbarRed
-    - MagazinePistol
+#    - BoxZiptie # Corvax-Wega-ERT
+#    - CrowbarRed # Corvax-Wega-CombatCrowbar
+#    - MagazinePistol # Corvax-Wega-ERT
 
 - type: startingGear
   id: ERTSecurityGearEVALecter
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTSecurity
     back: ClothingBackpackERTSecurity
-    shoes: ClothingShoesBootsMag
+    shoes: ClothingShoesBootsMagCombat # Corvax-Wega-MagCombat
     mask: ClothingMaskGasERT
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesCombat
@@ -331,19 +342,21 @@
     id: ERTSecurityPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltSecurityFilled
-    pocket1: MagazineRifle
-    pocket2: MagazineRifle
     underwearbottom: ClothingUnderBottomHearts # Corvax-Wega
-  inhand:
-    - WeaponRifleLecter
   storage:
     back:
     - WeaponDisabler
     - MedicatedSuture
     - RegenerativeMesh
-    - BoxZiptie
-    - CrowbarRed
-    - MagazinePistol
+    # Corvax-Wega-ERT-start
+    - WeaponRifleLecter
+    - MagazineRifle
+    - MagazineRifle
+#    - BoxZiptie
+#    - CrowbarRed
+#    - MagazinePistol
+    # Corvax-Wega-ERT-end
+
 
 # Medical
 - type: job
@@ -360,6 +373,9 @@
   - AllAccess
   access:
   - CentralCommand
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, DeathRattleImplantCentcomm ]
 
 - type: startingGear
   id: ERTMedicalGear
@@ -378,20 +394,24 @@
     underwearbottom: ClothingUnderBottomHearts # Corvax-Wega
   storage:
     back:
-    - Hypospray
-    - MedkitCombatFilled
-    - MedkitCombatFilled
-    - CrowbarRed
-    - OmnizineChemistryBottle
-    - EpinephrineChemistryBottle
-    - EpinephrineChemistryBottle
+    # Corvax-Wega-ERT-start
+#    - Hypospray
+    - SyringeBluespace
+#    - MedkitCombatFilled
+#    - MedkitCombatFilled
+    - MedkitAdvancedFilled
+    - CombatCrowbar
+    # Corvax-Wega-ERT-end
+    - ChemistryBottleOmnizine
+    - ChemistryBottleEpinephrine
+    - ChemistryBottleEpinephrine
 
 - type: startingGear
   id: ERTMedicalGearEVA
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTMedic
     back: ClothingBackpackERTMedical
-    shoes: ClothingShoesBootsMag
+    shoes: ClothingShoesBootsMagCombat # Corvax-Wega-MagCombat
     mask: ClothingMaskGasERT
     eyes: ClothingEyesHudMedical
     gloves: ClothingHandsGlovesNitrile
@@ -403,13 +423,13 @@
     underwearbottom: ClothingUnderBottomHearts # Corvax-Wega
   storage:
     back:
-    - Hypospray
+#    - Hypospray # Corvax-Wega-ERT
+    - SyringeBluespace # Corvax-Wega-ERT
     - MedkitCombatFilled
-    - MedkitCombatFilled
-    - CrowbarRed
-    - OmnizineChemistryBottle
-    - EpinephrineChemistryBottle
-    - EpinephrineChemistryBottle
+#    - CrowbarRed # Corvax-Wega-CombatCrowbar
+    - ChemistryBottleOmnizine
+    - ChemistryBottleEpinephrine
+    - ChemistryBottleEpinephrine
 
 # Janitor
 - type: job
@@ -426,6 +446,9 @@
   - AllAccess
   access:
   - CentralCommand
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, DeathRattleImplantCentcomm ]
 
 - type: startingGear
   id: ERTJanitorGear
@@ -447,7 +470,7 @@
     - BoxLightMixed
     - BoxLightMixed
     - Soap
-    - CrowbarRed
+    - CombatCrowbar # Corvax-Wega-CombatCrowbar
     - AdvMopItem
 
 - type: startingGear
@@ -455,7 +478,7 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTJanitor
     back: ClothingBackpackERTJanitor
-    shoes: ClothingShoesBootsMag
+    shoes: ClothingShoesBootsMagCombat # Corvax-Wega-MagCombat
     mask: ClothingMaskGasERT
     gloves: ClothingHandsGlovesColorPurple
     outerClothing: ClothingOuterHardsuitERTJanitor
@@ -470,5 +493,5 @@
     - BoxLightMixed
     - BoxLightMixed
     - Soap
-    - CrowbarRed
+#    - CrowbarRed # Corvax-Wega-CombatCrowbar
     - AdvMopItem

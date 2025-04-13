@@ -36,6 +36,7 @@
             TechnicalAssistant: [ 4, 4 ]
             #medical
             ChiefMedicalOfficer: [ 1, 1 ]
+            Geneticist: [ 2, 2 ]
             Chemist: [ 2, 2 ]
             MedicalDoctor: [ 4, 5 ]
             Paramedic: [ 1, 1 ]
@@ -62,7 +63,7 @@
             Mime: [ 1, 1 ]
             Reporter: [ 1, 1 ]
             Musician: [ 2, 2 ]
-            Boxer: [ 2, 2]
+            Boxer: [ 2, 2 ]
             Barber: [ 1, 1 ]
             # silicon
             StationAi: [ 1, 1 ]

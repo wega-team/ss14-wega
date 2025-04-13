@@ -272,28 +272,6 @@
         amount: 0.1
 
 - type: reagent
-  id: BacchusBlessing
-  name: reagent-name-bacchus-blessing
-  parent: BaseAlcohol
-  desc: reagent-desc-bacchus-blessing
-  physicalDesc: reagent-physical-desc-overpowering
-  flavor: bacchus
-  color: "#f6e9a6"
-  recognizable: true
-  metamorphicSprite:
-    sprite: _Wega/Objects/Consumable/Drinks/bacchus.rsi
-    state: icon
-  metamorphicChangeColor: false
-  metabolisms:
-    Drink:
-      effects:
-      - !type:SatiateThirst
-        factor: 2
-      - !type:AdjustReagent
-        reagent: Ethanol
-        amount: 1.0
-
-- type: reagent
   id: BlackBlood
   name: reagent-name-black-blood
   parent: BaseAlcohol

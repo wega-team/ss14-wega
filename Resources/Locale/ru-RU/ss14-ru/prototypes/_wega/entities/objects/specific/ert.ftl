@@ -1,0 +1,17 @@
+ent-BaseTacticalInterface = тактический интерфейс
+    .desc = терминал для телепортации снаряжение ОБР используя технологию блюспейса
+ent-TacticalInterfacePatrol = { ent-BaseTacticalInterface }
+    .desc = { ent-BaseTacticalInterface.desc }
+    .suffix = Патрульные, 50
+ent-TacticalInterfaceScout = { ent-BaseTacticalInterface }
+    .desc = { ent-BaseTacticalInterface.desc }
+    .suffix = Разведчики, 90
+ent-TacticalInterfaceCombat = { ent-BaseTacticalInterface }
+    .desc = { ent-BaseTacticalInterface.desc }
+    .suffix = Боевые, 250
+ent-TacticalInterfaceSpecialist = { ent-BaseTacticalInterface }
+    .desc = { ent-BaseTacticalInterface.desc }
+    .suffix = Специалисты, 200
+ent-TacticalInterfaceCBURN = { ent-BaseTacticalInterface }
+    .desc = { ent-BaseTacticalInterface.desc }
+    .suffix = РХБЗЗ, 185

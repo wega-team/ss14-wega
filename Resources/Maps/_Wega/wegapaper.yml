@@ -1,6 +1,17 @@
 meta:
-  format: 6
-  postmapinit: false
+  format: 7
+  category: Map
+  engineVersion: 248.0.2
+  forkId: ""
+  forkVersion: ""
+  time: 03/24/2025 12:59:58
+  entityCount: 17521
+maps:
+- 1
+grids:
+- 2
+orphans: []
+nullspace: []
 tilemap:
   0: Space
   7: FloorAsteroidSand
@@ -108,7 +119,6 @@ entities:
     - type: MovedGrids
     - type: Broadphase
     - type: OccluderTree
-    - type: LoadedMap
     - type: BecomesStation
       id: Paper
     - type: Parallax
@@ -41403,6 +41413,13 @@ entities:
     - type: Transform
       pos: 90.5,10.5
       parent: 2
+- proto: CargoMailTeleporter
+  entities:
+  - uid: 8736
+    components:
+    - type: Transform
+      pos: 6.5,9.5
+      parent: 2
 - proto: Carpet
   entities:
   - uid: 5716
@@ -47986,6 +48003,24 @@ entities:
     - type: Transform
       pos: 19.631271,58.63034
       parent: 2
+- proto: ClothingMaskBlushingClown
+  entities:
+  - uid: 80
+    components:
+    - type: Transform
+      parent: 74
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
+- proto: ClothingMaskBlushingMime
+  entities:
+  - uid: 6878
+    components:
+    - type: Transform
+      parent: 6875
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
 - proto: ClothingMaskBreathMedical
   entities:
   - uid: 6855
@@ -48146,24 +48181,6 @@ entities:
 - proto: ClothingMaskScaredMime
   entities:
   - uid: 6877
-    components:
-    - type: Transform
-      parent: 6875
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-- proto: ClothingMaskSexyClown
-  entities:
-  - uid: 80
-    components:
-    - type: Transform
-      parent: 74
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-- proto: ClothingMaskSexyMime
-  entities:
-  - uid: 6878
     components:
     - type: Transform
       parent: 6875
@@ -55611,7 +55628,7 @@ entities:
     - type: Label
       currentLabel: кофейный ликёр
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.8380074
+      sprayFizzinessThresholdRoll: 0.9875824
     - type: NameModifier
       baseName: бутылка кофейного ликёра
     - type: ContainerContainer
@@ -55871,7 +55888,7 @@ entities:
     - type: Label
       currentLabel: ром
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.7965908
+      sprayFizzinessThresholdRoll: 0.22825918
     - type: NameModifier
       baseName: кубинский пряный ром капитана Пита
     - type: ContainerContainer
@@ -55913,7 +55930,7 @@ entities:
     - type: Label
       currentLabel: текила
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.87076205
+      sprayFizzinessThresholdRoll: 0.565358
     - type: NameModifier
       baseName: бутылка текилы Каккаво гарантированного качества
     - type: ContainerContainer
@@ -55954,7 +55971,7 @@ entities:
     - type: Label
       currentLabel: вермут
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.91540897
+      sprayFizzinessThresholdRoll: 0.6930175
     - type: NameModifier
       baseName: бутылка вермута Золотой глаз
     - type: ContainerContainer
@@ -55977,7 +55994,7 @@ entities:
     - type: Label
       currentLabel: водка
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.27567825
+      sprayFizzinessThresholdRoll: 0.012471443
     - type: NameModifier
       baseName: бутылка водки
     - type: ContainerContainer
@@ -56027,7 +56044,7 @@ entities:
     - type: Label
       currentLabel: вино
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.5827674
+      sprayFizzinessThresholdRoll: 0.2786534
     - type: NameModifier
       baseName: особое двухбородое бородатое вино
     - type: ContainerContainer
@@ -59627,7 +59644,7 @@ entities:
       pos: 39.5,13.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -10179.769
+      secondsUntilStateChange: -10207.2
       state: Closing
     - type: DeviceNetwork
       deviceLists:
@@ -87504,13 +87521,6 @@ entities:
     - type: Transform
       pos: 93.5,21.5
       parent: 2
-- proto: MagazineBoxAntiMaterielBig
-  entities:
-  - uid: 12440
-    components:
-    - type: Transform
-      pos: 61.59202,31.506334
-      parent: 2
 - proto: MagazineShotgun
   entities:
   - uid: 3492
@@ -97412,6 +97422,12 @@ entities:
     - type: Transform
       pos: -1.5,17.5
       parent: 2
+    - type: ContainerContainer
+      containers:
+        machine_board: !type:Container
+          ents: []
+        machine_parts: !type:Container
+          ents: []
 - proto: SalvageSpawnerEquipment
   entities:
   - uid: 14168

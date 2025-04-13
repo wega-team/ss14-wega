@@ -19,6 +19,12 @@ tickrate = 30
 [netres]
 limit = 25.0
 
+[admin]
+admins_count_in_playercount = true
+
+[movement]
+mob_pushing = true
+
 [infolinks]
 discord = "https://discord.gg/bJrgSmKf3a"
 wiki = "https://station14.ru"
@@ -50,6 +56,7 @@ rules_file = "WegaRuleset"
 
 [atmos]
 max_explosion_range = 5
+space_wind = true
 
 [shuttle]
 emergency_early_launch_allowed = true

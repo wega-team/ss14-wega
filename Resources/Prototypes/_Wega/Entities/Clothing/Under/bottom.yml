@@ -15,7 +15,7 @@
     size: Small
   - type: Storage
     grid:
-    - 0,0,0,0
+    - 0,0,0,1
     maxItemSize: Tiny
   - type: ContainerContainer
     containers:

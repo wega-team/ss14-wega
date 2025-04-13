@@ -1,3 +1,21 @@
+# /\/\/\
+- type: gamePreset
+  id: TraitorGreenshift
+  alias:
+  - greenshift
+  - shittersafarideluxeedition
+  - traitor
+  - tator
+  name: traitor-greenshift-title
+  showInVote: false
+  description: traitor-greenshift-description
+  rules:
+  - Traitor
+  - SubGamemodesRule
+  - SpaceTrafficControlFriendlyEventScheduler
+  - BasicRoundstartVariation
+
+# Antags
 - type: gamePreset
   id: Vampire
   alias:

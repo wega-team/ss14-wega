@@ -86,6 +86,8 @@
       - map: [ "enum.HumanoidVisualLayers.RLeg" ]
       - map: [ "enum.HumanoidVisualLayers.LLeg" ]
       # Corvax-Wega-start
+      - map: [ "enum.HumanoidVisualLayers.UndergarmentBottom" ]
+      - map: [ "enum.HumanoidVisualLayers.UndergarmentTop" ]
       - map: [ "enum.HumanoidVisualLayers.LFoot" ]
       - map: [ "enum.HumanoidVisualLayers.RFoot" ]
       - map: [ "socks" ]
@@ -104,13 +106,13 @@
       - map: [ "gloves" ]
       - map: [ "shoes" ]
       - map: [ "ears" ]
-      - map: [ "outerClothing" ]
       - map: [ "eyes" ]
       - map: [ "belt" ]
       - map: [ "id" ]
+      - map: [ "outerClothing" ]
       - map: [ "enum.HumanoidVisualLayers.Tail" ] #in the utopian future we should probably have a wings enum inserted here so everyhting doesn't break
-      - map: [ "neck" ]
       - map: [ "back" ]
+      - map: [ "neck" ]
       - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
       - map: [ "enum.HumanoidVisualLayers.Hair" ]
       - map: [ "enum.HumanoidVisualLayers.HeadSide" ]
@@ -124,12 +126,18 @@
         state: "creampie_moth"
         visible: false
   - type: Inventory
+    speciesId: moth
     femaleDisplacements:
       jumpsuit:
         sizeMaps:
           32:
             sprite: Mobs/Species/Human/displacement.rsi
             state: jumpsuit-female
+  # Corvax-Wega-Genetics-start
+  - type: DnaModifier
+    upper: MobMoth
+    lowest: MobMothroach
+  # Corvax-Wega-Genetics-end
 
 
 - type: entity
@@ -140,6 +148,7 @@
   - type: HumanoidAppearance
     species: Moth
   - type: Inventory
+    speciesId: moth
     femaleDisplacements:
       jumpsuit:
         sizeMaps:

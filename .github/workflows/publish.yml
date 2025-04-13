@@ -10,13 +10,13 @@ on:
 
 jobs:
   build:
-    runs-on: [self-hosted, linux]
+    runs-on: [self-hosted, Linux, username:runner-0, os:ubuntu-24.04]
 
     steps:
 #    - name: Install dependencies
 #      run: sudo apt-get install -y python3-paramiko python3-lxml
 
-    - uses: actions/checkout@v3.6.0
+    - uses: actions/checkout@v4.2.2
       with:
         submodules: 'recursive'
 
@@ -41,16 +41,16 @@ jobs:
     # Corvax-Secrets-End
 
     - name: Setup .NET Core
-      uses: actions/setup-dotnet@v4.3.0
+      uses: actions/setup-dotnet@v4.1.0
       with:
         dotnet-version: 9.0.x
       env:
-        DOTNET_INSTALL_DIR: $HOME/.dotnet
+        DOTNET_INSTALL_DIR: ${{ runner.temp }}/.dotnet
 
     - name: Set DOTNET_ROOT and PATH
       run: |
-        echo "DOTNET_ROOT=$HOME/.dotnet" >> $GITHUB_ENV
-        echo "$HOME/.dotnet" >> $GITHUB_PATH
+        echo "DOTNET_ROOT=${{ runner.temp }}/.dotnet" >> $GITHUB_ENV
+        echo "${{ runner.temp }}/.dotnet" >> $GITHUB_PATH
 
     - name: Check .NET installation
       run: dotnet --info

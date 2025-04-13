@@ -31,6 +31,7 @@ using Robust.Shared.Physics.Components;
 using Robust.Shared.Utility;
 using Robust.Shared.Map.Components;
 using Content.Shared.Whitelist;
+using Robust.Shared.Prototypes;
 // Corvax-Wega-Revenant-start
 using Content.Server.Administration;
 using Content.Server.Hallucinations;
@@ -45,7 +46,6 @@ using Content.Shared.Movement.Components;
 using Content.Shared.Weapons.Melee;
 using Robust.Server.GameObjects;
 using Robust.Shared.Player;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 // Corvax-Wega-Revenant-end
 
@@ -74,6 +74,8 @@ public sealed partial class RevenantSystem
     // Corvax-Wega-Revenant-end
 
     private static readonly ProtoId<HTNCompoundPrototype> HauntRootTask = "SimpleHostileCompound"; // Corvax-Wega-Revenant
+
+    private static readonly ProtoId<TagPrototype> WindowTag = "Window";
 
     private void InitializeAbilities()
     {
@@ -289,7 +291,7 @@ public sealed partial class RevenantSystem
         foreach (var ent in lookup)
         {
             //break windows
-            if (tags.HasComponent(ent) && _tag.HasTag(ent, "Window"))
+            if (tags.HasComponent(ent) && _tag.HasTag(ent, WindowTag))
             {
                 //hardcoded damage specifiers til i die.
                 var dspec = new DamageSpecifier();

@@ -1,0 +1,95 @@
+- type: entity
+  parent: [ClothingOuterHardsuitBase, BaseToggleClothing]
+  id: ClothingOuterHardsuitVoid
+  name: void suit
+  description: "Dark battered void space suit."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Hardsuits/voidhardsuit.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/OuterClothing/Hardsuits/voidhardsuit.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.02
+    lowPressureMultiplier: 1000
+  - type: TemperatureProtection
+    coefficient: 0.001
+  - type: ExplosionResistance
+    damageCoefficient: 0.5
+  - type: FireProtection
+    reduction: 0.8
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.7
+        Slash: 0.7
+        Piercing: 0.7
+        Heat: 0.6
+        Radiation: 0.005
+        Caustic: 0.4
+  - type: Item
+    size: Huge
+  - type: ClothingSpeedModifier
+    walkModifier: 0.8
+    sprintModifier: 0.8
+  - type: HeldSpeedModifier
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitVoid
+  - type: ToggleClothing
+    action: ActionTogglePhaseCloak
+    disableOnUnequip: true
+  - type: ComponentToggler
+    parent: true
+    components:
+    - type: Stealth
+      minVisibility: 0.5
+      lastVisibility: 0.5
+  - type: UseDelay
+    delay: 5
+
+- type: entity
+  parent: [ClothingOuterHardsuitBase, BaseToggleClothing]
+  id: ClothingOuterHardsuitVoidAdvanced
+  name: advanced void suit
+  description: "An improved version of a conventional void space suit."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Hardsuits/advancedvoidhardsuit.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/OuterClothing/Hardsuits/advancedvoidhardsuit.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.02
+    lowPressureMultiplier: 1000
+  - type: TemperatureProtection
+    coefficient: 0.001
+  - type: ExplosionResistance
+    damageCoefficient: 0.4
+  - type: FireProtection
+    reduction: 0.8
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.5
+        Heat: 0.4
+        Radiation: 0.005
+        Caustic: 0.4
+  - type: Item
+    size: Huge
+  - type: ClothingSpeedModifier
+    walkModifier: 1.0
+    sprintModifier: 1.0
+  - type: HeldSpeedModifier
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitVoidAdvanced
+  - type: ToggleClothing
+    action: ActionTogglePhaseCloak
+    disableOnUnequip: true
+  - type: ComponentToggler
+    parent: true
+    components:
+    - type: Stealth
+      minVisibility: 0.5
+      lastVisibility: 0.5
+  - type: UseDelay
+    delay: 5

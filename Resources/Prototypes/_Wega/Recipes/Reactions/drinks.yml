@@ -109,6 +109,16 @@
   products:
     TrueMilkshake: 5
 
+- type: reaction
+  id: Glace
+  reactants:
+    IcedCoffee:
+      amount: 2
+    IceCream:
+      amount: 1
+  products:
+    Glace: 3
+
 # Alcohol
 - type: reaction
   id: Eggnog
@@ -178,20 +188,6 @@
       amount: 1
   products:
     ThreeMileIslandIcedTea: 10
-
-- type: reaction
-  id: BacchusBlessing
-  reactants:
-    Hooch:
-      amount: 1
-    Absinthe:
-      amount: 1
-    ManlyDorf:
-      amount: 1
-    SyndicateBomb:
-      amount: 1
-  products:
-    BacchusBlessing: 4
 
 - type: reaction
   id: BlackBlood

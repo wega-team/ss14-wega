@@ -1,3 +1,4 @@
+# GhostBar
 - type: startingGear
   id: GhostBarGear
   equipment:
@@ -6,3 +7,59 @@
     underwearbottom: ClothingUnderBottomHearts
     ears: ClothingHeadsetGrey
     pocket1: ClothingMaskBreath
+
+# Void
+- type: startingGear
+  id: VoidGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitVoid
+    neck: ClothingNeckCloakVoidCap
+    back: ClothingBackpackSatchelSalvage
+    shoes: ClothingShoesBootsWork
+    mask: ClothingMaskBreath
+    outerClothing: ClothingOuterHardsuitVoid
+    underwearbottom: ClothingUnderBottomHearts
+
+- type: startingGear
+  id: VoidMedicalGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitVoid
+    neck: ClothingNeckCloakVoidCap
+    back: ClothingBackpackSatchelSalvage
+    shoes: ClothingShoesBootsWork
+    eyes: ClothingEyesHudMedical
+    gloves: ClothingHandsGlovesNitrile
+    mask: ClothingMaskBreathMedical
+    outerClothing: ClothingOuterHardsuitVoid
+    belt: ClothingBeltMedicalFilled
+    underwearbottom: ClothingUnderBottomHearts
+
+- type: startingGear
+  id: VoidTechnicalGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitVoid
+    neck: ClothingNeckCloakVoidCap
+    back: ClothingBackpackSatchelSalvage
+    shoes: ClothingShoesBootsWork
+    eyes: ClothingEyesGlassesMeson
+    gloves: ClothingHandsGlovesColorYellow
+    mask: ClothingMaskBreath
+    outerClothing: ClothingOuterHardsuitVoid
+    belt: ClothingBeltUtilityFilled
+    underwearbottom: ClothingUnderBottomHearts
+
+- type: startingGear
+  id: VoidCommanderGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitVoid
+    neck: ClothingNeckCloakVoidCap
+    back: ClothingBackpackSatchelSalvage
+    shoes: ClothingShoesBootsMag
+    eyes: ClothingEyesGlassesHiddenSecurity
+    gloves: ClothingHandsGlovesCombat
+    mask: ClothingMaskGasExplorer
+    outerClothing: ClothingOuterHardsuitVoidAdvanced
+    belt: ClothingBeltUtilityFilled
+    underwearbottom: ClothingUnderBottomHearts
+    pocket1: SurvivalKnife
+    pocket2: WeaponLaserSvalinn

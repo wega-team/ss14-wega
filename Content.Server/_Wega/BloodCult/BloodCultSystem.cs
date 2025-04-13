@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Numerics;
+using Content.Server.Bed.Cryostorage;
 using Content.Server.Body.Components;
 using Content.Server.Body.Systems;
 using Content.Server.GameTicking.Rules.Components;
@@ -63,6 +64,7 @@ public sealed partial class BloodCultSystem : EntitySystem
         SubscribeLocalEvent<BloodCultistComponent, ComponentStartup>(OnComponentStartup);
         SubscribeLocalEvent<BloodCultConstructComponent, ComponentStartup>(OnComponentStartup);
         SubscribeLocalEvent<BloodCultObjectComponent, ComponentShutdown>(OnComponentShutdown);
+        SubscribeLocalEvent<BloodCultObjectComponent, CryostorageEnterEvent>(OnCryostorageEnter);
         SubscribeLocalEvent<BloodDaggerComponent, AfterInteractEvent>(OnInteract);
         SubscribeLocalEvent<AttackAttemptEvent>(OnAttackAttempt);
 
@@ -178,8 +180,8 @@ public sealed partial class BloodCultSystem : EntitySystem
         }
 
         var globalCandidates = new List<EntityUid>();
-        var globalEnumerator = EntityQueryEnumerator<HumanoidAppearanceComponent, ActorComponent, MobStateComponent, TransformComponent>();
-        while (globalEnumerator.MoveNext(out var uid, out _, out _, out _, out _))
+        var globalEnumerator = EntityQueryEnumerator<HumanoidAppearanceComponent, ActorComponent, MobStateComponent>();
+        while (globalEnumerator.MoveNext(out var uid, out _, out _, out _))
         {
             if (_selectedTargets.Contains(uid) || HasComp<BloodCultistComponent>(uid))
             {
@@ -196,6 +198,27 @@ public sealed partial class BloodCultSystem : EntitySystem
             EnsureComp<BloodCultObjectComponent>(target);
             globalCandidates.RemoveAt(index);
         }
+    }
+
+    private EntityUid? FindNewRandomTarget(Entity<BloodCultObjectComponent> excludedEntity)
+    {
+        var candidates = new List<EntityUid>();
+        var query = EntityQueryEnumerator<HumanoidAppearanceComponent, ActorComponent, MobStateComponent>();
+        while (query.MoveNext(out var uid, out _, out _, out _))
+        {
+            if (uid == excludedEntity.Owner || HasComp<BloodCultistComponent>(uid)
+                || HasComp<BloodCultObjectComponent>(uid))
+            {
+                continue;
+            }
+            candidates.Add(uid);
+        }
+
+        if (candidates.Count == 0)
+            return null;
+
+        var index = _random.Next(0, candidates.Count);
+        return candidates[index];
     }
 
     private void CheckTargetsConducted(EntityUid eliminatedTarget)
@@ -291,6 +314,22 @@ public sealed partial class BloodCultSystem : EntitySystem
     private void OnComponentShutdown(Entity<BloodCultObjectComponent> entity, ref ComponentShutdown args)
     {
         CheckStage();
+    }
+
+    private void OnCryostorageEnter(Entity<BloodCultObjectComponent> entity, ref CryostorageEnterEvent args)
+    {
+        if (!TryComp<BloodCultObjectComponent>(args.Uid, out var objectComponent))
+            return;
+
+        var newTarget = FindNewRandomTarget((args.Uid, objectComponent));
+        if (newTarget != null)
+        {
+            _selectedTargets.Add(newTarget.Value);
+            EnsureComp<BloodCultObjectComponent>(newTarget.Value);
+        }
+
+        _selectedTargets.Remove(args.Uid);
+        RemComp<BloodCultObjectComponent>(args.Uid);
     }
 
     private void CheckStage()
@@ -402,7 +441,8 @@ public sealed partial class BloodCultSystem : EntitySystem
         var user = args.User;
         if (!TryComp<BloodCultistComponent>(user, out _))
         {
-            RaiseLocalEvent(user, new DropHandItemsEvent());
+            var dropEvent = new DropHandItemsEvent();
+            RaiseLocalEvent(user, ref dropEvent);
             var damage = new DamageSpecifier { DamageDict = { { "Slash", 5 } } };
             _damage.TryChangeDamage(user, damage, true);
             _popup.PopupEntity(Loc.GetString("blood-dagger-failed-interact"), user, user, PopupType.SmallCaution);
@@ -637,7 +677,8 @@ public sealed partial class BloodCultSystem : EntitySystem
         var user = args.User;
         if (args.Handled || !TryComp<BloodCultistComponent>(user, out _))
         {
-            RaiseLocalEvent(user, new DropHandItemsEvent());
+            var dropEvent = new DropHandItemsEvent();
+            RaiseLocalEvent(user, ref dropEvent);
             return;
         }
 
