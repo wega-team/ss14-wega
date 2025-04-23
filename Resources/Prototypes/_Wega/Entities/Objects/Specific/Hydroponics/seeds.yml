@@ -45,6 +45,6 @@
   suffix: "Melissa"
   components:
     - type: Seed
-      seedId: DemonicWatermelon
+      seedId: demonicWatermelon
     - type: Sprite
       sprite: _Wega/Objects/Specific/Hydroponics/demonicwatermelon.rsi
