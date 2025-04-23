@@ -10,3 +10,5 @@ ent-FoodMoneyCabbage = денежная капуста
     .desc = Деньги, деньги, ДЕНЬГИ!!
 ent-FoodDemonicWatermelon = демонический арбуз
     .desc = Кто бы мог подумать, что главным символом зла окажется арбуз?
+ent-FoodDemonicWatermelonSlice = кусочек демонического арбуза
+    .desc = Маленький кусочек зла.

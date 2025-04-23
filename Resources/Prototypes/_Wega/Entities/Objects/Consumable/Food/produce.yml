@@ -151,7 +151,7 @@
         acts: [ "Destruction" ]
   - type: SliceableFood
     count: 5
-    slice: FoodAnholymelonSlice
+    slice: FoodDemonicWatermelonSlice
   - type: Butcherable
     butcheringType: Knife
     spawned:
@@ -162,9 +162,9 @@
     - Fruit
 
 - type: entity
-  name: demon watermelon slice
+  name: demonic watermelon slice
   parent: ProduceSliceBase
-  id: FoodAnholymelonSlice
+  id: FoodDemonicWatermelonSlice
   description: "A little piece of evil."
   suffix: "Melissa"
   components:
