@@ -166,7 +166,6 @@
   parent: ProduceSliceBase
   id: FoodDemonicWatermelonSlice
   description: "A little piece of evil."
-  suffix: "Melissa"
   components:
   - type: Item
     size: Tiny
