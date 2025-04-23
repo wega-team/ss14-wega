@@ -19,6 +19,7 @@ using Content.Shared.Hands;
 using Content.Shared.Throwing;
 using Content.Shared.Inventory.VirtualItem;
 using Content.Shared.ActionBlocker;
+using Robust.Shared.Physics;
 
 
 /// Система пока сырая. Рабочий, но надо много еще сделать: ограничения "душителя" и "жертвы", базовые ограничения
@@ -38,6 +39,7 @@ namespace Content.Server.Strangulation
         [Dependency] private readonly IGameTiming _gameTiming = default!;
         [Dependency] private readonly VirtualItemSystem _virtualItemSystem = default!;
         [Dependency] private readonly ActionBlockerSystem _actionBlockerSystem = default!;
+        [Dependency] private readonly SharedTransformSystem _transform = default!;
 
         public override void Initialize()
         {
@@ -57,6 +59,9 @@ namespace Content.Server.Strangulation
                 return;
 
             if (!_mobStateSystem.IsAlive(args.User))
+                return;
+
+            if (!CheckDistance(args.User, uid))
                 return;
 
             AlternativeVerb verb = new()
@@ -92,7 +97,6 @@ namespace Content.Server.Strangulation
         {
             if (!HasComp<StrangulationComponent>(args.BlockingEntity))
                 return;
-
             StopStrangle(args.User, args.BlockingEntity);
         }
 
@@ -115,7 +119,7 @@ namespace Content.Server.Strangulation
             if (!TryComp<HandsComponent>(strangler, out var hands))
                 return false;
 
-            if (!CheckGarrotte(strangler) && hands.CountFreeHands() < 2)
+            if (!CheckGarrotte(strangler, out var garrotteComp) && hands.CountFreeHands() < 2)
             {
                 return false;
             }
@@ -136,19 +140,26 @@ namespace Content.Server.Strangulation
                 BreakOnMove = true,
                 BreakOnDamage = true,
                 MovementThreshold = 0.01f,
-                DistanceThreshold = 0.5f,
+                //DistanceThreshold = 1f,
                 NeedHand = true,
                 BreakOnHandChange = true,
                 BreakOnDropItem = true,
                 RequireCanInteract = true
             };
-            _doAfterSystem.TryStartDoAfter(doAfterEventArgs);
-            Strangle(strangler, target, component);
+            _doAfterSystem.TryStartDoAfter(doAfterEventArgs, out var doAfterId);
+            Strangle(strangler, target, doAfterId);
         }
 
-        private void Strangle(EntityUid strangler, EntityUid target, RespiratorComponent component)
+        private void Strangle(EntityUid strangler, EntityUid target, DoAfterId? DoAfterId)
         {
-            EnsureComp<StrangulationComponent>(target);
+            EnsureComp<StrangulationComponent>(target, out var comp);
+            comp.DoAfterId = DoAfterId;
+            if (CheckGarrotte(strangler, out var garrotteComp))
+            {
+                comp.IsStrangledGarrotte = true;
+                if (garrotteComp != null)
+                    comp.Damage = garrotteComp.GarrotteDamage;
+            }
             _virtualItemSystem.TrySpawnVirtualItemInHand(target, strangler);
             _virtualItemSystem.TrySpawnVirtualItemInHand(target, strangler);
             _actionBlockerSystem.UpdateCanMove(target);
@@ -156,12 +167,14 @@ namespace Content.Server.Strangulation
 
         private void StopStrangle(EntityUid strangler, EntityUid target)
         {
+            var comp = Comp<StrangulationComponent>(target);
+            _doAfterSystem.Cancel(comp.DoAfterId);
             RemComp<StrangulationComponent>(target);
             _virtualItemSystem.DeleteInHandsMatching(strangler, target);
             _actionBlockerSystem.UpdateCanMove(target);
         }
 
-        /*private bool CheckGarrotte(EntityUid strangler, StrangulationComponent component)
+        private bool CheckGarrotte(EntityUid strangler, out GarrotteComponent? garrotteComp)
         {
             if (TryComp<HandsComponent>(strangler, out var hands))
             {
@@ -170,33 +183,25 @@ namespace Content.Server.Strangulation
                     if (hand.HeldEntity is not EntityUid heldEntity)
                         continue;
 
-                    if (TryComp<GarrotteComponent>(heldEntity, out var garrotteComp))
+                    if (TryComp<GarrotteComponent>(heldEntity, out var comp))
                     {
-                        component.IsStrangledGarrotte = true;
-
+                        garrotteComp = comp;
                         return true;
                     }
                 }
             }
+            garrotteComp = null;
             return false;
-        }*/
+        }
 
-        private bool CheckGarrotte(EntityUid strangler)
+        private bool CheckDistance(EntityUid strangler, EntityUid target)
         {
-            if (TryComp<HandsComponent>(strangler, out var hands))
-            {
-                foreach (var hand in hands.Hands.Values)
-                {
-                    if (hand.HeldEntity is not EntityUid heldEntity)
-                        continue;
-
-                    if (TryComp<GarrotteComponent>(heldEntity, out var garrotteComp))
-                    {
-                        return true;
-                    }
-                }
-            }
-            return false;
+            var stranglerPosition = _transform.GetWorldPosition(strangler);
+            var targetPosition = _transform.GetWorldPosition(target);
+            var distance = (stranglerPosition - targetPosition).Length();
+            if (distance > 1f)
+                return false;
+            return true;
         }
     }
 }

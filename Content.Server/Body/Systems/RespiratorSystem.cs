@@ -19,6 +19,7 @@ using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Content.Shared.Strangulation;
+using Content.Shared.Garrotte;
 
 namespace Content.Server.Body.Systems;
 
@@ -78,7 +79,7 @@ public sealed class RespiratorSystem : EntitySystem
             UpdateSaturation(uid, -(float) respirator.UpdateInterval.TotalSeconds, respirator);
 
             if (!_mobState.IsIncapacitated(uid) // cannot breathe in crit.
-                && !HasComp<StrangulationComponent>(uid)) // cannot breathe when strangled
+                && !HasComp<StrangulationComponent>(uid)) // cannot breathe when strangled //Corvax-Wega-Strangulation
             {
                 switch (respirator.Status)
                 {
@@ -295,11 +296,12 @@ public sealed class RespiratorSystem : EntitySystem
                 _alertsSystem.ShowAlert(ent, entity.Comp1.Alert);
             }
         }
-
-        var comp = CompOrNull<StrangulationComponent>(ent);
-        if (HasComp<StrangulationComponent>(ent) && comp != null)
-            _damageableSys.TryChangeDamage(ent, comp.Damage, interruptsDoAfters: false);
+        //Corvax-Wega-Strangulation-start
+        var strangleComp = CompOrNull<StrangulationComponent>(ent);
+        if (HasComp<StrangulationComponent>(ent) && strangleComp != null)
+            _damageableSys.TryChangeDamage(ent, strangleComp.Damage, interruptsDoAfters: false);
         else
+        //Corvax-Wega-Strangulation-end
             _damageableSys.TryChangeDamage(ent, ent.Comp.Damage, interruptsDoAfters: false);
     }
 

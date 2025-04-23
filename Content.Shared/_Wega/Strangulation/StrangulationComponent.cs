@@ -1,10 +1,14 @@
 using Content.Shared.Damage;
+using Content.Shared.DoAfter;
 
 namespace Content.Shared.Strangulation
 {
     [RegisterComponent]
     public sealed partial class StrangulationComponent : Component
     {
+        [DataField]
+        public DoAfterId? DoAfterId;
+
         [DataField]
         public TimeSpan GaspEmoteCooldown = TimeSpan.FromSeconds(6);
 
