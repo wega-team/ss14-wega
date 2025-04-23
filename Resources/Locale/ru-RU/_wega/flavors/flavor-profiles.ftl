@@ -46,3 +46,4 @@ flavor-complex-sun = как солнечное тепло
 flavor-complex-tick-tack = как тиканье часов
 flavor-complex-uragan-shot = как порывы ветра
 flavor-complex-new-yorker = как крах
+flavor-complex-demonic-watermelon = как порченый арбуз

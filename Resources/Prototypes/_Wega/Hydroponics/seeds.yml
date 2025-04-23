@@ -74,7 +74,7 @@
   noun: seeds-noun-seeds
   displayName: seeds-moneyCabbage-display-name
   plantRsi: _Wega/Objects/Specific/Hydroponics/moneycabbage.rsi
-  packetPrototype: moneyCabbageSeeds
+  packetPrototype: MoneyCabbageSeeds
   productPrototypes:
     - FoodMoneyCabbage
   harvestRepeat: Repeat
@@ -96,7 +96,7 @@
   noun: seeds-noun-seeds
   displayName: seeds-demonicWatermelon-display-name
   plantRsi: _Wega/Objects/Specific/Hydroponics/demonicwatermelon.rsi
-  packetPrototype: demonicWatermelonSeeds
+  packetPrototype: DemonicWatermelonSeeds
   productPrototypes:
     - FoodDemonicWatermelon
   lifespan: 55

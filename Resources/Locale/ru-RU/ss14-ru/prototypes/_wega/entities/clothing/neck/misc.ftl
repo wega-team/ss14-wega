@@ -21,6 +21,6 @@ ent-ClothingNeckChokerWhite = белый чокер
 ent-ClothingNeckChokerYellow = желтый чокер
     .desc = Солнечный желтый чокер, идеально подходящий для яркого и жизнерадостного образа.
 ent-ClothingNeckWingsTail = демонические крылья
-    .desc = о нет!
+    .desc = О нет!
 ent-ClothingNecKwingsAngel = ангельские крылья
     .desc = Вы чувствуете близость к божественному.
