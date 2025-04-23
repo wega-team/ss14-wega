@@ -90,7 +90,7 @@
         - ReagentId: Cellulose
           Quantity: 5
   - type: Produce
-    seedId: moneyCabbageSeeds
+    seedId: moneyCabbage
   - type: SpawnItemsOnUse
     items:
       - type: entity
@@ -123,7 +123,7 @@
   - type: Sprite
     sprite: _Wega/Objects/Specific/Hydroponics/demonicwatermelon.rsi
   - type: Produce
-    seedId: DemonicWatermelon
+    seedId: demonicWatermelon
   - type: Extractable
     juiceSolution:
       reagents:
@@ -174,7 +174,7 @@
     flavors:
       - demonicwatermelon
   - type: Sprite
-    sprite: /Uploaded/BANANA/watermelon/demonic_watermelon.rsi
+    sprite: _Wega/Objects/Specific/Hydroponics/demonicwatermelon.rsi
   - type: SolutionContainerManager
     solutions:
       food:

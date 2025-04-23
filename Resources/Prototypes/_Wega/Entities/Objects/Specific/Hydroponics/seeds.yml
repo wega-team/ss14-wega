@@ -41,8 +41,7 @@
 - type: entity
   parent: SeedBase
   name: packet of demonick watermelon seeds
-  id: DemonicWatermelonSeeds
-  suffix: "Melissa"
+  id: demonicWatermelonSeeds
   components:
     - type: Seed
       seedId: demonicWatermelon
