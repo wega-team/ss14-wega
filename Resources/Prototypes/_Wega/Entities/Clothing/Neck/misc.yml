@@ -1,0 +1,21 @@
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckWingsTail
+  name: demon wings
+  description: "Oh no!" 
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Neck/Misc/demonicwings.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Neck/Misc/demonicwings.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNecKwingsAngel
+  name: angel wings
+  description: "You feel close to the divine."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Neck/Misc/wingsagel.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Neck/Misc/wingsagel.rsi

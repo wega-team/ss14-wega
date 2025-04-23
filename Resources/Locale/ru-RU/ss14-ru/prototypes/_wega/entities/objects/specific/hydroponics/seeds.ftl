@@ -4,3 +4,7 @@ ent-SunflowerSeeds = пакет семян (подсолнух)
     .desc = { ent-SeedBase.desc }
 ent-ClownflowerSeeds = пакет семян (цветка клоуна)
     .desc = { ent-SeedBase.desc }
+ent-moneyCabbageSeeds = пакет семян (денежная капуста)
+    .desc = { ent-SeedBase.desc }
+ent-DemonicWatermelonSeeds = пакет семян (демонический арбуз)
+    .desc = { ent-SeedBase.desc }

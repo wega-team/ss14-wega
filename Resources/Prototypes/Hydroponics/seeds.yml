@@ -688,6 +688,8 @@
   packetPrototype: CabbageSeeds
   productPrototypes:
     - FoodCabbage
+  mutationPrototypes: # Corvax-Wega-HydroponicsUpdate
+    - MoneyCabbage    # Corvax-Wega-HydroponicsUpdate
   lifespan: 50
   maturation: 7
   production: 5
@@ -1632,6 +1634,7 @@
     - FoodWatermelon
   mutationPrototypes:
     - holymelon
+    - demonicWatermelon  # Corvax-Wega-HydroponicsUpdate
   lifespan: 55
   maturation: 12
   production: 3

@@ -67,3 +67,54 @@
       Min: 1
       Max: 10
       PotencyDivisor: 10
+
+- type: seed
+  id: moneyCabbage
+  name: seeds-moneyCabbage-name
+  noun: seeds-noun-seeds
+  displayName: seeds-moneyCabbage-display-name
+  plantRsi: _Wega/Objects/Specific/Hydroponics/moneycabbage.rsi
+  packetPrototype: moneyCabbageSeeds
+  productPrototypes:
+    - FoodMoneyCabbage
+  harvestRepeat: Repeat
+  lifespan: 50
+  maturation: 7
+  production: 5
+  yield: 3
+  potency: 10
+  growthStages: 2
+  chemicals:
+    Cellulose:
+      Min: 1
+      Max: 5
+      PotencyDivisor: 10
+
+- type: seed
+  id: demonicWatermelon
+  name: seeds-demonicWatermelon-name
+  noun: seeds-noun-seeds
+  displayName: seeds-demonicWatermelon-display-name
+  plantRsi: _Wega/Objects/Specific/Hydroponics/demonicwatermelon.rsi
+  packetPrototype: demonicWatermelonSeeds
+  productPrototypes:
+    - FoodDemonicWatermelon
+  lifespan: 55
+  maturation: 12
+  production: 3
+  yield: 1
+  potency: 1
+  idealLight: 8
+  chemicals:
+    Nutriment:
+      Min: 1
+      Max: 10
+      PotencyDivisor: 10
+    Unholywater:
+      Min: 1
+      Max: 10
+      PotencyDivisor: 10
+    Vitamin:
+      Min: 1
+      Max: 5
+      PotencyDivisor: 20

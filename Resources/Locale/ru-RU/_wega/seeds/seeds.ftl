@@ -4,3 +4,7 @@ seeds-sunflower-name = подсолнух
 seeds-sunflower-display-name = подсолнух
 seeds-clownflower-name = цветок клоуна
 seeds-clownflower-display-name = цветок клоуна
+seeds-moneyCabbage-name = денежная капуста
+seeds-moneyCabbage-display-name = денежное дерево
+seeds-demonicWatermelon-name = демонический арбуз
+seeds-demonicWatermelon-display-name = стебель демонического арбуза

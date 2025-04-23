@@ -74,3 +74,124 @@
     seedId: clownflower
   - type: PotencyVisuals
   - type: Appearance
+
+- type: entity
+  name: money cabbage
+  description: "Money, money, MONEY!!"
+  id: FoodMoneyCabbage
+  parent: ProduceBase
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/moneycabbage.rsi
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Cellulose
+          Quantity: 5
+  - type: Produce
+    seedId: moneyCabbageSeeds
+  - type: SpawnItemsOnUse
+    items:
+      - type: entity
+      - id: SpaceCash75
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  name: demonic watermelon
+  parent: [FoodProduceBase, ItemHeftyBase]
+  id: FoodDemonicWatermelon
+  description: "Who would have thought that the main symbol of evil would be a watermelon?"
+  components:
+  - type: Item
+    size: Small
+  - type: FlavorProfile
+    flavors:
+      - demonicwatermelon
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 25
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 10
+        - ReagentId: Vitamin
+          Quantity: 5
+        - ReagentId: Unholywater
+          Quantity: 10
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/demonicwatermelon.rsi
+  - type: Produce
+    seedId: DemonicWatermelon
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: DemonsBlood
+        Quantity: 20
+  - type: Damageable
+    damageContainer: Biological
+  - type: DamageOnHighSpeedImpact
+    minimumSpeed: 0.1
+    damage:
+      types:
+        Blunt: 1
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 1
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: desecration
+      - !type:SpillBehavior
+        solution: food
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: SliceableFood
+    count: 5
+    slice: FoodAnholymelonSlice
+  - type: Butcherable
+    butcheringType: Knife
+    spawned:
+    - id: ClothingHeadHatDemonicWatermelon
+    - id: ClothingNeckWingsTail
+  - type: Tag
+    tags:
+    - Fruit
+
+- type: entity
+  name: demon watermelon slice
+  parent: ProduceSliceBase
+  id: FoodAnholymelonSlice
+  description: "A little piece of evil."
+  suffix: "Melissa"
+  components:
+  - type: Item
+    size: Tiny
+  - type: FlavorProfile
+    flavors:
+      - demonicwatermelon
+  - type: Sprite
+    sprite: /Uploaded/BANANA/watermelon/demonic_watermelon.rsi
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 5
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 2
+        - ReagentId: Vitamin
+          Quantity: 1
+        - ReagentId: Unholywater
+          Quantity: 2
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: DemonsBlood
+        Quantity: 4
+  - type: Tag
+    tags:
+    - Fruit
+    - Slice

@@ -1,0 +1,14 @@
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatDemonicWatermelon
+  name: demonic watermelon horns
+  description: "Damn it!"
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Head/Hats/demonichorns.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Head/Hats/demonichorns.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Heat: 0.95

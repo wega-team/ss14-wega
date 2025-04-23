@@ -27,3 +27,24 @@
       seedId: clownflower
     - type: Sprite
       sprite: _Wega/Objects/Specific/Hydroponics/clownflower.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of money cabbage seeds
+  id: moneyCabbageSeeds
+  components:
+    - type: Seed
+      seedId: moneyCabbage
+    - type: Sprite
+      sprite: _Wega/Objects/Specific/Hydroponics/moneycabbage.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of demonick watermelon seeds
+  id: DemonicWatermelonSeeds
+  suffix: "Melissa"
+  components:
+    - type: Seed
+      seedId: DemonicWatermelon
+    - type: Sprite
+      sprite: _Wega/Objects/Specific/Hydroponics/demonicwatermelon.rsi

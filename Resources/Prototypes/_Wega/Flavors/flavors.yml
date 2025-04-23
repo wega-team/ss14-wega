@@ -237,3 +237,8 @@
   id: newyorker
   flavorType: Complex
   description: flavor-complex-new-yorker
+
+- type: flavor
+  id: demonicwatermelon
+  flavorType: Complex
+  description: flavor-complex-demonic-watermelon

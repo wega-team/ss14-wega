@@ -6,3 +6,7 @@ ent-FlowerPeaceFlower = пион
     .desc = Нечто прекрасное.
 ent-FlowerClown = цветок клоуна
     .desc = Нечто ужасающее.
+ent-FoodMoneyCabbage = денежная капуста
+    .desc = Деньги, деньги, ДЕНЬГИ!!
+ent-FoodDemonicWatermelon = демонический арбуз
+    .desc = Кто бы мог подумать, что главным символом зла окажется арбуз?

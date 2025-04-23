@@ -2162,6 +2162,7 @@
   components:
   - type: Item
     size: Small
+    sprite: Objects/Specific/Hydroponics/holymelon.rsi # Corvax-Wega-HydroponicsUpdate
     heldPrefix: produce
   - type: FlavorProfile
     flavors:
@@ -2179,7 +2180,7 @@
         - ReagentId: Holywater
           Quantity: 10
   - type: Sprite
-    sprite: Objects/Specific/Hydroponics/holymelon.rsi
+    sprite: _Wega/Objects/Specific/Hydroponics/holymelon.rsi # Corvax-Wega-HydroponicsUpdate
   - type: Produce
     seedId: watermelon
   - type: Extractable
@@ -2214,6 +2215,7 @@
     butcheringType: Knife
     spawned:
     - id: ClothingHeadHatHolyWatermelon
+    - id: ClothingNecKwingsAngel # Corvax-Wega-HydroponicsUpdate
   - type: Tag
     tags:
     - Fruit
