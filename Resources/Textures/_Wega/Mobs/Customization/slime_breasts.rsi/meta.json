@@ -1,24 +1,12 @@
 {
     "version": 1,
     "license": "CC-BY-SA-3.0",
-    "copyright": "Sprite created by zekins3366",
+    "copyright": "Made with love by Melissandra",
     "size": {
         "x": 32,
         "y": 32
     },
     "states": [
-      {
-          "name": "small",
-          "directions": 4
-      },
-      {
-          "name": "default",
-          "directions": 4
-      },
-      {
-          "name": "medium",
-          "directions": 4
-      },
       {
           "name": "big",
           "directions": 4

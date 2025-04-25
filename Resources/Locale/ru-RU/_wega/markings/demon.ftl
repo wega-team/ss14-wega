@@ -62,3 +62,9 @@ marking-DemonHornsDevilPrime2 = Аркана, рога (Прайм, 2)
 marking-DemonHornsDevilPrime2-devil_prime2 = Рога
 marking-DemonHornsFat_Horn = Аркана, рога (Толстые)
 marking-DemonHornsFat_Horn-fat_horn = Рога
+# Грудь
+marking-DemonBreastSmall = Грудь (Маленькая)
+marking-DemonBreastDefault = Грудь (Обычная)
+marking-DemonBreastMedium = Грудь (Средняя)
+marking-DemonBreastBig = Грудь (Большая)
+marking-DemonBreastSuperBig = Грудь (Очень большая)

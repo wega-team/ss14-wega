@@ -1,8 +1,8 @@
 - type: marking
-  id: HumanBreastSmall
+  id: DemonBreastSmall
   bodyPart: Chest
   markingCategory: Chest
-  speciesRestriction: [Human, Dwarf]
+  speciesRestriction: [Demon]
   sexRestriction: [Female]
   followSkinColor: true
   forcedColoring: true
@@ -11,14 +11,14 @@
       type:
         !type:SkinColoring
   sprites:
-  - sprite: _Wega/Mobs/Customization/human_breasts.rsi
+  - sprite: _Wega/Mobs/Customization/demon_breasts.rsi
     state: small
 
 - type: marking
-  id: HumanBreastDefault
+  id: DemonBreastDefault
   bodyPart: Chest
   markingCategory: Chest
-  speciesRestriction: [Human, Dwarf]
+  speciesRestriction: [Demon]
   sexRestriction: [Female]
   followSkinColor: true
   forcedColoring: true
@@ -27,14 +27,14 @@
       type:
         !type:SkinColoring
   sprites:
-  - sprite: _Wega/Mobs/Customization/human_breasts.rsi
+  - sprite: _Wega/Mobs/Customization/demon_breasts.rsi
     state: default
 
 - type: marking
-  id: HumanBreastMedium
+  id: DemonBreastMedium
   bodyPart: Chest
   markingCategory: Chest
-  speciesRestriction: [Human, Dwarf]
+  speciesRestriction: [Demon]
   sexRestriction: [Female]
   followSkinColor: true
   forcedColoring: true
@@ -43,14 +43,14 @@
       type:
         !type:SkinColoring
   sprites:
-  - sprite: _Wega/Mobs/Customization/human_breasts.rsi
+  - sprite: _Wega/Mobs/Customization/demon_breasts.rsi
     state: medium
 
 - type: marking
-  id: HumanBreastBig
-  bodyPart: RLeg #Не "Chest" чтобы спрайт отобразить по верх рук
+  id: DemonBreastBig
+  bodyPart: RLeg #Не "Chest" чтобы спрайт отобразить по верх рук 
   markingCategory: Chest
-  speciesRestriction: [Human, Dwarf]
+  speciesRestriction: [Demon]
   sexRestriction: [Female]
   followSkinColor: true
   forcedColoring: true
@@ -59,14 +59,14 @@
       type:
         !type:SkinColoring
   sprites:
-  - sprite: _Wega/Mobs/Customization/human_breasts.rsi
+  - sprite: _Wega/Mobs/Customization/demon_breasts.rsi
     state: big
 
 - type: marking
-  id: HumanBreastSuperBig
+  id: DemonBreastSuperBig
   bodyPart: RLeg #Не "Chest" чтобы спрайт отобразить по верх рук
   markingCategory: Chest
-  speciesRestriction: [Human, Dwarf]
+  speciesRestriction: [Demon]
   sexRestriction: [Female]
   followSkinColor: true
   forcedColoring: true
@@ -75,5 +75,5 @@
       type:
         !type:SkinColoring
   sprites:
-  - sprite: _Wega/Mobs/Customization/human_breasts.rsi
+  - sprite: _Wega/Mobs/Customization/demon_breasts.rsi
     state: superbig
