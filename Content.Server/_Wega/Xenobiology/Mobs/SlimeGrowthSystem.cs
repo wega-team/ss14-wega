@@ -2,6 +2,7 @@ using Content.Shared.Xenobiology;
 using Content.Shared.Xenobiology.Components;
 using Content.Shared.Xenobiology.Systems;
 using Robust.Shared.Map;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
 namespace Content.Server.Xenobiology;
@@ -10,9 +11,13 @@ public sealed class SlimeGrowthSystem : SharedSlimeGrowthSystem
 {
     [Dependency] private readonly IRobustRandom _random = default!;
 
+    [ValidatePrototypeId<EntityPrototype>]
+    private const string DefaultSlime = "MobXenoSlimeGray";
+
     public override void Initialize()
     {
         base.Initialize();
+
         SubscribeLocalEvent<SlimeGrowthComponent, SlimeHungerStateChangedEvent>(OnHungerChanged);
     }
 
@@ -30,9 +35,17 @@ public sealed class SlimeGrowthSystem : SharedSlimeGrowthSystem
         if (growth.CurrentStage >= SlimeStage.Ancient || hunger.Hunger < growth.NextStageHungerThreshold)
             return false;
 
+        var wasBaby = growth.CurrentStage == SlimeStage.Young;
+
         growth.CurrentStage++;
         growth.NextStageHungerThreshold = hunger.MaxHunger;
         Dirty(uid, growth);
+
+        if (wasBaby && growth.CurrentStage != SlimeStage.Young)
+        {
+            var ev = new SlimeStageChangedEvent();
+            RaiseLocalEvent(uid, ref ev);
+        }
 
         return true;
     }
@@ -50,24 +63,27 @@ public sealed class SlimeGrowthSystem : SharedSlimeGrowthSystem
         }
 
         growth.CurrentStage = SlimeStage.Young;
-        growth.NextStageHungerThreshold = 200f;
+        growth.NextStageHungerThreshold = GetBaseHungerThreshold(growth.CurrentStage);
         if (TryComp<SlimeHungerComponent>(uid, out var hunger))
         {
             hunger.Hunger = 100f;
-            hunger.MaxHunger = 200f;
+            hunger.MaxHunger = GetBaseHungerThreshold(growth.CurrentStage);
             Dirty(uid, hunger);
         }
+
+        var ev = new SlimeStageChangedEvent();
+        RaiseLocalEvent(uid, ref ev);
 
         return true;
     }
 
     private void SpawnOffspring(EntityUid parent, EntityCoordinates spawnPos, SlimeGrowthComponent parentGrowth)
     {
-        var offspring = Spawn("MobXenoSlimeCheck", spawnPos.Offset(_random.NextVector2(1f)));
+        var offspring = Spawn(DefaultSlime, spawnPos.Offset(_random.NextVector2(1f)));
         if (!TryComp<SlimeGrowthComponent>(offspring, out var growth))
             return;
 
-        growth.CurrentStage = GetOffspringStage(parentGrowth.CurrentStage);
+        growth.CurrentStage = SlimeStage.Young;
         growth.NextStageHungerThreshold = GetBaseHungerThreshold(growth.CurrentStage);
 
         growth.MutationChance = parentGrowth.MutationChance;
@@ -90,27 +106,14 @@ public sealed class SlimeGrowthSystem : SharedSlimeGrowthSystem
         }
 
         Dirty(offspring, growth);
-        //ApplySlimeType(offspring, growth.SlimeType);
+        ApplySlimeType(offspring);
     }
 
-    private SlimeStage GetOffspringStage(SlimeStage parentStage) => parentStage switch
+    private void ApplySlimeType(EntityUid uid)
     {
-        SlimeStage.Adult => SlimeStage.Young,
-        SlimeStage.Old => _random.Prob(0.3f) ? SlimeStage.Adult : SlimeStage.Young,
-        SlimeStage.Ancient => _random.Next(3) switch
-        {
-            0 => SlimeStage.Old,
-            1 => SlimeStage.Adult,
-            _ => SlimeStage.Young
-        },
-        _ => SlimeStage.Young
-    };
-
-    /*
-    private void ApplySlimeType(EntityUid slime, SlimeType type)
-    {
-        _appearance.SetData(slime, SlimeVisuals.Type, type);
-    */
+        var ev = new SlimeTypeChangedEvent();
+        RaiseLocalEvent(uid, ref ev);
+    }
 
     private static float GetBaseHungerThreshold(SlimeStage stage) => stage switch
     {

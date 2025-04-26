@@ -3,6 +3,7 @@ using Content.Server.Chat.Systems;
 using Content.Shared.Body.Components;
 using Content.Shared.DoAfter;
 using Content.Shared.Interaction;
+using Content.Shared.Mobs.Systems;
 using Content.Shared.Xenobiology;
 using Content.Shared.Xenobiology.Components;
 using Content.Shared.Xenobiology.Events;
@@ -14,13 +15,13 @@ namespace Content.Server.Xenobiology;
 
 public sealed class SlimeHungerSystem : EntitySystem
 {
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SlimeSocialSystem _social = default!;
     [Dependency] private readonly SlimeGrowthSystem _growth = default!;
+    [Dependency] private readonly MobStateSystem _mobState = default!;
 
     private readonly Dictionary<SlimeBehaviorState, string[]> _slimePhrases = new()
     {
@@ -100,9 +101,18 @@ public sealed class SlimeHungerSystem : EntitySystem
 
     public override void Update(float frameTime)
     {
+        var entities = new List<(EntityUid, SlimeHungerComponent, SlimeGrowthComponent)>();
         var query = EntityQueryEnumerator<SlimeHungerComponent, SlimeGrowthComponent>();
         while (query.MoveNext(out var uid, out var hunger, out var growth))
         {
+            entities.Add((uid, hunger, growth));
+        }
+
+        foreach (var (uid, hunger, growth) in entities)
+        {
+            if (_mobState.IsDead(uid))
+                continue;
+
             ProcessHunger(uid, hunger, growth, frameTime);
         }
     }
@@ -164,12 +174,6 @@ public sealed class SlimeHungerSystem : EntitySystem
             var randomPhrase = _random.Pick(phrases);
             _chat.TrySendInGameICMessage(ent, randomPhrase, InGameICChatType.Speak, false);
         }
-        /*
-        if (TryComp<AppearanceComponent>(args.Slime, out var appearance))
-        {
-            _appearance.SetData(args.Slime, SlimeVisuals.State, args.NewState, appearance);
-        }
-        */
     }
 
     private void OnFoodInteract(Entity<SlimeFoodComponent> ent, ref AfterInteractEvent args)

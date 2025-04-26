@@ -1,11 +1,7 @@
-using System.Linq;
 using Content.Shared.Damage;
 using Robust.Shared.Timing;
-using Robust.Shared.Physics.Systems;
-using Robust.Shared.Physics.Components;
 using Content.Shared.Shadow.Components;
 using Content.Shared.Damage.Prototypes;
-using Content.Shared.Light.Components;
 using Robust.Server.GameObjects;
 using Content.Shared.Physics;
 using Content.Shared.Interaction;

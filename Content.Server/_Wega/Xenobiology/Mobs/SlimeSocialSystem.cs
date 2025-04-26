@@ -4,6 +4,7 @@ using Content.Server.NPC.HTN;
 using Content.Server.Speech;
 using Content.Server.Speech.Components;
 using Content.Shared.Damage;
+using Content.Shared.Mobs.Systems;
 using Content.Shared.Xenobiology.Components;
 using Robust.Shared.Map;
 using Robust.Shared.Player;
@@ -20,6 +21,7 @@ public sealed class SlimeSocialSystem : EntitySystem
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SlimeHungerSystem _hunger = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private readonly MobStateSystem _mobState = default!;
 
     private static readonly TimeSpan MinCommandInterval = TimeSpan.FromSeconds(6);
 
@@ -64,10 +66,10 @@ public sealed class SlimeSocialSystem : EntitySystem
         var query = EntityQueryEnumerator<SlimeSocialComponent>();
         while (query.MoveNext(out var uid, out var social))
         {
-            // Постепенная потеря дружбы
-            social.FriendshipLevel = Math.Max(0, social.FriendshipLevel - social.FriendshipDecayRate * frameTime);
+            if (_mobState.IsDead(uid))
+                continue;
 
-            // Проверка гнева
+            social.FriendshipLevel = Math.Max(0, social.FriendshipLevel - social.FriendshipDecayRate * frameTime);
             if (social.AngryUntil.HasValue && _gameTiming.CurTime > social.AngryUntil.Value)
             {
                 social.AngryUntil = null;
@@ -81,7 +83,6 @@ public sealed class SlimeSocialSystem : EntitySystem
                 }
             }
 
-            // Автоматическая смена лидера если дружба упала
             if (social.Leader != null && social.FriendshipLevel < 50f)
             {
                 _chat.TrySendInGameICMessage(uid, $"{social.Leader} больше не мой лидер!", InGameICChatType.Speak, false);

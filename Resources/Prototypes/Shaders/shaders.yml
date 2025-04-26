@@ -124,3 +124,8 @@
   id: Noir
   kind: source
   path: "/Textures/_Wega/Shaders/noir.swsl"
+
+- type: shader
+  id: NightVision
+  kind: source
+  path: "/Textures/_Wega/Shaders/night.swsl"

@@ -5,6 +5,9 @@
   abstract: true
   description: It looks so much like jelly. I wonder what it tastes like?
   components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Aliens/slimes.rsi
+    state: gray_baby_slime
   #- type: ReplacementAccent
   #  accent: slimes
   - type: Speech
@@ -22,12 +25,379 @@
   - type: SlimeHunger
   - type: SlimeSocial
   - type: SlimeGrowth
+  - type: Appearance
+    visuals:
+      enum.SlimeVisualLayers:
+        Type: Gray
+        Stage: Young
+  - type: SlimeVisuals
+    defaultVisuals: MobXenoSlimeGray
+    typeVisuals:
+      Gray: MobXenoSlimeGray
+      Blue: MobXenoSlimeBlue
   - type: TTS # Corvax-TTS
     voice: Chen
 
 - type: entity
   name: basic slime
-  id: MobXenoSlimeCheck
+  id: MobXenoSlimeGray
   parent: MobXenoSlimes
   description: It looks so much like jelly. I wonder what it tastes like?
   suffix: Check
+
+- type: entity
+  name: basic slime
+  id: MobXenoSlimeBlue
+  parent: MobXenoSlimes
+  description: It looks so much like jelly. I wonder what it tastes like?
+  suffix: Check
+  components:
+  - type: Sprite
+    state: blue_baby_slime
+  - type: SlimeGrowth
+    slimeType: Blue
+  - type: Appearance
+    visuals:
+      enum.SlimeVisualLayers:
+        Type: Blue
+        Stage: Young
+
+- type: entity
+  name: basic slime
+  id: MobXenoSlimePurple
+  parent: MobXenoSlimes
+  description: It looks so much like jelly. I wonder what it tastes like?
+  suffix: Check
+  components:
+  - type: Sprite
+    state: purple_baby_slime
+  - type: SlimeGrowth
+    slimeType: Purple
+  - type: Appearance
+    visuals:
+      enum.SlimeVisualLayers:
+        Type: Purple
+        Stage: Young
+
+- type: entity
+  name: basic slime
+  id: MobXenoSlimeOrange
+  parent: MobXenoSlimes
+  description: It looks so much like jelly. I wonder what it tastes like?
+  suffix: Check
+  components:
+  - type: Sprite
+    state: orange_baby_slime
+  - type: SlimeGrowth
+    slimeType: Orange
+  - type: Appearance
+    visuals:
+      enum.SlimeVisualLayers:
+        Type: Orange
+        Stage: Young
+
+- type: entity
+  name: basic slime
+  id: MobXenoSlimeMetallic
+  parent: MobXenoSlimes
+  description: It looks so much like jelly. I wonder what it tastes like?
+  suffix: Check
+  components:
+  - type: Sprite
+    state: metallic_baby_slime
+  - type: SlimeGrowth
+    slimeType: Metallic
+  - type: Appearance
+    visuals:
+      enum.SlimeVisualLayers:
+        Type: Metallic
+        Stage: Young
+
+- type: entity
+  name: basic slime
+  id: MobXenoSlimeDarkPurple
+  parent: MobXenoSlimes
+  description: It looks so much like jelly. I wonder what it tastes like?
+  suffix: Check
+  components:
+  - type: Sprite
+    state: darkpurple_baby_slime
+  - type: SlimeGrowth
+    slimeType: DarkPurple
+  - type: Appearance
+    visuals:
+      enum.SlimeVisualLayers:
+        Type: DarkPurple
+        Stage: Young
+
+- type: entity
+  name: basic slime
+  id: MobXenoSlimeGreen
+  parent: MobXenoSlimes
+  description: It looks so much like jelly. I wonder what it tastes like?
+  suffix: Check
+  components:
+  - type: Sprite
+    state: green_baby_slime
+  - type: SlimeGrowth
+    slimeType: Green
+  - type: Appearance
+    visuals:
+      enum.SlimeVisualLayers:
+        Type: Green
+        Stage: Young
+
+- type: entity
+  name: basic slime
+  id: MobXenoSlimeDarkBlue
+  parent: MobXenoSlimes
+  description: It looks so much like jelly. I wonder what it tastes like?
+  suffix: Check
+  components:
+  - type: Sprite
+    state: darkblue_baby_slime
+  - type: SlimeGrowth
+    slimeType: DarkBlue
+  - type: Appearance
+    visuals:
+      enum.SlimeVisualLayers:
+        Type: DarkBlue
+        Stage: Young
+
+- type: entity
+  name: basic slime
+  id: MobXenoSlimePink
+  parent: MobXenoSlimes
+  description: It looks so much like jelly. I wonder what it tastes like?
+  suffix: Check
+  components:
+  - type: Sprite
+    state: pink_baby_slime
+  - type: SlimeGrowth
+    slimeType: Pink
+  - type: Appearance
+    visuals:
+      enum.SlimeVisualLayers:
+        Type: Pink
+        Stage: Young
+
+- type: entity
+  name: basic slime
+  id: MobXenoSlimeRed
+  parent: MobXenoSlimes
+  description: It looks so much like jelly. I wonder what it tastes like?
+  suffix: Check
+  components:
+  - type: Sprite
+    state: red_baby_slime
+  - type: SlimeGrowth
+    slimeType: Red
+  - type: Appearance
+    visuals:
+      enum.SlimeVisualLayers:
+        Type: Red
+        Stage: Young
+
+- type: entity
+  name: basic slime
+  id: MobXenoSlimeYellow
+  parent: MobXenoSlimes
+  description: It looks so much like jelly. I wonder what it tastes like?
+  suffix: Check
+  components:
+  - type: Sprite
+    state: yellow_baby_slime
+  - type: SlimeGrowth
+    slimeType: Yellow
+  - type: Appearance
+    visuals:
+      enum.SlimeVisualLayers:
+        Type: Yellow
+        Stage: Young
+
+- type: entity
+  name: basic slime
+  id: MobXenoSlimeGold
+  parent: MobXenoSlimes
+  description: It looks so much like jelly. I wonder what it tastes like?
+  suffix: Check
+  components:
+  - type: Sprite
+    state: gold_baby_slime
+  - type: SlimeGrowth
+    slimeType: Gold
+  - type: Appearance
+    visuals:
+      enum.SlimeVisualLayers:
+        Type: Gold
+        Stage: Young
+
+- type: entity
+  name: basic slime
+  id: MobXenoSlimeSilver
+  parent: MobXenoSlimes
+  description: It looks so much like jelly. I wonder what it tastes like?
+  suffix: Check
+  components:
+  - type: Sprite
+    state: silver_baby_slime
+  - type: SlimeGrowth
+    slimeType: Silver
+  - type: Appearance
+    visuals:
+      enum.SlimeVisualLayers:
+        Type: Silver
+        Stage: Young
+
+- type: entity
+  name: basic slime
+  id: MobXenoSlimeBlack
+  parent: MobXenoSlimes
+  description: It looks so much like jelly. I wonder what it tastes like?
+  suffix: Check
+  components:
+  - type: Sprite
+    state: black_baby_slime
+  - type: SlimeGrowth
+    slimeType: Black
+  - type: Appearance
+    visuals:
+      enum.SlimeVisualLayers:
+        Type: Black
+        Stage: Young
+
+- type: entity
+  name: basic slime
+  id: MobXenoSlimeSepia
+  parent: MobXenoSlimes
+  description: It looks so much like jelly. I wonder what it tastes like?
+  suffix: Check
+  components:
+  - type: Sprite
+    state: sepia_baby_slime
+  - type: SlimeGrowth
+    slimeType: Sepia
+  - type: Appearance
+    visuals:
+      enum.SlimeVisualLayers:
+        Type: Sepia
+        Stage: Young
+
+- type: entity
+  name: basic slime
+  id: MobXenoSlimeOil
+  parent: MobXenoSlimes
+  description: It looks so much like jelly. I wonder what it tastes like?
+  suffix: Check
+  components:
+  - type: Sprite
+    state: oil_baby_slime
+  - type: SlimeGrowth
+    slimeType: Oil
+  - type: Appearance
+    visuals:
+      enum.SlimeVisualLayers:
+        Type: Oil
+        Stage: Young
+
+- type: entity
+  name: basic slime
+  id: MobXenoSlimeBluespace
+  parent: MobXenoSlimes
+  description: It looks so much like jelly. I wonder what it tastes like?
+  suffix: Check
+  components:
+  - type: Sprite
+    state: bluespace_baby_slime
+  - type: SlimeGrowth
+    slimeType: Bluespace
+  - type: Appearance
+    visuals:
+      enum.SlimeVisualLayers:
+        Type: Bluespace
+        Stage: Young
+
+- type: entity
+  name: basic slime
+  id: MobXenoSlimeAdamantine
+  parent: MobXenoSlimes
+  description: It looks so much like jelly. I wonder what it tastes like?
+  suffix: Check
+  components:
+  - type: Sprite
+    state: adamantine_baby_slime
+  - type: SlimeGrowth
+    slimeType: Adamantine
+  - type: Appearance
+    visuals:
+      enum.SlimeVisualLayers:
+        Type: Adamantine
+        Stage: Young
+
+- type: entity
+  name: basic slime
+  id: MobXenoSlimePyrite
+  parent: MobXenoSlimes
+  description: It looks so much like jelly. I wonder what it tastes like?
+  suffix: Check
+  components:
+  - type: Sprite
+    state: pyrite_baby_slime
+  - type: SlimeGrowth
+    slimeType: Pyrite
+  - type: Appearance
+    visuals:
+      enum.SlimeVisualLayers:
+        Type: Pyrite
+        Stage: Young
+
+- type: entity
+  name: basic slime
+  id: MobXenoSlimeAzure
+  parent: MobXenoSlimes
+  description: It looks so much like jelly. I wonder what it tastes like?
+  suffix: Check
+  components:
+  - type: Sprite
+    state: azure_baby_slime
+  - type: SlimeGrowth
+    slimeType: Azure
+  - type: Appearance
+    visuals:
+      enum.SlimeVisualLayers:
+        Type: Azure
+        Stage: Young
+
+- type: entity
+  name: basic slime
+  id: MobXenoSlimeLightPink
+  parent: MobXenoSlimes
+  description: It looks so much like jelly. I wonder what it tastes like?
+  suffix: Check
+  components:
+  - type: Sprite
+    state: lightpink_baby_slime
+  - type: SlimeGrowth
+    slimeType: LightPink
+  - type: Appearance
+    visuals:
+      enum.SlimeVisualLayers:
+        Type: LightPink
+        Stage: Young
+
+- type: entity
+  name: basic slime
+  id: MobXenoSlimeRainbow
+  parent: MobXenoSlimes
+  description: It looks so much like jelly. I wonder what it tastes like?
+  suffix: Check
+  components:
+  - type: Sprite
+    state: rainbow_baby_slime
+  - type: SlimeGrowth
+    slimeType: Rainbow
+  - type: Appearance
+    visuals:
+      enum.SlimeVisualLayers:
+        Type: Rainbow
+        Stage: Young
