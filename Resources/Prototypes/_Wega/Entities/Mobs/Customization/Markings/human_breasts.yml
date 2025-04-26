@@ -48,7 +48,7 @@
 
 - type: marking
   id: HumanBreastBig
-  bodyPart: RLeg #Не "Chest" чтобы спрайт отобразить по верх рук
+  bodyPart: Special #Не "Chest" чтобы спрайт отобразить по верх рук
   markingCategory: Chest
   speciesRestriction: [Human, Dwarf]
   sexRestriction: [Female]
@@ -64,7 +64,7 @@
 
 - type: marking
   id: HumanBreastSuperBig
-  bodyPart: RLeg #Не "Chest" чтобы спрайт отобразить по верх рук
+  bodyPart: Special #Не "Chest" чтобы спрайт отобразить по верх рук
   markingCategory: Chest
   speciesRestriction: [Human, Dwarf]
   sexRestriction: [Female]

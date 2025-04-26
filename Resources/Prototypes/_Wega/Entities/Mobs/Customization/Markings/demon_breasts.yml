@@ -48,7 +48,7 @@
 
 - type: marking
   id: DemonBreastBig
-  bodyPart: RLeg #Не "Chest" чтобы спрайт отобразить по верх рук 
+  bodyPart: Special #Не "Chest" чтобы спрайт отобразить по верх рук 
   markingCategory: Chest
   speciesRestriction: [Demon]
   sexRestriction: [Female]
@@ -64,7 +64,7 @@
 
 - type: marking
   id: DemonBreastSuperBig
-  bodyPart: RLeg #Не "Chest" чтобы спрайт отобразить по верх рук
+  bodyPart: Special #Не "Chest" чтобы спрайт отобразить по верх рук
   markingCategory: Chest
   speciesRestriction: [Demon]
   sexRestriction: [Female]

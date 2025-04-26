@@ -1,6 +1,6 @@
 - type: marking
   id: SlimeBreastBig
-  bodyPart: RLeg #Не "Chest" чтобы спрайт отобразить по верх рук 
+  bodyPart: Special #Не "Chest" чтобы спрайт отобразить по верх рук 
   markingCategory: Chest
   speciesRestriction: [SlimePerson]
   sexRestriction: [Female]
@@ -16,7 +16,7 @@
 
 - type: marking
   id: SlimeBreastSuperBig
-  bodyPart: RLeg #Не "Chest" чтобы спрайт отобразить по верх рук
+  bodyPart: Special #Не "Chest" чтобы спрайт отобразить по верх рук
   markingCategory: Chest
   speciesRestriction: [SlimePerson]
   sexRestriction: [Female]
