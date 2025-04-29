@@ -19,8 +19,6 @@ public sealed class SlimeSocialSystem : EntitySystem
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly HTNSystem _htn = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly SlimeHungerSystem _hunger = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
 
     private static readonly TimeSpan MinCommandInterval = TimeSpan.FromSeconds(6);
@@ -101,9 +99,8 @@ public sealed class SlimeSocialSystem : EntitySystem
         if (!Resolve(slime, ref social, ref hunger))
             return;
 
-        // Кормление увеличивает дружбу сильнее когда слайм голоден
         var feedBonus = social.FeedFriendshipBonus * (1 + (100 - hunger.Hunger) / 100f)
-            * Math.Max(0.2f, 1 - social.TotalFeedings * 0.05f); // После 20 кормлений бонус падает до минимума (20%)
+            * Math.Max(0.2f, 1 - social.TotalFeedings * 0.05f);
 
         social.TotalFeedings++;
         social.FriendshipLevel = Math.Min(150, social.FriendshipLevel + feedBonus);
@@ -117,8 +114,6 @@ public sealed class SlimeSocialSystem : EntitySystem
         }
 
         social.FriendshipLevel = Math.Min(150, social.FriendshipLevel + feedBonus);
-
-        // Проверка на лидера (требуется минимум 80 дружбы)
         if (social.FriendshipLevel >= 80f && social.Leader != potentialFriend)
         {
             social.Leader = potentialFriend;
@@ -130,7 +125,6 @@ public sealed class SlimeSocialSystem : EntitySystem
 
     private void OnSlimeHear(EntityUid uid, SlimeSocialComponent component, ListenEvent args)
     {
-        // Игнорируем не-игроков
         if (!TryComp<ActorComponent>(args.Source, out _))
             return;
 
@@ -140,16 +134,11 @@ public sealed class SlimeSocialSystem : EntitySystem
     private void ProcessSlimeCommand(EntityUid slime, SlimeSocialComponent social, string message, EntityUid source)
     {
         message = message.Trim().ToLower();
-
-        // Проверяем, обращается ли игрок к слайму
         if (!message.Contains("slime") &&
             !message.Contains("слайм") &&
             !int.TryParse(message.Split(' ')[0], out _))
-        {
             return;
-        }
 
-        // Разделяем обращение и команду
         var commandParts = message.Split(new[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries).Skip(1).ToArray();
         if (commandParts.Length == 0) return;
 
@@ -175,10 +164,8 @@ public sealed class SlimeSocialSystem : EntitySystem
             return;
         }
 
-        // Обновляем время последней команды
         social.LastCommandTime = _gameTiming.CurTime;
 
-        // Определяем вероятность выполнения команды
         var obeyChance = GetObeyChance(slime, social, source, command);
         if (_random.Prob(obeyChance))
         {
@@ -196,15 +183,11 @@ public sealed class SlimeSocialSystem : EntitySystem
             return 0.1f;
 
         var baseChance = social.Leader == source ? 0.9f : social.FriendshipLevel / 100f;
-
-        // Модификаторы:
-        // - Голод снижает послушание
         if (TryComp<SlimeHungerComponent>(slime, out var hunger))
         {
             baseChance *= hunger.Hunger < 70 ? 1 - (hunger.Hunger / 150f) : 1;
         }
 
-        // - Некоторые команды сложнее выполнять
         if (command == "attack") baseChance *= 0.25f;
 
         return MathHelper.Clamp(baseChance, 0.1f, 0.95f);
@@ -269,7 +252,6 @@ public sealed class SlimeSocialSystem : EntitySystem
                 social.Friends.Remove(attacker);
                 social.AngryUntil = _gameTiming.CurTime + TimeSpan.FromSeconds(social.AngerDuration);
 
-                // Особый случай: если это был лидер
                 if (social.Leader == attacker)
                 {
                     social.Leader = null;
@@ -303,10 +285,15 @@ public sealed class SlimeSocialSystem : EntitySystem
         }
         else
         {
+            if (social.LastAttackEntity == attacker)
+                return;
+
             social.AngryUntil = _gameTiming.CurTime + TimeSpan.FromSeconds(social.AngerDuration);
             _chat.TrySendInGameICMessage(uid,
                 string.Format(_random.Pick(BetrayalResponses["attack_enemy"]), name),
                 InGameICChatType.Speak, false);
+
+            social.LastAttackEntity = attacker;
 
             if (TryComp<HTNComponent>(uid, out var htn))
             {

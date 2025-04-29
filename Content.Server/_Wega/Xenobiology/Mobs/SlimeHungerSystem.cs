@@ -256,7 +256,7 @@ public sealed class SlimeHungerSystem : EntitySystem
         if (!TryComp<PhysicsComponent>(food, out var physics))
             return 0f;
 
-        var baseValue = physics.Mass * 1.5f;
+        var baseValue = physics.Mass * 4.0f;
         if (TryComp<SlimeGrowthComponent>(slime, out var growth) && growth.CurrentStage == SlimeStage.Young)
             baseValue *= 1.5f;
 

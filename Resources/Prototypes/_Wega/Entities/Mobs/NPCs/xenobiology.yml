@@ -8,8 +8,8 @@
   - type: Sprite
     sprite: _Wega/Mobs/Aliens/slimes.rsi
     state: gray_baby_slime
-  #- type: ReplacementAccent
-  #  accent: slimes
+  - type: ReplacementAccent
+    accent: slimes
   - type: Speech
     speechVerb: Slime
     speechSounds: Slime

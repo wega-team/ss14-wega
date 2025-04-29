@@ -1,3 +1,4 @@
+using Content.Server.Speech.Components;
 using Content.Shared.Xenobiology;
 using Content.Shared.Xenobiology.Components;
 using Content.Shared.Xenobiology.Systems;
@@ -41,6 +42,8 @@ public sealed class SlimeGrowthSystem : SharedSlimeGrowthSystem
         growth.NextStageHungerThreshold = hunger.MaxHunger;
         Dirty(uid, growth);
 
+        UpdateSlimeAccent(uid, growth.CurrentStage);
+
         if (wasBaby && growth.CurrentStage != SlimeStage.Young)
         {
             var ev = new SlimeStageChangedEvent();
@@ -64,6 +67,9 @@ public sealed class SlimeGrowthSystem : SharedSlimeGrowthSystem
 
         growth.CurrentStage = SlimeStage.Young;
         growth.NextStageHungerThreshold = GetBaseHungerThreshold(growth.CurrentStage);
+
+        UpdateSlimeAccent(uid, growth.CurrentStage);
+
         if (TryComp<SlimeHungerComponent>(uid, out var hunger))
         {
             hunger.Hunger = 100f;
@@ -85,6 +91,9 @@ public sealed class SlimeGrowthSystem : SharedSlimeGrowthSystem
 
         growth.CurrentStage = SlimeStage.Young;
         growth.NextStageHungerThreshold = GetBaseHungerThreshold(growth.CurrentStage);
+
+        var accent = EnsureComp<ReplacementAccentComponent>(offspring);
+        accent.Accent = "slimes";
 
         growth.MutationChance = parentGrowth.MutationChance;
         if (_random.Prob(0.3f))
@@ -113,6 +122,19 @@ public sealed class SlimeGrowthSystem : SharedSlimeGrowthSystem
     {
         var ev = new SlimeTypeChangedEvent();
         RaiseLocalEvent(uid, ref ev);
+    }
+
+    private void UpdateSlimeAccent(EntityUid uid, SlimeStage stage)
+    {
+        if (stage == SlimeStage.Young)
+        {
+            var accent = EnsureComp<ReplacementAccentComponent>(uid);
+            accent.Accent = "slimes";
+        }
+        else
+        {
+            RemComp<ReplacementAccentComponent>(uid);
+        }
     }
 
     private static float GetBaseHungerThreshold(SlimeStage stage) => stage switch

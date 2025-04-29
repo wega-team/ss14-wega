@@ -38,6 +38,9 @@ public sealed partial class SlimeSocialComponent : Component
     [DataField("minFriendshipToBetray")]
     public float MinFriendshipToBetray = 30f;
 
+    [DataField]
+    public EntityUid? LastAttackEntity { get; set; } = null;
+
     public TimeSpan? AngryUntil;
 
     public TimeSpan? RebellionCooldownEnd;
