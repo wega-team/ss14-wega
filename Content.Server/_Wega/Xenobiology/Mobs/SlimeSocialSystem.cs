@@ -185,7 +185,8 @@ public sealed class SlimeSocialSystem : EntitySystem
         var baseChance = social.Leader == source ? 0.9f : social.FriendshipLevel / 100f;
         if (TryComp<SlimeHungerComponent>(slime, out var hunger))
         {
-            baseChance *= hunger.Hunger < 70 ? 1 - (hunger.Hunger / 150f) : 1;
+            float hungryThreshold = hunger.ThresholdPercentages[SlimeBehaviorState.Hungry] * hunger.MaxHunger;
+            baseChance *= hunger.Hunger < hungryThreshold ? 1 - (hunger.Hunger / (hunger.MaxHunger * 2f)) : 1;
         }
 
         if (command == "attack") baseChance *= 0.25f;

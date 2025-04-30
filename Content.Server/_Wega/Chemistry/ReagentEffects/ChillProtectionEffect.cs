@@ -1,5 +1,4 @@
 using Content.Server.Temperature.Components;
-using Content.Shared.Clothing.Components;
 using Content.Shared.EntityEffects;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;

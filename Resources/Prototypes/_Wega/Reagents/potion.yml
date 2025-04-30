@@ -5,7 +5,7 @@
   desc: reagent-desc-slime-steroid
   flavor: bitter
   flavorMinimum: 0.05
-  color: "#808080"
+  color: "#800080"
   physicalDesc: reagent-physical-desc-crystalline
   plantMetabolism:
   - !type:PlantAdjustNutrition
@@ -15,6 +15,10 @@
   metabolisms:
     Narcotic:
       effects:
+      - !type:ReinforcedExtractsEffect
+        conditions:
+        - !type:ReagentThreshold
+          min: 10
       - !type:GenericStatusEffect
         key: SeeingRainbows
         component: SeeingRainbows
@@ -29,7 +33,7 @@
   desc: reagent-desc-slime-stabilizer
   physicalDesc: reagent-physical-desc-opaque
   flavor: medicine
-  color: "#9942f5"
+  color: "#1E90FF"
   metabolisms:
     Medicine:
       effects:
@@ -45,9 +49,84 @@
   desc: reagent-desc-chill-potion
   physicalDesc: reagent-physical-desc-opaque
   flavor: medicine
-  color: "#0A0A4A"
+  color: "#00008B"
   reactiveEffects:
     Special:
       methods: [ Touch ]
       effects:
       - !type:ChillProtectionEffect
+
+- type: reagent
+  id: SlimeReinforcer
+  name: reagent-name-slime-reinforcer
+  group: Medicine
+  desc: reagent-desc-slime-reinforcer
+  physicalDesc: reagent-physical-desc-opaque
+  flavor: medicine
+  color: "#007FFF"
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:ReinforcedExtractsEffect
+        conditions:
+        - !type:ReagentThreshold
+          min: 5
+
+- type: reagent
+  id: MutationsPotion
+  name: reagent-name-mutations-potion
+  group: Medicine
+  desc: reagent-desc-mutations-potion
+  physicalDesc: reagent-physical-desc-opaque
+  flavor: medicine
+  color: "#007FFF"
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:IncreaseMutationChanceEffect
+        conditions:
+        - !type:ReagentThreshold
+          min: 5
+
+- type: reagent
+  id: SpeedPotion
+  name: reagent-name-speed-potion
+  group: Medicine
+  desc: reagent-desc-speed-potion
+  physicalDesc: reagent-physical-desc-opaque
+  flavor: medicine
+  color: "#303030"
+  metabolisms:
+    Narcotic:
+      effects:
+      - !type:MovespeedModifier
+        walkSpeedModifier: 1.35
+        sprintSpeedModifier: 1.35
+      - !type:GenericStatusEffect
+        key: Stutter
+        component: StutteringAccent
+      - !type:Jitter
+      - !type:GenericStatusEffect
+        key: Stun
+        time: 3
+        type: Remove
+      - !type:GenericStatusEffect
+        key: KnockedDown
+        time: 3
+        type: Remove
+
+- type: reagent
+  id: MindPotion
+  name: reagent-name-mind-potion
+  group: Medicine
+  desc: reagent-desc-mind-potion
+  physicalDesc: reagent-physical-desc-opaque
+  flavor: medicine
+  color: "#FFB6C1"
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:MakeSentient
+        conditions:
+        - !type:ReagentThreshold
+          min: 5

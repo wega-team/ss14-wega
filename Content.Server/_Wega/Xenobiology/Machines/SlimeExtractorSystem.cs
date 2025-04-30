@@ -98,6 +98,8 @@ namespace Content.Server.Xenobiology
             {
                 var extractId = $"{SlimeExtractPrefix}{component.SlimeType}";
                 var yield = GetExtractYield(component.SlimeStage.Value);
+                if (component.Reinforced)
+                    yield += 1;
 
                 for (int i = 0; i < yield; i++)
                 {
@@ -106,6 +108,7 @@ namespace Content.Server.Xenobiology
 
                 component.SlimeType = null;
                 component.SlimeStage = null;
+                component.Reinforced = false;
             }
         }
 
@@ -195,6 +198,7 @@ namespace Content.Server.Xenobiology
 
             component.SlimeType = slimeGrowth.SlimeType.ToString();
             component.SlimeStage = slimeGrowth.CurrentStage;
+            component.Reinforced = slimeGrowth.Reinforced;
 
             _jittering.AddJitter(extractor, -10, 100);
             _audio.PlayPvs("/Audio/Machines/reclaimer_startup.ogg", extractor);

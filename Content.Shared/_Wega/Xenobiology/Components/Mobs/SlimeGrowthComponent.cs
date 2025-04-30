@@ -21,4 +21,6 @@ public sealed partial class SlimeGrowthComponent : Component
     public float RainbowChance = 0.01f;
 
     public bool Stabilized = false;
+
+    public bool Reinforced = false;
 }

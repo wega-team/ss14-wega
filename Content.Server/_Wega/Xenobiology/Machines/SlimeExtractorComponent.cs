@@ -26,6 +26,8 @@ public sealed partial class SlimeExtractorComponent : Component
     [ViewVariables]
     public SlimeStage? SlimeStage;
 
+    public bool Reinforced = false;
+
     [ViewVariables]
     public string? BloodReagent;
 }
