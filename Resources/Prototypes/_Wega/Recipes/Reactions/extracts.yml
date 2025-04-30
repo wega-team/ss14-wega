@@ -345,7 +345,7 @@
     SpeedPotion: 1
 
 - type: reaction
-  id: ChlorineTrifluoride
+  id: OilExtractExplosion
   reactants:
     SlimeExtractOil:
       amount: 1
@@ -364,7 +364,7 @@
 
 # Light Pink
 - type: reaction
-  id: SpeedPotion
+  id: MindPotion
   reactants:
     SlimeExtractLightPink:
       amount: 1

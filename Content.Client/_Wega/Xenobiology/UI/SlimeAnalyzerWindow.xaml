@@ -4,12 +4,12 @@
     xmlns:customControls="clr-namespace:Content.Client.Administration.UI.CustomControls"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
-    Title="Slime Analyzer"
+    Title="{Loc 'slime-analyzer-title'}"
     MinSize="300 250">
 
     <ScrollContainer Margin="5 5 5 5" ReturnMeasure="True" VerticalExpand="True">
         <BoxContainer Name="RootContainer" VerticalExpand="True" Orientation="Vertical">
-            <Label Name="NoSlimeDataText" Text="No slime data available" Visible="false" />
+            <Label Name="NoSlimeDataText" Text="{Loc 'slime-analyzer-no-data'}" Visible="false" />
 
             <BoxContainer Name="SlimeDataContainer" Margin="0 0 0 5" Orientation="Vertical">
                 <BoxContainer Orientation="Horizontal" Margin="0 0 0 5">
@@ -20,22 +20,22 @@
                         <Label Name="SlimeStageLabel" VerticalAlignment="Top" StyleClasses="LabelSubText" />
                     </BoxContainer>
                     <Label Margin="0 0 5 0" HorizontalExpand="True" HorizontalAlignment="Right" VerticalExpand="True"
-                           VerticalAlignment="Top" Name="ScanModeLabel" Text="SCANNING" />
+                           VerticalAlignment="Top" Name="ScanModeLabel" Text="{Loc 'slime-analyzer-scanning'}" />
                 </BoxContainer>
 
                 <PanelContainer StyleClasses="LowDivider" />
 
                 <GridContainer Margin="0 5 0 0" Columns="2">
-                    <Label Text="Behavior State:" />
+                    <Label Text="{Loc 'slime-analyzer-behavior'}" />
                     <Label Name="BehaviorStateLabel" />
-                    <Label Text="Hunger Level:" />
+                    <Label Text="{Loc 'slime-analyzer-hunger'}" />
                     <BoxContainer Orientation="Horizontal">
                         <ProgressBar Name="HungerBar" MinValue="0" MaxValue="1" VerticalAlignment="Center" HorizontalExpand="True" />
                         <Label Name="HungerText" Margin="5 0 0 0" />
                     </BoxContainer>
-                    <Label Text="Mutation Chance:" />
+                    <Label Text="{Loc 'slime-analyzer-mutation'}" />
                     <Label Name="MutationChanceLabel" />
-                    <Label Text="Rainbow Chance:" />
+                    <Label Text="{Loc 'slime-analyzer-rainbow-mutation'}" />
                     <Label Name="RainbowChanceLabel" />
                 </GridContainer>
             </BoxContainer>
@@ -46,7 +46,7 @@
                 Name="MutationsContainer"
                 Margin="0 5 0 5"
                 Orientation="Vertical">
-                <Label Text="Possible Mutations:" StyleClasses="LabelBold" />
+                <Label Text="{Loc 'slime-analyzer-mutations'}" StyleClasses="LabelBold" />
                 <BoxContainer Name="MutationsList" Orientation="Vertical" />
             </BoxContainer>
         </BoxContainer>

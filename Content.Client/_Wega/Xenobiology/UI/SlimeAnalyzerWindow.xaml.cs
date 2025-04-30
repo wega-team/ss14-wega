@@ -37,7 +37,7 @@ public sealed partial class SlimeAnalyzerWindow : FancyWindow
         var slimeTypeMessage = new FormattedMessage();
         slimeTypeMessage.AddText(msg.SlimeType.ToString());
         SlimeTypeLabel.SetMessage(slimeTypeMessage);
-        SlimeStageLabel.Text = $"Stage: {msg.GrowthStage.ToString()}";
+        SlimeStageLabel.Text = Loc.GetString("slime-analyzer-stage", ("stage", msg.GrowthStage.ToString()));
 
         // Status
         BehaviorStateLabel.Text = msg.BehaviorState.ToString();
