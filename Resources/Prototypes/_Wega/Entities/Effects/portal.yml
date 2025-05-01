@@ -1,0 +1,24 @@
+- type: entity
+  id: PortalBsBanan
+  name: banana portal
+  components:
+  - type: TimedDespawn
+    lifetime: 0.1
+  - type: Portal
+  - type: Transform
+    anchored: True
+  - type: InteractionOutline
+  - type: Clickable
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      portalFixture:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.48,0.25,0.48"
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+        hard: false

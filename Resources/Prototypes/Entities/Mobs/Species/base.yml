@@ -147,6 +147,8 @@
     - Adrenaline
     - Hallucinations # Corvax-Wega-Hallucinations
     - Dizzy # Corvax-Wega-Dizzy
+    - Stealth # Corvax-Wega-HydroponicsUpdate
+    - StealthOnMove # Corvax-Wega-HydroponicsUpdate
   - type: Body
     prototype: Human
     requiredLegs: 2

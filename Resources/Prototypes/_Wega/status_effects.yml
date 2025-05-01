@@ -3,3 +3,9 @@
 
 - type: statusEffect
   id: Dizzy
+
+- type: statusEffect
+  id: Stealth
+
+- type: statusEffect
+  id: StealthOnMove

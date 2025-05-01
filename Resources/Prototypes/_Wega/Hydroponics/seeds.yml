@@ -118,3 +118,152 @@
       Min: 1
       Max: 5
       PotencyDivisor: 20
+
+- type: seed 
+  id: blueSpaceBanana
+  name: seeds-bluespacebanana-name
+  noun: seeds-noun-seeds
+  displayName: seeds-bluespacebanana-display-name
+  plantRsi: _Wega/Objects/Specific/Hydroponics/blue_space_banana.rsi
+  packetPrototype: BlueSpaceBananaSeeds
+  productPrototypes:
+    - FoodBlueSpaceBanana
+  harvestRepeat: Repeat
+  lifespan: 50
+  maturation: 6
+  production: 6
+  yield: 2
+  idealLight: 9
+  waterConsumption: 0.60
+  idealHeat: 298
+  chemicals:
+    Vitamin:
+      Min: 1
+      Max: 4
+      PotencyDivisor: 20
+    Nutriment:
+      Min: 1
+      Max: 2
+      PotencyDivisor: 20
+
+- type: seed
+  id: radioactiveBerries
+  name: seeds-glowingberries-name
+  noun: seeds-noun-seeds
+  displayName: seeds-glowingberries-display-name
+  plantRsi: _Wega/Objects/Specific/Hydroponics/radioactive_berry.rsi
+  packetPrototype: RadioactiveBerriesSeeds
+  productPrototypes:
+    - FoodRadioactiveBerries
+  mutationPrototypes:
+    - alienBerries
+  harvestRepeat: Repeat
+  lifespan: 50
+  maturation: 6
+  production: 6
+  yield: 4
+  idealLight: 7
+  nutrientConsumption: 0.6
+  chemicals:
+    Radium:
+      Min: 2
+      Max: 7
+      PotencyDivisor: 10
+
+- type: seed
+  id: alienBerries
+  name: seeds-alienberries-name
+  noun: seeds-noun-seeds
+  displayName: seeds-alienberries-display-name
+  plantRsi: _Wega/Objects/Specific/Hydroponics/alien_berry.rsi
+  packetPrototype: AlienBerriesSeeds
+  productPrototypes:
+    - FoodAlienBerries
+  harvestRepeat: Repeat
+  lifespan: 50
+  maturation: 6
+  production: 6
+  yield: 4
+  idealLight: 7
+  nutrientConsumption: 0.6
+  chemicals:
+    Artifexium:
+      Min: 2
+      Max: 5
+      PotencyDivisor: 25
+
+- type: seed
+  id: energyPotato
+  name: seeds-energypotato-name
+  noun: seeds-noun-seeds
+  displayName: seeds-energypotato-display-name
+  plantRsi: _Wega/Objects/Specific/Hydroponics/energy_potato.rsi
+  packetPrototype: EnergyPotatoSeeds
+  productPrototypes:
+    - FoodEnergyPotato
+  lifespan: 30
+  maturation: 10
+  production: 3
+  yield: 3
+  potency: 10
+  growthStages: 4
+  waterConsumption: 0.60
+  chemicals:
+    Nutriment:
+      Min: 1
+      Max: 9
+      PotencyDivisor: 5
+    Vitamin:
+      Min: 1
+      Max: 15
+      PotencyDivisor: 5
+
+- type: seed
+  id: treeTeaPlant
+  name: seeds-teatree-name
+  noun: seeds-noun-seeds
+  displayName: seeds-teatree-display-name
+  plantRsi: _Wega/Objects/Specific/Hydroponics/relaxing_tea.rsi
+  packetPrototype: TreeTeaPlantSeeds
+  productPrototypes:
+    - BranchTreeTeaPlant
+  harvestRepeat: Repeat
+  lifespan: 75
+  maturation: 5
+  production: 3
+  yield: 2
+  potency: 20
+  growthStages: 5
+  waterConsumption: 0.6
+  idealLight: 9
+  idealHeat: 298
+  chemicals:
+    RelaxingTeaAdust:
+      Min: 1
+      Max: 10
+      PotencyDivisor: 10
+
+- type: seed
+  id: invisibleGrape
+  name: seeds-invisiblegrape-name
+  noun: seeds-noun-seeds
+  displayName: seeds-invisiblegrape-display-name
+  plantRsi: _Wega/Objects/Specific/Hydroponics/invisible_grape.rsi
+  packetPrototype: InvisibleGrapeSeeds
+  productPrototypes:
+    - FoodInvisibleGrape
+  lifespan: 50
+  maturation: 6
+  production: 5
+  yield: 3
+  potency: 10
+  growthStages: 2
+  chemicals:
+    GrapeJuiceInvisible:
+      Min: 1
+      Max: 2
+      PotencyDivisor: 20
+    Nothing:
+      Min: 1
+      Max: 2
+      PotencyDivisor: 35

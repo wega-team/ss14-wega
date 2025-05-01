@@ -173,3 +173,6 @@
   components:
   - type: Stack
     count: 1
+  - type: Construction # Corvax-Wega-HydroponicsUpdate
+    graph: ArtifactFragmentCraft # Corvax-Wega-HydroponicsUpdate
+    node: fragmentart # Corvax-Wega-HydroponicsUpdate

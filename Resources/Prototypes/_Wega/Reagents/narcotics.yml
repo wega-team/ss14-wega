@@ -1,0 +1,71 @@
+- type: reagent
+  id: RelaxingTeaAdust
+  name: tea pulp
+  group: Narcotics
+  desc: tea pulp
+  physicalDesc: reagent-physical-desc-soothing
+  color: "#FFD961"
+
+- type: reagent
+  id: RelaxingTea
+  name: relaxing tea
+  group: Narcotics
+  desc: relaxing tea
+  physicalDesc: reagent-physical-desc-soothing
+  color: "#C2FFE0"
+  flavor: tea
+  metabolisms:
+    Poison:
+      effects:
+      - !type:GenericStatusEffect
+        key: Pacified
+        component: Pacified
+        type: Add
+        time: 2
+      - !type:Polymorph
+        prototype: PolymorphDiona
+        conditions:
+        - !type:OrganType
+          type: Animal
+          shouldHave: false
+        - !type:ReagentThreshold
+          min: 50
+    Drink:
+      effects:
+      - !type:SatiateThirst
+        factor: 5
+    Narcotic:
+      effects:
+      - !type:GenericStatusEffect
+        key: SeeingRainbows
+        component: SeeingRainbows
+        type: Add
+        time: 2
+        refresh: false
+
+- type: reagent
+  id: GrapeJuiceInvisible
+  name: juice of invisible grapes
+  group: Narcotics
+  desc: juice of invisible grapes
+  physicalDesc: reagent-physical-desc-soothing
+  color: "#AAAAAA"
+  metabolisms:
+    Poison:
+      metabolismRate: 0.3
+      effects:
+      - !type:GenericStatusEffect
+        key: Stealth
+        component: Stealth
+        type: Add
+        time: 10
+      - !type:GenericStatusEffect
+        key: StealthOnMove
+        component: StealthOnMove
+        type: Add
+        time: 10
+      - !type:GenericStatusEffect
+        key: Muted
+        component: Muted
+        type: Add
+        time: 10

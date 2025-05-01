@@ -1,0 +1,10 @@
+- type: construction
+  name: super potato battery
+  id: PowerCellSuperPotatoCraft
+  graph: PowerCellSuperPotatoCraft
+  startNode: start
+  targetNode: superpotatobattery
+  category: construction-category-misc
+  description: A truly ingenious source of power.
+  icon: { sprite: _Wega/Objects/Power/power_cells.rsi, state: superpotato }
+  objectType: Item

@@ -26,6 +26,9 @@
   id: Scalpel
 
 - type: Tag
+  id: SuperPotato
+
+- type: Tag
   id: Jetpack
 
 - type: Tag

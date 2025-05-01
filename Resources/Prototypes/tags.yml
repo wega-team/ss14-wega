@@ -16,6 +16,9 @@
   id: AirSensor
 
 - type: Tag
+  id: AlienBerries
+
+- type: Tag
   id: AllowGhostShownByEvent
 
 - type: Tag

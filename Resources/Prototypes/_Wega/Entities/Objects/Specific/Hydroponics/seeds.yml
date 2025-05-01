@@ -47,3 +47,63 @@
       seedId: demonicWatermelon
     - type: Sprite
       sprite: _Wega/Objects/Specific/Hydroponics/demonicwatermelon.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of blue space banana seeds
+  id: BlueSpaceBananaSeeds
+  components:
+    - type: Seed
+      seedId: blueSpaceBanana
+    - type: Sprite
+      sprite: _Wega/Objects/Specific/Hydroponics/blue_space_banana.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of glowing berries seeds
+  id: RadioactiveBerriesSeeds
+  components:
+    - type: Seed
+      seedId: radioactiveBerries
+    - type: Sprite
+      sprite: _Wega/Objects/Specific/Hydroponics/radioactive_berry.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of alien berries seeds
+  id: AlienBerriesSeeds
+  components:
+    - type: Seed
+      seedId: alienBerries
+    - type: Sprite
+      sprite: _Wega/Objects/Specific/Hydroponics/alien_berry.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of energy potato seeds
+  id: EnergyPotatoSeeds
+  components:
+    - type: Seed
+      seedId: energyPotato
+    - type: Sprite
+      sprite: _Wega/Objects/Specific/Hydroponics/energy_potato.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of tea tree seeds
+  id: TreeTeaPlantSeeds
+  components:
+    - type: Seed
+      seedId: treeTeaPlant
+    - type: Sprite
+      sprite: _Wega/Objects/Specific/Hydroponics/relaxing_tea.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of invisible grape seeds
+  id: InvisibleGrapeSeeds
+  components:
+    - type: Seed
+      seedId: invisibleGrape
+    - type: Sprite
+      sprite: _Wega/Objects/Specific/Hydroponics/invisible_grape.rsi

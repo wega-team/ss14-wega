@@ -1,0 +1,19 @@
+- type: entity
+  name: super potato battery
+  description: "Victory of the potato over science!"
+  id: PowerCellSuperPotato
+  parent: BasePowerCell
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Power/power_cells.rsi
+    layers:
+    - state: superpotato
+  - type: Battery
+    maxCharge: 1800
+    startingCharge: 1800
+  - type: Tag
+    tags:
+      - PotatoBattery
+  - type: Construction
+    graph: PowerCellSuperPotatoCraft
+    node: superpotatobattery

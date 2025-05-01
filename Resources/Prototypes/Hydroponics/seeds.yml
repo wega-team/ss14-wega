@@ -89,6 +89,7 @@
     - FoodBanana
   mutationPrototypes:
     - mimana
+    - blueSpaceBanana # Corvax-Wega-HydroponicsUpdate
   harvestRepeat: Repeat
   lifespan: 50
   maturation: 6
@@ -384,6 +385,8 @@
   packetPrototype: PotatoSeeds
   productPrototypes:
     - FoodPotato
+  mutationPrototypes: # Corvax-Wega-HydroponicsUpdate
+    - energyPotato # Corvax-Wega-HydroponicsUpdate
   lifespan: 30
   maturation: 10
   production: 3
@@ -435,6 +438,8 @@
   packetPrototype: TeaPlantSeeds
   productPrototypes:
     - LeavesTea
+  mutationPrototypes: # Corvax-Wega-HydroponicsUpdate
+    - treeTeaPlant # Corvax-Wega-HydroponicsUpdate
   harvestRepeat: Repeat
   lifespan: 75
   maturation: 5
@@ -1607,6 +1612,8 @@
   packetPrototype: GrapeSeeds
   productPrototypes:
     - FoodGrape
+  mutationPrototypes: # Corvax-Wega-HydroponicsUpdate
+    - invisibleGrape  # Corvax-Wega-HydroponicsUpdate
   lifespan: 50
   maturation: 6
   production: 5
@@ -1721,6 +1728,8 @@
   packetPrototype: BerrySeeds
   productPrototypes:
     - FoodBerries
+  mutationPrototypes: # Corvax-Wega-HydroponicsUpdate
+    - radioactiveBerries # Corvax-Wega-HydroponicsUpdate
   harvestRepeat: Repeat
   lifespan: 50
   maturation: 6

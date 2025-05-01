@@ -194,3 +194,238 @@
     tags:
     - Fruit
     - Slice
+
+- type: entity
+  name: blue space banan
+  parent: FoodProduceBase
+  id: FoodBlueSpaceBanana
+  description: "Weird blue banana"
+  components:
+  - type: FlavorProfile
+    flavors:
+      - banana
+  - type: Food
+    trash:
+    - TrashBlueSpaceBananaPeel
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 6
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 4
+        - ReagentId: Vitamin
+          Quantity: 2
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/blue_space_banana.rsi
+  - type: Produce
+    seedId: blueSpaceBanana
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: JuiceBanana
+        Quantity: 10
+  - type: Tag
+    tags:
+    - Fruit
+
+- type: entity
+  name: blue space banana peel
+  parent: BaseItem
+  id: TrashBlueSpaceBananaPeel
+  description: "The pinnacle of the art of humor."
+  components:
+    - type: Sprite
+      sprite: _Wega/Objects/Specific/Hydroponics/blue_space_banana.rsi
+      state: peel
+    - type: Item
+      sprite: _Wega/Objects/Specific/Hydroponics/blue_space_banana.rsi
+      heldPrefix: peel
+    - type: Slippery
+      slipSound:
+        path: "/Audio/Effects/teleport_arrival.ogg"
+        params:
+          volume: -5
+    - type: StepTrigger
+      intersectRatio: 0.2
+    - type: CollisionWake
+      enabled: false
+    - type: Physics
+      bodyType: Dynamic
+    - type: Fixtures
+      fixtures:
+        slips:
+          shape:
+            !type:PhysShapeAabb
+            bounds: "-0.2,-0.2,0.2,0.2"
+          hard: false
+          layer:
+          - SlipLayer
+        fix1:
+          shape:
+            !type:PhysShapeAabb
+            bounds: "-0.2,-0.2,0.2,0.2"
+          density: 30
+          mask:
+          - ItemMask
+    - type: Tag
+      tags:
+      - Recyclable
+      - Trash
+      - BananaPeel
+    - type: SolutionContainerManager
+      solutions:
+        food:
+          maxVol: 10
+          reagents:
+          - ReagentId: PulpedBananaPeel
+            Quantity: 10
+    - type: Extractable
+      grindableSolutionName: food
+    - type: SpaceGarbage
+    - type: TriggerOnSlip
+    - type: DeleteOnTrigger
+    - type: SpawnOnTrigger
+      proto: PortalBsBanan
+
+- type: entity
+  name: glowing berries
+  parent: FoodProduceBase
+  id: FoodRadioactiveBerries
+  description: "They look so delicious! But for some reason it's hard to look at them."
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 7
+        reagents:
+        - ReagentId: Radium
+          Quantity: 7
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/radioactive_berry.rsi
+  - type: Produce
+    seedId: radioactiveBerries
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: NuclearCola
+        Quantity: 10
+  - type: Tag
+    tags:
+    - Fruit
+  - type: RadiationSource
+    intensity: 0.2
+    slope: 0.1
+  - type: PointLight
+    color: "#19FF19FF" 
+    energy: 2.5
+    radius: 1.5
+    softness: 1
+
+- type: entity
+  name: alien berries
+  parent: FoodProduceBase
+  id: FoodAlienBerries
+  description: "They look like very small pieces of alien artifacts."
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 5
+        reagents:
+        - ReagentId: Artifexium
+          Quantity: 5
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/alien_berry.rsi
+  - type: Produce
+    seedId: alienBerries
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: Singulo
+        Quantity: 10
+  - type: Tag
+    tags:
+    - AlienBerries
+    - Fruit
+
+- type: entity
+  name: energy potato
+  parent: FoodProduceBase
+  id: FoodEnergyPotato
+  description: "Potatoes with a huge amount of nutrients!"
+  components:
+  - type: FlavorProfile
+    flavors:
+      - Potato
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 24
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 9
+        - ReagentId: Licoxide
+          Quantity: 15
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/energy_potato.rsi
+  - type: Produce
+    seedId: energyPotato
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: JuicePotato
+        Quantity: 20
+  - type: Tag
+    tags:
+    - SuperPotato
+    - Potato
+    - Vegetable
+
+- type: entity
+  name: tea tree branch
+  description: "The most aromatic part of this plant is not the leaves, but the branches!"
+  id: BranchTreeTeaPlant
+  parent: ProduceBase
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/relaxing_tea.rsi
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: RelaxingTeaAdust
+          Quantity: 10
+  - type: Produce
+    seedId: treeTeaPlant
+
+- type: entity
+  name: invisible grapes
+  parent: FoodProduceBase
+  id: FoodInvisibleGrape
+  description: "Barely noticeable grapes."
+  components:
+  - type: FlavorProfile
+    flavors:
+      - grape
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 4
+        reagents:
+        - ReagentId: GrapeJuiceInvisible
+          Quantity: 2
+        - ReagentId: Nothing
+          Quantity: 2
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/invisible_grape.rsi
+  - type: Produce
+    seedId: invisibleGrape
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: GrapeJuiceInvisible
+        Quantity: 5
+  - type: Tag
+    tags:
+    - Fruit
