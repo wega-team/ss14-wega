@@ -2,7 +2,7 @@
   parent: BaseItem
   id: HandheldSlimeAnalyzerUnpowered
   name: slime analyzer
-  description: ""
+  description: "A special analytical instrument for obtaining accurate characteristics of slimes."
   components:
   - type: Sprite
     sprite: _Wega/Objects/Specific/Xenobiology/slime_analyzer.rsi

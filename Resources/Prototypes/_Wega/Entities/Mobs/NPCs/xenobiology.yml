@@ -1,9 +1,9 @@
 - type: entity
-  name: basic slime
   id: MobXenoSlimes
   parent: BaseMobAdultSlimes
   abstract: true
-  description: It looks so much like jelly. I wonder what it tastes like?
+  name: basic slime
+  description: "It looks so much like jelly. I wonder what it tastes like?"
   components:
   - type: Sprite
     sprite: _Wega/Mobs/Aliens/slimes.rsi
@@ -35,22 +35,40 @@
     typeVisuals:
       Gray: MobXenoSlimeGray
       Blue: MobXenoSlimeBlue
+      Purple: MobXenoSlimePurple
+      Orange: MobXenoSlimeOrange
+      Metallic: MobXenoSlimeMetallic
+      DarkPurple: MobXenoSlimeDarkPurple
+      Green: MobXenoSlimeGreen
+      DarkBlue: MobXenoSlimeDarkBlue
+      Pink: MobXenoSlimePink
+      Red: MobXenoSlimeRed
+      Yellow: MobXenoSlimeYellow
+      Gold: MobXenoSlimeGold
+      Silver: MobXenoSlimeSilver
+      Black: MobXenoSlimeBlack
+      Sepia: MobXenoSlimeSepia
+      Oil: MobXenoSlimeOil
+      Bluespace: MobXenoSlimeBluespace
+      Adamantine: MobXenoSlimeAdamantine
+      Pyrite: MobXenoSlimePyrite
+      Azure: MobXenoSlimeAzure
+      LightPink: MobXenoSlimeLightPink
+      Rainbow: MobXenoSlimeRainbow
   - type: TTS # Corvax-TTS
     voice: Chen
 
 - type: entity
-  name: basic slime
+  name: gray slime
   id: MobXenoSlimeGray
   parent: MobXenoSlimes
-  description: It looks so much like jelly. I wonder what it tastes like?
-  suffix: Check
+  description: "It looks so much like jelly. I wonder what it tastes like?"
 
 - type: entity
-  name: basic slime
+  name: blue slime
   id: MobXenoSlimeBlue
   parent: MobXenoSlimes
-  description: It looks so much like jelly. I wonder what it tastes like?
-  suffix: Check
+  description: "It looks so much like jelly. I wonder what it tastes like?"
   components:
   - type: Sprite
     state: blue_baby_slime
@@ -63,11 +81,10 @@
         Stage: Young
 
 - type: entity
-  name: basic slime
+  name: purple slime
   id: MobXenoSlimePurple
   parent: MobXenoSlimes
-  description: It looks so much like jelly. I wonder what it tastes like?
-  suffix: Check
+  description: "It looks so much like jelly. I wonder what it tastes like?"
   components:
   - type: Sprite
     state: purple_baby_slime
@@ -80,11 +97,10 @@
         Stage: Young
 
 - type: entity
-  name: basic slime
+  name: orange slime
   id: MobXenoSlimeOrange
   parent: MobXenoSlimes
-  description: It looks so much like jelly. I wonder what it tastes like?
-  suffix: Check
+  description: "It looks so much like jelly. I wonder what it tastes like?"
   components:
   - type: Sprite
     state: orange_baby_slime
@@ -97,11 +113,10 @@
         Stage: Young
 
 - type: entity
-  name: basic slime
+  name: metallic slime
   id: MobXenoSlimeMetallic
   parent: MobXenoSlimes
-  description: It looks so much like jelly. I wonder what it tastes like?
-  suffix: Check
+  description: "It looks so much like jelly. I wonder what it tastes like?"
   components:
   - type: Sprite
     state: metallic_baby_slime
@@ -114,11 +129,10 @@
         Stage: Young
 
 - type: entity
-  name: basic slime
+  name: dark-purple slime
   id: MobXenoSlimeDarkPurple
   parent: MobXenoSlimes
-  description: It looks so much like jelly. I wonder what it tastes like?
-  suffix: Check
+  description: "It looks so much like jelly. I wonder what it tastes like?"
   components:
   - type: Sprite
     state: darkpurple_baby_slime
@@ -131,11 +145,10 @@
         Stage: Young
 
 - type: entity
-  name: basic slime
+  name: green slime
   id: MobXenoSlimeGreen
   parent: MobXenoSlimes
-  description: It looks so much like jelly. I wonder what it tastes like?
-  suffix: Check
+  description: "It looks so much like jelly. I wonder what it tastes like?"
   components:
   - type: Sprite
     state: green_baby_slime
@@ -148,11 +161,10 @@
         Stage: Young
 
 - type: entity
-  name: basic slime
+  name: dark-blue slime
   id: MobXenoSlimeDarkBlue
   parent: MobXenoSlimes
-  description: It looks so much like jelly. I wonder what it tastes like?
-  suffix: Check
+  description: "It looks so much like jelly. I wonder what it tastes like?"
   components:
   - type: Sprite
     state: darkblue_baby_slime
@@ -165,11 +177,10 @@
         Stage: Young
 
 - type: entity
-  name: basic slime
+  name: pink slime
   id: MobXenoSlimePink
   parent: MobXenoSlimes
-  description: It looks so much like jelly. I wonder what it tastes like?
-  suffix: Check
+  description: "It looks so much like jelly. I wonder what it tastes like?"
   components:
   - type: Sprite
     state: pink_baby_slime
@@ -182,11 +193,10 @@
         Stage: Young
 
 - type: entity
-  name: basic slime
+  name: red slime
   id: MobXenoSlimeRed
   parent: MobXenoSlimes
-  description: It looks so much like jelly. I wonder what it tastes like?
-  suffix: Check
+  description: "It looks so much like jelly. I wonder what it tastes like?"
   components:
   - type: Sprite
     state: red_baby_slime
@@ -199,11 +209,10 @@
         Stage: Young
 
 - type: entity
-  name: basic slime
+  name: yellow slime
   id: MobXenoSlimeYellow
   parent: MobXenoSlimes
-  description: It looks so much like jelly. I wonder what it tastes like?
-  suffix: Check
+  description: "It looks so much like jelly. I wonder what it tastes like?"
   components:
   - type: Sprite
     state: yellow_baby_slime
@@ -216,11 +225,10 @@
         Stage: Young
 
 - type: entity
-  name: basic slime
+  name: gold slime
   id: MobXenoSlimeGold
   parent: MobXenoSlimes
-  description: It looks so much like jelly. I wonder what it tastes like?
-  suffix: Check
+  description: "It looks so much like jelly. I wonder what it tastes like?"
   components:
   - type: Sprite
     state: gold_baby_slime
@@ -233,11 +241,10 @@
         Stage: Young
 
 - type: entity
-  name: basic slime
+  name: silver slime
   id: MobXenoSlimeSilver
   parent: MobXenoSlimes
-  description: It looks so much like jelly. I wonder what it tastes like?
-  suffix: Check
+  description: "It looks so much like jelly. I wonder what it tastes like?"
   components:
   - type: Sprite
     state: silver_baby_slime
@@ -250,11 +257,10 @@
         Stage: Young
 
 - type: entity
-  name: basic slime
+  name: black slime
   id: MobXenoSlimeBlack
   parent: MobXenoSlimes
-  description: It looks so much like jelly. I wonder what it tastes like?
-  suffix: Check
+  description: "It looks so much like jelly. I wonder what it tastes like?"
   components:
   - type: Sprite
     state: black_baby_slime
@@ -267,11 +273,10 @@
         Stage: Young
 
 - type: entity
-  name: basic slime
+  name: sepia slime
   id: MobXenoSlimeSepia
   parent: MobXenoSlimes
-  description: It looks so much like jelly. I wonder what it tastes like?
-  suffix: Check
+  description: "It looks so much like jelly. I wonder what it tastes like?"
   components:
   - type: Sprite
     state: sepia_baby_slime
@@ -284,11 +289,10 @@
         Stage: Young
 
 - type: entity
-  name: basic slime
+  name: oil slime
   id: MobXenoSlimeOil
   parent: MobXenoSlimes
-  description: It looks so much like jelly. I wonder what it tastes like?
-  suffix: Check
+  description: "It looks so much like jelly. I wonder what it tastes like?"
   components:
   - type: Sprite
     state: oil_baby_slime
@@ -301,11 +305,10 @@
         Stage: Young
 
 - type: entity
-  name: basic slime
+  name: bluespace slime
   id: MobXenoSlimeBluespace
   parent: MobXenoSlimes
-  description: It looks so much like jelly. I wonder what it tastes like?
-  suffix: Check
+  description: "It looks so much like jelly. I wonder what it tastes like?"
   components:
   - type: Sprite
     state: bluespace_baby_slime
@@ -318,11 +321,10 @@
         Stage: Young
 
 - type: entity
-  name: basic slime
+  name: adamantine slime
   id: MobXenoSlimeAdamantine
   parent: MobXenoSlimes
-  description: It looks so much like jelly. I wonder what it tastes like?
-  suffix: Check
+  description: "It looks so much like jelly. I wonder what it tastes like?"
   components:
   - type: Sprite
     state: adamantine_baby_slime
@@ -335,11 +337,10 @@
         Stage: Young
 
 - type: entity
-  name: basic slime
+  name: pyrite slime
   id: MobXenoSlimePyrite
   parent: MobXenoSlimes
-  description: It looks so much like jelly. I wonder what it tastes like?
-  suffix: Check
+  description: "It looks so much like jelly. I wonder what it tastes like?"
   components:
   - type: Sprite
     state: pyrite_baby_slime
@@ -352,11 +353,10 @@
         Stage: Young
 
 - type: entity
-  name: basic slime
+  name: azure slime
   id: MobXenoSlimeAzure
   parent: MobXenoSlimes
-  description: It looks so much like jelly. I wonder what it tastes like?
-  suffix: Check
+  description: "It looks so much like jelly. I wonder what it tastes like?"
   components:
   - type: Sprite
     state: azure_baby_slime
@@ -369,11 +369,10 @@
         Stage: Young
 
 - type: entity
-  name: basic slime
+  name: light-pink slime
   id: MobXenoSlimeLightPink
   parent: MobXenoSlimes
-  description: It looks so much like jelly. I wonder what it tastes like?
-  suffix: Check
+  description: "It looks so much like jelly. I wonder what it tastes like?"
   components:
   - type: Sprite
     state: lightpink_baby_slime
@@ -386,11 +385,10 @@
         Stage: Young
 
 - type: entity
-  name: basic slime
+  name: rainbow slime
   id: MobXenoSlimeRainbow
   parent: MobXenoSlimes
-  description: It looks so much like jelly. I wonder what it tastes like?
-  suffix: Check
+  description: "It looks so much like jelly. I wonder what it tastes like?"
   components:
   - type: Sprite
     state: rainbow_baby_slime

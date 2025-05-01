@@ -1,6 +1,7 @@
 - type: entity
   parent: FoodBase
   id: BaseMaterialSlimeExtract
+  abstract: true
   name: smile extract
   components:
     - type: Sprite

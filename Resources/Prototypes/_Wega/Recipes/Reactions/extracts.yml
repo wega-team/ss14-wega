@@ -358,17 +358,6 @@
   products:
     IncreaseFriendshipPotion: 1
 
-# Red
-- type: reaction
-  id: MutationsPotion
-  reactants:
-    SlimeExtractRed:
-      amount: 5
-    Plasma:
-      amount: 10
-  products:
-    IncreaseFriendshipPotion: 5
-
 # Gold
 - type: reaction
   id: RandomNeutralAnimal

@@ -1,6 +1,8 @@
 - type: entity
   id: SlimePowerCell
   parent: BaseItem
+  name: slime core
+  description: "It emits small bursts of energy. Can it be used as a battery?"
   components:
   - type: Sprite
     sprite: _Wega/Objects/Consumable/Food/extracts.rsi

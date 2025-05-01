@@ -75,7 +75,6 @@
     - !type:DiseasePopUp
       probability: 0.02
       message: disease-slime-drip
-      visualType: Low
       stages:
         - 1
         - 2

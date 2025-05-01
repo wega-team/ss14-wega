@@ -2,7 +2,7 @@
   id: SlimeExtractor
   parent: [ BaseMachinePowered, ConstructibleMachine ]
   name: slime extractor
-  description: ""
+  description: "You are cruel!"
   placement:
     mode: SnapgridCenter
   components:

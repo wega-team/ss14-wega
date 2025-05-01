@@ -35,12 +35,13 @@ public sealed partial class SlimeAnalyzerWindow : FancyWindow
         // Basic info
         SlimeSpriteView.SetEntity(target);
         var slimeTypeMessage = new FormattedMessage();
-        slimeTypeMessage.AddText(msg.SlimeType.ToString());
+        slimeTypeMessage.AddText(Loc.GetString($"slime-analyzer-type-{msg.SlimeType.ToString().ToLower()}"));
         SlimeTypeLabel.SetMessage(slimeTypeMessage);
-        SlimeStageLabel.Text = Loc.GetString("slime-analyzer-stage", ("stage", msg.GrowthStage.ToString()));
+        var stage = Loc.GetString($"slime-analyzer-stage-{msg.GrowthStage.ToString().ToLower()}");
+        SlimeStageLabel.Text = Loc.GetString("slime-analyzer-stage", ("stage", stage));
 
         // Status
-        BehaviorStateLabel.Text = msg.BehaviorState.ToString();
+        BehaviorStateLabel.Text = Loc.GetString($"slime-analyzer-behavior-{msg.BehaviorState.ToString().ToLower()}");
         HungerBar.Value = msg.Hunger / msg.MaxHunger;
         HungerText.Text = $"{msg.Hunger:F1}/{msg.MaxHunger:F1}";
         MutationChanceLabel.Text = $"{msg.MutationChance * 100:F1}%";
@@ -58,7 +59,7 @@ public sealed partial class SlimeAnalyzerWindow : FancyWindow
                     Children =
                     {
                         new Label { Text = "· ", Margin = new Thickness(5, 0, 0, 0) },
-                        new Label { Text = type.ToString(), HorizontalExpand = true },
+                        new Label { Text = Loc.GetString($"slime-analyzer-type-{type.ToString().ToLower()}"), HorizontalExpand = true },
                         new Label { Text = $"{weight:F1}x", Margin = new Thickness(0, 0, 5, 0) }
                     }
                 });
