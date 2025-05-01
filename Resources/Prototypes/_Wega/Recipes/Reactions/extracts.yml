@@ -91,7 +91,15 @@
   products:
     SlimeStabilizer: 1
 
-  # Skip Frost Oil
+- type: reaction
+  id: CryoxadoneAlt
+  reactants:
+    SlimeExtractBlue:
+      amount: 1
+    Plasma:
+      amount: 2
+  products:
+    Cryoxadone: 1
 
 # Metallic
 - type: reaction
@@ -242,7 +250,33 @@
       entity: RandomDrinkGlass
 
 # Bluespace
-# Empty
+- type: reaction
+  id: RandomArtifact
+  impact: Low
+  quantized: true
+  conserveEnergy: false
+  reactants:
+    SlimeExtractBluespace:
+      amount: 15
+    Blood:
+      amount: 30
+  effects:
+    - !type:CreateEntityReactionEffect
+      entity: RandomArtifactSpawner
+
+- type: reaction
+  id: RandomAnomaly
+  impact: Low
+  quantized: true
+  conserveEnergy: false
+  reactants:
+    SlimeExtractBluespace:
+      amount: 15
+    Plasma:
+      amount: 30
+  effects:
+    - !type:CreateEntityReactionEffect
+      entity: RandomAnomalySpawner
 
 # Sepia
 - type: reaction
@@ -259,22 +293,70 @@
     - !type:CreateEntityReactionEffect
       entity: FloorTileItemSepia
 
+- type: reaction
+  id: HeatResistPotion
+  reactants:
+    SlimeExtractSepia:
+      amount: 1
+    Plasma:
+      amount: 2
+  products:
+    HeatResistPotion: 1
+
 # Azure
 - type: reaction
   id: SlimeReinforcer
   reactants:
     SlimeExtractAzure:
-      amount: 5
+      amount: 1
     Plasma:
-      amount: 10
+      amount: 2
   products:
-    SlimeReinforcer: 5
+    SlimeReinforcer: 1
 
 # Pyrite
-# Empty
+- type: reaction
+  id: RadiationResistPotion
+  reactants:
+    SlimeExtractPyrite:
+      amount: 1
+    Water:
+      amount: 2
+  products:
+    RadiationResistPotion: 1
 
 # Green
-# Empty
+- type: reaction
+  id: CellularResistPotion
+  reactants:
+    SlimeExtractGreen:
+      amount: 1
+    Water:
+      amount: 2
+  products:
+    CellularResistPotion: 1
+
+# Red
+- type: reaction
+  id: MutationsPotion
+  reactants:
+    SlimeExtractRed:
+      amount: 1
+    Plasma:
+      amount: 2
+  products:
+    MutationsPotion: 1
+
+# Pink
+- type: reaction
+  id: IncreaseFriendshipPotion
+  reactants:
+    SlimeExtractPink:
+      amount: 1
+    Plasma:
+      amount: 2
+  products:
+    IncreaseFriendshipPotion: 1
 
 # Red
 - type: reaction
@@ -285,10 +367,7 @@
     Plasma:
       amount: 10
   products:
-    MutationsPotion: 5
-
-# Pink
-# Empty
+    IncreaseFriendshipPotion: 5
 
 # Gold
 - type: reaction
@@ -360,7 +439,15 @@
     maxTotalIntensity: 200
 
 # Black
-# Empty
+- type: reaction
+  id: AdvancedMutateToxin
+  reactants:
+    SlimeExtractBlack:
+      amount: 1
+    Plasma:
+      amount: 2
+  products:
+    AdvancedMutateToxin: 1
 
 # Light Pink
 - type: reaction
@@ -374,7 +461,15 @@
     MindPotion: 1
 
 # Adamantine
-# Empty
+- type: reaction
+  id: IronSkinResistPotion
+  reactants:
+    SlimeExtractAdamantine:
+      amount: 1
+    Blood:
+      amount: 2
+  products:
+    IronSkinResistPotion: 1
 
 # Rainbow
 - type: reaction

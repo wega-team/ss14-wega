@@ -15,7 +15,7 @@
   metabolisms:
     Narcotic:
       effects:
-      - !type:ReinforcedExtractsEffect
+      - !type:ChemReinforcedExtractsEffect
         conditions:
         - !type:ReagentThreshold
           min: 10
@@ -37,7 +37,7 @@
   metabolisms:
     Medicine:
       effects:
-      - !type:StabilizeMutationChanceEffect
+      - !type:ChemStabilizeMutationChanceEffect
         conditions:
         - !type:ReagentThreshold
           min: 5
@@ -54,7 +54,7 @@
     Special:
       methods: [ Touch ]
       effects:
-      - !type:ChillProtectionEffect
+      - !type:ChemChillProtectionEffect
 
 - type: reagent
   id: SlimeReinforcer
@@ -67,7 +67,7 @@
   metabolisms:
     Medicine:
       effects:
-      - !type:ReinforcedExtractsEffect
+      - !type:ChemReinforcedExtractsEffect
         conditions:
         - !type:ReagentThreshold
           min: 5
@@ -83,7 +83,7 @@
   metabolisms:
     Medicine:
       effects:
-      - !type:IncreaseMutationChanceEffect
+      - !type:ChemIncreaseMutationChanceEffect
         conditions:
         - !type:ReagentThreshold
           min: 5
@@ -127,6 +127,111 @@
     Medicine:
       effects:
       - !type:MakeSentient
+        conditions:
+        - !type:ReagentThreshold
+          min: 5
+
+- type: reagent
+  id: IncreaseFriendshipPotion
+  name: reagent-name-increase-friendship-potion
+  group: Medicine
+  desc: reagent-name-increase-friendship-potion
+  physicalDesc: reagent-physical-desc-opaque
+  flavor: medicine
+  color: "#FFC0CB"
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:ChemIncreaseFriendshipEffect
+        conditions:
+        - !type:ReagentThreshold
+          min: 5
+
+- type: reagent
+  id: AdvancedMutateToxin
+  name: reagent-name-advanced-mutate-toxin
+  group: Medicine
+  desc: reagent-desc-advanced-mutate-toxin
+  physicalDesc: reagent-physical-desc-opaque
+  flavor: medicine
+  color: "#000000"
+  metabolisms:
+    Poison:
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+            Poison: 2
+      - !type:ChemCauseDisease
+          causeChance: 1
+          disease: SLIMEITIS
+
+# Resist Potions
+- type: reagent
+  id: HeatResistPotion
+  name: reagent-name-heat-resist-potion
+  group: Medicine
+  desc: reagent-desc-heat-resist-potion
+  physicalDesc: reagent-physical-desc-opaque
+  flavor: medicine
+  color: "#FAFAD2"
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:ChemDamageResistReagentEffect
+        damageTypes: [ "Heat" ]
+        conditions:
+        - !type:ReagentThreshold
+          min: 5
+
+- type: reagent
+  id: RadiationResistPotion
+  name: reagent-name-radiation-resist-potion
+  group: Medicine
+  desc: reagent-desc-radiation-resist-potion
+  physicalDesc: reagent-physical-desc-opaque
+  flavor: medicine
+  color: "#FAFAD2"
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:ChemDamageResistReagentEffect
+        damageTypes: [ "Radiation" ]
+        conditions:
+        - !type:ReagentThreshold
+          min: 5
+
+- type: reagent
+  id: CellularResistPotion
+  name: reagent-name-cellular-resist-potion
+  group: Medicine
+  desc: reagent-desc-cellular-resist-potion
+  physicalDesc: reagent-physical-desc-opaque
+  flavor: medicine
+  color: "#00FF00"
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:ChemDamageResistReagentEffect
+        damageTypes: [ "Cellular" ]
+        conditions:
+        - !type:ReagentThreshold
+          min: 5
+
+- type: reagent
+  id: IronSkinResistPotion
+  name: reagent-name-iron-skin-resist-potion
+  group: Medicine
+  desc: reagent-desc-iron-skin-resist-potion
+  physicalDesc: reagent-physical-desc-opaque
+  flavor: medicine
+  color: "#66FF66"
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:ChemDamageResistReagentEffect
+        damageTypes: [ "Blunt", "Piercing", "Slash" ]
+        resistFactor: 0.1
         conditions:
         - !type:ReagentThreshold
           min: 5

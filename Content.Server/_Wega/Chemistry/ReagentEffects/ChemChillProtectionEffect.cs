@@ -6,7 +6,7 @@ using Robust.Shared.Prototypes;
 namespace Content.Server.EntityEffects.Effects
 {
     [UsedImplicitly]
-    public sealed partial class ChillProtectionEffect : EntityEffect
+    public sealed partial class ChemChillProtectionEffect : EntityEffect
     {
         /// <summary>
         /// Heating coefficient to apply (0.001 makes entity heat up very slowly)

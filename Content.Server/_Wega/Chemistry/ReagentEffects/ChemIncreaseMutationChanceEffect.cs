@@ -6,7 +6,7 @@ using Robust.Shared.Prototypes;
 namespace Content.Server.EntityEffects.Effects
 {
     [UsedImplicitly]
-    public sealed partial class IncreaseMutationChanceEffect : EntityEffect
+    public sealed partial class ChemIncreaseMutationChanceEffect : EntityEffect
     {
         [DataField]
         public float FixedIncrease = 0.12f;

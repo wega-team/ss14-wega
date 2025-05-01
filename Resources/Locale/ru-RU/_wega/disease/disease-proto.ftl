@@ -2,6 +2,7 @@
 disease-proto-ultragigacancer = ультрагигарак
 disease-proto-spectral-tiredness = спектральное утомление
 disease-proto-lung-cancer = рак лёгких IIIA стадии
+disease-proto-slimeitis = слаймитис
 # Infectious
 disease-proto-space-cold = космическая простуда
 disease-proto-vent-cough = трубный кашель

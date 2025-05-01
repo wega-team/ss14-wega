@@ -7,7 +7,7 @@ using Robust.Shared.Random;
 namespace Content.Server.EntityEffects.Effects
 {
     [UsedImplicitly]
-    public sealed partial class StabilizeMutationChanceEffect : EntityEffect
+    public sealed partial class ChemStabilizeMutationChanceEffect : EntityEffect
     {
         [Dependency] private readonly IRobustRandom _random = default!;
 

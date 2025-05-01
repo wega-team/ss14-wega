@@ -123,6 +123,7 @@
     naturalImmunities:
     - Ultragigacancer
     - BleedersBite
+    - SLIMEITIS
   # Corvax-Wega-Disease-end
 
 - type: entity
