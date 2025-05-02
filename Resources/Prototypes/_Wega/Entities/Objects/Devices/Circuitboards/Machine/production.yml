@@ -37,3 +37,23 @@
       Dish:
         amount: 2
         defaultPrototype: PetriDish
+
+- type: entity
+  id: SlimeExtractorMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: slime extractor machine board
+  description: A machine printed circuit board for a slime extractor.
+  components:
+  - type: Sprite
+    state: medical
+  - type: MachineBoard
+    prototype: SlimeExtractor
+    stackRequirements:
+      MatterBin: 2
+      Manipulator: 1
+      Steel: 5
+    tagRequirements:
+      Knife:
+        amount: 2
+        defaultPrototype: KitchenKnife
+        examineName: construction-insert-info-examine-name-knife

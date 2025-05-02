@@ -30,5 +30,5 @@
         enum.WiresVisualLayers.MaintenancePanel:
           True: { visible: true }
           False: { visible: false }
-#  - type: Machine
-#    board: BiomassReclaimerMachineCircuitboard
+  - type: Machine
+    board: SlimeExtractorMachineCircuitboard

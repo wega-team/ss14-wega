@@ -21,6 +21,8 @@
     interfaces:
       enum.SlimeAnalyzerUiKey.Key:
         type: SlimeAnalyzerBoundUserInterface
+  - type: ItemToggle
+    onUse: false
   - type: SlimeAnalyzer
     scanningBeginSound:
       path: "/Audio/Voice/Slime/slime_squish.ogg"

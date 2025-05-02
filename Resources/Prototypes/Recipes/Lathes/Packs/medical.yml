@@ -99,5 +99,6 @@
   - StasisBedMachineCircuitboard
   - CryoPodMachineCircuitboard
   - BiomassReclaimerMachineCircuitboard
+  - SlimeExtractorMachineCircuitboard # Corvax-Wega-Xenobiology
   - MedicalScannerMachineCircuitboard # Corvax-Wega-Genetics
   - DnaModifierComputerCircuitboard # Corvax-Wega-Genetics

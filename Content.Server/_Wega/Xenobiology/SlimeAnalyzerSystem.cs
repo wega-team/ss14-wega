@@ -5,6 +5,7 @@ using Content.Shared.Xenobiology.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
 using Content.Shared.Interaction;
+using Content.Shared.Item.ItemToggle;
 using Content.Shared.Xenobiology.UI;
 using Content.Shared.Xenobiology.Systems;
 using Content.Shared.IdentityManagement;
@@ -12,6 +13,8 @@ using Content.Shared.DoAfter;
 using Content.Shared.Popups;
 using Content.Server.PowerCell;
 using Robust.Shared.Timing;
+using Content.Shared.Interaction.Events;
+using Robust.Shared.Containers;
 
 namespace Content.Server.Medical;
 
@@ -19,6 +22,7 @@ public sealed class SlimeAnalyzerSystem : EntitySystem
 {
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
+    [Dependency] private readonly ItemToggleSystem _toggle = default!;
     [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
@@ -29,6 +33,8 @@ public sealed class SlimeAnalyzerSystem : EntitySystem
     {
         SubscribeLocalEvent<SlimeAnalyzerComponent, AfterInteractEvent>(OnAfterInteract);
         SubscribeLocalEvent<SlimeAnalyzerComponent, SlimeAnalyzerDoAfterEvent>(OnDoAfter);
+        SubscribeLocalEvent<SlimeAnalyzerComponent, EntGotInsertedIntoContainerMessage>(OnInsertedIntoContainer);
+        SubscribeLocalEvent<SlimeAnalyzerComponent, DroppedEvent>(OnDropped);
     }
 
     public override void Update(float frameTime)
@@ -93,6 +99,18 @@ public sealed class SlimeAnalyzerSystem : EntitySystem
         args.Handled = true;
     }
 
+    private void OnInsertedIntoContainer(Entity<SlimeAnalyzerComponent> analyzer, ref EntGotInsertedIntoContainerMessage args)
+    {
+        if (analyzer.Comp.ScannedEntity is { } target)
+            _toggle.TryDeactivate(analyzer.Owner);
+    }
+
+    private void OnDropped(Entity<SlimeAnalyzerComponent> analyzer, ref DroppedEvent args)
+    {
+        if (analyzer.Comp.ScannedEntity is { } target)
+            _toggle.TryDeactivate(analyzer.Owner);
+    }
+
     private void OpenUserInterface(EntityUid user, EntityUid analyzer)
     {
         if (!_uiSystem.HasUi(analyzer, SlimeAnalyzerUiKey.Key))
@@ -104,12 +122,18 @@ public sealed class SlimeAnalyzerSystem : EntitySystem
     private void BeginAnalyzingEntity(Entity<SlimeAnalyzerComponent> analyzer, EntityUid target)
     {
         analyzer.Comp.ScannedEntity = target;
+
+        _toggle.TryActivate(analyzer.Owner);
+
         UpdateScannedUser(analyzer, target);
     }
 
     private void StopAnalyzingEntity(Entity<SlimeAnalyzerComponent> analyzer)
     {
         analyzer.Comp.ScannedEntity = null;
+
+        _toggle.TryDeactivate(analyzer.Owner);
+
         if (_uiSystem.HasUi(analyzer.Owner, SlimeAnalyzerUiKey.Key))
         {
             var actors = _uiSystem.GetActors(analyzer.Owner, SlimeAnalyzerUiKey.Key);
