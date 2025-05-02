@@ -115,7 +115,7 @@ public sealed class SlimeSocialSystem : EntitySystem
 
             if (social.Leader != null && social.FriendshipLevel < 50f)
             {
-                _chat.TrySendInGameICMessage(uid, string.Format(Loc.GetString("slime-social-no-leader"), Name(social.Leader.Value)), InGameICChatType.Speak, false);
+                _chat.TrySendInGameICMessage(uid, Loc.GetString("slime-social-no-leader", ("name", Name(social.Leader.Value))), InGameICChatType.Speak, false);
                 social.Leader = null;
             }
         }
@@ -155,9 +155,9 @@ public sealed class SlimeSocialSystem : EntitySystem
             social.Leader = potentialFriend;
             _chat.TrySendInGameICMessage(slime,
                 _random.Pick(new[] {
-                    string.Format(Loc.GetString("slime-social-new-leader-1"), Name(potentialFriend)),
+                    Loc.GetString("slime-social-new-leader-1", ("name", Name(potentialFriend))),
                     Loc.GetString("slime-social-new-leader-2"),
-                    string.Format(Loc.GetString("slime-social-new-leader-3"), Name(potentialFriend))
+                    Loc.GetString("slime-social-new-leader-3", ("name", Name(potentialFriend)))
                 }),
                 InGameICChatType.Speak, false);
         }
@@ -205,7 +205,7 @@ public sealed class SlimeSocialSystem : EntitySystem
         if (translatedCommand == "attack" && target != null && social.Friends.Any(f => Name(f) == target))
         {
             social.FriendshipLevel = Math.Max(0, social.FriendshipLevel - 10);
-            _chat.TrySendInGameICMessage(slime, _random.Pick(RefuseResponses["attack-friend"]), InGameICChatType.Speak, false);
+            _chat.TrySendInGameICMessage(slime, Loc.GetString(_random.Pick(RefuseResponses["attack-friend"])), InGameICChatType.Speak, false);
             return;
         }
 
@@ -243,7 +243,7 @@ public sealed class SlimeSocialSystem : EntitySystem
     {
         var response = command switch
         {
-            "hello" or "hi" => _random.Pick(CommandResponses["hello"]),
+            "hello" or "hi" => Loc.GetString(_random.Pick(CommandResponses["hello"])),
             "follow" => HandleFollowCommand(slime, source),
             "stop" => HandleStopCommand(slime),
             "stay" => HandleStayCommand(slime),
@@ -266,15 +266,15 @@ public sealed class SlimeSocialSystem : EntitySystem
         string response;
         if (social.AngryUntil.HasValue && social.AngryUntil > _gameTiming.CurTime)
         {
-            response = _random.Pick(RefuseResponses["angry"]);
+            response = Loc.GetString(_random.Pick(RefuseResponses["angry"]));
         }
         else if (TryComp<SlimeHungerComponent>(slime, out var hunger) && hunger.Hunger < 70f)
         {
-            response = _random.Pick(RefuseResponses["hungry"]);
+            response = Loc.GetString(_random.Pick(RefuseResponses["hungry"]));
         }
         else
         {
-            response = _random.Pick(RefuseResponses["default"]);
+            response = Loc.GetString(_random.Pick(RefuseResponses["default"]));
         }
 
         _chat.TrySendInGameICMessage(slime, response, InGameICChatType.Speak, false);
@@ -302,13 +302,13 @@ public sealed class SlimeSocialSystem : EntitySystem
                 {
                     social.Leader = null;
                     _chat.TrySendInGameICMessage(uid,
-                        string.Format(_random.Pick(BetrayalResponses["leader-betrayed"]), name),
+                        Loc.GetString(_random.Pick(BetrayalResponses["leader-betrayed"]), ("name", name)),
                         InGameICChatType.Speak, false);
                 }
                 else
                 {
                     _chat.TrySendInGameICMessage(uid,
-                        string.Format(_random.Pick(BetrayalResponses["friend-betrayed"]), name),
+                        Loc.GetString(_random.Pick(BetrayalResponses["friend-betrayed"]), ("name", name)),
                         InGameICChatType.Speak, false);
                 }
 
@@ -325,7 +325,7 @@ public sealed class SlimeSocialSystem : EntitySystem
             else
             {
                 _chat.TrySendInGameICMessage(uid,
-                    string.Format(_random.Pick(BetrayalResponses["hurt-but-friends"]), name),
+                    Loc.GetString(_random.Pick(BetrayalResponses["hurt-but-friends"]), ("name", name)),
                     InGameICChatType.Speak, false);
             }
         }
@@ -336,7 +336,7 @@ public sealed class SlimeSocialSystem : EntitySystem
 
             social.AngryUntil = _gameTiming.CurTime + TimeSpan.FromSeconds(social.AngerDuration);
             _chat.TrySendInGameICMessage(uid,
-                string.Format(_random.Pick(BetrayalResponses["attack-enemy"]), name),
+                Loc.GetString(_random.Pick(BetrayalResponses["attack-enemy"]), ("name", name)),
                 InGameICChatType.Speak, false);
 
             social.LastAttackEntity = attacker;
@@ -446,7 +446,7 @@ public sealed class SlimeSocialSystem : EntitySystem
     private string HandleFollowCommand(EntityUid slime, EntityUid target)
     {
         if (!TryComp<HTNComponent>(slime, out var htn))
-            return _random.Pick(RefuseResponses["default"]);
+            return Loc.GetString(_random.Pick(RefuseResponses["default"]));
 
         ResetSlimeState(htn);
 
@@ -455,44 +455,44 @@ public sealed class SlimeSocialSystem : EntitySystem
         htn.Blackboard.SetValue("MovementRange", 1.5f);
 
         _htn.Replan(htn);
-        return _random.Pick(CommandResponses["follow"]);
+        return Loc.GetString(_random.Pick(CommandResponses["follow"]));
     }
 
     private string HandleStopCommand(EntityUid slime)
     {
         if (!TryComp<HTNComponent>(slime, out var htn))
-            return _random.Pick(RefuseResponses["default"]);
+            return Loc.GetString(_random.Pick(RefuseResponses["default"]));
 
         ResetSlimeState(htn, true);
 
         _htn.Replan(htn);
-        return _random.Pick(CommandResponses["stop"]);
+        return Loc.GetString(_random.Pick(CommandResponses["stop"]));
     }
 
     private string HandleStayCommand(EntityUid slime)
     {
         if (!TryComp<HTNComponent>(slime, out var htn))
-            return _random.Pick(RefuseResponses["default"]);
+            return Loc.GetString(_random.Pick(RefuseResponses["default"]));
 
         ResetSlimeState(htn);
 
         htn.Blackboard.SetValue("IdleTime", 30f);
 
         _htn.Replan(htn);
-        return _random.Pick(CommandResponses["stay"]);
+        return Loc.GetString(_random.Pick(CommandResponses["stay"]));
     }
 
     private string HandleAttackCommand(EntityUid slime, string target, SlimeSocialComponent social)
     {
         if (!TryComp<HTNComponent>(slime, out var htn))
-            return _random.Pick(RefuseResponses["default"]);
+            return Loc.GetString(_random.Pick(RefuseResponses["default"]));
 
         var targetEntity = FindTargetByName(target);
         if (targetEntity == null)
             return Loc.GetString("slime-social-no-target");
 
         if (social.Friends.Contains(targetEntity.Value))
-            return _random.Pick(RefuseResponses["attack-friend"]);
+            return Loc.GetString(_random.Pick(RefuseResponses["attack-friend"]));
 
         ResetSlimeState(htn);
 
@@ -502,7 +502,7 @@ public sealed class SlimeSocialSystem : EntitySystem
         htn.Blackboard.SetValue("AttackRange", 1.5f);
 
         _htn.Replan(htn);
-        return string.Format(_random.Pick(CommandResponses["attack"]), target);
+        return Loc.GetString(_random.Pick(CommandResponses["attack"]), ("name", target));
     }
 
     private string GetMoodResponse(EntityUid slime, SlimeSocialComponent social)
@@ -523,7 +523,7 @@ public sealed class SlimeSocialSystem : EntitySystem
         else if (social.FriendshipLevel > 80)
             mood += " " + Loc.GetString("slime-social-mood-adore");
 
-        return string.Format(_random.Pick(CommandResponses["mood"]), mood);
+        return Loc.GetString(_random.Pick(CommandResponses["mood"]), ("mood", mood));
     }
 
     private void ResetSlimeState(HTNComponent htn, bool clearAll = false)
