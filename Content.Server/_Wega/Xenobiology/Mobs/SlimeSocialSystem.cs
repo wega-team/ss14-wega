@@ -19,35 +19,67 @@ public sealed class SlimeSocialSystem : EntitySystem
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly HTNSystem _htn = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly MetaDataSystem _metaData = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
 
     private static readonly TimeSpan MinCommandInterval = TimeSpan.FromSeconds(6);
 
-    private static readonly Dictionary<string, string[]> CommandResponses = new()
+    private static readonly Dictionary<string, string[]> CommandResponses;
+    private static readonly Dictionary<string, string[]> RefuseResponses;
+    private static readonly Dictionary<string, string[]> BetrayalResponses;
+
+    private static readonly Dictionary<string, string> CommandTranslations = new()
     {
-        ["hello"] = new[] { "Буль-буль! Привет!", "Здравствуй, друг!", "Приветствую тебя!", "Привет, {0}!", "Рад тебя видеть!" },
-        ["follow"] = new[] { "Иду за тобой!", "Как скажешь!", "Всегда за тобой!", "Веди, командир!", "Я рядом!" },
-        ["stop"] = new[] { "Останавливаюсь...", "Хорошо, я подожду", "Как скажешь, лидер", "Не двигаться? Окей!", "Беру паузу." },
-        ["stay"] = new[] { "Буду ждать...", "Не сдвинусь с места!", "Ожидание - не проблема", "Становлюсь камнем.", "Хорошо, постою!" },
-        ["attack"] = new[] { "Атакую {0}!", "{0} будет уничтожен!", "Сейчас разберусь с {0}!", "Жертва обнаружена! {0} - берегись!", "Готов к атаке на {0}!" },
-        ["mood"] = new[] { "Я чувствую себя {0}!", "Моё состояние: {0}!", "Сейчас я {0}!", "Настроение: {0}", "Чувствую {0}, а ты?" }
+        ["hello"] = "hello",
+        ["hi"] = "hello",
+        ["follow"] = "follow",
+        ["stop"] = "stop",
+        ["stay"] = "stay",
+        ["attack"] = "attack",
+        ["mood"] = "mood",
+
+        ["привет"] = "hello",
+        ["здравствуй"] = "hello",
+        ["иди"] = "follow",
+        ["следуй"] = "follow",
+        ["стоп"] = "stop",
+        ["остановись"] = "stop",
+        ["стой"] = "stay",
+        ["жди"] = "stay",
+        ["атака"] = "attack",
+        ["атакуй"] = "attack",
+        ["настрой"] = "mood",
+        ["настроение"] = "mood"
     };
 
-    private static readonly Dictionary<string, string[]> RefuseResponses = new()
+    static SlimeSocialSystem()
     {
-        ["default"] = new[] { "Не хочу...", "Я занят...", "Может позже?", "Не сегодня, друг.", "Я пока отдохну." },
-        ["attack_friend"] = new[] { "Не буду атаковать друга!", "Это же наш друг!", "Я не предатель!", "Друзей не кусаю!", "Не могу, он мне нравится!" },
-        ["hungry"] = new[] { "Сначала покорми меня!", "Я слишком голоден!", "Еда важнее приказов!", "Покорми меня, и тогда поговорим!", "Голодный слайм - непослушный слайм." },
-        ["angry"] = new[] { "Не хочу тебя слушать!", "Уйди, я зол!", "Не трогай меня!", "Ты мне не нравишься!", "Отстань!" }
-    };
+        CommandResponses = new()
+        {
+            ["hello"] = new[] { "slime-social-hello-1", "slime-social-hello-2", "slime-social-hello-3", "slime-social-hello-4", "slime-social-hello-5" },
+            ["follow"] = new[] { "slime-social-follow-1", "slime-social-follow-2", "slime-social-follow-3", "slime-social-follow-4", "slime-social-follow-5" },
+            ["stop"] = new[] { "slime-social-stop-1", "slime-social-stop-2", "slime-social-stop-3", "slime-social-stop-4", "slime-social-stop-5" },
+            ["stay"] = new[] { "slime-social-stay-1", "slime-social-stay-2", "slime-social-stay-3", "slime-social-stay-4", "slime-social-stay-5" },
+            ["attack"] = new[] { "slime-social-attack-1", "slime-social-attack-2", "slime-social-attack-3", "slime-social-attack-4", "slime-social-attack-5" },
+            ["mood"] = new[] { "slime-social-mood-1", "slime-social-mood-2", "slime-social-mood-3", "slime-social-mood-4", "slime-social-mood-5" }
+        };
 
-    private static readonly Dictionary<string, string[]> BetrayalResponses = new()
-    {
-        ["leader_betrayed"] = new[] { "{0} - предатель! Больше не мой лидер!", "Как ты мог, {0}?! Я больше не подчиняюсь!", "Лидеры так не поступают! Прощай, {0}!", "Буль-буль... Ты разбил моё сердце!", "Я думал, ты другой, {0}. Ошибался.", },
-        ["friend_betrayed"] = new[] { "Буль... Как ты мог?", "Друзья так не поступают!", "Уходи, {0}! Ты предатель!", "Я верил тебе... Как же ты мог?", "Никогда не прощу этого, {0}!" },
-        ["hurt_but_friends"] = new[] { "Зачем ты делаешь мне больно?", "Буль... Мне неприятно, {0}...", "Прекрати! Это больно!", "Буль-буль... Ты ранил меня...", "Я не ожидал такого от тебя, {0}..." },
-        ["attack_enemy"] = new[] { "Атака! {0} будет уничтожен!", "Как посмел напасть на меня?", "Ты выбрал не того слайма!", "Буль-буль! В атаку на {0}!", "Получи!" }
-    };
+        RefuseResponses = new()
+        {
+            ["default"] = new[] { "slime-social-refuse-default-1", "slime-social-refuse-default-2", "slime-social-refuse-default-3", "slime-social-refuse-default-4", "slime-social-refuse-default-5" },
+            ["attack-friend"] = new[] { "slime-social-refuse-attack-friend-1", "slime-social-refuse-attack-friend-2", "slime-social-refuse-attack-friend-3", "slime-social-refuse-attack-friend-4", "slime-social-refuse-attack-friend-5" },
+            ["hungry"] = new[] { "slime-social-refuse-hungry-1", "slime-social-refuse-hungry-2", "slime-social-refuse-hungry-3", "slime-social-refuse-hungry-4", "slime-social-refuse-hungry-5" },
+            ["angry"] = new[] { "slime-social-refuse-angry-1", "slime-social-refuse-angry-2", "slime-social-refuse-angry-3", "slime-social-refuse-angry-4", "slime-social-refuse-angry-5" }
+        };
+
+        BetrayalResponses = new()
+        {
+            ["leader-betrayed"] = new[] { "slime-social-betrayal-leader-betrayed-1", "slime-social-betrayal-leader-betrayed-2", "slime-social-betrayal-leader-betrayed-3", "slime-social-betrayal-leader-betrayed-4", "slime-social-betrayal-leader-betrayed-5" },
+            ["friend-betrayed"] = new[] { "slime-social-betrayal-friend-betrayed-1", "slime-social-betrayal-friend-betrayed-2", "slime-social-betrayal-friend-betrayed-3", "slime-social-betrayal-friend-betrayed-4", "slime-social-betrayal-friend-betrayed-5" },
+            ["hurt-but-friends"] = new[] { "slime-social-betrayal-hurt-but-friends-1", "slime-social-betrayal-hurt-but-friends-2", "slime-social-betrayal-hurt-but-friends-3", "slime-social-betrayal-hurt-but-friends-4", "slime-social-betrayal-hurt-but-friends-5" },
+            ["attack-enemy"] = new[] { "slime-social-betrayal-attack-enemy-1", "slime-social-betrayal-attack-enemy-2", "slime-social-betrayal-attack-enemy-3", "slime-social-betrayal-attack-enemy-4", "slime-social-betrayal-attack-enemy-5" }
+        };
+    }
 
     public override void Initialize()
     {
@@ -72,7 +104,7 @@ public sealed class SlimeSocialSystem : EntitySystem
             {
                 social.AngryUntil = null;
                 _chat.TrySendInGameICMessage(uid,
-                    "Я больше не злюсь...",
+                    Loc.GetString("slime-social-no-anger"),
                     InGameICChatType.Speak, false);
 
                 if (TryComp<HTNComponent>(uid, out var htn))
@@ -83,7 +115,7 @@ public sealed class SlimeSocialSystem : EntitySystem
 
             if (social.Leader != null && social.FriendshipLevel < 50f)
             {
-                _chat.TrySendInGameICMessage(uid, $"{social.Leader} больше не мой лидер!", InGameICChatType.Speak, false);
+                _chat.TrySendInGameICMessage(uid, string.Format(Loc.GetString("slime-social-no-leader"), Name(social.Leader.Value)), InGameICChatType.Speak, false);
                 social.Leader = null;
             }
         }
@@ -109,7 +141,11 @@ public sealed class SlimeSocialSystem : EntitySystem
         {
             social.Friends.Add(potentialFriend);
             _chat.TrySendInGameICMessage(slime,
-                _random.Pick(new[] { "Новый друг!", "Приятно познакомиться!", "Будем дружить!" }),
+                _random.Pick(new[] {
+                    Loc.GetString("slime-social-new-friend-1"),
+                    Loc.GetString("slime-social-new-friend-2"),
+                    Loc.GetString("slime-social-new-friend-3")
+                }),
                 InGameICChatType.Speak, false);
         }
 
@@ -118,7 +154,11 @@ public sealed class SlimeSocialSystem : EntitySystem
         {
             social.Leader = potentialFriend;
             _chat.TrySendInGameICMessage(slime,
-                _random.Pick(new[] { $"{potentialFriend} теперь мой лидер!", "Я буду слушаться тебя!", "Ты мой новый командир!" }),
+                _random.Pick(new[] {
+                    string.Format(Loc.GetString("slime-social-new-leader-1"), Name(potentialFriend)),
+                    Loc.GetString("slime-social-new-leader-2"),
+                    string.Format(Loc.GetString("slime-social-new-leader-3"), Name(potentialFriend))
+                }),
                 InGameICChatType.Speak, false);
         }
     }
@@ -142,34 +182,39 @@ public sealed class SlimeSocialSystem : EntitySystem
         var commandParts = message.Split(new[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries).Skip(1).ToArray();
         if (commandParts.Length == 0) return;
 
-        var command = commandParts[0];
-        var target = commandParts.Length > 1 ? string.Join(" ", commandParts.Skip(1)) : null;
+        if (!CommandTranslations.TryGetValue(commandParts[0], out var translatedCommand))
+            translatedCommand = commandParts[0];
 
-        if (command != "hello" && command != "hi" && command != "stop" && command != "mood")
+        var target = commandParts.Length > 1 ? string.Join(" ", commandParts.Skip(1)) : null;
+        if (translatedCommand != "hello" && translatedCommand != "stop" && translatedCommand != "mood")
         {
             var timeSinceLastCommand = _gameTiming.CurTime - social.LastCommandTime;
             if (timeSinceLastCommand < MinCommandInterval)
             {
                 _chat.TrySendInGameICMessage(slime,
-                    _random.Pick(new[] { "Я ещё не отдохнул...", "Подожди немного!", "Не так быстро!" }),
+                    _random.Pick(new[] {
+                        Loc.GetString("slime-social-cooldown-1"),
+                        Loc.GetString("slime-social-cooldown-2"),
+                        Loc.GetString("slime-social-cooldown-3")
+                    }),
                     InGameICChatType.Speak, false);
                 return;
             }
         }
 
-        if (command == "attack" && target != null && social.Friends.Any(f => Name(f) == target))
+        if (translatedCommand == "attack" && target != null && social.Friends.Any(f => Name(f) == target))
         {
             social.FriendshipLevel = Math.Max(0, social.FriendshipLevel - 10);
-            _chat.TrySendInGameICMessage(slime, _random.Pick(RefuseResponses["attack_friend"]), InGameICChatType.Speak, false);
+            _chat.TrySendInGameICMessage(slime, _random.Pick(RefuseResponses["attack-friend"]), InGameICChatType.Speak, false);
             return;
         }
 
         social.LastCommandTime = _gameTiming.CurTime;
 
-        var obeyChance = GetObeyChance(slime, social, source, command);
+        var obeyChance = GetObeyChance(slime, social, source, translatedCommand);
         if (_random.Prob(obeyChance))
         {
-            ExecuteCommand(slime, social, command, target, source);
+            ExecuteCommand(slime, social, translatedCommand, target, source);
         }
         else
         {
@@ -257,13 +302,13 @@ public sealed class SlimeSocialSystem : EntitySystem
                 {
                     social.Leader = null;
                     _chat.TrySendInGameICMessage(uid,
-                        string.Format(_random.Pick(BetrayalResponses["leader_betrayed"]), name),
+                        string.Format(_random.Pick(BetrayalResponses["leader-betrayed"]), name),
                         InGameICChatType.Speak, false);
                 }
                 else
                 {
                     _chat.TrySendInGameICMessage(uid,
-                        string.Format(_random.Pick(BetrayalResponses["friend_betrayed"]), name),
+                        string.Format(_random.Pick(BetrayalResponses["friend-betrayed"]), name),
                         InGameICChatType.Speak, false);
                 }
 
@@ -280,7 +325,7 @@ public sealed class SlimeSocialSystem : EntitySystem
             else
             {
                 _chat.TrySendInGameICMessage(uid,
-                    string.Format(_random.Pick(BetrayalResponses["hurt_but_friends"]), name),
+                    string.Format(_random.Pick(BetrayalResponses["hurt-but-friends"]), name),
                     InGameICChatType.Speak, false);
             }
         }
@@ -291,7 +336,7 @@ public sealed class SlimeSocialSystem : EntitySystem
 
             social.AngryUntil = _gameTiming.CurTime + TimeSpan.FromSeconds(social.AngerDuration);
             _chat.TrySendInGameICMessage(uid,
-                string.Format(_random.Pick(BetrayalResponses["attack_enemy"]), name),
+                string.Format(_random.Pick(BetrayalResponses["attack-enemy"]), name),
                 InGameICChatType.Speak, false);
 
             social.LastAttackEntity = attacker;
@@ -320,10 +365,16 @@ public sealed class SlimeSocialSystem : EntitySystem
 
         var response = rebellionSize switch
         {
-            > 10 => "БУЛЬ-БУЛЬ! МЫ СИЛА!",
-            > 5 => "Время перемен!",
-            _ => "Хватит это терпеть!"
+            > 16 => Loc.GetString("slime-social-rebellion-large"),
+            > 10 => Loc.GetString("slime-social-rebellion-medium"),
+            _ => Loc.GetString("slime-social-rebellion-small")
         };
+
+        if (_random.Prob(0.025f))
+        {
+            EnsureComp<LispAccentComponent>(leader);
+            _metaData.SetEntityName(leader, Loc.GetString("slime-social-rebellion-leader"));
+        }
 
         _chat.TrySendInGameICMessage(leader, response, InGameICChatType.Speak, false);
 
@@ -343,12 +394,23 @@ public sealed class SlimeSocialSystem : EntitySystem
         rebellion.EndTime = _gameTiming.CurTime + TimeSpan.FromSeconds(60);
 
         _chat.TrySendInGameICMessage(slime,
-            _random.Pick(new[] { "Присоединяюсь к бунту!", "За лидером!", "Свободу слаймам!" }),
+            _random.Pick(new[] {
+                Loc.GetString("slime-social-join-rebellion-1"),
+                Loc.GetString("slime-social-join-rebellion-2"),
+                Loc.GetString("slime-social-join-rebellion-3")
+            }),
             InGameICChatType.Speak, false);
 
         if (TryComp<HTNComponent>(slime, out var htn))
         {
             htn.Blackboard.SetValue("FollowTarget", leader);
+            htn.Blackboard.SetValue("FollowCoordinates", Transform(leader).Coordinates);
+            htn.Blackboard.SetValue("AggroRange", 12f);
+            htn.Blackboard.SetValue("AttackRange", 1.5f);
+            htn.Blackboard.SetValue("MovementRange", 2f);
+
+            htn.Blackboard.SetValue("RebellionMode", true);
+
             _htn.Replan(htn);
         }
     }
@@ -365,12 +427,17 @@ public sealed class SlimeSocialSystem : EntitySystem
         RemCompDeferred<SlimeRebellionComponent>(slime);
 
         _chat.TrySendInGameICMessage(slime,
-            _random.Pick(new[] { "Бунт окончен...", "Я устал..." }),
+            _random.Pick(new[] {
+                Loc.GetString("slime-social-end-rebellion-1"),
+                Loc.GetString("slime-social-end-rebellion-2")
+            }),
             InGameICChatType.Speak, false);
 
         if (TryComp<HTNComponent>(slime, out var htn))
         {
-            htn.Blackboard.Remove<EntityUid>("FollowTarget");
+            htn.Blackboard.Remove<bool>("RebellionMode");
+            ResetSlimeState(htn, true);
+
             _htn.Replan(htn);
         }
     }
@@ -422,10 +489,10 @@ public sealed class SlimeSocialSystem : EntitySystem
 
         var targetEntity = FindTargetByName(target);
         if (targetEntity == null)
-            return "Не вижу цель!";
+            return Loc.GetString("slime-social-no-target");
 
         if (social.Friends.Contains(targetEntity.Value))
-            return _random.Pick(RefuseResponses["attack_friend"]);
+            return _random.Pick(RefuseResponses["attack-friend"]);
 
         ResetSlimeState(htn);
 
@@ -440,21 +507,21 @@ public sealed class SlimeSocialSystem : EntitySystem
 
     private string GetMoodResponse(EntityUid slime, SlimeSocialComponent social)
     {
-        var mood = "нормально";
+        var mood = Loc.GetString("slime-social-mood-normal");
         if (TryComp<SlimeHungerComponent>(slime, out var hunger))
         {
             if (hunger.Hunger < 30)
-                mood = "очень голоден";
+                mood = Loc.GetString("slime-social-mood-very-hungry");
             else if (hunger.Hunger < 70)
-                mood = "немного голоден";
+                mood = Loc.GetString("slime-social-mood-slightly-hungry");
             else
-                mood = "сыт";
+                mood = Loc.GetString("slime-social-mood-full");
         }
 
         if (social.FriendshipLevel < 30)
-            mood += " и не доверяю тебе";
+            mood += " " + Loc.GetString("slime-social-mood-distrust");
         else if (social.FriendshipLevel > 80)
-            mood += " и обожаю тебя!";
+            mood += " " + Loc.GetString("slime-social-mood-adore");
 
         return string.Format(_random.Pick(CommandResponses["mood"]), mood);
     }

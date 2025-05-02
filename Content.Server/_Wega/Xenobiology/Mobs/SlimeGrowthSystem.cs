@@ -99,10 +99,9 @@ public sealed class SlimeGrowthSystem : SharedSlimeGrowthSystem
         if (_random.Prob(0.3f))
         {
             float reductionPercent = _random.NextFloat(0.15f, 0.45f);
-            const float minMutationChance = 0.05f;
 
             var newChance = growth.MutationChance * (1 - reductionPercent);
-            growth.MutationChance = Math.Max(newChance, minMutationChance);
+            growth.MutationChance = Math.Max(newChance, 0.05f);
         }
 
         if (_random.Prob(parentGrowth.MutationChance))

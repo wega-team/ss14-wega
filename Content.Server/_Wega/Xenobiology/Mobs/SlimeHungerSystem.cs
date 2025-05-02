@@ -186,7 +186,7 @@ public sealed class SlimeHungerSystem : EntitySystem
 
     public bool TryFeedSlime(EntityUid user, EntityUid slime, EntityUid food, SlimeHungerComponent? hunger = null)
     {
-        if (!Resolve(slime, ref hunger) || !HasComp<SlimeFoodComponent>(food))
+        if (!Resolve(slime, ref hunger) || !HasComp<SlimeFoodComponent>(food) || _mobState.IsDead(slime))
             return false;
 
         if (_gameTiming.CurTime < hunger.LastFeedTime + TimeSpan.FromSeconds(hunger.FeedCooldown))

@@ -8,6 +8,12 @@
   - type: Sprite
     sprite: _Wega/Mobs/Aliens/slimes.rsi
     state: gray_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: gray_baby_slime
+      Dead:
+        Base: gray_baby_dead
   - type: ReplacementAccent
     accent: slimes
   - type: Speech
@@ -72,6 +78,12 @@
   components:
   - type: Sprite
     state: blue_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: blue_baby_slime
+      Dead:
+        Base: blue_baby_dead
   - type: SlimeGrowth
     slimeType: Blue
   - type: Appearance
@@ -88,6 +100,12 @@
   components:
   - type: Sprite
     state: purple_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: purple_baby_slime
+      Dead:
+        Base: purple_baby_dead
   - type: SlimeGrowth
     slimeType: Purple
   - type: Appearance
@@ -104,6 +122,12 @@
   components:
   - type: Sprite
     state: orange_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: orange_baby_slime
+      Dead:
+        Base: orange_baby_dead
   - type: SlimeGrowth
     slimeType: Orange
   - type: Appearance
@@ -120,6 +144,12 @@
   components:
   - type: Sprite
     state: metallic_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: metallic_baby_slime
+      Dead:
+        Base: metallic_baby_dead
   - type: SlimeGrowth
     slimeType: Metallic
   - type: Appearance
@@ -136,6 +166,12 @@
   components:
   - type: Sprite
     state: darkpurple_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: darkpurple_baby_slime
+      Dead:
+        Base: darkpurple_baby_dead
   - type: SlimeGrowth
     slimeType: DarkPurple
   - type: Appearance
@@ -152,6 +188,12 @@
   components:
   - type: Sprite
     state: green_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: green_baby_slime
+      Dead:
+        Base: green_baby_dead
   - type: SlimeGrowth
     slimeType: Green
   - type: Appearance
@@ -168,6 +210,12 @@
   components:
   - type: Sprite
     state: darkblue_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: darkblue_baby_slime
+      Dead:
+        Base: darkblue_baby_dead
   - type: SlimeGrowth
     slimeType: DarkBlue
   - type: Appearance
@@ -184,6 +232,12 @@
   components:
   - type: Sprite
     state: pink_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: pink_baby_slime
+      Dead:
+        Base: pink_baby_dead
   - type: SlimeGrowth
     slimeType: Pink
   - type: Appearance
@@ -200,6 +254,12 @@
   components:
   - type: Sprite
     state: red_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: red_baby_slime
+      Dead:
+        Base: red_baby_dead
   - type: SlimeGrowth
     slimeType: Red
   - type: Appearance
@@ -216,6 +276,12 @@
   components:
   - type: Sprite
     state: yellow_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: yellow_baby_slime
+      Dead:
+        Base: yellow_baby_dead
   - type: SlimeGrowth
     slimeType: Yellow
   - type: Appearance
@@ -232,6 +298,12 @@
   components:
   - type: Sprite
     state: gold_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: gold_baby_slime
+      Dead:
+        Base: gold_baby_dead
   - type: SlimeGrowth
     slimeType: Gold
   - type: Appearance
@@ -248,6 +320,12 @@
   components:
   - type: Sprite
     state: silver_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: silver_baby_slime
+      Dead:
+        Base: silver_baby_dead
   - type: SlimeGrowth
     slimeType: Silver
   - type: Appearance
@@ -264,6 +342,12 @@
   components:
   - type: Sprite
     state: black_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: black_baby_slime
+      Dead:
+        Base: black_baby_dead
   - type: SlimeGrowth
     slimeType: Black
   - type: Appearance
@@ -280,6 +364,12 @@
   components:
   - type: Sprite
     state: sepia_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: sepia_baby_slime
+      Dead:
+        Base: sepia_baby_dead
   - type: SlimeGrowth
     slimeType: Sepia
   - type: Appearance
@@ -296,6 +386,12 @@
   components:
   - type: Sprite
     state: oil_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: oil_baby_slime
+      Dead:
+        Base: oil_baby_dead
   - type: SlimeGrowth
     slimeType: Oil
   - type: Appearance
@@ -312,6 +408,12 @@
   components:
   - type: Sprite
     state: bluespace_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: bluespace_baby_slime
+      Dead:
+        Base: bluespace_baby_dead
   - type: SlimeGrowth
     slimeType: Bluespace
   - type: Appearance
@@ -328,6 +430,12 @@
   components:
   - type: Sprite
     state: adamantine_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: adamantine_baby_slime
+      Dead:
+        Base: adamantine_baby_dead
   - type: SlimeGrowth
     slimeType: Adamantine
   - type: Appearance
@@ -344,6 +452,12 @@
   components:
   - type: Sprite
     state: pyrite_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: pyrite_baby_slime
+      Dead:
+        Base: pyrite_baby_dead
   - type: SlimeGrowth
     slimeType: Pyrite
   - type: Appearance
@@ -360,6 +474,12 @@
   components:
   - type: Sprite
     state: azure_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: azure_baby_slime
+      Dead:
+        Base: azure_baby_dead
   - type: SlimeGrowth
     slimeType: Azure
   - type: Appearance
@@ -376,6 +496,12 @@
   components:
   - type: Sprite
     state: lightpink_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: lightpink_baby_slime
+      Dead:
+        Base: lightpink_baby_dead
   - type: SlimeGrowth
     slimeType: LightPink
   - type: Appearance
@@ -392,6 +518,12 @@
   components:
   - type: Sprite
     state: rainbow_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: rainbow_baby_slime
+      Dead:
+        Base: rainbow_baby_dead
   - type: SlimeGrowth
     slimeType: Rainbow
   - type: Appearance

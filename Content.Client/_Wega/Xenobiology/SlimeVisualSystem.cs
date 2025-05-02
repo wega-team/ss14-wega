@@ -1,3 +1,5 @@
+using Content.Client.DamageState;
+using Content.Shared.Mobs;
 using Content.Shared.Xenobiology;
 using Content.Shared.Xenobiology.Components;
 using Robust.Client.GameObjects;
@@ -29,5 +31,25 @@ public sealed class SlimeVisualSystem : SharedSlimeVisualSystem
             : $"{type.ToString().ToLower()}_adult_slime";
 
         args.Sprite.LayerSetState(0, state);
+        UpdateDamageVisuals(ent.Owner, stage, type);
+    }
+
+    private void UpdateDamageVisuals(EntityUid uid, SlimeStage stage, SlimeType type)
+    {
+        if (!TryComp<DamageStateVisualsComponent>(uid, out var damageVisuals))
+            return;
+
+        var typeStr = type.ToString().ToLower();
+        var stageStr = stage == SlimeStage.Young ? "baby" : "adult";
+
+        damageVisuals.States[MobState.Alive] = new()
+        {
+            [DamageStateVisualLayers.Base] = $"{typeStr}_{stageStr}_slime"
+        };
+
+        damageVisuals.States[MobState.Dead] = new()
+        {
+            [DamageStateVisualLayers.Base] = $"{typeStr}_baby_dead"
+        };
     }
 }

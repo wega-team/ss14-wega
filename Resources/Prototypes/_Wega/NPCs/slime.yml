@@ -1,6 +1,14 @@
 - type: htnCompound
   id: SlimeRootCompound
   branches:
+    # Rebellion
+    - preconditions:
+        - !type:KeyExistsPrecondition
+          key: RebellionMode
+      tasks:
+        - !type:HTNCompoundTask
+          task: SlimeRebellionPriority
+
     # Aggressive
     - preconditions:
         - !type:CheckSlimeHungerPrecondition
@@ -8,6 +16,14 @@
       tasks:
         - !type:HTNCompoundTask
           task: SlimeAttackSequence
+
+    # Hungry
+    - preconditions:
+        - !type:CheckSlimeHungerPrecondition
+          targetState: Hungry
+      tasks:
+        - !type:HTNCompoundTask
+          task: SlimeHungryBehavior
 
     # Attack
     - preconditions:
@@ -19,14 +35,6 @@
       tasks:
         - !type:HTNCompoundTask
           task: SlimeCommandAttackCompound
-
-    # Hungry
-    - preconditions:
-        - !type:CheckSlimeHungerPrecondition
-          targetState: Hungry
-      tasks:
-        - !type:HTNCompoundTask
-          task: SlimeHungryBehavior
 
     # Follow
     - preconditions:
@@ -46,6 +54,37 @@
             key: IdleTime
 
     # Passive
+    - tasks:
+      - !type:HTNPrimitiveTask
+        operator: !type:SlimeWanderOperator
+          rangeKey: WanderRange
+          wanderRange: 5.0
+          minIdleTime: 2.0
+          maxIdleTime: 5.0
+
+- type: htnCompound
+  id: SlimeRebellionPriority
+  branches:
+    - tasks:
+        - !type:HTNPrimitiveTask
+          operator: !type:SlimeFindTargetOperator
+            targetKey: AttackTarget
+            rangeKey: AggroRange
+
+    - preconditions:
+        - !type:KeyExistsPrecondition
+          key: AttackTarget
+      tasks:
+        - !type:HTNCompoundTask
+          task: SlimeAttackSequence
+
+    - preconditions:
+        - !type:KeyExistsPrecondition
+          key: FollowCoordinates
+      tasks:
+        - !type:HTNCompoundTask
+          task: SlimeFollowCompound
+
     - tasks:
       - !type:HTNPrimitiveTask
         operator: !type:SlimeWanderOperator
