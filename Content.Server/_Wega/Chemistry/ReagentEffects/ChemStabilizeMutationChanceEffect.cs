@@ -21,7 +21,7 @@ namespace Content.Server.EntityEffects.Effects
         public float MinMutationChance = 0.05f;
 
         protected override string? ReagentEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
-            => Loc.GetString("reagent-effect-guidebook-reduce-mutation-chance",
+            => Loc.GetString("reagent-effect-guidebook-stabilize-mutation",
                 ("minReduction", (int)(MinReduction * 100)),
                 ("maxReduction", (int)(MaxReduction * 100)),
                 ("min", (int)(MinMutationChance * 100)));

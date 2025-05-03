@@ -22,9 +22,9 @@ namespace Content.Server.Chemistry.ReagentEffects
 
         protected override string? ReagentEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
         {
-            var diseaseList = string.Join(", ", Diseases);
-            return Loc.GetString("This reagent has a chance to cause a random disease from the following list: {diseases}.",
-                                ("diseases", diseaseList));
+            var diseasesList = string.Join(", ", Diseases);
+            return Loc.GetString("reagent-effect-guidebook-cause-random-disease",
+                ("diseases", diseasesList));
         }
 
         public override void Effect(EntityEffectBaseArgs args)

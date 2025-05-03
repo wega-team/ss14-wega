@@ -25,6 +25,20 @@
         type: Add
         time: 16
         refresh: false
+      - !type:MovespeedModifier
+        walkSpeedModifier: 1.10
+        sprintSpeedModifier: 1.10
+        conditions:
+          - !type:ReagentThreshold
+            min: 5
+      - !type:HealthChange
+        conditions:
+          - !type:ReagentThreshold
+            min: 20
+        damage:
+          types:
+            Poison: 1
+            Cellular: 0.5
 
 - type: reagent
   id: SlimeStabilizer
@@ -41,6 +55,13 @@
         conditions:
         - !type:ReagentThreshold
           min: 5
+      - !type:HealthChange
+        damage:
+          types:
+            Radiation: -0.5
+        conditions:
+          - !type:ReagentThreshold
+            min: 10
 
 - type: reagent
   id: ChillPotion
@@ -55,6 +76,15 @@
       methods: [ Touch ]
       effects:
       - !type:ChemChillProtectionEffect
+      - !type:AdjustTemperature
+        amount: -5000
+  metabolisms:
+    Medicine:
+      effects:
+        - !type:GenericStatusEffect
+          key: SlowMetabolism
+          time: 10
+          type: Add
 
 - type: reagent
   id: SlimeReinforcer
@@ -71,17 +101,29 @@
         conditions:
         - !type:ReagentThreshold
           min: 5
+      - !type:HealthChange
+        damage:
+          groups:
+            Brute: -0.5
+            Burn: -0.5
+        conditions:
+          - !type:ReagentThreshold
+            min: 15
+      - !type:GenericStatusEffect
+        key: MovespeedModifier
+        walkSpeedModifier: 0.9
+        sprintSpeedModifier: 0.9
 
 - type: reagent
   id: MutationsPotion
   name: reagent-name-mutations-potion
-  group: Medicine
+  group: Toxin
   desc: reagent-desc-mutations-potion
   physicalDesc: reagent-physical-desc-opaque
-  flavor: medicine
+  flavor: toxin
   color: "#007FFF"
   metabolisms:
-    Medicine:
+    Toxin:
       effects:
       - !type:ChemIncreaseMutationChanceEffect
         conditions:
@@ -114,6 +156,8 @@
         key: KnockedDown
         time: 3
         type: Remove
+      - !type:SatiateHunger
+        factor: -3
 
 - type: reagent
   id: MindPotion
@@ -135,7 +179,7 @@
   id: IncreaseFriendshipPotion
   name: reagent-name-increase-friendship-potion
   group: Medicine
-  desc: reagent-name-increase-friendship-potion
+  desc: reagent-desc-increase-friendship-potion
   physicalDesc: reagent-physical-desc-opaque
   flavor: medicine
   color: "#FFC0CB"
@@ -150,10 +194,10 @@
 - type: reagent
   id: AdvancedMutateToxin
   name: reagent-name-advanced-mutate-toxin
-  group: Medicine
+  group: Toxins
   desc: reagent-desc-advanced-mutate-toxin
   physicalDesc: reagent-physical-desc-opaque
-  flavor: medicine
+  flavor: bitter
   color: "#000000"
   metabolisms:
     Poison:
@@ -183,6 +227,13 @@
         conditions:
         - !type:ReagentThreshold
           min: 5
+      - !type:HealthChange
+        damage:
+          types:
+            Cold: 0.5
+        conditions:
+          - !type:ReagentThreshold
+            min: 10
 
 - type: reagent
   id: RadiationResistPotion
@@ -200,6 +251,10 @@
         conditions:
         - !type:ReagentThreshold
           min: 5
+      - !type:HealthChange
+        damage:
+          types:
+            Poison: 0.2
 
 - type: reagent
   id: CellularResistPotion
@@ -235,3 +290,6 @@
         conditions:
         - !type:ReagentThreshold
           min: 5
+      - !type:MovespeedModifier
+        walkSpeedModifier: 0.95
+        sprintSpeedModifier: 0.95

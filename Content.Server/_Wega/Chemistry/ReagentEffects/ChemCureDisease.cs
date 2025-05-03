@@ -18,10 +18,8 @@ namespace Content.Server.Chemistry.ReagentEffects
         public float CureChance = 0.15f;
 
         protected override string? ReagentEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
-        {
-            return Loc.GetString("This reagent has a {chance} chance to cure a disease.",
-                                 ("chance", CureChance));
-        }
+            => Loc.GetString("reagent-effect-guidebook-cure-disease",
+                ("chance", CureChance));
 
         public override void Effect(EntityEffectBaseArgs args)
         {

@@ -27,7 +27,6 @@ namespace Content.Server.EntityEffects.Effects
                 return;
 
             tempProtection.HeatingCoefficient = HeatingCoefficient;
-            entityManager.Dirty(uid, tempProtection);
         }
     }
 }
