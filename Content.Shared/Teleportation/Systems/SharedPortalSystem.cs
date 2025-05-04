@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Numerics;
 using Content.Shared.Ghost;
 using Content.Shared.Movement.Pulling.Components;
 using Content.Shared.Movement.Pulling.Systems;
@@ -30,6 +31,7 @@ public abstract class SharedPortalSystem : EntitySystem
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly PullingSystem _pulling = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private readonly IMapManager _mapManager = default!;
 
     private const string PortalFixture = "portalFixture";
     private const string ProjectileFixture = "projectile";
@@ -168,6 +170,9 @@ public abstract class SharedPortalSystem : EntitySystem
         if (!Resolve(portal, ref portalComponent))
             return;
 
+        var targetMap = target.ToMap(EntityManager, _transform); // Corvax-Wega-Save
+        var safeTarget = FindFreePosition(targetMap, 1f); // Corvax-Wega-Save
+
         var ourCoords = Transform(portal).Coordinates;
         var onSameMap = ourCoords.GetMapId(EntityManager) == target.GetMapId(EntityManager);
         var distanceInvalid = portalComponent.MaxTeleportRadius != null
@@ -207,7 +212,7 @@ public abstract class SharedPortalSystem : EntitySystem
 
         LogTeleport(portal, subject, Transform(subject).Coordinates, target);
 
-        _transform.SetCoordinates(subject, target);
+        _transform.SetCoordinates(subject, safeTarget); // Corvax-Wega-Save-Edit
 
         if (!playSound)
             return;
@@ -241,4 +246,37 @@ public abstract class SharedPortalSystem : EntitySystem
         EntityCoordinates target)
     {
     }
+
+    // Corvax-Wega-Save-start
+    private EntityCoordinates FindFreePosition(MapCoordinates targetMap, float radius)
+    {
+        if (!_lookup.GetEntitiesIntersecting(targetMap, LookupFlags.Static | LookupFlags.Dynamic).Any())
+        {
+            return new EntityCoordinates(_mapManager.GetMapEntityId(targetMap.MapId), targetMap.Position);
+        }
+
+        var spiralSteps = 8;
+        var stepSize = 1.0f;
+
+        for (int step = 1; step * stepSize <= radius; step++)
+        {
+            for (int i = 0; i < spiralSteps; i++)
+            {
+                var angle = (float)i / spiralSteps * MathHelper.TwoPi;
+                var offset = new Vector2(
+                    (float)Math.Cos(angle) * stepSize * step,
+                    (float)Math.Sin(angle) * stepSize * step);
+
+                var testPos = new MapCoordinates(targetMap.Position + offset, targetMap.MapId);
+
+                if (!_lookup.GetEntitiesIntersecting(testPos, LookupFlags.Static | LookupFlags.Dynamic).Any())
+                {
+                    return new EntityCoordinates(_mapManager.GetMapEntityId(testPos.MapId), testPos.Position);
+                }
+            }
+        }
+
+        return new EntityCoordinates(_mapManager.GetMapEntityId(targetMap.MapId), targetMap.Position);
+    }
+    // Corvax-Wega-Save-end
 }
