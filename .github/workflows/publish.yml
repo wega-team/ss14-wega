@@ -7,7 +7,6 @@ on:
   workflow_dispatch:
   schedule:
   - cron: '0 1 * * *'
-
 jobs:
   build:
     runs-on: [self-hosted, Linux, username:runner-0, os:ubuntu-24.04]
@@ -78,6 +77,14 @@ jobs:
         PUBLISH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
         GITHUB_REPOSITORY: ${{ vars.GITHUB_REPOSITORY }}
         FORK_ID: ${{ vars.FORK_ID }}
+
+    # - name: Publish version wega sandbox
+    #   run: python3 Tools/publish_sandbox.py
+    #   env:
+    #     PUBLISH_USERNAME: ${{ secrets.PUBLISH_USERNAME }}
+    #     PUBLISH_PASSWORD: ${{ secrets.PUBLISH_PASSWORD }}
+    #     GITHUB_REPOSITORY: ${{ vars.GITHUB_REPOSITORY }}
+    #     FORK_ID: ${{ vars.FORK_ID }}
 
     #    - name: Publish changelog (Discord)
     #      run: Tools/actions_changelogs_since_last_run.py

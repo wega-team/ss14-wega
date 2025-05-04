@@ -9,9 +9,7 @@ namespace Content.Server.Chemistry.ReagentEffects
     public sealed partial class ChemMutateDna : EntityEffect
     {
         protected override string? ReagentEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
-        {
-            return Loc.GetString("");
-        }
+            => Loc.GetString("reagent-effect-guidebook-mutate-dna");
 
         public override void Effect(EntityEffectBaseArgs args)
         {

@@ -34,6 +34,7 @@ using Content.Shared.Containers.ItemSlots;
 using Robust.Server.GameObjects;
 using Content.Shared.Whitelist;
 using Content.Shared.Destructible;
+using Content.Shared.Xenobiology.Components;
 
 namespace Content.Server.Nutrition.EntitySystems;
 
@@ -112,6 +113,9 @@ public sealed class FoodSystem : EntitySystem
         // Target can't be fed or they're already eating
         if (!TryComp<BodyComponent>(target, out var body))
             return (false, false);
+
+        if (HasComp<SlimeHungerComponent>(target)) // Corvax-Wega-Xenobiology
+            return (false, false); // Corvax-Wega-Xenobiology
 
         if (HasComp<UnremoveableComponent>(food))
             return (false, false);

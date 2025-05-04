@@ -137,6 +137,7 @@
         - ReagentId: UncookedAnimalProteins
           Quantity: 5
   - type: Stomach
+    updateInterval: 0.25
   - type: Metabolizer
     maxReagents: 3
     metabolizerTypes: [Human]

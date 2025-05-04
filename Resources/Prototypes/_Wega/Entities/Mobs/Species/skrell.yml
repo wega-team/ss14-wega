@@ -10,7 +10,7 @@
   - type: DiseaseCarrier
   - type: Skrell
   - type: Thirst
-    baseDecayRate: 0.4
+    baseDecayRate: 0.15
   - type: Hunger
   - type: Body
     prototype: Skrell

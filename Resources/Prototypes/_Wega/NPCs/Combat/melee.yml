@@ -1,0 +1,105 @@
+- type: htnCompound
+  id: SlimeAttackSequence
+  branches:
+    - preconditions:
+        - !type:BuckledPrecondition
+          isBuckled: true
+      tasks:
+        - !type:HTNPrimitiveTask
+          operator: !type:UnbuckleOperator
+            shutdownState: TaskFinished
+
+    - preconditions:
+        - !type:PulledPrecondition
+          isPulled: true
+      tasks:
+        - !type:HTNPrimitiveTask
+          operator: !type:UnPullOperator
+            shutdownState: TaskFinished
+
+    - preconditions:
+        - !type:InContainerPrecondition
+          isInContainer: true
+      tasks:
+        - !type:HTNCompoundTask
+          task: EscapeCompound
+
+    - tasks:
+        - !type:HTNPrimitiveTask
+          operator: !type:SlimeFindTargetOperator
+            targetKey: AttackTarget
+            rangeKey: AggroRange
+
+        - !type:HTNPrimitiveTask
+          operator: !type:MoveToOperator
+            targetKey: TargetCoordinates
+            rangeKey: AttackRange
+            pathfindKey: AttackPath
+
+        - !type:HTNPrimitiveTask
+          operator: !type:SlimeMeleeOperator
+            targetKey: AttackTarget
+            damageAmount: 5
+            cooldown: 1.5
+
+    - preconditions:
+        - !type:KeyExistsPrecondition
+          key: AttackTarget
+          invert: true
+      tasks:
+        # Trying to eat
+        - !type:HTNCompoundTask
+          task: SlimeHungryBehavior
+
+- type: htnCompound
+  id: SlimeCommandAttackCompound
+  branches:
+    - preconditions:
+        - !type:BuckledPrecondition
+          isBuckled: true
+      tasks:
+        - !type:HTNPrimitiveTask
+          operator: !type:UnbuckleOperator
+            shutdownState: TaskFinished
+
+    - preconditions:
+        - !type:PulledPrecondition
+          isPulled: true
+      tasks:
+        - !type:HTNPrimitiveTask
+          operator: !type:UnPullOperator
+            shutdownState: TaskFinished
+
+    - preconditions:
+        - !type:InContainerPrecondition
+          isInContainer: true
+      tasks:
+        - !type:HTNCompoundTask
+          task: EscapeCompound
+
+    - preconditions:
+        - !type:KeyExistsPrecondition
+          key: AttackTarget
+      tasks:
+        - !type:HTNPrimitiveTask
+          operator: !type:UpdateTargetCoordinatesOperator
+            targetKey: AttackTarget
+            outputKey: AttackCoordinates
+
+        - !type:HTNPrimitiveTask
+          operator: !type:MoveToOperator
+            targetKey: AttackCoordinates
+            rangeKey: AttackRange
+            pathfindKey: AttackPath
+            repathTime: 0.3
+            removeKeyOnFinish: false
+
+        - !type:HTNPrimitiveTask
+          operator: !type:SlimeMeleeOperator
+            targetKey: AttackTarget
+            damageAmount: 5
+            cooldown: 1.5
+          preconditions:
+            - !type:TargetInRangePrecondition
+              targetKey: AttackTarget
+              rangeKey: AttackRange

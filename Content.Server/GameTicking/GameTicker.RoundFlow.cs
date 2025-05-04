@@ -663,6 +663,12 @@ namespace Content.Server.GameTicking
             IncrementRoundNumber();
             SendRoundStartingDiscordMessage();
 
+            // Corvax-Wega-Vote
+            if (_cfg.GetCVar(WegaCVars.VoteRoundEndEnabled))
+            {
+                RoundEndVote();
+            }
+
             if (!LobbyEnabled)
             {
                 StartRound();
@@ -821,6 +827,18 @@ namespace Content.Server.GameTicking
                 Log.Error($"Error while sending discord round start message:\n{e}");
             }
         }
+
+        // Corvax-Wega-Vote-start
+        private void RoundEndVote()
+        {
+            var players = _playerManager.Sessions.ToList();
+            if (players.Count == 0)
+                return;
+
+            var vote = new VoteRoundEndEvent();
+            RaiseLocalEvent(vote);
+        }
+        // Corvax-Wega-Vote-end
     }
 
     public enum GameRunLevel

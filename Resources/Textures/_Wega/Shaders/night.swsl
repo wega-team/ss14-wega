@@ -1,0 +1,31 @@
+light_mode unshaded;
+
+uniform sampler2D SCREEN_TEXTURE;
+uniform highp vec3 tint;
+uniform highp float brightness;
+uniform highp float luminance_threshold;
+uniform highp float noise_amount;
+
+highp float rand(highp vec2 uv) {
+    return fract(sin(dot(uv, vec2(12.9898, 78.233))) * 43758.5453);
+}
+
+void fragment() {
+    highp vec4 color = texture(SCREEN_TEXTURE, UV);
+
+    highp float grey = dot(color.rgb, vec3(0.299, 0.587, 0.114));
+
+    highp float threshold = grey * luminance_threshold;
+
+    if (grey < threshold) {
+        grey += (threshold - grey) * brightness;
+        grey = min(grey, 1.0);
+    }
+
+    highp vec3 night_color = mix(color.rgb, tint * grey, 0.8);
+
+    highp float noise = (rand(UV + TIME) - 0.5) * noise_amount * (1.0 - grey);
+    night_color += noise;
+
+    COLOR = vec4(clamp(night_color, 0.0, 1.0), color.a);
+}

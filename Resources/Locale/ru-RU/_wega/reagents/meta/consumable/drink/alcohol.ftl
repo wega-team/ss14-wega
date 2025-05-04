@@ -1,4 +1,3 @@
-reagent-name-bacchus-blessing = благословение бахуса
 reagent-name-aperol = апероль
 reagent-name-jagermeister = джагермейстер
 reagent-name-schnaps = шнапс
@@ -47,7 +46,6 @@ reagent-name-tick-tack = тик-ток
 reagent-name-uragan-shot = урагановый выстрел
 reagent-name-new-yorker = нью-йоркер
 
-reagent-desc-bacchus-blessing = Вас предупредили.
 reagent-desc-aperol = Ох-ох-ох... Похоже, это засада для печени.
 reagent-desc-jagermeister = Охотник на пьяниц пришел из глубин космоса, и похоже, он нашел жертву.
 reagent-desc-schnaps = От такого шнапса не грех начать йодль.

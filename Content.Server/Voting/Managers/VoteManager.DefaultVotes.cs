@@ -225,11 +225,11 @@ namespace Content.Server.Voting.Managers
             string? presetToExclude = null;
             if (_lastPickedPresets.Count == 2 && _lastPickedPresets[0] == _lastPickedPresets[1])
                 presetToExclude = _lastPickedPresets[0];
-        
+
             var filteredPresets = presets
                 .Where(p => p.Key != presetToExclude)
                 .ToDictionary(p => p.Key, p => p.Value);
-            
+
             if (filteredPresets.Count == 0)
             {
                 _lastPickedPresets.Clear();

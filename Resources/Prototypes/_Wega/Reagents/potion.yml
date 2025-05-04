@@ -1,0 +1,295 @@
+- type: reagent
+  id: SlimeSteroid
+  name: reagent-name-slime-steroid
+  group: Narcotics
+  desc: reagent-desc-slime-steroid
+  flavor: bitter
+  flavorMinimum: 0.05
+  color: "#800080"
+  physicalDesc: reagent-physical-desc-crystalline
+  plantMetabolism:
+  - !type:PlantAdjustNutrition
+    amount: -5
+  - !type:PlantAdjustHealth
+    amount: -1
+  metabolisms:
+    Narcotic:
+      effects:
+      - !type:ChemReinforcedExtractsEffect
+        conditions:
+        - !type:ReagentThreshold
+          min: 10
+      - !type:GenericStatusEffect
+        key: SeeingRainbows
+        component: SeeingRainbows
+        type: Add
+        time: 16
+        refresh: false
+      - !type:MovespeedModifier
+        walkSpeedModifier: 1.10
+        sprintSpeedModifier: 1.10
+        conditions:
+          - !type:ReagentThreshold
+            min: 5
+      - !type:HealthChange
+        conditions:
+          - !type:ReagentThreshold
+            min: 20
+        damage:
+          types:
+            Poison: 1
+            Cellular: 0.5
+
+- type: reagent
+  id: SlimeStabilizer
+  name: reagent-name-slime-stabilizer
+  group: Medicine
+  desc: reagent-desc-slime-stabilizer
+  physicalDesc: reagent-physical-desc-opaque
+  flavor: medicine
+  color: "#1E90FF"
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:ChemStabilizeMutationChanceEffect
+        conditions:
+        - !type:ReagentThreshold
+          min: 5
+      - !type:HealthChange
+        damage:
+          types:
+            Radiation: -0.5
+        conditions:
+          - !type:ReagentThreshold
+            min: 10
+
+- type: reagent
+  id: ChillPotion
+  name: reagent-name-chill-potion
+  group: Medicine
+  desc: reagent-desc-chill-potion
+  physicalDesc: reagent-physical-desc-opaque
+  flavor: medicine
+  color: "#00008B"
+  reactiveEffects:
+    Special:
+      methods: [ Touch ]
+      effects:
+      - !type:ChemChillProtectionEffect
+      - !type:AdjustTemperature
+        amount: -5000
+  metabolisms:
+    Medicine:
+      effects:
+        - !type:GenericStatusEffect
+          key: SlowMetabolism
+          time: 10
+          type: Add
+
+- type: reagent
+  id: SlimeReinforcer
+  name: reagent-name-slime-reinforcer
+  group: Medicine
+  desc: reagent-desc-slime-reinforcer
+  physicalDesc: reagent-physical-desc-opaque
+  flavor: medicine
+  color: "#007FFF"
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:ChemReinforcedExtractsEffect
+        conditions:
+        - !type:ReagentThreshold
+          min: 5
+      - !type:HealthChange
+        damage:
+          groups:
+            Brute: -0.5
+            Burn: -0.5
+        conditions:
+          - !type:ReagentThreshold
+            min: 15
+      - !type:GenericStatusEffect
+        key: MovespeedModifier
+        walkSpeedModifier: 0.9
+        sprintSpeedModifier: 0.9
+
+- type: reagent
+  id: MutationsPotion
+  name: reagent-name-mutations-potion
+  group: Toxin
+  desc: reagent-desc-mutations-potion
+  physicalDesc: reagent-physical-desc-opaque
+  flavor: toxin
+  color: "#007FFF"
+  metabolisms:
+    Toxin:
+      effects:
+      - !type:ChemIncreaseMutationChanceEffect
+        conditions:
+        - !type:ReagentThreshold
+          min: 5
+
+- type: reagent
+  id: SpeedPotion
+  name: reagent-name-speed-potion
+  group: Medicine
+  desc: reagent-desc-speed-potion
+  physicalDesc: reagent-physical-desc-opaque
+  flavor: medicine
+  color: "#303030"
+  metabolisms:
+    Narcotic:
+      effects:
+      - !type:MovespeedModifier
+        walkSpeedModifier: 1.35
+        sprintSpeedModifier: 1.35
+      - !type:GenericStatusEffect
+        key: Stutter
+        component: StutteringAccent
+      - !type:Jitter
+      - !type:GenericStatusEffect
+        key: Stun
+        time: 3
+        type: Remove
+      - !type:GenericStatusEffect
+        key: KnockedDown
+        time: 3
+        type: Remove
+      - !type:SatiateHunger
+        factor: -3
+
+- type: reagent
+  id: MindPotion
+  name: reagent-name-mind-potion
+  group: Medicine
+  desc: reagent-desc-mind-potion
+  physicalDesc: reagent-physical-desc-opaque
+  flavor: medicine
+  color: "#FFB6C1"
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:MakeSentient
+        conditions:
+        - !type:ReagentThreshold
+          min: 5
+
+- type: reagent
+  id: IncreaseFriendshipPotion
+  name: reagent-name-increase-friendship-potion
+  group: Medicine
+  desc: reagent-desc-increase-friendship-potion
+  physicalDesc: reagent-physical-desc-opaque
+  flavor: medicine
+  color: "#FFC0CB"
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:ChemIncreaseFriendshipEffect
+        conditions:
+        - !type:ReagentThreshold
+          min: 5
+
+- type: reagent
+  id: AdvancedMutateToxin
+  name: reagent-name-advanced-mutate-toxin
+  group: Toxins
+  desc: reagent-desc-advanced-mutate-toxin
+  physicalDesc: reagent-physical-desc-opaque
+  flavor: bitter
+  color: "#000000"
+  metabolisms:
+    Poison:
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+            Poison: 2
+      - !type:ChemCauseDisease
+          causeChance: 1
+          disease: SLIMEITIS
+
+# Resist Potions
+- type: reagent
+  id: HeatResistPotion
+  name: reagent-name-heat-resist-potion
+  group: Medicine
+  desc: reagent-desc-heat-resist-potion
+  physicalDesc: reagent-physical-desc-opaque
+  flavor: medicine
+  color: "#FAFAD2"
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:ChemDamageResistReagentEffect
+        damageTypes: [ "Heat" ]
+        conditions:
+        - !type:ReagentThreshold
+          min: 5
+      - !type:HealthChange
+        damage:
+          types:
+            Cold: 0.5
+        conditions:
+          - !type:ReagentThreshold
+            min: 10
+
+- type: reagent
+  id: RadiationResistPotion
+  name: reagent-name-radiation-resist-potion
+  group: Medicine
+  desc: reagent-desc-radiation-resist-potion
+  physicalDesc: reagent-physical-desc-opaque
+  flavor: medicine
+  color: "#FAFAD2"
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:ChemDamageResistReagentEffect
+        damageTypes: [ "Radiation" ]
+        conditions:
+        - !type:ReagentThreshold
+          min: 5
+      - !type:HealthChange
+        damage:
+          types:
+            Poison: 0.2
+
+- type: reagent
+  id: CellularResistPotion
+  name: reagent-name-cellular-resist-potion
+  group: Medicine
+  desc: reagent-desc-cellular-resist-potion
+  physicalDesc: reagent-physical-desc-opaque
+  flavor: medicine
+  color: "#00FF00"
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:ChemDamageResistReagentEffect
+        damageTypes: [ "Cellular" ]
+        conditions:
+        - !type:ReagentThreshold
+          min: 5
+
+- type: reagent
+  id: IronSkinResistPotion
+  name: reagent-name-iron-skin-resist-potion
+  group: Medicine
+  desc: reagent-desc-iron-skin-resist-potion
+  physicalDesc: reagent-physical-desc-opaque
+  flavor: medicine
+  color: "#66FF66"
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:ChemDamageResistReagentEffect
+        damageTypes: [ "Blunt", "Piercing", "Slash" ]
+        resistFactor: 0.1
+        conditions:
+        - !type:ReagentThreshold
+          min: 5
+      - !type:MovespeedModifier
+        walkSpeedModifier: 0.95
+        sprintSpeedModifier: 0.95

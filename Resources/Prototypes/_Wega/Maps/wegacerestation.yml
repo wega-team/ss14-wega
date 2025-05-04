@@ -2,7 +2,7 @@
   id: WegaCereStation
   mapName: 'Cere Station'
   mapPath: /Maps/_Wega/wegacerestation.yml
-  minPlayers: 50
+  minPlayers: 65
   stations:
     CereStation:
       stationProto: StandardNanotrasenStation
@@ -52,6 +52,7 @@
             SecurityOfficer: [ 8, 8 ]
             Detective: [ 1, 1 ]
             SecurityCadet: [ 4, 4 ]
+            Pilot: [ 1, 1 ]
             Brigmedic: [ 1, 1 ]
             #supply
             Quartermaster: [ 1, 1 ]

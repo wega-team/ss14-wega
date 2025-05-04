@@ -43,6 +43,7 @@
   - Vulpkanin
   - Skrell
   - Resomi
+  - Demon
   nearestAllowedGenders:
   - Male
   - Female
@@ -60,6 +61,7 @@
   - Vulpkanin
   - Vox
   - Resomi
+  - Demon
 
 - type: interaction
   id: BaseTargetHasTail
@@ -70,6 +72,7 @@
   - Vulpkanin
   - Vox
   - Resomi
+  - Demon
 
 - type: interaction
   id: BaseTargetHasEars
@@ -95,6 +98,7 @@
   - Vulpkanin #/~UwU~\
   - Skrell
   - Resomi
+  - Demon
 
 - type: interaction
   parent: BaseHumanoid
@@ -112,6 +116,7 @@
   - Vulpkanin #/~UwU~\
   - Skrell
   - Resomi
+  - Demon
 
 # Interactions
 
@@ -634,6 +639,7 @@
   - SlimePerson
   - Vulpkanin
   - Skrell
+  - Demon
   nearestAllowedGenders:
   - Female
   blackListSpecies:
@@ -1054,6 +1060,7 @@
   - SlimePerson
   - Vulpkanin #/~UwU~\
   - Skrell
+  - Demon
   blackListSpecies:
   - Resomi
 
@@ -1074,6 +1081,7 @@
   - SlimePerson
   - Vulpkanin #/~UwU~\
   - Skrell
+  - Demon
   blackListSpecies:
   - Resomi
 
@@ -1096,6 +1104,7 @@
   - SlimePerson
   - Vulpkanin #/~UwU~\
   - Skrell
+  - Demon
   blackListSpecies:
   - Resomi
 
@@ -1118,6 +1127,7 @@
   - SlimePerson
   - Vulpkanin #/~UwU~\
   - Skrell
+  - Demon
   blackListSpecies:
   - Resomi
 

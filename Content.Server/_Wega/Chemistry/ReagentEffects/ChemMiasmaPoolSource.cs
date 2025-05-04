@@ -15,9 +15,7 @@ namespace Content.Server.Chemistry.ReagentEffects
     public sealed partial class ChemAtmosPoolSource : EntityEffect
     {
         protected override string? ReagentEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
-        {
-            return Loc.GetString("This reagent spreads a random disease from the miasma system to affected entities.");
-        }
+            => Loc.GetString("reagent-effect-guidebook-atmos-pool-source");
 
         public override void Effect(EntityEffectBaseArgs args)
         {

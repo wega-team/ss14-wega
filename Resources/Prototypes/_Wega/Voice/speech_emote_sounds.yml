@@ -5,7 +5,7 @@
   sounds:
     Scream:
       collection: FelinidScreamSound
-    FilinidPurring:
+    Purr:
       collection: FelinidPurringSound
     FilinidHisses:
       collection: FelinidHissesSound
@@ -43,7 +43,7 @@
   sounds:
     Scream:
       collection: FelinidScreamSound
-    FilinidPurring:
+    Purr:
       collection: FelinidPurringSound
     FilinidHisses:
       collection: FelinidHissesSound

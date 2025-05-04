@@ -1,0 +1,476 @@
+# Gray
+- type: reaction
+  id: CreateMonkeyCube
+  impact: Low
+  quantized: true
+  conserveEnergy: false
+  reactants:
+    SlimeExtractGray:
+      amount: 3
+    Blood:
+      amount: 6
+  effects:
+    - !type:CreateEntityReactionEffect
+      entity: MonkeyCube
+
+- type: reaction
+  id: CreateGraySlime
+  impact: Low
+  quantized: true
+  conserveEnergy: false
+  reactants:
+    SlimeExtractGray:
+      amount: 5
+    Plasma:
+      amount: 10
+  effects:
+    - !type:CreateEntityReactionEffect
+      entity: MobXenoSlimeGray
+
+- type: reaction
+  id: EpinephrineAlt
+  reactants:
+    SlimeExtractGray:
+      amount: 1
+    Water:
+      amount: 2
+  products:
+    Epinephrine: 1
+
+# Orange
+- type: reaction
+  id: TearGas # Alternative
+  reactants:
+    SlimeExtractOrange:
+      amount: 5
+    Blood:
+      amount: 10
+  effects:
+  - !type:AreaReactionEffect
+    duration: 10
+    prototypeId: AdminInstantEffectTearGas
+    sound:
+      path: /Audio/Effects/smoke.ogg
+
+- type: reaction
+  id: FireEffect
+  reactants:
+    SlimeExtractOrange:
+      amount: 1
+    Plasma:
+      amount: 2
+  effects:
+  - !type:CreateGas
+    gas: Plasma
+  - !type:ExplosionReactionEffect
+    explosionType: Default
+    maxIntensity: 20
+    intensityPerUnit: 0.5
+    intensitySlope: 0.5
+    maxTotalIntensity: 20
+
+# Purple
+- type: reaction
+  id: SlimeSteroid
+  reactants:
+    SlimeExtractPurple:
+      amount: 1
+    Plasma:
+      amount: 2
+  products:
+    SlimeSteroid: 1
+
+# Blue
+- type: reaction
+  id: SlimeStabilizer
+  reactants:
+    SlimeExtractBlue:
+      amount: 1
+    Blood:
+      amount: 2
+  products:
+    SlimeStabilizer: 1
+
+- type: reaction
+  id: CryoxadoneAlt
+  reactants:
+    SlimeExtractBlue:
+      amount: 1
+    Plasma:
+      amount: 2
+  products:
+    Cryoxadone: 1
+
+# Metallic
+- type: reaction
+  id: MetalSheet
+  impact: Low
+  quantized: true
+  conserveEnergy: false
+  reactants:
+    SlimeExtractMetallic:
+      amount: 1
+    Plasma:
+      amount: 2
+  effects:
+    - !type:CreateEntityReactionEffect
+      entity: RandomMetalSheet
+
+- type: reaction
+  id: GlassSheet
+  impact: Low
+  quantized: true
+  conserveEnergy: false
+  reactants:
+    SlimeExtractMetallic:
+      amount: 1
+    Water:
+      amount: 2
+  effects:
+    - !type:CreateEntityReactionEffect
+      entity: RandomGlassSheet
+
+# Yellow
+- type: reaction
+  id: SlimeEmpExplosion
+  reactants:
+    SlimeExtractYellow:
+      amount: 1
+    Blood:
+      amount: 2
+  effects:
+    - !type:EmpReactionEffect
+      rangePerUnit: 0.2
+      maxRange: 6
+      energyConsumption: 12500
+      duration: 15
+
+- type: reaction
+  id: CreateSlimePowerCell
+  impact: Low
+  quantized: true
+  conserveEnergy: false
+  reactants:
+    SlimeExtractYellow:
+      amount: 5
+    Plasma:
+      amount: 10
+  effects:
+    - !type:CreateEntityReactionEffect
+      entity: SlimePowerCell
+
+- type: reaction
+  id: SlimeLightEffect
+  reactants:
+    SlimeExtractYellow:
+      amount: 1
+    Water:
+      amount: 2
+  effects:
+    - !type:FlashReactionEffect
+
+# Dark Purple
+- type: reaction
+  id: SheetPlasma
+  impact: Low
+  quantized: true
+  conserveEnergy: false
+  reactants:
+    SlimeExtractDarkPurple:
+      amount: 1
+    Plasma:
+      amount: 2
+  effects:
+    - !type:CreateEntityReactionEffect
+      entity: SheetPlasma1
+
+- type: reaction
+  id: SheetPlasmaGlass
+  impact: Low
+  quantized: true
+  conserveEnergy: false
+  reactants:
+    SlimeExtractDarkPurple:
+      amount: 1
+    Water:
+      amount: 2
+  effects:
+    - !type:CreateEntityReactionEffect
+      entity: SheetPGlass1
+
+# Dark Blue
+- type: reaction
+  id: SlimeFrozenEffect
+  reactants:
+    SlimeExtractDarkBlue:
+      amount: 1
+    Plasma:
+      amount: 2
+  effects:
+  - !type:CreateGas
+    gas: Frezon # Alternative
+
+- type: reaction
+  id: ChillPotion
+  reactants:
+    SlimeExtractDarkBlue:
+      amount: 5
+    Water:
+      amount: 10
+  products:
+    ChillPotion: 3
+
+# Silver
+- type: reaction
+  id: RandomFoodSingle
+  impact: Low
+  quantized: true
+  conserveEnergy: false
+  reactants:
+    SlimeExtractSilver:
+      amount: 1
+    Plasma:
+      amount: 2
+  effects:
+    - !type:CreateEntityReactionEffect
+      entity: RandomFoodSingle
+
+- type: reaction
+  id: RandomDrinkGlass
+  impact: Low
+  quantized: true
+  conserveEnergy: false
+  reactants:
+    SlimeExtractSilver:
+      amount: 1
+    Water:
+      amount: 2
+  effects:
+    - !type:CreateEntityReactionEffect
+      entity: RandomDrinkGlass
+
+# Bluespace
+- type: reaction
+  id: RandomArtifact
+  impact: Low
+  quantized: true
+  conserveEnergy: false
+  reactants:
+    SlimeExtractBluespace:
+      amount: 15
+    Blood:
+      amount: 30
+  effects:
+    - !type:CreateEntityReactionEffect
+      entity: RandomArtifactSpawner
+
+- type: reaction
+  id: RandomAnomaly
+  impact: Low
+  quantized: true
+  conserveEnergy: false
+  reactants:
+    SlimeExtractBluespace:
+      amount: 15
+    Plasma:
+      amount: 30
+  effects:
+    - !type:CreateEntityReactionEffect
+      entity: RandomAnomalySpawner
+
+# Sepia
+- type: reaction
+  id: FloorSepia
+  impact: Low
+  quantized: true
+  conserveEnergy: false
+  reactants:
+    SlimeExtractSepia:
+      amount: 1
+    Blood:
+      amount: 2
+  effects:
+    - !type:CreateEntityReactionEffect
+      entity: FloorTileItemSepia
+
+- type: reaction
+  id: HeatResistPotion
+  reactants:
+    SlimeExtractSepia:
+      amount: 1
+    Plasma:
+      amount: 2
+  products:
+    HeatResistPotion: 1
+
+# Azure
+- type: reaction
+  id: SlimeReinforcer
+  reactants:
+    SlimeExtractAzure:
+      amount: 1
+    Plasma:
+      amount: 2
+  products:
+    SlimeReinforcer: 1
+
+# Pyrite
+- type: reaction
+  id: RadiationResistPotion
+  reactants:
+    SlimeExtractPyrite:
+      amount: 1
+    Water:
+      amount: 2
+  products:
+    RadiationResistPotion: 1
+
+# Green
+- type: reaction
+  id: CellularResistPotion
+  reactants:
+    SlimeExtractGreen:
+      amount: 1
+    Water:
+      amount: 2
+  products:
+    CellularResistPotion: 1
+
+# Red
+- type: reaction
+  id: MutationsPotion
+  reactants:
+    SlimeExtractRed:
+      amount: 1
+    Plasma:
+      amount: 2
+  products:
+    MutationsPotion: 1
+
+# Pink
+- type: reaction
+  id: IncreaseFriendshipPotion
+  reactants:
+    SlimeExtractPink:
+      amount: 1
+    Plasma:
+      amount: 2
+  products:
+    IncreaseFriendshipPotion: 1
+
+# Gold
+- type: reaction
+  id: RandomNeutralAnimal
+  impact: Low
+  quantized: true
+  conserveEnergy: false
+  reactants:
+    SlimeExtractGold:
+      amount: 20
+    Blood:
+      amount: 20
+  effects:
+    - !type:CreateEntityReactionEffect
+      entity: RandomNeutralAnimal
+
+- type: reaction
+  id: RandomAgressiveAnimal
+  impact: Low
+  quantized: true
+  conserveEnergy: false
+  reactants:
+    SlimeExtractGold:
+      amount: 20
+    Plasma:
+      amount: 20
+  effects:
+    - !type:CreateEntityReactionEffect
+      entity: RandomAgressiveAnimal
+
+- type: reaction
+  id: RandomPassiveAnimal
+  impact: Low
+  quantized: true
+  conserveEnergy: false
+  reactants:
+    SlimeExtractGold:
+      amount: 20
+    Water:
+      amount: 20
+  effects:
+    - !type:CreateEntityReactionEffect
+      entity: RandomPassiveAnimal
+
+# Oil
+- type: reaction
+  id: SpeedPotion
+  reactants:
+    SlimeExtractOil:
+      amount: 1
+    Blood:
+      amount: 2
+  products:
+    SpeedPotion: 1
+
+- type: reaction
+  id: OilExtractExplosion
+  reactants:
+    SlimeExtractOil:
+      amount: 1
+    Plasma:
+      amount: 2
+  effects:
+  - !type:ExplosionReactionEffect
+    explosionType: Default
+    maxIntensity: 200
+    intensityPerUnit: 5
+    intensitySlope: 5
+    maxTotalIntensity: 200
+
+# Black
+- type: reaction
+  id: AdvancedMutateToxin
+  reactants:
+    SlimeExtractBlack:
+      amount: 1
+    Plasma:
+      amount: 2
+  products:
+    AdvancedMutateToxin: 1
+
+# Light Pink
+- type: reaction
+  id: MindPotion
+  reactants:
+    SlimeExtractLightPink:
+      amount: 1
+    Plasma:
+      amount: 2
+  products:
+    MindPotion: 1
+
+# Adamantine
+- type: reaction
+  id: IronSkinResistPotion
+  reactants:
+    SlimeExtractAdamantine:
+      amount: 1
+    Blood:
+      amount: 2
+  products:
+    IronSkinResistPotion: 1
+
+# Rainbow
+- type: reaction
+  id: RandomXenoSlime
+  impact: Low
+  quantized: true
+  conserveEnergy: false
+  reactants:
+    SlimeExtractRainbow:
+      amount: 10
+    Plasma:
+      amount: 20
+  effects:
+    - !type:CreateEntityReactionEffect
+      entity: RandomXenoSlime

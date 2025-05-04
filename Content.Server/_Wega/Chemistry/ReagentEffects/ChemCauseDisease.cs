@@ -27,11 +27,9 @@ namespace Content.Server.EntityEffects.Effects
         public string Disease = default!;
 
         protected override string? ReagentEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
-        {
-            return Loc.GetString("This reagent has a {chance} chance to cause the {disease} disease.",
-                                ("chance", CauseChance),
-                                ("disease", Disease));
-        }
+            => Loc.GetString("reagent-effect-guidebook-cause-disease",
+                ("chance", CauseChance),
+                ("disease", Disease));
 
         public override void Effect(EntityEffectBaseArgs args)
         {

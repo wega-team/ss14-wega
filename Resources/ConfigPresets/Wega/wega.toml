@@ -1,6 +1,6 @@
 [game]
-hostname = "🌟 Corvax — Вега 🌟[18+]"
-desc = "Корвакс — первый русскоязычный проект в Space Station 14.\nВега — это первый официальный ЕРП сервер от Корвакс!\nЕРП является лишь допустимой опцией, а не заменяющей частью геймплея."
+hostname = "🌟 Corvax — Вега 🌟[TTS][18+]"
+desc = "Корвакс — первый русскоязычный проект в Space Station 14.\nВега — первый официальный ЕРП сервер от Корвакс, где ЕРП — это не обязательный элемент, а опция для тех, кто хочет добавить глубины в свою игру.\nНа Вега внедрён TTS (Text-to-Speech), чтобы сделать общение более живым и атмосферным."
 map_pool = "WegaDefaultMapPool"
 secret_weight_prototype = "WegaSecretDefault"
 maxplayers = 180
@@ -12,6 +12,7 @@ map_rotation = false
 respawn_enabled = true
 barks_enabled = true
 night_light_enabled = true
+roundend_vote_enabled = true
 
 [net]
 tickrate = 30
@@ -48,10 +49,10 @@ time = 180.0
 
 [hub]
 advertise = true
-tags = "lang:ru,rp:low,rp:med,region:eu_e,18+"
+tags = "lang:ru,rp:low,rp:med,region:eu_e,tts,18+"
 
 [server]
-lobby_name = "🌟 Corvax — Вега 🌟[18+]"
+lobby_name = "🌟 Corvax — Вега 🌟[TTS][18+]"
 rules_file = "WegaRuleset"
 
 [atmos]
@@ -64,5 +65,6 @@ arrivals_map = "/Maps/Corvax/Misc/corvax_terminal.yml"
 auto_call_time = 150
 
 [vote]
-preset_enabled = true
+preset_enabled = false
+timerpreset = 240
 map_enabled = true

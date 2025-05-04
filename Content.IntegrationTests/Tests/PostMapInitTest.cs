@@ -69,7 +69,6 @@ namespace Content.IntegrationTests.Tests
 			"CorvaxMaus",
 			"CorvaxIshimura",
 			"CorvaxPaper",
-			"CorvaxCute",
             "CorvaxPilgrim",
             "CorvaxSplit",
             "CorvaxTerra",
@@ -78,6 +77,7 @@ namespace Content.IntegrationTests.Tests
             "CorvaxTushkan",
             "CorvaxGlacier",
             "CorvaxAwesome",
+			"CorvaxChloris",
             // Corvax-End
             "Dev",
             "TestTeg",

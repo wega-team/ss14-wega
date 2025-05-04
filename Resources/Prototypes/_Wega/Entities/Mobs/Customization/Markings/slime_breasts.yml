@@ -1,0 +1,31 @@
+- type: marking
+  id: SlimeBreastBig
+  bodyPart: Chest 
+  markingCategory: Chest
+  speciesRestriction: [SlimePerson]
+  sexRestriction: [Female]
+  followSkinColor: true
+  forcedColoring: true
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+  sprites:
+  - sprite: _Wega/Mobs/Customization/slime_breasts.rsi
+    state: big
+
+- type: marking
+  id: SlimeBreastSuperBig
+  bodyPart: Chest 
+  markingCategory: Chest
+  speciesRestriction: [SlimePerson]
+  sexRestriction: [Female]
+  followSkinColor: true
+  forcedColoring: true
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+  sprites:
+  - sprite: _Wega/Mobs/Customization/slime_breasts.rsi
+    state: superbig

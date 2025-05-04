@@ -40,28 +40,6 @@
     - мяу
 
 - type: emote
-  id: FilinidPurring
-  name: chat-emote-name-purring
-  category: Vocal
-  available: false
-  icon: Clothing/Head/Hats/catears.rsi/icon.png
-  whitelist:
-    components:
-    - Vocal
-  blacklist:
-    components:
-    - BorgChassis
-  chatMessages: ["chat-emote-msg-purring"]
-  chatTriggers:
-    - purring
-    - purred
-    - мурчит
-    - мурлыкает
-    - замурлыкал
-    - замурлыкала
-    - мур
-
-- type: emote
   id: FilinidHisses
   name: chat-emote-name-hisses
   category: Vocal

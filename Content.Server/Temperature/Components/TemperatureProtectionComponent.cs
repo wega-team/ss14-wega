@@ -1,9 +1,10 @@
 ﻿using Content.Server.Temperature.Systems;
+using Content.Server.EntityEffects.Effects;
 
 namespace Content.Server.Temperature.Components;
 
 [RegisterComponent]
-[Access(typeof(TemperatureSystem))]
+[Access(typeof(TemperatureSystem), typeof(ChemChillProtectionEffect))]
 public sealed partial class TemperatureProtectionComponent : Component
 {
     /// <summary>

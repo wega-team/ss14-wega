@@ -62,5 +62,53 @@
     - !type:DiseasePopUp
       probability: 0.03
 
+- type: disease
+  id: SLIMEITIS
+  name: disease-proto-slimeitis
+  infectious: false
+  cureResist: 0.15
+  stages:
+    - 0
+    - 150
+    - 900
+  effects:
+    - !type:DiseasePopUp
+      probability: 0.02
+      message: disease-slime-drip
+      stages:
+        - 1
+        - 2
+    - !type:DiseaseSnough
+      probability: 0.015
+      emote: Squish
+      stages:
+        - 1
+    - !type:DiseaseSnough
+      probability: 0.03
+      emote: Squish
+      stages:
+        - 2
+    - !type:DiseaseHealthChange
+      probability: 0.5
+      damage:
+        types:
+          Toxic: 1
+      stages:
+        - 2
+    - !type:DiseasePolymorph
+      probability: 0.000427 ## ~5% chance over 120 secs
+      polymorphId: SlimeMorph
+      polymorphMessage: disease-polymorph-slime
+      polymorphSound:
+        path: /Audio/Voice/Slime/slime_squish.ogg
+      stages:
+        - 2
+  cures:
+    - !type:DiseaseReagentCure
+      reagent: Cryoxadone
+      stages:
+        - 0
+        - 1
+        - 2
 
 ### Once radiation is refactored I want it to have a small chance of giving you regular cancer

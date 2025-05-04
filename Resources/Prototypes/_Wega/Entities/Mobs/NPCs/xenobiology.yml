@@ -1,0 +1,533 @@
+- type: entity
+  id: MobXenoSlimes
+  parent: BaseMobAdultSlimes
+  abstract: true
+  name: basic slime
+  description: "It looks so much like jelly. I wonder what it tastes like?"
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Aliens/slimes.rsi
+    state: gray_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: gray_baby_slime
+      Dead:
+        Base: gray_baby_dead
+  - type: ReplacementAccent
+    accent: slimes
+  - type: Speech
+    speechVerb: Slime
+    speechSounds: Slime
+    allowedEmotes: ['Squish']
+  - type: TypingIndicator
+    proto: slime
+  - type: NpcFactionMember
+    factions:
+    - SimpleNeutral
+  - type: HTN
+    rootTask:
+      task: SlimeRootCompound
+  - type: SlimeHunger
+  - type: SlimeSocial
+  - type: SlimeGrowth
+  - type: Appearance
+    visuals:
+      enum.SlimeVisualLayers:
+        Type: Gray
+        Stage: Young
+  - type: SlimeVisuals
+    defaultVisuals: MobXenoSlimeGray
+    typeVisuals:
+      Gray: MobXenoSlimeGray
+      Blue: MobXenoSlimeBlue
+      Purple: MobXenoSlimePurple
+      Orange: MobXenoSlimeOrange
+      Metallic: MobXenoSlimeMetallic
+      DarkPurple: MobXenoSlimeDarkPurple
+      Green: MobXenoSlimeGreen
+      DarkBlue: MobXenoSlimeDarkBlue
+      Pink: MobXenoSlimePink
+      Red: MobXenoSlimeRed
+      Yellow: MobXenoSlimeYellow
+      Gold: MobXenoSlimeGold
+      Silver: MobXenoSlimeSilver
+      Black: MobXenoSlimeBlack
+      Sepia: MobXenoSlimeSepia
+      Oil: MobXenoSlimeOil
+      Bluespace: MobXenoSlimeBluespace
+      Adamantine: MobXenoSlimeAdamantine
+      Pyrite: MobXenoSlimePyrite
+      Azure: MobXenoSlimeAzure
+      LightPink: MobXenoSlimeLightPink
+      Rainbow: MobXenoSlimeRainbow
+  - type: TTS # Corvax-TTS
+    voice: Chen
+
+- type: entity
+  name: gray slime
+  id: MobXenoSlimeGray
+  parent: MobXenoSlimes
+  description: "It looks so much like jelly. I wonder what it tastes like?"
+
+- type: entity
+  name: blue slime
+  id: MobXenoSlimeBlue
+  parent: MobXenoSlimes
+  description: "It looks so much like jelly. I wonder what it tastes like?"
+  components:
+  - type: Sprite
+    state: blue_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: blue_baby_slime
+      Dead:
+        Base: blue_baby_dead
+  - type: SlimeGrowth
+    slimeType: Blue
+  - type: Appearance
+    visuals:
+      enum.SlimeVisualLayers:
+        Type: Blue
+        Stage: Young
+
+- type: entity
+  name: purple slime
+  id: MobXenoSlimePurple
+  parent: MobXenoSlimes
+  description: "It looks so much like jelly. I wonder what it tastes like?"
+  components:
+  - type: Sprite
+    state: purple_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: purple_baby_slime
+      Dead:
+        Base: purple_baby_dead
+  - type: SlimeGrowth
+    slimeType: Purple
+  - type: Appearance
+    visuals:
+      enum.SlimeVisualLayers:
+        Type: Purple
+        Stage: Young
+
+- type: entity
+  name: orange slime
+  id: MobXenoSlimeOrange
+  parent: MobXenoSlimes
+  description: "It looks so much like jelly. I wonder what it tastes like?"
+  components:
+  - type: Sprite
+    state: orange_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: orange_baby_slime
+      Dead:
+        Base: orange_baby_dead
+  - type: SlimeGrowth
+    slimeType: Orange
+  - type: Appearance
+    visuals:
+      enum.SlimeVisualLayers:
+        Type: Orange
+        Stage: Young
+
+- type: entity
+  name: metallic slime
+  id: MobXenoSlimeMetallic
+  parent: MobXenoSlimes
+  description: "It looks so much like jelly. I wonder what it tastes like?"
+  components:
+  - type: Sprite
+    state: metallic_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: metallic_baby_slime
+      Dead:
+        Base: metallic_baby_dead
+  - type: SlimeGrowth
+    slimeType: Metallic
+  - type: Appearance
+    visuals:
+      enum.SlimeVisualLayers:
+        Type: Metallic
+        Stage: Young
+
+- type: entity
+  name: dark-purple slime
+  id: MobXenoSlimeDarkPurple
+  parent: MobXenoSlimes
+  description: "It looks so much like jelly. I wonder what it tastes like?"
+  components:
+  - type: Sprite
+    state: darkpurple_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: darkpurple_baby_slime
+      Dead:
+        Base: darkpurple_baby_dead
+  - type: SlimeGrowth
+    slimeType: DarkPurple
+  - type: Appearance
+    visuals:
+      enum.SlimeVisualLayers:
+        Type: DarkPurple
+        Stage: Young
+
+- type: entity
+  name: green slime
+  id: MobXenoSlimeGreen
+  parent: MobXenoSlimes
+  description: "It looks so much like jelly. I wonder what it tastes like?"
+  components:
+  - type: Sprite
+    state: green_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: green_baby_slime
+      Dead:
+        Base: green_baby_dead
+  - type: SlimeGrowth
+    slimeType: Green
+  - type: Appearance
+    visuals:
+      enum.SlimeVisualLayers:
+        Type: Green
+        Stage: Young
+
+- type: entity
+  name: dark-blue slime
+  id: MobXenoSlimeDarkBlue
+  parent: MobXenoSlimes
+  description: "It looks so much like jelly. I wonder what it tastes like?"
+  components:
+  - type: Sprite
+    state: darkblue_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: darkblue_baby_slime
+      Dead:
+        Base: darkblue_baby_dead
+  - type: SlimeGrowth
+    slimeType: DarkBlue
+  - type: Appearance
+    visuals:
+      enum.SlimeVisualLayers:
+        Type: DarkBlue
+        Stage: Young
+
+- type: entity
+  name: pink slime
+  id: MobXenoSlimePink
+  parent: MobXenoSlimes
+  description: "It looks so much like jelly. I wonder what it tastes like?"
+  components:
+  - type: Sprite
+    state: pink_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: pink_baby_slime
+      Dead:
+        Base: pink_baby_dead
+  - type: SlimeGrowth
+    slimeType: Pink
+  - type: Appearance
+    visuals:
+      enum.SlimeVisualLayers:
+        Type: Pink
+        Stage: Young
+
+- type: entity
+  name: red slime
+  id: MobXenoSlimeRed
+  parent: MobXenoSlimes
+  description: "It looks so much like jelly. I wonder what it tastes like?"
+  components:
+  - type: Sprite
+    state: red_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: red_baby_slime
+      Dead:
+        Base: red_baby_dead
+  - type: SlimeGrowth
+    slimeType: Red
+  - type: Appearance
+    visuals:
+      enum.SlimeVisualLayers:
+        Type: Red
+        Stage: Young
+
+- type: entity
+  name: yellow slime
+  id: MobXenoSlimeYellow
+  parent: MobXenoSlimes
+  description: "It looks so much like jelly. I wonder what it tastes like?"
+  components:
+  - type: Sprite
+    state: yellow_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: yellow_baby_slime
+      Dead:
+        Base: yellow_baby_dead
+  - type: SlimeGrowth
+    slimeType: Yellow
+  - type: Appearance
+    visuals:
+      enum.SlimeVisualLayers:
+        Type: Yellow
+        Stage: Young
+
+- type: entity
+  name: gold slime
+  id: MobXenoSlimeGold
+  parent: MobXenoSlimes
+  description: "It looks so much like jelly. I wonder what it tastes like?"
+  components:
+  - type: Sprite
+    state: gold_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: gold_baby_slime
+      Dead:
+        Base: gold_baby_dead
+  - type: SlimeGrowth
+    slimeType: Gold
+  - type: Appearance
+    visuals:
+      enum.SlimeVisualLayers:
+        Type: Gold
+        Stage: Young
+
+- type: entity
+  name: silver slime
+  id: MobXenoSlimeSilver
+  parent: MobXenoSlimes
+  description: "It looks so much like jelly. I wonder what it tastes like?"
+  components:
+  - type: Sprite
+    state: silver_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: silver_baby_slime
+      Dead:
+        Base: silver_baby_dead
+  - type: SlimeGrowth
+    slimeType: Silver
+  - type: Appearance
+    visuals:
+      enum.SlimeVisualLayers:
+        Type: Silver
+        Stage: Young
+
+- type: entity
+  name: black slime
+  id: MobXenoSlimeBlack
+  parent: MobXenoSlimes
+  description: "It looks so much like jelly. I wonder what it tastes like?"
+  components:
+  - type: Sprite
+    state: black_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: black_baby_slime
+      Dead:
+        Base: black_baby_dead
+  - type: SlimeGrowth
+    slimeType: Black
+  - type: Appearance
+    visuals:
+      enum.SlimeVisualLayers:
+        Type: Black
+        Stage: Young
+
+- type: entity
+  name: sepia slime
+  id: MobXenoSlimeSepia
+  parent: MobXenoSlimes
+  description: "It looks so much like jelly. I wonder what it tastes like?"
+  components:
+  - type: Sprite
+    state: sepia_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: sepia_baby_slime
+      Dead:
+        Base: sepia_baby_dead
+  - type: SlimeGrowth
+    slimeType: Sepia
+  - type: Appearance
+    visuals:
+      enum.SlimeVisualLayers:
+        Type: Sepia
+        Stage: Young
+
+- type: entity
+  name: oil slime
+  id: MobXenoSlimeOil
+  parent: MobXenoSlimes
+  description: "It looks so much like jelly. I wonder what it tastes like?"
+  components:
+  - type: Sprite
+    state: oil_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: oil_baby_slime
+      Dead:
+        Base: oil_baby_dead
+  - type: SlimeGrowth
+    slimeType: Oil
+  - type: Appearance
+    visuals:
+      enum.SlimeVisualLayers:
+        Type: Oil
+        Stage: Young
+
+- type: entity
+  name: bluespace slime
+  id: MobXenoSlimeBluespace
+  parent: MobXenoSlimes
+  description: "It looks so much like jelly. I wonder what it tastes like?"
+  components:
+  - type: Sprite
+    state: bluespace_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: bluespace_baby_slime
+      Dead:
+        Base: bluespace_baby_dead
+  - type: SlimeGrowth
+    slimeType: Bluespace
+  - type: Appearance
+    visuals:
+      enum.SlimeVisualLayers:
+        Type: Bluespace
+        Stage: Young
+
+- type: entity
+  name: adamantine slime
+  id: MobXenoSlimeAdamantine
+  parent: MobXenoSlimes
+  description: "It looks so much like jelly. I wonder what it tastes like?"
+  components:
+  - type: Sprite
+    state: adamantine_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: adamantine_baby_slime
+      Dead:
+        Base: adamantine_baby_dead
+  - type: SlimeGrowth
+    slimeType: Adamantine
+  - type: Appearance
+    visuals:
+      enum.SlimeVisualLayers:
+        Type: Adamantine
+        Stage: Young
+
+- type: entity
+  name: pyrite slime
+  id: MobXenoSlimePyrite
+  parent: MobXenoSlimes
+  description: "It looks so much like jelly. I wonder what it tastes like?"
+  components:
+  - type: Sprite
+    state: pyrite_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: pyrite_baby_slime
+      Dead:
+        Base: pyrite_baby_dead
+  - type: SlimeGrowth
+    slimeType: Pyrite
+  - type: Appearance
+    visuals:
+      enum.SlimeVisualLayers:
+        Type: Pyrite
+        Stage: Young
+
+- type: entity
+  name: azure slime
+  id: MobXenoSlimeAzure
+  parent: MobXenoSlimes
+  description: "It looks so much like jelly. I wonder what it tastes like?"
+  components:
+  - type: Sprite
+    state: azure_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: azure_baby_slime
+      Dead:
+        Base: azure_baby_dead
+  - type: SlimeGrowth
+    slimeType: Azure
+  - type: Appearance
+    visuals:
+      enum.SlimeVisualLayers:
+        Type: Azure
+        Stage: Young
+
+- type: entity
+  name: light-pink slime
+  id: MobXenoSlimeLightPink
+  parent: MobXenoSlimes
+  description: "It looks so much like jelly. I wonder what it tastes like?"
+  components:
+  - type: Sprite
+    state: lightpink_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: lightpink_baby_slime
+      Dead:
+        Base: lightpink_baby_dead
+  - type: SlimeGrowth
+    slimeType: LightPink
+  - type: Appearance
+    visuals:
+      enum.SlimeVisualLayers:
+        Type: LightPink
+        Stage: Young
+
+- type: entity
+  name: rainbow slime
+  id: MobXenoSlimeRainbow
+  parent: MobXenoSlimes
+  description: "It looks so much like jelly. I wonder what it tastes like?"
+  components:
+  - type: Sprite
+    state: rainbow_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: rainbow_baby_slime
+      Dead:
+        Base: rainbow_baby_dead
+  - type: SlimeGrowth
+    slimeType: Rainbow
+  - type: Appearance
+    visuals:
+      enum.SlimeVisualLayers:
+        Type: Rainbow
+        Stage: Young

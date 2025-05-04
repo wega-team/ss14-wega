@@ -65,7 +65,6 @@
             Reporter: [ 2, 2 ]
             Musician: [ 2, 2 ]
             Boxer: [ 2, 2 ]
-            Zookeeper: [ 1, 1 ]
             Barber: [ 1, 1 ]
             # silicon
             StationAi: [ 1, 1 ]

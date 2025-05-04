@@ -1,0 +1,87 @@
+- type: entity
+  save: false
+  name: Urisst' Mzhand Demon
+  parent: BaseMobSpeciesOrganic
+  id: BaseMobDemon
+  abstract: true
+  components:
+  - type: HumanoidAppearance
+    species: Demon
+  - type: Hunger
+  - type: Thirst
+  - type: Icon
+    sprite: _Wega/Mobs/Species/Demon/parts.rsi
+    state: full_m
+  - type: Sprite
+    netsync: false
+    noRot: true
+    drawdepth: Mobs
+  - type: Body
+    prototype: Demon
+    requiredLegs: 2
+  - type: Speech
+    speechSounds: Lizard
+  - type: Vocal
+    sounds:
+      Male: MaleHuman
+      Female: FemaleHuman
+      Unsexed: FemaleHuman
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: Demon
+  - type: MeleeWeapon
+    # hidden: true
+    soundHit:
+      path: /Audio/Weapons/pierce.ogg
+    angle: 30
+    animation: WeaponArcPunch
+    damage:
+      types:
+        Slash: 2
+        Piercing: 3
+  - type: Temperature
+    heatDamageThreshold: 363
+    coldDamageThreshold: 250  #starting temperature damage treshold
+    currentTemperature: 310.15
+    specificHeat: 46
+    coldDamage:
+      types:
+        Cold : 0.2 #per second, scales with temperature & other constants
+    heatDamage:
+      types:
+        Heat : 0.1 #per second, scales with temperature & other constants
+  - type: TemperatureSpeed
+    thresholds:
+      285: 0.8
+      248: 0.6
+      220: 0.4
+  - type: Inventory
+    femaleDisplacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: _Wega/Mobs/Species/Demon/displacement.rsi
+            state: jumpsuit-female
+  - type: InteractionPopup
+    successChance: 1
+    interactSuccessString: hugging-success-generic
+    interactSuccessSound: /Audio/Effects/thudswoosh.ogg
+    messagePerceivedByOthers: hugging-success-generic-others
+
+- type: entity
+  save: false
+  name: Urist McHands
+  parent: MobHumanDummy
+  id: MobDemonDummy
+  categories: [ HideSpawnMenu ]
+  description: A dummy reptilian meant to be used in character setup.
+  components:
+  - type: HumanoidAppearance
+    species: Demon
+  - type: Inventory
+    femaleDisplacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: _Wega/Mobs/Species/Demon/displacement.rsi
+            state: jumpsuit-female

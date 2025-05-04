@@ -1,3 +1,4 @@
+using System.Linq; // Corvax-Wega-Hair-Extended
 using Content.Shared.CCVar;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Markings;
@@ -162,7 +163,8 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
         // We need to ensure hair before applying it or coloring can try depend on markings that can be invalid
         var hairColor = _markingManager.MustMatchSkin(profile.Species, HumanoidVisualLayers.Hair, out var hairAlpha, _prototypeManager)
             ? new List<Color> { profile.Appearance.SkinColor.WithAlpha(hairAlpha) } // Corvax-Wega-Hair-Extended
-            : profile.Appearance.HairColor;
+                .Concat(profile.Appearance.HairColor.Skip(1)).ToList() // Corvax-Wega-Hair-Extended
+            : profile.Appearance.HairColor; // Corvax-Wega-Hair-Extended
         var hair = new Marking(profile.Appearance.HairStyleId,
             hairColor); // Corvax-Wega-Hair-Extended
 

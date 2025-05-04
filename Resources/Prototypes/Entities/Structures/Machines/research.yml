@@ -50,6 +50,7 @@
   - type: Appearance
   - type: DiseaseServer # Corvax-Wega-Disease
   - type: DnaServer # Corvax-Wega-Genetic
+  - type: CellServer # Corvax-Wega-Xenobiology
   - type: AmbientOnPowered
   - type: AmbientSound
     volume: -9

@@ -192,7 +192,8 @@ public sealed partial class MarkingSet
                     if (markingManager.TryGetMarking(marking, out var prototype) &&
                         markingManager.MustMatchSkin(species, prototype.BodyPart, out var alpha, prototypeManager))
                     {
-                        marking.SetColor(skinColor.Value.WithAlpha(alpha));
+                        if (marking.MarkingColors.Count > 0) // Corvax-Wega-Hair-Extended
+                            marking.SetColor(0, skinColor.Value.WithAlpha(alpha)); // Corvax-Wega-Hair-Extended
                     }
                 }
             }

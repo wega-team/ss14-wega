@@ -1,0 +1,90 @@
+- type: marking
+  id: DemonChestCowSpots
+  bodyPart: Special
+  markingCategory: Special
+  speciesRestriction: [Demon]
+  sprites:
+  - sprite: _Wega/Mobs/Customization/demon.rsi
+    state: cow_spots
+
+- type: marking
+  id: DemonChestGuard
+  bodyPart: Special
+  markingCategory: Special
+  speciesRestriction: [Demon]
+  sprites:
+  - sprite: _Wega/Mobs/Customization/demon.rsi
+    state: guards_stripes
+
+- type: marking
+  id: DemonChestLinesEmperos
+  bodyPart: Special
+  markingCategory: Special
+  speciesRestriction: [Demon]
+  sprites:
+  - sprite: _Wega/Mobs/Customization/demon.rsi
+    state: lines_emperos
+
+- type: marking
+  id: DemonChestQueenLines
+  bodyPart: Special
+  markingCategory: Special
+  speciesRestriction: [Demon]
+  sprites:
+  - sprite: _Wega/Mobs/Customization/demon.rsi
+    state: queen_lines
+
+- type: marking
+  id: DemonChestTreeLines
+  bodyPart: Special
+  markingCategory: Special
+  speciesRestriction: [Demon]
+  sprites:
+  - sprite: _Wega/Mobs/Customization/demon.rsi
+    state: tree_lines
+
+- type: marking
+  id: DemonChestTrinitySpots
+  bodyPart: Special
+  markingCategory: Special
+  speciesRestriction: [Demon]
+  sprites:
+  - sprite: _Wega/Mobs/Customization/demon.rsi
+    state: trinity_spots
+
+- type: marking
+  id: DemonGoatee
+  bodyPart: FacialHair
+  markingCategory: FacialHair
+  speciesRestriction: [Demon]
+  sprites:
+  - sprite: _Wega/Mobs/Customization/demon.rsi
+    state: goatee
+
+- type: marking
+  id: DemonrigthEye
+  bodyPart: Eyes
+  markingCategory: Head
+  speciesRestriction: [Demon]
+  coloring:
+    default:
+      type:
+        !type:EyeColoring
+          negative: true
+  sprites:
+  - sprite: Mobs/Customization/tattoos.rsi
+    state: tattoo_eye_r
+
+- type: marking
+  id: DemonleftEye
+  bodyPart: Eyes
+  markingCategory: Head
+  speciesRestriction: [Demon]
+  coloring:
+    default:
+      type:
+        !type:EyeColoring
+          negative: true
+  sprites:
+  - sprite: Mobs/Customization/tattoos.rsi
+    state: tattoo_eye_l

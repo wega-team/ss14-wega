@@ -32,6 +32,9 @@
   id: Jetpack
 
 - type: Tag
+  id: Dish
+
+- type: Tag
   id: CBURNTacticalInterface
 
 - type: Tag
