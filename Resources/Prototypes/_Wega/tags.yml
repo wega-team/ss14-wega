@@ -29,6 +29,9 @@
   id: SuperPotato
 
 - type: Tag
+  id: AlienBerries
+
+- type: Tag
   id: Jetpack
 
 - type: Tag
