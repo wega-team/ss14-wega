@@ -10,10 +10,7 @@ namespace Content.Shared.Strangulation
         public DoAfterId? DoAfterId;
 
         [DataField]
-        public TimeSpan GaspEmoteCooldown = TimeSpan.FromSeconds(6);
-
-        [ViewVariables]
-        public TimeSpan LastGaspEmoteTime;
+        public bool Cancelled = false;
 
         [DataField]
         public bool IsStrangledGarrotte = false;

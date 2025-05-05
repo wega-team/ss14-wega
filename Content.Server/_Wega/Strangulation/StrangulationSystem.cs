@@ -1,31 +1,15 @@
 using Content.Server.Body.Components;
 using Content.Shared.DoAfter;
 using Content.Shared.Verbs;
-using Content.Shared.Damage;
 using Content.Shared.Strangulation;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Hands.Components;
 using Content.Shared.Popups;
-using Content.Server.Chat.Systems;
-using System;
-using Robust.Shared.Timing;
-using System.Threading;
-using Content.Shared.NullRod.Components;
 using Content.Shared.Garrotte;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Content.Server.Inventory;
-using Content.Server.Carrying;
 using Content.Shared.Hands;
 using Content.Shared.Throwing;
 using Content.Shared.Inventory.VirtualItem;
-using Content.Shared.ActionBlocker;
-using Robust.Shared.Physics;
-
-
-/// Система пока сырая. Рабочий, но надо много еще сделать: ограничения "душителя" и "жертвы", базовые ограничения
-/// Есть несколько неиспользуемых методов - остатки от того, как я пытался реализовать. Может быть понадобятся
-/// По идее надо было связать с компонентом <see cref="RespiratorComponent"/>, но пока не сделано
-/// DoAfter - вроде ок
 
 namespace Content.Server.Strangulation
 {
@@ -33,12 +17,8 @@ namespace Content.Server.Strangulation
     {
         [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
         [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
-        [Dependency] private readonly DamageableSystem _damageableSys = default!;
         [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
-        [Dependency] private readonly ChatSystem _chat = default!;
-        [Dependency] private readonly IGameTiming _gameTiming = default!;
         [Dependency] private readonly VirtualItemSystem _virtualItemSystem = default!;
-        [Dependency] private readonly ActionBlockerSystem _actionBlockerSystem = default!;
         [Dependency] private readonly SharedTransformSystem _transform = default!;
 
         public override void Initialize()
@@ -82,7 +62,6 @@ namespace Content.Server.Strangulation
                 return;
 
             var target = args.Target ?? default;
-            //Strangle(args.User, target, component);
 
             if (args.Cancelled)
             {
@@ -137,9 +116,9 @@ namespace Content.Server.Strangulation
                 target: target,
                 used: target)
             {
-                BreakOnMove = true,
+                //BreakOnMove = true,
                 BreakOnDamage = true,
-                MovementThreshold = 0.01f,
+                MovementThreshold = 0.02f,
                 //DistanceThreshold = 1f,
                 NeedHand = true,
                 BreakOnHandChange = true,
@@ -162,16 +141,15 @@ namespace Content.Server.Strangulation
             }
             _virtualItemSystem.TrySpawnVirtualItemInHand(target, strangler);
             _virtualItemSystem.TrySpawnVirtualItemInHand(target, strangler);
-            _actionBlockerSystem.UpdateCanMove(target);
         }
 
         private void StopStrangle(EntityUid strangler, EntityUid target)
         {
             var comp = Comp<StrangulationComponent>(target);
             _doAfterSystem.Cancel(comp.DoAfterId);
+            comp.Cancelled = true;
             RemComp<StrangulationComponent>(target);
             _virtualItemSystem.DeleteInHandsMatching(strangler, target);
-            _actionBlockerSystem.UpdateCanMove(target);
         }
 
         private bool CheckGarrotte(EntityUid strangler, out GarrotteComponent? garrotteComp)
