@@ -43,6 +43,7 @@
   - type: Sprite
     state: brain
   - type: Organ
+    organType: Brain # Corvax-Wega-Surgery
   - type: Input
     context: "ghost"
   - type: Brain
@@ -52,6 +53,7 @@
   - type: BadFood
   - type: Tag
     tags:
+      - Brain # Corvax-Wega-Surgery
       - Meat
   - type: SolutionContainerManager
     solutions:
@@ -85,9 +87,19 @@
     layers:
       - state: eyeball-l
       - state: eyeball-r
+  # Corvax-Wega-Surgery-start
+  - type: Organ
+    organType: Eyes
+  # Corvax-Wega-Surgery-end
   - type: Item
     size: Small
     heldPrefix: eyeballs
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+      - Eyes
+      - Meat
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   id: OrganHumanTongue
@@ -131,6 +143,10 @@
   - type: Item
     size: Small
     heldPrefix: lungs
+  # Corvax-Wega-Surgery-start
+  - type: Organ
+    organType: Lungs
+  # Corvax-Wega-Surgery-end
   - type: Lung
   - type: Metabolizer
     removeEmpty: true
@@ -154,6 +170,12 @@
         reagents:
         - ReagentId: UncookedAnimalProteins
           Quantity: 5
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+      - Lungs
+      - Meat
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   id: OrganHumanHeart
@@ -166,6 +188,10 @@
   # The heart 'metabolizes' medicines and poisons that aren't filtered out by other organs.
   # This is done because these chemicals need to have some effect even if they aren't being filtered out of your body.
   # You're technically 'immune to poison' without a heart, but.. uhh, you'll have bigger problems on your hands.
+  # Corvax-Wega-Surgery-start
+  - type: Organ
+    organType: Heart
+  # Corvax-Wega-Surgery-end
   - type: Metabolizer
     maxReagents: 2
     metabolizerTypes: [Human]
@@ -176,6 +202,12 @@
   - type: Item
     size: Small
     heldPrefix: heart
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+      - Heart
+      - Meat
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   id: OrganHumanStomach
@@ -188,6 +220,10 @@
   - type: Item
     size: Small
     heldPrefix: stomach
+  # Corvax-Wega-Surgery-start
+  - type: Organ
+    organType: Stomach
+  # Corvax-Wega-Surgery-end
   - type: SolutionContainerManager
     solutions:
       stomach:
@@ -208,6 +244,12 @@
     groups:
     - id: Food
     - id: Drink
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+      - Stomach
+      - Meat
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   id: OrganHumanLiver
@@ -220,12 +262,22 @@
   - type: Item
     size: Small
     heldPrefix: liver
+  # Corvax-Wega-Surgery-start
+  - type: Organ
+    organType: Liver
+  # Corvax-Wega-Surgery-end
   - type: Metabolizer # The liver metabolizes certain chemicals only, like alcohol.
     maxReagents: 1
     metabolizerTypes: [Human]
     groups:
     - id: Alcohol
       rateModifier: 0.1 # removes alcohol very slowly along with the stomach removing it as a drink
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+      - Liver
+      - Meat
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   id: OrganHumanKidneys
@@ -240,8 +292,18 @@
   - type: Item
     size: Small
     heldPrefix: kidneys
+  # Corvax-Wega-Surgery-start
+  - type: Organ
+    organType: Kidneys
+  # Corvax-Wega-Surgery-end
   # The kidneys just remove anything that doesn't currently have any metabolisms, as a stopgap.
   - type: Metabolizer
     maxReagents: 5
     metabolizerTypes: [Human]
     removeEmpty: true
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+      - Kidneys
+      - Meat
+  # Corvax-Wega-Surgery-end

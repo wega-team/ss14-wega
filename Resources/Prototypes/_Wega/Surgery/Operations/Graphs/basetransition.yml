@@ -1,0 +1,857 @@
+# ========================
+# ПЕРЕХОДЫ ТОРСА
+# ========================
+
+- type: surgeryTransition
+  id: OpenTorsoTransition
+  target: TorsoOpen
+  label: Вскрыть торс
+  stepGroups:
+    - steps:
+        - tool: Scalpel
+          action: Cut
+          time: 4
+          successChance: 0.95
+        - tool: Hemostat
+          action: ClampBleeding
+          time: 3
+          successChance: 0.95
+        - tool: Retractor
+          action: Retract
+          time: 4
+        - tool: Sawing
+          action: Cut
+          time: 6
+          successChance: 0.95
+        - tool: Retractor
+          action: Retract
+          time: 4
+
+- type: surgeryTransition
+  id: OrganManipulationTransition
+  target: OrganManipulation
+  label: Удалить органы
+  stepGroups:
+    - parallel: true
+      steps:
+        # Сердце
+        - tool: Hemostat
+          action: RemoveOrgan
+          requiredPart: Heart
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              organ: Heart
+        - tag: Heart
+          action: InsertOrgan
+          requiredPart: Heart
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              invert: true
+              organ: Heart
+
+        # Легкие
+        - tool: Hemostat
+          action: RemoveOrgan
+          requiredPart: Lungs
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              organ: Lungs
+        - tag: Lungs
+          action: InsertOrgan
+          requiredPart: Lungs
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              invert: true
+              organ: Lungs
+
+        # Желудок
+        - tool: Hemostat
+          action: RemoveOrgan
+          requiredPart: Stomach
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              organ: Stomach
+        - tag: Stomach
+          action: InsertOrgan
+          requiredPart: Stomach
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              invert: true
+              organ: Stomach
+
+        # Печень
+        - tool: Hemostat
+          action: RemoveOrgan
+          requiredPart: Liver
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              organ: Liver
+        - tag: Liver
+          action: InsertOrgan
+          requiredPart: Liver
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              invert: true
+              organ: Liver
+
+        # Почки
+        - tool: Hemostat
+          action: RemoveOrgan
+          requiredPart: Kidneys
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              organ: Kidneys
+        - tag: Kidneys
+          action: InsertOrgan
+          requiredPart: Kidneys
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              invert: true
+              organ: Kidneys
+
+- type: surgeryTransition
+  id: CloseTorsoTransition
+  target: Default
+  label: Закрыть торс
+  stepGroups:
+    - steps:
+        - tool: Retractor
+          action: Retract
+          time: 4
+        - tool: BoneGel
+          action: Empty
+          time: 6
+        - tool: BoneSetter
+          action: Empty
+          time: 8
+        - tool: BoneGel
+          action: Empty
+          time: 4
+        - tool: Cautery
+          action: ClampBleeding
+          time: 8
+
+# ========================
+# ПЕРЕХОДЫ ГОЛОВЫ
+# ========================
+
+- type: surgeryTransition
+  id: OpenHeadTransition
+  target: HeadOpen
+  label: Вскрыть череп
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: head
+      steps:
+        - tool: Scalpel
+          action: Cut
+          time: 4
+          successChance: 0.95
+        - tool: Hemostat
+          action: ClampBleeding
+          time: 3
+          successChance: 0.95
+        - tool: Retractor
+          action: Retract
+          time: 4
+        - tool: Sawing
+          action: Cut
+          time: 6
+          successChance: 0.95
+        - tool: Retractor
+          action: Retract
+          time: 4
+
+- type: surgeryTransition
+  id: ExtractBrainTransition
+  target: HeadRemoved
+  label: Извлечь мозг
+  stepGroups:
+    - parallel: true
+      steps:
+        # Мозг
+        - tool: Hemostat
+          action: RemoveOrgan
+          requiredPart: Brain
+          time: 3
+          successChance: 0.85
+          conditions:
+            - !type:OrganPresentCondition
+              organ: Brain
+        - tag: Brain
+          action: InsertOrgan
+          requiredPart: Brain
+          time: 3
+          successChance: 0.85
+          conditions:
+            - !type:OrganPresentCondition
+              invert: true
+              organ: Brain
+
+        # Глаза
+        - tool: Hemostat
+          action: RemoveOrgan
+          requiredPart: Eyes
+          time: 3
+          successChance: 0.85
+          conditions:
+            - !type:OrganPresentCondition
+              organ: Eyes
+        - tag: Eyes
+          action: InsertOrgan
+          requiredPart: Eyes
+          time: 3
+          successChance: 0.85
+          conditions:
+            - !type:OrganPresentCondition
+              invert: true
+              organ: Eyes
+
+- type: surgeryTransition
+  id: CloseHeadTransition
+  target: Default
+  label: Закрыть череп
+  stepGroups:
+    - steps:
+        - tool: Retractor
+          action: Retract
+          time: 4
+        - tool: BoneGel
+          action: Empty
+          time: 6
+        - tool: BoneSetter
+          action: Empty
+          time: 8
+        - tool: BoneGel
+          action: Empty
+          time: 4
+        - tool: Cautery
+          action: ClampBleeding
+          time: 8
+
+- type: surgeryTransition
+  id: CompleteHeadAttachmentTransition
+  target: EndLimbsOperation
+  label: Голова
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          invert: true
+          bodyPart: head
+      steps:
+        - tool: Scalpel
+          action: Cut
+          time: 4
+          successChance: 0.95
+        - tool: Hemostat
+          action: ClampBleeding
+          time: 3
+          successChance: 0.95
+        - tool: Retractor
+          action: Retract
+          time: 4
+        - tool: Scalpel
+          action: Cut
+          time: 4
+          successChance: 0.95
+        - tag: Head
+          action: AttachPart
+          requiredPart: head
+          time: 12
+          successChance: 0.6
+
+# ========================
+# ПЕРЕХОДЫ КОНЕЧНОСТЕЙ
+# ========================
+
+# ЛЕВАЯ РУКА
+- type: surgeryTransition
+  id: AmputateLeftArmTransition
+  target: AmputateLeftArmStart
+  label: Ампутировать левую руку
+  stepGroups:
+    - steps:
+        - tool: Scalpel
+          action: Cut
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:BodyPartCondition
+              bodyPart: left_arm
+
+- type: surgeryTransition
+  id: AmputateLeftArmFinishTransition
+  target: Default
+  label: Завершить ампутацию левой руки
+  stepGroups:
+    - steps:
+        - tool: Sawing
+          action: RemovePart
+          requiredPart: left_arm
+          time: 8
+        - tool: Cautery
+          action: ClampBleeding
+          time: 4
+
+- type: surgeryTransition
+  id: AttachLeftArmStartTransition
+  target: AttachLeftArmProcess
+  label: Прикрепить левую руку
+  stepGroups:
+    - steps:
+        - tool: Scalpel
+          action: Cut
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:BodyPartCondition
+              invert: true
+              bodyPart: left_arm
+
+- type: surgeryTransition
+  id: AttachLeftArmProcessTransition
+  target: EndLimbsOperation
+  label: Прикрепить левую руку
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          invert: true
+          bodyPart: left_arm
+      steps:
+        - tool: Hemostat
+          action: ClampBleeding
+          time: 3
+          successChance: 0.95
+        - tool: Retractor
+          action: Retract
+          time: 4
+        - tool: Scalpel
+          action: Cut
+          time: 4
+          successChance: 0.95
+        - tag: LeftArm
+          action: AttachPart
+          requiredPart: left_arm
+          time: 6
+          successChance: 0.85
+
+# ПРАВАЯ РУКА
+- type: surgeryTransition
+  id: AmputateRightArmTransition
+  target: AmputateRightArmStart
+  label: Ампутировать правую руку
+  stepGroups:
+    - steps:
+        - tool: Scalpel
+          action: Cut
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:BodyPartCondition
+              bodyPart: right_arm
+
+- type: surgeryTransition
+  id: AmputateRightArmFinishTransition
+  target: Default
+  label: Завершить ампутацию правой руки
+  stepGroups:
+    - steps:
+        - tool: Sawing
+          action: RemovePart
+          requiredPart: right_arm
+          time: 6
+        - tool: Cautery
+          action: ClampBleeding
+          time: 4
+
+- type: surgeryTransition
+  id: AttachRightArmStartTransition
+  target: AttachRightArmProcess
+  label: Прикрепить правую руку
+  stepGroups:
+    - steps:
+        - tool: Scalpel
+          action: Cut
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:BodyPartCondition
+              invert: true
+              bodyPart: right_arm
+
+- type: surgeryTransition
+  id: AttachRightArmProcessTransition
+  target: EndLimbsOperation
+  label: Прикрепить правую руку
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          invert: true
+          bodyPart: right_arm
+      steps:
+        - tool: Hemostat
+          action: ClampBleeding
+          time: 3
+        - tool: Retractor
+          action: Retract
+          time: 4
+        - tag: RightArm
+          action: AttachPart
+          requiredPart: right_arm
+          time: 6
+          successChance: 0.85
+
+# ЛЕВАЯ КИСТЬ
+- type: surgeryTransition
+  id: AmputateLeftHandTransition
+  target: AmputateLeftHandStart
+  label: Ампутировать левую кисть
+  stepGroups:
+    - steps:
+        - tool: Scalpel
+          action: Cut
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:BodyPartCondition
+              bodyPart: left_arm
+            - !type:BodyPartCondition
+              bodyPart: left_hand
+
+- type: surgeryTransition
+  id: AmputateLeftHandFinishTransition
+  target: Default
+  label: Завершить ампутацию левой кисти
+  stepGroups:
+    - steps:
+        - tool: Sawing
+          action: RemovePart
+          requiredPart: left_hand
+          time: 8
+        - tool: Cautery
+          action: ClampBleeding
+          time: 4
+
+- type: surgeryTransition
+  id: AttachLeftHandStartTransition
+  target: AttachLeftHandProcess
+  label: Прикрепить левую кисть
+  stepGroups:
+    - steps:
+        - tool: Scalpel
+          action: Cut
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:BodyPartCondition
+              bodyPart: left_arm
+            - !type:BodyPartCondition
+              invert: true
+              bodyPart: left_hand
+
+- type: surgeryTransition
+  id: AttachLeftHandProcessTransition
+  target: EndLimbsOperation
+  label: Прикрепить левую кисть
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: left_arm
+        - !type:BodyPartCondition
+          invert: true
+          bodyPart: left_hand
+      steps:
+        - tool: Hemostat
+          action: ClampBleeding
+          time: 3
+        - tool: Retractor
+          action: Retract
+          time: 4
+        - tag: LeftHand
+          action: AttachPart
+          requiredPart: left_hand
+          time: 6
+          successChance: 0.85
+
+# ПРАВАЯ КИСТЬ
+- type: surgeryTransition
+  id: AmputateRightHandTransition
+  target: AmputateRightHandStart
+  label: Ампутировать правую кисть
+  stepGroups:
+    - steps:
+        - tool: Scalpel
+          action: Cut
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:BodyPartCondition
+              bodyPart: right_arm
+            - !type:BodyPartCondition
+              bodyPart: right_hand
+
+- type: surgeryTransition
+  id: AmputateRightHandFinishTransition
+  target: Default
+  label: Завершить ампутацию правой кисти
+  stepGroups:
+    - steps:
+        - tool: Sawing
+          action: RemovePart
+          requiredPart: right_hand
+          time: 6
+        - tool: Cautery
+          action: ClampBleeding
+          time: 4
+
+- type: surgeryTransition
+  id: AttachRightHandStartTransition
+  target: AttachRightHandProcess
+  label: Прикрепить правую кисть
+  stepGroups:
+    - steps:
+        - tool: Scalpel
+          action: Cut
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:BodyPartCondition
+              bodyPart: right_arm
+            - !type:BodyPartCondition
+              invert: true
+              bodyPart: right_hand
+
+- type: surgeryTransition
+  id: AttachRightHandProcessTransition
+  target: EndLimbsOperation
+  label: Прикрепить правую кисть
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: right_arm
+        - !type:BodyPartCondition
+          invert: true
+          bodyPart: right_hand
+      steps:
+        - tool: Hemostat
+          action: ClampBleeding
+          time: 3
+        - tool: Retractor
+          action: Retract
+          time: 4
+        - tag: RightHand
+          action: AttachPart
+          requiredPart: right_hand
+          time: 6
+          successChance: 0.85
+
+# ЛЕВАЯ НОГА
+- type: surgeryTransition
+  id: AmputateLeftLegTransition
+  target: AmputateLeftLegStart
+  label: Ампутировать левую ногу
+  stepGroups:
+    - steps:
+        - tool: Scalpel
+          action: Cut
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:BodyPartCondition
+              bodyPart: left_leg
+
+- type: surgeryTransition
+  id: AmputateLeftLegFinishTransition
+  target: Default
+  label: Завершить ампутацию левой ноги
+  stepGroups:
+    - steps:
+        - tool: Sawing
+          action: RemovePart
+          requiredPart: left_leg
+          time: 8
+        - tool: Cautery
+          action: ClampBleeding
+          time: 4
+
+- type: surgeryTransition
+  id: AttachLeftLegStartTransition
+  target: AttachLeftLegProcess
+  label: Прикрепить левую ногу
+  stepGroups:
+    - steps:
+        - tool: Scalpel
+          action: Cut
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:BodyPartCondition
+              invert: true
+              bodyPart: left_leg
+
+- type: surgeryTransition
+  id: AttachLeftLegProcessTransition
+  target: EndLimbsOperation
+  label: Прикрепить левую ногу
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          invert: true
+          bodyPart: left_leg
+      steps:
+        - tool: Hemostat
+          action: ClampBleeding
+          time: 3
+        - tool: Retractor
+          action: Retract
+          time: 4
+        - tag: LeftLeg
+          action: AttachPart
+          requiredPart: left_leg
+          time: 6
+          successChance: 0.85
+
+# ПРАВАЯ НОГА
+- type: surgeryTransition
+  id: AmputateRightLegTransition
+  target: AmputateRightLegStart
+  label: Ампутировать правую ногу
+  stepGroups:
+    - steps:
+        - tool: Scalpel
+          action: Cut
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:BodyPartCondition
+              bodyPart: right_leg
+
+- type: surgeryTransition
+  id: AmputateRightLegFinishTransition
+  target: Default
+  label: Завершить ампутацию правой ноги
+  stepGroups:
+    - steps:
+        - tool: Sawing
+          action: RemovePart
+          requiredPart: right_leg
+          time: 6
+        - tool: Cautery
+          action: ClampBleeding
+          time: 4
+
+- type: surgeryTransition
+  id: AttachRightLegStartTransition
+  target: AttachRightLegProcess
+  label: Прикрепить правую ногу
+  stepGroups:
+    - steps:
+        - tool: Scalpel
+          action: Cut
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:BodyPartCondition
+              invert: true
+              bodyPart: right_leg
+
+- type: surgeryTransition
+  id: AttachRightLegProcessTransition
+  target: EndLimbsOperation
+  label: Прикрепить правую ногу
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          invert: true
+          bodyPart: right_leg
+      steps:
+        - tool: Hemostat
+          action: ClampBleeding
+          time: 3
+        - tool: Retractor
+          action: Retract
+          time: 4
+        - tag: RightLeg
+          action: AttachPart
+          requiredPart: right_leg
+          time: 6
+          successChance: 0.85
+
+# ЛЕВАЯ СТОПА
+- type: surgeryTransition
+  id: AmputateLeftFootTransition
+  target: AmputateLeftFootStart
+  label: Ампутировать левую стопу
+  stepGroups:
+    - steps:
+        - tool: Scalpel
+          action: Cut
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:BodyPartCondition
+              bodyPart: left_leg
+            - !type:BodyPartCondition
+              bodyPart: left_foot
+
+- type: surgeryTransition
+  id: AmputateLeftFootFinishTransition
+  target: Default
+  label: Завершить ампутацию левой стопы
+  stepGroups:
+    - steps:
+        - tool: Sawing
+          action: RemovePart
+          requiredPart: left_foot
+          time: 8
+        - tool: Cautery
+          action: ClampBleeding
+          time: 4
+
+- type: surgeryTransition
+  id: AttachLeftFootStartTransition
+  target: AttachLeftFootProcess
+  label: Прикрепить левую стопу
+  stepGroups:
+    - steps:
+        - tool: Scalpel
+          action: Cut
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:BodyPartCondition
+              bodyPart: left_leg
+            - !type:BodyPartCondition
+              invert: true
+              bodyPart: left_foot
+
+- type: surgeryTransition
+  id: AttachLeftFootProcessTransition
+  target: EndLimbsOperation
+  label: Прикрепить левую стопу
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: left_leg
+        - !type:BodyPartCondition
+          invert: true
+          bodyPart: left_foot
+      steps:
+        - tool: Hemostat
+          action: ClampBleeding
+          time: 3
+        - tool: Retractor
+          action: Retract
+          time: 4
+        - tag: LeftFoot
+          action: AttachPart
+          requiredPart: left_foot
+          time: 6
+          successChance: 0.85
+
+# ПРАВАЯ СТОПА
+- type: surgeryTransition
+  id: AmputateRightFootTransition
+  target: AmputateRightFootStart
+  label: Ампутировать правую стопу
+  stepGroups:
+    - steps:
+        - tool: Scalpel
+          action: Cut
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:BodyPartCondition
+              bodyPart: right_leg
+            - !type:BodyPartCondition
+              bodyPart: right_foot
+
+- type: surgeryTransition
+  id: AmputateRightFootFinishTransition
+  target: Default
+  label: Завершить ампутацию правой стопы
+  stepGroups:
+    - steps:
+        - tool: Sawing
+          action: RemovePart
+          requiredPart: right_foot
+          time: 6
+        - tool: Cautery
+          action: ClampBleeding
+          time: 4
+
+- type: surgeryTransition
+  id: AttachRightFootStartTransition
+  target: AttachRightFootProcess
+  label: Прикрепить правую стопу
+  stepGroups:
+    - steps:
+        - tool: Scalpel
+          action: Cut
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:BodyPartCondition
+              bodyPart: right_leg
+            - !type:BodyPartCondition
+              invert: true
+              bodyPart: right_foot
+
+- type: surgeryTransition
+  id: AttachRightFootProcessTransition
+  target: EndLimbsOperation
+  label: Прикрепить правую стопу
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: right_leg
+        - !type:BodyPartCondition
+          invert: true
+          bodyPart: right_foot
+      steps:
+        - tool: Hemostat
+          action: ClampBleeding
+          time: 3
+        - tool: Retractor
+          action: Retract
+          time: 4
+        - tag: RightFoot
+          action: AttachPart
+          requiredPart: right_foot
+          time: 6
+          successChance: 0.85
+
+# ========================
+# ФИНАЛЬНЫЙ ПЕРЕХОД КОНЕЧНОСТИ
+# ========================
+
+- type: surgeryTransition
+  id: CompleteLimbsOperationTransition
+  target: Default
+  label: ""
+  stepGroups:
+    - steps:
+        - tool: Cautery
+          action: ClampBleeding
+          time: 4

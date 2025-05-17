@@ -68,6 +68,8 @@
       - id: Saw
       - id: Hemostat
       - id: ClothingMaskSterile
+      - id: BoneSetter # Corvax-Wega-Surgery
+      - id: BoneGel # Corvax-Wega-Surgery
 
 - type: entity
   id: CrateMedicalScrubs

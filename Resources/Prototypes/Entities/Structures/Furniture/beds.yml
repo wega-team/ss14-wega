@@ -56,6 +56,8 @@
     noRot: true
   - type: Anchorable
   - type: Pullable
+  - type: OperatingTable # Corvax-Wega-Surgery
+    modifier: 0.7 # Corvax-Wega-Surgery
 
 
 - type: entity
@@ -111,6 +113,8 @@
           MaterialWoodPlank:
             min: 1
             max: 5
+  - type: OperatingTable # Corvax-Wega-Surgery
+    modifier: 0 # Corvax-Wega-Surgery
 
 - type: entity
   parent: Bed

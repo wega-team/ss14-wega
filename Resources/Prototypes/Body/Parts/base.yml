@@ -16,9 +16,10 @@
         ents: []
   - type: StaticPrice
     price: 100
-  - type: Tag
-    tags:
-      - Trash
+  # Corvax-Wega-Surgery-Edit
+  # - type: Tag
+  #   tags:
+  #     - Trash
 
 - type: entity
   id: BaseTorso
@@ -28,6 +29,11 @@
   components:
   - type: BodyPart
     partType: Torso
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+      - Trash
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   id: BaseHead
@@ -53,6 +59,12 @@
   - type: BodyPart
     partType: Arm
     symmetry: Left
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+      - Trash
+      - LeftArm
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   id: BaseRightArm
@@ -63,6 +75,12 @@
   - type: BodyPart
     partType: Arm
     symmetry: Right
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+      - Trash
+      - RightArm
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   id: BaseLeftHand
@@ -73,6 +91,12 @@
   - type: BodyPart
     partType: Hand
     symmetry: Left
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+      - Trash
+      - LeftHand
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   id: BaseRightHand
@@ -83,6 +107,12 @@
   - type: BodyPart
     partType: Hand
     symmetry: Right
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+      - Trash
+      - RightHand
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   id: BaseLeftLeg
@@ -94,6 +124,12 @@
     partType: Leg
     symmetry: Left
   - type: MovementBodyPart
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+      - Trash
+      - LeftLeg
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   id: BaseRightLeg
@@ -105,6 +141,12 @@
     partType: Leg
     symmetry: Right
   - type: MovementBodyPart
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+      - Trash
+      - RightLeg
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   id: BaseLeftFoot
@@ -115,6 +157,12 @@
   - type: BodyPart
     partType: Foot
     symmetry: Left
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+      - Trash
+      - LeftFoot
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   id: BaseRightFoot
@@ -125,3 +173,9 @@
   - type: BodyPart
     partType: Foot
     symmetry: Right
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+      - Trash
+      - RightFoot
+  # Corvax-Wega-Surgery-end

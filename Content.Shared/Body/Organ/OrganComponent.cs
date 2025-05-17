@@ -13,4 +13,7 @@ public sealed partial class OrganComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public EntityUid? Body;
+
+    [DataField("organType")] // Corvax-Wega-Surgery
+    public string OrganType = "default"; // Corvax-Wega-Surgery
 }

@@ -1,0 +1,30 @@
+- type: entity
+  name: bone setter
+  id: BoneSetter
+  parent: Retractor
+  description: "A surgical tool used for setting bones."
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Medical/Surgery/bone_setter.rsi
+    state: bonesetter
+  - type: Item
+    sprite: _Wega/Objects/Specific/Medical/Surgery/bone_setter.rsi
+    storedRotation: 45
+  - type: Tool
+    qualities:
+    - BoneSetter
+
+- type: entity
+  name: bone gel
+  id: BoneGel
+  parent: BaseToolSurgery
+  description: ""
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Medical/Surgery/bone_gel.rsi
+    state: bone-gel
+  - type: Item
+    sprite: _Wega/Objects/Specific/Medical/Surgery/bone_gel.rsi
+  - type: Tool
+    qualities:
+    - BoneGel

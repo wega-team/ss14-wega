@@ -203,6 +203,12 @@
         type: HumanoidMarkingModifierBoundUserInterface
       enum.StrippingUiKey.Key:
         type: StrippableBoundUserInterface
+  # Corvax-Wega-Surgery-start
+      enum.SurgeryUiKey.Key:
+        type: SurgeryBoundUserInterface
+  - type: Operated
+    raceGraph: BaseSurgery
+  # Corvax-Wega-Surgery-end
   - type: Puller
   - type: Speech
     speechSounds: Alto
