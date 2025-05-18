@@ -10,6 +10,7 @@ using Content.Server.Inventory;
 using Content.Shared.Hands;
 using Content.Shared.Throwing;
 using Content.Shared.Inventory.VirtualItem;
+using Content.Shared.Movement.Pulling.Systems;
 
 namespace Content.Server.Strangulation
 {
@@ -20,6 +21,7 @@ namespace Content.Server.Strangulation
         [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
         [Dependency] private readonly VirtualItemSystem _virtualItemSystem = default!;
         [Dependency] private readonly SharedTransformSystem _transform = default!;
+        [Dependency] private readonly PullingSystem _pulling = default!;
 
         public override void Initialize()
         {
@@ -28,6 +30,7 @@ namespace Content.Server.Strangulation
             SubscribeLocalEvent<RespiratorComponent, StrangulationDoAfterEvent>(StrangleDoAfter);
             SubscribeLocalEvent<StrangulationComponent, VirtualItemDeletedEvent>(OnVirtualItemDeleted);
             SubscribeLocalEvent<RespiratorComponent, BeforeThrowEvent>(OnThrow);
+            SubscribeLocalEvent<GarrotteComponent, ThrownEvent>(ThrowGarrotte);
         }
 
         private void AddStrangleVerb(EntityUid uid, RespiratorComponent component, GetVerbsEvent<AlternativeVerb> args)
@@ -87,6 +90,11 @@ namespace Content.Server.Strangulation
             StopStrangle(uid, args.ItemUid);
         }
 
+        private void ThrowGarrotte(EntityUid uid, GarrotteComponent component, ref ThrownEvent @event)
+        {
+
+        }
+
         private bool CanStrangle(EntityUid strangler, EntityUid target, RespiratorComponent? component = null)
         {
             if (!Resolve(target, ref component, false))
@@ -116,30 +124,27 @@ namespace Content.Server.Strangulation
                 target: target,
                 used: target)
             {
-                //BreakOnMove = true,
                 BreakOnDamage = true,
                 MovementThreshold = 0.02f,
-                //DistanceThreshold = 1f,
-                NeedHand = true,
-                BreakOnHandChange = true,
-                BreakOnDropItem = true,
+                //BreakOnHandChange = true,
+                //BreakOnDropItem = true,
                 RequireCanInteract = true
             };
             _doAfterSystem.TryStartDoAfter(doAfterEventArgs, out var doAfterId);
             Strangle(strangler, target, doAfterId);
         }
 
-        private void Strangle(EntityUid strangler, EntityUid target, DoAfterId? DoAfterId)
+        private void Strangle(EntityUid strangler, EntityUid target, DoAfterId? doAfterId)
         {
             EnsureComp<StrangulationComponent>(target, out var comp);
-            comp.DoAfterId = DoAfterId;
+            comp.DoAfterId = doAfterId;
             if (CheckGarrotte(strangler, out var garrotteComp))
             {
                 comp.IsStrangledGarrotte = true;
                 if (garrotteComp != null)
                     comp.Damage = garrotteComp.GarrotteDamage;
             }
-            _virtualItemSystem.TrySpawnVirtualItemInHand(target, strangler);
+            _pulling.TryStartPull(strangler, target);
             _virtualItemSystem.TrySpawnVirtualItemInHand(target, strangler);
         }
 
