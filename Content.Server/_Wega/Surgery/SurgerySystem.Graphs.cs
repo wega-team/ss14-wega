@@ -1,6 +1,5 @@
 using System.Linq;
 using Content.Shared.DoAfter;
-using Content.Shared.Popups;
 using Content.Shared.Surgery;
 using Content.Shared.Surgery.Components;
 using Content.Shared.Tag;
@@ -11,8 +10,6 @@ namespace Content.Server.Surgery;
 public sealed partial class SurgerySystem
 {
     [Dependency] private readonly TagSystem _tag = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
 
     private void GraphsInitialize()
@@ -231,7 +228,6 @@ public sealed partial class SurgerySystem
         if (comp.GraphId == null || targetNode == null)
             return;
 
-        // TODO: Проблема все ещё в том что выбирается FirstOrDefault и при оданаковых целях у одиночных нодов происходит проблема
         var graph = _proto.Index(comp.GraphId.Value);
         SurgeryNodePrototype? currentNodeProto = comp.CurrentNode == "Default"
             ? graph.GetStartNodes().FirstOrDefault(n => HasTransitionToTarget(n, targetNode.Value))
@@ -285,7 +281,7 @@ public sealed partial class SurgerySystem
     /// <param name="transition">The SurgeryTransition associated with the step.</param>
     private void StartSingleStep(EntityUid user, EntityUid patient, OperatedComponent comp, string targetNode, SurgeryStep step, bool isParallel, SurgeryTransition transition)
     {
-        if (!TryGetOperatingTable(patient, out var tableModifier))
+        if (!TryGetOperatingTable(patient, out var tableModifier) && !comp.OperatedPart)
             return;
 
         var skillMod = TryComp<SurgicalSkillComponent>(user, out var skill) ? skill.Modifier : 1f;

@@ -1,0 +1,110 @@
+- type: painProfile
+  id: BasePainProfile
+  painTypes:
+    Physical:
+      type: "PhysicalTrauma"
+      decayRate: 0.6
+      effects:
+        - threshold: 15
+          effect: Popup
+          message: "pain-pressure-mild"
+        - threshold: 40
+          effect: Emote
+          message: "DefaultDeathgasp"
+        - threshold: 70
+          effect: Twitch
+
+    Burn:
+      type: "Burn"
+      decayRate: 0.5
+      effects:
+        - threshold: 20
+          effect: Popup
+          message: "pain-burning-skin"
+        - threshold: 50
+          effect: Emote
+          message: "Scream"
+        - threshold: 80
+          effect: Vomit
+
+    CriticalBurn:
+      type: "CriticalBurn" 
+      decayRate: 0.3
+      effects:
+        - threshold: 20
+          effect: Popup
+          message: "pain-burn-tissue-damage"
+        - threshold: 30
+          effect: Emote
+          message: "Moan"
+        - threshold: 60
+          effect: Twitch
+          duration: 10
+        - threshold: 90
+          effect: Stun
+          duration: 5
+
+    ArmFracture:
+      type: "ArmFracture"
+      decayRate: 0.4
+      effects:
+        - threshold: 25
+          effect: Popup
+          message: "pain-fracture-pulsing-pain"
+        - threshold: 50
+          effect: DropItem
+          hand: "Any"
+        - threshold: 75
+          effect: MovementPenalty
+          speedMultiplier: 0.7
+
+    LegFracture:
+      type: "LegFracture"
+      decayRate: 0.35
+      effects:
+        - threshold: 30
+          effect: Popup
+          message: "pain-fracture-weight-pain"
+        - threshold: 60
+          effect: MovementPenalty
+          speedMultiplier: 0.5
+        - threshold: 90
+          effect: Stun
+          duration: 3
+
+    Internal:
+      type: "InternalBleeding"
+      decayRate: 0.25
+      effects:
+        - threshold: 20
+          effect: Popup
+          message: "pain-internal-pressure"
+        - threshold: 50
+          effect: MovementPenalty
+          speedMultiplier: 0.8
+        - threshold: 80
+          effect: Vomit
+
+    ForeignObject:
+      type: "ForeignObject"
+      decayRate: 0.2
+      effects:
+        - threshold: 25
+          effect: Popup
+          message: "pain-foreign-object-shift"
+        - threshold: 60
+          effect: Twitch
+        - threshold: 90
+          effect: Emote
+          message: "Scream"
+
+    SharpPain:
+      type: "SharpPain"
+      decayRate: 1.0
+      effects:
+        - threshold: 10
+          effect: Popup
+          message: "pain-sharp-flash"
+        - threshold: 30
+          effect: Twitch
+          duration: 2

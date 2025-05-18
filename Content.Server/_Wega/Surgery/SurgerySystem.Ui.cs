@@ -22,7 +22,7 @@ public sealed partial class SurgerySystem
         if (comp.IsOperating || !_tool.HasQuality(args.Used, "Scalpel"))
             return;
 
-        if (!TryGetOperatingTable(uid, out _))
+        if (!TryGetOperatingTable(uid, out _) && !comp.OperatedPart)
             return;
 
         OpenSurgeryUi(args.User, uid);

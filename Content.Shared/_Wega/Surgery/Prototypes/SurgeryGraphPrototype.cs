@@ -1,7 +1,6 @@
 using Content.Shared.Tag;
 using Content.Shared.Tools;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization;
 
 namespace Content.Shared.Surgery;
 

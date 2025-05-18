@@ -1,0 +1,4 @@
+- type: surgeryGraph
+  id: HeadSurgery
+  startNodes:
+    - HeadClosedAlt

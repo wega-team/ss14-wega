@@ -1,0 +1,69 @@
+### Физические травмы тканей ###
+- type: internalDamage
+  id: MuscleTears
+  category: PhysicalTrauma
+  blacklist:
+    - head
+  supportedTypes:
+    - Blunt
+    - Slash
+  chance: 0.12
+
+### Ожоги 1-2 степени ###
+- type: internalDamage
+  id: MildBurns
+  category: Burns
+  supportedTypes:
+    - Heat
+    - Caustic
+  chance: 0.18
+
+### Закрытые переломы ###
+- type: internalDamage
+  id: ClosedFracture
+  category: Fractures
+  blacklist:
+    - head
+  supportedTypes:
+    - Blunt
+  chance: 0.08
+
+### Внутренние кровотечения ###
+- type: internalDamage
+  id: ArterialBleeding
+  category: InternalBleeding
+  blacklist:
+    - head
+  supportedTypes:
+    - Piercing
+  chance: 0.1
+
+### Глубокие ожоги 3-4 степени ###
+- type: internalDamage
+  id: DeepBurns
+  category: CriticalBurns
+  supportedTypes:
+    - Heat
+    - Shock
+  chance: 0.05
+
+### Пулевые ранения ###
+- type: internalDamage
+  id: BulletWound
+  category: ForeignObjects
+  blacklist:
+    - head
+  supportedTypes:
+    - Piercing
+  chance: 0.15
+
+### Открытые переломы ###
+- type: internalDamage
+  id: OpenFracture
+  category: Fractures
+  blacklist:
+    - head
+  supportedTypes:
+    - Blunt
+  bodyVisuals: surgery-open-fracture
+  chance: 0.04

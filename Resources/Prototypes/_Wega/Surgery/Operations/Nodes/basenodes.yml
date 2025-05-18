@@ -35,6 +35,13 @@
     - OpenHeadTransition
 
 - type: surgeryNode
+  id: HeadClosedAlt
+  description: Голова закрыта
+  bodyPart: head
+  transitions:
+    - OpenHeadTransitionAlt
+
+- type: surgeryNode
   id: HeadOpen
   description: Череп вскрыт
   bodyPart: head

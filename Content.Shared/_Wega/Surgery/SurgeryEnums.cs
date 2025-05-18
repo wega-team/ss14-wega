@@ -6,6 +6,7 @@ public enum SurgeryActionType : byte
     Cut,
     Retract,
     ClampBleeding,
+    HealInternalDamage,
     RemoveOrgan,
     InsertOrgan,
     RemovePart,

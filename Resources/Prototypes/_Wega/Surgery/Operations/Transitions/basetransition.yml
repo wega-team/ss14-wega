@@ -184,6 +184,31 @@
           time: 4
 
 - type: surgeryTransition
+  id: OpenHeadTransitionAlt
+  target: HeadOpen
+  label: Вскрыть череп
+  stepGroups:
+    - steps:
+        - tool: Scalpel
+          action: Cut
+          time: 4
+          successChance: 0.95
+        - tool: Hemostat
+          action: ClampBleeding
+          time: 3
+          successChance: 0.95
+        - tool: Retractor
+          action: Retract
+          time: 4
+        - tool: Sawing
+          action: Cut
+          time: 6
+          successChance: 0.95
+        - tool: Retractor
+          action: Retract
+          time: 4
+
+- type: surgeryTransition
   id: ExtractBrainTransition
   target: HeadRemoved
   label: Извлечь мозг

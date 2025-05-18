@@ -208,6 +208,8 @@
         type: SurgeryBoundUserInterface
   - type: Operated
     raceGraph: BaseSurgery
+  - type: Pain
+    profile: BasePainProfile
   # Corvax-Wega-Surgery-end
   - type: Puller
   - type: Speech

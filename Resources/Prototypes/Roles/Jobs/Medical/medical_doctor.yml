@@ -19,6 +19,11 @@
   - !type:GiveItemOnHolidaySpecial
     holiday: DoctorDay
     prototype: WehMedipen
+  # Corvax-Wega-Surgery-start
+  - !type:AddComponentSpecial
+    components:
+    - type: SurgicalSkill
+  # Corvax-Wega-Surgery-end
 
 - type: startingGear
   id: DoctorGear

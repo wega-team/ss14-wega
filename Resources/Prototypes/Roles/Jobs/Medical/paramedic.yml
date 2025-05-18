@@ -17,6 +17,12 @@
   - Maintenance
   extendedAccess:
   - Chemistry
+  # Corvax-Wega-Surgery-start
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: SurgicalSkill
+  # Corvax-Wega-Surgery-end
 
 - type: startingGear
   id: ParamedicGear

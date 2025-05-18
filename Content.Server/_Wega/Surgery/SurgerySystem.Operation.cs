@@ -1,8 +1,13 @@
 using System.Linq;
 using Content.Server.Body.Components;
 using Content.Server.Body.Systems;
+using Content.Server.Chat.Systems;
+using Content.Shared.Bed.Sleep;
 using Content.Shared.Body.Part;
 using Content.Shared.Body.Systems;
+using Content.Shared.Chat.Prototypes;
+using Content.Shared.IdentityManagement;
+using Content.Shared.Popups;
 using Content.Shared.Surgery;
 using Content.Shared.Surgery.Components;
 using Robust.Shared.Containers;
@@ -12,57 +17,64 @@ namespace Content.Server.Surgery;
 
 public sealed partial class SurgerySystem
 {
-    [Dependency] private readonly SharedBodySystem _body = default!;
+    [Dependency] private readonly ChatSystem _chat = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly BloodstreamSystem _bloodstream = default!;
 
     private void PerformSurgeryEffect(SurgeryActionType action, string? requiredPart, float successChance, string failureEffect, EntityUid patient, EntityUid? item)
     {
-        switch (action)
-        {
-            case SurgeryActionType.Cut:
-                PerformCut(patient, requiredPart, successChance, failureEffect);
-                break;
-
-            case SurgeryActionType.Retract:
-                PerformRetract(patient, requiredPart, successChance, failureEffect);
-                break;
-
-            case SurgeryActionType.ClampBleeding:
-                PerformClamp(patient, requiredPart, successChance, failureEffect);
-                break;
-
-            case SurgeryActionType.RemoveOrgan:
-                PerformRemoveOrgan(patient, requiredPart, successChance, failureEffect);
-                break;
-
-            case SurgeryActionType.InsertOrgan:
-                PerformInsertOrgan(patient, item, requiredPart, successChance, failureEffect);
-                break;
-
-            case SurgeryActionType.RemovePart:
-                PerformRemovePart(patient, requiredPart, successChance, failureEffect);
-                break;
-
-            case SurgeryActionType.AttachPart:
-                PerformAttachPart(patient, item, requiredPart, successChance, failureEffect);
-                break;
-
-            case SurgeryActionType.Implanting:
-                PerformImplant(patient, item, requiredPart, successChance, failureEffect);
-                break;
-
-            default:
-                break;
-        }
-    }
-
-    private void PerformCut(EntityUid patient, string? requiredPart, float successChance, string failureEffect)
-    {
         if (!TryComp<OperatedComponent>(patient, out var comp))
             return;
 
-        if (!RollSuccess((patient, comp), successChance))
+        switch (action)
+        {
+            case SurgeryActionType.Cut:
+                PerformCut((patient, comp), successChance, failureEffect);
+                break;
+
+            case SurgeryActionType.Retract:
+                PerformRetract((patient, comp), successChance, failureEffect);
+                break;
+
+            case SurgeryActionType.ClampBleeding:
+                PerformClamp((patient, comp), successChance, failureEffect);
+                break;
+
+            case SurgeryActionType.HealInternalDamage:
+                PerformHealInternalDamage((patient, comp), requiredPart, successChance, failureEffect);
+                break;
+
+            case SurgeryActionType.RemoveOrgan:
+                PerformRemoveOrgan((patient, comp), requiredPart, successChance, failureEffect);
+                break;
+
+            case SurgeryActionType.InsertOrgan:
+                PerformInsertOrgan((patient, comp), item, requiredPart, successChance, failureEffect);
+                break;
+
+            case SurgeryActionType.RemovePart:
+                PerformRemovePart((patient, comp), requiredPart, successChance, failureEffect);
+                break;
+
+            case SurgeryActionType.AttachPart:
+                PerformAttachPart((patient, comp), item, requiredPart, successChance, failureEffect);
+                break;
+
+            case SurgeryActionType.Implanting:
+                PerformImplant((patient, comp), item, requiredPart, successChance, failureEffect);
+                break;
+
+            default: break;
+        }
+
+        // Any action without anesthesia will cause pain.
+        if (!HasComp<ForcedSleepingComponent>(patient) && !comp.OperatedPart)
+            _chat.TryEmoteWithoutChat(patient, _proto.Index<EmotePrototype>("Scream"), true);
+    }
+
+    private void PerformCut(Entity<OperatedComponent> patient, float successChance, string failureEffect)
+    {
+        if (!RollSuccess(patient, successChance))
         {
             HandleFailure(patient, failureEffect);
             return;
@@ -74,27 +86,18 @@ public sealed partial class SurgerySystem
         _bloodstream.TryModifyBleedAmount(patient, 2f);
     }
 
-    private void PerformRetract(EntityUid patient, string? requiredPart, float successChance, string failureEffect)
+    private void PerformRetract(Entity<OperatedComponent> patient, float successChance, string failureEffect)
     {
-        if (!TryComp<OperatedComponent>(patient, out var comp))
-            return;
-
-        if (!RollSuccess((patient, comp), successChance))
+        if (!RollSuccess(patient, successChance))
         {
             HandleFailure(patient, failureEffect);
             return;
         }
-
-        // TODO: Разведение краёв раны или фиксация доступа
-        // Тут логика связанная с визуализатором
     }
 
-    private void PerformClamp(EntityUid patient, string? requiredPart, float successChance, string failureEffect)
+    private void PerformClamp(Entity<OperatedComponent> patient, float successChance, string failureEffect)
     {
-        if (!TryComp<OperatedComponent>(patient, out var comp))
-            return;
-
-        if (!RollSuccess((patient, comp), successChance))
+        if (!RollSuccess(patient, successChance))
         {
             HandleFailure(patient, failureEffect);
             return;
@@ -106,12 +109,46 @@ public sealed partial class SurgerySystem
         _bloodstream.TryModifyBleedAmount(patient, -10f);
     }
 
-    private void PerformRemoveOrgan(EntityUid patient, string? requiredOrgan, float successChance, string failureEffect)
+    private void PerformHealInternalDamage(Entity<OperatedComponent> patient, string? damageType, float successChance, string failureEffect)
     {
-        if (!TryComp<OperatedComponent>(patient, out var comp) || comp.Surgeon == null || string.IsNullOrEmpty(requiredOrgan))
+        if (patient.Comp.Surgeon == null || string.IsNullOrEmpty(damageType))
             return;
 
-        if (!RollSuccess((patient, comp), successChance))
+        if (!RollSuccess(patient, successChance))
+        {
+            HandleFailure(patient, failureEffect);
+            return;
+        }
+
+        var parts = damageType.Split('_');
+        var bodyPart = parts.Length > 1 ? damageType : null;
+        var actualDamageType = parts.Length > 1 ? parts[1] : damageType;
+
+        if (!patient.Comp.InternalDamages.TryGetValue(actualDamageType, out var damagedParts))
+            return;
+
+        if (bodyPart != null)
+        {
+            if (damagedParts.Remove(bodyPart))
+            {
+                _popup.PopupEntity(Loc.GetString("surgery-internal-damage-healed",
+                    ("damage", actualDamageType),
+                    ("bodypart", bodyPart)), patient);
+            }
+
+            if (damagedParts.Count == 0)
+            {
+                patient.Comp.InternalDamages.Remove(actualDamageType);
+            }
+        }
+    }
+
+    private void PerformRemoveOrgan(Entity<OperatedComponent> patient, string? requiredOrgan, float successChance, string failureEffect)
+    {
+        if (patient.Comp.Surgeon == null || string.IsNullOrEmpty(requiredOrgan))
+            return;
+
+        if (!RollSuccess(patient, successChance))
         {
             HandleFailure(patient, failureEffect);
             return;
@@ -128,19 +165,19 @@ public sealed partial class SurgerySystem
         {
             _body.RemoveOrgan(organId);
             _popup.PopupEntity(Loc.GetString("surgery-organ-removed"), patient);
-            _hands.TryPickupAnyHand(comp.Surgeon.Value, organId);
+            _hands.TryPickupAnyHand(patient.Comp.Surgeon.Value, organId);
         }
 
         if (HasComp<BloodstreamComponent>(patient))
             _bloodstream.TryModifyBleedAmount(patient, 2f);
     }
 
-    private void PerformInsertOrgan(EntityUid patient, EntityUid? item, string? requiredOrgan, float successChance, string failureEffect)
+    private void PerformInsertOrgan(Entity<OperatedComponent> patient, EntityUid? item, string? requiredOrgan, float successChance, string failureEffect)
     {
-        if (!TryComp<OperatedComponent>(patient, out var comp) || item == null || string.IsNullOrEmpty(requiredOrgan))
+        if (item == null || string.IsNullOrEmpty(requiredOrgan))
             return;
 
-        if (!RollSuccess((patient, comp), successChance))
+        if (!RollSuccess(patient, successChance))
         {
             HandleFailure(patient, failureEffect);
             return;
@@ -154,12 +191,12 @@ public sealed partial class SurgerySystem
             _popup.PopupEntity(Loc.GetString("surgery-organ-inserted"), patient);
     }
 
-    private void PerformRemovePart(EntityUid patient, string? requiredPart, float successChance, string failureEffect)
+    private void PerformRemovePart(Entity<OperatedComponent> patient, string? requiredPart, float successChance, string failureEffect)
     {
-        if (!TryComp<OperatedComponent>(patient, out var comp) || comp.Surgeon == null || string.IsNullOrEmpty(requiredPart))
+        if (patient.Comp.Surgeon == null || string.IsNullOrEmpty(requiredPart))
             return;
 
-        if (!RollSuccess((patient, comp), successChance))
+        if (!RollSuccess(patient, successChance))
         {
             HandleFailure(patient, failureEffect);
             return;
@@ -226,7 +263,7 @@ public sealed partial class SurgerySystem
                 {
                     _container.Remove(partId, container);
                     _popup.PopupEntity(Loc.GetString("surgery-part-removed"), patient);
-                    _hands.TryPickupAnyHand(comp.Surgeon.Value, partId);
+                    _hands.TryPickupAnyHand(patient.Comp.Surgeon.Value, partId);
                 }
             }
         }
@@ -235,13 +272,12 @@ public sealed partial class SurgerySystem
             _bloodstream.TryModifyBleedAmount(patient, 2f);
     }
 
-    private void PerformAttachPart(EntityUid patient, EntityUid? item, string? requiredPart, float successChance, string failureEffect)
+    private void PerformAttachPart(Entity<OperatedComponent> patient, EntityUid? item, string? requiredPart, float successChance, string failureEffect)
     {
-        if (!TryComp<OperatedComponent>(patient, out var comp) || item == null || string.IsNullOrEmpty(requiredPart)
-            || !TryComp<BodyPartComponent>(item, out var part))
+        if (item == null || string.IsNullOrEmpty(requiredPart) || !TryComp<BodyPartComponent>(item, out _))
             return;
 
-        if (!RollSuccess((patient, comp), successChance))
+        if (!RollSuccess(patient, successChance))
         {
             HandleFailure(patient, failureEffect);
             return;
@@ -261,12 +297,12 @@ public sealed partial class SurgerySystem
         _popup.PopupEntity(Loc.GetString("surgery-part-attached"), patient);
     }
 
-    private void PerformImplant(EntityUid patient, EntityUid? item, string? requiredPart, float successChance, string failureEffect)
+    private void PerformImplant(Entity<OperatedComponent> patient, EntityUid? item, string? requiredPart, float successChance, string failureEffect)
     {
-        if (!TryComp<OperatedComponent>(patient, out var comp) || item == null || string.IsNullOrEmpty(requiredPart))
+        if (item == null || string.IsNullOrEmpty(requiredPart))
             return;
 
-        if (!RollSuccess((patient, comp), successChance))
+        if (!RollSuccess(patient, successChance))
         {
             HandleFailure(patient, failureEffect);
             return;
@@ -314,9 +350,11 @@ public sealed partial class SurgerySystem
         switch (failureEffect)
         {
             case "Bleed":
-                if (HasComp<BloodstreamComponent>(patient))
-                    _bloodstream.TryModifyBleedAmount(patient, 6f);
+                TryAddInternalDamage(patient, "ArterialBleeding");
                 break;
         }
+
+        _popup.PopupPredicted(Loc.GetString($"surgery-handle-failed-{failureEffect.ToLower()}", ("patient", Identity.Entity(patient, EntityManager))),
+            patient, null, PopupType.MediumCaution);
     }
 }

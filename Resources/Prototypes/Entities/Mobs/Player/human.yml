@@ -41,6 +41,7 @@
   - type: Loadout
     prototypes: [SyndicateReinforcementMedic]
     roleLoadout: [ RoleSurvivalSyndicate ]
+  - type: SurgicalSkill # Corvax-Wega-Surgery
 
 - type: entity
   parent: MobHumanSyndicateAgent
@@ -100,6 +101,7 @@
     - NamesSyndicatePrefix
     - NamesSyndicateNormal
     nameFormat: name-format-nukie-generic
+  - type: SurgicalSkill # Corvax-Wega-Surgery
   - type: NpcFactionMember
     factions:
     - Syndicate

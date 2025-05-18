@@ -49,6 +49,15 @@
   - type: Tag
     tags:
       - Head
+  # Corvax-Wega-Surgery-start
+  - type: UserInterface
+    interfaces:
+      enum.SurgeryUiKey.Key:
+        type: SurgeryBoundUserInterface
+  - type: Operated
+    raceGraph: HeadSurgery
+    operatedPart: true
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   id: BaseLeftArm
