@@ -1,11 +1,9 @@
 using System.Numerics;
-using System.Linq;
 using Content.Server.Inventory;
 using Content.Server.Stack;
 using Content.Server.Stunnable;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Body.Part;
-using Content.Shared.Body.Systems;
 using Content.Shared.CombatMode;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Explosion;
@@ -40,7 +38,6 @@ namespace Content.Server.Hands.Systems
         [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
         [Dependency] private readonly PullingSystem _pullingSystem = default!;
         [Dependency] private readonly ThrowingSystem _throwingSystem = default!;
-        [Dependency] private readonly SharedBodySystem _body = default!;
 
         private EntityQuery<PhysicsComponent> _physicsQuery;
 
@@ -119,6 +116,7 @@ namespace Content.Server.Hands.Systems
             args.Handled = true; // no shove/stun.
         }
 
+        // Corvax-Wega-Surgery-Edit-start
         private void HandleBodyPartAdded(EntityUid uid, HandsComponent component, ref BodyPartAddedEvent args)
         {
             switch (args.Part.Comp.PartType)
@@ -174,6 +172,7 @@ namespace Content.Server.Hands.Systems
                     break;
             }
         }
+        // Corvax-Wega-Surgery-Edit-end
 
         #region pulling
 

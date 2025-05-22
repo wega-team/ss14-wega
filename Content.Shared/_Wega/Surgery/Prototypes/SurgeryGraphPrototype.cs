@@ -1,5 +1,6 @@
 using Content.Shared.Tag;
 using Content.Shared.Tools;
+using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Surgery;
@@ -110,16 +111,19 @@ public sealed partial class SurgeryStepGroup
 public sealed partial class SurgeryStep
 {
     [DataField("tool")]
-    public ProtoId<ToolQualityPrototype>? Tool { get; private set; }
+    public List<ProtoId<ToolQualityPrototype>>? Tool { get; private set; } = new();
 
     [DataField("tag")]
-    public ProtoId<TagPrototype>? Tag { get; private set; }
+    public List<ProtoId<TagPrototype>>? Tag { get; private set; } = new();
 
     [DataField("action", required: true)]
     public SurgeryActionType Action { get; private set; }
 
     [DataField("conditions")]
     public List<SurgeryStepCondition> Conditions { get; private set; } = new();
+
+    [DataField("sound")]
+    public SoundSpecifier? Sound { get; set; } = default!;
 
     [DataField("requiredPart")]
     public string? RequiredPart { get; private set; }

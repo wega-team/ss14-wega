@@ -8,44 +8,58 @@
   label: Вскрыть торс
   stepGroups:
     - steps:
-        - tool: Scalpel
+        - tool: [ Scalpel ]
           action: Cut
+          sound:
+            collection: Scalpel
           time: 4
           successChance: 0.95
-        - tool: Hemostat
+        - tool: [ Hemostat ]
           action: ClampBleeding
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 3
           successChance: 0.95
-        - tool: Retractor
+        - tool: [ Retractor ]
           action: Retract
+          sound:
+            collection: Retractor
           time: 4
-        - tool: Sawing
+        - tool: [ Sawing ]
           action: Cut
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/saw.ogg
           time: 6
           successChance: 0.95
-        - tool: Retractor
+        - tool: [ Retractor ]
           action: Retract
+          sound:
+            collection: Retractor
           time: 4
 
 - type: surgeryTransition
   id: OrganManipulationTransition
   target: OrganManipulation
-  label: Удалить органы
+  label: Манипуляция с органами
   stepGroups:
     - parallel: true
       steps:
         # Сердце
-        - tool: Hemostat
+        - tool: [ Hemostat ]
           action: RemoveOrgan
           requiredPart: Heart
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 3
           successChance: 0.8
           conditions:
             - !type:OrganPresentCondition
               organ: Heart
-        - tag: Heart
+        - tag: [ Heart ]
           action: InsertOrgan
           requiredPart: Heart
+          sound:
+            collection: Organ
           time: 3
           successChance: 0.8
           conditions:
@@ -54,17 +68,21 @@
               organ: Heart
 
         # Легкие
-        - tool: Hemostat
+        - tool: [ Hemostat ]
           action: RemoveOrgan
           requiredPart: Lungs
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 3
           successChance: 0.8
           conditions:
             - !type:OrganPresentCondition
               organ: Lungs
-        - tag: Lungs
+        - tag: [ Lungs ]
           action: InsertOrgan
           requiredPart: Lungs
+          sound:
+            collection: Organ
           time: 3
           successChance: 0.8
           conditions:
@@ -73,17 +91,21 @@
               organ: Lungs
 
         # Желудок
-        - tool: Hemostat
+        - tool: [ Hemostat ]
           action: RemoveOrgan
           requiredPart: Stomach
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 3
           successChance: 0.8
           conditions:
             - !type:OrganPresentCondition
               organ: Stomach
-        - tag: Stomach
+        - tag: [ Stomach ]
           action: InsertOrgan
           requiredPart: Stomach
+          sound:
+            collection: Organ
           time: 3
           successChance: 0.8
           conditions:
@@ -92,17 +114,21 @@
               organ: Stomach
 
         # Печень
-        - tool: Hemostat
+        - tool: [ Hemostat ]
           action: RemoveOrgan
           requiredPart: Liver
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 3
           successChance: 0.8
           conditions:
             - !type:OrganPresentCondition
               organ: Liver
-        - tag: Liver
+        - tag: [ Liver ]
           action: InsertOrgan
           requiredPart: Liver
+          sound:
+            collection: Organ
           time: 3
           successChance: 0.8
           conditions:
@@ -111,17 +137,21 @@
               organ: Liver
 
         # Почки
-        - tool: Hemostat
+        - tool: [ Hemostat ]
           action: RemoveOrgan
           requiredPart: Kidneys
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 3
           successChance: 0.8
           conditions:
             - !type:OrganPresentCondition
               organ: Kidneys
-        - tag: Kidneys
+        - tag: [ Kidneys ]
           action: InsertOrgan
           requiredPart: Kidneys
+          sound:
+            collection: Organ
           time: 3
           successChance: 0.8
           conditions:
@@ -135,20 +165,24 @@
   label: Закрыть торс
   stepGroups:
     - steps:
-        - tool: Retractor
+        - tool: [ Retractor ]
           action: Retract
+          sound:
+            collection: Retractor
           time: 4
-        - tool: BoneGel
+        - tool: [ BoneGel ]
           action: Empty
           time: 6
-        - tool: BoneSetter
+        - tool: [ BoneSetter ]
           action: Empty
           time: 8
-        - tool: BoneGel
+        - tool: [ BoneGel ]
           action: Empty
           time: 4
-        - tool: Cautery
+        - tool: [ Cautery ]
           action: ClampBleeding
+          sound:
+            collection: Cautery
           time: 8
 
 # ========================
@@ -164,23 +198,33 @@
         - !type:BodyPartCondition
           bodyPart: head
       steps:
-        - tool: Scalpel
+        - tool: [ Scalpel ]
           action: Cut
+          sound:
+            collection: Scalpel
           time: 4
           successChance: 0.95
-        - tool: Hemostat
+        - tool: [ Hemostat ]
           action: ClampBleeding
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 3
           successChance: 0.95
-        - tool: Retractor
+        - tool: [ Retractor ]
           action: Retract
+          sound:
+            collection: Retractor
           time: 4
-        - tool: Sawing
+        - tool: [ Sawing ]
           action: Cut
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/saw.ogg
           time: 6
           successChance: 0.95
-        - tool: Retractor
+        - tool: [ Retractor ]
           action: Retract
+          sound:
+            collection: Retractor
           time: 4
 
 - type: surgeryTransition
@@ -189,44 +233,58 @@
   label: Вскрыть череп
   stepGroups:
     - steps:
-        - tool: Scalpel
+        - tool: [ Scalpel ]
           action: Cut
+          sound:
+            collection: Scalpel
           time: 4
           successChance: 0.95
-        - tool: Hemostat
+        - tool: [ Hemostat ]
           action: ClampBleeding
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 3
           successChance: 0.95
-        - tool: Retractor
+        - tool: [ Retractor ]
           action: Retract
+          sound:
+            collection: Retractor
           time: 4
-        - tool: Sawing
+        - tool: [ Sawing ]
           action: Cut
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/saw.ogg
           time: 6
           successChance: 0.95
-        - tool: Retractor
+        - tool: [ Retractor ]
           action: Retract
+          sound:
+            collection: Retractor
           time: 4
 
 - type: surgeryTransition
   id: ExtractBrainTransition
   target: HeadRemoved
-  label: Извлечь мозг
+  label: Манипуляция с органами
   stepGroups:
     - parallel: true
       steps:
         # Мозг
-        - tool: Hemostat
+        - tool: [ Hemostat ]
           action: RemoveOrgan
           requiredPart: Brain
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 3
           successChance: 0.85
           conditions:
             - !type:OrganPresentCondition
               organ: Brain
-        - tag: Brain
+        - tag: [ Brain ]
           action: InsertOrgan
           requiredPart: Brain
+          sound:
+            collection: Organ
           time: 3
           successChance: 0.85
           conditions:
@@ -235,17 +293,21 @@
               organ: Brain
 
         # Глаза
-        - tool: Hemostat
+        - tool: [ Hemostat ]
           action: RemoveOrgan
           requiredPart: Eyes
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 3
           successChance: 0.85
           conditions:
             - !type:OrganPresentCondition
               organ: Eyes
-        - tag: Eyes
+        - tag: [ Eyes ]
           action: InsertOrgan
           requiredPart: Eyes
+          sound:
+            collection: Organ
           time: 3
           successChance: 0.85
           conditions:
@@ -259,20 +321,24 @@
   label: Закрыть череп
   stepGroups:
     - steps:
-        - tool: Retractor
+        - tool: [ Retractor ]
           action: Retract
+          sound:
+            collection: Retractor
           time: 4
-        - tool: BoneGel
+        - tool: [ BoneGel ]
           action: Empty
           time: 6
-        - tool: BoneSetter
+        - tool: [ BoneSetter ]
           action: Empty
           time: 8
-        - tool: BoneGel
+        - tool: [ BoneGel ]
           action: Empty
           time: 4
-        - tool: Cautery
+        - tool: [ Cautery ]
           action: ClampBleeding
+          sound:
+            collection: Cautery
           time: 8
 
 - type: surgeryTransition
@@ -285,22 +351,30 @@
           invert: true
           bodyPart: head
       steps:
-        - tool: Scalpel
+        - tool: [ Scalpel ]
           action: Cut
+          sound:
+            collection: Scalpel
           time: 4
           successChance: 0.95
-        - tool: Hemostat
+        - tool: [ Hemostat ]
           action: ClampBleeding
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 3
           successChance: 0.95
-        - tool: Retractor
+        - tool: [ Retractor ]
           action: Retract
+          sound:
+            collection: Retractor
           time: 4
-        - tool: Scalpel
+        - tool: [ Scalpel ]
           action: Cut
+          sound:
+            collection: Scalpel
           time: 4
           successChance: 0.95
-        - tag: Head
+        - tag: [ Head ]
           action: AttachPart
           requiredPart: head
           time: 12
@@ -317,8 +391,10 @@
   label: Ампутировать левую руку
   stepGroups:
     - steps:
-        - tool: Scalpel
+        - tool: [ Scalpel ]
           action: Cut
+          sound:
+            collection: Scalpel
           time: 4
           successChance: 0.95
           conditions:
@@ -331,12 +407,16 @@
   label: Завершить ампутацию левой руки
   stepGroups:
     - steps:
-        - tool: Sawing
+        - tool: [ Sawing ]
           action: RemovePart
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/saw.ogg
           requiredPart: left_arm
           time: 8
-        - tool: Cautery
+        - tool: [ Cautery ]
           action: ClampBleeding
+          sound:
+            collection: Cautery
           time: 4
 
 - type: surgeryTransition
@@ -345,8 +425,10 @@
   label: Прикрепить левую руку
   stepGroups:
     - steps:
-        - tool: Scalpel
+        - tool: [ Scalpel ]
           action: Cut
+          sound:
+            collection: Scalpel
           time: 4
           successChance: 0.95
           conditions:
@@ -364,18 +446,24 @@
           invert: true
           bodyPart: left_arm
       steps:
-        - tool: Hemostat
+        - tool: [ Hemostat ]
           action: ClampBleeding
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 3
           successChance: 0.95
-        - tool: Retractor
+        - tool: [ Retractor ]
           action: Retract
+          sound:
+            collection: Retractor
           time: 4
-        - tool: Scalpel
+        - tool: [ Scalpel ]
           action: Cut
+          sound:
+            collection: Scalpel
           time: 4
           successChance: 0.95
-        - tag: LeftArm
+        - tag: [ LeftArm ]
           action: AttachPart
           requiredPart: left_arm
           time: 6
@@ -388,8 +476,10 @@
   label: Ампутировать правую руку
   stepGroups:
     - steps:
-        - tool: Scalpel
+        - tool: [ Scalpel ]
           action: Cut
+          sound:
+            collection: Scalpel
           time: 4
           successChance: 0.95
           conditions:
@@ -402,12 +492,16 @@
   label: Завершить ампутацию правой руки
   stepGroups:
     - steps:
-        - tool: Sawing
+        - tool: [ Sawing ]
           action: RemovePart
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/saw.ogg
           requiredPart: right_arm
           time: 6
-        - tool: Cautery
+        - tool: [ Cautery ]
           action: ClampBleeding
+          sound:
+            collection: Cautery
           time: 4
 
 - type: surgeryTransition
@@ -416,8 +510,10 @@
   label: Прикрепить правую руку
   stepGroups:
     - steps:
-        - tool: Scalpel
+        - tool: [ Scalpel ]
           action: Cut
+          sound:
+            collection: Scalpel
           time: 4
           successChance: 0.95
           conditions:
@@ -435,13 +531,17 @@
           invert: true
           bodyPart: right_arm
       steps:
-        - tool: Hemostat
+        - tool: [ Hemostat ]
           action: ClampBleeding
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 3
-        - tool: Retractor
+        - tool: [ Retractor ]
           action: Retract
+          sound:
+            collection: Retractor
           time: 4
-        - tag: RightArm
+        - tag: [ RightArm ]
           action: AttachPart
           requiredPart: right_arm
           time: 6
@@ -454,8 +554,10 @@
   label: Ампутировать левую кисть
   stepGroups:
     - steps:
-        - tool: Scalpel
+        - tool: [ Scalpel ]
           action: Cut
+          sound:
+            collection: Scalpel
           time: 4
           successChance: 0.95
           conditions:
@@ -470,12 +572,16 @@
   label: Завершить ампутацию левой кисти
   stepGroups:
     - steps:
-        - tool: Sawing
+        - tool: [ Sawing ]
           action: RemovePart
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/saw.ogg
           requiredPart: left_hand
           time: 8
-        - tool: Cautery
+        - tool: [ Cautery ]
           action: ClampBleeding
+          sound:
+            collection: Cautery
           time: 4
 
 - type: surgeryTransition
@@ -484,8 +590,10 @@
   label: Прикрепить левую кисть
   stepGroups:
     - steps:
-        - tool: Scalpel
+        - tool: [ Scalpel ]
           action: Cut
+          sound:
+            collection: Scalpel
           time: 4
           successChance: 0.95
           conditions:
@@ -507,13 +615,17 @@
           invert: true
           bodyPart: left_hand
       steps:
-        - tool: Hemostat
+        - tool: [ Hemostat ]
           action: ClampBleeding
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 3
-        - tool: Retractor
+        - tool: [ Retractor ]
           action: Retract
+          sound:
+            collection: Retractor
           time: 4
-        - tag: LeftHand
+        - tag: [ LeftHand ]
           action: AttachPart
           requiredPart: left_hand
           time: 6
@@ -526,8 +638,10 @@
   label: Ампутировать правую кисть
   stepGroups:
     - steps:
-        - tool: Scalpel
+        - tool: [ Scalpel ]
           action: Cut
+          sound:
+            collection: Scalpel
           time: 4
           successChance: 0.95
           conditions:
@@ -542,12 +656,16 @@
   label: Завершить ампутацию правой кисти
   stepGroups:
     - steps:
-        - tool: Sawing
+        - tool: [ Sawing ]
           action: RemovePart
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/saw.ogg
           requiredPart: right_hand
           time: 6
-        - tool: Cautery
+        - tool: [ Cautery ]
           action: ClampBleeding
+          sound:
+            collection: Cautery
           time: 4
 
 - type: surgeryTransition
@@ -556,8 +674,10 @@
   label: Прикрепить правую кисть
   stepGroups:
     - steps:
-        - tool: Scalpel
+        - tool: [ Scalpel ]
           action: Cut
+          sound:
+            collection: Scalpel
           time: 4
           successChance: 0.95
           conditions:
@@ -579,13 +699,17 @@
           invert: true
           bodyPart: right_hand
       steps:
-        - tool: Hemostat
+        - tool: [ Hemostat ]
           action: ClampBleeding
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 3
-        - tool: Retractor
+        - tool: [ Retractor ]
           action: Retract
+          sound:
+            collection: Retractor
           time: 4
-        - tag: RightHand
+        - tag: [ RightHand ]
           action: AttachPart
           requiredPart: right_hand
           time: 6
@@ -598,8 +722,10 @@
   label: Ампутировать левую ногу
   stepGroups:
     - steps:
-        - tool: Scalpel
+        - tool: [ Scalpel ]
           action: Cut
+          sound:
+            collection: Scalpel
           time: 4
           successChance: 0.95
           conditions:
@@ -612,12 +738,16 @@
   label: Завершить ампутацию левой ноги
   stepGroups:
     - steps:
-        - tool: Sawing
+        - tool: [ Sawing ]
           action: RemovePart
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/saw.ogg
           requiredPart: left_leg
           time: 8
-        - tool: Cautery
+        - tool: [ Cautery ]
           action: ClampBleeding
+          sound:
+            collection: Cautery
           time: 4
 
 - type: surgeryTransition
@@ -626,8 +756,10 @@
   label: Прикрепить левую ногу
   stepGroups:
     - steps:
-        - tool: Scalpel
+        - tool: [ Scalpel ]
           action: Cut
+          sound:
+            collection: Scalpel
           time: 4
           successChance: 0.95
           conditions:
@@ -645,13 +777,17 @@
           invert: true
           bodyPart: left_leg
       steps:
-        - tool: Hemostat
+        - tool: [ Hemostat ]
           action: ClampBleeding
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 3
-        - tool: Retractor
+        - tool: [ Retractor ]
           action: Retract
+          sound:
+            collection: Retractor
           time: 4
-        - tag: LeftLeg
+        - tag: [ LeftLeg ]
           action: AttachPart
           requiredPart: left_leg
           time: 6
@@ -664,8 +800,10 @@
   label: Ампутировать правую ногу
   stepGroups:
     - steps:
-        - tool: Scalpel
+        - tool: [ Scalpel ]
           action: Cut
+          sound:
+            collection: Scalpel
           time: 4
           successChance: 0.95
           conditions:
@@ -678,12 +816,16 @@
   label: Завершить ампутацию правой ноги
   stepGroups:
     - steps:
-        - tool: Sawing
+        - tool: [ Sawing ]
           action: RemovePart
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/saw.ogg
           requiredPart: right_leg
           time: 6
-        - tool: Cautery
+        - tool: [ Cautery ]
           action: ClampBleeding
+          sound:
+            collection: Cautery
           time: 4
 
 - type: surgeryTransition
@@ -692,8 +834,10 @@
   label: Прикрепить правую ногу
   stepGroups:
     - steps:
-        - tool: Scalpel
+        - tool: [ Scalpel ]
           action: Cut
+          sound:
+            collection: Scalpel
           time: 4
           successChance: 0.95
           conditions:
@@ -711,13 +855,17 @@
           invert: true
           bodyPart: right_leg
       steps:
-        - tool: Hemostat
+        - tool: [ Hemostat ]
           action: ClampBleeding
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 3
-        - tool: Retractor
+        - tool: [ Retractor ]
           action: Retract
+          sound:
+            collection: Retractor
           time: 4
-        - tag: RightLeg
+        - tag: [ RightLeg ]
           action: AttachPart
           requiredPart: right_leg
           time: 6
@@ -730,8 +878,10 @@
   label: Ампутировать левую стопу
   stepGroups:
     - steps:
-        - tool: Scalpel
+        - tool: [ Scalpel ]
           action: Cut
+          sound:
+            collection: Scalpel
           time: 4
           successChance: 0.95
           conditions:
@@ -746,12 +896,16 @@
   label: Завершить ампутацию левой стопы
   stepGroups:
     - steps:
-        - tool: Sawing
+        - tool: [ Sawing ]
           action: RemovePart
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/saw.ogg
           requiredPart: left_foot
           time: 8
-        - tool: Cautery
+        - tool: [ Cautery ]
           action: ClampBleeding
+          sound:
+            collection: Cautery
           time: 4
 
 - type: surgeryTransition
@@ -760,8 +914,10 @@
   label: Прикрепить левую стопу
   stepGroups:
     - steps:
-        - tool: Scalpel
+        - tool: [ Scalpel ]
           action: Cut
+          sound:
+            collection: Scalpel
           time: 4
           successChance: 0.95
           conditions:
@@ -783,13 +939,17 @@
           invert: true
           bodyPart: left_foot
       steps:
-        - tool: Hemostat
+        - tool: [ Hemostat ]
           action: ClampBleeding
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 3
-        - tool: Retractor
+        - tool: [ Retractor ]
           action: Retract
+          sound:
+            collection: Retractor
           time: 4
-        - tag: LeftFoot
+        - tag: [ LeftFoot ]
           action: AttachPart
           requiredPart: left_foot
           time: 6
@@ -802,8 +962,10 @@
   label: Ампутировать правую стопу
   stepGroups:
     - steps:
-        - tool: Scalpel
+        - tool: [ Scalpel ]
           action: Cut
+          sound:
+            collection: Scalpel
           time: 4
           successChance: 0.95
           conditions:
@@ -818,12 +980,16 @@
   label: Завершить ампутацию правой стопы
   stepGroups:
     - steps:
-        - tool: Sawing
+        - tool: [ Sawing ]
           action: RemovePart
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/saw.ogg
           requiredPart: right_foot
           time: 6
-        - tool: Cautery
+        - tool: [ Cautery ]
           action: ClampBleeding
+          sound:
+            collection: Cautery
           time: 4
 
 - type: surgeryTransition
@@ -832,8 +998,10 @@
   label: Прикрепить правую стопу
   stepGroups:
     - steps:
-        - tool: Scalpel
+        - tool: [ Scalpel ]
           action: Cut
+          sound:
+            collection: Scalpel
           time: 4
           successChance: 0.95
           conditions:
@@ -855,13 +1023,17 @@
           invert: true
           bodyPart: right_foot
       steps:
-        - tool: Hemostat
+        - tool: [ Hemostat ]
           action: ClampBleeding
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 3
-        - tool: Retractor
+        - tool: [ Retractor ]
           action: Retract
+          sound:
+            collection: Retractor
           time: 4
-        - tag: RightFoot
+        - tag: [ RightFoot ]
           action: AttachPart
           requiredPart: right_foot
           time: 6
@@ -877,6 +1049,8 @@
   label: ""
   stepGroups:
     - steps:
-        - tool: Cautery
+        - tool: [ Cautery ]
           action: ClampBleeding
+          sound:
+            collection: Cautery
           time: 4

@@ -3,12 +3,14 @@ using Content.Shared.DoAfter;
 using Content.Shared.Surgery;
 using Content.Shared.Surgery.Components;
 using Content.Shared.Tag;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server.Surgery;
 
 public sealed partial class SurgerySystem
 {
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly TagSystem _tag = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
 
@@ -95,7 +97,14 @@ public sealed partial class SurgerySystem
             item = args.Used.Value;
 
         if (step != null)
+        {
+            if (step.Sound != null)
+            {
+                _audio.PlayPredicted(step.Sound, uid, null);
+            }
+
             PerformSurgeryEffect(step.Action, step.RequiredPart, step.SuccessChance, step.FailureEffect, uid, item);
+        }
 
         CheckTransitionProgress(uid, comp, graph, transition);
         UpdateUi(uid, comp, graph);
@@ -152,7 +161,7 @@ public sealed partial class SurgerySystem
                     isCompleted: comp.CompletedParallelSteps.Contains(s),
                     isEnabled: !comp.CompletedParallelSteps.Contains(s) && CheckStepConditions(patient, s),
                     isVisible: CheckStepConditions(patient, s),
-                    requiredTool: s.Tool?.ToString(),
+                    requiredTool: s.Tool?.First().ToString(),
                     requiredCondition: s.RequiredPart
                 )));
             }
@@ -166,7 +175,7 @@ public sealed partial class SurgerySystem
                         isCompleted: isCompleted,
                         isEnabled: !isCompleted,
                         isVisible: CheckStepConditions(patient, s),
-                        requiredTool: s.Tool?.ToString(),
+                        requiredTool: s.Tool?.First().ToString(),
                         requiredCondition: s.RequiredPart
                     ));
                 }
@@ -290,15 +299,17 @@ public sealed partial class SurgerySystem
             time *= HasComp<SurgicalSkillComponent>(user) ? 3f : 5f;
 
         var item = _hands.GetActiveItemOrSelf(user);
-        if (step.Tool != null && !_tool.HasQuality(item, step.Tool))
+        if (step.Tool != null && step.Tool.Count > 0 && !step.Tool.Any(tool => _tool.HasQuality(item, tool)))
         {
-            _popup.PopupEntity(Loc.GetString("surgery-missing-tool", ("tool", step.Tool)), user, user);
+            var tools = string.Join(", ", step.Tool);
+            _popup.PopupEntity(Loc.GetString("surgery-missing-tool", ("tool", tools)), user, user);
             return;
         }
 
-        if (step.Tag != null && !_tag.HasTag(item, step.Tag.Value))
+        if (step.Tag != null && step.Tag.Count > 0 && !step.Tag.Any(tag => _tag.HasTag(item, tag)))
         {
-            _popup.PopupEntity(Loc.GetString("surgery-missing-tag", ("tag", step.Tag)), user, user);
+            var tags = string.Join(", ", step.Tag);
+            _popup.PopupEntity(Loc.GetString("surgery-missing-tag", ("tag", tags)), user, user);
             return;
         }
 

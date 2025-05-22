@@ -1,4 +1,4 @@
-using Content.Shared.Crawling;
+using Content.Shared.Crawling; // Corvax-Wega-Crawling
 using Content.Shared.Hands.Components;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Physics;
@@ -94,7 +94,7 @@ public sealed class StandingStateSystem : EntitySystem
         _appearance.SetData(uid, RotationVisuals.RotationState, RotationState.Horizontal, appearance);
 
         // Change collision masks to allow going under certain entities like flaps and tables
-        if (TryComp(uid, out FixturesComponent? fixtureComponent) && (!TryComp(uid, out CrawlingComponent? crawling) || !crawling.IsCrawling))
+        if (TryComp(uid, out FixturesComponent? fixtureComponent) && (!TryComp(uid, out CrawlingComponent? crawling) || !crawling.IsCrawling)) // Corvax-Wega-Crawling-Edit
         {
             foreach (var (key, fixture) in fixtureComponent.Fixtures)
             {
@@ -145,8 +145,8 @@ public sealed class StandingStateSystem : EntitySystem
 
         standingState.Standing = true;
         Dirty(uid, standingState);
-        if (TryComp(uid, out CrawlingComponent? crawling))
-            crawling.IsCrawling = false;
+        if (TryComp(uid, out CrawlingComponent? crawling)) // Corvax-Wega-Crawling
+            crawling.IsCrawling = false; // Corvax-Wega-Crawling
 
         RaiseLocalEvent(uid, new StoodEvent(), false);
 
