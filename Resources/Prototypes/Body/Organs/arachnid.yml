@@ -97,6 +97,7 @@
   - type: Item
     size: Small
     heldPrefix: heart
+  - type: Heart # Corvax-Wega-Surgery
   - type: Metabolizer
     updateInterval: 1.5
     maxReagents: 2

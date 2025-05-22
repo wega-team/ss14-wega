@@ -3,6 +3,8 @@ using Content.Server.EntityEffects.Effects;
 using Content.Server.Fluids.EntitySystems;
 using Content.Server.Popups;
 using Content.Shared.Alert;
+using Content.Shared.Body.Components; // Corvax-Wega-Surgery
+using Content.Shared.Body.Systems; // Corvax-Wega-Surgery
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reaction;
@@ -14,6 +16,7 @@ using Content.Shared.FixedPoint;
 using Content.Shared.Forensics;
 using Content.Shared.Forensics.Components;
 using Content.Shared.HealthExaminable;
+using Content.Shared.Humanoid; // Corvax-Wega-Surgery
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Rejuvenate;
@@ -39,6 +42,7 @@ public sealed class BloodstreamSystem : EntitySystem
     [Dependency] private readonly SharedSolutionContainerSystem _solutionContainerSystem = default!;
     [Dependency] private readonly SharedStutteringSystem _stutteringSystem = default!;
     [Dependency] private readonly AlertsSystem _alertsSystem = default!;
+    [Dependency] private readonly SharedBodySystem _body = default!; // Corvax-Wega-Surgery
 
     public override void Initialize()
     {
@@ -115,6 +119,33 @@ public sealed class BloodstreamSystem : EntitySystem
                 continue;
 
             bloodstream.NextUpdate += bloodstream.UpdateInterval;
+
+            // Corvax-Wega-Surgery-start
+            var hasHeart = false;
+            if (TryComp<BodyComponent>(uid, out var body))
+            {
+                var organs = _body.GetBodyOrgans(uid, body);
+                foreach (var (organId, _) in organs)
+                {
+                    if (HasComp<HeartComponent>(organId))
+                    {
+                        hasHeart = true;
+                        break;
+                    }
+                }
+            }
+
+            if (!hasHeart && HasComp<HumanoidAppearanceComponent>(uid))
+            {
+                var damage = new DamageSpecifier();
+                damage.DamageDict.Add("Bloodloss", 2.5f);
+                _damageableSystem.TryChangeDamage(uid, damage);
+
+                TryModifyBloodLevel(uid, (-bloodstream.BleedAmount), bloodstream);
+                TryModifyBleedAmount(uid, -bloodstream.BleedReductionAmount, bloodstream);
+                continue;
+            }
+            // Corvax-Wega-Surgery-end
 
             if (!_solutionContainerSystem.ResolveSolution(uid, bloodstream.BloodSolutionName, ref bloodstream.BloodSolution, out var bloodSolution))
                 continue;
@@ -469,6 +500,30 @@ public sealed class BloodstreamSystem : EntitySystem
         if (currentVolume > 0)
             _solutionContainerSystem.TryAddReagent(component.BloodSolution.Value, component.BloodReagent, currentVolume, null, GetEntityBloodData(uid));
     }
+
+    // Corvax-Wega-Surgery-start
+    /// <summary>
+    /// Circulates blood through the body, distributing chemicals.
+    /// </summary>
+    public void CirculateBlood(EntityUid uid, float efficiency, BloodstreamComponent? component = null)
+    {
+        if (!Resolve(uid, ref component))
+            return;
+
+        if (!_solutionContainerSystem.ResolveSolution(uid, component.ChemicalSolutionName,
+            ref component.ChemicalSolution, out var chemSolution) ||
+            !_solutionContainerSystem.ResolveSolution(uid, component.BloodSolutionName,
+            ref component.BloodSolution, out var bloodSolution))
+            return;
+
+        if (chemSolution.Volume > 0 && bloodSolution.Volume > 0)
+        {
+            var transferAmount = chemSolution.Volume * efficiency * 0.1f;
+            var transferSolution = _solutionContainerSystem.SplitSolution(component.ChemicalSolution.Value, transferAmount);
+            _solutionContainerSystem.TryAddSolution(component.BloodSolution.Value, transferSolution);
+        }
+    }
+    // Corvax-Wega-Surgery-end
 
     private void OnDnaGenerated(Entity<BloodstreamComponent> entity, ref GenerateDnaEvent args)
     {

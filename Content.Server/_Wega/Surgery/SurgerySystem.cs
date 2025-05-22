@@ -3,6 +3,7 @@ using Content.Shared.Buckle.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
+using Content.Shared.Rejuvenate;
 using Content.Shared.Surgery.Components;
 using Content.Shared.Tools.Systems;
 using Robust.Server.GameObjects;
@@ -29,6 +30,8 @@ public sealed partial class SurgerySystem : EntitySystem
         GraphsInitialize();
         InternalDamageInitialize();
         UiInitialize();
+
+        SubscribeLocalEvent<OperatedComponent, RejuvenateEvent>(OnRejuvenate);
     }
 
     public override void Update(float frameTime)
@@ -51,6 +54,11 @@ public sealed partial class SurgerySystem : EntitySystem
             }
             operated.NextUpdateTick -= frameTime;
         }
+    }
+
+    private void OnRejuvenate(Entity<OperatedComponent> entity, ref RejuvenateEvent args)
+    {
+        entity.Comp.InternalDamages.Clear();
     }
 
     private bool TryGetOperatingTable(EntityUid patient, out float tableModifier)

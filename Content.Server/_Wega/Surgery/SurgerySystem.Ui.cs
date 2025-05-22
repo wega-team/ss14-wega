@@ -13,7 +13,6 @@ public sealed partial class SurgerySystem
     {
         SubscribeLocalEvent<OperatedComponent, AfterInteractUsingEvent>(OnInteractUsing);
         SubscribeLocalEvent<OperatedComponent, BoundUIOpenedEvent>(OnUiOpened);
-        SubscribeLocalEvent<OperatedComponent, BoundUIClosedEvent>(OnUiClosed);
         SubscribeLocalEvent<OperatedComponent, UnbuckledEvent>(OnUnbuckled);
     }
 
@@ -46,14 +45,6 @@ public sealed partial class SurgerySystem
         {
             UpdateUi(uid, comp, graph);
         });
-    }
-
-    private void OnUiClosed(EntityUid uid, OperatedComponent comp, BoundUIClosedEvent args)
-    {
-        if (args.UiKey is not SurgeryUiKey)
-            return;
-
-        comp.IsOperating = false;
     }
 
     private void OnUnbuckled(Entity<OperatedComponent> ent, ref UnbuckledEvent args)

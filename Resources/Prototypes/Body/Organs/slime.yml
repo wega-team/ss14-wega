@@ -20,6 +20,7 @@
         - id: Narcotic
         - id: Alcohol
           rateModifier: 0.25
+    - type: Heart # Corvax-Wega-Surgery
     - type: SolutionContainerManager
       solutions:
         stomach:

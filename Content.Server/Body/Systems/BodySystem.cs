@@ -29,6 +29,7 @@ public sealed class BodySystem : SharedBodySystem
 
         SubscribeLocalEvent<BodyComponent, MoveInputEvent>(OnRelayMoveInput);
         SubscribeLocalEvent<BodyComponent, ApplyMetabolicMultiplierEvent>(OnApplyMetabolicMultiplier);
+        SubscribeLocalEvent<BodyComponent, HeartBeatEvent>(OnHeartBeat); // Corvax-Wega-Surgery
     }
 
     private void OnRelayMoveInput(Entity<BodyComponent> ent, ref MoveInputEvent args)
@@ -115,7 +116,7 @@ public sealed class BodySystem : SharedBodySystem
             return new HashSet<EntityUid>();
 
         var gibs = base.GibBody(bodyId, gibOrgans, body, launchGibs: launchGibs,
-            splatDirection: splatDirection, splatModifier: splatModifier, splatCone:splatCone);
+            splatDirection: splatDirection, splatModifier: splatModifier, splatCone: splatCone);
 
         var ev = new BeingGibbedEvent(gibs);
         RaiseLocalEvent(bodyId, ref ev);
@@ -124,4 +125,15 @@ public sealed class BodySystem : SharedBodySystem
 
         return gibs;
     }
+
+    // Corvax-Wega-Surgery-start
+    private void OnHeartBeat(Entity<BodyComponent> ent, ref HeartBeatEvent args)
+    {
+        if (args.Efficiency < 0.5f)
+        {
+            var ev = new ApplyMetabolicMultiplierEvent(ent, 1.2f, true);
+            RaiseLocalEvent(ent, ref ev);
+        }
+    }
+    // Corvax-Wega-Surgery-end
 }

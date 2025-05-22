@@ -194,8 +194,11 @@ binds:
 - function: OpenInteractionMenu
   type: State
   key: U
-- function: TextCursorSelect
+- function: ToggleCrawling
+  type: State
+  key: R
 # Corvax-Wega-end
+- function: TextCursorSelect
   # TextCursorSelect HAS to be above ExamineEntity
   # So that LineEdit receives it correctly.
   # TODO: Make it so that UI keybinds are somehow prioritized so this ordering stuff isn't necessary.
@@ -276,7 +279,7 @@ binds:
   canFocus: true
 - function: RotateObjectClockwise
   type: State
-  key: R
+  key: J
 - function: RotateObjectCounterclockwise
   type: State
   key: R
