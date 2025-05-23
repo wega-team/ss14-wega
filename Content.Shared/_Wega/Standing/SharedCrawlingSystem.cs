@@ -9,6 +9,7 @@ using Content.Shared.Input;
 using Content.Shared.Carrying;
 using Content.Shared.Body.Part;
 using Content.Shared.Buckle.Components;
+using Content.Shared.Surgery.Components;
 
 namespace Content.Shared.Crawling;
 
@@ -32,8 +33,10 @@ public sealed class SharedCrawlingSystem : EntitySystem
             .Register<SharedCrawlingSystem>();
 
         SubscribeLocalEvent<StandingStateComponent, CrawlingStandUpDoAfterEvent>(OnStandingUpDoAfter);
+
         SubscribeLocalEvent<CrawlingComponent, RefreshMovementSpeedModifiersEvent>(OnRefreshMovementSpeed);
         SubscribeLocalEvent<CrawlingComponent, BodyPartRemovedEvent>(OnBodyPartRemoved);
+        SubscribeLocalEvent<CrawlingComponent, BuckleAttemptEvent>(OnBuckleAttempt);
         SubscribeLocalEvent<CrawlingComponent, UnbuckledEvent>(OnUnbuckled);
     }
 
@@ -75,6 +78,12 @@ public sealed class SharedCrawlingSystem : EntitySystem
             if (!TryComp<BodyComponent>(ent, out var body) || body.LegEntities.Count < body.RequiredLegs)
                 TryCrawl(ent, ent.Comp);
         }
+    }
+
+    private void OnBuckleAttempt(Entity<CrawlingComponent> ent, ref BuckleAttemptEvent args)
+    {
+        if (ent.Comp.IsCrawling && !HasComp<OperatingTableComponent>(args.Strap))
+            args.Cancelled = true;
     }
 
     private void OnUnbuckled(Entity<CrawlingComponent> ent, ref UnbuckledEvent args)
@@ -131,7 +140,7 @@ public sealed class SharedCrawlingSystem : EntitySystem
         if (!Resolve(uid, ref standing, false) || !Resolve(uid, ref crawling, false))
             return;
 
-        if (!_mobState.IsAlive(uid) || HasComp<BeingCarriedComponent>(uid))
+        if (!_mobState.IsAlive(uid) && !_mobState.IsPreCritical(uid) || HasComp<BeingCarriedComponent>(uid))
             return;
 
         if (_standing.IsDown(uid, standing))

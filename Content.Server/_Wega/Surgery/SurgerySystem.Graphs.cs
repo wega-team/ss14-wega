@@ -161,7 +161,7 @@ public sealed partial class SurgerySystem
                     isCompleted: comp.CompletedParallelSteps.Contains(s),
                     isEnabled: !comp.CompletedParallelSteps.Contains(s) && CheckStepConditions(patient, s),
                     isVisible: CheckStepConditions(patient, s),
-                    requiredTool: s.Tool?.First().ToString(),
+                    requiredTool: s.Tool?.FirstOrDefault().ToString(),
                     requiredCondition: s.RequiredPart
                 )));
             }
@@ -175,7 +175,7 @@ public sealed partial class SurgerySystem
                         isCompleted: isCompleted,
                         isEnabled: !isCompleted,
                         isVisible: CheckStepConditions(patient, s),
-                        requiredTool: s.Tool?.First().ToString(),
+                        requiredTool: s.Tool?.FirstOrDefault().ToString(),
                         requiredCondition: s.RequiredPart
                     ));
                 }

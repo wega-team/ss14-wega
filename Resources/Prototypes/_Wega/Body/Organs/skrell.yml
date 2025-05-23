@@ -105,6 +105,7 @@
   components:
   - type: Sprite
     state: heart-on
+  - type: Heart # Corvax-Wega-Surgery
   - type: Metabolizer
     maxReagents: 2
     metabolizerTypes: [Human]

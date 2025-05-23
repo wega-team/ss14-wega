@@ -63,7 +63,7 @@ public sealed partial class SurgerySystem
         var groups = new List<SurgeryGroupDto>();
         if (comp.CurrentNode == "Default")
         {
-            var startNodes = graph.GetStartNodes();
+            var startNodes = graph.GetStartNodes().ToList();
             foreach (var startNodeProto in startNodes)
             {
                 var startNode = ConvertToRuntimeNode(startNodeProto);

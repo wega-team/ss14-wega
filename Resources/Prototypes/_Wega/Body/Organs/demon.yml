@@ -12,6 +12,7 @@
   id: OrganDemonHeart
   parent: OrganAnimalHeart
   components:
+  - type: Heart # Corvax-Wega-Surgery
   - type: Metabolizer
     maxReagents: 2
     metabolizerTypes: [ Demon ]

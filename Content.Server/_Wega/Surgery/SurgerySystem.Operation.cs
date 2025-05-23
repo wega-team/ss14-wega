@@ -68,7 +68,7 @@ public sealed partial class SurgerySystem
         }
 
         // Any action without anesthesia will cause pain.
-        if (!HasComp<SleepingComponent>(patient) && !comp.OperatedPart)
+        if (!HasComp<SleepingComponent>(patient) && !comp.OperatedPart && !_mobState.IsDead(patient))
             _chat.TryEmoteWithoutChat(patient, _proto.Index<EmotePrototype>("Scream"), true);
     }
 
