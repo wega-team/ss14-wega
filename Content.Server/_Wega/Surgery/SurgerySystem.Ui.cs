@@ -18,7 +18,7 @@ public sealed partial class SurgerySystem
 
     private void OnInteractUsing(EntityUid uid, OperatedComponent comp, AfterInteractUsingEvent args)
     {
-        if (comp.IsOperating || !_tool.HasQuality(args.Used, "Scalpel"))
+        if (!_tool.HasQuality(args.Used, "Scalpel"))
             return;
 
         if (!TryGetOperatingTable(uid, out _) && !comp.OperatedPart)
