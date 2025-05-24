@@ -188,7 +188,12 @@ public sealed partial class SurgerySystem
             return;
 
         if (_body.InsertOrgan(targetSlot.Value.PartUid, item.Value, targetSlot.Value.SlotId))
+        {
+            if (!HasComp<SterileComponent>(item.Value) && _random.Prob(0.4f))
+                _disease.TryAddDisease(patient, "SurgicalSepsis");
+
             _popup.PopupEntity(Loc.GetString("surgery-organ-inserted"), patient);
+        }
     }
 
     private void PerformRemovePart(Entity<OperatedComponent> patient, string? requiredPart, float successChance, string failureEffect)
@@ -293,6 +298,9 @@ public sealed partial class SurgerySystem
 
         if (!_body.AttachPart(parentPart, slotId, item.Value))
             return;
+
+        if (!HasComp<SterileComponent>(item.Value) && _random.Prob(0.4f))
+            _disease.TryAddDisease(patient, "SurgicalSepsis");
 
         _popup.PopupEntity(Loc.GetString("surgery-part-attached"), patient);
     }

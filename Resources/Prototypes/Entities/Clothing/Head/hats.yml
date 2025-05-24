@@ -459,6 +459,7 @@
     - ClothMade
     - HamsterWearable
     - WhitelistChameleon
+  - type: ClothingSterility # Corvax-Wega-Surgery
 
 - type: entity
   parent: ClothingHeadBase
@@ -470,6 +471,7 @@
     sprite: Clothing/Head/Hats/surgcap_green.rsi
   - type: Clothing
     sprite: Clothing/Head/Hats/surgcap_green.rsi
+  - type: ClothingSterility # Corvax-Wega-Surgery
 
 - type: entity
   parent: ClothingHeadBase
@@ -481,6 +483,7 @@
     sprite: Clothing/Head/Hats/surgcap_purple.rsi
   - type: Clothing
     sprite: Clothing/Head/Hats/surgcap_purple.rsi
+  - type: ClothingSterility # Corvax-Wega-Surgery
 
 - type: entity
   parent: ClothingHeadBase

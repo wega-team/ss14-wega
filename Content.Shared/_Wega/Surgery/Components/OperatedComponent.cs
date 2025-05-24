@@ -60,6 +60,12 @@ public sealed partial class OperatedComponent : Component
     public Dictionary<ProtoId<InternalDamagePrototype>, List<string>> InternalDamages = new();
 
     /// <summary>
+    /// A modifier for the chance of losing a limb.
+    /// </summary>
+    [ViewVariables]
+    public float LimbLossChance = 1f;
+
+    /// <summary>
     /// The level of sterility. It may affect the chance of success.
     /// </summary>
     [ViewVariables]

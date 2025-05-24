@@ -141,6 +141,7 @@
   - type: IngestionBlocker
   - type: DiseaseProtection # Corvax-Wega-Disease
     protection: 0.10 # Corvax-Wega-Disease
+  - type: ClothingSterility # Corvax-Wega-Surgery
   - type: Tag
     tags:
     - PetWearable
@@ -167,6 +168,7 @@
         Heat: 0.95
   - type: DiseaseProtection # Corvax-Wega-Disease
     protection: 0.10 # Corvax-Wega-Disease
+  - type: ClothingSterility # Corvax-Wega-Surgery
 
 - type: entity
   parent: ClothingMaskPullableBase
@@ -184,6 +186,7 @@
   - type: IngestionBlocker
   - type: DiseaseProtection # Corvax-Wega-Disease
     protection: 0.05 # Corvax-Wega-Disease
+  - type: ClothingSterility # Corvax-Wega-Surgery
   - type: Tag
     tags:
     - PetWearable
@@ -313,6 +316,7 @@
     coverage: MOUTH
   - type: DiseaseProtection # Corvax-Wega-Disease
     protection: 0.1 # Corvax-Wega-Disease
+  - type: ClothingSterility # Corvax-Wega-Surgery
   - type: PhysicalComposition
     materialComposition:
       Plastic: 25

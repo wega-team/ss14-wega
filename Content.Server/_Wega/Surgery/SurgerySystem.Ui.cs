@@ -24,6 +24,10 @@ public sealed partial class SurgerySystem
         if (!TryGetOperatingTable(uid, out _) && !comp.OperatedPart)
             return;
 
+        if (_inventory.TryGetSlotEntity(uid, "jumpsuit", out _)
+            || _inventory.TryGetSlotEntity(uid, "outerClothing", out _))
+            return;
+
         OpenSurgeryUi(args.User, uid);
     }
 

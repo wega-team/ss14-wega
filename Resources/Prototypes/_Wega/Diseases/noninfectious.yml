@@ -201,4 +201,30 @@
         - 0
         - 1
 
+- type: disease
+  id: SurgicalSepsis
+  name: disease-proto-surgical-sepsis
+  infectious: false
+  cureResist: 0.2
+  effects:
+    - !type:DiseaseHealthChange
+      probability: 0.05
+      damage:
+        types:
+          Bacterial: 1
+          Toxin: 0.5
+    - !type:DiseasePopUp
+      probability: 0.03
+      message: disease-surgical-wound-pain
+    - !type:DiseaseAdjustReagent
+      probability: 0.2
+      reagent: Histamine
+      amount: 0.3
+  cures:
+    - !type:DiseaseReagentCure
+      reagent: Spaceacillin
+      min: 10
+    - !type:DiseaseBedrestCure
+      maxLength: 300
+
 ### Once radiation is refactored I want it to have a small chance of giving you regular cancer

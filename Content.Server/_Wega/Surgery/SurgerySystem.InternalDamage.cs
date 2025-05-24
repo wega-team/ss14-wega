@@ -1,16 +1,20 @@
 using System.Linq;
 using System.Text;
 using Content.Server.Body.Components;
-using Content.Server.Disease;
 using Content.Server.Pain;
+using Content.Shared.Armor;
 using Content.Shared.Body.Part;
+using Content.Shared.Body.Systems;
 using Content.Shared.Damage;
+using Content.Shared.Damage.Prototypes;
 using Content.Shared.Examine;
 using Content.Shared.Jittering;
 using Content.Shared.Standing;
 using Content.Shared.Stunnable;
 using Content.Shared.Surgery;
 using Content.Shared.Surgery.Components;
+using Robust.Server.GameObjects;
+using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
@@ -18,10 +22,17 @@ namespace Content.Server.Surgery;
 
 public sealed partial class SurgerySystem
 {
+    [Dependency] private readonly DamageableSystem _damage = default!;
     [Dependency] private readonly PainSystem _pain = default!;
     [Dependency] private readonly SharedJitteringSystem _jittering = default!;
     [Dependency] private readonly SharedStunSystem _stun = default!;
-    [Dependency] private readonly DiseaseSystem _disease = default!;
+    [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private readonly PhysicsSystem _physics = default!;
+
+    [ValidatePrototypeId<DamageTypePrototype>]
+    private const string Damage = "Slash";
+
+    private static readonly SoundSpecifier GibSound = new SoundPathSpecifier("/Audio/Effects/gib3.ogg");
 
     private void InternalDamageInitialize()
     {
@@ -37,6 +48,8 @@ public sealed partial class SurgerySystem
             return;
 
         ProcessDamageTypes(ent, args.DamageDelta);
+        if (args.DamageDelta.DamageDict.TryGetValue(Damage, out var slashDamage))
+            TryLoseRandomLimb(ent, slashDamage.Float());
     }
 
     private void ProcessDamageTypes(Entity<OperatedComponent> ent, DamageSpecifier damageDelta)
@@ -48,6 +61,95 @@ public sealed partial class SurgerySystem
 
             var possibleDamages = GetMatchingDamagePrototypes(typeId);
             TryAddInternalDamages(ent, possibleDamages);
+        }
+    }
+
+    private void TryLoseRandomLimb(Entity<OperatedComponent> patient, float slashDamage)
+    {
+        if (slashDamage < 15f)
+            return;
+
+        if (_random.Prob(0.005f * patient.Comp.LimbLossChance))
+        {
+            _inventory.TryGetSlotEntity(patient, "head", out var headItem);
+            if (!headItem.HasValue || !HasComp<ArmorComponent>(headItem))
+            {
+                TryDecapitate(patient);
+                return;
+            }
+        }
+
+        float baseChance = Math.Min(slashDamage * 0.005f, 0.1f);
+        if (TryComp<BloodstreamComponent>(patient, out var bloodstream))
+            baseChance += Math.Min(bloodstream.BleedAmount * 0.005f, 0.05f);
+
+        if (!_random.Prob(baseChance * patient.Comp.LimbLossChance))
+            return;
+
+        var limbs = _body.GetBodyChildren(patient)
+            .Where(p => p.Component.PartType switch
+            {
+                BodyPartType.Arm => true,
+                BodyPartType.Hand => true,
+                BodyPartType.Leg => true,
+                BodyPartType.Foot => true,
+                _ => false
+            })
+            .ToList();
+
+        if (limbs.Count == 0)
+            return;
+
+        var (limbId, limbComp) = _random.Pick(limbs);
+        var parentSlot = _body.GetParentPartAndSlotOrNull(limbId);
+        if (parentSlot == null)
+            return;
+
+        var (parentId, slotId) = parentSlot.Value;
+        if (!TryComp<BodyPartComponent>(parentId, out var parentPart))
+            return;
+
+        var containerId = SharedBodySystem.GetPartSlotContainerId(slotId);
+        if (_container.TryGetContainer(parentId, containerId, out var container))
+        {
+            _container.Remove(limbId, container);
+            _popup.PopupEntity(Loc.GetString("surgery-limb-torn-off"), patient);
+
+            _audio.PlayPvs(GibSound, patient);
+
+            if (HasComp<BloodstreamComponent>(patient))
+                _bloodstream.TryModifyBleedAmount(patient, 5f);
+
+            var xform = Transform(patient);
+            _transform.SetCoordinates(limbId, xform.Coordinates);
+            _physics.ApplyLinearImpulse(limbId, _random.NextVector2() * 20f);
+        }
+    }
+
+    private void TryDecapitate(EntityUid patient)
+    {
+        var head = _body.GetBodyChildrenOfType(patient, BodyPartType.Head).FirstOrDefault();
+        if (head == default)
+            return;
+
+        var parentSlot = _body.GetParentPartAndSlotOrNull(head.Id);
+        if (parentSlot == null)
+            return;
+
+        var (parentId, slotId) = parentSlot.Value;
+        var containerId = SharedBodySystem.GetPartSlotContainerId(slotId);
+        if (_container.TryGetContainer(parentId, containerId, out var container))
+        {
+            _container.Remove(head.Id, container);
+            _popup.PopupEntity(Loc.GetString("surgery-decapitated"), patient);
+
+            _audio.PlayPvs(GibSound, patient);
+
+            var damage = new DamageSpecifier { DamageDict = { { Damage, 200 } } };
+            _damage.TryChangeDamage(patient, damage, true);
+
+            _transform.SetCoordinates(head.Id, Transform(patient).Coordinates);
+            _physics.ApplyLinearImpulse(head.Id, _random.NextVector2() * 40f);
         }
     }
 
@@ -166,7 +268,7 @@ public sealed partial class SurgerySystem
 
                 if (!string.IsNullOrEmpty(damageProto.BodyVisuals))
                 {
-                    message.Append($"\n{Loc.GetString(damageProto.BodyVisuals)}");
+                    message.Append($"{Loc.GetString(damageProto.BodyVisuals)}\n");
                 }
             }
 

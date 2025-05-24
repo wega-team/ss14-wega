@@ -8,6 +8,7 @@
     sprite: Clothing/Uniforms/Scrubs/purple.rsi
   - type: Clothing
     sprite: Clothing/Uniforms/Scrubs/purple.rsi
+  - type: ClothingSterility # Corvax-Wega-Surgery
 
 - type: entity
   parent: ClothingUniformBase
@@ -19,6 +20,7 @@
     sprite: Clothing/Uniforms/Scrubs/green.rsi
   - type: Clothing
     sprite: Clothing/Uniforms/Scrubs/green.rsi
+  - type: ClothingSterility # Corvax-Wega-Surgery
 
 - type: entity
   parent: ClothingUniformBase
@@ -30,3 +32,4 @@
     sprite: Clothing/Uniforms/Scrubs/blue.rsi
   - type: Clothing
     sprite: Clothing/Uniforms/Scrubs/blue.rsi
+  - type: ClothingSterility # Corvax-Wega-Surgery

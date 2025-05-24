@@ -15,6 +15,8 @@ using Robust.Shared.Physics.Components;
 using Robust.Shared.Prototypes;
 using System.Numerics;
 using Robust.Shared.Map;
+using Content.Shared.Item; // Corvax-Wega-Surgery
+using Content.Shared.Surgery.Components; // Corvax-Wega-Surgery
 
 namespace Content.Server.Fluids.EntitySystems;
 
@@ -55,6 +57,15 @@ public sealed class SpraySystem : EntitySystem
     {
         if (args.Handled)
             return;
+
+        // Corvax-Wega-Surgery-start
+        if (args.Target != null && HasComp<ItemComponent>(args.Target)
+            && _solutionContainer.TryGetSolution(entity.Owner, SprayComponent.SolutionName, out _, out var solution)
+            && solution.GetTotalPrototypeQuantity("Ethanol") >= FixedPoint2.New(5))
+        {
+            EnsureComp<SterileComponent>(args.Target.Value);
+        }
+        // Corvax-Wega-Surgery-end
 
         args.Handled = true;
 
