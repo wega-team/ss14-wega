@@ -103,7 +103,44 @@ public sealed partial class SurgerySystem
                 _audio.PlayPredicted(step.Sound, uid, null);
             }
 
-            PerformSurgeryEffect(step.Action, step.RequiredPart, step.SuccessChance, step.FailureEffect, uid, item);
+            bool foundMatch = false;
+            float successModifier = 1f;
+            if (step.Tool != null && step.Tool.Count > 0 && item != null)
+            {
+                if (_tool.HasQuality(item.Value, step.Tool[0]))
+                {
+                    successModifier = 1f;
+                    foundMatch = true;
+                }
+                else if (step.Tool.Count > 1)
+                {
+                    for (int i = 1; i < step.Tool.Count; i++)
+                    {
+                        if (_tool.HasQuality(item.Value, step.Tool[i]))
+                        {
+                            successModifier = 1f - i * 0.1f;
+                            foundMatch = true;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if (!foundMatch && step.Tag != null && step.Tag.Count > 0 && item != null)
+            {
+                for (int i = 0; i < step.Tag.Count; i++)
+                {
+                    if (_tag.HasTag(item.Value, step.Tag[i]))
+                    {
+                        successModifier = 0.9f - i * 0.1f;
+                        foundMatch = true;
+                        break;
+                    }
+                }
+            }
+
+            float finalSuccessChance = step.SuccessChance * successModifier;
+            PerformSurgeryEffect(step.Action, step.RequiredPart, finalSuccessChance, step.FailureEffect, uid, item);
         }
 
         CheckTransitionProgress(uid, comp, graph, transition);
@@ -299,17 +336,13 @@ public sealed partial class SurgerySystem
             time *= HasComp<SurgicalSkillComponent>(user) ? 3f : 5f;
 
         var item = _hands.GetActiveItemOrSelf(user);
-        if (step.Tool != null && step.Tool.Count > 0 && !step.Tool.Any(tool => _tool.HasQuality(item, tool)))
-        {
-            var tools = string.Join(", ", step.Tool);
-            _popup.PopupEntity(Loc.GetString("surgery-missing-tool", ("tool", tools)), user, user);
-            return;
-        }
 
-        if (step.Tag != null && step.Tag.Count > 0 && !step.Tag.Any(tag => _tag.HasTag(item, tag)))
+        bool toolValid = step.Tool == null || step.Tool.Count == 0 || step.Tool.Any(tool => _tool.HasQuality(item, tool));
+        bool tagValid = step.Tag == null || step.Tag.Count == 0 || step.Tag.Any(tag => _tag.HasTag(item, tag));
+
+        if (!toolValid && !tagValid)
         {
-            var tags = string.Join(", ", step.Tag);
-            _popup.PopupEntity(Loc.GetString("surgery-missing-tag", ("tag", tags)), user, user);
+            _popup.PopupEntity(Loc.GetString("surgery-missing-tool"), user, user);
             return;
         }
 

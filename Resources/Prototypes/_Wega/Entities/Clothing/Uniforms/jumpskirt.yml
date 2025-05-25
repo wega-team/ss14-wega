@@ -1,0 +1,14 @@
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtSurgeon
+  name: surgeon skirt
+  description: "Is there bloodstains on it..?"
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/surgeon.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/surgeon.rsi
+  - type: DiseaseProtection
+    protection: 0.1
+  - type: ClothingSterility
+    modifier: 0.95

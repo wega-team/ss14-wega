@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Server.Kitchen.Components;
 using Content.Shared.Buckle.Components;
 using Content.Shared.Interaction;
 using Content.Shared.Surgery;
@@ -18,14 +19,10 @@ public sealed partial class SurgerySystem
 
     private void OnInteractUsing(EntityUid uid, OperatedComponent comp, AfterInteractUsingEvent args)
     {
-        if (!_tool.HasQuality(args.Used, "Scalpel"))
+        if (!HasComp<SharpComponent>(args.Used))
             return;
 
         if (!TryGetOperatingTable(uid, out _) && !comp.OperatedPart)
-            return;
-
-        if (_inventory.TryGetSlotEntity(uid, "jumpsuit", out _)
-            || _inventory.TryGetSlotEntity(uid, "outerClothing", out _))
             return;
 
         OpenSurgeryUi(args.User, uid);

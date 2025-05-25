@@ -1,0 +1,16 @@
+- type: entity
+  parent: ClothingHandsButcherable
+  id: ClothingHandsGlovesLatexSurgeon
+  name: latex gloves
+  description: Thin sterile latex gloves. Basic PPE for any doctor.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Hands/Gloves/latex_surgeon.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Hands/Gloves/latex_surgeon.rsi
+  - type: DiseaseProtection # Corvax-Wega-Disease
+    protection: 0.1 # Corvax-Wega-Disease
+  - type: Fiber
+    fiberMaterial: fibers-latex
+  - type: FingerprintMask
+  - type: ClothingSterility # Corvax-Wega-Surgery

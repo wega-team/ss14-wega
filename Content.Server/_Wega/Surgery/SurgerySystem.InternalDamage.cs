@@ -117,6 +117,7 @@ public sealed partial class SurgerySystem
 
             _audio.PlayPvs(GibSound, patient);
 
+            _pain.AdjustPain(patient, "Physical", 250f);
             if (HasComp<BloodstreamComponent>(patient))
                 _bloodstream.TryModifyBleedAmount(patient, 5f);
 

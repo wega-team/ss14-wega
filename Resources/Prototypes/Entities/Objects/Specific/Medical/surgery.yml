@@ -79,6 +79,7 @@
   - type: Tag  # Corvax-Wega-Slot_for_scalpel_in_milboots
     tags:  # Corvax-Wega-Slot_for_scalpel_in_milboots
     - Scalpel  # Corvax-Wega-Slot_for_scalpel_in_milboots
+    - SurgeryTool
   - type: Sharp
     butcherDelayModifier: 1.5 # Butchering with a scalpel, regardless of the type, will take 50% longer
   - type: Tool

@@ -52,6 +52,15 @@
 - type: Tag
   id: ERTTacticalInterfaceCombat
 
+- type: Tag
+  id: Welder
+
+- type: Tag
+  id: Lighter
+
+- type: Tag
+  id: BasicGlassShard
+
 # Surgery / DONT TOUCH!
 - type: Tag
   id: Eyes

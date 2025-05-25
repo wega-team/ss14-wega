@@ -42,7 +42,23 @@
   - Glasses
   - SurvivalMedical
   - Trinkets
-  - GroupSpeciesBreathTool
+  - GroupSpeciesBreathToolMedical
+  - Top
+  - Bottom
+  - Socks
+
+- type: roleLoadout
+  id: JobSurgeon
+  groups:
+  - Inventory # Corvax-Loadouts
+  - GroupTankHarness
+  - SurgeonJumpsuit
+  - MedicalBackpack
+  - MedicalShoes
+  - Glasses
+  - SurvivalMedical
+  - Trinkets
+  - GroupSpeciesBreathToolMedical
   - Top
   - Bottom
   - Socks

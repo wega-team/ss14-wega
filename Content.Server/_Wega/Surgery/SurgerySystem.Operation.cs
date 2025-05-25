@@ -10,6 +10,7 @@ using Content.Shared.IdentityManagement;
 using Content.Shared.Popups;
 using Content.Shared.Surgery;
 using Content.Shared.Surgery.Components;
+using Content.Shared.Tools;
 using Robust.Shared.Containers;
 using Robust.Shared.Random;
 
@@ -20,6 +21,19 @@ public sealed partial class SurgerySystem
     [Dependency] private readonly ChatSystem _chat = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly BloodstreamSystem _bloodstream = default!;
+
+    [ValidatePrototypeId<ToolQualityPrototype>]
+    private readonly List<string> _surgeryTools = new()
+    {
+        "Scalpel",
+        "Hemostat",
+        "Retractor",
+        "Cautery",
+        "Drilling",
+        "FixOVein",
+        "BoneGel",
+        "BoneSetter"
+    };
 
     private void PerformSurgeryEffect(SurgeryActionType action, string? requiredPart, float successChance, string failureEffect, EntityUid patient, EntityUid? item)
     {
@@ -74,7 +88,10 @@ public sealed partial class SurgerySystem
 
     private void PerformCut(Entity<OperatedComponent> patient, float successChance, string failureEffect)
     {
-        if (!RollSuccess(patient, successChance))
+        if (patient.Comp.Surgeon == null)
+            return;
+
+        if (!RollSuccess(patient, patient.Comp.Surgeon.Value, successChance))
         {
             HandleFailure(patient, failureEffect);
             return;
@@ -88,7 +105,10 @@ public sealed partial class SurgerySystem
 
     private void PerformRetract(Entity<OperatedComponent> patient, float successChance, string failureEffect)
     {
-        if (!RollSuccess(patient, successChance))
+        if (patient.Comp.Surgeon == null)
+            return;
+
+        if (!RollSuccess(patient, patient.Comp.Surgeon.Value, successChance))
         {
             HandleFailure(patient, failureEffect);
             return;
@@ -97,7 +117,10 @@ public sealed partial class SurgerySystem
 
     private void PerformClamp(Entity<OperatedComponent> patient, float successChance, string failureEffect)
     {
-        if (!RollSuccess(patient, successChance))
+        if (patient.Comp.Surgeon == null)
+            return;
+
+        if (!RollSuccess(patient, patient.Comp.Surgeon.Value, successChance))
         {
             HandleFailure(patient, failureEffect);
             return;
@@ -114,7 +137,7 @@ public sealed partial class SurgerySystem
         if (patient.Comp.Surgeon == null || string.IsNullOrEmpty(damageType))
             return;
 
-        if (!RollSuccess(patient, successChance))
+        if (!RollSuccess(patient, patient.Comp.Surgeon.Value, successChance))
         {
             HandleFailure(patient, failureEffect);
             return;
@@ -148,10 +171,9 @@ public sealed partial class SurgerySystem
         if (patient.Comp.Surgeon == null || string.IsNullOrEmpty(requiredOrgan))
             return;
 
-        if (!RollSuccess(patient, successChance))
+        if (!RollSuccess(patient, patient.Comp.Surgeon.Value, successChance))
         {
             HandleFailure(patient, failureEffect);
-            return;
         }
 
         var organs = _body.GetBodyOrgans(patient)
@@ -174,13 +196,12 @@ public sealed partial class SurgerySystem
 
     private void PerformInsertOrgan(Entity<OperatedComponent> patient, EntityUid? item, string? requiredOrgan, float successChance, string failureEffect)
     {
-        if (item == null || string.IsNullOrEmpty(requiredOrgan))
+        if (patient.Comp.Surgeon == null || item == null || string.IsNullOrEmpty(requiredOrgan))
             return;
 
-        if (!RollSuccess(patient, successChance))
+        if (!RollSuccess(patient, patient.Comp.Surgeon.Value, successChance))
         {
             HandleFailure(patient, failureEffect);
-            return;
         }
 
         var targetSlot = FindOrganSlot(patient, requiredOrgan);
@@ -201,10 +222,9 @@ public sealed partial class SurgerySystem
         if (patient.Comp.Surgeon == null || string.IsNullOrEmpty(requiredPart))
             return;
 
-        if (!RollSuccess(patient, successChance))
+        if (!RollSuccess(patient, patient.Comp.Surgeon.Value, successChance))
         {
             HandleFailure(patient, failureEffect);
-            return;
         }
 
         var bodyParts = new List<(EntityUid Id, BodyPartComponent Component)>();
@@ -279,13 +299,12 @@ public sealed partial class SurgerySystem
 
     private void PerformAttachPart(Entity<OperatedComponent> patient, EntityUid? item, string? requiredPart, float successChance, string failureEffect)
     {
-        if (item == null || string.IsNullOrEmpty(requiredPart) || !TryComp<BodyPartComponent>(item, out _))
+        if (patient.Comp.Surgeon == null || item == null || string.IsNullOrEmpty(requiredPart) || !TryComp<BodyPartComponent>(item, out _))
             return;
 
-        if (!RollSuccess(patient, successChance))
+        if (!RollSuccess(patient, patient.Comp.Surgeon.Value, successChance))
         {
             HandleFailure(patient, failureEffect);
-            return;
         }
 
         var slotId = ParseSlotId(requiredPart.ToLower(), "body_part_slot_");
@@ -307,10 +326,10 @@ public sealed partial class SurgerySystem
 
     private void PerformImplant(Entity<OperatedComponent> patient, EntityUid? item, string? requiredPart, float successChance, string failureEffect)
     {
-        if (item == null || string.IsNullOrEmpty(requiredPart))
+        if (patient.Comp.Surgeon == null || item == null || string.IsNullOrEmpty(requiredPart))
             return;
 
-        if (!RollSuccess(patient, successChance))
+        if (!RollSuccess(patient, patient.Comp.Surgeon.Value, successChance))
         {
             HandleFailure(patient, failureEffect);
             return;
@@ -319,8 +338,15 @@ public sealed partial class SurgerySystem
         // TODO: Имплантация импланта или устройства в тело
     }
 
-    private bool RollSuccess(Entity<OperatedComponent> ent, float baseChance)
+    private bool RollSuccess(Entity<OperatedComponent> ent, EntityUid surgeon, float baseChance)
     {
+        var item = _hands.GetActiveItemOrSelf(surgeon);
+        if (HasComp<SurgicalSkillComponent>(surgeon) && ent.Comp.Sterility == 1f
+            && _surgeryTools.Any(tool => _tool.HasQuality(item, tool)))
+        {
+            return true;
+        }
+
         var adjustedChance = baseChance * Math.Clamp(ent.Comp.Sterility, 0f, 1.5f);
         if (TryGetOperatingTable(ent, out var tableModifier))
             adjustedChance *= tableModifier;

@@ -7,31 +7,42 @@
   target: TorsoOpen
   label: Вскрыть торс
   stepGroups:
-    - steps:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
         - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
           action: Cut
           sound:
             collection: Scalpel
           time: 4
           successChance: 0.95
         - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
           action: ClampBleeding
           sound:
             path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 3
           successChance: 0.95
         - tool: [ Retractor ]
+          tag: [ Crowbar ]
           action: Retract
           sound:
             collection: Retractor
           time: 4
         - tool: [ Sawing ]
+          tag: [ BotanyHatchet, FireAxe ]
           action: Cut
           sound:
             path: /Audio/_Wega/Medical/Surgery/saw.ogg
           time: 6
           successChance: 0.95
         - tool: [ Retractor ]
+          tag: [ Crowbar ]
           action: Retract
           sound:
             collection: Retractor
@@ -42,10 +53,17 @@
   target: OrganManipulation
   label: Манипуляция с органами
   stepGroups:
-    - parallel: true
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      parallel: true
       steps:
         # Сердце
         - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
           action: RemoveOrgan
           requiredPart: Heart
           sound:
@@ -69,6 +87,7 @@
 
         # Легкие
         - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
           action: RemoveOrgan
           requiredPart: Lungs
           sound:
@@ -92,6 +111,7 @@
 
         # Желудок
         - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
           action: RemoveOrgan
           requiredPart: Stomach
           sound:
@@ -115,6 +135,7 @@
 
         # Печень
         - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
           action: RemoveOrgan
           requiredPart: Liver
           sound:
@@ -138,6 +159,7 @@
 
         # Почки
         - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
           action: RemoveOrgan
           requiredPart: Kidneys
           sound:
@@ -164,22 +186,33 @@
   target: Default
   label: Закрыть торс
   stepGroups:
-    - steps:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
         - tool: [ Retractor ]
+          tag: [ Crowbar ]
           action: Retract
           sound:
             collection: Retractor
           time: 4
         - tool: [ BoneGel ]
+          tag: [ Screwdriver ]
           action: Empty
           time: 6
         - tool: [ BoneSetter ]
+          tag: [ Wrench ]
           action: Empty
           time: 8
         - tool: [ BoneGel ]
+          tag: [ Screwdriver ]
           action: Empty
           time: 4
         - tool: [ Cautery ]
+          tag: [ Cigarette, Lighter, Welder ]
           action: ClampBleeding
           sound:
             collection: Cautery
@@ -195,33 +228,42 @@
   label: Вскрыть череп
   stepGroups:
     - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
         - !type:BodyPartCondition
           bodyPart: head
       steps:
         - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
           action: Cut
           sound:
             collection: Scalpel
           time: 4
           successChance: 0.95
         - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
           action: ClampBleeding
           sound:
             path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 3
           successChance: 0.95
         - tool: [ Retractor ]
+          tag: [ Crowbar ]
           action: Retract
           sound:
             collection: Retractor
           time: 4
         - tool: [ Sawing ]
+          tag: [ BotanyHatchet, FireAxe ]
           action: Cut
           sound:
             path: /Audio/_Wega/Medical/Surgery/saw.ogg
           time: 6
           successChance: 0.95
         - tool: [ Retractor ]
+          tag: [ Crowbar ]
           action: Retract
           sound:
             collection: Retractor
@@ -232,31 +274,43 @@
   target: HeadOpen
   label: Вскрыть череп
   stepGroups:
-    - steps:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:BodyPartCondition
+          bodyPart: head
+      steps:
         - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
           action: Cut
           sound:
             collection: Scalpel
           time: 4
           successChance: 0.95
         - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
           action: ClampBleeding
           sound:
             path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 3
           successChance: 0.95
         - tool: [ Retractor ]
+          tag: [ Crowbar ]
           action: Retract
           sound:
             collection: Retractor
           time: 4
         - tool: [ Sawing ]
+          tag: [ BotanyHatchet, FireAxe ]
           action: Cut
           sound:
             path: /Audio/_Wega/Medical/Surgery/saw.ogg
           time: 6
           successChance: 0.95
         - tool: [ Retractor ]
+          tag: [ Crowbar ]
           action: Retract
           sound:
             collection: Retractor
@@ -267,10 +321,18 @@
   target: HeadRemoved
   label: Манипуляция с органами
   stepGroups:
-    - parallel: true
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:BodyPartCondition
+          bodyPart: head
+      parallel: true
       steps:
         # Мозг
         - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
           action: RemoveOrgan
           requiredPart: Brain
           sound:
@@ -294,6 +356,7 @@
 
         # Глаза
         - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
           action: RemoveOrgan
           requiredPart: Eyes
           sound:
@@ -322,20 +385,25 @@
   stepGroups:
     - steps:
         - tool: [ Retractor ]
+          tag: [ Crowbar ]
           action: Retract
           sound:
             collection: Retractor
           time: 4
         - tool: [ BoneGel ]
+          tag: [ Screwdriver ]
           action: Empty
           time: 6
         - tool: [ BoneSetter ]
+          tag: [ Wrench ]
           action: Empty
           time: 8
         - tool: [ BoneGel ]
+          tag: [ Screwdriver ]
           action: Empty
           time: 4
         - tool: [ Cautery ]
+          tag: [ Cigarette, Lighter, Welder ]
           action: ClampBleeding
           sound:
             collection: Cautery
@@ -352,23 +420,27 @@
           bodyPart: head
       steps:
         - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
           action: Cut
           sound:
             collection: Scalpel
           time: 4
           successChance: 0.95
         - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
           action: ClampBleeding
           sound:
             path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 3
           successChance: 0.95
         - tool: [ Retractor ]
+          tag: [ Crowbar ]
           action: Retract
           sound:
             collection: Retractor
           time: 4
         - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
           action: Cut
           sound:
             collection: Scalpel
@@ -392,6 +464,7 @@
   stepGroups:
     - steps:
         - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
           action: Cut
           sound:
             collection: Scalpel
@@ -408,12 +481,14 @@
   stepGroups:
     - steps:
         - tool: [ Sawing ]
+          tag: [ BotanyHatchet, FireAxe ]
           action: RemovePart
           sound:
             path: /Audio/_Wega/Medical/Surgery/saw.ogg
           requiredPart: left_arm
           time: 8
         - tool: [ Cautery ]
+          tag: [ Cigarette, Lighter, Welder ]
           action: ClampBleeding
           sound:
             collection: Cautery
@@ -426,6 +501,7 @@
   stepGroups:
     - steps:
         - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
           action: Cut
           sound:
             collection: Scalpel
@@ -447,17 +523,20 @@
           bodyPart: left_arm
       steps:
         - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
           action: ClampBleeding
           sound:
             path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 3
           successChance: 0.95
         - tool: [ Retractor ]
+          tag: [ Crowbar ]
           action: Retract
           sound:
             collection: Retractor
           time: 4
         - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
           action: Cut
           sound:
             collection: Scalpel
@@ -477,6 +556,7 @@
   stepGroups:
     - steps:
         - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
           action: Cut
           sound:
             collection: Scalpel
@@ -493,12 +573,14 @@
   stepGroups:
     - steps:
         - tool: [ Sawing ]
+          tag: [ BotanyHatchet, FireAxe ]
           action: RemovePart
           sound:
             path: /Audio/_Wega/Medical/Surgery/saw.ogg
           requiredPart: right_arm
           time: 6
         - tool: [ Cautery ]
+          tag: [ Cigarette, Lighter, Welder ]
           action: ClampBleeding
           sound:
             collection: Cautery
@@ -511,6 +593,7 @@
   stepGroups:
     - steps:
         - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
           action: Cut
           sound:
             collection: Scalpel
@@ -532,11 +615,13 @@
           bodyPart: right_arm
       steps:
         - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
           action: ClampBleeding
           sound:
             path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 3
         - tool: [ Retractor ]
+          tag: [ Crowbar ]
           action: Retract
           sound:
             collection: Retractor
@@ -555,6 +640,7 @@
   stepGroups:
     - steps:
         - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
           action: Cut
           sound:
             collection: Scalpel
@@ -573,12 +659,14 @@
   stepGroups:
     - steps:
         - tool: [ Sawing ]
+          tag: [ BotanyHatchet, FireAxe ]
           action: RemovePart
           sound:
             path: /Audio/_Wega/Medical/Surgery/saw.ogg
           requiredPart: left_hand
           time: 8
         - tool: [ Cautery ]
+          tag: [ Cigarette, Lighter, Welder ]
           action: ClampBleeding
           sound:
             collection: Cautery
@@ -591,6 +679,7 @@
   stepGroups:
     - steps:
         - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
           action: Cut
           sound:
             collection: Scalpel
@@ -616,11 +705,13 @@
           bodyPart: left_hand
       steps:
         - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
           action: ClampBleeding
           sound:
             path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 3
         - tool: [ Retractor ]
+          tag: [ Crowbar ]
           action: Retract
           sound:
             collection: Retractor
@@ -639,6 +730,7 @@
   stepGroups:
     - steps:
         - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
           action: Cut
           sound:
             collection: Scalpel
@@ -657,12 +749,14 @@
   stepGroups:
     - steps:
         - tool: [ Sawing ]
+          tag: [ BotanyHatchet, FireAxe ]
           action: RemovePart
           sound:
             path: /Audio/_Wega/Medical/Surgery/saw.ogg
           requiredPart: right_hand
           time: 6
         - tool: [ Cautery ]
+          tag: [ Cigarette, Lighter, Welder ]
           action: ClampBleeding
           sound:
             collection: Cautery
@@ -675,6 +769,7 @@
   stepGroups:
     - steps:
         - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
           action: Cut
           sound:
             collection: Scalpel
@@ -700,11 +795,13 @@
           bodyPart: right_hand
       steps:
         - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
           action: ClampBleeding
           sound:
             path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 3
         - tool: [ Retractor ]
+          tag: [ Crowbar ]
           action: Retract
           sound:
             collection: Retractor
@@ -723,6 +820,7 @@
   stepGroups:
     - steps:
         - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
           action: Cut
           sound:
             collection: Scalpel
@@ -739,12 +837,14 @@
   stepGroups:
     - steps:
         - tool: [ Sawing ]
+          tag: [ BotanyHatchet, FireAxe ]
           action: RemovePart
           sound:
             path: /Audio/_Wega/Medical/Surgery/saw.ogg
           requiredPart: left_leg
           time: 8
         - tool: [ Cautery ]
+          tag: [ Cigarette, Lighter, Welder ]
           action: ClampBleeding
           sound:
             collection: Cautery
@@ -757,6 +857,7 @@
   stepGroups:
     - steps:
         - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
           action: Cut
           sound:
             collection: Scalpel
@@ -778,11 +879,13 @@
           bodyPart: left_leg
       steps:
         - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
           action: ClampBleeding
           sound:
             path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 3
         - tool: [ Retractor ]
+          tag: [ Crowbar ]
           action: Retract
           sound:
             collection: Retractor
@@ -801,6 +904,7 @@
   stepGroups:
     - steps:
         - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
           action: Cut
           sound:
             collection: Scalpel
@@ -817,12 +921,14 @@
   stepGroups:
     - steps:
         - tool: [ Sawing ]
+          tag: [ BotanyHatchet, FireAxe ]
           action: RemovePart
           sound:
             path: /Audio/_Wega/Medical/Surgery/saw.ogg
           requiredPart: right_leg
           time: 6
         - tool: [ Cautery ]
+          tag: [ Cigarette, Lighter, Welder ]
           action: ClampBleeding
           sound:
             collection: Cautery
@@ -835,6 +941,7 @@
   stepGroups:
     - steps:
         - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
           action: Cut
           sound:
             collection: Scalpel
@@ -856,11 +963,13 @@
           bodyPart: right_leg
       steps:
         - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
           action: ClampBleeding
           sound:
             path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 3
         - tool: [ Retractor ]
+          tag: [ Crowbar ]
           action: Retract
           sound:
             collection: Retractor
@@ -879,6 +988,7 @@
   stepGroups:
     - steps:
         - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
           action: Cut
           sound:
             collection: Scalpel
@@ -897,12 +1007,14 @@
   stepGroups:
     - steps:
         - tool: [ Sawing ]
+          tag: [ BotanyHatchet, FireAxe ]
           action: RemovePart
           sound:
             path: /Audio/_Wega/Medical/Surgery/saw.ogg
           requiredPart: left_foot
           time: 8
         - tool: [ Cautery ]
+          tag: [ Cigarette, Lighter, Welder ]
           action: ClampBleeding
           sound:
             collection: Cautery
@@ -915,6 +1027,7 @@
   stepGroups:
     - steps:
         - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
           action: Cut
           sound:
             collection: Scalpel
@@ -940,11 +1053,13 @@
           bodyPart: left_foot
       steps:
         - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
           action: ClampBleeding
           sound:
             path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 3
         - tool: [ Retractor ]
+          tag: [ Crowbar ]
           action: Retract
           sound:
             collection: Retractor
@@ -963,6 +1078,7 @@
   stepGroups:
     - steps:
         - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
           action: Cut
           sound:
             collection: Scalpel
@@ -981,12 +1097,14 @@
   stepGroups:
     - steps:
         - tool: [ Sawing ]
+          tag: [ BotanyHatchet, FireAxe ]
           action: RemovePart
           sound:
             path: /Audio/_Wega/Medical/Surgery/saw.ogg
           requiredPart: right_foot
           time: 6
         - tool: [ Cautery ]
+          tag: [ Cigarette, Lighter, Welder ]
           action: ClampBleeding
           sound:
             collection: Cautery
@@ -999,6 +1117,7 @@
   stepGroups:
     - steps:
         - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
           action: Cut
           sound:
             collection: Scalpel
@@ -1024,11 +1143,13 @@
           bodyPart: right_foot
       steps:
         - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
           action: ClampBleeding
           sound:
             path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 3
         - tool: [ Retractor ]
+          tag: [ Crowbar ]
           action: Retract
           sound:
             collection: Retractor
@@ -1050,6 +1171,7 @@
   stepGroups:
     - steps:
         - tool: [ Cautery ]
+          tag: [ Cigarette, Lighter, Welder ]
           action: ClampBleeding
           sound:
             collection: Cautery

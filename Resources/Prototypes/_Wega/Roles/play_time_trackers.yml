@@ -9,3 +9,6 @@
 
 - type: playTimeTracker
   id: JobGeneticist
+
+- type: playTimeTracker
+  id: JobSurgeon

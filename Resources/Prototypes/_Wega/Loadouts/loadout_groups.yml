@@ -290,6 +290,13 @@
   - GeneticsOuterClothingLab
   - GeneticsOuterClothingWinter
 
+- type: loadoutGroup
+  id: SurgeonJumpsuit
+  name: loadout-group-surgeon-jumpsuit
+  loadouts:
+  - SurgeonJumpsuit
+  - SurgeonJumpskirt
+
 # Security
 - type: loadoutGroup
   id: BrigmedicHead

@@ -41,6 +41,13 @@
   icon: { sprite: Objects/Specific/Medical/Surgery/drill.rsi, state: drill }
 
 - type: tool
+  id: FixOVein
+  name: tool-quality-fix-o-vein-name
+  toolName: tool-quality-fix-o-vein-tool-name
+  spawn: FixOVein
+  icon: { sprite: _Wega/Objects/Specific/Medical/Surgery/fixovein.rsi, state: fixovein }
+
+- type: tool
   id: BoneGel
   name: tool-quality-bone-gel-name
   toolName: tool-quality-bone-gel-tool-name
