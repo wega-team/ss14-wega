@@ -1,7 +1,6 @@
 using System.Linq;
 using Content.Server.Body.Components;
 using Content.Server.Body.Systems;
-using Content.Server.Chat.Systems;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Body.Part;
 using Content.Shared.Body.Systems;
@@ -12,13 +11,13 @@ using Content.Shared.Surgery;
 using Content.Shared.Surgery.Components;
 using Content.Shared.Tools;
 using Robust.Shared.Containers;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
 namespace Content.Server.Surgery;
 
 public sealed partial class SurgerySystem
 {
-    [Dependency] private readonly ChatSystem _chat = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly BloodstreamSystem _bloodstream = default!;
 
@@ -35,7 +34,7 @@ public sealed partial class SurgerySystem
         "BoneSetter"
     };
 
-    private void PerformSurgeryEffect(SurgeryActionType action, string? requiredPart, float successChance, string failureEffect, EntityUid patient, EntityUid? item)
+    private void PerformSurgeryEffect(SurgeryActionType action, string? requiredPart, ProtoId<InternalDamagePrototype>? damageType, float successChance, string failureEffect, EntityUid patient, EntityUid? item)
     {
         if (!TryComp<OperatedComponent>(patient, out var comp))
             return;
@@ -55,7 +54,7 @@ public sealed partial class SurgerySystem
                 break;
 
             case SurgeryActionType.HealInternalDamage:
-                PerformHealInternalDamage((patient, comp), requiredPart, successChance, failureEffect);
+                PerformHealInternalDamage((patient, comp), requiredPart, damageType, successChance, failureEffect);
                 break;
 
             case SurgeryActionType.RemoveOrgan:
@@ -132,38 +131,20 @@ public sealed partial class SurgerySystem
         _bloodstream.TryModifyBleedAmount(patient, -10f);
     }
 
-    private void PerformHealInternalDamage(Entity<OperatedComponent> patient, string? damageType, float successChance, string failureEffect)
+    private void PerformHealInternalDamage(Entity<OperatedComponent> patient, string? requiredPart, ProtoId<InternalDamagePrototype>? damageType, float successChance, string failureEffect)
     {
-        if (patient.Comp.Surgeon == null || string.IsNullOrEmpty(damageType))
+        if (patient.Comp.Surgeon == null || string.IsNullOrEmpty(requiredPart) || damageType == null)
             return;
 
         if (!RollSuccess(patient, patient.Comp.Surgeon.Value, successChance))
         {
             HandleFailure(patient, failureEffect);
-            return;
         }
 
-        var parts = damageType.Split('_');
-        var bodyPart = parts.Length > 1 ? damageType : null;
-        var actualDamageType = parts.Length > 1 ? parts[1] : damageType;
-
-        if (!patient.Comp.InternalDamages.TryGetValue(actualDamageType, out var damagedParts))
+        if (!patient.Comp.InternalDamages.TryGetValue(damageType.Value, out var damagedParts))
             return;
 
-        if (bodyPart != null)
-        {
-            if (damagedParts.Remove(bodyPart))
-            {
-                _popup.PopupEntity(Loc.GetString("surgery-internal-damage-healed",
-                    ("damage", actualDamageType),
-                    ("bodypart", bodyPart)), patient);
-            }
-
-            if (damagedParts.Count == 0)
-            {
-                patient.Comp.InternalDamages.Remove(actualDamageType);
-            }
-        }
+        damagedParts.Remove(requiredPart);
     }
 
     private void PerformRemoveOrgan(Entity<OperatedComponent> patient, string? requiredOrgan, float successChance, string failureEffect)

@@ -1,10 +1,12 @@
 using System.Linq;
+using Content.Server.Chat.Systems;
 using Content.Server.Disease;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Part;
 using Content.Shared.Body.Prototypes;
 using Content.Shared.Body.Systems;
 using Content.Shared.Buckle.Components;
+using Content.Shared.Examine;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
@@ -23,6 +25,7 @@ namespace Content.Server.Surgery;
 public sealed partial class SurgerySystem : EntitySystem
 {
     [Dependency] private readonly SharedBodySystem _body = default!;
+    [Dependency] private readonly ChatSystem _chat = default!;
     [Dependency] private readonly DiseaseSystem _disease = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly SharedToolSystem _tool = default!;
@@ -44,6 +47,8 @@ public sealed partial class SurgerySystem : EntitySystem
         SubscribeLocalEvent<OperatedComponent, RejuvenateEvent>(OnRejuvenate);
         SubscribeLocalEvent<OperatedComponent, DidEquipEvent>(OnDidEquip);
         SubscribeLocalEvent<OperatedComponent, BodyPartRemovedEvent>(OnBodyPartsChanged);
+
+        SubscribeLocalEvent<SterileComponent, ExaminedEvent>(OnSterileExamined);
     }
 
     public override void Update(float frameTime)
@@ -186,6 +191,12 @@ public sealed partial class SurgerySystem : EntitySystem
             return parts.Count > 0;
 
         return hasLeft && hasRight;
+    }
+
+    private void OnSterileExamined(Entity<SterileComponent> entity, ref ExaminedEvent args)
+    {
+        if (args.IsInDetailsRange)
+            args.AddMarkup(Loc.GetString("surgery-sterile-examined") + "\n");
     }
 
     private bool TryGetOperatingTable(EntityUid patient, out float tableModifier)

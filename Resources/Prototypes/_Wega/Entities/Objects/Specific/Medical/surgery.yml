@@ -45,6 +45,23 @@
     - BoneGel
 
 - type: entity
+  name: spray bottle
+  id: SprayBottleEthanol
+  parent: SprayBottle
+  suffix: Ethanol
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      spray:
+        maxVol: 100
+        reagents:
+        - ReagentId: Ethanol
+          Quantity: 100
+  - type: Tag
+    tags:
+      - Spray
+
+- type: entity
   parent: BaseStorageItem
   id: Surgerykit
   name: surgery kit

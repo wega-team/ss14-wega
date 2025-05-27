@@ -128,6 +128,9 @@ public sealed partial class SurgeryStep
     [DataField("requiredPart")]
     public string? RequiredPart { get; private set; }
 
+    [DataField("damageType")]
+    public ProtoId<InternalDamagePrototype>? DamageType { get; private set; }
+
     [DataField("time")]
     public float Time { get; private set; } = 1f;
 

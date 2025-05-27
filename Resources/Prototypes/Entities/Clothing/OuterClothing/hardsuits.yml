@@ -879,6 +879,7 @@
     sprite: Clothing/OuterClothing/Hardsuits/ERTSuits/ertengineer.rsi
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitERTEngineer
+  - type: ClothingSterility # Corvax-Wega-Surgery
   - type: DiseaseProtection # Corvax-Wega-Disease
     protection: 0.4 # Corvax-Wega-Disease
 
@@ -895,6 +896,7 @@
     sprite: Clothing/OuterClothing/Hardsuits/ERTSuits/ertmedical.rsi
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitERTMedical
+  - type: ClothingSterility # Corvax-Wega-Surgery
   - type: DiseaseProtection # Corvax-Wega-Disease
     protection: 0.25 # Corvax-Wega-Disease
 
@@ -941,6 +943,7 @@
     sprite: Clothing/OuterClothing/Hardsuits/deathsquad.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Hardsuits/deathsquad.rsi
+  - type: ClothingSterility # Corvax-Wega-Surgery
   - type: PressureProtection
     highPressureMultiplier: 0.02
     lowPressureMultiplier: 1000

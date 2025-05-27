@@ -13,9 +13,11 @@
 - type: internalDamage
   id: MildBurns
   category: Burns
+  blacklist:
+    - head
   supportedTypes:
     - Heat
-    - Caustic
+    - Shock
   chance: 0.18
 
 ### Закрытые переломы ###
@@ -27,6 +29,17 @@
   supportedTypes:
     - Blunt
   chance: 0.08
+
+### Открытые переломы ###
+- type: internalDamage
+  id: OpenFracture
+  category: Fractures
+  blacklist:
+    - head
+  supportedTypes:
+    - Blunt
+  bodyVisuals: surgery-open-fracture
+  chance: 0.04
 
 ### Внутренние кровотечения ###
 - type: internalDamage
@@ -45,7 +58,7 @@
   supportedTypes:
     - Heat
     - Shock
-  chance: 0.05
+  chance: 0.025
 
 ### Пулевые ранения ###
 - type: internalDamage
@@ -56,14 +69,3 @@
   supportedTypes:
     - Piercing
   chance: 0.15
-
-### Открытые переломы ###
-- type: internalDamage
-  id: OpenFracture
-  category: Fractures
-  blacklist:
-    - head
-  supportedTypes:
-    - Blunt
-  bodyVisuals: surgery-open-fracture
-  chance: 0.04

@@ -411,7 +411,7 @@
 
 - type: surgeryTransition
   id: CompleteHeadAttachmentTransition
-  target: EndLimbsOperation
+  target: EndOperation
   label: Голова
   stepGroups:
     - conditions:
@@ -460,7 +460,7 @@
 - type: surgeryTransition
   id: AmputateLeftArmTransition
   target: AmputateLeftArmStart
-  label: Ампутировать левую руку
+  label: Манипуляции с левой рукой
   stepGroups:
     - steps:
         - tool: [ Scalpel ]
@@ -477,7 +477,7 @@
 - type: surgeryTransition
   id: AmputateLeftArmFinishTransition
   target: Default
-  label: Завершить ампутацию левой руки
+  label: Ампутировать левую руку
   stepGroups:
     - steps:
         - tool: [ Sawing ]
@@ -514,7 +514,7 @@
 
 - type: surgeryTransition
   id: AttachLeftArmProcessTransition
-  target: EndLimbsOperation
+  target: EndOperation
   label: Прикрепить левую руку
   stepGroups:
     - conditions:
@@ -552,7 +552,7 @@
 - type: surgeryTransition
   id: AmputateRightArmTransition
   target: AmputateRightArmStart
-  label: Ампутировать правую руку
+  label: Манипуляции с правой рукой
   stepGroups:
     - steps:
         - tool: [ Scalpel ]
@@ -569,7 +569,7 @@
 - type: surgeryTransition
   id: AmputateRightArmFinishTransition
   target: Default
-  label: Завершить ампутацию правой руки
+  label: Ампутировать правую руку
   stepGroups:
     - steps:
         - tool: [ Sawing ]
@@ -606,7 +606,7 @@
 
 - type: surgeryTransition
   id: AttachRightArmProcessTransition
-  target: EndLimbsOperation
+  target: EndOperation
   label: Прикрепить правую руку
   stepGroups:
     - conditions:
@@ -636,7 +636,7 @@
 - type: surgeryTransition
   id: AmputateLeftHandTransition
   target: AmputateLeftHandStart
-  label: Ампутировать левую кисть
+  label: Манипуляции с левой кистью
   stepGroups:
     - steps:
         - tool: [ Scalpel ]
@@ -655,7 +655,7 @@
 - type: surgeryTransition
   id: AmputateLeftHandFinishTransition
   target: Default
-  label: Завершить ампутацию левой кисти
+  label: Ампутировать левую кисть
   stepGroups:
     - steps:
         - tool: [ Sawing ]
@@ -694,7 +694,7 @@
 
 - type: surgeryTransition
   id: AttachLeftHandProcessTransition
-  target: EndLimbsOperation
+  target: EndOperation
   label: Прикрепить левую кисть
   stepGroups:
     - conditions:
@@ -726,7 +726,7 @@
 - type: surgeryTransition
   id: AmputateRightHandTransition
   target: AmputateRightHandStart
-  label: Ампутировать правую кисть
+  label: Манипуляции с правой кистью
   stepGroups:
     - steps:
         - tool: [ Scalpel ]
@@ -745,7 +745,7 @@
 - type: surgeryTransition
   id: AmputateRightHandFinishTransition
   target: Default
-  label: Завершить ампутацию правой кисти
+  label: Ампутировать правую кисть
   stepGroups:
     - steps:
         - tool: [ Sawing ]
@@ -784,7 +784,7 @@
 
 - type: surgeryTransition
   id: AttachRightHandProcessTransition
-  target: EndLimbsOperation
+  target: EndOperation
   label: Прикрепить правую кисть
   stepGroups:
     - conditions:
@@ -816,7 +816,7 @@
 - type: surgeryTransition
   id: AmputateLeftLegTransition
   target: AmputateLeftLegStart
-  label: Ампутировать левую ногу
+  label: Манипуляции с левой ногой
   stepGroups:
     - steps:
         - tool: [ Scalpel ]
@@ -833,7 +833,7 @@
 - type: surgeryTransition
   id: AmputateLeftLegFinishTransition
   target: Default
-  label: Завершить ампутацию левой ноги
+  label: Ампутировать левую ногу
   stepGroups:
     - steps:
         - tool: [ Sawing ]
@@ -870,7 +870,7 @@
 
 - type: surgeryTransition
   id: AttachLeftLegProcessTransition
-  target: EndLimbsOperation
+  target: EndOperation
   label: Прикрепить левую ногу
   stepGroups:
     - conditions:
@@ -900,7 +900,7 @@
 - type: surgeryTransition
   id: AmputateRightLegTransition
   target: AmputateRightLegStart
-  label: Ампутировать правую ногу
+  label: Манипуляции с правой ногой
   stepGroups:
     - steps:
         - tool: [ Scalpel ]
@@ -917,7 +917,7 @@
 - type: surgeryTransition
   id: AmputateRightLegFinishTransition
   target: Default
-  label: Завершить ампутацию правой ноги
+  label: Ампутировать правую ногу
   stepGroups:
     - steps:
         - tool: [ Sawing ]
@@ -954,7 +954,7 @@
 
 - type: surgeryTransition
   id: AttachRightLegProcessTransition
-  target: EndLimbsOperation
+  target: EndOperation
   label: Прикрепить правую ногу
   stepGroups:
     - conditions:
@@ -984,7 +984,7 @@
 - type: surgeryTransition
   id: AmputateLeftFootTransition
   target: AmputateLeftFootStart
-  label: Ампутировать левую стопу
+  label: Манипуляции с левой стопой
   stepGroups:
     - steps:
         - tool: [ Scalpel ]
@@ -1003,7 +1003,7 @@
 - type: surgeryTransition
   id: AmputateLeftFootFinishTransition
   target: Default
-  label: Завершить ампутацию левой стопы
+  label: Ампутировать левую стопу
   stepGroups:
     - steps:
         - tool: [ Sawing ]
@@ -1042,7 +1042,7 @@
 
 - type: surgeryTransition
   id: AttachLeftFootProcessTransition
-  target: EndLimbsOperation
+  target: EndOperation
   label: Прикрепить левую стопу
   stepGroups:
     - conditions:
@@ -1074,7 +1074,7 @@
 - type: surgeryTransition
   id: AmputateRightFootTransition
   target: AmputateRightFootStart
-  label: Ампутировать правую стопу
+  label: Манипуляции с правой стопой
   stepGroups:
     - steps:
         - tool: [ Scalpel ]
@@ -1093,7 +1093,7 @@
 - type: surgeryTransition
   id: AmputateRightFootFinishTransition
   target: Default
-  label: Завершить ампутацию правой стопы
+  label: Ампутировать правую стопу
   stepGroups:
     - steps:
         - tool: [ Sawing ]
@@ -1132,7 +1132,7 @@
 
 - type: surgeryTransition
   id: AttachRightFootProcessTransition
-  target: EndLimbsOperation
+  target: EndOperation
   label: Прикрепить правую стопу
   stepGroups:
     - conditions:
@@ -1165,7 +1165,7 @@
 # ========================
 
 - type: surgeryTransition
-  id: CompleteLimbsOperationTransition
+  id: CompleteOperationTransition
   target: Default
   label: ""
   stepGroups:

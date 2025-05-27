@@ -21,6 +21,13 @@
   bodyPart: torso
   transitions:
     - OrganManipulationTransition
+    - HealMuscleTearsTorsoTransition
+    - HealMildBurnsTorsoTransition
+    - HealClosedFractureTorsoTransition
+    - HealOpenFractureTorsoTransition
+    - HealArterialBleedingTorsoTransition
+    - HealDeepBurnsTorsoTransition
+    - HealBulletWoundTorsoTransition
     - CloseTorsoTransition
 
 # ========================
@@ -73,6 +80,13 @@
   bodyPart: left_arm
   transitions:
     - AmputateLeftArmFinishTransition
+    - HealMuscleTearsLeftArmTransition
+    - HealMildBurnsLeftArmTransition
+    - HealClosedFractureLeftArmTransition
+    - HealOpenFractureLeftArmTransition
+    - HealArterialBleedingLeftArmTransition
+    - HealDeepBurnsLeftArmTransition
+    - HealBulletWoundLeftArmTransition
 
 - type: surgeryNode
   id: AttachLeftArm
@@ -101,6 +115,13 @@
   bodyPart: right_arm
   transitions:
     - AmputateRightArmFinishTransition
+    - HealMuscleTearsRightArmTransition
+    - HealMildBurnsRightArmTransition
+    - HealClosedFractureRightArmTransition
+    - HealOpenFractureRightArmTransition
+    - HealArterialBleedingRightArmTransition
+    - HealDeepBurnsRightArmTransition
+    - HealBulletWoundRightArmTransition
 
 - type: surgeryNode
   id: AttachRightArm
@@ -129,6 +150,13 @@
   bodyPart: left_hand
   transitions:
     - AmputateLeftHandFinishTransition
+    - HealMuscleTearsLeftHandTransition
+    - HealMildBurnsLeftHandTransition
+    - HealClosedFractureLeftHandTransition
+    - HealOpenFractureLeftHandTransition
+    - HealArterialBleedingLeftHandTransition
+    - HealDeepBurnsLeftHandTransition
+    - HealBulletWoundLeftHandTransition
 
 - type: surgeryNode
   id: AttachLeftHand
@@ -157,6 +185,13 @@
   bodyPart: right_hand
   transitions:
     - AmputateRightHandFinishTransition
+    - HealMuscleTearsRightHandTransition
+    - HealMildBurnsRightHandTransition
+    - HealClosedFractureRightHandTransition
+    - HealOpenFractureRightHandTransition
+    - HealArterialBleedingRightHandTransition
+    - HealDeepBurnsRightHandTransition
+    - HealBulletWoundRightHandTransition
 
 - type: surgeryNode
   id: AttachRightHand
@@ -185,6 +220,13 @@
   bodyPart: left_leg
   transitions:
     - AmputateLeftLegFinishTransition
+    - HealMuscleTearsLeftLegTransition
+    - HealMildBurnsLeftLegTransition
+    - HealClosedFractureLeftLegTransition
+    - HealOpenFractureLeftLegTransition
+    - HealArterialBleedingLeftLegTransition
+    - HealDeepBurnsLeftLegTransition
+    - HealBulletWoundLeftLegTransition
 
 - type: surgeryNode
   id: AttachLeftLeg
@@ -213,6 +255,13 @@
   bodyPart: right_leg
   transitions:
     - AmputateRightLegFinishTransition
+    - HealMuscleTearsRightLegTransition
+    - HealMildBurnsRightLegTransition
+    - HealClosedFractureRightLegTransition
+    - HealOpenFractureRightLegTransition
+    - HealArterialBleedingRightLegTransition
+    - HealDeepBurnsRightLegTransition
+    - HealBulletWoundRightLegTransition
 
 - type: surgeryNode
   id: AttachRightLeg
@@ -241,6 +290,13 @@
   bodyPart: left_foot
   transitions:
     - AmputateLeftFootFinishTransition
+    - HealMuscleTearsLeftFootTransition
+    - HealMildBurnsLeftFootTransition
+    - HealClosedFractureLeftFootTransition
+    - HealOpenFractureLeftFootTransition
+    - HealArterialBleedingLeftFootTransition
+    - HealDeepBurnsLeftFootTransition
+    - HealBulletWoundLeftFootTransition
 
 - type: surgeryNode
   id: AttachLeftFoot
@@ -269,6 +325,13 @@
   bodyPart: right_foot
   transitions:
     - AmputateRightFootFinishTransition
+    - HealMuscleTearsRightFootTransition
+    - HealMildBurnsRightFootTransition
+    - HealClosedFractureRightFootTransition
+    - HealOpenFractureRightFootTransition
+    - HealArterialBleedingRightFootTransition
+    - HealDeepBurnsRightFootTransition
+    - HealBulletWoundRightFootTransition
 
 - type: surgeryNode
   id: AttachRightFoot
@@ -289,7 +352,7 @@
 # ========================
 
 - type: surgeryNode
-  id: EndLimbsOperation
+  id: EndOperation
   description: Завершить
   transitions:
-    - CompleteLimbsOperationTransition
+    - CompleteOperationTransition

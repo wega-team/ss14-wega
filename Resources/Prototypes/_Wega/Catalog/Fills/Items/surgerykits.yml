@@ -25,10 +25,8 @@
     - id: Hemostat
     - id: Retractor
     - id: Cautery
-    - id: Drill
-    - id: BoneSetter
-    - id: BoneGel
     - id: FixOVein
+    - id: SawAdvanced
     - id: Gauze
 
 - type: entity

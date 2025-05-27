@@ -2,6 +2,8 @@ using System.Linq;
 using System.Numerics;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Explosion.Components;
+using Content.Server.Surgery; // Corvax-Wega-Surgery
+using Content.Shared.Body.Components; // Corvax-Wega-Surgery
 using Content.Shared.CCVar;
 using Content.Shared.Damage;
 using Content.Shared.Database;
@@ -28,6 +30,7 @@ namespace Content.Server.Explosion.EntitySystems;
 public sealed partial class ExplosionSystem
 {
     [Dependency] private readonly FlammableSystem _flammableSystem = default!;
+    [Dependency] private readonly SurgerySystem _surgery = default!; // Corvax-Wega-Surgery
 
     /// <summary>
     ///     Used to limit explosion processing time. See <see cref="MaxProcessingTime"/>.
@@ -466,6 +469,12 @@ public sealed partial class ExplosionSystem
                 // TODO EXPLOSIONS turn explosions into entities, and pass the the entity in as the damage origin.
                 _damageableSystem.TryChangeDamage(entity, damage * _damageableSystem.UniversalExplosionDamageModifier, ignoreResistances: true);
 
+                // Corvax-Wega-Surgery-start
+                if (damage.GetTotal() > 100f && TryComp<BodyComponent>(entity, out var body))
+                {
+                    _surgery.ExplosionLimbLoss((entity, body), damage.GetTotal());
+                }
+                // Corvax-Wega-Surgery-end
             }
         }
 

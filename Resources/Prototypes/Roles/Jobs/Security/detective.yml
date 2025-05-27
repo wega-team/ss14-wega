@@ -22,6 +22,12 @@
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
+  # Corvax-Wega-Surgery-start
+  - !type:AddComponentSpecial
+    components:
+    - type: SurgicalSkill
+      modifier: 0.6
+  # Corvax-Wega-Surgery-end
 
 - type: startingGear
   id: DetectiveGear

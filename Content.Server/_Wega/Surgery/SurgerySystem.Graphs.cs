@@ -140,7 +140,7 @@ public sealed partial class SurgerySystem
             }
 
             float finalSuccessChance = step.SuccessChance * successModifier;
-            PerformSurgeryEffect(step.Action, step.RequiredPart, finalSuccessChance, step.FailureEffect, uid, item);
+            PerformSurgeryEffect(step.Action, step.RequiredPart, step.DamageType, finalSuccessChance, step.FailureEffect, uid, item);
         }
 
         CheckTransitionProgress(uid, comp, graph, transition);

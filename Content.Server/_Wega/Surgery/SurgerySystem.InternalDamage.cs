@@ -3,11 +3,15 @@ using System.Text;
 using Content.Server.Body.Components;
 using Content.Server.Pain;
 using Content.Shared.Armor;
+using Content.Shared.Body.Components;
 using Content.Shared.Body.Part;
 using Content.Shared.Body.Systems;
+using Content.Shared.Chat.Prototypes;
 using Content.Shared.Damage;
+using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Examine;
+using Content.Shared.FixedPoint;
 using Content.Shared.Jittering;
 using Content.Shared.Standing;
 using Content.Shared.Stunnable;
@@ -37,14 +41,18 @@ public sealed partial class SurgerySystem
     private void InternalDamageInitialize()
     {
         SubscribeLocalEvent<OperatedComponent, DamageChangedEvent>(OnDamage);
-        SubscribeLocalEvent<OperatedComponent, ExaminedEvent>(OnExamined);
+        SubscribeLocalEvent<OperatedComponent, ExaminedEvent>(OnOperatedExamined);
     }
 
     #region Process damage
 
     private void OnDamage(Entity<OperatedComponent> ent, ref DamageChangedEvent args)
     {
-        if (args.DamageDelta == null || args.DamageDelta.Empty || !args.DamageIncreased)
+        if (HasComp<GodmodeComponent>(ent))
+            return;
+
+        if (args.DamageDelta == null || args.DamageDelta.Empty || !args.DamageIncreased
+            || args.Origin == null)
             return;
 
         ProcessDamageTypes(ent, args.DamageDelta);
@@ -154,6 +162,55 @@ public sealed partial class SurgerySystem
         }
     }
 
+    public void ExplosionLimbLoss(Entity<BodyComponent> entity, FixedPoint2 damage)
+    {
+        if (!HasComp<OperatedComponent>(entity) || HasComp<GodmodeComponent>(entity))
+            return;
+
+        var limbs = _body.GetBodyChildren(entity)
+            .Where(p => p.Component.PartType switch
+            {
+                BodyPartType.Arm => true,
+                BodyPartType.Hand => true,
+                BodyPartType.Leg => true,
+                BodyPartType.Foot => true,
+                _ => false
+            })
+            .ToList();
+
+        if (limbs.Count == 0)
+            return;
+
+        int limbsToRemove = damage > 200f ? 2 : 1;
+        for (int i = 0; i < limbsToRemove && limbs.Count > 0; i++)
+        {
+            var (limbId, limbComp) = _random.Pick(limbs);
+            limbs.Remove((limbId, limbComp));
+
+            var parentSlot = _body.GetParentPartAndSlotOrNull(limbId);
+            if (parentSlot == null)
+                continue;
+
+            var (parentId, slotId) = parentSlot.Value;
+            var containerId = SharedBodySystem.GetPartSlotContainerId(slotId);
+            if (_container.TryGetContainer(parentId, containerId, out var container))
+            {
+                _container.Remove(limbId, container);
+                _popup.PopupEntity(Loc.GetString("surgery-explosion-limb-torn-off"), entity);
+
+                if (HasComp<BloodstreamComponent>(entity))
+                    _bloodstream.TryModifyBleedAmount(entity, 5f);
+
+                _audio.PlayPvs(GibSound, entity);
+                if (!_mobState.IsDead(entity))
+                    _chat.TryEmoteWithoutChat(entity, _proto.Index<EmotePrototype>("Scream"), true);
+
+                _transform.SetCoordinates(limbId, Transform(entity).Coordinates);
+                _physics.ApplyLinearImpulse(limbId, _random.NextVector2() * (50f + (float)damage));
+            }
+        }
+    }
+
     private List<InternalDamagePrototype> GetMatchingDamagePrototypes(string id)
     {
         return _proto.EnumeratePrototypes<InternalDamagePrototype>()
@@ -166,7 +223,7 @@ public sealed partial class SurgerySystem
         var component = ent.Comp;
         foreach (var damageProto in possibleDamages)
         {
-            if (!ShouldAddDamage(damageProto))
+            if (!_random.Prob(damageProto.Chance))
                 continue;
 
             var bodyPart = SelectBodyPart(ent.Owner, damageProto);
@@ -176,9 +233,6 @@ public sealed partial class SurgerySystem
             }
         }
     }
-
-    private bool ShouldAddDamage(InternalDamagePrototype damageProto)
-        => _random.Prob(damageProto.Chance);
 
     private string? SelectBodyPart(EntityUid patient, InternalDamagePrototype damageProto)
     {
@@ -254,7 +308,7 @@ public sealed partial class SurgerySystem
 
     #region Examine
 
-    private void OnExamined(Entity<OperatedComponent> entity, ref ExaminedEvent args)
+    private void OnOperatedExamined(Entity<OperatedComponent> entity, ref ExaminedEvent args)
     {
         if (entity.Comp.InternalDamages.Count == 0)
             return;
@@ -286,15 +340,43 @@ public sealed partial class SurgerySystem
 
     private void ProcessInternalDamages(EntityUid uid, OperatedComponent operated)
     {
+        var damagesToRemove = new List<(ProtoId<InternalDamagePrototype> DamageId, string? BodyPart)>();
         foreach (var (damageId, bodyParts) in operated.InternalDamages)
         {
             if (!_proto.TryIndex<InternalDamagePrototype>(damageId, out var damageProto))
                 continue;
 
+            if (damageProto.Category is DamageCategory.PhysicalTrauma or DamageCategory.Burns)
+            {
+                foreach (var bodyPart in bodyParts)
+                {
+                    if (_random.Prob(0.02f))
+                    {
+                        damagesToRemove.Add((damageId, bodyPart));
+                    }
+                }
+            }
+
             if (!_random.Prob(0.10f))
                 continue;
 
             ApplyDamageEffects(uid, damageProto, bodyParts);
+        }
+
+        foreach (var (damageId, bodyPart) in damagesToRemove)
+        {
+            if (bodyPart == null)
+            {
+                operated.InternalDamages.Remove(damageId);
+            }
+            else if (operated.InternalDamages.TryGetValue(damageId, out var parts))
+            {
+                parts.Remove(bodyPart);
+                if (parts.Count == 0)
+                {
+                    operated.InternalDamages.Remove(damageId);
+                }
+            }
         }
     }
 
@@ -304,7 +386,7 @@ public sealed partial class SurgerySystem
             return;
 
         var severityMod = _random.NextFloat(0.5f, 1.5f);
-        var severity = bodyParts.Count * damageProto.Severity * severityMod;
+        var severity = Math.Min(bodyParts.Count * damageProto.Severity * severityMod, 3f);
 
         switch (damageProto.Category)
         {
@@ -367,7 +449,8 @@ public sealed partial class SurgerySystem
 
             _pain.AdjustPain(patient, painType, 15 * severity);
 
-            if (part.Contains("arm") && _random.Prob(0.3f * severity))
+            float dropProb = Math.Min(0.3f * severity, 1f);
+            if (part.Contains("arm") && _random.Prob(dropProb))
             {
                 var dropEvent = new DropHandItemsEvent();
                 RaiseLocalEvent(patient, ref dropEvent);
@@ -375,11 +458,12 @@ public sealed partial class SurgerySystem
 
             if (part.Contains("leg"))
             {
-                _stun.TrySlowdown(patient, TimeSpan.FromSeconds(5 * severity), true, 0.5f, 0.3f);
+                _stun.TrySlowdown(patient, TimeSpan.FromSeconds(Math.Min(5 * severity, 10)),
+                    true, 0.5f, 0.3f);
 
                 if (bodyParts.Count(p => p.Contains("leg")) >= 2)
                 {
-                    _stun.TryKnockdown(patient, TimeSpan.FromSeconds(3 * severity), true);
+                    _stun.TryKnockdown(patient, TimeSpan.FromSeconds(Math.Min(3 * severity, 5)), true);
                 }
             }
         }
@@ -391,7 +475,8 @@ public sealed partial class SurgerySystem
         {
             _bloodstream.TryModifyBleedAmount(patient, 0.75f * severity);
 
-            if (_random.Prob(0.3f * severity))
+            float bloodLossProb = Math.Min(0.3f * severity, 1f);
+            if (_random.Prob(bloodLossProb))
             {
                 _bloodstream.TryModifyBloodLevel(patient, -0.1f * severity);
             }
@@ -404,7 +489,8 @@ public sealed partial class SurgerySystem
     {
         _pain.AdjustPain(patient, "CriticalBurn", 25 * severity);
 
-        if (_random.Prob(0.15f * severity))
+        float stunProb = Math.Min(0.15f * severity, 1f);
+        if (_random.Prob(stunProb))
         {
             _stun.TryStun(patient, TimeSpan.FromSeconds(3 * severity), true);
             _jittering.DoJitter(patient, TimeSpan.FromSeconds(15), true);
@@ -415,12 +501,14 @@ public sealed partial class SurgerySystem
     {
         _pain.AdjustPain(patient, "ForeignObject", 15 * severity);
 
-        if (_random.Prob(0.05f * severity))
+        float infectionProb = Math.Min(0.05f * severity, 1f);
+        if (_random.Prob(infectionProb))
         {
             _disease.TryAddDisease(patient, "BloodInfection");
         }
 
-        if (_random.Prob(0.4f * severity))
+        float sharpPainProb = Math.Min(0.4f * severity, 1f);
+        if (_random.Prob(sharpPainProb))
         {
             _pain.AdjustPain(patient, "SharpPain", 30);
         }
