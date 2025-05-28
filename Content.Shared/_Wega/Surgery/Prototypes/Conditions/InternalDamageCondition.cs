@@ -15,8 +15,10 @@ public sealed partial class InternalDamageCondition : SurgeryStepCondition
 
     public override bool Check(EntityUid patient, IEntityManager entityManager)
     {
-        if (!entityManager.TryGetComponent<OperatedComponent>(patient, out var operated)
-            || !operated.InternalDamages.TryGetValue(DamageType, out var bodyParts))
+        if (!entityManager.TryGetComponent<OperatedComponent>(patient, out var operated))
+            return false;
+
+        if (!operated.InternalDamages.TryGetValue(DamageType, out var bodyParts))
             return false;
 
         return bodyParts.Contains(BodyPart);

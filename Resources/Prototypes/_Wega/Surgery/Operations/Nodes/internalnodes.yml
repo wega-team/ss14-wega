@@ -1,0 +1,41 @@
+- type: surgeryNode
+  id: EndMuscleTearsOperation
+  description: Завершить
+  transitions:
+    - CompleteOperationTransition
+
+- type: surgeryNode
+  id: EndMildBurnsOperation
+  description: Завершить
+  transitions:
+    - CompleteOperationTransition
+
+- type: surgeryNode
+  id: EndClosedFractureOperation
+  description: Завершить
+  transitions:
+    - CompleteOperationTransition
+
+- type: surgeryNode
+  id: EndOpenFractureOperation
+  description: Завершить
+  transitions:
+    - CompleteOperationTransition
+
+- type: surgeryNode
+  id: EndArterialBleedingOperation
+  description: Завершить
+  transitions:
+    - CompleteOperationTransition
+
+- type: surgeryNode
+  id: EndDeepBurnsOperation
+  description: Завершить
+  transitions:
+    - CompleteOperationTransition
+
+- type: surgeryNode
+  id: EndBulletWoundOperation
+  description: Завершить
+  transitions:
+    - CompleteOperationTransition

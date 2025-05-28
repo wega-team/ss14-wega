@@ -1,7 +1,7 @@
 #region MuscleTears
 - type: surgeryTransition
   id: HealMuscleTearsTorsoTransition
-  target: EndOperation
+  target: EndMuscleTearsOperation
   label: "Лечить физические травмы"
   stepGroups:
     - conditions:
@@ -34,7 +34,7 @@
 
 - type: surgeryTransition
   id: HealMuscleTearsLeftArmTransition
-  target: EndOperation
+  target: EndMuscleTearsOperation
   label: "Лечить физические травмы"
   stepGroups:
     - conditions:
@@ -69,7 +69,7 @@
 
 - type: surgeryTransition
   id: HealMuscleTearsRightArmTransition
-  target: EndOperation
+  target: EndMuscleTearsOperation
   label: "Лечить физические травмы"
   stepGroups:
     - conditions:
@@ -104,7 +104,7 @@
 
 - type: surgeryTransition
   id: HealMuscleTearsLeftHandTransition
-  target: EndOperation
+  target: EndMuscleTearsOperation
   label: "Лечить физические травмы"
   stepGroups:
     - conditions:
@@ -141,7 +141,7 @@
 
 - type: surgeryTransition
   id: HealMuscleTearsRightHandTransition
-  target: EndOperation
+  target: EndMuscleTearsOperation
   label: "Лечить физические травмы"
   stepGroups:
     - conditions:
@@ -178,7 +178,7 @@
 
 - type: surgeryTransition
   id: HealMuscleTearsLeftLegTransition
-  target: EndOperation
+  target: EndMuscleTearsOperation
   label: "Лечить физические травмы"
   stepGroups:
     - conditions:
@@ -213,7 +213,7 @@
 
 - type: surgeryTransition
   id: HealMuscleTearsRightLegTransition
-  target: EndOperation
+  target: EndMuscleTearsOperation
   label: "Лечить физические травмы"
   stepGroups:
     - conditions:
@@ -248,7 +248,7 @@
 
 - type: surgeryTransition
   id: HealMuscleTearsLeftFootTransition
-  target: EndOperation
+  target: EndMuscleTearsOperation
   label: "Лечить физические травмы"
   stepGroups:
     - conditions:
@@ -285,7 +285,7 @@
 
 - type: surgeryTransition
   id: HealMuscleTearsRightFootTransition
-  target: EndOperation
+  target: EndMuscleTearsOperation
   label: "Лечить физические травмы"
   stepGroups:
     - conditions:
@@ -323,7 +323,7 @@
 #region MildBurns
 - type: surgeryTransition
   id: HealMildBurnsTorsoTransition
-  target: EndOperation
+  target: EndMildBurnsOperation
   label: "Лечить легкие ожоги"
   stepGroups:
     - conditions:
@@ -356,7 +356,7 @@
 
 - type: surgeryTransition
   id: HealMildBurnsLeftArmTransition
-  target: EndOperation
+  target: EndMildBurnsOperation
   label: "Лечить легкие ожоги"
   stepGroups:
     - conditions:
@@ -391,7 +391,7 @@
 
 - type: surgeryTransition
   id: HealMildBurnsRightArmTransition
-  target: EndOperation
+  target: EndMildBurnsOperation
   label: "Лечить легкие ожоги"
   stepGroups:
     - conditions:
@@ -426,7 +426,7 @@
 
 - type: surgeryTransition
   id: HealMildBurnsLeftHandTransition
-  target: EndOperation
+  target: EndMildBurnsOperation
   label: "Лечить легкие ожоги"
   stepGroups:
     - conditions:
@@ -463,7 +463,7 @@
 
 - type: surgeryTransition
   id: HealMildBurnsRightHandTransition
-  target: EndOperation
+  target: EndMildBurnsOperation
   label: "Лечить легкие ожоги"
   stepGroups:
     - conditions:
@@ -500,7 +500,7 @@
 
 - type: surgeryTransition
   id: HealMildBurnsLeftLegTransition
-  target: EndOperation
+  target: EndMildBurnsOperation
   label: "Лечить легкие ожоги"
   stepGroups:
     - conditions:
@@ -535,7 +535,7 @@
 
 - type: surgeryTransition
   id: HealMildBurnsRightLegTransition
-  target: EndOperation
+  target: EndMildBurnsOperation
   label: "Лечить легкие ожоги"
   stepGroups:
     - conditions:
@@ -570,7 +570,7 @@
 
 - type: surgeryTransition
   id: HealMildBurnsLeftFootTransition
-  target: EndOperation
+  target: EndMildBurnsOperation
   label: "Лечить легкие ожоги"
   stepGroups:
     - conditions:
@@ -607,7 +607,7 @@
 
 - type: surgeryTransition
   id: HealMildBurnsRightFootTransition
-  target: EndOperation
+  target: EndMildBurnsOperation
   label: "Лечить легкие ожоги"
   stepGroups:
     - conditions:
@@ -645,7 +645,7 @@
 #region ClosedFracture
 - type: surgeryTransition
   id: HealClosedFractureTorsoTransition
-  target: EndOperation
+  target: EndClosedFractureOperation
   label: "Исправить внутренний перелом"
   stepGroups:
     - conditions:
@@ -686,7 +686,7 @@
 
 - type: surgeryTransition
   id: HealClosedFractureLeftArmTransition
-  target: EndOperation
+  target: EndClosedFractureOperation
   label: "Исправить внутренний перелом"
   stepGroups:
     - conditions:
@@ -729,7 +729,7 @@
 
 - type: surgeryTransition
   id: HealClosedFractureRightArmTransition
-  target: EndOperation
+  target: EndClosedFractureOperation
   label: "Исправить внутренний перелом"
   stepGroups:
     - conditions:
@@ -772,7 +772,7 @@
 
 - type: surgeryTransition
   id: HealClosedFractureLeftHandTransition
-  target: EndOperation
+  target: EndClosedFractureOperation
   label: "Исправить внутренний перелом"
   stepGroups:
     - conditions:
@@ -817,7 +817,7 @@
 
 - type: surgeryTransition
   id: HealClosedFractureRightHandTransition
-  target: EndOperation
+  target: EndClosedFractureOperation
   label: "Исправить внутренний перелом"
   stepGroups:
     - conditions:
@@ -862,7 +862,7 @@
 
 - type: surgeryTransition
   id: HealClosedFractureLeftLegTransition
-  target: EndOperation
+  target: EndClosedFractureOperation
   label: "Исправить внутренний перелом"
   stepGroups:
     - conditions:
@@ -905,7 +905,7 @@
 
 - type: surgeryTransition
   id: HealClosedFractureRightLegTransition
-  target: EndOperation
+  target: EndClosedFractureOperation
   label: "Исправить внутренний перелом"
   stepGroups:
     - conditions:
@@ -948,7 +948,7 @@
 
 - type: surgeryTransition
   id: HealClosedFractureLeftFootTransition
-  target: EndOperation
+  target: EndClosedFractureOperation
   label: "Исправить внутренний перелом"
   stepGroups:
     - conditions:
@@ -993,7 +993,7 @@
 
 - type: surgeryTransition
   id: HealClosedFractureRightFootTransition
-  target: EndOperation
+  target: EndClosedFractureOperation
   label: "Исправить внутренний перелом"
   stepGroups:
     - conditions:
@@ -1039,7 +1039,7 @@
 #region OpenFracture
 - type: surgeryTransition
   id: HealOpenFractureTorsoTransition
-  target: EndOperation
+  target: EndOpenFractureOperation
   label: "Исправить открытый перелом"
   stepGroups:
     - conditions:
@@ -1080,7 +1080,7 @@
 
 - type: surgeryTransition
   id: HealOpenFractureLeftArmTransition
-  target: EndOperation
+  target: EndOpenFractureOperation
   label: "Исправить открытый перелом"
   stepGroups:
     - conditions:
@@ -1123,7 +1123,7 @@
 
 - type: surgeryTransition
   id: HealOpenFractureRightArmTransition
-  target: EndOperation
+  target: EndOpenFractureOperation
   label: "Исправить открытый перелом"
   stepGroups:
     - conditions:
@@ -1166,7 +1166,7 @@
 
 - type: surgeryTransition
   id: HealOpenFractureLeftHandTransition
-  target: EndOperation
+  target: EndOpenFractureOperation
   label: "Исправить открытый перелом"
   stepGroups:
     - conditions:
@@ -1211,7 +1211,7 @@
 
 - type: surgeryTransition
   id: HealOpenFractureRightHandTransition
-  target: EndOperation
+  target: EndOpenFractureOperation
   label: "Исправить открытый перелом"
   stepGroups:
     - conditions:
@@ -1256,7 +1256,7 @@
 
 - type: surgeryTransition
   id: HealOpenFractureLeftLegTransition
-  target: EndOperation
+  target: EndOpenFractureOperation
   label: "Исправить открытый перелом"
   stepGroups:
     - conditions:
@@ -1299,7 +1299,7 @@
 
 - type: surgeryTransition
   id: HealOpenFractureRightLegTransition
-  target: EndOperation
+  target: EndOpenFractureOperation
   label: "Исправить открытый перелом"
   stepGroups:
     - conditions:
@@ -1342,7 +1342,7 @@
 
 - type: surgeryTransition
   id: HealOpenFractureLeftFootTransition
-  target: EndOperation
+  target: EndOpenFractureOperation
   label: "Исправить открытый перелом"
   stepGroups:
     - conditions:
@@ -1387,7 +1387,7 @@
 
 - type: surgeryTransition
   id: HealOpenFractureRightFootTransition
-  target: EndOperation
+  target: EndOpenFractureOperation
   label: "Исправить открытый перелом"
   stepGroups:
     - conditions:
@@ -1433,7 +1433,7 @@
 #region ArterialBleeding
 - type: surgeryTransition
   id: HealArterialBleedingTorsoTransition
-  target: EndOperation
+  target: EndArterialBleedingOperation
   label: "Остановить артериальное кровотечение"
   stepGroups:
     - conditions:
@@ -1465,7 +1465,7 @@
 
 - type: surgeryTransition
   id: HealArterialBleedingLeftArmTransition
-  target: EndOperation
+  target: EndArterialBleedingOperation
   label: "Остановить артериальное кровотечение"
   stepGroups:
     - conditions:
@@ -1499,7 +1499,7 @@
 
 - type: surgeryTransition
   id: HealArterialBleedingRightArmTransition
-  target: EndOperation
+  target: EndArterialBleedingOperation
   label: "Остановить артериальное кровотечение"
   stepGroups:
     - conditions:
@@ -1533,7 +1533,7 @@
 
 - type: surgeryTransition
   id: HealArterialBleedingLeftHandTransition
-  target: EndOperation
+  target: EndArterialBleedingOperation
   label: "Остановить артериальное кровотечение"
   stepGroups:
     - conditions:
@@ -1569,7 +1569,7 @@
 
 - type: surgeryTransition
   id: HealArterialBleedingRightHandTransition
-  target: EndOperation
+  target: EndArterialBleedingOperation
   label: "Остановить артериальное кровотечение"
   stepGroups:
     - conditions:
@@ -1605,7 +1605,7 @@
 
 - type: surgeryTransition
   id: HealArterialBleedingLeftLegTransition
-  target: EndOperation
+  target: EndArterialBleedingOperation
   label: "Остановить артериальное кровотечение"
   stepGroups:
     - conditions:
@@ -1639,7 +1639,7 @@
 
 - type: surgeryTransition
   id: HealArterialBleedingRightLegTransition
-  target: EndOperation
+  target: EndArterialBleedingOperation
   label: "Остановить артериальное кровотечение"
   stepGroups:
     - conditions:
@@ -1673,7 +1673,7 @@
 
 - type: surgeryTransition
   id: HealArterialBleedingLeftFootTransition
-  target: EndOperation
+  target: EndArterialBleedingOperation
   label: "Остановить артериальное кровотечение"
   stepGroups:
     - conditions:
@@ -1709,7 +1709,7 @@
 
 - type: surgeryTransition
   id: HealArterialBleedingRightFootTransition
-  target: EndOperation
+  target: EndArterialBleedingOperation
   label: "Остановить артериальное кровотечение"
   stepGroups:
     - conditions:
@@ -1746,7 +1746,7 @@
 #region DeepBurns
 - type: surgeryTransition
   id: HealDeepBurnsTorsoTransition
-  target: EndOperation
+  target: EndDeepBurnsOperation
   label: "Лечить тяжелые ожоги"
   stepGroups:
     - conditions:
@@ -1777,7 +1777,7 @@
 
 - type: surgeryTransition
   id: HealDeepBurnsLeftArmTransition
-  target: EndOperation
+  target: EndDeepBurnsOperation
   label: "Лечить тяжелые ожоги"
   stepGroups:
     - conditions:
@@ -1810,7 +1810,7 @@
 
 - type: surgeryTransition
   id: HealDeepBurnsRightArmTransition
-  target: EndOperation
+  target: EndDeepBurnsOperation
   label: "Лечить тяжелые ожоги"
   stepGroups:
     - conditions:
@@ -1843,7 +1843,7 @@
 
 - type: surgeryTransition
   id: HealDeepBurnsLeftHandTransition
-  target: EndOperation
+  target: EndDeepBurnsOperation
   label: "Лечить тяжелые ожоги"
   stepGroups:
     - conditions:
@@ -1878,7 +1878,7 @@
 
 - type: surgeryTransition
   id: HealDeepBurnsRightHandTransition
-  target: EndOperation
+  target: EndDeepBurnsOperation
   label: "Лечить тяжелые ожоги"
   stepGroups:
     - conditions:
@@ -1913,7 +1913,7 @@
 
 - type: surgeryTransition
   id: HealDeepBurnsLeftLegTransition
-  target: EndOperation
+  target: EndDeepBurnsOperation
   label: "Лечить тяжелые ожоги"
   stepGroups:
     - conditions:
@@ -1946,7 +1946,7 @@
 
 - type: surgeryTransition
   id: HealDeepBurnsRightLegTransition
-  target: EndOperation
+  target: EndDeepBurnsOperation
   label: "Лечить тяжелые ожоги"
   stepGroups:
     - conditions:
@@ -1979,7 +1979,7 @@
 
 - type: surgeryTransition
   id: HealDeepBurnsLeftFootTransition
-  target: EndOperation
+  target: EndDeepBurnsOperation
   label: "Лечить тяжелые ожоги"
   stepGroups:
     - conditions:
@@ -2014,7 +2014,7 @@
 
 - type: surgeryTransition
   id: HealDeepBurnsRightFootTransition
-  target: EndOperation
+  target: EndDeepBurnsOperation
   label: "Лечить тяжелые ожоги"
   stepGroups:
     - conditions:
@@ -2050,7 +2050,7 @@
 #region BulletWound
 - type: surgeryTransition
   id: HealBulletWoundTorsoTransition
-  target: EndOperation
+  target: EndBulletWoundOperation
   label: "Извлечь инородное тело"
   stepGroups:
     - conditions:
@@ -2083,7 +2083,7 @@
 
 - type: surgeryTransition
   id: HealBulletWoundLeftArmTransition
-  target: EndOperation
+  target: EndBulletWoundOperation
   label: "Извлечь инородное тело"
   stepGroups:
     - conditions:
@@ -2118,7 +2118,7 @@
 
 - type: surgeryTransition
   id: HealBulletWoundRightArmTransition
-  target: EndOperation
+  target: EndBulletWoundOperation
   label: "Извлечь инородное тело"
   stepGroups:
     - conditions:
@@ -2153,7 +2153,7 @@
 
 - type: surgeryTransition
   id: HealBulletWoundLeftHandTransition
-  target: EndOperation
+  target: EndBulletWoundOperation
   label: "Извлечь инородное тело"
   stepGroups:
     - conditions:
@@ -2190,7 +2190,7 @@
 
 - type: surgeryTransition
   id: HealBulletWoundRightHandTransition
-  target: EndOperation
+  target: EndBulletWoundOperation
   label: "Извлечь инородное тело"
   stepGroups:
     - conditions:
@@ -2227,7 +2227,7 @@
 
 - type: surgeryTransition
   id: HealBulletWoundLeftLegTransition
-  target: EndOperation
+  target: EndBulletWoundOperation
   label: "Извлечь инородное тело"
   stepGroups:
     - conditions:
@@ -2262,7 +2262,7 @@
 
 - type: surgeryTransition
   id: HealBulletWoundRightLegTransition
-  target: EndOperation
+  target: EndBulletWoundOperation
   label: "Извлечь инородное тело"
   stepGroups:
     - conditions:
@@ -2297,7 +2297,7 @@
 
 - type: surgeryTransition
   id: HealBulletWoundLeftFootTransition
-  target: EndOperation
+  target: EndBulletWoundOperation
   label: "Извлечь инородное тело"
   stepGroups:
     - conditions:
@@ -2334,7 +2334,7 @@
 
 - type: surgeryTransition
   id: HealBulletWoundRightFootTransition
-  target: EndOperation
+  target: EndBulletWoundOperation
   label: "Извлечь инородное тело"
   stepGroups:
     - conditions:
