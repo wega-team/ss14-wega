@@ -1,0 +1,22 @@
+# ========================
+# УЗЛЫ ТОРСА
+# ========================
+
+- type: surgeryNode
+  id: SlimeTorsoClosed
+  description: Торс закрыт
+  bodyPart: torso
+  transitions:
+    - SlimeOpenTorsoTransition
+
+- type: surgeryNode
+  id: SlimeTorsoOpen
+  description: Торс вскрыт
+  bodyPart: torso
+  transitions:
+    - SlimeOrganManipulationTransition
+    - HealMuscleTearsTorsoTransition
+    - HealMildBurnsTorsoTransition
+    - HealDeepBurnsTorsoTransition
+    - HealBulletWoundTorsoTransition
+    - SlimeCloseTorsoTransition

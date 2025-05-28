@@ -15,7 +15,7 @@
       - right leg
       - left leg
       organs:
-        core: SentientSlimeCore
+        slimecore: SentientSlimeCore # Corvax-Wega-Surgery-Edit
         lungs: OrganSlimeLungs
     right arm:
       part: RightArmSlime

@@ -81,6 +81,9 @@
   id: Stomach
 
 - type: Tag
+  id: SlimeCore
+
+- type: Tag
   id: LeftArm
 
 - type: Tag

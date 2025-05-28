@@ -1,3 +1,4 @@
+using Content.Shared.Humanoid.Prototypes;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
@@ -13,8 +14,11 @@ public sealed partial class InternalDamagePrototype : IPrototype, ISerialization
     [DataField("category", required: true)]
     public DamageCategory Category { get; private set; }
 
-    [DataField("blacklist")]
-    public List<string>? Blacklist { get; private set; }
+    [DataField("blacklistPart")]
+    public List<string>? BlacklistPart { get; private set; }
+
+    [DataField("blacklistSpecies")]
+    public List<ProtoId<SpeciesPrototype>>? BlacklistSpecies { get; private set; } = new();
 
     [DataField("supportedTypes", required: true)]
     public List<string> SupportedTypes { get; private set; } = new();

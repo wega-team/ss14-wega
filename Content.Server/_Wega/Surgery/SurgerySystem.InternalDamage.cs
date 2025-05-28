@@ -12,6 +12,7 @@ using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Examine;
 using Content.Shared.FixedPoint;
+using Content.Shared.Humanoid;
 using Content.Shared.Jittering;
 using Content.Shared.Standing;
 using Content.Shared.Stunnable;
@@ -220,16 +221,19 @@ public sealed partial class SurgerySystem
 
     private void TryAddInternalDamages(Entity<OperatedComponent> ent, List<InternalDamagePrototype> possibleDamages)
     {
-        var component = ent.Comp;
         foreach (var damageProto in possibleDamages)
         {
+            if (TryComp<HumanoidAppearanceComponent>(ent, out var humanoidAppearance) && damageProto.BlacklistSpecies != null
+                && damageProto.BlacklistSpecies.Contains(humanoidAppearance.Species))
+                continue;
+
             if (!_random.Prob(damageProto.Chance))
                 continue;
 
             var bodyPart = SelectBodyPart(ent.Owner, damageProto);
             if (bodyPart != null)
             {
-                AddInternalDamage(component, damageProto.ID, bodyPart);
+                AddInternalDamage(ent.Comp, damageProto.ID, bodyPart);
             }
         }
     }
@@ -241,8 +245,8 @@ public sealed partial class SurgerySystem
         if (bodyParts.Count == 0)
             return null;
 
-        var availableParts = damageProto.Blacklist != null
-            ? FilterByBlacklist(bodyParts, damageProto.Blacklist)
+        var availableParts = damageProto.BlacklistPart != null
+            ? FilterByBlacklist(bodyParts, damageProto.BlacklistPart)
             : bodyParts.Select(b => GetBodyPartName(b.Component)).ToList();
 
         return availableParts.Count > 0 ? _random.Pick(availableParts) : null;
@@ -284,6 +288,10 @@ public sealed partial class SurgerySystem
             return false;
 
         if (!_proto.TryIndex<InternalDamagePrototype>(damageId, out var damageProto))
+            return false;
+
+        if (TryComp<HumanoidAppearanceComponent>(target, out var humanoidAppearance) && damageProto.BlacklistSpecies != null
+            && damageProto.BlacklistSpecies.Contains(humanoidAppearance.Species))
             return false;
 
         bodyPart ??= SelectBodyPart(target, damageProto);

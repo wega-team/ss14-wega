@@ -1,0 +1,21 @@
+- type: surgeryGraph
+  id: SlimeSurgery
+  startNodes:
+    - SlimeTorsoClosed
+    - AttachHead
+    - AmputateLeftArm
+    - AttachLeftArm
+    - AmputateRightArm
+    - AttachRightArm
+    - AmputateLeftHand
+    - AttachLeftHand
+    - AmputateRightHand
+    - AttachRightHand
+    - AmputateLeftLeg
+    - AttachLeftLeg
+    - AmputateRightLeg
+    - AttachRightLeg
+    - AmputateLeftFoot
+    - AttachLeftFoot
+    - AmputateRightFoot
+    - AttachRightFoot

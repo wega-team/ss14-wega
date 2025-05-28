@@ -206,10 +206,6 @@
   # Corvax-Wega-Surgery-start
       enum.SurgeryUiKey.Key:
         type: SurgeryBoundUserInterface
-  - type: Operated
-    raceGraph: BaseSurgery
-  - type: Pain
-    profile: BasePainProfile
   - type: Crawling
   # Corvax-Wega-Surgery-end
   - type: Puller

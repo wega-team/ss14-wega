@@ -87,14 +87,12 @@
     layers:
       - state: eyeball-l
       - state: eyeball-r
-  # Corvax-Wega-Surgery-start
-  - type: Organ
-    organType: Eyes
-  # Corvax-Wega-Surgery-end
   - type: Item
     size: Small
     heldPrefix: eyeballs
   # Corvax-Wega-Surgery-start
+  - type: Organ
+    organType: Eyes
   - type: Tag
     tags:
       - Eyes
@@ -143,10 +141,6 @@
   - type: Item
     size: Small
     heldPrefix: lungs
-  # Corvax-Wega-Surgery-start
-  - type: Organ
-    organType: Lungs
-  # Corvax-Wega-Surgery-end
   - type: Lung
   - type: Metabolizer
     removeEmpty: true
@@ -171,6 +165,8 @@
         - ReagentId: UncookedAnimalProteins
           Quantity: 5
   # Corvax-Wega-Surgery-start
+  - type: Organ
+    organType: Lungs
   - type: Tag
     tags:
       - Lungs
@@ -188,11 +184,6 @@
   # The heart 'metabolizes' medicines and poisons that aren't filtered out by other organs.
   # This is done because these chemicals need to have some effect even if they aren't being filtered out of your body.
   # You're technically 'immune to poison' without a heart, but.. uhh, you'll have bigger problems on your hands.
-  # Corvax-Wega-Surgery-start
-  - type: Heart
-  - type: Organ
-    organType: Heart
-  # Corvax-Wega-Surgery-end
   - type: Metabolizer
     maxReagents: 2
     metabolizerTypes: [Human]
@@ -204,6 +195,9 @@
     size: Small
     heldPrefix: heart
   # Corvax-Wega-Surgery-start
+  - type: Heart
+  - type: Organ
+    organType: Heart
   - type: Tag
     tags:
       - Heart
@@ -221,10 +215,6 @@
   - type: Item
     size: Small
     heldPrefix: stomach
-  # Corvax-Wega-Surgery-start
-  - type: Organ
-    organType: Stomach
-  # Corvax-Wega-Surgery-end
   - type: SolutionContainerManager
     solutions:
       stomach:
@@ -246,6 +236,8 @@
     - id: Food
     - id: Drink
   # Corvax-Wega-Surgery-start
+  - type: Organ
+    organType: Stomach
   - type: Tag
     tags:
       - Stomach
@@ -263,10 +255,6 @@
   - type: Item
     size: Small
     heldPrefix: liver
-  # Corvax-Wega-Surgery-start
-  - type: Organ
-    organType: Liver
-  # Corvax-Wega-Surgery-end
   - type: Metabolizer # The liver metabolizes certain chemicals only, like alcohol.
     maxReagents: 1
     metabolizerTypes: [Human]
@@ -274,6 +262,8 @@
     - id: Alcohol
       rateModifier: 0.1 # removes alcohol very slowly along with the stomach removing it as a drink
   # Corvax-Wega-Surgery-start
+  - type: Organ
+    organType: Liver
   - type: Tag
     tags:
       - Liver
@@ -293,16 +283,14 @@
   - type: Item
     size: Small
     heldPrefix: kidneys
-  # Corvax-Wega-Surgery-start
-  - type: Organ
-    organType: Kidneys
-  # Corvax-Wega-Surgery-end
   # The kidneys just remove anything that doesn't currently have any metabolisms, as a stopgap.
   - type: Metabolizer
     maxReagents: 5
     metabolizerTypes: [Human]
     removeEmpty: true
   # Corvax-Wega-Surgery-start
+  - type: Organ
+    organType: Kidneys
   - type: Tag
     tags:
       - Kidneys

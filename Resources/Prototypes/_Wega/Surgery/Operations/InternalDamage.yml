@@ -2,7 +2,7 @@
 - type: internalDamage
   id: MuscleTears
   category: PhysicalTrauma
-  blacklist:
+  blacklistPart:
     - head
   supportedTypes:
     - Blunt
@@ -13,7 +13,7 @@
 - type: internalDamage
   id: MildBurns
   category: Burns
-  blacklist:
+  blacklistPart:
     - head
   supportedTypes:
     - Heat
@@ -24,8 +24,10 @@
 - type: internalDamage
   id: ClosedFracture
   category: Fractures
-  blacklist:
+  blacklistPart:
     - head
+  blacklistSpecies:
+    - SlimePerson
   supportedTypes:
     - Blunt
   chance: 0.08
@@ -34,8 +36,10 @@
 - type: internalDamage
   id: OpenFracture
   category: Fractures
-  blacklist:
+  blacklistPart:
     - head
+  blacklistSpecies:
+    - SlimePerson
   supportedTypes:
     - Blunt
   bodyVisuals: surgery-open-fracture
@@ -45,8 +49,10 @@
 - type: internalDamage
   id: ArterialBleeding
   category: InternalBleeding
-  blacklist:
+  blacklistPart:
     - head
+  blacklistSpecies:
+    - SlimePerson
   supportedTypes:
     - Piercing
   chance: 0.1
@@ -64,7 +70,7 @@
 - type: internalDamage
   id: BulletWound
   category: ForeignObjects
-  blacklist:
+  blacklistPart:
     - head
   supportedTypes:
     - Piercing

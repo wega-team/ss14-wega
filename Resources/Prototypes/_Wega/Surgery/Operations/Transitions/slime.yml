@@ -1,0 +1,122 @@
+# ========================
+# ПЕРЕХОДЫ ТОРСА
+# ========================
+
+- type: surgeryTransition
+  id: SlimeOpenTorsoTransition
+  target: SlimeTorsoOpen
+  label: Вскрыть торс
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          sound:
+            collection: Retractor
+          time: 4
+
+- type: surgeryTransition
+  id: SlimeOrganManipulationTransition
+  target: OrganManipulation
+  label: Манипуляция с органами
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      parallel: true
+      steps:
+        # Ядро
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: RemoveOrgan
+          requiredPart: SlimeCore
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              organ: SlimeCore
+        - tag: [ SlimeCore ]
+          action: InsertOrgan
+          requiredPart: SlimeCore
+          sound:
+            collection: Squishes
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              invert: true
+              organ: SlimeCore
+
+        # Легкие
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: RemoveOrgan
+          requiredPart: Lungs
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              organ: Lungs
+        - tag: [ Lungs ]
+          action: InsertOrgan
+          requiredPart: Lungs
+          sound:
+            collection: Squishes
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              invert: true
+              organ: Lungs
+
+- type: surgeryTransition
+  id: SlimeCloseTorsoTransition
+  target: Default
+  label: Закрыть торс
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ Cautery ]
+          tag: [ Cigarette, Lighter, Welder ]
+          action: ClampBleeding
+          sound:
+            collection: Cautery
+          time: 8
