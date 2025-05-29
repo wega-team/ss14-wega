@@ -1,7 +1,7 @@
 #region MuscleTears
 - type: surgeryTransition
   id: HealMuscleTearsTorsoTransition
-  target: TorsoOpen
+  target: EndMuscleTearsTorsoOperation
   label: "Лечить физические травмы"
   stepGroups:
     - conditions:
@@ -323,7 +323,7 @@
 #region MildBurns
 - type: surgeryTransition
   id: HealMildBurnsTorsoTransition
-  target: TorsoOpen
+  target: EndMildBurnsTorsoOperation
   label: "Лечить легкие ожоги"
   stepGroups:
     - conditions:
@@ -645,7 +645,7 @@
 #region ClosedFracture
 - type: surgeryTransition
   id: HealClosedFractureTorsoTransition
-  target: TorsoOpen
+  target: EndClosedFractureTorsoOperation
   label: "Исправить внутренний перелом"
   stepGroups:
     - conditions:
@@ -1039,7 +1039,7 @@
 #region OpenFracture
 - type: surgeryTransition
   id: HealOpenFractureTorsoTransition
-  target: TorsoOpen
+  target: EndOpenFractureTorsoOperation
   label: "Исправить открытый перелом"
   stepGroups:
     - conditions:
@@ -1433,7 +1433,7 @@
 #region ArterialBleeding
 - type: surgeryTransition
   id: HealArterialBleedingTorsoTransition
-  target: TorsoOpen
+  target: EndArterialBleedingTorsoOperation
   label: "Остановить артериальное кровотечение"
   stepGroups:
     - conditions:
@@ -1746,7 +1746,7 @@
 #region DeepBurns
 - type: surgeryTransition
   id: HealDeepBurnsTorsoTransition
-  target: TorsoOpen
+  target: EndDeepBurnsTorsoOperation
   label: "Лечить тяжелые ожоги"
   stepGroups:
     - conditions:
@@ -2050,7 +2050,7 @@
 #region BulletWound
 - type: surgeryTransition
   id: HealBulletWoundTorsoTransition
-  target: TorsoOpen
+  target: EndBulletWoundTorsoOperation
   label: "Извлечь инородное тело"
   stepGroups:
     - conditions:

@@ -39,7 +39,7 @@ public sealed partial class SurgerySystem
         }
         else
         {
-            if (args.TargetNode != comp.CurrentTargetNode)
+            if (args.TargetNode != comp.CurrentTargetNode && comp.CurrentStepIndex == 0)
                 comp.SetOperationState(args.TargetNode, user);
 
             StartOperationChain(user, uid, comp, comp.CurrentTargetNode!, args.StepIndex, args.IsParallel);

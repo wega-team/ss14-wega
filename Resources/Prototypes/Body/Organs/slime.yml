@@ -42,7 +42,6 @@
       organType: SlimeCore
     - type: Tag
       tags:
-        - Brain
         - SlimeCore
         - Meat
     # Corvax-Wega-Surgery-end
