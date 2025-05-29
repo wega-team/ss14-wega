@@ -476,7 +476,7 @@
 
 - type: surgeryTransition
   id: AmputateLeftArmFinishTransition
-  target: Default
+  target: EndOperation
   label: Ампутировать левую руку
   stepGroups:
     - steps:
@@ -487,12 +487,6 @@
             path: /Audio/_Wega/Medical/Surgery/saw.ogg
           requiredPart: left_arm
           time: 8
-        - tool: [ Cautery ]
-          tag: [ Cigarette, Lighter, Welder ]
-          action: ClampBleeding
-          sound:
-            collection: Cautery
-          time: 4
 
 - type: surgeryTransition
   id: AttachLeftArmStartTransition
@@ -568,7 +562,7 @@
 
 - type: surgeryTransition
   id: AmputateRightArmFinishTransition
-  target: Default
+  target: EndOperation
   label: Ампутировать правую руку
   stepGroups:
     - steps:
@@ -579,12 +573,6 @@
             path: /Audio/_Wega/Medical/Surgery/saw.ogg
           requiredPart: right_arm
           time: 6
-        - tool: [ Cautery ]
-          tag: [ Cigarette, Lighter, Welder ]
-          action: ClampBleeding
-          sound:
-            collection: Cautery
-          time: 4
 
 - type: surgeryTransition
   id: AttachRightArmStartTransition
@@ -654,7 +642,7 @@
 
 - type: surgeryTransition
   id: AmputateLeftHandFinishTransition
-  target: Default
+  target: EndOperation
   label: Ампутировать левую кисть
   stepGroups:
     - steps:
@@ -665,12 +653,6 @@
             path: /Audio/_Wega/Medical/Surgery/saw.ogg
           requiredPart: left_hand
           time: 8
-        - tool: [ Cautery ]
-          tag: [ Cigarette, Lighter, Welder ]
-          action: ClampBleeding
-          sound:
-            collection: Cautery
-          time: 4
 
 - type: surgeryTransition
   id: AttachLeftHandStartTransition
@@ -744,7 +726,7 @@
 
 - type: surgeryTransition
   id: AmputateRightHandFinishTransition
-  target: Default
+  target: EndOperation
   label: Ампутировать правую кисть
   stepGroups:
     - steps:
@@ -755,12 +737,6 @@
             path: /Audio/_Wega/Medical/Surgery/saw.ogg
           requiredPart: right_hand
           time: 6
-        - tool: [ Cautery ]
-          tag: [ Cigarette, Lighter, Welder ]
-          action: ClampBleeding
-          sound:
-            collection: Cautery
-          time: 4
 
 - type: surgeryTransition
   id: AttachRightHandStartTransition
@@ -832,7 +808,7 @@
 
 - type: surgeryTransition
   id: AmputateLeftLegFinishTransition
-  target: Default
+  target: EndOperation
   label: Ампутировать левую ногу
   stepGroups:
     - steps:
@@ -843,12 +819,6 @@
             path: /Audio/_Wega/Medical/Surgery/saw.ogg
           requiredPart: left_leg
           time: 8
-        - tool: [ Cautery ]
-          tag: [ Cigarette, Lighter, Welder ]
-          action: ClampBleeding
-          sound:
-            collection: Cautery
-          time: 4
 
 - type: surgeryTransition
   id: AttachLeftLegStartTransition
@@ -916,7 +886,7 @@
 
 - type: surgeryTransition
   id: AmputateRightLegFinishTransition
-  target: Default
+  target: EndOperation
   label: Ампутировать правую ногу
   stepGroups:
     - steps:
@@ -927,12 +897,6 @@
             path: /Audio/_Wega/Medical/Surgery/saw.ogg
           requiredPart: right_leg
           time: 6
-        - tool: [ Cautery ]
-          tag: [ Cigarette, Lighter, Welder ]
-          action: ClampBleeding
-          sound:
-            collection: Cautery
-          time: 4
 
 - type: surgeryTransition
   id: AttachRightLegStartTransition
@@ -1002,7 +966,7 @@
 
 - type: surgeryTransition
   id: AmputateLeftFootFinishTransition
-  target: Default
+  target: EndOperation
   label: Ампутировать левую стопу
   stepGroups:
     - steps:
@@ -1013,12 +977,6 @@
             path: /Audio/_Wega/Medical/Surgery/saw.ogg
           requiredPart: left_foot
           time: 8
-        - tool: [ Cautery ]
-          tag: [ Cigarette, Lighter, Welder ]
-          action: ClampBleeding
-          sound:
-            collection: Cautery
-          time: 4
 
 - type: surgeryTransition
   id: AttachLeftFootStartTransition
@@ -1092,7 +1050,7 @@
 
 - type: surgeryTransition
   id: AmputateRightFootFinishTransition
-  target: Default
+  target: EndOperation
   label: Ампутировать правую стопу
   stepGroups:
     - steps:
@@ -1103,12 +1061,6 @@
             path: /Audio/_Wega/Medical/Surgery/saw.ogg
           requiredPart: right_foot
           time: 6
-        - tool: [ Cautery ]
-          tag: [ Cigarette, Lighter, Welder ]
-          action: ClampBleeding
-          sound:
-            collection: Cautery
-          time: 4
 
 - type: surgeryTransition
   id: AttachRightFootStartTransition
@@ -1167,7 +1119,20 @@
 - type: surgeryTransition
   id: CompleteOperationTransition
   target: Default
-  label: ""
+  label: Завершить
+  stepGroups:
+    - steps:
+        - tool: [ Cautery ]
+          tag: [ Cigarette, Lighter, Welder ]
+          action: ClampBleeding
+          sound:
+            collection: Cautery
+          time: 4
+
+- type: surgeryTransition
+  id: CompleteOperationTransitionAlt
+  target: Default
+  label: Завершить
   stepGroups:
     - steps:
         - tool: [ Cautery ]

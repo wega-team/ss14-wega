@@ -11,4 +11,13 @@
   - type: Icon
     sprite: Structures/Furniture/Tables/optable.rsi
     state: operating_table
-  - type: OperatingTable # Corvax-Wega-Surgery
+  # Corvax-Wega-Surgery-start
+  - type: OperatingTable
+  - type: DeviceNetwork
+    deviceNetId: Wired
+    receiveFrequencyId: BasicDevice
+  - type: DeviceList
+  - type: DeviceLinkSink
+    ports:
+      - SurgeryTableReceiver
+  # Corvax-Wega-Surgery-end

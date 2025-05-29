@@ -20,6 +20,19 @@ public sealed partial class SurgerySystem
         SubscribeLocalEvent<OperatedComponent, SurgeryStepDoAfterEvent>(OnSurgeryStepDoAfter);
     }
 
+    [ValidatePrototypeId<TagPrototype>]
+    private readonly List<string> _tags = new()
+    {
+        "Brain",
+        "Eyes",
+        "Heart",
+        "Lungs",
+        "Kidneys",
+        "Liver",
+        "Stomach",
+        "SlimeCore"
+    };
+
     /// <summary>
     /// Handles the start of a surgery procedure, setting up the operation state and starting the operation chain.
     /// </summary>
@@ -167,7 +180,7 @@ public sealed partial class SurgerySystem
             {
                 groups.Add(new SurgeryGroupDto(
                     groupName: Loc.GetString(transition.Label),
-                    description: $"Процедура: {transition.Label}",
+                    description: Loc.GetString("surgery-procedure", ("label", transition.Label)),
                     targetNode: transition.Target,
                     steps: steps
                 ));
@@ -194,7 +207,7 @@ public sealed partial class SurgerySystem
             if (group.Parallel)
             {
                 output.AddRange(group.Steps.Select(s => new SurgeryStepDto(
-                    name: $"(Параллельно) {s.Action}",
+                    name: $"{Loc.GetString("surgery-parallel")} {Loc.GetString($"surgery-action-{s.Action.ToString().ToLower()}")}",
                     isCompleted: comp.CompletedParallelSteps.Contains(s),
                     isEnabled: !comp.CompletedParallelSteps.Contains(s) && CheckStepConditions(patient, s),
                     isVisible: CheckStepConditions(patient, s),
@@ -208,7 +221,7 @@ public sealed partial class SurgerySystem
                 {
                     var isCompleted = IsStepCompleted(comp, target, s);
                     output.Add(new SurgeryStepDto(
-                        name: s.Action.ToString(),
+                        name: Loc.GetString($"surgery-action-{s.Action.ToString().ToLower()}"),
                         isCompleted: isCompleted,
                         isEnabled: !isCompleted,
                         isVisible: CheckStepConditions(patient, s),
@@ -355,6 +368,12 @@ public sealed partial class SurgerySystem
                 stepIndex = parallelGroup.Steps.IndexOf(step);
         }
 
+        if (!string.IsNullOrEmpty(step.RequiredPart) && !ValidateSurgicalTool(item, step.RequiredPart))
+        {
+            _popup.PopupEntity(Loc.GetString("surgery-incorrect-insert"), user, user);
+            return;
+        }
+
         var args = new DoAfterArgs(EntityManager, user, time,
             new SurgeryStepDoAfterEvent(targetNode, isParallel, stepIndex), patient, used: item)
         {
@@ -391,6 +410,26 @@ public sealed partial class SurgerySystem
     #endregion
 
     #region Validation
+
+    /// <summary>
+    /// A method for checking the correct placement of organs in the correct slots.
+    /// </summary>
+    /// <param name="item">The object in the working hand.</param>
+    /// <param name="requiredPart">The necessary part</param>
+    /// <returns></returns>
+    private bool ValidateSurgicalTool(EntityUid item, string requiredPart)
+    {
+        if (string.IsNullOrEmpty(requiredPart))
+            return true;
+
+        if (_surgeryTools.Any(tool => _tool.HasQuality(item, tool)))
+            return true;
+
+        if (!_tags.Contains(requiredPart))
+            return true;
+
+        return _tag.HasTag(item, requiredPart);
+    }
 
     /// <summary>
     /// Retrieves the transition for a node that leads to a specific target node.

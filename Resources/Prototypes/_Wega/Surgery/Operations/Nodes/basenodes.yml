@@ -87,6 +87,7 @@
     - HealArterialBleedingLeftArmTransition
     - HealDeepBurnsLeftArmTransition
     - HealBulletWoundLeftArmTransition
+    - CompleteOperationTransitionAlt
 
 - type: surgeryNode
   id: AttachLeftArm
@@ -122,6 +123,7 @@
     - HealArterialBleedingRightArmTransition
     - HealDeepBurnsRightArmTransition
     - HealBulletWoundRightArmTransition
+    - CompleteOperationTransitionAlt
 
 - type: surgeryNode
   id: AttachRightArm
@@ -157,6 +159,7 @@
     - HealArterialBleedingLeftHandTransition
     - HealDeepBurnsLeftHandTransition
     - HealBulletWoundLeftHandTransition
+    - CompleteOperationTransitionAlt
 
 - type: surgeryNode
   id: AttachLeftHand
@@ -192,6 +195,7 @@
     - HealArterialBleedingRightHandTransition
     - HealDeepBurnsRightHandTransition
     - HealBulletWoundRightHandTransition
+    - CompleteOperationTransitionAlt
 
 - type: surgeryNode
   id: AttachRightHand
@@ -227,6 +231,7 @@
     - HealArterialBleedingLeftLegTransition
     - HealDeepBurnsLeftLegTransition
     - HealBulletWoundLeftLegTransition
+    - CompleteOperationTransitionAlt
 
 - type: surgeryNode
   id: AttachLeftLeg
@@ -262,6 +267,7 @@
     - HealArterialBleedingRightLegTransition
     - HealDeepBurnsRightLegTransition
     - HealBulletWoundRightLegTransition
+    - CompleteOperationTransitionAlt
 
 - type: surgeryNode
   id: AttachRightLeg
@@ -297,6 +303,7 @@
     - HealArterialBleedingLeftFootTransition
     - HealDeepBurnsLeftFootTransition
     - HealBulletWoundLeftFootTransition
+    - CompleteOperationTransitionAlt
 
 - type: surgeryNode
   id: AttachLeftFoot
@@ -332,6 +339,7 @@
     - HealArterialBleedingRightFootTransition
     - HealDeepBurnsRightFootTransition
     - HealBulletWoundRightFootTransition
+    - CompleteOperationTransitionAlt
 
 - type: surgeryNode
   id: AttachRightFoot

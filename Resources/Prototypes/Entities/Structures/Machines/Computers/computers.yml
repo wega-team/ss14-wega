@@ -639,6 +639,22 @@
     radius: 1.5
     energy: 1.6
     color: "#1f8c28"
+  # Corvax-Wega-Surgery-start
+  - type: BodyScannerConsole
+  - type: ActivatableUI
+    key: enum.BodyScannerUiKey.Key
+  - type: ActivatableUIRequiresPower
+  - type: UserInterface
+    interfaces:
+      enum.BodyScannerUiKey.Key:
+        type: BodyScannerBoundUserInterface
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
+  - type: DeviceLinkSource
+    range: 2
+    ports:
+      - SurgeryTableSender
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   parent: BaseComputerAiAccess

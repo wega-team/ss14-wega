@@ -14,6 +14,7 @@ using Content.Shared.Examine;
 using Content.Shared.FixedPoint;
 using Content.Shared.Humanoid;
 using Content.Shared.Jittering;
+using Content.Shared.Popups;
 using Content.Shared.Standing;
 using Content.Shared.Stunnable;
 using Content.Shared.Surgery;
@@ -122,7 +123,7 @@ public sealed partial class SurgerySystem
         if (_container.TryGetContainer(parentId, containerId, out var container))
         {
             _container.Remove(limbId, container);
-            _popup.PopupEntity(Loc.GetString("surgery-limb-torn-off"), patient);
+            _popup.PopupEntity(Loc.GetString("surgery-limb-torn-off", ("limb", Name(limbId))), patient, PopupType.SmallCaution);
 
             _audio.PlayPvs(GibSound, patient);
 
@@ -151,12 +152,15 @@ public sealed partial class SurgerySystem
         if (_container.TryGetContainer(parentId, containerId, out var container))
         {
             _container.Remove(head.Id, container);
-            _popup.PopupEntity(Loc.GetString("surgery-decapitated"), patient);
+            _popup.PopupEntity(Loc.GetString("surgery-decapitated"), patient, PopupType.MediumCaution);
 
             _audio.PlayPvs(GibSound, patient);
 
             var damage = new DamageSpecifier { DamageDict = { { Damage, 200 } } };
             _damage.TryChangeDamage(patient, damage, true);
+
+            if (HasComp<BloodstreamComponent>(patient))
+                _bloodstream.TryModifyBleedAmount(patient, 10f);
 
             _transform.SetCoordinates(head.Id, Transform(patient).Coordinates);
             _physics.ApplyLinearImpulse(head.Id, _random.NextVector2() * 40f);
@@ -197,7 +201,7 @@ public sealed partial class SurgerySystem
             if (_container.TryGetContainer(parentId, containerId, out var container))
             {
                 _container.Remove(limbId, container);
-                _popup.PopupEntity(Loc.GetString("surgery-explosion-limb-torn-off"), entity);
+                _popup.PopupEntity(Loc.GetString("surgery-explosion-limb-torn-off", ("limb", Name(limbId).ToUpper())), entity, PopupType.MediumCaution);
 
                 if (HasComp<BloodstreamComponent>(entity))
                     _bloodstream.TryModifyBleedAmount(entity, 5f);

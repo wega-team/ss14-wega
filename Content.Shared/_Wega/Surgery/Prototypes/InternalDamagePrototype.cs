@@ -11,6 +11,9 @@ public sealed partial class InternalDamagePrototype : IPrototype, ISerialization
     [IdDataField]
     public string ID { get; private set; } = default!;
 
+    [DataField("name")]
+    public string Name { get; private set; } = default!;
+
     [DataField("category", required: true)]
     public DamageCategory Category { get; private set; }
 

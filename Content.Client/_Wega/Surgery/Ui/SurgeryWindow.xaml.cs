@@ -140,7 +140,7 @@ public sealed partial class SurgeryWindow : FancyWindow
         var visibleSteps = group.Steps.Where(s => s.IsVisible).ToList();
 
         var firstEnabledNonParallelStep = visibleSteps.FirstOrDefault(s =>
-            s.IsEnabled && !s.IsCompleted && !s.Name.Contains("(Параллельно)"));
+            s.IsEnabled && !s.IsCompleted && !s.Name.Contains(Loc.GetString("surgery-parallel")));
 
         foreach (var stepDto in visibleSteps)
         {
@@ -148,7 +148,7 @@ public sealed partial class SurgeryWindow : FancyWindow
             var stepText = $"{statusIcon} {stepDto.Name}";
 
             var isStepActive = stepDto.IsEnabled && !stepDto.IsCompleted &&
-                (stepDto.Name.Contains("(Параллельно)") || stepDto == firstEnabledNonParallelStep);
+                (stepDto.Name.Contains(Loc.GetString("surgery-parallel")) || stepDto == firstEnabledNonParallelStep);
 
             var stepButton = new Button
             {
@@ -179,7 +179,7 @@ public sealed partial class SurgeryWindow : FancyWindow
                 OnStepPressed?.Invoke(
                     group.TargetNode,
                     group.Steps.IndexOf(stepDto),
-                    stepDto.Name.Contains("(Параллельно)")
+                    stepDto.Name.Contains(Loc.GetString("surgery-parallel"))
                 );
             };
 
@@ -221,9 +221,9 @@ public sealed partial class SurgeryWindow : FancyWindow
     {
         var tooltip = "";
         if (!string.IsNullOrEmpty(step.RequiredTool))
-            tooltip += $"Требуется инструмент: {step.RequiredTool}\n";
+            tooltip += $"{Loc.GetString("surgery-tool-required", ("tool", step.RequiredTool))}\n";
         if (!string.IsNullOrEmpty(step.RequiredCondition))
-            tooltip += $"Требуется часть тела: {step.RequiredCondition}";
+            tooltip += Loc.GetString("surgery-condition-required", ("condition", step.RequiredCondition));
         return tooltip.Trim();
     }
 }
