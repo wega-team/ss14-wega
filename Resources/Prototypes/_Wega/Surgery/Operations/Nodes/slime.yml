@@ -15,8 +15,52 @@
   bodyPart: torso
   transitions:
     - SlimeOrganManipulationTransition
-    - HealMuscleTearsTorsoTransition
-    - HealMildBurnsTorsoTransition
-    - HealDeepBurnsTorsoTransition
-    - HealBulletWoundTorsoTransition
+    - SlimeHealMuscleTearsTorsoTransition
+    - SlimeHealMildBurnsTorsoTransition
+    - SlimeHealDeepBurnsTorsoTransition
+    - SlimeHealBulletWoundTorsoTransition
+    - SlimeCloseTorsoTransition
+
+- type: surgeryNode
+  id: SlimeEndMuscleTearsTorsoOperation
+  description: Завершить
+  transitions:
+    - SlimeOrganManipulationTransition
+    - SlimeHealMuscleTearsTorsoTransition
+    - SlimeHealMildBurnsTorsoTransition
+    - SlimeHealDeepBurnsTorsoTransition
+    - SlimeHealBulletWoundTorsoTransition
+    - SlimeCloseTorsoTransition
+
+- type: surgeryNode
+  id: SlimeEndMildBurnsTorsoOperation
+  description: Завершить
+  transitions:
+    - SlimeOrganManipulationTransition
+    - SlimeHealMuscleTearsTorsoTransition
+    - SlimeHealMildBurnsTorsoTransition
+    - SlimeHealDeepBurnsTorsoTransition
+    - SlimeHealBulletWoundTorsoTransition
+    - SlimeCloseTorsoTransition
+
+- type: surgeryNode
+  id: SlimeEndDeepBurnsTorsoOperation
+  description: Завершить
+  transitions:
+    - SlimeOrganManipulationTransition
+    - SlimeHealMuscleTearsTorsoTransition
+    - SlimeHealMildBurnsTorsoTransition
+    - SlimeHealDeepBurnsTorsoTransition
+    - SlimeHealBulletWoundTorsoTransition
+    - SlimeCloseTorsoTransition
+
+- type: surgeryNode
+  id: SlimeEndBulletWoundTorsoOperation
+  description: Завершить
+  transitions:
+    - SlimeOrganManipulationTransition
+    - SlimeHealMuscleTearsTorsoTransition
+    - SlimeHealMildBurnsTorsoTransition
+    - SlimeHealDeepBurnsTorsoTransition
+    - SlimeHealBulletWoundTorsoTransition
     - SlimeCloseTorsoTransition
