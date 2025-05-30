@@ -222,6 +222,8 @@
     - id: ClothingHeadHatBeretCmo
     - id: ClothingHeadsetAltMedical
     - id: ClothingMaskSterile
+    - id: UniformScrubsColorCmo # Corvax-Wega-Surgery
+    - id: ClothingHeadHatSurgcapCmo # Corvax-Wega-Surgery
     - id: DoorRemoteMedical
     - id: HandheldCrewMonitor
     - id: Hypospray

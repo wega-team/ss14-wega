@@ -82,11 +82,13 @@
       - id: UniformScrubsColorGreen
       - id: UniformScrubsColorPurple
       - id: UniformScrubsColorBlue
+      - id: UniformScrubsColorBlack # Corvax-Wega-add
       - id: ClothingHeadHatSurgcapBlue
       - id: ClothingHeadHatSurgcapPurple
       - id: ClothingHeadHatSurgcapGreen
+      - id: ClothingHeadHatSurgcapBlack # Corvax-Wega-add
       - id: ClothingMaskSterile
-        amount: 3
+        amount: 4 # Corvax-Wega-Edit
 
 - type: entity
   id: CrateEmergencyBurnKit

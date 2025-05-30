@@ -52,6 +52,7 @@
   groups:
   - Inventory # Corvax-Loadouts
   - GroupTankHarness
+  - SurgeonHead
   - SurgeonJumpsuit
   - MedicalBackpack
   - MedicalShoes

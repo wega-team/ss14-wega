@@ -1584,7 +1584,6 @@
           time: 4
         - tool: [ FixOVein ]
           tag: [ CableCoil ]
-          failureEffect: [ Bleeding, Pain ]
           requiredPart: torso
           damageType: ArterialBleeding
           action: HealInternalDamage
@@ -1622,9 +1621,8 @@
           time: 4
         - tool: [ FixOVein ]
           tag: [ CableCoil ]
-          failureEffect: [ Bleeding, Pain ]
-          damageType: ArterialBleeding
           requiredPart: left_arm
+          damageType: ArterialBleeding
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
           sound:
@@ -1660,7 +1658,6 @@
           time: 4
         - tool: [ FixOVein ]
           tag: [ CableCoil ]
-          failureEffect: [ Bleeding, Pain ]
           requiredPart: right_arm
           damageType: ArterialBleeding
           action: HealInternalDamage
@@ -1700,7 +1697,6 @@
           time: 4
         - tool: [ FixOVein ]
           tag: [ CableCoil ]
-          failureEffect: [ Bleeding, Pain ]
           requiredPart: left_hand
           damageType: ArterialBleeding
           action: HealInternalDamage
@@ -1740,7 +1736,6 @@
           time: 4
         - tool: [ FixOVein ]
           tag: [ CableCoil ]
-          failureEffect: [ Bleeding, Pain ]
           requiredPart: right_hand
           damageType: ArterialBleeding
           action: HealInternalDamage
@@ -1778,7 +1773,6 @@
           time: 4
         - tool: [ FixOVein ]
           tag: [ CableCoil ]
-          failureEffect: [ Bleeding, Pain ]
           requiredPart: left_leg
           damageType: ArterialBleeding
           action: HealInternalDamage
@@ -1816,7 +1810,6 @@
           time: 4
         - tool: [ FixOVein ]
           tag: [ CableCoil ]
-          failureEffect: [ Bleeding, Pain ]
           requiredPart: right_leg
           damageType: ArterialBleeding
           action: HealInternalDamage
@@ -1856,7 +1849,6 @@
           time: 4
         - tool: [ FixOVein ]
           tag: [ CableCoil ]
-          failureEffect: [ Bleeding, Pain ]
           requiredPart: left_foot
           damageType: ArterialBleeding
           action: HealInternalDamage
@@ -1896,7 +1888,6 @@
           time: 4
         - tool: [ FixOVein ]
           tag: [ CableCoil ]
-          failureEffect: [ Bleeding, Pain ]
           requiredPart: right_foot
           damageType: ArterialBleeding
           action: HealInternalDamage
