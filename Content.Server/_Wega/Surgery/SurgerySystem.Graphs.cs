@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Shared.Body.Organ;
 using Content.Shared.DoAfter;
 using Content.Shared.Surgery;
 using Content.Shared.Surgery.Components;
@@ -425,7 +426,7 @@ public sealed partial class SurgerySystem
         if (_surgeryTools.Any(tool => _tool.HasQuality(item, tool)))
             return true;
 
-        if (!_tags.Contains(requiredPart))
+        if (!_tags.Contains(requiredPart) || !HasComp<OrganComponent>(item))
             return true;
 
         return _tag.HasTag(item, requiredPart);
