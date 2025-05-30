@@ -9,11 +9,9 @@ using Content.Shared.Body.Systems;
 using Content.Shared.Chat.Prototypes;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
-using Content.Shared.Damage.Prototypes;
 using Content.Shared.Examine;
 using Content.Shared.FixedPoint;
 using Content.Shared.Humanoid;
-using Content.Shared.Jittering;
 using Content.Shared.Popups;
 using Content.Shared.Standing;
 using Content.Shared.Stunnable;
@@ -28,15 +26,10 @@ namespace Content.Server.Surgery;
 
 public sealed partial class SurgerySystem
 {
-    [Dependency] private readonly DamageableSystem _damage = default!;
     [Dependency] private readonly PainSystem _pain = default!;
-    [Dependency] private readonly SharedJitteringSystem _jittering = default!;
     [Dependency] private readonly SharedStunSystem _stun = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly PhysicsSystem _physics = default!;
-
-    [ValidatePrototypeId<DamageTypePrototype>]
-    private const string Damage = "Slash";
 
     private static readonly SoundSpecifier GibSound = new SoundPathSpecifier("/Audio/Effects/gib3.ogg");
 
@@ -58,7 +51,7 @@ public sealed partial class SurgerySystem
             return;
 
         ProcessDamageTypes(ent, args.DamageDelta);
-        if (args.DamageDelta.DamageDict.TryGetValue(Damage, out var slashDamage))
+        if (args.DamageDelta.DamageDict.TryGetValue(SlashDamage, out var slashDamage))
             TryLoseRandomLimb(ent, slashDamage.Float());
     }
 
@@ -156,7 +149,7 @@ public sealed partial class SurgerySystem
 
             _audio.PlayPvs(GibSound, patient);
 
-            var damage = new DamageSpecifier { DamageDict = { { Damage, 200 } } };
+            var damage = new DamageSpecifier { DamageDict = { { SlashDamage, 200 } } };
             _damage.TryChangeDamage(patient, damage, true);
 
             if (HasComp<BloodstreamComponent>(patient))

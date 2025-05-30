@@ -11,7 +11,7 @@
   id: BasicChemistryStatic
   recipes:
   - Beaker
-  - LargeBeaker
+  # - LargeBeaker # Corvax-Wega-Edit
   - Syringe
   - PillCanister
   - HandLabeler
@@ -75,12 +75,13 @@
 - type: latheRecipePack
   id: MedicalBoardsStatic
   recipes:
-  - ElectrolysisUnitMachineCircuitboard
-  - CentrifugeMachineCircuitboard
-  - ChemDispenserMachineCircuitboard
-  - ChemMasterMachineCircuitboard
+  # Corvax-Wega-Edit
+  # - ElectrolysisUnitMachineCircuitboard
+  # - CentrifugeMachineCircuitboard
+  # - ChemDispenserMachineCircuitboard
+  # - ChemMasterMachineCircuitboard
   - CondenserMachineCircuitBoard
-  - HotplateMachineCircuitboard
+  # - HotplateMachineCircuitboard
 
 ## Dynamic
 
@@ -93,6 +94,7 @@
   - SyringeCryostasis
   - BluespaceBeaker
   - SyringeBluespace
+  - LargeBeaker # Corvax-Wega-Add
 
 - type: latheRecipePack
   id: MedicalBoards
@@ -100,6 +102,16 @@
   - StasisBedMachineCircuitboard
   - CryoPodMachineCircuitboard
   - BiomassReclaimerMachineCircuitboard
+  # Corvax-Wega-add-start
+  - ElectrolysisUnitMachineCircuitboard
+  - CentrifugeMachineCircuitboard
+  - ChemDispenserMachineCircuitboard
+  - ChemMasterMachineCircuitboard
+  - HotplateMachineCircuitboard
+  - BodyScannerComputerCircuitboard # Corvax-Wega-Surgery
+  - VaccinatorMachineCircuitboard # Corvax-Wega-Diseases
+  - DiagnoserMachineCircuitboard # Corvax-Wega-Diseases
   - SlimeExtractorMachineCircuitboard # Corvax-Wega-Xenobiology
   - MedicalScannerMachineCircuitboard # Corvax-Wega-Genetics
   - DnaModifierComputerCircuitboard # Corvax-Wega-Genetics
+  # Corvax-Wega-add-end

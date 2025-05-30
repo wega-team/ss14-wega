@@ -389,3 +389,21 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+
+# Bed
+- type: construction
+  id: OperatingTable
+  name: operating table
+  description: Special medical table for surgery. This one just seems to be a useless prop, though.
+  graph: operatingtable
+  startNode: start
+  targetNode: operatingtable
+  category: construction-category-furniture
+  icon:
+    sprite: Structures/Furniture/Tables/optable.rsi
+    state: operating_table
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked

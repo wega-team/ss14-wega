@@ -6,14 +6,18 @@ using Content.Shared.Body.Part;
 using Content.Shared.Body.Prototypes;
 using Content.Shared.Body.Systems;
 using Content.Shared.Buckle.Components;
+using Content.Shared.Damage;
+using Content.Shared.Damage.Prototypes;
 using Content.Shared.Examine;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
+using Content.Shared.Jittering;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Rejuvenate;
 using Content.Shared.Surgery.Components;
+using Content.Shared.Throwing;
 using Content.Shared.Tools.Systems;
 using Robust.Server.GameObjects;
 using Robust.Shared.Prototypes;
@@ -26,8 +30,10 @@ public sealed partial class SurgerySystem : EntitySystem
 {
     [Dependency] private readonly SharedBodySystem _body = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
+    [Dependency] private readonly DamageableSystem _damage = default!;
     [Dependency] private readonly DiseaseSystem _disease = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!;
+    [Dependency] private readonly SharedJitteringSystem _jittering = default!;
     [Dependency] private readonly SharedToolSystem _tool = default!;
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
@@ -35,6 +41,11 @@ public sealed partial class SurgerySystem : EntitySystem
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly InventorySystem _inventory = default!;
+
+    [ValidatePrototypeId<DamageTypePrototype>]
+    private const string SlashDamage = "Slash";
+    [ValidatePrototypeId<DamageTypePrototype>]
+    private const string HeatDamage = "Heat";
 
     public override void Initialize()
     {
@@ -49,6 +60,7 @@ public sealed partial class SurgerySystem : EntitySystem
         SubscribeLocalEvent<OperatedComponent, BodyPartRemovedEvent>(OnBodyPartsChanged);
 
         SubscribeLocalEvent<SterileComponent, ExaminedEvent>(OnSterileExamined);
+        SubscribeLocalEvent<SterileComponent, BeforeThrowEvent>(OnThrow);
     }
 
     public override void Update(float frameTime)
@@ -81,6 +93,9 @@ public sealed partial class SurgerySystem : EntitySystem
         var sterileQuery = EntityQueryEnumerator<SterileComponent>();
         while (sterileQuery.MoveNext(out var uid, out var sterile))
         {
+            if (sterile.AlwaysSterile)
+                continue;
+
             if (sterile.NextUpdateTick <= 0)
             {
                 sterile.NextUpdateTick = 5f;
@@ -198,6 +213,10 @@ public sealed partial class SurgerySystem : EntitySystem
         if (args.IsInDetailsRange)
             args.AddMarkup(Loc.GetString("surgery-sterile-examined") + "\n");
     }
+
+    private void OnThrow(Entity<SterileComponent> entity, ref BeforeThrowEvent args)
+        => RemCompDeferred<SterileComponent>(entity);
+
 
     private bool TryGetOperatingTable(EntityUid patient, out float tableModifier)
     {

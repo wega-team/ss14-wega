@@ -17,6 +17,7 @@
         - tool: [ Scalpel ]
           tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
           action: Cut
+          failureEffect: [ Cut, Bleeding ]
           sound:
             collection: Scalpel
           time: 4
@@ -24,6 +25,7 @@
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
           action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
           sound:
             path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 3
@@ -31,6 +33,7 @@
         - tool: [ Retractor ]
           tag: [ Crowbar ]
           action: Retract
+          failureEffect: [ Pain ]
           sound:
             collection: Retractor
           time: 4
@@ -52,6 +55,7 @@
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
           action: RemoveOrgan
+          failureEffect: [ Bleeding, Pain ]
           requiredPart: SlimeCore
           sound:
             path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
@@ -62,6 +66,7 @@
               organ: SlimeCore
         - tag: [ SlimeCore ]
           action: InsertOrgan
+          failureEffect: [ Pain ]
           requiredPart: SlimeCore
           sound:
             collection: Squishes
@@ -76,6 +81,7 @@
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
           action: RemoveOrgan
+          failureEffect: [ Bleeding, Pain ]
           requiredPart: Lungs
           sound:
             path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
@@ -86,6 +92,7 @@
               organ: Lungs
         - tag: [ Lungs ]
           action: InsertOrgan
+          failureEffect: [ Pain ]
           requiredPart: Lungs
           sound:
             collection: Squishes
@@ -111,12 +118,14 @@
         - tool: [ Retractor ]
           tag: [ Crowbar ]
           action: Retract
+          failureEffect: [ Pain ]
           sound:
             collection: Retractor
           time: 4
         - tool: [ Cautery ]
           tag: [ Cigarette, Lighter, Welder ]
           action: ClampBleeding
+          failureEffect: [ Burn ]
           sound:
             collection: Cautery
           time: 8
@@ -135,6 +144,7 @@
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
           action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
           sound:
             path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 5
@@ -142,6 +152,7 @@
         - tool: [ Retractor ]
           tag: [ Crowbar ]
           action: Retract
+          failureEffect: [ Pain ]
           sound:
             collection: Retractor
           time: 4
@@ -150,6 +161,7 @@
           requiredPart: torso
           damageType: MuscleTears
           action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
           sound:
             path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 5
@@ -168,6 +180,7 @@
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
           action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
           sound:
             path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 5
@@ -175,6 +188,7 @@
         - tool: [ Retractor ]
           tag: [ Crowbar ]
           action: Retract
+          failureEffect: [ Pain ]
           sound:
             collection: Retractor
           time: 4
@@ -183,6 +197,7 @@
           requiredPart: torso
           damageType: MildBurns
           action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
           sound:
             path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 5
@@ -201,6 +216,7 @@
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
           action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
           sound:
             path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 5
@@ -208,6 +224,7 @@
         - tool: [ Retractor ]
           tag: [ Crowbar ]
           action: Retract
+          failureEffect: [ Pain ]
           sound:
             collection: Retractor
           time: 4
@@ -232,6 +249,7 @@
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
           action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
           sound:
             path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 5
@@ -239,6 +257,7 @@
         - tool: [ Retractor ]
           tag: [ Crowbar ]
           action: Retract
+          failureEffect: [ Pain ]
           sound:
             collection: Retractor
           time: 4
@@ -247,6 +266,7 @@
           requiredPart: torso
           damageType: BulletWound
           action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
           sound:
             path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 5

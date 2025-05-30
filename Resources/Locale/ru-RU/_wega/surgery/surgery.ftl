@@ -57,7 +57,11 @@ surgery-part-attached = Конечность успешно присоедине
 
 surgery-sterile-examined = [color=#a0d2eb]Предмет стерилен для использования.[/color]
 
-surgery-handle-failed-bleed = Ошибка! У {$patient} началось кровотечение
+surgery-handle-failed-cut = Ошибка! У {$patient} глубокий порез
+surgery-handle-failed-bleeding = Ошибка! У {$patient} началось кровотечение
+surgery-handle-failed-burn = Ошибка! У {$patient} ожог тканей
+surgery-handle-failed-fracture = Ошибка! У {$patient} перелом кости
+surgery-handle-failed-pain = Ошибка! {$patient} испытывает острую боль
 
 surgery-muscle-tears = физические повреждения
 surgery-mild-burns = легкие ожоги

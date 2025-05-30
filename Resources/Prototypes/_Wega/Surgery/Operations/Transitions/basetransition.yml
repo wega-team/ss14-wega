@@ -17,6 +17,7 @@
         - tool: [ Scalpel ]
           tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
           action: Cut
+          failureEffect: [ Cut, Bleeding ]
           sound:
             collection: Scalpel
           time: 4
@@ -24,6 +25,7 @@
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
           action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
           sound:
             path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 3
@@ -31,12 +33,14 @@
         - tool: [ Retractor ]
           tag: [ Crowbar ]
           action: Retract
+          failureEffect: [ Pain ]
           sound:
             collection: Retractor
           time: 4
         - tool: [ Sawing ]
           tag: [ BotanyHatchet, FireAxe ]
           action: Cut
+          failureEffect: [ Cut, Bleeding, Pain ]
           sound:
             path: /Audio/_Wega/Medical/Surgery/saw.ogg
           time: 6
@@ -44,6 +48,7 @@
         - tool: [ Retractor ]
           tag: [ Crowbar ]
           action: Retract
+          failureEffect: [ Pain ]
           sound:
             collection: Retractor
           time: 4
@@ -65,6 +70,7 @@
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
           action: RemoveOrgan
+          failureEffect: [ Bleeding, Pain ]
           requiredPart: Heart
           sound:
             path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
@@ -75,6 +81,7 @@
               organ: Heart
         - tag: [ Heart ]
           action: InsertOrgan
+          failureEffect: [ Pain ]
           requiredPart: Heart
           sound:
             collection: Organ
@@ -89,6 +96,7 @@
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
           action: RemoveOrgan
+          failureEffect: [ Bleeding, Pain ]
           requiredPart: Lungs
           sound:
             path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
@@ -99,6 +107,7 @@
               organ: Lungs
         - tag: [ Lungs ]
           action: InsertOrgan
+          failureEffect: [ Pain ]
           requiredPart: Lungs
           sound:
             collection: Organ
@@ -113,6 +122,7 @@
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
           action: RemoveOrgan
+          failureEffect: [ Bleeding, Pain ]
           requiredPart: Stomach
           sound:
             path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
@@ -123,6 +133,7 @@
               organ: Stomach
         - tag: [ Stomach ]
           action: InsertOrgan
+          failureEffect: [ Pain ]
           requiredPart: Stomach
           sound:
             collection: Organ
@@ -137,6 +148,7 @@
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
           action: RemoveOrgan
+          failureEffect: [ Bleeding, Pain ]
           requiredPart: Liver
           sound:
             path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
@@ -147,6 +159,7 @@
               organ: Liver
         - tag: [ Liver ]
           action: InsertOrgan
+          failureEffect: [ Pain ]
           requiredPart: Liver
           sound:
             collection: Organ
@@ -161,6 +174,7 @@
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
           action: RemoveOrgan
+          failureEffect: [ Bleeding, Pain ]
           requiredPart: Kidneys
           sound:
             path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
@@ -171,6 +185,7 @@
               organ: Kidneys
         - tag: [ Kidneys ]
           action: InsertOrgan
+          failureEffect: [ Pain ]
           requiredPart: Kidneys
           sound:
             collection: Organ
@@ -196,6 +211,7 @@
         - tool: [ Retractor ]
           tag: [ Crowbar ]
           action: Retract
+          failureEffect: [ Pain ]
           sound:
             collection: Retractor
           time: 4
@@ -206,6 +222,7 @@
         - tool: [ BoneSetter ]
           tag: [ Wrench ]
           action: Empty
+          failureEffect: [ Fracture, Pain ]
           time: 8
         - tool: [ BoneGel ]
           tag: [ Screwdriver ]
@@ -214,6 +231,7 @@
         - tool: [ Cautery ]
           tag: [ Cigarette, Lighter, Welder ]
           action: ClampBleeding
+          failureEffect: [ Burn ]
           sound:
             collection: Cautery
           time: 8
@@ -238,6 +256,7 @@
         - tool: [ Scalpel ]
           tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
           action: Cut
+          failureEffect: [ Cut, Bleeding ]
           sound:
             collection: Scalpel
           time: 4
@@ -245,6 +264,7 @@
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
           action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
           sound:
             path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 3
@@ -252,12 +272,14 @@
         - tool: [ Retractor ]
           tag: [ Crowbar ]
           action: Retract
+          failureEffect: [ Pain ]
           sound:
             collection: Retractor
           time: 4
         - tool: [ Sawing ]
           tag: [ BotanyHatchet, FireAxe ]
           action: Cut
+          failureEffect: [ Cut, Bleeding, Pain ]
           sound:
             path: /Audio/_Wega/Medical/Surgery/saw.ogg
           time: 6
@@ -265,6 +287,7 @@
         - tool: [ Retractor ]
           tag: [ Crowbar ]
           action: Retract
+          failureEffect: [ Pain ]
           sound:
             collection: Retractor
           time: 4
@@ -285,6 +308,7 @@
         - tool: [ Scalpel ]
           tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
           action: Cut
+          failureEffect: [ Cut, Bleeding ]
           sound:
             collection: Scalpel
           time: 4
@@ -292,6 +316,7 @@
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
           action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
           sound:
             path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 3
@@ -299,12 +324,14 @@
         - tool: [ Retractor ]
           tag: [ Crowbar ]
           action: Retract
+          failureEffect: [ Pain ]
           sound:
             collection: Retractor
           time: 4
         - tool: [ Sawing ]
           tag: [ BotanyHatchet, FireAxe ]
           action: Cut
+          failureEffect: [ Cut, Bleeding, Pain ]
           sound:
             path: /Audio/_Wega/Medical/Surgery/saw.ogg
           time: 6
@@ -312,6 +339,7 @@
         - tool: [ Retractor ]
           tag: [ Crowbar ]
           action: Retract
+          failureEffect: [ Pain ]
           sound:
             collection: Retractor
           time: 4
@@ -334,6 +362,7 @@
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
           action: RemoveOrgan
+          failureEffect: [ Bleeding, Pain ]
           requiredPart: Brain
           sound:
             path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
@@ -344,6 +373,7 @@
               organ: Brain
         - tag: [ Brain ]
           action: InsertOrgan
+          failureEffect: [ Pain ]
           requiredPart: Brain
           sound:
             collection: Organ
@@ -358,6 +388,7 @@
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
           action: RemoveOrgan
+          failureEffect: [ Bleeding, Pain ]
           requiredPart: Eyes
           sound:
             path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
@@ -368,6 +399,7 @@
               organ: Eyes
         - tag: [ Eyes ]
           action: InsertOrgan
+          failureEffect: [ Pain ]
           requiredPart: Eyes
           sound:
             collection: Organ
@@ -387,6 +419,7 @@
         - tool: [ Retractor ]
           tag: [ Crowbar ]
           action: Retract
+          failureEffect: [ Pain ]
           sound:
             collection: Retractor
           time: 4
@@ -397,6 +430,7 @@
         - tool: [ BoneSetter ]
           tag: [ Wrench ]
           action: Empty
+          failureEffect: [ Fracture, Pain ]
           time: 8
         - tool: [ BoneGel ]
           tag: [ Screwdriver ]
@@ -405,6 +439,7 @@
         - tool: [ Cautery ]
           tag: [ Cigarette, Lighter, Welder ]
           action: ClampBleeding
+          failureEffect: [ Burn ]
           sound:
             collection: Cautery
           time: 8
@@ -422,6 +457,7 @@
         - tool: [ Scalpel ]
           tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
           action: Cut
+          failureEffect: [ Cut, Bleeding ]
           sound:
             collection: Scalpel
           time: 4
@@ -429,6 +465,7 @@
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
           action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
           sound:
             path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 3
@@ -436,18 +473,21 @@
         - tool: [ Retractor ]
           tag: [ Crowbar ]
           action: Retract
+          failureEffect: [ Pain ]
           sound:
             collection: Retractor
           time: 4
         - tool: [ Scalpel ]
           tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
           action: Cut
+          failureEffect: [ Cut, Bleeding ]
           sound:
             collection: Scalpel
           time: 4
           successChance: 0.95
         - tag: [ Head ]
           action: AttachPart
+          failureEffect: [ Pain ]
           requiredPart: head
           time: 12
           successChance: 0.6
@@ -466,6 +506,7 @@
         - tool: [ Scalpel ]
           tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
           action: Cut
+          failureEffect: [ Cut, Bleeding ]
           sound:
             collection: Scalpel
           time: 4
@@ -483,6 +524,7 @@
         - tool: [ Sawing ]
           tag: [ BotanyHatchet, FireAxe ]
           action: RemovePart
+          failureEffect: [ Bleeding, Pain ]
           sound:
             path: /Audio/_Wega/Medical/Surgery/saw.ogg
           requiredPart: left_arm
@@ -497,6 +539,7 @@
         - tool: [ Scalpel ]
           tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
           action: Cut
+          failureEffect: [ Cut, Bleeding ]
           sound:
             collection: Scalpel
           time: 4
@@ -519,6 +562,7 @@
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
           action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
           sound:
             path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 3
@@ -526,18 +570,21 @@
         - tool: [ Retractor ]
           tag: [ Crowbar ]
           action: Retract
+          failureEffect: [ Pain ]
           sound:
             collection: Retractor
           time: 4
         - tool: [ Scalpel ]
           tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
           action: Cut
+          failureEffect: [ Cut, Bleeding ]
           sound:
             collection: Scalpel
           time: 4
           successChance: 0.95
         - tag: [ LeftArm ]
           action: AttachPart
+          failureEffect: [ Pain ]
           requiredPart: left_arm
           time: 6
           successChance: 0.85
@@ -552,6 +599,7 @@
         - tool: [ Scalpel ]
           tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
           action: Cut
+          failureEffect: [ Cut, Bleeding ]
           sound:
             collection: Scalpel
           time: 4
@@ -569,6 +617,7 @@
         - tool: [ Sawing ]
           tag: [ BotanyHatchet, FireAxe ]
           action: RemovePart
+          failureEffect: [ Bleeding, Pain ]
           sound:
             path: /Audio/_Wega/Medical/Surgery/saw.ogg
           requiredPart: right_arm
@@ -583,6 +632,7 @@
         - tool: [ Scalpel ]
           tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
           action: Cut
+          failureEffect: [ Cut, Bleeding ]
           sound:
             collection: Scalpel
           time: 4
@@ -605,17 +655,20 @@
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
           action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
           sound:
             path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 3
         - tool: [ Retractor ]
           tag: [ Crowbar ]
           action: Retract
+          failureEffect: [ Pain ]
           sound:
             collection: Retractor
           time: 4
         - tag: [ RightArm ]
           action: AttachPart
+          failureEffect: [ Pain ]
           requiredPart: right_arm
           time: 6
           successChance: 0.85
@@ -630,6 +683,7 @@
         - tool: [ Scalpel ]
           tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
           action: Cut
+          failureEffect: [ Cut, Bleeding ]
           sound:
             collection: Scalpel
           time: 4
@@ -649,6 +703,7 @@
         - tool: [ Sawing ]
           tag: [ BotanyHatchet, FireAxe ]
           action: RemovePart
+          failureEffect: [ Bleeding, Pain ]
           sound:
             path: /Audio/_Wega/Medical/Surgery/saw.ogg
           requiredPart: left_hand
@@ -663,6 +718,7 @@
         - tool: [ Scalpel ]
           tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
           action: Cut
+          failureEffect: [ Cut, Bleeding ]
           sound:
             collection: Scalpel
           time: 4
@@ -689,17 +745,20 @@
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
           action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
           sound:
             path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 3
         - tool: [ Retractor ]
           tag: [ Crowbar ]
           action: Retract
+          failureEffect: [ Pain ]
           sound:
             collection: Retractor
           time: 4
         - tag: [ LeftHand ]
           action: AttachPart
+          failureEffect: [ Pain ]
           requiredPart: left_hand
           time: 6
           successChance: 0.85
@@ -714,6 +773,7 @@
         - tool: [ Scalpel ]
           tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
           action: Cut
+          failureEffect: [ Cut, Bleeding ]
           sound:
             collection: Scalpel
           time: 4
@@ -733,6 +793,7 @@
         - tool: [ Sawing ]
           tag: [ BotanyHatchet, FireAxe ]
           action: RemovePart
+          failureEffect: [ Bleeding, Pain ]
           sound:
             path: /Audio/_Wega/Medical/Surgery/saw.ogg
           requiredPart: right_hand
@@ -747,6 +808,7 @@
         - tool: [ Scalpel ]
           tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
           action: Cut
+          failureEffect: [ Cut, Bleeding ]
           sound:
             collection: Scalpel
           time: 4
@@ -773,17 +835,20 @@
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
           action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
           sound:
             path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 3
         - tool: [ Retractor ]
           tag: [ Crowbar ]
           action: Retract
+          failureEffect: [ Pain ]
           sound:
             collection: Retractor
           time: 4
         - tag: [ RightHand ]
           action: AttachPart
+          failureEffect: [ Pain ]
           requiredPart: right_hand
           time: 6
           successChance: 0.85
@@ -798,6 +863,7 @@
         - tool: [ Scalpel ]
           tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
           action: Cut
+          failureEffect: [ Cut, Bleeding ]
           sound:
             collection: Scalpel
           time: 4
@@ -815,6 +881,7 @@
         - tool: [ Sawing ]
           tag: [ BotanyHatchet, FireAxe ]
           action: RemovePart
+          failureEffect: [ Bleeding, Pain ]
           sound:
             path: /Audio/_Wega/Medical/Surgery/saw.ogg
           requiredPart: left_leg
@@ -829,6 +896,7 @@
         - tool: [ Scalpel ]
           tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
           action: Cut
+          failureEffect: [ Cut, Bleeding ]
           sound:
             collection: Scalpel
           time: 4
@@ -851,17 +919,20 @@
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
           action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
           sound:
             path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 3
         - tool: [ Retractor ]
           tag: [ Crowbar ]
           action: Retract
+          failureEffect: [ Pain ]
           sound:
             collection: Retractor
           time: 4
         - tag: [ LeftLeg ]
           action: AttachPart
+          failureEffect: [ Pain ]
           requiredPart: left_leg
           time: 6
           successChance: 0.85
@@ -876,6 +947,7 @@
         - tool: [ Scalpel ]
           tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
           action: Cut
+          failureEffect: [ Cut, Bleeding ]
           sound:
             collection: Scalpel
           time: 4
@@ -893,6 +965,7 @@
         - tool: [ Sawing ]
           tag: [ BotanyHatchet, FireAxe ]
           action: RemovePart
+          failureEffect: [ Bleeding, Pain ]
           sound:
             path: /Audio/_Wega/Medical/Surgery/saw.ogg
           requiredPart: right_leg
@@ -907,6 +980,7 @@
         - tool: [ Scalpel ]
           tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
           action: Cut
+          failureEffect: [ Cut, Bleeding ]
           sound:
             collection: Scalpel
           time: 4
@@ -929,17 +1003,20 @@
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
           action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
           sound:
             path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 3
         - tool: [ Retractor ]
           tag: [ Crowbar ]
           action: Retract
+          failureEffect: [ Pain ]
           sound:
             collection: Retractor
           time: 4
         - tag: [ RightLeg ]
           action: AttachPart
+          failureEffect: [ Pain ]
           requiredPart: right_leg
           time: 6
           successChance: 0.85
@@ -954,6 +1031,7 @@
         - tool: [ Scalpel ]
           tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
           action: Cut
+          failureEffect: [ Cut, Bleeding ]
           sound:
             collection: Scalpel
           time: 4
@@ -973,6 +1051,7 @@
         - tool: [ Sawing ]
           tag: [ BotanyHatchet, FireAxe ]
           action: RemovePart
+          failureEffect: [ Bleeding, Pain ]
           sound:
             path: /Audio/_Wega/Medical/Surgery/saw.ogg
           requiredPart: left_foot
@@ -987,6 +1066,7 @@
         - tool: [ Scalpel ]
           tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
           action: Cut
+          failureEffect: [ Cut, Bleeding ]
           sound:
             collection: Scalpel
           time: 4
@@ -1013,17 +1093,20 @@
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
           action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
           sound:
             path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 3
         - tool: [ Retractor ]
           tag: [ Crowbar ]
           action: Retract
+          failureEffect: [ Pain ]
           sound:
             collection: Retractor
           time: 4
         - tag: [ LeftFoot ]
           action: AttachPart
+          failureEffect: [ Pain ]
           requiredPart: left_foot
           time: 6
           successChance: 0.85
@@ -1038,6 +1121,7 @@
         - tool: [ Scalpel ]
           tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
           action: Cut
+          failureEffect: [ Cut, Bleeding ]
           sound:
             collection: Scalpel
           time: 4
@@ -1057,6 +1141,7 @@
         - tool: [ Sawing ]
           tag: [ BotanyHatchet, FireAxe ]
           action: RemovePart
+          failureEffect: [ Bleeding, Pain ]
           sound:
             path: /Audio/_Wega/Medical/Surgery/saw.ogg
           requiredPart: right_foot
@@ -1071,6 +1156,7 @@
         - tool: [ Scalpel ]
           tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
           action: Cut
+          failureEffect: [ Cut, Bleeding ]
           sound:
             collection: Scalpel
           time: 4
@@ -1097,17 +1183,20 @@
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
           action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
           sound:
             path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 3
         - tool: [ Retractor ]
           tag: [ Crowbar ]
           action: Retract
+          failureEffect: [ Pain ]
           sound:
             collection: Retractor
           time: 4
         - tag: [ RightFoot ]
           action: AttachPart
+          failureEffect: [ Pain ]
           requiredPart: right_foot
           time: 6
           successChance: 0.85
@@ -1125,6 +1214,7 @@
         - tool: [ Cautery ]
           tag: [ Cigarette, Lighter, Welder ]
           action: ClampBleeding
+          failureEffect: [ Burn ]
           sound:
             collection: Cautery
           time: 4
@@ -1138,6 +1228,7 @@
         - tool: [ Cautery ]
           tag: [ Cigarette, Lighter, Welder ]
           action: ClampBleeding
+          failureEffect: [ Burn ]
           sound:
             collection: Cautery
           time: 4

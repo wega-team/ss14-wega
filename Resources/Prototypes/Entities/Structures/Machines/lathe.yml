@@ -190,10 +190,12 @@
     runningState: building
     unlitIdleState: unlit
     unlitRunningState: unlit-building
-    staticPacks:
-    - ChemistryStatic
-    - SurgeryStatic
+    # staticPacks:
+    # - ChemistryStatic
+    # - SurgeryStatic
     dynamicPacks:
+    # Corvax-Wega-Edit
+    - SurgeryStatic # Corvax-Wega-Edit
     - AdvancedTools
     - ScienceEquipment
     - ScienceExplosives
@@ -467,13 +469,13 @@
     runningState: icon
     staticPacks:
     - TopicalsStatic
-    - ChemistryStatic
     - MedicalStatic
     - RollerBedsStatic
     - MedicalClothingStatic
     - EmptyMedkitsStatic
-    - SurgeryStatic
     dynamicPacks:
+    - ChemistryStatic # Corvax-Wega-Edit
+    - SurgeryStatic # Corvax-Wega-Edit
     - Chemistry
   - type: Machine
     board: MedicalTechFabCircuitboard

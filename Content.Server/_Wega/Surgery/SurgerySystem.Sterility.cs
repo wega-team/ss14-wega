@@ -1,5 +1,8 @@
+using System.Linq;
+using Content.Shared.Body.Components;
 using Content.Shared.Clothing.Components;
 using Content.Shared.Shuttles.Components;
+using Content.Shared.Silicons.Borgs.Components;
 using Content.Shared.Surgery.Components;
 
 namespace Content.Server.Surgery;
@@ -37,12 +40,38 @@ public sealed partial class SurgerySystem
         if (!HasComp<SterileComponent>(item))
             sterility *= 0.4f;
 
+        var bystanders = _entityLookup.GetEntitiesInRange<BodyComponent>(
+            Transform(patient).Coordinates, 2f)
+            .Where(e => e.Owner != patient && e.Owner != operated.Surgeon
+                && !_mobState.IsDead(e.Owner))
+            .Count();
+
+        float bystanderModifier = bystanders switch
+        {
+            <= 2 => 1f,
+            <= 4 => 0.9f,
+            <= 6 => 0.8f,
+            _ => 0.7f
+        };
+        sterility *= bystanderModifier;
+
+        var corpses = _entityLookup.GetEntitiesInRange<BodyComponent>(
+            Transform(patient).Coordinates, 2f)
+            .Where(e => e.Owner != patient && e.Owner != operated.Surgeon
+                && _mobState.IsDead(e.Owner))
+            .Count();
+
+        sterility *= 1f - corpses * 0.05f;
+
         operated.Sterility = Math.Clamp(sterility, 0f, 1f);
     }
 
     private void CheckClothingSlot(EntityUid surgeon, string slot, ref float sterility, float penaltyModifier,
         bool isCritical = false, bool ingnoreSlot = false)
     {
+        if (HasComp<BorgChassisComponent>(surgeon))
+            return;
+
         if (_inventory.TryGetSlotEntity(surgeon, slot, out var clothing))
         {
             bool isMaskOff = false;

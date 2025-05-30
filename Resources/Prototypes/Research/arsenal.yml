@@ -115,7 +115,7 @@
   - TimerTrigger
   - FlashPayload
   - ExplosivePayload
-  - ChemicalPayload
+  # - ChemicalPayload
 
 - type: technology
   id: SpecialMeans

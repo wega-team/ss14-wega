@@ -13,3 +13,13 @@ public enum SurgeryActionType : byte
     AttachPart,
     Implanting
 }
+
+public enum SurgeryFailedType : byte
+{
+    Empty,
+    Cut,
+    Bleeding,
+    Burn,
+    Fracture,
+    Pain
+}

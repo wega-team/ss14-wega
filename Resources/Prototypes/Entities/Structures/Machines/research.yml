@@ -18,6 +18,7 @@
     - Arsenal
     - Experimental
     - CivilianServices
+    - Biochemical # Corvax-Wega
   - type: ApcPowerReceiver
     powerLoad: 200
   - type: ExtensionCableReceiver

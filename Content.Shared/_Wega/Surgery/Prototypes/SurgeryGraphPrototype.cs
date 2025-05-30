@@ -138,7 +138,7 @@ public sealed partial class SurgeryStep
     public float SuccessChance { get; private set; } = 1f;
 
     [DataField("failureEffect")]
-    public string FailureEffect { get; private set; } = "Bleed";
+    public List<SurgeryFailedType> FailureEffect { get; private set; }
 }
 
 [Serializable]
