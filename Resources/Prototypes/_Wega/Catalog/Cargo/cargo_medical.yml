@@ -1,0 +1,19 @@
+- type: cargoProduct
+  id: CrateMedicalSurgery
+  icon:
+    sprite: Structures/Storage/Crates/surgery.rsi
+    state: icon
+  product: CrateMedicalSurgery
+  cost: 5000
+  category: cargoproduct-category-name-medical
+  group: market
+
+- type: cargoProduct
+  id: CrateMedicalScrubs
+  icon:
+    sprite: Clothing/Uniforms/Scrubs/blue.rsi
+    state: icon
+  product: CrateMedicalScrubs
+  cost: 2500
+  category: cargoproduct-category-name-hydroponics
+  group: market
