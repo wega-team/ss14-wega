@@ -411,7 +411,7 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
             {
                 if (damageVisComp.TrackAllDamage)
                 {
-                    spriteComponent.LayerSetVisible($"{layer}trackDamage", false);
+                    SpriteSystem.LayerSetVisible((uid, spriteComponent), $"{layer}trackDamage", false);
                     continue;
                 }
 
@@ -420,7 +420,7 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
 
                 foreach (var damageGroup in damageVisComp.DamageOverlayGroups.Keys)
                 {
-                    spriteComponent.LayerSetVisible($"{layer}{damageGroup}", false);
+                    SpriteSystem.LayerSetVisible((uid, spriteComponent), $"{layer}{damageGroup}", false);
                 }
             }
             return;
@@ -445,7 +445,7 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
 
             if (damageVisComp.TrackAllDamage)
             {
-                spriteComponent.LayerSetVisible($"{layer}trackDamage", shouldBeVisible);
+                SpriteSystem.LayerSetVisible((uid, spriteComponent), $"{layer}trackDamage", shouldBeVisible);
                 continue;
             }
 
@@ -456,7 +456,7 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
             {
                 threshold = damageVisComp.LastThresholdPerGroup.TryGetValue(damageGroup, out t) ? t : FixedPoint2.Zero;
                 shouldBeVisible = !isDisabled && threshold > damageVisComp.Thresholds[0];
-                spriteComponent.LayerSetVisible($"{layer}{damageGroup}", shouldBeVisible);
+                SpriteSystem.LayerSetVisible((uid, spriteComponent), $"{layer}{damageGroup}", shouldBeVisible);
             }
         }
     }
@@ -628,7 +628,7 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
         }
         else if (damageVisComp.DamageGroup != null)
         {
-            UpdateDamageVisuals(new List<string>() { damageVisComp.DamageGroup }, damageComponent, spriteComponent, damageVisComp);
+            UpdateDamageVisuals(new List<string>() { damageVisComp.DamageGroup }, entity);
         }
         else if (damageVisComp.DamageOverlay != null)
         {
