@@ -667,8 +667,6 @@ public sealed partial class BloodCultSystem : EntitySystem
 
         if (!string.IsNullOrWhiteSpace(mind.CharacterName))
             metaDataSystem.SetEntityName(soul, mind.CharacterName);
-        else if (!string.IsNullOrWhiteSpace(mind.Session?.Name))
-            metaDataSystem.SetEntityName(soul, mind.Session.Name);
 
         _mind.Visit(mindId, soul, mind);
         component.SoulEntity = soul;

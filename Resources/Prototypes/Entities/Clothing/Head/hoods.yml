@@ -13,15 +13,20 @@
   - type: IngestionBlocker
   - type: DiseaseProtection # Corvax-Wega-Disease
     protection: 0.15 # Corvax-Wega-Disease
+  - type: GroupExamine
+  - type: Armor
+    modifiers: { }
+  - type: ZombificationResistance
+    zombificationResistanceCoefficient: 0.9
   - type: Tag
     tags:
     - WhitelistChameleon
   - type: HideLayerClothing
-    slots:
-    - Hair
-    - Snout
-    - HeadTop
-    - HeadSide
+    layers:
+      Hair: HEAD
+      Snout: HEAD
+      HeadTop: HEAD
+      HeadSide: HEAD
 
 - type: entity
   parent: ClothingHeadHatHoodBioGeneral
@@ -37,6 +42,8 @@
     sprite: Clothing/Head/Hoods/Bio/cmo.rsi
   - type: DiseaseProtection # Corvax-Wega-Disease
     protection: 0.25 # Corvax-Wega-Disease
+  - type: ZombificationResistance
+    zombificationResistanceCoefficient: 0.8
 
 - type: entity
   parent: ClothingHeadHatHoodBioGeneral
@@ -82,7 +89,7 @@
   id: ClothingHeadHatHoodBioVirology
   name: bio hood
   suffix: Virology
-  description: A hood that protects the head and face from biological contaminants.
+  description: A hood that strongly protects the head and face from biological contaminants.
   components:
   - type: IdentityBlocker
   - type: Sprite
@@ -91,6 +98,8 @@
     sprite: Clothing/Head/Hoods/Bio/virology.rsi
   - type: DiseaseProtection # Corvax-Wega-Disease
     protection: 0.25 # Corvax-Wega-Disease
+  - type: ZombificationResistance
+    zombificationResistanceCoefficient: 0.8
 
 - type: entity
   parent: ClothingHeadBase

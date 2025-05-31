@@ -23,6 +23,7 @@
   - Dragon
   - AllHostile
   - Wizard
+  - Xenoborg
   - Vampire # Corvax-Wega-Vampire
   - BloodCult # Corvax-Wega-Blood-Cult
 
@@ -56,9 +57,12 @@
   - PetsNT
   - Zombie
   - Revolutionary
+  - Dragon
+  - Xeno
   - AllHostile
   - Wizard
   - Dragon
+  - Xenoborg
   - Vampire # Corvax-Wega-Vampire
   - BloodCult # Corvax-Wega-Blood-Cult
 
@@ -76,6 +80,7 @@
   - Dragon
   - AllHostile
   - Wizard
+  - Xenoborg
 
 - type: npcFaction
   id: Xeno
@@ -89,6 +94,7 @@
   - AllHostile
   - Wizard
   - Dragon
+  - Xenoborg
   - Vampire # Corvax-Wega-Vampire
   - BloodCult # Corvax-Wega-Blood-Cult
 
@@ -105,6 +111,7 @@
   - AllHostile
   - Wizard
   - Dragon
+  - Xenoborg
   - Vampire # Corvax-Wega-Vampire
   - BloodCult # Corvax-Wega-Blood-Cult
 
@@ -117,6 +124,7 @@
   - Dragon
   - AllHostile
   - Wizard
+  - Xenoborg
   - Vampire # Corvax-Wega-Vampire
   - BloodCult # Corvax-Wega-Blood-Cult
 
@@ -135,6 +143,7 @@
   - Zombie
   - Revolutionary
   - Wizard
+  - Xenoborg
   - Vampire # Corvax-Wega-Vampire
   - BloodCult # Corvax-Wega-Blood-Cult
 
@@ -152,4 +161,21 @@
   - Xeno
   - Zombie
   - Revolutionary
+  - AllHostile
+  - Xenoborg
+
+- type: npcFaction
+  id: Xenoborg
+  hostile:
+  # they have brains
+  - NanoTrasen
+  - Syndicate
+  - Zombie
+  - Revolutionary
+  - Wizard
+
+  - Xeno # rivalry
+
+  # cause they are hostile to them
+  - SimpleHostile 
   - AllHostile

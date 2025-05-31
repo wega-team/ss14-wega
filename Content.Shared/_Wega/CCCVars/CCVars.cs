@@ -58,4 +58,13 @@ public sealed class WegaCVars
     /// </summary>
     public static readonly CVarDef<bool> VoteRoundEndEnabled =
         CVarDef.Create("wega.roundend_vote_enabled", false, CVar.SERVERONLY);
+
+    /*
+        OOC Flavor
+    */
+    /// <summary>
+    ///     Sets the maximum length for flavor text (character descriptions).
+    /// </summary>
+    public static readonly CVarDef<int> MaxOOCFlavorTextLength =
+        CVarDef.Create("ic.flavor_text_length", 512, CVar.SERVER | CVar.REPLICATED);
 }

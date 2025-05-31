@@ -1,4 +1,4 @@
-using Content.Server.Bed.Components;
+using Content.Shared.Bed.Components;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Buckle.Components;
 using Content.Shared.Disease;
@@ -39,7 +39,7 @@ namespace Content.Server.Disease.Cures
 
         public override string CureText()
         {
-            return (Loc.GetString("diagnoser-cure-bedrest", ("time", MaxLength), ("sleep", (MaxLength / SleepMultiplier))));
+            return Loc.GetString("diagnoser-cure-bedrest", ("time", MaxLength), ("sleep", MaxLength / SleepMultiplier));
         }
     }
 }

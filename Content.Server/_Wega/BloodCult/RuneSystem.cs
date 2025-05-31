@@ -623,8 +623,6 @@ public sealed partial class BloodCultSystem
                         {
                             if (!string.IsNullOrWhiteSpace(mind.CharacterName))
                                 metaDataSystem.SetEntityName(ghost, mind.CharacterName);
-                            else if (!string.IsNullOrWhiteSpace(mind.Session?.Name))
-                                metaDataSystem.SetEntityName(ghost, mind.Session.Name);
 
                             mindSystem.Visit(mindId, ghost, mind);
                         }
