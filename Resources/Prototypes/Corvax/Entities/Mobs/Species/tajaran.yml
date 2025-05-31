@@ -1,7 +1,7 @@
 - type: entity
   save: false
   name: Urist McTajar
-  parent: BaseMobSpeciesOrganic
+  parent: [ BaseMobSpeciesOrganic, BaseOperated ] # Corvax-Wega-Surgery-Edit
   id: BaseMobTajaran
   abstract: true
   components:

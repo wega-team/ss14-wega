@@ -41,6 +41,8 @@ loadout-group-chief-medical-officer-socks = Главный врач, носки
 loadout-group-genetics-jumpsuit = Генетик, комбинезон
 loadout-group-genetics-backpack = Генетик, рюкзак
 loadout-group-genetics-outerclothing = Генетик, верхняя одежда
+loadout-group-surgeon-head = Хирург, голова
+loadout-group-surgeon-jumpsuit = Хирург, комбинезон
 
 # Effects
 loadout-group-allowed-sex-restriction = Этот предмет недоступен для вашего текущего пола.

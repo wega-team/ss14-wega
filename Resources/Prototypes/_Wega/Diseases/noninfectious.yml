@@ -111,4 +111,120 @@
         - 1
         - 2
 
+- type: disease
+  id: BloodInfection
+  name: disease-proto-blood-infection
+  infectious: false
+  cureResist: 0.15
+  stages:
+    - 0
+    - 120
+    - 600
+  effects:
+    - !type:DiseasePopUp
+      probability: 0.03
+      message: disease-fever-chills
+      visualType: Medium
+      stages:
+        - 0
+        - 1
+        - 2
+    - !type:DiseaseAdjustReagent
+      probability: 0.3
+      reagent: Histamine
+      amount: 0.75
+      stages:
+        - 1
+        - 2
+    - !type:DiseaseHealthChange
+      probability: 0.02
+      damage:
+        types:
+          Piercing: 1
+          Bleeding: 2
+      stages:
+        - 1
+        - 2
+    - !type:DiseaseAdjustReagent
+      probability: 0.15
+      reagent: Toxin
+      amount: 0.3
+      stages:
+        - 2
+    - !type:DiseaseGenericStatusEffect
+      probability: 0.1
+      key: Stun
+      component: Stunned
+      time: 5
+      type: Add
+      stages:
+        - 2
+    - !type:DiseaseVomit
+      probability: 0.01
+      stages:
+        - 1
+        - 2
+    - !type:DiseasePopUp
+      probability: 0.015
+      message: disease-confusion
+      visualType: Medium
+      stages:
+        - 2
+    - !type:DiseaseHealthChange
+      probability: 0.1
+      damage:
+        types:
+          Cellular: 1
+          Poison: 1
+      stages:
+        - 2
+  cures:
+    - !type:DiseaseReagentCure
+      reagent: Spaceacillin
+      min: 10
+      stages:
+        - 0
+        - 1
+    - !type:DiseaseReagentCure
+      reagent: Synaptizine
+      min: 5
+      stages:
+        - 1
+        - 2
+    - !type:DiseaseBedrestCure
+      maxLength: 180
+      stages:
+        - 0
+    - !type:DiseaseJustWaitCure
+      maxLength: 1200
+      stages:
+        - 0
+        - 1
+
+- type: disease
+  id: SurgicalSepsis
+  name: disease-proto-surgical-sepsis
+  infectious: false
+  cureResist: 0.2
+  effects:
+    - !type:DiseaseHealthChange
+      probability: 0.05
+      damage:
+        types:
+          Bacterial: 1
+          Toxin: 0.5
+    - !type:DiseasePopUp
+      probability: 0.03
+      message: disease-surgical-wound-pain
+    - !type:DiseaseAdjustReagent
+      probability: 0.2
+      reagent: Histamine
+      amount: 0.3
+  cures:
+    - !type:DiseaseReagentCure
+      reagent: Spaceacillin
+      min: 10
+    - !type:DiseaseBedrestCure
+      maxLength: 300
+
 ### Once radiation is refactored I want it to have a small chance of giving you regular cancer

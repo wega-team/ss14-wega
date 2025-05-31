@@ -10,6 +10,7 @@ using Content.Shared.Resist;
 using Content.Shared.Storage;
 using Robust.Shared.Containers;
 using Content.Server.Carrying; // Corvax-Wega-Carrying
+using Content.Shared.Carrying; // Corvax-Wega-Carrying
 
 namespace Content.Server.Resist;
 

@@ -4,3 +4,59 @@
   toolName: tool-quality-dagger-tool-name
   spawn: WeaponBloodDagger
   icon: { sprite: _Wega/Objects/Weapons/Melee/blood_dagger.rsi, state: icon }
+
+- type: tool
+  id: Scalpel
+  name: tool-quality-scalpel-name
+  toolName: tool-quality-scalpel-tool-name
+  spawn: Scalpel
+  icon: { sprite: Objects/Specific/Medical/Surgery/scalpel.rsi, state: scalpel }
+
+- type: tool
+  id: Hemostat
+  name: tool-quality-hemostat-name
+  toolName: tool-quality-hemostat-tool-name
+  spawn: Hemostat
+  icon: { sprite: Objects/Specific/Medical/Surgery/scissors.rsi, state: hemostat }
+
+- type: tool
+  id: Retractor
+  name: tool-quality-retractor-name
+  toolName: tool-quality-retractor-tool-name
+  spawn: Retractor
+  icon: { sprite: Objects/Specific/Medical/Surgery/scissors.rsi, state: retractor }
+
+- type: tool
+  id: Cautery
+  name: tool-quality-cautery-name
+  toolName: tool-quality-cautery-tool-name
+  spawn: Cautery
+  icon: { sprite: Objects/Specific/Medical/Surgery/cautery.rsi, state: cautery }
+
+- type: tool
+  id: Drilling
+  name: tool-quality-drill-name
+  toolName: tool-quality-drill-tool-name
+  spawn: Drill
+  icon: { sprite: Objects/Specific/Medical/Surgery/drill.rsi, state: drill }
+
+- type: tool
+  id: FixOVein
+  name: tool-quality-fix-o-vein-name
+  toolName: tool-quality-fix-o-vein-tool-name
+  spawn: FixOVein
+  icon: { sprite: _Wega/Objects/Specific/Medical/Surgery/fixovein.rsi, state: fixovein }
+
+- type: tool
+  id: BoneGel
+  name: tool-quality-bone-gel-name
+  toolName: tool-quality-bone-gel-tool-name
+  spawn: BoneGel
+  icon: { sprite: _Wega/Objects/Specific/Medical/Surgery/bone_gel.rsi, state: bone-gel }
+
+- type: tool
+  id: BoneSetter
+  name: tool-quality-bone-setter-name
+  toolName: tool-quality-bone-setter-tool-name
+  spawn: BoneSetter
+  icon: { sprite: _Wega/Objects/Specific/Medical/Surgery/bone_setter.rsi, state: bonesetter }

@@ -1,0 +1,1234 @@
+# ========================
+# ПЕРЕХОДЫ ТОРСА
+# ========================
+
+- type: surgeryTransition
+  id: OpenTorsoTransition
+  target: TorsoOpen
+  label: Вскрыть торс
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ Sawing ]
+          tag: [ BotanyHatchet, FireAxe ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/saw.ogg
+          time: 6
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+
+- type: surgeryTransition
+  id: OrganManipulationTransition
+  target: OrganManipulation
+  label: Манипуляция с органами
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      parallel: true
+      steps:
+        # Сердце
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: RemoveOrgan
+          failureEffect: [ Bleeding, Pain ]
+          requiredPart: Heart
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              organ: Heart
+        - tag: [ Heart ]
+          action: InsertOrgan
+          failureEffect: [ Pain ]
+          requiredPart: Heart
+          sound:
+            collection: Organ
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              invert: true
+              organ: Heart
+
+        # Легкие
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: RemoveOrgan
+          failureEffect: [ Bleeding, Pain ]
+          requiredPart: Lungs
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              organ: Lungs
+        - tag: [ Lungs ]
+          action: InsertOrgan
+          failureEffect: [ Pain ]
+          requiredPart: Lungs
+          sound:
+            collection: Organ
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              invert: true
+              organ: Lungs
+
+        # Желудок
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: RemoveOrgan
+          failureEffect: [ Bleeding, Pain ]
+          requiredPart: Stomach
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              organ: Stomach
+        - tag: [ Stomach ]
+          action: InsertOrgan
+          failureEffect: [ Pain ]
+          requiredPart: Stomach
+          sound:
+            collection: Organ
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              invert: true
+              organ: Stomach
+
+        # Печень
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: RemoveOrgan
+          failureEffect: [ Bleeding, Pain ]
+          requiredPart: Liver
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              organ: Liver
+        - tag: [ Liver ]
+          action: InsertOrgan
+          failureEffect: [ Pain ]
+          requiredPart: Liver
+          sound:
+            collection: Organ
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              invert: true
+              organ: Liver
+
+        # Почки
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: RemoveOrgan
+          failureEffect: [ Bleeding, Pain ]
+          requiredPart: Kidneys
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              organ: Kidneys
+        - tag: [ Kidneys ]
+          action: InsertOrgan
+          failureEffect: [ Pain ]
+          requiredPart: Kidneys
+          sound:
+            collection: Organ
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              invert: true
+              organ: Kidneys
+
+- type: surgeryTransition
+  id: CloseTorsoTransition
+  target: Default
+  label: Закрыть торс
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ BoneGel ]
+          tag: [ Screwdriver ]
+          action: Empty
+          time: 6
+        - tool: [ BoneSetter ]
+          tag: [ Wrench ]
+          action: Empty
+          failureEffect: [ Fracture, Pain ]
+          time: 8
+        - tool: [ BoneGel ]
+          tag: [ Screwdriver ]
+          action: Empty
+          time: 4
+        - tool: [ Cautery ]
+          tag: [ Cigarette, Lighter, Welder ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 8
+
+# ========================
+# ПЕРЕХОДЫ ГОЛОВЫ
+# ========================
+
+- type: surgeryTransition
+  id: OpenHeadTransition
+  target: HeadOpen
+  label: Вскрыть череп
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:BodyPartCondition
+          bodyPart: head
+      steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ Sawing ]
+          tag: [ BotanyHatchet, FireAxe ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/saw.ogg
+          time: 6
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+
+- type: surgeryTransition
+  id: OpenHeadTransitionAlt
+  target: HeadOpen
+  label: Вскрыть череп
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:BodyPartCondition
+          bodyPart: head
+      steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ Sawing ]
+          tag: [ BotanyHatchet, FireAxe ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/saw.ogg
+          time: 6
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+
+- type: surgeryTransition
+  id: ExtractBrainTransition
+  target: HeadRemoved
+  label: Манипуляция с органами
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:BodyPartCondition
+          bodyPart: head
+      parallel: true
+      steps:
+        # Мозг
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: RemoveOrgan
+          failureEffect: [ Bleeding, Pain ]
+          requiredPart: Brain
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+          successChance: 0.85
+          conditions:
+            - !type:OrganPresentCondition
+              organ: Brain
+        - tag: [ Brain ]
+          action: InsertOrgan
+          failureEffect: [ Pain ]
+          requiredPart: Brain
+          sound:
+            collection: Organ
+          time: 3
+          successChance: 0.85
+          conditions:
+            - !type:OrganPresentCondition
+              invert: true
+              organ: Brain
+
+        # Глаза
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: RemoveOrgan
+          failureEffect: [ Bleeding, Pain ]
+          requiredPart: Eyes
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+          successChance: 0.85
+          conditions:
+            - !type:OrganPresentCondition
+              organ: Eyes
+        - tag: [ Eyes ]
+          action: InsertOrgan
+          failureEffect: [ Pain ]
+          requiredPart: Eyes
+          sound:
+            collection: Organ
+          time: 3
+          successChance: 0.85
+          conditions:
+            - !type:OrganPresentCondition
+              invert: true
+              organ: Eyes
+
+- type: surgeryTransition
+  id: CloseHeadTransition
+  target: Default
+  label: Закрыть череп
+  stepGroups:
+    - steps:
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ BoneGel ]
+          tag: [ Screwdriver ]
+          action: Empty
+          time: 6
+        - tool: [ BoneSetter ]
+          tag: [ Wrench ]
+          action: Empty
+          failureEffect: [ Fracture, Pain ]
+          time: 8
+        - tool: [ BoneGel ]
+          tag: [ Screwdriver ]
+          action: Empty
+          time: 4
+        - tool: [ Cautery ]
+          tag: [ Cigarette, Lighter, Welder ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 8
+
+- type: surgeryTransition
+  id: CompleteHeadAttachmentTransition
+  target: EndOperation
+  label: Голова
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          invert: true
+          bodyPart: head
+      steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+        - tag: [ Head ]
+          action: AttachPart
+          failureEffect: [ Pain ]
+          requiredPart: head
+          time: 12
+          successChance: 0.6
+
+# ========================
+# ПЕРЕХОДЫ КОНЕЧНОСТЕЙ
+# ========================
+
+# ЛЕВАЯ РУКА
+- type: surgeryTransition
+  id: AmputateLeftArmTransition
+  target: AmputateLeftArmStart
+  label: Манипуляции с левой рукой
+  stepGroups:
+    - steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:BodyPartCondition
+              bodyPart: left_arm
+
+- type: surgeryTransition
+  id: AmputateLeftArmFinishTransition
+  target: EndOperation
+  label: Ампутировать левую руку
+  stepGroups:
+    - steps:
+        - tool: [ Sawing ]
+          tag: [ BotanyHatchet, FireAxe ]
+          action: RemovePart
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/saw.ogg
+          requiredPart: left_arm
+          time: 8
+
+- type: surgeryTransition
+  id: AttachLeftArmStartTransition
+  target: AttachLeftArmProcess
+  label: Прикрепить левую руку
+  stepGroups:
+    - steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:BodyPartCondition
+              invert: true
+              bodyPart: left_arm
+
+- type: surgeryTransition
+  id: AttachLeftArmProcessTransition
+  target: EndOperation
+  label: Прикрепить левую руку
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          invert: true
+          bodyPart: left_arm
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+        - tag: [ LeftArm ]
+          action: AttachPart
+          failureEffect: [ Pain ]
+          requiredPart: left_arm
+          time: 6
+          successChance: 0.85
+
+# ПРАВАЯ РУКА
+- type: surgeryTransition
+  id: AmputateRightArmTransition
+  target: AmputateRightArmStart
+  label: Манипуляции с правой рукой
+  stepGroups:
+    - steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:BodyPartCondition
+              bodyPart: right_arm
+
+- type: surgeryTransition
+  id: AmputateRightArmFinishTransition
+  target: EndOperation
+  label: Ампутировать правую руку
+  stepGroups:
+    - steps:
+        - tool: [ Sawing ]
+          tag: [ BotanyHatchet, FireAxe ]
+          action: RemovePart
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/saw.ogg
+          requiredPart: right_arm
+          time: 6
+
+- type: surgeryTransition
+  id: AttachRightArmStartTransition
+  target: AttachRightArmProcess
+  label: Прикрепить правую руку
+  stepGroups:
+    - steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:BodyPartCondition
+              invert: true
+              bodyPart: right_arm
+
+- type: surgeryTransition
+  id: AttachRightArmProcessTransition
+  target: EndOperation
+  label: Прикрепить правую руку
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          invert: true
+          bodyPart: right_arm
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tag: [ RightArm ]
+          action: AttachPart
+          failureEffect: [ Pain ]
+          requiredPart: right_arm
+          time: 6
+          successChance: 0.85
+
+# ЛЕВАЯ КИСТЬ
+- type: surgeryTransition
+  id: AmputateLeftHandTransition
+  target: AmputateLeftHandStart
+  label: Манипуляции с левой кистью
+  stepGroups:
+    - steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:BodyPartCondition
+              bodyPart: left_arm
+            - !type:BodyPartCondition
+              bodyPart: left_hand
+
+- type: surgeryTransition
+  id: AmputateLeftHandFinishTransition
+  target: EndOperation
+  label: Ампутировать левую кисть
+  stepGroups:
+    - steps:
+        - tool: [ Sawing ]
+          tag: [ BotanyHatchet, FireAxe ]
+          action: RemovePart
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/saw.ogg
+          requiredPart: left_hand
+          time: 8
+
+- type: surgeryTransition
+  id: AttachLeftHandStartTransition
+  target: AttachLeftHandProcess
+  label: Прикрепить левую кисть
+  stepGroups:
+    - steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:BodyPartCondition
+              bodyPart: left_arm
+            - !type:BodyPartCondition
+              invert: true
+              bodyPart: left_hand
+
+- type: surgeryTransition
+  id: AttachLeftHandProcessTransition
+  target: EndOperation
+  label: Прикрепить левую кисть
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: left_arm
+        - !type:BodyPartCondition
+          invert: true
+          bodyPart: left_hand
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tag: [ LeftHand ]
+          action: AttachPart
+          failureEffect: [ Pain ]
+          requiredPart: left_hand
+          time: 6
+          successChance: 0.85
+
+# ПРАВАЯ КИСТЬ
+- type: surgeryTransition
+  id: AmputateRightHandTransition
+  target: AmputateRightHandStart
+  label: Манипуляции с правой кистью
+  stepGroups:
+    - steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:BodyPartCondition
+              bodyPart: right_arm
+            - !type:BodyPartCondition
+              bodyPart: right_hand
+
+- type: surgeryTransition
+  id: AmputateRightHandFinishTransition
+  target: EndOperation
+  label: Ампутировать правую кисть
+  stepGroups:
+    - steps:
+        - tool: [ Sawing ]
+          tag: [ BotanyHatchet, FireAxe ]
+          action: RemovePart
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/saw.ogg
+          requiredPart: right_hand
+          time: 6
+
+- type: surgeryTransition
+  id: AttachRightHandStartTransition
+  target: AttachRightHandProcess
+  label: Прикрепить правую кисть
+  stepGroups:
+    - steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:BodyPartCondition
+              bodyPart: right_arm
+            - !type:BodyPartCondition
+              invert: true
+              bodyPart: right_hand
+
+- type: surgeryTransition
+  id: AttachRightHandProcessTransition
+  target: EndOperation
+  label: Прикрепить правую кисть
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: right_arm
+        - !type:BodyPartCondition
+          invert: true
+          bodyPart: right_hand
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tag: [ RightHand ]
+          action: AttachPart
+          failureEffect: [ Pain ]
+          requiredPart: right_hand
+          time: 6
+          successChance: 0.85
+
+# ЛЕВАЯ НОГА
+- type: surgeryTransition
+  id: AmputateLeftLegTransition
+  target: AmputateLeftLegStart
+  label: Манипуляции с левой ногой
+  stepGroups:
+    - steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:BodyPartCondition
+              bodyPart: left_leg
+
+- type: surgeryTransition
+  id: AmputateLeftLegFinishTransition
+  target: EndOperation
+  label: Ампутировать левую ногу
+  stepGroups:
+    - steps:
+        - tool: [ Sawing ]
+          tag: [ BotanyHatchet, FireAxe ]
+          action: RemovePart
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/saw.ogg
+          requiredPart: left_leg
+          time: 8
+
+- type: surgeryTransition
+  id: AttachLeftLegStartTransition
+  target: AttachLeftLegProcess
+  label: Прикрепить левую ногу
+  stepGroups:
+    - steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:BodyPartCondition
+              invert: true
+              bodyPart: left_leg
+
+- type: surgeryTransition
+  id: AttachLeftLegProcessTransition
+  target: EndOperation
+  label: Прикрепить левую ногу
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          invert: true
+          bodyPart: left_leg
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tag: [ LeftLeg ]
+          action: AttachPart
+          failureEffect: [ Pain ]
+          requiredPart: left_leg
+          time: 6
+          successChance: 0.85
+
+# ПРАВАЯ НОГА
+- type: surgeryTransition
+  id: AmputateRightLegTransition
+  target: AmputateRightLegStart
+  label: Манипуляции с правой ногой
+  stepGroups:
+    - steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:BodyPartCondition
+              bodyPart: right_leg
+
+- type: surgeryTransition
+  id: AmputateRightLegFinishTransition
+  target: EndOperation
+  label: Ампутировать правую ногу
+  stepGroups:
+    - steps:
+        - tool: [ Sawing ]
+          tag: [ BotanyHatchet, FireAxe ]
+          action: RemovePart
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/saw.ogg
+          requiredPart: right_leg
+          time: 6
+
+- type: surgeryTransition
+  id: AttachRightLegStartTransition
+  target: AttachRightLegProcess
+  label: Прикрепить правую ногу
+  stepGroups:
+    - steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:BodyPartCondition
+              invert: true
+              bodyPart: right_leg
+
+- type: surgeryTransition
+  id: AttachRightLegProcessTransition
+  target: EndOperation
+  label: Прикрепить правую ногу
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          invert: true
+          bodyPart: right_leg
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tag: [ RightLeg ]
+          action: AttachPart
+          failureEffect: [ Pain ]
+          requiredPart: right_leg
+          time: 6
+          successChance: 0.85
+
+# ЛЕВАЯ СТОПА
+- type: surgeryTransition
+  id: AmputateLeftFootTransition
+  target: AmputateLeftFootStart
+  label: Манипуляции с левой стопой
+  stepGroups:
+    - steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:BodyPartCondition
+              bodyPart: left_leg
+            - !type:BodyPartCondition
+              bodyPart: left_foot
+
+- type: surgeryTransition
+  id: AmputateLeftFootFinishTransition
+  target: EndOperation
+  label: Ампутировать левую стопу
+  stepGroups:
+    - steps:
+        - tool: [ Sawing ]
+          tag: [ BotanyHatchet, FireAxe ]
+          action: RemovePart
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/saw.ogg
+          requiredPart: left_foot
+          time: 8
+
+- type: surgeryTransition
+  id: AttachLeftFootStartTransition
+  target: AttachLeftFootProcess
+  label: Прикрепить левую стопу
+  stepGroups:
+    - steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:BodyPartCondition
+              bodyPart: left_leg
+            - !type:BodyPartCondition
+              invert: true
+              bodyPart: left_foot
+
+- type: surgeryTransition
+  id: AttachLeftFootProcessTransition
+  target: EndOperation
+  label: Прикрепить левую стопу
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: left_leg
+        - !type:BodyPartCondition
+          invert: true
+          bodyPart: left_foot
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tag: [ LeftFoot ]
+          action: AttachPart
+          failureEffect: [ Pain ]
+          requiredPart: left_foot
+          time: 6
+          successChance: 0.85
+
+# ПРАВАЯ СТОПА
+- type: surgeryTransition
+  id: AmputateRightFootTransition
+  target: AmputateRightFootStart
+  label: Манипуляции с правой стопой
+  stepGroups:
+    - steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:BodyPartCondition
+              bodyPart: right_leg
+            - !type:BodyPartCondition
+              bodyPart: right_foot
+
+- type: surgeryTransition
+  id: AmputateRightFootFinishTransition
+  target: EndOperation
+  label: Ампутировать правую стопу
+  stepGroups:
+    - steps:
+        - tool: [ Sawing ]
+          tag: [ BotanyHatchet, FireAxe ]
+          action: RemovePart
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/saw.ogg
+          requiredPart: right_foot
+          time: 6
+
+- type: surgeryTransition
+  id: AttachRightFootStartTransition
+  target: AttachRightFootProcess
+  label: Прикрепить правую стопу
+  stepGroups:
+    - steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:BodyPartCondition
+              bodyPart: right_leg
+            - !type:BodyPartCondition
+              invert: true
+              bodyPart: right_foot
+
+- type: surgeryTransition
+  id: AttachRightFootProcessTransition
+  target: EndOperation
+  label: Прикрепить правую стопу
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: right_leg
+        - !type:BodyPartCondition
+          invert: true
+          bodyPart: right_foot
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tag: [ RightFoot ]
+          action: AttachPart
+          failureEffect: [ Pain ]
+          requiredPart: right_foot
+          time: 6
+          successChance: 0.85
+
+# ========================
+# ФИНАЛЬНЫЙ ПЕРЕХОД КОНЕЧНОСТИ
+# ========================
+
+- type: surgeryTransition
+  id: CompleteOperationTransition
+  target: Default
+  label: Завершить
+  stepGroups:
+    - steps:
+        - tool: [ Cautery ]
+          tag: [ Cigarette, Lighter, Welder ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 4
+
+- type: surgeryTransition
+  id: CompleteOperationTransitionAlt
+  target: Default
+  label: Завершить
+  stepGroups:
+    - steps:
+        - tool: [ Cautery ]
+          tag: [ Cigarette, Lighter, Welder ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 4

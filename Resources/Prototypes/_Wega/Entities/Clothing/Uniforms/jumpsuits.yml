@@ -8,3 +8,18 @@
     sprite: _Wega/Clothing/Uniforms/Jumpsuit/runner.rsi
   - type: Clothing
     sprite: _Wega/Clothing/Uniforms/Jumpsuit/runner.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitSurgeon
+  name: surgeon suit
+  description: "Is there bloodstains on it..?"
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpsuit/surgeon.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpsuit/surgeon.rsi
+  - type: DiseaseProtection
+    protection: 0.1
+  - type: ClothingSterility
+    modifier: 0.95

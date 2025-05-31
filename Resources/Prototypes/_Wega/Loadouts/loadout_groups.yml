@@ -290,6 +290,27 @@
   - GeneticsOuterClothingLab
   - GeneticsOuterClothingWinter
 
+- type: loadoutGroup
+  id: SurgeonHead
+  name: loadout-group-surgeon-head
+  minLimit: 0
+  loadouts:
+  - BlueSurgeryCap
+  - GreenSurgeryCap
+  - PurpleSurgeryCap
+  - BlackSurgeryCap
+
+- type: loadoutGroup
+  id: SurgeonJumpsuit
+  name: loadout-group-surgeon-jumpsuit
+  loadouts:
+  - SurgeonJumpsuit
+  - SurgeonJumpskirt
+  - MedicalBlueScrubs
+  - MedicalGreenScrubs
+  - MedicalPurpleScrubs
+  - MedicalBlackScrubs
+
 # Security
 - type: loadoutGroup
   id: BrigmedicHead

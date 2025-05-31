@@ -1,0 +1,66 @@
+# ========================
+# УЗЛЫ ТОРСА
+# ========================
+
+- type: surgeryNode
+  id: SlimeTorsoClosed
+  description: Торс закрыт
+  bodyPart: torso
+  transitions:
+    - SlimeOpenTorsoTransition
+
+- type: surgeryNode
+  id: SlimeTorsoOpen
+  description: Торс вскрыт
+  bodyPart: torso
+  transitions:
+    - SlimeOrganManipulationTransition
+    - SlimeHealMuscleTearsTorsoTransition
+    - SlimeHealMildBurnsTorsoTransition
+    - SlimeHealDeepBurnsTorsoTransition
+    - SlimeHealBulletWoundTorsoTransition
+    - SlimeCloseTorsoTransition
+
+- type: surgeryNode
+  id: SlimeEndMuscleTearsTorsoOperation
+  description: Завершить
+  transitions:
+    - SlimeOrganManipulationTransition
+    - SlimeHealMuscleTearsTorsoTransition
+    - SlimeHealMildBurnsTorsoTransition
+    - SlimeHealDeepBurnsTorsoTransition
+    - SlimeHealBulletWoundTorsoTransition
+    - SlimeCloseTorsoTransition
+
+- type: surgeryNode
+  id: SlimeEndMildBurnsTorsoOperation
+  description: Завершить
+  transitions:
+    - SlimeOrganManipulationTransition
+    - SlimeHealMuscleTearsTorsoTransition
+    - SlimeHealMildBurnsTorsoTransition
+    - SlimeHealDeepBurnsTorsoTransition
+    - SlimeHealBulletWoundTorsoTransition
+    - SlimeCloseTorsoTransition
+
+- type: surgeryNode
+  id: SlimeEndDeepBurnsTorsoOperation
+  description: Завершить
+  transitions:
+    - SlimeOrganManipulationTransition
+    - SlimeHealMuscleTearsTorsoTransition
+    - SlimeHealMildBurnsTorsoTransition
+    - SlimeHealDeepBurnsTorsoTransition
+    - SlimeHealBulletWoundTorsoTransition
+    - SlimeCloseTorsoTransition
+
+- type: surgeryNode
+  id: SlimeEndBulletWoundTorsoOperation
+  description: Завершить
+  transitions:
+    - SlimeOrganManipulationTransition
+    - SlimeHealMuscleTearsTorsoTransition
+    - SlimeHealMildBurnsTorsoTransition
+    - SlimeHealDeepBurnsTorsoTransition
+    - SlimeHealBulletWoundTorsoTransition
+    - SlimeCloseTorsoTransition

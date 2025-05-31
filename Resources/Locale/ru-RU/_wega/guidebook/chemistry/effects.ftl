@@ -17,3 +17,8 @@ reagent-effect-guidebook-cause-disease =
 reagent-effect-guidebook-cause-random-disease = Может вызвать случайное заболевание из списка: {$diseases}
 reagent-effect-guidebook-temperature-fire-protection = Замедляет потерю тепла у одежды (коэф. {$heating})
 reagent-effect-guidebook-atmos-pool-source = Этот реагент распространяет случайную болезнь из системы миазмов на пораженные объекты
+reagent-effect-guidebook-heal-internal-damage = 
+    { $chance ->
+        [1] Имеет
+       *[other] имеют
+    } % шанс вылечить внутренее повреждение при каждом тике

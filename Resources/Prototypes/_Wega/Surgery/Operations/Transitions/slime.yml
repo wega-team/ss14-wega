@@ -1,0 +1,273 @@
+# ========================
+# ПЕРЕХОДЫ ТОРСА
+# ========================
+
+- type: surgeryTransition
+  id: SlimeOpenTorsoTransition
+  target: SlimeTorsoOpen
+  label: Вскрыть торс
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+
+- type: surgeryTransition
+  id: SlimeOrganManipulationTransition
+  target: OrganManipulation
+  label: Манипуляция с органами
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      parallel: true
+      steps:
+        # Ядро
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: RemoveOrgan
+          failureEffect: [ Bleeding, Pain ]
+          requiredPart: SlimeCore
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              organ: SlimeCore
+        - tag: [ SlimeCore ]
+          action: InsertOrgan
+          failureEffect: [ Pain ]
+          requiredPart: SlimeCore
+          sound:
+            collection: Squishes
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              invert: true
+              organ: SlimeCore
+
+        # Легкие
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: RemoveOrgan
+          failureEffect: [ Bleeding, Pain ]
+          requiredPart: Lungs
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              organ: Lungs
+        - tag: [ Lungs ]
+          action: InsertOrgan
+          failureEffect: [ Pain ]
+          requiredPart: Lungs
+          sound:
+            collection: Squishes
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              invert: true
+              organ: Lungs
+
+- type: surgeryTransition
+  id: SlimeCloseTorsoTransition
+  target: Default
+  label: Закрыть торс
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ Cautery ]
+          tag: [ Cigarette, Lighter, Welder ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 8
+
+# Internal
+- type: surgeryTransition
+  id: SlimeHealMuscleTearsTorsoTransition
+  target: SlimeEndMuscleTearsTorsoOperation
+  label: "Лечить физические травмы"
+  stepGroups:
+    - conditions:
+        - !type:InternalDamageCondition
+          damageType: MuscleTears
+          bodyPart: torso
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          requiredPart: torso
+          damageType: MuscleTears
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: SlimeHealMildBurnsTorsoTransition
+  target: SlimeEndMildBurnsTorsoOperation
+  label: "Лечить легкие ожоги"
+  stepGroups:
+    - conditions:
+        - !type:InternalDamageCondition
+          damageType: MildBurns
+          bodyPart: torso
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          requiredPart: torso
+          damageType: MildBurns
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: SlimeHealDeepBurnsTorsoTransition
+  target: SlimeEndDeepBurnsTorsoOperation
+  label: "Лечить тяжелые ожоги"
+  stepGroups:
+    - conditions:
+        - !type:InternalDamageCondition
+          damageType: DeepBurns
+          bodyPart: torso
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tag: [ Ointment ]
+          requiredPart: torso
+          damageType: DeepBurns
+          action: HealInternalDamage
+          sound:
+            path: /Audio/Items/Medical/ointment_end.ogg
+          time: 8
+
+- type: surgeryTransition
+  id: SlimeHealBulletWoundTorsoTransition
+  target: SlimeEndBulletWoundTorsoOperation
+  label: "Извлечь инородное тело"
+  stepGroups:
+    - conditions:
+        - !type:InternalDamageCondition
+          damageType: BulletWound
+          bodyPart: torso
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          requiredPart: torso
+          damageType: BulletWound
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95

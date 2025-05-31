@@ -151,6 +151,8 @@
     sprite: Clothing/OuterClothing/Coats/labcoat.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Coats/labcoat.rsi
+  - type: ClothingSterility # Corvax-Wega-Surgery
+    modifier: 0.9
   - type: Armor
     modifiers:
       coefficients:
@@ -231,6 +233,7 @@
     sprite: Clothing/OuterClothing/Coats/labcoat_cmo.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Coats/labcoat_cmo.rsi
+  - type: ClothingSterility # Corvax-Wega-Surgery
   - type: Armor
     modifiers:
       coefficients:
@@ -447,6 +450,8 @@
     sprite: Clothing/OuterClothing/Coats/labcoat_senior_physician.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Coats/labcoat_senior_physician.rsi
+  - type: ClothingSterility # Corvax-Wega-Surgery
+    modifier: 0.95
   - type: Armor
     modifiers:
       coefficients:

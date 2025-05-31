@@ -89,6 +89,11 @@
     color: orange
   - type: ItemTogglePointLight
   - type: PhysicalComposition
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+    - Lighter
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   name: cheap lighter

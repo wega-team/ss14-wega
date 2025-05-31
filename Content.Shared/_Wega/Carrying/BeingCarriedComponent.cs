@@ -1,4 +1,4 @@
-namespace Content.Server.Carrying
+namespace Content.Shared.Carrying
 {
     /// <summary>
     /// Stores the carrier of an entity being carried.

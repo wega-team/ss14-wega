@@ -5,3 +5,11 @@
     sprite: /Textures/_Wega/Interface/Misc/job_icons.rsi
     state: Barber
   jobName: job-name-barber
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconSurgeon
+  icon:
+    sprite: /Textures/_Wega/Interface/Misc/job_icons.rsi
+    state: Surgeon
+  jobName: job-name-surgeon

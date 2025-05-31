@@ -223,13 +223,16 @@
   table: !type:AllSelector
     children:
     - id: BoxEncryptionKeyMedical
-    - id: ClothingBackpackDuffelSurgeryFilled
+    - id: SurgerykitFilled # Corvax-Wega-Surgery-Edit
     - id: ClothingCloakCmo
     - id: ClothingEyesHudMedical
     - id: ClothingHandsGlovesNitrile
+    - id: ClothingHandsGlovesLatexSurgeon # Corvax-Wega-Surgery
     - id: ClothingHeadHatBeretCmo
     - id: ClothingHeadsetAltMedical
     - id: ClothingMaskSterile
+    - id: UniformScrubsColorCmo # Corvax-Wega-Surgery
+    - id: ClothingHeadHatSurgcapCmo # Corvax-Wega-Surgery
     - id: DoorRemoteMedical
     - id: HandheldCrewMonitor
     - id: Hypospray
@@ -238,6 +241,7 @@
     - id: MedkitFilled
     - id: RubberStampCMO
     - id: MedTekCartridge
+    - id: BodyScannerComputerCircuitboard # Corvax-Wega-Surgery
 
 # Hardsuit table, used for suit storage as well
 - type: entityTable

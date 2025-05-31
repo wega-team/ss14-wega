@@ -132,6 +132,7 @@
         nameSegments:
         - NamesSyndicateElite
         nameFormat: name-format-nukie-commander
+      - type: SurgicalSkill # Corvax-Wega-Surgery
       - type: NpcFactionMember
         factions:
         - Syndicate
@@ -149,6 +150,8 @@
         nameSegments:
         - NamesSyndicateNormal
         nameFormat: name-format-nukie-agent
+      - type: SurgicalSkill # Corvax-Wega-Surgery
+        modifier: 0.4 # Corvax-Wega-Surgery
       - type: NpcFactionMember
         factions:
         - Syndicate
@@ -168,6 +171,7 @@
         nameSegments:
         - NamesSyndicateNormal
         nameFormat: name-format-nukie-operator
+      - type: SurgicalSkill # Corvax-Wega-Surgery
       - type: NpcFactionMember
         factions:
         - Syndicate

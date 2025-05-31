@@ -119,6 +119,12 @@
             "name": "idreporter"
         },
         {
+          "name": "idgeneticist"
+        },
+        {
+          "name": "idsurgeon"
+        },
+        {
             "name": "idprisoner"
         },
         {

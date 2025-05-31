@@ -112,31 +112,63 @@ namespace Content.Server.Hands.Systems
             args.Handled = true; // no shove/stun.
         }
 
+        // Corvax-Wega-Surgery-Edit-start
         private void HandleBodyPartAdded(EntityUid uid, HandsComponent component, ref BodyPartAddedEvent args)
         {
-            if (args.Part.Comp.PartType != BodyPartType.Hand)
-                return;
-
-            // If this annoys you, which it should.
-            // Ping Smugleaf.
-            var location = args.Part.Comp.Symmetry switch
+            switch (args.Part.Comp.PartType)
             {
-                BodyPartSymmetry.None => HandLocation.Middle,
-                BodyPartSymmetry.Left => HandLocation.Left,
-                BodyPartSymmetry.Right => HandLocation.Right,
-                _ => throw new ArgumentOutOfRangeException(nameof(args.Part.Comp.Symmetry))
-            };
+                case BodyPartType.Arm:
+                    foreach (var (slotId, child) in args.Part.Comp.Children)
+                    {
+                        if (child.Type == BodyPartType.Hand)
+                        {
+                            var armLocation = args.Part.Comp.Symmetry switch
+                            {
+                                BodyPartSymmetry.None => HandLocation.Middle,
+                                BodyPartSymmetry.Left => HandLocation.Left,
+                                BodyPartSymmetry.Right => HandLocation.Right,
+                                _ => HandLocation.Middle // fallback
+                            };
 
-            AddHand(uid, args.Slot, location);
+                            AddHand(uid, $"body_part_slot_{slotId}", armLocation);
+                        }
+                    }
+                    break;
+
+                case BodyPartType.Hand:
+                    var location = args.Part.Comp.Symmetry switch
+                    {
+                        BodyPartSymmetry.None => HandLocation.Middle,
+                        BodyPartSymmetry.Left => HandLocation.Left,
+                        BodyPartSymmetry.Right => HandLocation.Right,
+                        _ => HandLocation.Middle
+                    };
+
+                    AddHand(uid, args.Slot, location);
+                    break;
+            }
         }
 
         private void HandleBodyPartRemoved(EntityUid uid, HandsComponent component, ref BodyPartRemovedEvent args)
         {
-            if (args.Part.Comp.PartType != BodyPartType.Hand)
-                return;
+            switch (args.Part.Comp.PartType)
+            {
+                case BodyPartType.Arm:
+                    foreach (var (slotId, child) in args.Part.Comp.Children)
+                    {
+                        if (child.Type == BodyPartType.Hand)
+                        {
+                            RemoveHand(uid, $"body_part_slot_{slotId}");
+                        }
+                    }
+                    break;
 
-            RemoveHand(uid, args.Slot);
+                case BodyPartType.Hand:
+                    RemoveHand(uid, args.Slot);
+                    break;
+            }
         }
+        // Corvax-Wega-Surgery-Edit-end
 
         #region interactions
 

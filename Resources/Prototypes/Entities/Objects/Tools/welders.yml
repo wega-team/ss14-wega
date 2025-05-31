@@ -105,6 +105,11 @@
     price: 40
   - type: IgnitionSource
     temperature: 700
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+    - Welder
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   name: industrial welding tool

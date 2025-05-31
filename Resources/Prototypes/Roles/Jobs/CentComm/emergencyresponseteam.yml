@@ -385,7 +385,7 @@
     shoes: ClothingShoesBootsCombatFilled
     head: ClothingHeadHelmetERTMedic
     eyes: ClothingEyesHudMedical
-    gloves: ClothingHandsGlovesNitrile
+    gloves: ClothingHandsGlovesLatexSurgeon # Corvax-Wega-Surgery
     outerClothing: ClothingOuterArmorBasicSlim
     id: ERTMedicPDA
     ears: ClothingHeadsetAltCentCom
@@ -396,6 +396,7 @@
     back:
     # Corvax-Wega-ERT-start
 #    - Hypospray
+    - SurgerykitFilled # Corvax-Wega-Surgery
     - SyringeBluespace
 #    - MedkitCombatFilled
 #    - MedkitCombatFilled
@@ -414,7 +415,7 @@
     shoes: ClothingShoesBootsMagCombat # Corvax-Wega-MagCombat
     mask: ClothingMaskGasERT
     eyes: ClothingEyesHudMedical
-    gloves: ClothingHandsGlovesNitrile
+    gloves: ClothingHandsGlovesLatexSurgeon # Corvax-Wega-Surgery
     outerClothing: ClothingOuterHardsuitERTMedical
     id: ERTMedicPDA
     ears: ClothingHeadsetAltCentCom
@@ -424,6 +425,7 @@
   storage:
     back:
 #    - Hypospray # Corvax-Wega-ERT
+    - SurgerykitFilled # Corvax-Wega-Surgery
     - SyringeBluespace # Corvax-Wega-ERT
     - MedkitCombatFilled
 #    - CrowbarRed # Corvax-Wega-CombatCrowbar

@@ -144,6 +144,7 @@
   - type: Fiber
     fiberMaterial: fibers-latex
   - type: FingerprintMask
+  - type: ClothingSterility # Corvax-Wega-Surgery
 
 - type: entity
   parent: ClothingHandsButcherable

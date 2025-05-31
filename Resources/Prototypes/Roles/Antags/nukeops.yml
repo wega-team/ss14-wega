@@ -95,14 +95,16 @@
   storage:
     back:
     - SyndiHypo
-    - SawAdvanced
-    - Cautery
+    # - SawAdvanced # Corvax-Wega-Surgery
+    # - Cautery # Corvax-Wega-Surgery
     - CombatKnife
     - WeaponPistolViper
     - PinpointerSyndicateNuclear
     - HandheldHealthAnalyzer
     - CombatMedipen
     - DeathAcidifierImplanter
+  inhand: # Corvax-Wega-Surgery
+  - SurgerykitFilledSyndie # Corvax-Wega-Surgery
 
 #Lone Operative Gear
 - type: startingGear

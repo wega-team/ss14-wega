@@ -12,3 +12,27 @@
     modifiers:
       coefficients:
         Heat: 0.95
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatSurgcapBlack
+  name: surgical cap
+  description: A black cap surgeons wear during operations. Keeps their hair from tickling your internal organs.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Head/Hats/surgcap_black.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Head/Hats/surgcap_black.rsi
+  - type: ClothingSterility
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatSurgcapCmo
+  name: surgical cap
+  description: A cmo cap surgeons wear during operations. Keeps their hair from tickling your internal organs.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Head/Hats/surgcap_cmo.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Head/Hats/surgcap_cmo.rsi
+  - type: ClothingSterility

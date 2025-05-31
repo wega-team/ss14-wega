@@ -1,0 +1,7 @@
+- type: alert
+  id: HeartFailureAlert
+  icons:
+  - sprite: /Textures/Objects/Specific/Medical/defib.rsi
+    state: icon
+  name: alerts-vampire-blood-name
+  description: alerts-vampire-blood-desc

@@ -38,6 +38,8 @@
     heldPrefix: brain
   - type: Sprite
     state: brain
+  - type: Organ
+    organType: Brain
   - type: SolutionContainerManager
     solutions:
       organ:
@@ -49,6 +51,10 @@
         reagents:
         - ReagentId: GreyMatter
           Quantity: 5
+  - type: Tag
+    tags:
+      - Brain
+      - Meat
 
 - type: entity
   id: OrganSkrellEyes
@@ -61,6 +67,12 @@
   - type: Item
     size: Small
     heldPrefix: eyes
+  - type: Organ
+    organType: Eyes
+  - type: Tag
+    tags:
+      - Eyes
+      - Meat
 
 - type: entity
   id: OrganSkrellLungs
@@ -96,6 +108,12 @@
         reagents:
         - ReagentId: UncookedAnimalProteins
           Quantity: 5
+  - type: Organ
+    organType: Lungs
+  - type: Tag
+    tags:
+      - Lungs
+      - Meat
 
 - type: entity
   id: OrganSkrellHeart
@@ -105,6 +123,7 @@
   components:
   - type: Sprite
     state: heart-on
+  - type: Heart # Corvax-Wega-Surgery
   - type: Metabolizer
     maxReagents: 2
     metabolizerTypes: [Human]
@@ -115,6 +134,12 @@
   - type: Item
     size: Small
     heldPrefix: heart
+  - type: Organ
+    organType: Heart
+  - type: Tag
+    tags:
+      - Heart
+      - Meat
 
 - type: entity
   id: OrganSkrellStomach
@@ -144,6 +169,12 @@
     groups:
     - id: Food
     - id: Drink
+  - type: Organ
+    organType: Stomach
+  - type: Tag
+    tags:
+      - Stomach
+      - Meat
 
 - type: entity
   id: OrganSkrellLiver
@@ -162,6 +193,12 @@
     groups:
     - id: Alcohol
       rateModifier: 0.1
+  - type: Organ
+    organType: Liver
+  - type: Tag
+    tags:
+      - Liver
+      - Meat
 
 - type: entity
   id: OrganSkrellKidneys
@@ -178,3 +215,9 @@
     maxReagents: 5
     metabolizerTypes: [Human]
     removeEmpty: true
+  - type: Organ
+    organType: Kidneys
+  - type: Tag
+    tags:
+      - Kidneys
+      - Meat

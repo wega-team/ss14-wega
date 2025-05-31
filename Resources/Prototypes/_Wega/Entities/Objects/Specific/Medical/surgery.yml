@@ -1,0 +1,133 @@
+- type: entity
+  name: fix o vein
+  id: FixOVein
+  parent: BaseToolSurgery
+  description: "A device for fixing and treating damaged veins and arteries."
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Medical/Surgery/fixovein.rsi
+    state: fixovein
+  - type: Item
+    sprite: _Wega/Objects/Specific/Medical/Surgery/fixovein.rsi
+  - type: Tool
+    qualities:
+    - FixOVein
+
+- type: entity
+  name: bone setter
+  id: BoneSetter
+  parent: Retractor
+  description: "A durable tool for the forced return of bones to an anatomically correct position. Patients may not appreciate the crunch, but the functionality is indisputable."
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Medical/Surgery/bone_setter.rsi
+    state: bonesetter
+  - type: Item
+    sprite: _Wega/Objects/Specific/Medical/Surgery/bone_setter.rsi
+    storedRotation: 45
+  - type: Tool
+    qualities:
+    - BoneSetter
+
+- type: entity
+  name: bone gel
+  id: BoneGel
+  parent: BaseToolSurgery
+  description: "Bioactive gel that instantly holds broken bones together. Side effects include temporary itching, a slight burning sensation, and an unexplained craving for milk."
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Medical/Surgery/bone_gel.rsi
+    state: bone-gel
+  - type: Item
+    sprite: _Wega/Objects/Specific/Medical/Surgery/bone_gel.rsi
+  - type: Tool
+    qualities:
+    - BoneGel
+
+- type: entity
+  name: spray bottle
+  id: SprayBottleEthanol
+  parent: SprayBottle
+  suffix: Ethanol
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      spray:
+        maxVol: 100
+        reagents:
+        - ReagentId: Ethanol
+          Quantity: 100
+  - type: Tag
+    tags:
+      - Spray
+
+- type: entity
+  parent: BaseStorageItem
+  id: Surgerykit
+  name: surgery kit
+  description: "A small kit for transferring everything necessary for surgical intervention."
+  suffix: Empty
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Storage/surgery_case.rsi
+    state: icon
+  - type: Storage
+    maxItemSize: Normal
+    whitelist:
+      tags:
+        - Wrench
+        - Bottle
+        - Spray
+        - Brutepack
+        - Bloodpack
+        - Gauze
+        - Ointment
+        - CigPack
+        - PillCanister
+        - Radio
+        - DiscreteHealthAnalyzer
+        - SurgeryTool
+        - Dropper
+    grid:
+    - 0,0,5,2
+  - type: Item
+    size: Huge
+  - type: PhysicalComposition
+    materialComposition:
+      Cloth: 50
+
+- type: entity
+  parent: [ BaseStorageItem, ClothingBeltBase ]
+  id: SuperSurgerykit
+  name: big surgery kit
+  description: "A large set for transferring everything necessary for surgical intervention. It can be worn on a belt."
+  suffix: Empty
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Storage/super_surgery_case.rsi
+  - type: Clothing
+    sprite: _Wega/Objects/Storage/super_surgery_case.rsi
+  - type: Storage
+    maxItemSize: Normal
+    whitelist:
+      tags:
+        - Wrench
+        - Bottle
+        - Spray
+        - Brutepack
+        - Bloodpack
+        - Gauze
+        - Ointment
+        - CigPack
+        - PillCanister
+        - Radio
+        - DiscreteHealthAnalyzer
+        - SurgeryTool
+        - Dropper
+    grid:
+    - 0,0,7,3
+  - type: Item
+    size: Huge
+  - type: PhysicalComposition
+    materialComposition:
+      Cloth: 50

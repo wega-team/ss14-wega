@@ -1,0 +1,5 @@
+- type: sourcePort
+  id: SurgeryTableSender
+  name: signal-port-name-surgery-table-sender
+  description: signal-port-description-surgery-table-sender
+  defaultLinks: [ SurgeryTableReceiver ]

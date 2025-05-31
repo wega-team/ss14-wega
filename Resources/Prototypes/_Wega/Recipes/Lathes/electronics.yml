@@ -7,3 +7,8 @@
   parent: BaseGoldCircuitboardRecipe
   id: SlimeExtractorMachineCircuitboard
   result: SlimeExtractorMachineCircuitboard
+
+- type: latheRecipe
+  parent: BaseGoldCircuitboardRecipe
+  id: BodyScannerComputerCircuitboard
+  result: BodyScannerComputerCircuitboard

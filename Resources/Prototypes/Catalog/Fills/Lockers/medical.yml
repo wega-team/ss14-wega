@@ -55,6 +55,8 @@
         weight: 0.05
       - id: ClothingHeadHatSurgcapBlue
         weight: 0.90
+      - id: ClothingHeadHatSurgcapBlack # Corvax-Wega-add
+        weight: 0.05 # Corvax-Wega-add
     - !type:GroupSelector
       children:
       - id: UniformScrubsColorBlue
@@ -63,6 +65,8 @@
         weight: 0.1
       - id: UniformScrubsColorPurple
         weight: 0.05
+      - id: UniformScrubsColorBlack # Corvax-Wega-add
+        weight: 0.05 # Corvax-Wega-add
     - id: ClothingMaskSterile
 
 - type: entity

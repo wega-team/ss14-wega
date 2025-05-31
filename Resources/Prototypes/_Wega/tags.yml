@@ -51,3 +51,59 @@
 
 - type: Tag
   id: ERTTacticalInterfaceCombat
+
+- type: Tag
+  id: Welder
+
+- type: Tag
+  id: Lighter
+
+- type: Tag
+  id: BasicGlassShard
+
+# Surgery / DONT TOUCH!
+- type: Tag
+  id: Eyes
+
+- type: Tag
+  id: Heart
+
+- type: Tag
+  id: Lungs
+
+- type: Tag
+  id: Kidneys
+
+- type: Tag
+  id: Liver
+
+- type: Tag
+  id: Stomach
+
+- type: Tag
+  id: SlimeCore
+
+- type: Tag
+  id: LeftArm
+
+- type: Tag
+  id: RightArm
+
+- type: Tag
+  id: LeftHand
+
+- type: Tag
+  id: RightHand
+
+- type: Tag
+  id: LeftLeg
+
+- type: Tag
+  id: RightLeg
+
+- type: Tag
+  id: LeftFoot
+
+- type: Tag
+  id: RightFoot
+# Surgery end

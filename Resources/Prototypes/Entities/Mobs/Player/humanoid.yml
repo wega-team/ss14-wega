@@ -64,6 +64,8 @@
         - NamesMilitaryFirstLeader
         - NamesMilitaryLast
       nameFormat: name-format-ert
+    - type: SurgicalSkill # Corvax-Wega-Surgery
+      modifier: 0.3 # Corvax-Wega-Surgery
 
 
 ## ERT Leader
@@ -485,6 +487,8 @@
     - type: Loadout
       prototypes: [ ERTMedicalGear ]
       roleLoadout: [ RoleSurvivalExtended ]
+    - type: SurgicalSkill # Corvax-Wega-Surgery
+      modifier: 0.3 # Corvax-Wega-Surgery
 
 - type: entity
   id: RandomHumanoidSpawnerERTMedicalEVA

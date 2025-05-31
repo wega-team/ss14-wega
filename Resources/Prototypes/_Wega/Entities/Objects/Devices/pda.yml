@@ -48,3 +48,22 @@
     accentVColor: "#447987"
   - type: Icon
     state: pda-genetics
+
+- type: entity
+  parent: BaseMedicalPDA
+  id: SurgeonPDA
+  name: geneticist PDA
+  description: "A diagram of the human body with illuminated surgical markers flickers on the screen. It seems that someone has already started marking up the section."
+  components:
+  - type: Pda
+    id: SurgeonIDCard
+  - type: Appearance
+    appearanceDataInit:
+     enum.PdaVisuals.PdaType:
+       !type:String
+       pda-surgeon
+  - type: PdaBorderColor
+    borderColor: "#d7d7d0"
+    accentHColor: "#447987"
+  - type: Icon
+    state: pda-surgeon

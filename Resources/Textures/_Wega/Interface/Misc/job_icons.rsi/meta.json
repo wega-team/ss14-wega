@@ -2,7 +2,6 @@
     "version": 1,
     "license": "CC-BY-SA-3.0",
     "copyright": "Created by zekins3366",
-
     "size": {
         "x": 8,
         "y": 8
@@ -10,6 +9,9 @@
     "states": [
         {
             "name": "Barber"
+        },
+        {
+            "name": "Surgeon"
         }
     ]
 }

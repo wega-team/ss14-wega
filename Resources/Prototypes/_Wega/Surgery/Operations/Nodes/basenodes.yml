@@ -1,0 +1,366 @@
+# Default
+- type: surgeryNode
+  id: Default
+  description: ""
+  transitions: []
+
+# ========================
+# УЗЛЫ ТОРСА
+# ========================
+
+- type: surgeryNode
+  id: TorsoClosed
+  description: Торс закрыт
+  bodyPart: torso
+  transitions:
+    - OpenTorsoTransition
+
+- type: surgeryNode
+  id: TorsoOpen
+  description: Торс вскрыт
+  bodyPart: torso
+  transitions:
+    - OrganManipulationTransition
+    - HealMuscleTearsTorsoTransition
+    - HealMildBurnsTorsoTransition
+    - HealClosedFractureTorsoTransition
+    - HealOpenFractureTorsoTransition
+    - HealArterialBleedingTorsoTransition
+    - HealDeepBurnsTorsoTransition
+    - HealBulletWoundTorsoTransition
+    - CloseTorsoTransition
+
+# ========================
+# УЗЛЫ ГОЛОВЫ
+# ========================
+
+- type: surgeryNode
+  id: HeadClosed
+  description: Голова закрыта
+  bodyPart: head
+  transitions:
+    - OpenHeadTransition
+
+- type: surgeryNode
+  id: HeadClosedAlt
+  description: Голова закрыта
+  bodyPart: head
+  transitions:
+    - OpenHeadTransitionAlt
+
+- type: surgeryNode
+  id: HeadOpen
+  description: Череп вскрыт
+  bodyPart: head
+  transitions:
+    - ExtractBrainTransition
+    - CloseHeadTransition
+
+- type: surgeryNode
+  id: AttachHead
+  description: "И не прокричал он: 'АААААААААААААААААААААААААА'."
+  bodyPart: head
+  transitions:
+    - CompleteHeadAttachmentTransition
+
+# ========================
+# УЗЛЫ КОНЕЧНОСТЕЙ
+# ========================
+
+- type: surgeryNode
+  id: AmputateLeftArm
+  description: Левая рука на месте
+  bodyPart: left_arm
+  transitions:
+    - AmputateLeftArmTransition
+
+- type: surgeryNode
+  id: AmputateLeftArmStart
+  description: Начало ампутации левой руки
+  bodyPart: left_arm
+  transitions:
+    - AmputateLeftArmFinishTransition
+    - HealMuscleTearsLeftArmTransition
+    - HealMildBurnsLeftArmTransition
+    - HealClosedFractureLeftArmTransition
+    - HealOpenFractureLeftArmTransition
+    - HealArterialBleedingLeftArmTransition
+    - HealDeepBurnsLeftArmTransition
+    - HealBulletWoundLeftArmTransition
+    - CompleteOperationTransitionAlt
+
+- type: surgeryNode
+  id: AttachLeftArm
+  description: Левая рука отсутствует
+  bodyPart: left_arm
+  transitions:
+    - AttachLeftArmStartTransition
+
+- type: surgeryNode
+  id: AttachLeftArmProcess
+  description: Процесс пришивания левой руки
+  bodyPart: left_arm
+  transitions:
+    - AttachLeftArmProcessTransition
+
+- type: surgeryNode
+  id: AmputateRightArm
+  description: Правая рука на месте
+  bodyPart: right_arm
+  transitions:
+    - AmputateRightArmTransition
+
+- type: surgeryNode
+  id: AmputateRightArmStart
+  description: Начало ампутации правой руки
+  bodyPart: right_arm
+  transitions:
+    - AmputateRightArmFinishTransition
+    - HealMuscleTearsRightArmTransition
+    - HealMildBurnsRightArmTransition
+    - HealClosedFractureRightArmTransition
+    - HealOpenFractureRightArmTransition
+    - HealArterialBleedingRightArmTransition
+    - HealDeepBurnsRightArmTransition
+    - HealBulletWoundRightArmTransition
+    - CompleteOperationTransitionAlt
+
+- type: surgeryNode
+  id: AttachRightArm
+  description: Правая рука отсутствует
+  bodyPart: right_arm
+  transitions:
+    - AttachRightArmStartTransition
+
+- type: surgeryNode
+  id: AttachRightArmProcess
+  description: Процесс пришивания правой руки
+  bodyPart: right_arm
+  transitions:
+    - AttachRightArmProcessTransition
+
+- type: surgeryNode
+  id: AmputateLeftHand
+  description: Левая кисть на месте
+  bodyPart: left_hand
+  transitions:
+    - AmputateLeftHandTransition
+
+- type: surgeryNode
+  id: AmputateLeftHandStart
+  description: Начало ампутации левой кисти
+  bodyPart: left_hand
+  transitions:
+    - AmputateLeftHandFinishTransition
+    - HealMuscleTearsLeftHandTransition
+    - HealMildBurnsLeftHandTransition
+    - HealClosedFractureLeftHandTransition
+    - HealOpenFractureLeftHandTransition
+    - HealArterialBleedingLeftHandTransition
+    - HealDeepBurnsLeftHandTransition
+    - HealBulletWoundLeftHandTransition
+    - CompleteOperationTransitionAlt
+
+- type: surgeryNode
+  id: AttachLeftHand
+  description: Левая кисть отсутствует
+  bodyPart: left_hand
+  transitions:
+    - AttachLeftHandStartTransition
+
+- type: surgeryNode
+  id: AttachLeftHandProcess
+  description: Процесс пришивания левой кисти
+  bodyPart: left_hand
+  transitions:
+    - AttachLeftHandProcessTransition
+
+- type: surgeryNode
+  id: AmputateRightHand
+  description: Правая кисть на месте
+  bodyPart: right_hand
+  transitions:
+    - AmputateRightHandTransition
+
+- type: surgeryNode
+  id: AmputateRightHandStart
+  description: Начало ампутации правой кисти
+  bodyPart: right_hand
+  transitions:
+    - AmputateRightHandFinishTransition
+    - HealMuscleTearsRightHandTransition
+    - HealMildBurnsRightHandTransition
+    - HealClosedFractureRightHandTransition
+    - HealOpenFractureRightHandTransition
+    - HealArterialBleedingRightHandTransition
+    - HealDeepBurnsRightHandTransition
+    - HealBulletWoundRightHandTransition
+    - CompleteOperationTransitionAlt
+
+- type: surgeryNode
+  id: AttachRightHand
+  description: Правая кисть отсутствует
+  bodyPart: right_hand
+  transitions:
+    - AttachRightHandStartTransition
+
+- type: surgeryNode
+  id: AttachRightHandProcess
+  description: Процесс пришивания правой кисти
+  bodyPart: right_hand
+  transitions:
+    - AttachRightHandProcessTransition
+
+- type: surgeryNode
+  id: AmputateLeftLeg
+  description: Левая нога на месте
+  bodyPart: left_leg
+  transitions:
+    - AmputateLeftLegTransition
+
+- type: surgeryNode
+  id: AmputateLeftLegStart
+  description: Начало ампутации левой ноги
+  bodyPart: left_leg
+  transitions:
+    - AmputateLeftLegFinishTransition
+    - HealMuscleTearsLeftLegTransition
+    - HealMildBurnsLeftLegTransition
+    - HealClosedFractureLeftLegTransition
+    - HealOpenFractureLeftLegTransition
+    - HealArterialBleedingLeftLegTransition
+    - HealDeepBurnsLeftLegTransition
+    - HealBulletWoundLeftLegTransition
+    - CompleteOperationTransitionAlt
+
+- type: surgeryNode
+  id: AttachLeftLeg
+  description: Левая нога отсутствует
+  bodyPart: left_leg
+  transitions:
+    - AttachLeftLegStartTransition
+
+- type: surgeryNode
+  id: AttachLeftLegProcess
+  description: Процесс пришивания левой ноги
+  bodyPart: left_leg
+  transitions:
+    - AttachLeftLegProcessTransition
+
+- type: surgeryNode
+  id: AmputateRightLeg
+  description: Правая нога на месте
+  bodyPart: right_leg
+  transitions:
+    - AmputateRightLegTransition
+
+- type: surgeryNode
+  id: AmputateRightLegStart
+  description: Начало ампутации правой ноги
+  bodyPart: right_leg
+  transitions:
+    - AmputateRightLegFinishTransition
+    - HealMuscleTearsRightLegTransition
+    - HealMildBurnsRightLegTransition
+    - HealClosedFractureRightLegTransition
+    - HealOpenFractureRightLegTransition
+    - HealArterialBleedingRightLegTransition
+    - HealDeepBurnsRightLegTransition
+    - HealBulletWoundRightLegTransition
+    - CompleteOperationTransitionAlt
+
+- type: surgeryNode
+  id: AttachRightLeg
+  description: Правая нога отсутствует
+  bodyPart: right_leg
+  transitions:
+    - AttachRightLegStartTransition
+
+- type: surgeryNode
+  id: AttachRightLegProcess
+  description: Процесс пришивания правой ноги
+  bodyPart: right_leg
+  transitions:
+    - AttachRightLegProcessTransition
+
+- type: surgeryNode
+  id: AmputateLeftFoot
+  description: Левая стопа на месте
+  bodyPart: left_foot
+  transitions:
+    - AmputateLeftFootTransition
+
+- type: surgeryNode
+  id: AmputateLeftFootStart
+  description: Начало ампутации левой стопы
+  bodyPart: left_foot
+  transitions:
+    - AmputateLeftFootFinishTransition
+    - HealMuscleTearsLeftFootTransition
+    - HealMildBurnsLeftFootTransition
+    - HealClosedFractureLeftFootTransition
+    - HealOpenFractureLeftFootTransition
+    - HealArterialBleedingLeftFootTransition
+    - HealDeepBurnsLeftFootTransition
+    - HealBulletWoundLeftFootTransition
+    - CompleteOperationTransitionAlt
+
+- type: surgeryNode
+  id: AttachLeftFoot
+  description: Левая стопа отсутствует
+  bodyPart: left_foot
+  transitions:
+    - AttachLeftFootStartTransition
+
+- type: surgeryNode
+  id: AttachLeftFootProcess
+  description: Процесс пришивания левой стопы
+  bodyPart: left_foot
+  transitions:
+    - AttachLeftFootProcessTransition
+
+- type: surgeryNode
+  id: AmputateRightFoot
+  description: Правая стопа на месте
+  bodyPart: right_foot
+  transitions:
+    - AmputateRightFootTransition
+
+- type: surgeryNode
+  id: AmputateRightFootStart
+  description: Начало ампутации правой стопы
+  bodyPart: right_foot
+  transitions:
+    - AmputateRightFootFinishTransition
+    - HealMuscleTearsRightFootTransition
+    - HealMildBurnsRightFootTransition
+    - HealClosedFractureRightFootTransition
+    - HealOpenFractureRightFootTransition
+    - HealArterialBleedingRightFootTransition
+    - HealDeepBurnsRightFootTransition
+    - HealBulletWoundRightFootTransition
+    - CompleteOperationTransitionAlt
+
+- type: surgeryNode
+  id: AttachRightFoot
+  description: Правая стопа отсутствует
+  bodyPart: right_foot
+  transitions:
+    - AttachRightFootStartTransition
+
+- type: surgeryNode
+  id: AttachRightFootProcess
+  description: Процесс пришивания правой стопы
+  bodyPart: right_foot
+  transitions:
+    - AttachRightFootProcessTransition
+
+# ========================
+# ФИНАЛЬНЫЙ УЗЕЛ КОНЕЧНОСТИ
+# ========================
+
+- type: surgeryNode
+  id: EndOperation
+  description: Завершить
+  transitions:
+    - CompleteOperationTransition

@@ -70,6 +70,8 @@
           unfoldedLayer:
             True: {visible: false}
             False: {visible: true}
+    - type: OperatingTable # Corvax-Wega-Surgery
+      modifier: 0.8 # Corvax-Wega-Surgery
     - type: StaticPrice
       price: 120
 

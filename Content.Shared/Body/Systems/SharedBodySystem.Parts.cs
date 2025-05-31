@@ -614,6 +614,81 @@ public partial class SharedBodySystem
         return GetBodyChildrenOfType(bodyId, type, body).Any();
     }
 
+    // Corvax-Wega-Surgery-start
+    public IEnumerable<EntityUid> GetBodyPartsWithSlot(EntityUid bodyId, string slotId, BodyComponent? body = null)
+    {
+        if (!Resolve(bodyId, ref body, logMissing: false))
+            yield break;
+
+        foreach (var part in GetBodyChildren(bodyId, body))
+        {
+            if (part.Component.Children.ContainsKey(slotId))
+                yield return part.Id;
+        }
+    }
+
+    public bool HasBodyPart(EntityUid bodyId, string partId, BodyComponent? body = null)
+    {
+        return GetBodyPartById(bodyId, partId, body) != null;
+    }
+
+    public EntityUid? GetBodyPartById(EntityUid bodyId, string partId, BodyComponent? body = null)
+    {
+        if (!Resolve(bodyId, ref body))
+            return null;
+
+        if (body.RootContainer.ContainedEntity is not { } rootPart)
+            return null;
+
+        if (partId.Contains('_'))
+        {
+            var parts = partId.Split('_');
+            if (parts.Length != 2)
+                return null;
+
+            var symmetry = parts[0].ToLower() switch
+            {
+                "left" => BodyPartSymmetry.Left,
+                "right" => BodyPartSymmetry.Right,
+                _ => BodyPartSymmetry.None
+            };
+
+            var partType = parts[1].ToLower() switch
+            {
+                "arm" => BodyPartType.Arm,
+                "hand" => BodyPartType.Hand,
+                "leg" => BodyPartType.Leg,
+                "foot" => BodyPartType.Foot,
+                _ => BodyPartType.Other
+            };
+
+            foreach (var (id, part) in GetBodyChildren(bodyId, body))
+            {
+                if (part.PartType == partType && part.Symmetry == symmetry)
+                    return id;
+            }
+        }
+        else
+        {
+            var partType = partId.ToLower() switch
+            {
+                "torso" => BodyPartType.Torso,
+                "head" => BodyPartType.Head,
+                "tail" => BodyPartType.Tail,
+                _ => BodyPartType.Other
+            };
+
+            foreach (var (id, part) in GetBodyChildren(bodyId, body))
+            {
+                if (part.PartType == partType)
+                    return id;
+            }
+        }
+
+        return null;
+    }
+    // Corvax-Wega-Surgery-end
+
     /// <summary>
     /// Returns true if the parentId has the specified childId.
     /// </summary>

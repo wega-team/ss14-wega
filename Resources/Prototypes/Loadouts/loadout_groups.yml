@@ -1169,6 +1169,7 @@
   loadouts:
   - ChiefMedicalOfficerBeret
   - CMOMedicalHeadMirror
+  - CmoSurgeryCap # Corvax-Wega-add
 
 - type: loadoutGroup
   id: ChiefMedicalOfficerJumpsuit
@@ -1178,6 +1179,7 @@
   - ChiefMedicalOfficerJumpskirt
   - ChiefMedicalOfficerTurtleneckJumpsuit
   - ChiefMedicalOfficerTurtleneckJumpskirt
+  - ChiefMedicalCmoScrubs # Corvax-Wega-add
 
 - type: loadoutGroup
   id: ChiefMedicalOfficerOuterClothing
@@ -1213,6 +1215,7 @@
   - BlueSurgeryCap
   - GreenSurgeryCap
   - PurpleSurgeryCap
+  - BlackSurgeryCap # Corvax-Wega-add
   - NurseHat
 
 - type: loadoutGroup
@@ -1226,6 +1229,7 @@
   - MedicalBlueScrubs
   - MedicalGreenScrubs
   - MedicalPurpleScrubs
+  - MedicalBlackScrubs # Corvax-Wega-add
 
 - type: loadoutGroup
   id: MedicalDoctorOuterClothing

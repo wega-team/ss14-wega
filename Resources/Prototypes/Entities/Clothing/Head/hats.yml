@@ -514,6 +514,7 @@
       Hair: HEAD
       HeadTop : HEAD
       HeadSide : HEAD
+  - type: ClothingSterility # Corvax-Wega-Surgery
 
 - type: entity
   parent: ClothingHeadBase
@@ -530,6 +531,7 @@
       Hair: HEAD
       HeadTop : HEAD
       HeadSide : HEAD
+  - type: ClothingSterility # Corvax-Wega-Surgery
 
 - type: entity
   parent: ClothingHeadBase
@@ -546,7 +548,7 @@
       Hair: HEAD
       HeadTop : HEAD
       HeadSide : HEAD
-
+  - type: ClothingSterility # Corvax-Wega-Surgery
 
 - type: entity
   parent: ClothingHeadBase

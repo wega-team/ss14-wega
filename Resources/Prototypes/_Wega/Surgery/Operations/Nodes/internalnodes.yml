@@ -1,0 +1,139 @@
+- type: surgeryNode
+  id: EndMuscleTearsOperation
+  description: Завершить
+  transitions:
+    - CompleteOperationTransition
+
+- type: surgeryNode
+  id: EndMuscleTearsTorsoOperation
+  description: Завершить
+  transitions:
+    - OrganManipulationTransition
+    - HealMuscleTearsTorsoTransition
+    - HealMildBurnsTorsoTransition
+    - HealClosedFractureTorsoTransition
+    - HealOpenFractureTorsoTransition
+    - HealArterialBleedingTorsoTransition
+    - HealDeepBurnsTorsoTransition
+    - HealBulletWoundTorsoTransition
+    - CloseTorsoTransition
+
+- type: surgeryNode
+  id: EndMildBurnsOperation
+  description: Завершить
+  transitions:
+    - CompleteOperationTransition
+
+- type: surgeryNode
+  id: EndMildBurnsTorsoOperation
+  description: Завершить
+  transitions:
+    - OrganManipulationTransition
+    - HealMuscleTearsTorsoTransition
+    - HealMildBurnsTorsoTransition
+    - HealClosedFractureTorsoTransition
+    - HealOpenFractureTorsoTransition
+    - HealArterialBleedingTorsoTransition
+    - HealDeepBurnsTorsoTransition
+    - HealBulletWoundTorsoTransition
+    - CloseTorsoTransition
+
+- type: surgeryNode
+  id: EndClosedFractureOperation
+  description: Завершить
+  transitions:
+    - CompleteOperationTransition
+
+- type: surgeryNode
+  id: EndClosedFractureTorsoOperation
+  description: Завершить
+  transitions:
+    - OrganManipulationTransition
+    - HealMuscleTearsTorsoTransition
+    - HealMildBurnsTorsoTransition
+    - HealClosedFractureTorsoTransition
+    - HealOpenFractureTorsoTransition
+    - HealArterialBleedingTorsoTransition
+    - HealDeepBurnsTorsoTransition
+    - HealBulletWoundTorsoTransition
+    - CloseTorsoTransition
+
+- type: surgeryNode
+  id: EndOpenFractureOperation
+  description: Завершить
+  transitions:
+    - CompleteOperationTransition
+
+- type: surgeryNode
+  id: EndOpenFractureTorsoOperation
+  description: Завершить
+  transitions:
+    - OrganManipulationTransition
+    - HealMuscleTearsTorsoTransition
+    - HealMildBurnsTorsoTransition
+    - HealClosedFractureTorsoTransition
+    - HealOpenFractureTorsoTransition
+    - HealArterialBleedingTorsoTransition
+    - HealDeepBurnsTorsoTransition
+    - HealBulletWoundTorsoTransition
+    - CloseTorsoTransition
+
+- type: surgeryNode
+  id: EndArterialBleedingOperation
+  description: Завершить
+  transitions:
+    - CompleteOperationTransition
+
+- type: surgeryNode
+  id: EndArterialBleedingTorsoOperation
+  description: Завершить
+  transitions:
+    - OrganManipulationTransition
+    - HealMuscleTearsTorsoTransition
+    - HealMildBurnsTorsoTransition
+    - HealClosedFractureTorsoTransition
+    - HealOpenFractureTorsoTransition
+    - HealArterialBleedingTorsoTransition
+    - HealDeepBurnsTorsoTransition
+    - HealBulletWoundTorsoTransition
+    - CloseTorsoTransition
+
+- type: surgeryNode
+  id: EndDeepBurnsOperation
+  description: Завершить
+  transitions:
+    - CompleteOperationTransition
+
+- type: surgeryNode
+  id: EndDeepBurnsTorsoOperation
+  description: Завершить
+  transitions:
+    - OrganManipulationTransition
+    - HealMuscleTearsTorsoTransition
+    - HealMildBurnsTorsoTransition
+    - HealClosedFractureTorsoTransition
+    - HealOpenFractureTorsoTransition
+    - HealArterialBleedingTorsoTransition
+    - HealDeepBurnsTorsoTransition
+    - HealBulletWoundTorsoTransition
+    - CloseTorsoTransition
+
+- type: surgeryNode
+  id: EndBulletWoundOperation
+  description: Завершить
+  transitions:
+    - CompleteOperationTransition
+
+- type: surgeryNode
+  id: EndBulletWoundTorsoOperation
+  description: Завершить
+  transitions:
+    - OrganManipulationTransition
+    - HealMuscleTearsTorsoTransition
+    - HealMildBurnsTorsoTransition
+    - HealClosedFractureTorsoTransition
+    - HealOpenFractureTorsoTransition
+    - HealArterialBleedingTorsoTransition
+    - HealDeepBurnsTorsoTransition
+    - HealBulletWoundTorsoTransition
+    - CloseTorsoTransition

@@ -1,0 +1,2568 @@
+#region MuscleTears
+- type: surgeryTransition
+  id: HealMuscleTearsTorsoTransition
+  target: EndMuscleTearsTorsoOperation
+  label: "Лечить физические травмы"
+  stepGroups:
+    - conditions:
+        - !type:InternalDamageCondition
+          damageType: MuscleTears
+          bodyPart: torso
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          requiredPart: torso
+          damageType: MuscleTears
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: HealMuscleTearsLeftArmTransition
+  target: EndMuscleTearsOperation
+  label: "Лечить физические травмы"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: left_arm
+        - !type:InternalDamageCondition
+          damageType: MuscleTears
+          bodyPart: left_arm
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          damageType: MuscleTears
+          requiredPart: left_arm
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: HealMuscleTearsRightArmTransition
+  target: EndMuscleTearsOperation
+  label: "Лечить физические травмы"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: right_arm
+        - !type:InternalDamageCondition
+          damageType: MuscleTears
+          bodyPart: right_arm
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          requiredPart: right_arm
+          damageType: MuscleTears
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: HealMuscleTearsLeftHandTransition
+  target: EndMuscleTearsOperation
+  label: "Лечить физические травмы"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: left_arm
+        - !type:BodyPartCondition
+          bodyPart: left_hand
+        - !type:InternalDamageCondition
+          damageType: MuscleTears
+          bodyPart: left_hand
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          requiredPart: left_hand
+          damageType: MuscleTears
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: HealMuscleTearsRightHandTransition
+  target: EndMuscleTearsOperation
+  label: "Лечить физические травмы"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: right_arm
+        - !type:BodyPartCondition
+          bodyPart: right_hand
+        - !type:InternalDamageCondition
+          damageType: MuscleTears
+          bodyPart: right_hand
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          requiredPart: right_hand
+          damageType: MuscleTears
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: HealMuscleTearsLeftLegTransition
+  target: EndMuscleTearsOperation
+  label: "Лечить физические травмы"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: left_leg
+        - !type:InternalDamageCondition
+          damageType: MuscleTears
+          bodyPart: left_leg
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          requiredPart: left_leg
+          damageType: MuscleTears
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: HealMuscleTearsRightLegTransition
+  target: EndMuscleTearsOperation
+  label: "Лечить физические травмы"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: right_leg
+        - !type:InternalDamageCondition
+          damageType: MuscleTears
+          bodyPart: right_leg
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          requiredPart: right_leg
+          damageType: MuscleTears
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: HealMuscleTearsLeftFootTransition
+  target: EndMuscleTearsOperation
+  label: "Лечить физические травмы"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: left_leg
+        - !type:BodyPartCondition
+          bodyPart: left_foot
+        - !type:InternalDamageCondition
+          damageType: MuscleTears
+          bodyPart: left_foot
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          requiredPart: left_foot
+          damageType: MuscleTears
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: HealMuscleTearsRightFootTransition
+  target: EndMuscleTearsOperation
+  label: "Лечить физические травмы"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: right_leg
+        - !type:BodyPartCondition
+          bodyPart: right_foot
+        - !type:InternalDamageCondition
+          damageType: MuscleTears
+          bodyPart: right_foot
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          requiredPart: right_foot
+          damageType: MuscleTears
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+
+#region MildBurns
+- type: surgeryTransition
+  id: HealMildBurnsTorsoTransition
+  target: EndMildBurnsTorsoOperation
+  label: "Лечить легкие ожоги"
+  stepGroups:
+    - conditions:
+        - !type:InternalDamageCondition
+          damageType: MildBurns
+          bodyPart: torso
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          requiredPart: torso
+          damageType: MildBurns
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: HealMildBurnsLeftArmTransition
+  target: EndMildBurnsOperation
+  label: "Лечить легкие ожоги"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: left_arm
+        - !type:InternalDamageCondition
+          damageType: MildBurns
+          bodyPart: left_arm
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          damageType: MildBurns
+          requiredPart: left_arm
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: HealMildBurnsRightArmTransition
+  target: EndMildBurnsOperation
+  label: "Лечить легкие ожоги"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: right_arm
+        - !type:InternalDamageCondition
+          damageType: MildBurns
+          bodyPart: right_arm
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          requiredPart: right_arm
+          damageType: MildBurns
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: HealMildBurnsLeftHandTransition
+  target: EndMildBurnsOperation
+  label: "Лечить легкие ожоги"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: left_arm
+        - !type:BodyPartCondition
+          bodyPart: left_hand
+        - !type:InternalDamageCondition
+          damageType: MildBurns
+          bodyPart: left_hand
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          requiredPart: left_hand
+          damageType: MildBurns
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: HealMildBurnsRightHandTransition
+  target: EndMildBurnsOperation
+  label: "Лечить легкие ожоги"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: right_arm
+        - !type:BodyPartCondition
+          bodyPart: right_hand
+        - !type:InternalDamageCondition
+          damageType: MildBurns
+          bodyPart: right_hand
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          requiredPart: right_hand
+          damageType: MildBurns
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: HealMildBurnsLeftLegTransition
+  target: EndMildBurnsOperation
+  label: "Лечить легкие ожоги"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: left_leg
+        - !type:InternalDamageCondition
+          damageType: MildBurns
+          bodyPart: left_leg
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          requiredPart: left_leg
+          damageType: MildBurns
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: HealMildBurnsRightLegTransition
+  target: EndMildBurnsOperation
+  label: "Лечить легкие ожоги"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: right_leg
+        - !type:InternalDamageCondition
+          damageType: MildBurns
+          bodyPart: right_leg
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          requiredPart: right_leg
+          damageType: MildBurns
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: HealMildBurnsLeftFootTransition
+  target: EndMildBurnsOperation
+  label: "Лечить легкие ожоги"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: left_leg
+        - !type:BodyPartCondition
+          bodyPart: left_foot
+        - !type:InternalDamageCondition
+          damageType: MildBurns
+          bodyPart: left_foot
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          requiredPart: left_foot
+          damageType: MildBurns
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: HealMildBurnsRightFootTransition
+  target: EndMildBurnsOperation
+  label: "Лечить легкие ожоги"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: right_leg
+        - !type:BodyPartCondition
+          bodyPart: right_foot
+        - !type:InternalDamageCondition
+          damageType: MildBurns
+          bodyPart: right_foot
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          requiredPart: right_foot
+          damageType: MildBurns
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+
+#region ClosedFracture
+- type: surgeryTransition
+  id: HealClosedFractureTorsoTransition
+  target: EndClosedFractureTorsoOperation
+  label: "Исправить внутренний перелом"
+  stepGroups:
+    - conditions:
+        - !type:InternalDamageCondition
+          damageType: ClosedFracture
+          bodyPart: torso
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ BoneGel ]
+          tag: [ Screwdriver ]
+          action: Empty
+          time: 6
+        - tool: [ BoneSetter ]
+          tag: [ Wrench ]
+          action: Empty
+          failureEffect: [ Fracture, Pain ]
+          time: 8
+        - tool: [ BoneGel ]
+          tag: [ Screwdriver ]
+          requiredPart: torso
+          damageType: ClosedFracture
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: HealClosedFractureLeftArmTransition
+  target: EndClosedFractureOperation
+  label: "Исправить внутренний перелом"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: left_arm
+        - !type:InternalDamageCondition
+          damageType: ClosedFracture
+          bodyPart: left_arm
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ BoneGel ]
+          tag: [ Screwdriver ]
+          action: Empty
+          time: 6
+        - tool: [ BoneSetter ]
+          tag: [ Wrench ]
+          action: Empty
+          failureEffect: [ Fracture, Pain ]
+          time: 8
+        - tool: [ BoneGel ]
+          tag: [ Screwdriver ]
+          damageType: ClosedFracture
+          requiredPart: left_arm
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: HealClosedFractureRightArmTransition
+  target: EndClosedFractureOperation
+  label: "Исправить внутренний перелом"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: right_arm
+        - !type:InternalDamageCondition
+          damageType: ClosedFracture
+          bodyPart: right_arm
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ BoneGel ]
+          tag: [ Screwdriver ]
+          action: Empty
+          time: 6
+        - tool: [ BoneSetter ]
+          tag: [ Wrench ]
+          action: Empty
+          failureEffect: [ Fracture, Pain ]
+          time: 8
+        - tool: [ BoneGel ]
+          tag: [ Screwdriver ]
+          requiredPart: right_arm
+          damageType: ClosedFracture
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: HealClosedFractureLeftHandTransition
+  target: EndClosedFractureOperation
+  label: "Исправить внутренний перелом"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: left_arm
+        - !type:BodyPartCondition
+          bodyPart: left_hand
+        - !type:InternalDamageCondition
+          damageType: ClosedFracture
+          bodyPart: left_hand
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ BoneGel ]
+          tag: [ Screwdriver ]
+          action: Empty
+          time: 6
+        - tool: [ BoneSetter ]
+          tag: [ Wrench ]
+          action: Empty
+          failureEffect: [ Fracture, Pain ]
+          time: 8
+        - tool: [ BoneGel ]
+          tag: [ Screwdriver ]
+          requiredPart: left_hand
+          damageType: ClosedFracture
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: HealClosedFractureRightHandTransition
+  target: EndClosedFractureOperation
+  label: "Исправить внутренний перелом"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: right_arm
+        - !type:BodyPartCondition
+          bodyPart: right_hand
+        - !type:InternalDamageCondition
+          damageType: ClosedFracture
+          bodyPart: right_hand
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ BoneGel ]
+          tag: [ Screwdriver ]
+          action: Empty
+          time: 6
+        - tool: [ BoneSetter ]
+          tag: [ Wrench ]
+          action: Empty
+          failureEffect: [ Fracture, Pain ]
+          time: 8
+        - tool: [ BoneGel ]
+          tag: [ Screwdriver ]
+          requiredPart: right_hand
+          damageType: ClosedFracture
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: HealClosedFractureLeftLegTransition
+  target: EndClosedFractureOperation
+  label: "Исправить внутренний перелом"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: left_leg
+        - !type:InternalDamageCondition
+          damageType: ClosedFracture
+          bodyPart: left_leg
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ BoneGel ]
+          tag: [ Screwdriver ]
+          action: Empty
+          time: 6
+        - tool: [ BoneSetter ]
+          tag: [ Wrench ]
+          action: Empty
+          failureEffect: [ Fracture, Pain ]
+          time: 8
+        - tool: [ BoneGel ]
+          tag: [ Screwdriver ]
+          requiredPart: left_leg
+          damageType: ClosedFracture
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: HealClosedFractureRightLegTransition
+  target: EndClosedFractureOperation
+  label: "Исправить внутренний перелом"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: right_leg
+        - !type:InternalDamageCondition
+          damageType: ClosedFracture
+          bodyPart: right_leg
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ BoneGel ]
+          tag: [ Screwdriver ]
+          action: Empty
+          time: 6
+        - tool: [ BoneSetter ]
+          tag: [ Wrench ]
+          action: Empty
+          failureEffect: [ Fracture, Pain ]
+          time: 8
+        - tool: [ BoneGel ]
+          tag: [ Screwdriver ]
+          requiredPart: right_leg
+          damageType: ClosedFracture
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: HealClosedFractureLeftFootTransition
+  target: EndClosedFractureOperation
+  label: "Исправить внутренний перелом"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: left_leg
+        - !type:BodyPartCondition
+          bodyPart: left_foot
+        - !type:InternalDamageCondition
+          damageType: ClosedFracture
+          bodyPart: left_foot
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ BoneGel ]
+          tag: [ Screwdriver ]
+          action: Empty
+          time: 6
+        - tool: [ BoneSetter ]
+          tag: [ Wrench ]
+          action: Empty
+          failureEffect: [ Fracture, Pain ]
+          time: 8
+        - tool: [ BoneGel ]
+          tag: [ Screwdriver ]
+          requiredPart: left_foot
+          damageType: ClosedFracture
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: HealClosedFractureRightFootTransition
+  target: EndClosedFractureOperation
+  label: "Исправить внутренний перелом"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: right_leg
+        - !type:BodyPartCondition
+          bodyPart: right_foot
+        - !type:InternalDamageCondition
+          damageType: ClosedFracture
+          bodyPart: right_foot
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ BoneGel ]
+          tag: [ Screwdriver ]
+          action: Empty
+          time: 6
+        - tool: [ BoneSetter ]
+          tag: [ Wrench ]
+          action: Empty
+          failureEffect: [ Fracture, Pain ]
+          time: 8
+        - tool: [ BoneGel ]
+          tag: [ Screwdriver ]
+          requiredPart: right_foot
+          damageType: ClosedFracture
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+
+#region OpenFracture
+- type: surgeryTransition
+  id: HealOpenFractureTorsoTransition
+  target: EndOpenFractureTorsoOperation
+  label: "Исправить открытый перелом"
+  stepGroups:
+    - conditions:
+        - !type:InternalDamageCondition
+          damageType: OpenFracture
+          bodyPart: torso
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ BoneGel ]
+          tag: [ Screwdriver ]
+          action: Empty
+          time: 6
+        - tool: [ BoneSetter ]
+          tag: [ Wrench ]
+          action: Empty
+          failureEffect: [ Fracture, Pain ]
+          time: 8
+        - tool: [ BoneGel ]
+          tag: [ Screwdriver ]
+          requiredPart: torso
+          damageType: OpenFracture
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: HealOpenFractureLeftArmTransition
+  target: EndOpenFractureOperation
+  label: "Исправить открытый перелом"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: left_arm
+        - !type:InternalDamageCondition
+          damageType: OpenFracture
+          bodyPart: left_arm
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ BoneGel ]
+          tag: [ Screwdriver ]
+          action: Empty
+          time: 6
+        - tool: [ BoneSetter ]
+          tag: [ Wrench ]
+          action: Empty
+          failureEffect: [ Fracture, Pain ]
+          time: 8
+        - tool: [ BoneGel ]
+          tag: [ Screwdriver ]
+          damageType: OpenFracture
+          requiredPart: left_arm
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: HealOpenFractureRightArmTransition
+  target: EndOpenFractureOperation
+  label: "Исправить открытый перелом"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: right_arm
+        - !type:InternalDamageCondition
+          damageType: OpenFracture
+          bodyPart: right_arm
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ BoneGel ]
+          tag: [ Screwdriver ]
+          action: Empty
+          time: 6
+        - tool: [ BoneSetter ]
+          tag: [ Wrench ]
+          action: Empty
+          failureEffect: [ Fracture, Pain ]
+          time: 8
+        - tool: [ BoneGel ]
+          tag: [ Screwdriver ]
+          requiredPart: right_arm
+          damageType: OpenFracture
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: HealOpenFractureLeftHandTransition
+  target: EndOpenFractureOperation
+  label: "Исправить открытый перелом"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: left_arm
+        - !type:BodyPartCondition
+          bodyPart: left_hand
+        - !type:InternalDamageCondition
+          damageType: OpenFracture
+          bodyPart: left_hand
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ BoneGel ]
+          tag: [ Screwdriver ]
+          action: Empty
+          time: 6
+        - tool: [ BoneSetter ]
+          tag: [ Wrench ]
+          action: Empty
+          failureEffect: [ Fracture, Pain ]
+          time: 8
+        - tool: [ BoneGel ]
+          tag: [ Screwdriver ]
+          requiredPart: left_hand
+          damageType: OpenFracture
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: HealOpenFractureRightHandTransition
+  target: EndOpenFractureOperation
+  label: "Исправить открытый перелом"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: right_arm
+        - !type:BodyPartCondition
+          bodyPart: right_hand
+        - !type:InternalDamageCondition
+          damageType: OpenFracture
+          bodyPart: right_hand
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ BoneGel ]
+          tag: [ Screwdriver ]
+          action: Empty
+          time: 6
+        - tool: [ BoneSetter ]
+          tag: [ Wrench ]
+          action: Empty
+          failureEffect: [ Fracture, Pain ]
+          time: 8
+        - tool: [ BoneGel ]
+          tag: [ Screwdriver ]
+          requiredPart: right_hand
+          damageType: OpenFracture
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: HealOpenFractureLeftLegTransition
+  target: EndOpenFractureOperation
+  label: "Исправить открытый перелом"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: left_leg
+        - !type:InternalDamageCondition
+          damageType: OpenFracture
+          bodyPart: left_leg
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ BoneGel ]
+          tag: [ Screwdriver ]
+          action: Empty
+          time: 6
+        - tool: [ BoneSetter ]
+          tag: [ Wrench ]
+          action: Empty
+          failureEffect: [ Fracture, Pain ]
+          time: 8
+        - tool: [ BoneGel ]
+          tag: [ Screwdriver ]
+          requiredPart: left_leg
+          damageType: OpenFracture
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: HealOpenFractureRightLegTransition
+  target: EndOpenFractureOperation
+  label: "Исправить открытый перелом"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: right_leg
+        - !type:InternalDamageCondition
+          damageType: OpenFracture
+          bodyPart: right_leg
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ BoneGel ]
+          tag: [ Screwdriver ]
+          action: Empty
+          time: 6
+        - tool: [ BoneSetter ]
+          tag: [ Wrench ]
+          action: Empty
+          failureEffect: [ Fracture, Pain ]
+          time: 8
+        - tool: [ BoneGel ]
+          tag: [ Screwdriver ]
+          requiredPart: right_leg
+          damageType: OpenFracture
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: HealOpenFractureLeftFootTransition
+  target: EndOpenFractureOperation
+  label: "Исправить открытый перелом"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: left_leg
+        - !type:BodyPartCondition
+          bodyPart: left_foot
+        - !type:InternalDamageCondition
+          damageType: OpenFracture
+          bodyPart: left_foot
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ BoneGel ]
+          tag: [ Screwdriver ]
+          action: Empty
+          time: 6
+        - tool: [ BoneSetter ]
+          tag: [ Wrench ]
+          action: Empty
+          failureEffect: [ Fracture, Pain ]
+          time: 8
+        - tool: [ BoneGel ]
+          tag: [ Screwdriver ]
+          requiredPart: left_foot
+          damageType: OpenFracture
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: HealOpenFractureRightFootTransition
+  target: EndOpenFractureOperation
+  label: "Исправить открытый перелом"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: right_leg
+        - !type:BodyPartCondition
+          bodyPart: right_foot
+        - !type:InternalDamageCondition
+          damageType: OpenFracture
+          bodyPart: right_foot
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ BoneGel ]
+          tag: [ Screwdriver ]
+          action: Empty
+          time: 6
+        - tool: [ BoneSetter ]
+          tag: [ Wrench ]
+          action: Empty
+          failureEffect: [ Fracture, Pain ]
+          time: 8
+        - tool: [ BoneGel ]
+          tag: [ Screwdriver ]
+          requiredPart: right_foot
+          damageType: OpenFracture
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+
+#region ArterialBleeding
+- type: surgeryTransition
+  id: HealArterialBleedingTorsoTransition
+  target: EndArterialBleedingTorsoOperation
+  label: "Остановить артериальное кровотечение"
+  stepGroups:
+    - conditions:
+        - !type:InternalDamageCondition
+          damageType: ArterialBleeding
+          bodyPart: torso
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ FixOVein ]
+          tag: [ CableCoil ]
+          requiredPart: torso
+          damageType: ArterialBleeding
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 2
+
+- type: surgeryTransition
+  id: HealArterialBleedingLeftArmTransition
+  target: EndArterialBleedingOperation
+  label: "Остановить артериальное кровотечение"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: left_arm
+        - !type:InternalDamageCondition
+          damageType: ArterialBleeding
+          bodyPart: left_arm
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ FixOVein ]
+          tag: [ CableCoil ]
+          requiredPart: left_arm
+          damageType: ArterialBleeding
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 2
+
+- type: surgeryTransition
+  id: HealArterialBleedingRightArmTransition
+  target: EndArterialBleedingOperation
+  label: "Остановить артериальное кровотечение"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: right_arm
+        - !type:InternalDamageCondition
+          damageType: ArterialBleeding
+          bodyPart: right_arm
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ FixOVein ]
+          tag: [ CableCoil ]
+          requiredPart: right_arm
+          damageType: ArterialBleeding
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 2
+
+- type: surgeryTransition
+  id: HealArterialBleedingLeftHandTransition
+  target: EndArterialBleedingOperation
+  label: "Остановить артериальное кровотечение"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: left_arm
+        - !type:BodyPartCondition
+          bodyPart: left_hand
+        - !type:InternalDamageCondition
+          damageType: ArterialBleeding
+          bodyPart: left_hand
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ FixOVein ]
+          tag: [ CableCoil ]
+          requiredPart: left_hand
+          damageType: ArterialBleeding
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 2
+
+- type: surgeryTransition
+  id: HealArterialBleedingRightHandTransition
+  target: EndArterialBleedingOperation
+  label: "Остановить артериальное кровотечение"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: right_arm
+        - !type:BodyPartCondition
+          bodyPart: right_hand
+        - !type:InternalDamageCondition
+          damageType: ArterialBleeding
+          bodyPart: right_hand
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ FixOVein ]
+          tag: [ CableCoil ]
+          requiredPart: right_hand
+          damageType: ArterialBleeding
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 2
+
+- type: surgeryTransition
+  id: HealArterialBleedingLeftLegTransition
+  target: EndArterialBleedingOperation
+  label: "Остановить артериальное кровотечение"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: left_leg
+        - !type:InternalDamageCondition
+          damageType: ArterialBleeding
+          bodyPart: left_leg
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ FixOVein ]
+          tag: [ CableCoil ]
+          requiredPart: left_leg
+          damageType: ArterialBleeding
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 2
+
+- type: surgeryTransition
+  id: HealArterialBleedingRightLegTransition
+  target: EndArterialBleedingOperation
+  label: "Остановить артериальное кровотечение"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: right_leg
+        - !type:InternalDamageCondition
+          damageType: ArterialBleeding
+          bodyPart: right_leg
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ FixOVein ]
+          tag: [ CableCoil ]
+          requiredPart: right_leg
+          damageType: ArterialBleeding
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 2
+
+- type: surgeryTransition
+  id: HealArterialBleedingLeftFootTransition
+  target: EndArterialBleedingOperation
+  label: "Остановить артериальное кровотечение"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: left_leg
+        - !type:BodyPartCondition
+          bodyPart: left_foot
+        - !type:InternalDamageCondition
+          damageType: ArterialBleeding
+          bodyPart: left_foot
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ FixOVein ]
+          tag: [ CableCoil ]
+          requiredPart: left_foot
+          damageType: ArterialBleeding
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 2
+
+- type: surgeryTransition
+  id: HealArterialBleedingRightFootTransition
+  target: EndArterialBleedingOperation
+  label: "Остановить артериальное кровотечение"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: right_leg
+        - !type:BodyPartCondition
+          bodyPart: right_foot
+        - !type:InternalDamageCondition
+          damageType: ArterialBleeding
+          bodyPart: right_foot
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ FixOVein ]
+          tag: [ CableCoil ]
+          requiredPart: right_foot
+          damageType: ArterialBleeding
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 2
+
+#region DeepBurns
+- type: surgeryTransition
+  id: HealDeepBurnsTorsoTransition
+  target: EndDeepBurnsTorsoOperation
+  label: "Лечить тяжелые ожоги"
+  stepGroups:
+    - conditions:
+        - !type:InternalDamageCondition
+          damageType: DeepBurns
+          bodyPart: torso
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tag: [ Ointment ]
+          requiredPart: torso
+          damageType: DeepBurns
+          action: HealInternalDamage
+          sound:
+            path: /Audio/Items/Medical/ointment_end.ogg
+          time: 8
+
+- type: surgeryTransition
+  id: HealDeepBurnsLeftArmTransition
+  target: EndDeepBurnsOperation
+  label: "Лечить тяжелые ожоги"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: left_arm
+        - !type:InternalDamageCondition
+          damageType: DeepBurns
+          bodyPart: left_arm
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tag: [ Ointment ]
+          damageType: DeepBurns
+          requiredPart: left_arm
+          action: HealInternalDamage
+          sound:
+            path: /Audio/Items/Medical/ointment_end.ogg
+          time: 8
+
+- type: surgeryTransition
+  id: HealDeepBurnsRightArmTransition
+  target: EndDeepBurnsOperation
+  label: "Лечить тяжелые ожоги"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: right_arm
+        - !type:InternalDamageCondition
+          damageType: DeepBurns
+          bodyPart: right_arm
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tag: [ Ointment ]
+          requiredPart: right_arm
+          damageType: DeepBurns
+          action: HealInternalDamage
+          sound:
+            path: /Audio/Items/Medical/ointment_end.ogg
+          time: 8
+
+- type: surgeryTransition
+  id: HealDeepBurnsLeftHandTransition
+  target: EndDeepBurnsOperation
+  label: "Лечить тяжелые ожоги"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: left_arm
+        - !type:BodyPartCondition
+          bodyPart: left_hand
+        - !type:InternalDamageCondition
+          damageType: DeepBurns
+          bodyPart: left_hand
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tag: [ Ointment ]
+          requiredPart: left_hand
+          damageType: DeepBurns
+          action: HealInternalDamage
+          sound:
+            path: /Audio/Items/Medical/ointment_end.ogg
+          time: 8
+
+- type: surgeryTransition
+  id: HealDeepBurnsRightHandTransition
+  target: EndDeepBurnsOperation
+  label: "Лечить тяжелые ожоги"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: right_arm
+        - !type:BodyPartCondition
+          bodyPart: right_hand
+        - !type:InternalDamageCondition
+          damageType: DeepBurns
+          bodyPart: right_hand
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tag: [ Ointment ]
+          requiredPart: right_hand
+          damageType: DeepBurns
+          action: HealInternalDamage
+          sound:
+            path: /Audio/Items/Medical/ointment_end.ogg
+          time: 8
+
+- type: surgeryTransition
+  id: HealDeepBurnsLeftLegTransition
+  target: EndDeepBurnsOperation
+  label: "Лечить тяжелые ожоги"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: left_leg
+        - !type:InternalDamageCondition
+          damageType: DeepBurns
+          bodyPart: left_leg
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tag: [ Ointment ]
+          requiredPart: left_leg
+          damageType: DeepBurns
+          action: HealInternalDamage
+          sound:
+            path: /Audio/Items/Medical/ointment_end.ogg
+          time: 8
+
+- type: surgeryTransition
+  id: HealDeepBurnsRightLegTransition
+  target: EndDeepBurnsOperation
+  label: "Лечить тяжелые ожоги"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: right_leg
+        - !type:InternalDamageCondition
+          damageType: DeepBurns
+          bodyPart: right_leg
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tag: [ Ointment ]
+          requiredPart: right_leg
+          damageType: DeepBurns
+          action: HealInternalDamage
+          sound:
+            path: /Audio/Items/Medical/ointment_end.ogg
+          time: 8
+
+- type: surgeryTransition
+  id: HealDeepBurnsLeftFootTransition
+  target: EndDeepBurnsOperation
+  label: "Лечить тяжелые ожоги"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: left_leg
+        - !type:BodyPartCondition
+          bodyPart: left_foot
+        - !type:InternalDamageCondition
+          damageType: DeepBurns
+          bodyPart: left_foot
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tag: [ Ointment ]
+          requiredPart: left_foot
+          damageType: DeepBurns
+          action: HealInternalDamage
+          sound:
+            path: /Audio/Items/Medical/ointment_end.ogg
+          time: 8
+
+- type: surgeryTransition
+  id: HealDeepBurnsRightFootTransition
+  target: EndDeepBurnsOperation
+  label: "Лечить тяжелые ожоги"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: right_leg
+        - !type:BodyPartCondition
+          bodyPart: right_foot
+        - !type:InternalDamageCondition
+          damageType: DeepBurns
+          bodyPart: right_foot
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tag: [ Ointment ]
+          requiredPart: right_foot
+          damageType: DeepBurns
+          action: HealInternalDamage
+          sound:
+            path: /Audio/Items/Medical/ointment_end.ogg
+          time: 8
+
+#region BulletWound
+- type: surgeryTransition
+  id: HealBulletWoundTorsoTransition
+  target: EndBulletWoundTorsoOperation
+  label: "Извлечь инородное тело"
+  stepGroups:
+    - conditions:
+        - !type:InternalDamageCondition
+          damageType: BulletWound
+          bodyPart: torso
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          requiredPart: torso
+          damageType: BulletWound
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: HealBulletWoundLeftArmTransition
+  target: EndBulletWoundOperation
+  label: "Извлечь инородное тело"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: left_arm
+        - !type:InternalDamageCondition
+          damageType: BulletWound
+          bodyPart: left_arm
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          damageType: BulletWound
+          requiredPart: left_arm
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: HealBulletWoundRightArmTransition
+  target: EndBulletWoundOperation
+  label: "Извлечь инородное тело"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: right_arm
+        - !type:InternalDamageCondition
+          damageType: BulletWound
+          bodyPart: right_arm
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          requiredPart: right_arm
+          damageType: BulletWound
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: HealBulletWoundLeftHandTransition
+  target: EndBulletWoundOperation
+  label: "Извлечь инородное тело"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: left_arm
+        - !type:BodyPartCondition
+          bodyPart: left_hand
+        - !type:InternalDamageCondition
+          damageType: BulletWound
+          bodyPart: left_hand
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          requiredPart: left_hand
+          damageType: BulletWound
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: HealBulletWoundRightHandTransition
+  target: EndBulletWoundOperation
+  label: "Извлечь инородное тело"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: right_arm
+        - !type:BodyPartCondition
+          bodyPart: right_hand
+        - !type:InternalDamageCondition
+          damageType: BulletWound
+          bodyPart: right_hand
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          requiredPart: right_hand
+          damageType: BulletWound
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: HealBulletWoundLeftLegTransition
+  target: EndBulletWoundOperation
+  label: "Извлечь инородное тело"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: left_leg
+        - !type:InternalDamageCondition
+          damageType: BulletWound
+          bodyPart: left_leg
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          requiredPart: left_leg
+          damageType: BulletWound
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: HealBulletWoundRightLegTransition
+  target: EndBulletWoundOperation
+  label: "Извлечь инородное тело"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: right_leg
+        - !type:InternalDamageCondition
+          damageType: BulletWound
+          bodyPart: right_leg
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          requiredPart: right_leg
+          damageType: BulletWound
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: HealBulletWoundLeftFootTransition
+  target: EndBulletWoundOperation
+  label: "Извлечь инородное тело"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: left_leg
+        - !type:BodyPartCondition
+          bodyPart: left_foot
+        - !type:InternalDamageCondition
+          damageType: BulletWound
+          bodyPart: left_foot
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          requiredPart: left_foot
+          damageType: BulletWound
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: HealBulletWoundRightFootTransition
+  target: EndBulletWoundOperation
+  label: "Извлечь инородное тело"
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: right_leg
+        - !type:BodyPartCondition
+          bodyPart: right_foot
+        - !type:InternalDamageCondition
+          damageType: BulletWound
+          bodyPart: right_foot
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          requiredPart: right_foot
+          damageType: BulletWound
+          action: HealInternalDamage
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 5
+          successChance: 0.95

@@ -1,6 +1,6 @@
 using System.Threading;
 
-namespace Content.Server.Carrying
+namespace Content.Shared.Carrying
 {
     [RegisterComponent]
     public sealed partial class CarriableComponent : Component

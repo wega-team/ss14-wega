@@ -1,0 +1,84 @@
+### Физические травмы тканей ###
+- type: internalDamage
+  id: MuscleTears
+  name: surgery-muscle-tears
+  category: PhysicalTrauma
+  blacklistPart:
+    - head
+  supportedTypes:
+    - Blunt
+    - Slash
+  chance: 0.12
+
+### Ожоги 1-2 степени ###
+- type: internalDamage
+  id: MildBurns
+  name: surgery-mild-burns
+  category: Burns
+  blacklistPart:
+    - head
+  supportedTypes:
+    - Heat
+    - Shock
+  chance: 0.18
+
+### Закрытые переломы ###
+- type: internalDamage
+  id: ClosedFracture
+  name: surgery-closed-fracture
+  category: Fractures
+  blacklistPart:
+    - head
+  blacklistSpecies:
+    - SlimePerson
+  supportedTypes:
+    - Blunt
+  chance: 0.08
+
+### Открытые переломы ###
+- type: internalDamage
+  id: OpenFracture
+  name: surgery-open-fracture
+  category: Fractures
+  blacklistPart:
+    - head
+  blacklistSpecies:
+    - SlimePerson
+  supportedTypes:
+    - Blunt
+  bodyVisuals: surgery-open-fracture-visuals
+  chance: 0.04
+
+### Внутренние кровотечения ###
+- type: internalDamage
+  id: ArterialBleeding
+  name: surgery-arterial-bleeding
+  category: InternalBleeding
+  blacklistPart:
+    - head
+  blacklistSpecies:
+    - SlimePerson
+  supportedTypes:
+    - Piercing
+  chance: 0.1
+
+### Глубокие ожоги 3-4 степени ###
+- type: internalDamage
+  id: DeepBurns
+  name: surgery-deep-burns
+  category: CriticalBurns
+  supportedTypes:
+    - Heat
+    - Shock
+  chance: 0.025
+
+### Пулевые ранения ###
+- type: internalDamage
+  id: BulletWound
+  name: surgery-bullet-wound
+  category: ForeignObjects
+  blacklistPart:
+    - head
+  supportedTypes:
+    - Piercing
+  chance: 0.15

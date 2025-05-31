@@ -1,0 +1,35 @@
+<controls:FancyWindow
+    xmlns="https://spacestation14.io"
+    xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+    xmlns:customControls="clr-namespace:Content.Client.Administration.UI.CustomControls"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="{Loc 'body-scanner-title'}"
+    MinSize="600 400">
+    
+    <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">        
+        <BoxContainer Orientation="Vertical" Margin="10" VerticalExpand="False">
+            <BoxContainer Orientation="Horizontal">
+                <Label Text="{Loc 'body-scanner-patient-name'}" MinWidth="120"/>
+                <Label Name="PatientNameLabel" Text="N/A"/>
+            </BoxContainer>
+            <BoxContainer Orientation="Horizontal">
+                <Label Text="{Loc 'body-scanner-patient-status'}" MinWidth="120"/>
+                <Label Name="PatientStatusLabel" Text="N/A"/>
+            </BoxContainer>
+        </BoxContainer>
+
+        <BoxContainer Orientation="Horizontal" Margin="10" VerticalExpand="False">
+            <Label Name="ConnectionStatusLabel" Text="{Loc 'body-scanner-disconnected'}" FontColorOverride="#FF0000"/>
+        </BoxContainer>
+        
+        <customControls:HSeparator StyleClasses="LowDivider"/>
+        
+        <ScrollContainer VerticalExpand="True" Margin="10">
+            <BoxContainer Orientation="Vertical" HorizontalExpand="True">
+                <Label Text="{Loc 'body-scanner-damages-header'}" StyleClasses="LabelBig"/>
+                
+                <BoxContainer Name="DamagesContainer" Orientation="Vertical" HorizontalExpand="True"/>
+            </BoxContainer>
+        </ScrollContainer>
+    </BoxContainer>
+</controls:FancyWindow>
