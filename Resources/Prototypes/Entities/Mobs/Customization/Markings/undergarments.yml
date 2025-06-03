@@ -5,6 +5,7 @@
   id: UndergarmentBottomBoxers
   bodyPart: UndergarmentBottom
   markingCategory: UndergarmentBottom
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Arachnid, Diona, Human, Dwarf, Moth, SlimePerson]
   coloring:
     default:
@@ -18,6 +19,7 @@
   id: UndergarmentBottomBriefs
   bodyPart: UndergarmentBottom
   markingCategory: UndergarmentBottom
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Arachnid, Diona, Human, Dwarf, Moth, SlimePerson]
   coloring:
     default:
@@ -31,6 +33,7 @@
   id: UndergarmentBottomSatin
   bodyPart: UndergarmentBottom
   markingCategory: UndergarmentBottom
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Arachnid, Diona, Human, Dwarf, Moth, SlimePerson]
   coloring:
     default:
@@ -44,6 +47,7 @@
   id: UndergarmentTopBra
   bodyPart: UndergarmentTop
   markingCategory: UndergarmentTop
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Arachnid, Diona, Human, Dwarf, Moth, Reptilian, SlimePerson]
   coloring:
     default:
@@ -57,6 +61,7 @@
   id: UndergarmentTopSportsbra
   bodyPart: UndergarmentTop
   markingCategory: UndergarmentTop
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Arachnid, Diona, Human, Dwarf, Moth, Reptilian, SlimePerson]
   coloring:
     default:
@@ -70,6 +75,7 @@
   id: UndergarmentTopBinder
   bodyPart: UndergarmentTop
   markingCategory: UndergarmentTop
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Arachnid, Diona, Human, Dwarf, Moth, Reptilian, SlimePerson]
   coloring:
     default:
@@ -83,6 +89,7 @@
   id: UndergarmentTopTanktop
   bodyPart: UndergarmentTop
   markingCategory: UndergarmentTop
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Arachnid, Diona, Human, Dwarf, Moth, Reptilian, SlimePerson]
   coloring:
     default:
@@ -96,6 +103,7 @@
   id: UndergarmentBottomBoxersVox # Voxers.
   bodyPart: UndergarmentBottom
   markingCategory: UndergarmentBottom
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Vox]
   coloring:
     default:
@@ -109,6 +117,7 @@
   id: UndergarmentBottomBriefsVox
   bodyPart: UndergarmentBottom
   markingCategory: UndergarmentBottom
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Vox]
   coloring:
     default:
@@ -122,6 +131,7 @@
   id: UndergarmentBottomSatinVox
   bodyPart: UndergarmentBottom
   markingCategory: UndergarmentBottom
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Vox]
   coloring:
     default:
@@ -135,6 +145,7 @@
   id: UndergarmentTopBraVox
   bodyPart: UndergarmentTop
   markingCategory: UndergarmentTop
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Vox]
   coloring:
     default:
@@ -148,6 +159,7 @@
   id: UndergarmentTopSportsbraVox
   bodyPart: UndergarmentTop
   markingCategory: UndergarmentTop
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Vox]
   coloring:
     default:
@@ -161,6 +173,7 @@
   id: UndergarmentTopBinderVox
   bodyPart: UndergarmentTop
   markingCategory: UndergarmentTop
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Vox]
   coloring:
     default:
@@ -174,6 +187,7 @@
   id: UndergarmentTopTanktopVox
   bodyPart: UndergarmentTop
   markingCategory: UndergarmentTop
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Vox]
   coloring:
     default:
@@ -187,6 +201,7 @@
   id: UndergarmentBottomBoxersReptilian
   bodyPart: UndergarmentBottom
   markingCategory: UndergarmentBottom
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Reptilian]
   coloring:
     default:
@@ -200,6 +215,7 @@
   id: UndergarmentBottomBriefsReptilian
   bodyPart: UndergarmentBottom
   markingCategory: UndergarmentBottom
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Reptilian]
   coloring:
     default:
@@ -213,6 +229,7 @@
   id: UndergarmentBottomSatinReptilian
   bodyPart: UndergarmentBottom
   markingCategory: UndergarmentBottom
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Reptilian]
   coloring:
     default:

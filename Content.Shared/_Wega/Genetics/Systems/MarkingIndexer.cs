@@ -44,6 +44,9 @@ namespace Content.Shared.Genetics.Systems
             var allMarkingPrototypes = _prototypeManager.EnumeratePrototypes<MarkingPrototype>();
             foreach (var markingPrototype in allMarkingPrototypes)
             {
+                if (markingPrototype.MarkingType is MarkingTypes.NonGenetics)
+                    continue;
+
                 var markingPrototypeInfo = new MarkingPrototypeInfo
                 {
                     MarkingPrototypeId = markingPrototype.ID,
@@ -58,9 +61,7 @@ namespace Content.Shared.Genetics.Systems
         }
 
         private string[] GenerateHexValueForMarking()
-        {
-            return new[] { $"{_random.Next(0, 16):X1}", $"{_random.Next(0, 16):X1}", $"{_random.Next(0, 16):X1}" };
-        }
+            => new[] { $"{_random.Next(0, 16):X1}", $"{_random.Next(0, 16):X1}", $"{_random.Next(0, 16):X1}" };
 
         private string GetPossibleSpeciesForMarking(MarkingPrototype markingPrototype)
         {

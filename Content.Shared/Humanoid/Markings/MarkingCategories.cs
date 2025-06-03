@@ -21,6 +21,15 @@ namespace Content.Shared.Humanoid.Markings
         Overlay
     }
 
+    // Corvax-Wega-Genetics-start
+    [Serializable, NetSerializable]
+    public enum MarkingTypes : byte
+    {
+        Base,
+        NonGenetics
+    }
+    // Corvax-Wega-Genetics-end
+
     public static class MarkingCategoriesConversion
     {
         public static MarkingCategories FromHumanoidVisualLayers(HumanoidVisualLayers layer)

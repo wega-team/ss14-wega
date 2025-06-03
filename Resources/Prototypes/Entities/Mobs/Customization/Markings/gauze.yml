@@ -2,6 +2,7 @@
   id: GauzeLefteyePatch
   bodyPart: Eyes
   markingCategory: Overlay
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Dwarf, Human, Arachnid]
   coloring:
     default:
@@ -16,6 +17,7 @@
   id: GauzeLefteyePad
   bodyPart: Eyes
   markingCategory: Overlay
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Dwarf, Human, Reptilian, Arachnid]
   coloring:
     default:
@@ -30,6 +32,7 @@
   id: GauzeRighteyePatch
   bodyPart: Eyes
   markingCategory: Overlay
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Dwarf, Human, Arachnid]
   coloring:
     default:
@@ -44,6 +47,7 @@
   id: GauzeRighteyePad
   bodyPart: Eyes
   markingCategory: Overlay
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Dwarf, Human, Reptilian, Arachnid]
   coloring:
     default:
@@ -58,6 +62,7 @@
   id: GauzeBlindfold
   bodyPart: Eyes
   markingCategory: Overlay
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Dwarf, Human, Arachnid]
   coloring:
     default:
@@ -72,6 +77,7 @@
   id: GauzeShoulder
   bodyPart: Chest
   markingCategory: Overlay
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Dwarf, Human, Reptilian, Arachnid]
   coloring:
     default:
@@ -86,6 +92,7 @@
   id: GauzeStomach
   bodyPart: Chest
   markingCategory: Overlay
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Dwarf, Human, Reptilian, Arachnid]
   coloring:
     default:
@@ -100,6 +107,7 @@
   id: GauzeUpperArmRight
   bodyPart: RArm
   markingCategory: Overlay
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Dwarf, Human, Reptilian, Arachnid]
   coloring:
     default:
@@ -114,6 +122,7 @@
   id: GauzeLowerArmRight
   bodyPart: RArm, RHand
   markingCategory: Overlay
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Dwarf, Human, Reptilian, Arachnid]
   coloring:
     default:
@@ -128,6 +137,7 @@
   id: GauzeLeftArm
   bodyPart: LArm, LHand
   markingCategory: Overlay
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Dwarf, Human, Reptilian, Arachnid]
   coloring:
     default:
@@ -142,6 +152,7 @@
   id: GauzeLowerLegLeft
   bodyPart: LFoot
   markingCategory: Overlay
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Dwarf, Human, Arachnid]
   coloring:
     default:
@@ -156,6 +167,7 @@
   id: GauzeUpperLegLeft
   bodyPart: LLeg
   markingCategory: Overlay
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Dwarf, Human, Reptilian, Arachnid]
   coloring:
     default:
@@ -170,6 +182,7 @@
   id: GauzeUpperLegRight
   bodyPart: RLeg
   markingCategory: Overlay
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Dwarf, Human, Reptilian, Arachnid]
   coloring:
     default:
@@ -184,6 +197,7 @@
   id: GauzeLowerLegRight
   bodyPart: RFoot
   markingCategory: Overlay
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Dwarf, Human, Arachnid]
   coloring:
     default:
@@ -198,6 +212,7 @@
   id: GauzeBoxerWrapRight
   bodyPart: RHand
   markingCategory: Overlay
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Dwarf, Human, Reptilian, Arachnid]
   coloring:
     default:
@@ -212,6 +227,7 @@
   id: GauzeBoxerWrapLeft
   bodyPart: LHand
   markingCategory: Overlay
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Dwarf, Human, Reptilian, Arachnid]
   coloring:
     default:
@@ -226,6 +242,7 @@
   id: GauzeHead
   bodyPart: Head
   markingCategory: Overlay
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Dwarf, Human, Reptilian, Arachnid, Moth]
   coloring:
     default:
@@ -241,6 +258,7 @@
   id: GauzeLizardLefteyePatch
   bodyPart: Eyes
   markingCategory: Overlay
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Reptilian]
   coloring:
     default:
@@ -255,6 +273,7 @@
   id: GauzeLizardRighteyePatch
   bodyPart: Eyes
   markingCategory: Overlay
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Reptilian]
   coloring:
     default:
@@ -269,6 +288,7 @@
   id: GauzeLizardFootRight
   bodyPart: RFoot
   markingCategory: Overlay
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Reptilian]
   coloring:
     default:
@@ -283,6 +303,7 @@
   id: GauzeLizardFootLeft
   bodyPart: LFoot
   markingCategory: Overlay
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Reptilian]
   coloring:
     default:
@@ -297,6 +318,7 @@
   id: GauzeLizardBlindfold
   bodyPart: Eyes
   markingCategory: Overlay
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Reptilian]
   coloring:
     default:
@@ -312,6 +334,7 @@
   id: GauzeMothBlindfold
   bodyPart: Eyes
   markingCategory: Overlay
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Moth]
   coloring:
     default:
@@ -326,6 +349,7 @@
   id: GauzeMothShoulder
   bodyPart: Chest
   markingCategory: Overlay
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Moth]
   coloring:
     default:
@@ -340,6 +364,7 @@
   id: GauzeMothStomach
   bodyPart: Chest
   markingCategory: Overlay
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Moth]
   coloring:
     default:
@@ -354,6 +379,7 @@
   id: GauzeMothLeftEyePatch
   bodyPart: Eyes
   markingCategory: Overlay
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Moth]
   coloring:
     default:
@@ -368,6 +394,7 @@
   id: GauzeMothLeftEyePad
   bodyPart: Eyes
   markingCategory: Overlay
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Moth]
   coloring:
     default:
@@ -382,6 +409,7 @@
   id: GauzeMothRightEyePatch
   bodyPart: Eyes
   markingCategory: Overlay
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Moth]
   coloring:
     default:
@@ -396,6 +424,7 @@
   id: GauzeMothRightEyePad
   bodyPart: Eyes
   markingCategory: Overlay
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Moth]
   coloring:
     default:
@@ -410,6 +439,7 @@
   id: GauzeMothUpperArmRight
   bodyPart: RArm
   markingCategory: Overlay
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Moth]
   coloring:
     default:
@@ -424,6 +454,7 @@
   id: GauzeMothUpperArmLeft
   bodyPart: LArm
   markingCategory: Overlay
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Moth]
   coloring:
     default:
@@ -438,6 +469,7 @@
   id: GauzeMothUpperLegRight
   bodyPart: RLeg
   markingCategory: Overlay
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Moth]
   coloring:
     default:
@@ -452,6 +484,7 @@
   id: GauzeMothUpperLegLeft
   bodyPart: LLeg
   markingCategory: Overlay
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Moth]
   coloring:
     default:
@@ -466,6 +499,7 @@
   id: GauzeMothLowerLegRight
   bodyPart: RFoot
   markingCategory: Overlay
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Moth]
   coloring:
     default:
@@ -480,6 +514,7 @@
   id: GauzeMothLowerLegLeft
   bodyPart: LFoot
   markingCategory: Overlay
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Moth]
   coloring:
     default:

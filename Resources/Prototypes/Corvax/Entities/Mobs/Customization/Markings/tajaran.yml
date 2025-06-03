@@ -574,6 +574,7 @@
   id: TailFluffyAnimated
   bodyPart: Tail
   markingCategory: Tail
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: []
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_tail.rsi
@@ -582,6 +583,7 @@
 - type: marking
   id: TailWingler1Animated
   markingCategory: Tail
+  markingType: NonGenetics # Corvax-Wega-Genetics
   bodyPart: Tail
   speciesRestriction: []
   sprites:
@@ -593,6 +595,7 @@
 - type: marking
   id: TailWingler2Animated
   markingCategory: Tail
+  markingType: NonGenetics # Corvax-Wega-Genetics
   bodyPart: Tail
   speciesRestriction: []
   sprites:
@@ -604,6 +607,7 @@
 - type: marking
   id: TailWingler3Animated
   markingCategory: Tail
+  markingType: NonGenetics # Corvax-Wega-Genetics
   bodyPart: Tail
   speciesRestriction: []
   sprites:
@@ -616,6 +620,7 @@
   id: TailFluffySkeletonAnimated
   bodyPart: Tail
   markingCategory: Tail
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: []
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_tail.rsi
@@ -626,6 +631,7 @@
 - type: marking
   id: TailTipAnimated
   markingCategory: Tail
+  markingType: NonGenetics # Corvax-Wega-Genetics
   bodyPart: Tail
   speciesRestriction: []
   sprites:
@@ -639,6 +645,7 @@
   id: TailMAnimated
   bodyPart: Tail
   markingCategory: Tail
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: []
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_tail.rsi
@@ -646,6 +653,7 @@
 
 - type: marking
   id: TailRingAnimated
+  markingType: NonGenetics # Corvax-Wega-Genetics
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: []
@@ -658,6 +666,7 @@
 - type: marking
   id: TailSkeletonAnimated
   markingCategory: Tail
+  markingType: NonGenetics # Corvax-Wega-Genetics
   bodyPart: Tail
   speciesRestriction: []
   sprites:

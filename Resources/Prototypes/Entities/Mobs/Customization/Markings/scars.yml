@@ -2,6 +2,7 @@
   id: ScarEyeRight
   bodyPart: Head
   markingCategory: Head
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Human, Dwarf]
   followSkinColor: true
   sprites:
@@ -12,6 +13,7 @@
   id: ScarEyeLeft
   bodyPart: Head
   markingCategory: Head
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Human, Dwarf]
   followSkinColor: true
   sprites:
@@ -22,6 +24,7 @@
   id: ScarTopSurgeryShort
   bodyPart: Chest
   markingCategory: Chest
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Human, Dwarf]
   sexRestriction: [Male]
   followSkinColor: true
@@ -33,6 +36,7 @@
   id: ScarTopSurgeryLong
   bodyPart: Chest
   markingCategory: Chest
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Human, Dwarf]
   sexRestriction: [Male]
   followSkinColor: true
@@ -44,6 +48,7 @@
   id: ScarChest
   bodyPart: Chest
   markingCategory: Chest
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Human, Dwarf]
   followSkinColor: true
   sprites:
@@ -54,6 +59,7 @@
   id: ScarNeck
   bodyPart: Head
   markingCategory: Head
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Human, Dwarf]
   followSkinColor: true
   sprites:
@@ -64,6 +70,7 @@
   id: ScarChestBullets
   bodyPart: Chest
   markingCategory: Chest
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Human, Dwarf]
   followSkinColor: true
   sprites:
@@ -74,6 +81,7 @@
   id: ScarStomachBullets
   bodyPart: Chest
   markingCategory: Chest
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Human, Dwarf]
   followSkinColor: true
   sprites:
@@ -84,6 +92,7 @@
   id: ScarFace1
   bodyPart: Head
   markingCategory: Head
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Human, Dwarf]
   followSkinColor: true
   sprites:
@@ -94,6 +103,7 @@
   id: ScarFace2
   bodyPart: Head
   markingCategory: Head
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Human, Dwarf]
   followSkinColor: true
   sprites:

@@ -5,6 +5,6 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: InstantAction
-    icon: { sprite: _Wega/Interface/Actions/actions_bloodcult.rsi, state: "blood_magic" }
+    icon: { sprite: Clothing/Neck/Cloaks/void.rsi, state: "icon" }
     event: !type:CloakOfDarknessActionEvent
     useDelay: 15

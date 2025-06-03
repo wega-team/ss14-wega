@@ -346,6 +346,7 @@
   id: ArachnidOverlayFuzzy
   bodyPart: Chest
   markingCategory: Overlay
+  markingType: NonGenetics # Corvax-Wega-Genetics
   forcedColoring: true
   speciesRestriction: [Arachnid]
   sprites:
