@@ -8,3 +8,15 @@
     icon: { sprite: Clothing/Neck/Cloaks/void.rsi, state: "icon" }
     event: !type:CloakOfDarknessActionEvent
     useDelay: 15
+
+- type: entity
+  id: ActionGenPolymorphism
+  name: polymorphism
+  description: ""
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: EntityTargetAction
+    icon: { sprite: Clothing/Neck/Cloaks/void.rsi, state: "icon" }
+    itemIconStyle: BigAction
+    event: !type:PolymorphismActionEvent
+    useDelay: 15 #300

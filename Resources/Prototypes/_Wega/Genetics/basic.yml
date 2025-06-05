@@ -8,7 +8,7 @@
   - type: SmallHeight
 
 - type: structuralEnzymes
-  id: GeneticsNoBreathingGenBasic
+  id: GeneticsNoBreathingBasic
   message: genetics-no-breathing-message
   typeDeviation: Base
   chanceAssimilation: 0.25
@@ -17,7 +17,7 @@
   - type: NoBreathingGen
 
 - type: structuralEnzymes
-  id: GeneticsNoPrintsGenBasic
+  id: GeneticsNoPrintsBasic
   message: genetics-no-prints-message
   typeDeviation: Base
   costInstability: 5
@@ -25,16 +25,24 @@
   - type: NoPrintsGen
 
 - type: structuralEnzymes
-  id: GeneticsPsyResistGenBasic
+  id: GeneticsPsyResistBasic
   message: genetics-psy-resist-message
   typeDeviation: Base
   addComponent:
   - type: PsyResistGen
 
 - type: structuralEnzymes
-  id: GeneticsEmpatheticThoughtGenBasic
+  id: GeneticsEmpatheticThoughtBasic
   message: genetics-empathetic-thought-message
   typeDeviation: Base
   costInstability: 5
   addComponent:
   - type: EmpatheticThoughtGen
+
+- type: structuralEnzymes
+  id: GeneticsTelekinesisBasic
+  message: genetics-telekinesis-message
+  typeDeviation: Base
+  costInstability: 15
+  addComponent:
+  - type: TelekinesisGen

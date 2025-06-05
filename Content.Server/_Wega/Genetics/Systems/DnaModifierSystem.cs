@@ -125,7 +125,7 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
             enzyme.HexCode = GetHexCodeDisease();
         }
 
-        TryChangeStructuralEnzymes(dnaModifier);
+        TryChangeStructuralEnzymes((uid, dnaModifier));
 
         Dirty(uid, dnaModifier);
     }
@@ -610,57 +610,60 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
     #endregion
 
     #region Modify U.I.
-    public void ChangeDna(DnaModifierComponent component, EnzymeInfo enzyme)
+    public void ChangeDna(Entity<DnaModifierComponent> ent, EnzymeInfo enzyme)
     {
-        if (enzyme.Identifier != null) component.UniqueIdentifiers = enzyme.Identifier;
-        if (enzyme.Info != null) component.EnzymesPrototypes = enzyme.Info;
+        if (enzyme.Identifier != null) ent.Comp.UniqueIdentifiers = enzyme.Identifier;
+        if (enzyme.Info != null) ent.Comp.EnzymesPrototypes = enzyme.Info;
 
-        Dirty(component.Owner, component);
+        Dirty(ent, ent.Comp);
 
-        TryChangeUniqueIdentifiers(component);
-        TryChangeStructuralEnzymes(component);
+        TryChangeUniqueIdentifiers(ent);
+        TryChangeStructuralEnzymes(ent);
     }
 
-    public void ChangeDna(DnaModifierComponent component, int type)
+    public void ChangeDna(Entity<DnaModifierComponent> ent, int type)
     {
         if (type == 0)
         {
-            TryChangeUniqueIdentifiers(component);
+            TryChangeUniqueIdentifiers(ent);
         }
         else if (type == 1)
         {
-            TryChangeStructuralEnzymes(component);
+            TryChangeStructuralEnzymes(ent);
         }
     }
 
-    public void ChangeDna(DnaModifierComponent component)
+    public void ChangeDna(Entity<DnaModifierComponent?> uid)
     {
-        TryChangeUniqueIdentifiers(component);
-        TryChangeStructuralEnzymes(component);
-    }
-
-    private void TryChangeUniqueIdentifiers(DnaModifierComponent component)
-    {
-        if (!TryComp<HumanoidAppearanceComponent>(component.Owner, out var humanoid) || component.UniqueIdentifiers == null)
+        if (!Resolve(uid, ref uid.Comp))
             return;
 
-        var uniqueIdentifiers = component.UniqueIdentifiers;
-        UpdateSkin(humanoid, uniqueIdentifiers);
-        UpdateMarkings(humanoid, uniqueIdentifiers);
-        UpdateEyeColor(humanoid, uniqueIdentifiers);
-        UpdateGender(humanoid, uniqueIdentifiers);
-
-        Dirty(humanoid.Owner, humanoid);
+        TryChangeUniqueIdentifiers((uid, uid.Comp));
+        TryChangeStructuralEnzymes((uid, uid.Comp));
     }
 
-    private void UpdateSkin(HumanoidAppearanceComponent humanoid, UniqueIdentifiersPrototype uniqueIdentifiers)
+    private void TryChangeUniqueIdentifiers(Entity<DnaModifierComponent> ent, HumanoidAppearanceComponent? humanoid = null)
     {
-        var speciesProto = _prototype.Index<SpeciesPrototype>(humanoid.Species);
+        if (!Resolve(ent, ref humanoid) || ent.Comp.UniqueIdentifiers == null)
+            return;
+
+        var uniqueIdentifiers = ent.Comp.UniqueIdentifiers;
+        UpdateSkin((ent, humanoid), uniqueIdentifiers);
+        UpdateMarkings((ent, humanoid), uniqueIdentifiers);
+        UpdateEyeColor((ent, humanoid), uniqueIdentifiers);
+        UpdateGender((ent, humanoid), uniqueIdentifiers);
+
+        Dirty(ent, humanoid);
+    }
+
+    private void UpdateSkin(Entity<HumanoidAppearanceComponent> humanoid, UniqueIdentifiersPrototype uniqueIdentifiers)
+    {
+        var speciesProto = _prototype.Index<SpeciesPrototype>(humanoid.Comp.Species);
 
         switch (speciesProto.SkinColoration)
         {
             case HumanoidSkinColor.HumanToned:
-                humanoid.SkinColor = ConvertSkinToneToColor(uniqueIdentifiers.SkinTone);
+                humanoid.Comp.SkinColor = ConvertSkinToneToColor(uniqueIdentifiers.SkinTone);
                 break;
 
             case HumanoidSkinColor.Hues:
@@ -680,26 +683,25 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
 
                 var newColor = new Color(redNormalized, greenNormalized, blueNormalized);
 
-                humanoid.SkinColor = newColor;
+                humanoid.Comp.SkinColor = newColor;
                 break;
         }
     }
 
-    private void UpdateMarkings(HumanoidAppearanceComponent humanoid, UniqueIdentifiersPrototype uniqueIdentifiers)
+    private void UpdateMarkings(Entity<HumanoidAppearanceComponent> humanoid, UniqueIdentifiersPrototype uniqueIdentifiers)
     {
-        var markingSet = humanoid.MarkingSet;
+        var markingSet = humanoid.Comp.MarkingSet;
         var markingPrototypes = _markingIndexer.GetAllMarkingPrototypes();
 
-        var target = humanoid.Owner;
-        _ensureMarking.UpdateMarkingCategory(target, markingSet, MarkingCategories.Hair, uniqueIdentifiers.HairColorR, uniqueIdentifiers.HairColorG, uniqueIdentifiers.HairColorB, uniqueIdentifiers.HairStyle, humanoid.Species, markingPrototypes);
-        _ensureMarking.UpdateMarkingCategory(target, markingSet, MarkingCategories.FacialHair, uniqueIdentifiers.BeardColorR, uniqueIdentifiers.BeardColorG, uniqueIdentifiers.BeardColorB, uniqueIdentifiers.BeardStyle, humanoid.Species, markingPrototypes);
-        _ensureMarking.UpdateMarkingCategory(target, markingSet, MarkingCategories.HeadTop, uniqueIdentifiers.HeadAccessoryColorR, uniqueIdentifiers.HeadAccessoryColorG, uniqueIdentifiers.HeadAccessoryColorB, uniqueIdentifiers.HeadAccessoryStyle, humanoid.Species, markingPrototypes);
-        _ensureMarking.UpdateMarkingCategory(target, markingSet, MarkingCategories.Head, uniqueIdentifiers.HeadMarkingColorR, uniqueIdentifiers.HeadMarkingColorG, uniqueIdentifiers.HeadMarkingColorB, uniqueIdentifiers.HeadMarkingStyle, humanoid.Species, markingPrototypes);
-        _ensureMarking.UpdateMarkingCategory(target, markingSet, MarkingCategories.Chest, uniqueIdentifiers.BodyMarkingColorR, uniqueIdentifiers.BodyMarkingColorG, uniqueIdentifiers.BodyMarkingColorB, uniqueIdentifiers.BodyMarkingStyle, humanoid.Species, markingPrototypes);
-        _ensureMarking.UpdateMarkingCategory(target, markingSet, MarkingCategories.Tail, uniqueIdentifiers.TailMarkingColorR, uniqueIdentifiers.TailMarkingColorG, uniqueIdentifiers.TailMarkingColorB, uniqueIdentifiers.TailMarkingStyle, humanoid.Species, markingPrototypes);
+        _ensureMarking.UpdateMarkingCategory(humanoid, markingSet, MarkingCategories.Hair, uniqueIdentifiers.HairColorR, uniqueIdentifiers.HairColorG, uniqueIdentifiers.HairColorB, uniqueIdentifiers.HairStyle, humanoid.Comp.Species, markingPrototypes, uniqueIdentifiers.SecondaryHairColorR, uniqueIdentifiers.SecondaryHairColorG, uniqueIdentifiers.SecondaryHairColorB);
+        _ensureMarking.UpdateMarkingCategory(humanoid, markingSet, MarkingCategories.FacialHair, uniqueIdentifiers.BeardColorR, uniqueIdentifiers.BeardColorG, uniqueIdentifiers.BeardColorB, uniqueIdentifiers.BeardStyle, humanoid.Comp.Species, markingPrototypes);
+        _ensureMarking.UpdateMarkingCategory(humanoid, markingSet, MarkingCategories.HeadTop, uniqueIdentifiers.HeadAccessoryColorR, uniqueIdentifiers.HeadAccessoryColorG, uniqueIdentifiers.HeadAccessoryColorB, uniqueIdentifiers.HeadAccessoryStyle, humanoid.Comp.Species, markingPrototypes);
+        _ensureMarking.UpdateMarkingCategory(humanoid, markingSet, MarkingCategories.Head, uniqueIdentifiers.HeadMarkingColorR, uniqueIdentifiers.HeadMarkingColorG, uniqueIdentifiers.HeadMarkingColorB, uniqueIdentifiers.HeadMarkingStyle, humanoid.Comp.Species, markingPrototypes);
+        _ensureMarking.UpdateMarkingCategory(humanoid, markingSet, MarkingCategories.Chest, uniqueIdentifiers.BodyMarkingColorR, uniqueIdentifiers.BodyMarkingColorG, uniqueIdentifiers.BodyMarkingColorB, uniqueIdentifiers.BodyMarkingStyle, humanoid.Comp.Species, markingPrototypes);
+        _ensureMarking.UpdateMarkingCategory(humanoid, markingSet, MarkingCategories.Tail, uniqueIdentifiers.TailMarkingColorR, uniqueIdentifiers.TailMarkingColorG, uniqueIdentifiers.TailMarkingColorB, uniqueIdentifiers.TailMarkingStyle, humanoid.Comp.Species, markingPrototypes);
     }
 
-    private void UpdateEyeColor(HumanoidAppearanceComponent humanoid, UniqueIdentifiersPrototype uniqueIdentifiers)
+    private void UpdateEyeColor(Entity<HumanoidAppearanceComponent> humanoid, UniqueIdentifiersPrototype uniqueIdentifiers)
     {
         string redHex = uniqueIdentifiers.EyeColorR[0] + uniqueIdentifiers.EyeColorR[1];
         string greenHex = uniqueIdentifiers.EyeColorG[0] + uniqueIdentifiers.EyeColorG[1];
@@ -715,10 +717,10 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
 
         var eyeColor = new Color(redNormalized, greenNormalized, blueNormalized);
 
-        humanoid.EyeColor = eyeColor;
+        humanoid.Comp.EyeColor = eyeColor;
     }
 
-    private void UpdateGender(HumanoidAppearanceComponent humanoid, UniqueIdentifiersPrototype uniqueIdentifiers)
+    private void UpdateGender(Entity<HumanoidAppearanceComponent> humanoid, UniqueIdentifiersPrototype uniqueIdentifiers)
     {
         int[] values = uniqueIdentifiers.Gender
             .Select(hex => Convert.ToInt32(hex, 16))
@@ -740,26 +742,25 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
             _ => Sex.Unsexed
         };
 
-        humanoid.Gender = currentGender;
-        humanoid.Sex = currentSex;
+        humanoid.Comp.Gender = currentGender;
+        humanoid.Comp.Sex = currentSex;
     }
     #endregion Modify U.I.
 
     #region Modify S.E.
-    private void TryChangeStructuralEnzymes(DnaModifierComponent component)
+    private void TryChangeStructuralEnzymes(Entity<DnaModifierComponent> ent)
     {
-        if (component.EnzymesPrototypes == null)
+        if (ent.Comp.EnzymesPrototypes == null)
             return;
 
-        var target = component.Owner;
-        int totalInstability = component.Instability;
-        var enzymes = component.EnzymesPrototypes;
+        int totalInstability = ent.Comp.Instability;
+        var enzymes = ent.Comp.EnzymesPrototypes;
         var messagesToShow = new List<string>();
         foreach (var enzyme in enzymes)
         {
             if (enzyme.Order == 55)
             {
-                TryChangeLastBlock(target, component, enzyme);
+                TryChangeLastBlock(ent, ent.Comp, enzyme);
                 continue;
             }
 
@@ -775,18 +776,18 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
                         .Any(componentEntry =>
                         {
                             var componentType = componentEntry.Value.Component?.GetType();
-                            return componentType != null && HasComp(target, componentType);
+                            return componentType != null && HasComp(ent, componentType);
                         });
 
                     if (!hasAnyComponent && _random.NextFloat() <= enzymePrototype.ChanceAssimilation)
                     {
-                        EntityManager.AddComponents(target, enzymePrototype.AddComponent, false);
+                        EntityManager.AddComponents(ent, enzymePrototype.AddComponent, false);
                         totalInstability += enzymePrototype.CostInstability;
 
                         if (!string.IsNullOrEmpty(enzymePrototype.Message))
                             messagesToShow.Add(enzymePrototype.Message);
 
-                        _admin.Add(LogType.Action, LogImpact.Medium, $"{ToPrettyString(target):user} acquires a gene type: '{enzymePrototype.ID}'.");
+                        _admin.Add(LogType.Action, LogImpact.Medium, $"{ToPrettyString(ent):user} acquires a gene type: '{enzymePrototype.ID}'.");
                     }
                 }
                 else
@@ -794,22 +795,22 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
                     foreach (var componentEntry in enzymePrototype.AddComponent)
                     {
                         var componentType = componentEntry.Value.Component?.GetType();
-                        if (componentType != null && HasComp(target, componentType))
+                        if (componentType != null && HasComp(ent, componentType))
                         {
-                            RemComp(target, componentType);
+                            RemComp(ent, componentType);
                             totalInstability -= enzymePrototype.CostInstability;
 
-                            _admin.Add(LogType.Action, LogImpact.Medium, $"{ToPrettyString(target):user} loses the gene type: '{enzymePrototype.ID}'.");
+                            _admin.Add(LogType.Action, LogImpact.Medium, $"{ToPrettyString(ent):user} loses the gene type: '{enzymePrototype.ID}'.");
                         }
                     }
                 }
             }
         }
 
-        UpdateInstability(target, component, totalInstability);
+        UpdateInstability(ent, ent.Comp, totalInstability);
         if (messagesToShow.Count > 0)
         {
-            _ = ShowMessagesWithDelay(target, messagesToShow);
+            _ = ShowMessagesWithDelay(ent, messagesToShow);
         }
     }
 
@@ -867,7 +868,7 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
             childDnaModifier.Lowest = component.Lowest;
 
             Dirty(child, childDnaModifier);
-            ChangeDna(childDnaModifier);
+            ChangeDna(child);
 
             _admin.Add(LogType.Action, LogImpact.High, $"{ToPrettyString(target):user} gene down up a step.");
 
@@ -924,7 +925,7 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
                     dnaModifier.Lowest = component.Lowest;
 
                     Dirty(parent, dnaModifier);
-                    ChangeDna(dnaModifier);
+                    ChangeDna(parent);
                 }
 
                 var parentXform = Transform(parent);
@@ -968,6 +969,8 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
             if (TryComp(target, out DnaComponent? targetDna))
                 EnsureComp<DnaComponent>(child).DNA = targetDna.DNA;
 
+            EnsureComp<DnaModifiedComponent>(child);
+
             var childDnaModifier = EnsureComp<DnaModifierComponent>(child);
             childDnaModifier.UniqueIdentifiers = component.UniqueIdentifiers;
             childDnaModifier.EnzymesPrototypes = component.EnzymesPrototypes?.ToList();
@@ -976,7 +979,7 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
             childDnaModifier.Lowest = component.Lowest;
 
             Dirty(child, childDnaModifier);
-            ChangeDna(childDnaModifier);
+            ChangeDna(child);
 
             _admin.Add(LogType.Action, LogImpact.High, $"{ToPrettyString(target):user} gene went up a step.");
 
@@ -1039,7 +1042,7 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
             }
         }
 
-        TryChangeStructuralEnzymes(component);
+        TryChangeStructuralEnzymes((uid, component));
 
         Dirty(uid, component);
     }
@@ -1066,7 +1069,7 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
             }
         }
 
-        TryChangeStructuralEnzymes(component);
+        TryChangeStructuralEnzymes((uid, component));
 
         Dirty(uid, component);
     }

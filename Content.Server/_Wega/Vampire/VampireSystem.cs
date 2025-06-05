@@ -38,6 +38,7 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
+using Content.Shared.Genetics;
 
 namespace Content.Server.Vampire;
 
@@ -264,7 +265,7 @@ public sealed partial class VampireSystem : SharedVampireSystem
             }
 
             _admin.Add(LogType.Damaged, LogImpact.Low, $"{ToPrettyString(uid):user} drank {volumeToConsume}u of {ToPrettyString(args.Target):target}'s blood");
-            if (HasComp<HumanoidAppearanceComponent>(args.Target))
+            if (HasComp<HumanoidAppearanceComponent>(args.Target) && !HasComp<DnaModifiedComponent>(args.Target))
                 AddBloodEssence(uid, volumeToConsume * 0.95);
             SetBloodConsumedByVampire(uid, args.Target.Value, bloodAlreadyConsumed + volumeToConsume);
 

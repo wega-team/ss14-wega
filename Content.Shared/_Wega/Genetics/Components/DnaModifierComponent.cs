@@ -1,3 +1,4 @@
+using System.Linq;
 using Content.Shared.Genetics.Systems;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
