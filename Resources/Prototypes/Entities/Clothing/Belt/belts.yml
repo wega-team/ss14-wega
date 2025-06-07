@@ -225,6 +225,7 @@
         - WetFloorSign
         - HolosignProjector
         - Plunger
+        - JanicartKeys # Corvax-Wega-Vehicles
       components:
         - LightReplacer
         - SmokeOnTrigger

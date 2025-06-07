@@ -51,6 +51,7 @@
   - RollerBedSpawnFolded
   - CheapRollerBedSpawnFolded
   - EmergencyRollerBedSpawnFolded
+  - VehicleWheelchairFolded # Corvax-Wega-Vehicles
 
 - type: latheRecipePack
   id: MedicalClothingStatic

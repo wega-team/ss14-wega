@@ -5,6 +5,8 @@ trait-colour-blindness-name = Дальтонизм
 trait-colour-blindness-desc = Вы не различаете полный спектр цветов, ващ мир бесцветный
 trait-dna-deviation-name = Плохой геном
 trait-dna-deviation-desc = Вы подвержены проявлению случайных генетических отклонений
+trait-wheelchair-bound-name = Прикованный к инвалидной коляске
+trait-wheelchair-bound-desc = Вы не можете передвигаться без инвалидной коляски. Инвалидная коляска входит в комплект!
 
 # Quirks
 trait-sneezing-name = Насморк

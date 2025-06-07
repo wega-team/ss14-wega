@@ -16,6 +16,7 @@ using Content.Shared.Standing;
 using Content.Shared.Storage.Components;
 using Content.Shared.Stunnable;
 using Content.Shared.Throwing;
+using Content.Shared.Vehicle.Components; // Corvax-Wega-Vehicles
 using Content.Shared.Whitelist;
 using Robust.Shared.Containers;
 using Robust.Shared.GameStates;
@@ -165,6 +166,15 @@ public abstract partial class SharedBuckleSystem
 
     private void OnBuckleStandAttempt(EntityUid uid, BuckleComponent component, StandAttemptEvent args)
     {
+        // Corvax-Wega-Vehicles-start
+        if (component.BuckledTo != null)
+        {
+            var buckle = component.BuckledTo;
+            if (HasComp<VehicleComponent>(buckle))
+                return;
+        }
+        // Corvax-Wega-Vehicles-end
+
         if (component.Buckled)
             args.Cancel();
     }
@@ -177,7 +187,7 @@ public abstract partial class SharedBuckleSystem
 
     private void OnBuckleUpdateCanMove(EntityUid uid, BuckleComponent component, UpdateCanMoveEvent args)
     {
-        if (component.Buckled)
+        if (component.Buckled && !HasComp<VehicleComponent>(component.BuckledTo)) // Corvax-Wega-Vehicles-Edit
             args.Cancel();
     }
 
@@ -523,6 +533,9 @@ public abstract partial class SharedBuckleSystem
         RaiseLocalEvent(buckle, ref unbuckleAttempt);
         if (unbuckleAttempt.Cancelled)
             return false;
+
+        if (TryComp<VehicleComponent>(strapUid, out var vehicle) && vehicle.Rider != user && !_mobState.IsIncapacitated(buckle)) // Corvax-Wega-Vehicles
+            return false; // Corvax-Wega-Vehicles
 
         var unstrapAttempt = new UnstrapAttemptEvent(strap, buckle!, user, popup);
         RaiseLocalEvent(strap, ref unstrapAttempt);

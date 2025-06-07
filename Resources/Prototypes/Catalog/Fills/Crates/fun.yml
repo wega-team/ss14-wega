@@ -367,6 +367,7 @@
       - id: MrDips
         orGroup: Giftpool
       - id: RevolverCapGun
+      - id: VehicleUnicycleFolded # Corvax-Wega-Vehicles
       - id: BalloonNT
       - id: ClothingShoesClownLarge
       - id: ClothingHeadHatMagician

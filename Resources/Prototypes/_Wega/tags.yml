@@ -107,3 +107,9 @@
 - type: Tag
   id: RightFoot
 # Surgery end
+
+- type: Tag
+  id: JanicartKeys
+
+- type: Tag
+  id: VehicleKey

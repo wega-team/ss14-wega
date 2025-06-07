@@ -21,6 +21,12 @@
       multiplier: 3.75
       multiplierOnExisting: 0.75
     - !type:Ignite
+    # Corvax-Wega-Vehicles-start
+    - !type:DamageEntityEffect
+      requiredComponent: Vehicle
+      damageType: Blunt
+      amount: 500
+    # Corvax-Wega-Vehicles-end
   - type: Transform
     anchored: true
   - type: SyncSprite
