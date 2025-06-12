@@ -297,8 +297,7 @@ public sealed class RespiratorSystem : EntitySystem
             }
         }
         //Corvax-Wega-Strangulation-start
-        var strangleComp = CompOrNull<StrangulationComponent>(ent);
-        if (HasComp<StrangulationComponent>(ent) && strangleComp != null)
+        if (TryComp<StrangulationComponent>(ent, out var strangleComp) && strangleComp != null)
             _damageableSys.TryChangeDamage(ent, strangleComp.Damage, interruptsDoAfters: false);
         else
         //Corvax-Wega-Strangulation-end

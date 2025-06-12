@@ -4,13 +4,17 @@ using Content.Shared.Verbs;
 using Content.Shared.Strangulation;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Hands.Components;
+using Content.Shared.Hands;
 using Content.Shared.Popups;
 using Content.Shared.Garrotte;
 using Content.Server.Inventory;
-using Content.Shared.Hands;
 using Content.Shared.Throwing;
 using Content.Shared.Inventory.VirtualItem;
 using Content.Shared.Movement.Pulling.Systems;
+using Content.Shared.Standing;
+using Content.Shared.Alert;
+using Content.Shared.Speech.EntitySystems;
+using Content.Shared.CombatMode;
 
 namespace Content.Server.Strangulation
 {
@@ -22,17 +26,31 @@ namespace Content.Server.Strangulation
         [Dependency] private readonly VirtualItemSystem _virtualItemSystem = default!;
         [Dependency] private readonly SharedTransformSystem _transform = default!;
         [Dependency] private readonly PullingSystem _pulling = default!;
+        [Dependency] private readonly AlertsSystem _alerts = default!;
+        [Dependency] private readonly SharedStutteringSystem _stutteringSystem = default!;
+        [Dependency] private readonly SharedCombatModeSystem _combatModeSystem = default!;
 
         public override void Initialize()
         {
             base.Initialize();
             SubscribeLocalEvent<RespiratorComponent, GetVerbsEvent<AlternativeVerb>>(AddStrangleVerb);
             SubscribeLocalEvent<RespiratorComponent, StrangulationDoAfterEvent>(StrangleDoAfter);
+            SubscribeLocalEvent<StrangulationComponent, BreakFreeDoAfterEvent>(BreakFreeDoAfter);
             SubscribeLocalEvent<StrangulationComponent, VirtualItemDeletedEvent>(OnVirtualItemDeleted);
-            SubscribeLocalEvent<RespiratorComponent, BeforeThrowEvent>(OnThrow);
-            SubscribeLocalEvent<GarrotteComponent, ThrownEvent>(ThrowGarrotte);
+            SubscribeLocalEvent<StrangulationComponent, BeforeThrowEvent>(OnThrow);
+            SubscribeLocalEvent<GarrotteComponent, GotUnequippedHandEvent>(OnThrowGarrotte);
+            SubscribeLocalEvent<StrangulationComponent, BreakFreeStrangleAlertEvent>(OnBreakFreeStrangleAlert);
         }
+        public override void Update(float frameTime)
+        {
+            base.Update(frameTime);
 
+            var query = EntityQueryEnumerator<StrangulationComponent>();
+            while (query.MoveNext(out var uid, out var strangulationComp))
+            {
+                _stutteringSystem.DoStutter(uid, TimeSpan.FromSeconds(5), refresh: true);
+            }
+        }
         private void AddStrangleVerb(EntityUid uid, RespiratorComponent component, GetVerbsEvent<AlternativeVerb> args)
         {
             if (!args.CanInteract || !args.CanAccess)
@@ -51,7 +69,7 @@ namespace Content.Server.Strangulation
             {
                 Act = () =>
                 {
-                    StartStrangleDoAfter(args.User, uid, component);
+                    StartStrangleDoAfter(args.User, uid);
                 },
                 Text = Loc.GetString("strangle-verb"),
 
@@ -75,6 +93,19 @@ namespace Content.Server.Strangulation
             args.Repeat = true;
         }
 
+        private void BreakFreeDoAfter(EntityUid strangler, StrangulationComponent component, ref BreakFreeDoAfterEvent args)
+        {
+            if (args.Handled)
+                return;
+
+            if (args.DoAfter.Completed)
+            {
+                _doAfterSystem.Cancel(component.DoAfterId);
+                return;
+            }
+            args.Handled = true;
+        }
+
         private void OnVirtualItemDeleted(EntityUid uid, StrangulationComponent component, VirtualItemDeletedEvent args)
         {
             if (!HasComp<StrangulationComponent>(args.BlockingEntity))
@@ -82,7 +113,7 @@ namespace Content.Server.Strangulation
             StopStrangle(args.User, args.BlockingEntity);
         }
 
-        private void OnThrow(EntityUid uid, RespiratorComponent component, BeforeThrowEvent args)
+        private void OnThrow(EntityUid uid, StrangulationComponent component, BeforeThrowEvent args)
         {
             if (!TryComp<VirtualItemComponent>(args.ItemUid, out var virtItem))
                 return;
@@ -90,9 +121,19 @@ namespace Content.Server.Strangulation
             StopStrangle(uid, args.ItemUid);
         }
 
-        private void ThrowGarrotte(EntityUid uid, GarrotteComponent component, ref ThrownEvent @event)
+        private void OnThrowGarrotte(Entity<GarrotteComponent> garrotte, ref GotUnequippedHandEvent args)
         {
+            _doAfterSystem.Cancel(garrotte.Comp.DoAfterId);
+            garrotte.Comp.DoAfterId = null;
+        }
 
+        private void OnBreakFreeStrangleAlert(EntityUid uid, StrangulationComponent component, ref BreakFreeStrangleAlertEvent args)
+        {
+            if (args.Handled)
+                return;
+
+            StartBreakFreeDoAfter(uid, component);
+            args.Handled = true;
         }
 
         private bool CanStrangle(EntityUid strangler, EntityUid target, RespiratorComponent? component = null)
@@ -103,18 +144,23 @@ namespace Content.Server.Strangulation
             if (HasComp<StrangulationComponent>(target)) //чтобы удушение не мог начать второй душитель во время идущего процесса
                 return false;
 
+            TryComp<StranglerComponent>(target, out var stranglerComp); //чтобы цель не могла начать душить душителя...
+            if (stranglerComp != null && strangler == stranglerComp.Target)
+                return false;
+
             if (!TryComp<HandsComponent>(strangler, out var hands))
                 return false;
 
-            if (!CheckGarrotte(strangler, out var garrotteComp) && hands.CountFreeHands() < 2)
-            {
+            if (hands.CountFreeHands() == 0)
                 return false;
-            }
+
+            if (!CheckGarrotte(strangler, out var garrotteComp) && hands.CountFreeHands() == 1)
+                return false;
 
             return true;
         }
 
-        private void StartStrangleDoAfter(EntityUid strangler, EntityUid target, RespiratorComponent component)
+        private void StartStrangleDoAfter(EntityUid strangler, EntityUid target)
         {
             _popupSystem.PopupEntity(Loc.GetString("strangle-start"), target, target, PopupType.LargeCaution);
             var doAfterDelay = TimeSpan.FromSeconds(3);
@@ -124,28 +170,53 @@ namespace Content.Server.Strangulation
                 target: target,
                 used: target)
             {
-                BreakOnDamage = true,
                 MovementThreshold = 0.02f,
-                //BreakOnHandChange = true,
-                //BreakOnDropItem = true,
                 RequireCanInteract = true
             };
             _doAfterSystem.TryStartDoAfter(doAfterEventArgs, out var doAfterId);
             Strangle(strangler, target, doAfterId);
         }
 
+        private void StartBreakFreeDoAfter(EntityUid user, StrangulationComponent component)
+        {
+            _popupSystem.PopupEntity(Loc.GetString("strangle-break-free", ("name", user)), user, PopupType.Medium);
+            var doAfterDelay = TimeSpan.FromSeconds(15);
+            var doAfterEventArgs = new DoAfterArgs(EntityManager, user, doAfterDelay,
+                new BreakFreeDoAfterEvent(),
+                eventTarget: user)
+            {
+                MovementThreshold = 0.02f,
+                NeedHand = true,
+                BreakOnHandChange = true,
+                BreakOnDropItem = true,
+                RequireCanInteract = true
+            };
+            _doAfterSystem.TryStartDoAfter(doAfterEventArgs, out var doAfterId);
+        }
+
         private void Strangle(EntityUid strangler, EntityUid target, DoAfterId? doAfterId)
         {
-            EnsureComp<StrangulationComponent>(target, out var comp);
-            comp.DoAfterId = doAfterId;
+            EnsureComp<StranglerComponent>(strangler, out var stranglerComp);
+            EnsureComp<StrangulationComponent>(target, out var strangulationComp);
+            stranglerComp.Target = target;
+            strangulationComp.DoAfterId = doAfterId;
+            strangulationComp.Strangler = strangler;
             if (CheckGarrotte(strangler, out var garrotteComp))
             {
-                comp.IsStrangledGarrotte = true;
+                strangulationComp.IsStrangledGarrotte = true;
                 if (garrotteComp != null)
-                    comp.Damage = garrotteComp.GarrotteDamage;
+                {
+                    strangulationComp.Damage = garrotteComp.GarrotteDamage;
+                    garrotteComp.DoAfterId = doAfterId;
+                }
             }
-            _pulling.TryStartPull(strangler, target);
+            if (target != strangler)  //чтобы гаррота не выбрасывалась из рук, если душишь себя
+                RaiseLocalEvent(target, new DropHandItemsEvent());
+            _combatModeSystem.SetDisarmFailChance(target, 0.9f); //баланс: чтобы жертва не могла сразу же выбраться из удушения
+            _pulling.TryStartPull(strangler, target); //интересно же утащить жертву в техи
             _virtualItemSystem.TrySpawnVirtualItemInHand(target, strangler);
+            _virtualItemSystem.TrySpawnVirtualItemInHand(target, strangler);
+            _alerts.ShowAlert(target, strangulationComp.StrangledAlert);
         }
 
         private void StopStrangle(EntityUid strangler, EntityUid target)
@@ -153,6 +224,10 @@ namespace Content.Server.Strangulation
             var comp = Comp<StrangulationComponent>(target);
             _doAfterSystem.Cancel(comp.DoAfterId);
             comp.Cancelled = true;
+            _alerts.ClearAlert(target, comp.StrangledAlert);
+            _stutteringSystem.DoRemoveStutterTime(target, TimeSpan.FromSeconds(5).TotalSeconds);
+            _combatModeSystem.SetDisarmFailChance(target, 0.75f);
+            RemComp<StranglerComponent>(strangler);
             RemComp<StrangulationComponent>(target);
             _virtualItemSystem.DeleteInHandsMatching(strangler, target);
         }

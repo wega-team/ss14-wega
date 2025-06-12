@@ -1,11 +1,16 @@
+using Content.Shared.Alert;
 using Content.Shared.Damage;
 using Content.Shared.DoAfter;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Strangulation
 {
     [RegisterComponent]
     public sealed partial class StrangulationComponent : Component
     {
+        [DataField]
+        public EntityUid? Strangler;
+
         [DataField]
         public DoAfterId? DoAfterId;
 
@@ -18,5 +23,13 @@ namespace Content.Shared.Strangulation
         [DataField(required: true)]
         [ViewVariables(VVAccess.ReadWrite)]
         public DamageSpecifier Damage = new DamageSpecifier { DamageDict = { { "Asphyxiation", 2 } } };
+
+        //[DataField("canStillInteract"), ViewVariables(VVAccess.ReadWrite)]
+        //public bool CanStillInteract = true;
+
+        [DataField]
+        public ProtoId<AlertPrototype> StrangledAlert = "StrangledAlert";
     }
+
+    public sealed partial class BreakFreeStrangleAlertEvent : BaseAlertEvent;
 }

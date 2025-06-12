@@ -19,6 +19,7 @@ using Content.Shared.Movement.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Pulling.Events;
 using Content.Shared.Standing;
+using Content.Shared.Strangulation;
 using Content.Shared.Verbs;
 using Robust.Shared.Containers;
 using Robust.Shared.Input.Binding;
@@ -533,6 +534,9 @@ public sealed class PullingSystem : EntitySystem
 
         if (user != null && !_blocker.CanInteract(user.Value, pullableUid))
             return false;
+
+        if (HasComp<StrangulationComponent>(user))  //Corvax-Wega-Strangulation
+            return false;                           //Corvax-Wega-Strangulation
 
         var msg = new AttemptStopPullingEvent(user);
         RaiseLocalEvent(pullableUid, msg, true);

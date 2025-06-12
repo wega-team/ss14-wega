@@ -1,2 +1,3 @@
 strangle-verb = Душить
-strangle-start = Душат ПИЗДЕЦ
+strangle-start = Вас ДУШАТ
+strangle-break-free = { $name } пытается выбраться
