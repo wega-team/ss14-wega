@@ -18,8 +18,7 @@ using Content.Shared.Mobs.Systems;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
-using Content.Shared.Strangulation;
-using Content.Shared.Garrotte;
+using Content.Shared.Strangulation; //Corvax-Wega-Strangulation
 
 namespace Content.Server.Body.Systems;
 

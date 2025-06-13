@@ -19,7 +19,7 @@ using Content.Shared.Movement.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Pulling.Events;
 using Content.Shared.Standing;
-using Content.Shared.Strangulation;
+using Content.Shared.Strangulation; //Corvax-Wega-Strangulation
 using Content.Shared.Verbs;
 using Robust.Shared.Containers;
 using Robust.Shared.Input.Binding;

@@ -15,6 +15,7 @@ using Content.Shared.Standing;
 using Content.Shared.Alert;
 using Content.Shared.Speech.EntitySystems;
 using Content.Shared.CombatMode;
+using Content.Shared.Implants;
 
 namespace Content.Server.Strangulation
 {
@@ -41,6 +42,7 @@ namespace Content.Server.Strangulation
             SubscribeLocalEvent<GarrotteComponent, GotUnequippedHandEvent>(OnThrowGarrotte);
             SubscribeLocalEvent<StrangulationComponent, BreakFreeStrangleAlertEvent>(OnBreakFreeStrangleAlert);
         }
+
         public override void Update(float frameTime)
         {
             base.Update(frameTime);
@@ -51,6 +53,7 @@ namespace Content.Server.Strangulation
                 _stutteringSystem.DoStutter(uid, TimeSpan.FromSeconds(5), refresh: true);
             }
         }
+
         private void AddStrangleVerb(EntityUid uid, RespiratorComponent component, GetVerbsEvent<AlternativeVerb> args)
         {
             if (!args.CanInteract || !args.CanAccess)
@@ -210,8 +213,11 @@ namespace Content.Server.Strangulation
                     garrotteComp.DoAfterId = doAfterId;
                 }
             }
-            if (target != strangler)  //чтобы гаррота не выбрасывалась из рук, если душишь себя
+            if (target != strangler) //чтобы гаррота не выбрасывалась из рук, если душишь себя
+            {
+                //var dropEvent = new DropHandItemsEvent();
                 RaiseLocalEvent(target, new DropHandItemsEvent());
+            }
             _combatModeSystem.SetDisarmFailChance(target, 0.9f); //баланс: чтобы жертва не могла сразу же выбраться из удушения
             _pulling.TryStartPull(strangler, target); //интересно же утащить жертву в техи
             _virtualItemSystem.TrySpawnVirtualItemInHand(target, strangler);
@@ -257,7 +263,7 @@ namespace Content.Server.Strangulation
             var stranglerPosition = _transform.GetWorldPosition(strangler);
             var targetPosition = _transform.GetWorldPosition(target);
             var distance = (stranglerPosition - targetPosition).Length();
-            if (distance > 1f)
+            if (distance > 0.7f)
                 return false;
             return true;
         }

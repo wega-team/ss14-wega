@@ -35,6 +35,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Replays;
 using Robust.Shared.Utility;
+using Content.Shared.Strangulation;
 
 namespace Content.Server.Chat.Systems;
 
@@ -218,6 +219,13 @@ public sealed partial class ChatSystem : SharedChatSystem
             checkRadioPrefix = false;
             message = message[1..];
         }
+
+        // Corvax-Corvax-Wega-Strangulation-Start
+        if (desiredType == InGameICChatType.Speak && HasComp<StrangulationComponent>(source))
+        {
+            desiredType = InGameICChatType.Whisper;
+        }
+        // Corvax-Corvax-Wega-Strangulation-End
 
         bool shouldCapitalize = (desiredType != InGameICChatType.Emote);
         bool shouldPunctuate = _configurationManager.GetCVar(CCVars.ChatPunctuation);
