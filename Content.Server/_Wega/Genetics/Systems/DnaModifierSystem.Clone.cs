@@ -1,11 +1,19 @@
+using System.Linq;
+using Content.Server.Humanoid;
+using Content.Shared.Corvax.TTS;
 using Content.Shared.DetailExaminable;
+using Content.Shared.Forensics.Components;
 using Content.Shared.Genetics;
 using Content.Shared.Humanoid;
+using Content.Shared.Humanoid.Markings;
+using Content.Shared.Speech.Synthesis.Components;
 
 namespace Content.Server.Genetics.System;
 
 public sealed partial class DnaModifierSystem
 {
+    [Dependency] private readonly HumanoidAppearanceSystem _humanoid = default!;
+
     public bool TryCloneHumanoid(Entity<DnaModifierComponent> entity, Entity<DnaModifierComponent> target)
     {
         if (target.Comp.UniqueIdentifiers == null)
@@ -34,8 +42,23 @@ public sealed partial class DnaModifierSystem
                 detail.Content = targetDetail.Content;
         }
 
-        Dirty(entity, entity.Comp);
+        _metaData.SetEntityName(entity, Name(target));
+        if (TryComp<DnaComponent>(entity, out var dna) && TryComp<DnaComponent>(target, out var targetDna))
+            dna.DNA = targetDna.DNA;
 
+        if (TryComp<TTSComponent>(entity, out var tts) && TryComp<TTSComponent>(target, out var targetTts))
+            tts.VoicePrototypeId = targetTts.VoicePrototypeId;
+
+        if (TryComp<SpeechSynthesisComponent>(entity, out var barks) && TryComp<SpeechSynthesisComponent>(target, out var targetBarks))
+            barks.VoicePrototypeId = targetBarks.VoicePrototypeId;
+
+        // Nose cloning
+        if (targetHumanoid.MarkingSet.TryGetCategory(MarkingCategories.Snout, out var snoutMarkings))
+            _humanoid.AddMarking(entity, snoutMarkings.First().MarkingId, targetHumanoid.SkinColor);
+        else
+            humanoid.MarkingSet.RemoveCategory(MarkingCategories.Snout);
+
+        Dirty(entity, entity.Comp);
         TryChangeUniqueIdentifiers(entity);
     }
 }

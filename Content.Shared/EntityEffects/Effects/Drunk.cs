@@ -1,4 +1,5 @@
 using Content.Shared.Drunk;
+using Content.Shared.Genetics; // Corvax-Wega-Genetics
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared.EntityEffects.Effects;
@@ -27,6 +28,9 @@ public sealed partial class Drunk : EntityEffect
         if (args is EntityEffectReagentArgs reagentArgs) {
             boozePower *= reagentArgs.Scale.Float();
         }
+
+        if (args.EntityManager.HasComponent<SoberGenComponent>(args.TargetEntity)) // Corvax-Wega-Genetics
+            boozePower *= 0.5f; // Corvax-Wega-Genetics
 
         var drunkSys = args.EntityManager.EntitySysManager.GetEntitySystem<SharedDrunkSystem>();
         drunkSys.TryApplyDrunkenness(args.TargetEntity, boozePower, SlurSpeech);

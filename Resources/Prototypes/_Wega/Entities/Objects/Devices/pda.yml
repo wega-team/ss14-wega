@@ -52,7 +52,7 @@
 - type: entity
   parent: BaseMedicalPDA
   id: SurgeonPDA
-  name: geneticist PDA
+  name: surgeon PDA
   description: "A diagram of the human body with illuminated surgical markers flickers on the screen. It seems that someone has already started marking up the section."
   components:
   - type: Pda

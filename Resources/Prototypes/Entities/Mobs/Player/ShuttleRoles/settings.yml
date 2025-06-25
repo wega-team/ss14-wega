@@ -371,6 +371,7 @@
     - type: Loadout
       prototypes: [ VisitorBartender, VisitorBartenderAlt ]
       roleLoadout: [ RoleSurvivalStandard ]
+    - type: SoberGen # Corvax-Wega-Genetics
 
 - type: randomHumanoidSettings
   id: VisitorBotanist

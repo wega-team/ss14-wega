@@ -1,5 +1,30 @@
 # Basic / D A C
 - type: structuralEnzymes
+  id: GeneticsEmpatheticThoughtBasic
+  message: genetics-empathetic-thought-message
+  typeDeviation: Base
+  costInstability: 5
+  addComponent:
+  - type: EmpatheticThoughtGen
+
+- type: structuralEnzymes
+  id: GeneticsHulkBasic
+  message: genetics-hulk-message
+  typeDeviation: Base
+  chanceAssimilation: 0.15
+  costInstability: 15
+  addComponent:
+  - type: HulkGen
+
+- type: structuralEnzymes
+  id: GeneticsMatterEaterBasic
+  message: genetics-matter-eater-message
+  typeDeviation: Base
+  costInstability: 10
+  addComponent:
+  - type: MatterEaterGen
+
+- type: structuralEnzymes
   id: GeneticsSmallHeightBasic
   message: genetics-small-height-message
   typeDeviation: Base
@@ -32,17 +57,10 @@
   - type: PsyResistGen
 
 - type: structuralEnzymes
-  id: GeneticsEmpatheticThoughtBasic
-  message: genetics-empathetic-thought-message
-  typeDeviation: Base
-  costInstability: 5
-  addComponent:
-  - type: EmpatheticThoughtGen
-
-- type: structuralEnzymes
   id: GeneticsTelekinesisBasic
   message: genetics-telekinesis-message
   typeDeviation: Base
+  chanceAssimilation: 0.15
   costInstability: 15
   addComponent:
   - type: TelekinesisGen

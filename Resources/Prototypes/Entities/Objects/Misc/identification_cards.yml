@@ -25,6 +25,8 @@
     - WhitelistChameleonIdCard
   - type: StealTarget
     stealGroup: IDCard
+  - type: EdibleMatter # Corvax-Wega-Add
+    canBeEaten: false # Corvax-Wega-Add
 
 #IDs with layers
 

@@ -1,4 +1,4 @@
-# Intermediate
+# Intermediate / B E A
 - type: structuralEnzymes
   id: GeneticsChameleonIntermediate
   message: genetics-chameleon-message
@@ -32,6 +32,14 @@
   costInstability: 10
   addComponent:
   - type: FlashImmunity
+
+- type: structuralEnzymes
+  id: GeneticsNightVisionIntermediate
+  message: genetics-night-vision-message
+  typeDeviation: Intermediate
+  costInstability: 10
+  addComponent:
+  - type: NightVision
 
 - type: structuralEnzymes
   id: GeneticsPolymorphismIntermediate

@@ -459,6 +459,8 @@
     price: 750
   - type: StealTarget
     stealGroup: ClothingOuterHardsuitRd
+  - type: EdibleMatter # Corvax-Wega-Add
+    canBeEaten: false # Corvax-Wega-Add
 
 #Head of Security's Hardsuit
 - type: entity

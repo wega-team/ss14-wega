@@ -578,13 +578,9 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
     {
         if (_random.NextFloat() < 0.25f)
         {
-            var heatDamage = new DamageSpecifier { DamageDict = { { "Heat", 2.5 } } };
-            var bluntDamage = new DamageSpecifier { DamageDict = { { "Blunt", 10 } } };
-            var structuralDamage = new DamageSpecifier { DamageDict = { { "Structural", 2 } } };
+            var damage = new DamageSpecifier { DamageDict = { { "Heat", 2.5 }, { "Blunt", 10 }, { "Structural", 2 } } };
 
-            _damage.TryChangeDamage(uid, heatDamage, true);
-            _damage.TryChangeDamage(uid, bluntDamage, true);
-            _damage.TryChangeDamage(uid, structuralDamage, true);
+            _damage.TryChangeDamage(uid, damage, true);
 
             _chat.TryEmoteWithoutChat(uid, _prototype.Index<EmotePrototype>("Scream"), true);
             _popup.PopupEntity(Loc.GetString("dna-instability-stage-two"), uid, uid, PopupType.SmallCaution);
@@ -595,13 +591,9 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
     {
         if (_random.NextFloat() < 0.5f)
         {
-            var heatDamage = new DamageSpecifier { DamageDict = { { "Heat", 5 } } };
-            var bluntDamage = new DamageSpecifier { DamageDict = { { "Blunt", 50 } } };
-            var structuralDamage = new DamageSpecifier { DamageDict = { { "Structural", 4 } } };
+            var damage = new DamageSpecifier { DamageDict = { { "Heat", 5 }, { "Blunt", 50 }, { "Structural", 4 } } };
 
-            _damage.TryChangeDamage(uid, heatDamage, true);
-            _damage.TryChangeDamage(uid, bluntDamage, true);
-            _damage.TryChangeDamage(uid, structuralDamage, true);
+            _damage.TryChangeDamage(uid, damage, true);
 
             _chat.TryEmoteWithoutChat(uid, _prototype.Index<EmotePrototype>("Scream"), true);
             _popup.PopupEntity(Loc.GetString("dna-instability-stage-three"), uid, uid, PopupType.LargeCaution);
@@ -609,7 +601,6 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
     }
     #endregion
 
-    #region Modify U.I.
     public void ChangeDna(Entity<DnaModifierComponent> ent, EnzymeInfo enzyme)
     {
         if (enzyme.Identifier != null) ent.Comp.UniqueIdentifiers = enzyme.Identifier;
@@ -623,13 +614,10 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
 
     public void ChangeDna(Entity<DnaModifierComponent> ent, int type)
     {
-        if (type == 0)
+        switch (type)
         {
-            TryChangeUniqueIdentifiers(ent);
-        }
-        else if (type == 1)
-        {
-            TryChangeStructuralEnzymes(ent);
+            case 0: TryChangeUniqueIdentifiers(ent); break;
+            case 1: TryChangeStructuralEnzymes(ent); break;
         }
     }
 
@@ -641,6 +629,8 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
         TryChangeUniqueIdentifiers((uid, uid.Comp));
         TryChangeStructuralEnzymes((uid, uid.Comp));
     }
+
+    #region Modify U.I.
 
     private void TryChangeUniqueIdentifiers(Entity<DnaModifierComponent> ent, HumanoidAppearanceComponent? humanoid = null)
     {

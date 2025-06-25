@@ -15,3 +15,18 @@
     transferName: true
     revertOnCrit: false
     revertOnDeath: false
+
+#Genetics
+- type: polymorph
+  id: HulkPolymorph
+  configuration:
+    entity: MobHulk
+    forced: true
+    duration: 600
+
+- type: polymorph
+  id: HulkPolymorphAlt
+  configuration:
+    entity: MobZilla
+    forced: true
+    duration: 600

@@ -17,6 +17,12 @@
   extendedAccess:
   - Kitchen
   - Hydroponics
+  # Corvax-Wega-Genetics-start
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: SoberGen
+  # Corvax-Wega-Genetics-end
 
 - type: startingGear
   id: BartenderGear
