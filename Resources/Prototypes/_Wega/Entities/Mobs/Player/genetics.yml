@@ -5,6 +5,7 @@
   description: "HE'S BIG AND STRONG!"
   components:
   - type: Hulk
+  - type: LoudAccent
   - type: Physics
     bodyType: KinematicController
   - type: Fixtures
@@ -18,6 +19,12 @@
         - MobMask
         layer:
         - MobLayer
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+  - type: NpcFactionMember
+    factions:
+    - SimpleHostile
   - type: MobThresholds
     thresholds:
       0: Alive

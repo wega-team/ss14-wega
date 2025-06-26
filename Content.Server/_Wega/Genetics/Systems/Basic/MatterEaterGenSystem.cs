@@ -8,7 +8,6 @@ using Content.Shared.DoAfter;
 using Content.Shared.Edible.Matter;
 using Content.Shared.Genetics;
 using Content.Shared.Interaction;
-using Content.Shared.Interaction.Events;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
@@ -39,28 +38,8 @@ public sealed class MatterEaterSystem : EntitySystem
 
     public override void Initialize()
     {
-        SubscribeLocalEvent<EdibleMatterComponent, UseInHandEvent>(OnUseInHand);
-        SubscribeLocalEvent<EdibleMatterComponent, AfterInteractEvent>(OnAfterInteract);
         SubscribeLocalEvent<EdibleMatterComponent, MatterEaterDoAfterEvent>(OnDoAfter);
         SubscribeLocalEvent<EdibleMatterComponent, GetVerbsEvent<AlternativeVerb>>(AddMatterEatVerb);
-    }
-
-    private void OnUseInHand(Entity<EdibleMatterComponent> ent, ref UseInHandEvent args)
-    {
-        if (args.Handled || !ent.Comp.CanBeEaten)
-            return;
-
-        TryEatMatter(args.User, args.User, ent, ent.Comp);
-        args.Handled = true;
-    }
-
-    private void OnAfterInteract(Entity<EdibleMatterComponent> ent, ref AfterInteractEvent args)
-    {
-        if (args.Handled || args.Target == null || !args.CanReach)
-            return;
-
-        TryEatMatter(args.User, args.Target.Value, ent, ent.Comp);
-        args.Handled = true;
     }
 
     public bool TryEatMatter(EntityUid user, EntityUid target, EntityUid matter, EdibleMatterComponent comp)

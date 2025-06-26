@@ -6,7 +6,9 @@ using Content.Shared.Forensics.Components;
 using Content.Shared.Genetics;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Markings;
+using Content.Shared.Inventory;
 using Content.Shared.Speech.Synthesis.Components;
+using Content.Shared.Wagging;
 
 namespace Content.Server.Genetics.System;
 
@@ -51,6 +53,19 @@ public sealed partial class DnaModifierSystem
 
         if (TryComp<SpeechSynthesisComponent>(entity, out var barks) && TryComp<SpeechSynthesisComponent>(target, out var targetBarks))
             barks.VoicePrototypeId = targetBarks.VoicePrototypeId;
+
+        if (TryComp<InventoryComponent>(entity, out var inventory) && TryComp<InventoryComponent>(target, out var targetInventory))
+        {
+            _inventory.CloneInventory((entity, inventory), targetInventory);
+            Dirty(entity, inventory);
+        }
+
+        if (HasComp<WaggingComponent>(target))
+            EnsureComp<WaggingComponent>(entity);
+        else
+            RemComp<WaggingComponent>(entity);
+
+        entity.Comp.UniqueIdentifiers!.Gender = target.Comp.UniqueIdentifiers!.Gender;
 
         // Nose cloning
         if (targetHumanoid.MarkingSet.TryGetCategory(MarkingCategories.Snout, out var snoutMarkings))
