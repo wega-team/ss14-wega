@@ -28,7 +28,6 @@
   id: GeneticsSmallHeightBasic
   message: genetics-small-height-message
   typeDeviation: Base
-  costInstability: 5
   addComponent:
   - type: SmallHeight
 
