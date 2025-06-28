@@ -57,6 +57,9 @@
     spawned:
     - id: FoodMeatSkrell
       amount: 5
+  - type: DnaModifier
+    upper: MobSkrell
+    lowest: MobSkrellkey
 
 - type: entity
   parent: MobHumanDummy

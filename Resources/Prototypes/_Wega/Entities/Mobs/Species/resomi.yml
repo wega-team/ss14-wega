@@ -198,6 +198,10 @@
             sprite: _Wega/Mobs/Species/Resomi/displacement.rsi
             state: anal
     # Corvax-Wega-end
+  - type: DnaModifier
+    upper: MobResomi
+    lowest: MobStokkey
+
 - type: entity
   parent: BaseSpeciesDummy
   id: MobResomiDummy

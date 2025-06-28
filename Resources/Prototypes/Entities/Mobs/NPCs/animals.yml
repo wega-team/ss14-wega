@@ -2561,6 +2561,11 @@
     damage:
       types:
         Piercing: 6
+  # Corvax-Wega-Genetics-start
+  - type: DnaModifier
+    upper: MobArachnid
+    lowest: MobGiantSpider
+  # Corvax-Wega-Genetics-end
 
 - type: entity
   parent:
@@ -3059,6 +3064,12 @@
   - type: MovementSpeedModifier
     baseWalkSpeed: 2
     baseSprintSpeed: 4
+  # Corvax-Wega-Genetics-start
+  - type: DnaModifier
+    upper: MobFelinid
+    lowest: MobCat
+  # Corvax-Wega-Genetics-end
+
 
 - type: entity
   name: calico cat
@@ -3632,6 +3643,11 @@
     reformTime: 10
     popupText: diona-reform-attempt
     reformPrototype: MobDionaReformed
+  # Corvax-Wega-Genetics-start
+  - type: DnaModifier
+    upper: MobDiona
+    lowest: MobDionaNymph
+  # Corvax-Wega-Genetics-end
 
 - type: entity
   parent: MobDionaNymph

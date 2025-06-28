@@ -68,7 +68,12 @@
       types:
         Asphyxiation: -2.0
   - type: Wagging
-
+  # Corvax-Wega-Genetics-start
+  - type: DnaModifier
+    upper: MobTajaran
+    lowest: MobTajkey
+  # Corvax-Wega-Genetics-end
+  
 - type: entity
   save: false
   name: Urist McHands

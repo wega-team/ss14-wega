@@ -76,6 +76,9 @@
       Male: FelinidSoundM
       Female: FelinidSoundF
       Unsexed: FelinidSoundM
+  - type: DnaModifier
+    upper: MobFelinid
+    lowest: MobCat
 
 - type: entity
   parent: MobHumanDummy

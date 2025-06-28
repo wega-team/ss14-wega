@@ -125,7 +125,11 @@
   - type: Inventory
     templateId: arachnid
     speciesId: arachnid
-
+  # Corvax-Wega-Genetics-start
+  - type: DnaModifier
+    upper: MobArachnid
+    lowest: MobGiantSpider
+  # Corvax-Wega-Genetics-end
 
 - type: entity
   parent: BaseSpeciesDummy

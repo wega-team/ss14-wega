@@ -84,6 +84,11 @@
       types:
         Asphyxiation: -2.0
   - type: Wagging
+  # Corvax-Wega-Genetics-start
+  - type: DnaModifier
+    upper: MobVulpkanin
+    lowest: MobWolfling
+  # Corvax-Wega-Genetics-end
 
 - type: entity
   save: false
