@@ -9,6 +9,6 @@ genetics-cloak-of-darkness-message = Вы начинаете исчезать в
 genetics-cold-resistance-message = От вашей кожи веет жаром.
 genetics-flash-immunity-message = Вспышки больше не влияют на вас.
 genetics-night-vision-message = Свет всегда был таким ярким?
-genetics-polymorphism-message = Почему-то ыф чувствуете себя не совсем собой.
+genetics-polymorphism-message = Почему-то вы чувствуете себя не совсем собой.
 genetics-regenerate-message = Ваши раны начинают заживать.
 genetics-super-speed-message = Вы чувствуете себя быстрым и свободным.
