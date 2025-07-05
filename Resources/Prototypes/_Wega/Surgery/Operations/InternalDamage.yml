@@ -72,7 +72,7 @@
   supportedTypes:
     - Heat
     - Shock
-  chance: 1
+  chance: 0.0025
 
 ### Пулевые ранения ###
 - type: internalDamage
