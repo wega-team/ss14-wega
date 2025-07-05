@@ -262,7 +262,7 @@ public sealed partial class SurgerySystem : EntitySystem
     }
 
     private void OnThrow(Entity<SterileComponent> entity, ref BeforeThrowEvent args)
-        => RemCompDeferred<SterileComponent>(entity);
+        => RemComp<SterileComponent>(entity);
 
     private bool TryGetOperatingTable(EntityUid patient, out float tableModifier)
     {

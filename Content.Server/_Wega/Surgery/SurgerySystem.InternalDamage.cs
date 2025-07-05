@@ -19,6 +19,7 @@ using Content.Shared.Standing;
 using Content.Shared.Stunnable;
 using Content.Shared.Surgery;
 using Content.Shared.Surgery.Components;
+using Content.Shared.Traits.Assorted;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
@@ -156,6 +157,8 @@ public sealed partial class SurgerySystem
             _popup.PopupEntity(Loc.GetString("surgery-decapitated"), patient, PopupType.MediumCaution);
 
             _audio.PlayPvs(GibSound, patient);
+            if (!_mobState.IsDead(patient) && !HasComp<PainNumbnessComponent>(patient))
+                _chat.TryEmoteWithoutChat(patient, _proto.Index<EmotePrototype>("Scream"), true);
 
             var damage = new DamageSpecifier { DamageDict = { { SlashDamage, 200 } } };
             _damage.TryChangeDamage(patient, damage, true);
@@ -210,7 +213,7 @@ public sealed partial class SurgerySystem
                     _bloodstream.TryModifyBleedAmount(entity, 5f);
 
                 _audio.PlayPvs(GibSound, entity);
-                if (!_mobState.IsDead(entity))
+                if (!_mobState.IsDead(entity) && !HasComp<PainNumbnessComponent>(entity))
                     _chat.TryEmoteWithoutChat(entity, _proto.Index<EmotePrototype>("Scream"), true);
 
                 _transform.SetCoordinates(limbId, Transform(entity).Coordinates);

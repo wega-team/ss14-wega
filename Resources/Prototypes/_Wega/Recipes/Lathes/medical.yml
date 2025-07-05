@@ -5,3 +5,26 @@
   materials:
     Steel: 500
     Plastic: 300
+
+- type: latheRecipe
+  parent: BaseSurgicalRecipe
+  id: FixOVein
+  result: FixOVein
+  materials:
+    Steel: 200
+    Plastic: 200
+
+- type: latheRecipe
+  parent: BaseSurgicalRecipe
+  id: BoneSetter
+  result: BoneSetter
+  materials:
+    Steel: 400
+
+- type: latheRecipe
+  parent: BaseSurgicalRecipe
+  id: BoneGel
+  result: BoneGel
+  materials:
+    Steel: 100
+    Plastic: 300

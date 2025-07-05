@@ -67,6 +67,8 @@
     stealGroup: ClothingShoesBootsMagAdv
   - type: EdibleMatter # Corvax-Wega-Add
     canBeEaten: false # Corvax-Wega-Add
+  - type: Magboots # Corvax-Wega-AdvMagboots
+    disabledAutoOff: true # Corvax-Wega-AdvMagboots
 
 - type: entity
   parent: [ClothingShoesBootsMagBase]
@@ -86,6 +88,8 @@
   - type: ClothingSpeedModifier
     walkModifier: 1.1 #PVS isn't too much of an issue when you are blind...
     sprintModifier: 1.1
+  - type: Magboots # Corvax-Wega-AdvMagboots
+    disabledAutoOff: true # Corvax-Wega-AdvMagboots
   - type: StaticPrice
     price: 3000
 

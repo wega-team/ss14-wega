@@ -6,6 +6,25 @@ surgery-parallel = (П)
 surgery-tool-required = Требуется инструмент: {$tool}
 surgery-condition-required = Требуется часть тела: {$condition}
 
+surgery-condition-required-head = голова
+surgery-condition-required-torso = тело
+surgery-condition-required-left_arm = левая рука
+surgery-condition-required-right_arm = правая рука
+surgery-condition-required-left_hand = левая кисть
+surgery-condition-required-right_hand = правая кисть
+surgery-condition-required-left_leg = левая нога
+surgery-condition-required-right_leg = правая нога
+surgery-condition-required-left_foot = левая стопа
+surgery-condition-required-right_foot = правая стопа
+surgery-condition-required-heart = сердце
+surgery-condition-required-lungs = лёгкие
+surgery-condition-required-stomach = желудок
+surgery-condition-required-liver = печень
+surgery-condition-required-kidneys = почки
+surgery-condition-required-brain = мозг
+surgery-condition-required-eyes = глаза
+surgery-condition-required-slimecore = слаймовое ядро
+
 body-scanner-title = Сканер тела
 body-scanner-connected = Подключен к операционному столу
 body-scanner-disconnected = Не подключен к операционному столу

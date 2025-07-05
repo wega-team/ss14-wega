@@ -61,6 +61,7 @@ public sealed partial class SurgerySystem
         if (!_ui.HasUi(patient, SurgeryUiKey.Key))
             return;
 
+        Dirty(patient, comp);
         var groups = new List<SurgeryGroupDto>();
         if (comp.CurrentNode == "Default")
         {

@@ -128,6 +128,9 @@ public sealed partial class SurgeryStep
     [DataField("requiredPart")]
     public string? RequiredPart { get; private set; }
 
+    [DataField("entityPreview")]
+    public string? EntityPreview { get; private set; }
+
     [DataField("damageType")]
     public ProtoId<InternalDamagePrototype>? DamageType { get; private set; }
 
@@ -138,7 +141,7 @@ public sealed partial class SurgeryStep
     public float SuccessChance { get; private set; } = 1f;
 
     [DataField("failureEffect")]
-    public List<SurgeryFailedType> FailureEffect { get; private set; }
+    public List<SurgeryFailedType>? FailureEffect { get; private set; }
 }
 
 [Serializable]

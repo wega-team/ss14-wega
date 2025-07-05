@@ -1,0 +1,4 @@
+- type: surgeryGraph
+  id: TestSurgery
+  startNodes:
+    - TestNode

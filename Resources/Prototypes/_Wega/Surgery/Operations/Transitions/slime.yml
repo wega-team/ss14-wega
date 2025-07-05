@@ -56,6 +56,7 @@
           tag: [ CableCoil, Crowbar ]
           action: RemoveOrgan
           failureEffect: [ Bleeding, Pain ]
+          entityPreview: SentientSlimeCore
           requiredPart: SlimeCore
           sound:
             path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
@@ -67,6 +68,7 @@
         - tag: [ SlimeCore ]
           action: InsertOrgan
           failureEffect: [ Pain ]
+          entityPreview: SentientSlimeCore
           requiredPart: SlimeCore
           sound:
             collection: Squishes
@@ -82,6 +84,7 @@
           tag: [ CableCoil, Crowbar ]
           action: RemoveOrgan
           failureEffect: [ Bleeding, Pain ]
+          entityPreview: OrganSlimeLungs
           requiredPart: Lungs
           sound:
             path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
@@ -93,6 +96,7 @@
         - tag: [ Lungs ]
           action: InsertOrgan
           failureEffect: [ Pain ]
+          entityPreview: OrganSlimeLungs
           requiredPart: Lungs
           sound:
             collection: Squishes

@@ -98,20 +98,21 @@ public sealed partial class SurgeryWindow : FancyWindow
 
         if (state.Groups.Count > 0)
         {
-            var groupToShow = comp.CurrentNode != "Default"
-                ? state.Groups.FirstOrDefault(g => g.TargetNode == comp.CurrentNode)
-                : state.Groups[0];
+            int groupIndex = comp.CurrentNode != "Default"
+                ? state.Groups.FindIndex(g => g.TargetNode == comp.CurrentTargetNode)
+                : 0;
 
-            if (groupToShow != null)
+            if (groupIndex >= 0)
             {
-                ShowSteps(groupToShow, comp);
-                groupToSelect ??= GroupListContainer.GetChild(state.Groups.IndexOf(groupToShow)) as Button;
-            }
-        }
+                var groupToShow = state.Groups[groupIndex];
+                groupToSelect ??= GroupListContainer.GetChild(groupIndex) as Button;
 
-        if (groupToSelect != null)
-        {
-            SelectGroup(groupToSelect);
+                if (groupToSelect != null)
+                {
+                    SelectGroup(groupToSelect);
+                    ShowSteps(groupToShow, comp);
+                }
+            }
         }
     }
 
@@ -144,8 +145,8 @@ public sealed partial class SurgeryWindow : FancyWindow
 
         foreach (var stepDto in visibleSteps)
         {
-            var statusIcon = stepDto.IsCompleted ? "✓" : stepDto.IsEnabled ? "→" : "✗";
-            var stepText = $"{statusIcon} {stepDto.Name}";
+            var statusIcon = stepDto.IsCompleted ? "✓" : stepDto == firstEnabledNonParallelStep ? "→" : "";
+            var stepText = $"{statusIcon}{stepDto.Name}";
 
             var isStepActive = stepDto.IsEnabled && !stepDto.IsCompleted &&
                 (stepDto.Name.Contains(Loc.GetString("surgery-parallel")) || stepDto == firstEnabledNonParallelStep);
@@ -159,7 +160,7 @@ public sealed partial class SurgeryWindow : FancyWindow
                 HorizontalExpand = true
             };
 
-            if (!string.IsNullOrEmpty(stepDto.RequiredTool))
+            if (!string.IsNullOrEmpty(stepDto.RequiredTool) && string.IsNullOrEmpty(stepDto.EntityPreview))
             {
                 var toolContainer = new BoxContainer
                 {
@@ -172,6 +173,21 @@ public sealed partial class SurgeryWindow : FancyWindow
                 };
 
                 stepButton.AddChild(toolContainer);
+            }
+
+            if (!string.IsNullOrEmpty(stepDto.EntityPreview))
+            {
+                var entityContainer = new BoxContainer
+                {
+                    Orientation = BoxContainer.LayoutOrientation.Horizontal,
+                    HorizontalExpand = true,
+                    Children =
+                    {
+                        CreateEntityIcon(stepDto.EntityPreview)
+                    }
+                };
+
+                stepButton.AddChild(entityContainer);
             }
 
             stepButton.OnPressed += _ =>
@@ -217,13 +233,48 @@ public sealed partial class SurgeryWindow : FancyWindow
         return container;
     }
 
+    private Control CreateEntityIcon(string entityPreview)
+    {
+        var container = new BoxContainer
+        {
+            MinSize = new Vector2(32, 32),
+            MaxSize = new Vector2(32, 32),
+            Margin = new Thickness(4)
+        };
+
+        if (_prototypeManager.TryIndex<EntityPrototype>(entityPreview, out var entity))
+        {
+            var icon = new EntityPrototypeView
+            {
+                Scale = new Vector2(1, 1),
+                SetSize = new Vector2(32, 32),
+                OverrideDirection = Direction.South,
+                Margin = new Thickness(2)
+            };
+            icon.SetPrototype(entity.ID);
+            container.AddChild(icon);
+        }
+        else
+        {
+            container.AddChild(new Label { Text = "?" });
+        }
+
+        return container;
+    }
+
     private string GetStepTooltip(SurgeryStepDto step)
     {
         var tooltip = "";
-        if (!string.IsNullOrEmpty(step.RequiredTool))
-            tooltip += $"{Loc.GetString("surgery-tool-required", ("tool", step.RequiredTool))}\n";
+        var tool = step.RequiredTool;
+        if (!string.IsNullOrEmpty(tool) && _prototypeManager.TryIndex<ToolQualityPrototype>(tool, out var toolQuality) &&
+            _prototypeManager.TryIndex<EntityPrototype>(toolQuality.Spawn, out var toolProto))
+            tool = toolProto.Name;
+
+        if (!string.IsNullOrEmpty(tool))
+            tooltip += $"{Loc.GetString("surgery-tool-required", ("tool", tool))}\n";
         if (!string.IsNullOrEmpty(step.RequiredCondition))
-            tooltip += Loc.GetString("surgery-condition-required", ("condition", step.RequiredCondition));
+            tooltip += Loc.GetString("surgery-condition-required",
+                ("condition", Loc.GetString($"surgery-condition-required-{step.RequiredCondition.ToLower()}")));
         return tooltip.Trim();
     }
 }

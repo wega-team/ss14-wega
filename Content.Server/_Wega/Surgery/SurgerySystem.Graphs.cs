@@ -1,7 +1,9 @@
 using System.Linq;
+using Content.Server.Stack;
 using Content.Shared.Body.Organ;
 using Content.Shared.DoAfter;
 using Content.Shared.Hands.Components;
+using Content.Shared.Stacks;
 using Content.Shared.Surgery;
 using Content.Shared.Surgery.Components;
 using Content.Shared.Tag;
@@ -15,6 +17,7 @@ public sealed partial class SurgerySystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly TagSystem _tag = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
+    [Dependency] private readonly StackSystem _stack = default!;
 
     private void GraphsInitialize()
     {
@@ -94,10 +97,6 @@ public sealed partial class SurgerySystem
             }
         }
 
-        EntityUid? item = null;
-        if (args.Used != null)
-            item = args.Used.Value;
-
         if (step != null)
         {
             if (step.Sound != null)
@@ -105,11 +104,20 @@ public sealed partial class SurgerySystem
                 _audio.PlayPredicted(step.Sound, uid, null);
             }
 
+            if (args.Used == null)
+                return;
+
+            var item = args.Used.Value;
+
+            // For stacks
+            if (TryComp<StackComponent>(item, out var stack) && stack.Count > 1)
+                _stack.SetCount(item, stack.Count - 1);
+
             bool foundMatch = false;
             float successModifier = 1f;
-            if (step.Tool != null && step.Tool.Count > 0 && item != null)
+            if (step.Tool != null && step.Tool.Count > 0)
             {
-                if (_tool.HasQuality(item.Value, step.Tool[0]))
+                if (_tool.HasQuality(item, step.Tool[0]))
                 {
                     successModifier = 1f;
                     foundMatch = true;
@@ -118,7 +126,7 @@ public sealed partial class SurgerySystem
                 {
                     for (int i = 1; i < step.Tool.Count; i++)
                     {
-                        if (_tool.HasQuality(item.Value, step.Tool[i]))
+                        if (_tool.HasQuality(item, step.Tool[i]))
                         {
                             successModifier = 1f - i * 0.1f;
                             foundMatch = true;
@@ -128,11 +136,11 @@ public sealed partial class SurgerySystem
                 }
             }
 
-            if (!foundMatch && step.Tag != null && step.Tag.Count > 0 && item != null)
+            if (!foundMatch && step.Tag != null && step.Tag.Count > 0)
             {
                 for (int i = 0; i < step.Tag.Count; i++)
                 {
-                    if (_tag.HasTag(item.Value, step.Tag[i]))
+                    if (_tag.HasTag(item, step.Tag[i]))
                     {
                         successModifier = 0.9f - i * 0.1f;
                         foundMatch = true;
@@ -201,7 +209,8 @@ public sealed partial class SurgerySystem
                     isEnabled: !comp.CompletedParallelSteps.Contains(s) && CheckStepConditions(patient, s),
                     isVisible: CheckStepConditions(patient, s),
                     requiredTool: s.Tool?.FirstOrDefault().ToString(),
-                    requiredCondition: s.RequiredPart
+                    requiredCondition: s.RequiredPart,
+                    entityPreview: s.EntityPreview
                 )));
             }
             else
@@ -215,7 +224,8 @@ public sealed partial class SurgerySystem
                         isEnabled: !isCompleted,
                         isVisible: CheckStepConditions(patient, s),
                         requiredTool: s.Tool?.FirstOrDefault().ToString(),
-                        requiredCondition: s.RequiredPart
+                        requiredCondition: s.RequiredPart,
+                        entityPreview: s.EntityPreview
                     ));
                 }
             }
@@ -355,6 +365,9 @@ public sealed partial class SurgerySystem
             _popup.PopupEntity(Loc.GetString("surgery-missing-tool"), user, user);
             return;
         }
+
+        if (TryComp<SurgicalToolComponent>(item.Value, out var surgicalTool))
+            time /= surgicalTool.Modifier;
 
         int? stepIndex = null;
 

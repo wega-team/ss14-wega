@@ -11,6 +11,7 @@ using Content.Shared.Popups;
 using Content.Shared.Random.Helpers;
 using Content.Shared.Surgery;
 using Content.Shared.Surgery.Components;
+using Content.Shared.Traits.Assorted;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -22,7 +23,7 @@ public sealed partial class SurgerySystem
     [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly BloodstreamSystem _bloodstream = default!;
 
-    private void PerformSurgeryEffect(SurgeryActionType action, string? requiredPart, ProtoId<InternalDamagePrototype>? damageType, float successChance, List<SurgeryFailedType> failureEffect, EntityUid patient, EntityUid? item)
+    private void PerformSurgeryEffect(SurgeryActionType action, string? requiredPart, ProtoId<InternalDamagePrototype>? damageType, float successChance, List<SurgeryFailedType>? failureEffect, EntityUid patient, EntityUid? item)
     {
         if (!TryComp<OperatedComponent>(patient, out var comp))
             return;
@@ -69,11 +70,11 @@ public sealed partial class SurgerySystem
         }
 
         // Any action without anesthesia will cause pain.
-        if (!HasComp<SleepingComponent>(patient) && !comp.OperatedPart && !_mobState.IsDead(patient))
+        if (!HasComp<SleepingComponent>(patient) && !HasComp<PainNumbnessComponent>(patient) && !comp.OperatedPart && !_mobState.IsDead(patient))
             _chat.TryEmoteWithoutChat(patient, _proto.Index<EmotePrototype>("Scream"), true);
     }
 
-    private void PerformCut(Entity<OperatedComponent> patient, float successChance, List<SurgeryFailedType> failureEffect)
+    private void PerformCut(Entity<OperatedComponent> patient, float successChance, List<SurgeryFailedType>? failureEffect)
     {
         if (patient.Comp.Surgeon == null)
             return;
@@ -90,7 +91,7 @@ public sealed partial class SurgerySystem
         _bloodstream.TryModifyBleedAmount(patient, 2f);
     }
 
-    private void PerformRetract(Entity<OperatedComponent> patient, float successChance, List<SurgeryFailedType> failureEffect)
+    private void PerformRetract(Entity<OperatedComponent> patient, float successChance, List<SurgeryFailedType>? failureEffect)
     {
         if (patient.Comp.Surgeon == null)
             return;
@@ -102,7 +103,7 @@ public sealed partial class SurgerySystem
         }
     }
 
-    private void PerformClamp(Entity<OperatedComponent> patient, float successChance, List<SurgeryFailedType> failureEffect)
+    private void PerformClamp(Entity<OperatedComponent> patient, float successChance, List<SurgeryFailedType>? failureEffect)
     {
         if (patient.Comp.Surgeon == null)
             return;
@@ -119,7 +120,7 @@ public sealed partial class SurgerySystem
         _bloodstream.TryModifyBleedAmount(patient, -10f);
     }
 
-    private void PerformHealInternalDamage(Entity<OperatedComponent> patient, string? requiredPart, ProtoId<InternalDamagePrototype>? damageType, float successChance, List<SurgeryFailedType> failureEffect)
+    private void PerformHealInternalDamage(Entity<OperatedComponent> patient, string? requiredPart, ProtoId<InternalDamagePrototype>? damageType, float successChance, List<SurgeryFailedType>? failureEffect)
     {
         if (patient.Comp.Surgeon == null || string.IsNullOrEmpty(requiredPart) || damageType == null)
             return;
@@ -139,7 +140,7 @@ public sealed partial class SurgerySystem
         }
     }
 
-    private void PerformRemoveOrgan(Entity<OperatedComponent> patient, string? requiredOrgan, float successChance, List<SurgeryFailedType> failureEffect)
+    private void PerformRemoveOrgan(Entity<OperatedComponent> patient, string? requiredOrgan, float successChance, List<SurgeryFailedType>? failureEffect)
     {
         if (patient.Comp.Surgeon == null || string.IsNullOrEmpty(requiredOrgan))
             return;
@@ -167,7 +168,7 @@ public sealed partial class SurgerySystem
             _bloodstream.TryModifyBleedAmount(patient, 2f);
     }
 
-    private void PerformInsertOrgan(Entity<OperatedComponent> patient, EntityUid? item, string? requiredOrgan, float successChance, List<SurgeryFailedType> failureEffect)
+    private void PerformInsertOrgan(Entity<OperatedComponent> patient, EntityUid? item, string? requiredOrgan, float successChance, List<SurgeryFailedType>? failureEffect)
     {
         if (patient.Comp.Surgeon == null || item == null || string.IsNullOrEmpty(requiredOrgan))
             return;
@@ -190,7 +191,7 @@ public sealed partial class SurgerySystem
         }
     }
 
-    private void PerformRemovePart(Entity<OperatedComponent> patient, string? requiredPart, float successChance, List<SurgeryFailedType> failureEffect)
+    private void PerformRemovePart(Entity<OperatedComponent> patient, string? requiredPart, float successChance, List<SurgeryFailedType>? failureEffect)
     {
         if (patient.Comp.Surgeon == null || string.IsNullOrEmpty(requiredPart))
             return;
@@ -270,7 +271,7 @@ public sealed partial class SurgerySystem
             _bloodstream.TryModifyBleedAmount(patient, 2f);
     }
 
-    private void PerformAttachPart(Entity<OperatedComponent> patient, EntityUid? item, string? requiredPart, float successChance, List<SurgeryFailedType> failureEffect)
+    private void PerformAttachPart(Entity<OperatedComponent> patient, EntityUid? item, string? requiredPart, float successChance, List<SurgeryFailedType>? failureEffect)
     {
         if (patient.Comp.Surgeon == null || item == null || string.IsNullOrEmpty(requiredPart) || !TryComp<BodyPartComponent>(item, out _))
             return;
@@ -297,7 +298,7 @@ public sealed partial class SurgerySystem
         _popup.PopupEntity(Loc.GetString("surgery-part-attached"), patient);
     }
 
-    private void PerformImplant(Entity<OperatedComponent> patient, EntityUid? item, string? requiredPart, float successChance, List<SurgeryFailedType> failureEffect)
+    private void PerformImplant(Entity<OperatedComponent> patient, EntityUid? item, string? requiredPart, float successChance, List<SurgeryFailedType>? failureEffect)
     {
         if (patient.Comp.Surgeon == null || item == null || string.IsNullOrEmpty(requiredPart))
             return;
@@ -355,8 +356,11 @@ public sealed partial class SurgerySystem
             : fullSlotId;
     }
 
-    private void HandleFailure(Entity<OperatedComponent> patient, List<SurgeryFailedType> failureEffect, string? bodyPart = null)
+    private void HandleFailure(Entity<OperatedComponent> patient, List<SurgeryFailedType>? failureEffect, string? bodyPart = null)
     {
+        if (failureEffect == null || failureEffect.Count == 0)
+            return;
+
         var effect = _random.Pick(failureEffect);
         switch (effect)
         {
@@ -375,14 +379,15 @@ public sealed partial class SurgerySystem
                 TryAddInternalDamage(patient, "BoneFracture", bodyPart: bodyPart);
                 break;
             case SurgeryFailedType.Pain:
-                if (!HasComp<SleepingComponent>(patient) && !patient.Comp.OperatedPart && !_mobState.IsDead(patient))
+                if (!HasComp<SleepingComponent>(patient) && !HasComp<PainNumbnessComponent>(patient) && !patient.Comp.OperatedPart && !_mobState.IsDead(patient))
                     _chat.TryEmoteWithoutChat(patient, _proto.Index<EmotePrototype>("Scream"), true);
 
                 _jittering.DoJitter(patient, TimeSpan.FromSeconds(5), true);
                 break;
         }
 
-        _popup.PopupPredicted(Loc.GetString($"surgery-handle-failed-{effect.ToString().ToLower()}", ("patient", Identity.Entity(patient, EntityManager))),
-            patient, null, PopupType.MediumCaution);
+        if (effect != SurgeryFailedType.Empty)
+            _popup.PopupPredicted(Loc.GetString($"surgery-handle-failed-{effect.ToString().ToLower()}", ("patient", Identity.Entity(patient, EntityManager))),
+                patient, null, PopupType.MediumCaution);
     }
 }
