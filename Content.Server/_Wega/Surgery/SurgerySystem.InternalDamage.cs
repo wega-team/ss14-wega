@@ -126,6 +126,8 @@ public sealed partial class SurgerySystem
             _popup.PopupEntity(Loc.GetString("surgery-limb-torn-off", ("limb", Name(limbId))), patient, PopupType.SmallCaution);
 
             _audio.PlayPvs(GibSound, patient);
+            if (!_mobState.IsDead(patient) && !HasComp<PainNumbnessComponent>(patient))
+                _chat.TryEmoteWithoutChat(patient, _proto.Index<EmotePrototype>("Scream"), true);
 
             _pain.AdjustPain(patient, "Physical", 250f);
             if (HasComp<BloodstreamComponent>(patient))
@@ -157,8 +159,6 @@ public sealed partial class SurgerySystem
             _popup.PopupEntity(Loc.GetString("surgery-decapitated"), patient, PopupType.MediumCaution);
 
             _audio.PlayPvs(GibSound, patient);
-            if (!_mobState.IsDead(patient) && !HasComp<PainNumbnessComponent>(patient))
-                _chat.TryEmoteWithoutChat(patient, _proto.Index<EmotePrototype>("Scream"), true);
 
             var damage = new DamageSpecifier { DamageDict = { { SlashDamage, 200 } } };
             _damage.TryChangeDamage(patient, damage, true);
