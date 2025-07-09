@@ -15,6 +15,9 @@ namespace Content.Shared.Strangulation
         public DoAfterId? DoAfterId;
 
         [DataField]
+        public DoAfterId? BreakFreeDoAfterId;
+
+        [DataField]
         public bool Cancelled = false;
 
         [DataField]
@@ -30,6 +33,4 @@ namespace Content.Shared.Strangulation
         [DataField]
         public ProtoId<AlertPrototype> StrangledAlert = "StrangledAlert";
     }
-
-    public sealed partial class BreakFreeStrangleAlertEvent : BaseAlertEvent;
 }

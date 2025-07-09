@@ -175,6 +175,7 @@ ui-options-function-open-abilities-menu = Открыть меню действи
 ui-options-function-open-emotes-menu = Открыть меню эмоций
 # Corvax-Wega-start
 ui-options-function-open-interaction-menu = Открыть меню взаимодействия
+ui-options-function-strangle = Душить
 # Corvax-Wega-end
 ui-options-function-toggle-round-end-summary-window = Переключить окно итогов раунда
 ui-options-function-open-entity-spawn-window = Открыть меню спавна сущностей
