@@ -30,6 +30,7 @@ using Content.Shared.Movement.Pulling.Systems;
 using Robust.Server.GameObjects;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Components;
+using Content.Shared.Crawling;
 
 namespace Content.Server.Carrying
 {
@@ -82,6 +83,9 @@ namespace Content.Server.Carrying
                 return;
 
             if (HasComp<BeingCarriedComponent>(args.User) || HasComp<BeingCarriedComponent>(args.Target))
+                return;
+
+            if (TryComp(args.User, out CrawlingComponent? crawling) && crawling.IsCrawling)
                 return;
 
             if (!_mobStateSystem.IsAlive(args.User))

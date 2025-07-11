@@ -23,6 +23,7 @@ using Content.Shared.NPC.Prototypes;
 using Content.Shared.NPC.Systems;
 using Content.Shared.Zombies;
 using Robust.Shared.Audio;
+using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
@@ -35,6 +36,7 @@ namespace Content.Server.GameTicking.Rules
         [Dependency] private readonly BodySystem _body = default!;
         [Dependency] private readonly BloodCultSystem _cult = default!;
         [Dependency] private readonly IEntityManager _entityManager = default!;
+        [Dependency] private readonly ISharedPlayerManager _player = default!;
         [Dependency] private readonly IAdminLogManager _adminLogManager = default!;
         [Dependency] private readonly MetabolizerSystem _metabolism = default!;
         [Dependency] private readonly MindSystem _mind = default!;
@@ -143,8 +145,8 @@ namespace Content.Server.GameTicking.Rules
             _adminLogManager.Add(LogType.Mind, LogImpact.Medium, $"{ToPrettyString(uid)} converted into a Blood Cult");
             if (mindId == default || !_role.MindHasRole<BloodCultistComponent>(mindId))
                 _role.MindAddRole(mindId, "MindRoleBloodCultist");
-            if (mind?.Session != null)
-                _antag.SendBriefing(mind.Session, MakeBriefing(uid), Color.Red, new SoundPathSpecifier("/Audio/_Wega/Ambience/Antag/bloodcult_start.ogg"));
+            if (mind is { UserId: not null } && _player.TryGetSessionById(mind.UserId, out var session))
+                _antag.SendBriefing(session, MakeBriefing(uid), Color.Red, new SoundPathSpecifier("/Audio/_Wega/Ambience/Antag/bloodcult_start.ogg"));
             RemComp<AutoCultistComponent>(uid);
 
             MakeCultist(uid);

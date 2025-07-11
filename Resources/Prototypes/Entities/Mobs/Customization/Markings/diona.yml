@@ -16,6 +16,7 @@
   id: DionaThornsBody
   bodyPart: Chest
   markingCategory: Chest
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Diona]
   coloring:
     default:
@@ -44,6 +45,7 @@
   id: DionaFlowersBody
   bodyPart: Chest
   markingCategory: Chest
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Diona]
   coloring:
     default:
@@ -58,6 +60,7 @@
   id: DionaLeafCover
   bodyPart: Chest
   markingCategory: Chest
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Diona]
   coloring:
     default:

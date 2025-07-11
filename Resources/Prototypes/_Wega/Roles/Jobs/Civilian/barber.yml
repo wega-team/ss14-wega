@@ -23,3 +23,14 @@
     back:
     - BarberScissors
     - BarberRazor
+
+- type: chameleonOutfit
+  id: BarberChameleonOutfit
+  job: Barber
+  equipment:
+    head: ClothingHeadHatTophat
+    eyes: ClothingEyesGlassesSunglasses
+    mask: ClothingMaskBreath
+    neck: ClothingNeckScarfStripedBlack
+    outerClothing: ClothingOuterApronBar
+    gloves: ClothingHandsGlovesColorBlack

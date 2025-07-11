@@ -182,5 +182,12 @@ namespace Content.Server.Body.Components
 
         [DataField]
         public ProtoId<AlertPrototype> BleedingAlert = "Bleed";
+
+        // Corvax-Wega-Syrgery-start
+        [DataField]
+        public float MetabolismRate = 0.1f;
+        [DataField]
+        public int MaxReagentsProcessable = 5;
+        // Corvax-Wega-Syrgery-end
     }
 }

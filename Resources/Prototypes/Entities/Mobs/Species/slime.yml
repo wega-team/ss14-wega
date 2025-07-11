@@ -1,6 +1,6 @@
 - type: entity
   name: Urist McSlime
-  parent: BaseMobSpeciesOrganic
+  parent: [ BaseMobSpeciesOrganic, BaseOperated ] # Corvax-Wega-Surgery-Edit
   id: BaseMobSlimePerson
   abstract: true
   components:
@@ -16,7 +16,6 @@
   # they like eat it idk lol
   - type: Storage
     clickInsert: false
-    openOnActivate: false
     grid:
     - 0,0,1,2
     maxItemSize: Large
@@ -34,6 +33,8 @@
         type: HumanoidMarkingModifierBoundUserInterface
       enum.StrippingUiKey.Key:
         type: StrippableBoundUserInterface
+      enum.SurgeryUiKey.Key: # Corvax-Wega-Surgery
+        type: SurgeryBoundUserInterface # Corvax-Wega-Surgery
   # to prevent bag open/honk spam
   - type: UseDelay
     delay: 0.5
@@ -118,11 +119,14 @@
           32:
             sprite: Mobs/Species/Human/displacement.rsi
             state: jumpsuit-female
+  - type: Operated # Corvax-Wega-Surgery
+    raceGraph: SlimeSurgery # Corvax-Wega-Surgery
   # Corvax-Wega-Disease-start
   - type: DiseaseCarrier
     naturalImmunities:
     - Ultragigacancer
     - BleedersBite
+    - SLIMEITIS
   # Corvax-Wega-Disease-end
 
 - type: entity

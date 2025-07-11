@@ -1,10 +1,12 @@
-﻿using Content.Shared.Examine;
+﻿using Content.Shared.Chemistry.ReagentEffects; // Corvax-Wega-Disease
+using Content.Shared.Examine;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Rejuvenate;
 using Robust.Shared.Containers;
+using Robust.Shared.Random; // Corvax-Wega-Disease
 using Robust.Shared.Timing;
 
 namespace Content.Shared.Atmos.Rotting;
@@ -14,6 +16,8 @@ public abstract class SharedRottingSystem : EntitySystem
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
+    [Dependency] private readonly IRobustRandom _random = default!; // Corvax-Wega-Disease
+    private string _poolDisease = ""; // Corvax-Wega-Disease
 
     public const int MaxStages = 3;
 
@@ -29,7 +33,25 @@ public abstract class SharedRottingSystem : EntitySystem
         SubscribeLocalEvent<RottingComponent, MobStateChangedEvent>(OnRottingMobStateChanged);
         SubscribeLocalEvent<RottingComponent, RejuvenateEvent>(OnRejuvenate);
         SubscribeLocalEvent<RottingComponent, ExaminedEvent>(OnExamined);
+
+        // // Corvax-Wega-Disease-start
+        var diseaseEffect = new ChemCauseRandomDisease();
+        if (diseaseEffect.Diseases == null || diseaseEffect.Diseases.Count == 0)
+            _poolDisease = "";
+        else
+            _poolDisease = _random.Pick(diseaseEffect.Diseases);
+        // // Corvax-Wega-Disease-end
     }
+
+    // Corvax-Wega-Disease-start
+    public string RequestPoolDisease()
+    {
+        if (string.IsNullOrEmpty(_poolDisease))
+            return string.Empty;
+
+        return _poolDisease;
+    }
+    // Corvax-Wega-Disease-end
 
     private void OnPerishableMapInit(EntityUid uid, PerishableComponent component, MapInitEvent args)
     {

@@ -305,6 +305,8 @@
     sprite: _Wega/Objects/Weapons/Melee/magic_hand.rsi
     state: icon
   - type: DeleteOnDrop
+  - type: EdibleMatter
+    canBeEaten: false
   - type: Item
     size: Ginormous
 

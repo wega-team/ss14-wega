@@ -48,7 +48,7 @@ public sealed class VampireSelectClassMenuClosedEvent : EntityEventArgs
 // Hemomancer Abilities
 public sealed partial class VampireClawsActionEvent : InstantActionEvent { }
 
-public sealed partial class VampireBloodTentacleAction : EntityWorldTargetActionEvent
+public sealed partial class VampireBloodTentacleAction : WorldTargetActionEvent
 {
     [DataField]
     public EntProtoId EntityId = "EffectBloodTentacleSpawn";
@@ -70,7 +70,7 @@ public sealed partial class VampireBloodTentacleAction : EntityWorldTargetAction
     public int ExtraSpawns = 8;
 }
 
-public sealed partial class VampireBloodBarrierActionEvent : EntityWorldTargetActionEvent
+public sealed partial class VampireBloodBarrierActionEvent : WorldTargetActionEvent
 {
     [DataField]
     public EntProtoId EntityId = "BloodBarrier";
@@ -107,7 +107,7 @@ public sealed partial class VampireBloodBringersRiteActionEvent : InstantActionE
 // Umbrae Abilities
 public sealed partial class VampireCloakOfDarknessActionEvent : InstantActionEvent { }
 
-public sealed partial class VampireShadowSnareActionEvent : EntityWorldTargetActionEvent
+public sealed partial class VampireShadowSnareActionEvent : WorldTargetActionEvent
 {
     [DataField]
     public EntProtoId EntityId = "ShadowTrap";
@@ -156,7 +156,7 @@ public sealed partial class VampireOverwhelmingForceActionEvent : InstantActionE
 
 public sealed partial class VampireDemonicGraspActionEvent : EntityTargetActionEvent { }
 
-public sealed partial class VampireChargeActionEvent : EntityWorldTargetActionEvent
+public sealed partial class VampireChargeActionEvent : WorldTargetActionEvent
 {
     public string Sound = "/Audio/Effects/Footsteps/largethud.ogg";
 }
@@ -181,7 +181,7 @@ public sealed partial class VampireCommuneActionEvent : InstantActionEvent { }
 
 public sealed partial class VampirePacifyActionEvent : EntityTargetActionEvent { }
 
-public sealed partial class VampireSubspaceSwapActionEvent : EntityWorldTargetActionEvent { }
+public sealed partial class VampireSubspaceSwapActionEvent : EntityTargetActionEvent { }
 
 //public sealed partial class VampireDeployDecoyActionEvent : InstantActionEvent { }
 

@@ -43,7 +43,7 @@ public abstract class SharedMartialArtsSystem : EntitySystem
 
         foreach (var action in ent.Comp.AddedActions)
         {
-            _action.RemoveAction(ent, action);
+            _action.RemoveAction(ent.Owner, action);
         }
     }
 

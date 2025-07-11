@@ -70,12 +70,15 @@
     - id: FoodMeatHuman
       amount: 5
   - type: Speech
-    allowedEmotes: ['Meows', 'Purring', 'Hisses']
+    allowedEmotes: ['FilinidMeows', 'Purr', 'FilinidHisses']
   - type: Vocal
     sounds:
       Male: FelinidSoundM
       Female: FelinidSoundF
       Unsexed: FelinidSoundM
+  - type: DnaModifier
+    upper: MobFelinid
+    lowest: MobCat
 
 - type: entity
   parent: MobHumanDummy

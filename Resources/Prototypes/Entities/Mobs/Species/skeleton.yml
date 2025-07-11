@@ -110,6 +110,8 @@
           32:
             sprite: Mobs/Species/Human/displacement.rsi
             state: jumpsuit-female
+  - type: Operated # Corvax-Wega-Surgery
+    raceGraph: null # Corvax-Wega-Surgery
 
 - type: entity
   parent: BaseSpeciesDummy

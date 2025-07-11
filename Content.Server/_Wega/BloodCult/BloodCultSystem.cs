@@ -1,10 +1,12 @@
 using System.Linq;
 using System.Numerics;
+using Content.Server.Bed.Cryostorage;
 using Content.Server.Body.Components;
 using Content.Server.Body.Systems;
 using Content.Server.GameTicking.Rules.Components;
 using Content.Server.Prayer;
 using Content.Server.RoundEnd;
+using Content.Shared.Actions;
 using Content.Shared.Blood.Cult;
 using Content.Shared.Blood.Cult.Components;
 using Content.Shared.Body.Components;
@@ -16,6 +18,7 @@ using Content.Shared.Damage;
 using Content.Shared.DoAfter;
 using Content.Shared.FixedPoint;
 using Content.Shared.Humanoid;
+using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Mind;
@@ -35,12 +38,13 @@ using Robust.Shared.Timing;
 
 namespace Content.Server.Blood.Cult;
 
-public sealed partial class BloodCultSystem : EntitySystem
+public sealed partial class BloodCultSystem : SharedBloodCultSystem
 {
     [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly BodySystem _body = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly SharedActionsSystem _action = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
@@ -54,6 +58,7 @@ public sealed partial class BloodCultSystem : EntitySystem
     private bool _firstTriggered = false;
     private bool _secondTriggered = false;
     private bool _conductedComplete = false;
+    private bool _ritualStage = false;
     private int _curses = 2;
 
     public override void Initialize()
@@ -63,6 +68,7 @@ public sealed partial class BloodCultSystem : EntitySystem
         SubscribeLocalEvent<BloodCultistComponent, ComponentStartup>(OnComponentStartup);
         SubscribeLocalEvent<BloodCultConstructComponent, ComponentStartup>(OnComponentStartup);
         SubscribeLocalEvent<BloodCultObjectComponent, ComponentShutdown>(OnComponentShutdown);
+        SubscribeLocalEvent<BloodCultObjectComponent, CryostorageEnterEvent>(OnCryostorageEnter);
         SubscribeLocalEvent<BloodDaggerComponent, AfterInteractEvent>(OnInteract);
         SubscribeLocalEvent<AttackAttemptEvent>(OnAttackAttempt);
 
@@ -118,6 +124,12 @@ public sealed partial class BloodCultSystem : EntitySystem
         {
             if (ritualQueryComponent.Activate)
             {
+                if (!_ritualStage)
+                {
+                    _ritualStage = true;
+                    CheckStage();
+                }
+
                 if (ritualQueryComponent.NextTimeTick <= 0)
                 {
                     ritualQueryComponent.NextTimeTick = 1;
@@ -178,8 +190,8 @@ public sealed partial class BloodCultSystem : EntitySystem
         }
 
         var globalCandidates = new List<EntityUid>();
-        var globalEnumerator = EntityQueryEnumerator<HumanoidAppearanceComponent, ActorComponent, MobStateComponent, TransformComponent>();
-        while (globalEnumerator.MoveNext(out var uid, out _, out _, out _, out _))
+        var globalEnumerator = EntityQueryEnumerator<HumanoidAppearanceComponent, ActorComponent, MobStateComponent>();
+        while (globalEnumerator.MoveNext(out var uid, out _, out _, out _))
         {
             if (_selectedTargets.Contains(uid) || HasComp<BloodCultistComponent>(uid))
             {
@@ -196,6 +208,27 @@ public sealed partial class BloodCultSystem : EntitySystem
             EnsureComp<BloodCultObjectComponent>(target);
             globalCandidates.RemoveAt(index);
         }
+    }
+
+    private EntityUid? FindNewRandomTarget(Entity<BloodCultObjectComponent> excludedEntity)
+    {
+        var candidates = new List<EntityUid>();
+        var query = EntityQueryEnumerator<HumanoidAppearanceComponent, ActorComponent, MobStateComponent>();
+        while (query.MoveNext(out var uid, out _, out _, out _))
+        {
+            if (uid == excludedEntity.Owner || HasComp<BloodCultistComponent>(uid)
+                || HasComp<BloodCultObjectComponent>(uid))
+            {
+                continue;
+            }
+            candidates.Add(uid);
+        }
+
+        if (candidates.Count == 0)
+            return null;
+
+        var index = _random.Next(0, candidates.Count);
+        return candidates[index];
     }
 
     private void CheckTargetsConducted(EntityUid eliminatedTarget)
@@ -293,13 +326,29 @@ public sealed partial class BloodCultSystem : EntitySystem
         CheckStage();
     }
 
+    private void OnCryostorageEnter(Entity<BloodCultObjectComponent> entity, ref CryostorageEnterEvent args)
+    {
+        if (!TryComp<BloodCultObjectComponent>(args.Uid, out var objectComponent))
+            return;
+
+        var newTarget = FindNewRandomTarget((args.Uid, objectComponent));
+        if (newTarget != null)
+        {
+            _selectedTargets.Add(newTarget.Value);
+            EnsureComp<BloodCultObjectComponent>(newTarget.Value);
+        }
+
+        _selectedTargets.Remove(args.Uid);
+        RemComp<BloodCultObjectComponent>(args.Uid);
+    }
+
     private void CheckStage()
     {
         var totalCultEntities = GetCultEntities();
         var playerCount = GetPlayerCount();
 
         // Second
-        if (playerCount >= 100 && totalCultEntities >= playerCount * 0.1f || playerCount < 100 && totalCultEntities >= playerCount * 0.2f)
+        if (playerCount >= 100 && totalCultEntities >= playerCount * 0.1f || playerCount < 100 && totalCultEntities >= playerCount * 0.2f || _ritualStage)
         {
             foreach (var cultist in GetAllCultists())
             {
@@ -327,7 +376,7 @@ public sealed partial class BloodCultSystem : EntitySystem
         }
 
         // Third
-        if (playerCount >= 100 && totalCultEntities >= playerCount * 0.2f || playerCount < 100 && totalCultEntities >= playerCount * 0.3f)
+        if (playerCount >= 100 && totalCultEntities >= playerCount * 0.2f || playerCount < 100 && totalCultEntities >= playerCount * 0.3f || _ritualStage)
         {
             foreach (var cultist in GetAllCultists())
             {
@@ -400,28 +449,29 @@ public sealed partial class BloodCultSystem : EntitySystem
             return;
 
         var user = args.User;
-        if (!TryComp<BloodCultistComponent>(user, out _))
+        if (!HasComp<BloodCultistComponent>(user))
         {
-            RaiseLocalEvent(user, new DropHandItemsEvent());
+            var dropEvent = new DropHandItemsEvent();
+            RaiseLocalEvent(user, ref dropEvent);
             var damage = new DamageSpecifier { DamageDict = { { "Slash", 5 } } };
             _damage.TryChangeDamage(user, damage, true);
             _popup.PopupEntity(Loc.GetString("blood-dagger-failed-interact"), user, user, PopupType.SmallCaution);
             return;
         }
 
-        if (TryComp<BloodCultistComponent>(target, out _))
+        if (HasComp<BloodCultistComponent>(target))
         {
             HandleCultistInteraction(args);
             return;
         }
 
-        if (TryComp<BloodRuneComponent>(target, out _))
+        if (HasComp<BloodRuneComponent>(target))
         {
             HandleRuneInteraction(args);
             return;
         }
 
-        if (TryComp<BloodSharpenerComponent>(target, out _))
+        if (HasComp<BloodSharpenerComponent>(target))
         {
             HandleSharpenerInteraction(uid, component, args);
             return;
@@ -435,7 +485,7 @@ public sealed partial class BloodCultSystem : EntitySystem
 
         foreach (var organ in _body.GetBodyOrgans(args.Target.Value, bodyComponent))
         {
-            if (!TryComp<MetabolizerComponent>(organ.Id, out _)
+            if (!HasComp<MetabolizerComponent>(organ.Id)
                 || !TryComp<StomachComponent>(organ.Id, out var stomachComponent) || stomachComponent.Solution == null
                 || !TryComp<SolutionContainerManagerComponent>(stomachComponent.Solution.Value, out var solutionContainer)
                 || !_solution.TryGetSolution((stomachComponent.Solution.Value, solutionContainer), null, out var solutionEntity, out var solution))
@@ -494,11 +544,11 @@ public sealed partial class BloodCultSystem : EntitySystem
 
     private void OnAttackAttempt(AttackAttemptEvent args)
     {
-        if (args.Weapon == null || !TryComp<BloodDaggerComponent>(args.Weapon, out _))
+        if (args.Weapon == null || !HasComp<BloodDaggerComponent>(args.Weapon))
             return;
 
         var user = args.Uid;
-        if (!TryComp<BloodCultistComponent>(user, out _))
+        if (!HasComp<BloodCultistComponent>(user))
         {
             _popup.PopupEntity(Loc.GetString("blood-cult-failed-attack"), user, user, PopupType.SmallCaution);
             args.Cancel();
@@ -567,8 +617,6 @@ public sealed partial class BloodCultSystem : EntitySystem
 
         if (!string.IsNullOrWhiteSpace(mind.CharacterName))
             metaDataSystem.SetEntityName(soul, mind.CharacterName);
-        else if (!string.IsNullOrWhiteSpace(mind.Session?.Name))
-            metaDataSystem.SetEntityName(soul, mind.Session.Name);
 
         _mind.Visit(mindId, soul, mind);
         component.SoulEntity = soul;
@@ -614,7 +662,7 @@ public sealed partial class BloodCultSystem : EntitySystem
     private void OnShuttleCurse(Entity<BloodShuttleCurseComponent> entity, ref UseInHandEvent args)
     {
         var user = args.User;
-        if (args.Handled || !TryComp<BloodCultistComponent>(user, out _))
+        if (args.Handled || !HasComp<BloodCultistComponent>(user))
             return;
 
         if (_curses > 0)
@@ -635,9 +683,10 @@ public sealed partial class BloodCultSystem : EntitySystem
     private void OnVeilShifter(EntityUid uid, VeilShifterComponent component, UseInHandEvent args)
     {
         var user = args.User;
-        if (args.Handled || !TryComp<BloodCultistComponent>(user, out _))
+        if (args.Handled || !HasComp<BloodCultistComponent>(user))
         {
-            RaiseLocalEvent(user, new DropHandItemsEvent());
+            var dropEvent = new DropHandItemsEvent();
+            RaiseLocalEvent(user, ref dropEvent);
             return;
         }
 
@@ -677,7 +726,7 @@ public sealed partial class BloodCultSystem : EntitySystem
     private void OnConstructInteract(Entity<ConstructComponent> cosntruct, ref InteractHandEvent args)
     {
         var user = args.User;
-        if (args.Handled || !TryComp<BloodCultistComponent>(user, out _))
+        if (args.Handled || !HasComp<BloodCultistComponent>(user))
             return;
 
         if (TryComp<ItemSlotsComponent>(cosntruct, out var itemSlotsComponent))
@@ -738,7 +787,7 @@ public sealed partial class BloodCultSystem : EntitySystem
     private void OnStructureInteract(EntityUid structure, BloodStructureComponent component, InteractHandEvent args)
     {
         var user = args.User;
-        if (args.Handled || !TryComp<BloodCultistComponent>(user, out _))
+        if (args.Handled || !HasComp<BloodCultistComponent>(user))
             return;
 
         if (structure is not { Valid: true } target || !component.CanInteract)

@@ -1,0 +1,39 @@
+- type: trait
+  id: Deafness
+  name: trait-deafness-name
+  description: trait-deafness-desc
+  category: Disabilities
+  components:
+  - type: Deafness
+
+- type: trait
+  id: ColourBlindness
+  name: trait-colour-blindness-name
+  description: trait-colour-blindness-desc
+  category: Disabilities
+  blacklist:
+    components:
+      - NoirVision
+  components:
+  - type: ColourBlindness
+
+- type: trait
+  id: DnaModifierDeviation
+  name: trait-dna-deviation-name
+  description: trait-dna-deviation-desc
+  category: Disabilities
+  components:
+  - type: DnaModifierDeviation
+
+- type: trait
+  id: WheelchairBound
+  name: trait-wheelchair-bound-name
+  description: trait-wheelchair-bound-desc
+  category: Disabilities
+  blacklist:
+    components:
+      - BorgChassis
+  components:
+    - type: BuckleOnMapInit
+      prototype: VehicleWheelchair
+    - type: LegsParalyzed

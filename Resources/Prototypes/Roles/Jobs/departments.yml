@@ -2,7 +2,7 @@
   id: Cargo
   name: department-Cargo
   description: department-Cargo-description
-  color: "#A46106"
+  color: "#B48B57" # Corvax-Wega-Edit
   roles:
   - CargoTechnician
   - Quartermaster
@@ -38,7 +38,7 @@
   id: CentralCommand
   name: department-CentralCommand
   description: department-CentralCommand-description
-  color: "#0c344d"
+  color: "#2681A5" # Corvax-Wega-Edit
   roles:
   - CentralCommandOfficial
   - CBURN
@@ -56,7 +56,7 @@
   id: Command
   name: department-Command
   description: department-Command-description
-  color: "#334E6D"
+  color: "#FCDF03" # Corvax-Wega-Edit
   roles:
   - Captain
   - IAA # Corvax-IAA
@@ -82,7 +82,7 @@
   id: Engineering
   name: department-Engineering
   description: department-Engineering-description
-  color: "#EFB341"
+  color: "#FF733C" # Corvax-Wega-Edit
   roles:
   - AtmosphericTechnician
   - ChiefEngineer
@@ -93,10 +93,12 @@
   id: Medical
   name: department-Medical
   description: department-Medical-description
-  color: "#52B4E9"
+  color: "#57B8F0" # Corvax-Wega-Edit
   roles:
   - Chemist
   - ChiefMedicalOfficer
+  - Geneticist # Corvax-Wega-Genetics
+  - Surgeon # Corvax-Wega-Surgery
   - MedicalDoctor
   - MedicalIntern
   - Psychologist
@@ -106,7 +108,7 @@
   id: Security
   name: department-Security
   description: department-Security-description
-  color: "#DE3A3A"
+  color: "#FF4242" # Corvax-Wega-Edit
   weight: 20
   roles:
   - HeadOfSecurity
@@ -121,7 +123,7 @@
   id: Science
   name: department-Science
   description: department-Science-description
-  color: "#D381C9"
+  color: "#CD7CCD" # Corvax-Wega-Edit
   roles:
   - ResearchDirector
   - Scientist
@@ -149,4 +151,5 @@
   - Psychologist
   - Pilot # Corvax-Pilot
   - Barber # Corvax-Wega-Barber
+  - Geneticist # Corvax-Wega-Genetics
   primary: false

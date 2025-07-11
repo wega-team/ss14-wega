@@ -1,3 +1,22 @@
+# Table
+- type: entityTable
+  id: LightAntagEventsTable
+  table: !type:AllSelector
+    children:
+    # - id: ClosetSkeleton
+    # - id: DragonSpawn
+    - id: KingRatMigration
+    - id: NinjaSpawn
+    - id: ParadoxCloneSpawn
+    - id: RevenantSpawn
+    # - id: SleeperAgents
+    - id: ZombieOutbreak
+    # - id: LoneOpsSpawn
+    - id: DerelictCyborgSpawn
+    - id: VoidOccurrence
+
+# Events
+
 - type: entity
   id: DiseaseOutbreak
   parent: BaseGameRule
@@ -8,7 +27,20 @@
       path: /Audio/Announcements/outbreak7.ogg
       params:
         volume: -4
-    weight: 4
+    weight: 4.5
     duration: 1
     earliestStart: 25
   - type: DiseaseOutbreakRule
+
+- type: entity
+  parent: BaseGameRule
+  id: VoidOccurrence
+  components:
+  - type: StationEvent
+    weight: 5.5
+    duration: 1
+    earliestStart: 30
+    reoccurrenceDelay: 120
+    minimumPlayers: 120
+  - type: LoadMapRule
+    mapPath: /Maps/_Wega/Shuttles/voidshuttle.yml

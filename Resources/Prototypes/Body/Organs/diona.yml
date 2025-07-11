@@ -137,6 +137,7 @@
   description: "The source of incredible, unending intelligence. Honk."
   components:
   - type: Brain
+  - type: Heart # Corvax-Wega-Surgery
   - type: Nymph # This will make the organs turn into a nymph when they're removed. 
     entityPrototype: OrganDionaNymphBrain
     transferMind: true

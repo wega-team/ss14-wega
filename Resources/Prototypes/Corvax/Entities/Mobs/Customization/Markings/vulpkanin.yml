@@ -1,6 +1,7 @@
 - type: marking
   id: PawSocks
   markingCategory: Overlay
+  markingType: NonGenetics # Corvax-Wega-Genetics
   bodyPart: RFoot #highest possible layer
   speciesRestriction: [Vulpkanin]
   sprites:
@@ -63,6 +64,7 @@
   id: FoxTailAnimated
   bodyPart: Tail
   markingCategory: Tail
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: []
   sprites:
     - sprite: Corvax/Mobs/Customization/vulpkanin.rsi
@@ -74,6 +76,7 @@
   id: WolfTailAnimated
   bodyPart: Tail
   markingCategory: Tail
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: []
   sprites:
     - sprite: Corvax/Mobs/Customization/vulpkanin.rsi

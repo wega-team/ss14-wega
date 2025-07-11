@@ -6,6 +6,7 @@ using Content.Shared.DoAfter;
 using Robust.Shared.Utility;
 using Robust.Shared.Player;
 using Content.Shared.GameTicking;
+using Content.Shared.Actions.Components;
 
 namespace Content.Client._Wega.Overlays;
 
@@ -16,7 +17,7 @@ public sealed class ListenUpSystem : SharedListenUpSkillSystem
 
     [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
 
-    private Entity<BaseActionComponent> action;
+    private Entity<ActionComponent> action;
 
     private ListenUpOverlay _listenUpOverlay = default!;
 

@@ -1,5 +1,5 @@
 - type: entity
-  parent: BaseMobSpeciesOrganic
+  parent: [ BaseMobSpeciesOrganic, BaseOperated ]
   id: BaseMobSkrell
   name: Urist McSkrell
   abstract: true
@@ -10,7 +10,7 @@
   - type: DiseaseCarrier
   - type: Skrell
   - type: Thirst
-    baseDecayRate: 0.4
+    baseDecayRate: 0.15
   - type: Hunger
   - type: Body
     prototype: Skrell
@@ -57,6 +57,9 @@
     spawned:
     - id: FoodMeatSkrell
       amount: 5
+  - type: DnaModifier
+    upper: MobSkrell
+    lowest: MobSkrellkey
 
 - type: entity
   parent: MobHumanDummy

@@ -1,0 +1,40 @@
+<controls:FancyWindow xmlns="https://spacestation14.io"
+                      xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+                      xmlns:customControls="clr-namespace:Content.Client.Administration.UI.CustomControls"
+                      Title="{Loc 'surgery-menu-title'}"
+                      SetSize="600 300"
+                      MinSize="600 300">
+
+  <BoxContainer Orientation="Horizontal" HorizontalExpand="true" VerticalExpand="true" Margin="6">
+    
+    <!-- Левая панель -->
+    <BoxContainer Orientation="Vertical" HorizontalExpand="true" VerticalExpand="true" MinWidth="200">
+      <Label Text="{Loc 'surgery-menu-area'}"
+             HorizontalAlignment="Center"
+             Margin="0,0,0,6"/>
+      
+      <ScrollContainer VerticalExpand="true" HorizontalExpand="true">
+        <BoxContainer Name="GroupListContainer" 
+                     Orientation="Vertical"
+                     HorizontalExpand="true"/>
+      </ScrollContainer>
+    </BoxContainer>
+
+    <!-- Разделитель -->
+    <customControls:VSeparator StyleClasses="LowDivider" Margin="0 0 0 10"/>
+    
+    <!-- Правая панель -->
+    <BoxContainer Orientation="Vertical" HorizontalExpand="true" VerticalExpand="true">
+      <Label Text="{Loc 'surgery-menu-steps'}"
+             HorizontalAlignment="Center"
+             Margin="0,0,0,6"/>
+      
+      <ScrollContainer VerticalExpand="true" HorizontalExpand="true">
+        <BoxContainer Name="StepListContainer" 
+                     Orientation="Vertical"
+                     HorizontalExpand="true"/>
+      </ScrollContainer>
+    </BoxContainer>
+
+  </BoxContainer>
+</controls:FancyWindow>

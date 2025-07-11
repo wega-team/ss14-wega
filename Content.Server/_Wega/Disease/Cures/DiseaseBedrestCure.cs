@@ -1,4 +1,4 @@
-using Content.Server.Bed.Components;
+using Content.Shared.Bed.Components;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Buckle.Components;
 using Content.Shared.Disease;

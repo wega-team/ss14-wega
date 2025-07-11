@@ -3,6 +3,7 @@ using Content.Shared.Inventory;
 using Content.Shared.Eye.Blinding.Components;
 using Content.Shared.Tools.Components;
 using Content.Shared.Item.ItemToggle.Components;
+using Content.Shared.Clothing; // Corvax-Wega-Wielder
 
 namespace Content.Shared.Eye.Blinding.Systems
 {
@@ -17,6 +18,7 @@ namespace Content.Shared.Eye.Blinding.Systems
             SubscribeLocalEvent<RequiresEyeProtectionComponent, ToolUseAttemptEvent>(OnUseAttempt);
             SubscribeLocalEvent<RequiresEyeProtectionComponent, ItemToggledEvent>(OnWelderToggled);
 
+            SubscribeLocalEvent<EyeProtectionComponent, ItemMaskToggledEvent>(OnMaskToggled); // Corvax-Wega-Wielder
             SubscribeLocalEvent<EyeProtectionComponent, GetEyeProtectionEvent>(OnGetProtection);
             SubscribeLocalEvent<EyeProtectionComponent, InventoryRelayedEvent<GetEyeProtectionEvent>>(OnGetRelayedProtection);
         }
@@ -29,8 +31,18 @@ namespace Content.Shared.Eye.Blinding.Systems
 
         private void OnGetProtection(EntityUid uid, EyeProtectionComponent component, GetEyeProtectionEvent args)
         {
+            if (!component.Enabled) // Corvax-Wega-Wielder
+                return; // Corvax-Wega-Wielder
+
             args.Protection += component.ProtectionTime;
         }
+
+        // Corvax-Wega-Wielder-start
+        private void OnMaskToggled(Entity<EyeProtectionComponent> ent, ref ItemMaskToggledEvent args)
+        {
+            ent.Comp.Enabled = !args.Mask.Comp.IsToggled;
+        }
+        // Corvax-Wega-Wielder-end
 
         private void OnUseAttempt(EntityUid uid, RequiresEyeProtectionComponent component, ToolUseAttemptEvent args)
         {
@@ -43,7 +55,7 @@ namespace Content.Shared.Eye.Blinding.Systems
             var ev = new GetEyeProtectionEvent();
             RaiseLocalEvent(args.User, ev);
 
-            var time = (float) (component.StatusEffectTime - ev.Protection).TotalSeconds;
+            var time = (float)(component.StatusEffectTime - ev.Protection).TotalSeconds;
             if (time <= 0)
                 return;
 

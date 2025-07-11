@@ -1,0 +1,9 @@
+- type: reaction
+  id: RelaxingTea
+  reactants:
+    RelaxingTeaAdust:
+      amount: 1
+    Water:
+      amount: 4
+  products:
+    RelaxingTea: 5

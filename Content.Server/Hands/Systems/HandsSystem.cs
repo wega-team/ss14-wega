@@ -15,10 +15,12 @@ using Content.Shared.Movement.Pulling.Components;
 using Content.Shared.Movement.Pulling.Events;
 using Content.Shared.Movement.Pulling.Systems;
 using Content.Shared.Stacks;
+using Content.Shared.Standing;
 using Content.Shared.Throwing;
 using Robust.Shared.GameStates;
 using Robust.Shared.Input.Binding;
 using Robust.Shared.Map;
+using Robust.Shared.Physics.Components;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
@@ -31,20 +33,25 @@ namespace Content.Server.Hands.Systems
         [Dependency] private readonly IGameTiming _timing = default!;
         [Dependency] private readonly IRobustRandom _random = default!;
         [Dependency] private readonly StackSystem _stackSystem = default!;
-        [Dependency] private readonly VirtualItemSystem _virtualItemSystem = default!;
         [Dependency] private readonly ActionBlockerSystem _actionBlockerSystem = default!;
         [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
         [Dependency] private readonly PullingSystem _pullingSystem = default!;
         [Dependency] private readonly ThrowingSystem _throwingSystem = default!;
 
+        private EntityQuery<PhysicsComponent> _physicsQuery;
+
+        /// <summary>
+        /// Items dropped when the holder falls down will be launched in
+        /// a direction offset by up to this many degrees from the holder's
+        /// movement direction.
+        /// </summary>
+        private const float DropHeldItemsSpread = 45;
+
         public override void Initialize()
         {
             base.Initialize();
 
-            SubscribeLocalEvent<HandsComponent, DisarmedEvent>(OnDisarmed, before: new[] {typeof(StunSystem), typeof(StaminaSystem)});
-
-            SubscribeLocalEvent<HandsComponent, PullStartedMessage>(HandlePullStarted);
-            SubscribeLocalEvent<HandsComponent, PullStoppedMessage>(HandlePullStopped);
+            SubscribeLocalEvent<HandsComponent, DisarmedEvent>(OnDisarmed, before: new[] {typeof(StunSystem), typeof(SharedStaminaSystem)});
 
             SubscribeLocalEvent<HandsComponent, BodyPartAddedEvent>(HandleBodyPartAdded);
             SubscribeLocalEvent<HandsComponent, BodyPartRemovedEvent>(HandleBodyPartRemoved);
@@ -53,9 +60,13 @@ namespace Content.Server.Hands.Systems
 
             SubscribeLocalEvent<HandsComponent, BeforeExplodeEvent>(OnExploded);
 
+            SubscribeLocalEvent<HandsComponent, DropHandItemsEvent>(OnDropHandItems);
+
             CommandBinds.Builder
                 .Bind(ContentKeyFunctions.ThrowItemInHand, new PointerInputCmdHandler(HandleThrowItem))
                 .Register<HandsSystem>();
+
+            _physicsQuery = GetEntityQuery<PhysicsComponent>();
         }
 
         public override void Shutdown()
@@ -83,7 +94,7 @@ namespace Content.Server.Hands.Systems
             }
         }
 
-        private void OnDisarmed(EntityUid uid, HandsComponent component, DisarmedEvent args)
+        private void OnDisarmed(EntityUid uid, HandsComponent component, ref DisarmedEvent args)
         {
             if (args.Handled)
                 return;
@@ -101,70 +112,63 @@ namespace Content.Server.Hands.Systems
             args.Handled = true; // no shove/stun.
         }
 
+        // Corvax-Wega-Surgery-Edit-start
         private void HandleBodyPartAdded(EntityUid uid, HandsComponent component, ref BodyPartAddedEvent args)
         {
-            if (args.Part.Comp.PartType != BodyPartType.Hand)
-                return;
-
-            // If this annoys you, which it should.
-            // Ping Smugleaf.
-            var location = args.Part.Comp.Symmetry switch
+            switch (args.Part.Comp.PartType)
             {
-                BodyPartSymmetry.None => HandLocation.Middle,
-                BodyPartSymmetry.Left => HandLocation.Left,
-                BodyPartSymmetry.Right => HandLocation.Right,
-                _ => throw new ArgumentOutOfRangeException(nameof(args.Part.Comp.Symmetry))
-            };
+                case BodyPartType.Arm:
+                    foreach (var (slotId, child) in args.Part.Comp.Children)
+                    {
+                        if (child.Type == BodyPartType.Hand)
+                        {
+                            var armLocation = args.Part.Comp.Symmetry switch
+                            {
+                                BodyPartSymmetry.None => HandLocation.Middle,
+                                BodyPartSymmetry.Left => HandLocation.Left,
+                                BodyPartSymmetry.Right => HandLocation.Right,
+                                _ => HandLocation.Middle // fallback
+                            };
 
-            AddHand(uid, args.Slot, location);
+                            AddHand(uid, $"body_part_slot_{slotId}", armLocation);
+                        }
+                    }
+                    break;
+
+                case BodyPartType.Hand:
+                    var location = args.Part.Comp.Symmetry switch
+                    {
+                        BodyPartSymmetry.None => HandLocation.Middle,
+                        BodyPartSymmetry.Left => HandLocation.Left,
+                        BodyPartSymmetry.Right => HandLocation.Right,
+                        _ => HandLocation.Middle
+                    };
+
+                    AddHand(uid, args.Slot, location);
+                    break;
+            }
         }
 
         private void HandleBodyPartRemoved(EntityUid uid, HandsComponent component, ref BodyPartRemovedEvent args)
         {
-            if (args.Part.Comp.PartType != BodyPartType.Hand)
-                return;
-
-            RemoveHand(uid, args.Slot);
-        }
-
-        #region pulling
-
-        private void HandlePullStarted(EntityUid uid, HandsComponent component, PullStartedMessage args)
-        {
-            if (args.PullerUid != uid)
-                return;
-
-            if (TryComp<PullerComponent>(args.PullerUid, out var pullerComp) && !pullerComp.NeedsHands)
-                return;
-
-            if (!_virtualItemSystem.TrySpawnVirtualItemInHand(args.PulledUid, uid))
+            switch (args.Part.Comp.PartType)
             {
-                DebugTools.Assert("Unable to find available hand when starting pulling??");
+                case BodyPartType.Arm:
+                    foreach (var (slotId, child) in args.Part.Comp.Children)
+                    {
+                        if (child.Type == BodyPartType.Hand)
+                        {
+                            RemoveHand(uid, $"body_part_slot_{slotId}");
+                        }
+                    }
+                    break;
+
+                case BodyPartType.Hand:
+                    RemoveHand(uid, args.Slot);
+                    break;
             }
         }
-
-        private void HandlePullStopped(EntityUid uid, HandsComponent component, PullStoppedMessage args)
-        {
-            if (args.PullerUid != uid)
-                return;
-
-            // Try find hand that is doing this pull.
-            // and clear it.
-            foreach (var hand in component.Hands.Values)
-            {
-                if (hand.HeldEntity == null
-                    || !TryComp(hand.HeldEntity, out VirtualItemComponent? virtualItem)
-                    || virtualItem.BlockingEntity != args.PulledUid)
-                {
-                    continue;
-                }
-
-                TryDrop(args.PullerUid, hand, handsComp: component);
-                break;
-            }
-        }
-
-        #endregion
+        // Corvax-Wega-Surgery-Edit-end
 
         #region interactions
 
@@ -226,6 +230,52 @@ namespace Content.Server.Hands.Systems
             _throwingSystem.TryThrow(ev.ItemUid, ev.Direction, ev.ThrowSpeed, ev.PlayerUid, compensateFriction: !HasComp<LandAtCursorComponent>(ev.ItemUid));
 
             return true;
+        }
+
+        private void OnDropHandItems(Entity<HandsComponent> entity, ref DropHandItemsEvent args)
+        {
+            // If the holder doesn't have a physics component, they ain't moving
+            var holderVelocity = _physicsQuery.TryComp(entity, out var physics) ? physics.LinearVelocity : Vector2.Zero;
+            var spreadMaxAngle = Angle.FromDegrees(DropHeldItemsSpread);
+
+            var fellEvent = new FellDownEvent(entity);
+            RaiseLocalEvent(entity, fellEvent, false);
+
+            foreach (var hand in entity.Comp.Hands.Values)
+            {
+                if (hand.HeldEntity is not EntityUid held)
+                    continue;
+
+                var throwAttempt = new FellDownThrowAttemptEvent(entity);
+                RaiseLocalEvent(hand.HeldEntity.Value, ref throwAttempt);
+
+                if (throwAttempt.Cancelled)
+                    continue;
+
+                if (!TryDrop(entity, hand, null, checkActionBlocker: false, handsComp: entity.Comp))
+                    continue;
+
+                // Rotate the item's throw vector a bit for each item
+                var angleOffset = _random.NextAngle(-spreadMaxAngle, spreadMaxAngle);
+                // Rotate the holder's velocity vector by the angle offset to get the item's velocity vector
+                var itemVelocity = angleOffset.RotateVec(holderVelocity);
+                // Decrease the distance of the throw by a random amount
+                itemVelocity *= _random.NextFloat(1f);
+                // Heavier objects don't get thrown as far
+                // If the item doesn't have a physics component, it isn't going to get thrown anyway, but we'll assume infinite mass
+                itemVelocity *= _physicsQuery.TryComp(held, out var heldPhysics) ? heldPhysics.InvMass : 0;
+                // Throw at half the holder's intentional throw speed and
+                // vary the speed a little to make it look more interesting
+                var throwSpeed = entity.Comp.BaseThrowspeed * _random.NextFloat(0.45f, 0.55f);
+
+                _throwingSystem.TryThrow(held,
+                    itemVelocity,
+                    throwSpeed,
+                    entity,
+                    pushbackRatio: 0,
+                    compensateFriction: false
+                );
+            }
         }
 
         #endregion

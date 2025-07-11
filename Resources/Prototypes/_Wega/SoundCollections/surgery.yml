@@ -1,0 +1,23 @@
+- type: soundCollection
+  id: Cautery
+  files:
+    - /Audio/_Wega/Medical/Surgery/cautery1.ogg
+    - /Audio/_Wega/Medical/Surgery/cautery2.ogg
+
+- type: soundCollection
+  id: Organ
+  files:
+    - /Audio/_Wega/Medical/Surgery/organ1.ogg
+    - /Audio/_Wega/Medical/Surgery/organ2.ogg
+
+- type: soundCollection
+  id: Retractor
+  files:
+    - /Audio/_Wega/Medical/Surgery/retractor1.ogg
+    - /Audio/_Wega/Medical/Surgery/retractor2.ogg
+
+- type: soundCollection
+  id: Scalpel
+  files:
+    - /Audio/_Wega/Medical/Surgery/scalpel1.ogg
+    - /Audio/_Wega/Medical/Surgery/scalpel2.ogg

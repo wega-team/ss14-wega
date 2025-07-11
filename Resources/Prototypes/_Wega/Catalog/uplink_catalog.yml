@@ -11,7 +11,6 @@
   categories:
   - UplinkExplosives
 
-
 - type: listing
   id: UplinkOverlordCircuitBoard
   name: uplink-overlord-law-name
@@ -37,9 +36,9 @@
   productEntity: SyndicateCircuitBoard
   discountCategory: rareDiscounts
   discountDownTo:
-    Telecrystal: 12
+    Telecrystal: 11
   cost:
-    Telecrystal: 16
+    Telecrystal: 15
   categories:
   - UplinkDisruption
   conditions:
@@ -73,3 +72,22 @@
     Telecrystal: 3
   categories:
   - UplinkDisruption
+
+- type: listing
+  id: UplinkSyndicateSegwayCrate
+  name: uplink-syndicate-segway-crate-name
+  description: uplink-syndicate-segway-crate-desc
+  icon: { sprite: /Textures/Objects/Vehicles/syndicatesegway.rsi, state: icon }
+  productEntity: CrateFunSyndicateSegway
+  discountDownTo:
+    Telecrystal: 3
+  cost:
+    Telecrystal: 5
+  categories:
+  - UplinkMisc
+  conditions:
+  - !type:BuyerWhitelistCondition
+    blacklist:
+      components:
+      - SurplusBundle
+

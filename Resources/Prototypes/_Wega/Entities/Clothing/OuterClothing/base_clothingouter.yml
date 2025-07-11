@@ -1,0 +1,28 @@
+- type: entity
+  abstract: true
+  id: ClothingOuterDamageableBase
+  components:
+  - type: Damageable
+    damageContainer: Clothing
+  - type: Reactive
+    groups:
+      Special: [ Touch ]
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 34 # 2 saber strikes
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/poster_broken.ogg
+      - !type:EmptyContainersBehaviour
+        containers:
+        - storagebase
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          MaterialCloth1:
+            min: 3
+            max: 3

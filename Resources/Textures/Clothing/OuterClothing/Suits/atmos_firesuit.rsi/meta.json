@@ -15,11 +15,11 @@
       "directions": 4
     },
     {
-      "name": "equipped-OUTERCLOTHING-reptilian",
+      "name": "equipped-OUTERCLOTHING-resomi",
       "directions": 4
     },
     {
-      "name": "equipped-OUTERCLOTHING-resomi",
+      "name": "equipped-OUTERCLOTHING-dog",
       "directions": 4
     },
     {
@@ -28,6 +28,10 @@
     },
     {
       "name": "inhand-right",
+      "directions": 4
+    },
+    {
+      "name": "equipped-OUTERCLOTHING-vox",
       "directions": 4
     }
   ]

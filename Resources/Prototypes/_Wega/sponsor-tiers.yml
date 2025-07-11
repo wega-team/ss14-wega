@@ -1,0 +1,40 @@
+### Do not touch it without the knowledge of the owners ###
+- type: sponsorTier
+  id: SpaceTraveler
+  name: Космический путник
+  oocColor: "#A0D2EB"
+
+- type: sponsorTier
+  id: Spark
+  name: Искра в вакууме
+  priorityJoin: true
+  extraCharSlots: 5
+  oocColor: "#FCD53F"
+
+- type: sponsorTier
+  id: GravitationalAnomaly
+  name: Гравитационная аномалия
+  priorityJoin: true
+  extraCharSlots: 5
+  oocColor: "#0074BA"
+
+- type: sponsorTier
+  id: FragmentStation
+  name: Осколок станции
+  priorityJoin: true
+  extraCharSlots: 5
+  oocColor: "#B0C4DE"
+
+- type: sponsorTier
+  id: BlackHole
+  name: Чёрная дыра
+  priorityJoin: true
+  extraCharSlots: 5
+  oocColor: "#1A1A2E"
+
+- type: sponsorTier
+  id: Singularity
+  name: Сингулярность
+  priorityJoin: true
+  extraCharSlots: 5
+  oocColor: "#FFF01F"

@@ -1,19 +1,23 @@
 - type: entity
   id: SwitchAgilityAction
+  parent: BaseAction
   name: Switch agility
   description: Switching agility
   components:
-  - type: InstantAction
+  - type: Action
     icon: _Wega/Mobs/Species/Resomi/Abilities/Agility/AgilityOff.png
     iconOn: _Wega/Mobs/Species/Resomi/Abilities/Agility/AgilityOn.png
+  - type: InstantAction
     event: !type:SwitchAgillityActionEvent
 
 - type: entity
   id: SwitchListenUpAction
+  parent: BaseAction
   name: Listen up
   description: Listen up
   components:
-  - type: InstantAction
+  - type: Action
     icon: _Wega/Mobs/Species/Resomi/Abilities/ListenUp/EarsDown.png
     iconOn: _Wega/Mobs/Species/Resomi/Abilities/ListenUp/EarsUp.png
+  - type: InstantAction
     event: !type:ListenUpActionEvent

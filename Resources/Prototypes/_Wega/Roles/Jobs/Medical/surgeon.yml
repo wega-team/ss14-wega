@@ -1,0 +1,38 @@
+- type: job
+  id: Surgeon
+  name: job-name-surgeon
+  description: job-description-surgeon
+  playTimeTracker: JobSurgeon
+  requirements:
+    - !type:DepartmentTimeRequirement
+      department: Medical
+      time: 48000
+  startingGear: SurgeonGear
+  icon: "JobIconSurgeon"
+  supervisors: job-supervisors-cmo
+  access:
+  - Medical
+  - Maintenance
+  - Cryogenics
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: SurgicalSkill
+        modifier: 0.4
+
+- type: startingGear
+  id: SurgeonGear
+  equipment:
+    id: SurgeonPDA
+    ears: ClothingHeadsetMedical
+    gloves: ClothingHandsGlovesLatexSurgeon
+    belt: SuperSurgerykitFilled
+
+- type: chameleonOutfit
+  id: SurgeonChameleonOutfit
+  job: Surgeon
+  equipment:
+    head: ClothingHeadHatSurgcapBlue
+    eyes: ClothingEyesHudMedical
+    mask: ClothingMaskSterile
+    gloves: ClothingHandsGlovesLatexSurgeon

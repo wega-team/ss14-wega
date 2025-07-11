@@ -1,9 +1,10 @@
 ﻿using Content.Shared.Bed.Sleep;
 using Content.Shared.Buckle.Components;
 using Content.Shared.CombatMode.Pacification;
+using Content.Shared.Crawling; // Corvax-Wega-Crawling
+using Content.Shared.Damage;
 using Content.Shared.Damage.ForceSay;
 using Content.Shared.Disease.Events; // Corvax-Wega-Disease
-using Content.Shared.DragDrop; // Corvax-Wega-Disease
 using Content.Shared.Emoting;
 using Content.Shared.Hands;
 using Content.Shared.Interaction;
@@ -46,6 +47,7 @@ public partial class MobStateSystem
         SubscribeLocalEvent<MobStateComponent, TryingToSleepEvent>(OnSleepAttempt);
         SubscribeLocalEvent<MobStateComponent, CombatModeShouldHandInteractEvent>(OnCombatModeShouldHandInteract);
         SubscribeLocalEvent<MobStateComponent, AttemptPacifiedAttackEvent>(OnAttemptPacifiedAttack);
+        SubscribeLocalEvent<MobStateComponent, DamageModifyEvent>(OnDamageModify);
         SubscribeLocalEvent<MobStateComponent, AttemptSneezeCoughEvent>(OnSneezeAttempt); // Corvax-Wega-Disease
 
         SubscribeLocalEvent<MobStateComponent, UnbuckleAttemptEvent>(OnUnbuckleAttempt);
@@ -108,12 +110,14 @@ public partial class MobStateSystem
         switch (state)
         {
             case MobState.Alive:
-                _standing.Stand(target);
+                if (!TryComp(target, out CrawlingComponent? crawlingAlive) || !crawlingAlive.IsCrawling) // Corvax-Wega-Crawling
+                    _standing.Stand(target); // Corvax-Wega-Crawling
                 _appearance.SetData(target, MobStateVisuals.State, MobState.Alive);
                 break;
             // Corvax-Wega-PreCritical-start
             case MobState.PreCritical:
-                _standing.Stand(target);
+                if (!TryComp(target, out CrawlingComponent? crawlingPreCritical) || !crawlingPreCritical.IsCrawling)
+                    _standing.Stand(target);
                 _appearance.SetData(target, MobStateVisuals.State, MobState.Critical);
                 break;
             // Corvax-Wega-PreCritical-end
@@ -210,6 +214,11 @@ public partial class MobStateSystem
     private void OnAttemptPacifiedAttack(Entity<MobStateComponent> ent, ref AttemptPacifiedAttackEvent args)
     {
         args.Cancelled = true;
+    }
+
+    private void OnDamageModify(Entity<MobStateComponent> ent, ref DamageModifyEvent args)
+    {
+        args.Damage *= _damageable.UniversalMobDamageModifier;
     }
 
     #endregion

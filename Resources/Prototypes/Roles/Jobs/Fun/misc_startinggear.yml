@@ -13,6 +13,8 @@
     shoes: ClothingShoesBootsJack
     id: PassengerPDA
     ears: ClothingHeadsetGrey
+    pocket1: VehicleSkeletonMotorcycle # Corvax-Wega-Vehicles
+    pocket2: VehicleKeySkeletonMotorcycle # Corvax-Wega-Vehicles
   storage:
     back:
     - BoxSurvival

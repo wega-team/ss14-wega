@@ -7,6 +7,10 @@
     - !type:DepartmentTimeRequirement
       department: Security
       time: 72000 #20 hrs # Corvax-RoleTime
+    - !type:TraitsRequirement #Corvax-TraitsRequirement
+      inverted: true
+      traits:
+      - Muted
   startingGear: DetectiveGear
   icon: "JobIconDetective"
   supervisors: job-supervisors-hos
@@ -22,6 +26,12 @@
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
+  # Corvax-Wega-Surgery-start
+  - !type:AddComponentSpecial
+    components:
+    - type: SurgicalSkill
+      modifier: 0.6
+  # Corvax-Wega-Surgery-end
 
 - type: startingGear
   id: DetectiveGear
@@ -35,3 +45,13 @@
     - Flash
     - ForensicPad
     - ForensicScanner
+
+- type: chameleonOutfit
+  id: DetectiveChameleonOutfit
+  job: Detective
+  hasMindShield: true
+  equipment:
+    head: ClothingHeadHatFedoraBrown
+    mask: ClothingMaskGasSecurity
+    neck: ClothingNeckTieDet
+    gloves: ClothingHandsGlovesForensic

@@ -1,6 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
 using Content.Shared.Alert;
+using Content.Shared.ActionBlocker;
 using Content.Shared.Buckle.Components;
 using Content.Shared.Cuffs.Components;
 using Content.Shared.Database;
@@ -16,6 +17,7 @@ using Content.Shared.Standing;
 using Content.Shared.Storage.Components;
 using Content.Shared.Stunnable;
 using Content.Shared.Throwing;
+using Content.Shared.Vehicle.Components; // Corvax-Wega-Vehicles
 using Content.Shared.Whitelist;
 using Robust.Shared.Containers;
 using Robust.Shared.GameStates;
@@ -111,6 +113,9 @@ public abstract partial class SharedBuckleSystem
 
     private void OnBuckleMove(Entity<BuckleComponent> ent, ref MoveEvent ev)
     {
+        if (HasComp<VehicleComponent>(ent.Comp.BuckledTo)) // Corvax-Wega-Vehicles
+            return; // Corvax-Wega-Vehicles
+
         BuckleTransformCheck(ent, ev.Component);
     }
 
@@ -165,6 +170,15 @@ public abstract partial class SharedBuckleSystem
 
     private void OnBuckleStandAttempt(EntityUid uid, BuckleComponent component, StandAttemptEvent args)
     {
+        // Corvax-Wega-Vehicles-start
+        if (component.BuckledTo != null)
+        {
+            var buckle = component.BuckledTo;
+            if (HasComp<VehicleComponent>(buckle))
+                return;
+        }
+        // Corvax-Wega-Vehicles-end
+
         if (component.Buckled)
             args.Cancel();
     }
@@ -177,7 +191,7 @@ public abstract partial class SharedBuckleSystem
 
     private void OnBuckleUpdateCanMove(EntityUid uid, BuckleComponent component, UpdateCanMoveEvent args)
     {
-        if (component.Buckled)
+        if (component.Buckled && !HasComp<VehicleComponent>(component.BuckledTo)) // Corvax-Wega-Vehicles-Edit
             args.Cancel();
     }
 
@@ -416,7 +430,7 @@ public abstract partial class SharedBuckleSystem
 
     public bool TryUnbuckle(Entity<BuckleComponent?> buckle, EntityUid? user, bool popup)
     {
-        if (!Resolve(buckle.Owner, ref buckle.Comp))
+        if (!Resolve(buckle.Owner, ref buckle.Comp, false))
             return false;
 
         if (!CanUnbuckle(buckle, user, popup, out var strap))
@@ -458,7 +472,7 @@ public abstract partial class SharedBuckleSystem
         var buckleXform = Transform(buckle);
         var oldBuckledXform = Transform(strap);
 
-        if (buckleXform.ParentUid == strap.Owner && !Terminating(buckleXform.ParentUid))
+        if (buckleXform.ParentUid == strap.Owner && !Terminating(oldBuckledXform.ParentUid))
         {
             _transform.PlaceNextTo((buckle, buckleXform), (strap.Owner, oldBuckledXform));
             buckleXform.ActivelyLerping = false;
@@ -516,13 +530,22 @@ public abstract partial class SharedBuckleSystem
         if (_gameTiming.CurTime < buckle.Comp.BuckleTime + buckle.Comp.Delay)
             return false;
 
-        if (user != null && !_interaction.InRangeUnobstructed(user.Value, strap.Owner, buckle.Comp.Range, popup: popup))
-            return false;
+        if (user != null)
+        {
+            if (!_interaction.InRangeUnobstructed(user.Value, strap.Owner, buckle.Comp.Range, popup: popup))
+                return false;
+
+            if (user.Value != buckle.Owner && !ActionBlocker.CanComplexInteract(user.Value))
+                return false;
+        }
 
         var unbuckleAttempt = new UnbuckleAttemptEvent(strap, buckle!, user, popup);
         RaiseLocalEvent(buckle, ref unbuckleAttempt);
         if (unbuckleAttempt.Cancelled)
             return false;
+
+        if (TryComp<VehicleComponent>(strapUid, out var vehicle) && vehicle.Rider != user && !_mobState.IsIncapacitated(buckle)) // Corvax-Wega-Vehicles
+            return false; // Corvax-Wega-Vehicles
 
         var unstrapAttempt = new UnstrapAttemptEvent(strap, buckle!, user, popup);
         RaiseLocalEvent(strap, ref unstrapAttempt);

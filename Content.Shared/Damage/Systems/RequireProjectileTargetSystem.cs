@@ -1,3 +1,4 @@
+using Content.Shared.Crawling; // Corvax-Wega-Crawling
 using Content.Shared.Projectiles;
 using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Standing;
@@ -40,7 +41,7 @@ public sealed class RequireProjectileTargetSystem : EntitySystem
                 return;
 
             if (!_container.IsEntityOrParentInContainer(shooter.Value))
-               args.Cancelled = true;
+                args.Cancelled = true;
         }
     }
 
@@ -60,6 +61,9 @@ public sealed class RequireProjectileTargetSystem : EntitySystem
 
     private void LayingBulletPass(Entity<RequireProjectileTargetComponent> ent, ref DownedEvent args)
     {
+        if (TryComp(ent, out CrawlingComponent? crawling) && crawling.IsCrawling) // Corvax-Wega-Crawling
+            return; // Corvax-Wega-Crawling
+
         SetActive(ent, true);
     }
 }

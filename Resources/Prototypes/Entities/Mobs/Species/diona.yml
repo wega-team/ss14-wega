@@ -94,6 +94,8 @@
       Male: UnisexDiona
       Female: UnisexDiona
       Unsexed: UnisexDiona
+  - type: TypingIndicator
+    proto: diona
   - type: BodyEmotes
     soundsId: DionaBodyEmotes
   - type: Pacified # Corvax-DionaPacifist
@@ -113,6 +115,12 @@
           32:
             sprite: Mobs/Species/Human/displacement.rsi
             state: jumpsuit-female
+  - type: Rootable
+  # Corvax-Wega-Genetics-start
+  - type: DnaModifier
+    upper: MobDiona
+    lowest: MobDionaNymph
+  # Corvax-Wega-Genetics-end
 
 - type: entity
   parent: BaseSpeciesDummy

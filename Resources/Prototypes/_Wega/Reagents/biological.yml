@@ -34,3 +34,201 @@
   recognizable: true
   physicalDesc: reagent-physical-desc-slimy
   slippery: false
+
+- type: reagent
+  id: SlimeExtractGray
+  name: reagent-name-gray-slime
+  group: Biological
+  desc: reagent-desc-gray-slime
+  color: "#808080"
+  physicalDesc: reagent-physical-desc-mucus-like
+  flavor: metallic
+
+- type: reagent
+  id: SlimeExtractBlue
+  name: reagent-name-blue-slime
+  group: Biological
+  desc: reagent-desc-blue-slime
+  color: "#1E90FF"
+  physicalDesc: reagent-physical-desc-cold
+  flavor: minty
+
+- type: reagent
+  id: SlimeExtractPurple
+  name: reagent-name-purple-slime
+  group: Biological
+  desc: reagent-desc-purple-slime
+  color: "#800080"
+  physicalDesc: reagent-physical-desc-pungent
+  flavor: bitter
+
+- type: reagent
+  id: SlimeExtractOrange
+  name: reagent-name-orange-slime
+  group: Biological
+  desc: reagent-desc-orange-slime
+  color: "#FFA500"
+  physicalDesc: reagent-physical-desc-burning
+  flavor: spicy
+
+- type: reagent
+  id: SlimeExtractMetallic
+  name: reagent-name-metallic-slime
+  group: Biological
+  desc: reagent-desc-metallic-slime
+  color: "#7E7E7E"
+  physicalDesc: reagent-physical-desc-metallic
+  flavor: iron
+
+- type: reagent
+  id: SlimeExtractDarkPurple
+  name: reagent-name-dark-purple-slime
+  group: Biological
+  desc: reagent-desc-dark-purple-slime
+  color: "#400040"
+  physicalDesc: reagent-physical-desc-pungent
+  flavor: acrid
+
+- type: reagent
+  id: SlimeExtractGreen
+  name: reagent-name-green-slime
+  group: Biological
+  desc: reagent-desc-green-slime
+  color: "#00FF00"
+  physicalDesc: reagent-physical-desc-glowing
+  flavor: sour
+
+- type: reagent
+  id: SlimeExtractDarkBlue
+  name: reagent-name-dark-blue-slime
+  group: Biological
+  desc: reagent-desc-dark-blue-slime
+  color: "#00008B"
+  physicalDesc: reagent-physical-desc-frosty
+  flavor: cold
+
+- type: reagent
+  id: SlimeExtractPink
+  name: reagent-name-pink-slime
+  group: Biological
+  desc: reagent-desc-pink-slime
+  color: "#FFC0CB"
+  physicalDesc: reagent-physical-desc-bubbly
+  flavor: sweet
+
+- type: reagent
+  id: SlimeExtractRed
+  name: reagent-name-red-slime
+  group: Biological
+  desc: reagent-desc-red-slime
+  color: "#FF0000"
+  physicalDesc: reagent-physical-desc-burning
+  flavor: fiery
+
+- type: reagent
+  id: SlimeExtractYellow
+  name: reagent-name-yellow-slime
+  group: Biological
+  desc: reagent-desc-yellow-slime
+  color: "#FFFF00"
+  physicalDesc: reagent-physical-desc-energizing
+  flavor: zesty
+
+- type: reagent
+  id: SlimeExtractGold
+  name: reagent-name-gold-slime
+  group: Biological
+  desc: reagent-desc-gold-slime
+  color: "#FFD700"
+  physicalDesc: reagent-physical-desc-shiny
+  flavor: rich
+
+- type: reagent
+  id: SlimeExtractSilver
+  name: reagent-name-silver-slime
+  group: Biological
+  desc: reagent-desc-silver-slime
+  color: "#C0C0C0"
+  physicalDesc: reagent-physical-desc-reflective
+  flavor: crisp
+
+- type: reagent
+  id: SlimeExtractBlack
+  name: reagent-name-black-slime
+  group: Biological
+  desc: reagent-desc-black-slime
+  color: "#000000"
+  physicalDesc: reagent-physical-desc-inky
+  flavor: smoky
+
+- type: reagent
+  id: SlimeExtractSepia
+  name: reagent-name-sepia-slime
+  group: Biological
+  desc: reagent-desc-sepia-slime
+  color: "#704214"
+  physicalDesc: reagent-physical-desc-viscous
+  flavor: musty
+
+- type: reagent
+  id: SlimeExtractOil
+  name: reagent-name-oil-slime
+  group: Biological
+  desc: reagent-desc-oil-slime
+  color: "#303030"
+  physicalDesc: reagent-physical-desc-oily
+  flavor: petroleum
+
+- type: reagent
+  id: SlimeExtractBluespace
+  name: reagent-name-bluespace-slime
+  group: Biological
+  desc: reagent-desc-bluespace-slime
+  color: "#0000FF"
+  physicalDesc: reagent-physical-desc-unidentifiable
+  flavor: strange
+
+- type: reagent
+  id: SlimeExtractAdamantine
+  name: reagent-name-adamantine-slime
+  group: Biological
+  desc: reagent-desc-adamantine-slime
+  color: "#66FF66"
+  physicalDesc: reagent-physical-desc-rocky
+  flavor: robust
+
+- type: reagent
+  id: SlimeExtractPyrite
+  name: reagent-name-pyrite-slime
+  group: Biological
+  desc: reagent-desc-pyrite-slime
+  color: "#FAFAD2"
+  physicalDesc: reagent-physical-desc-enigmatic
+  flavor: metallic
+
+- type: reagent
+  id: SlimeExtractAzure
+  name: reagent-name-azure-slime
+  group: Biological
+  desc: reagent-desc-azure-slime
+  color: "#007FFF"
+  physicalDesc: reagent-physical-desc-frosty
+  flavor: crisp
+
+- type: reagent
+  id: SlimeExtractLightPink
+  name: reagent-name-light-pink-slime
+  group: Biological
+  desc: reagent-desc-light-pink-slime
+  color: "#FFB6C1"
+  physicalDesc: reagent-physical-desc-enigmatic
+  flavor: sweet
+
+- type: reagent
+  id: SlimeExtractRainbow
+  name: reagent-name-rainbow-slime
+  group: Biological
+  desc: reagent-desc-rainbow-slime
+  color: "#FFFFFF"
+  physicalDesc: reagent-physical-desc-sweet
+  flavor: chaotic

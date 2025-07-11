@@ -1,0 +1,47 @@
+- type: entity
+  id: RandomHumanoidVoidMember
+  name: syndie disaster victim ghost role
+  components:
+    - type: Sprite
+      sprite: Structures/Decoration/banner.rsi
+      state: banner_syndicate
+    - type: RandomHumanoidSpawner
+      settings: VisitorVoidMember
+
+- type: entity
+  name: void member spawner
+  id: VoidMemberSpawner
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: red
+      - sprite: Structures/Decoration/banner.rsi
+        state: banner_syndicate
+  - type: RandomSpawner
+    prototypes:
+    - RandomHumanoidVoidMember
+
+- type: entity
+  id: RandomHumanoidVoidCommander
+  name: syndie disaster victim ghost role
+  components:
+    - type: Sprite
+      sprite: Structures/Decoration/banner.rsi
+      state: banner_syndicate
+    - type: RandomHumanoidSpawner
+      settings: VisitorVoidCommander
+
+- type: entity
+  name: void commander spawner
+  id: VoidCommanderSpawner
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: red
+      - sprite: Structures/Decoration/banner.rsi
+        state: banner_syndicate
+  - type: RandomSpawner
+    prototypes:
+    - RandomHumanoidVoidCommander

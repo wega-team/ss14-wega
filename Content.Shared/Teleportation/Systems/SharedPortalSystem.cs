@@ -1,4 +1,5 @@
-﻿using System.Linq;
+using System.Linq;
+using System.Numerics;
 using Content.Shared.Ghost;
 using Content.Shared.Movement.Pulling.Components;
 using Content.Shared.Movement.Pulling.Systems;
@@ -30,6 +31,7 @@ public abstract class SharedPortalSystem : EntitySystem
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly PullingSystem _pulling = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private readonly IMapManager _mapManager = default!;
 
     private const string PortalFixture = "portalFixture";
     private const string ProjectileFixture = "projectile";
@@ -112,7 +114,7 @@ public abstract class SharedPortalSystem : EntitySystem
 
         if (TryComp<LinkedEntityComponent>(uid, out var link))
         {
-            if (!link.LinkedEntities.Any())
+            if (link.LinkedEntities.Count == 0)
                 return;
 
             // client can't predict outside of simple portal-to-portal interactions due to randomness involved
@@ -150,7 +152,7 @@ public abstract class SharedPortalSystem : EntitySystem
 
     private void OnEndCollide(EntityUid uid, PortalComponent component, ref EndCollideEvent args)
     {
-        if (!ShouldCollide(args.OurFixtureId, args.OtherFixtureId,args.OurFixture, args.OtherFixture))
+        if (!ShouldCollide(args.OurFixtureId, args.OtherFixtureId, args.OurFixture, args.OtherFixture))
             return;
 
         var subject = args.OtherEntity;
@@ -162,14 +164,17 @@ public abstract class SharedPortalSystem : EntitySystem
         }
     }
 
-    private void TeleportEntity(EntityUid portal, EntityUid subject, EntityCoordinates target, EntityUid? targetEntity=null, bool playSound=true,
+    private void TeleportEntity(EntityUid portal, EntityUid subject, EntityCoordinates target, EntityUid? targetEntity = null, bool playSound = true,
         PortalComponent? portalComponent = null)
     {
         if (!Resolve(portal, ref portalComponent))
             return;
 
+        var targetMap = target.ToMap(EntityManager, _transform); // Corvax-Wega-Save
+        var safeTarget = FindFreePosition(targetMap, 1f); // Corvax-Wega-Save
+
         var ourCoords = Transform(portal).Coordinates;
-        var onSameMap = ourCoords.GetMapId(EntityManager) == target.GetMapId(EntityManager);
+        var onSameMap = _transform.GetMapId(ourCoords) == _transform.GetMapId(target);
         var distanceInvalid = portalComponent.MaxTeleportRadius != null
                               && ourCoords.TryDistance(EntityManager, target, out var distance)
                               && distance > portalComponent.MaxTeleportRadius;
@@ -207,7 +212,7 @@ public abstract class SharedPortalSystem : EntitySystem
 
         LogTeleport(portal, subject, Transform(subject).Coordinates, target);
 
-        _transform.SetCoordinates(subject, target);
+        _transform.SetCoordinates(subject, safeTarget); // Corvax-Wega-Save-Edit
 
         if (!playSound)
             return;
@@ -228,7 +233,7 @@ public abstract class SharedPortalSystem : EntitySystem
         {
             var randVector = _random.NextVector2(component.MaxRandomRadius);
             newCoords = coords.Offset(randVector);
-            if (!_lookup.GetEntitiesIntersecting(newCoords.ToMap(EntityManager, _transform), LookupFlags.Static).Any())
+            if (!_lookup.AnyEntitiesIntersecting(_transform.ToMapCoordinates(newCoords), LookupFlags.Static))
             {
                 break;
             }
@@ -241,4 +246,37 @@ public abstract class SharedPortalSystem : EntitySystem
         EntityCoordinates target)
     {
     }
+
+    // Corvax-Wega-Save-start
+    private EntityCoordinates FindFreePosition(MapCoordinates targetMap, float radius)
+    {
+        if (!_lookup.GetEntitiesIntersecting(targetMap, LookupFlags.Static | LookupFlags.Dynamic).Any())
+        {
+            return new EntityCoordinates(_mapManager.GetMapEntityId(targetMap.MapId), targetMap.Position);
+        }
+
+        var spiralSteps = 8;
+        var stepSize = 1.0f;
+
+        for (int step = 1; step * stepSize <= radius; step++)
+        {
+            for (int i = 0; i < spiralSteps; i++)
+            {
+                var angle = (float)i / spiralSteps * MathHelper.TwoPi;
+                var offset = new Vector2(
+                    (float)Math.Cos(angle) * stepSize * step,
+                    (float)Math.Sin(angle) * stepSize * step);
+
+                var testPos = new MapCoordinates(targetMap.Position + offset, targetMap.MapId);
+
+                if (!_lookup.GetEntitiesIntersecting(testPos, LookupFlags.Static | LookupFlags.Dynamic).Any())
+                {
+                    return new EntityCoordinates(_mapManager.GetMapEntityId(testPos.MapId), testPos.Position);
+                }
+            }
+        }
+
+        return new EntityCoordinates(_mapManager.GetMapEntityId(targetMap.MapId), targetMap.Position);
+    }
+    // Corvax-Wega-Save-end
 }

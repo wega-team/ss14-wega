@@ -244,6 +244,9 @@ public sealed class CryostorageSystem : SharedCryostorageSystem
             ), Loc.GetString("earlyleave-cryo-sender"),
             playDefaultSound: false
         );
+
+        var ev = new CryostorageEnterEvent(ent.Owner); // Corvax-Wega
+        RaiseLocalEvent(ent.Owner, ref ev); // Corvax-Wega
     }
 
     private void HandleCryostorageReconnection(Entity<CryostorageContainedComponent> entity)
@@ -348,3 +351,8 @@ public sealed class CryostorageSystem : SharedCryostorageSystem
         }
     }
 }
+
+// Corvax-Wega-start
+[ByRefEvent]
+public record struct CryostorageEnterEvent(EntityUid Uid);
+// Corvax-Wega-end

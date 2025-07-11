@@ -1700,16 +1700,6 @@
       state: swept2_secondary
 
 - type: marking
-  id: HumanHairShoulderLengthOverEyeGradient
-  bodyPart: Hair
-  markingCategory: Hair
-  sprites:
-    - sprite: Mobs/Customization/human_hair.rsi
-      state: shoulderlengthovereye
-    - sprite: _Wega/Mobs/Customization/human_hair.rsi
-      state: shoulderlengthovereye_secondary
-
-- type: marking
   id: HumanHairThinningGradient
   bodyPart: Hair
   markingCategory: Hair

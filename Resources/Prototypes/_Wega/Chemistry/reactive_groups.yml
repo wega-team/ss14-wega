@@ -1,2 +1,6 @@
 - type: reactiveGroup
   id: Unholy
+
+# For Slimes Only
+- type: reactiveGroup
+  id: Special

@@ -17,6 +17,15 @@
       time: 54000 #15 hrs # Corvax-RoleTime
 #    - !type:OverallPlaytimeRequirement
 #      time: 144000 #40 hrs
+    - !type:TraitsRequirement #Corvax-TraitsRequirement
+      inverted: true
+      traits:
+      - Muted
+    # Corvax-Wega-Surgery-start
+    - !type:RoleTimeRequirement
+      role: JobSurgeon
+      time: 14400 #4 hrs
+    # Corvax-Wega-Surgery-end
   weight: 10
   startingGear: CMOGear
   icon: "JobIconChiefMedicalOfficer"
@@ -36,6 +45,10 @@
   - !type:AddComponentSpecial
     components:
       - type: CommandStaff
+    # Corvax-Wega-Surgery-start
+      - type: SurgicalSkill
+        modifier: 0.4
+    # Corvax-Wega-Surgery-end
 
 - type: startingGear
   id: CMOGear
@@ -46,3 +59,15 @@
   storage:
     back:
     - Flash
+
+- type: chameleonOutfit
+  id: ChiefMedicalOfficerChameleonOutfit
+  job: ChiefMedicalOfficer
+  hasMindShield: true
+  equipment:
+    head: ClothingHeadHatBeretCmo
+    eyes: ClothingEyesHudMedical
+    mask: ClothingMaskSterile
+    neck: ClothingCloakCmo
+    outerClothing: ClothingOuterCoatLabCmo
+    gloves: ClothingHandsGlovesNitrile

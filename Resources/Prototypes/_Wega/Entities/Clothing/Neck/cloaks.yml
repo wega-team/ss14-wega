@@ -15,3 +15,17 @@
   components:
   - type: Sprite
     sprite: _Wega/Clothing/Neck/Cloaks/chapw.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckCloakVoidCap
+  name: void cap
+  description: "A cloaking cape that merges with the emptiness of space."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Neck/Cloaks/voidcap.rsi
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHatHoodVoidCap
+    requiredSlot:
+    - neck
+    slot: head

@@ -1,7 +1,7 @@
 - type: entity
   save: false
   name: Urist McHands The Dwarf
-  parent: BaseMobSpeciesOrganic
+  parent: [ BaseMobSpeciesOrganic, BaseOperated ] # Corvax-Wega-Surgery-Edit
   id: BaseMobDwarf
   abstract: true
   components:
@@ -10,7 +10,7 @@
   - type: DiseaseCarrier # Corvax-Wega-Disease
   - type: Thirst
   - type: Icon
-    sprite: Mobs/Species/Slime/parts.rsi # It was like this beforehand, no idea why.
+    sprite: Mobs/Species/Human/parts.rsi
     state: full
   - type: Respirator
     damage:
@@ -54,7 +54,7 @@
   - type: Speech
     speechSounds: Bass
   - type: HumanoidAppearance
-    species: Dwarf # Corvax-Wega-edit
+    species: Dwarf
     hideLayersOnEquip:
     - Hair
     - Snout
@@ -65,6 +65,11 @@
           32:
             sprite: Mobs/Species/Human/displacement.rsi
             state: jumpsuit-female
+  # Corvax-Wega-Genetics-start
+  - type: DnaModifier
+    upper: MobDwarf
+    lowest: MobMonkeyDwarf
+  # Corvax-Wega-Genetics-end
 
 - type: entity
   parent: BaseSpeciesDummy

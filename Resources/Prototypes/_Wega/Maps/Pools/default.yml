@@ -3,10 +3,10 @@
   maps:
   # Highpop
   - WegaKerberos
-  #- CorvaxAvrite
   - WegaCyberiad
   - WegaCereStation
   - WegaSpectrum
+  - WegaEmerald
   - Fland
   # Midpop
   - CorvaxPaper

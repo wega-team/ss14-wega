@@ -1,0 +1,11 @@
+- type: polymorph
+  id: PolymorphDiona
+  configuration:
+    entity: MobDionaReformed
+    forced: true
+    transferName: true
+    transferHumanoidAppearance: false
+    inventory: Transfer
+    revertOnDeath: true
+    revertOnCrit: false
+    cooldown: 160

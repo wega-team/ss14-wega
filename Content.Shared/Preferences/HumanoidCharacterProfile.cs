@@ -30,11 +30,6 @@ namespace Content.Shared.Preferences
         private static readonly Regex RestrictedNameRegex = new("[^А-Яа-яёЁ0-9' -]"); // Corvax-Localization
         private static readonly Regex ICNameCaseRegex = new(@"^(?<word>\w)|\b(?<word>\w)(?=\w*$)");
 
-        public const int MaxNameLength = 32;
-        public const int MaxDescLength = 1024; // Corvax-Wega
-        public const int MaxLoadoutNameLength = 32;
-        public const int MaxOOCDescLength = 512; // Corvax-Wega-OOCFlavor
-
         /// <summary>
         /// Job preferences for initial spawn.
         /// </summary>
@@ -602,13 +597,14 @@ namespace Content.Shared.Preferences
             // Corvax-Wega-end
 
             string name;
+            var maxNameLength = configManager.GetCVar(CCVars.MaxNameLength);
             if (string.IsNullOrEmpty(Name))
             {
                 name = GetName(Species, gender);
             }
-            else if (Name.Length > MaxNameLength)
+            else if (Name.Length > maxNameLength)
             {
-                name = Name[..MaxNameLength];
+                name = Name[..maxNameLength];
             }
             else
             {
@@ -634,9 +630,10 @@ namespace Content.Shared.Preferences
             }
 
             string flavortext;
-            if (FlavorText.Length > MaxDescLength)
+            var maxFlavorTextLength = configManager.GetCVar(CCVars.MaxFlavorTextLength);
+            if (FlavorText.Length > maxFlavorTextLength)
             {
-                flavortext = FormattedMessage.RemoveMarkupOrThrow(FlavorText)[..MaxDescLength];
+                flavortext = FormattedMessage.RemoveMarkupOrThrow(FlavorText)[..maxFlavorTextLength];
             }
             else
             {
@@ -645,9 +642,10 @@ namespace Content.Shared.Preferences
 
             // Corvax-Wega-OOCFlavor-start
             string oocflavortext;
-            if (OOCFlavorText.Length > MaxDescLength)
+            var oocMaxFlavorTextLength = configManager.GetCVar(WegaCVars.OOCMaxFlavorTextLength);
+            if (OOCFlavorText.Length > oocMaxFlavorTextLength)
             {
-                oocflavortext = FormattedMessage.RemoveMarkupOrThrow(OOCFlavorText)[..MaxOOCDescLength];
+                oocflavortext = FormattedMessage.RemoveMarkupOrThrow(OOCFlavorText)[..oocMaxFlavorTextLength];
             }
             else
             {

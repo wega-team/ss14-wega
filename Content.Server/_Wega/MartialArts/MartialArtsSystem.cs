@@ -11,7 +11,7 @@ namespace Content.Server.Martial.Arts;
 
 public sealed partial class MartialArtsSystem : SharedMartialArtsSystem
 {
-    [Dependency] private readonly StaminaSystem _stamina = default!;
+    [Dependency] private readonly SharedStaminaSystem _stamina = default!;
     [Dependency] private readonly SharedStunSystem _stun = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 

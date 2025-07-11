@@ -10,22 +10,22 @@
 
     <ui:RadialContainer Name="Main" VerticalExpand="True" HorizontalExpand="True" InitialRadius="64" ReserveSpaceForHiddenChildren="False">
         <!-- Juggernaut -->
-        <ui:RadialMenuTextureButton Name="BloodJuggernautButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-constuct-juggernaut'}" TargetLayer="BloodJuggernaut">
+        <ui:RadialMenuTextureButton Name="BloodJuggernautButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-constuct-juggernaut'}" TargetLayerControlName="BloodJuggernaut">
             <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/juggernaut.png"/>
         </ui:RadialMenuTextureButton>
 
         <!-- Wraith -->
-        <ui:RadialMenuTextureButton Name="BloodWraithButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-constuct-wraith'}" TargetLayer="BloodWraith">
+        <ui:RadialMenuTextureButton Name="BloodWraithButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-constuct-wraith'}" TargetLayerControlName="BloodWraith">
             <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/wraith.png"/>
         </ui:RadialMenuTextureButton>
 
         <!-- Artificer -->
-        <ui:RadialMenuTextureButton Name="BloodArtificerButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-constuct-artificer'}" TargetLayer="BloodArtificer">
+        <ui:RadialMenuTextureButton Name="BloodArtificerButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-constuct-artificer'}" TargetLayerControlName="BloodArtificer">
             <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/artificer.png"/>
         </ui:RadialMenuTextureButton>
 
         <!-- Proteon -->
-        <ui:RadialMenuTextureButton Name="BloodProteonButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-constuct-proteon'}" TargetLayer="BloodProteon">
+        <ui:RadialMenuTextureButton Name="BloodProteonButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-constuct-proteon'}" TargetLayerControlName="BloodProteon">
             <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/proteon.png"/>
         </ui:RadialMenuTextureButton>
 

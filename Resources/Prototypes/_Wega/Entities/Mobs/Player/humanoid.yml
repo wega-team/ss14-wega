@@ -1,0 +1,156 @@
+- type: entity
+  id: RandomHumanoidSpawnerERTLeaderPatrol
+  parent: RandomHumanoidSpawnerERTLeader
+  name: ERT leader
+  suffix: Patrol, interface
+  components:
+    - type: Sprite
+      sprite: Markers/jobs.rsi
+      state: ertleadereva
+    - type: RandomHumanoidSpawner
+      settings: ERTLeaderPatrol
+
+- type: randomHumanoidSettings
+  speciesBlacklist:
+    - Diona
+    - Felinid
+    - Resomi
+  id: ERTLeaderPatrol
+  parent: ERTLeader
+  components:
+    - type: GhostRole
+      name: ghost-role-information-ert-leader-name
+      description: ghost-role-information-ert-leader-description
+      rules: ghost-role-information-nonantagonist-rules
+      raffle:
+        settings: short
+      job: ERTLeader
+    - type: Loadout
+      prototypes: [ ERTLeaderGearPatrol ]
+      roleLoadout: [ RoleSurvivalEVA ]
+
+- type: entity
+  id: RandomHumanoidSpawnerERTLeaderScout
+  parent: RandomHumanoidSpawnerERTLeader
+  name: ERT leader
+  suffix: Scout, interface
+  components:
+    - type: Sprite
+      sprite: Markers/jobs.rsi
+      state: ertleadereva
+    - type: RandomHumanoidSpawner
+      settings: ERTLeaderScout
+
+- type: randomHumanoidSettings
+  speciesBlacklist:
+    - Diona
+    - Felinid
+    - Resomi
+  id: ERTLeaderScout
+  parent: ERTLeader
+  components:
+    - type: GhostRole
+      name: ghost-role-information-ert-leader-name
+      description: ghost-role-information-ert-leader-description
+      rules: ghost-role-information-nonantagonist-rules
+      raffle:
+        settings: short
+      job: ERTLeader
+    - type: Loadout
+      prototypes: [ ERTLeaderGearScout ]
+      roleLoadout: [ RoleSurvivalEVA ]
+
+- type: entity
+  id: RandomHumanoidSpawnerERTLeaderCombat
+  parent: RandomHumanoidSpawnerERTLeader
+  name: ERT leader
+  suffix: Combat, interface
+  components:
+    - type: Sprite
+      sprite: Markers/jobs.rsi
+      state: ertleadereva
+    - type: RandomHumanoidSpawner
+      settings: ERTLeaderCombat
+
+- type: randomHumanoidSettings
+  speciesBlacklist:
+    - Diona
+    - Felinid
+    - Resomi
+  id: ERTLeaderCombat
+  parent: ERTLeader
+  components:
+    - type: GhostRole
+      name: ghost-role-information-ert-leader-name
+      description: ghost-role-information-ert-leader-description
+      rules: ghost-role-information-nonantagonist-rules
+      raffle:
+        settings: short
+      job: ERTLeader
+    - type: Loadout
+      prototypes: [ ERTLeaderGearCombat ]
+      roleLoadout: [ RoleSurvivalEVA ]
+
+- type: entity
+  id: RandomHumanoidSpawnerERTLeaderSpecialist
+  parent: RandomHumanoidSpawnerERTLeader
+  name: ERT leader
+  suffix: Specialist, interface
+  components:
+    - type: Sprite
+      sprite: Markers/jobs.rsi
+      state: ertleadereva
+    - type: RandomHumanoidSpawner
+      settings: ERTLeaderSpecialist
+
+- type: randomHumanoidSettings
+  speciesBlacklist:
+    - Diona
+    - Felinid
+    - Resomi
+  id: ERTLeaderSpecialist
+  parent: ERTLeader
+  components:
+    - type: GhostRole
+      name: ghost-role-information-ert-leader-name
+      description: ghost-role-information-ert-leader-description
+      rules: ghost-role-information-nonantagonist-rules
+      raffle:
+        settings: short
+      job: ERTLeader
+    - type: Loadout
+      prototypes: [ ERTLeaderGearSpecialist ]
+      roleLoadout: [ RoleSurvivalEVA ]
+
+- type: entity
+  id: RandomHumanoidSpawnerCBURNLeader
+  name: CBURN Leader
+  suffix: Leader, interface
+  components:
+    - type: Sprite
+      sprite: Markers/jobs.rsi
+      state: cburn
+    - type: RandomHumanoidSpawner
+      settings: CBURNLeader
+
+- type: randomHumanoidSettings
+  speciesBlacklist:
+    - Diona
+    - Felinid
+    - Resomi
+  id: CBURNLeader
+  parent: EventHumanoidMindShielded
+  components:
+    - type: Loadout
+      prototypes: [CBURNLeaderGear]
+      roleLoadout: [ RoleSurvivalEVA ]
+    - type: GhostRole
+      name: ghost-role-information-cburn-leader-name
+      description: ghost-role-information-cburn-leader-description
+      rules: ghost-role-information-nonantagonist-rules
+      raffle:
+        settings: short
+    - type: RandomMetadata
+      nameSegments:
+        - NamesFirstMilitaryLeader
+        - NamesLastMilitary

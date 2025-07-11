@@ -49,4 +49,19 @@ public sealed class WegaCVars
     /// </summary>
     public static readonly CVarDef<bool> PartyEnabled =
         CVarDef.Create("wega.party_enabled", false, CVar.SERVER | CVar.REPLICATED | CVar.ARCHIVE);
+
+    /*
+        Vote CVars
+    */
+    /// <summary>
+    /// If enabled forcibly, it will trigger a vote for the mode at the end of the round.
+    /// </summary>
+    public static readonly CVarDef<bool> VoteRoundEndEnabled =
+        CVarDef.Create("wega.roundend_vote_enabled", false, CVar.SERVERONLY);
+
+    /// <summary>
+    ///     Sets the maximum length for flavor text (character descriptions).
+    /// </summary>
+    public static readonly CVarDef<int> OOCMaxFlavorTextLength =
+        CVarDef.Create("ic.oocflavor_text_length", 512, CVar.SERVER | CVar.REPLICATED);
 }

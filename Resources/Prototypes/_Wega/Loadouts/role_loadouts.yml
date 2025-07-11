@@ -28,3 +28,38 @@
   - Top
   - Bottom
   - Socks
+
+- type: roleLoadout
+  id: JobGeneticist
+  groups:
+  - Inventory # Corvax-Loadouts
+  - GroupTankHarness
+  - GeneticsJumpsuit
+  - MedicalGloves
+  - GeneticsBackpack
+  - GeneticsOuterClothing
+  - MedicalShoes
+  - Glasses
+  - SurvivalMedical
+  - Trinkets
+  - GroupSpeciesBreathToolMedical
+  - Top
+  - Bottom
+  - Socks
+
+- type: roleLoadout
+  id: JobSurgeon
+  groups:
+  - Inventory # Corvax-Loadouts
+  - GroupTankHarness
+  - SurgeonHead
+  - SurgeonJumpsuit
+  - MedicalBackpack
+  - MedicalShoes
+  - Glasses
+  - SurvivalMedical
+  - Trinkets
+  - GroupSpeciesBreathToolMedical
+  - Top
+  - Bottom
+  - Socks

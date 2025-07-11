@@ -9,10 +9,9 @@ using Robust.Shared.Utility;
 
 namespace Content.Client.Blood.Cult
 {
-    public sealed class BloodCultSystem : EntitySystem
+    public sealed class BloodCultSystem : SharedBloodCultSystem
     {
         [Dependency] private readonly AppearanceSystem _appearance = default!;
-        [Dependency] private readonly IEntityManager _entityManager = default!;
         [Dependency] private readonly IPrototypeManager _prototype = default!;
 
         public override void Initialize()

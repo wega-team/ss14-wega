@@ -1,0 +1,70 @@
+- type: constructionGraph
+  id: ArtifactFragmentCraft
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: fragmentart
+          steps:
+            - tag: AlienBerries
+              name: a alien berries
+              icon:
+                sprite: _Wega/Objects/Specific/Hydroponics/alien_berry.rsi
+                state: produce
+              doAfter: 2
+            - tag: AlienBerries
+              name: a alien berries
+              icon:
+                sprite: _Wega/Objects/Specific/Hydroponics/alien_berry.rsi
+                state: produce
+              doAfter: 2
+            - tag: AlienBerries
+              name: a alien berries
+              icon:
+                sprite: _Wega/Objects/Specific/Hydroponics/alien_berry.rsi 
+                state: produce
+              doAfter: 2
+            - tag: AlienBerries
+              name: a alien berries
+              icon:
+                sprite: _Wega/Objects/Specific/Hydroponics/alien_berry.rsi 
+                state: produce
+              doAfter: 2
+            - tag: AlienBerries
+              name: a alien berries
+              icon:
+                sprite: _Wega/Objects/Specific/Hydroponics/alien_berry.rsi
+                state: produce
+              doAfter: 2
+            - tag: AlienBerries
+              name: a alien berries
+              icon:
+                sprite: _Wega/Objects/Specific/Hydroponics/alien_berry.rsi
+                state: produce
+              doAfter: 2
+            - tag: AlienBerries
+              name: a alien berries
+              icon:
+                sprite: _Wega/Objects/Specific/Hydroponics/alien_berry.rsi
+                state: produce
+              doAfter: 2
+            - tag: AlienBerries
+              name: a alien berries
+              icon:
+                sprite: _Wega/Objects/Specific/Hydroponics/alien_berry.rsi
+                state: produce
+              doAfter: 2
+            - tag: AlienBerries
+              name: a alien berries
+              icon:
+                sprite: _Wega/Objects/Specific/Hydroponics/alien_berry.rsi
+                state: produce
+              doAfter: 2
+            - tag: AlienBerries
+              name: a alien berries
+              icon:
+                sprite: _Wega/Objects/Specific/Hydroponics/alien_berry.rsi
+                state: produce
+              doAfter: 2
+    - node: fragmentart
+      entity: ArtifactFragment1

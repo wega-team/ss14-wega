@@ -12,4 +12,7 @@ public sealed partial class EyeProtectionComponent : Component
     /// </summary>
     [DataField("protectionTime")]
     public TimeSpan ProtectionTime = TimeSpan.FromSeconds(10);
+
+    [DataField] // Corvax-Wega-Wielder
+    public bool Enabled = true; // Corvax-Wega-Wielder
 }

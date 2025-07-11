@@ -1,33 +1,39 @@
 - type: entity
+  parent: BaseAction
   id: ActionRevenantShop
   name: Shop
   description: Opens the ability shop.
   components:
-  - type: InstantAction
+  - type: Action
     icon: Interface/Actions/shop.png
+  - type: InstantAction
     event: !type:RevenantShopActionEvent
 
 - type: entity
+  parent: BaseAction
   id: ActionRevenantDefile
   name: Defile
   description: Costs 30 Essence.
   components:
-  - type: InstantAction
+  - type: Action
+    useDelay: 15
     icon: Interface/Actions/defile.png
     itemIconStyle: BigAction # Corvax-Wega-Revenant
+  - type: InstantAction
     event: !type:RevenantDefileActionEvent
-    useDelay: 15
 
 - type: entity
+  parent: BaseAction
   id: ActionRevenantOverloadLights
   name: Overload Lights
   description: Costs 40 Essence.
   components:
-  - type: InstantAction
+  - type: Action
     icon: Interface/Actions/overloadlight.png
     itemIconStyle: BigAction # Corvax-Wega-Revenant
-    event: !type:RevenantOverloadLightsActionEvent
     useDelay: 20
+  - type: InstantAction
+    event: !type:RevenantOverloadLightsActionEvent
 
 # Corvax-Wega-Disease-start
 - type: entity
@@ -35,20 +41,23 @@
   name: Blight
   description: Costs 50 Essence.
   components:
-  - type: InstantAction
+  - type: Action
     icon: Interface/Actions/blight.png
     itemIconStyle: BigAction
-    event: !type:RevenantBlightActionEvent
     useDelay: 20
+  - type: InstantAction
+    event: !type:RevenantBlightActionEvent
 # Corvax-Wega-Disease-end
 
 - type: entity
+  parent: BaseAction
   id: ActionRevenantMalfunction
   name: Malfunction
   description: Costs 60 Essence.
   components:
-  - type: InstantAction
+  - type: Action
     icon: Interface/Actions/malfunction.png
     itemIconStyle: BigAction # Corvax-Wega-Revenant
-    event: !type:RevenantMalfunctionActionEvent
     useDelay: 20
+  - type: InstantAction
+    event: !type:RevenantMalfunctionActionEvent

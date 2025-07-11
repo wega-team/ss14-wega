@@ -139,4 +139,7 @@ public partial class InventorySystem
         //Try insert into hands, or drop on the floor
         _handsSystem.PickupOrDrop(entity, itemToSpawn, false);
     }
+
+    public void CloneInventory(Entity<InventoryComponent> ent, InventoryComponent targetInventory) // Corvax-Wega-Genetics
+        => ent.Comp.Clone(targetInventory); // Corvax-Wega-Genetics
 }

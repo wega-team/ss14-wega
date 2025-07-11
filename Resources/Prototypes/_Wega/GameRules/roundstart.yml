@@ -69,3 +69,28 @@
         - MindRoleBloodCultist
         briefing:
           sound: "/Audio/_Wega/Ambience/Antag/bloodcult_start.ogg"
+
+# event schedulers
+
+- type: entityTable
+  id: LightGameRulesTable
+  table: !type:AllSelector
+    children:
+      - !type:NestedSelector
+        tableId: BasicCalmEventsTable
+      - !type:NestedSelector
+        tableId: LightAntagEventsTable
+      - !type:NestedSelector
+        tableId: CargoGiftsTable
+      - !type:NestedSelector
+        tableId: CalmPestEventsTable
+      - !type:NestedSelector
+        tableId: SpicyPestEventsTable
+
+- type: entity
+  id: LightStationEventScheduler
+  parent: BaseGameRule
+  components:
+  - type: BasicStationEventScheduler
+    scheduledGameRules: !type:NestedSelector
+      tableId: LightGameRulesTable

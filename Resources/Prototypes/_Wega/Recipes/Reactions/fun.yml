@@ -1,0 +1,12 @@
+- type: reaction
+  id: MoneyPuck
+  impact: Low
+  quantized: true
+  reactants:
+    Monenium:
+      amount: 7
+    Cellulose:
+      amount: 7
+  effects:
+    - !type:CreateEntityReactionEffect
+      entity: SpaceCash100

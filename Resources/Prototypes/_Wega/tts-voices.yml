@@ -1,0 +1,5 @@
+- type: ttsVoice
+  id: Cap
+  name: tts-voice-name-cap
+  sex: Female
+  speaker: miside_cap

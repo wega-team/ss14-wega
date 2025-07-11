@@ -1,0 +1,8 @@
+- type: reagent
+  id: Monenium
+  name: reagent-name-monenium
+  group: Biological
+  desc: reagent-desc-monenium
+  physicalDesc: reagent-physical-desc-shiny
+  color: "#FFCF40"
+  flavor: money

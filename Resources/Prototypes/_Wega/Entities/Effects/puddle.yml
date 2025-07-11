@@ -12,19 +12,6 @@
           Quantity: 1.5
 
 - type: entity
-  id: PuddleBlood
-  parent: PuddleTemporary
-  suffix: Blood
-  components:
-  - type: SolutionContainerManager
-    solutions:
-      puddle:
-        maxVol: 1000
-        reagents:
-        - ReagentId: Blood
-          Quantity: 20
-
-- type: entity
   id: MobPuddleBlood
   parent: PuddleBlood
   name: ""

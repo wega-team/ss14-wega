@@ -1,0 +1,79 @@
+- type: marking
+  id: DemonBreastSmall
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Demon]
+  sexRestriction: [Female]
+  followSkinColor: true
+  forcedColoring: true
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+  sprites:
+  - sprite: _Wega/Mobs/Customization/demon_breasts.rsi
+    state: small
+
+- type: marking
+  id: DemonBreastDefault
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Demon]
+  sexRestriction: [Female]
+  followSkinColor: true
+  forcedColoring: true
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+  sprites:
+  - sprite: _Wega/Mobs/Customization/demon_breasts.rsi
+    state: default
+
+- type: marking
+  id: DemonBreastMedium
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Demon]
+  sexRestriction: [Female]
+  followSkinColor: true
+  forcedColoring: true
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+  sprites:
+  - sprite: _Wega/Mobs/Customization/demon_breasts.rsi
+    state: medium
+
+- type: marking
+  id: DemonBreastBig
+  bodyPart: Special #Не "Chest" чтобы спрайт отобразить по верх рук 
+  markingCategory: Chest
+  speciesRestriction: [Demon]
+  sexRestriction: [Female]
+  followSkinColor: true
+  forcedColoring: true
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+  sprites:
+  - sprite: _Wega/Mobs/Customization/demon_breasts.rsi
+    state: big
+
+- type: marking
+  id: DemonBreastSuperBig
+  bodyPart: Special #Не "Chest" чтобы спрайт отобразить по верх рук
+  markingCategory: Chest
+  speciesRestriction: [Demon]
+  sexRestriction: [Female]
+  followSkinColor: true
+  forcedColoring: true
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+  sprites:
+  - sprite: _Wega/Mobs/Customization/demon_breasts.rsi
+    state: superbig
