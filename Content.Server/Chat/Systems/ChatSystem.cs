@@ -35,7 +35,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Replays;
 using Robust.Shared.Utility;
-using Content.Shared.Strangulation;
+using Content.Shared.Strangulation; // Corvax-Corvax-Wega-Strangulation
 
 namespace Content.Server.Chat.Systems;
 
