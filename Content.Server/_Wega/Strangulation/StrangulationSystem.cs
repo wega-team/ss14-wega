@@ -71,12 +71,6 @@ namespace Content.Server.Strangulation
             if (!CanStrangle(args.User, uid, component))
                 return;
 
-            /*if (!_mobStateSystem.IsAlive(args.User))
-                return;
-
-            if (!CheckDistance(args.User, uid))
-                return;*/
-
             AlternativeVerb verb = new()
             {
                 Act = () =>
