@@ -6,9 +6,9 @@
   conserveEnergy: false
   reactants:
     SlimeExtractGray:
-      amount: 3
+      amount: 2
     Blood:
-      amount: 6
+      amount: 5
   effects:
     - !type:CreateEntityReactionEffect
       entity: MonkeyCube
@@ -33,9 +33,9 @@
     SlimeExtractGray:
       amount: 1
     Water:
-      amount: 2
+      amount: 5
   products:
-    Epinephrine: 1
+    Epinephrine: 5
 
 # Orange
 - type: reaction
@@ -76,9 +76,9 @@
     SlimeExtractPurple:
       amount: 1
     Plasma:
-      amount: 2
+      amount: 5
   products:
-    SlimeSteroid: 1
+    SlimeSteroid: 5
 
 # Blue
 - type: reaction
@@ -87,9 +87,9 @@
     SlimeExtractBlue:
       amount: 1
     Blood:
-      amount: 2
+      amount: 5
   products:
-    SlimeStabilizer: 1
+    SlimeStabilizer: 5
 
 - type: reaction
   id: CryoxadoneAlt
@@ -97,9 +97,9 @@
     SlimeExtractBlue:
       amount: 1
     Plasma:
-      amount: 2
+      amount: 5
   products:
-    Cryoxadone: 1
+    Cryoxadone: 5
 
 # Metallic
 - type: reaction
@@ -109,9 +109,9 @@
   conserveEnergy: false
   reactants:
     SlimeExtractMetallic:
-      amount: 1
+      amount: 0.5
     Plasma:
-      amount: 2
+      amount: 1
   effects:
     - !type:CreateEntityReactionEffect
       entity: RandomMetalSheet
@@ -123,9 +123,9 @@
   conserveEnergy: false
   reactants:
     SlimeExtractMetallic:
-      amount: 1
+      amount: 0.5
     Water:
-      amount: 2
+      amount: 1
   effects:
     - !type:CreateEntityReactionEffect
       entity: RandomGlassSheet
@@ -140,10 +140,10 @@
       amount: 2
   effects:
     - !type:EmpReactionEffect
-      rangePerUnit: 0.2
-      maxRange: 6
-      energyConsumption: 12500
-      duration: 15
+      rangePerUnit: 0.25
+      maxRange: 10
+      energyConsumption: 50000
+      duration: 30
 
 - type: reaction
   id: CreateSlimePowerCell
@@ -163,7 +163,7 @@
   id: SlimeLightEffect
   reactants:
     SlimeExtractYellow:
-      amount: 1
+      amount: 0.25
     Water:
       amount: 2
   effects:
@@ -222,7 +222,7 @@
 
 # Silver
 - type: reaction
-  id: RandomFoodSingle
+  id: SilverIngotAlt
   impact: Low
   quantized: true
   conserveEnergy: false
@@ -230,13 +230,13 @@
     SlimeExtractSilver:
       amount: 1
     Plasma:
-      amount: 2
+      amount: 5
   effects:
     - !type:CreateEntityReactionEffect
-      entity: RandomFoodSingle
+      entity: IngotSilver1
 
 - type: reaction
-  id: RandomDrinkGlass
+  id: SilverAlt
   impact: Low
   quantized: true
   conserveEnergy: false
@@ -244,10 +244,10 @@
     SlimeExtractSilver:
       amount: 1
     Water:
-      amount: 2
-  effects:
-    - !type:CreateEntityReactionEffect
-      entity: RandomDrinkGlass
+      amount: 5
+  products:
+    Silver: 10
+
 
 # Bluespace
 - type: reaction
@@ -312,7 +312,7 @@
     Plasma:
       amount: 2
   products:
-    SlimeReinforcer: 1
+    SlimeReinforcer: 3
 
 # Pyrite
 - type: reaction
@@ -323,7 +323,7 @@
     Water:
       amount: 2
   products:
-    RadiationResistPotion: 1
+    RadiationResistPotion: 3
 
 # Green
 - type: reaction
@@ -334,7 +334,7 @@
     Water:
       amount: 2
   products:
-    CellularResistPotion: 1
+    CellularResistPotion: 3
 
 # Red
 - type: reaction
@@ -345,7 +345,7 @@
     Plasma:
       amount: 2
   products:
-    MutationsPotion: 1
+    MutationsPotion: 3
 
 # Pink
 - type: reaction
@@ -356,7 +356,7 @@
     Plasma:
       amount: 2
   products:
-    IncreaseFriendshipPotion: 1
+    IncreaseFriendshipPotion: 3
 
 # Gold
 - type: reaction
@@ -366,9 +366,9 @@
   conserveEnergy: false
   reactants:
     SlimeExtractGold:
-      amount: 20
+      amount: 10
     Blood:
-      amount: 20
+      amount: 15
   effects:
     - !type:CreateEntityReactionEffect
       entity: RandomNeutralAnimal
@@ -380,9 +380,9 @@
   conserveEnergy: false
   reactants:
     SlimeExtractGold:
-      amount: 20
+      amount: 15
     Plasma:
-      amount: 20
+      amount: 30
   effects:
     - !type:CreateEntityReactionEffect
       entity: RandomAgressiveAnimal
@@ -394,9 +394,9 @@
   conserveEnergy: false
   reactants:
     SlimeExtractGold:
-      amount: 20
+      amount: 5
     Water:
-      amount: 20
+      amount: 30
   effects:
     - !type:CreateEntityReactionEffect
       entity: RandomPassiveAnimal
@@ -410,7 +410,7 @@
     Blood:
       amount: 2
   products:
-    SpeedPotion: 1
+    SpeedPotion: 3
 
 - type: reaction
   id: OilExtractExplosion
@@ -456,9 +456,9 @@
     SlimeExtractAdamantine:
       amount: 1
     Blood:
-      amount: 2
+      amount: 5
   products:
-    IronSkinResistPotion: 1
+    IronSkinResistPotion: 3
 
 # Rainbow
 - type: reaction
@@ -468,7 +468,7 @@
   conserveEnergy: false
   reactants:
     SlimeExtractRainbow:
-      amount: 10
+      amount: 5
     Plasma:
       amount: 20
   effects:

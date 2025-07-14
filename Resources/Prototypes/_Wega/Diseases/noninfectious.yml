@@ -69,8 +69,8 @@
   cureResist: 0.15
   stages:
     - 0
-    - 150
-    - 900
+    - 60
+    - 300
   effects:
     - !type:DiseasePopUp
       probability: 0.02

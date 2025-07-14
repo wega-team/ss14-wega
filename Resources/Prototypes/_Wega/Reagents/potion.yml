@@ -204,10 +204,13 @@
       - !type:HealthChange
         damage:
           types:
-            Poison: 2
+            Poison: 1
       - !type:ChemCauseDisease
-          causeChance: 1
-          disease: SLIMEITIS
+        causeChance: 1
+        disease: SLIMEITIS
+        conditions:
+          - !type:ReagentThreshold
+            min: 10        
 
 # Resist Potions
 - type: reagent
