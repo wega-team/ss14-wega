@@ -14,6 +14,7 @@ using Content.Shared.Implants;
 using Content.Shared.Implants.Components;
 using Content.Shared.Popups;
 using Content.Shared.Random.Helpers;
+using Content.Shared.Silicons.Borgs.Components;
 using Content.Shared.Surgery;
 using Content.Shared.Surgery.Components;
 using Content.Shared.Traits.Assorted;
@@ -371,7 +372,7 @@ public sealed partial class SurgerySystem
 
     private void PerformStoreItem(Entity<OperatedComponent> patient, EntityUid? item, string? requiredPart, float successChance, List<SurgeryFailedType>? failureEffect)
     {
-        if (patient.Comp.Surgeon == null || item == null || string.IsNullOrEmpty(requiredPart))
+        if (patient.Comp.Surgeon == null || item == null || string.IsNullOrEmpty(requiredPart) || HasComp<BorgChassisComponent>(patient.Comp.Surgeon))
             return;
 
         if (!RollSuccess(patient, patient.Comp.Surgeon.Value, successChance))

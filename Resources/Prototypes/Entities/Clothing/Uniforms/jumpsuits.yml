@@ -490,6 +490,7 @@
     sprite: Clothing/Uniforms/Jumpsuit/brigmedic.rsi
   - type: Clothing
     sprite: Clothing/Uniforms/Jumpsuit/brigmedic.rsi
+  - type: ClothingSterility # Corvax-Wega-Surgery
   - type: DiseaseProtection # Corvax-Wega-Disease
     protection: 0.1 # Corvax-Wega-Disease
 

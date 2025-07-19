@@ -67,3 +67,22 @@
     accentHColor: "#447987"
   - type: Icon
     state: pda-surgeon
+
+- type: entity
+  parent: BaseMedicalPDA
+  id: CoronerPDA
+  name: coroner PDA
+  description: "He smells really bad."
+  components:
+  - type: Pda
+    id: CoronerIDCard
+  - type: Appearance
+    appearanceDataInit:
+     enum.PdaVisuals.PdaType:
+       !type:String
+       pda-coroner
+  - type: PdaBorderColor
+    borderColor: "#d7d7d0"
+    accentVColor: "#2d2d33"
+  - type: Icon
+    state: pda-coroner

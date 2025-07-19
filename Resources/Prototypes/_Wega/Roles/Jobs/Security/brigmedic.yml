@@ -33,7 +33,7 @@
   id: BrigmedicGear
   equipment:
     shoes: ClothingShoesBootsJackSecFilled
-    gloves: ClothingHandsGlovesNitrile
+    gloves: ClothingHandsGlovesLatexSurgeon
     eyes: ClothingEyesHudMedSec
     id: BrigmedicPDA
     ears: ClothingHeadsetBrigmedic
@@ -54,4 +54,4 @@
     mask: ClothingMaskBreathMedicalSecurity
     outerClothing: ClothingUniformJumpsuitBrigmedic
     neck: ClothingNeckScarfStripedRed
-    gloves: ClothingHandsGlovesLatex
+    gloves: ClothingHandsGlovesLatexSurgeon

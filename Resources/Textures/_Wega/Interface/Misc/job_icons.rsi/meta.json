@@ -12,6 +12,9 @@
         },
         {
             "name": "Surgeon"
+        },
+        {
+            "name": "Coroner"
         }
     ]
 }

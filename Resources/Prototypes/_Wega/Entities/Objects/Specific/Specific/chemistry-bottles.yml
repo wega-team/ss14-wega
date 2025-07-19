@@ -1,0 +1,14 @@
+- type: entity
+  id: ChemistryBottleFormaldehyde
+  suffix: formaldehyde
+  parent: BaseChemistryBottleFilled
+  components:
+  - type: Label
+    currentLabel: reagent-name-formaldehyde
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: Formaldehyde
+          Quantity: 30

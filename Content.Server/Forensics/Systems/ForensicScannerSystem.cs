@@ -92,7 +92,8 @@ namespace Content.Server.Forensics
                 if (_tag.HasTag(args.Args.Target.Value, DNASolutionScannableTag))
                 {
                     scanner.SolutionDNAs = _forensicsSystem.GetSolutionsDNA(args.Args.Target.Value);
-                } else
+                }
+                else
                 {
                     scanner.SolutionDNAs = new();
                 }
@@ -209,36 +210,32 @@ namespace Content.Server.Forensics
 
             var text = new StringBuilder();
 
-            text.AppendLine(Loc.GetString("forensic-scanner-interface-fingerprints"));
-            foreach (var fingerprint in component.Fingerprints)
-            {
-                text.AppendLine(fingerprint);
-            }
+            text.AppendLine(Loc.GetString("forensic-scanner-report-header",
+                ("entity", component.LastScannedName),
+                ("time", _gameTiming.CurTime.ToString("hh\\:mm\\:ss"))));
+            text.AppendLine(new string('=', 30));
             text.AppendLine();
-            text.AppendLine(Loc.GetString("forensic-scanner-interface-fibers"));
-            foreach (var fiber in component.Fibers)
-            {
-                text.AppendLine(fiber);
-            }
+
+            AppendSection(text,
+                Loc.GetString("forensic-scanner-interface-fingerprints"),
+                component.Fingerprints);
+
+            AppendSection(text,
+                Loc.GetString("forensic-scanner-interface-fibers"),
+                component.Fibers);
+
+            var allDna = component.TouchDNAs.Concat(
+                component.SolutionDNAs.Except(component.TouchDNAs));
+            AppendSection(text,
+                Loc.GetString("forensic-scanner-interface-dnas"),
+                allDna);
+
+            AppendSection(text,
+                Loc.GetString("forensic-scanner-interface-residues"),
+                component.Residues);
+
             text.AppendLine();
-            text.AppendLine(Loc.GetString("forensic-scanner-interface-dnas"));
-            foreach (var dna in component.TouchDNAs)
-            {
-                text.AppendLine(dna);
-            }
-            foreach (var dna in component.SolutionDNAs)
-            {
-                Log.Debug(dna);
-                if (component.TouchDNAs.Contains(dna))
-                    continue;
-                text.AppendLine(dna);
-            }
-            text.AppendLine();
-            text.AppendLine(Loc.GetString("forensic-scanner-interface-residues"));
-            foreach (var residue in component.Residues)
-            {
-                text.AppendLine(residue);
-            }
+            text.AppendLine(new string('=', 30));
 
             _paperSystem.SetContent((printed, paperComp), text.ToString());
             _audioSystem.PlayPvs(component.SoundPrint, uid,
@@ -249,6 +246,7 @@ namespace Content.Server.Forensics
                 .WithMaxDistance(4.5f));
 
             component.PrintReadyAt = _gameTiming.CurTime + component.PrintCooldown;
+            UpdateUserInterface(uid, component);
         }
 
         private void OnClear(EntityUid uid, ForensicScannerComponent component, ForensicScannerClearMessage args)
@@ -260,6 +258,25 @@ namespace Content.Server.Forensics
             component.LastScannedName = string.Empty;
 
             UpdateUserInterface(uid, component);
+        }
+
+        private void AppendSection(StringBuilder text, string title, IEnumerable<string> items)
+        {
+            text.AppendLine($"( {title.ToUpper()} )");
+
+            if (!items.Any())
+            {
+                text.AppendLine(Loc.GetString("forensic-scanner-no-data"));
+            }
+            else
+            {
+                foreach (var item in items)
+                {
+                    text.AppendLine($"• {item}");
+                }
+            }
+
+            text.AppendLine();
         }
     }
 }

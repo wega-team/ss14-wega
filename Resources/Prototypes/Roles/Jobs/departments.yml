@@ -99,6 +99,7 @@
   - ChiefMedicalOfficer
   - Geneticist # Corvax-Wega-Genetics
   - Surgeon # Corvax-Wega-Surgery
+  - Coroner # Corvax-Wega-Surgery
   - MedicalDoctor
   - MedicalIntern
   - Psychologist

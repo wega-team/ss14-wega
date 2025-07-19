@@ -1,27 +1,83 @@
 <DefaultWindow xmlns="https://spacestation14.io"
+            xmlns:customControls="clr-namespace:Content.Client.Administration.UI.CustomControls"
             Title="{Loc 'forensic-scanner-interface-title'}"
-            MinSize="350 200"
-            SetSize="350 500">
-    <BoxContainer Orientation="Vertical">
-        <BoxContainer Orientation="Horizontal">
-            <Button Name="Print"
-                TextAlign="Center"
-                HorizontalExpand="True"
-                Access="Public"
-                Disabled="True"
-                Text="{Loc 'forensic-scanner-interface-print'}" />
-            <Button Name="Clear"
-                TextAlign="Center"
-                HorizontalExpand="True"
-                Access="Public"
-                Disabled="True"
-                Text="{Loc 'forensic-scanner-interface-clear'}" />
+            MinSize="450 220"
+            SetSize="450 220">
+    <BoxContainer Orientation="Vertical" Margin="4">
+        <BoxContainer Orientation="Horizontal" HorizontalExpand="True">
+            <Label Name="NameLabel" 
+                   HorizontalExpand="True" 
+                   FontColorOverride="Gold"
+                   Align="Center"/>
+            <BoxContainer Orientation="Horizontal" HorizontalExpand="False">
+                <Button Name="Print"
+                    TextAlign="Center"
+                    MinWidth="80"
+                    Margin="4,0,0,0"
+                    Access="Public"
+                    Disabled="True"
+                    Text="{Loc 'forensic-scanner-interface-print'}" />
+                <Button Name="Clear"
+                    TextAlign="Center"
+                    MinWidth="80"
+                    Margin="4,0,0,0"
+                    Access="Public"
+                    Disabled="True"
+                    Text="{Loc 'forensic-scanner-interface-clear'}" />
+            </BoxContainer>
         </BoxContainer>
-        <Label
-            Name="NameLabel"
-            Align="Center" />
-        <Label
-            Name="Diagnostics"
-            Text="{Loc forensic-scanner-interface-no-data}"/>
+
+        <customControls:HSeparator StyleClasses="LowDivider" Margin="0 10 0 5"/>
+
+        <BoxContainer Orientation="Horizontal" HorizontalExpand="True" Margin="0,8,0,4">
+            <Button Name="FingerprintsButton"
+                TextAlign="Center"
+                HorizontalExpand="True"
+                ToggleMode="True"
+                Pressed="True"
+                StyleClasses="TabButton"
+                Text="{Loc 'forensic-scanner-interface-fingerprints'}" />
+            <Button Name="FibersButton"
+                TextAlign="Center"
+                HorizontalExpand="True"
+                ToggleMode="True"
+                StyleClasses="TabButton"
+                Text="{Loc 'forensic-scanner-interface-fibers'}" />
+            <Button Name="DnaButton"
+                TextAlign="Center"
+                HorizontalExpand="True"
+                ToggleMode="True"
+                StyleClasses="TabButton"
+                Text="{Loc 'forensic-scanner-interface-dnas'}" />
+            <Button Name="ResiduesButton"
+                TextAlign="Center"
+                HorizontalExpand="True"
+                ToggleMode="True"
+                StyleClasses="TabButton"
+                Text="{Loc 'forensic-scanner-interface-residues'}" />
+        </BoxContainer>
+
+        <PanelContainer StyleClasses="ContentPanel" VerticalExpand="True">
+            <BoxContainer Orientation="Vertical" Name="ContentContainer">
+                <ScrollContainer VerticalExpand="True" Name="FingerprintsContent">
+                    <BoxContainer Orientation="Vertical" Name="FingerprintsContainer"/>
+                </ScrollContainer>
+                <ScrollContainer VerticalExpand="True" Name="FibersContent" Visible="False">
+                    <BoxContainer Orientation="Vertical" Name="FibersContainer"/>
+                </ScrollContainer>
+                <ScrollContainer VerticalExpand="True" Name="DnaContent" Visible="False">
+                    <BoxContainer Orientation="Vertical" Name="DnaContainer"/>
+                </ScrollContainer>
+                <ScrollContainer VerticalExpand="True" Name="ResiduesContent" Visible="False">
+                    <BoxContainer Orientation="Vertical" Name="ResiduesContainer"/>
+                </ScrollContainer>
+            </BoxContainer>
+        </PanelContainer>
+
+        <PanelContainer StyleClasses="StatusPanel" VerticalExpand="False">
+            <Label Name="StatusLabel" 
+                   Text="{Loc 'forensic-scanner-status-ready'}" 
+                   Align="Center"/>
+        </PanelContainer>
     </BoxContainer>
 </DefaultWindow>

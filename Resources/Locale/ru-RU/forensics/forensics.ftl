@@ -15,12 +15,20 @@ forensic-pad-gloves = { CAPITALIZE($target) } носит перчатки.
 forensic-pad-start-scan-target = { CAPITALIZE($user) } пытается снять отпечатки ваших пальцев.
 forensic-pad-start-scan-user = Вы начинаете снимать отпечатки пальцев { CAPITALIZE($target) }.
 forensic-pad-already-used = Эта пластинка уже использована.
+forensic-scanner-report-header =
+    ОТЧЕТ О КРИМИНАЛИСТИЧЕСКОЙ ЭКСПЕРТИЗЕ
+    Объект: { $entity }
+    Время: { $time }
 forensic-scanner-match-fiber = Найдены совпадения по волокнам!
 forensic-scanner-match-fingerprint = Найдены совпадения по отпечаткам пальцев!
 forensic-scanner-match-none = Совпадений не найдено!
 forensic-scanner-printer-not-ready = Принтер не готов.
 forensic-scanner-verb-text = Сканировать
 forensic-scanner-verb-message = Выполняется криминалистическое сканирование
+forensic-scanner-status-no-data = Нет данных
+forensic-scanner-status-scan-complete = Сканирование завершено
+forensic-scanner-no-data = Данные отсутствуют
+forensic-scanner-print-cooldown = Печать доступна через: { $time }
 forensics-dna-unknown = неизвестная ДНК
 forensics-verb-text = Счистить улики
 forensics-verb-message = Счистить отпечатки пальцев и остатки ДНК с объекта!
