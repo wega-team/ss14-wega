@@ -1,0 +1,115 @@
+#Torso
+- type: surgeryPackage
+  id: HealingTorsoPackage
+  transitions:
+    - HealMuscleTearsTorsoTransition
+    - HealMildBurnsTorsoTransition
+    - HealClosedFractureTorsoTransition
+    - HealOpenFractureTorsoTransition
+    - HealArterialBleedingTorsoTransition
+    - HealDeepBurnsTorsoTransition
+    - HealBulletWoundTorsoTransition
+
+- type: surgeryPackage
+  id: HealingSlimeTorsoPackage
+  transitions:
+    - SlimeHealMuscleTearsTorsoTransition
+    - SlimeHealMildBurnsTorsoTransition
+    - SlimeHealDeepBurnsTorsoTransition
+    - SlimeHealBulletWoundTorsoTransition
+
+#LeftArm
+- type: surgeryPackage
+  id: HealingLeftArmPackage
+  transitions:
+    - HealMuscleTearsLeftArmTransition
+    - HealMildBurnsLeftArmTransition
+    - HealClosedFractureLeftArmTransition
+    - HealOpenFractureLeftArmTransition
+    - HealArterialBleedingLeftArmTransition
+    - HealDeepBurnsLeftArmTransition
+    - HealBulletWoundLeftArmTransition
+
+#RightArm
+- type: surgeryPackage
+  id: HealingRightArmPackage
+  transitions:
+    - HealMuscleTearsRightArmTransition
+    - HealMildBurnsRightArmTransition
+    - HealClosedFractureRightArmTransition
+    - HealOpenFractureRightArmTransition
+    - HealArterialBleedingRightArmTransition
+    - HealDeepBurnsRightArmTransition
+    - HealBulletWoundRightArmTransition
+
+#LeftHand
+- type: surgeryPackage
+  id: HealingLeftHandPackage
+  transitions:
+    - HealMuscleTearsLeftHandTransition
+    - HealMildBurnsLeftHandTransition
+    - HealClosedFractureLeftHandTransition
+    - HealOpenFractureLeftHandTransition
+    - HealArterialBleedingLeftHandTransition
+    - HealDeepBurnsLeftHandTransition
+    - HealBulletWoundLeftHandTransition
+
+#RightHand
+- type: surgeryPackage
+  id: HealingRightHandPackage
+  transitions:
+    - HealMuscleTearsRightHandTransition
+    - HealMildBurnsRightHandTransition
+    - HealClosedFractureRightHandTransition
+    - HealOpenFractureRightHandTransition
+    - HealArterialBleedingRightHandTransition
+    - HealDeepBurnsRightHandTransition
+    - HealBulletWoundRightHandTransition
+
+#LeftLeg
+- type: surgeryPackage
+  id: HealingLeftLegPackage
+  transitions:
+    - HealMuscleTearsLeftLegTransition
+    - HealMildBurnsLeftLegTransition
+    - HealClosedFractureLeftLegTransition
+    - HealOpenFractureLeftLegTransition
+    - HealArterialBleedingLeftLegTransition
+    - HealDeepBurnsLeftLegTransition
+    - HealBulletWoundLeftLegTransition
+
+#RightLeg
+- type: surgeryPackage
+  id: HealingRightLegPackage
+  transitions:
+    - HealMuscleTearsRightLegTransition
+    - HealMildBurnsRightLegTransition
+    - HealClosedFractureRightLegTransition
+    - HealOpenFractureRightLegTransition
+    - HealArterialBleedingRightLegTransition
+    - HealDeepBurnsRightLegTransition
+    - HealBulletWoundRightLegTransition
+
+#LeftFoot
+- type: surgeryPackage
+  id: HealingLeftFootPackage
+  transitions:
+    - HealMuscleTearsLeftFootTransition
+    - HealMildBurnsLeftFootTransition
+    - HealClosedFractureLeftFootTransition
+    - HealOpenFractureLeftFootTransition
+    - HealArterialBleedingLeftFootTransition
+    - HealDeepBurnsLeftFootTransition
+    - HealBulletWoundLeftFootTransition
+
+#RightFoot
+- type: surgeryPackage
+  id: HealingRightFootPackage
+  transitions:
+    - HealMuscleTearsRightFootTransition
+    - HealMildBurnsRightFootTransition
+    - HealClosedFractureRightFootTransition
+    - HealOpenFractureRightFootTransition
+    - HealArterialBleedingRightFootTransition
+    - HealDeepBurnsRightFootTransition
+    - HealBulletWoundRightFootTransition

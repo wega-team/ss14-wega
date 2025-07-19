@@ -40,8 +40,43 @@ public sealed partial class SurgeryNodePrototype : IPrototype
     [DataField("bodyPart")]
     public string? BodyPart { get; private set; }
 
+    [DataField("packages")]
+    public List<ProtoId<SurgeryPackagePrototype>> PackageIds { get; private set; } = new();
+
     [DataField("transitions")]
-    public List<string> TransitionIds { get; private set; } = new();
+    public List<ProtoId<SurgeryTransitionPrototype>> TransitionIds { get; private set; } = new();
+
+    // Returns all transitions from this node and its packages.
+    public IEnumerable<ProtoId<SurgeryTransitionPrototype>> AllTransitions
+    {
+        get
+        {
+            var all = new List<ProtoId<SurgeryTransitionPrototype>>();
+            var protoManager = IoCManager.Resolve<IPrototypeManager>();
+
+            foreach (var packageId in PackageIds)
+            {
+                if (protoManager.TryIndex(packageId, out SurgeryPackagePrototype? package))
+                {
+                    all.AddRange(package.TransitionIds);
+                }
+            }
+
+            all.AddRange(TransitionIds);
+            return all;
+        }
+    }
+}
+
+[Prototype("surgeryPackage")]
+[Serializable, DataDefinition]
+public sealed partial class SurgeryPackagePrototype : IPrototype
+{
+    [IdDataField]
+    public string ID { get; private set; } = default!;
+
+    [DataField("transitions", required: true)]
+    public List<ProtoId<SurgeryTransitionPrototype>> TransitionIds { get; set; } = new();
 }
 
 [Prototype("surgeryTransition")]
@@ -127,6 +162,9 @@ public sealed partial class SurgeryStep
 
     [DataField("requiredPart")]
     public string? RequiredPart { get; private set; }
+
+    [DataField("requiredImplant")]
+    public string? RequiredImplant { get; private set; }
 
     [DataField("entityPreview")]
     public string? EntityPreview { get; private set; }

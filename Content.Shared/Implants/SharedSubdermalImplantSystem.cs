@@ -156,7 +156,7 @@ public abstract class SharedSubdermalImplantSystem : EntitySystem
         var implantContainer = implanted.ImplantContainer;
 
         _container.Remove(implant, implantContainer);
-        QueueDel(implant);
+        // QueueDel(implant); // Corvax-Wega-Edit
     }
 
     /// <summary>
@@ -220,3 +220,18 @@ public readonly struct ImplantImplantedEvent
         Implanted = implanted;
     }
 }
+
+// Corvax-Wega-Surgery-start
+[ByRefEvent]
+public readonly struct ImplantRemovedEvent
+{
+    public readonly EntityUid Implant;
+    public readonly EntityUid? Implanted;
+
+    public ImplantRemovedEvent(EntityUid implant, EntityUid? implanted)
+    {
+        Implant = implant;
+        Implanted = implanted;
+    }
+}
+// Corvax-Wega-Surgery-end

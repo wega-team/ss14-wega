@@ -1,0 +1,1804 @@
+# ========================
+# ИМПЛАНТАЦИЯ
+# ========================
+
+# Torso
+- type: surgeryTransition
+  id: ImplantingTorsoTransition
+  target: ImplantingTorsoOperation
+  label: "Имплантиривать подкожный имплант"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Drilling ]
+          tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
+          action: DrillThrough
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/Items/drill_use.ogg
+          time: 6
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: ImplantTorsoTransition
+  target: Default
+  label: "Имплантиривать"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      parallel: true
+      steps:
+        - tag: [ SubdermalImplant ]
+          entityPreview: EmptySubdermalImplant
+          action: Implanting
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+
+- type: surgeryTransition
+  id: EndImplantTorsoTransition
+  target: TorsoOpen
+  label: "Завершить"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cautery ]
+          tag: [ Cigarette, Lighter, Welder ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 2
+
+- type: surgeryTransition
+  id: SlimeImplantingTorsoTransition
+  target: SlimeImplantingTorsoOperation
+  label: "Имплантиривать подкожный имплант"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Drilling ]
+          tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
+          action: DrillThrough
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/Items/drill_use.ogg
+          time: 6
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: SlimeImplantTorsoTransition
+  target: Default
+  label: "Имплантиривать"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      parallel: true
+      steps:
+        - tag: [ SubdermalImplant ]
+          entityPreview: EmptySubdermalImplant
+          action: Implanting
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+
+- type: surgeryTransition
+  id: EndSlimeImplantTorsoTransition
+  target: SlimeTorsoOpen
+  label: "Завершить"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cautery ]
+          tag: [ Cigarette, Lighter, Welder ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 2
+
+# Head
+- type: surgeryTransition
+  id: ImplantingHeadTransition
+  target: ImplantingHeadOperation
+  label: "Имплантиривать подкожный имплант"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:BodyPartCondition
+          bodyPart: head
+      steps:
+        - tool: [ Drilling ]
+          tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
+          action: DrillThrough
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/Items/drill_use.ogg
+          time: 6
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: ImplantHeadTransition
+  target: Default
+  label: "Имплантиривать"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:BodyPartCondition
+          bodyPart: head
+      parallel: true
+      steps:
+        - tag: [ SubdermalHeadImplant ]
+          entityPreview: EmptySubdermalImplant
+          action: Implanting
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+
+- type: surgeryTransition
+  id: EndImplanHeadTransition
+  target: HeadOpen
+  label: "Завершить"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:BodyPartCondition
+          bodyPart: head
+      steps:
+        - tool: [ Cautery ]
+          tag: [ Cigarette, Lighter, Welder ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 2
+
+- type: surgeryTransition
+  id: ImplantingToothTransition
+  target: ImplantingToothOperation
+  label: "Имплантация в зуб"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+          - mask
+        - !type:BodyPartCondition
+          bodyPart: head
+      steps:
+        - tool: [ Drilling ]
+          tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
+          action: DrillThrough
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/Items/drill_use.ogg
+          time: 6
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: ImplantToothTransition
+  target: ""
+  label: Прооперировать полость
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+          - mask
+        - !type:BodyPartCondition
+          bodyPart: head
+      parallel: true
+      steps:
+        # Insert
+        - tag: [ Pill ] # I know it's useless, but let it be
+          action: StoreItem
+          failureEffect: [ Pain ]
+          requiredPart: tooth
+          sound:
+            collection: Organ
+          time: 4
+          conditions:
+            - !type:InternalStorageCondition
+              checkForSpace: true
+              part: tooth
+
+        # Retrieve
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: RetrieveItems
+          failureEffect: [ Pain ]
+          requiredPart: tooth
+          sound:
+            collection: Organ
+          time: 4
+          conditions:
+            - !type:InternalStorageCondition
+              part: tooth
+
+- type: surgeryTransition
+  id: EndImplantToothTransition
+  target: Default
+  label: Завершить
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+          - mask
+        - !type:BodyPartCondition
+          bodyPart: head
+      steps:
+        - tool: [ Cautery ]
+          tag: [ Cigarette, Lighter, Welder ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 2
+
+# ========================
+# УДАЛЕНИЕ ИМПЛАНТОВ
+# ========================
+
+# Torso
+# SadTromboneImplant
+- type: surgeryTransition
+  id: RemoveSadTromboneTransition
+  target: RemoveSadTromboneOperation
+  label: "Извлечь имплант грустного тромбона"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "SadTromboneImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Drilling ]
+          tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
+          action: DrillThrough
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/Items/drill_use.ogg
+          time: 6
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: SlimeRemoveSadTromboneTransition
+  target: SlimeRemoveSadTromboneOperation
+  label: "Извлечь имплант грустного тромбона"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "SadTromboneImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Drilling ]
+          tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
+          action: DrillThrough
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/Items/drill_use.ogg
+          time: 6
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: ExtractSadTromboneTransition
+  target: Default
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      parallel: true
+      steps:
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: RemoveImplant
+          requiredImplant: "SadTromboneImplant"
+          failureEffect: [ Bleeding ]
+          sound:
+            collection: Retractor
+          time: 8
+
+- type: surgeryTransition
+  id: EndRemoveSadTromboneTransition
+  target: TorsoOpen
+  label: "Завершить"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cautery ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 2
+
+- type: surgeryTransition
+  id: EndSlimeRemoveSadTromboneTransition
+  target: SlimeTorsoOpen
+  label: "Завершить"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cautery ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 2
+
+# LightImplant
+- type: surgeryTransition
+  id: RemoveLightImplantTransition
+  target: RemoveLightImplantOperation
+  label: "Извлечь световой имплант"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "LightImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Drilling ]
+          tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
+          action: DrillThrough
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/Items/drill_use.ogg
+          time: 6
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: SlimeRemoveLightImplantTransition
+  target: SlimeRemoveLightImplantOperation
+  label: "Извлечь световой имплант"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "LightImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Drilling ]
+          tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
+          action: DrillThrough
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/Items/drill_use.ogg
+          time: 6
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: ExtractLightImplantTransition
+  target: Default
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      parallel: true
+      steps:
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: RemoveImplant
+          requiredImplant: "LightImplant"
+          failureEffect: [ Bleeding ]
+          sound:
+            collection: Retractor
+          time: 8
+
+- type: surgeryTransition
+  id: EndRemoveLightImplantTransition
+  target: TorsoOpen
+  label: "Завершить"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cautery ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 2
+
+- type: surgeryTransition
+  id: EndSlimeRemoveLightImplantTransition
+  target: SlimeTorsoOpen
+  label: "Завершить"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cautery ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 2
+
+# BikeHornImplant
+- type: surgeryTransition
+  id: RemoveBikeHornTransition
+  target: RemoveBikeHornOperation
+  label: "Извлечь имплант велосипедного гудка"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "BikeHornImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Drilling ]
+          tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
+          action: DrillThrough
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/Items/drill_use.ogg
+          time: 6
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: SlimeRemoveBikeHornTransition
+  target: SlimeRemoveBikeHornOperation
+  label: "Извлечь имплант велосипедного гудка"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "BikeHornImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Drilling ]
+          tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
+          action: DrillThrough
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/Items/drill_use.ogg
+          time: 6
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: ExtractBikeHornTransition
+  target: Default
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      parallel: true
+      steps:
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: RemoveImplant
+          requiredImplant: "BikeHornImplant"
+          failureEffect: [ Bleeding ]
+          sound:
+            collection: Retractor
+          time: 8
+
+- type: surgeryTransition
+  id: EndRemoveBikeHornTransition
+  target: TorsoOpen
+  label: "Завершить"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cautery ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 2
+
+- type: surgeryTransition
+  id: EndSlimeRemoveBikeHornTransition
+  target: SlimeTorsoOpen
+  label: "Завершить"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cautery ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 2
+
+# TrackingImplant
+- type: surgeryTransition
+  id: RemoveTrackingTransition
+  target: RemoveTrackingOperation
+  label: "Извлечь имплант слежения"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "TrackingImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Drilling ]
+          tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
+          action: DrillThrough
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/Items/drill_use.ogg
+          time: 6
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: SlimeRemoveTrackingTransition
+  target: SlimeRemoveTrackingOperation
+  label: "Извлечь имплант слежения"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "TrackingImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Drilling ]
+          tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
+          action: DrillThrough
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/Items/drill_use.ogg
+          time: 6
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: ExtractTrackingTransition
+  target: Default
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      parallel: true
+      steps:
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: RemoveImplant
+          requiredImplant: "TrackingImplant"
+          failureEffect: [ Bleeding ]
+          sound:
+            collection: Retractor
+          time: 8
+
+- type: surgeryTransition
+  id: EndRemoveTrackingTransition
+  target: TorsoOpen
+  label: "Завершить"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cautery ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 2
+
+- type: surgeryTransition
+  id: EndSlimeRemoveTrackingTransition
+  target: SlimeTorsoOpen
+  label: "Завершить"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cautery ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 2
+
+# StorageImplant
+- type: surgeryTransition
+  id: RemoveStorageTransition
+  target: RemoveStorageOperation
+  label: "Извлечь подозрительный имплант"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "StorageImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Drilling ]
+          tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
+          action: DrillThrough
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/Items/drill_use.ogg
+          time: 6
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: SlimeRemoveStorageTransition
+  target: SlimeRemoveStorageOperation
+  label: "Извлечь подозрительный имплант"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "StorageImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Drilling ]
+          tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
+          action: DrillThrough
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/Items/drill_use.ogg
+          time: 6
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: ExtractStorageTransition
+  target: Default
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      parallel: true
+      steps:
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: RemoveImplant
+          requiredImplant: "StorageImplant"
+          failureEffect: [ Bleeding ]
+          sound:
+            collection: Retractor
+          time: 8
+
+- type: surgeryTransition
+  id: EndRemoveStorageTransition
+  target: TorsoOpen
+  label: "Завершить"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cautery ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 2
+
+- type: surgeryTransition
+  id: EndSlimeRemoveStorageTransition
+  target: SlimeTorsoOpen
+  label: "Завершить"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cautery ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 2
+
+# FreedomImplant
+- type: surgeryTransition
+  id: RemoveFreedomTransition
+  target: RemoveFreedomOperation
+  label: "Извлечь подозрительный имплант"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "FreedomImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Drilling ]
+          tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
+          action: DrillThrough
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/Items/drill_use.ogg
+          time: 6
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: SlimeRemoveFreedomTransition
+  target: SlimeRemoveFreedomOperation
+  label: "Извлечь подозрительный имплант"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "FreedomImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Drilling ]
+          tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
+          action: DrillThrough
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/Items/drill_use.ogg
+          time: 6
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: ExtractFreedomTransition
+  target: Default
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      parallel: true
+      steps:
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: RemoveImplant
+          requiredImplant: "FreedomImplant"
+          failureEffect: [ Bleeding ]
+          sound:
+            collection: Retractor
+          time: 8
+
+- type: surgeryTransition
+  id: EndRemoveFreedomTransition
+  target: TorsoOpen
+  label: "Завершить"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cautery ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 2
+
+- type: surgeryTransition
+  id: EndSlimeRemoveFreedomTransition
+  target: SlimeTorsoOpen
+  label: "Завершить"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cautery ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 2
+
+# RadioImplant
+- type: surgeryTransition
+  id: RemoveRadioTransition
+  target: RemoveRadioOperation
+  label: "Извлечь подозрительный имплант"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "RadioImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Drilling ]
+          tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
+          action: DrillThrough
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/Items/drill_use.ogg
+          time: 6
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: SlimeRemoveRadioTransition
+  target: SlimeRemoveRadioOperation
+  label: "Извлечь подозрительный имплант"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "RadioImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Drilling ]
+          tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
+          action: DrillThrough
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/Items/drill_use.ogg
+          time: 6
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: ExtractRadioTransition
+  target: Default
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      parallel: true
+      steps:
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: RemoveImplant
+          requiredImplant: "RadioImplant"
+          failureEffect: [ Bleeding ]
+          sound:
+            collection: Retractor
+          time: 8
+
+- type: surgeryTransition
+  id: EndRemoveRadioTransition
+  target: TorsoOpen
+  label: "Завершить"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cautery ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 2
+
+- type: surgeryTransition
+  id: EndSlimeRemoveRadioTransition
+  target: SlimeTorsoOpen
+  label: "Завершить"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cautery ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 2
+
+# UplinkImplant
+- type: surgeryTransition
+  id: RemoveUplinkTransition
+  target: RemoveUplinkOperation
+  label: "Извлечь подозрительный имплант"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "UplinkImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Drilling ]
+          tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
+          action: DrillThrough
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/Items/drill_use.ogg
+          time: 6
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: SlimeRemoveUplinkTransition
+  target: SlimeRemoveUplinkOperation
+  label: "Извлечь подозрительный имплант"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "UplinkImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Drilling ]
+          tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
+          action: DrillThrough
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/Items/drill_use.ogg
+          time: 6
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: ExtractUplinkTransition
+  target: Default
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      parallel: true
+      steps:
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: RemoveImplant
+          requiredImplant: "UplinkImplant"
+          failureEffect: [ Bleeding ]
+          sound:
+            collection: Retractor
+          time: 8
+
+- type: surgeryTransition
+  id: EndRemoveUplinkTransition
+  target: TorsoOpen
+  label: "Завершить"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cautery ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 2
+
+- type: surgeryTransition
+  id: EndSlimeRemoveUplinkTransition
+  target: SlimeTorsoOpen
+  label: "Завершить"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cautery ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 2
+
+# EmpImplant
+- type: surgeryTransition
+  id: RemoveEmpTransition
+  target: RemoveEmpOperation
+  label: "Извлечь подозрительный имплант"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "EmpImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Drilling ]
+          tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
+          action: DrillThrough
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/Items/drill_use.ogg
+          time: 6
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: SlimeRemoveEmpTransition
+  target: SlimeRemoveEmpOperation
+  label: "Извлечь подозрительный имплант"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "EmpImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Drilling ]
+          tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
+          action: DrillThrough
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/Items/drill_use.ogg
+          time: 6
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: ExtractEmpTransition
+  target: Default
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      parallel: true
+      steps:
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: RemoveImplant
+          requiredImplant: "EmpImplant"
+          failureEffect: [ Bleeding ]
+          sound:
+            collection: Retractor
+          time: 8
+
+- type: surgeryTransition
+  id: EndRemoveEmpTransition
+  target: TorsoOpen
+  label: "Завершить"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cautery ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 2
+
+- type: surgeryTransition
+  id: EndSlimeRemoveEmpTransition
+  target: SlimeTorsoOpen
+  label: "Завершить"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cautery ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 2
+
+# ScramImplant
+- type: surgeryTransition
+  id: RemoveScramTransition
+  target: RemoveScramOperation
+  label: "Извлечь подозрительный имплант"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "ScramImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Drilling ]
+          tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
+          action: DrillThrough
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/Items/drill_use.ogg
+          time: 6
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: SlimeRemoveScramTransition
+  target: SlimeRemoveScramOperation
+  label: "Извлечь подозрительный имплант"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "ScramImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Drilling ]
+          tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
+          action: DrillThrough
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/Items/drill_use.ogg
+          time: 6
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: ExtractScramTransition
+  target: Default
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      parallel: true
+      steps:
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: RemoveImplant
+          requiredImplant: "ScramImplant"
+          failureEffect: [ Bleeding ]
+          sound:
+            collection: Retractor
+          time: 8
+
+- type: surgeryTransition
+  id: EndRemoveScramTransition
+  target: TorsoOpen
+  label: "Завершить"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cautery ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 2
+
+- type: surgeryTransition
+  id: EndSlimeRemoveScramTransition
+  target: SlimeTorsoOpen
+  label: "Завершить"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cautery ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 2
+
+# DnaScramblerImplant
+- type: surgeryTransition
+  id: RemoveDnaScramblerTransition
+  target: RemoveDnaScramblerOperation
+  label: "Извлечь подозрительный имплант"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "DnaScramblerImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Drilling ]
+          tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
+          action: DrillThrough
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/Items/drill_use.ogg
+          time: 6
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: SlimeRemoveDnaScramblerTransition
+  target: SlimeRemoveDnaScramblerOperation
+  label: "Извлечь подозрительный имплант"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "DnaScramblerImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Drilling ]
+          tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
+          action: DrillThrough
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/Items/drill_use.ogg
+          time: 6
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: ExtractDnaScramblerTransition
+  target: Default
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      parallel: true
+      steps:
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: RemoveImplant
+          requiredImplant: "DnaScramblerImplant"
+          failureEffect: [ Bleeding ]
+          sound:
+            collection: Retractor
+          time: 8
+
+- type: surgeryTransition
+  id: EndRemoveDnaScramblerTransition
+  target: TorsoOpen
+  label: "Завершить"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cautery ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 2
+
+- type: surgeryTransition
+  id: EndSlimeRemoveDnaScramblerTransition
+  target: SlimeTorsoOpen
+  label: "Завершить"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cautery ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 2
+
+# ChameleonControllerImplant
+- type: surgeryTransition
+  id: RemoveChameleonControllerTransition
+  target: RemoveChameleonControllerOperation
+  label: "Извлечь подозрительный имплант"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "ChameleonControllerImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Drilling ]
+          tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
+          action: DrillThrough
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/Items/drill_use.ogg
+          time: 6
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: SlimeRemoveChameleonControllerTransition
+  target: SlimeRemoveChameleonControllerOperation
+  label: "Извлечь подозрительный имплант"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "ChameleonControllerImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Drilling ]
+          tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
+          action: DrillThrough
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/Items/drill_use.ogg
+          time: 6
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: ExtractChameleonControllerTransition
+  target: Default
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      parallel: true
+      steps:
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: RemoveImplant
+          requiredImplant: "ChameleonControllerImplant"
+          failureEffect: [ Bleeding ]
+          sound:
+            collection: Retractor
+          time: 8
+
+- type: surgeryTransition
+  id: EndRemoveChameleonControllerTransition
+  target: TorsoOpen
+  label: "Завершить"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cautery ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 2
+
+- type: surgeryTransition
+  id: EndSlimeRemoveChameleonControllerTransition
+  target: SlimeTorsoOpen
+  label: "Завершить"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cautery ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 2
+
+# Centcomm
+# RadioImplantCentcomm
+- type: surgeryTransition
+  id: RemoveRadioCentcommTransition
+  target: RemoveRadioCentcommOperation
+  label: "Извлечь подозрительный имплант"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "RadioImplantCentcomm"
+      steps:
+        - tool: [ Drilling ]
+          tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
+          action: DrillThrough
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/Items/drill_use.ogg
+          time: 6
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: SlimeRemoveRadioCentcommTransition
+  target: SlimeRemoveRadioCentcommOperation
+  label: "Извлечь подозрительный имплант"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "RadioImplantCentcomm"
+      steps:
+        - tool: [ Drilling ]
+          tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
+          action: DrillThrough
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/Items/drill_use.ogg
+          time: 6
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: ExtractRadioCentcommTransition
+  target: Default
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      parallel: true
+      steps:
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: RemoveImplant
+          requiredImplant: "RadioImplantCentcomm"
+          failureEffect: [ Bleeding ]
+          sound:
+            collection: Retractor
+          time: 8
+
+- type: surgeryTransition
+  id: EndRemoveRadioCentcommTransition
+  target: TorsoOpen
+  label: "Завершить"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cautery ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 2
+
+- type: surgeryTransition
+  id: EndSlimeRemoveRadioCentcommTransition
+  target: SlimeTorsoOpen
+  label: "Завершить"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cautery ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 2
+
+# Head
+# MindShieldImplant
+- type: surgeryTransition
+  id: RemoveMindShieldTransition
+  target: RemoveMindShieldOperation
+  label: "Извлечь имплант защиты разума"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "MindShieldImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:BodyPartCondition
+          bodyPart: head
+      steps:
+        - tool: [ Drilling ]
+          tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
+          action: DrillThrough
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/Items/drill_use.ogg
+          time: 6
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: ExtractMindShieldTransition
+  target: Default
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:BodyPartCondition
+          bodyPart: head
+      parallel: true
+      steps:
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: RemoveImplant
+          requiredImplant: "MindShieldImplant"
+          failureEffect: [ Bleeding ]
+          sound:
+            collection: Retractor
+          time: 8
+
+- type: surgeryTransition
+  id: EndRemoveMindShieldTransition
+  target: HeadOpen
+  label: "Завершить"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:BodyPartCondition
+          bodyPart: head
+      steps:
+        - tool: [ Cautery ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 2
+
+# FakeMindShieldImplant
+- type: surgeryTransition
+  id: RemoveFakeMindShieldTransition
+  target: RemoveFakeMindShieldOperation
+  label: "Извлечь имплант защиты разума"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "FakeMindShieldImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:BodyPartCondition
+          bodyPart: head
+      steps:
+        - tool: [ Drilling ]
+          tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
+          action: DrillThrough
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/Items/drill_use.ogg
+          time: 6
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: ExtractFakeMindShieldTransition
+  target: Default
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:BodyPartCondition
+          bodyPart: head
+      parallel: true
+      steps:
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: RemoveImplant
+          requiredImplant: "FakeMindShieldImplant"
+          failureEffect: [ Bleeding ]
+          sound:
+            collection: Retractor
+          time: 8
+
+- type: surgeryTransition
+  id: EndRemoveFakeMindShieldTransition
+  target: HeadOpen
+  label: "Завершить"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:BodyPartCondition
+          bodyPart: head
+      steps:
+        - tool: [ Cautery ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 2

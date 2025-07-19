@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Server.Administration.Logs;
 using Content.Server.Chat.Systems;
 using Content.Server.Disease;
 using Content.Shared.Body.Components;
@@ -30,6 +31,7 @@ namespace Content.Server.Surgery;
 
 public sealed partial class SurgerySystem : EntitySystem
 {
+    [Dependency] private readonly IAdminLogManager _admin = default!;
     [Dependency] private readonly SharedBodySystem _body = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
     [Dependency] private readonly DamageableSystem _damage = default!;
@@ -37,6 +39,7 @@ public sealed partial class SurgerySystem : EntitySystem
     [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly SharedJitteringSystem _jittering = default!;
     [Dependency] private readonly SharedToolSystem _tool = default!;
+    [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
@@ -48,6 +51,8 @@ public sealed partial class SurgerySystem : EntitySystem
     private const string SlashDamage = "Slash";
     [ValidatePrototypeId<DamageTypePrototype>]
     private const string HeatDamage = "Heat";
+    [ValidatePrototypeId<DamageTypePrototype>]
+    private const string PiercingDamage = "Piercing";
 
     [ValidatePrototypeId<ToolQualityPrototype>]
     private readonly List<string> _surgeryTools = new()
@@ -87,7 +92,9 @@ public sealed partial class SurgerySystem : EntitySystem
         "LeftLeg",
         "RightLeg",
         "LeftFoot",
-        "RightFoot"
+        "RightFoot",
+        "SubdermalImplant",
+        "SubdermalHeadImplant"
     };
 
     public override void Initialize()

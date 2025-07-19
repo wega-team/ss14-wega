@@ -6,12 +6,16 @@ public enum SurgeryActionType : byte
     Cut,
     Retract,
     ClampBleeding,
+    DrillThrough,
     HealInternalDamage,
     RemoveOrgan,
     InsertOrgan,
     RemovePart,
     AttachPart,
-    Implanting
+    Implanting,
+    RemoveImplant,
+    StoreItem,
+    RetrieveItems
 }
 
 public enum SurgeryFailedType : byte

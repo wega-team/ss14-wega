@@ -1,0 +1,11 @@
+- type: entity
+  id: EmptySubdermalImplant
+  parent: BaseItem # Corvax-Wega-Surgery
+  name: empty implant
+  description: A microscopic chip that's injected under the skin.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Medical/Surgery/implants.rsi
+    state: empty
+  - type: Item # Corvax-Wega-Surgery
+    size: Tiny # Corvax-Wega-Surgery

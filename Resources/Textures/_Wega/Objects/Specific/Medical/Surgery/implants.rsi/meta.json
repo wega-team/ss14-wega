@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Sprite taken from https://github.com/ss220-space/Paradise",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "empty"
+    },
+    {
+      "name": "tracking",
+      "delays": [ [ 0.1, 0.1, 0.1, 0.1 ] ]
+    },
+    {
+      "name": "nuclear",
+      "delays": [ [ 0.1, 0.1, 0.1, 0.1 ] ]
+    },
+    {
+      "name": "base",
+      "delays": [ [ 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1 ] ]
+    },
+    {
+      "name": "clown",
+      "delays": [ [ 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1 ] ]
+    },
+    {
+      "name": "mind_shield",
+      "delays": [ [ 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1 ] ]
+    },
+    {
+      "name": "nt",
+      "delays": [ [ 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1 ] ]
+    },
+    {
+      "name": "syndicate",
+      "delays": [ [ 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1 ] ]
+    }
+  ]
+}

@@ -7,16 +7,14 @@
 - type: surgeryNode
   id: EndMuscleTearsTorsoOperation
   description: Завершить
+  packages:
+    - TorsoImplantPackage
+    - HealingTorsoPackage
   transitions:
     - OrganManipulationTransition
-    - HealMuscleTearsTorsoTransition
-    - HealMildBurnsTorsoTransition
-    - HealClosedFractureTorsoTransition
-    - HealOpenFractureTorsoTransition
-    - HealArterialBleedingTorsoTransition
-    - HealDeepBurnsTorsoTransition
-    - HealBulletWoundTorsoTransition
+    - InternalTorsoTransition
     - CloseTorsoTransition
+
 
 - type: surgeryNode
   id: EndMildBurnsOperation
@@ -27,16 +25,14 @@
 - type: surgeryNode
   id: EndMildBurnsTorsoOperation
   description: Завершить
+  packages:
+    - TorsoImplantPackage
+    - HealingTorsoPackage
   transitions:
     - OrganManipulationTransition
-    - HealMuscleTearsTorsoTransition
-    - HealMildBurnsTorsoTransition
-    - HealClosedFractureTorsoTransition
-    - HealOpenFractureTorsoTransition
-    - HealArterialBleedingTorsoTransition
-    - HealDeepBurnsTorsoTransition
-    - HealBulletWoundTorsoTransition
+    - InternalTorsoTransition
     - CloseTorsoTransition
+
 
 - type: surgeryNode
   id: EndClosedFractureOperation
@@ -47,16 +43,14 @@
 - type: surgeryNode
   id: EndClosedFractureTorsoOperation
   description: Завершить
+  packages:
+    - TorsoImplantPackage
+    - HealingTorsoPackage
   transitions:
     - OrganManipulationTransition
-    - HealMuscleTearsTorsoTransition
-    - HealMildBurnsTorsoTransition
-    - HealClosedFractureTorsoTransition
-    - HealOpenFractureTorsoTransition
-    - HealArterialBleedingTorsoTransition
-    - HealDeepBurnsTorsoTransition
-    - HealBulletWoundTorsoTransition
+    - InternalTorsoTransition
     - CloseTorsoTransition
+
 
 - type: surgeryNode
   id: EndOpenFractureOperation
@@ -67,16 +61,14 @@
 - type: surgeryNode
   id: EndOpenFractureTorsoOperation
   description: Завершить
+  packages:
+    - TorsoImplantPackage
+    - HealingTorsoPackage
   transitions:
     - OrganManipulationTransition
-    - HealMuscleTearsTorsoTransition
-    - HealMildBurnsTorsoTransition
-    - HealClosedFractureTorsoTransition
-    - HealOpenFractureTorsoTransition
-    - HealArterialBleedingTorsoTransition
-    - HealDeepBurnsTorsoTransition
-    - HealBulletWoundTorsoTransition
+    - InternalTorsoTransition
     - CloseTorsoTransition
+
 
 - type: surgeryNode
   id: EndArterialBleedingOperation
@@ -87,16 +79,14 @@
 - type: surgeryNode
   id: EndArterialBleedingTorsoOperation
   description: Завершить
+  packages:
+    - TorsoImplantPackage
+    - HealingTorsoPackage
   transitions:
     - OrganManipulationTransition
-    - HealMuscleTearsTorsoTransition
-    - HealMildBurnsTorsoTransition
-    - HealClosedFractureTorsoTransition
-    - HealOpenFractureTorsoTransition
-    - HealArterialBleedingTorsoTransition
-    - HealDeepBurnsTorsoTransition
-    - HealBulletWoundTorsoTransition
+    - InternalTorsoTransition
     - CloseTorsoTransition
+
 
 - type: surgeryNode
   id: EndDeepBurnsOperation
@@ -107,16 +97,14 @@
 - type: surgeryNode
   id: EndDeepBurnsTorsoOperation
   description: Завершить
+  packages:
+    - TorsoImplantPackage
+    - HealingTorsoPackage
   transitions:
     - OrganManipulationTransition
-    - HealMuscleTearsTorsoTransition
-    - HealMildBurnsTorsoTransition
-    - HealClosedFractureTorsoTransition
-    - HealOpenFractureTorsoTransition
-    - HealArterialBleedingTorsoTransition
-    - HealDeepBurnsTorsoTransition
-    - HealBulletWoundTorsoTransition
+    - InternalTorsoTransition
     - CloseTorsoTransition
+
 
 - type: surgeryNode
   id: EndBulletWoundOperation
@@ -127,13 +115,11 @@
 - type: surgeryNode
   id: EndBulletWoundTorsoOperation
   description: Завершить
+  packages:
+    - TorsoImplantPackage
+    - HealingTorsoPackage
   transitions:
     - OrganManipulationTransition
-    - HealMuscleTearsTorsoTransition
-    - HealMildBurnsTorsoTransition
-    - HealClosedFractureTorsoTransition
-    - HealOpenFractureTorsoTransition
-    - HealArterialBleedingTorsoTransition
-    - HealDeepBurnsTorsoTransition
-    - HealBulletWoundTorsoTransition
+    - InternalTorsoTransition
     - CloseTorsoTransition
+

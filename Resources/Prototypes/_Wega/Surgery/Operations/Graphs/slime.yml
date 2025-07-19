@@ -2,6 +2,7 @@
   id: SlimeSurgery
   startNodes:
     - SlimeTorsoClosed
+    - SlimeHeadClosed
     - AttachHead
     - AmputateLeftArm
     - AttachLeftArm

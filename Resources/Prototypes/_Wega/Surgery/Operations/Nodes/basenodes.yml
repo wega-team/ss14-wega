@@ -19,16 +19,21 @@
   id: TorsoOpen
   description: Торс вскрыт
   bodyPart: torso
+  packages:
+    - TorsoImplantPackage
+    - HealingTorsoPackage
   transitions:
     - OrganManipulationTransition
-    - HealMuscleTearsTorsoTransition
-    - HealMildBurnsTorsoTransition
-    - HealClosedFractureTorsoTransition
-    - HealOpenFractureTorsoTransition
-    - HealArterialBleedingTorsoTransition
-    - HealDeepBurnsTorsoTransition
-    - HealBulletWoundTorsoTransition
+    - InternalTorsoTransition
     - CloseTorsoTransition
+
+- type: surgeryNode
+  id: InternalTorsoOpen
+  description: Полость открыта
+  bodyPart: torso
+  transitions:
+    - InternalTorsoOperateTransition
+    - EndInternalTorsoTransition
 
 # ========================
 # УЗЛЫ ГОЛОВЫ
@@ -52,9 +57,20 @@
   id: HeadOpen
   description: Череп вскрыт
   bodyPart: head
+  packages:
+    - HeadImplantPackage
   transitions:
     - ExtractBrainTransition
+    - InternalHeadTransition
     - CloseHeadTransition
+
+- type: surgeryNode
+  id: InternalHeadOpen
+  description: Полость открыта
+  bodyPart: head
+  transitions:
+    - InternalHeadOperateTransition
+    - EndInternalHeadTransition
 
 - type: surgeryNode
   id: AttachHead
@@ -78,15 +94,10 @@
   id: AmputateLeftArmStart
   description: Начало ампутации левой руки
   bodyPart: left_arm
+  packages:
+    - HealingLeftArmPackage
   transitions:
     - AmputateLeftArmFinishTransition
-    - HealMuscleTearsLeftArmTransition
-    - HealMildBurnsLeftArmTransition
-    - HealClosedFractureLeftArmTransition
-    - HealOpenFractureLeftArmTransition
-    - HealArterialBleedingLeftArmTransition
-    - HealDeepBurnsLeftArmTransition
-    - HealBulletWoundLeftArmTransition
     - CompleteOperationTransitionAlt
 
 - type: surgeryNode
@@ -114,15 +125,10 @@
   id: AmputateRightArmStart
   description: Начало ампутации правой руки
   bodyPart: right_arm
+  packages:
+    - HealingRightArmPackage
   transitions:
     - AmputateRightArmFinishTransition
-    - HealMuscleTearsRightArmTransition
-    - HealMildBurnsRightArmTransition
-    - HealClosedFractureRightArmTransition
-    - HealOpenFractureRightArmTransition
-    - HealArterialBleedingRightArmTransition
-    - HealDeepBurnsRightArmTransition
-    - HealBulletWoundRightArmTransition
     - CompleteOperationTransitionAlt
 
 - type: surgeryNode
@@ -150,15 +156,10 @@
   id: AmputateLeftHandStart
   description: Начало ампутации левой кисти
   bodyPart: left_hand
+  packages:
+    - HealingLeftHandPackage
   transitions:
     - AmputateLeftHandFinishTransition
-    - HealMuscleTearsLeftHandTransition
-    - HealMildBurnsLeftHandTransition
-    - HealClosedFractureLeftHandTransition
-    - HealOpenFractureLeftHandTransition
-    - HealArterialBleedingLeftHandTransition
-    - HealDeepBurnsLeftHandTransition
-    - HealBulletWoundLeftHandTransition
     - CompleteOperationTransitionAlt
 
 - type: surgeryNode
@@ -186,15 +187,10 @@
   id: AmputateRightHandStart
   description: Начало ампутации правой кисти
   bodyPart: right_hand
+  packages:
+    - HealingRightHandPackage
   transitions:
     - AmputateRightHandFinishTransition
-    - HealMuscleTearsRightHandTransition
-    - HealMildBurnsRightHandTransition
-    - HealClosedFractureRightHandTransition
-    - HealOpenFractureRightHandTransition
-    - HealArterialBleedingRightHandTransition
-    - HealDeepBurnsRightHandTransition
-    - HealBulletWoundRightHandTransition
     - CompleteOperationTransitionAlt
 
 - type: surgeryNode
@@ -222,15 +218,10 @@
   id: AmputateLeftLegStart
   description: Начало ампутации левой ноги
   bodyPart: left_leg
+  packages:
+    - HealingLeftLegPackage
   transitions:
     - AmputateLeftLegFinishTransition
-    - HealMuscleTearsLeftLegTransition
-    - HealMildBurnsLeftLegTransition
-    - HealClosedFractureLeftLegTransition
-    - HealOpenFractureLeftLegTransition
-    - HealArterialBleedingLeftLegTransition
-    - HealDeepBurnsLeftLegTransition
-    - HealBulletWoundLeftLegTransition
     - CompleteOperationTransitionAlt
 
 - type: surgeryNode
@@ -258,15 +249,10 @@
   id: AmputateRightLegStart
   description: Начало ампутации правой ноги
   bodyPart: right_leg
+  packages:
+    - HealingRightLegPackage
   transitions:
     - AmputateRightLegFinishTransition
-    - HealMuscleTearsRightLegTransition
-    - HealMildBurnsRightLegTransition
-    - HealClosedFractureRightLegTransition
-    - HealOpenFractureRightLegTransition
-    - HealArterialBleedingRightLegTransition
-    - HealDeepBurnsRightLegTransition
-    - HealBulletWoundRightLegTransition
     - CompleteOperationTransitionAlt
 
 - type: surgeryNode
@@ -294,15 +280,10 @@
   id: AmputateLeftFootStart
   description: Начало ампутации левой стопы
   bodyPart: left_foot
+  packages:
+    - HealingLeftFootPackage
   transitions:
     - AmputateLeftFootFinishTransition
-    - HealMuscleTearsLeftFootTransition
-    - HealMildBurnsLeftFootTransition
-    - HealClosedFractureLeftFootTransition
-    - HealOpenFractureLeftFootTransition
-    - HealArterialBleedingLeftFootTransition
-    - HealDeepBurnsLeftFootTransition
-    - HealBulletWoundLeftFootTransition
     - CompleteOperationTransitionAlt
 
 - type: surgeryNode
@@ -330,15 +311,10 @@
   id: AmputateRightFootStart
   description: Начало ампутации правой стопы
   bodyPart: right_foot
+  packages:
+    - HealingRightFootPackage
   transitions:
     - AmputateRightFootFinishTransition
-    - HealMuscleTearsRightFootTransition
-    - HealMildBurnsRightFootTransition
-    - HealClosedFractureRightFootTransition
-    - HealOpenFractureRightFootTransition
-    - HealArterialBleedingRightFootTransition
-    - HealDeepBurnsRightFootTransition
-    - HealBulletWoundRightFootTransition
     - CompleteOperationTransitionAlt
 
 - type: surgeryNode

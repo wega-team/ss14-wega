@@ -36,11 +36,15 @@ public sealed partial class ImplanterSystem : SharedImplanterSystem
         if (!CheckTarget(target, component.Whitelist, component.Blacklist))
             return;
 
+        // Corvax-Wega-Surgery-Edit-start
         //TODO: Rework when surgery is in for implant cases
-        if (component.CurrentMode == ImplanterToggleMode.Draw && !component.ImplantOnly)
+        if (component.CurrentMode == ImplanterToggleMode.Draw)
         {
-            TryDraw(component, args.User, target, uid);
+            _popup.PopupEntity(Loc.GetString("implanter-removal-requires-surgery"), args.User, args.User);
+            args.Handled = true;
+            return;
         }
+        // Corvax-Wega-Surgery-Edit-end
         else
         {
             if (!CanImplant(args.User, target, uid, component, out var implant, out _))

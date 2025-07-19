@@ -1,6 +1,5 @@
 using System.Linq;
 using System.Text;
-using Content.Server.Administration.Logs;
 using Content.Server.Body.Components;
 using Content.Server.Pain;
 using Content.Shared.Armor;
@@ -29,10 +28,8 @@ namespace Content.Server.Surgery;
 
 public sealed partial class SurgerySystem
 {
-    [Dependency] private readonly IAdminLogManager _admin = default!;
     [Dependency] private readonly PainSystem _pain = default!;
     [Dependency] private readonly SharedStunSystem _stun = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly PhysicsSystem _physics = default!;
 
     private static readonly SoundSpecifier GibSound = new SoundPathSpecifier("/Audio/Effects/gib3.ogg");
@@ -218,6 +215,8 @@ public sealed partial class SurgerySystem
 
                 _transform.SetCoordinates(limbId, Transform(entity).Coordinates);
                 _physics.ApplyLinearImpulse(limbId, _random.NextVector2() * (50f + (float)damage));
+
+                _admin.Add(LogType.Damaged, LogImpact.High, $"The limb {ToPrettyString(entity):target} '{Name(limbId)}' blown off by the explosion");
             }
         }
     }

@@ -1,14 +1,17 @@
 - type: entity
   id: BaseSubdermalImplant
+  parent: BaseItem # Corvax-Wega-Surgery
   name: implant
   description: A microscopic chip that's injected under the skin.
   abstract: true
   components:
+  - type: Item # Corvax-Wega-Surgery
+    size: Tiny # Corvax-Wega-Surgery
   - type: SubdermalImplant
   - type: Tag
     tags:
     - SubdermalImplant
-    - HideContextMenu
+    # - HideContextMenu # Corvax-Wega-Surgery-Edit
 
 #Fun implants
 
@@ -17,8 +20,13 @@
   id: SadTromboneImplant
   name: sad trombone implant
   description: This implant plays a sad tune when the user dies.
-  categories: [ HideSpawnMenu ]
+  # categories: [ HideSpawnMenu ] # Corvax-Wega-Surgery-Edit
   components:
+    # Corvax-Wega-Surgery-start
+    - type: Sprite
+      sprite: _Wega/Objects/Specific/Medical/Surgery/implants.rsi
+      state: clown
+    # Corvax-Wega-Surgery-end
     - type: SubdermalImplant
       whitelist:
         components:
@@ -37,8 +45,13 @@
   id: LightImplant
   name: light implant
   description: This implant emits light from the user's skin on activation.
-  categories: [ HideSpawnMenu ]
+  # categories: [ HideSpawnMenu ] # Corvax-Wega-Surgery-Edit
   components:
+    # Corvax-Wega-Surgery-start
+    - type: Sprite
+      sprite: _Wega/Objects/Specific/Medical/Surgery/implants.rsi
+      state: base
+    # Corvax-Wega-Surgery-end
     - type: SubdermalImplant
       implantAction: ActionToggleLight
     - type: PointLight
@@ -50,7 +63,7 @@
     - type: Tag
       tags:
         - SubdermalImplant
-        - HideContextMenu
+        # - HideContextMenu # Corvax-Wega-Surgery-Edit
         - Flashlight
     - type: UnpoweredFlashlight
 
@@ -59,8 +72,13 @@
   id: BikeHornImplant
   name: bike horn implant
   description: This implant lets the user honk anywhere at any time.
-  categories: [ HideSpawnMenu ]
+  # categories: [ HideSpawnMenu ] # Corvax-Wega-Surgery-Edit
   components:
+    # Corvax-Wega-Surgery-start
+    - type: Sprite
+      sprite: _Wega/Objects/Specific/Medical/Surgery/implants.rsi
+      state: clown
+    # Corvax-Wega-Surgery-end
     - type: SubdermalImplant
       implantAction: ActionActivateHonkImplant
     - type: TriggerImplantAction
@@ -80,8 +98,13 @@
   id: TrackingImplant
   name: tracking implant
   description: This implant has a tracking device attached to the suit sensor network.
-  categories: [ HideSpawnMenu ]
+  # categories: [ HideSpawnMenu ] # Corvax-Wega-Surgery-Edit
   components:
+    # Corvax-Wega-Surgery-start
+    - type: Sprite
+      sprite: _Wega/Objects/Specific/Medical/Surgery/implants.rsi
+      state: tracking
+    # Corvax-Wega-Surgery-end
     - type: SubdermalImplant
       whitelist:
         components:
@@ -105,8 +128,13 @@
   id: StorageImplant
   name: storage implant
   description: This implant grants hidden storage within a person's body using bluespace technology.
-  categories: [ HideSpawnMenu ]
+  # categories: [ HideSpawnMenu ] # Corvax-Wega-Surgery-Edit
   components:
+    # Corvax-Wega-Surgery-start
+    - type: Sprite
+      sprite: _Wega/Objects/Specific/Medical/Surgery/implants.rsi
+      state: syndicate
+    # Corvax-Wega-Surgery-end
     - type: SubdermalImplant
       implantAction: ActionOpenStorageImplant
       whitelist:
@@ -132,8 +160,13 @@
   id: FreedomImplant
   name: freedom implant
   description: This implant lets the user break out of hand restraints up to three times before ceasing to function anymore.
-  categories: [ HideSpawnMenu ]
+  # categories: [ HideSpawnMenu ] # Corvax-Wega-Surgery-Edit
   components:
+    # Corvax-Wega-Surgery-start
+    - type: Sprite
+      sprite: _Wega/Objects/Specific/Medical/Surgery/implants.rsi
+      state: syndicate
+    # Corvax-Wega-Surgery-end
     - type: SubdermalImplant
       implantAction: ActionActivateFreedomImplant
       whitelist:
@@ -145,8 +178,13 @@
   id: RadioImplant
   name: radio implant
   description: This implant grants access to the Syndicate channel without a headset.
-  categories: [ HideSpawnMenu ]
+  # categories: [ HideSpawnMenu ] # Corvax-Wega-Surgery-Edit
   components:
+  # Corvax-Wega-Surgery-start
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Medical/Surgery/implants.rsi
+    state: syndicate
+  # Corvax-Wega-Surgery-end
   - type: SubdermalImplant
   - type: RadioImplant
     radioChannels:
@@ -157,8 +195,13 @@
   id: UplinkImplant
   name: uplink implant
   description: This implant lets the user access a hidden Syndicate uplink at will.
-  categories: [ HideSpawnMenu ]
+  # categories: [ HideSpawnMenu ] # Corvax-Wega-Surgery-Edit
   components:
+  # Corvax-Wega-Surgery-start
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Medical/Surgery/implants.rsi
+    state: syndicate
+  # Corvax-Wega-Surgery-end
   - type: SubdermalImplant
     implantAction: ActionOpenUplinkImplant
     whitelist:
@@ -177,8 +220,13 @@
   id: EmpImplant
   name: EMP implant
   description: This implant creates an electromagnetic pulse when activated.
-  categories: [ HideSpawnMenu ]
+  # categories: [ HideSpawnMenu ] # Corvax-Wega-Surgery-Edit
   components:
+    # Corvax-Wega-Surgery-start
+    - type: Sprite
+      sprite: _Wega/Objects/Specific/Medical/Surgery/implants.rsi
+      state: syndicate
+    # Corvax-Wega-Surgery-end
     - type: SubdermalImplant
       implantAction: ActionActivateEmpImplant
     - type: TriggerImplantAction
@@ -192,8 +240,13 @@
   id: ScramImplant
   name: scram implant
   description: This implant randomly teleports the user within a large radius when activated.
-  categories: [ HideSpawnMenu ]
+  # categories: [ HideSpawnMenu ] # Corvax-Wega-Surgery-Edit
   components:
+    # Corvax-Wega-Surgery-start
+    - type: Sprite
+      sprite: _Wega/Objects/Specific/Medical/Surgery/implants.rsi
+      state: syndicate
+    # Corvax-Wega-Surgery-end
     - type: SubdermalImplant
       implantAction: ActionActivateScramImplant
     - type: TriggerImplantAction
@@ -204,8 +257,13 @@
   id: DnaScramblerImplant
   name: DNA scrambler implant
   description: This implant lets the user randomly change their appearance and name once.
-  categories: [ HideSpawnMenu ]
+  # categories: [ HideSpawnMenu ] # Corvax-Wega-Surgery-Edit
   components:
+    # Corvax-Wega-Surgery-start
+    - type: Sprite
+      sprite: _Wega/Objects/Specific/Medical/Surgery/implants.rsi
+      state: syndicate
+    # Corvax-Wega-Surgery-end
     - type: SubdermalImplant
       implantAction: ActionActivateDnaScramblerImplant
       whitelist:
@@ -219,6 +277,11 @@
   name: chameleon controller implant
   description: This implant allows you to instantly change the appearance of all worn chameleon clothing.
   components:
+  # Corvax-Wega-Surgery-start
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Medical/Surgery/implants.rsi
+    state: syndicate
+  # Corvax-Wega-Surgery-end
   - type: ChameleonControllerImplant
   - type: SubdermalImplant
     implantAction: ActionChameleonController
@@ -236,8 +299,13 @@
   id: MicroBombImplant
   name: micro-bomb implant
   description: This implant detonates the user upon activation or upon death.
-  categories: [ HideSpawnMenu ]
+  # categories: [ HideSpawnMenu ] # Corvax-Wega-Surgery-Edit
   components:
+    # Corvax-Wega-Surgery-start
+    - type: Sprite
+      sprite: _Wega/Objects/Specific/Medical/Surgery/implants.rsi
+      state: nuclear
+    # Corvax-Wega-Surgery-end
     - type: SubdermalImplant
       permanent: true
       implantAction: ActionActivateMicroBomb
@@ -257,7 +325,7 @@
     - type: Tag
       tags:
         - SubdermalImplant
-        - HideContextMenu
+        # - HideContextMenu # Corvax-Wega-Surgery-Edit
         - MicroBomb
 
 
@@ -266,8 +334,13 @@
   id: MacroBombImplant
   name: macro-bomb implant
   description: This implant creates a large explosion on death after a preprogrammed countdown.
-  categories: [ HideSpawnMenu ]
+  # categories: [ HideSpawnMenu ] # Corvax-Wega-Surgery-Edit
   components:
+    # Corvax-Wega-Surgery-start
+    - type: Sprite
+      sprite: _Wega/Objects/Specific/Medical/Surgery/implants.rsi
+      state: nuclear
+    # Corvax-Wega-Surgery-end
     - type: SubdermalImplant
       permanent: true
     - type: TriggerOnMobstateChange #Chains with OnUseTimerTrigger
@@ -293,7 +366,7 @@
     - type: Tag
       tags:
         - SubdermalImplant
-        - HideContextMenu
+        # - HideContextMenu # Corvax-Wega-Surgery-Edit
         - MacroBomb
 
 - type: entity
@@ -301,8 +374,13 @@
   id: DeathAcidifierImplant
   name: death-acidifier implant
   description: This implant melts the user and their equipment upon death.
-  categories: [ HideSpawnMenu ]
+  # categories: [ HideSpawnMenu ] # Corvax-Wega-Surgery-Edit
   components:
+  # Corvax-Wega-Surgery-start
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Medical/Surgery/implants.rsi
+    state: nuclear
+  # Corvax-Wega-Surgery-end
   - type: SubdermalImplant
     permanent: true
     implantAction: ActionActivateDeathAcidifier
@@ -317,7 +395,7 @@
   - type: Tag
     tags:
     - SubdermalImplant
-    - HideContextMenu
+    # - HideContextMenu # Corvax-Wega-Surgery-Edit
     - DeathAcidifier
 
 - type: entity
@@ -325,8 +403,13 @@
   id: DeathRattleImplant
   name: death rattle implant
   description: This implant will inform the Syndicate radio channel should the user fall into critical condition or die.
-  categories: [ HideSpawnMenu ]
+  # categories: [ HideSpawnMenu ] # Corvax-Wega-Surgery-Edit
   components:
+    # Corvax-Wega-Surgery-start
+    - type: Sprite
+      sprite: _Wega/Objects/Specific/Medical/Surgery/implants.rsi
+      state: nuclear
+    # Corvax-Wega-Surgery-end
     - type: SubdermalImplant
       permanent: true
       whitelist:
@@ -343,11 +426,19 @@
   id: FakeMindShieldImplant
   name: fake mindshield implant
   description: This implant allows the implanter to produce a fake signal that NT security huds use to identify individuals implanted with a mindshield.
-  categories: [ HideSpawnMenu ]
+  # categories: [ HideSpawnMenu ] # Corvax-Wega-Surgery-Edit
   components:
+  # Corvax-Wega-Surgery-start
+      - type: Sprite
+        sprite: _Wega/Objects/Specific/Medical/Surgery/implants.rsi
+        state: mind_shield
       - type: SubdermalImplant
         implantAction: FakeMindShieldToggleAction
       - type: FakeMindShieldImplant
+      - type: Tag
+        tags:
+        - SubdermalHeadImplant
+  # Corvax-Wega-Surgery-end
 
 # Sec and Command implants
 
@@ -356,10 +447,18 @@
   id: MindShieldImplant
   name: mindshield implant
   description: This implant will ensure loyalty to Nanotrasen and prevent mind control devices.
-  categories: [ HideSpawnMenu ]
+  # categories: [ HideSpawnMenu ] # Corvax-Wega-Surgery-Edit
   components:
-   - type: SubdermalImplant
-   - type: MindShieldImplant
+  # Corvax-Wega-Surgery-start
+    - type: Sprite
+      sprite: _Wega/Objects/Specific/Medical/Surgery/implants.rsi
+      state: mind_shield
+    - type: SubdermalImplant
+    - type: MindShieldImplant
+    - type: Tag
+      tags:
+      - SubdermalHeadImplant
+  # Corvax-Wega-Surgery-end
 
 # Centcomm implants
 
@@ -368,8 +467,13 @@
   id: RadioImplantCentcomm
   name: radio implant
   description: This implant grants access to the Centcomm channel without a headset. Only authorized for Centcomm employees.
-  categories: [ HideSpawnMenu ]
+  # categories: [ HideSpawnMenu ] # Corvax-Wega-Surgery-Edit
   components:
+  # Corvax-Wega-Surgery-start
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Medical/Surgery/implants.rsi
+    state: nt
+  # Corvax-Wega-Surgery-end
   - type: SubdermalImplant
   - type: RadioImplant
     radioChannels:
@@ -380,7 +484,12 @@
   id: DeathRattleImplantCentcomm
   name: centcomm death rattle implant
   description: This implant will inform the Centcomm radio channel should the user fall into critical condition or die.
-  categories: [ HideSpawnMenu ]
+  # categories: [ HideSpawnMenu ] # Corvax-Wega-Surgery-Edit
   components:
+  # Corvax-Wega-Surgery-start
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Medical/Surgery/implants.rsi
+    state: nt
+  # Corvax-Wega-Surgery-end
   - type: Rattle
     radioChannel: CentCom

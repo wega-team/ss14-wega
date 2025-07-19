@@ -106,6 +106,9 @@
 
 - type: Tag
   id: RightFoot
+
+- type: Tag
+  id: SubdermalHeadImplant
 # Surgery end
 
 - type: Tag

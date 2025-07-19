@@ -8,11 +8,14 @@ using Content.Shared.DragDrop;
 using Content.Shared.Gibbing.Components;
 using Content.Shared.Gibbing.Events;
 using Content.Shared.Gibbing.Systems;
+using Content.Shared.Implants.Components; // Corvax-Wega-Surgery
 using Content.Shared.Inventory;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Map;
+using Robust.Shared.Physics.Systems; // Corvax-Wega-Surgery
+using Robust.Shared.Random; // Corvax-Wega-Surgery
 using Robust.Shared.Utility;
 
 namespace Content.Shared.Body.Systems;
@@ -29,6 +32,8 @@ public partial class SharedBodySystem
     [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly GibbingSystem _gibbingSystem = default!;
     [Dependency] private readonly SharedAudioSystem _audioSystem = default!;
+    [Dependency] private readonly SharedPhysicsSystem _physics = default!; // Corvax-Wega-Surgery
+    [Dependency] private readonly IRobustRandom _random = default!; // Corvax-Wega-Surgery
 
     private const float GibletLaunchImpulse = 8;
     private const float GibletLaunchImpulseVariance = 3;
@@ -298,6 +303,38 @@ public partial class SharedBodySystem
         if (!Resolve(bodyId, ref body, logMissing: false))
             return gibs;
 
+        // Corvax-Wega-Surgery-start
+        if (TryComp<InternalStorageComponent>(bodyId, out var internalStorage))
+        {
+            var coords = Transform(bodyId).Coordinates;
+            if (internalStorage.HeadContainer.ContainedEntity is { } headItem)
+            {
+                Containers.Remove(headItem, internalStorage.HeadContainer, destination: coords);
+                gibs.Add(headItem);
+
+                if (launchGibs)
+                {
+                    _physics.ApplyLinearImpulse(headItem,
+                        (splatDirection ?? _random.NextVector2(0.5f)).Normalized() *
+                        (GibletLaunchImpulse * splatModifier + _random.NextFloat(GibletLaunchImpulseVariance)));
+                }
+            }
+
+            foreach (var bodyItem in internalStorage.BodyContainer.ContainedEntities.ToArray())
+            {
+                Containers.Remove(bodyItem, internalStorage.BodyContainer, destination: coords);
+                gibs.Add(bodyItem);
+
+                if (launchGibs)
+                {
+                    _physics.ApplyLinearImpulse(bodyItem,
+                        (splatDirection ?? _random.NextVector2(0.5f)).Normalized() *
+                        (GibletLaunchImpulse * splatModifier + _random.NextFloat(GibletLaunchImpulseVariance)));
+                }
+            }
+        }
+        // Corvax-Wega-Surgery-end
+
         var root = GetRootPartOrNull(bodyId, body);
         if (root != null && TryComp(root.Value.Entity, out GibbableComponent? gibbable))
         {
@@ -309,8 +346,8 @@ public partial class SharedBodySystem
         {
 
             _gibbingSystem.TryGibEntityWithRef(bodyId, part.Id, GibType.Gib, GibContentsOption.Skip, ref gibs,
-                playAudio: false, launchGibs:true, launchDirection:splatDirection, launchImpulse: GibletLaunchImpulse * splatModifier,
-                launchImpulseVariance:GibletLaunchImpulseVariance, launchCone: splatCone);
+                playAudio: false, launchGibs: true, launchDirection: splatDirection, launchImpulse: GibletLaunchImpulse * splatModifier,
+                launchImpulseVariance: GibletLaunchImpulseVariance, launchCone: splatCone);
 
             if (!gibOrgans)
                 continue;
@@ -319,7 +356,7 @@ public partial class SharedBodySystem
             {
                 _gibbingSystem.TryGibEntityWithRef(bodyId, organ.Id, GibType.Drop, GibContentsOption.Skip,
                     ref gibs, playAudio: false, launchImpulse: GibletLaunchImpulse * splatModifier,
-                    launchImpulseVariance:GibletLaunchImpulseVariance, launchCone: splatCone);
+                    launchImpulseVariance: GibletLaunchImpulseVariance, launchCone: splatCone);
             }
         }
 

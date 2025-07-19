@@ -3,6 +3,7 @@ using Content.Server.Stack;
 using Content.Shared.Body.Organ;
 using Content.Shared.DoAfter;
 using Content.Shared.Hands.Components;
+using Content.Shared.Implants.Components;
 using Content.Shared.Stacks;
 using Content.Shared.Surgery;
 using Content.Shared.Surgery.Components;
@@ -149,8 +150,12 @@ public sealed partial class SurgerySystem
                 }
             }
 
+            var requiredPart = !string.IsNullOrEmpty(step.RequiredImplant)
+                ? step.RequiredImplant
+                : step.RequiredPart;
+
             float finalSuccessChance = step.SuccessChance * successModifier;
-            PerformSurgeryEffect(step.Action, step.RequiredPart, step.DamageType, finalSuccessChance, step.FailureEffect, uid, item);
+            PerformSurgeryEffect(step.Action, requiredPart, step.DamageType, finalSuccessChance, step.FailureEffect, uid, item);
         }
 
         CheckTransitionProgress(uid, comp, graph, transition);
@@ -240,7 +245,7 @@ public sealed partial class SurgerySystem
     private SurgeryNode ConvertToRuntimeNode(SurgeryNodePrototype proto)
     {
         var transitions = new List<SurgeryTransition>();
-        foreach (var transitionId in proto.TransitionIds)
+        foreach (var transitionId in proto.AllTransitions)
         {
             if (_proto.TryIndex(transitionId, out SurgeryTransitionPrototype? transitionProto))
             {
@@ -357,8 +362,31 @@ public sealed partial class SurgerySystem
             return;
         }
 
-        bool toolValid = step.Tool == null || step.Tool.Count == 0 || step.Tool.Any(tool => _tool.HasQuality(item.Value, tool));
-        bool tagValid = step.Tag == null || step.Tag.Count == 0 || step.Tag.Any(tag => _tag.HasTag(item.Value, tag));
+        if (step.Action == SurgeryActionType.Implanting &&
+            TryComp<SubdermalImplantComponent>(item.Value, out var implantComp))
+        {
+            if (TryComp<ImplantedComponent>(patient, out var implanted))
+            {
+                var implantProto = MetaData(item.Value).EntityPrototype;
+                if (implantProto != null)
+                {
+                    foreach (var existingImplant in implanted.ImplantContainer.ContainedEntities)
+                    {
+                        var existingProto = MetaData(existingImplant).EntityPrototype;
+                        if (existingProto?.ID == implantProto.ID)
+                        {
+                            _popup.PopupEntity(Loc.GetString("surgery-implant-already-exists", ("implant", implantProto.Name)), user, user);
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+
+        bool toolValid = step.Tool == null || step.Tool.Count == 0 || step.Action == SurgeryActionType.StoreItem
+            || step.Tool.Any(tool => _tool.HasQuality(item.Value, tool));
+        bool tagValid = step.Tag == null || step.Tag.Count == 0 || step.Action == SurgeryActionType.StoreItem
+            || step.Tag.Any(tag => _tag.HasTag(item.Value, tag));
 
         if (!toolValid && !tagValid)
         {
@@ -449,7 +477,7 @@ public sealed partial class SurgerySystem
     /// <returns>The matching SurgeryTransition, or null if not found.</returns>
     private SurgeryTransition? GetTransitionForNode(SurgeryNodePrototype node, ProtoId<SurgeryNodePrototype> targetNode)
     {
-        foreach (var transitionId in node.TransitionIds)
+        foreach (var transitionId in node.AllTransitions)
         {
             if (_proto.TryIndex(transitionId, out SurgeryTransitionPrototype? transitionProto) &&
                 transitionProto.Target == targetNode)
@@ -473,7 +501,7 @@ public sealed partial class SurgerySystem
     /// <returns>True if a transition exists, otherwise false.</returns>
     private bool HasTransitionToTarget(SurgeryNodePrototype node, ProtoId<SurgeryNodePrototype> target)
     {
-        foreach (var transitionId in node.TransitionIds)
+        foreach (var transitionId in node.AllTransitions)
         {
             if (_proto.TryIndex(transitionId, out SurgeryTransitionPrototype? transition) &&
                 transition.Target == target)
