@@ -39,6 +39,7 @@
   - BorgModuleAdvancedTool
   - BorgModuleAdvancedChemical
   - BorgModuleAdvancedMining
+  - BorgModuleSurgery # Corvax-Wega-T2med
 
 - type: latheRecipePack
   id: MechParts

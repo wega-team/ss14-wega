@@ -77,9 +77,12 @@
     state: medical
   discipline: Biochemical
   tier: 2
-  cost: 5000
+  cost: 12500
   recipeUnlocks:
   - BorgModuleAdvancedChemical
+  - Hynospray
+  - BorgModuleSurgery
+  - DefibrillatorCompact
 
 - type: technology
   id: ChemicalDispensary
