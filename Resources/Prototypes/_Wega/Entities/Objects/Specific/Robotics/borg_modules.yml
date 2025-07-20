@@ -29,15 +29,15 @@
         color: "#7D7D7D"
   - type: ItemBorgModule
     items:
-    - Scalpel
-    - Cautery
-    - Retractor
-    - Hemostat
-    - FixOVein
-    - Saw
-    - Drill
-    - BoneSetter
-    - BoneGel
+    - ScalpelAS
+    - CauteryAS
+    - RetractorAS
+    - HemostatAS
+    - FixOVeinAS
+    - SawAS
+    - DrillAS
+    - BoneSetterAS
+    - BoneGelAS
     - SprayBottle
     - BorgDropper
   - type: BorgModuleIcon
