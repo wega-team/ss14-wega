@@ -40,11 +40,12 @@
     - type: GuideHelp
       guides:
       - Medical Doctor
-    - type: MeleeWeapon # Corvax-Wega-Surgery
+    # Corvax-Wega-defib-start
+    - type: MeleeWeapon
       damage:
         types:
           Blunt: 4
-    - type: ItemToggleMeleeWeapon # Corvax-Wega-Surgery
+    - type: ItemToggleMeleeWeapon
       activatedSoundOnHit:
         path: /Audio/Items/Defib/defib_zap.ogg
         params:
@@ -58,6 +59,7 @@
         types:
           Blunt: 4
           Shock: 6
+    # Corvax-Wega-defib-end
 
 - type: entity
   id: Defibrillator
@@ -112,11 +114,12 @@
     doAfterDuration: 6
   - type: DoAfter
   - type: UseDelay
-  - type: MeleeWeapon # Corvax-Wega-Surgery
+    # Corvax-Wega-defib-start
+  - type: MeleeWeapon
     damage:
       types:
         Blunt: 2
-  - type: ItemToggleMeleeWeapon # Corvax-Wega-Surgery
+  - type: ItemToggleMeleeWeapon
     activatedSoundOnHit:
       path: /Audio/Items/Defib/defib_zap.ogg
       params:
@@ -130,6 +133,7 @@
       types:
         Blunt: 2
         Shock: 4
+    # Corvax-Wega-defib-end
 
 - type: entity
   id: DefibrillatorSyndicate
