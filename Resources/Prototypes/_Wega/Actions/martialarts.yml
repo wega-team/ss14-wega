@@ -40,3 +40,45 @@
     useDelay: 30
   - type: InstantAction
     event: !type:BoxingDodgeActionEvent
+
+#region KravMaga
+- type: entity
+  id: ActionKravMagaLegSweep
+  parent: BaseAction
+  name: LegSweep
+  description: "SIR GET DOWN!"
+  categories: [ HideSpawnMenu ]
+  components:
+    icon: { sprite: _Wega/Interface/Actions/actions_kravmaga.rsi, state: "legsweep" }
+    itemIconStyle: BigAction
+    useDelay: 4
+  - type: InstantAction
+    event: !type:KravMagaLegSweepActionEvent
+
+- type: entity
+  id: ActionKravMagaNeckChop
+  parent: BaseAction
+  name: Neck Chop
+  description: "Perform a blow right into the target's neck to make sure it wont make any more noise."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon: { sprite: _Wega/Interface/Actions/actions_kravmaga.rsi, state: "neckchop" }
+    itemIconStyle: BigAction
+    useDelay: 4
+  - type: InstantAction
+    event: !type:KravMagaNeckChopActionEvent
+
+- type: entity
+  id: ActionKravMagaLungPunch
+  parent: BaseAction
+  name: Lung Punch
+  description: "Deals 30 stamina damage and prevents breathing for ten seconds. Four of those will incapacitate a target less-than-lethally, but beware of the loss of breath you cause."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon: { sprite: _Wega/Interface/Actions/actions_kravmaga.rsi, state: "lungpunch" }
+    itemIconStyle: BigAction
+    useDelay: 4
+  - type: InstantAction
+    event: !type:KravMagaLungPunchActionEvent
