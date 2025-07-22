@@ -11,8 +11,8 @@ namespace Content.Shared.Martial.Arts.Components;
 public sealed partial class MartialArtsComponent : Component
 {
     [DataField]
-    public ProtoId<MartialArtsPrototype> Style;
+    public List<ProtoId<MartialArtsPrototype>> Style;
 
     [DataField]
-    public List<EntityUid> AddedActions { get; private set; } = new();
+    public Dictionary<string, EntityUid> AddedActions { get; private set; } = new();
 }

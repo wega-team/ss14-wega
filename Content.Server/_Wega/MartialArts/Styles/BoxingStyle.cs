@@ -60,9 +60,8 @@ public sealed partial class MartialArtsSystem
                 if (_map.TryGetTileRef(ent, grid, transform.Coordinates, out _))
                 {
                     if (physics.Mass < 80f)
-                    {
                         force *= 2;
-                    }
+
                     _physics.ApplyLinearImpulse(ent, dodgeDirection * force, body: physics);
                 }
             }
