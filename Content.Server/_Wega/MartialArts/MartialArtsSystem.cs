@@ -8,6 +8,7 @@ using Content.Shared.StatusEffect;
 using Content.Shared.Stunnable;
 using Content.Shared.Weapons.Melee.Events;
 using Robust.Shared.Random;
+using Robust.Shared.Utility;
 
 namespace Content.Server.Martial.Arts;
 
@@ -42,10 +43,13 @@ public sealed partial class MartialArtsSystem : SharedMartialArtsSystem
         if (blow.SelectedType == null)
             return;
 
-        var target = args.HitEntities.First();
+        var target = args.HitEntities.FirstOrNull();
+        if (target == null)
+            return;
+
         if (_blowHandlers.TryGetValue(blow.SelectedType, out var handler))
         {
-            handler(target);
+            handler(target.Value);
         }
         else
         {

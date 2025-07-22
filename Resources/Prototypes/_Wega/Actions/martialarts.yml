@@ -49,6 +49,7 @@
   description: "SIR GET DOWN!"
   categories: [ HideSpawnMenu ]
   components:
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_kravmaga.rsi, state: "legsweep" }
     itemIconStyle: BigAction
     useDelay: 4

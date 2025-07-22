@@ -14,7 +14,8 @@
     - !type:AddComponentSpecial
       components:
         - type: MartialArts
-          style: Boxing
+          style:
+          - Boxing
   # Corvax-Wega-MartialArts-end
     - !type:GiveItemOnHolidaySpecial
       holiday: BoxingDay

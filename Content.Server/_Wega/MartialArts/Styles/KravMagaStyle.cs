@@ -67,7 +67,7 @@ public sealed partial class MartialArtsSystem
 
     private void HandleLungPunch(EntityUid target)
     {
-        var damage = new DamageSpecifier { DamageDict = { { "Blunt", 30 }, { "Asphyxiation", 20 } } };
+        var damage = new DamageSpecifier { DamageDict = { { "Blunt", 15 }, { "Asphyxiation", 10 } } };
         _damage.TryChangeDamage(target, damage);
     }
     #endregion
