@@ -1,0 +1,6 @@
+- type: stealTargetGroup
+  id: GlovesKravMaga
+  name: steal-target-groups-gloves-krav-maga
+  sprite:
+    sprite: _Wega/Clothing/Hands/Gloves/kravgloves.rsi
+    state: icon
