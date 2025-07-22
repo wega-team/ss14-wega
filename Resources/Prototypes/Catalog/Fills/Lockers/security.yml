@@ -26,6 +26,7 @@
       - id: ClothingNeckShockCollar # Corvax-Wega-Add
       - id: RemoteSignaller
         amount: 2
+      - id: ClothingHandsGlovesKravMaga # corvax-wega-krav-maga
 
 - type: entity
   id: LockerWardenFilled
@@ -50,11 +51,12 @@
       - id: HoloprojectorSecurity
       - id: BookSpaceLaw
       - id: ClothingBackpackWarden # Corvax-SecFashion
-      - id: ClothingBackpackElectropack 
+      - id: ClothingBackpackElectropack
       - id: ClothingNeckShockCollar # Corvax-Wega-Add
       - id: RemoteSignaller
         amount: 2
       - id: Binoculars
+      - id: ClothingHandsGlovesKravMaga # corvax-wega-krav-maga
 
 - type: entity
   id: LockerSecurityFilled
@@ -133,10 +135,10 @@
       - id: ClothingOuterCoatLabSecurityMedic # Corvax-Resprite
         prob: 0.5
         # Corvax-Brigmedic-Start
-      - id: ClothingMaskBreathMedicalSecurity 
-      - id: BoxBodyBag 
-      - id: Defibrillator 
-      - id: MedkitAdvancedFilled 
+      - id: ClothingMaskBreathMedicalSecurity
+      - id: BoxBodyBag
+      - id: Defibrillator
+      - id: MedkitAdvancedFilled
         # Corvax-Brigmedic-End
 
 - type: entity
