@@ -79,7 +79,7 @@ public abstract class SharedMartialArtsSystem : EntitySystem
         }
 
         if (component.GotMessage && !string.IsNullOrEmpty(component.EquippedMessage))
-            _popup.PopupEntity(component.EquippedMessage, args.Equipee, args.Equipee);
+            _popup.PopupEntity(Loc.GetString(component.EquippedMessage), args.Equipee, args.Equipee);
     }
 
     private void OnUnequipped(EntityUid uid, MartialArtsClothingComponent component, GotUnequippedEvent args)
@@ -107,7 +107,7 @@ public abstract class SharedMartialArtsSystem : EntitySystem
 
         martial.Style.Remove(component.Style);
         if (component.GotMessage && !string.IsNullOrEmpty(component.UnequippedMessage))
-            _popup.PopupEntity(component.UnequippedMessage, args.Equipee, args.Equipee);
+            _popup.PopupEntity(Loc.GetString(component.UnequippedMessage), args.Equipee, args.Equipee);
     }
 
     /// <summary>
