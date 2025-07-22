@@ -4,3 +4,10 @@
     - ActionBoxingJab
     - ActionBoxingHook
     - ActionBoxingDodge
+
+- type: martialarts
+  id: KravMaga
+  actions:
+    - ActionKravMagaLegSweep
+    - ActionKravMagaLungPunch
+    - ActionKravMagaNeckChop
