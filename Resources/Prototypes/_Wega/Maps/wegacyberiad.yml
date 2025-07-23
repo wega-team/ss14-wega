@@ -40,6 +40,7 @@
             Geneticist: [ 2, 2 ]
             Chemist: [ 2, 2 ]
             Surgeon: [ 1, 1 ]
+            Coroner: [ 1, 1 ]
             MedicalDoctor: [ 4, 4 ]
             Paramedic: [ 1, 1 ]
             MedicalIntern: [ 4, 4 ]

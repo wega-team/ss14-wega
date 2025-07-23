@@ -33,7 +33,7 @@
   id: BrigmedicGear
   equipment:
     shoes: ClothingShoesBootsJackSecFilled
-    gloves: ClothingHandsGlovesNitrile
+    gloves: ClothingHandsGlovesLatexSurgeon
     eyes: ClothingEyesHudMedSec
     id: BrigmedicPDA
     ears: ClothingHeadsetBrigmedic
@@ -43,3 +43,15 @@
     back:
     - Flash
     - MedkitAdvancedFilled
+
+- type: chameleonOutfit
+  id: BrigmedicChameleonOutfit
+  job: Brigmedic
+  hasMindShield: true
+  equipment:
+    head: ClothingHeadHatBeretSecurityMedic
+    eyes: ClothingEyesHudMedSec
+    mask: ClothingMaskBreathMedicalSecurity
+    outerClothing: ClothingUniformJumpsuitBrigmedic
+    neck: ClothingNeckScarfStripedRed
+    gloves: ClothingHandsGlovesLatexSurgeon

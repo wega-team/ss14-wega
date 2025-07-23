@@ -164,7 +164,7 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
     public void CloneAppearance(EntityUid source, EntityUid target, HumanoidAppearanceComponent? sourceHumanoid = null,
         HumanoidAppearanceComponent? targetHumanoid = null)
     {
-        if (!Resolve(source, ref sourceHumanoid) || !Resolve(target, ref targetHumanoid))
+        if (!Resolve(source, ref sourceHumanoid, false) || !Resolve(target, ref targetHumanoid, false))
             return;
 
         targetHumanoid.Species = sourceHumanoid.Species;
@@ -524,6 +524,36 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
         if (sync)
             Dirty(uid, humanoid);
     }
+
+    // Corvax-Wega-Genetics-start
+    public void AddMarkingWithColors(
+        Entity<HumanoidAppearanceComponent> humanoid,
+        string markingId,
+        List<Color> colors)
+    {
+        if (!_markingManager.Markings.TryGetValue(markingId, out var prototype))
+            return;
+
+        var markingObject = prototype.AsMarking();
+
+        for (var i = 0; i < Math.Min(prototype.Sprites.Count, colors.Count); i++)
+        {
+            markingObject.SetColor(i, colors[i]);
+        }
+
+        if (colors.Count > 0 && prototype.Sprites.Count > colors.Count)
+        {
+            var lastColor = colors[^1];
+            for (var i = colors.Count; i < prototype.Sprites.Count; i++)
+            {
+                markingObject.SetColor(i, lastColor);
+            }
+        }
+
+        humanoid.Comp.MarkingSet.AddBack(prototype.MarkingCategory, markingObject);
+        Dirty(humanoid);
+    }
+    // Corvax-Wega-Genetics-end
 
     private void EnsureDefaultMarkings(EntityUid uid, HumanoidAppearanceComponent? humanoid)
     {

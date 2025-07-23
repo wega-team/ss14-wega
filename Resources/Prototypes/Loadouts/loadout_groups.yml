@@ -71,6 +71,9 @@
   - TowelColorSilver
   - TowelColorWhite
   - TowelColorYellow
+  # Corvax-Wega-Sponsors-start
+  - PetCarrierMars
+  # Corvax-Wega-Sponsors-end
 
 - type: loadoutGroup
   id: Glasses

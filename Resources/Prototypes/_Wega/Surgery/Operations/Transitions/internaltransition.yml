@@ -1923,6 +1923,7 @@
             collection: Retractor
           time: 4
         - tag: [ Ointment ]
+          entityPreview: Ointment1
           requiredPart: torso
           damageType: DeepBurns
           action: HealInternalDamage
@@ -1958,6 +1959,7 @@
             collection: Retractor
           time: 4
         - tag: [ Ointment ]
+          entityPreview: Ointment1
           damageType: DeepBurns
           requiredPart: left_arm
           action: HealInternalDamage
@@ -1993,6 +1995,7 @@
             collection: Retractor
           time: 4
         - tag: [ Ointment ]
+          entityPreview: Ointment1
           requiredPart: right_arm
           damageType: DeepBurns
           action: HealInternalDamage
@@ -2030,6 +2033,7 @@
             collection: Retractor
           time: 4
         - tag: [ Ointment ]
+          entityPreview: Ointment1
           requiredPart: left_hand
           damageType: DeepBurns
           action: HealInternalDamage
@@ -2067,6 +2071,7 @@
             collection: Retractor
           time: 4
         - tag: [ Ointment ]
+          entityPreview: Ointment1
           requiredPart: right_hand
           damageType: DeepBurns
           action: HealInternalDamage
@@ -2102,6 +2107,7 @@
             collection: Retractor
           time: 4
         - tag: [ Ointment ]
+          entityPreview: Ointment1
           requiredPart: left_leg
           damageType: DeepBurns
           action: HealInternalDamage
@@ -2137,6 +2143,7 @@
             collection: Retractor
           time: 4
         - tag: [ Ointment ]
+          entityPreview: Ointment1
           requiredPart: right_leg
           damageType: DeepBurns
           action: HealInternalDamage
@@ -2174,6 +2181,7 @@
             collection: Retractor
           time: 4
         - tag: [ Ointment ]
+          entityPreview: Ointment1
           requiredPart: left_foot
           damageType: DeepBurns
           action: HealInternalDamage
@@ -2211,6 +2219,7 @@
             collection: Retractor
           time: 4
         - tag: [ Ointment ]
+          entityPreview: Ointment1
           requiredPart: right_foot
           damageType: DeepBurns
           action: HealInternalDamage

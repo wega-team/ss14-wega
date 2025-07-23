@@ -48,6 +48,7 @@ public sealed class SurgeryStepDto
     public bool IsVisible;
     public string? RequiredTool;
     public string? RequiredCondition;
+    public string? EntityPreview;
 
     public SurgeryStepDto(
         string name,
@@ -55,7 +56,8 @@ public sealed class SurgeryStepDto
         bool isEnabled,
         bool isVisible,
         string? requiredTool,
-        string? requiredCondition)
+        string? requiredCondition,
+        string? entityPreview)
     {
         Name = name;
         IsCompleted = isCompleted;
@@ -63,6 +65,7 @@ public sealed class SurgeryStepDto
         IsVisible = isVisible;
         RequiredTool = requiredTool;
         RequiredCondition = requiredCondition;
+        EntityPreview = entityPreview;
     }
 }
 

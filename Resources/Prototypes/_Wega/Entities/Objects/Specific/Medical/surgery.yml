@@ -131,3 +131,84 @@
   - type: PhysicalComposition
     materialComposition:
       Cloth: 50
+      
+- type: entity
+  name: fix o vein
+  parent: FixOVein
+  suffix: AlwaysSteril
+  id: FixOVeinAS
+  components:
+  - type: Sterile
+    alwaysSterile: true
+
+- type: entity
+  name: bone setter
+  parent: BoneSetter
+  suffix: AlwaysSteril
+  id: BoneSetterAS
+  components:
+  - type: Sterile
+    alwaysSterile: true
+      
+- type: entity
+  name: bone gel
+  parent: BoneGel
+  suffix: AlwaysSteril
+  id: BoneGelAS
+  components:
+  - type: Sterile
+    alwaysSterile: true
+      
+- type: entity
+  name: Scalpel
+  parent: Scalpel
+  suffix: AlwaysSteril
+  id: ScalpelAS
+  components:
+  - type: Sterile
+    alwaysSterile: true
+
+- type: entity
+  name: cautery
+  parent: Cautery
+  suffix: AlwaysSteril
+  id: CauteryAS
+  components:
+  - type: Sterile
+    alwaysSterile: true
+
+- type: entity
+  name: retractor
+  parent: Retractor
+  suffix: AlwaysSteril
+  id: RetractorAS
+  components:
+  - type: Sterile
+    alwaysSterile: true
+
+- type: entity
+  name: hemostat
+  parent: Hemostat
+  suffix: AlwaysSteril
+  id: HemostatAS
+  components:
+  - type: Sterile
+    alwaysSterile: true
+
+- type: entity
+  name: metal saw
+  parent: Saw
+  suffix: AlwaysSteril
+  id: SawAS
+  components:
+  - type: Sterile
+    alwaysSterile: true
+
+- type: entity
+  name: drill
+  parent: Drill
+  suffix: AlwaysSteril
+  id: DrillAS
+  components:
+  - type: Sterile
+    alwaysSterile: true

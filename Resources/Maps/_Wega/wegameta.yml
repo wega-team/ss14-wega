@@ -132669,18 +132669,6 @@ entities:
     - type: Transform
       pos: -30.571024,-55.578983
       parent: 5350
-- proto: MatterBinStockPart
-  entities:
-  - uid: 4312
-    components:
-    - type: Transform
-      pos: 0.44185066,-33.171204
-      parent: 5350
-  - uid: 4315
-    components:
-    - type: Transform
-      pos: 0.31685066,-32.99933
-      parent: 5350
 - proto: MechEquipmentGrabberSmall
   entities:
   - uid: 16336

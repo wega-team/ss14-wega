@@ -1,5 +1,3 @@
-light_mode unshaded;
-
 uniform sampler2D SCREEN_TEXTURE;
 uniform highp vec3 tint;
 uniform highp float brightness;
@@ -24,8 +22,10 @@ void fragment() {
 
     highp vec3 night_color = mix(color.rgb, tint * grey, 0.8);
 
-    highp float noise = (rand(UV + TIME) - 0.5) * noise_amount * (1.0 - grey);
+    highp float noise = (rand(UV + TIME) - 0.5) * noise_amount * (0.5 - grey * 0.5);
     night_color += noise;
+
+    night_color *= 0.5;
 
     COLOR = vec4(clamp(night_color, 0.0, 1.0), color.a);
 }

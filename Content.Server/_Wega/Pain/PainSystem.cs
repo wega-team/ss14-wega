@@ -7,6 +7,7 @@ using Content.Shared.Pain.Components;
 using Content.Shared.Popups;
 using Content.Shared.Standing;
 using Content.Shared.Stunnable;
+using Content.Shared.Traits.Assorted;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server.Pain;
@@ -99,11 +100,13 @@ public sealed class PainSystem : EntitySystem
         switch (effect.Effect)
         {
             case PainEffectType.Emote when effect.Message != null:
-                _emoting.TryEmoteWithoutChat(uid, effect.Message);
+                if (!HasComp<PainNumbnessComponent>(uid))
+                    _emoting.TryEmoteWithoutChat(uid, effect.Message);
                 break;
 
             case PainEffectType.Popup when effect.Message != null:
-                _popup.PopupEntity(Loc.GetString(effect.Message), uid, uid, PopupType.SmallCaution);
+                if (!HasComp<PainNumbnessComponent>(uid))
+                    _popup.PopupEntity(Loc.GetString(effect.Message), uid, uid, PopupType.SmallCaution);
                 break;
 
             case PainEffectType.MovementPenalty:

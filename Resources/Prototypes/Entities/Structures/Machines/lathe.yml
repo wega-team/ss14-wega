@@ -197,7 +197,7 @@
     # - SurgeryStatic
     dynamicPacks:
     # Corvax-Wega-Edit
-    - SurgeryStatic # Corvax-Wega-Edit
+    - ChemistryStatic # Corvax-Wega-Edit
     - AdvancedTools
     - ScienceEquipment
     - ScienceExplosives
@@ -485,6 +485,7 @@
     - ChemistryStatic # Corvax-Wega-Edit
     - SurgeryStatic # Corvax-Wega-Edit
     - Chemistry
+    - AdvencedMed # Corvax-Wega-Edit
   - type: Machine
     board: MedicalTechFabCircuitboard
   - type: StealTarget

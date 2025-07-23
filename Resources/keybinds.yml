@@ -198,6 +198,9 @@ binds:
 - function: OpenInteractionMenu
   type: State
   key: U
+- function: Strangle
+  type: State
+  key: J
 - function: ToggleCrawling
   type: State
   key: R

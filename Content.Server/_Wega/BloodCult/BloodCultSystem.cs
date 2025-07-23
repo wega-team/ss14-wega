@@ -113,7 +113,7 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
                     _damage.TryChangeDamage(target, heal, true);
 
                     if (TryComp<BloodstreamComponent>(target, out var blood))
-                        _blood.TryModifyBloodLevel(target, +1, blood);
+                        _blood.TryModifyBloodLevel(target.Owner, +1);
                 }
             }
             pylonQueryComponent.NextTimeTick -= frameTime;
@@ -449,7 +449,7 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
             return;
 
         var user = args.User;
-        if (!TryComp<BloodCultistComponent>(user, out _))
+        if (!HasComp<BloodCultistComponent>(user))
         {
             var dropEvent = new DropHandItemsEvent();
             RaiseLocalEvent(user, ref dropEvent);
@@ -459,19 +459,19 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
             return;
         }
 
-        if (TryComp<BloodCultistComponent>(target, out _))
+        if (HasComp<BloodCultistComponent>(target))
         {
             HandleCultistInteraction(args);
             return;
         }
 
-        if (TryComp<BloodRuneComponent>(target, out _))
+        if (HasComp<BloodRuneComponent>(target))
         {
             HandleRuneInteraction(args);
             return;
         }
 
-        if (TryComp<BloodSharpenerComponent>(target, out _))
+        if (HasComp<BloodSharpenerComponent>(target))
         {
             HandleSharpenerInteraction(uid, component, args);
             return;
@@ -485,7 +485,7 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
 
         foreach (var organ in _body.GetBodyOrgans(args.Target.Value, bodyComponent))
         {
-            if (!TryComp<MetabolizerComponent>(organ.Id, out _)
+            if (!HasComp<MetabolizerComponent>(organ.Id)
                 || !TryComp<StomachComponent>(organ.Id, out var stomachComponent) || stomachComponent.Solution == null
                 || !TryComp<SolutionContainerManagerComponent>(stomachComponent.Solution.Value, out var solutionContainer)
                 || !_solution.TryGetSolution((stomachComponent.Solution.Value, solutionContainer), null, out var solutionEntity, out var solution))
@@ -544,11 +544,11 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
 
     private void OnAttackAttempt(AttackAttemptEvent args)
     {
-        if (args.Weapon == null || !TryComp<BloodDaggerComponent>(args.Weapon, out _))
+        if (args.Weapon == null || !HasComp<BloodDaggerComponent>(args.Weapon))
             return;
 
         var user = args.Uid;
-        if (!TryComp<BloodCultistComponent>(user, out _))
+        if (!HasComp<BloodCultistComponent>(user))
         {
             _popup.PopupEntity(Loc.GetString("blood-cult-failed-attack"), user, user, PopupType.SmallCaution);
             args.Cancel();
@@ -662,7 +662,7 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
     private void OnShuttleCurse(Entity<BloodShuttleCurseComponent> entity, ref UseInHandEvent args)
     {
         var user = args.User;
-        if (args.Handled || !TryComp<BloodCultistComponent>(user, out _))
+        if (args.Handled || !HasComp<BloodCultistComponent>(user))
             return;
 
         if (_curses > 0)
@@ -683,7 +683,7 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
     private void OnVeilShifter(EntityUid uid, VeilShifterComponent component, UseInHandEvent args)
     {
         var user = args.User;
-        if (args.Handled || !TryComp<BloodCultistComponent>(user, out _))
+        if (args.Handled || !HasComp<BloodCultistComponent>(user))
         {
             var dropEvent = new DropHandItemsEvent();
             RaiseLocalEvent(user, ref dropEvent);
@@ -726,7 +726,7 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
     private void OnConstructInteract(Entity<ConstructComponent> cosntruct, ref InteractHandEvent args)
     {
         var user = args.User;
-        if (args.Handled || !TryComp<BloodCultistComponent>(user, out _))
+        if (args.Handled || !HasComp<BloodCultistComponent>(user))
             return;
 
         if (TryComp<ItemSlotsComponent>(cosntruct, out var itemSlotsComponent))
@@ -787,7 +787,7 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
     private void OnStructureInteract(EntityUid structure, BloodStructureComponent component, InteractHandEvent args)
     {
         var user = args.User;
-        if (args.Handled || !TryComp<BloodCultistComponent>(user, out _))
+        if (args.Handled || !HasComp<BloodCultistComponent>(user))
             return;
 
         if (structure is not { Valid: true } target || !component.CanInteract)

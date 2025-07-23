@@ -5,11 +5,10 @@ using Content.Server.Antag;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Bible.Components;
 using Content.Server.Destructible;
-using Content.Server.Flash.Components;
 using Content.Server.Hallucinations;
 using Content.Server.Prayer;
 using Content.Server.Pinpointer;
-using Content.Shared.Actions;
+using Content.Shared.Actions.Components;
 using Content.Shared.Body.Components;
 using Content.Shared.Chat.Prototypes;
 using Content.Shared.Chemistry.Components;
@@ -37,7 +36,6 @@ using Content.Shared.Stealth;
 using Content.Shared.Stealth.Components;
 using Content.Shared.StatusEffect;
 using Content.Shared.Standing;
-using Content.Shared.Stunnable;
 using Content.Shared.Vampire;
 using Content.Shared.Vampire.Components;
 using Content.Shared.Weapons.Melee;
@@ -53,7 +51,8 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
-using Robust.Shared.Utility;
+using Content.Shared.Damage.Systems;
+using Content.Shared.Flash.Components;
 
 namespace Content.Server.Vampire;
 
@@ -75,6 +74,7 @@ public sealed partial class VampireSystem
     [Dependency] private readonly HallucinationsSystem _hallucinations = default!;
     [Dependency] private readonly StatusEffectsSystem _statusEffect = default!;
     [Dependency] private readonly AtmosphereSystem _atmosphereSystem = default!;
+    [Dependency] private readonly SharedStaminaSystem _stamina = default!;
     [Dependency] private readonly NavMapSystem _navMap = default!;
 
     private void InitializePowers()
@@ -212,11 +212,10 @@ public sealed partial class VampireSystem
             return;
         }
 
-        if (TryComp<StaminaComponent>(uid, out var staminaComponent))
+        if (HasComp<StaminaComponent>(uid))
         {
-            staminaComponent.StaminaDamage = 0f;
-            staminaComponent.Critical = false;
-            TryRemoveKnockdown(uid);
+            RemoveKnockdown(uid);
+            _stamina.RemoveStaminaDamage(uid);
         }
 
         if (component.CurrentBlood >= 200)
@@ -286,7 +285,7 @@ public sealed partial class VampireSystem
 
     private void OnBloodTendrils(EntityUid uid, VampireComponent component, VampireBloodTentacleAction args)
     {
-        if (args.Handled || args.Coords is not { } coords)
+        if (args.Handled)
             return;
 
         if (!CheckBloodEssence(uid, 10))
@@ -295,6 +294,7 @@ public sealed partial class VampireSystem
             return;
         }
 
+        var coords = args.Target;
         List<EntityCoordinates> spawnPos = new();
         spawnPos.Add(coords);
 
@@ -314,7 +314,6 @@ public sealed partial class VampireSystem
         foreach (var pos in spawnPos)
         {
             if (!_map.TryGetTileRef(grid, gridComp, pos, out var tileRef) ||
-                tileRef.IsSpace() ||
                 _turf.IsTileBlocked(tileRef, CollisionGroup.Impassable))
                 continue;
 
@@ -328,16 +327,13 @@ public sealed partial class VampireSystem
 
     private void OnBloodBarrierAction(EntityUid uid, VampireComponent component, VampireBloodBarrierActionEvent args)
     {
-        if (args.Coords is null)
-            return;
-
         if (!CheckBloodEssence(uid, 20))
         {
             _popup.PopupEntity(Loc.GetString("vampire-blood-sacrifice-insufficient-blood"), uid, uid, PopupType.SmallCaution);
             return;
         }
 
-        var targetCoords = args.Coords.Value;
+        var targetCoords = args.Target;
         if (args.UseCasterDirection)
         {
             var transform = Transform(uid);
@@ -633,16 +629,13 @@ public sealed partial class VampireSystem
 
     private void OnShadowSnare(EntityUid uid, VampireComponent component, VampireShadowSnareActionEvent args)
     {
-        if (args.Coords is null)
-            return;
-
         if (!CheckBloodEssence(uid, 20))
         {
             _popup.PopupEntity(Loc.GetString("vampire-blood-sacrifice-insufficient-blood"), uid, uid, PopupType.SmallCaution);
             return;
         }
 
-        var targetCoords = args.Coords.Value;
+        var targetCoords = args.Target;
         if (TrySpawnObjectAtPosition(targetCoords, args.EntityId, uid))
         {
             SubtractBloodEssence(uid, 20);
@@ -856,11 +849,10 @@ public sealed partial class VampireSystem
             return;
         }
 
-        if (TryComp<StaminaComponent>(uid, out var staminaComponent))
+        if (HasComp<StaminaComponent>(uid))
         {
-            staminaComponent.StaminaDamage = 0f;
-            staminaComponent.Critical = false;
-            TryRemoveKnockdown(uid);
+            RemoveKnockdown(uid);
+            _stamina.RemoveStaminaDamage(uid);
         }
 
         if (component.CurrentBlood >= 200 && TryComp<DamageableComponent>(uid, out var damageableComponent))
@@ -1126,8 +1118,7 @@ public sealed partial class VampireSystem
             return;
         }
 
-        if (args.Coords is not { } coords) return;
-
+        var coords = args.Target;
         var transformSystem = _entityManager.System<SharedTransformSystem>();
         var vampirePosition = _transform.GetWorldPosition(uid);
         var targetPosition = transformSystem.ToMapCoordinates(coords, true).Position;
@@ -1172,7 +1163,7 @@ public sealed partial class VampireSystem
     {
         component.MaxThrallCount++;
 
-        _action.RemoveAction(uid, args.Action);
+        _action.RemoveAction(uid, args.Action!);
     }
 
     private void OnAfterEnthrall(EntityUid uid, VampireComponent component, VampireEnthrallActionEvent args)
@@ -1314,7 +1305,7 @@ public sealed partial class VampireSystem
             return;
         }
 
-        var target = args.Entity;
+        var target = args.Target;
         if (!TryComp(target, out HumanoidAppearanceComponent? humanoid))
         {
             _popup.PopupEntity(Loc.GetString("vampire-teleport-failed"), uid, uid, PopupType.Small);
@@ -1322,11 +1313,11 @@ public sealed partial class VampireSystem
         }
 
         var currentCoords = Transform(uid).Coordinates;
-        var targetCoords = Transform(target.Value).Coordinates;
+        var targetCoords = Transform(target).Coordinates;
         _transform.SetCoordinates(uid, targetCoords);
-        _transform.SetCoordinates(target.Value, currentCoords);
-        _stun.TrySlowdown(target.Value, TimeSpan.FromSeconds(4f), true, 0.5f, 0.5f);
-        _hallucinations.StartHallucinations(target.Value, "Hallucinations", TimeSpan.FromSeconds(15f), true, "MindBreaker");
+        _transform.SetCoordinates(target, currentCoords);
+        _stun.TrySlowdown(target, TimeSpan.FromSeconds(4f), true, 0.5f, 0.5f);
+        _hallucinations.StartHallucinations(target, "Hallucinations", TimeSpan.FromSeconds(15f), true, "MindBreaker");
 
         SubtractBloodEssence(uid, 15);
         args.Handled = true;
@@ -1358,11 +1349,10 @@ public sealed partial class VampireSystem
         var thrallsInRange = _entityLookup.GetEntitiesInRange<ThrallComponent>(Transform(uid).Coordinates, 7f);
         foreach (var thrallEntity in thrallsInRange)
         {
-            if (TryComp<StaminaComponent>(thrallEntity.Owner, out var staminaComponent))
+            if (HasComp<StaminaComponent>(thrallEntity))
             {
-                staminaComponent.StaminaDamage = 0f;
-                staminaComponent.Critical = false;
-                TryRemoveKnockdown(thrallEntity.Owner);
+                RemoveKnockdown(thrallEntity);
+                _stamina.RemoveStaminaDamage(thrallEntity.Owner);
             }
         }
 
@@ -1441,18 +1431,13 @@ public sealed partial class VampireSystem
     #endregion
 
     #region Other Methods
-    public bool TryRemoveKnockdown(EntityUid uid, StatusEffectsComponent? status = null)
+    public void RemoveKnockdown(EntityUid uid, StatusEffectsComponent? status = null)
     {
         if (!Resolve(uid, ref status, false))
-            return false;
+            return;
 
         _statusEffect.TryRemoveStatusEffect(uid, "KnockedDown", status);
         _statusEffect.TryRemoveStatusEffect(uid, "Stun", status);
-
-        var ev = new KnockedDownEvent();
-        RaiseLocalEvent(uid, ref ev);
-
-        return true;
     }
 
     private void CoolSurroundingAtmosphere(EntityUid uid)
@@ -1500,7 +1485,7 @@ public sealed partial class VampireSystem
 
         var position = coords.Position;
         var gridPosition = new Vector2i((int)position.X, (int)position.Y);
-        if (!_map.TryGetTileRef(gridEntityUid, gridComp, gridPosition, out var tileRef) || tileRef.IsSpace()
+        if (!_map.TryGetTileRef(gridEntityUid, gridComp, gridPosition, out var tileRef)
             || _turf.IsTileBlocked(tileRef, CollisionGroup.Impassable))
             return false;
 

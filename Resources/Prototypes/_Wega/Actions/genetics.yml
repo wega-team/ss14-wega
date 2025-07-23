@@ -1,10 +1,68 @@
 - type: entity
   id: ActionGenCloakOfDarkness
+  parent: BaseAction
   name: cloak of darkness
   description: "You are a shadow."
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
-    icon: { sprite: _Wega/Interface/Actions/actions_bloodcult.rsi, state: "blood_magic" }
-    event: !type:CloakOfDarknessActionEvent
+  - type: Action
+    icon: { sprite: Clothing/Neck/Cloaks/void.rsi, state: "icon" }
     useDelay: 15
+  - type: InstantAction
+    event: !type:CloakOfDarknessActionEvent
+
+- type: entity
+  id: ActionGenPolymorphism
+  parent: BaseAction
+  name: polymorphism
+  description: "Take on someone else's form."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon: { sprite: Clothing/Neck/Cloaks/void.rsi, state: "icon" }
+    itemIconStyle: BigAction
+    useDelay: 300
+  - type: TargetAction
+  - type: EntityTargetAction
+    event: !type:PolymorphismActionEvent
+
+- type: entity
+  id: ActionMindCommunicationGen
+  parent: BaseAction
+  name: mind communication
+  description: "Contact someone through their mind."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon: { sprite: Clothing/Neck/Cloaks/void.rsi, state: "icon" }
+    useDelay: 30
+  - type: InstantAction
+    event: !type:MindCommunicationActionEvent
+
+- type: entity
+  id: ActionHulkTransformation
+  parent: BaseAction
+  name: transformation
+  description: "SMASH!"
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon: { sprite: _Wega/Interface/Actions/actions_hulk.rsi, state: "transformarion" }
+  - type: InstantAction
+    event: !type:HulkTransformationActionEvent
+
+- type: entity
+  id: ActionHulkCharge
+  parent: BaseAction
+  name: charge
+  description: "GO AHEAD!"
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon: { sprite: _Wega/Interface/Actions/actions_hulk.rsi, state: "charge" }
+    itemIconStyle: BigAction
+    useDelay: 45
+  - type: TargetAction
+    range: 16
+  - type: EntityTargetAction
+    event: !type:HulkChargeActionEvent

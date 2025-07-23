@@ -189,3 +189,16 @@
   - type: StealCondition
     stealGroup: WeaponAntiqueLaser
     owner: job-name-captain
+
+# warden
+- type: entity
+  parent: BaseVampireStealObjective
+  id: VampireGlovesKravMagaStealObjective
+  components:
+  - type: Objective
+    difficulty: 3
+  - type: NotJobRequirement
+    job: Warden
+  - type: StealCondition
+    stealGroup: GlovesKravMaga
+    owner: job-name-warden

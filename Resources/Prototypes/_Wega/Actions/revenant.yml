@@ -1,32 +1,39 @@
 - type: entity
   id: ActionRevenantTransmit
+  parent: BaseAction
   name: Transmit
   description: Cheat to please yourself.
   components:
-  - type: EntityTargetAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions, state: transmit }
     itemIconStyle: BigAction
-    event: !type:RevenantTransmitActionEvent
     useDelay: 5
+  - type: TargetAction
+  - type: EntityTargetAction
+    event: !type:RevenantTransmitActionEvent
 
 - type: entity
   id: ActionRevenantHauntObjects
+  parent: BaseAction
   name: Haunt Objects
   description: Costs 50 Essence.
   components:
-  - type: InstantAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions, state: haunt }
     itemIconStyle: BigAction
-    event: !type:RevenantHauntActionEvent
     useDelay: 60
+  - type: InstantAction
+    event: !type:RevenantHauntActionEvent
 
 - type: entity
   id: ActionRevenantHallucinationAura
+  parent: BaseAction
   name: Hallucination Aura
   description: Costs 25 Essence.
   components:
-  - type: InstantAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions, state: hallucination }
     itemIconStyle: BigAction
-    event: !type:RevenantHallucinationActionEvent
     useDelay: 15
+  - type: InstantAction
+    event: !type:RevenantHallucinationActionEvent

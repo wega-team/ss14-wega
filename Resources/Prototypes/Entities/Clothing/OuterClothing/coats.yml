@@ -419,6 +419,7 @@
         Piercing: 0.65
         Heat: 0.85
         Caustic: 0.75
+  - type: ClothingSterility # Corvax-Wega-Surgery
 
 - type: entity
   parent: ClothingOuterStorageFoldableBase

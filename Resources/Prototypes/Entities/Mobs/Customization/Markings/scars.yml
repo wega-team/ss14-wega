@@ -2,7 +2,8 @@
   id: ScarEyeRight
   bodyPart: Head
   markingCategory: Head
-  speciesRestriction: [Human, Dwarf]
+  markingType: NonGenetics # Corvax-Wega-Genetics
+  speciesRestriction: [Human, Dwarf, SlimePerson]
   followSkinColor: true
   sprites:
   - sprite: Mobs/Customization/scars.rsi
@@ -12,7 +13,8 @@
   id: ScarEyeLeft
   bodyPart: Head
   markingCategory: Head
-  speciesRestriction: [Human, Dwarf]
+  markingType: NonGenetics # Corvax-Wega-Genetics
+  speciesRestriction: [Human, Dwarf, SlimePerson]
   followSkinColor: true
   sprites:
   - sprite: Mobs/Customization/scars.rsi
@@ -22,7 +24,8 @@
   id: ScarTopSurgeryShort
   bodyPart: Chest
   markingCategory: Chest
-  speciesRestriction: [Human, Dwarf]
+  markingType: NonGenetics # Corvax-Wega-Genetics
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona]
   sexRestriction: [Male]
   followSkinColor: true
   sprites:
@@ -33,7 +36,8 @@
   id: ScarTopSurgeryLong
   bodyPart: Chest
   markingCategory: Chest
-  speciesRestriction: [Human, Dwarf]
+  markingType: NonGenetics # Corvax-Wega-Genetics
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona]
   sexRestriction: [Male]
   followSkinColor: true
   sprites:
@@ -44,7 +48,8 @@
   id: ScarChest
   bodyPart: Chest
   markingCategory: Chest
-  speciesRestriction: [Human, Dwarf]
+  markingType: NonGenetics # Corvax-Wega-Genetics
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona]
   followSkinColor: true
   sprites:
   - sprite: Mobs/Customization/scars.rsi
@@ -54,7 +59,8 @@
   id: ScarNeck
   bodyPart: Head
   markingCategory: Head
-  speciesRestriction: [Human, Dwarf]
+  markingType: NonGenetics # Corvax-Wega-Genetics
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson]
   followSkinColor: true
   sprites:
   - sprite: Mobs/Customization/scars.rsi
@@ -64,7 +70,8 @@
   id: ScarChestBullets
   bodyPart: Chest
   markingCategory: Chest
-  speciesRestriction: [Human, Dwarf]
+  markingType: NonGenetics # Corvax-Wega-Genetics
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid]
   followSkinColor: true
   sprites:
   - sprite: Mobs/Customization/scars.rsi
@@ -74,7 +81,8 @@
   id: ScarStomachBullets
   bodyPart: Chest
   markingCategory: Chest
-  speciesRestriction: [Human, Dwarf]
+  markingType: NonGenetics # Corvax-Wega-Genetics
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid]
   followSkinColor: true
   sprites:
   - sprite: Mobs/Customization/scars.rsi
@@ -84,7 +92,8 @@
   id: ScarFace1
   bodyPart: Head
   markingCategory: Head
-  speciesRestriction: [Human, Dwarf]
+  markingType: NonGenetics # Corvax-Wega-Genetics
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth]
   followSkinColor: true
   sprites:
   - sprite: Mobs/Customization/scars.rsi
@@ -94,8 +103,29 @@
   id: ScarFace2
   bodyPart: Head
   markingCategory: Head
-  speciesRestriction: [Human, Dwarf]
+  markingType: NonGenetics # Corvax-Wega-Genetics
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth]
   followSkinColor: true
   sprites:
   - sprite: Mobs/Customization/scars.rsi
     state: scar_face_2
+
+- type: marking
+  id: ScarEyeRightSmall
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson]
+  followSkinColor: true
+  sprites:
+  - sprite: Mobs/Customization/scars.rsi
+    state: scar_eye_right_small
+
+- type: marking
+  id: ScarEyeLeftSmall
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson]
+  followSkinColor: true
+  sprites:
+  - sprite: Mobs/Customization/scars.rsi
+    state: scar_eye_left_small

@@ -13,6 +13,7 @@ public sealed class RadioImplantSystem : EntitySystem
 
         SubscribeLocalEvent<RadioImplantComponent, ImplantImplantedEvent>(OnImplantImplanted);
         SubscribeLocalEvent<RadioImplantComponent, EntGotRemovedFromContainerMessage>(OnRemove);
+        SubscribeLocalEvent<ActiveRadioComponent, ImplantRemovedEvent>(OnRemove); // Corvax-Wega-Surgery
     }
 
     /// <summary>
@@ -73,4 +74,40 @@ public sealed class RadioImplantSystem : EntitySystem
             RemCompDeferred<IntrinsicRadioTransmitterComponent>(args.Container.Owner);
         }
     }
+
+    // Corvax-Wega-Surgery-start
+    private void OnRemove(Entity<ActiveRadioComponent> ent, ref ImplantRemovedEvent args)
+    {
+        if (!TryComp<RadioImplantComponent>(args.Implant, out var radioImplant))
+            return;
+
+        if (TryComp<ActiveRadioComponent>(ent, out var activeRadioComponent))
+        {
+            foreach (var channel in radioImplant.ActiveAddedChannels)
+            {
+                activeRadioComponent.Channels.Remove(channel);
+            }
+            radioImplant.ActiveAddedChannels.Clear();
+
+            if (activeRadioComponent.Channels.Count == 0)
+            {
+                RemCompDeferred<ActiveRadioComponent>(ent);
+            }
+        }
+
+        if (!TryComp<IntrinsicRadioTransmitterComponent>(ent, out var radioTransmitterComponent))
+            return;
+
+        foreach (var channel in radioImplant.TransmitterAddedChannels)
+        {
+            radioTransmitterComponent.Channels.Remove(channel);
+        }
+        radioImplant.TransmitterAddedChannels.Clear();
+
+        if (radioTransmitterComponent.Channels.Count == 0 || activeRadioComponent?.Channels.Count == 0)
+        {
+            RemCompDeferred<IntrinsicRadioTransmitterComponent>(ent);
+        }
+    }
+    // Corvax-Wega-Surgery-end
 }

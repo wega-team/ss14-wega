@@ -101,7 +101,7 @@ public abstract partial class SharedStaminaSystem : EntitySystem
 
         var curTime = _timing.CurTime;
         var pauseTime = _metadata.GetPauseTime(uid);
-        return MathF.Max(0f, component.StaminaDamage - MathF.Max(0f, (float) (curTime - (component.NextUpdate + pauseTime)).TotalSeconds * component.Decay));
+        return MathF.Max(0f, component.StaminaDamage - MathF.Max(0f, (float)(curTime - (component.NextUpdate + pauseTime)).TotalSeconds * component.Decay));
     }
 
     private void OnRejuvenate(EntityUid uid, StaminaComponent component, RejuvenateEvent args)
@@ -218,7 +218,7 @@ public abstract partial class SharedStaminaSystem : EntitySystem
             return;
 
         var severity = ContentHelpers.RoundToLevels(MathF.Max(0f, component.CritThreshold - component.StaminaDamage), component.CritThreshold, 7);
-        _alerts.ShowAlert(uid, component.StaminaAlert, (short) severity);
+        _alerts.ShowAlert(uid, component.StaminaAlert, (short)severity);
     }
 
     /// <summary>
@@ -429,4 +429,21 @@ public abstract partial class SharedStaminaSystem : EntitySystem
 
         _stunSystem.UpdateStunModifiers(ent, ent.Comp.StunModifierThresholds[closest]);
     }
+
+    // Corvax-Wega-Add-start
+    public void RemoveStaminaDamage(Entity<StaminaComponent?> ent)
+    {
+        if (!Resolve(ent, ref ent.Comp))
+            return;
+
+        if (ent.Comp.StaminaDamage >= ent.Comp.CritThreshold)
+            ExitStamCrit(ent);
+
+        ent.Comp.StaminaDamage = 0;
+        AdjustSlowdown(ent);
+        RemComp<ActiveStaminaComponent>(ent);
+        SetStaminaAlert(ent);
+        Dirty(ent.Owner, ent.Comp);
+    }
+    // Corvax-Wega-Add-end
 }

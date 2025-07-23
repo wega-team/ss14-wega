@@ -182,6 +182,14 @@ namespace Content.Server.Database
         /// <param name="updates">The list of all updates to apply to the database.</param>
         Task UpdatePlayTimes(IReadOnlyCollection<PlayTimeUpdate> updates);
 
+        /// <summary>
+        /// Adds play time to a specific tracker for a player.
+        /// </summary>
+        /// <param name="userId">The player's user ID.</param>
+        /// <param name="tracker">The tracker to add time to.</param>
+        /// <param name="time">The amount of time to add.</param>
+        Task AddPlayTimeAsync(NetUserId userId, string tracker, TimeSpan time);
+
         #endregion
 
         #region Player Records
@@ -623,6 +631,14 @@ namespace Content.Server.Database
             DbWriteOpsMetric.Inc();
             return RunDbCommand(() => _db.UpdatePlayTimes(updates));
         }
+
+        // Corvax-Wega-Timepacked-start
+        public Task AddPlayTimeAsync(NetUserId userId, string tracker, TimeSpan time)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.AddPlayTimeAsync(userId, tracker, time));
+        }
+        // Corvax-Wega-Timepacked-end
 
         #endregion
 

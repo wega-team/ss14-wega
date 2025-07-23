@@ -1,0 +1,1 @@
+tts-voice-name-cap = Мита в кепочке (MiSide)

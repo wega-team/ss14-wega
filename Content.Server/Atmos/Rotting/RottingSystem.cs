@@ -1,8 +1,8 @@
 using Content.Server.Atmos.EntitySystems;
-using Content.Server.Body.Components;
 using Content.Server.Temperature.Components;
 using Content.Shared.Atmos;
 using Content.Shared.Atmos.Rotting;
+using Content.Shared.Body.Events;
 using Content.Shared.Damage;
 using Robust.Server.Containers;
 using Robust.Shared.Physics.Components;
@@ -54,13 +54,25 @@ public sealed class RottingSystem : SharedRottingSystem
     /// <returns></returns>
     private float GetRotRate(EntityUid uid)
     {
-        if (_container.TryGetContainingContainer((uid, null, null), out var container) &&
+        // Corvax-Wega-Edit-start
+        var rate = 1f;
+        if (_container.TryGetContainingContainer(uid, out var container) &&
             TryComp<ProRottingContainerComponent>(container.Owner, out var rotContainer))
         {
-            return rotContainer.DecayModifier;
+            rate *= rotContainer.DecayModifier;
         }
 
-        return 1f;
+        if (TryComp<AntiRottingComponent>(uid, out var antiRot))
+        {
+            rate *= antiRot.SlowdownFactor;
+            if (_timing.CurTime >= antiRot.ExpiryTime)
+            {
+                RemCompDeferred<AntiRottingComponent>(uid);
+            }
+        }
+
+        return rate;
+        // Corvax-Wega-Edit-end
     }
 
     public override void Update(float frameTime)
@@ -95,6 +107,12 @@ public sealed class RottingSystem : SharedRottingSystem
         var rotQuery = EntityQueryEnumerator<RottingComponent, PerishableComponent, TransformComponent>();
         while (rotQuery.MoveNext(out var uid, out var rotting, out var perishable, out var xform))
         {
+            // Corvax-Wega-Surgery-start
+            if (TryComp<AntiRottingComponent>(uid, out var antiRot)
+                && _timing.CurTime >= antiRot.ExpiryTime)
+                RemCompDeferred<AntiRottingComponent>(uid);
+            // Corvax-Wega-Surgery-end
+
             if (_timing.CurTime < rotting.NextRotUpdate) // This is where it starts to get noticable on larger animals, no need to run every second
                 continue;
             rotting.NextRotUpdate += rotting.RotUpdateRate;

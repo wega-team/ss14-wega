@@ -35,6 +35,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Replays;
 using Robust.Shared.Utility;
+using Content.Shared.Strangulation; // Corvax-Corvax-Wega-Strangulation
 
 namespace Content.Server.Chat.Systems;
 
@@ -219,6 +220,13 @@ public sealed partial class ChatSystem : SharedChatSystem
             message = message[1..];
         }
 
+        // Corvax-Corvax-Wega-Strangulation-Start
+        if (desiredType == InGameICChatType.Speak && HasComp<StrangulationComponent>(source))
+        {
+            desiredType = InGameICChatType.Whisper;
+        }
+        // Corvax-Corvax-Wega-Strangulation-End
+
         bool shouldCapitalize = (desiredType != InGameICChatType.Emote);
         bool shouldPunctuate = _configurationManager.GetCVar(CCVars.ChatPunctuation);
         // Capitalizing the word I only happens in English, so we check language here
@@ -395,7 +403,7 @@ public sealed partial class ChatSystem : SharedChatSystem
             return;
         }
 
-        if (!EntityManager.TryGetComponent<StationDataComponent>(station, out var stationDataComp)) return;
+        if (!TryComp<StationDataComponent>(station, out var stationDataComp)) return;
 
         var filter = _stationSystem.GetInStation(stationDataComp);
 

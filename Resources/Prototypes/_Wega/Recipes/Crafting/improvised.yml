@@ -41,3 +41,14 @@
   description: It looks beautiful and smells good.
   icon: { sprite: _Wega/Objects/Misc/mixedbouquet.rsi, state: icon }
   objectType: Item
+
+- type: construction
+  name: garrotte homemade
+  id: makegarrotte
+  graph: makegarrotte
+  startNode: start
+  targetNode: garrottecrafted
+  category: construction-category-weapons
+  description: "Homemade garrotte used by criminals and other assholes."
+  icon: { sprite: _Wega/Objects/Devices/garrotte.rsi, state: garrotte_homemade }
+  objectType: Item

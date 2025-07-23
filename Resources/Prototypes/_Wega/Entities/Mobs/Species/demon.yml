@@ -28,6 +28,7 @@
       Male: MaleHuman
       Female: FemaleHuman
       Unsexed: FemaleHuman
+  - type: Wagging
   - type: Damageable
     damageContainer: Biological
     damageModifierSet: Demon
@@ -69,6 +70,9 @@
     interactSuccessString: hugging-success-generic
     interactSuccessSound: /Audio/Effects/thudswoosh.ogg
     messagePerceivedByOthers: hugging-success-generic-others
+  - type: DnaModifier
+    upper: MobDemon
+    lowest: MobMonkeyDemon
 
 - type: entity
   save: false

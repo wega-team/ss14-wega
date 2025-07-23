@@ -47,6 +47,25 @@
   - type: Sprite
     sprite: Objects/Weapons/Guns/Snipers/bolt_gun_wood.rsi
   - type: GunRequiresWield
+  # Corvax-Wega-Mosin-start
+  - type: Sharp
+  - type: Gun
+    useKey: false
+  - type: MeleeWeapon
+    attackRate: 1.5
+    wideAnimationRotation: -135
+    damage:
+      types:
+        Slash: 5
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Slash: 15
+  # Corvax-Wega-Mosin-end
+  - type: StaticPrice
+    price: 500
 
 - type: entity
   name: Hristov
@@ -79,6 +98,8 @@
   - type: EyeCursorOffset
     maxOffset: 3
     pvsIncrease: 0.3
+  - type: StaticPrice
+    price: 3500
 
 - type: entity
   name: musket

@@ -56,6 +56,7 @@
           tag: [ CableCoil, Crowbar ]
           action: RemoveOrgan
           failureEffect: [ Bleeding, Pain ]
+          entityPreview: SentientSlimeCore
           requiredPart: SlimeCore
           sound:
             path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
@@ -67,6 +68,7 @@
         - tag: [ SlimeCore ]
           action: InsertOrgan
           failureEffect: [ Pain ]
+          entityPreview: SentientSlimeCore
           requiredPart: SlimeCore
           sound:
             collection: Squishes
@@ -82,6 +84,7 @@
           tag: [ CableCoil, Crowbar ]
           action: RemoveOrgan
           failureEffect: [ Bleeding, Pain ]
+          entityPreview: OrganSlimeLungs
           requiredPart: Lungs
           sound:
             path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
@@ -93,6 +96,7 @@
         - tag: [ Lungs ]
           action: InsertOrgan
           failureEffect: [ Pain ]
+          entityPreview: OrganSlimeLungs
           requiredPart: Lungs
           sound:
             collection: Squishes
@@ -129,6 +133,68 @@
           sound:
             collection: Cautery
           time: 8
+
+# ========================
+# ПЕРЕХОДЫ ГОЛОВЫ
+# ========================
+
+- type: surgeryTransition
+  id: SlimeOpenHeadTransition
+  target: SlimeHeadOpen
+  label: Вскрыть голову
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:BodyPartCondition
+          bodyPart: head
+      steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+
+- type: surgeryTransition
+  id: SlimeCloseHeadTransition
+  target: Default
+  label: Закрыть голову
+  stepGroups:
+    - steps:
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ Cautery ]
+          tag: [ Cigarette, Lighter, Welder ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 6
 
 # Internal
 - type: surgeryTransition

@@ -88157,13 +88157,6 @@ entities:
     - type: Transform
       pos: 22.585857,43.52272
       parent: 2
-- proto: MatterBinStockPart
-  entities:
-  - uid: 12565
-    components:
-    - type: Transform
-      pos: 62.295105,49.294827
-      parent: 2
 - proto: Mattress
   entities:
   - uid: 12566

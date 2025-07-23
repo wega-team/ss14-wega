@@ -222,6 +222,7 @@ namespace Content.Client.Options.UI.Tabs
             AddButton(ContentKeyFunctions.OpenActionsMenu);
             AddButton(ContentKeyFunctions.OpenEmotesMenu);
             AddButton(ContentKeyFunctions.OpenInteractionMenu); /// Corvax-Wega
+            AddButton(ContentKeyFunctions.Strangle); /// Corvax-Wega
             AddButton(ContentKeyFunctions.ToggleRoundEndSummaryWindow);
             AddButton(ContentKeyFunctions.OpenEntitySpawnWindow);
             AddButton(ContentKeyFunctions.OpenSandboxWindow);

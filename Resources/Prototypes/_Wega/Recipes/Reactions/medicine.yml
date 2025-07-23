@@ -20,3 +20,17 @@
   products:
     Mutadon: 3
 
+- type: reaction
+  id: Formaldehyde
+  minTemp: 500
+  reactants:
+    Protein:
+      amount: 5
+    Chlorine:
+      amount: 3
+    SulfuricAcid:
+      amount: 1
+      catalyst: true
+  products:
+    Formaldehyde: 5
+    Toxin: 3

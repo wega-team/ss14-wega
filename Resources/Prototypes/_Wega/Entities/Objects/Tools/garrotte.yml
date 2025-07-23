@@ -1,0 +1,37 @@
+- type: entity
+  id: Garrotte
+  name: garrotte
+  description: Used by criminals and other assholes.
+  parent: [BaseItem]
+  components:
+  - type: Item
+    size: Small
+    storedRotation: 90
+  - type: Sprite
+    sprite: _Wega/Objects/Devices/garrotte.rsi
+    state: garrotte_syndicate
+    scale: 0.7, 0.7
+  - type: Garrotte
+    garrotteDamage:
+      types:
+        Asphyxiation: 15
+
+- type: entity
+  id: GarrotteHomemade
+  name: garrotte homemade
+  description: Homemade garrotte used by criminals and other assholes.
+  parent: [BaseItem]
+  components:
+  - type: Construction
+    graph: craftGarrotte
+    node: garrottecrafted
+  - type: Item
+    size: Small
+    storedRotation: 90
+  - type: Sprite
+    sprite: _Wega/Objects/Devices/garrotte.rsi
+    state: garrotte_homemade
+  - type: Garrotte
+    garrotteDamage:
+      types:
+        Asphyxiation: 6

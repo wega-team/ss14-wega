@@ -303,6 +303,7 @@
     sprite: Clothing/Uniforms/Jumpskirt/brigmedic.rsi
   - type: Clothing
     sprite: Clothing/Uniforms/Jumpskirt/brigmedic.rsi
+  - type: ClothingSterility # Corvax-Wega-Surgery
   - type: DiseaseProtection # Corvax-Wega-Disease
     protection: 0.1 # Corvax-Wega-Disease
 
@@ -529,6 +530,8 @@
     sprite: Clothing/Uniforms/Jumpskirt/operative_s.rsi
   - type: Clothing
     sprite: Clothing/Uniforms/Jumpskirt/operative_s.rsi
+  - type: StaticPrice
+    price: 500
 
 - type: entity
   parent: ClothingUniformSkirtBase

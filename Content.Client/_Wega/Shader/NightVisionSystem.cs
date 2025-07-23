@@ -33,12 +33,14 @@ public sealed class NightVisionSystem : EntitySystem
 
     private void OnPlayerAttached(EntityUid uid, NightVisionComponent component, LocalPlayerAttachedEvent args)
     {
+        UpdateLighting(false);
         UpdateOverlay(component);
         _overlayMan.AddOverlay(_overlay);
     }
 
     private void OnPlayerDetached(EntityUid uid, NightVisionComponent component, LocalPlayerDetachedEvent args)
     {
+        UpdateLighting(true);
         _overlayMan.RemoveOverlay(_overlay);
     }
 

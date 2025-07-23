@@ -1,0 +1,17 @@
+- type: entity
+  parent: PetCarrier
+  id: PetCarrierMars
+  categories: [ HideSpawnMenu ]
+  name: pet carrier
+  description: Allows large animals to be carried comfortably. It smells vaguely of toilet water and explosives.
+  components:
+  - type: StorageFill
+    contents:
+    - id: MobCatKittenMars
+
+- type: entity
+  parent: MobCatKitten
+  id: MobCatKittenMars
+  categories: [ HideSpawnMenu ]
+  name: mars
+  description: "He's so small, cute, fluffy and AIRY."

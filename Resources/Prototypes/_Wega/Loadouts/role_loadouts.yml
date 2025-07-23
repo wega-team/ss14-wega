@@ -63,3 +63,20 @@
   - Top
   - Bottom
   - Socks
+
+- type: roleLoadout
+  id: JobCoroner
+  groups:
+  - Inventory # Corvax-Loadouts
+  - GroupTankHarness
+  - MedicalMask
+  - MedicalBackpack
+  - MedicalShoes
+  - MedicalDoctorOuterClothing
+  - MedicalEyewear
+  - SurvivalMedical
+  - Trinkets
+  - GroupSpeciesBreathToolMedical
+  - Top
+  - Bottom
+  - Socks

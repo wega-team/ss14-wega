@@ -57,6 +57,17 @@ public abstract class SharedCombatModeSystem : EntitySystem
         component.CanDisarm = canDisarm;
     }
 
+    //Corvax-Wega-Strangulation-start
+    // Now you can change the chance of disarm failure
+    public void SetDisarmFailChance(EntityUid entity, float failChance, CombatModeComponent? component = null)
+    {
+        if (!Resolve(entity, ref component))
+            return;
+
+        component.BaseDisarmFailChance = failChance;
+    }
+    //Corvax-Wega-Strangulation-end
+
     public bool IsInCombatMode(EntityUid? entity, CombatModeComponent? component = null)
     {
         return entity != null && Resolve(entity.Value, ref component, false) && component.IsInCombatMode;

@@ -647,6 +647,32 @@ namespace Content.Server.Database
             await db.DbContext.SaveChangesAsync();
         }
 
+        // Corvax-Wega-Timepacked-start
+        public async Task AddPlayTimeAsync(NetUserId userId, string tracker, TimeSpan time)
+        {
+            await using var db = await GetDb();
+
+            var existing = await db.DbContext.PlayTime
+                .FirstOrDefaultAsync(p => p.PlayerId == userId.UserId && p.Tracker == tracker);
+
+            if (existing != null)
+            {
+                existing.TimeSpent += time;
+            }
+            else
+            {
+                db.DbContext.PlayTime.Add(new PlayTime
+                {
+                    PlayerId = userId.UserId,
+                    Tracker = tracker,
+                    TimeSpent = time
+                });
+            }
+
+            await db.DbContext.SaveChangesAsync();
+        }
+        // Corvax-Wega-Timepacked-end
+
         #endregion
 
         #region Player Records

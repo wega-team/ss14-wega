@@ -1,6 +1,5 @@
 using System.Linq;
 using System.Text;
-using Content.Server.Administration.Logs;
 using Content.Server.Body.Components;
 using Content.Server.Pain;
 using Content.Shared.Armor;
@@ -19,6 +18,7 @@ using Content.Shared.Standing;
 using Content.Shared.Stunnable;
 using Content.Shared.Surgery;
 using Content.Shared.Surgery.Components;
+using Content.Shared.Traits.Assorted;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
@@ -28,10 +28,8 @@ namespace Content.Server.Surgery;
 
 public sealed partial class SurgerySystem
 {
-    [Dependency] private readonly IAdminLogManager _admin = default!;
     [Dependency] private readonly PainSystem _pain = default!;
     [Dependency] private readonly SharedStunSystem _stun = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly PhysicsSystem _physics = default!;
 
     private static readonly SoundSpecifier GibSound = new SoundPathSpecifier("/Audio/Effects/gib3.ogg");
@@ -125,10 +123,12 @@ public sealed partial class SurgerySystem
             _popup.PopupEntity(Loc.GetString("surgery-limb-torn-off", ("limb", Name(limbId))), patient, PopupType.SmallCaution);
 
             _audio.PlayPvs(GibSound, patient);
+            if (!_mobState.IsDead(patient) && !HasComp<PainNumbnessComponent>(patient))
+                _chat.TryEmoteWithoutChat(patient, _proto.Index<EmotePrototype>("Scream"), true);
 
             _pain.AdjustPain(patient, "Physical", 250f);
             if (HasComp<BloodstreamComponent>(patient))
-                _bloodstream.TryModifyBleedAmount(patient, 5f);
+                _bloodstream.TryModifyBleedAmount(patient.Owner, 5f);
 
             var xform = Transform(patient);
             _transform.SetCoordinates(limbId, xform.Coordinates);
@@ -207,14 +207,16 @@ public sealed partial class SurgerySystem
                 _popup.PopupEntity(Loc.GetString("surgery-explosion-limb-torn-off", ("limb", Name(limbId).ToUpper())), entity, PopupType.MediumCaution);
 
                 if (HasComp<BloodstreamComponent>(entity))
-                    _bloodstream.TryModifyBleedAmount(entity, 5f);
+                    _bloodstream.TryModifyBleedAmount(entity.Owner, 5f);
 
                 _audio.PlayPvs(GibSound, entity);
-                if (!_mobState.IsDead(entity))
+                if (!_mobState.IsDead(entity) && !HasComp<PainNumbnessComponent>(entity))
                     _chat.TryEmoteWithoutChat(entity, _proto.Index<EmotePrototype>("Scream"), true);
 
                 _transform.SetCoordinates(limbId, Transform(entity).Coordinates);
                 _physics.ApplyLinearImpulse(limbId, _random.NextVector2() * (50f + (float)damage));
+
+                _admin.Add(LogType.Damaged, LogImpact.High, $"The limb {ToPrettyString(entity):target} '{Name(limbId)}' blown off by the explosion");
             }
         }
     }

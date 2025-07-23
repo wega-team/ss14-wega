@@ -31,3 +31,11 @@
     pocket1: BoxFolderBlack
     pocket2: PenCentcom
     underwearbottom: ClothingUnderBottomHearts # Corvax-Wega
+
+- type: chameleonOutfit
+  id: CentralCommandOfficialOutfit
+  job: CentralCommandOfficial
+  hasMindShield: true
+  equipment:
+    neck: ClothingNeckScarfStripedCentcom
+    mask: ClothingMaskGasCentcom

@@ -8,6 +8,7 @@
   - type: Sprite
   - type: StaticPrice
     price: 20
+  - type: SurgicalTool # Corvax-Wega-Surgery
   - type: Tag
     tags:
     - SurgeryTool
@@ -114,6 +115,8 @@
   components:
   - type: Sprite
     state: shiv
+  - type: SurgicalTool # Corvax-Wega-Surgery
+    modifier: 0.8 # Corvax-Wega-Surgery
   - type: Item
     heldPrefix: shiv
 
@@ -127,6 +130,8 @@
     state: advanced
   - type: Item
     heldPrefix: advanced
+  - type: SurgicalTool # Corvax-Wega-Surgery
+    modifier: 1.5 # Corvax-Wega-Surgery
   - type: MeleeWeapon
     damage:
       types:
@@ -142,6 +147,8 @@
     state: laser
   - type: Item
     heldPrefix: laser
+  - type: SurgicalTool # Corvax-Wega-Surgery
+    modifier: 2 # Corvax-Wega-Surgery
 
 # Scissors
 
@@ -246,6 +253,8 @@
         Brute: 15
     soundHit:
       path: /Audio/Items/drill_hit.ogg
+  - type: SurgicalTool # Corvax-Wega-Surgery
+    modifier: 1.5 # Corvax-Wega-Surgery
   - type: Tool
     speedModifier: 1.5
 
@@ -261,5 +270,7 @@
     heldPrefix: advanced
   - type: MeleeWeapon
     attackRate: 1.5
+  - type: SurgicalTool # Corvax-Wega-Surgery
+    modifier: 2 # Corvax-Wega-Surgery
   - type: Tool
     speedModifier: 2.0

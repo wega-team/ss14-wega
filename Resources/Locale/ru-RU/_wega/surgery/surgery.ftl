@@ -6,6 +6,26 @@ surgery-parallel = (П)
 surgery-tool-required = Требуется инструмент: {$tool}
 surgery-condition-required = Требуется часть тела: {$condition}
 
+surgery-condition-required-head = голова
+surgery-condition-required-tooth = зубы
+surgery-condition-required-torso = тело
+surgery-condition-required-left_arm = левая рука
+surgery-condition-required-right_arm = правая рука
+surgery-condition-required-left_hand = левая кисть
+surgery-condition-required-right_hand = правая кисть
+surgery-condition-required-left_leg = левая нога
+surgery-condition-required-right_leg = правая нога
+surgery-condition-required-left_foot = левая стопа
+surgery-condition-required-right_foot = правая стопа
+surgery-condition-required-heart = сердце
+surgery-condition-required-lungs = лёгкие
+surgery-condition-required-stomach = желудок
+surgery-condition-required-liver = печень
+surgery-condition-required-kidneys = почки
+surgery-condition-required-brain = мозг
+surgery-condition-required-eyes = глаза
+surgery-condition-required-slimecore = слаймовое ядро
+
 body-scanner-title = Сканер тела
 body-scanner-connected = Подключен к операционному столу
 body-scanner-disconnected = Не подключен к операционному столу
@@ -35,15 +55,20 @@ surgery-action-empty = ...
 surgery-action-cut = Надрез
 surgery-action-retract = Втянуть
 surgery-action-clampbleeding = Остановить кровотечение
+surgery-action-drillthrough = Просверлить отверстие
 surgery-action-healinternaldamage = Вылечить повреждение
 surgery-action-removeorgan = Извлечь орган
 surgery-action-insertorgan = Имплантировать орган
 surgery-action-removepart = Отрезать часть
 surgery-action-attachpart = Приделать часть
-surgery-action-implanting = Имплантировать
+surgery-action-implanting = Имплантировать имплант
+surgery-action-removeimplant = Удалить имплант
+surgery-action-storeitem = Вшить предмет
+surgery-action-retrieveitems = Достать вшитые предметы
 
 surgery-procedure = Процедура: {$label}
 surgery-missing-tool = Нету правильного инструмента!
+surgery-implant-already-exists = У пациента уже установлен {$implant}
 surgery-incorrect-insert = Неправильное место имплантации
 
 surgery-limb-torn-off = {$limb} отрезало
@@ -54,6 +79,8 @@ surgery-organ-removed = Орган успешно извлечен
 surgery-organ-inserted = Орган успешно присоединен
 surgery-part-removed = Конечность успешно удалена
 surgery-part-attached = Конечность успешно присоединена
+surgery-store-item-failed = Не удалось поместить предмет внутрь тела
+surgery-retrieve-items-failed = Не удалось извлечь предметы
 
 surgery-sterile-examined = [color=#a0d2eb]Предмет стерилен для использования.[/color]
 

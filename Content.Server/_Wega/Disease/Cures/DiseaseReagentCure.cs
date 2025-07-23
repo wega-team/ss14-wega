@@ -2,8 +2,8 @@ using Content.Shared.Disease;
 using Content.Shared.FixedPoint;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Chemistry.Components;
-using Content.Server.Body.Components;
 using Robust.Shared.Prototypes;
+using Content.Shared.Body.Components;
 
 namespace Content.Server.Disease.Cures
 {

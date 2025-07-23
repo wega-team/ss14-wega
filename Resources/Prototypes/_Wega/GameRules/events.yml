@@ -6,13 +6,13 @@
     # - id: ClosetSkeleton
     # - id: DragonSpawn
     - id: KingRatMigration
-    - id: NinjaSpawn
-    - id: ParadoxCloneSpawn
-    - id: RevenantSpawn
+    # - id: NinjaSpawn
+    # - id: ParadoxCloneSpawn
+    # - id: RevenantSpawn
     # - id: SleeperAgents
-    - id: ZombieOutbreak
+    # - id: ZombieOutbreak
     # - id: LoneOpsSpawn
-    - id: DerelictCyborgSpawn
+    # - id: DerelictCyborgSpawn
     - id: VoidOccurrence
 
 # Events

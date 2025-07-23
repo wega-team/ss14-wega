@@ -1204,6 +1204,28 @@
   - type: HTN
     rootTask:
       task: SimpleHostileCompound
+    blackboard:
+      NavClimb: !type:Bool
+        true
+      NavInteract: !type:Bool
+        true
+      NavPry: !type:Bool
+        true
+      NavSmash: !type:Bool
+        true
+  - type: Prying
+    pryPowered: true
+    force: true
+    speedModifier: 1.5
+    useSound:
+      path: /Audio/Items/crowbar.ogg
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      200: Critical
+      250: Dead
+  - type: StaminaResistance
+    damageCoefficient: 0.40
 
 - type: entity
   name: kangaroo
@@ -2500,6 +2522,7 @@
   - type: Puller
     needsHands: false
   # Corvax-Wega-end
+  - type: NightVision # Corvax-Wega-NightVision
 
 - type: entity
   parent: MobSpiderBase
@@ -2561,6 +2584,11 @@
     damage:
       types:
         Piercing: 6
+  # Corvax-Wega-Genetics-start
+  - type: DnaModifier
+    upper: MobArachnid
+    lowest: MobGiantSpider
+  # Corvax-Wega-Genetics-end
 
 - type: entity
   parent:
@@ -3059,6 +3087,12 @@
   - type: MovementSpeedModifier
     baseWalkSpeed: 2
     baseSprintSpeed: 4
+  # Corvax-Wega-Genetics-start
+  - type: DnaModifier
+    upper: MobFelinid
+    lowest: MobCat
+  # Corvax-Wega-Genetics-end
+
 
 - type: entity
   name: calico cat
@@ -3116,6 +3150,10 @@
   - type: NpcFactionMember
     factions:
     - Syndicate
+  - type: Access
+    tags: 
+    - NuclearOperative
+    - SyndicateAgent
   - type: MeleeWeapon
     altDisarm: false
     angle: 0
@@ -3271,6 +3309,7 @@
   - type: Grammar
     attributes:
       gender: epicene
+  - type: SlowAccent
   - type: Tag
     tags:
     - VimPilot
@@ -3632,6 +3671,11 @@
     reformTime: 10
     popupText: diona-reform-attempt
     reformPrototype: MobDionaReformed
+  # Corvax-Wega-Genetics-start
+  - type: DnaModifier
+    upper: MobDiona
+    lowest: MobDionaNymph
+  # Corvax-Wega-Genetics-end
 
 - type: entity
   parent: MobDionaNymph
@@ -3795,3 +3839,6 @@
     - DoorBumpOpener
   - type: StatusIcon # marks them as crew
     bounds: -0.5,-0.5,0.5,0.5
+  - type: NpcFactionMember
+    factions:
+    - NanoTrasen

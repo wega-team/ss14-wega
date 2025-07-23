@@ -1,7 +1,6 @@
-using Content.Server.Body.Systems;
 using Content.Server.Chat.Systems;
-using Content.Server.Nutrition.Components;
 using Content.Server.Popups;
+using Content.Shared.Body.Events;
 using Content.Shared.Clothing.Components;
 using Content.Shared.Disease;
 using Content.Shared.Disease.Components;
@@ -14,6 +13,7 @@ using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
+using Content.Shared.Nutrition.Components;
 using Content.Shared.Rejuvenate;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;

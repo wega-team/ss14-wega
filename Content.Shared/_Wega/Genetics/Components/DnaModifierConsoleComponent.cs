@@ -1,8 +1,9 @@
+using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 
 namespace Content.Shared.Genetics;
 
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class DnaModifierConsoleComponent : Component
 {
     public const string ScannerPort = "MedicalScannerSender";
@@ -18,10 +19,10 @@ public sealed partial class DnaModifierConsoleComponent : Component
     public TimeSpan NextUpdate;
     public TimeSpan UpdateInterval = TimeSpan.FromSeconds(2);
 
-    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    [DataField, AutoNetworkedField, ViewVariables(VVAccess.ReadWrite)]
     public TimeSpan LastInjectorTime;
 
-    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    [DataField, AutoNetworkedField, ViewVariables(VVAccess.ReadWrite)]
     public TimeSpan LastSubjectInjectTime;
 
     [DataField, ViewVariables(VVAccess.ReadWrite)]
@@ -29,4 +30,7 @@ public sealed partial class DnaModifierConsoleComponent : Component
 
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public TimeSpan SubjectInjectCooldown = TimeSpan.FromMinutes(2);
+
+    [DataField("clickSound"), ViewVariables(VVAccess.ReadWrite)]
+    public SoundSpecifier ClickSound = new SoundPathSpecifier("/Audio/Machines/machine_switch.ogg");
 }

@@ -10,14 +10,14 @@
       layers:
         - state: icon
         - state: screen
-          map: [ "enum.ToggleVisuals.Layer" ]
+          map: [ "enum.ToggleableVisuals.Layer" ]
           visible: false
           shader: unshaded
     - type: Appearance
     - type: GenericVisualizer
       visuals:
-        enum.ToggleVisuals.Toggled:
-          enum.ToggleVisuals.Layer:
+        enum.ToggleableVisuals.Enabled:
+          enum.ToggleableVisuals.Layer:
             True: { visible: true }
             False: { visible: false }
     - type: Item
@@ -40,6 +40,26 @@
     - type: GuideHelp
       guides:
       - Medical Doctor
+    # Corvax-Wega-defib-start
+    - type: MeleeWeapon
+      damage:
+        types:
+          Blunt: 4
+    - type: ItemToggleMeleeWeapon
+      activatedSoundOnHit:
+        path: /Audio/Items/Defib/defib_zap.ogg
+        params:
+          variation: 0.250
+      activatedSoundOnHitNoDamage:
+        path: /Audio/Items/Defib/defib_zap.ogg
+        params:
+          variation: 0.250
+          volume: -10
+      activatedDamage:
+        types:
+          Blunt: 4
+          Shock: 6
+    # Corvax-Wega-defib-end
 
 - type: entity
   id: Defibrillator
@@ -76,7 +96,7 @@
     layers:
       - state: icon
       - state: screen
-        map: [ "enum.ToggleVisuals.Layer" ]
+        map: [ "enum.ToggleableVisuals.Layer" ]
         visible: false
         shader: unshaded
       - state: ready
@@ -94,6 +114,26 @@
     doAfterDuration: 6
   - type: DoAfter
   - type: UseDelay
+    # Corvax-Wega-defib-start
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 2
+  - type: ItemToggleMeleeWeapon
+    activatedSoundOnHit:
+      path: /Audio/Items/Defib/defib_zap.ogg
+      params:
+        variation: 0.250
+    activatedSoundOnHitNoDamage:
+      path: /Audio/Items/Defib/defib_zap.ogg
+      params:
+        variation: 0.250
+        volume: -10
+    activatedDamage:
+      types:
+        Blunt: 2
+        Shock: 4
+    # Corvax-Wega-defib-end
 
 - type: entity
   id: DefibrillatorSyndicate
@@ -106,7 +146,7 @@
     layers:
       - state: icon
       - state: screen
-        map: [ "enum.ToggleVisuals.Layer" ]
+        map: [ "enum.ToggleableVisuals.Layer" ]
         visible: false
         shader: unshaded
       - state: ready

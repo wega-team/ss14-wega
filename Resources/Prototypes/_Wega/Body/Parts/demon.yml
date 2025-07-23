@@ -13,9 +13,6 @@
     containers:
       bodypart: !type:Container
         ents: []
-  - type: Tag
-    tags:
-      - Trash
 
 - type: entity
   id: TorsoDemon

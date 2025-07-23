@@ -1,9 +1,28 @@
 - type: marking
+  id: DemomTail
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Demon]
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+  sprites:
+  - sprite: _Wega/Mobs/Customization/demon.rsi
+    state: tail
+
+- type: marking
   id: DemomTail1
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Demon]
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
   sprites:
+  - sprite: _Wega/Mobs/Customization/demon.rsi
+    state: tail
   - sprite: _Wega/Mobs/Customization/demon.rsi
     state: demon_tail
 
@@ -12,7 +31,13 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Demon]
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
   sprites:
+  - sprite: _Wega/Mobs/Customization/demon.rsi
+    state: tail
   - sprite: _Wega/Mobs/Customization/demon.rsi
     state: long
 
@@ -21,6 +46,55 @@
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Demon]
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
   sprites:
   - sprite: _Wega/Mobs/Customization/demon.rsi
+    state: tail
+  - sprite: _Wega/Mobs/Customization/demon.rsi
     state: up
+
+# Animated
+- type: marking
+  id: DemomTailAnimated
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: []
+  sprites:
+  - sprite: _Wega/Mobs/Customization/demon.rsi
+    state: tail_waggin
+
+- type: marking
+  id: DemomTail1Animated
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: []
+  sprites:
+  - sprite: _Wega/Mobs/Customization/demon.rsi
+    state: tail_waggin
+  - sprite: _Wega/Mobs/Customization/demon.rsi
+    state: demon_tail_waggin
+
+- type: marking
+  id: DemomTailLongAnimated
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: []
+  sprites:
+  - sprite: _Wega/Mobs/Customization/demon.rsi
+    state: tail_waggin
+  - sprite: _Wega/Mobs/Customization/demon.rsi
+    state: long_waggin
+
+- type: marking
+  id: DemomTailUpAnimated
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: []
+  sprites:
+  - sprite: _Wega/Mobs/Customization/demon.rsi
+    state: tail_waggin
+  - sprite: _Wega/Mobs/Customization/demon.rsi
+    state: up_waggin

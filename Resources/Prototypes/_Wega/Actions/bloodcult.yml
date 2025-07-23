@@ -1,255 +1,309 @@
 # Basic
 - type: entity
   id: ActionBloodCultObjective
+  parent: BaseAction
   name: "[color=red]Objective[/color]"
   description: "Shows the current purpose of the cult."
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_bloodcult.rsi, state: "vote" }
-    event: !type:BloodCultObjectiveActionEvent
     useDelay: 5
+  - type: InstantAction
+    event: !type:BloodCultObjectiveActionEvent
 
 - type: entity
   id: ActionBloodCultComms
+  parent: BaseAction
   name: "[color=red]Communication[/color]"
   description: "Allows you to talk to your fellow humans."
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_bloodcult.rsi, state: "comms" }
-    event: !type:BloodCultCommuneActionEvent
     checkCanInteract: false
     useDelay: 5
+  - type: InstantAction
+    event: !type:BloodCultCommuneActionEvent
 
 - type: entity
   id: ActionBloodMagic
+  parent: BaseAction
   name: "[color=red]Blood magic[/color]"
   description: "Summon abilities with your blood."
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_bloodcult.rsi, state: "blood_magic" }
-    event: !type:BloodCultBloodMagicActionEvent
     useDelay: 15
     priority: 1
+  - type: InstantAction
+    event: !type:BloodCultBloodMagicActionEvent
 
 - type: entity
   id: ActionRecallBloodDagger
+  parent: BaseAction
   name: "[color=red]Recall dagger[/color]"
   description: "If it exists, it will definitely come back to you."
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_bloodcult.rsi, state: "recall_dagger" }
-    event: !type:RecallBloodDaggerEvent
     useDelay: 5
+  - type: InstantAction
+    event: !type:RecallBloodDaggerEvent
 
 # Blood Magic
 - type: entity
   id: ActionBloodCultStun
+  parent: BaseAction
   name: "[color=red]Stun[/color]"
   description: "A powerful spell that will knock out and deafen victims upon contact. A simple, clean and very effective tool for a variety of situations."
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_bloodcult.rsi, state: "stun" }
-    event: !type:BloodCultStunActionEvent
-    charges: 1
     useDelay: 5
+  - type: LimitedCharges
+    maxCharges: 1
+  - type: InstantAction
+    event: !type:BloodCultStunActionEvent
 
 - type: entity
   id: ActionBloodCultTeleport
+  parent: BaseAction
   name: "[color=red]Teleport[/color]"
   description: "Teleports the target to a random teleport rune."
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_bloodcult.rsi, state: "teleport" }
-    event: !type:BloodCultTeleportActionEvent
-    charges: 1
     useDelay: 5
+  - type: LimitedCharges
+    maxCharges: 1
+  - type: InstantAction
+    event: !type:BloodCultTeleportActionEvent
 
 - type: entity
   id: ActionBloodCultElectromagneticPulse
+  parent: BaseAction
   name: "[color=red]Electromagnetic Pulse[/color]"
   description: "It will trigger an EMP pulse that affects everyone except the cultists."
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_bloodcult.rsi, state: "electromagneticpulse" }
-    event: !type:BloodCultElectromagneticPulseActionEvent
-    charges: 1
     useDelay: 5
+  - type: LimitedCharges
+    maxCharges: 1
+  - type: InstantAction
+    event: !type:BloodCultElectromagneticPulseActionEvent
 
 - type: entity
   id: ActionBloodCultShadowShackles
+  parent: BaseAction
   name: "[color=red]Shadow Shackles[/color]"
   description: "The use will put the victim in chains."
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_bloodcult.rsi, state: "shadowshackles" }
-    event: !type:BloodCultShadowShacklesActionEvent
-    charges: 4
     useDelay: 20
+  - type: LimitedCharges
+    maxCharges: 4
+  - type: InstantAction
+    event: !type:BloodCultShadowShacklesActionEvent
 
 - type: entity
   id: ActionBloodCultTwistedConstruction
+  parent: BaseAction
   name: "[color=red]Twisted Construction[/color]"
   description: "A sinister spell used to transform."
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_bloodcult.rsi, state: "twistedconstruction" }
-    event: !type:BloodCultTwistedConstructionActionEvent
-    charges: 1
     useDelay: 5
+  - type: LimitedCharges
+    maxCharges: 1
+  - type: InstantAction
+    event: !type:BloodCultTwistedConstructionActionEvent
 
 - type: entity
   id: ActionBloodCultSummonEquipment
+  parent: BaseAction
   name: "[color=red]Summon Equipment[/color]"
   description: "A sinister spell used to transform."
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_bloodcult.rsi, state: "summonequipment" }
-    event: !type:BloodCultSummonEquipmentActionEvent
-    charges: 1
     useDelay: 5
+  - type: LimitedCharges
+    maxCharges: 1
+  - type: InstantAction
+    event: !type:BloodCultSummonEquipmentActionEvent
 
 - type: entity
   id: ActionBloodCultSummonDagger
+  parent: BaseAction
   name: "[color=red]Summon Dagger[/color]"
   description: ""
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_bloodcult.rsi, state: "dagger" }
-    event: !type:BloodCultSummonDaggerActionEvent
-    charges: 1
     useDelay: 5
+  - type: LimitedCharges
+    maxCharges: 1
+  - type: InstantAction
+    event: !type:BloodCultSummonDaggerActionEvent
 
 - type: entity
   id: ActionBloodCultHallucinations
+  parent: BaseAction
   name: "[color=red]Hallucinations[/color]"
   description: "A spell useful for stealth that will destroy the victim's consciousness with nightmarish hallucinations. Fun for victims, rarely useful in practice."
   categories: [ HideSpawnMenu ]
   components:
-  - type: EntityTargetAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_bloodcult.rsi, state: "hallucinations" }
     itemIconStyle: BigAction
-    event: !type:BloodCultHallucinationsActionEvent
-    charges: 4
-    range: 6
     useDelay: 20
+  - type: TargetAction
+    range: 6
+  - type: LimitedCharges
+    maxCharges: 4
+  - type: EntityTargetAction
+    event: !type:BloodCultHallucinationsActionEvent
 
 - type: entity
   id: ActionBloodCultConcealPresence
+  parent: BaseAction
   name: "[color=red]Conceal Presence[/color]"
   description: "A multifunctional spell that alternates between hiding and revealing nearby runes and cultist structures."
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_bloodcult.rsi, state: "concealpresence" }
-    event: !type:BloodCultConcealPresenceActionEvent
-    charges: 10
     useDelay: 5
+  - type: LimitedCharges
+    maxCharges: 10
+  - type: InstantAction
+    event: !type:BloodCultConcealPresenceActionEvent
 
 - type: entity
   id: ActionBloodCultBloodRites
+  parent: BaseAction
   name: "[color=red]Blood rites[/color]"
   description: "A unique spell for collecting blood or healing allies. It is also used to create powerful weapons such as the Blood Spear, or to activate attacking abilities."
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_bloodcult.rsi, state: "blood_rites" }
-    event: !type:BloodCultBloodRitesActionEvent
     useDelay: 15
+  - type: InstantAction
+    event: !type:BloodCultBloodRitesActionEvent
 
 # Blood Rites
 - type: entity
   id: ActionBloodCultOrb
+  parent: BaseAction
   name: "[color=red]Blood orb[/color]"
   description: "An ability that allows you to transfer blood to another cultist."
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_bloodcult.rsi, state: "orb" }
-    event: !type:BloodCultBloodOrbActionEvent
     useDelay: 5
+  - type: InstantAction
+    event: !type:BloodCultBloodOrbActionEvent
 
 - type: entity
   id: ActionBloodCultRecharge
+  parent: BaseAction
   name: "[color=red]Blood recharge[/color]"
   description: "An ability that allows you to recharge magical equipment."
   categories: [ HideSpawnMenu ]
   components:
-  - type: EntityTargetAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_bloodcult.rsi, state: "recharge" }
     itemIconStyle: BigAction
-    event: !type:BloodCultBloodRechargeActionEvent
     useDelay: 5
+  - type: TargetAction
+  - type: EntityTargetAction
+    event: !type:BloodCultBloodRechargeActionEvent
 
 - type: entity
   id: ActionBloodCultSpear
+  parent: BaseAction
   name: "[color=red]Blood spear[/color]"
   description: "An ability that allows you to summon a blood spear."
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_bloodcult.rsi, state: "spear" }
-    event: !type:BloodCultBloodSpearActionEvent
     useDelay: 5
+  - type: InstantAction
+    event: !type:BloodCultBloodSpearActionEvent
 
 - type: entity
   id: RecallBloodCultSpear
+  parent: BaseAction
   name: "[color=red]Recall spear[/color]"
   description: "Returns the spear to his hands if it is nearby."
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_bloodcult.rsi, state: "recall_spear" }
-    event: !type:RecallBloodSpearEvent
     useDelay: 5
+  - type: InstantAction
+    event: !type:RecallBloodSpearEvent
 
 - type: entity
   id: ActionBloodCultBoltBarrage
+  parent: BaseAction
   name: "[color=red]Blood barrage[/color]"
   description: ""
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_bloodcult.rsi, state: "barrage" }
-    event: !type:BloodCultBloodBoltBarrageActionEvent
     useDelay: 5
+  - type: InstantAction
+    event: !type:BloodCultBloodBoltBarrageActionEvent
 
 # Construct
 - type: entity
   id: TeleportConstructSpell
+  parent: BaseAction
   name: Disembodied
   description: "An ability that allows you to  descri pass through the visible and invisible."
   categories: [ HideSpawnMenu ]
   components:
-  - type: WorldTargetAction
+  - type: Action
     useDelay: 20
-    range: 100
     itemIconStyle: BigAction
-    checkCanAccess: false
-    repeat: true
     icon: { sprite: _Wega/Interface/Actions/actions_bloodcult.rsi, state: "wraith_teleport" }
+  - type: TargetAction
+    range: 100
+  - type: WorldTargetAction
     event: !type:TeleportSpellEvent
 
 - type: entity
   id: WallBuildConstructSpell
+  parent: BaseAction
   name: Build wall
   description: "Build a wall."
   components:
-  - type: WorldTargetAction
-    useDelay: 60
-    range: 3
-    itemIconStyle: BigAction
+  - type: Action
     icon: { sprite: Structures/Walls/cult.rsi, state: "full" }
+    itemIconStyle: BigAction
+    useDelay: 60
+  - type: TargetAction
+    checkCanAccess: false
+    range: 3
+  - type: WorldTargetAction
     event: !type:WorldSpawnSpellEvent
       prototypes:
       - id: WallCult
@@ -258,15 +312,18 @@
 
 - type: entity
   id: ConstructBuildConstructSpell
+  parent: BaseAction
   name: Build construct
   description: "Build a construct."
   categories: [ HideSpawnMenu ]
   components:
-  - type: WorldTargetAction
-    useDelay: 180
-    range: 3
-    itemIconStyle: BigAction
+  - type: Action
     icon: { sprite: _Wega/Structures/Specific/bloodcult_structures.rsi, state: "construct-cult" }
+    itemIconStyle: BigAction
+    useDelay: 180
+  - type: TargetAction
+    range: 3
+  - type: WorldTargetAction
     event: !type:WorldSpawnSpellEvent
       prototypes:
       - id: BloodCultConstruct
@@ -275,15 +332,18 @@
 
 - type: entity
   id: SoulStoneConstructSpell
+  parent: BaseAction
   name: Create soul stone
   description: "Summons an empty soul stone."
   categories: [ HideSpawnMenu ]
   components:
-  - type: WorldTargetAction
-    useDelay: 300
-    range: 3
-    itemIconStyle: BigAction
+  - type: Action
     icon: { sprite: _Wega/Objects/Specific/BloodCult/stone.rsi, state: "stone" }
+    itemIconStyle: BigAction
+    useDelay: 300
+  - type: TargetAction
+    range: 3
+  - type: WorldTargetAction
     event: !type:WorldSpawnSpellEvent
       prototypes:
       - id: BloodCultSoulStone
@@ -292,16 +352,19 @@
 
 - type: entity
   id: CloneConstructSpell
+  parent: BaseAction
   name: Summoning harvester
   description: "Summons your exact copy."
   categories: [ HideSpawnMenu ]
   components:
-  - type: WorldTargetAction
+  - type: Action
+    icon: { sprite: _Wega/Interface/Actions/actions_bloodcult.rsi, state: "harvester_clone" }
+    itemIconStyle: BigAction
     startDelay: true
     useDelay: 60
+  - type: TargetAction
     range: 9
-    itemIconStyle: BigAction
-    icon: { sprite: _Wega/Interface/Actions/actions_bloodcult.rsi, state: "harvester_clone" }
+  - type: WorldTargetAction
     event: !type:WorldSpawnSpellEvent
       prototypes:
       - id: MobConstructHarvester

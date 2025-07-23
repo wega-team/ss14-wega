@@ -26,5 +26,16 @@
   id: GeneticistGear
   equipment:
     id: GeneticistPDA
-    ears: ClothingHeadsetMedical
+    ears: ClothingHeadsetMedicalScience
     belt: ClothingBeltMedicalFilled
+
+- type: chameleonOutfit
+  id: GeneticistChameleonOutfit
+  job: Geneticist
+  equipment:
+    head: ClothingHeadHatBeretMedic
+    eyes: ClothingEyesHudMedical
+    mask: ClothingMaskSterile
+    outerClothing: ClothingOuterCoatLabGene
+    neck: ClothingNeckStethoscope
+    gloves: ClothingHandsGlovesLatex

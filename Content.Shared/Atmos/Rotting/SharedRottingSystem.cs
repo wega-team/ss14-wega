@@ -184,6 +184,16 @@ public abstract class SharedRottingSystem : EntitySystem
             rotting.TotalRotTime = total - perishable.RotAfter;
     }
 
+    // Corvax-Wega-Surgery-start
+    public void ApplyRotSlowdown(EntityUid uid, float factor, TimeSpan duration)
+    {
+        var antiRot = EnsureComp<AntiRottingComponent>(uid);
+        antiRot.SlowdownFactor = factor;
+        antiRot.ExpiryTime = _timing.CurTime + duration;
+        Dirty(uid, antiRot);
+    }
+    // Corvax-Wega-Surgery-end
+
     /// <summary>
     /// Return the rot stage, usually from 0 to 2 inclusive.
     /// </summary>
@@ -192,6 +202,6 @@ public abstract class SharedRottingSystem : EntitySystem
         if (!Resolve(uid, ref comp, ref perishable))
             return 0;
 
-        return (int) (comp.TotalRotTime.TotalSeconds / perishable.RotAfter.TotalSeconds);
+        return (int)(comp.TotalRotTime.TotalSeconds / perishable.RotAfter.TotalSeconds);
     }
 }

@@ -2,6 +2,7 @@
   id: TattooHiveChest
   bodyPart: Chest
   markingCategory: Chest
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Human, Dwarf]
   coloring:
     default:
@@ -16,6 +17,7 @@
   id: TattooNightlingChest
   bodyPart: Chest
   markingCategory: Chest
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Human, Dwarf]
   coloring:
     default:
@@ -30,6 +32,7 @@
   id: TattooSilverburghLeftLeg
   bodyPart: LLeg
   markingCategory: Legs
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Human, Dwarf]
   coloring:
     default:
@@ -44,6 +47,7 @@
   id: TattooSilverburghRightLeg
   bodyPart: RLeg
   markingCategory: Legs
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Human, Dwarf]
   coloring:
     default:
@@ -58,6 +62,7 @@
   id: TattooCampbellLeftArm
   bodyPart: LArm
   markingCategory: Arms
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Human, Dwarf]
   coloring:
     default:
@@ -72,6 +77,7 @@
   id: TattooCampbellRightArm
   bodyPart: RArm
   markingCategory: Arms
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Human, Dwarf]
   coloring:
     default:
@@ -86,6 +92,7 @@
   id: TattooCampbellLeftLeg
   bodyPart: LLeg
   markingCategory: Legs
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Human, Dwarf]
   coloring:
     default:
@@ -100,6 +107,7 @@
   id: TattooCampbellRightLeg
   bodyPart: RLeg
   markingCategory: Legs
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Human, Dwarf]
   coloring:
     default:
@@ -114,6 +122,7 @@
   id: TattooEyeRight
   bodyPart: Eyes
   markingCategory: Head
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Human, SlimePerson, Reptilian, Dwarf]
   coloring:
     default:
@@ -128,6 +137,7 @@
   id: TattooEyeLeft
   bodyPart: Eyes
   markingCategory: Head
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Human, SlimePerson, Reptilian, Dwarf]
   coloring:
     default:
@@ -142,6 +152,7 @@
   id: TattooEyeMothRight
   bodyPart: Eyes
   markingCategory: Overlay
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Moth]
   coloring:
     default:
@@ -156,6 +167,7 @@
   id: TattooEyeMothLeft
   bodyPart: Eyes
   markingCategory: Overlay
+  markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Moth]
   coloring:
     default:

@@ -27,3 +27,12 @@
     ears: ClothingHeadsetMedical
     gloves: ClothingHandsGlovesLatexSurgeon
     belt: SuperSurgerykitFilled
+
+- type: chameleonOutfit
+  id: SurgeonChameleonOutfit
+  job: Surgeon
+  equipment:
+    head: ClothingHeadHatSurgcapBlue
+    eyes: ClothingEyesHudMedical
+    mask: ClothingMaskSterile
+    gloves: ClothingHandsGlovesLatexSurgeon

@@ -1,0 +1,24 @@
+- type: entity
+  name: hynospray
+  parent: BaseItem
+  description: A variation of hypospray, having reduced parameters of the measurement volume, drug administration and an increased parameter of transferring liquid to the administration mode.
+  id: Hynospray
+  components:
+  - type: Sprite
+    sprite: /Textures/_Wega/Objects/Specific/Medical/hyno.rsi
+    state: hyno
+  - type: Item
+    sprite: /Textures/_Wega/Objects/Specific/Medical/hyno.rsi
+  - type: SolutionContainerManager
+    solutions:
+      hypospray:
+        maxVol: 12
+  - type: RefillableSolution
+    solution: hypospray
+  - type: ExaminableSolution
+    solution: hypospray
+  - type: Hypospray
+    onlyAffectsMobs: false
+    transferAmount: 4
+  - type: UseDelay
+    delay: 4.5

@@ -19,6 +19,7 @@ using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
+using Content.Shared.Nutrition.Components;
 
 namespace Content.Server.Disease
 {

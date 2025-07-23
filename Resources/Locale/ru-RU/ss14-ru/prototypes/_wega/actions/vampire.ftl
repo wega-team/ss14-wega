@@ -1,9 +1,7 @@
 # Basic
-ent-ActionVampireShop = [color=purple]Магазин[/color]
-    .desc = Открыть магазин способностей.
 ent-ActionVampireSelectClass = [color=purple]Выбрать класс[/color]
     .desc = Выберите ваш класс.
-ent-ActionDrinkBlood = [color=purple]Магазин[/color]
+ent-ActionDrinkBlood = [color=purple]Укус[/color]
     .desc = Попытаться выпить кровь у гуманоидной цели.
 ent-ActionVampireRejuvenate = [color=purple]Восстановление[/color]
     .desc = Твой второй шанс, твое второе дыхание.

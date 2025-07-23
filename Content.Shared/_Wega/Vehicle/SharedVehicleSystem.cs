@@ -128,14 +128,14 @@ public abstract partial class SharedVehicleSystem : EntitySystem
         if (TryComp<InputMoverComponent>(ent, out var mover))
             UpdateDrawDepth(ent, GetDrawDepth(ent.Comp, Transform(ent), mover.RelativeRotation.Degrees));
 
-        if (TryComp<ActionsComponent>(args.Buckle, out var actions) && TryComp<UnpoweredFlashlightComponent>(ent, out var flashlight))
+        if (TryComp<UnpoweredFlashlightComponent>(ent, out var flashlight))
         {
-            _actionsSystem.AddAction(args.Buckle, ref flashlight.ToggleActionEntity, flashlight.ToggleAction, ent, actions);
+            _actionsSystem.AddAction(args.Buckle, ref flashlight.ToggleActionEntity, flashlight.ToggleAction, ent);
         }
 
         if (ent.Comp.HornSound != null)
         {
-            _actionsSystem.AddAction(args.Buckle, ref ent.Comp.HornActionEntity, ent.Comp.HornAction, ent, actions);
+            _actionsSystem.AddAction(args.Buckle, ref ent.Comp.HornActionEntity, ent.Comp.HornAction, ent);
         }
 
         _joints.ClearJoints(args.Buckle);

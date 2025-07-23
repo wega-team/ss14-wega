@@ -4,10 +4,8 @@ using Content.Server.Atmos.Components;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Atmos.Rotting;
 using Content.Server.Bible.Components;
-using Content.Server.Body.Components;
 using Content.Server.Body.Systems;
 using Content.Server.Chat.Systems;
-using Content.Server.Nutrition.EntitySystems;
 using Content.Server.Polymorph.Systems;
 using Content.Shared.Actions;
 using Content.Shared.Alert;
@@ -21,7 +19,6 @@ using Content.Shared.Damage;
 using Content.Shared.Database;
 using Content.Shared.DoAfter;
 using Content.Shared.FixedPoint;
-using Content.Shared.Hands.Components;
 using Content.Shared.Humanoid;
 using Content.Shared.Interaction;
 using Content.Shared.Maps;
@@ -38,6 +35,9 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
+using Content.Shared.Genetics;
+using Content.Shared.Nutrition.EntitySystems;
+using Content.Shared.Hands.EntitySystems;
 
 namespace Content.Server.Vampire;
 
@@ -67,6 +67,7 @@ public sealed partial class VampireSystem : SharedVampireSystem
     [Dependency] private readonly DamageableSystem _damage = default!;
     [Dependency] private readonly MobThresholdSystem _mobThreshold = default!;
     [Dependency] private readonly EntityLookupSystem _entityLookup = default!;
+    [Dependency] private readonly SharedHandsSystem _hands = default!;
 
     private readonly Dictionary<EntityUid, Dictionary<EntityUid, FixedPoint2>> _bloodConsumedTracker = new();
     private bool _isDamageBeingHandled = false;
@@ -264,7 +265,7 @@ public sealed partial class VampireSystem : SharedVampireSystem
             }
 
             _admin.Add(LogType.Damaged, LogImpact.Low, $"{ToPrettyString(uid):user} drank {volumeToConsume}u of {ToPrettyString(args.Target):target}'s blood");
-            if (HasComp<HumanoidAppearanceComponent>(args.Target))
+            if (HasComp<HumanoidAppearanceComponent>(args.Target) && !HasComp<DnaModifiedComponent>(args.Target))
                 AddBloodEssence(uid, volumeToConsume * 0.95);
             SetBloodConsumedByVampire(uid, args.Target.Value, bloodAlreadyConsumed + volumeToConsume);
 
@@ -457,14 +458,11 @@ public sealed partial class VampireSystem : SharedVampireSystem
 
     private bool IsInSpace(EntityUid vampireUid)
     {
-        var vampireTransform = Transform(vampireUid);
-        var vampirePosition = _transform.GetMapCoordinates(vampireTransform);
-
-        if (!_mapMan.TryFindGridAt(vampirePosition, out _, out var grid)
-            || !_map.TryGetTileRef(vampireUid, grid, vampireTransform.Coordinates, out var tileRef))
+        var vampirePosition = _transform.GetMapCoordinates(Transform(vampireUid));
+        if (!_mapMan.TryFindGridAt(vampirePosition, out _, out _))
             return true;
 
-        return tileRef.Tile.IsEmpty || tileRef.IsSpace();
+        return false;
     }
     #endregion
 
@@ -472,24 +470,17 @@ public sealed partial class VampireSystem : SharedVampireSystem
     private void OnDamageChanged(EntityUid uid, VampireComponent component, ref DamageChangedEvent args)
     {
         // Null Rode Damage
-        if (args.Origin.HasValue && TryComp<HandsComponent>(args.Origin.Value, out var hands)
-            && HasComp<BibleUserComponent>(args.Origin.Value) && !component.TruePowerActive)
+        if (args.Origin.HasValue && HasComp<BibleUserComponent>(args.Origin.Value) && !component.TruePowerActive)
         {
-            foreach (var hand in hands.Hands.Values)
+            var heldEntity = _hands.GetActiveItem(uid);
+            if (TryComp<NullRodComponent>(heldEntity, out var nullRodComp))
             {
-                if (hand.HeldEntity is not EntityUid heldEntity)
-                    continue;
+                var damageToApply = component.NullDamage > 0
+                    ? nullRodComp.NullDamage
+                    : nullRodComp.FirstNullDamage;
 
-                if (TryComp<NullRodComponent>(heldEntity, out var nullRodComp))
-                {
-                    var damageToApply = component.NullDamage > 0
-                        ? nullRodComp.NullDamage
-                        : nullRodComp.FirstNullDamage;
-
-                    component.NullDamage += damageToApply;
-                    component.NullDamage = FixedPoint2.Clamp(component.NullDamage, FixedPoint2.Zero, 120);
-                    break;
-                }
+                component.NullDamage += damageToApply;
+                component.NullDamage = FixedPoint2.Clamp(component.NullDamage, FixedPoint2.Zero, 120);
             }
         }
 

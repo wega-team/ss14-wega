@@ -22,3 +22,4 @@ reagent-effect-guidebook-heal-internal-damage =
         [1] Имеет
        *[other] имеют
     } % шанс вылечить внутренее повреждение при каждом тике
+reagent-effect-guidebook-apply-rot-slowdown = Замедляет гниение в { $factor } раз на { $duration } секунд

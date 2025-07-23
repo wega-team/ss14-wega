@@ -541,9 +541,13 @@
     solutions:
       injector:
         maxVol: 100
+    # Corvax-Wega-bs-start
   - type: Injector
-    delay: 2.5
+    delay: 0.5
+    maxTransferAmount: 50
+    delayPerVolume: 0
     injectOnly: false
+    # Corvax-Wega-bs-end
   - type: SolutionContainerVisuals
     maxFillLevels: 2
     fillBaseName: syringe

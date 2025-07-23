@@ -61,6 +61,19 @@
   - UplinkDeception
 
 - type: listing
+  id: UplinkGarrotte
+  name: uplink-garrotte-name
+  description: uplink-garrotte-desc
+  productEntity: Garrotte
+  discountCategory: usualDiscounts
+  discountDownTo:
+    Telecrystal: 2
+  cost:
+    Telecrystal: 3
+  categories:
+  - UplinkDisruption
+
+- type: listing
   id: UplinkSyndicateSegwayCrate
   name: uplink-syndicate-segway-crate-name
   description: uplink-syndicate-segway-crate-desc
@@ -77,3 +90,4 @@
     blacklist:
       components:
       - SurplusBundle
+

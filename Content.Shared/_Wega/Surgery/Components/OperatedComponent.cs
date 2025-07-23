@@ -3,28 +3,28 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Surgery.Components;
 
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class OperatedComponent : Component
 {
     /// <summary>
     /// The ID of the surgery graph that defines possible surgical procedures for this entity (for example, BaseSurgery).
     /// If null, the operation is impossible.
     /// </summary>
-    [DataField("raceGraph")]
+    [DataField("raceGraph"), AutoNetworkedField]
     public ProtoId<SurgeryGraphPrototype>? GraphId;
 
     /// <summary>
     /// The current node in the graph of operations.
     /// By default, "Default" is the initial state.
     /// </summary>
-    [DataField("currentNode")]
+    [DataField("currentNode"), AutoNetworkedField]
     public ProtoId<SurgeryNodePrototype> CurrentNode = "Default";
 
     /// <summary>
     /// The target node to which the current operation leads.
     /// It is reset to null upon completion.
     /// </summary>
-    [DataField]
+    [DataField, AutoNetworkedField]
     public ProtoId<SurgeryNodePrototype>? CurrentTargetNode;
 
     /// <summary>
@@ -36,7 +36,7 @@ public sealed partial class OperatedComponent : Component
     /// <summary>
     /// The index of the current step in the sequence (starts from 0). Increases as it is executed.
     /// </summary>
-    [DataField]
+    [DataField, AutoNetworkedField]
     public int CurrentStepIndex = 0;
 
     /// <summary>

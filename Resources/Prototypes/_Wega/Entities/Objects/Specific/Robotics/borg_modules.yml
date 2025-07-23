@@ -1,0 +1,44 @@
+- type: entity
+  id: BorgModuleSurgery
+  parent: [ BaseBorgModuleMedical, BaseProviderBorgModule ]
+  name: surgery module
+  description: Surgical module, built-in all necessary surgical instruments and sterilization device. Now cutting out the brain of a crew member has become easier!
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: medical
+    - state: icon-surgery
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: base-icon-inhand-left
+        color: "#8FCBCB"
+      - state: base-module-inhand-left
+        color: "#A1A1A1"
+      - state: base-part-inhand-left
+      - state: base-stripes-inhand-left
+        color: "#7D7D7D"
+      right:
+      - state: base-icon-inhand-right
+        color: "#8FCBCB"
+      - state: base-module-inhand-right
+        color: "#A1A1A1"
+      - state: base-part-inhand-right
+      - state: base-stripes-inhand-right
+        color: "#7D7D7D"
+  - type: ItemBorgModule
+    items:
+    - ScalpelAS
+    - CauteryAS
+    - RetractorAS
+    - HemostatAS
+    - FixOVeinAS
+    - SawAS
+    - DrillAS
+    - BoneSetterAS
+    - BoneGelAS
+    - SprayBottle
+    - BorgDropper
+  - type: BorgModuleIcon
+    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: surgery-module }

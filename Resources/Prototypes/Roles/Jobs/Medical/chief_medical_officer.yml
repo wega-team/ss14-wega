@@ -21,6 +21,11 @@
       inverted: true
       traits:
       - Muted
+    # Corvax-Wega-Surgery-start
+    - !type:RoleTimeRequirement
+      role: JobSurgeon
+      time: 14400 #4 hrs
+    # Corvax-Wega-Surgery-end
   weight: 10
   startingGear: CMOGear
   icon: "JobIconChiefMedicalOfficer"
@@ -54,3 +59,15 @@
   storage:
     back:
     - Flash
+
+- type: chameleonOutfit
+  id: ChiefMedicalOfficerChameleonOutfit
+  job: ChiefMedicalOfficer
+  hasMindShield: true
+  equipment:
+    head: ClothingHeadHatBeretCmo
+    eyes: ClothingEyesHudMedical
+    mask: ClothingMaskSterile
+    neck: ClothingCloakCmo
+    outerClothing: ClothingOuterCoatLabCmo
+    gloves: ClothingHandsGlovesNitrile

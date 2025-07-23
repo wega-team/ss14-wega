@@ -1,0 +1,243 @@
+# ========================
+# ИМПЛАНТАЦИЯ
+# ========================
+
+# Torso
+- type: surgeryNode
+  id: ImplantingTorsoOperation
+  description: Имлантация
+  transitions:
+    - ImplantTorsoTransition
+    - EndImplantTorsoTransition
+
+- type: surgeryNode
+  id: SlimeImplantingTorsoOperation
+  description: Имлантация
+  transitions:
+    - SlimeImplantTorsoTransition
+    - EndSlimeImplantTorsoTransition
+
+# Head
+- type: surgeryNode
+  id: ImplantingHeadOperation
+  description: Имлантация
+  transitions:
+    - ImplantHeadTransition
+    - EndImplanHeadTransition
+
+- type: surgeryNode
+  id: ImplantingTooth
+  description: Имлантация
+  transitions:
+    - ImplantingToothTransition
+
+- type: surgeryNode
+  id: ImplantingToothOperation
+  description: Имлантация
+  transitions:
+    - ImplantToothTransition
+    - EndImplantToothTransition
+
+# ========================
+# УДАЛЕНИЕ ИМПЛАНТОВ
+# ========================
+
+# Torso
+- type: surgeryNode
+  id: RemoveSadTromboneOperation
+  description: Извлечь имплант грустного тромбона
+  transitions:
+    - ExtractSadTromboneTransition
+    - EndRemoveSadTromboneTransition
+
+- type: surgeryNode
+  id: RemoveLightImplantOperation
+  description: Извлечь световой имплант
+  transitions:
+    - ExtractLightImplantTransition
+    - EndRemoveLightImplantTransition
+
+- type: surgeryNode
+  id: RemoveBikeHornOperation
+  description: Извлечь имплант велосипедного гудка
+  transitions:
+    - ExtractBikeHornTransition
+    - EndRemoveBikeHornTransition
+
+- type: surgeryNode
+  id: RemoveTrackingOperation
+  description: Извлечь имплант слежения
+  transitions:
+    - ExtractTrackingTransition
+    - EndRemoveTrackingTransition
+
+- type: surgeryNode
+  id: RemoveStorageOperation
+  description: Извлечь подозрительный имплант
+  transitions:
+    - ExtractStorageTransition
+    - EndRemoveStorageTransition
+
+- type: surgeryNode
+  id: RemoveFreedomOperation
+  description: Извлечь подозрительный имплант
+  transitions:
+    - ExtractFreedomTransition
+    - EndRemoveFreedomTransition
+
+- type: surgeryNode
+  id: RemoveRadioOperation
+  description: Извлечь подозрительный имплант
+  transitions:
+    - ExtractRadioTransition
+    - EndRemoveRadioTransition
+
+- type: surgeryNode
+  id: RemoveUplinkOperation
+  description: Извлечь подозрительный имплант
+  transitions:
+    - ExtractUplinkTransition
+    - EndRemoveUplinkTransition
+
+- type: surgeryNode
+  id: RemoveEmpOperation
+  description: Извлечь подозрительный имплант
+  transitions:
+    - ExtractEmpTransition
+    - EndRemoveEmpTransition
+
+- type: surgeryNode
+  id: RemoveScramOperation
+  description: Извлечь подозрительный имплант
+  transitions:
+    - ExtractScramTransition
+    - EndRemoveScramTransition
+
+- type: surgeryNode
+  id: RemoveDnaScramblerOperation
+  description: Извлечь подозрительный имплант
+  transitions:
+    - ExtractDnaScramblerTransition
+    - EndRemoveDnaScramblerTransition
+
+- type: surgeryNode
+  id: RemoveChameleonControllerOperation
+  description: Извлечь подозрительный имплант
+  transitions:
+    - ExtractChameleonControllerTransition
+    - EndRemoveChameleonControllerTransition
+
+- type: surgeryNode
+  id: RemoveRadioCentcommOperation
+  description: Извлечь подозрительный имплант
+  transitions:
+    - ExtractRadioCentcommTransition
+    - EndRemoveRadioCentcommTransition
+
+# Slime
+
+- type: surgeryNode
+  id: SlimeRemoveSadTromboneOperation
+  description: Извлечь имплант грустного тромбона
+  transitions:
+    - ExtractSadTromboneTransition
+    - EndSlimeRemoveSadTromboneTransition
+
+- type: surgeryNode
+  id: SlimeRemoveLightImplantOperation
+  description: Извлечь световой имплант
+  transitions:
+    - ExtractLightImplantTransition
+    - EndSlimeRemoveLightImplantTransition
+
+- type: surgeryNode
+  id: SlimeRemoveBikeHornOperation
+  description: Извлечь имплант велосипедного гудка
+  transitions:
+    - ExtractBikeHornTransition
+    - EndSlimeRemoveBikeHornTransition
+
+- type: surgeryNode
+  id: SlimeRemoveTrackingOperation
+  description: Извлечь имплант слежения
+  transitions:
+    - ExtractTrackingTransition
+    - EndSlimeRemoveTrackingTransition
+
+- type: surgeryNode
+  id: SlimeRemoveStorageOperation
+  description: Извлечь подозрительный имплант
+  transitions:
+    - ExtractStorageTransition
+    - EndSlimeRemoveStorageTransition
+
+- type: surgeryNode
+  id: SlimeRemoveFreedomOperation
+  description: Извлечь подозрительный имплант
+  transitions:
+    - ExtractFreedomTransition
+    - EndSlimeRemoveFreedomTransition
+
+- type: surgeryNode
+  id: SlimeRemoveRadioOperation
+  description: Извлечь подозрительный имплант
+  transitions:
+    - ExtractRadioTransition
+    - EndSlimeRemoveRadioTransition
+
+- type: surgeryNode
+  id: SlimeRemoveUplinkOperation
+  description: Извлечь подозрительный имплант
+  transitions:
+    - ExtractUplinkTransition
+    - EndSlimeRemoveUplinkTransition
+
+- type: surgeryNode
+  id: SlimeRemoveEmpOperation
+  description: Извлечь подозрительный имплант
+  transitions:
+    - ExtractEmpTransition
+    - EndSlimeRemoveEmpTransition
+
+- type: surgeryNode
+  id: SlimeRemoveScramOperation
+  description: Извлечь подозрительный имплант
+  transitions:
+    - ExtractScramTransition
+    - EndSlimeRemoveScramTransition
+
+- type: surgeryNode
+  id: SlimeRemoveDnaScramblerOperation
+  description: Извлечь подозрительный имплант
+  transitions:
+    - ExtractDnaScramblerTransition
+    - EndSlimeRemoveDnaScramblerTransition
+
+- type: surgeryNode
+  id: SlimeRemoveChameleonControllerOperation
+  description: Извлечь подозрительный имплант
+  transitions:
+    - ExtractChameleonControllerTransition
+    - EndSlimeRemoveChameleonControllerTransition
+
+- type: surgeryNode
+  id: SlimeRemoveRadioCentcommOperation
+  description: Извлечь подозрительный имплант
+  transitions:
+    - ExtractRadioCentcommTransition
+    - EndSlimeRemoveRadioCentcommTransition
+
+# Head
+- type: surgeryNode
+  id: RemoveMindShieldOperation
+  description: Извлечь имплант защиты разума
+  transitions:
+    - ExtractMindShieldTransition
+    - EndRemoveMindShieldTransition
+
+- type: surgeryNode
+  id: RemoveFakeMindShieldOperation
+  description: Извлечь имплант защиты разума
+  transitions:
+    - ExtractFakeMindShieldTransition
+    - EndRemoveFakeMindShieldTransition

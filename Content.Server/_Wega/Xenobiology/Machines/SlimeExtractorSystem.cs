@@ -2,7 +2,6 @@ using System.Numerics;
 using Content.Server.Power.Components;
 using Content.Shared.Interaction;
 using Robust.Shared.Physics.Components;
-using Robust.Shared.Prototypes;
 using Content.Shared.Power;
 using Content.Shared.Xenobiology.Components;
 using Content.Server.Fluids.EntitySystems;
@@ -10,7 +9,6 @@ using Content.Shared.Chemistry.Components;
 using Content.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Content.Shared.Jittering;
-using Content.Server.Body.Components;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Database;
 using Content.Shared.Throwing;
@@ -20,6 +18,7 @@ using Content.Shared.Inventory;
 using Content.Shared.Construction.Components;
 using Content.Shared.Xenobiology;
 using Content.Shared.Mobs.Systems;
+using Content.Shared.Body.Components;
 
 namespace Content.Server.Xenobiology
 {
