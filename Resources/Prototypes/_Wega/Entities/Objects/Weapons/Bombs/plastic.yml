@@ -4,6 +4,8 @@
   parent: [BasePlasticExplosive, BaseSyndicateContraband]
   id: StickyBomb
   components:
+  - type: Item
+    size: Tiny
   - type: Sprite
     sprite: _Wega/Objects/Weapons/Bombs/stickybomb.rsi
     state: icon

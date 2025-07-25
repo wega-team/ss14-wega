@@ -14,6 +14,14 @@ current-god-narsie = Нар'Си
 current-god-reaper = Жнецу
 current-god-kharin = Кха'Рину
 
+blood-cult-break-control =
+    Туман перед глазами { $name } рассеялся, { GENDER($name) ->
+        [male] он приходит в себя.
+        [female] она приходит в себя.
+        [epicene] они приходят в себя.
+       *[neuter] оно приходит в себя.
+    }
+
 blood-cult-godcalled = [color=crimson]Победа Культа Крови[/color]
 blood-cult-ritualconducted = [color=blue]Малая победа Культа Крови[/color]
 blood-cult-neutral = [color=yellow]Ничейный исход[/color]

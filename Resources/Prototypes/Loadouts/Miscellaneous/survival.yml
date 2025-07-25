@@ -18,10 +18,14 @@
     - Human
     - Moth
     - Reptilian
-    - Vulpkanin # Corvax-MRP
+    #Corvax-Species-Start
+    - Vulpkanin
+    - Tajaran
+    #Corvax-Species-End
     - Felinid # Corvax-Wega-UwU
     - Resomi # Corvax-Wega-Resomi
     - Skrell # Corvax-Wega-Skrell
+    - Demon # Corvax-Wega-Ы
 
 - type: loadoutEffectGroup
   id: EffectSpeciesVox
@@ -69,11 +73,29 @@
     - BoxHugNitrogen
 
 # Mime
+- type: loadoutEffectGroup
+  id: OxygenBreatherMime
+  effects:
+  - !type:SpeciesLoadoutEffect
+    species:
+    - Arachnid
+    - Diona
+    - Dwarf
+    - Human
+    - Reptilian
+
+- type: loadoutEffectGroup
+  id: OxygenBreatherMimeMoth
+  effects:
+  - !type:SpeciesLoadoutEffect
+    species:
+    - Moth
+
 - type: loadout
   id: EmergencyOxygenMime
   effects:
   - !type:GroupLoadoutEffect
-    proto: OxygenBreather
+    proto: OxygenBreatherMime
   storage:
     back:
     - BoxMime
@@ -87,6 +109,14 @@
     back:
     - BoxMimeNitrogen
 
+- type: loadout
+  id: EmergencySpeciesMothMime
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: OxygenBreatherMimeMoth
+  storage:
+    back:
+    - BoxMimeMoth
 
 # Engineering / Extended
 - type: loadout

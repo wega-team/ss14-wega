@@ -35,6 +35,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Replays;
 using Robust.Shared.Utility;
+using Content.Shared.Strangulation; // Corvax-Corvax-Wega-Strangulation
 
 namespace Content.Server.Chat.Systems;
 
@@ -219,6 +220,13 @@ public sealed partial class ChatSystem : SharedChatSystem
             message = message[1..];
         }
 
+        // Corvax-Corvax-Wega-Strangulation-Start
+        if (desiredType == InGameICChatType.Speak && HasComp<StrangulationComponent>(source))
+        {
+            desiredType = InGameICChatType.Whisper;
+        }
+        // Corvax-Corvax-Wega-Strangulation-End
+
         bool shouldCapitalize = (desiredType != InGameICChatType.Emote);
         bool shouldPunctuate = _configurationManager.GetCVar(CCVars.ChatPunctuation);
         // Capitalizing the word I only happens in English, so we check language here
@@ -333,7 +341,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         if (playSound)
         {
             if (sender == Loc.GetString("admin-announce-announcer-default")) announcementSound = new SoundPathSpecifier(CentComAnnouncementSound); // Corvax-Announcements: Support custom alert sound from admin panel
-            _audio.PlayGlobal(announcementSound == null ? DefaultAnnouncementSound : _audio.GetSound(announcementSound), Filter.Broadcast(), true, AudioParams.Default.WithVolume(-2f));
+            _audio.PlayGlobal(announcementSound == null ? DefaultAnnouncementSound : _audio.ResolveSound(announcementSound), Filter.Broadcast(), true, AudioParams.Default.WithVolume(-2f));
         }
         _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Global station announcement from {sender}: {message}");
     }
@@ -395,7 +403,7 @@ public sealed partial class ChatSystem : SharedChatSystem
             return;
         }
 
-        if (!EntityManager.TryGetComponent<StationDataComponent>(station, out var stationDataComp)) return;
+        if (!TryComp<StationDataComponent>(station, out var stationDataComp)) return;
 
         var filter = _stationSystem.GetInStation(stationDataComp);
 
@@ -838,6 +846,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         var recipients = new Dictionary<ICommonSession, ICChatRecipientData>();
         var ghostHearing = GetEntityQuery<GhostHearingComponent>();
         var xforms = GetEntityQuery<TransformComponent>();
+        var deafnessQuery = GetEntityQuery<DeafnessComponent>(); // Corvax-Wega-Deafness
 
         var transformSource = xforms.GetComponent(source);
         var sourceMapId = transformSource.MapID;
@@ -847,6 +856,8 @@ public sealed partial class ChatSystem : SharedChatSystem
         {
             if (player.AttachedEntity is not { Valid: true } playerEntity)
                 continue;
+
+            if (deafnessQuery.HasComponent(playerEntity)) continue; // Corvax-Wega-Deafness
 
             var transformEntity = xforms.GetComponent(playerEntity);
 

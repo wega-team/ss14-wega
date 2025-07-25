@@ -1,11 +1,13 @@
 - type: entity
   id: ActionGhostBar
+  parent: BaseAction
   name: Ghost bar
   description: Go to the GhostBar!
   components:
-  - type: InstantAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions, state: ghostbar }
     checkCanInteract: false
-    event: !type:ToggleGhostBarEvent
     startDelay: true
     useDelay: 30
+  - type: InstantAction
+    event: !type:ToggleGhostBarEvent

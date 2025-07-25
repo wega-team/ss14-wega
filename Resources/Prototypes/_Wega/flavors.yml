@@ -2,3 +2,8 @@
   id: cum
   flavorType: Base
   description: flavor-base-cum
+
+- type: flavor
+  id: money
+  flavorType: Base
+  description: flavor-base-money

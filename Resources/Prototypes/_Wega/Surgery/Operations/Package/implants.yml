@@ -1,0 +1,42 @@
+- type: surgeryPackage
+  id: TorsoImplantPackage
+  transitions:
+    - ImplantingTorsoTransition
+    - RemoveSadTromboneTransition
+    - RemoveLightImplantTransition
+    - RemoveBikeHornTransition
+    - RemoveTrackingTransition
+    - RemoveStorageTransition
+    - RemoveFreedomTransition
+    - RemoveRadioTransition
+    - RemoveUplinkTransition
+    - RemoveEmpTransition
+    - RemoveScramTransition
+    - RemoveDnaScramblerTransition
+    - RemoveChameleonControllerTransition
+    - RemoveRadioCentcommTransition
+
+- type: surgeryPackage
+  id: SlimeTorsoImplantPackage
+  transitions:
+    - SlimeImplantingTorsoTransition
+    - SlimeRemoveSadTromboneTransition
+    - SlimeRemoveLightImplantTransition
+    - SlimeRemoveBikeHornTransition
+    - SlimeRemoveTrackingTransition
+    - SlimeRemoveStorageTransition
+    - SlimeRemoveFreedomTransition
+    - SlimeRemoveRadioTransition
+    - SlimeRemoveUplinkTransition
+    - SlimeRemoveEmpTransition
+    - SlimeRemoveScramTransition
+    - SlimeRemoveDnaScramblerTransition
+    - SlimeRemoveChameleonControllerTransition
+    - SlimeRemoveRadioCentcommTransition
+
+- type: surgeryPackage
+  id: HeadImplantPackage
+  transitions:
+    - ImplantingHeadTransition
+    - RemoveMindShieldTransition
+    - RemoveFakeMindShieldTransition

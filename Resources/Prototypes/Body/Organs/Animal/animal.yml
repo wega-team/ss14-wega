@@ -41,6 +41,7 @@
     - state: lung-l
     - state: lung-r
   - type: Organ
+    organType: Lungs # Corvax-Wega-Surgery
   - type: Lung
   - type: Metabolizer
     removeEmpty: true
@@ -63,6 +64,12 @@
   - type: Item
     size: Small
     heldPrefix: lungs
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+      - Lungs
+      - Meat
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   id: OrganAnimalStomach
@@ -73,6 +80,7 @@
   - type: Sprite
     state: stomach
   - type: Organ
+    organType: Stomach # Corvax-Wega-Surgery
   - type: SolutionContainerManager
     solutions:
       stomach:
@@ -92,6 +100,12 @@
   - type: Item
     size: Small
     heldPrefix: stomach
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+      - Stomach
+      - Meat
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   id: OrganMouseStomach
@@ -116,6 +130,7 @@
   - type: Sprite
     state: liver
   - type: Organ
+    organType: Liver # Corvax-Wega-Surgery
   - type: Metabolizer
     maxReagents: 1
     metabolizerTypes: [ Animal ]
@@ -125,6 +140,12 @@
   - type: Item
     size: Small
     heldPrefix: liver
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+      - Liver
+      - Meat
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   id: OrganAnimalHeart
@@ -135,6 +156,7 @@
   - type: Sprite
     state: heart-on
   - type: Organ
+    organType: Heart # Corvax-Wega-Surgery
   - type: Metabolizer
     maxReagents: 2
     metabolizerTypes: [ Animal ]
@@ -145,6 +167,13 @@
   - type: Item
     size: Small
     heldPrefix: heart
+  # Corvax-Wega-Surgery-start
+  - type: Heart
+  - type: Tag
+    tags:
+      - Heart
+      - Meat
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   id: OrganAnimalKidneys
@@ -157,6 +186,7 @@
     - state: kidney-l
     - state: kidney-r
   - type: Organ
+    organType: Kidneys # Corvax-Wega-Surgery
   - type: Metabolizer
     maxReagents: 5
     metabolizerTypes: [ Animal ]
@@ -164,3 +194,9 @@
   - type: Item
     size: Small
     heldPrefix: kidneys
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+      - Kidneys
+      - Meat
+  # Corvax-Wega-Surgery-end

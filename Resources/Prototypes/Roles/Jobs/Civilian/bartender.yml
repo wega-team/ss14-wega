@@ -17,6 +17,12 @@
   extendedAccess:
   - Kitchen
   - Hydroponics
+  # Corvax-Wega-Genetics-start
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: SoberGen
+  # Corvax-Wega-Genetics-end
 
 - type: startingGear
   id: BartenderGear
@@ -27,3 +33,15 @@
   #storage:
     #back:
     #- Stuff
+
+- type: chameleonOutfit
+  id: BartenderChameleonOutfit
+  job: Bartender
+  equipment:
+    head: ClothingHeadHatTophat
+    eyes: ClothingEyesGlassesSunglasses
+    mask: ClothingMaskBreath
+    neck: ClothingNeckScarfStripedBlack
+    outerClothing: ClothingOuterArmorBasicSlim
+    gloves: ClothingHandsGlovesColorBlack
+

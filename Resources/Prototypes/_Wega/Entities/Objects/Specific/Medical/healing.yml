@@ -10,3 +10,42 @@
         reagents:
         - ReagentId: Spaceacillin
           Quantity: 15
+
+- type: entity
+  name: mutadon pill
+  parent: Pill
+  id: PillMutadon
+  components:
+    - type: SolutionContainerManager
+      solutions:
+        food:
+          maxVol: 20
+          reagents:
+            - ReagentId: Mutadon
+              Quantity: 10
+
+- type: entity
+  name: pill canister
+  parent: PillCanister
+  id: PillCanisterAmbuzol
+  suffix: Ambuzol 10u, 5
+  components:
+  - type: Label
+    currentLabel: ambuzol 10u
+  - type: StorageFill
+    contents:
+    - id: PillAmbuzol
+      amount: 5
+
+- type: entity
+  name: pill canister
+  parent: PillCanister
+  id: PillCanisterMutadon
+  suffix: Mutadon 10u, 5
+  components:
+  - type: Label
+    currentLabel: mutadon 10u
+  - type: StorageFill
+    contents:
+    - id: PillMutadon
+      amount: 5

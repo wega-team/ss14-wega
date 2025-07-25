@@ -47,6 +47,12 @@
   kind: source
   path: "/Textures/Shaders/rainbow.swsl"
 
+# sin city effect: everything is greyscale, except red
+- type: shader
+  id: Noir
+  kind: source
+  path: "/Textures/Shaders/noir.swsl"
+
 - type: shader
   id: CameraStatic
   kind: source
@@ -109,3 +115,18 @@
   id: Hologram
   kind: source
   path: "/Textures/Shaders/hologram.swsl"
+
+- type: shader
+  id: Dizzy
+  kind: source
+  path: "/Textures/_Wega/Shaders/dizzy.swsl"
+
+- type: shader
+  id: Colourblindness
+  kind: source
+  path: "/Textures/_Wega/Shaders/colourblindness.swsl"
+
+- type: shader
+  id: NightVision
+  kind: source
+  path: "/Textures/_Wega/Shaders/night.swsl"

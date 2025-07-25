@@ -1,0 +1,96 @@
+- type: entity
+  id: RandomMetalSheet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: RandomSpawner
+    prototypes:
+      - SheetSteel1
+      - SheetPlasteel1
+
+- type: entity
+  id: RandomGlassSheet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: RandomSpawner
+    prototypes:
+      - SheetGlass1
+      - SheetRGlass1
+
+- type: entity
+  id: RandomPassiveAnimal
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: RandomSpawner
+    prototypes:
+      - MobButterfly
+      - MobCrab
+      - MobGoat
+      - MobCow
+      - MobCockroach
+      - MobSlug
+      - MobCatFloppa
+      - MobCatKitten
+      - MobFrog
+      - MobPenguin
+      - MobLizard
+      - MobParrot
+      - MobCatSpace
+
+- type: entity
+  id: RandomNeutralAnimal
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: RandomSpawner
+    prototypes:
+      - MobGoat
+      - MobMonkey
+      - MobGorilla
+      - MobKangaroo
+      - MobBoxingKangaroo
+
+- type: entity
+  id: RandomAgressiveAnimal
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: RandomSpawner
+    prototypes:
+      - MobTickSalvage
+      - MobCarp
+      - MobCarpHolo
+      - MobCarpMagic
+      - MobShark
+      - MobSmallPurpleSnake
+      - MobPurpleSnake
+      - MobGiantSpider
+      - MobClownSpider
+      - MobSpiderSpace
+      - MobBearSpace
+      - MobKangarooSpace
+
+- type: entity
+  id: RandomXenoSlime
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: RandomSpawner
+    prototypes:
+      - MobXenoSlimeGray
+      - MobXenoSlimeBlue
+      - MobXenoSlimePurple
+      - MobXenoSlimeOrange
+      - MobXenoSlimeMetallic
+      - MobXenoSlimeDarkPurple
+      - MobXenoSlimeGreen
+      - MobXenoSlimeDarkBlue
+      - MobXenoSlimePink
+      - MobXenoSlimeRed
+      - MobXenoSlimeYellow
+      - MobXenoSlimeGold
+      - MobXenoSlimeSilver
+      - MobXenoSlimeBlack
+      - MobXenoSlimeSepia
+      - MobXenoSlimeOil
+      - MobXenoSlimeBluespace
+      - MobXenoSlimeAdamantine
+      - MobXenoSlimePyrite
+      - MobXenoSlimeAzure
+      - MobXenoSlimeLightPink

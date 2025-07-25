@@ -43,6 +43,7 @@
   - type: Sprite
     state: brain
   - type: Organ
+    organType: Brain # Corvax-Wega-Surgery
   - type: Input
     context: "ghost"
   - type: Brain
@@ -52,6 +53,7 @@
   - type: BadFood
   - type: Tag
     tags:
+      - Brain # Corvax-Wega-Surgery
       - Meat
   - type: SolutionContainerManager
     solutions:
@@ -88,6 +90,14 @@
   - type: Item
     size: Small
     heldPrefix: eyeballs
+  # Corvax-Wega-Surgery-start
+  - type: Organ
+    organType: Eyes
+  - type: Tag
+    tags:
+      - Eyes
+      - Meat
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   id: OrganHumanTongue
@@ -154,6 +164,14 @@
         reagents:
         - ReagentId: UncookedAnimalProteins
           Quantity: 5
+  # Corvax-Wega-Surgery-start
+  - type: Organ
+    organType: Lungs
+  - type: Tag
+    tags:
+      - Lungs
+      - Meat
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   id: OrganHumanHeart
@@ -176,6 +194,15 @@
   - type: Item
     size: Small
     heldPrefix: heart
+  # Corvax-Wega-Surgery-start
+  - type: Heart
+  - type: Organ
+    organType: Heart
+  - type: Tag
+    tags:
+      - Heart
+      - Meat
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   id: OrganHumanStomach
@@ -208,6 +235,14 @@
     groups:
     - id: Food
     - id: Drink
+  # Corvax-Wega-Surgery-start
+  - type: Organ
+    organType: Stomach
+  - type: Tag
+    tags:
+      - Stomach
+      - Meat
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   id: OrganHumanLiver
@@ -226,6 +261,14 @@
     groups:
     - id: Alcohol
       rateModifier: 0.1 # removes alcohol very slowly along with the stomach removing it as a drink
+  # Corvax-Wega-Surgery-start
+  - type: Organ
+    organType: Liver
+  - type: Tag
+    tags:
+      - Liver
+      - Meat
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   id: OrganHumanKidneys
@@ -245,3 +288,11 @@
     maxReagents: 5
     metabolizerTypes: [Human]
     removeEmpty: true
+  # Corvax-Wega-Surgery-start
+  - type: Organ
+    organType: Kidneys
+  - type: Tag
+    tags:
+      - Kidneys
+      - Meat
+  # Corvax-Wega-Surgery-end

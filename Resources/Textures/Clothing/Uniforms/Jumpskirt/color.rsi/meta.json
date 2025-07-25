@@ -15,6 +15,10 @@
       "directions": 4
     },
     {
+      "name": "equipped-INNERCLOTHING-down",
+      "directions": 4
+    },
+    {
       "name": "inhand-left",
       "directions": 4
     },
@@ -50,6 +54,10 @@
     },
     {
       "name": "prisoner-equipped-INNERCLOTHING",
+      "directions": 4
+    },
+    {
+      "name": "prisoner-equipped-INNERCLOTHING-down",
       "directions": 4
     }
   ]

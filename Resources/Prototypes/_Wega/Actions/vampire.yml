@@ -1,460 +1,545 @@
 # Basic
 - type: entity
   id: ActionVampireSelectClass
+  parent: BaseAction
   name: "[color=purple]Select class[/color]"
   description: "Select your class."
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "select_class" }
-    event: !type:VampireSelectClassActionEvent
     useDelay: 5
+  - type: InstantAction
+    event: !type:VampireSelectClassActionEvent
 
 - type: entity
   id: ActionDrinkBlood
+  parent: BaseAction
   name: "[color=purple]Drink blood[/color]"
   description: "Attempt to drink blood from a humanoid target."
   categories: [ HideSpawnMenu ]
   components:
-  - type: EntityTargetAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "bite" }
     iconOn: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "bite-on" }
     backgroundOn: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "bg_vampire" }
-    event: !type:VampireDrinkingBloodActionEvent
     priority: -2
+  - type: TargetAction
+  - type: EntityTargetAction
+    event: !type:VampireDrinkingBloodActionEvent
 
 - type: entity
   id: ActionVampireRejuvenate
+  parent: BaseAction
   name: "[color=purple]Rejuvenate[/color]"
   description: "Your second chance, your second wind."
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "rejuvenate" }
-    event: !type:VampireRejuvenateActionEvent
     checkCanInteract: false
     useDelay: 20
     priority: 1
+  - type: InstantAction
+    event: !type:VampireRejuvenateActionEvent
 
 - type: entity
   id: ActionVampireGlare
+  parent: BaseAction
   name: "[color=purple]Glare[/color]"
   description: "Hit your victim with a beam of bright light so that she loses herself."
   categories: [ HideSpawnMenu ]
   components:
-  - type: EntityTargetAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "glare" }
     itemIconStyle: BigAction
     sound: !type:SoundPathSpecifier
       path: /Audio/_Wega/Effects/Vampire/glare.ogg
-    event: !type:VampireGlareActionEvent
     useDelay: 30
     priority: 1
+  - type: TargetAction
+  - type: EntityTargetAction
+    event: !type:VampireGlareActionEvent
 
 # Hemomancer
 - type: entity
   id: ActionVampireClaws
+  parent: BaseAction
   name: "[color=purple]Vampire claws[/color]"
   description: "Sharpen your claws and harm your enemies."
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "claws" }
     itemIconStyle: BigAction
-    event: !type:VampireClawsActionEvent
     useDelay: 15
+  - type: InstantAction
+    event: !type:VampireClawsActionEvent
 
 - type: entity
   id: ActionVampireBloodTendrils
+  parent: BaseAction
   name: "[color=purple]Blood tendrils[/color]"
   description: "Summon blood tendrils to hit your enemies."
   categories: [ HideSpawnMenu ]
   components:
-  - type: EntityWorldTargetAction
-    raiseOnUser: true
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "tendrils" }
     itemIconStyle: BigAction
-    event: !type:VampireBloodTentacleAction
+    raiseOnUser: true
     useDelay: 10
+  - type: TargetAction
     range: 10
+  - type: WorldTargetAction
+    event: !type:VampireBloodTentacleAction
 
 - type: entity
   id: ActionVampireBloodBarrier
+  parent: BaseAction
   name: "[color=purple]Blood barrier[/color]"
   description: "Summon a barrier that will shield you."
   categories: [ HideSpawnMenu ]
   components:
-  - type: EntityWorldTargetAction
-    raiseOnUser: true
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "barrier" }
     itemIconStyle: BigAction
-    event: !type:VampireBloodBarrierActionEvent
+    raiseOnUser: true
     useDelay: 30
+  - type: TargetAction
     range: 10
+  - type: WorldTargetAction
+    event: !type:VampireBloodBarrierActionEvent
 
 - type: entity
   id: ActionVampireSanguinePool
+  parent: BaseAction
   name: "[color=purple]Sanguine pool[/color]"
   description: "Turn into a puddle."
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "bloodpool" }
     itemIconStyle: BigAction
-    event: !type:VampireSanguinePoolActionEvent
     useDelay: 25
+  - type: InstantAction
+    event: !type:VampireSanguinePoolActionEvent
 
 - type: entity
   id: ActionVampirePredatorSenses
+  parent: BaseAction
   name: "[color=purple]Predator senses[/color]"
   description: "Your gut will tell you where the nearest victim is."
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "predator_sense" }
     itemIconStyle: BigAction
-    event: !type:VampirePredatorSensesActionEvent
     useDelay: 10
+  - type: InstantAction
+    event: !type:VampirePredatorSensesActionEvent
 
 - type: entity
   id: ActionVampireBloodEruption
+  parent: BaseAction
   name: "[color=purple]Blood eruption[/color]"
   description: "Pools of blood around you will erupt and damage your enemies."
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "spikes" }
     itemIconStyle: BigAction
-    event: !type:VampireBloodEruptionActionEvent
     useDelay: 60
+  - type: InstantAction
+    event: !type:VampireBloodEruptionActionEvent
 
 - type: entity
   id: ActionVampireBloodBringersRite
+  parent: BaseAction
   name: "[color=purple]Blood bringers rite[/color]"
   description: "Perform a blood rite and turn this place into a bloodbath!"
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "bringers_rite" }
     itemIconStyle: BigAction
-    event: !type:VampireBloodBringersRiteActionEvent
     useDelay: 10
+  - type: InstantAction
+    event: !type:VampireBloodBringersRiteActionEvent
 
 # Umbrae
 - type: entity
   id: ActionVampireCloakOfDarkness
+  parent: BaseAction
   name: "[color=purple]Cloak of Darkness[/color]"
   description: "Hide in the darkness."
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "cloak" }
     itemIconStyle: BigAction
-    event: !type:VampireCloakOfDarknessActionEvent
     useDelay: 2
+  - type: InstantAction
+    event: !type:VampireCloakOfDarknessActionEvent
 
 - type: entity
   id: ActionVampireShadowSnare
+  parent: BaseAction
   name: "[color=purple]Shadow snare[/color]"
   description: "Leave an invisible trap."
   categories: [ HideSpawnMenu ]
   components:
-  - type: EntityWorldTargetAction
-    raiseOnUser: true
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "shadow_snare" }
     itemIconStyle: BigAction
-    event: !type:VampireShadowSnareActionEvent
+    raiseOnUser: true
     useDelay: 10
+  - type: TargetAction
     range: 2
+  - type: WorldTargetAction
+    event: !type:VampireShadowSnareActionEvent
 
 - type: entity
   id: ActionVampireSoulAnchor
+  parent: BaseAction
   name: "[color=purple]Soul anchor[/color]"
   description: "Create a beacon that allows you to return to it."
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "anchor" }
     itemIconStyle: BigAction
-    event: !type:VampireSoulAnchorActionEvent
     useDelay: 130
+  - type: InstantAction
+    event: !type:VampireSoulAnchorActionEvent
 
 - type: entity
   id: ActionVampireDarkPassage
+  parent: BaseAction
   name: "[color=purple]Dark passage[/color]"
   description: "Moving in space."
   categories: [ HideSpawnMenu ]
   components:
-  - type: WorldTargetAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "dark_passage" }
     itemIconStyle: BigAction
-    event: !type:VampireDarkPassageActionEvent
-    range: 16
     useDelay: 15
+  - type: TargetAction
+    range: 16
+  - type: WorldTargetAction
+    event: !type:VampireDarkPassageActionEvent
 
 - type: entity
   id: ActionVampireExtinguish
+  parent: BaseAction
   name: "[color=purple]Extinguish[/color]"
   description: "Extinguish the candles."
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "extinguish" }
     itemIconStyle: BigAction
-    event: !type:VampireExtinguishActionEvent
     useDelay: 30
+  - type: InstantAction
+    event: !type:VampireExtinguishActionEvent
 
 - type: entity
   id: ActionVampireShadowBoxing
+  parent: BaseAction
   name: "[color=purple]Shadow boxing[/color]"
   description: "Summon a shadow that will help you in battle."
   categories: [ HideSpawnMenu ]
   components:
-  - type: EntityTargetAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "shadow_boxing" }
     itemIconStyle: BigAction
-    event: !type:VampireShadowBoxingActionEvent
+    useDelay: 30
+  - type: TargetAction
     canTargetSelf: false
     range: 5
-    useDelay: 30
+  - type: EntityTargetAction
+    event: !type:VampireShadowBoxingActionEvent
 
 - type: entity
   id: ActionVampireEternalDarkness
+  parent: BaseAction
   name: "[color=purple]Eternal darkness[/color]"
   description: "Immerse this place in eternal darkness."
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "eternal_darkness" }
     itemIconStyle: BigAction
-    event: !type:VampireEternalDarknessActionEvent
     useDelay: 10
+  - type: InstantAction
+    event: !type:VampireEternalDarknessActionEvent
 
 # Gargantua
 - type: entity
   id: ActionVampireRejuvenateAdvanced
+  parent: BaseAction
   name: "[color=purple]Rejuvenate[/color]"
   description: "Your second chance, your second wind."
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "rejuvenate" }
-    event: !type:VampireRejuvenateAdvancedActionEvent
     checkCanInteract: false
     useDelay: 20
     priority: 1
+  - type: InstantAction
+    event: !type:VampireRejuvenateAdvancedActionEvent
 
 - type: entity
   id: ActionVampireBloodSwell
+  parent: BaseAction
   name: "[color=purple]Blood swell[/color]"
   description: "Your blood thickens, you become stronger."
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "swell" }
     itemIconStyle: BigAction
-    event: !type:VampireBloodSwellActionEvent
     useDelay: 40
+  - type: InstantAction
+    event: !type:VampireBloodSwellActionEvent
 
 - type: entity
   id: ActionVampireBloodRush
+  parent: BaseAction
   name: "[color=purple]Blood rush[/color]"
   description: "You feel a rush of blood, you become faster."
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "rush" }
     itemIconStyle: BigAction
-    event: !type:VampireBloodRushActionEvent
     useDelay: 30
+  - type: InstantAction
+    event: !type:VampireBloodRushActionEvent
 
 - type: entity
   id: ActionVampireSeismicStomp
+  parent: BaseAction
   name: "[color=purple]Seismic stomp[/color]"
   description: "A strong blow that will throw everyone around."
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "seismic_stomp" }
     itemIconStyle: BigAction
-    event: !type:VampireSeismicStompActionEvent
     useDelay: 30
+  - type: InstantAction
+    event: !type:VampireSeismicStompActionEvent
 
 - type: entity
   id: ActionVampireBloodSwellAdvanced
+  parent: BaseAction
   name: "[color=purple]Blood swell[/color]"
   description: "Your blood thickens, you become stronger."
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "swell" }
     itemIconStyle: BigAction
-    event: !type:VampireBloodSwellAdvancedActionEvent
     useDelay: 40
+  - type: InstantAction
+    event: !type:VampireBloodSwellAdvancedActionEvent
 
 - type: entity
   id: ActionVampireOverwhelmingForce
+  parent: BaseAction
   name: "[color=purple]Overwhelming force[/color]"
   description: "Your strength is excellent, you can't be shackled now, and the doors open like matches."
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "overwhelming_force" }
     itemIconStyle: BigAction
-    event: !type:VampireOverwhelmingForceActionEvent
     useDelay: 2
+  - type: InstantAction
+    event: !type:VampireOverwhelmingForceActionEvent
 
 - type: entity
   id: ActionDemonicGrasp
+  parent: BaseAction
   name: "[color=purple]Demonic grasp[/color]"
   description: "Grab your detractor."
   categories: [ HideSpawnMenu ]
   components:
-  - type: EntityTargetAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "demonic_grasp" }
     itemIconStyle: BigAction
-    event: !type:VampireDemonicGraspActionEvent
-    range: 16
     useDelay: 15
+  - type: TargetAction
+    range: 16
+  - type: EntityTargetAction
+    event: !type:VampireDemonicGraspActionEvent
 
 - type: entity
   id: ActionVampireCharge
+  parent: BaseAction
   name: "[color=purple]Charge[/color]"
   description: "Make a dash."
   categories: [ HideSpawnMenu ]
   components:
-  - type: EntityWorldTargetAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "charge" }
     itemIconStyle: BigAction
-    event: !type:VampireChargeActionEvent
-    range: 16
     useDelay: 30
+  - type: TargetAction
+    range: 16
+  - type: WorldTargetAction
+    event: !type:VampireChargeActionEvent
 
 # Dantalion
 - type: entity
   id: ActionMaxThrallCountUpdate1
+  parent: BaseAction
   name: "[color=purple]Upgrade thralls[/color]"
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "enthrall" }
     itemIconStyle: BigAction
+  - type: InstantAction
     event: !type:MaxThrallCountUpdateEvent
 
 - type: entity
   id: ActionMaxThrallCountUpdate2
+  parent: BaseAction
   name: "[color=purple]Upgrade thralls[/color]"
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "enthrall" }
     itemIconStyle: BigAction
+  - type: InstantAction
     event: !type:MaxThrallCountUpdateEvent
 
 - type: entity
   id: ActionMaxThrallCountUpdate3
+  parent: BaseAction
   name: "[color=purple]Upgrade thralls[/color]"
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "enthrall" }
     itemIconStyle: BigAction
+  - type: InstantAction
     event: !type:MaxThrallCountUpdateEvent
-
 
 - type: entity
   id: ActionEnthrall
+  parent: BaseAction
   name: "[color=purple]Enthrall[/color]"
   description: "Get the person on your side."
   categories: [ HideSpawnMenu ]
   components:
-  - type: EntityTargetAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "enthrall" }
     itemIconStyle: BigAction
-    event: !type:VampireEnthrallActionEvent
     useDelay: 2
+  - type: TargetAction
+  - type: EntityTargetAction
+    event: !type:VampireEnthrallActionEvent
 
 - type: entity
   id: ActionCommune
+  parent: BaseAction
   name: "[color=purple]Commune[/color]"
   description: "Communication with your subordinates."
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "communication" }
     itemIconStyle: BigAction
-    event: !type:VampireCommuneActionEvent
     useDelay: 2
+  - type: InstantAction
+    event: !type:VampireCommuneActionEvent
 
 - type: entity
   id: ActionPacify
+  parent: BaseAction
   name: "[color=purple]Pacify[/color]"
   description: "Calm down your detractor."
   categories: [ HideSpawnMenu ]
   components:
-  - type: EntityTargetAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "pacify" }
     itemIconStyle: BigAction
-    event: !type:VampirePacifyActionEvent
     useDelay: 10
+  - type: TargetAction
+  - type: EntityTargetAction
+    event: !type:VampirePacifyActionEvent
 
 - type: entity
   id: ActionSubspaceSwap
+  parent: BaseAction
   name: "[color=purple]Subspace swap[/color]"
   description: "Switch places."
   categories: [ HideSpawnMenu ]
   components:
-  - type: EntityWorldTargetAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "subspace_swap" }
     itemIconStyle: BigAction
-    event: !type:VampireSubspaceSwapActionEvent
-    range: 16
     useDelay: 5
+  - type: TargetAction
+    range: 16
+  - type: EntityTargetAction
+    event: !type:VampireSubspaceSwapActionEvent
 
 #- type: entity
 #  id: ActionDeployDecoy
+#  parent: BaseAction
 #  name: "[color=purple]Deploy decoy[/color]"
 #  description: ""
 #  categories: [ HideSpawnMenu ]
 #  components:
-#  - type: InstantAction
+#  - type: Action
 #    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "decoy" }
 #    itemIconStyle: BigAction
-#    event: !type:VampireDeployDecoyActionEvent
 #    useDelay: 20
+#  - type: InstantAction
+#    event: !type:VampireDeployDecoyActionEvent
 
 - type: entity
   id: ActionRallyThralls
+  parent: BaseAction
   name: "[color=purple]Rally thralls[/color]"
   description: "Give strength to your slaves."
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "thralls_up" }
     itemIconStyle: BigAction
-    event: !type:VampireRallyThrallsActionEvent
     useDelay: 30
+  - type: InstantAction
+    event: !type:VampireRallyThrallsActionEvent
 
 - type: entity
   id: ActionBloodBond
+  parent: BaseAction
   name: "[color=purple]Blood bond[/color]"
   description: "A blood bond now binds you."
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "blood_bond" }
     itemIconStyle: BigAction
-    event: !type:VampireBloodBondActionEvent
     useDelay: 2
+  - type: InstantAction
+    event: !type:VampireBloodBondActionEvent
 
 - type: entity
   id: ActionMassHysteria
+  parent: BaseAction
   name: "[color=purple]Mass hysteria[/color]"
   description: "Draw everyone who is nearby into the confusion."
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "hysteria" }
     itemIconStyle: BigAction
-    event: !type:VampireMassHysteriaActionEvent
     useDelay: 60
+  - type: InstantAction
+    event: !type:VampireMassHysteriaActionEvent

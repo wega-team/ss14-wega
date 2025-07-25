@@ -109,21 +109,17 @@
   products:
     TrueMilkshake: 5
 
-# Alcohol
 - type: reaction
-  id: Eggnog
-  requiredMixerCategories:
-  - Shake
+  id: Glace
   reactants:
-    Cream:
-      amount: 1
-    Egg:
-      amount: 1
-    Rum:
+    IcedCoffee:
+      amount: 2
+    IceCream:
       amount: 1
   products:
-    Eggnog: 3
+    Glace: 3
 
+# Alcohol
 - type: reaction
   id: FlamingMoe
   minTemp: 374
@@ -178,20 +174,6 @@
       amount: 1
   products:
     ThreeMileIslandIcedTea: 10
-
-- type: reaction
-  id: BacchusBlessing
-  reactants:
-    Hooch:
-      amount: 1
-    Absinthe:
-      amount: 1
-    ManlyDorf:
-      amount: 1
-    SyndicateBomb:
-      amount: 1
-  products:
-    BacchusBlessing: 4
 
 - type: reaction
   id: BlackBlood
@@ -516,20 +498,6 @@
       amount: 2
   products:
     WhiteBear: 5
-
-- type: reaction
-  id: Vampiro
-  requiredMixerCategories:
-  - Shake
-  reactants:
-    Tequila:
-      amount: 2
-    JuiceTomato:
-      amount: 1
-    JuiceBerry:
-      amount: 1
-  products:
-    Vampiro: 4
 
 - type: reaction
   id: QueenMary

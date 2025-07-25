@@ -1,0 +1,22 @@
+- type: constructionGraph
+  id: PowerCellSuperPotatoCraft
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: superpotatobattery
+          steps:
+            - tag: SuperPotato
+              name: a energy potato
+              icon:
+                sprite: _Wega/Objects/Specific/Hydroponics/energy_potato.rsi
+                state: produce
+              doAfter: 1
+            - material: MetalRod
+              amount: 2
+              doAfter: 1
+            - material: Cable
+              amount: 1
+              doAfter: 1
+    - node: superpotatobattery
+      entity: PowerCellSuperPotato

@@ -1,0 +1,10 @@
+- type: entity
+  save: false
+  id: BaseOperated
+  abstract: true
+  components:
+  - type: Operated
+    raceGraph: BaseSurgery
+  - type: InternalStorage
+  - type: Pain
+    profile: BasePainProfile

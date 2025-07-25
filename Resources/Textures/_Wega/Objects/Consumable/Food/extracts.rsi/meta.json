@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Sprite taken from https://github.com/ss220-space/Paradise",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "adamantine"
+    },
+	{
+	  "name": "black"
+	},
+	{
+	  "name": "blue"
+	},
+	{
+	  "name": "bluespace"
+	},
+	{
+	  "name": "cerulean"
+	},
+	{
+	  "name": "dark_blue"
+	},
+	{
+	  "name": "dark_purple"
+	},
+	{
+	  "name": "gold"
+	},
+	{
+	  "name": "green"
+	},
+	{
+	  "name": "grey"
+	},
+	{
+	  "name": "light_pink"
+	},
+	{
+	  "name": "metal"
+	},
+	{
+	  "name": "oil"
+	},
+	{
+	  "name": "orange"
+	},
+	{
+	  "name": "pink"
+	},
+	{
+	  "name": "purple"
+	},
+	{
+	  "name": "pyrite"
+	},
+	{
+	  "name": "rainbow"
+	},
+	{
+	  "name": "red"
+	},
+	{
+	  "name": "sepia"
+	},
+	{
+	  "name": "silver"
+	},
+	{
+	  "name": "yellow"
+	}
+  ]
+}

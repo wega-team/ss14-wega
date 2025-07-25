@@ -8,6 +8,7 @@
       noRot: true
     - type: Item
       size: Normal
+      heldPrefix: rollerbed
     - type: Sprite
       sprite: Structures/Furniture/rollerbeds.rsi
       noRot: true
@@ -38,6 +39,12 @@
     - type: Damageable
     - type: Destructible
       thresholds:
+        - trigger: # Excess damage, don't spawn entities
+            !type:DamageTrigger
+            damage: 100
+          behaviors:
+          - !type:DoActsBehavior
+            acts: ["Destruction"]
         - trigger:
             !type:DamageTrigger
             damage: 50
@@ -69,6 +76,8 @@
           unfoldedLayer:
             True: {visible: false}
             False: {visible: true}
+    - type: OperatingTable # Corvax-Wega-Surgery
+      modifier: 0.8 # Corvax-Wega-Surgery
     - type: StaticPrice
       price: 120
 
@@ -88,6 +97,8 @@
   parent: RollerBed
   description: A run-down rollerbed. Used to carry patients around.
   components:
+  - type: Item
+    heldPrefix: cheap_rollerbed
   - type: Sprite
     layers:
     - state: cheap_rollerbed
@@ -116,6 +127,8 @@
   parent: RollerBed
   description: A robust looking rollerbed used for emergencies.
   components:
+  - type: Item
+    heldPrefix: emergency_rollerbed
   - type: Sprite
     layers:
     - state: emergency_rollerbed

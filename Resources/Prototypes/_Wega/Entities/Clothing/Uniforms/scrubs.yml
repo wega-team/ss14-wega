@@ -1,0 +1,23 @@
+- type: entity
+  parent: ClothingUniformBase
+  id: UniformScrubsColorBlack
+  name: black scrubs
+  description: A combination of comfort and utility intended to make removing every last organ someone has and selling them to a space robot much more official looking.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Scrubs/black.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Scrubs/black.rsi
+  - type: ClothingSterility
+
+- type: entity
+  parent: ClothingUniformBase
+  id: UniformScrubsColorCmo
+  name: cmo scrubs
+  description: A combination of comfort and utility intended to make removing every last organ someone has and selling them to a space robot much more official looking.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Scrubs/cmo.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Scrubs/cmo.rsi
+  - type: ClothingSterility

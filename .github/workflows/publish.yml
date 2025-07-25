@@ -2,21 +2,25 @@ name: Publish
 
 concurrency:
   group: publish
+  cancel-in-progress: true
 
 on:
   workflow_dispatch:
   schedule:
   - cron: '0 1 * * *'
-
 jobs:
   build:
-    runs-on: [self-hosted, linux]
+    runs-on: [self-hosted, Linux, username:runner-0, os:ubuntu-24.04]
 
     steps:
+    - name: Fail if we are attempting to run on the master branch
+      if: ${{GITHUB.REF_NAME == 'master' && github.repository == 'space-wizards/space-station-14'}}
+      run: exit 1
+
 #    - name: Install dependencies
 #      run: sudo apt-get install -y python3-paramiko python3-lxml
 
-    - uses: actions/checkout@v3.6.0
+    - uses: actions/checkout@v4.2.2
       with:
         submodules: 'recursive'
 
@@ -38,19 +42,20 @@ jobs:
         cp -R Secrets/Resources/ServerPrototypes Resources/Prototypes/CorvaxSecretsServer
         cp -R Secrets/Resources/Locale Resources/Locale/ru-RU/corvax-secrets
         cp -R Secrets/Resources/Textures Resources/Textures/CorvaxSecrets
+        cp -R Secrets/Resources/Audio Resources/Audio/CorvaxSecrets
     # Corvax-Secrets-End
 
     - name: Setup .NET Core
-      uses: actions/setup-dotnet@v4.3.0
+      uses: actions/setup-dotnet@v4.1.0
       with:
         dotnet-version: 9.0.x
       env:
-        DOTNET_INSTALL_DIR: $HOME/.dotnet
+        DOTNET_INSTALL_DIR: ${{ runner.temp }}/.dotnet
 
     - name: Set DOTNET_ROOT and PATH
       run: |
-        echo "DOTNET_ROOT=$HOME/.dotnet" >> $GITHUB_ENV
-        echo "$HOME/.dotnet" >> $GITHUB_PATH
+        echo "DOTNET_ROOT=${{ runner.temp }}/.dotnet" >> $GITHUB_ENV
+        echo "${{ runner.temp }}/.dotnet" >> $GITHUB_PATH
 
     - name: Check .NET installation
       run: dotnet --info
@@ -79,13 +84,23 @@ jobs:
         GITHUB_REPOSITORY: ${{ vars.GITHUB_REPOSITORY }}
         FORK_ID: ${{ vars.FORK_ID }}
 
+    # - name: Publish version wega sandbox
+    #   run: python3 Tools/publish_sandbox.py
+    #   env:
+    #     PUBLISH_USERNAME: ${{ secrets.PUBLISH_USERNAME }}
+    #     PUBLISH_PASSWORD: ${{ secrets.PUBLISH_PASSWORD }}
+    #     GITHUB_REPOSITORY: ${{ vars.GITHUB_REPOSITORY }}
+    #     FORK_ID: ${{ vars.FORK_ID }}
+
     #    - name: Publish changelog (Discord)
+    #      continue-on-error: true
     #      run: Tools/actions_changelogs_since_last_run.py
     #      env:
     #        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     #        DISCORD_WEBHOOK_URL: ${{ secrets.CHANGELOG_DISCORD_WEBHOOK }}
 
     #    - name: Publish changelog (RSS)
+    #      continue-on-error: true
     #      run: Tools/actions_changelog_rss.py
     #      env:
     #        CHANGELOG_RSS_KEY: ${{ secrets.CHANGELOG_RSS_KEY }}

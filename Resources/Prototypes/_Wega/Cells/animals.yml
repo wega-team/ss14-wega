@@ -1,0 +1,92 @@
+- type: cell
+  id: Murine
+  name: cell-murine-name
+  feature: cell-murine-feature
+  color: "#494546"
+  stability: 1
+
+- type: cell
+  id: Galliform
+  name: cell-galliform-name
+  feature: cell-galliform-feature
+  color: "#C2B280"
+  stability: 0.97
+
+- type: cell
+  id: Bovine
+  name: cell-bovine-name
+  feature: cell-bovine-feature
+  color: "#7F5B3E"
+  stability: 0.95
+
+- type: cell
+  id: Feliform
+  name: cell-feliform-name
+  feature: cell-feliform-feature
+  color: "#A0522D"
+  stability: 0.92
+  modifiers:
+  - OwO
+
+- type: cell
+  id: Canid
+  name: cell-canid-name
+  feature: cell-canid-feature
+  color: "#D2691E"
+
+- type: cell
+  id: Ursine
+  name: cell-ursine-name
+  feature: cell-ursine-feature
+  color: "#8B4513"
+
+- type: cell
+  id: Cyprinid
+  name: cell-cyprinid-name
+  feature: cell-cyprinid-feature
+  color: "#4682B4"
+  stability: 0.84
+
+- type: cell
+  id: CartilaginousCyprinid
+  name: cell-cartilaginous-cyprinid-name
+  feature: cell-cartilaginous-cyprinid-feature
+  color: "#5F9EA0"
+  stability: 0.8
+
+- type: cell
+  id: Ophidic
+  name: cell-ophidic-name
+  feature: cell-ophidic-feature
+  color: "#556B2F"
+
+- type: cell
+  id: Anura
+  name: cell-anura-name
+  feature: cell-anura-feature
+  color: "#ADFF2F"
+
+- type: cell
+  id: Caudata
+  name: cell-caudata-name
+  feature: cell-caudata-feature
+  color: "#32CD32"
+
+- type: cell
+  id: Atypical
+  name: cell-atypical-name
+  feature: cell-atypical-feature
+  color: "#FFD700"
+
+- type: cell
+  id: Aphid
+  name: cell-aphid-name
+  feature: cell-aphid-feature
+  color: "#7FFF00"
+
+- type: cell
+  id: Pseudoarachnoid
+  name: cell-pseudo-arachnoid-name
+  feature: cell-pseudo-arachnoid-feature
+  color: "#DDA0DD"
+  stability: 0.81

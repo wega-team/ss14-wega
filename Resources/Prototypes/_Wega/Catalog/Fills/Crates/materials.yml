@@ -1,26 +1,4 @@
 - type: entity
-  id: CrateMaterialGold
-  parent: CrateGenericSteel
-  name: gold ingot crate
-  description: 30 gold ingot, packed with care.
-  components:
-  - type: StorageFill
-    contents:
-      - id: IngotGold
-        amount: 1
-
-- type: entity
-  id: CrateMaterialSilver
-  parent: CrateGenericSteel
-  name: silver ingot crate
-  description: 30 silver ingot, packed with care.
-  components:
-  - type: StorageFill
-    contents:
-      - id: IngotSilver
-        amount: 1
-
-- type: entity
   id: CrateMaterialUranium
   parent: CrateGenericSteel
   name: uranium sheet crate

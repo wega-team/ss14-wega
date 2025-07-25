@@ -49,6 +49,11 @@ public sealed partial class BloodMagicDoAfterEvent : SimpleDoAfterEvent
 }
 
 [Serializable, NetSerializable]
+public sealed partial class TeleportSpellDoAfterEvent : SimpleDoAfterEvent
+{
+}
+
+[Serializable, NetSerializable]
 public sealed class EmpoweringRuneMenuOpenedEvent : EntityEventArgs
 {
     public NetEntity Uid { get; }

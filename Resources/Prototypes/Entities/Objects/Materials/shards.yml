@@ -69,7 +69,8 @@
   - type: Slippery
     slipSound:
       path: /Audio/Effects/glass_step.ogg
-    launchForwardsMultiplier: 0
+    slipData:
+      launchForwardsMultiplier: 0
   - type: TriggerOnStepTrigger
   - type: DamageUserOnTrigger
     damage:
@@ -96,6 +97,7 @@
         Piercing: 4.5
   - type: Tag
     tags:
+      - BasicGlassShard # Corvax-Wega-Surgery
       - GlassShard
       - Trash
   - type: Extractable
@@ -132,6 +134,7 @@
         Piercing: 5.5
   - type: Tag
     tags:
+      - BasicGlassShard # Corvax-Wega-Surgery
       - ReinforcedGlassShard
       - Trash
   - type: Extractable
@@ -168,6 +171,7 @@
         Piercing: 6.5
   - type: Tag
     tags:
+      - BasicGlassShard # Corvax-Wega-Surgery
       - PlasmaGlassShard
       - Trash
   - type: Extractable
@@ -208,6 +212,7 @@
         Radiation: 2.5
   - type: Tag
     tags:
+      - BasicGlassShard # Corvax-Wega-Surgery
       - UraniumGlassShard
       - Trash
   - type: Extractable
@@ -242,6 +247,7 @@
         Piercing: 5
   - type: Tag
     tags:
+      - BasicGlassShard # Corvax-Wega-Surgery
       - ClockworkGlassShard
       - Trash
   - type: Extractable

@@ -68,6 +68,9 @@
       - id: Saw
       - id: Hemostat
       - id: ClothingMaskSterile
+      - id: BoneSetter # Corvax-Wega-Surgery
+      - id: BoneGel # Corvax-Wega-Surgery
+      - id: FixOVein # Corvax-Wega-Surgery
 
 - type: entity
   id: CrateMedicalScrubs
@@ -80,11 +83,13 @@
       - id: UniformScrubsColorGreen
       - id: UniformScrubsColorPurple
       - id: UniformScrubsColorBlue
+      - id: UniformScrubsColorBlack # Corvax-Wega-add
       - id: ClothingHeadHatSurgcapBlue
       - id: ClothingHeadHatSurgcapPurple
       - id: ClothingHeadHatSurgcapGreen
+      - id: ClothingHeadHatSurgcapBlack # Corvax-Wega-add
       - id: ClothingMaskSterile
-        amount: 3
+        amount: 4 # Corvax-Wega-Edit
 
 - type: entity
   id: CrateEmergencyBurnKit

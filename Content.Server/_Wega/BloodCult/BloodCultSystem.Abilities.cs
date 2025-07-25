@@ -6,9 +6,7 @@ using Content.Server.Body.Systems;
 using Content.Server.Chat.Systems;
 using Content.Server.Emp;
 using Content.Server.Flash;
-using Content.Server.Flash.Components;
 using Content.Server.Hallucinations;
-using Content.Shared.Actions;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Blood.Cult;
 using Content.Shared.Blood.Cult.Components;
@@ -44,6 +42,8 @@ using Robust.Shared.Physics.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Player;
 using Robust.Shared.Timing;
+using Content.Shared.Flash.Components;
+using Content.Shared.Body.Components;
 
 namespace Content.Server.Blood.Cult;
 
@@ -62,7 +62,6 @@ public sealed partial class BloodCultSystem
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly InventorySystem _inventorySystem = default!;
     [Dependency] private readonly QuickDialogSystem _quickDialog = default!;
-    [Dependency] private readonly SharedActionsSystem _action = default!;
     [Dependency] private readonly SharedCuffableSystem _cuff = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
@@ -87,6 +86,7 @@ public sealed partial class BloodCultSystem
 
         SubscribeLocalEvent<BloodCultistComponent, BloodCultStunActionEvent>(OnStun);
         SubscribeLocalEvent<BloodCultistComponent, BloodCultTeleportActionEvent>(OnTeleport);
+        SubscribeLocalEvent<BloodCultistComponent, TeleportSpellDoAfterEvent>(OnTeleportDoAfter);
         SubscribeLocalEvent<BloodCultistComponent, BloodCultElectromagneticPulseActionEvent>(OnElectromagneticPulse);
         SubscribeLocalEvent<BloodCultistComponent, BloodCultShadowShacklesActionEvent>(OnShadowShackles);
         SubscribeLocalEvent<BloodCultistComponent, BloodCultTwistedConstructionActionEvent>(OnTwistedConstruction);
@@ -212,7 +212,7 @@ public sealed partial class BloodCultSystem
 
     private void OnRecallDagger(EntityUid cultist, BloodCultistComponent component, RecallBloodDaggerEvent args)
     {
-        if (component.RecallDaggerActionEntity is not { } dagger || !TryComp<BloodDaggerComponent>(dagger, out _))
+        if (component.RecallDaggerActionEntity is not { } dagger || !HasComp<BloodDaggerComponent>(dagger))
         {
             _popup.PopupEntity(Loc.GetString("blood-cult-dagger-not-found"), cultist, cultist, PopupType.SmallCaution);
             args.Handled = true;
@@ -230,7 +230,8 @@ public sealed partial class BloodCultSystem
     {
         var spellGear = new ProtoId<StartingGearPrototype>("BloodCultSpellStunGear");
 
-        RaiseLocalEvent(cultist, new DropHandItemsEvent());
+        var dropEvent = new DropHandItemsEvent();
+        RaiseLocalEvent(cultist, ref dropEvent);
         List<ProtoId<StartingGearPrototype>> gear = new() { spellGear };
         _loadout.Equip(cultist, gear, null);
 
@@ -242,7 +243,8 @@ public sealed partial class BloodCultSystem
     {
         var spellGear = new ProtoId<StartingGearPrototype>("BloodCultSpellTeleportGear");
 
-        RaiseLocalEvent(cultist, new DropHandItemsEvent());
+        var dropEvent = new DropHandItemsEvent();
+        RaiseLocalEvent(cultist, ref dropEvent);
         List<ProtoId<StartingGearPrototype>> gear = new() { spellGear };
         _loadout.Equip(cultist, gear, null);
 
@@ -257,7 +259,7 @@ public sealed partial class BloodCultSystem
         var entitiesInRange = _entityLookup.GetEntitiesInRange(coords, 5f);
         foreach (var uid in entitiesInRange)
         {
-            if (TryComp<BloodCultistComponent>(uid, out _))
+            if (HasComp<BloodCultistComponent>(uid))
                 exclusions.Add(uid);
         }
         _emp.EmpPulseExclusions(coords, 5f, 100000f, 60f, exclusions);
@@ -270,7 +272,8 @@ public sealed partial class BloodCultSystem
     {
         var spellGear = new ProtoId<StartingGearPrototype>("BloodCultSpellShadowShacklesGear");
 
-        RaiseLocalEvent(cultist, new DropHandItemsEvent());
+        var dropEvent = new DropHandItemsEvent();
+        RaiseLocalEvent(cultist, ref dropEvent);
         List<ProtoId<StartingGearPrototype>> gear = new() { spellGear };
         _loadout.Equip(cultist, gear, null);
 
@@ -282,7 +285,8 @@ public sealed partial class BloodCultSystem
     {
         var spellGear = new ProtoId<StartingGearPrototype>("BloodCultSpellTwistedConstructionGear");
 
-        RaiseLocalEvent(cultist, new DropHandItemsEvent());
+        var dropEvent = new DropHandItemsEvent();
+        RaiseLocalEvent(cultist, ref dropEvent);
         List<ProtoId<StartingGearPrototype>> gear = new() { spellGear };
         _loadout.Equip(cultist, gear, null);
 
@@ -294,7 +298,8 @@ public sealed partial class BloodCultSystem
     {
         var spellGear = new ProtoId<StartingGearPrototype>("BloodCultSpellSummonEquipmentGear");
 
-        RaiseLocalEvent(cultist, new DropHandItemsEvent());
+        var dropEvent = new DropHandItemsEvent();
+        RaiseLocalEvent(cultist, ref dropEvent);
         List<ProtoId<StartingGearPrototype>> gear = new() { spellGear };
         _loadout.Equip(cultist, gear, null);
 
@@ -330,7 +335,7 @@ public sealed partial class BloodCultSystem
 
     private void OnHallucinations(EntityUid cultist, BloodCultistComponent component, BloodCultHallucinationsActionEvent args)
     {
-        if (!TryComp<BloodCultistComponent>(args.Target, out _))
+        if (!HasComp<BloodCultistComponent>(args.Target))
             _hallucinations.StartHallucinations(args.Target, "Hallucinations", TimeSpan.FromSeconds(30f), true, "MindBreaker");
 
         args.Handled = true;
@@ -417,7 +422,8 @@ public sealed partial class BloodCultSystem
     {
         var spellGear = new ProtoId<StartingGearPrototype>("BloodCultSpellBloodRitesGear");
 
-        RaiseLocalEvent(cultist, new DropHandItemsEvent());
+        var dropEvent = new DropHandItemsEvent();
+        RaiseLocalEvent(cultist, ref dropEvent);
         List<ProtoId<StartingGearPrototype>> gear = new() { spellGear };
         _loadout.Equip(cultist, gear, null);
 
@@ -439,7 +445,7 @@ public sealed partial class BloodCultSystem
     private void BloodRitesSelect(BloodRitesMenuClosedEvent args, EntitySessionEventArgs eventArgs)
     {
         var uid = _entityManager.GetEntity(args.Uid);
-        if (!TryComp<BloodCultistComponent>(uid, out _))
+        if (!HasComp<BloodCultistComponent>(uid))
             return;
 
         _action.AddAction(uid, args.SelectedRites);
@@ -472,7 +478,7 @@ public sealed partial class BloodCultSystem
                     EnsureComp<BloodOrbComponent>(bloodOrb, out var orb);
                     orb.Blood = inputValue;
 
-                    _action.RemoveAction(cultist, args.Action);
+                    _action.RemoveAction(cultist, args.Action!);
                     _popup.PopupEntity(Loc.GetString("blood-orb-success", ("amount", inputValue)), cultist, cultist, PopupType.Medium);
                 }
             });
@@ -502,7 +508,7 @@ public sealed partial class BloodCultSystem
             veilShifterComponent.ActivationsCount = Math.Min(totalActivations + 4, 4);
         }
 
-        _action.RemoveAction(cultist, args.Action);
+        _action.RemoveAction(cultist, args.Action!);
     }
 
     private void OnBloodSpear(EntityUid cultist, BloodCultistComponent component, BloodCultBloodSpearActionEvent args)
@@ -532,7 +538,7 @@ public sealed partial class BloodCultSystem
 
         totalBlood -= 150;
         component.BloodCount = totalBlood;
-        _action.RemoveAction(cultist, args.Action);
+        _action.RemoveAction(cultist, args.Action!);
         args.Handled = true;
     }
 
@@ -573,13 +579,14 @@ public sealed partial class BloodCultSystem
         }
 
         var boltBarrageGear = new ProtoId<StartingGearPrototype>("BloodCultSpellBloodBarrageGear");
-        RaiseLocalEvent(cultist, new DropHandItemsEvent());
+        var dropEvent = new DropHandItemsEvent();
+        RaiseLocalEvent(cultist, ref dropEvent);
         List<ProtoId<StartingGearPrototype>> gear = new() { boltBarrageGear };
         _loadout.Equip(cultist, gear, null);
 
         totalBlood -= 300;
         component.BloodCount = totalBlood;
-        _action.RemoveAction(cultist, args.Action);
+        _action.RemoveAction(cultist, args.Action!);
         args.Handled = true;
     }
     #endregion Blood Rites
@@ -596,7 +603,7 @@ public sealed partial class BloodCultSystem
         switch (spellComp.Prototype.FirstOrDefault())
         {
             case "stun":
-                if (!TryComp<BloodCultistComponent>(target, out _))
+                if (!HasComp<BloodCultistComponent>(target))
                 {
                     ExtractBlood(user, -10, 6);
                     if (!HasComp<MutedComponent>(target))
@@ -607,31 +614,22 @@ public sealed partial class BloodCultSystem
 
                     _stun.TryParalyze(target, TimeSpan.FromSeconds(4f), true);
                     if (!TryComp<FlashImmunityComponent>(target, out var flash))
-                        _flash.Flash(target, user, entity, 2f, 1f);
+                        _flash.Flash(target, user, entity, TimeSpan.FromSeconds(2f), 1f);
                     _entityManager.DeleteEntity(entity);
                 }
                 break;
             case "teleport":
                 ExtractBlood(user, -7, 5);
-                var runes = EntityQuery<BloodRuneComponent>(true)
-                    .Where(runeEntity =>
-                        TryComp<BloodRuneComponent>(runeEntity.Owner, out var runeComp) && runeComp.Prototype == "teleport")
-                    .ToList();
-
-                if (runes.Count > 0)
+                _doAfterSystem.TryStartDoAfter(new DoAfterArgs(EntityManager, user, TimeSpan.FromSeconds(3f), new TeleportSpellDoAfterEvent(), user, target, entity)
                 {
-                    var randomRune = runes[new Random().Next(runes.Count)];
-                    var runeTransform = _entityManager.GetComponent<TransformComponent>(randomRune.Owner);
-                    var targetCoords = Transform(target).Coordinates;
-                    _entityManager.SpawnEntity("BloodCultOutEffect", targetCoords);
-                    _transform.SetCoordinates(target, runeTransform.Coordinates);
-                    _entityManager.SpawnEntity("BloodCultInEffect", runeTransform.Coordinates);
-                    _entityManager.DeleteEntity(randomRune.Owner);
-                }
-                _entityManager.DeleteEntity(entity);
+                    BreakOnMove = true,
+                    BreakOnDamage = true,
+                    MovementThreshold = 0.01f,
+                    NeedHand = true
+                });
                 break;
             case "shadowshackles":
-                if (!TryComp<BloodCultistComponent>(target, out _))
+                if (!HasComp<BloodCultistComponent>(target))
                 {
                     if (TryComp<MobStateComponent>(target, out var mobstate) && mobstate.CurrentState != MobState.Alive && mobstate.CurrentState != MobState.Invalid
                         || HasComp<SleepingComponent>(target) || TryComp<StaminaComponent>(target, out var stamina) && stamina.StaminaDamage >= stamina.CritThreshold * 0.9f)
@@ -716,7 +714,8 @@ public sealed partial class BloodCultSystem
                 break;
             case "summonequipment":
                 _entityManager.DeleteEntity(entity);
-                RaiseLocalEvent(target, new DropHandItemsEvent());
+                var dropEvent = new DropHandItemsEvent();
+                RaiseLocalEvent(target, ref dropEvent);
                 ProtoId<StartingGearPrototype> selectedGear = GetCurrentGod() switch
                 {
                     "Narsie" => new ProtoId<StartingGearPrototype>("BloodCultWeaponBloodGear"),
@@ -774,7 +773,7 @@ public sealed partial class BloodCultSystem
                 if (!TryComp<UseDelayComponent>(entity, out var useDelay) || _useDelay.IsDelayed((entity, useDelay)))
                     return;
 
-                if (TryComp<BloodCultistComponent>(target, out _))
+                if (HasComp<BloodCultistComponent>(target))
                 {
                     if (!TryComp<DamageableComponent>(target, out var damage))
                         return;
@@ -797,14 +796,14 @@ public sealed partial class BloodCultSystem
                     cultist.BloodCount = totalBlood;
                     args.Handled = true;
                 }
-                else if (TryComp<HumanoidAppearanceComponent>(target, out _))
+                else if (HasComp<HumanoidAppearanceComponent>(target))
                 {
                     if (!TryComp<BloodstreamComponent>(target, out var blood) || HasComp<BloodCultistComponent>(target))
                         return;
 
-                    if (_blood.GetBloodLevelPercentage(target, blood) > 0.6)
+                    if (_blood.GetBloodLevelPercentage(target) > 0.6)
                     {
-                        _blood.TryModifyBloodLevel(target, -50, blood);
+                        _blood.TryModifyBloodLevel(target, -50);
                         cultist.BloodCount += 50;
                     }
                     else
@@ -869,12 +868,35 @@ public sealed partial class BloodCultSystem
 
     private void ExtractBlood(EntityUid cultist, int extractBlood, FixedPoint2 bloodDamage)
     {
-        if (TryComp<BloodstreamComponent>(cultist, out var blood) && _blood.GetBloodLevelPercentage(cultist, blood) > 0)
-            _blood.TryModifyBloodLevel(cultist, extractBlood, blood);
+        if (TryComp<BloodstreamComponent>(cultist, out var blood) && _blood.GetBloodLevelPercentage(cultist) > 0)
+            _blood.TryModifyBloodLevel(cultist, extractBlood);
         else
         {
             var damage = new DamageSpecifier { DamageDict = { { "Slash", bloodDamage } } };
             _damage.TryChangeDamage(cultist, damage, true);
+        }
+    }
+
+    private void OnTeleportDoAfter(EntityUid cultist, BloodCultistComponent component, TeleportSpellDoAfterEvent args)
+    {
+        if (args.Cancelled || args.Target == null || args.Used == null)
+            return;
+
+        _entityManager.DeleteEntity(args.Used);
+        var runes = EntityQuery<BloodRuneComponent>(true)
+            .Where(runeEntity =>
+                TryComp<BloodRuneComponent>(runeEntity.Owner, out var runeComp) && runeComp.Prototype == "teleport")
+            .ToList();
+
+        if (runes.Count > 0)
+        {
+            var randomRune = runes[new Random().Next(runes.Count)];
+            var runeTransform = _entityManager.GetComponent<TransformComponent>(randomRune.Owner);
+            var targetCoords = Transform(args.Target.Value).Coordinates;
+            _entityManager.SpawnEntity("BloodCultOutEffect", targetCoords);
+            _transform.SetCoordinates(args.Target.Value, runeTransform.Coordinates);
+            _entityManager.SpawnEntity("BloodCultInEffect", runeTransform.Coordinates);
+            _entityManager.DeleteEntity(randomRune.Owner);
         }
     }
 

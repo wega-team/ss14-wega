@@ -1,12 +1,15 @@
 using Content.Server.Atmos.Components;
 using Content.Shared.Atmos;
 using Content.Shared.Atmos.Components;
+using Content.Shared.Clothing; // Corvax-Wega-AdvMagboots
 using Content.Shared.Mobs.Components;
 using Content.Shared.Physics;
+using Content.Shared.Popups; // Corvax-Wega-AdvMagboots
 using Robust.Shared.Audio;
 using Robust.Shared.Map;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
 
@@ -14,12 +17,16 @@ namespace Content.Server.Atmos.EntitySystems
 {
     public sealed partial class AtmosphereSystem
     {
+        [Dependency] private readonly SharedMagbootsSystem _magboots = default!; // Corvax-Wega-AdvMagboots
+        [Dependency] private readonly SharedPopupSystem _popup = default!; // Corvax-Wega-AdvMagboots
+        private static readonly ProtoId<SoundCollectionPrototype> DefaultSpaceWindSounds = "SpaceWind";
+
         private const int SpaceWindSoundCooldownCycles = 75;
 
         private int _spaceWindSoundCooldown = 0;
 
         [ViewVariables(VVAccess.ReadWrite)]
-        public string? SpaceWindSound { get; private set; } = "/Audio/Effects/space_wind.ogg";
+        public SoundSpecifier? SpaceWindSound { get; private set; } = new SoundCollectionSpecifier(DefaultSpaceWindSounds, AudioParams.Default.WithVariation(0.125f));
 
         private readonly HashSet<Entity<MovedByPressureComponent>> _activePressures = new(8);
 
@@ -56,11 +63,15 @@ namespace Content.Server.Atmos.EntitySystems
                     _physics.SetBodyStatus(uid, body, BodyStatus.OnGround);
                 }
 
-                if (TryComp<FixturesComponent>(uid, out var fixtures))
+                if (TryComp<FixturesComponent>(uid, out var fixtures)
+                    && TryComp<MovedByPressureComponent>(uid, out var component))
                 {
                     foreach (var (id, fixture) in fixtures.Fixtures)
                     {
-                        _physics.AddCollisionMask(uid, id, fixture, (int) CollisionGroup.TableLayer, manager: fixtures);
+                        if (component.TableLayerRemoved.Contains(id))
+                        {
+                            _physics.AddCollisionMask(uid, id, fixture, (int)CollisionGroup.TableLayer, manager: fixtures);
+                        }
                     }
                 }
             }
@@ -80,9 +91,13 @@ namespace Content.Server.Atmos.EntitySystems
 
             foreach (var (id, fixture) in fixtures.Fixtures)
             {
-                _physics.RemoveCollisionMask(uid, id, fixture, (int) CollisionGroup.TableLayer, manager: fixtures);
+                // Mark fixtures that have TableLayer removed
+                if ((fixture.CollisionMask & (int)CollisionGroup.TableLayer) != 0)
+                {
+                    component.TableLayerRemoved.Add(id);
+                    _physics.RemoveCollisionMask(uid, id, fixture, (int)CollisionGroup.TableLayer, manager: fixtures);
+                }
             }
-
             // TODO: Make them dynamic type? Ehh but they still want movement so uhh make it non-predicted like weightless?
             // idk it's hard.
 
@@ -97,10 +112,10 @@ namespace Content.Server.Atmos.EntitySystems
             // Don't play the space wind sound on tiles that are on fire...
             if (tile.PressureDifference > 15 && !tile.Hotspot.Valid)
             {
-                if (_spaceWindSoundCooldown == 0 && !string.IsNullOrEmpty(SpaceWindSound))
+                if (_spaceWindSoundCooldown == 0 && SpaceWindSound != null)
                 {
                     var coordinates = _mapSystem.ToCenterCoordinates(tile.GridIndex, tile.GridIndices);
-                    _audio.PlayPvs(SpaceWindSound, coordinates, AudioParams.Default.WithVariation(0.125f).WithVolume(MathHelper.Clamp(tile.PressureDifference / 10, 10, 100)));
+                    _audio.PlayPvs(SpaceWindSound, coordinates, SpaceWindSound.Params.WithVolume(MathHelper.Clamp(tile.PressureDifference / 10, 10, 100)));
                 }
             }
 
@@ -208,6 +223,19 @@ namespace Content.Server.Atmos.EntitySystems
             if (component.PressureResistance > 0)
                 moveProb = MathF.Abs((pressureDifference / component.PressureResistance * MovedByPressureComponent.ProbabilityBasePercent) -
                                      MovedByPressureComponent.ProbabilityOffset);
+
+            // Corvax-Wega-AdvMagboots-start
+            if (_magboots.IsWearingMagboots(uid))
+            {
+                if (!_magboots.IsMagbootsActive(uid) &&
+                    maxForce >= component.MoveResist * MovedByPressureComponent.MoveForcePushRatio)
+                {
+                    _magboots.ToggleMagboots(uid, user: uid);
+                    _popup.PopupEntity(Loc.GetString("magboots-auto-engaged-wind"), uid, uid);
+                    return;
+                }
+            }
+            // Corvax-Wega-AdvMagboots-end
 
             // Can we yeet the thing (due to probability, strength, etc.)
             if (moveProb > MovedByPressureComponent.ProbabilityOffset && _random.Prob(MathF.Min(moveProb / 100f, 1f))

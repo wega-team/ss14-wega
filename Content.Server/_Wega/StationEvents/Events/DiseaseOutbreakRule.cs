@@ -1,11 +1,11 @@
 using Content.Server.Disease;
-using Content.Server.Disease.Components;
 using Content.Shared.GameTicking.Components;
 using Content.Server.StationEvents.Components;
 using Content.Shared.Disease;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Robust.Shared.Random;
+using Content.Shared.Disease.Components;
 
 namespace Content.Server.StationEvents.Events;
 /// <summary>

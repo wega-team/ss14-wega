@@ -3,7 +3,7 @@
   name: base towel
   abstract: true
   description: If you want to survive out here, you gotta know where your towel is.
-  parent: [ UnsensoredClothingUniformBase, ClothingHeadBase, ClothingBeltBase ]
+  parent: [ UnsensoredClothingUniformBase, ClothingHeadBase, ClothingBeltBase, ClothingTowelDamageableBase ] # Corvax-Wega-Edit
   components:
   - type: Sprite
     sprite: Clothing/Multiple/towel.rsi
@@ -17,6 +17,9 @@
     equipSound: 
     unequipSound: 
   - type: Spillable
+    solution: absorbed
+    spillWhenThrown: false
+  - type: DrainableSolution
     solution: absorbed
   - type: Absorbent
     pickupAmount: 15

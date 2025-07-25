@@ -1,0 +1,4 @@
+- type: sinkPort
+  id: SurgeryTableReceiver
+  name: signal-port-name-surgery-table-receiver
+  description: signal-port-description-surgery-table-receiver

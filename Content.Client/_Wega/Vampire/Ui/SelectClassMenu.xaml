@@ -12,27 +12,27 @@
     <!-- Main Radial Menu Container -->
     <ui:RadialContainer Name="Main" VerticalExpand="True" HorizontalExpand="True" InitialRadius="64" ReserveSpaceForHiddenChildren="False">
         <!-- Button 1: Hemomancer -->
-        <ui:RadialMenuTextureButton Name="HemomancerButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-class-hemomancer'}" TargetLayer="Hemomancer">
+        <ui:RadialMenuTextureButton Name="HemomancerButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-class-hemomancer'}" TargetLayerControlName="Hemomancer">
             <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/claws.png"/>
         </ui:RadialMenuTextureButton>
 
         <!-- Button 2: Umbrae -->
-        <ui:RadialMenuTextureButton Name="UmbraeButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-class-umbrae'}" TargetLayer="Umbrae">
+        <ui:RadialMenuTextureButton Name="UmbraeButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-class-umbrae'}" TargetLayerControlName="Umbrae">
             <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/cloak.png"/>
         </ui:RadialMenuTextureButton>
 
         <!-- Button 3: Gargantua -->
-        <ui:RadialMenuTextureButton Name="GargantuaButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-class-gargantua'}" TargetLayer="Gargantua">
+        <ui:RadialMenuTextureButton Name="GargantuaButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-class-gargantua'}" TargetLayerControlName="Gargantua">
             <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/swell.png"/>
         </ui:RadialMenuTextureButton>
 
         <!-- Button 4: Dantalion -->
-        <ui:RadialMenuTextureButton Name="DantalionButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-class-dantalion'}" TargetLayer="Dantalion">
+        <ui:RadialMenuTextureButton Name="DantalionButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-class-dantalion'}" TargetLayerControlName="Dantalion">
             <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/enthrall.png"/>
         </ui:RadialMenuTextureButton>
 
         <!-- Button 5: Bestia -->
-        <!-- <ui:RadialMenuTextureButton Name="BestiaButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-class-bestia'}" TargetLayer="Bestia">
+        <!-- <ui:RadialMenuTextureButton Name="BestiaButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-class-bestia'}" TargetLayerControlName="Bestia">
             <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/rush.png"/>
         </ui:RadialMenuTextureButton> -->
 

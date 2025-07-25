@@ -6,6 +6,7 @@ using Content.Shared.Power;
 using Content.Server.Station.Systems;
 using Content.Shared.Paper;
 using Content.Shared.Disease;
+using Content.Shared.Disease.Components;
 using Content.Shared.DoAfter;
 using Content.Shared.Examine;
 using Content.Shared.Hands.Components;
@@ -18,6 +19,7 @@ using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
+using Content.Shared.Nutrition.Components;
 
 namespace Content.Server.Disease
 {

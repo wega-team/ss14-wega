@@ -19,7 +19,7 @@
 
 # Felinid
 - type: emote
-  id: Meows
+  id: FilinidMeows
   name: chat-emote-name-meows
   category: Vocal
   available: false
@@ -38,28 +38,6 @@
     - мяукает
     - замяукал
     - мяу
-
-- type: emote
-  id: Purring
-  name: chat-emote-name-purring
-  category: Vocal
-  available: false
-  icon: Clothing/Head/Hats/catears.rsi/icon.png
-  whitelist:
-    components:
-    - Vocal
-  blacklist:
-    components:
-    - BorgChassis
-  chatMessages: ["chat-emote-msg-purring"]
-  chatTriggers:
-    - purring
-    - purred
-    - мурчит
-    - мурлыкает
-    - замурлыкал
-    - замурлыкала
-    - мур
 
 - type: emote
   id: FilinidHisses

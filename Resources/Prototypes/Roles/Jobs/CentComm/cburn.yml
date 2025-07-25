@@ -12,6 +12,9 @@
   - AllAccess
   access:
   - CentralCommand
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, DeathRattleImplantCentcomm ]
 
 - type: startingGear
   id: CBURNGear
@@ -23,15 +26,23 @@
     ears: ClothingHeadsetAltCentCom
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitCBURN
-    shoes: ClothingShoesBootsCombatFilled
+    shoes: ClothingShoesBootsMagCombat # Corvax-Wega-MagCombat
     id: CBURNPDA
     pocket1: RadioHandheld
     pocket2: WeaponLaserGun
     belt: ClothingBeltBandolier
   storage:
     back:
-    - WeaponShotgunDoubleBarreled
+    - WeaponShotgunKammerer # Corvax-Wega-ERT
     - BoxShotgunIncendiary
     - GrenadeFlashBang
     - PillAmbuzolPlus
     - PillAmbuzol
+
+- type: chameleonOutfit
+  id: CBURNChameleonOutfit
+  job: CBURN
+  hasMindShield: true
+  equipment:
+    head: ClothingHeadHelmetCBURN
+    neck: ClothingNeckScarfStripedBrown

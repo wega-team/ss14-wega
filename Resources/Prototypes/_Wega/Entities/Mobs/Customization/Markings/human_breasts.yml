@@ -2,7 +2,7 @@
   id: HumanBreastSmall
   bodyPart: Chest
   markingCategory: Chest
-  speciesRestriction: [Human, Dwarf]
+  speciesRestriction: [Human, Dwarf, Felinid]
   sexRestriction: [Female]
   followSkinColor: true
   forcedColoring: true
@@ -18,7 +18,7 @@
   id: HumanBreastDefault
   bodyPart: Chest
   markingCategory: Chest
-  speciesRestriction: [Human, Dwarf]
+  speciesRestriction: [Human, Dwarf, Felinid]
   sexRestriction: [Female]
   followSkinColor: true
   forcedColoring: true
@@ -34,7 +34,7 @@
   id: HumanBreastMedium
   bodyPart: Chest
   markingCategory: Chest
-  speciesRestriction: [Human, Dwarf]
+  speciesRestriction: [Human, Dwarf, Felinid]
   sexRestriction: [Female]
   followSkinColor: true
   forcedColoring: true
@@ -48,9 +48,9 @@
 
 - type: marking
   id: HumanBreastBig
-  bodyPart: Chest
+  bodyPart: Special #Не "Chest" чтобы спрайт отобразить по верх рук
   markingCategory: Chest
-  speciesRestriction: [Human, Dwarf]
+  speciesRestriction: [Human, Dwarf, Felinid]
   sexRestriction: [Female]
   followSkinColor: true
   forcedColoring: true
@@ -61,3 +61,19 @@
   sprites:
   - sprite: _Wega/Mobs/Customization/human_breasts.rsi
     state: big
+
+- type: marking
+  id: HumanBreastSuperBig
+  bodyPart: Special #Не "Chest" чтобы спрайт отобразить по верх рук
+  markingCategory: Chest
+  speciesRestriction: [Human, Dwarf, Felinid]
+  sexRestriction: [Female]
+  followSkinColor: true
+  forcedColoring: true
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+  sprites:
+  - sprite: _Wega/Mobs/Customization/human_breasts.rsi
+    state: superbig

@@ -1,0 +1,60 @@
+- type: surgeryTransition
+  id: TestTransition
+  target: TestNode2
+  label: Test
+  stepGroups:
+    - steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Empty
+          sound:
+            collection: Scalpel
+          time: 2
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Empty
+          sound:
+            collection: Scalpel
+          time: 2
+
+- type: surgeryTransition
+  id: TestTransition2
+  target: TestNode
+  label: Test
+  stepGroups:
+    - steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          failureEffect: [ Empty ]
+          action: Empty
+          sound:
+            collection: Scalpel
+          time: 2
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          failureEffect: [ Empty ]
+          action: Empty
+          sound:
+            collection: Scalpel
+          time: 2
+
+- type: surgeryTransition
+  id: TestTransitionEnd
+  target: Default
+  label: TestEnd
+  stepGroups:
+    - steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          failureEffect: [ Empty ]
+          action: Empty
+          sound:
+            collection: Scalpel
+          time: 2
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          failureEffect: [ Empty ]
+          action: Empty
+          sound:
+            collection: Scalpel
+          time: 2

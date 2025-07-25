@@ -1,0 +1,12 @@
+- type: entity
+  id: CrateEngineeringTEG
+  parent: CrateEngineeringSecure
+  name: TEG crate
+  description: full thermo-electric generator.
+  components:
+  - type: StorageFill
+    contents:
+    - id: TegCirculatorFlatpack
+      amount: 2
+    - id: TegCenterFlatpack
+      amount: 1

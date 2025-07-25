@@ -1,3 +1,15 @@
+# Head
+- type: loadout
+  id: CmoSurgeryCap
+  equipment:
+    head: ClothingHeadHatSurgcapCmo
+
+# Jumpsuit
+- type: loadout
+  id: ChiefMedicalCmoScrubs
+  equipment:
+    jumpsuit: UniformScrubsColorCmo
+
 #Top
 - type: loadout
   id: ClothingUnderTopBraCmo

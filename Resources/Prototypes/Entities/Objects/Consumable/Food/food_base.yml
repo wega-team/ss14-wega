@@ -10,6 +10,7 @@
     flavors:
       - food
   - type: Food
+  - type: SlimeFood # Corvax-Wega-Xenobiology
   - type: Sprite
   - type: StaticPrice
     price: 0

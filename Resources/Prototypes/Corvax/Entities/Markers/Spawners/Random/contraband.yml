@@ -7,8 +7,8 @@
     - type: Sprite
       layers:
         - state: red
-        - sprite: Objects/Fun/toys.rsi
-          state: synb
+        - sprite: Objects/Fun/Balloons/syndicate.rsi
+          state: icon
     - type: RandomSpawner
       rarePrototypes:
         # Usefull non-contra loot
@@ -17,7 +17,7 @@
         - ClothingHeadHelmetCult
         - ClothingOuterArmorCult
         - DehydratedSpaceCarp
-        - ClothingOuterHardsuitSyndicate
+        - ClothingOuterEVASuitSyndicate
         - ClothingHeadHelmetSyndicate
         - ClothingHeadHelmetSwatSyndicate
         - ToolboxSyndicateFilled
@@ -71,8 +71,8 @@
     - type: Sprite
       layers:
         - state: red
-        - sprite: Objects/Fun/toys.rsi
-          state: synb
+        - sprite: Objects/Fun/Balloons/syndicate.rsi
+          state: icon
     - type: RandomSpawner
       rarePrototypes:
         - RevolverCapGunFake
@@ -85,7 +85,7 @@
         - HypopenBox
         - GatfruitSeeds
         - EnergyDagger
-        - SupermatterGrenade
+        - SingularityGrenade
         - WhiteholeGrenade
         - HotPotato
         - WeaponSniperMosin
@@ -122,8 +122,8 @@
     - type: Sprite
       layers:
         - state: red
-        - sprite: Objects/Fun/toys.rsi
-          state: synb
+        - sprite: Objects/Fun/Balloons/syndicate.rsi
+          state: icon
     - type: RandomSpawner
       rarePrototypes:
         - ClothingBackpackChameleonFill
@@ -142,7 +142,7 @@
         - WeaponRevolverPythonAP
         - ThrowingKnivesKit
         - ExGrenade
-        - NocturineChemistryBottle
+        - ChemistryBottleNocturine
         - ChameleonProjector
       rareChance: 0.2
       prototypes:

@@ -19,9 +19,11 @@
     UniformScrubsColorGreen: 4
     UniformScrubsColorBlue: 4
     UniformScrubsColorPurple: 4
+    UniformScrubsColorBlack: 4 # Corvax-Wega-add
     ClothingHeadHatSurgcapGreen: 4 
     ClothingHeadHatSurgcapBlue: 4
     ClothingHeadHatSurgcapPurple: 4
+    ClothingHeadHatSurgcapBlack: 4 # Corvax-Wega-add
     ClothingShoesBootsWinterMed: 2
   contrabandInventory:
     ClothingUniformJumpskirtOfLife: 1

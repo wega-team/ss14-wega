@@ -1,0 +1,15 @@
+- type: constructionGraph
+  id: makegarrotte
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: garrottecrafted
+          steps:
+            - material: Cable
+              amount: 10
+            - material: WoodPlank
+              amount: 2
+              doAfter: 5
+    - node: garrottecrafted
+      entity: GarrotteHomemade  

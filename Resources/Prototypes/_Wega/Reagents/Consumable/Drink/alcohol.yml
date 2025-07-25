@@ -127,24 +127,6 @@
 
 # Drinks
 - type: reagent
-  id: Eggnog
-  name: reagent-name-eggnog
-  parent: BaseAlcohol
-  desc: reagent-desc-eggnog
-  physicalDesc: reagent-physical-desc-creamy
-  flavor: eggnog
-  color: "#f3e5ab"
-  metamorphicChangeColor: true
-  metabolisms:
-    Drink:
-      effects:
-      - !type:SatiateThirst
-        factor: 2
-      - !type:AdjustReagent
-        reagent: Ethanol
-        amount: 0.05
-
-- type: reagent
   id: FlamingMoe
   name: reagent-name-flaming-moe
   parent: BaseAlcohol
@@ -270,28 +252,6 @@
       - !type:AdjustReagent
         reagent: Ethanol
         amount: 0.1
-
-- type: reagent
-  id: BacchusBlessing
-  name: reagent-name-bacchus-blessing
-  parent: BaseAlcohol
-  desc: reagent-desc-bacchus-blessing
-  physicalDesc: reagent-physical-desc-overpowering
-  flavor: bacchus
-  color: "#f6e9a6"
-  recognizable: true
-  metamorphicSprite:
-    sprite: _Wega/Objects/Consumable/Drinks/bacchus.rsi
-    state: icon
-  metamorphicChangeColor: false
-  metabolisms:
-    Drink:
-      effects:
-      - !type:SatiateThirst
-        factor: 2
-      - !type:AdjustReagent
-        reagent: Ethanol
-        amount: 1.0
 
 - type: reagent
   id: BlackBlood
@@ -797,27 +757,6 @@
       - !type:AdjustReagent
         reagent: Ethanol
         amount: 0.25
-
-- type: reagent
-  id: Vampiro
-  name: reagent-name-vampiro
-  parent: BaseAlcohol
-  desc: reagent-desc-vampiro
-  physicalDesc: reagent-physical-desc-spicy
-  flavor: vampiro
-  color: "#a52a2a"
-  metamorphicSprite:
-    sprite: _Wega/Objects/Consumable/Drinks/vampiroglass.rsi
-    state: icon
-  metamorphicChangeColor: false
-  metabolisms:
-    Drink:
-      effects:
-      - !type:SatiateThirst
-        factor: 2
-      - !type:AdjustReagent
-        reagent: Ethanol
-        amount: 0.225
 
 - type: reagent
   id: QueenMary

@@ -16,6 +16,23 @@
             Cellular: 0.5
 
 - type: reagent
+  id: Mutadon
+  name: reagent-name-mutadon
+  group: Medicine
+  desc: reagent-desc-mutadon
+  physicalDesc: reagent-physical-desc-opaque
+  flavor: medicine
+  color: "#64a0aa"
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:ChemCureDnaDisease
+      - !type:HealthChange
+        damage:
+          types:
+            Cellular: 0.5
+
+- type: reagent
   id: Unholywater
   name: reagent-name-unholywater
   group: Medicine
@@ -51,3 +68,52 @@
     amount: 1
   tileReactions:
   - !type:ExtinguishTileReaction { }
+
+- type: reagent
+  id: Formaldehyde
+  name: reagent-name-formaldehyde
+  group: Medicine
+  desc: reagent-desc-formaldehyde
+  physicalDesc: reagent-physical-desc-pungent
+  flavor: bitter
+  color: "#ffffff"
+  worksOnTheDead: true
+  metabolisms:
+    Poison:
+      effects:
+        - !type:HealthChange
+          damage:
+            types:
+              Poison: 3
+              Caustic: 0.5
+    Medicine:
+      effects:
+        - !type:ApplyRotSlowdown
+          factor: 0.3
+          conditions:
+            - !type:MobStateCondition
+              mobstate: Dead
+        - !type:HealthChange
+          conditions:
+            - !type:MobStateCondition
+              mobstate: Dead
+          damage:
+            groups:
+              Brute: -1
+              Burn: -1
+  plantMetabolism:
+    - !type:PlantAdjustHealth
+      amount: -3
+    - !type:PlantAdjustWeeds
+      amount: -5
+  reactiveEffects:
+    Acidic:
+      methods: [Touch]
+      effects:
+        - !type:Emote
+          emote: Cough
+          probability: 0.5
+        - !type:HealthChange
+          damage:
+            types:
+              Caustic: 0.2

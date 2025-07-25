@@ -20,6 +20,7 @@
         - id: Narcotic
         - id: Alcohol
           rateModifier: 0.25
+    - type: Heart # Corvax-Wega-Surgery
     - type: SolutionContainerManager
       solutions:
         stomach:
@@ -36,6 +37,14 @@
     - type: Item
       size: Small
       heldPrefix: brain
+    # Corvax-Wega-Surgery-start
+    - type: Organ
+      organType: SlimeCore
+    - type: Tag
+      tags:
+        - SlimeCore
+        - Meat
+    # Corvax-Wega-Surgery-end
 
       
 - type: entity
@@ -76,3 +85,11 @@
   - type: Item
     size: Small
     heldPrefix: lungs
+  # Corvax-Wega-Surgery-start
+  - type: Organ
+    organType: Lungs
+  - type: Tag
+    tags:
+      - Lungs
+      - Meat
+  # Corvax-Wega-Surgery-end

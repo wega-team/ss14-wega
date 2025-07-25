@@ -22,6 +22,10 @@
       {
           "name": "big",
           "directions": 4
+      },
+      {
+        "name": "superbig",
+        "directions": 4
       }
     ]
 }

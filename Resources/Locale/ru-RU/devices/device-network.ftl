@@ -9,6 +9,10 @@ device-frequency-prototype-name-fax = Факс
 device-frequency-prototype-name-basic-device = Базовые устройства
 device-frequency-prototype-name-cyborg-control = Управление киборгами
 device-frequency-prototype-name-robotics-console = Консоль управления робототехникой
+device-frequency-prototype-name-turret = Охранная турель
+device-frequency-prototype-name-turret-control = Управление охранной турелью
+device-frequency-prototype-name-xenoborg = Ксеноборг
+device-frequency-prototype-name-mothership = Материнский корабль
 
 ## camera frequencies
 
@@ -32,7 +36,12 @@ device-address-prefix-heater = НГР-
 device-address-prefix-freezer = ОХЛ-
 device-address-prefix-volume-pump = ОБН-
 device-address-prefix-smes = СМС-
+<<<<<<< HEAD
 # PDAs and terminals
+=======
+device-address-prefix-turret = ТРЛ-
+#PDAs and terminals
+>>>>>>> 9d1580278911130aab06150ac695342664fde59d
 device-address-prefix-console = Конс-
 device-address-prefix-fire-alarm = Пож-
 device-address-prefix-air-alarm = Возд-

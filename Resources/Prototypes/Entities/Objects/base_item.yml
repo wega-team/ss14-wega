@@ -43,6 +43,7 @@
     noRot: false
   - type: Pullable
   - type: DamageExaminable
+  - type: EdibleMatter # Corvax-Wega-Add
 
 - type: entity
   name: "storage item"
@@ -51,6 +52,8 @@
   abstract: true
   components:
   - type: Storage
+  - type: EdibleMatter # Corvax-Wega-Add
+    canBeEaten: false # Corvax-Wega-Add
   - type: UserInterface
     interfaces:
       enum.StorageUiKey.Key:

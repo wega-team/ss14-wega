@@ -34,17 +34,6 @@
 
 - type: entity
   parent: ClothingUniformSkirtBase
-  id: ClothingUniformColorJumpskirtRainbow
-  name: rainbow jumpskirt
-  description: A multi-colored jumpskirt!
-  components:
-    - type: Sprite
-      sprite: Corvax/Clothing/Uniforms/Jumpskirt/rainbow.rsi
-    - type: Clothing
-      sprite: Corvax/Clothing/Uniforms/Jumpskirt/rainbow.rsi
-
-- type: entity
-  parent: ClothingUniformSkirtBase
   id: ClothingUniformJumpskirtSchool
   name: school skirt
   description: Stylish and comfortable school skirt.
@@ -66,7 +55,7 @@
       sprite: Corvax/Clothing/Uniforms/Jumpskirt/cap_turtleneck.rsi
 
 - type: entity
-  parent: ClothingUniformBase
+  parent: ClothingUniformSkirtToggleableBase
   id: ClothingUniformJumpskirtHoPTurtleneck
   name: head of personal's turtleneck
   description: It's Head of Personal's turtleneck.
@@ -77,7 +66,7 @@
       sprite: Corvax/Clothing/Uniforms/Jumpskirt/hop_turtleneck.rsi
 
 - type: entity
-  parent: ClothingUniformBase
+  parent: ClothingUniformSkirtToggleableBase
   id: ClothingUniformJumpskirtHoSBlack
   name: head of security's black skirt
   description: It's Head of Security's black skirt.
@@ -88,7 +77,7 @@
       sprite: Corvax/Clothing/Uniforms/Jumpskirt/hos_black.rsi
 
 - type: entity
-  parent: ClothingUniformBase
+  parent: ClothingUniformSkirtToggleableBase
   id: ClothingUniformJumpskirtRDClassical
   name: research director's classical skirt
   description: It's Research Director's classical skirt.
@@ -99,7 +88,7 @@
       sprite: Corvax/Clothing/Uniforms/Jumpskirt/rd_classical.rsi
 
 - type: entity
-  parent: ClothingUniformBase
+  parent: ClothingUniformSkirtToggleableBase
   id: ClothingUniformJumpskirtPilot
   name: pilot skirt
   description: Security pilot skirt.

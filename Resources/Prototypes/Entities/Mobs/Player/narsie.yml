@@ -97,6 +97,9 @@
   - type: WarpPoint
     follow: true
     location: Nar'Sie
+    blacklist:
+      tags:
+      - GhostOnlyWarp
   # Corvax-Wega-Blood-Cult-start
   - type: Timer
   - type: TimedSpawner

@@ -1,6 +1,8 @@
+using Robust.Shared.Serialization; // Corvax-Wega
+
 namespace Content.Shared.DisplacementMap;
 
-[DataDefinition]
+[Serializable, NetSerializable, DataDefinition] // Corvax-Wega-Edit
 public sealed partial class DisplacementData
 {
     /// <summary>
@@ -10,5 +12,5 @@ public sealed partial class DisplacementData
     public Dictionary<int, PrototypeLayerData> SizeMaps = new();
 
     [DataField]
-    public string? ShaderOverride = "DisplacedStencilDraw";
+    public string? ShaderOverride = "DisplacedDraw";
 }

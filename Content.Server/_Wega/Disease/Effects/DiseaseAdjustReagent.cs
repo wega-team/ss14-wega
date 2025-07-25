@@ -2,9 +2,9 @@ using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.FixedPoint;
 using JetBrains.Annotations;
-using Content.Server.Body.Components;
 using Content.Shared.Disease;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
+using Content.Shared.Body.Components;
 
 namespace Content.Server.Disease.Effects
 {

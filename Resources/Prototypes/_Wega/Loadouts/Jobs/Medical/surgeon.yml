@@ -1,0 +1,10 @@
+# Jumpsuit
+- type: loadout
+  id: SurgeonJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSurgeon
+
+- type: loadout
+  id: SurgeonJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtSurgeon

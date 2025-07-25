@@ -48,7 +48,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 50
+        damage: 5
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
@@ -68,14 +68,14 @@
     attackRate: 0.90
     damage:
       types:
-        Blunt: 5
-        Slash: 10
+        Blunt: 2.5
+        Slash: 5
   - type: Input
     context: "ghost"
   - type: ShowCultistIcons
   - type: MovementSpeedModifier
-    baseWalkSpeed: 6
-    baseSprintSpeed: 6
+    baseWalkSpeed: 5
+    baseSprintSpeed: 5
 
 - type: entity
   abstract: true

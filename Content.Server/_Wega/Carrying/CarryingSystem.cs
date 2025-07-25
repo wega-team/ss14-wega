@@ -30,6 +30,8 @@ using Content.Shared.Movement.Pulling.Systems;
 using Robust.Server.GameObjects;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Components;
+using Content.Shared.Crawling;
+using Content.Shared.Hands.EntitySystems;
 
 namespace Content.Server.Carrying
 {
@@ -47,6 +49,7 @@ namespace Content.Server.Carrying
         [Dependency] private readonly MovementSpeedModifierSystem _movementSpeed = default!;
         [Dependency] private readonly RespiratorSystem _respirator = default!;
         [Dependency] private readonly TransformSystem _transform = default!;
+        [Dependency] private readonly SharedHandsSystem _hands = default!;
 
         public override void Initialize()
         {
@@ -82,6 +85,9 @@ namespace Content.Server.Carrying
                 return;
 
             if (HasComp<BeingCarriedComponent>(args.User) || HasComp<BeingCarriedComponent>(args.Target))
+                return;
+
+            if (TryComp(args.User, out CrawlingComponent? crawling) && crawling.IsCrawling)
                 return;
 
             if (!_mobStateSystem.IsAlive(args.User))
@@ -339,10 +345,7 @@ namespace Content.Server.Carrying
             //if (_respirator.IsReceivingCPR(carried))
             //  return false;
 
-            if (!TryComp<HandsComponent>(carrier, out var hands))
-                return false;
-
-            if (hands.CountFreeHands() < carriedComp.FreeHandsRequired)
+            if (_hands.CountFreeHands(carrier) < carriedComp.FreeHandsRequired)
                 return false;
 
             return true;

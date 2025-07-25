@@ -1,0 +1,27 @@
+- type: randomHumanoidSettings
+  id: VisitorVoidMember
+  parent: EventHumanoid
+  components:
+    - type: GhostRole
+      name: ""
+      description: ""
+      rules: ghost-role-information-freeagent-rules
+      raffle:
+        settings: default
+    - type: Loadout
+      prototypes: [ VoidGear, VoidMedicalGear, VoidTechnicalGear ]
+      roleLoadout: [ RoleSurvivalStandard ]
+
+- type: randomHumanoidSettings
+  id: VisitorVoidCommander
+  parent: EventHumanoid
+  components:
+    - type: GhostRole
+      name: ""
+      description: ""
+      rules: ghost-role-information-freeagent-rules
+      raffle:
+        settings: default
+    - type: Loadout
+      prototypes: [ VoidCommanderGear ]
+      roleLoadout: [ RoleSurvivalStandard ]

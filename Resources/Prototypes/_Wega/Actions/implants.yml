@@ -1,0 +1,10 @@
+- type: entity
+  id: ActionToothImplant
+  parent: BaseAction
+  name: eat pill
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon: { sprite: Objects/Specific/Chemistry/pills.rsi, state: "pill" }
+  - type: InstantAction
+    event: !type:ToothImplantActionEvent

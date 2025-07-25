@@ -1,0 +1,8 @@
+- type: alert
+  id: StrangledAlert
+  clickEvent: !type:BreakFreeStrangleAlertEvent
+  icons:
+  - sprite: /Textures/_Wega/Interface/Alerts/strangulation.rsi
+    state: strangle
+  name: alerts-strangle-name
+  description: alerts-strangle-desc

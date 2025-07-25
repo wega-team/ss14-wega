@@ -1,0 +1,14 @@
+- type: surgeryNode
+  id: TestNode
+  description: Тест
+  bodyPart: torso
+  transitions:
+    - TestTransition
+
+- type: surgeryNode
+  id: TestNode2
+  description: Тест
+  bodyPart: torso
+  transitions:
+    - TestTransition2
+    - TestTransitionEnd

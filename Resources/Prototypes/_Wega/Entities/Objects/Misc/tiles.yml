@@ -1,0 +1,13 @@
+- type: entity
+  name: steel dark checker tile
+  parent: FloorTileItemSteel
+  id: FloorTileItemSepia
+  components:
+  - type: Sprite
+    state: lime
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorSepia
+  - type: Stack
+    stackType: FloorTileItemSepia

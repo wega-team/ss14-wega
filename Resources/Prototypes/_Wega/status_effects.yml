@@ -1,2 +1,11 @@
 - type: statusEffect
   id: Hallucinations
+
+- type: statusEffect
+  id: Dizzy
+
+- type: statusEffect
+  id: Stealth
+
+- type: statusEffect
+  id: StealthOnMove

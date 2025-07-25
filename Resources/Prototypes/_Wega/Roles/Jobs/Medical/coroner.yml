@@ -1,0 +1,45 @@
+- type: job
+  id: Coroner
+  name: job-name-coroner
+  description: job-description-coroner
+  playTimeTracker: JobCoroner
+  requirements:
+    - !type:DepartmentTimeRequirement
+      department: Medical
+      time: 48000
+  startingGear: CoronerGear
+  icon: "JobIconCoroner"
+  supervisors: job-supervisors-cmo
+  access:
+  - Medical
+  - Maintenance
+  - Cryogenics
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: SurgicalSkill
+        modifier: 0.4
+
+- type: startingGear
+  id: CoronerGear
+  equipment:
+    id: CoronerPDA
+    ears: ClothingHeadsetMedical
+    gloves: ClothingHandsGlovesLatexSurgeon
+    jumpsuit: UniformScrubsColorBlack
+    belt: ClothingBeltMedicalFilled
+  storage:
+    back:
+    - ChemistryBottleFormaldehyde
+    - ForensicScanner
+
+- type: chameleonOutfit
+  id: CoronerChameleonOutfit
+  job: Coroner
+  equipment:
+    head: ClothingHeadHatSurgcapBlack
+    eyes: ClothingEyesHudMedical
+    mask: ClothingMaskSterile
+    outerClothing: ClothingOuterCoatLabOpened
+    neck: ClothingNeckStethoscope
+    gloves: ClothingHandsGlovesLatexSurgeon

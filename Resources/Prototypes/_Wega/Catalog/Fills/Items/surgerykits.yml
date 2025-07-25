@@ -1,0 +1,53 @@
+- type: entity
+  id: SurgerykitFilled
+  name: surgery kit
+  parent: Surgerykit
+  suffix: Filled
+  components:
+  - type: StorageFill
+    contents:
+    - id: Scalpel
+    - id: Hemostat
+    - id: Retractor
+    - id: Cautery
+    - id: Drill
+    - id: Saw
+
+- type: entity
+  id: SurgerykitFilledSyndie
+  name: surgery kit
+  parent: Surgerykit
+  suffix: Filled, Syndie
+  components:
+  - type: StorageFill
+    contents:
+    - id: ScalpelAdvanced
+    - id: Hemostat
+    - id: Retractor
+    - id: Cautery
+    - id: FixOVein
+    - id: SawAdvanced
+    - id: Gauze
+
+- type: entity
+  id: SuperSurgerykitFilled
+  name: surgery kit
+  parent: SuperSurgerykit
+  suffix: Filled
+  components:
+  - type: StorageFill
+    contents:
+    - id: Scalpel
+    - id: Hemostat
+    - id: Retractor
+    - id: Cautery
+    - id: Drill
+    - id: SawElectric
+    - id: BoneSetter
+    - id: BoneGel
+    - id: FixOVein
+    - id: Gauze
+    - id: Bloodpack
+      amount: 2
+    - id: ChemistryBottleEthanol
+      amount: 2

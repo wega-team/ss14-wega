@@ -1,0 +1,88 @@
+# ========================
+# УЗЛЫ ТОРСА
+# ========================
+
+- type: surgeryNode
+  id: SlimeTorsoClosed
+  description: Торс закрыт
+  bodyPart: torso
+  transitions:
+    - SlimeOpenTorsoTransition
+
+- type: surgeryNode
+  id: SlimeTorsoOpen
+  description: Торс вскрыт
+  bodyPart: torso
+  packages:
+    - SlimeTorsoImplantPackage
+    - HealingSlimeTorsoPackage
+  transitions:
+    - SlimeOrganManipulationTransition
+    - InternalTorsoTransition
+    - SlimeCloseTorsoTransition
+
+- type: surgeryNode
+  id: SlimeEndMuscleTearsTorsoOperation
+  description: Завершить
+  packages:
+    - SlimeTorsoImplantPackage
+    - HealingSlimeTorsoPackage
+  transitions:
+    - SlimeOrganManipulationTransition
+    - InternalTorsoTransition
+    - SlimeCloseTorsoTransition
+
+- type: surgeryNode
+  id: SlimeEndMildBurnsTorsoOperation
+  description: Завершить
+  packages:
+    - SlimeTorsoImplantPackage
+    - HealingSlimeTorsoPackage
+  transitions:
+    - SlimeOrganManipulationTransition
+    - InternalTorsoTransition
+    - SlimeCloseTorsoTransition
+
+
+- type: surgeryNode
+  id: SlimeEndDeepBurnsTorsoOperation
+  description: Завершить
+  packages:
+    - SlimeTorsoImplantPackage
+    - HealingSlimeTorsoPackage
+  transitions:
+    - SlimeOrganManipulationTransition
+    - InternalTorsoTransition
+    - SlimeCloseTorsoTransition
+
+
+- type: surgeryNode
+  id: SlimeEndBulletWoundTorsoOperation
+  description: Завершить
+  packages:
+    - SlimeTorsoImplantPackage
+    - HealingSlimeTorsoPackage
+  transitions:
+    - SlimeOrganManipulationTransition
+    - InternalTorsoTransition
+    - SlimeCloseTorsoTransition
+
+# ========================
+# УЗЛЫ ГОЛОВЫ
+# ========================
+
+- type: surgeryNode
+  id: SlimeHeadClosed
+  description: Голова закрыта
+  bodyPart: head
+  transitions:
+    - SlimeOpenHeadTransition
+
+- type: surgeryNode
+  id: SlimeHeadOpen
+  description: Череп вскрыт
+  bodyPart: head
+  packages:
+    - HeadImplantPackage
+  transitions:
+    - SlimeCloseHeadTransition

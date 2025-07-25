@@ -3,7 +3,7 @@ using Robust.Shared.Utility;
 
 namespace Content.Shared.Humanoid.Markings
 {
-    [Prototype("marking")]
+    [Prototype]
     public sealed partial class MarkingPrototype : IPrototype
     {
         [IdDataField]
@@ -16,6 +16,9 @@ namespace Content.Shared.Humanoid.Markings
 
         [DataField("markingCategory", required: true)]
         public MarkingCategories MarkingCategory { get; private set; } = default!;
+
+        [DataField("markingType")] // Corvax-Wega-Genetics
+        public MarkingTypes MarkingType { get; private set; } = MarkingTypes.Base; // Corvax-Wega-Genetics
 
         [DataField("speciesRestriction")]
         public List<string>? SpeciesRestrictions { get; private set; }
@@ -36,6 +39,13 @@ namespace Content.Shared.Humanoid.Markings
 
         [DataField("coloring")]
         public MarkingColors Coloring { get; private set; } = new();
+
+        /// <summary>
+        /// Do we need to apply any displacement maps to this marking? Set to false if your marking is incompatible
+        /// with a standard human doll, and is used for some special races with unusual shapes
+        /// </summary>
+        [DataField]
+        public bool CanBeDisplaced { get; private set; } = true;
 
         [DataField("sprites", required: true)]
         public List<SpriteSpecifier> Sprites { get; private set; } = default!;

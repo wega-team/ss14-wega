@@ -63,9 +63,8 @@
       - !type:MovespeedModifier
         walkSpeedModifier: 0.65
         sprintSpeedModifier: 0.65
-      - !type:GenericStatusEffect
-        key: Drowsiness
-        component: Drowsiness
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectDrowsiness
         time: 4
         type: Add
         refresh: false
@@ -186,7 +185,6 @@
   flavor: sour
   color: "#48b3b8"
   physicalDesc: reagent-physical-desc-ferrous
-  slippery: false
   metabolisms:
     Drink:
       effects:
@@ -302,6 +300,12 @@
   - !type:PlantAdjustMutationLevel
     amount: 1
   metabolisms:
+    Medicine:
+      effects:
+      - !type:ChemMutateDna
+        conditions:
+        - !type:ReagentThreshold
+          min: 50
     Poison:
       effects:
       - !type:HealthChange
@@ -356,9 +360,8 @@
   metabolisms:
     Poison:
       effects:
-      - !type:GenericStatusEffect
-        key: SeeingRainbows
-        component: SeeingRainbows
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectSeeingRainbow
         type: Add
         time: 10
         refresh: false
@@ -387,8 +390,9 @@
         damage:
           groups:
             Brute: 2
-            Toxin: 2
             Airloss: 2
+          types:
+            Poison: 2
       - !type:PopupMessage
         type: Local
         messages: [ "histamine-effect-light-itchiness" ]
@@ -503,6 +507,9 @@
             type: Vampire
             shouldHave: false
         # Corvax-Wega-Vampire-end
+          - !type:OrganType
+            type: Vox
+            shouldHave: false
         type: Local
         visualType: MediumCaution
         messages: [ "generic-reagent-effect-sick" ]
@@ -518,6 +525,9 @@
             type: Vampire
             shouldHave: false
         # Corvax-Wega-Vampire-end
+          - !type:OrganType
+            type: Vox
+            shouldHave: false
       - !type:HealthChange
         conditions:
         - !type:OrganType
@@ -528,6 +538,9 @@
           type: Vampire
           shouldHave: false
         # Corvax-Wega-Vampire-end
+        - !type:OrganType
+          type: Vox
+          shouldHave: false
         damage:
           types:
             Poison: 1
@@ -543,6 +556,12 @@
         # Corvax-Wega-Vampire-end
         reagent: Protein
         amount: 0.5
+      - !type:AdjustReagent
+        conditions:
+        - !type:OrganType
+          type: Vox
+        reagent: Protein
+        amount: 0.25
 
 - type: reagent
   id: Allicin
@@ -748,3 +767,19 @@
           shouldHave: false
         walkSpeedModifier: 0.4
         sprintSpeedModifier: 0.4
+
+- type: reagent
+  id: ToxinTrash
+  name: reagent-name-toxintrash
+  group: Toxins
+  desc: reagent-desc-toxintrash
+  flavor: trashy
+  physicalDesc: reagent-physical-desc-nondescript
+  metabolisms:
+    Food:
+      effects:
+      - !type:SatiateHunger
+        factor: 1
+        conditions:
+        - !type:OrganType
+          type: Vox

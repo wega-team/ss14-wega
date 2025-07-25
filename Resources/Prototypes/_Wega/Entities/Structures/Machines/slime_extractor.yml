@@ -1,0 +1,34 @@
+- type: entity
+  id: SlimeExtractor
+  parent: [ BaseMachinePowered, ConstructibleMachine ]
+  name: slime extractor
+  description: "You are cruel!"
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: _Wega/Structures/Machines/Xenobilology/slime_extrector.rsi
+    layers:
+    - state: base
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+    snapCardinals: true
+  - type: SlimeExtractor
+  - type: Climbable
+    delay: 7
+  - type: AmbientSound
+    enabled: false
+    volume: -5
+    range: 5
+    sound:
+      path: /Audio/Ambience/Objects/reclaimer_ambience.ogg
+  - type: WiresPanel
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.WiresVisuals.MaintenancePanelState:
+        enum.WiresVisualLayers.MaintenancePanel:
+          True: { visible: true }
+          False: { visible: false }
+  - type: Machine
+    board: SlimeExtractorMachineCircuitboard

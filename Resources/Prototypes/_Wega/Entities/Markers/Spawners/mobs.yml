@@ -1,0 +1,15 @@
+- type: entity
+  name: Gray Slime Spawner
+  id: SpawnMobSlimeGray
+  parent: MarkerBase
+  suffix: Xenobiology
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Wega/Mobs/Aliens/slimes.rsi
+        state: gray_baby_slime
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - MobXenoSlimeGray

@@ -9,7 +9,7 @@
       types:
         Blunt: 1
   - type: StaminaDamageOnCollide
-    damage: 30
+    damage: 20
   - type: Sprite
     sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
     layers:

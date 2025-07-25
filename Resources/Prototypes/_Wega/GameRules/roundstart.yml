@@ -70,6 +70,7 @@
         briefing:
           sound: "/Audio/_Wega/Ambience/Antag/bloodcult_start.ogg"
 
+<<<<<<< HEAD
 - type: entity
   parent: BaseGameRule
   id: VeilCult
@@ -96,3 +97,29 @@
         - MindRoleVeilCultist
         briefing:
           sound: "/Audio/_Wega/Ambience/Antag/veilcult_start.ogg"
+=======
+# event schedulers
+
+- type: entityTable
+  id: LightGameRulesTable
+  table: !type:AllSelector
+    children:
+      - !type:NestedSelector
+        tableId: BasicCalmEventsTable
+      - !type:NestedSelector
+        tableId: LightAntagEventsTable
+      - !type:NestedSelector
+        tableId: CargoGiftsTable
+      - !type:NestedSelector
+        tableId: CalmPestEventsTable
+      - !type:NestedSelector
+        tableId: SpicyPestEventsTable
+
+- type: entity
+  id: LightStationEventScheduler
+  parent: BaseGameRule
+  components:
+  - type: BasicStationEventScheduler
+    scheduledGameRules: !type:NestedSelector
+      tableId: LightGameRulesTable
+>>>>>>> 9d1580278911130aab06150ac695342664fde59d

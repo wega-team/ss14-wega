@@ -21,6 +21,7 @@
     sprite: _Wega/Clothing/Head/Hoods/Coat/flagellanthood.rsi
 
 - type: entity
+<<<<<<< HEAD
   parent: [ClothingHeadHatHoodWinterBase, BaseRestrictedContraband]
   id: ClothingHeadHatHelmetClockworkCuirass
   categories: [ HideSpawnMenu ]
@@ -41,3 +42,14 @@
     sprite: _Wega/Clothing/Head/Hoods/Coat/clockworkold_hood.rsi
   - type: Clothing
     sprite: _Wega/Clothing/Head/Hoods/Coat/clockworkold_hood.rsi
+=======
+  parent: ClothingHeadHatHoodWinterBase
+  id: ClothingHeadHatHoodVoidCap
+  categories: [ HideSpawnMenu ]
+  name: void cape
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Head/Hoods/Coat/voidcaphood.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Head/Hoods/Coat/voidcaphood.rsi
+>>>>>>> 9d1580278911130aab06150ac695342664fde59d

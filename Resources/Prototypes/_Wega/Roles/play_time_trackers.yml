@@ -3,3 +3,15 @@
 
 - type: playTimeTracker
   id: JobBrigmedic
+
+- type: playTimeTracker
+  id: JobCBURNLeader
+
+- type: playTimeTracker
+  id: JobGeneticist
+
+- type: playTimeTracker
+  id: JobSurgeon
+
+- type: playTimeTracker
+  id: JobCoroner

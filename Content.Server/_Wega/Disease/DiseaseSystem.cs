@@ -1,8 +1,6 @@
-using Content.Server.Body.Systems;
 using Content.Server.Chat.Systems;
-using Content.Server.Disease.Components;
-using Content.Server.Nutrition.Components;
 using Content.Server.Popups;
+using Content.Shared.Body.Events;
 using Content.Shared.Clothing.Components;
 using Content.Shared.Disease;
 using Content.Shared.Disease.Components;
@@ -15,10 +13,10 @@ using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
+using Content.Shared.Nutrition.Components;
 using Content.Shared.Rejuvenate;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
-using Robust.Shared.Serialization.Manager;
 using Robust.Shared.Utility;
 
 namespace Content.Server.Disease
@@ -27,10 +25,9 @@ namespace Content.Server.Disease
     /// <summary>
     /// Handles disease propagation & curing
     /// </summary>
-    public sealed class DiseaseSystem : EntitySystem
+    public sealed class DiseaseSystem : SharedDiseaseSystem
     {
         [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-        [Dependency] private readonly ISerializationManager _serializationManager = default!;
         [Dependency] private readonly IRobustRandom _random = default!;
         [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
         [Dependency] private readonly PopupSystem _popupSystem = default!;
@@ -58,7 +55,6 @@ namespace Content.Server.Disease
             SubscribeLocalEvent<DiseaseVaccineComponent, VaccineDoAfterEvent>(OnDoAfter);
         }
 
-        private Queue<EntityUid> _addQueue = new();
         private Queue<(DiseaseCarrierComponent carrier, DiseasePrototype disease)> _cureQueue = new();
 
         /// <summary>
@@ -346,40 +342,6 @@ namespace Content.Server.Disease
         }
 
         /// <summary>
-        /// Adds a disease to a target
-        /// if it's not already in their current
-        /// or past diseases. If you want this
-        /// to not be guaranteed you are looking
-        /// for TryInfect.
-        /// </summary>
-        public void TryAddDisease(EntityUid host, DiseasePrototype addedDisease, DiseaseCarrierComponent? target = null)
-        {
-            if (!Resolve(host, ref target, false))
-                return;
-
-            foreach (var disease in target.AllDiseases)
-            {
-                if (disease.ID == addedDisease?.ID) //ID because of the way protoypes work
-                    return;
-            }
-
-            var freshDisease = _serializationManager.CreateCopy(addedDisease);
-
-            if (freshDisease == null) return;
-
-            target.Diseases.Add(freshDisease);
-            _addQueue.Enqueue(target.Owner);
-        }
-
-        public void TryAddDisease(EntityUid host, string? addedDisease, DiseaseCarrierComponent? target = null)
-        {
-            if (addedDisease == null || !_prototypeManager.TryIndex<DiseasePrototype>(addedDisease, out var added))
-                return;
-
-            TryAddDisease(host, added, target);
-        }
-
-        /// <summary>
         /// Pits the infection chance against the
         /// person's disease resistance and
         /// rolls the dice to see if they get
@@ -469,21 +431,6 @@ namespace Content.Server.Disease
             Vaccinate(carrier, component.Disease);
             EntityManager.DeleteEntity(uid);
             args.Handled = true;
-        }
-    }
-
-    /// <summary>
-    /// This event is fired by chems
-    /// and other brute-force rather than
-    /// specific cures. It will roll the dice to attempt
-    /// to cure each disease on the target
-    /// </summary>
-    public sealed class CureDiseaseAttemptEvent : EntityEventArgs
-    {
-        public float CureChance { get; }
-        public CureDiseaseAttemptEvent(float cureChance)
-        {
-            CureChance = cureChance;
         }
     }
 

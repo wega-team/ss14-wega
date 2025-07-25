@@ -1,24 +1,4 @@
 - type: cargoProduct
-  id: MaterialGold
-  icon:
-    sprite: Objects/Materials/ingots.rsi
-    state: gold_3
-  product: CrateMaterialGold
-  cost: 20000
-  category: cargoproduct-category-name-materials
-  group: market
-
-- type: cargoProduct
-  id: MaterialSilver
-  icon:
-    sprite: Objects/Materials/ingots.rsi
-    state: silver_3
-  product: CrateMaterialSilver
-  cost: 15000
-  category: cargoproduct-category-name-materials
-  group: market
-
-- type: cargoProduct
   id: MaterialUranium
   icon:
     sprite: Objects/Materials/Sheets/other.rsi

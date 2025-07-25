@@ -152,7 +152,7 @@ public sealed partial class MarkingSet
 
         var toRemove = new List<(MarkingCategories category, string id)>();
         var speciesProto = prototypeManager.Index<SpeciesPrototype>(species);
-        var onlyWhitelisted = prototypeManager.Index<MarkingPointsPrototype>(speciesProto.MarkingPoints).OnlyWhitelisted;
+        var onlyWhitelisted = prototypeManager.Index(speciesProto.MarkingPoints).OnlyWhitelisted;
 
         foreach (var (category, list) in Markings)
         {
@@ -192,7 +192,8 @@ public sealed partial class MarkingSet
                     if (markingManager.TryGetMarking(marking, out var prototype) &&
                         markingManager.MustMatchSkin(species, prototype.BodyPart, out var alpha, prototypeManager))
                     {
-                        marking.SetColor(skinColor.Value.WithAlpha(alpha));
+                        if (marking.MarkingColors.Count > 0) // Corvax-Wega-Hair-Extended
+                            marking.SetColor(0, skinColor.Value.WithAlpha(alpha)); // Corvax-Wega-Hair-Extended
                     }
                 }
             }
@@ -218,9 +219,9 @@ public sealed partial class MarkingSet
             {
                 if (prototypeManager.TryIndex<MarkingPrototype>(marking.MarkingId, out var proto) && !proto.SponsorOnly)
                 {
-                    return;
+                    continue;
                 }
-                
+
                 var allowedToHave = sponsorMarkings.Contains(marking.MarkingId);
                 if (!allowedToHave)
                 {

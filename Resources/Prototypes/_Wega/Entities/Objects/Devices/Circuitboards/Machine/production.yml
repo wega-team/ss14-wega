@@ -1,0 +1,59 @@
+- type: entity
+  id: CellSequencerCircuitboard
+  parent: BaseMachineCircuitboard
+  name: cell sequencer machine board
+  description: A machine printed circuit board for a cell sequencer.
+  components:
+  - type: Sprite
+    state: science
+  - type: MachineBoard
+    prototype: CellSequencer
+    stackRequirements:
+      Plasma: 5
+      MatterBin: 1
+      Glass: 1
+      Steel: 2
+    tagRequirements:
+      Dish:
+        amount: 2
+        defaultPrototype: PetriDish
+
+- type: entity
+  id: CellularFusionCircuitboard
+  parent: BaseMachineCircuitboard
+  name: cellular fusion machine board
+  description: A machine printed circuit board for a cellular fusion.
+  components:
+  - type: Sprite
+    state: science
+  - type: MachineBoard
+    prototype: CellularFusion
+    stackRequirements:
+      Plasma: 5
+      MatterBin: 1
+      Glass: 1
+      Steel: 2
+    tagRequirements:
+      Dish:
+        amount: 2
+        defaultPrototype: PetriDish
+
+- type: entity
+  id: SlimeExtractorMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: slime extractor machine board
+  description: A machine printed circuit board for a slime extractor.
+  components:
+  - type: Sprite
+    state: medical
+  - type: MachineBoard
+    prototype: SlimeExtractor
+    stackRequirements:
+      MatterBin: 2
+      Manipulator: 1
+      Steel: 5
+    tagRequirements:
+      Knife:
+        amount: 2
+        defaultPrototype: KitchenKnife
+        examineName: construction-insert-info-examine-name-knife

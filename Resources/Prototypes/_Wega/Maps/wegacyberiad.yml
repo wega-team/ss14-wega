@@ -2,7 +2,7 @@
   id: WegaCyberiad
   mapName: 'Cyberiad Station'
   mapPath: /Maps/_Wega/wegacyberiad.yml
-  minPlayers: 50
+  minPlayers: 45
   maxPlayers: 80
   stations:
     Cyberiad:
@@ -37,7 +37,10 @@
             TechnicalAssistant: [ 4, 4 ]
             #medical
             ChiefMedicalOfficer: [ 1, 1 ]
-            Chemist: [ 2, 3 ]
+            Geneticist: [ 2, 2 ]
+            Chemist: [ 2, 2 ]
+            Surgeon: [ 1, 1 ]
+            Coroner: [ 1, 1 ]
             MedicalDoctor: [ 4, 4 ]
             Paramedic: [ 1, 1 ]
             MedicalIntern: [ 4, 4 ]

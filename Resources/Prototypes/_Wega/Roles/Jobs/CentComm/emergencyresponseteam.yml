@@ -1,0 +1,96 @@
+- type: startingGear
+  id: ERTLeaderGearPatrol
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitERTLeader
+    back: ClothingBackpackERTLeader
+    shoes: ClothingShoesBootsCombatFilled
+    head: ClothingHeadHatERTLeaderBeret
+    eyes: ClothingEyesGlassesSecurity
+    neck: ClothingNeckMantleERTLeader
+    gloves: ClothingHandsGlovesCombat
+    outerClothing: ClothingOuterArmorBasicSlim
+    id: ERTLeaderPDA
+    ears: ClothingHeadsetAltCentCom
+    belt: ClothingBeltSecurityFilled
+    pocket1: TacticalInterfacePatrol
+    pocket2: FlashlightSeclite
+    underwearbottom: ClothingUnderBottomHearts
+  storage:
+    back:
+    - WeaponDisabler
+    - MedicatedSuture
+    - RegenerativeMesh
+    - BoxZiptie
+    - PinpointerNuclear
+
+- type: startingGear
+  id: ERTLeaderGearScout
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitERTLeader
+    back: ClothingBackpackERTLeader
+    shoes: ClothingShoesBootsMagCombat
+    head: ClothingHeadHatERTLeaderBeret
+    eyes: ClothingEyesGlassesSecurity
+    neck: ClothingNeckMantleERTLeader
+    gloves: ClothingHandsGlovesCombat
+    outerClothing: ClothingOuterHardsuitERTLeader
+    id: ERTLeaderPDA
+    ears: ClothingHeadsetAltCentCom
+    belt: ClothingBeltSecurityFilled
+    pocket1: TacticalInterfaceScout
+    underwearbottom: ClothingUnderBottomHearts
+  storage:
+    back:
+    - WeaponDisabler
+    - MedicatedSuture
+    - RegenerativeMesh
+    - BoxZiptie
+    - PinpointerNuclear
+
+- type: startingGear
+  id: ERTLeaderGearCombat
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitERTLeader
+    back: ClothingBackpackERTLeader
+    shoes: ClothingShoesBootsMagCombat
+    mask: ClothingMaskGasERT
+    eyes: ClothingEyesGlassesSecurity
+    neck: ClothingNeckMantleERTLeader
+    gloves: ClothingHandsGlovesCombat
+    outerClothing: ClothingOuterHardsuitERTLeader
+    id: ERTLeaderPDA
+    ears: ClothingHeadsetAltCentCom
+    belt: ClothingBeltSecurityFilled
+    pocket1: TacticalInterfaceCombat
+    underwearbottom: ClothingUnderBottomHearts
+  storage:
+    back:
+    - WeaponDisabler
+    - MedicatedSuture
+    - RegenerativeMesh
+    - BoxZiptie
+    - PinpointerNuclear
+
+- type: startingGear
+  id: ERTLeaderGearSpecialist
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitERTLeader
+    back: ClothingBackpackERTLeader
+    shoes: ClothingShoesBootsMagCombat
+    mask: ClothingMaskGasERT
+    eyes: ClothingEyesGlassesSecurity
+    neck: ClothingNeckMantleERTLeader
+    gloves: ClothingHandsGlovesCombat
+    outerClothing: ClothingOuterHardsuitERTLeader
+    id: ERTLeaderPDA
+    ears: ClothingHeadsetAltCentCom
+    belt: ClothingBeltSecurityFilled
+    pocket1: TacticalInterfaceSpecialist
+    underwearbottom: ClothingUnderBottomHearts
+  storage:
+    back:
+    - WeaponDisabler
+    - MedicatedSuture
+    - RegenerativeMesh
+    - BoxZiptie
+    - PinpointerNuclear
