@@ -5,7 +5,7 @@
   description: The rapid construction device can be used to quickly place and remove various station structures and fixtures. Requires compressed matter to function. This RCD has been specially improved for working with reinforced materials.
   components:
   - type: RCD
-    strong: true
+    reinforced: true
     availablePrototypes:
     - WallSolid
     - WallReinforced
