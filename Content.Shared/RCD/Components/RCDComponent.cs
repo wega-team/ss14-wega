@@ -57,4 +57,12 @@ public sealed partial class RCDComponent : Component
     /// </remarks>
     [ViewVariables(VVAccess.ReadOnly)]
     public Transform ConstructionTransform { get; private set; }
+
+    // Covrax-Wega-CombatRCD-Start
+    /// <summary>
+    /// Усиленный РСУ
+    /// </summary>
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public bool Reinforced = false;
+    // Covrax-Wega-CombatRCD-End
 }

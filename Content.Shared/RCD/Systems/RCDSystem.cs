@@ -354,7 +354,7 @@ public sealed class RCDSystem : EntitySystem
             case RcdMode.ConstructObject:
                 return IsConstructionLocationValid(uid, component, gridUid, mapGrid, tile, position, user, popMsgs);
             case RcdMode.Deconstruct:
-                return IsDeconstructionStillValid(uid, tile, target, user, popMsgs);
+                return IsDeconstructionStillValid(uid, component, tile, target, user, popMsgs);  // Covrax-Wega-CombatRCD
         }
 
         return false;
@@ -463,7 +463,7 @@ public sealed class RCDSystem : EntitySystem
         return true;
     }
 
-    private bool IsDeconstructionStillValid(EntityUid uid, TileRef tile, EntityUid? target, EntityUid user, bool popMsgs = true)
+    private bool IsDeconstructionStillValid(EntityUid uid, RCDComponent component, TileRef tile, EntityUid? target, EntityUid user, bool popMsgs = true) // Covrax-Wega-CombatRCD
     {
         // Attempt to deconstruct a floor tile
         if (target == null)
@@ -509,6 +509,16 @@ public sealed class RCDSystem : EntitySystem
 
                 return false;
             }
+
+            // Covrax-Wega-CombatRCD-Start
+            if (deconstructible.Reinforced && !component.Reinforced)
+            {
+                if (popMsgs)
+                    _popup.PopupClient(Loc.GetString("rcd-component-deconstruct-target-not-on-whitelist-message"), uid, user);
+
+                return false;
+            }
+            // Covrax-Wega-CombatRCD-End
         }
 
         return true;

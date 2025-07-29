@@ -24,6 +24,7 @@
     HandTeleporterStealObjective: 0.5
     EnergyShotgunStealObjective: 0.5
     GlovesKravMagaStealObjective: 0.5 # corvax-wega-krav-maga
+    CombatRCDStealObjective: 1 # corvax-wega-combatRCD
 
 - type: weightedRandom
   id: TraitorObjectiveGroupKill
