@@ -60,7 +60,7 @@ public sealed partial class RCDComponent : Component
 
     // Covrax-Wega-CombatRCD-Start
     /// <summary>
-    /// Усиленный РСУ
+    /// Allow deconstruct reinforced structure
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public bool Reinforced = false;
