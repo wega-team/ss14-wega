@@ -33,7 +33,7 @@
     sprite: _Wega/Objects/Tools/combat-rcd.rsi
     state: icon
   - type: Clothing
-    sprite: _WegaObjects/Tools/combat-rcd.rsi
+    sprite: _Wega/Objects/Tools/combat-rcd.rsi
     quickEquip: false
     slots:
     - Belt
