@@ -54,13 +54,11 @@ jobs:
           SSH_KEY: ${{ secrets.SECRETS_PRIVATE_KEY }}
         if: ${{ env.SSH_KEY != '' }}
         run: |
-          mkdir -p ~/.ssh
+          mkdir ~/.ssh
           echo "${{ secrets.SECRETS_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           echo "HOST *" > ~/.ssh/config
-          echo "  Hostname github.com" >> ~/.ssh/config
-          echo "  Port 22" >> ~/.ssh/config
-          echo "  StrictHostKeyChecking no" >> ~/.ssh/config
+          echo "StrictHostKeyChecking no" >> ~/.ssh/config
           git -c submodule.Secrets.update=checkout submodule update --init
       # Corvax-Secrets-End
 
@@ -68,8 +66,6 @@ jobs:
         uses: actions/setup-dotnet@v4.1.0
         with:
           dotnet-version: 9.0.x
-        env:
-          DOTNET_INSTALL_DIR: $HOME/.dotnet
 
       - name: Install dependencies
         run: dotnet restore
