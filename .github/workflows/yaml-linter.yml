@@ -32,6 +32,6 @@ jobs:
       - name: Build
         run: dotnet build --configuration Release --no-restore /p:WarningsAsErrors= /m
       - name: Remove sponsor-tiers.yml from lint
-        run: rm Prototypes/_Wega/sponsor-tiers.yml
+        run: rm -f Prototypes/_Wega/sponsor-tiers.yml || true
       - name: Run Linter
         run: dotnet run --project Content.YAMLLinter/Content.YAMLLinter.csproj --no-build
