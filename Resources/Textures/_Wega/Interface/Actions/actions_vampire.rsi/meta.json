@@ -114,6 +114,27 @@
         },
         {
             "name": "hysteria"
+        },
+        {
+            "name": "lunge_finale"
+        },
+        {
+            "name": "bats_meta"
+        },
+        {
+            "name": "blood_hound"
+        },
+        {
+            "name": "vampire_bats"
+        },
+        {
+            "name": "infected_trophy"
+        },
+        {
+            "name": "bats_shriek"
+        },
+        {
+            "name": "vampire_coffin"
         }
     ]
 }
