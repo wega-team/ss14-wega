@@ -115,7 +115,7 @@
   group: Toxins
   desc: reagent-desc-mutations-potion
   physicalDesc: reagent-physical-desc-opaque
-  flavor: toxin
+  flavor: toxinsspecial
   color: "#007FFF"
   metabolisms:
     Poison:

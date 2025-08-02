@@ -7,7 +7,9 @@
   flavor: cum
   color: "#DFDFDF"
   recognizable: true
-  slippery: false
+  slipData:
+    requiredSlipSpeed: 4
+    superSlippery: true
   metabolisms:
     Drink:
       effects:

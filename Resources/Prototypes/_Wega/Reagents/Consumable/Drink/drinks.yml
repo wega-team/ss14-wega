@@ -119,7 +119,7 @@
   group: Drinks
   desc: reagent-desc-mate-de-coca
   physicalDesc: reagent-physical-desc-herbal
-  flavor: mate-de-coca
+  flavor: spaceshroom
   color: "#6b8e23"
   metamorphicSprite:
     sprite: _Wega/Objects/Consumable/Drinks/matedecocaglass.rsi

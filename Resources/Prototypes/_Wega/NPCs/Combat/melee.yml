@@ -87,7 +87,6 @@
             targetKey: AttackCoordinates
             rangeKey: AttackRange
             pathfindKey: AttackPath
-            repathTime: 0.3
             removeKeyOnFinish: false
 
         - !type:HTNPrimitiveTask
