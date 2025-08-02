@@ -7,5 +7,5 @@
   id: Credit
   displayName: store-currency-display-credit
   cash:
-    1: Credit
+    1: SpaceCash
   canWithdraw: false

@@ -90,6 +90,5 @@
   - type: ActivatableUI
     key: enum.StoreUiKey.Key
   - type: Store
-    preset: StorePresetGeneralVoid
     balance:
       Credit: 5000

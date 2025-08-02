@@ -4,6 +4,11 @@
   description: flavor-complex-bacchus
 
 - type: flavor
+  id: triple-citrus
+  flavorType: Complex
+  description: flavor-complex-triple-citrus
+
+- type: flavor
   id: unholy
   flavorType: Complex
   description: flavor-complex-unholy
@@ -232,3 +237,88 @@
   id: demonicwatermelon
   flavorType: Complex
   description: flavor-complex-demonic-watermelon
+
+- type: flavor
+  id: flaming-moe
+  flavorType: Complex
+  description: flavor-complex-flaming-moe
+
+- type: flavor
+  id: ginsonic
+  flavorType: Complex
+  description: flavor-complex-ginsonic
+
+- type: flavor
+  id: rainbow-sky
+  flavorType: Complex
+  description: flavor-complex-rainbow-sky
+
+- type: flavor
+  id: three-mile-island-iced-tea
+  flavorType: Complex
+  description: flavor-complex-three-mile-island-iced-tea
+
+- type: flavor
+  id: iron
+  flavorType: Base
+  description: flavor-base-iron
+
+- type: flavor
+  id: acrid
+  flavorType: Base
+  description: flavor-base-acrid
+
+- type: flavor
+  id: fiery
+  flavorType: Base
+  description: flavor-base-fiery
+
+- type: flavor
+  id: zesty
+  flavorType: Base
+  description: flavor-base-zesty
+
+- type: flavor
+  id: rich
+  flavorType: Base
+  description: flavor-base-rich
+
+- type: flavor
+  id: crisp
+  flavorType: Base
+  description: flavor-base-crisp
+
+- type: flavor
+  id: smoky
+  flavorType: Base
+  description: flavor-base-smoky
+
+- type: flavor
+  id: musty
+  flavorType: Base
+  description: flavor-base-musty
+
+- type: flavor
+  id: petroleum
+  flavorType: Base
+  description: flavor-base-petroleum
+
+- type: flavor
+  id: robust
+  flavorType: Base
+  description: flavor-base-robust
+
+- type: flavor
+  id: chaotic
+  flavorType: Base
+  description: flavor-base-chaotic
+
+- type: flavor
+  id: cum
+  flavorType: Base
+  description: flavor-base-cum
+
+- type: flavor
+  id: money
+  flavorType: Base
+  description: flavor-base-money

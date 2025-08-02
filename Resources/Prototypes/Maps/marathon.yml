@@ -1,7 +1,7 @@
 - type: gameMap
   id: Marathon
   mapName: 'Marathon Station'
-  mapPath: Maps/_Wega/wegamarathon.yml #Corvax-Wega-Maps
+  mapPath: /Maps/_Wega/wegamarathon.yml #Corvax-Wega-Maps
   # Corvax-start
   minPlayers: 25
   maxPlayers: 55

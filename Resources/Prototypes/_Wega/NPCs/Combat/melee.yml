@@ -42,11 +42,7 @@
             damageAmount: 5
             cooldown: 1.5
 
-    - preconditions:
-        - !type:KeyExistsPrecondition
-          key: AttackTarget
-          invert: true
-      tasks:
+    - tasks:
         # Trying to eat
         - !type:HTNCompoundTask
           task: SlimeHungryBehavior

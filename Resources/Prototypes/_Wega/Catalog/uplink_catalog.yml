@@ -84,7 +84,7 @@
   cost:
     Telecrystal: 5
   categories:
-  - UplinkMisc
+  - UplinkPointless
   conditions:
   - !type:BuyerWhitelistCondition
     blacklist:

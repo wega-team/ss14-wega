@@ -5,7 +5,7 @@
   description: Go to the GhostBar!
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions, state: ghostbar }
+    icon: _Wega/Interface/Actions/ghostbar.png
     checkCanInteract: false
     startDelay: true
     useDelay: 30

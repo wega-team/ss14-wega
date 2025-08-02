@@ -15,8 +15,6 @@
         - type: StationEmergencyShuttle
           emergencyShuttlePath: /Maps/_Wega/Shuttles/emeraldemergency.yml
         - type: StationJobs
-          overflowJobs:
-            - Passenger
           availableJobs:
             #service
             Captain: [ 1, 1 ]

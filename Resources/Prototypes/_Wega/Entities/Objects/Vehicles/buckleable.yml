@@ -16,7 +16,7 @@
     baseWalkSpeed: 4.5
     baseSprintSpeed: 6
   - type: Repairable
-    fuelcost: 20
+    fuelCost: 20
     doAfterDelay: 20
   - type: Damageable
     damageContainer: Inorganic
@@ -215,8 +215,6 @@
           path: /Audio/Effects/Vehicle/vehiclestartup.ogg
           params:
             volume: -3
-  - type: StealTarget
-    stealGroup: VehicleSecway
 
 - type: entity
   parent: BaseVehicleRideable
@@ -244,7 +242,6 @@
     baseSprintSpeed: 7
   - type: Strap
     buckleOffset: "0.1, -0.05"
-    maxBuckleDistance: 1
   - type: UnpoweredFlashlight
   - type: PointLight
     enabled: false

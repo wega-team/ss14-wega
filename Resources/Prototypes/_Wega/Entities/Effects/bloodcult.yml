@@ -48,7 +48,9 @@
     sprite: _Wega/Structures/Specific/bloodcult_structures.rsi
   - type: Appearance
     appearanceDataInit:
-      enum.RuneColorVisuals.Color: Red
+      enum.RuneColorVisuals.Color:
+        !type:String
+        "#ff0000"
   - type: BloodRune
     prototype: default
   - type: TimedDespawn

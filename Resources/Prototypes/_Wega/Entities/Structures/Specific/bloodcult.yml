@@ -11,7 +11,9 @@
   - type: InteractionOutline
   - type: Appearance
     appearanceDataInit:
-      enum.RuneColorVisuals.Color: Red
+      enum.RuneColorVisuals.Color:
+        !type:String
+        "#ff0000"
   - type: Physics
     bodyType: Static
   - type: UseDelay

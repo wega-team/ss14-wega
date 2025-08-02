@@ -41,5 +41,5 @@
     defaultRotation: 0
     horizontalRotation: 0
   - type: MovementSpeedModifier
-    walkSpeedModifier: 8
+    baseWalkSpeed: 8
     baseSprintSpeed: 8

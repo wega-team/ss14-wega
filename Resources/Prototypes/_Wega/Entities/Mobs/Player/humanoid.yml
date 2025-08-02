@@ -152,5 +152,5 @@
         settings: short
     - type: RandomMetadata
       nameSegments:
-        - NamesFirstMilitaryLeader
-        - NamesLastMilitary
+        - NamesMilitaryFirstLeader
+        - NamesMilitaryLast

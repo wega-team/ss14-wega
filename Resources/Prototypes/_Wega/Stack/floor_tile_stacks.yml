@@ -1,5 +1,5 @@
 - type: stack
   id: FloorTileItemSepia
-  name: steel dark checker tile
+  name: stack-sepia-floor
   spawn: FloorTileItemSepia
   maxCount: 30

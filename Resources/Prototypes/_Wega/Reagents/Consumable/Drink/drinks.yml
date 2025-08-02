@@ -5,7 +5,7 @@
   group: Drinks
   desc: reagent-desc-cafe-mocha
   physicalDesc: reagent-physical-desc-creamy
-  flavor: cafe-mocha
+  flavor: funny
   color: "#6f4e37"
   metamorphicSprite:
     sprite: _Wega/Objects/Consumable/Drinks/cafemochaglass.rsi
@@ -62,7 +62,7 @@
   group: Drinks
   desc: reagent-desc-gibb-floats
   physicalDesc: reagent-physical-desc-fizzy
-  flavor: gibb-floats
+  flavor: fizzy
   color: "#9400d3"
   metamorphicSprite:
     sprite: _Wega/Objects/Consumable/Drinks/gibbfloatsglass.rsi
@@ -81,7 +81,7 @@
   group: Drinks
   desc: reagent-desc-milkshake
   physicalDesc: reagent-physical-desc-creamy
-  flavor: milkshake
+  flavor: sweet
   color: "#ffddc1"
   metamorphicSprite:
     sprite: _Wega/Objects/Consumable/Drinks/milkshakeglass.rsi
@@ -138,7 +138,7 @@
   group: Drinks
   desc: reagent-desc-true-milkshake
   physicalDesc: reagent-physical-desc-slimy
-  flavor: true-milkshake
+  flavor: sweet
   color: "#fff0f5"
   metamorphicSprite:
     sprite: _Wega/Objects/Consumable/Drinks/milkshakeglass.rsi

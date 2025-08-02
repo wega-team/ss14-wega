@@ -110,7 +110,7 @@ public sealed class PainSystem : EntitySystem
                 break;
 
             case PainEffectType.MovementPenalty:
-                _stun.TrySlowdown(uid, TimeSpan.FromSeconds(3), true, 0.75f, 0.75f);
+                _stun.TrySlowdown(uid, TimeSpan.FromSeconds(effect.Duration), true, effect.SpeedMultiplier, effect.SpeedMultiplier);
                 break;
 
             case PainEffectType.DropItem:
@@ -119,7 +119,7 @@ public sealed class PainSystem : EntitySystem
                 break;
 
             case PainEffectType.Stun:
-                _stun.TryKnockdown(uid, TimeSpan.FromSeconds(3), true);
+                _stun.TryKnockdown(uid, TimeSpan.FromSeconds(effect.Duration), true);
                 break;
 
             case PainEffectType.Vomit:
@@ -127,7 +127,7 @@ public sealed class PainSystem : EntitySystem
                 break;
 
             case PainEffectType.Twitch:
-                _jittering.DoJitter(uid, TimeSpan.FromSeconds(15), true);
+                _jittering.DoJitter(uid, TimeSpan.FromSeconds(effect.Duration), true);
                 break;
         }
     }
