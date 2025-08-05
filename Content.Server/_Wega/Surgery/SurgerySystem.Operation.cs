@@ -1,6 +1,7 @@
 using System.Linq;
 using Content.Server.Body.Components;
 using Content.Server.Body.Systems;
+using Content.Shared._Wega.Android;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Organ;
@@ -94,7 +95,7 @@ public sealed partial class SurgerySystem
         }
 
         // Any action without anesthesia will cause pain.
-        if (!HasComp<SleepingComponent>(patient) && !HasComp<PainNumbnessComponent>(patient) && !comp.OperatedPart && !_mobState.IsDead(patient))
+        if (!HasComp<SleepingComponent>(patient) && !HasComp<PainNumbnessComponent>(patient) && !comp.OperatedPart && !_mobState.IsDead(patient) && !TryComp<AndroidComponent>(patient, out _))
             _chat.TryEmoteWithoutChat(patient, _proto.Index<EmotePrototype>("Scream"), true);
     }
 
@@ -109,7 +110,7 @@ public sealed partial class SurgerySystem
             return;
         }
 
-        if (!TryComp<BloodstreamComponent>(patient, out _))
+        if (!TryComp<BloodstreamComponent>(patient, out _) || TryComp<AndroidComponent>(patient, out _))
             return;
 
         _bloodstream.TryModifyBleedAmount(patient.Owner, 2f);
@@ -138,7 +139,7 @@ public sealed partial class SurgerySystem
             return;
         }
 
-        if (!HasComp<BloodstreamComponent>(patient))
+        if (!HasComp<BloodstreamComponent>(patient) || TryComp<AndroidComponent>(patient, out _))
             return;
 
         _bloodstream.TryModifyBleedAmount(patient.Owner, -10f);
@@ -195,7 +196,7 @@ public sealed partial class SurgerySystem
             _hands.TryPickupAnyHand(patient.Comp.Surgeon.Value, organId);
         }
 
-        if (HasComp<BloodstreamComponent>(patient))
+        if (HasComp<BloodstreamComponent>(patient) && !TryComp<AndroidComponent>(patient, out _))
             _bloodstream.TryModifyBleedAmount(patient.Owner, 2f);
     }
 
@@ -294,7 +295,7 @@ public sealed partial class SurgerySystem
             }
         }
 
-        if (HasComp<BloodstreamComponent>(patient))
+        if (HasComp<BloodstreamComponent>(patient) && !TryComp<AndroidComponent>(patient, out _))
             _bloodstream.TryModifyBleedAmount(patient.Owner, 2f);
     }
 

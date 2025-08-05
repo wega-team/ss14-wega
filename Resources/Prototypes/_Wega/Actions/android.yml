@@ -1,0 +1,14 @@
+- type: entity
+  parent: BaseAction
+  id: ActionToggleLock
+  name: "Toggle Lock"
+  description: "Toggle your electronic lock."
+  components:
+  - type: Action
+    itemIconStyle: NoItem
+    icon:
+      sprite: _Wega/Interface/Actions/actions_android.rsi
+      state: toggle-lock
+    useDelay: 0.5
+  - type: InstantAction
+    event: !type:ToggleLockActionEvent
