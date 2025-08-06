@@ -1,0 +1,28 @@
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckFlashNeck
+  name: Flash neck
+  description: Coolitem
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Neck/Misc/flash_neck.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Neck/Misc/flash_neck.rsi
+  - type: ImpulseFlash
+    FlashAction: ActionToggleFlashNeck
+
+- type: entity
+  parent: BaseAction
+  id: ActionToggleFlashNeck
+  name: Turn Flash
+  description: Turn flash
+  components:
+  - type: Action
+    useDelay: 30
+    sound:
+      path: /Audio/Weapons/flash.ogg
+      params:
+        volume: 5
+    itemIconStyle: BigItem
+  - type: InstantAction
+    event: !type:MaskFlashActionEvent

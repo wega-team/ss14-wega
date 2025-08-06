@@ -1,6 +1,10 @@
 using Content.Shared.Charges.Components;
 using Content.Shared.Charges.Systems;
 using Content.Shared.Clothing; // Corvax-Wega-Wielder
+using Content.Shared.ImpulseFlash.Components; // Corvax-Wega-Wielder
+using Content.Shared.Actions; // Corvax-Wega-Wielder
+using Content.Shared.Inventory.Events; // Corvax-Wega-Wielder
+using Content.Shared.Inventory; // Corvax-Wega-Wielder
 using Content.Shared.Examine;
 using Content.Shared.Eye.Blinding.Components;
 using Content.Shared.Flash.Components;
@@ -29,6 +33,7 @@ public abstract class SharedFlashSystem : EntitySystem
 {
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
+	[Dependency] private readonly InventorySystem _inventorySystem = default!;
     [Dependency] private readonly SharedChargesSystem _sharedCharges = default!;
     [Dependency] private readonly EntityLookupSystem _entityLookup = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
@@ -58,7 +63,9 @@ public abstract class SharedFlashSystem : EntitySystem
         SubscribeLocalEvent<FlashComponent, UseInHandEvent>(OnFlashUseInHand);
         SubscribeLocalEvent<FlashComponent, LightToggleEvent>(OnLightToggle);
         SubscribeLocalEvent<FlashImmunityComponent, ItemMaskToggledEvent>(OnMaskToggled); // Corvax-Wega-Wielder
-        SubscribeLocalEvent<PermanentBlindnessComponent, FlashAttemptEvent>(OnPermanentBlindnessFlashAttempt);
+		SubscribeLocalEvent<ImpulseFlashComponent, MaskFlashActionEvent>(OnFlashPulse); // Corvax-Wega-Wielder
+		SubscribeLocalEvent<ImpulseFlashComponent, GetItemActionsEvent>(OnGetItemActions); // Corvax-Wega-Wielder
+        SubscribeLocalEvent<PermanentBlindnessComponent, FlashAttemptEvent>(OnPermanentBlindnessFlashAttempt); 
         SubscribeLocalEvent<TemporaryBlindnessComponent, FlashAttemptEvent>(OnTemporaryBlindnessFlashAttempt);
         Subs.SubscribeWithRelay<FlashImmunityComponent, FlashAttemptEvent>(OnFlashImmunityFlashAttempt, held: false);
         SubscribeLocalEvent<FlashImmunityComponent, ExaminedEvent>(OnExamine);
@@ -260,6 +267,21 @@ public abstract class SharedFlashSystem : EntitySystem
     {
         component.Enabled = !args.Mask.Comp.IsToggled;
     }
+	
+	private void OnFlashPulse(Entity<ImpulseFlashComponent> ent,ref MaskFlashActionEvent args)
+	{
+            FlashArea(ent,ent, ent.Comp.Range, ent.Comp.Duration, probability: ent.Comp.Probability);
+            args.Handled = true;
+	}
+    
+	private void OnGetItemActions(Entity<ImpulseFlashComponent> ent, ref GetItemActionsEvent args)
+    {
+        if (_inventorySystem.InSlotWithFlags(ent.Owner, SlotFlags.HEAD) || _inventorySystem.InSlotWithFlags(ent.Owner, SlotFlags.NECK))
+		{
+			var comp = ent.Comp;
+			args.AddAction(ref comp.FlashActionEntity, comp.FlashAction);
+		}
+	}
     // Corvax-Wega-Wielder-end
 
     private void OnTemporaryBlindnessFlashAttempt(Entity<TemporaryBlindnessComponent> ent, ref FlashAttemptEvent args)

@@ -46,3 +46,40 @@
       Hair: HEAD
       HeadTop : HEAD
       HeadSide : HEAD
+
+- type: entity
+  parent: ClothingHeadHelmetBasic
+  id: ClothingHeadHelmetFlash
+  name: flash halmet
+  description: Cool item
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Head/Hats/flash_halmet.rsi
+    layers:
+    - state: icon
+  - type: Clothing
+    sprite: _Wega/Clothing/Head/Hats/flash_halmet.rsi
+  - type: ImpulseFlash
+  - type: HideLayerClothing
+    layers:
+      Hair: HEAD
+  
+
+- type: entity
+  parent: BaseAction
+  id: ActionToggleFlashHelm
+  name: Turn flash
+  description: Turn flash
+  components:
+  - type: Action
+    useDelay: 15
+    icon:
+      sprite: Objects/Weapons/Melee/flash.rsi
+      state: flash
+    sound:
+      path: /Audio/Weapons/flash.ogg
+      params:
+        volume: 5
+    itemIconStyle: BigItem
+  - type: InstantAction
+    event: !type:MaskFlashActionEvent
