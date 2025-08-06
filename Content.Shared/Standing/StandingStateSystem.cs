@@ -1,8 +1,12 @@
-using Content.Shared.Crawling; // Corvax-Wega-Crawling
+using Content.Shared.Body.Components; // Corvax-Wega-Surgery
+using Content.Shared.Body.Part; // Corvax-Wega-Surgery
+using Content.Shared.Buckle.Components; // Corvax-Wega-Surgery
 using Content.Shared.Hands.Components;
+using Content.Shared.Movement.Events;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Physics;
 using Content.Shared.Rotation;
+using Content.Shared.Stunnable; // Corvax-Wega-Surgery
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Systems;
@@ -14,15 +18,21 @@ public sealed class StandingStateSystem : EntitySystem
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
+    [Dependency] private readonly SharedStunSystem _stun = default!; // Corvax-Wega-Surgery
 
     // If StandingCollisionLayer value is ever changed to more than one layer, the logic needs to be edited.
-    private const int StandingCollisionLayer = (int) CollisionGroup.MidImpassable;
+    public const int StandingCollisionLayer = (int)CollisionGroup.MidImpassable;
 
     public override void Initialize()
     {
         base.Initialize();
         SubscribeLocalEvent<StandingStateComponent, AttemptMobCollideEvent>(OnMobCollide);
         SubscribeLocalEvent<StandingStateComponent, AttemptMobTargetCollideEvent>(OnMobTargetCollide);
+        SubscribeLocalEvent<StandingStateComponent, RefreshMovementSpeedModifiersEvent>(OnRefreshMovementSpeedModifiers);
+        SubscribeLocalEvent<StandingStateComponent, RefreshFrictionModifiersEvent>(OnRefreshFrictionModifiers);
+        SubscribeLocalEvent<StandingStateComponent, TileFrictionEvent>(OnTileFriction);
+        SubscribeLocalEvent<StandingStateComponent, BodyPartRemovedEvent>(OnBodyPartRemoved); // Corvax-Wega-Surgery
+        SubscribeLocalEvent<StandingStateComponent, UnbuckledEvent>(OnUnbuckled); // Corvax-Wega-Surgery
     }
 
     private void OnMobTargetCollide(Entity<StandingStateComponent> ent, ref AttemptMobTargetCollideEvent args)
@@ -40,6 +50,44 @@ public sealed class StandingStateSystem : EntitySystem
             args.Cancelled = true;
         }
     }
+
+    private void OnRefreshMovementSpeedModifiers(Entity<StandingStateComponent> entity, ref RefreshMovementSpeedModifiersEvent args)
+    {
+        if (!entity.Comp.Standing)
+            args.ModifySpeed(entity.Comp.FrictionModifier);
+    }
+
+    private void OnRefreshFrictionModifiers(Entity<StandingStateComponent> entity, ref RefreshFrictionModifiersEvent args)
+    {
+        if (entity.Comp.Standing)
+            return;
+
+        args.ModifyFriction(entity.Comp.FrictionModifier);
+        args.ModifyAcceleration(entity.Comp.FrictionModifier);
+    }
+
+    private void OnTileFriction(Entity<StandingStateComponent> entity, ref TileFrictionEvent args)
+    {
+        if (!entity.Comp.Standing)
+            args.Modifier *= entity.Comp.FrictionModifier;
+    }
+
+    // Corvax-Wega-Surgery-Start
+    private void OnBodyPartRemoved(Entity<StandingStateComponent> ent, ref BodyPartRemovedEvent args)
+    {
+        if (args.Part.Comp.PartType == BodyPartType.Leg)
+        {
+            if (!TryComp<BodyComponent>(ent, out var body) || body.LegEntities.Count < body.RequiredLegs)
+                _stun.TryKnockdown(ent.Owner, SharedStunSystem.DefaultKnockedDuration, true, false, false);
+        }
+    }
+
+    private void OnUnbuckled(Entity<StandingStateComponent> ent, ref UnbuckledEvent args)
+    {
+        if (TryComp<BodyComponent>(ent, out var body) && body.LegEntities.Count < body.RequiredLegs)
+            _stun.TryKnockdown(ent.Owner, SharedStunSystem.DefaultKnockedDuration, true, false, false);
+    }
+    // Corvax-Wega-Surgery-End
 
     public bool IsDown(EntityUid uid, StandingStateComponent? standingState = null)
     {
@@ -94,7 +142,7 @@ public sealed class StandingStateSystem : EntitySystem
         _appearance.SetData(uid, RotationVisuals.RotationState, RotationState.Horizontal, appearance);
 
         // Change collision masks to allow going under certain entities like flaps and tables
-        if (TryComp(uid, out FixturesComponent? fixtureComponent) && (!TryComp(uid, out CrawlingComponent? crawling) || !crawling.IsCrawling)) // Corvax-Wega-Crawling-Edit
+        if (TryComp(uid, out FixturesComponent? fixtureComponent))
         {
             foreach (var (key, fixture) in fixtureComponent.Fixtures)
             {
@@ -145,8 +193,6 @@ public sealed class StandingStateSystem : EntitySystem
 
         standingState.Standing = true;
         Dirty(uid, standingState);
-        if (TryComp(uid, out CrawlingComponent? crawling)) // Corvax-Wega-Crawling
-            crawling.IsCrawling = false; // Corvax-Wega-Crawling
 
         RaiseLocalEvent(uid, new StoodEvent(), false);
 

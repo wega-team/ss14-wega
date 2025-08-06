@@ -44,12 +44,9 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
     [Dependency] private readonly GrammarSystem _grammarSystem = default!;
     [Dependency] private readonly SharedIdentitySystem _identity = default!;
     private ISharedSponsorsManager? _sponsors;
+    public static readonly ProtoId<SpeciesPrototype> DefaultSpecies = "Human";
+    public const string DefaultBarkVoice = "BarksGoonSpeak1"; // Corvax-Wegs-Barks
 
-    [ValidatePrototypeId<SpeciesPrototype>]
-    public const string DefaultSpecies = "Human";
-    // Corvax-Wegs-Barks-Start
-    public const string DefaultBarkVoice = "BarksGoonSpeak1";
-    // Corvax-Wegs-Barks-End
     // Corvax-TTS-Start
     public const string DefaultVoice = "Garithos";
     public static readonly Dictionary<Sex, string> DefaultSexVoice = new()

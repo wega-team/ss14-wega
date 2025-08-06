@@ -47,12 +47,14 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Player;
 using Robust.Shared.Timing;
 using Content.Shared.Disease.Components;
+using Content.Shared.NullRod.Components;
 // Corvax-Wega-Revenant-end
 
 namespace Content.Server.Revenant.EntitySystems;
 
 public sealed partial class RevenantSystem
 {
+    [Dependency] private readonly EmagSystem _emagSystem = default!;
     [Dependency] private readonly ThrowingSystem _throwing = default!;
     [Dependency] private readonly EntityStorageSystem _entityStorage = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
@@ -176,7 +178,8 @@ public sealed partial class RevenantSystem
             return;
         }
 
-        if (TryComp<MobStateComponent>(target, out var mobstate) && mobstate.CurrentState == MobState.Alive && !HasComp<SleepingComponent>(target))
+        if (TryComp<MobStateComponent>(target, out var mobstate) && mobstate.CurrentState == MobState.Alive && !HasComp<SleepingComponent>(target)
+            || HasComp<NullRodOwnerComponent>(target)) // Corvax-Wega-NullRod
         {
             _popup.PopupEntity(Loc.GetString("revenant-soul-too-powerful"), target, uid);
             return;
@@ -365,6 +368,9 @@ public sealed partial class RevenantSystem
         var emo = GetEntityQuery<DiseaseCarrierComponent>();
         foreach (var ent in _lookup.GetEntitiesInRange(uid, component.BlightRadius))
         {
+            if (HasComp<NullRodOwnerComponent>(ent))
+                continue;
+
             if (emo.TryGetComponent(ent, out var comp))
                 _disease.TryAddDisease(ent, component.BlightDiseasePrototypeId, comp);
         }
@@ -387,8 +393,7 @@ public sealed partial class RevenantSystem
                 _whitelistSystem.IsBlacklistPass(component.MalfunctionBlacklist, ent))
                 continue;
 
-            var ev = new GotEmaggedEvent(uid, EmagType.Interaction | EmagType.Access);
-            RaiseLocalEvent(ent, ref ev);
+            _emagSystem.TryEmagEffect(uid, uid, ent);
         }
     }
 
@@ -410,7 +415,7 @@ public sealed partial class RevenantSystem
                     ? Loc.GetString("revenant-transmit-default-message")
                     : message;
 
-                if (!TryComp<ActorComponent>(target, out var targetActor))
+                if (!TryComp<ActorComponent>(target, out var targetActor) || HasComp<NullRodOwnerComponent>(target))
                     return;
 
                 _prayerSystem.SendSubtleMessage(targetActor.PlayerSession, targetActor.PlayerSession, finalMessage, Loc.GetString("revenant-transmit-default-message"));
@@ -524,6 +529,9 @@ public sealed partial class RevenantSystem
             .ToList();
         foreach (var victimEntity in victimInRange)
         {
+            if (HasComp<NullRodOwnerComponent>(victimEntity))
+                continue;
+
             _hallucinations.StartHallucinations(victimEntity, "Hallucinations", TimeSpan.FromSeconds(30f), true, "MindBreaker");
         }
     }

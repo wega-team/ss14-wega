@@ -29,3 +29,5 @@ ghost-role-information-harvester-name = Жнец
 ghost-role-information-harvester-description = Самокопирующися союзник.
 ghost-role-information-proteon-name = Протеон
 ghost-role-information-proteon-description = Слаб.
+ghost-role-information-possessed-blade-name = Одержимый меч
+ghost-role-information-possessed-blade-description = Ты — древний клинок, пропитанный жаждой крови. Твоя душа, заточённая в стали, жаждет разрушения.

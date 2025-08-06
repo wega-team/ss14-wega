@@ -557,7 +557,7 @@ public sealed partial class VampireSystem : SharedVampireSystem
             }
 
             RemComp<ThrallComponent>(uid);
-            _stun.TryParalyze(uid, stunTime, true);
+            _stun.TryUpdateParalyzeDuration(uid, stunTime);
             _popup.PopupEntity(Loc.GetString("thrall-break-control", ("name", name)), uid);
         }
     }

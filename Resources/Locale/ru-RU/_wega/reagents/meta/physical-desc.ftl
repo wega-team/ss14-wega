@@ -6,3 +6,5 @@ reagent-physical-desc-sophisticated = изысканное
 reagent-physical-desc-fruity = фруктовое
 reagent-physical-desc-warm = тёплое
 reagent-physical-desc-earthy = земляное
+reagent-physical-desc-cum = солоноватое
+reagent-physical-desc-bitter = горькое

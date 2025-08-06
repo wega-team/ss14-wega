@@ -9,8 +9,8 @@
     offState: off
     brokenState: broken
     normalState: normal-unshaded
-  - type: Advertise
-    pack: IntimatAds
+  - type: DatasetVocalizer
+    dataset: IntimatAds
   - type: SpeakOnUIClosed
     pack: IntimatGoodbyes
   - type: Speech
@@ -40,8 +40,8 @@
     offState: off
     brokenState: broken
     normalState: normal-unshaded
-  - type: Advertise
-    pack: CosinessAds
+  - type: DatasetVocalizer
+    dataset: CosinessAds
   - type: SpeakOnUIClosed
     pack: CosinessGoodbyes
   - type: Speech

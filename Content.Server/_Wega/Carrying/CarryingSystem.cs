@@ -8,7 +8,6 @@ using Content.Server.Inventory;
 using Content.Shared.Mobs;
 using Content.Shared.DoAfter;
 using Content.Shared.Buckle.Components;
-using Content.Shared.Hands.Components;
 using Content.Shared.Hands;
 using Content.Shared.Stunnable;
 using Content.Shared.Interaction.Events;
@@ -30,7 +29,6 @@ using Content.Shared.Movement.Pulling.Systems;
 using Robust.Server.GameObjects;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Components;
-using Content.Shared.Crawling;
 using Content.Shared.Hands.EntitySystems;
 
 namespace Content.Server.Carrying
@@ -87,7 +85,7 @@ namespace Content.Server.Carrying
             if (HasComp<BeingCarriedComponent>(args.User) || HasComp<BeingCarriedComponent>(args.Target))
                 return;
 
-            if (TryComp(args.User, out CrawlingComponent? crawling) && crawling.IsCrawling)
+            if (TryComp(args.User, out StandingStateComponent? standing) && !standing.Standing)
                 return;
 
             if (!_mobStateSystem.IsAlive(args.User))
