@@ -7,7 +7,7 @@
     - type: AutoRecharge
       rechargeDuration: 30
     - type: Flash
-      MeleeStunDuration: 4
+      meleeStunDuration: 4
     - type: Item
       sprite: _Wega/Objects/Weapons/Melee/exmflash.rsi
     - type: Sprite
