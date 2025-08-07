@@ -50,6 +50,7 @@
 ## Recipes
 
 # Clothing
+
 - type: latheRecipe
   id: ClothingBackpackElectropack
   result: ClothingBackpackElectropack
@@ -70,6 +71,18 @@
   materials:
     Steel: 300
     Glass: 200
+
+- type: latheRecipe
+  id: PortableRecharger
+  result: PortableRecharger
+  categories:
+  - Clothing
+  completetime: 15
+  materials: # Corvax-Wega-Arsenal-start
+    Steel: 1000
+    Plastic: 500
+    Plasma: 250
+    Glass: 500 # Corvax-Wega-Arsenal-end
 
 - type: latheRecipe
   id: ClothingBackpackHarmpack

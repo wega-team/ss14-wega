@@ -3,18 +3,6 @@
 # Clothing
 
 - type: latheRecipe
-  id: PortableRecharger
-  result: PortableRecharger
-  categories:
-  - Clothing
-  completetime: 15
-  materials:
-    Steel: 1000
-    Plastic: 500
-    Plasma: 250
-    Glass: 500
-
-- type: latheRecipe
   id: PortableRechargerBag
   result: PortableRechargerBag
   categories:
