@@ -9,7 +9,7 @@
   - type: Clothing
     sprite: _Wega/Clothing/Neck/Misc/flash_neck.rsi
   - type: ImpulseFlash
-    FlashAction: ActionToggleFlashNeck
+    flashAction: ActionToggleFlashNeck
 
 - type: entity
   parent: BaseAction

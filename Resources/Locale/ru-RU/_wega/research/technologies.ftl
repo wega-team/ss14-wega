@@ -6,5 +6,5 @@ research-technology-surgical-tools = Хирургические инструме
 research-technology-virology = Вирусология
 research-technology-chemical-dispensary = Химический раздатчик
 research-technology-cloning = Клонирование
-research-technology-advanced-flash = Продвинутые устройства ослепления
-research-technology-advanced-weapon = Продвинутое лазерное вооружение
+research-technology-advanced-flash = Продвинутое ослепление
+research-technology-advanced-weapon = Продвинутое вооружение
