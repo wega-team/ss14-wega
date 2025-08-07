@@ -47,13 +47,14 @@
   cost: 7500
   recipeUnlocks:
   - WeaponLaserCarbine
+  - PortableRecharger # Corvax-Wega-Arsenal
 
 - type: technology
   id: NonlethalAmmunition
   name: research-technology-nonlethal-ammunition
   icon:
-    sprite: Objects/Weapons/Guns/Ammunition/Casings/shotgun_shell.rsi
-    state: beanbag
+    sprite: _Wega/Objects/Weapons/Melee/exmflash.rsi
+    state: flash
   discipline: Arsenal
   tier: 1
   cost: 5000
@@ -62,6 +63,7 @@
   - BoxShellTranquilizer
   - BoxBeanbag
   - WeaponDisabler
+  - ExmFlash # Corvax-Wega-Arsenal
 
 - type: technology
   id: UraniumMunitions
@@ -130,30 +132,35 @@
   - ClothingBackpackElectropack
 
 # Tier 2
-
+# Corvax-Wega-Arsenal
 - type: technology
   id: ConcentratedLaserWeaponry
-  name: research-technology-concentrated-laser-weaponry
+  name: research-technology-advanced-weapon
   icon:
     sprite: Objects/Weapons/Guns/Battery/laser_cannon.rsi
     state: icon
   discipline: Arsenal
   tier: 2
-  cost: 10000
+  cost: 12500
   recipeUnlocks:
   - WeaponLaserCannon
-
+  - WeaponXrayCannon
+  - PortableRechargerBag
+  - PortableRechargerTurbo
+  
 - type: technology
-  id: WaveParticleHarnessing
-  name: research-technology-wave-particle-harnessing
+  id: AdvancedFlash
+  name: research-technology-advanced-flash
   icon:
-    sprite: Objects/Weapons/Guns/Battery/xray.rsi
-    state: icon
+    sprite: _Wega/Clothing/Neck/Misc/flash_neck.rsi
+    state: reach
   discipline: Arsenal
   tier: 2
-  cost: 10000
+  cost: 7500
   recipeUnlocks:
-  - WeaponXrayCannon
+  - ClothingHeadHelmetFlash
+  - ClothingNeckFlashNeck
+# Corvax-Wega-Arsenal
 
 - type: technology
   id: KineticModifications
@@ -204,7 +211,7 @@
   - ClothingBackpackHarmpack
 
 # Tier 3
-
+# Corvax-Wega-Arsenal
 - type: technology
   id: PortableMicrofusionWeaponry
   name: research-technology-portable-microfusion-weaponry
@@ -216,19 +223,9 @@
   cost: 15000
   recipeUnlocks:
   - WeaponAdvancedLaser
-  - PortableRecharger
-
-- type: technology
-  id: ThermalWeaponry
-  name: research-technology-thermal-weaponry
-  icon:
-    sprite: Objects/Weapons/Guns/Battery/temp_gun.rsi
-    state: icon
-  discipline: Arsenal
-  tier: 3
-  cost: 15000
-  recipeUnlocks:
   - WeaponTemperatureGun
+  - PortableRechargerTurboBag
+# Corvax-Wega-Arsenal
 
 - type: technology
   id: AdvancedShuttleWeapon

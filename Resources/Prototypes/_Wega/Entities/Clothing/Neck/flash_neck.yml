@@ -2,7 +2,7 @@
   parent: ClothingNeckBase
   id: ClothingNeckFlashNeck
   name: Flash neck
-  description: Coolitem
+  description: A dazzling token, literally!
   components:
   - type: Sprite
     sprite: _Wega/Clothing/Neck/Misc/flash_neck.rsi
