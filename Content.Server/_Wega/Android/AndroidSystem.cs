@@ -6,6 +6,7 @@ using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Item.ItemToggle.Components;
 using Content.Shared.Light;
+using Content.Shared.Lock;
 using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
@@ -14,10 +15,12 @@ using Content.Shared.Movement.Systems;
 using Content.Shared.PDA;
 using Content.Shared.PowerCell;
 using Content.Shared.PowerCell.Components;
+using Robust.Shared.Audio;
 using JetBrains.FormatRipper.Elf;
 using Robust.Server.GameObjects;
 using Serilog;
 using System.Linq;
+using Content.Shared.Wires;
 
 namespace Content.Server._Wega.Android;
 
@@ -44,6 +47,23 @@ public sealed partial class AndroidSystem : SharedAndroidSystem
         SubscribeLocalEvent<AndroidComponent, ItemToggledEvent>(OnToggled);
 
         SubscribeLocalEvent<AndroidComponent, LightToggleEvent>(OnLightToggle);
+
+        SubscribeLocalEvent<AndroidComponent, ToggleLockActionEvent>(OnToggleLockAction);
+    }
+
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        var androidsQuery = EntityQueryEnumerator<AndroidComponent>();
+        while (androidsQuery.MoveNext(out var ent, out var component))
+        {
+            if (!Toggle.IsActivated(ent) && Timing.CurTime > component.NextDischargeStun)
+            {
+                DoDischargeStun(ent, component);
+                DelayDischargeStun(component);
+            }
+        }
     }
 
     private void OnStartup(EntityUid uid, AndroidComponent component, ComponentStartup args)
@@ -56,20 +76,7 @@ public sealed partial class AndroidSystem : SharedAndroidSystem
         UpdatePointLight(uid, component);
     }
 
-    private void UpdatePointLight(EntityUid uid, AndroidComponent component)
-    {
-        _pointLight.SetRadius(uid, Toggle.IsActivated(uid) ? component.BasePointLightRadiuse : component.BasePointLightRadiuse / 3f);
-        _pointLight.SetEnergy(uid, Toggle.IsActivated(uid) ? component.BasePointLightEnergy : component.BasePointLightEnergy * 1.5f);
-
-        if (!TryComp<HumanoidAppearanceComponent>(uid, out var appearance) || !TryComp<PointLightComponent>(uid, out var light))
-            return;
-
-        if (!appearance.MarkingSet.TryGetCategory(MarkingCategories.Special, out var markings) || markings.Count == 0)
-            return;
-
-        Color ledColor = markings[0].MarkingColors[0].WithAlpha(255);
-        _pointLight.SetColor(uid, ledColor, light);
-    }
+    #region Battery
 
     private void OnMobStateChanged(EntityUid uid, AndroidComponent component, MobStateChangedEvent args)
     {
@@ -136,4 +143,33 @@ public sealed partial class AndroidSystem : SharedAndroidSystem
         _alerts.ClearAlert(ent, ent.Comp.NoBatteryAlert);
         _alerts.ShowAlert(ent, ent.Comp.BatteryAlert, chargePercent);
     }
+
+    private void OnToggleLockAction(Entity<AndroidComponent> ent, ref ToggleLockActionEvent args)
+    {
+        if (args.Handled)
+            return;
+
+        var (uid, comp) = ent;
+
+        if (!TryComp<LockComponent>(uid, out var lockComp))
+            return;
+
+        if (TryComp<WiresPanelComponent>(uid, out var panelComp) && panelComp.Open)
+        {
+            Popup.PopupEntity(Loc.GetString("android-lock-panel-open"), uid, uid);
+            return;
+        }
+
+        Audio.PlayPvs(!lockComp.Locked ? lockComp.LockSound : lockComp.UnlockSound, uid, new AudioParams());
+        Popup.PopupEntity(Loc.GetString(!lockComp.Locked ? "android-lock-message" : "android-unlock-message"), uid, uid);
+
+        if (lockComp.Locked)
+            Lock.Unlock(uid, uid, lockComp);
+        else
+            Lock.Lock(uid, uid, lockComp);
+
+        args.Handled = true;
+    }
+
+    #endregion Battery
 }

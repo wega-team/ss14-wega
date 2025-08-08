@@ -36,6 +36,7 @@ public abstract partial class SharedAndroidSystem : EntitySystem
     [Dependency] protected readonly SharedCrawlingSystem Crawling = default!;
     [Dependency] protected readonly LockSystem Lock = default!;
     [Dependency] protected readonly SharedAudioSystem Audio = default!;
+    [Dependency] protected readonly SharedPointLightSystem PointLight = default!;
 
     public override void Initialize()
     {
@@ -43,26 +44,9 @@ public abstract partial class SharedAndroidSystem : EntitySystem
 
         SubscribeLocalEvent<AndroidComponent, ItemSlotInsertAttemptEvent>(OnItemSlotInsertAttempt);
         SubscribeLocalEvent<AndroidComponent, ItemSlotEjectAttemptEvent>(OnItemSlotEjectAttempt);
+        SubscribeLocalEvent<AndroidComponent, LockToggleAttemptEvent>(OnLockToggleAttempt);
 
         SubscribeLocalEvent<AndroidComponent, RefreshMovementSpeedModifiersEvent>(OnRefreshMovementSpeedModifiers);
-
-        SubscribeLocalEvent<AndroidComponent, ToggleLockActionEvent>(OnToggleLockAction);
-        SubscribeLocalEvent<AndroidComponent, LockToggleAttemptEvent>(OnLockToggleAttempt);
-    }
-
-    public override void Update(float frameTime)
-    {
-        base.Update(frameTime);
-
-        var androidsQuery = EntityQueryEnumerator<AndroidComponent>();
-        while (androidsQuery.MoveNext(out var ent, out var component))
-        {
-            if (!Toggle.IsActivated(ent) && Timing.CurTime > component.NextDischargeStun)
-            {
-                DoDischargeStun(ent, component);
-                DelayDischargeStun(component);
-            }
-        }
     }
 
     #region Battery
@@ -110,27 +94,6 @@ public abstract partial class SharedAndroidSystem : EntitySystem
         args.ModifySpeed(component.DischargeSpeedModifier, component.DischargeSpeedModifier);
     }
 
-    private void OnToggleLockAction(Entity<AndroidComponent> ent, ref ToggleLockActionEvent args)
-    {
-        if (args.Handled)
-            return;
-
-        var (uid, comp) = ent;
-
-        if (!TryComp<LockComponent>(uid, out var lockComp))
-            return;
-
-        Audio.PlayPvs(!lockComp.Locked ? lockComp.LockSound : lockComp.UnlockSound, uid, new AudioParams());
-        Popup.PopupEntity(Loc.GetString(!lockComp.Locked ? "android-lock-message" : "android-unlock-message"), uid, uid);
-
-        if (lockComp.Locked)
-            Lock.Unlock(uid, uid, lockComp);
-        else
-            Lock.Lock(uid, uid, lockComp);
-
-        args.Handled = true;
-    }
-
     private void OnLockToggleAttempt(Entity<AndroidComponent> ent, ref LockToggleAttemptEvent args)
     {
         if (args.Silent)
@@ -140,6 +103,21 @@ public abstract partial class SharedAndroidSystem : EntitySystem
     }
 
     #endregion Battery
+
+    public void UpdatePointLight(EntityUid uid, AndroidComponent component)
+    {
+        PointLight.SetRadius(uid, Toggle.IsActivated(uid) ? component.BasePointLightRadiuse : Math.Max(component.BasePointLightRadiuse / 3f, 1.3f));
+        PointLight.SetEnergy(uid, Toggle.IsActivated(uid) ? component.BasePointLightEnergy : component.BasePointLightEnergy * 1.5f);
+
+        if (!TryComp<HumanoidAppearanceComponent>(uid, out var appearance))
+            return;
+
+        if (!appearance.MarkingSet.TryGetCategory(MarkingCategories.Special, out var markings) || markings.Count == 0)
+            return;
+
+        Color ledColor = markings[0].MarkingColors[0].WithAlpha(255);
+        PointLight.SetColor(uid, ledColor);
+    }
 
     public void DelayDischargeStun(AndroidComponent component)
     {
