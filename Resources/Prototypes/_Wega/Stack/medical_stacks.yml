@@ -1,0 +1,5 @@
+- type: stack
+  id: Tyriumpack
+  name: stack-tyriumpack
+  spawn: Tyriumpack
+  maxCount: 10

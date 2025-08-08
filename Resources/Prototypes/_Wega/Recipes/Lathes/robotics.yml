@@ -2,3 +2,23 @@
   parent: BaseGoldBorgModuleRecipe
   id: BorgModuleSurgery
   result: BorgModuleSurgery
+
+- type: latheRecipe
+  parent: BaseRoboticsRecipe
+  id: Tyriumpack
+  result: Tyriumpack1
+  completetime: 1
+  materials:
+    Steel: 20
+    Plastic: 20
+    Plasma: 15
+
+- type: latheRecipe
+  parent: BaseRoboticsRecipe
+  id: AndroidBodyPart
+  result: AndroidBodyPart
+  completetime: 5
+  materials:
+    Steel: 300
+    Plastic: 250
+    Silver: 150

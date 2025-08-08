@@ -245,6 +245,7 @@
     whitelist:
       components:
       - BorgChassis
+      - Android #Corvax-Wega-Android
   - type: Construction
     containers:
     - machine_parts
@@ -288,6 +289,7 @@
     whitelist:
       components:
       - BorgChassis
+      - Android #Corvax-Wega-Android
   - type: ContainerContainer
     containers:
       entity_storage: !type:Container

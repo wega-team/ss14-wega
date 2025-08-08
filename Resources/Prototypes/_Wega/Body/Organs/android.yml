@@ -1,0 +1,65 @@
+- type: entity
+  id: OrganAndroidGas
+  parent: BaseHumanOrgan
+  name: "android gas system"
+  description: "Collects nitrogen from the atmosphere for cooling system."
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Android/parts.rsi
+    layers:
+      - state: gas_module
+  - type: Lung
+  - type: Metabolizer
+    removeEmpty: true
+    solutionOnBody: false
+    solution: "Lung"
+    metabolizerTypes: [ Slime ]
+    groups:
+    - id: Gas
+      rateModifier: 100.0
+  - type: SolutionContainerManager
+    solutions:
+      Lung:
+        maxVol: 100.0
+        canReact: false
+  - type: Organ
+    organType: Lungs
+  - type: Tag
+    tags:
+      - Lungs
+      - LungsSynthetic
+
+- type: entity
+  id: OrganAndroidTyrium
+  parent: BaseHumanOrgan
+  name: "tyrium pump"
+  description: "Pumps blue blood through blue veins."
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Android/parts.rsi
+    layers:
+      - state: tyrium_module
+  - type: Heart
+  - type: Organ
+    organType: Heart
+  - type: Tag
+    tags:
+      - Heart
+      - HeartSynthetic
+
+- type: entity
+  id: OrganAndroidEyes
+  parent: BaseHumanOrgan
+  name: "android cameras"
+  description: "High-tech cameras with bluespace neural networks."
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Android/parts.rsi
+    layers:
+      - state: eye_module
+  - type: Organ
+    organType: Eyes
+  - type: Tag
+    tags:
+      - Eyes
+      - EyesSynthetic

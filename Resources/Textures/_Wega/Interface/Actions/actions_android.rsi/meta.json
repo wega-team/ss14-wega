@@ -9,6 +9,12 @@
     "states": [
         {
             "name": "toggle-lock"
+        },
+        {
+            "name": "light-off"
+        },
+        {
+            "name": "light-on"
         }
     ]
 }

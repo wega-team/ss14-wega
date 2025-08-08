@@ -1,0 +1,46 @@
+- type: body
+  id: Android
+  name: "андроид"
+  root: torso
+  slots:
+    head:
+      part: HeadAndroid
+      connections:
+      - torso
+      organs:
+        brain: PositronicBrain
+        eyes: OrganAndroidEyes
+    torso:
+      part: TorsoHuman
+      connections:
+      - right_arm
+      - left_arm
+      - right_leg
+      - left_leg
+      organs:
+        heart: OrganAndroidTyrium
+        lungs: OrganAndroidGas
+    right_arm:
+      part: RightArmAndroid
+      connections:
+      - right_hand
+    left_arm:
+      part: LeftArmAndroid
+      connections:
+      - left_hand
+    right_hand:
+      part: RightHandAndroid
+    left_hand:
+      part: LeftHandAndroid
+    right_leg:
+      part: RightLegAndroid
+      connections:
+      - right_foot
+    left_leg:
+      part: LeftLegAndroid
+      connections:
+      - left_foot
+    right_foot:
+      part: RightFootAndroid
+    left_foot:
+      part: LeftFootAndroid

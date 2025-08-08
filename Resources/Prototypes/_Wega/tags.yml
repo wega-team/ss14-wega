@@ -1,4 +1,7 @@
 - type: Tag
+  id: Android
+
+- type: Tag
   id: SoulStone
 
 - type: Tag
@@ -110,6 +113,41 @@
 - type: Tag
   id: SubdermalHeadImplant
 # Surgery end
+
+# Synthetic Surgery
+- type: Tag
+  id: LungsSynthetic
+
+- type: Tag
+  id: HeartSynthetic
+
+- type: Tag
+  id: EyesSynthetic
+
+- type: Tag
+  id: LeftArmSynthetic
+
+- type: Tag
+  id: RightArmSynthetic
+
+- type: Tag
+  id: LeftHandSynthetic
+
+- type: Tag
+  id: RightHandSynthetic
+
+- type: Tag
+  id: LeftLegSynthetic
+
+- type: Tag
+  id: RightLegSynthetic
+
+- type: Tag
+  id: LeftFootSynthetic
+
+- type: Tag
+  id: RightFootSynthetic
+# Synthetic Surgery end
 
 - type: Tag
   id: JanicartKeys

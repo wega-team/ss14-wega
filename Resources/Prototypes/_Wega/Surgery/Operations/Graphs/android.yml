@@ -1,0 +1,21 @@
+- type: surgeryGraph
+  id: AndroidSurgery
+  startNodes:
+    - AndroidTorsoClosed
+    - AndroidHeadClosed
+    - AndroidAmputateLeftArm
+    - AndroidAttachLeftArm
+    - AndroidAmputateRightArm
+    - AndroidAttachRightArm
+    - AndroidAmputateLeftHand
+    - AndroidAttachLeftHand
+    - AndroidAmputateRightHand
+    - AndroidAttachRightHand
+    - AndroidAmputateLeftLeg
+    - AndroidAttachLeftLeg
+    - AndroidAmputateRightLeg
+    - AndroidAttachRightLeg
+    - AndroidAmputateLeftFoot
+    - AndroidAttachLeftFoot
+    - AndroidAmputateRightFoot
+    - AndroidAttachRightFoot

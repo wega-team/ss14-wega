@@ -3,14 +3,22 @@ using Content.Shared._Wega.Resomi.Abilities.Hearing;
 using Content.Shared.Access.Systems;
 using Content.Shared.Anomaly.Components;
 using Content.Shared.Containers.ItemSlots;
+using Content.Shared.Crawling;
+using Content.Shared.Humanoid;
+using Content.Shared.Humanoid.Markings;
+using Content.Shared.IdentityManagement;
 using Content.Shared.Item.ItemToggle;
+using Content.Shared.Item.ItemToggle.Components;
 using Content.Shared.Lock;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Popups;
 using Content.Shared.PowerCell.Components;
+using Content.Shared.Sound;
 using Content.Shared.Stunnable;
 using Content.Shared.Wires;
+using Robust.Shared.Audio;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
@@ -25,7 +33,9 @@ public abstract partial class SharedAndroidSystem : EntitySystem
     [Dependency] protected readonly ItemSlotsSystem ItemSlots = default!;
     [Dependency] protected readonly SharedPopupSystem Popup = default!;
     [Dependency] protected readonly SharedStunSystem Stun = default!;
+    [Dependency] protected readonly SharedCrawlingSystem Crawling = default!;
     [Dependency] protected readonly LockSystem Lock = default!;
+    [Dependency] protected readonly SharedAudioSystem Audio = default!;
 
     public override void Initialize()
     {
@@ -37,6 +47,7 @@ public abstract partial class SharedAndroidSystem : EntitySystem
         SubscribeLocalEvent<AndroidComponent, RefreshMovementSpeedModifiersEvent>(OnRefreshMovementSpeedModifiers);
 
         SubscribeLocalEvent<AndroidComponent, ToggleLockActionEvent>(OnToggleLockAction);
+        SubscribeLocalEvent<AndroidComponent, LockToggleAttemptEvent>(OnLockToggleAttempt);
     }
 
     public override void Update(float frameTime)
@@ -81,7 +92,9 @@ public abstract partial class SharedAndroidSystem : EntitySystem
             return false;
 
         if (user != null && user == uid)
+        {
             return false;
+        }
 
         return true;
     }
@@ -97,15 +110,33 @@ public abstract partial class SharedAndroidSystem : EntitySystem
         args.ModifySpeed(component.DischargeSpeedModifier, component.DischargeSpeedModifier);
     }
 
-    private void OnToggleLockAction(Entity<AndroidComponent> uid, ref ToggleLockActionEvent args)
+    private void OnToggleLockAction(Entity<AndroidComponent> ent, ref ToggleLockActionEvent args)
     {
+        if (args.Handled)
+            return;
+
+        var (uid, comp) = ent;
+
         if (!TryComp<LockComponent>(uid, out var lockComp))
             return;
 
+        Audio.PlayPvs(!lockComp.Locked ? lockComp.LockSound : lockComp.UnlockSound, uid, new AudioParams());
+        Popup.PopupEntity(Loc.GetString(!lockComp.Locked ? "android-lock-message" : "android-unlock-message"), uid, uid);
+
         if (lockComp.Locked)
-            Lock.Unlock(uid, uid);
+            Lock.Unlock(uid, uid, lockComp);
         else
-            Lock.Lock(uid, uid);
+            Lock.Lock(uid, uid, lockComp);
+
+        args.Handled = true;
+    }
+
+    private void OnLockToggleAttempt(Entity<AndroidComponent> ent, ref LockToggleAttemptEvent args)
+    {
+        if (args.Silent)
+            return;
+
+        args.Cancelled = true;
     }
 
     #endregion Battery
@@ -119,6 +150,12 @@ public abstract partial class SharedAndroidSystem : EntitySystem
 
     public void DoDischargeStun(EntityUid uid, AndroidComponent component)
     {
+        if (TryComp<CrawlingComponent>(uid, out var crawlingComp) && crawlingComp.IsCrawling)
+            return;
+
         Stun.TryParalyze(uid, TimeSpan.FromSeconds(5), true);
+
+        Popup.PopupEntity(Loc.GetString("android-discharge-message"), uid, uid);
+        Audio.PlayPvs(component.DischargeStunSound, uid, new AudioParams());
     }
 }

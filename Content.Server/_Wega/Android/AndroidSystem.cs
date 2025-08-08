@@ -2,15 +2,22 @@ using Content.Server.Actions;
 using Content.Server.PowerCell;
 using Content.Shared._Wega.Android;
 using Content.Shared.Alert;
+using Content.Shared.Humanoid;
+using Content.Shared.Humanoid.Markings;
 using Content.Shared.Item.ItemToggle.Components;
+using Content.Shared.Light;
 using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Systems;
+using Content.Shared.PDA;
 using Content.Shared.PowerCell;
 using Content.Shared.PowerCell.Components;
 using JetBrains.FormatRipper.Elf;
+using Robust.Server.GameObjects;
+using Serilog;
+using System.Linq;
 
 namespace Content.Server._Wega.Android;
 
@@ -23,6 +30,7 @@ public sealed partial class AndroidSystem : SharedAndroidSystem
     [Dependency] private readonly PowerCellSystem _powerCell = default!;
     [Dependency] private readonly AlertsSystem _alerts = default!;
     [Dependency] private readonly ActionsSystem _actions = default!;
+    [Dependency] private readonly PointLightSystem _pointLight = default!;
 
     public override void Initialize()
     {
@@ -34,11 +42,33 @@ public sealed partial class AndroidSystem : SharedAndroidSystem
         SubscribeLocalEvent<AndroidComponent, PowerCellChangedEvent>(OnPowerCellChanged);
         SubscribeLocalEvent<AndroidComponent, PowerCellSlotEmptyEvent>(OnPowerCellSlotEmpty);
         SubscribeLocalEvent<AndroidComponent, ItemToggledEvent>(OnToggled);
+
+        SubscribeLocalEvent<AndroidComponent, LightToggleEvent>(OnLightToggle);
     }
 
-    private void OnStartup(Entity<AndroidComponent> uid, AndroidComponent component, ComponentStartup args)
+    private void OnStartup(EntityUid uid, AndroidComponent component, ComponentStartup args)
     {
-        _actions.AddAction(uid.Owner, uid.Comp.ToggleLockAction);
+        _actions.AddAction(uid, ref component.ToggleLockActionEntity, component.ToggleLockAction);
+    }
+
+    private void OnLightToggle(EntityUid uid, AndroidComponent component, LightToggleEvent args)
+    {
+        UpdatePointLight(uid, component);
+    }
+
+    private void UpdatePointLight(EntityUid uid, AndroidComponent component)
+    {
+        _pointLight.SetRadius(uid, Toggle.IsActivated(uid) ? component.BasePointLightRadiuse : component.BasePointLightRadiuse / 3f);
+        _pointLight.SetEnergy(uid, Toggle.IsActivated(uid) ? component.BasePointLightEnergy : component.BasePointLightEnergy * 1.5f);
+
+        if (!TryComp<HumanoidAppearanceComponent>(uid, out var appearance) || !TryComp<PointLightComponent>(uid, out var light))
+            return;
+
+        if (!appearance.MarkingSet.TryGetCategory(MarkingCategories.Special, out var markings) || markings.Count == 0)
+            return;
+
+        Color ledColor = markings[0].MarkingColors[0].WithAlpha(255);
+        _pointLight.SetColor(uid, ledColor, light);
     }
 
     private void OnMobStateChanged(EntityUid uid, AndroidComponent component, MobStateChangedEvent args)
@@ -83,6 +113,8 @@ public sealed partial class AndroidSystem : SharedAndroidSystem
         }
 
         _movementSpeedModifier.RefreshMovementSpeedModifiers(uid);
+
+        UpdatePointLight(uid, comp);
     }
 
     private void UpdateBatteryAlert(Entity<AndroidComponent> ent, PowerCellSlotComponent? slotComponent = null)

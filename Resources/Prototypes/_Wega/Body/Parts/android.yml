@@ -1,0 +1,128 @@
+- type: entity
+  id: PartAndroid
+  parent: [BaseItem, BasePart]
+  name: "android part"
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Android/parts.rsi
+
+- type: entity
+  id: TorsoAndroid
+  name: "android torso"
+  parent: [PartAndroid, BaseTorso]
+  components:
+  - type: Sprite
+    state: "torso_m"
+
+- type: entity
+  id: HeadAndroid
+  name: "android head"
+  parent: [PartAndroid, BaseHead]
+  components:
+  - type: Sprite
+    state: "head_m"
+
+- type: entity
+  id: LeftArmAndroid
+  name: "left android arm"
+  parent: [PartAndroid, BaseLeftArm]
+  components:
+  - type: Sprite
+    state: "l_arm"
+  - type: Tag
+    tags:
+      - Trash
+      - LeftArm
+      - LeftArmSynthetic
+
+- type: entity
+  id: RightArmAndroid
+  name: "right android arm"
+  parent: [PartAndroid, BaseRightArm]
+  components:
+  - type: Sprite
+    state: "r_arm"
+  - type: Tag
+    tags:
+      - Trash
+      - RightArm
+      - RightArmSynthetic
+
+- type: entity
+  id: LeftHandAndroid
+  name: "left android hand"
+  parent: [PartAndroid, BaseLeftHand]
+  components:
+  - type: Sprite
+    state: "l_hand"
+  - type: Tag
+    tags:
+      - Trash
+      - LeftHand
+      - LeftHandSynthetic
+
+- type: entity
+  id: RightHandAndroid
+  name: "right android hand"
+  parent: [PartAndroid, BaseRightHand]
+  components:
+  - type: Sprite
+    state: "r_hand"
+  - type: Tag
+    tags:
+      - Trash
+      - RightHand
+      - RightHandSynthetic
+
+- type: entity
+  id: LeftLegAndroid
+  name: "left android leg"
+  parent: [PartAndroid, BaseLeftLeg]
+  components:
+  - type: Sprite
+    state: "l_leg"
+  - type: Tag
+    tags:
+      - Trash
+      - LeftLeg
+      - LeftLegSynthetic
+
+- type: entity
+  id: RightLegAndroid
+  name: "right android leg"
+  parent: [PartAndroid, BaseRightLeg]
+  components:
+  - type: Sprite
+    state: "r_leg"
+  - type: Tag
+    tags:
+      - Trash
+      - RightLeg
+      - RightLegSynthetic
+
+- type: entity
+  id: LeftFootAndroid
+  name: "left android foot"
+  parent: [PartAndroid, BaseLeftFoot]
+  components:
+  - type: Sprite
+    state: "l_foot"
+  - type: Tag
+    tags:
+      - Trash
+      - LeftFoot
+      - LeftFootSynthetic
+
+- type: entity
+  id: RightFootAndroid
+  name: "right android foot"
+  parent: [PartAndroid, BaseRightFoot]
+  components:
+  - type: Sprite
+    state: "r_foot"
+  - type: Tag
+    tags:
+      - Trash
+      - RightFoot
+      - RightFootSynthetic

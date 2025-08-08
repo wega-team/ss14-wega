@@ -1,0 +1,395 @@
+# ========================
+# УЗЛЫ ТОРСА
+# ========================
+
+- type: surgeryNode
+  id: AndroidTorsoClosed
+  description: "Торсовая панель закрыта"
+  bodyPart: torso
+  transitions:
+    - AndroidOpenTorsoTransition
+
+- type: surgeryNode
+  id: AndroidTorsoOpen
+  description: "Торсовая панель открыта"
+  bodyPart: torso
+  packages:
+    - AndroidTorsoImplantPackage
+  transitions:
+    - AndroidCloseTorsoTransition
+    - AndroidOrganManipulationTransition
+
+# region Импланты
+
+# SadTromboneImplant
+- type: surgeryNode
+  id: AndroidRemoveSadTromboneOperation
+  description: Извлечь имплант грустного тромбона
+  transitions:
+    - AndroidExtractSadTromboneTransition
+
+# LightImplant
+- type: surgeryNode
+  id: AndroidRemoveLightImplantOperation
+  description: Извлечь световой имплант
+  transitions:
+    - AndroidExtractLightImplantTransition
+
+# BikeHorn
+- type: surgeryNode
+  id: AndroidRemoveBikeHornOperation
+  description: Извлечь имплант велосипедного гудка
+  transitions:
+    - AndroidExtractBikeHornTransition
+
+# Tracking
+- type: surgeryNode
+  id: AndroidRemoveTrackingOperation
+  description: Извлечь имплант слежения
+  transitions:
+    - AndroidExtractTrackingTransition
+
+# Storage
+- type: surgeryNode
+  id: AndroidRemoveStorageOperation
+  description: Извлечь подозрительный имплант
+  transitions:
+    - AndroidExtractTrackingTransition
+
+# Freedom
+- type: surgeryNode
+  id: AndroidRemoveFreedomOperation
+  description: Извлечь подозрительный имплант
+  transitions:
+    - AndroidExtractTrackingTransition
+
+# Radio
+- type: surgeryNode
+  id: AndroidRemoveRadioOperation
+  description: Извлечь подозрительный имплант
+  transitions:
+    - AndroidExtractRadioTransition
+
+# Uplink
+- type: surgeryNode
+  id: AndroidRemoveUplinkOperation
+  description: Извлечь подозрительный имплант
+  transitions:
+    - AndroidExtractUplinkTransition
+
+# Emp
+- type: surgeryNode
+  id: AndroidRemoveEmpOperation
+  description: Извлечь подозрительный имплант
+  transitions:
+    - AndroidExtractEmpTransition
+
+# Scram
+- type: surgeryNode
+  id: AndroidRemoveScramOperation
+  description: Извлечь подозрительный имплант
+  transitions:
+    - AndroidExtractScramTransition
+
+# DnaScrambler
+- type: surgeryNode
+  id: AndroidRemoveDnaScramblerOperation
+  description: Извлечь подозрительный имплант
+  transitions:
+    - AndroidExtractDnaScramblerTransition
+
+# ChameleonController
+- type: surgeryNode
+  id: AndroidRemoveChameleonControllerOperation
+  description: Извлечь подозрительный имплант
+  transitions:
+    - AndroidExtractChameleonControllerTransition
+
+# RadioCentcomm
+- type: surgeryNode
+  id: AndroidRemoveRadioCentcommOperation
+  description: Извлечь подозрительный имплант
+  transitions:
+    - AndroidExtractRadioCentcommTransition
+
+# endregion
+
+# ========================
+# УЗЛЫ ГОЛОВЫ
+# ========================
+
+- type: surgeryNode
+  id: AndroidHeadClosed
+  description: "Панель головы закрыта"
+  bodyPart: head
+  transitions:
+    - AndroidOpenHeadTransition
+
+- type: surgeryNode
+  id: AndroidHeadOpen
+  description: "Панель головы открыта"
+  bodyPart: head
+  packages:
+    - AndroidHeadImplantPackage
+  transitions:
+    - AndroidExtractBrainTransition
+    - AndroidCloseHeadTransition
+
+# region Импланты
+
+# MindShield
+- type: surgeryNode
+  id: AndroidRemoveMindShieldOperation
+  description: Извлечь имплант защиты разума
+  transitions:
+    - AndroidExtractMindShieldTransition
+
+# FakeMindShield
+- type: surgeryNode
+  id: AndroidRemoveFakeMindShieldOperation
+  description: Извлечь имплант защиты разума
+  transitions:
+    - AndroidExtractFakeMindShieldTransition
+
+# endregion
+
+# ========================
+# УЗЛЫ КОНЕЧНОСТЕЙ
+# ========================
+
+- type: surgeryNode
+  id: AndroidAmputateLeftArm
+  description: Левая рука на месте
+  bodyPart: left_arm
+  transitions:
+    - AndroidAmputateLeftArmTransition
+
+- type: surgeryNode
+  id: AndroidAttachLeftArm
+  description: Левая рука отсутствует
+  bodyPart: left_arm
+  transitions:
+    - AndroidAttachLeftArmTransition
+
+- type: surgeryNode
+  id: AndroidAttachLeftArmProcess
+  description: Прикрепление левой руки
+  bodyPart: left_arm
+  transitions:
+    - AndroidAttachLeftArmProcessTransition
+
+- type: surgeryNode
+  id: AndroidAmputateLeftArmProcess
+  description: Отсоединение левой руки
+  bodyPart: left_arm
+  transitions:
+    - AndroidAmputateLeftArmProcessTransition
+
+- type: surgeryNode
+  id: AndroidAmputateRightArm
+  description: Правая рука на месте
+  bodyPart: right_arm
+  transitions:
+    - AndroidAmputateRightArmTransition
+
+- type: surgeryNode
+  id: AndroidAttachRightArm
+  description: Правая рука отсутствует
+  bodyPart: right_arm
+  transitions:
+    - AndroidAttachRightArmTransition
+
+- type: surgeryNode
+  id: AndroidAttachRightArmProcess
+  description: Прикрепление правой руки
+  bodyPart: right_arm
+  transitions:
+    - AndroidAttachRightArmProcessTransition
+
+- type: surgeryNode
+  id: AndroidAmputateRightArmProcess
+  description: Отсоединение правой руки
+  bodyPart: right_arm
+  transitions:
+    - AndroidAmputateRightArmProcessTransition
+
+- type: surgeryNode
+  id: AndroidAmputateLeftHand
+  description: Левая кисть на месте
+  bodyPart: left_hand
+  transitions:
+    - AndroidAmputateLeftHandTransition
+
+- type: surgeryNode
+  id: AndroidAttachLeftHand
+  description: Левая кисть отсутствует
+  bodyPart: left_hand
+  transitions:
+    - AndroidAttachLeftHandTransition
+
+- type: surgeryNode
+  id: AndroidAttachLeftHandProcess
+  description: Прикрепление левой кисти
+  bodyPart: left_hand
+  transitions:
+    - AndroidAttachLeftHandProcessTransition
+
+- type: surgeryNode
+  id: AndroidAmputateLeftHandProcess
+  description: Отсоединение левой кисти
+  bodyPart: left_hand
+  transitions:
+    - AndroidAmputateLeftHandProcessTransition
+
+- type: surgeryNode
+  id: AndroidAmputateRightHand
+  description: Правая кисть на месте
+  bodyPart: right_hand
+  transitions:
+    - AndroidAmputateRightHandTransition
+
+- type: surgeryNode
+  id: AndroidAttachRightHand
+  description: Правая кисть отсутствует
+  bodyPart: right_hand
+  transitions:
+    - AndroidAttachRightHandTransition
+
+- type: surgeryNode
+  id: AndroidAttachRightHandProcess
+  description: Прикрепление правой кисти
+  bodyPart: right_hand
+  transitions:
+    - AndroidAttachRightHandProcessTransition
+
+- type: surgeryNode
+  id: AndroidAmputateRightHandProcess
+  description: Отсоединение правой кисти
+  bodyPart: right_hand
+  transitions:
+    - AndroidAmputateRightHandProcessTransition
+
+- type: surgeryNode
+  id: AndroidAmputateLeftLeg
+  description: Левая нога на месте
+  bodyPart: left_leg
+  transitions:
+    - AndroidAmputateLeftLegTransition
+
+- type: surgeryNode
+  id: AndroidAttachLeftLeg
+  description: Левая нога отсутствует
+  bodyPart: left_leg
+  transitions:
+    - AndroidAttachLeftLegTransition
+
+- type: surgeryNode
+  id: AndroidAttachLeftLegProcess
+  description: Прикрепление левой ноги
+  bodyPart: left_leg
+  transitions:
+    - AndroidAttachLeftLegProcessTransition
+
+- type: surgeryNode
+  id: AndroidAmputateLeftLegProcess
+  description: Отсоединение левой ноги
+  bodyPart: left_leg
+  transitions:
+    - AndroidAmputateLeftLegProcessTransition
+
+- type: surgeryNode
+  id: AndroidAmputateRightLeg
+  description: Правая нога на месте
+  bodyPart: right_leg
+  transitions:
+    - AndroidAmputateRightLegTransition
+
+- type: surgeryNode
+  id: AndroidAttachRightLeg
+  description: Правая нога отсутствует
+  bodyPart: right_leg
+  transitions:
+    - AndroidAttachRightLegTransition
+
+- type: surgeryNode
+  id: AndroidAttachRightLegProcess
+  description: Прикрепление правой ноги
+  bodyPart: right_leg
+  transitions:
+    - AndroidAttachRightLegProcessTransition
+
+- type: surgeryNode
+  id: AndroidAmputateRightLegProcess
+  description: Отсоединение правой ноги
+  bodyPart: right_leg
+  transitions:
+    - AndroidAmputateRightLegProcessTransition
+
+- type: surgeryNode
+  id: AndroidAmputateLeftFoot
+  description: Левая стопа на месте
+  bodyPart: left_foot
+  transitions:
+    - AndroidAmputateLeftFootTransition
+
+- type: surgeryNode
+  id: AndroidAttachLeftFoot
+  description: Левая стопа отсутствует
+  bodyPart: left_foot
+  transitions:
+    - AndroidAttachLeftFootTransition
+
+- type: surgeryNode
+  id: AndroidAttachLeftFootProcess
+  description: Прикрепление левой стопы
+  bodyPart: left_foot
+  transitions:
+    - AndroidAttachLeftFootProcessTransition
+
+- type: surgeryNode
+  id: AndroidAmputateLeftFootProcess
+  description: Отсоединение левой стопы
+  bodyPart: left_foot
+  transitions:
+    - AndroidAmputateLeftFootProcessTransition
+
+- type: surgeryNode
+  id: AndroidAmputateRightFoot
+  description: Правая стопа на месте
+  bodyPart: right_foot
+  transitions:
+    - AndroidAmputateRightFootTransition
+
+- type: surgeryNode
+  id: AndroidAttachRightFoot
+  description: Правая стопа отсутствует
+  bodyPart: right_foot
+  transitions:
+    - AndroidAttachRightFootTransition
+
+- type: surgeryNode
+  id: AndroidAttachRightFootProcess
+  description: Прикрепление правой стопы
+  bodyPart: right_foot
+  transitions:
+    - AndroidAttachRightFootProcessTransition
+
+- type: surgeryNode
+  id: AndroidAmputateRightFootProcess
+  description: Отсоединение правой стопы 
+  bodyPart: right_foot
+  transitions:
+    - AndroidAmputateRightFootProcessTransition
+
+# ========================
+# ФИНАЛЬНЫЙ УЗЕЛ
+# ========================
+
+- type: surgeryNode
+  id: AndroidEndOperation
+  description: Завершить
+  transitions:
+    - AndroidCompleteOperationTransition
+
+
+

@@ -1,0 +1,217 @@
+- type: entity
+  parent: 
+  - BaseMobSpecies
+  - MobBloodstream
+  - MobRespirator
+  - MobFlammable
+  - MobAtmosExposed
+  id: MobAndroid
+  name: "Урист МакАндроид"
+  suffix: "Misha_Unity"
+  components:
+  - type: Sprite
+    layers:
+    - map: [ "enum.HumanoidVisualLayers.Chest" ]
+    - map: [ "enum.HumanoidVisualLayers.Head" ]
+    - map: [ "enum.HumanoidVisualLayers.Snout" ]
+    - map: [ "enum.HumanoidVisualLayers.Eyes" ]
+    - map: [ "enum.HumanoidVisualLayers.RArm" ]
+    - map: [ "enum.HumanoidVisualLayers.LArm" ]
+    - map: [ "enum.HumanoidVisualLayers.RLeg" ]
+    - map: [ "enum.HumanoidVisualLayers.LLeg" ]
+    # Corvax-Wega-start
+    - map: [ "enum.HumanoidVisualLayers.UndergarmentBottom" ]
+    - map: [ "enum.HumanoidVisualLayers.UndergarmentTop" ]
+    - map: [ "enum.HumanoidVisualLayers.LFoot" ]
+    - map: [ "enum.HumanoidVisualLayers.RFoot" ]
+    - map: [ "enum.HumanoidVisualLayers.Special" ]
+    - map: [ "socks" ]
+    - map: [ "underwearbottom" ]
+    - map: [ "underweartop" ]
+    - map: [ "jumpsuit" ]
+    - map: [ "anal" ]
+    - map: [ "enum.HumanoidVisualLayers.LHand" ]
+    - map: [ "enum.HumanoidVisualLayers.RHand" ]
+    # Corvax-Wega-end
+    - map: [ "gloves" ]
+    - map: [ "shoes" ]
+    - map: [ "ears" ]
+    - map: [ "eyes" ]
+    - map: [ "belt" ]
+    - map: [ "id" ]
+    - map: [ "outerClothing" ]
+    - map: [ "back" ]
+    - map: [ "neck" ]
+    - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
+    - map: [ "enum.HumanoidVisualLayers.Hair" ]
+    - map: [ "enum.HumanoidVisualLayers.HeadSide" ]
+    - map: [ "enum.HumanoidVisualLayers.HeadTop" ]
+    - map: [ "enum.HumanoidVisualLayers.Tail" ]
+    - map: [ "mask" ]
+    - map: [ "head" ]
+    - map: [ "pocket1" ]
+    - map: [ "pocket2" ]
+    - map: ["enum.WiresVisualLayers.MaintenancePanel"]
+      sprite: _Wega/Mobs/Species/Android/parts.rsi
+      state: panel 
+    - map: ["enum.HumanoidVisualLayers.Handcuffs"]
+      color: "#ffffff"
+      sprite: Objects/Misc/handcuffs.rsi
+      state: body-overlay-2
+      visible: false
+    - map: [ "clownedon" ]
+      sprite: "Effects/creampie.rsi"
+      state: "creampie_human"
+      visible: false
+  - type: Appearance
+  # TODO, normally make light switching
+  - type: GenericVisualizer
+    visuals:
+      enum.UnpoweredFlashlightVisuals.LightOn:
+        AndroidLeds-leds:
+          True: { shader: unshaded }
+          False: { shader: shaded }
+        AndroidLedsLove-leds_love:
+          True: { shader: unshaded }
+          False: { shader: shaded }
+        AndroidLedsStripes-leds_stripes:
+          True: { shader: unshaded }
+          False: { shader: shaded }
+        AndroidCatEars-ears_cat_led:
+          True: { shader: unshaded }
+          False: { shader: shaded }
+        AndroidCatTail-cat_tail_led:
+          True: { shader: unshaded }
+          False: { shader: shaded }
+  - type: WiresVisuals
+  - type: Icon
+    sprite: Mobs/Species/Human/parts.rsi
+    state: full
+  - type: UnpoweredFlashlight
+    toggleAction: "ActionToggleAndroidLeds"
+  - type: PointLight
+    enabled: false
+    radius: 0
+    softness: 5
+  - type: Body
+    prototype: Android
+    requiredLegs: 2
+  - type: TypingIndicator
+    proto: robot
+  - type: Speech
+    speechVerb: Robotic
+    speechSounds: Borg
+  - type: Vocal
+    sounds:
+      Male: MaleAndroid
+      Female: FemaleAndroid
+      Unsexed: MaleAndroid
+  - type: HumanoidAppearance
+    species: Android
+    hideLayersOnEquip:
+    - Hair
+    - Snout
+  - type: Inventory
+    femaleDisplacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Human/displacement.rsi
+            state: jumpsuit-female
+  - type: Damageable
+    damageContainer: Android
+  - type: DamageVisuals
+    damageOverlayGroups:
+      Brute:
+        sprite: Mobs/Effects/brute_damage.rsi
+        color: "#2c7ef2"
+      Burn:
+        sprite: Mobs/Effects/burn_damage.rsi
+  - type: ZombieImmune
+  - type: Repairable
+    doAfterDelay: 5
+    allowSelfRepair: true
+    damage:
+      types:
+        Blunt: -20 
+        Slash: -20
+        Piercing: -20
+        Cold: -20
+        Caustic: -20
+        Asphyxiation: -20
+        Radiation: -20
+  - type: Temperature
+    heatDamageThreshold: 423.15
+    coldDamageThreshold: 213.15
+    currentTemperature: 310.15
+    specificHeat: 42
+    coldDamage:
+      types:
+        Cold: 0.1
+    heatDamage:
+      types:
+        Heat: 1.0
+  - type: ContainerContainer
+    containers:
+      cell_slot: !type:ContainerSlot { }
+  - type: PowerCellSlot
+    cellSlotId: cell_slot
+    fitsInCharger: true
+  - type: PowerCellDraw
+    drawRate: 0.4
+  - type: ToggleCellDraw
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMedium 
+  - type: ItemToggle
+    onActivate: false
+    activated: false 
+    onUse: false
+  - type: WiresPanel
+  - type: ActivatableUIRequiresPanel
+  - type: ActivatableUIRequiresLock
+  - type: LockedWiresPanel
+  - type: Lock
+  - type: Bloodstream
+    bloodReagent: Tyrium 
+    bloodRefreshAmount: 0
+  - type: Android
+  - type: UserInterface
+    interfaces:
+      enum.StrippingUiKey.Key:
+        type: StrippableBoundUserInterface
+      enum.SurgeryUiKey.Key:
+        type: SurgeryBoundUserInterface
+  - type: Crawling
+  - type: InteractionPopup
+    interactSuccessSound:
+      path: /Audio/Ambience/Objects/periodic_beep.ogg
+  - type: Reactive
+    groups:
+      Flammable: [ Touch ]
+      Extinguish: [ Touch ]
+    reactions:
+    - reagents: [ Water, SpaceCleaner ]
+      methods: [ Touch ]
+      effects:
+      - !type:WashCreamPieReaction
+    - reagents: [ Water ]
+      methods: [ Touch ]
+      effects:
+      - !type:Electrocute
+        electrocuteDamageScale: 1
+  - type: Operated
+    raceGraph: AndroidSurgery
+  - type: InternalStorage
+  - type: Pain
+    profile: AndroidPainProfile
+  - type: Tag
+    tags: 
+    - CanPilot
+    - FootstepSound
+    - DoorBumpOpener
+    - AnomalyHost
+    - Android
+  - type: Carriable

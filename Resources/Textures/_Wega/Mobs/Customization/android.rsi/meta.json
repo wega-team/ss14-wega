@@ -12,6 +12,18 @@
             "directions": 4
         },
         {
+            "name": "body_f_nobreast",
+            "directions": 4
+        },
+        {
+            "name": "body_f_breast",
+            "directions": 4
+        },
+        {
+            "name": "body_f_bigbreast",
+            "directions": 4
+        },
+        {
             "name": "body_m",
             "directions": 4
         },
