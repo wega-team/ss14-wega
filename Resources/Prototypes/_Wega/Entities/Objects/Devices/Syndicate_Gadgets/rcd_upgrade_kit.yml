@@ -1,0 +1,12 @@
+﻿- type: entity
+  parent: [BaseItem, BaseSyndicateContraband]
+  id: RCDUpgradeKit
+  name: RCD upgrade kit
+  description: A small illegal upgrade of the RCD, removing the power limit and allowing for dismantling reinforced walls.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/module.rsi
+    state: beaker_holder
+  - type: RCDUpgradeKit
+  - type: Item
+    size: Small
