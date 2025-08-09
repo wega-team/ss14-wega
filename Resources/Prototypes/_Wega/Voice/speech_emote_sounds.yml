@@ -166,9 +166,9 @@
     Weh:
       collection: Weh
     Gasp:
-      path: /Uploaded/Android/android_gasp.ogg
+      path: /Audio/_Wega/Voice/Android/android_gasp.ogg
     DefaultDeathgasp:
-      path: /Uploaded/Android/android_deathgasp.ogg
+      path: /Audio/_Wega/Voice/Android/android_deathgasp.ogg
 
 - type: emoteSounds
   id: FemaleAndroid
@@ -192,12 +192,12 @@
     Sigh:
       collection: FemaleSigh
     Crying:
-      path: FemaleCry
+      collection: FemaleCry
     Whistle:
       collection: Whistles
     Weh:
       collection: Weh
     Gasp:
-      path: /Uploaded/Android/android_gasp.ogg
+      path: /Audio/_Wega/Voice/Android/android_gasp.ogg
     DefaultDeathgasp:
-      path: /Uploaded/Android/android_deathgasp.ogg
+      path: /Audio/_Wega/Voice/Android/android_deathgasp.ogg

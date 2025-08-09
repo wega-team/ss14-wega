@@ -53,6 +53,14 @@
     whitelist:
       components:
       - SecretStash
+  # Corvax-Wega-Android-start
+  - type: Tag
+    tags:
+      - Brain
+  - type: Brain
+  - type: Organ
+    organType: Brain
+  # Corvax-Wega-Android-end
 
 - type: entity
   parent: MMI
@@ -122,6 +130,7 @@
     - type: Tag
       tags:
       - CannotSuicide
+      - Brain # Corvax-Wega-Android
     - type: GenericVisualizer
       visuals:
         enum.ToggleableGhostRoleVisuals.Status:
@@ -137,3 +146,8 @@
       whitelist:
         components:
         - SecretStash
+    # Corvax-Wega-Android-start
+    - type: Brain
+    - type: Organ
+      organType: Brain
+    # Corvax-Wega-Android-end

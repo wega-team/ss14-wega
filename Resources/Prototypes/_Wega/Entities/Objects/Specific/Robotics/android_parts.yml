@@ -3,7 +3,6 @@
   description: "Universal body part for android repair. Use a screwdriver to change the type."
   parent: BaseItem
   id: AndroidBodyPart
-  suffix: Misha_Unity
   components:
   - type: Sprite
     sprite: _Wega/Mobs/Species/Android/parts.rsi

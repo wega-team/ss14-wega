@@ -968,3 +968,25 @@
             path: /Audio/Items/ratchet.ogg
           time: 2
           successChance: 1
+
+# Завершающий переход конечности
+- type: surgeryTransition
+  id: AndroidCompleteOperationTransition
+  target: Default
+  label: Завершить
+  stepGroups:
+    - steps:
+        - tool: [ Welding ]
+          tag: [ Welder ]
+          action: ClampBleeding
+          sound:
+            collection: Welder
+          time: 2
+          successChance: 1
+        - tool: [ Pulsing ]
+          tag: [ Multitool ]
+          action: Empty
+          sound:
+            collection: CargoBeep
+          time: 2
+          successChance: 1

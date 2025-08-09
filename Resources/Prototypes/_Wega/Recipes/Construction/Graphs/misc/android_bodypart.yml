@@ -7,7 +7,7 @@
     - to: leftArmAssembly
       completed:
       - !type:PopupUser
-        text: "Собирается левая рука. Добавьте сталь"
+        text: android-part-assembly-leftarm
       steps:
       - tool: Screwing
         doAfter: 0.5
@@ -20,7 +20,7 @@
         doAfter: 0.5
       completed:
       - !type:PopupUser
-        text: "Собирается левая кисть. Добавьте сталь"
+        text: android-part-assembly-lefthand
     - to: complete
       completed:
       - !type:SpawnPrototype
@@ -37,7 +37,7 @@
     - to: rightArmAssembly
       completed:
       - !type:PopupUser
-        text: "Собирается правая рука. Добавьте сталь"
+        text: android-part-assembly-rightarm
       steps:
       - tool: Screwing
         doAfter: 0.5
@@ -57,7 +57,7 @@
     - to: rightHandAssembly
       completed:
       - !type:PopupUser
-        text: "Собирается правая кисть. Добавьте сталь"
+        text: android-part-assembly-righthand
       steps:
       - tool: Screwing
         doAfter: 0.5
@@ -77,7 +77,7 @@
     - to: leftLegAssembly
       completed:
       - !type:PopupUser
-        text: "Собирается левая нога. Добавьте сталь"
+        text: android-part-assembly-leftleg
       steps:
       - tool: Screwing
         doAfter: 0.5
@@ -97,7 +97,7 @@
     - to: leftFootAssembly
       completed:
       - !type:PopupUser
-        text: "Собирается левая стопа. Добавьте сталь"
+        text: android-part-assembly-leftfoot
       steps:
       - tool: Screwing
         doAfter: 0.5
@@ -117,7 +117,7 @@
     - to: rightLegAssembly
       completed:
       - !type:PopupUser
-        text: "Собирается правая нога. Добавьте сталь"
+        text: android-part-assembly-rightleg
       steps:
       - tool: Screwing
         doAfter: 0.5
@@ -137,7 +137,7 @@
     - to: rightFootAssembly
       completed:
       - !type:PopupUser
-        text: "Собирается правая стопа. Добавьте сталь"
+        text: android-part-assembly-rightfoot
       steps:
       - tool: Screwing
         doAfter: 0.5
@@ -157,7 +157,7 @@
     - to: leftArmAssembly
       completed:
       - !type:PopupUser
-        text: "Собирается левая рука. Добавьте сталь"
+        text: android-part-assembly-leftarm
       steps:
       - tool: Screwing
         doAfter: 0.5

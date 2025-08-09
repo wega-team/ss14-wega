@@ -6,8 +6,7 @@
   - MobFlammable
   - MobAtmosExposed
   id: MobAndroid
-  name: "Урист МакАндроид"
-  suffix: "Misha_Unity"
+  name: "Urisst' Mzhand Android"
   components:
   - type: Sprite
     layers:
