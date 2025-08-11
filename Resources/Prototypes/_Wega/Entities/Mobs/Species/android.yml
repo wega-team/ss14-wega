@@ -132,15 +132,16 @@
     allowSelfRepair: true
     damage:
       types:
-        Blunt: -20 
-        Slash: -20
-        Piercing: -20
-        Cold: -20
-        Caustic: -20
-        Asphyxiation: -20
-        Radiation: -20
+        Blunt: -15
+        Slash: -15
+        Piercing: -15
+        Cold: -15
+        Caustic: -15
+        Asphyxiation: -15
+    bleedAmountReduce: -50
+  - type: AtmosExposed
   - type: Temperature
-    heatDamageThreshold: 423.15
+    heatDamageThreshold: 403.15
     coldDamageThreshold: 213.15
     currentTemperature: 310.15
     specificHeat: 42
@@ -150,6 +151,11 @@
     heatDamage:
       types:
         Heat: 1.0
+  - type: Barotrauma
+    damage:
+      types:
+        Blunt: 0.15
+    lowPressureMultiplier: 1000
   - type: ContainerContainer
     containers:
       cell_slot: !type:ContainerSlot { }
