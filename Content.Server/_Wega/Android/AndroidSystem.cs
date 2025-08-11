@@ -102,17 +102,9 @@ public sealed partial class AndroidSystem : SharedAndroidSystem
 
     #region Battery
 
-    private void OnMobStateChanged(EntityUid uid, AndroidComponent component, MobStateChangedEvent args)
+    private void OnMobStateChanged(EntityUid uid, AndroidComponent component, ref MobStateChangedEvent args)
     {
-        if (args.NewMobState == MobState.Alive)
-        {
-            if (_mind.TryGetMind(uid, out _, out _))
-                _powerCell.SetDrawEnabled(uid, true);
-        }
-        else
-        {
-            _powerCell.SetDrawEnabled(uid, false);
-        }
+        _powerCell.SetDrawEnabled(uid, args.NewMobState == MobState.Alive);
     }
 
     private void OnPowerCellChanged(EntityUid uid, AndroidComponent component, PowerCellChangedEvent args)
@@ -125,12 +117,12 @@ public sealed partial class AndroidSystem : SharedAndroidSystem
         }
     }
 
-    private void OnPowerCellSlotEmpty(EntityUid uid, AndroidComponent component, PowerCellSlotEmptyEvent args)
+    private void OnPowerCellSlotEmpty(EntityUid uid, AndroidComponent component, ref PowerCellSlotEmptyEvent args)
     {
         _toggle.TryDeactivate(uid);
     }
 
-    private void OnToggled(EntityUid uid, AndroidComponent component, ItemToggledEvent args)
+    private void OnToggled(EntityUid uid, AndroidComponent component, ref ItemToggledEvent args)
     {
         var drawing = _mind.TryGetMind(uid, out _, out _) && _mobState.IsAlive(uid);
         _powerCell.SetDrawEnabled(uid, drawing);

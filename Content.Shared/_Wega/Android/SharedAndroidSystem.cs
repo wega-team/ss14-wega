@@ -3,27 +3,13 @@ using Content.Shared.Item.ItemToggle;
 using Content.Shared.Lock;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Systems;
-using Content.Shared.Popups;
-using Content.Shared.Stunnable;
 using Content.Shared.Wires;
-using Robust.Shared.Audio.Systems;
-using Robust.Shared.Random;
-using Robust.Shared.Timing;
 
 namespace Content.Shared._Wega.Android;
 
 public abstract partial class SharedAndroidSystem : EntitySystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-
     [Dependency] private readonly ItemToggleSystem _toggle = default!;
-    [Dependency] private readonly ItemSlotsSystem _itemSlots = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SharedStunSystem _stun = default!;
-    [Dependency] private readonly LockSystem _lock = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedPointLightSystem _pointLight = default!;
 
     public override void Initialize()
     {
@@ -38,7 +24,7 @@ public abstract partial class SharedAndroidSystem : EntitySystem
 
     #region Battery
 
-    private void OnItemSlotInsertAttempt(EntityUid uid, AndroidComponent component, ItemSlotInsertAttemptEvent args)
+    private void OnItemSlotInsertAttempt(EntityUid uid, AndroidComponent component, ref ItemSlotInsertAttemptEvent args)
     {
         if (args.Cancelled)
             return;
@@ -46,7 +32,7 @@ public abstract partial class SharedAndroidSystem : EntitySystem
         args.Cancelled = !ItemSlotAvailable(uid, args.User, args.Slot);
     }
 
-    private void OnItemSlotEjectAttempt(EntityUid uid, AndroidComponent component, ItemSlotEjectAttemptEvent args)
+    private void OnItemSlotEjectAttempt(EntityUid uid, AndroidComponent component, ref ItemSlotEjectAttemptEvent args)
     {
         if (args.Cancelled)
             return;
@@ -79,7 +65,7 @@ public abstract partial class SharedAndroidSystem : EntitySystem
         args.ModifySpeed(component.DischargeSpeedModifier, component.DischargeSpeedModifier);
     }
 
-    private void OnLockToggleAttempt(EntityUid uid, AndroidComponent component, LockToggleAttemptEvent args)
+    private void OnLockToggleAttempt(EntityUid uid, AndroidComponent component, ref LockToggleAttemptEvent args)
     {
         if (args.Silent)
             return;
