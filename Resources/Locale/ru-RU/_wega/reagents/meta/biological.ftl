@@ -5,7 +5,7 @@ reagent-name-resomi-blood = Фиолетовая кровь
 reagent-desc-resomi-blood = Густая жидкость с резким аммиачным запахом
 
 reagent-name-tyrium = тириум
-reagent-desk-tyrium = Сложный хладогент. Лучше не пробуйте его на вкус.
+reagent-desс-tyrium = Сложный хладогент. Лучше не пробуйте его на вкус.
 
 reagent-name-gray-slime = серая слизевая эссенция
 reagent-desc-gray-slime = Концентрированная эссенция серой слизи. Содержит следы кремниевых соединений.

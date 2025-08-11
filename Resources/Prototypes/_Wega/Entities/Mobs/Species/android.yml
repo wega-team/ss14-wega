@@ -138,7 +138,6 @@
         Cold: -15
         Caustic: -15
         Asphyxiation: -15
-    bleedAmountReduce: -50
   - type: AtmosExposed
   - type: Temperature
     heatDamageThreshold: 403.15
