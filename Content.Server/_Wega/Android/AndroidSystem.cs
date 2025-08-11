@@ -1,25 +1,17 @@
+using Content.Shared._Wega.Android;
 using Content.Server.Actions;
 using Content.Server.PowerCell;
-using Content.Shared._Wega.Android;
 using Content.Shared.Alert;
-using Content.Shared.Humanoid;
-using Content.Shared.Humanoid.Markings;
 using Content.Shared.Item.ItemToggle.Components;
 using Content.Shared.Light;
 using Content.Shared.Lock;
 using Content.Shared.Mind;
-using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Systems;
-using Content.Shared.PDA;
 using Content.Shared.PowerCell;
 using Content.Shared.PowerCell.Components;
 using Robust.Shared.Audio;
-using JetBrains.FormatRipper.Elf;
-using Robust.Server.GameObjects;
-using Serilog;
-using System.Linq;
 using Content.Shared.Wires;
 
 namespace Content.Server._Wega.Android;
@@ -33,7 +25,6 @@ public sealed partial class AndroidSystem : SharedAndroidSystem
     [Dependency] private readonly PowerCellSystem _powerCell = default!;
     [Dependency] private readonly AlertsSystem _alerts = default!;
     [Dependency] private readonly ActionsSystem _actions = default!;
-    [Dependency] private readonly PointLightSystem _pointLight = default!;
 
     public override void Initialize()
     {

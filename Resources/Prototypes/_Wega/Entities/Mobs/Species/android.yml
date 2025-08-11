@@ -189,7 +189,6 @@
         type: StrippableBoundUserInterface
       enum.SurgeryUiKey.Key:
         type: SurgeryBoundUserInterface
-  - type: Crawling
   - type: InteractionPopup
     interactSuccessSound:
       path: /Audio/Ambience/Objects/periodic_beep.ogg

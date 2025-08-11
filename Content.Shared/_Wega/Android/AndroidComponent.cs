@@ -29,7 +29,7 @@ public sealed partial class AndroidComponent : Component
     public ProtoId<AlertPrototype> NoBatteryAlert = "BorgBatteryNone";
 
     [DataField]
-    public float BasePointLightRadiuse = 3f;
+    public float BasePointLightRadiuse = 2.5f;
     [DataField]
     public float BasePointLightEnergy = 1.2f;
 }

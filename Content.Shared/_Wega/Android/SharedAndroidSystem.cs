@@ -1,20 +1,11 @@
-using Content.Shared._Wega.Resomi;
-using Content.Shared._Wega.Resomi.Abilities.Hearing;
-using Content.Shared.Access.Systems;
-using Content.Shared.Anomaly.Components;
 using Content.Shared.Containers.ItemSlots;
-using Content.Shared.Crawling;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Markings;
-using Content.Shared.IdentityManagement;
 using Content.Shared.Item.ItemToggle;
-using Content.Shared.Item.ItemToggle.Components;
 using Content.Shared.Lock;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Popups;
-using Content.Shared.PowerCell.Components;
-using Content.Shared.Sound;
 using Content.Shared.Stunnable;
 using Content.Shared.Wires;
 using Robust.Shared.Audio;
@@ -33,7 +24,6 @@ public abstract partial class SharedAndroidSystem : EntitySystem
     [Dependency] protected readonly ItemSlotsSystem ItemSlots = default!;
     [Dependency] protected readonly SharedPopupSystem Popup = default!;
     [Dependency] protected readonly SharedStunSystem Stun = default!;
-    [Dependency] protected readonly SharedCrawlingSystem Crawling = default!;
     [Dependency] protected readonly LockSystem Lock = default!;
     [Dependency] protected readonly SharedAudioSystem Audio = default!;
     [Dependency] protected readonly SharedPointLightSystem PointLight = default!;
@@ -128,10 +118,10 @@ public abstract partial class SharedAndroidSystem : EntitySystem
 
     public void DoDischargeStun(EntityUid uid, AndroidComponent component)
     {
-        if (TryComp<CrawlingComponent>(uid, out var crawlingComp) && crawlingComp.IsCrawling)
+        if (HasComp<KnockedDownComponent>(uid))
             return;
 
-        Stun.TryParalyze(uid, TimeSpan.FromSeconds(5), true);
+        Stun.TryKnockdown(uid, TimeSpan.FromSeconds(5), true);
 
         Popup.PopupEntity(Loc.GetString("android-discharge-message"), uid, uid);
         Audio.PlayPvs(component.DischargeStunSound, uid, new AudioParams());
