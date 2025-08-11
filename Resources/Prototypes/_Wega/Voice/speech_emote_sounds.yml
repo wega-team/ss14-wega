@@ -155,8 +155,6 @@
       collection: MaleYawn
     Snore:
       collection: Snores
-    Honk:
-      collection: BikeHorn
     Sigh:
       collection: MaleSigh
     Crying:
@@ -169,6 +167,14 @@
       path: /Audio/_Wega/Voice/Android/android_gasp.ogg
     DefaultDeathgasp:
       path: /Audio/_Wega/Voice/Android/android_deathgasp.ogg
+    Beep:
+      path: /Audio/Machines/twobeep.ogg
+    Chime:
+      path: /Audio/Machines/chime.ogg
+    Buzz-Two:
+      path: /Audio/Machines/buzz-two.ogg
+    Ping:
+      path: /Audio/Effects/Cargo/ping.ogg
 
 - type: emoteSounds
   id: FemaleAndroid
@@ -187,8 +193,6 @@
       collection: FemaleYawn
     Snore:
       collection: Snores
-    Honk:
-      collection: CluwneHorn
     Sigh:
       collection: FemaleSigh
     Crying:
@@ -201,3 +205,11 @@
       path: /Audio/_Wega/Voice/Android/android_gasp.ogg
     DefaultDeathgasp:
       path: /Audio/_Wega/Voice/Android/android_deathgasp.ogg
+    Beep:
+      path: /Audio/Machines/twobeep.ogg
+    Chime:
+      path: /Audio/Machines/chime.ogg
+    Buzz-Two:
+      path: /Audio/Machines/buzz-two.ogg
+    Ping:
+      path: /Audio/Effects/Cargo/ping.ogg
