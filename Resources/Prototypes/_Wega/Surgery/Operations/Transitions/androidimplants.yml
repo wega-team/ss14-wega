@@ -606,7 +606,7 @@
   stepGroups:
     - conditions:
         - !type:ImplantPresentCondition
-          implant: "RadioCentcommImplant"
+          implant: "RadioImplantCentcomm"
         - !type:ClothingCondition
           invert: true
           slots:

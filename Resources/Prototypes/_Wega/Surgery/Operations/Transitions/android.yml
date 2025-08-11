@@ -205,7 +205,7 @@
 
 - type: surgeryTransition
   id: AndroidExtractBrainTransition
-  target: HeadRemoved
+  target: AndroidHeadOpen
   label: "Манипуляция с деталями"
   stepGroups:
     - conditions:

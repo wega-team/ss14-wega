@@ -155,6 +155,8 @@
     damage:
       types:
         Blunt: 0.15
+  - type: PressureProtection
+    highPressureMultiplier: 0.8
     lowPressureMultiplier: 1000
   - type: ContainerContainer
     containers:
