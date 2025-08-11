@@ -1,7 +1,12 @@
-using Content.Shared._Wega.Android;
 using Content.Server.Actions;
+using Content.Server.Popups;
 using Content.Server.PowerCell;
+using Content.Server.Stunnable;
+using Content.Shared._Wega.Android;
 using Content.Shared.Alert;
+using Content.Shared.Humanoid;
+using Content.Shared.Humanoid.Markings;
+using Content.Shared.Item.ItemToggle;
 using Content.Shared.Item.ItemToggle.Components;
 using Content.Shared.Light;
 using Content.Shared.Lock;
@@ -11,20 +16,33 @@ using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Systems;
 using Content.Shared.PowerCell;
 using Content.Shared.PowerCell.Components;
-using Robust.Shared.Audio;
+using Content.Shared.Standing;
 using Content.Shared.Wires;
+using Robust.Server.Audio;
+using Robust.Server.GameObjects;
+using Robust.Shared.Audio;
+using Robust.Shared.Random;
+using Robust.Shared.Timing;
 
 namespace Content.Server._Wega.Android;
 
 public sealed partial class AndroidSystem : SharedAndroidSystem
 {
+    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly IRobustRandom _random = default!;
 
+    [Dependency] private readonly ItemToggleSystem _toggle = default!;
     [Dependency] private readonly SharedMindSystem _mind = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly MovementSpeedModifierSystem _movementSpeedModifier = default!;
     [Dependency] private readonly PowerCellSystem _powerCell = default!;
     [Dependency] private readonly AlertsSystem _alerts = default!;
     [Dependency] private readonly ActionsSystem _actions = default!;
+    [Dependency] private readonly LockSystem _lock = default!;
+    [Dependency] private readonly AudioSystem _audio = default!;
+    [Dependency] private readonly PopupSystem _popup = default!;
+    [Dependency] private readonly PointLightSystem _pointLight = default!;
+    [Dependency] private readonly StunSystem _stun = default!;
 
     public override void Initialize()
     {
@@ -49,7 +67,7 @@ public sealed partial class AndroidSystem : SharedAndroidSystem
         var androidsQuery = EntityQueryEnumerator<AndroidComponent>();
         while (androidsQuery.MoveNext(out var ent, out var component))
         {
-            if (!Toggle.IsActivated(ent) && Timing.CurTime > component.NextDischargeStun)
+            if (!_toggle.IsActivated(ent) && _timing.CurTime > component.NextDischargeStun)
             {
                 DoDischargeStun(ent, component);
                 DelayDischargeStun(component);
@@ -65,6 +83,21 @@ public sealed partial class AndroidSystem : SharedAndroidSystem
     private void OnLightToggle(EntityUid uid, AndroidComponent component, LightToggleEvent args)
     {
         UpdatePointLight(uid, component);
+    }
+
+    public void UpdatePointLight(EntityUid uid, AndroidComponent component)
+    {
+        _pointLight.SetRadius(uid, _toggle.IsActivated(uid) ? component.BasePointLightRadiuse : Math.Max(component.BasePointLightRadiuse / 3f, 1.3f));
+        _pointLight.SetEnergy(uid, _toggle.IsActivated(uid) ? component.BasePointLightEnergy : component.BasePointLightEnergy * 1.5f);
+
+        if (!TryComp<HumanoidAppearanceComponent>(uid, out var appearance))
+            return;
+
+        if (!appearance.MarkingSet.TryGetCategory(MarkingCategories.Special, out var markings) || markings.Count == 0)
+            return;
+
+        Color ledColor = markings[0].MarkingColors[0].WithAlpha(255);
+        _pointLight.SetColor(uid, ledColor);
     }
 
     #region Battery
@@ -88,31 +121,29 @@ public sealed partial class AndroidSystem : SharedAndroidSystem
 
         if (_powerCell.HasDrawCharge(uid))
         {
-            Toggle.TryActivate(uid);
+            _toggle.TryActivate(uid);
         }
     }
 
-    private void OnPowerCellSlotEmpty(EntityUid uid, AndroidComponent component, ref PowerCellSlotEmptyEvent args)
+    private void OnPowerCellSlotEmpty(EntityUid uid, AndroidComponent component, PowerCellSlotEmptyEvent args)
     {
-        Toggle.TryDeactivate(uid);
+        _toggle.TryDeactivate(uid);
     }
 
-    private void OnToggled(Entity<AndroidComponent> ent, ref ItemToggledEvent args)
+    private void OnToggled(EntityUid uid, AndroidComponent component, ItemToggledEvent args)
     {
-        var (uid, comp) = ent;
-
-        var drawing = _mind.TryGetMind(uid, out _, out _) && _mobState.IsAlive(ent);
+        var drawing = _mind.TryGetMind(uid, out _, out _) && _mobState.IsAlive(uid);
         _powerCell.SetDrawEnabled(uid, drawing);
 
         if (!args.Activated)
         {
-            comp.DischargeTime = Timing.CurTime;
-            DelayDischargeStun(comp);
+            component.DischargeTime = _timing.CurTime;
+            DelayDischargeStun(component);
         }
 
         _movementSpeedModifier.RefreshMovementSpeedModifiers(uid);
 
-        UpdatePointLight(uid, comp);
+        UpdatePointLight(uid, component);
     }
 
     private void UpdateBatteryAlert(Entity<AndroidComponent> ent, PowerCellSlotComponent? slotComponent = null)
@@ -135,29 +166,45 @@ public sealed partial class AndroidSystem : SharedAndroidSystem
         _alerts.ShowAlert(ent, ent.Comp.BatteryAlert, chargePercent);
     }
 
-    private void OnToggleLockAction(Entity<AndroidComponent> ent, ref ToggleLockActionEvent args)
+    private void DelayDischargeStun(AndroidComponent component)
+    {
+        double multiplier = 1f + (_timing.CurTime - component.DischargeTime).TotalSeconds * 0.03f;
+
+        component.NextDischargeStun = _timing.CurTime + TimeSpan.FromSeconds(Math.Max(5f, _random.NextFloat(60f, 180f) / multiplier));
+    }
+
+    public void DoDischargeStun(EntityUid uid, AndroidComponent component)
+    {
+        if (TryComp<StandingStateComponent>(uid, out var standingComp) && !standingComp.Standing)
+            return;
+
+        _stun.TryKnockdown(uid, TimeSpan.FromSeconds(5), true);
+
+        _popup.PopupEntity(Loc.GetString("android-discharge-message"), uid, uid);
+        _audio.PlayPvs(component.DischargeStunSound, uid);
+    }
+
+    private void OnToggleLockAction(EntityUid uid, AndroidComponent component, ToggleLockActionEvent args)
     {
         if (args.Handled)
             return;
-
-        var (uid, comp) = ent;
 
         if (!TryComp<LockComponent>(uid, out var lockComp))
             return;
 
         if (TryComp<WiresPanelComponent>(uid, out var panelComp) && panelComp.Open)
         {
-            Popup.PopupEntity(Loc.GetString("android-lock-panel-open"), uid, uid);
+            _popup.PopupEntity(Loc.GetString("android-lock-panel-open"), uid, uid);
             return;
         }
 
-        Audio.PlayPvs(!lockComp.Locked ? lockComp.LockSound : lockComp.UnlockSound, uid, new AudioParams());
-        Popup.PopupEntity(Loc.GetString(!lockComp.Locked ? "android-lock-message" : "android-unlock-message"), uid, uid);
+        _audio.PlayPvs(!lockComp.Locked ? lockComp.LockSound : lockComp.UnlockSound, uid);
+        _popup.PopupEntity(Loc.GetString(!lockComp.Locked ? "android-lock-message" : "android-unlock-message"), uid, uid);
 
         if (lockComp.Locked)
-            Lock.Unlock(uid, uid, lockComp);
+            _lock.Unlock(uid, uid, lockComp);
         else
-            Lock.Lock(uid, uid, lockComp);
+            _lock.Lock(uid, uid, lockComp);
 
         args.Handled = true;
     }
