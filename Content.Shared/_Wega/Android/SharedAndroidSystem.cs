@@ -6,6 +6,7 @@ using Content.Shared.Lock;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Popups;
+using Content.Shared.Standing;
 using Content.Shared.Stunnable;
 using Content.Shared.Wires;
 using Robust.Shared.Audio;
@@ -118,7 +119,7 @@ public abstract partial class SharedAndroidSystem : EntitySystem
 
     public void DoDischargeStun(EntityUid uid, AndroidComponent component)
     {
-        if (HasComp<KnockedDownComponent>(uid))
+        if (TryComp<StandingStateComponent>(uid, out var standingComp) && !standingComp.Standing)
             return;
 
         Stun.TryKnockdown(uid, TimeSpan.FromSeconds(5), true);
