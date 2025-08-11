@@ -18,4 +18,4 @@ stack-matter-bin =
     }
 stack-sepia-floor = стальная светлая плитка
 
-stack-bloodpack = пакет тириума
+stack-tyriumpack = пакет тириума
