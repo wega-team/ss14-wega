@@ -8,6 +8,9 @@
   markingLimits: MobAndroidMarkingLimits
   dollPrototype: MobAndroid 
   skinColoration: Hues
+  maleFirstNames: NamesAI
+  femaleFirstNames: NamesAI
+  naming: First
 
 - type: speciesBaseSprites
   id: MobAndroidSprites
