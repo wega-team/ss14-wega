@@ -222,7 +222,7 @@
         - tool: [ Cutting ]
           tag: [ Wirecutter ]
           action: RemoveOrgan
-          entityPreview: OrganPositronicBrain
+          entityPreview: PositronicBrain
           requiredPart: Brain
           sound:
             path: /Audio/Items/wirecutter.ogg
@@ -269,6 +269,36 @@
             - !type:OrganPresentCondition
               invert: true
               organ: Eyes
+
+- type: surgeryTransition
+  id: AndroidCompleteHeadAttachmentTransition
+  target: AndroidEndOperation
+  label: Голова
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          invert: true
+          bodyPart: head
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Screwdriver ]
+          action: Empty
+          sound:
+            collection: Screwdriver
+          time: 2
+          successChance: 1
+        - tag: [ CableCoil ]
+          entityPreview: CableApcStack
+          action: Empty
+          time: 2
+          successChance: 1
+        - tag: [ Head ]
+          action: AttachPart
+          requiredPart: head
+          time: 8
+          successChance: 1
+          sound:
+            path: /Audio/Items/ratchet.ogg
 
 # ========================
 # ПЕРЕХОДЫ КОНЕЧНОСТЕЙ

@@ -135,6 +135,13 @@
     - AndroidExtractBrainTransition
     - AndroidCloseHeadTransition
 
+- type: surgeryNode
+  id: AndroidAttachHead
+  description: "И не прокричал он: 'АААААААААААААААААААААААААА'."
+  bodyPart: head
+  transitions:
+    - AndroidCompleteHeadAttachmentTransition
+
 # region Импланты
 
 # MindShield

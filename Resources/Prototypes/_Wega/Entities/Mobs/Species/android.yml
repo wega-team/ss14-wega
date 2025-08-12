@@ -209,6 +209,8 @@
         electrocuteDamageScale: 1
   - type: Operated
     raceGraph: AndroidSurgery
+    limbLossChance: 1.75
+  - type: SyntheticOperated
   - type: InternalStorage
   - type: Pain
     profile: AndroidPainProfile

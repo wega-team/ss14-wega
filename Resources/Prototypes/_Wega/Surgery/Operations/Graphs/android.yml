@@ -3,6 +3,7 @@
   startNodes:
     - AndroidTorsoClosed
     - AndroidHeadClosed
+    - AndroidAttachHead
     - AndroidAmputateLeftArm
     - AndroidAttachLeftArm
     - AndroidAmputateRightArm

@@ -178,7 +178,7 @@
   - type: SSDIndicator
   - type: StandingState
   - type: SpeechSynthesis # Corvax-Wega-Barks
-  - type: Dna
+  # - type: Dna # Corvax-Wega
   - type: MindContainer
     showExamineInfo: true
   - type: CanEnterCryostorage
@@ -258,6 +258,7 @@
         Brute: -0.07
   - type: Fingerprint
   - type: DnaModifier # Corvax-Wega-Genetics (Only for organic species)
+  - type: Dna # Corvax-Wega
   - type: Blindable
   # Other
   - type: Temperature

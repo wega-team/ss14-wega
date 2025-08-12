@@ -62,7 +62,7 @@ public sealed partial class OperatedComponent : Component
     /// <summary>
     /// A modifier for the chance of losing a limb.
     /// </summary>
-    [ViewVariables]
+    [ViewVariables, DataField]
     public float LimbLossChance = 1f;
 
     /// <summary>
