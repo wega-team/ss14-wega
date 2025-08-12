@@ -29,15 +29,6 @@
   - type: PhysicalComposition
     materialComposition:
       Steel: 15
-# Corvax-Wega-Android-start
-  - type: Healing
-    damageContainers:
-      - Android
-    damage:
-      types:
-        Heat: -20
-        Shock: -20
-# Corvax-Wega-Android-end
   - type: GuideHelp
     guides:
     - VoltageNetworks
@@ -213,6 +204,7 @@
   - type: Healing
     damageContainers:
       - SiliconIpc
+      - Android # Corvax-Wega-Android
     damage:
       types:
         Shock: -6
