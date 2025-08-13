@@ -48,6 +48,7 @@ using Robust.Shared.Player;
 using Robust.Shared.Timing;
 using Content.Shared.Disease.Components;
 using Content.Shared.NullRod.Components;
+using Robust.Server.Containers;
 // Corvax-Wega-Revenant-end
 
 namespace Content.Server.Revenant.EntitySystems;
@@ -73,6 +74,7 @@ public sealed partial class RevenantSystem
     [Dependency] private readonly NpcFactionSystem _npcFaction = default!;
     [Dependency] private readonly PrayerSystem _prayerSystem = default!;
     [Dependency] private readonly QuickDialogSystem _quickDialog = default!;
+    [Dependency] private readonly ContainerSystem _container = default!;
     // Corvax-Wega-Revenant-end
 
     private static readonly ProtoId<HTNCompoundPrototype> HauntRootTask = "SimpleHostileCompound"; // Corvax-Wega-Revenant
@@ -435,11 +437,19 @@ public sealed partial class RevenantSystem
         args.Handled = true;
         var itemsInRange = _lookup.GetEntitiesInRange<ItemComponent>(Transform(uid).Coordinates, component.HauntRadius)
             .ToList();
+
         if (itemsInRange.Count == 0)
             return;
 
-        var randomItems = itemsInRange.OrderBy(x => _random.Next()).Take(_random.Next(1, 5))
+        itemsInRange = itemsInRange
+            .Where(item => !_container.TryGetContainingContainer(item.Owner, out _))
             .ToList();
+
+        var randomItems = itemsInRange
+            .OrderBy(_ => _random.Next())
+            .Take(_random.Next(3, 8))
+            .ToList();
+
         foreach (var item in randomItems)
         {
             var itemEntity = item.Owner;
@@ -475,7 +485,7 @@ public sealed partial class RevenantSystem
             if (!HasComp<MeleeWeaponComponent>(itemEntity))
             {
                 EnsureComp<MeleeWeaponComponent>(itemEntity, out var meleeWeaponComponent);
-                var damage = new DamageSpecifier { DamageDict = { { "Blunt", 2 } } };
+                var damage = new DamageSpecifier { DamageDict = { { "Blunt", 8 } } };
                 meleeWeaponComponent.Damage = damage;
                 addedWeapon = true;
             }
