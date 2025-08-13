@@ -207,11 +207,13 @@ public sealed partial class NPCCombatSystem
                 return;
             }
 
-            if (TryComp<ChamberMagazineAmmoProviderComponent>(gunUid, out var chamber) 
+            // Corvax-Wega-Revenant-Haunt-start
+            if (TryComp<ChamberMagazineAmmoProviderComponent>(gunUid, out var chamber)
                 && chamber is { BoltClosed: false })
             {
                 _sharedgun.SetBoltClosed(gunUid, chamber, true, uid);
             }
+            // Corvax-Wega-Revenant-Haunt-end
 
             _gun.AttemptShoot(uid, gunUid, gun, targetCordinates, comp.Target);
         }
