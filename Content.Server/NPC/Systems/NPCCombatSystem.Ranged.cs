@@ -6,6 +6,7 @@ using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Events;
 using Robust.Shared.Map;
 using Robust.Shared.Physics.Components;
+using Content.Shared.Weapons.Ranged.Systems;
 
 namespace Content.Server.NPC.Systems;
 
@@ -13,6 +14,7 @@ public sealed partial class NPCCombatSystem
 {
     [Dependency] private readonly SharedCombatModeSystem _combat = default!;
     [Dependency] private readonly RotateToFaceSystem _rotate = default!;
+    [Dependency] private readonly SharedGunSystem _sharedgun = default!;
 
     private EntityQuery<CombatModeComponent> _combatQuery;
     private EntityQuery<NPCSteeringComponent> _steeringQuery;
@@ -203,6 +205,12 @@ public sealed partial class NPCCombatSystem
             if (gun.NextFire > _timing.CurTime)
             {
                 return;
+            }
+
+            if (TryComp<ChamberMagazineAmmoProviderComponent>(gunUid, out var chamber) 
+                && chamber is { BoltClosed: false })
+            {
+                _sharedgun.SetBoltClosed(gunUid, chamber, true, uid);
             }
 
             _gun.AttemptShoot(uid, gunUid, gun, targetCordinates, comp.Target);
