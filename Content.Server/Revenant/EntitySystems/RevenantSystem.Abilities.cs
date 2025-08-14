@@ -527,7 +527,7 @@ public sealed partial class RevenantSystem
                     RemComp<PointLightComponent>(itemEntity);
                 if (addedWeapon)
                     RemComp<MeleeWeaponComponent>(itemEntity);
-                if (!removedGunWield)
+                if (removedGunWield)
                     EnsureComp<GunRequiresWieldComponent>(itemEntity);
 
                 _popup.PopupEntity(Loc.GetString("revenant-haunt-end", ("name", name)), itemEntity, PopupType.Small);
