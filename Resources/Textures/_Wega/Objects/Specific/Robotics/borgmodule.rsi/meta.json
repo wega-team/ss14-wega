@@ -1,7 +1,7 @@
 {
     "version": 1,
     "license": "CC0-1.0",
-    "copyright": "Created by EmoGarbage404 (github) for Space Station 14. icon-construction.png created by deltanedas (github). syndicateborgbomb.png created by Mangohydra (github). layered inhands by mubururu_ (github), icon-chem.png & icon-mining-adv.png created by mubururu_ (github), Xenoborg modules sprites by Samuka-C (github),surgery by <@500744677352407051>",
+    "copyright": "Created by EmoGarbage404 (github) for Space Station 14. icon-construction.png created by deltanedas (github). syndicateborgbomb.png created by Mangohydra (github). layered inhands by mubururu_ (github), icon-chem.png & icon-mining-adv.png created by mubururu_ (github), Xenoborg modules sprites by Samuka-C (github),surgery and kinetic by <@500744677352407051>",
     "size": {
         "x": 32,
         "y": 32
@@ -12,6 +12,12 @@
         },
         {
             "name": "medical"
+        },
+        {
+            "name": "cargo"
+        },
+        {
+            "name": "icon-kinetic"
         },
         {
             "name": "base-icon-inhand-left",

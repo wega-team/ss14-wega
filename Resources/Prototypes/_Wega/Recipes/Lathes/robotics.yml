@@ -2,6 +2,11 @@
   parent: BaseGoldBorgModuleRecipe
   id: BorgModuleSurgery
   result: BorgModuleSurgery
+  
+- type: latheRecipe
+  parent: BaseGoldBorgModuleRecipe
+  id: BorgModuleKinetic
+  result: BorgModuleKinetic
 
 - type: latheRecipe
   parent: BaseRoboticsRecipe

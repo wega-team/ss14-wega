@@ -13,7 +13,7 @@
     slots:
     - belt
   - type: Item
-    sprite:_Wega/Objects/Specific/Salvage/trofei.rsi
+    sprite: _Wega/Objects/Specific/Salvage/trofei.rsi
     size: Ginormous
   - type: Storage
     maxItemSize: Large

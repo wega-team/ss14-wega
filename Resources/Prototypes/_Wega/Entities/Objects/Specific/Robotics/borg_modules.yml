@@ -9,24 +9,6 @@
     layers:
     - state: medical
     - state: icon-surgery
-  - type: Item
-    inhandVisuals:
-      left:
-      - state: base-icon-inhand-left
-        color: "#8FCBCB"
-      - state: base-module-inhand-left
-        color: "#A1A1A1"
-      - state: base-part-inhand-left
-      - state: base-stripes-inhand-left
-        color: "#7D7D7D"
-      right:
-      - state: base-icon-inhand-right
-        color: "#8FCBCB"
-      - state: base-module-inhand-right
-        color: "#A1A1A1"
-      - state: base-part-inhand-right
-      - state: base-stripes-inhand-right
-        color: "#7D7D7D"
   - type: ItemBorgModule
     items:
     - ScalpelAS
@@ -42,3 +24,50 @@
     - BorgDropper
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: surgery-module }
+    
+- type: entity
+  id: BorgModuleKinetic
+  parent: [ BaseBorgModuleCargo, BaseProviderBorgModule ]
+  name: kinetic module
+  description: Pee wee has never been so much fun!
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: cargo
+    - state: icon-kinetic
+  - type: ItemBorgModule
+    items:
+    - WeaponProtoKineticAcceleratorBorg
+    - WeaponCrusherDagger
+    - TrofeiBag
+  - type: BorgModuleIcon
+    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: kinetic-weapon-module }
+    
+- type: entity
+  name: proto-kinetic accelerator1
+  id: WeaponProtoKineticAcceleratorBorg
+  parent: [WeaponProtoKineticAcceleratorBase, BaseCargoContraband]
+  description: Fires low-damage kinetic bolts at a short range.
+  suffix: Borg
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Basic/kinetic_accelerator.rsi
+    layers:
+    - state: icon
+    - state: animation-icon
+      visible: false
+      map: [ "empty-icon" ]
+  - type: GunWieldBonus
+    minAngle: 0
+    maxAngle: 0
+  - type: Gun
+    minAngle: 1
+    maxAngle: 2
+  - type: UpgradeableGun
+    whitelist:
+      tags:
+      - PKAUpgrade
+  - type: ContainerContainer
+    containers:
+      upgrades: !type:Container 
