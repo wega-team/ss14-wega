@@ -60,7 +60,7 @@
   - type: Lock
     locked: false
   - type: AccessReader
-    access: [ [ "" ] ]
+    access: [ [ "Empty" ] ]
   - type: EntityStorage
     whitelist:
       components:
