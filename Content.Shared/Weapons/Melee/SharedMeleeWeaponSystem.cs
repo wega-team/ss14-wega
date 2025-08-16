@@ -9,6 +9,7 @@ using Content.Shared.CombatMode;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Database;
+using Content.Shared.DirtVisuals; // Corvax-Wega-Dirtable
 using Content.Shared.FixedPoint;
 using Content.Shared.Hands;
 using Content.Shared.Hands.Components;
@@ -63,8 +64,9 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
     [Dependency] protected readonly SharedPopupSystem PopupSystem = default!;
     [Dependency] protected readonly SharedTransformSystem TransformSystem = default!;
     [Dependency] private   readonly SharedStaminaSystem _stamina = default!;
+    [Dependency] private readonly SharedDirtSystem _dirt = default!; // Corvax-Wega-Dirtable
 
-    private const int AttackMask = (int) (CollisionGroup.MobMask | CollisionGroup.Opaque);
+    private const int AttackMask = (int)(CollisionGroup.MobMask | CollisionGroup.Opaque);
 
     /// <summary>
     /// Maximum amount of targets allowed for a wide-attack.
@@ -531,6 +533,7 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
 
         if (damageResult is {Empty: false})
         {
+            _dirt.AddBloodDirtFromDamage(target.Value, user, damageResult); // Corvax-Wega-Dirtable
             // If the target has stamina and is taking blunt damage, they should also take stamina damage based on their blunt to stamina factor
             if (damageResult.DamageDict.TryGetValue("Blunt", out var bluntDamage))
             {
@@ -687,6 +690,7 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
 
             if (damageResult != null && damageResult.GetTotal() > FixedPoint2.Zero)
             {
+                _dirt.AddBloodDirtFromDamage(entity, user, damageResult); // Corvax-Wega-Dirtable
                 // If the target has stamina and is taking blunt damage, they should also take stamina damage based on their blunt to stamina factor
                 if (damageResult.DamageDict.TryGetValue("Blunt", out var bluntDamage))
                 {

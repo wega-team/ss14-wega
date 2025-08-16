@@ -66,6 +66,11 @@
   - type: Tag
     tags:
     - WhitelistChameleon
+  # Corvax-Wega-Dirtable-start
+  - type: Dirtable
+    dirtState: hardhat
+    equippedDirtState: equipped-hardhat
+  # Corvax-Wega-Dirtable-end
 
 - type: entity
   parent: ClothingHeadHatHardhatBase

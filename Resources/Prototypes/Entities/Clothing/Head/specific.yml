@@ -33,6 +33,11 @@
           - Scientist
           - Borg
 # Corvax-HiddenDesc-End
+    # Corvax-Wega-Dirtable-start
+    - type: Dirtable
+      dirtState: beret
+      equippedDirtState: equipped-beret
+    # Corvax-Wega-Dirtable-end
 
 - type: entity
   parent: ClothingHeadHatFedoraBrown

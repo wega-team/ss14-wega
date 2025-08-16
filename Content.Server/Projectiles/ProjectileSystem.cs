@@ -5,6 +5,7 @@ using Content.Server.Weapons.Ranged.Systems;
 using Content.Shared.Camera;
 using Content.Shared.Damage;
 using Content.Shared.Database;
+using Content.Shared.DirtVisuals; // Corvax-Wega-Dirtable
 using Content.Shared.FixedPoint;
 using Content.Shared.Projectiles;
 using Robust.Shared.Physics.Events;
@@ -20,6 +21,7 @@ public sealed class ProjectileSystem : SharedProjectileSystem
     [Dependency] private readonly DestructibleSystem _destructibleSystem = default!;
     [Dependency] private readonly GunSystem _guns = default!;
     [Dependency] private readonly SharedCameraRecoilSystem _sharedCameraRecoil = default!;
+    [Dependency] private readonly SharedDirtSystem _dirt = default!; // Corvax-Wega-Dirtable
 
     public override void Initialize()
     {
@@ -59,6 +61,7 @@ public sealed class ProjectileSystem : SharedProjectileSystem
 
         if (modifiedDamage is not null && Exists(component.Shooter))
         {
+            _dirt.AddBloodDirtFromDamage(target, component.Shooter.Value, modifiedDamage, true); // Corvax-Wega-Dirtable
             if (modifiedDamage.AnyPositive() && !deleted)
             {
                 _color.RaiseEffect(Color.Red, new List<EntityUid> { target }, Filter.Pvs(target, entityManager: EntityManager));

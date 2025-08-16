@@ -14,7 +14,7 @@
         Heat: 0.95
 
 - type: entity
-  parent: ClothingHeadBase
+  parent: ClothingHeadBaseSurgcap
   id: ClothingHeadHatSurgcapBlack
   name: surgical cap
   description: A black cap surgeons wear during operations. Keeps their hair from tickling your internal organs.
@@ -31,7 +31,7 @@
       HeadSide : HEAD
 
 - type: entity
-  parent: ClothingHeadBase
+  parent: ClothingHeadBaseSurgcap
   id: ClothingHeadHatSurgcapCmo
   name: surgical cap
   description: A cmo cap surgeons wear during operations. Keeps their hair from tickling your internal organs.

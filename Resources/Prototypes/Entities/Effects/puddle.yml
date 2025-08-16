@@ -201,6 +201,7 @@
   - type: EdgeSpreader
     id: Puddle
   - type: StepTrigger
+  - type: DirtSource # Corvax-Wega-Dirtable
   - type: Drink
     delay: 3
     transferAmount: 1

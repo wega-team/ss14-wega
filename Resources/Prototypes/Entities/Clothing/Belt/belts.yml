@@ -647,6 +647,11 @@
     sprite: Clothing/Belt/securitywebbing.rsi
   - type: Clothing
     sprite: Clothing/Belt/securitywebbing.rsi
+  # Corvax-Wega-Dirtable-start
+  - type: Dirtable
+    dirtState: webbing
+    equippedDirtState: equipped-webbing
+  # Corvax-Wega-Dirtable-end
 
 - type: entity
   parent: [ ClothingBeltStorageBase, BaseSecurityCargoContraband ]
@@ -658,6 +663,11 @@
     sprite: Clothing/Belt/mercwebbing.rsi
   - type: Clothing
     sprite: Clothing/Belt/mercwebbing.rsi
+  # Corvax-Wega-Dirtable-start
+  - type: Dirtable
+    dirtState: webbing
+    equippedDirtState: equipped-webbing
+  # Corvax-Wega-Dirtable-end
 
 - type: entity
   parent: ClothingBeltStorageBase
@@ -684,6 +694,11 @@
     damageCoefficient: 0.1
   - type: StaticPrice
     price: 500
+  # Corvax-Wega-Dirtable-start
+  - type: Dirtable
+    dirtState: webbing
+    equippedDirtState: equipped-webbing
+  # Corvax-Wega-Dirtable-end
 
 - type: entity
   parent: ClothingBeltMilitaryWebbing

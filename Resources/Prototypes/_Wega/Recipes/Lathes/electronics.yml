@@ -27,3 +27,8 @@
   parent: BaseCircuitboardRecipe
   id: MedicalScannerMachineCircuitboard
   result: MedicalScannerMachineCircuitboard
+
+- type: latheRecipe
+  parent: BaseCircuitboardRecipe
+  id: WashingMachineCircuitboard
+  result: WashingMachineCircuitboard

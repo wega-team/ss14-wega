@@ -23,6 +23,11 @@
         Heat: 0.80
   - type: ExplosionResistance
     damageCoefficient: 0.90
+  # Corvax-Wega-Dirtable-start
+  - type: Dirtable
+    dirtState: armor
+    equippedDirtState: equipped-armor
+  # Corvax-Wega-Dirtable-end
 
 #Standard armor vest, allowed for security and bartenders
 - type: entity
@@ -122,6 +127,11 @@
     sprintModifier: 1.0
   - type: HeldSpeedModifier
   - type: GroupExamine
+  # Corvax-Wega-Dirtable-start
+  - type: Dirtable
+    dirtState: armor
+    equippedDirtState: equipped-armor
+  # Corvax-Wega-Dirtable-end
 
 - type: entity
   parent: [ClothingOuterArmorBaseCarapace, BaseCommandContraband]
@@ -326,6 +336,11 @@
   - type: ExplosionResistance
     damageCoefficient: 0.9
   - type: GroupExamine
+  # Corvax-Wega-Dirtable-start
+  - type: Dirtable
+    dirtState: armorriot
+    equippedDirtState: equipped-armorriot
+  # Corvax-Wega-Dirtable-end
 
 - type: entity
   parent: [ ClothingOuterBaseLarge, BaseMajorContraband, AllowSuitStorageClothing ]

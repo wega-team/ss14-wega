@@ -1,0 +1,280 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Some sprites taken from https://github.com/ss220-space/Paradise, the rest are created by svarshiksatanist (414799795463651332) on discord",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "jumpsuit"
+    },
+    {
+      "name": "equipped-jumpsuit",
+      "directions": 4
+    },
+    {
+      "name": "equipped-jumpsuit-down",
+      "directions": 4
+    },
+    {
+      "name": "jumpskirt"
+    },
+    {
+      "name": "equipped-jumpskirt",
+      "directions": 4
+    },
+    {
+      "name": "equipped-jumpskirt-down",
+      "directions": 4
+    },
+    {
+      "name": "shoes"
+    },
+    {
+      "name": "boots"
+    },
+    {
+      "name": "magboots"
+    },
+    {
+      "name": "equipped-shoes",
+      "directions": 4
+    },
+    {
+      "name": "gloves"
+    },
+    {
+      "name": "capgloves"
+    },
+    {
+      "name": "equipped-gloves",
+      "directions": 4
+    },
+    {
+      "name": "webbing"
+    },
+    {
+      "name": "equipped-webbing",
+      "directions": 4
+    },
+    {
+      "name": "armor"
+    },
+    {
+      "name": "equipped-armor",
+      "directions": 4
+    },
+    {
+      "name": "armorriot"
+    },
+    {
+      "name": "equipped-armorriot",
+      "directions": 4
+    },
+    {
+      "name": "coat"
+    },
+    {
+      "name": "equipped-coat",
+      "directions": 4
+    },
+    {
+      "name": "open-equipped-coat",
+      "directions": 4
+    },
+    {
+      "name": "evasuit"
+    },
+    {
+      "name": "equipped-evasuit",
+      "directions": 4
+    },
+    {
+      "name": "hardsuit"
+    },
+    {
+      "name": "equipped-hardsuit",
+      "directions": 4
+    },
+    {
+      "name": "bio"
+    },
+    {
+      "name": "equipped-bio",
+      "directions": 4
+    },
+    {
+      "name": "mask"
+    },
+    {
+      "name": "equipped-mask",
+      "directions": 4
+    },
+    {
+      "name": "up-equipped-mask",
+      "directions": 4
+    },
+    {
+      "name": "gasmask"
+    },
+    {
+      "name": "equipped-gasmask",
+      "directions": 4
+    },
+    {
+      "name": "sterile"
+    },
+    {
+      "name": "equipped-sterile",
+      "directions": 4
+    },
+    {
+      "name": "up-equipped-sterile",
+      "directions": 4
+    },
+    {
+      "name": "clown"
+    },
+    {
+      "name": "equipped-clown",
+      "directions": 4
+    },
+    {
+      "name": "mime"
+    },
+    {
+      "name": "equipped-mime",
+      "directions": 4
+    },
+    {
+      "name": "gaiter"
+    },
+    {
+      "name": "equipped-gaiter",
+      "directions": 4
+    },
+    {
+      "name": "hat"
+    },
+    {
+      "name": "equipped-hat",
+      "directions": 4
+    },
+    {
+      "name": "hathos"
+    },
+    {
+      "name": "equipped-hathos",
+      "directions": 4
+    },
+    {
+      "name": "beret"
+    },
+    {
+      "name": "equipped-beret",
+      "directions": 4
+    },
+    {
+      "name": "biohead"
+    },
+    {
+      "name": "equipped-biohead",
+      "directions": 4
+    },
+    {
+      "name": "cap"
+    },
+    {
+      "name": "equipped-cap",
+      "directions": 4
+    },
+    {
+      "name": "capalt"
+    },
+    {
+      "name": "equipped-capalt",
+      "directions": 4
+    },
+    {
+      "name": "caphop"
+    },
+    {
+      "name": "equipped-caphop",
+      "directions": 4
+    },
+    {
+      "name": "hardhat"
+    },
+    {
+      "name": "off-equipped-hardhat",
+      "directions": 4
+    },
+    {
+      "name": "helmet"
+    },
+    {
+      "name": "equipped-helmet",
+      "directions": 4
+    },
+    {
+      "name": "off-equipped-helmet",
+      "directions": 4
+    },
+    {
+      "name": "on-equipped-helmet",
+      "directions": 4
+    },
+    {
+      "name": "on-equipped-hardhat",
+      "directions": 4
+    },
+    {
+      "name": "hood"
+    },
+    {
+      "name": "equipped-hood",
+      "directions": 4
+    },
+    {
+      "name": "soft"
+    },
+    {
+      "name": "soft_flipped"
+    },
+    {
+      "name": "equipped-soft",
+      "directions": 4
+    },
+    {
+      "name": "flipped-equipped-soft",
+      "directions": 4
+    },
+    {
+      "name": "surgcap"
+    },
+    {
+      "name": "equipped-surgcap",
+      "directions": 4
+    },
+    {
+      "name": "welding"
+    },
+    {
+      "name": "equipped-welding",
+      "directions": 4
+    },
+    {
+      "name": "up-equipped-welding",
+      "directions": 4
+    },
+    {
+      "name": "winterhood"
+    },
+    {
+      "name": "equipped-winterhood",
+      "directions": 4
+    }
+  ]
+}
