@@ -16,7 +16,7 @@
     - type: ItemToggleSize
       activatedSize: Normal
     - type: Sprite
-      sprite: Objects/Weapons/Melee/telescopic_baton.rsi
+      sprite: _Wega/Objects/Weapons/Melee/telescopic_baton.rsi
       layers:
         - state: icon-close
         - state: icon-open
@@ -24,7 +24,7 @@
           map: [ "baton" ]
     - type: Item
       size: Tiny
-      sprite: Objects/Weapons/Melee/telescopic_baton.rsi
+      sprite: _Wega/Objects/Weapons/Melee/telescopic_baton.rsi
     - type: UseDelay
       delay: 0.5
     - type: ToggleableVisuals
