@@ -16,15 +16,15 @@
     - type: ItemToggleSize
       activatedSize: Normal
     - type: Sprite
-      sprite: /Uploaded/telescopic_baton/telescopic_baton.rsi
+      sprite: Objects/Weapons/Melee/telescopic_baton.rsi
       layers:
         - state: icon-close
         - state: icon-open
           visible: false
-          map: [ "shield" ]
+          map: [ "baton" ]
     - type: Item
       size: Tiny
-      sprite: /Uploaded/telescopic_baton/telescopic_baton.rsi
+      sprite: Objects/Weapons/Melee/telescopic_baton.rsi
     - type: UseDelay
       delay: 0.5
     - type: ToggleableVisuals
@@ -44,6 +44,6 @@
     - type: ItemToggleMeleeWeapon
       activatedDamage:
         types:
-          Blunt: 8
+          Blunt: 10
 
       
