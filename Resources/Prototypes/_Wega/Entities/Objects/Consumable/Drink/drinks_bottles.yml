@@ -105,3 +105,21 @@
   - type: Sprite
     sprite: _Wega/Objects/Consumable/Drinks/sheridanbottle.rsi
   - type: Sealable
+  
+- type: entity
+  parent: [DrinkBottleVisualsOpenable, DrinkBottleGlassBaseFull]
+  id: DrinkWhiteWineBottleFull
+  name: white wine bottle
+  description: "A layered coffee-cream liqueur with a delicate flavor. Ideal for desserts or as a standalone drink."
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        reagents:
+        - ReagentId: WhiteWine
+          Quantity: 100
+  - type: Label
+    currentLabel: reagent-name-whitewine
+  - type: Sprite
+    sprite: _Wega/Objects/Consumable/Drinks/whitewine_botle.rsi
+  - type: Sealable

@@ -1101,3 +1101,19 @@
       - !type:AdjustReagent
         reagent: Ethanol
         amount: 0.2
+
+- type: reagent
+  id: WhiteWine
+  name: reagent-name-whitewine
+  parent: BaseAlcohol
+  desc: reagent-desc-cafe-whitewine
+  physicalDesc: reagent-physical-desc-translucent
+  flavor: shittywine
+  color: "#e5d482"
+  recognizable: true
+  metamorphicSprite:
+    sprite: _Wega/Objects/Consumable/Drinks/whitewine_glass.rsi
+    state: icon_empty
+  metamorphicMaxFillLevels: 5
+  metamorphicFillBaseName: fill-
+  metamorphicChangeColor: true
