@@ -25,6 +25,7 @@
     - type: Item
       size: Tiny
       sprite: _Wega/Objects/Weapons/Melee/telescopic_baton.rsi
+      heldPrefix: close
     - type: UseDelay
       delay: 0.5
     - type: ToggleableVisuals

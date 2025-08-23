@@ -20,6 +20,14 @@
     },
     {
       "name": "icon-open"
+    },
+    {
+      "name": "close-inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "close-inhand-right",
+      "directions": 4
     }
   ]
 }
