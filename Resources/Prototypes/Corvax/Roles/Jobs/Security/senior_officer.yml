@@ -34,7 +34,7 @@
 - type: startingGear
   id: SeniorOfficerGear
   equipment:
-    shoes: ClothingShoesBootsCombatFilled
+    ## shoes: ClothingShoesBootsCombatFilled Corvax-Wega
     eyes: ClothingEyesGlassesSecurity
     id: SeniorOfficerPDA
     ears: ClothingHeadsetSecurity

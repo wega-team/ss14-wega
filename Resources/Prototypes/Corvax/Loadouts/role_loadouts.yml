@@ -28,6 +28,12 @@
   - SurvivalExtended
   - Trinkets
   - GroupSpeciesBreathTool
+  # Corvax-Wega-start
+  - SeniorEngineerOuterItem
+  - Top
+  - Bottom
+  - Socks
+  # Corvax-Wega-end
 
 # Science
 - type: roleLoadout
@@ -44,6 +50,12 @@
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
+  # Corvax-Wega-start
+  - SeniorResearcherItem
+  - Top
+  - Bottom
+  - Socks
+  # Corvax-Wega-end
 
 # Security
 - type: roleLoadout
@@ -78,6 +90,12 @@
   - Trinkets
   - SecurityStar
   - GroupSpeciesBreathToolSecurity
+  # Corvax-Wega-start
+  - SeniorOfficerItem
+  - Top
+  - Bottom
+  - Socks
+  # Corvax-Wega-end
 
 # Medical
 - type: roleLoadout
@@ -95,3 +113,9 @@
   - SurvivalMedical
   - Trinkets
   - GroupSpeciesBreathToolMedical
+  # Corvax-Wega-start
+  - SeniorPhysicianItem
+  - Top
+  - Bottom
+  - Socks
+  # Corvax-Wega-end

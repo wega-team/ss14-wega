@@ -18,7 +18,7 @@
 - type: startingGear
   id: SeniorResearcherGear
   equipment:
-    shoes: ClothingShoesColorBlack
+    ## shoes: ClothingShoesColorBlack Corvax-Wega
     id: SeniorResearcherPDA
     ears: ClothingHeadsetScience
 

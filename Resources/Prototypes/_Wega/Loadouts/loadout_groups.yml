@@ -96,14 +96,56 @@
   id: CaptainTop
   name: loadout-group-captain-top
   loadouts:
-  - ClothingUnderTopBraCap
+  - ClothingUnderTopBraCap # default
+  - ClothingUnderTopBraGrey
+  - ClothingUnderTopBraAssblastusa
+  - ClothingUnderTopBikini
+  - ClothingUnderTopBraChast
+  - ClothingUnderTopBraLatex
+  - ClothingUnderTopBraStripped
+  - ClothingUnderTopBraCommie
+  - ClothingUnderTopCorset
+  - ClothingUnderTopBraFishnet
+  - ClothingUnderTopBraKinky
+  - ClothingUnderTopBraLace
+  - ClothingUnderTopBraLizard
+  - ClothingUnderTopBraNekoBlack
+  - ClothingUnderTopBraNekoWhite
+  - ClothingUnderTopBraPasties
+  - ClothingUnderTopBraSport
+  - ClothingUnderTopBraStrapless
+  - ClothingUnderTopBraThong
 
 - type: loadoutGroup
   id: CaptainBottom
   name: loadout-group-captain-bottom
   loadouts:
-  - ClothingUnderBottomMCaptain
+  - ClothingUnderBottomMCaptain # default
   - ClothingUnderBottomFCaptain
+  - ClothingUnderBottomGrey 
+  - ClothingUnderBottomBabydoll
+  - ClothingUnderBottomBoxers
+  - ClothingUnderBottomFAssblastusa
+  - ClothingUnderBottomFBriefs
+  - ClothingUnderBottomFCommie
+  - ClothingUnderBottomFishnet
+  - ClothingUnderBottomFKinky
+  - ClothingUnderBottomHearts
+  - ClothingUnderBottomLace
+  - ClothingUnderBottomLatex
+  - ClothingUnderBottomLizard
+  - ClothingUnderBottomMankiny
+  - ClothingUnderBottomMAssblastusa
+  - ClothingUnderBottomMBriefs
+  - ClothingUnderBottomMCommie
+  - ClothingUnderBottomMKinky
+  - ClothingUnderBottomNekoBlack
+  - ClothingUnderBottomNekoWhite
+  - ClothingUnderBottomPanties
+  - ClothingUnderBottomSport
+  - ClothingUnderBottomStripe
+  - ClothingUnderBottomStrippedPanties
+  - ClothingUnderBottomThong
 
 - type: loadoutGroup
   id: CaptainSocks
@@ -114,20 +156,94 @@
   - ClothingUnderSocksCapNorm
   - ClothingUnderSocksCapShort
   - ClothingUnderSocksCapThigh
+  - ClothingUnderSocksBeeKnee
+  - ClothingUnderSocksBee
+  - ClothingUnderSocksBlackKnee
+  - ClothingUnderSocksBlackNorm
+  - ClothingUnderSocksBlackShort
+  - ClothingUnderSocksBlackThigh
+  - ClothingUnderSocksWhiteNorm
+  - ClothingUnderSocksWhiteShort
+  - ClothingUnderSocksWhiteKnee
+  - ClothingUnderSocksWhiteThigh
+  - ClothingUnderSocksCoder
+  - ClothingUnderSocksBlue
+  - ClothingUnderSocksCyan
+  - ClothingUnderSocksGreen
+  - ClothingUnderSocksOrange
+  - ClothingUnderSocksPink
+  - ClothingUnderSocksPurple
+  - ClothingUnderSocksYellow
+  - ClothingUnderSocksRainbowKnee
+  - ClothingUnderSocksRainbowThigh
+  - ClothingUnderSocksCommieKnee
+  - ClothingUnderSocksCommieThigh
+  - ClothingUnderSocksAssblastusaKnee
+  - ClothingUnderSocksAssblastusaThigh
+  - ClothingUnderSocksStripedKnee
+  - ClothingUnderSocksStripedThigh
+  - ClothingUnderSocksThinKnee
+  - ClothingUnderSocksThinThigh
+  - ClothingUnderSocksFishnet
+  - ClothingUnderSocksFishnetKnee
+  - ClothingUnderSocksFishnetThigh
+  - ClothingUnderSocksPantyhose
 
 #HoP
 - type: loadoutGroup
   id: HoPTop
   name: loadout-group-hop-top
   loadouts:
-  - ClothingUnderTopBraHop
+  - ClothingUnderTopBraHop # default
+  - ClothingUnderTopBraGrey 
+  - ClothingUnderTopBraAssblastusa
+  - ClothingUnderTopBikini
+  - ClothingUnderTopBraChast
+  - ClothingUnderTopBraLatex
+  - ClothingUnderTopBraStripped
+  - ClothingUnderTopBraCommie
+  - ClothingUnderTopCorset
+  - ClothingUnderTopBraFishnet
+  - ClothingUnderTopBraKinky
+  - ClothingUnderTopBraLace
+  - ClothingUnderTopBraLizard
+  - ClothingUnderTopBraNekoBlack
+  - ClothingUnderTopBraNekoWhite
+  - ClothingUnderTopBraPasties
+  - ClothingUnderTopBraSport
+  - ClothingUnderTopBraStrapless
+  - ClothingUnderTopBraThong
 
 - type: loadoutGroup
   id: HoPBottom
   name: loadout-group-hop-bottom
   loadouts:
-  - ClothingUnderBottomMHop
+  - ClothingUnderBottomMHop # default
   - ClothingUnderBottomFHop
+  - ClothingUnderBottomGrey 
+  - ClothingUnderBottomBabydoll
+  - ClothingUnderBottomBoxers
+  - ClothingUnderBottomFAssblastusa
+  - ClothingUnderBottomFBriefs
+  - ClothingUnderBottomFCommie
+  - ClothingUnderBottomFishnet
+  - ClothingUnderBottomFKinky
+  - ClothingUnderBottomHearts
+  - ClothingUnderBottomLace
+  - ClothingUnderBottomLatex
+  - ClothingUnderBottomLizard
+  - ClothingUnderBottomMankiny
+  - ClothingUnderBottomMAssblastusa
+  - ClothingUnderBottomMBriefs
+  - ClothingUnderBottomMCommie
+  - ClothingUnderBottomMKinky
+  - ClothingUnderBottomNekoBlack
+  - ClothingUnderBottomNekoWhite
+  - ClothingUnderBottomPanties
+  - ClothingUnderBottomSport
+  - ClothingUnderBottomStripe
+  - ClothingUnderBottomStrippedPanties
+  - ClothingUnderBottomThong
 
 - type: loadoutGroup
   id: HoPSocks
@@ -138,20 +254,94 @@
   - ClothingUnderSocksHopNorm
   - ClothingUnderSocksHopShort
   - ClothingUnderSocksHopThigh
+  - ClothingUnderSocksBeeKnee
+  - ClothingUnderSocksBee
+  - ClothingUnderSocksBlackKnee
+  - ClothingUnderSocksBlackNorm
+  - ClothingUnderSocksBlackShort
+  - ClothingUnderSocksBlackThigh
+  - ClothingUnderSocksWhiteNorm
+  - ClothingUnderSocksWhiteShort
+  - ClothingUnderSocksWhiteKnee
+  - ClothingUnderSocksWhiteThigh
+  - ClothingUnderSocksCoder
+  - ClothingUnderSocksBlue
+  - ClothingUnderSocksCyan
+  - ClothingUnderSocksGreen
+  - ClothingUnderSocksOrange
+  - ClothingUnderSocksPink
+  - ClothingUnderSocksPurple
+  - ClothingUnderSocksYellow
+  - ClothingUnderSocksRainbowKnee
+  - ClothingUnderSocksRainbowThigh
+  - ClothingUnderSocksCommieKnee
+  - ClothingUnderSocksCommieThigh
+  - ClothingUnderSocksAssblastusaKnee
+  - ClothingUnderSocksAssblastusaThigh
+  - ClothingUnderSocksStripedKnee
+  - ClothingUnderSocksStripedThigh
+  - ClothingUnderSocksThinKnee
+  - ClothingUnderSocksThinThigh
+  - ClothingUnderSocksFishnet
+  - ClothingUnderSocksFishnetKnee
+  - ClothingUnderSocksFishnetThigh
+  - ClothingUnderSocksPantyhose
 
 #Quartermaster
 - type: loadoutGroup
   id: QuartermasterTop
   name: loadout-group-quartermaster-top
   loadouts:
-  - ClothingUnderTopBraQm
+  - ClothingUnderTopBraQm # default
+  - ClothingUnderTopBraGrey
+  - ClothingUnderTopBraAssblastusa
+  - ClothingUnderTopBikini
+  - ClothingUnderTopBraChast
+  - ClothingUnderTopBraLatex
+  - ClothingUnderTopBraStripped
+  - ClothingUnderTopBraCommie
+  - ClothingUnderTopCorset
+  - ClothingUnderTopBraFishnet
+  - ClothingUnderTopBraKinky
+  - ClothingUnderTopBraLace
+  - ClothingUnderTopBraLizard
+  - ClothingUnderTopBraNekoBlack
+  - ClothingUnderTopBraNekoWhite
+  - ClothingUnderTopBraPasties
+  - ClothingUnderTopBraSport
+  - ClothingUnderTopBraStrapless
+  - ClothingUnderTopBraThong
 
 - type: loadoutGroup
   id: QuartermasterBottom
   name: loadout-group-quartermaster-bottom
   loadouts:
-  - ClothingUnderBottomMQm
+  - ClothingUnderBottomMQm # default
   - ClothingUnderBottomFQm
+  - ClothingUnderBottomGrey 
+  - ClothingUnderBottomBabydoll
+  - ClothingUnderBottomBoxers
+  - ClothingUnderBottomFAssblastusa
+  - ClothingUnderBottomFBriefs
+  - ClothingUnderBottomFCommie
+  - ClothingUnderBottomFishnet
+  - ClothingUnderBottomFKinky
+  - ClothingUnderBottomHearts
+  - ClothingUnderBottomLace
+  - ClothingUnderBottomLatex
+  - ClothingUnderBottomLizard
+  - ClothingUnderBottomMankiny
+  - ClothingUnderBottomMAssblastusa
+  - ClothingUnderBottomMBriefs
+  - ClothingUnderBottomMCommie
+  - ClothingUnderBottomMKinky
+  - ClothingUnderBottomNekoBlack
+  - ClothingUnderBottomNekoWhite
+  - ClothingUnderBottomPanties
+  - ClothingUnderBottomSport
+  - ClothingUnderBottomStripe
+  - ClothingUnderBottomStrippedPanties
+  - ClothingUnderBottomThong
 
 - type: loadoutGroup
   id: QuartermasterSocks
@@ -162,20 +352,94 @@
   - ClothingUnderSocksQmNorm
   - ClothingUnderSocksQmShort
   - ClothingUnderSocksQmThigh
+  - ClothingUnderSocksBeeKnee
+  - ClothingUnderSocksBee
+  - ClothingUnderSocksBlackKnee
+  - ClothingUnderSocksBlackNorm
+  - ClothingUnderSocksBlackShort
+  - ClothingUnderSocksBlackThigh
+  - ClothingUnderSocksWhiteNorm
+  - ClothingUnderSocksWhiteShort
+  - ClothingUnderSocksWhiteKnee
+  - ClothingUnderSocksWhiteThigh
+  - ClothingUnderSocksCoder
+  - ClothingUnderSocksBlue
+  - ClothingUnderSocksCyan
+  - ClothingUnderSocksGreen
+  - ClothingUnderSocksOrange
+  - ClothingUnderSocksPink
+  - ClothingUnderSocksPurple
+  - ClothingUnderSocksYellow
+  - ClothingUnderSocksRainbowKnee
+  - ClothingUnderSocksRainbowThigh
+  - ClothingUnderSocksCommieKnee
+  - ClothingUnderSocksCommieThigh
+  - ClothingUnderSocksAssblastusaKnee
+  - ClothingUnderSocksAssblastusaThigh
+  - ClothingUnderSocksStripedKnee
+  - ClothingUnderSocksStripedThigh
+  - ClothingUnderSocksThinKnee
+  - ClothingUnderSocksThinThigh
+  - ClothingUnderSocksFishnet
+  - ClothingUnderSocksFishnetKnee
+  - ClothingUnderSocksFishnetThigh
+  - ClothingUnderSocksPantyhose
 
 #ChiefEngineer
 - type: loadoutGroup
   id: ChiefEngineerTop
   name: loadout-group-chief-engineer-top
   loadouts:
-  - ClothingUnderTopBraCe
+  - ClothingUnderTopBraCe # default
+  - ClothingUnderTopBraGrey 
+  - ClothingUnderTopBraAssblastusa
+  - ClothingUnderTopBikini
+  - ClothingUnderTopBraChast
+  - ClothingUnderTopBraLatex
+  - ClothingUnderTopBraStripped
+  - ClothingUnderTopBraCommie
+  - ClothingUnderTopCorset
+  - ClothingUnderTopBraFishnet
+  - ClothingUnderTopBraKinky
+  - ClothingUnderTopBraLace
+  - ClothingUnderTopBraLizard
+  - ClothingUnderTopBraNekoBlack
+  - ClothingUnderTopBraNekoWhite
+  - ClothingUnderTopBraPasties
+  - ClothingUnderTopBraSport
+  - ClothingUnderTopBraStrapless
+  - ClothingUnderTopBraThong
 
 - type: loadoutGroup
   id: ChiefEngineerBottom
   name: loadout-group-chief-engineer-bottom
   loadouts:
-  - ClothingUnderBottomMCe
+  - ClothingUnderBottomMCe # default
   - ClothingUnderBottomFCe
+  - ClothingUnderBottomGrey 
+  - ClothingUnderBottomBabydoll
+  - ClothingUnderBottomBoxers
+  - ClothingUnderBottomFAssblastusa
+  - ClothingUnderBottomFBriefs
+  - ClothingUnderBottomFCommie
+  - ClothingUnderBottomFishnet
+  - ClothingUnderBottomFKinky
+  - ClothingUnderBottomHearts
+  - ClothingUnderBottomLace
+  - ClothingUnderBottomLatex
+  - ClothingUnderBottomLizard
+  - ClothingUnderBottomMankiny
+  - ClothingUnderBottomMAssblastusa
+  - ClothingUnderBottomMBriefs
+  - ClothingUnderBottomMCommie
+  - ClothingUnderBottomMKinky
+  - ClothingUnderBottomNekoBlack
+  - ClothingUnderBottomNekoWhite
+  - ClothingUnderBottomPanties
+  - ClothingUnderBottomSport
+  - ClothingUnderBottomStripe
+  - ClothingUnderBottomStrippedPanties
+  - ClothingUnderBottomThong
 
 - type: loadoutGroup
   id: ChiefEngineerSocks
@@ -186,20 +450,94 @@
   - ClothingUnderSocksCeNorm
   - ClothingUnderSocksCeShort
   - ClothingUnderSocksCeThigh
+  - ClothingUnderSocksBeeKnee
+  - ClothingUnderSocksBee
+  - ClothingUnderSocksBlackKnee
+  - ClothingUnderSocksBlackNorm
+  - ClothingUnderSocksBlackShort
+  - ClothingUnderSocksBlackThigh
+  - ClothingUnderSocksWhiteNorm
+  - ClothingUnderSocksWhiteShort
+  - ClothingUnderSocksWhiteKnee
+  - ClothingUnderSocksWhiteThigh
+  - ClothingUnderSocksCoder
+  - ClothingUnderSocksBlue
+  - ClothingUnderSocksCyan
+  - ClothingUnderSocksGreen
+  - ClothingUnderSocksOrange
+  - ClothingUnderSocksPink
+  - ClothingUnderSocksPurple
+  - ClothingUnderSocksYellow
+  - ClothingUnderSocksRainbowKnee
+  - ClothingUnderSocksRainbowThigh
+  - ClothingUnderSocksCommieKnee
+  - ClothingUnderSocksCommieThigh
+  - ClothingUnderSocksAssblastusaKnee
+  - ClothingUnderSocksAssblastusaThigh
+  - ClothingUnderSocksStripedKnee
+  - ClothingUnderSocksStripedThigh
+  - ClothingUnderSocksThinKnee
+  - ClothingUnderSocksThinThigh
+  - ClothingUnderSocksFishnet
+  - ClothingUnderSocksFishnetKnee
+  - ClothingUnderSocksFishnetThigh
+  - ClothingUnderSocksPantyhose
 
 #ResearchDirector
 - type: loadoutGroup
   id: ResearchDirectorTop
   name: loadout-group-research-director-top
   loadouts:
-  - ClothingUnderTopBraRd
+  - ClothingUnderTopBraRd # default
+  - ClothingUnderTopBraGrey 
+  - ClothingUnderTopBraAssblastusa
+  - ClothingUnderTopBikini
+  - ClothingUnderTopBraChast
+  - ClothingUnderTopBraLatex
+  - ClothingUnderTopBraStripped
+  - ClothingUnderTopBraCommie
+  - ClothingUnderTopCorset
+  - ClothingUnderTopBraFishnet
+  - ClothingUnderTopBraKinky
+  - ClothingUnderTopBraLace
+  - ClothingUnderTopBraLizard
+  - ClothingUnderTopBraNekoBlack
+  - ClothingUnderTopBraNekoWhite
+  - ClothingUnderTopBraPasties
+  - ClothingUnderTopBraSport
+  - ClothingUnderTopBraStrapless
+  - ClothingUnderTopBraThong
 
 - type: loadoutGroup
   id: ResearchDirectorBottom
   name: loadout-group-research-director-bottom
   loadouts:
-  - ClothingUnderBottomMRd
+  - ClothingUnderBottomMRd # default
   - ClothingUnderBottomFRd
+  - ClothingUnderBottomGrey 
+  - ClothingUnderBottomBabydoll
+  - ClothingUnderBottomBoxers
+  - ClothingUnderBottomFAssblastusa
+  - ClothingUnderBottomFBriefs
+  - ClothingUnderBottomFCommie
+  - ClothingUnderBottomFishnet
+  - ClothingUnderBottomFKinky
+  - ClothingUnderBottomHearts
+  - ClothingUnderBottomLace
+  - ClothingUnderBottomLatex
+  - ClothingUnderBottomLizard
+  - ClothingUnderBottomMankiny
+  - ClothingUnderBottomMAssblastusa
+  - ClothingUnderBottomMBriefs
+  - ClothingUnderBottomMCommie
+  - ClothingUnderBottomMKinky
+  - ClothingUnderBottomNekoBlack
+  - ClothingUnderBottomNekoWhite
+  - ClothingUnderBottomPanties
+  - ClothingUnderBottomSport
+  - ClothingUnderBottomStripe
+  - ClothingUnderBottomStrippedPanties
+  - ClothingUnderBottomThong
 
 - type: loadoutGroup
   id: ResearchDirectorSocks
@@ -210,20 +548,94 @@
   - ClothingUnderSocksRdNorm
   - ClothingUnderSocksRdShort
   - ClothingUnderSocksRdThigh
+  - ClothingUnderSocksBeeKnee
+  - ClothingUnderSocksBee
+  - ClothingUnderSocksBlackKnee
+  - ClothingUnderSocksBlackNorm
+  - ClothingUnderSocksBlackShort
+  - ClothingUnderSocksBlackThigh
+  - ClothingUnderSocksWhiteNorm
+  - ClothingUnderSocksWhiteShort
+  - ClothingUnderSocksWhiteKnee
+  - ClothingUnderSocksWhiteThigh
+  - ClothingUnderSocksCoder
+  - ClothingUnderSocksBlue
+  - ClothingUnderSocksCyan
+  - ClothingUnderSocksGreen
+  - ClothingUnderSocksOrange
+  - ClothingUnderSocksPink
+  - ClothingUnderSocksPurple
+  - ClothingUnderSocksYellow
+  - ClothingUnderSocksRainbowKnee
+  - ClothingUnderSocksRainbowThigh
+  - ClothingUnderSocksCommieKnee
+  - ClothingUnderSocksCommieThigh
+  - ClothingUnderSocksAssblastusaKnee
+  - ClothingUnderSocksAssblastusaThigh
+  - ClothingUnderSocksStripedKnee
+  - ClothingUnderSocksStripedThigh
+  - ClothingUnderSocksThinKnee
+  - ClothingUnderSocksThinThigh
+  - ClothingUnderSocksFishnet
+  - ClothingUnderSocksFishnetKnee
+  - ClothingUnderSocksFishnetThigh
+  - ClothingUnderSocksPantyhose
 
 #HeadofSecurity
 - type: loadoutGroup
   id: HeadofSecurityTop
   name: loadout-group-head-of-security-top
   loadouts:
-  - ClothingUnderTopBraHos
+  - ClothingUnderTopBraHos # default
+  - ClothingUnderTopBraGrey
+  - ClothingUnderTopBraAssblastusa
+  - ClothingUnderTopBikini
+  - ClothingUnderTopBraChast
+  - ClothingUnderTopBraLatex
+  - ClothingUnderTopBraStripped
+  - ClothingUnderTopBraCommie
+  - ClothingUnderTopCorset
+  - ClothingUnderTopBraFishnet
+  - ClothingUnderTopBraKinky
+  - ClothingUnderTopBraLace
+  - ClothingUnderTopBraLizard
+  - ClothingUnderTopBraNekoBlack
+  - ClothingUnderTopBraNekoWhite
+  - ClothingUnderTopBraPasties
+  - ClothingUnderTopBraSport
+  - ClothingUnderTopBraStrapless
+  - ClothingUnderTopBraThong
 
 - type: loadoutGroup
   id: HeadofSecurityBottom
   name: loadout-group-head-of-security-bottom
   loadouts:
-  - ClothingUnderBottomMHos
+  - ClothingUnderBottomMHos # default
   - ClothingUnderBottomFHos
+  - ClothingUnderBottomGrey 
+  - ClothingUnderBottomBabydoll
+  - ClothingUnderBottomBoxers
+  - ClothingUnderBottomFAssblastusa
+  - ClothingUnderBottomFBriefs
+  - ClothingUnderBottomFCommie
+  - ClothingUnderBottomFishnet
+  - ClothingUnderBottomFKinky
+  - ClothingUnderBottomHearts
+  - ClothingUnderBottomLace
+  - ClothingUnderBottomLatex
+  - ClothingUnderBottomLizard
+  - ClothingUnderBottomMankiny
+  - ClothingUnderBottomMAssblastusa
+  - ClothingUnderBottomMBriefs
+  - ClothingUnderBottomMCommie
+  - ClothingUnderBottomMKinky
+  - ClothingUnderBottomNekoBlack
+  - ClothingUnderBottomNekoWhite
+  - ClothingUnderBottomPanties
+  - ClothingUnderBottomSport
+  - ClothingUnderBottomStripe
+  - ClothingUnderBottomStrippedPanties
+  - ClothingUnderBottomThong
 
 - type: loadoutGroup
   id: HeadofSecuritySocks
@@ -234,20 +646,94 @@
   - ClothingUnderSocksHosNorm
   - ClothingUnderSocksHosShort
   - ClothingUnderSocksHosThigh
+  - ClothingUnderSocksBeeKnee
+  - ClothingUnderSocksBee
+  - ClothingUnderSocksBlackKnee
+  - ClothingUnderSocksBlackNorm
+  - ClothingUnderSocksBlackShort
+  - ClothingUnderSocksBlackThigh
+  - ClothingUnderSocksWhiteNorm
+  - ClothingUnderSocksWhiteShort
+  - ClothingUnderSocksWhiteKnee
+  - ClothingUnderSocksWhiteThigh
+  - ClothingUnderSocksCoder
+  - ClothingUnderSocksBlue
+  - ClothingUnderSocksCyan
+  - ClothingUnderSocksGreen
+  - ClothingUnderSocksOrange
+  - ClothingUnderSocksPink
+  - ClothingUnderSocksPurple
+  - ClothingUnderSocksYellow
+  - ClothingUnderSocksRainbowKnee
+  - ClothingUnderSocksRainbowThigh
+  - ClothingUnderSocksCommieKnee
+  - ClothingUnderSocksCommieThigh
+  - ClothingUnderSocksAssblastusaKnee
+  - ClothingUnderSocksAssblastusaThigh
+  - ClothingUnderSocksStripedKnee
+  - ClothingUnderSocksStripedThigh
+  - ClothingUnderSocksThinKnee
+  - ClothingUnderSocksThinThigh
+  - ClothingUnderSocksFishnet
+  - ClothingUnderSocksFishnetKnee
+  - ClothingUnderSocksFishnetThigh
+  - ClothingUnderSocksPantyhose
 
 #ChiefMedicalOfficer
 - type: loadoutGroup
   id: ChiefMedicalOfficerTop
   name: loadout-group-chief-medical-officer-top
   loadouts:
-  - ClothingUnderTopBraCmo
+  - ClothingUnderTopBraCmo # default
+  - ClothingUnderTopBraGrey 
+  - ClothingUnderTopBraAssblastusa
+  - ClothingUnderTopBikini
+  - ClothingUnderTopBraChast
+  - ClothingUnderTopBraLatex
+  - ClothingUnderTopBraStripped
+  - ClothingUnderTopBraCommie
+  - ClothingUnderTopCorset
+  - ClothingUnderTopBraFishnet
+  - ClothingUnderTopBraKinky
+  - ClothingUnderTopBraLace
+  - ClothingUnderTopBraLizard
+  - ClothingUnderTopBraNekoBlack
+  - ClothingUnderTopBraNekoWhite
+  - ClothingUnderTopBraPasties
+  - ClothingUnderTopBraSport
+  - ClothingUnderTopBraStrapless
+  - ClothingUnderTopBraThong
 
 - type: loadoutGroup
   id: ChiefMedicalOfficerBottom
   name: loadout-group-chief-medical-officer-bottom
   loadouts:
-  - ClothingUnderBottomMCmo
+  - ClothingUnderBottomMCmo # default
   - ClothingUnderBottomFCmo
+  - ClothingUnderBottomGrey
+  - ClothingUnderBottomBabydoll
+  - ClothingUnderBottomBoxers
+  - ClothingUnderBottomFAssblastusa
+  - ClothingUnderBottomFBriefs
+  - ClothingUnderBottomFCommie
+  - ClothingUnderBottomFishnet
+  - ClothingUnderBottomFKinky
+  - ClothingUnderBottomHearts
+  - ClothingUnderBottomLace
+  - ClothingUnderBottomLatex
+  - ClothingUnderBottomLizard
+  - ClothingUnderBottomMankiny
+  - ClothingUnderBottomMAssblastusa
+  - ClothingUnderBottomMBriefs
+  - ClothingUnderBottomMCommie
+  - ClothingUnderBottomMKinky
+  - ClothingUnderBottomNekoBlack
+  - ClothingUnderBottomNekoWhite
+  - ClothingUnderBottomPanties
+  - ClothingUnderBottomSport
+  - ClothingUnderBottomStripe
+  - ClothingUnderBottomStrippedPanties
+  - ClothingUnderBottomThong
 
 - type: loadoutGroup
   id: ChiefMedicalOfficerSocks
@@ -258,6 +744,38 @@
   - ClothingUnderSocksCmoNorm
   - ClothingUnderSocksCmoShort
   - ClothingUnderSocksCmoThigh
+  - ClothingUnderSocksBeeKnee
+  - ClothingUnderSocksBee
+  - ClothingUnderSocksBlackKnee
+  - ClothingUnderSocksBlackNorm
+  - ClothingUnderSocksBlackShort
+  - ClothingUnderSocksBlackThigh
+  - ClothingUnderSocksWhiteNorm
+  - ClothingUnderSocksWhiteShort
+  - ClothingUnderSocksWhiteKnee
+  - ClothingUnderSocksWhiteThigh
+  - ClothingUnderSocksCoder
+  - ClothingUnderSocksBlue
+  - ClothingUnderSocksCyan
+  - ClothingUnderSocksGreen
+  - ClothingUnderSocksOrange
+  - ClothingUnderSocksPink
+  - ClothingUnderSocksPurple
+  - ClothingUnderSocksYellow
+  - ClothingUnderSocksRainbowKnee
+  - ClothingUnderSocksRainbowThigh
+  - ClothingUnderSocksCommieKnee
+  - ClothingUnderSocksCommieThigh
+  - ClothingUnderSocksAssblastusaKnee
+  - ClothingUnderSocksAssblastusaThigh
+  - ClothingUnderSocksStripedKnee
+  - ClothingUnderSocksStripedThigh
+  - ClothingUnderSocksThinKnee
+  - ClothingUnderSocksThinThigh
+  - ClothingUnderSocksFishnet
+  - ClothingUnderSocksFishnetKnee
+  - ClothingUnderSocksFishnetThigh
+  - ClothingUnderSocksPantyhose
 
 # Civilian
 - type: loadoutGroup

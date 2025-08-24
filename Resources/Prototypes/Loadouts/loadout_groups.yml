@@ -612,6 +612,7 @@
   minLimit: 0
   maxLimit: 2
   loadouts:
+  - SuperSynthesizerInstrument ## Corvax-Wega
   - Glockenspiel
   - MusicBox
   - Xylophone
