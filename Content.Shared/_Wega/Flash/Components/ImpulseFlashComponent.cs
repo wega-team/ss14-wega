@@ -26,4 +26,7 @@ public sealed partial class ImpulseFlashComponent : Component
 
     [DataField]
     public float Probability = 1.0f;
+	
+	[DataField]
+    public float SlowTo = 0.5f;
 }

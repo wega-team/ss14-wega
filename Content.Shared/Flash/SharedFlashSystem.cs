@@ -272,7 +272,7 @@ public abstract class SharedFlashSystem : EntitySystem
 	// Corvax-Wega-Arsenal-start
 	private void OnFlashPulse(Entity<ImpulseFlashComponent> ent,ref MaskFlashActionEvent args)
 	{
-            FlashArea(ent,ent, ent.Comp.Range, ent.Comp.Duration, probability: ent.Comp.Probability);
+            FlashArea(ent,ent, ent.Comp.Range, ent.Comp.Duration, ent.Comp.SlowTo, probability: ent.Comp.Probability);
             args.Handled = true;
 	}
     
