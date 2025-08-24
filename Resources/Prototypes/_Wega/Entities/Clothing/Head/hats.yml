@@ -58,7 +58,7 @@
   - type: Clothing
     sprite: _Wega/Clothing/Head/Hats/flash_halmet.rsi
   - type: ImpulseFlash
-    range: 7
+    range: 12
     slowTo: 0.2
     duration: 6
   - type: Armor
@@ -80,7 +80,7 @@
   description: Turn flash
   components:
   - type: Action
-    useDelay: 15
+    useDelay: 10
     icon:
       sprite: Objects/Weapons/Melee/flash.rsi
       state: flash
