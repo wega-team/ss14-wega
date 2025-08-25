@@ -49,7 +49,7 @@
   - type: MachineBoard
     prototype: SlimeExtractor
     stackRequirements:
-      MatterBin: 2
+      # MatterBin: 2
       Manipulator: 1
       Steel: 5
     tagRequirements:
@@ -57,3 +57,19 @@
         amount: 2
         defaultPrototype: KitchenKnife
         examineName: construction-insert-info-examine-name-knife
+
+- type: entity
+  id: MiningServerCircuitboard
+  parent: BaseMachineCircuitboard
+  name: mining server board
+  description: A machine printed circuit board for an mining server.
+  components:
+    - type: Sprite
+      state: engineering
+    - type: MachineBoard
+      prototype: MiningServer
+      stackRequirements:
+        Manipulator: 4
+        Steel: 5
+        Glass: 2
+        Cable: 5

@@ -5,6 +5,7 @@
     - type: NpcFactionMember
       factions:
         - NanoTrasen
+    - type: MiningAccount # Corvax-Wega-Mining
 
 - type: entity
   id: StandardNanotrasenStation
