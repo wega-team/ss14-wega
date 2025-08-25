@@ -17,6 +17,8 @@
   - type: Body
     prototype: Tajaran
     requiredLegs: 2
+  - type: Carriable # Corvax-Wega-Carrying
+  - type: DiseaseCarrier # Corvax-Wega-Disease
   - type: Inventory
     speciesId: reptilian # whyyy
     femaleDisplacements:

@@ -1,14 +1,9 @@
 - type: construction
-  name: cult girder
   id: CultGirder
   graph: CultGirder
   startNode: start
   targetNode: cultgirder
   category: construction-category-structures
-  description: A large structural assembly made out of metal.
-  icon:
-    sprite: _Wega/Structures/Walls/cult.rsi
-    state: cult_girder
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
@@ -17,16 +12,11 @@
     - !type:TileNotBlocked
 
 - type: construction
-  name: altar of blood
   id: BloodCultStructureAltar
   graph: BloodCultStructureAltarGraph
   startNode: start
   targetNode: BloodCultStructureAltar
   category: construction-category-structures
-  description: An altar in the name of the great Nar'Si!
-  icon:
-    sprite: _Wega/Structures/Specific/bloodcult_structures.rsi
-    state: altar
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
@@ -35,16 +25,11 @@
     - !type:TileNotBlocked
 
 - type: construction
-  name: archives
   id: BloodCultStructureArchives
   graph: BloodCultStructureArchivesGraph
   startNode: start
   targetNode: BloodCultStructureArchives
   category: construction-category-structures
-  description: A desk covered with mysterious manuscripts. It's used to cast spells.
-  icon:
-    sprite: _Wega/Structures/Specific/bloodcult_structures.rsi
-    state: archive
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
@@ -53,16 +38,11 @@
     - !type:TileNotBlocked
 
 - type: construction
-  name: forge of souls
   id: BloodCultStructureForge
   graph: BloodCultStructureForgeGraph
   startNode: start
   targetNode: BloodCultStructureForge
   category: construction-category-structures
-  description: An cult forge where you can craft equipment.
-  icon:
-    sprite: _Wega/Structures/Specific/bloodcult_structures.rsi
-    state: forge
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
@@ -71,16 +51,11 @@
     - !type:TileNotBlocked
 
 - type: construction
-  name: pylon
   id: BloodCultStructurePylon
   graph: BloodCultStructurePylonGraph
   startNode: start
   targetNode: BloodCultStructurePylon
   category: construction-category-structures
-  description: A bloody sculpture treating Nar'SI supporters.
-  icon:
-    sprite: _Wega/Structures/Specific/bloodcult_structures.rsi
-    state: pylon
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
@@ -89,16 +64,11 @@
     - !type:TileNotBlocked
 
 - type: construction
-  name: soil
   id: Soil
   graph: SoilGraph
   startNode: start
   targetNode: soil
   category: construction-category-structures
-  description: Mud.
-  icon:
-    sprite: Structures/Hydroponics/misc.rsi
-    state: soil
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false

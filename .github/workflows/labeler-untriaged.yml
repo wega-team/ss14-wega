@@ -9,8 +9,18 @@ on:
 jobs:
   add_label:
     runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
     steps:
-    - uses: actions-ecosystem/action-add-labels@v1
-      if: join(github.event.issue.labels) == ''
-      with:
-        labels: "S: Untriaged"
+      - name: Add label to issue
+        if: github.event_name == 'issues' && join(github.event.issue.labels.*.name) == ''
+        uses: actions-ecosystem/action-add-labels@v1
+        with:
+          labels: "S: Untriaged"
+
+      - name: Add label to pull request
+        if: github.event_name == 'pull_request_target' && join(github.event.pull_request.labels.*.name) == ''
+        uses: actions-ecosystem/action-add-labels@v1
+        with:
+          labels: "S: Untriaged"

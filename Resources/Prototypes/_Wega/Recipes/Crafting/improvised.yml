@@ -1,54 +1,39 @@
 - type: construction
-  name: bouquet roses
   id: FlowerRoseBouquetCraft
   graph: FlowerRoseBouquetCraft
   startNode: start
   targetNode: rosebouquet
   category: construction-category-misc
-  description: It looks beautiful and smells good.
-  icon: { sprite: _Wega/Objects/Misc/rosebouquet.rsi, state: icon }
   objectType: Item
 
 - type: construction
-  name: bouquet sunflowers
   id: FlowerSunflowerBouquetCraft
   graph: FlowerSunflowerBouquetCraft
   startNode: start
   targetNode: sunflowerbouquet
   category: construction-category-misc
-  description: It looks beautiful and smells good.
-  icon: { sprite: _Wega/Objects/Misc/sunbouquet.rsi, state: icon }
   objectType: Item
 
 - type: construction
-  name: bouquet poppies
   id: PoppyFlowerBouquetCraft
   graph: PoppyFlowerBouquetCraft
   startNode: start
   targetNode: poppybouquet
   category: construction-category-misc
-  description: It looks beautiful and smells good.
-  icon: { sprite: _Wega/Objects/Misc/poppybouquet.rsi, state: icon }
   objectType: Item
 
 - type: construction
-  name: mixed bouquet
   id: MixedFlowerBouquetCraft
   graph: MixedFlowerBouquetCraft
   startNode: start
   targetNode: bouquetmixed
   category: construction-category-misc
-  description: It looks beautiful and smells good.
-  icon: { sprite: _Wega/Objects/Misc/mixedbouquet.rsi, state: icon }
   objectType: Item
 
 - type: construction
-  name: garrotte homemade
   id: makegarrotte
   graph: makegarrotte
   startNode: start
   targetNode: garrottecrafted
   category: construction-category-weapons
-  description: "Homemade garrotte used by criminals and other assholes."
-  icon: { sprite: _Wega/Objects/Devices/garrotte.rsi, state: garrotte_homemade }
   objectType: Item

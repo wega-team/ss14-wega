@@ -19,9 +19,14 @@
       sprite: Corvax/Clothing/Head/Hats/centcom_naval_cap.rsi
     - type: Clothing
       sprite: Corvax/Clothing/Head/Hats/centcom_naval_cap.rsi
+    # Corvax-Wega-Dirtable-start
+    - type: Dirtable
+      dirtState: hat
+      equippedDirtState: equipped-hat
+    # Corvax-Wega-Dirtable-end
 
 - type: entity
-  parent: ClothingHeadBase
+  parent: ClothingHeadBaseBeret # Corvax-Wega-Dirtable
   id: ClothingHeadHatBeretCentcomNaval
   name: naval beret
   description: A beret worn by those in the Nanotrasen Navy.
@@ -32,7 +37,7 @@
       sprite: Corvax/Clothing/Head/Hats/centcom_naval_beret.rsi
 
 - type: entity
-  parent: ClothingHeadBase
+  parent: ClothingHeadBaseBeret # Corvax-Wega-Dirtable
   id: ClothingHeadHatERTLeaderBeret
   name: leader beret
   description: A blue beret made of durathread with a genuine golden badge, denoting its owner as a Leader of ERT.
@@ -52,6 +57,11 @@
       sprite: Corvax/Clothing/Head/Hats/hoshat.rsi
     - type: Clothing
       sprite: Corvax/Clothing/Head/Hats/hoshat.rsi
+    # Corvax-Wega-Dirtable-start
+    - type: Dirtable
+      dirtState: hat
+      equippedDirtState: equipped-hat
+    # Corvax-Wega-Dirtable-end
 
 - type: entity
   parent: ClothingHeadBase
@@ -63,6 +73,11 @@
       sprite: Corvax/Clothing/Head/Hats/warden_alt.rsi
     - type: Clothing
       sprite: Corvax/Clothing/Head/Hats/warden_alt.rsi
+    # Corvax-Wega-Dirtable-start
+    - type: Dirtable
+      dirtState: hat
+      equippedDirtState: equipped-hat
+    # Corvax-Wega-Dirtable-end
 
 - type: entity
   parent: ClothingHeadBase
@@ -87,7 +102,7 @@
     sprite: Corvax/Clothing/Head/Hats/caphat.rsi
 
 - type: entity
-  parent: ClothingHeadBase
+  parent: ClothingHeadBaseBeret # Corvax-Wega-Dirtable
   id: ClothingHeadHatBeretSecurityPilot
   name: pilot beret
   description: Black beret with a silver badge.

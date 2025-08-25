@@ -1,0 +1,1055 @@
+# ========================
+# ПЕРЕХОДЫ ТОРСА
+# ========================
+
+- type: surgeryTransition
+  id: AndroidOpenTorsoTransition
+  target: AndroidTorsoOpen
+  label: "Открыть торс"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Welding, Cautery ]
+          action: Weld
+          sound:
+            collection: Welder
+          time: 2
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+        - tool: [ Anchoring ]
+          tag: [ Wirecutter, Pipe ]
+          action: Unanchor
+          sound:
+            path: /Audio/Items/ratchet.ogg
+          time: 2
+        - tool: [ Prying ]
+          tag: [ Wrench, Screwdriver ]
+          action: Pry
+          sound:
+            path: /Audio/Items/crowbar.ogg
+          time: 2
+
+- type: surgeryTransition
+  id: AndroidCloseTorsoTransition
+  target: Default
+  label: "Закрыть торс"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Screw
+          sound:
+            collection: Screwdriver
+          time: 2
+        - tool: [ Pulsing ]
+          tag: [ DoorElectronicsConfigurator ]
+          action: Pulse
+          sound:
+            collection: CargoBeep
+          time: 2
+        - tool: [ Anchoring ]
+          tag: [ Wirecutter, Pipe ]
+          action: Anchor
+          sound:
+            path: /Audio/Items/ratchet.ogg
+          time: 2
+        - tool: [ Welding, Cautery ]
+          action: Weld
+          sound:
+            collection: Welder
+          time: 2
+
+- type: surgeryTransition
+  id: AndroidOrganManipulationTransition
+  target: OrganManipulation
+  label: "Манипуляция с деталями"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      parallel: true
+      steps:
+        # Мозг
+        - tool: [ Cutting ]
+          action: RemoveOrgan
+          entityPreview: PositronicBrain
+          requiredPart: Brain
+          sound:
+            path: /Audio/Items/wirecutter.ogg
+          time: 8
+          conditions:
+            - !type:OrganPresentCondition
+              organ: Brain
+        - tag: [ Brain ]
+          action: InsertOrgan
+          entityPreview: PositronicBrain
+          requiredPart: Brain
+          sound:
+            path: /Audio/Items/ratchet.ogg
+          time: 8
+          conditions:
+            - !type:OrganPresentCondition
+              invert: true
+              organ: Brain
+
+        # Тириумовый насос
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: RemoveOrgan
+          failureEffect: [ Bleeding ]
+          entityPreview: OrganAndroidTyrium
+          requiredPart: Heart
+          sound:
+            path: /Audio/Items/wirecutter.ogg
+          time: 8
+          successChance: 0.9
+          conditions:
+            - !type:OrganPresentCondition
+              organ: Heart
+        - tag: [ HeartSynthetic ]
+          action: InsertOrgan
+          entityPreview: OrganAndroidTyrium
+          requiredPart: Heart
+          sound:
+            path: /Audio/Items/ratchet.ogg
+          time: 8
+          conditions:
+            - !type:OrganPresentCondition
+              invert: true
+              organ: Heart
+
+        # Газовая система
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: RemoveOrgan
+          entityPreview: OrganAndroidGas
+          requiredPart: Lungs
+          sound:
+            collection: Screwdriver
+          time: 8
+          conditions:
+            - !type:OrganPresentCondition
+              organ: Lungs
+        - tag: [ LungsSynthetic ]
+          action: InsertOrgan
+          entityPreview: OrganAndroidGas
+          requiredPart: Lungs
+          sound:
+            path: /Audio/Items/ratchet.ogg
+          time: 8
+          conditions:
+            - !type:OrganPresentCondition
+              invert: true
+              organ: Lungs
+
+# ========================
+# ПЕРЕХОДЫ ГОЛОВЫ
+# ========================
+
+- type: surgeryTransition
+  id: AndroidOpenHeadTransition
+  target: AndroidHeadOpen
+  label: "Открыть голову"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:BodyPartCondition
+          bodyPart: head
+      steps:
+        - tool: [ Welding, Cautery ]
+          action: Weld
+          sound:
+            collection: Welder
+          time: 2
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+        - tool: [ Anchoring ]
+          tag: [ Wirecutter, Pipe ]
+          action: Unanchor
+          sound:
+            path: /Audio/Items/ratchet.ogg
+          time: 2
+
+- type: surgeryTransition
+  id: AndroidCloseHeadTransition
+  target: Default
+  label: "Закрыть голову"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:BodyPartCondition
+          bodyPart: head
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Screw
+          sound:
+            collection: Screwdriver
+          time: 2
+        - tool: [ Pulsing ]
+          tag: [ DoorElectronicsConfigurator ]
+          action: Pulse
+          sound:
+            collection: CargoBeep
+          time: 2
+        - tool: [ Anchoring ]
+          tag: [ Wirecutter, Pipe ]
+          action: Anchor
+          sound:
+            path: /Audio/Items/ratchet.ogg
+          time: 2
+        - tool: [ Welding, Cautery ]
+          action: Weld
+          sound:
+            collection: Welder
+          time: 2
+
+- type: surgeryTransition
+  id: AndroidExtractBrainTransition
+  target: AndroidHeadOpen
+  label: "Манипуляция с деталями"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:BodyPartCondition
+          bodyPart: head
+      parallel: true
+      steps:
+        # Камеры
+        - tool: [ Screwing ]
+          action: RemoveOrgan
+          entityPreview: OrganAndroidEyes
+          requiredPart: Eyes
+          sound:
+            collection: Screwdriver
+          time: 8
+          conditions:
+            - !type:OrganPresentCondition
+              organ: Eyes
+        - tag: [ EyesSynthetic ]
+          action: InsertOrgan
+          entityPreview: OrganAndroidEyes
+          requiredPart: Eyes
+          sound:
+            path: /Audio/Items/ratchet.ogg
+          time: 8
+          conditions:
+            - !type:OrganPresentCondition
+              invert: true
+              organ: Eyes
+
+- type: surgeryTransition
+  id: AndroidCompleteHeadAttachmentTransition
+  target: AndroidEndOperation
+  label: Голова
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          invert: true
+          bodyPart: head
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+        - tag: [ CableCoil ]
+          entityPreview: CableApcStack
+          action: MendWire
+          time: 2
+        - tag: [ Head ]
+          action: AttachPart
+          requiredPart: head
+          time: 8
+          sound:
+            path: /Audio/Items/ratchet.ogg
+
+# ========================
+# ПЕРЕХОДЫ КОНЕЧНОСТЕЙ
+# ========================
+
+# ЛЕВАЯ РУКА
+- type: surgeryTransition
+  id: AndroidAmputateLeftArmTransition
+  target: AndroidAmputateLeftArmProcess
+  label: Отсоединить левую руку
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: left_arm
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: AndroidAmputateLeftArmProcessTransition
+  target: AndroidEndOperation
+  label: Отсоединить левую руку
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: left_arm
+      steps:
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: CutWire
+          sound:
+            path: /Audio/Items/wirecutter.ogg
+          time: 2
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: StripWire
+          sound:
+            path: /Audio/Items/wirecutter.ogg
+          time: 2
+        - tool: [ Anchoring ]
+          tag: [ Wirecutter, Pipe ]
+          action: Unanchor
+          sound:
+            path: /Audio/Items/ratchet.ogg
+          time: 2
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: RemovePart
+          sound:
+            collection: Screwdriver
+          time: 2
+          requiredPart: left_arm
+
+- type: surgeryTransition
+  id: AndroidAttachLeftArmTransition
+  target: AndroidAttachLeftArmProcess
+  label: Прикрепить левую руку
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          invert: true
+          bodyPart: left_arm
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: AndroidAttachLeftArmProcessTransition
+  target: AndroidEndOperation
+  label: Прикрепить левую руку
+  stepGroups:
+    - steps:
+        - tag: [ CableCoil ]
+          entityPreview: CableApcStack
+          action: MendWire
+          time: 2
+        - tag: [ LeftArmSynthetic ]
+          action: AttachPart
+          requiredPart: left_arm
+          time: 2
+
+# ПРАВАЯ РУКА
+- type: surgeryTransition
+  id: AndroidAmputateRightArmTransition
+  target: AndroidAmputateRightArmProcess
+  label: Отсоединить правую руку
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: right_arm
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: AndroidAmputateRightArmProcessTransition
+  target: AndroidEndOperation
+  label: Отсоединить правую руку
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: right_arm
+      steps:
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: CutWire
+          sound:
+            path: /Audio/Items/wirecutter.ogg
+          time: 2
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: StripWire
+          sound:
+            path: /Audio/Items/wirecutter.ogg
+          time: 2
+        - tool: [ Anchoring ]
+          tag: [ Wirecutter, Pipe ]
+          action: Unanchor
+          sound:
+            path: /Audio/Items/ratchet.ogg
+          time: 2
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: RemovePart
+          sound:
+            collection: Screwdriver
+          time: 2
+          requiredPart: right_arm
+
+- type: surgeryTransition
+  id: AndroidAttachRightArmTransition
+  target: AndroidAttachRightArmProcess
+  label: Прикрепить правую руку
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          invert: true
+          bodyPart: right_arm
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: AndroidAttachRightArmProcessTransition
+  target: AndroidEndOperation
+  label: Прикрепить правую руку
+  stepGroups:
+    - steps:
+        - tag: [ CableCoil ]
+          entityPreview: CableApcStack
+          action: MendWire
+          time: 2
+        - tag: [ RightArmSynthetic ]
+          action: AttachPart
+          requiredPart: right_arm
+          time: 2
+
+# ЛЕВАЯ КИСТЬ
+- type: surgeryTransition
+  id: AndroidAmputateLeftHandTransition
+  target: AndroidAmputateLeftHandProcess
+  label: Отсоединить левую кисть
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: left_arm
+        - !type:BodyPartCondition
+          bodyPart: left_hand
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: AndroidAmputateLeftHandProcessTransition
+  target: AndroidEndOperation
+  label: Отсоединить левую кисть
+  stepGroups:
+    - steps:
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: CutWire
+          sound:
+            path: /Audio/Items/wirecutter.ogg
+          time: 2
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: StripWire
+          sound:
+            path: /Audio/Items/wirecutter.ogg
+          time: 2
+        - tool: [ Anchoring ]
+          tag: [ Wirecutter, Pipe ]
+          action: Unanchor
+          sound:
+            path: /Audio/Items/ratchet.ogg
+          time: 2
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: RemovePart
+          sound:
+            collection: Screwdriver
+          time: 2
+          requiredPart: left_hand
+
+- type: surgeryTransition
+  id: AndroidAttachLeftHandTransition
+  target: AndroidAttachLeftHandProcess
+  label: Прикрепить левую кисть
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          invert: true
+          bodyPart: left_hand
+        - !type:BodyPartCondition
+          bodyPart: left_arm
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: AndroidAttachLeftHandProcessTransition
+  target: AndroidEndOperation
+  label: Прикрепить левую кисть
+  stepGroups:
+    - steps:
+        - tag: [ CableCoil ]
+          entityPreview: CableApcStack
+          action: MendWire
+          time: 2
+        - tag: [ LeftHandSynthetic ]
+          action: AttachPart
+          requiredPart: left_hand
+          time: 2
+
+#ПРАВАЯ КИСТЬ
+- type: surgeryTransition
+  id: AndroidAmputateRightHandTransition
+  target: AndroidAmputateRightHandProcess
+  label: Отсоединить правую кисть
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: right_arm
+        - !type:BodyPartCondition
+          bodyPart: right_hand
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: AndroidAmputateRightHandProcessTransition
+  target: AndroidEndOperation
+  label: Отсоединить правую кисть
+  stepGroups:
+    - steps:
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: CutWire
+          sound:
+            path: /Audio/Items/wirecutter.ogg
+          time: 2
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: StripWire
+          sound:
+            path: /Audio/Items/wirecutter.ogg
+          time: 2
+        - tool: [ Anchoring ]
+          tag: [ Wirecutter, Pipe ]
+          action: Unanchor
+          sound:
+            path: /Audio/Items/ratchet.ogg
+          time: 2
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: RemovePart
+          sound:
+            collection: Screwdriver
+          time: 2
+          requiredPart: right_hand
+
+- type: surgeryTransition
+  id: AndroidAttachRightHandTransition
+  target: AndroidAttachRightHandProcess
+  label: Прикрепить правую кисть
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          invert: true
+          bodyPart: right_hand
+        - !type:BodyPartCondition
+          bodyPart: right_arm
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: AndroidAttachRightHandProcessTransition
+  target: AndroidEndOperation
+  label: Прикрепить правую кисть
+  stepGroups:
+    - steps:
+        - tag: [ CableCoil ]
+          entityPreview: CableApcStack
+          action: MendWire
+          time: 2
+        - tag: [ RightHandSynthetic ]
+          action: AttachPart
+          requiredPart: right_hand
+          time: 2
+
+# ЛЕВАЯ НОГА
+- type: surgeryTransition
+  id: AndroidAmputateLeftLegTransition
+  target: AndroidAmputateLeftLegProcess
+  label: Отсоединить левую ногу
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: left_leg
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: AndroidAmputateLeftLegProcessTransition
+  target: AndroidEndOperation
+  label: Отсоединить левую ногу
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: left_leg
+      steps:
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: CutWire
+          sound:
+            path: /Audio/Items/wirecutter.ogg
+          time: 2
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: StripWire
+          sound:
+            path: /Audio/Items/wirecutter.ogg
+          time: 2
+        - tool: [ Anchoring ]
+          tag: [ Wirecutter, Pipe ]
+          action: Unanchor
+          sound:
+            path: /Audio/Items/ratchet.ogg
+          time: 2
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+        - tool: [ Anchoring ]
+          tag: [ Wirecutter, Pipe ]
+          action: RemovePart
+          sound:
+            path: /Audio/Items/ratchet.ogg
+          time: 2
+          requiredPart: left_leg
+
+- type: surgeryTransition
+  id: AndroidAttachLeftLegTransition
+  target: AndroidAttachLeftLegProcess
+  label: Прикрепить левую ногу
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          invert: true
+          bodyPart: left_leg
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: AndroidAttachLeftLegProcessTransition
+  target: AndroidEndOperation
+  label: Прикрепить левую ногу
+  stepGroups:
+    - steps:
+        - tag: [ CableCoil ]
+          entityPreview: CableApcStack
+          action: MendWire
+          time: 2
+        - tag: [ LeftLegSynthetic ]
+          action: AttachPart
+          requiredPart: left_leg
+          time: 2
+        - tool: [ Anchoring ]
+          tag: [ Wirecutter, Pipe ]
+          action: Anchor
+          sound:
+            path: /Audio/Items/ratchet.ogg
+          time: 2
+
+# ПРАВАЯ НОГА
+
+- type: surgeryTransition
+  id: AndroidAmputateRightLegTransition
+  target: AndroidAmputateRightLegProcess
+  label: Отсоединить правую ногу
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: right_leg
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: AndroidAmputateRightLegProcessTransition
+  target: AndroidEndOperation
+  label: Отсоединить правую ногу
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: right_leg
+      steps:
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: CutWire
+          sound:
+            path: /Audio/Items/wirecutter.ogg
+          time: 2
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: StripWire
+          sound:
+            path: /Audio/Items/wirecutter.ogg
+          time: 2
+        - tool: [ Anchoring ]
+          tag: [ Wirecutter, Pipe ]
+          action: Unanchor
+          sound:
+            path: /Audio/Items/ratchet.ogg
+          time: 2
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+        - tool: [ Anchoring ]
+          tag: [ Wirecutter, Pipe ]
+          action: RemovePart
+          sound:
+            path: /Audio/Items/ratchet.ogg
+          time: 2
+          requiredPart: right_leg
+
+- type: surgeryTransition
+  id: AndroidAttachRightLegTransition
+  target: AndroidAttachRightLegProcess
+  label: Прикрепить правую ногу
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          invert: true
+          bodyPart: right_leg
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: AndroidAttachRightLegProcessTransition
+  target: AndroidEndOperation
+  label: Прикрепить правую ногу
+  stepGroups:
+    - steps:
+        - tag: [ CableCoil ]
+          entityPreview: CableApcStack
+          action: MendWire
+          time: 2
+        - tag: [ RightLegSynthetic ]
+          action: AttachPart
+          requiredPart: right_leg
+          time: 2
+        - tool: [ Anchoring ]
+          tag: [ Wirecutter, Pipe ]
+          action: Anchor
+          sound:
+            path: /Audio/Items/ratchet.ogg
+          time: 2
+
+# ЛЕВАЯ СТОПА
+- type: surgeryTransition
+  id: AndroidAmputateLeftFootTransition
+  target: AndroidAmputateLeftFootProcess
+  label: Отсоединить левую стопу
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: left_leg
+        - !type:BodyPartCondition
+          bodyPart: left_foot
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: AndroidAmputateLeftFootProcessTransition
+  target: AndroidEndOperation
+  label: Отсоединить левую стопу
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: left_leg
+        - !type:BodyPartCondition
+          bodyPart: left_foot
+      steps:
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: CutWire
+          sound:
+            path: /Audio/Items/wirecutter.ogg
+          time: 2
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: StripWire
+          sound:
+            path: /Audio/Items/wirecutter.ogg
+          time: 2
+        - tool: [ Anchoring ]
+          tag: [ Wirecutter, Pipe ]
+          action: Unanchor
+          sound:
+            path: /Audio/Items/ratchet.ogg
+          time: 2
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+        - tool: [ Anchoring ]
+          tag: [ Wirecutter, Pipe ]
+          action: RemovePart
+          sound:
+            path: /Audio/Items/ratchet.ogg
+          time: 2
+          requiredPart: left_foot
+
+- type: surgeryTransition
+  id: AndroidAttachLeftFootTransition
+  target: AndroidAttachLeftFootProcess
+  label: Прикрепить левую стопу
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: left_leg
+        - !type:BodyPartCondition
+          invert: true
+          bodyPart: left_foot
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: AndroidAttachLeftFootProcessTransition
+  target: AndroidEndOperation
+  label: Прикрепить левую стопу
+  stepGroups:
+    - steps:
+        - tag: [ CableCoil ]
+          entityPreview: CableApcStack
+          action: MendWire
+          time: 2
+        - tag: [ LeftFootSynthetic ]
+          action: AttachPart
+          requiredPart: left_foot
+          time: 2
+        - tool: [ Anchoring ]
+          tag: [ Wirecutter, Pipe ]
+          action: Anchor
+          sound:
+            path: /Audio/Items/ratchet.ogg
+          time: 2
+
+# ПРАВАЯ СТОПА
+- type: surgeryTransition
+  id: AndroidAmputateRightFootTransition
+  target: AndroidAmputateRightFootProcess
+  label: Отсоединить правую стопу
+  stepGroups:
+    - conditions: 
+        - !type:BodyPartCondition
+          bodyPart: right_leg
+        - !type:BodyPartCondition
+          bodyPart: right_foot
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: AndroidAmputateRightFootProcessTransition
+  target: AndroidEndOperation
+  label: Отсоединить правую стопу
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: right_leg
+        - !type:BodyPartCondition
+          bodyPart: right_foot
+      steps:
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: CutWire
+          sound:
+            path: /Audio/Items/wirecutter.ogg
+          time: 2
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: StripWire
+          sound:
+            path: /Audio/Items/wirecutter.ogg
+          time: 2
+        - tool: [ Anchoring ]
+          tag: [ Wirecutter, Pipe ]
+          action: Unanchor
+          sound:
+            path: /Audio/Items/ratchet.ogg
+          time: 2
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+        - tool: [ Anchoring ]
+          tag: [ Wirecutter, Pipe ]
+          action: RemovePart
+          sound:
+            path: /Audio/Items/ratchet.ogg
+          time: 2
+          requiredPart: right_foot
+
+- type: surgeryTransition
+  id: AndroidAttachRightFootTransition
+  target: AndroidAttachRightFootProcess
+  label: Прикрепить правую стопу
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: right_leg
+        - !type:BodyPartCondition
+          invert: true
+          bodyPart: right_foot
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: AndroidAttachRightFootProcessTransition
+  target: AndroidEndOperation
+  label: Прикрепить правую стопу
+  stepGroups:
+    - steps:
+        - tag: [ CableCoil ]
+          entityPreview: CableApcStack
+          action: MendWire
+          time: 2
+        - tag: [ RightFootSynthetic ]
+          action: AttachPart
+          requiredPart: right_foot
+          time: 2
+        - tool: [ Anchoring ]
+          tag: [ Wirecutter, Pipe ]
+          action: Anchor
+          sound:
+            path: /Audio/Items/ratchet.ogg
+          time: 2
+
+# Завершающий переход конечности
+- type: surgeryTransition
+  id: AndroidCompleteOperationTransition
+  target: Default
+  label: Завершить
+  stepGroups:
+    - steps:
+        - tool: [ Welding, Cautery ]
+          action: Weld
+          sound:
+            collection: Welder
+          time: 2
+        - tool: [ Pulsing ]
+          tag: [ DoorElectronicsConfigurator ]
+          action: Pulse
+          sound:
+            collection: CargoBeep
+          time: 2

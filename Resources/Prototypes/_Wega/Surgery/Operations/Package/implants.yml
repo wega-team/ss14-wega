@@ -35,8 +35,33 @@
     - SlimeRemoveRadioCentcommTransition
 
 - type: surgeryPackage
+  id: AndroidTorsoImplantPackage
+  transitions:
+    - AndroidImplantTorsoTransition
+    - AndroidRemoveSadTromboneTransition
+    - AndroidRemoveLightImplantTransition
+    - AndroidRemoveBikeHornTransition
+    - AndroidRemoveTrackingTransition
+    - AndroidRemoveStorageTransition
+    - AndroidRemoveFreedomTransition
+    - AndroidRemoveRadioTransition
+    - AndroidRemoveUplinkTransition
+    - AndroidRemoveEmpTransition
+    - AndroidRemoveScramTransition
+    - AndroidRemoveDnaScramblerTransition
+    - AndroidRemoveChameleonControllerTransition
+    - AndroidRemoveRadioCentcommTransition
+
+- type: surgeryPackage
   id: HeadImplantPackage
   transitions:
     - ImplantingHeadTransition
     - RemoveMindShieldTransition
     - RemoveFakeMindShieldTransition
+
+- type: surgeryPackage
+  id: AndroidHeadImplantPackage
+  transitions:
+    - AndroidImplantHeadTransition
+    - AndroidRemoveMindShieldTransition
+    - AndroidRemoveFakeMindShieldTransition

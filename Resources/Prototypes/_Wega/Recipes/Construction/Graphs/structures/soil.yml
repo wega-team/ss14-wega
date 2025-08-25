@@ -11,7 +11,7 @@
             - !type:SnapToGrid { }
           steps:
             - tag: SoilBag
-              name: bag soil
+              name: construction-graph-tag-soil-bag
               icon:
                 sprite: _Wega/Objects/Misc/soilbag.rsi
                 state: icon

@@ -84,10 +84,22 @@
   cost:
     Telecrystal: 5
   categories:
-  - UplinkMisc
+  - UplinkPointless
   conditions:
   - !type:BuyerWhitelistCondition
     blacklist:
       components:
       - SurplusBundle
 
+- type: listing
+  id: UplinkRCDUpgradeKit
+  name: uplink-rcd-upgrade-kit-name
+  description: uplink-rcd-upgrade-kit-desc
+  productEntity: RCDUpgradeKit
+  discountCategory: rareDiscounts
+  discountDownTo:
+    Telecrystal: 4
+  cost:
+    Telecrystal: 6
+  categories:
+  - UplinkDisruption

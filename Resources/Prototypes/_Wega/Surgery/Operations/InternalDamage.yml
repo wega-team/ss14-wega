@@ -5,6 +5,8 @@
   category: PhysicalTrauma
   blacklistPart:
     - head
+  blacklistSpecies:
+    - Android
   supportedTypes:
     - Blunt
     - Slash
@@ -31,6 +33,7 @@
     - head
   blacklistSpecies:
     - SlimePerson
+    - Android
   supportedTypes:
     - Blunt
   chance: 0.02
@@ -44,6 +47,7 @@
     - head
   blacklistSpecies:
     - SlimePerson
+    - Android
   supportedTypes:
     - Blunt
   bodyVisuals: surgery-open-fracture-visuals
@@ -58,6 +62,7 @@
     - head
   blacklistSpecies:
     - SlimePerson
+    - Android
   supportedTypes:
     - Piercing
   chance: 0.05
@@ -69,6 +74,8 @@
   category: CriticalBurns
   blacklistPart:
     - head
+  blacklistSpecies:
+    - Android
   supportedTypes:
     - Heat
     - Shock
@@ -81,6 +88,8 @@
   category: ForeignObjects
   blacklistPart:
     - head
+  blacklistSpecies:
+    - Android
   supportedTypes:
     - Piercing
   chance: 0.05

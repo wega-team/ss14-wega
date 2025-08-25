@@ -45,12 +45,6 @@ namespace Content.Client.Interaction.Panel.Ui
         private ISawmill _sawmill = default!;
         private float _updateDif;
 
-        public BoxContainer UserModel => this.FindControl<BoxContainer>("UserSpriteView");
-        public BoxContainer TargetModel => this.FindControl<BoxContainer>("TargetSpriteView");
-        public CollapsibleHeading SpecialHeading => this.FindControl<CollapsibleHeading>("Special");
-        public CollapsibleHeading FavouritesHeading => this.FindControl<CollapsibleHeading>("Favourites");
-        public CollapsibleHeading HarmlessHeading => this.FindControl<CollapsibleHeading>("Harmless");
-        public CollapsibleHeading OutspokenHeading => this.FindControl<CollapsibleHeading>("Outspoken");
         private SpriteView _userSpriteView;
         private SpriteView _targetSpriteView;
         private Label _targetLabel;
@@ -70,10 +64,10 @@ namespace Content.Client.Interaction.Panel.Ui
             _sawmill = Logger.GetSawmill("interaction_import");
 
             _userSpriteView = CreateSpriteView();
-            UserModel.AddChild(_userSpriteView);
+            UserSpriteView.AddChild(_userSpriteView);
 
             _targetSpriteView = CreateSpriteView();
-            TargetModel.AddChild(_targetSpriteView);
+            TargetSpriteView.AddChild(_targetSpriteView);
 
             _targetLabel = CreateLabel();
             _userGenderLabel = CreateLabel();
@@ -90,10 +84,10 @@ namespace Content.Client.Interaction.Panel.Ui
             InitializeNamesContainer();
             _playerManager.PlayerStatusChanged += OnUserStatusChanged;
 
-            SetupHeading(SpecialHeading);
-            SetupHeading(FavouritesHeading);
-            SetupHeading(HarmlessHeading);
-            SetupHeading(OutspokenHeading);
+            SetupHeading(Special);
+            SetupHeading(Favourites);
+            SetupHeading(Harmless);
+            SetupHeading(Outspoken);
 
             PopulateInteractions();
             UpdateTarget();
@@ -330,7 +324,7 @@ namespace Content.Client.Interaction.Panel.Ui
                 _targetLabel.Text = "";
 
                 _targetGenderLabel.Orphan();
-                TargetModel.AddChild(_targetGenderLabel);
+                TargetSpriteView.AddChild(_targetGenderLabel);
             }
         }
 
@@ -341,7 +335,7 @@ namespace Content.Client.Interaction.Panel.Ui
             if (appearanceComponent == null)
             {
                 genderLabel.Text = Loc.GetString("unknown-nearestplayer");
-                TargetModel.AddChild(genderLabel);
+                TargetSpriteView.AddChild(genderLabel);
                 return;
             }
 
@@ -357,7 +351,7 @@ namespace Content.Client.Interaction.Panel.Ui
             {
                 genderLabel.Text = "";
                 genderLabel.Orphan();
-                TargetModel.AddChild(genderLabel);
+                TargetSpriteView.AddChild(genderLabel);
                 return;
             }
 
@@ -380,7 +374,7 @@ namespace Content.Client.Interaction.Panel.Ui
             };
 
             genderLabel.Orphan();
-            TargetModel.AddChild(genderLabel);
+            TargetSpriteView.AddChild(genderLabel);
         }
 
         public void UpdateUser(EntityUid user)
@@ -392,8 +386,8 @@ namespace Content.Client.Interaction.Panel.Ui
             {
                 _userGenderLabel.Text = "";
                 _userGenderLabel.Orphan();
-                UserModel.AddChild(_userGenderLabel);
-                OutspokenHeading.Visible = false;
+                UserSpriteView.AddChild(_userGenderLabel);
+                Outspoken.Visible = false;
                 return;
             }
 
@@ -416,7 +410,7 @@ namespace Content.Client.Interaction.Panel.Ui
             };
 
             _userGenderLabel.Orphan();
-            UserModel.AddChild(_userGenderLabel);
+            UserSpriteView.AddChild(_userGenderLabel);
         }
 
         private void PopulateInteractions()

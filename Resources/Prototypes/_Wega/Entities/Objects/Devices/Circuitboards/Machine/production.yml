@@ -73,3 +73,18 @@
         Steel: 5
         Glass: 2
         Cable: 5
+
+- type: entity
+  id: WashingMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: washing machine board
+  description: A machine printed circuit board for an washing machine.
+  components:
+    - type: Sprite
+      state: service
+    - type: MachineBoard
+      prototype: WashingMachine
+      stackRequirements:
+        Manipulator: 1
+        Glass: 2
+        Cable: 2

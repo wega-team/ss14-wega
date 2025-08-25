@@ -654,6 +654,13 @@
         layer:
         - WallLayer
         density: 2000
+  # Covrax-Wega-CombatRCD-Start
+  - type: RCDDeconstructable
+    cost: 6
+    delay: 8
+    reinforced: true
+    fx: EffectRCDDeconstruct8
+  # Covrax-Wega-CombatRCD-End
 
 - type: entity
   parent: WallReinforced

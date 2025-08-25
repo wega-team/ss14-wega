@@ -41,9 +41,11 @@
   - Reptilian
   - SlimePerson
   - Vulpkanin
+  - Tajaran
   - Skrell
   - Resomi
   - Demon
+  - Android
   nearestAllowedGenders:
   - Male
   - Female
@@ -59,6 +61,7 @@
   - Felinid
   - Reptilian
   - Vulpkanin
+  - Tajaran
   - Vox
   - Resomi
   - Demon
@@ -70,6 +73,7 @@
   - Felinid
   - Reptilian
   - Vulpkanin
+  - Tajaran
   - Vox
   - Resomi
   - Demon
@@ -80,6 +84,7 @@
   nearestAllowedSpecies:
   - Felinid
   - Vulpkanin
+  - Tajaran
   - Resomi
 
 - type: interaction
@@ -114,6 +119,7 @@
   - Reptilian
   - SlimePerson
   - Vulpkanin #/~UwU~\
+  - Tajaran
   - Skrell
   - Resomi
   - Demon
@@ -243,6 +249,7 @@
   - Felinid
   - SlimePerson
   - Vulpkanin
+  - Tajaran
   - Skrell
 
 - type: interaction
@@ -377,6 +384,7 @@
   - Felinid
   - SlimePerson
   - Vulpkanin
+  - Tajaran
 
 # ERP
 - type: interaction
@@ -638,6 +646,7 @@
   - Reptilian
   - SlimePerson
   - Vulpkanin
+  - Tajaran
   - Skrell
   - Demon
   nearestAllowedGenders:
@@ -838,7 +847,7 @@
   nearestAllowedSpecies:
   - Arachnid
 
-# Vulpkanin
+# Vulpkanin / Tajaran
 - type: interaction
   id: InteractionVulpkaninStroking
   name: interaction-vulpkanin-stroking
@@ -847,6 +856,7 @@
   otherMessages: ["chat-interaction-vulpkanin-stroking-message-others"]
   nearestAllowedSpecies:
   - Vulpkanin
+  - Tajaran
 
 - type: interaction
   id: InteractionVulpkaninStrokingBack
@@ -856,6 +866,7 @@
   otherMessages: ["chat-interaction-vulpkanin-stroking-back-message-others"]
   nearestAllowedSpecies:
   - Vulpkanin
+  - Tajaran
 
 # Any has tail
 - type: interaction
@@ -1059,6 +1070,7 @@
   - Reptilian
   - SlimePerson
   - Vulpkanin #/~UwU~\
+  - Tajaran
   - Skrell
   - Demon
   blackListSpecies:
@@ -1080,6 +1092,7 @@
   - Reptilian
   - SlimePerson
   - Vulpkanin #/~UwU~\
+  - Tajaran
   - Skrell
   - Demon
   blackListSpecies:
@@ -1103,6 +1116,7 @@
   - Reptilian
   - SlimePerson
   - Vulpkanin #/~UwU~\
+  - Tajaran
   - Skrell
   - Demon
   blackListSpecies:
@@ -1126,6 +1140,7 @@
   - Reptilian
   - SlimePerson
   - Vulpkanin #/~UwU~\
+  - Tajaran
   - Skrell
   - Demon
   blackListSpecies:

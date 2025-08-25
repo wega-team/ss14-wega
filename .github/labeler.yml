@@ -1,31 +1,64 @@
-﻿"Changes: Sprites":
-- changed-files:
-  - any-glob-to-any-file: '**/*.rsi/*.png'
+﻿":musical_note: Audio :musical_note:":
+  - changed-files:
+    - any-glob-to-any-file: "**/*.ogg"
 
-"Changes: Map":
-- changed-files:
-  - any-glob-to-any-file:
-    - 'Resources/Maps/**/*.yml'
-    - 'Resources/Prototypes/Maps/**/*.yml'
-    - 'Resources/Prototypes/Corvax/Maps/**/*.yml'
+":shark: C# :shark:":
+  - changed-files:
+    - any-glob-to-any-file: "**/*.cs"
 
-"Changes: UI":
-- changed-files:
-  - any-glob-to-any-file: '**/*.xaml*'
+":gear: Конфиги :gear:":
+  - changed-files:
+    - any-glob-to-any-file:
+      - "**/*.toml"
+      - "**/*.config"
+      - "*.json"
+      - ".github/*.yml"
+      - ".github/*.json"
+      - ".vscode/*.json"
+      - ".editorconfig"
 
-"Changes: Shaders":
-- changed-files:
-  - any-glob-to-any-file: '**/*.swsl'
+":book: Документация :book:":
+  - changed-files:
+    - any-glob-to-any-file:
+      - "**/*.xml"
+      - "**/*.md"
 
-"Changes: Audio":
-- changed-files:
-  - any-glob-to-any-file: '**/*.ogg'
+":page_facing_up: Локализация :page_facing_up:":
+  - changed-files:
+    - any-glob-to-any-file: 'Resources/Locale/**/*.ftl'
 
-"Changes: Localization":
-- changed-files:
-  - any-glob-to-any-file: '**/*.ftl'
+":world_map: Карты :world_map:":
+  - changed-files:
+    - any-glob-to-any-file:
+      - "Resources/Maps/**/*.yml"
+      - "Resources/Prototypes/Maps/**/*.yml"
 
-"Changes: No C#":
-- changed-files:
-  # Equiv to any-glob-to-all as long as this has one matcher. If ALL changed files are not C# files, then apply label.
-  - all-globs-to-all-files: "!**/*.cs"
+":art: Спрайты :art:":
+  - changed-files:
+    - any-glob-to-any-file:
+      - "**/*.rsi/*.png"
+      - "**/*.rsi/*.json"
+
+":computer: UI :computer:":
+  - changed-files:
+    - any-glob-to-any-file: "**/*.xaml*"
+
+":baby_chick: YML :baby_chick:":
+  - changed-files:
+    - any-glob-to-any-file:
+      - "**/*.yml"
+    - all-globs-to-all-files:
+      - "!Resources/Maps/**/*.yml"
+      - "!Resources/Prototypes/Maps/**/*.yml"
+
+":wrench: GitHub Workflow :wrench:":
+  - changed-files:
+    - any-glob-to-any-file: ".github/workflows/*.yml"
+
+":crystal_ball: Шейдеры :crystal_ball:":
+  - changed-files:
+    - any-glob-to-any-file: '**/*.swsl'
+
+":no_entry: Не C# :no_entry:":
+  - changed-files:
+    - all-globs-to-all-files: "!**/*.cs"

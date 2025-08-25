@@ -99,14 +99,15 @@ namespace Content.Client.Lobby.UI
 
         private readonly Dictionary<string, BoxContainer> _jobCategories;
 
+        private readonly Dictionary<string, (Button Toggle, ContainerButton Container)> _subRoleContainers = new(); // Corvax-Wega-SubRoles
+
         private Direction _previewRotation = Direction.North;
 
         private ColorSelectorSliders _rgbSkinColorSelector;
 
         private bool _isDirty;
 
-        [ValidatePrototypeId<GuideEntryPrototype>]
-        private const string DefaultSpeciesGuidebook = "Species";
+        private static readonly ProtoId<GuideEntryPrototype> DefaultSpeciesGuidebook = "Species";
 
         public event Action<List<ProtoId<GuideEntryPrototype>>>? OnOpenGuidebook;
 
@@ -859,9 +860,9 @@ namespace Content.Client.Lobby.UI
             var species = Profile?.Species ?? SharedHumanoidAppearanceSystem.DefaultSpecies;
             var page = DefaultSpeciesGuidebook;
             if (_prototypeManager.HasIndex<GuideEntryPrototype>(species))
-                page = species;
+                page = new ProtoId<GuideEntryPrototype>(species.Id); // Gross. See above todo comment.
 
-            if (_prototypeManager.TryIndex<GuideEntryPrototype>(DefaultSpeciesGuidebook, out var guideRoot))
+            if (_prototypeManager.TryIndex(DefaultSpeciesGuidebook, out var guideRoot))
             {
                 var dict = new Dictionary<ProtoId<GuideEntryPrototype>, GuideEntry>();
                 dict.Add(DefaultSpeciesGuidebook, guideRoot);
@@ -878,6 +879,7 @@ namespace Content.Client.Lobby.UI
             JobList.DisposeAllChildren();
             _jobCategories.Clear();
             _jobPriorities.Clear();
+            _subRoleContainers.Clear(); // Corvax-Wega-SubRoles
             var firstCategory = true;
 
             // Get all displayed departments
@@ -894,10 +896,10 @@ namespace Content.Client.Lobby.UI
 
             var items = new[]
             {
-                ("humanoid-profile-editor-job-priority-never-button", (int) JobPriority.Never),
-                ("humanoid-profile-editor-job-priority-low-button", (int) JobPriority.Low),
-                ("humanoid-profile-editor-job-priority-medium-button", (int) JobPriority.Medium),
-                ("humanoid-profile-editor-job-priority-high-button", (int) JobPriority.High),
+                ("humanoid-profile-editor-job-priority-never-button", (int)JobPriority.Never),
+                ("humanoid-profile-editor-job-priority-low-button", (int)JobPriority.Low),
+                ("humanoid-profile-editor-job-priority-medium-button", (int)JobPriority.Medium),
+                ("humanoid-profile-editor-job-priority-high-button", (int)JobPriority.High),
             };
 
             foreach (var department in departments)
@@ -928,7 +930,7 @@ namespace Content.Client.Lobby.UI
 
                     category.AddChild(new PanelContainer
                     {
-                        PanelOverride = new StyleBoxFlat {BackgroundColor = Color.FromHex("#464966")},
+                        PanelOverride = new StyleBoxFlat { BackgroundColor = Color.FromHex("#464966") },
                         Children =
                         {
                             new Label
@@ -944,18 +946,29 @@ namespace Content.Client.Lobby.UI
                     JobList.AddChild(category);
                 }
 
-                var jobs = department.Roles.Select(jobId => _prototypeManager.Index(jobId))
-                    .Where(job => job.SetPreference)
+                // Corvax-Wega-SubRoles-Edit-start
+                var jobs = department.Roles
+                    .Select(jobId => _prototypeManager.Index(jobId))
+                    .Where(job => job.SetPreference && !job.IsSubRole)
                     .ToArray();
+                // Corvax-Wega-SubRoles-Edit-end
 
                 Array.Sort(jobs, JobUIComparer.Instance);
 
                 foreach (var job in jobs)
                 {
-                    var jobContainer = new BoxContainer()
+                    // Corvax-Wega-SubRoles-Edit-start
+                    var jobContainer = new BoxContainer
                     {
-                        Orientation = LayoutOrientation.Horizontal,
+                        Orientation = LayoutOrientation.Vertical,
+                        Margin = new Thickness(0, 0, 0, 5)
                     };
+
+                    var mainRow = new BoxContainer
+                    {
+                        Orientation = LayoutOrientation.Horizontal
+                    };
+                    // Corvax-Wega-SubRoles-Edit-end
 
                     var selector = new RequirementsSelector()
                     {
@@ -983,29 +996,25 @@ namespace Content.Client.Lobby.UI
 
                     selector.OnSelected += selectedPrio =>
                     {
-                        var selectedJobPrio = (JobPriority) selectedPrio;
+                        var selectedJobPrio = (JobPriority)selectedPrio;
                         Profile = Profile?.WithJobPriority(job.ID, selectedJobPrio);
 
                         foreach (var (jobId, other) in _jobPriorities)
                         {
-                            // Sync other selectors with the same job in case of multiple department jobs
                             if (jobId == job.ID)
                             {
                                 other.Select(selectedPrio);
                                 continue;
                             }
 
-                            if (selectedJobPrio != JobPriority.High || (JobPriority) other.Selected != JobPriority.High)
+                            if (selectedJobPrio != JobPriority.High || (JobPriority)other.Selected != JobPriority.High)
                                 continue;
 
-                            // Lower any other high priorities to medium.
                             other.Select((int)JobPriority.Medium);
                             Profile = Profile?.WithJobPriority(jobId, JobPriority.Medium);
                         }
 
-                        // TODO: Only reload on high change (either to or from).
                         ReloadPreview();
-
                         UpdateJobPriorities();
                         SetDirty();
                     };
@@ -1021,19 +1030,15 @@ namespace Content.Client.Lobby.UI
                     var collection = IoCManager.Instance!;
                     var protoManager = collection.Resolve<IPrototypeManager>();
 
-                    // If no loadout found then disabled button
                     if (!protoManager.TryIndex<RoleLoadoutPrototype>(LoadoutSystem.GetJobPrototype(job.ID), out var roleLoadoutProto))
                     {
                         loadoutWindowBtn.Disabled = true;
                     }
-                    // else
                     else
                     {
                         loadoutWindowBtn.OnPressed += args =>
                         {
                             RoleLoadout? loadout = null;
-
-                            // Clone so we don't modify the underlying loadout.
                             Profile?.Loadouts.TryGetValue(LoadoutSystem.GetJobPrototype(job.ID), out loadout);
                             loadout = loadout?.Clone();
 
@@ -1048,9 +1053,125 @@ namespace Content.Client.Lobby.UI
                     }
 
                     _jobPriorities.Add((job.ID, selector));
-                    jobContainer.AddChild(selector);
-                    jobContainer.AddChild(loadoutWindowBtn);
+
+                    // Corvax-Wega-SubRoles-start
+                    mainRow.AddChild(selector);
+                    mainRow.AddChild(loadoutWindowBtn);
+
+                    // Add toggle button for subroles if they exist
+                    if (job.SubRoles.Count > 0)
+                    {
+                        var toggleButton = new Button
+                        {
+                            Text = "▼",
+                            MinWidth = 30,
+                            HorizontalAlignment = HAlignment.Right,
+                            ToolTip = Loc.GetString("humanoid-profile-editor-toggle-subroles")
+                        };
+
+                        var subRolesContainer = new BoxContainer
+                        {
+                            Orientation = LayoutOrientation.Vertical,
+                            Visible = false,
+                            Margin = new Thickness(20, 5, 0, 0)
+                        };
+
+                        toggleButton.OnPressed += _ =>
+                        {
+                            subRolesContainer.Visible = !subRolesContainer.Visible;
+                            toggleButton.Text = subRolesContainer.Visible ? "▲" : "▼";
+                        };
+
+                        mainRow.AddChild(toggleButton);
+                        jobContainer.AddChild(mainRow);
+                        jobContainer.AddChild(subRolesContainer);
+
+                        // Add subroles
+                        foreach (var subRoleId in job.SubRoles)
+                        {
+                            if (!_prototypeManager.TryIndex(subRoleId, out JobPrototype? subRole))
+                                continue;
+
+                            var subRow = new BoxContainer
+                            {
+                                Orientation = LayoutOrientation.Horizontal,
+                                Margin = new Thickness(0, 0, 0, 5)
+                            };
+
+                            var subSelector = new RequirementsSelector()
+                            {
+                                Margin = new Thickness(3f, 3f, 3f, 0f),
+                            };
+                            subSelector.OnOpenGuidebook += OnOpenGuidebook;
+
+                            var subIcon = new TextureRect
+                            {
+                                TextureScale = new Vector2(2, 2),
+                                VerticalAlignment = VAlignment.Center
+                            };
+                            var subJobIcon = _prototypeManager.Index(subRole.Icon);
+                            subIcon.Texture = _sprite.Frame0(subJobIcon.Icon);
+                            subSelector.Setup(items, subRole.LocalizedName, 180, subRole.LocalizedDescription, subIcon, subRole.Guides);
+
+                            if (!_requirements.IsAllowed(subRole, (HumanoidCharacterProfile?)_preferencesManager.Preferences?.SelectedCharacter, out var subReason))
+                            {
+                                subSelector.LockRequirements(subReason);
+                            }
+                            else
+                            {
+                                subSelector.UnlockRequirements();
+                            }
+
+                            subSelector.OnSelected += selectedPrio =>
+                            {
+                                Profile = Profile?.WithJobPriority(subRole.ID, (JobPriority)selectedPrio);
+                                UpdateJobPriorities();
+                                SetDirty();
+                            };
+
+                            var subLoadoutBtn = new Button()
+                            {
+                                Text = Loc.GetString("loadout-window"),
+                                HorizontalAlignment = HAlignment.Right,
+                                VerticalAlignment = VAlignment.Center,
+                                Margin = new Thickness(3f, 3f, 0f, 0f),
+                            };
+
+                            if (!protoManager.TryIndex<RoleLoadoutPrototype>(LoadoutSystem.GetJobPrototype(subRole.ID), out var subRoleLoadoutProto))
+                            {
+                                subLoadoutBtn.Disabled = true;
+                            }
+                            else
+                            {
+                                subLoadoutBtn.OnPressed += args =>
+                                {
+                                    RoleLoadout? subLoadout = null;
+                                    Profile?.Loadouts.TryGetValue(LoadoutSystem.GetJobPrototype(subRole.ID), out subLoadout);
+                                    subLoadout = subLoadout?.Clone();
+
+                                    if (subLoadout == null)
+                                    {
+                                        subLoadout = new RoleLoadout(subRoleLoadoutProto.ID);
+                                        subLoadout.SetDefault(Profile, _playerManager.LocalSession, _prototypeManager);
+                                    }
+
+                                    OpenLoadout(subRole, subLoadout, subRoleLoadoutProto);
+                                };
+                            }
+
+                            subRow.AddChild(subSelector);
+                            subRow.AddChild(subLoadoutBtn);
+                            subRolesContainer.AddChild(subRow);
+                            _jobPriorities.Add((subRole.ID, subSelector));
+                        }
+                    }
+                    else
+                    {
+                        jobContainer.AddChild(mainRow);
+                    }
+
                     category.AddChild(jobContainer);
+                    // Corvax-Wega-SubRoles-end
                 }
             }
 
@@ -1549,17 +1670,14 @@ namespace Content.Client.Lobby.UI
             {
                 return;
             }
-            var hairMarking = Profile.Appearance.HairStyleId switch
-            {
-                HairStyles.DefaultHairStyle => new List<Marking>(),
-                _ => new List<Marking> { new Marking(Profile.Appearance.HairStyleId, Profile.Appearance.HairColor) }, // Corvax-Wega-Hair-Extended
-            };
 
-            var facialHairMarking = Profile.Appearance.FacialHairStyleId switch
-            {
-                HairStyles.DefaultFacialHairStyle => new List<Marking>(),
-                _ => new() { new(Profile.Appearance.FacialHairStyleId, new List<Color>() { Profile.Appearance.FacialHairColor }) },
-            };
+            var hairMarking = Profile.Appearance.HairStyleId == HairStyles.DefaultHairStyle.Id
+                ? new List<Marking>()
+                : new List<Marking> { new Marking(Profile.Appearance.HairStyleId, Profile.Appearance.HairColor) }; // Corvax-Wega-Hair-Extended
+
+            var facialHairMarking = Profile.Appearance.FacialHairStyleId == HairStyles.DefaultFacialHairStyle
+                ? new List<Marking>()
+                : new() { new(Profile.Appearance.FacialHairStyleId, new List<Color>() { Profile.Appearance.FacialHairColor }) };
 
             HairStylePicker.UpdateData(
                 hairMarking,

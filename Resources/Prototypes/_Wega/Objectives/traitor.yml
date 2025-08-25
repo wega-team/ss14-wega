@@ -1,7 +1,7 @@
 # krav maga
 - type: entity
   parent: BaseTraitorStealObjective
-  id: KravMagaStealObjective
+  id: GlovesKravMagaStealObjective
   components:
   - type: Objective
     # WARDEN WILL KILL FOR THOSE
@@ -11,3 +11,14 @@
   - type: StealCondition
     stealGroup: GlovesKravMaga
     owner: job-name-warden
+
+# combat rcd
+- type: entity
+  parent: BaseTraitorStealObjective
+  id: CombatRCDStealObjective
+  components:
+  - type: NotJobRequirement
+    job: ChiefEngineer
+  - type: StealCondition
+    stealGroup: CombatRCD
+    owner: job-name-ce

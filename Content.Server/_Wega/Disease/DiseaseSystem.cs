@@ -306,14 +306,6 @@ namespace Content.Server.Disease
 
         private void OnApplyMetabolicMultiplier(EntityUid uid, DiseaseCarrierComponent component, ApplyMetabolicMultiplierEvent args)
         {
-            if (args.Apply)
-            {
-                foreach (var disease in component.Diseases)
-                {
-                    disease.TickTime *= args.Multiplier;
-                    return;
-                }
-            }
             foreach (var disease in component.Diseases)
             {
                 disease.TickTime /= args.Multiplier;

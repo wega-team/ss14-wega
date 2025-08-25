@@ -3,6 +3,7 @@
   name: job-name-surgeon
   description: job-description-surgeon
   playTimeTracker: JobSurgeon
+  isSubRole: true
   requirements:
     - !type:DepartmentTimeRequirement
       department: Medical

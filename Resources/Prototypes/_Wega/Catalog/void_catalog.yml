@@ -519,7 +519,7 @@
   id: UplinkNocturineVoid
   name: uplink-void-nocturine-name
   description: uplink-void-nocturine-desc
-  productEntity: NocturineChemistryBottle
+  productEntity: ChemistryBottleNocturine
   cost:
     Credit: 20000
   categories:

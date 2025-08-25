@@ -1,0 +1,175 @@
+- type: constructionGraph
+  id: AndroidBodyPart
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: leftArmAssembly
+      completed:
+      - !type:PopupUser
+        text: android-part-assembly-leftarm
+      steps:
+      - tool: Screwing
+        doAfter: 0.5
+
+  - node: leftArmAssembly
+    edges:
+    - to: leftHandAssembly
+      steps:
+      - tool: Screwing
+        doAfter: 0.5
+      completed:
+      - !type:PopupUser
+        text: android-part-assembly-lefthand
+    - to: complete
+      completed:
+      - !type:SpawnPrototype
+        prototype: LeftArmAndroid
+        amount: 1
+      - !type:DeleteEntity {}
+      steps:
+      - material: Steel
+        amount: 2
+        doAfter: 2
+
+  - node: leftHandAssembly
+    edges:
+    - to: rightArmAssembly
+      completed:
+      - !type:PopupUser
+        text: android-part-assembly-rightarm
+      steps:
+      - tool: Screwing
+        doAfter: 0.5
+    - to: complete
+      completed:
+      - !type:SpawnPrototype
+        prototype: LeftHandAndroid
+        amount: 1
+      - !type:DeleteEntity {}
+      steps:
+      - material: Steel
+        amount: 2
+        doAfter: 2
+
+  - node: rightArmAssembly
+    edges:
+    - to: rightHandAssembly
+      completed:
+      - !type:PopupUser
+        text: android-part-assembly-righthand
+      steps:
+      - tool: Screwing
+        doAfter: 0.5
+    - to: complete
+      completed:
+      - !type:SpawnPrototype
+        prototype: RightArmAndroid
+        amount: 1
+      - !type:DeleteEntity {}
+      steps:
+      - material: Steel
+        amount: 2
+        doAfter: 2
+
+  - node: rightHandAssembly
+    edges:
+    - to: leftLegAssembly
+      completed:
+      - !type:PopupUser
+        text: android-part-assembly-leftleg
+      steps:
+      - tool: Screwing
+        doAfter: 0.5
+    - to: complete
+      completed:
+      - !type:SpawnPrototype
+        prototype: RightHandAndroid
+        amount: 1
+      - !type:DeleteEntity {}
+      steps:
+      - material: Steel
+        amount: 2
+        doAfter: 2
+
+  - node: leftLegAssembly
+    edges:
+    - to: leftFootAssembly
+      completed:
+      - !type:PopupUser
+        text: android-part-assembly-leftfoot
+      steps:
+      - tool: Screwing
+        doAfter: 0.5
+    - to: complete
+      completed:
+      - !type:SpawnPrototype
+        prototype: LeftLegAndroid
+        amount: 1
+      - !type:DeleteEntity {}
+      steps:
+      - material: Steel
+        amount: 2
+        doAfter: 2
+
+  - node: leftFootAssembly
+    edges:
+    - to: rightLegAssembly
+      completed:
+      - !type:PopupUser
+        text: android-part-assembly-rightleg
+      steps:
+      - tool: Screwing
+        doAfter: 0.5
+    - to: complete
+      completed:
+      - !type:SpawnPrototype
+        prototype: LeftFootAndroid
+        amount: 1
+      - !type:DeleteEntity {}
+      steps:
+      - material: Steel
+        amount: 2
+        doAfter: 2
+
+  - node: rightLegAssembly
+    edges:
+    - to: rightFootAssembly
+      completed:
+      - !type:PopupUser
+        text: android-part-assembly-rightfoot
+      steps:
+      - tool: Screwing
+        doAfter: 0.5
+    - to: complete
+      completed:
+      - !type:SpawnPrototype
+        prototype: RightLegAndroid
+        amount: 1
+      - !type:DeleteEntity {}
+      steps:
+      - material: Steel
+        amount: 2
+        doAfter: 2
+  
+  - node: rightFootAssembly
+    edges:
+    - to: leftArmAssembly
+      completed:
+      - !type:PopupUser
+        text: android-part-assembly-leftarm
+      steps:
+      - tool: Screwing
+        doAfter: 0.5
+    - to: complete
+      completed:
+      - !type:SpawnPrototype
+        prototype: RightFootAndroid
+        amount: 1
+      - !type:DeleteEntity {}
+      steps:
+      - material: Steel
+        amount: 2
+        doAfter: 2
+
+  - node: complete

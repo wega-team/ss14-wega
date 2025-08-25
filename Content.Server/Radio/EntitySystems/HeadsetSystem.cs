@@ -101,16 +101,27 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
 
     private void OnHeadsetReceive(EntityUid uid, HeadsetComponent component, ref RadioReceiveEvent args)
     {
+        // TODO: change this when a code refactor is done
+        // this is currently done this way because receiving radio messages on an entity otherwise requires that entity
+        // to have an ActiveRadioComponent
+
+        var parent = Transform(uid).ParentUid;
+
+        if (parent.IsValid())
+        {
+            var relayEvent = new HeadsetRadioReceiveRelayEvent(args);
+            RaiseLocalEvent(parent, ref relayEvent);
+        }
+
         // Corvax-Wega-Headset-start
-        if (!TryComp<ActorComponent>(Transform(uid).ParentUid, out var actor))
-            return;
+        if (TryComp(parent, out ActorComponent? actor))
+        {
+            _netMan.ServerSendMessage(args.ChatMsg, actor.PlayerSession.Channel);
+            if (uid == args.RadioSource || !component.ToggledSound)
+                return;
 
-        _netMan.ServerSendMessage(args.ChatMsg, actor.PlayerSession.Channel);
-
-        if (uid == args.RadioSource || !component.ToggledSound)
-            return;
-
-        _audio.PlayEntity(component.Sound, actor.PlayerSession, uid);
+            _audio.PlayEntity(component.Sound, actor.PlayerSession, uid);
+        }
         // Corvax-Wega-Headset-end
     }
 

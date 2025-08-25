@@ -108,6 +108,10 @@
     fiberMaterial: fibers-durathread
     fiberColor: fibers-regal-blue
   - type: FingerprintMask
+  # Corvax-Wega-Dirtable-start
+  - type: Dirtable
+    dirtState: capgloves
+  # Corvax-Wega-Dirtable-end
 
 - type: entity
   parent: ClothingHandsBase

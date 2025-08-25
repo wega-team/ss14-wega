@@ -42,3 +42,8 @@
           - Scientist
           - Borg
 # Corvax-HiddenDesc-End
+    # Corvax-Wega-Dirtable-start
+    - type: Dirtable
+      dirtState: armor
+      equippedDirtState: equipped-armor
+    # Corvax-Wega-Dirtable-end

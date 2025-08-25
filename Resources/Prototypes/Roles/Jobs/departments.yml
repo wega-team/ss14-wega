@@ -86,6 +86,7 @@
   roles:
   - AtmosphericTechnician
   - ChiefEngineer
+  - SeniorEngineer # Corvax-MentorRoles
   - StationEngineer
   - TechnicalAssistant
 
@@ -104,6 +105,7 @@
   - MedicalIntern
   - Psychologist
   - Paramedic
+  - SeniorPhysician # Corvax-MentorRoles
 
 - type: department
   id: Security
@@ -116,6 +118,7 @@
   - SecurityCadet
   - SecurityOfficer
   - Brigmedic # Corvax-Wega-Brigmedic
+  - SeniorOfficer # Corvax-MentorRoles
   - Pilot # Corvax-Pilot
   - Detective
   - Warden
@@ -127,6 +130,7 @@
   color: "#CD7CCD" # Corvax-Wega-Edit
   roles:
   - ResearchDirector
+  - SeniorResearcher # Corvax-MentorRoles
   - Scientist
   - ResearchAssistant
 

@@ -4,3 +4,10 @@
   sprite:
     sprite: _Wega/Clothing/Hands/Gloves/kravgloves.rsi
     state: icon
+
+- type: stealTargetGroup
+  id: CombatRCD
+  name: steal-target-groups-combat-rcd
+  sprite:
+    sprite: _Wega/Objects/Tools/combat-rcd.rsi
+    state: icon

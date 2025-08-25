@@ -13,3 +13,10 @@
     allowedSexes:
     - Male
     - Unsexed
+
+- type: loadoutEffectGroup
+  id: SpeciesAndroid
+  effects:
+  - !type:SpeciesLoadoutEffect
+    species:
+    - Android

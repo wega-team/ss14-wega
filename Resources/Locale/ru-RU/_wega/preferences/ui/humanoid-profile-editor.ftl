@@ -6,3 +6,4 @@ humanoid-profile-editor-status-absolute-text = Абсолютное ЕРП
 
 humanoid-profile-editor-flavor-label = Внешний Вид:
 humanoid-profile-editor-flavor-ooc-label = OOC Заметки:
+humanoid-profile-editor-toggle-subroles = Список СабРолей

@@ -101,6 +101,7 @@
   - EmergencyNitrogen
   - EmergencyOxygen
   - LoadoutSpeciesVoxNitrogen
+  - EmergencyAndroid # Corvax-Wega-Android
 
 # nitrogen or oxygen tank, depending on what your species needs
 - type: loadoutGroup
@@ -401,6 +402,17 @@
   - ChaplainNeck
 
 - type: loadoutGroup
+  id: ChaplainBible
+  name: loadout-group-chaplain-bible
+  minLimit: 1
+  loadouts:
+  - Bible
+  - BibleDruid
+  - BibleNanoTrasen
+  - BibleSatanic
+  - BibleTanakh
+
+- type: loadoutGroup
   id: JanitorHead
   name: loadout-group-janitor-head
   minLimit: 0
@@ -521,6 +533,7 @@
   - EmergencyNitrogenClown
   - EmergencyOxygenClown
   - LoadoutSpeciesVoxNitrogen
+  - EmergencyAndroid # Corvax-Wega-Android
 
 - type: loadoutGroup
   id: MimeHead
@@ -599,6 +612,7 @@
   minLimit: 0
   maxLimit: 2
   loadouts:
+  - SuperSynthesizerInstrument ## Corvax-Wega
   - Glockenspiel
   - MusicBox
   - Xylophone
@@ -864,6 +878,7 @@
   - EmergencyNitrogenExtended
   - EmergencyOxygenExtended
   - LoadoutSpeciesVoxNitrogen
+  - EmergencyAndroidExtended # Corvax-Wega-Android
 
 # Science
 - type: loadoutGroup
@@ -1156,6 +1171,7 @@
   - EmergencyNitrogenSecurity
   - EmergencyOxygenSecurity
   - LoadoutSpeciesVoxNitrogen
+  - EmergencyAndroidSecurity # Corvax-Wega-Android
 
 - type: loadoutGroup
   id: SecurityStar
@@ -1361,6 +1377,7 @@
   - EmergencyNitrogenMedical
   - EmergencyOxygenMedical
   - LoadoutSpeciesVoxNitrogen
+  - EmergencyAndroidMedical # Corvax-Wega-Android
 
 # Wildcards
 - type: loadoutGroup

@@ -44,6 +44,7 @@
     DrinkVodkaBottleFull: 5
     DrinkWhiskeyBottleFull: 5
     DrinkWineBottleFull: 5
+    DrinkWhiteWineBottleFull: 5  # Corvax-Wega
     DrinkChampagneBottleFull: 2 #because the premium drink
     DrinkSakeBottleFull: 3
     DrinkAperolBottleFull: 5 # Corvax-Wega
@@ -57,5 +58,4 @@
   contrabandInventory:
     ChemistryBottleEthanol: 3
     DrinkBottleOfNothingFull: 1
-  emaggedInventory:
     DrinkPoisonWinebottleFull: 2

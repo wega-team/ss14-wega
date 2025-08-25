@@ -1,0 +1,46 @@
+﻿- type: entity
+  id: CombatRCD
+  parent: [RCD, BaseGrandTheftContraband]
+  name: Combat RCD
+  description: The rapid construction device can be used to quickly place and remove various station structures and fixtures. Requires compressed matter to function. This RCD has been specially improved for working with reinforced materials.
+  components:
+  - type: RCD
+    reinforced: true
+    availablePrototypes:
+    - WallSolid
+    - WallReinforced
+    - FloorSteel
+    - Plating
+    - Catwalk
+    - Grille
+    - Window
+    - WindowDirectional
+    - WindowReinforcedDirectional
+    - ReinforcedWindow
+    - Airlock
+    - AirlockGlass
+    - Firelock
+    - TubeLight
+    - BulbLight
+    - LVCable
+    - MVCable
+    - HVCable
+    - CableTerminal
+    - Deconstruct
+  - type: LimitedCharges
+    maxCharges: 50
+  - type: Sprite
+    sprite: _Wega/Objects/Tools/combat-rcd.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Wega/Objects/Tools/combat-rcd.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: StaticPrice
+    price: 1000
+  - type: Tag
+    tags:
+    - HighRiskItem
+  - type: StealTarget
+    stealGroup: CombatRCD

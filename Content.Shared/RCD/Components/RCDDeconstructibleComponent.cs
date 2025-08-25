@@ -31,4 +31,9 @@ public sealed partial class RCDDeconstructableComponent : Component
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public bool Deconstructable = true;
+
+    // Covrax-Wega-CombatRCD-Start
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public bool Reinforced = false;
+    // Covrax-Wega-CombatRCD-End
 }

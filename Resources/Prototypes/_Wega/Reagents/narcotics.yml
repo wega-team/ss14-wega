@@ -58,14 +58,9 @@
         key: Stealth
         component: Stealth
         type: Add
-        time: 10
+        time: 15
       - !type:GenericStatusEffect
         key: StealthOnMove
         component: StealthOnMove
         type: Add
-        time: 10
-      - !type:GenericStatusEffect
-        key: Muted
-        component: Muted
-        type: Add
-        time: 10
+        time: 15

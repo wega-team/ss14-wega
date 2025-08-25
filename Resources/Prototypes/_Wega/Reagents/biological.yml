@@ -7,7 +7,9 @@
   flavor: cum
   color: "#DFDFDF"
   recognizable: true
-  slippery: false
+  slipData:
+    requiredSlipSpeed: 4
+    superSlippery: true
   metabolisms:
     Drink:
       effects:
@@ -33,7 +35,34 @@
   color: "#c048c2"
   recognizable: true
   physicalDesc: reagent-physical-desc-slimy
-  slippery: false
+  slipData:
+    requiredSlipSpeed: 4
+    superSlippery: true
+
+- type: reagent
+  id: Tyrium
+  name: reagent-name-tyrium
+  group: Biological
+  desc: reagent-desc-tyrium
+  flavor: metallic
+  color: "#2861a8"
+  recognizable: false
+  physicalDesc: reagent-physical-desc-metallic
+  metabolisms:
+    Drink:
+      effects:
+      - !type:SatiateThirst
+        factor: 1.0
+    Poison:
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+            Cold: 4
+  footstepSound:
+    collection: FootstepBlood
+    params:
+      volume: 6
 
 - type: reagent
   id: SlimeExtractGray

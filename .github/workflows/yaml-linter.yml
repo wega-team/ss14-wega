@@ -11,9 +11,12 @@ jobs:
   build:
     name: YAML Linter
     if: github.actor != 'IanComradeBot' && github.event.pull_request.draft == false
-    runs-on: [self-hosted, linux]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.2.2
+      - name: Delete sponsor-tiers YAML file
+        run: |
+          rm -f Resources/Prototypes/_Wega/sponsor-tiers.yml
       - name: Setup submodule
         run: |
           git submodule update --init --recursive
@@ -27,8 +30,6 @@ jobs:
         uses: actions/setup-dotnet@v4.1.0
         with:
           dotnet-version: 9.0.x
-        env:
-          DOTNET_INSTALL_DIR: $HOME/.dotnet
       - name: Install dependencies
         run: dotnet restore
       - name: Build

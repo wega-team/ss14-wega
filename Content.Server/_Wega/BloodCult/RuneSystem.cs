@@ -26,9 +26,11 @@ using Content.Shared.Mind.Components;
 using Content.Shared.Mindshield.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
+using Content.Shared.NullRod.Components;
 using Content.Shared.Popups;
 using Content.Shared.Silicons.Borgs.Components;
 using Content.Shared.Standing;
+using Content.Shared.Surgery.Components;
 using Content.Shared.Timing;
 using Robust.Server.GameObjects;
 using Robust.Shared.Console;
@@ -242,7 +244,8 @@ public sealed partial class BloodCultSystem
                 foreach (var targetEntity in targets)
                 {
                     var target = targetEntity.Owner;
-                    if (HasComp<BloodCultistComponent>(target) || HasComp<BloodCultConstructComponent>(target))
+                    if (HasComp<BloodCultistComponent>(target) || HasComp<BloodCultConstructComponent>(target)
+                        || HasComp<NullRodOwnerComponent>(target))
                         continue;
 
                     if (!_entityManager.TryGetComponent<MobThresholdsComponent>(target, out var targetThresholds))
@@ -250,7 +253,7 @@ public sealed partial class BloodCultSystem
 
                     var currentState = targetThresholds.CurrentThresholdState;
                     if (currentState is MobState.Dead && (HasComp<MindShieldComponent>(target) || HasComp<BibleUserComponent>(target)
-                        || HasComp<BloodCultObjectComponent>(target)))
+                        || HasComp<BloodCultObjectComponent>(target)) && !HasComp<SyntheticOperatedComponent>(target))
                     {
                         if (CheckRuneActivate(coords, 3))
                         {
@@ -281,7 +284,8 @@ public sealed partial class BloodCultSystem
                         }
                         break;
                     }
-                    else if (currentState != MobState.Dead && !HasComp<MindShieldComponent>(target) && !HasComp<BibleUserComponent>(target))
+                    else if (currentState != MobState.Dead && !HasComp<MindShieldComponent>(target) && !HasComp<BibleUserComponent>(target)
+                        && !HasComp<SyntheticOperatedComponent>(target))
                     {
                         if (CheckRuneActivate(coords, 2))
                         {
@@ -300,7 +304,8 @@ public sealed partial class BloodCultSystem
                         }
                         break;
                     }
-                    else if (currentState is MobState.Dead && !HasComp<MindShieldComponent>(target) && !HasComp<BibleUserComponent>(target))
+                    else if (currentState is MobState.Dead && !HasComp<MindShieldComponent>(target) && !HasComp<BibleUserComponent>(target)
+                        && !HasComp<SyntheticOperatedComponent>(target))
                     {
                         if (CheckRuneActivate(coords, 1))
                         {
@@ -563,6 +568,9 @@ public sealed partial class BloodCultSystem
 
                             foreach (var targetFlammable in targetsFlammable)
                             {
+                                if (HasComp<NullRodOwnerComponent>(targetFlammable.Owner))
+                                    continue;
+
                                 if (TryComp<FlammableComponent>(targetFlammable.Owner, out var flammable))
                                 {
                                     flammable.FireStacks = 3f;

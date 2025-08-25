@@ -8,12 +8,14 @@ using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Movement.Components;
 using Robust.Shared.Containers;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
 namespace Content.Shared.Body.Systems;
 
 public partial class SharedBodySystem
 {
+    private static readonly ProtoId<DamageTypePrototype> BloodlossDamageType = "Bloodloss";
     private void InitializeParts()
     {
         // TODO: This doesn't handle comp removal on child ents.
@@ -178,7 +180,7 @@ public partial class SharedBodySystem
         )
         {
             // TODO BODY SYSTEM KILL : remove this when wounding and required parts are implemented properly
-            var damage = new DamageSpecifier(Prototypes.Index<DamageTypePrototype>("Bloodloss"), 300);
+            var damage = new DamageSpecifier(Prototypes.Index(BloodlossDamageType), 300);
             Damageable.TryChangeDamage(bodyEnt, damage);
         }
     }
@@ -462,6 +464,7 @@ public partial class SharedBodySystem
             return;
         }
 
+        var activeLegs = 0; // Corvax-Wega-Surgery
         var walkSpeed = 0f;
         var sprintSpeed = 0f;
         var acceleration = 0f;
@@ -473,7 +476,17 @@ public partial class SharedBodySystem
             walkSpeed += legModifier.WalkSpeed;
             sprintSpeed += legModifier.SprintSpeed;
             acceleration += legModifier.Acceleration;
+            activeLegs++; // Corvax-Wega-Surgery
         }
+
+        // Corvax-Wega-Surgery-start
+        if (activeLegs == 0)
+        {
+            Movement.ChangeBaseSpeed(bodyId, 2f, 2f, 20f, movement);
+            return;
+        }
+        // Corvax-Wega-Surgery-end
+
         walkSpeed /= body.RequiredLegs;
         sprintSpeed /= body.RequiredLegs;
         acceleration /= body.RequiredLegs;

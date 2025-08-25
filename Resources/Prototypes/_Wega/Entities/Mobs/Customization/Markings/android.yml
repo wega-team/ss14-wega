@@ -1,0 +1,203 @@
+- type: marking
+  id: AndroidAntennaLeft
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [ Android ]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#bf3f3f"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/android.rsi
+    state: head_antenna_l
+
+- type: marking
+  id: AndroidAntennaRight
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [ Android ]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#bf3f3f"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/android.rsi
+    state: head_antenna_r
+
+- type: marking
+  id: AndroidTorsoFemaleStandart
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [ Android ]
+  sexRestriction: [ Female ]
+  sponsorOnly: false
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+      fallbackTypes:
+        - !type:SkinColoring
+  sprites:
+  - sprite: _Wega/Mobs/Customization/android.rsi
+    state: body_f
+
+- type: marking
+  id: AndroidTorsoFemaleBreast
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [ Android ]
+  sexRestriction: [ Female ]
+  sponsorOnly: false
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+      fallbackTypes:
+        - !type:SkinColoring
+  sprites:
+  - sprite: _Wega/Mobs/Customization/android.rsi
+    state: body_f_breast
+
+- type: marking
+  id: AndroidTorsoFemaleBigBreast
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [ Android ]
+  sexRestriction: [ Female ]
+  sponsorOnly: false
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+      fallbackTypes:
+        - !type:SkinColoring
+  sprites:
+  - sprite: _Wega/Mobs/Customization/android.rsi
+    state: body_f_bigbreast
+
+- type: marking
+  id: AndroidTorsoFemaleNoBreast
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [ Android ]
+  sexRestriction: [ Female ]
+  sponsorOnly: false
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+      fallbackTypes:
+        - !type:SkinColoring
+  sprites:
+  - sprite: _Wega/Mobs/Customization/android.rsi
+    state: body_f_nobreast
+
+- type: marking
+  id: AndroidTorsoMale
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [ Android ]
+  sexRestriction: [ Male ]
+  sponsorOnly: false
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+      fallbackTypes:
+        - !type:SkinColoring
+  sprites:
+    - sprite: _Wega/Mobs/Customization/android.rsi
+      state: body_m
+
+- type: marking
+  id: AndroidLeds
+  bodyPart: Special
+  markingCategory: Special
+  speciesRestriction: [ Android ]
+  sponsorOnly: false
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#428de1"
+  sprites:
+    - sprite: _Wega/Mobs/Customization/android.rsi
+      state: leds
+
+- type: marking
+  id: AndroidLedsLove
+  bodyPart: Special
+  markingCategory: Special
+  speciesRestriction: [ Android ]
+  sponsorOnly: false
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#428de1"
+  sprites:
+    - sprite: _Wega/Mobs/Customization/android.rsi
+      state: leds_love
+
+- type: marking
+  id: AndroidLedsStripes
+  bodyPart: Special
+  markingCategory: Special
+  speciesRestriction: [ Android ]
+  sponsorOnly: false
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#428de1"
+  sprites:
+    - sprite: _Wega/Mobs/Customization/android.rsi
+      state: leds_stripes
+
+- type: marking
+  id: AndroidCatEars
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [ Android ]
+  sponsorOnly: false
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+      fallbackTypes:
+        - !type:SkinColoring
+    layers:
+      ears_cat_led:
+        type:
+          !type:SimpleColoring
+            color: "#428de1"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/android.rsi
+    state: ears_cat_outer
+  - sprite: _Wega/Mobs/Customization/android.rsi
+    state: ears_cat_led
+
+- type: marking
+  id: AndroidCatTail
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [ Android ]
+  sponsorOnly: false
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+      fallbackTypes:
+        - !type:SkinColoring
+    layers:
+      cat_tail_led:
+        type:
+          !type:SimpleColoring
+            color: "#428de1"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/android.rsi
+    state: cat_tail
+  - sprite: _Wega/Mobs/Customization/android.rsi
+    state: cat_tail_led

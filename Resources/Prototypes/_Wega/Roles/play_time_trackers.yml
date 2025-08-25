@@ -2,9 +2,6 @@
   id: JobBarber
 
 - type: playTimeTracker
-  id: JobBrigmedic
-
-- type: playTimeTracker
   id: JobCBURNLeader
 
 - type: playTimeTracker

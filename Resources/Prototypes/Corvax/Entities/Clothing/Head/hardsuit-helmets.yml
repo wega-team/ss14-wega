@@ -23,7 +23,7 @@
 - type: entity
   parent: ClothingHeadHelmetHardsuitSecurity
   id: ClothingHeadHelmetHardsuitSecurityPilot
-  name: security pilot hardsuit helmet
+  categories: [ HideSpawnMenu ]
   description: Armored hardsuit helmet for security needs.
   components:
   - type: Sprite

@@ -26,11 +26,8 @@
         time: 16
         refresh: false
       - !type:MovespeedModifier
-        walkSpeedModifier: 1.10
-        sprintSpeedModifier: 1.10
-        conditions:
-          - !type:ReagentThreshold
-            min: 5
+        walkSpeedModifier: 1.1
+        sprintSpeedModifier: 1.1
       - !type:HealthChange
         conditions:
           - !type:ReagentThreshold
@@ -108,21 +105,20 @@
         conditions:
           - !type:ReagentThreshold
             min: 15
-      - !type:GenericStatusEffect
-        key: MovespeedModifier
+      - !type:MovespeedModifier
         walkSpeedModifier: 0.9
         sprintSpeedModifier: 0.9
 
 - type: reagent
   id: MutationsPotion
   name: reagent-name-mutations-potion
-  group: Toxin
+  group: Toxins
   desc: reagent-desc-mutations-potion
   physicalDesc: reagent-physical-desc-opaque
-  flavor: toxin
+  flavor: toxinsspecial
   color: "#007FFF"
   metabolisms:
-    Toxin:
+    Poison:
       effects:
       - !type:ChemIncreaseMutationChanceEffect
         conditions:

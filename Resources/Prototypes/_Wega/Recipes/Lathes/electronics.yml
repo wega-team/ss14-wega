@@ -37,3 +37,8 @@
   parent: BaseGoldCircuitboardRecipe
   id: MiningServerCircuitboard
   result: MiningServerCircuitboard
+
+- type: latheRecipe
+  parent: BaseCircuitboardRecipe
+  id: WashingMachineCircuitboard
+  result: WashingMachineCircuitboard

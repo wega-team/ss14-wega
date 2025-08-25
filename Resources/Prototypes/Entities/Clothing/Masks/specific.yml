@@ -38,6 +38,11 @@
           - Scientist
           - Borg
 # Corvax-HiddenDesc-End
+    # Corvax-Wega-Dirtable-start
+    - type: Dirtable
+      dirtState: gasmask
+      equippedDirtState: equipped-gasmask
+    # Corvax-Wega-Dirtable-end
 
 - type: entity
   parent: ClothingMaskGasChameleon

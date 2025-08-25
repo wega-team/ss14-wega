@@ -190,7 +190,7 @@ binds:
   mod1: Alt
 - function: OpenCharacterMenu
   type: State
-  key: C
+  key: U
 - function: OpenEmotesMenu
   type: State
   key: Y
@@ -201,9 +201,6 @@ binds:
 - function: Strangle
   type: State
   key: J
-- function: ToggleCrawling
-  type: State
-  key: R
 # Corvax-Wega-end
 - function: TextCursorSelect
   # TextCursorSelect HAS to be above ExamineEntity
@@ -293,7 +290,7 @@ binds:
   mod1: Shift
 - function: FlipObject
   type: State
-  key: F
+  key: R
 - function: TextCursorLeft
   type: State
   key: Left
@@ -536,6 +533,9 @@ binds:
 - function: Arcade3
   type: State
   key: Z
+- function: ToggleKnockdown
+  type: State
+  key: C
 - function: OpenAbilitiesMenu
   type: State
   key: K

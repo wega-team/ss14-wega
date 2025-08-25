@@ -59,8 +59,6 @@
         operator: !type:SlimeWanderOperator
           rangeKey: WanderRange
           wanderRange: 5.0
-          minIdleTime: 2.0
-          maxIdleTime: 5.0
 
 - type: htnCompound
   id: SlimeRebellionPriority
@@ -90,8 +88,6 @@
         operator: !type:SlimeWanderOperator
           rangeKey: WanderRange
           wanderRange: 5.0
-          minIdleTime: 2.0
-          maxIdleTime: 5.0
 
 - type: htnCompound
   id: SlimeHungryBehavior
@@ -107,7 +103,6 @@
             targetKey: TargetCoordinates
             rangeKey: MovementRange
             pathfindInPlanning: true
-            repathTime: 0.3
             removeKeyOnFinish: false
 
         - !type:HTNPrimitiveTask
@@ -115,17 +110,11 @@
             targetKey: FoodTarget
             eatRange: 1.5
 
-    - preconditions:
-        - !type:KeyExistsPrecondition
-          key: FoodTarget
-          invert: true
-      tasks:
+    - tasks:
       - !type:HTNPrimitiveTask
         operator: !type:SlimeWanderOperator
           rangeKey: WanderRange
           wanderRange: 5.0
-          minIdleTime: 2.0
-          maxIdleTime: 5.0
 
 - type: htnCompound
   id: SlimeFollowCompound
@@ -141,11 +130,8 @@
             targetKey: TargetCoordinates
             rangeKey: MovementRange
             pathfindInPlanning: true
-            repathTime: 0.5
             removeKeyOnFinish: false
 
         - !type:HTNPrimitiveTask
           operator: !type:WaitOperator
             key: IdleTime
-            minTime: 1.0
-            maxTime: 3.0

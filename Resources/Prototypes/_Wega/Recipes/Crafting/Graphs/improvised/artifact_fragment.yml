@@ -7,61 +7,61 @@
         - to: fragmentart
           steps:
             - tag: AlienBerries
-              name: a alien berries
+              name: construction-graph-tag-alienberries
               icon:
                 sprite: _Wega/Objects/Specific/Hydroponics/alien_berry.rsi
                 state: produce
               doAfter: 2
             - tag: AlienBerries
-              name: a alien berries
+              name: construction-graph-tag-alienberries
               icon:
                 sprite: _Wega/Objects/Specific/Hydroponics/alien_berry.rsi
                 state: produce
               doAfter: 2
             - tag: AlienBerries
-              name: a alien berries
+              name: construction-graph-tag-alienberries
               icon:
                 sprite: _Wega/Objects/Specific/Hydroponics/alien_berry.rsi 
                 state: produce
               doAfter: 2
             - tag: AlienBerries
-              name: a alien berries
+              name: construction-graph-tag-alienberries
               icon:
                 sprite: _Wega/Objects/Specific/Hydroponics/alien_berry.rsi 
                 state: produce
               doAfter: 2
             - tag: AlienBerries
-              name: a alien berries
+              name: construction-graph-tag-alienberries
               icon:
                 sprite: _Wega/Objects/Specific/Hydroponics/alien_berry.rsi
                 state: produce
               doAfter: 2
             - tag: AlienBerries
-              name: a alien berries
+              name: construction-graph-tag-alienberries
               icon:
                 sprite: _Wega/Objects/Specific/Hydroponics/alien_berry.rsi
                 state: produce
               doAfter: 2
             - tag: AlienBerries
-              name: a alien berries
+              name: construction-graph-tag-alienberries
               icon:
                 sprite: _Wega/Objects/Specific/Hydroponics/alien_berry.rsi
                 state: produce
               doAfter: 2
             - tag: AlienBerries
-              name: a alien berries
+              name: construction-graph-tag-alienberries
               icon:
                 sprite: _Wega/Objects/Specific/Hydroponics/alien_berry.rsi
                 state: produce
               doAfter: 2
             - tag: AlienBerries
-              name: a alien berries
+              name: construction-graph-tag-alienberries
               icon:
                 sprite: _Wega/Objects/Specific/Hydroponics/alien_berry.rsi
                 state: produce
               doAfter: 2
             - tag: AlienBerries
-              name: a alien berries
+              name: construction-graph-tag-alienberries
               icon:
                 sprite: _Wega/Objects/Specific/Hydroponics/alien_berry.rsi
                 state: produce

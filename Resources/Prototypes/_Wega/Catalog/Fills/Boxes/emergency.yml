@@ -1,0 +1,58 @@
+- type: entity
+  parent: BoxSurvivalNitrogen
+  id: BoxSurvivalAndroid
+  suffix: Android
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingMaskBreath
+    - id: EmergencyNitrogenTankFilled
+    - id: Flare
+    - id: Tyriumpack3
+    - id: WelderMini
+  - type: Sprite
+    layers:
+    - state: internals
+    - sprite: _Wega/Objects/Storage/box_icons.rsi
+      state: tyriumpack
+  - type: Label
+    currentLabel: reagent-name-nitrogen
+
+- type: entity
+  parent: BoxSurvivalAndroid
+  id: BoxSurvivalAndroidExtended
+  suffix: Extended Android
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingMaskBreathMedical
+    - id: DoubleEmergencyNitrogenTankFilled
+    - id: Flare
+    - id: Tyriumpack3
+    - id: WelderMini
+
+- type: entity
+  parent: BoxSurvivalAndroid
+  id: BoxSurvivalAndroidMedical
+  suffix: Medical Android
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingMaskBreathMedical
+    - id: EmergencyNitrogenTankFilled
+    - id: Flare
+    - id: Tyriumpack3
+    - id: WelderMini
+
+- type: entity
+  parent: BoxSurvivalAndroid
+  id: BoxSurvivalAndroidSecurity
+  suffix: Security Android
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingMaskGasSecurity
+    - id: EmergencyNitrogenTankFilled
+    - id: Flare
+    - id: Tyriumpack3
+    - id: WelderMini

@@ -1,0 +1,12 @@
+- type: entity
+  name: "android body part"
+  description: "Universal body part for android repair. Use a screwdriver to change the type."
+  parent: BaseItem
+  id: AndroidBodyPart
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Android/parts.rsi
+    state: module_part
+  - type: Construction
+    graph: AndroidBodyPart
+    node: start

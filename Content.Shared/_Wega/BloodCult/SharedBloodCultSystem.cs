@@ -55,7 +55,7 @@ public abstract class SharedBloodCultSystem : EntitySystem
         var stunTime = TimeSpan.FromSeconds(4);
         var name = Identity.Entity(cultist, EntityManager);
 
-        _stun.TryParalyze(cultist, stunTime, true);
+        _stun.TryKnockdown(cultist, stunTime, true);
         _popup.PopupEntity(Loc.GetString("blood-cult-break-control", ("name", name)), cultist);
 
         RemComp<BloodCultistComponent>(cultist);

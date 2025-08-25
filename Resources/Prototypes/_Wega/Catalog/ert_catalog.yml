@@ -582,7 +582,7 @@
   id: ERTTelecomServer
   name: tactical-interface-telecom-server-name
   description: tactical-interface-telecom-server-desc
-  icon: { sprite: /Textures/Structures/Machines/telecomms.rsi, state: icon }
+  icon: { sprite: /Textures/Structures/Machines/telecomms.rsi, state: telecom-nopower }
   productEntity: TelecomServerFlatpack
   cost:
     TacticalResource: 6

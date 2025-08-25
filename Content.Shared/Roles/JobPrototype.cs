@@ -153,6 +153,20 @@ namespace Content.Shared.Roles
         /// </summary>
         [DataField]
         public List<ProtoId<GuideEntryPrototype>>? Guides;
+
+        // Corvax-Wega-SubRoles-start
+        /// <summary>
+        /// A list of subrole IDs for this position.
+        /// </summary>
+        [DataField("subRoles")]
+        public List<ProtoId<JobPrototype>> SubRoles { get; private set; } = new();
+
+        /// <summary>
+        /// Is this role a sub-role (not displayed in the main list)?
+        /// </summary>
+        [DataField("isSubRole")]
+        public bool IsSubRole { get; private set; } = false;
+        // Corvax-Wega-SubRoles-end
     }
 
     /// <summary>

@@ -15,6 +15,12 @@
   - Maintenance
   extendedAccess:
   - Chemistry
+  # Corvax-Wega-SubRoles-start
+  subRoles:
+  - Surgeon
+  - Geneticist
+  - Coroner
+  # Corvax-Wega-SubRoles-end
   special:
   - !type:GiveItemOnHolidaySpecial
     holiday: DoctorDay

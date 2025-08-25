@@ -47,13 +47,14 @@
   cost: 7500
   recipeUnlocks:
   - WeaponLaserCarbine
+  - PortableRecharger # Corvax-Wega-Arsenal
 
 - type: technology
   id: NonlethalAmmunition
   name: research-technology-nonlethal-ammunition
   icon:
-    sprite: Objects/Weapons/Guns/Ammunition/Casings/shotgun_shell.rsi
-    state: beanbag
+    sprite: _Wega/Objects/Weapons/Melee/exmflash.rsi # Corvax-Wega-Arsenal-edit
+    state: flash
   discipline: Arsenal
   tier: 1
   cost: 5000
@@ -62,6 +63,7 @@
   - BoxShellTranquilizer
   - BoxBeanbag
   - WeaponDisabler
+  - ExmFlash # Corvax-Wega-Arsenal
 
 - type: technology
   id: UraniumMunitions
@@ -131,29 +133,31 @@
 
 # Tier 2
 
-- type: technology
-  id: ConcentratedLaserWeaponry
-  name: research-technology-concentrated-laser-weaponry
-  icon:
-    sprite: Objects/Weapons/Guns/Battery/laser_cannon.rsi
-    state: icon
-  discipline: Arsenal
-  tier: 2
-  cost: 10000
-  recipeUnlocks:
-  - WeaponLaserCannon
+# Corvax-Wega-Arsenal-start
+# - type: technology
+  # id: ConcentratedLaserWeaponry
+  # name: research-technology-concentrated-laser-weaponry
+  # icon:
+    # sprite: Objects/Weapons/Guns/Battery/laser_cannon.rsi
+    # state: icon
+  # discipline: Arsenal
+  # tier: 2
+  # cost: 10000
+  # recipeUnlocks:
+  # - WeaponLaserCannon
 
-- type: technology
-  id: WaveParticleHarnessing
-  name: research-technology-wave-particle-harnessing
-  icon:
-    sprite: Objects/Weapons/Guns/Battery/xray.rsi
-    state: icon
-  discipline: Arsenal
-  tier: 2
-  cost: 10000
-  recipeUnlocks:
-  - WeaponXrayCannon
+# - type: technology
+  # id: WaveParticleHarnessing
+  # name: research-technology-wave-particle-harnessing
+  # icon:
+    # sprite: Objects/Weapons/Guns/Battery/xray.rsi
+    # state: icon
+  # discipline: Arsenal
+  # tier: 2
+  # cost: 10000
+  # recipeUnlocks:
+  # - WeaponXrayCannon
+# Corvax-Wega-Arsenal-end
 
 - type: technology
   id: KineticModifications
@@ -168,6 +172,7 @@
   - PKAUpgradeDamage
   - PKAUpgradeRange
   - PKAUpgradeFireRate
+  - BorgModuleKinetic # Corvax-Wega-Kinetic
 
 - type: technology
   id: BasicShuttleArmament
@@ -191,6 +196,18 @@
   technologyPrerequisites:
   - SalvageWeapons
 
+- type: technology
+  id: DualWieldingTechnology
+  name: research-technology-dual-wielding-technology
+  icon:
+    sprite: Clothing/Back/Specific/harmpack.rsi
+    state: icon
+  discipline: Arsenal
+  tier: 2
+  cost: 10000
+  recipeUnlocks:
+  - ClothingBackpackHarmpack
+
 # Tier 3
 
 - type: technology
@@ -204,19 +221,22 @@
   cost: 15000
   recipeUnlocks:
   - WeaponAdvancedLaser
-  - PortableRecharger
+  - WeaponTemperatureGun # Corvax-Wega-Arsenal
+  - PortableRechargerTurboBag # Corvax-Wega-Arsenal
 
-- type: technology
-  id: ThermalWeaponry
-  name: research-technology-thermal-weaponry
-  icon:
-    sprite: Objects/Weapons/Guns/Battery/temp_gun.rsi
-    state: icon
-  discipline: Arsenal
-  tier: 3
-  cost: 15000
-  recipeUnlocks:
-  - WeaponTemperatureGun
+# Corvax-Wega-Arsenal-start
+# - type: technology
+  # id: ThermalWeaponry
+  # name: research-technology-thermal-weaponry
+  # icon:
+    # sprite: Objects/Weapons/Guns/Battery/temp_gun.rsi
+    # state: icon
+  # discipline: Arsenal
+  # tier: 3
+  # cost: 15000
+  # recipeUnlocks:
+  # - WeaponTemperatureGun
+# Corvax-Wega-Arsenal-end
 
 - type: technology
   id: AdvancedShuttleWeapon

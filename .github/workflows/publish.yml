@@ -10,7 +10,7 @@ on:
   - cron: '0 1 * * *'
 jobs:
   build:
-    runs-on: [self-hosted, Linux, username:runner-0, os:ubuntu-24.04]
+    runs-on: ubuntu-latest
 
     steps:
     - name: Fail if we are attempting to run on the master branch
@@ -83,14 +83,6 @@ jobs:
         PUBLISH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
         GITHUB_REPOSITORY: ${{ vars.GITHUB_REPOSITORY }}
         FORK_ID: ${{ vars.FORK_ID }}
-
-    # - name: Publish version wega sandbox
-    #   run: python3 Tools/publish_sandbox.py
-    #   env:
-    #     PUBLISH_USERNAME: ${{ secrets.PUBLISH_USERNAME }}
-    #     PUBLISH_PASSWORD: ${{ secrets.PUBLISH_PASSWORD }}
-    #     GITHUB_REPOSITORY: ${{ vars.GITHUB_REPOSITORY }}
-    #     FORK_ID: ${{ vars.FORK_ID }}
 
     #    - name: Publish changelog (Discord)
     #      continue-on-error: true

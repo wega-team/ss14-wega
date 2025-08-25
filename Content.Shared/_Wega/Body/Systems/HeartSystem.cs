@@ -101,10 +101,7 @@ public sealed class HeartSystem : EntitySystem
 
     private void OnApplyMetabolicMultiplier(Entity<HeartComponent> ent, ref ApplyMetabolicMultiplierEvent args)
     {
-        if (args.Apply)
-            ent.Comp.BeatInterval /= args.Multiplier;
-        else
-            ent.Comp.BeatInterval *= args.Multiplier;
+        ent.Comp.BeatInterval *= args.Multiplier;
     }
 
     /// <summary>
