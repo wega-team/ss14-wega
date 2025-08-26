@@ -244,7 +244,7 @@
     sprite: Objects/Fun/Instruments/structureinstruments.rsi
     state: church-organ
   product: ChurchOrganInstrument
-  cost: 1500
+  cost: 1000
   category: cargoproduct-category-name-fun
   group: market
 
@@ -254,7 +254,7 @@
     sprite: Objects/Fun/Instruments/structureinstruments.rsi
     state: piano
   product: PianoInstrument
-  cost: 1500
+  cost: 1000
   category: cargoproduct-category-name-fun
   group: market
 
@@ -264,7 +264,7 @@
     sprite: Objects/Fun/Instruments/structureinstruments.rsi
     state: piano-upright
   product: UprightPianoInstrument
-  cost: 1500
+  cost: 1000
   category: cargoproduct-category-name-fun
   group: market
 
@@ -274,7 +274,7 @@
     sprite: Objects/Fun/Instruments/structureinstruments.rsi
     state: vibraphone
   product: VibraphoneInstrument
-  cost: 1500
+  cost: 1000
   category: cargoproduct-category-name-fun
   group: market
 
@@ -284,7 +284,7 @@
     sprite: Objects/Fun/Instruments/structureinstruments.rsi
     state: marimba
   product: MarimbaInstrument
-  cost: 1500
+  cost: 1000
   category: cargoproduct-category-name-fun
   group: market
 
@@ -294,7 +294,7 @@
     sprite: Objects/Fun/Instruments/structureinstruments.rsi
     state: tuba
   product: TubaInstrument
-  cost: 1500
+  cost: 1000
   category: cargoproduct-category-name-fun
   group: market
 
@@ -304,7 +304,7 @@
     sprite: Objects/Fun/Instruments/structureinstruments.rsi
     state: harp
   product: HarpInstrument
-  cost: 1500
+  cost: 1000
   category: cargoproduct-category-name-fun
   group: market
 
@@ -314,7 +314,7 @@
     sprite: Objects/Fun/Instruments/structureinstruments.rsi
     state: timpani
   product: TimpaniInstrument
-  cost: 1500
+  cost: 1000
   category: cargoproduct-category-name-fun
   group: market
 
@@ -324,7 +324,7 @@
     sprite: Objects/Fun/Instruments/structureinstruments.rsi
     state: taiko
   product: TaikoInstrument
-  cost: 1500
+  cost: 1000
   category: cargoproduct-category-name-fun
   group: market
 
@@ -334,7 +334,7 @@
     sprite: Objects/Fun/Instruments/structureinstruments.rsi
     state: contrabass
   product: ContrabassInstrument
-  cost: 1500
+  cost: 1000
   category: cargoproduct-category-name-fun
   group: market
 
@@ -344,7 +344,7 @@
     sprite: Objects/Fun/Instruments/structureinstruments.rsi
     state: minimoog
   product: MinimoogInstrument
-  cost: 1500
+  cost: 1000
   category: cargoproduct-category-name-fun
   group: market
 
@@ -354,7 +354,7 @@
     sprite: Objects/Fun/Instruments/structureinstruments.rsi
     state: toms
   product: TomDrumsInstrument
-  cost: 1500
+  cost: 1000
   category: cargoproduct-category-name-fun
   group: market
 
@@ -366,4 +366,14 @@
   product: CratePlants
   cost: 1000
   category: cargoproduct-category-name-fun
+  group: market
+
+- type: cargoProduct
+  id: DrumKitInstrument
+  icon:
+    sprite: Objects/Fun/Instruments/drumkit.rsi
+    state: drumkit
+  product: DrumKitInstrument
+  cost: 1500
+  category: Fun
   group: market

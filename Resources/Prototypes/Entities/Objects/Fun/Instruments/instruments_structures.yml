@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   name: piano
   parent: BasePlaceableInstrumentRotatable
   id: PianoInstrument
@@ -168,3 +168,18 @@
   - type: Instrument
     allowPercussion: true
     allowProgramChange: true
+
+- type: entity ## Corvax-Wega
+  id: DrumKitInstrument
+  parent: BasePlaceableInstrumentRotatable
+  name: drum kit
+  description: Lots of neighbors. Still one volume.
+  components:
+  - type: Instrument
+    program: 117
+    allowPercussion: true
+    allowProgramChange: false
+    respectMidiLimits: true
+  - type: Sprite
+    sprite: "Objects/Fun/Instruments/drumkit.rsi"
+    state: drumkit
