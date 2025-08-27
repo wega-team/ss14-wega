@@ -1,0 +1,14 @@
+- type: entity 
+  id: DrumKitInstrument
+  parent: BasePlaceableInstrumentRotatable
+  name: drum kit
+  description: Lots of neighbors. Still one volume.
+  components:
+  - type: Instrument
+    program: 117
+    allowPercussion: true
+    allowProgramChange: false
+    respectMidiLimits: true
+  - type: Sprite
+    sprite: "_Wega/Objects/Fun/Instruments/drumkit.rsi"
+    state: drumkit
