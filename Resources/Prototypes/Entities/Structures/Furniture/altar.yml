@@ -27,6 +27,37 @@
     snapCardinals: true
   - type: Climbable
   - type: Clickable
+  # Corvax-Wega-Add-start
+  - type: ObjectSelector
+    requiredComponents: [ BibleUser ]
+    disabledInteract: true
+    objects:
+    - AltarNanotrasen
+    - AltarChaos
+    - AltarDruid
+    - AltarToolbox
+    - AltarSpaceChristian
+    - AltarSatana
+    - AltarTechnology
+    - AltarConvertFestival
+    - AltarConvertMaint
+    - AltarConvertBlue
+    - AltarConvertBurden
+    - AltarConvert
+    - AltarConvertOrange
+    - AltarConvertRed
+    - AltarConvertWhite
+    - AltarConvertYellow
+    - AltarHeaven
+    - AltarFangs
+    - AltarBananium
+  - type: ActivatableUI
+    key: enum.ObjectSelectorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.ObjectSelectorUiKey.Key:
+        type: ObjectSelectorBoundUserInterface
+  # Corvax-Wega-Add-end
 
 - type: entity
   id: AltarNanotrasen

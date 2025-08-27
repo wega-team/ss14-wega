@@ -13,7 +13,7 @@ public sealed partial class ItemSelectorWindow : RadialMenu
 {
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
 
-    public event Action<string>? OnItemSelected;
+    public event Action<EntProtoId>? OnItemSelected;
 
     public ItemSelectorWindow()
     {

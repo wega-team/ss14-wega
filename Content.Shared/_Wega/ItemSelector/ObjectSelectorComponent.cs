@@ -3,13 +3,13 @@ using Robust.Shared.Prototypes;
 namespace Content.Shared.Item.Selector.Components;
 
 [RegisterComponent]
-public sealed partial class ItemSelectorComponent : Component
+public sealed partial class ObjectSelectorComponent : Component
 {
     /// <summary>
-    /// List of item prototype IDs that can be selected.
+    /// List of objects prototype IDs that can be selected.
     /// </summary>
-    [DataField("items")]
-    public List<EntProtoId> Items = new();
+    [DataField("objects")]
+    public List<EntProtoId> Objects = new();
 
     /// <summary>
     /// Components that an entity must have to display the UI (whitelist)
@@ -24,4 +24,11 @@ public sealed partial class ItemSelectorComponent : Component
     /// </summary>
     [DataField("forbiddenComponents")]
     public List<string> BlacklistComponents = new();
+
+    /// <summary>
+    /// A switch that allows you to interact with an object by simply touching it.
+    /// It can be disabled if necessary.
+    /// </summary>
+    [DataField("disabledInteract")]
+    public bool DisabledInteract = false;
 }

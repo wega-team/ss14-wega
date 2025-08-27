@@ -1,37 +1,45 @@
 using System.Linq;
-using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Item.Selector.UI;
 using Content.Shared.Item.Selector.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.Prototypes;
+using Content.Shared.Interaction;
 using Content.Server.Administration.Logs;
 using Content.Shared.Database;
 
 namespace Content.Server.Item.Selector;
 
-public sealed partial class ItemSelectorSystem : EntitySystem
+public sealed partial class ObjectSelectorSystem : EntitySystem
 {
     [Dependency] private readonly IAdminLogManager _admin = default!;
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly IComponentFactory _componentFactory = default!;
 
     public override void Initialize()
     {
         base.Initialize();
-        SubscribeLocalEvent<ItemSelectorComponent, BoundUIOpenedEvent>(OnUiOpened);
-        SubscribeLocalEvent<ItemSelectorComponent, ItemSelectorSelectionMessage>(OnSelection);
+        SubscribeLocalEvent<ObjectSelectorComponent, InteractHandEvent>(OnInteract);
+        SubscribeLocalEvent<ObjectSelectorComponent, BoundUIOpenedEvent>(OnUiOpened);
+        SubscribeLocalEvent<ObjectSelectorComponent, ObjectSelectorSelectionMessage>(OnSelection);
     }
 
-    private void OnUiOpened(EntityUid uid, ItemSelectorComponent comp, BoundUIOpenedEvent args)
+    private void OnInteract(EntityUid uid, ObjectSelectorComponent comp, InteractHandEvent args)
+    {
+        if (!_ui.HasUi(uid, ObjectSelectorUiKey.Key) || comp.DisabledInteract)
+            return;
+
+        _ui.OpenUi(uid, ObjectSelectorUiKey.Key, args.User);
+    }
+
+    private void OnUiOpened(EntityUid uid, ObjectSelectorComponent comp, BoundUIOpenedEvent args)
     {
         if (!CheckComponents(args.Actor, comp.WhitelistComponents, comp.BlacklistComponents))
         {
-            _ui.CloseUi(uid, ItemSelectorUiKey.Key);
+            _ui.CloseUi(uid, ObjectSelectorUiKey.Key);
             return;
         }
 
-        UpdateUi(uid, comp.Items);
+        UpdateUi(uid, comp.Objects);
     }
 
     private bool CheckComponents(EntityUid entity, List<string> whitelist, List<string> blacklist)
@@ -47,21 +55,20 @@ public sealed partial class ItemSelectorSystem : EntitySystem
         return true;
     }
 
-    private void UpdateUi(EntityUid uid, List<EntProtoId> items)
+    private void UpdateUi(EntityUid uid, List<EntProtoId> objects)
     {
-        if (!_ui.HasUi(uid, ItemSelectorUiKey.Key))
+        if (!_ui.HasUi(uid, ObjectSelectorUiKey.Key))
             return;
 
-        _ui.ServerSendUiMessage(uid, ItemSelectorUiKey.Key,
-            new ItemSelectorUserMessage(items));
+        _ui.ServerSendUiMessage(uid, ObjectSelectorUiKey.Key,
+            new ObjectSelectorUserMessage(objects));
     }
 
-    private void OnSelection(EntityUid uid, ItemSelectorComponent comp, ItemSelectorSelectionMessage args)
+    private void OnSelection(EntityUid uid, ObjectSelectorComponent comp, ObjectSelectorSelectionMessage args)
     {
         var ent = Spawn(args.SelectedId, Transform(uid).Coordinates);
-        _hands.TryForcePickupAnyHand(GetEntity(args.User), ent);
 
-        _admin.Add(LogType.Action, LogImpact.Low, $"{ToPrettyString(GetEntity(args.User)):user} selects a {ToPrettyString(ent):entity} instead of {ToPrettyString(uid):entity}");
+        _admin.Add(LogType.Action, LogImpact.Low, $"{ToPrettyString(uid):entity} instead of {ToPrettyString(ent):entity}");
 
         QueueDel(uid);
     }
