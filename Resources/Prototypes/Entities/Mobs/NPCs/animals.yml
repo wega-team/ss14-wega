@@ -2557,8 +2557,10 @@
   # Corvax-Wega-start
   - type: Puller
     needsHands: false
+  - type: NaturalNightVision # Corvax-Wega-NightVision
+    tintColor: "#931a32"
+    visible: true
   # Corvax-Wega-end
-  - type: NightVision # Corvax-Wega-NightVision
 
 - type: entity
   parent: MobSpiderBase
