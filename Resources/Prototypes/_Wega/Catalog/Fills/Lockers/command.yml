@@ -7,7 +7,6 @@
     - id: TrackingImplanter
     - id: TrackingImplanter
     - id: OxygenTankFilled
-    - id: WeaponDisabler
     - id: BoxZiptie
     - id: MedkitFilled
     - id: ClothingNeckCloakBlueShield

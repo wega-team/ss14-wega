@@ -103,9 +103,9 @@
   description: A special suit that protects against dangerous environments with low pressure. It's even easier to guard the heads with him!
   components:
   - type: Sprite
-    sprite: _Wega/Clothing/OuterClothing/hardsuits/blueshield.rsi
+    sprite: _Wega/Clothing/OuterClothing/Hardsuits/blueshield.rsi
   - type: Clothing
-    sprite: _Wega/Clothing/OuterClothing/hardsuits/blueshield.rsi
+    sprite: _Wega/Clothing/OuterClothing/Hardsuits/blueshield.rsi
     clothingVisuals:
       outerClothing:
       - state: equipped-OUTERCLOTHING
