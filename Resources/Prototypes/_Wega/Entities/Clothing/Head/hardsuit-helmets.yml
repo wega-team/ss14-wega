@@ -63,7 +63,7 @@
   id: ClothingHeadHelmetHardsuitBlueShield
   name: blue shield hardsuit helmet
   description: The helmet from the Blue Shield suit.
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _Wega/Clothing/Head/Hardsuits/blueshield.rsi
