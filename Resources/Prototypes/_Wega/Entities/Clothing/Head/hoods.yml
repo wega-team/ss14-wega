@@ -30,3 +30,14 @@
     sprite: _Wega/Clothing/Head/Hoods/Coat/voidcaphood.rsi
   - type: Clothing
     sprite: _Wega/Clothing/Head/Hoods/Coat/voidcaphood.rsi
+
+- type: entity
+  parent: ClothingHeadHatHoodWinterBase
+  id: ClothingHeadHatHoodWinterBlueShield
+  categories: [ HideSpawnMenu ]
+  name: blue shield winter coat hood
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Head/Hoods/Coat/hoodblueshield.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Head/Hoods/Coat/hoodblueshield.rsi

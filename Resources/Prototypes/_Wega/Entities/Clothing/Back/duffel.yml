@@ -1,0 +1,8 @@
+- type: entity
+  parent: ClothingBackpackDuffel
+  id: ClothingBackpackDuffelBlueShield
+  name: officer duffel bag "Blue Shield"
+  description: It looks like a military development, although the coloring is unusual. A very stylish and practical duffel bag. It does not hinder movements, despite its size.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Back/Duffels/blueshield.rsi

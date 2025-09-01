@@ -60,6 +60,7 @@
   roles:
   - Captain
   - IAA # Corvax-IAA
+  - BlueShieldOfficer # Corvax-Wega-BlueShield
   - ChiefEngineer
   - ChiefMedicalOfficer
   - HeadOfPersonnel

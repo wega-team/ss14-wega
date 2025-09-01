@@ -8,3 +8,5 @@ ent-CoronerPDA = КПК коронера
     .desc = От него разительно полохо пахнет.
 ent-CBURNLeaderPDA = КПК лидера РХБЗЗ
     .desc = { ent-CBURNPDA.desc }
+ent-BlueShieldPDA = КПК офицера "Синий Щит"
+    .desc = Ничем не примечательный КПК.

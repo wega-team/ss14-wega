@@ -4,3 +4,5 @@ ent-SpawnPointGeneticist = генетик
     .desc = { ent-SpawnPointJobBase.desc }
 ent-SpawnPointCoroner = коронер
     .desc = { ent-SpawnPointJobBase.desc }
+ent-SpawnPointBlueShieldOfficer = офицер синий щит
+    .desc = { ent-SpawnPointJobBase.desc }

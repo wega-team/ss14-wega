@@ -8,3 +8,5 @@ ent-CoronerIDCard = ID карта коронера
     .desc = { ent-IDCardStandard.desc }
 ent-CBURNLeaderIDcard = ID карта лидера РХБЗЗ
     .desc = { ent-IDCardStandard.desc }
+ent-BlueShieldIDCard = ID карта офицера синий щит
+    .desc = { ent-IDCardStandard.desc }

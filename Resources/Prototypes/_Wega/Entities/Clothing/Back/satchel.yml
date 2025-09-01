@@ -1,0 +1,8 @@
+- type: entity
+  parent: ClothingBackpackSatchel
+  id: ClothingBackpackSatchelBlueShield
+  name: officer satchel "Blue Shield"
+  description: It looks like a military development, although the coloring is unusual. A very stylish and practical bag.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Back/Satchels/blueshield.rsi

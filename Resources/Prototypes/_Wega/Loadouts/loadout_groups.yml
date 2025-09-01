@@ -189,6 +189,141 @@
   - ClothingUnderSocksFishnetThigh
   - ClothingUnderSocksPantyhose
 
+#BlueShield
+- type: loadoutGroup
+  id: BlueshieldHead
+  name: loadout-group-blue-shield-head
+  minLimit: 0
+  loadouts:
+  - BlueshieldHead
+
+- type: loadoutGroup
+  id: BlueShieldJumpsuit
+  name: loadout-group-blue-shield-jumpsuit
+  loadouts:
+  - BlueShieldJumpsuit
+  - BlueShieldAltJumpsuit
+  - BlueShieldJumpskirt
+
+- type: loadoutGroup
+  id: BlueshieldBackpack
+  name: loadout-group-blue-shield-backpack
+  loadouts:
+  - BlueShieldBackpack
+  - BlueShieldDuffel
+  - BlueShieldSatchel
+
+- type: loadoutGroup
+  id: BlueshielOuter
+  name: loadout-group-blue-shield-outer
+  loadouts:
+  - BlueshieldOterArmor
+  - BlueShieldOuterWinter
+
+- type: loadoutGroup
+  id: BlueShieldTop
+  name: loadout-group-hop-top
+  loadouts:
+  - ClothingUnderTopBraBso # default
+  - ClothingUnderTopBraGrey 
+  - ClothingUnderTopBraAssblastusa
+  - ClothingUnderTopBikini
+  - ClothingUnderTopBraChast
+  - ClothingUnderTopBraLatex
+  - ClothingUnderTopBraStripped
+  - ClothingUnderTopBraCommie
+  - ClothingUnderTopCorset
+  - ClothingUnderTopBraFishnet
+  - ClothingUnderTopBraKinky
+  - ClothingUnderTopBraLace
+  - ClothingUnderTopBraLizard
+  - ClothingUnderTopBraNekoBlack
+  - ClothingUnderTopBraNekoWhite
+  - ClothingUnderTopBraPasties
+  - ClothingUnderTopBraSport
+  - ClothingUnderTopBraStrapless
+  - ClothingUnderTopBraThong
+
+- type: loadoutGroup
+  id: BlueShieldBottom
+  name: loadout-group-hop-bottom
+  loadouts:
+  - ClothingUnderBottomMBso # default
+  - ClothingUnderBottomFBso
+  - ClothingUnderBottomGrey 
+  - ClothingUnderBottomBabydoll
+  - ClothingUnderBottomBoxers
+  - ClothingUnderBottomFAssblastusa
+  - ClothingUnderBottomFBriefs
+  - ClothingUnderBottomFCommie
+  - ClothingUnderBottomFishnet
+  - ClothingUnderBottomFKinky
+  - ClothingUnderBottomHearts
+  - ClothingUnderBottomLace
+  - ClothingUnderBottomLatex
+  - ClothingUnderBottomLizard
+  - ClothingUnderBottomMankiny
+  - ClothingUnderBottomMAssblastusa
+  - ClothingUnderBottomMBriefs
+  - ClothingUnderBottomMCommie
+  - ClothingUnderBottomMKinky
+  - ClothingUnderBottomNekoBlack
+  - ClothingUnderBottomNekoWhite
+  - ClothingUnderBottomPanties
+  - ClothingUnderBottomSport
+  - ClothingUnderBottomStripe
+  - ClothingUnderBottomStrippedPanties
+  - ClothingUnderBottomThong
+
+- type: loadoutGroup
+  id: BlueShieldSocks
+  name: loadout-group-hop-socks
+  minLimit: 0
+  loadouts:
+  - ClothingUnderSocksBeeKnee
+  - ClothingUnderSocksBee
+  - ClothingUnderSocksBlackKnee
+  - ClothingUnderSocksBlackNorm
+  - ClothingUnderSocksBlackShort
+  - ClothingUnderSocksBlackThigh
+  - ClothingUnderSocksWhiteNorm
+  - ClothingUnderSocksWhiteShort
+  - ClothingUnderSocksWhiteKnee
+  - ClothingUnderSocksWhiteThigh
+  - ClothingUnderSocksCoder
+  - ClothingUnderSocksBlue
+  - ClothingUnderSocksCyan
+  - ClothingUnderSocksGreen
+  - ClothingUnderSocksOrange
+  - ClothingUnderSocksPink
+  - ClothingUnderSocksPurple
+  - ClothingUnderSocksYellow
+  - ClothingUnderSocksRainbowKnee
+  - ClothingUnderSocksRainbowThigh
+  - ClothingUnderSocksCommieKnee
+  - ClothingUnderSocksCommieThigh
+  - ClothingUnderSocksAssblastusaKnee
+  - ClothingUnderSocksAssblastusaThigh
+  - ClothingUnderSocksStripedKnee
+  - ClothingUnderSocksStripedThigh
+  - ClothingUnderSocksThinKnee
+  - ClothingUnderSocksThinThigh
+  - ClothingUnderSocksFishnet
+  - ClothingUnderSocksFishnetKnee
+  - ClothingUnderSocksFishnetThigh
+  - ClothingUnderSocksPantyhose
+
+- type: loadoutGroup
+  id: SurvivalBlueShield
+  name: loadout-group-survival-security
+  minLimit: 2
+  hidden: true
+  loadouts:
+  - EmergencyNitrogenBlueShield
+  - EmergencyOxygenBlueShield
+  - LoadoutSpeciesVoxNitrogen
+  - EmergencyAndroidBlueShield # Corvax-Wega-Android
+
 #HoP
 - type: loadoutGroup
   id: HoPTop
@@ -861,3 +996,13 @@
   - BrigmedicOuterClothingCoat
   - BrigmedicOuterClothingLab
   - BrigmedicOuterClothingVest
+
+# Other
+- type: loadoutGroup
+  id: LoadoutSpeciesBreathToolBlueShield
+  name: loadout-group-breath-tool
+  minLimit: 1
+  maxLimit: 1
+  hidden: true
+  loadouts:
+  - LoadoutSpeciesBreathToolBlueShield

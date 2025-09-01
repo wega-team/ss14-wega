@@ -58,3 +58,15 @@
         - state: idcoroner
     - type: PresetIdCard
       job: Coroner
+
+- type: entity
+  parent: IDCardStandard
+  id: BlueShieldIDCard
+  name: blue shield ID card
+  components:
+    - type: Sprite
+      layers:
+        - state: centcom
+        - state: idblueshield
+    - type: PresetIdCard
+      job: BlueShieldOfficer

@@ -186,6 +186,16 @@
       tags:
         - CigPack
         - Taser
+        # Corvax-Wega-Add-start
+        - SecBeltEquip
+        - Radio
+        - Sidearm
+        - MagazinePistol
+        - MagazineMagnum
+        - CombatKnife
+        - Truncheon
+        - HandGrenade
+        # Corvax-Wega-Add-end
       components:
         - Stunbaton
         - FlashOnTrigger
@@ -193,7 +203,12 @@
         - Flash
         - Handcuff
         - BallisticAmmoProvider
-        - Ammo
+        # Corvax-Wega-Add-start
+        - CartridgeAmmo
+        - DoorRemote
+        - Whistle
+        - BalloonPopper
+        # Corvax-Wega-Add-end
   - type: ItemMapper
     mapLayers:
       flashbang:

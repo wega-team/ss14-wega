@@ -14,3 +14,14 @@
     fiberMaterial: fibers-latex
   - type: FingerprintMask
   - type: ClothingSterility # Corvax-Wega-Surgery
+
+- type: entity
+  parent: ClothingHandsGlovesCombat
+  id: ClothingHandsGlovesCombatBlueShield
+  name: purple combat gloves
+  description: These tactical gloves are fireproof and impact resistant. Unlike simple combat gloves, they have a purple hue.
+  components:
+    - type: Sprite
+      sprite: _Wega/Clothing/Hands/Gloves/combatblueshield.rsi
+    - type: Clothing
+      sprite: _Wega/Clothing/Hands/Gloves/combatblueshield.rsi

@@ -33,3 +33,15 @@
     layers:
       - state: green
       - state: geneticist
+
+- type: entity
+  id: SpawnPointBlueShieldOfficer
+  parent: SpawnPointJobBase
+  name: officer blue shield
+  components:
+  - type: SpawnPoint
+    job_id: BlueShieldOfficer
+  - type: Sprite
+    layers:
+      - state: green
+      - state: blueshield

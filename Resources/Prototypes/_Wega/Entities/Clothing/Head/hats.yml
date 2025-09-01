@@ -48,6 +48,17 @@
       HeadSide : HEAD
 
 - type: entity
+  parent: ClothingHeadBaseBeret
+  id: ClothingHeadHatBeretBlueShield
+  name: officer beret "Blue Shield"
+  description: The gold embroidery of the shield is visible on the beret and looks solid. It is given to the best bodyguards of the best as a sign of distinctive qualities.
+  components:
+    - type: Sprite
+      sprite: _Wega/Clothing/Head/Hats/beret_blueshield.rsi
+    - type: Clothing
+      sprite: _Wega/Clothing/Head/Hats/beret_blueshield.rsi
+
+- type: entity
   parent: ClothingHeadHelmetBasic
   id: ClothingHeadHelmetFlash
   name: flash halmet
@@ -71,7 +82,6 @@
   - type: HideLayerClothing
     layers:
       Hair: HEAD
-  
 
 - type: entity
   parent: BaseAction
