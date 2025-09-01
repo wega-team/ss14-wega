@@ -58,4 +58,4 @@
     - HighRiskItem
     - Sidearm
   - type: StealTarget
-    stealGroup: WeaponEnergyShotgun
+    stealGroup: WeaponBlueLaserPistol
