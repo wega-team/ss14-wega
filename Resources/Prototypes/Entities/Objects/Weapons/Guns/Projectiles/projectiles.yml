@@ -883,6 +883,31 @@
     timeRemaining: 0.3
   - type: DeleteOnTrigger
 
+- type: entity #Corvax Wega
+  id: BulletGrenadeSecFrag 
+  name: sec frag grenade
+  parent: BaseBulletTrigger
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+    layers:
+      - state: grenade
+  - type: ExplodeOnTrigger
+  - type: Explosive
+    explosionType: Default
+    totalIntensity: 10
+    intensitySlope: 2
+    maxIntensity: 3
+    tileBreakScale: 0
+    canCreateVacuum: false
+  - type: ContainerContainer
+    containers:
+      cluster-payload: !type:Container
+  - type: ProjectileGrenade
+    fillPrototype: PelletClusterLessLethal
+    capacity: 30
+
 - type: entity
   id: BulletGrenadeFrag
   name: frag grenade

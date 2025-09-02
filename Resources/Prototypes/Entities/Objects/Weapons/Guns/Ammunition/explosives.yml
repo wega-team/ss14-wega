@@ -123,6 +123,23 @@
     state: frag
     suffix: false
 
+- type: entity #Corvax Wega
+  id: GrenadeSecFrag
+  name: sec frag grenade
+  parent: BaseGrenade
+  components:
+  - type: CartridgeAmmo
+    proto: BulletGrenadeSecFrag
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi
+    layers:
+    - state: frag
+      map: ["enum.AmmoVisualLayers.Base"]
+  - type: Appearance
+  - type: SpentAmmoVisuals
+    state: frag
+    suffix: false
+
 - type: entity
   parent: BaseGrenade
   id: GrenadeCleanade
