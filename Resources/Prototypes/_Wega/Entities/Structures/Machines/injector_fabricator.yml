@@ -51,7 +51,6 @@
           components:
           - FitsInDispenser
   - type: AmbientSound
-    volume: -9
     range: 5
     enabled: false
     sound:
