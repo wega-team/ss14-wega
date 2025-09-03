@@ -97,25 +97,6 @@
     soundInsert:
       path: /Audio/Weapons/Guns/MagIn/sfrifle_magin.ogg
 
-- type: entity #Corvax Wega
-  parent: [ WeaponLauncherHydra ]
-  id: WeaponLauncherTroika
-  name: Series No.3
-  description: 3-charge grenade launcher. It is usually called "the Third"
-  components:
-  - type: RevolverAmmoProvider
-    whitelist:
-      tags:
-      - Grenade
-    proto: GrenadeBaton
-    capacity: 3
-    chambers: [ True, True, True ]
-    ammoSlots: [ null, null, null ]
-    soundEject:
-      path: /Audio/Weapons/Guns/MagOut/sfrifle_magout.ogg
-    soundInsert:
-      path: /Audio/Weapons/Guns/MagIn/sfrifle_magin.ogg
-
 - type: entity
   name: RPG-7
   parent: [ BaseWeaponLauncher, BaseMajorContraband ]
