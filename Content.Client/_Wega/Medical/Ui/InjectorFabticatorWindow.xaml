@@ -1,0 +1,84 @@
+<controls:FancyWindow 
+    xmlns="https://spacestation14.io"
+    xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    MinSize="500 600">
+    
+    <BoxContainer Orientation="Vertical" Margin="10">
+        <!-- Beaker Slot -->
+        <BoxContainer Orientation="Horizontal" Margin="0 0 0 10">
+            <Label Text="{Loc 'injector-fabticator-label-beaker'}" MinWidth="80"/>
+            <PanelContainer Name="BeakerSlot" HorizontalExpand="True" MinHeight="40"/>
+            <Button Name="EjectButton" Text="{Loc 'injector-fabticator-button-eject'}" MinWidth="80"/>
+        </BoxContainer>
+        <Label Name="BeakerInfoLabel" StyleClasses="LabelSmall"/>
+        <ScrollContainer VerticalExpand="True" MinHeight="75">
+            <BoxContainer Name="BeakerReagentList" Orientation="Vertical"/>
+        </ScrollContainer>
+        
+        <!-- Beaker Reagents -->
+        <BoxContainer Orientation="Vertical" Margin="0 0 0 10">
+            <Label Text="{Loc 'injector-fabticator-label-transfer-reagents'}" StyleClasses="LabelBig"/>
+            
+            <!-- Transfer from Beaker to Buffer -->
+            <BoxContainer Orientation="Horizontal" Margin="0 0 0 5">
+                <Label Text="{Loc 'injector-fabticator-label-from-beaker'}" MinWidth="80"/>
+                <OptionButton Name="BeakerReagentSelector" HorizontalExpand="True"/>
+                <FloatSpinBox Name="BeakerTransferAmount" Value="5" MinWidth="80"/>
+                <Button Name="TransferToBufferButton" Text="{Loc 'injector-fabticator-button-to-buffer'}" MinWidth="80"/>
+            </BoxContainer>
+            
+            <!-- Transfer from Buffer to Beaker -->
+            <BoxContainer Orientation="Horizontal">
+                <Label Text="{Loc 'injector-fabticator-label-from-buffer'}" MinWidth="80"/>
+                <OptionButton Name="BufferReagentSelector" HorizontalExpand="True"/>
+                <FloatSpinBox Name="BufferTransferAmount" Value="5" MinWidth="80"/>
+                <Button Name="TransferToBeakerButton" Text="{Loc 'injector-fabticator-button-to-beaker'}" MinWidth="80"/>
+            </BoxContainer>
+        </BoxContainer>
+        
+        <!-- Buffer Solution -->
+        <BoxContainer Orientation="Vertical" Margin="0 0 0 10">
+            <Label Text="{Loc 'injector-fabticator-label-buffer-solution'}" StyleClasses="LabelBig"/>
+            <ProgressBar Name="BufferProgress" MinValue="0" MaxValue="100" Value="0" 
+                         HorizontalExpand="True" Margin="0 5"/>
+            <ScrollContainer VerticalExpand="True" MinHeight="150">
+                <BoxContainer Name="BufferReagentList" Orientation="Vertical"/>
+            </ScrollContainer>
+        </BoxContainer>
+        
+        <!-- Recipe Configuration -->
+        <BoxContainer Orientation="Vertical" Margin="0 0 0 10">
+            <Label Text="{Loc 'injector-fabticator-label-recipe'}" StyleClasses="LabelBig"/>
+            <ScrollContainer VerticalExpand="True" MinHeight="150">
+                <BoxContainer Name="RecipeReagentList" Orientation="Vertical"/>
+            </ScrollContainer>
+            
+            <BoxContainer Orientation="Horizontal" Margin="0 5 0 0">
+                <Label Text="{Loc 'injector-fabticator-label-reagent'}" MinWidth="80"/>
+                <OptionButton Name="ReagentSelector" HorizontalExpand="True"/>
+                <FloatSpinBox Name="ReagentAmount" Value="5" MinWidth="80"/>
+                <Button Name="AddReagentButton" Text="{Loc 'injector-fabticator-button-add'}" MinWidth="80"/>
+            </BoxContainer>
+        </BoxContainer>
+        
+        <!-- Production Settings -->
+        <BoxContainer Orientation="Vertical" Margin="0 0 0 10">
+            <Label Text="{Loc 'injector-fabticator-label-production-settings'}" StyleClasses="LabelBig"/>
+            <BoxContainer Orientation="Horizontal">
+                <Label Text="{Loc 'injector-fabticator-label-amount'}" MinWidth="80"/>
+                <SpinBox Name="ProductionAmount" Value="1" HorizontalExpand="True"/>
+            </BoxContainer>
+            <BoxContainer Orientation="Horizontal" Margin="0 5 0 0">
+                <Label Text="{Loc 'injector-fabticator-label-custom-name'}" MinWidth="80"/>
+                <LineEdit Name="CustomNameInput" HorizontalExpand="True"/>
+            </BoxContainer>
+        </BoxContainer>
+        
+        <!-- Production Button -->
+        <Button Name="ProduceButton" Text="{Loc 'injector-fabticator-button-start-production'}" HorizontalExpand="True" Margin="0 10"/>
+        
+        <!-- Status -->
+        <Label Name="StatusLabel" HorizontalAlignment="Center" StyleClasses="LabelSmall"/>
+    </BoxContainer>
+</controls:FancyWindow>

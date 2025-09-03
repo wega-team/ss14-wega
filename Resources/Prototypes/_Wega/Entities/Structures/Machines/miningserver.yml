@@ -69,7 +69,6 @@
       types:
         Structural: 0.5
   - type: AmbientSound
-    volume: -9
     range: 5
     enabled: false
     sound:
