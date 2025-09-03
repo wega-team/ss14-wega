@@ -1,6 +1,8 @@
 # Голова
 marking-AndroidAntennaLeft = Андроид, антенна (Левая)
 marking-AndroidAntennaRight = Андроид, антенна (Правая)
+marking-AndroidEyesVisor = Андроид, визор
+marking-AndroidEyesVisor-eyes_visor_led = Светодиоды
 # Торс
 marking-AndroidTorsoFemaleStandart = Андроид, торс (Стандарт)
 marking-AndroidTorsoFemaleBreast = Андроид, торс (Средняя грудь)
