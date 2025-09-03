@@ -1,7 +1,7 @@
 using Content.Shared.Injector.Fabticator;
 using Robust.Client.GameObjects;
 
-public sealed class BloodCultSystem : EntitySystem
+public sealed class InjectorFabticatorSystem : EntitySystem
 {
     [Dependency] private readonly AppearanceSystem _appearance = default!;
 
