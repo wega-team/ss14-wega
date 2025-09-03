@@ -98,11 +98,31 @@
     color: "#cb5b7e"
     castShadows: false
 
+## Corvax-Wega-Anomaly-start
 - type: entity
   parent: BaseAnomalyCore
   id: AnomalyCoreRock
   suffix: Rock
   components:
+  - type: OreVein
+    oreChance: 1
+    oreRarityPrototypeId: RandomOreDistributionCore
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Rock
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 2000
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/break_stone.ogg
+          params:
+            volume: -6
   - type: Sprite
     sprite: Structures/Specific/Anomalies/Cores/rock_core.rsi
   - type: PointLight
@@ -245,24 +265,59 @@
     color: "#6270bb"
     castShadows: false
 
+# Corvax-Wega-Anomaly-start
 - type: entity
-  parent: [ BaseAnomalyCore, BaseShadow ]
+  parent: BaseShadow
   id: AnomalyCoreShadow
+  abstract: true
   suffix: Shadow
   components:
+  - type: SpawnOnTrigger
+    proto: ShadowKudzu
+  - type: TriggerOnUse
+  - type: EmitSoundOnTrigger
+    sound:
+      collection: RadiationPulse
   - type: Sprite
     sprite: Structures/Specific/Anomalies/Cores/shadow_core.rsi
+    noRot: true
+    layers:
+    - state: core
+    - state: pulse
+      map: ["decay"]
   - type: PointLight
     radius: 1.5
     energy: 2.0
     color: "#793a80"
     castShadows: false
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.AnomalyCoreVisuals.Decaying:
+        decay:
+          True: { visible: true }
+          False: { visible: false }
+  - type: Item
+    size: Tiny  
+  - type: UseDelay
+    delay: 2
+  - type: Tag
+    tags:
+    - ForceableFollow
+  - type: AnomalyCore
+    timeToDecay: 600
+    startPrice: 10000
+    endPrice: 200
+
 
 - type: entity
   parent: BaseAnomalyCore
   id: AnomalyCoreTech
   suffix: Tech
   components:
+  - type: Emag
+  - type: LimitedCharges
+    maxCharges: 1
   - type: Sprite
     sprite: Structures/Specific/Anomalies/Cores/tech_core.rsi
   - type: PointLight
@@ -270,6 +325,7 @@
     energy: 2.0
     color: "#56c1e8"
     castShadows: false
+## Corvax-Wega-Anomaly-end
 
 - type: entity
   parent: BaseAnomalyCore
