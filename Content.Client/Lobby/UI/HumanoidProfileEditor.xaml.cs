@@ -1577,6 +1577,22 @@ namespace Content.Client.Lobby.UI
                     Profile = Profile.WithCharacterAppearance(Profile.Appearance.WithSkinColor(color));//
                     break;
                 }
+                // Corvax-Wega-Phanthom-start
+                case HumanoidSkinColor.PhantomBlack:
+                {
+                    if (!Skin.Visible)
+                    {
+                        Skin.Visible = false;
+                        RgbSkinColorContainer.Visible = false;
+                    }
+
+                    var color = SkinColor.PhantomColor((int) Skin.Value);
+
+                    Markings.CurrentSkinColor = color;
+                    Profile = Profile.WithCharacterAppearance(Profile.Appearance.WithSkinColor(color));
+                    break;
+                }
+                // Corvax-Wega-Phanthom-end
                 case HumanoidSkinColor.Hues:
                 {
                     if (!RgbSkinColorContainer.Visible)
@@ -1885,6 +1901,20 @@ namespace Content.Client.Lobby.UI
 
                     break;
                 }
+                // Corvax-Wega-Phanthom-start
+                case HumanoidSkinColor.PhantomBlack:
+                {
+                    if (!Skin.Visible)
+                    {
+                        Skin.Visible = true;
+                        RgbSkinColorContainer.Visible = false;
+                    }
+
+                    Skin.Value = SkinColor.PhantomSkinToneFromColor(Profile.Appearance.SkinColor);
+
+                    break;
+                }
+                // Corvax-Wega-Phanthom-end
                 case HumanoidSkinColor.Hues:
                 {
                     if (!RgbSkinColorContainer.Visible)

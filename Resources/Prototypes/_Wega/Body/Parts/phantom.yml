@@ -1,0 +1,161 @@
+﻿- type: entity
+  id: PartPhantom
+  parent: [BaseItem, BasePart]
+  name: "phantom body part"
+  abstract: true
+  components:
+  - type: Damageable
+    damageContainer: Biological
+  - type: BodyPart
+  - type: ContainerContainer
+    containers:
+      bodypart: !type:Container
+        ents: []
+  - type: Sprite
+    color: "#1e1e1e"
+
+- type: entity
+  id: TorsoPhantom
+  name: "phantom torso"
+  parent: [PartPhantom, BaseTorso]
+  components:
+  - type: Sprite
+    netsync: false
+    sprite: _Wega/Mobs/Species/Phantom/parts.rsi
+    state: "torso_m"
+  - type: BodyPart
+    partType: Torso
+
+- type: entity
+  id: HeadPhantom
+  name: "phantom head"
+  parent: [PartPhantom, BaseHead]
+  components:
+  - type: Sprite
+    netsync: false
+    sprite: _Wega/Mobs/Species/Phantom/parts.rsi
+    state: "head_m"
+  - type: BodyPart
+    partType: Head
+    vital: true
+  - type: Input
+    context: "ghost"
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 0
+    baseSprintSpeed: 0
+  - type: InputMover
+  - type: GhostOnMove
+  - type: Tag
+    tags:
+      - BaseBodyPart
+      - Head
+
+- type: entity
+  id: LeftArmPhantom
+  name: "left phantom arm"
+  parent: [PartPhantom, BaseLeftArm]
+  components:
+  - type: Sprite
+    netsync: false
+    sprite: _Wega/Mobs/Species/Phantom/parts.rsi
+    state: "l_arm"
+  - type: BodyPart
+    partType: Arm
+    symmetry: Left
+
+- type: entity
+  id: RightArmPhantom
+  name: "right phantom arm"
+  parent: [PartPhantom, BaseRightArm]
+  components:
+  - type: Sprite
+    netsync: false
+    sprite: _Wega/Mobs/Species/Phantom/parts.rsi
+    state: "r_arm"
+  - type: BodyPart
+    partType: Arm
+    symmetry: Right
+
+- type: entity
+  id: LeftHandPhantom
+  name: "left phantom hand"
+  parent: [PartPhantom, BaseLeftHand]
+  components:
+  - type: Sprite
+    netsync: false
+    sprite: _Wega/Mobs/Species/Phantom/parts.rsi
+    state: "l_hand"
+  - type: BodyPart
+    partType: Hand
+    symmetry: Left
+
+- type: entity
+  id: RightHandPhantom
+  name: "right phantom hand"
+  parent: [PartPhantom, BaseRightHand]
+  components:
+  - type: Sprite
+    netsync: false
+    sprite: _Wega/Mobs/Species/Phantom/parts.rsi
+    state: "r_hand"
+  - type: BodyPart
+    partType: Hand
+    symmetry: Right
+
+- type: entity
+  id: LeftLegPhantom
+  name: "left phantom leg"
+  parent: [PartPhantom, BaseLeftLeg]
+  components:
+  - type: Sprite
+    netsync: false
+    sprite: _Wega/Mobs/Species/Phantom/parts.rsi
+    state: "l_leg"
+  - type: BodyPart
+    partType: Leg
+    symmetry: Left
+  - type: MovementBodyPart
+    walkSpeed : 3.5
+    sprintSpeed : 5.5
+
+- type: entity
+  id: RightLegPhantom
+  name: "right phantom leg"
+  parent: [PartPhantom, BaseRightLeg]
+  components:
+  - type: Sprite
+    netsync: false
+    sprite: _Wega/Mobs/Species/Phantom/parts.rsi
+    state: "r_leg"
+  - type: BodyPart
+    partType: Leg
+    symmetry: Right
+  - type: MovementBodyPart
+    walkSpeed : 3.5
+    sprintSpeed : 5.5
+
+- type: entity
+  id: LeftFootPhantom
+  name: "left phantom foot"
+  parent: [PartPhantom, BaseLeftFoot]
+  components:
+  - type: Sprite
+    netsync: false
+    sprite: _Wega/Mobs/Species/Phantom/parts.rsi
+    state: "l_foot"
+  - type: BodyPart
+    partType: Foot
+    symmetry: Left
+
+- type: entity
+  id: RightFootPhantom
+  name: "right phantom foot"
+  parent: [PartPhantom, BaseRightFoot]
+  components:
+  - type: Sprite
+    netsync: false
+    sprite: _Wega/Mobs/Species/Phantom/parts.rsi
+    state: "r_foot"
+  - type: BodyPart
+    partType: Foot
+    symmetry: Right

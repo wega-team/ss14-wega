@@ -1,0 +1,79 @@
+﻿- type: entity
+  save: false
+  name: Urisst' Mzhand Phantom
+  parent: [ BaseMobSpeciesOrganic, BaseOperated ]
+  id: BaseMobPhantom
+  abstract: true
+  components:
+  - type: HumanoidAppearance
+    species: Phantom
+  - type: Hunger
+  - type: Thirst
+  - type: Icon
+    sprite: _Wega/Mobs/Species/Phantom/parts.rsi
+    state: full_m
+  - type: Sprite
+    netsync: false
+    noRot: true
+    drawdepth: Mobs
+  - type: Body
+    prototype: Phantom
+    requiredLegs: 2
+  - type: Carriable
+  - type: DiseaseCarrier
+  - type: Photophobia
+    applyShadowWeakness: true
+    damagePerLight: 0
+    speedModifier: 0.65
+  - type: Vocal
+    sounds:
+      Male: MaleHuman
+      Female: FemaleHuman
+      Unsexed: FemaleHuman
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: Demon
+  - type: Temperature
+    heatDamageThreshold: 308.15
+    coldDamageThreshold: 233.15
+    currentTemperature: 273.15
+    specificHeat: -20
+    coldDamage:
+      types:
+        Cold : 0.2
+    heatDamage:
+      types:
+        Heat : 0.1
+  - type: TemperatureSpeed
+    thresholds:
+      223: 0.8
+      203: 0.6
+      173: 0.4
+  - type: Inventory
+    femaleDisplacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: _Wega/Mobs/Species/Phantom/displacement.rsi
+            state: jumpsuit-female
+  - type: NaturalNightVision
+    tintColor: "#999999"
+    visionRadius: 8
+    contrast: 0.8
+
+- type: entity
+  save: false
+  name: Urist McHands
+  parent: MobHumanDummy
+  id: MobPhantomDummy
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HumanoidAppearance
+    species: Phantom
+  - type: Inventory
+    femaleDisplacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: _Wega/Mobs/Species/Phantom/displacement.rsi
+            state: jumpsuit-female
