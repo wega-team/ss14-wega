@@ -21,9 +21,12 @@
           False: { visible: false }
   - type: Item
     size: Tiny
-  - type: EmitSoundOnUse #placeholder for future unical mechanic
+## Corvax-Wega-Anomaly-start
+  - type: TriggerOnUse
+  - type: EmitSoundOnTrigger
     sound:
       collection: RadiationPulse
+## Corvax-Wega-Anomaly-end
   - type: UseDelay
     delay: 2
   - type: Tag
@@ -267,47 +270,19 @@
 
 # Corvax-Wega-Anomaly-start
 - type: entity
-  parent: BaseShadow
+  parent: [ BaseAnomalyCore, BaseShadow ]
   id: AnomalyCoreShadow
-  abstract: true
   suffix: Shadow
   components:
   - type: SpawnOnTrigger
     proto: ShadowKudzu
-  - type: TriggerOnUse
-  - type: EmitSoundOnTrigger
-    sound:
-      collection: RadiationPulse
   - type: Sprite
     sprite: Structures/Specific/Anomalies/Cores/shadow_core.rsi
-    noRot: true
-    layers:
-    - state: core
-    - state: pulse
-      map: ["decay"]
   - type: PointLight
     radius: 1.5
     energy: 2.0
     color: "#793a80"
     castShadows: false
-  - type: Appearance
-  - type: GenericVisualizer
-    visuals:
-      enum.AnomalyCoreVisuals.Decaying:
-        decay:
-          True: { visible: true }
-          False: { visible: false }
-  - type: Item
-    size: Tiny  
-  - type: UseDelay
-    delay: 2
-  - type: Tag
-    tags:
-    - ForceableFollow
-  - type: AnomalyCore
-    timeToDecay: 600
-    startPrice: 10000
-    endPrice: 200
 
 
 - type: entity
