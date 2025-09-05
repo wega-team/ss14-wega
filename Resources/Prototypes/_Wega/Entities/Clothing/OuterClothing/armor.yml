@@ -17,7 +17,7 @@
         Heat: 0.5
 
 - type: entity
-  parent: ClothingOuterBaseLarge
+  parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing]
   id: ClothingOuterArmorBlueShield
   name: officer bulletproof "Blue Shield"
   description: A standard armored breastplate that provides protection and at the same time a certain mobility. The blue and white Blue Shield emblem is on the chest.
@@ -35,3 +35,7 @@
           Heat: 0.5
     - type: ExplosionResistance
       damageCoefficient: 0.65
+    - type: ClothingSpeedModifier
+      walkModifier: 1.0
+      sprintModifier: 1.0
+    - type: HeldSpeedModifier

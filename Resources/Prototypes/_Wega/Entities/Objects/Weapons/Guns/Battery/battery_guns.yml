@@ -28,11 +28,11 @@
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
   - type: ProjectileBatteryAmmoProvider
-    proto: BulletLaser
+    proto: BulletLaserAdvanced
     fireCost: 100
   - type: BatteryWeaponFireModes
     fireModes:
-    - proto: BulletLaser
+    - proto: BulletLaserAdvanced
       fireCost: 100
       state: lethal
       magState: lethal

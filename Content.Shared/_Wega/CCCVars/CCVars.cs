@@ -57,7 +57,7 @@ public sealed class WegaCVars
     /// If you enable this mode, it will process the sound with sound isolation.
     /// </summary>
     public static readonly CVarDef<bool> SoundInsulationEnabled =
-        CVarDef.Create("wega.sound_insulation_enabled", false, CVar.SERVERONLY);
+        CVarDef.Create("wega.sound_insulation_enabled", false, CVar.SERVER | CVar.REPLICATED | CVar.ARCHIVE);
 
     /*
         Vote CVars

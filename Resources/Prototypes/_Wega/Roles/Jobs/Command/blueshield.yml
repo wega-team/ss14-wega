@@ -17,28 +17,8 @@
   icon: "JobIconBlueShield"
   supervisors: job-supervisors-centcom
   canBeAntag: false
-  access: #Стандартный Расширенный доступ
-  - Bar
-  - Brig
-  - Detective
-  - Cargo
-  - Chapel
-  - Chemistry
-  - Command
-  - Cryogenics
-  - Engineering
-  - External
-  - Hydroponics
-  - Janitor
-  - Kitchen
-  - Maintenance
-  - Medical
-  - Quartermaster
-  - Research
-  - Salvage
-  - Security
-  - Service
-  - Theatre
+  accessGroups:
+  - BlueShieldAccess
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]

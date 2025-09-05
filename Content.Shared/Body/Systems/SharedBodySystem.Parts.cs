@@ -688,6 +688,10 @@ public partial class SharedBodySystem
                 "torso" => BodyPartType.Torso,
                 "head" => BodyPartType.Head,
                 "tail" => BodyPartType.Tail,
+                // To account for primates.
+                "hands" => BodyPartType.Hand,
+                "legs" => BodyPartType.Leg,
+                "feet" => BodyPartType.Foot,
                 _ => BodyPartType.Other
             };
 

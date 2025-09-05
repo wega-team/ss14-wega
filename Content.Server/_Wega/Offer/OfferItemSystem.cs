@@ -41,6 +41,8 @@ public sealed class OfferItemSystem : SharedOfferItemSystem
         if (!_transform.InRange(args.User, args.Target, offer.MaxOfferDistance))
             return;
 
+        args.Handled = true;
+
         offer.Target = args.Target;
         offer.IsOffering = false;
         Dirty(args.User, offer);

@@ -6,8 +6,11 @@ using Content.Shared.Body.Organ;
 using Content.Shared.Body.Part;
 using Content.Shared.Body.Systems;
 using Content.Shared.Chat.Prototypes;
+using Content.Shared.Chemistry.Components;
 using Content.Shared.Damage;
 using Content.Shared.Database;
+using Content.Shared.DirtVisuals;
+using Content.Shared.FixedPoint;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Implants;
 using Content.Shared.Implants.Components;
@@ -26,8 +29,9 @@ namespace Content.Server.Surgery;
 
 public sealed partial class SurgerySystem
 {
-    [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly BloodstreamSystem _bloodstream = default!;
+    [Dependency] private readonly SharedContainerSystem _container = default!;
+    [Dependency] private readonly SharedDirtSystem _dirt = default!;
     [Dependency] private readonly SharedSubdermalImplantSystem _implant = default!;
     [Dependency] private readonly SharedInternalStorageSystem _internal = default!;
 
@@ -151,14 +155,12 @@ public sealed partial class SurgerySystem
             return;
 
         if (!RollSuccess(patient, patient.Comp.Surgeon.Value, successChance))
-        {
             HandleFailure(patient, failureEffect);
-            return;
-        }
 
-        if (!TryComp<BloodstreamComponent>(patient, out _) || HasComp<SyntheticOperatedComponent>(patient))
+        if (!TryComp<BloodstreamComponent>(patient, out var bloodstream) || HasComp<SyntheticOperatedComponent>(patient))
             return;
 
+        ApplyBloodToClothing(patient.Comp.Surgeon.Value, bloodstream.BloodReagent, 2f * SharedDirtSystem.MaxDirtLevel);
         _bloodstream.TryModifyBleedAmount(patient.Owner, 2f);
     }
 
@@ -168,10 +170,7 @@ public sealed partial class SurgerySystem
             return;
 
         if (!RollSuccess(patient, patient.Comp.Surgeon.Value, successChance))
-        {
             HandleFailure(patient, failureEffect);
-            return;
-        }
     }
 
     private void PerformClamp(Entity<OperatedComponent> patient, float successChance, List<SurgeryFailedType>? failureEffect)
@@ -242,8 +241,11 @@ public sealed partial class SurgerySystem
             _hands.TryPickupAnyHand(patient.Comp.Surgeon.Value, organId);
         }
 
-        if (HasComp<BloodstreamComponent>(patient) && !HasComp<SyntheticOperatedComponent>(patient))
+        if (TryComp<BloodstreamComponent>(patient, out var bloodstream) && !HasComp<SyntheticOperatedComponent>(patient))
+        {
+            ApplyBloodToClothing(patient.Comp.Surgeon.Value, bloodstream.BloodReagent, 2f * SharedDirtSystem.MaxDirtLevel);
             _bloodstream.TryModifyBleedAmount(patient.Owner, 2f);
+        }
     }
 
     private void PerformInsertOrgan(Entity<OperatedComponent> patient, EntityUid? item, string? requiredOrgan, float successChance, List<SurgeryFailedType>? failureEffect)
@@ -311,6 +313,10 @@ public sealed partial class SurgerySystem
                 "torso" => BodyPartType.Torso,
                 "head" => BodyPartType.Head,
                 "tail" => BodyPartType.Tail,
+                // To account for primates.
+                "hands" => BodyPartType.Hand,
+                "legs" => BodyPartType.Leg,
+                "feet" => BodyPartType.Foot,
                 _ => BodyPartType.Other
             };
 
@@ -341,13 +347,16 @@ public sealed partial class SurgerySystem
             }
         }
 
-        if (HasComp<BloodstreamComponent>(patient) && !HasComp<SyntheticOperatedComponent>(patient))
+        if (TryComp<BloodstreamComponent>(patient, out var bloodstream) && !HasComp<SyntheticOperatedComponent>(patient))
+        {
+            ApplyBloodToClothing(patient.Comp.Surgeon.Value, bloodstream.BloodReagent, 2f * SharedDirtSystem.MaxDirtLevel);
             _bloodstream.TryModifyBleedAmount(patient.Owner, 2f);
+        }
     }
 
     private void PerformAttachPart(Entity<OperatedComponent> patient, EntityUid? item, string? requiredPart, float successChance, List<SurgeryFailedType>? failureEffect)
     {
-        if (patient.Comp.Surgeon == null || item == null || string.IsNullOrEmpty(requiredPart) || !TryComp<BodyPartComponent>(item, out _))
+        if (patient.Comp.Surgeon == null || item == null || string.IsNullOrEmpty(requiredPart) || !HasComp<BodyPartComponent>(item))
             return;
 
         if (!RollSuccess(patient, patient.Comp.Surgeon.Value, successChance))
@@ -591,6 +600,15 @@ public sealed partial class SurgerySystem
         return fullSlotId.StartsWith(prefix)
             ? fullSlotId.Substring(prefix.Length)
             : fullSlotId;
+    }
+
+    public void ApplyBloodToClothing(EntityUid surgeon, string bloodReagentId, float bloodAmount)
+    {
+        var bloodSolution = new Solution();
+        bloodSolution.AddReagent(bloodReagentId, FixedPoint2.New(bloodAmount));
+
+        var clothingSlots = new[] { "outerClothing", "jumpsuit", "gloves" };
+        _dirt.ApplyDirtToClothing(surgeon, bloodSolution, _random.Pick(clothingSlots));
     }
 
     private void HandleFailure(Entity<OperatedComponent> patient, List<SurgeryFailedType>? failureEffect, string? bodyPart = null)

@@ -1,0 +1,59 @@
+- type: entity
+  id: InjectorFabricator
+  parent: [ BaseMachinePowered, ConstructibleMachine ]
+  name: injector fabricator
+  description: "A unique development by Interdyne Pharmaceutics. Allows the production of medical injectors with a specified composition of reagents."
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: _Wega/Structures/Machines/injector_fabricator.rsi
+    layers:
+    - state: base
+    - state: unlit
+      shader: unshaded
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+    - state: running
+      map: ["enum.InjectorFabticatorVisuals.IsRunning"]
+      visible: false
+    snapCardinals: true
+  - type: InjectorFabticator
+    injector: StimpackEmpty
+  - type: WiresPanel
+  - type: Appearance
+  - type: ActivatableUI
+    singleUser: true
+    key: enum.InjectorFabticatorUiKey.Key
+  - type: ActivatableUIRequiresPower
+  - type: UserInterface
+    interfaces:
+      enum.InjectorFabticatorUiKey.Key:
+        type: InjectorFabticatorBoundUserInterface
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
+  - type: ApcPowerReceiver
+    powerLoad: 250
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        enum.PowerDeviceVisualLayers.Powered:
+          True: { visible: true }
+          False: { visible: false }
+  - type: ContainerContainer
+    containers:
+      beakerSlot: !type:ContainerSlot
+      machine_board: !type:Container
+      machine_parts: !type:Container
+  - type: ItemSlots
+    slots:
+      beakerSlot:
+        whitelist:
+          components:
+          - FitsInDispenser
+  - type: AmbientSound
+    range: 5
+    enabled: false
+    sound:
+      path: /Audio/Machines/vaccinator_running.ogg
+  - type: Machine
+    board: InjectorFabricatorMachineCircuitboard

@@ -21,6 +21,13 @@
   - Medical
   - Maintenance
   - Chemistry
+  # Corvax-Wega-Surgery-start
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: SurgicalSkill
+        modifier: 0.4
+  # Corvax-Wega-Surgery-end
 
 - type: startingGear
   id: SeniorPhysicianGear

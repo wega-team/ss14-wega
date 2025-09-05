@@ -80,28 +80,10 @@ public sealed class TTSSystem : EntitySystem
         var filePath = new ResPath($"{_fileIdx++}.ogg");
         _contentRoot.AddOrUpdateFile(filePath, ev.Data);
 
-        // Corvax-Wega-SoundInsolation-start
-        float volumeMultiplier = 1f;
-        if (ev.SourceUid != null && _player.LocalEntity != null)
-        {
-            var sourceUid = GetEntity(ev.SourceUid.Value);
-            var insulation = _soundInsulation.GetSoundInsulation(sourceUid, _player.LocalEntity.Value);
-            if (insulation >= 0.95f)
-            {
-                _contentRoot.RemoveFile(filePath);
-                return;
-            }
-
-            volumeMultiplier = 1f - insulation;
-        }
-        // Corvax-Wega-SoundInsolation-end
-
         var audioResource = new AudioResource();
         audioResource.Load(IoCManager.Instance!, Prefix / filePath);
 
-        var audioParams = AudioParams.Default
-            .WithVolume(AdjustVolume(ev.IsWhisper, volumeMultiplier)) // Corvax-Wega-SoundInsolation-Edit
-            .WithMaxDistance(AdjustDistance(ev.IsWhisper));
+        var audioParams = AudioParams.Default; // Corvax-Wega-SoundInsolation-Edit
 
         var soundSpecifier = new ResolvedPathSpecifier(Prefix / filePath);
 
@@ -109,11 +91,34 @@ public sealed class TTSSystem : EntitySystem
         {
             if (!TryGetEntity(ev.SourceUid.Value, out _))
                 return;
+
             var sourceUid = GetEntity(ev.SourceUid.Value);
-            _audio.PlayEntity(audioResource.AudioStream, sourceUid, soundSpecifier, audioParams);
+
+            // Corvax-Wega-SoundInsolation-Edit-start
+            float volumeMultiplier = 1f;
+            if (_player.LocalEntity != null)
+            {
+                var insulation = _soundInsulation.GetSoundInsulation(sourceUid, _player.LocalEntity.Value);
+                if (insulation < 0.95f)
+                {
+                    volumeMultiplier = 1f - insulation;
+                    audioParams = audioParams
+                        .WithVolume(AdjustVolume(ev.IsWhisper, volumeMultiplier))
+                        .WithMaxDistance(AdjustDistance(ev.IsWhisper));
+
+                    _audio.PlayEntity(audioResource.AudioStream, sourceUid, soundSpecifier, audioParams);
+                }
+            }
+            // Corvax-Wega-SoundInsolation-Edit-end
         }
         else
         {
+            // Corvax-Wega-SoundInsolation-start
+            audioParams = audioParams
+                .WithVolume(AdjustVolume(ev.IsWhisper, 1f))
+                .WithMaxDistance(AdjustDistance(ev.IsWhisper));
+            // Corvax-Wega-SoundInsolation-end
+
             _audio.PlayGlobal(audioResource.AudioStream, soundSpecifier, audioParams);
         }
 

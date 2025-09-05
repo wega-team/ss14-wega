@@ -1438,7 +1438,17 @@
       methods: [ Touch ]
       effects:
       - !type:WashCreamPieReaction
-
+  # Corvax-Wega-Surgery-start
+  - type: Operated
+    raceGraph: PrimateSurgery
+  - type: InternalStorage
+  - type: UserInterface
+    interfaces:
+      enum.StrippingUiKey.Key:
+        type: StrippableBoundUserInterface
+      enum.SurgeryUiKey.Key:
+        type: SurgeryBoundUserInterface
+  # Corvax-Wega-Surgery-end
 
 
 - type: entity

@@ -104,6 +104,15 @@
     borderColor: "#B7B7B6"
   - type: Icon
     state: pda-blueshield
+  - type: CartridgeLoader
+    uiKey: enum.PdaUiKey.Key
+    preinstalled:
+      - CrewManifestCartridge
+      - NotekeeperCartridge
+      - NanoTaskCartridge
+      - NewsReaderCartridge
+      - MedTekCartridge
+      - WantedListCartridge
 
 - type: entity
   parent: BasePDA

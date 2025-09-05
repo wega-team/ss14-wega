@@ -1,0 +1,115 @@
+- type: surgeryNode
+  id: PrimateTorsoClosed
+  description: Торс закрыт
+  bodyPart: torso
+  transitions:
+    - OpenPrimateTorsoTransition
+
+- type: surgeryNode
+  id: PrimateTorsoOpen
+  description: Торс вскрыт
+  bodyPart: torso
+  transitions:
+    - PrimateOrganManipulationTransition
+    - PrimateInternalTorsoTransition
+    - ClosePrimateTorsoTransition
+
+- type: surgeryNode
+  id: PrimateOrganManipulation
+  description: ""
+  transitions: []
+
+- type: surgeryNode
+  id: PrimateInternalTorsoOpen
+  description: Полость открыта
+  bodyPart: torso
+  transitions:
+    - PrimateInternalTorsoOperateTransition
+    - PrimateEndInternalTorsoTransition
+
+- type: surgeryNode
+  id: PrimateAmputateHands
+  description: Руки на месте
+  bodyPart: hands
+  transitions:
+    - AmputatePrimateHandsTransition
+
+- type: surgeryNode
+  id: PrimateAmputateHandsStart
+  description: Начало ампутации рук
+  bodyPart: hands
+  transitions:
+    - AmputatePrimateHandsFinishTransition
+    - CompleteOperationTransitionAlt
+
+- type: surgeryNode
+  id: PrimateAttachHands
+  description: Руки отсутствуют
+  bodyPart: hands
+  transitions:
+    - AttachPrimateHandsStartTransition
+
+- type: surgeryNode
+  id: PrimateAttachHandsProcess
+  description: Процесс пришивания рук
+  bodyPart: hands
+  transitions:
+    - AttachPrimateHandsProcessTransition
+
+- type: surgeryNode
+  id: PrimateAmputateLegs
+  description: Ноги на месте
+  bodyPart: legs
+  transitions:
+    - AmputatePrimateLegsTransition
+
+- type: surgeryNode
+  id: PrimateAmputateLegsStart
+  description: Начало ампутации ног
+  bodyPart: legs
+  transitions:
+    - AmputatePrimateLegsFinishTransition
+    - CompleteOperationTransitionAlt
+
+- type: surgeryNode
+  id: PrimateAttachLegs
+  description: Ноги отсутствуют
+  bodyPart: legs
+  transitions:
+    - AttachPrimateLegsStartTransition
+
+- type: surgeryNode
+  id: PrimateAttachLegsProcess
+  description: Процесс пришивания ног
+  bodyPart: legs
+  transitions:
+    - AttachPrimateLegsProcessTransition
+
+- type: surgeryNode
+  id: PrimateAmputateFeet
+  description: Стопы на месте
+  bodyPart: feet
+  transitions:
+    - AmputatePrimateFeetTransition
+
+- type: surgeryNode
+  id: PrimateAmputateFeetStart
+  description: Начало ампутации стоп
+  bodyPart: feet
+  transitions:
+    - AmputatePrimateFeetFinishTransition
+    - CompleteOperationTransitionAlt
+
+- type: surgeryNode
+  id: PrimateAttachFeet
+  description: Стопы отсутствуют
+  bodyPart: feet
+  transitions:
+    - AttachPrimateFeetStartTransition
+
+- type: surgeryNode
+  id: PrimateAttachFeetProcess
+  description: Процесс пришивания стоп
+  bodyPart: feet
+  transitions:
+    - AttachPrimateFeetProcessTransition

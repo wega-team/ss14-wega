@@ -270,8 +270,9 @@
 
 # Corvax-Wega-Anomaly-start
 - type: entity
-  parent: [ BaseAnomalyCore, BaseShadow ]
+  parent: BaseShadow
   id: AnomalyCoreShadow
+  abstract: true
   suffix: Shadow
   components:
   - type: SpawnOnTrigger
@@ -283,7 +284,6 @@
     energy: 2.0
     color: "#793a80"
     castShadows: false
-
 
 - type: entity
   parent: BaseAnomalyCore

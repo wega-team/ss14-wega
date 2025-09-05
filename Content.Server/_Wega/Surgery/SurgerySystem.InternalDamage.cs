@@ -248,8 +248,8 @@ public sealed partial class SurgerySystem
 
     private void TryAddInternalDamages(Entity<OperatedComponent> ent, InternalDamagePrototype possibleDamage)
     {
-        if (TryComp<HumanoidAppearanceComponent>(ent, out var humanoidAppearance) && possibleDamage.BlacklistSpecies != null
-            && possibleDamage.BlacklistSpecies.Contains(humanoidAppearance.Species))
+        if (!TryComp<HumanoidAppearanceComponent>(ent, out var humanoidAppearance)
+            || possibleDamage.BlacklistSpecies != null && possibleDamage.BlacklistSpecies.Contains(humanoidAppearance.Species))
             return;
 
         float armorModifier = 1f;
@@ -319,7 +319,7 @@ public sealed partial class SurgerySystem
         if (!_proto.TryIndex<InternalDamagePrototype>(damageId, out var damageProto))
             return false;
 
-        if (TryComp<HumanoidAppearanceComponent>(target, out var humanoidAppearance) && damageProto.BlacklistSpecies != null
+        if (!TryComp<HumanoidAppearanceComponent>(target, out var humanoidAppearance) || damageProto.BlacklistSpecies != null
             && damageProto.BlacklistSpecies.Contains(humanoidAppearance.Species))
             return false;
 

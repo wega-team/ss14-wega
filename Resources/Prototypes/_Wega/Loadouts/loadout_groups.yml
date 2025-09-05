@@ -222,7 +222,7 @@
 
 - type: loadoutGroup
   id: BlueShieldTop
-  name: loadout-group-hop-top
+  name: loadout-group-blue-shield-top
   loadouts:
   - ClothingUnderTopBraBso # default
   - ClothingUnderTopBraGrey 
@@ -246,7 +246,7 @@
 
 - type: loadoutGroup
   id: BlueShieldBottom
-  name: loadout-group-hop-bottom
+  name: loadout-group-blue-shield-bottom
   loadouts:
   - ClothingUnderBottomMBso # default
   - ClothingUnderBottomFBso
@@ -277,7 +277,7 @@
 
 - type: loadoutGroup
   id: BlueShieldSocks
-  name: loadout-group-hop-socks
+  name: loadout-group-blue-shield-socks
   minLimit: 0
   loadouts:
   - ClothingUnderSocksBeeKnee

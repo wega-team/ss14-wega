@@ -754,7 +754,8 @@ public sealed partial class ChatSystem : SharedChatSystem
             // Corvax-Wega-SoundInsolation-Edit-start
             var currentMessage = message;
             var currentWrappedMessage = wrappedMessage;
-            if (data.IsPartiallyInsulated && channel != ChatChannel.LOOC)
+            // The whisper is processed separately.
+            if (data.IsPartiallyInsulated && channel == ChatChannel.Local)
             {
                 currentMessage = _soundInsulation.ObfuscateMessageByInsulation(message, data.Insulation);
                 currentWrappedMessage = RebuildWrappedMessage(channel, currentMessage, source);
@@ -948,13 +949,13 @@ public sealed partial class ChatSystem : SharedChatSystem
                     ("fontSize", speech.FontSize),
                     ("message", FormattedMessage.EscapeText(message)));
 
-            case ChatChannel.Emotes:
-                var ent = Identity.Entity(source, EntityManager);
-                string emoteName = Name(ent);
-                return Loc.GetString("chat-manager-entity-me-wrap-message",
-                    ("entityName", emoteName),
-                    ("entity", ent),
-                    ("message", FormattedMessage.RemoveMarkupOrThrow(message)));
+            // case ChatChannel.Emotes:
+            //     var ent = Identity.Entity(source, EntityManager);
+            //     string emoteName = Name(ent);
+            //     return Loc.GetString("chat-manager-entity-me-wrap-message",
+            //         ("entityName", emoteName),
+            //         ("entity", ent),
+            //         ("message", FormattedMessage.RemoveMarkupOrThrow(message)));
 
             default: return message;
         }

@@ -110,7 +110,7 @@ public sealed class GeneralStationRecordConsoleSystem : EntitySystem
 
         var commandJobs = new HashSet<string>
         {
-            "Captain", "IAA", "ChiefEngineer", "ChiefMedicalOfficer",
+            "Captain", "IAA", "BlueShieldOfficer", "ChiefEngineer", "ChiefMedicalOfficer",
             "HeadOfPersonnel", "HeadOfSecurity", "ResearchDirector", "Quartermaster"
         };
 
@@ -151,7 +151,7 @@ public sealed class GeneralStationRecordConsoleSystem : EntitySystem
             return false;
 
         var cardAccess = new HashSet<string>(accessComp.Tags.Select(tag => tag.ToString()));
-        var centcommAccessJobs = new HashSet<string> { "Captain", "IAA" };
+        var centcommAccessJobs = new HashSet<string> { "Captain", "IAA", "BlueShieldOfficer" };
         var highAccessJobs = new HashSet<string>
         {
             "ChiefEngineer", "ChiefMedicalOfficer", "HeadOfPersonnel",

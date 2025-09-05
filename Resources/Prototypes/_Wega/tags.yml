@@ -117,6 +117,15 @@
   id: RightFoot
 
 - type: Tag
+  id: HandsAnimal
+
+- type: Tag
+  id: LegsAnimal
+
+- type: Tag
+  id: FeetAnimal
+
+- type: Tag
   id: SubdermalHeadImplant
 # Surgery end
 

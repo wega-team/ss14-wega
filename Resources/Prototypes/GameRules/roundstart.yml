@@ -116,7 +116,7 @@
   - type: GameRule
     minPlayers: 20
   - type: LoadMapRule
-    mapPath: /Maps/Nonstations/nukieplanet.yml
+    mapPath: /Maps/_Wega/Nonstations/nukieplanet.yml # Corvax-Wega-Edit
   - type: AntagSelection
     selectionTime: PrePlayerSpawn
     definitions:
