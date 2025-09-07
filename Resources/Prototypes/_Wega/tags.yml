@@ -66,6 +66,12 @@
 
 # Surgery / DONT TOUCH!
 - type: Tag
+  id: BaseBodyPart
+
+- type: Tag
+  id: BaseOrgan
+
+- type: Tag
   id: Eyes
 
 - type: Tag

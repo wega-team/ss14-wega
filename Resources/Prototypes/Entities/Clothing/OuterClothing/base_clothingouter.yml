@@ -23,6 +23,11 @@
     walkModifier: 0.9
     sprintModifier: 0.9
   - type: HeldSpeedModifier
+  # Corvax-Wega-Dirtable-start
+  - type: Dirtable
+    dirtState: evasuit
+    equippedDirtState: equipped-evasuit
+  # Corvax-Wega-Dirtable-end
 
 - type: entity
   abstract: true
@@ -42,6 +47,11 @@
         type: StorageBoundUserInterface
   - type: StaticPrice
     price: 70
+  # Corvax-Wega-Dirtable-start
+  - type: Dirtable
+    dirtState: coat
+    equippedDirtState: equipped-coat
+  # Corvax-Wega-Dirtable-end
 
 - type: entity
   abstract: true
@@ -147,6 +157,11 @@
       flatReductions:
         Heat: 10 # the average lightbulb only does around four damage!
     slots: OUTERCLOTHING
+  # Corvax-Wega-Dirtable-start
+  - type: Dirtable
+    dirtState: hardsuit
+    equippedDirtState: equipped-hardsuit
+  # Corvax-Wega-Dirtable-end
 
 - type: entity
   abstract: true
@@ -178,6 +193,11 @@
       flatReductions:
         Heat: 10 # the average lightbulb only does around four damage!
     slots: OUTERCLOTHING
+  # Corvax-Wega-Dirtable-start
+  - type: Dirtable
+    dirtState: evasuit
+    equippedDirtState: equipped-evasuit
+  # Corvax-Wega-Dirtable-end
 
 - type: entity
   parent: ClothingOuterBase

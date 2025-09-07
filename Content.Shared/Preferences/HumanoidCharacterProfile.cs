@@ -70,8 +70,31 @@ namespace Content.Shared.Preferences
         [DataField]
         public string FlavorText { get; set; } = string.Empty;
 
-        [DataField] // Corvax-Wega-OOCFlavor
-        public string OOCFlavorText { get; set; } = string.Empty; // Corvax-Wega-OOCFlavor
+        // Corvax-Wega-Graphomancy-Extended-start
+        [DataField]
+        public string OOCFlavorText { get; set; } = string.Empty;
+
+        [DataField]
+        public string CharacterFlavorText { get; set; } = string.Empty;
+
+        [DataField]
+        public string GreenFlavorText { get; set; } = string.Empty;
+
+        [DataField]
+        public string YellowFlavorText { get; set; } = string.Empty;
+
+        [DataField]
+        public string RedFlavorText { get; set; } = string.Empty;
+
+        [DataField]
+        public string TagsFlavorText { get; set; } = string.Empty;
+
+        [DataField]
+        public string LinksFlavorText { get; set; } = string.Empty;
+
+        [DataField]
+        public string NSFWFlavorText { get; set; } = string.Empty;
+        // Corvax-Wega-Graphomancy-Extended-end
 
         /// <summary>
         /// Associated <see cref="SpeciesPrototype"/> for this profile.
@@ -141,7 +164,16 @@ namespace Content.Shared.Preferences
         public HumanoidCharacterProfile(
             string name,
             string flavortext,
-            string oocflavortext, // Corvax-Wega-OOCFlavor
+            // Corvax-Wega-Graphomancy-Extended-start
+            string oocflavortext,
+            string characterflavortext,
+            string greenflavortext,
+            string yellowflavortext,
+            string redflavortext,
+            string tagsflavortext,
+            string linksflavortext,
+            string nsfwflavortext,
+            // Corvax-Wega-Graphomancy-Extended-end
             string species,
             string barkvoice, // Corvax-Wega-Barks
             string voice, // Corvax-TTS
@@ -159,7 +191,16 @@ namespace Content.Shared.Preferences
         {
             Name = name;
             FlavorText = flavortext;
-            OOCFlavorText = oocflavortext; // Corvax-Wega-OOCFlavor
+            // Corvax-Wega-Graphomancy-Extended-start
+            OOCFlavorText = oocflavortext;
+            CharacterFlavorText = characterflavortext;
+            GreenFlavorText = greenflavortext;
+            YellowFlavorText = yellowflavortext;
+            RedFlavorText = redflavortext;
+            TagsFlavorText = tagsflavortext;
+            LinksFlavorText = linksflavortext;
+            NSFWFlavorText = nsfwflavortext;
+            // Corvax-Wega-Graphomancy-Extended-end
             Species = species;
             BarkVoice = barkvoice; // Corvax-Wega-Barks
             Voice = voice; // Corvax-TTS
@@ -194,7 +235,16 @@ namespace Content.Shared.Preferences
         public HumanoidCharacterProfile(HumanoidCharacterProfile other)
             : this(other.Name,
                 other.FlavorText,
-                other.OOCFlavorText, // Corvax-Wega-OOCFlavor
+                // Corvax-Wega-Graphomancy-Extended-start
+                other.OOCFlavorText,
+                other.CharacterFlavorText,
+                other.GreenFlavorText,
+                other.YellowFlavorText,
+                other.RedFlavorText,
+                other.TagsFlavorText,
+                other.LinksFlavorText,
+                other.NSFWFlavorText,
+                // Corvax-Wega-Graphomancy-Extended-end
                 other.Species,
                 other.BarkVoice, // Corvax-Wega-Barks
                 other.Voice,
@@ -226,8 +276,10 @@ namespace Content.Shared.Preferences
         /// </summary>
         /// <param name="species">The species to use in this default profile. The default species is <see cref="SharedHumanoidAppearanceSystem.DefaultSpecies"/>.</param>
         /// <returns>Humanoid character profile with default settings.</returns>
-        public static HumanoidCharacterProfile DefaultWithSpecies(string species = SharedHumanoidAppearanceSystem.DefaultSpecies)
+        public static HumanoidCharacterProfile DefaultWithSpecies(string? species = null)
         {
+            species ??= SharedHumanoidAppearanceSystem.DefaultSpecies;
+
             return new()
             {
                 Species = species,
@@ -249,8 +301,10 @@ namespace Content.Shared.Preferences
             return RandomWithSpecies(species);
         }
 
-        public static HumanoidCharacterProfile RandomWithSpecies(string species = SharedHumanoidAppearanceSystem.DefaultSpecies)
+        public static HumanoidCharacterProfile RandomWithSpecies(string? species = null)
         {
+            species ??= SharedHumanoidAppearanceSystem.DefaultSpecies;
+
             var prototypeManager = IoCManager.Resolve<IPrototypeManager>();
             var random = IoCManager.Resolve<IRobustRandom>();
 
@@ -316,12 +370,47 @@ namespace Content.Shared.Preferences
             return new(this) { FlavorText = flavorText };
         }
 
-        // Corvax-Wega-OOCFlavor-start
+        // Corvax-Wega-Graphomancy-Extended-start
         public HumanoidCharacterProfile WithOOCFlavorText(string oocFlavorText)
         {
             return new(this) { OOCFlavorText = oocFlavorText };
         }
-        // Corvax-Wega-OOCFlavor-end
+
+        public HumanoidCharacterProfile WithCharacterText(string characterFlavorText)
+        {
+            return new(this) { CharacterFlavorText = characterFlavorText };
+        }
+
+        public HumanoidCharacterProfile WithGreenPreferencesText(string greenFlavorText)
+        {
+            return new(this) { GreenFlavorText = greenFlavorText };
+        }
+
+        public HumanoidCharacterProfile WithYellowPreferencesText(string yellowFlavorText)
+        {
+            return new(this) { YellowFlavorText = yellowFlavorText };
+        }
+
+        public HumanoidCharacterProfile WithRedPreferencesText(string redFlavorText)
+        {
+            return new(this) { RedFlavorText = redFlavorText };
+        }
+
+        public HumanoidCharacterProfile WithTagsText(string tagsFlavorText)
+        {
+            return new(this) { TagsFlavorText = tagsFlavorText };
+        }
+
+        public HumanoidCharacterProfile WithLinksText(string linksFlavorText)
+        {
+            return new(this) { LinksFlavorText = linksFlavorText };
+        }
+
+        public HumanoidCharacterProfile WithNSFWPreferencesText(string nsfwFlavorText)
+        {
+            return new(this) { NSFWFlavorText = nsfwFlavorText };
+        }
+        // Corvax-Wega-Graphomancy-Extended-end
 
         public HumanoidCharacterProfile WithAge(int age)
         {
@@ -539,7 +628,16 @@ namespace Content.Shared.Preferences
             if (!_traitPreferences.SequenceEqual(other._traitPreferences)) return false;
             if (!Loadouts.SequenceEqual(other.Loadouts)) return false;
             if (FlavorText != other.FlavorText) return false;
-            if (OOCFlavorText != other.OOCFlavorText) return false; // Corvax-Wega-OOCFlavor
+            // Corvax-Wega-Graphomancy-Extended-start
+            if (OOCFlavorText != other.OOCFlavorText) return false;
+            if (CharacterFlavorText != other.CharacterFlavorText) return false;
+            if (GreenFlavorText != other.GreenFlavorText) return false;
+            if (YellowFlavorText != other.YellowFlavorText) return false;
+            if (RedFlavorText != other.RedFlavorText) return false;
+            if (TagsFlavorText != other.TagsFlavorText) return false;
+            if (LinksFlavorText != other.LinksFlavorText) return false;
+            if (NSFWFlavorText != other.NSFWFlavorText) return false;
+            // Corvax-Wega-Graphomancy-Extended-end
             return Appearance.MemberwiseEquals(other.Appearance);
         }
 
@@ -640,7 +738,7 @@ namespace Content.Shared.Preferences
                 flavortext = FormattedMessage.RemoveMarkupOrThrow(FlavorText);
             }
 
-            // Corvax-Wega-OOCFlavor-start
+            // Corvax-Wega-Graphomancy-Extended-star
             string oocflavortext;
             var oocMaxFlavorTextLength = configManager.GetCVar(WegaCVars.OOCMaxFlavorTextLength);
             if (OOCFlavorText.Length > oocMaxFlavorTextLength)
@@ -651,7 +749,86 @@ namespace Content.Shared.Preferences
             {
                 oocflavortext = FormattedMessage.RemoveMarkupOrThrow(OOCFlavorText);
             }
-            // Corvax-Wega-OOCFlavor-end
+
+            string characterDescription;
+            var maxCharacterDescriptionLength = configManager.GetCVar(WegaCVars.CharacterDescriptionLength);
+            if (CharacterFlavorText.Length > maxCharacterDescriptionLength)
+            {
+                characterDescription = FormattedMessage.RemoveMarkupOrThrow(CharacterFlavorText)[..maxCharacterDescriptionLength];
+            }
+            else
+            {
+                characterDescription = FormattedMessage.RemoveMarkupOrThrow(CharacterFlavorText);
+            }
+
+            string greenPreferences;
+            var maxGreenPreferencesLength = configManager.GetCVar(WegaCVars.GreenPreferencesLength);
+            if (GreenFlavorText.Length > maxGreenPreferencesLength)
+            {
+                greenPreferences = FormattedMessage.RemoveMarkupOrThrow(GreenFlavorText)[..maxGreenPreferencesLength];
+            }
+            else
+            {
+                greenPreferences = FormattedMessage.RemoveMarkupOrThrow(GreenFlavorText);
+            }
+
+            string yellowPreferences;
+            var maxYellowPreferencesLength = configManager.GetCVar(WegaCVars.YellowPreferencesLength);
+            if (YellowFlavorText.Length > maxYellowPreferencesLength)
+            {
+                yellowPreferences = FormattedMessage.RemoveMarkupOrThrow(YellowFlavorText)[..maxYellowPreferencesLength];
+            }
+            else
+            {
+                yellowPreferences = FormattedMessage.RemoveMarkupOrThrow(YellowFlavorText);
+            }
+
+            string redPreferences;
+            var maxRedPreferencesLength = configManager.GetCVar(WegaCVars.RedPreferencesLength);
+            if (RedFlavorText.Length > maxRedPreferencesLength)
+            {
+                redPreferences = FormattedMessage.RemoveMarkupOrThrow(RedFlavorText)[..maxRedPreferencesLength];
+            }
+            else
+            {
+                redPreferences = FormattedMessage.RemoveMarkupOrThrow(RedFlavorText);
+            }
+
+            string tags;
+            var maxTagsLength = configManager.GetCVar(WegaCVars.TagsLength);
+            if (TagsFlavorText.Length > maxTagsLength)
+            {
+                tags = FormattedMessage.RemoveMarkupOrThrow(TagsFlavorText)[..maxTagsLength];
+            }
+            else
+            {
+                tags = FormattedMessage.RemoveMarkupOrThrow(TagsFlavorText);
+            }
+
+            tags = FormatTags(tags);
+
+            string links;
+            var maxLinksLength = configManager.GetCVar(WegaCVars.LinksLength);
+            if (LinksFlavorText.Length > maxLinksLength)
+            {
+                links = FormattedMessage.RemoveMarkupOrThrow(LinksFlavorText)[..maxLinksLength];
+            }
+            else
+            {
+                links = FormattedMessage.RemoveMarkupOrThrow(LinksFlavorText);
+            }
+
+            string nsfwPreferences;
+            var maxNSFWPreferencesLength = configManager.GetCVar(WegaCVars.NSFWPreferencesLength);
+            if (NSFWFlavorText.Length > maxNSFWPreferencesLength)
+            {
+                nsfwPreferences = FormattedMessage.RemoveMarkupOrThrow(NSFWFlavorText)[..maxNSFWPreferencesLength];
+            }
+            else
+            {
+                nsfwPreferences = FormattedMessage.RemoveMarkupOrThrow(NSFWFlavorText);
+            }
+            // Corvax-Wega-Graphomancy-Extended-end
 
             var appearance = HumanoidCharacterAppearance.EnsureValid(Appearance, Species, Sex, sponsorPrototypes);
 
@@ -701,7 +878,16 @@ namespace Content.Shared.Preferences
 
             Name = name;
             FlavorText = flavortext;
-            OOCFlavorText = oocflavortext; // Corvax-Wega-OOCFlavor
+            // Corvax-Wega-Graphomancy-Extended-start
+            OOCFlavorText = oocflavortext;
+            CharacterFlavorText = characterDescription;
+            GreenFlavorText = greenPreferences;
+            YellowFlavorText = yellowPreferences;
+            RedFlavorText = redPreferences;
+            TagsFlavorText = tags;
+            LinksFlavorText = links;
+            NSFWFlavorText = nsfwPreferences;
+            // Corvax-Wega-Graphomancy-Extended-end
             Age = age;
             Sex = sex;
             Gender = gender;
@@ -832,7 +1018,16 @@ namespace Content.Shared.Preferences
             hashCode.Add(_loadouts);
             hashCode.Add(Name);
             hashCode.Add(FlavorText);
-            hashCode.Add(OOCFlavorText); // Corvax-Wega-OOCFlavor
+            // Corvax-Wega-Graphomancy-Extended-start
+            hashCode.Add(OOCFlavorText);
+            hashCode.Add(CharacterFlavorText);
+            hashCode.Add(GreenFlavorText);
+            hashCode.Add(YellowFlavorText);
+            hashCode.Add(RedFlavorText);
+            hashCode.Add(TagsFlavorText);
+            hashCode.Add(LinksFlavorText);
+            hashCode.Add(NSFWFlavorText);
+            // Corvax-Wega-Graphomancy-Extended-end
             hashCode.Add(Species);
             hashCode.Add(Age);
             hashCode.Add((int)Sex);
@@ -878,6 +1073,36 @@ namespace Content.Shared.Preferences
             loadout.SetDefault(this, session, protoManager);
             return loadout;
         }
+
+        // Corvax-Wega-Graphomancy-Extended-start
+        private string FormatTags(string inputTags)
+        {
+            if (string.IsNullOrWhiteSpace(inputTags))
+                return string.Empty;
+
+            var rawTags = inputTags.Split(new[] { ',', ' ', '\n', '\r', '\t', ';' }, StringSplitOptions.RemoveEmptyEntries);
+            var formattedTags = new List<string>();
+
+            foreach (var rawTag in rawTags)
+            {
+                var tag = rawTag.Trim();
+                if (string.IsNullOrEmpty(tag))
+                    continue;
+
+                if (!tag.StartsWith("#"))
+                {
+                    tag = "#" + tag;
+                }
+
+                if (tag.Length > 1)
+                {
+                    formattedTags.Add(tag);
+                }
+            }
+
+            return string.Join(", ", formattedTags);
+        }
+        // Corvax-Wega-Graphomancy-Extended-end
 
         public HumanoidCharacterProfile Clone()
         {

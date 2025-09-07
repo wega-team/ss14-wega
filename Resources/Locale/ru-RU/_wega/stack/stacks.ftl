@@ -19,3 +19,9 @@ stack-matter-bin =
 stack-sepia-floor = стальная светлая плитка
 
 stack-tyriumpack = пакет тириума
+stack-tourniquet =
+    { $amount ->
+        [1] турникет
+        [few] турникета
+       *[other] турникетов
+    }

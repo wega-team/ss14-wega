@@ -16,6 +16,7 @@ respawn_enabled = true
 barks_enabled = true
 night_light_enabled = true
 roundend_vote_enabled = true
+sound_insulation_enabled = true
 
 [net]
 tickrate = 30

@@ -13,6 +13,11 @@
     layers:
       HeadTop : HEAD
       HeadSide : HEAD
+  # Corvax-Wega-Dirtable-start
+  - type: Dirtable
+    dirtState: helmet
+    equippedDirtState: equipped-helmet
+  # Corvax-Wega-Dirtable-end
 
 - type: entity
   parent: ClothingHeadHelmetBase

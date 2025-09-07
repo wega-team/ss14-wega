@@ -25,6 +25,11 @@
     - Recyclable
     - WhitelistChameleon
   - type: ProtectedFromStepTriggers
+  # Corvax-Wega-Dirtable-start
+  - type: Dirtable
+    dirtState: shoes
+    equippedDirtState: equipped-shoes
+  # Corvax-Wega-Dirtable-end
 
 - type: entity
   abstract: true
@@ -56,6 +61,11 @@
           - Knife
           - Sidearm
           - Scalpel  # Corvax-Wega-Slot_for_scalpel_in_milboots
+  # Corvax-Wega-Dirtable-start
+  - type: Dirtable
+    dirtState: boots
+    equippedDirtState: equipped-shoes
+  # Corvax-Wega-Dirtable-end
 
 - type: entity
   abstract: true
@@ -66,6 +76,11 @@
     containers:
       item:
       - CombatKnife
+  # Corvax-Wega-Dirtable-start
+  - type: Dirtable
+    dirtState: boots
+    equippedDirtState: equipped-shoes
+  # Corvax-Wega-Dirtable-end
 
 - type: entity
   abstract: true

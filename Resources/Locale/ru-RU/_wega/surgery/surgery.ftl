@@ -65,11 +65,22 @@ surgery-action-implanting = Имплантировать имплант
 surgery-action-removeimplant = Удалить имплант
 surgery-action-storeitem = Вшить предмет
 surgery-action-retrieveitems = Достать вшитые предметы
+surgery-action-unscrew = Открутить
+surgery-action-screw = Закрутить
+surgery-action-pulse = Импульс
+surgery-action-weld = Заварить
+surgery-action-cutwire = Перерезать провод
+surgery-action-stripwire = Зачистить провод
+surgery-action-mendwire = Починить провод
+surgery-action-pry = Вскрыть панель
+surgery-action-anchor = Закрепить
+surgery-action-unanchor = Открепить
 
 surgery-procedure = Процедура: {$label}
 surgery-missing-tool = Нету правильного инструмента!
 surgery-implant-already-exists = У пациента уже установлен {$implant}
 surgery-incorrect-insert = Неправильное место имплантации
+surgery-welder-failed = Не получается включить инструмент
 
 surgery-limb-torn-off = {$limb} отрезало
 surgery-decapitated = ГОЛОВА СПАЛА С ПЛЕЧ

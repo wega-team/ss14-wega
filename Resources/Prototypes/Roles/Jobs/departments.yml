@@ -7,6 +7,7 @@
   - CargoTechnician
   - Quartermaster
   - SalvageSpecialist
+  - Postman # Corvax-Wega-Postman
 
 - type: department
   id: Civilian
@@ -60,6 +61,7 @@
   roles:
   - Captain
   - IAA # Corvax-IAA
+  - BlueShieldOfficer # Corvax-Wega-BlueShield
   - ChiefEngineer
   - ChiefMedicalOfficer
   - HeadOfPersonnel
@@ -86,6 +88,7 @@
   roles:
   - AtmosphericTechnician
   - ChiefEngineer
+  - SeniorEngineer # Corvax-MentorRoles
   - StationEngineer
   - TechnicalAssistant
 
@@ -104,6 +107,7 @@
   - MedicalIntern
   - Psychologist
   - Paramedic
+  - SeniorPhysician # Corvax-MentorRoles
 
 - type: department
   id: Security
@@ -116,6 +120,7 @@
   - SecurityCadet
   - SecurityOfficer
   - Brigmedic # Corvax-Wega-Brigmedic
+  - SeniorOfficer # Corvax-MentorRoles
   - Pilot # Corvax-Pilot
   - Detective
   - Warden
@@ -127,6 +132,7 @@
   color: "#CD7CCD" # Corvax-Wega-Edit
   roles:
   - ResearchDirector
+  - SeniorResearcher # Corvax-MentorRoles
   - Scientist
   - ResearchAssistant
 
@@ -153,4 +159,5 @@
   - Pilot # Corvax-Pilot
   - Barber # Corvax-Wega-Barber
   - Geneticist # Corvax-Wega-Genetics
+  - Postman # Corvax-Wega-Postman
   primary: false

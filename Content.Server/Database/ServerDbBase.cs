@@ -291,7 +291,16 @@ namespace Content.Server.Database
             return new HumanoidCharacterProfile(
                 profile.CharacterName,
                 profile.FlavorText,
-                profile.OOCFlavorText, // Corvax-Wega-OOCFlavor
+                // Corvax-Wega-Graphomancy-Extended-start
+                profile.OOCFlavorText,
+                profile.CharacterFlavorText,
+                profile.GreenFlavorText,
+                profile.YellowFlavorText,
+                profile.RedFlavorText,
+                profile.TagsFlavorText,
+                profile.LinksFlavorText,
+                profile.NSFWFlavorText,
+                // Corvax-Wega-Graphomancy-Extended-end
                 profile.Species,
                 barkvoice, // Corvax-Wega-Barks
                 voice, // Corvax-TTS
@@ -331,7 +340,16 @@ namespace Content.Server.Database
 
             profile.CharacterName = humanoid.Name;
             profile.FlavorText = humanoid.FlavorText;
-            profile.OOCFlavorText = humanoid.OOCFlavorText; // Corvax-Wega-OOCFlavor
+            // Corvax-Wega-Graphomancy-Extended-start
+            profile.OOCFlavorText = humanoid.OOCFlavorText;
+            profile.CharacterFlavorText = humanoid.CharacterFlavorText;
+            profile.GreenFlavorText = humanoid.GreenFlavorText;
+            profile.YellowFlavorText = humanoid.YellowFlavorText;
+            profile.RedFlavorText = humanoid.RedFlavorText;
+            profile.TagsFlavorText = humanoid.TagsFlavorText;
+            profile.LinksFlavorText = humanoid.LinksFlavorText;
+            profile.NSFWFlavorText = humanoid.NSFWFlavorText;
+            // Corvax-Wega-Graphomancy-Extended-end
             profile.Species = humanoid.Species;
             profile.Voice = humanoid.Voice; // Corvax-TTS
             profile.BarkVoice = humanoid.BarkVoice; // Corvax-Wega-Barks

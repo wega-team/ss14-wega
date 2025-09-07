@@ -29,3 +29,12 @@
     requiredSlot:
     - neck
     slot: head
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckCloakBlueShield
+  name: cloak of the officer "Blue Shield"
+  description: A cloak for defenders risking their breasts for NanoTrasen!
+  components:
+    - type: Sprite
+      sprite: _Wega/Clothing/Neck/Cloaks/blueshield.rsi

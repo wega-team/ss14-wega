@@ -15,6 +15,7 @@
     requiredLegs: 2
   - type: Inventory
     templateId: Ipc
+  - type: Carriable # Corvax-Wega-Carrying
   - type: ContentEye
   - type: Speech
   - type: BodyEmotes
@@ -58,8 +59,8 @@
       id: blinking
       interpolate: Nearest
       maxDuration: 1.0
-      minValue: 0.1
-      maxValue: 2.0
+      startValue: 0.1
+      endValue: 2.0
       isLooped: true
   - type: TypingIndicator
     proto: robot
@@ -89,6 +90,7 @@
     containers:
       cell_slot: !type:ContainerSlot { }
   - type: Ipc
+  - type: SyntheticOperated
   - type: ZombieImmune
   - type: Repairable
     fuelCost: 30

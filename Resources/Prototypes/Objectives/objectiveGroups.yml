@@ -23,6 +23,7 @@
     CaptainJetpackStealObjective: 0.5
     HandTeleporterStealObjective: 0.5
     EnergyShotgunStealObjective: 0.5
+    BlueLaserPistolStealObjective: 0.5 # Corvax-Wega-BlueShield
     GlovesKravMagaStealObjective: 0.5 # corvax-wega-krav-maga
     CombatRCDStealObjective: 1 # corvax-wega-combatRCD
 

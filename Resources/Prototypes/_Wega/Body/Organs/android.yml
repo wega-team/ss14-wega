@@ -9,6 +9,7 @@
     layers:
       - state: gas_module
   - type: Lung
+    alert: LowNitrogen
   - type: Metabolizer
     removeEmpty: true
     solutionOnBody: false
@@ -26,7 +27,7 @@
     organType: Lungs
   - type: Tag
     tags:
-      - Lungs
+      - BaseOrgan
       - LungsSynthetic
 
 - type: entity
@@ -44,7 +45,7 @@
     organType: Heart
   - type: Tag
     tags:
-      - Heart
+      - BaseOrgan
       - HeartSynthetic
 
 - type: entity
@@ -61,5 +62,5 @@
     organType: Eyes
   - type: Tag
     tags:
-      - Eyes
+      - BaseOrgan
       - EyesSynthetic

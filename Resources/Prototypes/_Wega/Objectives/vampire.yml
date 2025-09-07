@@ -202,3 +202,16 @@
   - type: StealCondition
     stealGroup: GlovesKravMaga
     owner: job-name-warden
+
+# blue laser pistol
+- type: entity
+  parent: BaseVampireStealObjective
+  id: VampireBlueLaserPistolStealObjective
+  components:
+  - type: Objective
+    difficulty: 3
+  - type: NotJobRequirement
+    job: BlueShieldOfficer
+  - type: StealCondition
+    stealGroup: WeaponBlueLaserPistol
+    owner: job-name-bso

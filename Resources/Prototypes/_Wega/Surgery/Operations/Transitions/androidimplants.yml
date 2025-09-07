@@ -21,24 +21,21 @@
           sound:
             path: /Audio/Items/ratchet.ogg
           time: 2
-          successChance: 1
         - tool: [ Screwing ]
-          tag: [ Screwdriver ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Screw
           sound:
             collection: Screwdriver
           time: 2
-          successChance: 1
         - tag: [ CableCoil ]
-          action: Empty
+          action: MendWire
           entityPreview: CableApcStack
           time: 2
-          successChance: 1
 
 #Head
 - type: surgeryTransition
   id: AndroidImplantHeadTransition
-  target: AndroidHeadOpen
+  target: AndroidImplantingHeadOpen
   label: "Установить имплант"
   stepGroups:
     - conditions:
@@ -55,14 +52,12 @@
           sound:
             collection: Screwdriver
           time: 2
-          successChance: 1
         - tool: [ Pulsing ]
-          tag: [ Multitool ]
-          action: Empty
+          tag: [ DoorElectronicsConfigurator ]
+          action: Pulse
           sound:
             collection: CargoBeep
           time: 2
-          successChance: 1
 
 # ========================
 # УДАЛЕНИЕ ИМПЛАНТОВ
@@ -86,12 +81,11 @@
           - outerClothing
       steps:
         - tool: [ Screwing ]
-          tag: [ Screwdriver ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
           sound:
             collection: Screwdriver
           time: 2
-          successChance: 1
 
 - type: surgeryTransition
   id: AndroidExtractSadTromboneTransition
@@ -106,13 +100,12 @@
           - outerClothing
       steps:
         - tool: [ Cutting ]
-          tag: [ Wirecutter ]
+          tag: [ Knife, Shiv, BasicGlassShard]
           action: RemoveImplant
           requiredImplant: "SadTromboneImplant"
           sound:
             path: /Audio/Items/wirecutter.ogg 
           time: 2
-          successChance: 1
 
 # LightImplant
 - type: surgeryTransition
@@ -130,12 +123,11 @@
           - outerClothing
       steps:
         - tool: [ Screwing ]
-          tag: [ Screwdriver ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
           sound:
             collection: Screwdriver
           time: 2
-          successChance: 1
 
 - type: surgeryTransition
   id: AndroidExtractLightImplantTransition
@@ -150,13 +142,12 @@
           - outerClothing
       steps:
         - tool: [ Cutting ]
-          tag: [ Wirecutter ]
+          tag: [ Knife, Shiv, BasicGlassShard]
           action: RemoveImplant
           requiredImplant: "LightImplant"
           sound:
             path: /Audio/Items/wirecutter.ogg 
           time: 2
-          successChance: 1
 
 # BikeHorn
 - type: surgeryTransition
@@ -174,12 +165,11 @@
           - outerClothing
       steps:
         - tool: [ Screwing ]
-          tag: [ Screwdriver ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
           sound:
             collection: Screwdriver
           time: 2
-          successChance: 1
 
 - type: surgeryTransition
   id: AndroidExtractBikeHornTransition
@@ -194,13 +184,12 @@
           - outerClothing
       steps:
         - tool: [ Cutting ]
-          tag: [ Wirecutter ]
+          tag: [ Knife, Shiv, BasicGlassShard]
           action: RemoveImplant
           requiredImplant: "BikeHornImplant"
           sound:
             path: /Audio/Items/wirecutter.ogg 
           time: 2
-          successChance: 1
 
 # Tracking
 - type: surgeryTransition
@@ -218,12 +207,11 @@
           - outerClothing
       steps:
         - tool: [ Screwing ]
-          tag: [ Screwdriver ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
           sound:
             collection: Screwdriver
           time: 2
-          successChance: 1
 
 - type: surgeryTransition
   id: AndroidExtractTrackingTransition
@@ -238,13 +226,12 @@
           - outerClothing
       steps:
         - tool: [ Cutting ]
-          tag: [ Wirecutter ]
+          tag: [ Knife, Shiv, BasicGlassShard]
           action: RemoveImplant
           requiredImplant: "TrackingImplant"
           sound:
             path: /Audio/Items/wirecutter.ogg 
           time: 2
-          successChance: 1
 
 # Storage
 - type: surgeryTransition
@@ -262,12 +249,11 @@
           - outerClothing
       steps:
         - tool: [ Screwing ]
-          tag: [ Screwdriver ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
           sound:
             collection: Screwdriver
           time: 2
-          successChance: 1
 
 - type: surgeryTransition
   id: AndroidExtractStorageTransition
@@ -282,13 +268,12 @@
           - outerClothing
       steps:
         - tool: [ Cutting ]
-          tag: [ Wirecutter ]
+          tag: [ Knife, Shiv, BasicGlassShard]
           action: RemoveImplant
           requiredImplant: "StorageImplant"
           sound:
             path: /Audio/Items/wirecutter.ogg 
           time: 2
-          successChance: 1
 
 # Freedom
 - type: surgeryTransition
@@ -306,12 +291,11 @@
           - outerClothing
       steps:
         - tool: [ Screwing ]
-          tag: [ Screwdriver ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
           sound:
             collection: Screwdriver
           time: 2
-          successChance: 1
 
 - type: surgeryTransition
   id: AndroidExtractFreedomTransition
@@ -326,13 +310,12 @@
           - outerClothing
       steps:
         - tool: [ Cutting ]
-          tag: [ Wirecutter ]
+          tag: [ Knife, Shiv, BasicGlassShard]
           action: RemoveImplant
           requiredImplant: "FreedomImplant"
           sound:
             path: /Audio/Items/wirecutter.ogg 
           time: 2
-          successChance: 1
 
 # Radio
 - type: surgeryTransition
@@ -350,12 +333,11 @@
           - outerClothing
       steps:
         - tool: [ Screwing ]
-          tag: [ Screwdriver ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
           sound:
             collection: Screwdriver
           time: 2
-          successChance: 1
 
 - type: surgeryTransition
   id: AndroidExtractRadioTransition
@@ -370,13 +352,12 @@
           - outerClothing
       steps:
         - tool: [ Cutting ]
-          tag: [ Wirecutter ]
+          tag: [ Knife, Shiv, BasicGlassShard]
           action: RemoveImplant
           requiredImplant: "RadioImplant"
           sound:
             path: /Audio/Items/wirecutter.ogg 
           time: 2
-          successChance: 1
 
 # Uplink
 - type: surgeryTransition
@@ -394,12 +375,11 @@
           - outerClothing
       steps:
         - tool: [ Screwing ]
-          tag: [ Screwdriver ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
           sound:
             collection: Screwdriver
           time: 2
-          successChance: 1
 
 - type: surgeryTransition
   id: AndroidExtractUplinkTransition
@@ -414,13 +394,12 @@
           - outerClothing
       steps:
         - tool: [ Cutting ]
-          tag: [ Wirecutter ]
+          tag: [ Knife, Shiv, BasicGlassShard]
           action: RemoveImplant
           requiredImplant: "UplinkImplant"
           sound:
             path: /Audio/Items/wirecutter.ogg 
           time: 2
-          successChance: 1
 
 # Emp
 - type: surgeryTransition
@@ -438,12 +417,11 @@
           - outerClothing
       steps:
         - tool: [ Screwing ]
-          tag: [ Screwdriver ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
           sound:
             collection: Screwdriver
           time: 2
-          successChance: 1
 
 - type: surgeryTransition
   id: AndroidExtractEmpTransition
@@ -458,13 +436,12 @@
           - outerClothing
       steps:
         - tool: [ Cutting ]
-          tag: [ Wirecutter ]
+          tag: [ Knife, Shiv, BasicGlassShard]
           action: RemoveImplant
           requiredImplant: "EmpImplant"
           sound:
             path: /Audio/Items/wirecutter.ogg 
           time: 2
-          successChance: 1
 
 # Scram
 - type: surgeryTransition
@@ -482,12 +459,11 @@
           - outerClothing
       steps:
         - tool: [ Screwing ]
-          tag: [ Screwdriver ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
           sound:
             collection: Screwdriver
           time: 2
-          successChance: 1
 
 - type: surgeryTransition
   id: AndroidExtractScramTransition
@@ -502,13 +478,12 @@
           - outerClothing
       steps:
         - tool: [ Cutting ]
-          tag: [ Wirecutter ]
+          tag: [ Knife, Shiv, BasicGlassShard]
           action: RemoveImplant
           requiredImplant: "ScramImplant"
           sound:
             path: /Audio/Items/wirecutter.ogg 
           time: 2
-          successChance: 1
 
 # DnaScrambler
 - type: surgeryTransition
@@ -526,12 +501,11 @@
           - outerClothing
       steps:
         - tool: [ Screwing ]
-          tag: [ Screwdriver ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
           sound:
             collection: Screwdriver
           time: 2
-          successChance: 1
 
 - type: surgeryTransition
   id: AndroidExtractDnaScramblerTransition
@@ -546,13 +520,12 @@
           - outerClothing
       steps:
         - tool: [ Cutting ]
-          tag: [ Wirecutter ]
+          tag: [ Knife, Shiv, BasicGlassShard]
           action: RemoveImplant
           requiredImplant: "DnaScramblerImplant"
           sound:
             path: /Audio/Items/wirecutter.ogg 
           time: 2
-          successChance: 1
 
 # ChameleonController
 - type: surgeryTransition
@@ -570,12 +543,11 @@
           - outerClothing
       steps:
         - tool: [ Screwing ]
-          tag: [ Screwdriver ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
           sound:
             collection: Screwdriver
           time: 2
-          successChance: 1
 
 - type: surgeryTransition
   id: AndroidExtractChameleonControllerTransition
@@ -590,13 +562,12 @@
           - outerClothing
       steps:
         - tool: [ Cutting ]
-          tag: [ Wirecutter ]
+          tag: [ Knife, Shiv, BasicGlassShard]
           action: RemoveImplant
           requiredImplant: "ChameleonControllerImplant"
           sound:
             path: /Audio/Items/wirecutter.ogg 
           time: 2
-          successChance: 1
 
 # RadioCentcomm
 - type: surgeryTransition
@@ -614,12 +585,11 @@
           - outerClothing
       steps:
         - tool: [ Screwing ]
-          tag: [ Screwdriver ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
           sound:
             collection: Screwdriver
           time: 2
-          successChance: 1
 
 - type: surgeryTransition
   id: AndroidExtractRadioCentcommTransition
@@ -634,13 +604,12 @@
           - outerClothing
       steps:
         - tool: [ Cutting ]
-          tag: [ Wirecutter ]
+          tag: [ Knife, Shiv, BasicGlassShard]
           action: RemoveImplant
           requiredImplant: "RadioCentcommImplant"
           sound:
             path: /Audio/Items/wirecutter.ogg 
           time: 2
-          successChance: 1
 
 #Head
 
@@ -661,12 +630,11 @@
           bodyPart: head
       steps:
         - tool: [ Screwing ]
-          tag: [ Screwdriver ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
           sound:
             collection: Screwdriver
           time: 2
-          successChance: 1
 
 - type: surgeryTransition
   id: AndroidExtractMindShieldTransition
@@ -682,13 +650,12 @@
           bodyPart: head
       steps:
         - tool: [ Cutting ]
-          tag: [ Wirecutter ]
+          tag: [ Knife, Shiv, BasicGlassShard]
           action: RemoveImplant
           requiredImplant: "MindShieldImplant"
           sound:
             path: /Audio/Items/wirecutter.ogg 
           time: 2
-          successChance: 1
 
 # FakeMindShield
 - type: surgeryTransition
@@ -707,12 +674,11 @@
           bodyPart: head
       steps:
         - tool: [ Screwing ]
-          tag: [ Screwdriver ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
           sound:
             collection: Screwdriver
           time: 2
-          successChance: 1
 
 - type: surgeryTransition
   id: AndroidExtractFakeMindShieldTransition
@@ -728,12 +694,9 @@
           bodyPart: head
       steps:
         - tool: [ Cutting ]
-          tag: [ Wirecutter ]
+          tag: [ Knife, Shiv, BasicGlassShard]
           action: RemoveImplant
           requiredImplant: "FakeMindShieldImplant"
           sound:
             path: /Audio/Items/wirecutter.ogg 
           time: 2
-          successChance: 1
-
-

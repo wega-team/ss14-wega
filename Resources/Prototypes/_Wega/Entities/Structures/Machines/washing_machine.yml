@@ -1,0 +1,74 @@
+- type: entity
+  id: WashingMachine
+  parent: [ BaseMachinePowered, ConstructibleMachine ]
+  name: washing machine
+  description: "Modern front-loading automatic washing machine. Equipped with a deep cleaning system that removes even the most stubborn dirt. Automatically locks during operation for safety."
+  components:
+  - type: Transform
+    noRot: true
+  - type: Sprite
+    noRot: true
+    sprite: _Wega/Structures/Machines/washingmachine.rsi
+    layers:
+    - state: base
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: door_closed
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: washing
+      map: ["enum.WashingMachineVisuals.Washing"]
+      visible: false
+  - type: Icon
+    sprite: _Wega/Structures/Machines/washingmachine.rsi
+    state: icon
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.4,0.25,0.4"
+        density: 190
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:ChangeConstructionNodeBehavior
+        node: machineFrame
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: AmbientSound
+    enabled: false
+    volume: -5
+    range: 5
+    sound:
+      path: /Audio/Ambience/Objects/crushing.ogg
+  - type: WashingMachine
+  - type: ApcPowerReceiver
+    powerLoad: 500
+  - type: Appearance
+  - type: WiresPanel
+  - type: Machine
+    board: WashingMachineCircuitboard
+  - type: Lock
+    locked: false
+  - type: AccessReader
+    access: [ [ "Empty" ] ]
+  - type: EntityStorage
+    whitelist:
+      components:
+        - Clothing
+  - type: ContainerContainer
+    containers:
+      entity_storage: !type:Container
+  - type: EntityStorageVisuals
+    stateBaseClosed: base
+    stateDoorOpen: door_open
+    stateDoorClosed: door_closed

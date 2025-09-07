@@ -1,7 +1,9 @@
 using Content.Shared.Chat;
 using Content.Shared.Corvax.CCCVars;
 using Content.Shared.Corvax.TTS;
+using Content.Shared.SoundInsolation; // Corvax-Wega-SoundInsolation
 using Robust.Client.Audio;
+using Robust.Client.Player; // Corvax-Wega-SoundInsolation
 using Robust.Client.ResourceManagement;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
@@ -18,8 +20,10 @@ namespace Content.Client.Corvax.TTS;
 public sealed class TTSSystem : EntitySystem
 {
     [Dependency] private readonly IConfigurationManager _cfg = default!;
+    [Dependency] private readonly IPlayerManager _player = default!; // Corvax-Wega-SoundInsolation
     [Dependency] private readonly IResourceManager _res = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
+    [Dependency] private readonly SoundInsulationSystem _soundInsulation = default!; // Corvax-Wega-SoundInsolation
 
     private ISawmill _sawmill = default!;
     private static MemoryContentRoot _contentRoot = new();
@@ -76,11 +80,27 @@ public sealed class TTSSystem : EntitySystem
         var filePath = new ResPath($"{_fileIdx++}.ogg");
         _contentRoot.AddOrUpdateFile(filePath, ev.Data);
 
+        // Corvax-Wega-SoundInsolation-start
+        float volumeMultiplier = 1f;
+        if (ev.SourceUid != null && _player.LocalEntity != null)
+        {
+            var sourceUid = GetEntity(ev.SourceUid.Value);
+            var insulation = _soundInsulation.GetSoundInsulation(sourceUid, _player.LocalEntity.Value);
+            if (insulation >= 0.95f)
+            {
+                _contentRoot.RemoveFile(filePath);
+                return;
+            }
+
+            volumeMultiplier = 1f - insulation;
+        }
+        // Corvax-Wega-SoundInsolation-end
+
         var audioResource = new AudioResource();
         audioResource.Load(IoCManager.Instance!, Prefix / filePath);
 
         var audioParams = AudioParams.Default
-            .WithVolume(AdjustVolume(ev.IsWhisper))
+            .WithVolume(AdjustVolume(ev.IsWhisper, volumeMultiplier)) // Corvax-Wega-SoundInsolation-Edit
             .WithMaxDistance(AdjustDistance(ev.IsWhisper));
 
         var soundSpecifier = new ResolvedPathSpecifier(Prefix / filePath);
@@ -100,9 +120,10 @@ public sealed class TTSSystem : EntitySystem
         _contentRoot.RemoveFile(filePath);
     }
 
-    private float AdjustVolume(bool isWhisper)
+    private float AdjustVolume(bool isWhisper, float volumeMultiplier) // Corvax-Wega-SoundInsolation-Edit
     {
         var volume = MinimalVolume + SharedAudioSystem.GainToVolume(_volume);
+        volume *= volumeMultiplier; // Corvax-Wega-SoundInsolation
 
         if (isWhisper)
         {

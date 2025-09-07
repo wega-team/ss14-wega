@@ -1,7 +1,6 @@
 ﻿using Content.Shared.Bed.Sleep;
 using Content.Shared.Buckle.Components;
 using Content.Shared.CombatMode.Pacification;
-using Content.Shared.Crawling; // Corvax-Wega-Crawling
 using Content.Shared.Damage;
 using Content.Shared.Damage.ForceSay;
 using Content.Shared.Disease.Events; // Corvax-Wega-Disease
@@ -110,14 +109,12 @@ public partial class MobStateSystem
         switch (state)
         {
             case MobState.Alive:
-                if (!TryComp(target, out CrawlingComponent? crawlingAlive) || !crawlingAlive.IsCrawling) // Corvax-Wega-Crawling
-                    _standing.Stand(target); // Corvax-Wega-Crawling
+                _standing.Stand(target);
                 _appearance.SetData(target, MobStateVisuals.State, MobState.Alive);
                 break;
             // Corvax-Wega-PreCritical-start
             case MobState.PreCritical:
-                if (!TryComp(target, out CrawlingComponent? crawlingPreCritical) || !crawlingPreCritical.IsCrawling)
-                    _standing.Stand(target);
+                _standing.Stand(target);
                 _appearance.SetData(target, MobStateVisuals.State, MobState.Critical);
                 break;
             // Corvax-Wega-PreCritical-end

@@ -38,6 +38,7 @@ using Robust.Shared.Utility;
 using Content.Shared.Genetics;
 using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Hands.EntitySystems;
+using Content.Shared.Surgery.Components;
 
 namespace Content.Server.Vampire;
 
@@ -187,7 +188,8 @@ public sealed partial class VampireSystem : SharedVampireSystem
             return false;
         }
 
-        if (!_interaction.InRangeUnobstructed(uid, args.Target, popup: true) || _food.IsMouthBlocked(args.Target, uid))
+        if (!_interaction.InRangeUnobstructed(uid, args.Target, popup: true) || _food.IsMouthBlocked(args.Target, uid)
+            || HasComp<SyntheticOperatedComponent>(args.Target))
             return false;
 
         if (_rotting.IsRotten(args.Target))
@@ -557,7 +559,7 @@ public sealed partial class VampireSystem : SharedVampireSystem
             }
 
             RemComp<ThrallComponent>(uid);
-            _stun.TryParalyze(uid, stunTime, true);
+            _stun.TryUpdateParalyzeDuration(uid, stunTime);
             _popup.PopupEntity(Loc.GetString("thrall-break-control", ("name", name)), uid);
         }
     }

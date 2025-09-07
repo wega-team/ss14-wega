@@ -51,6 +51,7 @@
     resistance: 2
   - type: BlockWeather
   - type: SunShadowCast
+  - type: SoundInsulator # Corvax-Wega-SoundInsolation
 
 - type: entity
   abstract: true

@@ -66,3 +66,16 @@
   - type: ClothingSpeedModifier
     walkModifier: 1.6
     sprintModifier: 1.6
+
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterCoatPostman
+  name: postman coat
+  description: "A short, windproof coat that provides reliable protection from the elements."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Coats/postman.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/OuterClothing/Coats/postman.rsi
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHatHoodPostman

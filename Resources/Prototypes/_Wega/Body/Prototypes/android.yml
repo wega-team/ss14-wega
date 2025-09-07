@@ -8,7 +8,6 @@
       connections:
       - torso
       organs:
-        brain: PositronicBrain
         eyes: OrganAndroidEyes
     torso:
       part: TorsoHuman
@@ -18,6 +17,7 @@
       - right_leg
       - left_leg
       organs:
+        brain: PositronicBrain
         heart: OrganAndroidTyrium
         lungs: OrganAndroidGas
     right_arm:

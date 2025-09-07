@@ -212,6 +212,7 @@
         Slash: -6
         Piercing: -6
         Heat: -6
+    bloodlossModifier: -10 # Corvax-Wega-Android
     healingBeginSound:
       path: "/Audio/Items/Medical/brutepack_begin.ogg"
     healingEndSound:

@@ -33,7 +33,7 @@
   - type: Tag
     tags:
       - Trash
-      - LeftArm
+      - BaseBodyPart
       - LeftArmSynthetic
 
 - type: entity
@@ -46,7 +46,7 @@
   - type: Tag
     tags:
       - Trash
-      - RightArm
+      - BaseBodyPart
       - RightArmSynthetic
 
 - type: entity
@@ -59,7 +59,7 @@
   - type: Tag
     tags:
       - Trash
-      - LeftHand
+      - BaseBodyPart
       - LeftHandSynthetic
 
 - type: entity
@@ -72,7 +72,7 @@
   - type: Tag
     tags:
       - Trash
-      - RightHand
+      - BaseBodyPart
       - RightHandSynthetic
 
 - type: entity
@@ -85,7 +85,7 @@
   - type: Tag
     tags:
       - Trash
-      - LeftLeg
+      - BaseBodyPart
       - LeftLegSynthetic
 
 - type: entity
@@ -98,7 +98,7 @@
   - type: Tag
     tags:
       - Trash
-      - RightLeg
+      - BaseBodyPart
       - RightLegSynthetic
 
 - type: entity
@@ -111,7 +111,7 @@
   - type: Tag
     tags:
       - Trash
-      - LeftFoot
+      - BaseBodyPart
       - LeftFootSynthetic
 
 - type: entity
@@ -124,5 +124,5 @@
   - type: Tag
     tags:
       - Trash
-      - RightFoot
+      - BaseBodyPart
       - RightFootSynthetic

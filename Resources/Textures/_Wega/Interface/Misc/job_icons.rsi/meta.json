@@ -11,10 +11,16 @@
             "name": "Barber"
         },
         {
+            "name": "BlueShield"
+        },
+        {
             "name": "Surgeon"
         },
         {
             "name": "Coroner"
+        },
+        {
+            "name": "Postman"
         }
     ]
 }

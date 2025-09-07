@@ -1,13 +1,11 @@
 - type: entity
-  id: SuitStorageSecPilot
+  id: SuitStorageBlueShield
   parent: SuitStorageBase
-  suffix: Security
+  suffix: Blue Shield
   components:
-  - type: StorageFill
-    contents:
-        - id: DoubleEmergencyOxygenTankFilled
-        - id: ClothingOuterHardsuitSecurityPilot
-        - id: ClothingMaskBreath
-        - id: ClothingShoesBootsMag
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillBlueShieldOfficerHardsuit
   - type: AccessReader
-    access: [["Security"]]
+    access: [["Command"]]

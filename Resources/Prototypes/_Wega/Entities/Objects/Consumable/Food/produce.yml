@@ -285,7 +285,6 @@
       grindableSolutionName: food
     - type: SpaceGarbage
     - type: TriggerOnSlip
-    - type: DeleteOnTrigger
     - type: SpawnOnTrigger
       proto: PortalBsBanan
 
@@ -298,10 +297,12 @@
   - type: SolutionContainerManager
     solutions:
       food:
-        maxVol: 7
+        maxVol: 10
         reagents:
         - ReagentId: Radium
-          Quantity: 7
+          Quantity: 5
+        - ReagentId: Uranium
+          Quantity: 5
   - type: Sprite
     sprite: _Wega/Objects/Specific/Hydroponics/radioactive_berry.rsi
   - type: Produce
@@ -315,7 +316,7 @@
     tags:
     - Fruit
   - type: RadiationSource
-    intensity: 0.2
+    intensity: 0.3
     slope: 0.1
   - type: PointLight
     color: "#19FF19FF" 

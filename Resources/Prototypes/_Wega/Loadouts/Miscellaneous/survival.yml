@@ -1,0 +1,99 @@
+# Androind
+- type: loadout
+  id: EmergencyAndroid
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SpeciesAndroid
+  storage:
+    back:
+    - BoxSurvivalAndroid
+
+- type: loadout
+  id: EmergencyAndroidExtended
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SpeciesAndroid
+  storage:
+    back:
+    - BoxSurvivalAndroidExtended
+
+- type: loadout
+  id: EmergencyAndroidMedical
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SpeciesAndroid
+  storage:
+    back:
+    - BoxSurvivalAndroidMedical
+
+- type: loadout
+  id: EmergencyAndroidSecurity
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SpeciesAndroid
+  storage:
+    back:
+    - BoxSurvivalAndroidSecurity
+
+- type: loadout
+  id: EmergencyAndroidClown
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SpeciesAndroid
+  storage:
+    back:
+    - BoxAndroidHug 
+
+- type: loadout
+  id: EmergencyAndroidMime
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SpeciesAndroid
+  storage:
+    back:
+    - BoxAndroidMime
+
+- type: loadout
+  id: EmergencyAndroidBlueShield
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SpeciesAndroid
+  storage:
+    back:
+    - BoxSurvivalAndroidBlueShield
+
+- type: loadout
+  id: EmergencyAndroidSyndicate
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SpeciesAndroid
+  storage:
+    back:
+    - BoxSurvivalAndroidSyndicate
+
+# Other
+- type: loadout
+  id: EmergencyOxygenBlueShield
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: OxygenBreather
+  storage:
+    back:
+    - BoxSurvivalBlueShield
+
+- type: loadout
+  id: EmergencyNitrogenBlueShield
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: NitrogenBreather
+  storage:
+    back:
+    - BoxSurvivalBlueShieldNitrogen
+
+- type: loadout
+  id: LoadoutSpeciesBreathToolBlueShield
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: EffectSpeciesVox
+  equipment:
+    mask: ClothingMaskGasBlueShield

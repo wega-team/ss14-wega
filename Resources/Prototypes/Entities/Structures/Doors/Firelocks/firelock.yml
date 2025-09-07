@@ -143,6 +143,8 @@
       - Fires
       - Spacing
     - type: SyncSprite
+    - type: SoundInsulator # Corvax-Wega-SoundInsolation
+      insulationFactor: 0.6 # Corvax-Wega-SoundInsolation
 
 - type: entity
   id: Firelock

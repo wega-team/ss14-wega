@@ -14,27 +14,29 @@
           - jumpsuit
           - outerClothing
       steps:
-        - tool: [ Welding ]
-          tag: [ Welder ]
-          action: Empty
+        - tool: [ Welding, Cautery ]
+          action: Weld
           sound:
             collection: Welder
           time: 2
-          successChance: 1
         - tool: [ Screwing ]
-          tag: [ Screwdriver ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
           sound:
             collection: Screwdriver
           time: 2
-          successChance: 1
+        - tool: [ Anchoring ]
+          tag: [ Wirecutter, Pipe ]
+          action: Unanchor
+          sound:
+            path: /Audio/Items/ratchet.ogg
+          time: 2
         - tool: [ Prying ]
-          tag: [ Crowbar ]
-          action: Empty
+          tag: [ Wrench, Screwdriver ]
+          action: Pry
           sound:
             path: /Audio/Items/crowbar.ogg
           time: 2
-          successChance: 1
 
 - type: surgeryTransition
   id: AndroidCloseTorsoTransition
@@ -49,26 +51,28 @@
           - outerClothing
       steps:
         - tool: [ Screwing ]
-          tag: [ Screwdriver ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Screw
           sound:
             collection: Screwdriver
           time: 2
-          successChance: 1
         - tool: [ Pulsing ]
-          tag: [ Multitool ]
-          action: Empty
+          tag: [ DoorElectronicsConfigurator ]
+          action: Pulse
           sound:
             collection: CargoBeep
           time: 2
-          successChance: 1
-        - tool: [ Welding ]
-          tag: [ Welder ]
-          action: ClampBleeding
+        - tool: [ Anchoring ]
+          tag: [ Wirecutter, Pipe ]
+          action: Anchor
+          sound:
+            path: /Audio/Items/ratchet.ogg
+          time: 2
+        - tool: [ Welding, Cautery ]
+          action: Weld
           sound:
             collection: Welder
           time: 2
-          successChance: 1
 
 - type: surgeryTransition
   id: AndroidOrganManipulationTransition
@@ -83,9 +87,32 @@
           - outerClothing
       parallel: true
       steps:
+        # Мозг
+        - tool: [ Cutting ]
+          action: RemoveOrgan
+          entityPreview: PositronicBrain
+          requiredPart: Brain
+          sound:
+            path: /Audio/Items/wirecutter.ogg
+          time: 8
+          conditions:
+            - !type:OrganPresentCondition
+              organ: Brain
+        - tag: [ Brain ]
+          action: InsertOrgan
+          entityPreview: PositronicBrain
+          requiredPart: Brain
+          sound:
+            path: /Audio/Items/ratchet.ogg
+          time: 8
+          conditions:
+            - !type:OrganPresentCondition
+              invert: true
+              organ: Brain
+
         # Тириумовый насос
         - tool: [ Cutting ]
-          tag: [ Wirecutter ]
+          tag: [ Knife, Shiv, BasicGlassShard]
           action: RemoveOrgan
           failureEffect: [ Bleeding ]
           entityPreview: OrganAndroidTyrium
@@ -104,7 +131,6 @@
           sound:
             path: /Audio/Items/ratchet.ogg
           time: 8
-          successChance: 1
           conditions:
             - !type:OrganPresentCondition
               invert: true
@@ -112,14 +138,13 @@
 
         # Газовая система
         - tool: [ Screwing ]
-          tag: [ Screwdriver ]
+          tag: [ Knife, Shiv, BasicGlassShard]
           action: RemoveOrgan
           entityPreview: OrganAndroidGas
           requiredPart: Lungs
           sound:
             collection: Screwdriver
           time: 8
-          successChance: 1
           conditions:
             - !type:OrganPresentCondition
               organ: Lungs
@@ -130,7 +155,6 @@
           sound:
             path: /Audio/Items/ratchet.ogg
           time: 8
-          successChance: 1
           conditions:
             - !type:OrganPresentCondition
               invert: true
@@ -153,20 +177,23 @@
         - !type:BodyPartCondition
           bodyPart: head
       steps:
-        - tool: [ Welding ]
-          tag: [ Welder ]
-          action: Empty
+        - tool: [ Welding, Cautery ]
+          action: Weld
           sound:
             collection: Welder
           time: 2
-          successChance: 1
         - tool: [ Screwing ]
-          tag: [ Screwdriver ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
           sound:
             collection: Screwdriver
           time: 2
-          successChance: 1
+        - tool: [ Anchoring ]
+          tag: [ Wirecutter, Pipe ]
+          action: Unanchor
+          sound:
+            path: /Audio/Items/ratchet.ogg
+          time: 2
 
 - type: surgeryTransition
   id: AndroidCloseHeadTransition
@@ -182,26 +209,28 @@
           bodyPart: head
       steps:
         - tool: [ Screwing ]
-          tag: [ Screwdriver ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Screw
           sound:
             collection: Screwdriver
           time: 2
-          successChance: 1
         - tool: [ Pulsing ]
-          tag: [ Multitool ]
-          action: Empty
+          tag: [ DoorElectronicsConfigurator ]
+          action: Pulse
           sound:
             collection: CargoBeep
           time: 2
-          successChance: 1
-        - tool: [ Welding ]
-          tag: [ Welder ]
-          action: ClampBleeding
+        - tool: [ Anchoring ]
+          tag: [ Wirecutter, Pipe ]
+          action: Anchor
+          sound:
+            path: /Audio/Items/ratchet.ogg
+          time: 2
+        - tool: [ Welding, Cautery ]
+          action: Weld
           sound:
             collection: Welder
           time: 2
-          successChance: 1
 
 - type: surgeryTransition
   id: AndroidExtractBrainTransition
@@ -217,43 +246,14 @@
           bodyPart: head
       parallel: true
       steps:
-
-        # Мозг
-        - tool: [ Cutting ]
-          tag: [ Wirecutter ]
-          action: RemoveOrgan
-          entityPreview: PositronicBrain
-          requiredPart: Brain
-          sound:
-            path: /Audio/Items/wirecutter.ogg
-          time: 8
-          successChance: 1
-          conditions:
-            - !type:OrganPresentCondition
-              organ: Brain
-        - tag: [ Brain ]
-          action: InsertOrgan
-          entityPreview: OrganPositronicBrain
-          requiredPart: Brain
-          sound:
-            path: /Audio/Items/ratchet.ogg
-          time: 8
-          successChance: 1
-          conditions:
-            - !type:OrganPresentCondition
-              invert: true
-              organ: Brain
-
         # Камеры
         - tool: [ Screwing ]
-          tag: [ Screwdriver ]
           action: RemoveOrgan
           entityPreview: OrganAndroidEyes
           requiredPart: Eyes
           sound:
             collection: Screwdriver
           time: 8
-          successChance: 1
           conditions:
             - !type:OrganPresentCondition
               organ: Eyes
@@ -264,7 +264,6 @@
           sound:
             path: /Audio/Items/ratchet.ogg
           time: 8
-          successChance: 1
           conditions:
             - !type:OrganPresentCondition
               invert: true
@@ -281,22 +280,19 @@
           bodyPart: head
       steps:
         - tool: [ Screwing ]
-          tag: [ Screwdriver ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
           sound:
             collection: Screwdriver
           time: 2
-          successChance: 1
         - tag: [ CableCoil ]
           entityPreview: CableApcStack
-          action: Empty
+          action: MendWire
           time: 2
-          successChance: 1
         - tag: [ Head ]
           action: AttachPart
           requiredPart: head
           time: 8
-          successChance: 1
           sound:
             path: /Audio/Items/ratchet.ogg
 
@@ -315,12 +311,11 @@
           bodyPart: left_arm
       steps:
         - tool: [ Screwing ]
-          tag: [ Screwdriver ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
           sound:
             collection: Screwdriver
           time: 2
-          successChance: 1
 
 - type: surgeryTransition
   id: AndroidAmputateLeftArmProcessTransition
@@ -332,20 +327,30 @@
           bodyPart: left_arm
       steps:
         - tool: [ Cutting ]
-          tag: [ Wirecutter ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: CutWire
           sound:
             path: /Audio/Items/wirecutter.ogg
           time: 2
-          successChance: 1
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: StripWire
+          sound:
+            path: /Audio/Items/wirecutter.ogg
+          time: 2
+        - tool: [ Anchoring ]
+          tag: [ Wirecutter, Pipe ]
+          action: Unanchor
+          sound:
+            path: /Audio/Items/ratchet.ogg
+          time: 2
         - tool: [ Screwing ]
-          tag: [ Screwdriver ]
+          tag: [ Knife, Shiv, BasicGlassShard]
           action: RemovePart
           sound:
             collection: Screwdriver
           time: 2
           requiredPart: left_arm
-          successChance: 1
 
 - type: surgeryTransition
   id: AndroidAttachLeftArmTransition
@@ -358,12 +363,11 @@
           bodyPart: left_arm
       steps:
         - tool: [ Screwing ]
-          tag: [ Screwdriver ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
           sound:
             collection: Screwdriver
           time: 2
-          successChance: 1          
 
 - type: surgeryTransition
   id: AndroidAttachLeftArmProcessTransition
@@ -371,16 +375,14 @@
   label: Прикрепить левую руку
   stepGroups:
     - steps:
+        - tag: [ CableCoil ]
+          entityPreview: CableApcStack
+          action: MendWire
+          time: 2
         - tag: [ LeftArmSynthetic ]
           action: AttachPart
           requiredPart: left_arm
           time: 2
-          successChance: 1
-        - tag: [ CableCoil ]
-          entityPreview: CableApcStack
-          action: Empty
-          time: 2
-          successChance: 1
 
 # ПРАВАЯ РУКА
 - type: surgeryTransition
@@ -393,12 +395,11 @@
           bodyPart: right_arm
       steps:
         - tool: [ Screwing ]
-          tag: [ Screwdriver ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
           sound:
             collection: Screwdriver
           time: 2
-          successChance: 1
 
 - type: surgeryTransition
   id: AndroidAmputateRightArmProcessTransition
@@ -410,20 +411,30 @@
           bodyPart: right_arm
       steps:
         - tool: [ Cutting ]
-          tag: [ Wirecutter ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: CutWire
           sound:
             path: /Audio/Items/wirecutter.ogg
           time: 2
-          successChance: 1
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: StripWire
+          sound:
+            path: /Audio/Items/wirecutter.ogg
+          time: 2
+        - tool: [ Anchoring ]
+          tag: [ Wirecutter, Pipe ]
+          action: Unanchor
+          sound:
+            path: /Audio/Items/ratchet.ogg
+          time: 2
         - tool: [ Screwing ]
-          tag: [ Screwdriver ]
+          tag: [ Knife, Shiv, BasicGlassShard]
           action: RemovePart
           sound:
             collection: Screwdriver
           time: 2
           requiredPart: right_arm
-          successChance: 1
 
 - type: surgeryTransition
   id: AndroidAttachRightArmTransition
@@ -436,12 +447,11 @@
           bodyPart: right_arm
       steps:
         - tool: [ Screwing ]
-          tag: [ Screwdriver ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
           sound:
             collection: Screwdriver
           time: 2
-          successChance: 1          
 
 - type: surgeryTransition
   id: AndroidAttachRightArmProcessTransition
@@ -449,16 +459,14 @@
   label: Прикрепить правую руку
   stepGroups:
     - steps:
+        - tag: [ CableCoil ]
+          entityPreview: CableApcStack
+          action: MendWire
+          time: 2
         - tag: [ RightArmSynthetic ]
           action: AttachPart
           requiredPart: right_arm
           time: 2
-          successChance: 1
-        - tag: [ CableCoil ]
-          entityPreview: CableApcStack
-          action: Empty
-          time: 2
-          successChance: 1
 
 # ЛЕВАЯ КИСТЬ
 - type: surgeryTransition
@@ -473,12 +481,11 @@
           bodyPart: left_hand
       steps:
         - tool: [ Screwing ]
-          tag: [ Screwdriver ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
           sound:
             collection: Screwdriver
           time: 2
-          successChance: 1
 
 - type: surgeryTransition
   id: AndroidAmputateLeftHandProcessTransition
@@ -487,20 +494,30 @@
   stepGroups:
     - steps:
         - tool: [ Cutting ]
-          tag: [ Wirecutter ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: CutWire
           sound:
             path: /Audio/Items/wirecutter.ogg
           time: 2
-          successChance: 1
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: StripWire
+          sound:
+            path: /Audio/Items/wirecutter.ogg
+          time: 2
+        - tool: [ Anchoring ]
+          tag: [ Wirecutter, Pipe ]
+          action: Unanchor
+          sound:
+            path: /Audio/Items/ratchet.ogg
+          time: 2
         - tool: [ Screwing ]
-          tag: [ Screwdriver ]
+          tag: [ Knife, Shiv, BasicGlassShard]
           action: RemovePart
           sound:
             collection: Screwdriver
           time: 2
           requiredPart: left_hand
-          successChance: 1
 
 - type: surgeryTransition
   id: AndroidAttachLeftHandTransition
@@ -515,12 +532,11 @@
           bodyPart: left_arm
       steps:
         - tool: [ Screwing ]
-          tag: [ Screwdriver ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
           sound:
             collection: Screwdriver
           time: 2
-          successChance: 1          
 
 - type: surgeryTransition
   id: AndroidAttachLeftHandProcessTransition
@@ -528,16 +544,14 @@
   label: Прикрепить левую кисть
   stepGroups:
     - steps:
+        - tag: [ CableCoil ]
+          entityPreview: CableApcStack
+          action: MendWire
+          time: 2
         - tag: [ LeftHandSynthetic ]
           action: AttachPart
           requiredPart: left_hand
           time: 2
-          successChance: 1
-        - tag: [ CableCoil ]
-          entityPreview: CableApcStack
-          action: Empty
-          time: 2
-          successChance: 1
 
 #ПРАВАЯ КИСТЬ
 - type: surgeryTransition
@@ -552,12 +566,11 @@
           bodyPart: right_hand
       steps:
         - tool: [ Screwing ]
-          tag: [ Screwdriver ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
           sound:
             collection: Screwdriver
           time: 2
-          successChance: 1
 
 - type: surgeryTransition
   id: AndroidAmputateRightHandProcessTransition
@@ -566,20 +579,30 @@
   stepGroups:
     - steps:
         - tool: [ Cutting ]
-          tag: [ Wirecutter ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: CutWire
           sound:
             path: /Audio/Items/wirecutter.ogg
           time: 2
-          successChance: 1
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: StripWire
+          sound:
+            path: /Audio/Items/wirecutter.ogg
+          time: 2
+        - tool: [ Anchoring ]
+          tag: [ Wirecutter, Pipe ]
+          action: Unanchor
+          sound:
+            path: /Audio/Items/ratchet.ogg
+          time: 2
         - tool: [ Screwing ]
-          tag: [ Screwdriver ]
+          tag: [ Knife, Shiv, BasicGlassShard]
           action: RemovePart
           sound:
             collection: Screwdriver
           time: 2
           requiredPart: right_hand
-          successChance: 1
 
 - type: surgeryTransition
   id: AndroidAttachRightHandTransition
@@ -594,12 +617,11 @@
           bodyPart: right_arm
       steps:
         - tool: [ Screwing ]
-          tag: [ Screwdriver ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
           sound:
             collection: Screwdriver
           time: 2
-          successChance: 1          
 
 - type: surgeryTransition
   id: AndroidAttachRightHandProcessTransition
@@ -607,16 +629,14 @@
   label: Прикрепить правую кисть
   stepGroups:
     - steps:
+        - tag: [ CableCoil ]
+          entityPreview: CableApcStack
+          action: MendWire
+          time: 2
         - tag: [ RightHandSynthetic ]
           action: AttachPart
           requiredPart: right_hand
           time: 2
-          successChance: 1
-        - tag: [ CableCoil ]
-          entityPreview: CableApcStack
-          action: Empty
-          time: 2
-          successChance: 1
 
 # ЛЕВАЯ НОГА
 - type: surgeryTransition
@@ -629,12 +649,11 @@
           bodyPart: left_leg
       steps:
         - tool: [ Screwing ]
-          tag: [ Screwdriver ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
           sound:
             collection: Screwdriver
           time: 2
-          successChance: 1
 
 - type: surgeryTransition
   id: AndroidAmputateLeftLegProcessTransition
@@ -646,27 +665,36 @@
           bodyPart: left_leg
       steps:
         - tool: [ Cutting ]
-          tag: [ Wirecutter ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: CutWire
           sound:
             path: /Audio/Items/wirecutter.ogg
           time: 2
-          successChance: 1
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: StripWire
+          sound:
+            path: /Audio/Items/wirecutter.ogg
+          time: 2
+        - tool: [ Anchoring ]
+          tag: [ Wirecutter, Pipe ]
+          action: Unanchor
+          sound:
+            path: /Audio/Items/ratchet.ogg
+          time: 2
         - tool: [ Screwing ]
-          tag: [ Screwdriver ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
           sound:
             collection: Screwdriver
           time: 2
-          successChance: 1
         - tool: [ Anchoring ]
-          tag: [ Wrench ]
+          tag: [ Wirecutter, Pipe ]
           action: RemovePart
           sound:
             path: /Audio/Items/ratchet.ogg
           time: 2
           requiredPart: left_leg
-          successChance: 1
 
 - type: surgeryTransition
   id: AndroidAttachLeftLegTransition
@@ -679,12 +707,11 @@
           bodyPart: left_leg
       steps:
         - tool: [ Screwing ]
-          tag: [ Screwdriver ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
           sound:
             collection: Screwdriver
           time: 2
-          successChance: 1          
 
 - type: surgeryTransition
   id: AndroidAttachLeftLegProcessTransition
@@ -692,23 +719,20 @@
   label: Прикрепить левую ногу
   stepGroups:
     - steps:
+        - tag: [ CableCoil ]
+          entityPreview: CableApcStack
+          action: MendWire
+          time: 2
         - tag: [ LeftLegSynthetic ]
           action: AttachPart
           requiredPart: left_leg
           time: 2
-          successChance: 1
-        - tag: [ CableCoil ]
-          entityPreview: CableApcStack
-          action: Empty
-          time: 2
-          successChance: 1
         - tool: [ Anchoring ]
-          tag: [ Wrench ]
-          action: Empty
+          tag: [ Wirecutter, Pipe ]
+          action: Anchor
           sound:
             path: /Audio/Items/ratchet.ogg
           time: 2
-          successChance: 1
 
 # ПРАВАЯ НОГА
 
@@ -722,12 +746,11 @@
           bodyPart: right_leg
       steps:
         - tool: [ Screwing ]
-          tag: [ Screwdriver ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
           sound:
             collection: Screwdriver
           time: 2
-          successChance: 1
 
 - type: surgeryTransition
   id: AndroidAmputateRightLegProcessTransition
@@ -739,27 +762,36 @@
           bodyPart: right_leg
       steps:
         - tool: [ Cutting ]
-          tag: [ Wirecutter ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: CutWire
           sound:
             path: /Audio/Items/wirecutter.ogg
           time: 2
-          successChance: 1
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: StripWire
+          sound:
+            path: /Audio/Items/wirecutter.ogg
+          time: 2
+        - tool: [ Anchoring ]
+          tag: [ Wirecutter, Pipe ]
+          action: Unanchor
+          sound:
+            path: /Audio/Items/ratchet.ogg
+          time: 2
         - tool: [ Screwing ]
-          tag: [ Screwdriver ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
           sound:
             collection: Screwdriver
           time: 2
-          successChance: 1
         - tool: [ Anchoring ]
-          tag: [ Wrench ]
+          tag: [ Wirecutter, Pipe ]
           action: RemovePart
           sound:
             path: /Audio/Items/ratchet.ogg
           time: 2
           requiredPart: right_leg
-          successChance: 1
 
 - type: surgeryTransition
   id: AndroidAttachRightLegTransition
@@ -772,12 +804,11 @@
           bodyPart: right_leg
       steps:
         - tool: [ Screwing ]
-          tag: [ Screwdriver ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
           sound:
             collection: Screwdriver
           time: 2
-          successChance: 1          
 
 - type: surgeryTransition
   id: AndroidAttachRightLegProcessTransition
@@ -785,23 +816,20 @@
   label: Прикрепить правую ногу
   stepGroups:
     - steps:
+        - tag: [ CableCoil ]
+          entityPreview: CableApcStack
+          action: MendWire
+          time: 2
         - tag: [ RightLegSynthetic ]
           action: AttachPart
           requiredPart: right_leg
           time: 2
-          successChance: 1
-        - tag: [ CableCoil ]
-          entityPreview: CableApcStack
-          action: Empty
-          time: 2
-          successChance: 1
         - tool: [ Anchoring ]
-          tag: [ Wrench ]
-          action: Empty
+          tag: [ Wirecutter, Pipe ]
+          action: Anchor
           sound:
             path: /Audio/Items/ratchet.ogg
           time: 2
-          successChance: 1
 
 # ЛЕВАЯ СТОПА
 - type: surgeryTransition
@@ -816,12 +844,11 @@
           bodyPart: left_foot
       steps:
         - tool: [ Screwing ]
-          tag: [ Screwdriver ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
           sound:
             collection: Screwdriver
           time: 2
-          successChance: 1
 
 - type: surgeryTransition
   id: AndroidAmputateLeftFootProcessTransition
@@ -835,27 +862,36 @@
           bodyPart: left_foot
       steps:
         - tool: [ Cutting ]
-          tag: [ Wirecutter ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: CutWire
           sound:
             path: /Audio/Items/wirecutter.ogg
           time: 2
-          successChance: 1
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: StripWire
+          sound:
+            path: /Audio/Items/wirecutter.ogg
+          time: 2
+        - tool: [ Anchoring ]
+          tag: [ Wirecutter, Pipe ]
+          action: Unanchor
+          sound:
+            path: /Audio/Items/ratchet.ogg
+          time: 2
         - tool: [ Screwing ]
-          tag: [ Screwdriver ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
           sound:
             collection: Screwdriver
           time: 2
-          successChance: 1
         - tool: [ Anchoring ]
-          tag: [ Wrench ]
+          tag: [ Wirecutter, Pipe ]
           action: RemovePart
           sound:
             path: /Audio/Items/ratchet.ogg
           time: 2
           requiredPart: left_foot
-          successChance: 1
 
 - type: surgeryTransition
   id: AndroidAttachLeftFootTransition
@@ -870,12 +906,11 @@
           bodyPart: left_foot
       steps:
         - tool: [ Screwing ]
-          tag: [ Screwdriver ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
           sound:
             collection: Screwdriver
           time: 2
-          successChance: 1          
 
 - type: surgeryTransition
   id: AndroidAttachLeftFootProcessTransition
@@ -883,23 +918,20 @@
   label: Прикрепить левую стопу
   stepGroups:
     - steps:
+        - tag: [ CableCoil ]
+          entityPreview: CableApcStack
+          action: MendWire
+          time: 2
         - tag: [ LeftFootSynthetic ]
           action: AttachPart
           requiredPart: left_foot
           time: 2
-          successChance: 1
-        - tag: [ CableCoil ]
-          entityPreview: CableApcStack
-          action: Empty
-          time: 2
-          successChance: 1
         - tool: [ Anchoring ]
-          tag: [ Wrench ]
-          action: Empty
+          tag: [ Wirecutter, Pipe ]
+          action: Anchor
           sound:
             path: /Audio/Items/ratchet.ogg
           time: 2
-          successChance: 1
 
 # ПРАВАЯ СТОПА
 - type: surgeryTransition
@@ -914,12 +946,11 @@
           bodyPart: right_foot
       steps:
         - tool: [ Screwing ]
-          tag: [ Screwdriver ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
           sound:
             collection: Screwdriver
           time: 2
-          successChance: 1
 
 - type: surgeryTransition
   id: AndroidAmputateRightFootProcessTransition
@@ -933,27 +964,36 @@
           bodyPart: right_foot
       steps:
         - tool: [ Cutting ]
-          tag: [ Wirecutter ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: CutWire
           sound:
             path: /Audio/Items/wirecutter.ogg
           time: 2
-          successChance: 1
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: StripWire
+          sound:
+            path: /Audio/Items/wirecutter.ogg
+          time: 2
+        - tool: [ Anchoring ]
+          tag: [ Wirecutter, Pipe ]
+          action: Unanchor
+          sound:
+            path: /Audio/Items/ratchet.ogg
+          time: 2
         - tool: [ Screwing ]
-          tag: [ Screwdriver ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
           sound:
             collection: Screwdriver
           time: 2
-          successChance: 1
         - tool: [ Anchoring ]
-          tag: [ Wrench ]
+          tag: [ Wirecutter, Pipe ]
           action: RemovePart
           sound:
             path: /Audio/Items/ratchet.ogg
           time: 2
           requiredPart: right_foot
-          successChance: 1
 
 - type: surgeryTransition
   id: AndroidAttachRightFootTransition
@@ -968,12 +1008,11 @@
           bodyPart: right_foot
       steps:
         - tool: [ Screwing ]
-          tag: [ Screwdriver ]
-          action: Empty
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
           sound:
             collection: Screwdriver
           time: 2
-          successChance: 1          
 
 - type: surgeryTransition
   id: AndroidAttachRightFootProcessTransition
@@ -981,23 +1020,20 @@
   label: Прикрепить правую стопу
   stepGroups:
     - steps:
+        - tag: [ CableCoil ]
+          entityPreview: CableApcStack
+          action: MendWire
+          time: 2
         - tag: [ RightFootSynthetic ]
           action: AttachPart
           requiredPart: right_foot
           time: 2
-          successChance: 1
-        - tag: [ CableCoil ]
-          entityPreview: CableApcStack
-          action: Empty
-          time: 2
-          successChance: 1
         - tool: [ Anchoring ]
-          tag: [ Wrench ]
-          action: Empty
+          tag: [ Wirecutter, Pipe ]
+          action: Anchor
           sound:
             path: /Audio/Items/ratchet.ogg
           time: 2
-          successChance: 1
 
 # Завершающий переход конечности
 - type: surgeryTransition
@@ -1006,17 +1042,14 @@
   label: Завершить
   stepGroups:
     - steps:
-        - tool: [ Welding ]
-          tag: [ Welder ]
-          action: ClampBleeding
+        - tool: [ Welding, Cautery ]
+          action: Weld
           sound:
             collection: Welder
           time: 2
-          successChance: 1
         - tool: [ Pulsing ]
-          tag: [ Multitool ]
-          action: Empty
+          tag: [ DoorElectronicsConfigurator ]
+          action: Pulse
           sound:
             collection: CargoBeep
           time: 2
-          successChance: 1

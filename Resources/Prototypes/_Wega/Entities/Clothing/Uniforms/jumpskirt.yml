@@ -11,3 +11,25 @@
   - type: DiseaseProtection
     protection: 0.1
   - type: ClothingSterility
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtBlueShield
+  name: blue shield officer's jumpsuit skirt
+  description: The purple uniform of the officer "Blue Shield" is made of dense materials.
+  components:
+    - type: Sprite
+      sprite: _Wega/Clothing/Uniforms/Jumpskirt/blueshield.rsi
+    - type: Clothing
+      sprite: _Wega/Clothing/Uniforms/Jumpskirt/blueshield.rsi
+
+- type: entity
+  parent: ClothingUniformSkirtToggleableBase
+  id: ClothingUniformJumpskirtPostman
+  name: postman jumpsuit skirt
+  description: "A practical jumpsuit skirt, perfect for quick gathering and active work."
+  components:
+    - type: Sprite
+      sprite: _Wega/Clothing/Uniforms/Jumpskirt/postman.rsi
+    - type: Clothing
+      sprite: _Wega/Clothing/Uniforms/Jumpskirt/postman.rsi

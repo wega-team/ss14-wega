@@ -71,10 +71,19 @@
   - ClothingBackpackElectropack
   - HoloprojectorSecurity
   - PortableRecharger
+# Corvax-Wega-Arsenal-start
+  - PortableRechargerBag
+  - PortableRechargerTurbo
+  - PortableRechargerTurboBag
+  - ClothingHeadHelmetFlash
+  - ClothingNeckFlashNeck
+  - ExmFlash
+# Corvax-Wega-Arsenal-end
   - PowerCageHigh
   - PowerCageMedium
   - PowerCageSmall
   - TelescopicShield
+  - ClothingBackpackHarmpack
 
 - type: latheRecipePack
   id: SecurityBoards

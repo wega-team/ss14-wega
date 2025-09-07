@@ -1,3 +1,4 @@
+using System.Numerics;
 using Content.Shared.Shaders;
 using Robust.Client.Graphics;
 using Robust.Client.Player;

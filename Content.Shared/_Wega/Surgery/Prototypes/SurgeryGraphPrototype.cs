@@ -27,8 +27,7 @@ public sealed class SurgeryGraphPrototype : IPrototype
     }
 }
 
-[Prototype("surgeryNode")]
-[Serializable, DataDefinition]
+[Prototype("surgeryNode"), DataDefinition]
 public sealed partial class SurgeryNodePrototype : IPrototype
 {
     [IdDataField]
@@ -68,8 +67,7 @@ public sealed partial class SurgeryNodePrototype : IPrototype
     }
 }
 
-[Prototype("surgeryPackage")]
-[Serializable, DataDefinition]
+[Prototype("surgeryPackage"), DataDefinition]
 public sealed partial class SurgeryPackagePrototype : IPrototype
 {
     [IdDataField]
@@ -79,8 +77,7 @@ public sealed partial class SurgeryPackagePrototype : IPrototype
     public List<ProtoId<SurgeryTransitionPrototype>> TransitionIds { get; set; } = new();
 }
 
-[Prototype("surgeryTransition")]
-[Serializable, DataDefinition]
+[Prototype("surgeryTransition"), DataDefinition]
 public sealed partial class SurgeryTransitionPrototype : IPrototype
 {
     [IdDataField]

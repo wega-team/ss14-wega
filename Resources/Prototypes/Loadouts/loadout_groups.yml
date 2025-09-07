@@ -402,6 +402,17 @@
   - ChaplainNeck
 
 - type: loadoutGroup
+  id: ChaplainBible
+  name: loadout-group-chaplain-bible
+  minLimit: 1
+  loadouts:
+  - Bible
+  - BibleDruid
+  - BibleNanoTrasen
+  - BibleSatanic
+  - BibleTanakh
+
+- type: loadoutGroup
   id: JanitorHead
   name: loadout-group-janitor-head
   minLimit: 0
@@ -522,7 +533,7 @@
   - EmergencyNitrogenClown
   - EmergencyOxygenClown
   - LoadoutSpeciesVoxNitrogen
-  - EmergencyAndroid # Corvax-Wega-Android
+  - EmergencyAndroidClown # Corvax-Wega-Android
 
 - type: loadoutGroup
   id: MimeHead
@@ -580,6 +591,7 @@
   - EmergencyOxygenMime
   - EmergencySpeciesMothMime
   - LoadoutSpeciesVoxNitrogen
+  - EmergencyAndroidMime # Corvax-Wega-Android
 
 - type: loadoutGroup
   id: MusicianJumpsuit
@@ -601,6 +613,7 @@
   minLimit: 0
   maxLimit: 2
   loadouts:
+  - SuperSynthesizerInstrument ## Corvax-Wega
   - Glockenspiel
   - MusicBox
   - Xylophone
@@ -1408,6 +1421,7 @@
   - EmergencyNitrogenSyndicate
   - EmergencyOxygenSyndicate
   - LoadoutSpeciesVoxNitrogen
+  - EmergencyAndroidSyndicate # Corvax-Wega-Android
 
 - type: loadoutGroup
   id: GroupSpeciesBreathTool

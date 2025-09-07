@@ -10,6 +10,7 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using Content.Shared.SoundInsolation;
 
 namespace Content.Client.Speech.Synthesis.System;
 
@@ -22,6 +23,7 @@ public sealed class BarkSystem : EntitySystem
     [Dependency] private readonly IConfigurationManager _cfg = default!;
     [Dependency] private readonly IEntityManager _entityManager = default!;
     [Dependency] private readonly IPlayerManager _player = default!;
+    [Dependency] private readonly SoundInsulationSystem _soundInsulation = default!;
 
     private const float MinimalVolume = -10f;
     private const float WhisperFade = 4f;
@@ -42,6 +44,7 @@ public sealed class BarkSystem : EntitySystem
         if (!_entityManager.EntityExists(sourceEntity) || _entityManager.Deleted(sourceEntity) || !HasComp<TransformComponent>(sourceEntity))
             return;
 
+        float volumeMultiplier = 1f;
         if (_player.LocalEntity != null && HasComp<TransformComponent>(_player.LocalEntity.Value))
         {
             var sourceTransform = Transform(sourceEntity);
@@ -50,16 +53,22 @@ public sealed class BarkSystem : EntitySystem
             if (sourceTransform.Coordinates.TryDistance(EntityManager, playerTransform.Coordinates, out var distance) &&
                 distance > SharedChatSystem.VoiceRange)
                 return;
-        }
 
-        // Corvax-Wega-Deafness
-        if (HasComp<DeafnessComponent>(sourceEntity))
-            return;
+            var insulation = _soundInsulation.GetSoundInsulation(sourceEntity, _player.LocalEntity.Value);
+            if (insulation >= 0.95f)
+                return;
+
+            if (insulation > 0.1f && insulation < 0.95f)
+            {
+                volumeMultiplier = 1f - MathHelper.Lerp(0.1f, 0.9f, insulation);
+                volumeMultiplier = Math.Clamp(volumeMultiplier, 0.1f, 0.9f);
+            }
+        }
 
         var userVolume = _cfg.GetCVar(WegaCVars.BarksVolume);
         var baseVolume = SharedAudioSystem.GainToVolume(userVolume * ContentAudioSystem.BarksMultiplier);
 
-        float volume = MinimalVolume + baseVolume;
+        float volume = MinimalVolume + baseVolume * volumeMultiplier;
         if (ev.Obfuscated)
             volume -= WhisperFade;
 

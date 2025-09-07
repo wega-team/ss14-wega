@@ -5,9 +5,8 @@ using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
-using Content.Server.Players.RateLimiting;
-using Content.Server.Speech.Prototypes;
 using Content.Server.Speech.EntitySystems;
+using Content.Server.Speech.Prototypes;
 using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
 using Content.Shared.ActionBlocker;
@@ -35,7 +34,8 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Replays;
 using Robust.Shared.Utility;
-using Content.Shared.Strangulation; // Corvax-Corvax-Wega-Strangulation
+using Content.Shared.Strangulation; // Corvax-Wega-Strangulation
+using Content.Shared.SoundInsolation; // Corvax-Wega-SoundInsolation
 
 namespace Content.Server.Chat.Systems;
 
@@ -62,6 +62,7 @@ public sealed partial class ChatSystem : SharedChatSystem
     [Dependency] private readonly ReplacementAccentSystem _wordreplacement = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
     [Dependency] private readonly ExamineSystemShared _examineSystem = default!;
+    [Dependency] private readonly SoundInsulationSystem _soundInsulation = default!; // Corvax-Wega-SoundInsolation
 
     // Corvax-TTS-Start: Moved from Server to Shared
     // public const int VoiceRange = 10; // how far voice goes in world units
@@ -528,20 +529,22 @@ public sealed partial class ChatSystem : SharedChatSystem
         }
         name = FormattedMessage.EscapeText(name);
 
-        var wrappedMessage = Loc.GetString("chat-manager-entity-whisper-wrap-message",
+        // Corvax-Wega-SoundInsolation-Edit-start
+        var baseWrappedMessage = Loc.GetString("chat-manager-entity-whisper-wrap-message",
             ("entityName", name), ("message", FormattedMessage.EscapeText(message)));
 
-        var wrappedobfuscatedMessage = Loc.GetString("chat-manager-entity-whisper-wrap-message",
+        var baseWrappedObfuscatedMessage = Loc.GetString("chat-manager-entity-whisper-wrap-message",
             ("entityName", nameIdentity), ("message", FormattedMessage.EscapeText(obfuscatedMessage)));
 
-        var wrappedUnknownMessage = Loc.GetString("chat-manager-entity-whisper-unknown-wrap-message",
+        var baseWrappedUnknownMessage = Loc.GetString("chat-manager-entity-whisper-unknown-wrap-message",
             ("message", FormattedMessage.EscapeText(obfuscatedMessage)));
-
 
         foreach (var (session, data) in GetRecipients(source, WhisperMuffledRange))
         {
-            EntityUid listener;
+            if (data.IsFullyInsulated)
+                continue;
 
+            EntityUid listener;
             if (session.AttachedEntity is not { Valid: true } playerEntity)
                 continue;
             listener = session.AttachedEntity.Value;
@@ -549,17 +552,39 @@ public sealed partial class ChatSystem : SharedChatSystem
             if (MessageRangeCheck(session, data, range) != MessageRangeCheckResult.Full)
                 continue; // Won't get logged to chat, and ghosts are too far away to see the pop-up, so we just won't send it to them.
 
-            if (data.Range <= WhisperClearRange)
-                _chatManager.ChatMessageToOne(ChatChannel.Whisper, message, wrappedMessage, source, false, session.Channel);
+            var currentMessage = message;
+            var currentObfuscatedMessage = obfuscatedMessage;
+            var currentWrappedMessage = baseWrappedMessage;
+            var currentWrappedObfuscatedMessage = baseWrappedObfuscatedMessage;
+            var currentWrappedUnknownMessage = baseWrappedUnknownMessage;
+
+            if (data.IsPartiallyInsulated)
+            {
+                currentMessage = _soundInsulation.ObfuscateMessageByInsulation(message, data.Insulation);
+                currentObfuscatedMessage = _soundInsulation.ObfuscateMessageByInsulation(obfuscatedMessage, data.Insulation);
+
+                currentWrappedMessage = Loc.GetString("chat-manager-entity-whisper-wrap-message",
+                    ("entityName", name), ("message", FormattedMessage.EscapeText(currentMessage)));
+
+                currentWrappedObfuscatedMessage = Loc.GetString("chat-manager-entity-whisper-wrap-message",
+                    ("entityName", nameIdentity), ("message", FormattedMessage.EscapeText(currentObfuscatedMessage)));
+
+                currentWrappedUnknownMessage = Loc.GetString("chat-manager-entity-whisper-unknown-wrap-message",
+                    ("message", FormattedMessage.EscapeText(currentObfuscatedMessage)));
+            }
+
+            if (data.Range <= (TryComp<ChatModifierComponent>(listener, out var modifier) ? modifier.WhisperListeningRange : WhisperClearRange) || data.Observer) // Corvax-Wega-Resomi
+                _chatManager.ChatMessageToOne(ChatChannel.Whisper, currentMessage, currentWrappedMessage, source, false, session.Channel);
             //If listener is too far, they only hear fragments of the message
             else if (_examineSystem.InRangeUnOccluded(source, listener, WhisperMuffledRange))
-                _chatManager.ChatMessageToOne(ChatChannel.Whisper, obfuscatedMessage, wrappedobfuscatedMessage, source, false, session.Channel);
+                _chatManager.ChatMessageToOne(ChatChannel.Whisper, currentObfuscatedMessage, currentWrappedObfuscatedMessage, source, false, session.Channel);
             //If listener is too far and has no line of sight, they can't identify the whisperer's identity
             else
-                _chatManager.ChatMessageToOne(ChatChannel.Whisper, obfuscatedMessage, wrappedUnknownMessage, source, false, session.Channel);
+                _chatManager.ChatMessageToOne(ChatChannel.Whisper, currentObfuscatedMessage, currentWrappedUnknownMessage, source, false, session.Channel);
         }
 
-        _replay.RecordServerMessage(new ChatMessage(ChatChannel.Whisper, message, wrappedMessage, GetNetEntity(source), null, MessageRangeHideChatForReplay(range)));
+        _replay.RecordServerMessage(new ChatMessage(ChatChannel.Whisper, message, baseWrappedMessage, GetNetEntity(source), null, MessageRangeHideChatForReplay(range)));
+        // Corvax-Wega-SoundInsolation-Edit-end
 
         var ev = new EntitySpokeEvent(source, message, originalMessage, channel, obfuscatedMessage);
         RaiseLocalEvent(source, ev, true);
@@ -606,8 +631,10 @@ public sealed partial class ChatSystem : SharedChatSystem
             ("entity", ent),
             ("message", FormattedMessage.RemoveMarkupOrThrow(action)));
 
-        if (checkEmote)
-            TryEmoteChatInput(source, action);
+        if (checkEmote &&
+            !TryEmoteChatInput(source, action))
+            return;
+
         SendInVoiceRange(ChatChannel.Emotes, action, wrappedMessage, source, range, author);
         if (!hideLog)
             if (name != Name(source))
@@ -723,8 +750,20 @@ public sealed partial class ChatSystem : SharedChatSystem
             var entRange = MessageRangeCheck(session, data, range);
             if (entRange == MessageRangeCheckResult.Disallowed)
                 continue;
+
+            // Corvax-Wega-SoundInsolation-Edit-start
+            var currentMessage = message;
+            var currentWrappedMessage = wrappedMessage;
+            // The whisper is processed separately.
+            if (data.IsPartiallyInsulated && channel == ChatChannel.Local)
+            {
+                currentMessage = _soundInsulation.ObfuscateMessageByInsulation(message, data.Insulation);
+                currentWrappedMessage = RebuildWrappedMessage(channel, currentMessage, source);
+            }
+
             var entHideChat = entRange == MessageRangeCheckResult.HideChat;
-            _chatManager.ChatMessageToOne(channel, message, wrappedMessage, source, entHideChat, session.Channel, author: author);
+            _chatManager.ChatMessageToOne(channel, currentMessage, currentWrappedMessage, source, entHideChat, session.Channel, author: author);
+            // Corvax-Wega-SoundInsolation-Edit-end
         }
 
         _replay.RecordServerMessage(new ChatMessage(channel, message, wrappedMessage, GetNetEntity(source), null, MessageRangeHideChatForReplay(range)));
@@ -822,8 +861,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         return message;
     }
 
-    [ValidatePrototypeId<ReplacementAccentPrototype>]
-    public const string ChatSanitize_Accent = "chatsanitize";
+    public static readonly ProtoId<ReplacementAccentPrototype> ChatSanitize_Accent = "chatsanitize";
 
     public string SanitizeMessageReplaceWords(string message)
     {
@@ -846,7 +884,6 @@ public sealed partial class ChatSystem : SharedChatSystem
         var recipients = new Dictionary<ICommonSession, ICChatRecipientData>();
         var ghostHearing = GetEntityQuery<GhostHearingComponent>();
         var xforms = GetEntityQuery<TransformComponent>();
-        var deafnessQuery = GetEntityQuery<DeafnessComponent>(); // Corvax-Wega-Deafness
 
         var transformSource = xforms.GetComponent(source);
         var sourceMapId = transformSource.MapID;
@@ -857,8 +894,6 @@ public sealed partial class ChatSystem : SharedChatSystem
             if (player.AttachedEntity is not { Valid: true } playerEntity)
                 continue;
 
-            if (deafnessQuery.HasComponent(playerEntity)) continue; // Corvax-Wega-Deafness
-
             var transformEntity = xforms.GetComponent(playerEntity);
 
             if (transformEntity.MapID != sourceMapId)
@@ -866,10 +901,20 @@ public sealed partial class ChatSystem : SharedChatSystem
 
             var observer = ghostHearing.HasComponent(playerEntity);
 
+            // Corvax-Wega-SoundInsolation-start
+            float insulation = 0f;
+            if (!observer)
+            {
+                insulation = _soundInsulation.GetSoundInsulation(source, playerEntity);
+                if (insulation >= 0.95f)
+                    continue;
+            }
+            // Corvax-Wega-SoundInsolation-end
+
             // even if they are a ghost hearer, in some situations we still need the range
             if (sourceCoords.TryDistance(EntityManager, transformEntity.Coordinates, out var distance) && distance < voiceGetRange)
             {
-                recipients.Add(player, new ICChatRecipientData(distance, observer));
+                recipients.Add(player, new ICChatRecipientData(distance, observer, Insulation: insulation)); // Corvax-Wega-SoundInsolation-Edit
                 continue;
             }
 
@@ -881,9 +926,41 @@ public sealed partial class ChatSystem : SharedChatSystem
         return recipients;
     }
 
-    public readonly record struct ICChatRecipientData(float Range, bool Observer, bool? HideChatOverride = null)
+    // Corvax-Wega-SoundInsolation-Edit-start
+    public readonly record struct ICChatRecipientData(float Range, bool Observer, bool? HideChatOverride = null, float Insulation = 0f)
     {
+        public bool IsFullyInsulated => Insulation >= 0.95f;
+        public bool IsPartiallyInsulated => Insulation > 0.1f && Insulation < 0.95f;
     }
+
+    private string RebuildWrappedMessage(ChatChannel channel, string message, EntityUid source)
+    {
+        switch (channel)
+        {
+            case ChatChannel.Local:
+                var speech = GetSpeechVerb(source, message);
+                var nameEv = new TransformSpeakerNameEvent(source, Name(source));
+                RaiseLocalEvent(source, nameEv);
+                var name = nameEv.VoiceName;
+                return Loc.GetString(speech.Bold ? "chat-manager-entity-say-bold-wrap-message" : "chat-manager-entity-say-wrap-message",
+                    ("entityName", name),
+                    ("verb", Loc.GetString(_random.Pick(speech.SpeechVerbStrings))),
+                    ("fontType", speech.FontId),
+                    ("fontSize", speech.FontSize),
+                    ("message", FormattedMessage.EscapeText(message)));
+
+            // case ChatChannel.Emotes:
+            //     var ent = Identity.Entity(source, EntityManager);
+            //     string emoteName = Name(ent);
+            //     return Loc.GetString("chat-manager-entity-me-wrap-message",
+            //         ("entityName", emoteName),
+            //         ("entity", ent),
+            //         ("message", FormattedMessage.RemoveMarkupOrThrow(message)));
+
+            default: return message;
+        }
+    }
+    // Corvax-Wega-SoundInsolation-Edit-end
 
     private string ObfuscateMessageReadability(string message, float chance)
     {

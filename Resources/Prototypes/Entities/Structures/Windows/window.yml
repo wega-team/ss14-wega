@@ -92,6 +92,8 @@
   - type: StaticPrice
     price: 100
   - type: BlockWeather
+  - type: SoundInsulator # Corvax-Wega-SoundInsolation
+    insulationFactor: 0.6 # Corvax-Wega-SoundInsolation
 
 - type: entity
   parent: Window
@@ -257,6 +259,7 @@
   - type: Tag
     tags:
     - Diagonal
+    - Window
   - type: IconSmooth
     mode: Diagonal
     key: walls  # Corvax-Resprite

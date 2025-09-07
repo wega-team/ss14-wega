@@ -120,6 +120,11 @@
   - type: SpeedModifierContactCapClothing
     maxContactSprintSlowdown: 0.7
     maxContactWalkSlowdown: 0.7
+  # Corvax-Wega-Dirtable-start
+  - type: Dirtable
+    dirtState: galoshes
+    equippedDirtState: equipped-shoes
+  # Corvax-Wega-Dirtable-end
 
 - type: entity
   parent: [ClothingShoesBaseButcherable, BaseMajorContraband]

@@ -1,5 +1,4 @@
 using System.Linq;
-using Content.Server.Body.Components;
 using Content.Server.Body.Systems;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Body.Components;
@@ -18,6 +17,7 @@ using Content.Shared.Silicons.Borgs.Components;
 using Content.Shared.Surgery;
 using Content.Shared.Surgery.Components;
 using Content.Shared.Traits.Assorted;
+using Robust.Shared.Audio;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -38,6 +38,7 @@ public sealed partial class SurgerySystem
 
         switch (action)
         {
+            // Organic Start
             case SurgeryActionType.Cut:
                 PerformCut((patient, comp), successChance, failureEffect);
                 break;
@@ -89,14 +90,60 @@ public sealed partial class SurgerySystem
             case SurgeryActionType.RetrieveItems:
                 PerformRetrieveItems((patient, comp), requiredPart, successChance, failureEffect);
                 break;
+            // Organic End
+
+            // Synthetic Start
+            case SurgeryActionType.Unscrew:
+                PerformUnscrew((patient, comp));
+                break;
+
+            case SurgeryActionType.Screw:
+                PerformScrew((patient, comp));
+                break;
+
+            case SurgeryActionType.Pulse:
+                PerformPulse((patient, comp));
+                break;
+
+            case SurgeryActionType.Weld:
+                PerformWeld((patient, comp));
+                break;
+
+            case SurgeryActionType.CutWire:
+                PerformCutWire((patient, comp));
+                break;
+
+            case SurgeryActionType.StripWire:
+                PerformStripWire((patient, comp));
+                break;
+
+            case SurgeryActionType.MendWire:
+                PerformMendWire((patient, comp));
+                break;
+
+            case SurgeryActionType.Pry:
+                PerformPry((patient, comp));
+                break;
+
+            case SurgeryActionType.Anchor:
+                PerformAnchor((patient, comp));
+                break;
+
+            case SurgeryActionType.Unanchor:
+                PerformUnanchor((patient, comp));
+                break;
+            // Synthetic End
 
             default: break;
         }
 
         // Any action without anesthesia will cause pain.
-        if (!HasComp<SleepingComponent>(patient) && !HasComp<PainNumbnessComponent>(patient) && !comp.OperatedPart && !_mobState.IsDead(patient) && !HasComp<SyntheticOperatedComponent>(patient))
+        if (!HasComp<SleepingComponent>(patient) && !HasComp<PainNumbnessComponent>(patient) && !comp.OperatedPart
+            && !_mobState.IsDead(patient) && !HasComp<SyntheticOperatedComponent>(patient))
             _chat.TryEmoteWithoutChat(patient, _proto.Index<EmotePrototype>("Scream"), true);
     }
+
+    #region Organic
 
     private void PerformCut(Entity<OperatedComponent> patient, float successChance, List<SurgeryFailedType>? failureEffect)
     {
@@ -402,14 +449,114 @@ public sealed partial class SurgerySystem
                 $"{ToPrettyString(patient.Comp.Surgeon.Value):user} retrieved items from {requiredPart} of {ToPrettyString(patient):target}");
     }
 
+    #endregion Organic
+
+    #region Synthetic
+
+    private void PerformUnscrew(Entity<OperatedComponent> patient)
+    {
+        if (patient.Comp.Surgeon == null || !HasComp<SyntheticOperatedComponent>(patient))
+            return;
+
+        _damage.TryChangeDamage(patient, new DamageSpecifier { DamageDict = { { BluntDamage, 2f } } }, true);
+        if (TryComp<DamageableComponent>(patient, out var damageable) && damageable.TotalDamage >= 50)
+            _audio.PlayPvs(new SoundCollectionSpecifier("sparks"), patient.Owner);
+    }
+
+    private void PerformScrew(Entity<OperatedComponent> patient)
+    {
+        if (patient.Comp.Surgeon == null || !HasComp<SyntheticOperatedComponent>(patient))
+            return;
+
+        _damage.TryChangeDamage(patient, new DamageSpecifier { DamageDict = { { BluntDamage, -2f } } }, true);
+    }
+
+    private void PerformPulse(Entity<OperatedComponent> patient)
+    {
+        if (patient.Comp.Surgeon == null || !HasComp<SyntheticOperatedComponent>(patient))
+            return;
+
+        _stun.TryAddStunDuration(patient.Owner, TimeSpan.FromSeconds(5));
+    }
+
+    private void PerformWeld(Entity<OperatedComponent> patient)
+    {
+        if (patient.Comp.Surgeon == null || !HasComp<SyntheticOperatedComponent>(patient))
+            return;
+
+        var healAmount = new DamageSpecifier { DamageDict = { { BluntDamage, -5f }, { SlashDamage, -5f } } };
+        _damage.TryChangeDamage(patient, healAmount, true);
+
+        if (HasComp<BloodstreamComponent>(patient))
+            _bloodstream.TryModifyBleedAmount(patient.Owner, -10f);
+    }
+
+    private void PerformCutWire(Entity<OperatedComponent> patient)
+    {
+        if (patient.Comp.Surgeon == null || !HasComp<SyntheticOperatedComponent>(patient))
+            return;
+
+        _audio.PlayPvs(new SoundCollectionSpecifier("sparks"), patient.Owner);
+        _stun.TryAddStunDuration(patient.Owner, TimeSpan.FromSeconds(1));
+    }
+
+    private void PerformStripWire(Entity<OperatedComponent> patient)
+    {
+        if (patient.Comp.Surgeon == null || !HasComp<SyntheticOperatedComponent>(patient))
+            return;
+
+        _damage.TryChangeDamage(patient, new DamageSpecifier { DamageDict = { { SlashDamage, -2f } } }, true);
+    }
+
+    private void PerformMendWire(Entity<OperatedComponent> patient)
+    {
+        if (patient.Comp.Surgeon == null || !HasComp<SyntheticOperatedComponent>(patient))
+            return;
+
+        var healAmount = new DamageSpecifier
+        {
+            DamageDict = { { BluntDamage, -6f }, { SlashDamage, -6f }, { PiercingDamage, -6f }, { HeatDamage, -6f } }
+        };
+        _damage.TryChangeDamage(patient, healAmount, true);
+    }
+
+    private void PerformPry(Entity<OperatedComponent> patient)
+    {
+        if (patient.Comp.Surgeon == null || !HasComp<SyntheticOperatedComponent>(patient))
+            return;
+
+        _damage.TryChangeDamage(patient, new DamageSpecifier { DamageDict = { { BluntDamage, 5f } } }, true);
+    }
+
+    private void PerformAnchor(Entity<OperatedComponent> patient)
+    {
+        if (patient.Comp.Surgeon == null || !HasComp<SyntheticOperatedComponent>(patient))
+            return;
+
+        _damage.TryChangeDamage(patient, new DamageSpecifier { DamageDict = { { BluntDamage, -8f } } }, true);
+    }
+
+    private void PerformUnanchor(Entity<OperatedComponent> patient)
+    {
+        if (patient.Comp.Surgeon == null || !HasComp<SyntheticOperatedComponent>(patient))
+            return;
+
+        _damage.TryChangeDamage(patient, new DamageSpecifier { DamageDict = { { BluntDamage, 4f } } }, true);
+        if (_random.Prob(0.3f))
+            _audio.PlayPvs(new SoundCollectionSpecifier("sparks"), patient.Owner);
+    }
+
+    #endregion Synthetic
+
+    #region Other Logic
+
     private bool RollSuccess(Entity<OperatedComponent> ent, EntityUid surgeon, float baseChance)
     {
         var item = _hands.GetActiveItemOrSelf(surgeon);
-        if (HasComp<SurgicalSkillComponent>(surgeon) && ent.Comp.Sterility == 1f
-            && HasComp<SterileComponent>(item)
-            && _surgeryTools.Any(tool => _tool.HasQuality(item, tool))
-            || _organs.Any(tag => _tag.HasTag(item, tag))
-            || _parts.Any(tag => _tag.HasTag(item, tag)))
+        if (HasComp<SurgicalSkillComponent>(surgeon) && ent.Comp.Sterility == 1f && HasComp<SterileComponent>(item)
+            && SurgeryTools.Any(tool => _tool.HasQuality(item, tool))
+            || Organs.Any(tag => _tag.HasTag(item, tag))
+            || Parts.Any(tag => _tag.HasTag(item, tag)))
         {
             return true;
         }
@@ -480,4 +627,6 @@ public sealed partial class SurgerySystem
             _popup.PopupPredicted(Loc.GetString($"surgery-handle-failed-{effect.ToString().ToLower()}", ("patient", Identity.Entity(patient, EntityManager))),
                 patient, null, PopupType.MediumCaution);
     }
+
+    #endregion
 }

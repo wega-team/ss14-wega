@@ -1,7 +1,7 @@
 # krav maga
 - type: entity
   parent: BaseTraitorStealObjective
-  id: KravMagaStealObjective
+  id: GlovesKravMagaStealObjective
   components:
   - type: Objective
     # WARDEN WILL KILL FOR THOSE
@@ -22,3 +22,16 @@
   - type: StealCondition
     stealGroup: CombatRCD
     owner: job-name-ce
+
+# blue laser pistol
+- type: entity
+  parent: BaseTraitorStealObjective
+  id: BlueLaserPistolStealObjective
+  components:
+  - type: Objective
+    difficulty: 3
+  - type: NotJobRequirement
+    job: BlueShieldOfficer
+  - type: StealCondition
+    stealGroup: WeaponBlueLaserPistol
+    owner: job-name-bso

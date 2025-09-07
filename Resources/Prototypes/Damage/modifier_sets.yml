@@ -201,10 +201,12 @@
 - type: damageModifierSet
   id: Zombie #Blunt resistant and immune to biological threats, but can be hacked apart and burned
   coefficients:
-    Blunt: 0.6
-    Piercing: 0.8
-    Cold: 0.3
-    Heat: 1.25
+    # Corvax-Wega-Zombie-Edit-start
+    Blunt: 0.3
+    Piercing: 0.4
+    Cold: 0.15
+    Heat: 0.625
+    # Corvax-Wega-Zombie-Edit-start
     Poison: 0.0
     Radiation: 0.0
 

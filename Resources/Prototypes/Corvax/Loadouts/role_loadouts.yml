@@ -1,3 +1,4 @@
+# Command
 - type: roleLoadout
   id: JobIAA
   groups:
@@ -14,6 +15,49 @@
   - Socks
   # Corvax-Wega-end
 
+# Engineering
+- type: roleLoadout
+  id: JobSeniorEngineer
+  groups:
+  - GroupTankHarness
+  - SeniorEngineerHead
+  - SeniorEngineerJumpsuit
+  - SeniorEngineerBackpack
+  - SeniorEngineerOuterClothing
+  - SeniorEngineerShoes
+  - SurvivalExtended
+  - Trinkets
+  - GroupSpeciesBreathTool
+  # Corvax-Wega-start
+  - SeniorEngineerOuterItem
+  - Top
+  - Bottom
+  - Socks
+  # Corvax-Wega-end
+
+# Science
+- type: roleLoadout
+  id: JobSeniorResearcher
+  groups:
+  - GroupTankHarness
+  - SeniorResearcherHead
+  - SeniorResearcherJumpsuit
+  - SeniorResearcherBackpack
+  - SeniorResearcherOuterClothing
+  - SeniorResearcherGloves
+  - SeniorResearcherShoes
+  - Glasses
+  - Survival
+  - Trinkets
+  - GroupSpeciesBreathTool
+  # Corvax-Wega-start
+  - SeniorResearcherItem
+  - Top
+  - Bottom
+  - Socks
+  # Corvax-Wega-end
+
+# Security
 - type: roleLoadout
   id: JobPilot
   groups:
@@ -28,6 +72,49 @@
   - Trinkets
   - GroupSpeciesBreathTool
   # Corvax-Wega-start
+  - Top
+  - Bottom
+  - Socks
+  # Corvax-Wega-end
+
+- type: roleLoadout
+  id: JobSeniorOfficer
+  groups:
+  - SeniorOfficerHead
+  - SeniorOfficerJumpsuit
+  - SeniorOfficerBackpack
+  - SeniorOfficerOuterClothing
+  - SeniorOfficerShoes
+  - SeniorOfficerBelt
+  - SurvivalSecurity
+  - Trinkets
+  - SecurityStar
+  - GroupSpeciesBreathToolSecurity
+  # Corvax-Wega-start
+  - SeniorOfficerItem
+  - Top
+  - Bottom
+  - Socks
+  # Corvax-Wega-end
+
+# Medical
+- type: roleLoadout
+  id: JobSeniorPhysician
+  groups:
+  - GroupTankHarness
+  - SeniorPhysicianHead
+  - MedicalMask
+  - SeniorPhysicianJumpsuit
+  - MedicalGloves
+  - SeniorPhysicianBackpack
+  - SeniorPhysicianOuterClothing
+  - SeniorPhysicianShoes
+  - Glasses
+  - SurvivalMedical
+  - Trinkets
+  - GroupSpeciesBreathToolMedical
+  # Corvax-Wega-start
+  - SeniorPhysicianItem
   - Top
   - Bottom
   - Socks

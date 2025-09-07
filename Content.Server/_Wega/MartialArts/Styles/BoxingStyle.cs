@@ -98,7 +98,7 @@ public sealed partial class MartialArtsSystem
 
             if (randomValue <= paralyzeChance)
             {
-                _stun.TryParalyze(target, TimeSpan.FromSeconds(4), true);
+                _stun.TryUpdateParalyzeDuration(target, TimeSpan.FromSeconds(4));
             }
         }
     }

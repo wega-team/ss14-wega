@@ -1,7 +1,7 @@
 using Content.Server.Access.Systems;
 using Content.Server.Humanoid;
 using Content.Server.IdentityManagement;
-using Content.Server.Mind.Commands;
+using Content.Server.Mind;
 using Content.Server.PDA;
 using Content.Server.Station.Components;
 using Content.Shared.Access.Components;
@@ -41,6 +41,7 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
     [Dependency] private readonly MetaDataSystem _metaSystem = default!;
     [Dependency] private readonly PdaSystem _pdaSystem = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+    [Dependency] private readonly MindSystem _mindSystem = default!;
 
     /// <summary>
     /// Attempts to spawn a player character onto the given station.
@@ -110,7 +111,7 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
         {
             DebugTools.Assert(entity is null);
             var jobEntity = Spawn(prototype.JobEntity, coordinates);
-            MakeSentientCommand.MakeSentient(jobEntity, EntityManager);
+            _mindSystem.MakeSentient(jobEntity);
 
             // Make sure custom names get handled, what is gameticker control flow whoopy.
             if (loadout != null)
@@ -135,15 +136,8 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
             _humanoidSystem.LoadProfile(entity.Value, profile);
             _metaSystem.SetEntityName(entity.Value, profile.Name);
 
-            if (_configurationManager.GetCVar(CCVars.FlavorText)) // Corvax-Wega-OOCFlavor-Edit
-            {
-                // Corvax-Wega-OOCFlavor-Edit-start
-                var content = $"{Loc.GetString("humanoid-profile-editor-flavor-label")}\n{profile.FlavorText}";
-                if (!string.IsNullOrEmpty(profile.OOCFlavorText))
-                    content += $"\n\n{Loc.GetString("humanoid-profile-editor-flavor-ooc-label")}\n{profile.OOCFlavorText}";
-                AddComp<DetailExaminableComponent>(entity.Value).Content = content;
-                // Corvax-Wega-OOCFlavor-Edit-end
-            }
+            if (_configurationManager.GetCVar(CCVars.FlavorText)) // Corvax-Wega-Graphomancy-Extended-Edit
+                AddComp<DetailExaminableComponent>(entity.Value).SetProfile(profile); // Corvax-Wega-Graphomancy-Extended-Edit
         }
 
         if (loadout != null)

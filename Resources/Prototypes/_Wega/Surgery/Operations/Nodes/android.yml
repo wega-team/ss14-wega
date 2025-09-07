@@ -16,8 +16,8 @@
   packages:
     - AndroidTorsoImplantPackage
   transitions:
-    - AndroidCloseTorsoTransition
     - AndroidOrganManipulationTransition
+    - AndroidCloseTorsoTransition
 
 # region Импланты
 
@@ -127,6 +127,16 @@
 
 - type: surgeryNode
   id: AndroidHeadOpen
+  description: "Панель головы открыта"
+  bodyPart: head
+  packages:
+    - AndroidHeadImplantPackage
+  transitions:
+    - AndroidExtractBrainTransition
+    - AndroidCloseHeadTransition
+
+- type: surgeryNode
+  id: AndroidImplantingHeadOpen
   description: "Панель головы открыта"
   bodyPart: head
   packages:

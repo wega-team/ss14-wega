@@ -1,7 +1,6 @@
 using System.Linq;
 using Content.Server.Administration;
 using Content.Server.Administration.Logs;
-using Content.Server.Body.Components;
 using Content.Server.Body.Systems;
 using Content.Server.Chat.Systems;
 using Content.Server.Emp;
@@ -44,6 +43,7 @@ using Robust.Shared.Player;
 using Robust.Shared.Timing;
 using Content.Shared.Flash.Components;
 using Content.Shared.Body.Components;
+using Content.Shared.NullRod.Components;
 
 namespace Content.Server.Blood.Cult;
 
@@ -603,7 +603,7 @@ public sealed partial class BloodCultSystem
         switch (spellComp.Prototype.FirstOrDefault())
         {
             case "stun":
-                if (!HasComp<BloodCultistComponent>(target))
+                if (!HasComp<BloodCultistComponent>(target) && !HasComp<NullRodOwnerComponent>(target))
                 {
                     ExtractBlood(user, -10, 6);
                     if (!HasComp<MutedComponent>(target))
@@ -612,7 +612,7 @@ public sealed partial class BloodCultSystem
                         Timer.Spawn(10000, () => { RemComp<MutedComponent>(target); });
                     }
 
-                    _stun.TryParalyze(target, TimeSpan.FromSeconds(4f), true);
+                    _stun.TryUpdateParalyzeDuration(target, TimeSpan.FromSeconds(4f));
                     if (!TryComp<FlashImmunityComponent>(target, out var flash))
                         _flash.Flash(target, user, entity, TimeSpan.FromSeconds(2f), 1f);
                     _entityManager.DeleteEntity(entity);
@@ -620,6 +620,9 @@ public sealed partial class BloodCultSystem
                 break;
             case "teleport":
                 ExtractBlood(user, -7, 5);
+                if (HasComp<NullRodOwnerComponent>(target))
+                    break;
+
                 _doAfterSystem.TryStartDoAfter(new DoAfterArgs(EntityManager, user, TimeSpan.FromSeconds(3f), new TeleportSpellDoAfterEvent(), user, target, entity)
                 {
                     BreakOnMove = true,
@@ -629,7 +632,7 @@ public sealed partial class BloodCultSystem
                 });
                 break;
             case "shadowshackles":
-                if (!HasComp<BloodCultistComponent>(target))
+                if (!HasComp<BloodCultistComponent>(target) && !HasComp<NullRodOwnerComponent>(target))
                 {
                     if (TryComp<MobStateComponent>(target, out var mobstate) && mobstate.CurrentState != MobState.Alive && mobstate.CurrentState != MobState.Invalid
                         || HasComp<SleepingComponent>(target) || TryComp<StaminaComponent>(target, out var stamina) && stamina.StaminaDamage >= stamina.CritThreshold * 0.9f)
@@ -796,7 +799,7 @@ public sealed partial class BloodCultSystem
                     cultist.BloodCount = totalBlood;
                     args.Handled = true;
                 }
-                else if (HasComp<HumanoidAppearanceComponent>(target))
+                else if (HasComp<HumanoidAppearanceComponent>(target) && !HasComp<NullRodOwnerComponent>(target))
                 {
                     if (!TryComp<BloodstreamComponent>(target, out var blood) || HasComp<BloodCultistComponent>(target))
                         return;

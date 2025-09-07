@@ -1,0 +1,6 @@
+- type: soundCollection
+  id: Shower
+  files:
+    - /Audio/_Wega/Effects/Objects/shower1.ogg
+    - /Audio/_Wega/Effects/Objects/shower2.ogg
+    - /Audio/_Wega/Effects/Objects/shower3.ogg

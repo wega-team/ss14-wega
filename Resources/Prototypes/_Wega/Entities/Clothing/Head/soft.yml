@@ -1,0 +1,15 @@
+- type: entity
+  parent: ClothingHeadHeadHatBaseFlippable
+  id: ClothingHeadHatPostmansoft
+  name: postman cap
+  description: A classic cap with a thickened visor, the main element of the uniform style.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Head/Soft/postmansoft.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Head/Soft/postmansoft.rsi
+
+- type: entity
+  parent: [ClothingHeadHeadHatBaseFlipped, ClothingHeadHatPostmansoft]
+  id: ClothingHeadHatPostmansoftFlipped
+  name: postman cap

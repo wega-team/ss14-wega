@@ -13,12 +13,14 @@ using Content.Shared.Database;
 using Content.Shared.Examine;
 using Content.Shared.FixedPoint;
 using Content.Shared.Humanoid;
+using Content.Shared.Movement.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Standing;
 using Content.Shared.Stunnable;
 using Content.Shared.Surgery;
 using Content.Shared.Surgery.Components;
 using Content.Shared.Traits.Assorted;
+using Content.Shared.Zombies;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
@@ -31,6 +33,7 @@ public sealed partial class SurgerySystem
     [Dependency] private readonly PainSystem _pain = default!;
     [Dependency] private readonly SharedStunSystem _stun = default!;
     [Dependency] private readonly PhysicsSystem _physics = default!;
+    [Dependency] private readonly MovementModStatusSystem _movementMod = default!;
 
     private static readonly SoundSpecifier GibSound = new SoundPathSpecifier("/Audio/Effects/gib3.ogg");
 
@@ -42,9 +45,20 @@ public sealed partial class SurgerySystem
 
     #region Process damage
 
+    private void OnBodyPartRemoved(Entity<OperatedComponent> ent, BodyPartType type)
+    {
+        if (type == BodyPartType.Leg)
+        {
+            if (!HasComp<BodyComponent>(ent))
+                return;
+
+            _stun.TryKnockdown(ent.Owner, TimeSpan.FromSeconds(2f), true, false);
+        }
+    }
+
     private void OnDamage(Entity<OperatedComponent> ent, ref DamageChangedEvent args)
     {
-        if (HasComp<GodmodeComponent>(ent))
+        if (HasComp<GodmodeComponent>(ent) || HasComp<ZombieComponent>(ent))
             return;
 
         if (args.DamageDelta == null || args.DamageDelta.Empty || !args.DamageIncreased
@@ -157,8 +171,12 @@ public sealed partial class SurgerySystem
 
             _audio.PlayPvs(GibSound, patient);
 
-            var damage = new DamageSpecifier { DamageDict = { { SlashDamage, 200 } } };
-            _damage.TryChangeDamage(patient, damage, true);
+            // Synthetics ignore head loss.
+            if (!HasComp<SyntheticOperatedComponent>(patient))
+            {
+                var damage = new DamageSpecifier { DamageDict = { { SlashDamage, 200 } } };
+                _damage.TryChangeDamage(patient, damage, true);
+            }
 
             if (HasComp<BloodstreamComponent>(patient))
                 _bloodstream.TryModifyBleedAmount(patient, 10f);
@@ -477,8 +495,8 @@ public sealed partial class SurgerySystem
 
             if (part.Contains("leg"))
             {
-                _stun.TrySlowdown(patient, TimeSpan.FromSeconds(Math.Min(5 * severity, 10)),
-                    true, 0.5f, 0.3f);
+                _movementMod.TryUpdateMovementSpeedModDuration(patient, MovementModStatusSystem.Slowdown, TimeSpan.FromSeconds(Math.Min(5 * severity, 10)),
+                    0.5f, 0.3f);
 
                 if (bodyParts.Count(p => p.Contains("leg")) >= 2)
                 {
@@ -511,7 +529,7 @@ public sealed partial class SurgerySystem
         float stunProb = Math.Min(0.15f * severity, 1f);
         if (_random.Prob(stunProb))
         {
-            _stun.TryStun(patient, TimeSpan.FromSeconds(3 * severity), true);
+            _stun.TryUpdateStunDuration(patient, TimeSpan.FromSeconds(3 * severity));
             _jittering.DoJitter(patient, TimeSpan.FromSeconds(15), true);
         }
     }

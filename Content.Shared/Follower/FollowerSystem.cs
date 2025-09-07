@@ -193,6 +193,9 @@ public sealed class FollowerSystem : EntitySystem
         if (HasComp<HumanoidAppearanceComponent>(follower)) // Corvax-Wega-GhostBar
             return; // Corvax-Wega-GhostBar
 
+        if (follower == entity || TerminatingOrDeleted(entity))
+            return;
+
         // No recursion for you
         var targetXform = Transform(entity);
         while (targetXform.ParentUid.IsValid())
