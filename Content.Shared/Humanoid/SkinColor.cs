@@ -232,31 +232,34 @@ public static class SkinColor
     // Corvax-Wega-Phanthom-start
     public static Color PhantomColor(int tone)
     {
-
         tone = Math.Clamp(tone, 0, 100);
 
-        float val = tone / 10;
+        const float minValue = 0.05f;
+        const float maxValue = 0.15f;
 
-        if (val < 5)
-        {
-            val = 5;
-        }
+        float tNorm = tone / 100f;
+        float value = minValue + tNorm * (maxValue - minValue);
 
-        var color = Color.FromHsv(new Vector4(0, 0, val / 100, 1.0f));
-
-        return color;
+        return Color.FromHsv(new Vector4(0f, 0f, value, 1f));
     }
 
     public static float PhantomSkinToneFromColor(Color color)
     {
         var hsv = Color.ToHsv(color);
 
-        float val = hsv.Z * 100 * 10;
+        const float minValue = 0.05f;
+        const float maxValue = 0.15f;
 
-        if (val < 5)
-            return 5;
+        float v = Math.Clamp(hsv.Z, minValue, maxValue);
 
-        return (int)val;
+        float tone = (v - minValue) / (maxValue - minValue) * 100f;
+
+        tone = MathF.Round(tone);
+        tone = Math.Clamp(tone, 0f, 100f);
+
+        if (tone < 5f) tone = 5f;
+
+        return tone;
     }
 
     public static bool VerifyPhantomColor(Color color)
