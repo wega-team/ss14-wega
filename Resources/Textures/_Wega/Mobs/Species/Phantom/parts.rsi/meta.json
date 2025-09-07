@@ -1,20 +1,14 @@
 {
     "version": 1,
     "license": "CC-BY-SA-3.0",
-    "copyright": "Created by discord:lunalita, Recoloring by melissandravov   ПЛЕЙСХОЛДЕР",
+    "copyright": "Created by HappyRoach",
     "size": {
         "x": 32,
         "y": 32
     },
     "states": [
         {
-            "name": "full_f"
-        },
-        {
-            "name": "full_m"
-        },
-        {
-            "name": "full_t"
+            "name": "full"
         },
         {
             "name": "head_f",
@@ -22,10 +16,6 @@
         },
         {
             "name": "head_m",
-            "directions": 4
-        },
-        {
-            "name": "head_t",
             "directions": 4
         },
         {
@@ -66,10 +56,6 @@
         },
         {
             "name": "torso_m",
-            "directions": 4
-        },
-        {
-            "name": "torso_t",
             "directions": 4
         }
     ]

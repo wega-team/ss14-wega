@@ -32,3 +32,6 @@
       rateModifier: 2.0
     - id: Narcotic
       rateModifier: 2.0
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Phantom/organ.rsi
+    state: heart-on

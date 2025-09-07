@@ -91,6 +91,7 @@ public sealed class NaturalNightVisionSystem : EntitySystem
             UpdateLighting(!component.Visible);
             if (component.Visible)
             {
+                UpdateOverlayParameters(component);
                 _overlayManager.AddOverlay(_overlay);
             }
             else

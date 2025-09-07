@@ -1,0 +1,273 @@
+﻿- type: marking
+  id: PhantomEyes
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Phantom]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#901414"
+  sprites:
+  - sprite: Mobs/Customization/eyes.rsi
+    state: eyes
+
+- type: marking
+  id: PhantomDeathStareEyes
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Phantom]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#901414"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/phantom.rsi
+    state: deathstare-head
+
+- type: marking
+  id: PhantomGearEyes
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Phantom]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#901414"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/phantom.rsi
+    state: gear-head
+
+- type: marking
+  id: PhantomBadsunEyes
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Phantom]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#901414"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/phantom.rsi
+    state: badsun-head
+
+- type: marking
+  id: PhantomSeamstressEyes
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Phantom]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#901414"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/phantom.rsi
+    state: seamstress-head
+
+- type: marking
+  id: PhantomSeamstressSpots
+  bodyPart: Special
+  markingCategory: Special
+  speciesRestriction: [Phantom]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/phantom.rsi
+    state: seamstress-special
+  - sprite: _Wega/Mobs/Customization/phantom.rsi
+    state: seamstress-special-secondary
+
+- type: marking
+  id: PhantomDeathstareSpots
+  bodyPart: Special
+  markingCategory: Special
+  speciesRestriction: [Phantom]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/phantom.rsi
+    state: deathstare-special
+
+- type: marking
+  id: PhantomBadsunSpots
+  bodyPart: Special
+  markingCategory: Special
+  speciesRestriction: [Phantom]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/phantom.rsi
+    state: badsun-special
+
+- type: marking
+  id: PhantomBadsunHorns
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [Phantom]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/phantom.rsi
+    state: badsun-horn
+
+- type: marking
+  id: PhantomDeathstareHorns
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [Phantom]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/phantom.rsi
+    state: deathstare-horn
+  - sprite: _Wega/Mobs/Customization/phantom.rsi
+    state: deathstare-horn-secnodary
+
+- type: marking
+  id: PhantomSeamstressHorns
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [Phantom]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/phantom.rsi
+    state: seamstress-horn
+  - sprite: _Wega/Mobs/Customization/phantom.rsi
+    state: seamstress-horn-secondary
+
+ # Взятое от других расс
+
+- type: marking
+  id: PhantomGradientLeftArm
+  bodyPart: LArm
+  markingCategory: Arms
+  speciesRestriction: [Phantom]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+  - sprite: Mobs/Customization/slime_parts.rsi
+    state: gradient_l_arm
+
+- type: marking
+  id: PhantomGradientRightArm
+  bodyPart: RArm
+  markingCategory: Arms
+  speciesRestriction: [Phantom]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+  - sprite: Mobs/Customization/slime_parts.rsi
+    state: gradient_r_arm
+
+- type: marking
+  id: PhantomGradientLeftLeg
+  bodyPart: LLeg
+  markingCategory: Legs
+  speciesRestriction: [Phantom]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+  - sprite: Mobs/Customization/slime_parts.rsi
+    state: gradient_l_leg
+
+- type: marking
+  id: PhantomGradientRightLeg
+  bodyPart: RLeg
+  markingCategory: Legs
+  speciesRestriction: [Phantom]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+  - sprite: Mobs/Customization/slime_parts.rsi
+    state: gradient_r_leg
+
+- type: marking
+  id: PhantomGradientLeftFoot
+  bodyPart: LFoot
+  markingCategory: Legs
+  speciesRestriction: [Phantom]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+  - sprite: Mobs/Customization/slime_parts.rsi
+    state: gradient_l_foot
+
+- type: marking
+  id: PhantomGradientRightFoot
+  bodyPart: RFoot
+  markingCategory: Legs
+  speciesRestriction: [Phantom]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+  - sprite: Mobs/Customization/slime_parts.rsi
+    state: gradient_r_foot
+
+- type: marking
+  id: PhantomGradientLeftHand
+  bodyPart: LHand
+  markingCategory: Arms
+  speciesRestriction: [Phantom]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+  - sprite: Mobs/Customization/slime_parts.rsi
+    state: gradient_l_hand
+
+- type: marking
+  id: PhantomGradientRightHand
+  bodyPart: RHand
+  markingCategory: Arms
+  speciesRestriction: [Phantom]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+  - sprite: Mobs/Customization/slime_parts.rsi
+    state: gradient_r_hand

@@ -12,6 +12,7 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Audio;
 using Content.Server.Hands.Systems;
 using Content.Shared.Hands.Components;
+using Content.Shared.Movement.Systems;
 
 namespace Content.Server.Shadow;
 
@@ -26,6 +27,7 @@ public sealed class PhotophobiaSystem : EntitySystem
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly HandsSystem _handsSystem = default!;
+    [Dependency] private readonly MovementSpeedModifierSystem _speed = default!;
 
     [ValidatePrototypeId<DamageTypePrototype>]
     private const string Damage = "Heat";
@@ -36,6 +38,8 @@ public sealed class PhotophobiaSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<PhotophobiaComponent, EntityUnpausedEvent>(OnUnpaused);
+        SubscribeLocalEvent<PhotophobiaComponent, DamageChangedEvent>(OnDamageChanged);
+        SubscribeLocalEvent<PhotophobiaComponent, RefreshMovementSpeedModifiersEvent>(OnRefreshMovementSpeedModifiers);
     }
 
     public override void Update(float frameTime)
@@ -53,16 +57,18 @@ public sealed class PhotophobiaSystem : EntitySystem
             var lights = GetNearbyLights(uid);
             if (lights.Count == 0)
             {
-                if (HasComp<ShadowWeaknessComponent>(uid))
-                    RemComp<ShadowWeaknessComponent>(uid);
+                if (comp.ApplyShadowWeakness)
+                {
+                    comp.ShadowWeakness = false;
+                    _speed.RefreshMovementSpeedModifiers(uid);
+                }
                 continue;
             }
 
-            if (comp.ApplyShadowWeakness && !HasComp<ShadowWeaknessComponent>(uid))
+            if (comp.ApplyShadowWeakness)
             {
-                EnsureComp<ShadowWeaknessComponent>(uid, out var shadowWeakness);
-                shadowWeakness.DamageModfier = comp.DamageModfier;
-                shadowWeakness.SpeedModifier = comp.SpeedModifier;
+                _speed.RefreshMovementSpeedModifiers(uid);
+                comp.ShadowWeakness = true;
             }
 
             if (comp.DamagePerLight != 0)
@@ -235,5 +241,30 @@ public sealed class PhotophobiaSystem : EntitySystem
         float cosHalf = MathF.Cos(MathF.PI * coneAngleDeg / 360f);
 
         return dot <= cosHalf;
+    }
+
+    private void OnRefreshMovementSpeedModifiers(Entity<PhotophobiaComponent> ent, ref RefreshMovementSpeedModifiersEvent args)
+    {
+        if (ent.Comp.ShadowWeakness)
+            args.ModifySpeed(ent.Comp.SpeedModifier, ent.Comp.SpeedModifier);
+    }
+
+    private void OnDamageChanged(Entity<PhotophobiaComponent> ent, ref DamageChangedEvent args)
+    {
+        if (!ent.Comp.ShadowWeakness || args.DamageDelta is null || IsNegativeDamage(args.DamageDelta))
+            return;
+
+        var bonusDamage = args.DamageDelta * ent.Comp.DamageModfier;
+        _damageable.TryChangeDamage(ent, bonusDamage, true);
+    }
+
+    private bool IsNegativeDamage(DamageSpecifier damage)
+    {
+        foreach (var type in damage.DamageDict)
+        {
+            if (type.Value > 0)
+                return false;
+        }
+        return true;
     }
 }

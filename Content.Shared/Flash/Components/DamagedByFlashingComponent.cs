@@ -20,11 +20,13 @@ public sealed partial class DamagedByFlashingComponent : Component
     /// <summary>
     /// Use duration base damage system
     /// </summary>
+    [DataField]
     public bool UseAdvancedFlashDamage = false;
 
     /// <summary>
     /// Damage multiplier, only for duration base damage.
     /// </summary>
+    [DataField]
     public float Multiplier = 1f;
     // Corvax-Wega-Phantom-end
 }

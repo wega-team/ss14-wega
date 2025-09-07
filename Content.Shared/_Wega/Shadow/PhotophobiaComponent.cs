@@ -24,4 +24,7 @@ public sealed partial class PhotophobiaComponent : Component
     public float SpeedModifier = 0.75f;
     [DataField("damageModfier")]
     public float DamageModfier = 0.2f;
+
+    [ViewVariables(VVAccess.ReadOnly), DataField]
+    public bool ShadowWeakness = false;
 }
