@@ -1582,7 +1582,7 @@ namespace Content.Client.Lobby.UI
                 {
                     if (!Skin.Visible)
                     {
-                        Skin.Visible = false;
+                        Skin.Visible = true;
                         RgbSkinColorContainer.Visible = false;
                     }
 
