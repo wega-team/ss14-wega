@@ -10,3 +10,78 @@
   - type: Construction
     graph: AndroidBodyPart
     node: start
+
+- type: entity
+  id: LeftArmSyntheticPry
+  name: "hydraulic arm"
+  description: "A powerful hydraulic arm for opening powered airlocks. Now it is left, use a screwdriver to change it."
+  parent: [ PartAndroid, BaseLeftArm ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Android/parts.rsi
+    state: pry_arm
+  - type: Tag
+    tags:
+      - BaseBodyPart
+      - LeftArmSynthetic
+  - type: BodyPartImplant
+    key: pry
+    implantComponents:
+      - type: Tool
+        qualities:
+          - Prying
+      - type: Prying
+        pryPowered: !type:Bool
+            true
+        force: !type:Bool
+          true
+        useSound:
+          path: /Audio/Items/jaws_pry.ogg
+        speedModifier: 1
+
+- type: entity
+  id: RightArmSyntheticPry
+  name: "hydraulic arm"
+  description: "A powerful hydraulic arm for opening powered airlocks. Now it is right, use a screwdriver to change it."
+  parent: [ LeftArmSyntheticPry ]
+  components:
+  - type: BodyPart
+    symmetry: Right
+  - type: Tag
+    tags:
+      - BaseBodyPart
+      - RightArmSynthetic
+
+- type: entity
+  id: LeftArmSyntheticDefib
+  name: "defibrillator arm"
+  description: "A hand with a built-in defibrillator! Now it is left, use a screwdriver to change it."
+  parent: [PartAndroid, BaseLeftArm]
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Android/parts.rsi
+    state: defib_arm
+  - type: Tag
+    tags:
+      - BaseBodyPart
+      - LeftArmSynthetic
+  - type: BodyPartImplant
+    key: defib
+    implantComponents:
+      - type: Defibrillator
+        zapHeal:
+          types:
+            Asphyxiation: -40
+
+- type: entity
+  id: RightArmSyntheticDefib
+  name: "hydraulic arm"
+  description: "A hand with a built-in defibrillator! Now it is right, use a screwdriver to change it."
+  parent: [ LeftArmSyntheticDefib ]
+  components:
+  - type: BodyPart
+    symmetry: Right
+  - type: Tag
+    tags:
+      - BaseBodyPart
+      - RightArmSynthetic

@@ -73,6 +73,12 @@
     },
     {
       "name": "module_part"
+    },
+    {
+      "name": "pry_arm"
+    },
+    {
+      "name": "defib_arm"
     }
   ]
 }

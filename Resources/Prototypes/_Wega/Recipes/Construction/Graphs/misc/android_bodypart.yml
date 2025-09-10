@@ -173,3 +173,32 @@
         doAfter: 2
 
   - node: complete
+
+# ========================
+#   Импланты частей тела
+# ========================
+
+- type: constructionGraph
+  id: ArmSyntheticPry
+  start: left
+  graph:
+  - node: left
+    entity: LeftArmSyntheticPry
+    edges:
+    - to: right
+      steps:
+      - tool: Screwing
+        doAfter: 1
+      completed:
+      - !type:PopupUser
+        text: partimplant-assembly-rightarm
+  - node: right
+    entity: RightArmSyntheticPry
+    edges:
+    - to: left
+      steps:
+      - tool: Screwing
+        doAfter: 1
+      completed:
+      - !type:PopupUser
+        text: partimplant-assembly-leftarm
