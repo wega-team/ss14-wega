@@ -6,9 +6,8 @@ namespace Content.Shared.Flash;
 /// Called before a flash is used to check if the attempt is cancelled by blindness, items or FlashImmunityComponent.
 /// Raised on the target hit by the flash and their inventory items.
 /// </summary>
-// Corvax-Wega-Flash-Damage FlashDuration Added
 [ByRefEvent]
-public record struct FlashAttemptEvent(EntityUid Target, EntityUid? User, EntityUid? Used, TimeSpan FlashDuration, bool Cancelled = false) : IInventoryRelayEvent
+public record struct FlashAttemptEvent(EntityUid Target, EntityUid? User, EntityUid? Used, bool Cancelled = false) : IInventoryRelayEvent
 {
     SlotFlags IInventoryRelayEvent.TargetSlots => SlotFlags.HEAD | SlotFlags.EYES | SlotFlags.MASK;
 }
@@ -20,3 +19,11 @@ public record struct FlashAttemptEvent(EntityUid Target, EntityUid? User, Entity
 /// </summary>
 [ByRefEvent]
 public record struct AfterFlashedEvent(EntityUid Target, EntityUid? User, EntityUid? Used, bool Melee);
+
+
+// Corvax-Wega-Flash-Damage-Start
+[ByRefEvent]
+public record struct FlashAttemptDamageEvent(EntityUid Target, TimeSpan FlashDuration, bool Cancelled = false)
+{
+}
+// Corvax-Wega-Flash-Damage-Start

@@ -70,7 +70,6 @@
       types:
         Heat: 5
     useAdvancedFlashDamage: true
-    multiplier: 0.5
   - type: NaturalNightVision
     tintColor: "#999999"
     visionRadius: 8

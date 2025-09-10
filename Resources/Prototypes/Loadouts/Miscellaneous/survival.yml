@@ -26,7 +26,7 @@
     - Resomi # Corvax-Wega-Resomi
     - Skrell # Corvax-Wega-Skrell
     - Demon # Corvax-Wega-Ы
-
+    - Phantom # Corvax-Wega-Phantom
 - type: loadoutEffectGroup
   id: EffectSpeciesVox
   effects:

@@ -167,12 +167,14 @@ public abstract class SharedFlashSystem : EntitySystem
         if (TryComp<FlashModifierComponent>(target, out var flashModifier))
             flashDuration *= flashModifier.Modifier;
 
-        var attempt = new FlashAttemptEvent(target, user, used, flashDuration); // Corvax-Wega-Phantom
+        var attempt = new FlashAttemptEvent(target, user, used);
         RaiseLocalEvent(target, ref attempt, true);
 
         if (attempt.Cancelled)
             return;
 
+        var damageAttempt = new FlashAttemptDamageEvent(target, flashDuration); // Corvax-Wega-Phantom
+        RaiseLocalEvent(target, ref damageAttempt, true);   // Corvax-Wega-Phantom
 
         // don't paralyze, slowdown or convert to rev if the target is immune to flashes
         if (!_statusEffectsSystem.TryAddStatusEffect<FlashedComponent>(target, FlashedKey, flashDuration, true))

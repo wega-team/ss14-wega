@@ -46,6 +46,7 @@
   - Resomi
   - Demon
   - Android
+  - Phantom
   nearestAllowedGenders:
   - Male
   - Female
@@ -104,6 +105,7 @@
   - Skrell
   - Resomi
   - Demon
+  - Phantom
 
 - type: interaction
   parent: BaseHumanoid
@@ -123,6 +125,7 @@
   - Skrell
   - Resomi
   - Demon
+  - Phantom
 
 # Interactions
 
@@ -649,6 +652,7 @@
   - Tajaran
   - Skrell
   - Demon
+  - Phantom
   nearestAllowedGenders:
   - Female
   blackListSpecies:
@@ -1073,6 +1077,7 @@
   - Tajaran
   - Skrell
   - Demon
+  - Phantom
   blackListSpecies:
   - Resomi
 
@@ -1095,6 +1100,7 @@
   - Tajaran
   - Skrell
   - Demon
+  - Phantom
   blackListSpecies:
   - Resomi
 
@@ -1119,6 +1125,7 @@
   - Tajaran
   - Skrell
   - Demon
+  - Phantom
   blackListSpecies:
   - Resomi
 
@@ -1143,6 +1150,7 @@
   - Tajaran
   - Skrell
   - Demon
+  - Phantom
   blackListSpecies:
   - Resomi
 
