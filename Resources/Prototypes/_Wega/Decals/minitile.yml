@@ -160,6 +160,13 @@
     state: quartertile_grey_180
 
 - type: decal
+  id: HalfTileGreyQuartertile270
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Wega/Decals/minitile.rsi
+    state: quartertile_grey_270
+
+- type: decal
   id: HalfTileDarkCornerNE
   tags: ["station", "markings"]
   sprite:
