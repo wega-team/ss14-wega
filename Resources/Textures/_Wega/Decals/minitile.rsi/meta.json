@@ -14,16 +14,34 @@
             "name": "dark_line_w"
         },
         {
+            "name": "dark_line_n"
+        },
+        {
+            "name": "dark_line_s"
+        },
+        {
             "name": "grey_line_e"
         },
         {
             "name": "grey_line_w"
         },
         {
+            "name": "grey_line_n"
+        },
+        {
+            "name": "grey_line_s"
+        },
+        {
             "name": "white_line_e"
         },
         {
             "name": "white_line_w"
+        },
+        {
+            "name": "white_line_n"
+        },
+        {
+            "name": "white_line_s"
         },
         {
             "name": "quartertile_dark"
@@ -60,6 +78,42 @@
         },
         {
             "name": "quartertile_grey_270"
+        },
+        {
+            "name": "dark_corner-ne"
+        },
+        {
+            "name": "dark_corner-nw"
+        },
+        {
+            "name": "dark_corner-se"
+        },
+        {
+            "name": "dark_corner-sw"
+        },
+        {
+            "name": "grey_corner-ne"
+        },
+        {
+            "name": "grey_corner-nw"
+        },
+        {
+            "name": "grey_corner-se"
+        },
+        {
+            "name": "grey_corner-sw"
+        },
+        {
+            "name": "white_corner-ne"
+        },
+        {
+            "name": "white_corner-nw"
+        },
+        {
+            "name": "white_corner-se"
+        },
+        {
+            "name": "white_corner-sw"
         }
     ]
 }
