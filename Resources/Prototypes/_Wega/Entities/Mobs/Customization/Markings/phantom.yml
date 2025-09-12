@@ -305,27 +305,27 @@
   - sprite: _Wega/Mobs/Customization/phantom.rsi
     state: r-golem-foot
 
-- type: marking
-  id: PhantomPalehandLeftSpecial
-  bodyPart: Special
-  markingCategory: Special
-  speciesRestriction: [Phantom]
-  sprites:
-  - sprite: _Wega/Mobs/Customization/phantom.rsi
-    state: palehand-left
-  - sprite: _Wega/Mobs/Customization/phantom.rsi
-    state: palehand-left-secondary
+#- type: marking
+#  id: PhantomPalehandLeftSpecial
+#  bodyPart: LArm
+#  markingCategory: Arms
+#  speciesRestriction: [Phantom]
+#  sprites:
+#  - sprite: _Wega/Mobs/Customization/phantom.rsi
+#    state: palehand-left
+#  - sprite: _Wega/Mobs/Customization/phantom.rsi
+#    state: palehand-left-secondary
 
-- type: marking
-  id: PhantomPalehandRightSpecial
-  bodyPart: Special
-  markingCategory: Special
-  speciesRestriction: [Phantom]
-  sprites:
-  - sprite: _Wega/Mobs/Customization/phantom.rsi
-    state: palehand-right
-  - sprite: _Wega/Mobs/Customization/phantom.rsi
-    state: palehand-right-secondary
+#- type: marking
+#  id: PhantomPalehandRightSpecial
+#  bodyPart: RArm
+#  markingCategory: Arms
+#  speciesRestriction: [Phantom]
+#  sprites:
+#  - sprite: _Wega/Mobs/Customization/phantom.rsi
+#    state: palehand-right
+#  - sprite: _Wega/Mobs/Customization/phantom.rsi
+#    state: palehand-right-secondary
 
 - type: marking
   id: PhantomBigDipperSpecial
