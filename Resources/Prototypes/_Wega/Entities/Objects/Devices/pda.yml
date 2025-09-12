@@ -111,6 +111,7 @@
       - NotekeeperCartridge
       - NanoTaskCartridge
       - NewsReaderCartridge
+      - NanoChatCartridge # Corvax-Wega-NanoChat
       - MedTekCartridge
       - WantedListCartridge
 

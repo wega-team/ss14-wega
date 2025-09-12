@@ -1,0 +1,84 @@
+<cartridges:NanoChatUiFragment
+    xmlns="https://spacestation14.io"
+    xmlns:cartridges="clr-namespace:Content.Client._Wega.CartridgeLoader.Cartridges"
+    xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+    xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+    xmlns:customControls="clr-namespace:Content.Client.Administration.UI.CustomControls"
+    Orientation="Vertical"
+    HorizontalExpand="True"
+    VerticalExpand="True"
+    Margin="4">
+
+    <!-- Header -->
+    <BoxContainer Orientation="Horizontal" HorizontalExpand="True">
+        <controls:StripeBack HorizontalExpand="True">
+            <BoxContainer Orientation="Horizontal" HorizontalExpand="True" VerticalAlignment="Center">
+                <TextureRect StyleClasses="NTLogoDark"  Stretch="KeepAspectCentered" SetSize="32 32" Margin="0 0 4 0"/>
+                <Label Text="{Loc 'nano-chat-ui-title'}" StyleClasses="LabelHeading" VerticalAlignment="Center"/>
+                <Label Name="OwnIdLabel" StyleClasses="LabelSubText" VerticalAlignment="Center" Margin="4 0 0 0"/>
+
+                <Control HorizontalExpand="True"/>
+
+                <TextureButton Name="MuteChatButton" MaxSize="24 24" Margin="0 0 4 0"/>
+                <TextureButton Name="AddContactButton" MaxSize="24 24" ToolTip="{Loc 'nano-chat-ui-add-contact-tooltip'}"
+                    TexturePath="/Textures/Interface/VerbIcons/plus.svg.192dpi.png" VerticalAlignment="Center"/>
+            </BoxContainer>
+        </controls:StripeBack>
+    </BoxContainer>
+
+    <!-- Main content -->
+    <BoxContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True">
+        
+        <!-- Contacts list -->
+        <PanelContainer StyleClasses="AngleRect" MinWidth="150" MaxWidth="200" VerticalExpand="True">
+            <BoxContainer Orientation="Vertical" VerticalExpand="True" HorizontalExpand="True">
+                <Label Name="NoContactsLabel" Text="{Loc 'nano-chat-ui-no-contacts'}" StyleClasses="LabelSubText"
+                    HorizontalAlignment="Center" VerticalAlignment="Center" Visible="False"/>
+                
+                <ScrollContainer VerticalExpand="True" HorizontalExpand="True">
+                    <BoxContainer Name="ContactsContainer" Orientation="Vertical" HorizontalExpand="True"/>
+                </ScrollContainer>
+            </BoxContainer>
+        </PanelContainer>
+
+        <!-- Separator -->
+        <customControls:VSeparator StyleClasses="LowDivider"/>
+
+        <!-- Chat area -->
+        <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+            
+            <!-- Chat header -->
+            <PanelContainer StyleClasses="AngleRect">
+                <PanelContainer.PanelOverride>
+                    <graphics:StyleBoxFlat BackgroundColor="#878787" />
+                </PanelContainer.PanelOverride>
+                <BoxContainer Orientation="Horizontal" HorizontalExpand="True" Margin="0 0 0 4">
+                    <Label Name="ChatTitle" StyleClasses="LabelHeading" Margin="4 0 0 0" VerticalAlignment="Center" HorizontalExpand="True"/>
+                    <TextureButton Name="EraseChatButton" MaxSize="24 24" Margin="0 0 4 0" Visible="False" ToolTip="{Loc 'nano-chat-ui-erase-chat-tooltip'}"
+                        TexturePath="/Textures/Interface/eraser.svg.png"/>
+                    <TextureButton Name="CloseChatButton" MaxSize="24 24" Visible="False" ToolTip="{Loc 'nano-chat-ui-close-chat-tooltip'}"
+                        TexturePath="/Textures/Interface/Nano/cross.svg.png"/>
+                </BoxContainer>
+            </PanelContainer>
+
+            <!-- Messages area -->
+            <PanelContainer StyleClasses="AngleRect" VerticalExpand="True">
+                <PanelContainer.PanelOverride>
+                    <graphics:StyleBoxFlat BackgroundColor="#bdbdbd" />
+                </PanelContainer.PanelOverride>
+                <ScrollContainer Name="MessagesScroll" HScrollEnabled="False" VerticalExpand="True" HorizontalExpand="True">
+                    <BoxContainer Name="MessagesContainer" Orientation="Vertical" Margin="4"/>
+                </ScrollContainer>
+            </PanelContainer>
+
+            <!-- Message input -->
+            <BoxContainer Orientation="Horizontal" HorizontalExpand="True" Margin="0 4 0 0">
+                <LineEdit Name="MessageInput" HorizontalExpand="True" Editable="False"/>
+                <Button Name="EmojiButton" Text="👍" MinSize="32 32" Disabled="True" ToolTip="{Loc 'nano-chat-ui-emoji-tooltip'}"/>
+                <Button Name="SendButton" Text="▶" MinSize="32 32" Disabled="True" ToolTip="{Loc 'nano-chat-ui-send-tooltip'}"/>
+            </BoxContainer>
+
+        </BoxContainer>
+    </BoxContainer>
+
+</cartridges:NanoChatUiFragment>

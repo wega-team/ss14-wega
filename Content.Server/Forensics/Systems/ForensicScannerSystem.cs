@@ -17,12 +17,16 @@ using Robust.Shared.Player;
 using Robust.Shared.Timing;
 using Content.Server.Chemistry.Containers.EntitySystems;
 using Robust.Shared.Prototypes;
+using Content.Shared.PDA; // Corvax-Wega-NanoChat
+using Robust.Shared.Containers; // Corvax-Wega-NanoChat
+using Content.Shared.CartridgeLoader.Cartridges; // Corvax-Wega-NanoChat
 // todo: remove this stinky LINQy
 
 namespace Content.Server.Forensics
 {
     public sealed class ForensicScannerSystem : EntitySystem
     {
+        [Dependency] private readonly SharedContainerSystem _container = default!; // Corvax-Wega-NanoChat
         [Dependency] private readonly IGameTiming _gameTiming = default!;
         [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
         [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
@@ -130,6 +134,20 @@ namespace Content.Server.Forensics
             };
 
             args.Verbs.Add(verb);
+
+            // Corvax-Wega-NanoChat-start
+            if (TryComp<PdaComponent>(args.Target, out var pda))
+            {
+                var printChatVerb = new UtilityVerb()
+                {
+                    Act = () => PrintChatHistory(uid, component, args.User, args.Target),
+                    IconEntity = GetNetEntity(uid),
+                    Text = Loc.GetString("forensic-scanner-print-chat-history-text"),
+                    Message = Loc.GetString("forensic-scanner-print-chat-history-message")
+                };
+                args.Verbs.Add(printChatVerb);
+            }
+            // Corvax-Wega-NanoChat-end
         }
 
         private void OnAfterInteract(EntityUid uid, ForensicScannerComponent component, AfterInteractEvent args)
@@ -249,6 +267,72 @@ namespace Content.Server.Forensics
             UpdateUserInterface(uid, component);
         }
 
+        // Corvax-Wega-NanoChat-start
+        private void PrintChatHistory(EntityUid uid, ForensicScannerComponent component, EntityUid user, EntityUid target)
+        {
+            if (!TryComp<PdaComponent>(target, out var pda) || !TryComp<ContainerManagerComponent>(target, out var containerManager))
+                return;
+
+            var container = _container.GetContainer(target, "program-container", containerManager);
+            if (container == null || container.ContainedEntities.Count == 0)
+            {
+                _popupSystem.PopupEntity(Loc.GetString("forensic-scanner-no-cartridge"), uid, user);
+                return;
+            }
+
+            var chatCartridges = new List<Entity<NanoChatCartridgeComponent>>();
+            foreach (var cartridgeUid in container.ContainedEntities)
+            {
+                if (TryComp<NanoChatCartridgeComponent>(cartridgeUid, out var nanoChat))
+                {
+                    chatCartridges.Add((cartridgeUid, nanoChat));
+                }
+            }
+
+            if (chatCartridges.Count == 0)
+            {
+                _popupSystem.PopupEntity(Loc.GetString("forensic-scanner-no-chat-cartridge"), uid, user);
+                return;
+            }
+
+            var printed = Spawn(component.MachineOutput, Transform(uid).Coordinates);
+            _handsSystem.PickupOrDrop(user, printed, checkActionBlocker: false);
+
+            if (!TryComp<PaperComponent>(printed, out var paperComp))
+            {
+                Log.Error("Printed paper did not have PaperComponent.");
+                return;
+            }
+
+            _metaData.SetEntityName(printed, Loc.GetString("forensic-scanner-chat-history-title"));
+
+            var text = new StringBuilder();
+            text.AppendLine(Loc.GetString("forensic-scanner-chat-history-header",
+                ("owner", pda.OwnerName ?? Loc.GetString("generic-unknown-title")),
+                ("time", _gameTiming.CurTime.ToString("hh\\:mm\\:ss"))));
+            text.AppendLine(new string('=', 36));
+            text.AppendLine();
+
+            foreach (var (cartridgeUid, cartComp) in chatCartridges)
+            {
+                AppendChatHistory(text, cartComp, cartridgeUid);
+            }
+
+            text.AppendLine(new string('=', 36));
+
+            _paperSystem.SetContent((printed, paperComp), text.ToString());
+
+            _audioSystem.PlayPvs(component.SoundPrint, uid,
+                AudioParams.Default
+                .WithVariation(0.25f)
+                .WithVolume(3f)
+                .WithRolloffFactor(2.8f)
+                .WithMaxDistance(4.5f));
+
+            _popupSystem.PopupEntity(Loc.GetString("forensic-scanner-chat-history-printed"), uid, user);
+        }
+        // Corvax-Wega-NanoChat-end
+
         private void OnClear(EntityUid uid, ForensicScannerComponent component, ForensicScannerClearMessage args)
         {
             component.Fingerprints = new();
@@ -278,5 +362,63 @@ namespace Content.Server.Forensics
 
             text.AppendLine();
         }
+
+        // Corvax-Wega-NanoChat-start
+        private void AppendChatHistory(StringBuilder text, NanoChatCartridgeComponent chatComp, EntityUid cartUid)
+        {
+            text.AppendLine(Loc.GetString("forensic-scanner-chat-cartridge-header",
+                ("id", chatComp.ChatId)));
+            text.AppendLine();
+
+            if (chatComp.Contacts.Count == 0 && chatComp.Messages.Count == 0)
+            {
+                text.AppendLine(Loc.GetString("forensic-scanner-chat-no-data"));
+                text.AppendLine();
+                return;
+            }
+
+            foreach (var (contactId, messages) in chatComp.Messages)
+            {
+                if (chatComp.Contacts.TryGetValue(contactId, out var contact))
+                {
+                    text.AppendLine(Loc.GetString("forensic-scanner-chat-with-contact",
+                        ("name", contact.ContactName),
+                        ("id", contactId)));
+                }
+                else
+                {
+                    text.AppendLine(Loc.GetString("forensic-scanner-chat-with-unknown",
+                        ("id", contactId)));
+                }
+
+                text.AppendLine(new string('-', 40));
+
+                foreach (var message in messages)
+                {
+                    var time = $"{(int)message.Timestamp.TotalHours:00}:{message.Timestamp.Minutes:00}";
+                    var sender = message.IsOwnMessage ?
+                        Loc.GetString("forensic-scanner-chat-you") :
+                        message.SenderName;
+
+                    var status = message.Delivered ? "✓" : "✗";
+
+                    text.AppendLine($"[{time}] {sender} ({status}): {message.Message}");
+                }
+
+                text.AppendLine();
+            }
+
+            foreach (var contact in chatComp.Contacts.Values)
+            {
+                if (!chatComp.Messages.ContainsKey(contact.ContactId))
+                {
+                    text.AppendLine(Loc.GetString("forensic-scanner-chat-contact-no-messages",
+                        ("name", contact.ContactName),
+                        ("id", contact.ContactId)));
+                    text.AppendLine();
+                }
+            }
+        }
+        // Corvax-Wega-NanoChat-end
     }
 }
