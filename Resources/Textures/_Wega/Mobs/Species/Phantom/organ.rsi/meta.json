@@ -10,6 +10,18 @@
     {
       "name": "heart-on",
       "delay": [ 0.1, 0.1, 0.1 ]
+    },
+    {
+      "name": "eye"
+    },
+    {
+      "name": "kidney"
+    },
+    {
+      "name": "liver"
+    },
+    {
+      "name": "lungs"
     }
   ]
 }
