@@ -16,7 +16,6 @@
     - id: Drink
       rateModifier: 2.0
 
-
 - type: entity
   id: OrganPhantomHeart
   parent: OrganAnimalHeart

@@ -34,7 +34,7 @@
   - type: Sprite
     netsync: false
     sprite: _Wega/Mobs/Species/Phantom/parts.rsi
-    state: "head_m"
+    state: "head"
   - type: BodyPart
     partType: Head
     vital: true

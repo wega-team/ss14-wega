@@ -1,44 +1,25 @@
-﻿- type: marking
-  id: PhantomEyes
+﻿ # Базовые
+
+- type: marking
+  id: PhantomHeadBase
   bodyPart: Head
   markingCategory: Head
   speciesRestriction: [Phantom]
   coloring:
     default:
       type:
-        !type:SimpleColoring
-          color: "#901414"
+        !type:SkinColoring
+    layers:
+      eyes:
+        type:
+          !type:EyeColoring
   sprites:
+  - sprite: _Wega/Mobs/Species/Phantom/parts.rsi
+    state: head
   - sprite: Mobs/Customization/eyes.rsi
     state: eyes
 
-- type: marking
-  id: PhantomDeathStareEyes
-  bodyPart: Head
-  markingCategory: Head
-  speciesRestriction: [Phantom]
-  coloring:
-    default:
-      type:
-        !type:SimpleColoring
-          color: "#901414"
-  sprites:
-  - sprite: _Wega/Mobs/Customization/phantom.rsi
-    state: deathstare-head
-
-- type: marking
-  id: PhantomGearEyes
-  bodyPart: Head
-  markingCategory: Head
-  speciesRestriction: [Phantom]
-  coloring:
-    default:
-      type:
-        !type:SimpleColoring
-          color: "#901414"
-  sprites:
-  - sprite: _Wega/Mobs/Customization/phantom.rsi
-    state: gear-head
+ # Дополнительные
 
 - type: marking
   id: PhantomBadsunEyes
@@ -48,9 +29,14 @@
   coloring:
     default:
       type:
-        !type:SimpleColoring
-          color: "#901414"
+        !type:SkinColoring
+    layers:
+      badsun-head:
+        type:
+          !type:EyeColoring
   sprites:
+  - sprite: _Wega/Mobs/Species/Phantom/parts.rsi
+    state: head
   - sprite: _Wega/Mobs/Customization/phantom.rsi
     state: badsun-head
 
@@ -62,9 +48,14 @@
   coloring:
     default:
       type:
-        !type:SimpleColoring
-          color: "#901414"
+        !type:SkinColoring
+    layers:
+      seamstress-head:
+        type:
+          !type:EyeColoring
   sprites:
+  - sprite: _Wega/Mobs/Species/Phantom/parts.rsi
+    state: head
   - sprite: _Wega/Mobs/Customization/phantom.rsi
     state: seamstress-head
 
@@ -76,27 +67,12 @@
   coloring:
     default:
       type:
-        !type:SimpleColoring
-          color: "#ffffff"
+        !type:EyeColoring
   sprites:
   - sprite: _Wega/Mobs/Customization/phantom.rsi
     state: seamstress-special
   - sprite: _Wega/Mobs/Customization/phantom.rsi
     state: seamstress-special-secondary
-
-- type: marking
-  id: PhantomDeathstareSpots
-  bodyPart: Special
-  markingCategory: Special
-  speciesRestriction: [Phantom]
-  coloring:
-    default:
-      type:
-        !type:SimpleColoring
-          color: "#ffffff"
-  sprites:
-  - sprite: _Wega/Mobs/Customization/phantom.rsi
-    state: deathstare-special
 
 - type: marking
   id: PhantomBadsunSpots
@@ -106,8 +82,7 @@
   coloring:
     default:
       type:
-        !type:SimpleColoring
-          color: "#ffffff"
+        !type:EyeColoring
   sprites:
   - sprite: _Wega/Mobs/Customization/phantom.rsi
     state: badsun-special
@@ -120,27 +95,10 @@
   coloring:
     default:
       type:
-        !type:SimpleColoring
-          color: "#ffffff"
+        !type:EyeColoring
   sprites:
   - sprite: _Wega/Mobs/Customization/phantom.rsi
     state: badsun-horn
-
-- type: marking
-  id: PhantomDeathstareHorns
-  bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [Phantom]
-  coloring:
-    default:
-      type:
-        !type:SimpleColoring
-          color: "#ffffff"
-  sprites:
-  - sprite: _Wega/Mobs/Customization/phantom.rsi
-    state: deathstare-horn
-  - sprite: _Wega/Mobs/Customization/phantom.rsi
-    state: deathstare-horn-secnodary
 
 - type: marking
   id: PhantomSeamstressHorns
@@ -150,13 +108,284 @@
   coloring:
     default:
       type:
-        !type:SimpleColoring
-          color: "#ffffff"
+        !type:SkinColoring
+    layers:
+      seamstress-horn-secondary:
+        type:
+          !type:EyeColoring
   sprites:
   - sprite: _Wega/Mobs/Customization/phantom.rsi
     state: seamstress-horn
   - sprite: _Wega/Mobs/Customization/phantom.rsi
     state: seamstress-horn-secondary
+
+# - type: marking
+#  id: PhantomBreakEyes
+#  bodyPart: Head
+#  markingCategory: Head
+#  speciesRestriction: [Phantom]
+#  coloring:
+#    default:
+#      type:
+#        !type:SkinColoring
+#    layers:
+#      break-eye:
+#        type:
+#          !type:EyeColoring
+#  sprites:
+#  - sprite: _Wega/Mobs/Species/Phantom/parts.rsi
+#    state: head
+#  - sprite: _Wega/Mobs/Customization/phantom.rsi
+#    state: break-eye
+
+- type: marking
+  id: PhantomHarmonyHead
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Phantom]
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+    layers:
+      harmony-eye:
+        type:
+          !type:EyeColoring
+  sprites:
+  - sprite: _Wega/Mobs/Customization/phantom.rsi
+    state: harmony-head
+  - sprite: _Wega/Mobs/Customization/phantom.rsi
+    state: harmony-eye
+
+- type: marking
+  id: PhantomMoonHead
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Phantom]
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+    layers:
+      moon-eye:
+        type:
+          !type:EyeColoring
+  sprites:
+  - sprite: _Wega/Mobs/Customization/phantom.rsi
+    state: moon-head
+  - sprite: _Wega/Mobs/Customization/phantom.rsi
+    state: moon-eye
+
+- type: marking
+  id: PhantomObserverHead
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Phantom]
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+    layers:
+      observer-eye:
+        type:
+          !type:EyeColoring
+  sprites:
+  - sprite: _Wega/Mobs/Customization/phantom.rsi
+    state: observer-head
+  - sprite: _Wega/Mobs/Customization/phantom.rsi
+    state: observer-eye
+
+- type: marking
+  id: PhantomPaladinHead
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Phantom]
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+    layers:
+      paladin-eye:
+        type:
+          !type:EyeColoring
+  sprites:
+  - sprite: _Wega/Mobs/Customization/phantom.rsi
+    state: paladin-head
+  - sprite: _Wega/Mobs/Customization/phantom.rsi
+    state: paladin-eye
+
+- type: marking
+  id: PhantomShadowlingHead
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Phantom]
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+    layers:
+      shadowling-eyes:
+        type:
+          !type:EyeColoring
+  sprites:
+  - sprite: _Wega/Mobs/Customization/phantom.rsi
+    state: shadowling-head
+  - sprite: _Wega/Mobs/Customization/phantom.rsi
+    state: shadowling-eyes
+
+- type: marking
+  id: PhantomGolemLArm
+  bodyPart: LArm
+  markingCategory: Arms
+  speciesRestriction: [Phantom]
+  sprites:
+  - sprite: _Wega/Mobs/Customization/phantom.rsi
+    state: l-golem-arm
+
+- type: marking
+  id: PhantomGolemRArm
+  bodyPart: RArm
+  markingCategory: Arms
+  speciesRestriction: [Phantom]
+  sprites:
+  - sprite: _Wega/Mobs/Customization/phantom.rsi
+    state: r-golem-arm
+
+- type: marking
+  id: PhantomGolemLHand
+  bodyPart: LHand
+  markingCategory: Arms
+  speciesRestriction: [Phantom]
+  sprites:
+  - sprite: _Wega/Mobs/Customization/phantom.rsi
+    state: l-golem-hand
+
+- type: marking
+  id: PhantomGolemRHand
+  bodyPart: RHand
+  markingCategory: Arms
+  speciesRestriction: [Phantom]
+  sprites:
+  - sprite: _Wega/Mobs/Customization/phantom.rsi
+    state: r-golem-hand
+
+- type: marking
+  id: PhantomGolemLLeg
+  bodyPart: LLeg
+  markingCategory: Legs
+  speciesRestriction: [Phantom]
+  sprites:
+  - sprite: _Wega/Mobs/Customization/phantom.rsi
+    state: l-golem-leg
+
+- type: marking
+  id: PhantomGolemRLeg
+  bodyPart: RLeg
+  markingCategory: Legs
+  speciesRestriction: [Phantom]
+  sprites:
+  - sprite: _Wega/Mobs/Customization/phantom.rsi
+    state: r-golem-leg
+
+- type: marking
+  id: PhantomGolemLFoot
+  bodyPart: LFoot
+  markingCategory: Legs
+  speciesRestriction: [Phantom]
+  sprites:
+  - sprite: _Wega/Mobs/Customization/phantom.rsi
+    state: l-golem-foot
+
+- type: marking
+  id: PhantomGolemRFoot
+  bodyPart: RFoot
+  markingCategory: Legs
+  speciesRestriction: [Phantom]
+  sprites:
+  - sprite: _Wega/Mobs/Customization/phantom.rsi
+    state: r-golem-foot
+
+- type: marking
+  id: PhantomPalehandLeftSpecial
+  bodyPart: Special
+  markingCategory: Special
+  speciesRestriction: [Phantom]
+  sprites:
+  - sprite: _Wega/Mobs/Customization/phantom.rsi
+    state: palehand-left
+  - sprite: _Wega/Mobs/Customization/phantom.rsi
+    state: palehand-left-secondary
+
+- type: marking
+  id: PhantomPalehandRightSpecial
+  bodyPart: Special
+  markingCategory: Special
+  speciesRestriction: [Phantom]
+  sprites:
+  - sprite: _Wega/Mobs/Customization/phantom.rsi
+    state: palehand-right
+  - sprite: _Wega/Mobs/Customization/phantom.rsi
+    state: palehand-right-secondary
+
+- type: marking
+  id: PhantomBigDipperSpecial
+  bodyPart: Special
+  markingCategory: Special
+  speciesRestriction: [Phantom]
+  sprites:
+  - sprite: _Wega/Mobs/Customization/phantom.rsi
+    state: big-dipper-special
+
+- type: marking
+  id: PhantomShadowlingHorns
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [Phantom]
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+    layers:
+      shadowling-horn-secondary:
+        type:
+          !type:EyeColoring
+  sprites:
+  - sprite: _Wega/Mobs/Customization/phantom.rsi
+    state: shadowling-horn
+  - sprite: _Wega/Mobs/Customization/phantom.rsi
+    state: shadowling-horn-secondary
+
+- type: marking
+  id: PhantomWendigolingHorns
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [Phantom]
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+    layers:
+      wendigo-horn-secondary:
+        type:
+          !type:EyeColoring
+  sprites:
+  - sprite: _Wega/Mobs/Customization/phantom.rsi
+    state: wendigo-horn
+  - sprite: _Wega/Mobs/Customization/phantom.rsi
+    state: wendigo-horn-secondary
+
+- type: marking
+  id: PhantomThreeHorns
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [Phantom]
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+  sprites:
+  - sprite: _Wega/Mobs/Customization/phantom.rsi
+    state: three-horn
 
  # Взятое от других расс
 

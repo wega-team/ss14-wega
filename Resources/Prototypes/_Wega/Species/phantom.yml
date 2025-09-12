@@ -17,9 +17,8 @@
   id: MobPhantomSprites
   sprites:
     Special: MobHumanoidAnyMarking
-    Head: MobPhantomHead
+    Head: MobPhantomMarkingFollowSkin
     Hair: MobPhantomMarkingFollowSkin
-    FacialHair: MobPhantomMarkingFollowSkin
     HeadTop: MobHumanoidAnyMarking
     Snout: MobHumanoidAnyMarking
     Chest: MobPhantomTorso
@@ -36,12 +35,12 @@
   id: MobPhantomMarkingLimits
   points:
     Special:
-      points: 1
+      points: 3
       required: false
     Head:
       points: 1
       required: true
-      defaultMarkings: [ PhantomEyes ]
+      defaultMarkings: [ PhantomHeadBase ]
     HeadTop:
       points: 1
       required: false
@@ -61,30 +60,27 @@
       points: 4
       required: false
     FacialHair:
-      points: 1
+      points: 0
       required: false
 
 - type: humanoidBaseSprite
   id: MobPhantomMarkingFollowSkin
   markingsMatchSkin: true
 
+# Они просто нужны, без их ничего не работает
+- type: humanoidBaseSprite
+  id: MobPhantomMarkingFollowSkinMale
+  markingsMatchSkin: true
+
+- type: humanoidBaseSprite
+  id: MobPhantomMarkingFollowSkinFemale
+  markingsMatchSkin: true
+
 - type: humanoidBaseSprite
   id: MobPhantomHead
   baseSprite:
     sprite: _Wega/Mobs/Species/Phantom/parts.rsi
-    state: head_m
-
-- type: humanoidBaseSprite
-  id: MobPhantomHeadMale
-  baseSprite:
-    sprite: _Wega/Mobs/Species/Phantom/parts.rsi
-    state: head_m
-
-- type: humanoidBaseSprite
-  id: MobPhantomHeadFemale
-  baseSprite:
-    sprite: _Wega/Mobs/Species/Phantom/parts.rsi
-    state: head_f
+    state: head
 
 - type: humanoidBaseSprite
   id: MobPhantomTorso
