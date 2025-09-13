@@ -7,6 +7,7 @@
     - head
   blacklistSpecies:
     - Android
+    - Ipc
   supportedTypes:
     - Blunt
     - Slash
@@ -19,6 +20,9 @@
   category: Burns
   blacklistPart:
     - head
+  blacklistSpecies:
+    - Android
+    - Ipc
   supportedTypes:
     - Heat
     - Shock
@@ -34,6 +38,7 @@
   blacklistSpecies:
     - SlimePerson
     - Android
+    - Ipc
   supportedTypes:
     - Blunt
   chance: 0.02
@@ -48,6 +53,7 @@
   blacklistSpecies:
     - SlimePerson
     - Android
+    - Ipc
   supportedTypes:
     - Blunt
   bodyVisuals: surgery-open-fracture-visuals
@@ -63,6 +69,7 @@
   blacklistSpecies:
     - SlimePerson
     - Android
+    - Ipc
   supportedTypes:
     - Piercing
   chance: 0.05
@@ -76,6 +83,7 @@
     - head
   blacklistSpecies:
     - Android
+    - Ipc
   supportedTypes:
     - Heat
     - Shock
@@ -90,6 +98,7 @@
     - head
   blacklistSpecies:
     - Android
+    - Ipc
   supportedTypes:
     - Piercing
   chance: 0.05

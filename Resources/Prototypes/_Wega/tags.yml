@@ -131,6 +131,9 @@
 
 # Synthetic Surgery
 - type: Tag
+  id: BrainSynthetic
+
+- type: Tag
   id: LungsSynthetic
 
 - type: Tag

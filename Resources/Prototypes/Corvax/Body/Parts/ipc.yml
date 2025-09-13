@@ -6,8 +6,6 @@
   name: "Ipc body part"
   abstract: true
 
-
-
 - type: entity
   id: TorsoIpc
   name: "Ipc torso"
@@ -26,7 +24,6 @@
       sprite: Corvax/Mobs/Species/Ipc/parts.rsi
       state: "head_m"
 
-
 - type: entity
   id: LeftArmIpc
   name: "left Ipc arm"
@@ -35,6 +32,13 @@
     - type: Sprite
       sprite: Corvax/Mobs/Species/Ipc/parts.rsi
       state: "l_arm"
+    # Corvax-Wega-Surgery-start
+    - type: Tag
+      tags:
+        - Trash
+        - BaseBodyPart
+        - LeftArmSynthetic
+    # Corvax-Wega-Surgery-end
 
 - type: entity
   id: RightArmIpc
@@ -44,6 +48,13 @@
     - type: Sprite
       sprite: Corvax/Mobs/Species/Ipc/parts.rsi
       state: "r_arm"
+    # Corvax-Wega-Surgery-start
+    - type: Tag
+      tags:
+        - Trash
+        - BaseBodyPart
+        - RightArmSynthetic
+    # Corvax-Wega-Surgery-end
 
 - type: entity
   id: LeftHandIpc
@@ -53,6 +64,13 @@
     - type: Sprite
       sprite: Corvax/Mobs/Species/Ipc/parts.rsi
       state: "l_hand"
+    # Corvax-Wega-Surgery-start
+    - type: Tag
+      tags:
+        - Trash
+        - BaseBodyPart
+        - LeftHandSynthetic
+    # Corvax-Wega-Surgery-end
 
 - type: entity
   id: RightHandIpc
@@ -62,6 +80,13 @@
     - type: Sprite
       sprite: Corvax/Mobs/Species/Ipc/parts.rsi
       state: "r_hand"
+    # Corvax-Wega-Surgery-start
+    - type: Tag
+      tags:
+        - Trash
+        - BaseBodyPart
+        - RightHandSynthetic
+    # Corvax-Wega-Surgery-end
 
 - type: entity
   id: LeftLegIpc
@@ -74,6 +99,13 @@
     - type: MovementBodyPart
       walkSpeed : 2.7
       sprintSpeed : 4.5
+    # Corvax-Wega-Surgery-start
+    - type: Tag
+      tags:
+        - Trash
+        - BaseBodyPart
+        - LeftLegSynthetic
+    # Corvax-Wega-Surgery-end
 
 - type: entity
   id: RightLegIpc
@@ -86,6 +118,13 @@
     - type: MovementBodyPart
       walkSpeed : 2.7
       sprintSpeed : 4.5
+    # Corvax-Wega-Surgery-start
+    - type: Tag
+      tags:
+        - Trash
+        - BaseBodyPart
+        - RightLegSynthetic
+    # Corvax-Wega-Surgery-end
 
 - type: entity
   id: LeftFootIpc
@@ -95,6 +134,13 @@
     - type: Sprite
       sprite: Corvax/Mobs/Species/Ipc/parts.rsi
       state: "l_foot"
+    # Corvax-Wega-Surgery-start
+    - type: Tag
+      tags:
+        - Trash
+        - BaseBodyPart
+        - LeftFootSynthetic
+    # Corvax-Wega-Surgery-end
 
 - type: entity
   id: RightFootIpc
@@ -104,4 +150,10 @@
     - type: Sprite
       sprite: Corvax/Mobs/Species/Ipc/parts.rsi
       state: "r_foot"
-
+    # Corvax-Wega-Surgery-start
+    - type: Tag
+      tags:
+        - Trash
+        - BaseBodyPart
+        - RightFootSynthetic
+    # Corvax-Wega-Surgery-end

@@ -56,7 +56,7 @@
   # Corvax-Wega-Android-start
   - type: Tag
     tags:
-      - Brain
+      - BrainSynthetic
   - type: Brain
   - type: Organ
     organType: Brain

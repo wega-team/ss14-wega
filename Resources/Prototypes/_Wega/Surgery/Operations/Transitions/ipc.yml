@@ -3,8 +3,8 @@
 # ========================
 
 - type: surgeryTransition
-  id: AndroidOpenTorsoTransition
-  target: AndroidTorsoOpen
+  id: IpcOpenTorsoTransition
+  target: IpcTorsoOpen
   label: "Открыть торс"
   stepGroups:
     - conditions:
@@ -39,7 +39,7 @@
           time: 2
 
 - type: surgeryTransition
-  id: AndroidCloseTorsoTransition
+  id: IpcCloseTorsoTransition
   target: Default
   label: "Закрыть торс"
   stepGroups:
@@ -75,7 +75,7 @@
           time: 2
 
 - type: surgeryTransition
-  id: AndroidOrganManipulationTransition
+  id: IpcOrganManipulationTransition
   target: OrganManipulation
   label: "Манипуляция с деталями"
   stepGroups:
@@ -90,7 +90,7 @@
         # Мозг
         - tool: [ Cutting ]
           action: RemoveOrgan
-          entityPreview: PositronicBrain
+          entityPreview: OrganIPCBrain
           requiredPart: Brain
           sound:
             path: /Audio/Items/wirecutter.ogg
@@ -100,7 +100,7 @@
               organ: Brain
         - tag: [ BrainSynthetic ]
           action: InsertOrgan
-          entityPreview: PositronicBrain
+          entityPreview: OrganIPCBrain
           requiredPart: Brain
           sound:
             path: /Audio/Items/ratchet.ogg
@@ -110,63 +110,13 @@
               invert: true
               organ: Brain
 
-        # Тириумовый насос
-        - tool: [ Cutting ]
-          tag: [ Knife, Shiv, BasicGlassShard]
-          action: RemoveOrgan
-          failureEffect: [ Bleeding ]
-          entityPreview: OrganAndroidTyrium
-          requiredPart: Heart
-          sound:
-            path: /Audio/Items/wirecutter.ogg
-          time: 8
-          successChance: 0.9
-          conditions:
-            - !type:OrganPresentCondition
-              organ: Heart
-        - tag: [ HeartSynthetic ]
-          action: InsertOrgan
-          entityPreview: OrganAndroidTyrium
-          requiredPart: Heart
-          sound:
-            path: /Audio/Items/ratchet.ogg
-          time: 8
-          conditions:
-            - !type:OrganPresentCondition
-              invert: true
-              organ: Heart
-
-        # Газовая система
-        - tool: [ Screwing ]
-          tag: [ Knife, Shiv, BasicGlassShard]
-          action: RemoveOrgan
-          entityPreview: OrganAndroidGas
-          requiredPart: Lungs
-          sound:
-            collection: Screwdriver
-          time: 8
-          conditions:
-            - !type:OrganPresentCondition
-              organ: Lungs
-        - tag: [ LungsSynthetic ]
-          action: InsertOrgan
-          entityPreview: OrganAndroidGas
-          requiredPart: Lungs
-          sound:
-            path: /Audio/Items/ratchet.ogg
-          time: 8
-          conditions:
-            - !type:OrganPresentCondition
-              invert: true
-              organ: Lungs
-
 # ========================
 # ПЕРЕХОДЫ ГОЛОВЫ
 # ========================
 
 - type: surgeryTransition
-  id: AndroidOpenHeadTransition
-  target: AndroidHeadOpen
+  id: IpcOpenHeadTransition
+  target: IpcHeadOpen
   label: "Открыть голову"
   stepGroups:
     - conditions:
@@ -196,7 +146,7 @@
           time: 2
 
 - type: surgeryTransition
-  id: AndroidCloseHeadTransition
+  id: IpcCloseHeadTransition
   target: Default
   label: "Закрыть голову"
   stepGroups:
@@ -233,8 +183,8 @@
           time: 2
 
 - type: surgeryTransition
-  id: AndroidExtractBrainTransition
-  target: AndroidHeadOpen
+  id: IpcExtractBrainTransition
+  target: IpcHeadOpen
   label: "Манипуляция с деталями"
   stepGroups:
     - conditions:
@@ -249,7 +199,7 @@
         # Камеры
         - tool: [ Screwing ]
           action: RemoveOrgan
-          entityPreview: OrganAndroidEyes
+          entityPreview: OrganIpcEyes
           requiredPart: Eyes
           sound:
             collection: Screwdriver
@@ -259,7 +209,7 @@
               organ: Eyes
         - tag: [ EyesSynthetic ]
           action: InsertOrgan
-          entityPreview: OrganAndroidEyes
+          entityPreview: OrganIpcEyes
           requiredPart: Eyes
           sound:
             path: /Audio/Items/ratchet.ogg
@@ -270,8 +220,8 @@
               organ: Eyes
 
 - type: surgeryTransition
-  id: AndroidCompleteHeadAttachmentTransition
-  target: AndroidEndOperation
+  id: IpcCompleteHeadAttachmentTransition
+  target: IpcEndOperation
   label: Голова
   stepGroups:
     - conditions:
@@ -302,8 +252,8 @@
 
 # ЛЕВАЯ РУКА
 - type: surgeryTransition
-  id: AndroidAmputateLeftArmTransition
-  target: AndroidAmputateLeftArmProcess
+  id: IpcAmputateLeftArmTransition
+  target: IpcAmputateLeftArmProcess
   label: Отсоединить левую руку
   stepGroups:
     - conditions:
@@ -318,8 +268,8 @@
           time: 2
 
 - type: surgeryTransition
-  id: AndroidAmputateLeftArmProcessTransition
-  target: AndroidEndOperation
+  id: IpcAmputateLeftArmProcessTransition
+  target: IpcEndOperation
   label: Отсоединить левую руку
   stepGroups:
     - conditions:
@@ -353,8 +303,8 @@
           requiredPart: left_arm
 
 - type: surgeryTransition
-  id: AndroidAttachLeftArmTransition
-  target: AndroidAttachLeftArmProcess
+  id: IpcAttachLeftArmTransition
+  target: IpcAttachLeftArmProcess
   label: Прикрепить левую руку
   stepGroups:
     - conditions:
@@ -370,8 +320,8 @@
           time: 2
 
 - type: surgeryTransition
-  id: AndroidAttachLeftArmProcessTransition
-  target: AndroidEndOperation
+  id: IpcAttachLeftArmProcessTransition
+  target: IpcEndOperation
   label: Прикрепить левую руку
   stepGroups:
     - steps:
@@ -386,8 +336,8 @@
 
 # ПРАВАЯ РУКА
 - type: surgeryTransition
-  id: AndroidAmputateRightArmTransition
-  target: AndroidAmputateRightArmProcess
+  id: IpcAmputateRightArmTransition
+  target: IpcAmputateRightArmProcess
   label: Отсоединить правую руку
   stepGroups:
     - conditions:
@@ -402,8 +352,8 @@
           time: 2
 
 - type: surgeryTransition
-  id: AndroidAmputateRightArmProcessTransition
-  target: AndroidEndOperation
+  id: IpcAmputateRightArmProcessTransition
+  target: IpcEndOperation
   label: Отсоединить правую руку
   stepGroups:
     - conditions:
@@ -437,8 +387,8 @@
           requiredPart: right_arm
 
 - type: surgeryTransition
-  id: AndroidAttachRightArmTransition
-  target: AndroidAttachRightArmProcess
+  id: IpcAttachRightArmTransition
+  target: IpcAttachRightArmProcess
   label: Прикрепить правую руку
   stepGroups:
     - conditions:
@@ -454,8 +404,8 @@
           time: 2
 
 - type: surgeryTransition
-  id: AndroidAttachRightArmProcessTransition
-  target: AndroidEndOperation
+  id: IpcAttachRightArmProcessTransition
+  target: IpcEndOperation
   label: Прикрепить правую руку
   stepGroups:
     - steps:
@@ -470,8 +420,8 @@
 
 # ЛЕВАЯ КИСТЬ
 - type: surgeryTransition
-  id: AndroidAmputateLeftHandTransition
-  target: AndroidAmputateLeftHandProcess
+  id: IpcAmputateLeftHandTransition
+  target: IpcAmputateLeftHandProcess
   label: Отсоединить левую кисть
   stepGroups:
     - conditions:
@@ -488,8 +438,8 @@
           time: 2
 
 - type: surgeryTransition
-  id: AndroidAmputateLeftHandProcessTransition
-  target: AndroidEndOperation
+  id: IpcAmputateLeftHandProcessTransition
+  target: IpcEndOperation
   label: Отсоединить левую кисть
   stepGroups:
     - steps:
@@ -520,8 +470,8 @@
           requiredPart: left_hand
 
 - type: surgeryTransition
-  id: AndroidAttachLeftHandTransition
-  target: AndroidAttachLeftHandProcess
+  id: IpcAttachLeftHandTransition
+  target: IpcAttachLeftHandProcess
   label: Прикрепить левую кисть
   stepGroups:
     - conditions:
@@ -539,8 +489,8 @@
           time: 2
 
 - type: surgeryTransition
-  id: AndroidAttachLeftHandProcessTransition
-  target: AndroidEndOperation
+  id: IpcAttachLeftHandProcessTransition
+  target: IpcEndOperation
   label: Прикрепить левую кисть
   stepGroups:
     - steps:
@@ -555,8 +505,8 @@
 
 #ПРАВАЯ КИСТЬ
 - type: surgeryTransition
-  id: AndroidAmputateRightHandTransition
-  target: AndroidAmputateRightHandProcess
+  id: IpcAmputateRightHandTransition
+  target: IpcAmputateRightHandProcess
   label: Отсоединить правую кисть
   stepGroups:
     - conditions:
@@ -573,8 +523,8 @@
           time: 2
 
 - type: surgeryTransition
-  id: AndroidAmputateRightHandProcessTransition
-  target: AndroidEndOperation
+  id: IpcAmputateRightHandProcessTransition
+  target: IpcEndOperation
   label: Отсоединить правую кисть
   stepGroups:
     - steps:
@@ -605,8 +555,8 @@
           requiredPart: right_hand
 
 - type: surgeryTransition
-  id: AndroidAttachRightHandTransition
-  target: AndroidAttachRightHandProcess
+  id: IpcAttachRightHandTransition
+  target: IpcAttachRightHandProcess
   label: Прикрепить правую кисть
   stepGroups:
     - conditions:
@@ -624,8 +574,8 @@
           time: 2
 
 - type: surgeryTransition
-  id: AndroidAttachRightHandProcessTransition
-  target: AndroidEndOperation
+  id: IpcAttachRightHandProcessTransition
+  target: IpcEndOperation
   label: Прикрепить правую кисть
   stepGroups:
     - steps:
@@ -640,8 +590,8 @@
 
 # ЛЕВАЯ НОГА
 - type: surgeryTransition
-  id: AndroidAmputateLeftLegTransition
-  target: AndroidAmputateLeftLegProcess
+  id: IpcAmputateLeftLegTransition
+  target: IpcAmputateLeftLegProcess
   label: Отсоединить левую ногу
   stepGroups:
     - conditions:
@@ -656,8 +606,8 @@
           time: 2
 
 - type: surgeryTransition
-  id: AndroidAmputateLeftLegProcessTransition
-  target: AndroidEndOperation
+  id: IpcAmputateLeftLegProcessTransition
+  target: IpcEndOperation
   label: Отсоединить левую ногу
   stepGroups:
     - conditions:
@@ -697,8 +647,8 @@
           requiredPart: left_leg
 
 - type: surgeryTransition
-  id: AndroidAttachLeftLegTransition
-  target: AndroidAttachLeftLegProcess
+  id: IpcAttachLeftLegTransition
+  target: IpcAttachLeftLegProcess
   label: Прикрепить левую ногу
   stepGroups:
     - conditions:
@@ -714,8 +664,8 @@
           time: 2
 
 - type: surgeryTransition
-  id: AndroidAttachLeftLegProcessTransition
-  target: AndroidEndOperation
+  id: IpcAttachLeftLegProcessTransition
+  target: IpcEndOperation
   label: Прикрепить левую ногу
   stepGroups:
     - steps:
@@ -737,8 +687,8 @@
 # ПРАВАЯ НОГА
 
 - type: surgeryTransition
-  id: AndroidAmputateRightLegTransition
-  target: AndroidAmputateRightLegProcess
+  id: IpcAmputateRightLegTransition
+  target: IpcAmputateRightLegProcess
   label: Отсоединить правую ногу
   stepGroups:
     - conditions:
@@ -753,8 +703,8 @@
           time: 2
 
 - type: surgeryTransition
-  id: AndroidAmputateRightLegProcessTransition
-  target: AndroidEndOperation
+  id: IpcAmputateRightLegProcessTransition
+  target: IpcEndOperation
   label: Отсоединить правую ногу
   stepGroups:
     - conditions:
@@ -794,8 +744,8 @@
           requiredPart: right_leg
 
 - type: surgeryTransition
-  id: AndroidAttachRightLegTransition
-  target: AndroidAttachRightLegProcess
+  id: IpcAttachRightLegTransition
+  target: IpcAttachRightLegProcess
   label: Прикрепить правую ногу
   stepGroups:
     - conditions:
@@ -811,8 +761,8 @@
           time: 2
 
 - type: surgeryTransition
-  id: AndroidAttachRightLegProcessTransition
-  target: AndroidEndOperation
+  id: IpcAttachRightLegProcessTransition
+  target: IpcEndOperation
   label: Прикрепить правую ногу
   stepGroups:
     - steps:
@@ -833,8 +783,8 @@
 
 # ЛЕВАЯ СТОПА
 - type: surgeryTransition
-  id: AndroidAmputateLeftFootTransition
-  target: AndroidAmputateLeftFootProcess
+  id: IpcAmputateLeftFootTransition
+  target: IpcAmputateLeftFootProcess
   label: Отсоединить левую стопу
   stepGroups:
     - conditions:
@@ -851,8 +801,8 @@
           time: 2
 
 - type: surgeryTransition
-  id: AndroidAmputateLeftFootProcessTransition
-  target: AndroidEndOperation
+  id: IpcAmputateLeftFootProcessTransition
+  target: IpcEndOperation
   label: Отсоединить левую стопу
   stepGroups:
     - conditions:
@@ -894,8 +844,8 @@
           requiredPart: left_foot
 
 - type: surgeryTransition
-  id: AndroidAttachLeftFootTransition
-  target: AndroidAttachLeftFootProcess
+  id: IpcAttachLeftFootTransition
+  target: IpcAttachLeftFootProcess
   label: Прикрепить левую стопу
   stepGroups:
     - conditions:
@@ -913,8 +863,8 @@
           time: 2
 
 - type: surgeryTransition
-  id: AndroidAttachLeftFootProcessTransition
-  target: AndroidEndOperation
+  id: IpcAttachLeftFootProcessTransition
+  target: IpcEndOperation
   label: Прикрепить левую стопу
   stepGroups:
     - steps:
@@ -935,8 +885,8 @@
 
 # ПРАВАЯ СТОПА
 - type: surgeryTransition
-  id: AndroidAmputateRightFootTransition
-  target: AndroidAmputateRightFootProcess
+  id: IpcAmputateRightFootTransition
+  target: IpcAmputateRightFootProcess
   label: Отсоединить правую стопу
   stepGroups:
     - conditions: 
@@ -953,8 +903,8 @@
           time: 2
 
 - type: surgeryTransition
-  id: AndroidAmputateRightFootProcessTransition
-  target: AndroidEndOperation
+  id: IpcAmputateRightFootProcessTransition
+  target: IpcEndOperation
   label: Отсоединить правую стопу
   stepGroups:
     - conditions:
@@ -996,8 +946,8 @@
           requiredPart: right_foot
 
 - type: surgeryTransition
-  id: AndroidAttachRightFootTransition
-  target: AndroidAttachRightFootProcess
+  id: IpcAttachRightFootTransition
+  target: IpcAttachRightFootProcess
   label: Прикрепить правую стопу
   stepGroups:
     - conditions:
@@ -1015,8 +965,8 @@
           time: 2
 
 - type: surgeryTransition
-  id: AndroidAttachRightFootProcessTransition
-  target: AndroidEndOperation
+  id: IpcAttachRightFootProcessTransition
+  target: IpcEndOperation
   label: Прикрепить правую стопу
   stepGroups:
     - steps:
@@ -1037,7 +987,7 @@
 
 # Завершающий переход конечности
 - type: surgeryTransition
-  id: AndroidCompleteOperationTransition
+  id: IpcCompleteOperationTransition
   target: Default
   label: Завершить
   stepGroups:
