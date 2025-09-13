@@ -162,6 +162,10 @@
 		{
             "name": "deathstare-horn",
 			"directions": 4
+        },
+		{
+            "name": "deathstare-eye",
+			"directions": 4
         }
     ]
 }

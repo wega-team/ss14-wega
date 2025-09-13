@@ -60,6 +60,25 @@
     state: seamstress-head
 
 - type: marking
+  id: PhantomDeathstareEyes
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Phantom]
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+    layers:
+      seamstress-head:
+        type:
+          !type:EyeColoring
+  sprites:
+  - sprite: _Wega/Mobs/Species/Phantom/parts.rsi
+    state: head
+  - sprite: _Wega/Mobs/Customization/phantom.rsi
+    state: deathstare-eye
+
+- type: marking
   id: PhantomSeamstressSpots
   bodyPart: Special
   markingCategory: Special
