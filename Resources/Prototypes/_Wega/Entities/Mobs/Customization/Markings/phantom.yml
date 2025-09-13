@@ -387,6 +387,25 @@
   - sprite: _Wega/Mobs/Customization/phantom.rsi
     state: three-horn
 
+- type: marking
+  id: PhantomdDathstareHorns
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [Phantom]
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+    layers:
+      wendigo-horn-secondary:
+        type:
+          !type:EyeColoring
+  sprites:
+  - sprite: _Wega/Mobs/Customization/phantom.rsi
+    state: deathstare-horn
+  - sprite: _Wega/Mobs/Customization/phantom.rsi
+    state: deathstare-horn-secondary
+
  # Взятое от других расс
 
 - type: marking

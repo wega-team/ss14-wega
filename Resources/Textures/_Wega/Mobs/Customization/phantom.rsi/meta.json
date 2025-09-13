@@ -154,6 +154,14 @@
 		{
             "name": "three-horn",
 			"directions": 4
+        },
+		{
+            "name": "deathstare-horn-secondary",
+			"directions": 4
+        },
+		{
+            "name": "deathstare-horn",
+			"directions": 4
         }
     ]
 }

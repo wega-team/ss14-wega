@@ -46,6 +46,9 @@ marking-PhantomWendigolingHorns-palehand-right = Рога
 marking-PhantomWendigolingHorns-palehand-right-secondary = Вторичный
 marking-PhantomThreeHorns = Рога фантома (Трирог)
 marking-PhantomThreeHorns-three-horn = Рога
+marking-PhantomdDathstareHorns = Рога фантома (Взгляд смерти)
+marking-PhantomdDathstareHorns-deathstare-horn = Рога
+marking-PhantomdDathstareHorns-deathstare-horn-secondary = Вторичный
 
 marking-PhantomGradientLeftArm-gradient_l_arm = Фантом, левая рука (Градиент)
 marking-PhantomGradientRightArm-gradient_r_arm = Фантом, правая рука (Градиент)
