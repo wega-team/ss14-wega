@@ -318,9 +318,9 @@ public sealed class NanoChatCartridgeSystem : SharedNanoChatCartridgeSystem
         isSolar = false;
 
         var powerGridQuery = EntityQueryEnumerator<PowerGridCheckRuleComponent, GameRuleComponent>();
-        while (powerGridQuery.MoveNext(out _, out var powerGrid, out var gameRuleComp))
+        while (powerGridQuery.MoveNext(out var ev, out _, out var gameRuleComp))
         {
-            if (gameRuleComp.ActivatedAt <= _timing.CurTime && powerGrid.AffectedStation == Transform(sender).GridUid)
+            if (gameRuleComp.ActivatedAt <= _timing.CurTime && !HasComp<EndedGameRuleComponent>(ev))
             {
                 isPower = true;
                 return true;
@@ -328,9 +328,9 @@ public sealed class NanoChatCartridgeSystem : SharedNanoChatCartridgeSystem
         }
 
         var solarFlareQuery = EntityQueryEnumerator<SolarFlareRuleComponent, GameRuleComponent>();
-        while (solarFlareQuery.MoveNext(out _, out _, out var gameRuleComp))
+        while (solarFlareQuery.MoveNext(out var ev, out _, out var gameRuleComp))
         {
-            if (gameRuleComp.ActivatedAt <= _timing.CurTime)
+            if (gameRuleComp.ActivatedAt <= _timing.CurTime && !HasComp<EndedGameRuleComponent>(ev))
             {
                 isSolar = true;
                 return true;
