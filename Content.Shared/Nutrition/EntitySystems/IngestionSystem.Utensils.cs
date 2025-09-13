@@ -34,7 +34,7 @@ public sealed partial class IngestionSystem
         if (ev.Handled || ev.Target == null || !ev.CanReach)
             return;
 
-        ev.Handled = TryUseUtensil(ev.User, ev.Target.Value, entity);
+        TryUseUtensil(ev.User, ev.Target.Value, entity); // Corvax-Wega-Edit | I hate those who made the end here.
     }
 
     public bool TryUseUtensil(EntityUid user, EntityUid target, Entity<UtensilComponent> utensil)
