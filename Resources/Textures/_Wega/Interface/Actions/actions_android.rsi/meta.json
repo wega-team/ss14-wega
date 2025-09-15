@@ -15,6 +15,18 @@
         },
         {
             "name": "light-on"
+        },
+        {
+            "name": "kinetic-off"
+        },
+        {
+            "name": "kinetic-on"
+        },
+        {
+            "name": "defib-off"
+        },
+        {
+            "name": "defib-on"
         }
     ]
 }

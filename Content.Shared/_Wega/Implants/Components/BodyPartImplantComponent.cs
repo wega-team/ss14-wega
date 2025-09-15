@@ -7,10 +7,12 @@ namespace Content.Shared._Wega.Implants.Components
     [RegisterComponent, NetworkedComponent]
     public sealed partial class BodyPartImplantComponent : Component
     {
+        [DataField]
+        public Dictionary<string, BodyPartType> Connections = new();
+
         [DataField("key")]
         public string? ImplantKey;
-
-        [DataField(required: true)]
-        public ComponentRegistry ImplantComponents = default!;
+        [DataField]
+        public ComponentRegistry? ImplantComponents = default!;
     }
 }

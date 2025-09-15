@@ -11,19 +11,16 @@
     graph: AndroidBodyPart
     node: start
 
+# Pry Arm
+
 - type: entity
-  id: LeftArmSyntheticPry
+  id: ArmSyntheticPry
   name: "hydraulic arm"
-  description: "A powerful hydraulic arm for opening powered airlocks. Now it is left, use a screwdriver to change it."
-  parent: [ PartAndroid, BaseLeftArm ]
+  abstract: true
   components:
   - type: Sprite
     sprite: _Wega/Mobs/Species/Android/parts.rsi
     state: pry_arm
-  - type: Tag
-    tags:
-      - BaseBodyPart
-      - LeftArmSynthetic
   - type: BodyPartImplant
     key: pry
     implantComponents:
@@ -38,50 +35,155 @@
         useSound:
           path: /Audio/Items/jaws_pry.ogg
         speedModifier: 1
+  - type: Construction
+    graph: ArmSyntheticPry
+    node: start
+
+- type: entity
+  id: LeftArmSyntheticPry
+  description: "A powerful hydraulic arm for opening powered airlocks. Now it is left, use a screwdriver to change it."
+  parent: [ ArmSyntheticPry, LeftArmAndroid ]
 
 - type: entity
   id: RightArmSyntheticPry
-  name: "hydraulic arm"
   description: "A powerful hydraulic arm for opening powered airlocks. Now it is right, use a screwdriver to change it."
-  parent: [ LeftArmSyntheticPry ]
+  parent: [ ArmSyntheticPry, RightArmAndroid ]
+  categories: [ HideSpawnMenu ]
   components:
-  - type: BodyPart
-    symmetry: Right
-  - type: Tag
-    tags:
-      - BaseBodyPart
-      - RightArmSynthetic
+  - type: Construction
+    node: right
+
+# Defib Arm
 
 - type: entity
-  id: LeftArmSyntheticDefib
+  id: ArmSyntheticDefib
   name: "defibrillator arm"
-  description: "A hand with a built-in defibrillator! Now it is left, use a screwdriver to change it."
-  parent: [PartAndroid, BaseLeftArm]
+  description: "An arm with a built-in defibrillator! Now it is left, use a screwdriver to change it."
+  abstract: true
   components:
   - type: Sprite
     sprite: _Wega/Mobs/Species/Android/parts.rsi
     state: defib_arm
-  - type: Tag
-    tags:
-      - BaseBodyPart
-      - LeftArmSynthetic
   - type: BodyPartImplant
     key: defib
+  - type: Construction
+    graph: ArmSyntheticDefib
+    node: start
+
+- type: entity
+  id: LeftArmSyntheticDefib
+  description: "An arm with a built-in defibrillator! Now it is left, use a screwdriver to change it."
+  parent: [ ArmSyntheticDefib, LeftArmAndroid ]
+  components:
+  - type: BodyPartImplant
     implantComponents:
-      - type: Defibrillator
-        zapHeal:
-          types:
-            Asphyxiation: -40
+      - type: HandItemImplant
+        hand: body_part_slot_left_hand
+        itemPrototype: DefibrillatorArmImplant
+        toggleActionPrototype: ActionToggleBodyPartImplantDefib
 
 - type: entity
   id: RightArmSyntheticDefib
-  name: "hydraulic arm"
-  description: "A hand with a built-in defibrillator! Now it is right, use a screwdriver to change it."
-  parent: [ LeftArmSyntheticDefib ]
+  description: "An arm with a built-in defibrillator! Now it is right, use a screwdriver to change it."
+  parent: [ ArmSyntheticDefib, RightArmAndroid ]
+  categories: [ HideSpawnMenu ]
   components:
-  - type: BodyPart
-    symmetry: Right
-  - type: Tag
-    tags:
-      - BaseBodyPart
-      - RightArmSynthetic
+  - type: Construction
+    node: right
+  - type: BodyPartImplant
+    implantComponents:
+      - type: HandItemImplant
+        hand: body_part_slot_right_hand
+        itemPrototype: DefibrillatorArmImplant
+        toggleActionPrototype: ActionToggleBodyPartImplantDefib
+
+- type: entity
+  id: DefibrillatorArmImplant
+  parent: [ BaseDefibrillator, PowerCellSlotMediumItem ]
+  categories: [ HideSpawnMenu ]
+
+# Proto-kinetic Arm
+
+- type: entity
+  id: ArmSyntheticProtoKinetic
+  name: "proto-kinetic arm"
+  description: "Turn your hand into Proto-kinetic accelerator. Now it is left, use a screwdriver to change it."
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Android/parts.rsi
+    state: kinetic_arm
+  - type: BodyPartImplant
+    key: protokinetic
+  - type: Construction
+    graph: ArmSyntheticProtoKinetic
+    node: start
+
+- type: entity
+  id: LeftArmSyntheticProtoKinetic
+  description: "Turn your hand into Proto-kinetic accelerator. Now it is left, use a screwdriver to change it."
+  parent: [ ArmSyntheticProtoKinetic, LeftArmAndroid ]
+  components:
+  - type: BodyPartImplant
+    implantComponents:
+      - type: HandItemImplant
+        hand: body_part_slot_left_hand
+        itemPrototype: WeaponArmProtoKinetic
+        toggleActionPrototype: ActionToggleBodyPartImplantKinetic
+
+- type: entity
+  id: RightArmSyntheticProtoKinetic
+  description: "Turn your hand into Proto-kinetic accelerator. Now it is right, use a screwdriver to change it."
+  parent: [ ArmSyntheticProtoKinetic, RightArmAndroid ]
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: BodyPartImplant
+    implantComponents:
+      - type: HandItemImplant
+        hand: body_part_slot_right_hand
+        itemPrototype: WeaponArmProtoKinetic
+        toggleActionPrototype: ActionToggleBodyPartImplantKinetic
+  - type: Construction
+    node: right
+
+- type: entity
+  id: WeaponArmProtoKinetic
+  parent: BaseItem
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Unremoveable
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Basic/kinetic_accelerator.rsi
+    layers:
+    - state: icon
+    - state: animation-icon
+      visible: false
+      map: [ "empty-icon" ]
+  - type: Item
+    sprite: Objects/Weapons/Guns/Basic/kinetic_accelerator.rsi
+  - type: Gun
+    fireRate: 0.5
+    selectedMode: SemiAuto
+    angleDecay: 10
+    minAngle: -5
+    maxAngle: 5
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/kinetic_accel.ogg
+  - type: AmmoCounter
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.AmmoVisuals.HasAmmo:
+        empty-icon:
+          True: { visible: False }
+          False: { visible: True }
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 1.0
+    rechargeSound:
+      path: /Audio/Weapons/Guns/MagIn/kinetic_reload.ogg
+  - type: BasicEntityAmmoProvider
+    proto: BulletKinetic
+    capacity: 1
+    count: 1

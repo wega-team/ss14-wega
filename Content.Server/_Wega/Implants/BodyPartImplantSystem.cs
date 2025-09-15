@@ -1,25 +1,38 @@
 using Content.Shared._Wega.Implants.Components;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Part;
-using Content.Shared.Body.Systems;
+using Content.Server.Body.Systems;
 
 namespace Content.Shared._Wega.Implants
 {
     public sealed class BodyPartImplantSystem : EntitySystem
     {
-        [Dependency] private readonly SharedBodySystem _body = default!;
+        [Dependency] private readonly BodySystem _body = default!;
 
         public override void Initialize()
         {
             base.Initialize();
 
+            SubscribeLocalEvent<BodyPartImplantComponent, ComponentStartup>(OnInit);
+
             SubscribeLocalEvent<BodyComponent, BodyPartAddedEvent>(OnPartAdded);
             SubscribeLocalEvent<BodyComponent, BodyPartRemovedEvent>(OnPartRemove);
         }
 
+        private void OnInit(EntityUid uid, BodyPartImplantComponent component, ref ComponentStartup args)
+        {
+            if (!TryComp<BodyPartComponent>(uid, out var bodyPart))
+                return;
+
+            foreach (var connection in component.Connections)
+            {
+                _body.TryCreatePartSlot(uid, connection.Key, connection.Value, out _);
+            }
+        }
+
         private void OnPartAdded(EntityUid uid, BodyComponent component, ref BodyPartAddedEvent args)
         {
-            if (!TryComp<BodyPartImplantComponent>(args.Part.Owner, out var implant))
+            if (!TryComp<BodyPartImplantComponent>(args.Part.Owner, out var implant) || implant.ImplantComponents == null)
                 return;
 
             EntityManager.AddComponents(uid, implant.ImplantComponents);
@@ -27,7 +40,7 @@ namespace Content.Shared._Wega.Implants
 
         private void OnPartRemove(EntityUid uid, BodyComponent component, ref BodyPartRemovedEvent args)
         {
-            if (!TryComp<BodyPartImplantComponent>(args.Part, out var implant))
+            if (!TryComp<BodyPartImplantComponent>(args.Part, out var implant) || implant.ImplantComponents == null)
                 return;
 
             if (!HasParts(uid, component, implant.ImplantKey))
@@ -42,7 +55,7 @@ namespace Content.Shared._Wega.Implants
             var slots = _body.GetBodyContainers(uid, component);
             foreach (var slot in slots)
             {
-                if (!TryComp<BodyPartImplantComponent>(slot.ContainedEntities[0], out var implant))
+                if (slot.ContainedEntities.Count == 0 || !TryComp<BodyPartImplantComponent>(slot.ContainedEntities[0], out var implant))
                     continue;
 
                 if (implant.ImplantKey == key)

@@ -79,6 +79,9 @@
     },
     {
       "name": "defib_arm"
+    },
+    {
+      "name": "kinetic_arm"
     }
   ]
 }

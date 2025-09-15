@@ -180,9 +180,9 @@
 
 - type: constructionGraph
   id: ArmSyntheticPry
-  start: left
+  start: start
   graph:
-  - node: left
+  - node: start
     entity: LeftArmSyntheticPry
     edges:
     - to: right
@@ -195,7 +195,57 @@
   - node: right
     entity: RightArmSyntheticPry
     edges:
-    - to: left
+    - to: start
+      steps:
+      - tool: Screwing
+        doAfter: 1
+      completed:
+      - !type:PopupUser
+        text: partimplant-assembly-leftarm
+
+- type: constructionGraph
+  id: ArmSyntheticDefib
+  start: start
+  graph:
+  - node: start
+    entity: LeftArmSyntheticDefib
+    edges:
+    - to: right
+      steps:
+      - tool: Screwing
+        doAfter: 1
+      completed:
+      - !type:PopupUser
+        text: partimplant-assembly-rightarm
+  - node: right
+    entity: RightArmSyntheticDefib
+    edges:
+    - to: start
+      steps:
+      - tool: Screwing
+        doAfter: 1
+      completed:
+      - !type:PopupUser
+        text: partimplant-assembly-leftarm
+
+- type: constructionGraph
+  id: ArmSyntheticProtoKinetic
+  start: start
+  graph:
+  - node: start
+    entity: LeftArmSyntheticProtoKinetic
+    edges:
+    - to: right
+      steps:
+      - tool: Screwing
+        doAfter: 1
+      completed:
+      - !type:PopupUser
+        text: partimplant-assembly-rightarm
+  - node: right
+    entity: RightArmSyntheticProtoKinetic
+    edges:
+    - to: start
       steps:
       - tool: Screwing
         doAfter: 1
