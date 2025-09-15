@@ -96,3 +96,5 @@ ent-ClothingUnderBottomFRd = трусы научного руководител�
     .desc = { ent-ClothingUnderBottomBoxers.desc }
 ent-ClothingUnderBottomMRd = боксёры научного руководителя
     .desc = { ent-ClothingUnderBottomBoxers.desc }
+ent-ClothingUnderBottomDiaper = подгузники
+    .desc = комфортное нижнее бельё для самых нетерпеливых.

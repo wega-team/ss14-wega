@@ -582,3 +582,14 @@
     sprite: _Wega/Clothing/Under/Bottom/Head/mrd.rsi
   - type: Clothing
     sprite: _Wega/Clothing/Under/Bottom/Head/mrd.rsi
+
+- type: entity
+  parent: ClothingUnderBottomBase
+  id: ClothingUnderBottomDiaper
+  name: Diaper
+  description: "These comfortable briefs made of soft and breathable material provide excellent comfort for every day."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Bottom/diaper.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Bottom/diaper.rsi
