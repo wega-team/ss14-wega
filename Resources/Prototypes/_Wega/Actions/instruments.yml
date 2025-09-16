@@ -1,0 +1,12 @@
+- type: entity
+  id: ActionPlayInstrumentSelf
+  parent: BaseAction
+  name: Play!
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon: _Wega/Interface/Actions/play.png
+    checkCanInteract: false
+  - type: InstantAction
+    event: !type:OpenUiActionEvent
+      key: enum.InstrumentUiKey.Key

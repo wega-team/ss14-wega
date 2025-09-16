@@ -49,8 +49,13 @@
   name: trait-monochromacy-name
   description: trait-monochromacy-desc
   category: Disabilities
+  # Corvax-Wega-start
+  blacklist:
+    components:
+      - NoirVision
   components:
-  - type: BlackAndWhiteOverlay
+  - type: ColourBlindness
+  # Corvax-Wega-end
 
 - type: trait
   id: Muted

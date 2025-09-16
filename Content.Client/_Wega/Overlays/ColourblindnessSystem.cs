@@ -1,10 +1,10 @@
-using Content.Client.Genetics.Systems;
-using Content.Shared.Genetics;
+using Content.Client.Shaders.Systems;
+using Content.Shared.Shaders;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Shared.Player;
 
-namespace Content.Client.Genetics.System;
+namespace Content.Client.Shaders.System;
 
 public sealed class ColourblindnessSystem : EntitySystem
 {

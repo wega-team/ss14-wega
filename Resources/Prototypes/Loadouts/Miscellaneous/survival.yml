@@ -27,6 +27,7 @@
     - Skrell # Corvax-Wega-Skrell
     - Demon # Corvax-Wega-Ы
     - Phantom # Corvax-Wega-Phantom
+    - Harpy # Corvax-Wega-Harpy
 - type: loadoutEffectGroup
   id: EffectSpeciesVox
   effects:

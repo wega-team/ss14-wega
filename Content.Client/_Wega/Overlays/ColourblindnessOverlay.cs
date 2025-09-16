@@ -1,10 +1,10 @@
-using Content.Shared.Genetics;
+using Content.Shared.Shaders;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Shared.Enums;
 using Robust.Shared.Prototypes;
 
-namespace Content.Client.Genetics.Systems;
+namespace Content.Client.Shaders.Systems;
 
 public sealed class ColourblindnessOverlay : Overlay
 {
@@ -12,7 +12,7 @@ public sealed class ColourblindnessOverlay : Overlay
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
 
-    public override OverlaySpace Space => OverlaySpace.WorldSpace;
+    public override OverlaySpace Space => OverlaySpace.ScreenSpace;
     public override bool RequestScreenTexture => true;
     private readonly ShaderInstance _desaturationShader;
 
@@ -42,12 +42,15 @@ public sealed class ColourblindnessOverlay : Overlay
         if (playerEntity == null || !_entityManager.TryGetComponent<ColourBlindnessComponent>(playerEntity, out var colourblindness))
             return;
 
-        var handle = args.WorldHandle;
+        var handle = args.ScreenHandle;
 
         _desaturationShader.SetParameter("SCREEN_TEXTURE", ScreenTexture);
-        _desaturationShader.SetParameter("DesaturationAmount", colourblindness.DesaturationAmount);
+        _desaturationShader.SetParameter("ColorFilter", colourblindness.ColorFilter);
+        _desaturationShader.SetParameter("Desaturation", colourblindness.Desaturation);
+        _desaturationShader.SetParameter("ColorShift", colourblindness.ColorShift);
+
         handle.UseShader(_desaturationShader);
-        handle.DrawRect(args.WorldBounds, Color.White);
+        handle.DrawRect(args.ViewportBounds, Color.White);
         handle.UseShader(null);
     }
 }
