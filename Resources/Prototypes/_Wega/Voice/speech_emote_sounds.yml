@@ -233,9 +233,9 @@
       collection: HarpyCry
     Whistle:
       collection: Whistles
-    Hiss:
+    CatHisses:
       collection: HarpyHisses
-    Meow:
+    CatMeow:
       collection: HarpyMeows
     Growl:
       collection: HarpyGrowls
@@ -243,11 +243,11 @@
       collection: HarpyPurrs
     HarpyRing:
       collection: HarpyRings
-    HonkHarpy:
+    Honk:
       collection: HarpyHonks
     HarpyPew:
       collection: HarpyPews
-    BaHarpyBangng:
+    HarpyBang:
       collection: HarpyBangs
     Beep:
       collection: HarpyBeeps

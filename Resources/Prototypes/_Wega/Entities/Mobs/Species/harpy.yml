@@ -32,7 +32,7 @@
       amount: 5
   - type: Speech
     speechSounds: Alto
-    allowedEmotes: ['Hiss', "Meow", 'Growl', 'Purr', 'Beep', 'Click', 'Squeak', 'HarpyRing', 'HarpyPew', 'HarpyBang', 'HarpyRev']
+    allowedEmotes: ['CatHisses', "CatMeow", 'Growl', 'Purr', 'Beep', 'Click', 'Squeak', 'HarpyRing', 'HarpyPew', 'HarpyBang', 'HarpyRev']
   - type: Vocal
     sounds:
       Male: SoundsHarpy
