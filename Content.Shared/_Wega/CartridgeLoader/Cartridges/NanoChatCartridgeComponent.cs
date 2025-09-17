@@ -3,6 +3,7 @@ using Robust.Shared.Audio;
 namespace Content.Shared.CartridgeLoader.Cartridges;
 
 [RegisterComponent, AutoGenerateComponentPause]
+// [Access(typeof(SharedNanoChatCartridgeSystem))]
 public sealed partial class NanoChatCartridgeComponent : Component
 {
     [DataField]
@@ -25,6 +26,9 @@ public sealed partial class NanoChatCartridgeComponent : Component
 
     [DataField]
     public Dictionary<string, List<ChatMessage>> Messages = new();
+
+    [DataField]
+    public Dictionary<string, ChatGroup> Groups = new();
 
     [DataField, AutoPausedField]
     public TimeSpan NextMessageAllowedAfter = TimeSpan.Zero;

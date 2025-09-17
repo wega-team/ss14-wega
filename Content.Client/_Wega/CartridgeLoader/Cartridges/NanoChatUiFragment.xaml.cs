@@ -19,18 +19,27 @@ public sealed partial class NanoChatUiFragment : BoxContainer
     public Action<string>? SendMessage;
     public Action<string>? EraseChat;
     public Action<string>? CloseChat;
+    public Action<string>? LeaveChat;
+    public Action? JoinGroup;
+    public Action? CreateGroup;
 
     private NanoChatEmojiPopup? _emojiPopup;
 
     public string? ActiveChatId;
     public Dictionary<string, ChatContact> Contacts = new();
+    public Dictionary<string, ChatGroup> Groups = new();
 
     public NanoChatUiFragment()
     {
         RobustXamlLoader.Load(this);
         Orientation = LayoutOrientation.Vertical;
 
+        ChatTypeTabs.SetTabTitle(0, Loc.GetString("nano-chat-ui-tab-contacts"));
+        ChatTypeTabs.SetTabTitle(1, Loc.GetString("nano-chat-ui-tab-groups"));
+
         AddContactButton.OnPressed += _ => OpenAddContact?.Invoke();
+        JoinGroupButton.OnPressed += _ => JoinGroup?.Invoke();
+        CreateGroupButton.OnPressed += _ => CreateGroup?.Invoke();
         MuteChatButton.OnPressed += _ => OnMutePressed?.Invoke();
         EmojiButton.OnPressed += _ => OpenEmojiPicker?.Invoke();
 
@@ -49,6 +58,16 @@ public sealed partial class NanoChatUiFragment : BoxContainer
             {
                 EraseChat?.Invoke(ActiveChatId);
                 ActiveChatId = null;
+            }
+        };
+
+        LeaveChatButton.OnPressed += _ =>
+        {
+            if (ActiveChatId != null && ActiveChatId.StartsWith("G"))
+            {
+                LeaveChat?.Invoke(ActiveChatId);
+                ActiveChatId = null;
+                UpdateUiState();
             }
         };
 
@@ -71,16 +90,24 @@ public sealed partial class NanoChatUiFragment : BoxContainer
             }
         };
 
+        ChatTypeTabs.OnTabChanged += _ => OnTabChanged();
+
         EmojiButton.AddStyleClass(StyleNano.ButtonOpenBoth);
         SendButton.AddStyleClass(StyleNano.ButtonOpenLeft);
 
         UpdateUiState();
     }
 
+    private void OnTabChanged()
+    {
+        UpdateContactsList();
+    }
+
     public void UpdateState(NanoChatUiState state)
     {
         OwnIdLabel.Text = state.ChatId;
         Contacts = state.Contacts;
+        Groups = state.Groups;
         ActiveChatId = state.ActiveChat;
 
         MuteChatButton.TexturePath = state.Muted
@@ -90,7 +117,7 @@ public sealed partial class NanoChatUiFragment : BoxContainer
             ? Loc.GetString("nano-chat-ui-unmute-tooltip")
             : Loc.GetString("nano-chat-ui-mute-tooltip");
 
-        // Update contacts list
+        // Update contacts and groups lists
         UpdateContactsList();
 
         // Update messages if we have active chat
@@ -130,13 +157,28 @@ public sealed partial class NanoChatUiFragment : BoxContainer
     private void UpdateContactsList()
     {
         ContactsContainer.RemoveAllChildren();
-        NoContactsLabel.Visible = Contacts.Count == 0;
+        GroupsContainer.RemoveAllChildren();
 
-        foreach (var contact in Contacts.Values.OrderBy(c => c.ContactName))
+        NoContactsLabel.Visible = Contacts.Count == 0 && ChatTypeTabs.CurrentTab == 0;
+        NoGroupsLabel.Visible = Groups.Count == 0 && ChatTypeTabs.CurrentTab == 1;
+
+        if (ChatTypeTabs.CurrentTab == 0)
         {
-            var control = new NanoChatContactControl(contact);
-            control.OnPressed += () => SetActiveChat?.Invoke(contact.ContactId);
-            ContactsContainer.AddChild(control);
+            foreach (var contact in Contacts.Values.OrderBy(c => c.ContactName))
+            {
+                var control = new NanoChatContactControl(contact);
+                control.OnPressed += () => SetActiveChat?.Invoke(contact.ContactId);
+                ContactsContainer.AddChild(control);
+            }
+        }
+        else
+        {
+            foreach (var group in Groups.Values.OrderBy(g => g.GroupName))
+            {
+                var control = new NanoChatGroupControl(group);
+                control.OnPressed += () => SetActiveChat?.Invoke(group.GroupId);
+                GroupsContainer.AddChild(control);
+            }
         }
     }
 
@@ -157,6 +199,7 @@ public sealed partial class NanoChatUiFragment : BoxContainer
     private void UpdateUiState()
     {
         var hasActiveChat = ActiveChatId != null;
+        var isGroupChat = hasActiveChat && ActiveChatId?.StartsWith("G") == true;
 
         // Update input state
         MessageInput.Editable = hasActiveChat;
@@ -165,13 +208,27 @@ public sealed partial class NanoChatUiFragment : BoxContainer
             : Loc.GetString("nano-chat-ui-select-chat-input");
         EmojiButton.Disabled = !hasActiveChat;
         SendButton.Disabled = !hasActiveChat;
-        EraseChatButton.Visible = hasActiveChat;
+
+        // Update button visibility
+        EraseChatButton.Visible = hasActiveChat && !isGroupChat;
+        LeaveChatButton.Visible = hasActiveChat && isGroupChat;
         CloseChatButton.Visible = hasActiveChat;
 
         // Update chat title
-        if (ActiveChatId != null && hasActiveChat && Contacts.TryGetValue(ActiveChatId, out var contact))
+        if (ActiveChatId != null)
         {
-            ChatTitle.Text = contact.ContactName;
+            if (isGroupChat && Groups.TryGetValue(ActiveChatId, out var group))
+            {
+                ChatTitle.Text = $"{group.GroupName} {ActiveChatId}";
+            }
+            else if (!isGroupChat && Contacts.TryGetValue(ActiveChatId, out var contact))
+            {
+                ChatTitle.Text = contact.ContactName;
+            }
+            else
+            {
+                ChatTitle.Text = Loc.GetString("nano-chat-ui-unknown-chat");
+            }
         }
         else
         {

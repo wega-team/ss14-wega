@@ -9,6 +9,8 @@ public sealed partial class NanoChatUi : UIFragment
 {
     private NanoChatUiFragment? _fragment;
     private NanoChatAddContactPopup? _addContactPopup;
+    private NanoChatJoinGroupPopup? _joinGroupPopup;
+    private NanoChatCreateGroupPopup? _createGroupPopup;
 
     public override Control GetUIFragmentRoot() => _fragment!;
 
@@ -16,14 +18,25 @@ public sealed partial class NanoChatUi : UIFragment
     {
         _fragment = new NanoChatUiFragment();
         _addContactPopup = new NanoChatAddContactPopup();
+        _joinGroupPopup = new NanoChatJoinGroupPopup();
+        _createGroupPopup = new NanoChatCreateGroupPopup();
 
         _fragment.InitializeEmojiPicker();
 
         _fragment.OpenAddContact += () => _addContactPopup.OpenCentered();
+        _fragment.JoinGroup += () => _joinGroupPopup.OpenCentered();
+        _fragment.CreateGroup += () => _createGroupPopup.OpenCentered();
+
         _fragment.EraseChat += contactId =>
         {
             userInterface.SendMessage(new CartridgeUiMessage(
                 new NanoChatUiMessageEvent(new NanoChatEraseContact(contactId))));
+        };
+
+        _fragment.LeaveChat += groupId =>
+        {
+            userInterface.SendMessage(new CartridgeUiMessage(
+                new NanoChatUiMessageEvent(new NanoChatLeaveGroup(groupId))));
         };
 
         _fragment.OpenEmojiPicker += () => _fragment.OpenEmojiPickerInternal();
@@ -32,9 +45,9 @@ public sealed partial class NanoChatUi : UIFragment
             userInterface.SendMessage(new CartridgeUiMessage(
                 new NanoChatUiMessageEvent(new NanoChatMuted())));
 
-        _fragment.SetActiveChat += contactId =>
+        _fragment.SetActiveChat += chatId =>
             userInterface.SendMessage(new CartridgeUiMessage(
-                new NanoChatUiMessageEvent(new NanoChatSetActiveChat(contactId))));
+                new NanoChatUiMessageEvent(new NanoChatSetActiveChat(chatId))));
 
         _fragment.SendMessage += message =>
         {
@@ -50,6 +63,18 @@ public sealed partial class NanoChatUi : UIFragment
         {
             userInterface.SendMessage(new CartridgeUiMessage(
                 new NanoChatUiMessageEvent(new NanoChatAddContact(contactId, contactName))));
+        };
+
+        _joinGroupPopup.OnGroupJoined += groupId =>
+        {
+            userInterface.SendMessage(new CartridgeUiMessage(
+                new NanoChatUiMessageEvent(new NanoChatJoinGroup(groupId))));
+        };
+
+        _createGroupPopup.OnGroupCreated += groupName =>
+        {
+            userInterface.SendMessage(new CartridgeUiMessage(
+                new NanoChatUiMessageEvent(new NanoChatCreateGroup(groupName))));
         };
     }
 

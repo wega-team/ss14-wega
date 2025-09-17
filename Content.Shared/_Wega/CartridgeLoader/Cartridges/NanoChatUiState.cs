@@ -9,14 +9,21 @@ public sealed class NanoChatUiState : BoundUserInterfaceState
     public string? ActiveChat;
     public bool Muted;
     public Dictionary<string, ChatContact> Contacts;
+    public Dictionary<string, ChatGroup> Groups;
     public List<ChatMessage>? ActiveChatMessages;
 
-    public NanoChatUiState(string chatId, string? activeChat, bool muted, Dictionary<string, ChatContact> contacts, List<ChatMessage>? activeChatMessages)
+    public NanoChatUiState(
+        string chatId, string? activeChat, bool muted,
+        Dictionary<string, ChatContact> contacts,
+        Dictionary<string, ChatGroup> groups,
+        List<ChatMessage>? activeChatMessages
+    )
     {
         ChatId = chatId;
         ActiveChat = activeChat;
         Muted = muted;
         Contacts = contacts;
+        Groups = groups;
         ActiveChatMessages = activeChatMessages;
     }
 }
@@ -33,6 +40,23 @@ public sealed class ChatContact
         ContactId = contactId;
         ContactName = contactName;
         HasUnread = hasUnread;
+    }
+}
+
+[Serializable, NetSerializable]
+public sealed class ChatGroup
+{
+    public string GroupId { get; }
+    public string GroupName { get; }
+    public bool HasUnread { get; }
+    public int MemberCount { get; }
+
+    public ChatGroup(string groupId, string groupName, bool hasUnread, int memberCount)
+    {
+        GroupId = groupId;
+        GroupName = groupName;
+        HasUnread = hasUnread;
+        MemberCount = memberCount;
     }
 }
 
