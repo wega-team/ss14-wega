@@ -106,8 +106,8 @@
 
 - type: listing
   id: UplinkEnergySwordDouble
-  name: uplink-energy-sword-double-name
-  description: uplink-energy-sword-double-desc
+  name: uplink-esword-double-name
+  description: uplink-esword-double-desc
   icon: { sprite: /Textures/Objects/Weapons/Melee/e_sword_double.rsi, state: icon }
   productEntity: EnergySwordDouble
   discountCategory: veryRareDiscounts
