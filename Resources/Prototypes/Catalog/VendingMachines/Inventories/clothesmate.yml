@@ -56,6 +56,40 @@
     ClothingUniformJumpskirtCasualRed: 2
     ClothingUniformJumpsuitCasualGreen: 2
     ClothingUniformJumpskirtCasualGreen: 2
+    ADTClothingUniformJumpskirtTurtleneckAquamarine: 2 # Corvax-Wega-Add
+    ADTClothingUniformJumpskirtTurtleneckWhite: 2 # Corvax-Wega-Add
+    ADTClothingUniformJumpskirtTurtleneckAzure: 2 # Corvax-Wega-Add
+    ADTClothingUniformJumpskirtTurtleneckYellow: 2 # Corvax-Wega-Add
+    ADTClothingUniformJumpskirtTurtleneckGreen: 2 # Corvax-Wega-Add
+    ADTClothingUniformJumpskirtTurtleneckBrown: 2 # Corvax-Wega-Add
+    ADTClothingUniformJumpskirtTurtleneckRed: 2 # Corvax-Wega-Add
+    ADTClothingUniformJumpskirtTurtleneckOrange: 2 # Corvax-Wega-Add
+    ADTClothingUniformJumpskirtTurtleneckPink: 2 # Corvax-Wega-Add
+    ADTClothingUniformJumpskirtTurtleneckGrey: 2 # Corvax-Wega-Add
+    ADTClothingUniformJumpskirtTurtleneckBlue: 2 # Corvax-Wega-Add
+    ADTClothingUniformJumpskirtTurtleneckPurple: 2 # Corvax-Wega-Add
+    ADTClothingUniformJumpskirtTurtleneckBlack: 2 # Corvax-Wega-Add
+    ADTClothingUniformJumpskirtTurtleneckBlackSleeveless: 2 # Corvax-Wega-Add
+    ADTClothingUniformJumpskirtTurtleneckWhiteSleeveless: 2 # Corvax-Wega-Add
+    ADTClothingUniformJumpskirtTurtleneckSalat: 2 # Corvax-Wega-Add
+    ADTClothingUniformJumpsuitTurtleneckAquamarine: 2 # Corvax-Wega-Add
+    ADTClothingUniformJumpsuitTurtleneckWhite: 2 # Corvax-Wega-Add
+    ADTClothingUniformJumpsuitTurtleneckAzure: 2 # Corvax-Wega-Add
+    ADTClothingUniformJumpsuitTurtleneckYellow: 2 # Corvax-Wega-Add
+    ADTClothingUniformJumpsuitTurtleneckGreen: 2 # Corvax-Wega-Add
+    ADTClothingUniformJumpsuitTurtleneckBrown: 2 # Corvax-Wega-Add
+    ADTClothingUniformJumpsuitTurtleneckRed: 2 # Corvax-Wega-Add
+    ADTClothingUniformJumpsuitTurtleneckOrange: 2 # Corvax-Wega-Add
+    ADTClothingUniformJumpsuitTurtleneckPink: 2 # Corvax-Wega-Add
+    ADTClothingUniformJumpsuitTurtleneckGrey: 2 # Corvax-Wega-Add
+    ADTClothingUniformJumpsuitTurtleneckBlue: 2 # Corvax-Wega-Add
+    ADTClothingUniformJumpsuitTurtleneckPurple: 2 # Corvax-Wega-Add
+    ADTClothingUniformJumpsuitTurtleneckBlack: 2 # Corvax-Wega-Add
+    ADTClothingUniformJumpsuitTurtleneckWhiteBlackSleeveless: 2 # Corvax-Wega-Add
+    ADTClothingUniformJumpsuitTurtleneckWhiteSleeveless: 2 # Corvax-Wega-Add
+    ADTClothingUniformJumpsuitTurtleneckBlackSleeveless: 2 # Corvax-Wega-Add
+    ADTClothingUniformJumpsuitTurtleneckSalat: 2 # Corvax-Wega-Add
+    ADTClothingUniformJumpsuitTurtleneckSalatblack: 2 # Corvax-Wega-Add
     # DO NOT ADD MORE, USE UNIFORM DYING
     ClothingShoesColorBlack: 8
     ClothingShoesColorBrown: 4
@@ -106,4 +140,5 @@
     ToyFigurineGreytider: 1
     ClothingBackpackSatchelSmugglerUnanchored: 1
     ClothingHeadHatSolidHeadband: 2
+    ADTClothingUniformJumpsuitTurtleneckTactick: 1 # Corvax-Wega-Add
   # DO NOT ADD MORE, USE UNIFORM DYING
