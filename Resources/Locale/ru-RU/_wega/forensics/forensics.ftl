@@ -18,4 +18,10 @@ forensic-scanner-chat-with-contact = Чат с: { $name } ({ $id })
 forensic-scanner-chat-with-unknown = Чат с: Неизвестный ({ $id })
 forensic-scanner-chat-contact-no-messages = Контакт: { $name } ({ $id }) - нет сообщений
 
+forensic-scanner-chat-groups-header = ГРУППОВЫЕ ЧАТЫ
+forensic-scanner-chat-group-info = Группа: { $name } (ID: { $id }, Участников: { $members })
+forensic-scanner-chat-group-messages = Сообщения группы:
+forensic-scanner-chat-group-no-messages = Нет сообщений в группе
+forensic-scanner-chat-archived-group = Архивная группа: { $id }
+
 forensic-scanner-chat-you = Вы
