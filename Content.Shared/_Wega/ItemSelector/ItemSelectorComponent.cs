@@ -8,8 +8,8 @@ public sealed partial class ItemSelectorComponent : Component
     /// <summary>
     /// List of item prototype IDs that can be selected.
     /// </summary>
-    [DataField("items"), ValidatePrototypeId<EntityPrototype>]
-    public List<string> Items = new();
+    [DataField("items")]
+    public List<EntProtoId> Items = new();
 
     /// <summary>
     /// Components that an entity must have to display the UI (whitelist)

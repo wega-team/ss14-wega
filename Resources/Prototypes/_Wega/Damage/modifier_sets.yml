@@ -46,3 +46,10 @@
     Heat: 0.85
     Poison: 0.8
     Cellular: 1.5
+
+- type: damageModifierSet
+  id: Phantom
+  coefficients:
+    Cold: 0.75
+    Heat: 1.5
+    Shock: 1.25

@@ -15,3 +15,27 @@
         Slash: 0.5
         Piercing: 0.6
         Heat: 0.5
+
+- type: entity
+  parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing]
+  id: ClothingOuterArmorBlueShield
+  name: officer bulletproof "Blue Shield"
+  description: A standard armored breastplate that provides protection and at the same time a certain mobility. The blue and white Blue Shield emblem is on the chest.
+  components:
+    - type: Sprite
+      sprite: _Wega/Clothing/OuterClothing/Armor/blueshield.rsi
+    - type: Clothing
+      sprite: _Wega/Clothing/OuterClothing/Armor/blueshield.rsi
+    - type: Armor
+      modifiers:
+        coefficients:
+          Blunt: 0.5
+          Slash: 0.5
+          Piercing: 0.6
+          Heat: 0.5
+    - type: ExplosionResistance
+      damageCoefficient: 0.65
+    - type: ClothingSpeedModifier
+      walkModifier: 1.0
+      sprintModifier: 1.0
+    - type: HeldSpeedModifier

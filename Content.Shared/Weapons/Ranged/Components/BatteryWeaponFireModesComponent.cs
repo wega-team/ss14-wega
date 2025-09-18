@@ -42,10 +42,19 @@ public sealed partial class BatteryWeaponFireMode
     /// </summary>
     [DataField]
     public float FireCost = 100;
+
+    // Corvax-Wega-MagVisuals-start
+    [DataField]
+    public string State = string.Empty;
+
+    [DataField]
+    public string MagState = string.Empty;
+    // Corvax-Wega-MagVisuals-end
 }
 
 [Serializable, NetSerializable]
 public enum BatteryWeaponFireModeVisuals : byte
 {
-    State
+    State,
+    MagState // Corvax-Wega-MagVisuals-Add
 }

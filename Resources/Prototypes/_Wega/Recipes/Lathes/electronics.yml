@@ -5,6 +5,11 @@
 
 - type: latheRecipe
   parent: BaseGoldCircuitboardRecipe
+  id: MiningMonitoringComputerCircuitboard
+  result: MiningMonitoringComputerCircuitboard
+
+- type: latheRecipe
+  parent: BaseGoldCircuitboardRecipe
   id: SlimeExtractorMachineCircuitboard
   result: SlimeExtractorMachineCircuitboard
 
@@ -27,3 +32,13 @@
   parent: BaseCircuitboardRecipe
   id: MedicalScannerMachineCircuitboard
   result: MedicalScannerMachineCircuitboard
+
+- type: latheRecipe
+  parent: BaseGoldCircuitboardRecipe
+  id: MiningServerCircuitboard
+  result: MiningServerCircuitboard
+
+- type: latheRecipe
+  parent: BaseCircuitboardRecipe
+  id: WashingMachineCircuitboard
+  result: WashingMachineCircuitboard

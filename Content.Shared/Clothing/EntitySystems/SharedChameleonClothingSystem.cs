@@ -2,9 +2,11 @@ using System.Linq;
 using Content.Shared.Access.Components;
 using Content.Shared.Clothing.Components;
 using Content.Shared.Contraband;
+using Content.Shared.DirtVisuals; // Corvax-Wega-Dirtable
 using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Item;
+using Content.Shared.Lock;
 using Content.Shared.Tag;
 using Content.Shared.Verbs;
 using Robust.Shared.Prototypes;
@@ -23,6 +25,7 @@ public abstract class SharedChameleonClothingSystem : EntitySystem
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly TagSystem _tag = default!;
     [Dependency] protected readonly IGameTiming _timing = default!;
+    [Dependency] private readonly LockSystem _lock = default!;
 
     private static readonly SlotFlags[] IgnoredSlots =
     {
@@ -100,6 +103,19 @@ public abstract class SharedChameleonClothingSystem : EntitySystem
             _clothingSystem.CopyVisuals(uid, otherClothing, clothing);
         }
 
+        // Corvax-Wega-Dirtable-start
+        // dirtable logic
+        if (TryComp(uid, out DirtableComponent? dirtable) &&
+            proto.TryGetComponent("Dirtable", out DirtableComponent? protoDirtable))
+        {
+            dirtable.DirtSpritePath = protoDirtable.DirtSpritePath;
+            dirtable.DirtState = protoDirtable.DirtState;
+            dirtable.FoldingDirtState = protoDirtable.FoldingDirtState;
+            dirtable.EquippedDirtState = protoDirtable.EquippedDirtState;
+            Dirty(uid, dirtable);
+        }
+        // Corvax-Wega-Dirtable-end
+
         // appearance data logic
         if (TryComp(uid, out AppearanceComponent? appearance) &&
             proto.TryGetComponent("Appearance", out AppearanceComponent? appearanceOther))
@@ -122,7 +138,7 @@ public abstract class SharedChameleonClothingSystem : EntitySystem
 
     private void OnVerb(Entity<ChameleonClothingComponent> ent, ref GetVerbsEvent<InteractionVerb> args)
     {
-        if (!args.CanAccess || !args.CanInteract || ent.Comp.User != args.User)
+        if (!args.CanAccess || !args.CanInteract || _lock.IsLocked(ent.Owner))
             return;
 
         // Can't pass args from a ref event inside of lambdas

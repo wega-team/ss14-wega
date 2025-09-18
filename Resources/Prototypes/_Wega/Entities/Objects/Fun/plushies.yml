@@ -1,0 +1,54 @@
+- type: entity
+  parent: BaseItem
+  id: PlushieTeg
+  name: dakimakura teg
+  description: A hand-held TEG? Just right to hug! It seems to be working and humming quietly...
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Fun/Plushies/teg.rsi
+    state: icon
+  - type: PointLight
+    enabled: True
+    radius: 5
+    color: "#4080FF"
+  - type: Electrified
+    shockDamage: 2
+    shockTime: 0.8
+    requirePower: false
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/_Wega/Items/purr.ogg
+      params:
+        variation: 0.65
+        volume: 5
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/_Wega/Items/purr.ogg
+      params:
+        variation: 0.65
+        volume: 5
+  - type: EmitSoundOnActivate
+    sound:
+      path: /Audio/_Wega/Items/purr.ogg
+      params:
+        variation: 0.65
+        volume: 5
+  - type: EmitSoundOnTrigger
+    sound:
+      path: /Audio/_Wega/Items/purr.ogg
+      params:
+        variation: 0.65
+        volume: 5
+  - type: Food
+    requiresSpecialDigestion: true
+    useSound:
+      path: /Audio/_Wega/Items/purr.ogg
+      params:
+        variation: 0.65
+        volume: 5
+  - type: EmitSoundOnCollide
+    sound:
+      path: /Audio/Effects/Lightning/lightningshock.ogg
+      params:
+        variation: 0.65
+        volume: -10

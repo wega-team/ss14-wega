@@ -49,8 +49,8 @@
   components:
   - type: GameRule
     delay:
-      min:  20 # Corax-MRP # 10
-      max:  30 # Corax-MRP # 20
+      min:  20 # Corvax-MRP # 10
+      max:  30 # Corvax-MRP # 20
 
 - type: entity
   id: BaseStationEventShortDelay
@@ -59,8 +59,8 @@
   components:
   - type: GameRule
     delay:
-      min:  20 # Corax-MRP # 10
-      max:  30 # Corax-MRP # 20
+      min:  20 # Corvax-MRP # 10
+      max:  30 # Corvax-MRP # 20
 
 - type: entity
   id: BaseStationEventLongDelay
@@ -69,8 +69,8 @@
   components:
   - type: GameRule
     delay:
-      min:  50 # Corax-MRP # 40
-      max:  70 # Corax-MRP # 60
+      min:  50 # Corvax-MRP # 40
+      max:  70 # Corvax-MRP # 60
 
 - type: entity
   id: AnomalySpawn
@@ -166,8 +166,8 @@
   components:
   - type: StationEvent
     weight: 3 # Corvax-Wega-Edit
-    earliestStart: 50 # Corax-MRP # 40
-    reoccurrenceDelay: 30 # Corax-MRP # 20
+    earliestStart: 50 # Corvax-MRP # 40
+    reoccurrenceDelay: 30 # Corvax-MRP # 20
     minimumPlayers: 20
     duration: null
   - type: SpaceSpawnRule
@@ -283,7 +283,7 @@
     weight: 4 # Corvax-Wega-Edit
     duration: 1
     earliestStart: 45
-    minimumPlayers: 30 # Corax-MRP # 20
+    minimumPlayers: 30 # Corvax-MRP # 20
   - type: RandomSpawnRule
     prototype: MobRevenant
 
@@ -295,7 +295,7 @@
 #   - type: StationEvent
 #     weight: 1 # rare
 #     duration: 1
-#     earliestStart: 30
+#     earliestStart: 40 # Corvax-MRP # 30
 #     reoccurrenceDelay: 60
 #     minimumPlayers: 10
 #   - type: AntagSelection
@@ -436,7 +436,7 @@
     startAnnouncement: station-event-vent-creatures-start-announcement
     startAudio:
       path: /Audio/Announcements/attention.ogg
-    earliestStart: 30 # Corax-MRP # 20
+    earliestStart: 30 # Corvax-MRP # 20
     minimumPlayers: 15
     weight: 5
     duration: 60
@@ -457,7 +457,7 @@
     startAnnouncement: station-event-vent-creatures-start-announcement
     startAudio:
       path: /Audio/Announcements/attention.ogg
-    earliestStart: 30 # Corax-MRP # 20
+    earliestStart: 30 # Corvax-MRP # 20
     minimumPlayers: 15
     weight: 5
     duration: 60
@@ -478,7 +478,7 @@
     startAnnouncement: station-event-vent-creatures-start-announcement
     startAudio:
       path: /Audio/Announcements/attention.ogg
-    earliestStart: 30 # Corax-MRP # 20
+    earliestStart: 30 # Corvax-MRP # 20
     minimumPlayers: 15
     weight: 5
     duration: 60
@@ -495,7 +495,7 @@
     startAnnouncement: station-event-vent-creatures-start-announcement
     startAudio:
       path: /Audio/Announcements/attention.ogg
-    earliestStart: 30 # Corax-MRP # 20
+    earliestStart: 30 # Corvax-MRP # 20
     minimumPlayers: 20
     weight: 1.5
     duration: 60
@@ -583,7 +583,7 @@
   id: SleeperAgents
   components:
   - type: StationEvent
-    earliestStart: 40 # Corax-MRP #
+    earliestStart: 40 # Corvax-MRP #
     weight: 8
     minimumPlayers: 15
     maxOccurrences: 1 # can only happen once per round

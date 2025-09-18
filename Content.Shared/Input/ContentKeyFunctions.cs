@@ -29,6 +29,7 @@ namespace Content.Shared.Input
         public static readonly BoundKeyFunction OpenEmotesMenu = "OpenEmotesMenu";
         public static readonly BoundKeyFunction OpenInteractionMenu = "OpenInteractionMenu"; /// Corvax-Wega
         public static readonly BoundKeyFunction Strangle = "Strangle"; /// Corvax-Wega
+        public static readonly BoundKeyFunction OfferItem = "OfferItem"; /// Corvax-Wega-Offer
         public static readonly BoundKeyFunction OpenCraftingMenu = "OpenCraftingMenu";
         public static readonly BoundKeyFunction OpenGuidebook = "OpenGuidebook";
         public static readonly BoundKeyFunction OpenInventoryMenu = "OpenInventoryMenu";

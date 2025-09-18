@@ -10,6 +10,7 @@
     - state: posibrain
       map: ["base"]
   - type: Organ
+    organType: Brain # Corvax-Wega-Surgery
   - type: Input
     context: "ghost"
   - type: Brain
@@ -19,6 +20,12 @@
   - type: Item
     size: Small
     heldPrefix: brain
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+      - BaseOrgan
+      - BrainSynthetic
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   id: OrganIpcEyes
@@ -32,3 +39,11 @@
   - type: Item
     size: Small
     heldPrefix: eyeballs
+  # Corvax-Wega-Surgery-start
+  - type: Organ
+    organType: Eyes
+  - type: Tag
+    tags:
+      - BaseOrgan
+      - EyesSynthetic
+  # Corvax-Wega-Surgery-end

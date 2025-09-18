@@ -12,7 +12,7 @@
   id: FoxTail
   bodyPart: Tail
   markingCategory: Tail
-  speciesRestriction: [Vulpkanin]
+  speciesRestriction: [Vulpkanin, Human] # Corvax-Wega-Edit
   sprites:
     - sprite: Corvax/Mobs/Customization/vulpkanin.rsi
       state: vulp_tail
@@ -34,7 +34,7 @@
   id: WolfTail
   bodyPart: Tail
   markingCategory: Tail
-  speciesRestriction: [Vulpkanin]
+  speciesRestriction: [Vulpkanin, Human] # Corvax-Wega-Edit
   sprites:
     - sprite: Corvax/Mobs/Customization/vulpkanin.rsi
       state: wolf_tail

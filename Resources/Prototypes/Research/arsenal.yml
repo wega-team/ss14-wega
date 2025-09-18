@@ -172,6 +172,7 @@
   - PKAUpgradeDamage
   - PKAUpgradeRange
   - PKAUpgradeFireRate
+  - BorgModuleKinetic # Corvax-Wega-Kinetic
 
 - type: technology
   id: BasicShuttleArmament

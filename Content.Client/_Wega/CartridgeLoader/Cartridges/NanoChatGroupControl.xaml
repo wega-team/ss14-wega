@@ -1,0 +1,8 @@
+<Control xmlns="https://spacestation14.io">
+    <Button Name="MainButton" StyleClasses="ButtonSquare">
+        <BoxContainer Orientation="Horizontal" HorizontalExpand="True">
+            <Label Name="GroupName" HorizontalExpand="True"/>
+            <Label Name="MemberCount" StyleClasses="LabelSubText" Margin="4 0 0 0"/>
+        </BoxContainer>
+    </Button>
+</Control>

@@ -89,3 +89,5 @@
   - TelecomServerCircuitboard
   - SMESAdvancedMachineCircuitboard
   - HolopadMachineCircuitboard
+  - MiningServerCircuitboard # Corvax-Wega-Mining
+  - MiningMonitoringComputerCircuitboard # Corvax-Wega-Mining

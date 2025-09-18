@@ -1,15 +1,22 @@
 - type: entity
-  parent: ClothingNeckBase
+  parent: Clothing
   id: ClothingNeckFlashNeck
   name: Flash neck
   description: A dazzling token, literally!
   components:
   - type: Sprite
     sprite: _Wega/Clothing/Neck/Misc/flash_neck.rsi
+    state: icon
   - type: Clothing
+    quickEquip: true
+    slots:
+    - neck
     sprite: _Wega/Clothing/Neck/Misc/flash_neck.rsi
   - type: ImpulseFlash
     flashAction: ActionToggleFlashNeck
+    range: 7
+    slowTo: 0.4
+    duration: 3
 
 - type: entity
   parent: BaseAction
@@ -18,7 +25,7 @@
   description: Turn flash
   components:
   - type: Action
-    useDelay: 30
+    useDelay: 20
     sound:
       path: /Audio/Weapons/flash.ogg
       params:

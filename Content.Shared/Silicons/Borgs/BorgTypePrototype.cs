@@ -5,6 +5,7 @@ using Content.Shared.Silicons.Borgs.Components;
 using Content.Shared.Whitelist;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
+using Content.Shared.Corvax.TTS; // Corvax-Wega-tts-borg
 
 namespace Content.Shared.Silicons.Borgs;
 
@@ -151,4 +152,12 @@ public sealed partial class BorgTypePrototype : IPrototype
     /// </summary>
     [DataField]
     public SoundSpecifier FootstepCollection { get; set; } = new SoundCollectionSpecifier(DefaultFootsteps);
+
+    // Corvax-TTS-start
+    /// <summary>
+    /// TTS voice.
+    /// </summary>
+    [DataField]
+    public string? VoicePrototypeId { get; set; } = "TrainingRobot";
+    // Corvax-TTS-end
 }

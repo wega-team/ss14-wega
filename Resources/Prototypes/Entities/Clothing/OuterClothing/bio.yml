@@ -21,6 +21,11 @@
   - type: ClothingSpeedModifier
     walkModifier: 0.95
     sprintModifier: 0.95
+  # Corvax-Wega-Dirtable-start
+  - type: Dirtable
+    dirtState: bio
+    equippedDirtState: equipped-bio
+  # Corvax-Wega-Dirtable-end
 
 - type: entity
   parent: ClothingOuterBioGeneral

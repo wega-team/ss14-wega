@@ -11,3 +11,10 @@
   sprite:
     sprite: _Wega/Objects/Tools/combat-rcd.rsi
     state: icon
+
+- type: stealTargetGroup
+  id: WeaponBlueLaserPistol
+  name: steal-target-groups-weapon-blue-laser-pistol
+  sprite:
+    sprite: _Wega/Objects/Weapons/Guns/Battery/bluerantiquelasergun.rsi
+    state: icon

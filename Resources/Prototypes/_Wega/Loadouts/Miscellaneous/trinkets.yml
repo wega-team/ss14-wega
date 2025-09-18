@@ -4,27 +4,32 @@
   storage:
     back:
     - ClothingHandsBrasletHarmless
+  groupBy: "wegapin"
 
 - type: loadout
   id: BrasletSearch
   storage:
     back:
     - ClothingHandsBrasletSearch
+  groupBy: "wegapin"
 
 - type: loadout
   id: BrasletBite
   storage:
     back:
     - ClothingHandsBrasletBite
+  groupBy: "wegapin"
 
 - type: loadout
   id: BrasletSex
   storage:
     back:
     - ClothingHandsBrasletSex
+  groupBy: "wegapin"
 
 - type: loadout
   id: BrasletRape
   storage:
     back:
     - ClothingHandsBrasletRape
+  groupBy: "wegapin"

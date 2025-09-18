@@ -1,7 +1,9 @@
 using Content.Shared.Chat;
 using Content.Shared.Corvax.CCCVars;
 using Content.Shared.Corvax.TTS;
+using Content.Shared.SoundInsolation; // Corvax-Wega-SoundInsolation
 using Robust.Client.Audio;
+using Robust.Client.Player; // Corvax-Wega-SoundInsolation
 using Robust.Client.ResourceManagement;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
@@ -18,8 +20,10 @@ namespace Content.Client.Corvax.TTS;
 public sealed class TTSSystem : EntitySystem
 {
     [Dependency] private readonly IConfigurationManager _cfg = default!;
+    [Dependency] private readonly IPlayerManager _player = default!; // Corvax-Wega-SoundInsolation
     [Dependency] private readonly IResourceManager _res = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
+    [Dependency] private readonly SoundInsulationSystem _soundInsulation = default!; // Corvax-Wega-SoundInsolation
 
     private ISawmill _sawmill = default!;
     private static MemoryContentRoot _contentRoot = new();
@@ -79,30 +83,55 @@ public sealed class TTSSystem : EntitySystem
         var audioResource = new AudioResource();
         audioResource.Load(IoCManager.Instance!, Prefix / filePath);
 
-        var audioParams = AudioParams.Default
-            .WithVolume(AdjustVolume(ev.IsWhisper))
-            .WithMaxDistance(AdjustDistance(ev.IsWhisper));
-
         var soundSpecifier = new ResolvedPathSpecifier(Prefix / filePath);
 
         if (ev.SourceUid != null)
         {
-            if (!TryGetEntity(ev.SourceUid.Value, out _))
+            // Corvax-Wega-SoundInsolation-Start
+            if (!TryGetEntity(ev.SourceUid.Value, out var sourceEntityOpt) || !sourceEntityOpt.HasValue)
                 return;
-            var sourceUid = GetEntity(ev.SourceUid.Value);
-            _audio.PlayEntity(audioResource.AudioStream, sourceUid, soundSpecifier, audioParams);
+
+            var sourceEntity = sourceEntityOpt.Value;
+
+            float volumeMultiplier = 1f;
+            if (_player.LocalEntity != null && Exists(_player.LocalEntity.Value))
+            {
+                var insulation = _soundInsulation.GetSoundInsulation(sourceEntity, _player.LocalEntity.Value);
+                if (insulation >= 0.95f)
+                    return;
+
+                if (insulation > 0.1f && insulation < 0.95f)
+                {
+                    volumeMultiplier = 1f - MathHelper.Lerp(0.1f, 0.9f, insulation);
+                    volumeMultiplier = Math.Clamp(volumeMultiplier, 0.1f, 0.9f);
+                }
+            }
+
+            var audioParams = AudioParams.Default
+                .WithVolume(AdjustVolume(ev.IsWhisper, volumeMultiplier))
+                .WithMaxDistance(AdjustDistance(ev.IsWhisper));
+
+            _audio.PlayEntity(audioResource.AudioStream, sourceEntity, soundSpecifier, audioParams);
+            // Corvax-Wega-SoundInsolation-End
         }
         else
         {
+            // Corvax-Wega-SoundInsolation-Start
+            var audioParams = AudioParams.Default
+                .WithVolume(AdjustVolume(ev.IsWhisper, 1f))
+                .WithMaxDistance(AdjustDistance(ev.IsWhisper));
+            // Corvax-Wega-SoundInsolation-End
+
             _audio.PlayGlobal(audioResource.AudioStream, soundSpecifier, audioParams);
         }
 
         _contentRoot.RemoveFile(filePath);
     }
 
-    private float AdjustVolume(bool isWhisper)
+    private float AdjustVolume(bool isWhisper, float volumeMultiplier) // Corvax-Wega-SoundInsolation-Edit
     {
         var volume = MinimalVolume + SharedAudioSystem.GainToVolume(_volume);
+        volume *= volumeMultiplier; // Corvax-Wega-SoundInsolation
 
         if (isWhisper)
         {

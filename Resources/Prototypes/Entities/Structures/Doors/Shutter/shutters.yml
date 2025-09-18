@@ -100,6 +100,8 @@
     interactSuccessSound:
       collection: FenceRattle
   - type: BlockWeather
+  - type: SoundInsulator # Corvax-Wega-SoundInsolation
+    insulationFactor: 0.4 # Corvax-Wega-SoundInsolation
 
 - type: entity
   id: ShuttersNormal

@@ -1,3 +1,4 @@
+using Content.Shared.Tools;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
@@ -26,6 +27,12 @@ public sealed partial class OperatedComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public ProtoId<SurgeryNodePrototype>? CurrentTargetNode;
+
+    /// <summary>
+    /// A special type of tool for opening the surgical menu, if necessary.
+    /// </summary>
+    [DataField("specialTool")]
+    public ProtoId<ToolQualityPrototype>? SpecialTool = null;
 
     /// <summary>
     /// The ID of the entity (player) performing the operation.
@@ -62,7 +69,7 @@ public sealed partial class OperatedComponent : Component
     /// <summary>
     /// A modifier for the chance of losing a limb.
     /// </summary>
-    [ViewVariables]
+    [ViewVariables, DataField]
     public float LimbLossChance = 1f;
 
     /// <summary>

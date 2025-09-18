@@ -67,6 +67,7 @@
   # Corvax-Wega-Surgery-start
   - type: Tag
     tags:
+      - BaseOrgan
       - Lungs
       - Meat
   # Corvax-Wega-Surgery-end
@@ -103,6 +104,7 @@
   # Corvax-Wega-Surgery-start
   - type: Tag
     tags:
+      - BaseOrgan
       - Stomach
       - Meat
   # Corvax-Wega-Surgery-end
@@ -143,6 +145,7 @@
   # Corvax-Wega-Surgery-start
   - type: Tag
     tags:
+      - BaseOrgan
       - Liver
       - Meat
   # Corvax-Wega-Surgery-end
@@ -171,6 +174,7 @@
   - type: Heart
   - type: Tag
     tags:
+      - BaseOrgan
       - Heart
       - Meat
   # Corvax-Wega-Surgery-end
@@ -197,6 +201,7 @@
   # Corvax-Wega-Surgery-start
   - type: Tag
     tags:
+      - BaseOrgan
       - Kidneys
       - Meat
   # Corvax-Wega-Surgery-end

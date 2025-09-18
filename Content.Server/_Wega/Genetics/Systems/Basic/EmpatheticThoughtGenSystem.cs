@@ -7,7 +7,7 @@ using Content.Shared.Mind;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Popups;
-using Content.Shared.Roles;
+using Content.Shared.Roles.Components;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
 

@@ -1,0 +1,79 @@
+- type: marking
+  id: PhantomBreastSmall
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Phantom]
+  sexRestriction: [Female]
+  followSkinColor: true
+  forcedColoring: true
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+  sprites:
+  - sprite: _Wega/Mobs/Customization/phantom_breasts.rsi
+    state: small
+
+- type: marking
+  id: PhantomBreastDefault
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Phantom]
+  sexRestriction: [Female]
+  followSkinColor: true
+  forcedColoring: true
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+  sprites:
+  - sprite: _Wega/Mobs/Customization/phantom_breasts.rsi
+    state: default
+
+- type: marking
+  id: PhantomBreastMedium
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Phantom]
+  sexRestriction: [Female]
+  followSkinColor: true
+  forcedColoring: true
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+  sprites:
+  - sprite: _Wega/Mobs/Customization/phantom_breasts.rsi
+    state: medium
+
+- type: marking
+  id: PhantomBreastBig
+  bodyPart: Special
+  markingCategory: Chest
+  speciesRestriction: [Phantom]
+  sexRestriction: [Female]
+  followSkinColor: true
+  forcedColoring: true
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+  sprites:
+  - sprite: _Wega/Mobs/Customization/phantom_breasts.rsi
+    state: big
+
+- type: marking
+  id: PhantomBreastSuperBig
+  bodyPart: Special
+  markingCategory: Chest
+  speciesRestriction: [Phantom]
+  sexRestriction: [Female]
+  followSkinColor: true
+  forcedColoring: true
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+  sprites:
+  - sprite: _Wega/Mobs/Customization/phantom_breasts.rsi
+    state: superbig

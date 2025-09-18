@@ -37,6 +37,12 @@
   - ClothingNeckTransPin
   - ClothingNeckAutismPin
   - ClothingNeckGoldAutismPin
+  - OffsetCane
+  - OffsetCaneWood
+  - OffsetCaneClown
+  - OffsetCaneMime
+  - OffsetCaneNT
+  - Cane
    # Corvax-Loadouts-Start
   - ClothingNeckAtharaPin
   - ClothingNeckCorvaxPin
@@ -101,6 +107,7 @@
   - EmergencyNitrogen
   - EmergencyOxygen
   - LoadoutSpeciesVoxNitrogen
+  - EmergencyAndroid # Corvax-Wega-Android
 
 # nitrogen or oxygen tank, depending on what your species needs
 - type: loadoutGroup
@@ -532,6 +539,7 @@
   - EmergencyNitrogenClown
   - EmergencyOxygenClown
   - LoadoutSpeciesVoxNitrogen
+  - EmergencyAndroidClown # Corvax-Wega-Android
 
 - type: loadoutGroup
   id: MimeHead
@@ -589,6 +597,7 @@
   - EmergencyOxygenMime
   - EmergencySpeciesMothMime
   - LoadoutSpeciesVoxNitrogen
+  - EmergencyAndroidMime # Corvax-Wega-Android
 
 - type: loadoutGroup
   id: MusicianJumpsuit
@@ -610,6 +619,7 @@
   minLimit: 0
   maxLimit: 2
   loadouts:
+  - SuperSynthesizerInstrument ## Corvax-Wega
   - Glockenspiel
   - MusicBox
   - Xylophone
@@ -875,6 +885,7 @@
   - EmergencyNitrogenExtended
   - EmergencyOxygenExtended
   - LoadoutSpeciesVoxNitrogen
+  - EmergencyAndroidExtended # Corvax-Wega-Android
 
 # Science
 - type: loadoutGroup
@@ -1167,6 +1178,7 @@
   - EmergencyNitrogenSecurity
   - EmergencyOxygenSecurity
   - LoadoutSpeciesVoxNitrogen
+  - EmergencyAndroidSecurity # Corvax-Wega-Android
 
 - type: loadoutGroup
   id: SecurityStar
@@ -1372,6 +1384,7 @@
   - EmergencyNitrogenMedical
   - EmergencyOxygenMedical
   - LoadoutSpeciesVoxNitrogen
+  - EmergencyAndroidMedical # Corvax-Wega-Android
 
 # Wildcards
 - type: loadoutGroup
@@ -1414,6 +1427,7 @@
   - EmergencyNitrogenSyndicate
   - EmergencyOxygenSyndicate
   - LoadoutSpeciesVoxNitrogen
+  - EmergencyAndroidSyndicate # Corvax-Wega-Android
 
 - type: loadoutGroup
   id: GroupSpeciesBreathTool

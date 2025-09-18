@@ -25,7 +25,6 @@ using Content.Shared.Tools.Systems;
 using Robust.Server.GameObjects;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
-using Robust.Shared.Timing;
 
 namespace Content.Server.Surgery;
 
@@ -47,15 +46,12 @@ public sealed partial class SurgerySystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly InventorySystem _inventory = default!;
 
-    [ValidatePrototypeId<DamageTypePrototype>]
-    private const string SlashDamage = "Slash";
-    [ValidatePrototypeId<DamageTypePrototype>]
-    private const string HeatDamage = "Heat";
-    [ValidatePrototypeId<DamageTypePrototype>]
-    private const string PiercingDamage = "Piercing";
+    private static readonly ProtoId<DamageTypePrototype> BluntDamage = "Blunt";
+    private static readonly ProtoId<DamageTypePrototype> SlashDamage = "Slash";
+    private static readonly ProtoId<DamageTypePrototype> PiercingDamage = "Piercing";
+    private static readonly ProtoId<DamageTypePrototype> HeatDamage = "Heat";
 
-    [ValidatePrototypeId<ToolQualityPrototype>]
-    private readonly List<string> _surgeryTools = new()
+    private static readonly List<ProtoId<ToolQualityPrototype>> SurgeryTools = new()
     {
         "Scalpel",
         "Hemostat",
@@ -68,31 +64,14 @@ public sealed partial class SurgerySystem : EntitySystem
         "BoneSetter"
     };
 
-    [ValidatePrototypeId<TagPrototype>]
-    private readonly List<string> _organs = new()
+    private static readonly List<ProtoId<TagPrototype>> Organs = new()
     {
-        "Brain",
-        "Eyes",
-        "Heart",
-        "Lungs",
-        "Kidneys",
-        "Liver",
-        "Stomach",
-        "SlimeCore"
+        "BaseOrgan"
     };
 
-    [ValidatePrototypeId<TagPrototype>]
-    private readonly List<string> _parts = new()
+    private static readonly List<ProtoId<TagPrototype>> Parts = new()
     {
-        "Head",
-        "LeftArm",
-        "RightArm",
-        "LeftHand",
-        "RightHand",
-        "LeftLeg",
-        "RightLeg",
-        "LeftFoot",
-        "RightFoot",
+        "BaseBodyPart",
         "SubdermalImplant",
         "SubdermalHeadImplant"
     };
@@ -106,11 +85,11 @@ public sealed partial class SurgerySystem : EntitySystem
         UiInitialize();
 
         SubscribeLocalEvent<OperatedComponent, RejuvenateEvent>(OnRejuvenate);
-        SubscribeLocalEvent<OperatedComponent, DidEquipEvent>(OnDidEquip);
+        SubscribeLocalEvent<OperatedComponent, IsEquippingAttemptEvent>(OnIsEquipping);
         SubscribeLocalEvent<OperatedComponent, BodyPartRemovedEvent>(OnBodyPartsChanged);
 
         SubscribeLocalEvent<SterileComponent, ExaminedEvent>(OnSterileExamined);
-        SubscribeLocalEvent<SterileComponent, BeforeThrowEvent>(OnThrow);
+        SubscribeLocalEvent<SterileComponent, ThrownEvent>(OnThrow);
     }
 
     public override void Update(float frameTime)
@@ -175,7 +154,7 @@ public sealed partial class SurgerySystem : EntitySystem
         if (rootPart == null)
             return;
 
-        var prototype = _proto.Index<BodyPrototype>(body.Prototype.Value);
+        var prototype = _proto.Index(body.Prototype.Value);
         foreach (var (slotId, slot) in prototype.Slots)
         {
             if (slotId == prototype.Root)
@@ -222,11 +201,32 @@ public sealed partial class SurgerySystem : EntitySystem
         }
     }
 
-    private void OnDidEquip(Entity<OperatedComponent> ent, ref DidEquipEvent args)
-        => Timer.Spawn(1, () => { CheckAndRemoveInvalidClothing(ent); });
+    private void OnIsEquipping(Entity<OperatedComponent> ent, ref IsEquippingAttemptEvent args)
+    {
+        if ((args.SlotFlags == SlotFlags.FEET || args.SlotFlags == SlotFlags.SOCKS) &&
+            (!HasRequiredLimbs(ent, BodyPartType.Leg) || !HasRequiredLimbs(ent, BodyPartType.Foot)))
+        {
+            args.Cancel();
+            return;
+        }
+
+        if (args.SlotFlags == SlotFlags.GLOVES &&
+            (!HasRequiredLimbs(ent, BodyPartType.Arm) || !HasRequiredLimbs(ent, BodyPartType.Hand)))
+        {
+            args.Cancel();
+            return;
+        }
+
+        if ((args.SlotFlags == SlotFlags.HEAD || args.SlotFlags == SlotFlags.EYES || args.SlotFlags == SlotFlags.EARS ||
+            args.SlotFlags == SlotFlags.MASK) && !_body.GetBodyChildrenOfType(ent, BodyPartType.Head).Any())
+            args.Cancel();
+    }
 
     private void OnBodyPartsChanged(Entity<OperatedComponent> ent, ref BodyPartRemovedEvent args)
-        => Timer.Spawn(1, () => { CheckAndRemoveInvalidClothing(ent); });
+    {
+        OnBodyPartRemoved(ent, args.Part.Comp.PartType);
+        CheckAndRemoveInvalidClothing(ent);
+    }
 
     public void CheckAndRemoveInvalidClothing(Entity<OperatedComponent> ent)
     {
@@ -268,13 +268,14 @@ public sealed partial class SurgerySystem : EntitySystem
             args.AddMarkup(Loc.GetString("surgery-sterile-examined") + "\n");
     }
 
-    private void OnThrow(Entity<SterileComponent> entity, ref BeforeThrowEvent args)
-        => RemComp<SterileComponent>(entity);
+    private void OnThrow(Entity<SterileComponent> entity, ref ThrownEvent args)
+        => RemCompDeferred<SterileComponent>(entity);
 
     private bool TryGetOperatingTable(EntityUid patient, out float tableModifier)
     {
         tableModifier = 1f;
-        if (!TryComp<BuckleComponent>(patient, out var buckle) || buckle.BuckledTo == null)
+        if (!TryComp<BuckleComponent>(patient, out var buckle) || buckle.BuckledTo == null
+            || HasComp<SyntheticOperatedComponent>(patient))
             return false;
 
         return TryComp<OperatingTableComponent>(buckle.BuckledTo.Value, out var operating) &&

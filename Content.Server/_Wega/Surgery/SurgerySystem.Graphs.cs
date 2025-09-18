@@ -4,10 +4,12 @@ using Content.Shared.Body.Organ;
 using Content.Shared.DoAfter;
 using Content.Shared.Hands.Components;
 using Content.Shared.Implants.Components;
+using Content.Shared.Item.ItemToggle;
 using Content.Shared.Stacks;
 using Content.Shared.Surgery;
 using Content.Shared.Surgery.Components;
 using Content.Shared.Tag;
+using Content.Shared.Tools.Components;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Prototypes;
 
@@ -17,6 +19,7 @@ public sealed partial class SurgerySystem
 {
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly TagSystem _tag = default!;
+    [Dependency] private readonly ItemToggleSystem _toggle = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
     [Dependency] private readonly StackSystem _stack = default!;
 
@@ -344,7 +347,8 @@ public sealed partial class SurgerySystem
     /// <param name="transition">The SurgeryTransition associated with the step.</param>
     private void StartSingleStep(EntityUid user, EntityUid patient, OperatedComponent comp, string targetNode, SurgeryStep step, bool isParallel, SurgeryTransition transition)
     {
-        if (!TryGetOperatingTable(patient, out var tableModifier) && !comp.OperatedPart)
+        if (!TryGetOperatingTable(patient, out var tableModifier) && !comp.OperatedPart
+            && !HasComp<SyntheticOperatedComponent>(patient))
             return;
 
         var skillMod = TryComp<SurgicalSkillComponent>(user, out var skill) ? skill.Modifier : 1f;
@@ -412,6 +416,13 @@ public sealed partial class SurgerySystem
             return;
         }
 
+        // Includes if it is a welder
+        if (HasComp<WelderComponent>(item) && !_toggle.TryActivate(item.Value, user))
+        {
+            _popup.PopupEntity(Loc.GetString("surgery-welder-failed"), user, user);
+            return;
+        }
+
         var args = new DoAfterArgs(EntityManager, user, time,
             new SurgeryStepDoAfterEvent(targetNode, isParallel, stepIndex), patient, used: item)
         {
@@ -460,10 +471,10 @@ public sealed partial class SurgerySystem
         if (string.IsNullOrEmpty(requiredPart))
             return true;
 
-        if (_surgeryTools.Any(tool => _tool.HasQuality(item, tool)))
+        if (SurgeryTools.Any(tool => _tool.HasQuality(item, tool)))
             return true;
 
-        if (!_organs.Contains(requiredPart) || !HasComp<OrganComponent>(item))
+        if (!Organs.Contains(requiredPart) || !HasComp<OrganComponent>(item))
             return true;
 
         return _tag.HasTag(item, requiredPart);

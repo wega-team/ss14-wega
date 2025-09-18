@@ -30,6 +30,7 @@ using Content.Shared.NullRod.Components;
 using Content.Shared.Popups;
 using Content.Shared.Silicons.Borgs.Components;
 using Content.Shared.Standing;
+using Content.Shared.Surgery.Components;
 using Content.Shared.Timing;
 using Robust.Server.GameObjects;
 using Robust.Shared.Console;
@@ -252,7 +253,7 @@ public sealed partial class BloodCultSystem
 
                     var currentState = targetThresholds.CurrentThresholdState;
                     if (currentState is MobState.Dead && (HasComp<MindShieldComponent>(target) || HasComp<BibleUserComponent>(target)
-                        || HasComp<BloodCultObjectComponent>(target)))
+                        || HasComp<BloodCultObjectComponent>(target)) && !HasComp<SyntheticOperatedComponent>(target))
                     {
                         if (CheckRuneActivate(coords, 3))
                         {
@@ -283,7 +284,8 @@ public sealed partial class BloodCultSystem
                         }
                         break;
                     }
-                    else if (currentState != MobState.Dead && !HasComp<MindShieldComponent>(target) && !HasComp<BibleUserComponent>(target))
+                    else if (currentState != MobState.Dead && !HasComp<MindShieldComponent>(target) && !HasComp<BibleUserComponent>(target)
+                        && !HasComp<SyntheticOperatedComponent>(target))
                     {
                         if (CheckRuneActivate(coords, 2))
                         {
@@ -302,7 +304,8 @@ public sealed partial class BloodCultSystem
                         }
                         break;
                     }
-                    else if (currentState is MobState.Dead && !HasComp<MindShieldComponent>(target) && !HasComp<BibleUserComponent>(target))
+                    else if (currentState is MobState.Dead && !HasComp<MindShieldComponent>(target) && !HasComp<BibleUserComponent>(target)
+                        && !HasComp<SyntheticOperatedComponent>(target))
                     {
                         if (CheckRuneActivate(coords, 1))
                         {

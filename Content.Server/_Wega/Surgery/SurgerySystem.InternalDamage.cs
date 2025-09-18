@@ -20,6 +20,7 @@ using Content.Shared.Stunnable;
 using Content.Shared.Surgery;
 using Content.Shared.Surgery.Components;
 using Content.Shared.Traits.Assorted;
+using Content.Shared.Zombies;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
@@ -44,9 +45,20 @@ public sealed partial class SurgerySystem
 
     #region Process damage
 
+    private void OnBodyPartRemoved(Entity<OperatedComponent> ent, BodyPartType type)
+    {
+        if (type == BodyPartType.Leg)
+        {
+            if (!HasComp<BodyComponent>(ent))
+                return;
+
+            _stun.TryKnockdown(ent.Owner, TimeSpan.FromSeconds(2f), true, false);
+        }
+    }
+
     private void OnDamage(Entity<OperatedComponent> ent, ref DamageChangedEvent args)
     {
-        if (HasComp<GodmodeComponent>(ent))
+        if (HasComp<GodmodeComponent>(ent) || HasComp<ZombieComponent>(ent))
             return;
 
         if (args.DamageDelta == null || args.DamageDelta.Empty || !args.DamageIncreased
@@ -125,7 +137,7 @@ public sealed partial class SurgerySystem
             _popup.PopupEntity(Loc.GetString("surgery-limb-torn-off", ("limb", Name(limbId))), patient, PopupType.SmallCaution);
 
             _audio.PlayPvs(GibSound, patient);
-            if (!_mobState.IsDead(patient) && !HasComp<PainNumbnessComponent>(patient))
+            if (!_mobState.IsDead(patient) && !HasComp<PainNumbnessComponent>(patient) && !HasComp<SyntheticOperatedComponent>(patient))
                 _chat.TryEmoteWithoutChat(patient, _proto.Index<EmotePrototype>("Scream"), true);
 
             _pain.AdjustPain(patient, "Physical", 250f);
@@ -159,8 +171,12 @@ public sealed partial class SurgerySystem
 
             _audio.PlayPvs(GibSound, patient);
 
-            var damage = new DamageSpecifier { DamageDict = { { SlashDamage, 200 } } };
-            _damage.TryChangeDamage(patient, damage, true);
+            // Synthetics ignore head loss.
+            if (!HasComp<SyntheticOperatedComponent>(patient))
+            {
+                var damage = new DamageSpecifier { DamageDict = { { SlashDamage, 200 } } };
+                _damage.TryChangeDamage(patient, damage, true);
+            }
 
             if (HasComp<BloodstreamComponent>(patient))
                 _bloodstream.TryModifyBleedAmount(patient, 10f);
@@ -212,7 +228,7 @@ public sealed partial class SurgerySystem
                     _bloodstream.TryModifyBleedAmount(entity.Owner, 5f);
 
                 _audio.PlayPvs(GibSound, entity);
-                if (!_mobState.IsDead(entity) && !HasComp<PainNumbnessComponent>(entity))
+                if (!_mobState.IsDead(entity) && !HasComp<PainNumbnessComponent>(entity) && !HasComp<SyntheticOperatedComponent>(entity))
                     _chat.TryEmoteWithoutChat(entity, _proto.Index<EmotePrototype>("Scream"), true);
 
                 _transform.SetCoordinates(limbId, Transform(entity).Coordinates);
@@ -232,8 +248,8 @@ public sealed partial class SurgerySystem
 
     private void TryAddInternalDamages(Entity<OperatedComponent> ent, InternalDamagePrototype possibleDamage)
     {
-        if (TryComp<HumanoidAppearanceComponent>(ent, out var humanoidAppearance) && possibleDamage.BlacklistSpecies != null
-            && possibleDamage.BlacklistSpecies.Contains(humanoidAppearance.Species))
+        if (!TryComp<HumanoidAppearanceComponent>(ent, out var humanoidAppearance)
+            || possibleDamage.BlacklistSpecies != null && possibleDamage.BlacklistSpecies.Contains(humanoidAppearance.Species))
             return;
 
         float armorModifier = 1f;
@@ -303,7 +319,7 @@ public sealed partial class SurgerySystem
         if (!_proto.TryIndex<InternalDamagePrototype>(damageId, out var damageProto))
             return false;
 
-        if (TryComp<HumanoidAppearanceComponent>(target, out var humanoidAppearance) && damageProto.BlacklistSpecies != null
+        if (!TryComp<HumanoidAppearanceComponent>(target, out var humanoidAppearance) || damageProto.BlacklistSpecies != null
             && damageProto.BlacklistSpecies.Contains(humanoidAppearance.Species))
             return false;
 

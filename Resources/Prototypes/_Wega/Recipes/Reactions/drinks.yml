@@ -724,3 +724,51 @@
       amount: 1
   products:
     NewYorker: 7
+    
+- type: reaction
+  id: MilkshakeChockolate
+  requiredMixerCategories:
+  - Shake
+  reactants:
+    Milkshake:
+      amount: 5
+    CocoaPowder:
+      amount: 1
+  products:
+    MilkshakeChockolate: 6
+
+- type: reaction
+  id: MilkshakeBanana
+  requiredMixerCategories:
+  - Shake
+  reactants:
+    Milkshake:
+      amount: 5
+    JuiceBanana:
+      amount: 1
+  products:
+    MilkshakeBanana: 6
+
+- type: reaction
+  id: MilkshakeCherry
+  requiredMixerCategories:
+  - Shake
+  reactants:
+    Milkshake:
+      amount: 5
+    JuiceCherry:
+      amount: 1
+  products:
+    MilkshakeCherry: 6
+
+- type: reaction
+  id: MilkshakeBerry
+  requiredMixerCategories:
+  - Shake
+  reactants:
+    Milkshake:
+      amount: 5
+    JuiceBerry:
+      amount: 1
+  products:
+    MilkshakeBerry: 6

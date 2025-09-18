@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Sprite taken from https://github.com/ss220-space/Paradise",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "shower",
+      "directions": 4
+    },
+    {
+      "name": "water",
+      "directions": 4,
+      "delays": [ [ 0.1, 0.1, 0.1, 0.1 ], [ 0.1, 0.1, 0.1, 0.1 ], [ 0.1, 0.1, 0.1, 0.1 ], [ 0.1, 0.1, 0.1, 0.1 ] ]
+    } 
+  ]
+}

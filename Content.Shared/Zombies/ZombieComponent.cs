@@ -108,13 +108,15 @@ public sealed partial class ZombieComponent : Component
     [DataField("passiveHealing")]
     public DamageSpecifier PassiveHealing = new()
     {
-        DamageDict = new ()
+        DamageDict = new()
         {
-            { "Blunt", -0.4 },
-            { "Slash", -0.2 },
-            { "Piercing", -0.2 },
-            { "Heat", -0.02 },
-            { "Shock", -0.02 }
+            // Corvax-Wega-Zombie-Edit-start
+            { "Blunt", -0.8 },
+            { "Slash", -0.6 },
+            { "Piercing", -0.6 },
+            { "Heat", -0.1 },
+            { "Shock", -0.1 }
+            // Corvax-Wega-Zombie-Edit-end
         }
     };
 
@@ -122,7 +124,7 @@ public sealed partial class ZombieComponent : Component
     /// A multiplier applied to <see cref="PassiveHealing"/> when the entity is in critical condition.
     /// </summary>
     [DataField("passiveHealingCritMultiplier")]
-    public float PassiveHealingCritMultiplier = 2f;
+    public float PassiveHealingCritMultiplier = 3.5f; // Corvax-Wega-Zombie-Edit
 
     /// <summary>
     /// Healing given when a zombie bites a living being.
@@ -132,9 +134,11 @@ public sealed partial class ZombieComponent : Component
     {
         DamageDict = new()
         {
-            { "Blunt", -2 },
-            { "Slash", -2 },
-            { "Piercing", -2 }
+            // Corvax-Wega-Zombie-Edit-start
+            { "Blunt", -3 },
+            { "Slash", -3 },
+            { "Piercing", -3 }
+            // Corvax-Wega-Zombie-Edit-end
         }
     };
 

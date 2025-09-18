@@ -290,6 +290,8 @@
         Piercing: 10
     soundHit:
       path: "/Audio/Items/drill_hit.ogg"
+  - type: SurgicalTool # Corvax-Wega-Surgery
+    modifier: 1.75 # Corvax-Wega-Surgery
 
 - type: entity
   id: RCD

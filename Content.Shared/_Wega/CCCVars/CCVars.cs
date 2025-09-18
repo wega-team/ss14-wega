@@ -51,6 +51,15 @@ public sealed class WegaCVars
         CVarDef.Create("wega.party_enabled", false, CVar.SERVER | CVar.REPLICATED | CVar.ARCHIVE);
 
     /*
+        Sound insulation CVars
+    */
+    /// <summary>
+    /// If you enable this mode, it will process the sound with sound isolation.
+    /// </summary>
+    public static readonly CVarDef<bool> SoundInsulationEnabled =
+        CVarDef.Create("wega.sound_insulation_enabled", false, CVar.SERVER | CVar.REPLICATED | CVar.ARCHIVE);
+
+    /*
         Vote CVars
     */
     /// <summary>
@@ -59,9 +68,54 @@ public sealed class WegaCVars
     public static readonly CVarDef<bool> VoteRoundEndEnabled =
         CVarDef.Create("wega.roundend_vote_enabled", false, CVar.SERVERONLY);
 
+    /*
+        Ic Flavors
+    */
     /// <summary>
-    ///     Sets the maximum length for flavor text (character descriptions).
+    ///     Sets the maximum length for OOC flavor text.
     /// </summary>
     public static readonly CVarDef<int> OOCMaxFlavorTextLength =
-        CVarDef.Create("ic.oocflavor_text_length", 512, CVar.SERVER | CVar.REPLICATED);
+        CVarDef.Create("ic.oocflavor_text_length", 2048, CVar.SERVER | CVar.REPLICATED);
+
+    /// <summary>
+    ///     Sets the maximum length for character description text.
+    /// </summary>
+    public static readonly CVarDef<int> CharacterDescriptionLength =
+        CVarDef.Create("ic.character_description_length", 2048, CVar.SERVER | CVar.REPLICATED);
+
+    /// <summary>
+    ///     Sets the maximum length for green preferences text.
+    /// </summary>
+    public static readonly CVarDef<int> GreenPreferencesLength =
+        CVarDef.Create("ic.green_preferences_length", 256, CVar.SERVER | CVar.REPLICATED);
+
+    /// <summary>
+    ///     Sets the maximum length for yellow preferences text.
+    /// </summary>
+    public static readonly CVarDef<int> YellowPreferencesLength =
+        CVarDef.Create("ic.yellow_preferences_length", 256, CVar.SERVER | CVar.REPLICATED);
+
+    /// <summary>
+    ///     Sets the maximum length for red preferences text.
+    /// </summary>
+    public static readonly CVarDef<int> RedPreferencesLength =
+        CVarDef.Create("ic.red_preferences_length", 256, CVar.SERVER | CVar.REPLICATED);
+
+    /// <summary>
+    ///     Sets the maximum length for tags text.
+    /// </summary>
+    public static readonly CVarDef<int> TagsLength =
+        CVarDef.Create("ic.tags_length", 128, CVar.SERVER | CVar.REPLICATED);
+
+    /// <summary>
+    ///     Sets the maximum length for links text.
+    /// </summary>
+    public static readonly CVarDef<int> LinksLength =
+        CVarDef.Create("ic.links_length", 512, CVar.SERVER | CVar.REPLICATED);
+
+    /// <summary>
+    ///     Sets the maximum length for NSFW preferences text.
+    /// </summary>
+    public static readonly CVarDef<int> NSFWPreferencesLength =
+        CVarDef.Create("ic.nsfw_preferences_length", 1024, CVar.SERVER | CVar.REPLICATED);
 }

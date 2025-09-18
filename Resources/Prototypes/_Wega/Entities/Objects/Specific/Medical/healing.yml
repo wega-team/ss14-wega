@@ -49,3 +49,56 @@
     contents:
     - id: PillMutadon
       amount: 5
+
+# Corvax-Wega-Android-start
+
+- type: entity
+  name: "tyrium pack"
+  description: "Extremely important liquid for android functioning."
+  parent: BaseHealingItem
+  id: Tyriumpack
+  suffix: Full
+  components:
+  - type: Tag
+    tags:
+    - Bloodpack
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Medical/tyriumpack.rsi
+    state: tyriumpack
+  - type: Healing
+    bloodlossModifier: -20
+    modifyBloodLevel: 40
+    damageContainers:
+      - Android
+    damage:
+      types:
+        Bloodloss: -5
+    healingBeginSound:
+      path: "/Audio/Items/Medical/brutepack_begin.ogg"
+    healingEndSound:
+      path: "/Audio/Items/Medical/brutepack_end.ogg"
+  - type: Stack
+    stackType: Tyriumpack
+    count: 10
+  - type: StackPrice
+    price: 10
+
+- type: entity
+  parent: Tyriumpack
+  id: Tyriumpack1
+  suffix: Single
+  components:
+  - type: Stack
+    stackType: Tyriumpack
+    count: 1
+
+- type: entity
+  parent: Tyriumpack
+  id: Tyriumpack3
+  suffix: 3
+  components:
+  - type: Stack
+    stackType: Tyriumpack
+    count: 3
+
+# Corvax-Wega-Android-end

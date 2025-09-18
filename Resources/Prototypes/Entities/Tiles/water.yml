@@ -63,6 +63,7 @@
   - type: TileEntityEffect
     effects:
     - !type:ExtinguishReaction
+    - !type:WashDirtReaction # Corvax-Wega-Dirtable
   - type: Tag
     tags:
     - CanSwim

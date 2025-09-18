@@ -21,6 +21,11 @@
     layers:
       Snout: Mask
     hideOnToggle: true
+  # Corvax-Wega-Dirtable-start
+  - type: Dirtable
+    dirtState: gasmask
+    equippedDirtState: equipped-gasmask
+  # Corvax-Wega-Dirtable-end
 
 - type: entity
   parent: [ClothingMaskGas, BaseSecurityContraband]
@@ -235,6 +240,11 @@
   - type: HideLayerClothing
     slots:
     - Snout
+  # Corvax-Wega-Dirtable-start
+  - type: Dirtable
+    dirtState: clown
+    equippedDirtState: equipped-clown
+  # Corvax-Wega-Dirtable-end
 
 - type: entity
   parent: ClothingMaskClown
@@ -302,6 +312,11 @@
   - type: HideLayerClothing
     slots:
     - Snout
+  # Corvax-Wega-Dirtable-start
+  - type: Dirtable
+    dirtState: mime
+    equippedDirtState: equipped-mime
+  # Corvax-Wega-Dirtable-end
 
 - type: entity
   parent: ClothingMaskPullableBase
@@ -326,6 +341,11 @@
       Plastic: 25
   - type: StaticPrice
     price: 5
+  # Corvax-Wega-Dirtable-start
+  - type: Dirtable
+    dirtState: sterile
+    equippedDirtState: equipped-sterile
+  # Corvax-Wega-Dirtable-end
 
 - type: entity
   parent: ClothingMaskBase
@@ -615,6 +635,11 @@
   - type: Tag
     tags:
     - WhitelistChameleon
+  # Corvax-Wega-Dirtable-start
+  - type: Dirtable
+    dirtState: gaiter
+    equippedDirtState: equipped-gaiter
+  # Corvax-Wega-Dirtable-end
 
 - type: entity
   parent: ClothingMaskNeckGaiter

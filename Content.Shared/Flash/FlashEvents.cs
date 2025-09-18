@@ -19,3 +19,11 @@ public record struct FlashAttemptEvent(EntityUid Target, EntityUid? User, Entity
 /// </summary>
 [ByRefEvent]
 public record struct AfterFlashedEvent(EntityUid Target, EntityUid? User, EntityUid? Used, bool Melee);
+
+
+// Corvax-Wega-Flash-Damage-Start
+[ByRefEvent]
+public record struct FlashAttemptDamageEvent(EntityUid Target, TimeSpan FlashDuration, bool Cancelled = false)
+{
+}
+// Corvax-Wega-Flash-Damage-Start

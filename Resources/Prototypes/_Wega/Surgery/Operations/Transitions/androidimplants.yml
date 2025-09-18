@@ -1,0 +1,702 @@
+# ========================
+# ИМПЛАНТАЦИЯ
+# ========================
+
+#Torso
+- type: surgeryTransition
+  id: AndroidImplantTorsoTransition
+  target: AndroidTorsoOpen
+  label: "Установить имплант"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tag: [ SubdermalImplant ]
+          entityPreview: EmptySubdermalImplant
+          action: Implanting
+          sound:
+            path: /Audio/Items/ratchet.ogg
+          time: 2
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Screw
+          sound:
+            collection: Screwdriver
+          time: 2
+        - tag: [ CableCoil ]
+          action: MendWire
+          entityPreview: CableApcStack
+          time: 2
+
+#Head
+- type: surgeryTransition
+  id: AndroidImplantHeadTransition
+  target: AndroidImplantingHeadOpen
+  label: "Установить имплант"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:BodyPartCondition
+          bodyPart: head
+      steps:
+        - tag: [ SubdermalHeadImplant ]
+          entityPreview: EmptySubdermalImplant
+          action: Implanting
+          sound:
+            collection: Screwdriver
+          time: 2
+        - tool: [ Pulsing ]
+          tag: [ DoorElectronicsConfigurator ]
+          action: Pulse
+          sound:
+            collection: CargoBeep
+          time: 2
+
+# ========================
+# УДАЛЕНИЕ ИМПЛАНТОВ
+# ========================
+
+#Torso
+
+# SadTromboneImplant
+- type: surgeryTransition
+  id: AndroidRemoveSadTromboneTransition
+  target: AndroidRemoveSadTromboneOperation
+  label: "Извлечь имплант грустного тромбона"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "SadTromboneImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: AndroidExtractSadTromboneTransition
+  target: AndroidTorsoOpen
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: RemoveImplant
+          requiredImplant: "SadTromboneImplant"
+          sound:
+            path: /Audio/Items/wirecutter.ogg 
+          time: 2
+
+# LightImplant
+- type: surgeryTransition
+  id: AndroidRemoveLightImplantTransition
+  target: AndroidRemoveLightImplantOperation
+  label: "Извлечь световой имплант"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "LightImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: AndroidExtractLightImplantTransition
+  target: AndroidTorsoOpen
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: RemoveImplant
+          requiredImplant: "LightImplant"
+          sound:
+            path: /Audio/Items/wirecutter.ogg 
+          time: 2
+
+# BikeHorn
+- type: surgeryTransition
+  id: AndroidRemoveBikeHornTransition
+  target: AndroidRemoveBikeHornOperation
+  label: "Извлечь имплант велосипедного гудка"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "BikeHornImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: AndroidExtractBikeHornTransition
+  target: AndroidTorsoOpen
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: RemoveImplant
+          requiredImplant: "BikeHornImplant"
+          sound:
+            path: /Audio/Items/wirecutter.ogg 
+          time: 2
+
+# Tracking
+- type: surgeryTransition
+  id: AndroidRemoveTrackingTransition
+  target: AndroidRemoveTrackingOperation
+  label: "Извлечь имплант слежения"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "TrackingImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: AndroidExtractTrackingTransition
+  target: AndroidTorsoOpen
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: RemoveImplant
+          requiredImplant: "TrackingImplant"
+          sound:
+            path: /Audio/Items/wirecutter.ogg 
+          time: 2
+
+# Storage
+- type: surgeryTransition
+  id: AndroidRemoveStorageTransition
+  target: AndroidRemoveStorageOperation
+  label: "Извлечь подозрительный имплант"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "StorageImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: AndroidExtractStorageTransition
+  target: AndroidTorsoOpen
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: RemoveImplant
+          requiredImplant: "StorageImplant"
+          sound:
+            path: /Audio/Items/wirecutter.ogg 
+          time: 2
+
+# Freedom
+- type: surgeryTransition
+  id: AndroidRemoveFreedomTransition
+  target: AndroidRemoveFreedomOperation
+  label: "Извлечь подозрительный имплант"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "FreedomImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: AndroidExtractFreedomTransition
+  target: AndroidTorsoOpen
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: RemoveImplant
+          requiredImplant: "FreedomImplant"
+          sound:
+            path: /Audio/Items/wirecutter.ogg 
+          time: 2
+
+# Radio
+- type: surgeryTransition
+  id: AndroidRemoveRadioTransition
+  target: AndroidRemoveRadioOperation
+  label: "Извлечь подозрительный имплант"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "RadioImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: AndroidExtractRadioTransition
+  target: AndroidTorsoOpen
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: RemoveImplant
+          requiredImplant: "RadioImplant"
+          sound:
+            path: /Audio/Items/wirecutter.ogg 
+          time: 2
+
+# Uplink
+- type: surgeryTransition
+  id: AndroidRemoveUplinkTransition
+  target: AndroidRemoveUplinkOperation
+  label: "Извлечь подозрительный имплант"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "UplinkImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: AndroidExtractUplinkTransition
+  target: AndroidTorsoOpen
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: RemoveImplant
+          requiredImplant: "UplinkImplant"
+          sound:
+            path: /Audio/Items/wirecutter.ogg 
+          time: 2
+
+# Emp
+- type: surgeryTransition
+  id: AndroidRemoveEmpTransition
+  target: AndroidRemoveEmpOperation
+  label: "Извлечь подозрительный имплант"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "EmpImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: AndroidExtractEmpTransition
+  target: AndroidTorsoOpen
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: RemoveImplant
+          requiredImplant: "EmpImplant"
+          sound:
+            path: /Audio/Items/wirecutter.ogg 
+          time: 2
+
+# Scram
+- type: surgeryTransition
+  id: AndroidRemoveScramTransition
+  target: AndroidRemoveScramOperation
+  label: "Извлечь подозрительный имплант"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "ScramImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: AndroidExtractScramTransition
+  target: AndroidTorsoOpen
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: RemoveImplant
+          requiredImplant: "ScramImplant"
+          sound:
+            path: /Audio/Items/wirecutter.ogg 
+          time: 2
+
+# DnaScrambler
+- type: surgeryTransition
+  id: AndroidRemoveDnaScramblerTransition
+  target: AndroidRemoveDnaScramblerOperation
+  label: "Извлечь подозрительный имплант"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "DnaScramblerImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: AndroidExtractDnaScramblerTransition
+  target: AndroidTorsoOpen
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: RemoveImplant
+          requiredImplant: "DnaScramblerImplant"
+          sound:
+            path: /Audio/Items/wirecutter.ogg 
+          time: 2
+
+# ChameleonController
+- type: surgeryTransition
+  id: AndroidRemoveChameleonControllerTransition
+  target: AndroidRemoveChameleonControllerOperation
+  label: "Извлечь подозрительный имплант"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "ChameleonControllerImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: AndroidExtractChameleonControllerTransition
+  target: AndroidTorsoOpen
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: RemoveImplant
+          requiredImplant: "ChameleonControllerImplant"
+          sound:
+            path: /Audio/Items/wirecutter.ogg 
+          time: 2
+
+# RadioCentcomm
+- type: surgeryTransition
+  id: AndroidRemoveRadioCentcommTransition
+  target: AndroidRemoveRadioCentcommOperation
+  label: "Извлечь подозрительный имплант"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "RadioImplantCentcomm"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: AndroidExtractRadioCentcommTransition
+  target: AndroidTorsoOpen
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: RemoveImplant
+          requiredImplant: "RadioCentcommImplant"
+          sound:
+            path: /Audio/Items/wirecutter.ogg 
+          time: 2
+
+#Head
+
+# MindShield
+- type: surgeryTransition
+  id: AndroidRemoveMindShieldTransition
+  target: AndroidRemoveMindShieldOperation
+  label: "Извлечь имплант защиты разума"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "MindShieldImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:BodyPartCondition
+          bodyPart: head
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: AndroidExtractMindShieldTransition
+  target: AndroidHeadOpen
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:BodyPartCondition
+          bodyPart: head
+      steps:
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: RemoveImplant
+          requiredImplant: "MindShieldImplant"
+          sound:
+            path: /Audio/Items/wirecutter.ogg 
+          time: 2
+
+# FakeMindShield
+- type: surgeryTransition
+  id: AndroidRemoveFakeMindShieldTransition
+  target: AndroidRemoveFakeMindShieldOperation
+  label: "Извлечь имплант защиты разума"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "FakeMindShieldImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:BodyPartCondition
+          bodyPart: head
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: AndroidExtractFakeMindShieldTransition
+  target: AndroidHeadOpen
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:BodyPartCondition
+          bodyPart: head
+      steps:
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: RemoveImplant
+          requiredImplant: "FakeMindShieldImplant"
+          sound:
+            path: /Audio/Items/wirecutter.ogg 
+          time: 2

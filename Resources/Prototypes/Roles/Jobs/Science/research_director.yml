@@ -40,6 +40,7 @@
   storage:
     back:
     - Flash
+    - Telescopicbaton #Corvax Wega
 
 - type: chameleonOutfit
   id: ResearchDirectorChameleonOutfit

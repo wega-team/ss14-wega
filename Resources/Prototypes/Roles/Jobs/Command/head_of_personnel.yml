@@ -72,9 +72,11 @@
     gloves: ClothingHandsGlovesHop
     ears: ClothingHeadsetAltCommand
     belt: BoxFolderClipboard
+    eyes: ClothingEyesHudCommand
   storage:
     back:
     - Flash
+    - Telescopicbaton #Corvax Wega
 
 - type: chameleonOutfit
   id: HeadOfPersonnelChameleonOutfit

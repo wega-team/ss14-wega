@@ -39,7 +39,7 @@
   typeDeviation: Intermediate
   costInstability: 10
   addComponent:
-  - type: NightVision
+  - type: NaturalNightVision
 
 - type: structuralEnzymes
   id: GeneticsPolymorphismIntermediate

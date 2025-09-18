@@ -270,7 +270,7 @@
       Unsexed: UnisexArachnid
   - type: TypingIndicator
     proto: spider
-  - type: NightVision # Corvax-Wega-NightVision
+  - type: NaturalNightVision # Corvax-Wega-NightVision
 
 - type: entity
   id: MobSpiderSpaceSalvage

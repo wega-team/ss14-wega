@@ -48,6 +48,7 @@
     context: "ghost"
   - type: Tag
     tags:
+      - BaseBodyPart
       - Head
   # Corvax-Wega-Surgery-start
   - type: UserInterface
@@ -72,6 +73,7 @@
   - type: Tag
     tags:
       - Trash
+      - BaseBodyPart
       - LeftArm
   # Corvax-Wega-Surgery-end
 
@@ -88,6 +90,7 @@
   - type: Tag
     tags:
       - Trash
+      - BaseBodyPart
       - RightArm
   # Corvax-Wega-Surgery-end
 
@@ -104,6 +107,7 @@
   - type: Tag
     tags:
       - Trash
+      - BaseBodyPart
       - LeftHand
   # Corvax-Wega-Surgery-end
 
@@ -120,6 +124,7 @@
   - type: Tag
     tags:
       - Trash
+      - BaseBodyPart
       - RightHand
   # Corvax-Wega-Surgery-end
 
@@ -137,6 +142,7 @@
   - type: Tag
     tags:
       - Trash
+      - BaseBodyPart
       - LeftLeg
   # Corvax-Wega-Surgery-end
 
@@ -154,6 +160,7 @@
   - type: Tag
     tags:
       - Trash
+      - BaseBodyPart
       - RightLeg
   # Corvax-Wega-Surgery-end
 
@@ -170,6 +177,7 @@
   - type: Tag
     tags:
       - Trash
+      - BaseBodyPart
       - LeftFoot
   # Corvax-Wega-Surgery-end
 
@@ -186,5 +194,6 @@
   - type: Tag
     tags:
       - Trash
+      - BaseBodyPart
       - RightFoot
   # Corvax-Wega-Surgery-end

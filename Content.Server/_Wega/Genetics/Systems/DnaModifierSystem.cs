@@ -272,6 +272,9 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
                     uniqueIdentifiers.FurColorG = new[] { furColorArray[3], furColorArray[4], furColorArray[5] };
                     uniqueIdentifiers.FurColorB = new[] { furColorArray[6], furColorArray[7], furColorArray[8] };
                     break;
+                case HumanoidSkinColor.PhantomBlack:
+                    uniqueIdentifiers.SkinTone = ConvertSkinToneToHexArray(humanoid.SkinColor);
+                    break;
             }
 
             // Цвет головного аксессуара (блоки 17-19)

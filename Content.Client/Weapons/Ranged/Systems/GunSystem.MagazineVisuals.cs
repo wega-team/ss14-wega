@@ -1,5 +1,6 @@
 using Content.Client.Weapons.Ranged.Components;
 using Content.Shared.Rounding;
+using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Systems;
 using Robust.Client.GameObjects;
 
@@ -40,6 +41,18 @@ public sealed partial class GunSystem
 
         if (sprite == null) return;
 
+        // Corvax-Wega-MagVisuals-start
+        string magState = component.MagState ?? string.Empty;
+        if (args.AppearanceData.TryGetValue(BatteryWeaponFireModeVisuals.MagState, out var customMagStateObj)
+            && customMagStateObj is string customMagState && !string.IsNullOrEmpty(customMagState))
+        {
+            magState = $"mag-{customMagState}";
+            component.MagState = magState;
+        }
+        else if (!string.IsNullOrEmpty(component.MagState))
+            magState = component.MagState;
+        // Corvax-Wega-MagVisuals-end
+
         if (!args.AppearanceData.TryGetValue(AmmoVisuals.MagLoaded, out var magloaded) ||
             magloaded is true)
         {
@@ -73,13 +86,13 @@ public sealed partial class GunSystem
             if (_sprite.LayerMapTryGet((uid, sprite), GunVisualLayers.Mag, out _, false))
             {
                 _sprite.LayerSetVisible((uid, sprite), GunVisualLayers.Mag, true);
-                _sprite.LayerSetRsiState((uid, sprite), GunVisualLayers.Mag, $"{component.MagState}-{step}");
+                _sprite.LayerSetRsiState((uid, sprite), GunVisualLayers.Mag, $"{magState}-{step}"); // Corvax-Wega-MagVisuals-Edit
             }
 
             if (_sprite.LayerMapTryGet((uid, sprite), GunVisualLayers.MagUnshaded, out _, false))
             {
                 _sprite.LayerSetVisible((uid, sprite), GunVisualLayers.MagUnshaded, true);
-                _sprite.LayerSetRsiState((uid, sprite), GunVisualLayers.MagUnshaded, $"{component.MagState}-unshaded-{step}");
+                _sprite.LayerSetRsiState((uid, sprite), GunVisualLayers.MagUnshaded, $"{magState}-unshaded-{step}"); // Corvax-Wega-MagVisuals-Edit
             }
         }
         else

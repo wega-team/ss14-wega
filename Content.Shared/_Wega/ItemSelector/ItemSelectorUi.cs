@@ -1,3 +1,4 @@
+using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared.Item.Selector.UI;
@@ -11,9 +12,9 @@ public enum ItemSelectorUiKey : byte
 [Serializable, NetSerializable]
 public sealed class ItemSelectorUserMessage : BoundUserInterfaceMessage
 {
-    public List<string> Items;
+    public List<EntProtoId> Items;
 
-    public ItemSelectorUserMessage(List<string> items)
+    public ItemSelectorUserMessage(List<EntProtoId> items)
     {
         Items = items;
     }
@@ -23,9 +24,9 @@ public sealed class ItemSelectorUserMessage : BoundUserInterfaceMessage
 public sealed class ItemSelectorSelectionMessage : BoundUserInterfaceMessage
 {
     public NetEntity User;
-    public string SelectedId;
+    public EntProtoId SelectedId;
 
-    public ItemSelectorSelectionMessage(NetEntity user, string selectedId)
+    public ItemSelectorSelectionMessage(NetEntity user, EntProtoId selectedId)
     {
         User = user;
         SelectedId = selectedId;

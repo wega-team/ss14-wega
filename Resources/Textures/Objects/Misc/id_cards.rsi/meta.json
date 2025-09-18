@@ -248,6 +248,12 @@
           "name": "idbarber"
         },
         {
+          "name": "idblueshield"
+        },
+        {
+          "name": "idpostman"
+        },
+        {
             "name": "gold-inhand-left",
             "directions": 4
         },

@@ -1,0 +1,82 @@
+- type: entity
+  id: MiningServer
+  name: mining server
+  parent: SmallConstructibleMachine
+  description: This is a high-performance mining server. It consumes a lot of energy and generates a lot of heat. It has three stages of operation, which affect the efficiency of mining and energy consumption.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: _Wega/Structures/Machines/miningserver.rsi
+    layers:
+    - state: base
+      map: ["enum.MiningServerVisualLayers.Main"]
+  - type: Icon
+    sprite: _Wega/Structures/Machines/miningserver.rsi
+    state: mode1
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,0.5"
+        mask:
+        - FullTileMask
+        layer:
+        - MachineLayer
+        density: 190
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Physics
+    bodyType: Static
+  - type: Transform
+    anchored: true
+  - type: MiningServer
+  - type: MiningServerVisuals
+  - type: PowerConsumer
+    drawRate: 1000
+    voltage: Medium
+  - type: NodeContainer
+    examinable: true
+    nodes:
+      input:
+        !type:CableDeviceNode
+        nodeGroupID: MVPower
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralMetallicStrong
+  - type: Destructible
+    thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 400
+        behaviors:
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
+      - trigger:
+          !type:DamageTrigger
+          damage: 200
+        behaviors:
+        - !type:PlaySoundBehavior
+          sound:
+            collection: MetalBreak
+        - !type:ChangeConstructionNodeBehavior
+          node: machineFrame
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+  - type: Barotrauma
+    damage:
+      types:
+        Structural: 0.5
+  - type: AmbientSound
+    volume: -9
+    range: 5
+    enabled: false
+    sound:
+      path: /Audio/Ambience/Objects/server_fans.ogg
+  - type: Anchorable
+  - type: Pullable
+  - type: Appearance
+  - type: WiresPanel
+  - type: Machine
+    board: MiningServerCircuitboard

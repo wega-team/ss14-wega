@@ -18,7 +18,7 @@
   bodyPart: Eyes
   markingCategory: Overlay
   markingType: NonGenetics # Corvax-Wega-Genetics
-  speciesRestriction: [Dwarf, Human, Reptilian, Arachnid]
+  speciesRestriction: [Dwarf, Human, Reptilian, Arachnid, Tajaran] # Corvax-Wega-Add
   coloring:
     default:
       type:
@@ -48,7 +48,7 @@
   bodyPart: Eyes
   markingCategory: Overlay
   markingType: NonGenetics # Corvax-Wega-Genetics
-  speciesRestriction: [Dwarf, Human, Reptilian, Arachnid]
+  speciesRestriction: [Dwarf, Human, Reptilian, Arachnid, Tajaran] # Corvax-Wega-Add
   coloring:
     default:
       type:
@@ -78,7 +78,7 @@
   bodyPart: Chest
   markingCategory: Overlay
   markingType: NonGenetics # Corvax-Wega-Genetics
-  speciesRestriction: [Dwarf, Human, Reptilian, Arachnid]
+  speciesRestriction: [Dwarf, Human, Reptilian, Arachnid, Tajaran] # Corvax-Wega-Add
   coloring:
     default:
       type:
@@ -93,7 +93,7 @@
   bodyPart: Chest
   markingCategory: Overlay
   markingType: NonGenetics # Corvax-Wega-Genetics
-  speciesRestriction: [Dwarf, Human, Reptilian, Arachnid]
+  speciesRestriction: [Dwarf, Human, Reptilian, Arachnid, Tajaran] # Corvax-Wega-Add
   coloring:
     default:
       type:
@@ -108,7 +108,7 @@
   bodyPart: RArm
   markingCategory: Overlay
   markingType: NonGenetics # Corvax-Wega-Genetics
-  speciesRestriction: [Dwarf, Human, Reptilian, Arachnid]
+  speciesRestriction: [Dwarf, Human, Reptilian, Arachnid, Tajaran] # Corvax-Wega-Add
   coloring:
     default:
       type:
@@ -123,7 +123,7 @@
   bodyPart: RArm, RHand
   markingCategory: Overlay
   markingType: NonGenetics # Corvax-Wega-Genetics
-  speciesRestriction: [Dwarf, Human, Reptilian, Arachnid]
+  speciesRestriction: [Dwarf, Human, Reptilian, Arachnid, Tajaran] # Corvax-Wega-Add
   coloring:
     default:
       type:
@@ -138,7 +138,7 @@
   bodyPart: LArm, LHand
   markingCategory: Overlay
   markingType: NonGenetics # Corvax-Wega-Genetics
-  speciesRestriction: [Dwarf, Human, Reptilian, Arachnid]
+  speciesRestriction: [Dwarf, Human, Reptilian, Arachnid, Tajaran] # Corvax-Wega-Add
   coloring:
     default:
       type:
@@ -168,7 +168,7 @@
   bodyPart: LLeg
   markingCategory: Overlay
   markingType: NonGenetics # Corvax-Wega-Genetics
-  speciesRestriction: [Dwarf, Human, Reptilian, Arachnid]
+  speciesRestriction: [Dwarf, Human, Reptilian, Arachnid, Tajaran] # Corvax-Wega-Add
   coloring:
     default:
       type:
@@ -183,7 +183,7 @@
   bodyPart: RLeg
   markingCategory: Overlay
   markingType: NonGenetics # Corvax-Wega-Genetics
-  speciesRestriction: [Dwarf, Human, Reptilian, Arachnid]
+  speciesRestriction: [Dwarf, Human, Reptilian, Arachnid, Tajaran] # Corvax-Wega-Add
   coloring:
     default:
       type:
@@ -213,7 +213,7 @@
   bodyPart: RHand
   markingCategory: Overlay
   markingType: NonGenetics # Corvax-Wega-Genetics
-  speciesRestriction: [Dwarf, Human, Reptilian, Arachnid]
+  speciesRestriction: [Dwarf, Human, Reptilian, Arachnid, Tajaran] # Corvax-Wega-Add
   coloring:
     default:
       type:
@@ -228,7 +228,7 @@
   bodyPart: LHand
   markingCategory: Overlay
   markingType: NonGenetics # Corvax-Wega-Genetics
-  speciesRestriction: [Dwarf, Human, Reptilian, Arachnid]
+  speciesRestriction: [Dwarf, Human, Reptilian, Arachnid, Tajaran] # Corvax-Wega-Add
   coloring:
     default:
       type:
@@ -243,7 +243,7 @@
   bodyPart: Head
   markingCategory: Overlay
   markingType: NonGenetics # Corvax-Wega-Genetics
-  speciesRestriction: [Dwarf, Human, Reptilian, Arachnid, Moth]
+  speciesRestriction: [Dwarf, Human, Reptilian, Arachnid, Tajaran, Moth] # Corvax-Wega-Add
   coloring:
     default:
       type:
@@ -259,7 +259,7 @@
   bodyPart: Eyes
   markingCategory: Overlay
   markingType: NonGenetics # Corvax-Wega-Genetics
-  speciesRestriction: [Reptilian]
+  speciesRestriction: [Reptilian, Tajaran] # Corvax-Wega-Add
   coloring:
     default:
       type:
@@ -274,7 +274,7 @@
   bodyPart: Eyes
   markingCategory: Overlay
   markingType: NonGenetics # Corvax-Wega-Genetics
-  speciesRestriction: [Reptilian]
+  speciesRestriction: [Reptilian, Tajaran] # Corvax-Wega-Add
   coloring:
     default:
       type:
@@ -289,7 +289,7 @@
   bodyPart: RFoot
   markingCategory: Overlay
   markingType: NonGenetics # Corvax-Wega-Genetics
-  speciesRestriction: [Reptilian]
+  speciesRestriction: [Reptilian, Tajaran] # Corvax-Wega-Add
   coloring:
     default:
       type:
@@ -304,7 +304,7 @@
   bodyPart: LFoot
   markingCategory: Overlay
   markingType: NonGenetics # Corvax-Wega-Genetics
-  speciesRestriction: [Reptilian]
+  speciesRestriction: [Reptilian, Tajaran] # Corvax-Wega-Add
   coloring:
     default:
       type:
@@ -319,7 +319,7 @@
   bodyPart: Eyes
   markingCategory: Overlay
   markingType: NonGenetics # Corvax-Wega-Genetics
-  speciesRestriction: [Reptilian]
+  speciesRestriction: [Reptilian, Tajaran] # Corvax-Wega-Add
   coloring:
     default:
       type:

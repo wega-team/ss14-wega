@@ -53,6 +53,7 @@
           Quantity: 5
   - type: Tag
     tags:
+      - BaseOrgan
       - Brain
       - Meat
 
@@ -71,6 +72,7 @@
     organType: Eyes
   - type: Tag
     tags:
+      - BaseOrgan
       - Eyes
       - Meat
 
@@ -112,6 +114,7 @@
     organType: Lungs
   - type: Tag
     tags:
+      - BaseOrgan
       - Lungs
       - Meat
 
@@ -138,6 +141,7 @@
     organType: Heart
   - type: Tag
     tags:
+      - BaseOrgan
       - Heart
       - Meat
 
@@ -173,6 +177,7 @@
     organType: Stomach
   - type: Tag
     tags:
+      - BaseOrgan
       - Stomach
       - Meat
 
@@ -197,6 +202,7 @@
     organType: Liver
   - type: Tag
     tags:
+      - BaseOrgan
       - Liver
       - Meat
 
@@ -219,5 +225,6 @@
     organType: Kidneys
   - type: Tag
     tags:
+      - BaseOrgan
       - Kidneys
       - Meat

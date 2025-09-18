@@ -1,0 +1,48 @@
+<Control xmlns="https://spacestation14.io"
+         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+         xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+         HorizontalExpand="True">
+    <BoxContainer Orientation="Vertical" Margin="0 2">
+        <controls:StripeBack>
+            <BoxContainer Orientation="Horizontal" HorizontalExpand="True">
+                <PanelContainer Name="StatusIndicator" 
+                                MinWidth="10" 
+                                Margin="2">
+                    <PanelContainer.PanelOverride>
+                        <gfx:StyleBoxFlat/>
+                    </PanelContainer.PanelOverride>
+                </PanelContainer>
+                
+                <BoxContainer Orientation="Vertical" HorizontalExpand="True" Margin="4">
+                    <BoxContainer Orientation="Horizontal">
+                        <Label Name="ServerIdLabel" StyleClasses="LabelSmall"/>
+                        <Control HorizontalExpand="True"/>
+                        <Label Name="StatusLabel"/>
+                    </BoxContainer>
+                    
+                    <BoxContainer Orientation="Horizontal" Margin="2 0">
+                        <Label Text="{Loc 'mining-server-stage'}" StyleClasses="LabelSmall" MinWidth="60"/>
+                        <Button Name="StageDown" Text="-" MinWidth="30" StyleClasses="ButtonSquare"/>
+                        <Label Name="StageLabel" MinWidth="30" HorizontalAlignment="Center"/>
+                        <Button Name="StageUp" Text="+" MinWidth="30" StyleClasses="ButtonSquare"/>
+                    </BoxContainer>
+                    
+                    <ProgressBar Name="TemperatureBar" 
+                                 MinValue="293" 
+                                 MaxValue="350" 
+                                 Value="300"
+                                 Margin="2 0">
+                        <ProgressBar.ForegroundStyleBoxOverride>
+                            <gfx:StyleBoxFlat/>
+                        </ProgressBar.ForegroundStyleBoxOverride>
+                    </ProgressBar>
+                </BoxContainer>
+
+                <BoxContainer Orientation="Vertical" MinWidth="100">
+                    <Button Name="TogglePower" Margin="2" StyleClasses="ButtonSquare"/>
+                </BoxContainer>
+            </BoxContainer>
+        </controls:StripeBack>
+    </BoxContainer>
+</Control>

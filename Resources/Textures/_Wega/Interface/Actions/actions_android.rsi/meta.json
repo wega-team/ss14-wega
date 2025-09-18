@@ -1,0 +1,20 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Made with love by Misha_Unity",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "toggle-lock"
+        },
+        {
+            "name": "light-off"
+        },
+        {
+            "name": "light-on"
+        }
+    ]
+}

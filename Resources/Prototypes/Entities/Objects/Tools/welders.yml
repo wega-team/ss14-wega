@@ -178,6 +178,8 @@
         Quantity: 1
   - type: RequiresEyeProtection
     statusEffectTime: 5 # less harmful; sunglasses can block it
+  - type: SurgicalTool # Corvax-Wega-Surgery
+    modifier: 1.75 # Corvax-Wega-Surgery
 
 - type: entity
   name: emergency welding tool

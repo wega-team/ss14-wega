@@ -201,6 +201,9 @@ binds:
 - function: Strangle
   type: State
   key: J
+- function: OfferItem
+  type: State
+  key: F
 # Corvax-Wega-end
 - function: TextCursorSelect
   # TextCursorSelect HAS to be above ExamineEntity

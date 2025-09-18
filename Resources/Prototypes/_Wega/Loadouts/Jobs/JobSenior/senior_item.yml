@@ -1,0 +1,51 @@
+# senior-engineer
+- type: loadout
+  id: WelderExperimental
+  storage:
+    back:
+    - WelderExperimental
+    
+- type: loadout
+  id: PowerDrill
+  storage:
+    back:
+    - PowerDrill
+    
+# senior-researcher
+- type: loadout
+  id: WeaponPistolCHIMP
+  storage:
+    back:
+    - WeaponPistolCHIMP
+    
+- type: loadout
+  id: UraniumShiv
+  storage:
+    back:
+    - UraniumShiv
+    
+# senior-officer
+- type: loadout
+  id: ClothingNeckFlashNeck
+  storage:
+    back:
+    - ClothingNeckFlashNeck
+    
+- type: loadout
+  id: WeaponTaser
+  storage:
+    back:
+    - WeaponTaser
+    
+# senior-physician
+- type: loadout
+  id: DefibrillatorCompact
+  storage:
+    back:
+    - DefibrillatorCompact
+    
+- type: loadout
+  id: Hynospray
+  storage:
+    back:
+    - Hynospray

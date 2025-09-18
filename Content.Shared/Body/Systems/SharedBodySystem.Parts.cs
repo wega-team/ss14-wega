@@ -464,6 +464,7 @@ public partial class SharedBodySystem
             return;
         }
 
+        var activeLegs = 0; // Corvax-Wega-Surgery
         var walkSpeed = 0f;
         var sprintSpeed = 0f;
         var acceleration = 0f;
@@ -475,7 +476,17 @@ public partial class SharedBodySystem
             walkSpeed += legModifier.WalkSpeed;
             sprintSpeed += legModifier.SprintSpeed;
             acceleration += legModifier.Acceleration;
+            activeLegs++; // Corvax-Wega-Surgery
         }
+
+        // Corvax-Wega-Surgery-start
+        if (activeLegs == 0)
+        {
+            Movement.ChangeBaseSpeed(bodyId, 2f, 2f, 20f, movement);
+            return;
+        }
+        // Corvax-Wega-Surgery-end
+
         walkSpeed /= body.RequiredLegs;
         sprintSpeed /= body.RequiredLegs;
         acceleration /= body.RequiredLegs;
@@ -677,6 +688,10 @@ public partial class SharedBodySystem
                 "torso" => BodyPartType.Torso,
                 "head" => BodyPartType.Head,
                 "tail" => BodyPartType.Tail,
+                // To account for primates.
+                "hands" => BodyPartType.Hand,
+                "legs" => BodyPartType.Leg,
+                "feet" => BodyPartType.Foot,
                 _ => BodyPartType.Other
             };
 

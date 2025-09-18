@@ -25,6 +25,11 @@
   - type: FootstepModifier # Corvax-Sounds
     footstepSoundCollection:
       collection: FootstepBoots
+  # Corvax-Wega-Dirtable-start
+  - type: Dirtable
+    dirtState: jackboots
+    equippedDirtState: equipped-shoes
+  # Corvax-Wega-Dirtable-end
 
 - type: entity
   parent: ClothingShoesBaseButcherable

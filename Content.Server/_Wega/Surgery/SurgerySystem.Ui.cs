@@ -19,10 +19,15 @@ public sealed partial class SurgerySystem
 
     private void OnInteractUsing(EntityUid uid, OperatedComponent comp, AfterInteractUsingEvent args)
     {
-        if (!HasComp<SharpComponent>(args.Used))
+        var used = args.Used;
+
+        var hasSpecialTool = comp.SpecialTool != null && _tool.HasQuality(used, comp.SpecialTool);
+        var hasDefaultTool = comp.SpecialTool == null && HasComp<SharpComponent>(used);
+        if (!hasSpecialTool && !hasDefaultTool)
             return;
 
-        if (!TryGetOperatingTable(uid, out _) && !comp.OperatedPart)
+        if (!TryGetOperatingTable(uid, out _) && !comp.OperatedPart
+            && !HasComp<SyntheticOperatedComponent>(uid))
             return;
 
         OpenSurgeryUi(args.User, uid);

@@ -20,6 +20,7 @@ using Content.Shared.DoAfter;
 using Content.Shared.Emag.Systems;
 using Content.Shared.FixedPoint;
 using Content.Shared.Humanoid;
+using Content.Shared.Light.Components;
 using Content.Shared.Maps;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
@@ -48,6 +49,8 @@ using Robust.Shared.Player;
 using Robust.Shared.Timing;
 using Content.Shared.Disease.Components;
 using Content.Shared.NullRod.Components;
+using Robust.Server.Containers;
+using Content.Shared.Weapons.Ranged.Components;
 // Corvax-Wega-Revenant-end
 
 namespace Content.Server.Revenant.EntitySystems;
@@ -73,9 +76,10 @@ public sealed partial class RevenantSystem
     [Dependency] private readonly NpcFactionSystem _npcFaction = default!;
     [Dependency] private readonly PrayerSystem _prayerSystem = default!;
     [Dependency] private readonly QuickDialogSystem _quickDialog = default!;
+    [Dependency] private readonly ContainerSystem _container = default!;
     // Corvax-Wega-Revenant-end
 
-    private static readonly ProtoId<HTNCompoundPrototype> HauntRootTask = "SimpleHostileCompound"; // Corvax-Wega-Revenant
+    private static readonly ProtoId<HTNCompoundPrototype> HauntRootTask = "SimpleRangedHostileCompound"; // Corvax-Wega-Revenant
 
     private static readonly ProtoId<TagPrototype> WindowTag = "Window";
 
@@ -435,11 +439,19 @@ public sealed partial class RevenantSystem
         args.Handled = true;
         var itemsInRange = _lookup.GetEntitiesInRange<ItemComponent>(Transform(uid).Coordinates, component.HauntRadius)
             .ToList();
+
         if (itemsInRange.Count == 0)
             return;
 
-        var randomItems = itemsInRange.OrderBy(x => _random.Next()).Take(_random.Next(1, 5))
+        itemsInRange = itemsInRange
+            .Where(item => !_container.TryGetContainingContainer(item.Owner, out _))
             .ToList();
+
+        var randomItems = itemsInRange
+            .OrderBy(_ => _random.Next())
+            .Take(_random.Next(3, 8))
+            .ToList();
+
         foreach (var item in randomItems)
         {
             var itemEntity = item.Owner;
@@ -475,9 +487,16 @@ public sealed partial class RevenantSystem
             if (!HasComp<MeleeWeaponComponent>(itemEntity))
             {
                 EnsureComp<MeleeWeaponComponent>(itemEntity, out var meleeWeaponComponent);
-                var damage = new DamageSpecifier { DamageDict = { { "Blunt", 2 } } };
+                var damage = new DamageSpecifier { DamageDict = { { "Blunt", 5 } } };
                 meleeWeaponComponent.Damage = damage;
                 addedWeapon = true;
+            }
+
+            bool removedGunWield = false;
+            if (HasComp<GunRequiresWieldComponent>(itemEntity))
+            {
+                RemComp<GunRequiresWieldComponent>(itemEntity);
+                removedGunWield = true;
             }
 
             var name = Name(itemEntity);
@@ -509,6 +528,8 @@ public sealed partial class RevenantSystem
                     RemComp<PointLightComponent>(itemEntity);
                 if (addedWeapon)
                     RemComp<MeleeWeaponComponent>(itemEntity);
+                if (removedGunWield)
+                    EnsureComp<GunRequiresWieldComponent>(itemEntity);
 
                 _popup.PopupEntity(Loc.GetString("revenant-haunt-end", ("name", name)), itemEntity, PopupType.Small);
             });

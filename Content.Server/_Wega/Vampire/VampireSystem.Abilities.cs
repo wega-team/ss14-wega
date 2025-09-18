@@ -54,6 +54,7 @@ using Robust.Shared.Timing;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Flash.Components;
 using Content.Shared.NullRod.Components;
+using Content.Shared.Surgery.Components;
 
 namespace Content.Server.Vampire;
 
@@ -1195,7 +1196,8 @@ public sealed partial class VampireSystem
             return;
         }
 
-        if (HasComp<VampireComponent>(target) || HasComp<MindShieldComponent>(target) || HasComp<BibleUserComponent>(target))
+        if (HasComp<VampireComponent>(target) || HasComp<MindShieldComponent>(target) || HasComp<BibleUserComponent>(target)
+            || HasComp<SyntheticOperatedComponent>(target))
         {
             _popup.PopupEntity(Loc.GetString("vampire-enthall-failed", ("target", target)), uid, uid);
             return;

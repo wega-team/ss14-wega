@@ -45,3 +45,11 @@
   components:
   - type: Sprite
     sprite: _Wega/Objects/Consumable/Drinks/sheridanbottle.rsi
+
+- type: entity
+  name: aperol bottle
+  parent: DrinkBottleBaseEmpty
+  id: DrinkwWhitewineBottle
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Consumable/Drinks/whitewine_botle.rsi

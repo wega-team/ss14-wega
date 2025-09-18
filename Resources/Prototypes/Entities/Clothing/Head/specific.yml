@@ -1,5 +1,5 @@
-﻿- type: entity
-  parent: ClothingHeadBase
+- type: entity
+  parent: [ClothingHeadBase, BaseChameleon]
   id: ClothingHeadHatChameleon
   name: beret
   description: A beret, an artists favorite headwear.
@@ -14,10 +14,6 @@
     - type: ChameleonClothing
       slot: [HEAD]
       default: ClothingHeadHatBeret
-    - type: UserInterface
-      interfaces:
-        enum.ChameleonUiKey.Key:
-          type: ChameleonBoundUserInterface
 # Corvax-HiddenDesc-Start
     - type: HiddenDescription
       entries:
@@ -33,6 +29,11 @@
           - Scientist
           - Borg
 # Corvax-HiddenDesc-End
+    # Corvax-Wega-Dirtable-start
+    - type: Dirtable
+      dirtState: beret
+      equippedDirtState: equipped-beret
+    # Corvax-Wega-Dirtable-end
 
 - type: entity
   parent: ClothingHeadHatFedoraBrown

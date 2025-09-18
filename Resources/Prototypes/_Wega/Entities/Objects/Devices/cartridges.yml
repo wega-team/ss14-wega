@@ -1,0 +1,17 @@
+- type: entity
+  parent: BaseItem
+  id: NanoChatCartridge
+  name: NanoChat cartridge
+  description: "A program for conducting personal correspondence."
+  components:
+  - type: Sprite
+    sprite: Objects/Devices/cartridge.rsi
+    state: cart-nav
+  - type: Cartridge
+    programName: nano-chat-program-name
+    icon:
+      sprite: _Wega/Interface/Misc/program_icons.rsi
+      state: nano_chat
+  - type: UIFragment
+    ui: !type:NanoChatUi
+  - type: NanoChatCartridge

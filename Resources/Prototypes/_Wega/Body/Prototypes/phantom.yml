@@ -1,0 +1,49 @@
+﻿- type: body
+  name: "phantom"
+  id: Phantom
+  root: torso
+  slots:
+    head:
+      part: HeadPhantom
+      connections:
+      - torso
+      organs:
+        brain: OrganHumanBrain
+        eyes: OrganHumanEyes
+    torso:
+      part: TorsoPhantom
+      organs:
+        heart: OrganPhantomHeart
+        lungs: OrganHumanLungs
+        stomach: OrganPhantomStomach
+        liver: OrganAnimalLiver
+        kidneys: OrganHumanKidneys
+      connections:
+      - right_arm
+      - left_arm
+      - right_leg
+      - left_leg
+    right_arm:
+      part: RightArmPhantom
+      connections:
+      - right_hand
+    left_arm:
+      part: LeftArmPhantom
+      connections:
+      - left_hand
+    right_hand:
+      part: RightHandPhantom
+    left_hand:
+      part: LeftHandPhantom
+    left_leg:
+      part: LeftLegPhantom
+      connections:
+      - left_foot
+    right_leg:
+      part: RightLegPhantom
+      connections:
+      - right_foot
+    right_foot:
+      part: RightFootPhantom
+    left_foot:
+      part: LeftFootPhantom

@@ -14,6 +14,16 @@
   - type: FlavorProfile #yes not every peice of clothing is edible, but this way every edible piece of clothing should have the flavor without me having to track down what specific clothing can and cannot be eaten.
     flavors:
     - fiber
+  # Corvax-Wega-Dirtable-start
+  - type: Damageable
+    damageContainer: Clothing
+  - type: Reactive
+    reactions:
+    - reagents: [Water, SpaceCleaner]
+      methods: [Touch]
+      effects:
+      - !type:WashDirtReaction
+  # Corvax-Wega-Dirtable-end
 
 - type: entity
   abstract: true

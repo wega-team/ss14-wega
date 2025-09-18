@@ -169,7 +169,8 @@
     speedModifier: 2.5 # fast because dragon strong
     useSound:
       path: /Audio/Items/crowbar.ogg
-  - type: NightVision # Corvax-Wega-NightVision
+  - type: NaturalNightVision # Corvax-Wega-NightVision
+    tintColor: "#fb1e1e" # Corvax-Wega-NightVision
 
 - type: entity
   parent: BaseMobDragon

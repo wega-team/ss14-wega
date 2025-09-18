@@ -1,0 +1,19 @@
+<Control xmlns="https://spacestation14.io">
+    <BoxContainer Name="MessageContainer" Orientation="Horizontal" HorizontalExpand="True" Margin="2">
+        <!-- Message bubble -->
+        <PanelContainer Name="MessageBubble" HorizontalExpand="False">
+            <BoxContainer Name="MessageContent" Orientation="Vertical" MinWidth="100">
+                <!-- Header container - будет менять выравнивание -->
+                <BoxContainer Name="HeaderContainer" Orientation="Horizontal" HorizontalExpand="True">
+                    <Label Name="SenderName" StyleClasses="LabelSubText" Margin="0 0 5 0"/>
+                    <Label Name="TimeLabel" StyleClasses="LabelSubText"/>
+                    <Control HorizontalExpand="True"/> <!-- Flexible spacer -->
+                </BoxContainer>
+                <RichTextLabel Name="MessageText"/>
+            </BoxContainer>
+        </PanelContainer>
+        
+        <!-- Flexible space -->
+        <Control HorizontalExpand="True"/>
+    </BoxContainer>
+</Control>

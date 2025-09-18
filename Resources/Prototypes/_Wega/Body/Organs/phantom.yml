@@ -1,0 +1,36 @@
+﻿- type: entity
+  id: OrganPhantomStomach
+  parent: OrganAnimalStomach
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      stomach:
+        maxVol: 50
+  - type: Metabolizer
+    maxReagents: 1
+    metabolizerTypes: [Human]
+    groups:
+    - id: Food
+      rateModifier: 2.0
+    - id: Drink
+      rateModifier: 2.0
+
+- type: entity
+  id: OrganPhantomHeart
+  parent: OrganAnimalHeart
+  components:
+  - type: Heart
+  - type: Metabolizer
+    maxReagents: 1
+    metabolizerTypes: [Human]
+    groups:
+    - id: Medicine
+      rateModifier: 2.0
+    - id: Poison
+      rateModifier: 2.0
+    - id: Narcotic
+      rateModifier: 2.0
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Phantom/organ.rsi
+    state: heart-on

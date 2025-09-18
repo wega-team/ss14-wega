@@ -3,11 +3,15 @@ using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Item.Selector.UI;
 using Content.Shared.Item.Selector.Components;
 using Robust.Server.GameObjects;
+using Robust.Shared.Prototypes;
+using Content.Server.Administration.Logs;
+using Content.Shared.Database;
 
 namespace Content.Server.Item.Selector;
 
 public sealed partial class ItemSelectorSystem : EntitySystem
 {
+    [Dependency] private readonly IAdminLogManager _admin = default!;
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly IComponentFactory _componentFactory = default!;
@@ -17,7 +21,6 @@ public sealed partial class ItemSelectorSystem : EntitySystem
         base.Initialize();
         SubscribeLocalEvent<ItemSelectorComponent, BoundUIOpenedEvent>(OnUiOpened);
         SubscribeLocalEvent<ItemSelectorComponent, ItemSelectorSelectionMessage>(OnSelection);
-
     }
 
     private void OnUiOpened(EntityUid uid, ItemSelectorComponent comp, BoundUIOpenedEvent args)
@@ -44,7 +47,7 @@ public sealed partial class ItemSelectorSystem : EntitySystem
         return true;
     }
 
-    private void UpdateUi(EntityUid uid, List<string> items)
+    private void UpdateUi(EntityUid uid, List<EntProtoId> items)
     {
         if (!_ui.HasUi(uid, ItemSelectorUiKey.Key))
             return;
@@ -57,6 +60,8 @@ public sealed partial class ItemSelectorSystem : EntitySystem
     {
         var ent = Spawn(args.SelectedId, Transform(uid).Coordinates);
         _hands.TryForcePickupAnyHand(GetEntity(args.User), ent);
+
+        _admin.Add(LogType.Action, LogImpact.Low, $"{ToPrettyString(GetEntity(args.User)):user} selects a {ToPrettyString(ent):entity} instead of {ToPrettyString(uid):entity}");
 
         QueueDel(uid);
     }

@@ -19,6 +19,8 @@
     requiredLegs: 2
   - type: Carriable # Corvax-Wega-Carrying
   - type: DiseaseCarrier # Corvax-Wega-Disease
+  - type: NaturalNightVision # Corvax-Wega-NightVision
+    tintColor: "#0f5e7f" # Corvax-Wega-NightVision
   - type: Inventory
     speciesId: reptilian # whyyy
     femaleDisplacements:

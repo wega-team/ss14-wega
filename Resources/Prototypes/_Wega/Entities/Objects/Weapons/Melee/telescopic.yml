@@ -1,0 +1,50 @@
+- type: entity
+  name: telescopic baton
+  parent: BaseItem
+  id: Telescopicbaton
+  description: A lightweight self-defense baton made from lightweight materials that folds for easy storage.
+  components:
+    - type: ItemToggle
+      soundActivate:
+        path: /Audio/Weapons/telescopicon.ogg
+        params:
+          volume: -5
+      soundDeactivate:
+        path: /Audio/Weapons/telescopicoff.ogg
+        params:
+          volume: -5
+    - type: ItemToggleSize
+      activatedSize: Normal
+    - type: Sprite
+      sprite: _Wega/Objects/Weapons/Melee/telescopic_baton.rsi
+      layers:
+        - state: icon-close
+        - state: icon-open
+          visible: false
+          map: [ "baton" ]
+    - type: Item
+      size: Tiny
+      sprite: _Wega/Objects/Weapons/Melee/telescopic_baton.rsi
+      heldPrefix: close
+    - type: UseDelay
+      delay: 0.5
+    - type: ToggleableVisuals
+      spriteLayer: baton
+      inhandVisuals:
+        left:
+          - state: inhand-left
+        right:
+          - state: inhand-right
+    - type: Appearance
+    - type: MeleeWeapon
+      wideAnimationRotation: -135
+      damage:
+        types:
+          Blunt: 0
+      bluntStaminaDamageFactor: 3
+    - type: ItemToggleMeleeWeapon
+      activatedDamage:
+        types:
+          Blunt: 10
+
+      

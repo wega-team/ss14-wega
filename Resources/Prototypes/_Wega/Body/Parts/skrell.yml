@@ -28,7 +28,6 @@
       - ReagentId: Blood
         Quantity: 20
 
-
 - type: entity
   id: HeadSkrell
   name: "skrell head"

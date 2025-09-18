@@ -176,6 +176,7 @@
     - Airlocks
     - WirePanels
     - Networking
+  - type: SoundInsulator # Corvax-Wega-SoundInsolation
   placement:
     mode: SnapgridCenter
 
@@ -228,3 +229,5 @@
     tags:
       - GlassAirlock
       # This tag is used to nagivate the Airlock construction graph. It's needed because the construction graph is shared between Airlock, AirlockGlass, and HighSecDoor
+  - type: SoundInsulator # Corvax-Wega-SoundInsolation
+    insulationFactor: 0.6 # Corvax-Wega-SoundInsolation

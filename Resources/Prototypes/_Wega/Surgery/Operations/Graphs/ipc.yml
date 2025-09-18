@@ -1,0 +1,22 @@
+- type: surgeryGraph
+  id: IpcSurgery
+  startNodes:
+    - IpcTorsoClosed
+    - IpcHeadClosed
+    - IpcAttachHead
+    - IpcAmputateLeftArm
+    - IpcAttachLeftArm
+    - IpcAmputateRightArm
+    - IpcAttachRightArm
+    - IpcAmputateLeftHand
+    - IpcAttachLeftHand
+    - IpcAmputateRightHand
+    - IpcAttachRightHand
+    - IpcAmputateLeftLeg
+    - IpcAttachLeftLeg
+    - IpcAmputateRightLeg
+    - IpcAttachRightLeg
+    - IpcAmputateLeftFoot
+    - IpcAttachLeftFoot
+    - IpcAmputateRightFoot
+    - IpcAttachRightFoot

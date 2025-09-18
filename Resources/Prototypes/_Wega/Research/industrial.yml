@@ -1,0 +1,12 @@
+- type: technology
+  id: MiningServersTechnology
+  name: research-technology-mining-servers
+  icon:
+    sprite: _Wega/Structures/Machines/miningserver.rsi
+    state: mode1
+  discipline: Industrial
+  tier: 2
+  cost: 10000
+  recipeUnlocks:
+    - MiningServerCircuitboard
+    - MiningMonitoringComputerCircuitboard

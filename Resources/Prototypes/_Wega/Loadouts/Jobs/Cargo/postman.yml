@@ -1,0 +1,37 @@
+# Jumpsuit
+- type: loadout
+  id: PostmanJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitPostman
+
+- type: loadout
+  id: PostmanJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtPostman
+
+# Head
+- type: loadout
+  id: HatPostmansoft
+  equipment:
+    head: ClothingHeadHatPostmansoft
+
+- type: loadout
+  id: HatPostmansoftFlipped
+  equipment:
+    head: ClothingHeadHatPostmansoftFlipped
+
+# Back
+- type: loadout
+  id: BackpackPostman
+  equipment:
+    back: ClothingBackpackPostman
+
+- type: loadout
+  id: BackpackSatchelPostman
+  equipment:
+    back: ClothingBackpackSatchelPostman
+
+- type: loadout
+  id: BackpackDuffelPostman
+  equipment:
+    back: ClothingDuffelPostman

@@ -1,0 +1,62 @@
+- type: microwaveMealRecipe
+  id: Recipeporkramen
+  name: pork ramen recipe
+  result: PorkRamenNoodles
+  time: 15
+  solids:
+    FoodMeatCutlet: 3
+    FoodBowlBig: 1
+    FoodGarlic: 1
+    RawNoodles: 1
+  reagents:
+    Water: 15
+    Egg: 6	
+
+- type: microwaveMealRecipe
+  id: RecipeHanamiDango
+  name: dango hanami recipe
+  result: HanamiDango
+  time: 10
+  reagents:
+    GreenTea: 5
+    JuiceWatermelon: 5
+  solids:
+    DoughDangoBall: 3	
+
+- type: microwaveMealRecipe
+  id: RecipeMitarashiDango
+  name: dango mitarashi recipe
+  result: MitarashiDango
+  time: 10
+  reagents:
+    Soysauce: 5
+    Sugar: 5
+  solids:
+    DoughDangoBall: 3
+
+- type: microwaveMealRecipe
+  id: RecipeOnigiri
+  name: onigiri recipe
+  result: Onigiri
+  time: 20
+  reagents:
+    Mayo: 5
+    Rice: 10
+  solids:
+    FoodMeatChicken: 1
+
+- type: microwaveMealRecipe
+  id: Recipespicyramen
+  name: spicy ramen recipe
+  result: SpicyPorkRamenNoodles
+  time: 20
+  solids:
+    FoodMeatCutlet: 3
+    FoodBowlBig: 1
+    FoodGarlic: 1
+    RawNoodles: 1
+    FoodChiliPepper: 1
+  reagents:
+    Water: 15
+    Egg: 6
+    Hotsauce: 5

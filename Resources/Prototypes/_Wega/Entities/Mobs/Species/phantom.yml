@@ -1,0 +1,97 @@
+﻿- type: entity
+  save: false
+  name: Urisst' Mzhand Phantom
+  parent: [ BaseMobSpeciesOrganic, BaseOperated]
+  id: BaseMobPhantom
+  abstract: true
+  components:
+  - type: HumanoidAppearance
+    species: Phantom
+  - type: Hunger
+  - type: Thirst
+  - type: Icon
+    sprite: _Wega/Mobs/Species/Phantom/parts.rsi
+    state: full
+  - type: Sprite
+    netsync: false
+    noRot: true
+    drawdepth: Mobs
+  - type: Body
+    prototype: Phantom
+    requiredLegs: 2
+  - type: Carriable
+  - type: DiseaseCarrier
+  - type: Photophobia
+    applyShadowWeakness: true
+    damagePerLight: 0
+    speedModifier: 0.70
+    interval: 0.5
+  - type: Vocal
+    sounds:
+      Male: MaleHuman
+      Female: FemaleHuman
+      Unsexed: FemaleHuman
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: Phantom
+  - type: ThermalRegulator
+    metabolismHeat: 800
+    radiatedHeat: 100
+    implicitHeatRegulation: 250
+    sweatHeatRegulation: 500
+    shiveringHeatRegulation: 500
+    normalBodyTemperature: 288.15
+    thermalRegulationTemperatureThreshold: 2
+  - type: Temperature
+    heatDamageThreshold: 318.15
+    coldDamageThreshold: 203.15
+    currentTemperature: 288.15
+    specificHeat: -20
+    coldDamage:
+      types:
+        Cold : 0.2
+    heatDamage:
+      types:
+        Heat : 0.1
+  - type: TemperatureSpeed
+    thresholds:
+      243: 0.8
+      223: 0.6
+      203: 0.4
+  - type: Inventory
+    femaleDisplacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: _Wega/Mobs/Species/Phantom/displacement.rsi
+            state: jumpsuit-female
+  - type: DamagedByFlashing
+    flashDamage:
+      types:
+        Heat: 5
+    useAdvancedFlashDamage: true
+    multiplier: 0.75
+  - type: NaturalNightVision
+    tintColor: "#999999"
+    visionRadius: 8
+    contrast: 0.8
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4
+    baseSprintSpeed: 6
+
+- type: entity
+  save: false
+  name: Urist McHands
+  parent: MobHumanDummy
+  id: MobPhantomDummy
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HumanoidAppearance
+    species: Phantom
+  - type: Inventory
+    femaleDisplacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: _Wega/Mobs/Species/Phantom/displacement.rsi
+            state: jumpsuit-female

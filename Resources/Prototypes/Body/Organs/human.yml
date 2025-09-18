@@ -53,6 +53,7 @@
   - type: BadFood
   - type: Tag
     tags:
+      - BaseOrgan # Corvax-Wega-Surgery
       - Brain # Corvax-Wega-Surgery
       - Meat
   - type: SolutionContainerManager
@@ -95,6 +96,7 @@
     organType: Eyes
   - type: Tag
     tags:
+      - BaseOrgan
       - Eyes
       - Meat
   # Corvax-Wega-Surgery-end
@@ -169,6 +171,7 @@
     organType: Lungs
   - type: Tag
     tags:
+      - BaseOrgan
       - Lungs
       - Meat
   # Corvax-Wega-Surgery-end
@@ -200,6 +203,7 @@
     organType: Heart
   - type: Tag
     tags:
+      - BaseOrgan
       - Heart
       - Meat
   # Corvax-Wega-Surgery-end
@@ -240,6 +244,7 @@
     organType: Stomach
   - type: Tag
     tags:
+      - BaseOrgan
       - Stomach
       - Meat
   # Corvax-Wega-Surgery-end
@@ -266,6 +271,7 @@
     organType: Liver
   - type: Tag
     tags:
+      - BaseOrgan
       - Liver
       - Meat
   # Corvax-Wega-Surgery-end
@@ -293,6 +299,7 @@
     organType: Kidneys
   - type: Tag
     tags:
+      - BaseOrgan
       - Kidneys
       - Meat
   # Corvax-Wega-Surgery-end

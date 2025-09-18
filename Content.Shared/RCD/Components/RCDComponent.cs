@@ -12,8 +12,8 @@ namespace Content.Shared.RCD.Components;
 /// Charges can be refilled with RCD ammo
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
-[Access(typeof(RCDSystem))]
-public sealed partial class RCDComponent : Component
+[Access(typeof(RCDSystem), typeof(RCDUpgradeKitSystem))] // Covrax-Wega-Upgradable-RCD
+public sealed partial class RCDComponent : Component 
 {
     /// <summary>
     /// List of RCD prototypes that the device comes loaded with

@@ -136,15 +136,8 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
             _humanoidSystem.LoadProfile(entity.Value, profile);
             _metaSystem.SetEntityName(entity.Value, profile.Name);
 
-            if (_configurationManager.GetCVar(CCVars.FlavorText)) // Corvax-Wega-OOCFlavor-Edit
-            {
-                // Corvax-Wega-OOCFlavor-Edit-start
-                var content = $"{Loc.GetString("humanoid-profile-editor-flavor-label")}\n{profile.FlavorText}";
-                if (!string.IsNullOrEmpty(profile.OOCFlavorText))
-                    content += $"\n\n{Loc.GetString("humanoid-profile-editor-flavor-ooc-label")}\n{profile.OOCFlavorText}";
-                AddComp<DetailExaminableComponent>(entity.Value).Content = content;
-                // Corvax-Wega-OOCFlavor-Edit-end
-            }
+            if (_configurationManager.GetCVar(CCVars.FlavorText)) // Corvax-Wega-Graphomancy-Extended-Edit
+                AddComp<DetailExaminableComponent>(entity.Value).SetProfile(profile); // Corvax-Wega-Graphomancy-Extended-Edit
         }
 
         if (loadout != null)
