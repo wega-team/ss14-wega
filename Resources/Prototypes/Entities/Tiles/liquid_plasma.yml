@@ -24,6 +24,7 @@
     # Corvax-Wega-Vehicles-start
     - !type:DamageEntityEffect
       requiredComponent: Vehicle
+      blacklistedComponent: Boat
       damageType: Blunt
       amount: 500
     # Corvax-Wega-Vehicles-end
@@ -60,3 +61,4 @@
   - type: Tag
     tags:
     - HideContextMenu
+    - CanSwim

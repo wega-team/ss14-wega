@@ -1,0 +1,41 @@
+- type: entity
+  parent: BaseStructure
+  id: NecropolisTendril
+  name: necropolis tendril
+  description: ""
+  suffix: ""
+  components:
+  - type: Sprite
+    sprite: _Wega/Structures/Specific/Lavaland/tendril.rsi
+    state: tendril
+  - type: NecropolisTendril
+    spawnWeights:
+      MobGoliath: 1
+  - type: ConditionalSpawner
+    prototypes:
+      - MobGoliath
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Rock
+  - type: Destructible
+    thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 500
+        behaviors:
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
+      - trigger:
+          !type:DamageTrigger
+          damage: 300
+        behaviors:
+          - !type:PlaySoundBehavior
+            sound:
+              path: /Audio/Effects/demon_dies.ogg
+          - !type:SpawnEntitiesBehavior
+            spawn:
+              CrateGenericSteel:
+                min: 1
+                max: 1
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]

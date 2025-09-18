@@ -1,0 +1,110 @@
+- type: entity
+  parent: BaseItem
+  id: DarkShard
+  name: dark shard
+  description: "It looks like something sinister."
+  suffix: DO NOT MAP
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Lavaland/dark_shard.rsi
+  - type: Item
+    size: Large
+  - type: SpawnItemsOnUse
+    items:
+      - id: WeaponCursedKatana
+    sound:
+      path: /Audio/Effects/demon_dies.ogg
+
+- type: entity
+  parent: BaseItem
+  id: RodOfAsclepius
+  name: rod of asclepius
+  description: ""
+  suffix: DO NOT MAP
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Lavaland/rod_asclepius.rsi
+    layers:
+    - state: icon_dormant
+      map: [ "enum.VisualLayers.Layer" ]
+  - type: Item
+    heldPrefix: dormant
+    size: Normal
+  - type: RodOfAsclepius
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+     enum.VisualLayers.Enabled:
+        enum.VisualLayers.Layer:
+          True: {state: icon_active}
+          False: {state: icon_dormant}
+
+- type: entity
+  parent: BaseItem
+  id: ShipInBottle
+  name: ship in bottle
+  description: ""
+  suffix: DO NOT MAP
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Lavaland/boat_bottle.rsi
+    layers:
+    - state: bottle-close
+      map: [ "enum.VisualLayers.Layer" ]
+  - type: Item
+    sprite: _Wega/Objects/Specific/Lavaland/boat_bottle.rsi
+    storedRotation: 90
+  - type: ShipInBottle
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+     enum.VisualLayers.Enabled:
+        enum.VisualLayers.Layer:
+          True: {state: bottle-open}
+          False: {state: bottle-close}
+
+- type: entity
+  parent: BaseItem
+  id: DustyShard
+  name: dusty shard
+  description: ""
+  suffix: DO NOT MAP
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Lavaland/dusty_shard.rsi
+    state: icon
+  - type: GuardianCreator
+    guardianProto: MobHoloparasiteGuardian
+
+- type: entity
+  parent: BaseItem
+  id: CubeRed
+  name: red cube
+  description: ""
+  suffix: DO NOT MAP
+  components:
+  - type: Item
+    size: Small
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Lavaland/cube.rsi
+    state: red
+  - type: LinkedCube
+    pairPrototype: CubeBlue
+    minTeleportDistance: 4
+    isPrimary: true
+
+- type: entity
+  parent: BaseItem
+  id: CubeBlue
+  name: blue cube
+  description: ""
+  suffix: DO NOT MAP
+  components:
+  - type: Item
+    size: Small
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Lavaland/cube.rsi
+    state: blue
+  - type: LinkedCube
+    pairPrototype: CubeRed
+    minTeleportDistance: 4

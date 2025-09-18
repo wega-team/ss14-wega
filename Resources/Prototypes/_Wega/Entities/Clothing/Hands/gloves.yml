@@ -14,3 +14,33 @@
     fiberMaterial: fibers-latex
   - type: FingerprintMask
   - type: ClothingSterility # Corvax-Wega-Surgery
+
+- type: entity
+  parent: ClothingHandsBase
+  id: ClothingHandsGlovesConcussiveGauntlets
+  name: concussive gauntlets
+  description: Pickaxes... for your hands!
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Hands/Gloves/concussive_gauntlets.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Hands/Gloves/concussive_gauntlets.rsi
+  - type: MeleeWeapon
+    autoAttack: true
+    angle: 0
+    wideAnimationRotation: -90
+    soundHit:
+      path: "/Audio/Items/drill_hit.ogg"
+    attackRate: 4
+    damage:
+      groups:
+        Brute: 6
+      types:
+        Structural: 30
+    mustBeEquippedToUse: true
+  - type: Fiber
+    fiberMaterial: fibers-durathread
+    fiberColor: fibers-blue
+  - type: FingerprintMask
+  - type: StaticPrice
+    price: 2500

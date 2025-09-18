@@ -1,0 +1,10 @@
+lavaland-map = Лаваленд
+lavaland-shuttle-status = Статус шаттла
+lavaland-shuttle-status-docked-station = Пристыкован к станции
+lavaland-shuttle-status-docked-outpost = Пристыкован к аванпосту
+lavaland-shuttle-status-enroute-station = В пути на станцию
+lavaland-shuttle-status-enroute-outpost = В пути на аванпост
+lavaland-shuttle-status-unknown = Неизвестно
+lavaland-shuttle-call-to-outpost = Вызвать на аванпост
+lavaland-shuttle-recall-to-station = Вернуть на станцию
+lavaland-shuttle-call-unavailable = Недоступно

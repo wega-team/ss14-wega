@@ -1,0 +1,29 @@
+<controls:FancyWindow xmlns="https://spacestation14.io"
+                     xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+                     SetSize="400 300">
+    <BoxContainer Orientation="Vertical" Margin="10">
+        <PanelContainer Name="StatusPanel" StyleClasses="AngleRect" HorizontalExpand="True">
+            <BoxContainer Orientation="Vertical" Margin="10">
+                <!-- Status display -->
+                <BoxContainer Orientation="Vertical" Margin="0 0 0 10">
+                    <Label Text="{Loc 'lavaland-shuttle-status'}" StyleClasses="LabelBig"/>
+                    <Label Name="StatusLabel" StyleClasses="LabelSubText"/>
+                </BoxContainer>
+
+                <!-- Timer display -->
+                <BoxContainer Orientation="Vertical" Margin="0 0 0 10" Visible="false">
+                    <Label Text="Next Launch Available:" StyleClasses="LabelBig"/>
+                    <Label Name="TimerLabel" StyleClasses="LabelSubText"/>
+                </BoxContainer>
+
+                <!-- Control buttons -->
+                <BoxContainer Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Name="CallButton" 
+                            Text="Call Shuttle" 
+                            MinWidth="120"
+                            Disabled="true"/>
+                </BoxContainer>
+            </BoxContainer>
+        </PanelContainer>
+    </BoxContainer>
+</controls:FancyWindow>

@@ -164,3 +164,23 @@
     raffle:
       settings: default
   - type: GhostTakeoverAvailable
+
+- type: entity
+  parent: BaseSword
+  id: WeaponCursedKatana
+  name: cursed katana
+  description: A katana used to seal something vile away long ago. Even with the weapon destroyed, all the pieces containing the creature have coagulated back together to find a new host.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/cursed_katana.rsi
+  - type: MeleeWeapon
+    attackRate: 2
+    damage:
+      types:
+        Slash: 15
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Item
+    shape:
+    - 0,0,0,3
+  - type: DisarmMalus

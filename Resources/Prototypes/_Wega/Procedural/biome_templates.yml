@@ -1,0 +1,107 @@
+- type: biomeTemplate
+  id: Lavaland
+  layers:
+    - !type:BiomeEntityLayer
+      threshold: 1
+      noise:
+        frequency: 1
+        seed: 15
+      allowedTiles:
+        - FloorBasalt
+      entities:
+        - BasaltOne
+        - BasaltTwo
+        - BasaltThree
+        - BasaltFour
+        - BasaltFive
+    - !type:BiomeDecalLayer
+      allowedTiles:
+        - FloorBasalt
+      threshold: 0.95
+      divisions: 1
+      noise:
+        seed: 25
+        frequency: 1
+      decals:
+        - Basalt1
+        - Basalt2
+        - Basalt3
+        - Basalt4
+        - Basalt5
+        - Basalt6
+        - Basalt7
+        - Basalt8
+        - Basalt9
+    - !type:BiomeEntityLayer
+      threshold: 0.997
+      noise:
+        seed: 1
+        noiseType: OpenSimplex2
+        frequency: 2
+      allowedTiles:
+        - FloorBasalt
+      entities:
+        - NecropolisTendril
+    - !type:BiomeEntityLayer
+      threshold: 0.95
+      noise:
+        seed: 0
+        noiseType: OpenSimplex2
+        frequency: 2
+      allowedTiles:
+        - FloorBasalt
+      entities:
+        - FloraRockSolid
+    - !type:BiomeEntityLayer
+      threshold: 0.2
+      noise:
+        seed: 10
+        frequency: 0.025
+        fractalType: FBm
+        octaves: 5
+        lacunarity: 2
+        gain: 0.4
+      allowedTiles:
+        - FloorBasalt
+      entities:
+        - FloorLavaEntity
+    # Shit
+    # - !type:BiomeEntityLayer
+    #   threshold: 0.75
+    #   noise:
+    #     seed: 3
+    #     frequency: 0.035
+    #     fractalType: Ridged
+    #     octaves: 2
+    #     lacunarity: 1.6
+    #   allowedTiles:
+    #     - FloorBasalt
+    #   entities:
+    #     - FloorChasmEntity
+    # Rock formations
+    - !type:BiomeEntityLayer
+      allowedTiles:
+        - FloorBasalt
+      threshold: -0.25
+      noise:
+        seed: 5
+        noiseType: Cellular
+        frequency: 0.05
+        lacunarity: 2
+        fractalType: FBm
+        octaves: 5
+        cellularDistanceFunction: Euclidean
+        cellularReturnType: Distance2
+      entityWeights:
+        WallRockBasalt: 0.97
+        WallRockBasaltCoal: 0.015
+        WallRockBasaltPlasma: 0.007
+        WallRockBasaltSilver: 0.004
+        WallRockBasaltGold: 0.0025
+        WallRockBasaltUranium: 0.0015
+    - !type:BiomeDummyLayer
+      id: Loot
+    # Fill basalt
+    - !type:BiomeTileLayer
+      threshold: -1
+      tile: FloorBasalt

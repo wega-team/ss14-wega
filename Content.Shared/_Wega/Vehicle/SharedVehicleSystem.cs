@@ -40,11 +40,14 @@ public abstract partial class SharedVehicleSystem : EntitySystem
     [Dependency] private readonly SharedJointSystem _joints = default!;
     [Dependency] private readonly SharedBuckleSystem _buckle = default!;
     [Dependency] private readonly SharedMoverController _mover = default!;
+    [Dependency] private readonly EntityLookupSystem _lookup = default!;
 
     [ValidatePrototypeId<TagPrototype>]
     private const string Dump = "DoorBumpOpener";
     [ValidatePrototypeId<TagPrototype>]
     private const string Key = "VehicleKey";
+    [ValidatePrototypeId<TagPrototype>]
+    private const string Swim = "CanSwim";
 
     private const string KeySlot = "key_slot";
 
@@ -138,6 +141,11 @@ public abstract partial class SharedVehicleSystem : EntitySystem
             _actionsSystem.AddAction(args.Buckle, ref ent.Comp.HornActionEntity, ent.Comp.HornAction, ent);
         }
 
+        if (HasComp<BoatComponent>(ent))
+        {
+            _modifier.RefreshMovementSpeedModifiers(ent);
+        }
+
         _joints.ClearJoints(args.Buckle);
 
         _tagSystem.AddTag(ent, Dump);
@@ -211,6 +219,12 @@ public abstract partial class SharedVehicleSystem : EntitySystem
         {
             args.ModifySpeed(0f, 0f);
         }
+
+        if (HasComp<BoatComponent>(ent) && !IsOnValidTile(ent))
+        {
+            args.ModifySpeed(0f, 0f);
+            return;
+        }
     }
 
     // TODO: Shitcode, needs to use sprites instead of actual offsets.
@@ -218,6 +232,15 @@ public abstract partial class SharedVehicleSystem : EntitySystem
     {
         if (args.NewRotation == args.OldRotation)
             return;
+
+        if (HasComp<BoatComponent>(ent))
+        {
+            var isValidTile = IsOnValidTile(ent);
+            if (!isValidTile)
+            {
+                _modifier.RefreshMovementSpeedModifiers(ent);
+            }
+        }
 
         // This first check is just for safety
         if (ent.Comp.AutoAnimate && !HasComp<InputMoverComponent>(ent))
@@ -308,6 +331,21 @@ public abstract partial class SharedVehicleSystem : EntitySystem
     private void UpdateAutoAnimate(EntityUid uid, bool autoAnimate)
     {
         Appearance.SetData(uid, VehicleVisuals.AutoAnimate, autoAnimate);
+    }
+
+    private bool IsOnValidTile(Entity<VehicleComponent> boat)
+    {
+        var transform = Transform(boat);
+        var coordinates = transform.Coordinates;
+
+        var entities = _lookup.GetEntitiesInRange<TagComponent>(coordinates, 0.01f);
+        foreach (var entity in entities)
+        {
+            if (_tagSystem.HasTag(entity.Owner, Swim))
+                return true;
+        }
+
+        return false;
     }
 }
 

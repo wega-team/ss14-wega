@@ -6,6 +6,7 @@ using Content.Server.Atmos.Components;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Decals;
 using Content.Server.Ghost.Roles.Components;
+using Content.Server.Lavaland.Components; // Corvax-Wega-Lavaland
 using Content.Server.Shuttles.Events;
 using Content.Server.Shuttles.Systems;
 using Content.Shared.Atmos;
@@ -1047,6 +1048,44 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
 
         _atmos.SetMapAtmosphere(mapUid, false, mixture);
     }
+
+    // Corvax-Wega-Lavaland-start
+    /// <summary>
+    /// Creates a lavaland planet setup for a map.
+    /// </summary>
+    public void EnsureLavalandPlanet(EntityUid mapUid, BiomeTemplatePrototype biomeTemplate, int? seed = null,
+        MetaDataComponent? metadata = null, Color? mapLight = null)
+    {
+        if (!Resolve(mapUid, ref metadata))
+            return;
+
+        EnsureComp<MapGridComponent>(mapUid);
+        var biome = EntityManager.ComponentFactory.GetComponent<BiomeComponent>();
+        seed ??= _random.Next();
+        SetSeed(mapUid, biome, seed.Value, false);
+        SetTemplate(mapUid, biome, biomeTemplate, false);
+        AddComp(mapUid, biome, true);
+        Dirty(mapUid, biome, metadata);
+
+        var gravity = EnsureComp<GravityComponent>(mapUid);
+        gravity.Enabled = true;
+        gravity.Inherent = true;
+        Dirty(mapUid, gravity, metadata);
+
+        var light = EnsureComp<MapLightComponent>(mapUid);
+        light.AmbientLightColor = mapLight ?? Color.FromHex("#D8B059");
+        Dirty(mapUid, light, metadata);
+
+        EnsureComp<LavalandComponent>(mapUid).NextStormTime = TimeSpan.FromMinutes(1);// TimeSpan.FromMinutes(_random.Next(10, 20));
+
+        var moles = new float[Atmospherics.AdjustedNumberOfGases];
+        moles[(int)Gas.Oxygen] = 14.022f;
+        moles[(int)Gas.Nitrogen] = 22.878f;
+        var mixture = new GasMixture(moles, 299.15f);
+
+        _atmos.SetMapAtmosphere(mapUid, false, mixture);
+    }
+    // Corvax-Wega-Lavaland-end
 
     /// <summary>
     /// Sets the specified tiles as relevant and marks them as modified.

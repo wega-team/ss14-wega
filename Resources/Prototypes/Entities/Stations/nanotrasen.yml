@@ -28,6 +28,7 @@
     - BaseStationAllEventsEligible
     - BaseStationNanotrasen
     - BaseStationDeliveries
+    - BaseStationLavaland # Corvax-Wega-Lavaland
   categories: [ HideSpawnMenu ]
   components:
     - type: Transform

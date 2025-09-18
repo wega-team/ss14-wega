@@ -451,3 +451,30 @@
   components:
     - type: Foldable
       folded: true
+
+- type: entity
+  parent: BaseVehicleRideable
+  id: VehicleDragonBoat
+  name: dragon boat
+  description: ""
+  components:
+  - type: Boat
+  - type: Vehicle
+    hasKey: true
+    southOver: true
+    northOver: true
+    northOverride: -0.1
+    southOverride: 0.1
+  - type: Sprite
+    sprite: _Wega/Objects/Vehicles/boat.rsi
+    layers:
+    - state: vehicle
+      map: ["enum.VehicleVisualLayers.AutoAnimate"]
+    noRot: true
+  - type: MovementSpeedModifier
+    baseAcceleration: 1
+    baseFriction: 1
+    baseWalkSpeed: 4.5
+    baseSprintSpeed: 7
+  - type: Strap
+    buckleOffset: "0.1, -0.05"

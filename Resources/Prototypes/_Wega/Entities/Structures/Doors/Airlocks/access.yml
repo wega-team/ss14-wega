@@ -1,0 +1,22 @@
+- type: entity
+  parent: AirlockGlassShuttle
+  id: AirlockExternalGlassShuttleLavalandStation
+  suffix: External, Lavaland, Glass, Station
+  components:
+  - type: PriorityDock
+    tag: DockLavalandStation
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsExternal ]
+
+- type: entity
+  parent: AirlockGlassShuttle
+  id: AirlockExternalGlassShuttleLavalandOutpost
+  suffix: External, Lavaland, Glass, Outpost
+  components:
+  - type: PriorityDock
+    tag: DockLavalandOutpost
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsExternal ]
+  

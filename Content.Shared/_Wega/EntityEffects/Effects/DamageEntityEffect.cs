@@ -17,12 +17,14 @@ public sealed partial class DamageEntityEffect : EntityEffect
     [DataField(required: true)]
     public string RequiredComponent = string.Empty;
 
+    [DataField]
+    public string? BlacklistedComponent;
+
     public override bool ShouldLog => true;
     public override LogImpact LogImpact => LogImpact.Medium;
 
     protected override string? ReagentEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
         => Loc.GetString("reagent-effect-guidebook-damage-if-component",
-            ("chance", Probability),
             ("damage", Amount),
             ("type", DamageType),
             ("component", RequiredComponent));
@@ -32,9 +34,16 @@ public sealed partial class DamageEntityEffect : EntityEffect
         var entMan = args.EntityManager;
         var uid = args.TargetEntity;
 
-        var componentType = entMan.ComponentFactory.GetRegistration(RequiredComponent).Type;
-        if (!entMan.HasComponent(uid, componentType))
+        var requiredComponentType = entMan.ComponentFactory.GetRegistration(RequiredComponent).Type;
+        if (!entMan.HasComponent(uid, requiredComponentType))
             return;
+
+        if (!string.IsNullOrEmpty(BlacklistedComponent))
+        {
+            var blacklistedComponentType = entMan.ComponentFactory.GetRegistration(BlacklistedComponent).Type;
+            if (entMan.HasComponent(uid, blacklistedComponentType))
+                return;
+        }
 
         if (entMan.TryGetComponent<DamageableComponent>(uid, out _))
         {

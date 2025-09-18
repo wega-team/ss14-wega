@@ -119,3 +119,12 @@
 
 - type: Tag
   id: CapacitorStockPart
+
+- type: Tag
+  id: CanSwim
+
+- type: Tag
+  id: DockLavalandStation
+
+- type: Tag
+  id: DockLavalandOutpost

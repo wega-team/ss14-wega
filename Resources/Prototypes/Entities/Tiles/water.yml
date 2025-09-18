@@ -63,3 +63,6 @@
   - type: TileEntityEffect
     effects:
     - !type:ExtinguishReaction
+  - type: Tag
+    tags:
+    - CanSwim

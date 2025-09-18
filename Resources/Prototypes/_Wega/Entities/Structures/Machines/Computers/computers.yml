@@ -59,3 +59,40 @@
   - type: GuideHelp
     guides:
     - Science
+
+- type: entity
+  parent: BaseComputerAiAccess
+  id: LavalandShuttleConsole
+  name: lavaland shuttle console
+  description: ""
+  components:
+  - type: LavalandShuttleConsole
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: dna
+    - map: ["computerLayerKeys"]
+      state: rd_key
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+  - type: ActivatableUI
+    key: enum.LavalandShuttleConsoleUiKey.Key
+  - type: ActivatableUIRequiresPower
+  - type: UserInterface
+    interfaces:
+      enum.LavalandShuttleConsoleUiKey.Key:
+        type: LavalandShuttleConsoleBoundUserInterface
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
+  - type: ApcPowerReceiver
+    powerLoad: 250
+  # - type: Computer
+  #   board: DnaModifierComputerCircuitboard
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#b53ca1"

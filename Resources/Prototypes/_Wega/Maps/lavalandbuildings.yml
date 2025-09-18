@@ -1,0 +1,183 @@
+- type: lavalandBuilding
+  id: Envy
+  gridPath: /Maps/Lavaland/Envy.yml
+
+- type: lavalandBuilding
+  id: Gluttony
+  gridPath: /Maps/Lavaland/Gluttony.yml
+
+- type: lavalandBuilding
+  id: Greed
+  gridPath: /Maps/Lavaland/Greed.yml
+
+- type: lavalandBuilding
+  id: Pride
+  gridPath: /Maps/Lavaland/Pride.yml
+
+- type: lavalandBuilding
+  id: Wrath
+  gridPath: /Maps/Lavaland/Wrath.yml
+
+- type: lavalandBuilding
+  id: Bait
+  gridPath: /Maps/Lavaland/bait.yml
+
+# - type: lavalandBuilding
+#   id: BasaltRuin
+#   gridPath: /Maps/Lavaland/basalt_ruin.yml
+
+- type: lavalandBuilding
+  id: Bridge
+  gridPath: /Maps/Lavaland/bridge.yml
+
+- type: lavalandBuilding
+  id: BrokenCargo
+  gridPath: /Maps/Lavaland/broken_cargo.yml
+
+- type: lavalandBuilding
+  id: CatwalkCrossroad
+  gridPath: /Maps/Lavaland/catwalk_crossroad.yml
+
+- type: lavalandBuilding
+  id: CaveMurder
+  gridPath: /Maps/Lavaland/cave_murder.yml
+
+- type: lavalandBuilding
+  id: ClownRoom
+  gridPath: /Maps/Lavaland/clown_room.yml
+
+- type: lavalandBuilding
+  id: CommieOutpost
+  gridPath: /Maps/Lavaland/commieoutpost.yml
+
+- type: lavalandBuilding
+  id: CrashedPodTrail
+  gridPath: /Maps/Lavaland/crashed_pod_trail.yml
+
+- type: lavalandBuilding
+  id: CrashedDropship
+  gridPath: /Maps/Lavaland/crasheddropship.yml
+
+- type: lavalandBuilding
+  id: CrashedInstigator
+  gridPath: /Maps/Lavaland/crashedinstigator.yml
+
+- type: lavalandBuilding
+  id: CrashedSloop
+  gridPath: /Maps/Lavaland/crashedsloop.yml
+
+# - type: lavalandBuilding
+#   id: CrashedSyndiepod
+#   gridPath: /Maps/Lavaland/crashedsyndiepod.yml
+
+- type: lavalandBuilding
+  id: Enclosure
+  gridPath: /Maps/Lavaland/enclosure.yml
+
+- type: lavalandBuilding
+  id: EscapePodCrash
+  gridPath: /Maps/Lavaland/escape_pod_crash.yml
+
+- type: lavalandBuilding
+  id: FleshLab
+  gridPath: /Maps/Lavaland/fleshlab.yml
+
+- type: lavalandBuilding
+  id: FrontDesk
+  gridPath: /Maps/Lavaland/front_desk.yml
+
+- type: lavalandBuilding
+  id: GeneratorScrapyard
+  gridPath: /Maps/Lavaland/generator_scrapyard.yml
+
+- type: lavalandBuilding
+  id: GrasslandDome
+  gridPath: /Maps/Lavaland/grasslanddome.yml
+
+- type: lavalandBuilding
+  id: HermitBase
+  gridPath: /Maps/Lavaland/hermit_base.yml
+
+- type: lavalandBuilding
+  id: LabourCamp
+  gridPath: /Maps/Lavaland/labour_camp.yml
+
+- type: lavalandBuilding
+  id: LavaFarm
+  gridPath: /Maps/Lavaland/lava_farm.yml
+
+- type: lavalandBuilding
+  id: LavaLakeVillage
+  gridPath: /Maps/Lavaland/lava_lake_village.yml
+
+- type: lavalandBuilding
+  id: LavaRiver
+  gridPath: /Maps/Lavaland/lava_river.yml
+
+- type: lavalandBuilding
+  id: MimingDrill
+  gridPath: /Maps/Lavaland/miming_drill.yml
+
+- type: lavalandBuilding
+  id: MineField
+  gridPath: /Maps/Lavaland/minefield.yml
+
+- type: lavalandBuilding
+  id: MinerTomb
+  gridPath: /Maps/Lavaland/miner_tomb.yml
+
+- type: lavalandBuilding
+  id: MineShaft
+  gridPath: /Maps/Lavaland/mineshaft.yml
+
+- type: lavalandBuilding
+  id: MugFactory
+  gridPath: /Maps/Lavaland/mug_factory.yml
+
+- type: lavalandBuilding
+  id: PenalColony
+  gridPath: /Maps/Lavaland/penalcolony.yml
+
+- type: lavalandBuilding
+  id: PizzaParty
+  gridPath: /Maps/Lavaland/pizza_party.yml
+
+- type: lavalandBuilding
+  id: PreservedTerrarium
+  gridPath: /Maps/Lavaland/preserved_terrarium.yml
+
+- type: lavalandBuilding
+  id: Ripley
+  gridPath: /Maps/Lavaland/ripley.yml
+
+- type: lavalandBuilding
+  id: RiverVillage
+  gridPath: /Maps/Lavaland/river_village.yml
+
+- type: lavalandBuilding
+  id: Roundel
+  gridPath: /Maps/Lavaland/roundel.yml
+
+- type: lavalandBuilding
+  id: ShinobiGraveyard
+  gridPath: /Maps/Lavaland/shinobi_graveyard.yml
+
+- type: lavalandBuilding
+  id: Sloth
+  gridPath: /Maps/Lavaland/sloth.yml
+
+- type: lavalandBuilding
+  id: SnowyDome
+  gridPath: /Maps/Lavaland/snowydome.yml
+
+- type: lavalandBuilding
+  id: SolemnLament
+  gridPath: /Maps/Lavaland/solemn_lament.yml
+
+- type: lavalandBuilding
+  id: Temple
+  gridPath: /Maps/Lavaland/temple.yml
+
+# - type: lavalandBuilding
+#   id: WreckedOutpost
+#   gridPath: /Maps/Lavaland/wrecked_outpost.yml

@@ -1,0 +1,11 @@
+- type: entityTable
+  id: BasicNecropolisCrateTable
+  table: !type:GroupSelector
+    children:
+    - id: BloodCultSoulStone
+    - id: DarkShard
+    - id: ClothingHandsGlovesConcussiveGauntlets
+    - id: RodOfAsclepius
+    - id: ShipInBottle
+    - id: DustyShard
+    - id: CubeRed
