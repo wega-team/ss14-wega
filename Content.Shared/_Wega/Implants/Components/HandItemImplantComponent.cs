@@ -1,46 +1,47 @@
-using Content.Shared.Body.Part;
 using Robust.Shared.Audio;
 using Robust.Shared.Containers;
 using Robust.Shared.GameStates;
+using Robust.Shared.Serialization;
 
-namespace Content.Shared._Wega.Implants.Components
+namespace Content.Shared._Wega.Implants.Components;
+
+[RegisterComponent, NetworkedComponent]
+public sealed partial class HandItemImplantComponent : Component
 {
-    [RegisterComponent, NetworkedComponent]
-    public sealed partial class HandItemImplantComponent : Component
-    {
-        [DataField("hand", required: true)]
-        public string HandId;
+    [DataField]
+    public List<HandItemImplantSlot> Items = new();
 
-        [DataField]
-        public string ToggleActionPrototype;
-        public EntityUid? ToggleActionEntity;
+    [DataField]
+    public SoundSpecifier ToggleSound = new SoundPathSpecifier("/Audio/Items/rped.ogg");
 
-        [DataField]
-        public SoundSpecifier ToggleSound = new SoundPathSpecifier("/Audio/Items/rped.ogg");
-
-        [DataField(required: true)]
-        public string ItemPrototype;
-        [DataField]
-        public string ContainerName = "itemImplant";
-        [DataField]
-        public ContainerSlot? Container;
-        [DataField]
-        public EntityUid? ItemEntity;
-    }
+    [DataField]
+    public string ContainerName = "itemImplant";
+    [DataField]
+    public Container? Container;
 }
 
-[Serializable]
 [DataRecord]
 public partial struct HandItemImplantSlot
 {
+    [DataField("hand")]
     public string HandId;
 
+    [DataField("prototype")]
+    public string ItemPrototype;
+    public EntityUid? ItemEntity;
+
+    [DataField("toggleAction")]
     public string ToggleActionPrototype;
     public EntityUid? ToggleActionEntity;
 
-    public HandItemImplantSlot(string id, BodyPartType type)
+    [DataField]
+    public EntityUid? ImplantEntity;
+
+    public HandItemImplantSlot(string handId, string itemPrototype, string toggleAction, EntityUid? implant = null)
     {
-        Id = id;
-        Type = type;
+        HandId = handId;
+        ItemPrototype = itemPrototype;
+        ToggleActionPrototype = toggleAction;
+        ImplantEntity = implant;
     }
-};
+}

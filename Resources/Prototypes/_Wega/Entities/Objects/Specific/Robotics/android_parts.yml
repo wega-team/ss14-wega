@@ -77,10 +77,11 @@
   components:
   - type: BodyPartImplant
     implantComponents:
-      - type: HandItemImplant
-        hand: body_part_slot_left_hand
-        itemPrototype: DefibrillatorArmImplant
-        toggleActionPrototype: ActionToggleBodyPartImplantDefib
+      - type: ExtendHandItemImplant
+        items:
+          - hand: body_part_slot_left_hand
+            prototype: DefibrillatorArmImplant
+            toggleAction: ActionToggleBodyPartImplantDefib
 
 - type: entity
   id: RightArmSyntheticDefib
@@ -92,14 +93,16 @@
     node: right
   - type: BodyPartImplant
     implantComponents:
-      - type: HandItemImplant
-        hand: body_part_slot_right_hand
-        itemPrototype: DefibrillatorArmImplant
-        toggleActionPrototype: ActionToggleBodyPartImplantDefib
+      - type: ExtendHandItemImplant
+        items:
+          - hand: body_part_slot_right_hand
+            prototype: DefibrillatorArmImplant
+            toggleAction: ActionToggleBodyPartImplantDefib
 
 - type: entity
   id: DefibrillatorArmImplant
-  parent: [ BaseDefibrillator, PowerCellSlotMediumItem ]
+  name: "build-in defibrillator"
+  parent: [ BaseDefibrillator ]
   categories: [ HideSpawnMenu ]
 
 # Proto-kinetic Arm
@@ -126,10 +129,11 @@
   components:
   - type: BodyPartImplant
     implantComponents:
-      - type: HandItemImplant
-        hand: body_part_slot_left_hand
-        itemPrototype: WeaponArmProtoKinetic
-        toggleActionPrototype: ActionToggleBodyPartImplantKinetic
+      - type: ExtendHandItemImplant
+        items:
+          - hand: body_part_slot_left_hand
+            prototype: WeaponArmProtoKinetic
+            toggleAction: ActionToggleBodyPartImplantKinetic
 
 - type: entity
   id: RightArmSyntheticProtoKinetic
@@ -139,15 +143,18 @@
   components:
   - type: BodyPartImplant
     implantComponents:
-      - type: HandItemImplant
-        hand: body_part_slot_right_hand
-        itemPrototype: WeaponArmProtoKinetic
-        toggleActionPrototype: ActionToggleBodyPartImplantKinetic
+      - type: ExtendHandItemImplant
+        items:
+          - hand: body_part_slot_right_hand
+            prototype: WeaponArmProtoKinetic
+            toggleAction: ActionToggleBodyPartImplantKinetic
   - type: Construction
     node: right
 
 - type: entity
   id: WeaponArmProtoKinetic
+  name: "build-in proto-kinetic accelerator"
+  description: "Fires low-damage kinetic bolts at a short range."
   parent: BaseItem
   categories: [ HideSpawnMenu ]
   components:

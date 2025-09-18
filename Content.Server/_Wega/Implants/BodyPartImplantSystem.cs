@@ -1,7 +1,8 @@
+using Content.Server.Body.Systems;
 using Content.Shared._Wega.Implants.Components;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Part;
-using Content.Server.Body.Systems;
+using NetCord.Gateway;
 
 namespace Content.Shared._Wega.Implants
 {
@@ -36,6 +37,9 @@ namespace Content.Shared._Wega.Implants
                 return;
 
             EntityManager.AddComponents(uid, implant.ImplantComponents);
+
+            var ev = new BodyPartImplantAddedEvent(args.Slot, args.Part.Owner);
+            RaiseLocalEvent(uid, ref ev);
         }
 
         private void OnPartRemove(EntityUid uid, BodyComponent component, ref BodyPartRemovedEvent args)
@@ -45,6 +49,9 @@ namespace Content.Shared._Wega.Implants
 
             if (!HasParts(uid, component, implant.ImplantKey))
                 EntityManager.RemoveComponents(uid, implant.ImplantComponents);
+
+            var ev = new BodyPartImplantRemovedEvent(args.Slot, args.Part.Owner);
+            RaiseLocalEvent(uid, ref ev);
         }
 
         private bool HasParts(EntityUid uid, BodyComponent component, string? key)

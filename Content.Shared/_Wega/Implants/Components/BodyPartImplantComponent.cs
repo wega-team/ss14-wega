@@ -1,3 +1,4 @@
+using Content.Shared._Wega.Implants.Components;
 using Content.Shared.Body.Part;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
@@ -16,3 +17,9 @@ namespace Content.Shared._Wega.Implants.Components
         public ComponentRegistry? ImplantComponents = default!;
     }
 }
+
+[ByRefEvent]
+public readonly record struct BodyPartImplantAddedEvent(string Slot, Entity<BodyPartImplantComponent?> Part);
+
+[ByRefEvent]
+public readonly record struct BodyPartImplantRemovedEvent(string Slot, Entity<BodyPartImplantComponent?> Part);
