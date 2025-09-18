@@ -83,6 +83,7 @@
   - Hynospray
   - BorgModuleSurgery
   - DefibrillatorCompact
+  - ArmSyntheticDefib
 
 - type: technology
   id: ChemicalDispensary
