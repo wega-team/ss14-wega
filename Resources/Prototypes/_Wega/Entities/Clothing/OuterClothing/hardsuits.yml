@@ -106,11 +106,6 @@
     sprite: _Wega/Clothing/OuterClothing/Hardsuits/blueshield.rsi
   - type: Clothing
     sprite: _Wega/Clothing/OuterClothing/Hardsuits/blueshield.rsi
-    clothingVisuals:
-      outerClothing:
-      - state: equipped-OUTERCLOTHING
-      - state: equipped-outerClothing-unshaded
-        shader: unshaded
   - type: PressureProtection
     highPressureMultiplier: 0.45
     lowPressureMultiplier: 1000
@@ -122,6 +117,7 @@
         Blunt: 0.6
         Slash: 0.5
         Piercing: 0.5
+        Heat: 0.7
         Radiation: 0.5
         Caustic: 0.6
   - type: ClothingSpeedModifier

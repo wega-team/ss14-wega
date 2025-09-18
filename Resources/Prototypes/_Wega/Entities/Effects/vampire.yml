@@ -130,7 +130,7 @@
   - type: TriggerOnCollide
     fixtureID: floortrap
   - type: FlashOnTrigger
-  - type: DamageUserOnTrigger
+  - type: DamageOnTrigger
     damage:
       types:
         Blunt: 20

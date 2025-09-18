@@ -1,5 +1,7 @@
 - type: accessGroup
   id: AllAccess
+  name: all-access-group # Corvax-Wega-Add
+  consoleAvaible: true # Corvax-Wega-Add
   tags:
   - EmergencyShuttleRepealAll
   - Captain

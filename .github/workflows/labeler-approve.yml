@@ -1,4 +1,4 @@
-﻿name: "Labels: Approve"
+name: "Labels: Approve"
 
 on:
   pull_request_review:

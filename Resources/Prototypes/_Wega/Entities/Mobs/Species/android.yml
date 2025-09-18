@@ -209,7 +209,7 @@
     specialTool: Screwing
   - type: SyntheticOperated
   - type: Pain
-    profile: AndroidPainProfile
+    profile: SyntheticPainProfile
   - type: Tag
     tags: 
     - CanPilot

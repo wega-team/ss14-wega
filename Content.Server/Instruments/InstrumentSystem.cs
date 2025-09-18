@@ -67,6 +67,11 @@ public sealed partial class InstrumentSystem : SharedInstrumentSystem
 
         SubscribeLocalEvent<InstrumentComponent, ComponentGetState>(OnStrumentGetState);
 
+        // Corvax-Wega-Harpy-start
+        SubscribeLocalEvent<InstrumentComponent, MapInitEvent>(OnMapInit);
+        SubscribeLocalEvent<InstrumentComponent, ComponentShutdown>(OnShutdown);
+        // Corvax-Wega-Harpy-end
+
         _conHost.RegisterCommand("addtoband", AddToBandCommand);
     }
 

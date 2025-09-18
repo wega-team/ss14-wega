@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Created by svarshiksatanist",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "heart-on",
+      "delay": [ 0.1, 0.1, 0.1 ]
+    },
+    {
+      "name": "eyes"
+    },
+    {
+      "name": "kidney"
+    },
+    {
+      "name": "liver"
+    },
+    {
+      "name": "lungs"
+    }
+  ]
+}

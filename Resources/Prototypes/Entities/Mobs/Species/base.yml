@@ -88,6 +88,7 @@
     horizontalRotation: 90
   - type: HumanoidAppearance
     species: Human
+  - type: TypingIndicator
   - type: SlowOnDamage
     speedModifierThresholds:
       60: 0.7
@@ -176,6 +177,7 @@
   - type: StandingState
   - type: SpeechSynthesis # Corvax-Wega-Barks
   - type: OfferGiver # Corvax-Wega-Offer
+  - type: Crawler
   # - type: Dna # Corvax-Wega
   - type: MindContainer
     showExamineInfo: true

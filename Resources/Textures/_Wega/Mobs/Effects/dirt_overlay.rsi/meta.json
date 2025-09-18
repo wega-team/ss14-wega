@@ -45,7 +45,21 @@
       "name": "magboots"
     },
     {
+      "name": "clownshoes"
+    },
+    {
+      "name": "clownshoes-big"
+    },
+    {
       "name": "equipped-shoes",
+      "directions": 4
+    },
+    {
+      "name": "equipped-clownshoes",
+      "directions": 4
+    },
+    {
+      "name": "equipped-clownshoes-big",
       "directions": 4
     },
     {

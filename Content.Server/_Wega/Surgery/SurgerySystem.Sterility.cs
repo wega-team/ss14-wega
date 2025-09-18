@@ -80,7 +80,14 @@ public sealed partial class SurgerySystem
             if (TryComp(clothing, out MaskComponent? mask))
                 isMaskOff = mask.IsToggled;
 
-            bool isDirty = TryComp<DirtableComponent>(clothing, out var dirtable) && dirtable.IsDirty;
+            bool isDirty = false;
+            if (TryComp<DirtableComponent>(clothing, out var dirtable))
+            {
+                var dirtLevel = Math.Clamp(dirtable.CurrentDirtLevel.Float() / SharedDirtSystem.MaxDirtLevel * 100f, 0f, 100f);
+                if (dirtable.IsDirty && dirtLevel >= 50f)
+                    isDirty = true;
+            }
+
             if (TryComp<ClothingSterilityComponent>(clothing, out var sterilityComp) && !isMaskOff)
             {
                 sterility *= sterilityComp.Modifier * (isDirty ? 0.8f : 1f);

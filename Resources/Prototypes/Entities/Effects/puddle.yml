@@ -202,13 +202,14 @@
     id: Puddle
   - type: StepTrigger
   - type: DirtSource # Corvax-Wega-Dirtable
-  - type: Drink
+  - type: Edible
+    edible: Drink
     delay: 3
     transferAmount: 1
     solution: puddle
-    examinable: false
   - type: ExaminableSolution
     solution: puddle
+    locVolume: "examinable-solution-on-examine-volume-puddle"
   - type: DrawableSolution
     solution: puddle
   - type: BadDrink

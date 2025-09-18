@@ -65,7 +65,7 @@ public abstract class SharedFlashSystem : EntitySystem
         SubscribeLocalEvent<FlashImmunityComponent, ItemMaskToggledEvent>(OnMaskToggled); // Corvax-Wega-Wielder
 		SubscribeLocalEvent<ImpulseFlashComponent, MaskFlashActionEvent>(OnFlashPulse); // Corvax-Wega-Arsenal
 		SubscribeLocalEvent<ImpulseFlashComponent, GetItemActionsEvent>(OnGetItemActions); // Corvax-Wega-Arsenal
-        SubscribeLocalEvent<PermanentBlindnessComponent, FlashAttemptEvent>(OnPermanentBlindnessFlashAttempt); 
+        SubscribeLocalEvent<PermanentBlindnessComponent, FlashAttemptEvent>(OnPermanentBlindnessFlashAttempt);
         SubscribeLocalEvent<TemporaryBlindnessComponent, FlashAttemptEvent>(OnTemporaryBlindnessFlashAttempt);
         Subs.SubscribeWithRelay<FlashImmunityComponent, FlashAttemptEvent>(OnFlashImmunityFlashAttempt, held: false);
         SubscribeLocalEvent<FlashImmunityComponent, ExaminedEvent>(OnExamine);
@@ -163,15 +163,18 @@ public abstract class SharedFlashSystem : EntitySystem
         bool melee = false,
         TimeSpan? stunDuration = null)
     {
+        //CorvaxWega duration modifier for resomi
+        if (TryComp<FlashModifierComponent>(target, out var flashModifier))
+            flashDuration *= flashModifier.Modifier;
+
         var attempt = new FlashAttemptEvent(target, user, used);
         RaiseLocalEvent(target, ref attempt, true);
 
         if (attempt.Cancelled)
             return;
 
-        //CorvaxWega duration modifier for resomi
-        if (TryComp<FlashModifierComponent>(target, out var flashModifier))
-            flashDuration *= flashModifier.Modifier;
+        var damageAttempt = new FlashAttemptDamageEvent(target, flashDuration); // Corvax-Wega-Phantom
+        RaiseLocalEvent(target, ref damageAttempt, true);   // Corvax-Wega-Phantom
 
         // don't paralyze, slowdown or convert to rev if the target is immune to flashes
         if (!_statusEffectsSystem.TryAddStatusEffect<FlashedComponent>(target, FlashedKey, flashDuration, true))
@@ -268,14 +271,14 @@ public abstract class SharedFlashSystem : EntitySystem
         component.Enabled = !args.Mask.Comp.IsToggled;
     }
     // Corvax-Wega-Wielder-end
-	
+
 	// Corvax-Wega-Arsenal-start
 	private void OnFlashPulse(Entity<ImpulseFlashComponent> ent,ref MaskFlashActionEvent args)
 	{
             FlashArea(ent,ent, ent.Comp.Range, ent.Comp.Duration, ent.Comp.SlowTo, probability: ent.Comp.Probability);
             args.Handled = true;
 	}
-    
+
 	private void OnGetItemActions(Entity<ImpulseFlashComponent> ent, ref GetItemActionsEvent args)
     {
         if (_inventorySystem.InSlotWithFlags(ent.Owner, SlotFlags.HEAD) || _inventorySystem.InSlotWithFlags(ent.Owner, SlotFlags.NECK))

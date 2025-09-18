@@ -1,0 +1,66 @@
+# TODO: Kill ore veins
+# Split it into 2 components, 1 for "spawn XYZ on destruction" and 1 for "randomly select one of these for spawn on destruction"
+
+# High yields
+- type: ore
+  id: OreSteelCore
+  oreEntity: SteelOre
+  minOreYield: 3
+  maxOreYield: 5
+
+- type: ore
+  id: OreSpaceQuartzCore
+  oreEntity: SpaceQuartz
+  minOreYield: 3
+  maxOreYield: 5
+
+- type: ore
+  id: OreCoalCore
+  oreEntity: Coal
+  minOreYield: 3
+  maxOreYield: 5
+
+# Medium yields
+- type: ore
+  id: OreGoldCore
+  oreEntity: GoldOre
+  minOreYield: 1
+  maxOreYield: 2
+
+- type: ore
+  id: OreSilverCore
+  oreEntity: SilverOre
+  minOreYield: 1
+  maxOreYield: 2
+
+
+# Low yields
+- type: ore
+  id: OrePlasmaCore
+  oreEntity: PlasmaOre
+  minOreYield: 1
+  maxOreYield: 2
+
+- type: ore
+  id: OreUraniumCore
+  oreEntity: UraniumOre
+  minOreYield: 1
+  maxOreYield: 1
+
+- type: ore
+  id: OreBananiumCore
+  oreEntity: BananiumOre
+  minOreYield: 1
+  maxOreYield: 1
+
+- type: weightedRandomOre
+  id: RandomOreDistributionCore
+  weights:
+    OreSteelCore: 1
+    OreCoalCore: 1
+    OreSpaceQuartzCore: 1
+    OreGoldCore: 1
+    OrePlasmaCore: 1
+    OreSilverCore: 1
+    OreUraniumCore: 1
+    OreBananiumCore: 1

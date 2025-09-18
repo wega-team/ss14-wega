@@ -39,6 +39,8 @@ using Content.Shared.Genetics;
 using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Surgery.Components;
+using Content.Shared.Nutrition.Components;
+using Content.Shared.Inventory;
 
 namespace Content.Server.Vampire;
 
@@ -48,7 +50,7 @@ public sealed partial class VampireSystem : SharedVampireSystem
     [Dependency] private readonly AlertsSystem _alerts = default!;
     [Dependency] private readonly BloodstreamSystem _blood = default!;
     [Dependency] private readonly FlammableSystem _flammable = default!;
-    [Dependency] private readonly FoodSystem _food = default!;
+    [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly RottingSystem _rotting = default!;
     [Dependency] private readonly StomachSystem _stomach = default!;
     [Dependency] private readonly PolymorphSystem _polymorph = default!;
@@ -188,8 +190,16 @@ public sealed partial class VampireSystem : SharedVampireSystem
             return false;
         }
 
-        if (!_interaction.InRangeUnobstructed(uid, args.Target, popup: true) || _food.IsMouthBlocked(args.Target, uid)
-            || HasComp<SyntheticOperatedComponent>(args.Target))
+        if (!_interaction.InRangeUnobstructed(uid, args.Target, popup: true) || HasComp<SyntheticOperatedComponent>(args.Target))
+            return false;
+
+        IngestionBlockerComponent? blocker;
+        if (_inventory.TryGetSlotEntity(uid, "mask", out var maskUid) &&
+            TryComp(maskUid, out blocker) && blocker.Enabled)
+            return false;
+
+        if (_inventory.TryGetSlotEntity(uid, "head", out var headUid) &&
+            TryComp(headUid, out blocker) && blocker.Enabled)
             return false;
 
         if (_rotting.IsRotten(args.Target))
@@ -215,8 +225,7 @@ public sealed partial class VampireSystem : SharedVampireSystem
 
     private void DrinkDoAfter(EntityUid uid, VampireComponent component, ref VampireDrinkingBloodDoAfterEvent args)
     {
-        if (args.Cancelled || _food.IsMouthBlocked(uid, uid)
-            || !TryComp<BloodstreamComponent>(args.Target, out var targetBloodstream)
+        if (args.Cancelled || !TryComp<BloodstreamComponent>(args.Target, out var targetBloodstream)
             || targetBloodstream?.BloodSolution is null)
             return;
 

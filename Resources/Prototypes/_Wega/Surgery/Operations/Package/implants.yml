@@ -53,6 +53,24 @@
     - AndroidRemoveRadioCentcommTransition
 
 - type: surgeryPackage
+  id: IpcTorsoImplantPackage
+  transitions:
+    - IpcImplantTorsoTransition
+    - IpcRemoveSadTromboneTransition
+    - IpcRemoveLightImplantTransition
+    - IpcRemoveBikeHornTransition
+    - IpcRemoveTrackingTransition
+    - IpcRemoveStorageTransition
+    - IpcRemoveFreedomTransition
+    - IpcRemoveRadioTransition
+    - IpcRemoveUplinkTransition
+    - IpcRemoveEmpTransition
+    - IpcRemoveScramTransition
+    - IpcRemoveDnaScramblerTransition
+    - IpcRemoveChameleonControllerTransition
+    - IpcRemoveRadioCentcommTransition
+
+- type: surgeryPackage
   id: HeadImplantPackage
   transitions:
     - ImplantingHeadTransition
@@ -65,3 +83,10 @@
     - AndroidImplantHeadTransition
     - AndroidRemoveMindShieldTransition
     - AndroidRemoveFakeMindShieldTransition
+
+- type: surgeryPackage
+  id: IpcHeadImplantPackage
+  transitions:
+    - IpcImplantHeadTransition
+    - IpcRemoveMindShieldTransition
+    - IpcRemoveFakeMindShieldTransition
