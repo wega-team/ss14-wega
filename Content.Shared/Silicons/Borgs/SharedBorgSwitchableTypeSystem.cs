@@ -1,4 +1,5 @@
 using Content.Shared.Actions;
+using Content.Shared.Corvax.TTS; // Corvax-TTS
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Components;
 using Content.Shared.Movement.Components;
@@ -123,11 +124,11 @@ public abstract class SharedBorgSwitchableTypeSystem : EntitySystem
             footstepModifier.FootstepSoundCollection = prototype.FootstepCollection;
         }
 
-        // Corvax-Wega-tts-borg-start
+        // Corvax-TTS-start
         if (TryComp(entity, out TTSComponent? tts))
         {
             tts.VoicePrototypeId = prototype.VoicePrototypeId;
         }
-        // Corvax-Wega-tts-borg-end
+        // Corvax-TTS-end
     }
 }

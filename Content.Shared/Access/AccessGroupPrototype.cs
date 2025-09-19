@@ -25,6 +25,11 @@ public sealed partial class AccessGroupPrototype : IPrototype
     [DataField(required: true)]
     public HashSet<ProtoId<AccessLevelPrototype>> Tags = default!;
 
+    // Corvax-Wega-Add-start
+    [DataField]
+    public bool ConsoleAvaible = false;
+    // Corvax-Wega-Add-end
+
     public string GetAccessGroupName()
     {
         if (Name is { } name)

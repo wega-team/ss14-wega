@@ -23,7 +23,7 @@ public sealed class SharedDirtSystem : EntitySystem
     [Dependency] private readonly TagSystem _tag = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
 
-    private const float MaxDirtLevel = 100f;
+    public const float MaxDirtLevel = 100f;
     private const float DirtAccumulationRate = 0.01f;
     private ProtoId<TagPrototype> _hardsuit = "Hardsuit";
 

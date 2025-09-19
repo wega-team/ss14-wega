@@ -1,0 +1,89 @@
+- type: entity
+  parent: BaseMobHuman
+  id: BaseMobHarpy
+  name: Urist McHarpy
+  abstract: true
+  components:
+  - type: Sprite
+    scale: "0.9, 0.9"
+  - type: HumanoidAppearance
+    species: Harpy
+    hideLayersOnEquip:
+    - Hair
+    - Snout
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      path: /Audio/Weapons/pierce.ogg
+    angle: 30
+    animation: WeaponArcClaw
+    damage:
+      types:
+        Piercing: 6
+  - type: Carriable # Corvax-Wega-Carrying
+  - type: DiseaseCarrier # Corvax-Wega-Disease
+  - type: Body
+    prototype: Harpy
+    requiredLegs: 2
+  - type: Butcherable
+    butcheringType: Spike
+    spawned:
+    - id: FoodMeatHuman
+      amount: 5
+  - type: Speech
+    speechSounds: Alto
+    allowedEmotes: ['CatHisses', "CatMeow", 'Growl', 'Purr', 'Beep', 'Click', 'Squeak', 'HarpyRing', 'HarpyPew', 'HarpyBang', 'HarpyRev']
+  - type: Vocal
+    sounds:
+      Male: SoundsHarpy
+      Female: SoundsHarpy
+      Unsexed: SoundsHarpy
+  - type: DnaModifier
+    upper: MobHarpy
+    lowest: MobParrot
+  - type: UserInterface
+    interfaces:
+      enum.HumanoidMarkingModifierKey.Key:
+        type: HumanoidMarkingModifierBoundUserInterface
+      enum.StrippingUiKey.Key:
+        type: StrippableBoundUserInterface
+      enum.SurgeryUiKey.Key:
+        type: SurgeryBoundUserInterface
+      enum.InstrumentUiKey.Key:
+        type: InstrumentBoundUserInterface
+  - type: ColourBlindness
+    colorFilter: "1.0, 0.8, 0.0"
+    desaturation: 0.4
+  - type: Instrument
+    allowPercussion: false
+    program: 52
+  - type: Inventory
+    displacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: _Wega/Mobs/Species/Harpy/displacement.rsi
+            state: jumpsuit
+
+- type: entity
+  parent: MobHumanDummy
+  id: MobHarpyDummy
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    scale: "0.9, 0.9"
+  - type: HumanoidAppearance
+    species: Harpy
+    hideLayersOnEquip:
+    - Hair
+    - Snout
+  - type: Body
+    prototype: Harpy
+    requiredLegs: 2
+  - type: Inventory
+    displacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: _Wega/Mobs/Species/Harpy/displacement.rsi
+            state: jumpsuit

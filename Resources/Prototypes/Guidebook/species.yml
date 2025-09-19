@@ -45,7 +45,7 @@
 
 - type: guideEntry
   id: SlimePerson
-  name: species-name-slime
+  name: species-name-slimeperson # Corvax-Wega-Edit
   text: "/ServerInfo/Guidebook/Mobs/SlimePerson.xml"
 
 - type: guideEntry

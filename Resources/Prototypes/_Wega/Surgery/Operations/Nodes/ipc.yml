@@ -1,0 +1,409 @@
+# ========================
+# УЗЛЫ ТОРСА
+# ========================
+
+- type: surgeryNode
+  id: IpcTorsoClosed
+  description: "Торсовая панель закрыта"
+  bodyPart: torso
+  transitions:
+    - IpcOpenTorsoTransition
+
+- type: surgeryNode
+  id: IpcTorsoOpen
+  description: "Торсовая панель открыта"
+  bodyPart: torso
+  packages:
+    - IpcTorsoImplantPackage
+  transitions:
+    - IpcOrganManipulationTransition
+    - IpcCloseTorsoTransition
+
+# region Импланты
+
+# SadTromboneImplant
+- type: surgeryNode
+  id: IpcRemoveSadTromboneOperation
+  description: Извлечь имплант грустного тромбона
+  transitions:
+    - IpcExtractSadTromboneTransition
+
+# LightImplant
+- type: surgeryNode
+  id: IpcRemoveLightImplantOperation
+  description: Извлечь световой имплант
+  transitions:
+    - IpcExtractLightImplantTransition
+
+# BikeHorn
+- type: surgeryNode
+  id: IpcRemoveBikeHornOperation
+  description: Извлечь имплант велосипедного гудка
+  transitions:
+    - IpcExtractBikeHornTransition
+
+# Tracking
+- type: surgeryNode
+  id: IpcRemoveTrackingOperation
+  description: Извлечь имплант слежения
+  transitions:
+    - IpcExtractTrackingTransition
+
+# Storage
+- type: surgeryNode
+  id: IpcRemoveStorageOperation
+  description: Извлечь подозрительный имплант
+  transitions:
+    - IpcExtractTrackingTransition
+
+# Freedom
+- type: surgeryNode
+  id: IpcRemoveFreedomOperation
+  description: Извлечь подозрительный имплант
+  transitions:
+    - IpcExtractTrackingTransition
+
+# Radio
+- type: surgeryNode
+  id: IpcRemoveRadioOperation
+  description: Извлечь подозрительный имплант
+  transitions:
+    - IpcExtractRadioTransition
+
+# Uplink
+- type: surgeryNode
+  id: IpcRemoveUplinkOperation
+  description: Извлечь подозрительный имплант
+  transitions:
+    - IpcExtractUplinkTransition
+
+# Emp
+- type: surgeryNode
+  id: IpcRemoveEmpOperation
+  description: Извлечь подозрительный имплант
+  transitions:
+    - IpcExtractEmpTransition
+
+# Scram
+- type: surgeryNode
+  id: IpcRemoveScramOperation
+  description: Извлечь подозрительный имплант
+  transitions:
+    - IpcExtractScramTransition
+
+# DnaScrambler
+- type: surgeryNode
+  id: IpcRemoveDnaScramblerOperation
+  description: Извлечь подозрительный имплант
+  transitions:
+    - IpcExtractDnaScramblerTransition
+
+# ChameleonController
+- type: surgeryNode
+  id: IpcRemoveChameleonControllerOperation
+  description: Извлечь подозрительный имплант
+  transitions:
+    - IpcExtractChameleonControllerTransition
+
+# RadioCentcomm
+- type: surgeryNode
+  id: IpcRemoveRadioCentcommOperation
+  description: Извлечь подозрительный имплант
+  transitions:
+    - IpcExtractRadioCentcommTransition
+
+# endregion
+
+# ========================
+# УЗЛЫ ГОЛОВЫ
+# ========================
+
+- type: surgeryNode
+  id: IpcHeadClosed
+  description: "Панель головы закрыта"
+  bodyPart: head
+  transitions:
+    - IpcOpenHeadTransition
+
+- type: surgeryNode
+  id: IpcHeadOpen
+  description: "Панель головы открыта"
+  bodyPart: head
+  packages:
+    - IpcHeadImplantPackage
+  transitions:
+    - IpcExtractBrainTransition
+    - IpcCloseHeadTransition
+
+- type: surgeryNode
+  id: IpcImplantingHeadOpen
+  description: "Панель головы открыта"
+  bodyPart: head
+  packages:
+    - IpcHeadImplantPackage
+  transitions:
+    - IpcExtractBrainTransition
+    - IpcCloseHeadTransition
+
+- type: surgeryNode
+  id: IpcAttachHead
+  description: "И не прокричал он: 'АААААААААААААААААААААААААА'."
+  bodyPart: head
+  transitions:
+    - IpcCompleteHeadAttachmentTransition
+
+# region Импланты
+
+# MindShield
+- type: surgeryNode
+  id: IpcRemoveMindShieldOperation
+  description: Извлечь имплант защиты разума
+  transitions:
+    - IpcExtractMindShieldTransition
+
+# FakeMindShield
+- type: surgeryNode
+  id: IpcRemoveFakeMindShieldOperation
+  description: Извлечь имплант защиты разума
+  transitions:
+    - IpcExtractFakeMindShieldTransition
+
+# endregion
+
+# ========================
+# УЗЛЫ КОНЕЧНОСТЕЙ
+# ========================
+
+- type: surgeryNode
+  id: IpcAmputateLeftArm
+  description: Левая рука на месте
+  bodyPart: left_arm
+  transitions:
+    - IpcAmputateLeftArmTransition
+
+- type: surgeryNode
+  id: IpcAttachLeftArm
+  description: Левая рука отсутствует
+  bodyPart: left_arm
+  transitions:
+    - IpcAttachLeftArmTransition
+
+- type: surgeryNode
+  id: IpcAttachLeftArmProcess
+  description: Прикрепление левой руки
+  bodyPart: left_arm
+  transitions:
+    - IpcAttachLeftArmProcessTransition
+
+- type: surgeryNode
+  id: IpcAmputateLeftArmProcess
+  description: Отсоединение левой руки
+  bodyPart: left_arm
+  transitions:
+    - IpcAmputateLeftArmProcessTransition
+
+- type: surgeryNode
+  id: IpcAmputateRightArm
+  description: Правая рука на месте
+  bodyPart: right_arm
+  transitions:
+    - IpcAmputateRightArmTransition
+
+- type: surgeryNode
+  id: IpcAttachRightArm
+  description: Правая рука отсутствует
+  bodyPart: right_arm
+  transitions:
+    - IpcAttachRightArmTransition
+
+- type: surgeryNode
+  id: IpcAttachRightArmProcess
+  description: Прикрепление правой руки
+  bodyPart: right_arm
+  transitions:
+    - IpcAttachRightArmProcessTransition
+
+- type: surgeryNode
+  id: IpcAmputateRightArmProcess
+  description: Отсоединение правой руки
+  bodyPart: right_arm
+  transitions:
+    - IpcAmputateRightArmProcessTransition
+
+- type: surgeryNode
+  id: IpcAmputateLeftHand
+  description: Левая кисть на месте
+  bodyPart: left_hand
+  transitions:
+    - IpcAmputateLeftHandTransition
+
+- type: surgeryNode
+  id: IpcAttachLeftHand
+  description: Левая кисть отсутствует
+  bodyPart: left_hand
+  transitions:
+    - IpcAttachLeftHandTransition
+
+- type: surgeryNode
+  id: IpcAttachLeftHandProcess
+  description: Прикрепление левой кисти
+  bodyPart: left_hand
+  transitions:
+    - IpcAttachLeftHandProcessTransition
+
+- type: surgeryNode
+  id: IpcAmputateLeftHandProcess
+  description: Отсоединение левой кисти
+  bodyPart: left_hand
+  transitions:
+    - IpcAmputateLeftHandProcessTransition
+
+- type: surgeryNode
+  id: IpcAmputateRightHand
+  description: Правая кисть на месте
+  bodyPart: right_hand
+  transitions:
+    - IpcAmputateRightHandTransition
+
+- type: surgeryNode
+  id: IpcAttachRightHand
+  description: Правая кисть отсутствует
+  bodyPart: right_hand
+  transitions:
+    - IpcAttachRightHandTransition
+
+- type: surgeryNode
+  id: IpcAttachRightHandProcess
+  description: Прикрепление правой кисти
+  bodyPart: right_hand
+  transitions:
+    - IpcAttachRightHandProcessTransition
+
+- type: surgeryNode
+  id: IpcAmputateRightHandProcess
+  description: Отсоединение правой кисти
+  bodyPart: right_hand
+  transitions:
+    - IpcAmputateRightHandProcessTransition
+
+- type: surgeryNode
+  id: IpcAmputateLeftLeg
+  description: Левая нога на месте
+  bodyPart: left_leg
+  transitions:
+    - IpcAmputateLeftLegTransition
+
+- type: surgeryNode
+  id: IpcAttachLeftLeg
+  description: Левая нога отсутствует
+  bodyPart: left_leg
+  transitions:
+    - IpcAttachLeftLegTransition
+
+- type: surgeryNode
+  id: IpcAttachLeftLegProcess
+  description: Прикрепление левой ноги
+  bodyPart: left_leg
+  transitions:
+    - IpcAttachLeftLegProcessTransition
+
+- type: surgeryNode
+  id: IpcAmputateLeftLegProcess
+  description: Отсоединение левой ноги
+  bodyPart: left_leg
+  transitions:
+    - IpcAmputateLeftLegProcessTransition
+
+- type: surgeryNode
+  id: IpcAmputateRightLeg
+  description: Правая нога на месте
+  bodyPart: right_leg
+  transitions:
+    - IpcAmputateRightLegTransition
+
+- type: surgeryNode
+  id: IpcAttachRightLeg
+  description: Правая нога отсутствует
+  bodyPart: right_leg
+  transitions:
+    - IpcAttachRightLegTransition
+
+- type: surgeryNode
+  id: IpcAttachRightLegProcess
+  description: Прикрепление правой ноги
+  bodyPart: right_leg
+  transitions:
+    - IpcAttachRightLegProcessTransition
+
+- type: surgeryNode
+  id: IpcAmputateRightLegProcess
+  description: Отсоединение правой ноги
+  bodyPart: right_leg
+  transitions:
+    - IpcAmputateRightLegProcessTransition
+
+- type: surgeryNode
+  id: IpcAmputateLeftFoot
+  description: Левая стопа на месте
+  bodyPart: left_foot
+  transitions:
+    - IpcAmputateLeftFootTransition
+
+- type: surgeryNode
+  id: IpcAttachLeftFoot
+  description: Левая стопа отсутствует
+  bodyPart: left_foot
+  transitions:
+    - IpcAttachLeftFootTransition
+
+- type: surgeryNode
+  id: IpcAttachLeftFootProcess
+  description: Прикрепление левой стопы
+  bodyPart: left_foot
+  transitions:
+    - IpcAttachLeftFootProcessTransition
+
+- type: surgeryNode
+  id: IpcAmputateLeftFootProcess
+  description: Отсоединение левой стопы
+  bodyPart: left_foot
+  transitions:
+    - IpcAmputateLeftFootProcessTransition
+
+- type: surgeryNode
+  id: IpcAmputateRightFoot
+  description: Правая стопа на месте
+  bodyPart: right_foot
+  transitions:
+    - IpcAmputateRightFootTransition
+
+- type: surgeryNode
+  id: IpcAttachRightFoot
+  description: Правая стопа отсутствует
+  bodyPart: right_foot
+  transitions:
+    - IpcAttachRightFootTransition
+
+- type: surgeryNode
+  id: IpcAttachRightFootProcess
+  description: Прикрепление правой стопы
+  bodyPart: right_foot
+  transitions:
+    - IpcAttachRightFootProcessTransition
+
+- type: surgeryNode
+  id: IpcAmputateRightFootProcess
+  description: Отсоединение правой стопы 
+  bodyPart: right_foot
+  transitions:
+    - IpcAmputateRightFootProcessTransition
+
+# ========================
+# ФИНАЛЬНЫЙ УЗЕЛ
+# ========================
+
+- type: surgeryNode
+  id: IpcEndOperation
+  description: Завершить
+  transitions:
+    - IpcCompleteOperationTransition

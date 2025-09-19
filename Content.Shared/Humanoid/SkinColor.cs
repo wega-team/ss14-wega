@@ -19,6 +19,8 @@ public static class SkinColor
     public const float MaxFeathersValue = 55f / 100;
 
     public static Color ValidHumanSkinTone => Color.FromHsv(new Vector4(0.07f, 0.2f, 1f, 1f));
+    public static Color ValidPhantomeSkinTome => Color.FromHsv(new Vector4(0f, 0f, 0.15f, 1f));
+
 
     /// <summary>
     ///     Turn a color into a valid tinted hue skin tone.
@@ -227,6 +229,59 @@ public static class SkinColor
         return Color.ToHsv(color).Z >= MinHuesLightness;
     }
 
+    // Corvax-Wega-Phanthom-start
+    public static Color PhantomColor(int tone)
+    {
+        tone = Math.Clamp(tone, 0, 100);
+
+        const float minValue = 0.05f;
+        const float maxValue = 0.15f;
+
+        float tNorm = tone / 100f;
+        float value = minValue + tNorm * (maxValue - minValue);
+
+        return Color.FromHsv(new Vector4(0f, 0f, value, 1f));
+    }
+
+    public static float PhantomSkinToneFromColor(Color color)
+    {
+        var hsv = Color.ToHsv(color);
+
+        const float minValue = 0.05f;
+        const float maxValue = 0.15f;
+
+        float v = Math.Clamp(hsv.Z, minValue, maxValue);
+
+        float tone = (v - minValue) / (maxValue - minValue) * 100f;
+
+        tone = MathF.Round(tone);
+        tone = Math.Clamp(tone, 0f, 100f);
+
+        if (tone < 5f) tone = 5f;
+
+        return tone;
+    }
+
+    public static bool VerifyPhantomColor(Color color)
+    {
+        var colorValues = Color.ToHsv(color);
+
+        var hue = Math.Round(colorValues.X * 360f);
+        var sat = Math.Round(colorValues.Y * 100f);
+        var val = Math.Round(colorValues.Z * 100f);
+
+        if (hue > 0 || sat > 0)
+        {
+            return false;
+        }
+
+        if (val > 100)
+            return false;
+
+        return true;
+    }
+    // Corvax-Wega-Phanthom-End
+
     public static bool VerifySkinColor(HumanoidSkinColor type, Color color)
     {
         return type switch
@@ -235,6 +290,7 @@ public static class SkinColor
             HumanoidSkinColor.TintedHues => VerifyTintedHues(color),
             HumanoidSkinColor.Hues => VerifyHues(color),
             HumanoidSkinColor.VoxFeathers => VerifyVoxFeathers(color),
+            HumanoidSkinColor.PhantomBlack => VerifyPhantomColor(color), // Corvax-Wega-Phantom
             _ => false,
         };
     }
@@ -247,6 +303,7 @@ public static class SkinColor
             HumanoidSkinColor.TintedHues => ValidTintedHuesSkinTone(color),
             HumanoidSkinColor.Hues => MakeHueValid(color),
             HumanoidSkinColor.VoxFeathers => ClosestVoxColor(color),
+            HumanoidSkinColor.PhantomBlack => ValidPhantomeSkinTome, // Corvax-Wega-Phantom
             _ => color
         };
     }
@@ -258,4 +315,5 @@ public enum HumanoidSkinColor : byte
     Hues,
     VoxFeathers, // Vox feathers are limited to a specific color range
     TintedHues, //This gives a color tint to a humanoid's skin (10% saturation with full hue range).
+    PhantomBlack, // Corvax-Wega-Phantom
 }

@@ -1,0 +1,171 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Created by HappyRoach and svarshiksatanist",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+		{
+            "name": "badsun-head",
+			"directions": 4
+        },
+		{
+            "name": "seamstress-head",
+			"directions": 4
+        },
+		{
+            "name": "seamstress-special",
+			"directions": 4
+        },
+		{
+            "name": "seamstress-special-secondary",
+			"directions": 4
+        },
+		{
+            "name": "badsun-special",
+			"directions": 4
+        },
+		{
+            "name": "badsun-horn",
+			"directions": 4
+        },
+		{
+            "name": "seamstress-horn",
+			"directions": 4
+        },
+		{
+            "name": "seamstress-horn-secondary",
+			"directions": 4
+        },
+		{
+            "name": "break-eye",
+			"directions": 4
+        },
+		{
+            "name": "harmony-head",
+			"directions": 4
+        },
+		{
+            "name": "harmony-eye",
+			"directions": 4
+        },
+		{
+            "name": "l-golem-arm",
+			"directions": 4
+        },
+		{
+            "name": "l-golem-foot",
+			"directions": 4
+        },
+		{
+            "name": "l-golem-hand",
+			"directions": 4
+        },
+		{
+            "name": "l-golem-leg",
+			"directions": 4
+        },
+		{
+            "name": "moon-head",
+			"directions": 4
+        },
+		{
+            "name": "moon-eye",
+			"directions": 4
+        },
+		{
+            "name": "observer-head",
+			"directions": 4
+        },
+		{
+            "name": "observer-eye",
+			"directions": 4
+        },
+		{
+            "name": "paladin-head",
+			"directions": 4
+        },
+		{
+            "name": "paladin-eye",
+			"directions": 4
+        },
+		{
+            "name": "r-golem-arm",
+			"directions": 4
+        },
+		{
+            "name": "r-golem-foot",
+			"directions": 4
+        },
+		{
+            "name": "r-golem-hand",
+			"directions": 4
+        },
+		{
+            "name": "r-golem-leg",
+			"directions": 4
+        },
+		{
+            "name": "palehand-left",
+			"directions": 4
+        },
+		{
+            "name": "palehand-left-secondary",
+			"directions": 4
+        },
+		{
+            "name": "palehand-right",
+			"directions": 4
+        },
+		{
+            "name": "palehand-right-secondary",
+			"directions": 4
+        },
+		{
+            "name": "big-dipper-special",
+			"directions": 4
+        },
+		{
+            "name": "shadowling-eyes",
+			"directions": 4
+        },
+		{
+            "name": "shadowling-head",
+			"directions": 4
+        },
+		{
+            "name": "shadowling-horn",
+			"directions": 4
+        },
+		{
+            "name": "shadowling-horn-secondary",
+			"directions": 4
+        },
+		{
+            "name": "wendigo-horn",
+			"directions": 4
+        },
+		{
+            "name": "wendigo-horn-secondary",
+			"directions": 4
+        },
+		{
+            "name": "three-horn",
+			"directions": 4
+        },
+		{
+            "name": "deathstare-horn-secondary",
+			"directions": 4
+        },
+		{
+            "name": "deathstare-horn",
+			"directions": 4
+        },
+		{
+            "name": "deathstare-eye",
+			"directions": 4
+        }
+    ]
+}

@@ -98,7 +98,7 @@
           conditions:
             - !type:OrganPresentCondition
               organ: Brain
-        - tag: [ Brain ]
+        - tag: [ BrainSynthetic ]
           action: InsertOrgan
           entityPreview: PositronicBrain
           requiredPart: Brain

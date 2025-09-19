@@ -74,7 +74,7 @@ public sealed class NaturalNightVisionSystem : EntitySystem
         _overlayManager.RemoveOverlay(_overlay);
     }
 
-    private void OnComponentStateUpdated(EntityUid uid, NaturalNightVisionComponent component, AfterAutoHandleStateEvent args)
+    private void OnComponentStateUpdated(EntityUid uid, NaturalNightVisionComponent component, ref AfterAutoHandleStateEvent args)
     {
         if (_playerManager.LocalEntity == uid)
         {
@@ -91,6 +91,7 @@ public sealed class NaturalNightVisionSystem : EntitySystem
             UpdateLighting(!component.Visible);
             if (component.Visible)
             {
+                UpdateOverlayParameters(component);
                 _overlayManager.AddOverlay(_overlay);
             }
             else

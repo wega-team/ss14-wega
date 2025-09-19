@@ -10,20 +10,21 @@
     - state: medical
     - state: icon-surgery
   - type: ItemBorgModule
-    items:
-    - ScalpelAS
-    - CauteryAS
-    - RetractorAS
-    - HemostatAS
-    - FixOVeinAS
-    - SawAS
-    - DrillAS
-    - BoneSetterAS
-    - BoneGelAS
-    - SprayBottle
-    - BorgDropper
+    hands:
+    - item: ScalpelAS
+    - item: CauteryAS
+    - item: RetractorAS
+    - item: HemostatAS
+    - item: FixOVeinAS
+    - item: SawAS
+    - item: DrillAS
+    - item: BoneSetterAS
+    - item: BoneGelAS
+    - item: SprayBottle
+    - item: BorgDropper
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: surgery-module }
+    
     
 - type: entity
   id: BorgModuleKinetic
@@ -37,10 +38,10 @@
     - state: cargo
     - state: icon-kinetic
   - type: ItemBorgModule
-    items:
-    - WeaponProtoKineticAcceleratorBorg
-    - WeaponCrusherDagger
-    - TrofeiBag
+    hands:
+    - item: WeaponProtoKineticAcceleratorBorg
+    - item: WeaponCrusherDagger
+    - item: TrofeiBag
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: kinetic-weapon-module }
     

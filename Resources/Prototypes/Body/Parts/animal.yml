@@ -45,6 +45,13 @@
   - type: BodyPart
     partType: Hand
     symmetry: Left
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+      - Trash
+      - BaseBodyPart
+      - HandsAnimal
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   id: LegsAnimal
@@ -59,6 +66,13 @@
   - type: BodyPart
     partType: Leg
   - type: MovementBodyPart
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+      - Trash
+      - BaseBodyPart
+      - LegsAnimal
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   id: FeetAnimal
@@ -72,6 +86,13 @@
     - state: l_foot
   - type: BodyPart
     partType: Foot
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+      - Trash
+      - BaseBodyPart
+      - FeetAnimal
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   id: TorsoAnimal

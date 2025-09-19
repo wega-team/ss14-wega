@@ -19,6 +19,7 @@
 - type: roleLoadout
   id: JobSeniorEngineer
   groups:
+  - Inventory # Corvax-Loadouts
   - GroupTankHarness
   - SeniorEngineerHead
   - SeniorEngineerJumpsuit
@@ -39,6 +40,7 @@
 - type: roleLoadout
   id: JobSeniorResearcher
   groups:
+  - Inventory # Corvax-Loadouts
   - GroupTankHarness
   - SeniorResearcherHead
   - SeniorResearcherJumpsuit
@@ -80,6 +82,7 @@
 - type: roleLoadout
   id: JobSeniorOfficer
   groups:
+  - Inventory # Corvax-Loadouts
   - SeniorOfficerHead
   - SeniorOfficerJumpsuit
   - SeniorOfficerBackpack
@@ -101,6 +104,7 @@
 - type: roleLoadout
   id: JobSeniorPhysician
   groups:
+  - Inventory # Corvax-Loadouts
   - GroupTankHarness
   - SeniorPhysicianHead
   - MedicalMask
