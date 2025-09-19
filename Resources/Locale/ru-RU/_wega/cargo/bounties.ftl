@@ -1,6 +1,5 @@
 bounty-item-halmet-scrap = Мусорный шлем
 bounty-item-armor-scrap = Мусорная броня
-bounty-item-box-hugs = Коробка обнимашек
 bounty-item-shard-crystal = Осколок кристалла
 bounty-item-funny-shoes = Тапки в виде животных 
 bounty-item-sheild = Щит
