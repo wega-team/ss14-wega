@@ -1,0 +1,39 @@
+- type: cargoProduct
+  id: AtmosphericsTritium
+  icon:
+    sprite: Structures/Storage/canister.rsi
+    state: green
+  product: TritiumCanister
+  cost: 7500
+  category: cargoproduct-category-name-atmospherics
+  group: market
+
+- type: cargoProduct
+  id: AtmosphericsFrezon
+  icon:
+    sprite: Structures/Storage/canister.rsi
+    state: frezon
+  product: FrezonCanister
+  cost: 10000
+  category: cargoproduct-category-name-atmospherics
+  group: market
+
+- type: cargoProduct
+  id: AtmosphericsLiquidNitrousOxideOxygen
+  icon:
+    sprite: Structures/Storage/canister.rsi
+    state: redb
+  product: NitrousOxideOxygenCanister
+  cost: 1500
+  category: cargoproduct-category-name-atmospherics
+  group: market
+
+- type: cargoProduct
+  id: AtmosphericsLiquidWaterVapor
+  icon:
+    sprite: Structures/Storage/canister.rsi
+    state: water_vapor
+  product: WaterVaporCanister
+  cost: 2000
+  category: cargoproduct-category-name-atmospherics
+  group: market

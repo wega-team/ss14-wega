@@ -69,6 +69,7 @@
   - ProtolatheHyperConvectionMachineCircuitboard
   - CircuitImprinterHyperConvectionMachineCircuitboard
   - SheetifierMachineCircuitboard
+  - GoldprinterMachineCircuitboard # Corvax-Wega-Add
 
 - type: technology
   id: PowerGeneration

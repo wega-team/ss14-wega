@@ -196,6 +196,9 @@
   - type: Construction
     graph: BananiumHorn
     node: bananiumHorn
+  - type: Tag
+    tags:
+    - BananiumClakson  # Corvax-Wega
 
 - type: entity
   parent: BaseItem

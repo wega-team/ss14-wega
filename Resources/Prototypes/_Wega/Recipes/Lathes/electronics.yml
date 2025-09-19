@@ -42,3 +42,8 @@
   parent: BaseCircuitboardRecipe
   id: WashingMachineCircuitboard
   result: WashingMachineCircuitboard
+
+- type: latheRecipe
+  parent: BaseSilverCircuitboardRecipe
+  id: GoldprinterMachineCircuitboard
+  result: GoldprinterMachineCircuitboard

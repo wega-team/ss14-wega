@@ -102,6 +102,9 @@
     dirtState: clownshoes
     equippedDirtState: equipped-clownshoes
   # Corvax-Wega-Dirtable-end
+  - type: Tag
+    tags:
+    - GoldShoes # Corvax-Wega
 
 - type: entity
   parent: ClothingShoesBaseButcherable

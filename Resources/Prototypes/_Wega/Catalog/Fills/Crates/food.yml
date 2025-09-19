@@ -1,0 +1,83 @@
+- type: entity
+  id: CrateFoodBigPizza
+  parent: CratePlastic
+  name: emergency big pizza delivery
+  description: Help do your part to end stations hunger by distributing pizza to underfunded departments! Includes 16 pizzas.
+  components:
+  - type: StorageFill
+    contents:
+    - id: FoodBoxPizzaFilled
+      amount: 15
+    - id: FoodBoxPizzaCotton
+    - id: LidSalami
+      prob: 0.01
+
+
+- type: entity
+  id: CrateFoodDonkPocket
+  parent: CratePlastic
+  name: create donk pockets
+  description: OMG, my favorite reson for 5 minutes on work
+  components:
+  - type: StorageFill
+    contents:
+    - id: FoodBoxDonkpocket
+      prob: 0.1
+      orGroup: DP1
+    - id: FoodBoxDonkpocketHonk
+      prob: 0.1
+      orGroup: DP1
+    - id: FoodBoxDonkpocketPizza
+      prob: 0.1
+      orGroup: DP1
+    - id: FoodBoxDonkpocketTeriyaki
+      prob: 0.1
+      orGroup: DP1
+    - id: FoodBoxDonkpocketBerry
+      prob: 0.1
+      orGroup: DP1
+    - id: FoodBoxDonkpocketSpicy
+      prob: 0.1
+      orGroup: DP1
+    - id: FoodBoxDonkpocketStonk
+      prob: 0.1
+      orGroup: DP1
+    - id: FoodBoxDonkpocketCarp
+      prob: 0.1
+      orGroup: DP1
+    - id: FoodBoxDonkpocketMoth
+      prob: 0.1
+      orGroup: DP1
+    - id: FoodBoxDonkpocketDink
+      prob: 0.1
+      orGroup: DP1
+    - id: FoodBoxDonkpocket
+      prob: 0.1
+      orGroup: DP2
+    - id: FoodBoxDonkpocketHonk
+      prob: 0.1
+      orGroup: DP2
+    - id: FoodBoxDonkpocketPizza
+      prob: 0.1
+      orGroup: DP2
+    - id: FoodBoxDonkpocketTeriyaki
+      prob: 0.1
+      orGroup: DP2
+    - id: FoodBoxDonkpocketBerry
+      prob: 0.1
+      orGroup: DP2
+    - id: FoodBoxDonkpocketSpicy
+      prob: 0.1
+      orGroup: DP2
+    - id: FoodBoxDonkpocketStonk
+      prob: 0.1
+      orGroup: DP2
+    - id: FoodBoxDonkpocketCarp
+      prob: 0.1
+      orGroup: DP2
+    - id: FoodBoxDonkpocketMoth
+      prob: 0.1
+      orGroup: DP2
+    - id: FoodBoxDonkpocketDink
+      prob: 0.1
+      orGroup: DP2

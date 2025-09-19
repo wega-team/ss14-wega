@@ -49,6 +49,9 @@
   - type: Construction
     graph: ClothingShoeSlippersDuck
     node: shoes
+  - type: Tag
+    tags:
+    - FunnyShoes # Corvax-Wega
 
 - type: entity
   parent: ClothingShoesBaseButcherable
@@ -82,6 +85,9 @@
           Quantity: 20
         - ReagentId: JuiceThatMakesYouWeh
           Quantity: 20
+  - type: Tag
+    tags:
+    - FunnyShoes # Corvax-Wega
 
 - type: entity
   parent: ClothingShoesBaseButcherable

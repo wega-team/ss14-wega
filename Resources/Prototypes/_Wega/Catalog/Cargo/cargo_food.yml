@@ -1,0 +1,19 @@
+- type: cargoProduct
+  id: CrateFoodBigPizza
+  icon:
+    sprite: Objects/Consumable/Food/Baked/pizza.rsi
+    state: margherita-slice
+  product: CrateFoodBigPizza
+  cost: 4000
+  category: cargoproduct-category-name-food
+  group: market
+
+- type: cargoProduct
+  id: CrateFoodDonkPocket
+  icon:
+    sprite: /Textures/Objects/Consumable/Food/Baked/donkpocket.rsi
+    state: box
+  product: CrateFoodDonkPocket
+  cost: 2000
+  category: cargoproduct-category-name-food
+  group: market
