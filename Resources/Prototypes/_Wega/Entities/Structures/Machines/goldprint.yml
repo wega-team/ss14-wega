@@ -1,0 +1,31 @@
+- type: entity
+  parent: BaseLathe
+  id: Goldprinter
+  name: gold printer
+  suffix: Gamewar360
+  description: I made a ring for myself
+  components:
+  - type: Sprite
+    sprite: _Wega/Structures/Machines/goldprin.rsi
+    layers:
+    - state: base_machine
+      map: ["enum.LatheVisualLayers.IsRunning"]
+    - state: buttons_on
+      shader: unshaded
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+  - type: Machine
+    board: GoldprinterMachineCircuitboard
+  - type: MaterialStorage
+    dropOnDeconstruct: true #should drop ores instead of ingots/sheets
+    ignoreColor: true
+    canEjectStoredMaterials: true
+    whitelist:
+      tags:
+      - Sheet
+      - RawMaterial
+      - Ingot
+  - type: Lathe
+    idleState: base_machine
+    runningState: base_machine_processing
+    staticPacks:
+    - GoldPrinterRec

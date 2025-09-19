@@ -12,6 +12,9 @@
       flavors:
         - sweet
     - type: SolutionContainerManager
+    - type: Tag
+      tags:
+      - SlimeRND
 
 - type: entity
   parent: BaseMaterialSlimeExtract

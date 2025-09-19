@@ -175,3 +175,58 @@
 
 - type: Tag
   id: CapacitorStockPart
+
+- type: Tag
+  id: ShardCrystal
+  
+- type: Tag
+  id: ArmorScrap
+  
+- type: Tag
+  id: HalmetScrap
+  
+- type: Tag
+  id: Salad
+
+- type: Tag
+  id: FunnyShoes
+
+- type: Tag
+  id: Sheild
+  
+- type: Tag
+  id: BananiumClakson
+
+- type: Tag
+  id: Ushanka
+
+- type: Tag
+  id: Dumplings
+
+- type: Tag
+  id: GoldShoes
+
+- type: Tag
+  id: OuterSuitAvar
+
+- type: Tag
+  id: PottedPlant
+
+- type: Tag
+  id: ShuttleGunBoard
+
+- type: Tag
+  id: Protolathe
+
+- type: Tag
+  id: Telecom
+
+- type: Tag
+  id: Kubok
+
+- type: Tag
+  id: SlimeRND
+
+
+
+

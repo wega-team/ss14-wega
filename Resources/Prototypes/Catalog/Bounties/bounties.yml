@@ -1,6 +1,6 @@
 - type: cargoBounty
   id: BountyArtifact
-  reward: 2500
+  reward: 3500 # Corvax-Wega
   description: bounty-description-artifact
   entries:
   - name: bounty-item-artifact
@@ -11,7 +11,7 @@
 
 - type: cargoBounty
   id: BountyBaseballBat
-  reward: 4000
+  reward: 6000 # Corvax-Wega
   description: bounty-description-baseball-bat
   idPrefix: CC
   entries:
@@ -34,7 +34,7 @@
 
 - type: cargoBounty
   id: BountyBread
-  reward: 2000
+  reward: 3500 # Corvax-Wega
   description: bounty-description-bread
   entries:
   - name: bounty-item-bread
@@ -83,7 +83,7 @@
 
 - type: cargoBounty
   id: BountyClownCostume
-  reward: 1700
+  reward: 3250 # Corvax-Wega
   description: bounty-description-clown-costume
   entries:
   - name: bounty-item-clown-mask
@@ -133,7 +133,7 @@
 
 - type: cargoBounty
   id: BountyDonut
-  reward: 6000
+  reward: 4000 # Corvax-Wega
   description: bounty-description-donut
   idPrefix: CC
   entries:
@@ -145,7 +145,7 @@
 
 - type: cargoBounty
   id: BountyFigurine
-  reward: 8000
+  reward: 5500 # Corvax-Wega
   description: bounty-description-figurine
   entries:
   - name: bounty-item-figurine
@@ -156,7 +156,7 @@
 
 - type: cargoBounty
   id: BountyFlower
-  reward: 2000
+  reward: 4000 # Corvax-Wega
   description: bounty-description-flower
   idPrefix: CC
   entries:
@@ -179,7 +179,7 @@
 
 - type: cargoBounty
   id: BountyHandcuffs
-  reward: 1000
+  reward: 1750 # Corvax-Wega
   description: bounty-description-handcuffs
   idPrefix: CC
   entries:
@@ -236,7 +236,7 @@
 
 - type: cargoBounty
   id: BountyLung
-  reward: 2000
+  reward: 4000 # Corvax-Wega
   description: bounty-description-lung
   entries:
   - name: bounty-item-lung
@@ -259,7 +259,7 @@
 
 - type: cargoBounty
   id: BountyMouse
-  reward: 2400
+  reward: 6300 # Corvax-Wega
   description: bounty-description-mouse
   idPrefix: SS13-
   entries:
@@ -282,7 +282,7 @@
 
 - type: cargoBounty
   id: BountyPen
-  reward: 8000
+  reward: 5000 # Corvax-Wega
   description: bounty-description-pen
   entries:
   - name: bounty-item-pen
@@ -293,7 +293,7 @@
 
 - type: cargoBounty
   id: BountyPercussion
-  reward: 15000
+  reward: 7500 # Corvax-Wega
   description: bounty-description-percussion
   entries:
   - name: bounty-item-percussion
@@ -304,7 +304,7 @@
 
 - type: cargoBounty
   id: BountyPie
-  reward: 3141
+  reward: 5541 # Corvax-Wega
   description: bounty-description-pie
   entries:
   - name: bounty-item-pie
@@ -318,7 +318,7 @@
 
 - type: cargoBounty
   id: BountyPrisonUniform
-  reward: 8000
+  reward: 4000 # Corvax-Wega
   description: bounty-description-prison-uniform
   idPrefix: TG
   entries:
@@ -389,7 +389,7 @@
 
 - type: cargoBounty
   id: BountySyringe
-  reward: 5000
+  reward: 2500 # Corvax-Wega
   description: bounty-description-syringe
   entries:
   - name: bounty-item-syringe
@@ -400,7 +400,7 @@
 
 - type: cargoBounty
   id: BountyTechDisk
-  reward: 25000
+  reward: 10000 # Corvax-Wega
   description: bounty-description-tech-disk
   idPrefix: SS13-
   entries:
@@ -457,7 +457,7 @@
 
 - type: cargoBounty
   id: BountyArtifactFragment
-  reward: 32500
+  reward: 22500 # Corvax-Wega
   description: bounty-description-artifact-fragment
   entries:
   - name: bounty-item-artifact-fragment
@@ -468,7 +468,7 @@
 
 - type: cargoBounty
   id: BountyOrgans
-  reward: 2000
+  reward: 3000 # Corvax-Wega
   description: bounty-description-organs
   idPrefix: UNTH
   entries:
@@ -480,7 +480,7 @@
 
 - type: cargoBounty
   id: BountyLabeler
-  reward: 6660
+  reward: 3330 # Corvax-Wega
   description: bounty-description-labeler
   entries:
   - name: bounty-item-labeler
@@ -491,7 +491,7 @@
 
 - type: cargoBounty
   id: BountyWarmCloth
-  reward: 2000
+  reward: 4000 # Corvax-Wega
   description: bounty-description-warm-cloth
   idPrefix: UNTH
   entries:
@@ -508,7 +508,7 @@
 
 - type: cargoBounty
   id: BountyBattery
-  reward: 15000
+  reward: 3000 # Corvax-Wega
   description: bounty-description-battery
   idPrefix: UNTH
   entries:
@@ -520,7 +520,7 @@
 
 - type: cargoBounty
   id: BountyLaserGun
-  reward: 28500
+  reward: 15000 # Corvax-Wega
   description: bounty-description-lasergun
   idPrefix: IV
   entries:
@@ -535,7 +535,7 @@
 
 - type: cargoBounty
   id: BountyFood
-  reward: 4000
+  reward: 6000 # Corvax-Wega
   description: bounty-description-food
   idPrefix: UNTH
   entries:
@@ -550,7 +550,7 @@
 
 - type: cargoBounty
   id: BountyFruit
-  reward: 5000
+  reward: 6000 # Corvax-Wega
   description: bounty-description-fruit
   entries:
   - name: bounty-item-fruit
@@ -586,7 +586,7 @@
 
 - type: cargoBounty
   id: BountyChili
-  reward: 5555
+  reward: 12000 # Corvax-Wega
   description: bounty-description-chili
   entries:
   - name: bounty-item-chili
@@ -597,7 +597,7 @@
 
 - type: cargoBounty
   id: BountyRollerskates
-  reward: 6500
+  reward: 4000 # Corvax-Wega
   description: bounty-description-rollerskates
   entries:
   - name: bounty-item-rollerskates
@@ -619,7 +619,7 @@
 
 - type: cargoBounty
   id: BountyBandana
-  reward: 4000
+  reward: 6000 # Corvax-Wega
   description: bounty-description-bandana
   entries:
   - name: bounty-item-bandana
@@ -630,7 +630,7 @@
 
 - type: cargoBounty
   id: BountySteak
-  reward: 3200
+  reward: 4200 # Corvax-Wega
   description: bounty-description-steak
   entries:
   - name: bounty-item-steak
@@ -641,7 +641,7 @@
 
 - type: cargoBounty
   id: BountyBanana
-  reward: 6009
+  reward: 8009 # Corvax-Wega
   description: bounty-description-banana
   entries:
   - name: bounty-item-banana
@@ -652,7 +652,7 @@
 
 - type: cargoBounty
   id: BountyBeer
-  reward: 3100
+  reward: 4100 # Corvax-Wega
   description: bounty-description-beer
   entries:
   - name: bounty-item-beer
@@ -663,7 +663,7 @@
 
 - type: cargoBounty
   id: BountyHiVizVest
-  reward: 3030
+  reward: 5030 # Corvax-Wega
   description: bounty-description-hi-viz-vest
   entries:
   - name: bounty-item-hi-viz-vest
@@ -674,7 +674,7 @@
 
 - type: cargoBounty
   id: BountyTorch
-  reward: 2220
+  reward: 3220 # Corvax-Wega
   description: bounty-description-torch
   entries:
   - name: bounty-item-torch
@@ -685,7 +685,7 @@
 
 - type: cargoBounty
   id: BountyMedkitBox
-  reward: 2300
+  reward: 4000 # Corvax-Wega
   description: bounty-description-medkit-box
   entries:
   - name: bounty-item-medkit-box
@@ -696,7 +696,7 @@
 
 - type: cargoBounty
   id: BountyCardboardBox
-  reward: 1500
+  reward: 2000 # Corvax-Wega
   description: bounty-description-cardboard-box
   entries:
   - name: bounty-item-cardboard-box
@@ -740,7 +740,7 @@
 
 - type: cargoBounty
   id: BountyFlashes
-  reward: 5500
+  reward: 6500 # Corvax-Wega
   description: bounty-description-flashes
   entries:
   - name: bounty-item-flash
@@ -751,7 +751,7 @@
 
 - type: cargoBounty
   id: BountyRing
-  reward: 12500
+  reward: 5000 # Corvax-Wega
   description: bounty-description-ring
   entries:
   - name: bounty-item-ring

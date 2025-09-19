@@ -1,0 +1,41 @@
+- type: entity
+  id: CrateBoxDnaFisk
+  parent: CrateScienceSecure
+  name: crate with box dna disks
+  description: Contains BoxDnaFisk for save genoms. Requires Science access to open.
+  components:
+  - type: StorageFill
+    contents:
+      - id: BoxDnaFisk
+
+- type: entity
+  id: CrateRNDServerFlatpack
+  parent: CrateScienceSecure
+  name: RnD server flatpack
+  description: Contains a flatpack of a RnD server. Requires Science access to open.
+  components:
+  - type: StorageFill
+    contents:
+    - id: RNDServerFlatpack
+
+- type: entity
+  id: CrateMiningServerMAXFlatpack
+  parent: CrateScienceSecure
+  name: mining servers and console flatpack
+  description: Contains a flatpack of a mining servers and console. Requires Science access to open.
+  components:
+  - type: StorageFill
+    contents:
+    - id: MiningServerFlatpack
+      amount: 2
+    - id: MiningMonitoringConsoleFlatpack
+    
+- type: entity
+  id: CrateMiningServerFlatpack
+  parent: CrateScienceSecure
+  name: mining server flatpack
+  description: Contains a flatpack of a mining server. Requires Science access to open.
+  components:
+  - type: StorageFill
+    contents:
+    - id: MiningServerFlatpack

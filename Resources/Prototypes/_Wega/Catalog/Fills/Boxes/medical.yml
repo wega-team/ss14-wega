@@ -1,0 +1,134 @@
+- type: entity
+  name: pill canister box
+  suffix: mech
+  parent: BoxPillCanister
+  id: BoxPillCanisterMech
+  description: A box full of pill canisters.
+  components:
+  - type: Sprite
+    layers:
+      - state: box_of_doom # Corvax-Resprite
+      - state: pillbox
+  - type: Label
+    currentLabel: mech
+  - type: StorageFill
+    contents:
+      - id: PillCanisterBicaridine
+      - id: PillCanisterPuncturase
+      - id: PillCanisterLacerinol
+      - id: PillCanisterBruzin
+      
+- type: entity
+  name: pill canister box
+  suffix: burn
+  parent: BoxPillCanister
+  id: BoxPillCanisterBurn
+  description: A box full of pill canisters.
+  components:
+  - type: Sprite
+    layers:
+      - state: box_hug # Corvax-Resprite
+      - state: pillbox
+  - type: Label
+    currentLabel: burn
+  - type: StorageFill
+    contents:
+      - id: PillCanisterDermaline
+      - id: PillCanisterKelotane
+      - id: PillCanisterPyrazine
+      - id: PillCanisterLeporazine
+      - id: PillCanisterInsuzine
+      
+- type: entity
+  name: pill canister box
+  suffix: toxin
+  parent: BoxPillCanister
+  id: BoxPillCanisterToxin
+  description: A box full of pill canisters.
+  components:
+  - type: Sprite
+    layers:
+      - state: box_science # Corvax-Resprite
+      - state: pillbox
+  - type: Label
+    currentLabel: toxin
+  - type: StorageFill
+    contents:
+      - id: PillCanisterDylovene
+      - id: PillCanisterArithrazine
+      - id: PillCanisterPhalanximine
+      - id: PillCanisterMutadon      
+
+- type: entity
+  name: pill canister box
+  suffix: oxyg
+  parent: BoxPillCanister
+  id: BoxPillCanisterOxyg
+  description: A box full of pill canisters.
+  components:
+  - type: Sprite
+    layers:
+      - state: internals # Corvax-Resprite
+      - state: pillbox
+  - type: Label
+    currentLabel: oxyg
+  - type: StorageFill
+    contents:
+      - id: PillCanisterDexalinPlus
+      - id: PillCanisterSaline
+      - id: PillCanisterDexalin
+      
+- type: entity
+  name: pill canister box
+  suffix: all
+  parent: BoxPillCanister
+  id: BoxPillCanisterAll
+  description: A box full of pill canisters.
+  components:
+  - type: Label
+    currentLabel: all
+  - type: StorageFill
+    contents:
+      - id: PillCanisterBicaridine
+      - id: PillCanisterDermaline
+      - id: PillCanisterDylovene
+      - id: PillCanisterDexalin
+      - id: PillCanisterHyronalin
+      
+- type: entity
+  name: pill canister box
+  suffix: pro
+  parent: BoxPillCanister
+  id: BoxPillCanisterPro
+  description: A box full of pill canisters.
+  components:
+  - type: Sprite
+    layers:
+      - state: boxwidetoy # Corvax-Resprite
+      - state: pillbox
+  - type: Label
+    currentLabel: cool (sunglasses)
+  - type: StorageFill
+    contents:
+      - id: PillCanisterOmnizine
+      - id: PillCanisterSigynate
+      - id: PillCanisterDiphenhydramine
+      - id: PillCanisterFresium
+      
+- type: entity
+  name: pill canister box
+  suffix: sec
+  parent: BoxPillCanister
+  id: BoxPillCanisterSB
+  description: A box full of pill canisters.
+  components:
+  - type: Sprite
+    layers:
+      - state: box_security # Corvax-Resprite
+      - state: pillbox
+  - type: Label
+    currentLabel: sec
+  - type: StorageFill
+    contents:
+      - id: PillCanisterExMedipen
+      - id: PillCanisterDylomet

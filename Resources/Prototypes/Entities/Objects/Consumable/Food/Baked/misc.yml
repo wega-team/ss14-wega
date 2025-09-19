@@ -584,6 +584,7 @@
       - bread
   - type: Tag
     tags:
+    - Dumplings # Corvax-Wega
     - Meat
 
 - type: entity

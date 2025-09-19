@@ -56,6 +56,7 @@
     tags:
       - Trash
       - CrystalCyan
+      - ShardCrystal # Corvax-Wega
 
 - type: entity
   parent: ShardCrystalBase
@@ -72,6 +73,7 @@
     tags:
       - Trash
       - CrystalBlue
+      - ShardCrystal # Corvax-Wega
 
 - type: entity
   parent: ShardCrystalBase
@@ -88,6 +90,7 @@
     tags:
       - Trash
       - CrystalYellow
+      - ShardCrystal # Corvax-Wega
 
 - type: entity
   parent: ShardCrystalBase
@@ -104,6 +107,7 @@
     tags:
       - Trash
       - CrystalOrange
+      - ShardCrystal # Corvax-Wega
 
 - type: entity
   parent: ShardCrystalBase
@@ -120,6 +124,7 @@
     tags:
       - Trash
       - CrystalBlack
+      - ShardCrystal # Corvax-Wega
 
 - type: entity
   parent: ShardCrystalBase
@@ -136,6 +141,7 @@
     tags:
       - Trash
       - CrystalPink
+      - ShardCrystal # Corvax-Wega
 
 - type: entity
   parent: ShardCrystalBase
@@ -152,6 +158,7 @@
     tags:
       - Trash
       - CrystalGreen
+      - ShardCrystal # Corvax-Wega
 
 - type: entity
   parent: ShardCrystalBase
@@ -168,6 +175,7 @@
     tags:
       - Trash
       - CrystalRed
+      - ShardCrystal # Corvax-Wega
 
 - type: entity
   parent: ShardCrystalBase
@@ -182,4 +190,6 @@
       - ShardCrystalBlue
       - ShardCrystalCyan
       - ShardCrystalRed
+      - ShardCrystalBlack # Corvax-Wega
+      - ShardCrystalYellow # Corvax-Wega
     chance: 1
