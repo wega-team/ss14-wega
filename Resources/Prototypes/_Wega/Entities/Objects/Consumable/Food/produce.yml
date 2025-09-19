@@ -18,6 +18,7 @@
   - type: Tag
     tags:
     - Rose
+    - Flower
 
 - type: entity
   parent: BaseItem
@@ -39,6 +40,7 @@
   - type: Tag
     tags:
     - Sunflower
+    - Flower
 
 - type: entity
   parent: BaseItem
