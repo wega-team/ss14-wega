@@ -10,6 +10,7 @@ bounty-item-dumplings = Пельмени
 bounty-item-gold-shoes = Блестящие клоунские туфли
 bounty-item-outersuitavar = Аварийный скафандр ВКД
 bounty-item-slimernd = Слаймовый экстракт
+bounty-item-kubok = Кубок
 bounty-item-potted-plant = Комнатное растение 
 bounty-item-shuttle-gun-board = Плата корабельного вооружения
 bounty-item-protolathe = Плата протолата
