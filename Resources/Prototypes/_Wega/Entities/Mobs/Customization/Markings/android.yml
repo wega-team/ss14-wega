@@ -27,6 +27,20 @@
     state: head_antenna_r
 
 - type: marking
+  id: AndroidAntennaCrown
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [ Android ]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#bf3f3f"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/android.rsi
+    state: head_antenna_crown
+
+- type: marking
   id: AndroidTorsoFemaleStandart
   bodyPart: Chest
   markingCategory: Chest

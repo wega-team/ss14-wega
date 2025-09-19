@@ -92,6 +92,10 @@
             "directions": 4
         },
         {
+            "name": "head_antenna_crown",
+            "directions": 4
+        },
+        {
             "name": "eyes_visor",
             "directions": 4
         },

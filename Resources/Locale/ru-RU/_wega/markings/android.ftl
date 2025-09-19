@@ -1,6 +1,7 @@
 # Голова
 marking-AndroidAntennaLeft = Андроид, антенна (Левая)
 marking-AndroidAntennaRight = Андроид, антенна (Правая)
+marking-AndroidAntennaCrown = Андроид, антенны (Корона)
 marking-AndroidEyesVisor = Андроид, визор
 marking-AndroidEyesVisor-eyes_visor_led = Светодиоды
 # Торс
