@@ -82,6 +82,9 @@
     },
     {
       "name": "kinetic_arm"
+    },
+    {
+      "name": "charger_arm"
     }
   ]
 }
