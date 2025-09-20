@@ -14,13 +14,13 @@ namespace Content.Shared._Wega.Implants
         {
             base.Initialize();
 
-            SubscribeLocalEvent<BodyPartImplantComponent, ComponentStartup>(OnInit);
+            SubscribeLocalEvent<BodyPartImplantComponent, MapInitEvent>(OnMapInit);
 
             SubscribeLocalEvent<BodyComponent, BodyPartAddedEvent>(OnPartAdded);
             SubscribeLocalEvent<BodyComponent, BodyPartRemovedEvent>(OnPartRemove);
         }
 
-        private void OnInit(EntityUid uid, BodyPartImplantComponent component, ref ComponentStartup args)
+        private void OnMapInit(EntityUid uid, BodyPartImplantComponent component, ref MapInitEvent args)
         {
             if (!TryComp<BodyPartComponent>(uid, out var bodyPart))
                 return;
