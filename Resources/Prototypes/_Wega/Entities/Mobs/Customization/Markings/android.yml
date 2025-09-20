@@ -27,6 +27,20 @@
     state: head_antenna_r
 
 - type: marking
+  id: AndroidAntennaCrown
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [ Android ]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#bf3f3f"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/android.rsi
+    state: head_antenna_crown
+
+- type: marking
   id: AndroidTorsoFemaleStandart
   bodyPart: Chest
   markingCategory: Chest
@@ -37,8 +51,6 @@
     default:
       type:
         !type:SkinColoring
-      fallbackTypes:
-        - !type:SkinColoring
   sprites:
   - sprite: _Wega/Mobs/Customization/android.rsi
     state: body_f
@@ -54,8 +66,6 @@
     default:
       type:
         !type:SkinColoring
-      fallbackTypes:
-        - !type:SkinColoring
   sprites:
   - sprite: _Wega/Mobs/Customization/android.rsi
     state: body_f_breast
@@ -71,8 +81,6 @@
     default:
       type:
         !type:SkinColoring
-      fallbackTypes:
-        - !type:SkinColoring
   sprites:
   - sprite: _Wega/Mobs/Customization/android.rsi
     state: body_f_bigbreast
@@ -88,8 +96,6 @@
     default:
       type:
         !type:SkinColoring
-      fallbackTypes:
-        - !type:SkinColoring
   sprites:
   - sprite: _Wega/Mobs/Customization/android.rsi
     state: body_f_nobreast
@@ -105,8 +111,6 @@
     default:
       type:
         !type:SkinColoring
-      fallbackTypes:
-        - !type:SkinColoring
   sprites:
     - sprite: _Wega/Mobs/Customization/android.rsi
       state: body_m
@@ -120,8 +124,8 @@
   coloring:
     default:
       type:
-        !type:SimpleColoring
-          color: "#428de1"
+        !type:CategoryColoring
+          category: Special
   sprites:
     - sprite: _Wega/Mobs/Customization/android.rsi
       state: leds
@@ -135,8 +139,8 @@
   coloring:
     default:
       type:
-        !type:SimpleColoring
-          color: "#428de1"
+        !type:CategoryColoring
+          category: Special
   sprites:
     - sprite: _Wega/Mobs/Customization/android.rsi
       state: leds_love
@@ -150,8 +154,8 @@
   coloring:
     default:
       type:
-        !type:SimpleColoring
-          color: "#428de1"
+        !type:CategoryColoring
+          category: Special
   sprites:
     - sprite: _Wega/Mobs/Customization/android.rsi
       state: leds_stripes
@@ -166,13 +170,11 @@
     default:
       type:
         !type:SkinColoring
-      fallbackTypes:
-        - !type:SkinColoring
     layers:
       ears_cat_led:
         type:
-          !type:SimpleColoring
-            color: "#428de1"
+          !type:CategoryColoring
+            category: Special
   sprites:
   - sprite: _Wega/Mobs/Customization/android.rsi
     state: ears_cat_outer
@@ -188,16 +190,36 @@
   coloring:
     default:
       type:
-        !type:SkinColoring
-      fallbackTypes:
-        - !type:SkinColoring
+        !type:CategoryColoring
+            category: Hair
     layers:
       cat_tail_led:
         type:
-          !type:SimpleColoring
-            color: "#428de1"
+          !type:CategoryColoring
+            category: Special
   sprites:
   - sprite: _Wega/Mobs/Customization/android.rsi
     state: cat_tail
   - sprite: _Wega/Mobs/Customization/android.rsi
     state: cat_tail_led
+
+- type: marking
+  id: AndroidEyesVisor
+  bodyPart: Eyes
+  markingCategory: Head
+  speciesRestriction: [ Android ]
+  sponsorOnly: false
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+    layers:
+      eyes_visor_led:
+        type:
+          !type:CategoryColoring
+            category: Special
+  sprites:
+  - sprite: _Wega/Mobs/Customization/android.rsi
+    state: eyes_visor
+  - sprite: _Wega/Mobs/Customization/android.rsi
+    state: eyes_visor_led

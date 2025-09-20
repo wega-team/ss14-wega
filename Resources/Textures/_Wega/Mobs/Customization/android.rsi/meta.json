@@ -90,6 +90,18 @@
         {
             "name": "head_antenna_r",
             "directions": 4
+        },
+        {
+            "name": "head_antenna_crown",
+            "directions": 4
+        },
+        {
+            "name": "eyes_visor",
+            "directions": 4
+        },
+        {
+            "name": "eyes_visor_led",
+            "directions": 4
         }
     ]
 }

@@ -27,3 +27,35 @@
     Steel: 300
     Plastic: 250
     Silver: 150
+
+- type: latheRecipe
+  parent: BaseRoboticsRecipe
+  id: ArmSyntheticPry
+  result: LeftArmSyntheticPry
+  completetime: 5
+  materials:
+    Steel: 500
+    Plastic: 250
+    Gold: 100
+    Plasma: 100
+
+- type: latheRecipe
+  parent: BaseRoboticsRecipe
+  id: ArmSyntheticDefib
+  result: LeftArmSyntheticDefib
+  completetime: 5
+  materials:
+    Steel: 500
+    Plastic: 250
+    Silver: 250
+
+- type: latheRecipe
+  parent: BaseRoboticsRecipe
+  id: ArmSyntheticProtoKinetic
+  result: LeftArmSyntheticProtoKinetic
+  completetime: 5
+  materials:
+    Steel: 500
+    Plastic: 250
+    Silver: 150
+    Plasma: 150

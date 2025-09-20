@@ -1,9 +1,9 @@
 using Content.Shared.Actions;
 using Content.Shared.Alert;
 using Robust.Shared.Audio;
+using Robust.Shared.Containers;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
-
 namespace Content.Shared._Wega.Android;
 
 public sealed partial class ToggleLockActionEvent : InstantActionEvent;
@@ -12,7 +12,7 @@ public sealed partial class ToggleLockActionEvent : InstantActionEvent;
 public sealed partial class AndroidComponent : Component
 {
     [DataField]
-    public float DischargeSpeedModifier = 0.3f;
+    public float DischargeSpeedModifier = 0.4f;
     [DataField]
     public SoundSpecifier DischargeStunSound = new SoundCollectionSpecifier("CargoError");
     public TimeSpan DischargeTime;
@@ -24,7 +24,6 @@ public sealed partial class AndroidComponent : Component
 
     [DataField]
     public ProtoId<AlertPrototype> BatteryAlert = "BorgBattery";
-
     [DataField]
     public ProtoId<AlertPrototype> NoBatteryAlert = "BorgBatteryNone";
 
@@ -32,4 +31,13 @@ public sealed partial class AndroidComponent : Component
     public float BasePointLightRadiuse = 2.5f;
     [DataField]
     public float BasePointLightEnergy = 1.2f;
+    [ViewVariables(VVAccess.ReadWrite)]
+    public EntityUid? LightEntity;
+    [DataField]
+    public SoundSpecifier ToggleLightSound = new SoundPathSpecifier("/Audio/Machines/button.ogg");
+    [DataField("lightPrototype")]
+    public String LightEntityPrototype = "AndroidLightMarker";
+    [DataField]
+    public string TogglelLightAction = "ActionToggleAndroidLeds";
+    public EntityUid? ToggleLightActionEntity;
 }

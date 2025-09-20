@@ -73,6 +73,18 @@
     },
     {
       "name": "module_part"
+    },
+    {
+      "name": "pry_arm"
+    },
+    {
+      "name": "defib_arm"
+    },
+    {
+      "name": "kinetic_arm"
+    },
+    {
+      "name": "charger_arm"
     }
   ]
 }

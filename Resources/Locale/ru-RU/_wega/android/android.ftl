@@ -13,4 +13,5 @@ android-part-assembly-leftfoot = Собирается левая стопа. Д�
 android-part-assembly-rightleg = Собирается правая нога. Добавьте сталь.
 android-part-assembly-rightfoot = Собирается правая стопа. Добавьте сталь.
 
-
+partimplant-assembly-leftarm = Собирается левая рука.
+partimplant-assembly-rightarm = Собирается правая рука.
