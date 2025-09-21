@@ -78,35 +78,35 @@
   category: cargoproduct-category-name-medical
   group: market
 
-- type: cargoProduct
-  id: CrateCloningConsoleFlatpack
-  icon:
-    sprite: Objects/Misc/module.rsi
-    state: cpu_medical
-  product: CrateCloningConsoleFlatpack  
-  cost: 15000
-  category: cargoproduct-category-name-medical
-  group: market
+# - type: cargoProduct
+  # id: CrateCloningConsoleFlatpack
+  # icon:
+    # sprite: Objects/Misc/module.rsi
+    # state: cpu_medical
+  # product: CrateCloningConsoleFlatpack  
+  # cost: 15000
+  # category: cargoproduct-category-name-medical
+  # group: market
   
-- type: cargoProduct
-  id: CrateCloningPodFlatpack
-  icon:
-    sprite: Structures/Machines/cloning.rsi
-    state: pod_0
-  product: CrateCloningPodFlatpack
-  cost: 15000
-  category: cargoproduct-category-name-medical
-  group: market
+# - type: cargoProduct
+  # id: CrateCloningPodFlatpack
+  # icon:
+    # sprite: Structures/Machines/cloning.rsi
+    # state: pod_0
+  # product: CrateCloningPodFlatpack
+  # cost: 15000
+  # category: cargoproduct-category-name-medical
+  # group: market
   
-- type: cargoProduct
-  id: CrateCloneSet
-  icon:
-    sprite: Structures/Machines/scanner.rsi
-    state: open
-  product: CrateCloneSet
-  cost: 35000
-  category: cargoproduct-category-name-medical
-  group: market
+# - type: cargoProduct
+  # id: CrateCloneSet
+  # icon:
+    # sprite: Structures/Machines/scanner.rsi
+    # state: open
+  # product: CrateCloneSet
+  # cost: 35000
+  # category: cargoproduct-category-name-medical
+  # group: market
 
 
 
