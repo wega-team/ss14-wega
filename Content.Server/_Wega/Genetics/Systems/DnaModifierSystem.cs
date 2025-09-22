@@ -1,5 +1,3 @@
-using System.Linq;
-using System.Threading.Tasks;
 using Content.Server.Administration.Logs;
 using Content.Server.Chat.Systems;
 using Content.Server.Inventory;
@@ -24,6 +22,8 @@ using Robust.Shared.Enums;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Content.Server.Genetics.System;
 
@@ -60,6 +60,8 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
 
         SubscribeLocalEvent<DnaModifierComponent, CureDnaDiseaseAttemptEvent>(OnTryCureDnaDisease);
         SubscribeLocalEvent<DnaModifierComponent, MutateDnaAttemptEvent>(OnTryMutateDna);
+
+        SubscribeLocalEvent<DnaModifierComponent, DamageChangedEvent>(OnDamageChanged);
     }
 
     public override void Update(float frameTime)
@@ -1067,4 +1069,41 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
         Dirty(uid, component);
     }
     #endregion
+
+    private void OnDamageChanged(EntityUid uid, DnaModifierComponent component, DamageChangedEvent args)
+    {
+        if (args.DamageDelta == null || !args.DamageIncreased || args.DamageDelta.GetTotal() < 0.1f || !args.DamageDelta.DamageDict.ContainsKey("Radiation"))
+            return;
+
+        if (component.EnzymesPrototypes == null)
+            return;
+        if (_random.Prob(0.05f))
+        {
+            int countToModify = 1;
+
+            var diseaseEnzymes = component.EnzymesPrototypes
+                .Where(enzyme =>
+                {
+                    if (!_prototype.TryIndex<StructuralEnzymesPrototype>(enzyme.EnzymesPrototypeId, out var enzymePrototype))
+                        return false;
+
+                    return enzymePrototype.TypeDeviation == EnzymesType.Disease;
+                })
+                .ToList();
+
+            var enzymesToModify = diseaseEnzymes
+                .OrderBy(_ => _random.Next())
+                .Take(countToModify)
+                .ToList();
+
+            foreach (var enzyme in enzymesToModify)
+            {
+                enzyme.HexCode = GetHexCodeDisease();
+            }
+
+            TryChangeStructuralEnzymes((uid, component));
+
+            Dirty(uid, component);
+        }
+    }
 }
