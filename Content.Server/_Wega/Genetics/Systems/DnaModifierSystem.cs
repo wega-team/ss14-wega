@@ -1,3 +1,5 @@
+using System.Linq;
+using System.Threading.Tasks;
 using Content.Server.Administration.Logs;
 using Content.Server.Chat.Systems;
 using Content.Server.Inventory;
@@ -22,8 +24,6 @@ using Robust.Shared.Enums;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Content.Server.Genetics.System;
 
