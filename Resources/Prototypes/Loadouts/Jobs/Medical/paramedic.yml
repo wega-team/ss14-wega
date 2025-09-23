@@ -9,11 +9,13 @@
   id: ParamedicJumpsuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitParamedic
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: ParamedicJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtParamedic
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 # Outer clothing
 - type: loadout

@@ -14,22 +14,25 @@
   id: ClownSuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitClown
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: ClownSkirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtClown
-
+  groupBy: "wegaJJ" # Corvax-Wega-add
+  
 - type: loadout
   id: JesterSuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitJester
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: JesterAltSuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitJesterAlt
-
+  groupBy: "wegaJJ" # Corvax-Wega-add
 # Back
 - type: loadout
   id: ClownBackpack

@@ -3,8 +3,10 @@
   id: SurgeonJumpsuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitSurgeon
+  groupBy: "wegaJJ"
 
 - type: loadout
   id: SurgeonJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtSurgeon
+  groupBy: "wegaJJ"

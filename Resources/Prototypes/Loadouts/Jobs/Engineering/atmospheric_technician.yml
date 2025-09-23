@@ -3,17 +3,20 @@
   id: AtmosphericTechnicianJumpsuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitAtmos
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: AtmosphericTechnicianJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtAtmos
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: AtmosphericTechnicianJumpsuitCasual
   equipment:
     jumpsuit: ClothingUniformJumpsuitAtmosCasual
-
+  groupBy: "wegaJJ" # Corvax-Wega-add
+  
 # Back
 - type: loadout
   id: AtmosphericTechnicianBackpack

@@ -9,11 +9,13 @@
   id: CargoTechnicianJumpsuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitCargo
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: CargoTechnicianJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtCargo
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 # Back
 - type: loadout

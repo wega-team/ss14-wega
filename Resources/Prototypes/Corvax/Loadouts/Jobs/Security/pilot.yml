@@ -3,12 +3,14 @@
   id: JumpsuitPilot
   equipment:
     jumpsuit: ClothingUniformJumpsuitPilot
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: JumpskirtPilot
   equipment:
     jumpsuit: ClothingUniformJumpskirtPilot
-
+  groupBy: "wegaJJ" # Corvax-Wega-add
+  
 # Head
 - type: loadout
   id: SecurityPilotBeret
