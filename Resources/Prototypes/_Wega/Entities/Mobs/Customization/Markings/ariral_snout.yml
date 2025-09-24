@@ -1,0 +1,29 @@
+- type: marking
+  id: AriralWhiskers
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Ariral]
+  forcedColoring: true
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#FFFFFF"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/ariral_snout.rsi
+    state: default
+
+- type: marking
+  id: AriralShortWhiskers
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Ariral]
+  forcedColoring: true
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#FFFFFF"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/ariral_snout.rsi
+    state: short

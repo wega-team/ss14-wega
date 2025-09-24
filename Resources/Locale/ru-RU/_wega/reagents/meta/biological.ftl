@@ -7,6 +7,9 @@ reagent-desc-resomi-blood = Густая жидкость с резким амм
 reagent-name-tyrium = тириум
 reagent-desc-tyrium = Сложный хладогент. Лучше не пробуйте его на вкус.
 
+reagent-name-ariral-blood = оранжево-красная кровь
+reagent-desc-ariral-blood = Гистая жидкость с очень едким запахом и вкусом.
+
 reagent-name-gray-slime = серая слизевая эссенция
 reagent-desc-gray-slime = Концентрированная эссенция серой слизи. Содержит следы кремниевых соединений.
 reagent-name-blue-slime = синяя слизевая эссенция

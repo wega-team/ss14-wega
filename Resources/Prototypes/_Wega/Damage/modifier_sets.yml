@@ -53,3 +53,12 @@
     Cold: 0.75
     Heat: 1.5
     Shock: 1.25
+
+- type: damageModifierSet
+  id: Ariral
+  coefficients:
+    Blunt: 0.7
+    Slash: 0.7
+    Piercing: 0.9
+    Cold: 1.1
+    Poison: 1.2

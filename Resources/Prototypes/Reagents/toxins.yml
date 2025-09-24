@@ -502,6 +502,11 @@
           - !type:OrganType
             type: Animal
             shouldHave: false
+        # Corvax-Wega-Ariral-start
+          - !type:OrganType
+            type: Ariral
+            shouldHave: false
+        # Corvax-Wega-Ariral-end
         # Corvax-Wega-Vampire-start
           - !type:OrganType
             type: Vampire
@@ -520,6 +525,11 @@
           - !type:OrganType
             type: Animal
             shouldHave: false
+        # Corvax-Wega-Ariral-start
+          - !type:OrganType
+            type: Ariral
+            shouldHave: false
+        # Corvax-Wega-Ariral-end
         # Corvax-Wega-Vampire-start
           - !type:OrganType
             type: Vampire
@@ -533,6 +543,11 @@
         - !type:OrganType
           type: Animal
           shouldHave: false
+        # Corvax-Wega-Ariral-start
+        - !type:OrganType
+          type: Ariral
+          shouldHave: false
+        # Corvax-Wega-Ariral-end
         # Corvax-Wega-Vampire-start
         - !type:OrganType
           type: Vampire
@@ -549,6 +564,11 @@
         - !type:OrganType
           type: Animal
           shouldHave: true
+        # Corvax-Wega-Ariral-start
+        - !type:OrganType
+          type: Ariral
+          shouldHave: false
+        # Corvax-Wega-Ariral-end
         # Corvax-Wega-Vampire-start
         - !type:OrganType
           type: Vampire

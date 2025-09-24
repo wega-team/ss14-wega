@@ -100,6 +100,7 @@ public sealed partial class HumanoidCharacterAppearance : ICharacterAppearance, 
             HumanoidSkinColor.TintedHues => Humanoid.SkinColor.TintedHues(speciesPrototype.DefaultSkinTone),
             HumanoidSkinColor.VoxFeathers => Humanoid.SkinColor.ClosestVoxColor(speciesPrototype.DefaultSkinTone),
             HumanoidSkinColor.PhantomBlack => Humanoid.SkinColor.PhantomColor(speciesPrototype.DefaultHumanSkinTone), // Corvax-Wega-Phantom
+            HumanoidSkinColor.AriralPale => Humanoid.SkinColor.AriralColor(speciesPrototype.DefaultHumanSkinTone), // Corvax-Wega-Ariral
             _ => Humanoid.SkinColor.ValidHumanSkinTone,
         };
 
@@ -169,6 +170,11 @@ public sealed partial class HumanoidCharacterAppearance : ICharacterAppearance, 
                 newSkinColor = Humanoid.SkinColor.PhantomColor(random.Next(0, 101));
                 break;
             // Corvax-Wega-Phanthom-end
+            // Corvax-Wega-Ariral-start
+            case HumanoidSkinColor.AriralPale:
+                newSkinColor = Humanoid.SkinColor.AriralColor(random.Next(0, 101));
+                break;
+            // Corvax-Wega-Ariral-end
         }
 
         return new HumanoidCharacterAppearance(newHairStyle, new List<Color> { newHairColor }, newFacialHairStyle, newHairColor, newEyeColor, newSkinColor, new ()); // Corvax-Wega-Hair-Extended

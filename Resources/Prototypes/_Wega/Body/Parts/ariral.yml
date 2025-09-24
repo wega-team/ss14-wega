@@ -1,0 +1,117 @@
+- type: entity
+  id: PartAriral
+  parent: [BaseItem, BasePart]
+  name: "ariral body part"
+  abstract: true
+  components:
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: Fat
+        Quantity: 3
+      - ReagentId: AriralBlood
+        Quantity: 10
+
+- type: entity
+  id: TorsoAriral
+  name: "ariral torso"
+  parent: [PartAriral, BaseTorso]
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Ariral/parts.rsi
+    state: "torso_m"
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: Fat
+        Quantity: 10
+      - ReagentId: AriralBlood
+        Quantity: 20
+
+- type: entity
+  id: HeadAriral
+  name: "ariral head"
+  parent: [PartAriral, BaseHead]
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Ariral/parts.rsi
+    state: "head_m"
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: Fat
+        Quantity: 5
+      - ReagentId: AriralBlood
+        Quantity: 10
+
+- type: entity
+  id: LeftArmAriral
+  name: "left ariral arm"
+  parent: [PartAriral, BaseLeftArm]
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Ariral/parts.rsi
+    state: "l_arm"
+
+- type: entity
+  id: RightArmAriral
+  name: "right ariral arm"
+  parent: [PartAriral, BaseRightArm]
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Ariral/parts.rsi
+    state: "r_arm"
+
+- type: entity
+  id: LeftHandAriral
+  name: "left ariral hand"
+  parent: [PartAriral, BaseLeftHand]
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Ariral/parts.rsi
+    state: "l_hand"
+
+- type: entity
+  id: RightHandAriral
+  name: "right ariral hand"
+  parent: [PartAriral, BaseRightHand]
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Ariral/parts.rsi
+    state: "r_hand"
+
+- type: entity
+  id: LeftLegAriral
+  name: "left ariral leg"
+  parent: [PartAriral, BaseLeftLeg]
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Ariral/parts.rsi
+    state: "l_leg"
+
+- type: entity
+  id: RightLegAriral
+  name: "right ariral leg"
+  parent: [PartAriral, BaseRightLeg]
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Ariral/parts.rsi
+    state: "r_leg"
+
+- type: entity
+  id: LeftFootAriral
+  name: "left ariral foot"
+  parent: [PartAriral, BaseLeftFoot]
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Ariral/parts.rsi
+    state: "l_foot"
+
+- type: entity
+  id: RightFootAriral
+  name: "right ariral foot"
+  parent: [PartAriral, BaseRightFoot]
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Ariral/parts.rsi
+    state: "r_foot"

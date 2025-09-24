@@ -6,3 +6,12 @@
     path: /Audio/_Wega/Voice/Resomi/Speech/resomi_2_ask.ogg
   exclaimSound:
     path: /Audio/_Wega/Voice/Resomi/Speech/resomi_2_exclaim.ogg
+
+- type: speechSounds
+  id: Ariral
+  saySound:
+    path: /Audio/_Wega/Voice/Ariral/Speech/ariral_say.ogg
+  askSound:
+    path: /Audio/_Wega/Voice/Ariral/Speech/ariral_ask.ogg
+  exclaimSound:
+    path: /Audio/_Wega/Voice/Ariral/Speech/ariral_exclaim.ogg

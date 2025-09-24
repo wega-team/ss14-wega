@@ -28,6 +28,7 @@
     - Demon # Corvax-Wega-Ы
     - Phantom # Corvax-Wega-Phantom
     - Harpy # Corvax-Wega-Harpy
+    - Ariral # Corvax-Wega-Ariral
 - type: loadoutEffectGroup
   id: EffectSpeciesVox
   effects:
