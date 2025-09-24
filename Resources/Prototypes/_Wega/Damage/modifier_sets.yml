@@ -60,5 +60,6 @@
     Blunt: 0.8
     Slash: 0.8
     Piercing: 0.9
-    Cold: 1.2
+    Cold: 1.25
+    Heat: 1.25
     Poison: 0.8

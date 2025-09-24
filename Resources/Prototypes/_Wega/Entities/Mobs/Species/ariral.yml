@@ -103,6 +103,12 @@
     heatDamage:
       types:
         Heat: 0.35
+  - type: TemperatureSpeed
+    thresholds:
+      280: 0.9
+      270: 0.7
+      260: 0.5
+      240: 0.3
   - type: Speech
     speechSounds: Ariral
   - type: Vocal
@@ -139,6 +145,11 @@
           32:
             sprite: _Wega/Mobs/Species/Ariral/displacement.rsi
             state: shoes
+  - type: InteractionPopup
+    successChance: 1
+    interactSuccessString: petting-success-generic
+    interactSuccessSound: /Audio/Effects/thudswoosh.ogg
+    messagePerceivedByOthers: petting-success-generic-others
 
 - type: entity
   parent: MobHumanDummy
