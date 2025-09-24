@@ -10,5 +10,3 @@ uplink-garrotte-name = Гаррота
 uplink-garrotte-desc = Оружие профессиональных киллеров.
 uplink-rcd-upgrade-kit-name = набор улучшения РСУ
 uplink-rcd-upgrade-kit-desc = Небольшой набор для незаконной модернизации РСУ, снимающий лимит мощности и позволящий разбирать укреплённые стены.
-uplink-energy-sword-double-name = двухклинковый энергетический меч
-uplink-energy-sword-double-desc = Новый двойной энергетический меч! В два раза больше эпика и в четыре раза больше криков экипажа!
