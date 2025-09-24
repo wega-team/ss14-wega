@@ -83,16 +83,18 @@
     damageContainer: Biological
     damageModifierSet: Ariral
   - type: Bloodstream
+    bloodMaxVolume: 200
     bloodReagent: AriralBlood
     bloodlossDamage:
       types:
-        Bloodloss: 1 # They take more damage because they have low blood.
+        Bloodloss: 1.5
     bloodlossHealDamage:
       types:
-        Bloodloss: -2 # They also regenerate more because it doesn't take that much to recover. Yes, the system is terrible, but it's what we have.
+        Bloodloss: -2
+    bleedReductionAmount: 0.2
   - type: Temperature
-    heatDamageThreshold: 358 # ~ 85 °C
-    coldDamageThreshold: 270 # ~ -3 °C
+    heatDamageThreshold: 326 # ~ 52 °C 
+    coldDamageThreshold: 280 # ~ 7 °C
     currentTemperature: 310.15
     specificHeat: 46
     coldDamage:
@@ -100,7 +102,7 @@
         Cold: 0.25
     heatDamage:
       types:
-        Heat: 0.1
+        Heat: 0.35
   - type: Speech
     speechSounds: Ariral
   - type: Vocal

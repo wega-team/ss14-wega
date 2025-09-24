@@ -57,8 +57,8 @@
 - type: damageModifierSet
   id: Ariral
   coefficients:
-    Blunt: 0.7
-    Slash: 0.7
+    Blunt: 0.8
+    Slash: 0.8
     Piercing: 0.9
-    Cold: 1.1
+    Cold: 1.2
     Poison: 0.8
