@@ -111,6 +111,7 @@
   - type: DnaModifier
   #   upper: MobAriral
   #   lowest: MobAriral
+  - type: Wagging
   - type: NaturalNightVision
     tintColor: "#B0E0FF"
   - type: Inventory
