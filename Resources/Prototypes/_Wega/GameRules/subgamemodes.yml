@@ -1,0 +1,28 @@
+- type: entity
+  parent: Vampire
+  id: SubVampire
+  components:
+  - type: GameRule
+    minPlayers: 15
+  - type: AntagSelection
+    agentName: vampire-round-end-name
+    definitions:
+      - prefRoles: [ Vampire ]
+        max: 4
+        playerRatio: 15
+        blacklist:
+          components:
+          - AntagImmune
+          - BibleUser
+          - Android
+          - Ipc
+        lateJoinAdditional: true
+        components:
+        - type: NpcFactionMember
+          factions:
+          - Vampire
+        mindRoles:
+        - MindRoleVampire
+        briefing:
+          sound: "/Audio/_Wega/Ambience/Antag/vampare_start.ogg"
+  

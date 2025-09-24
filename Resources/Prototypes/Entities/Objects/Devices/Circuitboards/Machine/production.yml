@@ -42,6 +42,9 @@
       GlassBeaker:
         amount: 2
         defaultPrototype: Beaker
+  - type: Tag
+    tags:
+    - Protolathe # Corvax-Wega
 
 - type: entity
   parent: BaseMachineCircuitboard
@@ -62,6 +65,9 @@
       Igniter:
         amount: 1
         defaultPrototype: Igniter
+  - type: Tag
+    tags:
+    - Protolathe # Corvax-Wega
 
 - type: entity
   id: BiofabricatorMachineCircuitboard
@@ -1249,6 +1255,9 @@
     stackRequirements:
       Steel: 1
       Cable: 2
+  - type: Tag
+    tags:
+    - Telecom # Corvax-Wega
 
 - type: entity
   parent: BaseMachineCircuitboard

@@ -379,6 +379,9 @@ namespace Content.Server.Forensics
 
             foreach (var (contactId, messages) in chatComp.Messages)
             {
+                if (contactId.StartsWith("G"))
+                    continue;
+
                 if (chatComp.Contacts.TryGetValue(contactId, out var contact))
                 {
                     text.AppendLine(Loc.GetString("forensic-scanner-chat-with-contact",
@@ -410,11 +413,76 @@ namespace Content.Server.Forensics
 
             foreach (var contact in chatComp.Contacts.Values)
             {
+                if (contact.ContactId.StartsWith("G"))
+                    continue;
+
                 if (!chatComp.Messages.ContainsKey(contact.ContactId))
                 {
                     text.AppendLine(Loc.GetString("forensic-scanner-chat-contact-no-messages",
                         ("name", contact.ContactName),
                         ("id", contact.ContactId)));
+                    text.AppendLine();
+                }
+            }
+
+            if (chatComp.Groups.Count > 0)
+            {
+                text.AppendLine(Loc.GetString("forensic-scanner-chat-groups-header"));
+                text.AppendLine(new string('=', 36));
+
+                foreach (var (groupId, group) in chatComp.Groups)
+                {
+                    text.AppendLine(Loc.GetString("forensic-scanner-chat-group-info",
+                        ("name", group.GroupName),
+                        ("id", groupId),
+                        ("members", group.MemberCount)));
+
+                    if (chatComp.Messages.TryGetValue(groupId, out var groupMessages))
+                    {
+                        text.AppendLine(Loc.GetString("forensic-scanner-chat-group-messages"));
+                        text.AppendLine(new string('-', 30));
+
+                        foreach (var message in groupMessages)
+                        {
+                            var time = $"{(int)message.Timestamp.TotalHours:00}:{message.Timestamp.Minutes:00}";
+                            var sender = message.IsOwnMessage ?
+                                Loc.GetString("forensic-scanner-chat-you") :
+                                message.SenderName;
+
+                            var status = message.Delivered ? "✓" : "✗";
+
+                            text.AppendLine($"[{time}] {sender} ({status}): {message.Message}");
+                        }
+                    }
+                    else
+                    {
+                        text.AppendLine(Loc.GetString("forensic-scanner-chat-group-no-messages"));
+                    }
+
+                    text.AppendLine();
+                }
+            }
+
+            foreach (var (groupId, messages) in chatComp.Messages)
+            {
+                if (groupId.StartsWith("G") && !chatComp.Groups.ContainsKey(groupId))
+                {
+                    text.AppendLine(Loc.GetString("forensic-scanner-chat-archived-group",
+                        ("id", groupId)));
+                    text.AppendLine(new string('-', 30));
+
+                    foreach (var message in messages)
+                    {
+                        var time = $"{(int)message.Timestamp.TotalHours:00}:{message.Timestamp.Minutes:00}";
+                        var sender = message.IsOwnMessage ?
+                            Loc.GetString("forensic-scanner-chat-you") :
+                            message.SenderName;
+
+                        var status = message.Delivered ? "✓" : "✗";
+
+                        text.AppendLine($"[{time}] {sender} ({status}): {message.Message}");
+                    }
+
                     text.AppendLine();
                 }
             }

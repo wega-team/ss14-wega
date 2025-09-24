@@ -2,6 +2,7 @@
   abstract: true
   id: ClothingMasksDamageableBase
   components:
+  - type: TearableClothing
   - type: Damageable
     damageContainer: Clothing
   - type: Destructible
@@ -12,7 +13,7 @@
       behaviors:
       - !type:PlaySoundBehavior
         sound:
-          path: /Audio/Effects/poster_broken.ogg
+          collection: TearClothing
       - !type:EmptyContainersBehaviour
         containers:
         - storagebase

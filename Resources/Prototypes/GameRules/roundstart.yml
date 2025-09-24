@@ -200,7 +200,7 @@
   # Corvax-Wega-Vampires-start
   - type: SubGamemodes
     rules:
-    - id: Vampire
+    - id: SubVampire
       prob: 0.4
   # Corvax-Wega-Vampires-end
   - type: GameRule

@@ -516,7 +516,7 @@
   - type: OverrideSell
     overrideAccount: Engineering
   - type: AccessReader
-    access: [["Engineering"]]
+    access: [["Engineering"], ["Cargo"]] # Corvax-Wega
 
 - type: entity
   id: CrateLockBoxMedical
@@ -546,7 +546,7 @@
   - type: OverrideSell
     overrideAccount: Medical
   - type: AccessReader
-    access: [["Medical"]]
+    access: [["Medical"], ["Cargo"]] # Corvax-Wega
 
 - type: entity
   id: CrateLockBoxScience
@@ -576,7 +576,7 @@
   - type: OverrideSell
     overrideAccount: Science
   - type: AccessReader
-    access: [["Research"]]
+    access: [["Research"], ["Cargo"]] # Corvax-Wega
 
 - type: entity
   id: CrateLockBoxSecurity
@@ -606,7 +606,7 @@
   - type: OverrideSell
     overrideAccount: Security
   - type: AccessReader
-    access: [["Security"]]
+    access: [["Security"], ["Cargo"]] # Corvax-Wega
 
 - type: entity
   id: CrateLockBoxService
@@ -636,7 +636,7 @@
   - type: OverrideSell
     overrideAccount: Service
   - type: AccessReader
-    access: [["Service"]]
+    access: [["Service"], ["Cargo"]] # Corvax-Wega
 
 - type: entity
   parent: CrateGeneric

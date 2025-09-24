@@ -32,7 +32,12 @@
   id: Robotics
   recipes:
   - ProximitySensor
-  - AndroidBodyPart # Corvax-Wega-Android
+  # Corvax-Wega-Android-Start
+  - AndroidBodyPart 
+  - ArmSyntheticPry
+  - ArmSyntheticDefib
+  - ArmSyntheticProtoKinetic
+  # Corvax-Wega-Android-End
 
 - type: latheRecipePack
   id: BorgModules

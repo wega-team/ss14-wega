@@ -27,6 +27,7 @@ public sealed class NanoChatCartridgeSystem : SharedNanoChatCartridgeSystem
     [Dependency] private readonly IRobustRandom _random = default!;
 
     private readonly Dictionary<string, EntityUid> _activeChats = new();
+    private readonly Dictionary<string, ChatGroupData> _groups = new();
     private const int MessageRange = 2000;
 
     public override void Initialize()
@@ -46,7 +47,7 @@ public sealed class NanoChatCartridgeSystem : SharedNanoChatCartridgeSystem
         SubscribeLocalEvent<NanoChatCartridgeComponent, EmpDisabledRemoved>(OnEmpFinished);
     }
 
-    private void OnRoundRestart(RoundRestartCleanupEvent args) { _activeChats.Clear(); }
+    private void OnRoundRestart(RoundRestartCleanupEvent args) { _activeChats.Clear(); _groups.Clear(); }
 
     private void OnOwnerNameChanged(Entity<PdaComponent> ent, ref OwnerNameChangedEvent args)
     {
@@ -83,6 +84,17 @@ public sealed class NanoChatCartridgeSystem : SharedNanoChatCartridgeSystem
         return id;
     }
 
+    private string GenerateUniqueGroupId()
+    {
+        string id;
+        do
+        {
+            id = "G" + _random.Next(10000).ToString("D4");
+        } while (_groups.ContainsKey(id));
+
+        return id;
+    }
+
     private void OnUiReady(Entity<NanoChatCartridgeComponent> ent, ref CartridgeUiReadyEvent args)
     {
         UpdateUiState(ent);
@@ -91,6 +103,8 @@ public sealed class NanoChatCartridgeSystem : SharedNanoChatCartridgeSystem
     private void OnCartridgeRemoved(Entity<NanoChatCartridgeComponent> ent, ref CartridgeRemovedEvent args)
     {
         _activeChats.Remove(ent.Comp.ChatId);
+        foreach (var group in _groups.Values.Where(g => g.Members.Contains(ent.Comp.ChatId)).ToList())
+            group.Members.Remove(ent.Comp.ChatId);
     }
 
     private void OnEmpPulse(Entity<NanoChatCartridgeComponent> ent, ref EmpPulseEvent args)
@@ -130,6 +144,15 @@ public sealed class NanoChatCartridgeSystem : SharedNanoChatCartridgeSystem
             case NanoChatSetActiveChat setActiveChat:
                 SetActiveChat(ent, setActiveChat.ContactId);
                 break;
+            case NanoChatCreateGroup createGroup:
+                CreateGroup(ent, createGroup.GroupName);
+                break;
+            case NanoChatJoinGroup joinGroup:
+                JoinGroup(ent, joinGroup.GroupId);
+                break;
+            case NanoChatLeaveGroup leaveGroup:
+                LeaveGroup(ent, leaveGroup.GroupId);
+                break;
         }
 
         UpdateUiState(ent);
@@ -146,9 +169,7 @@ public sealed class NanoChatCartridgeSystem : SharedNanoChatCartridgeSystem
     private void EraseContact(Entity<NanoChatCartridgeComponent> ent, string contactId)
     {
         if (ent.Comp.Contacts.ContainsKey(contactId))
-        {
             ent.Comp.Contacts.Remove(contactId);
-        }
 
         ent.Comp.ActiveChat = null;
         UpdateUiState(ent);
@@ -160,15 +181,84 @@ public sealed class NanoChatCartridgeSystem : SharedNanoChatCartridgeSystem
         UpdateUiState(ent);
     }
 
-    private void SetActiveChat(Entity<NanoChatCartridgeComponent> ent, string contactId)
+    private void SetActiveChat(Entity<NanoChatCartridgeComponent> ent, string chatId)
     {
-        ent.Comp.ActiveChat = contactId;
-        if (ent.Comp.Contacts.TryGetValue(contactId, out var contact))
+        ent.Comp.ActiveChat = chatId;
+        if (ent.Comp.Contacts.TryGetValue(chatId, out var contact))
         {
-            ent.Comp.Contacts[contactId] = new ChatContact(contactId, contact.ContactName, false);
+            ent.Comp.Contacts[chatId] = new ChatContact(chatId, contact.ContactName, false);
+        }
+
+        if (ent.Comp.Groups.TryGetValue(chatId, out var group))
+        {
+            ent.Comp.Groups[chatId] = new ChatGroup(chatId, group.GroupName, false, group.MemberCount);
         }
 
         UpdateUiState(ent);
+    }
+
+    private void CreateGroup(Entity<NanoChatCartridgeComponent> ent, string groupName)
+    {
+        var groupId = GenerateUniqueGroupId();
+        var groupData = new ChatGroupData
+        {
+            GroupId = groupId,
+            GroupName = groupName
+        };
+
+        _groups[groupId] = groupData;
+
+        var systemMessage = new ChatMessage(
+            "system", "System",
+            Loc.GetString("nano-chat-create-group-message", ("name", ent.Comp.OwnerName), ("groupName", groupName)),
+            _timing.CurTime,
+            false,
+            true
+        );
+
+        groupData.Messages.Add(systemMessage);
+
+        JoinGroup(ent, groupId);
+
+        _admin.Add(LogType.Action, LogImpact.Low,
+            $"Group created: '{groupName}' (ID: {groupId}) by {ent.Comp.ChatId}");
+    }
+
+    private void JoinGroup(Entity<NanoChatCartridgeComponent> ent, string groupId)
+    {
+        if (_groups.TryGetValue(groupId, out var group))
+        {
+            group.Members.Add(ent.Comp.ChatId);
+
+            ent.Comp.Groups[groupId] = new ChatGroup(
+                groupId,
+                group.GroupName,
+                false,
+                group.Members.Count
+            );
+
+            NotifyGroupMembers(groupId, Loc.GetString("nano-chat-join-message", ("name", ent.Comp.OwnerName)));
+
+            UpdateAllGroupMembersUi(groupId);
+        }
+    }
+
+    private void LeaveGroup(Entity<NanoChatCartridgeComponent> ent, string groupId)
+    {
+        if (_groups.TryGetValue(groupId, out var group))
+        {
+            group.Members.Remove(ent.Comp.ChatId);
+            ent.Comp.Groups.Remove(groupId);
+
+            NotifyGroupMembers(groupId, Loc.GetString("nano-chat-leave-message", ("name", ent.Comp.OwnerName)));
+
+            if (ent.Comp.ActiveChat == groupId)
+            {
+                ent.Comp.ActiveChat = null;
+            }
+
+            UpdateAllGroupMembersUi(groupId);
+        }
     }
 
     private void SendMessage(Entity<NanoChatCartridgeComponent> sender, string recipientId, string message)
@@ -205,6 +295,12 @@ public sealed class NanoChatCartridgeSystem : SharedNanoChatCartridgeSystem
         {
             AddUndeliveredMessage(sender, recipientId, message);
             UpdateUiState(sender);
+            return;
+        }
+
+        if (recipientId.StartsWith("G") && _groups.TryGetValue(recipientId, out var group))
+        {
+            SendGroupMessage(sender, group, message, originalMessage);
             return;
         }
 
@@ -271,19 +367,105 @@ public sealed class NanoChatCartridgeSystem : SharedNanoChatCartridgeSystem
         UpdateUiState(sender);
     }
 
+    private void SendGroupMessage(Entity<NanoChatCartridgeComponent> sender, ChatGroupData group, string message, string originalMessage)
+    {
+        var timestamp = _timing.CurTime;
+        var groupMessage = new ChatMessage(sender.Comp.ChatId, sender.Comp.OwnerName,
+            message, timestamp, true, true);
+
+        group.Messages.Add(groupMessage);
+
+        if (!sender.Comp.Messages.ContainsKey(group.GroupId))
+            sender.Comp.Messages[group.GroupId] = new List<ChatMessage>();
+        sender.Comp.Messages[group.GroupId].Add(groupMessage);
+
+        foreach (var memberId in group.Members)
+        {
+            if (memberId == sender.Comp.ChatId)
+                continue;
+
+            if (!_activeChats.TryGetValue(memberId, out var memberEntity))
+                continue;
+
+            if (!TryComp<NanoChatCartridgeComponent>(memberEntity, out var memberComp))
+                continue;
+
+            if (!IsWithinRange(sender.Owner, memberEntity))
+                continue;
+
+            if (!memberComp.Messages.ContainsKey(group.GroupId))
+                memberComp.Messages[group.GroupId] = new List<ChatMessage>();
+
+            var memberMessage = new ChatMessage(sender.Comp.ChatId, sender.Comp.OwnerName,
+                message, timestamp, false, true);
+            memberComp.Messages[group.GroupId].Add(memberMessage);
+
+            if (memberComp.Groups.TryGetValue(group.GroupId, out var memberGroup))
+            {
+                memberComp.Groups[group.GroupId] = new ChatGroup(
+                    memberGroup.GroupId,
+                    memberGroup.GroupName,
+                    true,
+                    group.Members.Count
+                );
+            }
+
+            if (TryComp<CartridgeComponent>(memberEntity, out var cartridge)
+                && cartridge.LoaderUid.HasValue && !memberComp.MutedSound)
+                _audio.PlayPvs(memberComp.Sound, memberEntity);
+
+            UpdateUiState((memberEntity, memberComp));
+        }
+
+        _admin.Add(LogType.Action, LogImpact.Low,
+            $"Group message: '{originalMessage}' by {sender.Comp.ChatId} in group {group.GroupId}.");
+
+        UpdateUiState(sender);
+    }
+
     private void UpdateUiState(Entity<NanoChatCartridgeComponent> ent)
     {
         List<ChatMessage>? activeMessages = null;
-        if (ent.Comp.ActiveChat != null && ent.Comp.Messages.TryGetValue(ent.Comp.ActiveChat, out var messages))
+        if (ent.Comp.ActiveChat != null)
         {
-            activeMessages = messages;
+            if (ent.Comp.ActiveChat.StartsWith("G") && _groups.TryGetValue(ent.Comp.ActiveChat, out var group))
+            {
+                activeMessages = group.Messages;
+            }
+            else if (ent.Comp.Messages.TryGetValue(ent.Comp.ActiveChat, out var messages))
+            {
+                activeMessages = messages;
+            }
         }
 
         if (!TryComp<CartridgeComponent>(ent, out var cartridge) || !cartridge.LoaderUid.HasValue)
             return;
 
-        var state = new NanoChatUiState(ent.Comp.ChatId, ent.Comp.ActiveChat, ent.Comp.MutedSound, ent.Comp.Contacts, activeMessages);
+        var state = new NanoChatUiState(ent.Comp.ChatId, ent.Comp.ActiveChat, ent.Comp.MutedSound, ent.Comp.Contacts, ent.Comp.Groups, activeMessages);
         _cartridgeLoader.UpdateCartridgeUiState(cartridge.LoaderUid.Value, state);
+    }
+
+    private void UpdateAllGroupMembersUi(string groupId)
+    {
+        if (_groups.TryGetValue(groupId, out var group))
+        {
+            foreach (var memberId in group.Members)
+            {
+                if (_activeChats.TryGetValue(memberId, out var memberEntity) &&
+                    TryComp<NanoChatCartridgeComponent>(memberEntity, out var memberComp))
+                {
+
+                    memberComp.Groups[groupId] = new ChatGroup(
+                        groupId,
+                        group.GroupName,
+                        memberComp.Groups.TryGetValue(groupId, out var currentGroup) ? currentGroup.HasUnread : false,
+                        group.Members.Count
+                    );
+
+                    UpdateUiState((memberEntity, memberComp));
+                }
+            }
+        }
     }
 
     private bool IsWithinRange(EntityUid sender, EntityUid recipient)
@@ -298,6 +480,27 @@ public sealed class NanoChatCartridgeSystem : SharedNanoChatCartridgeSystem
             return false;
 
         return senderCoords.InRange(recipientCoords, MessageRange);
+    }
+
+    private void NotifyGroupMembers(string groupId, string message)
+    {
+        if (_groups.TryGetValue(groupId, out var group))
+        {
+            var timestamp = _timing.CurTime;
+            var groupMessage = new ChatMessage("system", "System", message, timestamp, false, true);
+            group.Messages.Add(groupMessage);
+
+            foreach (var memberId in group.Members)
+            {
+                if (_activeChats.TryGetValue(memberId, out var memberEntity) &&
+                    TryComp<NanoChatCartridgeComponent>(memberEntity, out var memberComp) &&
+                    TryComp<CartridgeComponent>(memberEntity, out var cartridge) &&
+                    cartridge.LoaderUid.HasValue && !memberComp.MutedSound)
+                {
+                    _audio.PlayPvs(memberComp.Sound, memberEntity);
+                }
+            }
+        }
     }
 
     private void AddUndeliveredMessage(Entity<NanoChatCartridgeComponent> sender, string recipientId, string message)
@@ -375,6 +578,19 @@ public sealed class NanoChatCartridgeSystem : SharedNanoChatCartridgeSystem
                 contact.HasUnread
             );
         }
+
+        foreach (var groupKey in comp.Groups.Keys.ToList())
+        {
+            var group = comp.Groups[groupKey];
+            var distortedName = DistortMessage(group.GroupName);
+
+            comp.Groups[groupKey] = new ChatGroup(
+                group.GroupId,
+                distortedName,
+                group.HasUnread,
+                group.MemberCount
+            );
+        }
     }
 
     private string DistortMessage(string originalMessage)
@@ -399,5 +615,13 @@ public sealed class NanoChatCartridgeSystem : SharedNanoChatCartridgeSystem
         }
 
         return new string(result);
+    }
+
+    private sealed class ChatGroupData
+    {
+        public string GroupId = string.Empty;
+        public string GroupName = string.Empty;
+        public HashSet<string> Members = new();
+        public List<ChatMessage> Messages = new();
     }
 }

@@ -1,0 +1,23 @@
+- type: entity
+  parent: RehydratableAnimalCube
+  id: SlimeRNDCube
+  name: slime cube
+  components:
+  - type: Rehydratable
+    possibleSpawns:
+    - MobXenoSlimeGray
+  - type: Tag
+    tags:
+    - Meat
+    
+- type: entity
+  parent: BaseWrappedCube
+  name: slime cube
+  id: SlimeRNDCubeWrapped
+  description: Unwrap this to get a slime cube.
+  components:
+  - type: SpawnItemsOnUse
+    items:
+    - id: SlimeRNDCube
+  - type: Sprite
+    state: wrapper

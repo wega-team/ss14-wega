@@ -1,0 +1,122 @@
+- type: entity
+  id: CrateBoxPillCanisterMech
+  parent: CrateMedicalSecure
+  name: crate mech reagents
+  description: Box with pill of mech damage. Requires Medical access to open.
+  components:
+  - type: StorageFill
+    contents:
+      - id: BoxPillCanisterMech
+      
+- type: entity
+  id: CrateBoxPillCanisterBurn
+  parent: CrateMedicalSecure
+  name: crate burn reagents
+  description: Box with pill of burn damage. Requires Medical access to open.
+  components:
+  - type: StorageFill
+    contents:
+      - id: BoxPillCanisterBurn   
+      
+- type: entity
+  id: CrateBoxPillCanisterToxin
+  parent: CrateMedicalSecure
+  name: crate toxin reagents
+  description: Box with pill of toxin damage. Requires Medical access to open.
+  components:
+  - type: StorageFill
+    contents:
+      - id: BoxPillCanisterToxin
+
+- type: entity
+  id: CrateBoxPillCanisterOxyg
+  parent: CrateMedicalSecure
+  name: crate oxyg reagents
+  description: Box with pill of oxyg damage. Requires Medical access to open.
+  components:
+  - type: StorageFill
+    contents:
+      - id: BoxPillCanisterOxyg
+
+- type: entity
+  id: CrateBoxPillCanisterAll
+  parent: CrateMedicalSecure
+  name: crate all reagents
+  description: Box with pill of all damage. Requires Medical access to open.
+  components:
+  - type: StorageFill
+    contents:
+      - id: BoxPillCanisterAll
+
+- type: entity
+  id: CrateBoxPillCanisterPro
+  parent: CrateMedicalSecure
+  name: crate pro reagents
+  description: Box with pill of pro damage. Requires Medical access to open.
+  components:
+  - type: StorageFill
+    contents:
+      - id: BoxPillCanisterPro
+      
+- type: entity
+  id: CrateCloningConsoleFlatpack
+  parent: CrateScienceSecure
+  name: clone console flatpack
+  description: Contains a flatpack of a clone console. Requires Science access to open.
+  components:
+  - type: StorageFill
+    contents:
+    - id: CloningConsoleFlatpack
+
+- type: entity
+  id: CrateCloningPodFlatpack
+  parent: CrateScienceSecure
+  name: clone pod flatpack
+  description: Contains a flatpack of a clone pod. Requires Science access to open.
+  components:
+  - type: StorageFill
+    contents:
+    - id: CloningPodFlatpack
+
+- type: entity
+  id: CrateCloneSet
+  parent: CrateScienceSecure
+  name: clone set flatpack
+  description: Contains a flatpack of a clone set. Requires Science access to open.
+  components:
+  - type: StorageFill
+    contents:
+    - id: MedicalScannerFlatpack
+    - id: CloningConsoleFlatpack
+    - id: CloningPodFlatpack
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

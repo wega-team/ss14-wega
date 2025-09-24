@@ -311,5 +311,13 @@
     - HighRiskItem
   - type: StealTarget
     stealGroup: BoxFolderQmClipboard
-  - type: EdibleMatter # Corvax-Wega-Add
-    canBeEaten: false # Corvax-Wega-Add
+# Corvax-Wega-Add-start
+  - type: EdibleMatter 
+    canBeEaten: false 
+  - type: WirelessNetworkConnection
+    range: 20000
+  - type: DeviceLinkSource
+    range: 20000
+    ports:
+      - OrderSender
+# Corvax-Wega-Add-end

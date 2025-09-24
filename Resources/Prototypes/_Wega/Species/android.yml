@@ -6,7 +6,7 @@
   sprites: MobAndroidSprites
   defaultSkinTone: "#717381"
   markingLimits: MobAndroidMarkingLimits
-  dollPrototype: MobAndroid 
+  dollPrototype: MobAndroidDummy
   skinColoration: Hues
   maleFirstNames: NamesAI
   femaleFirstNames: NamesAI

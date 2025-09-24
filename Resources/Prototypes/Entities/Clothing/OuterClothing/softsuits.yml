@@ -61,6 +61,7 @@
       toggleable-clothing: !type:ContainerSlot {}
   - type: Tag
     tags:
+    - OuterSuitAvar # Corvax-Wega
     - CorgiWearable
     - ScurretWearable
     - MonkeyWearable

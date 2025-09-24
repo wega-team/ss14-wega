@@ -58,6 +58,9 @@
   - type: PhysicalComposition
     materialComposition:
       Gold: 100
+  - type: Tag
+    tags:
+    - Kubok # Corvax-Wega
 
 - type: entity
   parent: DrinkBaseCup

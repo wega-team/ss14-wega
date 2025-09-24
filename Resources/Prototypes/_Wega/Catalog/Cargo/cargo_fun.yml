@@ -5,7 +5,7 @@
     state: vehicle
   product: CrateFunATV
   cost: 1500
-  category: Fun
+  category: cargoproduct-category-name-fun
   group: market
 
 - type: cargoProduct
@@ -15,5 +15,15 @@
     state: drumkit
   product: DrumKitInstrument
   cost: 1500
-  category: Fun
+  category: cargoproduct-category-name-fun
+  group: market
+
+- type: cargoProduct
+  id: SpaceVillainArcadeFilled
+  icon:
+    sprite: Structures/Machines/arcade.rsi
+    state: arcade
+  product: SpaceVillainArcadeFilled
+  cost: 1500
+  category: cargoproduct-category-name-fun
   group: market

@@ -1154,7 +1154,7 @@
     key: enum.FundingAllocationConsoleUiKey.Key
   - type: ActivatableUIRequiresAccess
   - type: AccessReader
-    access: [["HeadOfPersonnel"]]
+    access: [["HeadOfPersonnel"],["Quartermaster"]] # Corvax-Wega
   - type: UserInterface
     interfaces:
       enum.FundingAllocationConsoleUiKey.Key:

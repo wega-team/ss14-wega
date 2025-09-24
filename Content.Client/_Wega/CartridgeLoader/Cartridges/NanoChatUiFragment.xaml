@@ -22,6 +22,10 @@
                 <TextureButton Name="MuteChatButton" MaxSize="24 24" Margin="0 0 4 0"/>
                 <TextureButton Name="AddContactButton" MaxSize="24 24" ToolTip="{Loc 'nano-chat-ui-add-contact-tooltip'}"
                     TexturePath="/Textures/Interface/VerbIcons/plus.svg.192dpi.png" VerticalAlignment="Center"/>
+                <TextureButton Name="JoinGroupButton" MaxSize="24 24" ToolTip="{Loc 'nano-chat-ui-join-group-tooltip'}"
+                    TexturePath="/Textures/Interface/VerbIcons/in.svg.192dpi.png" VerticalAlignment="Center" Margin="4 0 0 0"/>
+                <TextureButton Name="CreateGroupButton" MaxSize="24 24" ToolTip="{Loc 'nano-chat-ui-create-group-tooltip'}"
+                    TexturePath="/Textures/Interface/VerbIcons/group.svg.192dpi.png" VerticalAlignment="Center" Margin="4 0 0 0"/>
             </BoxContainer>
         </controls:StripeBack>
     </BoxContainer>
@@ -29,15 +33,23 @@
     <!-- Main content -->
     <BoxContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True">
         
-        <!-- Contacts list -->
+        <!-- Contacts/Groups panel -->
         <PanelContainer StyleClasses="AngleRect" MinWidth="150" MaxWidth="200" VerticalExpand="True">
             <BoxContainer Orientation="Vertical" VerticalExpand="True" HorizontalExpand="True">
+                <!-- Tabs -->
+                <TabContainer Name="ChatTypeTabs" VerticalExpand="True">
+                    <ScrollContainer VerticalExpand="True" HorizontalExpand="True">
+                        <BoxContainer Name="ContactsContainer" Orientation="Vertical" HorizontalExpand="True"/>
+                    </ScrollContainer>
+                    <ScrollContainer VerticalExpand="True" HorizontalExpand="True">
+                        <BoxContainer Name="GroupsContainer" Orientation="Vertical" HorizontalExpand="True"/>
+                    </ScrollContainer>
+                </TabContainer>
+                
                 <Label Name="NoContactsLabel" Text="{Loc 'nano-chat-ui-no-contacts'}" StyleClasses="LabelSubText"
                     HorizontalAlignment="Center" VerticalAlignment="Center" Visible="False"/>
-                
-                <ScrollContainer VerticalExpand="True" HorizontalExpand="True">
-                    <BoxContainer Name="ContactsContainer" Orientation="Vertical" HorizontalExpand="True"/>
-                </ScrollContainer>
+                <Label Name="NoGroupsLabel" Text="{Loc 'nano-chat-ui-no-groups'}" StyleClasses="LabelSubText"
+                    HorizontalAlignment="Center" VerticalAlignment="Center" Visible="False"/>
             </BoxContainer>
         </PanelContainer>
 
@@ -54,6 +66,8 @@
                 </PanelContainer.PanelOverride>
                 <BoxContainer Orientation="Horizontal" HorizontalExpand="True" Margin="0 0 0 4">
                     <Label Name="ChatTitle" StyleClasses="LabelHeading" Margin="4 0 0 0" VerticalAlignment="Center" HorizontalExpand="True"/>
+                    <TextureButton Name="LeaveChatButton" MaxSize="24 24" Margin="0 0 4 0" Visible="False" ToolTip="{Loc 'nano-chat-ui-leave-chat-tooltip'}"
+                        TexturePath="/Textures/Interface/VerbIcons/close.svg.192dpi.png"/>
                     <TextureButton Name="EraseChatButton" MaxSize="24 24" Margin="0 0 4 0" Visible="False" ToolTip="{Loc 'nano-chat-ui-erase-chat-tooltip'}"
                         TexturePath="/Textures/Interface/eraser.svg.png"/>
                     <TextureButton Name="CloseChatButton" MaxSize="24 24" Visible="False" ToolTip="{Loc 'nano-chat-ui-close-chat-tooltip'}"

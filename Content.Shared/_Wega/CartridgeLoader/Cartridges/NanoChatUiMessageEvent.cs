@@ -58,6 +58,39 @@ public sealed class NanoChatSetActiveChat : INanoChatUiMessagePayload
 }
 
 [Serializable, NetSerializable]
+public sealed class NanoChatCreateGroup : INanoChatUiMessagePayload
+{
+    public string GroupName { get; }
+
+    public NanoChatCreateGroup(string groupName)
+    {
+        GroupName = groupName;
+    }
+}
+
+[Serializable, NetSerializable]
+public sealed class NanoChatJoinGroup : INanoChatUiMessagePayload
+{
+    public string GroupId { get; }
+
+    public NanoChatJoinGroup(string groupId)
+    {
+        GroupId = groupId;
+    }
+}
+
+[Serializable, NetSerializable]
+public sealed class NanoChatLeaveGroup : INanoChatUiMessagePayload
+{
+    public string GroupId { get; }
+
+    public NanoChatLeaveGroup(string groupId)
+    {
+        GroupId = groupId;
+    }
+}
+
+[Serializable, NetSerializable]
 public sealed class NanoChatUiMessageEvent : CartridgeMessageEvent
 {
     public readonly INanoChatUiMessagePayload Payload;

@@ -4,11 +4,11 @@ using Content.Server.PowerCell;
 using Content.Server.Stunnable;
 using Content.Shared._Wega.Android;
 using Content.Shared.Alert;
+using Content.Shared.Damage.Components;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Item.ItemToggle;
 using Content.Shared.Item.ItemToggle.Components;
-using Content.Shared.Light;
 using Content.Shared.Lock;
 using Content.Shared.Mind;
 using Content.Shared.Mobs;
@@ -17,10 +17,11 @@ using Content.Shared.Movement.Systems;
 using Content.Shared.PowerCell;
 using Content.Shared.PowerCell.Components;
 using Content.Shared.Standing;
+using Content.Shared.Toggleable;
 using Content.Shared.Wires;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
-using Robust.Shared.Audio;
+using Robust.Shared.Containers;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
@@ -43,6 +44,7 @@ public sealed partial class AndroidSystem : SharedAndroidSystem
     [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly PointLightSystem _pointLight = default!;
     [Dependency] private readonly StunSystem _stun = default!;
+    [Dependency] private readonly SharedContainerSystem _container = default!;
 
     public override void Initialize()
     {
@@ -55,8 +57,7 @@ public sealed partial class AndroidSystem : SharedAndroidSystem
         SubscribeLocalEvent<AndroidComponent, PowerCellSlotEmptyEvent>(OnPowerCellSlotEmpty);
         SubscribeLocalEvent<AndroidComponent, ItemToggledEvent>(OnToggled);
 
-        SubscribeLocalEvent<AndroidComponent, LightToggleEvent>(OnLightToggle);
-
+        SubscribeLocalEvent<AndroidComponent, ToggleActionEvent>(OnToggleLightAction);
         SubscribeLocalEvent<AndroidComponent, ToggleLockActionEvent>(OnToggleLockAction);
     }
 
@@ -78,17 +79,42 @@ public sealed partial class AndroidSystem : SharedAndroidSystem
     private void OnStartup(EntityUid uid, AndroidComponent component, ComponentStartup args)
     {
         _actions.AddAction(uid, ref component.ToggleLockActionEntity, component.ToggleLockAction);
+        _actions.AddAction(uid, ref component.ToggleLightActionEntity, component.TogglelLightAction);
+
+        if (TryComp<ContainerManagerComponent>(uid, out var containerManager))
+        {
+            var lightEntity = Spawn(component.LightEntityPrototype, Transform(uid).Coordinates);
+            component.LightEntity = lightEntity;
+
+            var container = _container.EnsureContainer<ContainerSlot>(uid, "light");
+            container.OccludesLight = false;
+            _container.Insert(lightEntity, container, null, true);
+        }
     }
 
-    private void OnLightToggle(EntityUid uid, AndroidComponent component, LightToggleEvent args)
+    private void OnToggleLightAction(EntityUid uid, AndroidComponent component, ToggleActionEvent args)
     {
-        UpdatePointLight(uid, component);
+        if (args.Handled || args.Action != component.ToggleLightActionEntity)
+            return;
+
+        UpdateLight(uid, component, !args.Action.Comp.Toggled);
+
+        args.Toggle = true;
+        args.Handled = true;
     }
 
-    public void UpdatePointLight(EntityUid uid, AndroidComponent component)
+    public void UpdateLight(EntityUid uid, AndroidComponent component, bool? enabled = null)
     {
-        _pointLight.SetRadius(uid, _toggle.IsActivated(uid) ? component.BasePointLightRadiuse : Math.Max(component.BasePointLightRadiuse / 3f, 1.3f));
-        _pointLight.SetEnergy(uid, _toggle.IsActivated(uid) ? component.BasePointLightEnergy : component.BasePointLightEnergy * 1.5f);
+        if (!component.LightEntity.HasValue)
+            return;
+
+        EntityUid lightEntity = component.LightEntity.Value;
+
+        if (enabled != null)
+            _pointLight.SetEnabled(lightEntity, enabled.Value);
+
+        _pointLight.SetRadius(lightEntity, _toggle.IsActivated(lightEntity) ? component.BasePointLightRadiuse : Math.Max(component.BasePointLightRadiuse / 3f, 1.3f));
+        _pointLight.SetEnergy(lightEntity, _toggle.IsActivated(lightEntity) ? component.BasePointLightEnergy : component.BasePointLightEnergy * 0.75f);
 
         if (!TryComp<HumanoidAppearanceComponent>(uid, out var appearance))
             return;
@@ -97,7 +123,9 @@ public sealed partial class AndroidSystem : SharedAndroidSystem
             return;
 
         Color ledColor = markings[0].MarkingColors[0].WithAlpha(255);
-        _pointLight.SetColor(uid, ledColor);
+        _pointLight.SetColor(lightEntity, ledColor);
+
+        _audio.PlayPvs(component.ToggleLightSound, uid);
     }
 
     #region Battery
@@ -135,7 +163,7 @@ public sealed partial class AndroidSystem : SharedAndroidSystem
 
         _movementSpeedModifier.RefreshMovementSpeedModifiers(uid);
 
-        UpdatePointLight(uid, component);
+        UpdateLight(uid, component);
     }
 
     private void UpdateBatteryAlert(Entity<AndroidComponent> ent, PowerCellSlotComponent? slotComponent = null)

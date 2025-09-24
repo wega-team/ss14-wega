@@ -23,3 +23,25 @@
     useDelay: 1
     icon: { sprite: _Wega/Interface/Actions/actions_android.rsi, state: light-off }
     iconOn: { sprite: _Wega/Interface/Actions/actions_android.rsi, state: light-on }
+
+- type: entity
+  parent: BaseToggleAction
+  id: ActionToggleBodyPartImplantKinetic
+  name: Toggle Proto-kinetic Arm
+  description: Transform your arm into proto-kinetic gun.
+  components:
+  - type: Action
+    useDelay: 5
+    icon: { sprite: _Wega/Interface/Actions/actions_android.rsi, state: kinetic-off }
+    iconOn: { sprite: _Wega/Interface/Actions/actions_android.rsi, state: kinetic-on }
+
+- type: entity
+  parent: BaseToggleAction
+  id: ActionToggleBodyPartImplantDefib
+  name: Toggle Defibrillator Arm
+  description: Transform your arm into compact defibrillator.
+  components:
+  - type: Action
+    useDelay: 3
+    icon: { sprite: _Wega/Interface/Actions/actions_android.rsi, state: defib-off }
+    iconOn: { sprite: _Wega/Interface/Actions/actions_android.rsi, state: defib-on }

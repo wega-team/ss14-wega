@@ -1,0 +1,49 @@
+- type: cargoProduct
+  id: CrateMiningServerFlatpack
+  icon:
+    sprite: _Wega/Structures/Machines/miningserver.rsi
+    state: base
+  product: CrateMiningServerFlatpack
+  cost: 1000
+  category: cargoproduct-category-name-science
+  group: market
+
+- type: cargoProduct
+  id: CrateMiningServerMAXFlatpack
+  icon:
+    sprite: _Wega/Structures/Machines/miningserver.rsi
+    state: mode1
+  product: CrateMiningServerMAXFlatpack
+  cost: 3000
+  category: cargoproduct-category-name-science
+  group: market
+  
+- type: cargoProduct
+  id: CrateRNDServerFlatpack
+  icon:
+    sprite: Structures/Machines/server.rsi
+    state: server
+  product: CrateRNDServerFlatpack
+  cost: 50000
+  category: cargoproduct-category-name-science
+  group: market
+  
+- type: cargoProduct
+  id: CrateBoxDnaFisk
+  icon:
+    sprite: Objects/Misc/module.rsi
+    state: datadisk_label
+  product: CrateBoxDnaFisk
+  cost: 400
+  category: cargoproduct-category-name-science
+  group: market
+  
+- type: cargoProduct
+  id: SlimeRNDCubeWrapped
+  icon:
+    sprite: Objects/Misc/monkeycube.rsi
+    state: wrapper
+  product: SlimeRNDCubeWrapped
+  cost: 1000
+  category: cargoproduct-category-name-science
+  group: market
