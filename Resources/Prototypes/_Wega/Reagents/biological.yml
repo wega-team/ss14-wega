@@ -27,6 +27,20 @@
 
 - type: reagent
   parent: Blood
+  id: ResomiBlood
+  name: reagent-name-resomi-blood
+  group: Biological
+  desc: reagent-desc-resomi-blood
+  flavor: horrible
+  color: "#c048c2"
+  recognizable: true
+  physicalDesc: reagent-physical-desc-slimy
+  slipData:
+    requiredSlipSpeed: 4
+    superSlippery: true
+
+- type: reagent
+  parent: Blood
   id: AriralBlood
   name: reagent-name-ariral-blood
   group: Biological

@@ -57,6 +57,11 @@
       visible: false
   - type: HumanoidAppearance
     species: Ariral
+    hideLayersOnEquip:
+    - Hair
+    - Snout
+    - HeadTop
+    - HeadSide
   - type: Carriable
   - type: DiseaseCarrier
   - type: Body
@@ -107,7 +112,7 @@
   #   upper: MobAriral
   #   lowest: MobAriral
   - type: NaturalNightVision
-    tintColor: "#CFFF80"
+    tintColor: "#B0E0FF"
   - type: Inventory
     femaleDisplacements:
       jumpsuit:
@@ -190,6 +195,11 @@
       visible: false
   - type: HumanoidAppearance
     species: Ariral
+    hideLayersOnEquip:
+    - Hair
+    - Snout
+    - HeadTop
+    - HeadSide
   - type: Body
     prototype: Ariral
     requiredLegs: 2
