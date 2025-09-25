@@ -1,7 +1,7 @@
 - type: entity
   parent: BaseStorageItem
   id: ConstructionBag
-  name: Construction bag
+  name: сonstruction bag
   components:
   - type: Sprite
     sprite: _Wega/Objects/Devices/construction_bag.rsi
@@ -13,7 +13,6 @@
     quickEquip: false
     slots:
     - belt
-    - pocket
   - type: Storage
     grid:
     - 0,0,7,4

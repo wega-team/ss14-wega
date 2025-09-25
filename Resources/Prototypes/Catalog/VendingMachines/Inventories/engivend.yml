@@ -10,6 +10,7 @@
     ClothingHandsGlovesColorYellow: 6
     BoxInflatable: 2
     ClothingHeadHatCone: 4
+    ConstructionBag: 2 #Corvax-Wega
   contrabandInventory:
     CowToolboxFilled: 1
     DrinkBeerCan: 3
