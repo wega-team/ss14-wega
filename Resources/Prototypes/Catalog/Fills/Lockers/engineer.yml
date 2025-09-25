@@ -202,6 +202,8 @@
     - id: RCD
     - id: RCDAmmo
     - id: MetalFoamGrenade
+    - id: ConstructionBag
+      prob: 0.4
 
 - type: entityTable
   id: FillEngineerHardsuit
