@@ -6,13 +6,9 @@
   components:
   - type: Sprite
     sprite: _Wega/Clothing/Shoes/Misc/black_heels.rsi
-    layers:
-    - state: icon
+    state: icon
   - type: Clothing
     sprite: _Wega/Clothing/Shoes/Misc/black_heels.rsi
-    clothingVisuals:
-      shoes:
-      - state: equipped-FEET
   - type: MeleeWeapon
     damage:
       types:
