@@ -5,17 +5,11 @@
   description: Stylish black heels.
   components:
   - type: Sprite
-    sprite: _Wega/Clothing/Shoes/Heels/black_heels.rsi
+    sprite: _Wega/Clothing/Shoes/Misc/black_heels.rsi
     layers:
     - state: icon
-  - type: Item
-    inhandVisuals:
-      left:
-      - state: inhand-left
-      right:
-      - state: inhand-right
   - type: Clothing
-    sprite: _Wega/Clothing/Shoes/Heels/black_heels.rsi
+    sprite: _Wega/Clothing/Shoes/Misc/black_heels.rsi
     clothingVisuals:
       shoes:
       - state: equipped-FEET
@@ -40,9 +34,9 @@
   description: Stylish blue heels.
   components:
   - type: Sprite
-    sprite: _Wega/Clothing/Shoes/Heels/blue_heels.rsi
+    sprite: _Wega/Clothing/Shoes/Misc/blue_heels.rsi
   - type: Clothing
-    sprite: _Wega/Clothing/Shoes/Heels/blue_heels.rsi
+    sprite: _Wega/Clothing/Shoes/Misc/blue_heels.rsi
 
 - type: entity
   parent: ClothingShoesHeelsBlack
@@ -51,9 +45,9 @@
   description: Stylish gray heels.
   components:
   - type: Sprite
-    sprite: _Wega/Clothing/Shoes/Heels/gray_heels.rsi
+    sprite: _Wega/Clothing/Shoes/Misc/gray_heels.rsi
   - type: Clothing
-    sprite: _Wega/Clothing/Shoes/Heels/gray_heels.rsi
+    sprite: _Wega/Clothing/Shoes/Misc/gray_heels.rsi
 
 - type: entity
   parent: ClothingShoesHeelsBlack
@@ -62,9 +56,9 @@
   description: Stylish green heels.
   components:
   - type: Sprite
-    sprite: _Wega/Clothing/Shoes/Heels/green_heels.rsi
+    sprite: _Wega/Clothing/Shoes/Misc/green_heels.rsi
   - type: Clothing
-    sprite: _Wega/Clothing/Shoes/Heels/green_heels.rsi
+    sprite: _Wega/Clothing/Shoes/Misc/green_heels.rsi
 
 - type: entity
   parent: ClothingShoesHeelsBlack
@@ -73,9 +67,9 @@
   description: Stylish orange heels.
   components:
   - type: Sprite
-    sprite: _Wega/Clothing/Shoes/Heels/orange_heels.rsi
+    sprite: _Wega/Clothing/Shoes/Misc/orange_heels.rsi
   - type: Clothing
-    sprite: _Wega/Clothing/Shoes/Heels/orange_heels.rsi
+    sprite: _Wega/Clothing/Shoes/Misc/orange_heels.rsi
 
 - type: entity
   parent: ClothingShoesHeelsBlack
@@ -84,9 +78,9 @@
   description: Stylish pink heels.
   components:
   - type: Sprite
-    sprite: _Wega/Clothing/Shoes/Heels/pink_heels.rsi
+    sprite: _Wega/Clothing/Shoes/Misc/pink_heels.rsi
   - type: Clothing
-    sprite: _Wega/Clothing/Shoes/Heels/pink_heels.rsi
+    sprite: _Wega/Clothing/Shoes/Misc/pink_heels.rsi
 
 - type: entity
   parent: ClothingShoesHeelsBlack
@@ -95,9 +89,9 @@
   description: Stylish purple heels.
   components:
   - type: Sprite
-    sprite: _Wega/Clothing/Shoes/Heels/purple_heels.rsi
+    sprite: _Wega/Clothing/Shoes/Misc/purple_heels.rsi
   - type: Clothing
-    sprite: _Wega/Clothing/Shoes/Heels/purple_heels.rsi
+    sprite: _Wega/Clothing/Shoes/Misc/purple_heels.rsi
 
 - type: entity
   parent: ClothingShoesHeelsBlack
@@ -106,9 +100,9 @@
   description: Stylish red heels.
   components:
   - type: Sprite
-    sprite: _Wega/Clothing/Shoes/Heels/red_heels.rsi
+    sprite: _Wega/Clothing/Shoes/Misc/red_heels.rsi
   - type: Clothing
-    sprite: _Wega/Clothing/Shoes/Heels/red_heels.rsi
+    sprite: _Wega/Clothing/Shoes/Misc/red_heels.rsi
 
 - type: entity
   parent: ClothingShoesHeelsBlack
@@ -117,9 +111,9 @@
   description: Stylish turquoise heels.
   components:
   - type: Sprite
-    sprite: _Wega/Clothing/Shoes/Heels/turquoise_heels.rsi
+    sprite: _Wega/Clothing/Shoes/Misc/turquoise_heels.rsi
   - type: Clothing
-    sprite: _Wega/Clothing/Shoes/Heels/turquoise_heels.rsi
+    sprite: _Wega/Clothing/Shoes/Misc/turquoise_heels.rsi
 
 - type: entity
   parent: ClothingShoesHeelsBlack
@@ -128,6 +122,6 @@
   description: Stylish yellow heels.
   components:
   - type: Sprite
-    sprite: _Wega/Clothing/Shoes/Heels/yellow_heels.rsi
+    sprite: _Wega/Clothing/Shoes/Misc/yellow_heels.rsi
   - type: Clothing
-    sprite: _Wega/Clothing/Shoes/Heels/yellow_heels.rsi
+    sprite: _Wega/Clothing/Shoes/Misc/yellow_heels.rsi
