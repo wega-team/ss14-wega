@@ -50,6 +50,18 @@
     - CandleBlue
     - CandleGreenSmall
 
+- type: loadout
+  id: PlushieTajar
+  storage:
+    back:
+    - PlushieTajar
+
+- type: loadout
+  id: PlushieVulpa
+  storage:
+    back:
+    - PlushieVulpa
+
 # Smokeables
 - type: loadout
   id: Lighter

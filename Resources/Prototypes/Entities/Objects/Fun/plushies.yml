@@ -1251,3 +1251,77 @@
   - type: FoodSequenceElement
     entries:
       CottonBurger: MothPlushie
+
+- type: entity
+  parent: BasePlushie
+  id: PlushieTajar  #Corvax_Wega
+  name: plushie tajar
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Fun/Plushies/plushie_tajar.rsi
+    state: icon
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/_Wega/Voice/Felinid/meow_4.ogg
+  - type: EmitSoundOnTrigger
+    sound:
+      path: /Audio/_Wega/Voice/Felinid/meow_4.ogg
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/_Wega/Voice/Felinid/meow_5.ogg
+  - type: EmitSoundOnActivate
+    sound:
+      path: /Audio/_Wega/Voice/Felinid/meow_2.ogg
+  - type: EmitSoundOnCollide
+    sound:
+      path: /Audio/_Wega/Voice/Felinid/meow_1.ogg
+  - type: MeleeWeapon
+    wideAnimationRotation: 90
+    soundHit:
+      path: /Audio/_Wega/Voice/Felinid/meow_1.ogg
+    animation: WeaponArcBite
+  - type: Item
+    heldPrefix: blue
+    storedRotation: -90
+  - type: Clothing
+    quickEquip: false
+    sprite: _Wega/Objects/Fun/Plushies/plushie_tajar.rsi
+    slots:
+    - HEAD
+
+- type: entity
+  parent: BasePlushie
+  id: PlushieVulpa  #Corvax_Wega
+  name: plushie vulpa
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Fun/Plushies/plushie_vulpa.rsi
+    state: icon
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/_Wega/Voice/Fulpakin/dog_bark1.ogg
+  - type: EmitSoundOnTrigger
+    sound:
+      path: /Audio/_Wega/Voice/Fulpakin/dog_bark3.ogg
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/_Wega/Voice/Fulpakin/dog_bark2.ogg
+  - type: EmitSoundOnActivate
+    sound:
+      path: /Audio/_Wega/Voice/Fulpakin/dog_growl3.ogg
+  - type: EmitSoundOnCollide
+    sound:
+      path: /Audio/_Wega/Voice/Fulpakin/dog_growl4.ogg
+  - type: MeleeWeapon
+    wideAnimationRotation: 90
+    soundHit:
+      path: /Audio/_Wega/Voice/Fulpakin/dog_bark2.ogg
+    animation: WeaponArcBite
+  - type: Item
+    heldPrefix: blue
+    storedRotation: -90
+  - type: Clothing
+    quickEquip: false
+    sprite: _Wega/Objects/Fun/Plushies/plushie_vulpa.rsi
+    slots:
+    - HEAD
