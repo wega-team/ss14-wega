@@ -84,6 +84,8 @@
         Brute: 15
     soundHit:
       path: /Audio/Items/drill_hit.ogg
+  - type: SurgicalTool
+    modifier: 1.5
 
 - type: entity
   name: hemrevein
@@ -128,6 +130,8 @@
           path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
         changeSound:
           path: /Audio/Items/change_drill.ogg
+  - type: SurgicalTool
+    modifier: 1.5
 # Storage
 
 - type: entity
