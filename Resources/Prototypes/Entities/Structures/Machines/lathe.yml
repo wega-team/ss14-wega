@@ -409,6 +409,7 @@
     - SecurityAmmo
     - SecurityWeapons
     - SecurityDisablers
+    - ImplantSB # Corvax-Wega-Edit
   - type: MaterialStorage
     whitelist:
       tags:
@@ -486,6 +487,7 @@
     - SurgeryStatic # Corvax-Wega-Edit
     - Chemistry
     - AdvencedMed # Corvax-Wega-Edit
+    - ImplantMed # Corvax-Wega-Edit
   - type: Machine
     board: MedicalTechFabCircuitboard
   - type: StealTarget

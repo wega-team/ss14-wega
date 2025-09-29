@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Sprite taken from https://github.com/ss220-space/Paradise mod by <@500744677352407051>",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+		{
+			"name": "hemrevein_h"
+		},
+		{
+			"name": "hemrevein_r"
+		},
+		{
+			"name": "hemrevein_v"
+		}
+  ]
+}

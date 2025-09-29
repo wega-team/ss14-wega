@@ -68,6 +68,8 @@
     - DawInstrumentMachineCircuitboard
     - MassMediaCircuitboard
     - JukeboxCircuitBoard
+    - SadTromboneImplant
+    - LightImplant
 
 - type: technology
   id: MeatManipulation

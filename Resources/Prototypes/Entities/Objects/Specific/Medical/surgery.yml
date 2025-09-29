@@ -149,6 +149,12 @@
     heldPrefix: laser
   - type: SurgicalTool # Corvax-Wega-Surgery
     modifier: 2 # Corvax-Wega-Surgery
+  - type: Tool
+    qualities:
+    - Scalpel # Corvax-Wega-Surgery
+    - Cautery # Corvax-Wega-Surgery
+    - Drilling # Corvax-Wega-Surgery
+    - Slicing
 
 # Scissors
 
