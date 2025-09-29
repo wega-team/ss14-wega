@@ -109,7 +109,7 @@
           sprite: _Wega/Objects/Specific/Medical/Surgery/hemrevein.rsi
           state: hemrevein_v
         useSound:
-          path: /Audio/_Wega/Medical/Surgery/hemostat2.ogg
+          path: /Audio/_Wega/Medical/Surgery/retractor2.ogg
         changeSound:
           path: /Audio/Items/change_drill.ogg
       - behavior: Retractor
