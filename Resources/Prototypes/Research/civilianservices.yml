@@ -68,8 +68,10 @@
     - DawInstrumentMachineCircuitboard
     - MassMediaCircuitboard
     - JukeboxCircuitBoard
+    # Corvax-Wega-Surgery-start
     - SadTromboneImplant
     - LightImplant
+    # Corvax-Wega-Surgery-end
 
 - type: technology
   id: MeatManipulation

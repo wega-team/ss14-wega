@@ -151,9 +151,11 @@
     modifier: 1.5 # Corvax-Wega-Surgery
   - type: Tool
     qualities:
-    - Scalpel # Corvax-Wega-Surgery
-    - Cautery # Corvax-Wega-Surgery
-    - Drilling # Corvax-Wega-Surgery
+     # Corvax-Wega-Surgery-start
+    - Scalpel
+    - Cautery
+    - Drilling
+     # Corvax-Wega-Surgery-end
     - Slicing
 
 # Scissors
