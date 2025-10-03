@@ -113,11 +113,11 @@
   description: uplink-gloves-knuckleduster-desc
   icon: { sprite: Clothing/Hands/Gloves/KnuckleDusters/syndicateknuckleduster.rsi, state: syndicateknuckleduster }
   productEntity: ClothingHandsKnuckleDustersSyndicate
-  discountCategory: veryRareDiscounts
+  discountCategory: usualDiscounts # Corvax-Wega-Syndi
   discountDownTo:
-    Telecrystal: 3
+    Telecrystal: 2 # Corvax-Wega-Syndi
   cost:
-    Telecrystal: 6
+    Telecrystal: 3 # Corvax-Wega-Syndi
   categories:
   - UplinkWeaponry
 

@@ -10,3 +10,5 @@ uplink-garrotte-name = Гаррота
 uplink-garrotte-desc = Оружие профессиональных киллеров.
 uplink-rcd-upgrade-kit-name = набор улучшения РСУ
 uplink-rcd-upgrade-kit-desc = Небольшой набор для незаконной модернизации РСУ, снимающий лимит мощности и позволящий разбирать укреплённые стены.
+uplink-clothing-hands-knuckle-dusters-stun-name = Шок-кастеты
+clothing-hands-knuckle-dusters-stun-desc = Пара кастетов, который имеют встроенные шоковые заряды для оглушения цели. Теперь забатоните Вы, а не Вас!

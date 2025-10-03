@@ -122,3 +122,17 @@
     whitelist:
       tags:
       - NukeOpsUplink
+
+- type: listing
+  id: UplinkClothingHandsKnuckleDustersStun
+  name: uplink-clothing-hands-knuckle-dusters-stun-name
+  description: clothing-hands-knuckle-dusters-stun-desc
+  icon: { sprite: Clothing/Hands/Gloves/KnuckleDusters/electricknuckleduster.rsi, state: knuckleduster_nocell }
+  productEntity: ClothingHandsKnuckleDustersStun
+  discountCategory: usualDiscounts
+  discountDownTo:
+    Telecrystal: 3
+  cost:
+    Telecrystal: 1
+  categories:
+  - UplinkWeaponry

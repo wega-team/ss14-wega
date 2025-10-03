@@ -2,17 +2,19 @@
   id: ConcentratedLaserWeaponry
   name: research-technology-advanced-weapon
   icon:
-    sprite: Objects/Weapons/Guns/Battery/laser_cannon.rsi
+    sprite: _Wega/Objects/Weapons/Guns/Battery/dominator.rsi
     state: icon
   discipline: Arsenal
   tier: 2
-  cost: 12500
+  cost: 17500
   recipeUnlocks:
   - WeaponLaserCannon
   - WeaponXrayCannon
+  - WeaponDominator
+  - WeaponTaser
   - PortableRechargerBag
   - PortableRechargerTurbo
-  
+
 - type: technology
   id: AdvancedFlash
   name: research-technology-advanced-flash
