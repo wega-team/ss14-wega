@@ -322,3 +322,8 @@
   id: money
   flavorType: Base
   description: flavor-base-money
+
+- type: flavor
+  id: shrimp
+  flavorType: Base
+  description: flavor-base-shrimp

@@ -81,3 +81,14 @@
     - id: FoodBoxDonkpocketDink
       prob: 0.1
       orGroup: DP2
+
+- type: entity
+  id: CrateFoodShrimp
+  parent: CratePlastic
+  name: emergency shrimp delivery
+  description: Feed your Arirals!
+  components:
+  - type: StorageFill
+    contents:
+    - id: FoodBoxShrimp
+      amount: 2

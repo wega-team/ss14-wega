@@ -1,0 +1,27 @@
+- type: entity
+  name: shrimp
+  parent: FoodBakedBase
+  id: Shrimp
+  description: "Your best sea friend! You're not going to eat it, are you?"
+  components:
+  - type: Item
+    size: Tiny
+  - type: Food
+  - type: Sprite
+    sprite: _Wega/Objects/Consumable/Food/shrimp.rsi
+    state: shrimp
+  - type: Tag
+    tags: 
+    - Shrimp
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 5
+        reagents:
+          - ReagentId: Shrimp
+            Quantity: 4
+          - ReagentId: Omnizine
+            Quantity: 1
+  - type: FlavorProfile
+    flavors:
+      - shrimp
