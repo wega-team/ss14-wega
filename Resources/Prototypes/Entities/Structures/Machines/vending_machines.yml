@@ -1467,6 +1467,20 @@
     radius: 1.5
     energy: 1.6
     color: "#b89f25"
+  - type: ActivatableUI
+    key: enum.UtilityVendorUiKey.Key
+  - type: ActivatableUIRequiresPower
+  - type: UserInterface
+    interfaces:
+      enum.UtilityVendorUiKey.Key:
+        type: UtilityVendorBoundUserInterface
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
+  - type: UtilityVendor
+    inventory:
+      Pickaxe: 50
+      RadioHandheld: 200
+  - type: ItemSlots
   - type: AccessReader
     access: [["Salvage"]]
   - type: GuideHelp

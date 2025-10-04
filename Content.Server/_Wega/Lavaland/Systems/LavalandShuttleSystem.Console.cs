@@ -121,8 +121,6 @@ public sealed partial class LavalandShuttleSystem
             };
 
             launchTime = shuttle.NextLaunchTime;
-
-            // Can call if shuttle is docked at current location and not on cooldown
             canCall = CanCallShuttle(component, shuttle);
         }
         else

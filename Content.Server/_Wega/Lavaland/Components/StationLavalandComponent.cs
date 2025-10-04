@@ -19,5 +19,5 @@ public sealed partial class StationLavalandComponent : Component
     public int? Seed = null;
 
     [DataField("lavalandAvanpostPath", customTypeSerializer: typeof(ResPathSerializer))]
-    public ResPath LavalandAvanpostPath { get; set; } = new("/Maps/_Wega/lava_avanpost.yml");
+    public ResPath LavalandAvanpostPath { get; set; } = new("/Maps/_Wega/Nonstations/cyberiadavanpost.yml");
 }

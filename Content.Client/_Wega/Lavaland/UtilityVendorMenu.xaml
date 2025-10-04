@@ -1,0 +1,46 @@
+<controls:FancyWindow xmlns="https://spacestation14.io"
+                      xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+                      xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+                      Title="Утиль Вендомат"
+                      SetSize="500 600"
+                      MinSize="400 500">
+    <BoxContainer Orientation="Vertical"
+                  VerticalExpand="True"
+                  HorizontalExpand="True">
+        <!-- Основная панель с контентом -->
+        <PanelContainer VerticalExpand="True" HorizontalExpand="True" Margin="10">
+            <PanelContainer.PanelOverride>
+                <gfx:StyleBoxFlat BackgroundColor="#1B1B1E" />
+            </PanelContainer.PanelOverride>
+            
+            <BoxContainer Orientation="Vertical" Margin="10">
+                <!-- Слот для карты -->
+                <BoxContainer Orientation="Horizontal" Margin="0 0 0 10">
+                    <Label Text="Карта:" MinWidth="80" StyleClasses="LabelBig"/>
+                    <PanelContainer Name="CardSlot" HorizontalExpand="True" MinHeight="40"/>
+                </BoxContainer>
+                
+                <!-- Баланс -->
+                <Label Name="BalanceLabel" StyleClasses="LabelBig" Margin="0 0 10 0"/>
+                
+                <!-- Товары -->
+                <ScrollContainer VerticalExpand="True" HorizontalExpand="True">
+                    <BoxContainer Name="ItemsContainer" 
+                                  Orientation="Vertical" 
+                                  VerticalExpand="True" 
+                                  HorizontalExpand="True"
+                                  SeparationOverride="8"/>
+                </ScrollContainer>
+            </BoxContainer>
+        </PanelContainer>
+
+        <!-- Футер -->
+        <BoxContainer Orientation="Vertical">
+            <PanelContainer StyleClasses="LowDivider" />
+            <BoxContainer Orientation="Horizontal" Margin="10 2 5 0" VerticalAlignment="Bottom">
+                <Label Text="Утилизация - наше всё!" StyleClasses="WindowFooterText"
+                       HorizontalAlignment="Right" HorizontalExpand="True" Margin="0 0 5 0" />
+            </BoxContainer>
+        </BoxContainer>
+    </BoxContainer>
+</controls:FancyWindow>

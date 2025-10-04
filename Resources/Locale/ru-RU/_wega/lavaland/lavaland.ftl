@@ -8,3 +8,5 @@ lavaland-shuttle-status-unknown = Неизвестно
 lavaland-shuttle-call-to-outpost = Вызвать на аванпост
 lavaland-shuttle-recall-to-station = Вернуть на станцию
 lavaland-shuttle-call-unavailable = Недоступно
+
+lavaland-hand-capsule-spawn-failed = Невозможно выпустить капсулу здесь
