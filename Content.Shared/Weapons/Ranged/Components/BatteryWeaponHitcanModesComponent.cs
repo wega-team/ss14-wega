@@ -35,7 +35,7 @@ public sealed partial class BatteryWeaponHitscanMode
     /// The projectile prototype associated with this firing mode
     /// </summary>
     [DataField("proto", required: true)]
-    public EntProtoId Prototype = default!;
+    public ProtoId<HitscanPrototype> Prototype = default!;
 
     [DataField]
     public string Name { get; set; } = string.Empty;
