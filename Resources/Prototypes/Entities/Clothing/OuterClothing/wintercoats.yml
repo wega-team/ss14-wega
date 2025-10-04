@@ -4,10 +4,12 @@
   name: winter coat
   description: A heavy jacket made from 'synthetic' animal furs.
   components:
+  # Corvax-Wega-start
   - type: Sprite
     sprite: Clothing/OuterClothing/WinterCoats/coat/coat.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/WinterCoats/coat/coat.rsi
+  # Corvax-Wega-end
   - type: TemperatureProtection
     heatingCoefficient: 1.1
     coolingCoefficient: 0.1
@@ -58,10 +60,12 @@
   id: ClothingOuterWinterAtmos
   name: atmospherics winter coat
   components:
+  # Corvax-Wega-start
   - type: Sprite
     sprite: Clothing/OuterClothing/WinterCoats/coat/atmoscoat.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/WinterCoats/coat/atmoscoat.rsi
+  # Corvax-Wega-end
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterEngineer
 
@@ -70,10 +74,12 @@
   id: ClothingOuterWinterBar
   name: bartender winter coat
   components:
+  # Corvax-Wega-start
   - type: Sprite
     sprite: Clothing/OuterClothing/WinterCoats/coat/barcoat.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/WinterCoats/coat/barcoat.rsi
+  # Corvax-Wega-end
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterBartender
 
@@ -82,10 +88,12 @@
   id: ClothingOuterWinterCap
   name: captain's winter coat
   components:
+  # Corvax-Wega-start
   - type: Sprite
     sprite: Clothing/OuterClothing/WinterCoats/coat/capcoat.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/WinterCoats/coat/capcoat.rsi
+  # Corvax-Wega-end
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterCaptain
 
@@ -94,10 +102,12 @@
   id: ClothingOuterWinterCargo
   name: cargo winter coat
   components:
+  # Corvax-Wega-start
   - type: Sprite
     sprite: Clothing/OuterClothing/WinterCoats/coat/cargocoat.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/WinterCoats/coat/cargocoat.rsi
+  # Corvax-Wega-end
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterCargo
 
@@ -106,10 +116,12 @@
   id: ClothingOuterWinterCE
   name: chief engineer's winter coat
   components:
+  # Corvax-Wega-start
   - type: Sprite
     sprite: Clothing/OuterClothing/WinterCoats/coat/cecoat.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/WinterCoats/coat/cecoat.rsi
+  # Corvax-Wega-end
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterCE
 
@@ -118,10 +130,12 @@
   id: ClothingOuterWinterCentcom
   name: CentComm winter coat
   components:
+  # Corvax-Wega-start
   - type: Sprite
     sprite: Clothing/OuterClothing/WinterCoats/coat/centcomcoat.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/WinterCoats/coat/centcomcoat.rsi
+  # Corvax-Wega-end
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterCentcom
 
@@ -131,20 +145,24 @@
   name: chef's freezer coat
   description: A coat specifically designed for work inside cold storage, sorely needed by cold-blooded lizard chefs.
   components:
+  # Corvax-Wega-start
   - type: Sprite
     sprite: Clothing/OuterClothing/WinterCoats/coat/chefcoat.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/WinterCoats/coat/chefcoat.rsi
+  # Corvax-Wega-end
 
 - type: entity
   parent: ClothingOuterWinterCoatToggleable
   id: ClothingOuterWinterChem
   name: chemistry winter coat
   components:
+  # Corvax-Wega-start
   - type: Sprite
     sprite: Clothing/OuterClothing/WinterCoats/coat/chemcoat.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/WinterCoats/coat/chemcoat.rsi
+  # Corvax-Wega-end
   - type: Armor
     modifiers:
       coefficients:
@@ -179,20 +197,24 @@
   id: ClothingOuterWinterClown
   name: clown winter coat
   components:
+  # Corvax-Wega-start
   - type: Sprite
     sprite: Clothing/OuterClothing/WinterCoats/coatclown.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/WinterCoats/coatclown.rsi
+  # Corvax-Wega-end
 
 - type: entity
   parent: ClothingOuterWinterCoatToggleable
   id: ClothingOuterWinterEngi
   name: engineering winter coat
   components:
+  # Corvax-Wega-start
   - type: Sprite
     sprite: Clothing/OuterClothing/WinterCoats/coat/engicoat.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/WinterCoats/coat/engicoat.rsi
+  # Corvax-Wega-end
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterEngineer
 
@@ -201,10 +223,12 @@
   id: ClothingOuterWinterGen
   name: genetics winter coat
   components:
+  # Corvax-Wega-start
   - type: Sprite
     sprite: Clothing/OuterClothing/WinterCoats/coat/genecoat.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/WinterCoats/coat/genecoat.rsi
+  # Corvax-Wega-end
   - type: Armor
     modifiers:
       coefficients:
@@ -220,10 +244,12 @@
   id: ClothingOuterWinterHoP
   name: head of personnel's winter coat
   components:
+  # Corvax-Wega-start
   - type: Sprite
     sprite: Clothing/OuterClothing/WinterCoats/coat/coat.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/WinterCoats/coat/coat.rsi
+  # Corvax-Wega-end
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterHOP
 
@@ -249,10 +275,12 @@
   name: head of security's winter coat
   description: A sturdy coat, a warm coat, but not an armored coat.
   components:
+  # Corvax-Wega-start
   - type: Sprite
     sprite: Clothing/OuterClothing/WinterCoats/coat/hoscoat.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/WinterCoats/coat/hoscoat.rsi
+  # Corvax-Wega-end
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterHOS
 
@@ -261,10 +289,12 @@
   id: ClothingOuterWinterHydro
   name: hydroponics winter coat
   components:
+  # Corvax-Wega-start
   - type: Sprite
     sprite: Clothing/OuterClothing/WinterCoats/coat/hydrocoat.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/WinterCoats/coat/hydrocoat.rsi
+  # Corvax-Wega-end
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterHydro
 
@@ -273,10 +303,12 @@
   id: ClothingOuterWinterJani
   name: janitorial winter coat
   components:
+  # Corvax-Wega-start
   - type: Sprite
     sprite: Clothing/OuterClothing/WinterCoats/coat/janicoat.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/WinterCoats/coat/janicoat.rsi
+  # Corvax-Wega-end
   - type: Armor
     modifiers:
       coefficients:
@@ -292,10 +324,12 @@
   id: ClothingOuterWinterMed
   name: medical winter coat
   components:
+  # Corvax-Wega-start
   - type: Sprite
     sprite: Clothing/OuterClothing/WinterCoats/coat/medcoat.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/WinterCoats/coat/medcoat.rsi
+  # Corvax-Wega-end
   - type: Armor
     modifiers:
       coefficients:
@@ -311,10 +345,12 @@
   id: ClothingOuterWinterMime
   name: mime winter coat
   components:
+  # Corvax-Wega-start
   - type: Sprite
     sprite: Clothing/OuterClothing/WinterCoats/coat/mimecoat.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/WinterCoats/coat/mimecoat.rsi
+  # Corvax-Wega-end
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterMime
 
@@ -323,10 +359,12 @@
   id: ClothingOuterWinterMiner
   name: mining winter coat
   components:
+  # Corvax-Wega-start
   - type: Sprite
     sprite: Clothing/OuterClothing/WinterCoats/coat/minercoat.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/WinterCoats/coat/minercoat.rsi
+  # Corvax-Wega-end
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterMiner
 
@@ -335,10 +373,12 @@
   id: ClothingOuterWinterPara
   name: paramedic winter coat
   components:
+  # Corvax-Wega-start
   - type: Sprite
     sprite: Clothing/OuterClothing/WinterCoats/coat/paracoat.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/WinterCoats/coat/paracoat.rsi
+  # Corvax-Wega-end
   - type: Armor
     modifiers:
       coefficients:
@@ -354,10 +394,12 @@
   id: ClothingOuterWinterQM
   name: quartermaster's winter coat
   components:
+  # Corvax-Wega-start
   - type: Sprite
     sprite: Clothing/OuterClothing/WinterCoats/coat/qm.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/WinterCoats/coat/qm.rsi
+  # Corvax-Wega-end
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterQM
 
@@ -367,10 +409,12 @@
   id: ClothingOuterWinterRD
   name: research director's winter coat
   components:
+  # Corvax-Wega-start
   - type: Sprite
     sprite: Clothing/OuterClothing/WinterCoats/coat/rd.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/WinterCoats/coat/rd.rsi
+  # Corvax-Wega-end
   - type: Armor
     modifiers:
       coefficients:
@@ -386,10 +430,12 @@
   id: ClothingOuterWinterRobo
   name: robotics winter coat
   components:
+  # Corvax-Wega-start
   - type: Sprite
     sprite: Clothing/OuterClothing/WinterCoats/coat/robo.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/WinterCoats/coat/robo.rsi
+  # Corvax-Wega-end
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterRobo
 
@@ -399,10 +445,12 @@
   id: ClothingOuterWinterSci
   name: science winter coat
   components:
+  # Corvax-Wega-start
   - type: Sprite
     sprite: Clothing/OuterClothing/WinterCoats/coat/sci.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/WinterCoats/coat/sci.rsi
+  # Corvax-Wega-end
   - type: Armor
     modifiers:
       coefficients:
@@ -418,10 +466,12 @@
   id: ClothingOuterWinterSec
   name: security winter coat
   components:
+  # Corvax-Wega-start
   - type: Sprite
     sprite: Clothing/OuterClothing/WinterCoats/coat/sec.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/WinterCoats/coat/sec.rsi
+  # Corvax-Wega-end
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterSec
 
@@ -430,10 +480,12 @@
   id: ClothingOuterWinterViro
   name: virology winter coat
   components:
+  # Corvax-Wega-start
   - type: Sprite
     sprite: Clothing/OuterClothing/WinterCoats/coat/viro.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/WinterCoats/coat/viro.rsi
+  # Corvax-Wega-end
   - type: Armor
     modifiers:
       coefficients:
@@ -465,10 +517,12 @@
   name: warden's winter coat
   description: A sturdy coat, a warm coat, but not an armored coat.
   components:
+  # Corvax-Wega-start
   - type: Sprite
     sprite: Clothing/OuterClothing/WinterCoats/coat/ward.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/WinterCoats/coat/ward.rsi
+  # Corvax-Wega-end
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterWarden
 
@@ -478,10 +532,12 @@
   name: syndicate's winter coat
   description: "The syndicate's winter coat is made of durable fabric, with gilded patterns, and coarse wool."
   components:
+  # Corvax-Wega-start
   - type: Sprite
     sprite: Clothing/OuterClothing/WinterCoats/coat/syndiecap.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/WinterCoats/coat/syndiecap.rsi
+  # Corvax-Wega-end
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterSyndie
 
@@ -506,10 +562,12 @@
   name: syndicate's winter coat
   description: Insulated winter coat, looks like a merch from "Syndieland".
   components:
+  # Corvax-Wega-start
   - type: Sprite
     sprite: Clothing/OuterClothing/WinterCoats/coat/syndie.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/WinterCoats/coat/syndie.rsi
+  # Corvax-Wega-end
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterSyndie
 
@@ -519,10 +577,12 @@
   name: musician's winter coat
   description: An oversized, plasticine space tuxedo that'll have people asking "do you know me?"
   components:
+  # Corvax-Wega-start
   - type: Sprite
     sprite: Clothing/OuterClothing/WinterCoats/coatnomi.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/WinterCoats/coatnomi.rsi
+  # Corvax-Wega-end
 
 - type: entity
   parent: ClothingOuterWinterCoatToggleable
@@ -530,10 +590,12 @@
   name: web winter coat
   description: Feels like the inside of a cocoon, not that this would make you less afraid of being in one.
   components:
+  # Corvax-Wega-start
   - type: Sprite
     sprite: Clothing/OuterClothing/WinterCoats/coat/web.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/WinterCoats/coat/web.rsi
+  # Corvax-Wega-end
   - type: Construction
     graph: WebObjects
     node: coat
@@ -562,7 +624,7 @@
   name: black winter coat
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/WinterCoats/coat/winterbits.rsi
+    sprite: Clothing/OuterClothing/WinterCoats/coat/winterbits.rsi #Corvax-Wega
     layers:
     - state: coatybits-icon
       color: "#3f3f3f"
@@ -577,7 +639,7 @@
       - state: coatybits-inhand-right
         color: "#3f3f3f"
       - state: winterbits-inhand-right
-  - type: Clothing
+  - type: Clothing #Corvax-Wega
     sprite: Clothing/OuterClothing/WinterCoats/coat/winterbits.rsi
     clothingVisuals:
       outerClothing:
@@ -593,7 +655,7 @@
   name: purple winter coat
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/WinterCoats/coat/winterbits.rsi
+    sprite: Clothing/OuterClothing/WinterCoats/coat/winterbits.rsi #Corvax-Wega
     layers:
     - state: coatybits-icon
       color: "#9C0DE1"
@@ -609,7 +671,7 @@
         color: "#9C0DE1"
       - state: winterbits-inhand-right
   - type: Clothing
-    sprite: Clothing/OuterClothing/WinterCoats/coat/winterbits.rsi
+    sprite: Clothing/OuterClothing/WinterCoats/coat/winterbits.rsi #Corvax-Wega
     clothingVisuals:
       outerClothing:
       - state: coatybits-equipped-OUTERCLOTHING
@@ -624,7 +686,7 @@
   name: red winter coat
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/WinterCoats/coat/winterbits.rsi
+    sprite: Clothing/OuterClothing/WinterCoats/coat/winterbits.rsi #Corvax-Wega
     layers:
     - state: coatybits-icon
       color: "#940000"
@@ -640,7 +702,7 @@
         color: "#940000"
       - state: winterbits-inhand-right
   - type: Clothing
-    sprite: Clothing/OuterClothing/WinterCoats/coat/winterbits.rsi
+    sprite: Clothing/OuterClothing/WinterCoats/coat/winterbits.rsi #Corvax-Wega
     clothingVisuals:
       outerClothing:
       - state: coatybits-equipped-OUTERCLOTHING
@@ -655,7 +717,7 @@
   name: blue winter coat
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/WinterCoats/coat/winterbits.rsi
+    sprite: Clothing/OuterClothing/WinterCoats/coat/winterbits.rsi #Corvax-Wega
     layers:
     - state: coatybits-icon
       color: "#0089EF"
@@ -671,7 +733,7 @@
         color: "#0089EF"
       - state: winterbits-inhand-right
   - type: Clothing
-    sprite: Clothing/OuterClothing/WinterCoats/coat/winterbits.rsi
+    sprite: Clothing/OuterClothing/WinterCoats/coat/winterbits.rsi #Corvax-Wega
     clothingVisuals:
       outerClothing:
       - state: coatybits-equipped-OUTERCLOTHING
@@ -686,7 +748,7 @@
   name: brown winter coat
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/WinterCoats/coat/winterbits.rsi
+    sprite: Clothing/OuterClothing/WinterCoats/coat/winterbits.rsi #Corvax-Wega
     layers:
     - state: coatybits-icon
       color: "#723A02"
@@ -702,7 +764,7 @@
         color: "#723A02"
       - state: winterbits-inhand-right
   - type: Clothing
-    sprite: Clothing/OuterClothing/WinterCoats/coat/winterbits.rsi
+    sprite: Clothing/OuterClothing/WinterCoats/coat/winterbits.rsi #Corvax-Wega
     clothingVisuals:
       outerClothing:
       - state: coatybits-equipped-OUTERCLOTHING
@@ -717,7 +779,7 @@
   name: gray winter coat
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/WinterCoats/coat/winterbits.rsi
+    sprite: Clothing/OuterClothing/WinterCoats/coat/winterbits.rsi #Corvax-Wega
     layers:
     - state: coatybits-icon
       color: "#999999"
@@ -733,7 +795,7 @@
         color: "#999999"
       - state: winterbits-inhand-right
   - type: Clothing
-    sprite: Clothing/OuterClothing/WinterCoats/coat/winterbits.rsi
+    sprite: Clothing/OuterClothing/WinterCoats/coat/winterbits.rsi #Corvax-Wega
     clothingVisuals:
       outerClothing:
       - state: coatybits-equipped-OUTERCLOTHING
@@ -748,7 +810,7 @@
   name: green winter coat
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/WinterCoats/coat/winterbits.rsi
+    sprite: Clothing/OuterClothing/WinterCoats/coat/winterbits.rsi #Corvax-Wega
     layers:
     - state: coatybits-icon
       color: "#5ABF2F"
@@ -764,7 +826,7 @@
         color: "#5ABF2F"
       - state: winterbits-inhand-right
   - type: Clothing
-    sprite: Clothing/OuterClothing/WinterCoats/coat/winterbits.rsi
+    sprite: Clothing/OuterClothing/WinterCoats/coat/winterbits.rsi #Corvax-Wega
     clothingVisuals:
       outerClothing:
       - state: coatybits-equipped-OUTERCLOTHING
@@ -779,7 +841,7 @@
   name: light brown winter coat
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/WinterCoats/coat/winterbits.rsi
+    sprite: Clothing/OuterClothing/WinterCoats/coat/winterbits.rsi #Corvax-Wega
     layers:
     - state: coatybits-icon
       color: "#C09F72"
@@ -795,7 +857,7 @@
         color: "#C09F72"
       - state: winterbits-inhand-right
   - type: Clothing
-    sprite: Clothing/OuterClothing/WinterCoats/coat/winterbits.rsi
+    sprite: Clothing/OuterClothing/WinterCoats/coat/winterbits.rsi #Corvax-Wega
     clothingVisuals:
       outerClothing:
       - state: coatybits-equipped-OUTERCLOTHING
@@ -810,7 +872,7 @@
   name: orange winter coat
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/WinterCoats/coat/winterbits.rsi
+    sprite: Clothing/OuterClothing/WinterCoats/coat/winterbits.rsi #Corvax-Wega
     layers:
     - state: coatybits-icon
       color: "#EF8100"
@@ -826,7 +888,7 @@
         color: "#EF8100"
       - state: winterbits-inhand-right
   - type: Clothing
-    sprite: Clothing/OuterClothing/WinterCoats/coat/winterbits.rsi
+    sprite: Clothing/OuterClothing/WinterCoats/coat/winterbits.rsi #Corvax-Wega
     clothingVisuals:
       outerClothing:
       - state: coatybits-equipped-OUTERCLOTHING
@@ -841,7 +903,7 @@
   name: white winter coat
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/WinterCoats/coat/winterbits.rsi
+    sprite: Clothing/OuterClothing/WinterCoats/coat/winterbits.rsi #Corvax-Wega
     layers:
     - state: coatybits-icon
       color: "#EAE8E8"
@@ -857,7 +919,7 @@
         color: "#EAE8E8"
       - state: winterbits-inhand-right
   - type: Clothing
-    sprite: Clothing/OuterClothing/WinterCoats/coat/winterbits.rsi
+    sprite: Clothing/OuterClothing/WinterCoats/coat/winterbits.rsi #Corvax-Wega
     clothingVisuals:
       outerClothing:
       - state: coatybits-equipped-OUTERCLOTHING
@@ -872,7 +934,7 @@
   name: yellow winter coat
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/WinterCoats/coat/winterbits.rsi
+    sprite: Clothing/OuterClothing/WinterCoats/coat/winterbits.rsi #Corvax-Wega
     layers:
     - state: coatybits-icon
       color: "#EBE216"
@@ -888,7 +950,7 @@
         color: "#EBE216"
       - state: winterbits-inhand-right
   - type: Clothing
-    sprite: Clothing/OuterClothing/WinterCoats/coat/winterbits.rsi
+    sprite: Clothing/OuterClothing/WinterCoats/coat/winterbits.rsi #Corvax-Wega
     clothingVisuals:
       outerClothing:
       - state: coatybits-equipped-OUTERCLOTHING
