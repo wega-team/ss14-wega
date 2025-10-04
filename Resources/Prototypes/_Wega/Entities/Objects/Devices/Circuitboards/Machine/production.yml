@@ -103,3 +103,14 @@
         Manipulator: 2
         Glass: 5
         Cable: 2
+
+- type: entity
+  id: GoldprinterMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: gold printer board
+  components:
+  - type: MachineBoard
+    prototype: Goldprinter
+    stackRequirements:
+      Manipulator: 2
+      Glass: 5

@@ -37,10 +37,10 @@ ent-ADTClothingUniformJumpskirtTurtleneckAquamarine = аквамариновая
 ent-ADTClothingUniformJumpskirtTurtleneckPink = розовая водолазка с юбкой
     .desc = { ent-ADTClothingUniformJumpsuitTurtleneckPink.desc }
 
-ent-ADTClothingUniformJumpskirtTurtleneckBlackSleeveless = чёрная водолазка с юбкой
+ent-ADTClothingUniformJumpskirtTurtleneckBlackSleeveless = чёрная безрукавка с юбкой
     .desc = { ent-ADTClothingUniformJumpsuitTurtleneckBlackSleeveless.desc }
 
-ent-ADTClothingUniformJumpskirtTurtleneckWhiteSleeveless = белая водолазка с юбкой
+ent-ADTClothingUniformJumpskirtTurtleneckWhiteSleeveless = белая безрукавка с юбкой
     .desc = { ent-ADTClothingUniformJumpsuitTurtleneckWhiteSleeveless.desc } 
 
 ent-ADTClothingUniformJumpskirtTurtleneckSalat = салатовая водолазка с юбкой

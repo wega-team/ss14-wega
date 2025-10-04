@@ -42,6 +42,7 @@ nano-chat-ui-no-groups = Нет групп
 
 nano-chat-ui-select-chat = Выберите чат
 nano-chat-ui-select-chat-input = Выберите чат для сообщения
+nano-chat-ui-unknown-chat = Неизвестный чат
 
 nano-chat-ui-send-tooltip = Отправить
 

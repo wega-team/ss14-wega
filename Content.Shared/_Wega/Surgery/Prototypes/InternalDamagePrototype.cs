@@ -30,6 +30,9 @@ public sealed partial class InternalDamagePrototype : IPrototype, ISerialization
     public string? BodyVisuals { get; private set; }
 
     [DataField]
+    public float MinDamage = 5f;
+
+    [DataField]
     public float Severity = 1f;
 
     [DataField]

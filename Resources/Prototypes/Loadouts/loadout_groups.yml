@@ -233,6 +233,74 @@
   - AncientJumpsuit
   - RainbowJumpsuit
   - RainbowJumpskirt
+# Corvax-Wega-add-start
+  - JumpsuitColorWhite
+  - JumpskirtColorWhite
+  - JumpsuitColorBlack
+  - JumpskirtColorBlack
+  - JumpsuitColorBlue
+  - JumpskirtColorBlue
+  - JumpsuitColorYellow
+  - JumpskirtColorYellow
+  - JumpsuitColorGreen
+  - JumpskirtColorGreen
+  - JumpsuitColorOrange
+  - JumpskirtColorOrange
+  - JumpsuitColorRed
+  - JumpskirtColorRed
+  - JumpsuitColorPurple
+  - JumpskirtColorPurple
+  - JumpsuitColorPink
+  - JumpskirtColorPink
+  - JumpsuitColorDarkBlue
+  - JumpskirtColorDarkBlue
+  - JumpsuitColorDarkGreen
+  - JumpskirtColorDarkGreen
+  - JumpsuitColorTeal
+  - JumpskirtColorTeal
+  - JumpsuitCasualBlue
+  - JumpskirtCasualBlue
+  - JumpsuitCasualPurple
+  - JumpskirtCasualPurple
+  - JumpsuitCasualRed
+  - JumpskirtCasualRed
+  - JumpsuitCasualGreen
+  - JumpskirtCasualGreen 
+  - JumpskirtTurtleneckAquamarine   
+  - JumpsuitTurtleneckAquamarine
+  - JumpskirtTurtleneckWhite
+  - JumpsuitTurtleneckWhite
+  - JumpskirtTurtleneckAzure
+  - JumpsuitTurtleneckAzure
+  - JumpskirtTurtleneckYellow
+  - JumpsuitTurtleneckYellow
+  - JumpskirtTurtleneckGreen
+  - JumpsuitTurtleneckGreen
+  - JumpskirtTurtleneckBrown
+  - JumpsuitTurtleneckBrown
+  - JumpskirtTurtleneckRed
+  - JumpsuitTurtleneckRed
+  - JumpskirtTurtleneckOrange
+  - JumpsuitTurtleneckOrange
+  - JumpskirtTurtleneckPink
+  - JumpsuitTurtleneckPink
+  - JumpskirtTurtleneckGrey
+  - JumpsuitTurtleneckGrey
+  - JumpskirtTurtleneckBlue
+  - JumpsuitTurtleneckBlue
+  - JumpskirtTurtleneckPurple
+  - JumpsuitTurtleneckPurple
+  - JumpskirtTurtleneckBlack
+  - JumpsuitTurtleneckBlack
+  - JumpskirtTurtleneckSalat
+  - JumpsuitTurtleneckSalat
+  - JumpsuitTurtleneckSalatblack
+  - JumpskirtTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckWhiteBlackSleeveless
+  - JumpsuitTurtleneckWhiteSleeveless
+  - JumpskirtTurtleneckWhiteSleeveless
+# Corvax-Wega-add-end
 
 - type: loadoutGroup
   id: PassengerFace
@@ -292,6 +360,74 @@
   - BartenderJumpsuit
   - BartenderJumpskirt
   - BartenderJumpsuitPurple
+# Corvax-Wega-add-start
+  - JumpsuitColorWhite
+  - JumpskirtColorWhite
+  - JumpsuitColorBlack
+  - JumpskirtColorBlack
+  - JumpsuitColorBlue
+  - JumpskirtColorBlue
+  - JumpsuitColorYellow
+  - JumpskirtColorYellow
+  - JumpsuitColorGreen
+  - JumpskirtColorGreen
+  - JumpsuitColorOrange
+  - JumpskirtColorOrange
+  - JumpsuitColorRed
+  - JumpskirtColorRed
+  - JumpsuitColorPurple
+  - JumpskirtColorPurple
+  - JumpsuitColorPink
+  - JumpskirtColorPink
+  - JumpsuitColorDarkBlue
+  - JumpskirtColorDarkBlue
+  - JumpsuitColorDarkGreen
+  - JumpskirtColorDarkGreen
+  - JumpsuitColorTeal
+  - JumpskirtColorTeal
+  - JumpsuitCasualBlue
+  - JumpskirtCasualBlue
+  - JumpsuitCasualPurple
+  - JumpskirtCasualPurple
+  - JumpsuitCasualRed
+  - JumpskirtCasualRed
+  - JumpsuitCasualGreen
+  - JumpskirtCasualGreen 
+  - JumpskirtTurtleneckAquamarine   
+  - JumpsuitTurtleneckAquamarine
+  - JumpskirtTurtleneckWhite
+  - JumpsuitTurtleneckWhite
+  - JumpskirtTurtleneckAzure
+  - JumpsuitTurtleneckAzure
+  - JumpskirtTurtleneckYellow
+  - JumpsuitTurtleneckYellow
+  - JumpskirtTurtleneckGreen
+  - JumpsuitTurtleneckGreen
+  - JumpskirtTurtleneckBrown
+  - JumpsuitTurtleneckBrown
+  - JumpskirtTurtleneckRed
+  - JumpsuitTurtleneckRed
+  - JumpskirtTurtleneckOrange
+  - JumpsuitTurtleneckOrange
+  - JumpskirtTurtleneckPink
+  - JumpsuitTurtleneckPink
+  - JumpskirtTurtleneckGrey
+  - JumpsuitTurtleneckGrey
+  - JumpskirtTurtleneckBlue
+  - JumpsuitTurtleneckBlue
+  - JumpskirtTurtleneckPurple
+  - JumpsuitTurtleneckPurple
+  - JumpskirtTurtleneckBlack
+  - JumpsuitTurtleneckBlack
+  - JumpskirtTurtleneckSalat
+  - JumpsuitTurtleneckSalat
+  - JumpsuitTurtleneckSalatblack
+  - JumpskirtTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckWhiteBlackSleeveless
+  - JumpsuitTurtleneckWhiteSleeveless
+  - JumpskirtTurtleneckWhiteSleeveless
+# Corvax-Wega-add-end
 
 - type: loadoutGroup
   id: BartenderOuterClothing
@@ -322,6 +458,74 @@
   loadouts:
   - ChefJumpsuit
   - ChefJumpskirt
+# Corvax-Wega-add-start
+  - JumpsuitColorWhite
+  - JumpskirtColorWhite
+  - JumpsuitColorBlack
+  - JumpskirtColorBlack
+  - JumpsuitColorBlue
+  - JumpskirtColorBlue
+  - JumpsuitColorYellow
+  - JumpskirtColorYellow
+  - JumpsuitColorGreen
+  - JumpskirtColorGreen
+  - JumpsuitColorOrange
+  - JumpskirtColorOrange
+  - JumpsuitColorRed
+  - JumpskirtColorRed
+  - JumpsuitColorPurple
+  - JumpskirtColorPurple
+  - JumpsuitColorPink
+  - JumpskirtColorPink
+  - JumpsuitColorDarkBlue
+  - JumpskirtColorDarkBlue
+  - JumpsuitColorDarkGreen
+  - JumpskirtColorDarkGreen
+  - JumpsuitColorTeal
+  - JumpskirtColorTeal
+  - JumpsuitCasualBlue
+  - JumpskirtCasualBlue
+  - JumpsuitCasualPurple
+  - JumpskirtCasualPurple
+  - JumpsuitCasualRed
+  - JumpskirtCasualRed
+  - JumpsuitCasualGreen
+  - JumpskirtCasualGreen 
+  - JumpskirtTurtleneckAquamarine   
+  - JumpsuitTurtleneckAquamarine
+  - JumpskirtTurtleneckWhite
+  - JumpsuitTurtleneckWhite
+  - JumpskirtTurtleneckAzure
+  - JumpsuitTurtleneckAzure
+  - JumpskirtTurtleneckYellow
+  - JumpsuitTurtleneckYellow
+  - JumpskirtTurtleneckGreen
+  - JumpsuitTurtleneckGreen
+  - JumpskirtTurtleneckBrown
+  - JumpsuitTurtleneckBrown
+  - JumpskirtTurtleneckRed
+  - JumpsuitTurtleneckRed
+  - JumpskirtTurtleneckOrange
+  - JumpsuitTurtleneckOrange
+  - JumpskirtTurtleneckPink
+  - JumpsuitTurtleneckPink
+  - JumpskirtTurtleneckGrey
+  - JumpsuitTurtleneckGrey
+  - JumpskirtTurtleneckBlue
+  - JumpsuitTurtleneckBlue
+  - JumpskirtTurtleneckPurple
+  - JumpsuitTurtleneckPurple
+  - JumpskirtTurtleneckBlack
+  - JumpsuitTurtleneckBlack
+  - JumpskirtTurtleneckSalat
+  - JumpsuitTurtleneckSalat
+  - JumpsuitTurtleneckSalatblack
+  - JumpskirtTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckWhiteBlackSleeveless
+  - JumpsuitTurtleneckWhiteSleeveless
+  - JumpskirtTurtleneckWhiteSleeveless
+# Corvax-Wega-add-end
 
 - type: loadoutGroup
   id: ChefOuterClothing
@@ -340,6 +544,74 @@
   - LibrarianJumpskirt
   - CuratorJumpsuit
   - CuratorJumpskirt
+# Corvax-Wega-add-start
+  - JumpsuitColorWhite
+  - JumpskirtColorWhite
+  - JumpsuitColorBlack
+  - JumpskirtColorBlack
+  - JumpsuitColorBlue
+  - JumpskirtColorBlue
+  - JumpsuitColorYellow
+  - JumpskirtColorYellow
+  - JumpsuitColorGreen
+  - JumpskirtColorGreen
+  - JumpsuitColorOrange
+  - JumpskirtColorOrange
+  - JumpsuitColorRed
+  - JumpskirtColorRed
+  - JumpsuitColorPurple
+  - JumpskirtColorPurple
+  - JumpsuitColorPink
+  - JumpskirtColorPink
+  - JumpsuitColorDarkBlue
+  - JumpskirtColorDarkBlue
+  - JumpsuitColorDarkGreen
+  - JumpskirtColorDarkGreen
+  - JumpsuitColorTeal
+  - JumpskirtColorTeal
+  - JumpsuitCasualBlue
+  - JumpskirtCasualBlue
+  - JumpsuitCasualPurple
+  - JumpskirtCasualPurple
+  - JumpsuitCasualRed
+  - JumpskirtCasualRed
+  - JumpsuitCasualGreen
+  - JumpskirtCasualGreen 
+  - JumpskirtTurtleneckAquamarine   
+  - JumpsuitTurtleneckAquamarine
+  - JumpskirtTurtleneckWhite
+  - JumpsuitTurtleneckWhite
+  - JumpskirtTurtleneckAzure
+  - JumpsuitTurtleneckAzure
+  - JumpskirtTurtleneckYellow
+  - JumpsuitTurtleneckYellow
+  - JumpskirtTurtleneckGreen
+  - JumpsuitTurtleneckGreen
+  - JumpskirtTurtleneckBrown
+  - JumpsuitTurtleneckBrown
+  - JumpskirtTurtleneckRed
+  - JumpsuitTurtleneckRed
+  - JumpskirtTurtleneckOrange
+  - JumpsuitTurtleneckOrange
+  - JumpskirtTurtleneckPink
+  - JumpsuitTurtleneckPink
+  - JumpskirtTurtleneckGrey
+  - JumpsuitTurtleneckGrey
+  - JumpskirtTurtleneckBlue
+  - JumpsuitTurtleneckBlue
+  - JumpskirtTurtleneckPurple
+  - JumpsuitTurtleneckPurple
+  - JumpskirtTurtleneckBlack
+  - JumpsuitTurtleneckBlack
+  - JumpskirtTurtleneckSalat
+  - JumpsuitTurtleneckSalat
+  - JumpsuitTurtleneckSalatblack
+  - JumpskirtTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckWhiteBlackSleeveless
+  - JumpsuitTurtleneckWhiteSleeveless
+  - JumpskirtTurtleneckWhiteSleeveless
+# Corvax-Wega-add-end
 
 - type: loadoutGroup
   id: LawyerJumpsuit
@@ -355,6 +627,74 @@
   - LawyerJumpskirtRed
   - LawyerJumpsuitGood
   - LawyerJumpskirtGood
+# Corvax-Wega-add-start
+  - JumpsuitColorWhite
+  - JumpskirtColorWhite
+  - JumpsuitColorBlack
+  - JumpskirtColorBlack
+  - JumpsuitColorBlue
+  - JumpskirtColorBlue
+  - JumpsuitColorYellow
+  - JumpskirtColorYellow
+  - JumpsuitColorGreen
+  - JumpskirtColorGreen
+  - JumpsuitColorOrange
+  - JumpskirtColorOrange
+  - JumpsuitColorRed
+  - JumpskirtColorRed
+  - JumpsuitColorPurple
+  - JumpskirtColorPurple
+  - JumpsuitColorPink
+  - JumpskirtColorPink
+  - JumpsuitColorDarkBlue
+  - JumpskirtColorDarkBlue
+  - JumpsuitColorDarkGreen
+  - JumpskirtColorDarkGreen
+  - JumpsuitColorTeal
+  - JumpskirtColorTeal
+  - JumpsuitCasualBlue
+  - JumpskirtCasualBlue
+  - JumpsuitCasualPurple
+  - JumpskirtCasualPurple
+  - JumpsuitCasualRed
+  - JumpskirtCasualRed
+  - JumpsuitCasualGreen
+  - JumpskirtCasualGreen 
+  - JumpskirtTurtleneckAquamarine   
+  - JumpsuitTurtleneckAquamarine
+  - JumpskirtTurtleneckWhite
+  - JumpsuitTurtleneckWhite
+  - JumpskirtTurtleneckAzure
+  - JumpsuitTurtleneckAzure
+  - JumpskirtTurtleneckYellow
+  - JumpsuitTurtleneckYellow
+  - JumpskirtTurtleneckGreen
+  - JumpsuitTurtleneckGreen
+  - JumpskirtTurtleneckBrown
+  - JumpsuitTurtleneckBrown
+  - JumpskirtTurtleneckRed
+  - JumpsuitTurtleneckRed
+  - JumpskirtTurtleneckOrange
+  - JumpsuitTurtleneckOrange
+  - JumpskirtTurtleneckPink
+  - JumpsuitTurtleneckPink
+  - JumpskirtTurtleneckGrey
+  - JumpsuitTurtleneckGrey
+  - JumpskirtTurtleneckBlue
+  - JumpsuitTurtleneckBlue
+  - JumpskirtTurtleneckPurple
+  - JumpsuitTurtleneckPurple
+  - JumpskirtTurtleneckBlack
+  - JumpsuitTurtleneckBlack
+  - JumpskirtTurtleneckSalat
+  - JumpsuitTurtleneckSalat
+  - JumpsuitTurtleneckSalatblack
+  - JumpskirtTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckWhiteBlackSleeveless
+  - JumpsuitTurtleneckWhiteSleeveless
+  - JumpskirtTurtleneckWhiteSleeveless
+# Corvax-Wega-add-end
 
 - type: loadoutGroup
   id: LawyerNeck
@@ -399,6 +739,74 @@
   - ChaplainNunRobe
   - ChaplainBlackHoodie
   - ChaplainHoodie
+# Corvax-Wega-add-start
+  - JumpsuitColorWhite
+  - JumpskirtColorWhite
+  - JumpsuitColorBlack
+  - JumpskirtColorBlack
+  - JumpsuitColorBlue
+  - JumpskirtColorBlue
+  - JumpsuitColorYellow
+  - JumpskirtColorYellow
+  - JumpsuitColorGreen
+  - JumpskirtColorGreen
+  - JumpsuitColorOrange
+  - JumpskirtColorOrange
+  - JumpsuitColorRed
+  - JumpskirtColorRed
+  - JumpsuitColorPurple
+  - JumpskirtColorPurple
+  - JumpsuitColorPink
+  - JumpskirtColorPink
+  - JumpsuitColorDarkBlue
+  - JumpskirtColorDarkBlue
+  - JumpsuitColorDarkGreen
+  - JumpskirtColorDarkGreen
+  - JumpsuitColorTeal
+  - JumpskirtColorTeal
+  - JumpsuitCasualBlue
+  - JumpskirtCasualBlue
+  - JumpsuitCasualPurple
+  - JumpskirtCasualPurple
+  - JumpsuitCasualRed
+  - JumpskirtCasualRed
+  - JumpsuitCasualGreen
+  - JumpskirtCasualGreen 
+  - JumpskirtTurtleneckAquamarine   
+  - JumpsuitTurtleneckAquamarine
+  - JumpskirtTurtleneckWhite
+  - JumpsuitTurtleneckWhite
+  - JumpskirtTurtleneckAzure
+  - JumpsuitTurtleneckAzure
+  - JumpskirtTurtleneckYellow
+  - JumpsuitTurtleneckYellow
+  - JumpskirtTurtleneckGreen
+  - JumpsuitTurtleneckGreen
+  - JumpskirtTurtleneckBrown
+  - JumpsuitTurtleneckBrown
+  - JumpskirtTurtleneckRed
+  - JumpsuitTurtleneckRed
+  - JumpskirtTurtleneckOrange
+  - JumpsuitTurtleneckOrange
+  - JumpskirtTurtleneckPink
+  - JumpsuitTurtleneckPink
+  - JumpskirtTurtleneckGrey
+  - JumpsuitTurtleneckGrey
+  - JumpskirtTurtleneckBlue
+  - JumpsuitTurtleneckBlue
+  - JumpskirtTurtleneckPurple
+  - JumpsuitTurtleneckPurple
+  - JumpskirtTurtleneckBlack
+  - JumpsuitTurtleneckBlack
+  - JumpskirtTurtleneckSalat
+  - JumpsuitTurtleneckSalat
+  - JumpsuitTurtleneckSalatblack
+  - JumpskirtTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckWhiteBlackSleeveless
+  - JumpsuitTurtleneckWhiteSleeveless
+  - JumpskirtTurtleneckWhiteSleeveless
+# Corvax-Wega-add-end
 
 - type: loadoutGroup
   id: ChaplainNeck
@@ -434,6 +842,74 @@
   - JanitorJanimaid # Corvax-Wega
   - JanitorJanimaidmini # Corvax-Wega
   - JanitorElegantMaid # Corvax-Wega
+# Corvax-Wega-add-start
+  - JumpsuitColorWhite
+  - JumpskirtColorWhite
+  - JumpsuitColorBlack
+  - JumpskirtColorBlack
+  - JumpsuitColorBlue
+  - JumpskirtColorBlue
+  - JumpsuitColorYellow
+  - JumpskirtColorYellow
+  - JumpsuitColorGreen
+  - JumpskirtColorGreen
+  - JumpsuitColorOrange
+  - JumpskirtColorOrange
+  - JumpsuitColorRed
+  - JumpskirtColorRed
+  - JumpsuitColorPurple
+  - JumpskirtColorPurple
+  - JumpsuitColorPink
+  - JumpskirtColorPink
+  - JumpsuitColorDarkBlue
+  - JumpskirtColorDarkBlue
+  - JumpsuitColorDarkGreen
+  - JumpskirtColorDarkGreen
+  - JumpsuitColorTeal
+  - JumpskirtColorTeal
+  - JumpsuitCasualBlue
+  - JumpskirtCasualBlue
+  - JumpsuitCasualPurple
+  - JumpskirtCasualPurple
+  - JumpsuitCasualRed
+  - JumpskirtCasualRed
+  - JumpsuitCasualGreen
+  - JumpskirtCasualGreen 
+  - JumpskirtTurtleneckAquamarine   
+  - JumpsuitTurtleneckAquamarine
+  - JumpskirtTurtleneckWhite
+  - JumpsuitTurtleneckWhite
+  - JumpskirtTurtleneckAzure
+  - JumpsuitTurtleneckAzure
+  - JumpskirtTurtleneckYellow
+  - JumpsuitTurtleneckYellow
+  - JumpskirtTurtleneckGreen
+  - JumpsuitTurtleneckGreen
+  - JumpskirtTurtleneckBrown
+  - JumpsuitTurtleneckBrown
+  - JumpskirtTurtleneckRed
+  - JumpsuitTurtleneckRed
+  - JumpskirtTurtleneckOrange
+  - JumpsuitTurtleneckOrange
+  - JumpskirtTurtleneckPink
+  - JumpsuitTurtleneckPink
+  - JumpskirtTurtleneckGrey
+  - JumpsuitTurtleneckGrey
+  - JumpskirtTurtleneckBlue
+  - JumpsuitTurtleneckBlue
+  - JumpskirtTurtleneckPurple
+  - JumpsuitTurtleneckPurple
+  - JumpskirtTurtleneckBlack
+  - JumpsuitTurtleneckBlack
+  - JumpskirtTurtleneckSalat
+  - JumpsuitTurtleneckSalat
+  - JumpsuitTurtleneckSalatblack
+  - JumpskirtTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckWhiteBlackSleeveless
+  - JumpsuitTurtleneckWhiteSleeveless
+  - JumpskirtTurtleneckWhiteSleeveless
+# Corvax-Wega-add-end
 
 - type: loadoutGroup
   id: JanitorGloves
@@ -473,6 +949,74 @@
   - BotanistJumpsuit
   - BotanistJumpskirt
   - BotanistOveralls
+# Corvax-Wega-add-start
+  - JumpsuitColorWhite
+  - JumpskirtColorWhite
+  - JumpsuitColorBlack
+  - JumpskirtColorBlack
+  - JumpsuitColorBlue
+  - JumpskirtColorBlue
+  - JumpsuitColorYellow
+  - JumpskirtColorYellow
+  - JumpsuitColorGreen
+  - JumpskirtColorGreen
+  - JumpsuitColorOrange
+  - JumpskirtColorOrange
+  - JumpsuitColorRed
+  - JumpskirtColorRed
+  - JumpsuitColorPurple
+  - JumpskirtColorPurple
+  - JumpsuitColorPink
+  - JumpskirtColorPink
+  - JumpsuitColorDarkBlue
+  - JumpskirtColorDarkBlue
+  - JumpsuitColorDarkGreen
+  - JumpskirtColorDarkGreen
+  - JumpsuitColorTeal
+  - JumpskirtColorTeal
+  - JumpsuitCasualBlue
+  - JumpskirtCasualBlue
+  - JumpsuitCasualPurple
+  - JumpskirtCasualPurple
+  - JumpsuitCasualRed
+  - JumpskirtCasualRed
+  - JumpsuitCasualGreen
+  - JumpskirtCasualGreen 
+  - JumpskirtTurtleneckAquamarine   
+  - JumpsuitTurtleneckAquamarine
+  - JumpskirtTurtleneckWhite
+  - JumpsuitTurtleneckWhite
+  - JumpskirtTurtleneckAzure
+  - JumpsuitTurtleneckAzure
+  - JumpskirtTurtleneckYellow
+  - JumpsuitTurtleneckYellow
+  - JumpskirtTurtleneckGreen
+  - JumpsuitTurtleneckGreen
+  - JumpskirtTurtleneckBrown
+  - JumpsuitTurtleneckBrown
+  - JumpskirtTurtleneckRed
+  - JumpsuitTurtleneckRed
+  - JumpskirtTurtleneckOrange
+  - JumpsuitTurtleneckOrange
+  - JumpskirtTurtleneckPink
+  - JumpsuitTurtleneckPink
+  - JumpskirtTurtleneckGrey
+  - JumpsuitTurtleneckGrey
+  - JumpskirtTurtleneckBlue
+  - JumpsuitTurtleneckBlue
+  - JumpskirtTurtleneckPurple
+  - JumpsuitTurtleneckPurple
+  - JumpskirtTurtleneckBlack
+  - JumpsuitTurtleneckBlack
+  - JumpskirtTurtleneckSalat
+  - JumpsuitTurtleneckSalat
+  - JumpsuitTurtleneckSalatblack
+  - JumpskirtTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckWhiteBlackSleeveless
+  - JumpsuitTurtleneckWhiteSleeveless
+  - JumpskirtTurtleneckWhiteSleeveless
+# Corvax-Wega-add-end
 
 - type: loadoutGroup
   id: BotanistBackpack
@@ -506,6 +1050,74 @@
   - ClownSkirt
   - JesterSuit
   - JesterAltSuit
+# Corvax-Wega-add-start
+  - JumpsuitColorWhite
+  - JumpskirtColorWhite
+  - JumpsuitColorBlack
+  - JumpskirtColorBlack
+  - JumpsuitColorBlue
+  - JumpskirtColorBlue
+  - JumpsuitColorYellow
+  - JumpskirtColorYellow
+  - JumpsuitColorGreen
+  - JumpskirtColorGreen
+  - JumpsuitColorOrange
+  - JumpskirtColorOrange
+  - JumpsuitColorRed
+  - JumpskirtColorRed
+  - JumpsuitColorPurple
+  - JumpskirtColorPurple
+  - JumpsuitColorPink
+  - JumpskirtColorPink
+  - JumpsuitColorDarkBlue
+  - JumpskirtColorDarkBlue
+  - JumpsuitColorDarkGreen
+  - JumpskirtColorDarkGreen
+  - JumpsuitColorTeal
+  - JumpskirtColorTeal
+  - JumpsuitCasualBlue
+  - JumpskirtCasualBlue
+  - JumpsuitCasualPurple
+  - JumpskirtCasualPurple
+  - JumpsuitCasualRed
+  - JumpskirtCasualRed
+  - JumpsuitCasualGreen
+  - JumpskirtCasualGreen 
+  - JumpskirtTurtleneckAquamarine   
+  - JumpsuitTurtleneckAquamarine
+  - JumpskirtTurtleneckWhite
+  - JumpsuitTurtleneckWhite
+  - JumpskirtTurtleneckAzure
+  - JumpsuitTurtleneckAzure
+  - JumpskirtTurtleneckYellow
+  - JumpsuitTurtleneckYellow
+  - JumpskirtTurtleneckGreen
+  - JumpsuitTurtleneckGreen
+  - JumpskirtTurtleneckBrown
+  - JumpsuitTurtleneckBrown
+  - JumpskirtTurtleneckRed
+  - JumpsuitTurtleneckRed
+  - JumpskirtTurtleneckOrange
+  - JumpsuitTurtleneckOrange
+  - JumpskirtTurtleneckPink
+  - JumpsuitTurtleneckPink
+  - JumpskirtTurtleneckGrey
+  - JumpsuitTurtleneckGrey
+  - JumpskirtTurtleneckBlue
+  - JumpsuitTurtleneckBlue
+  - JumpskirtTurtleneckPurple
+  - JumpsuitTurtleneckPurple
+  - JumpskirtTurtleneckBlack
+  - JumpsuitTurtleneckBlack
+  - JumpskirtTurtleneckSalat
+  - JumpsuitTurtleneckSalat
+  - JumpsuitTurtleneckSalatblack
+  - JumpskirtTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckWhiteBlackSleeveless
+  - JumpsuitTurtleneckWhiteSleeveless
+  - JumpskirtTurtleneckWhiteSleeveless
+# Corvax-Wega-add-end
 
 - type: loadoutGroup
   id: ClownBackpack
@@ -564,6 +1176,74 @@
   loadouts:
   - MimeJumpsuit
   - MimeJumpskirt
+# Corvax-Wega-add-start
+  - JumpsuitColorWhite
+  - JumpskirtColorWhite
+  - JumpsuitColorBlack
+  - JumpskirtColorBlack
+  - JumpsuitColorBlue
+  - JumpskirtColorBlue
+  - JumpsuitColorYellow
+  - JumpskirtColorYellow
+  - JumpsuitColorGreen
+  - JumpskirtColorGreen
+  - JumpsuitColorOrange
+  - JumpskirtColorOrange
+  - JumpsuitColorRed
+  - JumpskirtColorRed
+  - JumpsuitColorPurple
+  - JumpskirtColorPurple
+  - JumpsuitColorPink
+  - JumpskirtColorPink
+  - JumpsuitColorDarkBlue
+  - JumpskirtColorDarkBlue
+  - JumpsuitColorDarkGreen
+  - JumpskirtColorDarkGreen
+  - JumpsuitColorTeal
+  - JumpskirtColorTeal
+  - JumpsuitCasualBlue
+  - JumpskirtCasualBlue
+  - JumpsuitCasualPurple
+  - JumpskirtCasualPurple
+  - JumpsuitCasualRed
+  - JumpskirtCasualRed
+  - JumpsuitCasualGreen
+  - JumpskirtCasualGreen 
+  - JumpskirtTurtleneckAquamarine   
+  - JumpsuitTurtleneckAquamarine
+  - JumpskirtTurtleneckWhite
+  - JumpsuitTurtleneckWhite
+  - JumpskirtTurtleneckAzure
+  - JumpsuitTurtleneckAzure
+  - JumpskirtTurtleneckYellow
+  - JumpsuitTurtleneckYellow
+  - JumpskirtTurtleneckGreen
+  - JumpsuitTurtleneckGreen
+  - JumpskirtTurtleneckBrown
+  - JumpsuitTurtleneckBrown
+  - JumpskirtTurtleneckRed
+  - JumpsuitTurtleneckRed
+  - JumpskirtTurtleneckOrange
+  - JumpsuitTurtleneckOrange
+  - JumpskirtTurtleneckPink
+  - JumpsuitTurtleneckPink
+  - JumpskirtTurtleneckGrey
+  - JumpsuitTurtleneckGrey
+  - JumpskirtTurtleneckBlue
+  - JumpsuitTurtleneckBlue
+  - JumpskirtTurtleneckPurple
+  - JumpsuitTurtleneckPurple
+  - JumpskirtTurtleneckBlack
+  - JumpsuitTurtleneckBlack
+  - JumpskirtTurtleneckSalat
+  - JumpsuitTurtleneckSalat
+  - JumpsuitTurtleneckSalatblack
+  - JumpskirtTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckWhiteBlackSleeveless
+  - JumpsuitTurtleneckWhiteSleeveless
+  - JumpskirtTurtleneckWhiteSleeveless
+# Corvax-Wega-add-end
 
 - type: loadoutGroup
   id: MimeBackpack
@@ -605,6 +1285,74 @@
   loadouts:
   - MusicianJumpsuit
   - MusicianJumpskirt
+# Corvax-Wega-add-start
+  - JumpsuitColorWhite
+  - JumpskirtColorWhite
+  - JumpsuitColorBlack
+  - JumpskirtColorBlack
+  - JumpsuitColorBlue
+  - JumpskirtColorBlue
+  - JumpsuitColorYellow
+  - JumpskirtColorYellow
+  - JumpsuitColorGreen
+  - JumpskirtColorGreen
+  - JumpsuitColorOrange
+  - JumpskirtColorOrange
+  - JumpsuitColorRed
+  - JumpskirtColorRed
+  - JumpsuitColorPurple
+  - JumpskirtColorPurple
+  - JumpsuitColorPink
+  - JumpskirtColorPink
+  - JumpsuitColorDarkBlue
+  - JumpskirtColorDarkBlue
+  - JumpsuitColorDarkGreen
+  - JumpskirtColorDarkGreen
+  - JumpsuitColorTeal
+  - JumpskirtColorTeal
+  - JumpsuitCasualBlue
+  - JumpskirtCasualBlue
+  - JumpsuitCasualPurple
+  - JumpskirtCasualPurple
+  - JumpsuitCasualRed
+  - JumpskirtCasualRed
+  - JumpsuitCasualGreen
+  - JumpskirtCasualGreen 
+  - JumpskirtTurtleneckAquamarine   
+  - JumpsuitTurtleneckAquamarine
+  - JumpskirtTurtleneckWhite
+  - JumpsuitTurtleneckWhite
+  - JumpskirtTurtleneckAzure
+  - JumpsuitTurtleneckAzure
+  - JumpskirtTurtleneckYellow
+  - JumpsuitTurtleneckYellow
+  - JumpskirtTurtleneckGreen
+  - JumpsuitTurtleneckGreen
+  - JumpskirtTurtleneckBrown
+  - JumpsuitTurtleneckBrown
+  - JumpskirtTurtleneckRed
+  - JumpsuitTurtleneckRed
+  - JumpskirtTurtleneckOrange
+  - JumpsuitTurtleneckOrange
+  - JumpskirtTurtleneckPink
+  - JumpsuitTurtleneckPink
+  - JumpskirtTurtleneckGrey
+  - JumpsuitTurtleneckGrey
+  - JumpskirtTurtleneckBlue
+  - JumpsuitTurtleneckBlue
+  - JumpskirtTurtleneckPurple
+  - JumpsuitTurtleneckPurple
+  - JumpskirtTurtleneckBlack
+  - JumpsuitTurtleneckBlack
+  - JumpskirtTurtleneckSalat
+  - JumpsuitTurtleneckSalat
+  - JumpsuitTurtleneckSalatblack
+  - JumpskirtTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckWhiteBlackSleeveless
+  - JumpsuitTurtleneckWhiteSleeveless
+  - JumpskirtTurtleneckWhiteSleeveless
+# Corvax-Wega-add-end
 
 - type: loadoutGroup
   id: MusicianOuterClothing
@@ -703,6 +1451,74 @@
   loadouts:
   - CargoTechnicianJumpsuit
   - CargoTechnicianJumpskirt
+# Corvax-Wega-add-start
+  - JumpsuitColorWhite
+  - JumpskirtColorWhite
+  - JumpsuitColorBlack
+  - JumpskirtColorBlack
+  - JumpsuitColorBlue
+  - JumpskirtColorBlue
+  - JumpsuitColorYellow
+  - JumpskirtColorYellow
+  - JumpsuitColorGreen
+  - JumpskirtColorGreen
+  - JumpsuitColorOrange
+  - JumpskirtColorOrange
+  - JumpsuitColorRed
+  - JumpskirtColorRed
+  - JumpsuitColorPurple
+  - JumpskirtColorPurple
+  - JumpsuitColorPink
+  - JumpskirtColorPink
+  - JumpsuitColorDarkBlue
+  - JumpskirtColorDarkBlue
+  - JumpsuitColorDarkGreen
+  - JumpskirtColorDarkGreen
+  - JumpsuitColorTeal
+  - JumpskirtColorTeal
+  - JumpsuitCasualBlue
+  - JumpskirtCasualBlue
+  - JumpsuitCasualPurple
+  - JumpskirtCasualPurple
+  - JumpsuitCasualRed
+  - JumpskirtCasualRed
+  - JumpsuitCasualGreen
+  - JumpskirtCasualGreen 
+  - JumpskirtTurtleneckAquamarine   
+  - JumpsuitTurtleneckAquamarine
+  - JumpskirtTurtleneckWhite
+  - JumpsuitTurtleneckWhite
+  - JumpskirtTurtleneckAzure
+  - JumpsuitTurtleneckAzure
+  - JumpskirtTurtleneckYellow
+  - JumpsuitTurtleneckYellow
+  - JumpskirtTurtleneckGreen
+  - JumpsuitTurtleneckGreen
+  - JumpskirtTurtleneckBrown
+  - JumpsuitTurtleneckBrown
+  - JumpskirtTurtleneckRed
+  - JumpsuitTurtleneckRed
+  - JumpskirtTurtleneckOrange
+  - JumpsuitTurtleneckOrange
+  - JumpskirtTurtleneckPink
+  - JumpsuitTurtleneckPink
+  - JumpskirtTurtleneckGrey
+  - JumpsuitTurtleneckGrey
+  - JumpskirtTurtleneckBlue
+  - JumpsuitTurtleneckBlue
+  - JumpskirtTurtleneckPurple
+  - JumpsuitTurtleneckPurple
+  - JumpskirtTurtleneckBlack
+  - JumpsuitTurtleneckBlack
+  - JumpskirtTurtleneckSalat
+  - JumpsuitTurtleneckSalat
+  - JumpsuitTurtleneckSalatblack
+  - JumpskirtTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckWhiteBlackSleeveless
+  - JumpsuitTurtleneckWhiteSleeveless
+  - JumpskirtTurtleneckWhiteSleeveless
+# Corvax-Wega-add-end
 
 - type: loadoutGroup
   id: CargoTechnicianBackpack
@@ -725,6 +1541,13 @@
   loadouts:
   - BlackShoes
   - CargoWinterBoots
+
+- type: loadoutGroup
+  id: CargoTechnicianID
+  name: loadout-group-cargo-technician-id
+  loadouts:
+  - CargoTechnicianPDA
+  - SeniorCourierPDA
 
 - type: loadoutGroup
   id: SalvageSpecialistBackpack
@@ -794,6 +1617,74 @@
   loadouts:
   - YellowJumpsuit
   - YellowJumpskirt
+# Corvax-Wega-add-start
+  - JumpsuitColorWhite
+  - JumpskirtColorWhite
+  - JumpsuitColorBlack
+  - JumpskirtColorBlack
+  - JumpsuitColorBlue
+  - JumpskirtColorBlue
+  - JumpsuitColorYellow
+  - JumpskirtColorYellow
+  - JumpsuitColorGreen
+  - JumpskirtColorGreen
+  - JumpsuitColorOrange
+  - JumpskirtColorOrange
+  - JumpsuitColorRed
+  - JumpskirtColorRed
+  - JumpsuitColorPurple
+  - JumpskirtColorPurple
+  - JumpsuitColorPink
+  - JumpskirtColorPink
+  - JumpsuitColorDarkBlue
+  - JumpskirtColorDarkBlue
+  - JumpsuitColorDarkGreen
+  - JumpskirtColorDarkGreen
+  - JumpsuitColorTeal
+  - JumpskirtColorTeal
+  - JumpsuitCasualBlue
+  - JumpskirtCasualBlue
+  - JumpsuitCasualPurple
+  - JumpskirtCasualPurple
+  - JumpsuitCasualRed
+  - JumpskirtCasualRed
+  - JumpsuitCasualGreen
+  - JumpskirtCasualGreen 
+  - JumpskirtTurtleneckAquamarine   
+  - JumpsuitTurtleneckAquamarine
+  - JumpskirtTurtleneckWhite
+  - JumpsuitTurtleneckWhite
+  - JumpskirtTurtleneckAzure
+  - JumpsuitTurtleneckAzure
+  - JumpskirtTurtleneckYellow
+  - JumpsuitTurtleneckYellow
+  - JumpskirtTurtleneckGreen
+  - JumpsuitTurtleneckGreen
+  - JumpskirtTurtleneckBrown
+  - JumpsuitTurtleneckBrown
+  - JumpskirtTurtleneckRed
+  - JumpsuitTurtleneckRed
+  - JumpskirtTurtleneckOrange
+  - JumpsuitTurtleneckOrange
+  - JumpskirtTurtleneckPink
+  - JumpsuitTurtleneckPink
+  - JumpskirtTurtleneckGrey
+  - JumpsuitTurtleneckGrey
+  - JumpskirtTurtleneckBlue
+  - JumpsuitTurtleneckBlue
+  - JumpskirtTurtleneckPurple
+  - JumpsuitTurtleneckPurple
+  - JumpskirtTurtleneckBlack
+  - JumpsuitTurtleneckBlack
+  - JumpskirtTurtleneckSalat
+  - JumpsuitTurtleneckSalat
+  - JumpsuitTurtleneckSalatblack
+  - JumpskirtTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckWhiteBlackSleeveless
+  - JumpsuitTurtleneckWhiteSleeveless
+  - JumpskirtTurtleneckWhiteSleeveless
+# Corvax-Wega-add-end
 
 - type: loadoutGroup
   id: StationEngineerHead
@@ -814,6 +1705,74 @@
   - StationEngineerHazardsuit
   - SeniorEngineerJumpsuit
   - SeniorEngineerJumpskirt
+# Corvax-Wega-add-start
+  - JumpsuitColorWhite
+  - JumpskirtColorWhite
+  - JumpsuitColorBlack
+  - JumpskirtColorBlack
+  - JumpsuitColorBlue
+  - JumpskirtColorBlue
+  - JumpsuitColorYellow
+  - JumpskirtColorYellow
+  - JumpsuitColorGreen
+  - JumpskirtColorGreen
+  - JumpsuitColorOrange
+  - JumpskirtColorOrange
+  - JumpsuitColorRed
+  - JumpskirtColorRed
+  - JumpsuitColorPurple
+  - JumpskirtColorPurple
+  - JumpsuitColorPink
+  - JumpskirtColorPink
+  - JumpsuitColorDarkBlue
+  - JumpskirtColorDarkBlue
+  - JumpsuitColorDarkGreen
+  - JumpskirtColorDarkGreen
+  - JumpsuitColorTeal
+  - JumpskirtColorTeal
+  - JumpsuitCasualBlue
+  - JumpskirtCasualBlue
+  - JumpsuitCasualPurple
+  - JumpskirtCasualPurple
+  - JumpsuitCasualRed
+  - JumpskirtCasualRed
+  - JumpsuitCasualGreen
+  - JumpskirtCasualGreen 
+  - JumpskirtTurtleneckAquamarine   
+  - JumpsuitTurtleneckAquamarine
+  - JumpskirtTurtleneckWhite
+  - JumpsuitTurtleneckWhite
+  - JumpskirtTurtleneckAzure
+  - JumpsuitTurtleneckAzure
+  - JumpskirtTurtleneckYellow
+  - JumpsuitTurtleneckYellow
+  - JumpskirtTurtleneckGreen
+  - JumpsuitTurtleneckGreen
+  - JumpskirtTurtleneckBrown
+  - JumpsuitTurtleneckBrown
+  - JumpskirtTurtleneckRed
+  - JumpsuitTurtleneckRed
+  - JumpskirtTurtleneckOrange
+  - JumpsuitTurtleneckOrange
+  - JumpskirtTurtleneckPink
+  - JumpsuitTurtleneckPink
+  - JumpskirtTurtleneckGrey
+  - JumpsuitTurtleneckGrey
+  - JumpskirtTurtleneckBlue
+  - JumpsuitTurtleneckBlue
+  - JumpskirtTurtleneckPurple
+  - JumpsuitTurtleneckPurple
+  - JumpskirtTurtleneckBlack
+  - JumpsuitTurtleneckBlack
+  - JumpskirtTurtleneckSalat
+  - JumpsuitTurtleneckSalat
+  - JumpsuitTurtleneckSalatblack
+  - JumpskirtTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckWhiteBlackSleeveless
+  - JumpsuitTurtleneckWhiteSleeveless
+  - JumpskirtTurtleneckWhiteSleeveless
+# Corvax-Wega-add-end
 
 - type: loadoutGroup
   id: StationEngineerBackpack
@@ -852,6 +1811,74 @@
   - AtmosphericTechnicianJumpsuit
   - AtmosphericTechnicianJumpskirt
   - AtmosphericTechnicianJumpsuitCasual
+# Corvax-Wega-add-start
+  - JumpsuitColorWhite
+  - JumpskirtColorWhite
+  - JumpsuitColorBlack
+  - JumpskirtColorBlack
+  - JumpsuitColorBlue
+  - JumpskirtColorBlue
+  - JumpsuitColorYellow
+  - JumpskirtColorYellow
+  - JumpsuitColorGreen
+  - JumpskirtColorGreen
+  - JumpsuitColorOrange
+  - JumpskirtColorOrange
+  - JumpsuitColorRed
+  - JumpskirtColorRed
+  - JumpsuitColorPurple
+  - JumpskirtColorPurple
+  - JumpsuitColorPink
+  - JumpskirtColorPink
+  - JumpsuitColorDarkBlue
+  - JumpskirtColorDarkBlue
+  - JumpsuitColorDarkGreen
+  - JumpskirtColorDarkGreen
+  - JumpsuitColorTeal
+  - JumpskirtColorTeal
+  - JumpsuitCasualBlue
+  - JumpskirtCasualBlue
+  - JumpsuitCasualPurple
+  - JumpskirtCasualPurple
+  - JumpsuitCasualRed
+  - JumpskirtCasualRed
+  - JumpsuitCasualGreen
+  - JumpskirtCasualGreen 
+  - JumpskirtTurtleneckAquamarine   
+  - JumpsuitTurtleneckAquamarine
+  - JumpskirtTurtleneckWhite
+  - JumpsuitTurtleneckWhite
+  - JumpskirtTurtleneckAzure
+  - JumpsuitTurtleneckAzure
+  - JumpskirtTurtleneckYellow
+  - JumpsuitTurtleneckYellow
+  - JumpskirtTurtleneckGreen
+  - JumpsuitTurtleneckGreen
+  - JumpskirtTurtleneckBrown
+  - JumpsuitTurtleneckBrown
+  - JumpskirtTurtleneckRed
+  - JumpsuitTurtleneckRed
+  - JumpskirtTurtleneckOrange
+  - JumpsuitTurtleneckOrange
+  - JumpskirtTurtleneckPink
+  - JumpsuitTurtleneckPink
+  - JumpskirtTurtleneckGrey
+  - JumpsuitTurtleneckGrey
+  - JumpskirtTurtleneckBlue
+  - JumpsuitTurtleneckBlue
+  - JumpskirtTurtleneckPurple
+  - JumpsuitTurtleneckPurple
+  - JumpskirtTurtleneckBlack
+  - JumpsuitTurtleneckBlack
+  - JumpskirtTurtleneckSalat
+  - JumpsuitTurtleneckSalat
+  - JumpsuitTurtleneckSalatblack
+  - JumpskirtTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckWhiteBlackSleeveless
+  - JumpsuitTurtleneckWhiteSleeveless
+  - JumpskirtTurtleneckWhiteSleeveless
+# Corvax-Wega-add-end
 
 - type: loadoutGroup
   id: AtmosphericTechnicianOuterClothing
@@ -955,6 +1982,74 @@
   - RoboticistJumpskirt
   - SeniorResearcherJumpsuit
   - SeniorResearcherJumpskirt
+# Corvax-Wega-add-start
+  - JumpsuitColorWhite
+  - JumpskirtColorWhite
+  - JumpsuitColorBlack
+  - JumpskirtColorBlack
+  - JumpsuitColorBlue
+  - JumpskirtColorBlue
+  - JumpsuitColorYellow
+  - JumpskirtColorYellow
+  - JumpsuitColorGreen
+  - JumpskirtColorGreen
+  - JumpsuitColorOrange
+  - JumpskirtColorOrange
+  - JumpsuitColorRed
+  - JumpskirtColorRed
+  - JumpsuitColorPurple
+  - JumpskirtColorPurple
+  - JumpsuitColorPink
+  - JumpskirtColorPink
+  - JumpsuitColorDarkBlue
+  - JumpskirtColorDarkBlue
+  - JumpsuitColorDarkGreen
+  - JumpskirtColorDarkGreen
+  - JumpsuitColorTeal
+  - JumpskirtColorTeal
+  - JumpsuitCasualBlue
+  - JumpskirtCasualBlue
+  - JumpsuitCasualPurple
+  - JumpskirtCasualPurple
+  - JumpsuitCasualRed
+  - JumpskirtCasualRed
+  - JumpsuitCasualGreen
+  - JumpskirtCasualGreen 
+  - JumpskirtTurtleneckAquamarine   
+  - JumpsuitTurtleneckAquamarine
+  - JumpskirtTurtleneckWhite
+  - JumpsuitTurtleneckWhite
+  - JumpskirtTurtleneckAzure
+  - JumpsuitTurtleneckAzure
+  - JumpskirtTurtleneckYellow
+  - JumpsuitTurtleneckYellow
+  - JumpskirtTurtleneckGreen
+  - JumpsuitTurtleneckGreen
+  - JumpskirtTurtleneckBrown
+  - JumpsuitTurtleneckBrown
+  - JumpskirtTurtleneckRed
+  - JumpsuitTurtleneckRed
+  - JumpskirtTurtleneckOrange
+  - JumpsuitTurtleneckOrange
+  - JumpskirtTurtleneckPink
+  - JumpsuitTurtleneckPink
+  - JumpskirtTurtleneckGrey
+  - JumpsuitTurtleneckGrey
+  - JumpskirtTurtleneckBlue
+  - JumpsuitTurtleneckBlue
+  - JumpskirtTurtleneckPurple
+  - JumpsuitTurtleneckPurple
+  - JumpskirtTurtleneckBlack
+  - JumpsuitTurtleneckBlack
+  - JumpskirtTurtleneckSalat
+  - JumpsuitTurtleneckSalat
+  - JumpsuitTurtleneckSalatblack
+  - JumpskirtTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckWhiteBlackSleeveless
+  - JumpsuitTurtleneckWhiteSleeveless
+  - JumpskirtTurtleneckWhiteSleeveless
+# Corvax-Wega-add-end
 
 - type: loadoutGroup
   id: ScientistBackpack
@@ -1006,6 +2101,74 @@
   loadouts:
   - WhiteJumpsuit
   - WhiteJumpskirt
+# Corvax-Wega-add-start
+  - JumpsuitColorWhite
+  - JumpskirtColorWhite
+  - JumpsuitColorBlack
+  - JumpskirtColorBlack
+  - JumpsuitColorBlue
+  - JumpskirtColorBlue
+  - JumpsuitColorYellow
+  - JumpskirtColorYellow
+  - JumpsuitColorGreen
+  - JumpskirtColorGreen
+  - JumpsuitColorOrange
+  - JumpskirtColorOrange
+  - JumpsuitColorRed
+  - JumpskirtColorRed
+  - JumpsuitColorPurple
+  - JumpskirtColorPurple
+  - JumpsuitColorPink
+  - JumpskirtColorPink
+  - JumpsuitColorDarkBlue
+  - JumpskirtColorDarkBlue
+  - JumpsuitColorDarkGreen
+  - JumpskirtColorDarkGreen
+  - JumpsuitColorTeal
+  - JumpskirtColorTeal
+  - JumpsuitCasualBlue
+  - JumpskirtCasualBlue
+  - JumpsuitCasualPurple
+  - JumpskirtCasualPurple
+  - JumpsuitCasualRed
+  - JumpskirtCasualRed
+  - JumpsuitCasualGreen
+  - JumpskirtCasualGreen 
+  - JumpskirtTurtleneckAquamarine   
+  - JumpsuitTurtleneckAquamarine
+  - JumpskirtTurtleneckWhite
+  - JumpsuitTurtleneckWhite
+  - JumpskirtTurtleneckAzure
+  - JumpsuitTurtleneckAzure
+  - JumpskirtTurtleneckYellow
+  - JumpsuitTurtleneckYellow
+  - JumpskirtTurtleneckGreen
+  - JumpsuitTurtleneckGreen
+  - JumpskirtTurtleneckBrown
+  - JumpsuitTurtleneckBrown
+  - JumpskirtTurtleneckRed
+  - JumpsuitTurtleneckRed
+  - JumpskirtTurtleneckOrange
+  - JumpsuitTurtleneckOrange
+  - JumpskirtTurtleneckPink
+  - JumpsuitTurtleneckPink
+  - JumpskirtTurtleneckGrey
+  - JumpsuitTurtleneckGrey
+  - JumpskirtTurtleneckBlue
+  - JumpsuitTurtleneckBlue
+  - JumpskirtTurtleneckPurple
+  - JumpsuitTurtleneckPurple
+  - JumpskirtTurtleneckBlack
+  - JumpsuitTurtleneckBlack
+  - JumpskirtTurtleneckSalat
+  - JumpsuitTurtleneckSalat
+  - JumpsuitTurtleneckSalatblack
+  - JumpskirtTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckWhiteBlackSleeveless
+  - JumpsuitTurtleneckWhiteSleeveless
+  - JumpskirtTurtleneckWhiteSleeveless
+# Corvax-Wega-add-end
 
 # Security
 - type: loadoutGroup
@@ -1090,6 +2253,14 @@
   - SeniorOfficerJumpsuit
   - SeniorOfficerJumpskirt
   - TrooperUniform
+# Corvax-Wega-add-start
+  - JumpskirtTurtleneckRed
+  - JumpsuitTurtleneckRed
+  - JumpskirtTurtleneckBlack
+  - JumpsuitTurtleneckBlack
+  - JumpskirtTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckBlackSleeveless
+# Corvax-Wega-add-end
 
 - type: loadoutGroup
   id: SecurityBackpack
@@ -1153,6 +2324,14 @@
   - DetectiveJumpskirt
   - NoirJumpsuit
   - NoirJumpskirt
+# Corvax-Wega-add-start
+  - JumpskirtTurtleneckRed
+  - JumpsuitTurtleneckRed
+  - JumpskirtTurtleneckBlack
+  - JumpsuitTurtleneckBlack
+  - JumpskirtTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckBlackSleeveless
+# Corvax-Wega-add-end
 
 - type: loadoutGroup
   id: DetectiveOuterClothing
@@ -1168,6 +2347,14 @@
   loadouts:
   - SecurityJumpsuitGrey # Corvax-Resprite
   - SecurityJumpskirtGrey # Corvax-Resprite
+# Corvax-Wega-add-start
+  - JumpskirtTurtleneckRed
+  - JumpsuitTurtleneckRed
+  - JumpskirtTurtleneckBlack
+  - JumpsuitTurtleneckBlack
+  - JumpskirtTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckBlackSleeveless
+# Corvax-Wega-add-end
 
 - type: loadoutGroup
   id: SurvivalSecurity
@@ -1256,6 +2443,16 @@
   - MedicalGreenScrubs
   - MedicalPurpleScrubs
   - MedicalBlackScrubs # Corvax-Wega-add
+# Corvax-Wega-add-start
+  - JumpskirtTurtleneckAquamarine   
+  - JumpsuitTurtleneckAquamarine
+  - JumpskirtTurtleneckWhite
+  - JumpsuitTurtleneckWhite
+  - JumpskirtTurtleneckAzure
+  - JumpsuitTurtleneckAzure
+  - JumpskirtTurtleneckBlue
+  - JumpsuitTurtleneckBlue
+# Corvax-Wega-add-end
 
 - type: loadoutGroup
   id: MedicalDoctorOuterClothing
@@ -1309,6 +2506,16 @@
   loadouts:
   - WhiteJumpsuit
   - WhiteJumpskirt
+# Corvax-Wega-add-start
+  - JumpskirtTurtleneckAquamarine   
+  - JumpsuitTurtleneckAquamarine
+  - JumpskirtTurtleneckWhite
+  - JumpsuitTurtleneckWhite
+  - JumpskirtTurtleneckAzure
+  - JumpsuitTurtleneckAzure
+  - JumpskirtTurtleneckBlue
+  - JumpsuitTurtleneckBlue
+# Corvax-Wega-add-end
 
 - type: loadoutGroup
   id: ChemistJumpsuit
@@ -1316,6 +2523,16 @@
   loadouts:
   - ChemistJumpsuit
   - ChemistJumpskirt
+# Corvax-Wega-add-start
+  - JumpskirtTurtleneckAquamarine   
+  - JumpsuitTurtleneckAquamarine
+  - JumpskirtTurtleneckWhite
+  - JumpsuitTurtleneckWhite
+  - JumpskirtTurtleneckAzure
+  - JumpsuitTurtleneckAzure
+  - JumpskirtTurtleneckBlue
+  - JumpsuitTurtleneckBlue
+# Corvax-Wega-add-end
 
 - type: loadoutGroup
   id: ChemistOuterClothing
@@ -1347,6 +2564,16 @@
   loadouts:
   - ParamedicJumpsuit
   - ParamedicJumpskirt
+# Corvax-Wega-add-start
+  - JumpskirtTurtleneckAquamarine   
+  - JumpsuitTurtleneckAquamarine
+  - JumpskirtTurtleneckWhite
+  - JumpsuitTurtleneckWhite
+  - JumpskirtTurtleneckAzure
+  - JumpsuitTurtleneckAzure
+  - JumpskirtTurtleneckBlue
+  - JumpsuitTurtleneckBlue
+# Corvax-Wega-add-end
 
 - type: loadoutGroup
   id: ParamedicOuterClothing
@@ -1393,6 +2620,74 @@
   loadouts:
   - ReporterJumpsuit
   - JournalistJumpsuit
+# Corvax-Wega-add-start
+  - JumpsuitColorWhite
+  - JumpskirtColorWhite
+  - JumpsuitColorBlack
+  - JumpskirtColorBlack
+  - JumpsuitColorBlue
+  - JumpskirtColorBlue
+  - JumpsuitColorYellow
+  - JumpskirtColorYellow
+  - JumpsuitColorGreen
+  - JumpskirtColorGreen
+  - JumpsuitColorOrange
+  - JumpskirtColorOrange
+  - JumpsuitColorRed
+  - JumpskirtColorRed
+  - JumpsuitColorPurple
+  - JumpskirtColorPurple
+  - JumpsuitColorPink
+  - JumpskirtColorPink
+  - JumpsuitColorDarkBlue
+  - JumpskirtColorDarkBlue
+  - JumpsuitColorDarkGreen
+  - JumpskirtColorDarkGreen
+  - JumpsuitColorTeal
+  - JumpskirtColorTeal
+  - JumpsuitCasualBlue
+  - JumpskirtCasualBlue
+  - JumpsuitCasualPurple
+  - JumpskirtCasualPurple
+  - JumpsuitCasualRed
+  - JumpskirtCasualRed
+  - JumpsuitCasualGreen
+  - JumpskirtCasualGreen 
+  - JumpskirtTurtleneckAquamarine   
+  - JumpsuitTurtleneckAquamarine
+  - JumpskirtTurtleneckWhite
+  - JumpsuitTurtleneckWhite
+  - JumpskirtTurtleneckAzure
+  - JumpsuitTurtleneckAzure
+  - JumpskirtTurtleneckYellow
+  - JumpsuitTurtleneckYellow
+  - JumpskirtTurtleneckGreen
+  - JumpsuitTurtleneckGreen
+  - JumpskirtTurtleneckBrown
+  - JumpsuitTurtleneckBrown
+  - JumpskirtTurtleneckRed
+  - JumpsuitTurtleneckRed
+  - JumpskirtTurtleneckOrange
+  - JumpsuitTurtleneckOrange
+  - JumpskirtTurtleneckPink
+  - JumpsuitTurtleneckPink
+  - JumpskirtTurtleneckGrey
+  - JumpsuitTurtleneckGrey
+  - JumpskirtTurtleneckBlue
+  - JumpsuitTurtleneckBlue
+  - JumpskirtTurtleneckPurple
+  - JumpsuitTurtleneckPurple
+  - JumpskirtTurtleneckBlack
+  - JumpsuitTurtleneckBlack
+  - JumpskirtTurtleneckSalat
+  - JumpsuitTurtleneckSalat
+  - JumpsuitTurtleneckSalatblack
+  - JumpskirtTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckWhiteBlackSleeveless
+  - JumpsuitTurtleneckWhiteSleeveless
+  - JumpskirtTurtleneckWhiteSleeveless
+# Corvax-Wega-add-end
 
 - type: loadoutGroup
   id: PsychologistJumpsuit
@@ -1400,6 +2695,74 @@
   loadouts:
   - PsychologistJumpsuit
   - PsychologistJumpskirt
+# Corvax-Wega-add-start
+  - JumpsuitColorWhite
+  - JumpskirtColorWhite
+  - JumpsuitColorBlack
+  - JumpskirtColorBlack
+  - JumpsuitColorBlue
+  - JumpskirtColorBlue
+  - JumpsuitColorYellow
+  - JumpskirtColorYellow
+  - JumpsuitColorGreen
+  - JumpskirtColorGreen
+  - JumpsuitColorOrange
+  - JumpskirtColorOrange
+  - JumpsuitColorRed
+  - JumpskirtColorRed
+  - JumpsuitColorPurple
+  - JumpskirtColorPurple
+  - JumpsuitColorPink
+  - JumpskirtColorPink
+  - JumpsuitColorDarkBlue
+  - JumpskirtColorDarkBlue
+  - JumpsuitColorDarkGreen
+  - JumpskirtColorDarkGreen
+  - JumpsuitColorTeal
+  - JumpskirtColorTeal
+  - JumpsuitCasualBlue
+  - JumpskirtCasualBlue
+  - JumpsuitCasualPurple
+  - JumpskirtCasualPurple
+  - JumpsuitCasualRed
+  - JumpskirtCasualRed
+  - JumpsuitCasualGreen
+  - JumpskirtCasualGreen 
+  - JumpskirtTurtleneckAquamarine   
+  - JumpsuitTurtleneckAquamarine
+  - JumpskirtTurtleneckWhite
+  - JumpsuitTurtleneckWhite
+  - JumpskirtTurtleneckAzure
+  - JumpsuitTurtleneckAzure
+  - JumpskirtTurtleneckYellow
+  - JumpsuitTurtleneckYellow
+  - JumpskirtTurtleneckGreen
+  - JumpsuitTurtleneckGreen
+  - JumpskirtTurtleneckBrown
+  - JumpsuitTurtleneckBrown
+  - JumpskirtTurtleneckRed
+  - JumpsuitTurtleneckRed
+  - JumpskirtTurtleneckOrange
+  - JumpsuitTurtleneckOrange
+  - JumpskirtTurtleneckPink
+  - JumpsuitTurtleneckPink
+  - JumpskirtTurtleneckGrey
+  - JumpsuitTurtleneckGrey
+  - JumpskirtTurtleneckBlue
+  - JumpsuitTurtleneckBlue
+  - JumpskirtTurtleneckPurple
+  - JumpsuitTurtleneckPurple
+  - JumpskirtTurtleneckBlack
+  - JumpsuitTurtleneckBlack
+  - JumpskirtTurtleneckSalat
+  - JumpsuitTurtleneckSalat
+  - JumpsuitTurtleneckSalatblack
+  - JumpskirtTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckWhiteBlackSleeveless
+  - JumpsuitTurtleneckWhiteSleeveless
+  - JumpskirtTurtleneckWhiteSleeveless
+# Corvax-Wega-add-end
 
 - type: loadoutGroup
   id: BoxerJumpsuit

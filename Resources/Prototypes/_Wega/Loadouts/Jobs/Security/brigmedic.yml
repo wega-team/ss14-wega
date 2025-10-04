@@ -3,12 +3,14 @@
   id: BrigmedicJumpsuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitBrigmedic
+  groupBy: "wegaJJ"
 
 - type: loadout
   id: BrigmedicJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtBrigmedic
-
+  groupBy: "wegaJJ"
+  
 # Head
 - type: loadout
   id: BrigmedicSecurityBeret

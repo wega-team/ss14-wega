@@ -19,3 +19,16 @@
       contents:
         - id: VehicleSyndicateSegway
         - id: VehicleKeySyndicateSegway
+
+- type: entity
+  id: CrateFunArcade
+  parent: CratePlastic
+  name: board arcade game
+  description: Create for REAL GAMER ( loot off)
+  components:
+    - type: StorageFill
+      contents:
+        - id: SpaceVillainArcadeComputerCircuitboard
+          amount: 2
+        - id: BlockGameArcadeComputerCircuitboard
+          amount: 2

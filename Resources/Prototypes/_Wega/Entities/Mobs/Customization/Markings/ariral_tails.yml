@@ -1,0 +1,55 @@
+- type: marking
+  id: AriralDefaultTail
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Ariral]
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+    layers:
+      up:
+        type:
+          !type:CategoryColoring
+            category: Hair
+  sprites:
+  - sprite: _Wega/Mobs/Customization/ariral_tails.rsi
+    state: tail
+  - sprite: _Wega/Mobs/Customization/ariral_tails.rsi
+    state: up
+
+- type: marking
+  id: AriralBaldTail
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Ariral]
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+  sprites:
+  - sprite: _Wega/Mobs/Customization/ariral_tails.rsi
+    state: tail
+
+# Animated
+- type: marking
+  id: AriralDefaultTailAnimated
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: []
+  markingType: NonGenetics
+  sprites:
+  - sprite: _Wega/Mobs/Customization/ariral_tails.rsi
+    state: tail_waggin
+  - sprite: _Wega/Mobs/Customization/ariral_tails.rsi
+    state: up_waggin
+
+- type: marking
+  id: AriralBaldTailAnimated
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: []
+  markingType: NonGenetics
+  sprites:
+  - sprite: _Wega/Mobs/Customization/ariral_tails.rsi
+    state: tail_waggin

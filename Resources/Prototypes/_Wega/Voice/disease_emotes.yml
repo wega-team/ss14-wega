@@ -23,7 +23,7 @@
   name: chat-emote-name-meows
   category: Vocal
   available: false
-  icon: Clothing/Head/Hats/catears.rsi/icon.png
+  icon: { sprite: Clothing/Head/Hats/catears.rsi, state: "icon" }
   whitelist:
     components:
     - Vocal
@@ -44,7 +44,7 @@
   name: chat-emote-name-hisses
   category: Vocal
   available: false
-  icon: Clothing/Head/Hats/catears.rsi/icon.png
+  icon: { sprite: Clothing/Head/Hats/catears.rsi, state: "icon" }
   whitelist:
     components:
     - Vocal

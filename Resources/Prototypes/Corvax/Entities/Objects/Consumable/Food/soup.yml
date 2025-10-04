@@ -29,4 +29,5 @@
               Quantity: 20
     - type: Tag
       tags:
+      - Dumplings # Corvax-Wega
       - Meat

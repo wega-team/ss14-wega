@@ -1,0 +1,1 @@
+petting-success-generic-others = { CAPITALIZE($user) } гладит { $target } по голове.

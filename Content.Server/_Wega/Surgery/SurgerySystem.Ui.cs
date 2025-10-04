@@ -1,7 +1,7 @@
 using System.Linq;
-using Content.Server.Kitchen.Components;
 using Content.Shared.Buckle.Components;
 using Content.Shared.Interaction;
+using Content.Shared.Kitchen.Components;
 using Content.Shared.Surgery;
 using Content.Shared.Surgery.Components;
 using Robust.Shared.Timing;

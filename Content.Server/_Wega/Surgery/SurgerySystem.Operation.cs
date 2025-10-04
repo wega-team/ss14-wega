@@ -390,7 +390,7 @@ public sealed partial class SurgerySystem
         if (!TryComp<SubdermalImplantComponent>(item.Value, out var implantComp))
             return;
 
-        _implant.ForceImplant(patient.Owner, item.Value, implantComp);
+        _implant.ForceImplant(patient.Owner, item.Value);
         _admin.Add(LogType.Action, LogImpact.Medium,
             $"{ToPrettyString(patient.Comp.Surgeon.Value):user} successfully implanted {ToPrettyString(item.Value):implant} into {ToPrettyString(patient):target}");
     }
@@ -414,7 +414,7 @@ public sealed partial class SurgerySystem
                 if (TryComp<SubdermalImplantComponent>(implant, out var implantComp) && implantComp.Permanent)
                     return;
 
-                _implant.ForceRemove(patient, implant);
+                _implant.ForceRemove(patient.Owner, implant);
                 _hands.TryPickupAnyHand(patient.Comp.Surgeon.Value, implant);
                 var ev = new ImplantRemovedEvent(implant, patient.Owner);
                 RaiseLocalEvent(patient.Owner, ref ev);

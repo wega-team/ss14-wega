@@ -1,4 +1,4 @@
-name: "Labels: Untriaged"
+﻿name: "Labels: Untriaged"
 
 on:
   issues:
@@ -9,9 +9,6 @@ on:
 jobs:
   add_label:
     runs-on: ubuntu-latest
-    permissions:
-      issues: write
-      pull-requests: write
     steps:
       - name: Add label to issue
         if: github.event_name == 'issues' && join(github.event.issue.labels.*.name) == ''

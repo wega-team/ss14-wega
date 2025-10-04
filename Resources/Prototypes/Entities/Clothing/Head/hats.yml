@@ -700,6 +700,9 @@
     - state: icon-up
       map: ["foldedLayer"]
       visible: false
+  - type: Tag
+    tags:
+    - Ushanka  # Corvax-Wega
 
 - type: entity
   parent: ClothingHeadBase

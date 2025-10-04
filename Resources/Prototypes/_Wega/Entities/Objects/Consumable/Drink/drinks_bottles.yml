@@ -1,5 +1,5 @@
 - type: entity
-  parent: [DrinkBottleVisualsOpenable, DrinkBottleGlassBaseFull]
+  parent: [DrinkVisualsOpenable, DrinkBottleGlassBaseFull]
   id: DrinkAperolBottleFull
   name: aperol bottle
   description: "An aperitif with a bright orange flavor and a bitter aftertaste. Perfect for summer cocktails."
@@ -17,7 +17,7 @@
   - type: Sealable
 
 - type: entity
-  parent: [DrinkBottleVisualsOpenable, DrinkBottleGlassBaseFull]
+  parent: [DrinkVisualsOpenable, DrinkBottleGlassBaseFull]
   id: DrinkJagermeisterBottleFull
   name: jagermeister bottle
   description: "A legendary herbal liqueur with a rich, complex flavor. Often consumed neat or in cocktails."
@@ -35,7 +35,7 @@
   - type: Sealable
 
 - type: entity
-  parent: [DrinkBottleVisualsOpenable, DrinkBottleGlassBaseFull]
+  parent: [DrinkVisualsOpenable, DrinkBottleGlassBaseFull]
   id: DrinkSchnapsBottleFull
   name: schnaps bottle
   description: "A strong alcoholic drink, usually fruit-based, with a bold aroma and sharp taste."
@@ -53,7 +53,7 @@
   - type: Sealable
 
 - type: entity
-  parent: [DrinkBottleVisualsOpenable, DrinkBottleGlassBaseFull]
+  parent: [DrinkVisualsOpenable, DrinkBottleGlassBaseFull]
   id: DrinkSambukaBottleFull
   name: sambuka bottle
   description: "An anise-flavored liqueur with a characteristic sweetish taste. Often served with coffee beans."
@@ -71,7 +71,7 @@
   - type: Sealable
 
 - type: entity
-  parent: [DrinkBottleVisualsOpenable, DrinkBottleGlassBaseFull]
+  parent: [DrinkVisualsOpenable, DrinkBottleGlassBaseFull]
   id: DrinkBitterBottleFull
   name: bitter bottle
   description: "A strong alcoholic drink with a bitter herbal flavor. Used as a digestif or cocktail ingredient."
@@ -89,7 +89,7 @@
   - type: Sealable
 
 - type: entity
-  parent: [DrinkBottleVisualsOpenable, DrinkBottleGlassBaseFull]
+  parent: [DrinkVisualsOpenable, DrinkBottleGlassBaseFull]
   id: DrinkSheridanBottleFull
   name: sheridan bottle
   description: "A layered coffee-cream liqueur with a delicate flavor. Ideal for desserts or as a standalone drink."
@@ -107,7 +107,7 @@
   - type: Sealable
   
 - type: entity
-  parent: [DrinkBottleVisualsOpenable, DrinkBottleGlassBaseFull]
+  parent: [DrinkVisualsOpenable, DrinkBottleGlassBaseFull]
   id: DrinkWhiteWineBottleFull
   name: white wine bottle
   description: "A layered coffee-cream liqueur with a delicate flavor. Ideal for desserts or as a standalone drink."

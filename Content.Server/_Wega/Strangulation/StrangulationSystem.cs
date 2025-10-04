@@ -305,7 +305,7 @@ namespace Content.Server.Strangulation
             _doAfterSystem.Cancel(comp.BreakFreeDoAfterId);
             comp.Cancelled = true;
             _alerts.ClearAlert(target, comp.StrangledAlert);
-            _stutteringSystem.DoRemoveStutterTime(target, TimeSpan.FromSeconds(5).TotalSeconds);
+            _stutteringSystem.DoRemoveStutterTime(target, TimeSpan.FromSeconds(5));
             _combatModeSystem.SetDisarmFailChance(target, 0.75f);
             RemComp<StranglerComponent>(strangler);
             RemComp<StrangulationComponent>(target);

@@ -1,3 +1,4 @@
+# instrument
 - type: latheRecipe
   id: VehicleWheelchairFolded
   result: VehicleWheelchairFolded
@@ -29,12 +30,14 @@
     Steel: 100
     Plastic: 300
 
+# t2 med
+
 - type: latheRecipe
   id: Hynospray
   result: Hynospray
-  completetime: 6
+  completetime: 4
   materials:
-    Gold: 200
+    Gold: 100
     Steel: 250
     Plastic: 200
     Glass: 100
@@ -43,8 +46,74 @@
 - type: latheRecipe
   id: DefibrillatorCompact
   result: DefibrillatorCompact
-  completetime: 10
+  completetime: 5
   materials:
     Silver: 100
     Steel: 750
     Plastic: 200
+
+# pro-instrument
+    
+- type: latheRecipe
+  id: ScalpelLaser
+  result: ScalpelLaser
+  completetime: 4
+  materials:
+    Silver: 100
+    Steel: 400
+    Plastic: 200
+    
+- type: latheRecipe
+  id: Bonesaw
+  result: Bonesaw
+  completetime: 3
+  materials:
+    Silver: 200
+    Steel: 750
+    Plastic: 600
+    
+- type: latheRecipe
+  id: Hemrevein
+  result: Hemrevein
+  completetime: 5
+  materials:
+    Silver: 300
+    Steel: 400
+    Plastic: 200
+    
+# Implants
+
+- type: latheRecipe
+  id: LightImplant
+  result: LightImplant
+  completetime: 4
+  materials:
+    Steel: 500
+    Plastic: 300
+
+- type: latheRecipe
+  id: SadTromboneImplant
+  result: SadTromboneImplant
+  completetime: 4
+  materials:
+    Steel: 500
+    Plastic: 300
+
+- type: latheRecipe
+  id: TrackingImplant
+  result: TrackingImplant
+  completetime: 5
+  materials:
+    Steel: 500
+    Plastic: 300
+    Silver: 200
+
+- type: latheRecipe
+  id: MindShieldImplant
+  result: MindShieldImplant
+  completetime: 5
+  materials:
+    Steel: 500
+    Plastic: 300
+    Plasma: 200
+    Gold: 100

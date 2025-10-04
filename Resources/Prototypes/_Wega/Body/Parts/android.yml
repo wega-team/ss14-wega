@@ -35,6 +35,11 @@
       - Trash
       - BaseBodyPart
       - LeftArmSynthetic
+  # For correct connection
+  - type: BodyPartImplant
+    connections:
+      left_hand:
+      - hand
 
 - type: entity
   id: RightArmAndroid
@@ -48,6 +53,10 @@
       - Trash
       - BaseBodyPart
       - RightArmSynthetic
+  - type: BodyPartImplant
+    connections:
+      right_hand:
+      - hand
 
 - type: entity
   id: LeftHandAndroid
@@ -87,6 +96,10 @@
       - Trash
       - BaseBodyPart
       - LeftLegSynthetic
+  - type: BodyPartImplant
+    connections:
+      left_foot:
+      - foot
 
 - type: entity
   id: RightLegAndroid
@@ -100,6 +113,10 @@
       - Trash
       - BaseBodyPart
       - RightLegSynthetic
+  - type: BodyPartImplant
+    connections:
+      right_foot:
+      - foot
 
 - type: entity
   id: LeftFootAndroid

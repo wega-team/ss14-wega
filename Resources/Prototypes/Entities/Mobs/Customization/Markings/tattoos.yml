@@ -121,7 +121,7 @@
 - type: marking
   id: TattooEyeRight
   bodyPart: Eyes
-  markingCategory: Head
+  markingCategory: [Head]
   markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Human, SlimePerson, Reptilian, Dwarf]
   coloring:
@@ -177,6 +177,34 @@
   sprites:
   - sprite: Mobs/Customization/tattoos.rsi
     state: tattoo_eye_moth_l
+
+- type: marking
+  id: TattooEyeVulpkaninRight
+  bodyPart: Eyes
+  markingCategory: [Head]
+  speciesRestriction: [Vulpkanin]
+  coloring:
+    default:
+      type:
+        !type:EyeColoring
+          negative: true
+  sprites:
+  - sprite: Mobs/Customization/tattoos.rsi
+    state: tattoo_eye_vulpkanin_r
+
+- type: marking
+  id: TattooEyeVulpkaninLeft
+  bodyPart: Eyes
+  markingCategory: Head
+  speciesRestriction: [Vulpkanin]
+  coloring:
+    default:
+      type:
+        !type:EyeColoring
+          negative: true
+  sprites:
+  - sprite: Mobs/Customization/tattoos.rsi
+    state: tattoo_eye_vulpkanin_l
 
 - type: marking
   id: TattooEyeshadowUpper

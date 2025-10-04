@@ -927,6 +927,72 @@
   loadouts:
   - PostmanJumpsuit
   - PostmanJumpskirt
+  - JumpsuitColorWhite
+  - JumpskirtColorWhite
+  - JumpsuitColorBlack
+  - JumpskirtColorBlack
+  - JumpsuitColorBlue
+  - JumpskirtColorBlue
+  - JumpsuitColorYellow
+  - JumpskirtColorYellow
+  - JumpsuitColorGreen
+  - JumpskirtColorGreen
+  - JumpsuitColorOrange
+  - JumpskirtColorOrange
+  - JumpsuitColorRed
+  - JumpskirtColorRed
+  - JumpsuitColorPurple
+  - JumpskirtColorPurple
+  - JumpsuitColorPink
+  - JumpskirtColorPink
+  - JumpsuitColorDarkBlue
+  - JumpskirtColorDarkBlue
+  - JumpsuitColorDarkGreen
+  - JumpskirtColorDarkGreen
+  - JumpsuitColorTeal
+  - JumpskirtColorTeal
+  - JumpsuitCasualBlue
+  - JumpskirtCasualBlue
+  - JumpsuitCasualPurple
+  - JumpskirtCasualPurple
+  - JumpsuitCasualRed
+  - JumpskirtCasualRed
+  - JumpsuitCasualGreen
+  - JumpskirtCasualGreen 
+  - JumpskirtTurtleneckAquamarine   
+  - JumpsuitTurtleneckAquamarine
+  - JumpskirtTurtleneckWhite
+  - JumpsuitTurtleneckWhite
+  - JumpskirtTurtleneckAzure
+  - JumpsuitTurtleneckAzure
+  - JumpskirtTurtleneckYellow
+  - JumpsuitTurtleneckYellow
+  - JumpskirtTurtleneckGreen
+  - JumpsuitTurtleneckGreen
+  - JumpskirtTurtleneckBrown
+  - JumpsuitTurtleneckBrown
+  - JumpskirtTurtleneckRed
+  - JumpsuitTurtleneckRed
+  - JumpskirtTurtleneckOrange
+  - JumpsuitTurtleneckOrange
+  - JumpskirtTurtleneckPink
+  - JumpsuitTurtleneckPink
+  - JumpskirtTurtleneckGrey
+  - JumpsuitTurtleneckGrey
+  - JumpskirtTurtleneckBlue
+  - JumpsuitTurtleneckBlue
+  - JumpskirtTurtleneckPurple
+  - JumpsuitTurtleneckPurple
+  - JumpskirtTurtleneckBlack
+  - JumpsuitTurtleneckBlack
+  - JumpskirtTurtleneckSalat
+  - JumpsuitTurtleneckSalat
+  - JumpsuitTurtleneckSalatblack
+  - JumpskirtTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckWhiteBlackSleeveless
+  - JumpsuitTurtleneckWhiteSleeveless
+  - JumpskirtTurtleneckWhiteSleeveless
 
 - type: loadoutGroup
   id: PostmanBackpack
@@ -951,6 +1017,72 @@
   loadouts:
   - GeneticsJumpsuit
   - GeneticsJumpskirt
+  - JumpsuitColorWhite
+  - JumpskirtColorWhite
+  - JumpsuitColorBlack
+  - JumpskirtColorBlack
+  - JumpsuitColorBlue
+  - JumpskirtColorBlue
+  - JumpsuitColorYellow
+  - JumpskirtColorYellow
+  - JumpsuitColorGreen
+  - JumpskirtColorGreen
+  - JumpsuitColorOrange
+  - JumpskirtColorOrange
+  - JumpsuitColorRed
+  - JumpskirtColorRed
+  - JumpsuitColorPurple
+  - JumpskirtColorPurple
+  - JumpsuitColorPink
+  - JumpskirtColorPink
+  - JumpsuitColorDarkBlue
+  - JumpskirtColorDarkBlue
+  - JumpsuitColorDarkGreen
+  - JumpskirtColorDarkGreen
+  - JumpsuitColorTeal
+  - JumpskirtColorTeal
+  - JumpsuitCasualBlue
+  - JumpskirtCasualBlue
+  - JumpsuitCasualPurple
+  - JumpskirtCasualPurple
+  - JumpsuitCasualRed
+  - JumpskirtCasualRed
+  - JumpsuitCasualGreen
+  - JumpskirtCasualGreen 
+  - JumpskirtTurtleneckAquamarine   
+  - JumpsuitTurtleneckAquamarine
+  - JumpskirtTurtleneckWhite
+  - JumpsuitTurtleneckWhite
+  - JumpskirtTurtleneckAzure
+  - JumpsuitTurtleneckAzure
+  - JumpskirtTurtleneckYellow
+  - JumpsuitTurtleneckYellow
+  - JumpskirtTurtleneckGreen
+  - JumpsuitTurtleneckGreen
+  - JumpskirtTurtleneckBrown
+  - JumpsuitTurtleneckBrown
+  - JumpskirtTurtleneckRed
+  - JumpsuitTurtleneckRed
+  - JumpskirtTurtleneckOrange
+  - JumpsuitTurtleneckOrange
+  - JumpskirtTurtleneckPink
+  - JumpsuitTurtleneckPink
+  - JumpskirtTurtleneckGrey
+  - JumpsuitTurtleneckGrey
+  - JumpskirtTurtleneckBlue
+  - JumpsuitTurtleneckBlue
+  - JumpskirtTurtleneckPurple
+  - JumpsuitTurtleneckPurple
+  - JumpskirtTurtleneckBlack
+  - JumpsuitTurtleneckBlack
+  - JumpskirtTurtleneckSalat
+  - JumpsuitTurtleneckSalat
+  - JumpsuitTurtleneckSalatblack
+  - JumpskirtTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckWhiteBlackSleeveless
+  - JumpsuitTurtleneckWhiteSleeveless
+  - JumpskirtTurtleneckWhiteSleeveless
 
 - type: loadoutGroup
   id: GeneticsBackpack
@@ -1003,6 +1135,12 @@
   loadouts:
   - BrigmedicJumpsuit
   - BrigmedicJumpskirt
+  - JumpskirtTurtleneckRed
+  - JumpsuitTurtleneckRed
+  - JumpskirtTurtleneckBlack
+  - JumpsuitTurtleneckBlack
+  - JumpskirtTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckBlackSleeveless
 
 - type: loadoutGroup
   id: BrigmedicBackpack

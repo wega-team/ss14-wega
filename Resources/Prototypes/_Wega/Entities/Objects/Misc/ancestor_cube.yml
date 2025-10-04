@@ -1,0 +1,188 @@
+- type: entity
+  parent: BoxCardboard
+  name: genetic ancestor cube box
+  id: GeneticAncestorCubeBox
+  description: A box of cubes of genetic ancestors. Grow them all!
+  components:
+  - type: Item
+    size: Large
+    shape:
+    - 0,0,3,2
+  - type: Storage
+    maxItemSize: Small
+    grid:
+    - 0,0,3,3
+  - type: StorageFill
+    contents:
+      - id: MonkeyCubeWrapped
+        amount: 1
+      - id: KoboldCubeWrapped
+        amount: 1
+      - id: TajkeyCubeWrapped
+        amount: 1
+      - id: WolflingCubeWrapped
+        amount: 1
+      - id: StokkeyCubeWrapped
+        amount: 1
+      - id: StokkeyVoxCubeWrapped
+        amount: 1
+      - id: SkrellkeyCubeWrapped
+        amount: 1
+      - id: MonkeyDemonCubeWrapped
+        amount: 1
+      - id: MonkeyDwarfCubeWrapped
+        amount: 1
+      - id: GiantSpiderCubeWrapped
+        amount: 1
+      - id: ParrotCubeWrapped
+        amount: 1
+      - id: CatCubeWrapped
+        amount: 1
+      - id: DionaNymphCubeWrapped
+        amount: 1
+      - id: MothroachCubeWrapped
+        amount: 1
+  - type: Sprite
+    sprite: _Wega/Objects/Misc/ancestorcube.rsi
+    state: box_ancestor
+
+- type: entity
+  parent: BaseWrappedCube
+  name: farwa cube
+  id: TajkeyCubeWrapped
+  description: Unwrap this to get a farwa cube.
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: TajkeyCube
+  - type: Sprite
+    state: wrapper
+
+- type: entity
+  parent: BaseWrappedCube
+  name: wolpin cube
+  id: WolflingCubeWrapped
+  description: Unwrap this to get a wolpin cube.
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: WolflingCube
+  - type: Sprite
+    state: wrapper
+
+- type: entity
+  parent: BaseWrappedCube
+  name: stok cube
+  id: StokkeyCubeWrapped
+  description: Unwrap this to get a stok cube.
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: StokkeyCube
+  - type: Sprite
+    state: wrapper
+
+- type: entity
+  parent: BaseWrappedCube
+  name: stok vox cube
+  id: StokkeyVoxCubeWrapped
+  description: Unwrap this to get a stok vox cube.
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: StokkeyVoxCube
+  - type: Sprite
+    state: wrapper
+
+- type: entity
+  parent: BaseWrappedCube
+  name: neara cube
+  id: SkrellkeyCubeWrapped
+  description: Unwrap this to get a neara cube.
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: SkrellkeyCube
+  - type: Sprite
+    state: wrapper
+
+- type: entity
+  parent: MonkeyCubeWrapped
+  name: monkey demon cube
+  id: MonkeyDemonCubeWrapped
+  description: Unwrap this to get a demon cube.
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: MonkeyDemonCube
+
+- type: entity
+  parent: MonkeyCubeWrapped
+  name: monkey dwarf cube
+  id: MonkeyDwarfCubeWrapped
+  description: Unwrap this to get a dwarf cube.
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: MonkeyDwarfCube
+
+
+- type: entity
+  parent: BaseWrappedCube
+  name: spider cube
+  id: GiantSpiderCubeWrapped
+  description: Unwrap this to get a spider cube.
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: GiantSpiderCube
+  - type: Sprite
+    state: wrapper
+
+- type: entity
+  parent: BaseWrappedCube
+  name: parrot cube
+  id: ParrotCubeWrapped
+  description: Unwrap this to get a parrot cube.
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: ParrotCube
+  - type: Sprite
+    state: wrapper
+
+- type: entity
+  parent: BaseWrappedCube
+  name: cat cube
+  id: CatCubeWrapped
+  description: Unwrap this to get a cat cube.
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: CatCube
+  - type: Sprite
+    state: wrapper
+
+- type: entity
+  parent: BaseWrappedCube
+  name: diona nymph cube
+  id: DionaNymphCubeWrapped
+  description: Unwrap this to get a diona nymph cube.
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: DionaNymphCube
+  - type: Sprite
+    state: wrapper
+
+- type: entity
+  parent: BaseWrappedCube
+  name: mothroach cube
+  id: MothroachCubeWrapped
+  description: Unwrap this to get a mothroach cube.
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: MothroachCube
+  - type: Sprite
+    state: wrapper

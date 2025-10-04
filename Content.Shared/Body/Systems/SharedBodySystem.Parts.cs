@@ -263,7 +263,9 @@ public partial class SharedBodySystem
 
         Containers.EnsureContainer<ContainerSlot>(partUid, GetPartSlotContainerId(slotId));
         var partSlot = new BodyPartSlot(slotId, partType);
-        part.Children.Add(slotId, partSlot);
+        // Corvax-Wega-Changes-Start
+        part.Children.TryAdd(slotId, partSlot);
+        // Corvax-Wega-Changes-End
         Dirty(partUid, part);
         return partSlot;
     }

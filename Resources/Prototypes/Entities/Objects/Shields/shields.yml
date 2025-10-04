@@ -59,6 +59,9 @@
                   max: 2
     - type: StaticPrice
       price: 100
+    - type: Tag
+      tags:
+      - Sheild  # Corvax-Wega
 
 #Security Shields
 
@@ -184,15 +187,12 @@
   name: cardboard shield
   parent: BaseShield
   id: CardShield
-  description: A shield that wont shield you from much.
+  description: A shield made of cardboard. Won't protect you from much.
   components:
     - type: Sprite
       state: cardshield-icon
     - type: Item
       heldPrefix: cardshield
-    - type: StaminaResistance
-      damageCoefficient: 0.95
-      worn: true
     - type: Blocking
       passiveBlockModifier:
         coefficients:

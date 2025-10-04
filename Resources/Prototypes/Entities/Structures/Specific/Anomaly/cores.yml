@@ -158,8 +158,11 @@
     solution: beaker
   - type: SolutionTransfer
     canChangeTransferAmount: true
-  - type: Drink
+  - type: Edible
+    edible: Drink
     solution: beaker
+    destroyOnEmpty: false
+    utensil: None
   - type: Appearance
   - type: GenericVisualizer
     visuals:
@@ -270,9 +273,8 @@
 
 # Corvax-Wega-Anomaly-start
 - type: entity
-  parent: BaseShadow
+  parent: [ BaseAnomalyCore, BaseShadow ]
   id: AnomalyCoreShadow
-  abstract: true
   suffix: Shadow
   components:
   - type: SpawnOnTrigger

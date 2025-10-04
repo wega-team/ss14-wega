@@ -40,6 +40,40 @@
     superSlippery: true
 
 - type: reagent
+  parent: Blood
+  id: AriralBlood
+  name: reagent-name-ariral-blood
+  group: Biological
+  desc: reagent-desc-ariral-blood
+  flavor: horrible
+  color: "#ff4d2a"
+  recognizable: true
+  physicalDesc: reagent-physical-desc-ferrous
+  metabolisms:
+    Drink:
+      effects:
+      - !type:SatiateThirst
+        factor: 1.0
+        conditions:
+          - !type:OrganType
+            type: Ariral
+            shouldHave: false
+    Poison:
+      effects:
+      - !type:HealthChange
+        conditions:
+          - !type:OrganType
+            type: Ariral
+            shouldHave: false
+        damage:
+          types:
+            Poison: 0.5
+  footstepSound:
+    collection: FootstepBlood
+    params:
+      volume: 6
+
+- type: reagent
   id: Tyrium
   name: reagent-name-tyrium
   group: Biological

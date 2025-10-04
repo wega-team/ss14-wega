@@ -1,0 +1,185 @@
+- type: cargoBounty
+  id: BountyArmorScrap
+  reward: 6000
+  description: bounty-description-armor-scrap
+  entries:
+  - name: bounty-item-halmet-scrap
+    amount: 1
+    whitelist:
+      tags:
+      - HalmetScrap
+  - name: bounty-item-armor-scrap
+    amount: 1
+    whitelist:
+      tags:
+      - ArmorScrap
+      
+- type: cargoBounty
+  id: BountyShardCrystal
+  reward: 8000
+  description: bounty-description-shard-crystal
+  entries:
+  - name: bounty-item-shard-crystal
+    amount: 6
+    whitelist:
+      tags:
+      - ShardCrystal
+
+- type: cargoBounty
+  id: BountySalad
+  reward: 8000
+  description: bounty-description-salad
+  entries:
+  - name: bounty-item-salad
+    amount: 3
+    whitelist:
+      tags:
+      - Salad
+
+- type: cargoBounty
+  id: BountyFunnyShoes
+  reward: 4000
+  description: bounty-description-funny-shoes
+  entries:
+  - name: bounty-item-funny-shoes
+    amount: 1
+    whitelist:
+      tags:
+      - FunnyShoes
+
+- type: cargoBounty
+  id: BountySheild
+  reward: 5000
+  description: bounty-description-sheild
+  entries:
+  - name: bounty-item-sheild
+    amount: 3
+    whitelist:
+      tags:
+      - Sheild
+      
+- type: cargoBounty
+  id: BountyHorn
+  reward: 8000
+  description: bounty-description-horn
+  entries:
+  - name: bounty-item-horn
+    amount: 1
+    whitelist:
+      tags:
+      - BananiumClakson
+
+- type: cargoBounty
+  id: BountyUshanka
+  reward: 4000
+  description: bounty-description-ushanka
+  entries:
+  - name: bounty-item-ushanka
+    amount: 1
+    whitelist:
+      tags:
+      - Ushanka
+
+- type: cargoBounty
+  id: BountyDumplings
+  reward: 4500
+  description: bounty-description-dumplings
+  entries:
+  - name: bounty-item-dumplings
+    amount: 1
+    whitelist:
+      tags:
+      - Dumplings
+
+- type: cargoBounty
+  id: BountyKubok
+  reward: 6000
+  description: bounty-description-kubok
+  entries:
+  - name: bounty-item-kubok
+    amount: 1
+    whitelist:
+      tags:
+      - Kubok
+
+- type: cargoBounty
+  id: BountyGoldShoes
+  reward: 8000
+  description: bounty-description-gold-shoes
+  entries:
+  - name: bounty-item-gold-shoes
+    amount: 1
+    whitelist:
+      tags:
+      - GoldShoes
+
+- type: cargoBounty
+  id: BountyOuterSuitAvar
+  reward: 4500
+  description: bounty-description-outersuitavar
+  entries:
+  - name: bounty-item-outersuitavar
+    amount: 6
+    whitelist:
+      tags:
+      - OuterSuitAvar
+
+- type: cargoBounty
+  id: BountySlimeRND
+  reward: 5000
+  description: bounty-description-slimernd
+  entries:
+  - name: bounty-item-slimernd
+    amount: 1
+    whitelist:
+      tags:
+      - SlimeRND
+
+- type: cargoBounty
+  id: BountyPottedPlant
+  reward: 4100
+  description: bounty-description-potted-plant
+  entries:
+  - name: bounty-item-potted-plant
+    amount: 4
+    whitelist:
+      tags:
+      - PottedPlant
+
+- type: cargoBounty
+  id: BountyShuttleGunBoard
+  reward: 25000
+  description: bounty-description-shuttle-gun-board
+  entries:
+  - name: bounty-item-shuttle-gun-board
+    amount: 2
+    whitelist:
+      tags:
+      - ShuttleGunBoard
+
+- type: cargoBounty
+  id: BountyProtolathe
+  reward: 4000
+  description: bounty-description-protolathe
+  entries:
+  - name: bounty-item-protolathe
+    amount: 1
+    whitelist:
+      tags:
+      - Protolathe
+
+- type: cargoBounty
+  id: BountyTelecom
+  reward: 3500
+  description: bounty-description-telecom
+  entries:
+  - name: bounty-item-telecom
+    amount: 1
+    whitelist:
+      tags:
+      - Telecom
+
+
+
+
+    

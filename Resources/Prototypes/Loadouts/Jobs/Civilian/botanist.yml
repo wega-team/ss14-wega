@@ -14,16 +14,19 @@
   id: BotanistJumpsuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitHydroponics
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: BotanistJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtHydroponics
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: BotanistOveralls
   equipment:
     jumpsuit: ClothingUniformOveralls
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 # Back
 - type: loadout

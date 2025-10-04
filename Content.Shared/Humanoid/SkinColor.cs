@@ -282,6 +282,54 @@ public static class SkinColor
     }
     // Corvax-Wega-Phanthom-End
 
+    // Corvax-Wega-Ariral-start
+    public static Color AriralColor(int tone)
+    {
+        tone = Math.Clamp(tone, 0, 100);
+
+        const float minValue = 0.85f;
+        const float maxValue = 1.0f;
+
+        const float minSaturation = 0.0f;
+        const float maxSaturation = 0.08f;
+
+        float tNorm = tone / 100f;
+        float value = minValue + tNorm * (maxValue - minValue);
+        float saturation = minSaturation + (1 - tNorm) * (maxSaturation - minSaturation);
+
+        return Color.FromHsv(new Vector4(0f, saturation, value, 1f));
+    }
+
+    public static float AriralSkinToneFromColor(Color color)
+    {
+        var hsv = Color.ToHsv(color);
+
+        const float minValue = 0.85f;
+        const float maxValue = 1.0f;
+
+        float v = Math.Clamp(hsv.Z, minValue, maxValue);
+        float tone = (v - minValue) / (maxValue - minValue) * 100f;
+
+        tone = MathF.Round(tone);
+        tone = Math.Clamp(tone, 0f, 100f);
+
+        return tone;
+    }
+
+    public static bool VerifyAriralColor(Color color)
+    {
+        var hsv = Color.ToHsv(color);
+
+        if (hsv.Y > 0.08f)
+            return false;
+
+        if (hsv.Z < 0.85f)
+            return false;
+
+        return true;
+    }
+    // Corvax-Wega-Ariral-end
+
     public static bool VerifySkinColor(HumanoidSkinColor type, Color color)
     {
         return type switch
@@ -291,6 +339,7 @@ public static class SkinColor
             HumanoidSkinColor.Hues => VerifyHues(color),
             HumanoidSkinColor.VoxFeathers => VerifyVoxFeathers(color),
             HumanoidSkinColor.PhantomBlack => VerifyPhantomColor(color), // Corvax-Wega-Phantom
+            HumanoidSkinColor.AriralPale => VerifyAriralColor(color), // Corvax-Wega-Ariral
             _ => false,
         };
     }
@@ -304,6 +353,7 @@ public static class SkinColor
             HumanoidSkinColor.Hues => MakeHueValid(color),
             HumanoidSkinColor.VoxFeathers => ClosestVoxColor(color),
             HumanoidSkinColor.PhantomBlack => ValidPhantomeSkinTome, // Corvax-Wega-Phantom
+            HumanoidSkinColor.AriralPale => AriralColor(100),
             _ => color
         };
     }
@@ -316,4 +366,5 @@ public enum HumanoidSkinColor : byte
     VoxFeathers, // Vox feathers are limited to a specific color range
     TintedHues, //This gives a color tint to a humanoid's skin (10% saturation with full hue range).
     PhantomBlack, // Corvax-Wega-Phantom
+    AriralPale, // Corvax-Wega-Ariral
 }

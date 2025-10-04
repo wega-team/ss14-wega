@@ -22,23 +22,23 @@
   description: This implant plays a sad tune when the user dies.
   # categories: [ HideSpawnMenu ] # Corvax-Wega-Surgery-Edit
   components:
-    # Corvax-Wega-Surgery-start
-    - type: Sprite
-      sprite: _Wega/Objects/Specific/Medical/Surgery/implants.rsi
-      state: clown
-    # Corvax-Wega-Surgery-end
-    - type: SubdermalImplant
-      whitelist:
-        components:
-        - MobState # admeme implanting a chair with trombone implant needs to give the chair mobstate so it can die first
-    - type: TriggerOnMobstateChange
-      mobState:
-      - Dead
-    - type: EmitSoundOnTrigger
-      sound:
-        collection: SadTrombone
-        params:
-          variation: 0.125
+  # Corvax-Wega-Surgery-start
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Medical/Surgery/implants.rsi
+    state: clown
+  # Corvax-Wega-Surgery-end
+  - type: SubdermalImplant
+    whitelist:
+      components:
+      - MobState # admeme implanting a chair with trombone implant needs to give the chair mobstate so it can die first
+  - type: TriggerOnMobstateChange
+    mobState:
+    - Dead
+  - type: EmitSoundOnTrigger
+    sound:
+      collection: SadTrombone
+      params:
+        variation: 0.125
 
 - type: entity
   parent: BaseSubdermalImplant
@@ -47,25 +47,25 @@
   description: This implant emits light from the user's skin on activation.
   # categories: [ HideSpawnMenu ] # Corvax-Wega-Surgery-Edit
   components:
-    # Corvax-Wega-Surgery-start
-    - type: Sprite
-      sprite: _Wega/Objects/Specific/Medical/Surgery/implants.rsi
-      state: base
-    # Corvax-Wega-Surgery-end
-    - type: SubdermalImplant
-      implantAction: ActionToggleLight
-    - type: PointLight
-      enabled: false
-      radius: 2.5
-      softness: 5
-      mask: /Textures/Effects/LightMasks/cone.png
-      autoRot: true
-    - type: Tag
-      tags:
-        - SubdermalImplant
-        # - HideContextMenu # Corvax-Wega-Surgery-Edit
-        - Flashlight
-    - type: UnpoweredFlashlight
+  # Corvax-Wega-Surgery-start
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Medical/Surgery/implants.rsi
+    state: base
+  # Corvax-Wega-Surgery-end
+  - type: SubdermalImplant
+    implantAction: ActionToggleLight
+  - type: PointLight
+    enabled: false
+    radius: 2.5
+    softness: 5
+    mask: /Textures/Effects/LightMasks/cone.png
+    autoRot: true
+  - type: Tag
+    tags:
+    - SubdermalImplant
+    - HideContextMenu
+    - Flashlight
+  - type: UnpoweredFlashlight
 
 - type: entity
   parent: BaseSubdermalImplant
@@ -136,6 +136,7 @@
       sprite: _Wega/Objects/Specific/Medical/Surgery/implants.rsi
       state: syndicate
     # Corvax-Wega-Surgery-end
+    - type: StorageImplant
     - type: SubdermalImplant
       implantAction: ActionOpenStorageImplant
       whitelist:
@@ -352,6 +353,10 @@
     # Corvax-Wega-Surgery-end
     - type: SubdermalImplant
       permanent: true
+    - type: ReplacementImplant
+      whitelist:
+        tags:
+        - MicroBomb # replace microbomb implant with macrobomb
     - type: TriggerOnMobstateChange #activates the timer
       mobState:
       - Dead
@@ -378,9 +383,9 @@
       canCreateVacuum: true
     - type: Tag
       tags:
-        - SubdermalImplant
-        # - HideContextMenu # Corvax-Wega-Surgery-Edit
-        - MacroBomb
+      - SubdermalImplant
+      # - HideContextMenu # Corvax-Wega-Surgery-Edit
+      - MacroBomb
 
 - type: entity
   parent: BaseSubdermalImplant
@@ -444,16 +449,18 @@
   description: This implant allows the implanter to produce a fake signal that NT security huds use to identify individuals implanted with a mindshield.
   # categories: [ HideSpawnMenu ] # Corvax-Wega-Surgery-Edit
   components:
+  - type: SubdermalImplant
+    implantAction: FakeMindShieldToggleAction
+    implantComponents:
+    - type: FakeMindShield # TODO: put the component on the implant and use implant relay events for the status icon
+  - type: FakeMindShieldImplant
   # Corvax-Wega-Surgery-start
-      - type: Sprite
-        sprite: _Wega/Objects/Specific/Medical/Surgery/implants.rsi
-        state: mind_shield
-      - type: SubdermalImplant
-        implantAction: FakeMindShieldToggleAction
-      - type: FakeMindShieldImplant
-      - type: Tag
-        tags:
-        - SubdermalHeadImplant
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Medical/Surgery/implants.rsi
+    state: mind_shield
+  - type: Tag
+    tags:
+    - SubdermalHeadImplant
   # Corvax-Wega-Surgery-end
 
 # Sec and Command implants

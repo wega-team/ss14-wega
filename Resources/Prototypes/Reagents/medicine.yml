@@ -4,6 +4,8 @@
   group: Medicine
   desc: reagent-desc-cryptobiolin
   physicalDesc: reagent-physical-desc-fizzy
+  allowedDepartments:
+  - Medical
   flavor: medicine
   color: "#081a80"
   metabolisms:
@@ -12,9 +14,9 @@
       - !type:GenericStatusEffect
         key: Stutter
         component: ScrambledAccent
-      - !type:Drunk
-        slurSpeech: false
-        boozePower: 20
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectSlurred
+        time: 20.0
 
 - type: reagent
   id: Dylovene
@@ -104,8 +106,8 @@
   metabolisms:
     Medicine:
       effects:
-      - !type:GenericStatusEffect
-        key: Drunk
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectDrunk
         time: 6.0
         type: Remove
       - !type:HealthChange
@@ -142,9 +144,10 @@
   metabolisms:
     Medicine:
       effects:
-      - !type:EvenHealthChange
+      - !type:HealthChange  # Corvax-Wega-Change
         damage:
-          Brute: -1.5
+          groups:  # Corvax-Wega-Change
+            Brute: -2  # Corvax-Wega-Change
       - !type:HealthChange
         conditions:
         - !type:ReagentThreshold
@@ -420,6 +423,8 @@
   group: Medicine
   desc: reagent-desc-ipecac
   physicalDesc: reagent-physical-desc-inky
+  allowedDepartments:
+  - Medical
   flavor: medicine
   color: "#422912"
   metabolisms:
@@ -815,6 +820,8 @@
   name: reagent-name-lipozine
   group: Medicine
   desc: reagent-desc-lipozine
+  allowedDepartments:
+  - Medical
   physicalDesc: reagent-physical-desc-oily
   flavor: medicine
   color: "#2690b5"
@@ -861,7 +868,8 @@
           min: 0
           max: 20
         damage:
-          Toxin: -6
+            Toxin: -3  # Corvax-Wega-Change
+            Brute: 0.5  # Corvax-Wega-Change
       - !type:HealthChange
         conditions:
         - !type:ReagentThreshold
@@ -876,13 +884,13 @@
           min: 20
         damage:
           Toxin: -2
-      - !type:HealthChange
+      - !type:HealthChange # Corvax-Wega-Change
         conditions:
         - !type:ReagentThreshold
           min: 20
         damage:
-          groups:
-            Brute: 6
+          groups:  # Corvax-Wega-Change
+            Brute: 6  # Corvax-Wega-Change
       - !type:AdjustReagent
         conditions:
         - !type:ReagentThreshold
@@ -991,19 +999,19 @@
   color: "#e0a5b9"
   metabolisms:
     Medicine:
-      metabolismRate: 0.25
+          # metabolismRate: 0.25  # Corvax-Wega-Change
       effects:
       - !type:HealthChange
         damage:
           types:
-            Caustic: -1.25 # 5 per u
+            Caustic: -3  # Corvax-Wega-Change
       - !type:HealthChange
         conditions:
         - !type:ReagentThreshold
           min: 16
         damage:
           types:
-            Heat: 1 # 4 per u
+            Heat: 2  # Corvax-Wega-Change
       - !type:Jitter
         conditions:
         - !type:ReagentThreshold
@@ -1047,20 +1055,19 @@
   color: "#283332"
   metabolisms:
     Medicine:
-      metabolismRate: 0.25
+          # metabolismRate: 0.25  # Corvax-Wega-Change
       effects:
       - !type:HealthChange
         damage:
           types:
-            Slash: -2 # 8 per u
-            Heat: 0.2 # 0.8 per u
+            Slash: -3  # Corvax-Wega-Change
       - !type:HealthChange
         conditions:
         - !type:ReagentThreshold
           min: 12
         damage:
           types:
-            Cold: 1.5 # 6 per u
+            Cold: 3  # Corvax-Wega-Change
 
 - type: reagent
   id: Puncturase
@@ -1072,20 +1079,22 @@
   color: "#b9bf93"
   metabolisms:
     Medicine:
-      metabolismRate: 0.25
+          # metabolismRate: 0.25  # Corvax-Wega-Change
       effects:
+      - !type:ModifyBleedAmount  # Corvax-Wega-Change
+        amount: -1.5  # Corvax-Wega-Change
       - !type:HealthChange
         damage:
           types:
-            Piercing: -2.5 # 10 per u
-            Radiation: 0.05 # 0.2 per u, 3 for 15u
+            Piercing: -4  # Corvax-Wega-Change
+            Blunt: 0.1  # Corvax-Wega-Change 
       - !type:HealthChange
         conditions:
         - !type:ReagentThreshold
-          min: 12
+          min: 11  # Corvax-Wega-Change
         damage:
           types:
-            Blunt: 3 # 12 per u
+            Blunt: 5  # Corvax-Wega-Change
 
 - type: reagent
   id: Bruizine
@@ -1097,21 +1106,22 @@
   color: "#ff3636"
   metabolisms:
     Medicine:
-      metabolismRate: 0.25
+          # metabolismRate: 0.25  # Corvax-Wega-Change
       effects:
       - !type:HealthChange
         damage:
           types:
-            Blunt: -2.25 # 9 per u
-      - !type:SatiateHunger
-        factor: -1
+  #          Blunt: -2.25 # 9 per u  # Corvax-Wega-Change
+ #     - !type:SatiateHunger  # Corvax-Wega-Change
+#        factor: -1  # Corvax-Wega-Change
+            Blunt: -3.5  # Corvax-Wega-Change
       - !type:HealthChange
         conditions:
         - !type:ReagentThreshold
           min: 10.5
         damage:
           types:
-            Poison: 2.5 # 10 per u
+            Poison: 4  # Corvax-Wega-Change
       # Corvax-Wega-Surgery-start
       - !type:ChemHealInternalDamage
         damageTypes: [ MuscleTears ]
@@ -1236,13 +1246,13 @@
   color: "#8147ff"
   metabolisms:
     Medicine:
-      metabolismRate: 0.25
+          # metabolismRate: 0.25  # Corvax-Wega-Change
       effects:
       # heals shocks and removes shock chems
       - !type:HealthChange
         damage:
           types:
-            Shock: -1.5 # 6 per u
+            Shock: -4  # Corvax-Wega-Change
       - !type:AdjustReagent
         reagent: Licoxide
         amount: -2
@@ -1259,7 +1269,7 @@
           min: 12
         damage:
           types:
-            Cold: 1 # 4 per u
+            Cold: 2  # Corvax-Wega-Change
       - !type:AdjustTemperature
         conditions:
         - !type:ReagentThreshold
@@ -1393,8 +1403,8 @@
         key: Jitter
         time: 2.0
         type: Remove
-      - !type:GenericStatusEffect
-        key: Drunk
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectDrunk
         time: 6.0
         type: Remove
       - !type:PopupMessage # we dont have sanity/mood so this will have to do

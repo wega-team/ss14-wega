@@ -30,6 +30,8 @@
     damageContainers:
     - Inorganic
     - Silicon
+    - Android #Corvax-Wega-android-health-display
+  - type: ShowAccessReaderSettings
 
 - type: entity
   parent: [ClothingEyesBase, ShowMedicalIcons]

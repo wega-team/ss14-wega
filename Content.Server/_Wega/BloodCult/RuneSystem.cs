@@ -10,6 +10,7 @@ using Content.Server.GameTicking;
 using Content.Server.Ghost.Roles.Components;
 using Content.Server.Pinpointer;
 using Content.Server.Station.Components;
+using Content.Shared.Atmos.Components;
 using Content.Shared.Blood.Cult;
 using Content.Shared.Blood.Cult.Components;
 using Content.Shared.Body.Components;

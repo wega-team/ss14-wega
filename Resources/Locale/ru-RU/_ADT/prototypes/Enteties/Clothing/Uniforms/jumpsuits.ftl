@@ -37,13 +37,13 @@ ent-ADTClothingUniformJumpsuitTurtleneckAquamarine = аквамариновая 
 ent-ADTClothingUniformJumpsuitTurtleneckPink = розовая водолазка
     .desc = И кто это будет носить?
 
-ent-ADTClothingUniformJumpsuitTurtleneckBlackSleeveless = чёрная водолазка
+ent-ADTClothingUniformJumpsuitTurtleneckBlackSleeveless = чёрная безрукавка
     .desc = Практичная и удобная водолазка чёрного цвета. На бирке можно заметить "Modeling Agency Dar-Vaxed".
 
-ent-ADTClothingUniformJumpsuitTurtleneckWhiteSleeveless = белая водолазка
+ent-ADTClothingUniformJumpsuitTurtleneckWhiteSleeveless = белая безрукавка
     .desc = Практичная и удобная водолазка белого цвета. На бирке можно заметить "Modeling Agency Dar-Vaxed".
 
-ent-ADTClothingUniformJumpsuitTurtleneckWhiteBlackSleeveless = чёрно-белая водолазка
+ent-ADTClothingUniformJumpsuitTurtleneckWhiteBlackSleeveless = чёрно-белая безрукавка
     .desc = Практичная и удобная водолазка чёрно-белого цвета. На бирке можно заметить "Modeling Agency Dar-Vaxed".
 
 ent-ADTClothingUniformJumpsuitTurtleneckTactick = тактическая водолазка

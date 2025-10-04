@@ -2,6 +2,7 @@
   abstract: true
   id: ClothingOuterDamageableBase
   components:
+  - type: TearableClothing
   - type: Damageable
     damageContainer: Clothing
   - type: Reactive
@@ -15,7 +16,7 @@
       behaviors:
       - !type:PlaySoundBehavior
         sound:
-          path: /Audio/Effects/poster_broken.ogg
+          collection: TearClothing
       - !type:EmptyContainersBehaviour
         containers:
         - storagebase

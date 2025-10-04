@@ -26,6 +26,16 @@
   loadouts:
   - SeniorEngineerJumpsuit
   - SeniorEngineerJumpskirt
+# Corvax-Wega-add-start
+  - JumpskirtTurtleneckAquamarine   
+  - JumpsuitTurtleneckAquamarine
+  - JumpskirtTurtleneckWhite
+  - JumpsuitTurtleneckWhite
+  - JumpskirtTurtleneckAzure
+  - JumpsuitTurtleneckAzure
+  - JumpskirtTurtleneckBlue
+  - JumpsuitTurtleneckBlue
+# Corvax-Wega-add-end
 
 - type: loadoutGroup
   id: SeniorEngineerBackpack
@@ -79,6 +89,74 @@
   loadouts:
   - SeniorResearcherJumpsuit
   - SeniorResearcherJumpskirt
+# Corvax-Wega-add-start
+  - JumpsuitColorWhite
+  - JumpskirtColorWhite
+  - JumpsuitColorBlack
+  - JumpskirtColorBlack
+  - JumpsuitColorBlue
+  - JumpskirtColorBlue
+  - JumpsuitColorYellow
+  - JumpskirtColorYellow
+  - JumpsuitColorGreen
+  - JumpskirtColorGreen
+  - JumpsuitColorOrange
+  - JumpskirtColorOrange
+  - JumpsuitColorRed
+  - JumpskirtColorRed
+  - JumpsuitColorPurple
+  - JumpskirtColorPurple
+  - JumpsuitColorPink
+  - JumpskirtColorPink
+  - JumpsuitColorDarkBlue
+  - JumpskirtColorDarkBlue
+  - JumpsuitColorDarkGreen
+  - JumpskirtColorDarkGreen
+  - JumpsuitColorTeal
+  - JumpskirtColorTeal
+  - JumpsuitCasualBlue
+  - JumpskirtCasualBlue
+  - JumpsuitCasualPurple
+  - JumpskirtCasualPurple
+  - JumpsuitCasualRed
+  - JumpskirtCasualRed
+  - JumpsuitCasualGreen
+  - JumpskirtCasualGreen 
+  - JumpskirtTurtleneckAquamarine   
+  - JumpsuitTurtleneckAquamarine
+  - JumpskirtTurtleneckWhite
+  - JumpsuitTurtleneckWhite
+  - JumpskirtTurtleneckAzure
+  - JumpsuitTurtleneckAzure
+  - JumpskirtTurtleneckYellow
+  - JumpsuitTurtleneckYellow
+  - JumpskirtTurtleneckGreen
+  - JumpsuitTurtleneckGreen
+  - JumpskirtTurtleneckBrown
+  - JumpsuitTurtleneckBrown
+  - JumpskirtTurtleneckRed
+  - JumpsuitTurtleneckRed
+  - JumpskirtTurtleneckOrange
+  - JumpsuitTurtleneckOrange
+  - JumpskirtTurtleneckPink
+  - JumpsuitTurtleneckPink
+  - JumpskirtTurtleneckGrey
+  - JumpsuitTurtleneckGrey
+  - JumpskirtTurtleneckBlue
+  - JumpsuitTurtleneckBlue
+  - JumpskirtTurtleneckPurple
+  - JumpsuitTurtleneckPurple
+  - JumpskirtTurtleneckBlack
+  - JumpsuitTurtleneckBlack
+  - JumpskirtTurtleneckSalat
+  - JumpsuitTurtleneckSalat
+  - JumpsuitTurtleneckSalatblack
+  - JumpskirtTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckWhiteBlackSleeveless
+  - JumpsuitTurtleneckWhiteSleeveless
+  - JumpskirtTurtleneckWhiteSleeveless
+# Corvax-Wega-add-end
 
 - type: loadoutGroup
   id: SeniorResearcherBackpack
@@ -94,6 +172,11 @@
   minLimit: 0
   loadouts:
   - SeniorResearcherLabCoat
+  - RegularLabCoat # Corvax-wega-add
+  - ScienceLabCoat # Corvax-wega-add
+  - ScienceWintercoat # Corvax-wega-add
+  - RoboticistLabCoat # Corvax-wega-add
+  - RoboticistWintercoat # Corvax-wega-add
 
 - type: loadoutGroup
   id: SeniorResearcherShoes
@@ -137,6 +220,14 @@
   loadouts:
   - JumpsuitPilot
   - JumpskirtPilot
+# Corvax-Wega-add-start
+  - JumpskirtTurtleneckRed
+  - JumpsuitTurtleneckRed
+  - JumpskirtTurtleneckBlack
+  - JumpsuitTurtleneckBlack
+  - JumpskirtTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckBlackSleeveless
+# Corvax-Wega-add-end
 
 - type: loadoutGroup
   id: PilotOuterClothing
@@ -158,6 +249,14 @@
   loadouts:
   - SeniorOfficerJumpsuit
   - SeniorOfficerJumpskirt
+# Corvax-Wega-add-start
+  - JumpskirtTurtleneckRed
+  - JumpsuitTurtleneckRed
+  - JumpskirtTurtleneckBlack
+  - JumpsuitTurtleneckBlack
+  - JumpskirtTurtleneckBlackSleeveless
+  - JumpsuitTurtleneckBlackSleeveless
+# Corvax-Wega-add-end
 
 - type: loadoutGroup
   id: SeniorOfficerBackpack
@@ -216,12 +315,24 @@
   loadouts:
   - SeniorPhysicianJumpsuit
   - SeniorPhysicianJumpskirt
+# Corvax-Wega-add-start
+  - JumpskirtTurtleneckAquamarine   
+  - JumpsuitTurtleneckAquamarine
+  - JumpskirtTurtleneckWhite
+  - JumpsuitTurtleneckWhite
+  - JumpskirtTurtleneckAzure
+  - JumpsuitTurtleneckAzure
+  - JumpskirtTurtleneckBlue
+  - JumpsuitTurtleneckBlue
+# Corvax-Wega-add-end
 
 - type: loadoutGroup
   id: SeniorPhysicianOuterClothing
   name: loadout-group-senior-physician-outerclothing
   minLimit: 0
   loadouts:
+  - RegularLabCoat # Corvax-wega-add
+  - MedicalDoctorWintercoat # Corvax-wega-add
   - SeniorPhysicianLabCoat
 
 - type: loadoutGroup

@@ -1,0 +1,40 @@
+- type: marking
+  id: AriralStripes
+  bodyPart: Special
+  markingCategory: Special
+  speciesRestriction: [Ariral]
+  sexRestriction: [Male]
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+  sprites:
+  - sprite: _Wega/Mobs/Customization/ariral_special.rsi
+    state: stripes
+
+- type: marking
+  id: AriralStripesF
+  bodyPart: Special
+  markingCategory: Special
+  speciesRestriction: [Ariral]
+  sexRestriction: [Female]
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+  sprites:
+  - sprite: _Wega/Mobs/Customization/ariral_special.rsi
+    state: stripes_f
+
+- type: marking
+  id: AriralSpots
+  bodyPart: Special
+  markingCategory: Special
+  speciesRestriction: [Ariral]
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+  sprites:
+  - sprite: _Wega/Mobs/Customization/ariral_special.rsi
+    state: spots

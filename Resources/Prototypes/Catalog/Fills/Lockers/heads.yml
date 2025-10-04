@@ -21,6 +21,8 @@
     - id: ClothingHandsKnuckleDustersQM
     - id: MailTeleporterMachineCircuitboard
     - id: PrinterDocFlatpack # Corvax-Printer
+    - id: FundingAllocationComputerCircuitboard # Corvax-Wega
+
 
 - type: entity
   id: LockerQuarterMasterFilled
@@ -297,6 +299,7 @@
     - id: ProtolatheMachineCircuitboard
     - id: ResearchComputerCircuitboard
     - id: CargoRequestScienceComputerCircuitboard
+    - id: StationAiFixerCircuitboard
     - id: RubberStampRd
 
 # Hardsuit table, used for suit storage as well

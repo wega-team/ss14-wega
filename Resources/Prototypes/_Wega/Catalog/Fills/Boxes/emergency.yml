@@ -26,8 +26,8 @@
   components:
   - type: StorageFill
     contents:
-    - id: ClothingMaskBreathMedical
-    - id: DoubleEmergencyNitrogenTankFilled
+    - id: ClothingMaskBreath
+    - id: ExtendedEmergencyNitrogenTankFilled
     - id: Flare
     - id: Tyriumpack3
     - id: WelderMini

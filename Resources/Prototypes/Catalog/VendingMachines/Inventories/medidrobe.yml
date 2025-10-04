@@ -6,6 +6,16 @@
     ClothingBackpackSatchelMedical: 4
     ClothingUniformJumpsuitMedicalDoctor: 4
     ClothingUniformJumpskirtMedicalDoctor: 4
+    # Corvax-Wega-Turtleneck-start
+    ADTClothingUniformJumpskirtTurtleneckAquamarine: 2
+    ADTClothingUniformJumpsuitTurtleneckAquamarine: 2
+    ADTClothingUniformJumpskirtTurtleneckWhite: 2
+    ADTClothingUniformJumpsuitTurtleneckWhite: 2
+    ADTClothingUniformJumpskirtTurtleneckAzure: 2
+    ADTClothingUniformJumpsuitTurtleneckAzure: 2
+    ADTClothingUniformJumpskirtTurtleneckBlue: 2
+    ADTClothingUniformJumpsuitTurtleneckBlue: 2 
+    # Corvax-Wega-Turtleneck-end
     ClothingBeltMedical: 4
     ClothingHeadHatBeretMedic: 4
     ClothingHeadNurseHat: 4

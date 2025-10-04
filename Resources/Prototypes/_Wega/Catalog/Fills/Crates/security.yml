@@ -1,0 +1,20 @@
+- type: entity
+  id: CrateSecSegway
+  parent: CrateLivestock
+  name: segway crate
+  description: Wee wee, it's a police!
+  components:
+    - type: StorageFill
+      contents:
+        - id: VehicleSecway
+        - id: VehicleKeySecway
+        
+- type: entity
+  id: CrateBoxPillCanisterSB
+  parent: CrateSecgear
+  name: crate sec reagents
+  description: Box with pill of sec damage. Requires Medical access to open.
+  components:
+  - type: StorageFill
+    contents:
+      - id: BoxPillCanisterSB

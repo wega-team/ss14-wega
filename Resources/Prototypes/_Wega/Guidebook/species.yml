@@ -1,0 +1,39 @@
+- type: guideEntry
+  id: Android
+  name: species-name-android
+  text: "/ServerInfo/_Wega/Guidebook/Mobs/Android.xml"
+
+- type: guideEntry
+  id: Ariral
+  name: species-name-ariral
+  text: "/ServerInfo/_Wega/Guidebook/Mobs/Ariral.xml"
+
+- type: guideEntry
+  id: Demon
+  name: species-name-demon
+  text: "/ServerInfo/_Wega/Guidebook/Mobs/Demon.xml"
+
+- type: guideEntry
+  id: Felinid
+  name: species-name-felinid
+  text: "/ServerInfo/_Wega/Guidebook/Mobs/Felinid.xml"
+
+- type: guideEntry
+  id: Harpy
+  name: species-name-harpy
+  text: "/ServerInfo/_Wega/Guidebook/Mobs/Harpy.xml"
+
+- type: guideEntry
+  id: Phantom
+  name: species-name-phantom
+  text: "/ServerInfo/_Wega/Guidebook/Mobs/Phantom.xml"
+
+- type: guideEntry
+  id: Resomi
+  name: species-name-resomi
+  text: "/ServerInfo/_Wega/Guidebook/Mobs/Resomi.xml"
+
+- type: guideEntry
+  id: Skrell
+  name: species-name-skrell
+  text: "/ServerInfo/_Wega/Guidebook/Mobs/Skrell.xml"
