@@ -21,12 +21,11 @@
   - Weapons
   completetime: 8
   materials:
-    Steel: 1500
+    Steel: 850
     Plastic: 1000
-    Glass: 1000
-    Gold: 500
-    Silver: 300
-    Uranium: 150
+    Glass: 300
+    Gold: 200
+    Silver: 200
 # Clothing
 
 - type: latheRecipe
