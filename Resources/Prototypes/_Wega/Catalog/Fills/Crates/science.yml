@@ -39,3 +39,13 @@
   - type: StorageFill
     contents:
     - id: MiningServerFlatpack
+    
+- type: entity
+  id: CrateGeneticAncestorCube
+  parent: CrateScienceSecure
+  name: genetic ancestor cube crate
+  description: A crate containing single box of cubes of genetic ancestors. Requires Science access to open.
+  components:
+  - type: StorageFill
+    contents:
+      - id: GeneticAncestorCubeBox

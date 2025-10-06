@@ -81,7 +81,11 @@ public sealed partial class SurgerySystem
             if (possibleDamages.Count == 0)
                 continue;
 
-            TryAddInternalDamages(ent, _random.Pick(possibleDamages));
+            var type = _random.Pick(possibleDamages);
+            if (damage < type.MinDamage)
+                continue;
+
+            TryAddInternalDamages(ent, type);
         }
     }
 

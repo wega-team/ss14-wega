@@ -1,4 +1,17 @@
 - type: technology
+  id: ImplantsSB
+  name: research-technology-implant_sb
+  icon:
+    sprite: _Wega/Objects/Specific/Medical/Surgery/implants.rsi
+    state: empty
+  discipline: Arsenal
+  tier: 1
+  cost: 7500
+  recipeUnlocks:
+  - TrackingImplant
+  - MindShieldImplant
+
+- type: technology
   id: ConcentratedLaserWeaponry
   name: research-technology-advanced-weapon
   icon:

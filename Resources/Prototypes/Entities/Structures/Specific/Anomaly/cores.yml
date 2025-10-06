@@ -158,8 +158,11 @@
     solution: beaker
   - type: SolutionTransfer
     canChangeTransferAmount: true
-  - type: Drink
+  - type: Edible
+    edible: Drink
     solution: beaker
+    destroyOnEmpty: false
+    utensil: None
   - type: Appearance
   - type: GenericVisualizer
     visuals:
@@ -272,7 +275,6 @@
 - type: entity
   parent: [ BaseAnomalyCore, BaseShadow ]
   id: AnomalyCoreShadow
-  abstract: true
   suffix: Shadow
   components:
   - type: SpawnOnTrigger
