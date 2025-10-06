@@ -1,7 +1,7 @@
 {
     "version": 1,
     "license": "CC-BY-SA-3.0",
-    "copyright": "Sprite created by icons/obj/weapons/guns/energy.dmi, acests advtaser",
+    "copyright": "Sprite from dmi/icons/obj/weapons/dominator.dmi?codebase=paradise-ru mody by <500744677352407051> dsid",
     "size": {
         "x": 32,
         "y": 32
@@ -32,9 +32,6 @@
             "name": "mag-lethal-unshaded-3"
         },
         {
-            "name": "mag-lethal-unshaded-4"
-        },
-        {
             "name": "mag-disabler-unshaded-0"
         },
         {
@@ -47,7 +44,12 @@
             "name": "mag-disabler-unshaded-3"
         },
         {
-            "name": "mag-disabler-unshaded-4"
+            "name": "lethal-inhand-left",
+            "directions": 4
+        },
+        {
+            "name": "lethal-inhand-right",
+            "directions": 4
         },
         {
             "name": "disabler-inhand-left",
