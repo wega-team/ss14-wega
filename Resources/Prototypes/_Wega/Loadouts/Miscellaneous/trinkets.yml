@@ -39,11 +39,11 @@
   storage:
     back:
     - PlushieVulpa
-  groupBy: "toyload"
+  groupBy: "wegatoyload"
 
 - type: loadout
   id: PlushieTajar
   storage:
     back:
     - PlushieTajar
-  groupBy: "toyload"
+  groupBy: "wegatoyload"

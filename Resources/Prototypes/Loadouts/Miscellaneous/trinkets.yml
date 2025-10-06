@@ -34,14 +34,14 @@
   storage:
     back:
     - PlushieLizard
-  groupBy: "toyload" # Corvax-Wega-loadout
+  groupBy: "wegatoyload" # Corvax-Wega-loadout
   
 - type: loadout
   id: PlushieSpaceLizard
   storage:
     back:
     - PlushieSpaceLizard
-  groupBy: "toyload" # Corvax-Wega-loadout
+  groupBy: "wegatoyload" # Corvax-Wega-loadout
 
 - type: loadout
   id: ThreeCandles
