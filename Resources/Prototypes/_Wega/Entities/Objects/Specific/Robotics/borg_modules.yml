@@ -22,6 +22,17 @@
     - item: BoneGelAS
     - item: SprayBottle
     - item: BorgDropper
+    - hand:
+        emptyRepresentative: BorgModuleBiomaterialsPlaceholder
+        emptyLabel: borg-slot-biomaterials-empty
+        whitelist:
+          components:
+          - Organ
+          - SubdermalImplant
+          tags:
+          - BaseBodyPart
+          - SubdermalHeadImplant
+          - Pill
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: surgery-module }
     
@@ -72,3 +83,11 @@
   - type: ContainerContainer
     containers:
       upgrades: !type:Container 
+
+- type: entity
+  id: BorgModuleBiomaterialsPlaceholder
+  parent: BaseItem
+  components:
+  - type: Sprite
+    sprite: Mobs/Species/Human/organs.rsi
+    state: heart-off
