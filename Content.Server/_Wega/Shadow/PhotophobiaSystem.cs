@@ -56,7 +56,7 @@ public sealed class PhotophobiaSystem : EntitySystem
             if (_gameTiming.CurTime < comp.NextTickTime)
                 continue;
 
-            comp.NextTickTime = _gameTiming.CurTime + TimeSpan.FromSeconds(comp.Interval * _random.NextFloat(0f, 0.5f));
+            comp.NextTickTime = _gameTiming.CurTime + TimeSpan.FromSeconds(comp.Interval * _random.NextFloat(0.75f, 1.25f));
 
             var lights = CheckNearbyLights(uid);
 
