@@ -28,9 +28,15 @@
         whitelist:
           components:
           - Organ
-          - SubdermalImplant
           tags:
           - BaseBodyPart
+    - hand:
+        emptyRepresentative: BorgModuleImplantsPlaceholder
+        emptyLabel: borg-slot-implants-empty
+        whitelist:
+          components:
+          - SubdermalImplant
+          tags:
           - SubdermalHeadImplant
           - Pill
   - type: BorgModuleIcon
@@ -91,3 +97,11 @@
   - type: Sprite
     sprite: Mobs/Species/Human/organs.rsi
     state: heart-off
+
+- type: entity
+  id: BorgModuleImplantsPlaceholder
+  parent: BaseItem
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Medical/Surgery/implants.rsi
+    state: empty

@@ -7,3 +7,6 @@ ent-WeaponProtoKineticAcceleratorBorg = протокинетический ус�
 borg-slot-biomaterials-empty = Биоматериалы
 ent-BorgModuleBiomaterialsPlaceholder = { ent-BaseItem }
     .desc = { ent-BaseItem.desc }
+borg-slot-implants-empty = Имплантаты
+BorgModuleImplantsPlaceholder = { ent-BaseItem }
+    .desc = { ent-BaseItem.desc }
