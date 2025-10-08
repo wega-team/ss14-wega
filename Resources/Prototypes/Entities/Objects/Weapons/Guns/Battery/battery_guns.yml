@@ -28,7 +28,7 @@
 
 - type: entity
   parent: [BaseWeaponBattery, BaseGunWieldable]
-  id: BaseLaserRifle
+  id: WeaponLaserCannon
   abstract: true
   components:
   - type: Item
@@ -48,10 +48,20 @@
   - type: Appearance
   - type: Clothing
     sprite: Objects/Weapons/Guns/Battery/laser_gun.rsi
+    # Corvax-Wega-gun-start
+  - type: GunWieldBonus
+    minAngle: -21
+    maxAngle: -32
+  - type: Battery
+    maxCharge: 1500
+    startingCharge: 1500
+    # Corvax-Wega-gun-end
   - type: Gun
     selectedMode: SemiAuto
+    fireRate: 2
     availableModes:
-    - SemiAuto
+      - SemiAuto
+      - FullAuto
   - type: HitscanBatteryAmmoProvider
     proto: RedLaser
     fireCost: 62.5
@@ -110,6 +120,11 @@
   - type: Tag
     tags:
     - Sidearm
+    # Corvax-Wega-gun-start  
+  - type: Gun
+    minAngle: 0
+    maxAngle: 0 
+    # Corvax-Wega-gun-end
   - type: Clothing
     sprite: Objects/Weapons/Guns/Battery/taser.rsi
     quickEquip: false
@@ -174,8 +189,13 @@
       shader: unshaded
   - type: Item
     storedOffset: 0,-5
+    # Corvax-Wega-gun-start  
+  - type: Battery
+    maxCharge: 1250
+    startingCharge: 1250
+    # Corvax-Wega-gun-end
   - type: HitscanBatteryAmmoProvider
-    proto: RedMediumLaser
+    proto: RedLaser
     fireCost: 62.5
   - type: MagazineVisuals
     magState: mag
@@ -251,6 +271,15 @@
   parent: [BaseLaserRifle, BaseGunWieldable, BaseSecurityContraband]
   id: WeaponLaserCarbine
   description: Favoured by Nanotrasen Security for being cheap and easy to use.
+  components:
+    # Corvax-Wega-gun-start
+  - type: GunWieldBonus
+    minAngle: -21
+    maxAngle: -32
+  - type: Battery
+    maxCharge: 1500
+    startingCharge: 1500
+    # Corvax-Wega-gun-end
 
 - type: entity
   name: practice laser carbine
@@ -260,6 +289,14 @@
   components:
   - type: StaticPrice
     price: 300
+    # Corvax-Wega-gun-start
+  - type: GunWieldBonus
+    minAngle: -21
+    maxAngle: -32
+  - type: Battery
+    maxCharge: 1500
+    startingCharge: 1500
+    # Corvax-Wega-gun-end
   - type: HitscanBatteryAmmoProvider
     proto: RedLaserPractice
     fireCost: 62.5
@@ -324,6 +361,11 @@
   - type: Appearance
   - type: Clothing
     sprite: Objects/Weapons/Guns/Battery/pulse_carbine.rsi
+    # Corvax-Wega-gun-start
+  - type: GunWieldBonus
+    minAngle: -21
+    maxAngle: -32
+    # Corvax-Wega-gun-end
   - type: Gun
     selectedMode: SemiAuto
     fireRate: 3
@@ -364,6 +406,11 @@
   - type: Appearance
   - type: Clothing
     sprite: Objects/Weapons/Guns/Battery/pulse_rifle.rsi
+    # Corvax-Wega-gun-start
+  - type: GunWieldBonus
+    minAngle: -21
+    maxAngle: -32
+    # Corvax-Wega-gun-end
   - type: Gun
     fireRate: 1.5
     soundGunshot:
@@ -400,8 +447,16 @@
   - type: Appearance
   - type: Clothing
     sprite: Objects/Weapons/Guns/Battery/laser_cannon.rsi
+    # Corvax-Wega-gun-start
+  - type: GunWieldBonus
+    minAngle: -21
+    maxAngle: -32
+  - type: Battery
+    maxCharge: 1500
+    startingCharge: 1500
+    # Corvax-Wega-gun-end
   - type: Gun
-    fireRate: 1.5
+    fireRate: 1 # Corvax-Wega-Gun
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
   - type: HitscanBatteryAmmoProvider
@@ -462,6 +517,14 @@
       shader: unshaded
   - type: Clothing
     sprite: Objects/Weapons/Guns/Battery/xray.rsi
+    # Corvax-Wega-gun-start
+  - type: GunWieldBonus
+    minAngle: -21
+    maxAngle: -32
+  - type: Battery
+    maxCharge: 1500
+    startingCharge: 1500
+    # Corvax-Wega-gun-end
   - type: Gun
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser3.ogg
@@ -896,7 +959,7 @@
   - type: Clothing
     sprite: Objects/Weapons/Guns/Battery/temp_gun.rsi
   - type: Gun
-    fireRate: 1
+    fireRate: 1.5 # Corvax-Wega-gun
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/taser2.ogg
   - type: ProjectileBatteryAmmoProvider
@@ -909,8 +972,8 @@
     - proto: BoltTempgunHot
       fireCost: 100
   - type: Battery
-    maxCharge: 1000
-    startingCharge: 1000
+    maxCharge: 1500 # Corvax-Wega-gun
+    startingCharge: 1500 # Corvax-Wega-gun
   - type: StaticPrice
     price: 100
 
