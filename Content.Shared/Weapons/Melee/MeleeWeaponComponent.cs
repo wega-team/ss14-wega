@@ -71,6 +71,9 @@ public sealed partial class MeleeWeaponComponent : Component
     [DataField, AutoNetworkedField]
     public bool ResistanceBypass = false;
 
+    [DataField, AutoNetworkedField]
+    public bool PossibilityWideAtack = true;
+
     /// <summary>
     /// Base damage for this weapon. Can be modified via heavy damage or other means.
     /// </summary>

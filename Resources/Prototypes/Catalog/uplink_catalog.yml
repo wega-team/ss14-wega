@@ -158,19 +158,23 @@
       tags:
       - NukeOpsUplink
 
-- type: listing
-  id: UplinkSniperBundle
-  name: uplink-sniper-bundle-name
-  description: uplink-sniper-bundle-desc
-  icon: { sprite: /Textures/Objects/Weapons/Guns/Snipers/heavy_sniper.rsi, state: base }
-  productEntity: BriefcaseSyndieSniperBundleFilled
-  discountCategory: usualDiscounts
-  discountDownTo:
-    Telecrystal: 6
-  cost:
-    Telecrystal: 12
-  categories:
-  - UplinkWeaponry
+# - type: listing ### Сorvax-Wega-Change
+#   id: UplinkSniperBundle
+#   name: uplink-sniper-bundle-name
+#   description: uplink-sniper-bundle-desc
+#   icon: { sprite: /Textures/Objects/Weapons/Guns/Snipers/heavy_sniper.rsi, state: base }
+#   productEntity: BriefcaseSyndieSniperBundleFilled
+#   discountCategory: usualDiscounts
+#   discountDownTo:
+#     Telecrystal: 6
+#   cost:
+#     Telecrystal: 12
+#   categories:
+#   - UplinkWeaponry
+#   - !type:StoreWhitelistCondition
+#     blacklist:
+#       tags:
+#       - NukeOpsUplink
 
 - type: listing
   id: UplinkC20RBundle

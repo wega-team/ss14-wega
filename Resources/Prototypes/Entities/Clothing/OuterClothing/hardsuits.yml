@@ -670,9 +670,9 @@
         Caustic: 0.5
   - type: Item
     size: Huge
-  - type: ClothingSpeedModifier
-    walkModifier: 0.9
-    sprintModifier: 0.9
+  - type: ClothingSpeedModifier 
+    walkModifier: 1 # Corvax-Wega-Change
+    sprintModifier: 1 # Corvax-Wega-Change
   - type: HeldSpeedModifier
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitSyndieElite

@@ -22,3 +22,27 @@
         - id: MicroManipulatorStockPart
           amount: 2
         - id: CapacitorStockPart
+
+- type: entity
+  parent: ClothingBackpackDuffelSyndicateBundle
+  id: ADTClothingBackpackDuffelSyndicateFilledXC67
+  name: xC-67 rifle bundle
+  description: bundle with a prototype xC-67 assault rifle and two mags.
+  components:
+  - type: StorageFill
+    contents:
+      - id: ADTWeaponRifleXC67
+      - id: ADTExtMagazineRifle
+        amount: 2
+
+- type: entity
+  parent: ClothingBackpackDuffelSyndicateBundle
+  id: ADTClothingBackpackDuffelSyndicateFilledHristov
+  name: Hristov bundle
+  description: bundle with hristov and four mags.
+  components:
+  - type: StorageFill
+    contents:
+      - id: ADTWeaponSniperHristovAdvanced
+      - id: ADTMagazineHristovAdvanced
+        amount: 4
