@@ -28,7 +28,7 @@
 
 - type: entity
   parent: [BaseWeaponBattery, BaseGunWieldable]
-  id: WeaponLaserCannon
+  id: BaseLaserRifle
   abstract: true
   components:
   - type: Item
@@ -61,7 +61,6 @@
     fireRate: 2
     availableModes:
       - SemiAuto
-      - FullAuto
   - type: HitscanBatteryAmmoProvider
     proto: RedLaser
     fireCost: 62.5
@@ -195,7 +194,7 @@
     startingCharge: 1250
     # Corvax-Wega-gun-end
   - type: HitscanBatteryAmmoProvider
-    proto: RedLaser
+    proto: RedLaser # Corvax-Wega-Gun
     fireCost: 62.5
   - type: MagazineVisuals
     magState: mag
@@ -273,12 +272,10 @@
   description: Favoured by Nanotrasen Security for being cheap and easy to use.
   components:
     # Corvax-Wega-gun-start
-  - type: GunWieldBonus
-    minAngle: -21
-    maxAngle: -32
-  - type: Battery
-    maxCharge: 1500
-    startingCharge: 1500
+  - type: Gun
+    availableModes:
+      - SemiAuto
+      - FullAuto
     # Corvax-Wega-gun-end
 
 - type: entity
@@ -290,12 +287,10 @@
   - type: StaticPrice
     price: 300
     # Corvax-Wega-gun-start
-  - type: GunWieldBonus
-    minAngle: -21
-    maxAngle: -32
-  - type: Battery
-    maxCharge: 1500
-    startingCharge: 1500
+  - type: Gun
+    availableModes:
+      - SemiAuto
+      - FullAuto
     # Corvax-Wega-gun-end
   - type: HitscanBatteryAmmoProvider
     proto: RedLaserPractice
