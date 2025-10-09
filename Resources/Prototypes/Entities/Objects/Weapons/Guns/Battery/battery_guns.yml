@@ -58,9 +58,8 @@
     # Corvax-Wega-gun-end
   - type: Gun
     selectedMode: SemiAuto
-    fireRate: 2
     availableModes:
-      - SemiAuto
+    - SemiAuto
   - type: HitscanBatteryAmmoProvider
     proto: RedLaser
     fireCost: 62.5
