@@ -21,7 +21,7 @@
 - type: cargoProduct
   id: CrateFoodShrimp
   icon:
-    sprite: _Wega/Objects/Consumable/Food/Baked/shrimpbox.yml
+    sprite: _Wega/Objects/Consumable/Food/Baked/shrimpbox.rsi
     state: box
   product: CrateFoodShrimp
   cost: 700

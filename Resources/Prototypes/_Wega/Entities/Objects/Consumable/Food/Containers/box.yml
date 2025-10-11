@@ -5,7 +5,7 @@
   name: shrimp box
   components:
   - type: Sprite
-    sprite: _Wega/Objects/Consumable/Food/Baked/shrimpbox.yml
+    sprite: _Wega/Objects/Consumable/Food/Baked/shrimpbox.rsi
     drawdepth: SmallObjects
     layers:
     - state: box
