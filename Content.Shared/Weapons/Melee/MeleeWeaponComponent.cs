@@ -71,8 +71,8 @@ public sealed partial class MeleeWeaponComponent : Component
     [DataField, AutoNetworkedField]
     public bool ResistanceBypass = false;
 
-    [DataField, AutoNetworkedField]
-    public bool PossibilityWideAtack = true;
+    [DataField, AutoNetworkedField] // Corvax-Wega-Add
+    public bool PossibilityWideAtack = true; // Corvax-Wega-Add
 
     /// <summary>
     /// Base damage for this weapon. Can be modified via heavy damage or other means.

@@ -205,15 +205,13 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
 
     private void OnHeavyAttack(HeavyAttackEvent msg, EntitySessionEventArgs args) // Corvax-Wega-Change
     {
-        var weapon = GetEntity(msg.Weapon);
-        if (args.SenderSession.AttachedEntity is not { } user
-            || TerminatingOrDeleted(user)
-            || TerminatingOrDeleted(weapon))
+        var weapon = GetEntity(msg.Weapon); // Corvax-Wega-Add
+        if (args.SenderSession.AttachedEntity is not { } user // Corvax-Wega-Change
+            || TerminatingOrDeleted(user) || TerminatingOrDeleted(weapon)) // Corvax-Wega-Change
             return;
 
-        if (!TryGetWeapon(user, out var weaponUid, out var weaponComp)
-            || weaponUid != weapon
-            || !weaponComp.PossibilityWideAtack)
+        if (!TryGetWeapon(user, out var weaponUid, out var weaponComp) // Corvax-Wega-Change
+            || weaponUid != weapon || !weaponComp.PossibilityWideAtack) // Corvax-Wega-Change
             return;
 
         AttemptAttack(user, weaponUid, weaponComp, msg, args.SenderSession);
