@@ -87,7 +87,7 @@
     pocket2: MagazineRifle
     underwearbottom: ClothingUnderBottomHearts # Corvax-Wega
   inhand:
-  - WeaponRifleLecter
+  - WeaponRifleLecterXL8
   storage:
     back:
     - WeaponDisabler

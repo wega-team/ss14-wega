@@ -1,0 +1,10 @@
+- type: skinColoration
+  id: PhantomBlack
+  strategy: !type:MonochromaticSkinColoration
+
+- type: skinColoration
+  id: AriralPale  
+  strategy: !type:MonochromaticSkinColoration
+    minValue: 0.85
+    maxValue: 1.0
+    maxSaturation: 0.08

@@ -10,24 +10,24 @@
 
     <ui:RadialContainer Name="Main" VerticalExpand="True" HorizontalExpand="True" InitialRadius="64" ReserveSpaceForHiddenChildren="False">
         <!-- Blood Orb -->
-        <ui:RadialMenuTextureButton Name="BloodOrbButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-blood-orb'}" TargetLayerControlName="BloodOrb">
+        <ui:RadialMenuButton Name="BloodOrbButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-blood-orb'}" TargetLayerControlName="BloodOrb">
             <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/orb.png"/>
-        </ui:RadialMenuTextureButton>
+        </ui:RadialMenuButton>
 
         <!-- Blood Recharge -->
-        <ui:RadialMenuTextureButton Name="BloodRechargeButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-blood-recharge'}" TargetLayerControlName="BloodRecharge">
+        <ui:RadialMenuButton Name="BloodRechargeButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-blood-recharge'}" TargetLayerControlName="BloodRecharge">
             <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/recharge.png"/>
-        </ui:RadialMenuTextureButton>
+        </ui:RadialMenuButton>
 
         <!-- Blood Spear -->
-        <ui:RadialMenuTextureButton Name="BloodSpearButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-blood-spear'}" TargetLayerControlName="BloodSpear">
+        <ui:RadialMenuButton Name="BloodSpearButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-blood-spear'}" TargetLayerControlName="BloodSpear">
             <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/spear.png"/>
-        </ui:RadialMenuTextureButton>
+        </ui:RadialMenuButton>
 
         <!-- Blood Bolt Barrage -->
-        <ui:RadialMenuTextureButton Name="BloodBoltBarrageButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-blood-bolt-barrage'}" TargetLayerControlName="BloodBoltBarrage">
+        <ui:RadialMenuButton Name="BloodBoltBarrageButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-blood-bolt-barrage'}" TargetLayerControlName="BloodBoltBarrage">
             <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/barrage.png"/>
-        </ui:RadialMenuTextureButton>
+        </ui:RadialMenuButton>
 
     </ui:RadialContainer>
 

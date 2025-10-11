@@ -5,8 +5,8 @@
     sprite: _Wega/Structures/Machines/miningserver.rsi
     state: mode1
   discipline: Industrial
-  tier: 2
-  cost: 10000
+  tier: 1
+  cost: 7500
   recipeUnlocks:
     - MiningServerCircuitboard
     - MiningMonitoringComputerCircuitboard

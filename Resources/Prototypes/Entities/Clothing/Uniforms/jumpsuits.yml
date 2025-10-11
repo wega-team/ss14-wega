@@ -22,14 +22,12 @@
     sprite: Clothing/Uniforms/Jumpsuit/ancient.rsi
 
 - type: entity
-  parent: ClothingUniformBase
+  parent: [ClothingUniformBase, ClothingUniformFoldableBase]
   id: ClothingUniformJumpsuitBartender
   name: bartender's uniform
   description: A nice and tidy uniform. Shame about the bar though.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/bartender.rsi
-  - type: Clothing
     sprite: Clothing/Uniforms/Jumpsuit/bartender.rsi
 
 - type: entity
@@ -77,8 +75,6 @@
   components:
   - type: Sprite
     sprite: Clothing/Uniforms/Jumpsuit/cargotech.rsi
-  - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/cargotech.rsi
 
 - type: entity
   parent: ClothingUniformToggleableBase # Corvax-Wega-ToggleableClothing-Edit
@@ -88,8 +84,6 @@
   components:
   - type: Sprite
     sprite: Clothing/Uniforms/Jumpsuit/salvage.rsi
-  - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/salvage.rsi
 
 - type: entity
   parent: [ClothingUniformToggleableBase, BaseCommandContraband] # Corvax-Wega-ToggleableClothing-Edit
@@ -98,8 +92,6 @@
   description: It's a high visibility jumpsuit given to those engineers insane enough to achieve the rank of Chief Engineer.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/ce.rsi
-  - type: Clothing
     sprite: Clothing/Uniforms/Jumpsuit/ce.rsi
 
 - type: entity
@@ -175,8 +167,6 @@
   description: There's some odd stains on this jumpsuit. Hm.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/chemistry.rsi
-  - type: Clothing
     sprite: Clothing/Uniforms/Jumpsuit/chemistry.rsi
 
 - type: entity
@@ -307,18 +297,14 @@
   components:
   - type: Sprite
     sprite: Clothing/Uniforms/Jumpsuit/engineering.rsi
-  - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/engineering.rsi
 
 - type: entity
-  parent: ClothingUniformBase
+  parent: [ClothingUniformBase, ClothingUniformFoldableBase]
   id: ClothingUniformJumpsuitEngineeringHazard
   name: hazard jumpsuit
   description: Woven in a grungy, warm orange. Lets others around you know that you really mean business when it comes to work.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/engineering_hazard.rsi
-  - type: Clothing
     sprite: Clothing/Uniforms/Jumpsuit/engineering_hazard.rsi
 
 - type: entity
@@ -328,8 +314,6 @@
   description: Rather bland and inoffensive. Perfect for vanishing off the face of the universe.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/hop.rsi
-  - type: Clothing
     sprite: Clothing/Uniforms/Jumpsuit/hop.rsi
 
 - type: entity
@@ -418,8 +402,6 @@
   components:
   - type: Sprite
     sprite: Clothing/Uniforms/Jumpsuit/hydro.rsi
-  - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/hydro.rsi
 
 - type: entity
   parent: ClothingUniformToggleableBase # Corvax-Wega-ToggleableClothing-Edit
@@ -428,8 +410,6 @@
   description: The jumpsuit for the poor sop with a mop.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/janitor.rsi
-  - type: Clothing
     sprite: Clothing/Uniforms/Jumpsuit/janitor.rsi
 
 - type: entity
@@ -586,8 +566,6 @@
   components:
   - type: Sprite
     sprite: Clothing/Uniforms/Jumpsuit/scientist.rsi
-  - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/scientist.rsi
 
 - type: entity
   parent: ClothingUniformBase
@@ -608,8 +586,6 @@
   components:
   - type: Sprite
     sprite: Clothing/Uniforms/Jumpsuit/roboticist.rsi
-  - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/roboticist.rsi
 
 - type: entity
   parent: [ClothingUniformToggleableBase, BaseSecurityContraband] # Corvax-Wega-ToggleableClothing-Edit
@@ -618,8 +594,6 @@
   description: A jumpsuit made of strong material, providing robust protection.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/security.rsi
-  - type: Clothing
     sprite: Clothing/Uniforms/Jumpsuit/security.rsi
   - type: Item
     inhandVisuals:
@@ -913,18 +887,14 @@
   components:
   - type: Sprite
     sprite: Clothing/Uniforms/Jumpsuit/atmos.rsi
-  - type: Clothing
-    sprite: Clothing/Uniforms/Jumpsuit/atmos.rsi
 
 - type: entity
-  parent: ClothingUniformBase
+  parent: [ClothingUniformBase, ClothingUniformFoldableBase]
   id: ClothingUniformJumpsuitAtmosCasual
   name: atmospheric technician's casual jumpsuit
   description: Might as well relax with a job as easy as yours.
   components:
   - type: Sprite
-    sprite: Clothing/Uniforms/Jumpsuit/atmos_casual.rsi
-  - type: Clothing
     sprite: Clothing/Uniforms/Jumpsuit/atmos_casual.rsi
 
 - type: entity

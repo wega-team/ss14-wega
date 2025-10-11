@@ -12,14 +12,14 @@
   - type: SolutionContainerManager
     solutions:
       hypospray:
-        maxVol: 12
+        maxVol: 10
   - type: RefillableSolution
     solution: hypospray
   - type: ExaminableSolution
     solution: hypospray
   - type: Hypospray
     onlyAffectsMobs: false
-    transferAmount: 4
+    transferAmount: 5
   - type: UseDelay
     delay: 4.5
 

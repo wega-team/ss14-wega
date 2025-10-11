@@ -61,6 +61,7 @@
           - Knife
           - Sidearm
           - Scalpel  # Corvax-Wega-Slot_for_scalpel_in_milboots
+        priority: 4
   # Corvax-Wega-Dirtable-start
   - type: Dirtable
     dirtState: boots

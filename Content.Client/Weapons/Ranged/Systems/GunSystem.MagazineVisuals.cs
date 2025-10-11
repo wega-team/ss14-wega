@@ -51,6 +51,16 @@ public sealed partial class GunSystem
         }
         else if (!string.IsNullOrEmpty(component.MagState))
             magState = component.MagState;
+
+
+        if (args.AppearanceData.TryGetValue(BatteryWeaponHitscanModesVisuals.MagState, out var customMagStateObj1)
+            && customMagStateObj1 is string customMagState1 && !string.IsNullOrEmpty(customMagState1))
+        {
+            magState = $"mag-{customMagState1}";
+            component.MagState = magState;
+        }
+        else if (!string.IsNullOrEmpty(component.MagState))
+            magState = component.MagState;
         // Corvax-Wega-MagVisuals-end
 
         if (!args.AppearanceData.TryGetValue(AmmoVisuals.MagLoaded, out var magloaded) ||

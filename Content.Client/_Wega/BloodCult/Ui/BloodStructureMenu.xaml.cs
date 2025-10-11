@@ -46,7 +46,7 @@ public sealed partial class BloodStructureMenu : RadialMenu
             if (!_prototypeManager.TryIndex<EntityPrototype>(prototypeId, out var prototype))
                 continue;
 
-            var button = new RadialMenuTextureButton
+            var button = new RadialMenuButton
             {
                 ToolTip = prototype.Name,
                 SetSize = new Vector2(64, 64),

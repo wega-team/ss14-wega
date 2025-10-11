@@ -13,6 +13,7 @@ using Robust.Shared.Audio;
 using Content.Server.Hands.Systems;
 using Content.Shared.Hands.Components;
 using Content.Shared.Movement.Systems;
+using Robust.Shared.Random;
 
 namespace Content.Server.Shadow;
 
@@ -28,9 +29,12 @@ public sealed class PhotophobiaSystem : EntitySystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly HandsSystem _handsSystem = default!;
     [Dependency] private readonly MovementSpeedModifierSystem _speed = default!;
+    [Dependency] private readonly IRobustRandom _random = default!;
 
     [ValidatePrototypeId<DamageTypePrototype>]
     private const string Damage = "Heat";
+
+    // private readonly List<EntityUid> _scratchLights = new();
 
 
     public override void Initialize()
@@ -52,15 +56,16 @@ public sealed class PhotophobiaSystem : EntitySystem
             if (_gameTiming.CurTime < comp.NextTickTime)
                 continue;
 
-            comp.NextTickTime = _gameTiming.CurTime + TimeSpan.FromSeconds(comp.Interval);
+            comp.NextTickTime = _gameTiming.CurTime + TimeSpan.FromSeconds(comp.Interval * _random.NextFloat(0.75f, 1.25f));
 
-            var lights = GetNearbyLights(uid);
-            if (lights.Count == 0)
+            var lights = CheckNearbyLights(uid);
+
+            if (!lights)
             {
                 if (comp.ApplyShadowWeakness)
                 {
-                    comp.ShadowWeakness = false;
                     _speed.RefreshMovementSpeedModifiers(uid);
+                    comp.ShadowWeakness = false;
                 }
                 continue;
             }
@@ -73,7 +78,7 @@ public sealed class PhotophobiaSystem : EntitySystem
 
             if (comp.DamagePerLight != 0)
             {
-                var damage = new DamageSpecifier { DamageDict = { { Damage, comp.DamagePerLight * lights.Count } } };
+                var damage = new DamageSpecifier { DamageDict = { { Damage, comp.DamagePerLight } } };
                 _audio.PlayPvs(comp.DamageSound, uid, AudioParams.Default.WithVolume(-10f).WithPitchScale(1.15f).WithMaxDistance(2f));
                 _damageable.TryChangeDamage(uid, damage, false, false);
             }
@@ -86,9 +91,8 @@ public sealed class PhotophobiaSystem : EntitySystem
         comp.NextTickTime += args.PausedTime;
     }
 
-    private List<EntityUid> GetNearbyLights(EntityUid uid)
+    private bool CheckNearbyLights(EntityUid uid)
     {
-        var result = new List<EntityUid>();
         var xform = Transform(uid);
         var worldPos = _transform.GetWorldPosition(xform);
 
@@ -130,11 +134,11 @@ public sealed class PhotophobiaSystem : EntitySystem
 
             if (GetOccluded(uid, lightUid))
             {
-                result.Add(lightUid);
+                return true;
             }
         }
 
-        return result;
+        return false;
     }
 
     private bool TryCheckContainingLight(EntityUid uid)

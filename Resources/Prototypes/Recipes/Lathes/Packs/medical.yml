@@ -34,10 +34,15 @@
   - Drill
   - Saw
   - Hemostat
-  - FixOVein # Corvax-Wega-Surgery
-  - BoneSetter # Corvax-Wega-Surgery
-  - BoneGel # Corvax-Wega-Surgery
-
+    # Corvax-Wega-Surgery-start
+  - FixOVein
+  - BoneSetter
+  - BoneGel
+  - ScalpelLaser
+  - Hemrevein 
+  - Bonesaw 
+    # Corvax-Wega-Surgery-end
+    
 - type: latheRecipePack
   id: MedicalStatic
   recipes:

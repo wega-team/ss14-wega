@@ -2,11 +2,11 @@
   save: false
   name: Urist McVulp
   parent: [ BaseMobSpeciesOrganic, BaseOperated ] # Corvax-Wega-Surgery-Edit
-  id: BaseMobVulpkanin
+  id: BaseMobCorvaxVulpkanin
   abstract: true
   components:
   - type: HumanoidAppearance
-    species: Vulpkanin
+    species: CorvaxVulpkanin
   - type: Carriable # Corvax-Wega-Carrying
   - type: DiseaseCarrier # Corvax-Wega-Disease
   - type: Hunger # on 1.5x more
@@ -29,10 +29,10 @@
     sprite: Corvax/Mobs/Species/Vulpkanin/parts.rsi
     state: full
   - type: Body
-    prototype: Vulpkanin
+    prototype: CorvaxVulpkanin
     requiredLegs: 2
   - type: Inventory
-    speciesId: reptilian # whyyy
+    speciesId: corvaxvulpkanin
     femaleDisplacements:
       jumpsuit:
         sizeMaps:
@@ -44,6 +44,13 @@
           32:
             sprite: Corvax/Mobs/Species/displacement.rsi
             state: shoes
+      # Corvax-Wega-start
+      socks:
+        sizeMaps:
+          32:
+            sprite: Corvax/Mobs/Species/displacement.rsi
+            state: socks
+      # Corvax-Wega-end
     displacements:
       jumpsuit:
         sizeMaps:
@@ -55,6 +62,19 @@
           32:
             sprite: Corvax/Mobs/Species/displacement.rsi
             state: shoes
+      outerClothing:
+        sizeMaps:
+          32:
+            sprite: Corvax/Mobs/Species/displacement.rsi
+            state: outerclothing
+      # Corvax-Wega-start
+      socks:
+        sizeMaps:
+          32:
+            sprite: Corvax/Mobs/Species/displacement.rsi
+            state: socks
+      # Corvax-Wega-end
+
   - type: ContentEye
     targetZoom: "1.0, 1.0"
     maxZoom: "1.0, 1.0"
@@ -62,9 +82,9 @@
     allowedEmotes: ['Howl', 'Growl']
   - type: Vocal
     sounds:
-      Male: MaleVulpkanin
-      Female: FemaleVulpkanin
-      Unsexed: MaleVulpkanin
+      Male: MaleCorvaxVulpkanin
+      Female: FemaleCorvaxVulpkanin
+      Unsexed: MaleCorvaxVulpkanin
   - type: GrowlingAccent
   - type: MeleeWeapon
     animation: WeaponArcClaw
@@ -75,7 +95,7 @@
         Slash: 5
   - type: Damageable
     damageContainer: Biological
-    damageModifierSet: Vulpkanin
+    damageModifierSet: CorvaxVulpkanin
   - type: Respirator
     damage:
       types:
@@ -108,14 +128,14 @@
   save: false
   name: Urist McHands
   parent: MobHumanDummy
-  id: MobVulpkaninDummy
+  id: MobCorvaxVulpkaninDummy
   categories: [ HideSpawnMenu ]
   description: A dummy vulpkanin meant to be used in character setup.
   components:
   - type: HumanoidAppearance
-    species: Vulpkanin
+    species: CorvaxVulpkanin
   - type: Inventory
-    speciesId: reptilian
+    speciesId: corvaxvulpkanin
     femaleDisplacements:
       jumpsuit:
         sizeMaps:
@@ -127,6 +147,13 @@
           32:
             sprite: Corvax/Mobs/Species/displacement.rsi
             state: shoes
+      # Corvax-Wega-start
+      socks:
+        sizeMaps:
+          32:
+            sprite: Corvax/Mobs/Species/displacement.rsi
+            state: socks
+      # Corvax-Wega-end
     displacements:
       jumpsuit:
         sizeMaps:
@@ -138,3 +165,15 @@
           32:
             sprite: Corvax/Mobs/Species/displacement.rsi
             state: shoes
+      outerClothing:
+        sizeMaps:
+          32:
+            sprite: Corvax/Mobs/Species/displacement.rsi
+            state: outerclothing
+      # Corvax-Wega-start
+      socks:
+        sizeMaps:
+          32:
+            sprite: Corvax/Mobs/Species/displacement.rsi
+            state: socks
+      # Corvax-Wega-end

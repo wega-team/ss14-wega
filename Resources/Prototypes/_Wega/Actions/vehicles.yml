@@ -6,7 +6,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: Objects/Fun/bikehorn.rsi/icon.png
+    icon: { sprite: Objects/Fun/bikehorn.rsi, state: "icon" }
     useDelay: 3.4
   - type: InstantAction
     event: !type:HonkActionEvent
