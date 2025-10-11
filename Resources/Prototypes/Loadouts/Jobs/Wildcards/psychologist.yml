@@ -3,8 +3,10 @@
   id: PsychologistJumpsuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitPsychologist
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: PsychologistJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtPsychologist
+  groupBy: "wegaJJ" # Corvax-Wega-add

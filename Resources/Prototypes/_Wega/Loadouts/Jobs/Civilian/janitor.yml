@@ -15,6 +15,7 @@
     proto: JanitorMaid
   equipment:
     jumpsuit: ClothingUniformJumpskirtJanimaid
+  groupBy: "wegaJJ"
 
 - type: loadout
   id: JanitorJanimaidmini
@@ -23,6 +24,7 @@
     proto: JanitorMaid
   equipment:
     jumpsuit: ClothingUniformJumpskirtJanimaidmini
+  groupBy: "wegaJJ"
 
 - type: loadout
   id: JanitorElegantMaid
@@ -31,3 +33,4 @@
     proto: JanitorMaid
   equipment:
     jumpsuit: ClothingUniformJumpskirtElegantMaid
+  groupBy: "wegaJJ"

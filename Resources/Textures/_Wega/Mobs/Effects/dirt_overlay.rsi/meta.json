@@ -295,6 +295,13 @@
     {
       "name": "equipped-winterhood",
       "directions": 4
+    },
+    {
+      "name": "heels"
+    },
+    {
+      "name": "equipped-heels",
+      "directions": 4
     }
   ]
 }

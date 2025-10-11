@@ -3,8 +3,10 @@
   id: RedJumpsuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitColorRed
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: RedJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtColorRed
+  groupBy: "wegaJJ" # Corvax-Wega-add

@@ -18,11 +18,13 @@
   id: JanitorJumpsuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitJanitor
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: JanitorJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtJanitor
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 # Gloves
 - type: loadout

@@ -3,11 +3,13 @@
   id: ChemistJumpsuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitChemistry
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: ChemistJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtChemistry
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 # Back
 - type: loadout

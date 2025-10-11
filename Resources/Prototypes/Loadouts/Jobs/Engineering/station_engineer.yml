@@ -51,16 +51,19 @@
   id: StationEngineerJumpsuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitEngineering
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: StationEngineerJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtEngineering
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: StationEngineerHazardsuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitEngineeringHazard
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: SeniorEngineerJumpsuit
@@ -69,6 +72,7 @@
   #   proto: SeniorEngineering
   equipment:
     jumpsuit: ClothingUniformJumpsuitSeniorEngineer
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: SeniorEngineerJumpskirt
@@ -77,6 +81,7 @@
   #   proto: SeniorEngineering
   equipment:
     jumpsuit: ClothingUniformJumpskirtSeniorEngineer
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 # Back
 - type: loadout

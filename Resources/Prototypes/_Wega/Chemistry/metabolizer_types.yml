@@ -5,3 +5,7 @@
 - type: metabolizerType
   id: Cultist
   name: metabolizer-type-cultist
+
+- type: metabolizerType
+  id: Ariral
+  name: metabolizer-type-ariral

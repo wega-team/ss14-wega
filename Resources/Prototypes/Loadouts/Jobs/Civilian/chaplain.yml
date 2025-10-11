@@ -35,21 +35,25 @@
   id: ChaplainJumpsuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitChaplain
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: ChaplainJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtChaplain
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: ChaplainRobesDark
   equipment:
     jumpsuit: ClothingUniformJumpsuitMonasticRobeDark
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: ChaplainRobesLight
   equipment:
     jumpsuit: ClothingUniformJumpsuitMonasticRobeLight
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 # Neck
 - type: loadout

@@ -14,16 +14,19 @@
   id: BartenderJumpsuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitBartender
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: BartenderJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtBartender
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: BartenderJumpsuitPurple
   equipment:
     jumpsuit: ClothingUniformJumpsuitBartenderPurple
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 # Outer clothing
 - type: loadout

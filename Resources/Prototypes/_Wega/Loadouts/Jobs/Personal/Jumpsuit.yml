@@ -1,0 +1,421 @@
+# Jumpsuit
+
+# Common 
+
+- type: loadout
+  id: JumpsuitColorWhite
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorWhite
+  groupBy: "wegaCJ"
+
+- type: loadout
+  id: JumpskirtColorWhite
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtColorWhite
+  groupBy: "wegaCJ"
+
+- type: loadout
+  id: JumpsuitColorBlack
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorBlack
+  groupBy: "wegaCJ"
+
+- type: loadout
+  id: JumpskirtColorBlack
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtColorBlack
+  groupBy: "wegaCJ"
+  
+- type: loadout
+  id: JumpsuitColorBlue
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorBlue
+  groupBy: "wegaCJ"
+
+- type: loadout
+  id: JumpskirtColorBlue
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtColorBlue
+  groupBy: "wegaCJ"
+
+- type: loadout
+  id: JumpsuitColorYellow
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorYellow
+  groupBy: "wegaCJ"
+
+- type: loadout
+  id: JumpskirtColorYellow
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtColorYellow
+  groupBy: "wegaCJ"
+
+- type: loadout
+  id: JumpsuitColorGreen
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorGreen
+  groupBy: "wegaCJ"
+
+- type: loadout
+  id: JumpskirtColorGreen
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtColorGreen
+  groupBy: "wegaCJ"
+
+- type: loadout
+  id: JumpsuitColorOrange
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorOrange
+  groupBy: "wegaCJ"
+
+- type: loadout
+  id: JumpskirtColorOrange
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtColorOrange
+  groupBy: "wegaCJ"
+
+- type: loadout
+  id: JumpsuitColorRed
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorRed
+  groupBy: "wegaCJ"
+
+- type: loadout
+  id: JumpskirtColorRed
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtColorRed
+  groupBy: "wegaCJ"
+
+- type: loadout
+  id: JumpsuitColorPurple
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorPurple
+  groupBy: "wegaCJ"
+
+- type: loadout
+  id: JumpskirtColorPurple
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtColorPurple
+  groupBy: "wegaCJ"
+
+- type: loadout
+  id: JumpsuitColorPink
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorPink
+  groupBy: "wegaCJ"
+
+- type: loadout
+  id: JumpskirtColorPink
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtColorPink
+  groupBy: "wegaCJ"
+
+- type: loadout
+  id: JumpsuitColorDarkBlue
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorDarkBlue
+  groupBy: "wegaCJ"
+
+- type: loadout
+  id: JumpskirtColorDarkBlue
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtColorDarkBlue
+  groupBy: "wegaCJ"
+
+- type: loadout
+  id: JumpsuitColorDarkGreen
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorDarkGreen
+  groupBy: "wegaCJ"
+
+- type: loadout
+  id: JumpskirtColorDarkGreen
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtColorDarkGreen
+  groupBy: "wegaCJ"
+
+- type: loadout
+  id: JumpsuitColorTeal
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorTeal
+  groupBy: "wegaCJ"
+
+- type: loadout
+  id: JumpskirtColorTeal
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtColorTeal
+  groupBy: "wegaCJ"
+
+# Casual
+
+- type: loadout
+  id: JumpsuitCasualBlue
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCasualBlue
+  groupBy: "wegaCaJ"
+    
+- type: loadout
+  id: JumpskirtCasualBlue
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCasualBlue
+  groupBy: "wegaCaJ"
+
+- type: loadout
+  id: JumpsuitCasualPurple
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCasualPurple  
+  groupBy: "wegaCaJ"    
+    
+- type: loadout
+  id: JumpskirtCasualPurple
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCasualPurple
+  groupBy: "wegaCaJ"
+
+- type: loadout
+  id: JumpsuitCasualRed
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCasualRed  
+  groupBy: "wegaCaJ"
+    
+- type: loadout
+  id: JumpskirtCasualRed
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCasualRed
+  groupBy: "wegaCaJ"
+
+- type: loadout
+  id: JumpsuitCasualGreen
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCasualGreen
+  groupBy: "wegaCaJ"    
+    
+- type: loadout
+  id: JumpskirtCasualGreen
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCasualGreen  
+  groupBy: "wegaCaJ"
+    
+# Turtleneck
+    
+- type: loadout
+  id: JumpskirtTurtleneckAquamarine
+  equipment:
+    jumpsuit: ADTClothingUniformJumpskirtTurtleneckAquamarine
+  groupBy: "wegaTJ"    
+    
+- type: loadout
+  id: JumpsuitTurtleneckAquamarine
+  equipment:
+    jumpsuit: ADTClothingUniformJumpsuitTurtleneckAquamarine  
+  groupBy: "wegaTJ"    
+    
+- type: loadout
+  id: JumpskirtTurtleneckWhite
+  equipment:
+    jumpsuit: ADTClothingUniformJumpskirtTurtleneckWhite
+  groupBy: "wegaTJ"    
+    
+- type: loadout
+  id: JumpsuitTurtleneckWhite
+  equipment:
+    jumpsuit: ADTClothingUniformJumpsuitTurtleneckWhite  
+  groupBy: "wegaTJ" 
+
+- type: loadout
+  id: JumpskirtTurtleneckAzure
+  equipment:
+    jumpsuit: ADTClothingUniformJumpskirtTurtleneckAzure
+  groupBy: "wegaTJ"    
+    
+- type: loadout
+  id: JumpsuitTurtleneckAzure
+  equipment:
+    jumpsuit: ADTClothingUniformJumpsuitTurtleneckAzure  
+  groupBy: "wegaTJ" 
+
+- type: loadout
+  id: JumpskirtTurtleneckYellow
+  equipment:
+    jumpsuit: ADTClothingUniformJumpskirtTurtleneckYellow
+  groupBy: "wegaTJ"    
+    
+- type: loadout
+  id: JumpsuitTurtleneckYellow
+  equipment:
+    jumpsuit: ADTClothingUniformJumpsuitTurtleneckYellow  
+  groupBy: "wegaTJ" 
+
+- type: loadout
+  id: JumpskirtTurtleneckGreen
+  equipment:
+    jumpsuit: ADTClothingUniformJumpskirtTurtleneckGreen
+  groupBy: "wegaTJ"    
+    
+- type: loadout
+  id: JumpsuitTurtleneckGreen
+  equipment:
+    jumpsuit: ADTClothingUniformJumpsuitTurtleneckGreen  
+  groupBy: "wegaTJ" 
+
+- type: loadout
+  id: JumpskirtTurtleneckBrown
+  equipment:
+    jumpsuit: ADTClothingUniformJumpskirtTurtleneckBrown
+  groupBy: "wegaTJ"    
+    
+- type: loadout
+  id: JumpsuitTurtleneckBrown
+  equipment:
+    jumpsuit: ADTClothingUniformJumpsuitTurtleneckBrown  
+  groupBy: "wegaTJ" 
+
+- type: loadout
+  id: JumpskirtTurtleneckRed
+  equipment:
+    jumpsuit: ADTClothingUniformJumpskirtTurtleneckRed
+  groupBy: "wegaTJ"    
+    
+- type: loadout
+  id: JumpsuitTurtleneckRed
+  equipment:
+    jumpsuit: ADTClothingUniformJumpsuitTurtleneckRed  
+  groupBy: "wegaTJ" 
+
+- type: loadout
+  id: JumpskirtTurtleneckOrange
+  equipment:
+    jumpsuit: ADTClothingUniformJumpskirtTurtleneckOrange
+  groupBy: "wegaTJ"    
+    
+- type: loadout
+  id: JumpsuitTurtleneckOrange
+  equipment:
+    jumpsuit: ADTClothingUniformJumpsuitTurtleneckOrange  
+  groupBy: "wegaTJ" 
+
+- type: loadout
+  id: JumpskirtTurtleneckPink
+  equipment:
+    jumpsuit: ADTClothingUniformJumpskirtTurtleneckPink
+  groupBy: "wegaTJ"    
+    
+- type: loadout
+  id: JumpsuitTurtleneckPink
+  equipment:
+    jumpsuit: ADTClothingUniformJumpsuitTurtleneckPink  
+  groupBy: "wegaTJ" 
+
+- type: loadout
+  id: JumpskirtTurtleneckGrey
+  equipment:
+    jumpsuit: ADTClothingUniformJumpskirtTurtleneckGrey
+  groupBy: "wegaTJ"    
+    
+- type: loadout
+  id: JumpsuitTurtleneckGrey
+  equipment:
+    jumpsuit: ADTClothingUniformJumpsuitTurtleneckGrey  
+  groupBy: "wegaTJ" 
+
+- type: loadout
+  id: JumpskirtTurtleneckBlue
+  equipment:
+    jumpsuit: ADTClothingUniformJumpskirtTurtleneckBlue
+  groupBy: "wegaTJ"    
+    
+- type: loadout
+  id: JumpsuitTurtleneckBlue
+  equipment:
+    jumpsuit: ADTClothingUniformJumpsuitTurtleneckBlue  
+  groupBy: "wegaTJ" 
+
+- type: loadout
+  id: JumpskirtTurtleneckPurple
+  equipment:
+    jumpsuit: ADTClothingUniformJumpskirtTurtleneckPurple
+  groupBy: "wegaTJ"    
+    
+- type: loadout
+  id: JumpsuitTurtleneckPurple
+  equipment:
+    jumpsuit: ADTClothingUniformJumpsuitTurtleneckPurple  
+  groupBy: "wegaTJ" 
+
+- type: loadout
+  id: JumpskirtTurtleneckBlack
+  equipment:
+    jumpsuit: ADTClothingUniformJumpskirtTurtleneckBlack
+  groupBy: "wegaTJ"    
+    
+- type: loadout
+  id: JumpsuitTurtleneckBlack
+  equipment:
+    jumpsuit: ADTClothingUniformJumpsuitTurtleneckBlack  
+  groupBy: "wegaTJ" 
+
+- type: loadout
+  id: JumpskirtTurtleneckSalat
+  equipment:
+    jumpsuit: ADTClothingUniformJumpskirtTurtleneckSalat
+  groupBy: "wegaTJ"    
+    
+- type: loadout
+  id: JumpsuitTurtleneckSalat
+  equipment:
+    jumpsuit: ADTClothingUniformJumpsuitTurtleneckSalat  
+  groupBy: "wegaTJ" 
+
+- type: loadout
+  id: JumpsuitTurtleneckSalatblack
+  equipment:
+    jumpsuit: ADTClothingUniformJumpsuitTurtleneckSalatblack
+  groupBy: "wegaTJ"    
+    
+- type: loadout
+  id: JumpskirtTurtleneckBlackSleeveless
+  equipment:
+    jumpsuit: ADTClothingUniformJumpskirtTurtleneckBlackSleeveless  
+  groupBy: "wegaTJ" 
+
+- type: loadout
+  id: JumpsuitTurtleneckBlackSleeveless
+  equipment:
+    jumpsuit: ADTClothingUniformJumpsuitTurtleneckBlackSleeveless
+  groupBy: "wegaTJ"    
+    
+- type: loadout
+  id: JumpsuitTurtleneckWhiteBlackSleeveless
+  equipment:
+    jumpsuit: ADTClothingUniformJumpsuitTurtleneckWhiteBlackSleeveless  
+  groupBy: "wegaTJ" 
+  
+- type: loadout
+  id: JumpsuitTurtleneckWhiteSleeveless
+  equipment:
+    jumpsuit: ADTClothingUniformJumpsuitTurtleneckWhiteSleeveless
+  groupBy: "wegaTJ"    
+    
+- type: loadout
+  id: JumpskirtTurtleneckWhiteSleeveless
+  equipment:
+    jumpsuit: ADTClothingUniformJumpskirtTurtleneckWhiteSleeveless
+  groupBy: "wegaTJ" 
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

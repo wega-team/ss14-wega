@@ -7,6 +7,16 @@
     ClothingUniformJumpsuitScientist: 3
     ClothingUniformJumpskirtScientist: 3
     ClothingUniformJumpsuitScientistFormal: 3
+    # Corvax-Wega-Turtleneck-start
+    ADTClothingUniformJumpskirtTurtleneckGrey: 2
+    ADTClothingUniformJumpsuitTurtleneckGrey: 2 
+    ADTClothingUniformJumpskirtTurtleneckPurple: 2
+    ADTClothingUniformJumpsuitTurtleneckPurple: 2 
+    ADTClothingUniformJumpskirtTurtleneckBlack: 2
+    ADTClothingUniformJumpsuitTurtleneckBlack: 2
+    ADTClothingUniformJumpskirtTurtleneckBlackSleeveless: 2
+    ADTClothingUniformJumpsuitTurtleneckBlackSleeveless: 2 
+    # Corvax-Wega-Turtleneck-end
     ClothingOuterCoatRnd: 3
     ClothingShoesColorWhite: 3
     ClothingNeckTieSci: 3

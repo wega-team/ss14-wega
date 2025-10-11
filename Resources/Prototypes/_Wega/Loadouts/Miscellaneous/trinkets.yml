@@ -33,3 +33,17 @@
     back:
     - ClothingHandsBrasletRape
   groupBy: "wegapin"
+
+- type: loadout
+  id: PlushieVulpa
+  storage:
+    back:
+    - PlushieVulpa
+  groupBy: "wegatoyload"
+
+- type: loadout
+  id: PlushieTajar
+  storage:
+    back:
+    - PlushieTajar
+  groupBy: "wegatoyload"

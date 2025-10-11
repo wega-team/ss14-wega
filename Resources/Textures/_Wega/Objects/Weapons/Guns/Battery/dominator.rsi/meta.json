@@ -1,0 +1,67 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Sprite from dmi/icons/obj/weapons/dominator.dmi?codebase=paradise-ru mody by <500744677352407051> dsid",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "icon"
+        },
+        {
+            "name": "base"
+        },
+        {
+            "name": "mode-lethal"
+        },
+        {
+            "name": "mode-disabler"
+        },
+        {
+            "name": "mag-lethal-unshaded-0"
+        },
+        {
+            "name": "mag-lethal-unshaded-1"
+        },
+        {
+            "name": "mag-lethal-unshaded-2"
+        },
+        {
+            "name": "mag-lethal-unshaded-3"
+        },
+        {
+            "name": "mag-disabler-unshaded-0"
+        },
+        {
+            "name": "mag-disabler-unshaded-1"
+        },
+        {
+            "name": "mag-disabler-unshaded-2"
+        },
+        {
+            "name": "mag-disabler-unshaded-3"
+        },
+        {
+            "name": "lethal-inhand-left",
+            "directions": 4
+        },
+        {
+            "name": "lethal-inhand-right",
+            "directions": 4
+        },
+        {
+            "name": "disabler-inhand-left",
+            "directions": 4
+        },
+        {
+            "name": "disabler-inhand-right",
+            "directions": 4
+        },
+        {
+            "name": "equipped-BELT",
+            "directions": 4
+        }
+    ]
+}

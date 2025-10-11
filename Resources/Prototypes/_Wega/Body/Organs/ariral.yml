@@ -1,0 +1,26 @@
+- type: entity
+  id: OrganAriralStomach
+  parent: OrganAnimalStomach
+  name: stomach
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Metabolizer
+    metabolizerTypes: [ Ariral ]
+
+- type: entity
+  id: OrganAriralLiver
+  parent: OrganAnimalLiver
+  name: liver
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Metabolizer
+    metabolizerTypes: [ Ariral ]
+
+- type: entity
+  id: OrganAriralHeart
+  parent: OrganAnimalHeart
+  name: heart
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Metabolizer
+    metabolizerTypes: [ Ariral ]

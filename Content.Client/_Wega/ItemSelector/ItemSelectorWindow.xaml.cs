@@ -30,7 +30,7 @@ public sealed partial class ItemSelectorWindow : RadialMenu
             if (!_prototypeManager.TryIndex<EntityPrototype>(prototypeId, out var prototype))
                 continue;
 
-            var button = new RadialMenuTextureButton
+            var button = new RadialMenuContextualCentralTextureButton
             {
                 ToolTip = prototype.Name,
                 SetSize = new Vector2(64, 64),

@@ -1,5 +1,31 @@
 ## Recipes
 
+## Weapons
+- type: latheRecipe
+  id: WeaponDominator
+  result: WeaponDominator
+  categories:
+  - Weapons
+  completetime: 5
+  materials:
+    Steel: 750
+    Plastic: 250
+    Glass: 300
+    Plasma: 100
+    Gold: 100
+    
+- type: latheRecipe
+  id: WeaponTaser
+  result: WeaponTaser
+  categories:
+  - Weapons
+  completetime: 8
+  materials:
+    Steel: 850
+    Plastic: 1000
+    Glass: 300
+    Gold: 200
+    Silver: 200
 # Clothing
 
 - type: latheRecipe
@@ -11,10 +37,10 @@
   materials:
     Steel: 1500
     Plastic: 750
+    Glass: 500
     Plasma: 500
     Gold: 300
     Silver: 150
-    Glass: 500
 
 - type: latheRecipe
   id: PortableRechargerTurbo
@@ -25,10 +51,10 @@
   materials:
     Steel: 1500
     Plastic: 750
+    Glass: 500
     Plasma: 500
     Gold: 300
     Silver: 150
-    Glass: 500
 
 - type: latheRecipe
   id: PortableRechargerTurboBag
@@ -39,11 +65,11 @@
   materials:
     Steel: 2500
     Plastic: 1500
-    Plasma: 1000
     Glass: 500
-    Uranium: 150
+    Plasma: 1000
     Gold: 500
     Silver: 300
+    Uranium: 150
 
 - type: latheRecipe
   id: ClothingHeadHelmetFlash
@@ -54,9 +80,9 @@
   materials:
     Steel: 350
     Plastic: 200
+    Glass: 150
     Plasma: 100
     Gold: 25
-    Glass: 150
 
 - type: latheRecipe
   id: ClothingNeckFlashNeck
@@ -67,8 +93,8 @@
   materials:
     Steel: 400
     Plastic: 300
-    Plasma: 300
     Glass: 200
+    Plasma: 300
     Uranium: 25
     
 # Tools

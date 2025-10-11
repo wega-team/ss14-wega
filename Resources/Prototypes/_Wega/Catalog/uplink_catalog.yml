@@ -103,7 +103,20 @@
     Telecrystal: 6
   categories:
   - UplinkDisruption
-
+  
+- type: listing
+  id: UplinkClothingHandsKnuckleDustersStun
+  name: uplink-clothing-hands-knuckle-dusters-stun-name
+  description: clothing-hands-knuckle-dusters-stun-desc
+  icon: { sprite: Clothing/Hands/Gloves/KnuckleDusters/electricknuckleduster.rsi, state: knuckleduster_nocell }
+  productEntity: ClothingHandsKnuckleDustersStun
+  discountCategory: usualDiscounts
+  discountDownTo:
+    Telecrystal: 2
+  cost:
+    Telecrystal: 3
+  categories:
+  - UplinkWeaponry
 
 - type: listing
   id: ADTUplinkAdvancedHristov
