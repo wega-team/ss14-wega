@@ -35,7 +35,6 @@
     state: green
   - type: SpawnPoint
     spawn_type: LateJoin
-
 # Cargo
 
 - type: entity
@@ -609,3 +608,16 @@
     layers:
       - state: green
       - state: zookeeper
+
+- type: entity
+  id: SpawnPointPrisoner
+  parent: SpawnPointJobBase
+  name: prisoner
+  components:
+  - type: SpawnPoint
+    spawn_type: job
+    job_id: Prisoner
+  - type: Sprite
+    layers:
+      - state: green
+      - state: prisoner

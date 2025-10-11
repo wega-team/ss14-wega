@@ -1,0 +1,17 @@
+- type: job
+  id: Prisoner
+  name: job-name-prisoner
+  description: job-description-prisoner
+  playTimeTracker: JobPrisoner
+  startingGear: PrisonerGear
+  icon: "JobIconPrisoner"
+  components:
+  - type: MindRole
+    roleType: FreeAgent
+
+- type: startingGear
+  id: PrisonerGear
+  equipment:
+    id: PrisonerIDCard
+    ears: ClothingHeadsetGrey
+    shoes: ClothingShoesColorBrown

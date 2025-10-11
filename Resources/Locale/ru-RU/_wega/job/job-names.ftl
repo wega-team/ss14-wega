@@ -4,6 +4,7 @@ job-name-surgeon = хирург
 job-name-coroner = коронер
 job-name-bso = офицер "Синий Щит"
 job-name-postman = почтальон
+job-name-prisoner = заключенный
 
 JobBarber = барбер
 JobCBURNLeader = лидер РХБЗЗ

@@ -1,0 +1,36 @@
+- type: loadoutEffectGroup
+  id: PrisonerWIP
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobPrisoner
+      time: 72000 #20 hours
+
+# Jumpsuit
+- type: loadout
+  id: PrisonerCoolJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitTacticool
+
+- type: loadout
+  id: PrisonerCoolJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtTacticool
+
+# Head
+- type: loadout
+  id: PrisonerHead
+  equipment:
+    head: ClothingHeadBandSkull
+
+# Pocket
+- type: loadout
+  id: PrisonerWeapon
+  equipment:
+    Pocket: SawImprov
+
+- type: loadout
+  id: PrisonerAction
+  equipment:
+    Pocket: Cablecuffs

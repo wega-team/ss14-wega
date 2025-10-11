@@ -1,0 +1,49 @@
+# Senior Time
+- type: loadoutEffectGroup
+  id: Prisoner
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Security
+      time: 72000 # 20 hrs
+
+# Head
+- type: loadout
+  id: PrisonerHead
+  equipment:
+    head: ClothingMaskBandBrown
+
+# Jumpsuit
+- type: loadout
+  id: PrisonerJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitPrisoner
+
+- type: loadout
+  id: PrisonerJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtPrisoner
+
+# Outer clothing
+- type: loadout
+  id: PrisonerWintercoat
+  equipment:
+    outerClothing: ClothingOuterWinterColorOrange
+
+# Shoes
+- type: loadout
+  id: PrisonerBoots
+  equipment:
+    shoes: ClothingShoesColorBlack
+
+- type: loadout
+  id: PrisonerWinterBoots
+  equipment:
+    shoes: ClothingShoesBootsWinterWeb
+
+# Pocket
+- type: loadout
+  id: PrisonerAction
+  equipment:
+    Pocket: Soap
