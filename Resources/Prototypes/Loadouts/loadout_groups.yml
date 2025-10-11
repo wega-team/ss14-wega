@@ -9,9 +9,13 @@
   - FlowerWreath
   - Hairflower
   - Headphones
+  - ThreeCandles # Corvax-Wega-group
+  # Corvax-Wega-start
   - PlushieLizard
   - PlushieSpaceLizard
-  - ThreeCandles
+  - PlushieVulpa
+  - PlushieTajar
+  # Corvax-Wega-end
   - Lighter
   - CigPackGreen
   - CigPackRed
@@ -1541,6 +1545,13 @@
   loadouts:
   - BlackShoes
   - CargoWinterBoots
+
+- type: loadoutGroup
+  id: CargoTechnicianID
+  name: loadout-group-cargo-technician-id
+  loadouts:
+  - CargoTechnicianPDA
+  - SeniorCourierPDA
 
 - type: loadoutGroup
   id: SalvageSpecialistBackpack

@@ -21,3 +21,102 @@
     - id: SlimeRNDCube
   - type: Sprite
     state: wrapper
+
+- type: entity
+  parent: RehydratableAnimalCube
+  id: TajkeyCube
+  name: farwa cube
+  components:
+  - type: Rehydratable
+    possibleSpawns:
+    - MobTajkey
+
+- type: entity
+  parent: RehydratableAnimalCube
+  id: WolflingCube
+  name: wolpin cube
+  components:
+  - type: Rehydratable
+    possibleSpawns:
+    - MobWolfling
+
+- type: entity
+  parent: RehydratableAnimalCube
+  id: StokkeyCube
+  name: stok cube
+  components:
+  - type: Rehydratable
+    possibleSpawns:
+    - MobStokkey
+
+- type: entity
+  parent: RehydratableAnimalCube
+  id: StokkeyVoxCube
+  name: stok vox cube
+  components:
+  - type: Rehydratable
+    possibleSpawns:
+    - MobStokkeyVox
+
+- type: entity
+  parent: RehydratableAnimalCube
+  id: SkrellkeyCube
+  name: neara cube
+  components:
+  - type: Rehydratable
+    possibleSpawns:
+    - MobSkrellkey
+
+- type: entity
+  parent: MonkeyCube
+  id: MonkeyDemonCube
+  name: monkey demon cube
+  components:
+  - type: Rehydratable
+    possibleSpawns:
+    - MobMonkeyDemon
+
+- type: entity
+  parent: MonkeyCube
+  id: MonkeyDwarfCube
+  name: monkey dwarf cube
+  components:
+  - type: Rehydratable
+    possibleSpawns:
+    - MobMonkeyDwarf
+
+- type: entity
+  parent: RehydratableAnimalCube
+  id: GiantSpiderCube
+  name: spider cube
+  components:
+  - type: Rehydratable
+    possibleSpawns:
+    - MobGiantSpider
+
+- type: entity
+  parent: RehydratableAnimalCube
+  id: ParrotCube
+  name: parrot cube
+  components:
+  - type: Rehydratable
+    possibleSpawns:
+    - MobParrot
+
+- type: entity
+  parent: RehydratableAnimalCube
+  id: CatCube
+  name: cat cube
+  components:
+  - type: Rehydratable
+    possibleSpawns:
+    - MobCat
+
+- type: entity
+  parent: RehydratableAnimalCube
+  id: DionaNymphCube
+  name: diona nymph cube
+  components:
+  - type: Rehydratable
+    possibleSpawns:
+    - MobDionaNymph

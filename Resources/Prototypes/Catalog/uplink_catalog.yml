@@ -113,11 +113,11 @@
   description: uplink-gloves-knuckleduster-desc
   icon: { sprite: Clothing/Hands/Gloves/KnuckleDusters/syndicateknuckleduster.rsi, state: syndicateknuckleduster }
   productEntity: ClothingHandsKnuckleDustersSyndicate
-  discountCategory: veryRareDiscounts
+  discountCategory: usualDiscounts # Corvax-Wega-Syndi
   discountDownTo:
-    Telecrystal: 3
+    Telecrystal: 2 # Corvax-Wega-Syndi
   cost:
-    Telecrystal: 6
+    Telecrystal: 3 # Corvax-Wega-Syndi
   categories:
   - UplinkWeaponry
 
@@ -158,19 +158,23 @@
       tags:
       - NukeOpsUplink
 
-- type: listing
-  id: UplinkSniperBundle
-  name: uplink-sniper-bundle-name
-  description: uplink-sniper-bundle-desc
-  icon: { sprite: /Textures/Objects/Weapons/Guns/Snipers/heavy_sniper.rsi, state: base }
-  productEntity: BriefcaseSyndieSniperBundleFilled
-  discountCategory: usualDiscounts
-  discountDownTo:
-    Telecrystal: 6
-  cost:
-    Telecrystal: 12
-  categories:
-  - UplinkWeaponry
+# - type: listing ### Сorvax-Wega-Change
+#   id: UplinkSniperBundle
+#   name: uplink-sniper-bundle-name
+#   description: uplink-sniper-bundle-desc
+#   icon: { sprite: /Textures/Objects/Weapons/Guns/Snipers/heavy_sniper.rsi, state: base }
+#   productEntity: BriefcaseSyndieSniperBundleFilled
+#   discountCategory: usualDiscounts
+#   discountDownTo:
+#     Telecrystal: 6
+#   cost:
+#     Telecrystal: 12
+#   categories:
+#   - UplinkWeaponry
+#   - !type:StoreWhitelistCondition
+#     blacklist:
+#       tags:
+#       - NukeOpsUplink
 
 - type: listing
   id: UplinkC20RBundle
@@ -2203,7 +2207,7 @@
   discountDownTo:
     Telecrystal: 2
   cost:
-    Telecrystal: 5
+    Telecrystal: 3
   categories:
   - UplinkJob
   conditions:

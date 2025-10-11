@@ -15,7 +15,6 @@ public sealed class SharedFakeMindShieldImplantSystem : EntitySystem
         SubscribeLocalEvent<SubdermalImplantComponent, FakeMindShieldToggleEvent>(OnFakeMindShieldToggle);
         SubscribeLocalEvent<FakeMindShieldImplantComponent, ImplantImplantedEvent>(ImplantCheck);
         SubscribeLocalEvent<FakeMindShieldImplantComponent, EntGotRemovedFromContainerMessage>(ImplantDraw);
-        SubscribeLocalEvent<FakeMindShieldComponent, ImplantRemovedEvent>(ImplantDraw); // Corvax-Wega-Surgery
     }
 
     /// <summary>
@@ -36,18 +35,11 @@ public sealed class SharedFakeMindShieldImplantSystem : EntitySystem
     private void ImplantCheck(EntityUid uid, FakeMindShieldImplantComponent component, ref ImplantImplantedEvent ev)
     {
         if (ev.Implanted != null)
-            EnsureComp<FakeMindShieldComponent>(ev.Implanted.Value);
+            EnsureComp<FakeMindShieldComponent>(ev.Implanted);
     }
 
     private void ImplantDraw(Entity<FakeMindShieldImplantComponent> ent, ref EntGotRemovedFromContainerMessage ev)
     {
         RemComp<FakeMindShieldComponent>(ev.Container.Owner);
     }
-
-    // Corvax-Wega-Surgery-start
-    private void ImplantDraw(Entity<FakeMindShieldComponent> ent, ref ImplantRemovedEvent ev)
-    {
-        RemComp<FakeMindShieldComponent>(ent);
-    }
-    // Corvax-Wega-Surgery-end
 }

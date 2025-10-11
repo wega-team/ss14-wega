@@ -54,3 +54,46 @@
   components:
   - type: Sprite
     state: rape
+
+- type: entity
+  parent: Clothing
+  id: ClothingHandsGoldBraset
+  name: gold braslet
+  description: This wrist jewelry is a timepiece you urgently need to find!
+  components:
+  - type: Appearance
+  - type: Sprite
+    sprite: _Wega/Clothing/Hands/Gloves/gold_bracelets.rsi
+    layers:
+      - state: icon
+        color: "#ffc833"
+  - type: Clothing
+    sprite: _Wega/Clothing/Hands/Gloves/gold_bracelets.rsi
+    slots: gloves
+    equippedState: equipped-HAND
+  - type: Item
+    size: Small
+  - type: StaticPrice
+    price: 450
+
+- type: entity
+  parent: ClothingHandsGoldBraset
+  id: ClothingHandsGoldBrasetGem
+  name: gold braslet with gem
+  description: This wrist jewelry is a timepiece you urgently need to find! It has crystals embedded along the edges.
+  components:
+  - type: Sprite
+    layers:
+      - state: icon
+        color: "#ffc833"
+      - state: gem
+        map: [ "gemColor" ]
+  - type: Clothing
+    sprite: _Wega/Clothing/Hands/Gloves/gold_bracelets.rsi
+  - type: StaticPrice
+    price: 8000
+  - type: RandomSprite
+    getAllGroups: true
+    available:
+      - gemColor:
+          gem: Rainbow

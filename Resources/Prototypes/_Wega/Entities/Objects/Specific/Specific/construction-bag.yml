@@ -23,6 +23,8 @@
       components:
         - LightBulb
         - Battery
-        - Material
-        - MachineBoard
+        - Circuitboard
+      tags:
+        - CableCoil
+        - ConstructionMaterial
   - type: Dumpable

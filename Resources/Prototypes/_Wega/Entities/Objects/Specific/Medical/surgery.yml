@@ -61,6 +61,79 @@
     tags:
       - Spray
 
+# CoolTools
+- type: entity
+  name: bone saw
+  id: Bonesaw
+  parent: BaseToolSurgery
+  description: "A device for fixing and treating damaged veins and arteries."
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Medical/Surgery/bonesaw.rsi
+    state: bonesaw
+  - type: Item
+    sprite: _Wega/Objects/Specific/Medical/Surgery/bonesaw.rsi
+  - type: Tool
+    qualities:
+    - BoneSetter 
+    - Sawing
+    - BoneGel
+  - type: MeleeWeapon
+    damage:
+      groups:
+        Brute: 15
+    soundHit:
+      path: /Audio/Items/drill_hit.ogg
+  - type: SurgicalTool
+    modifier: 1.5
+
+- type: entity
+  name: hemrevein
+  id: Hemrevein
+  parent: BaseToolSurgery
+  description: "A device for fixing and treating damaged veins and arteries."
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Medical/Surgery/hemrevein.rsi
+    state: hemrevein_v
+  - type: Item
+    sprite: _Wega/Objects/Specific/Medical/Surgery/hemrevein.rsi
+  - type: Tool
+    qualities:
+      - FixOVein
+    speedModifier: 1.5
+    useSound: /Audio/Items/drill_use.ogg
+  - type: MultipleTool
+    statusShowBehavior: true
+    entries:
+      - behavior: FixOVein
+        sprite:
+          sprite: _Wega/Objects/Specific/Medical/Surgery/hemrevein.rsi
+          state: hemrevein_v
+        useSound:
+          path: /Audio/_Wega/Medical/Surgery/retractor2.ogg
+        changeSound:
+          path: /Audio/Items/change_drill.ogg
+      - behavior: Retractor
+        sprite:
+          sprite: _Wega/Objects/Specific/Medical/Surgery/hemrevein.rsi
+          state: hemrevein_r
+        useSound:
+          path: /Audio/_Wega/Medical/Surgery/retractor1.ogg
+        changeSound:
+          path: /Audio/Items/change_drill.ogg
+      - behavior: Hemostat
+        sprite:
+          sprite: _Wega/Objects/Specific/Medical/Surgery/hemrevein.rsi
+          state: hemrevein_h
+        useSound:
+          path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+        changeSound:
+          path: /Audio/Items/change_drill.ogg
+  - type: SurgicalTool
+    modifier: 1.5
+# Storage
+
 - type: entity
   parent: BaseStorageItem
   id: Surgerykit
@@ -131,7 +204,9 @@
   - type: PhysicalComposition
     materialComposition:
       Cloth: 50
-      
+
+# AlwaysSteril
+
 - type: entity
   name: fix o vein
   parent: FixOVein

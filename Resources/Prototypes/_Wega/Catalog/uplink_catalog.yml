@@ -103,22 +103,87 @@
     Telecrystal: 6
   categories:
   - UplinkDisruption
-
+  
 - type: listing
-  id: UplinkEnergySwordDouble
-  name: uplink-esword-double-name
-  description: uplink-esword-double-desc
-  icon: { sprite: /Textures/Objects/Weapons/Melee/e_sword_double.rsi, state: icon }
-  productEntity: EnergySwordDouble
-  discountCategory: veryRareDiscounts
+  id: UplinkClothingHandsKnuckleDustersStun
+  name: uplink-clothing-hands-knuckle-dusters-stun-name
+  description: clothing-hands-knuckle-dusters-stun-desc
+  icon: { sprite: Clothing/Hands/Gloves/KnuckleDusters/electricknuckleduster.rsi, state: knuckleduster_nocell }
+  productEntity: ClothingHandsKnuckleDustersStun
+  discountCategory: usualDiscounts
   discountDownTo:
-    Telecrystal: 20
+    Telecrystal: 2
   cost:
-    Telecrystal: 26
+    Telecrystal: 3
   categories:
   - UplinkWeaponry
+
+- type: listing
+  id: ADTUplinkAdvancedHristov
+  name: uplink-hristov-bundle-name
+  description: uplink-hristov-bundle-desc
+  icon: { sprite: /Textures/Objects/Weapons/Guns/Snipers/heavy_sniper.rsi, state: base }
+  productEntity: ADTClothingBackpackDuffelSyndicateFilledHristov
+  cost:
+    Telecrystal: 25
+  categories:
+  - UplinkWeaponry
+
+- type: listing
+  id: ADTUplinkXC67Bundle
+  name: uplink-xc67-name
+  description: uplink-xc67-desc
+  icon: { sprite: /Textures/_ADT/Objects/Weapons/Guns/Rifles/xc67.rsi, state: icon}
+  productEntity: ADTClothingBackpackDuffelSyndicateFilledXC67
+  cost:
+    Telecrystal: 23
+  categories:
+  - UplinkWeaponry
+
+- type: listing
+  id: UplinkAdvansedMagboots
+  name: uplink-advanced-magboots-name
+  description: uplink-advanced-magboots-desc
+  icon: { sprite: _ADT/Clothing/Shoes/Boots/advanced.rsi, state: icon }
+  productEntity: ADTClothingShoesBootsMagAdvSynd
+  cost:
+    Telecrystal: 6
+  categories:
+  - UplinkWearables
   conditions:
   - !type:StoreWhitelistCondition
     whitelist:
       tags:
       - NukeOpsUplink
+
+- type: listing
+  id: ADTUplinkNukeSyndiHoloprojectorField
+  name: uplink-syndiholoprojectorfield-name
+  description: uplink-syndiholoprojectorfield-desc
+  productEntity: ADTSyndiHoloprojectorField
+  cost:
+    Telecrystal: 6
+  categories:
+    - UplinkDeception
+
+- type: listing
+  id: ADTUplinkWeaponRifleXC67
+  name: uplink-xc67ammo-name
+  description: uplink-xc67ammo-desc
+  icon: { sprite: /Textures/_ADT/Objects/Weapons/Guns/Ammunition/Magazine/Rifle/ext_rifle_mag.rsi, state: base }
+  productEntity: ADTExtMagazineRifle
+  cost:
+    Telecrystal: 3
+  categories:
+  - UplinkAmmo
+
+- type: listing
+  id: UplinkSheathSyndieFilledBox
+  name: uplink-syndicate-rapier-name
+  description: uplink-syndicate-rapier-desc
+  icon: { sprite: _Wega/Objects/Weapons/Melee/syndicate_rapier.rsi, state: icon }
+  productEntity: BeltSheathSyndieFilledBox
+  cost:
+    Telecrystal: 12
+  categories:
+  - UplinkWeaponry

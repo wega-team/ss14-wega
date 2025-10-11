@@ -115,6 +115,20 @@
   - MedicalScannerMachineCircuitboard
   - DnaModifierComputerCircuitboard
 
+- type: technology
+  id: ProSurgery
+  name: research-technology-pro-surgery
+  icon:
+    sprite: Objects/Specific/Medical/Surgery/scalpel.rsi
+    state: laser
+  discipline: Biochemical
+  tier: 2
+  cost: 10000
+  recipeUnlocks:
+  - Hemrevein
+  - Bonesaw
+  - ScalpelLaser
+
 # Tier 3
 
 - type: technology

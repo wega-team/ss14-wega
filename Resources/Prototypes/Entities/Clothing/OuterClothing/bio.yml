@@ -11,6 +11,9 @@
     sprite: Clothing/OuterClothing/Bio/general.rsi
   - type: DiseaseProtection # Corvax-Wega-Disease
     protection: 0.2 # Corvax-Wega-Disease
+  - type: HideLayerClothing
+    slots:
+    - Tail
   - type: Armor
     modifiers:
       coefficients:
