@@ -4,7 +4,6 @@ using Content.Client.UserInterface.Systems.Bwoink;
 using Content.Client.UserInterface.Systems.Character;
 using Content.Client.UserInterface.Systems.Crafting;
 using Content.Client.UserInterface.Systems.Emotes;
-using Content.Client.UserInterface.Systems.Interaction; /// Corvax-Wega
 using Content.Client.UserInterface.Systems.EscapeMenu;
 using Content.Client.UserInterface.Systems.Gameplay;
 using Content.Client.UserInterface.Systems.Guidebook;
@@ -25,7 +24,6 @@ public sealed class GameTopMenuBarUIController : UIController
     [Dependency] private readonly SandboxUIController _sandbox = default!;
     [Dependency] private readonly GuidebookUIController _guidebook = default!;
     [Dependency] private readonly EmotesUIController _emotes = default!;
-    [Dependency] private readonly InteractionUIController _interaction = default!; /// Corvax-Wega
 
     private GameTopMenuBar? GameTopMenuBar => UIManager.GetActiveUIWidgetOrNull<GameTopMenuBar>();
 
@@ -49,7 +47,6 @@ public sealed class GameTopMenuBarUIController : UIController
         _action.UnloadButton();
         _sandbox.UnloadButton();
         _emotes.UnloadButton();
-        _interaction.UnloadButton(); /// Corvax-Wega
     }
 
     public void LoadButtons()
@@ -63,6 +60,5 @@ public sealed class GameTopMenuBarUIController : UIController
         _action.LoadButton();
         _sandbox.LoadButton();
         _emotes.LoadButton();
-        _interaction.LoadButton(); /// Corvax-Wega
     }
 }
