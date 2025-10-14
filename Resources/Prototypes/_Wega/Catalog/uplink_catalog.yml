@@ -249,7 +249,7 @@
     stock: 1
     
 - type: listing
-  id: UplinkC20RBundle
+  id: UplinkC20RBundleNuke
   name: uplink-c20r-bundle-name
   description: uplink-c20r-bundle-desc
   icon: { sprite: /Textures/Objects/Weapons/Guns/SMGs/c20r.rsi, state: icon }
@@ -265,7 +265,7 @@
       - NukeOpsUplink
 
 - type: listing
-  id: UplinkEstocBundle
+  id: UplinkEstocBundleNuke
   name: uplink-estoc-bundle-name
   description: uplink-estoc-bundle-desc
   icon: { sprite: /Textures/Objects/Weapons/Guns/Rifles/estoc.rsi, state: icon }
@@ -281,7 +281,7 @@
       - NukeOpsUplink
 
 - type: listing
-  id: UplinkBulldogBundle
+  id: UplinkBulldogBundleNuke
   name: uplink-buldog-bundle-name
   description: uplink-buldog-bundle-desc
   icon: { sprite: /Textures/Objects/Weapons/Guns/Shotguns/bulldog.rsi, state: icon }
