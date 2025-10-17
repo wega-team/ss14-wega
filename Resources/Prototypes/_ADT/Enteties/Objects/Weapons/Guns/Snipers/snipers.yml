@@ -15,7 +15,7 @@
     sprite: _ADT/Objects/Weapons/Guns/Snipers/new_hristov.rsi
     slots:
     - Back
-    - OuterClothing
+    - suitStorage
     quickEquip: false
   - type: Wieldable
   - type: GunWieldBonus
