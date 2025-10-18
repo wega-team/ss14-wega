@@ -12,3 +12,4 @@ JobSurgeon = хирург
 JobCoroner = коронер
 JobBlueShieldOfficer = офицер "Синий Щит"
 JobPostman = почтальон
+JobPrisoner = заключенный
