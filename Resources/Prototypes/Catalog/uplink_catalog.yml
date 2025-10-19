@@ -439,7 +439,7 @@
   # discountDownTo:
     # Telecrystal: 2
   cost:
-    Telecrystal: 1
+    Telecrystal: 1 # Corvax-Wega-Syndi
   categories:
   - UplinkExplosives
 
