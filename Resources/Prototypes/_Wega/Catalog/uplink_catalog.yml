@@ -3,11 +3,11 @@
   name: uplink-StickyBomb-name
   description: uplink-StickyBomb-desc
   productEntity: StickyBomb
-  discountCategory: veryRareDiscounts
+  discountCategory: usualDiscounts
   discountDownTo:
     Telecrystal: 1
   cost:
-    Telecrystal: 3
+    Telecrystal: 2
   categories:
   - UplinkExplosives
 
@@ -18,9 +18,9 @@
   productEntity: OverlordCircuitBoard
   discountCategory: veryRareDiscounts
   discountDownTo:
-    Telecrystal: 4
+    Telecrystal: 1
   cost:
-    Telecrystal: 6
+    Telecrystal: 2
   categories:
   - UplinkDisruption
   conditions:
@@ -36,9 +36,9 @@
   productEntity: SyndicateCircuitBoard
   discountCategory: rareDiscounts
   discountDownTo:
-    Telecrystal: 11
+    Telecrystal: 3
   cost:
-    Telecrystal: 15
+    Telecrystal: 4
   categories:
   - UplinkDisruption
   conditions:
@@ -56,7 +56,7 @@
   discountDownTo:
     Telecrystal: 3
   cost:
-    Telecrystal: 6
+    Telecrystal: 4
   categories:
   - UplinkDeception
 
@@ -71,7 +71,7 @@
   cost:
     Telecrystal: 3
   categories:
-  - UplinkDisruption
+  - UplinkWeaponry
 
 - type: listing
   id: UplinkSyndicateSegwayCrate
@@ -80,9 +80,9 @@
   icon: { sprite: /Textures/Objects/Vehicles/syndicatesegway.rsi, state: icon }
   productEntity: CrateFunSyndicateSegway
   discountDownTo:
-    Telecrystal: 3
+    Telecrystal: 1
   cost:
-    Telecrystal: 5
+    Telecrystal: 2
   categories:
   - UplinkPointless
   conditions:
@@ -98,9 +98,9 @@
   productEntity: RCDUpgradeKit
   discountCategory: rareDiscounts
   discountDownTo:
-    Telecrystal: 4
+    Telecrystal: 2
   cost:
-    Telecrystal: 6
+    Telecrystal: 3
   categories:
   - UplinkDisruption
   
@@ -128,6 +128,31 @@
     Telecrystal: 18
   categories:
   - UplinkWeaponry
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - NukeOpsUplink
+
+- type: listing
+  id: ADTUplinkXC67BundleAgent
+  name: uplink-xc67-name
+  description: uplink-xc67-desc
+  icon: { sprite: /Textures/_ADT/Objects/Weapons/Guns/Rifles/xc67.rsi, state: icon}
+  productEntity: ADTClothingBackpackDuffelSyndicateFilledXC67
+  discountCategory: veryRareDiscounts
+  discountDownTo:
+    Telecrystal: 13
+  cost:
+    Telecrystal: 15
+  categories:
+  - UplinkWeaponry
+  conditions:
+    - !type:StoreWhitelistCondition
+      blacklist:
+        tags:
+          - NukeOpsUplink
+
 
 - type: listing
   id: ADTUplinkXC67Bundle
@@ -139,6 +164,11 @@
     Telecrystal: 19
   categories:
   - UplinkWeaponry
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - NukeOpsUplink
 
 - type: listing
   id: UplinkAdvansedMagboots
@@ -165,6 +195,11 @@
     Telecrystal: 5
   categories:
     - UplinkDeception
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - NukeOpsUplink
 
 - type: listing
   id: ADTUplinkWeaponXC67ammo
@@ -173,7 +208,7 @@
   icon: { sprite: /Textures/_ADT/Objects/Weapons/Guns/Ammunition/Magazine/Rifle/ext_rifle_mag.rsi, state: base }
   productEntity: ADTExtMagazineRifle
   cost:
-    Telecrystal: 3
+    Telecrystal: 1
   categories:
   - UplinkAmmo
 
@@ -184,9 +219,66 @@
   icon: { sprite: _Wega/Objects/Weapons/Melee/syndicate_rapier.rsi, state: icon }
   productEntity: BeltSheathSyndieFilledBox
   cost:
-    Telecrystal: 12
+    Telecrystal: 6
   categories:
   - UplinkWeaponry
+
+- type: listing
+  id: UplinkMagazinePistolCaselessRifleFree
+  name: uplink-pistol-magazine-caseless-name
+  description: uplink-pistol-magazine-caseless-desc
+  icon: { sprite: /Textures/Objects/Weapons/Guns/Ammunition/Magazine/CaselessRifle/caseless_pistol_mag.rsi, state: red-icon }
+  productEntity: MagazinePistolCaselessRifle
+  categories:
+  - UplinkAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+# For the Python
+- type: listing
+  id: UplinkPistol9mmMagazineFree
+  name: uplink-pistol-magazine-name
+  description: uplink-pistol-magazine-desc
+  icon: { sprite: /Textures/Objects/Weapons/Guns/Ammunition/Magazine/Pistol/pistol_mag.rsi, state: red-icon }
+  productEntity: MagazinePistol
+  categories:
+  - UplinkAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+    
+- type: listing
+  id: UplinkC20RBundleNuke
+  name: uplink-c20r-bundle-name
+  description: uplink-c20r-bundle-desc
+  icon: { sprite: /Textures/Objects/Weapons/Guns/SMGs/c20r.rsi, state: icon }
+  productEntity: ClothingBackpackDuffelSyndicateFilledSMG
+  cost:
+    Telecrystal: 17
+  categories:
+  - UplinkWeaponry
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - NukeOpsUplink
+
+- type: listing
+  id: UplinkEstocBundleNuke
+  name: uplink-estoc-bundle-name
+  description: uplink-estoc-bundle-desc
+  icon: { sprite: /Textures/Objects/Weapons/Guns/Rifles/estoc.rsi, state: icon }
+  productEntity: ClothingBackpackDuffelSyndicateFilledRifle
+  cost:
+    Telecrystal: 13
+  categories:
+  - UplinkWeaponry
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - NukeOpsUplink
 
 - type: listing
   id: UplinkDesertEagle
@@ -221,6 +313,17 @@
     Telecrystal: 3
   categories:
   - UplinkAmmo
+
+- type: listing
+  id: UplinkBulldogBundleNuke
+  name: uplink-buldog-bundle-name
+  description: uplink-buldog-bundle-desc
+  icon: { sprite: /Textures/Objects/Weapons/Guns/Shotguns/bulldog.rsi, state: icon }
+  productEntity: ClothingBackpackDuffelSyndicateFilledShotgun
+  cost:
+    Telecrystal: 17
+  categories:
+  - UplinkWeaponry
   conditions:
   - !type:StoreWhitelistCondition
     whitelist:

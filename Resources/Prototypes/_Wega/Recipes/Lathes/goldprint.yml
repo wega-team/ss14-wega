@@ -8,7 +8,7 @@
 - type: latheRecipe
   id: SilverRing
   result: SilverRing
-  completetime: 6.4
+  completetime: 60
   materials:
     Silver: 50
     

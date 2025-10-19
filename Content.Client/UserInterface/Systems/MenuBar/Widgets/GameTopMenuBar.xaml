@@ -43,18 +43,6 @@
         HorizontalExpand="True"
         AppendStyleClass="{x:Static style:StyleBase.ButtonSquare}"
         />
-    <!-- Corvax-Wega-start -->
-    <ui:MenuButton
-        Name="InteractionButton"
-        Access="Internal"
-        Icon="{xe:Tex '/Textures/_Wega/Interface/interaction.svg.192dpi.png'}"
-        ToolTip="{Loc 'game-hud-open-interaction-menu-button-tooltip'}"
-        BoundKey = "{x:Static is:ContentKeyFunctions.OpenInteractionMenu}" 
-        MinSize="42 64"
-        HorizontalExpand="True"
-        AppendStyleClass="{x:Static style:StyleBase.ButtonSquare}"
-        />
-    <!-- Corvax-Wega-end -->
     <ui:MenuButton
         Name="EmotesButton"
         Access="Internal"
