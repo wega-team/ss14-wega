@@ -438,15 +438,10 @@
   # discountCategory: usualDiscounts # Corvax-Wega-Syndi
   # discountDownTo:
     # Telecrystal: 2
-  # cost:
-    # Telecrystal: 1
+  cost:
+    Telecrystal: 1
   categories:
   - UplinkExplosives
-# Corvax-Wega-Syndi-start
-  conditions:
-  - !type:ListingLimitedStockCondition
-    stock: 2
-# Corvax-Wega-Syndi-end
 
 - type: listing
   id: UplinkSyndicateBomb
