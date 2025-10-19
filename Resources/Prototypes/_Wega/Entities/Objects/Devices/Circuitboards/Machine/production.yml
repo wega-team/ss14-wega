@@ -69,10 +69,8 @@
     - type: MachineBoard
       prototype: MiningServer
       stackRequirements:
-        Manipulator: 4
-        Steel: 5
-        Glass: 2
-        Cable: 5
+        Cable: 5        
+        Manipulator: 1
 
 - type: entity
   id: WashingMachineCircuitboard

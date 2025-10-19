@@ -195,9 +195,6 @@ binds:
   type: State
   key: Y
 # Corvax-Wega-start
-- function: OpenInteractionMenu
-  type: State
-  key: U
 - function: Strangle
   type: State
   key: J

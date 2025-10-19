@@ -63,7 +63,6 @@ namespace Content.Client.Input
             human.AddFunction(ContentKeyFunctions.AltUseItemInHand);
             human.AddFunction(ContentKeyFunctions.OpenCharacterMenu);
             human.AddFunction(ContentKeyFunctions.OpenEmotesMenu);
-            human.AddFunction(ContentKeyFunctions.OpenInteractionMenu); /// Corvax-Wega
             human.AddFunction(ContentKeyFunctions.Strangle); /// Corvax-Wega
             human.AddFunction(ContentKeyFunctions.OfferItem); /// Corvax-Wega-Offer
             human.AddFunction(ContentKeyFunctions.ActivateItemInWorld);

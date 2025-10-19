@@ -2,7 +2,6 @@
   parent: BaseLathe
   id: Goldprinter
   name: gold printer
-  suffix: Gamewar360
   description: I made a ring for myself
   components:
   - type: Sprite

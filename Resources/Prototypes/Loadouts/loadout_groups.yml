@@ -631,74 +631,6 @@
   - LawyerJumpskirtRed
   - LawyerJumpsuitGood
   - LawyerJumpskirtGood
-# Corvax-Wega-add-start
-  - JumpsuitColorWhite
-  - JumpskirtColorWhite
-  - JumpsuitColorBlack
-  - JumpskirtColorBlack
-  - JumpsuitColorBlue
-  - JumpskirtColorBlue
-  - JumpsuitColorYellow
-  - JumpskirtColorYellow
-  - JumpsuitColorGreen
-  - JumpskirtColorGreen
-  - JumpsuitColorOrange
-  - JumpskirtColorOrange
-  - JumpsuitColorRed
-  - JumpskirtColorRed
-  - JumpsuitColorPurple
-  - JumpskirtColorPurple
-  - JumpsuitColorPink
-  - JumpskirtColorPink
-  - JumpsuitColorDarkBlue
-  - JumpskirtColorDarkBlue
-  - JumpsuitColorDarkGreen
-  - JumpskirtColorDarkGreen
-  - JumpsuitColorTeal
-  - JumpskirtColorTeal
-  - JumpsuitCasualBlue
-  - JumpskirtCasualBlue
-  - JumpsuitCasualPurple
-  - JumpskirtCasualPurple
-  - JumpsuitCasualRed
-  - JumpskirtCasualRed
-  - JumpsuitCasualGreen
-  - JumpskirtCasualGreen 
-  - JumpskirtTurtleneckAquamarine   
-  - JumpsuitTurtleneckAquamarine
-  - JumpskirtTurtleneckWhite
-  - JumpsuitTurtleneckWhite
-  - JumpskirtTurtleneckAzure
-  - JumpsuitTurtleneckAzure
-  - JumpskirtTurtleneckYellow
-  - JumpsuitTurtleneckYellow
-  - JumpskirtTurtleneckGreen
-  - JumpsuitTurtleneckGreen
-  - JumpskirtTurtleneckBrown
-  - JumpsuitTurtleneckBrown
-  - JumpskirtTurtleneckRed
-  - JumpsuitTurtleneckRed
-  - JumpskirtTurtleneckOrange
-  - JumpsuitTurtleneckOrange
-  - JumpskirtTurtleneckPink
-  - JumpsuitTurtleneckPink
-  - JumpskirtTurtleneckGrey
-  - JumpsuitTurtleneckGrey
-  - JumpskirtTurtleneckBlue
-  - JumpsuitTurtleneckBlue
-  - JumpskirtTurtleneckPurple
-  - JumpsuitTurtleneckPurple
-  - JumpskirtTurtleneckBlack
-  - JumpsuitTurtleneckBlack
-  - JumpskirtTurtleneckSalat
-  - JumpsuitTurtleneckSalat
-  - JumpsuitTurtleneckSalatblack
-  - JumpskirtTurtleneckBlackSleeveless
-  - JumpsuitTurtleneckBlackSleeveless
-  - JumpsuitTurtleneckWhiteBlackSleeveless
-  - JumpsuitTurtleneckWhiteSleeveless
-  - JumpskirtTurtleneckWhiteSleeveless
-# Corvax-Wega-add-end
 
 - type: loadoutGroup
   id: LawyerNeck
@@ -2452,6 +2384,8 @@
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
+  - JumpskirtTurtleneckOrange
+  - JumpsuitTurtleneckOrange
   - JumpskirtTurtleneckAzure
   - JumpsuitTurtleneckAzure
   - JumpskirtTurtleneckBlue
@@ -2515,6 +2449,8 @@
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
+  - JumpskirtTurtleneckOrange
+  - JumpsuitTurtleneckOrange
   - JumpskirtTurtleneckAzure
   - JumpsuitTurtleneckAzure
   - JumpskirtTurtleneckBlue
@@ -2532,6 +2468,8 @@
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
+  - JumpskirtTurtleneckOrange
+  - JumpsuitTurtleneckOrange
   - JumpskirtTurtleneckAzure
   - JumpsuitTurtleneckAzure
   - JumpskirtTurtleneckBlue
@@ -2573,6 +2511,8 @@
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
+  - JumpskirtTurtleneckOrange
+  - JumpsuitTurtleneckOrange
   - JumpskirtTurtleneckAzure
   - JumpsuitTurtleneckAzure
   - JumpskirtTurtleneckBlue

@@ -11,7 +11,6 @@
     Steel: 750
     Plastic: 250
     Glass: 300
-    Plasma: 100
     Gold: 100
     
 - type: latheRecipe
@@ -22,9 +21,9 @@
   completetime: 8
   materials:
     Steel: 850
-    Plastic: 1000
+    Plastic: 850
     Glass: 300
-    Gold: 200
+    Gold: 400
     Silver: 200
 # Clothing
 
@@ -33,11 +32,11 @@
   result: PortableRechargerBag
   categories:
   - Clothing
-  completetime: 15
+  completetime: 10
   materials:
-    Steel: 1500
-    Plastic: 750
-    Glass: 500
+    Steel: 1000
+    Plastic: 300
+    Glass: 300
     Plasma: 500
     Gold: 300
     Silver: 150
@@ -47,11 +46,11 @@
   result: PortableRechargerTurbo
   categories:
   - Clothing
-  completetime: 15
+  completetime: 10
   materials:
-    Steel: 1500
-    Plastic: 750
-    Glass: 500
+    Steel: 1000
+    Plastic: 300
+    Glass: 300
     Plasma: 500
     Gold: 300
     Silver: 150
@@ -61,12 +60,12 @@
   result: PortableRechargerTurboBag
   categories:
   - Clothing
-  completetime: 15
+  completetime: 10
   materials:
-    Steel: 2500
-    Plastic: 1500
+    Steel: 1500
+    Plastic: 500
     Glass: 500
-    Plasma: 1000
+    Plasma: 500
     Gold: 500
     Silver: 300
     Uranium: 150
@@ -81,8 +80,8 @@
     Steel: 350
     Plastic: 200
     Glass: 150
-    Plasma: 100
-    Gold: 25
+    Plasma: 50
+    Gold: 50
 
 - type: latheRecipe
   id: ClothingNeckFlashNeck
@@ -91,12 +90,12 @@
   - Clothing
   completetime: 3
   materials:
-    Steel: 400
-    Plastic: 300
-    Glass: 200
-    Plasma: 300
-    Uranium: 25
-    
+    Steel: 300
+    Plastic: 200
+    Glass: 150
+    Plasma: 50
+    Gold: 50
+    Silver: 50
 # Tools
 
 - type: latheRecipe
