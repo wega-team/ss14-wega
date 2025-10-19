@@ -135,16 +135,16 @@
       - NukeOpsUplink
 
 - type: listing
-  id: ADTUplinkXC67Bundle
+  id: ADTUplinkXC67BundleAgent
   name: uplink-xc67-name
   description: uplink-xc67-desc
   icon: { sprite: /Textures/_ADT/Objects/Weapons/Guns/Rifles/xc67.rsi, state: icon}
   productEntity: ADTClothingBackpackDuffelSyndicateFilledXC67
   discountCategory: veryRareDiscounts
   discountDownTo:
-    Telecrystal: 10
-  cost:
     Telecrystal: 13
+  cost:
+    Telecrystal: 15
   categories:
   - UplinkWeaponry
   conditions:
@@ -155,7 +155,7 @@
 
 
 - type: listing
-  id: ADTUplinkXC67BundleNuke
+  id: ADTUplinkXC67Bundle
   name: uplink-xc67-name
   description: uplink-xc67-desc
   icon: { sprite: /Textures/_ADT/Objects/Weapons/Guns/Rifles/xc67.rsi, state: icon}
