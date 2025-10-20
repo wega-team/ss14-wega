@@ -3,8 +3,13 @@
   name: job-name-prisoner
   description: job-description-prisoner
   playTimeTracker: JobPrisoner
+  requirements:
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 72000 #20h
   startingGear: PrisonerGear
   icon: "JobIconPrisoner"
+  canBeAntag: true
   components:
   - type: MindRole
     roleType: FreeAgent
