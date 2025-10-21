@@ -10,7 +10,6 @@
   startingGear: PrisonerGear
   icon: "JobIconPrisoner"
   canBeAntag: true
-  type: MindRole
   roleType: FreeAgent
 
 - type: startingGear
