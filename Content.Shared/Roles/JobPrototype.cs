@@ -171,7 +171,7 @@ namespace Content.Shared.Roles
         // Corvax-Wega-SubRoles-end
 
         [DataField("roletype")]
-        public ProtoId<RoleTypePrototype>? RoleType;   //Corvax-Wega
+        public ProtoId<MindRoleComponent>? RoleType;   //Corvax-Wega
     }
 
     /// <summary>
