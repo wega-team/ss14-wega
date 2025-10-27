@@ -50,9 +50,9 @@
                     <Label Text="{Loc 'mining-console-all-stage-title'}" StyleClasses="LabelBig" MinWidth="120"/>
                 </BoxContainer>
                 <BoxContainer Orientation="Horizontal" SeparationOverride="6" Margin="2">
-                    <Button Name="AllStage1Button" Text="{Loc 'mining-console-all-stage-1'}" MinSize="42 24"/>
-                    <Button Name="AllStage2Button" Text="{Loc 'mining-console-all-stage-2'}" MinSize="42 24"/>
-                    <Button Name="AllStage3Button" Text="{Loc 'mining-console-all-stage-3'}" MinSize="42 24"/>
+                    <Button Name="AllStage1Button" Text="{Loc 'mining-console-all-stage-1'}" MinSize="124 24"/>
+                    <Button Name="AllStage2Button" Text="{Loc 'mining-console-all-stage-2'}" MinSize="124 24"/>
+                    <Button Name="AllStage3Button" Text="{Loc 'mining-console-all-stage-3'}" MinSize="124 24"/>
                 </BoxContainer>
             </BoxContainer>
         </BoxContainer>
