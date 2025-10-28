@@ -1183,7 +1183,7 @@
     - item: HydroponicsToolClippers
     # Corvax-Wega-Robot-start
     - hand:
-        emptyRepresentative: FoodCabbage
+        emptyRepresentative: WheatSeeds
         emptyLabel: borg-slot-seed-empty
         whitelist:
           components:
@@ -1206,6 +1206,15 @@
     hands:
     - item: HydroponicsToolScythe
     - item: HydroponicsToolHatchet
+    # Corvax-Wega-Robot-start
+    - hand:
+        emptyRepresentative: FoodCabbage
+        emptyLabel: borg-slot-botany-empty
+        whitelist:
+          tags:
+          - Vegetable
+          - Fruit
+    # Corvax-Wega-Robot-end
     - item: PlantBag
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: harvesting-module }
