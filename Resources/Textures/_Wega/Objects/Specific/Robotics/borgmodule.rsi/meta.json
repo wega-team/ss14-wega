@@ -14,10 +14,28 @@
             "name": "medical"
         },
         {
+            "name": "generic"
+        },
+        {
+            "name": "service"
+        },
+        {
             "name": "cargo"
         },
         {
             "name": "icon-kinetic"
+        },
+        {
+            "name": "icon-bar-module"
+        },
+        {
+            "name": "icon-cook-module"
+        },
+        {
+            "name": "icon-fight-common"
+        },
+        {
+            "name": "icon-treatment-common"
         },
         {
             "name": "base-icon-inhand-left",

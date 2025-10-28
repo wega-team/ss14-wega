@@ -207,11 +207,13 @@
 
   defaultModules:
   - BorgModuleTool
-  - BorgModuleMusique
+  # - BorgModuleMusique
+  - BorgModuleCook
   - BorgModuleService
-  - BorgModuleClowning
-  - BorgModuleGardening
-  - BorgModuleHarvesting
+  - BorgModuleBar
+  # - BorgModuleClowning
+  # - BorgModuleGardening
+  # - BorgModuleHarvesting
   radioChannels:
   - Science
   - Service

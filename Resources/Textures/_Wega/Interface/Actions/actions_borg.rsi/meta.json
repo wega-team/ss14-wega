@@ -1,7 +1,7 @@
 {
     "version": 1,
-    "license": "CC-BY-SA-3.0",
-    "copyright": "surgery and kinetic by <@500744677352407051>",
+    "license": "CC-BY-SA-4.0",
+    "copyright": "mody by <@500744677352407051>",
     "size": {
         "x": 32,
         "y": 32
@@ -11,7 +11,28 @@
             "name": "surgery-module"
         },
         {
+            "name": "cook-module"
+        },
+        {
+            "name": "bar-module"
+        },
+        {
             "name": "kinetic-weapon-module"
+        },
+        {
+            "name": "figth-common-module"
+        },
+        {
+            "name": "build-common-module"
+        },
+        {
+            "name": "medical-common-module"
+        },
+        {
+            "name": "pen-common-module"
+        },
+        {
+            "name": "pickaxe-common-module"
         }
     ]
 }

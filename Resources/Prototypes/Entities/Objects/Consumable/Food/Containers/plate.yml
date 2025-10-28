@@ -55,6 +55,7 @@
   - type: Tag
     tags:
     - Trash
+    - Cook # Corvax-Wega
   - type: PhysicalComposition
     materialComposition:
       Glass: 60
@@ -194,6 +195,7 @@
   - type: Tag
     tags:
     - Trash
+    - Cook # Corvax-Wega
   - type: PhysicalComposition
     materialComposition:
       Steel: 60
@@ -218,6 +220,7 @@
   - type: Tag
     tags:
     - Trash
+    - Cook # Corvax-Wega
   - type: PhysicalComposition
     materialComposition:
       Steel: 30
