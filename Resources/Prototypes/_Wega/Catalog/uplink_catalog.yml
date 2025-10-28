@@ -340,3 +340,15 @@
     Telecrystal: 2
   categories:
   - UplinkAmmo
+
+- type: listing
+  id: UplinkSyndiePlayerInstrument
+  name: uplink-syndie-player-name
+  description: uplink-syndie-player-desc
+  icon: { sprite: _Wega/Objects/Fun/Instruments/syndieplayer.rsi, state: icon }
+  productEntity: SyndiePlayerInstrument
+  categories:
+  - UplinkPointless
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1

@@ -32,3 +32,5 @@ uplink-magazine-eagle-ap-name = Пистолетный магазин пусты
 uplink-magazine-eagle-ap-desc = Пистолетный магазин под патрон .45 магнум бронебойные. Совместим с пустынным орлом.
 uplink-ammo-sniper-name = Магазин (.60 антиматериальный)
 uplink-ammo-sniper-desc = Магазин под патрон .60 антиматериальный. Совместим с продвинутой снайперской винтовкой.
+uplink-syndie-player-name = Плеер синдиката
+uplink-syndie-player-desc = Позволяет разбавить рутинную резню своей любимой музыкой.
