@@ -5,7 +5,7 @@ using Content.Shared.Players.PlayTimeTracking;
 using Content.Shared.StatusIcon;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
-using Content.Server.Roles.Jobs;
+using Content.Client.Mind;
 
 namespace Content.Shared.Roles
 {
