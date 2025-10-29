@@ -1126,7 +1126,7 @@
         emptyRepresentative: FoodBreadPlain
         emptyLabel: borg-slot-food-empty
         whitelist:
-          tags:
+          components:
           - Food
     # Corvax-Wega-Robot-end
   - type: BorgModuleIcon
