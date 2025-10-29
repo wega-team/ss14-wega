@@ -1,0 +1,28 @@
+- type: entity
+  parent: [ClothingEyesBase, ShowSecurityIcons, BaseSyndicateContraband]
+  id: ClothingEyesHudSyndicateCamera
+  name: camera visor hud
+  description: Right now we can watching, how sec bite a clown.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Eyes/syndcamerahud.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Eyes/syndcamerahud.rsi
+  - type: ShowSyndicateIcons
+  - type: ActivatableUI
+    requireActiveHand: false
+    inHandsOnly: false
+    key: enum.SurveillanceCameraMonitorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.SurveillanceCameraMonitorUiKey.Key:
+        type: SurveillanceCameraMonitorBoundUserInterface
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    receiveFrequencyId: SurveillanceCameraBodycam
+    transmitFrequencyId: SurveillanceCameraBodycam
+  - type: SurveillanceCameraMonitor
+  - type: Tag
+    tags:
+    - PetWearable
+    - WhitelistChameleon

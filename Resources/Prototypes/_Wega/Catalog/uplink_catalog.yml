@@ -48,19 +48,6 @@
        - NukeOpsUplink
 
 - type: listing
-  id: UplinkWiretappingKit
-  name: uplink-wiretapping-kit-name
-  description: uplink-wiretapping-kit-desc
-  productEntity: WiretappingKit
-  discountCategory: usualDiscounts
-  discountDownTo:
-    Telecrystal: 3
-  cost:
-    Telecrystal: 4
-  categories:
-  - UplinkDeception
-
-- type: listing
   id: UplinkGarrotte
   name: uplink-garrotte-name
   description: uplink-garrotte-desc
@@ -185,6 +172,17 @@
     whitelist:
       tags:
       - NukeOpsUplink
+
+- type: listing
+  id: UplinkEyesHudSyndicateCamera
+  name: uplink-syndicate-camera-name
+  description: uplink-syndicate-camera-desc
+  icon: { sprite: _Wega/Clothing/Eyes/syndcamerahud.rsi, state: icon }
+  productEntity: ClothingEyesHudSyndicateCamera
+  cost:
+    Telecrystal: 2
+  categories:
+  - UplinkWearables
 
 - type: listing
   id: ADTUplinkNukeSyndiHoloprojectorField

@@ -36,6 +36,7 @@
     - id: ClothingOuterCoatWarden
     - id: ClothingOuterWinterWarden
     - id: ClothingHandsGlovesKravMaga # corvax-wega-krav-maga
+    - id: WiretappingTerminal # corvax-wega
     - id: RubberStampWarden
     - id: DoorRemoteArmory
     - id: HoloprojectorSecurity

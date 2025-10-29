@@ -532,6 +532,20 @@
   - type: ItemBorgModule
     hands:
     - item: AppraisalTool
+    # Corvax-Wega-Robot-Start
+    - hand:
+        emptyLabel: borg-slot-documents-empty
+        emptyRepresentative: Paper
+        whitelist:
+          tags:
+          - Book
+          - Dice
+          - Document
+          - Figurine
+          - TabletopBoard
+          - Write
+    - item: BoxFolderYellowEmpty
+    # Corvax-Wega-Robot-End
     - item: Pen
     - item: HandLabeler
     - item: RubberStampApproved
@@ -554,6 +568,14 @@
     - item: MiningDrill
     - item: Shovel
     - item: MineralScannerUnpowered
+    # Corvax-Wega-Robot-Start
+    - hand:
+        emptyLabel: borg-slot-ore-empty
+        emptyRepresentative: Coal
+        whitelist:
+          tags:
+          - Ore
+    # Corvax-Wega-Robot-end
     - item: BorgOreBag
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: mining-module }
@@ -573,6 +595,14 @@
     - item: MiningDrillDiamond
     - item: Shovel
     - item: AdvancedMineralScannerUnpowered
+    # Corvax-Wega-Robot-Start
+    - hand:
+        emptyLabel: borg-slot-ore-empty
+        emptyRepresentative: Coal
+        whitelist:
+          tags:
+          - Ore
+    # Corvax-Wega-Robot-end
     - item: OreBagOfHolding
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: adv-mining-module }
@@ -589,7 +619,15 @@
   - type: ItemBorgModule
     hands:
     - item: WeaponGrapplingGun
-    - item: BorgFireExtinguisher
+    # Corvax-Wega-Robot-Start
+    # - item: BorgFireExtinguisher
+    - hand:
+        emptyLabel: borg-slot-jetpack-empty
+        emptyRepresentative: JetpackMiningFilled
+        whitelist:
+          components:
+          - Jetpack
+    # Corvax-Wega-Robot-end
     - item: BorgHandheldGPSBasic
     - item: HandHeldMassScannerBorg
   - type: BorgModuleIcon
@@ -707,7 +745,15 @@
   - type: ItemBorgModule
     hands:
     - item: RCDRecharging
-    - item: BorgFireExtinguisher
+    # Corvax-Wega-Robot-Start
+    # - item: BorgFireExtinguisher
+    - hand:
+        emptyLabel: borg-slot-jetpack-empty
+        emptyRepresentative: JetpackMiningFilled
+        whitelist:
+          components:
+          - Jetpack
+    # Corvax-Wega-Robot-end
     - item: BorgHandheldGPSBasic
     - item: GasAnalyzer
     - item: HolofanProjectorBorg
@@ -860,6 +906,20 @@
     - item: BorgFireExtinguisher
     - item: BorgHandheldGPSBasic
     - item: HandLabeler
+    # Corvax-Wega-Robot-Start
+    - hand:
+        emptyLabel: borg-slot-table-empty
+        emptyRepresentative: CheapRollerBedSpawnFolded
+        whitelist:
+          components:
+          - OperatingTable
+    - hand:
+        emptyLabel: borg-slot-bodybag-empty
+        emptyRepresentative: BodyBagFolded
+        whitelist:
+          tags:
+          - BodyBag
+    # Corvax-Wega-Robot-end
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: defib-module }
 
@@ -961,6 +1021,14 @@
   - type: ItemBorgModule
     hands:
     - item: NodeScanner
+    # Corvax-Wega-Robot-Start
+    - hand:
+        emptyLabel: borg-slot-artefact-empty
+        emptyRepresentative: CheapRollerBedSpawnFolded
+        whitelist:
+          components:
+          - XenoArtifact
+    # Corvax-Wega-Robot-end
     - item: SprayBottle
     - item: GasAnalyzer
     - item: BorgDropper
@@ -997,7 +1065,7 @@
           tags:
           - ConstructionMaterial
     - hand:
-        emptyRepresentative: SheetRPGlass
+        emptyRepresentative: SheetPlasma # Corvax-Wega-Robot
         emptyLabel: borg-slot-construction-empty
         whitelist:
           tags:
@@ -1044,15 +1112,23 @@
     - item: HandLabeler
     - item: RubberStampApproved
     - item: RubberStampDenied
-    - item: BorgDropper
-    - item: DrinkShaker
-      hand:
-        emptyLabel: borg-slot-small-containers-empty
-        emptyRepresentative: DrinkShaker
+    # Corvax-Wega-Robot-start
+    # - item: BorgDropper
+    # - item: DrinkShaker
+      # hand:
+        # emptyLabel: borg-slot-small-containers-empty
+        # emptyRepresentative: DrinkShaker
+        # whitelist:
+          # components:
+          # - FitsInDispenser
+    # - item: BarSpoon
+    - hand:
+        emptyRepresentative: FoodBreadPlain
+        emptyLabel: borg-slot-food-empty
         whitelist:
           components:
-          - FitsInDispenser
-    - item: BarSpoon
+          - Food
+    # Corvax-Wega-Robot-end
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: service-module }
 
@@ -1105,6 +1181,14 @@
     - item: HydroponicsToolMiniHoe
     - item: HydroponicsToolSpade
     - item: HydroponicsToolClippers
+    # Corvax-Wega-Robot-start
+    - hand:
+        emptyRepresentative: WheatSeeds
+        emptyLabel: borg-slot-seed-empty
+        whitelist:
+          components:
+          - Seed
+    # Corvax-Wega-Robot-end
     - item: Bucket
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: gardening-module }
@@ -1122,6 +1206,15 @@
     hands:
     - item: HydroponicsToolScythe
     - item: HydroponicsToolHatchet
+    # Corvax-Wega-Robot-start
+    - hand:
+        emptyRepresentative: FoodCabbage
+        emptyLabel: borg-slot-botany-empty
+        whitelist:
+          tags:
+          - Vegetable
+          - Fruit
+    # Corvax-Wega-Robot-end
     - item: PlantBag
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: harvesting-module }
