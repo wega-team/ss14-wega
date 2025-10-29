@@ -87,9 +87,9 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
         EntityCoordinates coordinates,
         ProtoId<JobPrototype>? job,
         HumanoidCharacterProfile? profile,
+        ProtoId<RoleTypePrototype>? roleType,
         EntityUid? station,
-        EntityUid? entity = null,
-        ProtoId<RoleTypePrototype>? roleType
+        EntityUid? entity = null
         )
     {
         _prototypeManager.Resolve(job, out var prototype);
