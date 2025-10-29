@@ -9,7 +9,7 @@
       time: 72000 #20h
   startingGear: PrisonerGear
   icon: "JobIconPrisoner"
-  canBeAntag: true
+  canBeAntag: false
   RoleType: FreeAgent
 
 - type: startingGear

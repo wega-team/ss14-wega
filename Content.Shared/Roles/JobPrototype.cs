@@ -1,11 +1,10 @@
-using System.ComponentModel;
 using Content.Shared.Access;
 using Content.Shared.Guidebook;
 using Content.Shared.Players.PlayTimeTracking;
 using Content.Shared.StatusIcon;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
-using Content.Shared.Mind;
+using Content.Shared.Mind; // Corvax-Wega-Add
 
 namespace Content.Shared.Roles
 {
@@ -170,8 +169,8 @@ namespace Content.Shared.Roles
         public bool IsSubRole { get; private set; } = false;
         // Corvax-Wega-SubRoles-end
 
-        [DataField("RoleType")]
-            public ProtoId<RoleTypePrototype>? RoleType;   //Corvax-Wega
+        [DataField("RoleType")]  // Corvax-Wega-Edit
+            public ProtoId<RoleTypePrototype>? RoleType;  // Corvax-Wega-Edit
     }
 
     /// <summary>
