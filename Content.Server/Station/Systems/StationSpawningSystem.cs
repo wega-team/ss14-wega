@@ -62,7 +62,7 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
         if (station != null && !Resolve(station.Value, ref stationSpawning))
             throw new ArgumentException("Tried to use a non-station entity as a station!", nameof(station));
 
-        var ev = new PlayerSpawningEvent(job, profile, station, roleType);
+        var ev = new PlayerSpawningEvent(job, profile, station);
 
         RaiseLocalEvent(ev);
         DebugTools.Assert(ev.SpawnResult is { Valid: true } or null);
