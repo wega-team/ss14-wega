@@ -23,6 +23,7 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 using Content.Shared.Mind; // Corvax-Wega-Add
+using Content.Shared.Roles; // Corvax-Wega-Add
 
 namespace Content.Server.Station.Systems;
 
@@ -56,7 +57,7 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
     /// <remarks>
     /// This only spawns the character, and does none of the mind-related setup you'd need for it to be playable.
     /// </remarks>
-    public EntityUid? SpawnPlayerCharacterOnStation(EntityUid? station, ProtoId<JobPrototype>? job, HumanoidCharacterProfile? profile, StationSpawningComponent? stationSpawning = null, ProtoId<RoleTypePrototype>? RoleType)
+    public EntityUid? SpawnPlayerCharacterOnStation(EntityUid? station, ProtoId<JobPrototype>? job, HumanoidCharacterProfile? profile, StationSpawningComponent? stationSpawning = null, ProtoId<RoleTypePrototype>? roleType)
     {
         if (station != null && !Resolve(station.Value, ref stationSpawning))
             throw new ArgumentException("Tried to use a non-station entity as a station!", nameof(station));
@@ -88,7 +89,7 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
         HumanoidCharacterProfile? profile,
         EntityUid? station,
         EntityUid? entity = null,
-        ProtoId<RoleTypePrototype>? RoleType
+        ProtoId<RoleTypePrototype>? roleType
         )
     {
         _prototypeManager.Resolve(job, out var prototype);
@@ -246,7 +247,7 @@ public sealed class PlayerSpawningEvent : EntityEventArgs
     /// </summary>
     public readonly EntityUid? Station;
 
-    public PlayerSpawningEvent(ProtoId<JobPrototype>? job, HumanoidCharacterProfile? humanoidCharacterProfile, EntityUid? station, ProtoId<RoleTypePrototype>? RoleType)
+    public PlayerSpawningEvent(ProtoId<JobPrototype>? job, HumanoidCharacterProfile? humanoidCharacterProfile, EntityUid? station, ProtoId<RoleTypePrototype>? roleType)
     {
         Job = job;
         HumanoidCharacterProfile = humanoidCharacterProfile;
