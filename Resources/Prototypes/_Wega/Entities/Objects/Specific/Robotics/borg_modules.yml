@@ -24,7 +24,7 @@
     - item: SprayBottle
     - item: BorgDropper
     - hand:
-        emptyRepresentative: empty implant
+        emptyRepresentative: OrganHumanHeart
         emptyLabel: borg-slot-biomaterials-empty
         whitelist:
           components:
@@ -32,7 +32,7 @@
           tags:
           - BaseBodyPart
     - hand:
-        emptyRepresentative: empty implant
+        emptyRepresentative: EmptySubdermalImplant
         emptyLabel: borg-slot-implants-empty
         whitelist:
           components:

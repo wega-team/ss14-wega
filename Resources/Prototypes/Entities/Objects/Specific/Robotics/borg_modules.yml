@@ -917,7 +917,7 @@
         emptyLabel: borg-slot-bodybag-empty
         emptyRepresentative: BodyBagFolded
         whitelist:
-        tags:
+          tags:
           - BodyBag
     # Corvax-Wega-Robot-end
   - type: BorgModuleIcon
@@ -1125,7 +1125,7 @@
     - hand:
         emptyRepresentative: FoodBreadPlain
         emptyLabel: borg-slot-food-empty
-        components:
+        whitelist:
           tags:
           - Food
     # Corvax-Wega-Robot-end
