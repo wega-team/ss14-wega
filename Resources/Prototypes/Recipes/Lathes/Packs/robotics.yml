@@ -16,6 +16,13 @@
   - BorgModuleCable
   - BorgModuleFireExtinguisher
   - BorgModuleInflatable
+ # Corvax-Wega-Start
+  - BorgModuleCommonConstruction
+  - BorgModuleCommonMedical
+  - BorgModuleCommonPen
+  - BorgModuleCommonFight
+  - BorgModuleCommonPickaxe
+ # Corvax-Wega-end
 
 - type: latheRecipePack
   id: BorgLimbsStatic
@@ -48,8 +55,14 @@
   - BorgModuleAdvancedClowning
   - BorgModuleAdvancedChemical
   - BorgModuleAdvancedMining
-  - BorgModuleSurgery # Corvax-Wega-T2med
-  - BorgModuleKinetic # Corvax-Wega-Kinetic
+ # Corvax-Wega-Start
+  - BorgModuleSurgery
+  - BorgModuleKinetic
+  - BorgModuleGardening
+  - BorgModuleHarvesting
+  - BorgModuleMusique
+  - BorgModuleClowning
+ # Corvax-Wega-end
 
 - type: latheRecipePack
   id: MechParts
