@@ -1297,6 +1297,10 @@
     radius: 1.5
     energy: 1.6
     color: "#c73434"
+# Corvax-Wega-Start
+  - type: Voucher
+    typeVoucher: Hallowen
+# Corvax-Wega-End
 
 - type: entity
   parent: VendingMachine

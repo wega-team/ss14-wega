@@ -64,8 +64,6 @@ public sealed partial class VoucherSystem : EntitySystem
     private void OnKitSelected(EntityUid uid, VoucherCardComponent component, VoucherKitSelectedMessage args)
     {
         component.CurrentKit = args.KitId;
-        Dirty(uid, component);
-
         _popup.PopupClient(Loc.GetString("voucher-kit-selected", ("kitName", _prototype.Index(args.KitId).Name)), uid);
     }
 

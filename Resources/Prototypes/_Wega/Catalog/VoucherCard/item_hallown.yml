@@ -1,0 +1,93 @@
+# bonearrmor
+- type: entity
+  parent: ClothingHeadHelmetBase
+  id: ClothingHeadHelmetBoneMir
+  suffix: Fake
+  name: ironclad II helmet
+  description: An ironclad II helmet, a relic of the pod wars.
+  components:
+  - type: Sprite
+    sprite: Clothing/Head/Helmets/bone_helmet.rsi
+  - type: Clothing
+    sprite: Clothing/Head/Helmets/bone_helmet.rsi
+  - type: HideLayerClothing
+    layers:
+      Hair: HEAD
+      
+- type: entity
+  parent: [ ClothingOuterBaseLarge, AllowSuitStorageClothing ]
+  id: ClothingOuterArmorBoneMir
+  suffix: Fake
+  name: bone armor
+  description: Sits on you like a second skin.
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Armor/bone_armor.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Armor/bone_armor.rsi
+  - type: GroupExamine
+  - type: Construction
+    graph: BoneArmor
+    node: armor
+  - type: ProtectedFromStepTriggers
+    slots: WITHOUT_POCKET
+    
+## Ninja
+
+- type: entity
+  parent: ClothingHeadHelmetBase
+  id: ClothingHeadHelmetSpaceNinjaMir
+  suffix: Fake
+  name: space ninja helmet
+  description: What may appear to be a simple black garment is in fact a highly sophisticated nano-weave helmet. Standard issue ninja gear.
+  components:
+  - type: Sprite
+    sprite: Clothing/Head/Helmets/spaceninja.rsi
+  - type: Clothing
+    sprite: Clothing/Head/Helmets/spaceninja.rsi
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+  - type: IngestionBlocker
+  - type: IdentityBlocker
+  - type: HideLayerClothing
+    layers:
+      Hair: HEAD
+      Snout: HEAD
+      
+- type: entity
+  parent: ClothingOuterBaseLarge
+  id: ClothingOuterSuitSpaceNinjaMir
+  suffix: Fake
+  name: space ninja suit
+  description: This black technologically advanced, cybernetically-enhanced suit provides many abilities like invisibility or teleportation.
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Suits/spaceninja.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Suits/spaceninja.rsi
+  - type: HideLayerClothing
+    slots:
+    - Tail
+
+- type: entity
+  parent: ClothingShoesMilitaryBase
+  id: ClothingShoesBootsJackMir
+  name: jackboots
+  description: Nanotrasen-issue Security combat boots for combat scenarios or combat situations. All combat, all the time.
+  components:
+  - type: Sprite
+    sprite: Clothing/Shoes/Boots/jackboots.rsi
+  - type: Clothing
+    sprite: Clothing/Shoes/Boots/jackboots.rsi
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepHighHeels
+      params:
+        volume: -6
+        variation: 0.09
+  # Corvax-Wega-Dirtable-start
+  - type: Dirtable
+    dirtState: jackboots
+    equippedDirtState: equipped-shoes
+  # Corvax-Wega-Dirtable-end
