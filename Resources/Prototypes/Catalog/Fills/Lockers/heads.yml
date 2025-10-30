@@ -361,6 +361,10 @@
     - id: WeaponDisabler
     - id: WantedListCartridge
     - id: DrinkHosFlask
+    # Corvax-Wega-Start
+    - id: ServerWiretappingKit
+    - id: WiretappingTerminal
+    # Corvax-Wega-End
     # Corvax-Start
     - id: ClothingHeadHatCapHoS
       prob: 0.5

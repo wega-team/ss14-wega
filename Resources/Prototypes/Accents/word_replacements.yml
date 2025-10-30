@@ -26,6 +26,62 @@
 - type: accent
   id: italian
   wordReplacements:
+    # Wega accent start
+    wega-accent-italian-words-1: wega-accent-italian-words-replace-1
+    wega-accent-italian-words-2: wega-accent-italian-words-replace-2
+    wega-accent-italian-words-3: wega-accent-italian-words-replace-3
+    wega-accent-italian-words-4: wega-accent-italian-words-replace-4
+    wega-accent-italian-words-5: wega-accent-italian-words-replace-5
+    wega-accent-italian-words-6: wega-accent-italian-words-replace-6
+    wega-accent-italian-words-7: wega-accent-italian-words-replace-7
+    wega-accent-italian-words-8: wega-accent-italian-words-replace-8
+    wega-accent-italian-words-9: wega-accent-italian-words-replace-9
+    wega-accent-italian-words-10: wega-accent-italian-words-replace-10
+    wega-accent-italian-words-11: wega-accent-italian-words-replace-11
+    wega-accent-italian-words-12: wega-accent-italian-words-replace-12
+    wega-accent-italian-words-13: wega-accent-italian-words-replace-13
+    wega-accent-italian-words-14: wega-accent-italian-words-replace-14
+    wega-accent-italian-words-15: wega-accent-italian-words-replace-15
+    wega-accent-italian-words-16: wega-accent-italian-words-replace-16
+    wega-accent-italian-words-17: wega-accent-italian-words-replace-17
+    wega-accent-italian-words-18: wega-accent-italian-words-replace-18
+    wega-accent-italian-words-19: wega-accent-italian-words-replace-19
+    wega-accent-italian-words-20: wega-accent-italian-words-replace-20
+    wega-accent-italian-words-21: wega-accent-italian-words-replace-21
+    wega-accent-italian-words-22: wega-accent-italian-words-replace-22
+    wega-accent-italian-words-23: wega-accent-italian-words-replace-23
+    wega-accent-italian-words-24: wega-accent-italian-words-replace-24
+    wega-accent-italian-words-25: wega-accent-italian-words-replace-25
+    wega-accent-italian-words-26: wega-accent-italian-words-replace-26
+    wega-accent-italian-words-27: wega-accent-italian-words-replace-27
+    wega-accent-italian-words-28: wega-accent-italian-words-replace-28
+    wega-accent-italian-words-29: wega-accent-italian-words-replace-29
+    wega-accent-italian-words-30: wega-accent-italian-words-replace-30
+    wega-accent-italian-words-31: wega-accent-italian-words-replace-31
+    wega-accent-italian-words-32: wega-accent-italian-words-replace-32
+    wega-accent-italian-words-33: wega-accent-italian-words-replace-33
+    wega-accent-italian-words-34: wega-accent-italian-words-replace-34
+    wega-accent-italian-words-35: wega-accent-italian-words-replace-35
+    wega-accent-italian-words-36: wega-accent-italian-words-replace-36
+    wega-accent-italian-words-37: wega-accent-italian-words-replace-37
+    wega-accent-italian-words-38: wega-accent-italian-words-replace-38
+    wega-accent-italian-words-39: wega-accent-italian-words-replace-39
+    wega-accent-italian-words-40: wega-accent-italian-words-replace-40
+    wega-accent-italian-words-41: wega-accent-italian-words-replace-41
+    wega-accent-italian-words-42: wega-accent-italian-words-replace-42
+    wega-accent-italian-words-43: wega-accent-italian-words-replace-43
+    wega-accent-italian-words-44: wega-accent-italian-words-replace-44
+    wega-accent-italian-words-45: wega-accent-italian-words-replace-45
+    wega-accent-italian-words-46: wega-accent-italian-words-replace-46
+    wega-accent-italian-words-47: wega-accent-italian-words-replace-47
+    wega-accent-italian-words-48: wega-accent-italian-words-replace-48
+    wega-accent-italian-words-49: wega-accent-italian-words-replace-49
+    wega-accent-italian-words-50: wega-accent-italian-words-replace-50
+    wega-accent-italian-words-51: wega-accent-italian-words-replace-51
+    wega-accent-italian-words-52: wega-accent-italian-words-replace-52
+    wega-accent-italian-words-53: wega-accent-italian-words-replace-53
+    wega-accent-italian-words-54: wega-accent-italian-words-replace-54
+    # Wega accent end
     accent-italian-words-1: accent-italian-words-replace-1
     accent-italian-words-2: accent-italian-words-replace-2
     accent-italian-words-3: accent-italian-words-replace-3
@@ -276,6 +332,66 @@
 - type: accent
   id: pirate
   wordReplacements:
+    # Wega accent start
+    wega-accent-pirate-words-1: wega-accent-pirate-replacement-1
+    wega-accent-pirate-words-1-2: wega-accent-pirate-replacement-1
+    wega-accent-pirate-words-1-3: wega-accent-pirate-replacement-1
+    wega-accent-pirate-words-2: wega-accent-pirate-replacement-2
+    wega-accent-pirate-words-3: wega-accent-pirate-replacement-3
+    wega-accent-pirate-words-4: wega-accent-pirate-replacement-4
+    wega-accent-pirate-words-4-2: wega-accent-pirate-replacement-4
+    wega-accent-pirate-words-5: wega-accent-pirate-replacement-5
+    wega-accent-pirate-words-5-2: wega-accent-pirate-replacement-5
+    wega-accent-pirate-words-6: wega-accent-pirate-replacement-6
+    wega-accent-pirate-words-6-2: wega-accent-pirate-replacement-6
+    wega-accent-pirate-words-6-3: wega-accent-pirate-replacement-6
+    wega-accent-pirate-words-7: wega-accent-pirate-replacement-7
+    wega-accent-pirate-words-8: wega-accent-pirate-replacement-8
+    wega-accent-pirate-words-9: wega-accent-pirate-replacement-9
+    wega-accent-pirate-words-10: wega-accent-pirate-replacement-10
+    wega-accent-pirate-words-10-2: wega-accent-pirate-replacement-10
+    wega-accent-pirate-words-11: wega-accent-pirate-replacement-11
+    wega-accent-pirate-words-12: wega-accent-pirate-replacement-12
+    wega-accent-pirate-words-12-1: wega-accent-pirate-replacement-12
+    wega-accent-pirate-words-13: wega-accent-pirate-replacement-13
+    wega-accent-pirate-words-13-1: wega-accent-pirate-replacement-13
+    wega-accent-pirate-words-14: wega-accent-pirate-replacement-14
+    wega-accent-pirate-words-14-1: wega-accent-pirate-replacement-14
+    wega-accent-pirate-words-15: wega-accent-pirate-replacement-15
+    wega-accent-pirate-words-15-1: wega-accent-pirate-replacement-15
+    wega-accent-pirate-words-16: wega-accent-pirate-replacement-16
+    wega-accent-pirate-words-16-2: wega-accent-pirate-replacement-16
+    wega-accent-pirate-words-16-3: wega-accent-pirate-replacement-16
+    wega-accent-pirate-words-17: wega-accent-pirate-replacement-17
+    wega-accent-pirate-words-17-2: wega-accent-pirate-replacement-17
+    wega-accent-pirate-words-18: wega-accent-pirate-replacement-18
+    wega-accent-pirate-words-18-2: wega-accent-pirate-replacement-18
+    wega-accent-pirate-words-19: wega-accent-pirate-replacement-19
+    wega-accent-pirate-words-20: wega-accent-pirate-replacement-20
+    wega-accent-pirate-words-21: wega-accent-pirate-replacement-21
+    wega-accent-pirate-words-22: wega-accent-pirate-replacement-22
+    wega-accent-pirate-words-22-2: wega-accent-pirate-replacement-22
+    wega-accent-pirate-words-23: wega-accent-pirate-replacement-23
+    wega-accent-pirate-words-23-2: wega-accent-pirate-replacement-23
+    wega-accent-pirate-words-24: wega-accent-pirate-replacement-24
+    wega-accent-pirate-words-25: wega-accent-pirate-replacement-25
+    wega-accent-pirate-words-25-2: wega-accent-pirate-replacement-25
+    wega-accent-pirate-words-25-3: wega-accent-pirate-replacement-25
+    wega-accent-pirate-words-26: wega-accent-pirate-replacement-26
+    wega-accent-pirate-words-27: wega-accent-pirate-replacement-27
+    wega-accent-pirate-words-28: wega-accent-pirate-replacement-28
+    wega-accent-pirate-words-29: wega-accent-pirate-replacement-29
+    wega-accent-pirate-words-29-2: wega-accent-pirate-replacement-29
+    wega-accent-pirate-words-30: wega-accent-pirate-replacement-30
+    wega-accent-pirate-words-30-2: wega-accent-pirate-replacement-30
+    wega-accent-pirate-words-31: wega-accent-pirate-replacement-31
+    wega-accent-pirate-words-32: wega-accent-pirate-replacement-32
+    wega-accent-pirate-words-33: wega-accent-pirate-replacement-33
+    wega-accent-pirate-words-34: wega-accent-pirate-replacement-34
+    wega-accent-pirate-words-34-2: wega-accent-pirate-replacement-34
+    wega-accent-pirate-words-35: wega-accent-pirate-replacement-35
+    wega-accent-pirate-words-36: wega-accent-pirate-replacement-36
+    # Wega accent end
     accent-pirate-replaced-1: accent-pirate-replacement-1
     accent-pirate-replaced-2: accent-pirate-replacement-2
     accent-pirate-replaced-3: accent-pirate-replacement-3
@@ -492,6 +608,32 @@
 - type: accent
   id: southern
   wordReplacements:
+    # Wega accent start
+    wega-accent-southern-words-1: wega-accent-southern-words-replace-1
+    wega-accent-southern-words-2: wega-accent-southern-words-replace-2
+    wega-accent-southern-words-3: wega-accent-southern-words-replace-3
+    wega-accent-southern-words-3-2: wega-accent-southern-words-replace-3
+    wega-accent-southern-words-4: wega-accent-southern-words-replace-4
+    wega-accent-southern-words-5: wega-accent-southern-words-replace-5
+    wega-accent-southern-words-6: wega-accent-southern-words-replace-6
+    wega-accent-southern-words-7: wega-accent-southern-words-replace-7
+    wega-accent-southern-words-7-2: wega-accent-southern-words-replace-7
+    wega-accent-southern-words-8-2: wega-accent-southern-words-replace-8
+    wega-accent-southern-words-8: wega-accent-southern-words-replace-8
+    wega-accent-southern-words-9: wega-accent-southern-words-replace-9
+    wega-accent-southern-words-10: wega-accent-southern-words-replace-10
+    wega-accent-southern-words-11: wega-accent-southern-words-replace-11
+    wega-accent-southern-words-12: wega-accent-southern-words-replace-12
+    wega-accent-southern-words-13: wega-accent-southern-words-replace-13
+    wega-accent-southern-words-14: wega-accent-southern-words-replace-14
+    wega-accent-southern-words-15: wega-accent-southern-words-replace-15
+    wega-accent-southern-words-16: wega-accent-southern-words-replace-16
+    wega-accent-southern-words-17: wega-accent-southern-words-replace-17
+    wega-accent-southern-words-18: wega-accent-southern-words-replace-18
+    wega-accent-southern-words-19: wega-accent-southern-words-replace-19
+    wega-accent-southern-words-20: wega-accent-southern-words-replace-20
+    wega-accent-southern-words-21: wega-accent-southern-words-replace-21
+    # Wega accent end
     accent-southern-words-1: accent-southern-words-replace-1
     accent-southern-words-2: accent-southern-words-replace-2
     accent-southern-words-3: accent-southern-words-replace-3
@@ -749,6 +891,85 @@
 - type: accent
   id: german
   wordReplacements:
+    # Wega accent start
+    wega-accent-german-words-1: wega-accent-german-words-replace-1
+    wega-accent-german-words-1-2: wega-accent-german-words-replace-1
+    wega-accent-german-words-2: wega-accent-german-words-replace-2
+    wega-accent-german-words-3: wega-accent-german-words-replace-3
+    wega-accent-german-words-4: wega-accent-german-words-replace-4
+    wega-accent-german-words-5: wega-accent-german-words-replace-5
+    wega-accent-german-words-6: wega-accent-german-words-replace-6
+    wega-accent-german-words-7: wega-accent-german-words-replace-7
+    wega-accent-german-words-8: wega-accent-german-words-replace-8
+    wega-accent-german-words-9: wega-accent-german-words-replace-9
+    wega-accent-german-words-9-2: wega-accent-german-words-replace-9
+    wega-accent-german-words-10: wega-accent-german-words-replace-10
+    wega-accent-german-words-10-2: wega-accent-german-words-replace-10
+    wega-accent-german-words-11: wega-accent-german-words-replace-11
+    wega-accent-german-words-12: wega-accent-german-words-replace-12
+    wega-accent-german-words-13: wega-accent-german-words-replace-13
+    wega-accent-german-words-14: wega-accent-german-words-replace-14
+    wega-accent-german-words-15: wega-accent-german-words-replace-15
+    wega-accent-german-words-16: wega-accent-german-words-replace-16
+    wega-accent-german-words-17: wega-accent-german-words-replace-17
+    wega-accent-german-words-18: wega-accent-german-words-replace-18
+    wega-accent-german-words-19: wega-accent-german-words-replace-19
+    wega-accent-german-words-20: wega-accent-german-words-replace-20
+    wega-accent-german-words-21: wega-accent-german-words-replace-21
+    wega-accent-german-words-22: wega-accent-german-words-replace-22
+    wega-accent-german-words-23: wega-accent-german-words-replace-23
+    wega-accent-german-words-24: wega-accent-german-words-replace-24
+    wega-accent-german-words-25: wega-accent-german-words-replace-25
+    wega-accent-german-words-26: wega-accent-german-words-replace-26
+    wega-accent-german-words-27: wega-accent-german-words-replace-27
+    wega-accent-german-words-28: wega-accent-german-words-replace-28
+    wega-accent-german-words-29: wega-accent-german-words-replace-29
+    wega-accent-german-words-30: wega-accent-german-words-replace-30
+    wega-accent-german-words-31: wega-accent-german-words-replace-31
+    wega-accent-german-words-32: wega-accent-german-words-replace-32
+    wega-accent-german-words-32-2: wega-accent-german-words-replace-32
+    wega-accent-german-words-33: wega-accent-german-words-replace-33
+    wega-accent-german-words-34: wega-accent-german-words-replace-34
+    wega-accent-german-words-35: wega-accent-german-words-replace-35
+    wega-accent-german-words-36: wega-accent-german-words-replace-36
+    wega-accent-german-words-37: wega-accent-german-words-replace-37
+    wega-accent-german-words-38: wega-accent-german-words-replace-38
+    wega-accent-german-words-39: wega-accent-german-words-replace-39
+    wega-accent-german-words-40: wega-accent-german-words-replace-40
+    wega-accent-german-words-41: wega-accent-german-words-replace-41
+    wega-accent-german-words-42: wega-accent-german-words-replace-42
+    wega-accent-german-words-43: wega-accent-german-words-replace-43
+    wega-accent-german-words-44: wega-accent-german-words-replace-44
+    wega-accent-german-words-45: wega-accent-german-words-replace-45
+    wega-accent-german-words-46: wega-accent-german-words-replace-46
+    wega-accent-german-words-47: wega-accent-german-words-replace-47
+    wega-accent-german-words-48: wega-accent-german-words-replace-48
+    wega-accent-german-words-49: wega-accent-german-words-replace-49
+    wega-accent-german-words-50: wega-accent-german-words-replace-50
+    wega-accent-german-words-51: wega-accent-german-words-replace-51
+    wega-accent-german-words-52: wega-accent-german-words-replace-52
+    wega-accent-german-words-53: wega-accent-german-words-replace-53
+    wega-accent-german-words-54: wega-accent-german-words-replace-54
+    wega-accent-german-words-55: wega-accent-german-words-replace-55
+    wega-accent-german-words-56: wega-accent-german-words-replace-56
+    wega-accent-german-words-57: wega-accent-german-words-replace-57
+    wega-accent-german-words-57-2: wega-accent-german-words-replace-57
+    wega-accent-german-words-58: wega-accent-german-words-replace-58
+    wega-accent-german-words-59: wega-accent-german-words-replace-59
+    wega-accent-german-words-59-2: wega-accent-german-words-replace-59
+    wega-accent-german-words-60: wega-accent-german-words-replace-60
+    wega-accent-german-words-61: wega-accent-german-words-replace-61
+    wega-accent-german-words-61-2: wega-accent-german-words-replace-61
+    wega-accent-german-words-61-3: wega-accent-german-words-replace-61
+    wega-accent-german-words-61-4: wega-accent-german-words-replace-61
+    wega-accent-german-words-62: wega-accent-german-words-replace-62
+    wega-accent-german-words-63: wega-accent-german-words-replace-63
+    wega-accent-german-words-64: wega-accent-german-words-replace-64
+    wega-accent-german-words-65: wega-accent-german-words-replace-65
+    wega-accent-german-words-66: wega-accent-german-words-replace-66
+    wega-accent-german-words-67: wega-accent-german-words-replace-67
+    wega-accent-german-words-68: wega-accent-german-words-replace-68
+    # Wega accent end
     accent-german-words-1: accent-german-words-replace-1
     accent-german-words-1-2: accent-german-words-replace-1
     accent-german-words-2: accent-german-words-replace-2
@@ -828,6 +1049,41 @@
 - type: accent
   id: russian
   wordReplacements:
+    # Wega accent start
+    wega-accent-russian-words-1: wega-accent-russian-words-replace-1
+    wega-accent-russian-words-2: wega-accent-russian-words-replace-2
+    wega-accent-russian-words-3: wega-accent-russian-words-replace-3
+    wega-accent-russian-words-4: wega-accent-russian-words-replace-4
+    wega-accent-russian-words-5: wega-accent-russian-words-replace-5
+    wega-accent-russian-words-6: wega-accent-russian-words-replace-6
+    wega-accent-russian-words-7: wega-accent-russian-words-replace-7
+    wega-accent-russian-words-8: wega-accent-russian-words-replace-8
+    wega-accent-russian-words-9: wega-accent-russian-words-replace-9
+    wega-accent-russian-words-10: wega-accent-russian-words-replace-10
+    wega-accent-russian-words-11: wega-accent-russian-words-replace-11
+    wega-accent-russian-words-11-2: wega-accent-russian-words-replace-11
+    wega-accent-russian-words-12: wega-accent-russian-words-replace-12
+    wega-accent-russian-words-13: wega-accent-russian-words-replace-13
+    wega-accent-russian-words-14: wega-accent-russian-words-replace-14
+    wega-accent-russian-words-15: wega-accent-russian-words-replace-15
+    wega-accent-russian-words-16: wega-accent-russian-words-replace-16
+    wega-accent-russian-words-16-2: wega-accent-russian-words-replace-16
+    wega-accent-russian-words-17: wega-accent-russian-words-replace-17
+    wega-accent-russian-words-18: wega-accent-russian-words-replace-18
+    wega-accent-russian-words-19: wega-accent-russian-words-replace-19
+    wega-accent-russian-words-20: wega-accent-russian-words-replace-20
+    wega-accent-russian-words-21: wega-accent-russian-words-replace-21
+    wega-accent-russian-words-22: wega-accent-russian-words-replace-22
+    wega-accent-russian-words-23: wega-accent-russian-words-replace-23
+    wega-accent-russian-words-24: wega-accent-russian-words-replace-24
+    wega-accent-russian-words-25: wega-accent-russian-words-replace-25
+    wega-accent-russian-words-26: wega-accent-russian-words-replace-26
+    wega-accent-russian-words-27: wega-accent-russian-words-replace-27
+    wega-accent-russian-words-28: wega-accent-russian-words-replace-28
+    wega-accent-russian-words-28-2: wega-accent-russian-words-replace-28
+    wega-accent-russian-words-29: wega-accent-russian-words-replace-29
+    wega-accent-russian-words-30: wega-accent-russian-words-replace-30
+    # Wega accent end
     accent-russian-words-1: accent-russian-words-replace-1
     accent-russian-words-2: accent-russian-words-replace-2
     accent-russian-words-3: accent-russian-words-replace-3
