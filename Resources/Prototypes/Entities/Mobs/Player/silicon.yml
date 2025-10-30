@@ -773,6 +773,7 @@
       - PositronicBrain
       borg_module:
       - BorgModuleTool #No fire extinguisher, traversal is better
+      - BorgModuleFireExtinguisher # Corvax-Wega
       - BorgModuleMining
       - BorgModuleTraversal
       - BorgModuleAppraisal
