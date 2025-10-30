@@ -207,6 +207,7 @@
 
   defaultModules:
   - BorgModuleTool
+# Corvax-Wega-Start
   # - BorgModuleMusique
   - BorgModuleCook
   - BorgModuleService
@@ -214,6 +215,7 @@
   # - BorgModuleClowning
   # - BorgModuleGardening
   # - BorgModuleHarvesting
+# Corvax-Wega-End
   radioChannels:
   - Science
   - Service
