@@ -28,10 +28,3 @@ voucher-hallowen-chick-name = Костюм цыпленка
 voucher-hallowen-chick-desc = Чикен джокей. В набор входит костюм цыпленка.
 voucher-hallowen-vamp-name = Вампир
 voucher-hallowen-vamp-desc = Накорми меня чесноком, да воткните в меня кол.  В набор входит костюм и плащ истинного вампира.
-
-
-
-
-
-
-
