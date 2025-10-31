@@ -1,0 +1,489 @@
+- type: species
+  id: Returned
+  name: Возвращённый
+  roundStart: true
+  prototype: MobReturned
+  sprites: MobReturnedSprites
+  defaultSkinTone: "#34a223"
+  markingLimits: MobReturnedMarkingLimits
+  dollPrototype: MobReturned
+  skinColoration: HumanToned
+
+- type: speciesBaseSprites
+  id: MobReturnedSprites
+  sprites:
+    Head: MobReturnedHead
+    Hair: MobHumanoidAnyMarking
+    FacialHair: MobHumanoidAnyMarking
+    Chest: MobReturnedTorso
+    HeadTop: MobHumanoidAnyMarking
+    Tail: MobHumanoidAnyMarking
+    Eyes: MobHumanoidEyes
+    LArm: MobReturnedLArm
+    RArm: MobReturnedRArm
+    LHand: MobReturnedLHand
+    RHand: MobReturnedRHand
+    LLeg: MobReturnedLLeg
+    RLeg: MobReturnedRLeg
+    LFoot: MobReturnedLFoot
+    RFoot: MobReturnedRFoot
+
+- type: markingPoints
+  id: MobReturnedMarkingLimits
+  points:
+    Hair:
+      points: 1
+      required: false
+    FacialHair:
+      points: 1
+      required: false
+    Tail: 
+      points: 1 
+      required: false
+    HeadTop: 
+      points: 1 
+      required: false
+    Chest:
+      points: 1
+      required: false
+    Legs:
+      points: 2
+      required: false
+    Arms:
+      points: 2
+      required: false
+
+- type: entity
+  save: false
+  name: Urisst' Mzhand
+  parent:
+  - MobBloodstream
+  - MobFlammable
+  - BaseMobSpecies
+  id: BaseMobReturned
+  abstract: true
+  components:
+  - type: HumanoidAppearance
+    species: Returned
+  - type: Icon
+    sprite: _Wega/Mobs/Species/Zombie/parts.rsi
+    state: full
+  - type: ContentEye
+    targetZoom: "0.9, 0.9"
+    maxZoom: "0.9, 0.9"
+  - type: Body
+    prototype: Returned
+    requiredLegs: 2
+  - type: Butcherable
+    butcheringType: Spike
+    spawned:
+    - id: FoodMeatRotten
+      amount: 5
+  - type: Temperature
+    heatDamageThreshold: 360
+    coldDamageThreshold: 243.15
+    currentTemperature: 310.15
+    specificHeat: 46
+    coldDamage:
+      types:
+        Cold : 0
+    heatDamage:
+      types:
+        Heat : 0.1
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: Zombie
+  - type: Carriable
+  - type: Pacified
+  - type: StutteringAccent
+  - type: Bloodstream
+    bloodReagent: CopperBlood
+  - type: ZombieImmune
+  - type: Internals
+  - type: PassiveDamage 
+    allowedStates:
+    - Alive
+    damageCap: 20
+    damage:
+      types:
+        Heat: -0.07
+        Blunt: -0.4
+        Slash: -0.2
+        Piercing: -0.2
+      groups:
+        Brute: -0.07
+  - type: StatusEffects
+    allowed:
+    - Stun
+    - KnockedDown
+    - SlowedDown
+    - Stutter
+    - SeeingRainbows
+    - Electrocution
+    - ForcedSleep
+    - TemporaryBlindness
+    - Drunk
+    - SlurredSpeech
+    - RatvarianLanguage
+    - PressureImmunity
+    - Muted
+    - Pacified
+    - StaminaModifier
+  - type: Blindable
+  - type: ThermalRegulator
+    metabolismHeat: 800
+    radiatedHeat: 100
+    implicitHeatRegulation: 500
+    sweatHeatRegulation: 2000
+    shiveringHeatRegulation: 2000
+    normalBodyTemperature: 310.15
+    thermalRegulationTemperatureThreshold: 25
+  - type: FireVisuals
+    alternateState: Standing
+  - type: Vocal
+    sounds:
+      Male: ReturnedM
+      Female: ReturnedF
+      Unsexed: ReturnedM
+
+- type: entity
+  parent: BaseSpeciesDummy
+  id: MobReturnedDummy
+  noSpawn: true
+  description: A dummy reptilian meant to be used in character setup.
+  components:
+  - type: HumanoidAppearance
+    species: Returned
+
+- type: humanoidBaseSprite
+  id: MobReturnedHead
+  baseSprite:
+    sprite: _Wega/Mobs/Species/Zombie/parts.rsi
+    state: head_m
+
+- type: humanoidBaseSprite
+  id: MobReturnedHeadMale
+  baseSprite:
+    sprite: _Wega/Mobs/Species/Zombie/parts.rsi
+    state: head_m
+
+- type: humanoidBaseSprite
+  id: MobReturnedHeadFemale
+  baseSprite:
+    sprite: _Wega/Mobs/Species/Zombie/parts.rsi
+    state: head_f
+
+- type: humanoidBaseSprite
+  id: MobReturnedTorso
+  baseSprite:
+    sprite: _Wega/Mobs/Species/Zombie/parts.rsi
+    state: torso_m
+
+- type: humanoidBaseSprite
+  id: MobReturnedTorsoMale
+  baseSprite:
+    sprite: _Wega/Mobs/Species/Zombie/parts.rsi
+    state: torso_m
+
+- type: humanoidBaseSprite
+  id: MobReturnedTorsoFemale
+  baseSprite:
+    sprite: _Wega/Mobs/Species/Zombie/parts.rsi
+    state: torso_f
+
+- type: humanoidBaseSprite
+  id: MobReturnedLLeg
+  baseSprite:
+    sprite: _Wega/Mobs/Species/Zombie/parts.rsi
+    state: l_leg
+
+- type: humanoidBaseSprite
+  id: MobReturnedLHand
+  baseSprite:
+    sprite: _Wega/Mobs/Species/Zombie/parts.rsi
+    state: l_hand
+
+- type: humanoidBaseSprite
+  id: MobReturnedLArm
+  baseSprite:
+    sprite: _Wega/Mobs/Species/Zombie/parts.rsi
+    state: l_arm
+
+- type: humanoidBaseSprite
+  id: MobReturnedLFoot
+  baseSprite:
+    sprite: _Wega/Mobs/Species/Zombie/parts.rsi
+    state: l_foot
+
+- type: humanoidBaseSprite
+  id: MobReturnedRLeg
+  baseSprite:
+    sprite: _Wega/Mobs/Species/Zombie/parts.rsi
+    state: r_leg
+
+- type: humanoidBaseSprite
+  id: MobReturnedRHand
+  baseSprite:
+    sprite: _Wega/Mobs/Species/Zombie/parts.rsi
+    state: r_hand
+
+- type: humanoidBaseSprite
+  id: MobReturnedRArm
+  baseSprite:
+    sprite: _Wega/Mobs/Species/Zombie/parts.rsi
+    state: r_arm
+
+- type: humanoidBaseSprite
+  id: MobReturnedRFoot
+  baseSprite:
+    sprite: _Wega/Mobs/Species/Zombie/parts.rsi
+    state: r_foot
+
+  # - Parts
+
+- type: entity
+  id: PartReturned
+  parent: [BaseItem, BasePart]
+  name: "returned body part"
+  abstract: true
+  components:
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: Fat
+        Quantity: 3
+      - ReagentId: CopperBlood
+        Quantity: 10
+
+- type: entity
+  id: TorsoReturned
+  name: "returned torso"
+  parent: [PartReturned, BaseTorso]
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Zombie/parts.rsi
+    state: "torso_m"
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: Fat
+        Quantity: 10
+      - ReagentId: CopperBlood
+        Quantity: 20
+
+- type: entity
+  id: HeadReturned
+  name: "returned head"
+  parent: [PartReturned, BaseHead]
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Zombie/parts.rsi
+    state: "head_m"
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: Fat
+        Quantity: 5
+      - ReagentId: CopperBlood
+        Quantity: 10
+
+- type: entity
+  id: LeftArmReturned
+  name: "left returned arm"
+  parent: [PartReturned, BaseLeftArm]
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Zombie/parts.rsi
+    state: "l_arm"
+
+- type: entity
+  id: RightArmReturned
+  name: "right returned arm"
+  parent: [PartReturned, BaseRightArm]
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Zombie/parts.rsi
+    state: "r_arm"
+
+- type: entity
+  id: LeftHandReturned
+  name: "left returned hand"
+  parent: [PartReturned, BaseLeftHand]
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Zombie/parts.rsi
+    state: "l_hand"
+
+- type: entity
+  id: RightHandReturned
+  name: "right returned hand"
+  parent: [PartReturned, BaseRightHand]
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Zombie/parts.rsi
+    state: "r_hand"
+
+- type: entity
+  id: LeftLegReturned
+  name: "left returned leg"
+  parent: [PartReturned, BaseLeftLeg]
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Zombie/parts.rsi
+    state: "l_leg"
+  - type: MovementBodyPart
+    walkSpeed : 2.5
+    sprintSpeed : 4.5 
+
+- type: entity
+  id: RightLegReturned
+  name: "right returned leg"
+  parent: [PartReturned, BaseRightLeg]
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Zombie/parts.rsi
+    state: "r_leg"
+  - type: MovementBodyPart
+    walkSpeed : 2.5
+    sprintSpeed : 4.5
+
+- type: entity
+  id: LeftFootReturned
+  name: "left returned foot"
+  parent: [PartReturned, BaseLeftFoot]
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Zombie/parts.rsi
+    state: "l_foot"
+
+- type: entity
+  id: RightFootReturned
+  name: "right returned foot"
+  parent: [PartReturned, BaseRightFoot]
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Zombie/parts.rsi
+    state: "r_foot"
+
+  # - Body
+
+- type: body
+  name: "returned"
+  id: Returned
+  root: torso
+  slots:
+    head:
+      part: HeadReturned
+      connections:
+      - torso
+      organs:
+        brain: OrganHumanBrain
+        eyes: OrganHumanEyes
+    torso:
+      part: TorsoReturned
+      organs:
+        heart: OrganAnimalHeart
+        lungs: OrganHumanLungs
+        liver: OrganAnimalLiver
+        kidneys: OrganHumanKidneys
+      connections:
+      - right arm
+      - left leg
+      - right leg
+    right arm:
+      part: RightArmReturned
+      connections:
+      - right hand
+    right hand:
+      part: RightHandReturned
+    right leg:
+      part: RightLegReturned
+      connections:
+      - right foot
+    left leg:
+      part: LeftLegReturned
+      connections:
+      - left foot
+    right foot:
+      part: RightFootReturned
+    left foot:
+      part: LeftFootReturned
+
+  # - Sound/Vocal
+
+- type: emoteSounds
+  id: ReturnedM
+  params:
+    variation: 0.125
+  sounds:
+    Scream:
+      collection: ZombieScreams
+    Laugh:
+      collection: MaleLaugh
+    Sneeze:
+      collection: MaleSneezes
+    Cough:
+      collection: MaleCoughs
+    CatMeow:
+      collection: CatMeows
+    CatHisses:
+      collection: CatHisses
+    MonkeyScreeches:
+      collection: MonkeyScreeches
+    RobotBeep:
+      collection: RobotBeeps
+    Yawn:
+      collection: MaleYawn
+    Snore:
+      collection: Snores
+    Honk:
+      collection: BikeHorn
+    Sigh:
+      collection: MaleSigh
+    Crying:
+      collection: MaleCry
+    Whistle:
+      collection: Whistles
+
+- type: emoteSounds
+  id: ReturnedF
+  params:
+    variation: 0.125
+  sounds:
+    Scream:
+      collection: ZombieScreams
+    Laugh:
+      collection: FemaleLaugh
+    Sneeze:
+      collection: FemaleSneezes
+    Cough:
+      collection: FemaleCoughs
+    CatMeow:
+      collection: CatMeows
+    CatHisses:
+      collection: CatHisses
+    MonkeyScreeches:
+      collection: MonkeyScreeches
+    RobotBeep:
+      collection: RobotBeeps
+    Yawn:
+      collection: FemaleYawn
+    Snore:
+      collection: Snores
+    Honk:
+      collection: CluwneHorn
+    Sigh:
+      collection: FemaleSigh
+    Crying:
+      collection: FemaleCry
+    Whistle:
+      collection: Whistles
+
+  # - Player
+
+- type: entity
+  save: false
+  name: Урист МакВозвращённый
+  parent: BaseMobReturned
+  id: MobReturned
+  suffix: Zek
