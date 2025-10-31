@@ -1,0 +1,14 @@
+ent-ClothingOuterArmorBoneMir = костяной доспех
+    .desc = Сидит на вас как второй .
+    .suffix = фейк
+ent-ClothingHeadHelmetBoneMir = костяной шлем
+    .desc = Круто выглядящий шлем, сделанный из картона павших деревьев.
+    .suffix = фейк
+ent-ClothingOuterSuitSpaceNinjaMir = костюм космического ниндзя
+    .desc = Этот чёрный, технологически продвинутый, текстильный костюм, теперь наконец можно устроить косплей фест.
+    .suffix = фейк
+ent-ClothingHeadHelmetSpaceNinjaMir = шлем космического ниндзя
+    .desc = То, что может показаться простой чёрной одеждой, на самом деле обычная одежда, маска у вас тканевая.
+    .suffix = фейк
+ent-ClothingShoesBootsJackMir = ботинки чумного доктора
+    .desc = Тяжелый топот нагонит жути в эти коридоры.

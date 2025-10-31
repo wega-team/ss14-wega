@@ -103,3 +103,10 @@
     back:
     - PlushieSharkBlue
   groupBy: "wegatoyload"
+
+# Vouchercard
+- type: loadout
+  id: HallowenVoucherCard
+  storage:
+    back:
+    - HallowenVoucherCard

@@ -38,3 +38,18 @@
   components:
     - type: Sprite
       sprite: _Wega/Clothing/Neck/Cloaks/blueshield.rsi
+      
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckCloakHelloweenVampir
+  name: vampires cloak
+  description: Worn by high ranking vampires of the transylvanian society of vampires.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Neck/Cloaks/vampires_cloak.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Neck/Cloaks/vampires_cloak.rsi
+    clothingVisuals:
+      neck:
+      - state: equipped-NECK
+      - state: bat

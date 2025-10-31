@@ -1,0 +1,142 @@
+- type: voucherKit
+  id: HallowenPumpkinMan
+  name: voucher-hallowen-pumpkinman-name
+  description: voucher-hallowen-pumpkinman-desc
+  icon: { sprite: Clothing/Head/Misc/pumpkin.rsi, state: "icon" }
+  items:
+  - ClothingHeadHatPumpkin
+  - ClothingUniformJumpsuitLawyerBlack
+  - ClothingHandsGlovesLatex
+
+- type: voucherKit
+  id: HallowenSkeleton
+  name: voucher-hallowen-skeleton-name
+  description: voucher-hallowen-skeleton-desc
+  icon: { sprite: Clothing/Head/Helmets/bone_helmet.rsi, state: "icon" }
+  items:
+  - ClothingHeadHelmetBoneMir
+  - ClothingOuterArmorBoneMir
+  
+- type: voucherKit
+  id: HallowenNinja
+  name: voucher-hallowen-ninja-name
+  description: voucher-hallowen-ninja-desc
+  icon: { sprite: Clothing/Head/Helmets/spaceninja.rsi, state: "icon" }
+  items:
+  - ClothingHeadHelmetSpaceNinjaMir
+  - ClothingOuterSuitSpaceNinjaMir
+
+- type: voucherKit
+  id: HallowenGhost
+  name: voucher-hallowen-ghost-name
+  description: voucher-hallowen-ghost-desc
+  icon: { sprite: Clothing/OuterClothing/Misc/ghostsheet.rsi, state: "icon" }
+  items:
+  - ClothingOuterGhostSheet
+
+- type: voucherKit
+  id: HallowenDemon
+  name: voucher-hallowen-demon-name
+  description: voucher-hallowen-demon-desc
+  icon: { sprite: _Wega/Clothing/Neck/Misc/demonicwings.rsi, state: "icon" }
+  items:
+  - ClothingHeadHatDemonicWatermelon
+  - ClothingUniformJumpsuitLawyerRed
+  - ClothingNeckWingsTail
+
+- type: voucherKit
+  id: HallowenSkub
+  name: voucher-hallowen-skub-name
+  description: voucher-hallowen-skub-desc
+  icon: { sprite: Objects/Misc/skub.rsi, state: "icon" }
+  items:
+  - ClothingHeadHatSkub
+  - ClothingOuterSkub
+  - Skub
+  
+- type: voucherKit
+  id: HallowenBorg
+  name: voucher-hallowen-borg-name
+  description: voucher-hallowen-borg-desc
+  icon: { sprite: Clothing/Head/Hats/cardborg_h.rsi, state: "icon" }
+  items:
+  - ClothingHeadHatCardborg
+  - ClothingOuterCardborg
+
+- type: voucherKit
+  id: HallowenWhitch
+  name: voucher-hallowen-whitch-name
+  description: voucher-hallowen-whitch-desc
+  icon: { sprite: Clothing/Head/Hats/witchhat.rsi, state: "icon" }
+  items:
+  - ClothingHeadHatWitch1
+  - ClothingHeadHatWitch
+  - ClothingOuterSuitWitchRobes
+
+- type: voucherKit
+  id: HallowenCarp
+  name: voucher-hallowen-carp-name
+  description: voucher-hallowen-carp-desc
+  icon: { sprite: Objects/Fun/Plushies/carp.rsi, state: "carpplush" }
+  items:
+  - ClothingOuterSuitCarp
+  - PlushieCarp
+  - PlushieCarp
+
+- type: voucherKit
+  id: HallowenWizV
+  name: voucher-hallowen-wizv-name
+  description: voucher-hallowen-wizv-desc
+  icon: { sprite: Clothing/Head/Hats/violetwizard.rsi, state: "icon" }
+  items:
+  - ClothingOuterWizardViolet
+  - ClothingHeadHatVioletwizard
+
+- type: voucherKit
+  id: HallowenWizB
+  name: voucher-hallowen-wizb-name
+  description: voucher-hallowen-wizb-desc
+  icon: { sprite: Clothing/Head/Hats/wizardhat.rsi, state: "icon" }
+  items:
+  - ClothingOuterWizard
+  - ClothingHeadHatWizard
+
+- type: voucherKit
+  id: HallowenWizR
+  name: voucher-hallowen-wizr-name
+  description: voucher-hallowen-wizr-desc
+  icon: { sprite: Clothing/Head/Hats/redwizard.rsi, state: "icon" }
+  items:
+  - ClothingOuterWizardRed
+  - ClothingHeadHatRedwizard
+
+- type: voucherKit
+  id: HallowenDoc
+  name: voucher-hallowen-doc-name
+  description: voucher-hallowen-doc-desc
+  icon: { sprite: Clothing/Mask/plaguedoctormask.rsi, state: "icon" }
+  items:
+  - ClothingHeadHatPlaguedoctor
+  - ClothingMaskPlague
+  - ClothingOuterPlagueSuit
+  - ClothingShoesBootsJackMir
+
+- type: voucherKit
+  id: HallowenChick
+  name: voucher-hallowen-chick-name
+  description: voucher-hallowen-chick-desc
+  icon: { sprite: Clothing/Head/Misc/chickenhead.rsi, state: "icon" }
+  items:
+  - ClothingOuterSuitChicken
+  - ClothingHeadHatChickenhead
+
+- type: voucherKit
+  id: HallowenVamp
+  name: voucher-hallowen-vamp-name
+  description: voucher-hallowen-vamp-desc
+  icon: { sprite: _Wega/Clothing/Neck/Cloaks/vampires_cloak.rsi, state: "icon" }
+  items:
+  - ClothingNeckCloakHelloweenVampir
+  - ClothingUniformJumpsuitLawyerBlack
+
+
