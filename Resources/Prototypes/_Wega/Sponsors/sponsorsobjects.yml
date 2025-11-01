@@ -15,3 +15,68 @@
   categories: [ HideSpawnMenu ]
   name: mars
   description: "He's so small, cute, fluffy and AIRY."
+
+# clothing-head-start
+
+- type: entity
+  parent: ClothingHeadHatWizardBase
+  id: ClothingHeadHatMagic
+  name: magic hat
+  description: A strange-looking blue hat that most certainly belongs to a powerful magic-user.
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Head/Hats/magic_hat.rsi
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Head/Hats/magic_hat.rsi
+    clothingVisuals:
+      head:
+      - state: equipped-HELMET
+      - state: glitter
+        shader: unshaded
+  - type: Tag
+    tags:
+    - PetWearable
+    - CorgiWearable
+    - ClothMade
+    - Recyclable
+    - HamsterWearable
+    - WhitelistChameleon
+
+# clothing-head-end
+
+# clothing-neck-start 
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckCloakMagic
+  name: magic cloak
+  description: Worn by high ranking vampires of the transylvanian society of vampires.
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Neck/Cloak/magic_cloak.rsi
+
+# clothing-neck-end
+
+# clothing-uniforms-start 
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtBlackrevealingdress
+  name: black revealing dress
+  description: A nice and tidy uniform. Shame about the bar though.
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/black_revealing_dress.rsi
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/black_revealing_dress.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtRedrevealingdress
+  name: red revealing dress
+  description: A nice and tidy uniform. Shame about the bar though.
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/red_revealing_dress.rsi
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/red_revealing_dress.rsi
