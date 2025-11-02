@@ -93,7 +93,7 @@
         scaling: true
         damage:
           types:
-            Heat: 2 # Corvax-Wega-Edit
+            Heat: 0.5 # Corvax-Wega-Edit
       - !type:PopupMessage
         type: Local
         visualType: Large
