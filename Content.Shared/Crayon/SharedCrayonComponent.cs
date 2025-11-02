@@ -1,3 +1,5 @@
+// Corvax-Wega-Full-Edit
+using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
 
@@ -7,19 +9,46 @@ namespace Content.Shared.Crayon
     /// <summary>
     /// Component holding the state of a crayon-like component
     /// </summary>
-    [NetworkedComponent, ComponentProtoName("Crayon"), Access(typeof(SharedCrayonSystem))]
-    public abstract partial class SharedCrayonComponent : Component
+    [RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true)]
+    public sealed partial class CrayonComponent : Component
     {
-        /// <summary>
-        /// The ID of currently selected decal prototype that will be placed when the crayon is used
-        /// </summary>
-        public string SelectedState { get; set; } = string.Empty;
+        [ViewVariables(VVAccess.ReadWrite)]
+        [AutoNetworkedField]
+        public string SelectedState = string.Empty;
 
-        /// <summary>
-        /// Color with which the crayon will draw
-        /// </summary>
         [DataField("color")]
+        [AutoNetworkedField]
         public Color Color;
+
+        [ViewVariables(VVAccess.ReadWrite)]
+        [AutoNetworkedField]
+        public Angle Angle;
+
+        [DataField("useSound")]
+        [AutoNetworkedField]
+        public SoundSpecifier? UseSound;
+
+        [ViewVariables(VVAccess.ReadWrite)]
+        [DataField("selectableColor")]
+        [AutoNetworkedField]
+        public bool SelectableColor;
+
+        [ViewVariables(VVAccess.ReadWrite)]
+        [AutoNetworkedField]
+        public int Charges;
+
+        [ViewVariables(VVAccess.ReadWrite)]
+        [DataField("capacity")]
+        [AutoNetworkedField]
+        public int Capacity = 30;
+
+        [ViewVariables(VVAccess.ReadWrite)]
+        [DataField("deleteEmpty")]
+        [AutoNetworkedField]
+        public bool DeleteEmpty = true;
+
+        [ViewVariables(VVAccess.ReadWrite)]
+        public bool UIUpdateNeeded;
 
         [Serializable, NetSerializable]
         public enum CrayonUiKey : byte
@@ -108,6 +137,17 @@ namespace Content.Shared.Crayon
             Selected = selected;
             SelectableColor = selectableColor;
             Color = color;
+        }
+    }
+
+    [Serializable, NetSerializable]
+    public sealed class CrayonRotateEvent : EntityEventArgs
+    {
+        public readonly Angle Angle;
+
+        public CrayonRotateEvent(Angle angle)
+        {
+            Angle = angle;
         }
     }
 }

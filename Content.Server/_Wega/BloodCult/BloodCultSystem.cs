@@ -29,6 +29,7 @@ using Content.Shared.Mobs.Components;
 using Content.Shared.Popups;
 using Content.Shared.Standing;
 using Content.Shared.Weapons.Melee;
+using Content.Shared.Weapons.Ranged.Events;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
@@ -66,6 +67,7 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
         SubscribeLocalEvent<BloodCultRuleComponent, ComponentShutdown>(OnRuleShutdown);
         SubscribeLocalEvent<BloodCultistComponent, BloodCultObjectiveActionEvent>(OnCheckObjective);
         SubscribeLocalEvent<BloodCultistComponent, ComponentStartup>(OnComponentStartup);
+        SubscribeLocalEvent<BloodCultistComponent, ShotAttemptedEvent>(OnShotAttempted); // Corvax-Wega-Testing
         SubscribeLocalEvent<BloodCultConstructComponent, ComponentStartup>(OnComponentStartup);
         SubscribeLocalEvent<BloodCultObjectComponent, ComponentShutdown>(OnComponentShutdown);
         SubscribeLocalEvent<BloodCultObjectComponent, CryostorageEnterEvent>(OnCryostorageEnter);
@@ -140,6 +142,15 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
             }
         }
     }
+
+    // Corvax-Wega-Testing-start
+    // Да я пометил тегами чтобы банально не забыть про это и чо?
+    private void OnShotAttempted(Entity<BloodCultistComponent> ent, ref ShotAttemptedEvent args)
+    {
+        _popup.PopupEntity(Loc.GetString("gun-disabled"), ent, ent);
+        args.Cancel();
+    }
+    // Corvax-Wega-Testing-end
 
     #region Stages Update
     private void OnRuleShutdown(EntityUid uid, BloodCultRuleComponent component, ComponentShutdown args)

@@ -1,18 +1,17 @@
 using System.Linq;
 using System.Text;
-using Content.Server.Body.Components;
 using Content.Server.Pain;
 using Content.Shared.Armor;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Part;
 using Content.Shared.Body.Systems;
-using Content.Shared.Chat.Prototypes;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
 using Content.Shared.Database;
 using Content.Shared.Examine;
 using Content.Shared.FixedPoint;
 using Content.Shared.Humanoid;
+using Content.Shared.Implants.Components;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Standing;
@@ -142,7 +141,7 @@ public sealed partial class SurgerySystem
 
             _audio.PlayPvs(GibSound, patient);
             if (!_mobState.IsDead(patient) && !HasComp<PainNumbnessComponent>(patient) && !HasComp<SyntheticOperatedComponent>(patient))
-                _chat.TryEmoteWithoutChat(patient, _proto.Index<EmotePrototype>("Scream"), true);
+                _chat.TryEmoteWithoutChat(patient, _proto.Index(Scream), true);
 
             _pain.AdjustPain(patient, "Physical", 250f);
             if (HasComp<BloodstreamComponent>(patient))
@@ -233,7 +232,7 @@ public sealed partial class SurgerySystem
 
                 _audio.PlayPvs(GibSound, entity);
                 if (!_mobState.IsDead(entity) && !HasComp<PainNumbnessComponent>(entity) && !HasComp<SyntheticOperatedComponent>(entity))
-                    _chat.TryEmoteWithoutChat(entity, _proto.Index<EmotePrototype>("Scream"), true);
+                    _chat.TryEmoteWithoutChat(entity, _proto.Index(Scream), true);
 
                 _transform.SetCoordinates(limbId, Transform(entity).Coordinates);
                 _physics.ApplyLinearImpulse(limbId, _random.NextVector2() * (50f + (float)damage));
@@ -273,7 +272,8 @@ public sealed partial class SurgerySystem
 
     private string? SelectBodyPart(EntityUid patient, InternalDamagePrototype damageProto)
     {
-        var bodyParts = _body.GetBodyChildren(patient).ToList();
+        var bodyParts = _body.GetBodyChildren(patient)
+            .Where(b => !HasComp<SubdermalImplantComponent>(b.Id)).ToList();
 
         if (bodyParts.Count == 0)
             return null;
@@ -288,8 +288,11 @@ public sealed partial class SurgerySystem
     private List<string> FilterByBlacklist(List<(EntityUid Id, BodyPartComponent Component)> bodyParts, List<string> blacklist)
     {
         var result = new List<string>();
-        foreach (var (_, component) in bodyParts)
+        foreach (var (uid, component) in bodyParts)
         {
+            if (HasComp<SubdermalImplantComponent>(uid))
+                continue;
+
             var partName = GetBodyPartName(component);
             if (!blacklist.Contains(partName))
             {

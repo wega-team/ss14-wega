@@ -10,7 +10,7 @@
     - Wall
   components:
   - type: Anchorable
-    flags: 
+    flags:
     - Anchorable
   - type: Rotatable
   - type: RangedDamageSound
@@ -1536,7 +1536,7 @@
   name: invisible wall
   components:
   - type: TimedDespawn
-    lifetime: 15
+    lifetime: 30 # Corvax-Wega-Edit
   - type: Tag
     tags:
       - Wall

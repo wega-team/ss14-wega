@@ -6,7 +6,7 @@ namespace Content.Shared._Wega.Resomi.Abilities.Hearing;
 public sealed partial class ListenUpComponent : Component
 {
     [DataField]
-    public float radius = 8f;
+    public float Radius = 8f;
 
     [DataField]
     public SpriteSpecifier Sprite = new SpriteSpecifier.Rsi(new("/Textures/_Wega/Mobs/Species/Resomi/Abilities/noise_effect.rsi"), "noise");

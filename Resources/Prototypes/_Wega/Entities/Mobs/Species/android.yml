@@ -1,5 +1,5 @@
 - type: entity
-  parent: 
+  parent:
   - BaseMobSpecies
   - MobBloodstream
   - MobRespirator
@@ -36,9 +36,9 @@
     - map: [ "shoes" ]
     - map: [ "ears" ]
     - map: [ "eyes" ]
+    - map: [ "outerClothing" ]
     - map: [ "belt" ]
     - map: [ "id" ]
-    - map: [ "outerClothing" ]
     - map: [ "back" ]
     - map: [ "neck" ]
     - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
@@ -52,7 +52,7 @@
     - map: [ "pocket2" ]
     - map: ["enum.WiresVisualLayers.MaintenancePanel"]
       sprite: _Wega/Mobs/Species/Android/parts.rsi
-      state: panel 
+      state: panel
     - map: ["enum.HumanoidVisualLayers.Handcuffs"]
       color: "#ffffff"
       sprite: Objects/Misc/handcuffs.rsi
@@ -154,7 +154,7 @@
   - type: ContainerContainer
     containers:
       cell_slot: !type:ContainerSlot { }
-      light: 
+      light:
         !type:ContainerSlot
         showEnts: true
   - type: PowerCellSlot
@@ -167,10 +167,10 @@
     slots:
       cell_slot:
         name: power-cell-slot-component-slot-name-default
-        startingItem: PowerCellMedium 
+        startingItem: PowerCellMedium
   - type: ItemToggle
     onActivate: false
-    activated: false 
+    activated: false
     onUse: false
   - type: WiresPanel
   - type: LockedWiresPanel
@@ -211,7 +211,7 @@
   - type: Pain
     profile: SyntheticPainProfile
   - type: Tag
-    tags: 
+    tags:
     - CanPilot
     - FootstepSound
     - DoorBumpOpener

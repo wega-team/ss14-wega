@@ -96,9 +96,9 @@
       # Corvax-Wega-end
       - map: [ "gloves" ]
       - map: [ "shoes" ]
-      - map: [ "belt" ]
-      - map: [ "id" ]
       - map: [ "outerClothing" ]
+      - map: [ "belt" ] # Corvax-Wega-Edit
+      - map: [ "id" ] # Corvax-Wega-Edit
       - map: [ "enum.HumanoidVisualLayers.Tail" ] # Mentioned in moth code: This needs renaming lol.
       - map: [ "back" ]
       - map: [ "neck" ]

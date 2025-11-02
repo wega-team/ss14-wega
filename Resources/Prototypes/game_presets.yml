@@ -76,13 +76,14 @@
   - extended
   - shittersafari
   name: extended-title
-  showInVote: true # Corvax-Wega-Edit 
+  showInVote: true # Corvax-Wega-Edit
   description: extended-description
   rules:
-  - LightStationEventScheduler # Corvax-Wega-Edit 
+  - LightStationEventScheduler # Corvax-Wega-Edit
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
+  - SubThiefExtended # Corvax-Wega-Testing
 
 - type: gamePreset
   id: Greenshift
