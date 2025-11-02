@@ -48,19 +48,6 @@
        - NukeOpsUplink
 
 - type: listing
-  id: UplinkWiretappingKit
-  name: uplink-wiretapping-kit-name
-  description: uplink-wiretapping-kit-desc
-  productEntity: WiretappingKit
-  discountCategory: usualDiscounts
-  discountDownTo:
-    Telecrystal: 3
-  cost:
-    Telecrystal: 4
-  categories:
-  - UplinkDeception
-
-- type: listing
   id: UplinkGarrotte
   name: uplink-garrotte-name
   description: uplink-garrotte-desc
@@ -125,7 +112,7 @@
   icon: { sprite: /Textures/Objects/Weapons/Guns/Snipers/heavy_sniper.rsi, state: base }
   productEntity: ADTClothingBackpackDuffelSyndicateFilledHristov
   cost:
-    Telecrystal: 25
+    Telecrystal: 18
   categories:
   - UplinkWeaponry
   conditions:
@@ -161,7 +148,7 @@
   icon: { sprite: /Textures/_ADT/Objects/Weapons/Guns/Rifles/xc67.rsi, state: icon}
   productEntity: ADTClothingBackpackDuffelSyndicateFilledXC67
   cost:
-    Telecrystal: 23
+    Telecrystal: 19
   categories:
   - UplinkWeaponry
   conditions:
@@ -177,7 +164,7 @@
   icon: { sprite: _ADT/Clothing/Shoes/Boots/advanced.rsi, state: icon }
   productEntity: ADTClothingShoesBootsMagAdvSynd
   cost:
-    Telecrystal: 6
+    Telecrystal: 8
   categories:
   - UplinkWearables
   conditions:
@@ -187,12 +174,23 @@
       - NukeOpsUplink
 
 - type: listing
+  id: UplinkEyesHudSyndicateCamera
+  name: uplink-syndicate-camera-name
+  description: uplink-syndicate-camera-desc
+  icon: { sprite: _Wega/Clothing/Eyes/syndcamerahud.rsi, state: icon }
+  productEntity: ClothingEyesHudSyndicateCamera
+  cost:
+    Telecrystal: 2
+  categories:
+  - UplinkWearables
+
+- type: listing
   id: ADTUplinkNukeSyndiHoloprojectorField
   name: uplink-syndiholoprojectorfield-name
   description: uplink-syndiholoprojectorfield-desc
   productEntity: ADTSyndiHoloprojectorField
   cost:
-    Telecrystal: 6
+    Telecrystal: 5
   categories:
     - UplinkDeception
   conditions:
@@ -202,7 +200,7 @@
       - NukeOpsUplink
 
 - type: listing
-  id: ADTUplinkWeaponRifleXC67
+  id: ADTUplinkWeaponXC67ammo
   name: uplink-xc67ammo-name
   description: uplink-xc67ammo-desc
   icon: { sprite: /Textures/_ADT/Objects/Weapons/Guns/Ammunition/Magazine/Rifle/ext_rifle_mag.rsi, state: base }
@@ -281,6 +279,40 @@
       - NukeOpsUplink
 
 - type: listing
+  id: UplinkDesertEagle
+  name: uplink-desert-eagle-name
+  description: uplink-desert-eagle-desc
+  icon: { sprite: _DeadSpace/Objects/Weapons/Guns/Pistols/deserteagle.rsi, state: icon }
+  productEntity: WeaponPistolDesertEagle
+  cost:
+    Telecrystal: 8
+  categories:
+  - UplinkWeaponry
+
+- type: listing
+  id: UplinkMagazineEagle
+  name: uplink-magazine-eagle-name
+  description: uplink-magazine-eagle-desc
+  icon: { sprite: _DeadSpace/Objects/Weapons/Guns/Ammunition/Magazine/Pistol/magazinedeserteagle.rsi, state: base }
+  productEntity: MagazineEagle
+  cost:
+    Telecrystal: 1
+  categories:
+  - UplinkAmmo
+  conditions:
+
+- type: listing
+  id: UplinkMagazineEagleAP
+  name: uplink-magazine-eagle-ap-name
+  description: uplink-magazine-eagle-ap-desc
+  icon: { sprite: _DeadSpace/Objects/Weapons/Guns/Ammunition/Magazine/Pistol/magazinedeserteagle.rsi, state: red }
+  productEntity: MagazineEagleAP
+  cost:
+    Telecrystal: 3
+  categories:
+  - UplinkAmmo
+
+- type: listing
   id: UplinkBulldogBundleNuke
   name: uplink-buldog-bundle-name
   description: uplink-buldog-bundle-desc
@@ -295,3 +327,26 @@
     whitelist:
       tags:
       - NukeOpsUplink
+
+- type: listing
+  id: ADTUplinAmmoSniper
+  name: uplink-ammo-sniper-name
+  description: uplink-ammo-sniper-desc
+  icon: { sprite: _ADT/Objects/Weapons/Guns/Ammunition/Magazine/Sniper/snipers.rsi, state: mag-1 }
+  productEntity: ADTMagazineHristovAdvanced
+  cost:
+    Telecrystal: 2
+  categories:
+  - UplinkAmmo
+
+- type: listing
+  id: UplinkSyndiePlayerInstrument
+  name: uplink-syndie-player-name
+  description: uplink-syndie-player-desc
+  icon: { sprite: _Wega/Objects/Fun/Instruments/syndieplayer.rsi, state: icon }
+  productEntity: SyndiePlayerInstrument
+  categories:
+  - UplinkPointless
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1

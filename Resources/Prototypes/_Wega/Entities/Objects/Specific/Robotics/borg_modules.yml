@@ -1,3 +1,4 @@
+## module
 - type: entity
   id: BorgModuleSurgery
   parent: [ BaseBorgModuleMedical, BaseProviderBorgModule ]
@@ -23,7 +24,7 @@
     - item: SprayBottle
     - item: BorgDropper
     - hand:
-        emptyRepresentative: BorgModuleBiomaterialsPlaceholder
+        emptyRepresentative: OrganHumanHeart
         emptyLabel: borg-slot-biomaterials-empty
         whitelist:
           components:
@@ -31,7 +32,7 @@
           tags:
           - BaseBodyPart
     - hand:
-        emptyRepresentative: BorgModuleImplantsPlaceholder
+        emptyRepresentative: EmptySubdermalImplant
         emptyLabel: borg-slot-implants-empty
         whitelist:
           components:
@@ -59,13 +60,239 @@
     - item: WeaponProtoKineticAcceleratorBorg
     - item: WeaponCrusherDagger
     - item: TrofeiBag
+    - hand:
+        emptyRepresentative: MicroManipulatorStockPart
+        emptyLabel: borg-slot-PKA-empty
+        whitelist:
+          tags:
+          - PKAUpgrade
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: kinetic-weapon-module }
+
+- type: entity
+  id: BorgModuleCommonMedical
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: medical common module
+  description: Everyone can heal your action!
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: generic
+    - state: icon-treatment-common
+  - type: ItemBorgModule
+    hands:
+    - item: Brutepack
+      hand:
+        emptyLabel: borg-slot-topicals-empty
+        emptyRepresentative: Brutepack
+        whitelist:
+          components:
+          - Healing
+    - item: Ointment
+      hand:
+        emptyLabel: borg-slot-topicals-empty
+        emptyRepresentative: Ointment
+        whitelist:
+          components:
+          - Healing
+    - item: Syringe
+  - type: BorgModuleIcon
+    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: medical-common-module }
     
+- type: entity
+  id: BorgModuleCommonPen
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: pen common module
+  description: Write this history!
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: generic
+    - state: icon-pen
+  - type: ItemBorgModule
+    hands:
+    - item: Pen
+    - hand:
+        emptyLabel: borg-slot-documents-empty
+        emptyRepresentative: Paper
+        whitelist:
+          tags:
+          - Book
+          - Dice
+          - Document
+          - Figurine
+          - TabletopBoard
+          - Write
+  - type: BorgModuleIcon
+    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: pen-common-module }
+
+- type: entity
+  id: BorgModuleCommonFight
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: fight common module
+  description: Everyone can heal your action!
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: generic
+    - state: icon-fight-common
+  - type: ItemBorgModule
+    hands:
+    - item: Flash
+      hand:
+        emptyLabel: borg-slot-flash-empty
+        emptyRepresentative: Flash
+        whitelist:
+          components:
+          - Flash
+    - item: WeaponMeleeNeedleBorg
+  - type: BorgModuleIcon
+    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: figth-common-module }
+
+- type: entity
+  id: BorgModuleCommonPickaxe
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: pickaxe common module
+  description: Everyone can heal your action!
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: generic
+    - state: icon-mining
+  - type: ItemBorgModule
+    hands:
+    - item: PickaxeBorg
+    - hand:
+        emptyLabel: borg-slot-ore-empty
+        emptyRepresentative: Coal
+        whitelist:
+          tags:
+          - Ore
+  - type: BorgModuleIcon
+    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: pickaxe-common-module }
+
+- type: entity
+  id: BorgModuleCommonConstruction
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: construction common module
+  description: Everyone can heal your action!
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: generic
+    - state: icon-construction
+  - type: ItemBorgModule
+    hands:
+    - hand:
+        emptyRepresentative: BorgModuleConstructionMaterialPlaceholder
+        emptyLabel: borg-slot-construction-empty
+        whitelist:
+          tags:
+          - ConstructionMaterial
+    - hand:
+        emptyRepresentative: SpaceHeaterFlatpack
+        emptyLabel: borg-slot-flatpacks-empty
+        whitelist:
+          components:
+          - Flatpack
+    - hand:
+        emptyRepresentative: FloorTileItemSteel
+        emptyLabel: borg-slot-tiles-empty
+        whitelist:
+          components:
+          - FloorTile
+  - type: BorgModuleIcon
+    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: build-common-module }
+    
+- type: entity
+  id: BorgModuleCook
+  parent: [ BaseBorgModuleService, BaseProviderBorgModule ]
+  name: cook common module
+  description: Everyone can heal your action!
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: service
+    - state: icon-cook-module
+  - type: ItemBorgModule
+    hands:
+    - item: ButchCleaver
+    - item: RollingPin
+    - hand:
+        emptyRepresentative: FoodBowlBig
+        emptyLabel: borg-slot-cook-empty
+        whitelist:
+          tags:
+          - Cook
+    - item: Beaker
+      hand:
+        emptyLabel: borg-slot-chemical-containers-empty
+        emptyRepresentative: Beaker
+        whitelist:
+          components:
+          - FitsInDispenser
+          tags:
+          - ChemDispensable
+    - hand:
+        emptyRepresentative: ReagentContainerFlour
+        emptyLabel: borg-slot-ingredient-empty
+        whitelist:
+          tags:
+          - Ingredient
+          - Enzyme
+          - Mayo
+    - hand:
+        emptyRepresentative: FoodMeat
+        emptyLabel: borg-slot-meat-empty
+        whitelist:
+          tags:
+          - Meat
+    - hand:
+        emptyRepresentative: FoodCabbage
+        emptyLabel: borg-slot-botany-empty
+        whitelist:
+          tags:
+          - Vegetable
+          - Fruit
+  - type: BorgModuleIcon
+    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: cook-module }
+    
+- type: entity
+  id: BorgModuleBar
+  parent: [ BaseBorgModuleService, BaseProviderBorgModule ]
+  name: bar module
+  description: Everyone can heal your action!
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: service
+    - state: icon-bar-module
+  - type: ItemBorgModule
+    hands:
+    - item: BorgDropper
+    - item: DrinkShaker
+      hand:
+        emptyLabel: borg-slot-small-containers-empty
+        emptyRepresentative: DrinkShaker
+        whitelist:
+          components:
+          - FitsInDispenser
+    - item: BarSpoon
+  - type: BorgModuleIcon
+    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: bar-module }
+## borg-item
+  
 - type: entity
   name: proto-kinetic accelerator1
   id: WeaponProtoKineticAcceleratorBorg
-  parent: [WeaponProtoKineticAcceleratorBase, BaseCargoContraband]
+  parent: BaseItem
   description: Fires low-damage kinetic bolts at a short range.
   suffix: Borg
   components:
@@ -76,32 +303,97 @@
     - state: animation-icon
       visible: false
       map: [ "empty-icon" ]
-  - type: GunWieldBonus
+  - type: Item
+    sprite: Objects/Weapons/Guns/Basic/kinetic_accelerator.rsi
+    size: Large
+    shape:
+    - 0,0,2,1   
+  - type: Gun
+    fireRate: 0.5
+    selectedMode: SemiAuto
+    angleDecay: 0
     minAngle: 0
     maxAngle: 0
-  - type: Gun
-    minAngle: 1
-    maxAngle: 2
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/kinetic_accel.ogg
+  - type: AmmoCounter
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.AmmoVisuals.HasAmmo:
+        empty-icon:
+          True: { visible: False }
+          False: { visible: True }
+        #todo: add other 'empty' animations
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 0.75
+    rechargeSound:
+      path: /Audio/Weapons/Guns/MagIn/kinetic_reload.ogg
+  - type: BasicEntityAmmoProvider
+    proto: BulletKinetic
+    capacity: 1
+    count: 1
+  - type: UseDelay
+    delay: 1
   - type: UpgradeableGun
     whitelist:
       tags:
       - PKAUpgrade
   - type: ContainerContainer
     containers:
-      upgrades: !type:Container 
+      upgrades: !type:Container
 
 - type: entity
-  id: BorgModuleBiomaterialsPlaceholder
-  parent: BaseItem
+  parent: WeaponMeleeNeedle
+  id: WeaponMeleeNeedleBorg
+  name: security damage stick 
+  description: A specialty weapon used in the destruction of unique syndicate morale-boosting equipment.
   components:
-  - type: Sprite
-    sprite: Mobs/Species/Human/organs.rsi
-    state: heart-off
-
+  - type: MeleeWeapon
+    wideAnimationRotation: -135
+    damage:
+      types:
+        Piercing: 12
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Piercing: 0
+        
 - type: entity
-  id: BorgModuleImplantsPlaceholder
+  name: pickaxe
   parent: BaseItem
+  id: PickaxeBorg
+  description: Notched to perfection, for jamming it into rocks.
   components:
+  - type: Tag
+    tags:
+    - Pickaxe
   - type: Sprite
-    sprite: _Wega/Objects/Specific/Medical/Surgery/implants.rsi
-    state: empty
+    sprite: Objects/Weapons/Melee/pickaxe.rsi
+    state: pickaxe
+  - type: MeleeWeapon
+    attackRate: 0.7
+    wideAnimationRotation: -135
+    soundHit:
+      path: "/Audio/Weapons/smash.ogg"
+      params:
+        volume: -3
+    damage:
+      groups:
+        Brute: 10
+      types:
+        Structural: 30
+  - type: Item
+    size: Normal
+    shape:
+    - 0,0,2,0
+    - 1,1,1,2
+    sprite: Objects/Weapons/Melee/pickaxe.rsi
+    storedRotation: -45
+  - type: UseDelay
+  - type: PhysicalComposition
+    materialComposition:
+      Steel: 100
+      Wood: 100

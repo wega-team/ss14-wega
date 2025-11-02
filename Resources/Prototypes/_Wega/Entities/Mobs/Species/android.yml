@@ -197,12 +197,11 @@
     - reagents: [ Water, SpaceCleaner ]
       methods: [ Touch ]
       effects:
-      - !type:WashCreamPieReaction
+      - !type:WashCreamPie
     - reagents: [ Water ]
       methods: [ Touch ]
       effects:
       - !type:Electrocute
-        electrocuteDamageScale: 1
   - type: Operated
     raceGraph: AndroidSurgery
     limbLossChance: 1.75

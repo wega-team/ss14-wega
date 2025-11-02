@@ -6,12 +6,12 @@
   components:
   - type: Item
     size: Tiny
-  - type: Food
+  - type: Edible
   - type: Sprite
     sprite: _Wega/Objects/Consumable/Food/shrimp.rsi
     state: shrimp
   - type: Tag
-    tags: 
+    tags:
     - Shrimp
   - type: SolutionContainerManager
     solutions:

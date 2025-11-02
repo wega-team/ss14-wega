@@ -422,7 +422,7 @@ public sealed partial class DnaModifierWindow : FancyWindow
             var blockSelectButton = new OptionButton
             {
                 MinWidth = 40,
-                StyleClasses = { StyleNano.ButtonOpenRight }
+                StyleClasses = { StyleClass.ButtonOpenRight }
             };
             for (int i = 1; i <= 55; i++)
             {
@@ -434,7 +434,7 @@ public sealed partial class DnaModifierWindow : FancyWindow
             var injectBlockButton = new Button
             {
                 Text = Loc.GetString("dna-modifier-button-inject-block"),
-                StyleClasses = { StyleNano.ButtonOpenLeft },
+                StyleClasses = { StyleClass.ButtonOpenLeft },
                 Disabled = _injectorCooldown.HasValue && _gameTiming.CurTime < _injectorCooldown
             };
             injectBlockButton.OnPressed += _ => OnInjectBlockPressed(bufferIndex, injectBlockButton, blockSelectButton.SelectedId);
@@ -1013,13 +1013,13 @@ public sealed partial class DnaModifierWindow : FancyWindow
 
         var buttonConfigs = new (string text, DnaModifierReagentAmount amount, string styleClass)[]
         {
-            ("1", DnaModifierReagentAmount.U1, StyleBase.ButtonOpenBoth),
-            ("5", DnaModifierReagentAmount.U5, StyleBase.ButtonOpenBoth),
-            ("10", DnaModifierReagentAmount.U10, StyleBase.ButtonOpenBoth),
-            ("25", DnaModifierReagentAmount.U25, StyleBase.ButtonOpenBoth),
-            ("50", DnaModifierReagentAmount.U50, StyleBase.ButtonOpenBoth),
-            ("100", DnaModifierReagentAmount.U100, StyleBase.ButtonOpenBoth),
-            ("All", DnaModifierReagentAmount.All, StyleBase.ButtonOpenLeft),
+            ("1", DnaModifierReagentAmount.U1, StyleClass.ButtonOpenBoth),
+            ("5", DnaModifierReagentAmount.U5, StyleClass.ButtonOpenBoth),
+            ("10", DnaModifierReagentAmount.U10, StyleClass.ButtonOpenBoth),
+            ("25", DnaModifierReagentAmount.U25, StyleClass.ButtonOpenBoth),
+            ("50", DnaModifierReagentAmount.U50, StyleClass.ButtonOpenBoth),
+            ("100", DnaModifierReagentAmount.U100, StyleClass.ButtonOpenBoth),
+            ("All", DnaModifierReagentAmount.All, StyleClass.ButtonOpenLeft),
         };
 
         var buttons = new List<ReagentButton>();

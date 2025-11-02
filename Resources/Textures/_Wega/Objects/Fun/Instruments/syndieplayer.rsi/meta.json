@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "license": "CC-BY-SA-3.0",
+  "copyright": "sprite made by Discord: _dasiuswl",
+  "states": [
+    {
+      "name": "icon"
+    }
+  ]
+}

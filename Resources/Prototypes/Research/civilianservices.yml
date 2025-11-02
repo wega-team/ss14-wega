@@ -13,6 +13,10 @@
   - SeedExtractorMachineCircuitboard
   - HydroponicsTrayMachineCircuitboard
   - ReagentGrinderIndustrialMachineCircuitboard
+    # Corvax-Wega-Surgery-start
+  - BorgModuleGardening
+  - BorgModuleHarvesting
+    # Corvax-Wega-Surgery-end
 
 - type: technology
   id: CritterMechs
@@ -71,6 +75,8 @@
     # Corvax-Wega-Surgery-start
     - SadTromboneImplant
     - LightImplant
+    - BorgModuleMusique
+    - BorgModuleClowning
     # Corvax-Wega-Surgery-end
 
 - type: technology

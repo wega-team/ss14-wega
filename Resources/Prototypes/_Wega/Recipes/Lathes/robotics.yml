@@ -9,6 +9,52 @@
   result: BorgModuleKinetic
 
 - type: latheRecipe
+  parent: BaseBorgModuleRecipe
+  id: BorgModuleCommonMedical
+  result: BorgModuleCommonMedical
+
+- type: latheRecipe
+  parent: BaseBorgModuleRecipe
+  id: BorgModuleCommonConstruction
+  result: BorgModuleCommonConstruction
+  
+- type: latheRecipe
+  parent: BaseBorgModuleRecipe
+  id: BorgModuleCommonPickaxe
+  result: BorgModuleCommonPickaxe
+
+- type: latheRecipe
+  parent: BaseBorgModuleRecipe
+  id: BorgModuleCommonFight
+  result: BorgModuleCommonFight
+
+- type: latheRecipe
+  parent: BaseBorgModuleRecipe
+  id: BorgModuleCommonPen
+  result: BorgModuleCommonPen
+
+- type: latheRecipe
+  parent: BaseBorgModuleRecipe
+  id: BorgModuleHarvesting
+  result: BorgModuleHarvesting
+
+- type: latheRecipe
+  parent: BaseBorgModuleRecipe
+  id: BorgModuleGardening
+  result: BorgModuleGardening
+  
+- type: latheRecipe
+  parent: BaseBorgModuleRecipe
+  id: BorgModuleClowning
+  result: BorgModuleClowning
+
+- type: latheRecipe
+  parent: BaseBorgModuleRecipe
+  id: BorgModuleMusique
+  result: BorgModuleMusique
+# Android
+
+- type: latheRecipe
   parent: BaseRoboticsRecipe
   id: Tyriumpack
   result: Tyriumpack1

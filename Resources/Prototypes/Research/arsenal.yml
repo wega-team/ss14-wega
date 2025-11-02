@@ -118,7 +118,9 @@
   - TimerTrigger
   - FlashPayload
   - ExplosivePayload
-  # - ChemicalPayload
+  # - ChemicalPayload # Corvax-Wega-Edit
+  - CableDetStack1
+  - EmptyDetonator
 
 - type: technology
   id: SpecialMeans

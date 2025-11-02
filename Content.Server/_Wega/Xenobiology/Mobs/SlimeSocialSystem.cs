@@ -2,6 +2,7 @@ using System.Linq;
 using Content.Server.Chat.Systems;
 using Content.Server.NPC.HTN;
 using Content.Server.Speech.Components;
+using Content.Shared.Chat;
 using Content.Shared.Damage;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Speech;

@@ -30,15 +30,13 @@
   - type: HitscanBatteryAmmoProvider
     proto: RedMediumLaser
     fireCost: 100
-  - type: BatteryWeaponHitscanModes
+  - type: BatteryWeaponFireModes
     fireModes:
     - proto: RedMediumLaser
-      name: боевого лазера
       fireCost: 100
       state: lethal
       magState: lethal
     - proto: LaserStun
-      name: станер лазера
       fireCost: 62.5
       state: disabler
       magState: disabler
@@ -49,7 +47,7 @@
     startingCharge: 1500
   - type: GenericVisualizer
     visuals:
-      enum.BatteryWeaponHitscanModesVisuals.State:
+      enum.BatteryWeaponFireModeVisuals.State:
         Firemode:
           disabler: { state: mode-disabler }
           lethal: { state: mode-lethal }

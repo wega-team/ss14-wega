@@ -104,20 +104,6 @@
   - type: StealCondition
     stealGroup: HandTeleporter
 
-## hos
-
-- type: entity
-  parent: BaseVampireStealObjective
-  id: VampireEnergyShotgunStealObjective
-  components:
-  - type: Objective
-    difficulty: 3
-  - type: NotJobRequirement
-    job: HeadOfSecurity
-  - type: StealCondition
-    stealGroup: WeaponEnergyShotgun
-    owner: job-name-hos
-
 ## ce
 
 - type: entity

@@ -9,16 +9,5 @@
     stampedColor: "#BB3232"
     stampState: "paper_stamp-greytide"
   - type: Sprite
-    state: stamp-greytide 
+    state: stamp-greytide
   - type: ChameleonStamp
-  - type: HiddenDescription
-    entries:
-    - label: corvax-hidden-desc-Chameleon-thief
-      whitelistMind:
-        mindRoles:
-        - ThiefRole
-    - label: corvax-hidden-desc-chameleon-stamp-research
-      jobRequired:
-        - ResearchAssistant
-        - ResearchDirector
-        - Scientist

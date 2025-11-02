@@ -1,7 +1,7 @@
 using System.Linq;
 using Content.Server.Chat.Systems;
-using Content.Server.Medical;
 using Content.Shared.Jittering;
+using Content.Shared.Medical;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Pain;
 using Content.Shared.Pain.Components;

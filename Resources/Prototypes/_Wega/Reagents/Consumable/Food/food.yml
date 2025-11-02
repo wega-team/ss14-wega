@@ -13,32 +13,31 @@
         effectProto: StatusEffectSeeingRainbow
         time: 5
         type: Add
-        refresh: false
         conditions:
-          - !type:OrganType
-            type: Ariral
-      - !type:MovespeedModifier
+        - !type:MetabolizerTypeCondition
+          type: [ Ariral ]
+      - !type:MovementSpeedModifier
         walkSpeedModifier: 1.05
         sprintSpeedModifier: 1.05
         conditions:
-          - !type:OrganType
-            type: Ariral
+        - !type:MetabolizerTypeCondition
+          type: [ Ariral ]
       - !type:Jitter
         conditions:
-          - !type:OrganType
-            type: Ariral
+        - !type:MetabolizerTypeCondition
+          type: [ Ariral ]
     Food:
       effects:
       - !type:SatiateHunger
         conditions:
-        - !type:OrganType
-          type: Vampire
-          shouldHave: false
+        - !type:MetabolizerTypeCondition
+          type: [ Vampire ]
+          inverted: true
       - !type:AdjustReagent
         conditions:
-        - !type:OrganType
-          type: Vampire
-          shouldHave: false
+        - !type:MetabolizerTypeCondition
+          type: [ Vampire ]
+          inverted: true
         reagent: UncookedAnimalProteins
         amount: 0.5
   plantMetabolism:

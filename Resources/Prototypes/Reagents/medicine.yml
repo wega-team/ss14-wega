@@ -11,11 +11,11 @@
   metabolisms:
     Medicine:
       effects:
-      - !type:GenericStatusEffect
-        key: Stutter
-        component: ScrambledAccent
       - !type:ModifyStatusEffect
-        effectProto: StatusEffectSlurred
+        effectProto: StatusEffectScrambled
+        type: Update
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectWoozy
         time: 20.0
 
 - type: reagent
@@ -35,31 +35,36 @@
             Poison: -1
       - !type:HealthChange
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: Dylovene
           min: 20
         damage:
           groups:
             Brute: 2
       - !type:Jitter
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: Dylovene
           min: 20
       - !type:PopupMessage
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: Dylovene
           min: 20
         type: Local
         visualType: Medium
         messages: [ "generic-reagent-effect-nauseous" ]
         probability: 0.2
-      - !type:ChemVomit
+      - !type:Vomit
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: Dylovene
           min: 20
         probability: 0.02
       - !type:Drunk
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: Dylovene
           min: 15
   plantMetabolism:
   - !type:PlantAdjustToxins
@@ -89,7 +94,6 @@
         effectProto: StatusEffectDrowsiness
         time: 1.5
         type: Add
-        refresh: false
       - !type:HealthChange
         damage:
           types:
@@ -150,20 +154,23 @@
             Brute: -2  # Corvax-Wega-Change
       - !type:HealthChange
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: Bicaridine
           min: 15
         damage:
           types:
             Asphyxiation: 0.5
             Poison: 1.5
-      - !type:ChemVomit
+      - !type:Vomit
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: Bicaridine
           min: 30
         probability: 0.02
       - !type:Jitter
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: Bicaridine
           min: 15
       - !type:Drunk
       # Corvax-Wega-Surgery-start
@@ -191,7 +198,7 @@
       effects:
         - !type:HealthChange
           conditions:
-          - !type:Temperature
+          - !type:TemperatureCondition
             # this is a little arbitrary but they gotta be pretty cold
             max: 213.0
           damage:
@@ -215,7 +222,7 @@
       effects:
         - !type:HealthChange
           conditions:
-          - !type:Temperature
+          - !type:TemperatureCondition
             max: 213.0
           damage:
             types:
@@ -240,7 +247,8 @@
             Cold: -1.5
       - !type:HealthChange
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: Dermaline
           min: 10
         damage:
           types:
@@ -250,7 +258,8 @@
             Brute: 0.5
       - !type:Jitter
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: Dermaline
           min: 10
       # Corvax-Wega-Surgery-start
       - !type:ChemHealInternalDamage
@@ -276,7 +285,8 @@
             Bloodloss: -0.5
       - !type:HealthChange
         conditions:
-          - !type:ReagentThreshold
+          - !type:ReagentCondition
+            reagent: Dexalin
             min: 20
         damage:
           types:
@@ -301,14 +311,15 @@
             Bloodloss: -3
       - !type:AdjustReagent
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
           reagent: HeartbreakerToxin
           min: 1
         reagent: HeartbreakerToxin
         amount: -3
       - !type:HealthChange
         conditions:
-          - !type:ReagentThreshold
+          - !type:ReagentCondition
+            reagent: DexalinPlus
             min: 25
         damage:
           types:
@@ -329,7 +340,7 @@
       effects:
       - !type:AdjustReagent
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
           reagent: Histamine
           min: 45
         reagent: Histamine
@@ -339,8 +350,8 @@
           # they gotta be in crit first
         - !type:MobStateCondition
           mobstate: Critical
-        - !type:ReagentThreshold
-          min: 0
+        - !type:ReagentCondition
+          reagent: Epinephrine
           max: 20
         damage:
           types:
@@ -351,7 +362,8 @@
             Burn: -0.5
       - !type:HealthChange
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: Epinephrine
           min: 20
         damage:
           types:
@@ -362,7 +374,7 @@
         amount: -2
       - !type:AdjustReagent
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
           reagent: HeartbreakerToxin
           min: 1
         reagent: Epinephrine
@@ -370,17 +382,16 @@
       - !type:AdjustReagent
         probability: 0.1
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
           reagent: HeartbreakerToxin
           min: 1
         reagent: Histamine
         amount: 4
-      - !type:GenericStatusEffect
-        key: Stun
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectStunned
         time: 0.75
         type: Remove
-      - !type:GenericStatusEffect
-        key: KnockedDown
+      - !type:ModifyKnockdown
         time: 0.75
         type: Remove
       - !type:GenericStatusEffect
@@ -403,18 +414,20 @@
         damage:
           types:
             Radiation: -1
-      - !type:ChemVomit
+      - !type:Vomit
         probability: 0.02
       - !type:HealthChange
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: Hyronalin
           min: 30
         damage:
           types:
            Heat: 2
       - !type:Jitter
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: Hyronalin
           min: 30
 
 - type: reagent
@@ -430,9 +443,10 @@
   metabolisms:
     Medicine:
       effects:
-      - !type:ChemVomit
+      - !type:Vomit
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: Ipecac
           min: 4
         probability: 0.3
 
@@ -456,7 +470,7 @@
         damage:
           types:
             Asphyxiation: -2
-      - !type:ModifyBleedAmount
+      - !type:ModifyBleed
         amount: -0.25
 
 - type: reagent
@@ -479,7 +493,8 @@
       - !type:SatiateThirst
         factor: -10
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: Kelotane
           min: 30
       - !type:PopupMessage
         type: Local
@@ -489,7 +504,8 @@
         - generic-reagent-effect-parched
         probability: 0.1
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: Kelotane
           min: 25
 
 - type: reagent
@@ -509,12 +525,12 @@
             Cold: -4
       - !type:AdjustTemperature
         conditions:
-        - !type:Temperature
+        - !type:TemperatureCondition
           max: 293.15
         amount: 100000 # thermal energy, not temperature!
       - !type:AdjustTemperature
         conditions:
-        - !type:Temperature
+        - !type:TemperatureCondition
           min: 293.15
         amount: -10000
       - !type:PopupMessage
@@ -544,15 +560,17 @@
             Heat: 0.5
       - !type:HealthChange
         conditions:
-          - !type:ReagentThreshold
+          - !type:ReagentCondition
+            reagent: Barozine
             min: 30
         damage:
           types:
             Poison: 3
-      - !type:ChemVomit
+      - !type:Vomit
         probability: 0.15
         conditions:
-          - !type:ReagentThreshold
+          - !type:ReagentCondition
+            reagent: Barozine
             min: 30
       - !type:GenericStatusEffect
         key: PressureImmunity
@@ -583,7 +601,8 @@
       amount: 6
     - !type:PlantPhalanximine
       conditions:
-      - !type:ReagentThreshold
+      - !type:ReagentCondition
+        reagent: Phalanximine
         min: 4
   metabolisms:
     Medicine:
@@ -597,14 +616,15 @@
             Caustic: 0.15
       - !type:HealthChange
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: Phalanximine
           min: 11
         damage:
           types:
             Radiation: 0.2
       - !type:HealthChange
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
           reagent: Arithrazine
           min: 1
         damage:
@@ -630,12 +650,13 @@
             Asphyxiation: -2.5
       - !type:HealthChange
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: PolypyryliumOligomers
           min: 30
         damage:
           types:
             Asphyxiation: 3.5
-      - !type:ModifyBleedAmount
+      - !type:ModifyBleed
         amount: -0.25
 
 - type: reagent
@@ -651,7 +672,8 @@
       effects:
         - !type:CureZombieInfection
           conditions:
-            - !type:ReagentThreshold
+            - !type:ReagentCondition
+              reagent: Ambuzol
               min: 10
 
 - type: reagent
@@ -668,7 +690,8 @@
         - !type:CureZombieInfection
           innoculate: true
           conditions:
-            - !type:ReagentThreshold
+            - !type:ReagentCondition
+              reagent: AmbuzolPlus
               min: 5
 
 - type: reagent
@@ -682,7 +705,7 @@
   metabolisms:
     Medicine:
       effects:
-      - !type:ModifyBleedAmount
+      - !type:ModifyBleed
         amount: -0.5
 
 - type: reagent
@@ -734,7 +757,7 @@
             Poison: -4
       - !type:AdjustReagent
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
           reagent: Amatoxin
           min: 1
         reagent: Amatoxin
@@ -755,12 +778,11 @@
         damage:
           types:
             Poison: 2
-      - !type:GenericStatusEffect
-        key: Stun
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectStunned
         time: 3.0
         type: Remove
-      - !type:GenericStatusEffect
-        key: KnockedDown
+      - !type:ModifyKnockdown
         time: 3.0
         type: Remove
       - !type:ModifyStatusEffect
@@ -781,11 +803,12 @@
       effects:
       # Medium-large quantities can hurt you instead,
       # but still technically stop your bleeding.
-      - !type:ModifyBleedAmount
+      - !type:ModifyBleed
         amount: -1.5
       - !type:HealthChange
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: TranexamicAcid
           min: 15
         damage:
           types:
@@ -804,7 +827,7 @@
       effects:
       - !type:HealthChange
         conditions:
-        - !type:TotalDamage
+        - !type:TotalDamageCondition
           max: 50
         damage:
           groups:
@@ -864,7 +887,8 @@
       effects:
       - !type:EvenHealthChange
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: Ultravasculine
           min: 0
           max: 20
         damage:
@@ -872,7 +896,8 @@
             Brute: 0.5  # Corvax-Wega-Change
       - !type:HealthChange
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: Ultravasculine
           min: 0
           max: 20
         damage:
@@ -880,27 +905,29 @@
             Brute: 1.5
       - !type:EvenHealthChange
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: Ultravasculine
           min: 20
         damage:
           Toxin: -2
       - !type:HealthChange # Corvax-Wega-Change
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: Ultravasculine
           min: 20
         damage:
           groups:  # Corvax-Wega-Change
             Brute: 6  # Corvax-Wega-Change
       - !type:AdjustReagent
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
           reagent: Histamine
           min: 1
         reagent: Histamine
         amount: -1
       - !type:AdjustReagent
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
           reagent: Histamine
           min: 1
         reagent: Ultravasculine
@@ -917,7 +944,7 @@
   metabolisms:
     Medicine:
       effects:
-      - !type:ChemHealEyeDamage
+      - !type:EyeDamage
 
 - type: reagent
   id: Cognizine
@@ -932,7 +959,8 @@
       effects:
       - !type:MakeSentient
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: Cognizine
           min: 5
 
 - type: reagent
@@ -956,7 +984,8 @@
         type: Remove
       - !type:ResetNarcolepsy
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: Ethyloxyephedrine
           min: 10
       - !type:PopupMessage
         visualType: Medium
@@ -981,7 +1010,8 @@
         type: Remove
       - !type:ResetNarcolepsy
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: Diphenylmethylamine
           min: 5
       - !type:PopupMessage
         visualType: Medium
@@ -1007,37 +1037,41 @@
             Caustic: -3  # Corvax-Wega-Change
       - !type:HealthChange
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: Sigynate
           min: 16
         damage:
           types:
             Heat: 2  # Corvax-Wega-Change
       - !type:Jitter
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: Sigynate
           min: 20
       - !type:PopupMessage
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: Sigynate
           min: 20
         type: Local
         visualType: Medium
         messages: [ "generic-reagent-effect-nauseous" ]
         probability: 0.2
-      - !type:ChemVomit
+      - !type:Vomit
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: Sigynate
           min: 30
         probability: 0.02
-      - !type:ChemVomit
+      - !type:Vomit
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
           reagent: Arithrazine
           min: 1
         probability: 0.1
       - !type:PopupMessage
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
           reagent: Arithrazine
           min: 1
         type: Local
@@ -1063,7 +1097,8 @@
             Slash: -3  # Corvax-Wega-Change
       - !type:HealthChange
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: Lacerinol
           min: 12
         damage:
           types:
@@ -1081,17 +1116,18 @@
     Medicine:
           # metabolismRate: 0.25  # Corvax-Wega-Change
       effects:
-      - !type:ModifyBleedAmount  # Corvax-Wega-Change
+      - !type:ModifyBleed  # Corvax-Wega-Change
         amount: -1.5  # Corvax-Wega-Change
       - !type:HealthChange
         damage:
           types:
             Piercing: -4  # Corvax-Wega-Change
-            Blunt: 0.1  # Corvax-Wega-Change 
+            Blunt: 0.1  # Corvax-Wega-Change
       - !type:HealthChange
         conditions:
-        - !type:ReagentThreshold
-          min: 11  # Corvax-Wega-Change
+        - !type:ReagentCondition
+          reagent: Puncturase
+          min: 12  # Corvax-Wega-Change
         damage:
           types:
             Blunt: 5  # Corvax-Wega-Change
@@ -1117,7 +1153,8 @@
             Blunt: -3.5  # Corvax-Wega-Change
       - !type:HealthChange
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: Bruizine
           min: 10.5
         damage:
           types:
@@ -1146,16 +1183,17 @@
       # Corvax-Wega-BloodCult-start
       - !type:HolyPurification
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: Holywater
           min: 40
        # Corvax-Wega-BloodCult-end
       - !type:HealthChange
         conditions:
-        - !type:TotalDamage
+        - !type:TotalDamageCondition
           max: 50
-        - !type:OrganType
-          type: Vampire
-          shouldHave: false
+        - !type:MetabolizerTypeCondition
+          type: [ Vampire ]
+          inverted: true
         damage:
           types:
             Blunt: -0.2
@@ -1163,17 +1201,16 @@
             Heat: -0.2
             Shock: -0.2
             Cold: -0.2
-
   reactiveEffects:
     Extinguish:
       methods: [ Touch ]
       effects:
-      - !type:ExtinguishReaction
+      - !type:Extinguish
     Acidic:
       methods: [ Touch ]
       effects:
       - !type:HealthChange
-        scaleByQuantity: true
+        scaling: true
         ignoreResistances: false
         damage:
           types:
@@ -1214,20 +1251,23 @@
       # od causes massive bleeding
       - !type:HealthChange
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: Pyrazine
           min: 20
         damage:
           types:
             Slash: 0.5
             Piercing: 0.5
-      - !type:ChemVomit
+      - !type:Vomit
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: Pyrazine
           min: 15
         probability: 0.1
       - !type:Emote
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: Pyrazine
           min: 20
         emote: Scream
         probability: 0.2
@@ -1265,19 +1305,22 @@
       # od makes you freeze to death
       - !type:HealthChange
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: Insuzine
           min: 12
         damage:
           types:
             Cold: 2  # Corvax-Wega-Change
       - !type:AdjustTemperature
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: Insuzine
           min: 12
         amount: -30000
       - !type:Jitter
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: Insuzine
           min: 12
 
 - type: reagent
@@ -1296,7 +1339,7 @@
           seconds: 20
           conditions:
           #Patient must be dead and in a cryo tube (or something cold)
-          - !type:Temperature
+          - !type:TemperatureCondition
             max: 150.0
           - !type:MobStateCondition
             mobstate: Dead
@@ -1321,7 +1364,7 @@
       effects:
         - !type:HealthChange
           conditions:
-          - !type:Temperature
+          - !type:TemperatureCondition
             max: 213.0
           damage:
             groups:
@@ -1344,7 +1387,7 @@
       effects:
       - !type:HealthChange
         conditions:
-        - !type:Temperature
+        - !type:TemperatureCondition
           max: 213.0
         damage:
           types:
@@ -1366,7 +1409,8 @@
       effects:
       - !type:PopupMessage
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: Mannitol
           min: 15
         type: Local
         visualType: Medium
@@ -1386,7 +1430,8 @@
       effects:
       - !type:HealthChange
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: Psicodine
           min: 30
         damage:
           types:
@@ -1394,11 +1439,11 @@
       - !type:ModifyStatusEffect
         effectProto: StatusEffectSeeingRainbow
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: Psicodine
           min: 30
         type: Add
         time: 8
-        refresh: false
       - !type:GenericStatusEffect
         key: Jitter
         time: 2.0
@@ -1432,10 +1477,10 @@
         component: RadiationProtection
         time: 2
         type: Add
-        refresh: false
       - !type:HealthChange
         conditions:
-          - !type:ReagentThreshold
+          - !type:ReagentCondition
+            reagent: PotassiumIodide
             min: 20
         damage:
           types:
@@ -1460,7 +1505,6 @@
         effectProto: StatusEffectDrowsiness
         time: 4
         type: Add
-        refresh: false
       - !type:GenericStatusEffect
         key: Jitter
         time: 4.0

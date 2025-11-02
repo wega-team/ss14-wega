@@ -29,7 +29,6 @@ public sealed partial class DeployableTurretSystem : SharedDeployableTurretSyste
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly DeviceNetworkSystem _deviceNetwork = default!;
     [Dependency] private readonly BatteryWeaponFireModesSystem _fireModes = default!;
-    [Dependency] private readonly BatteryWeaponHitscanModesSystem _fireMode = default!; // Corvax-Wega-Weapons
     [Dependency] private readonly TurretTargetSettingsSystem _turretTargetingSettings = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
@@ -86,12 +85,7 @@ public sealed partial class DeployableTurretSystem : SharedDeployableTurretSyste
         {
             if (TryComp<BatteryWeaponFireModesComponent>(ent, out var batteryWeaponFireModes))
                 _fireModes.TrySetFireMode(ent, batteryWeaponFireModes, armamentState.Value);
-			
-			// Corvax-Wega-Weapons-start
-            if (TryComp<BatteryWeaponHitscanModesComponent>(ent, out var batteryWeaponHitscanMode))
-                _fireMode.TrySetFireMode(ent, batteryWeaponHitscanMode, armamentState.Value);
-			// Corvax-Wega-Weapons-end
-			
+
             TrySetState(ent, armamentState.Value >= 0);
             return;
         }

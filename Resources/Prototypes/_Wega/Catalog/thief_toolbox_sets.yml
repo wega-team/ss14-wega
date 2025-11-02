@@ -11,17 +11,17 @@
   - ClothingEyesHudDiagnostic
   - Emag
 
-- type: thiefBackpackSet
-  id: SpySet
-  name: thief-backpack-category-spy-name
-  description: thief-backpack-category-spy-description
-  sprite:
-    sprite: Objects/Devices/camera_bug.rsi
-    state: camera_bug
-  content:
-  - WiretappingKit
-  - CameraBug
-  - ClothingEyesSecHudChameleon
+# - type: thiefBackpackSet
+  # id: SpySet
+  # name: thief-backpack-category-spy-name
+  # description: thief-backpack-category-spy-description
+  # sprite:
+    # sprite: Objects/Devices/camera_bug.rsi
+    # state: camera_bug
+  # content:
+  # - ClothingEyesHudSyndicateCamera
+  # - CameraBug
+  # - ClothingEyesSecHudChameleon
 
 - type: thiefBackpackSet
   id: ThiefPAISet

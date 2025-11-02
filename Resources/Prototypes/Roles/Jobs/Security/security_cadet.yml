@@ -5,11 +5,11 @@
   playTimeTracker: JobSecurityCadet
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 36000 #10 hrs # Corvax-RoleTime
-    #- !type:DepartmentTimeRequirement Corvax-Wega
-    #  department: Security
-    #  time: 72000 #20 hrs # Corvax-RoleTime
-    #  inverted: true # stop playing intern if you're good at security!
+      time: 10h # Corvax-RoleTime
+    # - !type:DepartmentTimeRequirement Corvax-Wega
+    #   department: Security
+    #   time: 20h # Corvax-RoleTime 5
+    #   inverted: true # stop playing intern if you're good at security!
     - !type:TraitsRequirement #Corvax-TraitsRequirement
       inverted: true
       traits:
@@ -25,6 +25,8 @@
   - Service
   - External
   - Cryogenics
+  - GenpopEnter
+  - GenpopLeave
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]

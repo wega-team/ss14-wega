@@ -1,6 +1,7 @@
 using Content.Server.Chat.Systems;
 using Content.Server.Popups;
 using Content.Shared.Body.Events;
+using Content.Shared.Chat;
 using Content.Shared.Clothing.Components;
 using Content.Shared.Disease;
 using Content.Shared.Disease.Components;

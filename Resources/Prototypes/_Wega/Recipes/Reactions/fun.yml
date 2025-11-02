@@ -8,5 +8,5 @@
     Cellulose:
       amount: 7
   effects:
-    - !type:CreateEntityReactionEffect
+    - !type:SpawnEntity
       entity: SpaceCash100

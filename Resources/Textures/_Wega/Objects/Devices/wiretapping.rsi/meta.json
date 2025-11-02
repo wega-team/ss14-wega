@@ -11,7 +11,28 @@
       "name": "wiretapping_server"
     },
 	{
-      "name": "wiretapping_camera"
+      "name": "wiretapping_camera-a"
+    },
+	{
+      "name": "wiretapping_camera-b"
+    },
+	{
+      "name": "wiretapping_camera-c"
+    },
+	{
+      "name": "wiretapping_camera-d"
+    },
+    {
+      "name": "wiretapping_server-a"
+    },
+    {
+      "name": "wiretapping_server-b"
+    },
+    {
+      "name": "wiretapping_server-c"
+    },
+    {
+      "name": "wiretapping_server-d"
     }
   ]
 }

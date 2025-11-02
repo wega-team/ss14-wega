@@ -25,10 +25,11 @@
       - !type:Polymorph
         prototype: PolymorphDiona
         conditions:
-        - !type:OrganType
-          type: Animal
-          shouldHave: false
-        - !type:ReagentThreshold
+        - !type:MetabolizerTypeCondition
+          type: [ Animal ]
+          inverted: true
+        - !type:ReagentCondition
+          reagent: RelaxingTea
           min: 50
     Drink:
       effects:
@@ -41,7 +42,6 @@
         component: SeeingRainbows
         type: Add
         time: 2
-        refresh: false
 
 - type: reagent
   id: GrapeJuiceInvisible

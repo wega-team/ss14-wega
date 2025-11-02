@@ -1,6 +1,6 @@
 - type: entity
-  id: ClothingBeltAssaultFilled
-  parent: ClothingBeltAssault
+  id: ClothingBeltMilitaryWebbingFilled
+  parent: ClothingBeltMilitaryWebbing
   suffix: Filled
   components:
   - type: EntityTableContainerFill

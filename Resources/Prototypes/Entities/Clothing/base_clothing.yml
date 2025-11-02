@@ -22,7 +22,7 @@
     - reagents: [Water, SpaceCleaner]
       methods: [Touch]
       effects:
-      - !type:WashDirtReaction
+      - !type:WashDirt
   # Corvax-Wega-Dirtable-end
 
 - type: entity
@@ -44,7 +44,7 @@
   components:
   - type: AllowSuitStorage
     whitelist:
-      tags:
+      components:
       - GasTank
 
 # for clothing that has a single item slot to insert and alt click out.

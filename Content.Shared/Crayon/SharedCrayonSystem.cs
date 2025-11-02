@@ -1,7 +1,6 @@
-﻿// Corvax-Wega-Full-Edit
+﻿// Corvax-Wega-Full-Edit-start
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Input;
-using Content.Shared.Interaction.Events;
 using Robust.Shared.Input.Binding;
 
 namespace Content.Shared.Crayon;
@@ -9,7 +8,6 @@ namespace Content.Shared.Crayon;
 public abstract class SharedCrayonSystem : EntitySystem
 {
     [Dependency] private readonly SharedHandsSystem _hands = default!;
-    [Dependency] private readonly SharedUserInterfaceSystem _uiSystem = default!;
 
     private readonly Angle _rotationIncrement = Angle.FromDegrees(2.5);
 
@@ -21,8 +19,6 @@ public abstract class SharedCrayonSystem : EntitySystem
             .Bind(ContentKeyFunctions.MouseWheelUp, new PointerInputCmdHandler(MouseWheelUp))
             .Bind(ContentKeyFunctions.MouseWheelDown, new PointerInputCmdHandler(MouseWheelDown))
             .Register<SharedCrayonSystem>();
-
-        SubscribeLocalEvent<CrayonComponent, DroppedEvent>(OnCrayonDropped);
     }
 
     private bool MouseWheelUp(in PointerInputCmdHandler.PointerInputCmdArgs args)
@@ -49,9 +45,5 @@ public abstract class SharedCrayonSystem : EntitySystem
 
         return true;
     }
-
-    private void OnCrayonDropped(EntityUid uid, CrayonComponent component, DroppedEvent args)
-    {
-        _uiSystem.CloseUi(uid, CrayonComponent.CrayonUiKey.Key, args.User);
-    }
 }
+// Corvax-Wega-Full-Edit-end

@@ -6,6 +6,7 @@
     Brutepack: 3
     Ointment: 3
     Bloodpack: 3
+    Tyriumpack: 1 # Corvax-Wega
     ChemistryBottleEpinephrine: 3
     Syringe: 3
     PillCanisterTricordrazine: 2
@@ -20,6 +21,7 @@
     AloeCream: 2
     Gauze: 3
     Brutepack: 3
+    Tyriumpack: 1 # Corvax-Wega
     Ointment: 2
     Bloodpack: 3
     ChemistryBottleEpinephrine: 3
@@ -37,6 +39,7 @@
     Brutepack: 5
     Ointment: 5
     Bloodpack: 5
+    Tyriumpack: 2 # Corvax-Wega
     Tourniquet: 2
     ChemistryBottleEpinephrine: 3
     ChemistryBottleBicaridine: 1
@@ -64,6 +67,7 @@
     Brutepack: 5
     Ointment: 4
     Bloodpack: 5
+    Tyriumpack: 2 # Corvax-Wega
     Tourniquet: 1
     ChemistryBottleEpinephrine: 3
     Syringe: 5

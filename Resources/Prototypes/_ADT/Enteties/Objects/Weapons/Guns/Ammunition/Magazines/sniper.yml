@@ -12,7 +12,7 @@
     whitelist:
       tags:
         - CartridgeAntiMateriel
-    capacity: 6
+    capacity: 8
     soundRack:
       path: /Audio/Corvax/Weapons/Guns/Cock/shotgun_cock.ogg # Corvax-Guns
   - type: Item

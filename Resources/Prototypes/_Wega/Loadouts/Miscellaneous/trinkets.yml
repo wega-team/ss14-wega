@@ -47,3 +47,59 @@
     back:
     - PlushieTajar
   groupBy: "wegatoyload"
+
+- type: loadout
+  id: PlushieArachind
+  storage:
+    back:
+    - PlushieArachind
+  groupBy: "wegatoyload"
+
+- type: loadout
+  id: PlushieMoth
+  storage:
+    back:
+    - PlushieMoth
+  groupBy: "wegatoyload"
+
+- type: loadout
+  id: PlushieBee
+  storage:
+    back:
+    - PlushieBee
+  groupBy: "wegatoyload"
+
+- type: loadout
+  id: PlushieNar
+  storage:
+    back:
+    - PlushieNar
+  groupBy: "wegatoyload"
+
+- type: loadout
+  id: PlushieRatvar
+  storage:
+    back:
+    - PlushieRatvar
+  groupBy: "wegatoyload"
+
+- type: loadout
+  id: PlushieSharkPink
+  storage:
+    back:
+    - PlushieSharkPink
+  groupBy: "wegatoyload"
+
+- type: loadout
+  id: PlushieSharkGrey
+  storage:
+    back:
+    - PlushieSharkGrey
+  groupBy: "wegatoyload"
+
+- type: loadout
+  id: PlushieSharkBlue
+  storage:
+    back:
+    - PlushieSharkBlue
+  groupBy: "wegatoyload"

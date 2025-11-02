@@ -55,16 +55,16 @@
       - !type:SatiateThirst
         factor: 1.0
         conditions:
-          - !type:OrganType
-            type: Ariral
-            shouldHave: false
+        - !type:MetabolizerTypeCondition
+          type: [ Ariral ]
+          inverted: true
     Poison:
       effects:
       - !type:HealthChange
         conditions:
-          - !type:OrganType
-            type: Ariral
-            shouldHave: false
+        - !type:MetabolizerTypeCondition
+          type: [ Ariral ]
+          inverted: true
         damage:
           types:
             Poison: 0.5

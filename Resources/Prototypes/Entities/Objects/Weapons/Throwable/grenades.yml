@@ -188,6 +188,8 @@
     totalIntensity: 400
     intensitySlope: 30
     maxIntensity: 125
+    deleteAfterExplosion: false
+    repeatable: true
     canCreateVacuum: true
   - type: TimerTrigger
     delay: 4.5
@@ -462,22 +464,7 @@
       path: /Audio/Effects/hallelujah.ogg
   - type: StaticPrice
     price: 10000
-# Corvax-HiddenDesc-Start
-  - type: HiddenDescription
-    entries:
-    - label: corvax-hidden-desc-HolyHandGrenade-syndicate
-      whitelistMind:
-        mindRoles:
-        - TraitorRole
-        - NukeopsRole
-    - label: corvax-hidden-desc-HolyHandGrenade-research
-      jobRequired:
-        - ResearchAssistant
-        - ResearchDirector
-        - Scientist
-        - Borg
-# Corvax-HiddenDesc-End
-          
+
 - type: entity
   parent: [ GrenadeBase, BaseSecurityContraband ]
   id: SmokeGrenade

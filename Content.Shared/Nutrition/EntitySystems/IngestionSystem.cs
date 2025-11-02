@@ -13,6 +13,7 @@ using Content.Shared.Forensics;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
+using Content.Shared.Interaction.Components; // Corvax-Wega
 using Content.Shared.Interaction.Events;
 using Content.Shared.Inventory;
 using Content.Shared.Mobs.Systems;
@@ -21,6 +22,7 @@ using Content.Shared.Popups;
 using Content.Shared.Tools.EntitySystems;
 using Content.Shared.Verbs;
 using Content.Shared.Whitelist;
+using Content.Shared.Xenobiology.Components; // Corvax-Wega-Xenobiology
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Prototypes;
 
@@ -118,8 +120,7 @@ public sealed partial class IngestionSystem : EntitySystem
     /// <param name="user">The entity who is trying to make this happen.</param>
     /// <param name="target">The entity who is being made to ingest something.</param>
     /// <param name="ingested">The entity that is trying to be ingested.</param>
-    /// <param name="ingest">Bool that determines whethere this is a Try or a Can effectively.
-    /// When set to true, it tries to ingest, when false it checks if we can.</param>
+    /// <param name="ingest"> When set to true, it tries to ingest. When false, it only checks if we can.</param>
     /// <returns>Returns true if we can ingest the item.</returns>
     private bool AttemptIngest(EntityUid user, EntityUid target, EntityUid ingested, bool ingest)
     {
@@ -177,8 +178,10 @@ public sealed partial class IngestionSystem : EntitySystem
     /// </summary>
     /// <param name="food">Entity being eaten</param>
     /// <param name="stomachs">Stomachs available to digest</param>
-    public bool IsDigestibleBy(EntityUid food, List<Entity<StomachComponent, OrganComponent>> stomachs)
+    /// <param name="popup">Should we also display popup text if it exists?</param>
+    public bool IsDigestibleBy(EntityUid food, List<Entity<StomachComponent, OrganComponent>> stomachs, out bool popup)
     {
+        popup = false;
         var ev = new IsDigestibleEvent();
         RaiseLocalEvent(food, ref ev);
 
@@ -210,6 +213,7 @@ public sealed partial class IngestionSystem : EntitySystem
         }
 
         // If we didn't find a stomach that can digest our food then it doesn't exist.
+        popup = true;
         return false;
     }
 
@@ -247,9 +251,9 @@ public sealed partial class IngestionSystem : EntitySystem
             return;
 
         // Can we digest the specific item we're trying to eat?
-        if (!IsDigestibleBy(args.Ingested, stomachs))
+        if (!IsDigestibleBy(args.Ingested, stomachs, out var popup))
         {
-            if (!args.Ingest)
+            if (!args.Ingest || !popup)
                 return;
 
             if (forceFed)
@@ -362,6 +366,9 @@ public sealed partial class IngestionSystem : EntitySystem
 
         var split = _solutionContainer.SplitSolution(solution.Value, transfer);
 
+        if (beforeEv.Refresh)
+            _solutionContainer.TryAddSolution(solution.Value, split);
+
         var ingestEv = new IngestingEvent(food, split, forceFed);
         RaiseLocalEvent(entity, ref ingestEv);
 
@@ -370,9 +377,6 @@ public sealed partial class IngestionSystem : EntitySystem
         // Everything is good to go item has been successfuly eaten
         var afterEv = new IngestedEvent(args.User, entity, split, forceFed);
         RaiseLocalEvent(food, ref afterEv);
-
-        if (afterEv.Refresh)
-            _solutionContainer.TryAddSolution(solution.Value, split);
 
         _stomach.TryTransferSolution(stomachToUse.Value.Owner, split, stomachToUse);
 
@@ -523,6 +527,12 @@ public sealed partial class IngestionSystem : EntitySystem
 
         if (entity.Owner == user || !args.CanInteract || !args.CanAccess)
             return;
+
+        if (HasComp<SlimeHungerComponent>(args.Target)) // Corvax-Wega-Xenobiology
+            return; // Corvax-Wega-Xenobiology
+
+        if (HasComp<UnremoveableComponent>(entity)) // Corvax-Wega
+            return; // Corvax-Wega
 
         if (!TryGetIngestionVerb(user, entity, entity.Comp.Edible, out var verb))
             return;

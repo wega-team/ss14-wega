@@ -207,7 +207,7 @@
   - type: FlavorProfile
     flavors:
       - banana
-  - type: Food
+  - type: Edible
     trash:
     - TrashBlueSpaceBananaPeel
   - type: SolutionContainerManager
@@ -321,7 +321,7 @@
     intensity: 0.3
     slope: 0.1
   - type: PointLight
-    color: "#19FF19FF" 
+    color: "#19FF19FF"
     energy: 2.5
     radius: 1.5
     softness: 1

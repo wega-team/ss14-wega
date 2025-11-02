@@ -1,6 +1,5 @@
 using System.Linq;
 using Content.Server.Administration.Logs;
-using Content.Server.Emp;
 using Content.Server.StationEvents.Components;
 using Content.Shared.CartridgeLoader;
 using Content.Shared.CartridgeLoader.Cartridges;
@@ -44,7 +43,7 @@ public sealed class NanoChatCartridgeSystem : SharedNanoChatCartridgeSystem
         SubscribeLocalEvent<NanoChatCartridgeComponent, CartridgeRemovedEvent>(OnCartridgeRemoved);
 
         SubscribeLocalEvent<NanoChatCartridgeComponent, EmpPulseEvent>(OnEmpPulse);
-        SubscribeLocalEvent<NanoChatCartridgeComponent, EmpDisabledRemoved>(OnEmpFinished);
+        SubscribeLocalEvent<NanoChatCartridgeComponent, EmpDisabledRemovedEvent>(OnEmpFinished);
     }
 
     private void OnRoundRestart(RoundRestartCleanupEvent args) { _activeChats.Clear(); _groups.Clear(); }
@@ -117,7 +116,7 @@ public sealed class NanoChatCartridgeSystem : SharedNanoChatCartridgeSystem
         UpdateUiState(ent);
     }
 
-    private void OnEmpFinished(Entity<NanoChatCartridgeComponent> ent, ref EmpDisabledRemoved args)
+    private void OnEmpFinished(Entity<NanoChatCartridgeComponent> ent, ref EmpDisabledRemovedEvent args)
     {
         UpdateUiState(ent);
     }

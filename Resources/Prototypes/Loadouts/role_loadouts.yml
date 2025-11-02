@@ -15,6 +15,7 @@
   # Corvax-Wega-end
   - Survival
   - Trinkets
+  - CaptainJobTrinkets
   - GroupSpeciesBreathTool
 
 - type: roleLoadout
@@ -35,6 +36,7 @@
   - Glasses
   - Survival
   - Trinkets
+  - HoPJobTrinkets
   - GroupSpeciesBreathTool
 
 # Silicons
@@ -64,6 +66,7 @@
   - Glasses
   - Survival
   - Trinkets
+  - PassengerJobTrinkets
   - GroupSpeciesBreathTool
   # Corvax-Wega-start
   - Top
@@ -83,6 +86,7 @@
   - Glasses
   - Survival
   - Trinkets
+  - BartenderJobTrinkets
   - GroupSpeciesBreathTool
   # Corvax-Wega-start
   - Top
@@ -100,6 +104,7 @@
   - Glasses
   - Survival
   - Trinkets
+  - ServiceWorkerJobTrinkets
   - GroupSpeciesBreathTool
   # Corvax-Wega-start
   - Top
@@ -120,6 +125,7 @@
   - Glasses
   - Survival
   - Trinkets
+  - ChefJobTrinkets
   - GroupSpeciesBreathTool
   # Corvax-Wega-start
   - Top
@@ -137,6 +143,7 @@
   - Glasses
   - Survival
   - Trinkets
+  - LibrarianJobTrinkets
   - GroupSpeciesBreathTool
   # Corvax-Wega-start
   - Top
@@ -155,6 +162,7 @@
   - Glasses
   - Survival
   - Trinkets
+  - LawyerJobTrinkets
   - GroupSpeciesBreathTool
   # Corvax-Wega-start
   - Top
@@ -177,6 +185,7 @@
   - Glasses
   - Survival
   - Trinkets
+  - ChaplainJobTrinkets
   - GroupSpeciesBreathTool
   # Corvax-Wega-start
   - Top
@@ -197,6 +206,7 @@
   - Glasses
   - Survival
   - Trinkets
+  - JanitorJobTrinkets
   - JanitorPlunger
   - GroupSpeciesBreathTool
   # Corvax-Wega-start
@@ -217,6 +227,7 @@
   - Glasses
   - Survival
   - Trinkets
+  - BotanistJobTrinkets
   - GroupSpeciesBreathTool
   # Corvax-Wega-start
   - Top
@@ -237,7 +248,7 @@
   - ClownShoes
   - Glasses
   - SurvivalClown
-  - Trinkets
+  - ClownJobTrinkets
   # Corvax-Wega-start
   - Top
   - Bottom
@@ -258,7 +269,7 @@
   - MimeBelt
   - Glasses
   - SurvivalMime
-  - Trinkets
+  - MimeJobTrinkets
   # Corvax-Wega-start
   - Top
   - Bottom
@@ -267,6 +278,7 @@
 
 - type: roleLoadout
   id: JobMusician
+  canCustomizeName: true
   groups:
   - Inventory # Corvax-Loadouts
   - GroupTankHarness
@@ -276,6 +288,7 @@
   - Glasses
   - Survival
   - Trinkets
+  - MusicianJobTrinkets
   - Instruments
   - GroupSpeciesBreathTool
   # Corvax-Wega-start
@@ -304,6 +317,7 @@
   - Glasses
   - Survival
   - Trinkets
+  - QuartermasterJobTrinkets
   - GroupSpeciesBreathTool
 
 - type: roleLoadout
@@ -320,6 +334,7 @@
   - Glasses
   - Survival
   - Trinkets
+  - CargoTechnicianJobTrinkets
   - GroupSpeciesBreathTool
   # Corvax-Wega-start
   - Top
@@ -338,6 +353,7 @@
   - Glasses
   - Survival
   - Trinkets
+  - SalvageSpecialistJobTrinkets
   - GroupSpeciesBreathTool
   # Corvax-Wega-start
   - Top
@@ -364,6 +380,7 @@
   # Corvax-Wega-end
   - SurvivalExtended
   - Trinkets
+  - ChiefEngineerJobTrinkets
   - GroupSpeciesBreathTool
 
 - type: roleLoadout
@@ -375,6 +392,7 @@
   - StationEngineerBackpack
   - SurvivalExtended
   - Trinkets
+  - TechnicalAssistantJobTrinkets
   - GroupSpeciesBreathTool
   # Corvax-Wega-start
   - Top
@@ -395,6 +413,7 @@
   - StationEngineerID
   - SurvivalExtended
   - Trinkets
+  - StationEngineerJobTrinkets
   - GroupSpeciesBreathTool
   # Corvax-Wega-start
   - Top
@@ -413,6 +432,7 @@
   - AtmosphericTechnicianShoes
   - SurvivalExtended
   - Trinkets
+  - AtmosphericTechnicianJobTrinkets
   - GroupSpeciesBreathTool
   # Corvax-Wega-start
   - Top
@@ -441,6 +461,7 @@
   - Glasses
   - Survival
   - Trinkets
+  - ResearchDirectorJobTrinkets
   - GroupSpeciesBreathTool
 
 - type: roleLoadout
@@ -459,6 +480,7 @@
   - Glasses
   - Survival
   - Trinkets
+  - ScientistJobTrinkets
   - GroupSpeciesBreathTool
   # Corvax-Wega-start
   - Top
@@ -476,6 +498,7 @@
   - Glasses
   - Survival
   - Trinkets
+  - ResearchAssistantJobTrinkets
   - GroupSpeciesBreathTool
   # Corvax-Wega-start
   - Top
@@ -502,6 +525,7 @@
   # Corvax-Wega-end
   - SurvivalSecurity
   - Trinkets
+  - HeadofSecurityJobTrinkets
   - SecurityStar
   - GroupSpeciesBreathToolSecurity
 
@@ -517,6 +541,7 @@
   - SecurityShoes
   - SurvivalSecurity
   - Trinkets
+  - WardenJobTrinkets
   - SecurityStar
   - GroupSpeciesBreathToolSecurity
   # Corvax-Wega-start
@@ -538,6 +563,7 @@
   - SecurityBelt
   - SurvivalSecurity
   - Trinkets
+  - SecurityJobTrinkets
   - SecurityStar
   - GroupSpeciesBreathToolSecurity
   # Corvax-Wega-start
@@ -558,6 +584,7 @@
   - SecurityShoes
   - SurvivalSecurity
   - Trinkets
+  - DetectiveJobTrinkets
   - SecurityStar
   - GroupSpeciesBreathToolSecurity
   # Corvax-Wega-start
@@ -574,6 +601,7 @@
   - SecurityBackpack
   - SurvivalSecurity
   - Trinkets
+  - SecurityCadetJobTrinkets
   - GroupSpeciesBreathToolSecurity
   # Corvax-Wega-start
   - Top
@@ -604,6 +632,7 @@
   - MedicalEyewear
   - SurvivalMedical
   - Trinkets
+  - ChiefMedicalOfficerJobTrinkets
   - GroupSpeciesBreathToolMedical
 
 - type: roleLoadout
@@ -622,6 +651,7 @@
   - MedicalEyewear
   - SurvivalMedical
   - Trinkets
+  - MedicalDoctorJobTrinkets
   - GroupSpeciesBreathToolMedical
   # Corvax-Wega-start
   - Top
@@ -639,6 +669,7 @@
   - MedicalEyewear
   - SurvivalMedical
   - Trinkets
+  - MedicalInternJobTrinkets
   - GroupSpeciesBreathToolMedical
   # Corvax-Wega-start
   - Top
@@ -659,6 +690,7 @@
   - MedicalShoes
   - SurvivalMedical
   - Trinkets
+  - ChemistJobTrinkets
   - GroupSpeciesBreathToolMedical
   # Corvax-Wega-start
   - Top
@@ -681,6 +713,7 @@
   - MedicalEyewear
   - SurvivalMedical
   - Trinkets
+  - ParamedicJobTrinkets
   - GroupSpeciesBreathToolMedical
   # Corvax-Wega-start
   - Top
@@ -698,6 +731,7 @@
   - Glasses
   - Survival
   - Trinkets
+  - ZookeeperJobTrinkets
   - GroupSpeciesBreathTool
   # Corvax-Wega-start
   - Top
@@ -715,6 +749,7 @@
   - Glasses
   - Survival
   - Trinkets
+  - ReporterJobTrinkets
   - GroupSpeciesBreathTool
   # Corvax-Wega-start
   - Top
@@ -732,6 +767,7 @@
   - Glasses
   - Survival
   - Trinkets
+  - PsychologistJobTrinkets
   - GroupSpeciesBreathTool
   # Corvax-Wega-start
   - Top
@@ -750,6 +786,7 @@
   - Glasses
   - Survival
   - Trinkets
+  - BoxerJobTrinkets
   - GroupSpeciesBreathTool
   # Corvax-Wega-start
   - Top

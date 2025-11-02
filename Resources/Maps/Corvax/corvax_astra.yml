@@ -1,4 +1,4 @@
-meta:
+﻿meta:
   format: 7
   category: Map
   engineVersion: 266.0.0
@@ -113342,7 +113342,6 @@ entities:
     - type: Transform
       pos: 56.5,-18.5
       parent: 2
-    - type: BombingTarget
 - proto: DefaultStationBeaconArrivals
   entities:
   - uid: 16773
@@ -113810,7 +113809,6 @@ entities:
       text: Тюрьма
     - type: WarpPoint
       location: Тюрьма
-    - type: BombingTarget
   - uid: 16821
     components:
     - type: Transform
@@ -186077,9 +186075,6 @@ entities:
   entities:
   - uid: 15
     components:
-    - type: MetaData
-      desc: 'Не содержит взрывчатых веществ. «Благослови, Господи, сию ручную державу, да помоги мне исполнить мечты мои!». '
-      name: храмовая держава
     - type: Transform
       parent: 5
     - type: Physics
@@ -186088,7 +186083,6 @@ entities:
     - ExplodeOnTrigger
     - Explosive
     - PointLight
-    - HiddenDescription
     - Contraband
 - proto: HospitalCurtains
   entities:
@@ -204929,7 +204923,7 @@ entities:
 
         ▒▒▒ Мы изучали. Всё: одежду, пищу, символы, кровь.
 
-        Их структура — кротка. Их генетика — линейна. 
+        Их структура — кротка. Их генетика — линейна.
 
         ▒▒▒ Мы создали.
 
@@ -280188,7 +280182,7 @@ entities:
     - type: MetaData
       desc: ҂҈҉
       name: >2
-         ҨҖ҂ҜҘҨҖ  
+         ҨҖ҂ҜҘҨҖ
     - type: Transform
       pos: 15.568812,-27.999277
       parent: 2
