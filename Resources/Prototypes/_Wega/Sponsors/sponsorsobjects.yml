@@ -36,6 +36,7 @@
       eyes:
       - state: equipped-EYES
       - state: glitter
+        shader: unshaded
   - type: Tag
     tags: []
 
