@@ -16,7 +16,7 @@
   name: mars
   description: "He's so small, cute, fluffy and AIRY."
 
-## SPONSOR ClOUT WEGA
+## SPONSOR LOADOUT WEGA
 
 # Eyes
 
@@ -36,6 +36,8 @@
       eyes:
       - state: equipped-EYES
       - state: glitter
+  - type: Tag
+    tags: []
 
 # Head
 
@@ -62,7 +64,6 @@
     - ClothMade
     - Recyclable
     - HamsterWearable
-    - WhitelistChameleon
 
 # Mask
 
@@ -77,6 +78,8 @@
     sprite: _Wega/Sponsors/Clothing/Mask/sex_clown.rsi
   - type: Clothing
     sprite: _Wega/Sponsors/Clothing/Mask/sex_clown.rsi
+  - type: Tag
+    tags: []
 
 # neck
 
@@ -89,6 +92,8 @@
   components:
   - type: Sprite
     sprite: _Wega/Sponsors/Clothing/Neck/Cloak/magic_cloak.rsi
+  - type: Tag
+    tags: []
 
 - type: entity
   parent: ClothingNeckBase
@@ -99,7 +104,8 @@
   components:
   - type: Sprite
     sprite: _Wega/Sponsors/Clothing/Neck/Cloak/manly_cloak.rsi
-    
+  - type: Tag
+    tags: []
 
 ## UNIFORM
 
@@ -116,6 +122,8 @@
     sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/black_revealing_dress.rsi
   - type: Clothing
     sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/black_revealing_dress.rsi
+  - type: Tag
+    tags: []
 
 - type: entity
   parent: ClothingUniformBase
@@ -128,6 +136,8 @@
     sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/red_revealing_dress.rsi
   - type: Clothing
     sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/red_revealing_dress.rsi
+  - type: Tag
+    tags: []
 
 - type: entity
   parent: ClothingUniformBase
@@ -140,6 +150,8 @@
     sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/blue_kimono.rsi
   - type: Clothing
     sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/blue_kimono.rsi
+  - type: Tag
+    tags: []
 
 - type: entity
   parent: ClothingUniformBase
@@ -152,6 +164,8 @@
     sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/elegant_bs.rsi
   - type: Clothing
     sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/elegant_bs.rsi
+  - type: Tag
+    tags: []
 
 - type: entity
   parent: ClothingUniformBase
@@ -164,6 +178,8 @@
     sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/elegant_captain.rsi
   - type: Clothing
     sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/elegant_captain.rsi
+  - type: Tag
+    tags: []
 
 - type: entity
   parent: ClothingUniformBase
@@ -176,6 +192,8 @@
     sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/elegant_ce.rai
   - type: Clothing
     sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/elegant_ce.rai
+  - type: Tag
+    tags: []
 
 - type: entity
   parent: ClothingUniformBase
@@ -188,7 +206,8 @@
     sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/elegant_clown.rsi
   - type: Clothing
     sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/elegant_clown.rsi
-
+  - type: Tag
+    tags: []
 
 - type: entity
   parent: ClothingUniformBase
@@ -201,7 +220,8 @@
     sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/elegant_cmo.rsi
   - type: Clothing
     sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/elegant_cmo.rsi
-
+  - type: Tag
+    tags: []
 
 - type: entity
   parent: ClothingUniformBase
@@ -214,6 +234,8 @@
     sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/elegant_hop.rsi
   - type: Clothing
     sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/elegant_hop.rsi
+  - type: Tag
+    tags: []
 
 - type: entity
   parent: ClothingUniformBase
@@ -226,6 +248,8 @@
     sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/elegant_hos.rsi
   - type: Clothing
     sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/elegant_hos.rsi
+  - type: Tag
+    tags: []
 
 - type: entity
   parent: ClothingUniformBase
@@ -238,6 +262,8 @@
     sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/elegant_qm.rsi
   - type: Clothing
     sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/elegant_qm.rsi
+  - type: Tag
+    tags: []
 
 - type: entity
   parent: ClothingUniformBase
@@ -250,6 +276,8 @@
     sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/elegant_rd.rsi
   - type: Clothing
     sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/elegant_rd.rsi
+  - type: Tag
+    tags: []
 
 - type: entity
   parent: ClothingUniformBase
@@ -262,6 +290,8 @@
     sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/magic_dress.rsi
   - type: Clothing
     sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/magic_dress.rsi
+  - type: Tag
+    tags: []
 
 - type: entity
   parent: ClothingUniformBase
@@ -274,6 +304,8 @@
     sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/neckline_sweater.rsi
   - type: Clothing
     sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/neckline_sweater.rsi
+  - type: Tag
+    tags: []
 
 - type: entity
   parent: ClothingUniformBase
@@ -286,6 +318,8 @@
     sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/pink_kimono.rsi
   - type: Clothing
     sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/pink_kimono.rsi
+  - type: Tag
+    tags: []
 
 - type: entity
   parent: ClothingUniformBase
@@ -298,6 +332,8 @@
     sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/sexy_sweater.rsi
   - type: Clothing
     sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/sexy_sweater.rsi
+  - type: Tag
+    tags: []
 
 # Jumpsuit
 
@@ -312,6 +348,8 @@
     sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpsuit/manly_pants.rsi
   - type: Clothing
     sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpsuit/manly_pants.rsi
+  - type: Tag
+    tags: []
 
 - type: entity
   parent: ClothingUniformBase
@@ -324,7 +362,9 @@
     sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpsuit/stylish_shirt.rsi
   - type: Clothing
     sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpsuit/stylish_shirt.rsi
-    
+  - type: Tag
+    tags: []
+
 - type: entity
   parent: ClothingUniformBase
   id: ClothingUniformJumpsuitBeautifulSweater
@@ -336,3 +376,5 @@
     sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpsuit/beautiful_sweater.rsi
   - type: Clothing
     sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpsuit/beautiful_sweater.rsi
+  - type: Tag
+    tags: []
