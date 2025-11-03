@@ -9,7 +9,7 @@
         !type:EyeColoring
           negative: true
   sprites:
-  - sprite: _Wega/Mobs/Customization/augments/headaugs.rsi
+  - sprite: _Wega/Mobs/Customization/headaugs.rsi
     state: malstrem
 
 - type: marking
@@ -23,7 +23,7 @@
         !type:EyeColoring
           negative: true
   sprites:
-  - sprite: _Wega/Mobs/Customization/augments/headaugs.rsi
+  - sprite: _Wega/Mobs/Customization/headaugs.rsi
     state: beholder
 
 - type: marking
@@ -37,7 +37,7 @@
         !type:EyeColoring
           negative: true
   sprites:
-  - sprite: _Wega/Mobs/Customization/augments/headaugs.rsi
+  - sprite: _Wega/Mobs/Customization/headaugs.rsi
     state: terminator
 
 - type: marking
@@ -51,5 +51,5 @@
         !type:EyeColoring
           negative: true
   sprites:
-  - sprite: _Wega/Mobs/Customization/augments/headaugs.rsi
+  - sprite: _Wega/Mobs/Customization/headaugs.rsi
     state: iron_jaw

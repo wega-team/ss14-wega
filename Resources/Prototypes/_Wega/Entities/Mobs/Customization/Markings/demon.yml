@@ -95,5 +95,5 @@
   markingCategory: Chest
   speciesRestriction: [Demon]
   sprites:
-  - sprite: _Wega/Mobs/Customization/demons/succubus.rsi
+  - sprite: _Wega/Mobs/Customization/demon.rsi
     state: succubus

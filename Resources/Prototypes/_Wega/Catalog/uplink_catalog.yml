@@ -125,7 +125,7 @@
   id: UplinkXC67BundleAgent
   name: uplink-xc67-name
   description: uplink-xc67-desc
-  icon: { sprite: /Textures/_/Objects/Weapons/Guns/Rifles/xc67.rsi, state: icon}
+  icon: { sprite: /Textures/_Wega/Objects/Weapons/Guns/Rifles/xc67.rsi, state: icon}
   productEntity: ClothingBackpackDuffelSyndicateFilledXC67
   discountCategory: veryRareDiscounts
   discountDownTo:
@@ -145,7 +145,7 @@
   id: UplinkXC67Bundle
   name: uplink-xc67-name
   description: uplink-xc67-desc
-  icon: { sprite: /Textures/_/Objects/Weapons/Guns/Rifles/xc67.rsi, state: icon}
+  icon: { sprite: /Textures/_Wega/Objects/Weapons/Guns/Rifles/xc67.rsi, state: icon}
   productEntity: ClothingBackpackDuffelSyndicateFilledXC67
   cost:
     Telecrystal: 19
@@ -161,7 +161,7 @@
   id: UplinkAdvansedMagboots
   name: uplink-advanced-magboots-name
   description: uplink-advanced-magboots-desc
-  icon: { sprite: _/Clothing/Shoes/Boots/advanced.rsi, state: icon }
+  icon: { sprite: _Wega_/Clothing/Shoes/Boots/advanced.rsi, state: icon }
   productEntity: ClothingShoesBootsMagAdvSynd
   cost:
     Telecrystal: 8
@@ -203,7 +203,7 @@
   id: UplinkWeaponXC67ammo
   name: uplink-xc67ammo-name
   description: uplink-xc67ammo-desc
-  icon: { sprite: /Textures/_/Objects/Weapons/Guns/Ammunition/Magazine/Rifle/ext_rifle_mag.rsi, state: base }
+  icon: { sprite: /Textures/_Wega/Objects/Weapons/Guns/Ammunition/Magazine/Rifle/ext_rifle_mag.rsi, state: base }
   productEntity: ExtMagazineRifle
   cost:
     Telecrystal: 1
@@ -282,7 +282,7 @@
   id: UplinkDesertEagle
   name: uplink-desert-eagle-name
   description: uplink-desert-eagle-desc
-  icon: { sprite: _DeadSpace/Objects/Weapons/Guns/Pistols/deserteagle.rsi, state: icon }
+  icon: { sprite: _Wega/Objects/Weapons/Guns/Pistols/deserteagle.rsi, state: icon }
   productEntity: WeaponPistolDesertEagle
   cost:
     Telecrystal: 8
@@ -293,7 +293,7 @@
   id: UplinkMagazineEagle
   name: uplink-magazine-eagle-name
   description: uplink-magazine-eagle-desc
-  icon: { sprite: _DeadSpace/Objects/Weapons/Guns/Ammunition/Magazine/Pistol/magazinedeserteagle.rsi, state: base }
+  icon: { sprite: _Wega/Objects/Weapons/Guns/Ammunition/Magazine/Pistol/magazinedeserteagle.rsi, state: base }
   productEntity: MagazineEagle
   cost:
     Telecrystal: 1
@@ -305,7 +305,7 @@
   id: UplinkMagazineEagleAP
   name: uplink-magazine-eagle-ap-name
   description: uplink-magazine-eagle-ap-desc
-  icon: { sprite: _DeadSpace/Objects/Weapons/Guns/Ammunition/Magazine/Pistol/magazinedeserteagle.rsi, state: red }
+  icon: { sprite: _Wega/Objects/Weapons/Guns/Ammunition/Magazine/Pistol/magazinedeserteagle.rsi, state: red }
   productEntity: MagazineEagleAP
   cost:
     Telecrystal: 3
@@ -332,7 +332,7 @@
   id: UplinAmmoSniper
   name: uplink-ammo-sniper-name
   description: uplink-ammo-sniper-desc
-  icon: { sprite: _/Objects/Weapons/Guns/Ammunition/Magazine/Sniper/snipers.rsi, state: mag-1 }
+  icon: { sprite: _Wega/Objects/Weapons/Guns/Ammunition/Magazine/Sniper/snipers.rsi, state: mag-1 }
   productEntity: MagazineHristovAdvanced
   cost:
     Telecrystal: 2
