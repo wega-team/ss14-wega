@@ -10,9 +10,7 @@
   - type: Clothing
     sprite: _Wega/Clothing/Belt/syndie_sheath.rsi
   - type: Item
-    size: Normal
-    shape:
-    - 0,0,0,6 
+    size: Ginormous
   - type: ItemSlots
     slots:
       item:
