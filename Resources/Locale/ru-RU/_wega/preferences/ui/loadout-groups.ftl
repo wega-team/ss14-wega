@@ -4,6 +4,10 @@ loadout-group-bottom = Нижнее белье
 loadout-group-socks = Носки
 
 # Heads
+loadout-group-sponsor-head = Спонсор, голова
+
+# Neck
+loadout-group-sponsor-neck = Спонсор, шея
 
 # Command
 loadout-group-captain-top = Капитан, верхнее белье
@@ -21,6 +25,7 @@ loadout-group-hop-bottom = Глава персонала, нижнее бель�
 loadout-group-hop-socks = Глава персонала, носки
 # Service
 loadout-group-barber-outerclothing = Барбер, верхняя одежда
+loadout-group-clown-mask = Клоун, маска
 # Cargo
 loadout-group-quartermaster-top = Квартирмейстер, верхнее белье
 loadout-group-quartermaster-bottom = Квартирмейстер, нижнее белье

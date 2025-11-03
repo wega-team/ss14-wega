@@ -1,0 +1,14 @@
+- type: loadout
+  id: ClothingShoesHeelsPink
+  equipment:
+    shoes: ClothingShoesHeelsPink
+
+- type: loadout
+  id: ClothingMaskClown
+  equipment:
+    mask: ClothingMaskClown
+
+- type: loadout
+  id: ClothingMaskBlushingClown
+  equipment:
+    mask: ClothingMaskBlushingClown

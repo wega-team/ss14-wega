@@ -204,6 +204,7 @@
   - BlueShieldJumpsuit
   - BlueShieldAltJumpsuit
   - BlueShieldJumpskirt
+  - ClothingUniformJumpskirtElegantCE
 
 - type: loadoutGroup
   id: BlueshieldBackpack
@@ -920,6 +921,7 @@
   loadouts:
   - HatPostmansoft
   - HatPostmansoftFlipped
+  - ClothingHeadHatMagic
 
 - type: loadoutGroup
   id: PostmanJumpsuit
@@ -927,6 +929,16 @@
   loadouts:
   - PostmanJumpsuit
   - PostmanJumpskirt
+  - ClothingUniformJumpskirtSexySweater
+  - ClothingUniformJumpskirtMagicDress
+  - ClothingUniformJumpskirtBlackrevealingdress
+  - ClothingUniformJumpskirtRedrevealingdress
+  - ClothingUniformJumpskirtNecklineSweater
+  - ClothingUniformJumpskirtPinkKimano
+  - ClothingUniformJumpskirtBlueKimono
+  - ClothingUniformJumpsuitStylishShirt
+  - ClothingUniformJumpsuitManlyPants
+  - ClothingUniformJumpsuitBeautifulSweater
 
 - type: loadoutGroup
   id: PostmanBackpack
@@ -944,6 +956,14 @@
   loadouts:
   - BarberOuterApronBar
 
+- type: loadoutGroup
+  id: ClownMask
+  name: loadout-group-clown-mask
+  loadouts:
+  - ClothingMaskClown
+  - ClothingMaskBlushingClown
+  - ClothingMaskElegantClownMask
+
 # Medical
 - type: loadoutGroup
   id: GeneticsJumpsuit
@@ -951,6 +971,16 @@
   loadouts:
   - GeneticsJumpsuit
   - GeneticsJumpskirt
+  - ClothingUniformJumpskirtSexySweater
+  - ClothingUniformJumpskirtMagicDress
+  - ClothingUniformJumpskirtBlackrevealingdress
+  - ClothingUniformJumpskirtRedrevealingdress
+  - ClothingUniformJumpskirtNecklineSweater
+  - ClothingUniformJumpskirtPinkKimano
+  - ClothingUniformJumpskirtBlueKimono
+  - ClothingUniformJumpsuitStylishShirt
+  - ClothingUniformJumpsuitManlyPants
+  - ClothingUniformJumpsuitBeautifulSweater
 
 - type: loadoutGroup
   id: GeneticsBackpack

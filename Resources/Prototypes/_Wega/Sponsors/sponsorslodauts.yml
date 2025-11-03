@@ -51,6 +51,7 @@
   - !type:SponsorLoadoutEffect
   equipment:
     jumpsuit: ClothingUniformJumpskirtBlackrevealingdress
+  groupBy: "sponsorjumpskirt"
 
 - type: loadout
   id: ClothingUniformJumpskirtRedrevealingdress
@@ -58,6 +59,7 @@
   - !type:SponsorLoadoutEffect
   equipment:
     jumpsuit: ClothingUniformJumpskirtRedrevealingdress
+  groupBy: "sponsorjumpskirt"
 
 - type: loadout
   id: ClothingUniformJumpskirtElegantBs
@@ -79,6 +81,13 @@
   - !type:SponsorLoadoutEffect
   equipment:
     jumpsuit: ClothingUniformJumpskirtElegantCE
+
+- type: loadout
+  id: ClothingUniformJumpskirtElegantChaplain
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtElegantChaplain
 
 - type: loadout
   id: ClothingUniformJumpskirtElegantClown
@@ -128,6 +137,7 @@
   - !type:SponsorLoadoutEffect
   equipment:
     jumpsuit: ClothingUniformJumpskirtMagicDress
+  groupBy: "sponsorjumpskirt"
 
 - type: loadout
   id: ClothingUniformJumpskirtNecklineSweater
@@ -135,6 +145,7 @@
   - !type:SponsorLoadoutEffect
   equipment:
     jumpsuit: ClothingUniformJumpskirtNecklineSweater
+  groupBy: "sponsorjumpskirt"
 
 - type: loadout
   id: ClothingUniformJumpskirtPinkKimano
@@ -142,6 +153,15 @@
   - !type:SponsorLoadoutEffect
   equipment:
     jumpsuit: ClothingUniformJumpskirtPinkKimano
+  groupBy: "sponsorjumpskirt"
+
+- type: loadout
+  id: ClothingUniformJumpskirtBlueKimono
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtBlueKimono
+  groupBy: "sponsorjumpskirt"
 
 - type: loadout
   id: ClothingUniformJumpskirtSexySweater
@@ -149,6 +169,7 @@
   - !type:SponsorLoadoutEffect
   equipment:
     jumpsuit: ClothingUniformJumpskirtSexySweater
+  groupBy: "sponsorjumpskirt"
 
 # Jumpsuit
 
@@ -158,6 +179,7 @@
   - !type:SponsorLoadoutEffect
   equipment:
     jumpsuit: ClothingUniformJumpsuitManlyPants
+  groupBy: "sponsorjumpsuit"
 
 - type: loadout
   id: ClothingUniformJumpsuitStylishShirt
@@ -165,6 +187,7 @@
   - !type:SponsorLoadoutEffect
   equipment:
     jumpsuit: ClothingUniformJumpsuitStylishShirt
+  groupBy: "sponsorjumpsuit"
 
 - type: loadout
   id: ClothingUniformJumpsuitBeautifulSweater
@@ -172,3 +195,4 @@
   - !type:SponsorLoadoutEffect
   equipment:
     jumpsuit: ClothingUniformJumpsuitBeautifulSweater
+  groupBy: "sponsorjumpsuit"

@@ -79,6 +79,9 @@
     sprite: _Wega/Sponsors/Clothing/Mask/sex_clown.rsi
   - type: Clothing
     sprite: _Wega/Sponsors/Clothing/Mask/sex_clown.rsi
+  - type: HideLayerClothing
+    slots:
+    - Hair
   - type: Tag
     tags: []
 
@@ -193,6 +196,20 @@
     sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/elegant_ce.rai
   - type: Clothing
     sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/elegant_ce.rai
+  - type: Tag
+    tags: []
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtElegantChaplain
+  name: elegant dress chaplain
+  description: A nice and tidy uniform. Shame about the bar though.
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/elegant_chaplain.rsi
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/elegant_chaplain.rsi
   - type: Tag
     tags: []
 
