@@ -88,6 +88,7 @@ surgery-welder-failed = Не получается включить инстру�
 surgery-limb-torn-off = {$limb} отрезало
 surgery-decapitated = ГОЛОВА СПАЛА С ПЛЕЧ
 surgery-explosion-limb-torn-off = {$limb} ОТОРВАЛО
+surgery-limb-regenerated = Ваша конечность снова отросла
 
 surgery-organ-removed = Орган успешно извлечен
 surgery-organ-inserted = Орган успешно присоединен

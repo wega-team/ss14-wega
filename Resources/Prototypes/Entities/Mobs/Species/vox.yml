@@ -126,9 +126,9 @@
     - map: [ "shoes" ]
     - map: [ "ears" ]
     - map: [ "eyes" ]
-    - map: [ "belt" ]
-    - map: [ "id" ]
     - map: [ "outerClothing" ]
+    - map: [ "belt" ] # Corvax-Wega-Edit
+    - map: [ "id" ] # Corvax-Wega-Edit
     - map: [ "back" ]
     - map: [ "neck" ]
     - map: [ "suitstorage" ] # This is not in the default order

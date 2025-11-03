@@ -1,4 +1,5 @@
 using System.Text;
+using Content.Shared._Wega.Resomi.Abilities.Hearing;
 using Content.Shared.CCVar;
 using Content.Shared.Chat;
 using Content.Shared.Physics;
@@ -39,8 +40,11 @@ public sealed class SoundInsulationSystem : EntitySystem
         var direction = listenerPos - sourcePos;
         var distance = direction.Length();
 
-        if (distance <= 0.1f)
+        if (distance <= 0.5f)
             return 0f;
+
+        if (TryComp<ListenUpComponent>(listener, out var listen) && distance <= listen.Radius)
+            return 0f; // Chickens have good hearing.
 
         var normalizedDir = direction.Normalized();
         var ray = new CollisionRay(sourcePos, normalizedDir, (int)(CollisionGroup.WallLayer | CollisionGroup.AirlockLayer));

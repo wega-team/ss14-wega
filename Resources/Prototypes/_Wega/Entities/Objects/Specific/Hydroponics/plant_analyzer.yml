@@ -1,0 +1,89 @@
+- type: entity
+  parent: BaseItem
+  id: PlantAnalyzerUnpowered
+  name: plant analyzer
+  description: A scanner used to evaluate a plant's various areas of growth, genetic traits and chemicals.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/plant_analyzer.rsi
+    layers:
+    - state: icon
+    - state: analyzer
+      shader: unshaded
+      visible: true
+      map: [ "enum.PowerDeviceVisualLayers.Powered" ]
+  - type: Item
+    storedRotation: -90
+  - type: Tag
+    tags:
+    - PlantAnalyzer
+  - type: ActivatableUI
+    key: enum.PlantAnalyzerUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.PlantAnalyzerUiKey.Key:
+        type: PlantAnalyzerBoundUserInterface
+  - type: ItemToggle
+    onUse: false
+  - type: PlantAnalyzer
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerCellSlotVisuals.Enabled:
+        enum.PowerDeviceVisualLayers.Powered:
+          True: { visible: true }
+          False: { visible: false }
+  - type: GuideHelp
+    guides:
+    - Botany
+    - Chemicals
+
+- type: entity
+  id: PlantAnalyzer
+  parent: [ PlantAnalyzerUnpowered, PowerCellSlotSmallItem ]
+  suffix: Powered
+  components:
+  - type: PowerCellDraw
+    drawRate: 1.2
+  - type: ToggleCellDraw
+  - type: ActivatableUIRequiresPowerCell
+
+- type: entity
+  id: PlantAnalyzerEmpty
+  parent: PlantAnalyzer
+  suffix: Empty
+  components:
+  - type: Sprite
+    layers:
+    - state: icon
+    - state: analyzer
+      shader: unshaded
+      visible: false
+      map: [ "enum.PowerDeviceVisualLayers.Powered" ]
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+
+- type: entity
+  name: plant analyzer report
+  parent: Paper
+  id: PlantAnalyzerReportPaper
+  description: A printout from a plant analyzer.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/bureaucracy.rsi
+    layers:
+    - state: paper_receipt_horizontal
+    - state: paper_receipt_horizontal_words
+      map: ["enum.PaperVisualLayers.Writing"]
+      visible: false
+    - state: paper_stamp-generic
+      map: ["enum.PaperVisualLayers.Stamp"]
+      visible: false
+  - type: PaperVisuals
+    backgroundImagePath: "/Textures/Interface/Paper/paper_background_perforated.svg.96dpi.png"
+    backgroundImageTile: true
+    backgroundPatchMargin: 6.0, 0.0, 6.0, 0.0
+    contentMargin: 6.0, 6.0, 6.0, 6.0
+    maxWritableArea: 375.0, 600.0

@@ -1,6 +1,7 @@
 using Content.Shared.Alert;
 using Content.Shared.Body.Components; // Corvax-Wega-Surgery
 using Content.Shared.Buckle.Components;
+using Content.Shared.Carrying; // Corvax-Wega
 using Content.Shared.CCVar;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
@@ -257,6 +258,9 @@ public abstract partial class SharedStunSystem
         // We resolve here instead of using TryCrawling to be extra sure someone without crawler can't stand up early.
         if (!Resolve(entity, ref entity.Comp1, false) || !_cfgManager.GetCVar(CCVars.MovementCrawling))
             return;
+
+        if (HasComp<CarryingComponent>(entity.Owner)) // Corvax-Wega
+            return; // Corvax-Wega
 
         if (!Resolve(entity, ref entity.Comp2, false))
         {

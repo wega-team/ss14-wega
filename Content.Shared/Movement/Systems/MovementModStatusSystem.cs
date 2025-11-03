@@ -23,7 +23,7 @@ public sealed class MovementModStatusSystem : EntitySystem
     public static readonly EntProtoId VomitingSlowdown = "VomitingSlowdownStatusEffect";
     public static readonly EntProtoId TaserSlowdown = "TaserSlowdownStatusEffect";
     public static readonly EntProtoId FlashSlowdown = "FlashSlowdownStatusEffect";
-    public static readonly EntProtoId Slowdown = "StatusEffectSlowdown"; // Corvax-Wega-Add Суки ебаные
+    public static readonly EntProtoId Slowdown = "BasicSlowdownStatusEffect"; // Corvax-Wega-Add Суки ебаные
     public static readonly EntProtoId StatusEffectFriction = "StatusEffectFriction";
 
     [Dependency] private readonly MovementSpeedModifierSystem _movementSpeedModifier = default!;

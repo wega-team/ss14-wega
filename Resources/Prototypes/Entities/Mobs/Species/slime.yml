@@ -93,7 +93,7 @@
         scaling: true
         damage:
           types:
-            Heat: 0.05
+            Heat: 0.5 # Corvax-Wega-Edit
       - !type:PopupMessage
         type: Local
         visualType: Large
@@ -121,6 +121,7 @@
             state: jumpsuit-female
   - type: Operated # Corvax-Wega-Surgery
     raceGraph: SlimeSurgery # Corvax-Wega-Surgery
+    limbRegeneration: true # Corvax-Wega-Surgery
   # Corvax-Wega-Disease-start
   - type: DiseaseCarrier
     naturalImmunities:

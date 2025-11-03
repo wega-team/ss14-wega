@@ -25,4 +25,42 @@
         - MindRoleVampire
         briefing:
           sound: "/Audio/_Wega/Ambience/Antag/vampare_start.ogg"
-  
+
+# Extended testing
+- type: entity
+  parent: BaseGameRule
+  id: SubThiefExtended
+  components:
+  - type: ThiefRule
+  - type: AntagObjectives
+    objectives:
+    - EscapeThiefShuttleObjective
+  - type: AntagRandomObjectives
+    sets:
+    - groups: ThiefBigObjectiveGroups
+      prob: 0.7
+      maxPicks: 1
+    - groups: ThiefObjectiveGroups
+      maxPicks: 10
+    maxDifficulty: 2.5
+  - type: AntagSelection
+    agentName: thief-round-end-agent-name
+    selectionTime: IntraPlayerSpawn
+    definitions:
+    - prefRoles: [ Thief ]
+      max: 4
+      playerRatio: 15
+      lateJoinAdditional: true
+      allowNonHumans: true
+      multiAntagSetting: NotExclusive
+      startingGear: ThiefGear
+      components:
+      - type: Thieving
+        stripTimeReduction: 2
+        stealthy: true
+      mindRoles:
+      - MindRoleThief
+      briefing:
+        sound: "/Audio/Misc/thief_greeting.ogg"
+  - type: DynamicRuleCost
+    cost: 75

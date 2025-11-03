@@ -65,7 +65,7 @@ public sealed class ListenUpSystem : SharedListenUpSkillSystem
 
     private void SwithOverlay(Entity<ListenUpComponent> ent, bool active)
     {
-        Overlay overlay = ListenUp(ent.Comp.radius, ent.Comp.Sprite);
+        Overlay overlay = ListenUp(ent.Comp.Radius, ent.Comp.Sprite);
         UpdateOverlay(active, overlay);
     }
 

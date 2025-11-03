@@ -144,7 +144,7 @@ public sealed partial class SurgerySystem
         // Any action without anesthesia will cause pain.
         if (!HasComp<SleepingComponent>(patient) && !HasComp<PainNumbnessComponent>(patient) && !comp.OperatedPart
             && !_mobState.IsDead(patient) && !HasComp<SyntheticOperatedComponent>(patient))
-            _chat.TryEmoteWithoutChat(patient, _proto.Index<EmotePrototype>("Scream"), true);
+            _chat.TryEmoteWithoutChat(patient, _proto.Index(Scream), true);
     }
 
     #region Organic
@@ -362,7 +362,7 @@ public sealed partial class SurgerySystem
         if (!RollSuccess(patient, patient.Comp.Surgeon.Value, successChance))
             HandleFailure(patient, failureEffect, requiredPart);
 
-        var slotId = ParseSlotId(requiredPart.ToLower(), "body_part_slot_");
+        var slotId = ParseSlotId(requiredPart.ToLower(), SharedBodySystem.PartSlotContainerIdPrefix);
         if (string.IsNullOrEmpty(slotId))
             return;
 
@@ -372,6 +372,8 @@ public sealed partial class SurgerySystem
 
         if (!_body.AttachPart(parentPart, slotId, item.Value))
             return;
+
+        CreateChildSlotsForPart(item.Value, patient);
 
         if (!HasComp<SterileComponent>(item.Value) && _random.Prob(0.4f))
             _disease.TryAddDisease(patient, "SurgicalSepsis");
@@ -602,6 +604,62 @@ public sealed partial class SurgerySystem
             : fullSlotId;
     }
 
+    private void CreateChildSlotsForPart(EntityUid attachedPart, Entity<OperatedComponent> patient)
+    {
+        if (!TryComp<BodyPartComponent>(attachedPart, out var partComp))
+            return;
+
+        var defaultSlots = GetDefaultSlotsForPartType(partComp.PartType, partComp.Symmetry);
+        foreach (var slotId in defaultSlots)
+        {
+            var containerId = SharedBodySystem.GetPartSlotContainerId(slotId);
+            if (!_container.TryGetContainer(attachedPart, containerId, out _))
+            {
+                CreateSlotInPart(attachedPart, slotId, GetChildPartTypeForSlot(slotId));
+            }
+        }
+    }
+
+    private void CreateSlotInPart(EntityUid part, string slotId, BodyPartType slotType)
+    {
+        if (!TryComp<BodyPartComponent>(part, out var partComp))
+            return;
+
+        _body.TryCreatePartSlot(part, slotId, slotType, out _, partComp);
+    }
+
+    private List<string> GetDefaultSlotsForPartType(BodyPartType partType, BodyPartSymmetry symmetry)
+    {
+        var slots = new List<string>();
+        switch (partType)
+        {
+            case BodyPartType.Arm:
+                slots.Add(symmetry == BodyPartSymmetry.Left ? "left_hand" : "right_hand");
+                break;
+            case BodyPartType.Leg:
+                slots.Add(symmetry == BodyPartSymmetry.Left ? "left_foot" : "right_foot");
+                break;
+            case BodyPartType.Torso:
+                slots.AddRange(new[] { "left_arm", "right_arm", "left_leg", "right_leg", "head" });
+                break;
+        }
+
+        return slots;
+    }
+
+    private BodyPartType GetChildPartTypeForSlot(string slotId)
+    {
+        return slotId.ToLower() switch
+        {
+            var s when s.Contains("hand") => BodyPartType.Hand,
+            var s when s.Contains("foot") => BodyPartType.Foot,
+            var s when s.Contains("arm") => BodyPartType.Arm,
+            var s when s.Contains("leg") => BodyPartType.Leg,
+            var s when s.Contains("head") => BodyPartType.Head,
+            _ => BodyPartType.Other
+        };
+    }
+
     public void ApplyBloodToClothing(EntityUid surgeon, string bloodReagentId, float bloodAmount)
     {
         var bloodSolution = new Solution();
@@ -635,7 +693,7 @@ public sealed partial class SurgerySystem
                 break;
             case SurgeryFailedType.Pain:
                 if (!HasComp<SleepingComponent>(patient) && !HasComp<PainNumbnessComponent>(patient) && !patient.Comp.OperatedPart && !_mobState.IsDead(patient) && !HasComp<SyntheticOperatedComponent>(patient))
-                    _chat.TryEmoteWithoutChat(patient, _proto.Index<EmotePrototype>("Scream"), true);
+                    _chat.TryEmoteWithoutChat(patient, _proto.Index(Scream), true);
 
                 _jittering.DoJitter(patient, TimeSpan.FromSeconds(5), true);
                 break;

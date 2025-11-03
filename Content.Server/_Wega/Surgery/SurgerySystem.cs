@@ -7,6 +7,7 @@ using Content.Shared.Body.Part;
 using Content.Shared.Body.Prototypes;
 using Content.Shared.Body.Systems;
 using Content.Shared.Buckle.Components;
+using Content.Shared.Chat.Prototypes;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Examine;
@@ -46,6 +47,7 @@ public sealed partial class SurgerySystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly InventorySystem _inventory = default!;
 
+    private static readonly ProtoId<EmotePrototype> Scream = "Scream";
     private static readonly ProtoId<DamageTypePrototype> BluntDamage = "Blunt";
     private static readonly ProtoId<DamageTypePrototype> SlashDamage = "Slash";
     private static readonly ProtoId<DamageTypePrototype> PiercingDamage = "Piercing";
@@ -117,6 +119,16 @@ public sealed partial class SurgerySystem : EntitySystem
                 operated.NextUpdateTick = 5f;
             }
             operated.NextUpdateTick -= frameTime;
+
+            if (operated.LimbRegeneration && !_mobState.IsDead(uid))
+            {
+                if (operated.NextRegenerationTick <= 0)
+                {
+                    RegenerateMissingLimbs((uid, operated));
+                    operated.NextRegenerationTick = operated.RegenerationInterval;
+                }
+                operated.NextRegenerationTick -= frameTime;
+            }
         }
 
         var sterileQuery = EntityQueryEnumerator<SterileComponent>();
@@ -198,6 +210,169 @@ public sealed partial class SurgerySystem : EntitySystem
                     }
                 }
             }
+        }
+    }
+
+    private void RegenerateMissingLimbs(Entity<OperatedComponent> entity)
+    {
+        if (!TryComp<BodyComponent>(entity, out var body) || body.Prototype == null)
+            return;
+
+        var rootPart = _body.GetRootPartOrNull(entity, body);
+        if (rootPart == null)
+            return;
+
+        var prototype = _proto.Index(body.Prototype.Value);
+        var missingLimbs = new List<(string slotId, BodyPrototypeSlot slot)>();
+
+        var existingParts = new Dictionary<string, EntityUid>();
+        foreach (var part in _body.GetBodyChildren(entity, body))
+        {
+            var parentAndSlot = _body.GetParentPartAndSlotOrNull(part.Id);
+            if (parentAndSlot != null)
+            {
+                existingParts[parentAndSlot.Value.Slot] = part.Id;
+            }
+        }
+
+        foreach (var (slotId, slot) in prototype.Slots)
+        {
+            if (slotId == prototype.Root || slot.Part == null)
+                continue;
+
+            if (!existingParts.ContainsKey(slotId))
+                missingLimbs.Add((slotId, slot));
+        }
+
+        if (missingLimbs.Count == 0)
+            return;
+
+        var limbsToRegenerate = missingLimbs
+            .OrderBy(_ => _random.Next())
+            .Take(entity.Comp.MaxLimbsPerCycle)
+            .ToList();
+
+        foreach (var (slotId, slot) in limbsToRegenerate)
+        {
+            RegenerateSingleLimb(entity, slotId, slot, existingParts);
+        }
+    }
+
+    private void RegenerateSingleLimb(Entity<OperatedComponent> entity, string slotId, BodyPrototypeSlot slot, Dictionary<string, EntityUid>? existingParts = null)
+    {
+        if (!TryComp<BodyComponent>(entity, out var body) || body.Prototype == null)
+            return;
+
+        var prototype = _proto.Index(body.Prototype.Value);
+
+        existingParts ??= new Dictionary<string, EntityUid>();
+        foreach (var part in _body.GetBodyChildren(entity, body))
+        {
+            var parentAndSlot = _body.GetParentPartAndSlotOrNull(part.Id);
+            if (parentAndSlot != null)
+            {
+                existingParts[parentAndSlot.Value.Slot] = part.Id;
+            }
+        }
+
+        string? parentSlotId = null;
+        EntityUid? parentPart = null;
+        foreach (var (potentialParentSlotId, potentialParentSlot) in prototype.Slots)
+        {
+            if (potentialParentSlot.Connections?.Contains(slotId) == true)
+            {
+                parentSlotId = potentialParentSlotId;
+                break;
+            }
+        }
+
+        if (parentSlotId != null && existingParts.TryGetValue(parentSlotId, out var parentId))
+            parentPart = parentId;
+
+        if (parentPart == null && parentSlotId != null && prototype.Slots.TryGetValue(parentSlotId, out var parentSlotDef))
+        {
+            if (parentSlotDef.Part != null)
+            {
+                var parentPartEntity = Spawn(parentSlotDef.Part, Transform(entity).Coordinates);
+                var parentPartComp = Comp<BodyPartComponent>(parentPartEntity);
+
+                string? grandParentSlotId = null;
+                EntityUid? grandParentPart = null;
+                foreach (var (potentialGrandParentSlotId, potentialGrandParentSlot) in prototype.Slots)
+                {
+                    if (potentialGrandParentSlot.Connections?.Contains(parentSlotId) == true)
+                    {
+                        grandParentSlotId = potentialGrandParentSlotId;
+                        break;
+                    }
+                }
+
+                if (grandParentSlotId != null && existingParts.TryGetValue(grandParentSlotId, out var grandParentId))
+                {
+                    grandParentPart = grandParentId;
+                }
+
+                if (grandParentPart == null)
+                {
+                    var rootPart = _body.GetRootPartOrNull(entity, body);
+                    if (rootPart != null)
+                    {
+                        grandParentPart = rootPart.Value.Entity;
+                    }
+                }
+
+                if (grandParentPart != null && _body.CanAttachPart(grandParentPart.Value, parentSlotId, parentPartEntity, Comp<BodyPartComponent>(grandParentPart.Value), parentPartComp))
+                {
+                    _body.AttachPart(grandParentPart.Value, parentSlotId, parentPartEntity, Comp<BodyPartComponent>(grandParentPart.Value), parentPartComp);
+                    parentPart = parentPartEntity;
+
+                    existingParts[parentSlotId] = parentPartEntity;
+
+                    CreateChildSlotsForPart(parentPartEntity, entity);
+                }
+                else
+                {
+                    QueueDel(parentPartEntity);
+                    return;
+                }
+            }
+        }
+
+        if (parentPart == null)
+        {
+            var rootPart = _body.GetRootPartOrNull(entity, body);
+            if (rootPart != null)
+            {
+                parentPart = rootPart.Value.Entity;
+            }
+        }
+
+        if (parentPart == null || !Exists(parentPart) || Deleted(parentPart.Value))
+            return;
+
+        var newPart = Spawn(slot.Part, Transform(entity).Coordinates);
+        var newPartComp = Comp<BodyPartComponent>(newPart);
+
+        if (_body.CanAttachPart(parentPart.Value, slotId, newPart, Comp<BodyPartComponent>(parentPart.Value), newPartComp))
+        {
+            _body.AttachPart(parentPart.Value, slotId, newPart, Comp<BodyPartComponent>(parentPart.Value), newPartComp);
+
+            if (slot.Organs != null)
+            {
+                foreach (var (organSlot, organPrototype) in slot.Organs)
+                {
+                    var newOrgan = Spawn(organPrototype, Transform(entity).Coordinates);
+                    _body.InsertOrgan(newOrgan, newPart, organSlot);
+                }
+            }
+
+            CreateChildSlotsForPart(newPart, entity);
+
+            _popup.PopupEntity(Loc.GetString("surgery-limb-regenerated"), entity, entity);
+        }
+        else
+        {
+            QueueDel(newPart);
         }
     }
 

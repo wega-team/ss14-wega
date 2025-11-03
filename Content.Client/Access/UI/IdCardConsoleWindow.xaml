@@ -56,20 +56,15 @@
             </GridContainer>
         </PanelContainer>
 
-        <BoxContainer Margin="0 8 0 4">
-            <Control HorizontalExpand="True"/>
-            <BoxContainer>
-                <Button Name="SelectAllButton" Text="{Loc 'id-card-console-window-select-all-button'}" MinSize="80 30"/>
-                <Button Name="DeselectAllButton" Text="{Loc 'id-card-console-window-deselect-all-button'}" MinSize="80 30" Margin="5,0,0,0"/>
-            </BoxContainer>
-        </BoxContainer>
-
         <PanelContainer StyleClasses="Inset" HorizontalExpand="True" VerticalExpand="True" Margin="0,0,0,5">
             <PanelContainer.PanelOverride>
                 <graphics:StyleBoxFlat BackgroundColor="#1A1A1A" />
             </PanelContainer.PanelOverride>
             <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
-                <Label Text="{Loc 'id-card-console-window-access-levels-label'}" StyleClasses="LabelBig" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                <BoxContainer Orientation="Horizontal" HorizontalExpand="True" Margin="0,0,0,5">
+                    <Label Text="{Loc 'id-card-console-window-access-levels-label'}" StyleClasses="LabelBig" HorizontalAlignment="Center" HorizontalExpand="True"/>
+                    <Button Name="DeselectAllButton" Text="{Loc 'id-card-console-window-deselect-all-button'}" MinSize="240 30" HorizontalAlignment="Right"/>
+                </BoxContainer>
                 <Control Name="AccessLevelControlContainer" HorizontalExpand="True" VerticalExpand="True"/>
             </BoxContainer>
         </PanelContainer>

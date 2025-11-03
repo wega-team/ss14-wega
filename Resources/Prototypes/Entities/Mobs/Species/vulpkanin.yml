@@ -81,13 +81,13 @@
       sprite: Objects/Misc/handcuffs.rsi
       state: body-overlay-2
       visible: false
-    - map: [ "id" ]
     - map: [ "gloves" ]
     - map: [ "shoes" ]
     - map: [ "ears" ]
     - map: [ "outerClothing" ]
+    - map: [ "belt" ] # Corvax-Wega-Edit
+    - map: [ "id" ] # Corvax-Wega-Edit
     - map: [ "eyes" ]
-    - map: [ "belt" ]
     - map: [ "neck" ]
     - map: [ "back" ]
     - map: [ "enum.HumanoidVisualLayers.SnoutCover" ]

@@ -50,6 +50,8 @@ namespace Content.Shared.Input
         public static readonly BoundKeyFunction MovePulledObject = "MovePulledObject";
         public static readonly BoundKeyFunction ReleasePulledObject = "ReleasePulledObject";
         public static readonly BoundKeyFunction MouseMiddle = "MouseMiddle";
+        public static readonly BoundKeyFunction MouseWheelUp = "MouseWheelUp"; // Corvax-Wega-Add
+        public static readonly BoundKeyFunction MouseWheelDown = "MouseWheelDown"; // Corvax-Wega-Add
         public static readonly BoundKeyFunction RotateObjectClockwise = "RotateObjectClockwise";
         public static readonly BoundKeyFunction RotateObjectCounterclockwise = "RotateObjectCounterclockwise";
         public static readonly BoundKeyFunction FlipObject = "FlipObject";

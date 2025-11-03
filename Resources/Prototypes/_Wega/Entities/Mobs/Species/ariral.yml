@@ -31,9 +31,9 @@
     - map: [ "shoes" ]
     - map: [ "ears" ]
     - map: [ "eyes" ]
+    - map: [ "outerClothing" ]
     - map: [ "belt" ]
     - map: [ "id" ]
-    - map: [ "outerClothing" ]
     - map: [ "back" ]
     - map: [ "neck" ]
     - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
@@ -95,7 +95,7 @@
         Bloodloss: -2
     bleedReductionAmount: 0.2
   - type: Temperature
-    heatDamageThreshold: 326 # ~ 52 °C 
+    heatDamageThreshold: 326 # ~ 52 °C
     coldDamageThreshold: 280 # ~ 7 °C
     currentTemperature: 310.15
     specificHeat: 46
@@ -125,22 +125,6 @@
   - type: NaturalNightVision
     tintColor: "#B0E0FF"
   - type: Inventory
-    femaleDisplacements:
-      jumpsuit:
-        sizeMaps:
-          32:
-            sprite: _Wega/Mobs/Species/Ariral/displacement.rsi
-            state: jumpsuit-female
-      shoes:
-        sizeMaps:
-          32:
-            sprite: _Wega/Mobs/Species/Ariral/displacement.rsi
-            state: shoes
-      socks:
-        sizeMaps:
-          32:
-            sprite: _Wega/Mobs/Species/Ariral/displacement.rsi
-            state: socks
     displacements:
       jumpsuit:
         sizeMaps:
@@ -230,22 +214,6 @@
     prototype: Ariral
     requiredLegs: 2
   - type: Inventory
-    femaleDisplacements:
-      jumpsuit:
-        sizeMaps:
-          32:
-            sprite: _Wega/Mobs/Species/Ariral/displacement.rsi
-            state: jumpsuit-female
-      shoes:
-        sizeMaps:
-          32:
-            sprite: _Wega/Mobs/Species/Ariral/displacement.rsi
-            state: shoes
-      socks:
-        sizeMaps:
-          32:
-            sprite: _Wega/Mobs/Species/Ariral/displacement.rsi
-            state: socks
     displacements:
       jumpsuit:
         sizeMaps:

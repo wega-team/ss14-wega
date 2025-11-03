@@ -80,11 +80,12 @@ namespace Content.Client.Access.UI
                 JobPresetOptionButton.AddItem(Loc.GetString(job.Name), _jobPrototypeIds.Count - 1);
             }
 
-            SelectAllButton.OnPressed += _ =>
-            {
-                SetAllAccess(true);
-                SubmitData();
-            };
+            // Corvax-Wega-Edit
+            // SelectAllButton.OnPressed += _ =>
+            // {
+            //     SetAllAccess(true);
+            //     SubmitData();
+            // };
 
             DeselectAllButton.OnPressed += _ =>
             {
@@ -238,6 +239,8 @@ namespace Content.Client.Access.UI
 
             JobPresetOptionButton.Disabled = !interfaceEnabled;
             AccessGroupOptionButton.Disabled = !interfaceEnabled; // Corvax-Wega-Add
+
+            DeselectAllButton.Disabled = !interfaceEnabled; // Corvax-Wega-Add
 
             _accessButtons.UpdateState(state.TargetIdAccessList?.ToList() ??
                                        new List<ProtoId<AccessLevelPrototype>>(),

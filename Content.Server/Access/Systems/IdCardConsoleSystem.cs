@@ -145,8 +145,7 @@ public sealed class IdCardConsoleSystem : SharedIdCardConsoleSystem
         _idCard.TryChangeFullName(targetId, newFullName, player: player);
         _idCard.TryChangeJobTitle(targetId, newJobTitle, player: player);
 
-        if (_prototype.Resolve(newJobProto, out var job)
-            && _prototype.Resolve(job.Icon, out var jobIcon))
+        if (_prototype.TryIndex(newJobProto, out var job) && _prototype.TryIndex(job.Icon, out var jobIcon)) // Corvax-Wega-Edit
         {
             _idCard.TryChangeJobIcon(targetId, jobIcon, player: player);
             _idCard.TryChangeJobDepartment(targetId, job);

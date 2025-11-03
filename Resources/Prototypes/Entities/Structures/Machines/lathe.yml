@@ -134,6 +134,7 @@
     - PowerCellsStatic
     - ElectronicsStatic
     - ScienceStatic # Corvax-Wega
+    - HydroponicsStatic # Corvax-Wega
   - type: EmagLatheRecipes
     emagStaticPacks:
     - SecurityAmmoStatic
