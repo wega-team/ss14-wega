@@ -17,8 +17,8 @@ public sealed partial class DnaModifierComponent : Component
     public int Instability { get; set; } = 0;
 
     [ViewVariables(VVAccess.ReadOnly), DataField]
-    public EntProtoId Upper = string.Empty;
+    public EntProtoId? Upper = default!;
 
     [ViewVariables(VVAccess.ReadOnly), DataField]
-    public EntProtoId Lowest = string.Empty;
+    public EntProtoId? Lowest = default!;
 }

@@ -105,8 +105,8 @@
     ClothingHandsGlovesColorOrange: 2
     ClothingHandsGlovesColorPurple: 2
     ClothingEyesGlassesCheapSunglasses: 3
-    ADTClothingNeckDarkGreyCloak: 3 # Corvax-Wega-Add
-    ADTClothingNeckGothicCloak: 3 # Corvax-Wega-Add
+    ClothingNeckDarkGreyCloak: 3 # Corvax-Wega-Add
+    ClothingNeckGothicCloak: 3 # Corvax-Wega-Add
     # DO NOT ADD MORE, USE UNIFORM DYING
   contrabandInventory:
     ClothingMaskNeckGaiter: 2

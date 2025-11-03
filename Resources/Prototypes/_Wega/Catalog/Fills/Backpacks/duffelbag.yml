@@ -25,24 +25,24 @@
 
 - type: entity
   parent: ClothingBackpackDuffelSyndicateBundle
-  id: ADTClothingBackpackDuffelSyndicateFilledXC67
+  id: ClothingBackpackDuffelSyndicateFilledXC67
   name: xC-67 rifle bundle
   description: bundle with a prototype xC-67 assault rifle and two mags.
   components:
   - type: StorageFill
     contents:
-      - id: ADTWeaponRifleXC67
-      - id: ADTExtMagazineRifle
+      - id: WeaponRifleXC67
+      - id: ExtMagazineRifle
         amount: 2
 
 - type: entity
   parent: ClothingBackpackDuffelSyndicateBundle
-  id: ADTClothingBackpackDuffelSyndicateFilledHristov
+  id: ClothingBackpackDuffelSyndicateFilledHristov
   name: Hristov bundle
   description: bundle with hristov and four mags.
   components:
   - type: StorageFill
     contents:
-      - id: ADTWeaponSniperHristovAdvanced
-      - id: ADTMagazineHristovAdvanced
+      - id: WeaponSniperHristovAdvanced
+      - id: MagazineHristovAdvanced
         amount: 4

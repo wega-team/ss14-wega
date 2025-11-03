@@ -1,0 +1,50 @@
+# Empty mags
+- type: entity
+  id: BaseExtMagazineRifle
+  name: extented riffle magazine (.20)
+  description: Extented riffle magazine for .20 with a capacity of 45.
+  parent: BaseItem
+  abstract: true
+  components:
+  - type: Tag
+    tags:
+      - ExtMagazineRifle
+  - type: Item
+    size: Small
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    whitelist:
+      tags:
+        - CartridgeRifle
+    capacity: 45
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Ammunition/Magazine/Rifle/ext_rifle_mag.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: MagazineVisuals
+    magState: mag
+    steps: 2
+    zeroVisible: false
+  - type: Appearance
+
+# Magazines
+- type: entity
+  id: ExtMagazineRifle
+  name: extented riffle magazine (.20)
+  description: Extented riffle magazine for .20 with a capacity of 45.
+  parent: BaseExtMagazineRifle
+  components:
+  - type: BallisticAmmoProvider
+    proto: CartridgeRifle
+  - type: Sprite
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
