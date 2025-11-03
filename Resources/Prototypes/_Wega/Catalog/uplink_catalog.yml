@@ -161,7 +161,7 @@
   id: UplinkAdvansedMagboots
   name: uplink-advanced-magboots-name
   description: uplink-advanced-magboots-desc
-  icon: { sprite: _Wega_/Clothing/Shoes/Boots/advanced.rsi, state: icon }
+  icon: { sprite: _Wega/Clothing/Shoes/Boots/advanced.rsi, state: icon }
   productEntity: ClothingShoesBootsMagAdvSynd
   cost:
     Telecrystal: 8
