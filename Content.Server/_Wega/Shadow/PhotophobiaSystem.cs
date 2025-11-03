@@ -14,6 +14,7 @@ using Content.Server.Hands.Systems;
 using Content.Shared.Hands.Components;
 using Content.Shared.Movement.Systems;
 using Robust.Shared.Random;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.Shadow;
 
@@ -31,8 +32,7 @@ public sealed class PhotophobiaSystem : EntitySystem
     [Dependency] private readonly MovementSpeedModifierSystem _speed = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
-    [ValidatePrototypeId<DamageTypePrototype>]
-    private const string Damage = "Heat";
+    private static readonly ProtoId<DamageTypePrototype> Damage = "Heat";
 
     // private readonly List<EntityUid> _scratchLights = new();
 

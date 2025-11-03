@@ -2,9 +2,8 @@ using Content.Server.Actions;
 using Content.Server.Popups;
 using Content.Server.PowerCell;
 using Content.Server.Stunnable;
-using Content.Shared._Wega.Android;
+using Content.Shared.Android;
 using Content.Shared.Alert;
-using Content.Shared.Damage.Components;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Item.ItemToggle;
@@ -25,7 +24,7 @@ using Robust.Shared.Containers;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
-namespace Content.Server._Wega.Android;
+namespace Content.Server.Android;
 
 public sealed partial class AndroidSystem : SharedAndroidSystem
 {

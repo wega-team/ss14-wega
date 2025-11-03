@@ -46,7 +46,7 @@ public sealed class PainSystem : EntitySystem
 
     private void OnInit(EntityUid uid, PainComponent component, ComponentInit args)
     {
-        if (!_proto.TryIndex<PainProfilePrototype>(component.Profile, out var profile))
+        if (!_proto.TryIndex(component.Profile, out var profile))
             return;
 
         foreach (var (type, level) in profile.PainTypes)

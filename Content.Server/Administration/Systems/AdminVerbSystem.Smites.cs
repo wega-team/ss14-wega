@@ -105,6 +105,8 @@ public sealed partial class AdminVerbSystem
     private readonly EntProtoId _siliconMindRole = "MindRoleSiliconBrain";
     private const string SiliconLawBoundUserInterface = "SiliconLawBoundUserInterface";
 
+    private static readonly ProtoId<DiseasePrototype> StageIIIALungCancer = "StageIIIALungCancer"; // Corvax-Wega-Disease
+
     // All smite verbs have names so invokeverb works.
     private void AddSmiteVerbs(GetVerbsEvent<Verb> args)
     {
@@ -208,7 +210,8 @@ public sealed partial class AdminVerbSystem
         args.Verbs.Add(monkey);
 
         // Corvax-Wega-Disease-start
-        if (TryComp<DiseaseCarrierComponent>(args.Target, out var carrier))
+        if (TryComp<DiseaseCarrierComponent>(args.Target, out var carrier)
+            && _prototypeManager.TryIndex(StageIIIALungCancer, out var disease))
         {
             Verb lungCancer = new()
             {
@@ -217,7 +220,7 @@ public sealed partial class AdminVerbSystem
                 Icon = new SpriteSpecifier.Rsi(new("/Textures/Mobs/Species/Human/organs.rsi"), "lung-l"),
                 Act = () =>
                 {
-                    _diseaseSystem.TryInfect(carrier, _prototypeManager.Index<DiseasePrototype>("StageIIIALungCancer"),
+                    _diseaseSystem.TryInfect(args.Target, carrier, disease,
                         1.0f, true);
                 },
                 Impact = LogImpact.Extreme,

@@ -1,5 +1,5 @@
 using Content.Shared.Drunk;
-using Content.Shared.StatusEffect;
+using Content.Shared.StatusEffectNew;
 using Robust.Shared.Timing;
 
 namespace Content.Shared.Genetics.Systems;
@@ -9,8 +9,7 @@ public sealed class DizzySystem : EntitySystem
     [Dependency] private readonly StatusEffectsSystem _statusEffectsSystem = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
 
-    [ValidatePrototypeId<StatusEffectPrototype>]
-    public const string DizzyKey = "Dizzy";
+    public static readonly string DizzyKey = "Dizzy";
 
     public override void Initialize()
     {
@@ -28,7 +27,7 @@ public sealed class DizzySystem : EntitySystem
         {
             if (_statusEffectsSystem.TryGetTime(uid, DizzyKey, out var time))
             {
-                if (time.Value.Item2 - _gameTiming.CurTime < TimeSpan.FromMinutes(1))
+                if (time.Item2 - _gameTiming.CurTime < TimeSpan.FromMinutes(1))
                     _statusEffectsSystem.TryAddTime(uid, DizzyKey, TimeSpan.FromMinutes(10));
             }
         }
@@ -38,10 +37,8 @@ public sealed class DizzySystem : EntitySystem
     {
         if (!_statusEffectsSystem.HasStatusEffect(ent, DizzyKey))
         {
-            EnsureComp<DizzyEffectComponent>(ent, out var dizzyEffect);
-            _statusEffectsSystem.TryAddStatusEffect<DrunkStatusEffectComponent>(ent, DizzyKey, TimeSpan.FromMinutes(10), true);
-
-            dizzyEffect.Intensity = ent.Comp.InitialIntensity;
+            EnsureComp<DizzyEffectComponent>(ent);
+            _statusEffectsSystem.TryAddStatusEffectDuration(ent, DizzyKey, out _, TimeSpan.FromMinutes(10));
         }
     }
 

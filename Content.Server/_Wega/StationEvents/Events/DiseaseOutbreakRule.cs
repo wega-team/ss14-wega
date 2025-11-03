@@ -27,11 +27,13 @@ public sealed class DiseaseOutbreakRule : StationEventSystem<DiseaseOutbreakRule
         base.Started(uid, component, gameRule, args);
 
         HashSet<EntityUid> stationsToNotify = new();
-        List<DiseaseCarrierComponent> aliveList = new();
-        foreach (var (carrier, mobState) in EntityQuery<DiseaseCarrierComponent, MobStateComponent>())
+        List<Entity<DiseaseCarrierComponent>> aliveList = new();
+
+        var query = EntityQueryEnumerator<DiseaseCarrierComponent, MobStateComponent>();
+        while (query.MoveNext(out var entity, out var carrier, out var mobState))
         {
-            if (!_mobStateSystem.IsDead(mobState.Owner, mobState))
-                aliveList.Add(carrier);
+            if (!_mobStateSystem.IsDead(entity, mobState))
+                aliveList.Add((entity, carrier));
         }
         RobustRandom.Shuffle(aliveList);
 
@@ -44,14 +46,14 @@ public sealed class DiseaseOutbreakRule : StationEventSystem<DiseaseOutbreakRule
             return;
 
         // Now we give it to people in the list of living disease carriers earlier
-        foreach (var target in aliveList)
+        foreach (var (entity, target) in aliveList)
         {
             if (toInfect-- == 0)
                 break;
 
-            _diseaseSystem.TryAddDisease(target.Owner, disease, target);
+            _diseaseSystem.TryAddDisease(entity, disease, target);
 
-            var station = StationSystem.GetOwningStation(target.Owner);
+            var station = StationSystem.GetOwningStation(entity);
             if (station == null) continue;
             stationsToNotify.Add((EntityUid)station);
         }

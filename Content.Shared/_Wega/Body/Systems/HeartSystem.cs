@@ -11,7 +11,6 @@ namespace Content.Shared.Body.Systems;
 public sealed class HeartSystem : EntitySystem
 {
     [Dependency] private readonly IGameTiming _gameTiming = default!;
-    [Dependency] private readonly SharedBloodstreamSystem _bloodstreamSystem = default!;
     [Dependency] private readonly AlertsSystem _alertsSystem = default!;
     [Dependency] private readonly DamageableSystem _damageableSystem = default!;
     [Dependency] private readonly MobStateSystem _mobStateSystem = default!;

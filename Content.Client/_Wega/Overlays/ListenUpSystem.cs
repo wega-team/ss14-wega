@@ -1,12 +1,8 @@
 using Robust.Client.Graphics;
 using Robust.Client.Player;
-using Content.Shared._Wega.Resomi.Abilities.Hearing;
-using Content.Shared.Actions;
-using Content.Shared.DoAfter;
+using Content.Shared.Resomi.Abilities.Hearing;
 using Robust.Shared.Utility;
 using Robust.Shared.Player;
-using Content.Shared.GameTicking;
-using Content.Shared.Actions.Components;
 
 namespace Content.Client._Wega.Overlays;
 
@@ -14,10 +10,6 @@ public sealed class ListenUpSystem : SharedListenUpSkillSystem
 {
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IOverlayManager _overlayMan = default!;
-
-    [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
-
-    private Entity<ActionComponent> action;
 
     private ListenUpOverlay _listenUpOverlay = default!;
 

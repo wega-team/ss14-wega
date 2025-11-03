@@ -14,7 +14,6 @@ public sealed partial class SelectClassMenu : RadialMenu
     [Dependency] private readonly ISharedPlayerManager _playerManager = default!;
 
     public event Action<string>? OnSelectClass;
-    public bool IsDisposed { get; private set; }
 
     public SelectClassMenu()
     {
@@ -39,15 +38,6 @@ public sealed partial class SelectClassMenu : RadialMenu
         var netEntity = _entityManager.GetNetEntity(_playerManager.LocalSession?.AttachedEntity ?? EntityUid.Invalid);
         _entityNetworkManager.SendSystemNetworkMessage(new VampireSelectClassMenuClosedEvent(netEntity, className));
         Close();
-    }
-
-    public new void Close()
-    {
-        if (!IsDisposed)
-        {
-            IsDisposed = true;
-            Dispose();
-        }
     }
 }
 

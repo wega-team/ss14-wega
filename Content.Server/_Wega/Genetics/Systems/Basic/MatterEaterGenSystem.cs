@@ -91,7 +91,7 @@ public sealed class MatterEaterSystem : EntitySystem
             return;
 
         if (TryComp<StackComponent>(ent, out var stack) && stack.Count > 1)
-            _stack.SetCount(ent.Owner, stack.Count - 1);
+            _stack.ReduceCount(ent.Owner, 1);
         else
         {
             if (TryComp<StorageComponent>(ent, out var storage))

@@ -1,5 +1,6 @@
 using Content.Shared.Actions;
 using Content.Shared.DoAfter;
+using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
@@ -83,7 +84,7 @@ public sealed partial class VampireSanguinePoolActionEvent : InstantActionEvent
     [DataField]
     public string PolymorphProto = "VampireBlood";
 
-    public string Sound = "/Audio/Effects/Fluids/splat.ogg";
+    public SoundSpecifier Sound = new SoundPathSpecifier("/Audio/Effects/Fluids/splat.ogg");
 }
 
 public sealed partial class VampirePredatorSensesActionEvent : InstantActionEvent
@@ -91,7 +92,7 @@ public sealed partial class VampirePredatorSensesActionEvent : InstantActionEven
     [DataField]
     public string Proto = "PuddleBlood";
 
-    public string Sound = "/Audio/Effects/Fluids/splat.ogg";
+    public SoundSpecifier Sound = new SoundPathSpecifier("/Audio/Effects/Fluids/splat.ogg");
 }
 
 public sealed partial class VampireBloodEruptionActionEvent : InstantActionEvent { }
@@ -101,7 +102,7 @@ public sealed partial class VampireBloodBringersRiteActionEvent : InstantActionE
     [DataField]
     public string Proto = "PuddleBlood";
 
-    public string Sound = "/Audio/Effects/Fluids/splat.ogg";
+    public SoundSpecifier Sound = new SoundPathSpecifier("/Audio/Effects/Fluids/splat.ogg");
 }
 
 // Umbrae Abilities
@@ -147,7 +148,7 @@ public sealed partial class VampireBloodRushActionEvent : InstantActionEvent { }
 
 public sealed partial class VampireSeismicStompActionEvent : InstantActionEvent
 {
-    public string Sound = "/Audio/Effects/Footsteps/largethud.ogg";
+    public SoundSpecifier Sound = new SoundPathSpecifier("/Audio/Effects/Footsteps/largethud.ogg");
 }
 
 public sealed partial class VampireBloodSwellAdvancedActionEvent : InstantActionEvent { }
@@ -158,7 +159,7 @@ public sealed partial class VampireDemonicGraspActionEvent : EntityTargetActionE
 
 public sealed partial class VampireChargeActionEvent : WorldTargetActionEvent
 {
-    public string Sound = "/Audio/Effects/Footsteps/largethud.ogg";
+    public SoundSpecifier Sound = new SoundPathSpecifier("/Audio/Effects/Footsteps/largethud.ogg");
 }
 
 // Dantalion Abilities

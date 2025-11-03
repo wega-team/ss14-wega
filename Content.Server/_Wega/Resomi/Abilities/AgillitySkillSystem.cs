@@ -1,25 +1,23 @@
 using Content.Shared.Actions;
-using Content.Shared.Alert;
-using Content.Shared.Maps;
-using Robust.Shared.Containers;
-using Robust.Shared.Map;
-using Robust.Shared.Timing;
-using Content.Shared._Wega.Resomi;
+using Content.Shared.Resomi;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Systems;
-using Content.Shared._Wega.Resomi.Abilities;
+using Content.Shared.Resomi.Abilities;
 using Content.Shared.Damage.Components;
-using Robust.Shared.Physics;
 using Content.Shared.Actions.Components;
+using Content.Server.Damage.Systems;
+using Content.Server.Popups;
 
-namespace Content.Server._Wega.Resomi.Abilities;
+namespace Content.Server.Resomi.Abilities;
 
 public sealed class AgillitySkillSystem : SharedAgillitySkillSystem
 {
-    [Dependency] private readonly SharedActionsSystem _actionsSystem = default!;
+    [Dependency] private readonly SharedActionsSystem _actions = default!;
+    [Dependency] private readonly StaminaSystem _stamina = default!;
+    [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly MovementSpeedModifierSystem _movementSpeedModifier = default!;
 
-    private Entity<ActionComponent> action;
+    private Entity<ActionComponent> _action;
 
     public override void Initialize()
     {
@@ -31,26 +29,26 @@ public sealed class AgillitySkillSystem : SharedAgillitySkillSystem
 
     private void OnComponentInit(Entity<AgillitySkillComponent> ent, ref ComponentInit args)
     {
-        _actionsSystem.AddAction(ent.Owner, ref ent.Comp.SwitchAgilityActionEntity, ent.Comp.SwitchAgilityAction, ent.Owner);
+        _actions.AddAction(ent.Owner, ref ent.Comp.SwitchAgilityActionEntity, ent.Comp.SwitchAgilityAction, ent.Owner);
     }
 
     private void SwitchAgility(Entity<AgillitySkillComponent> ent, ref SwitchAgillityActionEvent args)
     {
-        action = args.Action;
+        _action = args.Action;
 
         if (!ent.Comp.Active)
         {
-            ActivateAgility(ent, action);
+            ActivateAgility(ent, _action);
         }
         else
         {
-            DeactivateAgility(ent.Owner, ent.Comp, action);
+            DeactivateAgility(ent.Owner, ent.Comp, _action);
         }
     }
 
     private void ActivateAgility(Entity<AgillitySkillComponent> ent, Entity<ActionComponent> action)
     {
-        if (!TryComp<MovementSpeedModifierComponent>(ent.Owner, out var comp))
+        if (!HasComp<MovementSpeedModifierComponent>(ent.Owner))
             return;
 
         _popup.PopupEntity(Loc.GetString("agility-activated-massage"), ent.Owner, ent.Owner);
@@ -66,7 +64,7 @@ public sealed class AgillitySkillSystem : SharedAgillitySkillSystem
 
     private void DeactivateAgility(EntityUid uid, AgillitySkillComponent component, Entity<ActionComponent> action)
     {
-        if (!TryComp<MovementSpeedModifierComponent>(uid, out var comp))
+        if (!HasComp<MovementSpeedModifierComponent>(uid))
             return;
 
         _popup.PopupEntity(Loc.GetString("agility-deactivated-massage"), uid, uid);
@@ -103,7 +101,7 @@ public sealed class AgillitySkillSystem : SharedAgillitySkillSystem
 
             _stamina.TryTakeStamina(uid, resomiComp.StaminaDamagePassive);
             if (stamina.StaminaDamage > stamina.CritThreshold * 0.50f)
-                DeactivateAgility(uid, resomiComp, action);
+                DeactivateAgility(uid, resomiComp, _action);
         }
     }
 }
