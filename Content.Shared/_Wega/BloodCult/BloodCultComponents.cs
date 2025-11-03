@@ -94,11 +94,11 @@ public sealed partial class BloodStructureComponent : Component
     [ViewVariables(VVAccess.ReadOnly), DataField]
     public TimeSpan ActivateTime = TimeSpan.Zero;
 
-    [DataField("fixture", required: true)]
+    [DataField("fixture")]
     public string FixtureId = string.Empty;
 
     [DataField]
-    public SoundSpecifier Sound = default!;
+    public SoundSpecifier? Sound { get; private set; }
 
     [DataField]
     public bool CanInteract = true;

@@ -56,8 +56,8 @@ public sealed class VampireSystem : SharedVampireSystem
             return;
 
         var blood = Math.Clamp(ent.Comp.CurrentBlood.Int(), 0, 999);
-        _sprite.LayerSetRsiState(ent.Owner, VampireVisualLayers.Digit1, $"{(blood / 100) % 10}");
-        _sprite.LayerSetRsiState(ent.Owner, VampireVisualLayers.Digit2, $"{(blood / 10) % 10}");
-        _sprite.LayerSetRsiState(ent.Owner, VampireVisualLayers.Digit3, $"{blood % 10}");
+        _sprite.LayerSetRsiState(args.SpriteViewEnt.Owner, VampireVisualLayers.Digit1, $"{(blood / 100) % 10}");
+        _sprite.LayerSetRsiState(args.SpriteViewEnt.Owner, VampireVisualLayers.Digit2, $"{(blood / 10) % 10}");
+        _sprite.LayerSetRsiState(args.SpriteViewEnt.Owner, VampireVisualLayers.Digit3, $"{blood % 10}");
     }
 }
