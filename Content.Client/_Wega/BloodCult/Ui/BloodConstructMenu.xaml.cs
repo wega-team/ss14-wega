@@ -14,7 +14,6 @@ public sealed partial class BloodConstructMenu : RadialMenu
     [Dependency] private readonly ISharedPlayerManager _playerManager = default!;
 
     public event Action<string>? OnSelectConstruct;
-    public bool IsDisposed { get; private set; }
     private NetEntity _constructUid;
     private NetEntity _mindUid;
 
@@ -47,14 +46,4 @@ public sealed partial class BloodConstructMenu : RadialMenu
         _entityNetworkManager.SendSystemNetworkMessage(new BloodConstructMenuClosedEvent(netEntity, _constructUid, _mindUid, constructName));
         Close();
     }
-
-    public new void Close()
-    {
-        if (!IsDisposed)
-        {
-            IsDisposed = true;
-            Dispose();
-        }
-    }
 }
-

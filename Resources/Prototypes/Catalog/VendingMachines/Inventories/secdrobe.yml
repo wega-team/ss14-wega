@@ -10,12 +10,12 @@
     ClothingUniformJumpsuitSecGrey: 3
     ClothingUniformJumpskirtSecGrey: 3
     ClothingUniformJumpsuitSecBlue: 3
-    ADTClothingUniformJumpskirtTurtleneckRed: 2
-    ADTClothingUniformJumpsuitTurtleneckRed: 2
-    ADTClothingUniformJumpskirtTurtleneckBlack: 2
-    ADTClothingUniformJumpsuitTurtleneckBlack: 2
-    ADTClothingUniformJumpskirtTurtleneckBlackSleeveless: 2
-    ADTClothingUniformJumpsuitTurtleneckBlackSleeveless: 2 
+    ClothingUniformJumpskirtTurtleneckRed: 2
+    ClothingUniformJumpsuitTurtleneckRed: 2
+    ClothingUniformJumpskirtTurtleneckBlack: 2
+    ClothingUniformJumpsuitTurtleneckBlack: 2
+    ClothingUniformJumpskirtTurtleneckBlackSleeveless: 2
+    ClothingUniformJumpsuitTurtleneckBlackSleeveless: 2 
     # Corvax-Wega-Turtleneck-end
     ClothingShoesBootsJack: 3
     ClothingHeadHatBeretSecurity: 3

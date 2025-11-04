@@ -139,7 +139,7 @@ namespace Content.Server.Medical.Surgery
             var damages = new List<BodyScannerDamageInfo>();
             foreach (var (damageId, bodyParts) in operated.InternalDamages)
             {
-                if (!_prototypeManager.TryIndex<InternalDamagePrototype>(damageId, out var damageProto))
+                if (!_prototypeManager.TryIndex(damageId, out var damageProto))
                     continue;
 
                 damages.Add(new BodyScannerDamageInfo(

@@ -130,8 +130,13 @@ namespace Content.Server.WashingMachine
                     _dirt.CleanDirt(entity, 100f);
 
                 // This is to clean the switchable clothes
-                var attachedClothing = EntityManager.EntityQuery<AttachedClothingComponent>()
-                    .Where(ac => ac.AttachedUid == entity).Select(ac => ac.Owner).ToList();
+                var attachedClothing = new List<EntityUid>();
+                var attachedClothingQuery = EntityQueryEnumerator<AttachedClothingComponent>();
+                while (attachedClothingQuery.MoveNext(out var clothingUid, out var ac))
+                {
+                    if (ac.AttachedUid == entity)
+                        attachedClothing.Add(clothingUid);
+                }
 
                 foreach (var clothing in attachedClothing)
                 {

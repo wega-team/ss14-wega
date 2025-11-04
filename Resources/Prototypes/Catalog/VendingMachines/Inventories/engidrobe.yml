@@ -8,11 +8,11 @@
     ClothingUniformJumpskirtEngineering: 3
     ClothingUniformJumpsuitEngineeringHazard: 3
     # Corvax-Wega-Turtleneck-start
-    ADTClothingUniformJumpskirtTurtleneckYellow: 2 
-    ADTClothingUniformJumpsuitTurtleneckYellow: 2
-    ADTClothingUniformJumpskirtTurtleneckSalat: 2
-    ADTClothingUniformJumpsuitTurtleneckSalat: 2 
-    ADTClothingUniformJumpsuitTurtleneckSalatblack: 2
+    ClothingUniformJumpskirtTurtleneckYellow: 2 
+    ClothingUniformJumpsuitTurtleneckYellow: 2
+    ClothingUniformJumpskirtTurtleneckSalat: 2
+    ClothingUniformJumpsuitTurtleneckSalat: 2 
+    ClothingUniformJumpsuitTurtleneckSalatblack: 2
     # Corvax-Wega-Turtleneck-end
     ClothingShoesColorBlack: 3
     ClothingOuterVestHazard: 3

@@ -6,8 +6,7 @@ namespace Content.Shared.Genetics;
 [RegisterComponent]
 public sealed partial class HulkComponent : Component
 {
-    [ValidatePrototypeId<EntityPrototype>]
-    public readonly string[] ActionPrototypes = new[]
+    public readonly EntProtoId[] ActionPrototypes = new EntProtoId[]
     {
         "ActionHulkCharge"
     };
@@ -18,14 +17,13 @@ public sealed partial class HulkComponent : Component
 [RegisterComponent]
 public sealed partial class HulkGenComponent : Component
 {
-    [ValidatePrototypeId<EntityPrototype>]
-    public readonly string ActionPrototype = "ActionHulkTransformation";
+    public readonly EntProtoId ActionPrototype = "ActionHulkTransformation";
 
     public EntityUid? ActionEntity { get; set; }
 
-    [DataField, ValidatePrototypeId<PolymorphPrototype>]
-    public string PolymorphProto = "HulkPolymorph";
+    [DataField]
+    public ProtoId<PolymorphPrototype> PolymorphProto = "HulkPolymorph";
 
-    [DataField, ValidatePrototypeId<PolymorphPrototype>]
-    public string PolymorphAltProto = "HulkPolymorphAlt";
+    [DataField]
+    public ProtoId<PolymorphPrototype> PolymorphAltProto = "HulkPolymorphAlt";
 }

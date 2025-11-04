@@ -101,13 +101,13 @@ public sealed class SlimeAnalyzerSystem : EntitySystem
 
     private void OnInsertedIntoContainer(Entity<SlimeAnalyzerComponent> analyzer, ref EntGotInsertedIntoContainerMessage args)
     {
-        if (analyzer.Comp.ScannedEntity is { } target)
+        if (analyzer.Comp.ScannedEntity is { } _)
             _toggle.TryDeactivate(analyzer.Owner);
     }
 
     private void OnDropped(Entity<SlimeAnalyzerComponent> analyzer, ref DroppedEvent args)
     {
-        if (analyzer.Comp.ScannedEntity is { } target)
+        if (analyzer.Comp.ScannedEntity is { } _)
             _toggle.TryDeactivate(analyzer.Owner);
     }
 

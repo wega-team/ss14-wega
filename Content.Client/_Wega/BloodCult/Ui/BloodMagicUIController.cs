@@ -11,7 +11,6 @@ namespace Content.Client.Blood.Magic.UI
         [Dependency] private readonly IEntityManager _entityManager = default!;
 
         private BloodMagicMenu? _menu;
-        private bool _menuDisposed = false;
 
         public override void Initialize()
         {
@@ -25,7 +24,7 @@ namespace Content.Client.Blood.Magic.UI
             var userEntity = _entityManager.GetEntity(args.Uid);
             if (session?.AttachedEntity.HasValue == true && session.AttachedEntity.Value == userEntity)
             {
-                if (_menu is null || _menu.IsDisposed)
+                if (_menu is null)
                 {
                     _menu = _uiManager.CreateWindow<BloodMagicMenu>();
                     _menu.OnClose += OnMenuClosed;
@@ -40,7 +39,6 @@ namespace Content.Client.Blood.Magic.UI
 
         private void OnMenuClosed()
         {
-            _menuDisposed = true;
             _menu = null;
         }
     }

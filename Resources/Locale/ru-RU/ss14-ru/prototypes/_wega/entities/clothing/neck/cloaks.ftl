@@ -6,4 +6,7 @@ ent-ClothingNeckCloakVoidCap = пустотная накидка
     .desc = Плащ-невидимка, который сливается с пустотой космоса.
 ent-ClothingNeckCloakBlueShield = плащ офицера "Синий Щит"
     .desc = Плащ для защитников, рискующих своей грудью ради НаноТрейзен!
-    
+ent-ClothingNeckDarkGreyCloak = темно-серый плащ
+    .desc = Даже грейтайд заслуживает иметь свой плащ.
+ent-ClothingNeckGothicCloak = готический плащ
+    .desc = Для классических вампиров, ценящих старый стиль.

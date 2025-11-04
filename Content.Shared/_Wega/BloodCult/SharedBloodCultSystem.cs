@@ -28,10 +28,10 @@ public abstract class SharedBloodCultSystem : EntitySystem
                     continue;
 
                 var protoId = meta.EntityPrototype?.ID;
-                if (protoId == BloodCultistComponent.CultObjective
-                    || protoId == BloodCultistComponent.CultCommunication
-                    || protoId == BloodCultistComponent.BloodMagic
-                    || protoId == BloodCultistComponent.RecallBloodDagger)
+                if (protoId == BloodCultistComponent.CultObjective.Id
+                    || protoId == BloodCultistComponent.CultCommunication.Id
+                    || protoId == BloodCultistComponent.BloodMagic.Id
+                    || protoId == BloodCultistComponent.RecallBloodDagger.Id)
                 {
                     _action.RemoveAction(cultist, actionId);
                 }

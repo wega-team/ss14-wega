@@ -620,7 +620,7 @@ public sealed partial class DnaModifierWindow : FancyWindow
     }
 
     #region Initilize U.I.
-    private void InitilizeUniqueIdentifiers(UniqueIdentifiersPrototype unique)
+    private void InitilizeUniqueIdentifiers(UniqueIdentifiersData unique)
     {
         _initializedUi = true;
         var blocks = new List<(string BlockName, string[] Values)>
@@ -701,7 +701,6 @@ public sealed partial class DnaModifierWindow : FancyWindow
         {
             Text = blockName,
             MinWidth = 25,
-            StyleClasses = { StyleNano.StyleClassLabelSecondaryColor }
         };
 
         blockContainer.AddChild(blockLabel);
@@ -804,7 +803,6 @@ public sealed partial class DnaModifierWindow : FancyWindow
         {
             Text = blockName,
             MinWidth = 25,
-            StyleClasses = { StyleNano.StyleClassLabelSecondaryColor }
         };
 
         blockContainer.AddChild(blockLabel);
@@ -937,8 +935,7 @@ public sealed partial class DnaModifierWindow : FancyWindow
                 new Label { Text = $"{info.DisplayName}: " },
                 new Label
                 {
-                    Text = $"{info.CurrentVolume}/{info.MaxVolume}",
-                    StyleClasses = { StyleNano.StyleClassLabelSecondaryColor }
+                    Text = $"{info.CurrentVolume}/{info.MaxVolume}"
                 }
             }
         });
@@ -977,8 +974,7 @@ public sealed partial class DnaModifierWindow : FancyWindow
                 new Label { Text = $"{name}: " },
                 new Label
                 {
-                    Text = $"{quantity}u",
-                    StyleClasses = { StyleNano.StyleClassLabelSecondaryColor }
+                    Text = $"{quantity}u"
                 },
                 new Control { HorizontalExpand = true },
                 new PanelContainer

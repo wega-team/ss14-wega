@@ -19,7 +19,6 @@ public sealed partial class BloodStructureMenu : RadialMenu
     [Dependency] private readonly ISharedPlayerManager _playerManager = default!;
 
     public event Action<string>? OnSelectItem;
-    public bool IsDisposed { get; private set; }
     private NetEntity _structure;
 
     public BloodStructureMenu()
@@ -80,14 +79,4 @@ public sealed partial class BloodStructureMenu : RadialMenu
         _entityNetworkManager.SendSystemNetworkMessage(new BloodStructureMenuClosedEvent(netEntity, name, _structure));
         Close();
     }
-
-    public new void Close()
-    {
-        if (!IsDisposed)
-        {
-            IsDisposed = true;
-            Dispose();
-        }
-    }
 }
-

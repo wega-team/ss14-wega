@@ -14,7 +14,6 @@ public sealed partial class BloodRitesMenu : RadialMenu
     [Dependency] private readonly ISharedPlayerManager _playerManager = default!;
 
     public event Action<string>? OnSelectRites;
-    public bool IsDisposed { get; private set; }
 
     public BloodRitesMenu()
     {
@@ -38,15 +37,6 @@ public sealed partial class BloodRitesMenu : RadialMenu
         var netEntity = _entityManager.GetNetEntity(_playerManager.LocalSession?.AttachedEntity ?? EntityUid.Invalid);
         _entityNetworkManager.SendSystemNetworkMessage(new BloodRitesMenuClosedEvent(netEntity, ritesName));
         Close();
-    }
-
-    public new void Close()
-    {
-        if (!IsDisposed)
-        {
-            IsDisposed = true;
-            Dispose();
-        }
     }
 }
 

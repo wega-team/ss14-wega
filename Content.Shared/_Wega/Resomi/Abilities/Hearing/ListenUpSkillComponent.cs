@@ -1,8 +1,7 @@
-using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
-namespace Content.Shared._Wega.Resomi.Abilities.Hearing;
+namespace Content.Shared.Resomi.Abilities.Hearing;
 
 [RegisterComponent]
 public sealed partial class ListenUpSkillComponent : Component
@@ -15,8 +14,8 @@ public sealed partial class ListenUpSkillComponent : Component
     public EntityUid? SwitchListenUpActionEntity;
 
     [DataField]
-    public bool toggled = false;
+    public bool Toggled = false;
 
     [DataField]
-    public float prepareTime = 3f;
+    public float PrepareTime = 3f;
 }

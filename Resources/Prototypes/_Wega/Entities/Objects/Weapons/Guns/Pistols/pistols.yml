@@ -1,0 +1,63 @@
+- type: entity
+  parent: BaseItem
+  id: WeaponPistolDesertEagle
+  name: desert eagle
+  description: "Here it is, the embodiment of strength and freedom — the Desert Eagle! The mere mention of this weapon causes a wave of goosebumps and adrenaline."
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Pistols/deserteagle.rsi
+    layers:
+      - state: base
+        map: ["enum.GunVisualLayers.Base"]
+      - state: mag-0
+        map: ["enum.GunVisualLayers.Mag"]
+  - type: Item
+    size: Small
+  - type: Clothing
+    sprite: _Wega/Objects/Weapons/Guns/Pistols/deserteagle.rsi
+    quickEquip: false
+    slots:
+    - suitStorage
+    - Belt
+  - type: Gun
+    fireRate: 2
+    selectedMode: SemiAuto
+    availableModes:
+      - SemiAuto
+    soundGunshot:
+      path: /Audio/_Wega/Weapons/Guns/Gunshots/deserteagle.ogg
+      params:
+        volume: 2
+  - type: ChamberMagazineAmmoProvider
+  - type: AmmoCounter
+    soundRack:
+      path: /Audio/Weapons/Guns/Cock/pistol_cock.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: MagazineEagle
+        insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - MagazineEagle
+      gun_chamber:
+        name: Chamber
+        startingItem: CartridgeMagnum
+        priority: 1
+        whitelist:
+          tags:
+            - CartridgeMagnum
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+      gun_chamber: !type:ContainerSlot
+  - type: MagazineVisuals
+    magState: mag
+    steps: 1
+    zeroVisible: true
+  - type: Appearance
+  - type: StaticPrice
+    price: 500

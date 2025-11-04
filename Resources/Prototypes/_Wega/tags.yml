@@ -235,3 +235,12 @@
   
 - type: Tag
   id: Cook
+
+- type: Tag
+  id: MagazineEagle
+
+- type: Tag
+  id: MagazineHristov
+
+- type: Tag
+  id: ExtMagazineRifle

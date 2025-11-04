@@ -1,7 +1,6 @@
 using Content.Shared.Damage;
 using Content.Shared.Martial.Arts;
 using Content.Shared.Martial.Arts.Components;
-using Content.Shared.Speech.Muting;
 using Content.Shared.Standing;
 
 namespace Content.Server.Martial.Arts;
@@ -59,7 +58,7 @@ public sealed partial class MartialArtsSystem
 
     private void HandleNeckChop(EntityUid target)
     {
-        _statusEffect.TryAddStatusEffect<MutedComponent>(target, "Muted", TimeSpan.FromSeconds(20f), true);
+        _statusEffect.TryAddStatusEffectDuration(target, "Muted", TimeSpan.FromSeconds(20f));
 
         var damage = new DamageSpecifier { DamageDict = { { "Blunt", 15 } } };
         _damage.TryChangeDamage(target, damage);

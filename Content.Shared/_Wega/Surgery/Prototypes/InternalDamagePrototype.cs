@@ -5,7 +5,6 @@ using Robust.Shared.Serialization;
 namespace Content.Shared.Surgery;
 
 [Prototype("internalDamage")]
-[Serializable, NetSerializable]
 public sealed partial class InternalDamagePrototype : IPrototype, ISerializationHooks
 {
     [IdDataField]
