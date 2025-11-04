@@ -36,12 +36,8 @@ device-address-prefix-heater = НГР-
 device-address-prefix-freezer = ОХЛ-
 device-address-prefix-volume-pump = ОБН-
 device-address-prefix-smes = СМС-
-<<<<<<< HEAD
-# PDAs and terminals
-=======
 device-address-prefix-turret = ТРЛ-
 #PDAs and terminals
->>>>>>> 9d1580278911130aab06150ac695342664fde59d
 device-address-prefix-console = Конс-
 device-address-prefix-fire-alarm = Пож-
 device-address-prefix-air-alarm = Возд-
