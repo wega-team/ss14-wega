@@ -15,11 +15,13 @@
   id: ChefJumpsuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitChef
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: ChefJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtChef
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 # Outer clothing
 - type: loadout

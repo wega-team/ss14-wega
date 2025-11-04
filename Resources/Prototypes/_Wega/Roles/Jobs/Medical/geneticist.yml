@@ -3,6 +3,7 @@
   name: job-name-geneticist
   description: job-description-geneticist
   playTimeTracker: JobGeneticist
+  isSubRole: true
   requirements:
     - !type:RoleTimeRequirement
       role: JobChemist

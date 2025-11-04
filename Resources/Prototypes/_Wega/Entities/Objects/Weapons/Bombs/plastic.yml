@@ -12,12 +12,20 @@
     layers:
     - state: icon
       map: ["base"]
-  - type: OnUseTimerTrigger
+  - type: TriggerOnUse
+    keyOut: startTimer
+  - type: TimerTrigger
+    keysIn:
+    - startTimer
+    # use the default trigger key so it can activate any inserted payload
+    keyOut: trigger
     delay: 10
     delayOptions: [10, 30, 60, 120]
-    startOnStick: true
-    canToggleStartOnStick: true
-  - type: TimerStartOnSignal
+    initialBeepDelay: 0
+    beepSound:
+      path: /Audio/Machines/Nuke/general_beep.ogg
+      params:
+        volume: -2
   - type: DeviceLinkSink
     ports:
       - Timer

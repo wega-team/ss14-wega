@@ -31,11 +31,7 @@
   - type: SlimeHunger
   - type: SlimeSocial
   - type: SlimeGrowth
-  - type: Appearance
-    visuals:
-      enum.SlimeVisualLayers:
-        Type: Gray
-        Stage: Young
+
   - type: SlimeVisuals
     defaultVisuals: MobXenoSlimeGray
     typeVisuals:
@@ -84,11 +80,6 @@
         Base: blue_baby_dead
   - type: SlimeGrowth
     slimeType: Blue
-  - type: Appearance
-    visuals:
-      enum.SlimeVisualLayers:
-        Type: Blue
-        Stage: Young
 
 - type: entity
   name: purple slime
@@ -107,10 +98,6 @@
   - type: SlimeGrowth
     slimeType: Purple
   - type: Appearance
-    visuals:
-      enum.SlimeVisualLayers:
-        Type: Purple
-        Stage: Young
 
 - type: entity
   name: orange slime
@@ -128,11 +115,6 @@
         Base: orange_baby_dead
   - type: SlimeGrowth
     slimeType: Orange
-  - type: Appearance
-    visuals:
-      enum.SlimeVisualLayers:
-        Type: Orange
-        Stage: Young
 
 - type: entity
   name: metallic slime
@@ -150,11 +132,6 @@
         Base: metallic_baby_dead
   - type: SlimeGrowth
     slimeType: Metallic
-  - type: Appearance
-    visuals:
-      enum.SlimeVisualLayers:
-        Type: Metallic
-        Stage: Young
 
 - type: entity
   name: dark-purple slime
@@ -172,11 +149,6 @@
         Base: darkpurple_baby_dead
   - type: SlimeGrowth
     slimeType: DarkPurple
-  - type: Appearance
-    visuals:
-      enum.SlimeVisualLayers:
-        Type: DarkPurple
-        Stage: Young
 
 - type: entity
   name: green slime
@@ -194,11 +166,6 @@
         Base: green_baby_dead
   - type: SlimeGrowth
     slimeType: Green
-  - type: Appearance
-    visuals:
-      enum.SlimeVisualLayers:
-        Type: Green
-        Stage: Young
 
 - type: entity
   name: dark-blue slime
@@ -216,11 +183,6 @@
         Base: darkblue_baby_dead
   - type: SlimeGrowth
     slimeType: DarkBlue
-  - type: Appearance
-    visuals:
-      enum.SlimeVisualLayers:
-        Type: DarkBlue
-        Stage: Young
 
 - type: entity
   name: pink slime
@@ -238,11 +200,6 @@
         Base: pink_baby_dead
   - type: SlimeGrowth
     slimeType: Pink
-  - type: Appearance
-    visuals:
-      enum.SlimeVisualLayers:
-        Type: Pink
-        Stage: Young
 
 - type: entity
   name: red slime
@@ -260,11 +217,6 @@
         Base: red_baby_dead
   - type: SlimeGrowth
     slimeType: Red
-  - type: Appearance
-    visuals:
-      enum.SlimeVisualLayers:
-        Type: Red
-        Stage: Young
 
 - type: entity
   name: yellow slime
@@ -282,11 +234,6 @@
         Base: yellow_baby_dead
   - type: SlimeGrowth
     slimeType: Yellow
-  - type: Appearance
-    visuals:
-      enum.SlimeVisualLayers:
-        Type: Yellow
-        Stage: Young
 
 - type: entity
   name: gold slime
@@ -304,11 +251,6 @@
         Base: gold_baby_dead
   - type: SlimeGrowth
     slimeType: Gold
-  - type: Appearance
-    visuals:
-      enum.SlimeVisualLayers:
-        Type: Gold
-        Stage: Young
 
 - type: entity
   name: silver slime
@@ -326,11 +268,6 @@
         Base: silver_baby_dead
   - type: SlimeGrowth
     slimeType: Silver
-  - type: Appearance
-    visuals:
-      enum.SlimeVisualLayers:
-        Type: Silver
-        Stage: Young
 
 - type: entity
   name: black slime
@@ -348,11 +285,6 @@
         Base: black_baby_dead
   - type: SlimeGrowth
     slimeType: Black
-  - type: Appearance
-    visuals:
-      enum.SlimeVisualLayers:
-        Type: Black
-        Stage: Young
 
 - type: entity
   name: sepia slime
@@ -370,11 +302,6 @@
         Base: sepia_baby_dead
   - type: SlimeGrowth
     slimeType: Sepia
-  - type: Appearance
-    visuals:
-      enum.SlimeVisualLayers:
-        Type: Sepia
-        Stage: Young
 
 - type: entity
   name: oil slime
@@ -392,11 +319,6 @@
         Base: oil_baby_dead
   - type: SlimeGrowth
     slimeType: Oil
-  - type: Appearance
-    visuals:
-      enum.SlimeVisualLayers:
-        Type: Oil
-        Stage: Young
 
 - type: entity
   name: bluespace slime
@@ -414,11 +336,6 @@
         Base: bluespace_baby_dead
   - type: SlimeGrowth
     slimeType: Bluespace
-  - type: Appearance
-    visuals:
-      enum.SlimeVisualLayers:
-        Type: Bluespace
-        Stage: Young
 
 - type: entity
   name: adamantine slime
@@ -436,11 +353,6 @@
         Base: adamantine_baby_dead
   - type: SlimeGrowth
     slimeType: Adamantine
-  - type: Appearance
-    visuals:
-      enum.SlimeVisualLayers:
-        Type: Adamantine
-        Stage: Young
 
 - type: entity
   name: pyrite slime
@@ -458,11 +370,6 @@
         Base: pyrite_baby_dead
   - type: SlimeGrowth
     slimeType: Pyrite
-  - type: Appearance
-    visuals:
-      enum.SlimeVisualLayers:
-        Type: Pyrite
-        Stage: Young
 
 - type: entity
   name: azure slime
@@ -480,11 +387,6 @@
         Base: azure_baby_dead
   - type: SlimeGrowth
     slimeType: Azure
-  - type: Appearance
-    visuals:
-      enum.SlimeVisualLayers:
-        Type: Azure
-        Stage: Young
 
 - type: entity
   name: light-pink slime
@@ -502,11 +404,6 @@
         Base: lightpink_baby_dead
   - type: SlimeGrowth
     slimeType: LightPink
-  - type: Appearance
-    visuals:
-      enum.SlimeVisualLayers:
-        Type: LightPink
-        Stage: Young
 
 - type: entity
   name: rainbow slime
@@ -524,8 +421,3 @@
         Base: rainbow_baby_dead
   - type: SlimeGrowth
     slimeType: Rainbow
-  - type: Appearance
-    visuals:
-      enum.SlimeVisualLayers:
-        Type: Rainbow
-        Stage: Young

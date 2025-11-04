@@ -1,0 +1,109 @@
+## Recipes
+
+## Weapons
+- type: latheRecipe
+  id: WeaponDominator
+  result: WeaponDominator
+  categories:
+  - Weapons
+  completetime: 5
+  materials:
+    Steel: 750
+    Plastic: 250
+    Glass: 300
+    Gold: 100
+    
+- type: latheRecipe
+  id: WeaponTaser
+  result: WeaponTaser
+  categories:
+  - Weapons
+  completetime: 8
+  materials:
+    Steel: 850
+    Plastic: 850
+    Glass: 300
+    Gold: 400
+    Silver: 200
+# Clothing
+
+- type: latheRecipe
+  id: PortableRechargerBag
+  result: PortableRechargerBag
+  categories:
+  - Clothing
+  completetime: 10
+  materials:
+    Steel: 1000
+    Plastic: 300
+    Glass: 300
+    Plasma: 500
+    Gold: 300
+    Silver: 150
+
+- type: latheRecipe
+  id: PortableRechargerTurbo
+  result: PortableRechargerTurbo
+  categories:
+  - Clothing
+  completetime: 10
+  materials:
+    Steel: 1000
+    Plastic: 300
+    Glass: 300
+    Plasma: 500
+    Gold: 300
+    Silver: 150
+
+- type: latheRecipe
+  id: PortableRechargerTurboBag
+  result: PortableRechargerTurboBag
+  categories:
+  - Clothing
+  completetime: 10
+  materials:
+    Steel: 1500
+    Plastic: 500
+    Glass: 500
+    Plasma: 500
+    Gold: 500
+    Silver: 300
+    Uranium: 150
+
+- type: latheRecipe
+  id: ClothingHeadHelmetFlash
+  result: ClothingHeadHelmetFlash
+  categories:
+  - Clothing
+  completetime: 5
+  materials:
+    Steel: 350
+    Plastic: 200
+    Glass: 150
+    Plasma: 50
+    Gold: 50
+
+- type: latheRecipe
+  id: ClothingNeckFlashNeck
+  result: ClothingNeckFlashNeck
+  categories:
+  - Clothing
+  completetime: 3
+  materials:
+    Steel: 300
+    Plastic: 200
+    Glass: 150
+    Plasma: 50
+    Gold: 50
+    Silver: 50
+# Tools
+
+- type: latheRecipe
+  parent: BaseToolRecipe
+  id: ExmFlash
+  result: ExmFlash
+  materials:
+    Steel: 200
+    Glass: 100
+    Plastic: 200
+    Plasma: 50

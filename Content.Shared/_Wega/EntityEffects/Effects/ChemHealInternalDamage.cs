@@ -1,56 +1,64 @@
-using Content.Shared.EntityEffects;
-using Robust.Shared.Prototypes;
-using JetBrains.Annotations;
-using Robust.Shared.Random;
 using Content.Shared.Surgery.Components;
 using Content.Shared.Surgery;
+using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
 
-namespace Content.Shared.Chemistry.ReagentEffects
+namespace Content.Shared.EntityEffects.Effects;
+
+/// <summary>
+/// Heals internal damage with a chance for each damage type.
+/// The heal chance is equal to <see cref="ChemHealInternalDamage.HealChance"/> modified by scale.
+/// </summary>
+/// <inheritdoc cref="EntityEffectSystem{T,TEffect}"/>
+public sealed partial class ChemHealInternalDamageEntityEffectSystem : EntityEffectSystem<OperatedComponent, ChemHealInternalDamage>
 {
-    [UsedImplicitly]
-    public sealed partial class ChemHealInternalDamage : EntityEffect
+    [Dependency] private readonly IRobustRandom _random = default!;
+
+    protected override void Effect(Entity<OperatedComponent> entity, ref EntityEffectEvent<ChemHealInternalDamage> args)
     {
-        [DataField("healChance")]
-        public float HealChance = 0.1f;
+        var scaledChance = args.Effect.HealChance * args.Scale;
+        var damageTypes = args.Effect.DamageTypes;
 
-        [DataField("damageTypes")]
-        public List<ProtoId<InternalDamagePrototype>>? DamageTypes = null;
-
-        protected override string? ReagentEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
-            => Loc.GetString("reagent-effect-guidebook-heal-internal-damage",
-                ("chance", HealChance));
-
-        public override void Effect(EntityEffectBaseArgs args)
+        foreach (var (damageId, bodyParts) in entity.Comp.InternalDamages)
         {
-            if (args is not EntityEffectReagentArgs reagentArgs)
-                return;
+            if (damageTypes != null && !damageTypes.Contains(damageId))
+                continue;
 
-            var target = reagentArgs.TargetEntity;
-            if (!args.EntityManager.TryGetComponent<OperatedComponent>(target, out var operated))
-                return;
+            if (!_random.Prob(scaledChance))
+                continue;
 
-            var random = IoCManager.Resolve<IRobustRandom>();
-            var scaledChance = HealChance * reagentArgs.Scale.Float();
-
-            foreach (var (damageId, bodyParts) in operated.InternalDamages)
+            if (bodyParts.Count > 0)
             {
-                if (DamageTypes != null && !DamageTypes.Contains(damageId))
-                    continue;
+                var healedPart = _random.Pick(bodyParts);
+                bodyParts.Remove(healedPart);
+            }
 
-                if (!random.Prob(scaledChance))
-                    continue;
-
-                if (bodyParts.Count > 0)
-                {
-                    var healedPart = random.Pick(bodyParts);
-                    bodyParts.Remove(healedPart);
-                }
-
-                if (bodyParts.Count == 0)
-                {
-                    operated.InternalDamages.Remove(damageId);
-                }
+            if (bodyParts.Count == 0)
+            {
+                entity.Comp.InternalDamages.Remove(damageId);
             }
         }
+
+        Dirty(entity);
     }
+}
+
+/// <inheritdoc cref="EntityEffect"/>
+public sealed partial class ChemHealInternalDamage : EntityEffectBase<ChemHealInternalDamage>
+{
+    /// <summary>
+    ///     Chance to heal internal damage per damage type.
+    /// </summary>
+    [DataField("healChance")]
+    public float HealChance = 0.1f;
+
+    /// <summary>
+    ///     Specific damage types to heal. If null, heals all damage types.
+    /// </summary>
+    [DataField("damageTypes")]
+    public List<ProtoId<InternalDamagePrototype>>? DamageTypes = null;
+
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
+        => Loc.GetString("reagent-effect-guidebook-heal-internal-damage",
+            ("chance", HealChance));
 }

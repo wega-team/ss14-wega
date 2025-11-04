@@ -1,4 +1,5 @@
 using Content.Shared.StatusIcon;
+using Robust.Shared.Audio;
 using Robust.Shared.Containers;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
@@ -29,20 +30,11 @@ public sealed partial class BloodCultistComponent : Component
     [DataField]
     public int Empowering = 0;
 
-    [ValidatePrototypeId<EntityPrototype>]
-    public static readonly string CultObjective = "ActionBloodCultObjective";
-
-    [ValidatePrototypeId<EntityPrototype>]
-    public static readonly string CultCommunication = "ActionBloodCultComms";
-
-    [ValidatePrototypeId<EntityPrototype>]
-    public static readonly string BloodMagic = "ActionBloodMagic";
-
-    [ValidatePrototypeId<EntityPrototype>]
-    public static readonly string RecallBloodDagger = "ActionRecallBloodDagger";
-
-    [ValidatePrototypeId<EntityPrototype>]
-    public static readonly string RecallBloodSpear = "RecallBloodCultSpear";
+    public static readonly EntProtoId CultObjective = "ActionBloodCultObjective";
+    public static readonly EntProtoId CultCommunication = "ActionBloodCultComms";
+    public static readonly EntProtoId BloodMagic = "ActionBloodMagic";
+    public static readonly EntProtoId RecallBloodDagger = "ActionRecallBloodDagger";
+    public static readonly EntProtoId RecallBloodSpear = "RecallBloodCultSpear";
 
     [DataField("cultistStatusIcon")]
     public ProtoId<FactionIconPrototype> StatusIcon { get; set; } = "BloodCultistFaction";
@@ -102,11 +94,11 @@ public sealed partial class BloodStructureComponent : Component
     [ViewVariables(VVAccess.ReadOnly), DataField]
     public TimeSpan ActivateTime = TimeSpan.Zero;
 
-    [DataField("fixture", required: true)]
+    [DataField("fixture")]
     public string FixtureId = string.Empty;
 
     [DataField]
-    public string Sound = string.Empty;
+    public SoundSpecifier? Sound { get; private set; }
 
     [DataField]
     public bool CanInteract = true;

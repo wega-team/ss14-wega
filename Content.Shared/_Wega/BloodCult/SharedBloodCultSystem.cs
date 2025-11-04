@@ -28,10 +28,10 @@ public abstract class SharedBloodCultSystem : EntitySystem
                     continue;
 
                 var protoId = meta.EntityPrototype?.ID;
-                if (protoId == BloodCultistComponent.CultObjective
-                    || protoId == BloodCultistComponent.CultCommunication
-                    || protoId == BloodCultistComponent.BloodMagic
-                    || protoId == BloodCultistComponent.RecallBloodDagger)
+                if (protoId == BloodCultistComponent.CultObjective.Id
+                    || protoId == BloodCultistComponent.CultCommunication.Id
+                    || protoId == BloodCultistComponent.BloodMagic.Id
+                    || protoId == BloodCultistComponent.RecallBloodDagger.Id)
                 {
                     _action.RemoveAction(cultist, actionId);
                 }
@@ -55,7 +55,7 @@ public abstract class SharedBloodCultSystem : EntitySystem
         var stunTime = TimeSpan.FromSeconds(4);
         var name = Identity.Entity(cultist, EntityManager);
 
-        _stun.TryParalyze(cultist, stunTime, true);
+        _stun.TryKnockdown(cultist, stunTime, true);
         _popup.PopupEntity(Loc.GetString("blood-cult-break-control", ("name", name)), cultist);
 
         RemComp<BloodCultistComponent>(cultist);

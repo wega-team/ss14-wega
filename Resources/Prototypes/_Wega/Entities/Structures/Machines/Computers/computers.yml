@@ -59,3 +59,46 @@
   - type: GuideHelp
     guides:
     - Science
+
+- type: entity
+  parent: BaseComputerAiAccess
+  id: MiningMonitoringConsole
+  name: mining monitoring console
+  description: "Central control console for mining servers."
+  components:
+  - type: MiningConsole
+  - type: DeviceList
+  - type: DeviceNetwork
+    deviceNetId: Wired
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: mining_screen
+    - map: ["computerLayerKeys"]
+      state: power_key
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+  - type: ActivatableUI
+    singleUser: true
+    key: enum.MiningConsoleUiKey.Key
+  - type: ActivatableUIRequiresPower
+  - type: UserInterface
+    interfaces:
+      enum.MiningConsoleUiKey.Key:
+        type: MiningConsoleBoundInterface
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
+  - type: ApcPowerReceiver
+    powerLoad: 250
+  - type: Computer
+    board: MiningMonitoringComputerCircuitboard
+  - type: AccessReader
+    access: [["Research"]]
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#b53ca1"

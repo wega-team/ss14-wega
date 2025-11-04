@@ -5,6 +5,7 @@
   recipes:
   - AppraisalTool
   - Pickaxe
+  - UtilityKnife
 
 - type: latheRecipePack
   id: CargoBoardsStatic
@@ -30,3 +31,4 @@
   - CargoTelepadMachineCircuitboard
   - ShuttleGunKineticCircuitboard
   - SalvageExpeditionsComputerCircuitboard # Corvax-Cringe
+  - GoldprinterMachineCircuitboard # Corvax-Wega

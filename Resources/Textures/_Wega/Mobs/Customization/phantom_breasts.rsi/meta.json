@@ -1,0 +1,51 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Sprite created by zekins3366, recolored for phantom by HappyRoach and created Secondary.",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+      {
+          "name": "small",
+          "directions": 4
+      },
+      {
+          "name": "default",
+          "directions": 4
+      },
+      {
+          "name": "medium",
+          "directions": 4
+      },
+      {
+          "name": "big",
+          "directions": 4
+      },
+      {
+        "name": "superbig",
+        "directions": 4
+      },
+	  {
+        "name": "small-secondary",
+        "directions": 4
+      },
+      {
+        "name": "default-secondary",
+        "directions": 4
+      },
+      {
+        "name": "medium-secondary",
+        "directions": 4
+      },
+      {
+        "name": "big-secondary",
+        "directions": 4
+      },
+      {
+        "name": "superbig-secondary",
+        "directions": 4
+      }
+    ]
+}

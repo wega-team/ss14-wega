@@ -3,51 +3,61 @@
   id: LawyerJumpsuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitLawyerBlack
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: LawyerJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtLawyerBlack
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: LawyerJumpsuitBlue
   equipment:
     jumpsuit: ClothingUniformJumpsuitLawyerBlue
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: LawyerJumpskirtBlue
   equipment:
     jumpsuit: ClothingUniformJumpskirtLawyerBlue
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: LawyerJumpsuitPurple
   equipment:
     jumpsuit: ClothingUniformJumpsuitLawyerPurple
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: LawyerJumpskirtPurple
   equipment:
     jumpsuit: ClothingUniformJumpskirtLawyerPurple
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: LawyerJumpsuitRed
   equipment:
     jumpsuit: ClothingUniformJumpsuitLawyerRed
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: LawyerJumpskirtRed
   equipment:
     jumpsuit: ClothingUniformJumpskirtLawyerRed
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: LawyerJumpsuitGood
   equipment:
     jumpsuit: ClothingUniformJumpsuitLawyerGood
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: LawyerJumpskirtGood
   equipment:
     jumpsuit: ClothingUniformJumpskirtLawyerGood
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 # Neck
 - type: loadout

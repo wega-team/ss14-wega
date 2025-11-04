@@ -17,10 +17,10 @@
     Bucket: 3
     BoxMouthSwab: 1
     BoxAgrichem: 1
+    PlantAnalyzer: 4 # Corvax-Wega-Add
     #TO DO:
     #plant analyzer
   contrabandInventory:
     ChemistryBottleUnstableMutagen: 1
     Joint: 1
-  emaggedInventory:
     ChemistryBottleLeft4Zed: 1

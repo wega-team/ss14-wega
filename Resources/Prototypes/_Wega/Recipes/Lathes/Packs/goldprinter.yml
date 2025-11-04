@@ -1,0 +1,12 @@
+- type: latheRecipePack
+  id: GoldPrinterRec
+  recipes:
+    - GoldRing
+    - SilverRing
+    - GoldRingDiamond
+    - SilverRingDiamond
+    - GoldRingGem
+    - SilverRingGem
+    - HolyHandGrenadeMir
+    - ClothingHandsGoldBraset
+    - ClothingHandsGoldBrasetGem

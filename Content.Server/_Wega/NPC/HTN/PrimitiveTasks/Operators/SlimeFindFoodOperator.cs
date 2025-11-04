@@ -26,24 +26,22 @@ public sealed partial class SlimeFindFoodOperator : HTNOperator
         if (!_entMan.TryGetComponent<TransformComponent>(owner, out var ownerTransform))
             return (false, null);
 
-        var food = _entMan.EntityQuery<SlimeFoodComponent>()
-            .Select(x => x.Owner)
-            .Where(x =>
-            {
-                if (!_entMan.TryGetComponent<TransformComponent>(x, out var xform))
-                    return false;
+        EntityUid food = default;
+        float minDistance = float.MaxValue;
 
-                return xform.Coordinates.TryDistance(_entMan, ownerTransform.Coordinates, out var dist) &&
-                        dist <= range;
-            })
-            .OrderBy(x =>
+        var query = _entMan.EntityQueryEnumerator<SlimeFoodComponent, TransformComponent>();
+        while (query.MoveNext(out var uid, out _, out var xform))
+        {
+            if (!xform.Coordinates.TryDistance(_entMan, ownerTransform.Coordinates, out var dist) ||
+                dist > range)
+                continue;
+
+            if (dist < minDistance)
             {
-                var xform = _entMan.GetComponent<TransformComponent>(x);
-                return xform.Coordinates.TryDistance(_entMan, ownerTransform.Coordinates, out var dist)
-                    ? dist
-                    : float.MaxValue;
-            })
-            .FirstOrDefault();
+                minDistance = dist;
+                food = uid;
+            }
+        }
 
         if (food == default)
             return (false, null);

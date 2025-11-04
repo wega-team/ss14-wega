@@ -18,6 +18,12 @@
     - state: icon_flipped
       map: ["foldedLayer"]
       visible: false
+  # Corvax-Wega-Dirtable-start
+  - type: Dirtable
+    dirtState: soft
+    foldingDirtState: soft_flipped
+    equippedDirtState: equipped-soft
+  # Corvax-Wega-Dirtable-end
 
 - type: entity
   parent: ClothingHeadHeadHatBaseFlippable

@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Numerics;
+using Content.Shared.Input; // Corvax-Wega-Add
 using Robust.Client.Graphics;
 using Robust.Client.Input;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.CustomControls;
 using Robust.Shared.Graphics;
+using Robust.Shared.Input; // Corvax-Wega-Add
 using Robust.Shared.IoC;
 using Robust.Shared.Map;
 using Robust.Shared.Maths;
@@ -123,6 +125,33 @@ namespace Content.Client.Viewport
             IoCManager.InjectDependencies(this);
             RectClipContent = true;
         }
+
+        // Corvax-Wega-Add-start
+        protected override void MouseWheel(GUIMouseWheelEventArgs args)
+        {
+            base.MouseWheel(args);
+
+            if (args.Handled)
+                return;
+
+            var key = args.Delta.Y > 0 ? ContentKeyFunctions.MouseWheelUp : ContentKeyFunctions.MouseWheelDown;
+
+            SendKeyEvent(key, BoundKeyState.Down, args);
+            SendKeyEvent(key, BoundKeyState.Up, args);
+        }
+
+        private void SendKeyEvent(BoundKeyFunction key, BoundKeyState state, GUIMouseWheelEventArgs args)
+        {
+            var keyEvent = new BoundKeyEventArgs(
+                key,
+                state,
+                args.GlobalPixelPosition,
+                false
+            );
+
+            _inputManager.ViewportKeyEvent(this, keyEvent);
+        }
+        // Corvax-Wega-Add-end
 
         protected override void KeyBindDown(GUIBoundKeyEventArgs args)
         {

@@ -6,6 +6,10 @@ fallbackpreset = "sandbox"
 maxplayers = 60
 soft_max_players = 40
 map_rotation = false
+lobbyenabled = false
+map = "Dev"
+role_timers = false
+role_loadout_timers = false
 
 [net]
 tickrate = 30
@@ -19,8 +23,28 @@ maximum_width = 26
 [admin]
 admins_count_in_playercount = true
 
+[events]
+enabled = false
+
+[ghost]
+role_time = 0.5
+quick_lottery = true
+
+[gateway]
+generator_enabled = false
+
 [movement]
-mob_pushing = true
+mob_pushing = false
+
+[physics]
+# Makes mapping annoying
+grid_splitting = false
+
+[procgen]
+preload = false
+
+[salvage]
+expedition_cooldown = 30.0
 
 [game.panic_bunker]
 enabled = true
@@ -37,3 +61,13 @@ lobby_name = "🌟 Corvax — Вега SandBox 🌟[18+]"
 
 [shuttle]
 arrivals_map = "/Maps/Corvax/Misc/corvax_terminal.yml"
+grid_fill = false
+auto_call_time = 0
+emergency = false
+arrivals = false
+preload_grids = false
+
+[ic]
+random_characters = true
+random_species_weights = ""
+ssd_sleep_time = 3600

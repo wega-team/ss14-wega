@@ -46,7 +46,7 @@ public sealed class TapeRecorderSystem : SharedTapeRecorderSystem
             voice.NameOverride = message.Name ?? ent.Comp.DefaultName;
             // TODO: mimic the exact string chosen when the message was recorded
             var verb = message.Verb ?? SharedChatSystem.DefaultSpeechVerb;
-            speech.SpeechVerb = _proto.Index<SpeechVerbPrototype>(verb);
+            speech.SpeechVerb = _proto.Index(verb);
             //Play the message
             _chat.TrySendInGameICMessage(ent, message.Message, InGameICChatType.Speak, false);
         }
@@ -113,7 +113,7 @@ public sealed class TapeRecorderSystem : SharedTapeRecorderSystem
         foreach (var message in cassette.Comp.RecordedData)
         {
             var name = message.Name ?? ent.Comp.DefaultName;
-            var time = TimeSpan.FromSeconds((double)message.Timestamp);
+            var time = TimeSpan.FromSeconds(message.Timestamp);
 
             text.AppendLine(Loc.GetString("tape-recorder-print-message-text",
                 ("time", time.ToString(@"hh\:mm\:ss")),

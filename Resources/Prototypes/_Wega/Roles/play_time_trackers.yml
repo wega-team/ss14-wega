@@ -2,9 +2,6 @@
   id: JobBarber
 
 - type: playTimeTracker
-  id: JobBrigmedic
-
-- type: playTimeTracker
   id: JobCBURNLeader
 
 - type: playTimeTracker
@@ -15,3 +12,9 @@
 
 - type: playTimeTracker
   id: JobCoroner
+
+- type: playTimeTracker
+  id: JobBlueShield
+
+- type: playTimeTracker
+  id: JobPostman

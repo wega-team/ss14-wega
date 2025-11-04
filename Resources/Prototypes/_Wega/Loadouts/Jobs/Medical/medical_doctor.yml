@@ -9,3 +9,4 @@
   id: MedicalBlackScrubs
   equipment:
     jumpsuit: UniformScrubsColorBlack
+  groupBy: "wegaJJ"

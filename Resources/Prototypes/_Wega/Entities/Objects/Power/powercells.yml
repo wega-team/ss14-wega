@@ -42,6 +42,10 @@
   - type: Tag
     tags:
       - PotatoBattery
+      - PowerCell
   - type: Construction
     graph: PowerCellSuperPotatoCraft
     node: superpotatobattery
+  - type: BatterySelfRecharger
+    autoRecharge: true
+    autoRechargeRate: 12

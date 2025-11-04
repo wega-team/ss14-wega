@@ -35,8 +35,58 @@
     - SlimeRemoveRadioCentcommTransition
 
 - type: surgeryPackage
+  id: AndroidTorsoImplantPackage
+  transitions:
+    - AndroidImplantTorsoTransition
+    - AndroidRemoveSadTromboneTransition
+    - AndroidRemoveLightImplantTransition
+    - AndroidRemoveBikeHornTransition
+    - AndroidRemoveTrackingTransition
+    - AndroidRemoveStorageTransition
+    - AndroidRemoveFreedomTransition
+    - AndroidRemoveRadioTransition
+    - AndroidRemoveUplinkTransition
+    - AndroidRemoveEmpTransition
+    - AndroidRemoveScramTransition
+    - AndroidRemoveDnaScramblerTransition
+    - AndroidRemoveChameleonControllerTransition
+    - AndroidRemoveRadioCentcommTransition
+
+- type: surgeryPackage
+  id: IpcTorsoImplantPackage
+  transitions:
+    - IpcImplantTorsoTransition
+    - IpcRemoveSadTromboneTransition
+    - IpcRemoveLightImplantTransition
+    - IpcRemoveBikeHornTransition
+    - IpcRemoveTrackingTransition
+    - IpcRemoveStorageTransition
+    - IpcRemoveFreedomTransition
+    - IpcRemoveRadioTransition
+    - IpcRemoveUplinkTransition
+    - IpcRemoveEmpTransition
+    - IpcRemoveScramTransition
+    - IpcRemoveDnaScramblerTransition
+    - IpcRemoveChameleonControllerTransition
+    - IpcRemoveRadioCentcommTransition
+
+- type: surgeryPackage
   id: HeadImplantPackage
   transitions:
     - ImplantingHeadTransition
     - RemoveMindShieldTransition
     - RemoveFakeMindShieldTransition
+
+- type: surgeryPackage
+  id: AndroidHeadImplantPackage
+  transitions:
+    - AndroidImplantHeadTransition
+    - AndroidRemoveMindShieldTransition
+    - AndroidRemoveFakeMindShieldTransition
+
+- type: surgeryPackage
+  id: IpcHeadImplantPackage
+  transitions:
+    - IpcImplantHeadTransition
+    - IpcRemoveMindShieldTransition
+    - IpcRemoveFakeMindShieldTransition

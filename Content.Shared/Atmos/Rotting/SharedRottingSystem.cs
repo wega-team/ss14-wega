@@ -1,4 +1,4 @@
-﻿using Content.Shared.Chemistry.ReagentEffects; // Corvax-Wega-Disease
+﻿using Content.Shared.EntityEffects.Effects; // Corvax-Wega-Disease
 using Content.Shared.Examine;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Mobs;

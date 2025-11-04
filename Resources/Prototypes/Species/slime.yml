@@ -1,6 +1,6 @@
 - type: species
   id: SlimePerson
-  name: species-name-slime
+  name: species-name-slimeperson # Corvax-Wega-Edit
   roundStart: true
   prototype: MobSlimePerson
   sprites: MobSlimeSprites

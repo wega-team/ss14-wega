@@ -19,6 +19,7 @@
     - Moth
     - Reptilian
     #Corvax-Species-Start
+    - CorvaxVulpkanin
     - Vulpkanin
     - Tajaran
     #Corvax-Species-End
@@ -26,7 +27,9 @@
     - Resomi # Corvax-Wega-Resomi
     - Skrell # Corvax-Wega-Skrell
     - Demon # Corvax-Wega-Ы
-
+    - Phantom # Corvax-Wega-Phantom
+    - Harpy # Corvax-Wega-Harpy
+    - Ariral # Corvax-Wega-Ariral
 - type: loadoutEffectGroup
   id: EffectSpeciesVox
   effects:
@@ -83,6 +86,11 @@
     - Dwarf
     - Human
     - Reptilian
+    #Corvax-Species-Start
+    - Vulpkanin
+    - CorvaxVulpkanin
+    - Tajaran
+    #Corvax-Species-End
 
 - type: loadoutEffectGroup
   id: OxygenBreatherMimeMoth

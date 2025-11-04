@@ -1,0 +1,702 @@
+# ========================
+# ИМПЛАНТАЦИЯ
+# ========================
+
+#Torso
+- type: surgeryTransition
+  id: IpcImplantTorsoTransition
+  target: IpcTorsoOpen
+  label: "Установить имплант"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tag: [ SubdermalImplant ]
+          entityPreview: EmptySubdermalImplant
+          action: Implanting
+          sound:
+            path: /Audio/Items/ratchet.ogg
+          time: 2
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Screw
+          sound:
+            collection: Screwdriver
+          time: 2
+        - tag: [ CableCoil ]
+          action: MendWire
+          entityPreview: CableApcStack
+          time: 2
+
+#Head
+- type: surgeryTransition
+  id: IpcImplantHeadTransition
+  target: IpcImplantingHeadOpen
+  label: "Установить имплант"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:BodyPartCondition
+          bodyPart: head
+      steps:
+        - tag: [ SubdermalHeadImplant ]
+          entityPreview: EmptySubdermalImplant
+          action: Implanting
+          sound:
+            collection: Screwdriver
+          time: 2
+        - tool: [ Pulsing ]
+          tag: [ DoorElectronicsConfigurator ]
+          action: Pulse
+          sound:
+            collection: CargoBeep
+          time: 2
+
+# ========================
+# УДАЛЕНИЕ ИМПЛАНТОВ
+# ========================
+
+#Torso
+
+# SadTromboneImplant
+- type: surgeryTransition
+  id: IpcRemoveSadTromboneTransition
+  target: IpcRemoveSadTromboneOperation
+  label: "Извлечь имплант грустного тромбона"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "SadTromboneImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: IpcExtractSadTromboneTransition
+  target: IpcTorsoOpen
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: RemoveImplant
+          requiredImplant: "SadTromboneImplant"
+          sound:
+            path: /Audio/Items/wirecutter.ogg 
+          time: 2
+
+# LightImplant
+- type: surgeryTransition
+  id: IpcRemoveLightImplantTransition
+  target: IpcRemoveLightImplantOperation
+  label: "Извлечь световой имплант"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "LightImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: IpcExtractLightImplantTransition
+  target: IpcTorsoOpen
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: RemoveImplant
+          requiredImplant: "LightImplant"
+          sound:
+            path: /Audio/Items/wirecutter.ogg 
+          time: 2
+
+# BikeHorn
+- type: surgeryTransition
+  id: IpcRemoveBikeHornTransition
+  target: IpcRemoveBikeHornOperation
+  label: "Извлечь имплант велосипедного гудка"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "BikeHornImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: IpcExtractBikeHornTransition
+  target: IpcTorsoOpen
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: RemoveImplant
+          requiredImplant: "BikeHornImplant"
+          sound:
+            path: /Audio/Items/wirecutter.ogg 
+          time: 2
+
+# Tracking
+- type: surgeryTransition
+  id: IpcRemoveTrackingTransition
+  target: IpcRemoveTrackingOperation
+  label: "Извлечь имплант слежения"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "TrackingImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: IpcExtractTrackingTransition
+  target: IpcTorsoOpen
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: RemoveImplant
+          requiredImplant: "TrackingImplant"
+          sound:
+            path: /Audio/Items/wirecutter.ogg 
+          time: 2
+
+# Storage
+- type: surgeryTransition
+  id: IpcRemoveStorageTransition
+  target: IpcRemoveStorageOperation
+  label: "Извлечь подозрительный имплант"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "StorageImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: IpcExtractStorageTransition
+  target: IpcTorsoOpen
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: RemoveImplant
+          requiredImplant: "StorageImplant"
+          sound:
+            path: /Audio/Items/wirecutter.ogg 
+          time: 2
+
+# Freedom
+- type: surgeryTransition
+  id: IpcRemoveFreedomTransition
+  target: IpcRemoveFreedomOperation
+  label: "Извлечь подозрительный имплант"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "FreedomImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: IpcExtractFreedomTransition
+  target: IpcTorsoOpen
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: RemoveImplant
+          requiredImplant: "FreedomImplant"
+          sound:
+            path: /Audio/Items/wirecutter.ogg 
+          time: 2
+
+# Radio
+- type: surgeryTransition
+  id: IpcRemoveRadioTransition
+  target: IpcRemoveRadioOperation
+  label: "Извлечь подозрительный имплант"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "RadioImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: IpcExtractRadioTransition
+  target: IpcTorsoOpen
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: RemoveImplant
+          requiredImplant: "RadioImplant"
+          sound:
+            path: /Audio/Items/wirecutter.ogg 
+          time: 2
+
+# Uplink
+- type: surgeryTransition
+  id: IpcRemoveUplinkTransition
+  target: IpcRemoveUplinkOperation
+  label: "Извлечь подозрительный имплант"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "UplinkImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: IpcExtractUplinkTransition
+  target: IpcTorsoOpen
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: RemoveImplant
+          requiredImplant: "UplinkImplant"
+          sound:
+            path: /Audio/Items/wirecutter.ogg 
+          time: 2
+
+# Emp
+- type: surgeryTransition
+  id: IpcRemoveEmpTransition
+  target: IpcRemoveEmpOperation
+  label: "Извлечь подозрительный имплант"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "EmpImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: IpcExtractEmpTransition
+  target: IpcTorsoOpen
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: RemoveImplant
+          requiredImplant: "EmpImplant"
+          sound:
+            path: /Audio/Items/wirecutter.ogg 
+          time: 2
+
+# Scram
+- type: surgeryTransition
+  id: IpcRemoveScramTransition
+  target: IpcRemoveScramOperation
+  label: "Извлечь подозрительный имплант"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "ScramImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: IpcExtractScramTransition
+  target: IpcTorsoOpen
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: RemoveImplant
+          requiredImplant: "ScramImplant"
+          sound:
+            path: /Audio/Items/wirecutter.ogg 
+          time: 2
+
+# DnaScrambler
+- type: surgeryTransition
+  id: IpcRemoveDnaScramblerTransition
+  target: IpcRemoveDnaScramblerOperation
+  label: "Извлечь подозрительный имплант"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "DnaScramblerImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: IpcExtractDnaScramblerTransition
+  target: IpcTorsoOpen
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: RemoveImplant
+          requiredImplant: "DnaScramblerImplant"
+          sound:
+            path: /Audio/Items/wirecutter.ogg 
+          time: 2
+
+# ChameleonController
+- type: surgeryTransition
+  id: IpcRemoveChameleonControllerTransition
+  target: IpcRemoveChameleonControllerOperation
+  label: "Извлечь подозрительный имплант"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "ChameleonControllerImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: IpcExtractChameleonControllerTransition
+  target: IpcTorsoOpen
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: RemoveImplant
+          requiredImplant: "ChameleonControllerImplant"
+          sound:
+            path: /Audio/Items/wirecutter.ogg 
+          time: 2
+
+# RadioCentcomm
+- type: surgeryTransition
+  id: IpcRemoveRadioCentcommTransition
+  target: IpcRemoveRadioCentcommOperation
+  label: "Извлечь подозрительный имплант"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "RadioImplantCentcomm"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: IpcExtractRadioCentcommTransition
+  target: IpcTorsoOpen
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: RemoveImplant
+          requiredImplant: "RadioCentcommImplant"
+          sound:
+            path: /Audio/Items/wirecutter.ogg 
+          time: 2
+
+#Head
+
+# MindShield
+- type: surgeryTransition
+  id: IpcRemoveMindShieldTransition
+  target: IpcRemoveMindShieldOperation
+  label: "Извлечь имплант защиты разума"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "MindShieldImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:BodyPartCondition
+          bodyPart: head
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: IpcExtractMindShieldTransition
+  target: IpcHeadOpen
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:BodyPartCondition
+          bodyPart: head
+      steps:
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: RemoveImplant
+          requiredImplant: "MindShieldImplant"
+          sound:
+            path: /Audio/Items/wirecutter.ogg 
+          time: 2
+
+# FakeMindShield
+- type: surgeryTransition
+  id: IpcRemoveFakeMindShieldTransition
+  target: IpcRemoveFakeMindShieldOperation
+  label: "Извлечь имплант защиты разума"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "FakeMindShieldImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:BodyPartCondition
+          bodyPart: head
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: IpcExtractFakeMindShieldTransition
+  target: IpcHeadOpen
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:BodyPartCondition
+          bodyPart: head
+      steps:
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: RemoveImplant
+          requiredImplant: "FakeMindShieldImplant"
+          sound:
+            path: /Audio/Items/wirecutter.ogg 
+          time: 2

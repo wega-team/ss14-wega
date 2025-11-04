@@ -1,0 +1,149 @@
+﻿- type: species
+  id: Phantom
+  name: species-name-phantom
+  roundStart: true
+  prototype: MobPhantom
+  sprites: MobPhantomSprites
+  defaultSkinTone: "#262626"
+  markingLimits: MobPhantomMarkingLimits
+  dollPrototype: MobPhantomDummy
+  skinColoration: PhantomBlack
+  maleFirstNames: NamesPhantomFirst
+  femaleFirstNames: NamesPhantomFirst
+  maleLastNames: NamesPhantomLast
+  femaleLastNames: NamesPhantomLast
+
+- type: speciesBaseSprites
+  id: MobPhantomSprites
+  sprites:
+    Special: MobHumanoidAnyMarking
+    Head: MobPhantomMarkingFollowSkin
+    Hair: MobPhantomMarkingFollowSkin
+    HeadTop: MobHumanoidAnyMarking
+    Snout: MobHumanoidAnyMarking
+    Chest: MobPhantomTorso
+    LArm: MobPhantomLArm
+    RArm: MobPhantomRArm
+    LHand: MobPhantomLHand
+    RHand: MobPhantomRHand
+    LLeg: MobPhantomLLeg
+    RLeg: MobPhantomRLeg
+    LFoot: MobPhantomLFoot
+    RFoot: MobPhantomRFoot
+
+- type: markingPoints
+  id: MobPhantomMarkingLimits
+  points:
+    Special:
+      points: 3
+      required: false
+    Head:
+      points: 1
+      required: true
+      defaultMarkings: [ PhantomHeadBase ]
+    HeadTop:
+      points: 1
+      required: false
+    Hair:
+      points: 1
+      required: false
+    Chest:
+      points: 1
+      required: false
+    Snout:
+      points: 2
+      required: false
+    Legs:
+      points: 4
+      required: false
+    Arms:
+      points: 4
+      required: false
+    FacialHair:
+      points: 0
+      required: false
+
+- type: humanoidBaseSprite
+  id: MobPhantomMarkingFollowSkin
+  markingsMatchSkin: true
+
+# Они просто нужны, без их ничего не работает
+- type: humanoidBaseSprite
+  id: MobPhantomMarkingFollowSkinMale
+  markingsMatchSkin: true
+
+- type: humanoidBaseSprite
+  id: MobPhantomMarkingFollowSkinFemale
+  markingsMatchSkin: true
+
+- type: humanoidBaseSprite
+  id: MobPhantomHead
+  baseSprite:
+    sprite: _Wega/Mobs/Species/Phantom/parts.rsi
+    state: head
+
+- type: humanoidBaseSprite
+  id: MobPhantomTorso
+  baseSprite:
+    sprite: _Wega/Mobs/Species/Phantom/parts.rsi
+    state: torso_m
+
+- type: humanoidBaseSprite
+  id: MobPhantomTorsoMale
+  baseSprite:
+    sprite: _Wega/Mobs/Species/Phantom/parts.rsi
+    state: torso_m
+
+- type: humanoidBaseSprite
+  id: MobPhantomTorsoFemale
+  baseSprite:
+    sprite: _Wega/Mobs/Species/Phantom/parts.rsi
+    state: torso_f
+
+- type: humanoidBaseSprite
+  id: MobPhantomLLeg
+  baseSprite:
+    sprite: _Wega/Mobs/Species/Phantom/parts.rsi
+    state: l_leg
+
+- type: humanoidBaseSprite
+  id: MobPhantomLHand
+  baseSprite:
+    sprite: _Wega/Mobs/Species/Phantom/parts.rsi
+    state: l_hand
+
+- type: humanoidBaseSprite
+  id: MobPhantomLArm
+  baseSprite:
+    sprite: _Wega/Mobs/Species/Phantom/parts.rsi
+    state: l_arm
+
+- type: humanoidBaseSprite
+  id: MobPhantomLFoot
+  baseSprite:
+    sprite: _Wega/Mobs/Species/Phantom/parts.rsi
+    state: l_foot
+
+- type: humanoidBaseSprite
+  id: MobPhantomRLeg
+  baseSprite:
+    sprite: _Wega/Mobs/Species/Phantom/parts.rsi
+    state: r_leg
+
+- type: humanoidBaseSprite
+  id: MobPhantomRHand
+  baseSprite:
+    sprite: _Wega/Mobs/Species/Phantom/parts.rsi
+    state: r_hand
+
+- type: humanoidBaseSprite
+  id: MobPhantomRArm
+  baseSprite:
+    sprite: _Wega/Mobs/Species/Phantom/parts.rsi
+    state: r_arm
+
+- type: humanoidBaseSprite
+  id: MobPhantomRFoot
+  baseSprite:
+    sprite: _Wega/Mobs/Species/Phantom/parts.rsi
+    state: r_foot

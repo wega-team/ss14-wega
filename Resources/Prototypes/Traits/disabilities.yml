@@ -32,8 +32,10 @@
   category: Disabilities
   components:
     - type: Narcolepsy
-      timeBetweenIncidents: 300, 600
-      durationOfIncident: 10, 30
+      maxTimeBetweenIncidents: 600
+      minTimeBetweenIncidents: 300
+      maxDurationOfIncident: 30
+      minDurationOfIncident: 10
 
 - type: trait
   id: Unrevivable
@@ -49,8 +51,13 @@
   name: trait-monochromacy-name
   description: trait-monochromacy-desc
   category: Disabilities
+  # Corvax-Wega-start
+  blacklist:
+    components:
+      - NoirVision
   components:
-  - type: BlackAndWhiteOverlay
+  - type: ColourBlindness
+  # Corvax-Wega-end
 
 - type: trait
   id: Muted
@@ -83,3 +90,20 @@
   category: Disabilities
   components:
   - type: PainNumbness
+
+- type: trait
+  id: Hemophilia
+  name: trait-hemophilia-name
+  description: trait-hemophilia-desc
+  category: Disabilities
+  components:
+  - type: Hemophilia
+
+- type: trait
+  id: ImpairedMobility
+  name: trait-impaired-mobility-name
+  description: trait-impaired-mobility-desc
+  traitGear: OffsetCane
+  category: Disabilities
+  components:
+    - type: ImpairedMobility

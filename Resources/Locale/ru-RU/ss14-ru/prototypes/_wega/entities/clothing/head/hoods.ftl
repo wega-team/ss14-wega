@@ -2,9 +2,10 @@ ent-ClothingHeadHatHoodCultrobesAlt = копюшон культа
     .desc = { ent-ClothingHeadHatHoodWinterBase.desc }
 ent-ClothingHeadHatHoodFlagellantHood = копюшон флагеллянта
     .desc = { ent-ClothingHeadHatHoodWinterBase.desc }
-<<<<<<< HEAD
-ent-ClothingHeadHatHoodVeilCultRobes = капюшон технокульта
-=======
 ent-ClothingHeadHatHoodVoidCap = копюшон пустотной накидки
     .desc = { ent-ClothingHeadHatHoodWinterBase.desc }
->>>>>>> 9d1580278911130aab06150ac695342664fde59d
+ent-ClothingHeadHatHoodWinterBlueShield = зимний копюшон офицера "Синий щит"
+    .desc = { ent-ClothingHeadHatHoodWinterBase.desc }
+ent-ClothingHeadHatHoodPostman = копюшон почтальона
+    .desc = { ent-ClothingHeadHatHoodWinterBase.desc }
+ent-ClothingHeadHatHoodVeilCultRobes = капюшон технокульта

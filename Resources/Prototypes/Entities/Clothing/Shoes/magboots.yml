@@ -38,6 +38,11 @@
   - type: Tag
     tags:
     - WhitelistChameleon
+  # Corvax-Wega-Dirtable-start
+  - type: Dirtable
+    dirtState: magboots
+    equippedDirtState: equipped-shoes
+  # Corvax-Wega-Dirtable-end
 
 - type: entity
   parent: [ClothingShoesBootsMagBase]
@@ -114,8 +119,8 @@
       volume: 0.75
       temperature: 293.15
       moles:
-      - 0.153853429 # oxygen
-      - 0.153853429 # nitrogen
+        Oxygen: 0.153853429 # oxygen
+        Nitrogen: 0.153853429 # nitrogen
   - type: Item
     sprite: null
     size: Normal

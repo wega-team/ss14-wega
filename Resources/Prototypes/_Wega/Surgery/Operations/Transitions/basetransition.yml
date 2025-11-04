@@ -459,7 +459,7 @@
 
 - type: surgeryTransition
   id: ExtractBrainTransition
-  target: HeadRemoved
+  target: HeadOpen
   label: Манипуляция с органами
   stepGroups:
     - conditions:

@@ -5,6 +5,7 @@
   id: BaseMobIpc
   abstract: true
   components:
+  - type: Crawler
   - type: HumanoidAppearance
     species: Ipc
   - type: Icon
@@ -15,6 +16,7 @@
     requiredLegs: 2
   - type: Inventory
     templateId: Ipc
+  - type: Carriable # Corvax-Wega-Carrying
   - type: ContentEye
   - type: Speech
   - type: BodyEmotes
@@ -33,7 +35,9 @@
   - type: Damageable
     damageContainer: SiliconIpc
     damageModifierSet: Ipc
-  - type: ToggleableLightVisuals
+  - type: ItemTogglePointLight
+  - type: ToggleableVisuals
+    spriteLayer: light
   - type: PointLight
     enabled: false
     mask: /Textures/Effects/LightMasks/cone.png
@@ -58,8 +62,8 @@
       id: blinking
       interpolate: Nearest
       maxDuration: 1.0
-      minValue: 0.1
-      maxValue: 2.0
+      startValue: 0.1
+      endValue: 2.0
       isLooped: true
   - type: TypingIndicator
     proto: robot
@@ -89,6 +93,7 @@
     containers:
       cell_slot: !type:ContainerSlot { }
   - type: Ipc
+  - type: SyntheticOperated
   - type: ZombieImmune
   - type: Repairable
     fuelCost: 30
@@ -265,7 +270,7 @@
     - reagents: [Water, SpaceCleaner]
       methods: [Touch]
       effects:
-      - !type:WashCreamPieReaction
+      - !type:WashCreamPie
   - type: StatusEffects
     allowed:
     - Stun
@@ -337,6 +342,10 @@
         type: HumanoidMarkingModifierBoundUserInterface
       enum.StrippingUiKey.Key:
         type: StrippableBoundUserInterface
+      enum.IpcFaceUiKey.Face:
+        type: IpcFaceUserInterface
+      enum.SurgeryUiKey.Key: # Corvax-Wega-Surgery
+        type: SurgeryBoundUserInterface # Corvax-Wega-Surgery
   - type: Puller
   - type: Speech
     speechSounds: Alto
@@ -382,7 +391,15 @@
     shiveringHeatRegulation: 2000
     normalBodyTemperature: 310.15
     thermalRegulationTemperatureThreshold: 2
-
+  # Corvax-Wega-Surgery-start
+  - type: Operated
+    raceGraph: IpcSurgery
+    limbLossChance: 2
+    specialTool: Screwing
+  - type: SyntheticOperated
+  - type: Pain
+    profile: SyntheticPainProfile
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   save: false

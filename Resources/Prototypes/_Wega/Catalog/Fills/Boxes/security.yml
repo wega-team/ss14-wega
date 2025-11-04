@@ -21,3 +21,36 @@
     layers:
       - state: box_security
       - state: recorder
+
+- type: entity
+  id: ServerWiretappingKit
+  parent: BoxCardboard
+  name: server wiretapping kit
+  components:
+    - type: Sprite
+      layers:
+      - state: box_security # Corvax-Resprite
+    - type: StorageFill
+      contents:
+        - id: WiretappingServerAlpha
+          amount: 1
+        - id: WiretappingServerBeta
+          amount: 1
+        - id: WiretappingServerCharlie
+          amount: 1
+        - id: WiretappingServerDelta
+          amount: 1
+          
+- type: entity
+  name: box with bodycam
+  id: BoxBodycam
+  parent: BoxCardboard
+  description: A box with bodycam
+  components:
+  - type: Sprite
+    layers:
+      - state: box_of_doom
+  - type: StorageFill
+    contents:
+      - id: WiretappingCameraAlpha
+        amount: 9

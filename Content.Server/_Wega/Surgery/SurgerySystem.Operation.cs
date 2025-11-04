@@ -1,14 +1,15 @@
 using System.Linq;
-using Content.Server.Body.Components;
 using Content.Server.Body.Systems;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Organ;
 using Content.Shared.Body.Part;
 using Content.Shared.Body.Systems;
-using Content.Shared.Chat.Prototypes;
+using Content.Shared.Chemistry.Components;
 using Content.Shared.Damage;
 using Content.Shared.Database;
+using Content.Shared.DirtVisuals;
+using Content.Shared.FixedPoint;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Implants;
 using Content.Shared.Implants.Components;
@@ -18,6 +19,7 @@ using Content.Shared.Silicons.Borgs.Components;
 using Content.Shared.Surgery;
 using Content.Shared.Surgery.Components;
 using Content.Shared.Traits.Assorted;
+using Robust.Shared.Audio;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -26,8 +28,9 @@ namespace Content.Server.Surgery;
 
 public sealed partial class SurgerySystem
 {
-    [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly BloodstreamSystem _bloodstream = default!;
+    [Dependency] private readonly SharedContainerSystem _container = default!;
+    [Dependency] private readonly SharedDirtSystem _dirt = default!;
     [Dependency] private readonly SharedSubdermalImplantSystem _implant = default!;
     [Dependency] private readonly SharedInternalStorageSystem _internal = default!;
 
@@ -38,6 +41,7 @@ public sealed partial class SurgerySystem
 
         switch (action)
         {
+            // Organic Start
             case SurgeryActionType.Cut:
                 PerformCut((patient, comp), successChance, failureEffect);
                 break;
@@ -89,14 +93,60 @@ public sealed partial class SurgerySystem
             case SurgeryActionType.RetrieveItems:
                 PerformRetrieveItems((patient, comp), requiredPart, successChance, failureEffect);
                 break;
+            // Organic End
+
+            // Synthetic Start
+            case SurgeryActionType.Unscrew:
+                PerformUnscrew((patient, comp));
+                break;
+
+            case SurgeryActionType.Screw:
+                PerformScrew((patient, comp));
+                break;
+
+            case SurgeryActionType.Pulse:
+                PerformPulse((patient, comp));
+                break;
+
+            case SurgeryActionType.Weld:
+                PerformWeld((patient, comp));
+                break;
+
+            case SurgeryActionType.CutWire:
+                PerformCutWire((patient, comp));
+                break;
+
+            case SurgeryActionType.StripWire:
+                PerformStripWire((patient, comp));
+                break;
+
+            case SurgeryActionType.MendWire:
+                PerformMendWire((patient, comp));
+                break;
+
+            case SurgeryActionType.Pry:
+                PerformPry((patient, comp));
+                break;
+
+            case SurgeryActionType.Anchor:
+                PerformAnchor((patient, comp));
+                break;
+
+            case SurgeryActionType.Unanchor:
+                PerformUnanchor((patient, comp));
+                break;
+            // Synthetic End
 
             default: break;
         }
 
         // Any action without anesthesia will cause pain.
-        if (!HasComp<SleepingComponent>(patient) && !HasComp<PainNumbnessComponent>(patient) && !comp.OperatedPart && !_mobState.IsDead(patient))
-            _chat.TryEmoteWithoutChat(patient, _proto.Index<EmotePrototype>("Scream"), true);
+        if (!HasComp<SleepingComponent>(patient) && !HasComp<PainNumbnessComponent>(patient) && !comp.OperatedPart
+            && !_mobState.IsDead(patient) && !HasComp<SyntheticOperatedComponent>(patient))
+            _chat.TryEmoteWithoutChat(patient, _proto.Index(Scream), true);
     }
+
+    #region Organic
 
     private void PerformCut(Entity<OperatedComponent> patient, float successChance, List<SurgeryFailedType>? failureEffect)
     {
@@ -104,14 +154,12 @@ public sealed partial class SurgerySystem
             return;
 
         if (!RollSuccess(patient, patient.Comp.Surgeon.Value, successChance))
-        {
             HandleFailure(patient, failureEffect);
-            return;
-        }
 
-        if (!TryComp<BloodstreamComponent>(patient, out _))
+        if (!TryComp<BloodstreamComponent>(patient, out var bloodstream) || HasComp<SyntheticOperatedComponent>(patient))
             return;
 
+        ApplyBloodToClothing(patient.Comp.Surgeon.Value, bloodstream.BloodReagent, 2f * SharedDirtSystem.MaxDirtLevel);
         _bloodstream.TryModifyBleedAmount(patient.Owner, 2f);
     }
 
@@ -121,10 +169,7 @@ public sealed partial class SurgerySystem
             return;
 
         if (!RollSuccess(patient, patient.Comp.Surgeon.Value, successChance))
-        {
             HandleFailure(patient, failureEffect);
-            return;
-        }
     }
 
     private void PerformClamp(Entity<OperatedComponent> patient, float successChance, List<SurgeryFailedType>? failureEffect)
@@ -138,7 +183,7 @@ public sealed partial class SurgerySystem
             return;
         }
 
-        if (!HasComp<BloodstreamComponent>(patient))
+        if (!HasComp<BloodstreamComponent>(patient) || HasComp<SyntheticOperatedComponent>(patient))
             return;
 
         _bloodstream.TryModifyBleedAmount(patient.Owner, -10f);
@@ -195,8 +240,11 @@ public sealed partial class SurgerySystem
             _hands.TryPickupAnyHand(patient.Comp.Surgeon.Value, organId);
         }
 
-        if (HasComp<BloodstreamComponent>(patient))
+        if (TryComp<BloodstreamComponent>(patient, out var bloodstream) && !HasComp<SyntheticOperatedComponent>(patient))
+        {
+            ApplyBloodToClothing(patient.Comp.Surgeon.Value, bloodstream.BloodReagent, 2f * SharedDirtSystem.MaxDirtLevel);
             _bloodstream.TryModifyBleedAmount(patient.Owner, 2f);
+        }
     }
 
     private void PerformInsertOrgan(Entity<OperatedComponent> patient, EntityUid? item, string? requiredOrgan, float successChance, List<SurgeryFailedType>? failureEffect)
@@ -264,6 +312,10 @@ public sealed partial class SurgerySystem
                 "torso" => BodyPartType.Torso,
                 "head" => BodyPartType.Head,
                 "tail" => BodyPartType.Tail,
+                // To account for primates.
+                "hands" => BodyPartType.Hand,
+                "legs" => BodyPartType.Leg,
+                "feet" => BodyPartType.Foot,
                 _ => BodyPartType.Other
             };
 
@@ -294,19 +346,22 @@ public sealed partial class SurgerySystem
             }
         }
 
-        if (HasComp<BloodstreamComponent>(patient))
+        if (TryComp<BloodstreamComponent>(patient, out var bloodstream) && !HasComp<SyntheticOperatedComponent>(patient))
+        {
+            ApplyBloodToClothing(patient.Comp.Surgeon.Value, bloodstream.BloodReagent, 2f * SharedDirtSystem.MaxDirtLevel);
             _bloodstream.TryModifyBleedAmount(patient.Owner, 2f);
+        }
     }
 
     private void PerformAttachPart(Entity<OperatedComponent> patient, EntityUid? item, string? requiredPart, float successChance, List<SurgeryFailedType>? failureEffect)
     {
-        if (patient.Comp.Surgeon == null || item == null || string.IsNullOrEmpty(requiredPart) || !TryComp<BodyPartComponent>(item, out _))
+        if (patient.Comp.Surgeon == null || item == null || string.IsNullOrEmpty(requiredPart) || !HasComp<BodyPartComponent>(item))
             return;
 
         if (!RollSuccess(patient, patient.Comp.Surgeon.Value, successChance))
             HandleFailure(patient, failureEffect, requiredPart);
 
-        var slotId = ParseSlotId(requiredPart.ToLower(), "body_part_slot_");
+        var slotId = ParseSlotId(requiredPart.ToLower(), SharedBodySystem.PartSlotContainerIdPrefix);
         if (string.IsNullOrEmpty(slotId))
             return;
 
@@ -316,6 +371,8 @@ public sealed partial class SurgerySystem
 
         if (!_body.AttachPart(parentPart, slotId, item.Value))
             return;
+
+        CreateChildSlotsForPart(item.Value, patient);
 
         if (!HasComp<SterileComponent>(item.Value) && _random.Prob(0.4f))
             _disease.TryAddDisease(patient, "SurgicalSepsis");
@@ -334,7 +391,7 @@ public sealed partial class SurgerySystem
         if (!TryComp<SubdermalImplantComponent>(item.Value, out var implantComp))
             return;
 
-        _implant.ForceImplant(patient.Owner, item.Value, implantComp);
+        _implant.ForceImplant(patient.Owner, item.Value);
         _admin.Add(LogType.Action, LogImpact.Medium,
             $"{ToPrettyString(patient.Comp.Surgeon.Value):user} successfully implanted {ToPrettyString(item.Value):implant} into {ToPrettyString(patient):target}");
     }
@@ -358,7 +415,7 @@ public sealed partial class SurgerySystem
                 if (TryComp<SubdermalImplantComponent>(implant, out var implantComp) && implantComp.Permanent)
                     return;
 
-                _implant.ForceRemove(patient, implant);
+                _implant.ForceRemove(patient.Owner, implant);
                 _hands.TryPickupAnyHand(patient.Comp.Surgeon.Value, implant);
                 var ev = new ImplantRemovedEvent(implant, patient.Owner);
                 RaiseLocalEvent(patient.Owner, ref ev);
@@ -402,14 +459,114 @@ public sealed partial class SurgerySystem
                 $"{ToPrettyString(patient.Comp.Surgeon.Value):user} retrieved items from {requiredPart} of {ToPrettyString(patient):target}");
     }
 
+    #endregion Organic
+
+    #region Synthetic
+
+    private void PerformUnscrew(Entity<OperatedComponent> patient)
+    {
+        if (patient.Comp.Surgeon == null || !HasComp<SyntheticOperatedComponent>(patient))
+            return;
+
+        _damage.TryChangeDamage(patient, new DamageSpecifier { DamageDict = { { BluntDamage, 2f } } }, true);
+        if (TryComp<DamageableComponent>(patient, out var damageable) && damageable.TotalDamage >= 50)
+            _audio.PlayPvs(new SoundCollectionSpecifier("sparks"), patient.Owner);
+    }
+
+    private void PerformScrew(Entity<OperatedComponent> patient)
+    {
+        if (patient.Comp.Surgeon == null || !HasComp<SyntheticOperatedComponent>(patient))
+            return;
+
+        _damage.TryChangeDamage(patient, new DamageSpecifier { DamageDict = { { BluntDamage, -2f } } }, true);
+    }
+
+    private void PerformPulse(Entity<OperatedComponent> patient)
+    {
+        if (patient.Comp.Surgeon == null || !HasComp<SyntheticOperatedComponent>(patient))
+            return;
+
+        _stun.TryAddStunDuration(patient.Owner, TimeSpan.FromSeconds(5));
+    }
+
+    private void PerformWeld(Entity<OperatedComponent> patient)
+    {
+        if (patient.Comp.Surgeon == null || !HasComp<SyntheticOperatedComponent>(patient))
+            return;
+
+        var healAmount = new DamageSpecifier { DamageDict = { { BluntDamage, -5f }, { SlashDamage, -5f } } };
+        _damage.TryChangeDamage(patient, healAmount, true);
+
+        if (HasComp<BloodstreamComponent>(patient))
+            _bloodstream.TryModifyBleedAmount(patient.Owner, -10f);
+    }
+
+    private void PerformCutWire(Entity<OperatedComponent> patient)
+    {
+        if (patient.Comp.Surgeon == null || !HasComp<SyntheticOperatedComponent>(patient))
+            return;
+
+        _audio.PlayPvs(new SoundCollectionSpecifier("sparks"), patient.Owner);
+        _stun.TryAddStunDuration(patient.Owner, TimeSpan.FromSeconds(1));
+    }
+
+    private void PerformStripWire(Entity<OperatedComponent> patient)
+    {
+        if (patient.Comp.Surgeon == null || !HasComp<SyntheticOperatedComponent>(patient))
+            return;
+
+        _damage.TryChangeDamage(patient, new DamageSpecifier { DamageDict = { { SlashDamage, -2f } } }, true);
+    }
+
+    private void PerformMendWire(Entity<OperatedComponent> patient)
+    {
+        if (patient.Comp.Surgeon == null || !HasComp<SyntheticOperatedComponent>(patient))
+            return;
+
+        var healAmount = new DamageSpecifier
+        {
+            DamageDict = { { BluntDamage, -6f }, { SlashDamage, -6f }, { PiercingDamage, -6f }, { HeatDamage, -6f } }
+        };
+        _damage.TryChangeDamage(patient, healAmount, true);
+    }
+
+    private void PerformPry(Entity<OperatedComponent> patient)
+    {
+        if (patient.Comp.Surgeon == null || !HasComp<SyntheticOperatedComponent>(patient))
+            return;
+
+        _damage.TryChangeDamage(patient, new DamageSpecifier { DamageDict = { { BluntDamage, 5f } } }, true);
+    }
+
+    private void PerformAnchor(Entity<OperatedComponent> patient)
+    {
+        if (patient.Comp.Surgeon == null || !HasComp<SyntheticOperatedComponent>(patient))
+            return;
+
+        _damage.TryChangeDamage(patient, new DamageSpecifier { DamageDict = { { BluntDamage, -8f } } }, true);
+    }
+
+    private void PerformUnanchor(Entity<OperatedComponent> patient)
+    {
+        if (patient.Comp.Surgeon == null || !HasComp<SyntheticOperatedComponent>(patient))
+            return;
+
+        _damage.TryChangeDamage(patient, new DamageSpecifier { DamageDict = { { BluntDamage, 4f } } }, true);
+        if (_random.Prob(0.3f))
+            _audio.PlayPvs(new SoundCollectionSpecifier("sparks"), patient.Owner);
+    }
+
+    #endregion Synthetic
+
+    #region Other Logic
+
     private bool RollSuccess(Entity<OperatedComponent> ent, EntityUid surgeon, float baseChance)
     {
         var item = _hands.GetActiveItemOrSelf(surgeon);
-        if (HasComp<SurgicalSkillComponent>(surgeon) && ent.Comp.Sterility == 1f
-            && HasComp<SterileComponent>(item)
-            && _surgeryTools.Any(tool => _tool.HasQuality(item, tool))
-            || _organs.Any(tag => _tag.HasTag(item, tag))
-            || _parts.Any(tag => _tag.HasTag(item, tag)))
+        if (HasComp<SurgicalSkillComponent>(surgeon) && ent.Comp.Sterility == 1f && HasComp<SterileComponent>(item)
+            && SurgeryTools.Any(tool => _tool.HasQuality(item, tool))
+            || Organs.Any(tag => _tag.HasTag(item, tag))
+            || Parts.Any(tag => _tag.HasTag(item, tag)))
         {
             return true;
         }
@@ -446,6 +603,71 @@ public sealed partial class SurgerySystem
             : fullSlotId;
     }
 
+    private void CreateChildSlotsForPart(EntityUid attachedPart, Entity<OperatedComponent> patient)
+    {
+        if (!TryComp<BodyPartComponent>(attachedPart, out var partComp))
+            return;
+
+        var defaultSlots = GetDefaultSlotsForPartType(partComp.PartType, partComp.Symmetry);
+        foreach (var slotId in defaultSlots)
+        {
+            var containerId = SharedBodySystem.GetPartSlotContainerId(slotId);
+            if (!_container.TryGetContainer(attachedPart, containerId, out _))
+            {
+                CreateSlotInPart(attachedPart, slotId, GetChildPartTypeForSlot(slotId));
+            }
+        }
+    }
+
+    private void CreateSlotInPart(EntityUid part, string slotId, BodyPartType slotType)
+    {
+        if (!TryComp<BodyPartComponent>(part, out var partComp))
+            return;
+
+        _body.TryCreatePartSlot(part, slotId, slotType, out _, partComp);
+    }
+
+    private List<string> GetDefaultSlotsForPartType(BodyPartType partType, BodyPartSymmetry symmetry)
+    {
+        var slots = new List<string>();
+        switch (partType)
+        {
+            case BodyPartType.Arm:
+                slots.Add(symmetry == BodyPartSymmetry.Left ? "left_hand" : "right_hand");
+                break;
+            case BodyPartType.Leg:
+                slots.Add(symmetry == BodyPartSymmetry.Left ? "left_foot" : "right_foot");
+                break;
+            case BodyPartType.Torso:
+                slots.AddRange(new[] { "left_arm", "right_arm", "left_leg", "right_leg", "head" });
+                break;
+        }
+
+        return slots;
+    }
+
+    private BodyPartType GetChildPartTypeForSlot(string slotId)
+    {
+        return slotId.ToLower() switch
+        {
+            var s when s.Contains("hand") => BodyPartType.Hand,
+            var s when s.Contains("foot") => BodyPartType.Foot,
+            var s when s.Contains("arm") => BodyPartType.Arm,
+            var s when s.Contains("leg") => BodyPartType.Leg,
+            var s when s.Contains("head") => BodyPartType.Head,
+            _ => BodyPartType.Other
+        };
+    }
+
+    public void ApplyBloodToClothing(EntityUid surgeon, string bloodReagentId, float bloodAmount)
+    {
+        var bloodSolution = new Solution();
+        bloodSolution.AddReagent(bloodReagentId, FixedPoint2.New(bloodAmount));
+
+        var clothingSlots = new[] { "outerClothing", "jumpsuit", "gloves" };
+        _dirt.ApplyDirtToClothing(surgeon, bloodSolution, _random.Pick(clothingSlots));
+    }
+
     private void HandleFailure(Entity<OperatedComponent> patient, List<SurgeryFailedType>? failureEffect, string? bodyPart = null)
     {
         if (failureEffect == null || failureEffect.Count == 0)
@@ -469,8 +691,8 @@ public sealed partial class SurgerySystem
                 TryAddInternalDamage(patient, "BoneFracture", bodyPart: bodyPart);
                 break;
             case SurgeryFailedType.Pain:
-                if (!HasComp<SleepingComponent>(patient) && !HasComp<PainNumbnessComponent>(patient) && !patient.Comp.OperatedPart && !_mobState.IsDead(patient))
-                    _chat.TryEmoteWithoutChat(patient, _proto.Index<EmotePrototype>("Scream"), true);
+                if (!HasComp<SleepingComponent>(patient) && !HasComp<PainNumbnessComponent>(patient) && !patient.Comp.OperatedPart && !_mobState.IsDead(patient) && !HasComp<SyntheticOperatedComponent>(patient))
+                    _chat.TryEmoteWithoutChat(patient, _proto.Index(Scream), true);
 
                 _jittering.DoJitter(patient, TimeSpan.FromSeconds(5), true);
                 break;
@@ -480,4 +702,6 @@ public sealed partial class SurgerySystem
             _popup.PopupPredicted(Loc.GetString($"surgery-handle-failed-{effect.ToString().ToLower()}", ("patient", Identity.Entity(patient, EntityManager))),
                 patient, null, PopupType.MediumCaution);
     }
+
+    #endregion
 }

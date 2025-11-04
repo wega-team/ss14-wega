@@ -1,0 +1,47 @@
+- type: entity
+  parent: BaseAction
+  id: ActionToggleLock
+  name: "Toggle Lock"
+  description: "Toggle your electronic lock."
+  components:
+  - type: Action
+    itemIconStyle: NoItem
+    icon:
+      sprite: _Wega/Interface/Actions/actions_android.rsi
+      state: toggle-lock
+    useDelay: 1
+  - type: InstantAction
+    event: !type:ToggleLockActionEvent
+
+- type: entity
+  parent: BaseToggleAction
+  id: ActionToggleAndroidLeds
+  name: Toggle Light
+  description: Turn the light on and off.
+  components:
+  - type: Action
+    useDelay: 1
+    icon: { sprite: _Wega/Interface/Actions/actions_android.rsi, state: light-off }
+    iconOn: { sprite: _Wega/Interface/Actions/actions_android.rsi, state: light-on }
+
+- type: entity
+  parent: BaseToggleAction
+  id: ActionToggleBodyPartImplantKinetic
+  name: Toggle Proto-kinetic Arm
+  description: Transform your arm into proto-kinetic gun.
+  components:
+  - type: Action
+    useDelay: 5
+    icon: { sprite: _Wega/Interface/Actions/actions_android.rsi, state: kinetic-off }
+    iconOn: { sprite: _Wega/Interface/Actions/actions_android.rsi, state: kinetic-on }
+
+- type: entity
+  parent: BaseToggleAction
+  id: ActionToggleBodyPartImplantDefib
+  name: Toggle Defibrillator Arm
+  description: Transform your arm into compact defibrillator.
+  components:
+  - type: Action
+    useDelay: 3
+    icon: { sprite: _Wega/Interface/Actions/actions_android.rsi, state: defib-off }
+    iconOn: { sprite: _Wega/Interface/Actions/actions_android.rsi, state: defib-on }

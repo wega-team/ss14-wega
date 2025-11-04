@@ -49,6 +49,8 @@
         Blunt: 10
     soundHit:
       collection: MetalThud
+  - type: SurgicalTool # Corvax-Wega-Surgery
+    modifier: 1.75 # Corvax-Wega-Surgery
 
 - type: entity
   name: syndicate jaws of life

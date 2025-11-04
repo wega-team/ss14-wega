@@ -23,6 +23,8 @@ using Robust.Shared.Timing;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
 using Robust.Shared.Map.Components;
+using Robust.Shared.Prototypes;
+using Content.Shared.SoundInsolation; // Corvax-Wega-SoundInsolation
 
 namespace Content.Shared.Doors.Systems;
 
@@ -45,10 +47,9 @@ public abstract partial class SharedDoorSystem : EntitySystem
     [Dependency] protected readonly SharedPopupSystem Popup = default!;
     [Dependency] private readonly SharedMapSystem _mapSystem = default!;
     [Dependency] private readonly SharedPowerReceiverSystem _powerReceiver = default!;
+    [Dependency] private readonly SoundInsulationSystem _soundInsulation = default!; // Corvax-Wega-SoundInsolation
 
-
-    [ValidatePrototypeId<TagPrototype>]
-    public const string DoorBumpTag = "DoorBumpOpener";
+    public static readonly ProtoId<TagPrototype> DoorBumpTag = "DoorBumpOpener";
 
     /// <summary>
     ///     A set of doors that are currently opening, closing, or just queued to open/close after some delay.
@@ -78,6 +79,8 @@ public abstract partial class SharedDoorSystem : EntitySystem
         SubscribeLocalEvent<DoorComponent, WeldableChangedEvent>(OnWeldChanged);
         SubscribeLocalEvent<DoorComponent, GetPryTimeModifierEvent>(OnPryTimeModifier);
         SubscribeLocalEvent<DoorComponent, GotEmaggedEvent>(OnEmagged);
+
+        SubscribeLocalEvent<DoorComponent, DoorStateChangedEvent>(OnDoorStateChanged); // Corvax-Wega-SoundInsolation
     }
 
     protected virtual void OnComponentInit(Entity<DoorComponent> ent, ref ComponentInit args)
@@ -109,6 +112,7 @@ public abstract partial class SharedDoorSystem : EntitySystem
 
         SetCollidable(ent, collidable, door);
         AppearanceSystem.SetData(ent, DoorVisuals.State, door.State);
+        UpdateDoorInsulation(ent, door, door.State); // Corvax-Wega-SoundInsolation
     }
 
     private void OnRemove(Entity<DoorComponent> door, ref ComponentRemove args)
@@ -136,6 +140,13 @@ public abstract partial class SharedDoorSystem : EntitySystem
         args.Repeatable = true;
         args.Handled = true;
     }
+
+    // Corvax-Wega-SoundInsolation-start
+    private void OnDoorStateChanged(EntityUid uid, DoorComponent component, DoorStateChangedEvent args)
+    {
+        UpdateDoorInsulation(uid, component, args.State);
+    }
+    // Corvax-Wega-SoundInsolation-end
 
     #region StateManagement
     private void OnHandleState(Entity<DoorComponent> ent, ref AfterAutoHandleStateEvent args)
@@ -196,8 +207,23 @@ public abstract partial class SharedDoorSystem : EntitySystem
         RaiseLocalEvent(uid, new DoorStateChangedEvent(state));
 
         AppearanceSystem.SetData(uid, DoorVisuals.State, door.State);
+        UpdateDoorInsulation(uid, door, state); // Corvax-Wega-SoundInsolation
         return true;
     }
+
+    // Corvax-Wega-SoundInsolation-start
+    private void UpdateDoorInsulation(EntityUid uid, DoorComponent door, DoorState state)
+    {
+        if (!TryComp<SoundInsulatorComponent>(uid, out var insulator))
+            return;
+
+        bool shouldIsolate = state == DoorState.Closed || state == DoorState.Closing
+            || state == DoorState.Welded || state == DoorState.Denying;
+
+        if (insulator.Isolates != shouldIsolate)
+            _soundInsulation.SetInsulation(uid, shouldIsolate, insulator);
+    }
+    // Corvax-Wega-SoundInsolation-end
 
     #endregion
 
@@ -535,7 +561,7 @@ public abstract partial class SharedDoorSystem : EntitySystem
             if (door.CrushDamage != null)
                 _damageableSystem.TryChangeDamage(entity, door.CrushDamage, origin: uid);
 
-            _stunSystem.TryParalyze(entity, stunTime, true);
+            _stunSystem.TryUpdateParalyzeDuration(entity, stunTime);
         }
 
         if (door.CurrentlyCrushing.Count == 0)

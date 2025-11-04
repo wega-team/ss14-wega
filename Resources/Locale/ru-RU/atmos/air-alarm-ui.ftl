@@ -2,6 +2,7 @@
 
 ## Window
 
+air-alarm-ui-title = Воздушная сигнализация
 air-alarm-ui-access-denied = Недостаточный уровень доступа!
 air-alarm-ui-window-pressure-label = Давление
 air-alarm-ui-window-temperature-label = Температура
@@ -37,6 +38,14 @@ air-alarm-ui-mode-wide-filtering = Фильтрация (широкая)
 air-alarm-ui-mode-fill = Заполнение
 air-alarm-ui-mode-panic = Паника
 air-alarm-ui-mode-none = Нет
+air-alarm-ui-pump-direction-siphoning = Откачка
+air-alarm-ui-pump-direction-scrubbing = Фильтрация
+air-alarm-ui-pump-direction-releasing = Выпуск
+air-alarm-ui-pressure-bound-nobound = Без границы
+air-alarm-ui-pressure-bound-internalbound = Внутренний порог
+air-alarm-ui-pressure-bound-externalbound = Внешний порог
+air-alarm-ui-pressure-bound-both = Оба
+air-alarm-ui-widget-gas-filters = Фильтр газов
 
 ## Widgets
 
@@ -52,14 +61,16 @@ air-alarm-ui-atmos-net-device-label = Адрес: { $address }
 
 air-alarm-ui-vent-pump-label = Направление вентиляции
 air-alarm-ui-vent-pressure-label = Ограничение давления
-air-alarm-ui-vent-external-bound-label = Внешняя граница
-air-alarm-ui-vent-internal-bound-label = Внутренняя граница
+air-alarm-ui-vent-external-bound-label = Внешний порог
+air-alarm-ui-vent-internal-bound-label = Внутренний порог
 
 ### Scrubbers
 
 air-alarm-ui-scrubber-pump-direction-label = Направление
 air-alarm-ui-scrubber-volume-rate-label = Объём (Л)
 air-alarm-ui-scrubber-wide-net-label = ШирокаяСеть
+air-alarm-ui-scrubber-select-all-gases-label = Включить все
+air-alarm-ui-scrubber-deselect-all-gases-label = Отключить все
 
 ### Thresholds
 
@@ -68,9 +79,9 @@ air-alarm-ui-sensor-thresholds = Границы
 air-alarm-ui-thresholds-pressure-title = Границы (кПа)
 air-alarm-ui-thresholds-temperature-title = Границы (К)
 air-alarm-ui-thresholds-gas-title = Границы (%)
-air-alarm-ui-thresholds-upper-bound = Верхняя аварийная граница
-air-alarm-ui-thresholds-lower-bound = Нижняя аварийная граница
-air-alarm-ui-thresholds-upper-warning-bound = Верхняя тревожная граница
-air-alarm-ui-thresholds-lower-warning-bound = Нижняя тревожная граница
+air-alarm-ui-thresholds-upper-bound = Верхний аварийный порог
+air-alarm-ui-thresholds-lower-bound = Нижний аварийный порог
+air-alarm-ui-thresholds-upper-warning-bound = Верхний тревожный порог
+air-alarm-ui-thresholds-lower-warning-bound = Нижний тревожный порог
 air-alarm-ui-thresholds-copy = Скопировать значение границы на все устройства
 air-alarm-ui-thresholds-copy-tooltip = Скопировать значение границы сенсора этого устройства на все устройства на этой вкладке воздушной сигнализации.

@@ -1,15 +1,11 @@
 # Seat
 - type: construction
   id: BenchSofaMiddle
-  name: sofa (middle)
-  description: Multiple seats spanning a single object. Truly a marvel of science.
+  name: construction-recipe-bench-sofa-middle
   graph: SofasGraph
   startNode: start
   targetNode: BenchSofaMiddleNode
   category: construction-category-furniture
-  icon:
-    sprite: _Wega/Structures/Furniture/Benches/sofa.rsi
-    state: middle
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: false
@@ -18,15 +14,11 @@
 
 - type: construction
   id: BenchSofaLeft
-  name: sofa (left)
-  description: Multiple seats spanning a single object. Truly a marvel of science.
+  name: construction-recipe-bench-sofa-left
   graph: SofasGraph
   startNode: start
   targetNode: BenchSofaLeftNode
   category: construction-category-furniture
-  icon:
-    sprite: _Wega/Structures/Furniture/Benches/sofa.rsi
-    state: left
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: false
@@ -35,15 +27,11 @@
 
 - type: construction
   id: BenchSofaRight
-  name: sofa (right)
-  description: Multiple seats spanning a single object. Truly a marvel of science.
+  name: construction-recipe-bench-sofa-right
   graph: SofasGraph
   startNode: start
   targetNode: BenchSofaRightNode
   category: construction-category-furniture
-  icon:
-    sprite: _Wega/Structures/Furniture/Benches/sofa.rsi
-    state: right
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: false
@@ -52,15 +40,11 @@
 
 - type: construction
   id: BenchSofaCorner
-  name: sofa (corner)
-  description: Multiple seats spanning a single object. Truly a marvel of science.
+  name: construction-recipe-bench-sofa-corner
   graph: SofasGraph
   startNode: start
   targetNode: BenchSofaCornerNode
   category: construction-category-furniture
-  icon:
-    sprite: _Wega/Structures/Furniture/Benches/sofa.rsi
-    state: corner
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: false
@@ -69,15 +53,11 @@
 
 - type: construction
   id: BenchSofaCorpMiddle
-  name: grey sofa (middle)
-  description: Multiple seats spanning a single object. Truly a marvel of science.
+  name: construction-recipe-bench-corp-sofa-middle
   graph: SofasGraph
   startNode: start
   targetNode: BenchSofaCorpMiddleNode
   category: construction-category-furniture
-  icon:
-    sprite: _Wega/Structures/Furniture/Benches/sofa_corp.rsi
-    state: middle
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: false
@@ -86,15 +66,11 @@
 
 - type: construction
   id: BenchSofaCorpLeft
-  name: grey sofa (left)
-  description: Multiple seats spanning a single object. Truly a marvel of science.
+  name: construction-recipe-bench-corp-sofa-left
   graph: SofasGraph
   startNode: start
   targetNode: BenchSofaCorpLeftNode
   category: construction-category-furniture
-  icon:
-    sprite: _Wega/Structures/Furniture/Benches/sofa_corp.rsi
-    state: left
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: false
@@ -103,15 +79,11 @@
 
 - type: construction
   id: BenchSofaCorpRight
-  name: grey sofa (right)
-  description: Multiple seats spanning a single object. Truly a marvel of science.
+  name: construction-recipe-bench-corp-sofa-right
   graph: SofasGraph
   startNode: start
   targetNode: BenchSofaCorpRightNode
   category: construction-category-furniture
-  icon:
-    sprite: _Wega/Structures/Furniture/Benches/sofa_corp.rsi
-    state: right
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: false
@@ -120,15 +92,11 @@
 
 - type: construction
   id: BenchSofaCorpCorner
-  name: grey sofa (corner)
-  description: Multiple seats spanning a single object. Truly a marvel of science.
+  name: construction-recipe-bench-corp-sofa-corner
   graph: SofasGraph
   startNode: start
   targetNode: BenchSofaCorpCornerNode
   category: construction-category-furniture
-  icon:
-    sprite: _Wega/Structures/Furniture/Benches/sofa_corp.rsi
-    state: corner
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: false
@@ -137,15 +105,11 @@
 
 - type: construction
   id: BenchSteelMiddle
-  name: steel bench (middle)
-  description: Multiple seats spanning a single object. Truly a marvel of science.
+  name: construction-recipe-bench-steel-middle
   graph: BenchesGraph
   startNode: start
   targetNode: BenchSteelMiddleNode
   category: construction-category-furniture
-  icon:
-    sprite: _Wega/Structures/Furniture/Benches/steel_bench.rsi
-    state: middle
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: false
@@ -154,15 +118,11 @@
 
 - type: construction
   id: BenchSteelRight
-  name: steel bench (right)
-  description: Multiple seats spanning a single object. Truly a marvel of science.
+  name: construction-recipe-bench-steel-right
   graph: BenchesGraph
   startNode: start
   targetNode: BenchSteelRightNode
   category: construction-category-furniture
-  icon:
-    sprite: _Wega/Structures/Furniture/Benches/steel_bench.rsi
-    state: right
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: false
@@ -171,15 +131,11 @@
 
 - type: construction
   id: BenchSteelLeft
-  name: steel bench (left)
-  description: Multiple seats spanning a single object. Truly a marvel of science.
+  name: construction-recipe-bench-steel-left
   graph: BenchesGraph
   startNode: start
   targetNode: BenchSteelLeftNode
   category: construction-category-furniture
-  icon:
-    sprite: _Wega/Structures/Furniture/Benches/steel_bench.rsi
-    state: left
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: false
@@ -188,15 +144,11 @@
 
 - type: construction
   id: BenchPewMiddle
-  name: pew (middle)
-  description: Multiple seats spanning a single object. Truly a marvel of science.
+  name: construction-recipe-bench-pew-middle
   graph: BenchesGraph
   startNode: start
   targetNode: BenchPewMiddleNode
   category: construction-category-furniture
-  icon:
-    sprite: _Wega/Structures/Furniture/Benches/pews.rsi
-    state: middle
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: false
@@ -205,15 +157,11 @@
 
 - type: construction
   id: BenchPewRight
-  name: pew (right)
-  description: Multiple seats spanning a single object. Truly a marvel of science.
+  name: construction-recipe-bench-pew-right
   graph: BenchesGraph
   startNode: start
   targetNode: BenchPewRightNode
   category: construction-category-furniture
-  icon:
-    sprite: _Wega/Structures/Furniture/Benches/pews.rsi
-    state: right
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: false
@@ -222,15 +170,11 @@
 
 - type: construction
   id: BenchPewLeft
-  name: pew (left)
-  description: Multiple seats spanning a single object. Truly a marvel of science.
+  name: construction-recipe-bench-pew-left
   graph: BenchesGraph
   startNode: start
   targetNode: BenchPewLeftNode
   category: construction-category-furniture
-  icon:
-    sprite: _Wega/Structures/Furniture/Benches/pews.rsi
-    state: left
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: false
@@ -239,15 +183,11 @@
 
 - type: construction
   id: BenchParkMiddle
-  name: park bench (middle)
-  description: Multiple seats spanning a single object. Truly a marvel of science.
+  name: construction-recipe-bench-park-middle
   graph: BenchesGraph
   startNode: start
   targetNode: BenchParkMiddleNode
   category: construction-category-furniture
-  icon:
-    sprite: _Wega/Structures/Furniture/Benches/parkbench_wooden.rsi
-    state: middle
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: false
@@ -256,15 +196,11 @@
 
 - type: construction
   id: BenchParkRight
-  name: park bench (right)
-  description: Multiple seats spanning a single object. Truly a marvel of science.
+  name: construction-recipe-bench-park-right
   graph: BenchesGraph
   startNode: start
   targetNode: BenchParkRightNode
   category: construction-category-furniture
-  icon:
-    sprite: _Wega/Structures/Furniture/Benches/parkbench_wooden.rsi
-    state: right
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: false
@@ -273,15 +209,11 @@
 
 - type: construction
   id: BenchParkLeft
-  name: park bench (left)
-  description: Multiple seats spanning a single object. Truly a marvel of science.
+  name: construction-recipe-bench-park-left
   graph: BenchesGraph
   startNode: start
   targetNode: BenchParkLeftNode
   category: construction-category-furniture
-  icon:
-    sprite: _Wega/Structures/Furniture/Benches/parkbench_wooden.rsi
-    state: left
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: false
@@ -290,15 +222,11 @@
 
 - type: construction
   id: BenchSteelWhiteMiddle
-  name: white bench (middle)
-  description: Multiple seats spanning a single object. Truly a marvel of science.
+  name: construction-recipe-bench-steel-white-middle
   graph: BenchesGraph
   startNode: start
   targetNode: BenchSteelWhiteMiddleNode
   category: construction-category-furniture
-  icon:
-    sprite: _Wega/Structures/Furniture/Benches/steel_bench_white.rsi
-    state: middle
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: false
@@ -307,15 +235,11 @@
 
 - type: construction
   id: BenchSteelWhiteRight
-  name: white bench (right)
-  description: Multiple seats spanning a single object. Truly a marvel of science.
+  name: construction-recipe-bench-steel-white-right
   graph: BenchesGraph
   startNode: start
   targetNode: BenchSteelWhiteRightNode
   category: construction-category-furniture
-  icon:
-    sprite: _Wega/Structures/Furniture/Benches/steel_bench_white.rsi
-    state: right
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: false
@@ -324,15 +248,11 @@
 
 - type: construction
   id: BenchSteelWhiteLeft
-  name: white bench (left)
-  description: Multiple seats spanning a single object. Truly a marvel of science.
+  name: construction-recipe-bench-steel-white-left
   graph: BenchesGraph
   startNode: start
   targetNode: BenchSteelWhiteLeftNode
   category: construction-category-furniture
-  icon:
-    sprite: _Wega/Structures/Furniture/Benches/steel_bench_white.rsi
-    state: left
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: false
@@ -341,15 +261,11 @@
 
 - type: construction
   id: BenchParkBambooMiddle
-  name: bamboo park bench (middle)
-  description: Multiple seats spanning a single object. Truly a marvel of science.
+  name: construction-recipe-bench-park-bamboo-middle
   graph: BenchesGraph
   startNode: start
   targetNode: BenchParkBambooMiddleNode
   category: construction-category-furniture
-  icon:
-    sprite: _Wega/Structures/Furniture/Benches/parkbench_bamboo.rsi
-    state: middle
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: false
@@ -358,15 +274,11 @@
 
 - type: construction
   id: BenchParkBambooRight
-  name: bamboo park bench (right)
-  description: Multiple seats spanning a single object. Truly a marvel of science.
+  name: construction-recipe-bench-park-bamboo-right
   graph: BenchesGraph
   startNode: start
   targetNode: BenchParkBambooRightNode
   category: construction-category-furniture
-  icon:
-    sprite: _Wega/Structures/Furniture/Benches/parkbench_bamboo.rsi
-    state: right
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: false
@@ -375,15 +287,11 @@
 
 - type: construction
   id: BenchParkBambooLeft
-  name: bamboo park bench (left)
-  description: Multiple seats spanning a single object. Truly a marvel of science.
+  name: construction-recipe-bench-park-bamboo-left
   graph: BenchesGraph
   startNode: start
   targetNode: BenchParkBambooLeftNode
   category: construction-category-furniture
-  icon:
-    sprite: _Wega/Structures/Furniture/Benches/parkbench_bamboo.rsi
-    state: left
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: false
@@ -393,15 +301,10 @@
 # Bed
 - type: construction
   id: OperatingTable
-  name: operating table
-  description: Special medical table for surgery. This one just seems to be a useless prop, though.
   graph: operatingtable
   startNode: start
   targetNode: operatingtable
   category: construction-category-furniture
-  icon:
-    sprite: Structures/Furniture/Tables/optable.rsi
-    state: operating_table
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: false

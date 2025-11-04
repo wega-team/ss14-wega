@@ -2,6 +2,7 @@
   abstract: true
   id: ClothingHeadDamageableBase
   components:
+  - type: TearableClothing
   - type: Damageable
     damageContainer: Clothing
   - type: Destructible
@@ -12,7 +13,7 @@
       behaviors:
       - !type:PlaySoundBehavior
         sound:
-          path: /Audio/Effects/poster_broken.ogg
+          collection: TearClothing
       - !type:EmptyContainersBehaviour
         containers:
         - storagebase
@@ -23,3 +24,21 @@
           MaterialCloth1:
             min: 1
             max: 1
+
+- type: entity
+  abstract: true
+  id: ClothingHeadBaseBeret
+  parent: ClothingHeadBase
+  components:
+  - type: Dirtable
+    dirtState: beret
+    equippedDirtState: equipped-beret
+
+- type: entity
+  abstract: true
+  id: ClothingHeadBaseSurgcap
+  parent: ClothingHeadBase
+  components:
+  - type: Dirtable
+    dirtState: surgcap
+    equippedDirtState: equipped-surgcap

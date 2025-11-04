@@ -1,6 +1,7 @@
 using System.Linq;
 using Content.Shared.Body.Components;
 using Content.Shared.Clothing.Components;
+using Content.Shared.DirtVisuals;
 using Content.Shared.Ghost;
 using Content.Shared.Shuttles.Components;
 using Content.Shared.Silicons.Borgs.Components;
@@ -14,7 +15,7 @@ public sealed partial class SurgerySystem
 
     private void UpdateOperationSterility(EntityUid patient, OperatedComponent operated)
     {
-        if (operated.Surgeon == null)
+        if (operated.Surgeon == null || HasComp<SyntheticOperatedComponent>(patient))
             return;
 
         float sterility = 1f;
@@ -79,13 +80,21 @@ public sealed partial class SurgerySystem
             if (TryComp(clothing, out MaskComponent? mask))
                 isMaskOff = mask.IsToggled;
 
+            bool isDirty = false;
+            if (TryComp<DirtableComponent>(clothing, out var dirtable))
+            {
+                var dirtLevel = Math.Clamp(dirtable.CurrentDirtLevel.Float() / SharedDirtSystem.MaxDirtLevel * 100f, 0f, 100f);
+                if (dirtable.IsDirty && dirtLevel >= 50f)
+                    isDirty = true;
+            }
+
             if (TryComp<ClothingSterilityComponent>(clothing, out var sterilityComp) && !isMaskOff)
             {
-                sterility *= sterilityComp.Modifier;
+                sterility *= sterilityComp.Modifier * (isDirty ? 0.8f : 1f);
             }
             else
             {
-                sterility *= 1f - penaltyModifier;
+                sterility *= (1f - penaltyModifier) * (isDirty ? 0.9f : 1f);
             }
         }
         else if (isCritical)

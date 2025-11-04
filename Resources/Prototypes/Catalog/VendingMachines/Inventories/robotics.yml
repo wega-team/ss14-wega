@@ -6,6 +6,7 @@
     ProximitySensor: 3
     ClothingEyesHudDiagnostic: 2
     ClothingEyesEyepatchHudDiag: 2
+    Tyriumpack: 4 # Corvax-Wega
     RemoteSignaller: 3
     Igniter: 3 # its more ordnance but yeah
     HandheldHealthAnalyzer: 3

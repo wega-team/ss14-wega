@@ -17,7 +17,7 @@
     spawned:
     - id: MaterialCloth1
       amount: 2
-  - type: Food
+  - type: Edible
     requiresSpecialDigestion: true
   - type: SolutionContainerManager
     solutions:

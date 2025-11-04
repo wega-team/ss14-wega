@@ -3,6 +3,7 @@
   name: job-name-coroner
   description: job-description-coroner
   playTimeTracker: JobCoroner
+  isSubRole: true
   requirements:
     - !type:DepartmentTimeRequirement
       department: Medical

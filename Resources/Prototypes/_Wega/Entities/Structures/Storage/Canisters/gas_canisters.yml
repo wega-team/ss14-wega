@@ -1,0 +1,57 @@
+- type: entity
+  parent: GasCanister
+  id: NitrousOxideOxygenCanister
+  name: nitrous oxide-oxygen canister
+  description: A canister containing a mixture of nitrous oxide (N₂O) and oxygen (O₂). Commonly used in medical anesthesia or as a propellant. Can be attached to connector ports using a wrench.
+  components:
+    - type: Sprite
+      layers:
+        - state: redb
+    - type: GasCanister
+      gasMixture:
+        volume: 1500
+        moles:
+          - 609.26 # oxygen
+          - 0 # nitrogen
+          - 0 # CO2
+          - 0 # Plasma
+          - 0 # Tritium
+          - 0 #  Water vapor
+          - 0 # Ammonia
+          - 2160.1 # N2O
+        temperature: 293.15
+    - type: Destructible
+      thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 600
+        behaviors:
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
+      - trigger:
+          !type:DamageTrigger
+          damage: 300
+        behaviors:
+        - !type:PlaySoundBehavior
+          sound:
+            collection: MetalBreak
+        - !type:SpawnEntitiesBehavior
+          spawn:
+            NitrousOxideOxygenCanisterBroken:
+              min: 1
+              max: 1
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+        - !type:DumpCanisterBehavior
+    - type: AccessReader
+      access: [["Atmospherics"], ["Engineering"], ["Research"], ["Medical"]]
+    - type: Lock
+      locked: true
+
+- type: entity
+  parent: GasCanisterBrokenBase
+  id: NitrousOxideOxygenCanisterBroken
+  categories: [ HideSpawnMenu ]
+  components:
+    - type: Sprite
+      state: redb-1

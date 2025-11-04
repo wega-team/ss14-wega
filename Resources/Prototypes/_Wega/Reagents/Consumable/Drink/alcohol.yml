@@ -132,7 +132,7 @@
   parent: BaseAlcohol
   desc: reagent-desc-flaming-moe
   physicalDesc: reagent-physical-desc-blazing
-  flavor: flaming-moe
+  flavor: sbiten
   color: "#ff4500"
   metamorphicChangeColor: true
   metabolisms:
@@ -172,7 +172,8 @@
             Poison: 0.75
       - !type:HealthChange
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: GinSonic
           min: 30
         damage:
           types:
@@ -180,7 +181,7 @@
             Asphyxiation: 2
     Narcotic:
       effects:
-      - !type:MovespeedModifier
+      - !type:MovementSpeedModifier
         walkSpeedModifier: 1.35
         sprintSpeedModifier: 1.35
       - !type:GenericStatusEffect
@@ -197,7 +198,7 @@
         type: Remove
       - !type:GenericStatusEffect
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
           reagent: Haloperidol
           max: 0.01
         key: Drowsiness
@@ -207,7 +208,8 @@
       effects:
       - !type:ResetNarcolepsy
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: GinSonic
           min: 20
   fizziness: 0.4
 
@@ -953,7 +955,6 @@
         component: SeeingRainbows
         type: Add
         time: 5
-        refresh: false
 
 - type: reagent
   id: HomeLebowski
@@ -1101,3 +1102,19 @@
       - !type:AdjustReagent
         reagent: Ethanol
         amount: 0.2
+
+- type: reagent
+  id: WhiteWine
+  name: reagent-name-whitewine
+  parent: BaseAlcohol
+  desc: reagent-desc-cafe-whitewine
+  physicalDesc: reagent-physical-desc-translucent
+  flavor: shittywine
+  color: "#e5d482"
+  recognizable: true
+  metamorphicSprite:
+    sprite: _Wega/Objects/Consumable/Drinks/whitewine_glass.rsi
+    state: icon_empty
+  metamorphicMaxFillLevels: 5
+  metamorphicFillBaseName: fill-
+  metamorphicChangeColor: true

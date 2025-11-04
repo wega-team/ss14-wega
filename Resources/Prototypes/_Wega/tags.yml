@@ -1,4 +1,7 @@
 - type: Tag
+  id: Android
+
+- type: Tag
   id: SoulStone
 
 - type: Tag
@@ -63,6 +66,12 @@
 
 # Surgery / DONT TOUCH!
 - type: Tag
+  id: BaseBodyPart
+
+- type: Tag
+  id: BaseOrgan
+
+- type: Tag
   id: Eyes
 
 - type: Tag
@@ -108,11 +117,130 @@
   id: RightFoot
 
 - type: Tag
+  id: HandsAnimal
+
+- type: Tag
+  id: LegsAnimal
+
+- type: Tag
+  id: FeetAnimal
+
+- type: Tag
   id: SubdermalHeadImplant
 # Surgery end
+
+# Synthetic Surgery
+- type: Tag
+  id: BrainSynthetic
+
+- type: Tag
+  id: LungsSynthetic
+
+- type: Tag
+  id: HeartSynthetic
+
+- type: Tag
+  id: EyesSynthetic
+
+- type: Tag
+  id: LeftArmSynthetic
+
+- type: Tag
+  id: RightArmSynthetic
+
+- type: Tag
+  id: LeftHandSynthetic
+
+- type: Tag
+  id: RightHandSynthetic
+
+- type: Tag
+  id: LeftLegSynthetic
+
+- type: Tag
+  id: RightLegSynthetic
+
+- type: Tag
+  id: LeftFootSynthetic
+
+- type: Tag
+  id: RightFootSynthetic
+# Synthetic Surgery end
 
 - type: Tag
   id: JanicartKeys
 
 - type: Tag
   id: VehicleKey
+
+- type: Tag
+  id: CapacitorStockPart
+
+- type: Tag
+  id: ShardCrystal
+  
+- type: Tag
+  id: ArmorScrap
+  
+- type: Tag
+  id: HalmetScrap
+  
+- type: Tag
+  id: Salad
+
+- type: Tag
+  id: FunnyShoes
+
+- type: Tag
+  id: Sheild
+  
+- type: Tag
+  id: BananiumClakson
+
+- type: Tag
+  id: Ushanka
+
+- type: Tag
+  id: Dumplings
+
+- type: Tag
+  id: GoldShoes
+
+- type: Tag
+  id: OuterSuitAvar
+
+- type: Tag
+  id: PottedPlant
+
+- type: Tag
+  id: ShuttleGunBoard
+
+- type: Tag
+  id: Protolathe
+
+- type: Tag
+  id: Telecom
+
+- type: Tag
+  id: Kubok
+
+- type: Tag
+  id: SlimeRND
+
+- type: Tag
+  id: SyndicateRapier
+
+- type: Tag
+  id: Shrimp
+  
+- type: Tag
+  id: Cook
+
+- type: Tag
+  id: MagazineEagle
+
+- type: Tag
+  id: MagazineHristov
+
+- type: Tag
+  id: ExtMagazineRifle

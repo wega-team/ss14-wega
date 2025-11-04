@@ -19,7 +19,7 @@
   components:
   - type: Item
     storedRotation: -90
-  - type: Food
+  - type: Edible
   - type: Sprite
     sprite: _Wega/Objects/Consumable/Food/japanfood.rsi
     state: hanamidango
@@ -39,7 +39,7 @@
   components:
   - type: Item
     storedRotation: -90
-  - type: Food
+  - type: Edible
   - type: Sprite
     sprite: _Wega/Objects/Consumable/Food/japanfood.rsi
     state: mitarashidango

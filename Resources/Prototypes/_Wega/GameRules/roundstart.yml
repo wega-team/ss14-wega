@@ -12,7 +12,7 @@
   id: Vampire
   components:
   - type: GameRule
-    minPlayers: 30
+    minPlayers: 20
   - type: VampireRule
   - type: AntagObjectives
     objectives:
@@ -27,12 +27,14 @@
     agentName: vampire-round-end-name
     definitions:
       - prefRoles: [ Vampire ]
-        max: 4
-        playerRatio: 15
+        max: 10
+        playerRatio: 10
         blacklist:
           components:
           - AntagImmune
           - BibleUser
+          - Android
+          - Ipc
         lateJoinAdditional: true
         components:
         - type: NpcFactionMember
@@ -59,6 +61,8 @@
           components:
           - AntagImmune
           - BibleUser
+          - Android
+          - Ipc
         lateJoinAdditional: true
         components:
         - type: BloodCultist

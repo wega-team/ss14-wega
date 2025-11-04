@@ -1,0 +1,18 @@
+- type: loadoutEffectGroup
+  id: MusicianSuper
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobMusician
+      time: 180000 #50 hours
+      
+## Instruments
+- type: loadout
+  id: SuperSynthesizerInstrument
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: MusicianSuper
+  storage:
+    back:
+    - SuperSynthesizerInstrument

@@ -1,6 +1,5 @@
 using System.Linq;
 using Content.Server.Administration.Logs;
-using Content.Server.Atmos.Components;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Atmos.Rotting;
 using Content.Server.Bible.Components;
@@ -9,6 +8,7 @@ using Content.Server.Chat.Systems;
 using Content.Server.Polymorph.Systems;
 using Content.Shared.Actions;
 using Content.Shared.Alert;
+using Content.Shared.Atmos.Components;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Systems;
 using Content.Shared.Chat.Prototypes;
@@ -38,6 +38,9 @@ using Robust.Shared.Utility;
 using Content.Shared.Genetics;
 using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Hands.EntitySystems;
+using Content.Shared.Surgery.Components;
+using Content.Shared.Nutrition.Components;
+using Content.Shared.Inventory;
 
 namespace Content.Server.Vampire;
 
@@ -47,7 +50,7 @@ public sealed partial class VampireSystem : SharedVampireSystem
     [Dependency] private readonly AlertsSystem _alerts = default!;
     [Dependency] private readonly BloodstreamSystem _blood = default!;
     [Dependency] private readonly FlammableSystem _flammable = default!;
-    [Dependency] private readonly FoodSystem _food = default!;
+    [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly RottingSystem _rotting = default!;
     [Dependency] private readonly StomachSystem _stomach = default!;
     [Dependency] private readonly PolymorphSystem _polymorph = default!;
@@ -68,6 +71,8 @@ public sealed partial class VampireSystem : SharedVampireSystem
     [Dependency] private readonly MobThresholdSystem _mobThreshold = default!;
     [Dependency] private readonly EntityLookupSystem _entityLookup = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!;
+
+    private static readonly ProtoId<EmotePrototype> Scream = "Scream";
 
     private readonly Dictionary<EntityUid, Dictionary<EntityUid, FixedPoint2>> _bloodConsumedTracker = new();
     private bool _isDamageBeingHandled = false;
@@ -140,7 +145,7 @@ public sealed partial class VampireSystem : SharedVampireSystem
                     {
                         flammable.FireStacks = flammable.MaximumFireStacks;
                         _flammable.Ignite(vampire.Owner, uid);
-                        _chat.TryEmoteWithoutChat(vampire, _prototypeManager.Index<EmotePrototype>("Scream"), true);
+                        _chat.TryEmoteWithoutChat(vampire, _prototypeManager.Index(Scream), true);
                         _popup.PopupEntity(Loc.GetString("vampire-holy-point"), vampire.Owner, vampire.Owner, PopupType.LargeCaution);
                     }
                 }
@@ -187,7 +192,16 @@ public sealed partial class VampireSystem : SharedVampireSystem
             return false;
         }
 
-        if (!_interaction.InRangeUnobstructed(uid, args.Target, popup: true) || _food.IsMouthBlocked(args.Target, uid))
+        if (!_interaction.InRangeUnobstructed(uid, args.Target, popup: true) || HasComp<SyntheticOperatedComponent>(args.Target))
+            return false;
+
+        IngestionBlockerComponent? blocker;
+        if (_inventory.TryGetSlotEntity(uid, "mask", out var maskUid) &&
+            TryComp(maskUid, out blocker) && blocker.Enabled)
+            return false;
+
+        if (_inventory.TryGetSlotEntity(uid, "head", out var headUid) &&
+            TryComp(headUid, out blocker) && blocker.Enabled)
             return false;
 
         if (_rotting.IsRotten(args.Target))
@@ -213,8 +227,7 @@ public sealed partial class VampireSystem : SharedVampireSystem
 
     private void DrinkDoAfter(EntityUid uid, VampireComponent component, ref VampireDrinkingBloodDoAfterEvent args)
     {
-        if (args.Cancelled || _food.IsMouthBlocked(uid, uid)
-            || !TryComp<BloodstreamComponent>(args.Target, out var targetBloodstream)
+        if (args.Cancelled || !TryComp<BloodstreamComponent>(args.Target, out var targetBloodstream)
             || targetBloodstream?.BloodSolution is null)
             return;
 
@@ -557,7 +570,7 @@ public sealed partial class VampireSystem : SharedVampireSystem
             }
 
             RemComp<ThrallComponent>(uid);
-            _stun.TryParalyze(uid, stunTime, true);
+            _stun.TryUpdateParalyzeDuration(uid, stunTime);
             _popup.PopupEntity(Loc.GetString("thrall-break-control", ("name", name)), uid);
         }
     }

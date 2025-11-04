@@ -42,3 +42,40 @@
       path: /Audio/Items/crowbar.ogg
   - type: Prying
   - type: ToolTileCompatible
+
+- type: entity
+  parent: BaseKnife
+  id: ArrhythmicKnife
+  name: arrhythmic knife
+  description: They say that fear kills the mind, but sticking a knife in your head also works.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/arrhythmic_knife.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Wega/Objects/Weapons/Melee/arrhythmic_knife.rsi
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 2.25
+    damage:
+      types:
+        Slash: 15
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: EmbeddableProjectile
+    sound: /Audio/Weapons/star_hit.ogg
+    offset: -0.15,0.0
+  - type: LandAtCursor
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Slash: 15
+  - type: DisarmMalus
+    malus: 0.225
+  - type: ThrowingAngle
+    angle: 225
+  - type: ClothingSpeedModifier
+    walkModifier: 1.1
+    sprintModifier: 1.1
+  - type: HeldSpeedModifier

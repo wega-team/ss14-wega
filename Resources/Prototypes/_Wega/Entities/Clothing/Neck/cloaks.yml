@@ -29,3 +29,34 @@
     requiredSlot:
     - neck
     slot: head
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckCloakBlueShield
+  name: cloak of the officer "Blue Shield"
+  description: A cloak for defenders risking their breasts for NanoTrasen!
+  components:
+    - type: Sprite
+      sprite: _Wega/Clothing/Neck/Cloaks/blueshield.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckGothicCloak
+  name: gothic cloak
+  description: For a classy old-style vampires.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Neck/Cloaks/gothic_cloak.rsi
+  - type: StaticPrice
+    price: 5
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckDarkGreyCloak
+  name: dark grey cloak
+  description: Even a greytide deserve his cloak.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Neck/Cloaks/darkgrey_cloak.rsi
+  - type: StaticPrice
+    price: 5

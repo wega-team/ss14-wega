@@ -1,0 +1,39 @@
+# Jumpsuit
+- type: loadout
+  id: PostmanJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitPostman
+  groupBy: "wegaJJ"
+
+- type: loadout
+  id: PostmanJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtPostman
+  groupBy: "wegaJJ"
+
+# Head
+- type: loadout
+  id: HatPostmansoft
+  equipment:
+    head: ClothingHeadHatPostmansoft
+
+- type: loadout
+  id: HatPostmansoftFlipped
+  equipment:
+    head: ClothingHeadHatPostmansoftFlipped
+
+# Back
+- type: loadout
+  id: BackpackPostman
+  equipment:
+    back: ClothingBackpackPostman
+
+- type: loadout
+  id: BackpackSatchelPostman
+  equipment:
+    back: ClothingBackpackSatchelPostman
+
+- type: loadout
+  id: BackpackDuffelPostman
+  equipment:
+    back: ClothingDuffelPostman

@@ -1,5 +1,5 @@
 ﻿- type: entity
-  parent: ClothingHeadBase
+  parent: [ClothingHeadBase, BaseChameleon]
   id: ClothingHeadHatChameleon
   name: beret
   description: A beret, an artists favorite headwear.
@@ -14,25 +14,11 @@
     - type: ChameleonClothing
       slot: [HEAD]
       default: ClothingHeadHatBeret
-    - type: UserInterface
-      interfaces:
-        enum.ChameleonUiKey.Key:
-          type: ChameleonBoundUserInterface
-# Corvax-HiddenDesc-Start
-    - type: HiddenDescription
-      entries:
-      - label: corvax-hidden-desc-Chameleon-syndicate
-        whitelistMind:
-          mindRoles:
-          - TraitorRole
-          - NukeopsRole
-      - label: corvax-hidden-desc-Chameleon-research
-        jobRequired:
-          - ResearchAssistant
-          - ResearchDirector
-          - Scientist
-          - Borg
-# Corvax-HiddenDesc-End
+    # Corvax-Wega-Dirtable-start
+    - type: Dirtable
+      dirtState: beret
+      equippedDirtState: equipped-beret
+    # Corvax-Wega-Dirtable-end
 
 - type: entity
   parent: ClothingHeadHatFedoraBrown
@@ -43,7 +29,7 @@
   - type: Tag
     tags: [] # ignore "WhitelistChameleon" tag
   - type: TriggerOnVoice
-    keyPhrase: "go go gadget"
+    defaultKeyPhrase: key-phrase-gadget
     listenRange: 0
   - type: ActiveListener
     range: 0
@@ -53,7 +39,7 @@
   - type: Storage
     showVerb: false
     grid:
-    - 0,0,6,3
+    - 0,0,3,2
     maxItemSize: Small
     blacklist:
       tags:

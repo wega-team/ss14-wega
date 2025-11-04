@@ -1,0 +1,8 @@
+- type: entity
+  parent: ClothingShoesBootsJack
+  id: ClothingShoesBootsJackBlue
+  components:
+    - type: Sprite
+      sprite: _Wega/Clothing/Shoes/Boots/jackboots_blue.rsi
+    - type: Clothing
+      sprite: _Wega/Clothing/Shoes/Boots/jackboots_blue.rsi

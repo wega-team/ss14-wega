@@ -214,7 +214,7 @@ public sealed partial class DragonSystem : EntitySystem
                 || !_entityManager.TryGetComponent(humanoid, out TransformComponent? humanoidTransform))
                 continue;
 
-            _stun.TryParalyze(humanoid, TimeSpan.FromSeconds(4f), true);
+            _stun.TryUpdateParalyzeDuration(humanoid, TimeSpan.FromSeconds(4f));
             var humanoidPosition = _transform.GetWorldPosition(humanoid);
             var direction = (humanoidPosition - dragonPosition).Normalized();
             var force = 750f;

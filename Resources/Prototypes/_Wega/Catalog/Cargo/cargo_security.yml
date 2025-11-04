@@ -1,0 +1,19 @@
+- type: cargoProduct
+  id: CrateSecSegway
+  icon:
+    sprite: Objects/Vehicles/secway.rsi
+    state: icon
+  product: CrateSecSegway
+  cost: 2500
+  category: cargoproduct-category-name-security
+  group: market
+
+- type: cargoProduct
+  id: CrateBoxPillCanisterSB
+  icon:
+    sprite: /Textures/Objects/Storage/boxes.rsi
+    state: box_security
+  product: CrateBoxPillCanisterSB
+  cost: 1250
+  category: cargoproduct-category-name-security
+  group: market

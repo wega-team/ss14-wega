@@ -1,15 +1,3 @@
-# Administration
-- type: factionIcon
-  id: EventFaction
-  priority: 11
-  showTo:
-    components:
-      - Ghost
-  locationPreference: Right
-  icon:
-    sprite: /Textures/_Wega/Interface/Misc/other_icons.rsi
-    state: Event
-
 # Base
 - type: factionIcon
   id: VampireFaction

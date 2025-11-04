@@ -76,6 +76,7 @@
       tags:
         - Carp
         - DoorBumpOpener
+        - CannotSuicide
     - type: ReplacementAccent
       accent: genericAggressive
     - type: Speech
@@ -180,6 +181,11 @@
     - type: HTN
       rootTask:
         task: DragonCarpCompound
+    - type: Flammable
+      damage:
+       types: {}
+    - type: Temperature
+      heatDamageThreshold: 1200
     - type: FriendlyFaction # Corvax-Wega-Friendly
       faction: Dragon # Corvax-Wega-Friendly
 

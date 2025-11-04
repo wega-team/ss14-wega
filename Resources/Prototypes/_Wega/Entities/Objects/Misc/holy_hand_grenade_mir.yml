@@ -1,0 +1,28 @@
+- type: entity
+  name: holy hand grenade
+  description: O Lord, bless this thy hand grenade, that with it thou mayst blow thine enemies to tiny bits, in thy mercy.
+  suffix: no grenade
+  parent: BaseItem
+  id: HolyHandGrenadeMir
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Grenades/holyhandgrenade.rsi
+    state: icon
+  - type: StaticPrice
+    price: 7500
+  - type: Item
+    size: Small
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+  - type: UseDelay
+    delay: 5
+  - type: TriggerOnUse
+  - type: EmitSoundOnTrigger
+    sound:
+      path: "/Audio/Effects/hallelujah.ogg"
+  - type: PointLight
+    radius: 3
+    energy: 2
+    netsync: false        

@@ -1,0 +1,13 @@
+- type: entity
+  id: ActionToggleNaturalNightVision
+  parent: BaseAction
+  name: toggle vision
+  description: "Blink to see the world differently."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon: Interface/Actions/eyeopen.png
+    clientExclusive: true
+    priority: -4
+  - type: InstantAction
+    event: !type:ToggleNaturalNightVisionEvent

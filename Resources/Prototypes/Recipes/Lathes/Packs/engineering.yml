@@ -12,6 +12,7 @@
   - NetworkConfigurator
   - Signaller
   - SprayPainter
+  - SprayPainterAmmo
   - FlashlightLantern
   - HandheldGPSBasic
   - TRayScanner
@@ -88,3 +89,5 @@
   - TelecomServerCircuitboard
   - SMESAdvancedMachineCircuitboard
   - HolopadMachineCircuitboard
+  - MiningServerCircuitboard # Corvax-Wega-Mining
+  - MiningMonitoringComputerCircuitboard # Corvax-Wega-Mining

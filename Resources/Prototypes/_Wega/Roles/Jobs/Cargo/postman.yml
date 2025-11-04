@@ -1,0 +1,28 @@
+- type: job
+  id: Postman
+  name: job-name-postman
+  description: job-description-postman
+  playTimeTracker: JobPostman
+  requirements:
+    - !type:DepartmentTimeRequirement
+      department: Cargo
+      time: 54000 # Corvax-RoleTime
+  startingGear: PostmanGear
+  icon: "JobIconPostman"
+  supervisors: job-supervisors-qm
+  access:
+  - Cargo
+  - Maintenance
+  - External
+
+- type: startingGear
+  id: PostmanGear
+  equipment:
+    shoes: ClothingShoesColorBlack
+    outerClothing: ClothingOuterCoatPostman
+    id: PostmanPDA
+    ears: ClothingHeadsetCargo
+    belt: MailBag
+  storage:
+    back:
+    - CrowbarRed

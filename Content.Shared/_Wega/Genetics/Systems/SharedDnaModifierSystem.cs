@@ -123,7 +123,7 @@ public abstract partial class SharedDnaModifierSystem : EntitySystem
 
     public Color ConvertSkinToneToColor(string[] skinTone)
     {
-        Color defaultColor = Color.FromHsv(new Vector4(0.07f, 0.2f, 1f, 1f));
+        Color defaultColor = Color.FromHsv(new System.Numerics.Vector4(0.07f, 0.2f, 1f, 1f));
         if (skinTone == null || skinTone.Length != 3)
             return defaultColor;
 
@@ -152,7 +152,7 @@ public abstract partial class SharedDnaModifierSystem : EntitySystem
                 value = 1f - 0.8f * (toneValue - 20) / 80f;
             }
 
-            return Color.FromHsv(new Vector4(
+            return Color.FromHsv(new System.Numerics.Vector4(
                 hue / 360f,
                 saturation,
                 value,

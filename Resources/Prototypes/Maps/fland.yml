@@ -1,7 +1,7 @@
 - type: gameMap
   id: Fland
   mapName: 'Fland Installation'
-  mapPath: Maps/_Wega/wegafland.yml # Corvax-Wega-Maps
+  mapPath: /Maps/_Wega/wegafland.yml # Corvax-Wega-Maps
   minPlayers: 55 # Corvax
   stations:
     Fland:

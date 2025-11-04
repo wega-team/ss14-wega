@@ -17,8 +17,12 @@
   - type: Body
     prototype: Tajaran
     requiredLegs: 2
+  - type: Carriable # Corvax-Wega-Carrying
+  - type: DiseaseCarrier # Corvax-Wega-Disease
+  - type: NaturalNightVision # Corvax-Wega-NightVision
+    tintColor: "#0f5e7f" # Corvax-Wega-NightVision
   - type: Inventory
-    speciesId: reptilian # whyyy
+    speciesId: corvaxtajaran
     femaleDisplacements:
       jumpsuit:
         sizeMaps:
@@ -30,6 +34,13 @@
           32:
             sprite: Corvax/Mobs/Species/displacement.rsi
             state: shoes
+      # Corvax-Wega-start
+      socks:
+        sizeMaps:
+          32:
+            sprite: Corvax/Mobs/Species/displacement.rsi
+            state: socks
+      # Corvax-Wega-end
     displacements:
       jumpsuit:
         sizeMaps:
@@ -41,6 +52,19 @@
           32:
             sprite: Corvax/Mobs/Species/displacement.rsi
             state: shoes
+      outerClothing:
+        sizeMaps:
+          32:
+            sprite: Corvax/Mobs/Species/displacement.rsi
+            state: outerclothing
+      # Corvax-Wega-start
+      socks:
+        sizeMaps:
+          32:
+            sprite: Corvax/Mobs/Species/displacement.rsi
+            state: socks
+      # Corvax-Wega-end
+
   - type: ContentEye
   - type: Speech
     allowedEmotes: ['Purr']
@@ -85,7 +109,7 @@
   - type: HumanoidAppearance
     species: Tajaran
   - type: Inventory
-    speciesId: reptilian
+    speciesId: corvaxtajaran
     femaleDisplacements:
       jumpsuit:
         sizeMaps:
@@ -97,6 +121,13 @@
           32:
             sprite: Corvax/Mobs/Species/displacement.rsi
             state: shoes
+      # Corvax-Wega-start
+      socks:
+        sizeMaps:
+          32:
+            sprite: Corvax/Mobs/Species/displacement.rsi
+            state: socks
+      # Corvax-Wega-end
     displacements:
       jumpsuit:
         sizeMaps:
@@ -108,3 +139,15 @@
           32:
             sprite: Corvax/Mobs/Species/displacement.rsi
             state: shoes
+      outerClothing:
+        sizeMaps:
+          32:
+            sprite: Corvax/Mobs/Species/displacement.rsi
+            state: outerclothing
+      # Corvax-Wega-start
+      socks:
+        sizeMaps:
+          32:
+            sprite: Corvax/Mobs/Species/displacement.rsi
+            state: socks
+      # Corvax-Wega-end

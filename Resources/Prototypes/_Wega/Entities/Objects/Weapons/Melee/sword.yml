@@ -1,0 +1,166 @@
+- type: entity
+  parent: Claymore
+  id: WeaponChainsword
+  name: chainsword
+  description: Do not allow the heretic vulpa to live.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/chainsword.rsi
+  - type: MeleeWeapon
+    soundHit:
+      path: /Audio/Weapons/chainsaw.ogg
+      params:
+        volume: -3
+  - type: Item
+    storedSprite:
+      state: icon
+      sprite: _Wega/Objects/Weapons/Melee/chainsword.rsi
+    shape:
+    - 0,0,0,3
+  - type: Clothing
+    sprite: _Wega/Objects/Weapons/Melee/chainsword.rsi
+    slots:
+    - Belt
+
+- type: entity
+  parent: Claymore
+  id: WeaponForceSword
+  name: force sword
+  description: It shines with the power of faith. Or the energy of a battery.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/force_sword.rsi
+  - type: Clothing
+    sprite: _Wega/Objects/Weapons/Melee/force_sword.rsi
+  - type: Item
+    storedSprite:
+      state: icon
+      sprite: _Wega/Objects/Weapons/Melee/force_sword.rsi
+
+- type: entity
+  parent: [ Katana, Claymore ]
+  id: WeaponHanzoSteel
+  name: force sword
+  description: This katana can cut through a holy Claymore. Along.
+  components:
+  - type: Item
+    storedSprite:
+      state: icon
+      sprite: Objects/Weapons/Melee/katana.rsi
+
+- type: entity
+  parent: Claymore
+  id: WeaponMultiverseSword
+  name: multiverse sword
+  description: Once a messenger of interdimensional war, now it's just a dormant souvenir. But still sharp.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/multiverse_sword.rsi
+  - type: Clothing
+    sprite: _Wega/Objects/Weapons/Melee/multiverse_sword.rsi
+  - type: Item
+    storedSprite:
+      state: icon
+      sprite: _Wega/Objects/Weapons/Melee/multiverse_sword.rsi
+
+- type: entity
+  parent: BaseSword
+  id: WeaponUnrealSword
+  name: UNREAL SORD
+  description: He is so indescribably HOLY that you will have problems just holding him.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/unreal_sword.rsi
+  - type: NullRod
+    firstNullDamage: 99.99
+    nullDamage: 0.01
+  - type: MeleeWeapon
+    damage:
+      types:
+        Asphyxiation: 0.42
+        Bloodloss: 0.31
+        Blunt: 0.15
+        Cellular: 0.27
+        Caustic: 0.33
+        Cold: 0.18
+        Heat: 0.22
+        Piercing: 0.11
+        Poison: 0.49
+        Radiation: 0.25
+        Shock: 0.19
+        Slash: 0.14
+        Structural: 0.01
+        Holy: 1.07
+    soundHit:
+      path: /Audio/_Wega/Effects/null.ogg
+  - type: PointLight
+    radius: 1.2
+    energy: 2.20 # ///...\\\
+    castShadows: false
+    color: "#0639f9"
+  - type: Item
+    shape:
+    - 0,0,0,3
+  - type: Clothing
+    sprite: _Wega/Objects/Weapons/Melee/unreal_sword.rsi
+    slots:
+    - Belt
+
+- type: entity
+  parent: BaseSword
+  id: WeaponReaperScythe
+  name: reaper scythe
+  description: Don't ask who the bell is tolling for...
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/reaper_scythe.rsi
+  - type: NullRod
+  - type: MeleeWeapon
+    attackRate: 2
+    damage:
+      types:
+        Slash: 17.5
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Item
+    shape:
+    - 0,0,1,3
+  - type: Clothing
+    sprite: _Wega/Objects/Weapons/Melee/reaper_scythe.rsi
+    slots:
+    - Back
+    - SuitStorage
+  - type: DisarmMalus
+
+- type: entity
+  parent: WeaponReaperScythe
+  id: WeaponHighFrequencyBlade
+  name: high frequency blade
+  description: Bad references are the DNA of the soul.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/hfrequency_sword.rsi
+  - type: Clothing
+    sprite: _Wega/Objects/Weapons/Melee/hfrequency_sword.rsi
+
+- type: entity
+  parent: WeaponReaperScythe
+  id: WeaponPossessedBlade
+  name: possessed blade
+  description: When the station is in chaos, it's nice to have a friend by your side.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/possessed_blade.rsi
+  - type: Clothing
+    sprite: _Wega/Objects/Weapons/Melee/possessed_blade.rsi
+    slots:
+    - Belt
+  - type: GhostRole
+    allowSpeech: true
+    makeSentient: true
+    name: ghost-role-information-possessed-blade-name
+    description: ghost-role-information-possessed-blade-description
+    rules: ghost-role-information-familiar-rules
+    raffle:
+      settings: default
+  - type: GhostTakeoverAvailable

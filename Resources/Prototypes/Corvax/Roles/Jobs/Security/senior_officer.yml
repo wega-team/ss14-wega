@@ -1,0 +1,55 @@
+- type: job
+  id: SeniorOfficer
+  name: job-name-senior-officer
+  description: job-description-senior-officer
+  playTimeTracker: JobSeniorOfficer
+  requirements:
+    - !type:RoleTimeRequirement
+      role: JobWarden
+      time: 6h
+    - !type:RoleTimeRequirement
+      role: JobDetective
+      time: 2h
+    - !type:RoleTimeRequirement
+      role: JobSecurityOfficer
+      time: 6h
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 60h
+  weight: 9
+  startingGear: SeniorOfficerGear
+  icon: "JobIconSeniorOfficer"
+  supervisors: job-supervisors-hos
+  canBeAntag: false
+  access:
+  - Security
+  - Brig
+  - Maintenance
+  - Service
+  - External
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+
+- type: startingGear
+  id: SeniorOfficerGear
+  equipment:
+    ## shoes: ClothingShoesBootsCombatFilled Corvax-Wega
+    eyes: ClothingEyesGlassesSecurity
+    id: SeniorOfficerPDA
+    ears: ClothingHeadsetSecurity
+    pocket1: WeaponPistolMk58
+  storage:
+    back:
+    - Flash
+    - MagazinePistol
+
+- type: chameleonOutfit
+  id: SeniorOfficerChameleonOutfit
+  job: SeniorOfficer
+  hasMindShield: true
+  equipment:
+    head: ClothingHeadHatBeretSecurity
+    eyes: ClothingEyesGlassesSecurity
+    mask: ClothingMaskGasSecurity
+    gloves: ClothingHandsGlovesColorBlack

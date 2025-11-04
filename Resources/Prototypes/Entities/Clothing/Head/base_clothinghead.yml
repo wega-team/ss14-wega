@@ -11,7 +11,7 @@
   - type: Item
     size: Small
     storedRotation: -90
-  - type: Food
+  - type: Edible
     requiresSpecialDigestion: true
   - type: SolutionContainerManager
     solutions:
@@ -91,8 +91,8 @@
         id: blinking
         interpolate: Nearest
         maxDuration: 1.0
-        minValue: 0.1
-        maxValue: 2.0
+        startValue: 0.1
+        endValue: 2.0
         isLooped: true
   - type: PowerCellSlot
     cellSlotId: cell_slot
@@ -143,6 +143,12 @@
     - Snout
     - HeadTop
     - HeadSide
+    - FacialHair
+  # Corvax-Wega-Dirtable-start
+  - type: Dirtable
+    dirtState: helmet
+    equippedDirtState: equipped-helmet
+  # Corvax-Wega-Dirtable-end
 
 - type: entity
   abstract: true
@@ -193,6 +199,12 @@
     - Snout
     - HeadTop
     - HeadSide
+    - FacialHair
+  # Corvax-Wega-Dirtable-start
+  - type: Dirtable
+    dirtState: helmet
+    equippedDirtState: equipped-helmet
+  # Corvax-Wega-Dirtable-end
 
 - type: entity
   abstract: true
@@ -242,8 +254,8 @@
         id: blinking
         interpolate: Nearest
         maxDuration: 1.0
-        minValue: 0.1
-        maxValue: 2.0
+        startValue: 0.1
+        endValue: 2.0
         isLooped: true
   - type: Battery
     maxCharge: 600 #lights drain 3/s but recharge of 2 makes this 1/s. Therefore 600 is 10 minutes of light.
@@ -251,6 +263,11 @@
   - type: BatterySelfRecharger
     autoRecharge: true
     autoRechargeRate: 2 #recharge of 2 makes total drain 1w / s so max charge is 1:1 with time. Time to fully charge should be 5 minutes. Having recharge gives light an extended flicker period which gives you some warning to return to light area.
+  # Corvax-Wega-Dirtable-start
+  - type: Dirtable
+    dirtState: helmet
+    equippedDirtState: equipped-helmet
+  # Corvax-Wega-Dirtable-end
 
 - type: entity
   abstract: true
@@ -281,3 +298,8 @@
     - Hair
     - HeadTop
     - HeadSide
+  # Corvax-Wega-Dirtable-start
+  - type: Dirtable
+    dirtState: winterhood
+    equippedDirtState: equipped-winterhood
+  # Corvax-Wega-Dirtable-end

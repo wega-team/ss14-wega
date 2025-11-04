@@ -7,6 +7,7 @@
   - PositronicBrain
   - SciFlash
   - CyborgEndoskeleton
+  - Tyriumpack # Corvax-Wega-Android
 
 - type: latheRecipePack
   id: BorgModulesStatic
@@ -14,6 +15,15 @@
   - BorgModuleTool
   - BorgModuleCable
   - BorgModuleFireExtinguisher
+  - BorgModuleInflatable
+  - BorgModuleArtistry
+ # Corvax-Wega-Start
+  - BorgModuleCommonConstruction
+  - BorgModuleCommonMedical
+  - BorgModuleCommonPen
+  - BorgModuleCommonFight
+  - BorgModuleCommonPickaxe
+ # Corvax-Wega-end
 
 - type: latheRecipePack
   id: BorgLimbsStatic
@@ -31,15 +41,29 @@
   id: Robotics
   recipes:
   - ProximitySensor
+  # Corvax-Wega-Android-Start
+  - AndroidBodyPart
+  - ArmSyntheticPry
+  - ArmSyntheticDefib
+  - ArmSyntheticProtoKinetic
+  # Corvax-Wega-Android-End
 
 - type: latheRecipePack
   id: BorgModules
   recipes:
   - BorgModuleAdvancedCleaning
   - BorgModuleAdvancedTool
+  - BorgModuleAdvancedClowning
   - BorgModuleAdvancedChemical
   - BorgModuleAdvancedMining
-  - BorgModuleSurgery # Corvax-Wega-T2med
+ # Corvax-Wega-Start
+  - BorgModuleSurgery
+  - BorgModuleKinetic
+  - BorgModuleGardening
+  - BorgModuleHarvesting
+  - BorgModuleMusique
+  - BorgModuleClowning
+ # Corvax-Wega-end
 
 - type: latheRecipePack
   id: MechParts

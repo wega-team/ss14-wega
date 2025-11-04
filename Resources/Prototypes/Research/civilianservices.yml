@@ -13,6 +13,10 @@
   - SeedExtractorMachineCircuitboard
   - HydroponicsTrayMachineCircuitboard
   - ReagentGrinderIndustrialMachineCircuitboard
+    # Corvax-Wega-Surgery-start
+  - BorgModuleGardening
+  - BorgModuleHarvesting
+    # Corvax-Wega-Surgery-end
 
 - type: technology
   id: CritterMechs
@@ -68,6 +72,12 @@
     - DawInstrumentMachineCircuitboard
     - MassMediaCircuitboard
     - JukeboxCircuitBoard
+    # Corvax-Wega-Surgery-start
+    - SadTromboneImplant
+    - LightImplant
+    - BorgModuleMusique
+    - BorgModuleClowning
+    # Corvax-Wega-Surgery-end
 
 - type: technology
   id: MeatManipulation
@@ -99,9 +109,12 @@
   - FauxTileAstroGrass
   - FauxTileMowedAstroGrass
   - FauxTileJungleAstroGrass
+  - FauxTileDarkAstroGrass
+  - FauxTileLightAstroGrass
   - FauxTileAstroIce
   - FauxTileAstroSnow
   - FauxTileAstroAsteroidSand
+  - FauxTileDesertAstroSand
 
 # Corvax-Wega-Edit
 # - type: technology
@@ -202,6 +215,7 @@
   cost: 4000
   recipeUnlocks:
   - PushHorn
+  - BorgModuleAdvancedClowning
 
 # Tier 3
 

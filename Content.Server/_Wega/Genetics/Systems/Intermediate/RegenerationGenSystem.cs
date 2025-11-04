@@ -1,7 +1,7 @@
 using Content.Shared.Damage;
-using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Genetics;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.Genetics.System;
 
@@ -9,10 +9,8 @@ public sealed class RegenerationGenSystem : EntitySystem
 {
     [Dependency] private readonly DamageableSystem _damage = default!;
 
-    [ValidatePrototypeId<DamageTypePrototype>]
-    private const string BluntDamage = "Blunt";
-    [ValidatePrototypeId<DamageTypePrototype>]
-    private const string HeatDamage = "Heat";
+    private static readonly ProtoId<DamageTypePrototype> BluntDamage = "Blunt";
+    private static readonly ProtoId<DamageTypePrototype> HeatDamage = "Heat";
 
     public override void Update(float frameTime)
     {

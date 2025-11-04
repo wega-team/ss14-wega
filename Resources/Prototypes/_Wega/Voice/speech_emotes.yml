@@ -1,0 +1,77 @@
+- type: emote
+  id: HarpyRing
+  name: chat-emote-name-ring
+  category: Vocal
+  available: false
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: ["chat-emote-msg-harpy-rings"] # Corvax-Localization
+  chatTriggers:
+    - ring
+    - rings
+    - ringing
+    - ringed
+    - rang
+    - прозвинел
+    - прозвинела
+
+- type: emote
+  id: HarpyPew
+  name: chat-emote-name-pew
+  category: Vocal
+  available: false
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: ["chat-emote-msg-harpy-pews"] # Corvax-Localization
+  chatTriggers:
+    - pew
+    - pews
+    - pewpew
+    - лазерит
+
+- type: emote
+  id: HarpyBang
+  name: chat-emote-name-bang
+  category: Vocal
+  available: false
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: ["chat-emote-msg-harpy-bangs"] # Corvax-Localization
+  chatTriggers:
+    - bang
+    - bangs
+    - banging
+    - banged
+    - гремит
+
+- type: emote
+  id: HarpyRev
+  name: chat-emote-name-rev
+  category: Vocal
+  available: false
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: ["chat-emote-msg-harpy-revs"] # Corvax-Localization
+  chatTriggers:
+    - rev
+    - revs
+    - revving
+    - revved
+    - газует
+    - газовать

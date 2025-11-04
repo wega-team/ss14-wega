@@ -107,6 +107,8 @@
     weight: 0.0002 # 5,000 times less likely than 1 regular animal
   - type: PirateAccent
     # not putting a BlockMovement component here cause that's funny.
+  - type: StealTarget
+    stealGroup: CaptainSword
 
 - type: entity
   name: katana
@@ -144,6 +146,8 @@
   id: EnergyKatana
   description: A katana infused with strong energy.
   components:
+  - type: Contraband
+    severity: HighlyIllegal
   - type: Sprite
     sprite: Objects/Weapons/Melee/energykatana.rsi
   - type: MeleeWeapon
@@ -175,7 +179,7 @@
 #Greatswords
 - type: entity
   name: claymore
-  parent: [ BaseSword, BaseMajorContraband ]
+  parent: BaseSword
   id: Claymore
   description: An ancient war blade.
   components:
@@ -194,11 +198,18 @@
       sprite: Objects/Weapons/Melee/claymore_storage_64x.rsi #Done in 64x64 because it looks way too puny in 32x32
     shape:
     - 0,0,1,3
+  # Corvax-Wega-NullRod-start
+  - type: NullRod
+  - type: Reflect
+    reflectProb: 0.3
+    spread: 90
+  # Corvax-Wega-NullRod-end
   - type: Clothing
     sprite: Objects/Weapons/Melee/claymore.rsi
     slots:
     - Back
     - SuitStorage #Bigger than the other swords, easier to strap to your suit.
+    - Belt # Corvax-Wega-NullRod Мне похуй
   - type: DisarmMalus
 
 #Other/Weird

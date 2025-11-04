@@ -4,6 +4,7 @@ using Robust.Shared.Timing;
 
 namespace Content.Shared.Genetics.Systems;
 
+// TODO: ref this
 public sealed class DizzySystem : EntitySystem
 {
     [Dependency] private readonly StatusEffectsSystem _statusEffectsSystem = default!;
@@ -39,7 +40,7 @@ public sealed class DizzySystem : EntitySystem
         if (!_statusEffectsSystem.HasStatusEffect(ent, DizzyKey))
         {
             EnsureComp<DizzyEffectComponent>(ent, out var dizzyEffect);
-            _statusEffectsSystem.TryAddStatusEffect<DrunkComponent>(ent, DizzyKey, TimeSpan.FromMinutes(10), true);
+            _statusEffectsSystem.TryAddStatusEffect<DrunkStatusEffectComponent>(ent, DizzyKey, TimeSpan.FromMinutes(10), true);
 
             dizzyEffect.Intensity = ent.Comp.InitialIntensity;
         }
@@ -51,4 +52,3 @@ public sealed class DizzySystem : EntitySystem
         _statusEffectsSystem.TryRemoveStatusEffect(ent, DizzyKey);
     }
 }
-

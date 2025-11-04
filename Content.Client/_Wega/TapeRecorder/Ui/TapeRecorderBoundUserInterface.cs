@@ -58,6 +58,9 @@ public sealed class TapeRecorderBoundUserInterface(EntityUid owner, Enum uiKey) 
     {
         base.Dispose(disposing);
         if (disposing)
-            _window?.Dispose();
+        {
+            _window?.Close();
+            _window = null;
+        }
     }
 }

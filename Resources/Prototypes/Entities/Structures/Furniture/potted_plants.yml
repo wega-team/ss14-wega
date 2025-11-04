@@ -52,6 +52,9 @@
       - !type:PlaySoundBehavior
         sound:
           path: /Audio/Effects/plant_rustle.ogg
+  - type: Tag
+    tags:
+    - PottedPlant # Corvax-Wega
 
 - type: entity
   id: PottedPlant0

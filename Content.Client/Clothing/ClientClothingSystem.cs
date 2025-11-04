@@ -1,12 +1,11 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using System.Numerics;
 using Content.Client.DisplacementMap;
 using Content.Client.Inventory;
 using Content.Shared.Clothing;
 using Content.Shared.Clothing.Components;
 using Content.Shared.Clothing.EntitySystems;
-using Content.Shared.DisplacementMap;
+using Content.Shared.DirtVisuals; // Corvax-Wega-Dirtable
 using Content.Shared.Humanoid;
 using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
@@ -15,7 +14,6 @@ using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.ResourceManagement;
 using Robust.Shared.GameStates; // Corvax-Wega-ToggleClothing
-using Robust.Shared.Serialization.Manager;
 using Robust.Shared.Serialization.TypeSerializers.Implementations;
 using Robust.Shared.Utility;
 using static Robust.Client.GameObjects.SpriteComponent;
@@ -66,7 +64,7 @@ public sealed class ClientClothingSystem : ClothingSystem
         base.Initialize();
 
         SubscribeLocalEvent<ClothingComponent, GetEquipmentVisualsEvent>(OnGetVisuals);
-        SubscribeLocalEvent<ClothingComponent, InventoryTemplateUpdated>(OnInventoryTemplateUpdated);
+        SubscribeLocalEvent<InventoryComponent, InventoryTemplateUpdated>(OnInventoryTemplateUpdated);
 
         SubscribeLocalEvent<ToggleableSpriteClothingComponent, ComponentHandleState>(OnHandleState); // Corvax-Wega-ToggleClothing
 
@@ -91,20 +89,19 @@ public sealed class ClientClothingSystem : ClothingSystem
         }
     }
 
-    private void OnInventoryTemplateUpdated(Entity<ClothingComponent> ent, ref InventoryTemplateUpdated args)
+    private void OnInventoryTemplateUpdated(Entity<InventoryComponent> ent, ref InventoryTemplateUpdated args)
     {
-        UpdateAllSlots(ent.Owner, clothing: ent.Comp);
+        UpdateAllSlots(ent.Owner, ent.Comp);
     }
 
     private void UpdateAllSlots(
         EntityUid uid,
-        InventoryComponent? inventoryComponent = null,
-        ClothingComponent? clothing = null)
+        InventoryComponent? inventoryComponent = null)
     {
         var enumerator = _inventorySystem.GetSlotEnumerator((uid, inventoryComponent));
         while (enumerator.NextItem(out var item, out var slot))
         {
-            RenderEquipment(uid, item, slot.Name, inventoryComponent, clothingComponent: clothing);
+            RenderEquipment(uid, item, slot.Name, inventoryComponent);
         }
     }
 
@@ -215,6 +212,7 @@ public sealed class ClientClothingSystem : ClothingSystem
         var layer = new PrototypeLayerData();
         layer.RsiPath = rsi.Path.ToString();
         layer.State = state;
+        layer.Scale = clothing.Scale;
         layers = new() { layer };
 
         return true;
@@ -379,6 +377,75 @@ public sealed class ClientClothingSystem : ClothingSystem
                 }
             }
         }
+
+        // Corvax-Wega-Dirtable-start
+        if (TryComp<DirtableComponent>(equipment, out var dirtable) &&
+            dirtable.IsDirty &&
+            !revealedLayers.Contains($"dirt_{equipment}"))
+        {
+            RSI? dirtRsi = null;
+            if (dirtable.DirtSpritePath != null)
+            {
+                dirtRsi = _cache.GetResource<RSIResource>(
+                    SpriteSpecifierSerializer.TextureRoot / dirtable.DirtSpritePath).RSI;
+            }
+
+            if (dirtRsi != null)
+            {
+                var state = dirtable.EquippedDirtState;
+                if (!string.IsNullOrEmpty(clothingComponent.EquippedPrefix))
+                    state = $"{clothingComponent.EquippedPrefix}-{state}";
+                if (inventory.SpeciesId != null && dirtRsi.TryGetState($"{state}-{inventory.SpeciesId}", out _))
+                    state = $"{state}-{inventory.SpeciesId}";
+                if (TryComp<ToggleableSpriteClothingComponent>(equipment, out var toggleable))
+                    state += toggleable.ActiveSuffix;
+
+                if (dirtRsi.TryGetState(state, out _))
+                {
+                    var dirtLayer = new PrototypeLayerData
+                    {
+                        RsiPath = dirtable.DirtSpritePath,
+                        State = state,
+                        Color = dirtable.DirtColor
+                    };
+
+                    var dirtKey = $"dirt_{equipment}";
+                    if (slotLayerExists)
+                    {
+                        index++;
+                        _sprite.AddBlankLayer((equipee, sprite), index);
+                        _sprite.LayerMapSet((equipee, sprite), dirtKey, index);
+                    }
+                    else
+                    {
+                        index = _sprite.LayerMapReserve((equipee, sprite), dirtKey);
+                    }
+
+                    // Accounting for a displacements
+                    if (sprite[index] is Layer layer)
+                    {
+                        _sprite.LayerSetData((equipee, sprite), index, dirtLayer);
+                        _sprite.LayerSetOffset(layer, layer.Offset + slotDef.Offset);
+                        revealedLayers.Add(dirtKey);
+
+                        if (displacementData is not null)
+                        {
+                            if (_displacement.TryAddDisplacement(
+                                displacementData,
+                                (equipee, sprite),
+                                index,
+                                dirtKey,
+                                out var displacementKey))
+                            {
+                                revealedLayers.Add(displacementKey);
+                                index++;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        // Corvax-Wega-Dirtable-end
 
         RaiseLocalEvent(equipment, new EquipmentVisualsUpdatedEvent(equipee, slot, revealedLayers), true);
     }

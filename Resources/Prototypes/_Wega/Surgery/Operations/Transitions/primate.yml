@@ -1,0 +1,601 @@
+- type: surgeryTransition
+  id: OpenPrimateTorsoTransition
+  target: PrimateTorsoOpen
+  label: Вскрыть торс
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ Sawing ]
+          tag: [ BotanyHatchet, FireAxe ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/saw.ogg
+          time: 6
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+
+- type: surgeryTransition
+  id: PrimateOrganManipulationTransition
+  target: PrimateOrganManipulation
+  label: Манипуляция с органами
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      parallel: true
+      steps:
+        # Сердце
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: RemoveOrgan
+          failureEffect: [ Bleeding, Pain ]
+          entityPreview: OrganAnimalHeart
+          requiredPart: Heart
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              organ: Heart
+        - tag: [ Heart ]
+          action: InsertOrgan
+          failureEffect: [ Pain ]
+          entityPreview: OrganAnimalHeart
+          requiredPart: Heart
+          sound:
+            collection: Organ
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              invert: true
+              organ: Heart
+
+        # Легкие
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: RemoveOrgan
+          failureEffect: [ Bleeding, Pain ]
+          entityPreview: OrganAnimalLungs
+          requiredPart: Lungs
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              organ: Lungs
+        - tag: [ Lungs ]
+          action: InsertOrgan
+          failureEffect: [ Pain ]
+          entityPreview: OrganAnimalLungs
+          requiredPart: Lungs
+          sound:
+            collection: Organ
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              invert: true
+              organ: Lungs
+
+        # Желудок
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: RemoveOrgan
+          failureEffect: [ Bleeding, Pain ]
+          entityPreview: OrganAnimalStomach
+          requiredPart: Stomach
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              organ: Stomach
+        - tag: [ Stomach ]
+          action: InsertOrgan
+          failureEffect: [ Pain ]
+          entityPreview: OrganAnimalStomach
+          requiredPart: Stomach
+          sound:
+            collection: Organ
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              invert: true
+              organ: Stomach
+
+        # Печень
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: RemoveOrgan
+          failureEffect: [ Bleeding, Pain ]
+          entityPreview: OrganAnimalLiver
+          requiredPart: Liver
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              organ: Liver
+        - tag: [ Liver ]
+          action: InsertOrgan
+          failureEffect: [ Pain ]
+          entityPreview: OrganAnimalLiver
+          requiredPart: Liver
+          sound:
+            collection: Organ
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              invert: true
+              organ: Liver
+
+        # Почки
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: RemoveOrgan
+          failureEffect: [ Bleeding, Pain ]
+          entityPreview: OrganAnimalKidneys
+          requiredPart: Kidneys
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              organ: Kidneys
+        - tag: [ Kidneys ]
+          action: InsertOrgan
+          failureEffect: [ Pain ]
+          entityPreview: OrganAnimalKidneys
+          requiredPart: Kidneys
+          sound:
+            collection: Organ
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              invert: true
+              organ: Kidneys
+
+- type: surgeryTransition
+  id: PrimateInternalTorsoTransition
+  target: PrimateInternalTorsoOpen
+  label: Прооперировать полость
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 2
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: PrimateInternalTorsoOperateTransition
+  target: Default
+  label: Прооперировать полость
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      parallel: true
+      steps:
+        # Insert
+        - action: StoreItem
+          failureEffect: [ Pain ]
+          requiredPart: torso
+          sound:
+            collection: Organ
+          time: 4
+          conditions:
+            - !type:InternalStorageCondition
+              checkForSpace: true
+        - action: StoreItem
+          failureEffect: [ Pain ]
+          requiredPart: torso
+          sound:
+            collection: Organ
+          time: 4
+          conditions:
+            - !type:InternalStorageCondition
+              checkForSpace: true
+        - action: StoreItem
+          failureEffect: [ Pain ]
+          requiredPart: torso
+          sound:
+            collection: Organ
+          time: 4
+          conditions:
+            - !type:InternalStorageCondition
+              checkForSpace: true
+
+        # Retrieve
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: RetrieveItems
+          failureEffect: [ Pain ]
+          requiredPart: torso
+          sound:
+            collection: Organ
+          time: 4
+          conditions:
+            - !type:InternalStorageCondition
+
+- type: surgeryTransition
+  id: PrimateEndInternalTorsoTransition
+  target: PrimateTorsoOpen
+  label: Завершить
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cautery ]
+          tag: [ Cigarette, Lighter, Welder ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 8
+
+- type: surgeryTransition
+  id: ClosePrimateTorsoTransition
+  target: Default
+  label: Закрыть торс
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ BoneGel ]
+          tag: [ Screwdriver ]
+          action: Empty
+          time: 6
+        - tool: [ BoneSetter ]
+          tag: [ Wrench ]
+          action: Empty
+          failureEffect: [ Fracture, Pain ]
+          time: 8
+        - tool: [ BoneGel ]
+          tag: [ Screwdriver ]
+          action: Empty
+          time: 4
+        - tool: [ Cautery ]
+          tag: [ Cigarette, Lighter, Welder ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 8
+
+- type: surgeryTransition
+  id: AmputatePrimateHandsTransition
+  target: PrimateAmputateHandsStart
+  label: Манипуляции с руками
+  stepGroups:
+    - steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:BodyPartCondition
+              bodyPart: hands
+
+- type: surgeryTransition
+  id: AmputatePrimateHandsFinishTransition
+  target: EndOperation
+  label: Ампутировать руки
+  stepGroups:
+    - steps:
+        - tool: [ Sawing ]
+          tag: [ BotanyHatchet, FireAxe ]
+          action: RemovePart
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/saw.ogg
+          requiredPart: hands
+          time: 8
+
+- type: surgeryTransition
+  id: AttachPrimateHandsStartTransition
+  target: PrimateAttachHandsProcess
+  label: Прикрепить руки
+  stepGroups:
+    - steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:BodyPartCondition
+              invert: true
+              bodyPart: hands
+
+- type: surgeryTransition
+  id: AttachPrimateHandsProcessTransition
+  target: EndOperation
+  label: Прикрепить руки
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          invert: true
+          bodyPart: hands
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tag: [ HandsAnimal ]
+          action: AttachPart
+          failureEffect: [ Pain ]
+          requiredPart: hands
+          time: 6
+          successChance: 0.85
+
+- type: surgeryTransition
+  id: AmputatePrimateLegsTransition
+  target: PrimateAmputateLegsStart
+  label: Манипуляции с ногами
+  stepGroups:
+    - steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:BodyPartCondition
+              bodyPart: legs
+
+- type: surgeryTransition
+  id: AmputatePrimateLegsFinishTransition
+  target: EndOperation
+  label: Ампутировать ноги
+  stepGroups:
+    - steps:
+        - tool: [ Sawing ]
+          tag: [ BotanyHatchet, FireAxe ]
+          action: RemovePart
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/saw.ogg
+          requiredPart: legs
+          time: 8
+
+- type: surgeryTransition
+  id: AttachPrimateLegsStartTransition
+  target: PrimateAttachLegsProcess
+  label: Прикрепить ноги
+  stepGroups:
+    - steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:BodyPartCondition
+              invert: true
+              bodyPart: legs
+
+- type: surgeryTransition
+  id: AttachPrimateLegsProcessTransition
+  target: EndOperation
+  label: Прикрепить ноги
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          invert: true
+          bodyPart: legs
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tag: [ LegsAnimal ]
+          action: AttachPart
+          failureEffect: [ Pain ]
+          requiredPart: legs
+          time: 6
+          successChance: 0.85
+
+- type: surgeryTransition
+  id: AmputatePrimateFeetTransition
+  target: PrimateAmputateFeetStart
+  label: Манипуляции со стопами
+  stepGroups:
+    - steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:BodyPartCondition
+              bodyPart: legs
+            - !type:BodyPartCondition
+              bodyPart: feet
+
+- type: surgeryTransition
+  id: AmputatePrimateFeetFinishTransition
+  target: EndOperation
+  label: Ампутировать стопы
+  stepGroups:
+    - steps:
+        - tool: [ Sawing ]
+          tag: [ BotanyHatchet, FireAxe ]
+          action: RemovePart
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/saw.ogg
+          requiredPart: feet
+          time: 8
+
+- type: surgeryTransition
+  id: AttachPrimateFeetStartTransition
+  target: PrimateAttachFeetProcess
+  label: Прикрепить стопы
+  stepGroups:
+    - steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:BodyPartCondition
+              bodyPart: legs
+            - !type:BodyPartCondition
+              invert: true
+              bodyPart: feet
+
+- type: surgeryTransition
+  id: AttachPrimateFeetProcessTransition
+  target: EndOperation
+  label: Прикрепить стопы
+  stepGroups:
+    - conditions:
+        - !type:BodyPartCondition
+          bodyPart: legs
+        - !type:BodyPartCondition
+          invert: true
+          bodyPart: feet
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tag: [ FeetAnimal ]
+          action: AttachPart
+          failureEffect: [ Pain ]
+          requiredPart: feet
+          time: 6
+          successChance: 0.85

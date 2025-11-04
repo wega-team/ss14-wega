@@ -12,8 +12,7 @@ public sealed class SlimeGrowthSystem : SharedSlimeGrowthSystem
 {
     [Dependency] private readonly IRobustRandom _random = default!;
 
-    [ValidatePrototypeId<EntityPrototype>]
-    private const string DefaultSlime = "MobXenoSlimeGray";
+    private static readonly EntProtoId DefaultSlime = "MobXenoSlimeGray";
 
     public override void Initialize()
     {

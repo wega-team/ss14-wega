@@ -1,0 +1,12 @@
+﻿# Walls
+- type: rcd
+  id: WallReinforced
+  category: WallsAndFlooring
+  sprite: /Textures/Interface/Radial/RCD/reinforced_wall.png
+  mode: ConstructObject
+  prototype: WallReinforced
+  cost: 8
+  delay: 4
+  collisionMask: FullTileMask
+  rotation: Fixed
+  fx: EffectRCDDeconstruct4

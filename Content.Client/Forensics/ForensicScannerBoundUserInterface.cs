@@ -1,4 +1,5 @@
 using Content.Shared.Forensics;
+using Robust.Client.UserInterface;
 
 namespace Content.Client.Forensics
 {
@@ -14,7 +15,7 @@ namespace Content.Client.Forensics
         {
             base.Open();
 
-            _window = new ForensicScannerMenu();
+            _window = this.CreateWindow<ForensicScannerMenu>();
             _window.Print.OnPressed += _ => Print();
             _window.Clear.OnPressed += _ => Clear();
             _window.OpenCentered();

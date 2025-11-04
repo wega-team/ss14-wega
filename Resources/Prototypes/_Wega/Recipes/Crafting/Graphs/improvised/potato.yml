@@ -7,7 +7,7 @@
         - to: superpotatobattery
           steps:
             - tag: SuperPotato
-              name: a energy potato
+              name: construction-graph-tag-energy-potato
               icon:
                 sprite: _Wega/Objects/Specific/Hydroponics/energy_potato.rsi
                 state: produce

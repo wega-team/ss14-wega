@@ -1,0 +1,7 @@
+<Control xmlns="https://spacestation14.io">
+    <Button Name="MainButton" StyleClasses="ButtonSquare">
+        <BoxContainer Orientation="Horizontal" HorizontalExpand="True">
+            <Label Name="ContactName" HorizontalExpand="True"/>
+        </BoxContainer>
+    </Button>
+</Control>

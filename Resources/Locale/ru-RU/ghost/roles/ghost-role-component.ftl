@@ -1,4 +1,4 @@
-# also used in MakeGhostRuleWindow and MakeGhostRoleCommand
+﻿# also used in MakeGhostRuleWindow and MakeGhostRoleCommand
 ghost-role-component-default-rules =
     Все стандартные правила применяются, если администратор не сказал вам обратное.
     Вы не помните ничего из своей предыдущей жизни и не помните ничего из того, что узнали, будучи призраком.
@@ -37,8 +37,12 @@ ghost-role-information-silicon-rules =
     Вам [color=red]НЕ[/color] разрешается помнить или говорить имя, внешность и т.д. вашего предыдущего персонажа.
 ghost-role-information-mouse-name = Мышь
 ghost-role-information-mouse-description = Голодная и озорная мышь.
+ghost-role-information-cancer-mouse-name = Раковая мышь
+ghost-role-information-cancer-mouse-description = Облучённая мышь. Распространяйте свой недуг и ищите еду.
 ghost-role-information-mothroach-name = Таракамоль
 ghost-role-information-mothroach-description = Милая озорная таракамоль.
+ghost-role-information-moproach-name = Швабракан
+ghost-role-information-moproach-description = Милый швабракан с ещё более милыми тапочками-швабрами на лапках.
 ghost-role-information-snail-name = Улитка
 ghost-role-information-snail-description = Маленькая улитка, которая не против немного побыть на свободе. Только не убегай за пределы клетки!
 ghost-role-information-snailspeed-name = Улитка
@@ -178,8 +182,18 @@ ghost-role-information-syndicate-kobold-reinforcement-description = Кому-т�
 ghost-role-information-syndicate-cyborg-assault-name = Штурмовой киборг Синдиката
 ghost-role-information-syndicate-cyborg-saboteur-name = Саботажный киборг Синдиката
 ghost-role-information-syndicate-cyborg-description = Синдикату нужно подкрепление. Вы, холодная кремниевая машина для убийства, поможете им.
-ghost-role-information-derelict-cyborg-name = Заброшенный киборг
+ghost-role-information-derelict-engineering-cyborg-name = Брошенный киборг-инженер
+ghost-role-information-derelict-engineering-cyborg-description = Вы — инженерный киборг, который заблудился в космосе. После долгих лет воздействия ионных бурь вы оказываетесь рядом с космической станцией.
+ghost-role-information-derelict-cyborg-name = Брошенный киборг
 ghost-role-information-derelict-cyborg-description = Вы — обычный киборг, который заблудился в космосе. После долгих лет воздействия ионных бурь вы оказываетесь рядом с космической станцией.
+ghost-role-information-derelict-janitor-cyborg-name = Брошенный киборг-уборщик
+ghost-role-information-derelict-janitor-cyborg-description = Вы — киборг-уборщик, который заблудился в космосе. После долгих лет воздействия ионных бурь вы оказываетесь рядом с космической станцией.
+ghost-role-information-derelict-medical-cyborg-name = Брошенный киборг-доктор
+ghost-role-information-derelict-medical-cyborg-description = Вы — медицинский киборг, который заблудился в космосе. После долгих лет воздействия ионных бурь вы оказываетесь рядом с космической станцией.
+ghost-role-information-derelict-mining-cyborg-name = Брошенный киборг-шахтёр
+ghost-role-information-derelict-mining-cyborg-description = Вы — киборг-шахтёр, который заблудился в космосе. После долгих лет воздействия ионных бурь вы оказываетесь рядом с космической станцией.
+ghost-role-information-derelict-syndicate-assault-cyborg-name = Брошенный штурмовой киборг Синдиката
+ghost-role-information-derelict-syndicate-assault-cyborg-description = Вы — раняя модель штурмового киборга Синдиката, которая заблудилась в космосе. После долгих лет воздействия ионных бурь вы оказываетесь рядом с космической станцией.
 ghost-role-information-security-name = Служба безопасности
 ghost-role-information-security-description = Вы входите в состав оперативной группы службы безопасности, но, похоже, попали в странную ситуацию...
 ghost-role-information-medical-name = Медицинский
@@ -239,5 +253,5 @@ ghost-role-information-gingerbread-description =
     Распространяйте паточную вкуснятину и хорошее настроение.
 ghost-role-information-wizard-name = Волшебник
 ghost-role-information-wizard-desc = ТЫ ВОЛШЕБНИК! Покажи станции, из чего сделана твоя магия.
-ghost-role-information-emotional-support-scurret-name = Emotional Support Scurret
-ghost-role-information-emotional-support-scurret-description = Support the crew, be adorable, say "wa" a lot.
+ghost-role-information-emotional-support-scurret-name = Слизенёк эмоциональной поддержки
+ghost-role-information-emotional-support-scurret-description = Поддерживайте экипаж, будьте очаровательными, часто говорите "ва".

@@ -1,32 +1,32 @@
-using Content.Shared.EntityEffects;
-using Robust.Shared.Prototypes;
-using JetBrains.Annotations;
 using Content.Shared.Atmos.Rotting;
 using Content.Shared.Disease;
+using Content.Shared.Disease.Components;
+using Robust.Shared.Prototypes;
 
-namespace Content.Shared.Chemistry.ReagentEffects
+namespace Content.Shared.EntityEffects.Effects;
+
+/// <summary>
+/// Gives the entity the current disease from the miasma system.
+/// The miasma system rotates between 1 disease at a time.
+/// For things ingested by one person, you probably want ChemCauseRandomDisease instead.
+/// </summary>
+/// <inheritdoc cref="EntityEffectSystem{T,TEffect}"/>
+public sealed partial class ChemAtmosPoolSourceEntityEffectSystem : EntityEffectSystem<DiseaseCarrierComponent, ChemAtmosPoolSource>
 {
-    /// <summary>
-    /// The miasma system rotates between 1 disease at a time.
-    /// This gives all entities the disease the miasme system is currently on.
-    /// For things ingested by one person, you probably want ChemCauseRandomDisease instead.
-    /// </summary>
-    [UsedImplicitly]
-    public sealed partial class ChemAtmosPoolSource : EntityEffect
+    [Dependency] private readonly SharedRottingSystem _rotting = default!;
+
+    protected override void Effect(Entity<DiseaseCarrierComponent> entity, ref EntityEffectEvent<ChemAtmosPoolSource> args)
     {
-        protected override string? ReagentEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
-            => Loc.GetString("reagent-effect-guidebook-atmos-pool-source");
+        var diseaseSys = EntityManager.System<SharedDiseaseSystem>();
 
-        public override void Effect(EntityEffectBaseArgs args)
-        {
-            if (args is EntityEffectReagentArgs reagentArgs && reagentArgs.Scale == 1f)
-            {
-                var rotting = args.EntityManager.System<SharedRottingSystem>();
-                string disease = rotting.RequestPoolDisease();
-
-                var diseaseSystem = args.EntityManager.System<SharedDiseaseSystem>();
-                diseaseSystem.TryAddDisease(reagentArgs.TargetEntity, disease);
-            }
-        }
+        var disease = _rotting.RequestPoolDisease();
+        diseaseSys.TryAddDisease(entity, disease);
     }
+}
+
+/// <inheritdoc cref="EntityEffect"/>
+public sealed partial class ChemAtmosPoolSource : EntityEffectBase<ChemAtmosPoolSource>
+{
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
+        => Loc.GetString("reagent-effect-guidebook-atmos-pool-source");
 }

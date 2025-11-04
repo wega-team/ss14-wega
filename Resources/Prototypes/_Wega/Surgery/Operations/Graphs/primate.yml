@@ -1,0 +1,10 @@
+- type: surgeryGraph
+  id: PrimateSurgery
+  startNodes:
+    - PrimateTorsoClosed
+    - PrimateAmputateHands
+    - PrimateAttachHands
+    - PrimateAmputateLegs
+    - PrimateAttachLegs
+    - PrimateAmputateFeet
+    - PrimateAttachFeet

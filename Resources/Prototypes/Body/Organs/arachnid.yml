@@ -6,7 +6,7 @@
   - type: Sprite
     sprite: Mobs/Species/Arachnid/organs.rsi
   - type: Organ
-  - type: Food
+  - type: Edible
   - type: Extractable
     grindableSolutionName: organ
   - type: SolutionContainerManager
@@ -28,7 +28,6 @@
 - type: entity
   id: OrganArachnidStomach
   parent: OrganAnimalStomach
-  name: stomach
   description: "Gross. This is hard to stomach."
   components:
   - type: Sprite
@@ -90,6 +89,7 @@
     organType: Lungs
   - type: Tag
     tags:
+      - BaseOrgan
       - Lungs
       - Meat
   # Corvax-Wega-Surgery-end
@@ -119,6 +119,7 @@
     organType: Heart
   - type: Tag
     tags:
+      - BaseOrgan
       - Heart
       - Meat
   # Corvax-Wega-Surgery-end
@@ -147,6 +148,7 @@
     organType: Liver
   - type: Tag
     tags:
+      - BaseOrgan
       - Liver
       - Meat
   # Corvax-Wega-Surgery-end
@@ -176,6 +178,7 @@
     organType: Kidneys
   - type: Tag
     tags:
+      - BaseOrgan
       - Kidneys
       - Meat
   # Corvax-Wega-Surgery-end
@@ -198,6 +201,7 @@
     organType: Eyes
   - type: Tag
     tags:
+      - BaseOrgan
       - Eyes
       - Meat
   # Corvax-Wega-Surgery-end

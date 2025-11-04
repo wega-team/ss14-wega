@@ -782,12 +782,15 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasColumnType("INTEGER")
                         .HasColumnName("age");
 
-                    // Corvax-Wega-Barks-start
                     b.Property<string>("BarkVoice")
                         .IsRequired()
                         .HasColumnType("TEXT")
                         .HasColumnName("bark_voice");
-                    // Corvax-Wega-Barks-end
+
+                    b.Property<string>("CharacterFlavorText")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("character_flavor_text");
 
                     b.Property<string>("CharacterName")
                         .IsRequired()
@@ -819,6 +822,11 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasColumnType("TEXT")
                         .HasColumnName("gender");
 
+                    b.Property<string>("GreenFlavorText")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("green_flavor_text");
+
                     b.Property<string>("HairColor")
                         .IsRequired()
                         .HasColumnType("TEXT")
@@ -829,16 +837,24 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasColumnType("TEXT")
                         .HasColumnName("hair_name");
 
+                    b.Property<string>("LinksFlavorText")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("links_flavor_text");
+
                     b.Property<byte[]>("Markings")
                         .HasColumnType("jsonb")
                         .HasColumnName("markings");
 
-                    // Corvax-Wega-OOCFlavor-start
+                    b.Property<string>("NSFWFlavorText")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("nsfwflavor_text");
+
                     b.Property<string>("OOCFlavorText")
                         .IsRequired()
                         .HasColumnType("TEXT")
                         .HasColumnName("oocflavor_text");
-                    // Corvax-Wega-OOCFlavor-end
 
                     b.Property<int>("PreferenceId")
                         .HasColumnType("INTEGER")
@@ -847,6 +863,11 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.Property<int>("PreferenceUnavailable")
                         .HasColumnType("INTEGER")
                         .HasColumnName("pref_unavailable");
+
+                    b.Property<string>("RedFlavorText")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("red_flavor_text");
 
                     b.Property<string>("Sex")
                         .IsRequired()
@@ -871,19 +892,25 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasColumnType("TEXT")
                         .HasColumnName("species");
 
-                    // Corvax-Wega-start
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasColumnType("TEXT")
                         .HasColumnName("status");
-                    // Corvax-Wega-end
 
-                    // Corvax-TTS-Start
+                    b.Property<string>("TagsFlavorText")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("tags_flavor_text");
+
                     b.Property<string>("Voice")
                         .IsRequired()
                         .HasColumnType("TEXT")
                         .HasColumnName("voice");
-                    // Corvax-TTS-End
+
+                    b.Property<string>("YellowFlavorText")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("yellow_flavor_text");
 
                     b.HasKey("Id")
                         .HasName("PK_profile");

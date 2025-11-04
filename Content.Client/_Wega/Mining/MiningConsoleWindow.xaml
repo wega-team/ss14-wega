@@ -1,0 +1,71 @@
+<controls:FancyWindow
+    xmlns="https://spacestation14.io"
+    xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+    xmlns:customControls="clr-namespace:Content.Client.Administration.UI.CustomControls"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="{Loc 'mining-console-title'}"
+    MinSize="400 500">
+
+    <BoxContainer Orientation="Vertical" HorizontalExpand="False">
+        <BoxContainer Orientation="Vertical" VerticalExpand="False" Margin="10">
+            <BoxContainer Orientation="Vertical">
+                <BoxContainer Orientation="Horizontal" Margin="2">
+                    <Label Text="{Loc 'mining-console-mode'}" StyleClasses="LabelBig" MinWidth="120"/>
+                    <Control HorizontalExpand="True"/>
+                    <Label Name="ModeLabel"/>
+                    <Button Name="ToggleMode" Text="{Loc 'mining-console-toggle-mode'}" HorizontalExpand="True"/>
+                </BoxContainer>
+
+                <BoxContainer Orientation="Horizontal" Margin="2">
+                    <Label Text="{Loc 'mining-console-global-activation'}" StyleClasses="LabelBig" MinWidth="120"/>
+                    <Control HorizontalExpand="True"/>
+                    <Button Name="ToggleActivation" HorizontalExpand="True"/>
+                </BoxContainer>
+                
+                <BoxContainer Orientation="Horizontal" Margin="2">
+                    <Label Text="{Loc 'mining-console-credits'}" MinWidth="100"/>
+                    <Control HorizontalExpand="True"/>
+                    <Label Name="CreditsLabel"/>
+                </BoxContainer>
+                
+                <BoxContainer Orientation="Horizontal" Margin="2">
+                    <Label Text="{Loc 'mining-console-research'}" MinWidth="100"/>
+                    <Control HorizontalExpand="True"/>
+                    <Label Name="ResearchLabel"/>
+                </BoxContainer>
+                
+                <BoxContainer Orientation="Horizontal" Margin="2">
+                    <Label Text="{Loc 'mining-console-efficiency'}" MinWidth="100"/>
+                    <Control HorizontalExpand="True"/>
+                    <Label Name="EfficiencyLabel"/>
+                </BoxContainer>
+            </BoxContainer>
+            
+            <customControls:HSeparator StyleClasses="LowDivider" Margin="0 0 0 10"/>
+        </BoxContainer>
+
+        <BoxContainer Orientation="Vertical" VerticalExpand="False" Margin="10">
+            <controls:StripeBack>
+                <Label Text="{Loc 'mining-console-servers'}" HorizontalAlignment="Center" StyleClasses="LabelSubText" Margin="0 4"/>
+            </controls:StripeBack>
+        </BoxContainer>
+        
+        <customControls:HSeparator StyleClasses="LowDivider" Margin="0 0 0 10"/>
+
+        <BoxContainer Orientation="Vertical" VerticalExpand="True" Margin="10" MinHeight="300">
+            <ScrollContainer Name="Scroll" HScrollEnabled="False" VerticalExpand="True">
+                <BoxContainer Name="ServersList" Orientation="Vertical" Margin="5 5 7 5">
+                    <!-- Серверы будут добавляться динамически -->
+                </BoxContainer>
+            </ScrollContainer>
+        </BoxContainer>
+
+        <BoxContainer Orientation="Vertical" VerticalExpand="False" Margin="10" Visible="True">
+            <BoxContainer Orientation="Horizontal">
+                <Button Name="RefreshButton" Text="{Loc 'mining-console-refresh'}ь" HorizontalExpand="True"/>
+                <Control MinWidth="10"/>
+                <Button Name="WithdrawButton" Text="{Loc 'mining-console-withdraw'}" HorizontalExpand="True"/>
+            </BoxContainer>
+        </BoxContainer>
+    </BoxContainer>
+</controls:FancyWindow>

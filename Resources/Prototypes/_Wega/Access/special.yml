@@ -1,0 +1,5 @@
+# Это просто чтобы линтер не жаловался
+- type: accessLevel
+  id: Empty
+  name: id-card-access-level-empty
+  canAddToIdCard: false

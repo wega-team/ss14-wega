@@ -10,3 +10,5 @@ ent-DrinkBitterBottle = бутылка от горького
     .desc = { ent-DrinkBottleBaseEmpty.desc }
 ent-DrinkSheridanBottle = бутылка от шеридана
     .desc = { ent-DrinkBottleBaseEmpty.desc }
+ent-DrinkwWhitewineBottle = бутылка от белого вина
+    .desc = { ent-DrinkBottleBaseEmpty.desc }

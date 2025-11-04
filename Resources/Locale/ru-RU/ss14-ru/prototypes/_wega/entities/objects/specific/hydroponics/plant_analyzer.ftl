@@ -1,0 +1,10 @@
+ent-PlantAnalyzerUnpowered = анализатор растений
+    .desc = Сканер, используемый для оценки различных зон произрастания растения, генетических особенностей и химических веществ.
+ent-PlantAnalyzer = { ent-PlantAnalyzerUnpowered }
+    .desc = { ent-PlantAnalyzerUnpowered.desc }
+    .suffix = Заряженный
+ent-PlantAnalyzerEmpty = { ent-PlantAnalyzerUnpowered }
+    .desc = { ent-PlantAnalyzerUnpowered.desc }
+    .suffix = Пустой
+ent-PlantAnalyzerReportPaper = отчет об анализе растения
+    .desc = Распечатка с анализатора растений.

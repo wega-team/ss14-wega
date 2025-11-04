@@ -6,8 +6,8 @@ using Content.Client.Lobby.UI.Loadouts;
 using Content.Client.Lobby.UI.Roles;
 using Content.Client.Message;
 using Content.Client.Players.PlayTimeTracking;
-using Content.Client.Sprite;
 using Content.Client.Stylesheets;
+using Content.Client.Sprite;
 using Content.Client.UserInterface.Systems.Guidebook;
 using Content.Shared.CCVar;
 using Content.Shared.Clothing;
@@ -35,6 +35,8 @@ using Robust.Shared.Enums;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 using Direction = Robust.Shared.Maths.Direction;
+using static Content.Client.Corvax.SponsorOnlyHelpers; // Corvax-Sponsors
+using Content.Client.Corvax.TTS; // Corvax-TTS
 
 namespace Content.Client.Lobby.UI
 {
@@ -60,10 +62,21 @@ namespace Content.Client.Lobby.UI
 
         private FlavorText.FlavorText? _flavorText;
         private TextEdit? _flavorTextEdit;
-        private TextEdit? _flavorTextOOCEdit; // Corvax-Wega-OOCFlavor
+        // Corvax-Wega-Graphomancy-Extended-start
+        private TextEdit? _flavorTextOOCEdit;
+        private TextEdit? _characterTextEdit;
+        private TextEdit? _greenTextEdit;
+        private TextEdit? _yellowTextEdit;
+        private TextEdit? _redTextEdit;
+        private TextEdit? _tagsTextEdit;
+        private TextEdit? _linksTextEdit;
+        private TextEdit? _nsfwTextEdit;
+        // Corvax-Wega-Graphomancy-Extended-end
 
         // One at a time.
         private LoadoutWindow? _loadoutWindow;
+
+        private TTSTab? _ttsTab; // Corvax-TTS
 
         private bool _exporting;
         private bool _imaging;
@@ -99,14 +112,15 @@ namespace Content.Client.Lobby.UI
 
         private readonly Dictionary<string, BoxContainer> _jobCategories;
 
+        private readonly Dictionary<string, (Button Toggle, ContainerButton Container)> _subRoleContainers = new(); // Corvax-Wega-SubRoles
+
         private Direction _previewRotation = Direction.North;
 
         private ColorSelectorSliders _rgbSkinColorSelector;
 
         private bool _isDirty;
 
-        [ValidatePrototypeId<GuideEntryPrototype>]
-        private const string DefaultSpeciesGuidebook = "Species";
+        private static readonly ProtoId<GuideEntryPrototype> DefaultSpeciesGuidebook = "Species";
 
         public event Action<List<ProtoId<GuideEntryPrototype>>>? OnOpenGuidebook;
 
@@ -250,18 +264,6 @@ namespace Content.Client.Lobby.UI
 
             #endregion
             // Corvax-Wega-end
-
-            // Corvax-TTS-Start
-            #region Voice
-
-            if (configurationManager.GetCVar(CCCVars.TTSEnabled))
-            {
-                TTSContainer.Visible = true;
-                InitializeVoice();
-            }
-
-            #endregion
-            // Corvax-TTS-End
 
             RefreshSpecies();
 
@@ -457,6 +459,8 @@ namespace Content.Client.Lobby.UI
 
             RefreshTraits();
 
+            TabContainer.SetTabTitle(3, Loc.GetString("humanoid-profile-editor-traits-tab")); // Corvax-TTS-Edit
+
             #region Markings
 
             TabContainer.SetTabTitle(4, Loc.GetString("humanoid-profile-editor-markings-tab"));
@@ -469,6 +473,8 @@ namespace Content.Client.Lobby.UI
             #endregion Markings
 
             RefreshFlavorText();
+
+            RefreshVoiceTab(); // Corvax-TTS
 
             #region Dummy
 
@@ -501,6 +507,7 @@ namespace Content.Client.Lobby.UI
         /// <summary>
         /// Refreshes the flavor text editor status.
         /// </summary>
+        // Corvax-Wega-Graphomancy-Extended-Edit-start
         public void RefreshFlavorText()
         {
             if (_allowFlavorText)
@@ -511,38 +518,278 @@ namespace Content.Client.Lobby.UI
                 _flavorText = new FlavorText.FlavorText();
                 TabContainer.AddChild(_flavorText);
                 TabContainer.SetTabTitle(TabContainer.ChildCount - 1, Loc.GetString("humanoid-profile-editor-flavortext-tab"));
+
                 _flavorTextEdit = _flavorText.CFlavorTextInput;
-                _flavorTextOOCEdit = _flavorText.CFlavorOOCTextInput; // Corvax-Wega-OOCFlavor
+                _flavorTextOOCEdit = _flavorText.CFlavorOOCTextInput;
+                _characterTextEdit = _flavorText.CCharacterTextInput;
+                _greenTextEdit = _flavorText.CGreenTextInput;
+                _yellowTextEdit = _flavorText.CYellowTextInput;
+                _redTextEdit = _flavorText.CRedTextInput;
+                _tagsTextEdit = _flavorText.CTagsTextInput;
+                _linksTextEdit = _flavorText.CLinksTextInput;
+                _nsfwTextEdit = _flavorText.CNSFWTextInput;
+
+                UpdateFlavorPreview();
 
                 _flavorText.OnFlavorTextChanged += OnFlavorTextChange;
-                _flavorText.OnFlavorOOCTextChanged += OnFlavorOOCTextChange; // Corvax-Wega-OOCFlavor
+                _flavorText.OnFlavorOOCTextChanged += OnFlavorOOCTextChange;
+                _flavorText.OnCharacterTextChanged += OnCharacterFlavorTextChange;
+                _flavorText.OnGreenTextChanged += OnGreenFlavorTextChange;
+                _flavorText.OnYellowTextChanged += OnYellowFlavorTextChange;
+                _flavorText.OnRedTextChanged += OnRedFlavorTextChange;
+                _flavorText.OnTagsTextChanged += OnTagsFlavorTextChange;
+                _flavorText.OnLinksTextChanged += OnLinksFlavorTextChange;
+                _flavorText.OnNSFWTextChanged += OnNSFWFlavorTextChange;
             }
             else
             {
                 if (_flavorText == null)
                     return;
 
-                TabContainer.RemoveChild(_flavorText);
                 _flavorText.OnFlavorTextChanged -= OnFlavorTextChange;
-                _flavorText.OnFlavorOOCTextChanged -= OnFlavorOOCTextChange; // Corvax-Wega-OOCFlavor
+                _flavorText.OnFlavorOOCTextChanged -= OnFlavorOOCTextChange;
+                _flavorText.OnCharacterTextChanged -= OnCharacterFlavorTextChange;
+                _flavorText.OnGreenTextChanged -= OnGreenFlavorTextChange;
+                _flavorText.OnYellowTextChanged -= OnYellowFlavorTextChange;
+                _flavorText.OnRedTextChanged -= OnRedFlavorTextChange;
+                _flavorText.OnTagsTextChanged -= OnTagsFlavorTextChange;
+                _flavorText.OnLinksTextChanged -= OnLinksFlavorTextChange;
+                _flavorText.OnNSFWTextChanged -= OnNSFWFlavorTextChange;
+
+                TabContainer.RemoveChild(_flavorText);
                 _flavorText.Dispose();
-                _flavorTextEdit?.Dispose();
-                _flavorTextOOCEdit?.Dispose(); // Corvax-Wega-OOCFlavor
+
                 _flavorTextEdit = null;
-                _flavorTextOOCEdit = null; // Corvax-Wega-OOCFlavor
+                _flavorTextOOCEdit = null;
+                _characterTextEdit = null;
+                _greenTextEdit = null;
+                _yellowTextEdit = null;
+                _redTextEdit = null;
+                _tagsTextEdit = null;
+                _linksTextEdit = null;
+                _nsfwTextEdit = null;
+
                 _flavorText = null;
             }
         }
+
+        private void UpdateFlavorPreview()
+        {
+            if (_flavorText == null || Profile == null)
+                return;
+
+            _flavorText.PreviewAppearanceText.SetMessage(Profile.FlavorText);
+            _flavorText.PreviewTraitsText.SetMessage(Profile.CharacterFlavorText);
+            _flavorText.PreviewOOCText.SetMessage(Profile.OOCFlavorText);
+            _flavorText.PreviewTagsText.Text = Profile.TagsFlavorText;
+
+            ProcessLinks(Profile.LinksFlavorText);
+
+            _flavorText.PreviewGYRContainer.RemoveAllChildren();
+            CreateGYRBigTextLabel(Loc.GetString($"humanoid-profile-editor-gyr-green"), Color.Green);
+            CreateGYRTextLabel(Profile.GreenFlavorText);
+            CreateGYRBigTextLabel(Loc.GetString($"humanoid-profile-editor-gyr-yellow"), Color.Yellow);
+            CreateGYRTextLabel(Profile.YellowFlavorText);
+            CreateGYRBigTextLabel(Loc.GetString($"humanoid-profile-editor-gyr-red"), Color.Red);
+            CreateGYRTextLabel(Profile.RedFlavorText);
+
+            _flavorText.PreviewNSFWText.SetMessage(Profile.NSFWFlavorText);
+
+            var species = Loc.GetString($"species-name-{Profile.Species.ToString().ToLower()}");
+            var sex = Loc.GetString($"humanoid-profile-editor-sex-{Profile.Sex.ToString().ToLower()}-text");
+            var gender = Loc.GetString($"humanoid-profile-editor-pronouns-{Profile.Gender.ToString().ToLower()}-text");
+
+            _flavorText.PreviewNameText.Text = Profile.Name;
+            _flavorText.PreviewGenderText.Text = $"{species}|{sex}|{gender}";
+            _flavorText.PreviewERPStatusText.Text = GetStatusText(Profile.Status);
+            _flavorText.PreviewERPStatusText.FontColorOverride = GetStatusColor(Profile.Status);
+        }
+
+        private void CreateGYRBigTextLabel(string text, Color color)
+        {
+            var label = new Label
+            {
+                Text = text,
+                VerticalExpand = true,
+                StyleClasses = { StyleNano.StyleClassLabelBig },
+                FontColorOverride = color
+            };
+
+            _flavorText?.PreviewGYRContainer.AddChild(label);
+        }
+
+        private void CreateGYRTextLabel(string text)
+        {
+            var label = new RichTextLabel
+            {
+                Text = text + "\n",
+                VerticalExpand = true
+            };
+
+            _flavorText?.PreviewGYRContainer.AddChild(label);
+        }
+
+        private void ProcessLinks(string linksText)
+        {
+            if (_flavorText?.PreviewLinksContainer == null)
+                return;
+
+            _flavorText.PreviewLinksContainer.RemoveAllChildren();
+            if (string.IsNullOrEmpty(linksText))
+                return;
+
+            var links = linksText.Split(new[] { ',', ' ', '\n', '\r', '\t' }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (var link in links)
+            {
+                if (IsValidUrl(link))
+                {
+                    CreateLinkButton(link);
+                }
+                else
+                {
+                    CreateLinkTextLabel(link);
+                }
+            }
+        }
+
+        private bool IsValidUrl(string url)
+        {
+            return url.StartsWith("http://", StringComparison.OrdinalIgnoreCase) ||
+                url.StartsWith("https://", StringComparison.OrdinalIgnoreCase) ||
+                url.StartsWith("www.", StringComparison.OrdinalIgnoreCase);
+        }
+
+        private void CreateLinkButton(string url)
+        {
+            var button = new Button
+            {
+                Text = GetLinkDisplayText(url),
+                ToolTip = Loc.GetString("humanoid-profile-editor-link-tooltip", ("url", url)),
+                HorizontalExpand = true,
+                HorizontalAlignment = HAlignment.Center,
+                StyleClasses = { StyleNano.ButtonOpenBoth }
+            };
+
+            button.OnPressed += _ => OpenLink(url);
+
+            _flavorText?.PreviewLinksContainer.AddChild(button);
+        }
+
+        private void CreateLinkTextLabel(string text)
+        {
+            var label = new Label
+            {
+                Text = text,
+                HorizontalExpand = true,
+                HorizontalAlignment = HAlignment.Center,
+                FontColorOverride = Color.Gray
+            };
+
+            _flavorText?.PreviewLinksContainer.AddChild(label);
+        }
+
+        private string GetLinkDisplayText(string url)
+        {
+            if (url.Length > 40)
+            {
+                return url[..37] + "...";
+            }
+            return url;
+        }
+
+        private void OpenLink(string url)
+        {
+            if (url.StartsWith("www.", StringComparison.OrdinalIgnoreCase))
+                url = "https://" + url;
+
+            var uriOpener = IoCManager.Resolve<IUriOpener>();
+            uriOpener.OpenUri(url);
+        }
+
+        private string GetStatusText(Status status)
+        {
+            return status switch
+            {
+                Status.No => Loc.GetString("humanoid-profile-editor-status-no-text"),
+                Status.Semi => Loc.GetString("humanoid-profile-editor-status-semi-text"),
+                Status.Full => Loc.GetString("humanoid-profile-editor-status-full-text"),
+                Status.Absolute => Loc.GetString("humanoid-profile-editor-status-absolute-text"),
+                _ => string.Empty
+            };
+        }
+
+        private Color GetStatusColor(Status status)
+        {
+            return status switch
+            {
+                Status.No => Color.Red,
+                Status.Semi => Color.Orange,
+                Status.Full => Color.Blue,
+                Status.Absolute => Color.Purple,
+                _ => Color.Gray
+            };
+        }
+        // Corvax-Wega-Graphomancy-Extended-Edit-end
+
+        // Corvax-TTS-Start
+        #region Voice
+
+        private void RefreshVoiceTab()
+        {
+            if (!_cfgManager.GetCVar(CCCVars.TTSEnabled))
+                return;
+
+            _ttsTab = new TTSTab();
+            var children = new List<Control>();
+            foreach (var child in TabContainer.Children)
+                children.Add(child);
+
+            TabContainer.RemoveAllChildren();
+
+            for (int i = 0; i < children.Count; i++)
+            {
+                if (i == 1) // Set the tab to the 2nd place.
+                {
+                    TabContainer.AddChild(_ttsTab);
+                }
+                TabContainer.AddChild(children[i]);
+            }
+
+            TabContainer.SetTabTitle(1, Loc.GetString("humanoid-profile-editor-voice-tab"));
+
+            _ttsTab.OnVoiceSelected += voiceId =>
+            {
+                SetVoice(voiceId);
+                _ttsTab.SetSelectedVoice(voiceId);
+            };
+
+            _ttsTab.OnPreviewRequested += voiceId =>
+            {
+                _entManager.System<TTSSystem>().RequestPreviewTTS(voiceId);
+            };
+        }
+
+        private void UpdateTTSVoicesControls()
+        {
+            if (Profile is null || _ttsTab is null)
+                return;
+
+            _ttsTab.UpdateControls(Profile, Profile.Sex);
+            _ttsTab.SetSelectedVoice(Profile.Voice);
+        }
+
+        #endregion
+        // Corvax-TTS-End
 
         /// <summary>
         /// Refreshes traits selector
         /// </summary>
         public void RefreshTraits()
         {
-            TraitsList.DisposeAllChildren();
+            TraitsList.RemoveAllChildren();
 
             var traits = _prototypeManager.EnumeratePrototypes<TraitPrototype>().OrderBy(t => Loc.GetString(t.Name)).ToList();
-            TabContainer.SetTabTitle(3, Loc.GetString("humanoid-profile-editor-traits-tab"));
+            // TabContainer.SetTabTitle(3, Loc.GetString("humanoid-profile-editor-traits-tab")); // Corvax-TTS-Edit
 
             if (traits.Count < 1)
             {
@@ -587,7 +834,7 @@ namespace Content.Client.Lobby.UI
                     {
                         Text = Loc.GetString(category.Name),
                         Margin = new Thickness(0, 10, 0, 0),
-                        StyleClasses = { StyleBase.StyleClassLabelHeading },
+                        StyleClasses = { StyleClass.LabelHeading },
                     });
                 }
 
@@ -625,7 +872,7 @@ namespace Content.Client.Lobby.UI
                 {
                     TraitsList.AddChild(new Label
                     {
-                        Text = Loc.GetString("humanoid-profile-editor-trait-count-hint", ("current", selectionCount) ,("max", category.MaxTraitPoints)),
+                        Text = Loc.GetString("humanoid-profile-editor-trait-count-hint", ("current", selectionCount), ("max", category.MaxTraitPoints)),
                         FontColorOverride = Color.Gray
                     });
                 }
@@ -655,11 +902,16 @@ namespace Content.Client.Lobby.UI
             _species.Clear();
 
             _species.AddRange(_prototypeManager.EnumeratePrototypes<SpeciesPrototype>().Where(o => o.RoundStart));
+            _species.Sort((a, b) => string.Compare(a.Name, b.Name, StringComparison.CurrentCultureIgnoreCase));
             var speciesIds = _species.Select(o => o.ID).ToList();
 
             for (var i = 0; i < _species.Count; i++)
             {
                 var name = Loc.GetString(_species[i].Name);
+
+                if (_species[i].SponsorOnly) // Corvax-Sponsors
+                    name += GetSponsorOnlySuffix();
+
                 SpeciesButton.AddItem(name, i);
 
                 if (Profile?.Species.Equals(_species[i].ID) == true)
@@ -680,7 +932,7 @@ namespace Content.Client.Lobby.UI
 
         public void RefreshAntags()
         {
-            AntagList.DisposeAllChildren();
+            AntagList.RemoveAllChildren();
             var items = new[]
             {
                 ("humanoid-profile-editor-antag-preference-yes-button", 0),
@@ -708,8 +960,10 @@ namespace Content.Client.Lobby.UI
                 selector.Setup(items, title, 250, description, guides: antag.Guides);
                 selector.Select(Profile?.AntagPreferences.Contains(antag.ID) == true ? 0 : 1);
 
-                var requirements = _entManager.System<SharedRoleSystem>().GetAntagRequirement(antag);
-                if (!_requirements.CheckRoleRequirements(requirements, (HumanoidCharacterProfile?)_preferencesManager.Preferences?.SelectedCharacter, out var reason))
+                if (!_requirements.IsAllowed(
+                        antag,
+                        (HumanoidCharacterProfile?)_preferencesManager.Preferences?.SelectedCharacter,
+                        out var reason))
                 {
                     selector.LockRequirements(reason);
                     Profile = Profile?.WithAntagPreference(antag.ID, false);
@@ -779,6 +1033,13 @@ namespace Content.Client.Lobby.UI
             SpriteView.SetEntity(PreviewDummy);
             _entManager.System<MetaDataSystem>().SetEntityName(PreviewDummy, Profile.Name);
 
+            // Corvax-Wega-Graphomancy-Extended-start
+            if (_flavorText != null)
+            {
+                _flavorText.TargetPreview.SetEntity(PreviewDummy);
+            }
+            // Corvax-Wega-Graphomancy-Extended-end
+
             // Check and set the dirty flag to enable the save/reset buttons as appropriate.
             SetDirty();
         }
@@ -805,6 +1066,7 @@ namespace Content.Client.Lobby.UI
 
             UpdateNameEdit();
             UpdateFlavorTextEdit();
+            UpdateFlavorPreview(); // Corvax-Wega-Graphomancy-Extended
             UpdateSexControls();
             UpdateGenderControls();
             UpdateSkinColor();
@@ -859,9 +1121,9 @@ namespace Content.Client.Lobby.UI
             var species = Profile?.Species ?? SharedHumanoidAppearanceSystem.DefaultSpecies;
             var page = DefaultSpeciesGuidebook;
             if (_prototypeManager.HasIndex<GuideEntryPrototype>(species))
-                page = species;
+                page = new ProtoId<GuideEntryPrototype>(species.Id); // Gross. See above todo comment.
 
-            if (_prototypeManager.TryIndex<GuideEntryPrototype>(DefaultSpeciesGuidebook, out var guideRoot))
+            if (_prototypeManager.Resolve(DefaultSpeciesGuidebook, out var guideRoot))
             {
                 var dict = new Dictionary<ProtoId<GuideEntryPrototype>, GuideEntry>();
                 dict.Add(DefaultSpeciesGuidebook, guideRoot);
@@ -875,9 +1137,10 @@ namespace Content.Client.Lobby.UI
         /// </summary>
         public void RefreshJobs()
         {
-            JobList.DisposeAllChildren();
+            JobList.RemoveAllChildren();
             _jobCategories.Clear();
             _jobPriorities.Clear();
+            _subRoleContainers.Clear(); // Corvax-Wega-SubRoles
             var firstCategory = true;
 
             // Get all displayed departments
@@ -894,10 +1157,10 @@ namespace Content.Client.Lobby.UI
 
             var items = new[]
             {
-                ("humanoid-profile-editor-job-priority-never-button", (int) JobPriority.Never),
-                ("humanoid-profile-editor-job-priority-low-button", (int) JobPriority.Low),
-                ("humanoid-profile-editor-job-priority-medium-button", (int) JobPriority.Medium),
-                ("humanoid-profile-editor-job-priority-high-button", (int) JobPriority.High),
+                ("humanoid-profile-editor-job-priority-never-button", (int)JobPriority.Never),
+                ("humanoid-profile-editor-job-priority-low-button", (int)JobPriority.Low),
+                ("humanoid-profile-editor-job-priority-medium-button", (int)JobPriority.Medium),
+                ("humanoid-profile-editor-job-priority-high-button", (int)JobPriority.High),
             };
 
             foreach (var department in departments)
@@ -928,7 +1191,7 @@ namespace Content.Client.Lobby.UI
 
                     category.AddChild(new PanelContainer
                     {
-                        PanelOverride = new StyleBoxFlat {BackgroundColor = Color.FromHex("#464966")},
+                        PanelOverride = new StyleBoxFlat { BackgroundColor = Color.FromHex("#464966") },
                         Children =
                         {
                             new Label
@@ -944,18 +1207,29 @@ namespace Content.Client.Lobby.UI
                     JobList.AddChild(category);
                 }
 
-                var jobs = department.Roles.Select(jobId => _prototypeManager.Index(jobId))
-                    .Where(job => job.SetPreference)
+                // Corvax-Wega-SubRoles-Edit-start
+                var jobs = department.Roles
+                    .Select(jobId => _prototypeManager.Index(jobId))
+                    .Where(job => job.SetPreference && !job.IsSubRole)
                     .ToArray();
+                // Corvax-Wega-SubRoles-Edit-end
 
                 Array.Sort(jobs, JobUIComparer.Instance);
 
                 foreach (var job in jobs)
                 {
-                    var jobContainer = new BoxContainer()
+                    // Corvax-Wega-SubRoles-Edit-start
+                    var jobContainer = new BoxContainer
                     {
-                        Orientation = LayoutOrientation.Horizontal,
+                        Orientation = LayoutOrientation.Vertical,
+                        Margin = new Thickness(0, 0, 0, 5)
                     };
+
+                    var mainRow = new BoxContainer
+                    {
+                        Orientation = LayoutOrientation.Horizontal
+                    };
+                    // Corvax-Wega-SubRoles-Edit-end
 
                     var selector = new RequirementsSelector()
                     {
@@ -983,29 +1257,25 @@ namespace Content.Client.Lobby.UI
 
                     selector.OnSelected += selectedPrio =>
                     {
-                        var selectedJobPrio = (JobPriority) selectedPrio;
+                        var selectedJobPrio = (JobPriority)selectedPrio;
                         Profile = Profile?.WithJobPriority(job.ID, selectedJobPrio);
 
                         foreach (var (jobId, other) in _jobPriorities)
                         {
-                            // Sync other selectors with the same job in case of multiple department jobs
                             if (jobId == job.ID)
                             {
                                 other.Select(selectedPrio);
                                 continue;
                             }
 
-                            if (selectedJobPrio != JobPriority.High || (JobPriority) other.Selected != JobPriority.High)
+                            if (selectedJobPrio != JobPriority.High || (JobPriority)other.Selected != JobPriority.High)
                                 continue;
 
-                            // Lower any other high priorities to medium.
                             other.Select((int)JobPriority.Medium);
                             Profile = Profile?.WithJobPriority(jobId, JobPriority.Medium);
                         }
 
-                        // TODO: Only reload on high change (either to or from).
                         ReloadPreview();
-
                         UpdateJobPriorities();
                         SetDirty();
                     };
@@ -1021,19 +1291,15 @@ namespace Content.Client.Lobby.UI
                     var collection = IoCManager.Instance!;
                     var protoManager = collection.Resolve<IPrototypeManager>();
 
-                    // If no loadout found then disabled button
                     if (!protoManager.TryIndex<RoleLoadoutPrototype>(LoadoutSystem.GetJobPrototype(job.ID), out var roleLoadoutProto))
                     {
                         loadoutWindowBtn.Disabled = true;
                     }
-                    // else
                     else
                     {
                         loadoutWindowBtn.OnPressed += args =>
                         {
                             RoleLoadout? loadout = null;
-
-                            // Clone so we don't modify the underlying loadout.
                             Profile?.Loadouts.TryGetValue(LoadoutSystem.GetJobPrototype(job.ID), out loadout);
                             loadout = loadout?.Clone();
 
@@ -1048,9 +1314,125 @@ namespace Content.Client.Lobby.UI
                     }
 
                     _jobPriorities.Add((job.ID, selector));
-                    jobContainer.AddChild(selector);
-                    jobContainer.AddChild(loadoutWindowBtn);
+
+                    // Corvax-Wega-SubRoles-start
+                    mainRow.AddChild(selector);
+                    mainRow.AddChild(loadoutWindowBtn);
+
+                    // Add toggle button for subroles if they exist
+                    if (job.SubRoles.Count > 0)
+                    {
+                        var toggleButton = new Button
+                        {
+                            Text = "▼",
+                            MinWidth = 30,
+                            HorizontalAlignment = HAlignment.Right,
+                            ToolTip = Loc.GetString("humanoid-profile-editor-toggle-subroles")
+                        };
+
+                        var subRolesContainer = new BoxContainer
+                        {
+                            Orientation = LayoutOrientation.Vertical,
+                            Visible = false,
+                            Margin = new Thickness(20, 5, 0, 0)
+                        };
+
+                        toggleButton.OnPressed += _ =>
+                        {
+                            subRolesContainer.Visible = !subRolesContainer.Visible;
+                            toggleButton.Text = subRolesContainer.Visible ? "▲" : "▼";
+                        };
+
+                        mainRow.AddChild(toggleButton);
+                        jobContainer.AddChild(mainRow);
+                        jobContainer.AddChild(subRolesContainer);
+
+                        // Add subroles
+                        foreach (var subRoleId in job.SubRoles)
+                        {
+                            if (!_prototypeManager.TryIndex(subRoleId, out JobPrototype? subRole))
+                                continue;
+
+                            var subRow = new BoxContainer
+                            {
+                                Orientation = LayoutOrientation.Horizontal,
+                                Margin = new Thickness(0, 0, 0, 5)
+                            };
+
+                            var subSelector = new RequirementsSelector()
+                            {
+                                Margin = new Thickness(3f, 3f, 3f, 0f),
+                            };
+                            subSelector.OnOpenGuidebook += OnOpenGuidebook;
+
+                            var subIcon = new TextureRect
+                            {
+                                TextureScale = new Vector2(2, 2),
+                                VerticalAlignment = VAlignment.Center
+                            };
+                            var subJobIcon = _prototypeManager.Index(subRole.Icon);
+                            subIcon.Texture = _sprite.Frame0(subJobIcon.Icon);
+                            subSelector.Setup(items, subRole.LocalizedName, 180, subRole.LocalizedDescription, subIcon, subRole.Guides);
+
+                            if (!_requirements.IsAllowed(subRole, (HumanoidCharacterProfile?)_preferencesManager.Preferences?.SelectedCharacter, out var subReason))
+                            {
+                                subSelector.LockRequirements(subReason);
+                            }
+                            else
+                            {
+                                subSelector.UnlockRequirements();
+                            }
+
+                            subSelector.OnSelected += selectedPrio =>
+                            {
+                                Profile = Profile?.WithJobPriority(subRole.ID, (JobPriority)selectedPrio);
+                                UpdateJobPriorities();
+                                SetDirty();
+                            };
+
+                            var subLoadoutBtn = new Button()
+                            {
+                                Text = Loc.GetString("loadout-window"),
+                                HorizontalAlignment = HAlignment.Right,
+                                VerticalAlignment = VAlignment.Center,
+                                Margin = new Thickness(3f, 3f, 0f, 0f),
+                            };
+
+                            if (!protoManager.TryIndex<RoleLoadoutPrototype>(LoadoutSystem.GetJobPrototype(subRole.ID), out var subRoleLoadoutProto))
+                            {
+                                subLoadoutBtn.Disabled = true;
+                            }
+                            else
+                            {
+                                subLoadoutBtn.OnPressed += args =>
+                                {
+                                    RoleLoadout? subLoadout = null;
+                                    Profile?.Loadouts.TryGetValue(LoadoutSystem.GetJobPrototype(subRole.ID), out subLoadout);
+                                    subLoadout = subLoadout?.Clone();
+
+                                    if (subLoadout == null)
+                                    {
+                                        subLoadout = new RoleLoadout(subRoleLoadoutProto.ID);
+                                        subLoadout.SetDefault(Profile, _playerManager.LocalSession, _prototypeManager);
+                                    }
+
+                                    OpenLoadout(subRole, subLoadout, subRoleLoadoutProto);
+                                };
+                            }
+
+                            subRow.AddChild(subSelector);
+                            subRow.AddChild(subLoadoutBtn);
+                            subRolesContainer.AddChild(subRow);
+                            _jobPriorities.Add((subRole.ID, subSelector));
+                        }
+                    }
+                    else
+                    {
+                        jobContainer.AddChild(mainRow);
+                    }
+
                     category.AddChild(jobContainer);
+                    // Corvax-Wega-SubRoles-end
                 }
             }
 
@@ -1071,7 +1453,7 @@ namespace Content.Client.Lobby.UI
 
             _loadoutWindow = new LoadoutWindow(Profile, roleLoadout, roleLoadoutProto, _playerManager.LocalSession, collection)
             {
-                Title = jobProto?.ID + "-loadout",
+                Title = Loc.GetString("loadout-window-title-loadout", ("job", $"{jobProto?.LocalizedName}")),
             };
 
             // Refresh the buttons etc.
@@ -1123,9 +1505,11 @@ namespace Content.Client.Lobby.UI
 
             Profile = Profile.WithFlavorText(content);
             SetDirty();
+
+            UpdateFlavorPreview(); // Corvax-Wega-Graphomancy-Extended
         }
 
-        // Corvax-Wega-OOCFlavor-start
+        // Corvax-Wega-Graphomancy-Extended-Edit-start
         private void OnFlavorOOCTextChange(string content)
         {
             if (Profile is null)
@@ -1133,8 +1517,87 @@ namespace Content.Client.Lobby.UI
 
             Profile = Profile.WithOOCFlavorText(content);
             SetDirty();
+
+            UpdateFlavorPreview();
         }
-        // Corvax-Wega-OOCFlavor-end
+
+        private void OnCharacterFlavorTextChange(string content)
+        {
+            if (Profile is null)
+                return;
+
+            Profile = Profile.WithCharacterText(content);
+            SetDirty();
+
+            UpdateFlavorPreview();
+        }
+
+        private void OnGreenFlavorTextChange(string content)
+        {
+            if (Profile is null)
+                return;
+
+            Profile = Profile.WithGreenPreferencesText(content);
+            SetDirty();
+
+            UpdateFlavorPreview();
+        }
+
+        private void OnYellowFlavorTextChange(string content)
+        {
+            if (Profile is null)
+                return;
+
+            Profile = Profile.WithYellowPreferencesText(content);
+            SetDirty();
+
+            UpdateFlavorPreview();
+        }
+
+        private void OnRedFlavorTextChange(string content)
+        {
+            if (Profile is null)
+                return;
+
+            Profile = Profile.WithRedPreferencesText(content);
+            SetDirty();
+
+            UpdateFlavorPreview();
+        }
+
+        private void OnTagsFlavorTextChange(string content)
+        {
+            if (Profile is null)
+                return;
+
+            Profile = Profile.WithTagsText(content);
+            SetDirty();
+
+            UpdateFlavorPreview();
+        }
+
+        private void OnLinksFlavorTextChange(string content)
+        {
+            if (Profile is null)
+                return;
+
+            Profile = Profile.WithLinksText(content);
+            SetDirty();
+
+            UpdateFlavorPreview();
+        }
+
+        private void OnNSFWFlavorTextChange(string content)
+        {
+            if (Profile is null)
+                return;
+
+            Profile = Profile.WithNSFWPreferencesText(content);
+            SetDirty();
+
+            UpdateFlavorPreview();
+        }
+        // Corvax-Wega-Graphomancy-Extended-Edit-end
 
         private void OnMarkingChange(MarkingSet markings)
         {
@@ -1150,10 +1613,11 @@ namespace Content.Client.Lobby.UI
             if (Profile is null) return;
 
             var skin = _prototypeManager.Index<SpeciesPrototype>(Profile.Species).SkinColoration;
+            var strategy = _prototypeManager.Index(skin).Strategy;
 
-            switch (skin)
+            switch (strategy.InputType)
             {
-                case HumanoidSkinColor.HumanToned:
+                case SkinColorationStrategyInput.Unary:
                 {
                     if (!Skin.Visible)
                     {
@@ -1161,39 +1625,14 @@ namespace Content.Client.Lobby.UI
                         RgbSkinColorContainer.Visible = false;
                     }
 
-                    var color = SkinColor.HumanSkinTone((int) Skin.Value);
-
-                    Markings.CurrentSkinColor = color;
-                    Profile = Profile.WithCharacterAppearance(Profile.Appearance.WithSkinColor(color));//
-                    break;
-                }
-                case HumanoidSkinColor.Hues:
-                {
-                    if (!RgbSkinColorContainer.Visible)
-                    {
-                        Skin.Visible = false;
-                        RgbSkinColorContainer.Visible = true;
-                    }
-
-                    Markings.CurrentSkinColor = _rgbSkinColorSelector.Color;
-                    Profile = Profile.WithCharacterAppearance(Profile.Appearance.WithSkinColor(_rgbSkinColorSelector.Color));
-                    break;
-                }
-                case HumanoidSkinColor.TintedHues:
-                {
-                    if (!RgbSkinColorContainer.Visible)
-                    {
-                        Skin.Visible = false;
-                        RgbSkinColorContainer.Visible = true;
-                    }
-
-                    var color = SkinColor.TintedHues(_rgbSkinColorSelector.Color);
+                    var color = strategy.FromUnary(Skin.Value);
 
                     Markings.CurrentSkinColor = color;
                     Profile = Profile.WithCharacterAppearance(Profile.Appearance.WithSkinColor(color));
+
                     break;
                 }
-                case HumanoidSkinColor.VoxFeathers:
+                case SkinColorationStrategyInput.Color:
                 {
                     if (!RgbSkinColorContainer.Visible)
                     {
@@ -1201,10 +1640,11 @@ namespace Content.Client.Lobby.UI
                         RgbSkinColorContainer.Visible = true;
                     }
 
-                    var color = SkinColor.ClosestVoxColor(_rgbSkinColorSelector.Color);
+                    var color = strategy.ClosestSkinColor(_rgbSkinColorSelector.Color);
 
                     Markings.CurrentSkinColor = color;
                     Profile = Profile.WithCharacterAppearance(Profile.Appearance.WithSkinColor(color));
+
                     break;
                 }
             }
@@ -1353,6 +1793,7 @@ namespace Content.Client.Lobby.UI
             NameEdit.Text = Profile?.Name ?? "";
         }
 
+        // Corvax-Wega-Graphomancy-Extended-Edit-start
         private void UpdateFlavorTextEdit()
         {
             if (_flavorTextEdit != null)
@@ -1360,13 +1801,47 @@ namespace Content.Client.Lobby.UI
                 _flavorTextEdit.TextRope = new Rope.Leaf(Profile?.FlavorText ?? "");
             }
 
-            // Corvax-Wega-OOCFlavor-start
             if (_flavorTextOOCEdit != null)
             {
                 _flavorTextOOCEdit.TextRope = new Rope.Leaf(Profile?.OOCFlavorText ?? "");
             }
-            // Corvax-Wega-OOCFlavor-end
+
+            if (_characterTextEdit != null)
+            {
+                _characterTextEdit.TextRope = new Rope.Leaf(Profile?.CharacterFlavorText ?? "");
+            }
+
+            if (_greenTextEdit != null)
+            {
+                _greenTextEdit.TextRope = new Rope.Leaf(Profile?.GreenFlavorText ?? "");
+            }
+
+            if (_yellowTextEdit != null)
+            {
+                _yellowTextEdit.TextRope = new Rope.Leaf(Profile?.YellowFlavorText ?? "");
+            }
+
+            if (_redTextEdit != null)
+            {
+                _redTextEdit.TextRope = new Rope.Leaf(Profile?.RedFlavorText ?? "");
+            }
+
+            if (_tagsTextEdit != null)
+            {
+                _tagsTextEdit.TextRope = new Rope.Leaf(Profile?.TagsFlavorText ?? "");
+            }
+
+            if (_linksTextEdit != null)
+            {
+                _linksTextEdit.TextRope = new Rope.Leaf(Profile?.LinksFlavorText ?? "");
+            }
+
+            if (_nsfwTextEdit != null)
+            {
+                _nsfwTextEdit.TextRope = new Rope.Leaf(Profile?.NSFWFlavorText ?? "");
+            }
         }
+        // Corvax-Wega-Graphomancy-Extended-Edit-end
 
         private void UpdateAgeEdit()
         {
@@ -1395,7 +1870,7 @@ namespace Content.Client.Lobby.UI
             var sexes = new List<Sex>();
 
             // add species sex options, default to just none if we are in bizzaro world and have no species
-            if (_prototypeManager.TryIndex<SpeciesPrototype>(Profile.Species, out var speciesProto))
+            if (_prototypeManager.Resolve<SpeciesPrototype>(Profile.Species, out var speciesProto))
             {
                 foreach (var sex in speciesProto.Sexes)
                 {
@@ -1425,10 +1900,11 @@ namespace Content.Client.Lobby.UI
                 return;
 
             var skin = _prototypeManager.Index<SpeciesPrototype>(Profile.Species).SkinColoration;
+            var strategy = _prototypeManager.Index(skin).Strategy;
 
-            switch (skin)
+            switch (strategy.InputType)
             {
-                case HumanoidSkinColor.HumanToned:
+                case SkinColorationStrategyInput.Unary:
                 {
                     if (!Skin.Visible)
                     {
@@ -1436,11 +1912,11 @@ namespace Content.Client.Lobby.UI
                         RgbSkinColorContainer.Visible = false;
                     }
 
-                    Skin.Value = SkinColor.HumanSkinToneFromColor(Profile.Appearance.SkinColor);
+                    Skin.Value = strategy.ToUnary(Profile.Appearance.SkinColor);
 
                     break;
                 }
-                case HumanoidSkinColor.Hues:
+                case SkinColorationStrategyInput.Color:
                 {
                     if (!RgbSkinColorContainer.Visible)
                     {
@@ -1448,36 +1924,11 @@ namespace Content.Client.Lobby.UI
                         RgbSkinColorContainer.Visible = true;
                     }
 
-                    // set the RGB values to the direct values otherwise
-                    _rgbSkinColorSelector.Color = Profile.Appearance.SkinColor;
-                    break;
-                }
-                case HumanoidSkinColor.TintedHues:
-                {
-                    if (!RgbSkinColorContainer.Visible)
-                    {
-                        Skin.Visible = false;
-                        RgbSkinColorContainer.Visible = true;
-                    }
-
-                    // set the RGB values to the direct values otherwise
-                    _rgbSkinColorSelector.Color = Profile.Appearance.SkinColor;
-                    break;
-                }
-                case HumanoidSkinColor.VoxFeathers:
-                {
-                    if (!RgbSkinColorContainer.Visible)
-                    {
-                        Skin.Visible = false;
-                        RgbSkinColorContainer.Visible = true;
-                    }
-
-                    _rgbSkinColorSelector.Color = SkinColor.ClosestVoxColor(Profile.Appearance.SkinColor);
+                    _rgbSkinColorSelector.Color = strategy.ClosestSkinColor(Profile.Appearance.SkinColor);
 
                     break;
                 }
             }
-
         }
 
         public void UpdateSpeciesGuidebookIcon()
@@ -1488,7 +1939,7 @@ namespace Content.Client.Lobby.UI
             if (species is null)
                 return;
 
-            if (!_prototypeManager.TryIndex<SpeciesPrototype>(species, out var speciesProto))
+            if (!_prototypeManager.Resolve<SpeciesPrototype>(species, out var speciesProto))
                 return;
 
             // Don't display the info button if no guide entry is found
@@ -1496,7 +1947,7 @@ namespace Content.Client.Lobby.UI
                 return;
 
             const string style = "SpeciesInfoDefault";
-            SpeciesInfoButton.StyleClasses.Add(style);
+            SpeciesInfoButton.StyleIdentifier = style;
         }
 
         private void UpdateMarkings()
@@ -1549,17 +2000,14 @@ namespace Content.Client.Lobby.UI
             {
                 return;
             }
-            var hairMarking = Profile.Appearance.HairStyleId switch
-            {
-                HairStyles.DefaultHairStyle => new List<Marking>(),
-                _ => new List<Marking> { new Marking(Profile.Appearance.HairStyleId, Profile.Appearance.HairColor) }, // Corvax-Wega-Hair-Extended
-            };
 
-            var facialHairMarking = Profile.Appearance.FacialHairStyleId switch
-            {
-                HairStyles.DefaultFacialHairStyle => new List<Marking>(),
-                _ => new() { new(Profile.Appearance.FacialHairStyleId, new List<Color>() { Profile.Appearance.FacialHairColor }) },
-            };
+            var hairMarking = Profile.Appearance.HairStyleId == HairStyles.DefaultHairStyle.Id
+                ? new List<Marking>()
+                : new List<Marking> { new Marking(Profile.Appearance.HairStyleId, Profile.Appearance.HairColor) }; // Corvax-Wega-Hair-Extended
+
+            var facialHairMarking = Profile.Appearance.FacialHairStyleId == HairStyles.DefaultFacialHairStyle
+                ? new List<Marking>()
+                : new() { new(Profile.Appearance.FacialHairStyleId, new List<Color>() { Profile.Appearance.FacialHairColor }) };
 
             HairStylePicker.UpdateData(
                 hairMarking,
@@ -1694,7 +2142,7 @@ namespace Content.Client.Lobby.UI
                 return;
 
             StartExport();
-            await using var file = await _dialogManager.OpenFile(new FileDialogFilters(new FileDialogFilters.Group("yml")));
+            await using var file = await _dialogManager.OpenFile(new FileDialogFilters(new FileDialogFilters.Group("yml")), FileAccess.Read);
 
             if (file == null)
             {

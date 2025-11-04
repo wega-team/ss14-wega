@@ -25,10 +25,11 @@
       - !type:Polymorph
         prototype: PolymorphDiona
         conditions:
-        - !type:OrganType
-          type: Animal
-          shouldHave: false
-        - !type:ReagentThreshold
+        - !type:MetabolizerTypeCondition
+          type: [ Animal ]
+          inverted: true
+        - !type:ReagentCondition
+          reagent: RelaxingTea
           min: 50
     Drink:
       effects:
@@ -41,7 +42,6 @@
         component: SeeingRainbows
         type: Add
         time: 2
-        refresh: false
 
 - type: reagent
   id: GrapeJuiceInvisible
@@ -58,14 +58,9 @@
         key: Stealth
         component: Stealth
         type: Add
-        time: 10
+        time: 15
       - !type:GenericStatusEffect
         key: StealthOnMove
         component: StealthOnMove
         type: Add
-        time: 10
-      - !type:GenericStatusEffect
-        key: Muted
-        component: Muted
-        type: Add
-        time: 10
+        time: 15

@@ -6,7 +6,7 @@
   requirements:
     - !type:DepartmentTimeRequirement
       department: Medical
-      time: 7200 #2 hrs # Corvax-RoleTime
+      time: 2h # Corvax-RoleTime
   startingGear: DoctorGear
   icon: "JobIconMedicalDoctor"
   supervisors: job-supervisors-cmo
@@ -15,6 +15,12 @@
   - Maintenance
   extendedAccess:
   - Chemistry
+  # Corvax-Wega-SubRoles-start
+  subRoles:
+  - Surgeon
+  - Geneticist
+  - Coroner
+  # Corvax-Wega-SubRoles-end
   special:
   - !type:GiveItemOnHolidaySpecial
     holiday: DoctorDay

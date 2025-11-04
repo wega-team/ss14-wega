@@ -18,6 +18,11 @@
   id: ClothingMaskPullableBase
   components:
   - type: Mask
+  # Corvax-Wega-Dirtable-start
+  - type: Dirtable
+    dirtState: mask
+    equippedDirtState: equipped-mask
+  # Corvax-Wega-Dirtable-end
 
 - type: entity
   parent: BaseAction
@@ -44,7 +49,7 @@
   - type: PhysicalComposition # 50% of the amount of cloth you'd obtain upon butchering
     materialComposition:
       Cloth: 50
-  - type: Food
+  - type: Edible
     requiresSpecialDigestion: true
   - type: SolutionContainerManager
     solutions:

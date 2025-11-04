@@ -1,0 +1,34 @@
+- type: entity
+  parent: BoxCardboard
+  id: FoodBoxShrimp
+  description: A box of extremely delicious shrimp!
+  name: shrimp box
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Consumable/Food/Baked/shrimpbox.rsi
+    drawdepth: SmallObjects
+    layers:
+    - state: box
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: box-open-full
+      map: ["enum.StorageVisualLayers.Door"]
+  - type: Storage
+    grid:
+    - 0,0,3,1
+    maxItemSize: Normal
+    whitelist:
+      tags:
+      - Shrimp
+  - type: Item
+    shape:
+    - 0,0,1,1
+  - type: Appearance
+  - type: EntityStorageVisuals
+    stateDoorOpen: box-open-full
+    stateDoorClosed: box
+  - type: StaticPrice
+    price: 0
+  - type: StorageFill
+    contents:
+    - id: Shrimp
+      amount: 8

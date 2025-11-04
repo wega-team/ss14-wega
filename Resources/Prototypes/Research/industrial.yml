@@ -14,6 +14,7 @@
   - MineralScannerEmpty
   - OreProcessorIndustrialMachineCircuitboard
   - ClothingMaskWeldingGas
+  - ClothingShoesBootsJump
 
 - type: technology
   id: SpaceScanning
@@ -68,6 +69,7 @@
   - ProtolatheHyperConvectionMachineCircuitboard
   - CircuitImprinterHyperConvectionMachineCircuitboard
   - SheetifierMachineCircuitboard
+  - GoldprinterMachineCircuitboard # Corvax-Wega-Add
 
 - type: technology
   id: PowerGeneration
@@ -167,6 +169,7 @@
     - BorgModuleAdvancedTool
     - Fulton
     - FultonBeacon
+    - ArmSyntheticPry # Corvax-Wega-Androids
 
 - type: technology
   id: MassExcavation

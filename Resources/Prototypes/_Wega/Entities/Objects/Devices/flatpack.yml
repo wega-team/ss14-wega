@@ -12,6 +12,32 @@
     - state: icon-default
 
 - type: entity
+  parent: BaseFlatpack
+  id: BaseScietingFlatpack
+  abstract: true
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+    - state: overlay
+      color: "#D381C9"
+      map: ["enum.FlatpackVisualLayers.Overlay"]
+    - state: icon-default
+    
+- type: entity
+  parent: BaseFlatpack
+  id: BaseMedicalFlatpack
+  abstract: true
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+    - state: overlay
+      color: "#52B4E9"
+      map: ["enum.FlatpackVisualLayers.Overlay"]
+    - state: icon-default
+
+- type: entity
   parent: BaseEngineeringFlatpack
   id: PortableGeneratorSuperPacmanFlatpack
   name: generator S.U.P.E.R.P.A.C.M.A.N flatpack
@@ -92,3 +118,57 @@
   components:
   - type: Flatpack
     entity: SubstationBasicEmpty
+    
+- type: entity
+  parent: BaseScietingFlatpack
+  id: RNDServerFlatpack
+  name: RND server flatpack
+  description: A flatpack used for new server RND.
+  components:
+  - type: Flatpack
+    entity: ResearchAndDevelopmentServer
+    
+- type: entity
+  parent: BaseScietingFlatpack
+  id: MiningMonitoringConsoleFlatpack
+  name: mining monitoring console flatpack
+  description: A flatpack used for mining monitoring console.
+  components:
+  - type: Flatpack
+    entity: MiningMonitoringConsole
+    
+- type: entity
+  parent: BaseScietingFlatpack
+  id: MiningServerFlatpack
+  name: mining server flatpack
+  description: A flatpack used mining server.
+  components:
+  - type: Flatpack
+    entity: MiningServer
+
+- type: entity
+  parent: BaseMedicalFlatpack
+  id: MedicalScannerFlatpack
+  name: medical scanner flatpack
+  description: A flatpack used for constructing a medical scanner.
+  components:
+  - type: Flatpack
+    entity: MedicalScanner
+    
+- type: entity
+  parent: BaseMedicalFlatpack
+  id: CloningConsoleFlatpack
+  name: сomputer сloning сonsole flatpack
+  description: A flatpack used for constructing a сomputer сloning сonsole.
+  components:
+  - type: Flatpack
+    entity: ComputerCloningConsole
+    
+- type: entity
+  parent: BaseMedicalFlatpack
+  id: CloningPodFlatpack
+  name: сloning pod flatpack
+  description: A flatpack used for constructing a cloning pod.
+  components:
+  - type: Flatpack
+    entity: CloningPod

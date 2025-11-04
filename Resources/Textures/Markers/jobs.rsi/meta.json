@@ -29,6 +29,9 @@
       "name": "brigmedic"
     },
     {
+      "name": "blueshield"
+    },
+    {
       "name": "captain"
     },
     {
@@ -135,6 +138,9 @@
     },
     {
       "name": "musician"
+    },
+    {
+      "name": "postman"
     },
     {
       "name": "reporter"

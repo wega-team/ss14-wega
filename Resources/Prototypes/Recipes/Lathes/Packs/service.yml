@@ -25,6 +25,7 @@
   - MopItem
   - Holoprojector
   - WetFloorSign
+  - WireBrush
   - CassetteTape # Corvax-Wega-Recorder
   - TapeRecorder # Corvax-Wega-Recorder
 
@@ -38,7 +39,9 @@
   - ElectricGrillMachineCircuitboard
   - BoozeDispenserMachineCircuitboard
   - SodaDispenserMachineCircuitboard
+  - SmartFridgeCircuitboard
   - PrinterDocMachineCircuitboard # Corvax-Printer
+  - WashingMachineCircuitboard # Corvax-Wega-Dirtable
 
 ## Dynamic
 

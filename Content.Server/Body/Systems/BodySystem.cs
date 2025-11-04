@@ -135,7 +135,7 @@ public sealed class BodySystem : SharedBodySystem
     {
         if (args.Efficiency < 0.5f)
         {
-            var ev = new ApplyMetabolicMultiplierEvent(ent, 1.2f, true);
+            var ev = new ApplyMetabolicMultiplierEvent(1.2f);
             RaiseLocalEvent(ent, ref ev);
         }
     }

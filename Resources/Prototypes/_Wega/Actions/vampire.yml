@@ -254,7 +254,6 @@
     itemIconStyle: BigAction
     useDelay: 30
   - type: TargetAction
-    canTargetSelf: false
     range: 5
   - type: EntityTargetAction
     event: !type:VampireShadowBoxingActionEvent

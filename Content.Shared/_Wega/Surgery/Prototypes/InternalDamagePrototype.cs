@@ -5,7 +5,6 @@ using Robust.Shared.Serialization;
 namespace Content.Shared.Surgery;
 
 [Prototype("internalDamage")]
-[Serializable, NetSerializable]
 public sealed partial class InternalDamagePrototype : IPrototype, ISerializationHooks
 {
     [IdDataField]
@@ -28,6 +27,9 @@ public sealed partial class InternalDamagePrototype : IPrototype, ISerialization
 
     [DataField("bodyVisuals")]
     public string? BodyVisuals { get; private set; }
+
+    [DataField]
+    public float MinDamage = 5f;
 
     [DataField]
     public float Severity = 1f;

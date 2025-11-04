@@ -1,0 +1,251 @@
+﻿- type: decal
+  id: HalfTileDarkLineE
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Wega/Decals/minitile.rsi
+    state: dark_line_e
+
+- type: decal
+  id: HalfTileDarkLineW
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Wega/Decals/minitile.rsi
+    state: dark_line_w
+
+- type: decal
+  id: HalfTileDarkLineN
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Wega/Decals/minitile.rsi
+    state: dark_line_n
+
+- type: decal
+  id: HalfTileDarkLineS
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Wega/Decals/minitile.rsi
+    state: dark_line_s
+
+- type: decal
+  id: HalfTileGreyLineE
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Wega/Decals/minitile.rsi
+    state: grey_line_e
+
+- type: decal
+  id: HalfTileGreyLineW
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Wega/Decals/minitile.rsi
+    state: grey_line_w
+
+- type: decal
+  id: HalfTileGreyLineN
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Wega/Decals/minitile.rsi
+    state: grey_line_n
+
+- type: decal
+  id: HalfTileGreyLineS
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Wega/Decals/minitile.rsi
+    state: grey_line_s
+
+- type: decal
+  id: HalfTileWhiteLineE
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Wega/Decals/minitile.rsi
+    state: white_line_e
+
+- type: decal
+  id: HalfTileWhiteLineW
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Wega/Decals/minitile.rsi
+    state: white_line_w
+
+- type: decal
+  id: HalfTileWhiteLineN
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Wega/Decals/minitile.rsi
+    state: white_line_n
+
+- type: decal
+  id: HalfTileWhiteLineS
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Wega/Decals/minitile.rsi
+    state: white_line_s
+
+- type: decal
+  id: HalfTileDarkQuartertile
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Wega/Decals/minitile.rsi
+    state: quartertile_dark
+
+- type: decal
+  id: HalfTileDarkQuartertile90
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Wega/Decals/minitile.rsi
+    state: quartertile_dark_90
+
+- type: decal
+  id: HalfTileDarkQuartertile180
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Wega/Decals/minitile.rsi
+    state: quartertile_dark_180
+
+- type: decal
+  id: HalfTileDarkQuartertile270
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Wega/Decals/minitile.rsi
+    state: quartertile_dark_270
+
+- type: decal
+  id: HalfTileWhiteQuartertile
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Wega/Decals/minitile.rsi
+    state: quartertile_white
+
+- type: decal
+  id: HalfTileWhiteQuartertile90
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Wega/Decals/minitile.rsi
+    state: quartertile_white_90
+
+- type: decal
+  id: HalfTileWhiteQuartertile180
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Wega/Decals/minitile.rsi
+    state: quartertile_white_180
+
+- type: decal
+  id: HalfTileWhiteQuartertile270
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Wega/Decals/minitile.rsi
+    state: quartertile_white_270
+
+- type: decal
+  id: HalfTileGreyQuartertile
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Wega/Decals/minitile.rsi
+    state: quartertile_grey
+
+- type: decal
+  id: HalfTileGreyQuartertile90
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Wega/Decals/minitile.rsi
+    state: quartertile_grey_90
+
+- type: decal
+  id: HalfTileGreyQuartertile180
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Wega/Decals/minitile.rsi
+    state: quartertile_grey_180
+
+- type: decal
+  id: HalfTileGreyQuartertile270
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Wega/Decals/minitile.rsi
+    state: quartertile_grey_270
+
+- type: decal
+  id: HalfTileDarkCornerNE
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Wega/Decals/minitile.rsi
+    state: dark_corner-ne
+
+- type: decal
+  id: HalfTileDarkCornerNW
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Wega/Decals/minitile.rsi
+    state: dark_corner-nw
+
+- type: decal
+  id: HalfTileDarkCornerSE
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Wega/Decals/minitile.rsi
+    state: dark_corner-se
+
+- type: decal
+  id: HalfTileDarkCornerSW
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Wega/Decals/minitile.rsi
+    state: dark_corner-sw
+
+- type: decal
+  id: HalfTileGreyCornerNE
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Wega/Decals/minitile.rsi
+    state: grey_corner-ne
+
+- type: decal
+  id: HalfTileGreyCornerNW
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Wega/Decals/minitile.rsi
+    state: grey_corner-nw
+
+- type: decal
+  id: HalfTileGreyCornerSE
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Wega/Decals/minitile.rsi
+    state: grey_corner-se
+
+- type: decal
+  id: HalfTileGreyCornerSW
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Wega/Decals/minitile.rsi
+    state: grey_corner-sw
+
+- type: decal
+  id: HalfTileWhiteCornerNE
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Wega/Decals/minitile.rsi
+    state: white_corner-ne
+
+- type: decal
+  id: HalfTileWhiteCornerNW
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Wega/Decals/minitile.rsi
+    state: white_corner-nw
+
+- type: decal
+  id: HalfTileWhiteCornerSE
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Wega/Decals/minitile.rsi
+    state: white_corner-se
+
+- type: decal
+  id: HalfTileWhiteCornerSW
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Wega/Decals/minitile.rsi
+    state: white_corner-sw

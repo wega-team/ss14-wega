@@ -53,7 +53,7 @@
 - type: entity
   id: FireAxeFlaming
   name: fire axe
-  parent: [ BaseSyndicateContraband, FireAxe ]
+  parent: [BaseSyndicateContraband, FireAxe]
   description: Why fight fire with an axe when you can fight with fire and axe? Now featuring rugged rubberized handle!
   components:
   - type: MeleeWeapon
@@ -68,18 +68,3 @@
     quickEquip: false
     slots:
     - back
-# Corvax-HiddenDesc-Start
-  - type: HiddenDescription
-    entries:
-    - label: corvax-hidden-desc-FireAxeFlaming-syndicate
-      whitelistMind:
-        mindRoles:
-        - TraitorRole
-        - NukeopsRole
-    - label: corvax-hidden-desc-FireAxeFlaming-research
-      jobRequired:
-        - ResearchAssistant
-        - ResearchDirector
-        - Scientist
-        - Borg
-# Corvax-HiddenDesc-End

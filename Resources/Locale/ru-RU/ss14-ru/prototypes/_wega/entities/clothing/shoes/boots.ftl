@@ -1,2 +1,4 @@
+ent-ClothingShoesBootsJackBlue = { ent-ClothingShoesBootsJack }
+    .desc = { ent-ClothingShoesBootsJack.desc }
 ent-ClothingShoesClockworkTreads = тяжёлые ботинки технокульта
   .desc = Выполнены из предположительно кожи, покрытой латунью, дабы придать соответствующий стиль. Вам невероятно трудно их снять.

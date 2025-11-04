@@ -1,7 +1,6 @@
 using System.Linq;
 using Content.Server.Administration;
 using Content.Server.Administration.Logs;
-using Content.Server.Body.Components;
 using Content.Server.Body.Systems;
 using Content.Server.Chat.Systems;
 using Content.Server.Emp;
@@ -44,6 +43,8 @@ using Robust.Shared.Player;
 using Robust.Shared.Timing;
 using Content.Shared.Flash.Components;
 using Content.Shared.Body.Components;
+using Content.Shared.NullRod.Components;
+using Content.Shared.Chat;
 
 namespace Content.Server.Blood.Cult;
 
@@ -182,26 +183,20 @@ public sealed partial class BloodCultSystem
                 var senderName = Name(uid) ?? "Unknown";
                 var popupMessage = Loc.GetString("cult-commune-massage", ("name", senderName), ("massage", finalMessage));
 
-                var cultistQuery = EntityQuery<ActorComponent, BloodCultistComponent>(true);
-                foreach (var (actorComp, cultistComp) in cultistQuery)
+                var cultistQuery = EntityQueryEnumerator<ActorComponent, BloodCultistComponent>();
+                while (cultistQuery.MoveNext(out var cultistUid, out var actorComp, out var cultistComp))
                 {
                     if (actorComp == playerActor) continue;
 
-                    if (!TryComp<ActorComponent>(actorComp.Owner, out var cultistActor))
-                        continue;
-
-                    _prayerSystem.SendSubtleMessage(cultistActor.PlayerSession, cultistActor.PlayerSession, string.Empty, popupMessage);
+                    _prayerSystem.SendSubtleMessage(actorComp.PlayerSession, actorComp.PlayerSession, string.Empty, popupMessage);
                 }
 
-                var constructQuery = EntityQuery<ActorComponent, BloodCultConstructComponent>(true);
-                foreach (var (actorComp, constructComp) in constructQuery)
+                var constructQuery = EntityQueryEnumerator<ActorComponent, BloodCultConstructComponent>();
+                while (constructQuery.MoveNext(out var constructUid, out var actorComp, out var constructComp))
                 {
                     if (actorComp == playerActor) continue;
 
-                    if (!TryComp<ActorComponent>(actorComp.Owner, out var constructActor))
-                        continue;
-
-                    _prayerSystem.SendSubtleMessage(constructActor.PlayerSession, constructActor.PlayerSession, string.Empty, popupMessage);
+                    _prayerSystem.SendSubtleMessage(actorComp.PlayerSession, actorComp.PlayerSession, string.Empty, popupMessage);
                 }
 
                 _admin.Add(LogType.Chat, LogImpact.Low, $"{ToPrettyString(uid):user} saying the: {finalMessage} in cult commune");
@@ -603,7 +598,7 @@ public sealed partial class BloodCultSystem
         switch (spellComp.Prototype.FirstOrDefault())
         {
             case "stun":
-                if (!HasComp<BloodCultistComponent>(target))
+                if (!HasComp<BloodCultistComponent>(target) && !HasComp<NullRodOwnerComponent>(target))
                 {
                     ExtractBlood(user, -10, 6);
                     if (!HasComp<MutedComponent>(target))
@@ -612,7 +607,7 @@ public sealed partial class BloodCultSystem
                         Timer.Spawn(10000, () => { RemComp<MutedComponent>(target); });
                     }
 
-                    _stun.TryParalyze(target, TimeSpan.FromSeconds(4f), true);
+                    _stun.TryUpdateParalyzeDuration(target, TimeSpan.FromSeconds(4f));
                     if (!TryComp<FlashImmunityComponent>(target, out var flash))
                         _flash.Flash(target, user, entity, TimeSpan.FromSeconds(2f), 1f);
                     _entityManager.DeleteEntity(entity);
@@ -620,6 +615,9 @@ public sealed partial class BloodCultSystem
                 break;
             case "teleport":
                 ExtractBlood(user, -7, 5);
+                if (HasComp<NullRodOwnerComponent>(target))
+                    break;
+
                 _doAfterSystem.TryStartDoAfter(new DoAfterArgs(EntityManager, user, TimeSpan.FromSeconds(3f), new TeleportSpellDoAfterEvent(), user, target, entity)
                 {
                     BreakOnMove = true,
@@ -629,7 +627,7 @@ public sealed partial class BloodCultSystem
                 });
                 break;
             case "shadowshackles":
-                if (!HasComp<BloodCultistComponent>(target))
+                if (!HasComp<BloodCultistComponent>(target) && !HasComp<NullRodOwnerComponent>(target))
                 {
                     if (TryComp<MobStateComponent>(target, out var mobstate) && mobstate.CurrentState != MobState.Alive && mobstate.CurrentState != MobState.Invalid
                         || HasComp<SleepingComponent>(target) || TryComp<StaminaComponent>(target, out var stamina) && stamina.StaminaDamage >= stamina.CritThreshold * 0.9f)
@@ -680,7 +678,7 @@ public sealed partial class BloodCultSystem
                             var coords = Transform(target).Coordinates;
                             if (stackPrototype.ID is "Steel" && stack.Count >= 30)
                             {
-                                _stack.SetCount(target, stack.Count - 30);
+                                _stack.ReduceCount(target, 30);
                                 if (stack.Count > 0)
                                 {
                                     _entityManager.SpawnEntity("BloodCultConstruct", coords);
@@ -698,7 +696,7 @@ public sealed partial class BloodCultSystem
                                 _entityManager.DeleteEntity(target);
                                 if (TryComp<StackComponent>(runeSteel, out var newStack))
                                 {
-                                    _stack.SetCount(runeSteel, count);
+                                    _stack.SetCount((runeSteel, newStack), count);
                                 }
                             }
 
@@ -796,7 +794,7 @@ public sealed partial class BloodCultSystem
                     cultist.BloodCount = totalBlood;
                     args.Handled = true;
                 }
-                else if (HasComp<HumanoidAppearanceComponent>(target))
+                else if (HasComp<HumanoidAppearanceComponent>(target) && !HasComp<NullRodOwnerComponent>(target))
                 {
                     if (!TryComp<BloodstreamComponent>(target, out var blood) || HasComp<BloodCultistComponent>(target))
                         return;
@@ -883,20 +881,25 @@ public sealed partial class BloodCultSystem
             return;
 
         _entityManager.DeleteEntity(args.Used);
-        var runes = EntityQuery<BloodRuneComponent>(true)
-            .Where(runeEntity =>
-                TryComp<BloodRuneComponent>(runeEntity.Owner, out var runeComp) && runeComp.Prototype == "teleport")
-            .ToList();
+
+        var runes = new List<EntityUid>();
+        var runeQuery = EntityQueryEnumerator<BloodRuneComponent>();
+
+        while (runeQuery.MoveNext(out var runeUid, out var runeComp))
+        {
+            if (runeComp.Prototype == "teleport")
+                runes.Add(runeUid);
+        }
 
         if (runes.Count > 0)
         {
-            var randomRune = runes[new Random().Next(runes.Count)];
-            var runeTransform = _entityManager.GetComponent<TransformComponent>(randomRune.Owner);
+            var randomRune = runes[_random.Next(runes.Count)];
+            var runeTransform = _entityManager.GetComponent<TransformComponent>(randomRune);
             var targetCoords = Transform(args.Target.Value).Coordinates;
             _entityManager.SpawnEntity("BloodCultOutEffect", targetCoords);
             _transform.SetCoordinates(args.Target.Value, runeTransform.Coordinates);
             _entityManager.SpawnEntity("BloodCultInEffect", runeTransform.Coordinates);
-            _entityManager.DeleteEntity(randomRune.Owner);
+            _entityManager.DeleteEntity(randomRune);
         }
     }
 

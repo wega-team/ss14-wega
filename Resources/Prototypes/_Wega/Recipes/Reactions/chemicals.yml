@@ -1,0 +1,17 @@
+- type: reaction
+  id: SodiumExplosion
+  impact: Medium
+  priority: 20
+  conserveEnergy: false
+  reactants:
+    Water:
+      amount: 1
+    Sodium:
+      amount: 1
+  effects:
+    - !type:Explosion
+      explosionType: Default
+      intensityPerUnit: 0.15
+      maxTotalIntensity: 60
+      intensitySlope: 3
+      maxIntensity: 5

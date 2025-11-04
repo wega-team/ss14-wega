@@ -2,7 +2,7 @@
   id: Ipc
   name: species-name-Ipc
   roundStart: false # Corvax-Wega-Edit
-  sponsorOnly: true # Corvax-Sponsors
+  sponsorOnly: false # Corvax-Sponsors
   prototype: MobIpc
   sprites: MobIpcSprites
   defaultSkinTone: "#eb943d"
@@ -13,6 +13,7 @@
   femaleFirstNames: NamesIpcFirstFemale
   maleLastNames: NamesIpcLast # Corvax-LastnameGender
   femaleLastNames: NamesIpcLast # Corvax-LastnameGender
+  minAge: 0
 
 - type: speciesBaseSprites
   id: MobIpcSprites
@@ -50,7 +51,7 @@
     Snout:
       points: 1
       required: false
-      defaultMarkings: [ OrangeS ]
+      defaultMarkings: [ IpcOrangeS ]
     HeadTop:
       points: 2
       required: true

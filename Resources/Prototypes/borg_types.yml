@@ -14,6 +14,7 @@
 
   defaultModules:
   - BorgModuleTool
+  - BorgModuleInflatable
   - BorgModuleArtifact
   - BorgModuleAnomaly
   radioChannels:
@@ -206,11 +207,15 @@
 
   defaultModules:
   - BorgModuleTool
-  - BorgModuleMusique
+# Corvax-Wega-Start
+  # - BorgModuleMusique
+  - BorgModuleCook
   - BorgModuleService
-  - BorgModuleClowning
-  - BorgModuleGardening
-  - BorgModuleHarvesting
+  - BorgModuleBar
+  # - BorgModuleClowning
+  # - BorgModuleGardening
+  # - BorgModuleHarvesting
+# Corvax-Wega-End
   radioChannels:
   - Science
   - Service
@@ -225,3 +230,6 @@
   # Pet
   petSuccessString: petting-success-service-cyborg
   petFailureString: petting-failure-service-cyborg
+
+  # tts
+  voicePrototypeId: Glados # Corvax-Wega-service-borg

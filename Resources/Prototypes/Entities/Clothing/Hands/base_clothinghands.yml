@@ -9,7 +9,7 @@
     slots: [gloves]
   - type: DiseaseProtection # Corvax-Wega-Disease
     protection: 0.05 # Corvax-Wega-Disease
-  - type: Food
+  - type: Edible
     requiresSpecialDigestion: true
   - type: Item
     size: Small
@@ -29,6 +29,11 @@
     damageProtection:
       flatReductions:
         Heat: 5 # the average lightbulb only does around four damage!
+  # Corvax-Wega-Dirtable-start
+  - type: Dirtable
+    dirtState: gloves
+    equippedDirtState: equipped-gloves
+  # Corvax-Wega-Dirtable-end
 
 - type: entity
   abstract: true

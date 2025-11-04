@@ -1,0 +1,15 @@
+<DefaultWindow xmlns="https://spacestation14.io"
+               xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+               Title="{Loc 'nano-chat-ui-emoji-title'}"
+               MinWidth="300"
+               MinHeight="500">
+    
+    <BoxContainer Orientation="Vertical" Margin="4" HorizontalExpand="True">
+        <Label Text="{Loc 'nano-chat-ui-emoji-select'}" StyleClasses="LabelHeading" Margin="0 0 0 4"/>
+        
+        <ScrollContainer VerticalExpand="True" HorizontalExpand="True">
+            <GridContainer Name="EmojiContainer" Columns="4" HorizontalExpand="True"/>
+        </ScrollContainer>
+    </BoxContainer>
+    
+</DefaultWindow>

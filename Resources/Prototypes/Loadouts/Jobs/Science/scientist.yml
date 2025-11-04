@@ -6,7 +6,7 @@
     requirement:
       !type:DepartmentTimeRequirement
       department: Science
-      time: 216000 #60 hrs
+      time: 60h
 
 # Head
 - type: startingGear
@@ -17,9 +17,9 @@
 - type: loadout
   id: ScientificBeret
   startingGear: ScientificBeret
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: SeniorResearcher
+  # effects: Corvax-MentorRoles
+  # - !type:GroupLoadoutEffect
+  #   proto: SeniorResearcher
 
 - type: loadout
   id: RoboticistCap
@@ -43,37 +43,43 @@
   id: ScientistJumpsuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitScientist
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: ScientistJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtScientist
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: RoboticistJumpsuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitRoboticist
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: RoboticistJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtRoboticist
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: SeniorResearcherJumpsuit
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: SeniorResearcher
+  # effects: Corvax-MentorRoles
+  # - !type:GroupLoadoutEffect
+  #   proto: SeniorResearcher
   equipment:
     jumpsuit: ClothingUniformJumpsuitSeniorResearcher
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: SeniorResearcherJumpskirt
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: SeniorResearcher
+  # effects: Corvax-MentorRoles
+  # - !type:GroupLoadoutEffect
+  #   proto: SeniorResearcher
   equipment:
     jumpsuit: ClothingUniformJumpskirtSeniorResearcher
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 # Back
 - type: loadout
@@ -119,9 +125,9 @@
 
 - type: loadout
   id: SeniorResearcherLabCoat
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: SeniorResearcher
+  # effects: Corvax-MentorRoles
+  # - !type:GroupLoadoutEffect
+  #   proto: SeniorResearcher
   equipment:
     outerClothing: ClothingOuterCoatLabSeniorResearcher
 
@@ -150,8 +156,8 @@
 
 - type: loadout
   id: SeniorResearcherPDA
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: SeniorResearcher
+  # effects: Corvax-MentorRoles
+  # - !type:GroupLoadoutEffect
+  #   proto: SeniorResearcher
   equipment:
     id: SeniorResearcherPDA

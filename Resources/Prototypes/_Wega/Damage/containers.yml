@@ -2,3 +2,10 @@
   id: Clothing
   supportedTypes:
     - Slash # Only sharp objects
+
+- type: damageContainer
+  id: Android 
+  supportedGroups:
+    - Brute
+    - Burn
+    - Airloss

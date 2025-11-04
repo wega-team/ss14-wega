@@ -12,7 +12,6 @@ namespace Content.Client.UserInterface.Systems.Select.Class
         [Dependency] private readonly IEntityManager _entityManager = default!;
 
         private SelectClassMenu? _menu;
-        private bool _menuDisposed = false;
 
         public override void Initialize()
         {
@@ -26,7 +25,7 @@ namespace Content.Client.UserInterface.Systems.Select.Class
             var userEntity = _entityManager.GetEntity(args.Uid);
             if (session?.AttachedEntity.HasValue == true && session.AttachedEntity.Value == userEntity)
             {
-                if (_menu is null || _menu.IsDisposed)
+                if (_menu is null)
                 {
                     _menu = _uiManager.CreateWindow<SelectClassMenu>();
                     _menu.OnClose += OnMenuClosed;
@@ -41,7 +40,6 @@ namespace Content.Client.UserInterface.Systems.Select.Class
 
         private void OnMenuClosed()
         {
-            _menuDisposed = true;
             _menu = null;
         }
     }

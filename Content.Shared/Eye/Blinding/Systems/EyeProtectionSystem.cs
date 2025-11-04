@@ -3,6 +3,7 @@ using Content.Shared.Inventory;
 using Content.Shared.Eye.Blinding.Components;
 using Content.Shared.Tools.Components;
 using Content.Shared.Item.ItemToggle.Components;
+using Content.Shared.Clothing.Components;
 using Content.Shared.Clothing; // Corvax-Wega-Wielder
 
 namespace Content.Shared.Eye.Blinding.Systems
@@ -33,6 +34,9 @@ namespace Content.Shared.Eye.Blinding.Systems
         {
             if (!component.Enabled) // Corvax-Wega-Wielder
                 return; // Corvax-Wega-Wielder
+
+            if (TryComp<MaskComponent>(uid, out var mask) && mask.IsToggled)
+                return;
 
             args.Protection += component.ProtectionTime;
         }

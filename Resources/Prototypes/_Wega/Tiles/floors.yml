@@ -2,7 +2,6 @@
   id: FloorSepia
   name: tiles-sepia-floor
   sprite: /Textures/_Wega/Tiles/sepia.png
-  color: "#FFFFFF"
   variants: 4
   placementVariants:
   - 1.0

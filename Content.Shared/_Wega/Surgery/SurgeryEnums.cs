@@ -15,7 +15,18 @@ public enum SurgeryActionType : byte
     Implanting,
     RemoveImplant,
     StoreItem,
-    RetrieveItems
+    RetrieveItems,
+    // Synthetic
+    Unscrew,
+    Screw,
+    Pulse,
+    Weld,
+    CutWire,
+    StripWire,
+    MendWire,
+    Pry,
+    Anchor,
+    Unanchor,
 }
 
 public enum SurgeryFailedType : byte

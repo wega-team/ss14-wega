@@ -4,6 +4,16 @@
     sprite: Objects/Materials/Sheets/other.rsi
     state: uranium_3
   product: CrateMaterialUranium
-  cost: 12500
+  cost: 5000
+  category: cargoproduct-category-name-materials
+  group: market
+  
+- type: cargoProduct
+  id: CrateMaterialWood
+  icon:
+    sprite: Objects/Materials/materials.rsi
+    state: wood_3
+  product: CrateMaterialWood
+  cost: 400
   category: cargoproduct-category-name-materials
   group: market

@@ -1,24 +1,25 @@
 using System.Linq;
 using System.Text;
-using Content.Server.Body.Components;
 using Content.Server.Pain;
 using Content.Shared.Armor;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Part;
 using Content.Shared.Body.Systems;
-using Content.Shared.Chat.Prototypes;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
 using Content.Shared.Database;
 using Content.Shared.Examine;
 using Content.Shared.FixedPoint;
 using Content.Shared.Humanoid;
+using Content.Shared.Implants.Components;
+using Content.Shared.Movement.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Standing;
 using Content.Shared.Stunnable;
 using Content.Shared.Surgery;
 using Content.Shared.Surgery.Components;
 using Content.Shared.Traits.Assorted;
+using Content.Shared.Zombies;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
@@ -31,6 +32,7 @@ public sealed partial class SurgerySystem
     [Dependency] private readonly PainSystem _pain = default!;
     [Dependency] private readonly SharedStunSystem _stun = default!;
     [Dependency] private readonly PhysicsSystem _physics = default!;
+    [Dependency] private readonly MovementModStatusSystem _movementMod = default!;
 
     private static readonly SoundSpecifier GibSound = new SoundPathSpecifier("/Audio/Effects/gib3.ogg");
 
@@ -42,9 +44,20 @@ public sealed partial class SurgerySystem
 
     #region Process damage
 
+    private void OnBodyPartRemoved(Entity<OperatedComponent> ent, BodyPartType type)
+    {
+        if (type == BodyPartType.Leg)
+        {
+            if (!HasComp<BodyComponent>(ent))
+                return;
+
+            _stun.TryKnockdown(ent.Owner, TimeSpan.FromSeconds(2f), true, false);
+        }
+    }
+
     private void OnDamage(Entity<OperatedComponent> ent, ref DamageChangedEvent args)
     {
-        if (HasComp<GodmodeComponent>(ent))
+        if (HasComp<GodmodeComponent>(ent) || HasComp<ZombieComponent>(ent))
             return;
 
         if (args.DamageDelta == null || args.DamageDelta.Empty || !args.DamageIncreased
@@ -67,7 +80,11 @@ public sealed partial class SurgerySystem
             if (possibleDamages.Count == 0)
                 continue;
 
-            TryAddInternalDamages(ent, _random.Pick(possibleDamages));
+            var type = _random.Pick(possibleDamages);
+            if (damage < type.MinDamage)
+                continue;
+
+            TryAddInternalDamages(ent, type);
         }
     }
 
@@ -123,8 +140,8 @@ public sealed partial class SurgerySystem
             _popup.PopupEntity(Loc.GetString("surgery-limb-torn-off", ("limb", Name(limbId))), patient, PopupType.SmallCaution);
 
             _audio.PlayPvs(GibSound, patient);
-            if (!_mobState.IsDead(patient) && !HasComp<PainNumbnessComponent>(patient))
-                _chat.TryEmoteWithoutChat(patient, _proto.Index<EmotePrototype>("Scream"), true);
+            if (!_mobState.IsDead(patient) && !HasComp<PainNumbnessComponent>(patient) && !HasComp<SyntheticOperatedComponent>(patient))
+                _chat.TryEmoteWithoutChat(patient, _proto.Index(Scream), true);
 
             _pain.AdjustPain(patient, "Physical", 250f);
             if (HasComp<BloodstreamComponent>(patient))
@@ -157,8 +174,12 @@ public sealed partial class SurgerySystem
 
             _audio.PlayPvs(GibSound, patient);
 
-            var damage = new DamageSpecifier { DamageDict = { { SlashDamage, 200 } } };
-            _damage.TryChangeDamage(patient, damage, true);
+            // Synthetics ignore head loss.
+            if (!HasComp<SyntheticOperatedComponent>(patient))
+            {
+                var damage = new DamageSpecifier { DamageDict = { { SlashDamage, 200 } } };
+                _damage.TryChangeDamage(patient, damage, true);
+            }
 
             if (HasComp<BloodstreamComponent>(patient))
                 _bloodstream.TryModifyBleedAmount(patient, 10f);
@@ -210,8 +231,8 @@ public sealed partial class SurgerySystem
                     _bloodstream.TryModifyBleedAmount(entity.Owner, 5f);
 
                 _audio.PlayPvs(GibSound, entity);
-                if (!_mobState.IsDead(entity) && !HasComp<PainNumbnessComponent>(entity))
-                    _chat.TryEmoteWithoutChat(entity, _proto.Index<EmotePrototype>("Scream"), true);
+                if (!_mobState.IsDead(entity) && !HasComp<PainNumbnessComponent>(entity) && !HasComp<SyntheticOperatedComponent>(entity))
+                    _chat.TryEmoteWithoutChat(entity, _proto.Index(Scream), true);
 
                 _transform.SetCoordinates(limbId, Transform(entity).Coordinates);
                 _physics.ApplyLinearImpulse(limbId, _random.NextVector2() * (50f + (float)damage));
@@ -230,8 +251,8 @@ public sealed partial class SurgerySystem
 
     private void TryAddInternalDamages(Entity<OperatedComponent> ent, InternalDamagePrototype possibleDamage)
     {
-        if (TryComp<HumanoidAppearanceComponent>(ent, out var humanoidAppearance) && possibleDamage.BlacklistSpecies != null
-            && possibleDamage.BlacklistSpecies.Contains(humanoidAppearance.Species))
+        if (!TryComp<HumanoidAppearanceComponent>(ent, out var humanoidAppearance)
+            || possibleDamage.BlacklistSpecies != null && possibleDamage.BlacklistSpecies.Contains(humanoidAppearance.Species))
             return;
 
         float armorModifier = 1f;
@@ -251,7 +272,8 @@ public sealed partial class SurgerySystem
 
     private string? SelectBodyPart(EntityUid patient, InternalDamagePrototype damageProto)
     {
-        var bodyParts = _body.GetBodyChildren(patient).ToList();
+        var bodyParts = _body.GetBodyChildren(patient)
+            .Where(b => !HasComp<SubdermalImplantComponent>(b.Id)).ToList();
 
         if (bodyParts.Count == 0)
             return null;
@@ -266,8 +288,11 @@ public sealed partial class SurgerySystem
     private List<string> FilterByBlacklist(List<(EntityUid Id, BodyPartComponent Component)> bodyParts, List<string> blacklist)
     {
         var result = new List<string>();
-        foreach (var (_, component) in bodyParts)
+        foreach (var (uid, component) in bodyParts)
         {
+            if (HasComp<SubdermalImplantComponent>(uid))
+                continue;
+
             var partName = GetBodyPartName(component);
             if (!blacklist.Contains(partName))
             {
@@ -301,7 +326,7 @@ public sealed partial class SurgerySystem
         if (!_proto.TryIndex<InternalDamagePrototype>(damageId, out var damageProto))
             return false;
 
-        if (TryComp<HumanoidAppearanceComponent>(target, out var humanoidAppearance) && damageProto.BlacklistSpecies != null
+        if (!TryComp<HumanoidAppearanceComponent>(target, out var humanoidAppearance) || damageProto.BlacklistSpecies != null
             && damageProto.BlacklistSpecies.Contains(humanoidAppearance.Species))
             return false;
 
@@ -477,8 +502,8 @@ public sealed partial class SurgerySystem
 
             if (part.Contains("leg"))
             {
-                _stun.TrySlowdown(patient, TimeSpan.FromSeconds(Math.Min(5 * severity, 10)),
-                    true, 0.5f, 0.3f);
+                _movementMod.TryUpdateMovementSpeedModDuration(patient, MovementModStatusSystem.Slowdown, TimeSpan.FromSeconds(Math.Min(5 * severity, 10)),
+                    0.5f, 0.3f);
 
                 if (bodyParts.Count(p => p.Contains("leg")) >= 2)
                 {
@@ -511,7 +536,7 @@ public sealed partial class SurgerySystem
         float stunProb = Math.Min(0.15f * severity, 1f);
         if (_random.Prob(stunProb))
         {
-            _stun.TryStun(patient, TimeSpan.FromSeconds(3 * severity), true);
+            _stun.TryUpdateStunDuration(patient, TimeSpan.FromSeconds(3 * severity));
             _jittering.DoJitter(patient, TimeSpan.FromSeconds(15), true);
         }
     }

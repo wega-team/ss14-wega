@@ -21,3 +21,7 @@
     - type: Clothing
       sprite: Corvax/Clothing/Hands/Gloves/centcom_naval.rsi
     - type: Insulated
+    # Corvax-Wega-Dirtable-start
+    - type: Dirtable
+      dirtState: capgloves
+    # Corvax-Wega-Dirtable-end

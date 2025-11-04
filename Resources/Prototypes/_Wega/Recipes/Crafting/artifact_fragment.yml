@@ -1,12 +1,7 @@
 - type: construction
-  name: artifact fragment
   id: ArtifactFragmentCraft
   graph: ArtifactFragmentCraft
   startNode: start
   targetNode: fragmentart
   category: construction-category-misc
   objectType: Item
-  description: A strange artifact fragment.
-  icon:
-    sprite: Objects/Specific/Xenoarchaeology/artifact_fragments.rsi
-    state: wizardball1

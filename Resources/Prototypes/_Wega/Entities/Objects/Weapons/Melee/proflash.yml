@@ -1,0 +1,21 @@
+- type: entity
+  parent: Flash
+  id: ExmFlash
+  name: experimental flash
+  description: Bright bulbs now have the ability to self-stop. Isn't that lovely?
+  components:
+    - type: AutoRecharge
+      rechargeDuration: 30
+    - type: Flash
+      meleeStunDuration: 4
+    - type: Item
+      sprite: _Wega/Objects/Weapons/Melee/exmflash.rsi
+    - type: Sprite
+      sprite: _Wega/Objects/Weapons/Melee/exmflash.rsi
+    - type: Appearance
+    - type: GenericVisualizer
+      visuals:
+        enum.FlashVisuals.Flashing:
+          enum.FlashVisualLayers.LightLayer:
+            True: {visible: true}
+            False: {visible: false}

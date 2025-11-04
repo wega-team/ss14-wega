@@ -1,14 +1,4 @@
 - type: entity
-<<<<<<< HEAD
-  parent: ClothingHandsBase
-  id: ClothingHandsClockworkGauntlets
-  components:
-  - type: Sprite
-    sprite: _Wega/Clothing/Hands/clockwork_gauntlets.rsi
-    state: icon
-  - type: Clothing
-    sprite: _Wega/Clothing/Hands/clockwork_gauntlets.rsi
-=======
   parent: ClothingHandsButcherable
   id: ClothingHandsGlovesLatexSurgeon
   name: latex gloves
@@ -24,4 +14,24 @@
     fiberMaterial: fibers-latex
   - type: FingerprintMask
   - type: ClothingSterility # Corvax-Wega-Surgery
->>>>>>> 9d1580278911130aab06150ac695342664fde59d
+
+- type: entity
+  parent: ClothingHandsGlovesCombat
+  id: ClothingHandsGlovesCombatBlueShield
+  name: purple combat gloves
+  description: These tactical gloves are fireproof and impact resistant. Unlike simple combat gloves, they have a purple hue.
+  components:
+    - type: Sprite
+      sprite: _Wega/Clothing/Hands/Gloves/combatblueshield.rsi
+    - type: Clothing
+      sprite: _Wega/Clothing/Hands/Gloves/combatblueshield.rsi
+
+- type: entity
+  parent: ClothingHandsBase
+  id: ClothingHandsClockworkGauntlets
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Hands/clockwork_gauntlets.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Wega/Clothing/Hands/clockwork_gauntlets.rsi

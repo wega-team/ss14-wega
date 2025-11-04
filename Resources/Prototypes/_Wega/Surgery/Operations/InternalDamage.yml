@@ -5,6 +5,9 @@
   category: PhysicalTrauma
   blacklistPart:
     - head
+  blacklistSpecies:
+    - Android
+    - Ipc
   supportedTypes:
     - Blunt
     - Slash
@@ -17,6 +20,9 @@
   category: Burns
   blacklistPart:
     - head
+  blacklistSpecies:
+    - Android
+    - Ipc
   supportedTypes:
     - Heat
     - Shock
@@ -31,8 +37,11 @@
     - head
   blacklistSpecies:
     - SlimePerson
+    - Android
+    - Ipc
   supportedTypes:
     - Blunt
+  minDamage: 10
   chance: 0.02
 
 ### Открытые переломы ###
@@ -44,9 +53,12 @@
     - head
   blacklistSpecies:
     - SlimePerson
+    - Android
+    - Ipc
   supportedTypes:
     - Blunt
   bodyVisuals: surgery-open-fracture-visuals
+  minDamage: 10
   chance: 0.01
 
 ### Внутренние кровотечения ###
@@ -58,6 +70,8 @@
     - head
   blacklistSpecies:
     - SlimePerson
+    - Android
+    - Ipc
   supportedTypes:
     - Piercing
   chance: 0.05
@@ -69,6 +83,9 @@
   category: CriticalBurns
   blacklistPart:
     - head
+  blacklistSpecies:
+    - Android
+    - Ipc
   supportedTypes:
     - Heat
     - Shock
@@ -81,6 +98,9 @@
   category: ForeignObjects
   blacklistPart:
     - head
+  blacklistSpecies:
+    - Android
+    - Ipc
   supportedTypes:
     - Piercing
   chance: 0.05

@@ -1,0 +1,30 @@
+- type: entity
+  name: bag for trogei
+  id: TrofeiBag
+  parent: BaseStorageItem
+  description: A belt pouch that can be used to store both junk and trophies from defeated enemies.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Salvage/trofei.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Wega/Objects/Specific/Salvage/trofei.rsi
+    quickEquip: false
+    slots:
+    - belt
+  - type: Item
+    sprite: _Wega/Objects/Specific/Salvage/trofei.rsi
+    size: Ginormous
+  - type: Storage
+    maxItemSize: Large
+    grid:
+    - 0,0,10,3
+    quickInsert: true
+    areaInsert: true
+    whitelist:
+      tags:
+        - SalvageScrap
+        - GoliathPlate
+        - ToothSharkminnow
+        - ToothSpaceCarp
+  - type: Dumpable

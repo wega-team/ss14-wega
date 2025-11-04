@@ -1,3 +1,4 @@
+using Content.Shared.Emp;
 using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Radio.Components;
@@ -10,9 +11,11 @@ public abstract class SharedHeadsetSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
+
         SubscribeLocalEvent<HeadsetComponent, InventoryRelayedEvent<GetDefaultRadioChannelEvent>>(OnGetDefault);
         SubscribeLocalEvent<HeadsetComponent, GotEquippedEvent>(OnGotEquipped);
         SubscribeLocalEvent<HeadsetComponent, GotUnequippedEvent>(OnGotUnequipped);
+        SubscribeLocalEvent<HeadsetComponent, EmpPulseEvent>(OnEmpPulse);
         SubscribeLocalEvent<HeadsetComponent, GetVerbsEvent<Verb>>(OnGetVerbs); // Corvax-Wega-Headset
     }
 
@@ -31,11 +34,22 @@ public abstract class SharedHeadsetSystem : EntitySystem
     protected virtual void OnGotEquipped(EntityUid uid, HeadsetComponent component, GotEquippedEvent args)
     {
         component.IsEquipped = args.SlotFlags.HasFlag(component.RequiredSlot);
+        Dirty(uid, component);
     }
 
     protected virtual void OnGotUnequipped(EntityUid uid, HeadsetComponent component, GotUnequippedEvent args)
     {
         component.IsEquipped = false;
+        Dirty(uid, component);
+    }
+
+    private void OnEmpPulse(Entity<HeadsetComponent> ent, ref EmpPulseEvent args)
+    {
+        if (ent.Comp.Enabled)
+        {
+            args.Affected = true;
+            args.Disabled = true;
+        }
     }
 
     // Corvax-Wega-Headset-start

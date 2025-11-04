@@ -171,7 +171,11 @@
   chemicals:
     Radium:
       Min: 2
-      Max: 7
+      Max: 10
+      PotencyDivisor: 10
+    Uranium:
+      Min: 2
+      Max: 10
       PotencyDivisor: 10
 
 - type: seed

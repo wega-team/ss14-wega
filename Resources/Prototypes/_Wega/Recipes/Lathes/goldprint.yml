@@ -1,0 +1,70 @@
+- type: latheRecipe
+  id: GoldRing
+  result: GoldRing
+  completetime: 60
+  materials:
+    Gold: 50
+
+- type: latheRecipe
+  id: SilverRing
+  result: SilverRing
+  completetime: 60
+  materials:
+    Silver: 50
+    
+- type: latheRecipe
+  id: GoldRingDiamond 
+  result: GoldRingDiamond
+  completetime: 60
+  materials:
+    Gold: 100
+    Diamond: 50
+
+- type: latheRecipe
+  id: SilverRingDiamond 
+  result: SilverRingDiamond
+  completetime: 60
+  materials:
+    Silver: 100
+    Diamond: 50
+
+- type: latheRecipe
+  id: GoldRingGem  
+  result: GoldRingGem 
+  completetime: 60
+  materials:
+    Gold: 200
+    Diamond: 50
+    
+- type: latheRecipe
+  id: SilverRingGem 
+  result: SilverRingGem
+  completetime: 60
+  materials:
+    Silver: 200
+    Diamond: 50
+
+- type: latheRecipe
+  id: HolyHandGrenadeMir 
+  result: HolyHandGrenadeMir
+  completetime: 6.4
+  materials:
+    Silver: 1000
+    Gold: 500
+    Diamond: 100
+
+- type: latheRecipe
+  id: ClothingHandsGoldBrasetGem 
+  result: ClothingHandsGoldBrasetGem
+  completetime: 6.4
+  materials:
+    Gold: 400
+    Diamond: 100
+    
+- type: latheRecipe
+  id: ClothingHandsGoldBraset
+  result: ClothingHandsGoldBraset
+  completetime: 6.4
+  materials:
+    Gold: 400
+    

@@ -1,33 +1,26 @@
-using Content.Shared.EntityEffects;
-using Robust.Shared.Prototypes;
-using JetBrains.Annotations;
 using Content.Shared.Blood.Cult;
 using Content.Shared.Blood.Cult.Components;
+using Robust.Shared.Prototypes;
 
-namespace Content.Shared.EntityEffects.Effects
+namespace Content.Shared.EntityEffects.Effects;
+
+/// <summary>
+/// Deconverts forcibly recruited cultists.
+/// </summary>
+/// <inheritdoc cref="EntityEffectSystem{T,TEffect}"/>
+public sealed partial class HolyPurificationEntityEffectSystem : EntityEffectSystem<BloodCultistComponent, HolyPurification>
 {
-    [UsedImplicitly]
-    public sealed partial class HolyPurification : EntityEffect
+    [Dependency] private readonly SharedBloodCultSystem _bloodCult = default!;
+
+    protected override void Effect(Entity<BloodCultistComponent> entity, ref EntityEffectEvent<HolyPurification> args)
     {
-        protected override string? ReagentEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
-        {
-            return Loc.GetString("This reagent has a deconverts forcibly recruited cultists.");
-        }
-
-        public override void Effect(EntityEffectBaseArgs args)
-        {
-            if (args is EntityEffectReagentArgs reagentArgs)
-            {
-                if (reagentArgs.Scale != 1f)
-                    return;
-
-                // Add here new cults deconverted with the help of holy water if necessary
-                if (args.EntityManager.HasComponent<BloodCultistComponent>(reagentArgs.TargetEntity))
-                {
-                    var bloodCultSystem = args.EntityManager.System<SharedBloodCultSystem>();
-                    bloodCultSystem.CultistDeconvertation(reagentArgs.TargetEntity);
-                }
-            }
-        }
+        _bloodCult.CultistDeconvertation(entity);
     }
+}
+
+/// <inheritdoc cref="EntityEffect"/>
+public sealed partial class HolyPurification : EntityEffectBase<HolyPurification>
+{
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
+        => Loc.GetString("reagent-effect-guidebook-holy-purification");
 }

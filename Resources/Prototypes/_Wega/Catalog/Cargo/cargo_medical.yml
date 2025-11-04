@@ -15,5 +15,110 @@
     state: icon
   product: CrateMedicalScrubs
   cost: 2500
-  category: cargoproduct-category-name-hydroponics
+  category: cargoproduct-category-name-medical
   group: market
+
+- type: cargoProduct
+  id: CrateBoxPillCanisterMech
+  icon:
+    sprite: /Textures/Objects/Storage/boxes.rsi
+    state: box_of_doom
+  product: CrateBoxPillCanisterMech
+  cost: 2500
+  category: cargoproduct-category-name-medical
+  group: market
+  
+- type: cargoProduct
+  id: CrateBoxPillCanisterBurn
+  icon:
+    sprite: /Textures/Objects/Storage/boxes.rsi
+    state: box_hug
+  product: CrateBoxPillCanisterBurn
+  cost: 2500
+  category: cargoproduct-category-name-medical
+  group: market
+  
+- type: cargoProduct
+  id: CrateBoxPillCanisterToxin
+  icon:
+    sprite: /Textures/Objects/Storage/boxes.rsi
+    state: box_science
+  product: CrateBoxPillCanisterToxin
+  cost: 2500
+  category: cargoproduct-category-name-medical
+  group: market
+  
+- type: cargoProduct
+  id: CrateBoxPillCanisterOxyg
+  icon:
+    sprite: /Textures/Objects/Storage/boxes.rsi
+    state: internals
+  product: CrateBoxPillCanisterOxyg
+  cost: 2500
+  category: cargoproduct-category-name-medical
+  group: market
+  
+- type: cargoProduct
+  id: CrateBoxPillCanisterPro
+  icon:
+    sprite: /Textures/Objects/Storage/boxes.rsi
+    state: boxwidetoy
+  product: CrateBoxPillCanisterPro
+  cost: 5000
+  category: cargoproduct-category-name-medical
+  group: market
+  
+- type: cargoProduct
+  id: CrateBoxPillCanisterAll
+  icon:
+    sprite: /Textures/Objects/Storage/boxes.rsi
+    state: box_medical
+  product: CrateBoxPillCanisterAll
+  cost: 2500
+  category: cargoproduct-category-name-medical
+  group: market
+
+# - type: cargoProduct
+  # id: CrateCloningConsoleFlatpack
+  # icon:
+    # sprite: Objects/Misc/module.rsi
+    # state: cpu_medical
+  # product: CrateCloningConsoleFlatpack  
+  # cost: 15000
+  # category: cargoproduct-category-name-medical
+  # group: market
+  
+# - type: cargoProduct
+  # id: CrateCloningPodFlatpack
+  # icon:
+    # sprite: Structures/Machines/cloning.rsi
+    # state: pod_0
+  # product: CrateCloningPodFlatpack
+  # cost: 15000
+  # category: cargoproduct-category-name-medical
+  # group: market
+  
+# - type: cargoProduct
+  # id: CrateCloneSet
+  # icon:
+    # sprite: Structures/Machines/scanner.rsi
+    # state: open
+  # product: CrateCloneSet
+  # cost: 35000
+  # category: cargoproduct-category-name-medical
+  # group: market
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

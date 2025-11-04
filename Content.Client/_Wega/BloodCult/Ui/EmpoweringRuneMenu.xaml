@@ -10,54 +10,54 @@
 
     <ui:RadialContainer Name="Main" VerticalExpand="True" HorizontalExpand="True" InitialRadius="64" ReserveSpaceForHiddenChildren="False">
         <!-- Stun -->
-        <ui:RadialMenuTextureButton Name="StunButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-spell-stun'}" TargetLayerControlName="Stun">
+        <ui:RadialMenuButton Name="StunButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-spell-stun'}" TargetLayerControlName="Stun">
             <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/stun.png"/>
-        </ui:RadialMenuTextureButton>
+        </ui:RadialMenuButton>
 
         <!-- Teleport -->
-        <ui:RadialMenuTextureButton Name="TeleportButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-spell-teleport'}" TargetLayerControlName="Teleport">
+        <ui:RadialMenuButton Name="TeleportButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-spell-teleport'}" TargetLayerControlName="Teleport">
             <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/teleport.png"/>
-        </ui:RadialMenuTextureButton>
+        </ui:RadialMenuButton>
 
         <!-- Electromagnetic Pulse -->
-        <ui:RadialMenuTextureButton Name="ElectromagneticPulseButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-spell-electromagnetic-pulse'}" TargetLayerControlName="ElectromagneticPulse">
+        <ui:RadialMenuButton Name="ElectromagneticPulseButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-spell-electromagnetic-pulse'}" TargetLayerControlName="ElectromagneticPulse">
             <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/electromagneticpulse.png"/>
-        </ui:RadialMenuTextureButton>
+        </ui:RadialMenuButton>
 
         <!-- Shadow Shackles -->
-        <ui:RadialMenuTextureButton Name="ShadowShacklesButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-spell-shadow-shackles'}" TargetLayerControlName="ShadowShackles">
+        <ui:RadialMenuButton Name="ShadowShacklesButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-spell-shadow-shackles'}" TargetLayerControlName="ShadowShackles">
             <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/shadowshackles.png"/>
-        </ui:RadialMenuTextureButton>
+        </ui:RadialMenuButton>
 
         <!-- Twisted Construction -->
-        <ui:RadialMenuTextureButton Name="TwistedConstructionButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-spell-twisted-construction'}" TargetLayerControlName="TwistedConstruction">
+        <ui:RadialMenuButton Name="TwistedConstructionButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-spell-twisted-construction'}" TargetLayerControlName="TwistedConstruction">
             <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/twistedconstruction.png"/>
-        </ui:RadialMenuTextureButton>
+        </ui:RadialMenuButton>
 
         <!-- Summon Equipment -->
-        <ui:RadialMenuTextureButton Name="SummonEquipmentButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-spell-summon-equipment'}" TargetLayerControlName="SummonEquipment">
+        <ui:RadialMenuButton Name="SummonEquipmentButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-spell-summon-equipment'}" TargetLayerControlName="SummonEquipment">
             <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/summonequipment.png"/>
-        </ui:RadialMenuTextureButton>
+        </ui:RadialMenuButton>
 
         <!-- Summon Dagger -->
-        <ui:RadialMenuTextureButton Name="SummonDaggerButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-spell-summon-dagger'}" TargetLayerControlName="SummonDagger">
+        <ui:RadialMenuButton Name="SummonDaggerButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-spell-summon-dagger'}" TargetLayerControlName="SummonDagger">
             <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/dagger.png"/>
-        </ui:RadialMenuTextureButton>
+        </ui:RadialMenuButton>
 
         <!-- Hallucinations -->
-        <ui:RadialMenuTextureButton Name="HallucinationsButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-spell-hallucinations'}" TargetLayerControlName="Hallucinations">
+        <ui:RadialMenuButton Name="HallucinationsButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-spell-hallucinations'}" TargetLayerControlName="Hallucinations">
             <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/hallucinations.png"/>
-        </ui:RadialMenuTextureButton>
+        </ui:RadialMenuButton>
 
         <!-- Conceal Presence -->
-        <ui:RadialMenuTextureButton Name="ConcealPresenceButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-spell-conceal-presence'}" TargetLayerControlName="ConcealPresence">
+        <ui:RadialMenuButton Name="ConcealPresenceButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-spell-conceal-presence'}" TargetLayerControlName="ConcealPresence">
             <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/concealpresence.png"/>
-        </ui:RadialMenuTextureButton>
+        </ui:RadialMenuButton>
 
         <!-- Blood Rites -->
-        <ui:RadialMenuTextureButton Name="BloodRitesButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-spell-blood-rites'}" TargetLayerControlName="BloodRites">
+        <ui:RadialMenuButton Name="BloodRitesButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-spell-blood-rites'}" TargetLayerControlName="BloodRites">
             <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/blood_rites.png"/>
-        </ui:RadialMenuTextureButton>
+        </ui:RadialMenuButton>
 
     </ui:RadialContainer>
 

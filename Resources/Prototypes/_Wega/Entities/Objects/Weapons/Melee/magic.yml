@@ -13,10 +13,63 @@
   - type: Item
     size: Normal
   - type: NullRod
+  - type: ItemSelector
+    requiredComponents: [ BibleUser ]
+    items:
+    - WeaponHandOfGod
+    - Claymore
+    - WeaponChainsword
+    - WeaponForceSword
+    - WeaponHanzoSteel
+    - WeaponMultiverseSword
+    - WeaponUnrealSword
+    - WeaponReaperScythe
+    - WeaponHighFrequencyBlade
+    - WeaponPossessedBlade
+    - ArrhythmicKnife
+  - type: ActivatableUI
+    key: enum.ItemSelectorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.ItemSelectorUiKey.Key:
+        type: ItemSelectorBoundUserInterface
   - type: MeleeWeapon
     damage:
       types:
         Blunt: 15
+
+- type: entity
+  parent: BaseItem
+  id: WeaponHandOfGod
+  name: hand of god
+  description: "Your hand is now glowing amazingly!"
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/magic_hand.rsi
+    state: icon
+    color: "#d2314e"
+  - type: NullRod
+  - type: Unremoveable
+  - type: DeleteOnDrop
+  - type: Item
+    size: Ginormous
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#d2314e"
+      right:
+      - state: inhand-right
+        color: "#d2314e"
+  - type: MeleeWeapon
+    autoAttack: true
+    attackRate: 1.5
+    wideAnimationRotation: 180
+    damage:
+      types:
+        Heat: 15
+    animation: WeaponArcClaw
+  - type: IgniteOnMeleeHit
+    fireStacks: 1
 
 - type: entity
   parent: BaseItem

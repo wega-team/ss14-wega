@@ -36,13 +36,13 @@
     left_hand:
       part: LeftHandDemon
     left_leg:
-      part: RightLegDemon
-      connections:
-      - right_foot
-    right_leg:
       part: LeftLegDemon
       connections:
       - left_foot
+    right_leg:
+      part: RightLegDemon
+      connections:
+      - right_foot
     right_foot:
       part: RightFootDemon
     left_foot:

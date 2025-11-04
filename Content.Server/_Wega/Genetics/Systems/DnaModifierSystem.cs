@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Content.Server.Administration.Logs;
 using Content.Server.Chat.Systems;
@@ -48,6 +49,8 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
 
+    private static readonly ProtoId<EmotePrototype> Scream = "Scream";
+
     public override void Initialize()
     {
         base.Initialize();
@@ -60,6 +63,8 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
 
         SubscribeLocalEvent<DnaModifierComponent, CureDnaDiseaseAttemptEvent>(OnTryCureDnaDisease);
         SubscribeLocalEvent<DnaModifierComponent, MutateDnaAttemptEvent>(OnTryMutateDna);
+
+        SubscribeLocalEvent<DnaModifierComponent, DamageChangedEvent>(OnDamageChanged);
     }
 
     public override void Update(float frameTime)
@@ -142,12 +147,12 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
     }
 
     #region Deep Cloning
-    public UniqueIdentifiersPrototype? CloneUniqueIdentifiers(UniqueIdentifiersPrototype? source)
+    public UniqueIdentifiersData? CloneUniqueIdentifiers(UniqueIdentifiersData? source)
     {
         if (source == null)
             return null;
 
-        return (UniqueIdentifiersPrototype)source.Clone();
+        return source.Clone(source);
     }
 
     public List<EnzymesPrototypeInfo>? CloneEnzymesPrototypes(List<EnzymesPrototypeInfo>? source)
@@ -164,7 +169,7 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
     {
         if (TryComp<HumanoidAppearanceComponent>(uid, out var humanoid))
         {
-            var uniqueIdentifiers = new UniqueIdentifiersPrototype
+            var uniqueIdentifiers = new UniqueIdentifiersData
             {
                 ID = $"UniqueIdentifiers{uid}",
             };
@@ -256,17 +261,16 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
             }
 
             // Тон кожи или цвет меха (блоки 13-16)
-            switch (speciesProto.SkinColoration)
+            var skinColorationProto = _prototype.Index<SkinColorationPrototype>(speciesProto.SkinColoration);
+            switch (skinColorationProto.Strategy.InputType)
             {
-                case HumanoidSkinColor.HumanToned:
-                    // Для HumanToned и TintedHues заполняем блок 13 (тон кожи)
+                // Для Unary заполняем блок 13 (тон кожи)
+                case SkinColorationStrategyInput.Unary:
                     uniqueIdentifiers.SkinTone = ConvertSkinToneToHexArray(humanoid.SkinColor);
                     break;
 
-                case HumanoidSkinColor.Hues:
-                case HumanoidSkinColor.TintedHues:
-                case HumanoidSkinColor.VoxFeathers:
-                    // Для Hues и VoxFeathers заполняем блоки 14-16 (цвет меха)
+                // Для Color заполняем блоки 14-16 (цвет меха)
+                case SkinColorationStrategyInput.Color:
                     var furColorArray = ConvertColorToHexArray(humanoid.SkinColor);
                     uniqueIdentifiers.FurColorR = new[] { furColorArray[0], furColorArray[1], furColorArray[2] };
                     uniqueIdentifiers.FurColorG = new[] { furColorArray[3], furColorArray[4], furColorArray[5] };
@@ -406,7 +410,7 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
         else
         {
             var empty = new[] { "0", "0", "0" };
-            var uniqueIdentifiers = new UniqueIdentifiersPrototype
+            var uniqueIdentifiers = new UniqueIdentifiersData
             {
                 ID = $"StructuralEnzymes{uid}",
                 HairColorR = GenerateRandomHexValues(),
@@ -582,7 +586,7 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
 
             _damage.TryChangeDamage(uid, damage, true);
 
-            _chat.TryEmoteWithoutChat(uid, _prototype.Index<EmotePrototype>("Scream"), true);
+            _chat.TryEmoteWithoutChat(uid, _prototype.Index(Scream), true);
             _popup.PopupEntity(Loc.GetString("dna-instability-stage-two"), uid, uid, PopupType.SmallCaution);
         }
     }
@@ -595,7 +599,7 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
 
             _damage.TryChangeDamage(uid, damage, true);
 
-            _chat.TryEmoteWithoutChat(uid, _prototype.Index<EmotePrototype>("Scream"), true);
+            _chat.TryEmoteWithoutChat(uid, _prototype.Index(Scream), true);
             _popup.PopupEntity(Loc.GetString("dna-instability-stage-three"), uid, uid, PopupType.LargeCaution);
         }
     }
@@ -646,19 +650,19 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
         Dirty(ent, humanoid);
     }
 
-    private void UpdateSkin(Entity<HumanoidAppearanceComponent> humanoid, UniqueIdentifiersPrototype uniqueIdentifiers)
+    private void UpdateSkin(Entity<HumanoidAppearanceComponent> humanoid, UniqueIdentifiersData uniqueIdentifiers)
     {
-        var speciesProto = _prototype.Index<SpeciesPrototype>(humanoid.Comp.Species);
+        var speciesProto = _prototype.Index(humanoid.Comp.Species);
+        var skinColorationProto = _prototype.Index(speciesProto.SkinColoration);
 
-        switch (speciesProto.SkinColoration)
+        switch (skinColorationProto.Strategy.InputType)
         {
-            case HumanoidSkinColor.HumanToned:
-                humanoid.Comp.SkinColor = ConvertSkinToneToColor(uniqueIdentifiers.SkinTone);
+            case SkinColorationStrategyInput.Unary:
+                var color = ConvertSkinToneToColor(uniqueIdentifiers.SkinTone);
+                humanoid.Comp.SkinColor = skinColorationProto.Strategy.EnsureVerified(color);
                 break;
 
-            case HumanoidSkinColor.Hues:
-            case HumanoidSkinColor.TintedHues:
-            case HumanoidSkinColor.VoxFeathers:
+            case SkinColorationStrategyInput.Color:
                 string redHex = uniqueIdentifiers.FurColorR[0] + uniqueIdentifiers.FurColorR[1];
                 string greenHex = uniqueIdentifiers.FurColorG[0] + uniqueIdentifiers.FurColorG[1];
                 string blueHex = uniqueIdentifiers.FurColorB[0] + uniqueIdentifiers.FurColorB[1];
@@ -672,13 +676,12 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
                 float blueNormalized = blue / 255f;
 
                 var newColor = new Color(redNormalized, greenNormalized, blueNormalized);
-
-                humanoid.Comp.SkinColor = newColor;
+                humanoid.Comp.SkinColor = skinColorationProto.Strategy.EnsureVerified(newColor);
                 break;
         }
     }
 
-    private void UpdateMarkings(Entity<HumanoidAppearanceComponent> humanoid, UniqueIdentifiersPrototype uniqueIdentifiers)
+    private void UpdateMarkings(Entity<HumanoidAppearanceComponent> humanoid, UniqueIdentifiersData uniqueIdentifiers)
     {
         var markingSet = humanoid.Comp.MarkingSet;
         var markingPrototypes = _markingIndexer.GetAllMarkingPrototypes();
@@ -691,7 +694,7 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
         _ensureMarking.UpdateMarkingCategory(humanoid, markingSet, MarkingCategories.Tail, uniqueIdentifiers.TailMarkingColorR, uniqueIdentifiers.TailMarkingColorG, uniqueIdentifiers.TailMarkingColorB, uniqueIdentifiers.TailMarkingStyle, humanoid.Comp.Species, markingPrototypes);
     }
 
-    private void UpdateEyeColor(Entity<HumanoidAppearanceComponent> humanoid, UniqueIdentifiersPrototype uniqueIdentifiers)
+    private void UpdateEyeColor(Entity<HumanoidAppearanceComponent> humanoid, UniqueIdentifiersData uniqueIdentifiers)
     {
         string redHex = uniqueIdentifiers.EyeColorR[0] + uniqueIdentifiers.EyeColorR[1];
         string greenHex = uniqueIdentifiers.EyeColorG[0] + uniqueIdentifiers.EyeColorG[1];
@@ -710,7 +713,7 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
         humanoid.Comp.EyeColor = eyeColor;
     }
 
-    private void UpdateGender(Entity<HumanoidAppearanceComponent> humanoid, UniqueIdentifiersPrototype uniqueIdentifiers)
+    private void UpdateGender(Entity<HumanoidAppearanceComponent> humanoid, UniqueIdentifiersData uniqueIdentifiers)
     {
         int[] values = uniqueIdentifiers.Gender
             .Select(hex => Convert.ToInt32(hex, 16))
@@ -1064,4 +1067,46 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
         Dirty(uid, component);
     }
     #endregion
+
+    private void OnDamageChanged(EntityUid uid, DnaModifierComponent component, DamageChangedEvent args)
+    {
+        if (args.DamageDelta == null || !args.DamageIncreased || !args.DamageDelta.DamageDict.ContainsKey("Radiation"))
+            return;
+
+        var radiationDamage = args.DamageDelta.DamageDict["Radiation"];
+        if (radiationDamage < 1f)
+            return;
+
+        if (component.EnzymesPrototypes == null)
+            return;
+
+        if (_random.Prob(0.05f))
+        {
+            int countToModify = 1;
+
+            var diseaseEnzymes = component.EnzymesPrototypes
+                .Where(enzyme =>
+                {
+                    if (!_prototype.TryIndex<StructuralEnzymesPrototype>(enzyme.EnzymesPrototypeId, out var enzymePrototype))
+                        return false;
+
+                    return enzymePrototype.TypeDeviation == EnzymesType.Disease;
+                })
+                .ToList();
+
+            var enzymesToModify = diseaseEnzymes
+                .OrderBy(_ => _random.Next())
+                .Take(countToModify)
+                .ToList();
+
+            foreach (var enzyme in enzymesToModify)
+            {
+                enzyme.HexCode = GetHexCodeDisease();
+            }
+
+            TryChangeStructuralEnzymes((uid, component));
+
+            Dirty(uid, component);
+        }
+    }
 }

@@ -1,3 +1,4 @@
+using System.Linq; // Corvax-Wega-Surgery
 using System.Numerics;
 using Content.Server.Stack;
 using Content.Server.Stunnable;
@@ -14,6 +15,7 @@ using Content.Shared.Movement.Pulling.Systems;
 using Content.Shared.Stacks;
 using Content.Shared.Standing;
 using Content.Shared.Throwing;
+using Robust.Shared.Containers; // Corvax-Wega-Surgery
 using Robust.Shared.GameStates;
 using Robust.Shared.Input.Binding;
 using Robust.Shared.Map;
@@ -33,6 +35,7 @@ namespace Content.Server.Hands.Systems
         [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
         [Dependency] private readonly PullingSystem _pullingSystem = default!;
         [Dependency] private readonly ThrowingSystem _throwingSystem = default!;
+        [Dependency] private readonly SharedContainerSystem _container = default!; // Corvax-Wega-Surgery
 
         private EntityQuery<PhysicsComponent> _physicsQuery;
 
@@ -117,15 +120,21 @@ namespace Content.Server.Hands.Systems
                     {
                         if (child.Type == BodyPartType.Hand)
                         {
-                            var armLocation = args.Part.Comp.Symmetry switch
+                            var containerSlotId = $"body_part_slot_{slotId}";
+                            if (_container.TryGetContainer(args.Part.Owner, containerSlotId, out var container)
+                                && container.ContainedEntities.Any(e => TryComp<BodyPartComponent>(e, out var partComp)
+                                && partComp.PartType == BodyPartType.Hand))
                             {
-                                BodyPartSymmetry.None => HandLocation.Middle,
-                                BodyPartSymmetry.Left => HandLocation.Left,
-                                BodyPartSymmetry.Right => HandLocation.Right,
-                                _ => HandLocation.Middle // fallback
-                            };
+                                var armLocation = args.Part.Comp.Symmetry switch
+                                {
+                                    BodyPartSymmetry.None => HandLocation.Middle,
+                                    BodyPartSymmetry.Left => HandLocation.Left,
+                                    BodyPartSymmetry.Right => HandLocation.Right,
+                                    _ => HandLocation.Middle
+                                };
 
-                            AddHand(ent.AsNullable(), $"body_part_slot_{slotId}", armLocation);
+                                AddHand(ent.AsNullable(), containerSlotId, armLocation);
+                            }
                         }
                     }
                     break;
@@ -192,7 +201,7 @@ namespace Content.Server.Hands.Systems
 
             if (TryComp(throwEnt, out StackComponent? stack) && stack.Count > 1 && stack.ThrowIndividually)
             {
-                var splitStack = _stackSystem.Split(throwEnt.Value, 1, Comp<TransformComponent>(player).Coordinates, stack);
+                var splitStack = _stackSystem.Split((throwEnt.Value, stack), 1, Comp<TransformComponent>(player).Coordinates);
 
                 if (splitStack is not {Valid: true})
                     return false;
@@ -232,9 +241,6 @@ namespace Content.Server.Hands.Systems
             // If the holder doesn't have a physics component, they ain't moving
             var holderVelocity = _physicsQuery.TryComp(entity, out var physics) ? physics.LinearVelocity : Vector2.Zero;
             var spreadMaxAngle = Angle.FromDegrees(DropHeldItemsSpread);
-
-            var fellEvent = new FellDownEvent(entity);
-            RaiseLocalEvent(entity, fellEvent);
 
             foreach (var hand in entity.Comp.Hands.Keys)
             {

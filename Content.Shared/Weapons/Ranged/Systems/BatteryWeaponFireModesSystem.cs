@@ -3,6 +3,7 @@ using Content.Shared.Access.Systems;
 using Content.Shared.Database;
 using Content.Shared.Examine;
 using Content.Shared.Interaction.Events;
+using Content.Shared.Item; // Corvax-Wega-MagVisuals
 using Content.Shared.Popups;
 using Content.Shared.Verbs;
 using Content.Shared.Weapons.Ranged.Components;
@@ -17,6 +18,7 @@ public sealed class BatteryWeaponFireModesSystem : EntitySystem
     [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
     [Dependency] private readonly AccessReaderSystem _accessReaderSystem = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearanceSystem = default!;
+    [Dependency] private readonly SharedItemSystem _item = default!; // Corvax-Wega-MagVisuals
 
     public override void Initialize()
     {
@@ -82,7 +84,7 @@ public sealed class BatteryWeaponFireModesSystem : EntitySystem
 
     private void OnUseInHandEvent(EntityUid uid, BatteryWeaponFireModesComponent component, UseInHandEvent args)
     {
-        if(args.Handled)
+        if (args.Handled)
             return;
 
         args.Handled = true;
@@ -119,8 +121,22 @@ public sealed class BatteryWeaponFireModesSystem : EntitySystem
 
         if (_prototypeManager.TryIndex<EntityPrototype>(fireMode.Prototype, out var prototype))
         {
+            // Corvax-Wega-MagVisuals-Edit-start
             if (TryComp<AppearanceComponent>(uid, out var appearance))
-                _appearanceSystem.SetData(uid, BatteryWeaponFireModeVisuals.State, prototype.ID, appearance);
+            {
+                var state = !string.IsNullOrEmpty(fireMode.State)
+                    ? fireMode.State
+                    : prototype.ID;
+
+                _appearanceSystem.SetData(uid, BatteryWeaponFireModeVisuals.State, state, appearance);
+
+                if (!string.IsNullOrEmpty(fireMode.MagState))
+                    _appearanceSystem.SetData(uid, BatteryWeaponFireModeVisuals.MagState, fireMode.MagState, appearance);
+            }
+
+            if (!string.IsNullOrEmpty(fireMode.State))
+                _item.SetHeldPrefix(uid, fireMode.State);
+            // Corvax-Wega-MagVisuals-Edit-end
 
             if (user != null)
                 _popupSystem.PopupClient(Loc.GetString("gun-set-fire-mode", ("mode", prototype.Name)), uid, user.Value);
@@ -142,5 +158,23 @@ public sealed class BatteryWeaponFireModesSystem : EntitySystem
             var updateClientAmmoEvent = new UpdateClientAmmoEvent();
             RaiseLocalEvent(uid, ref updateClientAmmoEvent);
         }
+
+        // Corvax-Wega-HitscanBattery-start
+        if (TryComp(uid, out HitscanBatteryAmmoProviderComponent? hitscanBatteryAmmoProviderComponent))
+        {
+            var OldFireCost = hitscanBatteryAmmoProviderComponent.FireCost;
+            hitscanBatteryAmmoProviderComponent.HitscanEntityProto = fireMode.Prototype;
+            hitscanBatteryAmmoProviderComponent.FireCost = fireMode.FireCost;
+
+            float FireCostDiff = (float)fireMode.FireCost / (float)OldFireCost;
+            hitscanBatteryAmmoProviderComponent.Shots = (int)Math.Round(hitscanBatteryAmmoProviderComponent.Shots / FireCostDiff);
+            hitscanBatteryAmmoProviderComponent.Capacity = (int)Math.Round(hitscanBatteryAmmoProviderComponent.Capacity / FireCostDiff);
+
+            Dirty(uid, hitscanBatteryAmmoProviderComponent);
+
+            var updateClientAmmoEvent = new UpdateClientAmmoEvent();
+            RaiseLocalEvent(uid, ref updateClientAmmoEvent);
+        }
+        // Corvax-Wega-HitscanBattery-end
     }
 }
