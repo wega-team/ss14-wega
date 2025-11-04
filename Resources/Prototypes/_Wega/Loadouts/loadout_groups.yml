@@ -89,6 +89,33 @@
   - ClothingUnderSocksFishnetThigh
   - ClothingUnderSocksPantyhose
 
+- type: loadoutGroup
+  id: BaseShoose
+  name: loadout-group-base-shoes
+  loadouts:
+  - ClothingShoesColorBlack
+  - ClothingShoesColorBrown
+  - ClothingShoesColorWhite
+  - ClothingShoesColorYellow
+  - ClothingShoesColorGreen
+  - ClothingShoesColorRed
+  - ClothingShoesColorOrange
+  - ClothingShoesColorBlue
+  - ClothingShoesColorPurple
+  - ClothingShoesHeelsBlack
+  - ClothingShoesHeelsGray
+  - ClothingShoesHeelsTurquoise
+  - ClothingShoesHeelsYellow
+  - ClothingShoesHeelsGreen
+  - ClothingShoesHeelsPink
+  - ClothingShoesHeelsOrange
+  - ClothingShoesHeelsRed
+  - ClothingShoesHeelsBlue
+  - ClothingShoesHeelsPurple
+  - ClothingShoesBootsLaceup
+  - ClothingShoesWizard
+  - ClothingShoesTourist
+  - ClothingShoesLeather
 # Heads
 
 #Captain
@@ -993,6 +1020,38 @@
   - JumpsuitTurtleneckWhiteBlackSleeveless
   - JumpsuitTurtleneckWhiteSleeveless
   - JumpskirtTurtleneckWhiteSleeveless
+  - ClothingUniformJumpsuitSecBlueOJ
+  - ClothingUniformJumpskirtDetectiveGrey
+  - ClothingUniformJumpsuitDetectiveGrey
+  - ClothingUniformJumpskirtDetective
+  - ClothingUniformJumpsuitDetective
+  - ClothingUniformJumpskirtLawyerBlue
+  - ClothingUniformJumpsuitLawyerBlue
+  - ClothingUniformJumpskirtLawyerPurple
+  - ClothingUniformJumpsuitLawyerPurple
+  - ClothingUniformJumpskirtLawyerRed
+  - ClothingUniformJumpsuitLawyerRed
+  - ClothingUniformJumpskirtLawyerBlack
+  - ClothingUniformJumpsuitLawyerBlack
+  - ClothingUniformJumpskirtLawyerGood
+  - ClothingUniformJumpsuitLawyerGood
+  - ClothingUniformTopColorWhite
+  - ClothingUniformTopColorGrey
+  - ClothingUniformTopColorBlack
+  - ClothingUniformTopColorBlue
+  - ClothingUniformTopColorDarkBlue
+  - ClothingUniformTopColorTeal
+  - ClothingUniformTopColorGreen
+  - ClothingUniformTopColorDarkGreen
+  - ClothingUniformTopColorOrange
+  - ClothingUniformTopColorRed
+  - ClothingUniformTopColorYellow
+  - ClothingUniformTopColorPurple
+  - ClothingUniformTopColorLightBrown
+  - ClothingUniformTopColorBrown
+  - ClothingUniformTopColorMaroon
+  - ClothingUniformTopic
+  - ClothingUniformTopicCool
 
 - type: loadoutGroup
   id: PostmanBackpack
@@ -1083,6 +1142,38 @@
   - JumpsuitTurtleneckWhiteBlackSleeveless
   - JumpsuitTurtleneckWhiteSleeveless
   - JumpskirtTurtleneckWhiteSleeveless
+  - ClothingUniformJumpsuitSecBlueOJ
+  - ClothingUniformJumpskirtDetectiveGrey
+  - ClothingUniformJumpsuitDetectiveGrey
+  - ClothingUniformJumpskirtDetective
+  - ClothingUniformJumpsuitDetective
+  - ClothingUniformJumpskirtLawyerBlue
+  - ClothingUniformJumpsuitLawyerBlue
+  - ClothingUniformJumpskirtLawyerPurple
+  - ClothingUniformJumpsuitLawyerPurple
+  - ClothingUniformJumpskirtLawyerRed
+  - ClothingUniformJumpsuitLawyerRed
+  - ClothingUniformJumpskirtLawyerBlack
+  - ClothingUniformJumpsuitLawyerBlack
+  - ClothingUniformJumpskirtLawyerGood
+  - ClothingUniformJumpsuitLawyerGood
+  - ClothingUniformTopColorWhite
+  - ClothingUniformTopColorGrey
+  - ClothingUniformTopColorBlack
+  - ClothingUniformTopColorBlue
+  - ClothingUniformTopColorDarkBlue
+  - ClothingUniformTopColorTeal
+  - ClothingUniformTopColorGreen
+  - ClothingUniformTopColorDarkGreen
+  - ClothingUniformTopColorOrange
+  - ClothingUniformTopColorRed
+  - ClothingUniformTopColorYellow
+  - ClothingUniformTopColorPurple
+  - ClothingUniformTopColorLightBrown
+  - ClothingUniformTopColorBrown
+  - ClothingUniformTopColorMaroon
+  - ClothingUniformTopic
+  - ClothingUniformTopicCool
 
 - type: loadoutGroup
   id: GeneticsBackpack
@@ -1141,6 +1232,9 @@
   - JumpsuitTurtleneckBlack
   - JumpskirtTurtleneckBlackSleeveless
   - JumpsuitTurtleneckBlackSleeveless
+  - ClothingUniformTopColorRed
+  - ClothingUniformTopColorBlack
+  - ClothingUniformTopicCool
 
 - type: loadoutGroup
   id: BrigmedicBackpack

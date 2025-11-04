@@ -22,7 +22,6 @@
 - type: startingGear
   id: TechnicalAssistantGear
   equipment:
-    shoes: ClothingShoesBootsWork
     id: TechnicalAssistantPDA
     belt: ClothingBeltUtilityEngineering
     ears: ClothingHeadsetEngineering

@@ -93,6 +93,38 @@
   - JumpsuitTurtleneckWhiteBlackSleeveless
   - JumpsuitTurtleneckWhiteSleeveless
   - JumpskirtTurtleneckWhiteSleeveless
+  - ClothingUniformJumpsuitSecBlueOJ
+  - ClothingUniformJumpskirtDetectiveGrey
+  - ClothingUniformJumpsuitDetectiveGrey
+  - ClothingUniformJumpskirtDetective
+  - ClothingUniformJumpsuitDetective
+  - ClothingUniformJumpskirtLawyerBlue
+  - ClothingUniformJumpsuitLawyerBlue
+  - ClothingUniformJumpskirtLawyerPurple
+  - ClothingUniformJumpsuitLawyerPurple
+  - ClothingUniformJumpskirtLawyerRed
+  - ClothingUniformJumpsuitLawyerRed
+  - ClothingUniformJumpskirtLawyerBlack
+  - ClothingUniformJumpsuitLawyerBlack
+  - ClothingUniformJumpskirtLawyerGood
+  - ClothingUniformJumpsuitLawyerGood
+  - ClothingUniformTopColorWhite
+  - ClothingUniformTopColorGrey
+  - ClothingUniformTopColorBlack
+  - ClothingUniformTopColorBlue
+  - ClothingUniformTopColorDarkBlue
+  - ClothingUniformTopColorTeal
+  - ClothingUniformTopColorGreen
+  - ClothingUniformTopColorDarkGreen
+  - ClothingUniformTopColorOrange
+  - ClothingUniformTopColorRed
+  - ClothingUniformTopColorYellow
+  - ClothingUniformTopColorPurple
+  - ClothingUniformTopColorLightBrown
+  - ClothingUniformTopColorBrown
+  - ClothingUniformTopColorMaroon
+  - ClothingUniformTopic
+  - ClothingUniformTopicCool
 # Corvax-Wega-add-end
 
 - type: loadoutGroup
@@ -121,6 +153,31 @@
   loadouts:
   - WorkBoots
   - EngineeringWinterBoots
+ # Corvax-Wega-Shoes-Start
+  - ClothingShoesColorBlack
+  - ClothingShoesColorBrown
+  - ClothingShoesColorWhite
+  - ClothingShoesColorYellow
+  - ClothingShoesColorGreen
+  - ClothingShoesColorRed
+  - ClothingShoesColorOrange
+  - ClothingShoesColorBlue
+  - ClothingShoesColorPurple
+  - ClothingShoesHeelsBlack
+  - ClothingShoesHeelsGray
+  - ClothingShoesHeelsTurquoise
+  - ClothingShoesHeelsYellow
+  - ClothingShoesHeelsGreen
+  - ClothingShoesHeelsPink
+  - ClothingShoesHeelsOrange
+  - ClothingShoesHeelsRed
+  - ClothingShoesHeelsBlue
+  - ClothingShoesHeelsPurple
+  - ClothingShoesBootsLaceup
+  - ClothingShoesWizard
+  - ClothingShoesTourist
+  - ClothingShoesLeather
+ # Corvax-Wega-Shoes-End
 
  # Corvax-Wega-start
 - type: loadoutGroup
@@ -214,6 +271,38 @@
   - JumpsuitTurtleneckWhiteBlackSleeveless
   - JumpsuitTurtleneckWhiteSleeveless
   - JumpskirtTurtleneckWhiteSleeveless
+  - ClothingUniformJumpsuitSecBlueOJ
+  - ClothingUniformJumpskirtDetectiveGrey
+  - ClothingUniformJumpsuitDetectiveGrey
+  - ClothingUniformJumpskirtDetective
+  - ClothingUniformJumpsuitDetective
+  - ClothingUniformJumpskirtLawyerBlue
+  - ClothingUniformJumpsuitLawyerBlue
+  - ClothingUniformJumpskirtLawyerPurple
+  - ClothingUniformJumpsuitLawyerPurple
+  - ClothingUniformJumpskirtLawyerRed
+  - ClothingUniformJumpsuitLawyerRed
+  - ClothingUniformJumpskirtLawyerBlack
+  - ClothingUniformJumpsuitLawyerBlack
+  - ClothingUniformJumpskirtLawyerGood
+  - ClothingUniformJumpsuitLawyerGood
+  - ClothingUniformTopColorWhite
+  - ClothingUniformTopColorGrey
+  - ClothingUniformTopColorBlack
+  - ClothingUniformTopColorBlue
+  - ClothingUniformTopColorDarkBlue
+  - ClothingUniformTopColorTeal
+  - ClothingUniformTopColorGreen
+  - ClothingUniformTopColorDarkGreen
+  - ClothingUniformTopColorOrange
+  - ClothingUniformTopColorRed
+  - ClothingUniformTopColorYellow
+  - ClothingUniformTopColorPurple
+  - ClothingUniformTopColorLightBrown
+  - ClothingUniformTopColorBrown
+  - ClothingUniformTopColorMaroon
+  - ClothingUniformTopic
+  - ClothingUniformTopicCool
 # Corvax-Wega-add-end
 
 - type: loadoutGroup
@@ -243,6 +332,31 @@
   - WhiteShoes
   - BlackShoes
   - ScienceWinterBoots
+ # Corvax-Wega-Shoes-Start
+  - ClothingShoesColorBlack
+  - ClothingShoesColorBrown
+  - ClothingShoesColorWhite
+  - ClothingShoesColorYellow
+  - ClothingShoesColorGreen
+  - ClothingShoesColorRed
+  - ClothingShoesColorOrange
+  - ClothingShoesColorBlue
+  - ClothingShoesColorPurple
+  - ClothingShoesHeelsBlack
+  - ClothingShoesHeelsGray
+  - ClothingShoesHeelsTurquoise
+  - ClothingShoesHeelsYellow
+  - ClothingShoesHeelsGreen
+  - ClothingShoesHeelsPink
+  - ClothingShoesHeelsOrange
+  - ClothingShoesHeelsRed
+  - ClothingShoesHeelsBlue
+  - ClothingShoesHeelsPurple
+  - ClothingShoesBootsLaceup
+  - ClothingShoesWizard
+  - ClothingShoesTourist
+  - ClothingShoesLeather
+ # Corvax-Wega-Shoes-End
 
 - type: loadoutGroup
   id: SeniorResearcherGloves
@@ -285,6 +399,9 @@
   - JumpsuitTurtleneckBlack
   - JumpskirtTurtleneckBlackSleeveless
   - JumpsuitTurtleneckBlackSleeveless
+  - ClothingUniformTopColorRed
+  - ClothingUniformTopColorBlack
+  - ClothingUniformTopicCool
 # Corvax-Wega-add-end
 
 - type: loadoutGroup
@@ -314,6 +431,9 @@
   - JumpsuitTurtleneckBlack
   - JumpskirtTurtleneckBlackSleeveless
   - JumpsuitTurtleneckBlackSleeveless
+  - ClothingUniformTopColorRed
+  - ClothingUniformTopColorBlack
+  - ClothingUniformTopicCool
 # Corvax-Wega-add-end
 
 - type: loadoutGroup
@@ -409,6 +529,31 @@
   loadouts:
   - WhiteShoes
   - MedicalWinterBoots
+ # Corvax-Wega-Shoes-Start
+  - ClothingShoesColorBlack
+  - ClothingShoesColorBrown
+  - ClothingShoesColorWhite
+  - ClothingShoesColorYellow
+  - ClothingShoesColorGreen
+  - ClothingShoesColorRed
+  - ClothingShoesColorOrange
+  - ClothingShoesColorBlue
+  - ClothingShoesColorPurple
+  - ClothingShoesHeelsBlack
+  - ClothingShoesHeelsGray
+  - ClothingShoesHeelsTurquoise
+  - ClothingShoesHeelsYellow
+  - ClothingShoesHeelsGreen
+  - ClothingShoesHeelsPink
+  - ClothingShoesHeelsOrange
+  - ClothingShoesHeelsRed
+  - ClothingShoesHeelsBlue
+  - ClothingShoesHeelsPurple
+  - ClothingShoesBootsLaceup
+  - ClothingShoesWizard
+  - ClothingShoesTourist
+  - ClothingShoesLeather
+ # Corvax-Wega-Shoes-End
 
   # Corvax-Wega-start
 - type: loadoutGroup

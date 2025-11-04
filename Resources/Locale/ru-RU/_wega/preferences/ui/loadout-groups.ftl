@@ -2,6 +2,7 @@
 loadout-group-top = Верхнее белье
 loadout-group-bottom = Нижнее белье
 loadout-group-socks = Носки
+loadout-group-base-shoes = Обувь, базовая
 
 # Heads
 
