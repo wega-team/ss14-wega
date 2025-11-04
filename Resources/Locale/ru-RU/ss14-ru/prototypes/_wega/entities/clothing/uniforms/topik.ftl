@@ -32,7 +32,7 @@ ent-ClothingUniformTopColorMaroon = бордовый топик
     .desc = Обычный бордовый топик без знаков различия.
 ent-ClothingUniformTopic = топик с вырезом
     .desc = Топик с вырезом на груди. Тело должно дышать!
-ent-ClothingUniformTopicCool = белый с черепом
+ent-ClothingUniformTopicCool = топик с черепом
     .desc = Запрети мне ходить в топах.
 
 

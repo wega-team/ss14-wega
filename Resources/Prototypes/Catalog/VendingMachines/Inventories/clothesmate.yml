@@ -57,6 +57,7 @@
     ClothingUniformJumpskirtCasualRed: 2
     ClothingUniformJumpsuitCasualGreen: 2
     ClothingUniformJumpskirtCasualGreen: 2
+    # Corvax-Wega-start
     ClothingUniformTopColorWhite: 2
     ClothingUniformTopColorGrey: 2
     ClothingUniformTopColorBlack: 2
@@ -74,6 +75,7 @@
     ClothingUniformTopColorMaroon: 2
     ClothingUniformTopic: 2
     ClothingUniformTopicCool: 2
+    # Corvax-Wega-end
     # DO NOT ADD MORE, USE UNIFORM DYING
     ClothingShoesColorBlack: 8
     ClothingShoesColorBrown: 4
