@@ -2,7 +2,6 @@ using System.Linq;
 using Content.Server.Construction.Completions;
 using Content.Server.NodeContainer.Nodes;
 using Content.Server.Popups;
-using Content.Server.VentCraw;
 using Content.Shared.Atmos;
 using Content.Shared.Database;
 using Content.Shared.Destructible;
