@@ -271,6 +271,7 @@
   - type: TypingIndicator
     proto: spider
   - type: NaturalNightVision # Corvax-Wega-NightVision
+  - type: VentCrawler # Corvax-Wega-VentCrawling
 
 - type: entity
   id: MobSpiderSpaceSalvage

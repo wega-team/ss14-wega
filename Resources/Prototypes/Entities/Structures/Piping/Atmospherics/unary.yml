@@ -77,6 +77,14 @@
       guides:
       - AirVent
       - DeviceMonitoringAndControl
+    # Corvax-Wega-VentCrawling-start
+    - type: VentCrawTube
+      containerId: VentCrawTube
+    - type: VentCrawEntry
+    - type: ContainerContainer
+      containers:
+        VentCrawTube: !type:Container
+    # Corvax-Wega-VentCrawling-end
 
 - type: entity
   parent: GasUnaryBase
@@ -167,6 +175,14 @@
       guides:
       - AirScrubber
       - DeviceMonitoringAndControl
+    # Corvax-Wega-VentCrawling-start
+    - type: VentCrawTube
+      containerId: VentCrawTube
+    - type: VentCrawEntry
+    - type: ContainerContainer
+      containers:
+        VentCrawTube: !type:Container
+    # Corvax-Wega-VentCrawling-end
 
 - type: entity
   parent: GasUnaryBase
@@ -211,6 +227,16 @@
     - type: GuideHelp
       guides:
       - AirInjector
+    # Corvax-Wega-VentCrawling-start
+    - type: VentCrawTube
+      containerId: VentCrawTube
+    - type: VentCrawJunction
+      degrees:
+        - 0
+    - type: ContainerContainer
+      containers:
+        VentCrawTube: !type:Container
+    # Corvax-Wega-VentCrawling-end
 
 - type: entity
   parent: [ BaseMachinePowered, ConstructibleMachine ]
