@@ -20,6 +20,8 @@ using Robust.Shared.Map.Components;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 
+namespace Content.Server.VentCraw;
+
 public sealed class VentCrawTubeSystem : EntitySystem
 {
     [Dependency] private readonly IGameTiming _gameTiming = default!;
