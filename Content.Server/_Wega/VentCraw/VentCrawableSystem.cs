@@ -1,29 +1,29 @@
 using System.Linq;
-using Content.Shared.VentCraw.Components;
+using Content.Server.NodeContainer.Nodes;
 using Content.Shared.Body.Components;
 using Content.Shared.Item;
 using Content.Shared.Movement.Events;
+using Content.Shared.Movement.Systems;
+using Content.Shared.NodeContainer;
+using Content.Shared.Tools.Components;
 using Content.Shared.VentCraw;
+using Content.Shared.VentCraw.Components;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Timing;
-using Content.Shared.Tools.Components;
-using Robust.Shared.Audio.Systems;
-using Content.Shared.Movement.Systems;
-using Content.Shared.NodeContainer;
-using Content.Server.NodeContainer.Nodes;
 
 namespace Content.Server.VentCraw;
 
 public sealed class VentCrawableSystem : EntitySystem
 {
-    [Dependency] private readonly VentCrawTubeSystem _ventCrawTubeSystem = default!;
-    [Dependency] private readonly SharedPhysicsSystem _physicsSystem = default!;
-    [Dependency] private readonly SharedContainerSystem _containerSystem = default!;
-    [Dependency] private readonly SharedTransformSystem _xformSystem = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly SharedAudioSystem _audioSystem = default!;
+    [Dependency] private readonly SharedContainerSystem _containerSystem = default!;
+    [Dependency] private readonly SharedPhysicsSystem _physicsSystem = default!;
+    [Dependency] private readonly SharedTransformSystem _xformSystem = default!;
+    [Dependency] private readonly VentCrawTubeSystem _ventCrawTubeSystem = default!;
 
     public static readonly TimeSpan CrawlDelay = TimeSpan.FromSeconds(0.5);
 
@@ -33,153 +33,6 @@ public sealed class VentCrawableSystem : EntitySystem
 
         SubscribeLocalEvent<VentCrawHolderComponent, ComponentStartup>(OnComponentStartup);
         SubscribeLocalEvent<VentCrawHolderComponent, MoveInputEvent>(OnMoveInput);
-    }
-
-    private void OnMoveInput(EntityUid uid, VentCrawHolderComponent component, ref MoveInputEvent args)
-    {
-        if (!EntityManager.EntityExists(component.CurrentTube))
-        {
-            ExitVentCraws(uid, component);
-            return;
-        }
-
-        component.IsMoving = (args.OldMovement & MoveButtons.AnyDirection) != MoveButtons.None;
-
-        if (component.IsMoving)
-        {
-            var newDirection = GetDirectionFromMoveButtons(args.OldMovement);
-
-            if (HasComp<VentCrawManifoldComponent>(component.CurrentTube)
-                && component.CurrentDirection == Direction.Invalid)
-            {
-                var nextTube = _ventCrawTubeSystem.NextTubeFor(component.CurrentTube.Value, newDirection, component.PreviousPipeLayer);
-                if (nextTube != null)
-                {
-                    component.CurrentDirection = newDirection;
-                    component.NextTube = nextTube;
-                    component.StartingTime = component.Speed;
-                    component.TimeLeft = component.Speed;
-                }
-            }
-            else
-            {
-                component.CurrentDirection = newDirection;
-            }
-        }
-        else
-        {
-            component.CurrentDirection = Direction.Invalid;
-        }
-    }
-
-    private void OnComponentStartup(EntityUid uid, VentCrawHolderComponent holder, ComponentStartup args)
-    {
-        holder.Container = _containerSystem.EnsureContainer<Container>(uid, nameof(VentCrawHolderComponent));
-    }
-
-    public bool TryInsert(EntityUid uid, EntityUid toInsert, VentCrawHolderComponent? holder = null)
-    {
-        if (!Resolve(uid, ref holder))
-            return false;
-
-        if (!CanInsert(uid, toInsert, holder))
-            return false;
-
-        if (!_containerSystem.Insert(toInsert, holder.Container))
-            return false;
-
-        if (TryComp<PhysicsComponent>(toInsert, out var physBody))
-            _physicsSystem.SetCanCollide(toInsert, false, body: physBody);
-
-        return true;
-    }
-
-    private bool CanInsert(EntityUid uid, EntityUid toInsert, VentCrawHolderComponent? holder = null)
-    {
-        if (!Resolve(uid, ref holder))
-            return false;
-
-        return HasComp<ItemComponent>(toInsert) || HasComp<BodyComponent>(toInsert);
-    }
-
-    public void ExitVentCraws(EntityUid uid, VentCrawHolderComponent? holder = null)
-    {
-        if (!Exists(uid))
-            return;
-
-        if (!Resolve(uid, ref holder))
-            return;
-
-        if (holder.IsExitingVentCraws)
-            return;
-
-        holder.IsExitingVentCraws = true;
-
-        foreach (var entity in holder.Container.ContainedEntities.ToArray())
-        {
-            RemComp<BeingVentCrawComponent>(entity);
-
-            _containerSystem.Remove(entity, holder.Container, force: true);
-            if (TryComp<VentCrawlerComponent>(entity, out var ventCrawlerComponent))
-            {
-                ventCrawlerComponent.InTube = false;
-                Dirty(entity, ventCrawlerComponent);
-            }
-
-            var xform = Transform(entity);
-            _xformSystem.AttachToGridOrMap(entity, xform);
-
-            if (TryComp<PhysicsComponent>(entity, out var physics))
-                _physicsSystem.WakeBody(entity, body: physics);
-        }
-
-        EntityManager.DeleteEntity(uid);
-    }
-
-    public bool EnterTube(EntityUid holderUid, EntityUid toUid, VentCrawHolderComponent? holder = null,
-        VentCrawTubeComponent? to = null)
-    {
-        if (!Resolve(holderUid, ref holder))
-            return false;
-
-        if (holder.IsExitingVentCraws)
-            return false;
-
-        if (!Resolve(toUid, ref to))
-        {
-            ExitVentCraws(holderUid, holder);
-            return false;
-        }
-
-        foreach (var ent in holder.Container.ContainedEntities)
-        {
-            var comp = EnsureComp<BeingVentCrawComponent>(ent);
-            comp.Holder = holderUid;
-        }
-
-        if (!_containerSystem.Insert(holderUid, to.Contents))
-        {
-            ExitVentCraws(holderUid, holder);
-            return false;
-        }
-
-        if (holder.CurrentTube != null)
-        {
-            holder.PreviousTube = holder.CurrentTube;
-            holder.PreviousDirection = holder.CurrentDirection;
-        }
-        holder.CurrentTube = toUid;
-
-        if (TryComp<NodeContainerComponent>(toUid, out var nodeContainer))
-        {
-            var firstPipeNode = nodeContainer.Nodes.Values.OfType<PipeNode>().FirstOrDefault();
-            if (firstPipeNode != null)
-            {
-                holder.PreviousPipeLayer = (int)firstPipeNode.CurrentPipeLayer;
-            }
-        }
-
-        return true;
     }
 
     public override void Update(float frameTime)
@@ -314,6 +167,154 @@ public sealed class VentCrawableSystem : EntitySystem
                     ExitVentCraws(uid, holder);
                 }
             }
+        }
+    }
+
+    public bool EnterTube(EntityUid holderUid, EntityUid toUid, VentCrawHolderComponent? holder = null,
+        VentCrawTubeComponent? to = null)
+    {
+        if (!Resolve(holderUid, ref holder))
+            return false;
+
+        if (holder.IsExitingVentCraws)
+            return false;
+
+        if (!Resolve(toUid, ref to))
+        {
+            ExitVentCraws(holderUid, holder);
+            return false;
+        }
+
+        foreach (var ent in holder.Container.ContainedEntities)
+        {
+            var comp = EnsureComp<BeingVentCrawComponent>(ent);
+            comp.Holder = holderUid;
+        }
+
+        if (!_containerSystem.Insert(holderUid, to.Contents))
+        {
+            ExitVentCraws(holderUid, holder);
+            return false;
+        }
+
+        if (holder.CurrentTube != null)
+        {
+            holder.PreviousTube = holder.CurrentTube;
+            holder.PreviousDirection = holder.CurrentDirection;
+        }
+        holder.CurrentTube = toUid;
+
+        if (TryComp<NodeContainerComponent>(toUid, out var nodeContainer)
+            && !HasComp<VentCrawManifoldComponent>(toUid))
+        {
+            var firstPipeNode = nodeContainer.Nodes.Values.OfType<PipeNode>().FirstOrDefault();
+            if (firstPipeNode != null)
+            {
+                holder.PreviousPipeLayer = (int)firstPipeNode.CurrentPipeLayer;
+            }
+        }
+
+        return true;
+    }
+
+    public void ExitVentCraws(EntityUid uid, VentCrawHolderComponent? holder = null)
+    {
+        if (!Exists(uid))
+            return;
+
+        if (!Resolve(uid, ref holder))
+            return;
+
+        if (holder.IsExitingVentCraws)
+            return;
+
+        holder.IsExitingVentCraws = true;
+
+        foreach (var entity in holder.Container.ContainedEntities.ToArray())
+        {
+            RemComp<BeingVentCrawComponent>(entity);
+
+            _containerSystem.Remove(entity, holder.Container, force: true);
+            if (TryComp<VentCrawlerComponent>(entity, out var ventCrawlerComponent))
+            {
+                ventCrawlerComponent.InTube = false;
+                Dirty(entity, ventCrawlerComponent);
+            }
+
+            var xform = Transform(entity);
+            _xformSystem.AttachToGridOrMap(entity, xform);
+
+            if (TryComp<PhysicsComponent>(entity, out var physics))
+                _physicsSystem.WakeBody(entity, body: physics);
+        }
+
+        EntityManager.DeleteEntity(uid);
+    }
+
+    public bool TryInsert(EntityUid uid, EntityUid toInsert, VentCrawHolderComponent? holder = null)
+    {
+        if (!Resolve(uid, ref holder))
+            return false;
+
+        if (!CanInsert(uid, toInsert, holder))
+            return false;
+
+        if (!_containerSystem.Insert(toInsert, holder.Container))
+            return false;
+
+        if (TryComp<PhysicsComponent>(toInsert, out var physBody))
+            _physicsSystem.SetCanCollide(toInsert, false, body: physBody);
+
+        return true;
+    }
+
+    private bool CanInsert(EntityUid uid, EntityUid toInsert, VentCrawHolderComponent? holder = null)
+    {
+        if (!Resolve(uid, ref holder))
+            return false;
+
+        return HasComp<ItemComponent>(toInsert) || HasComp<BodyComponent>(toInsert);
+    }
+
+    private void OnComponentStartup(EntityUid uid, VentCrawHolderComponent holder, ComponentStartup args)
+    {
+        holder.Container = _containerSystem.EnsureContainer<Container>(uid, nameof(VentCrawHolderComponent));
+    }
+
+    private void OnMoveInput(EntityUid uid, VentCrawHolderComponent component, ref MoveInputEvent args)
+    {
+        if (!EntityManager.EntityExists(component.CurrentTube))
+        {
+            ExitVentCraws(uid, component);
+            return;
+        }
+
+        component.IsMoving = (args.OldMovement & MoveButtons.AnyDirection) != MoveButtons.None;
+
+        if (component.IsMoving)
+        {
+            var newDirection = GetDirectionFromMoveButtons(args.OldMovement);
+
+            if (HasComp<VentCrawManifoldComponent>(component.CurrentTube)
+                && component.CurrentDirection == Direction.Invalid)
+            {
+                var nextTube = _ventCrawTubeSystem.NextTubeFor(component.CurrentTube.Value, newDirection, component.PreviousPipeLayer);
+                if (nextTube != null)
+                {
+                    component.CurrentDirection = newDirection;
+                    component.NextTube = nextTube;
+                    component.StartingTime = component.Speed;
+                    component.TimeLeft = component.Speed;
+                }
+            }
+            else
+            {
+                component.CurrentDirection = newDirection;
+            }
+        }
+        else
+        {
+            component.CurrentDirection = Direction.Invalid;
         }
     }
 
