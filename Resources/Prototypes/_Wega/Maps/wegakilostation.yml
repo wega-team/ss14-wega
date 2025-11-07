@@ -61,6 +61,7 @@
             SecurityCadet: [ 2, 2 ]
             Pilot: [ 1, 1 ]
             Brigmedic: [ 1, 1 ]
+            Prisoner: [ 2, 2 ]
             #Lawyer: [ 2, 2 ] # Corvax-IAA
             #supply
             Quartermaster: [ 1, 1 ]

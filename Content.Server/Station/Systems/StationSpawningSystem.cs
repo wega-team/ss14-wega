@@ -215,6 +215,14 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
 
         if (pdaComponent != null)
             _pdaSystem.SetOwner(idUid.Value, pdaComponent, entity, characterName);
+
+        if (job != null && TryGetPrototype(job.Value, out JobPrototype? jobProto))
+        var assignedRoleType = roleType ?? jobProto?.roleType;
+
+        if (assignedRoleType != null)
+        {
+            AssignRoleToMob(mob, assignedRoleType.Value);
+        }
     }
 
 

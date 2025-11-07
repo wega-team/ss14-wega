@@ -169,8 +169,8 @@ namespace Content.Shared.Roles
         public bool IsSubRole { get; private set; } = false;
         // Corvax-Wega-SubRoles-end
 
-        [DataField("RoleType")]  // Corvax-Wega-Edit
-            public ProtoId<RoleTypePrototype>? RoleType;  // Corvax-Wega-Edit
+        [DataField("roleType")]  // Corvax-Wega-Edit
+        public ProtoId<RoleTypePrototype>? RoleType { get; set; } = null;  // Corvax-Wega-Edit
     }
 
     /// <summary>

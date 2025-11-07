@@ -10,7 +10,7 @@
   startingGear: PrisonerGear
   icon: "JobIconPrisoner"
   canBeAntag: false
-  RoleType: FreeAgent
+  roleType: FreeAgent
 
 - type: startingGear
   id: PrisonerGear
