@@ -247,15 +247,15 @@
   - type: ChamberMagazineAmmoProvider
     boltClosed: null
   - type: Gun
-    fireRate: 5.5
+    fireRate: 3.7
     minAngle: 1
-    maxAngle: 6
+    maxAngle: 5
     angleIncrease: 1.5
-    angleDecay: 6
+    angleDecay: 5
     selectedMode: FullAuto
     shotsPerBurst: 5
     burstCooldown: 0.2
-    burstFireRate: 7
+    burstFireRate: 5
     availableModes:
     - Burst
     - FullAuto
@@ -284,3 +284,6 @@
     steps: 6
     zeroVisible: true
   - type: Appearance
+  - type: GunRequiresWield
+  - type: Wieldable
+    unwieldOnUse: false
