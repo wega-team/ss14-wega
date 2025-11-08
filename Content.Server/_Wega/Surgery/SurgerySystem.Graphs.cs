@@ -392,7 +392,7 @@ public sealed partial class SurgerySystem
         bool tagValid = step.Tag == null || step.Tag.Count == 0 || step.Action == SurgeryActionType.StoreItem
             || step.Tag.Any(tag => _tag.HasTag(item.Value, tag));
 
-        if (!toolValid && !tagValid)
+        if (!toolValid || step.Tool == null && !tagValid)
         {
             _popup.PopupEntity(Loc.GetString("surgery-missing-tool"), user, user);
             return;

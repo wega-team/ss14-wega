@@ -7,4 +7,9 @@ ent-ActionToggleBodyPartImplantDefib = Переключить руку дефи�
     .desc = Превратите свою руку в дефибриллятор.
 ent-ActionToggleBodyPartImplantKinetic = Переключить руку протокинетик
     .desc = Превратите свою руку в протокинетический ускоритель.
+
+ent-ActionToggleBodyPartImplantMagboots = Переключить магнитную ногу
+    .desc = Переключите встроенные магнитные сапоги.
+ent-ActionBodyPartImplantJump = Совершить прыжок
+    .desc = Используйте свой имплант и совершите быстрый прыжок вперёд.
     
