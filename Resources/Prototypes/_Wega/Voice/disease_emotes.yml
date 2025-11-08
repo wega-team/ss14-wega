@@ -2,7 +2,7 @@
 - type: emote
   id: Moan
   name: chat-emote-name-moan
-  icon: _Wega/Interface/moan.png
+  icon: _Wega/Interface/Axegao.png
   category: Vocal
   whitelist:
     components:
@@ -65,7 +65,7 @@
   name: chat-emote-name-LPCmoan
   category: Vocal
   available: false
-  icon: _Wega/Interface/moan.png
+  icon: _Wega/Interface/Axegao.png
   whitelist:
     components:
     - Vocal
@@ -74,7 +74,6 @@
     - BorgChassis
   chatMessages: ["chat-emote-msg-LPCmoan"]
   chatTriggers:
-    - стонет
     - робо-стонет
     - стон
     - робо-стон
