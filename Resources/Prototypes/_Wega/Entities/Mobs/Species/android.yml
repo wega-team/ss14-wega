@@ -92,6 +92,8 @@
   - type: TypingIndicator
     proto: robot
   - type: Speech
+    allowedEmotes: 
+      - LPCmoan
     speechVerb: Robotic
     speechSounds: Borg
   - type: Vocal
