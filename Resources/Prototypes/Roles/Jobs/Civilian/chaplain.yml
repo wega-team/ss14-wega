@@ -17,6 +17,7 @@
 - type: startingGear
   id: ChaplainGear
   equipment:
+    # shoes: ClothingShoesColorBlack # Corvax-Wega-Edit
     id: ChaplainPDA
     ears: ClothingHeadsetService
   storage:

@@ -17,6 +17,7 @@
 - type: startingGear
   id: ZookeeperGear
   equipment:
+    # shoes: ClothingShoesColorWhite # Corvax-Wega-Edit
     jumpsuit: ClothingUniformJumpsuitSafari
     head: ClothingHeadSafari
     id: ZookeeperPDA

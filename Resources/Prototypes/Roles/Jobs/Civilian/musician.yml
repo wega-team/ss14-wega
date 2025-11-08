@@ -18,6 +18,7 @@
   id: MusicianGear
   equipment:
     eyes: ClothingEyesGlassesSunglasses
+    # shoes: ClothingShoesBootsLaceup # Corvax-Wega-Edit
     id: MusicianPDA
     ears: ClothingHeadsetService
   #storage:

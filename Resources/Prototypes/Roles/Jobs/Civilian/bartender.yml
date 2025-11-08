@@ -27,6 +27,7 @@
 - type: startingGear
   id: BartenderGear
   equipment:
+    # shoes: ClothingShoesColorBrown # Corvax-Wega-Edit
     id: BartenderPDA
     ears: ClothingHeadsetService
   #storage:

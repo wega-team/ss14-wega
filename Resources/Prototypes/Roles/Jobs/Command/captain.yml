@@ -43,6 +43,7 @@
 - type: startingGear
   id: CaptainGear
   equipment:
+    # shoes: ClothingShoesBootsLaceup # Corvax-Wega-Edit
     eyes: ClothingEyesGlassesCommand
     gloves: ClothingHandsGlovesCaptain
     id: CaptainPDA

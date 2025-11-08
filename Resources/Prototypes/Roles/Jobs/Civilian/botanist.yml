@@ -21,6 +21,7 @@
 - type: startingGear
   id: BotanistGear
   equipment:
+    # shoes: ClothingShoesColorBrown # Corvax-Wega-Edit
     id: BotanistPDA
     ears: ClothingHeadsetService
     belt: ClothingBeltPlantFilled
