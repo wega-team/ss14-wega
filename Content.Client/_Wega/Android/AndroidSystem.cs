@@ -1,6 +1,6 @@
-using Content.Shared._Wega.Android;
+using Content.Shared.Android;
 
-namespace Content.Client._Wega.Android;
+namespace Content.Client.Android;
 
 public sealed class AndroidSystem : SharedAndroidSystem
 {

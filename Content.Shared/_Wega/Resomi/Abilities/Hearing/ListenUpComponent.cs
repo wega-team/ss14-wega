@@ -1,6 +1,6 @@
 using Robust.Shared.Utility;
 
-namespace Content.Shared._Wega.Resomi.Abilities.Hearing;
+namespace Content.Shared.Resomi.Abilities.Hearing;
 
 [RegisterComponent]
 public sealed partial class ListenUpComponent : Component

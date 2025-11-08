@@ -1,5 +1,5 @@
 using System.Text;
-using Content.Shared._Wega.Resomi.Abilities.Hearing;
+using Content.Shared.Resomi.Abilities.Hearing;
 using Content.Shared.CCVar;
 using Content.Shared.Chat;
 using Content.Shared.Physics;

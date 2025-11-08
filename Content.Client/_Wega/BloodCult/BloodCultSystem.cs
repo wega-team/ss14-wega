@@ -5,6 +5,7 @@ using Content.Shared.Blood.Cult.Components;
 using Content.Shared.StatusIcon.Components;
 using Robust.Client.GameObjects;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
 using Robust.Shared.Utility;
 
 namespace Content.Client.Blood.Cult
@@ -13,6 +14,8 @@ namespace Content.Client.Blood.Cult
     {
         [Dependency] private readonly AppearanceSystem _appearance = default!;
         [Dependency] private readonly IPrototypeManager _prototype = default!;
+        [Dependency] private readonly IRobustRandom _random = default!;
+        [Dependency] private readonly SpriteSystem _sprite = default!;
 
         public override void Initialize()
         {
@@ -28,26 +31,18 @@ namespace Content.Client.Blood.Cult
 
         private void OnRuneAppearanceChanged(Entity<BloodRuneComponent> entity, ref AppearanceChangeEvent args)
         {
-            if (args.Sprite == null)
-                return;
-
-            var sprite = args.Sprite;
             if (!_appearance.TryGetData(entity, RuneColorVisuals.Color, out Color color))
                 return;
 
-            sprite.Color = color;
+            _sprite.SetColor(entity.Owner, color);
         }
 
         private void OnRuneAppearanceChanged(Entity<BloodRitualDimensionalRendingComponent> entity, ref AppearanceChangeEvent args)
         {
-            if (args.Sprite == null)
-                return;
-
-            var sprite = args.Sprite;
             if (!_appearance.TryGetData(entity, RuneColorVisuals.Color, out Color color))
                 return;
 
-            sprite.Color = color;
+            _sprite.SetColor(entity.Owner, color);
         }
 
         private void GetCultistIcons(Entity<BloodCultistComponent> ent, ref GetStatusIconsEvent args)
@@ -61,48 +56,48 @@ namespace Content.Client.Blood.Cult
             if (!TryComp<SpriteComponent>(uid, out var sprite))
                 return;
 
-            if (sprite.LayerMapTryGet(PentagramKey.Halo, out _))
+            if (_sprite.LayerMapTryGet(uid, PentagramKey.Halo, out _, true))
                 return;
 
-            var haloVariant = new Random().Next(1, 6);
+            var haloVariant = _random.Next(1, 6);
             var haloState = $"halo{haloVariant}";
 
-            var adj = sprite.Bounds.Height / 2 + 1.0f / 32 * 6.0f;
-            var layer = sprite.AddLayer(new SpriteSpecifier.Rsi(new ResPath("_Wega/Interface/Misc/bloodcult_halo.rsi"), haloState));
-            sprite.LayerMapSet(PentagramKey.Halo, layer);
+            var bounds = _sprite.GetLocalBounds((uid, sprite));
+            var adj = bounds.Height / 2 + 1.0f / 32 * 6.0f;
 
-            sprite.LayerSetOffset(layer, new Vector2(0.0f, adj));
-            sprite.LayerSetShader(layer, "unshaded");
+            var layerData = new PrototypeLayerData
+            {
+                Shader = "unshaded",
+                RsiPath = "_Wega/Interface/Misc/bloodcult_halo.rsi",
+                State = haloState,
+                Offset = new Vector2(0.0f, adj)
+            };
+
+            var layer = _sprite.AddLayer(uid, layerData, null);
+            _sprite.LayerMapSet(uid, PentagramKey.Halo, layer);
         }
 
         private void RemoveHalo(EntityUid uid, PentagramDisplayComponent component, ComponentShutdown args)
         {
-            if (!TryComp<SpriteComponent>(uid, out var sprite))
-                return;
-
-            if (sprite.LayerMapTryGet(PentagramKey.Halo, out var layer))
+            if (_sprite.LayerMapTryGet(uid, PentagramKey.Halo, out var layer, true))
             {
-                sprite.RemoveLayer(layer);
+                _sprite.RemoveLayer(uid, layer);
             }
         }
 
         private void OnSoulStoneAppearanceChanged(EntityUid uid, StoneSoulComponent component, ref AppearanceChangeEvent args)
         {
-            if (args.Sprite == null)
-                return;
-
-            var sprite = args.Sprite;
             if (!_appearance.TryGetData(uid, StoneSoulVisuals.HasSoul, out bool hasSoul))
                 hasSoul = false;
 
-            sprite.LayerSetVisible(StoneSoulVisualLayers.Soul, hasSoul);
+            _sprite.LayerSetVisible(uid, StoneSoulVisualLayers.Soul, hasSoul);
             if (!hasSoul)
             {
-                sprite.LayerSetVisible(StoneSoulVisualLayers.Base, true);
+                _sprite.LayerSetVisible(uid, StoneSoulVisualLayers.Base, true);
             }
             else
             {
-                sprite.LayerSetVisible(StoneSoulVisualLayers.Base, false);
+                _sprite.LayerSetVisible(uid, StoneSoulVisualLayers.Base, false);
             }
         }
 

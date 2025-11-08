@@ -10,12 +10,14 @@
     layers:
     - state: icon-top
     - state: icon-down
+      color: "#b3b3b9"
   - type: Clothing
     sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
     clothingVisuals:
       jumpsuit:
       - state: equipped-INNERCLOTHING-top
       - state: equipped-INNERCLOTHING-down
+        color: "#b3b3b9"
       
 #Grey top
 - type: entity
@@ -28,17 +30,17 @@
     sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
     layers:
     - state: icon-top
-      color: "#b3b3b3"
+      color: "#b3b3b9"
     - state: icon-down
-      color: "#b3b3b3"
+      color: "#6c6c78"
   - type: Clothing
     sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
     clothingVisuals:
       jumpsuit:
       - state: equipped-INNERCLOTHING-top
-        color: "#b3b3b3"
+        color: "#b3b3b9"
       - state: equipped-INNERCLOTHING-down
-        color: "#b3b3b3"
+        color: "#6c6c78"
 
 # Black top
 - type: entity
@@ -53,7 +55,7 @@
     - state: icon-top
       color: "#3f3f3f"
     - state: icon-down
-      color: "#3f3f3f"
+      color: "#34343e"
   - type: Clothing
     sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
     clothingVisuals:
@@ -61,7 +63,7 @@
       - state: equipped-INNERCLOTHING-top
         color: "#3f3f3f"
       - state: equipped-INNERCLOTHING-down
-        color: "#3f3f3f"
+        color: "#34343e"
 # Blue top
 - type: entity
   parent: ClothingUniformBase
@@ -75,7 +77,7 @@
     - state: icon-top
       color: "#52aecc"
     - state: icon-down
-      color: "#52aecc"
+      color: "#5087ab"
   - type: Clothing
     sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
     clothingVisuals:
@@ -83,7 +85,7 @@
       - state: equipped-INNERCLOTHING-top
         color: "#52aecc"
       - state: equipped-INNERCLOTHING-down
-        color: "#52aecc"
+        color: "#5087ab"
 
 # Dark Blue top
 - type: entity
@@ -98,7 +100,7 @@
     - state: icon-top
       color: "#3285ba"
     - state: icon-down
-      color: "#3285ba"
+      color: "#255b8a"
   - type: Clothing
     sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
     clothingVisuals:
@@ -106,7 +108,7 @@
       - state: equipped-INNERCLOTHING-top
         color: "#3285ba"
       - state: equipped-INNERCLOTHING-down
-        color: "#3285ba"
+        color: "#255b8a"
 
 # Teal top
 - type: entity
@@ -121,7 +123,7 @@
     - state: icon-top
       color: "#77f3b7"
     - state: icon-down
-      color: "#77f3b7"
+      color: "#5ab8a6"
   - type: Clothing
     sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
     clothingVisuals:
@@ -129,7 +131,7 @@
       - state: equipped-INNERCLOTHING-top
         color: "#77f3b7"
       - state: equipped-INNERCLOTHING-down
-        color: "#77f3b7"
+        color: "#5ab8a6"
 
 # Green top
 - type: entity
@@ -144,7 +146,7 @@
     - state: icon-top
       color: "#9ed63a"
     - state: icon-down
-      color: "#9ed63a"
+      color: "#62993d"
   - type: Clothing
     sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
     clothingVisuals:
@@ -152,7 +154,7 @@
       - state: equipped-INNERCLOTHING-top
         color: "#9ed63a"
       - state: equipped-INNERCLOTHING-down
-        color: "#9ed63a"
+        color: "#62993d"
 
  # Dark Green top
 - type: entity
@@ -167,7 +169,7 @@
     - state: icon-top
       color: "#007923"
     - state: icon-down
-      color: "#007923"
+      color: "#0e471e"
   - type: Clothing
     sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
     clothingVisuals:
@@ -175,7 +177,7 @@
       - state: equipped-INNERCLOTHING-top
         color: "#007923"
       - state: equipped-INNERCLOTHING-down
-        color: "#007923"
+        color: "#0e471e"
 
 # Orange top
 - type: entity
@@ -190,7 +192,7 @@
     - state: icon-top
       color: "#ff8c19"
     - state: icon-down
-      color: "#ff8c19"
+      color: "#b55024"
   - type: Clothing
     sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
     clothingVisuals:
@@ -198,7 +200,7 @@
       - state: equipped-INNERCLOTHING-top
         color: "#ff8c19"
       - state: equipped-INNERCLOTHING-down
-        color: "#ff8c19"
+        color: "#b55024"
 
 # Pink top
 - type: entity
@@ -213,7 +215,7 @@
     - state: icon-top
       color: "#ffa69b"
     - state: icon-down
-      color: "#ffa69b"
+      color: "#d1808d"
   - type: Clothing
     sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
     clothingVisuals:
@@ -221,7 +223,7 @@
       - state: equipped-INNERCLOTHING-top
         color: "#ffa69b"
       - state: equipped-INNERCLOTHING-down
-        color: "#ffa69b"
+        color: "#d1808d"
 
 # Red top
 - type: entity
@@ -236,7 +238,7 @@
     - state: icon-top
       color: "#eb0c07"
     - state: icon-down
-      color: "#eb0c07"
+      color: "#a11b3a"
   - type: Clothing
     sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
     clothingVisuals:
@@ -244,7 +246,7 @@
       - state: equipped-INNERCLOTHING-top
         color: "#eb0c07"
       - state: equipped-INNERCLOTHING-down
-        color: "#eb0c07"
+        color: "#a11b3a"
 
 # Yellow top
 - type: entity
@@ -259,7 +261,7 @@
     - state: icon-top
       color: "#ffe14d"
     - state: icon-down
-      color: "#ffe14d"
+      color: "#cf9748"
   - type: Clothing
     sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
     clothingVisuals:
@@ -267,7 +269,7 @@
       - state: equipped-INNERCLOTHING-top
         color: "#ffe14d"
       - state: equipped-INNERCLOTHING-down
-        color: "#ffe14d"
+        color: "#cf9748"
 
 # Purple top
 - type: entity
@@ -282,7 +284,7 @@
     - state: icon-top
       color: "#9f70cc"
     - state: icon-down
-      color: "#9f70cc"
+      color: "#614896"
   - type: Clothing
     sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
     clothingVisuals:
@@ -290,7 +292,7 @@
       - state: equipped-INNERCLOTHING-top
         color: "#9f70cc"
       - state: equipped-INNERCLOTHING-down
-        color: "#9f70cc"
+        color: "#614896"
 
 # Light Brown top
 - type: entity
@@ -305,7 +307,7 @@
     - state: icon-top
       color: "#c59431"
     - state: icon-down
-      color: "#c59431"
+      color: "#a66329"
   - type: Clothing
     sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
     clothingVisuals:
@@ -313,7 +315,7 @@
       - state: equipped-INNERCLOTHING-top
         color: "#c59431"
       - state: equipped-INNERCLOTHING-down
-        color: "#c59431"
+        color: "#a66329"
 
 # Brown top
 - type: entity
@@ -328,7 +330,7 @@
     - state: icon-top
       color: "#a17229"
     - state: icon-down
-      color: "#a17229"
+      color: "#914b26"
   - type: Clothing
     sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
     clothingVisuals:
@@ -336,7 +338,7 @@
       - state: equipped-INNERCLOTHING-top
         color: "#a17229"
       - state: equipped-INNERCLOTHING-down
-        color: "#a17229"
+        color: "#914b26"
 
 # Maroon top
 - type: entity
@@ -351,7 +353,7 @@
     - state: icon-top
       color: "#cc295f"
     - state: icon-down
-      color: "#cc295f"
+      color: "#8f2b5b"
   - type: Clothing
     sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
     clothingVisuals:
@@ -359,7 +361,7 @@
       - state: equipped-INNERCLOTHING-top
         color: "#cc295f"
       - state: equipped-INNERCLOTHING-down
-        color: "#cc295f"
+        color: "#8f2b5b"
 
 ## Topick
 - type: entity

@@ -24,8 +24,8 @@ public sealed class ListenUpOverlay : Overlay
 
     private Texture _texture;
 
-    protected float Radius;
-    protected SpriteSpecifier Sprite;
+    private float _radius;
+    private SpriteSpecifier _sprite;
 
     public override bool RequestScreenTexture => true;
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
@@ -39,10 +39,10 @@ public sealed class ListenUpOverlay : Overlay
         _entityLookup = _entity.System<EntityLookupSystem>();
         _gameTiming = IoCManager.Resolve<IGameTiming>();
 
-        Radius = radius;
-        Sprite = sprite;
+        _radius = radius;
+        _sprite = sprite;
 
-        _texture = _spriteSystem.GetFrame(Sprite, _gameTiming.CurTime);
+        _texture = _spriteSystem.GetFrame(_sprite, _gameTiming.CurTime);
 
 
         ZIndex = -1;
@@ -55,15 +55,15 @@ public sealed class ListenUpOverlay : Overlay
             || (!_entity.TryGetComponent<TransformComponent>(_players.LocalEntity, out var playerTransform)))
             return;
 
-        _texture = _spriteSystem.GetFrame(Sprite, _gameTiming.CurTime);
+        _texture = _spriteSystem.GetFrame(_sprite, _gameTiming.CurTime);
 
         var handle = args.WorldHandle;
         var eye = args.Viewport.Eye;
         var eyeRot = eye?.Rotation ?? default;
 
-        var entities = _entityLookup.GetEntitiesInRange<MobStateComponent>(playerTransform.Coordinates, Radius);
+        var entities = _entityLookup.GetEntitiesInRange<MobStateComponent>(playerTransform.Coordinates, _radius);
 
-        foreach (var (uid, stateComp) in entities)
+        foreach (var (uid, _) in entities)
         {
 
             if (!_entity.TryGetComponent<SpriteComponent>(uid, out var sprite)
@@ -91,6 +91,6 @@ public sealed class ListenUpOverlay : Overlay
         var rotation = Angle.Zero;
 
         handle.SetTransform(position, rotation);
-        handle.DrawTexture(_texture, new System.Numerics.Vector2(-0.5f));
+        handle.DrawTexture(_texture, new Vector2(-0.5f));
     }
 }

@@ -1,10 +1,10 @@
 using Content.Shared.Actions;
 using Content.Shared.Alert;
 using Robust.Shared.Audio;
-using Robust.Shared.Containers;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
-namespace Content.Shared._Wega.Android;
+
+namespace Content.Shared.Android;
 
 public sealed partial class ToggleLockActionEvent : InstantActionEvent;
 

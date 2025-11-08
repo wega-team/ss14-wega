@@ -55,3 +55,272 @@
       sprite: _Wega/Clothing/Uniforms/Jumpsuit/postman.rsi
     - type: Clothing
       sprite: _Wega/Clothing/Uniforms/Jumpsuit/postman.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitNoChicks
+  name: NoChicks T-shirt
+  description: We can live in a world, where's no female do exist!
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpsuit/tshirt_nochicks.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpsuit/tshirt_nochicks.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitForChicks
+  name: ForChicks T-shirt
+  description: We live in a world, which can't exist without a female!
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpsuit/tshirt_forchicks.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpsuit/tshirt_forchicks.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitTurtleneckAquamarine
+  name: aquamarine turtleneck
+  description: Too bright!
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpsuit/turtleneck_aquamarine.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpsuit/turtleneck_aquamarine.rsi
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitTurtleneckWhite
+  name: white turtleneck
+  description: Warm and comfy.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpsuit/turtleneck_white.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpsuit/turtleneck_white.rsi
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitTurtleneckAzure
+  name: azure turtleneck
+  description: Brighter shade of blue.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpsuit/turtleneck_azure.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpsuit/turtleneck_azure.rsi
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitTurtleneckYellow
+  name: yellow turtleneck
+  description: Filled with happines.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpsuit/turtleneck_yellow.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpsuit/turtleneck_yellow.rsi
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitTurtleneckGreen
+  name: green turtleneck
+  description: Cheaper analog of CentComm turtleneck.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpsuit/turtleneck_green.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpsuit/turtleneck_green.rsi
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitTurtleneckBrown
+  name: brown turtleneck
+  description: -Ya know why i wear red? It hides blood well! -But that's brown color...
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpsuit/turtleneck_brown.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpsuit/turtleneck_brown.rsi
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitTurtleneckRed
+  name: red turtleneck
+  description: Hides blood of clowns well!
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpsuit/turtleneck_red.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpsuit/turtleneck_red.rsi
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitTurtleneckOrange
+  name: orange turtleneck
+  description: I don't want to talk about it.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpsuit/turtleneck_orange.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpsuit/turtleneck_orange.rsi
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitTurtleneckPink
+  name: pink turtleneck
+  description: Who would wear this?
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpsuit/turtleneck_pink.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpsuit/turtleneck_pink.rsi
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitTurtleneckGrey
+  name: grey turtleneck
+  description: Grey style?
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpsuit/turtleneck_grey.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpsuit/turtleneck_grey.rsi
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitTurtleneckBlue
+  name: blue turtleneck
+  description: Darker shade of azure.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpsuit/turtleneck_blue.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpsuit/turtleneck_blue.rsi
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitTurtleneckPurple
+  name: purple turtleneck
+  description: Feel yourself like a real scientist.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpsuit/turtleneck_purple.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpsuit/turtleneck_purple.rsi
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitTurtleneckBlack
+  name: black turtleneck
+  description: Favourite clothes of bookworms.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpsuit/turtleneck_black.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpsuit/turtleneck_black.rsi
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitTurtleneckWhiteBlackSleeveless
+  name: ancient jumpsuit
+  description: A terribly ragged and frayed grey jumpsuit. It looks like it hasn't been washed in over a decade.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpsuit/turtleneck_whiteblacksleeveless.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpsuit/turtleneck_whiteblacksleeveless.rsi
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitTurtleneckWhiteSleeveless
+  name: ancient jumpsuit
+  description: A terribly ragged and frayed grey jumpsuit. It looks like it hasn't been washed in over a decade.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpsuit/turtleneck_whitesleeveless.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpsuit/turtleneck_whitesleeveless.rsi
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitTurtleneckBlackSleeveless
+  name: ancient jumpsuit
+  description: A terribly ragged and frayed grey jumpsuit. It looks like it hasn't been washed in over a decade.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpsuit/turtleneck_blacksleeveless.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpsuit/turtleneck_blacksleeveless.rsi
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitTurtleneckTactick
+  name: tactical turtleneck
+  description: Tactical jumpsuit for real CQB lovers.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpsuit/turtleneck_tactick.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpsuit/turtleneck_tactick.rsi
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitTurtleneckSalat
+  name: salat turtleneck
+  description: Favourite clothes of bookworms.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpsuit/turtleneck_salat.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpsuit/turtleneck_salat.rsi
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitTurtleneckSalatblack
+  name: salat black turtleneck
+  description: Favourite clothes of bookworms.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpsuit/turtleneck_salatblack.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpsuit/turtleneck_salatblack.rsi
+  - type: StaticPrice
+    price: 15

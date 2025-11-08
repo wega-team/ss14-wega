@@ -4,6 +4,7 @@ using Robust.Shared.Timing;
 
 namespace Content.Shared.Genetics.Systems;
 
+// TODO: ref this
 public sealed class DizzySystem : EntitySystem
 {
     [Dependency] private readonly StatusEffectsSystem _statusEffectsSystem = default!;

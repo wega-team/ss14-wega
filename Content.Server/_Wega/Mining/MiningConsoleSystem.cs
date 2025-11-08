@@ -137,8 +137,11 @@ public sealed class MiningConsoleSystem : EntitySystem
 
     private EntityUid? EnsureAccount()
     {
-        var account = EntityQuery<MiningAccountComponent>().FirstOrDefault();
-        return account?.Owner ?? null;
+        var query = EntityQueryEnumerator<MiningAccountComponent>();
+        if (query.MoveNext(out var uid, out _))
+            return uid;
+
+        return null;
     }
 
     public void SwitchGlobalMode(EntityUid console, MiningMode mode)

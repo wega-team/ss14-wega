@@ -43,10 +43,11 @@ public sealed class NightLightningSystem : EntitySystem
 
     private void UpdateNightLights(EntityUid uid, NightLightningComponent comp)
     {
-        if (!_cfg.GetCVar(WegaCVars.NightLightEnabled) || !TryComp<TransformComponent>(uid, out var transform))
+        if (!_cfg.GetCVar(WegaCVars.NightLightEnabled))
             return;
 
         var station = Name(uid);
+        var transform = Transform(uid);
         if (IsNightTime() && !comp.IsNight)
         {
             var lightEntities = _lookup.GetEntitiesInRange<PointLightComponent>(transform.Coordinates, 500f);

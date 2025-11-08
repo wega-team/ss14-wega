@@ -32,6 +32,7 @@ using Content.Shared.Weapons.Melee;
 using Content.Shared.Weapons.Ranged.Events;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
+using Robust.Shared.Audio;
 using Robust.Shared.Containers;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
@@ -372,16 +373,16 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
             if (!_firstTriggered)
             {
                 var actorFilter = Filter.Empty();
-                var actorQuery = EntityQuery<ActorComponent>();
-                foreach (var actor in actorQuery)
+                var actorQuery = EntityQueryEnumerator<ActorComponent, BloodCultistComponent>();
+                while (actorQuery.MoveNext(out var actorUid, out var actor, out _))
                 {
-                    if (actor.Owner != EntityUid.Invalid && HasComp<BloodCultistComponent>(actor.Owner))
+                    if (actorUid != EntityUid.Invalid)
                     {
                         actorFilter.AddPlayer(actor.PlayerSession);
-                        _popup.PopupEntity(Loc.GetString("blood-cult-first-warning"), actor.Owner, actor.Owner, PopupType.SmallCaution);
+                        _popup.PopupEntity(Loc.GetString("blood-cult-first-warning"), actorUid, actorUid, PopupType.SmallCaution);
                     }
                 }
-                _audio.PlayGlobal("/Audio/_Wega/Ambience/Antag/bloodcult_eyes.ogg", actorFilter, true);
+                _audio.PlayGlobal(new SoundPathSpecifier("/Audio/_Wega/Ambience/Antag/bloodcult_eyes.ogg"), actorFilter, true);
                 _firstTriggered = true;
             }
         }
@@ -399,16 +400,16 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
             if (!_secondTriggered)
             {
                 var actorFilter = Filter.Empty();
-                var actorQuery = EntityQuery<ActorComponent>();
-                foreach (var actor in actorQuery)
+                var actorQuery = EntityQueryEnumerator<ActorComponent, BloodCultistComponent>();
+                while (actorQuery.MoveNext(out var actorUid, out var actor, out _))
                 {
-                    if (actor.Owner != EntityUid.Invalid && HasComp<BloodCultistComponent>(actor.Owner))
+                    if (actorUid != EntityUid.Invalid)
                     {
                         actorFilter.AddPlayer(actor.PlayerSession);
-                        _popup.PopupEntity(Loc.GetString("blood-cult-second-warning"), actor.Owner, actor.Owner, PopupType.SmallCaution);
+                        _popup.PopupEntity(Loc.GetString("blood-cult-second-warning"), actorUid, actorUid, PopupType.SmallCaution);
                     }
                 }
-                _audio.PlayGlobal("/Audio/_Wega/Ambience/Antag/bloodcult_halos.ogg", actorFilter, true);
+                _audio.PlayGlobal(new SoundPathSpecifier("/Audio/_Wega/Ambience/Antag/bloodcult_halos.ogg"), actorFilter, true);
                 _secondTriggered = true;
             }
         }
@@ -835,8 +836,8 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
         structureComp.ActivateTime = currentTime + TimeSpan.FromMinutes(4);
 
         var item = _entityManager.SpawnEntity(args.Item, Transform(structure).Coordinates);
-        if (structureComp.Sound != string.Empty)
-            _audio.PlayPvs(structureComp.Sound, structure);
+        _audio.PlayPvs(structureComp.Sound, structure);
+
         var cultistPosition = _transform.GetWorldPosition(user);
         var structurePosition = _transform.GetWorldPosition(structure);
         var distance = (structurePosition - cultistPosition).Length();

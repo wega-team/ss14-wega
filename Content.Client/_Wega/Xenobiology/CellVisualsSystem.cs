@@ -7,6 +7,8 @@ namespace Content.Client._Wega.Xenobiology;
 
 public sealed class CellVisualsSystem : SharedCellVisualsSystem
 {
+    [Dependency] private readonly SpriteSystem _sprite = default!;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -29,6 +31,6 @@ public sealed class CellVisualsSystem : SharedCellVisualsSystem
         if (color is null)
             return;
 
-        args.Sprite?.LayerSetColor(CellContainerVisuals.DishLayer, color.Value);
+        _sprite.LayerSetColor(ent.Owner, CellContainerVisuals.DishLayer, color.Value);
     }
 }

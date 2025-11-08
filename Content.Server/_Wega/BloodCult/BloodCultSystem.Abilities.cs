@@ -183,26 +183,20 @@ public sealed partial class BloodCultSystem
                 var senderName = Name(uid) ?? "Unknown";
                 var popupMessage = Loc.GetString("cult-commune-massage", ("name", senderName), ("massage", finalMessage));
 
-                var cultistQuery = EntityQuery<ActorComponent, BloodCultistComponent>(true);
-                foreach (var (actorComp, cultistComp) in cultistQuery)
+                var cultistQuery = EntityQueryEnumerator<ActorComponent, BloodCultistComponent>();
+                while (cultistQuery.MoveNext(out var cultistUid, out var actorComp, out var cultistComp))
                 {
                     if (actorComp == playerActor) continue;
 
-                    if (!TryComp<ActorComponent>(actorComp.Owner, out var cultistActor))
-                        continue;
-
-                    _prayerSystem.SendSubtleMessage(cultistActor.PlayerSession, cultistActor.PlayerSession, string.Empty, popupMessage);
+                    _prayerSystem.SendSubtleMessage(actorComp.PlayerSession, actorComp.PlayerSession, string.Empty, popupMessage);
                 }
 
-                var constructQuery = EntityQuery<ActorComponent, BloodCultConstructComponent>(true);
-                foreach (var (actorComp, constructComp) in constructQuery)
+                var constructQuery = EntityQueryEnumerator<ActorComponent, BloodCultConstructComponent>();
+                while (constructQuery.MoveNext(out var constructUid, out var actorComp, out var constructComp))
                 {
                     if (actorComp == playerActor) continue;
 
-                    if (!TryComp<ActorComponent>(actorComp.Owner, out var constructActor))
-                        continue;
-
-                    _prayerSystem.SendSubtleMessage(constructActor.PlayerSession, constructActor.PlayerSession, string.Empty, popupMessage);
+                    _prayerSystem.SendSubtleMessage(actorComp.PlayerSession, actorComp.PlayerSession, string.Empty, popupMessage);
                 }
 
                 _admin.Add(LogType.Chat, LogImpact.Low, $"{ToPrettyString(uid):user} saying the: {finalMessage} in cult commune");
@@ -684,7 +678,7 @@ public sealed partial class BloodCultSystem
                             var coords = Transform(target).Coordinates;
                             if (stackPrototype.ID is "Steel" && stack.Count >= 30)
                             {
-                                _stack.SetCount(target, stack.Count - 30);
+                                _stack.ReduceCount(target, 30);
                                 if (stack.Count > 0)
                                 {
                                     _entityManager.SpawnEntity("BloodCultConstruct", coords);
@@ -702,7 +696,7 @@ public sealed partial class BloodCultSystem
                                 _entityManager.DeleteEntity(target);
                                 if (TryComp<StackComponent>(runeSteel, out var newStack))
                                 {
-                                    _stack.SetCount(runeSteel, count);
+                                    _stack.SetCount((runeSteel, newStack), count);
                                 }
                             }
 
@@ -887,20 +881,25 @@ public sealed partial class BloodCultSystem
             return;
 
         _entityManager.DeleteEntity(args.Used);
-        var runes = EntityQuery<BloodRuneComponent>(true)
-            .Where(runeEntity =>
-                TryComp<BloodRuneComponent>(runeEntity.Owner, out var runeComp) && runeComp.Prototype == "teleport")
-            .ToList();
+
+        var runes = new List<EntityUid>();
+        var runeQuery = EntityQueryEnumerator<BloodRuneComponent>();
+
+        while (runeQuery.MoveNext(out var runeUid, out var runeComp))
+        {
+            if (runeComp.Prototype == "teleport")
+                runes.Add(runeUid);
+        }
 
         if (runes.Count > 0)
         {
-            var randomRune = runes[new Random().Next(runes.Count)];
-            var runeTransform = _entityManager.GetComponent<TransformComponent>(randomRune.Owner);
+            var randomRune = runes[_random.Next(runes.Count)];
+            var runeTransform = _entityManager.GetComponent<TransformComponent>(randomRune);
             var targetCoords = Transform(args.Target.Value).Coordinates;
             _entityManager.SpawnEntity("BloodCultOutEffect", targetCoords);
             _transform.SetCoordinates(args.Target.Value, runeTransform.Coordinates);
             _entityManager.SpawnEntity("BloodCultInEffect", runeTransform.Coordinates);
-            _entityManager.DeleteEntity(randomRune.Owner);
+            _entityManager.DeleteEntity(randomRune);
         }
     }
 

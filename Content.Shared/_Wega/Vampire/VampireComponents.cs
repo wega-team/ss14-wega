@@ -14,8 +14,7 @@ namespace Content.Shared.Vampire.Components;
 [AutoGenerateComponentState]
 public sealed partial class VampireComponent : Component
 {
-    [ValidatePrototypeId<MetabolizerTypePrototype>]
-    public static readonly string MetabolizerVampire = "Vampire";
+    public static readonly ProtoId<MetabolizerTypePrototype> MetabolizerVampire = "Vampire";
 
     public static readonly DamageSpecifier HolyDamage = new()
     {
@@ -27,17 +26,10 @@ public sealed partial class VampireComponent : Component
         DamageDict = new Dictionary<string, FixedPoint2>() { { "Heat", 2.5 } }
     };
 
-    [ValidatePrototypeId<EntityPrototype>]
-    public static readonly string DrinkActionPrototype = "ActionDrinkBlood";
-
-    [ValidatePrototypeId<EntityPrototype>]
-    public static readonly string SelectClassActionPrototype = "ActionVampireSelectClass";
-
-    [ValidatePrototypeId<EntityPrototype>]
-    public static readonly string RejuvenateActionPrototype = "ActionVampireRejuvenate";
-
-    [ValidatePrototypeId<EntityPrototype>]
-    public static readonly string GlareActionPrototype = "ActionVampireGlare";
+    public static readonly EntProtoId DrinkActionPrototype = "ActionDrinkBlood";
+    public static readonly EntProtoId SelectClassActionPrototype = "ActionVampireSelectClass";
+    public static readonly EntProtoId RejuvenateActionPrototype = "ActionVampireRejuvenate";
+    public static readonly EntProtoId GlareActionPrototype = "ActionVampireGlare";
 
     public readonly SoundSpecifier BloodDrainSound = new SoundPathSpecifier(
         "/Audio/Items/drink.ogg",
