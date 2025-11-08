@@ -441,6 +441,7 @@
     damage:
       types:
         Piercing: 0
+  - type: VentCrawler # Corvax-Wega-VentCrawling
 
 - type: entity
   name: glockroach
@@ -1447,6 +1448,7 @@
       effects:
       - !type:WashCreamPie
   - type: Crawler
+  - type: VentCrawler # Corvax-Wega-VentCrawling
   # Corvax-Wega-Surgery-start
   - type: Operated
     raceGraph: PrimateSurgery
@@ -1494,7 +1496,6 @@
     clumsySound:
       path: /Audio/Animals/monkey_scream.ogg
   # Corvax-Wega-Genetics-start
-  - type: VentCrawler # Corvax-Wega-VentCrawling
   - type: DnaModifier
     upper: MobHuman
     lowest: MobMonkey

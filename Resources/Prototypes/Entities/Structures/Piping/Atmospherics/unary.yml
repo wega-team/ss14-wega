@@ -117,6 +117,14 @@
     - type: GuideHelp
       guides:
       - PassiveVent
+    # Corvax-Wega-VentCrawling-start
+    - type: VentCrawTube
+      containerId: VentCrawTube
+    - type: VentCrawEntry
+    - type: ContainerContainer
+      containers:
+        VentCrawTube: !type:Container
+    # Corvax-Wega-VentCrawling-end
 
 - type: entity
   parent: [GasUnaryBase, AirSensorBase]

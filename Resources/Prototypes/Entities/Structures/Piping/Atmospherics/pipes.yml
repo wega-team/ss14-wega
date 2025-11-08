@@ -83,17 +83,6 @@
         Secondary: Structures/Piping/Atmospherics/pipe_alt1.rsi
         Tertiary: Structures/Piping/Atmospherics/pipe_alt2.rsi
 
-- type: entity
-  id: VentCrawHolder
-  categories: [ HideSpawnMenu ]
-  name: vent claw holder
-  components:
-    - type: VentCrawHolder
-    - type: InputMover
-    - type: ContainerContainer
-      containers:
-        VentCrawHolderComponent: !type:Container
-
 #Note: The PipeDirection of the PipeNode should be the south-facing version, because the entity starts at an angle of 0 (south)
 
 - type: entity
