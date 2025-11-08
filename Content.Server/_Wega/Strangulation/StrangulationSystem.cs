@@ -3,7 +3,6 @@ using Content.Shared.DoAfter;
 using Content.Shared.Verbs;
 using Content.Shared.Strangulation;
 using Content.Shared.Mobs.Systems;
-using Content.Shared.Hands.Components;
 using Content.Shared.Hands;
 using Content.Shared.Popups;
 using Content.Shared.Garrotte;
@@ -21,8 +20,8 @@ using Robust.Shared.Map;
 using Robust.Shared.Player;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Hands.EntitySystems;
-using Content.Shared.StatusEffect;
 using Content.Shared.Speech.Muting;
+using Content.Shared.StatusEffectNew;
 
 namespace Content.Server.Strangulation
 {
@@ -108,7 +107,7 @@ namespace Content.Server.Strangulation
                 return;
 
             var target = args.Target ?? default;
-            _statusEffect.TryAddStatusEffect<MutedComponent>(target, "Muted", TimeSpan.FromSeconds(3f), true);
+            _statusEffect.TryAddStatusEffectDuration(target, "Muted", TimeSpan.FromSeconds(3f));
 
             if (args.Cancelled)
             {

@@ -22,15 +22,12 @@ public sealed partial class RCDUpgradeKitSystem : EntitySystem
         if (!args.CanReach)
             return;
 
-        if (!TryComp<RCDComponent>(args.Target, out var RCD))
-            return;
-
-        if (RCD.Reinforced)
+        if (!TryComp<RCDComponent>(args.Target, out var rcd) || rcd.Reinforced)
             return;
 
         _audio.PlayPredicted(ent.Comp.UpgradeSound, args.Target.Value, args.User);
 
-        RCD.Reinforced = true;
+        rcd.Reinforced = true;
         QueueDel(ent);
 
         args.Handled = true;

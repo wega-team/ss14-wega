@@ -9,6 +9,7 @@ using Robust.Shared.Timing;
 
 namespace Content.Server.Hallucinations;
 
+// TODO: Full refactor this shit
 public sealed partial class HallucinationsSystem : EntitySystem
 {
     [Dependency] private readonly IEntityManager _entityManager = default!;

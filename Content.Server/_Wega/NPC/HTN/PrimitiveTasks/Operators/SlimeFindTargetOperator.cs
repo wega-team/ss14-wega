@@ -29,32 +29,30 @@ public sealed partial class SlimeFindTargetOperator : HTNOperator
         if (!_entMan.TryGetComponent<TransformComponent>(owner, out var ownerTransform))
             return (false, null);
 
-        var target = _entMan.EntityQuery<HumanoidAppearanceComponent>()
-            .Select(x => x.Owner)
-            .Where(x =>
+        EntityUid target = default;
+        float minDistance = float.MaxValue;
+
+        var query = _entMan.EntityQueryEnumerator<HumanoidAppearanceComponent, TransformComponent>();
+        while (query.MoveNext(out var uid, out _, out var xform))
+        {
+            if (_entMan.TryGetComponent<SlimeSocialComponent>(owner, out var social) &&
+                social.Friends.Contains(uid))
+                continue;
+
+            if (_entMan.TryGetComponent<MobStateComponent>(uid, out var mobState) &&
+                mobState.CurrentState == MobState.Dead)
+                continue;
+
+            if (!xform.Coordinates.TryDistance(_entMan, ownerTransform.Coordinates, out var dist) ||
+                dist > range)
+                continue;
+
+            if (dist < minDistance)
             {
-                if (!_entMan.TryGetComponent<TransformComponent>(x, out var xform))
-                    return false;
-
-                if (_entMan.TryGetComponent<SlimeSocialComponent>(owner, out var social))
-                    if (social.Friends.Contains(x))
-                        return false;
-
-                if (_entMan.TryGetComponent<MobStateComponent>(x, out var mobState) &&
-                    mobState.CurrentState == MobState.Dead)
-                    return false;
-
-                return xform.Coordinates.TryDistance(_entMan, ownerTransform.Coordinates, out var dist) &&
-                        dist <= range;
-            })
-            .OrderBy(x =>
-            {
-                var xform = _entMan.GetComponent<TransformComponent>(x);
-                return xform.Coordinates.TryDistance(_entMan, ownerTransform.Coordinates, out var dist)
-                    ? dist
-                    : float.MaxValue;
-            })
-            .FirstOrDefault();
+                minDistance = dist;
+                target = uid;
+            }
+        }
 
         if (target == default)
             return (false, null);

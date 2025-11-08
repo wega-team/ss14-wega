@@ -201,221 +201,204 @@
 - type: loadout
   id: JumpskirtTurtleneckAquamarine
   equipment:
-    jumpsuit: ADTClothingUniformJumpskirtTurtleneckAquamarine
+    jumpsuit: ClothingUniformJumpskirtTurtleneckAquamarine
   groupBy: "wegaTJ"    
     
 - type: loadout
   id: JumpsuitTurtleneckAquamarine
   equipment:
-    jumpsuit: ADTClothingUniformJumpsuitTurtleneckAquamarine  
+    jumpsuit: ClothingUniformJumpsuitTurtleneckAquamarine  
   groupBy: "wegaTJ"    
     
 - type: loadout
   id: JumpskirtTurtleneckWhite
   equipment:
-    jumpsuit: ADTClothingUniformJumpskirtTurtleneckWhite
+    jumpsuit: ClothingUniformJumpskirtTurtleneckWhite
   groupBy: "wegaTJ"    
     
 - type: loadout
   id: JumpsuitTurtleneckWhite
   equipment:
-    jumpsuit: ADTClothingUniformJumpsuitTurtleneckWhite  
+    jumpsuit: ClothingUniformJumpsuitTurtleneckWhite  
   groupBy: "wegaTJ" 
 
 - type: loadout
   id: JumpskirtTurtleneckAzure
   equipment:
-    jumpsuit: ADTClothingUniformJumpskirtTurtleneckAzure
+    jumpsuit: ClothingUniformJumpskirtTurtleneckAzure
   groupBy: "wegaTJ"    
     
 - type: loadout
   id: JumpsuitTurtleneckAzure
   equipment:
-    jumpsuit: ADTClothingUniformJumpsuitTurtleneckAzure  
+    jumpsuit: ClothingUniformJumpsuitTurtleneckAzure  
   groupBy: "wegaTJ" 
 
 - type: loadout
   id: JumpskirtTurtleneckYellow
   equipment:
-    jumpsuit: ADTClothingUniformJumpskirtTurtleneckYellow
+    jumpsuit: ClothingUniformJumpskirtTurtleneckYellow
   groupBy: "wegaTJ"    
     
 - type: loadout
   id: JumpsuitTurtleneckYellow
   equipment:
-    jumpsuit: ADTClothingUniformJumpsuitTurtleneckYellow  
+    jumpsuit: ClothingUniformJumpsuitTurtleneckYellow  
   groupBy: "wegaTJ" 
 
 - type: loadout
   id: JumpskirtTurtleneckGreen
   equipment:
-    jumpsuit: ADTClothingUniformJumpskirtTurtleneckGreen
+    jumpsuit: ClothingUniformJumpskirtTurtleneckGreen
   groupBy: "wegaTJ"    
     
 - type: loadout
   id: JumpsuitTurtleneckGreen
   equipment:
-    jumpsuit: ADTClothingUniformJumpsuitTurtleneckGreen  
+    jumpsuit: ClothingUniformJumpsuitTurtleneckGreen  
   groupBy: "wegaTJ" 
 
 - type: loadout
   id: JumpskirtTurtleneckBrown
   equipment:
-    jumpsuit: ADTClothingUniformJumpskirtTurtleneckBrown
+    jumpsuit: ClothingUniformJumpskirtTurtleneckBrown
   groupBy: "wegaTJ"    
     
 - type: loadout
   id: JumpsuitTurtleneckBrown
   equipment:
-    jumpsuit: ADTClothingUniformJumpsuitTurtleneckBrown  
+    jumpsuit: ClothingUniformJumpsuitTurtleneckBrown  
   groupBy: "wegaTJ" 
 
 - type: loadout
   id: JumpskirtTurtleneckRed
   equipment:
-    jumpsuit: ADTClothingUniformJumpskirtTurtleneckRed
+    jumpsuit: ClothingUniformJumpskirtTurtleneckRed
   groupBy: "wegaTJ"    
     
 - type: loadout
   id: JumpsuitTurtleneckRed
   equipment:
-    jumpsuit: ADTClothingUniformJumpsuitTurtleneckRed  
+    jumpsuit: ClothingUniformJumpsuitTurtleneckRed  
   groupBy: "wegaTJ" 
 
 - type: loadout
   id: JumpskirtTurtleneckOrange
   equipment:
-    jumpsuit: ADTClothingUniformJumpskirtTurtleneckOrange
+    jumpsuit: ClothingUniformJumpskirtTurtleneckOrange
   groupBy: "wegaTJ"    
     
 - type: loadout
   id: JumpsuitTurtleneckOrange
   equipment:
-    jumpsuit: ADTClothingUniformJumpsuitTurtleneckOrange  
+    jumpsuit: ClothingUniformJumpsuitTurtleneckOrange  
   groupBy: "wegaTJ" 
 
 - type: loadout
   id: JumpskirtTurtleneckPink
   equipment:
-    jumpsuit: ADTClothingUniformJumpskirtTurtleneckPink
+    jumpsuit: ClothingUniformJumpskirtTurtleneckPink
   groupBy: "wegaTJ"    
     
 - type: loadout
   id: JumpsuitTurtleneckPink
   equipment:
-    jumpsuit: ADTClothingUniformJumpsuitTurtleneckPink  
+    jumpsuit: ClothingUniformJumpsuitTurtleneckPink  
   groupBy: "wegaTJ" 
 
 - type: loadout
   id: JumpskirtTurtleneckGrey
   equipment:
-    jumpsuit: ADTClothingUniformJumpskirtTurtleneckGrey
+    jumpsuit: ClothingUniformJumpskirtTurtleneckGrey
   groupBy: "wegaTJ"    
     
 - type: loadout
   id: JumpsuitTurtleneckGrey
   equipment:
-    jumpsuit: ADTClothingUniformJumpsuitTurtleneckGrey  
+    jumpsuit: ClothingUniformJumpsuitTurtleneckGrey  
   groupBy: "wegaTJ" 
 
 - type: loadout
   id: JumpskirtTurtleneckBlue
   equipment:
-    jumpsuit: ADTClothingUniformJumpskirtTurtleneckBlue
+    jumpsuit: ClothingUniformJumpskirtTurtleneckBlue
   groupBy: "wegaTJ"    
     
 - type: loadout
   id: JumpsuitTurtleneckBlue
   equipment:
-    jumpsuit: ADTClothingUniformJumpsuitTurtleneckBlue  
+    jumpsuit: ClothingUniformJumpsuitTurtleneckBlue  
   groupBy: "wegaTJ" 
 
 - type: loadout
   id: JumpskirtTurtleneckPurple
   equipment:
-    jumpsuit: ADTClothingUniformJumpskirtTurtleneckPurple
+    jumpsuit: ClothingUniformJumpskirtTurtleneckPurple
   groupBy: "wegaTJ"    
     
 - type: loadout
   id: JumpsuitTurtleneckPurple
   equipment:
-    jumpsuit: ADTClothingUniformJumpsuitTurtleneckPurple  
+    jumpsuit: ClothingUniformJumpsuitTurtleneckPurple  
   groupBy: "wegaTJ" 
 
 - type: loadout
   id: JumpskirtTurtleneckBlack
   equipment:
-    jumpsuit: ADTClothingUniformJumpskirtTurtleneckBlack
+    jumpsuit: ClothingUniformJumpskirtTurtleneckBlack
   groupBy: "wegaTJ"    
     
 - type: loadout
   id: JumpsuitTurtleneckBlack
   equipment:
-    jumpsuit: ADTClothingUniformJumpsuitTurtleneckBlack  
+    jumpsuit: ClothingUniformJumpsuitTurtleneckBlack  
   groupBy: "wegaTJ" 
 
 - type: loadout
   id: JumpskirtTurtleneckSalat
   equipment:
-    jumpsuit: ADTClothingUniformJumpskirtTurtleneckSalat
+    jumpsuit: ClothingUniformJumpskirtTurtleneckSalat
   groupBy: "wegaTJ"    
     
 - type: loadout
   id: JumpsuitTurtleneckSalat
   equipment:
-    jumpsuit: ADTClothingUniformJumpsuitTurtleneckSalat  
+    jumpsuit: ClothingUniformJumpsuitTurtleneckSalat  
   groupBy: "wegaTJ" 
 
 - type: loadout
   id: JumpsuitTurtleneckSalatblack
   equipment:
-    jumpsuit: ADTClothingUniformJumpsuitTurtleneckSalatblack
+    jumpsuit: ClothingUniformJumpsuitTurtleneckSalatblack
   groupBy: "wegaTJ"    
     
 - type: loadout
   id: JumpskirtTurtleneckBlackSleeveless
   equipment:
-    jumpsuit: ADTClothingUniformJumpskirtTurtleneckBlackSleeveless  
+    jumpsuit: ClothingUniformJumpskirtTurtleneckBlackSleeveless  
   groupBy: "wegaTJ" 
 
 - type: loadout
   id: JumpsuitTurtleneckBlackSleeveless
   equipment:
-    jumpsuit: ADTClothingUniformJumpsuitTurtleneckBlackSleeveless
+    jumpsuit: ClothingUniformJumpsuitTurtleneckBlackSleeveless
   groupBy: "wegaTJ"    
     
 - type: loadout
   id: JumpsuitTurtleneckWhiteBlackSleeveless
   equipment:
-    jumpsuit: ADTClothingUniformJumpsuitTurtleneckWhiteBlackSleeveless  
+    jumpsuit: ClothingUniformJumpsuitTurtleneckWhiteBlackSleeveless  
   groupBy: "wegaTJ" 
   
 - type: loadout
   id: JumpsuitTurtleneckWhiteSleeveless
   equipment:
-    jumpsuit: ADTClothingUniformJumpsuitTurtleneckWhiteSleeveless
+    jumpsuit: ClothingUniformJumpsuitTurtleneckWhiteSleeveless
   groupBy: "wegaTJ"    
     
 - type: loadout
   id: JumpskirtTurtleneckWhiteSleeveless
   equipment:
-    jumpsuit: ADTClothingUniformJumpskirtTurtleneckWhiteSleeveless
+    jumpsuit: ClothingUniformJumpskirtTurtleneckWhiteSleeveless
   groupBy: "wegaTJ" 
-
-
-
-
-
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     

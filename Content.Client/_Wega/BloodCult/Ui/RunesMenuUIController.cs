@@ -12,7 +12,6 @@ namespace Content.Client.Runes.Panel.Ui
         [Dependency] private readonly IEntityManager _entityManager = default!;
 
         private RunesPanelMenu? _panel;
-        private bool _panelDisposed = false;
 
         public override void Initialize()
         {
@@ -42,7 +41,6 @@ namespace Content.Client.Runes.Panel.Ui
 
         private void OnMenuClosed()
         {
-            _panelDisposed = true;
             _panel = null;
         }
     }
@@ -68,7 +66,7 @@ namespace Content.Client.Runes.Panel.Ui
             var userEntity = _entityManager.GetEntity(args.Uid);
             if (session?.AttachedEntity.HasValue == true && session.AttachedEntity.Value == userEntity)
             {
-                if (_menu is null || _menu.IsDisposed)
+                if (_menu is null)
                 {
                     _menu = _uiManager.CreateWindow<EmpoweringRuneMenu>();
                     _menu.OnClose += OnMenuClosed;
@@ -103,7 +101,6 @@ namespace Content.Client.Runes.Panel.Ui
         [Dependency] private readonly IEntityManager _entityManager = default!;
 
         private SummoningRunePanelMenu? _panel;
-        private bool _panelDisposed = false;
 
         public override void Initialize()
         {
@@ -131,7 +128,7 @@ namespace Content.Client.Runes.Panel.Ui
 
                 Timer.Spawn(30000, () =>
                 {
-                    if (_panel != null && !_panelDisposed)
+                    if (_panel != null)
                     {
                         _panel.Close();
                     }
@@ -141,7 +138,6 @@ namespace Content.Client.Runes.Panel.Ui
 
         private void OnMenuClosed()
         {
-            _panelDisposed = true;
             _panel = null;
         }
     }

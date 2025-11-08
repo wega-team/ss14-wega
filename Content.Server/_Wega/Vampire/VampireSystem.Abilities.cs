@@ -10,7 +10,6 @@ using Content.Server.Prayer;
 using Content.Server.Pinpointer;
 using Content.Shared.Actions.Components;
 using Content.Shared.Body.Components;
-using Content.Shared.Chat.Prototypes;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Clothing;
 using Content.Shared.CombatMode;
@@ -34,7 +33,6 @@ using Content.Shared.Prying.Components;
 using Content.Shared.Roles;
 using Content.Shared.Stealth;
 using Content.Shared.Stealth.Components;
-using Content.Shared.StatusEffect;
 using Content.Shared.Standing;
 using Content.Shared.Vampire;
 using Content.Shared.Vampire.Components;
@@ -55,6 +53,7 @@ using Content.Shared.Damage.Systems;
 using Content.Shared.Flash.Components;
 using Content.Shared.NullRod.Components;
 using Content.Shared.Surgery.Components;
+using Content.Shared.StatusEffectNew;
 
 namespace Content.Server.Vampire;
 
@@ -79,6 +78,8 @@ public sealed partial class VampireSystem
     [Dependency] private readonly SharedStaminaSystem _stamina = default!;
     [Dependency] private readonly NavMapSystem _navMap = default!;
     [Dependency] private readonly MovementModStatusSystem _movementMod = default!;
+
+    private static readonly EntProtoId RejuvenateAdvanced = "ActionVampireRejuvenateAdvanced";
 
     private void InitializePowers()
     {
@@ -196,7 +197,7 @@ public sealed partial class VampireSystem
                             _action.RemoveAction(uid, actionId);
                             _container.Remove(actionId, container);
 
-                            _action.AddAction(uid, "ActionVampireRejuvenateAdvanced");
+                            _action.AddAction(uid, RejuvenateAdvanced);
                             break;
                         }
                     }
@@ -256,7 +257,7 @@ public sealed partial class VampireSystem
         if (HasComp<BibleUserComponent>(target) && !component.TruePowerActive)
         {
             _stun.TryUpdateParalyzeDuration(vampire, TimeSpan.FromSeconds(5f));
-            _chat.TryEmoteWithoutChat(vampire, _prototypeManager.Index<EmotePrototype>("Scream"), true);
+            _chat.TryEmoteWithoutChat(vampire, _prototypeManager.Index(Scream), true);
             _damage.TryChangeDamage(vampire, VampireComponent.HolyDamage);
             return;
         }
@@ -1465,13 +1466,10 @@ public sealed partial class VampireSystem
     #endregion
 
     #region Other Methods
-    public void RemoveKnockdown(EntityUid uid, StatusEffectsComponent? status = null)
+    public void RemoveKnockdown(EntityUid uid)
     {
-        if (!Resolve(uid, ref status, false))
-            return;
-
-        _statusEffect.TryRemoveStatusEffect(uid, "KnockedDown", status);
-        _statusEffect.TryRemoveStatusEffect(uid, "Stun", status);
+        _statusEffect.TryRemoveStatusEffect(uid, "KnockedDown");
+        _statusEffect.TryRemoveStatusEffect(uid, "Stun");
     }
 
     private void CoolSurroundingAtmosphere(EntityUid uid)

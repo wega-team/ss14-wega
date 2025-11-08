@@ -115,7 +115,7 @@ public sealed partial class SurgerySystem
 
             // For stacks
             if (TryComp<StackComponent>(item, out var stack) && stack.Count > 1)
-                _stack.SetCount(item, stack.Count - 1);
+                _stack.ReduceCount(item, 1);
 
             bool foundMatch = false;
             float successModifier = 1f;

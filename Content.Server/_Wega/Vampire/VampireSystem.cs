@@ -72,6 +72,8 @@ public sealed partial class VampireSystem : SharedVampireSystem
     [Dependency] private readonly EntityLookupSystem _entityLookup = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!;
 
+    private static readonly ProtoId<EmotePrototype> Scream = "Scream";
+
     private readonly Dictionary<EntityUid, Dictionary<EntityUid, FixedPoint2>> _bloodConsumedTracker = new();
     private bool _isDamageBeingHandled = false;
 
@@ -143,7 +145,7 @@ public sealed partial class VampireSystem : SharedVampireSystem
                     {
                         flammable.FireStacks = flammable.MaximumFireStacks;
                         _flammable.Ignite(vampire.Owner, uid);
-                        _chat.TryEmoteWithoutChat(vampire, _prototypeManager.Index<EmotePrototype>("Scream"), true);
+                        _chat.TryEmoteWithoutChat(vampire, _prototypeManager.Index(Scream), true);
                         _popup.PopupEntity(Loc.GetString("vampire-holy-point"), vampire.Owner, vampire.Owner, PopupType.LargeCaution);
                     }
                 }

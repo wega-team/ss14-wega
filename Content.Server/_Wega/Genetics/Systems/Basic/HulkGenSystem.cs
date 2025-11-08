@@ -20,15 +20,13 @@ public sealed class HulkGenSystem : EntitySystem
     [Dependency] private readonly SharedActionsSystem _action = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly DamageableSystem _damage = default!;
-
     [Dependency] private readonly DnaModifierSystem _dnaModifier = default!;
     [Dependency] private readonly PhysicsSystem _physics = default!;
     [Dependency] private readonly PolymorphSystem _polymorph = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly SharedStunSystem _stun = default!;
 
-    [ValidatePrototypeId<StructuralEnzymesPrototype>]
-    private const string HulkGen = "GeneticsHulkBasic";
+    private static readonly ProtoId<StructuralEnzymesPrototype> HulkGen = "GeneticsHulkBasic";
 
     public override void Initialize()
     {

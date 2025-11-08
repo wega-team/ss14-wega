@@ -19,6 +19,7 @@ using Content.Shared.Construction.Components;
 using Content.Shared.Xenobiology;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Body.Components;
+using Robust.Shared.Audio;
 
 namespace Content.Server.Xenobiology
 {
@@ -122,7 +123,7 @@ namespace Content.Server.Xenobiology
 
             if (_random.Prob(0.15f))
             {
-                _audio.PlayPvs("/Audio/Voice/Slime/slime_squish.ogg", uid);
+                _audio.PlayPvs(new SoundPathSpecifier("/Audio/Voice/Slime/slime_squish.ogg"), uid);
             }
         }
 
@@ -200,7 +201,7 @@ namespace Content.Server.Xenobiology
             component.Reinforced = slimeGrowth.Reinforced;
 
             _jittering.AddJitter(extractor, -10, 100);
-            _audio.PlayPvs("/Audio/Machines/reclaimer_startup.ogg", extractor);
+            _audio.PlayPvs(new SoundPathSpecifier("/Audio/Machines/reclaimer_startup.ogg"), extractor);
             _ambient.SetAmbience(extractor, true);
 
             if (TryComp<BloodstreamComponent>(slime, out var bloodstream))

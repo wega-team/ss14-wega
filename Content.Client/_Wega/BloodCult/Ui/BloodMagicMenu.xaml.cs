@@ -14,7 +14,6 @@ public sealed partial class BloodMagicMenu : RadialMenu
     [Dependency] private readonly ISharedPlayerManager _playerManager = default!;
 
     public event Action<string>? OnSelectSpell;
-    public bool IsDisposed { get; private set; }
 
     public BloodMagicMenu()
     {
@@ -44,15 +43,6 @@ public sealed partial class BloodMagicMenu : RadialMenu
         var netEntity = _entityManager.GetNetEntity(_playerManager.LocalSession?.AttachedEntity ?? EntityUid.Invalid);
         _entityNetworkManager.SendSystemNetworkMessage(new BloodMagicMenuClosedEvent(netEntity, spellName));
         Close();
-    }
-
-    public new void Close()
-    {
-        if (!IsDisposed)
-        {
-            IsDisposed = true;
-            Dispose();
-        }
     }
 }
 

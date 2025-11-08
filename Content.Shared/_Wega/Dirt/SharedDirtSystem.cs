@@ -58,13 +58,12 @@ public sealed class SharedDirtSystem : EntitySystem
         float dirtPercentage = Math.Clamp(entity.Comp.CurrentDirtLevel.Float() / MaxDirtLevel * 100f, 0f, 100f);
         string colorHex = entity.Comp.DirtColor.ToHex();
 
-        string dirtLevel;
-        if (dirtPercentage < 30)
-            dirtLevel = Loc.GetString("dirt-examined-level-low");
-        else if (dirtPercentage < 70)
-            dirtLevel = Loc.GetString("dirt-examined-level-medium");
-        else
-            dirtLevel = Loc.GetString("dirt-examined-level-high");
+        string dirtLevel = dirtPercentage switch
+        {
+            < 30 => Loc.GetString("dirt-examined-level-low"),
+            < 70 => Loc.GetString("dirt-examined-level-medium"),
+            _ => Loc.GetString("dirt-examined-level-high")
+        };
 
         args.PushMarkup(
             Loc.GetString("dirt-examined-message", ("color", colorHex), ("percentage", (int)dirtPercentage), ("level", dirtLevel))

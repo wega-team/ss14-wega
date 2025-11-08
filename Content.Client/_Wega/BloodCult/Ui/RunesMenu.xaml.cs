@@ -78,7 +78,6 @@ public sealed partial class EmpoweringRuneMenu : RadialMenu
     [Dependency] private readonly ISharedPlayerManager _playerManager = default!;
 
     public event Action<string>? OnSelectSpell;
-    public bool IsDisposed { get; private set; }
 
     public EmpoweringRuneMenu()
     {
@@ -109,15 +108,6 @@ public sealed partial class EmpoweringRuneMenu : RadialMenu
         _entityNetworkManager.SendSystemNetworkMessage(new EmpoweringRuneMenuClosedEvent(netEntity, spellName));
         Close();
     }
-
-    public new void Close()
-    {
-        if (!IsDisposed)
-        {
-            IsDisposed = true;
-            Dispose();
-        }
-    }
 }
 
 public sealed partial class SummoningRunePanelMenu : DefaultWindow
@@ -138,13 +128,11 @@ public sealed partial class SummoningRunePanelMenu : DefaultWindow
 
     private void InitializeButtons()
     {
-        foreach (var cultist in _entityManager.EntityQuery<BloodCultistComponent>())
+        var cultistQuery = _entityManager.EntityQueryEnumerator<BloodCultistComponent, MetaDataComponent>();
+        while (cultistQuery.MoveNext(out var uid, out _, out var metaData))
         {
-            if (_entityManager.TryGetComponent<MetaDataComponent>(cultist.Owner, out var metaData))
-            {
-                var entityName = metaData.EntityName;
-                AddCultistButton(entityName, cultist.Owner);
-            }
+            var entityName = metaData.EntityName;
+            AddCultistButton(entityName, uid);
         }
     }
 

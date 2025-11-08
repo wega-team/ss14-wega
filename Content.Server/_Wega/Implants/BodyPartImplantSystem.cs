@@ -2,9 +2,8 @@ using Content.Server.Body.Systems;
 using Content.Shared._Wega.Implants.Components;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Part;
-using NetCord.Gateway;
 
-namespace Content.Shared._Wega.Implants
+namespace Content.Server.Implants
 {
     public sealed class BodyPartImplantSystem : EntitySystem
     {
@@ -22,7 +21,7 @@ namespace Content.Shared._Wega.Implants
 
         private void OnMapInit(EntityUid uid, BodyPartImplantComponent component, ref MapInitEvent args)
         {
-            if (!TryComp<BodyPartComponent>(uid, out var bodyPart))
+            if (!TryComp<BodyPartComponent>(uid, out _))
                 return;
 
             foreach (var connection in component.Connections)

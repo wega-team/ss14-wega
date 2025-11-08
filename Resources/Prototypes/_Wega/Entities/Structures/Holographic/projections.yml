@@ -28,3 +28,30 @@
       color: "#df37cf"
     - type: Climbable
     - type: Clickable
+
+- type: entity
+  id: SyndiHolosignForcefield
+  parent: HolosignForcefield
+  name: holographic force field
+  description: A powerful temporal containment field that doesn't let anything through, not even a tesla or singularity.
+  components:
+  - type: Sprite
+    sprite: _Wega/Structures/Holo/field.rsi
+    state: icon
+  - type: PointLight
+    enabled: true
+    radius: 3
+    color: red
+  - type: TimedDespawn
+    lifetime: 90
+  - type: Clickable
+  - type: ContainmentField
+    throwForce: 0
+  - type: Destructible
+    thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 200
+        behaviors:
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]

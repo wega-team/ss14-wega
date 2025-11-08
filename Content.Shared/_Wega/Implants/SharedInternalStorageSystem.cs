@@ -1,7 +1,4 @@
 using Content.Shared.Actions;
-using Content.Shared.Body.Components;
-using Content.Shared.Body.Systems;
-using Content.Shared.Chemistry;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.FixedPoint;
@@ -19,14 +16,11 @@ public sealed class SharedInternalStorageSystem : EntitySystem
 {
     [Dependency] private readonly SharedActionsSystem _action = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedBodySystem _body = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly StomachSystem _stomach = default!;
     [Dependency] private readonly SharedSolutionContainerSystem _solutionContainer = default!;
 
-    [ValidatePrototypeId<EntityPrototype>]
-    private const string ToothImplantAction = "ActionToothImplant";
+    private static readonly EntProtoId ToothImplantAction = "ActionToothImplant";
 
     public override void Initialize()
     {

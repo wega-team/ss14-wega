@@ -106,11 +106,11 @@
   - UplinkWeaponry
 
 - type: listing
-  id: ADTUplinkAdvancedHristov
+  id: UplinkAdvancedHristov
   name: uplink-hristov-bundle-name
   description: uplink-hristov-bundle-desc
   icon: { sprite: /Textures/Objects/Weapons/Guns/Snipers/heavy_sniper.rsi, state: base }
-  productEntity: ADTClothingBackpackDuffelSyndicateFilledHristov
+  productEntity: ClothingBackpackDuffelSyndicateFilledHristov
   cost:
     Telecrystal: 18
   categories:
@@ -122,11 +122,11 @@
       - NukeOpsUplink
 
 - type: listing
-  id: ADTUplinkXC67BundleAgent
+  id: UplinkXC67BundleAgent
   name: uplink-xc67-name
   description: uplink-xc67-desc
-  icon: { sprite: /Textures/_ADT/Objects/Weapons/Guns/Rifles/xc67.rsi, state: icon}
-  productEntity: ADTClothingBackpackDuffelSyndicateFilledXC67
+  icon: { sprite: /Textures/_Wega/Objects/Weapons/Guns/Rifles/xc67.rsi, state: icon}
+  productEntity: ClothingBackpackDuffelSyndicateFilledXC67
   discountCategory: veryRareDiscounts
   discountDownTo:
     Telecrystal: 13
@@ -142,11 +142,11 @@
 
 
 - type: listing
-  id: ADTUplinkXC67Bundle
+  id: UplinkXC67Bundle
   name: uplink-xc67-name
   description: uplink-xc67-desc
-  icon: { sprite: /Textures/_ADT/Objects/Weapons/Guns/Rifles/xc67.rsi, state: icon}
-  productEntity: ADTClothingBackpackDuffelSyndicateFilledXC67
+  icon: { sprite: /Textures/_Wega/Objects/Weapons/Guns/Rifles/xc67.rsi, state: icon}
+  productEntity: ClothingBackpackDuffelSyndicateFilledXC67
   cost:
     Telecrystal: 19
   categories:
@@ -161,8 +161,8 @@
   id: UplinkAdvansedMagboots
   name: uplink-advanced-magboots-name
   description: uplink-advanced-magboots-desc
-  icon: { sprite: _ADT/Clothing/Shoes/Boots/advanced.rsi, state: icon }
-  productEntity: ADTClothingShoesBootsMagAdvSynd
+  icon: { sprite: _Wega/Clothing/Shoes/Boots/advanced.rsi, state: icon }
+  productEntity: ClothingShoesBootsMagAdvSynd
   cost:
     Telecrystal: 8
   categories:
@@ -185,10 +185,10 @@
   - UplinkWearables
 
 - type: listing
-  id: ADTUplinkNukeSyndiHoloprojectorField
+  id: UplinkNukeSyndiHoloprojectorField
   name: uplink-syndiholoprojectorfield-name
   description: uplink-syndiholoprojectorfield-desc
-  productEntity: ADTSyndiHoloprojectorField
+  productEntity: SyndiHoloprojectorField
   cost:
     Telecrystal: 5
   categories:
@@ -200,11 +200,11 @@
       - NukeOpsUplink
 
 - type: listing
-  id: ADTUplinkWeaponXC67ammo
+  id: UplinkWeaponXC67ammo
   name: uplink-xc67ammo-name
   description: uplink-xc67ammo-desc
-  icon: { sprite: /Textures/_ADT/Objects/Weapons/Guns/Ammunition/Magazine/Rifle/ext_rifle_mag.rsi, state: base }
-  productEntity: ADTExtMagazineRifle
+  icon: { sprite: /Textures/_Wega/Objects/Weapons/Guns/Ammunition/Magazine/Rifle/ext_rifle_mag.rsi, state: base }
+  productEntity: ExtMagazineRifle
   cost:
     Telecrystal: 1
   categories:
@@ -282,7 +282,7 @@
   id: UplinkDesertEagle
   name: uplink-desert-eagle-name
   description: uplink-desert-eagle-desc
-  icon: { sprite: _DeadSpace/Objects/Weapons/Guns/Pistols/deserteagle.rsi, state: icon }
+  icon: { sprite: _Wega/Objects/Weapons/Guns/Pistols/deserteagle.rsi, state: icon }
   productEntity: WeaponPistolDesertEagle
   cost:
     Telecrystal: 8
@@ -293,7 +293,7 @@
   id: UplinkMagazineEagle
   name: uplink-magazine-eagle-name
   description: uplink-magazine-eagle-desc
-  icon: { sprite: _DeadSpace/Objects/Weapons/Guns/Ammunition/Magazine/Pistol/magazinedeserteagle.rsi, state: base }
+  icon: { sprite: _Wega/Objects/Weapons/Guns/Ammunition/Magazine/Pistol/magazinedeserteagle.rsi, state: base }
   productEntity: MagazineEagle
   cost:
     Telecrystal: 1
@@ -305,7 +305,7 @@
   id: UplinkMagazineEagleAP
   name: uplink-magazine-eagle-ap-name
   description: uplink-magazine-eagle-ap-desc
-  icon: { sprite: _DeadSpace/Objects/Weapons/Guns/Ammunition/Magazine/Pistol/magazinedeserteagle.rsi, state: red }
+  icon: { sprite: _Wega/Objects/Weapons/Guns/Ammunition/Magazine/Pistol/magazinedeserteagle.rsi, state: red }
   productEntity: MagazineEagleAP
   cost:
     Telecrystal: 3
@@ -329,11 +329,11 @@
       - NukeOpsUplink
 
 - type: listing
-  id: ADTUplinAmmoSniper
+  id: UplinAmmoSniper
   name: uplink-ammo-sniper-name
   description: uplink-ammo-sniper-desc
-  icon: { sprite: _ADT/Objects/Weapons/Guns/Ammunition/Magazine/Sniper/snipers.rsi, state: mag-1 }
-  productEntity: ADTMagazineHristovAdvanced
+  icon: { sprite: _Wega/Objects/Weapons/Guns/Ammunition/Magazine/Sniper/snipers.rsi, state: mag-1 }
+  productEntity: MagazineHristovAdvanced
   cost:
     Telecrystal: 2
   categories:

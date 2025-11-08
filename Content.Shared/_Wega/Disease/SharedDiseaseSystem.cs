@@ -9,7 +9,7 @@ public abstract class SharedDiseaseSystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly ISerializationManager _serializationManager = default!;
 
-    public Queue<EntityUid> _addQueue = new();
+    public Queue<EntityUid> AddQueue = new();
 
     /// <summary>
     /// Adds a disease to a target
@@ -20,7 +20,7 @@ public abstract class SharedDiseaseSystem : EntitySystem
     /// </summary>
     public void TryAddDisease(EntityUid host, DiseasePrototype addedDisease, DiseaseCarrierComponent? target = null)
     {
-        if (!Resolve(host, ref target, false))
+        if (!Resolve(host, ref target))
             return;
 
         foreach (var disease in target.AllDiseases)
@@ -30,11 +30,11 @@ public abstract class SharedDiseaseSystem : EntitySystem
         }
 
         var freshDisease = _serializationManager.CreateCopy(addedDisease);
-
-        if (freshDisease == null) return;
+        if (freshDisease == null)
+            return;
 
         target.Diseases.Add(freshDisease);
-        _addQueue.Enqueue(target.Owner);
+        AddQueue.Enqueue(host);
     }
 
     public void TryAddDisease(EntityUid host, string? addedDisease, DiseaseCarrierComponent? target = null)

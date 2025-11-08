@@ -7,10 +7,10 @@
     ClothingUniformJumpsuitCargo: 3
     ClothingUniformJumpskirtCargo: 3
     # Corvax-Wega-Turtleneck-start
-    ADTClothingUniformJumpskirtTurtleneckOrange: 2
-    ADTClothingUniformJumpsuitTurtleneckOrange: 2
-    ADTClothingUniformJumpskirtTurtleneckBrown: 2
-    ADTClothingUniformJumpsuitTurtleneckBrown: 2
+    ClothingUniformJumpskirtTurtleneckOrange: 2
+    ClothingUniformJumpsuitTurtleneckOrange: 2
+    ClothingUniformJumpskirtTurtleneckBrown: 2
+    ClothingUniformJumpsuitTurtleneckBrown: 2
     # Corvax-Wega-Turtleneck-end
     ClothingShoesColorBlack: 3
     ClothingHandsGlovesFingerless: 3

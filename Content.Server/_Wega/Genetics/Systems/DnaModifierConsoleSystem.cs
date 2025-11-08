@@ -52,10 +52,8 @@ namespace Content.Server.Genetics.System
         [Dependency] private readonly SharedTransformSystem _transform = default!;
         [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
 
-        [ValidatePrototypeId<EntityPrototype>]
-        private const string Injector = "DnaInjector";
-        [ValidatePrototypeId<DamageTypePrototype>]
-        private const string RadDamage = "Radiation";
+        private static readonly EntProtoId Injector = "DnaInjector";
+        private static readonly ProtoId<DamageTypePrototype> RadDamage = "Radiation";
 
         public override void Initialize()
         {
@@ -229,7 +227,7 @@ namespace Content.Server.Genetics.System
             bool scannerInRange = ent.Comp.GeneticScannerInRange;
 
             EnzymeInfo? enzyme = null;
-            UniqueIdentifiersPrototype? uniqueIdentifiers = null;
+            UniqueIdentifiersData? uniqueIdentifiers = null;
             List<EnzymesPrototypeInfo>? enzymesPrototypes = null;
 
             var currentTime = _timing.CurTime;
@@ -317,7 +315,7 @@ namespace Content.Server.Genetics.System
                 buffer,
                 currentTime < injectorCooldown ? injectorCooldown - currentTime : TimeSpan.Zero,
                 currentTime < subjectInjectCooldown ? subjectInjectCooldown - currentTime : TimeSpan.Zero
-                );
+            );
         }
 
         private string GetStatus(MobState mobState)
@@ -740,7 +738,7 @@ namespace Content.Server.Genetics.System
             UpdateUserInterface(GetEntity(args.Uid), console);
         }
 
-        private void ModifyUniqueIdentifiers(UniqueIdentifiersPrototype uniqueIdentifiers, string block, int value, float intensity)
+        private void ModifyUniqueIdentifiers(UniqueIdentifiersData uniqueIdentifiers, string block, int value, float intensity)
         {
             var fields = new List<(string[] Field, string Name)>
             {
@@ -834,7 +832,7 @@ namespace Content.Server.Genetics.System
             field[value] = GenerateRandomHexValue(field[value], intensity, 1.0f);
         }
 
-        private void ModifyUniqueIdentifiers(UniqueIdentifiersPrototype uniqueIdentifiers, float intensity, float duration)
+        private void ModifyUniqueIdentifiers(UniqueIdentifiersData uniqueIdentifiers, float intensity, float duration)
         {
             var fields = new List<(string[] Field, string Name)>
             {
