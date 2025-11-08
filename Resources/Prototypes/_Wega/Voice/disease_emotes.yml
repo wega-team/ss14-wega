@@ -72,7 +72,7 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: ["chat-emote-msg-moan"]
+  chatMessages: ["chat-emote-msg-LPCmoan"]
   chatTriggers:
     - стонет
     - робо-стонет
