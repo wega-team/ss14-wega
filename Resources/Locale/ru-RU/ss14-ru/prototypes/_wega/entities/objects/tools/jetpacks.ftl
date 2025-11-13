@@ -4,3 +4,10 @@ ent-JetpackMining = джетпак
 ent-JetpackMiningFilled = джетпак
     .suffix = Заполненный
     .desc = { ent-JetpackMining.desc }
+
+ent-SyndiJetpackBlack = джетпак
+    .suffix = Пустой
+    .desc = Чёрный джетпак, обладающий повышенной ёмкостью.
+ent-SyndiJetpackBlackFilled = джетпак
+    .suffix = Заполненный
+    .desc = { ent-SyndiJetpackBlack.desc }

@@ -40,3 +40,33 @@
   recipeUnlocks:
   - ClothingHeadHelmetFlash
   - ClothingNeckFlashNeck
+
+- type: technology
+  id: SalvageWeaponsMelee
+  name: research-technology-salvage-weapons-melee
+  icon:
+    sprite: Objects/Weapons/Melee/crusher.rsi
+    state: icon
+  discipline: Arsenal
+  tier: 2
+  cost: 10000
+  recipeUnlocks:
+  - CrusherRecipe
+  - CrusherDaggerRecipe
+  - PlasmaCutterRecipe
+  technologyPrerequisites:
+  - SalvageEquipment
+  
+- type: technology
+  id: CombatMagBoots
+  name: research-technology-combat-magboots
+  icon:
+    sprite: _Wega/Clothing/Shoes/Boots/combat_magboots.rsi
+    state: icon
+  discipline: Arsenal
+  tier: 2
+  cost: 10000
+  recipeUnlocks:
+  - CombatMagBootsRecipe
+  technologyPrerequisites:
+  - MagnetsTech

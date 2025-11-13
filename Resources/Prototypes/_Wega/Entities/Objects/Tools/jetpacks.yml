@@ -35,3 +35,44 @@
       moles:
         - 1.025689525 # oxygen
         - 1.025689525 # nitrogen
+
+#Empty syndi
+- type: entity
+  id: SyndiJetpackBlack
+  parent: [BaseJetpack, BaseSyndicateContraband]
+  name: jetpack
+  suffix: Empty
+  components:
+  - type: Item
+    sprite: Objects/Tanks/Jetpacks/black.rsi
+  - type: Sprite
+    sprite: Objects/Tanks/Jetpacks/black.rsi
+  - type: Clothing
+    sprite: Objects/Tanks/Jetpacks/black.rsi
+    slots:
+      - Back
+      - suitStorage
+  - type: GasTank
+    outputPressure: 21.3
+    air:
+      volume: 10
+      temperature: 293.15
+  - type: StaticPrice
+    price: 1000
+
+# Filled syndi
+- type: entity
+  id: SyndiJetpackBlackFilled
+  parent: SyndiJetpackBlack
+  name: jetpack
+  suffix: Filled
+  components:
+  - type: GasTank
+    outputPressure: 42.6
+    air:
+      # 13 minutes of thrust
+      volume: 10
+      temperature: 293.15
+      moles:
+        Oxygen: 2.05
+        Nitrogen: 2.05

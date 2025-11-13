@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   parent: [ BaseMobSpeciesOrganic, BaseOperated ] # Corvax-Wega-Surgery-Edit
   id: BaseMobVox
   abstract: true
@@ -123,6 +123,7 @@
     - map: [ "enum.HumanoidVisualLayers.LHand" ]
     - map: [ "enum.HumanoidVisualLayers.RHand" ]
     - map: [ "gloves" ]
+    - map: [ "wrist" ] # Corvax-Wega-Add
     - map: [ "shoes" ]
     - map: [ "ears" ]
     - map: [ "eyes" ]

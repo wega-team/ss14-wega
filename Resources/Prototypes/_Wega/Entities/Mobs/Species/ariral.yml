@@ -28,6 +28,7 @@
     - map: [ "enum.HumanoidVisualLayers.RHand" ]
     # Corvax-Wega-end
     - map: [ "gloves" ]
+    - map: [ "wrist" ] # Corvax-Wega-Add
     - map: [ "shoes" ]
     - map: [ "ears" ]
     - map: [ "eyes" ]

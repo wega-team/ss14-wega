@@ -1,0 +1,17 @@
+- type: latheRecipe
+  id: ExperimentalSprayPainterRecipe
+  result: SprayPainterExperimental
+  completetime: 6
+  materials:
+    Steel: 250
+    Glass: 150
+    Plastic: 150
+
+- type: latheRecipe
+  id: ElectricCrayonRecipe
+  result: CrayonElectric
+  completetime: 4
+  materials:
+    Steel: 100
+    Glass: 50
+    Plastic: 50

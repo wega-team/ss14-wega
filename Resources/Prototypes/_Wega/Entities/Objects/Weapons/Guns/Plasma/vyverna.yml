@@ -1,0 +1,125 @@
+- type: entity
+  id: WeaponPlasmaSniperVyverna
+  name: plasma sniper rifle "Vyverna"
+  description: A deadly sniper rifle that literally burns people alive with its plasma projectiles.
+  parent: [BaseItem, BaseGunWieldable, BaseSyndicateContraband]
+  components:
+  - type: Sprite
+    sprite: _Adventure/Objects/Weapons/Guns/Plasma/Snipers/Vyverna/vyvernaicon.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Clothing
+    sprite: _Adventure/Objects/Weapons/Guns/Plasma/Snipers/Vyverna/vyverna.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: Item
+    size: Huge
+    shape:
+    - 0,0,5,1
+  - type: AmmoCounter
+  - type: Gun
+    fireRate: 0.5
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/sniper.ogg
+  - type: GunRequiresWield
+  - type: SpeedModifiedOnWield
+    walkModifier: 0.25
+    sprintModifier: 0.25
+  - type: CursorOffsetRequiresWield
+  - type: EyeCursorOffset
+    maxOffset: 3
+    pvsIncrease: 0.3
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+      - CartridgeVyvernaRifle
+    capacity: 3
+    proto: CartridgeVyvernaRifle
+  - type: StaticPrice
+    price: 5000
+  - type: Appearance
+
+
+- type: entity
+  id: SniperVyvernaMagazine
+  name: plasma sniper rifle magazine
+  parent: BaseItem
+  components:
+  - type: Tag
+    tags:
+      - MagazineVyvernaRifle
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    whitelist:
+      tags:
+        - CartridgeVyvernaRifle
+    capacity: 3
+    proto: CartridgeVyvernaRifle
+  - type: Item
+    size: Normal
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+  - type: Sprite
+    sprite: _Adventure/Objects/Weapons/Guns/Plasma/Snipers/Vyverna/mag.rsi
+    layers:
+      - state: base
+  - type: Appearance
+
+
+
+- type: entity
+  parent: [ BaseCartridge, BaseMajorContraband ]
+  id: CartridgeVyvernaRifle
+  name: vyverna rifle cartridge
+  components:
+  - type: Tag
+    tags:
+    - CartridgeVyvernaRifle
+  - type: CartridgeAmmo
+    proto: BulletVyverna
+    deleteOnSpawn: true
+  - type: Sprite
+    sprite: _Adventure/Objects/Weapons/Guns/Plasma/Snipers/Vyverna/cartridge.rsi
+    layers:
+    - state: base
+  - type: Appearance
+  - type: SpentAmmoVisuals
+  - type: StaticPrice
+    price: 200
+
+
+
+
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: BaseBullet
+  id: BulletVyverna
+  name: plasma bullet
+  components:
+  - type: Sprite
+    sprite: _Adventure/Objects/Weapons/Guns/Plasma/Snipers/Vyverna/bullet.rsi
+    state: bullet
+  - type: Projectile
+    damage:
+      types:
+        Heat: 45
+        Structural: 220
+        Caustic: 15
+    penetrationThreshold: 360
+    penetrationDamageTypeRequirement:
+    - Structural
+  - type: StaminaDamageOnCollide
+    damage: 20
+  - type: IgniteOnCollide
+    fireStacks: 4
+
+
+

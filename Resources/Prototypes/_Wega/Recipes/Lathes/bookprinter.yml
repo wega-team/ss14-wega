@@ -1,0 +1,633 @@
+- type: latheRecipe
+  id: BookExpensiveCrystalRecipe
+  result: BookExpensiveCrystal
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookClonesRecipe
+  result: BookClones
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookDAMRecipe
+  result: BookDAM
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookFaksRecipe
+  result: BookFaks
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookFamalisRecipe
+  result: BookFamalis
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookGravRecipe
+  result: BookGrav
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookHalifatRecipe
+  result: BookHalifat
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookRedspaceRecipe
+  result: BookRedspace
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookShipsRecipe
+  result: BookShips
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookZPRecipe
+  result: BookZP
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookUSSPRecipe
+  result: BookUSSP
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+
+- type: latheRecipe
+  id: BookMirtRecipe
+  result: BookMirt
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookGiorRecipe
+  result: BookGior
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookSNKRecipe
+  result: BookSNK
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookNakamuraRecipe
+  result: BookNakamura
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookNoocRecipe
+  result: BookNooc
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookUmporRecipe
+  result: BookUmpor
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookVitzRecipe
+  result: BookVitz
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookGefestRecipe
+  result: BookGefest
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookConarexRecipe
+  result: BookConarex
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookPetrRecipe
+  result: BookPetr
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookSaibasanRecipe
+  result: BookSaibasan
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookUnath1Recipe
+  result: BookUnath1
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookUnath2Recipe
+  result: BookUnath2
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookDioneRecipe
+  result: BookDione
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookBSSRecipe
+  result: BookBSS
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookScafRecipe
+  result: BookScaf
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookMBS1Recipe
+  result: BookMBS1
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookMBS2Recipe
+  result: BookMBS2
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookImplantsRecipe
+  result: BookImplants
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookNarsieLegendRecipe
+  result: BookNarsieLegend
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookTruthRecipe
+  result: BookTruth
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookWorldRecipe
+  result: BookWorld
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookIanAntarcticaRecipe
+  result: BookIanAntarctica
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookSlothClownSSSRecipe
+  result: BookSlothClownSSS
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookSlothClownPranksRecipe
+  result: BookSlothClownPranks
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookSlothClownMMDRecipe
+  result: BookSlothClownMMD
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookStruckRecipe
+  result: BookStruck
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookSunRecipe
+  result: BookSun
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookPossumRecipe
+  result: BookPossum
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookFeatherRecipe
+  result: BookFeather
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookCafeRecipe
+  result: BookCafe
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookIanLostWolfPupRecipe
+  result: BookIanLostWolfPup
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookIanRanchRecipe
+  result: BookIanRanch
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookIanOceanRecipe
+  result: BookIanOcean
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookIanMountainRecipe
+  result: BookIanMountain
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookIanCityRecipe
+  result: BookIanCity
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookIanArcticRecipe
+  result: BookIanArctic
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookIanDesertRecipe
+  result: BookIanDesert
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookNamesRecipe
+  result: BookNames
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookEarthRecipe
+  result: BookEarth
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookTempleRecipe
+  result: BookTemple
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookWatchedRecipe
+  result: BookWatched
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookMedicalOfficerRecipe
+  result: BookMedicalOfficer
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookMorgueRecipe
+  result: BookMorgue
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookRufusRecipe
+  result: BookRufus
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookMapRecipe
+  result: BookMap
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookJourneyRecipe
+  result: BookJourney
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookInspirationRecipe
+  result: BookInspiration
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookAuroraRecipe
+  result: BookAurora
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+
+- type: latheRecipe
+  id: BookJanitorTaleRecipe
+  result: BookJanitorTale
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookSpaceEncyclopediaRecipe
+  result: BookSpaceEncyclopedia
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookTheBookOfControlRecipe
+  result: BookTheBookOfControl
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookBartendersManualRecipe
+  result: BookBartendersManual
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookHowToCookForFortySpacemanRecipe
+  result: BookHowToCookForFortySpaceman
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookLeafLoversSecretRecipe
+  result: BookLeafLoversSecret
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookEngineersHandbookRecipe
+  result: BookEngineersHandbook
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookScientistsRecipe
+  result: BookScientists
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookSecurityRecipe
+  result: BookSecurity
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookHowToKeepStationCleanRecipe
+  result: BookHowToKeepStationClean
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookHowToRockAndStoneRecipe
+  result: BookHowToRockAndStone
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookMedicalReferenceBookRecipe
+  result: BookMedicalReferenceBook
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookHowToSurviveRecipe
+  result: BookHowToSurvive
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookChemicalCompendiumRecipe
+  result: BookChemicalCompendium
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookSpaceLawRecipe
+  result: BookSpaceLaw
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookAtmosDistroRecipe
+  result: BookAtmosDistro
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookAtmosWasteRecipe
+  result: BookAtmosWaste
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookAtmosAirAlarmsRecipe
+  result: BookAtmosAirAlarms
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100
+
+- type: latheRecipe
+  id: BookAtmosVentsMoreRecipe
+  result: BookAtmosVentsMore
+  completetime: 2
+  applyMaterialDiscount: false
+  materials:
+    PrinterBook: 100

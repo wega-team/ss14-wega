@@ -1,0 +1,53 @@
+- type: entity
+  parent: BaseLathe
+  id: PrinterLoreBook
+  name: book printer
+  description: The best friend of librarian. It has all of the books in Space-Internet in it database.
+  components:
+  - type: Sprite
+    sprite: _ADT/Structures/Machines/book_printer.rsi
+    snapCardinals: true
+    layers:
+    - state: icon
+      map: ["enum.LatheVisualLayers.IsRunning"]
+  - type: Transform
+    noRot: true
+  - type: Machine
+    board: PrinterLoreBookMachineCircuitboard
+  - type: Lathe
+    producingSound: /Audio/Machines/scanning.ogg
+    idleState: icon
+    runningState: building
+    staticPacks:
+    - CorvaxLoreBookPack
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.4,0.25,0.4"
+        density: 25
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: MaterialStorage
+    whitelist:
+      tags:
+      - Book
+    storage:
+      PrinterBook: 500
+
+- type: entity
+  id: PrinterLoreBookMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: book printer circuitboard
+  description: Just a circuitboard for a book printer.
+  components:
+    - type: MachineBoard
+      prototype: PrinterLoreBook
+      stackRequirements:
+        Manipulator: 4
+        Glass: 1
+
+

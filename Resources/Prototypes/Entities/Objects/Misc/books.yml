@@ -44,6 +44,13 @@
     damage:
       types:
         Blunt: 1
+# Wega-Printer-Start
+  - type: FaxableObject # send fanfics with fax...
+  - type: Material
+  - type: PhysicalComposition
+    materialComposition:
+      PrinterBook: 100
+# Wega-Printer-End
 
 - type: entity
   parent: BaseItem

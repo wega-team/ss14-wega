@@ -10,3 +10,5 @@ ent-VehicleKeySyndicateSegway = ключ от сигвея синдиката
     .desc = Создан по мотивам культового дизайна EMAG.
 ent-VehicleKeySkeletonMotorcycle = ключи-скелетоны для мотоцикла
     .desc = Красивый набор ключей, украшенный черепом.
+ent-VehicleKeyCargoCar = ключи от мотоцикла почтальона
+    .desc = Мне папа дал погонять!

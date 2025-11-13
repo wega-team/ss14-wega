@@ -52,6 +52,11 @@
   - type: ComponentTable
     table: !type:NestedSelector
       tableId: DeliveryModifierTable
+    # Wega-Add
+  - type: Tag
+    tags:
+    - Package
+
 
 - type: entity
   parent: BaseDelivery

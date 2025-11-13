@@ -31,6 +31,7 @@ public enum SlotFlags
     UNDERWEARBOTTOM = 1 << 17,
     SOCKS = 1 << 18,
     ANAL = 1 << 19,
+    WRIST = 1 << 20,
     /// Corvax-Wega-end
     All = ~NONE,
 

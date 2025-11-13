@@ -84,3 +84,19 @@
     - type: Sprite
       sprite: Objects/Vehicles/motorbike.rsi
       state: keys
+
+- type: entity
+  parent: BaseItem
+  id: VehicleKeyCargoCar
+  name: mailcar keys
+  description: Keys from the world best vehicle.
+  components:
+  - type: Item
+    size: Tiny
+  - type: Tag
+    tags:
+    - VehicleKey
+    - CargoCarKeys
+  - type: Sprite
+    sprite: _Wega/Objects/Vehicles/cargocar.rsi
+    state: keys

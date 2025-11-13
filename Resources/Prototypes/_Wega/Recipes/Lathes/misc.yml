@@ -17,3 +17,13 @@
   materials:
     Steel: 250
     Plastic: 250
+
+- type: latheRecipe
+  id: SuperSynthRecipe
+  result: SuperSynthesizerInstrument
+  completetime: 2
+  materials:
+    Steel: 500
+    Plastic: 2000
+    Gold: 500
+    Uranium: 100

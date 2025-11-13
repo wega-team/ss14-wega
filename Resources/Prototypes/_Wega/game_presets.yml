@@ -11,7 +11,7 @@
   description: traitor-greenshift-description
   rules:
   - Traitor
-  - SubGamemodesRule
+  - SubGamemodesRuleNoWizard
   - SpaceTrafficControlFriendlyEventScheduler
   - BasicRoundstartVariation
 
@@ -25,7 +25,7 @@
   showInVote: false
   rules:
     - Vampire
-    - SubGamemodesRule
+    - SubGamemodesRuleNoWizard
     - BasicStationEventScheduler
     - MeteorSwarmScheduler
     - SpaceTrafficControlEventScheduler
@@ -40,7 +40,7 @@
   showInVote: false
   rules:
     - BloodCult
-    - SubGamemodesRule
+    - SubGamemodesRuleNoWizard
     - BasicStationEventScheduler
     - MeteorSwarmScheduler
     - SpaceTrafficControlEventScheduler

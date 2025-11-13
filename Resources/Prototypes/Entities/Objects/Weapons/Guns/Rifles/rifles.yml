@@ -162,6 +162,7 @@
   - type: Clothing
     sprite: Objects/Weapons/Guns/Rifles/lecter.rsi
   - type: Gun
+    maxAngle: 31   
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/ltrifle.ogg
   - type: ItemSlots
@@ -242,7 +243,7 @@
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/estocshot.ogg
     minAngle: 30
-    maxAngle: 43
+    maxAngle: 35
     shotsPerBurst: 3
     selectedMode: Burst
     availableModes:
@@ -250,8 +251,8 @@
     - SemiAuto
     burstFireRate: 14
   - type: GunWieldBonus
-    minAngle: -28
-    maxAngle: -25
+    minAngle: -29
+    maxAngle: -28
   - type: ItemSlots
     slots:
       gun_magazine:
@@ -263,6 +264,7 @@
         whitelist:
           tags:
           - MagazineRifle
+          - MagazineRifleExplosive
         whitelistFailPopup: gun-magazine-whitelist-fail
       gun_chamber:
         name: Chamber

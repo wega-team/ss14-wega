@@ -1,0 +1,56 @@
+- type: thiefBackpackSet
+  id: HeadRevHack
+  name: headrev-backpack-category-hack-name
+  description: headrev-backpack-category-hack-description
+  sprite:
+    sprite: Objects/Tools/omnitool.rsi
+    state: omnitool-screwing
+  content:
+  - WelderIndustrialAdvanced
+  - ClothingEyesGlassesMeson
+  - ClothingHandsGlovesColorYellow
+  - JawsOfLife
+  - OneTimedEmag
+
+- type: thiefBackpackSet
+  id: HeadRevAIMalware
+  name: headrev-backpack-category-malware-name
+  description: headrev-backpack-category-malware-description
+  sprite:
+    sprite: Objects/Tools/rcd.rsi
+    state: icon
+  content:
+  - RCD
+  - RCDUpgradeKit
+  - EncryptionKeyBinarySyndicate
+  - SyndicateCircuitBoard
+  - OneTimedEmagOneCharge
+
+
+- type: thiefBackpackSet
+  id: HeadRevWeapon
+  name: headrev-backpack-category-weapon-name
+  description: headrev-backpack-category-weapon-description
+  sprite:
+    sprite: Objects/Weapons/Guns/Revolvers/python.rsi
+    - state: icon
+  content:
+  - WeaponRevolverPythonAP
+  - SpeedLoaderMagnumAP
+  - ClothingHandsKnuckleDustersStun
+  - ClothingOuterClothingHeadRevVest
+
+- type: thiefBackpackSet
+  id: HeadRevClean
+  name: headrev-backpack-category-clean-name
+  description: headrev-backpack-category-clean-description
+  sprite:
+    sprite: Objects/Specific/Janitoral/advmop.rsi
+    state: advmop
+  content:
+  - ClothingShoesGaloshes
+  - SoapOmega
+  - SoapSyndie
+  - SoapSyndie
+  - SoapSyndie
+  - SlipocalypseClusterSoap

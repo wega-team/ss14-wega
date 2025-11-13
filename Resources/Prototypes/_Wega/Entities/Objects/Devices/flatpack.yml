@@ -172,3 +172,12 @@
   components:
   - type: Flatpack
     entity: CloningPod
+
+- type: entity
+  parent: BaseFlatpack
+  id: PrinterLoreBookFlatpack
+  name: book printer flatpack
+  description: A flatpack used for constructing a book printer.
+  components:
+  - type: Flatpack
+    entity: PrinterLoreBook

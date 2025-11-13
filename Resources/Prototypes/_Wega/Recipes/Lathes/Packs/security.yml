@@ -3,3 +3,19 @@
   recipes:
   - MindShieldImplant
   - TrackingImplant
+
+- type: latheRecipePack
+  id: SalvageWeapons
+  recipes:
+  - CrusherRecipe
+  - CrusherDaggerRecipe
+
+- type: latheRecipePack
+  id: SalvagePlasmaCutter
+  recipes:
+  - PlasmaCutterRecipe
+
+- type: latheRecipePack
+  id: CombatMagBoots
+  recipes:
+  - CombatMagBootsRecipe

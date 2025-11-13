@@ -350,3 +350,76 @@
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 1
+  id: UplinkThievingGloves
+  name: uplink-clothing-chameleon-thieving-gloves-name
+  description: uplink-clothing-chameleon-thieving-gloves-desc
+  productEntity: ThievingGloves
+  discountCategory: rareDiscounts
+  discountDownTo:
+    Telecrystal: 2
+  cost:
+    Telecrystal: 4
+  categories:
+    - UplinkWearables
+  conditions:
+    - !type:StoreWhitelistCondition
+      blacklist:
+        tags:
+          - NukeOpsUplink
+
+- type: listing
+  id: UplinkVyvernaRifle
+  name: uplink-armory-vyverna-name
+  description: uplink-armory-vyverna-desc
+  productEntity: WeaponPlasmaSniperVyverna
+  discountCategory: veryRareDiscounts
+  discountDownTo:
+    Telecrystal: 10
+  cost:
+    Telecrystal: 14
+  categories:
+    - UplinkWeaponry
+  conditions:
+    - !type:StoreWhitelistCondition
+      blacklist:
+        tags:
+          - NukeOpsUplink
+
+- type: listing
+  id: UplinkVyvernaRifleNukeOps
+  name: uplink-armory-vyverna-name
+  description: uplink-armory-vyverna-desc
+  productEntity: WeaponPlasmaSniperVyverna
+  cost:
+    Telecrystal: 25
+  categories:
+    - UplinkWeaponry
+  conditions:
+    - !type:StoreWhitelistCondition
+      whitelist:
+        tags:
+          - NukeOpsUplink
+
+- type: listing
+  id: UplinkVyvernaRifleMagazine
+  name: uplink-ammo-vyverna-name
+  description: uplink-ammo-vyverna-desc
+  productEntity: SniperVyvernaMagazine
+  cost:
+    Telecrystal: 2
+  categories:
+    - UplinkAmmo
+
+- type: listing
+  id: UplinkMagazineRifleExplosive
+  name: uplink-ammo-rifle-explosive-name
+  description: uplink-ammo-rifle-explosive-desc
+  productEntity: MagazineRifleExplosive
+  discountCategory: RareDiscounts
+  discountDownTo:
+    Telecrystal: 2
+  cost:
+    Telecrystal: 3
+  categories:
+    - UplinkAmmo
+

@@ -1,0 +1,22 @@
+- type: entity
+  id: BulletRifleExplosive
+  name: bullet (.20 rifle explosive)
+  parent: BaseBullet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 20
+        Structural: 50
+  - type: TriggerOnCollide
+    fixtureID: projectile
+  - type: ExplodeOnTrigger
+  - type: Explosive
+    explosionType: Default
+    maxIntensity: 1
+    intensitySlope: 1
+    totalIntensity: 5
+    maxTileBreak: 3
+    tileBreakScale: 1
+    canCreateVacuum: false

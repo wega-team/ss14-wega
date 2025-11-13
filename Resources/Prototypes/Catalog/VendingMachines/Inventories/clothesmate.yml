@@ -127,6 +127,26 @@
     ClothingEyesGlassesCheapSunglasses: 3
     ClothingNeckDarkGreyCloak: 3 # Corvax-Wega-Add
     ClothingNeckGothicCloak: 3 # Corvax-Wega-Add
+    ADTClothingNeckDarkGreyCloak: 3 # Corvax-Wega-Add
+    ADTClothingNeckGothicCloak: 3 # Corvax-Wega-Add
+    ClothingNeckCloakGoliathCloak: 1 # Corvax-Wega-Add
+    ClothingNeckCloakVoid: 2 # Corvax-Wega-Add
+    ClothingNeckCloakLesbian: 1 # Corvax-Wega-Add
+    ClothingNeckCloakGay: 1 # Corvax-Wega-Add
+    ClothingNeckCloakEnby: 1 # Corvax-Wega-Add
+    ClothingNeckCloakPan: 1 # Corvax-Wega-Add
+    ClothingNeckMantle: 1 # Corvax-Wega-Add
+    ClothingNeckChokerBlack: 2 # Corvax-Wega-Add
+    ClothingNeckChokerCyan: 2 # Corvax-Wega-Add
+    ClothingNeckChokerGreen: 2 # Corvax-Wega-Add
+    ClothingNeckChokerLatex: 2 # Corvax-Wega-Add
+    ClothingNeckChokerOrange: 2 # Corvax-Wega-Add
+    ClothingNeckChokerPurple: 2 # Corvax-Wega-Add
+    ClothingNeckChokerRed: 2 # Corvax-Wega-Add
+    ClothingNeckChokerSpike: 2 # Corvax-Wega-Add
+    ClothingNeckChokerTealBlack: 2 # Corvax-Wega-Add
+    ClothingNeckChokerWhite: 2 # Corvax-Wega-Add
+    ClothingNeckChokerYellow: 2 # Corvax-Wega-Add
     # DO NOT ADD MORE, USE UNIFORM DYING
   contrabandInventory:
     ClothingMaskNeckGaiter: 2
@@ -136,4 +156,5 @@
     ToyFigurineGreytider: 1
     ClothingBackpackSatchelSmugglerUnanchored: 1
     ClothingHeadHatSolidHeadband: 2
+    ClothingNeckCloakMoth: 2
   # DO NOT ADD MORE, USE UNIFORM DYING

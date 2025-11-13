@@ -172,6 +172,7 @@
     # Covrax-Wega-CombatRCD-End
     - id: RubberStampCE
     - id: MetalFoamGrenade
+    - id: Binoculars
 
 # Hardsuit table, used for suit storage as well
 - type: entityTable

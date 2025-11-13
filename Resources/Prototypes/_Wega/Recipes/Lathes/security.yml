@@ -107,3 +107,45 @@
     Glass: 100
     Plastic: 200
     Plasma: 50
+
+- type: latheRecipe
+  id: PlasmaCutterRecipe
+  result: WeaponPlasmaCutter
+  completetime: 10
+  materials:
+    Steel: 1000
+    Plasma: 1500
+    Gold: 500
+
+- type: latheRecipe
+  id: CrusherDaggerRecipe
+  result: WeaponCrusherDagger
+  categories:
+  - Weapons
+  completetime: 4
+  materials:
+    Steel: 750
+    Plasma: 250
+    Silver: 50
+
+- type: latheRecipe
+  id: CrusherRecipe
+  result: WeaponCrusher
+  categories:
+  - Weapons
+  completetime: 10
+  materials:
+    Steel: 2000
+    Plasma: 500
+    Silver: 200
+    Gold: 200
+
+- type: latheRecipe
+  id: CombatMagBootsRecipe
+  result: ClothingShoesBootsMagSec
+  completetime: 10
+  materials:
+    Steel: 500
+    Plasma: 250
+    Silver: 100
+    Gold: 250

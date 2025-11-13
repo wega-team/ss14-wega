@@ -1,0 +1,31 @@
+- type: entity
+  parent: EmagUnlimited
+  id: OneTimedEmag
+  name: one-timed cryptographic sequencer
+  suffix: OneTime
+  components:
+  - type: Emag
+    emagType: All
+  - type: LimitedCharges
+    maxCharges: 3
+  - type: StaticPrice
+    price: 2500
+  - type: Sprite
+    sprite: _Wega/Objects/Tools/onetimeemag.rsi
+    state: icon
+
+- type: entity
+  parent: EmagUnlimited
+  id: OneTimedEmagOneCharge
+  name: one-timed cryptographic sequencer
+  suffix: OneTime
+  components:
+  - type: Emag
+    emagType: All
+  - type: LimitedCharges
+    maxCharges: 1
+  - type: StaticPrice
+    price: 2500
+  - type: Sprite
+    sprite: _Wega/Objects/Tools/onetimeemag.rsi
+    state: icon

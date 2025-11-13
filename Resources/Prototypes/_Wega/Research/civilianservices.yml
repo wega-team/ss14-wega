@@ -1,0 +1,24 @@
+- type: technology
+  id: ExperimentalArtistryTools
+  name: research-technology-electric-artistry
+  icon:
+    sprite: _Wega/Objects/Fun/artistry.rsi
+    state: electric
+  discipline: CivilianServices
+  tier: 2
+  cost: 10000
+  recipeUnlocks:
+  - ExperimentalSprayPainterRecipe
+  - ElectricCrayonRecipe
+
+- type: technology
+  id: SuperSynthResearch
+  name: research-technology-sypersynth
+  icon:
+    sprite: Objects/Fun/Instruments/h_synthesizer.rsi
+    state: supersynth
+  discipline: CivilianServices
+  tier: 3
+  cost: 15000
+  recipeUnlocks:
+  - SuperSynthRecipe

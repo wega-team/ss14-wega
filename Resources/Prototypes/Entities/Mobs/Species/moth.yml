@@ -104,6 +104,7 @@
         state: body-overlay-2
         visible: false
       - map: [ "gloves" ]
+      - map: [ "wrist" ] # Corvax-Wega-Add
       - map: [ "shoes" ]
       - map: [ "ears" ]
       - map: [ "eyes" ]

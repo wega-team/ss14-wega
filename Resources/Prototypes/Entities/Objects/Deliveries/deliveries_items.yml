@@ -9,3 +9,7 @@
   - type: Paper
   - type: RandomPaperContent
     dataset: DeliverySpamLetters
+    # Wega-Add
+  - type: Tag
+    tags:
+    - Package

@@ -22,6 +22,10 @@
       prob: 0.3
       rolls: !type:ConstantNumberSelector
         value: 3
+    - id: ClothingNeckCloakGoliathCloak
+      prob: 0.25
+    - id: MineralScanner
+      prob: 0.4
 
 - type: entity
   id: LockerSalvageSpecialistFilledHardsuit

@@ -16,3 +16,5 @@ ent-VehicleWheelchair = инвалидная коляска
 ent-VehicleWheelchairFolded = { ent-VehicleWheelchair }
     .desc = { ent-VehicleWheelchair.desc }
     .suffix = Сложенное
+ent-VehicleCargo = почтальонский мотоцикл
+    .desc = Би-би-би-би-бика, поехали кататься, би-би-би-би-бика, за нами не угнаться!

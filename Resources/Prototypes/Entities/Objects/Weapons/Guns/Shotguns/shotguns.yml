@@ -278,7 +278,7 @@
   name: improvised shotgun
   parent: [BaseWeaponShotgun, BaseGunWieldable, BaseMinorContraband]
   id: WeaponShotgunImprovised
-  description: A shitty, hand-made shotgun that uses .50 shotgun shells. It can only hold one round in the chamber.
+  description: A handmade shotgun that fires a single .50 shell.
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/Shotguns/improvised_shotgun.rsi
@@ -286,15 +286,15 @@
     sprite: Objects/Weapons/Guns/Shotguns/improvised_shotgun.rsi
   - type: Item
     sprite: Objects/Weapons/Guns/Shotguns/improvised_shotgun_inhands_64x.rsi
-  - type: GunRequiresWield #remove when inaccuracy on spreads is fixed
+  - type: GunRequiresWield
   - type: Gun
-    fireRate: 4 #No reason to stifle the firerate since you have to manually reload every time anyways.
+    fireRate: 4
   - type: BallisticAmmoProvider
     capacity: 1
-    proto: null
   - type: Construction
     graph: ImprovisedShotgunGraph
     node: shotgun
+    deconstructionTarget: null
   - type: StaticPrice
     price: 20
 

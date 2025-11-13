@@ -61,3 +61,20 @@
     weightlessModifier: 1.2
   - type: StaticPrice
     price: 5000
+
+- type: entity
+  parent: ClothingShoesBootsMagBase
+  id: ClothingShoesBootsMagSec
+  name: experimental combat magboots
+  description: Magnetic boots that've been made lighter to increase movement speed.
+  components:
+  - type: ClothingSpeedModifier
+    walkModifier: 0.95
+    sprintModifier: 0.9
+  - type: Sprite
+    sprite: _Wega/Clothing/Shoes/Boots/combat_magboots.rsi
+    layers:
+    - state: icon
+      map: [ "enum.ToggleableVisuals.Layer" ]
+  - type: Clothing
+    sprite: _Wega/Clothing/Shoes/Boots/combat_magboots.rsi

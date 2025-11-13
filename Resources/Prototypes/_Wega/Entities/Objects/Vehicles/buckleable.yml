@@ -1,6 +1,5 @@
 - type: entity
   id: BaseVehicle
-  save: false
   abstract: true
   components:
   - type: AmbientSound
@@ -451,3 +450,78 @@
   components:
     - type: Foldable
       folded: true
+
+- type: entity
+  id: VehicleCargo
+  parent: BaseVehicleRideable
+  name: mailcar
+  description: Beep - Beep!!
+  components:
+  - type: Strap
+    buckleOffset: "7, 7"
+  - type: Vehicle
+    southOver: true
+    westOver: true
+    eastOver: true
+    northOverride: -0.15
+    southOverride: 0.22
+  - type: MovementSpeedModifier
+    weightlessModifier: 0
+    baseAcceleration: 2
+    baseFriction: 2
+    frictionNoInput: 6
+    baseWalkSpeed: 6
+    baseSprintSpeed: 8
+  - type: Sprite
+    sprite: _Wega/Objects/Vehicles/cargocar.rsi
+    layers:
+      - state: vehicle
+    noRot: true
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 500
+      behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalGlassBreak
+      - !type:ExplodeBehavior
+  - type: ItemSlots
+    slots:
+      key_slot:
+        name: vehicle-slot-component-slot-name-keys
+        whitelist:
+          requireAll: true
+          tags:
+          - VehicleKey
+          - CargoCarKeys
+        insertSound:
+          path: /Audio/Effects/Vehicle/vehiclestartup.ogg
+          params:
+            volume: -3
+  - type: Appearance
+  - type: Storage
+    whitelist:
+      tags:
+        - Package
+    maxItemSize: Huge
+    grid:
+    - 0,0,15,9
+  - type: UserInterface
+    interfaces:
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+        ents: []
+

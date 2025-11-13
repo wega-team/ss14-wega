@@ -5,3 +5,12 @@
   icon: { sprite: _Wega/Objects/Materials/Sheets/metal.rsi, state: runemetal }
   color: "#3f4857"
   price: 0.05
+
+- type: material
+  id: PrinterBook
+  stackEntity: BookBase
+  name: materials-books
+  icon: { sprite: Objects/Misc/books.rsi, state: book_icon }
+  color: "#3f4857"
+  price: 0.05
+

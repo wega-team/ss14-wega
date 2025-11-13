@@ -1,0 +1,12 @@
+- type: entity
+  id: CartridgeRifleExplosive
+  name: cartridge (.20 rifle explosive)
+  parent: BaseCartridgeRifle
+  description: A modern intermediate cartridge for combat rifles. Standard kinetic ammunition is common and useful in most situations.
+  components:
+  - type: CartridgeAmmo
+    proto: BulletRifleExplosive
+  - type: Tag
+    tags:
+      - Cartridge
+      - CartridgeRifleExplosive

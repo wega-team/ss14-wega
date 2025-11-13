@@ -15,5 +15,6 @@
     ClothingShoesBootsLaceup: 2
     ClothingHeadsetService: 2
     PrinterDocFlatpack: 2 # Corvax-Printer
+    PrinterLoreBookFlatpack: 1 # Corvax-Wega-Add
   contrabandInventory:
     ToyFigurineLibrarian: 1

@@ -1,0 +1,6 @@
+- type: latheRecipePack
+  id: ExperimentalArtistryToolPack
+  recipes:
+  - ElectricCrayonRecipe
+  - ExperimentalSprayPainterRecipe
+  

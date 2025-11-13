@@ -1,0 +1,26 @@
+- type: entity
+  id: ToolboxHeadRev
+  name: emergency toolbox
+  description: A bright red toolbox, stocked with emergency tools.
+  parent: [ BaseItem, BaseMinorContraband ]
+  components:
+  - type: Sprite
+    sprite: Objects/Tools/Toolboxes/toolbox_red.rsi
+    state: icon
+  - type: Item
+    sprite: Objects/Tools/Toolboxes/toolbox_red.rsi
+    size: Small
+  - type: ThiefUndeterminedBackpack
+    spawnedStoragePrototype: ClothingBackpackSatchelSmugglerUnanchored
+    maxSelectedSets: 1
+    possibleSets:
+    - HeadRevWeapon
+    - HeadRevAIMalware
+    - HeadRevHack
+    - HeadRevClean
+  - type: ActivatableUI
+    key: enum.ThiefBackpackUIKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.ThiefBackpackUIKey.Key:
+        type: ThiefBackpackBoundUserInterface

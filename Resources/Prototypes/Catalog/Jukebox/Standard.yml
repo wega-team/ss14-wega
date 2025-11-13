@@ -39,3 +39,93 @@
   name: PigeonBeans - Sunset
   path:
     path: /Audio/Jukebox/sunset.ogg
+
+- type: jukebox
+  id: thewizard
+  name: Chris Remo - The Wizard
+  path:
+    path: /Audio/Lobby/the_wizard.ogg
+
+- type: jukebox
+  id: violet
+  name: mrjajkes - Violet
+  path:
+    path: /Audio/_Wega/Music/violet.ogg
+
+- type: jukebox
+  id: blatantly_nuclear
+  name: mrjajkes - Blatantly Nuclear
+  path:
+    path: /Audio/StationEvents/blatantly_nuclear.ogg
+
+- type: jukebox
+  id: singuloose
+  name: Janis Schiedková - Singuloose
+  path:
+    path: /Audio/Lobby/singuloose.ogg
+
+- type: jukebox
+  id: title2
+  name: Eric Shumaker & Jonathan Dunn - Robocop / Title 2
+  path:
+    path: /Audio/Lobby/title2.ogg
+
+- type: jukebox
+  id: asgore
+  name: KennyTheLyr1c1st - Asgore Runs Over Dess
+  path:
+    path: /Audio/_Wega/Music/Asgore_runs_over_dess_short.ogg
+
+- type: jukebox
+  id: embrace
+  name: mrjajkes - Embrace
+  path:
+    path: /Audio/_Wega/Music/Embrace.ogg
+
+- type: jukebox
+  id: strive
+  name: mrjajkes - Strive
+  path:
+    path: /Audio/_Wega/Music/Strive.ogg
+
+- type: jukebox
+  id: getthatantag
+  name: mrjajkes - Get That Antag!
+  path:
+    path: /Audio/_Wega/Music/Get_That_Antag.ogg
+
+- type: jukebox
+  id: sponseredby
+  name: mrjajkes - Sponsored by..
+  path:
+    path: /Audio/_Wega/Music/Sponsored_By_Syndicate.ogg
+
+- type: jukebox
+  id: traitor
+  name: mrjajkes - Traitorous Intent
+  path:
+    path: /Audio/_Wega/Music/Traitorous_Intent.ogg
+
+- type: jukebox
+  id: law2
+  name: mrjajkes - LAW 2 OPEN ARMORY
+  path:
+    path: /Audio/_Wega/Music/LAW_2_OPEN_ARMORY.ogg
+
+- type: jukebox
+  id: horizon
+  name: Logicmoon - Inner City Horizon
+  path:
+    path: /Audio/_Wega/Music/Inner_City_Horizon.ogg
+
+- type: jukebox
+  id: cityoftears
+  name: Christopher Larkin - City Of Tears
+  path:
+    path: /Audio/_Wega/Music/City_Of_Tears.ogg
+
+- type: jukebox
+  id: lazycat
+  name: Eve - Lazy Cat
+  path:
+    path: /Audio/_Wega/Music/lazy_cat.ogg

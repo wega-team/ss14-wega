@@ -1,0 +1,25 @@
+- type: entity
+  name: improvised sawn-off shotgun
+  parent: [BaseWeaponShotgun, BaseMinorContraband]
+  id: WeaponImprovisedSawn
+  description: A cut-down improvised shotgun with massive spread.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Shotguns/improvised_sawn.rsi
+  - type: Clothing
+    sprite: _Wega/Objects/Weapons/Guns/Shotguns/improvised_sawn.rsi
+  - type: Item
+    size: Small
+    sprite: _Wega/Objects/Weapons/Guns/Shotguns/improvised_sawn_inhands_64x.rsi
+  - type: Gun
+    fireRate: 2.5
+    soundGunshot:
+      path: /Audio/Corvax/Weapons/Guns/Gunshots/shotgun_sawed.ogg
+  - type: GunSpreadModifier
+    spread: 1.5
+  - type: BallisticAmmoProvider
+    capacity: 1
+  - type: Construction
+    graph: ImprovisedShotgunGraph
+    node: sawn
+    deconstructionTarget: null
