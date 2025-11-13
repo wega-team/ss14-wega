@@ -110,7 +110,7 @@
   - type: Projectile
     damage:
       types:
-        Heat: 45
+        Heat: 60
         Structural: 220
         Caustic: 15
     penetrationThreshold: 360

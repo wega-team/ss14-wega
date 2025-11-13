@@ -457,8 +457,6 @@
   name: mailcar
   description: Beep - Beep!!
   components:
-  - type: Strap
-    buckleOffset: "7, 7"
   - type: Vehicle
     southOver: true
     westOver: true

@@ -291,6 +291,7 @@
     fireRate: 4
   - type: BallisticAmmoProvider
     capacity: 1
+    proto: null
   - type: Construction
     graph: ImprovisedShotgunGraph
     node: shotgun

@@ -181,3 +181,12 @@
   components:
   - type: Flatpack
     entity: PrinterLoreBook
+
+- type: entity
+  parent: BaseFlatpack
+  id: CargoVehicleFlatpack
+  name: motorcycle flatpack
+  description: A flatpack used for constructing a cargo motorcycle.
+  components:
+  - type: Flatpack
+    entity: CargoVehicle
