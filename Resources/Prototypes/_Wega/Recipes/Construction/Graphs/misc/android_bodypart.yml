@@ -254,6 +254,31 @@
         text: partimplant-assembly-leftarm
 
 - type: constructionGraph
+  id: ArmSyntheticCharger
+  start: start
+  graph:
+  - node: start
+    entity: LeftArmSyntheticCharger
+    edges:
+    - to: right
+      steps:
+      - tool: Screwing
+        doAfter: 1
+      completed:
+      - !type:PopupUser
+        text: partimplant-assembly-rightarm
+  - node: right
+    entity: RightArmSyntheticCharger
+    edges:
+    - to: start
+      steps:
+      - tool: Screwing
+        doAfter: 1
+      completed:
+      - !type:PopupUser
+        text: partimplant-assembly-leftarm
+
+- type: constructionGraph
   id: LegSyntheticMagboots
   start: start
   graph:

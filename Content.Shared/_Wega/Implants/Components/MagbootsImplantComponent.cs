@@ -12,6 +12,7 @@ public sealed partial class MagbootsImplantComponent : Component
 
     [DataField]
     public string ToggleAction = "ActionToggleBodyPartImplantMagboots";
+    [ViewVariables]
     public EntityUid? ToggleActionEntity;
 
     [DataField, AutoNetworkedField]

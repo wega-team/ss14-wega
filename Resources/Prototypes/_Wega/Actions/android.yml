@@ -70,3 +70,31 @@
       state: jump-action
   - type: InstantAction
     event: !type:GravityJumpEvent {}
+
+- type: entity
+  parent: BaseAction
+  id: ActionBodyPartImplantCharge
+  name: Charge battery
+  description: Charge the device in your hands.
+  components:
+  - type: Action
+    useDelay: 10
+    icon:
+      sprite: _Wega/Interface/Actions/actions_android.rsi
+      state: charge-action
+  - type: InstantAction
+    event: !type:BatteryChargeActionEvent {}
+
+- type: entity
+  parent: BaseAction
+  id: ActionBodyPartImplantDischarge
+  name: Discharge battery
+  description: Discharge the device in your hands.
+  components:
+  - type: Action
+    useDelay: 10
+    icon:
+      sprite: _Wega/Interface/Actions/actions_android.rsi
+      state: discharge-action
+  - type: InstantAction
+    event: !type:BatteryDischargeActionEvent {}
