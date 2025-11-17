@@ -428,7 +428,7 @@
     sprite: _Wega/Clothing/Under/Bottom/Head/mbso.rsi
   - type: Clothing
     sprite: _Wega/Clothing/Under/Bottom/Head/mbso.rsi
-
+## Capitan
 - type: entity
   parent: ClothingUnderBottomBase
   id: ClothingUnderBottomFCaptain
@@ -450,6 +450,50 @@
     sprite: _Wega/Clothing/Under/Bottom/Head/mcaptain.rsi
   - type: Clothing
     sprite: _Wega/Clothing/Under/Bottom/Head/mcaptain.rsi
+
+- type: entity
+  parent: ClothingUnderBottomBase
+  id: ClothingUnderBottomFCaptainS
+  name: sherif pants
+  description: "These comfortable briefs made of soft and breathable material provide excellent comfort for every day."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Bottom/Head/fcaptain_green.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Bottom/Head/fcaptain_green.rsi
+
+- type: entity
+  parent: ClothingUnderBottomBase
+  id: ClothingUnderBottomMCaptainS
+  name: sherif pants
+  description: "These comfortable briefs made of soft and breathable material provide excellent comfort for every day."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Bottom/Head/fcaptain_white.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Bottom/Head/fcaptain_white.rsi
+
+- type: entity
+  parent: ClothingUnderBottomBase
+  id: ClothingUnderBottomFCaptainW
+  name: white captain pants
+  description: "These comfortable briefs made of soft and breathable material provide excellent comfort for every day."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Bottom/Head/fcaptain_white.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Bottom/Head/fcaptain_white.rsi
+
+- type: entity
+  parent: ClothingUnderBottomBase
+  id: ClothingUnderBottomMCaptainW
+  name: white captain pants
+  description: "These comfortable briefs made of soft and breathable material provide excellent comfort for every day."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Bottom/Head/mcaptain_white.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Bottom/Head/mcaptain_white.rsi
 
 - type: entity
   parent: ClothingUnderBottomBase
