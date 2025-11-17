@@ -15,6 +15,7 @@
   - OreProcessorIndustrialMachineCircuitboard
   - ClothingMaskWeldingGas
   - ClothingShoesBootsJump
+  - LegSyntheticJump # Corvax-Wega-Androids
 
 - type: technology
   id: SpaceScanning
@@ -42,6 +43,7 @@
   - PowerCellHigh
   - TurboItemRechargerCircuitboard
   - SMESAdvancedMachineCircuitboard
+  - ArmSyntheticCharger # Corvax-Wega-Androids
 
 - type: technology
   id: MechanicalCompression

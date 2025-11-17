@@ -109,8 +109,8 @@
 
 - type: latheRecipe
   parent: BaseRoboticsRecipe
-  id: ArmSyntheticCharge
-  result: LeftArmSyntheticProtoKinetic
+  id: ArmSyntheticCharger
+  result: LeftArmSyntheticCharger
   completetime: 5
   materials:
     Steel: 750
