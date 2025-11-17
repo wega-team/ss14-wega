@@ -115,11 +115,13 @@
   id: WorkBoots
   equipment:
     shoes: ClothingShoesBootsWork
+  groupBy: "wegaJS" # Corvax-Wega-add
 
 - type: loadout
   id: EngineeringWinterBoots
   equipment:
     shoes: ClothingShoesBootsWinterEngi
+  groupBy: "wegaJS" # Corvax-Wega-add
 
 # ID
 - type: loadout

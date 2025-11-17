@@ -156,6 +156,7 @@
   id: MedicalWinterBoots
   equipment:
     shoes: ClothingShoesBootsWinterMed
+  groupBy: "wegaJS" # Corvax-Wega-add
 
 # ID
 - type: loadout

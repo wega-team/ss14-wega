@@ -1,0 +1,167 @@
+# Common 
+- type: loadout
+  id: ClothingShoesColorWhite
+  equipment:
+    shoes: ClothingShoesColorWhite
+  groupBy: "wegaCS"
+  
+- type: loadout
+  id: ClothingShoesColorYellow
+  equipment:
+    shoes: ClothingShoesColorYellow
+  groupBy: "wegaCS"
+
+- type: loadout
+  id: ClothingShoesColorGreen
+  equipment:
+    shoes: ClothingShoesColorGreen
+  groupBy: "wegaCS"
+
+- type: loadout
+  id: ClothingShoesColorBrown
+  equipment:
+    shoes: ClothingShoesColorBrown
+  groupBy: "wegaCS"
+
+- type: loadout
+  id: ClothingShoesColorRed
+  equipment:
+    shoes: ClothingShoesColorRed
+  groupBy: "wegaCS"
+
+- type: loadout
+  id: ClothingShoesColorOrange
+  equipment:
+    shoes: ClothingShoesColorOrange
+  groupBy: "wegaCS"
+
+- type: loadout
+  id: ClothingShoesColorBlue
+  equipment:
+    shoes: ClothingShoesColorBlue
+  groupBy: "wegaCS"
+
+- type: loadout
+  id: ClothingShoesColorPurple
+  equipment:
+    shoes: ClothingShoesColorPurple
+  groupBy: "wegaCS"
+
+- type: loadout
+  id: ClothingShoesColorBlack
+  equipment:
+    shoes: ClothingShoesColorBlack
+  groupBy: "wegaCS"
+
+# Heels
+
+- type: loadout
+  id: ClothingShoesHeelsBlack
+  equipment:
+    shoes: ClothingShoesHeelsBlack
+  groupBy: "wegaHS"
+
+- type: loadout
+  id: ClothingShoesHeelsGray
+  equipment:
+    shoes: ClothingShoesHeelsGray
+  groupBy: "wegaHS"
+
+- type: loadout
+  id: ClothingShoesHeelsTurquoise
+  equipment:
+    shoes: ClothingShoesHeelsTurquoise
+  groupBy: "wegaHS"
+
+- type: loadout
+  id: ClothingShoesHeelsYellow
+  equipment:
+    shoes: ClothingShoesHeelsYellow
+  groupBy: "wegaHS"
+
+- type: loadout
+  id: ClothingShoesHeelsGreen
+  equipment:
+    shoes: ClothingShoesHeelsGreen
+  groupBy: "wegaHS"
+
+- type: loadout
+  id: ClothingShoesHeelsRed
+  equipment:
+    shoes: ClothingShoesHeelsRed
+  groupBy: "wegaHS"
+
+- type: loadout
+  id: ClothingShoesHeelsOrange
+  equipment:
+    shoes: ClothingShoesHeelsOrange
+  groupBy: "wegaHS"
+
+- type: loadout
+  id: ClothingShoesHeelsPink
+  equipment:
+    shoes: ClothingShoesHeelsPink
+  groupBy: "wegaHS"
+
+- type: loadout
+  id: ClothingShoesHeelsBlue
+  equipment:
+    shoes: ClothingShoesHeelsBlue
+  groupBy: "wegaHS"
+
+- type: loadout
+  id: ClothingShoesHeelsPurple
+  equipment:
+    shoes: ClothingShoesHeelsPurple
+  groupBy: "wegaHS"
+
+# other
+
+- type: loadout
+  id: ClothingShoesBootsLaceup
+  equipment:
+    shoes: ClothingShoesBootsLaceup
+  groupBy: "wegaOS"
+
+- type: loadout
+  id: ClothingShoesWizard
+  equipment:
+    shoes: ClothingShoesWizard
+  groupBy: "wegaOS"
+
+- type: loadout
+  id: ClothingShoesTourist
+  equipment:
+    shoes: ClothingShoesTourist
+  groupBy: "wegaOS"
+
+- type: loadout
+  id: ClothingShoesLeather
+  equipment:
+    shoes: ClothingShoesLeather
+  groupBy: "wegaOS"
+
+## CustomShooseLoadout
+  # - ClothingShoesColorBlack
+  # - ClothingShoesColorBrown
+  # - ClothingShoesColorWhite
+  # - ClothingShoesColorYellow
+  # - ClothingShoesColorGreen
+  # - ClothingShoesColorRed
+  # - ClothingShoesColorOrange
+  # - ClothingShoesColorBlue
+  # - ClothingShoesColorPurple
+  # - ClothingShoesHeelsBlack
+  # - ClothingShoesHeelsGray
+  # - ClothingShoesHeelsTurquoise
+  # - ClothingShoesHeelsYellow
+  # - ClothingShoesHeelsGreen
+  # - ClothingShoesHeelsPink
+  # - ClothingShoesHeelsOrange
+  # - ClothingShoesHeelsRed
+  # - ClothingShoesHeelsBlue
+  # - ClothingShoesHeelsPurple
+  # - ClothingShoesBootsLaceup
+  # - ClothingShoesWizard
+  # - ClothingShoesTourist
+  # - ClothingShoesLeather

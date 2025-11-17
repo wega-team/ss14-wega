@@ -1,4 +1,5 @@
 using Content.Client.UserInterface.Systems.Sandbox;
+using Content.Shared.Atmos.Components; // Corvax-Wega-VentCrawling
 using Content.Shared.SubFloor;
 using Robust.Client.GameObjects;
 using Robust.Client.UserInterface;
@@ -13,6 +14,7 @@ public sealed class SubFloorHideSystem : SharedSubFloorHideSystem
     [Dependency] private readonly IUserInterfaceManager _ui = default!;
 
     private bool _showAll;
+    private bool _showVentPipe; // Corvax-Wega-VentCrawling
 
     [ViewVariables(VVAccess.ReadWrite)]
     public bool ShowAll
@@ -31,6 +33,20 @@ public sealed class SubFloorHideSystem : SharedSubFloorHideSystem
             RaiseNetworkEvent(ev);
         }
     }
+
+    // Corvax-Wega-VentCrawling-start
+    [ViewVariables(VVAccess.ReadWrite)]
+    public bool ShowVentPipe
+    {
+        get => _showVentPipe;
+        set
+        {
+            if (_showVentPipe == value) return;
+            _showVentPipe = value;
+            UpdateAll();
+        }
+    }
+    // Corvax-Wega-VentCrawling-end
 
     public override void Initialize()
     {
@@ -63,7 +79,13 @@ public sealed class SubFloorHideSystem : SharedSubFloorHideSystem
 
         scannerRevealed &= !ShowAll; // no transparency for show-subfloor mode.
 
-        var revealed = !covered || ShowAll || scannerRevealed;
+        // Corvax-Wega-VentCrawling-start
+        var showVentPipe = false;
+        if (HasComp<PipeAppearanceComponent>(uid))
+            showVentPipe = ShowVentPipe;
+        // Corvax-Wega-VentCrawling-end
+
+        var revealed = !covered || ShowAll || scannerRevealed || showVentPipe; // Corvax-Wega-VentCrawling-Edit
 
         // set visibility & color of each layer
         foreach (var layer in args.Sprite.AllLayers)

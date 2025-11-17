@@ -18,7 +18,6 @@
 - type: startingGear
   id: PostmanGear
   equipment:
-    shoes: ClothingShoesColorBlack
     outerClothing: ClothingOuterCoatPostman
     id: PostmanPDA
     ears: ClothingHeadsetCargo

@@ -147,7 +147,8 @@
   id: ScienceWinterBoots
   equipment:
     shoes: ClothingShoesBootsWinterSci
-
+  groupBy: "wegaJS" # Corvax-Wega-add
+  
 # ID
 - type: loadout
   id: ScientistPDA

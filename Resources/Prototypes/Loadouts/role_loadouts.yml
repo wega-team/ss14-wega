@@ -9,6 +9,7 @@
   - CaptainBackpack
   - CaptainOuterClothing
   # Corvax-Wega-start
+  - BaseShoose
   - CaptainTop
   - CaptainBottom
   - CaptainSocks
@@ -29,6 +30,7 @@
   - HoPBackpack
   - HoPOuterClothing
   # Corvax-Wega-start
+  - BaseShoose
   - HoPTop
   - HoPBottom
   - HoPSocks
@@ -84,6 +86,7 @@
   - CommonBackpack
   - BartenderOuterClothing
   - Glasses
+  - BaseShoose # Corvax-Wega-Add
   - Survival
   - Trinkets
   - BartenderJobTrinkets
@@ -102,6 +105,7 @@
   - BartenderJumpsuit
   - CommonBackpack
   - Glasses
+  - BaseShoose # Corvax-Wega-Add
   - Survival
   - Trinkets
   - ServiceWorkerJobTrinkets
@@ -123,6 +127,7 @@
   - CommonBackpack
   - ChefOuterClothing
   - Glasses
+  - BaseShoose # Corvax-Wega-Add
   - Survival
   - Trinkets
   - ChefJobTrinkets
@@ -141,6 +146,7 @@
   - LibrarianJumpsuit
   - CommonBackpack
   - Glasses
+  - BaseShoose # Corvax-Wega-Add
   - Survival
   - Trinkets
   - LibrarianJobTrinkets
@@ -160,6 +166,7 @@
   - LawyerJumpsuit
   - CommonBackpack
   - Glasses
+  - BaseShoose # Corvax-Wega-Add
   - Survival
   - Trinkets
   - LawyerJobTrinkets
@@ -183,6 +190,7 @@
   - ChaplainOuterClothing
   - ChaplainBible
   - Glasses
+  - BaseShoose # Corvax-Wega-Add
   - Survival
   - Trinkets
   - ChaplainJobTrinkets
@@ -225,6 +233,7 @@
   - BotanistBackpack
   - BotanistOuterClothing
   - Glasses
+  - BaseShoose # Corvax-Wega-Add
   - Survival
   - Trinkets
   - BotanistJobTrinkets
@@ -268,6 +277,7 @@
   - MimeOuterClothing
   - MimeBelt
   - Glasses
+  - BaseShoose # Corvax-Wega-Add
   - SurvivalMime
   - MimeJobTrinkets
   # Corvax-Wega-start
@@ -286,6 +296,7 @@
   - CommonBackpack
   - MusicianOuterClothing
   - Glasses
+  - BaseShoose # Corvax-Wega-Add
   - Survival
   - Trinkets
   - MusicianJobTrinkets
@@ -390,6 +401,7 @@
   - GroupTankHarness
   - TechnicalAssistantJumpsuit
   - StationEngineerBackpack
+  - StationEngineerShoes # Corvax-Add
   - SurvivalExtended
   - Trinkets
   - TechnicalAssistantJobTrinkets
@@ -667,6 +679,7 @@
   - MedicalInternJumpsuit
   - MedicalBackpack
   - MedicalEyewear
+  - BaseShoose # Corvax-Wega-Add
   - SurvivalMedical
   - Trinkets
   - MedicalInternJobTrinkets
@@ -729,6 +742,7 @@
   - GroupTankHarness
   - CommonBackpack
   - Glasses
+  - BaseShoose # Corvax-Wega-Add
   - Survival
   - Trinkets
   - ZookeeperJobTrinkets
@@ -747,6 +761,7 @@
   - ReporterJumpsuit
   - CommonBackpack
   - Glasses
+  - BaseShoose # Corvax-Wega-Add
   - Survival
   - Trinkets
   - ReporterJobTrinkets
@@ -765,6 +780,7 @@
   - PsychologistJumpsuit
   - MedicalBackpack
   - Glasses
+  - BaseShoose # Corvax-Wega-Add
   - Survival
   - Trinkets
   - PsychologistJobTrinkets

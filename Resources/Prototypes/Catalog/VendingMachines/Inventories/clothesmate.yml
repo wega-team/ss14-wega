@@ -7,7 +7,8 @@
     ClothingBackpackSatchel: 3
     ClothingBackpackSatchelLeather: 2
     ClothingRandomSpawner: 8
-    ClothingUniformRandomShorts: 4
+    ClothingUniformRandomBraWega: 8  # Corvax-Wega
+    ClothingUniformRandomShorts: 8 # Corvax-Wega
     ClothingHeadHatBeret: 4
     ClothingHeadBandBlack: 2
     ClothingHeadBandBlue: 2
@@ -56,6 +57,25 @@
     ClothingUniformJumpskirtCasualRed: 2
     ClothingUniformJumpsuitCasualGreen: 2
     ClothingUniformJumpskirtCasualGreen: 2
+    # Corvax-Wega-start
+    ClothingUniformTopColorWhite: 2
+    ClothingUniformTopColorGrey: 2
+    ClothingUniformTopColorBlack: 2
+    ClothingUniformTopColorBlue: 2
+    ClothingUniformTopColorDarkBlue: 2
+    ClothingUniformTopColorTeal: 2
+    ClothingUniformTopColorGreen: 2
+    ClothingUniformTopColorDarkGreen: 2
+    ClothingUniformTopColorOrange: 2
+    ClothingUniformTopColorRed: 2
+    ClothingUniformTopColorYellow: 2
+    ClothingUniformTopColorPurple: 2
+    ClothingUniformTopColorLightBrown: 2
+    ClothingUniformTopColorBrown: 2
+    ClothingUniformTopColorMaroon: 2
+    ClothingUniformTopic: 2
+    ClothingUniformTopicCool: 2
+    # Corvax-Wega-end
     # DO NOT ADD MORE, USE UNIFORM DYING
     ClothingShoesColorBlack: 8
     ClothingShoesColorBrown: 4
