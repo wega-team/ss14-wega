@@ -1,0 +1,10 @@
+- type: entity
+  id: ExosuitFabricatorHyperConvection
+  parent: [ExosuitFabricator, BaseHyperlathe]
+  name: hyper convection exosuit fabricator
+  description: A highly-experimental exosuit fabricator that harnesses the power of extreme heat to slowly create objects more cost-effectively.
+  components:
+  - type: Sprite
+    sprite:  _Wega/Structures/Machines/hyperconv_exosuit_fabricator.rsi
+  - type: Machine
+    board: ExosuitFabricatorHyperConvectionMachineCircuitboard

@@ -47,3 +47,8 @@
   parent: BaseSilverCircuitboardRecipe
   id: GoldprinterMachineCircuitboard
   result: GoldprinterMachineCircuitboard
+  
+- type: latheRecipe
+  parent: BaseGoldCircuitboardRecipe
+  id: ExosuitFabricatorHyperConvectionMachineCircuitboard
+  result: ExosuitFabricatorHyperConvectionMachineCircuitboard

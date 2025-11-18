@@ -112,3 +112,20 @@
     stackRequirements:
       Manipulator: 2
       Glass: 5
+      
+- type: entity
+  id: ExosuitFabricatorHyperConvectionMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: hyper convection exosuit fabricator board
+  components:
+  - type: Sprite
+    state: science
+  - type: MachineBoard
+    prototype: ExosuitFabricatorHyperConvection
+    stackRequirements:
+      Manipulator: 4
+      Glass: 5
+    tagRequirements:
+      Igniter:
+        amount: 1
+        defaultPrototype: Igniter
