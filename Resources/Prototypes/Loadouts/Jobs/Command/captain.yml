@@ -72,7 +72,6 @@
   id: CaptainMantle
   equipment:
     neck: ClothingNeckMantleCap
-  groupBy: "wegaCaC" # Corvax-Wega
 
 # Back
 - type: loadout
