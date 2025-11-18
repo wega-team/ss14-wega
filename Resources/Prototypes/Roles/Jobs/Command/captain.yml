@@ -45,7 +45,7 @@
   equipment:
     # shoes: ClothingShoesBootsLaceup # Corvax-Wega-Edit
     eyes: ClothingEyesGlassesCommand
-    gloves: ClothingHandsGlovesCaptain
+    # gloves: ClothingHandsGlovesCaptain # Corvax-Wega
     id: CaptainPDA
     ears: ClothingHeadsetAltCommand
   storage:
@@ -62,3 +62,23 @@
     eyes: ClothingEyesGlassesCommand
     mask: ClothingMaskGasCaptain
     neck: ClothingNeckCloakCap
+
+# Corvax-Wega-Start
+- type: chameleonOutfit
+  id: CaptainWhiteChameleonOutfit
+  job: Captain
+  hasMindShield: true
+  equipment:
+    head: ClothingHeadHatCapcapWhite
+    eyes: ClothingEyesGlassesCommand
+    mask: ClothingMaskGasCaptain
+    neck: ClothingNeckWhiteMantleCaptain
+    
+- type: chameleonOutfit
+  id: SherifChameleonOutfit
+  job: Captain
+  hasMindShield: true
+  equipment:
+    head: ClothingHeadHatCapcapSheriff
+    eyes: ClothingEyesGlassesCommand
+    mask: ClothingMaskGasMerc

@@ -124,6 +124,8 @@
   name: loadout-group-captain-top
   loadouts:
   - ClothingUnderTopBraCap # default
+  - ClothingUnderTopBraCapW
+  - ClothingUnderTopBraCapS
   - ClothingUnderTopBraGrey
   - ClothingUnderTopBraAssblastusa
   - ClothingUnderTopBikini
@@ -149,6 +151,10 @@
   loadouts:
   - ClothingUnderBottomMCaptain # default
   - ClothingUnderBottomFCaptain
+  - ClothingUnderBottomMCaptainS
+  - ClothingUnderBottomFCaptainS
+  - ClothingUnderBottomMCaptainW
+  - ClothingUnderBottomFCaptainW
   - ClothingUnderBottomGrey 
   - ClothingUnderBottomBabydoll
   - ClothingUnderBottomBoxers
@@ -1262,3 +1268,13 @@
   hidden: true
   loadouts:
   - LoadoutSpeciesBreathToolBlueShield
+
+- type: loadoutGroup
+  id: WegaCapitanGloves
+  name: loadout-group-capitan-gloves
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - ClothingHandsGlovesCaptain
+  - ClothingHandsGlovesSheriff
+  - ClothingHandsGlovesCaptainWhite
