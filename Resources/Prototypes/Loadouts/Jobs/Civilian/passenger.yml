@@ -117,8 +117,10 @@
   id: BlackShoes
   equipment:
     shoes: ClothingShoesColorBlack
+  groupBy: "wegaJS" # Corvax-Wega-add
 
 - type: loadout
   id: WinterBoots
   equipment:
     shoes: ClothingShoesBootsWinter
+  groupBy: "wegaJS" # Corvax-Wega-add

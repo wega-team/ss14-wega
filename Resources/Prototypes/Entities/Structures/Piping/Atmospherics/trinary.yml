@@ -78,6 +78,18 @@
     - type: GuideHelp
       guides:
       - MixingAndFiltering
+    # Corvax-Wega-VentCrawling-start
+    - type: VentCrawTube
+      containerId: VentCrawTube
+    - type: VentCrawJunction
+      degrees:
+        - 0
+        - -90
+        - 180
+    - type: ContainerContainer
+      containers:
+        VentCrawTube: !type:Container
+    # Corvax-Wega-VentCrawling-end
 
 - type: entity
   parent: GasFilter
@@ -125,6 +137,18 @@
         !type:PipeNode
         nodeGroupID: Pipe
         pipeDirection: North
+  # Corvax-Wega-VentCrawling-start
+  - type: VentCrawTube
+    containerId: VentCrawTube
+  - type: VentCrawJunction
+    degrees:
+      - 0
+      - -90
+      - 180
+  - type: ContainerContainer
+    containers:
+      VentCrawTube: !type:Container
+  # Corvax-Wega-VentCrawling-end
 
 - type: entity
   parent: GasTrinaryBase
@@ -177,6 +201,18 @@
     - type: GuideHelp
       guides:
       - MixingAndFiltering
+    # Corvax-Wega-VentCrawling-start
+    - type: VentCrawTube
+      containerId: VentCrawTube
+    - type: VentCrawJunction
+      degrees:
+        - 0
+        - -90
+        - 180
+    - type: ContainerContainer
+      containers:
+        VentCrawTube: !type:Container
+    # Corvax-Wega-VentCrawling-end
 
 - type: entity
   parent: GasMixer
@@ -220,6 +256,18 @@
         pipeDirection: North
   - type: Construction
     node: mixerflipped
+  # Corvax-Wega-VentCrawling-start
+  - type: VentCrawTube
+    containerId: VentCrawTube
+  - type: VentCrawJunction
+    degrees:
+      - 0
+      - -90
+      - 180
+  - type: ContainerContainer
+    containers:
+      VentCrawTube: !type:Container
+  # Corvax-Wega-VentCrawling-end
 
 - type: entity
   parent: GasPipeBase
@@ -285,3 +333,15 @@
       - PneumaticValve
       - Pumps
       - Valves
+    # Corvax-Wega-VentCrawling-start
+    - type: VentCrawTube
+      containerId: VentCrawTube
+    - type: VentCrawJunction
+      degrees:
+        - 0
+        - -90
+        - 180
+    - type: ContainerContainer
+      containers:
+        VentCrawTube: !type:Container
+    # Corvax-Wega-VentCrawling-end

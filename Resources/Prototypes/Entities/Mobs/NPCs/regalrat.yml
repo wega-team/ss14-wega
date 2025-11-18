@@ -144,6 +144,7 @@
   - type: Sharp
   - type: TTS # Corvax-TTS
     voice: Rat
+  - type: VentCrawler # Corvax-Wega-VentCrawling
 
 - type: entity
   id: MobRatKingBuff
@@ -221,7 +222,7 @@
     - map: [ "enum.DamageStateVisualLayers.BaseUnshaded"]
       state: eyes
       shader: unshaded
-
+  - type: VentCrawler # Corvax-Wega-VentCrawling
   - type: SpriteMovement
     movementLayers:
       movement:

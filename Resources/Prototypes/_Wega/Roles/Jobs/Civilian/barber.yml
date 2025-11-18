@@ -16,7 +16,6 @@
 - type: startingGear
   id: BarberGear
   equipment:
-    shoes: ClothingShoesColorBlack
     id: BarberPDA
     ears: ClothingHeadsetService
   storage:
