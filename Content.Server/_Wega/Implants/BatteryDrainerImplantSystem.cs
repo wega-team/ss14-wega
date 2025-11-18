@@ -5,7 +5,9 @@ using Content.Server.Power.EntitySystems;
 using Content.Server.PowerCell;
 using Content.Shared._Wega.Implants.Components;
 using Content.Shared.Power.Components;
+using NetCord;
 using Robust.Server.Audio;
+using static Content.Server.Power.Pow3r.PowerState;
 
 namespace Content.Server._Wega.Implants;
 
@@ -46,14 +48,11 @@ public sealed class BatteryDrainerImplantSystem : EntitySystem
         args.Handled = true;
         _actions.StartUseDelay(component.DischargeActionEntity);
 
-        var battery = TryGetBattery(uid);
-        if (battery == null)
-        {
-            _popup.PopupEntity(Loc.GetString("implant-battery-drainer-no-target"), uid, uid);
+        var target = FindBatteryInHands(uid);
+        if (target == null)
             return;
-        }
 
-        ChargeBattery(uid, component, battery.Value);
+        TransferCharge(component, uid, target.Value, uid);
     }
 
     private void OnDischargeAction(EntityUid uid, BatteryDrainerImplantComponent component, BatteryDischargeActionEvent args)
@@ -61,17 +60,14 @@ public sealed class BatteryDrainerImplantSystem : EntitySystem
         args.Handled = true;
         _actions.StartUseDelay(component.ChargeActionEntity);
 
-        var battery = TryGetBattery(uid);
-        if (battery == null)
-        {
-            _popup.PopupEntity(Loc.GetString("implant-battery-drainer-no-target"), uid, uid);
+        var source = FindBatteryInHands(uid);
+        if (source == null)
             return;
-        }
 
-        DischargeBattery(uid, component, battery.Value);
+        TransferCharge(component, source.Value, uid, uid);
     }
 
-    private EntityUid? TryGetBattery(EntityUid uid)
+    private EntityUid? FindBatteryInHands(EntityUid uid)
     {
         EntityUid? battery = null;
         foreach (var entity in _hands.EnumerateHeld(uid))
@@ -83,7 +79,26 @@ public sealed class BatteryDrainerImplantSystem : EntitySystem
             }
         }
 
+        if (battery == null)
+        {
+            _popup.PopupEntity(Loc.GetString("implant-battery-drainer-no-target"), uid, uid);
+            return null;
+        }
+
         return battery;
+    }
+
+    private EntityUid? TryGetBattery(EntityUid uid)
+    {
+        if (!_powerCell.TryGetBatteryFromSlot(uid, out var battery, out _))
+        {
+            if (TryComp<BatteryComponent>(uid, out var comp))
+                return uid;
+        }
+        else
+            return battery;
+
+        return null;
     }
 
     private void ChargeBattery(EntityUid user, BatteryDrainerImplantComponent component, EntityUid target)
@@ -106,23 +121,27 @@ public sealed class BatteryDrainerImplantSystem : EntitySystem
         _audio.PlayPvs(component.UseSound, user);
     }
 
-    private void DischargeBattery(EntityUid user, BatteryDrainerImplantComponent component, EntityUid target)
+    private void TransferCharge(BatteryDrainerImplantComponent component, EntityUid source, EntityUid target, EntityUid user)
     {
-        if (!_powerCell.TryGetBatteryFromSlot(user, out var batteryUid, out var battery))
+        var sourceUid = TryGetBattery(source);
+        var targetUid = TryGetBattery(target);
+
+        if (sourceUid == null || targetUid == null)
             return;
 
-        if (!TryComp<BatteryComponent>(target, out var targetBattery))
+        if (!TryComp<BatteryComponent>(sourceUid, out var sourceBattery) || !TryComp<BatteryComponent>(targetUid, out var targetBattery))
             return;
 
-        float transfer = Math.Clamp(battery.MaxCharge - battery.CurrentCharge, 0f, targetBattery.CurrentCharge);
+        float transfer = Math.Clamp(targetBattery.MaxCharge - targetBattery.CurrentCharge, 0f, sourceBattery.CurrentCharge);
         if (transfer == 0f)
         {
             _popup.PopupEntity(Loc.GetString("implant-battery-drainer-no-transfer"), user, user);
             return;
         }
-        _battery.ChangeCharge(batteryUid.Value, transfer);
-        _battery.UseCharge(target, transfer);
 
-        _audio.PlayPvs(component.UseSound, user);
+        _battery.ChangeCharge(targetUid.Value, transfer);
+        _battery.UseCharge(sourceUid.Value, transfer);
+
+        _audio.PlayPvs(component.UseSound, source);
     }
 }
