@@ -5,8 +5,9 @@ using Content.Shared.Popups;
 using Content.Shared.Database;
 using Content.Shared.Examine;
 using Content.Shared.Cargo.Prototypes;
+using Content.Shared.Cargo.Components;
 
-namespace Content.Shared.Cargo.Components;
+namespace Content.Shared.Cargo;
 
 public sealed class ChangeableCargoAccountSystem : EntitySystem
 {

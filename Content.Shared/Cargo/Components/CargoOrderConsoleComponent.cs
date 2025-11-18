@@ -14,7 +14,7 @@ namespace Content.Shared.Cargo.Components;
 /// Handles sending order requests to cargo. Doesn't handle orders themselves via shuttle or telepads.
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState, AutoGenerateComponentPause]
-// [Access(typeof(SharedCargoSystem))] Corvax-Wega-Changeable-Account
+[Access(typeof(SharedCargoSystem), typeof(ChangeableCargoAccountSystem))] // Corvax-Wega-Changeable-Account
 public sealed partial class CargoOrderConsoleComponent : Component
 {
     /// <summary>
