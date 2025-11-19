@@ -79,3 +79,25 @@
     sprite: _Wega/Clothing/OuterClothing/Coats/postman.rsi
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodPostman
+
+- type: entity
+  parent: ClothingOuterCoatCaptain
+  id: ClothingOuterCoatSherif
+  name: sherif's jacket
+  description: Captain's formal jacket, inlaid with gold.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Coats/captain_green.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/OuterClothing/Coats/captain_green.rsi
+    
+- type: entity
+  parent: ClothingOuterCoatCaptain
+  id: ClothingOuterCoatWhite
+  name: white capitan's jacket
+  description: Captain's formal jacket, inlaid with gold.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Coats/captain_white.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/OuterClothing/Coats/captain_white.rsi

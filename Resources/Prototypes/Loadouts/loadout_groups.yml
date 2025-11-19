@@ -157,6 +157,12 @@
   loadouts:
   - CaptainHead
   - CaptainCap
+# Corvax-Wega-start
+  - ClothingHeadHatBeretCaptainWhite
+  - ClothingHeadHatCapcapWhite
+  - ClothingHeadHatCapcapSheriff
+  - ClothingHeadHatBeretSheriff
+# Corvax-Wega-end
 
 - type: loadoutGroup
   id: CaptainJumpsuit
@@ -170,6 +176,12 @@
   - CaptainJumpsuitTurtleneck
   - CaptainJumpskirtTurtleneck
   # Corvax-Loadouts-End
+# Corvax-Wega-start
+  - ClothingUniformJumpsuitWhiteCaptain
+  - ClothingUniformJumpskirtWhiteCaptain
+  - ClothingUniformJumpsuitSheriff
+  - ClothingUniformJumpsuitCommandCaptain
+# Corvax-Wega-end
 
 - type: loadoutGroup
   id: CaptainNeck
@@ -179,6 +191,11 @@
   - CaptainCloak
   - CaptainCloakFormal
   - CaptainMantle
+# Corvax-Wega-start
+  - ClothingNeckCaptainWide
+  - ClothingNeckCloakRoyalCaptain
+  - ClothingNeckWhiteMantleCaptain
+# Corvax-Wega-end
 
 - type: loadoutGroup
   id: CaptainBackpack
@@ -187,13 +204,28 @@
   - CaptainBackpack
   - CaptainSatchel
   - CaptainDuffel
+# Corvax-Wega-start
+  - ClothingBackpackCapitanWhite
+  - ClothingSatchelsCapitanWhite
+  - ClothingDuffelsCapitanWhite
+  - ClothingBackpackCapitanGreen
+  - ClothingSatchelsCapitanGreen
+  - ClothingDuffelsCapitanGreen
+# Corvax-Wega-end
 
 - type: loadoutGroup
   id: CaptainOuterClothing
   name: loadout-group-captain-outerclothing
   loadouts:
   - CaptainOuterClothing
-  - CaptainWintercoat
+  - ClothingOuterCoatCaptain  # Corvax-Wega
+# Corvax-Wega-start
+  - ClothingOuterArmorCaptainCarapaceWhite
+  - ClothingOuterCoatWhite
+  - ClothingOuterArmorSherifCarapace
+  - ClothingOuterCoatSherif
+# Corvax-Wega-end
+
 
 - type: loadoutGroup
   id: CaptainJobTrinkets

@@ -253,6 +253,28 @@
 
 - type: entity
   parent: ClothingUnderTopBase
+  id: ClothingUnderTopBraCapS
+  name: sherif bra
+  description: "An element of lingerie that supports the breasts and creates comfort. It is made of soft materials and has various details."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Top/Head/captain_green.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Top/Head/captain_green.rsi
+
+- type: entity
+  parent: ClothingUnderTopBase
+  id: ClothingUnderTopBraCapW
+  name: white captain bra
+  description: "An element of lingerie that supports the breasts and creates comfort. It is made of soft materials and has various details."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Top/Head/captain_white.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Top/Head/captain_white.rsi
+
+- type: entity
+  parent: ClothingUnderTopBase
   id: ClothingUnderTopBraCe
   name: chief engineer bra
   description: "An element of lingerie that supports the breasts and creates comfort. It is made of soft materials and has various details."

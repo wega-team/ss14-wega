@@ -2,7 +2,7 @@
 - type: emote
   id: Moan
   name: chat-emote-name-moan
-  icon: Interface/Emotes/vocal.png
+  icon: _Wega/Interface/Emotes/Axegao.png
   category: Vocal
   whitelist:
     components:
@@ -58,3 +58,23 @@
     - шипит
     - зашипел
     - зашипела
+
+#андройды
+- type: emote
+  id: LPCmoan
+  name: chat-emote-name-LPCmoan
+  category: Vocal
+  available: false
+  icon: _Wega/Interface/Emotes/Axegao.png
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: ["chat-emote-msg-LPCmoan"]
+  chatTriggers:
+    - робо-стонет
+    - стон
+    - робо-стон
+    - робостон

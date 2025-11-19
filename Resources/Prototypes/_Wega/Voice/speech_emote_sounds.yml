@@ -147,8 +147,6 @@
       collection: MaleScreams
     Laugh:
       collection: MaleLaugh
-    Sneeze:
-      collection: MaleSneezes
     Cough:
       collection: MaleCoughs
     Yawn:
@@ -163,6 +161,8 @@
       collection: Whistles
     Weh:
       collection: Weh
+    LPCmoan:
+      collection: LPCMoans
     Gasp:
       path: /Audio/_Wega/Voice/Android/android_gasp.ogg
     DefaultDeathgasp:
@@ -185,8 +185,6 @@
       collection: FemaleScreams
     Laugh:
       collection: FemaleLaugh
-    Sneeze:
-      collection: FemaleSneezes
     Cough:
       collection: FemaleCoughs
     Yawn:
@@ -201,6 +199,8 @@
       collection: Whistles
     Weh:
       collection: Weh
+    LPCmoan:
+      collection: LPCMoans
     Gasp:
       path: /Audio/_Wega/Voice/Android/android_gasp.ogg
     DefaultDeathgasp:
