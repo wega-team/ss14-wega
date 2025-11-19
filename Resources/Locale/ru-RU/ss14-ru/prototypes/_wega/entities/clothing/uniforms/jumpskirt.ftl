@@ -36,3 +36,5 @@ ent-ClothingUniformJumpskirtTurtleneckWhiteSleeveless = белая безрук�
     .desc = { ent-ClothingUniformJumpsuitTurtleneckWhiteSleeveless.desc } 
 ent-ClothingUniformJumpskirtTurtleneckSalat = салатовая водолазка с юбкой
     .desc = { ent-ClothingUniformJumpsuitTurtleneckSalat.desc }
+ent-ClothingUniformJumpskirtWhiteCaptain = белая юбка-комбинезон капитана
+   .desc = Белая юбка-комбинезон капитана символизирующая, что ваша зарплата явно превышает нормы.

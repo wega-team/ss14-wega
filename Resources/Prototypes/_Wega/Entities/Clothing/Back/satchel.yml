@@ -15,3 +15,21 @@
   components:
   - type: Sprite
     sprite: _Wega/Clothing/Back/Satchels/postman.rsi
+
+- type: entity
+  parent: ClothingBackpack
+  id: ClothingSatchelsCapitanWhite
+  name: white capitan satchel
+  description: It looks like a military development, although the coloring is unusual. A very stylish and practical backpack.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Back/Satchels/captain_white.rsi
+    
+- type: entity
+  parent: ClothingBackpack
+  id: ClothingSatchelsCapitanGreen
+  name: sherif satchel
+  description: It looks like a military development, although the coloring is unusual. A very stylish and practical backpack.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Back/Satchels/captain_green.rsi

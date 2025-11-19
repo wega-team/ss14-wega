@@ -89,5 +89,6 @@ namespace Content.Shared.Verbs
             new("verb-categories-adjust", "/Textures/Interface/VerbIcons/screwdriver.png");
 
         public static readonly VerbCategory ToggleHeadsetSound = new("verb-categories-toggle-headset-sound", null); // Corvax-Wega-Headset
+        public static readonly VerbCategory CargoAccount = new("verb-categories-cargo-account", null); // Corvax-Wega-Chaneable-Cargo-Account
     }
 }

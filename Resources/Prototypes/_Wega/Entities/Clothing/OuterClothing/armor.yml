@@ -39,3 +39,25 @@
       walkModifier: 1.0
       sprintModifier: 1.0
     - type: HeldSpeedModifier
+
+- type: entity
+  parent: ClothingOuterArmorCaptainCarapace
+  id: ClothingOuterArmorSherifCarapace
+  name: sherif's carapace
+  description: An armored chestpiece that provides protection whilst still offering maximum mobility and flexibility. Issued only to the station's finest.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Armor/captain_carapace_green.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/OuterClothing/Armor/captain_carapace_green.rsi
+    
+- type: entity
+  parent: ClothingOuterArmorCaptainCarapace
+  id: ClothingOuterArmorCaptainCarapaceWhite
+  name: white capitan's carapace
+  description: An armored chestpiece that provides protection whilst still offering maximum mobility and flexibility. Issued only to the station's finest.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Armor/captain_carapace_white.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/OuterClothing/Armor/captain_carapace_white.rsi

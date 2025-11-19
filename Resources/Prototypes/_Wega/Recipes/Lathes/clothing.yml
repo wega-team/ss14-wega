@@ -1,55 +1,153 @@
 - type: latheRecipe
+  abstract: true
+  id: BaseSheath
+  categories:
+  - Command
+  completetime: 4
+  materials:
+    Cloth: 300
+    Durathread: 500
+
+- type: latheRecipe
+  abstract: true
+  id: BaseNeckClothingCommandRecipe
+  completetime: 2
+  categories:
+  - Neck
+  - Command
+  materials:
+    Cloth: 300
+    Durathread: 100
+# Jumpsuits/skirts
+- type: latheRecipe
+  parent: BaseJumpsuitRecipe
+  id: ClothingUniformJumpsuitPostman
+  result: ClothingUniformJumpsuitPostman
+  
+- type: latheRecipe
+  parent: BaseJumpsuitRecipe
+  id: ClothingUniformJumpskirtPostman
+  result: ClothingUniformJumpskirtPostman
+  
+- type: latheRecipe
+  parent: BaseCommandJumpsuitRecipe
+  id: ClothingUniformJumpsuitBlueShield
+  result: ClothingUniformJumpsuitBlueShield
+
+- type: latheRecipe
+  parent: BaseCommandJumpsuitRecipe
+  id: ClothingUniformJumpskirtBlueShield
+  result: ClothingUniformJumpskirtBlueShield
+
+- type: latheRecipe
+  parent: BaseCommandJumpsuitRecipe
+  id: ClothingUniformJumpsuitAltBlueShield
+  result: ClothingUniformJumpsuitAltBlueShield
+
+- type: latheRecipe
+  parent: BaseCommandJumpsuitRecipe
+  id: ClothingUniformJumpsuitWhiteCaptain
+  result: ClothingUniformJumpsuitWhiteCaptain
+
+- type: latheRecipe
+  parent: BaseCommandJumpsuitRecipe
+  id: ClothingUniformJumpskirtWhiteCaptain
+  result: ClothingUniformJumpskirtWhiteCaptain
+
+- type: latheRecipe
+  parent: BaseCommandJumpsuitRecipe
+  id: ClothingUniformJumpsuitSheriff
+  result: ClothingUniformJumpsuitSheriff
+
+- type: latheRecipe
+  parent: BaseCommandJumpsuitRecipe
+  id: ClothingUniformJumpsuitCommandCaptain
+  result: ClothingUniformJumpsuitCommandCaptain
+
+# hats
+- type: latheRecipe
+  parent: BaseHatRecipe
+  id: ClothingHeadHatPostmansoft
+  result: ClothingHeadHatPostmansoft
+
+- type: latheRecipe
+  parent: BaseCommandHatRecipe
+  id: ClothingHeadHatBeretBlueShield
+  result: ClothingHeadHatBeretBlueShield
+
+- type: latheRecipe
+  parent: BaseCommandHatRecipe
+  id: ClothingHeadHatCapcapWhite
+  result: ClothingHeadHatCapcapWhite
+
+- type: latheRecipe
+  parent: BaseCommandHatRecipe
+  id: ClothingHeadHatBeretCaptainWhite
+  result: ClothingHeadHatBeretCaptainWhite
+
+- type: latheRecipe
+  parent: BaseCommandHatRecipe
+  id: ClothingHeadHatBeretSheriff
+  result: ClothingHeadHatBeretSheriff
+
+- type: latheRecipe
+  parent: BaseCommandHatRecipe
+  id: ClothingHeadHatCapcapSheriff
+  result: ClothingHeadHatCapcapSheriff
+
+# neck
+- type: latheRecipe
+  parent: BaseNeckClothingCommandRecipe
   id: ClothingNeckMantleCap
   result: ClothingNeckMantleCap
-  completetime: 4
-  materials:
-    Cloth: 300
-    Durathread: 100
 
 - type: latheRecipe
+  parent: BaseNeckClothingCommandRecipe
   id: ClothingNeckMantleHOP
   result: ClothingNeckMantleHOP
-  completetime: 4
-  materials:
-    Cloth: 300
-    Durathread: 100
 
 - type: latheRecipe
+  parent: BaseNeckClothingCommandRecipe
   id: ClothingNeckMantleHOS
   result: ClothingNeckMantleHOS
-  completetime: 4
-  materials:
-    Cloth: 300
-    Durathread: 100
 
 - type: latheRecipe
+  parent: BaseNeckClothingCommandRecipe
   id: ClothingNeckMantleCMO
   result: ClothingNeckMantleCMO
-  completetime: 4
-  materials:
-    Cloth: 300
-    Durathread: 100
 
 - type: latheRecipe
+  parent: BaseNeckClothingCommandRecipe
   id: ClothingNeckMantleCE
   result: ClothingNeckMantleCE
-  completetime: 4
-  materials:
-    Cloth: 300
-    Durathread: 100
 
 - type: latheRecipe
+  parent: BaseNeckClothingCommandRecipe
   id: ClothingNeckMantleRD
   result: ClothingNeckMantleRD
-  completetime: 4
-  materials:
-    Cloth: 300
-    Durathread: 100
 
 - type: latheRecipe
+  parent: BaseNeckClothingCommandRecipe
   id: ClothingNeckMantleQM
   result: ClothingNeckMantleQM
-  completetime: 4
-  materials:
-    Cloth: 300
-    Durathread: 100
+
+- type: latheRecipe
+  parent: BaseNeckClothingCommandRecipe
+  id: ClothingNeckWhiteMantleCaptain
+  result: ClothingNeckWhiteMantleCaptain
+  
+# Sheath
+- type: latheRecipe
+  parent: BaseSheath
+  id: ClothingBeltSheriffSheath
+  result: ClothingBeltSheriffSheath
+
+- type: latheRecipe
+  parent: BaseSheath
+  id: ClothingBeltWhiteSheath
+  result: ClothingBeltWhiteSheath
+
+- type: latheRecipe
+  parent: BaseSheath
+  id: ClothingBeltSheath
+  result: ClothingBeltSheath

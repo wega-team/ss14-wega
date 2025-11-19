@@ -540,6 +540,7 @@
     - Carpets
     - Bedsheets
     - CorvaxClothing # Corvax-Clothing
+    - WegaUniform # Corvax-Wega
   - type: EmagLatheRecipes
     emagStaticPacks:
     - ClothingCentComm
