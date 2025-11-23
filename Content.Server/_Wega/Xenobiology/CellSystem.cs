@@ -1,6 +1,6 @@
 ﻿using Content.Server.DoAfter;
 using Content.Server.Popups;
-using Content.Shared.Damage;
+using Content.Shared.Damage.Systems;
 using Content.Shared.DoAfter;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;

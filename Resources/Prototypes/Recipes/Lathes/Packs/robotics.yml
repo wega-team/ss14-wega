@@ -46,6 +46,9 @@
   - ArmSyntheticPry
   - ArmSyntheticDefib
   - ArmSyntheticProtoKinetic
+  - ArmSyntheticCharger
+  - LegSyntheticMagboots
+  - LegSyntheticJump
   # Corvax-Wega-Android-End
 
 - type: latheRecipePack

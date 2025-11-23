@@ -52,6 +52,7 @@
   parent: BaseBorgModuleRecipe
   id: BorgModuleMusique
   result: BorgModuleMusique
+
 # Android
 
 - type: latheRecipe
@@ -80,10 +81,10 @@
   result: LeftArmSyntheticPry
   completetime: 5
   materials:
-    Steel: 500
-    Plastic: 250
-    Gold: 100
-    Plasma: 100
+    Steel: 750
+    Plastic: 300
+    Gold: 200
+    Plasma: 150
 
 - type: latheRecipe
   parent: BaseRoboticsRecipe
@@ -91,8 +92,8 @@
   result: LeftArmSyntheticDefib
   completetime: 5
   materials:
-    Steel: 500
-    Plastic: 250
+    Steel: 750
+    Plastic: 300
     Silver: 250
 
 - type: latheRecipe
@@ -101,7 +102,38 @@
   result: LeftArmSyntheticProtoKinetic
   completetime: 5
   materials:
-    Steel: 500
-    Plastic: 250
-    Silver: 150
+    Steel: 750
+    Plastic: 300
+    Silver: 200
+    Plasma: 150
+
+- type: latheRecipe
+  parent: BaseRoboticsRecipe
+  id: ArmSyntheticCharger
+  result: LeftArmSyntheticCharger
+  completetime: 5
+  materials:
+    Steel: 750
+    Plastic: 300
+    Gold: 200
+
+- type: latheRecipe
+  parent: BaseRoboticsRecipe
+  id: LegSyntheticMagboots
+  result: LeftLegSyntheticMagboots
+  completetime: 5
+  materials:
+    Steel: 750
+    Plastic: 300
+    Gold: 300
+
+- type: latheRecipe
+  parent: BaseRoboticsRecipe
+  id: LegSyntheticJump
+  result: LeftLegSyntheticJump
+  completetime: 5
+  materials:
+    Steel: 750
+    Plastic: 300
+    Gold: 250
     Plasma: 150

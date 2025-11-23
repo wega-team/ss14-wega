@@ -11,6 +11,46 @@
     graph: AndroidBodyPart
     node: start
 
+- type: entity
+  id: LeftArmSyntheticImplant
+  parent: LeftArmAndroid
+  abstract: true
+  components:
+  - type: BodyPartImplant
+    parts:
+      left_hand:
+        LeftHandAndroid
+
+- type: entity
+  id: RightArmSyntheticImplant
+  parent: RightArmAndroid
+  abstract: true
+  components:
+  - type: BodyPartImplant
+    parts:
+      right_hand:
+        RightHandAndroid
+
+- type: entity
+  id: LeftLegSyntheticImplant
+  parent: LeftLegAndroid
+  abstract: true
+  components:
+  - type: BodyPartImplant
+    parts:
+      left_foot:
+        LeftFootAndroid
+
+- type: entity
+  id: RightLegSyntheticImplant
+  parent: RightLegAndroid
+  abstract: true
+  components:
+  - type: BodyPartImplant
+    parts:
+      right_foot:
+        RightFootAndroid
+
 # Pry Arm
 
 - type: entity
@@ -42,12 +82,12 @@
 - type: entity
   id: LeftArmSyntheticPry
   description: "A powerful hydraulic arm for opening powered airlocks. Now it is left, use a screwdriver to change it."
-  parent: [ ArmSyntheticPry, LeftArmAndroid ]
+  parent: [ ArmSyntheticPry, LeftArmSyntheticImplant ]
 
 - type: entity
   id: RightArmSyntheticPry
   description: "A powerful hydraulic arm for opening powered airlocks. Now it is right, use a screwdriver to change it."
-  parent: [ ArmSyntheticPry, RightArmAndroid ]
+  parent: [ ArmSyntheticPry, RightArmSyntheticImplant ]
   categories: [ HideSpawnMenu ]
   components:
   - type: Construction
@@ -73,7 +113,7 @@
 - type: entity
   id: LeftArmSyntheticDefib
   description: "An arm with a built-in defibrillator! Now it is left, use a screwdriver to change it."
-  parent: [ ArmSyntheticDefib, LeftArmAndroid ]
+  parent: [ ArmSyntheticDefib, LeftArmSyntheticImplant ]
   components:
   - type: BodyPartImplant
     implantComponents:
@@ -86,7 +126,7 @@
 - type: entity
   id: RightArmSyntheticDefib
   description: "An arm with a built-in defibrillator! Now it is right, use a screwdriver to change it."
-  parent: [ ArmSyntheticDefib, RightArmAndroid ]
+  parent: [ ArmSyntheticDefib, RightArmSyntheticImplant ]
   categories: [ HideSpawnMenu ]
   components:
   - type: Construction
@@ -125,7 +165,7 @@
 - type: entity
   id: LeftArmSyntheticProtoKinetic
   description: "Turn your hand into Proto-kinetic accelerator. Now it is left, use a screwdriver to change it."
-  parent: [ ArmSyntheticProtoKinetic, LeftArmAndroid ]
+  parent: [ ArmSyntheticProtoKinetic, LeftArmSyntheticImplant ]
   components:
   - type: BodyPartImplant
     implantComponents:
@@ -138,7 +178,7 @@
 - type: entity
   id: RightArmSyntheticProtoKinetic
   description: "Turn your hand into Proto-kinetic accelerator. Now it is right, use a screwdriver to change it."
-  parent: [ ArmSyntheticProtoKinetic, RightArmAndroid ]
+  parent: [ ArmSyntheticProtoKinetic, RightArmSyntheticImplant ]
   categories: [ HideSpawnMenu ]
   components:
   - type: BodyPartImplant
@@ -194,3 +234,102 @@
     proto: BulletKinetic
     capacity: 1
     count: 1
+
+# Charger arm
+
+- type: entity
+  id: ArmSyntheticCharger
+  name: "charger arm"
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Android/parts.rsi
+    state: charger_arm
+  - type: BodyPartImplant
+    key: charge
+    implantComponents:
+      - type: BatteryDrainerImplant
+  - type: Construction
+    graph: ArmSyntheticCharger
+    node: start
+
+- type: entity
+  id: LeftArmSyntheticCharger
+  description: "An arm with built-in charger, charge yourself or charge items. Now it is left, use a screwdriver to change it."
+  parent: [ ArmSyntheticCharger, LeftArmSyntheticImplant ]
+
+- type: entity
+  id: RightArmSyntheticCharger
+  description: "An arm with built-in charger, charge yourself or charge items. Now it is right, use a screwdriver to change it."
+  parent: [ ArmSyntheticCharger, RightArmSyntheticImplant ]
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Construction
+    node: right
+
+# Magnet Leg
+
+- type: entity
+  id: LegSyntheticMagboots
+  name: "magnet arm"
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Android/parts.rsi
+    state: magnet_leg
+  - type: BodyPartImplant
+    key: magnet
+    implantComponents:
+      - type: MagbootsImplant
+  - type: Construction
+    graph: LegSyntheticMagboots
+    node: start
+
+- type: entity
+  id: LeftLegSyntheticMagboots
+  description: "A leg with built-in magboots. Now it is left, use a screwdriver to change it."
+  parent: [ LegSyntheticMagboots, LeftLegSyntheticImplant ]
+
+- type: entity
+  id: RightLegSyntheticMagboots
+  description: "A leg with built-in magboots. Now it is right, use a screwdriver to change it."
+  parent: [ LegSyntheticMagboots, RightLegSyntheticImplant ]
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Construction
+    node: right
+
+# Jump Leg
+
+- type: entity
+  id: LegSyntheticJump
+  name: "jump arm"
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Android/parts.rsi
+    state: jump_leg
+  - type: BodyPartImplant
+    key: jump
+    implantComponents:
+      - type: JumpAbility
+        action: ActionBodyPartImplantJump
+        jumpDistance: 4
+        jumpSound: /Audio/Effects/stealthoff.ogg
+  - type: Construction
+    graph: LegSyntheticJump
+    node: start
+
+- type: entity
+  id: LeftLegSyntheticJump
+  description: "A leg with an installed rocket engine for short jumps. Now it is left, use a screwdriver to change it."
+  parent: [ LegSyntheticJump, LeftLegSyntheticImplant ]
+
+- type: entity
+  id: RightLegSyntheticJump
+  description: "A leg with an installed rocket engine for short jumps. Now it is right, use a screwdriver to change it."
+  parent: [ LegSyntheticJump, RightLegSyntheticImplant ]
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Construction
+    node: right

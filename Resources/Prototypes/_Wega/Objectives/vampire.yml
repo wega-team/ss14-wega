@@ -58,7 +58,7 @@
   id: BaseVampireCMOStealObjective
   components:
   - type: NotJobRequirement
-    job: ChiefMedicalOfficer
+    jobs: [ ChiefMedicalOfficer ]
   - type: StealCondition
     owner: job-name-cmo
 
@@ -84,7 +84,7 @@
   id: BaseVampireRDStealObjective
   components:
   - type: NotJobRequirement
-    job: ResearchDirector
+    jobs: [ ResearchDirector ]
   - type: StealCondition
     owner: job-name-rd
 
@@ -111,7 +111,7 @@
   id: VampireMagbootsStealObjective
   components:
   - type: NotJobRequirement
-    job: ChiefEngineer
+    jobs: [ ChiefEngineer ]
   - type: StealCondition
     stealGroup: ClothingShoesBootsMagAdv
     owner: job-name-ce
@@ -123,7 +123,7 @@
   id: VampireClipboardStealObjective
   components:
   - type: NotJobRequirement
-    job: Quartermaster
+    jobs: [ Quartermaster ]
   - type: StealCondition
     stealGroup: BoxFolderQmClipboard
     owner: job-name-qm
@@ -135,7 +135,7 @@
   id: VampireCorgiMeatStealObjective
   components:
   - type: NotJobRequirement
-    job: HeadOfPersonnel
+    jobs: [ HeadOfPersonnel ]
   - type: ObjectiveLimit
     limit: 3
   - type: StealCondition
@@ -152,7 +152,7 @@
   - type: Objective
     difficulty: 3.5
   - type: NotJobRequirement
-    job: Captain
+    jobs: [ Captain ]
 
 - type: entity
   parent: BaseVampireCaptainObjective
@@ -184,7 +184,7 @@
   - type: Objective
     difficulty: 3
   - type: NotJobRequirement
-    job: Warden
+    jobs: [ Warden ]
   - type: StealCondition
     stealGroup: GlovesKravMaga
     owner: job-name-warden
@@ -197,7 +197,7 @@
   - type: Objective
     difficulty: 3
   - type: NotJobRequirement
-    job: BlueShieldOfficer
+    jobs: [ BlueShieldOfficer ]
   - type: StealCondition
     stealGroup: WeaponBlueLaserPistol
     owner: job-name-bso

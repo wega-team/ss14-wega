@@ -8,6 +8,8 @@ using Content.Server.Prayer;
 using Content.Shared.Buckle;
 using Content.Shared.Chat.Prototypes;
 using Content.Shared.Damage;
+using Content.Shared.Damage.Components;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Database;
 using Content.Shared.Forensics.Components;
 using Content.Shared.Genetics;
@@ -821,11 +823,8 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
             // Zero add an entity
             _buckle.TryUnbuckle(target, target, true);
             var child = _entManager.SpawnEntity(component.Lowest, Transform(target).Coordinates);
-            if (TryComp<DamageableComponent>(child, out var damageParent)
-                && _mobThreshold.GetScaledDamage(target, child, out var damage) && damage != null)
-            {
-                _damage.SetDamage(child, damageParent, damage);
-            }
+            if (_mobThreshold.GetScaledDamage(target, child, out var damage) && damage != null)
+                _damage.SetDamage(child, damage);
 
             EnsureComp<DnaLowestComponent>(child).Parent = target;
 
@@ -903,11 +902,8 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
                 if (_mindSystem.TryGetMind(target, out var mindIdLowest, out var mindLowest))
                     _mindSystem.TransferTo(mindIdLowest, parent, mind: mindLowest);
 
-                if (TryComp<DamageableComponent>(parent, out var parentDamage)
-                    && _mobThreshold.GetScaledDamage(target, parent, out var damageLowest) && damageLowest != null)
-                {
-                    _damage.SetDamage(parent, parentDamage, damageLowest);
-                }
+                if (_mobThreshold.GetScaledDamage(target, parent, out var damageLowest) && damageLowest != null)
+                    _damage.SetDamage(parent, damageLowest);
 
                 if (TryComp<DnaModifierComponent>(parent, out var dnaModifier))
                 {
@@ -932,11 +928,8 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
             // Zero add an entity
             _buckle.TryUnbuckle(target, target, true);
             var child = _entManager.SpawnEntity(component.Upper, Transform(target).Coordinates);
-            if (TryComp<DamageableComponent>(child, out var damageParent)
-                && _mobThreshold.GetScaledDamage(target, child, out var damage) && damage != null)
-            {
-                _damage.SetDamage(child, damageParent, damage);
-            }
+            if (_mobThreshold.GetScaledDamage(target, child, out var damage) && damage != null)
+                _damage.SetDamage(child, damage);
 
             // First undress
             if (_inventory.TryGetContainerSlotEnumerator(target, out var enumerator))

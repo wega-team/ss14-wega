@@ -1,5 +1,7 @@
 using Content.Shared.Damage;
+using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Prototypes;
+using Content.Shared.Damage.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
@@ -24,7 +26,7 @@ public sealed partial class DamageEntityEffectSystem : EntityEffectSystem<Damage
         var damage = new DamageSpecifier();
         damage.DamageDict.Add(args.Effect.DamageType, damageAmount);
 
-        _damageable.TryChangeDamage(entity, damage, true);
+        _damageable.TryChangeDamage(entity.Owner, damage, true);
     }
 }
 

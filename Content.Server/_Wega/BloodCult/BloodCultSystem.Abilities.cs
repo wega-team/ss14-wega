@@ -45,6 +45,7 @@ using Content.Shared.Flash.Components;
 using Content.Shared.Body.Components;
 using Content.Shared.NullRod.Components;
 using Content.Shared.Chat;
+using Content.Shared.Damage.Systems;
 
 namespace Content.Server.Blood.Cult;
 

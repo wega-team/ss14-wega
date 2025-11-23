@@ -1,6 +1,7 @@
 using Content.Shared.Flash.Components;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes; // Corvax-Wega-Phantom-Start
+using Content.Shared.Damage.Systems;
 
 namespace Content.Shared.Flash;
 
@@ -17,23 +18,22 @@ public sealed class DamagedByFlashingSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<DamagedByFlashingComponent, FlashAttemptDamageEvent>(OnFlashDamageAttempt); // Corvax-Wega-Phantom
+        SubscribeLocalEvent<DamagedByFlashingComponent, FlashAttemptDamageEvent>(OnFlashAttempt); // Corvax-Wega-Phantom
     }
 
     // TODO: Attempt events should not be doing state changes. But using AfterFlashedEvent does not work because this entity cannot get the status effect.
     // Best wait for Ed's status effect system rewrite.
-
-    private void OnFlashDamageAttempt(Entity<DamagedByFlashingComponent> ent, ref FlashAttemptDamageEvent args) // Corvax-Wega-Phantom
+    private void OnFlashAttempt(Entity<DamagedByFlashingComponent> ent, ref FlashAttemptDamageEvent args) // Corvax-Wega-Phantom
     {
         // Corvax-Wega-Phantom-Start Rewrite flash damage
         if (!ent.Comp.UseAdvancedFlashDamage)
         {
-            _damageable.TryChangeDamage(ent, ent.Comp.FlashDamage);
+            _damageable.TryChangeDamage(ent.Owner, ent.Comp.FlashDamage);
             return;
         }
 
         var damage = new DamageSpecifier { DamageDict = { { Damage, (float)args.FlashDuration.TotalSeconds * 2 * ent.Comp.Multiplier } } };
-        _damageable.TryChangeDamage(ent, damage);
+        _damageable.TryChangeDamage(ent.Owner, damage);
         // Corvax-Wega-Phantom-End
     }
 }

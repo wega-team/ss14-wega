@@ -1,5 +1,6 @@
 using System.Linq;
 using Content.Shared.Damage;
+using Content.Shared.Damage.Components;
 using Content.Shared.FixedPoint;
 using Content.Shared.Genetics;
 using Content.Shared.Humanoid;

@@ -41,6 +41,8 @@ using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Surgery.Components;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Inventory;
+using Content.Shared.Damage.Systems;
+using Content.Shared.Damage.Components;
 
 namespace Content.Server.Vampire;
 
@@ -465,7 +467,7 @@ public sealed partial class VampireSystem : SharedVampireSystem
     #region Space Damage
     private void DoSpaceDamage(Entity<VampireComponent> vampire)
     {
-        _damage.TryChangeDamage(vampire, VampireComponent.SpaceDamage, true, origin: vampire);
+        _damage.TryChangeDamage(vampire.Owner, VampireComponent.SpaceDamage, true, origin: vampire);
         _popup.PopupEntity(Loc.GetString("vampire-startlight-burning"), vampire, vampire, PopupType.LargeCaution);
     }
 
@@ -542,10 +544,10 @@ public sealed partial class VampireSystem : SharedVampireSystem
 
         foreach (var participant in participants)
         {
-            if (!TryComp<DamageableComponent>(participant, out var damageable))
+            if (!HasComp<DamageableComponent>(participant))
                 continue;
 
-            _damage.TryChangeDamage(participant, sharedDamage, true, damageable: damageable);
+            _damage.TryChangeDamage(participant, sharedDamage, true);
         }
     }
 

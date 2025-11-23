@@ -17,7 +17,7 @@
     sprite: _Wega/Clothing/Back/Duffels/postman.rsi
     
 - type: entity
-  parent: ClothingBackpack
+  parent: ClothingBackpackDuffel
   id: ClothingDuffelsCapitanWhite
   name: white duffel capitan
   description: It looks like a military development, although the coloring is unusual. A very stylish and practical backpack.
@@ -26,7 +26,7 @@
     sprite: _Wega/Clothing/Back/Duffels/captain_white.rsi
     
 - type: entity
-  parent: ClothingBackpack
+  parent: ClothingBackpackDuffel
   id: ClothingDuffelsCapitanGreen
   name: sherif duffel 
   description: It looks like a military development, although the coloring is unusual. A very stylish and practical backpack.

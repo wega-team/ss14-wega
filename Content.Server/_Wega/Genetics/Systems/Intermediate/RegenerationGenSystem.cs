@@ -1,5 +1,7 @@
 using Content.Shared.Damage;
+using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Prototypes;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Genetics;
 using Robust.Shared.Prototypes;
 
@@ -22,12 +24,12 @@ public sealed class RegenerationGenSystem : EntitySystem
             if (regenerationComponent.NextTimeTick <= 0)
             {
                 regenerationComponent.NextTimeTick = 4f;
-                if (!TryComp<DamageableComponent>(uid, out var damageable))
+                if (!HasComp<DamageableComponent>(uid))
                     return;
 
                 var modifier = regenerationComponent.RegenerationModifier;
                 var damage = new DamageSpecifier { DamageDict = { { BluntDamage, modifier }, { HeatDamage, modifier } } };
-                _damage.TryChangeDamage(uid, damage, true, damageable: damageable);
+                _damage.TryChangeDamage(uid, damage, true);
             }
             regenerationComponent.NextTimeTick -= frameTime;
         }

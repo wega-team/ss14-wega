@@ -28,6 +28,12 @@ namespace Content.Server.Implants
             {
                 _body.TryCreatePartSlot(uid, connection.Key, connection.Value, out _);
             }
+
+            foreach (var part in component.Parts)
+            {
+                var entity = Spawn(part.Value);
+                _body.AttachPart(uid, part.Key, entity);
+            }
         }
 
         private void OnPartAdded(EntityUid uid, BodyComponent component, ref BodyPartAddedEvent args)

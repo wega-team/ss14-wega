@@ -9,7 +9,9 @@ using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Damage;
+using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Prototypes;
+using Content.Shared.Damage.Systems;
 using Content.Shared.DeviceLinking;
 using Content.Shared.DeviceLinking.Events;
 using Content.Shared.FixedPoint;
@@ -620,7 +622,7 @@ namespace Content.Server.Genetics.System
             console.LastSubjectInjectTime = _timing.CurTime;
 
             var damage = new DamageSpecifier { DamageDict = { { RadDamage, 20 } } };
-            _damage.TryChangeDamage(scanBody, damage, true);
+            _damage.TryChangeDamage(scanBody.Value, damage, true);
         }
 
         private void OnExportOnDiskPressed(DnaModifierConsoleExportOnDiskEvent args)
