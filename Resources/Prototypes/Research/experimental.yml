@@ -67,6 +67,7 @@
   recipeUnlocks:
   - ClothingShoesBootsMagSci
   - ClothingShoesBootsMoon
+  - LegSyntheticMagboots # Corvax-Wega-Androids
 
 - type: technology
   id: AnomalyCoreHarnessing

@@ -386,7 +386,6 @@
       tags:
       - SubdermalImplant
       # - HideContextMenu # Corvax-Wega-Surgery-Edit
-      - MacroBomb
 
 - type: entity
   parent: BaseSubdermalImplant
@@ -417,7 +416,6 @@
     tags:
     - SubdermalImplant
     # - HideContextMenu # Corvax-Wega-Surgery-Edit
-    - DeathAcidifier
 
 - type: entity
   parent: BaseSubdermalImplant

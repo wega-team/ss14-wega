@@ -7,7 +7,7 @@
     # WARDEN WILL KILL FOR THOSE
     difficulty: 3
   - type: NotJobRequirement
-    job: Warden
+    jobs: [ Warden ]
   - type: StealCondition
     stealGroup: GlovesKravMaga
     owner: job-name-warden
@@ -18,7 +18,7 @@
   id: CombatRCDStealObjective
   components:
   - type: NotJobRequirement
-    job: ChiefEngineer
+    jobs: [ ChiefEngineer ]
   - type: StealCondition
     stealGroup: CombatRCD
     owner: job-name-ce
@@ -31,7 +31,7 @@
   - type: Objective
     difficulty: 3
   - type: NotJobRequirement
-    job: BlueShieldOfficer
+    jobs: [ BlueShieldOfficer ]
   - type: StealCondition
     stealGroup: WeaponBlueLaserPistol
     owner: job-name-bso

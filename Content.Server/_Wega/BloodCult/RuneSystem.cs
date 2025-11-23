@@ -689,7 +689,7 @@ public sealed partial class BloodCultSystem
                         _mind.TransferTo(mindContainer.Mind.Value, harvester);
 
                     var damage = new DamageSpecifier { DamageDict = { { "Blunt", 1000 } } };
-                    _damage.TryChangeDamage(target, damage, true);
+                    _damage.TryChangeDamage(target.Owner, damage, true);
                 }
             }
             else

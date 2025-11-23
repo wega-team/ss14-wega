@@ -265,7 +265,6 @@
     metabolizerTypes: [Human]
     groups:
     - id: Alcohol
-      rateModifier: 0.1 # removes alcohol very slowly along with the stomach removing it as a drink
   # Corvax-Wega-Surgery-start
   - type: Organ
     organType: Liver

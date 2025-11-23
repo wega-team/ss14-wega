@@ -15,6 +15,7 @@ using Content.Shared.Hands.Components;
 using Content.Shared.Movement.Systems;
 using Robust.Shared.Random;
 using Robust.Shared.Prototypes;
+using Content.Shared.Damage.Systems;
 
 namespace Content.Server.Shadow;
 
@@ -259,7 +260,7 @@ public sealed class PhotophobiaSystem : EntitySystem
             return;
 
         var bonusDamage = args.DamageDelta * ent.Comp.DamageModfier;
-        _damageable.TryChangeDamage(ent, bonusDamage, true);
+        _damageable.TryChangeDamage(ent.Owner, bonusDamage, true);
     }
 
     private bool IsNegativeDamage(DamageSpecifier damage)

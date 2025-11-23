@@ -4,7 +4,6 @@ using Content.Server.Body.Components;
 using Content.Server.Body.Systems;
 using Content.Server.GameTicking.Rules.Components;
 using Content.Server.Roles;
-using Content.Server.Temperature.Components;
 using Content.Server.Actions;
 using Content.Shared.Atmos;
 using Content.Shared.Atmos.Rotting;
@@ -13,12 +12,12 @@ using Content.Shared.Chemistry;
 using Content.Shared.Chemistry.Reaction;
 using Content.Shared.Clumsy;
 using Content.Shared.CombatMode.Pacification;
-using Content.Shared.Damage;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Humanoid;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Temperature.Components;
 using Content.Shared.Vampire.Components;
+using Content.Shared.Damage.Systems;
 
 namespace Content.Server.GameTicking.Rules
 {

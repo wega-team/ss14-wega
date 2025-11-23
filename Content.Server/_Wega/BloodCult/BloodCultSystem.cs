@@ -113,7 +113,7 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
                 foreach (var target in nearbyCultists)
                 {
                     var heal = new DamageSpecifier { DamageDict = { { "Blunt", -1 }, { "Slash", -1 } } };
-                    _damage.TryChangeDamage(target, heal, true);
+                    _damage.TryChangeDamage(target.Owner, heal, true);
 
                     if (TryComp<BloodstreamComponent>(target, out var blood))
                         _blood.TryModifyBloodLevel(target.Owner, +1);

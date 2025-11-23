@@ -19,7 +19,7 @@
         - id: Poison
         - id: Narcotic
         - id: Alcohol
-          rateModifier: 0.25
+          rateModifier: 2.5
     - type: Heart # Corvax-Wega-Surgery
     - type: SolutionContainerManager
       solutions:
@@ -47,7 +47,7 @@
         - Meat
     # Corvax-Wega-Surgery-end
 
-      
+
 - type: entity
   id: OrganSlimeLungs
   parent: BaseHumanOrgan

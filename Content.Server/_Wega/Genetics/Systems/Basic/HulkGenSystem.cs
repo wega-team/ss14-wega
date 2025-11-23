@@ -4,6 +4,7 @@ using Content.Server.Polymorph.Systems;
 using Content.Shared.Actions;
 using Content.Shared.Body.Components;
 using Content.Shared.Damage;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Genetics;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Prototypes;
