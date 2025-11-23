@@ -32,35 +32,43 @@
             Reporter: [ 2, 2 ]
             #engineering
             ChiefEngineer: [ 1, 1 ]
+            SeniorEngineer: [ 1, 1 ]
             AtmosphericTechnician: [ 3, 3 ]
             StationEngineer: [ 6, 6 ]
             TechnicalAssistant: [ 4, 4 ]
             #medical
             ChiefMedicalOfficer: [ 1, 1 ]
+            Geneticist: [ 2, 2 ]
+            Surgeon: [ 2, 2 ]
+            Coroner: [ 1, 1 ]
+            SeniorPhysician: [ 1, 1 ]
             Chemist: [ 3, 3 ]
             MedicalDoctor: [ 6, 6 ]
             Paramedic: [ 2, 2 ]
             MedicalIntern: [ 4, 4 ]
             #science
             ResearchDirector: [ 1, 1 ]
+            SeniorResearcher: [ 1, 1 ]
             Scientist: [ 5, 5 ]
             ResearchAssistant: [ 6, 6 ]
             #security
             HeadOfSecurity: [ 1, 1 ]
+            SeniorOfficer: [ 1, 1 ]
             Warden: [ 1, 1 ]
-            SecurityOfficer: [ 10, 10 ]
+            SecurityOfficer: [ 7, 7 ]
             Detective: [ 1, 1 ]
-            SecurityCadet: [ 6, 6 ]
+            SecurityCadet: [ 4, 4 ]
             #Lawyer: [ 2, 2 ] # Corvax-IAA
             #supply
             Quartermaster: [ 1, 1 ]
             SalvageSpecialist: [ 3, 3 ]
             CargoTechnician: [ 6, 6 ]
+            Postman: [ 1, 1 ]
             #civilian
             Passenger: [ -1, -1 ]
             Clown: [ 1, 1 ]
             Mime: [ 1, 1 ]
-            Musician: [ 1, 1 ]
+            Musician: [ 2, 2 ]
             #silicon
             StationAi: [ 1, 1 ]
-            Borg: [ 5, 5 ]
+            Borg: [ 3, 3 ]
