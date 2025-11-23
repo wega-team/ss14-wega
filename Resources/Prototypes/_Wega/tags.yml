@@ -244,3 +244,9 @@
 
 - type: Tag
   id: ExtMagazineRifle
+
+- type: Tag
+  id: BorgModuleSecurity
+
+- type: Tag
+  id: EvidenceMarker

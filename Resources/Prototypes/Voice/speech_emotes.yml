@@ -9,9 +9,6 @@
     - Vocal
     tags:
     - Ipc # Corvax-Species
-  blacklist:
-    tags:
-    - SiliconEmotes
   chatMessages: ["chat-emote-msg-scream"]
   chatTriggers:
     - scream
