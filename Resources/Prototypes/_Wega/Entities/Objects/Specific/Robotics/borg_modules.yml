@@ -593,8 +593,6 @@
       path: /Audio/Weapons/Guns/Gunshots/laser.ogg
   - type: Item
     sprite:  _Wega/Objects/Weapons/Guns/Battery/borggun.rsi
-    layers:
-    - state: icon
   - type: Sprite
     sprite: _Wega/Objects/Weapons/Guns/Battery/borggun.rsi
     layers:
@@ -633,8 +631,6 @@
     - state: icon
   - type: Item
     sprite: _Wega/Objects/Weapons/Guns/Battery/borggun.rsi
-    layers:
-    - state: icon
     storedOffset: 0,-4
   - type: Appearance
   - type: ProjectileBatteryAmmoProvider
