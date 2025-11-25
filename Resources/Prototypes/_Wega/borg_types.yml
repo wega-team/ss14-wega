@@ -16,7 +16,6 @@
   - BorgModuleTool
   - BorgModuleDisabler
   - BorgModuleDetective
-  - BorgModuleSecMelle
 
   radioChannels:
   - Science
@@ -29,6 +28,15 @@
   - type: ShowContrabandDetails
   - type: UserInterface
     interfaces:
+      enum.SiliconLawsUiKey.Key:
+        type: SiliconLawBoundUserInterface
+        requireInputValidation: false
+      enum.BorgUiKey.Key:
+        type: BorgBoundUserInterface
+      enum.StrippingUiKey.Key:
+        type: StrippableBoundUserInterface
+      enum.BorgSwitchableTypeUiKey.SelectBorgType:
+        type: BorgSelectTypeUserInterface
       enum.GeneralStationRecordConsoleKey.Key:
         type: GeneralStationRecordConsoleBoundUserInterface
   - type: IntrinsicUI

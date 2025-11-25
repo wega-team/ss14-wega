@@ -226,20 +226,41 @@
           tags:
           - ConstructionMaterial
     - hand:
-        emptyRepresentative: SpaceHeaterFlatpack
+        emptyRepresentative: 
         emptyLabel: borg-slot-flatpacks-empty
         whitelist:
           components:
           - Flatpack
-    - hand:
-        emptyRepresentative: FloorTileItemSteel
-        emptyLabel: borg-slot-tiles-empty
-        whitelist:
-          components:
-          - FloorTile
   - type: BorgModuleIcon
-    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: kinetic-weapon-module }
+    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: build-common-module }
 
+- type: entity
+  id: BorgModuleCommonHand
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: hands common module
+  description: Everyone can heal your action!
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: generic
+    - state: icon-hand
+  - type: ItemBorgModule
+    hands:
+    - hand:
+        emptyRepresentative: WeaponHandOfGod
+        emptyLabel: borg-slot-hand-empty
+        blacklist:
+          tags:
+          - Backpack
+    - hand:
+        emptyRepresentative: WeaponHandOfGod
+        emptyLabel: borg-slot-hand-empty
+        blacklist:
+          tags:
+          - Backpack
+  - type: BorgModuleIcon
+    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: hand-module }
 # Servive Module
 
 - type: entity
@@ -395,7 +416,7 @@
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: dec-module }
 
 - type: entity
-  id: BorgModuleSecMelle
+  id: BorgModuleSecLethal
   parent: [ BaseBorgModuleSecurity, BaseProviderBorgModule ]
   name: lethal module
   description: Everyone can heal your action!
@@ -451,13 +472,14 @@
     - state: icon-grenade
   - type: ItemBorgModule
     hands:
-    - item: LauncherCream
+    - item: WeaponBorgRG430
     - hand:
         emptyLabel: borg-slot-granade-empty
         emptyRepresentative: ModularGrenade
         whitelist:
           tags:
           - HandGrenade
+          - Grenade
           - Payload
           - VoiceTrigger
     - item: BoxBorgGranade
@@ -585,8 +607,8 @@
     fireCost: 62.5
   - type: BatterySelfRecharger
     autoRecharge: true
-    autoRechargeRate: 20
-    autoRechargePauseTime: 10
+    autoRechargeRate: 10
+    autoRechargePauseTime: 40
   - type: AmmoCounter
 
 - type: entity
@@ -623,8 +645,8 @@
     startingCharge: 1000
   - type: BatterySelfRecharger
     autoRecharge: true
-    autoRechargeRate: 25
-    autoRechargePauseTime: 10
+    autoRechargeRate: 10
+    autoRechargePauseTime: 40
   - type: AmmoCounter
  
 # Common-fight
@@ -712,8 +734,8 @@
 - type: entity
   name: rg 430
   parent: BaseStorageItem
-  id: LauncherCream
-  description: Load cream pie for optimal results.
+  id: WeaponBorgRG430
+  description: Load granade for optimal results.
   components:
   - type: Sprite
     sprite: _Wega/Objects/Weapons/Guns/Launchers/rg_430.rsi
@@ -722,7 +744,12 @@
   - type: Storage
     maxItemSize: Normal
     grid:
-    - 0,0,1,1
+    - 0,0,0,1
+    - 1,0,0,0
+    whitelist:
+      tags:
+      - HandGrenade
+      - Grenade
   - type: Gun
     fireRate: 2
     selectedMode: SemiAuto

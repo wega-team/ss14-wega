@@ -83,6 +83,10 @@
   - APECircuitboard
   - ArtifactAnalyzerMachineCircuitboard
   - ArtifactCrusherMachineCircuitboard
+# Corvax-wega-start
+  - BorgChargerTurboCircuitboard
+  - ExosuitFabricatorHyperConvectionMachineCircuitboard
+# Corvax-wega-end
 
 - type: latheRecipePack
   id: CameraBoards

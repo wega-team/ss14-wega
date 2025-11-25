@@ -49,6 +49,11 @@
   result: GoldprinterMachineCircuitboard
   
 - type: latheRecipe
-  parent: BaseGoldCircuitboardRecipe
+  parent: [ BaseGoldCircuitboardRecipe, BaseResearchMachineRecipeCategory ]
   id: ExosuitFabricatorHyperConvectionMachineCircuitboard
   result: ExosuitFabricatorHyperConvectionMachineCircuitboard
+
+- type: latheRecipe
+  parent: BaseGoldCircuitboardRecipe
+  id: BorgChargerTurboCircuitboard
+  result: BorgChargerTurboCircuitboard
