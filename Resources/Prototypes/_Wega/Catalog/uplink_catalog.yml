@@ -350,6 +350,8 @@
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 1
+
+- type: listing
   id: UplinkThievingGloves
   name: uplink-clothing-chameleon-thieving-gloves-name
   description: uplink-clothing-chameleon-thieving-gloves-desc

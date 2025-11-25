@@ -189,4 +189,4 @@
   description: A flatpack used for constructing a cargo motorcycle.
   components:
   - type: Flatpack
-    entity: CargoVehicle
+    entity: VehicleCargo

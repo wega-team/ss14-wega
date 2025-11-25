@@ -33,7 +33,7 @@
   description: headrev-backpack-category-weapon-description
   sprite:
     sprite: Objects/Weapons/Guns/Revolvers/python.rsi
-    - state: icon
+    state: icon
   content:
   - WeaponRevolverPythonAP
   - SpeedLoaderMagnumAP

@@ -1,4 +1,4 @@
-thief-backpack-window-title = Воровской набор
+thief-backpack-window-title = Сумка неопределённости
 thief-backpack-window-description =
     Внутри находятся ваши орудия труда, которые растворятся, когда вы будете готовы.
     Выберите { $maxCount } { $maxCount ->

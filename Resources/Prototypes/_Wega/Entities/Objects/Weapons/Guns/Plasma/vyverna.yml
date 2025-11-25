@@ -21,6 +21,8 @@
     - 0,0,5,1
   - type: AmmoCounter
   - type: Gun
+    minAngle: 0
+    maxAngle: 0
     fireRate: 0.5
     selectedMode: SemiAuto
     availableModes:

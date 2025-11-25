@@ -311,16 +311,14 @@
     - type: Vehicle
       southOver: true
       northOver: true
-      northOverride: -0.1
-      southOverride: 0.1
+      northOverride: -0.3
+      southOverride: 0.3
     - type: Sprite
       sprite: Objects/Vehicles/motorbike.rsi
       layers:
         - state: vehicle
           map: ["enum.VehicleVisualLayers.AutoAnimate"]
       noRot: true
-    - type: Strap
-      buckleOffset: "0.1, -0.05"
     - type: MovementSpeedModifier
       baseAcceleration: 2
       baseFriction: 1.5
@@ -457,6 +455,8 @@
   name: mailcar
   description: Beep - Beep!!
   components:
+  - type: Strap
+    buckleOffset: "0.15, -0.05"
   - type: Vehicle
     southOver: true
     westOver: true
