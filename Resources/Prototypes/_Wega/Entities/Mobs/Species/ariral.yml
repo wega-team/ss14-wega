@@ -64,6 +64,13 @@
     - HeadTop
     - HeadSide
   - type: Carriable
+  - type: Respirator
+    damage:
+      types:
+        Asphyxiation: 4
+    damageRecovery:
+      types:
+        Asphyxiation: -3.0
   - type: Stamina
     critThreshold: 70
   - type: DiseaseCarrier
