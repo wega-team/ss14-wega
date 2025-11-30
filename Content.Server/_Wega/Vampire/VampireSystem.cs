@@ -407,6 +407,11 @@ public sealed partial class VampireSystem : SharedVampireSystem
         {
             component.AcquiredSkills.Add(skill);
             _action.AddAction(uid, skill);
+			
+			if (skill == "ActionVampireBloodBringersRite")
+			{
+				_alerts.ShowAlert(uid, "AlertBloodRite", 0);
+			}
         }
     }
 

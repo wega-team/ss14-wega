@@ -38,6 +38,7 @@
   - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "rejuvenate" }
     checkCanInteract: false
+    checkConsciousness: false
     useDelay: 20
     priority: 1
   - type: InstantAction
@@ -162,7 +163,7 @@
   - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "bringers_rite" }
     itemIconStyle: BigAction
-    useDelay: 10
+    useDelay: 1
   - type: InstantAction
     event: !type:VampireBloodBringersRiteActionEvent
 
@@ -283,6 +284,7 @@
   - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "rejuvenate" }
     checkCanInteract: false
+    checkConsciousness: false
     useDelay: 20
     priority: 1
   - type: InstantAction
@@ -387,6 +389,7 @@
     useDelay: 30
   - type: TargetAction
     range: 16
+    checkCanAccess: false
   - type: WorldTargetAction
     event: !type:VampireChargeActionEvent
 
