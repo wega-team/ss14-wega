@@ -1159,7 +1159,7 @@ public sealed partial class VampireSystem
 		var direction = (targetPosition - vampirePosition).Normalized();
 
 		if (TryComp(uid, out PhysicsComponent? vampirePhysics))
-			_physics.ApplyLinearImpulse(uid, direction * 11000f, body: vampirePhysics);
+			_physics.ApplyLinearImpulse(uid, direction * 16000f, body: vampirePhysics);
 
 		component.AlreadyHit.Clear();
 		component.IsCharging = true;
