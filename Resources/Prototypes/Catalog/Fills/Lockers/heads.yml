@@ -13,7 +13,7 @@
     - id: AstroNavCartridge
     - id: ClothingHandsKnuckleDustersQM
     - id: PrinterDocFlatpack # Corvax-Printer
-    - id: FundingAllocationComputerCircuitboard # Corvax-Wega
+    - id: FundingAllocationComputerFlatpack # Corvax-Wega
 
 
 - type: entity
