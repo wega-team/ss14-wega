@@ -145,11 +145,17 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
     }
 
     // Corvax-Wega-Testing-start
-    // Да я пометил тегами чтобы банально не забыть про это и чо?
+    // Да я пометил тегами чтобы банально не забыть про это и чо?  
     private void OnShotAttempted(Entity<BloodCultistComponent> ent, ref ShotAttemptedEvent args)
     {
-        _popup.PopupEntity(Loc.GetString("gun-disabled"), ent, ent);
-        args.Cancel();
+    
+        if (!HasComp<CultUsableGunComponent>(args.Used))
+        {
+            _popup.PopupEntity(Loc.GetString("gun-disabled"), ent, ent);
+            args.Cancel();
+            return;
+        }
+
     }
     // Corvax-Wega-Testing-end
 

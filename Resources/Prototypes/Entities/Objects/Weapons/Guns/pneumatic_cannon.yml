@@ -17,6 +17,7 @@
     quickEquip: false
     slots:
     - Back
+  - type: CultUsableGun
   - type: Gun
     fireRate: 2
     selectedMode: SemiAuto
@@ -79,6 +80,7 @@
     whitelist:
       components:
       - CreamPie
+  - type: CultUsableGun
   - type: Gun
     fireRate: 1
     selectedMode: SemiAuto
@@ -176,6 +178,7 @@
     containers:
       storagebase: !type:Container
         ents: []
+  - type: CultUsableGun # Blood-Cult-Experiment
 
 # shoots bullets instead of throwing them, no other changes
 - type: entity

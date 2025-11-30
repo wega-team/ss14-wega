@@ -18,6 +18,7 @@
   - type: GunWieldBonus
     minAngle: -11
     maxAngle: -7
+  - type: CultUsableGun # Blood-Cult-Experiment
   - type: Gun
     minAngle: 17
     maxAngle: 22

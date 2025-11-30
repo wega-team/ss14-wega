@@ -8,6 +8,7 @@
   - type: Item
     heldPrefix: wand
     size: Normal
+  - type: CultUsableGun # Blood-Cult-Experiment
   - type: Gun
     fireRate: 0.5
     selectedMode: SemiAuto

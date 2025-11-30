@@ -4,6 +4,7 @@ using Robust.Shared.Containers;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
+using Robust.Shared.GameObjects;
 
 namespace Content.Shared.Blood.Cult.Components;
 
@@ -177,4 +178,10 @@ public enum StoneSoulVisualLayers : byte
 public enum StoneSoulVisuals : byte
 {
     HasSoul
+}
+
+[RegisterComponent]
+public sealed partial class CultUsableGunComponent : Component
+{
+    // Пустой компонент-маркер :D
 }
