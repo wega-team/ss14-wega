@@ -5,7 +5,7 @@
   abstract: true
   components:
   - type: Sprite
-    scale: "1.2, 1.2"
+    scale: "1.1, 1.1"
     layers:
     - map: [ "enum.HumanoidVisualLayers.Chest" ]
     - map: [ "enum.HumanoidVisualLayers.Head" ]
@@ -104,10 +104,10 @@
     specificHeat: 46
     coldDamage:
       types:
-        Cold: 1.2
+        Cold: 0.7
     heatDamage:
       types:
-        Heat: 1.75
+        Heat: 1.5
   - type: TemperatureSpeed
     thresholds:
       280: 0.9
