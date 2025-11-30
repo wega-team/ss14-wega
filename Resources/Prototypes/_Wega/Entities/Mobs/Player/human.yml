@@ -1,0 +1,11 @@
+- type: entity
+  save: false
+  name: Urist McHands
+  parent: BaseMobHuman
+  id: MobHumanSyndiMonkey
+  components:
+   # Corvax-Wega-Genetics-start
+  - type: DnaModifier
+    upper: MobHumanSyndiMonkey
+    lowest: MobBaseSyndicateMonkey
+  # Corvax-Wega-Genetics-end
