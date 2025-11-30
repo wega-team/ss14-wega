@@ -28,6 +28,10 @@
   - PermanentBlindness
   - Snoring
   - Unrevivable
+  - Deafness
+  - NoirVision
+  - BigHeight
+  - SmallHeight  
   # accents
   - Accentless
   - BackwardsAccent
@@ -57,6 +61,12 @@
   - SpanishAccent
   - StutteringAccent
   - TTS # Corvax-TTS
+  - AphasiaAccent
+  - AuldImperialAccent
+  - ClownAccent
+  - LispAccent
+  - UnintelligibleAccent
+ 
 
 # for job-specific traits etc.
 - type: cloningSettings
