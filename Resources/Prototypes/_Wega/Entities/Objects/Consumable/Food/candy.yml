@@ -1,0 +1,131 @@
+- type: weightedRandomFillSolution
+  id: RandomFillLollipop
+  fills:
+    - quantity: 5
+      weight: 1
+      reagents:
+      - BakeryJuice
+      - Sugar
+    - quantity: 5
+      weight: 1
+      reagents:
+      - GrapeJuiceInvisible
+      - RelaxingTea
+      - Monenium
+      - Happiness
+      - Egg
+      - Amatoxin
+      - Cum
+      - Stellibinin
+      - FrostOil
+      - Ambuzol
+      - Omnizine
+      - Gold
+      - Uranium
+      - Ethanol
+      - Licoxide
+      - Aloe
+      - CocoaPowder
+      - Nutriment
+      - UnstableMutagen
+      - Lead
+      - Cola
+      - CarpoToxin
+      - Water
+      - JuiceThatMakesYouWeh
+      - Vitamin
+      - Holywater
+      - Unholywater
+      - PolypyryliumOligomers
+      - Desoxyephedrine
+      - THC
+      - Mustard
+      - Milk
+      - MilkSoy
+      - Enzyme
+      - Honk
+      - Pax
+      - MuteToxin
+      - Silver
+      - Ipecac
+      - Haloperidol
+      - Blood
+      - ZombieBlood
+
+- type: entity
+  name: lollipop
+  parent: FoodProduceBase
+  id: FoodProduceLollipopRandomBar
+  suffix: "random chemicals"
+  description: "Extremely tasty lollipop!"
+  components:
+  - type: FlavorProfile
+    flavors: []
+  - type: RandomFillSolution
+    solution: food
+    weightedRandomId: RandomFillLollipop
+  - type: Sprite
+    sprite: _Wega/Objects/Consumable/Food/randomlollipop.rsi
+    layers:
+    - state: lollipop1
+      map: [ "enum.DamageStateVisualLayers.Base" ]
+  - type: RandomSprite
+    available:
+      - enum.DamageStateVisualLayers.Base:
+          lollipop1: ""
+          lollipop2: ""
+          lollipop3: ""
+          lollipop4: ""
+          lollipop5: ""
+          lollipop6: ""
+          lollipop7: ""
+          lollipop8: ""
+          lollipop9: ""
+          lollipop10: ""
+          lollipop11: ""
+          lollipop12: ""
+          lollipop13: ""
+          lollipop14: ""
+          lollipop15: ""
+          lollipop16: ""
+
+- type: entity
+  name: lollipop
+  parent: FoodProduceBase
+  id: FoodProduceLollipopBar
+  description: "Extremely tasty lollipop!"
+  components:
+  - type: FlavorProfile
+    flavors:
+      - sweet
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 5
+        reagents:
+        - ReagentId: Sugar
+          Quantity: 5
+  - type: Sprite
+    sprite: _Wega/Objects/Consumable/Food/randomlollipop.rsi
+    layers:
+    - state: lollipop1
+      map: [ "enum.DamageStateVisualLayers.Base" ]
+  - type: RandomSprite
+    available:
+      - enum.DamageStateVisualLayers.Base:
+          lollipop1: ""
+          lollipop2: ""
+          lollipop3: ""
+          lollipop4: ""
+          lollipop5: ""
+          lollipop6: ""
+          lollipop7: ""
+          lollipop8: ""
+          lollipop9: ""
+          lollipop10: ""
+          lollipop11: ""
+          lollipop12: ""
+          lollipop13: ""
+          lollipop14: ""
+          lollipop15: ""
+          lollipop16: ""

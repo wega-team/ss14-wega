@@ -437,3 +437,66 @@
   - type: Tag
     tags:
     - Fruit
+
+- type: entity
+  name: lollipop 
+  parent: FoodProduceBase
+  id: FoodProduceLollipop
+  description: "the most delicious lollipops!"
+  components:
+  - type: FlavorProfile
+    flavors:
+      - sweet
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 5
+        reagents:
+        - ReagentId: Sugar
+          Quantity: 4
+        - ReagentId: Vitamin
+          Quantity: 1
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/candytree.rsi
+  - type: Produce
+    seedId: candytree
+  - type: SpawnItemsOnUse
+    items:
+      - id: FoodProduceLollipopBar
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+  - type: Tag
+    tags:
+    - Fruit
+
+- type: entity
+  name: lollipop 
+  parent: FoodProduceBase
+  id: FoodProduceLollipopRandom
+  suffix: "random chemicals"
+  description: "the most delicious lollipops and more!"
+  components:
+  - type: FlavorProfile
+    flavors:
+      - sweet
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 5
+        reagents:
+        - ReagentId: Sugar
+          Quantity: 4
+        - ReagentId: UnstableMutagen
+          Quantity: 1
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/candytreerandom.rsi
+  - type: Produce
+    seedId: candytreerandom
+  - type: SpawnItemsOnUse
+    items:
+      - id: FoodProduceLollipopRandomBar
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+  - type: Tag
+    tags:
+    - Fruit

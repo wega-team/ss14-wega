@@ -234,6 +234,7 @@
     - id: RubberStampCMO
     - id: MedTekCartridge
     - id: BodyScannerComputerCircuitboard # Corvax-Wega-Surgery
+    - id: FoodBoxLollipop # Corvax-Wega-Candy
 
 # Hardsuit table, used for suit storage as well
 - type: entityTable
