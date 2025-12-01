@@ -417,7 +417,7 @@
   name: uplink-ammo-rifle-explosive-name
   description: uplink-ammo-rifle-explosive-desc
   productEntity: MagazineRifleExplosive
-  discountCategory: RareDiscounts
+  discountCategory: rareDiscounts
   discountDownTo:
     Telecrystal: 2
   cost:

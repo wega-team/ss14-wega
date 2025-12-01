@@ -45,7 +45,7 @@
   name: headrev-backpack-category-clean-name
   description: headrev-backpack-category-clean-description
   sprite:
-    sprite: Objects/Specific/Janitoral/advmop.rsi
+    sprite: Objects/Specific/Janitorial/advmop.rsi
     state: advmop
   content:
   - ClothingShoesGaloshes
