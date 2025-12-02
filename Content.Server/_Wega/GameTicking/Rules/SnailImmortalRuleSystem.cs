@@ -47,4 +47,9 @@ public sealed class SnailImmortalRuleSystem : GameRuleSystem<SnailImmortalRuleCo
 
         _antag.SendBriefing(args.EntityUid, MakeBriefing(args.EntityUid), null, null);
     }
+
+    public void SnailKillRandomPersonObjective(Entity<SnailRoleComponent> ent)
+    {
+        _codeCondition.SetCompleted(ent.Owner, ent.Comp.SnailKillRandomPersonObjective);
+    }
 }
