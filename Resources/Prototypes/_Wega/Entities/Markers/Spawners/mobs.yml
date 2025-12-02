@@ -13,3 +13,21 @@
   - type: ConditionalSpawner
     prototypes:
       - MobXenoSlimeGray
+
+- type: entity
+  categories: [ HideSpawnMenu, Spawner ]
+  parent: BaseAntagSpawner
+  id: SpawnPointGhostImmortalSnail
+  components:
+  - type: GhostRole
+    name: ghost-role-information-snail-immortal-name
+    description: ghost-role-information-snail-immortal-description
+    rules: ghost-role-information-rules-team-antagonist
+    mindRoles:
+    - MindRoleSnailImmortal
+  - type: Sprite
+    layers:
+    - sprite: Markers/jobs.rsi
+      state: green
+    - sprite: _Wega/Mobs/Animals/snail_immortal.rsi
+      state: icon

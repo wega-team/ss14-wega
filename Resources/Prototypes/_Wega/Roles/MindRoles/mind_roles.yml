@@ -21,3 +21,16 @@
     antagPrototype: BloodCultist
     roleType: TeamAntagonist
   - type: BloodCultistRole
+
+# immortal_snail
+- type: entity
+  parent: BaseMindRoleAntag
+  id: MindRoleSnailImmortal
+  name: immortal snail Role
+  components:
+  - type: MindRole
+    antagPrototype: MobSnailImmortal
+    roleType: TeamAntagonist
+    subtype: ghost-role-information-snail-immortal-name
+    exclusiveAntag: true
+  - type: SnailImmortalRole

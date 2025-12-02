@@ -33,6 +33,7 @@
     - id: ClosetSkeleton
     - id: KingRatMigration
     - id: RevenantSpawn
+    - id: SnailImmortalSpawn # Corvax-Wega-edit
     - !type:NestedSelector
       tableId: DerelictBorgEventTable
 

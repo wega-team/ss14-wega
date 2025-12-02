@@ -270,3 +270,94 @@
   - type: DnaModifier
     upper: MobTajaran
     lowest: MobTajkey
+
+- type: entity
+  parent: SimpleSpaceMobBase
+  id: MobSnailImmortal
+  name: immortal snail 
+  description: Terrifying, even if you're french.
+  components:
+  - type: Body
+    prototype: Mouse
+  - type: GhostRole
+    makeSentient: true
+    allowSpeech: false
+    allowMovement: true
+    name: ghost-role-information-snail-immortal-name
+    description: ghost-role-information-snail-immortal-description
+    rules: ghost-role-information-rules-team-antagonist
+    mindRoles:
+    - MindRoleGhostRoleTeamAntagonist
+  - type: GhostTakeoverAvailable
+  - type: Emoting
+  - type: Sprite
+    sprite: _Wega/Mobs/Animals/snail_immortal.rsi
+    layers: 
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: snail
+  - type: NpcFactionMember
+    factions:
+      - Mouse
+  - type: HTN
+    constantlyReplan: false
+    rootTask:
+      task: MouseCompound
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.2
+        density: 100
+        mask:
+        - SmallMobMask
+        layer:
+        - SmallMobLayer
+  - type: MobState
+  - type: MovementSpeedModifier
+    baseWalkSpeed : 2
+    baseSprintSpeed : 3
+  - type: Extractable
+    grindableSolutionName: food
+  - type: Tag
+    tags:
+    - Trash
+    - VimPilot
+  - type: CombatMode
+  - type: Bloodstream
+    bloodMaxVolume: 30
+    bloodReagent: Cryoxadone
+  - type: CanEscapeInventory
+  - type: MobPrice
+    price: 50
+  - type: FireVisuals
+    sprite: Mobs/Effects/onfire.rsi
+    normalState: Mouse_burning
+  - type: Reactive
+    reactions:
+    - reagents: [TableSalt, Saline]
+      methods: [Touch, Ingestion, Injection]
+      effects:
+      - !type:HealthChange
+        scaleByQuantity: true
+        damage:
+          types:
+            Caustic: 1
+      - !type:PopupMessage
+        type: Local
+        visualType: Large
+        messages: [ "snail-hurt-by-salt-popup" ]
+        probability: 0.66
+  - type: VentCrawler
+  - type: Godmode
+  - type: MeleeWeapon
+    altDisarm: false # Sorry mouse shove lovers.
+    soundHit:
+      path: /Audio/Effects/bite.ogg
+    angle: 0
+    animation: WeaponArcBite
+    damage:
+      types:
+        Heat: 2
+        Structural: 20
