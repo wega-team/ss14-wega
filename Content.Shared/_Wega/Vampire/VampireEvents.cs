@@ -194,3 +194,7 @@ public sealed partial class VampireRallyThrallsActionEvent : InstantActionEvent 
 public sealed partial class VampireBloodBondActionEvent : InstantActionEvent { }
 
 public sealed partial class VampireMassHysteriaActionEvent : InstantActionEvent { }
+
+public sealed partial class VampireThrallHealActionEvent : InstantActionEvent { }
+
+public sealed partial class VampirePacifyNearbyActionEvent : InstantActionEvent { }

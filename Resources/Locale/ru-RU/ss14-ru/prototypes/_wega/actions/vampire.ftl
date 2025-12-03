@@ -76,3 +76,7 @@ ent-ActionBloodBond = [color=purple]Кровавая связь[/color]
     .desc = Теперь вас связывают кровные узы.
 ent-ActionMassHysteria = [color=purple]Массовая истерия[/color]
     .desc = Вовлеките в неразбериху всех, кто находится поблизости.
+ent-ActionVampirePacifyNearby = [color=purple]Псионические волны[/color]
+    .desc = Создайте псионическую волну, что успокоит ваших врагов в некотором радиусе.
+ent-ActionVampireThrallHeal = [color=purple]Поддержка Лидера[/color]
+    .desc = Пусть услышат ваши поданные ваш голос. Восстанавливает траллов в некотором радиусе и вводит в них стимулирующие реагенты.

@@ -15,7 +15,7 @@
   - type: StunOnContact
     blacklist:
       tags:
-      - Goliath
+      - Vampire
   - type: Fixtures
     fixtures:
       fix:
@@ -131,9 +131,17 @@
     fixtureID: floortrap
   - type: FlashOnTrigger
   - type: DamageOnTrigger
+    targetUser: true
+    ignoreResistances: true
     damage:
       types:
         Blunt: 20
+  - type: StunOnContact
+    fixtureId: floortrap
+    duration: 3
+    blacklist:
+      tags:
+      - Vampire
 
 - type: entity
   parent: BaseStructure
@@ -145,7 +153,7 @@
     state: beacon
   - type: BeaconSoul
   - type: TimedDespawn
-    lifetime: 350.0
+    lifetime: 420.0
 
 - type: entity
   id: VampireMistEffect

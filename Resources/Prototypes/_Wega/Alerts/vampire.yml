@@ -35,3 +35,13 @@
   description: alerts-bloodrite-desc
   minSeverity: 0
   maxSeverity: 1
+  
+- type: alert
+  id: AlertEternalDarkness
+  icons:
+  - sprite: /Textures/_Wega/Interface/Alerts/eternaldarkness.rsi
+    state: eternaldarkness
+  name: alerts-eternaldarkness-name
+  description: alerts-eternaldarkness-desc
+  minSeverity: 0
+  maxSeverity: 0

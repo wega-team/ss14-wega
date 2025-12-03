@@ -6,3 +6,5 @@ alerts-offer-name = Предложение
 alerts-offer-desc = Кто-то предлагает вам взять предмет.
 alerts-bloodrite-name = [color=purple]Обряд крови[/color]
 alerts-bloodrite-desc = Обратите это место в кровавую баню. Отображает статус способности [color=purple]Обряд крови[/color], нажмите ЛКМ для переключения
+alerts-eternaldarkness-name = [color=purple]Вечная темнота[/color]
+alerts-eternaldarkness-desc = Жертвы в радиусе 6 тайлов замерзают и вы видите через стены. Отображает статус способности [color=purple]Вечная темнота[/color].
