@@ -7,6 +7,9 @@
   - type: Tag
     tags:
     - BorgModuleSecurity
+  - type: BorgModule
+    borgFitTypes:
+    - borg-type-sec
   - type: Item
     inhandVisuals:
       left:
