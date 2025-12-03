@@ -1113,12 +1113,11 @@ public sealed partial class VampireSystem
 		if (!HasComp<PryingComponent>(uid) && HasComp<PullableComponent>(uid))
 		{
 			if (!CheckBloodEssence(uid, 80))
-		}
-	
-        {
-            _popup.PopupEntity(Loc.GetString("vampire-blood-sacrifice-insufficient-blood"), uid, uid, PopupType.SmallCaution);
-            return;
-        }
+			{	
+				_popup.PopupEntity(Loc.GetString("vampire-blood-sacrifice-insufficient-blood"), uid, uid, PopupType.SmallCaution);
+				return;
+			}
+		}	
 
         if (_entityManager.HasComponent<PryingComponent>(uid))
         {
