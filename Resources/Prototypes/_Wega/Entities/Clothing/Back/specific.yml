@@ -10,8 +10,6 @@
       - state: icon
   - type: Item
     sprite: _Wega/Clothing/Back/Specific/Pouch/base.rsi
-    layers:
-      - state: icon
     size: Small
     shape:
     - 0,0,2,2
