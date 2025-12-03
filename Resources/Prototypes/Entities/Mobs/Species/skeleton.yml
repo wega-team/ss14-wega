@@ -112,20 +112,20 @@
             state: jumpsuit-female
   - type: Operated # Corvax-Wega-Surgery
     raceGraph: null # Corvax-Wega-Surgery
-  - type: Instrument
-    program: 13 # Xylophone. Woodblock is 115 (another good option)
-  - type: ActivatableUI
-    blockSpectators: true # otherwise they can play client-side music
-    inHandsOnly: false
-    singleUser: true
-    requiresComplex: true
-    verbOnly: true
-    verbText: verb-instrument-openui
-    key: enum.InstrumentUiKey.Key
+#  - type: Instrument
+#    program: 13 # Xylophone. Woodblock is 115 (another good option)
+#  - type: ActivatableUI
+#    blockSpectators: true # otherwise they can play client-side music
+#    inHandsOnly: false
+#    singleUser: true
+#    requiresComplex: true
+#    verbOnly: true
+#    verbText: verb-instrument-openui
+#    key: enum.InstrumentUiKey.Key
   - type: UserInterface
     interfaces:
-      enum.InstrumentUiKey.Key:
-        type: InstrumentBoundUserInterface
+#      enum.InstrumentUiKey.Key:
+#        type: InstrumentBoundUserInterface
       enum.HumanoidMarkingModifierKey.Key:
         type: HumanoidMarkingModifierBoundUserInterface
       enum.StrippingUiKey.Key:
