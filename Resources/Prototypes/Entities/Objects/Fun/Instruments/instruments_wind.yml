@@ -13,14 +13,14 @@
   name: saxophone
   description: An instrument. You could probably grind this into raw jazz.
   components:
-  - type: Instrument
-    program: 66
-  - type: SwappableInstrument
-    instrumentList:
-      "Soprano": {64: 0}
-      "Alto": {65: 0}
-      "Tenor": {66: 0}
-      "Baritone": {67: 0}
+#  - type: Instrument
+#    program: 66
+#  - type: SwappableInstrument
+#    instrumentList:
+#      "Soprano": {64: 0}
+#      "Alto": {65: 0}
+#      "Tenor": {66: 0}
+#      "Baritone": {67: 0}
   - type: Sprite
     sprite: Objects/Fun/Instruments/saxophone.rsi
   - type: Extractable
@@ -37,8 +37,8 @@
   id: HarmonicaInstrument
   name: harmonica
   components:
-  - type: Instrument
-    program: 22
+#  - type: Instrument
+#    program: 22
   - type: Sprite
     sprite: Objects/Fun/Instruments/harmonica.rsi
   - type: Item
@@ -48,8 +48,8 @@
     quickEquip: false
     slots:
     - neck
-  - type: ActivatableUI
-    inHandsOnly: false  
+#  - type: ActivatableUI
+#    inHandsOnly: false
 
 - type: entity
   parent: BaseWoodwindInstrument
@@ -57,8 +57,8 @@
   name: clarinet
   description: Skweedward tintacklays.
   components:
-  - type: Instrument
-    program: 71
+#  - type: Instrument
+#    program: 71
   - type: Sprite
     sprite: Objects/Fun/Instruments/clarinet.rsi
 
@@ -79,8 +79,8 @@
   name: recorder
   description: Comes in various colors of fashionable plastic!
   components:
-  - type: Instrument
-    program: 74
+#  - type: Instrument
+#    program: 74
   - type: Sprite
     sprite: Objects/Fun/Instruments/recorder.rsi
 
@@ -90,8 +90,8 @@
   name: pan flute
   description: Perfect for luring ancient mythical beings to dance with you.
   components:
-  - type: Instrument
-    program: 75
+#  - type: Instrument
+#    program: 75
   - type: Sprite
     sprite: Objects/Fun/Instruments/panflute.rsi
 
@@ -102,8 +102,8 @@
   name: ocarina
   description: Good for playing lullabies.
   components:
-  - type: Instrument
-    program: 79
+#  - type: Instrument
+#    program: 79
   - type: Sprite
     sprite: Objects/Fun/Instruments/ocarina.rsi
   - type: Item
@@ -115,8 +115,8 @@
   name: bagpipe
   description: Pairs nicely with a kilt.
   components:
-  - type: Instrument
-    program: 109
+#  - type: Instrument
+#    program: 109
   - type: Sprite
     sprite: Objects/Fun/Instruments/bagpipes.rsi
   - type: Item

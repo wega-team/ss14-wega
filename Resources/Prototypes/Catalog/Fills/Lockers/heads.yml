@@ -217,11 +217,10 @@
     children:
     - id: BoxEncryptionKeyMedical
     - id: SurgerykitFilled # Corvax-Wega-Surgery-Edit
-    - id: ClothingCloakCmo
+    - id: ClothingHandsGlovesLatexSurgeon # Corvax-Wega-Surgery
+    - id: ClothingBackpackDuffelSurgeryFilled
     - id: ClothingEyesHudMedical
     - id: ClothingHandsGlovesNitrile
-    - id: ClothingHandsGlovesLatexSurgeon # Corvax-Wega-Surgery
-    - id: ClothingHeadHatBeretCmo
     - id: ClothingHeadsetAltMedical
     - id: ClothingMaskSterile
     - id: UniformScrubsColorCmo # Corvax-Wega-Surgery
@@ -332,7 +331,6 @@
     - id: ClothingBeltSecurityFilled
     - id: ClothingEyesGlassesSecurity
     - id: ClothingHeadsetAltSecurity
-    - id: ClothingMaskNeckGaiter
     - id: ClothingOuterCoatHoSTrench
     - id: ClothingShoesBootsJack
     - id: FlashlightSeclite
