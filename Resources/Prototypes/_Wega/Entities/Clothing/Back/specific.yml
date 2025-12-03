@@ -1,0 +1,141 @@
+- type: entity
+  id: PouchBase
+  parent: BaseStorageItem
+  name: pouch
+  description: uoy
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Back/Specific/Pouch/base.rsi
+    layers:
+      - state: icon
+  - type: Item
+    sprite: _Wega/Clothing/Back/Specific/Pouch/base.rsi
+    layers:
+      - state: icon
+    size: Small
+    shape:
+    - 0,0,2,2
+  - type: Storage
+    maxItemSize: Small
+    grid:
+    - 0,0,1,1
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+  - type: StaticPrice
+    price: 100
+    
+- type: entity
+  id: PouchMedical
+  parent: PouchBase
+  name: pouch medical
+  description: uoy
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Back/Specific/Pouch/medical.rsi
+  - type: Item
+    sprite: _Wega/Clothing/Back/Specific/Pouch/medical.rsi
+  - type: Storage
+    maxItemSize: Small
+    grid:
+    - 0,0,2,1
+    whitelist:
+      tags:
+      - Wrench
+      - Bottle
+      - Spray
+      - Brutepack
+      - Bloodpack
+      - Gauze
+      - Ointment
+      - CigPack
+      - PillCanister
+      - Radio
+      - DiscreteHealthAnalyzer
+      - SurgeryTool
+      - Dropper
+      components:
+      - Hypospray
+      - Injector
+      - Pill
+      - HandLabeler
+
+- type: entity
+  id: PouchSec
+  parent: PouchBase
+  name: pouch sec
+  description: uoy
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Back/Specific/Pouch/sec.rsi
+  - type: Item
+    sprite: _Wega/Clothing/Back/Specific/Pouch/sec.rsi
+  - type: Storage
+    maxItemSize: Small
+    grid:
+    - 0,0,2,1
+    whitelist:
+      tags:
+      - CigPack
+      - Taser
+      - SecBeltEquip
+      - Radio
+      - Sidearm
+      - MagazinePistol
+      - MagazineMagnum
+      - CombatKnife
+      - Truncheon
+      - HandGrenade
+      components:
+      - Stunbaton
+      - FlashOnTrigger
+      - SmokeOnTrigger
+      - Flash
+      - Handcuff
+      - BallisticAmmoProvider
+      - CartridgeAmmo
+      - DoorRemote
+      - Whistle
+      - BalloonPopper
+      
+- type: entity
+  id: PouchSyndui
+  parent: PouchBase
+  name: pouch syndi
+  description: uoy
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Back/Specific/Pouch/base.rsi
+  - type: Item
+    sprite: _Wega/Clothing/Back/Specific/Pouch/base.rsi
+  - type: ExplosionResistance
+    damageCoefficient: 0.1
+  - type: Storage
+    maxItemSize: Normal
+    grid:
+    - 0,0,3,1
+
+- type: entity
+  id: PouchMaterial
+  parent: PouchBase
+  name: pouch material
+  description: uoy
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Back/Specific/Pouch/medical.rsi
+  - type: Item
+    sprite: _Wega/Clothing/Back/Specific/Pouch/medical.rsi
+  - type: Storage
+    maxItemSize: Normal
+    grid:
+    - 0,0,3,1
+    whitelist:
+      components:
+        - LightBulb
+        - Battery
+        - Circuitboard
+        - RCDAmmo
+      tags:
+        - CableCoil
+        - ConstructionMaterial
+

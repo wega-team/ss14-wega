@@ -216,7 +216,7 @@
   table: !type:AllSelector
     children:
     - id: BoxEncryptionKeyMedical
-    - id: SurgerykitFilled # Corvax-Wega-Surgery-Edit
+    - id: SurgerykitFilledPro # Corvax-Wega-Surgery-Edit
     - id: ClothingCloakCmo
     - id: ClothingEyesHudMedical
     - id: ClothingHandsGlovesNitrile

@@ -36,3 +36,5 @@ uplink-syndicate-camera-name = Синдикатовский визор набл�
 uplink-syndicate-camera-desc = Визор, который позволяет наблюдать за бодикамерами СБ.
 uplink-syndie-player-name = Плеер синдиката
 uplink-syndie-player-desc = Позволяет разбавить рутинную резню своей любимой музыкой.
+uplink-syndie-pouch-name = Подсумок синдиката для карманов
+uplink-syndie-pouch-desc = Подсумок для карманов, который позволяет хранить всё что угодно в нем, имеет повышенную взрывостойкость.

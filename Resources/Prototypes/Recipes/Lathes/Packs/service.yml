@@ -28,6 +28,7 @@
   - WireBrush
   - CassetteTape # Corvax-Wega-Recorder
   - TapeRecorder # Corvax-Wega-Recorder
+  - PouchBase # Corvax-Wega-add
 
 - type: latheRecipePack
   id: ServiceBoardsStatic

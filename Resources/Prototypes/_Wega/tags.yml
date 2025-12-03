@@ -262,3 +262,6 @@
 
 - type: Tag
   id: SyndicateSegwayKeys
+
+- type: Tag
+  id: Coin

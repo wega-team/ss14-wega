@@ -10,6 +10,29 @@
 
 - type: latheRecipe
   abstract: true
+  id: BasePouch
+  categories:
+  - Tools
+  completetime: 4
+  materials:
+    Cloth: 300
+    Durathread: 100
+    Gold: 20
+
+- type: latheRecipe
+  abstract: true
+  id: JobPouch
+  categories:
+  - Clothing
+  completetime: 4
+  materials:
+    Cloth: 500
+    Durathread: 200
+    Gold: 200
+    Silver: 100
+
+- type: latheRecipe
+  abstract: true
   id: BaseNeckClothingCommandRecipe
   completetime: 2
   categories:
@@ -151,3 +174,25 @@
   parent: BaseSheath
   id: ClothingBeltSheath
   result: ClothingBeltSheath
+  
+# Pouch
+- type: latheRecipe
+  parent: BasePouch
+  id: PouchBase
+  result: PouchBase
+
+- type: latheRecipe
+  parent: JobPouch
+  id: PouchMaterial
+  result: PouchMaterial
+  
+- type: latheRecipe
+  parent: JobPouch
+  id: PouchMedical
+  result: PouchMedical
+  
+- type: latheRecipe
+  parent: JobPouch
+  id: PouchSec
+  result: PouchSec
+
