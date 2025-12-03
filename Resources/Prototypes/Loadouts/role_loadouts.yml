@@ -216,7 +216,6 @@
   - Survival
   - Trinkets
   - JanitorJobTrinkets
-  - JanitorPlunger
   - GroupSpeciesBreathTool
   # Corvax-Wega-start
   - Top
@@ -539,7 +538,6 @@
   - SurvivalSecurity
   - Trinkets
   - HeadofSecurityJobTrinkets
-  - SecurityStar
   - GroupSpeciesBreathToolSecurity
 
 - type: roleLoadout
@@ -555,7 +553,6 @@
   - SurvivalSecurity
   - Trinkets
   - WardenJobTrinkets
-  - SecurityStar
   - GroupSpeciesBreathToolSecurity
   # Corvax-Wega-start
   - Top
@@ -577,7 +574,6 @@
   - SurvivalSecurity
   - Trinkets
   - SecurityJobTrinkets
-  - SecurityStar
   - GroupSpeciesBreathToolSecurity
   # Corvax-Wega-start
   - Top
@@ -598,7 +594,6 @@
   - SurvivalSecurity
   - Trinkets
   - DetectiveJobTrinkets
-  - SecurityStar
   - GroupSpeciesBreathToolSecurity
   # Corvax-Wega-start
   - Top

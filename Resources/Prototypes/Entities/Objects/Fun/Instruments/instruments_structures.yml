@@ -4,8 +4,8 @@
   id: PianoInstrument
   description: Play Needles Piano Now.
   components:
-  - type: Instrument
-    program: 1
+#  - type: Instrument
+#    program: 1
   - type: Sprite
     state: piano
   - type: Climbable
@@ -16,8 +16,8 @@
   id: UprightPianoInstrument
   description: I said Piannie!
   components:
-  - type: Instrument
-    program: 3
+#  - type: Instrument
+#    program: 3
   - type: Sprite
     state: piano-upright
   - type: Climbable
@@ -28,8 +28,8 @@
   parent: BasePlaceableInstrumentRotatable
   description: Good vibes all around.
   components:
-  - type: Instrument
-    program: 11
+#  - type: Instrument
+#    program: 11
   - type: Sprite
     state: vibraphone
 
@@ -38,8 +38,8 @@
   id: MarimbaInstrument
   parent: BasePlaceableInstrumentRotatable
   components:
-  - type: Instrument
-    program: 12
+#  - type: Instrument
+#    program: 12
   - type: Sprite
     state: marimba
 
@@ -49,8 +49,8 @@
   id: ChurchOrganInstrument
   description: This thing really blows!
   components:
-  - type: Instrument
-    program: 19
+#  - type: Instrument
+#    program: 19
   - type: Sprite
     state: church-organ
 
@@ -60,8 +60,8 @@
   id: TubaInstrument
   description: The big daddy of the brass family. Standing next to its majesty makes you feel insecure.
   components:
-  - type: Instrument
-    program: 58
+#  - type: Instrument
+#    program: 58
   - type: Sprite
     state: tuba
 
@@ -71,8 +71,8 @@
   name: harp
   description: Plucking at the strings cuts your fingers, but at least the music is pretty.
   components:
-  - type: Instrument
-    program: 46
+#  - type: Instrument
+#    program: 46
   - type: Sprite
     state: harp
 
@@ -82,8 +82,8 @@
   name: timpani
   description: It goes BOOM BOOM BOOM BOOM!
   components:
-  - type: Instrument
-    program: 47
+#  - type: Instrument
+#    program: 47
   - type: Sprite
     state: timpani
 
@@ -93,8 +93,8 @@
   name: taiko
   description: A large drum. Looking at it fills you with the urge to slap it.
   components:
-  - type: Instrument
-    program: 116
+#  - type: Instrument
+#    program: 116
   - type: Sprite
     state: taiko
 
@@ -104,8 +104,8 @@
   name: contrabass
   description: Perfect for laying down a nice jazzy beat.
   components:
-  - type: Instrument
-    program: 43
+#  - type: Instrument
+#    program: 43
   - type: Sprite
     state: contrabass
   - type: Fixtures
@@ -131,8 +131,8 @@
   id: MinimoogInstrument
   description: This is a minimoog, like a space piano, but more spacey!
   components:
-  - type: Instrument
-    program: 81
+#  - type: Instrument
+#    program: 81
   - type: Sprite
     state: minimoog
 
@@ -142,8 +142,8 @@
   name: tom drums
   description: Where'd the rest of the kit go?
   components:
-  - type: Instrument
-    program: 117
+#  - type: Instrument
+#    program: 117
   - type: Sprite
     state: toms
 

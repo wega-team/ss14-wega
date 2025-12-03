@@ -2041,8 +2041,8 @@
   - type: Tag
     tags:
     - Flower
-  - type: Instrument #hehe trumpet
-    program: 56
+#  - type: Instrument #hehe trumpet
+#    program: 56
   - type: FoodSequenceElement
     entries:
       Taco: SpacemansTrumpet

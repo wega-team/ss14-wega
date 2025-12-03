@@ -20,6 +20,7 @@ using Content.Shared.FixedPoint;
 using Content.Shared.Humanoid;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
+using Content.Shared.Interaction.Components;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
@@ -156,6 +157,11 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
             return;
         }
 
+        if (HasComp<DeleteOnDropComponent>(args.Used))
+            return;
+
+        _popup.PopupEntity(Loc.GetString("gun-disabled"), ent, ent);
+        args.Cancel();
     }
     // Corvax-Wega-Testing-end
 

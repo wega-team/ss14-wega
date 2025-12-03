@@ -1,16 +1,17 @@
 - type: npcFaction
   id: Dragon
   hostile:
-    - NanoTrasen
-    - Syndicate
-    - Xeno
-    - PetsNT
-    - Zombie
-    - Revolutionary
-    - AllHostile
-    - Wizard
-    - Vampire # Corvax-Wega-Vampire
-    - BloodCult # Corvax-Wega-Blood-Cult
+  - NanoTrasen
+  - Syndicate
+  - Xeno
+  - PetsNT
+  - Zombie
+  - Revolutionary
+  - AllHostile
+  - Wizard
+  - Xenoborg
+  - Vampire # Corvax-Wega-Vampire
+  - BloodCult # Corvax-Wega-Blood-Cult
 
 - type: npcFaction
   id: NanoTrasen
