@@ -122,9 +122,9 @@
   description: uoy
   components:
   - type: Sprite
-    sprite: _Wega/Clothing/Back/Specific/Pouch/medical.rsi
+    sprite: _Wega/Clothing/Back/Specific/Pouch/ing.rsi
   - type: Item
-    sprite: _Wega/Clothing/Back/Specific/Pouch/medical.rsi
+    sprite: _Wega/Clothing/Back/Specific/Pouch/ing.rsi
   - type: Storage
     maxItemSize: Normal
     grid:
