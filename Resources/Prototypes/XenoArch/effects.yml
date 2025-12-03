@@ -37,8 +37,8 @@
       weight: 4.0
     - id: XenoArtifactFoamMild
       weight: 8.0
-    - id: XenoArtifactRandomInstrumentSpawn
-      weight: 10.0
+ #   - id: XenoArtifactRandomInstrumentSpawn
+ #     weight: 10.0
     - id: XenoArtifactMonkeySpawn
       weight: 10.0
     - id: XenoArtifactRadioactive

@@ -1189,18 +1189,12 @@
   - JanitorWintercoat
 
 - type: loadoutGroup
-  id: JanitorPlunger
-  name: loadout-group-janitor-plunger
-  minLimit: 0
-  loadouts:
-  - JanitorGoldenPlunger
-
-- type: loadoutGroup
   id: JanitorJobTrinkets
   name: loadout-group-jobtrinkets
   minLimit: 0
   loadouts:
   - LizardPlushieJanitor
+  - JanitorGoldenPlunger
 
 - type: loadoutGroup
   id: BotanistHead
@@ -3077,6 +3071,7 @@
   minLimit: 0
   loadouts:
   - LizardPlushieHeadofSecurity
+  - SecStar
 
 - type: loadoutGroup
   id: WardenHead
@@ -3106,6 +3101,7 @@
   minLimit: 0
   loadouts:
   - LizardPlushieWarden
+  - SecStar
 
 - type: loadoutGroup
   id: SecurityHead
@@ -3185,6 +3181,7 @@
   minLimit: 0
   loadouts:
   - LizardPlushieSecurity
+  - SecStar
 
 - type: loadoutGroup
   id: DetectiveHead
@@ -3235,6 +3232,7 @@
   minLimit: 0
   loadouts:
   - LizardPlushieDetective
+  - SecStar
 
 - type: loadoutGroup
   id: SecurityCadetJumpsuit
@@ -3271,13 +3269,6 @@
   - EmergencyOxygenSecurity
   - LoadoutSpeciesVoxNitrogen
   - EmergencyAndroidSecurity # Corvax-Wega-Android
-
-- type: loadoutGroup
-  id: SecurityStar
-  name: loadout-group-security-star
-  minLimit: 0
-  loadouts:
-  - SecStar
 
 # Medical
 - type: loadoutGroup
