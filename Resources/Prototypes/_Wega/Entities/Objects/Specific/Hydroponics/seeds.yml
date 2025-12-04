@@ -107,3 +107,23 @@
       seedId: invisibleGrape
     - type: Sprite
       sprite: _Wega/Objects/Specific/Hydroponics/Invisiblgrape.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of candy tree seeds
+  id: CandyTreeSeeds
+  components:
+    - type: Seed
+      seedId: candytree
+    - type: Sprite
+      sprite: _Wega/Objects/Specific/Hydroponics/candytree.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of candy tree random seeds
+  id: CandyTreeRandomSeeds
+  components:
+    - type: Seed
+      seedId: candytreerandom
+    - type: Sprite
+      sprite: _Wega/Objects/Specific/Hydroponics/candytreerandom.rsi

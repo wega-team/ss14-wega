@@ -20,3 +20,7 @@ ent-TreeTeaPlantSeeds = пакет семян (древесный чай)
     .desc = { ent-SeedBase.desc }
 ent-InvisibleGrapeSeeds = пакет семян (невидимый виноград)
     .desc = { ent-SeedBase.desc }
+ent-CandyTreeSeeds = пакет семян (конфетное дерево)
+    .desc = { ent-SeedBase.desc }
+ent-CandyTreeRandomSeeds = пакет семян (необычное конфетное дерево)
+    .desc = { ent-SeedBase.desc }

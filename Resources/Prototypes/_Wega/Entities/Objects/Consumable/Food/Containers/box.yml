@@ -32,3 +32,33 @@
     contents:
     - id: Shrimp
       amount: 8
+
+- type: entity
+  parent: BoxCardboard
+  id: FoodBoxLollipop
+  description: Box of lollipops.
+  name: lollipop box
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Consumable/Food/Baked/lollipopbox.rsi
+    drawdepth: SmallObjects
+    layers:
+    - state: box
+      map: ["enum.StorageVisualLayers.Base"]
+  - type: Storage
+    grid:
+    - 0,0,5,3
+    maxItemSize: Normal
+  - type: Item
+    shape:
+    - 0,0,1,1
+  - type: Appearance
+  - type: EntityStorageVisuals
+    stateDoorOpen: box-open-full
+    stateDoorClosed: box
+  - type: StaticPrice
+    price: 0
+  - type: StorageFill
+    contents:
+    - id: FoodProduceLollipopBar
+      amount: 12

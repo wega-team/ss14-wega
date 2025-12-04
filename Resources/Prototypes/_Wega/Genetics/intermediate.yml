@@ -1,12 +1,12 @@
 # Intermediate / B E A
-- type: structuralEnzymes
-  id: GeneticsChameleonIntermediate
-  message: genetics-chameleon-message
-  typeDeviation: Intermediate
-  chanceAssimilation: 0.15
-  costInstability: 10
-  addComponent:
-  - type: ChameleonGen
+# - type: structuralEnzymes
+#   id: GeneticsChameleonIntermediate
+#   message: genetics-chameleon-message
+#   typeDeviation: Intermediate
+#   chanceAssimilation: 0.15
+#   costInstability: 10
+#   addComponent:
+#   - type: ChameleonGen
 
 - type: structuralEnzymes
   id: GeneticsCloakOfDarknessIntermediate
