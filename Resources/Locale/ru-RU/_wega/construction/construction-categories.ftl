@@ -1,1 +1,1 @@
-construction-category-kravcult = Кровавый культ
+construction-category-bloodcult = Кровавый культ

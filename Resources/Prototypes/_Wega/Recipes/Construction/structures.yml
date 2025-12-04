@@ -3,7 +3,7 @@
   graph: CultGirder
   startNode: start
   targetNode: cultgirder
-  category: construction-category-kravcult
+  category: construction-category-bloodcult
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
@@ -16,7 +16,7 @@
   graph: BloodCultStructureAltarGraph
   startNode: start
   targetNode: BloodCultStructureAltar
-  category: construction-category-kravcult
+  category: construction-category-bloodcult
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
@@ -29,7 +29,7 @@
   graph: BloodCultStructureArchivesGraph
   startNode: start
   targetNode: BloodCultStructureArchives
-  category: construction-category-kravcult
+  category: construction-category-bloodcult
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
@@ -42,7 +42,7 @@
   graph: BloodCultStructureForgeGraph
   startNode: start
   targetNode: BloodCultStructureForge
-  category: construction-category-kravcult
+  category: construction-category-bloodcult
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
@@ -55,7 +55,7 @@
   graph: BloodCultStructurePylonGraph
   startNode: start
   targetNode: BloodCultStructurePylon
-  category: construction-category-kravcult
+  category: construction-category-bloodcult
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false

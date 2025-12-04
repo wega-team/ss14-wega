@@ -1,8 +1,8 @@
 - type: entity
   id: PouchBase
   parent: BaseStorageItem
-  name: pouch
-  description: uoy
+  name: pocket pouch
+  description: A pocket bag that increases its capacity.
   components:
   - type: Sprite
     sprite: _Wega/Clothing/Back/Specific/Pouch/base.rsi
@@ -26,8 +26,8 @@
 - type: entity
   id: PouchMedical
   parent: PouchBase
-  name: pouch medical
-  description: uoy
+  name: medical pocket pouch
+  description: A specialized medical pouch that holds all the necessary equipment. It replaces a belt.
   components:
   - type: Sprite
     sprite: _Wega/Clothing/Back/Specific/Pouch/medical.rsi
@@ -61,8 +61,8 @@
 - type: entity
   id: PouchSec
   parent: PouchBase
-  name: pouch sec
-  description: uoy
+  name: tactical pocket pouch
+  description: A specialized pouch for security personnel that fits all standard equipment. Replaces a belt.
   components:
   - type: Sprite
     sprite: _Wega/Clothing/Back/Specific/Pouch/sec.rsi
@@ -97,10 +97,10 @@
       - BalloonPopper
       
 - type: entity
-  id: PouchSyndui
+  id: PouchSyndie
   parent: PouchBase
-  name: pouch syndi
-  description: uoy
+  name: reinforced pocket pouch
+  description: A spacious pouch with increased explosion resistance. Allows you to store any type of item.
   components:
   - type: Sprite
     sprite: _Wega/Clothing/Back/Specific/Pouch/base.rsi
@@ -116,8 +116,8 @@
 - type: entity
   id: PouchMaterial
   parent: PouchBase
-  name: pouch material
-  description: uoy
+  name: pouch for materials
+  description: A reinforced pouch for storing resources, including ingots and compressed matter charges.
   components:
   - type: Sprite
     sprite: _Wega/Clothing/Back/Specific/Pouch/ing.rsi
