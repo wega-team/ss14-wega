@@ -20,6 +20,7 @@ using Content.Shared.FixedPoint;
 using Content.Shared.Humanoid;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
+using Content.Shared.Interaction.Components;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
@@ -148,6 +149,9 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
     // Да я пометил тегами чтобы банально не забыть про это и чо?
     private void OnShotAttempted(Entity<BloodCultistComponent> ent, ref ShotAttemptedEvent args)
     {
+        if (HasComp<DeleteOnDropComponent>(args.Used))
+            return;
+
         _popup.PopupEntity(Loc.GetString("gun-disabled"), ent, ent);
         args.Cancel();
     }

@@ -1,0 +1,27 @@
+# Timers
+- type: loadoutEffectGroup
+  id: BarmenGlass
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobBartender
+      time: 1h 
+      
+# Special options
+- type: loadout
+  id: ClothingEyesGlassesCheapSunglasses
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: Command
+  equipment:
+    eyes: ClothingEyesGlassesCheapSunglasses
+
+- type: loadout
+  id: ClothingEyesSalesman
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: BarmenGlass
+  equipment:
+    eyes: ClothingEyesSalesman
+

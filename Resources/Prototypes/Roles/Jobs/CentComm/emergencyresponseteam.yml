@@ -430,7 +430,7 @@
     back:
     # Corvax-Wega-ERT-start
 #    - Hypospray
-    - SurgerykitFilled # Corvax-Wega-Surgery
+    - SurgerykitFilledPro # Corvax-Wega-Surgery
     - SyringeBluespace
 #    - MedkitCombatFilled
 #    - MedkitCombatFilled
@@ -459,7 +459,7 @@
   storage:
     back:
 #    - Hypospray # Corvax-Wega-ERT
-    - SurgerykitFilled # Corvax-Wega-Surgery
+    - SurgerykitFilledPro # Corvax-Wega-Surgery
     - SyringeBluespace # Corvax-Wega-ERT
     - MedkitCombatFilled
 #    - CrowbarRed # Corvax-Wega-CombatCrowbar

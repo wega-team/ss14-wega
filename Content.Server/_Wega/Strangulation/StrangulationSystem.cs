@@ -20,7 +20,6 @@ using Robust.Shared.Map;
 using Robust.Shared.Player;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Hands.EntitySystems;
-using Content.Shared.Speech.Muting;
 using Content.Shared.StatusEffectNew;
 
 namespace Content.Server.Strangulation
@@ -173,12 +172,7 @@ namespace Content.Server.Strangulation
         }
 
         private void TryStartStrangle(EntityUid strangler, EntityUid target)
-        {
-            if (CheckGarrotte(strangler, out _))
-                StartStrangleDoAfter(strangler, target);
-            else
-                StartStrangulationDelayDoAfter(strangler, target); //задержка перед удушением руками
-        }
+            => StartStrangulationDelayDoAfter(strangler, target);
 
         private bool CanStrangle(EntityUid strangler, EntityUid target, RespiratorComponent? component = null)
         {
@@ -204,13 +198,16 @@ namespace Content.Server.Strangulation
             return true;
         }
 
-        private void StartStrangulationDelayDoAfter(EntityUid strangler, EntityUid target) //задержка перед удушением руками
+        private void StartStrangulationDelayDoAfter(EntityUid strangler, EntityUid target)
         {
             if (strangler == target)
                 _popupSystem.PopupEntity(Loc.GetString("strangle-delay-start-self"), target, target, PopupType.Medium);
             else
                 _popupSystem.PopupEntity(Loc.GetString("strangle-delay-start"), target, target, PopupType.LargeCaution);
-            var doAfterDelay = TimeSpan.FromSeconds(1.5);
+
+            var time = CheckGarrotte(strangler, out _) ? 1 : 1.5;
+
+            var doAfterDelay = TimeSpan.FromSeconds(time);
             var doAfterEventArgs = new DoAfterArgs(EntityManager, strangler, doAfterDelay,
                 new StrangulationDelayDoAfterEvent(),
                 eventTarget: strangler,
@@ -220,7 +217,7 @@ namespace Content.Server.Strangulation
                 BreakOnMove = true,
                 NeedHand = true
             };
-            _doAfterSystem.TryStartDoAfter(doAfterEventArgs, out var doAfterId);
+            _doAfterSystem.TryStartDoAfter(doAfterEventArgs, out _);
         }
 
         private void StartStrangleDoAfter(EntityUid strangler, EntityUid target)

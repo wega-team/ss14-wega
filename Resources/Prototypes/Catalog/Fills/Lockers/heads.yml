@@ -13,7 +13,7 @@
     - id: AstroNavCartridge
     - id: ClothingHandsKnuckleDustersQM
     - id: PrinterDocFlatpack # Corvax-Printer
-    - id: FundingAllocationComputerCircuitboard # Corvax-Wega
+    - id: FundingAllocationComputerFlatpack # Corvax-Wega
 
 
 - type: entity
@@ -216,7 +216,7 @@
   table: !type:AllSelector
     children:
     - id: BoxEncryptionKeyMedical
-    - id: SurgerykitFilled # Corvax-Wega-Surgery-Edit
+    - id: SurgerykitFilledPro # Corvax-Wega-Surgery-Edit
     - id: ClothingHandsGlovesLatexSurgeon # Corvax-Wega-Surgery
     - id: ClothingBackpackDuffelSurgeryFilled
     - id: ClothingEyesHudMedical
@@ -233,6 +233,7 @@
     - id: RubberStampCMO
     - id: MedTekCartridge
     - id: BodyScannerComputerCircuitboard # Corvax-Wega-Surgery
+    - id: FoodBoxLollipop # Corvax-Wega-Candy
 
 # Hardsuit table, used for suit storage as well
 - type: entityTable

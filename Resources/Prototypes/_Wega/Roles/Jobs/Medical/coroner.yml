@@ -33,6 +33,7 @@
     back:
     - ChemistryBottleFormaldehyde
     - ForensicScanner
+    - RubberStampCorner
 
 - type: chameleonOutfit
   id: CoronerChameleonOutfit
