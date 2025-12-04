@@ -49,7 +49,6 @@
   recipeUnlocks:
   - WeaponLaserCarbine
   - PortableRecharger # Corvax-Wega-Arsenal
-  - BorgModuleSecLethal # Corvax-Wega-Arsenal
 
 - type: technology
   id: NonlethalAmmunition
