@@ -20,6 +20,8 @@
   - type: ContainerContainer
     containers:
       storagebase: !type:Container
+  - type: ExplosionResistance
+    damageCoefficient: 0.9
   - type: StaticPrice
     price: 100
     
