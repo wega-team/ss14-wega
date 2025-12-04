@@ -172,6 +172,7 @@
     - Fulton
     - FultonBeacon
     - ArmSyntheticPry # Corvax-Wega-Androids
+    - PouchMaterial # Corvax-Wega-Add
 
 - type: technology
   id: MassExcavation

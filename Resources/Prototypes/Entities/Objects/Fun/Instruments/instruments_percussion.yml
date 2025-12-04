@@ -12,8 +12,8 @@
   id: GlockenspielInstrument
   name: glockenspiel
   components:
-#  - type: Instrument
-#    program: 9
+  - type: Instrument
+    program: 9
   - type: Sprite
     sprite: Objects/Fun/Instruments/glockenspiel.rsi
 
@@ -23,8 +23,8 @@
   name: music box
   description: Playing this makes you feel safe from scary animatronics.
   components:
-#  - type: Instrument
-##    program: 10
+  - type: Instrument
+    program: 10
   - type: Sprite
     sprite: Objects/Fun/Instruments/musicbox.rsi
   - type: Item
@@ -36,8 +36,8 @@
   name: xylophone
   description: Rainbow colored glockenspiel.
   components:
-#  - type: Instrument
-#    program: 13
+  - type: Instrument
+    program: 13
   - type: Sprite
     sprite: Objects/Fun/Instruments/structureinstruments.rsi
     state: xylophone
@@ -48,15 +48,15 @@
   name: microphone
   description: Perfect for singing your heart out.
   components:
-#  - type: Instrument
-#    program: 52
-#  - type: SwappableInstrument
-#    instrumentList:
-#      "Aah": {52: 0}
-#      "Ooh": {53: 0}
-#      "Kweh": {4: 100} # Defined in space-station-14.sf2
-#      "Waa": {5: 100} # Defined in space-station-14.sf2
-#      "Wah": {6: 100} # Defined in space-station-14.sf2
+  - type: Instrument
+    program: 52
+  - type: SwappableInstrument
+    instrumentList:
+      "Aah": {52: 0}
+      "Ooh": {53: 0}
+      "Kweh": {4: 100} # Defined in space-station-14.sf2
+      "Waa": {5: 100} # Defined in space-station-14.sf2
+      "Wah": {6: 100} # Defined in space-station-14.sf2
   - type: Sprite
     sprite: Objects/Fun/Instruments/microphone.rsi
   - type: Item
@@ -69,8 +69,8 @@
   name: woodblock
   description: If you listen to this enough it'll start driving itself into your mind.
   components:
-#  - type: Instrument
-#    program: 115
+  - type: Instrument
+    program: 115
   - type: Sprite
     sprite: Objects/Fun/Instruments/woodblock.rsi
 
@@ -80,7 +80,7 @@
   name: reverse cymbals
   description: I think you have it the wrong way around?
   components:
-#  - type: Instrument
-#    program: 119
+  - type: Instrument
+    program: 119
   - type: Sprite
     sprite: Objects/Fun/Instruments/reversecymbal.rsi

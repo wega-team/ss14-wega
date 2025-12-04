@@ -1,7 +1,7 @@
 ﻿- type: entity
   abstract: true
   save: false
-  parent: [BaseMobSpeciesOrganic]
+  parent: [ BaseMobSpeciesOrganic, BaseOperated ] # Corvax-Wega-Surgery-Edit]
   id: BaseMobVulpkanin
   name: Urist McBark
   components:
@@ -69,13 +69,20 @@
     - map: [ "enum.HumanoidVisualLayers.LArm" ]
     - map: [ "enum.HumanoidVisualLayers.RLeg" ]
     - map: [ "enum.HumanoidVisualLayers.LLeg" ]
+    # Corvax-Wega-start
     - map: [ "enum.HumanoidVisualLayers.UndergarmentBottom" ]
     - map: [ "enum.HumanoidVisualLayers.UndergarmentTop" ]
-    - map: [ "jumpsuit" ]
-    - map: [ "enum.HumanoidVisualLayers.LHand" ]
-    - map: [ "enum.HumanoidVisualLayers.RHand" ]
     - map: [ "enum.HumanoidVisualLayers.LFoot" ]
     - map: [ "enum.HumanoidVisualLayers.RFoot" ]
+    - map: [ "enum.HumanoidVisualLayers.Special" ]
+    - map: [ "socks" ]
+    - map: [ "underwearbottom" ]
+    - map: [ "underweartop" ]
+    - map: [ "jumpsuit" ]
+    - map: [ "anal" ]
+    - map: [ "enum.HumanoidVisualLayers.LHand" ]
+    - map: [ "enum.HumanoidVisualLayers.RHand" ]
+    # Corvax-Wega-end
     - map: [ "enum.HumanoidVisualLayers.Handcuffs" ]
       color: "#ffffff"
       sprite: Objects/Misc/handcuffs.rsi

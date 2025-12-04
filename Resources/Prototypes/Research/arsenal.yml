@@ -102,6 +102,7 @@
   - TelescopicShield
   - HoloprojectorSecurity
   - WeaponDisablerSMG
+  - PouchSec # Corvax-Wega-Add
   - BorgModuleSheild # Corvax-Wega
 
 - type: technology
