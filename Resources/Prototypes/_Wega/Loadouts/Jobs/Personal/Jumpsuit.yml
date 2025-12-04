@@ -195,7 +195,73 @@
   equipment:
     jumpsuit: ClothingUniformJumpskirtCasualGreen  
   groupBy: "wegaCaJ"
+
+- type: loadout
+  id: ClothingUniformJumpskirtGreenElegantDress
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtGreenElegantDress
+  groupBy: "wegaCaJ"
+
+- type: loadout
+  id: ClothingUniformJumpskirtRedElegantDress
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtRedElegantDress  
+  groupBy: "wegaCaJ"
     
+- type: loadout
+  id: ClothingUniformJumpskirtBlueElegantDress
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtBlueElegantDress
+  groupBy: "wegaCaJ"
+
+- type: loadout
+  id: ClothingUniformJumpskirtPurpleElegantDress
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtPurpleElegantDress
+  groupBy: "wegaCaJ"    
+    
+- type: loadout
+  id: ClothingUniformJumpskirtBlackElegantDress
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtBlackElegantDress  
+  groupBy: "wegaCaJ"
+
+- type: loadout
+  id: ClothingUniformJumpskirtCyanStripedDress
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCyanStripedDress  
+  groupBy: "wegaCaJ"
+
+- type: loadout
+  id: ClothingUniformJumpskirtGreenStripedDress
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtGreenStripedDress  
+  groupBy: "wegaCaJ"
+
+- type: loadout
+  id: ClothingUniformJumpskirtRedStripedDress
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtRedStripedDress  
+  groupBy: "wegaCaJ"
+
+- type: loadout
+  id: ClothingUniformJumpskirtOrangeStripedDress
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtOrangeStripedDress  
+  groupBy: "wegaCaJ"
+
+- type: loadout
+  id: ClothingUniformJumpskirtPinkStripedDress
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtPinkStripedDress  
+  groupBy: "wegaCaJ"
+
+- type: loadout
+  id: ClothingUniformJumpskirtYellowOldDress
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtYellowOldDress  
+  groupBy: "wegaCaJ"
+
 # Turtleneck
     
 - type: loadout
@@ -401,7 +467,37 @@
   equipment:
     jumpsuit: ClothingUniformJumpskirtTurtleneckWhiteSleeveless
   groupBy: "wegaTJ" 
+
+- type: loadout
+  id: ClothingUniformJumpskirtPurpleTurtleneckDress
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtPurpleTurtleneckDress  
+  groupBy: "wegaTJ" 
+
+- type: loadout
+  id: ClothingUniformJumpskirtBlueTurtleneckDress
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtBlueTurtleneckDress
+  groupBy: "wegaTJ"    
+    
+- type: loadout
+  id: ClothingUniformJumpskirtYellowTurtleneckDress
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtYellowTurtleneckDress  
+  groupBy: "wegaTJ" 
   
+- type: loadout
+  id: ClothingUniformJumpskirtGreenTurtleneckDress
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtGreenTurtleneckDress
+  groupBy: "wegaTJ"    
+    
+- type: loadout
+  id: ClothingUniformJumpskirtRedTurtleneckDress
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtRedTurtleneckDress
+  groupBy: "wegaTJ" 
+
 ## Offical
 
 - type: loadout
@@ -626,6 +722,17 @@
   # - JumpskirtColorDarkBlue
   # - JumpsuitColorDarkGreen
   # - JumpskirtColorDarkGreen
+  # - ClothingUniformJumpskirtGreenElegantDress
+  # - ClothingUniformJumpskirtRedElegantDress
+  # - ClothingUniformJumpskirtBlueElegantDress
+  # - ClothingUniformJumpskirtPurpleElegantDress
+  # - ClothingUniformJumpskirtBlackElegantDress
+  # - ClothingUniformJumpskirtCyanStripedDress
+  # - ClothingUniformJumpskirtGreenStripedDress
+  # - ClothingUniformJumpskirtRedStripedDress
+  # - ClothingUniformJumpskirtOrangeStripedDress
+  # - ClothingUniformJumpskirtPinkStripedDress
+  # - ClothingUniformJumpskirtYellowOldDress
   # - JumpsuitColorTeal
   # - JumpskirtColorTeal
   # - JumpsuitCasualBlue
@@ -670,6 +777,11 @@
   # - JumpsuitTurtleneckWhiteBlackSleeveless
   # - JumpsuitTurtleneckWhiteSleeveless
   # - JumpskirtTurtleneckWhiteSleeveless
+  # - ClothingUniformJumpskirtPurpleTurtleneckDress
+  # - ClothingUniformJumpskirtBlueTurtleneckDress
+  # - ClothingUniformJumpskirtYellowTurtleneckDress
+  # - ClothingUniformJumpskirtGreenTurtleneckDress
+  # - ClothingUniformJumpskirtRedTurtleneckDress
   # - ClothingUniformJumpsuitSecBlueOJ
   # - ClothingUniformJumpskirtDetectiveGrey
   # - ClothingUniformJumpsuitDetectiveGrey
@@ -702,4 +814,29 @@
   # - ClothingUniformTopColorMaroon
   # - ClothingUniformTopic
   # - ClothingUniformTopicCool
-    
+
+# medical
+  # - JumpskirtTurtleneckAquamarine
+  # - JumpsuitTurtleneckAquamarine
+  # - JumpskirtTurtleneckWhite
+  # - JumpsuitTurtleneckWhite
+  # - JumpskirtTurtleneckOrange
+  # - JumpsuitTurtleneckOrange
+  # - JumpskirtTurtleneckAzure
+  # - JumpsuitTurtleneckAzure
+  # - JumpskirtTurtleneckBlue
+  # - JumpsuitTurtleneckBlue
+  # - ClothingUniformJumpskirtCyanStripedDress
+  # - ClothingUniformJumpskirtBlueElegantDress
+  # - ClothingUniformJumpskirtBlueTurtleneckDress
+  
+# secutity
+  # - JumpskirtTurtleneckRed
+  # - JumpsuitTurtleneckRed
+  # - JumpskirtTurtleneckBlack
+  # - JumpsuitTurtleneckBlack
+  # - JumpskirtTurtleneckBlackSleeveless
+  # - JumpsuitTurtleneckBlackSleeveless
+  # - ClothingUniformTopColorRed
+  # - ClothingUniformTopColorBlack
+  # - ClothingUniformTopicCool

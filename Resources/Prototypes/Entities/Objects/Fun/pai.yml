@@ -6,11 +6,11 @@
   name: personal ai device
   description: Your electronic pal who's fun to be with!
   components:
-#  - type: Instrument
-#    allowPercussion: false
-#    handheld: false
-#    program: 2
-#    bank: 100 # Defined in space-station-14.sf2
+  - type: Instrument
+    allowPercussion: false
+    handheld: false
+    program: 2
+    bank: 100 # Defined in space-station-14.sf2
   - type: UserInterface
     interfaces:
       enum.StoreUiKey.Key:
@@ -20,9 +20,9 @@
       enum.RadarConsoleUiKey.Key:
         type: RadarConsoleBoundUserInterface
         requireInputValidation: false
-#      enum.InstrumentUiKey.Key:
-#        type: InstrumentBoundUserInterface
-#        requireInputValidation: false
+      enum.InstrumentUiKey.Key:
+        type: InstrumentBoundUserInterface
+        requireInputValidation: false
       enum.StationMapUiKey.Key:
         type: StationMapBoundUserInterface
         requireInputValidation: false

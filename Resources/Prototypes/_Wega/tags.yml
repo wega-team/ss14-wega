@@ -264,7 +264,10 @@
   id: SyndicateSegwayKeys
 
 - type: Tag
-  id: BorgModuleSecurity
+  id: EvidenceMarker
 
 - type: Tag
-  id: EvidenceMarker
+  id: Coin
+
+- type: Tag
+  id: BorgModuleSecurity

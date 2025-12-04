@@ -275,3 +275,57 @@
       Min: 1
       Max: 2
       PotencyDivisor: 35
+
+- type: seed
+  id: candytree
+  name: seeds-candytree-name
+  noun: seeds-noun-seeds
+  displayName: seeds-candytree-display-name
+  plantRsi: _Wega/Objects/Specific/Hydroponics/candytree.rsi
+  packetPrototype: CandyTreeSeeds
+  productPrototypes:
+    - FoodProduceLollipop
+  mutationPrototypes:
+    - candytreerandom
+  harvestRepeat: Repeat
+  lifespan: 50
+  maturation: 6
+  production: 5
+  yield: 3
+  potency: 10
+  growthStages: 5
+  chemicals:
+    Sugar:
+      Min: 1
+      Max: 7
+      PotencyDivisor: 20
+    Vitamin:
+      Min: 1
+      Max: 2
+      PotencyDivisor: 50
+
+- type: seed
+  id: candytreerandom
+  name: seeds-candytreerandom-name
+  noun: seeds-noun-seeds
+  displayName: seeds-candytreerandom-display-name
+  plantRsi: _Wega/Objects/Specific/Hydroponics/candytreerandom.rsi
+  packetPrototype: CandyTreeRandomSeeds
+  productPrototypes:
+    - FoodProduceLollipopRandom
+  harvestRepeat: Repeat
+  lifespan: 50
+  maturation: 6
+  production: 5
+  yield: 3
+  potency: 10
+  growthStages: 5
+  chemicals:
+    Sugar:
+      Min: 1
+      Max: 7
+      PotencyDivisor: 20
+    UnstableMutagen:
+      Min: 1
+      Max: 2
+      PotencyDivisor: 50

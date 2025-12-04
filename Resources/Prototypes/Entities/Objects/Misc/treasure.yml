@@ -152,6 +152,11 @@
     size: Tiny
   - type: StaticPrice
     price: 75
+# Corvax-Wega-Start
+  - type: Tag
+    tags:
+    - Coin
+# Corvax-Wega-End
 
 - type: entity
   parent: TreasureCoinIron

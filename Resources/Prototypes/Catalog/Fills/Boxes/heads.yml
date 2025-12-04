@@ -13,6 +13,7 @@
       - id: SalvageMagnetMachineCircuitboard
       - id: SalvageJobBoardComputerCircuitboard
       - id: MailTeleporterMachineCircuitboard
+      - id: FundingAllocationComputerCircuitboard # Corvax-Wega
 
 - type: entity
   name: stamp box [QM]
