@@ -331,9 +331,26 @@ public sealed partial class SurgerySystem
             && damageProto.BlacklistSpecies.Contains(humanoidAppearance.Species))
             return false;
 
-        bodyPart ??= SelectBodyPart(target, damageProto);
-        AddInternalDamage(component, damageId, bodyPart);
+        if (bodyPart != null)
+        {
+            var matchingParts = _body.GetBodyChildren(target)
+                .Where(b => GetBodyPartName(b.Component).Equals(bodyPart, StringComparison.OrdinalIgnoreCase))
+                .ToList();
 
+            if (matchingParts.Count == 0)
+                return false;
+
+            if (matchingParts.All(b => HasComp<SubdermalImplantComponent>(b.Id)))
+                return false;
+        }
+        else
+        {
+            bodyPart = SelectBodyPart(target, damageProto);
+            if (bodyPart == null)
+                return false;
+        }
+
+        AddInternalDamage(component, damageId, bodyPart);
         return true;
     }
 
@@ -388,7 +405,7 @@ public sealed partial class SurgerySystem
         var damagesToRemove = new List<(ProtoId<InternalDamagePrototype> DamageId, string? BodyPart)>();
         foreach (var (damageId, bodyParts) in operated.InternalDamages)
         {
-            if (!_proto.TryIndex<InternalDamagePrototype>(damageId, out var damageProto))
+            if (!_proto.TryIndex(damageId, out var damageProto))
                 continue;
 
             if (damageProto.Category is DamageCategory.PhysicalTrauma or DamageCategory.Burns)

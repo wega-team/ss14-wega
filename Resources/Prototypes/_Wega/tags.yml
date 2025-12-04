@@ -265,3 +265,6 @@
 
 - type: Tag
   id: Vampire
+
+- type: Tag
+  id: Coin

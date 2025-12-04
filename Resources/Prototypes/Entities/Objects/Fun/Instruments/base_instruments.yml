@@ -6,16 +6,16 @@
   components:
   - type: Sprite
     state: icon
- #  - type: Instrument
- # - type: ActivatableUI
- #   inHandsOnly: true
- #   singleUser: true
- #   verbText: verb-instrument-openui
- #   key: enum.InstrumentUiKey.Key
- # - type: UserInterface
- #   interfaces:
- #     enum.InstrumentUiKey.Key:
- #       type: InstrumentBoundUserInterface
+  - type: Instrument
+  - type: ActivatableUI
+    inHandsOnly: true
+    singleUser: true
+    verbText: verb-instrument-openui
+    key: enum.InstrumentUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.InstrumentUiKey.Key:
+        type: InstrumentBoundUserInterface
   - type: Item
     size: Normal
   - type: StaticPrice
@@ -28,14 +28,14 @@
   parent: BaseStructureDynamic
   abstract: true
   components:
-#  - type: Instrument
-#  - type: ActivatableUI
-#    blockSpectators: true # otherwise they can play client-side music
-#    inHandsOnly: false
-#    singleUser: true
-#    requiresComplex: true
-#    verbText: verb-instrument-openui
-#    key: enum.InstrumentUiKey.Key
+  - type: Instrument
+  - type: ActivatableUI
+    blockSpectators: true # otherwise they can play client-side music
+    inHandsOnly: false
+    singleUser: true
+    requiresComplex: true
+    verbText: verb-instrument-openui
+    key: enum.InstrumentUiKey.Key
   - type: InteractionOutline
   - type: Sprite
     sprite: Objects/Fun/Instruments/structureinstruments.rsi
@@ -50,10 +50,10 @@
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
-#  - type: UserInterface
-#    interfaces:
-#      enum.InstrumentUiKey.Key:
-#        type: InstrumentBoundUserInterface
+  - type: UserInterface
+    interfaces:
+      enum.InstrumentUiKey.Key:
+        type: InstrumentBoundUserInterface
   - type: Fixtures
     fixtures:
       fix1:

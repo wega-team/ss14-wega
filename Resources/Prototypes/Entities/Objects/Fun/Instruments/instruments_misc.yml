@@ -7,8 +7,8 @@
   - type: Sprite
     sprite: Mobs/Species/Human/organs.rsi
     state: lung-l
-#  - type: Instrument
-#    program: 121
+  - type: Instrument
+    program: 121
   - type: Item
     size: Small
 
@@ -21,8 +21,8 @@
   - type: Sprite
     sprite: Objects/Fun/Instruments/otherinstruments.rsi
     state: seashell
-#  - type: Instrument
-#    program: 122
+  - type: Instrument
+    program: 122
   - type: Item
     size: Small
 
@@ -35,8 +35,8 @@
   - type: Sprite
     sprite: Objects/Fun/Instruments/otherinstruments.rsi
     state: birdtoy
-#  - type: Instrument
-#    program: 123
+  - type: Instrument
+    program: 123
   - type: Item
     size: Small
     storedRotation: 90
@@ -53,8 +53,8 @@
   - type: EmitSoundOnLand
     sound:
        path: /Audio/Items/ring.ogg
-#  - type: Instrument
-#    program: 124
+  - type: Instrument
+    program: 124
   - type: Item
     size: Small
     storedRotation: -90
@@ -86,8 +86,8 @@
   - type: Sprite
     sprite: Objects/Fun/Instruments/otherinstruments.rsi
     state: helicopter
-#  - type: Instrument
-#    program: 125
+  - type: Instrument
+    program: 125
   - type: Item
     size: Small
     storedRotation: -90
@@ -101,8 +101,8 @@
   - type: Sprite
     sprite: Objects/Fun/Instruments/otherinstruments.rsi
     state: cannedapplause
-#  - type: Instrument
-#    program: 126
+  - type: Instrument
+    program: 126
   - type: Item
     size: Tiny
 
@@ -112,8 +112,8 @@
   name: gunpet
   description: Why do you need to examine this? Is it not self-explanatory?
   components:
-#  - type: Instrument
-#    program: 127
+  - type: Instrument
+    program: 127
   - type: Sprite
     sprite: Objects/Fun/Instruments/gunpet.rsi
   - type: Item
@@ -130,9 +130,9 @@
   name: gilded bike horn
   description: An exquisitely decorated bike horn, capable of honking in a variety of notes.
   components:
-#  - type: Instrument
-#    program: 1
-#    bank: 100 # Defined in space-station-14.sf2
+  - type: Instrument
+    program: 1
+    bank: 100 # Defined in space-station-14.sf2
   - type: Sprite
     sprite: Objects/Fun/Instruments/bike_horn.rsi
   - type: Tag

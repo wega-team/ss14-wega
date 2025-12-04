@@ -3,7 +3,7 @@
   graph: CultGirder
   startNode: start
   targetNode: cultgirder
-  category: construction-category-structures
+  category: construction-category-bloodcult
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
@@ -16,7 +16,7 @@
   graph: BloodCultStructureAltarGraph
   startNode: start
   targetNode: BloodCultStructureAltar
-  category: construction-category-structures
+  category: construction-category-bloodcult
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
@@ -29,7 +29,7 @@
   graph: BloodCultStructureArchivesGraph
   startNode: start
   targetNode: BloodCultStructureArchives
-  category: construction-category-structures
+  category: construction-category-bloodcult
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
@@ -42,7 +42,7 @@
   graph: BloodCultStructureForgeGraph
   startNode: start
   targetNode: BloodCultStructureForge
-  category: construction-category-structures
+  category: construction-category-bloodcult
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
@@ -55,7 +55,7 @@
   graph: BloodCultStructurePylonGraph
   startNode: start
   targetNode: BloodCultStructurePylon
-  category: construction-category-structures
+  category: construction-category-bloodcult
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
@@ -72,6 +72,20 @@
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: SolidSecretDoorRe
+  name: recipes-resecret-door-name
+  description: recipes-resecret-door-desc
+  graph: SecretDoorRe
+  startNode: start
+  targetNode: solidSecretDoor
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked

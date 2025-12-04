@@ -4,3 +4,5 @@ reagent-name-relaxingtea = древесный чай
 reagent-desc-relaxingtea = Раслабляющий чай имеющий наркотический эффект. Если употребить достаточно много можно превратить в диону.
 reagent-name-juiceofinvisiblegrapes = сок невидимого винограда
 reagent-desc-juiceofinvisiblegrapes = Существо употребившое этот напиток становится невидмым и немым.
+reagent-name-bakeryjuice = Кейкиум
+reagent-desc-bakeryjuice = При наличии 10 унций вещества в организме превращает употребившего в прянечного человечка.

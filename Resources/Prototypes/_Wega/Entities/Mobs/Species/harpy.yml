@@ -49,14 +49,14 @@
         type: StrippableBoundUserInterface
       enum.SurgeryUiKey.Key:
         type: SurgeryBoundUserInterface
-#      enum.InstrumentUiKey.Key:
-#        type: InstrumentBoundUserInterface
+      enum.InstrumentUiKey.Key:
+        type: InstrumentBoundUserInterface
   - type: ColourBlindness
     colorFilter: "1.0, 0.8, 0.0"
     desaturation: 0.4
-#  - type: Instrument
-#    allowPercussion: false
-#    program: 52
+  - type: Instrument
+    allowPercussion: false
+    program: 52
   - type: Inventory
     displacements:
       jumpsuit:
