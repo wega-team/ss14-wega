@@ -182,7 +182,7 @@
   id: BaseBloodBrotherCMOStealObjective
   components:
   - type: NotJobRequirement
-    job: ChiefMedicalOfficer
+    jobs: [ ChiefMedicalOfficer ]
   - type: BloodBrotherSharedStealCondition
     owner: job-name-cmo
 
@@ -208,7 +208,7 @@
   id: BaseBloodBrotherRDStealObjective
   components:
   - type: NotJobRequirement
-    job: ResearchDirector
+    jobs: [ ResearchDirector ]
   - type: BloodBrotherSharedStealCondition
     owner: job-name-rd
 
@@ -238,7 +238,7 @@
     # HoS will have this on them a lot of the time so..
     difficulty: 3
   - type: NotJobRequirement
-    job: HeadOfSecurity
+    jobs: [ HeadOfSecurity ]
   - type: BloodBrotherSharedStealCondition
     stealGroup: WeaponEnergyMagnum
     owner: job-name-hos
@@ -250,7 +250,7 @@
   id: BloodBrotherSharedMagbootsStealObjective
   components:
   - type: NotJobRequirement
-    job: ChiefEngineer
+    jobs: [ ChiefEngineer ]
   - type: BloodBrotherSharedStealCondition
     stealGroup: ClothingShoesBootsMagAdv
     owner: job-name-ce
@@ -262,7 +262,7 @@
   id: BloodBrotherSharedClipboardStealObjective
   components:
   - type: NotJobRequirement
-    job: Quartermaster
+    jobs: [ Quartermaster ]
   - type: BloodBrotherSharedStealCondition
     stealGroup: BoxFolderQmClipboard
     owner: job-name-qm
@@ -277,7 +277,7 @@
   - type: Objective
     difficulty: 3.5
   - type: NotJobRequirement
-    job: Captain
+    jobs: [ Captain ]
   - type: BloodBrotherSharedStealCondition
     owner: job-name-captain
 
@@ -311,7 +311,7 @@
   - type: Objective
     difficulty: 3
   - type: NotJobRequirement
-    job: Warden
+    jobs: [ Warden ]
   - type: BloodBrotherSharedStealCondition
     stealGroup: GlovesKravMaga
     owner: job-name-warden
@@ -325,7 +325,7 @@
   - type: Objective
     difficulty: 3
   - type: NotJobRequirement
-    job: BlueShieldOfficer
+    jobs: [ BlueShieldOfficer ]
   - type: BloodBrotherSharedStealCondition
     verifyMapExistence: true
     stealGroup: WeaponBlueLaserPistol
