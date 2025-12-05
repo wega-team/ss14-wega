@@ -18,8 +18,6 @@
         - type: StationEmergencyShuttle
           emergencyShuttlePath: /Maps/_Wega/Shuttles/emergency_tuhoba.yml
         - type: StationJobs
-          overflowJobs:
-            - Passenger
           availableJobs:
             # command
             Captain: [ 1, 1 ]
@@ -85,4 +83,3 @@
           - ShuttleEmergency
           - Theatre
           - Botany
-          - BluespaceHarvest
