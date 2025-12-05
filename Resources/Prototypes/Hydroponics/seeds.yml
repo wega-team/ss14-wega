@@ -1697,6 +1697,8 @@
   packetPrototype: CocoaSeeds
   productPrototypes:
     - FoodCocoaPod
+  mutationPrototypes:  # Corvax-Wega-HydroponicsUpdate
+    - candytree  # Corvax-Wega-HydroponicsUpdate
   harvestRepeat: Repeat
   lifespan: 50
   maturation: 6

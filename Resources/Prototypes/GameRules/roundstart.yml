@@ -24,6 +24,8 @@
       prob: 0.5
     - id: SubWizard
       prob: 0.05
+    - id: Xenoborgs
+      prob: 0.05
 
 - type: entity
   parent: BaseGameRule
@@ -33,6 +35,19 @@
     rules:
     - id: Thief
       prob: 0.5
+    - id: Xenoborgs
+      prob: 0.05
+
+- type: entity
+  parent: BaseGameRule
+  id: SubGamemodesRuleNoXenoborg
+  components:
+  - type: SubGamemodes
+    rules:
+    - id: Thief
+      prob: 0.5
+    - id: SubWizard
+      prob: 0.05
 
 - type: entity
   parent: BaseGameRule
@@ -201,12 +216,14 @@
   parent: BaseTraitorRule
   id: Traitor
   components:
-  # Corvax-Wega-Vampires-start
+  # Corvax-Wega-SubGameRules-start
   - type: SubGamemodes
     rules:
     - id: SubVampire
       prob: 0.4
-  # Corvax-Wega-Vampires-end
+    - id: SubBloodBrothers
+      prob: 0.5
+  # Corvax-Wega-SubGameRules-end
   - type: GameRule
     minPlayers: 5
     delay:
@@ -540,7 +557,7 @@
     - id: SolarPanelEmptyVariationPass
     - id: BasicDecalDirtVariationPass
     - id: BasicDecalGraffitiVariationPass
-    - id: BasicDecalBrunsVariationPass
+    - id: BasicDecalBurnsVariationPass
       prob: 0.50
       orGroup: monospaceDecals
     - id: BasicDecalDirtMonospaceVariationPass

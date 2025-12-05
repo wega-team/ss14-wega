@@ -486,4 +486,18 @@
     range: 20000
     ports:
       - OrderSender
+  - type: ChangeableCargoAccount
+    accounts:
+    - account: Cargo
+      announcementChannel: Supply
+    - account: Engineering
+      announcementChannel: Engineering
+    - account: Medical
+      announcementChannel: Medical
+    - account: Science
+      announcementChannel: Science
+    - account: Security
+      announcementChannel: Security
+    - account: Service
+      announcementChannel: Service
 # Corvax-Wega-Add-end

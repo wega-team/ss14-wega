@@ -44,7 +44,7 @@
     back:
     - TapeRecorder
     - CassetteTape
-    - CassetteTape
+    - CassetteTapeLong
     - Telescopicbaton #Corvax Wega
   # Corvax-Wega-Recorder-end
 
