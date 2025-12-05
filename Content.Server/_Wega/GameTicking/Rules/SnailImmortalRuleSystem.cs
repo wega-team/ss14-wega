@@ -6,7 +6,7 @@ using Content.Server.Station.Systems;
 using Content.Shared.Localizations;
 using Content.Shared.Roles.Components;
 using Robust.Server.GameObjects;
-using SnailImmortalRoleComponent;
+using Content.Shared.SnailImmortalRole.Component;
 
 namespace Content.Server.GameTicking.Rules;
 
