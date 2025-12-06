@@ -6,7 +6,7 @@ using Content.Server.Station.Systems;
 using Content.Shared.Localizations;
 using Content.Shared.Roles.Components;
 using Robust.Server.GameObjects;
-using Content.Shared.SnailImmortalRole.Component;
+using Content.Shared.Roles.Components;
 
 namespace Content.Server.GameTicking.Rules;
 
@@ -49,7 +49,7 @@ public sealed class SnailImmortalRuleSystem : GameRuleSystem<SnailImmortalRuleCo
         _antag.SendBriefing(args.EntityUid, MakeBriefing(args.EntityUid), null, null);
     }
 
-    public void SnailKillRandomPersonObjective(Entity<SnailRoleComponent> ent)
+    public void SnailKillRandomPersonObjective(Entity<SnailImmortalRoleComponent> ent)
     {
         _codeCondition.SetCompleted(ent.Owner, ent.Comp.SnailKillRandomPersonObjective);
     }
