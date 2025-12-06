@@ -99920,23 +99920,11 @@ entities:
       rot: 3.141592653589793 rad
       pos: 42.5,-29.5
       parent: 2
-    - type: DnaModifierConsole
-      lastSubjectInjectTime: 2430.4314686
-      lastInjectorTime: 2430.4314686
-    - type: DnaClient
-      server: invalid
-      connectedToServer: True
   - uid: 15488
     components:
     - type: Transform
       pos: 42.5,-24.5
       parent: 2
-    - type: DnaModifierConsole
-      lastSubjectInjectTime: 2430.4314686
-      lastInjectorTime: 2430.4314686
-    - type: DnaClient
-      server: invalid
-      connectedToServer: True
 - proto: DogBed
   entities:
   - uid: 15489
@@ -181343,9 +181331,6 @@ entities:
     - type: Transform
       pos: -33.5,54.5
       parent: 2
-    - type: DeviceNetwork
-      configurators:
-      - invalid
     - type: Fixtures
       fixtures: {}
   - uid: 26824
