@@ -56,6 +56,15 @@
   - Engineering
   - Science
 
+# Corvax-Wega-start
+  addComponents:
+  - type: ShowHealthBars
+    damageContainers:
+    - Inorganic
+    - Silicon
+    - Android
+# Corvax-Wega-end
+
   # Visual
   inventoryTemplateId: borgShort
   spriteBodyState: engineer
@@ -92,6 +101,29 @@
   - Supply
   - Science
 
+# Corvax-Wega-start
+  addComponents:
+  - type: UserInterface
+    interfaces:
+      enum.SiliconLawsUiKey.Key:
+        type: SiliconLawBoundUserInterface
+        requireInputValidation: false
+      enum.BorgUiKey.Key:
+        type: BorgBoundUserInterface
+      enum.StrippingUiKey.Key:
+        type: StrippableBoundUserInterface
+      enum.BorgSwitchableTypeUiKey.SelectBorgType:
+        type: BorgSelectTypeUserInterface
+      enum.RadarConsoleUiKey.Key:
+        type: RadarConsoleBoundUserInterface
+  - type: IntrinsicUI
+    uis:
+      enum.RadarConsoleUiKey.Key:
+        toggleAction: ActionAGhostShowRadar
+  - type: RadarConsole
+    followEntity: true
+# Corvax-Wega-end
+
   # Visual
   inventoryTemplateId: borgTall
   spriteBodyState: miner
@@ -127,6 +159,28 @@
   radioChannels:
   - Science
   - Service
+
+# Corvax-Wega-start
+  addComponents:
+  - type: SolutionContainerManager
+    solutions:
+      tank:
+        maxVol: 100
+        reagents:
+          - ReagentId: SpaceCleaner
+            Quantity: 100
+  - type: SolutionRegeneration
+    solution: tank
+    generated:
+      reagents:
+      - ReagentId: SpaceCleaner
+        Quantity: 1
+  - type: ReagentTank
+  - type: ExaminableSolution
+    solution: tank
+  - type: DrainableSolution
+    solution: tank
+# Corvax-Wega-end
 
   # Visual
   inventoryTemplateId: borgShort
@@ -166,6 +220,26 @@
   - Medical
 
   addComponents:
+# Corvax-Wega-start
+  - type: UserInterface
+    interfaces:
+      enum.SiliconLawsUiKey.Key:
+        type: SiliconLawBoundUserInterface
+        requireInputValidation: false
+      enum.BorgUiKey.Key:
+        type: BorgBoundUserInterface
+      enum.StrippingUiKey.Key:
+        type: StrippableBoundUserInterface
+      enum.BorgSwitchableTypeUiKey.SelectBorgType:
+        type: BorgSelectTypeUserInterface
+      enum.CrewMonitoringUIKey.Key:
+        type: CrewMonitoringBoundUserInterface
+  - type: IntrinsicUI
+    uis:
+      enum.CrewMonitoringUIKey.Key:
+        toggleAction: ActionAGhostShowCrewMonitoring
+  - type: CrewMonitoringConsole
+# Corvax-Wega-end
   - type: SolutionScanner
   - type: ShowHealthBars
     damageContainers:
@@ -219,6 +293,12 @@
   radioChannels:
   - Science
   - Service
+
+# Corvax-Wega-start
+  addComponents:
+  - type: ShowThirstIcons
+  - type: ShowHungerIcons
+# Corvax-Wega-end
 
   # Visual
   inventoryTemplateId: borgTall

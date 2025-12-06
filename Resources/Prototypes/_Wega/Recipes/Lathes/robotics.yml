@@ -53,6 +53,32 @@
   id: BorgModuleMusique
   result: BorgModuleMusique
 
+- type: latheRecipe
+  parent: BaseGoldBorgModuleRecipe
+  id: BorgModuleSheild
+  result: BorgModuleSheild
+
+- type: latheRecipe
+  parent: BaseGoldBorgModuleRecipe
+  id: BorgModuleSecLethal
+  result: BorgModuleSecLethal
+
+- type: latheRecipe
+  parent: BaseGoldBorgModuleRecipe
+  id: BorgModuleGranader
+  result: BorgModuleGranader
+
+- type: latheRecipe
+  id: BorgModuleCommonHand
+  result: BorgModuleCommonHand
+  categories:
+    - Modules
+  materials:
+    Steel: 1000
+    Glass: 500
+    Plastic: 500
+    Gold: 500
+    Diamond: 200
 # Android
 
 - type: latheRecipe

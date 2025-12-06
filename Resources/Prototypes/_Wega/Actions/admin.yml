@@ -1,0 +1,13 @@
+- type: entity
+  parent: BaseAGhostAction
+  id: ActionAGhostShowCriminalRecords
+  name: Criminal Records Interface
+  description: View a Criminal Records Interface.
+  components:
+  - type: Action
+    icon: { sprite: _Wega/Interface/adminactions.rsi, state: Criminal } # Corvax-Resprite
+    iconOn: { sprite: _Wega/Interface/adminactions.rsi, state: Criminal }
+    keywords: [ "AI", "console", "interface" ]
+    priority: -7
+  - type: InstantAction
+    event: !type:ToggleIntrinsicUIEvent { key: enum.CriminalRecordsConsoleKey.Key }
