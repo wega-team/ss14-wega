@@ -66,6 +66,10 @@
   - BorgModuleHarvesting
   - BorgModuleMusique
   - BorgModuleClowning
+  - BorgModuleSheild
+  - BorgModuleGranader
+  - BorgModuleSecLethal
+  - BorgModuleCommonHand
  # Corvax-Wega-end
 
 - type: latheRecipePack

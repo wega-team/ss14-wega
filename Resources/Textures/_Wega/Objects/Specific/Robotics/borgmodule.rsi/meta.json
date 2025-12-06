@@ -23,6 +23,9 @@
             "name": "cargo"
         },
         {
+            "name": "security"
+        },
+        {
             "name": "icon-kinetic"
         },
         {
@@ -36,6 +39,24 @@
         },
         {
             "name": "icon-treatment-common"
+        },
+        {
+            "name": "icon-hand"
+        },
+        {
+            "name": "icon-sheild"
+        },
+        {
+            "name": "icon-gun"
+        },
+        {
+            "name": "icon-grenade"
+        },
+        {
+            "name": "icon-dec"
+        },
+        {
+            "name": "icon-dis"
         },
         {
             "name": "base-icon-inhand-left",

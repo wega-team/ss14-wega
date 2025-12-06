@@ -262,3 +262,13 @@
 
 - type: Tag
   id: SyndicateSegwayKeys
+
+- type: Tag
+  id: Coin
+
+- type: Tag
+  id: BorgModuleSecurity
+
+- type: Tag
+  id: EvidenceMarker
+

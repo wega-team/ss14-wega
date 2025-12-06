@@ -1,0 +1,13 @@
+- type: antag
+  id: BloodBrother
+  name: roles-antag-bloodbrother-name
+  antagonist: true
+  setPreference: true
+  objective: roles-antag-bloodbrother-objective
+  guides: [ BloodBrothers ]
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 50h # Corvax-RoleTime
+  - !type:DepartmentTimeRequirement
+    department: Security
+    time: 25h

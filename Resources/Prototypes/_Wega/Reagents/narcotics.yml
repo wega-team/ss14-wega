@@ -42,6 +42,15 @@
         component: SeeingRainbows
         type: Add
         time: 2
+      - !type:PopupMessage
+        type: Local
+        visualType: Medium
+        probability: 0.2
+        messages:
+        - "psicodine-effect-at-peace"
+        - "relaxingtea-effect-at-love"
+        - "relaxingtea-effect-forget-grievances"
+        - "relaxingtea-effect-at-peace"
 
 - type: reagent
   id: GrapeJuiceInvisible
@@ -64,3 +73,35 @@
         component: StealthOnMove
         type: Add
         time: 15
+
+- type: reagent
+  id: BakeryJuice
+  name: reagent-name-bakeryjuice
+  group: Narcotics
+  desc: reagent-desc-bakeryjuice
+  physicalDesc: reagent-physical-desc-soothing
+  color: "#964B00"
+  flavor: sweet
+  metabolisms:
+    Poison:
+      effects:
+      - !type:Polymorph
+        prototype: PolymorphGingerbread
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Animal ]
+          inverted: true
+        - !type:ReagentCondition
+          reagent: BakeryJuice
+          min: 10
+    Narcotic:
+      effects:
+      - !type:PopupMessage
+        type: Local
+        visualType: Medium
+        probability: 0.2
+        messages:
+        - "bakeryjuice-effect-at-gingerbread"
+        - "bakeryjuice-effect-at-sweet"
+        - "bakeryjuice-effect-at-ginger"
+        - "bakeryjuice-effect-at-you-ginger"
