@@ -188,6 +188,13 @@ public sealed class InjectorFabticatorSystem : EntitySystem
         if (!_solutionSystem.TryGetSolution(uid, InjectorFabticatorComponent.BufferSolutionName, out var bufferSolution, out var buffer))
             return;
 
+        foreach (var (reagentId, requiredAmount) in totalRequired)
+        {
+            var availableAmount = buffer.GetReagentQuantity(reagentId);
+            if (availableAmount < requiredAmount)
+                return;
+        }
+
         component.CustomName = args.CustomName;
         component.InjectorsToProduce = args.Amount;
         component.InjectorsProduced = 0;
@@ -229,23 +236,20 @@ public sealed class InjectorFabticatorSystem : EntitySystem
         if (!_solutionSystem.TryGetSolution(injector, "pen", out var solution, out _))
             return;
 
+        if (!_solutionSystem.TryGetSolution(uid, InjectorFabticatorComponent.BufferSolutionName, out var bufferSolution, out _))
+            return;
+
         foreach (var (reagent, amount) in component.Recipe)
         {
             var addQuantity = new ReagentQuantity(reagent, amount);
             _solutionSystem.TryAddReagent(solution.Value, addQuantity, out _);
+
+            var remQuantity = new ReagentQuantity(reagent, amount);
+            _solutionSystem.RemoveReagent(bufferSolution.Value, remQuantity);
         }
 
         if (!string.IsNullOrWhiteSpace(component.CustomName))
             _metaData.SetEntityName(injector, component.CustomName);
-
-        if (_solutionSystem.TryGetSolution(uid, InjectorFabticatorComponent.BufferSolutionName, out var bufferSolution, out _))
-        {
-            foreach (var (reagent, amount) in component.Recipe)
-            {
-                var remQuantity = new ReagentQuantity(reagent, amount);
-                _solutionSystem.RemoveReagent(bufferSolution.Value, remQuantity);
-            }
-        }
     }
 
     private void UpdateAppearance(EntityUid uid, InjectorFabticatorComponent? component = null)
@@ -278,7 +282,21 @@ public sealed class InjectorFabticatorSystem : EntitySystem
 
         _solutionSystem.TryGetSolution(uid, InjectorFabticatorComponent.BufferSolutionName, out _, out var buffer);
 
-        var canProduce = component.Recipe != null && component.Recipe.Sum(r => (long)r.Value) <= 30;
+        bool canProduce = false;
+        if (component.Recipe != null && component.Recipe.Sum(r => (long)r.Value) <= 30 && buffer != null)
+        {
+            canProduce = true;
+            foreach (var (reagentId, amount) in component.Recipe)
+            {
+                var availableAmount = buffer.GetReagentQuantity(reagentId);
+                if (availableAmount < amount)
+                {
+                    canProduce = false;
+                    break;
+                }
+            }
+        }
+
         return new InjectorFabticatorBoundUserInterfaceState(
             component.IsProducing,
             canProduce,

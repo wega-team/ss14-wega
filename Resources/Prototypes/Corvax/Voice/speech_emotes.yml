@@ -156,6 +156,11 @@
     components:
     - Vocal
     - BorgChassis
+# Corvax-wega-start
+  blacklist:
+    tags:
+    - SiliconEmotes
+# Corvax-wega-end
   chatMessages: ["chat-emote-msg-honk"]
   chatTriggers:
     - хонкает

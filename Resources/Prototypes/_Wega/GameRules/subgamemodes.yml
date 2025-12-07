@@ -26,6 +26,22 @@
         briefing:
           sound: "/Audio/_Wega/Ambience/Antag/vampare_start.ogg"
 
+- type: entity
+  parent: BloodBrothers
+  id: SubBloodBrothers
+  components:
+  - type: AntagSelection
+    agentName: blood-brother-round-end-name
+    definitions:
+      - prefRoles: [ BloodBrother ]
+        min: 2
+        max: 2
+        playerRatio: 1
+        blacklist:
+          components:
+          - AntagImmune
+          - Pacified # Diona ha-ha-ha
+
 # Extended testing
 - type: entity
   parent: BaseGameRule

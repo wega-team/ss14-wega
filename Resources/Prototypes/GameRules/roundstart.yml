@@ -216,12 +216,14 @@
   parent: BaseTraitorRule
   id: Traitor
   components:
-  # Corvax-Wega-Vampires-start
+  # Corvax-Wega-SubGameRules-start
   - type: SubGamemodes
     rules:
     - id: SubVampire
       prob: 0.4
-  # Corvax-Wega-Vampires-end
+    - id: SubBloodBrothers
+      prob: 0.5
+  # Corvax-Wega-SubGameRules-end
   - type: GameRule
     minPlayers: 5
     delay:

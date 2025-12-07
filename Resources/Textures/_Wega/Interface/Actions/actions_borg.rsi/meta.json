@@ -17,6 +17,9 @@
             "name": "bar-module"
         },
         {
+            "name": "hand-module"
+        },
+        {
             "name": "kinetic-weapon-module"
         },
         {
@@ -33,6 +36,21 @@
         },
         {
             "name": "pickaxe-common-module"
+        },
+        {
+            "name": "dec-module"
+        },
+        {
+            "name": "grenade-module"
+        },
+        {
+            "name": "gun-module"
+        },
+        {
+            "name": "sheild-module"
+        },
+        {
+            "name": "zipper-module"
         }
     ]
 }
