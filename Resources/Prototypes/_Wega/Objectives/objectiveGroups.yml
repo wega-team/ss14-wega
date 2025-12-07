@@ -1,3 +1,5 @@
+# Vampire
+
 - type: weightedRandom
   id: VampireObjectiveGroups
   weights:
@@ -18,3 +20,46 @@
     VampireCaptainGunStealObjective: 0.5
     VampireGlovesKravMagaStealObjective: 0.5
     VampireBlueLaserPistolStealObjective: 0.5
+
+# BloodBrother
+
+- type: weightedRandom
+  id: BloodBrotherObjectiveGroups
+  weights:
+    BloodBrotherSharedProtectedObjectiveGroup: 1.0
+    BloodBrotherSharedKillObjectiveGroup: 1.0
+    BloodBrotherSharedStealObjectiveGroup: 1.0
+    BloodBrotherSharedHijackObjectiveGroup: 0.5
+
+- type: weightedRandom
+  id: BloodBrotherSharedProtectedObjectiveGroup
+  weights:
+    BloodBrotherSharedProtectRandomPersonObjective: 1.0
+
+- type: weightedRandom
+  id: BloodBrotherSharedKillObjectiveGroup
+  weights:
+    BloodBrotherSharedKillRandomPersonObjective: 1.0
+    BloodBrotherSharedEliminateRandomPersonObjective: 1.0
+    BloodBrotherSharedEliminateRandomHeadObjective: 0.25
+
+- type: weightedRandom
+  id: BloodBrotherSharedStealObjectiveGroup
+  weights:
+    BloodBrotherSharedCMOHyposprayStealObjective: 1
+    BloodBrotherSharedCMOCrewMonitorStealObjective: 1
+    BloodBrotherSharedRDHardsuitStealObjective: 1
+    BloodBrotherSharedMagbootsStealObjective: 1
+    BloodBrotherSharedClipboardStealObjective: 1
+    BloodBrotherSharedCaptainIDStealObjective: 1
+    BloodBrotherSharedHandTeleporterStealObjective: 0.5
+    BloodBrotherSharedCaptainJetpackStealObjective: 0.5
+    BloodBrotherSharedCaptainGunStealObjective: 0.5
+    BloodBrotherSharedEnergyMagnumStealObjective: 0.5
+    BloodBrotherSharedGlovesKravMagaStealObjective: 0.5
+    BloodBrotherSharedBlueLaserPistolStealObjective: 0.5
+
+- type: weightedRandom
+  id: BloodBrotherSharedHijackObjectiveGroup
+  weights:
+    BloodBrotherSharedHijackShuttleObjective: 1.0

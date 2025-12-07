@@ -81,7 +81,6 @@
   recipeUnlocks:
   - BorgModuleAdvancedChemical
   - Hynospray
-  - BorgModuleSurgery
   - DefibrillatorCompact
   - ArmSyntheticDefib
   - PouchMedical
@@ -129,6 +128,7 @@
   - Hemrevein
   - Bonesaw
   - ScalpelLaser
+  - BorgModuleSurgery
 
 # Tier 3
 

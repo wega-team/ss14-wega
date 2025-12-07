@@ -101,6 +101,7 @@
   - TelescopicShield
   - HoloprojectorSecurity
   - WeaponDisablerSMG
+  - BorgModuleSheild # Corvax-Wega
   - PouchSec # Corvax-Wega-Add
 
 - type: technology
@@ -122,6 +123,7 @@
   # - ChemicalPayload # Corvax-Wega-Edit
   - CableDetStack1
   - EmptyDetonator
+  - BorgModuleGranader # Corvax-Wega
 
 - type: technology
   id: SpecialMeans
