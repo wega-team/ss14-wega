@@ -3,7 +3,7 @@
   markingCategory: Overlay
   markingType: NonGenetics # Corvax-Wega-Genetics
   bodyPart: RFoot #highest possible layer
-  speciesRestriction: [CorvaxVulpkanin]
+  speciesRestriction: [Vulpkanin] # Corvax-CorvaxVulp_Port CorvaxVulpkanin
   sponsorOnly: false # Corvax-Wega-Edit
   sprites:
     - sprite: Corvax/Mobs/Customization/vulpkanin.rsi
@@ -13,7 +13,7 @@
   id: FoxTail
   bodyPart: Tail
   markingCategory: Tail
-  speciesRestriction: [CorvaxVulpkanin, Human] # Corvax-Wega-Edit
+  speciesRestriction: [Vulpkanin] # Corvax-CorvaxVulp_Port CorvaxVulpkanin
   sponsorOnly: false # Corvax-Wega-Edit
   sprites:
     - sprite: Corvax/Mobs/Customization/vulpkanin.rsi
@@ -25,7 +25,7 @@
   id: FoxEar
   bodyPart: HeadTop
   markingCategory: HeadTop
-  speciesRestriction: [CorvaxVulpkanin]
+  speciesRestriction: [Vulpkanin] # Corvax-CorvaxVulp_Port CorvaxVulpkanin
   sponsorOnly: false # Corvax-Wega-Edit
   sprites:
     - sprite: Corvax/Mobs/Customization/vulpkanin.rsi
@@ -37,7 +37,7 @@
   id: WolfTail
   bodyPart: Tail
   markingCategory: Tail
-  speciesRestriction: [CorvaxVulpkanin, Human] # Corvax-Wega-Edit
+  speciesRestriction: [Vulpkanin] # Corvax-CorvaxVulp_Port CorvaxVulpkanin
   sponsorOnly: false # Corvax-Wega-Edit
   sprites:
     - sprite: Corvax/Mobs/Customization/vulpkanin.rsi
@@ -49,7 +49,7 @@
   id: FoxBelly
   bodyPart: Chest
   markingCategory: Chest
-  speciesRestriction: [CorvaxVulpkanin]
+  speciesRestriction: [Vulpkanin] # Corvax-CorvaxVulp_Port CorvaxVulpkanin
   sponsorOnly: false # Corvax-Wega-Edit
   sprites:
     - sprite: Corvax/Mobs/Customization/vulpkanin.rsi
@@ -59,7 +59,7 @@
   id: FoxSnout
   bodyPart: Snout
   markingCategory: Snout
-  speciesRestriction: [CorvaxVulpkanin]
+  speciesRestriction: [Vulpkanin] # Corvax-CorvaxVulp_Port CorvaxVulpkanin
   sponsorOnly: false # Corvax-Wega-Edit
   sprites:
     - sprite: Corvax/Mobs/Customization/vulpkanin.rsi

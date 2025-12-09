@@ -9,6 +9,17 @@
     Plastic: 150
 
 - type: latheRecipe
+  id: CassetteTapeLong
+  result: CassetteTapeLong
+  categories:
+  - Tools
+  completetime: 2
+  materials:
+    Steel: 150
+    Plastic: 300
+    Gold: 100
+
+- type: latheRecipe
   id: TapeRecorder
   result: TapeRecorder
   categories:

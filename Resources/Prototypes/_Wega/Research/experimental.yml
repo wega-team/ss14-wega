@@ -1,0 +1,30 @@
+# Tier 2
+
+- type: technology
+  id: RoboticPro
+  name: research-technology-pro-robotic
+  icon:
+    sprite: _Wega/Structures/Machines/hyperconv_exosuit_fabricator.rsi
+    state: fab-idle
+  discipline: Experimental
+  tier: 2
+  cost: 10000
+  recipeUnlocks:
+  - BorgChargerTurboCircuitboard
+  - ExosuitFabricatorHyperConvectionMachineCircuitboard
+  technologyPrerequisites:
+  - BasicRobotics
+
+# Tier 3
+
+- type: technology
+  id: RobotManipulit
+  name: research-technology-handmodule
+  icon:
+    sprite: _Wega/Objects/Weapons/Melee/magic_hand.rsi
+    state: icon
+  discipline: Experimental
+  tier: 3
+  cost: 10000
+  recipeUnlocks:
+  - BorgModuleCommonHand

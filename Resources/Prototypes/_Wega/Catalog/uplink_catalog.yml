@@ -425,3 +425,20 @@
   categories:
     - UplinkAmmo
 
+    
+- type: listing
+  id: UplinkSyndiePouch
+  name: uplink-syndie-pouch-name
+  description: uplink-syndie-pouch-desc
+  icon: { sprite: _Wega/Clothing/Back/Specific/Pouch/base.rsi, state: icon }
+  productEntity: PouchSyndie
+  categories:
+    - UplinkWearables
+  discountCategory: veryRareDiscounts
+  discountDownTo:
+    Telecrystal: 0
+  cost:
+    Telecrystal: 1
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 2

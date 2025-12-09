@@ -15,3 +15,5 @@ research-technology-electric-artistry = Экспериментальные ху�
 research-technology-salvage-weapons-melee = Утилизаторское орудие труда
 research-technology-sypersynth = Универсальные инструменты
 research-technology-combat-magboots = Мобильное безгравитационное передвижение
+research-technology-pro-robotic = Продвинутая робототехника
+research-technology-handmodule = Манипуляторы киборгов

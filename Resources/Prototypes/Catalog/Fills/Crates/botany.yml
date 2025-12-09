@@ -25,6 +25,8 @@
         amount: 2
       - id: SunflowerSeeds
         amount: 2
+      - id: CandyTreeSeeds
+        amount: 2
       # Corvax-Wega-end
 
 - type: entity

@@ -282,7 +282,7 @@
 
 #Syndicate
 - type: entity
-  parent: [ClothingBackpack, BaseSyndicateContraband]
+  parent: [ClothingBackpack, BaseSyndicateContraband, BaseChameleon] # Corvax-wega-add
   id: ClothingBackpackSyndicate
   name: syndicate backpack
   description:
@@ -293,10 +293,21 @@
     damageCoefficient: 0.1
   - type: Storage
     grid:
-    - 0,0,7,3
-    - 8,1,8,3
+    - 0,0,9,5 # Corvax-wega-add
+    - 8,1,9,5 # Corvax-wega-add
   - type: StaticPrice
     price: 1000
+# Corvax-wega-start
+  - type: ChameleonClothing
+    slot: [back]
+    default: ClothingBackpackSyndicate
+  - type: UserInterface
+    interfaces:
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+      enum.ChameleonUiKey.Key:
+        type: ChameleonBoundUserInterface
+# Corvax-wega-end
 
 #Special
 - type: entity

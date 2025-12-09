@@ -45,3 +45,18 @@
     - MeteorSwarmScheduler
     - SpaceTrafficControlEventScheduler
     - BasicRoundstartVariation
+
+- type: gamePreset
+  id: BloodBrothers
+  alias:
+    - blood-brothers
+  name: blood-brothers-title
+  description: blood-brothers-description
+  showInVote: false
+  rules:
+    - BloodBrothers
+    - SubGamemodesRule
+    - BasicStationEventScheduler
+    - MeteorSwarmScheduler
+    - SpaceTrafficControlEventScheduler
+    - BasicRoundstartVariation
