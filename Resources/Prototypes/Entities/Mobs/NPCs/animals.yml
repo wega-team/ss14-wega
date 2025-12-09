@@ -444,7 +444,7 @@
       types:
         Piercing: 0
   - type: VentCrawler # Corvax-Wega-VentCrawling
-  - type: SentienceTarget
+  - type: SentienceTarget # Corvax-Wega-Add
     weight: 0.050 # Corvax-Wega-Add
 
 - type: entity
@@ -874,9 +874,9 @@
     tags:
     - DoorBumpOpener
     - Cow
-  - type: SentienceTarget
+  - type: SentienceTarget # Corvax-Wega-Add
     weight: 0.050 # Corvax-Wega-Add
-    flavorKind: station-event-random-sentience-flavor-organic
+    flavorKind: station-event-random-sentience-flavor-organic # Corvax-Wega-Add
   - type: Reproductive
     partnerWhitelist:
       tags:
