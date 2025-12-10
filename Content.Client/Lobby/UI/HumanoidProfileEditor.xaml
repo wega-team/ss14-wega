@@ -108,6 +108,17 @@
                                 </BoxContainer>
                                 <!-- Corvax-Wega-Barks-End -->
                             </BoxContainer>
+                            <!-- Corvax-Wega-Height-Add-start -->
+                            <!-- Height -->
+                            <BoxContainer Margin="10" HorizontalExpand="True" Orientation="Vertical">
+                                <BoxContainer Orientation="Horizontal" HorizontalExpand="True">
+                                    <Label Text="{Loc 'humanoid-profile-editor-height-label'}" />
+                                    <Control HorizontalExpand="True"/>
+                                    <Label Name="HeightDisplay" HorizontalAlignment="Right" />
+                                </BoxContainer>
+                                <Slider HorizontalExpand="True" Name="HeightSlider" MinValue="0" MaxValue="1" Value="0.5" />
+                            </BoxContainer>
+                            <!-- Corvax-Wega-Height-Add-end -->
                             <!-- Skin -->
                             <BoxContainer Margin="10" HorizontalExpand="True" Orientation="Vertical">
                                 <Label Text="{Loc 'humanoid-profile-editor-skin-color-label'}" />

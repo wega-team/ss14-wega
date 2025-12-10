@@ -13,6 +13,8 @@
   femaleFirstNames: NamesVulpFirstFemale
   maleLastNames: NamesVulpLast # Corvax-LastnameGender
   femaleLastNames: NamesVulpLast # Corvax-LastnameGender
+  minHeight: 160 # Corvax-Wega-Height
+  maxHeight: 210 # Corvax-Wega-Height
 
 - type: speciesBaseSprites
   id: MobCorvaxVulpkaninSprites

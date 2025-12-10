@@ -7,6 +7,8 @@
   markingLimits: MobFelinidMarkingLimits
   dollPrototype: MobFelinidDummy
   skinColoration: HumanToned
+  minHeight: 140
+  maxHeight: 160
 
 - type: speciesBaseSprites
   id: MobFelinidSprites

@@ -13,6 +13,7 @@
   maxAge: 350
   oldAge: 251
   youngAge: 151
+  maxHeight: 220 # ...
 
 - type: speciesBaseSprites
   id: MobDemonSprites

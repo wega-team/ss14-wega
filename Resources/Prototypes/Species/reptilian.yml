@@ -11,6 +11,8 @@
   maleFirstNames: NamesReptilianMale
   femaleFirstNames: NamesReptilianFemale
   naming: FirstDashFirst
+  minHeight: 190 # Corvax-Wega-Height
+  maxHeight: 250 # Corvax-Wega-Height
 
 - type: speciesBaseSprites
   id: MobReptilianSprites

@@ -8,6 +8,8 @@
   markingLimits: MobSkrellMarkingLimits
   dollPrototype: MobSkrellDummy
   skinColoration: Hues
+  minHeight: 165
+  maxHeight: 200
 
 - type: speciesBaseSprites
   id: MobSkrellSprites
