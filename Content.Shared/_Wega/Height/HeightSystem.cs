@@ -32,7 +32,8 @@ public sealed class HeightSystem : EntitySystem
             return;
 
         ent.Comp.LastHeight = humanoid.Height;
-        humanoid.Height = 240.0f;
+        humanoid.Height = humanoid.Height < 240.0f
+            ? 240.0f : 300.0f;
 
         Dirty(ent.Owner, humanoid);
     }
