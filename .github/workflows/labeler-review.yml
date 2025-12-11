@@ -4,7 +4,7 @@ on:
     types: [submitted]
 jobs:
   add_label:
-    if: ${{ github.event.review.state == 'APPROVED' }}
+    if: ${{ github.event.review.state == 'APPROVED' && github.event.pull_request.head.repo.full_name == github.repository }}
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
