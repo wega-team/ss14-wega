@@ -254,6 +254,15 @@ namespace Content.Client.Lobby.UI
 
             #endregion Status
 
+            #region Height
+
+            HeightSlider.OnValueChanged += _ =>
+            {
+                OnHeightChanged();
+            };
+
+            #endregion Height
+
             #region Barks
 
             if (configurationManager.GetCVar(WegaCVars.BarksEnabled))
@@ -1030,6 +1039,12 @@ namespace Content.Client.Lobby.UI
                 return;
 
             PreviewDummy = _controller.LoadProfileEntity(Profile, JobOverride, ShowClothes.Pressed);
+
+            // Corvax-Wega-Height-Apply-start
+            var scale = ConvertHeightToScale(Profile.Height);
+            _sprite.SetScale(PreviewDummy, new Vector2(scale, scale));
+            // Corvax-Wega-Height-Apply-end
+
             SpriteView.SetEntity(PreviewDummy);
             _entManager.System<MetaDataSystem>().SetEntityName(PreviewDummy, Profile.Name);
 
@@ -1081,6 +1096,7 @@ namespace Content.Client.Lobby.UI
             UpdateCMarkingsHair();
             UpdateCMarkingsFacialHair();
             UpdateStatusControls(); // Corvax-Wega
+            UpdateHeightControls(); // Corvax-Wega-Height
 
             RefreshAntags();
             RefreshJobs();
@@ -1106,6 +1122,11 @@ namespace Content.Client.Lobby.UI
                 return;
 
             _entManager.System<HumanoidAppearanceSystem>().LoadProfile(PreviewDummy, Profile);
+
+            // Corvax-Wega-Height-Apply-start
+            var scale = ConvertHeightToScale(Profile.Height);
+            _sprite.SetScale(PreviewDummy, new Vector2(scale, scale));
+            // Corvax-Wega-Height-Apply-end
 
             // Check and set the dirty flag to enable the save/reset buttons as appropriate.
             SetDirty();
@@ -1599,6 +1620,40 @@ namespace Content.Client.Lobby.UI
         }
         // Corvax-Wega-Graphomancy-Extended-Edit-end
 
+        // Corvax-Wega-Height-start
+        private void OnHeightChanged()
+        {
+            if (Profile == null)
+                return;
+
+            var species = _prototypeManager.Index(Profile.Species);
+            var newHeight = species.MinHeight + HeightSlider.Value * (species.MaxHeight - species.MinHeight);
+            newHeight = (float)Math.Round(newHeight, 2);
+
+            Profile = Profile.WithHeight(newHeight);
+            UpdateHeightDisplay();
+            ReloadPreview();
+        }
+
+        private void UpdateHeightDisplay()
+        {
+            if (Profile == null)
+                return;
+
+            HeightDisplay.Text = Loc.GetString("humanoid-profile-editor-height-display",
+                ("value", Profile.Height.ToString("F2")));
+        }
+
+        private float ConvertHeightToScale(float height)
+        {
+            const float minH = 140f, maxH = 300f;
+            const float minS = 0.65f, maxS = 1.5f;
+
+            var t = MathF.Pow((height - minH) / (maxH - minH), 0.7f);
+            return Math.Clamp(minS + t * (maxS - minS), minS, maxS);
+        }
+        // Corvax-Wega-Height-end
+
         private void OnMarkingChange(MarkingSet markings)
         {
             if (Profile is null)
@@ -1983,6 +2038,20 @@ namespace Content.Client.Lobby.UI
             StatusButton.SelectId((int) Profile.Status);
         }
         // Corvax-Wega-end
+
+        // Corvax-Wega-Height-start
+        private void UpdateHeightControls()
+        {
+            if (Profile == null)
+                return;
+
+            var species = _prototypeManager.Index(Profile.Species);
+            var normalized = (Profile.Height - species.MinHeight) / (species.MaxHeight - species.MinHeight);
+            HeightSlider.Value = normalized;
+
+            UpdateHeightDisplay();
+        }
+        // Corvax-Wega-Height-end
 
         private void UpdateSpawnPriorityControls()
         {

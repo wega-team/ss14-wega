@@ -92,7 +92,7 @@
   - type: TypingIndicator
     proto: robot
   - type: Speech
-    allowedEmotes: 
+    allowedEmotes:
       - LPCmoan
     speechVerb: Robotic
     speechSounds: Borg
@@ -177,6 +177,7 @@
   - type: WiresPanel
   - type: LockedWiresPanel
   - type: Lock
+    unlockOnClick: false
   - type: Bloodstream
     bloodReagent: Tyrium
     bleedReductionAmount: 0
@@ -204,6 +205,7 @@
       methods: [ Touch ]
       effects:
       - !type:Electrocute
+        shockDamage: 1
   - type: Operated
     raceGraph: AndroidSurgery
     limbLossChance: 1.75

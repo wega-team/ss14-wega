@@ -79,9 +79,11 @@ namespace Content.Client.Inventory
         {
             base.Open();
 
-            _strippingMenu = this.CreateWindowCenteredLeft<StrippingMenu>();
+            _strippingMenu = this.CreateWindow<StrippingMenu>(); // Corvax-Wega-Edit
             _strippingMenu.OnDirty += UpdateMenu;
             _strippingMenu.Title = Loc.GetString("strippable-bound-user-interface-stripping-menu-title", ("ownerName", Identity.Name(Owner, EntMan)));
+
+            _strippingMenu.OpenCenteredAt(new Vector2(0.15f, 0.25f)); // Corvax-Wega-Add
         }
 
         protected override void Dispose(bool disposing)

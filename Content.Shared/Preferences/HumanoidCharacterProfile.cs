@@ -120,6 +120,9 @@ namespace Content.Shared.Preferences
         // Corvax-Wega-start
         [DataField]
         public Status Status { get; private set; } = Status.No;
+
+        [DataField]
+        public float Height { get; set; } = 175.0f;
         // Corvax-Wega-end
 
         /// <summary>
@@ -181,6 +184,7 @@ namespace Content.Shared.Preferences
             Sex sex,
             Gender gender,
             Status status, // Corvax-Wega
+            float height, // Corvax-Wega-Height
             HumanoidCharacterAppearance appearance,
             SpawnPriorityPreference spawnPriority,
             Dictionary<ProtoId<JobPrototype>, JobPriority> jobPriorities,
@@ -208,6 +212,7 @@ namespace Content.Shared.Preferences
             Sex = sex;
             Gender = gender;
             Status = status; // Corvax-Wega
+            Height = height; // Corvax-Wega-Height
             Appearance = appearance;
             SpawnPriority = spawnPriority;
             _jobPriorities = jobPriorities;
@@ -252,6 +257,7 @@ namespace Content.Shared.Preferences
                 other.Sex,
                 other.Gender,
                 other.Status, // Corvax-Wega
+                other.Height, // Corvax-Wega-Height
                 other.Appearance.Clone(),
                 other.SpawnPriority,
                 new Dictionary<ProtoId<JobPrototype>, JobPriority>(other.JobPriorities),
@@ -311,10 +317,12 @@ namespace Content.Shared.Preferences
 
             var sex = Sex.Unsexed;
             var age = 18;
+            var height = 175.0f; // Corvax-Wega-Height
             if (prototypeManager.TryIndex<SpeciesPrototype>(species, out var speciesPrototype))
             {
                 sex = random.Pick(speciesPrototype.Sexes);
                 age = random.Next(speciesPrototype.MinAge, speciesPrototype.OldAge); // people don't look and keep making 119 year old characters with zero rp, cap it at middle aged
+                height = random.NextFloat(speciesPrototype.MinHeight, speciesPrototype.MaxHeight); // Corvax-Wega-Height
             }
 
             // Corvax-Wega-Barks-start
@@ -357,6 +365,7 @@ namespace Content.Shared.Preferences
                 BarkVoice = barkvoiceId, // Corvax-Wega-Barks
                 Voice = voiceId, // Corvax-TTS
                 Status = status, // Corvax-Wega
+                Height = height, // Corvax-Wega-Height
                 Appearance = HumanoidCharacterAppearance.Random(species, sex),
             };
         }
@@ -442,6 +451,11 @@ namespace Content.Shared.Preferences
         public HumanoidCharacterProfile WithBarkVoice(string barkvoice)
         {
             return new(this) { BarkVoice = barkvoice };
+        }
+
+        public HumanoidCharacterProfile WithHeight(float height)
+        {
+            return new(this) { Height = height };
         }
         // Corvax-Wega-end
 
@@ -621,6 +635,7 @@ namespace Content.Shared.Preferences
             if (Sex != other.Sex) return false;
             if (Gender != other.Gender) return false;
             if (Status != other.Status) return false; // Corvax-Wega
+            if (Height != other.Height) return false; // Corvax-Wega-Height
             if (Species != other.Species) return false;
             if (PreferenceUnavailable != other.PreferenceUnavailable) return false;
             if (SpawnPriority != other.SpawnPriority) return false;
@@ -674,6 +689,7 @@ namespace Content.Shared.Preferences
                 sex = speciesPrototype.Sexes[0];
 
             var age = Math.Clamp(Age, speciesPrototype.MinAge, speciesPrototype.MaxAge);
+            var height = Math.Clamp(Height, speciesPrototype.MinHeight, speciesPrototype.MaxHeight); // Corvax-Wega-Height
 
             var gender = Gender switch
             {
@@ -893,6 +909,7 @@ namespace Content.Shared.Preferences
             Sex = sex;
             Gender = gender;
             Status = status; // Corvax-Wega
+            Height = height; // Corvax-Wega-Height
             Appearance = appearance;
             SpawnPriority = spawnPriority;
 
@@ -1041,6 +1058,7 @@ namespace Content.Shared.Preferences
             // Corvax-Wega-Graphomancy-Extended-end
             hashCode.Add(Species);
             hashCode.Add(Age);
+            hashCode.Add(Height); // Corvax-Wega-Height
             hashCode.Add((int)Sex);
             hashCode.Add((int)Gender);
             hashCode.Add(Appearance);

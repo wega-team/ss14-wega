@@ -141,6 +141,13 @@
           32:
             sprite: Corvax/Mobs/Species/displacement.rsi
             state: shoes
+    # Corvax-Wega-Add-start
+      socks:
+        sizeMaps:
+          32:
+            sprite: Corvax/Mobs/Species/displacement.rsi
+            state: socks
+    # Corvax-Wega-Add-end
     displacements:
       jumpsuit:
         sizeMaps:
@@ -157,6 +164,13 @@
           32:
             sprite: Corvax/Mobs/Species/displacement.rsi
             state: outerclothing
+    # Corvax-Wega-Add-start
+      socks:
+        sizeMaps:
+          32:
+            sprite: Corvax/Mobs/Species/displacement.rsi
+            state: socks
+    # Corvax-Wega-Add-end
     ##########################################
     #displacements:
     #  jumpsuit:
@@ -251,6 +265,13 @@
           32:
             sprite: Corvax/Mobs/Species/displacement.rsi
             state: shoes
+    # Corvax-Wega-Add-start
+      socks:
+        sizeMaps:
+          32:
+            sprite: Corvax/Mobs/Species/displacement.rsi
+            state: socks
+    # Corvax-Wega-Add-end
     displacements:
       jumpsuit:
         sizeMaps:
@@ -267,6 +288,13 @@
           32:
             sprite: Corvax/Mobs/Species/displacement.rsi
             state: outerclothing
+    # Corvax-Wega-Add-start
+      socks:
+        sizeMaps:
+          32:
+            sprite: Corvax/Mobs/Species/displacement.rsi
+            state: socks
+    # Corvax-Wega-Add-end
     ##########################################
     #displacements:
     #  jumpsuit:

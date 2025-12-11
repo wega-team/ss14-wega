@@ -11,6 +11,8 @@
   naming: First
   dollPrototype: MobResomiDummy
   skinColoration: Hues
+  minHeight: 140
+  maxHeight: 160
 
 - type: speciesBaseSprites
   id: MobResomiSprites

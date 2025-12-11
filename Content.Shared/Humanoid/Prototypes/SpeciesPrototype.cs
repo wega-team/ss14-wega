@@ -140,6 +140,14 @@ public sealed partial class SpeciesPrototype : IPrototype
     /// </summary>
     [DataField]
     public int MaxAge = 120;
+
+    // Corvax-Wega-Height-start
+    [DataField]
+    public float MinHeight = 150.0f;
+
+    [DataField]
+    public float MaxHeight = 205.0f;
+    // Corvax-Wega-Height-end
 }
 
 public enum SpeciesNaming : byte

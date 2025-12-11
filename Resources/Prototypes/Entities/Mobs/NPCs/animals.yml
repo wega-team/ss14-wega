@@ -48,6 +48,7 @@
     interactSuccessSound:
       path: /Audio/Animals/fox_squeak.ogg
   - type: SentienceTarget
+    weight: 0.050 # Corvax-Wega-Add
     flavorKind: station-event-random-sentience-flavor-organic
   - type: Bloodstream
     bloodMaxVolume: 50
@@ -269,6 +270,7 @@
   - type: ReplacementAccent
     accent: chicken
   - type: SentienceTarget
+    weight: 0.050 # Corvax-Wega-Add
     flavorKind: station-event-random-sentience-flavor-organic
   - type: NpcFactionMember
     factions:
@@ -442,6 +444,8 @@
       types:
         Piercing: 0
   - type: VentCrawler # Corvax-Wega-VentCrawling
+  - type: SentienceTarget # Corvax-Wega-Add
+    weight: 0.050 # Corvax-Wega-Add
 
 - type: entity
   name: glockroach
@@ -718,6 +722,7 @@
   - type: ReplacementAccent
     accent: duck
   - type: SentienceTarget
+    weight: 0.050 # Corvax-Wega-Add
     flavorKind: station-event-random-sentience-flavor-organic
   - type: NpcFactionMember
     factions:
@@ -869,6 +874,9 @@
     tags:
     - DoorBumpOpener
     - Cow
+  - type: SentienceTarget # Corvax-Wega-Add
+    weight: 0.050 # Corvax-Wega-Add
+    flavorKind: station-event-random-sentience-flavor-organic # Corvax-Wega-Add
   - type: Reproductive
     partnerWhitelist:
       tags:
@@ -1474,6 +1482,7 @@
     speechVerb: Monkey
   - type: MonkeyAccent
   - type: SentienceTarget
+    weight: 0.050 # Corvax-Wega-Add
     flavorKind: station-event-random-sentience-flavor-primate
   - type: AlwaysRevolutionaryConvertible
   - type: GhostRole
@@ -1511,6 +1520,7 @@
   - type: NameIdentifier
     group: Monkey
   - type: SentienceTarget
+    weight: 0.050 # Corvax-Wega-Add
     flavorKind: station-event-random-sentience-flavor-primate
   - type: Speech
     speechSounds: Monkey
@@ -1655,6 +1665,7 @@
   - type: AlwaysRevolutionaryConvertible
   - type: GhostTakeoverAvailable
   - type: SentienceTarget
+    weight: 0.050 # Corvax-Wega-Add
     flavorKind: station-event-random-sentience-flavor-kobold
   - type: GhostRole
     prob: 0.05
@@ -3661,6 +3672,7 @@
   - type: ReplacementAccent
     accent: pig
   - type: SentienceTarget
+    weight: 0.050 # Corvax-Wega-Add
     flavorKind: station-event-random-sentience-flavor-organic
   - type: NpcFactionMember
     factions:

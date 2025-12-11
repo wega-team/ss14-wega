@@ -238,7 +238,7 @@
     uis:
       enum.CrewMonitoringUIKey.Key:
         toggleAction: ActionAGhostShowCrewMonitoring
-  - type: CrewMonitoringConsol
+  - type: CrewMonitoringConsole
   - type: DeviceNetwork
     deviceNetId: Wireless
     receiveFrequencyId: CrewMonitor

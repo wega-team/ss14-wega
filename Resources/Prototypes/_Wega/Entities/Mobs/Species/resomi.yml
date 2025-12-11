@@ -50,6 +50,7 @@
         layer:
         - MobLayer
   - type: HumanoidAppearance
+    height: 150
     species: Resomi
   - type: Hunger
   - type: Puller
@@ -213,6 +214,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: HumanoidAppearance
+    height: 150
     species: Resomi
   - type: Hands
     handDisplacement:

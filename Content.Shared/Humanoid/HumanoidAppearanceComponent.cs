@@ -54,6 +54,9 @@ public sealed partial class HumanoidAppearanceComponent : Component
     [DataField, AutoNetworkedField]
     public Status Status = Status.No;
 
+    [DataField, AutoNetworkedField]
+    public float Height = 175.0f;
+
     [DataField("barkvoice")]
     public ProtoId<BarkPrototype> BarkVoice { get; set; } = SharedHumanoidAppearanceSystem.DefaultBarkVoice;
     // Corvax-Wega-end

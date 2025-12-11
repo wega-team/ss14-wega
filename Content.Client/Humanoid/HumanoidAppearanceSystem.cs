@@ -1,4 +1,5 @@
 using System.Linq; // Corvax-Wega-Hair-Extended
+using System.Numerics; // Corvax-Wega-Add
 using Content.Client.DisplacementMap;
 using Content.Shared.CCVar;
 using Content.Shared.Humanoid;
@@ -44,10 +45,30 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
         }
     }
 
+    // Corvax-Wega-Height-start
+    private float ConvertHeightToScale(float height)
+    {
+        const float minH = 140f, maxH = 300f;
+        const float minS = 0.65f, maxS = 1.5f;
+
+        var t = MathF.Pow((height - minH) / (maxH - minH), 0.7f);
+        return Math.Clamp(minS + t * (maxS - minS), minS, maxS);
+    }
+
+    private void ApplyHeightScale(Entity<HumanoidAppearanceComponent, SpriteComponent> entity)
+    {
+        var humanoid = entity.Comp1;
+
+        var scale = ConvertHeightToScale(humanoid.Height);
+        _sprite.SetScale(entity.Owner, new Vector2(scale, scale));
+    }
+    // Corvax-Wega-Height-end
+
     private void UpdateSprite(Entity<HumanoidAppearanceComponent, SpriteComponent> entity)
     {
         UpdateLayers(entity);
         ApplyMarkingSet(entity);
+        ApplyHeightScale(entity); // Corvax-Wega-Height
 
         var humanoidAppearance = entity.Comp1;
         var sprite = entity.Comp2;
@@ -226,6 +247,7 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
         humanoid.SkinColor = profile.Appearance.SkinColor;
         humanoid.EyeColor = profile.Appearance.EyeColor;
         humanoid.Status = profile.Status; // Corvax-Wega
+        humanoid.Height = profile.Height; // Corvax-Wega-Height
 
         UpdateSprite((uid, humanoid, Comp<SpriteComponent>(uid)));
     }

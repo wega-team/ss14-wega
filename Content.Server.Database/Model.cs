@@ -419,6 +419,7 @@ namespace Content.Server.Database
         public string Voice { get; set; } = null!; // Corvax-TTS
         public string BarkVoice { get; set; } = null!; // Corvax-Wega-Barks
         public string Status { get; set; } = null!; // Corvax-Wega
+        public float Height { get; set; } // Corvax-Wega-Height
         [Column(TypeName = "jsonb")] public JsonDocument? Markings { get; set; } = null!;
         public string HairName { get; set; } = null!;
         public string HairColor { get; set; } = null!;
