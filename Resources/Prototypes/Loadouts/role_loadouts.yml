@@ -555,8 +555,8 @@
   - WardenJobTrinkets
   - GroupSpeciesBreathToolSecurity
   # Corvax-Wega-start
-  - Top
-  - Bottom
+  - TopSecurity
+  - BottomSecurity
   - Socks
   # Corvax-Wega-end
 
@@ -576,8 +576,8 @@
   - SecurityJobTrinkets
   - GroupSpeciesBreathToolSecurity
   # Corvax-Wega-start
-  - Top
-  - Bottom
+  - TopSecurity
+  - BottomSecurity
   - Socks
   # Corvax-Wega-end
 

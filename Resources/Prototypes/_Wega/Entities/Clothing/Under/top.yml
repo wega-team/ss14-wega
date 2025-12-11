@@ -42,6 +42,17 @@
 
 - type: entity
   parent: ClothingUnderTopBase
+  id: ClothingUnderTopBraSecurity
+  name: security bra
+  description: "Standard service safety bra. Worn under a body armor, but provides its own protection."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Top/security.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Top/security.rsi
+
+- type: entity
+  parent: ClothingUnderTopBase
   id: ClothingUnderTopBraAssblastusa
   name: bra
   description: "An element of lingerie that supports the breasts and creates comfort. It is made of soft materials and has various details."

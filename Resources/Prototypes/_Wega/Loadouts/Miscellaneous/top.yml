@@ -7,6 +7,14 @@
     proto: FemaleRequired
 
 - type: loadout
+  id: ClothingUnderTopBraSecurity
+  equipment:
+    underweartop: ClothingUnderTopBraSecurity
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+
+- type: loadout
   id: ClothingUnderTopBraAssblastusa
   equipment:
     underweartop: ClothingUnderTopBraAssblastusa

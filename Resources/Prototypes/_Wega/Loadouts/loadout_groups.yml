@@ -155,7 +155,7 @@
   - ClothingUnderBottomFCaptainS
   - ClothingUnderBottomMCaptainW
   - ClothingUnderBottomFCaptainW
-  - ClothingUnderBottomGrey 
+  - ClothingUnderBottomGrey
   - ClothingUnderBottomBabydoll
   - ClothingUnderBottomBoxers
   - ClothingUnderBottomFAssblastusa
@@ -258,7 +258,7 @@
   name: loadout-group-blue-shield-top
   loadouts:
   - ClothingUnderTopBraBso # default
-  - ClothingUnderTopBraGrey 
+  - ClothingUnderTopBraGrey
   - ClothingUnderTopBraAssblastusa
   - ClothingUnderTopBikini
   - ClothingUnderTopBraChast
@@ -283,7 +283,7 @@
   loadouts:
   - ClothingUnderBottomMBso # default
   - ClothingUnderBottomFBso
-  - ClothingUnderBottomGrey 
+  - ClothingUnderBottomGrey
   - ClothingUnderBottomBabydoll
   - ClothingUnderBottomBoxers
   - ClothingUnderBottomFAssblastusa
@@ -363,7 +363,7 @@
   name: loadout-group-hop-top
   loadouts:
   - ClothingUnderTopBraHop # default
-  - ClothingUnderTopBraGrey 
+  - ClothingUnderTopBraGrey
   - ClothingUnderTopBraAssblastusa
   - ClothingUnderTopBikini
   - ClothingUnderTopBraChast
@@ -388,7 +388,7 @@
   loadouts:
   - ClothingUnderBottomMHop # default
   - ClothingUnderBottomFHop
-  - ClothingUnderBottomGrey 
+  - ClothingUnderBottomGrey
   - ClothingUnderBottomBabydoll
   - ClothingUnderBottomBoxers
   - ClothingUnderBottomFAssblastusa
@@ -486,7 +486,7 @@
   loadouts:
   - ClothingUnderBottomMQm # default
   - ClothingUnderBottomFQm
-  - ClothingUnderBottomGrey 
+  - ClothingUnderBottomGrey
   - ClothingUnderBottomBabydoll
   - ClothingUnderBottomBoxers
   - ClothingUnderBottomFAssblastusa
@@ -559,7 +559,7 @@
   name: loadout-group-chief-engineer-top
   loadouts:
   - ClothingUnderTopBraCe # default
-  - ClothingUnderTopBraGrey 
+  - ClothingUnderTopBraGrey
   - ClothingUnderTopBraAssblastusa
   - ClothingUnderTopBikini
   - ClothingUnderTopBraChast
@@ -584,7 +584,7 @@
   loadouts:
   - ClothingUnderBottomMCe # default
   - ClothingUnderBottomFCe
-  - ClothingUnderBottomGrey 
+  - ClothingUnderBottomGrey
   - ClothingUnderBottomBabydoll
   - ClothingUnderBottomBoxers
   - ClothingUnderBottomFAssblastusa
@@ -657,7 +657,7 @@
   name: loadout-group-research-director-top
   loadouts:
   - ClothingUnderTopBraRd # default
-  - ClothingUnderTopBraGrey 
+  - ClothingUnderTopBraGrey
   - ClothingUnderTopBraAssblastusa
   - ClothingUnderTopBikini
   - ClothingUnderTopBraChast
@@ -682,7 +682,7 @@
   loadouts:
   - ClothingUnderBottomMRd # default
   - ClothingUnderBottomFRd
-  - ClothingUnderBottomGrey 
+  - ClothingUnderBottomGrey
   - ClothingUnderBottomBabydoll
   - ClothingUnderBottomBoxers
   - ClothingUnderBottomFAssblastusa
@@ -780,7 +780,7 @@
   loadouts:
   - ClothingUnderBottomMHos # default
   - ClothingUnderBottomFHos
-  - ClothingUnderBottomGrey 
+  - ClothingUnderBottomGrey
   - ClothingUnderBottomBabydoll
   - ClothingUnderBottomBoxers
   - ClothingUnderBottomFAssblastusa
@@ -853,7 +853,7 @@
   name: loadout-group-chief-medical-officer-top
   loadouts:
   - ClothingUnderTopBraCmo # default
-  - ClothingUnderTopBraGrey 
+  - ClothingUnderTopBraGrey
   - ClothingUnderTopBraAssblastusa
   - ClothingUnderTopBikini
   - ClothingUnderTopBraChast
@@ -1002,8 +1002,8 @@
   - JumpsuitCasualRed
   - JumpskirtCasualRed
   - JumpsuitCasualGreen
-  - JumpskirtCasualGreen 
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtCasualGreen
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
@@ -1140,8 +1140,8 @@
   - JumpsuitCasualRed
   - JumpskirtCasualRed
   - JumpsuitCasualGreen
-  - JumpskirtCasualGreen 
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtCasualGreen
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
@@ -1250,6 +1250,60 @@
   - MedicalBlackScrubs
 
 # Security
+- type: loadoutGroup
+  id: TopSecurity
+  name: loadout-group-top
+  loadouts:
+  - ClothingUnderTopBraSecurity # default
+  - ClothingUnderTopBraGrey
+  - ClothingUnderTopBraAssblastusa
+  - ClothingUnderTopBikini
+  - ClothingUnderTopBraChast
+  - ClothingUnderTopBraLatex
+  - ClothingUnderTopBraStripped
+  - ClothingUnderTopBraCommie
+  - ClothingUnderTopCorset
+  - ClothingUnderTopBraFishnet
+  - ClothingUnderTopBraKinky
+  - ClothingUnderTopBraLace
+  - ClothingUnderTopBraLizard
+  - ClothingUnderTopBraNekoBlack
+  - ClothingUnderTopBraNekoWhite
+  - ClothingUnderTopBraPasties
+  - ClothingUnderTopBraSport
+  - ClothingUnderTopBraStrapless
+  - ClothingUnderTopBraThong
+
+- type: loadoutGroup
+  id: BottomSecurity
+  name: loadout-group-bottom
+  loadouts:
+  - ClothingUnderBottomSecurity # default
+  - ClothingUnderBottomGrey
+  - ClothingUnderBottomBabydoll
+  - ClothingUnderBottomBoxers
+  - ClothingUnderBottomFAssblastusa
+  - ClothingUnderBottomFBriefs
+  - ClothingUnderBottomFCommie
+  - ClothingUnderBottomFishnet
+  - ClothingUnderBottomFKinky
+  - ClothingUnderBottomHearts
+  - ClothingUnderBottomLace
+  - ClothingUnderBottomLatex
+  - ClothingUnderBottomLizard
+  - ClothingUnderBottomMankiny
+  - ClothingUnderBottomMAssblastusa
+  - ClothingUnderBottomMBriefs
+  - ClothingUnderBottomMCommie
+  - ClothingUnderBottomMKinky
+  - ClothingUnderBottomNekoBlack
+  - ClothingUnderBottomNekoWhite
+  - ClothingUnderBottomPanties
+  - ClothingUnderBottomSport
+  - ClothingUnderBottomStripe
+  - ClothingUnderBottomStrippedPanties
+  - ClothingUnderBottomThong
+
 - type: loadoutGroup
   id: BrigmedicHead
   name: loadout-group-brigmedic-head
