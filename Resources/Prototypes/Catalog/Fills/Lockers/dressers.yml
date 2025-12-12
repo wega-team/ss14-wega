@@ -72,7 +72,7 @@
       - id: ClothingUniformJumpsuitHoSAlt
       - id: ClothingUniformJumpskirtHosFormal
       - id: ClothingUniformJumpsuitHosFormal
-      - id: ClothingOuterWinterHoS
+      # - id: ClothingOuterWinterHoS # Corvax-Wega-Edit
       - id: ClothingNeckCloakHos
       - id: ClothingUnderBottomMHos # Corvax-Wega
 

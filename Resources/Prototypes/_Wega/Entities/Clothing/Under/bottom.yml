@@ -55,6 +55,17 @@
 
 - type: entity
   parent: ClothingUnderBottomBase
+  id: ClothingUnderBottomSecurity
+  name: security pants
+  description: "Standard security briefs. Provide freedom of movement during chases and arrests."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Bottom/security.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Bottom/security.rsi
+
+- type: entity
+  parent: ClothingUnderBottomBase
   id: ClothingUnderBottomBabydoll
   name: nightie
   description: "This exquisite transparent nightgown, made of light and delicate material, emphasizes the figure and creates a romantic image. Its thin straps and elegant details add sexiness and sophistication, ideal for cozy evenings."

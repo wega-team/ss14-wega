@@ -443,9 +443,12 @@
     damage:
       types:
         Piercing: 0
+  # Corvax-Wega-Add-start
   - type: VentCrawler # Corvax-Wega-VentCrawling
-  - type: SentienceTarget # Corvax-Wega-Add
-    weight: 0.050 # Corvax-Wega-Add
+  - type: SentienceTarget
+    weight: 0.050
+    flavorKind: station-event-random-sentience-flavor-organic
+  # Corvax-Wega-Add-end
 
 - type: entity
   name: glockroach
@@ -874,9 +877,11 @@
     tags:
     - DoorBumpOpener
     - Cow
-  - type: SentienceTarget # Corvax-Wega-Add
-    weight: 0.050 # Corvax-Wega-Add
-    flavorKind: station-event-random-sentience-flavor-organic # Corvax-Wega-Add
+  # Corvax-Wega-Add-start
+  - type: SentienceTarget
+    weight: 0.050
+    flavorKind: station-event-random-sentience-flavor-organic
+  # Corvax-Wega-Add-end
   - type: Reproductive
     partnerWhitelist:
       tags:

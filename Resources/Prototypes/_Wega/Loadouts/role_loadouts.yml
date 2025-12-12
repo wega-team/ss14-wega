@@ -26,8 +26,8 @@
   - SurvivalMedical
   - Trinkets
   - GroupSpeciesBreathTool
-  - Top
-  - Bottom
+  - TopSecurity
+  - BottomSecurity
   - Socks
 
 - type: roleLoadout

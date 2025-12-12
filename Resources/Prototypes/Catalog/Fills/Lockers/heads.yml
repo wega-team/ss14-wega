@@ -346,6 +346,7 @@
     # Corvax-Wega-Start
     - id: ServerWiretappingKit
     - id: WiretappingTerminal
+    - id: ClothingOuterWinterHoS
     # Corvax-Wega-End
     # Corvax-Start
     - id: ClothingHeadHatCapHoS
