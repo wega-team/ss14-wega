@@ -23,6 +23,7 @@ using Robust.Shared.Physics;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
+using Content.Shared.Zombies; // Corvax-Wega-Zombie-Crawl
 
 namespace Content.Shared.Stunnable;
 
@@ -72,6 +73,7 @@ public abstract partial class SharedStunSystem
         SubscribeLocalEvent<KnockedDownComponent, HandCountChangedEvent>(OnHandCountChanged);
         SubscribeLocalEvent<GravityAffectedComponent, KnockDownAttemptEvent>(OnKnockdownAttempt);
         SubscribeLocalEvent<GravityAffectedComponent, GetStandUpTimeEvent>(OnGetStandUpTime);
+        SubscribeLocalEvent<KnockedDownComponent, EntityZombifiedEvent>(OnZombified); // Corvax-Wega-Zombie-Crawl
 
         // Handling Alternative Inputs
         SubscribeAllEvent<ForceStandUpEvent>(OnForceStandup);
@@ -569,6 +571,16 @@ public abstract partial class SharedStunSystem
         if (entity.Comp.Weightless)
             args.DoAfterTime = TimeSpan.Zero;
     }
+
+    // Corvax-Wega-Zombie-Crawl-start
+    private void OnZombified(Entity<KnockedDownComponent> entity, ref EntityZombifiedEvent args)
+    {
+        if (GameTiming.ApplyingState)
+            return; // The result of the change is already networked separately in the same game state
+
+        RefreshKnockedMovement(entity);
+    }
+    // Corvax-Wega-Zombie-Crawl-end
 
     #endregion
 

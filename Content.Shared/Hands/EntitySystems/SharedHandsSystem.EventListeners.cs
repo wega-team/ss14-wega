@@ -1,5 +1,6 @@
 ﻿using Content.Shared.Hands.Components;
 using Content.Shared.Stunnable;
+using Content.Shared.Zombies; // Corvax-Wega-Zombie-Crawl
 
 namespace Content.Shared.Hands.EntitySystems;
 
@@ -37,9 +38,16 @@ public abstract partial class SharedHandsSystem
 
         // Can't crawl around without any hands.
         // Entities without the HandsComponent will always have full crawling speed.
-        if (totalHands == 0)
-            args.SpeedModifier = 0f;
+        // Corvax-Wega-Zombie-Crawl-start
+        if (!TryComp<ZombieComponent>(ent, out var _))
+        {
+            if (totalHands == 0)
+                args.SpeedModifier = 0f;
+            else
+                args.SpeedModifier *= (float)freeHands / totalHands;
+        }
         else
-            args.SpeedModifier *= (float)freeHands / totalHands;
+            args.SpeedModifier *= 1;
+        // Corvax-Wega-Zombie-Crawl-end
     }
 }

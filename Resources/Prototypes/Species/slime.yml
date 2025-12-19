@@ -8,7 +8,7 @@
   markingLimits: MobSlimeMarkingLimits
   dollPrototype: MobSlimePersonDummy
   skinColoration: Hues
-  minHeight: 140 # Corvax-Wega-Height
+  minHeight: 145 # Corvax-Wega-Height
   maxHeight: 190 # Corvax-Wega-Height
 
 - type: speciesBaseSprites
