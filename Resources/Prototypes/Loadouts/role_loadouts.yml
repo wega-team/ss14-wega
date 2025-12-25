@@ -796,27 +796,6 @@
   - Socks
   # Corvax-Wega-end
 
-# Wildcards
-- type: roleLoadout
-  id: JobZookeeper
-  groups:
-  - Inventory # Corvax-Loadouts
-  - GroupTankHarness
-  # Corvax-Wega-Sponsors-start
-  - SponsorHead
-  - SponsorNeck
-  # Corvax-Wega-Sponsors-end
-  - CommonBackpack
-  - Glasses
-  - Survival
-  - Trinkets
-  - GroupSpeciesBreathTool
-  # Corvax-Wega-start
-  - Top
-  - Bottom
-  - Socks
-  # Corvax-Wega-end
-
 - type: roleLoadout
   id: JobReporter
   groups:
@@ -855,29 +834,6 @@
   - BaseShoose # Corvax-Wega-Add
   - Survival
   - Trinkets
-  - GroupSpeciesBreathTool
-  # Corvax-Wega-start
-  - Top
-  - Bottom
-  - Socks
-  # Corvax-Wega-end
-
-- type: roleLoadout
-  id: JobBoxer
-  groups:
-  - Inventory # Corvax-Loadouts
-  - GroupTankHarness
-  # Corvax-Wega-Sponsors-start
-  - SponsorHead
-  - SponsorNeck
-  # Corvax-Wega-Sponsors-end
-  - BoxerJumpsuit
-  - BoxerGloves
-  - CommonBackpack
-  - Glasses
-  - Survival
-  - Trinkets
-  - PsychologistJobTrinkets
   - GroupSpeciesBreathTool
   # Corvax-Wega-start
   - Top
