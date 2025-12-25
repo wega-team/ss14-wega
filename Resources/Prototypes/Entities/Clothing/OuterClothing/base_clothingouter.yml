@@ -157,6 +157,9 @@
       flatReductions:
         Heat: 10 # the average lightbulb only does around four damage!
     slots: OUTERCLOTHING
+  - type: HideLayerClothing
+    slots:
+    - Tail
   # Corvax-Wega-Dirtable-start
   - type: Dirtable
     dirtState: hardsuit
@@ -193,6 +196,9 @@
       flatReductions:
         Heat: 10 # the average lightbulb only does around four damage!
     slots: OUTERCLOTHING
+  - type: HideLayerClothing
+    slots:
+    - Tail
   # Corvax-Wega-Dirtable-start
   - type: Dirtable
     dirtState: evasuit

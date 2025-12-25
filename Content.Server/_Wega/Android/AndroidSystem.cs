@@ -1,10 +1,8 @@
 using Content.Server.Actions;
 using Content.Server.Popups;
-using Content.Server.PowerCell;
 using Content.Server.Stunnable;
-using Content.Shared._Wega.Android;
+using Content.Shared.Android;
 using Content.Shared.Alert;
-using Content.Shared.Damage.Components;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Item.ItemToggle;
@@ -25,7 +23,7 @@ using Robust.Shared.Containers;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
-namespace Content.Server._Wega.Android;
+namespace Content.Server.Android;
 
 public sealed partial class AndroidSystem : SharedAndroidSystem
 {
@@ -168,22 +166,20 @@ public sealed partial class AndroidSystem : SharedAndroidSystem
 
     private void UpdateBatteryAlert(Entity<AndroidComponent> ent, PowerCellSlotComponent? slotComponent = null)
     {
-        if (!_powerCell.TryGetBatteryFromSlot(ent, out var battery, slotComponent))
+        if (!_powerCell.TryGetBatteryFromSlot(ent.Owner, out var battery))
         {
-            _alerts.ClearAlert(ent, ent.Comp.BatteryAlert);
-            _alerts.ShowAlert(ent, ent.Comp.NoBatteryAlert);
+            _alerts.ClearAlert(ent.Owner, ent.Comp.BatteryAlert);
+            _alerts.ShowAlert(ent.Owner, ent.Comp.NoBatteryAlert);
             return;
         }
 
-        var chargePercent = (short)MathF.Round(battery.CurrentCharge / battery.MaxCharge * 10f);
+        var chargePercent = (short)MathF.Round(battery.Value.Comp.LastCharge / battery.Value.Comp.MaxCharge * 10f);
 
-        if (chargePercent == 0 && _powerCell.HasDrawCharge(ent, cell: slotComponent))
-        {
+        if (chargePercent == 0 && _powerCell.HasDrawCharge(ent.Owner))
             chargePercent = 1;
-        }
 
-        _alerts.ClearAlert(ent, ent.Comp.NoBatteryAlert);
-        _alerts.ShowAlert(ent, ent.Comp.BatteryAlert, chargePercent);
+        _alerts.ClearAlert(ent.Owner, ent.Comp.NoBatteryAlert);
+        _alerts.ShowAlert(ent.Owner, ent.Comp.BatteryAlert, chargePercent);
     }
 
     private void DelayDischargeStun(AndroidComponent component)

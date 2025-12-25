@@ -1,27 +1,27 @@
-using Content.Shared.EntityEffects;
 using Content.Shared.Xenobiology.Components;
-using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
 
-namespace Content.Shared.EntityEffects.Effects
+namespace Content.Shared.EntityEffects.Effects;
+
+/// <summary>
+/// Reinforces slime extracts, preventing them from being destroyed.
+/// </summary>
+/// <inheritdoc cref="EntityEffectSystem{T,TEffect}"/>
+public sealed partial class ChemReinforcedExtractsEntityEffectSystem : EntityEffectSystem<SlimeGrowthComponent, ChemReinforcedExtracts>
 {
-    [UsedImplicitly]
-    public sealed partial class ChemReinforcedExtractsEffect : EntityEffect
+    protected override void Effect(Entity<SlimeGrowthComponent> entity, ref EntityEffectEvent<ChemReinforcedExtracts> args)
     {
-        protected override string? ReagentEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
-            => Loc.GetString("reagent-effect-guidebook-increase-mutation-chance");
+        if (entity.Comp.Reinforced)
+            return;
 
-        public override void Effect(EntityEffectBaseArgs args)
-        {
-            if (!args.EntityManager.TryGetComponent<SlimeGrowthComponent>(args.TargetEntity, out var growth))
-                return;
-
-            if (growth.Reinforced)
-                return;
-
-            growth.Reinforced = true;
-
-            args.EntityManager.Dirty(args.TargetEntity, growth);
-        }
+        entity.Comp.Reinforced = true;
+        Dirty(entity);
     }
+}
+
+/// <inheritdoc cref="EntityEffect"/>
+public sealed partial class ChemReinforcedExtracts : EntityEffectBase<ChemReinforcedExtracts>
+{
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
+        => Loc.GetString("reagent-effect-guidebook-reinforce-extracts");
 }

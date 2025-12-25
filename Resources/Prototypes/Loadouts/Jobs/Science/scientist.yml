@@ -6,7 +6,7 @@
     requirement:
       !type:DepartmentTimeRequirement
       department: Science
-      time: 216000 #60 hrs
+      time: 60h
 
 # Head
 - type: startingGear
@@ -43,21 +43,25 @@
   id: ScientistJumpsuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitScientist
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: ScientistJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtScientist
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: RoboticistJumpsuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitRoboticist
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: RoboticistJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtRoboticist
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: SeniorResearcherJumpsuit
@@ -66,6 +70,7 @@
   #   proto: SeniorResearcher
   equipment:
     jumpsuit: ClothingUniformJumpsuitSeniorResearcher
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: SeniorResearcherJumpskirt
@@ -74,6 +79,7 @@
   #   proto: SeniorResearcher
   equipment:
     jumpsuit: ClothingUniformJumpskirtSeniorResearcher
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 # Back
 - type: loadout
@@ -141,7 +147,8 @@
   id: ScienceWinterBoots
   equipment:
     shoes: ClothingShoesBootsWinterSci
-
+  groupBy: "wegaJS" # Corvax-Wega-add
+  
 # ID
 - type: loadout
   id: ScientistPDA

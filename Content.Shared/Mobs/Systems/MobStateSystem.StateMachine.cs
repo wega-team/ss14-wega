@@ -140,7 +140,7 @@ public partial class MobStateSystem
 
     private void RemoveStutteringEffect(EntityUid target)
     {
-        _stutteringSystem.DoRemoveStutterTime(target, 5);
+        _stutteringSystem.DoRemoveStutterTime(target, TimeSpan.FromSeconds(5));
     }
     #endregion
     // Corvax-Wega-PreCritical-end

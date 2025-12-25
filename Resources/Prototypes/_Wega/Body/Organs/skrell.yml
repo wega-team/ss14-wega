@@ -6,7 +6,6 @@
   - type: Sprite
     sprite: _Wega/Mobs/Species/Skrell/organ.rsi
   - type: Organ
-  - type: Food
   - type: Extractable
     grindableSolutionName: organ
   - type: SolutionContainerManager

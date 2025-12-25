@@ -1,17 +1,18 @@
 using System.Linq;
 using System.Numerics;
 using Content.Server.Administration.Logs;
-using Content.Server.Atmos.Components; // Corvax-Wega-GhostBar
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
-using Content.Server.Ghost.Components;
 using Content.Server.Station.Systems; // Corvax-Wega-GhostBar
 using Content.Server.Mind;
 using Content.Server.Roles.Jobs;
 using Content.Shared.Actions;
+using Content.Shared.Atmos.Components; // Corvax-Wega-GhostBar
 using Content.Shared.CCVar;
 using Content.Shared.Damage;
+using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Prototypes;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Database;
 using Content.Shared.Disease.Components; // Corvax-Wega-GhostBar
 using Content.Shared.Examine;
@@ -44,7 +45,6 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
-
 namespace Content.Server.Ghost
 {
     public sealed class GhostSystem : SharedGhostSystem
@@ -347,7 +347,8 @@ namespace Content.Server.Ghost
             if (_followerSystem.GetMostGhostFollowed() is not {} target)
                 return;
 
-            WarpTo(uid, target);
+            // If there is a ghostnado happening you almost definitely wanna join it, so we automatically follow instead of just warping.
+            _followerSystem.StartFollowingEntity(uid, target);
         }
 
         private void WarpTo(EntityUid uid, EntityUid target)
@@ -672,7 +673,7 @@ namespace Content.Server.Ghost
 
                     DamageSpecifier damage = new(_prototypeManager.Index(AsphyxiationDamageType), dealtDamage);
 
-                    _damageable.TryChangeDamage(playerEntity, damage, true);
+                    _damageable.ChangeDamage(playerEntity.Value, damage, true);
                 }
             }
 

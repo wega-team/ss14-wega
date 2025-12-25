@@ -27,17 +27,13 @@ public sealed class MindShieldSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<MindShieldImplantComponent, ImplantImplantedEvent>(OnImplantImplanted);
-        SubscribeLocalEvent<MindShieldImplantComponent, EntGotRemovedFromContainerMessage>(OnImplantDraw);
-        SubscribeLocalEvent<MindShieldComponent, ImplantRemovedEvent>(OnImplantDraw); // Corvax-Wega-Surgery
+        SubscribeLocalEvent<MindShieldImplantComponent, ImplantRemovedEvent>(OnImplantRemoved);
     }
 
     private void OnImplantImplanted(Entity<MindShieldImplantComponent> ent, ref ImplantImplantedEvent ev)
     {
-        if (ev.Implanted == null)
-            return;
-
-        EnsureComp<MindShieldComponent>(ev.Implanted.Value);
-        MindShieldRemovalCheck(ev.Implanted.Value, ev.Implant);
+        EnsureComp<MindShieldComponent>(ev.Implanted);
+        MindShieldRemovalCheck(ev.Implanted, ev.Implant);
     }
 
     /// <summary>
@@ -59,16 +55,9 @@ public sealed class MindShieldSystem : EntitySystem
         }
     }
 
-    private void OnImplantDraw(Entity<MindShieldImplantComponent> ent, ref EntGotRemovedFromContainerMessage args)
+    private void OnImplantRemoved(Entity<MindShieldImplantComponent> ent, ref ImplantRemovedEvent args)
     {
-        RemComp<MindShieldComponent>(args.Container.Owner);
+        RemComp<MindShieldComponent>(args.Implanted);
     }
-
-    // Corvax-Wega-Surgery-start
-    private void OnImplantDraw(Entity<MindShieldComponent> ent, ref ImplantRemovedEvent args)
-    {
-        RemComp<MindShieldComponent>(ent);
-    }
-    // Corvax-Wega-Surgery-end
 }
 

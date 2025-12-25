@@ -1,4 +1,5 @@
 using System.Linq; // Corvax-Wega-Hair-Extended
+using System.Numerics; // Corvax-Wega-Add
 using Content.Client.DisplacementMap;
 using Content.Shared.CCVar;
 using Content.Shared.Humanoid;
@@ -44,10 +45,30 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
         }
     }
 
+    // Corvax-Wega-Height-start
+    private float ConvertHeightToScale(float height)
+    {
+        const float minH = 140f, maxH = 300f;
+        const float minS = 0.65f, maxS = 1.5f;
+
+        var t = MathF.Pow((height - minH) / (maxH - minH), 0.7f);
+        return Math.Clamp(minS + t * (maxS - minS), minS, maxS);
+    }
+
+    private void ApplyHeightScale(Entity<HumanoidAppearanceComponent, SpriteComponent> entity)
+    {
+        var humanoid = entity.Comp1;
+
+        var scale = ConvertHeightToScale(humanoid.Height);
+        _sprite.SetScale(entity.Owner, new Vector2(scale, scale));
+    }
+    // Corvax-Wega-Height-end
+
     private void UpdateSprite(Entity<HumanoidAppearanceComponent, SpriteComponent> entity)
     {
         UpdateLayers(entity);
         ApplyMarkingSet(entity);
+        ApplyHeightScale(entity); // Corvax-Wega-Height
 
         var humanoidAppearance = entity.Comp1;
         var sprite = entity.Comp2;
@@ -226,6 +247,7 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
         humanoid.SkinColor = profile.Appearance.SkinColor;
         humanoid.EyeColor = profile.Appearance.EyeColor;
         humanoid.Status = profile.Status; // Corvax-Wega
+        humanoid.Height = profile.Height; // Corvax-Wega-Height
 
         UpdateSprite((uid, humanoid, Comp<SpriteComponent>(uid)));
     }
@@ -292,25 +314,26 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
     private void RemoveMarking(Marking marking, Entity<SpriteComponent> spriteEnt)
     {
         if (!_markingManager.TryGetMarking(marking, out var prototype))
-        {
             return;
-        }
 
         foreach (var sprite in prototype.Sprites)
         {
             if (sprite is not SpriteSpecifier.Rsi rsi)
-            {
                 continue;
-            }
 
             var layerId = $"{marking.MarkingId}-{rsi.RsiState}";
             if (!_sprite.LayerMapTryGet(spriteEnt.AsNullable(), layerId, out var index, false))
-            {
                 continue;
-            }
 
             _sprite.LayerMapRemove(spriteEnt.AsNullable(), layerId);
             _sprite.RemoveLayer(spriteEnt.AsNullable(), index);
+
+            // If this marking is one that can be displaced, we need to remove the displacement as well; otherwise
+            // altering a marking at runtime can lead to the renderer falling over.
+            // The Vulps must be shaved.
+            // (https://github.com/space-wizards/space-station-14/issues/40135).
+            if (prototype.CanBeDisplaced)
+                _displacement.EnsureDisplacementIsNotOnSprite(spriteEnt, layerId);
         }
     }
 
@@ -349,9 +372,7 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
         var sprite = entity.Comp2;
 
         if (!_sprite.LayerMapTryGet((entity.Owner, sprite), markingPrototype.BodyPart, out var targetLayer, false))
-        {
             return;
-        }
 
         visible &= !IsHidden(humanoid, markingPrototype.BodyPart);
         visible &= humanoid.BaseLayers.TryGetValue(markingPrototype.BodyPart, out var setting)
@@ -362,9 +383,7 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
             var markingSprite = markingPrototype.Sprites[j];
 
             if (markingSprite is not SpriteSpecifier.Rsi rsi)
-            {
-                continue;
-            }
+                return;
 
             var layerId = $"{markingPrototype.ID}-{rsi.RsiState}";
 
@@ -378,26 +397,18 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
             _sprite.LayerSetVisible((entity.Owner, sprite), layerId, visible);
 
             if (!visible || setting == null) // this is kinda implied
-            {
                 continue;
-            }
 
             // Okay so if the marking prototype is modified but we load old marking data this may no longer be valid
             // and we need to check the index is correct.
             // So if that happens just default to white?
             if (colors != null && j < colors.Count)
-            {
                 _sprite.LayerSetColor((entity.Owner, sprite), layerId, colors[j]);
-            }
             else
-            {
                 _sprite.LayerSetColor((entity.Owner, sprite), layerId, Color.White);
-            }
 
             if (humanoid.MarkingsDisplacement.TryGetValue(markingPrototype.BodyPart, out var displacementData) && markingPrototype.CanBeDisplaced)
-            {
                 _displacement.TryAddDisplacement(displacementData, (entity.Owner, sprite), targetLayer + j + 1, layerId, out _);
-            }
         }
     }
 

@@ -6,22 +6,12 @@
     requirement:
       !type:RoleTimeRequirement
       role: JobWarden
-      time: 72000 #20 hrs # Corvax-RoleTime
+      time: 20h # Corvax-RoleTime
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement
       department: Security
-      time: 216000 # 60 hrs
-
-#Security Star
-- type: loadoutEffectGroup
-  id: SecurityStarWorthy
-  effects:
-    - !type:JobRequirementLoadoutEffect
-      requirement:
-        !type:DepartmentTimeRequirement
-        department: Security
-        time: 360000 #100 hrs
+      time: 60h
 
 # Head
 - type: loadout
@@ -49,26 +39,31 @@
   id: SecurityJumpsuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitSec
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: SecurityJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtSec
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: SecurityJumpsuitGrey
   equipment:
     jumpsuit: ClothingUniformJumpsuitSecGrey
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: SecurityJumpskirtGrey
   equipment:
     jumpsuit: ClothingUniformJumpskirtSecGrey
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: TrooperUniform
-  equipment: 
+  equipment:
     jumpsuit: ClothingUniformSecurityTrooper
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: SeniorOfficerJumpsuit
@@ -77,6 +72,7 @@
   #   proto: SeniorOfficer
   equipment:
     jumpsuit: ClothingUniformJumpsuitSeniorOfficer
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: SeniorOfficerJumpskirt
@@ -85,6 +81,7 @@
   #   proto: SeniorOfficer
   equipment:
     jumpsuit: ClothingUniformJumpskirtSeniorOfficer
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 # Back
 - type: loadout
@@ -158,13 +155,3 @@
   #   proto: SeniorOfficer
   equipment:
     id: SeniorOfficerPDA
-
-# Misc
-- type: loadout
-  id: SecStar
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: SecurityStarWorthy
-  storage:
-    back:
-    - Dinkystar

@@ -1,0 +1,178 @@
+- type: entityTable
+  id: DresserFourthLootEntityTable
+  table: !type:GroupSelector
+    children:
+    # Top
+    - id: ClothingUnderTopBraGrey
+      weight: 0.03
+    - id: ClothingUnderTopBraAssblastusa
+      weight: 0.03
+    - id: ClothingUnderTopBikini
+      weight: 0.03
+    - id: ClothingUnderTopBraChast
+      weight: 0.03
+    - id: ClothingUnderTopBraLatex
+      weight: 0.03
+    - id: ClothingUnderTopBraStripped
+      weight: 0.03
+    - id: ClothingUnderTopBraCommie
+      weight: 0.03
+    - id: ClothingUnderTopCorset
+      weight: 0.03
+    - id: ClothingUnderTopBraFishnet
+      weight: 0.03
+    - id: ClothingUnderTopBraKinky
+      weight: 0.03
+    - id: ClothingUnderTopBraLace
+      weight: 0.03
+    - id: ClothingUnderTopBraLizard
+      weight: 0.03
+    - id: ClothingUnderTopBraNekoBlack
+      weight: 0.03
+    - id: ClothingUnderTopBraNekoWhite
+      weight: 0.03
+    - id: ClothingUnderTopBraPasties
+      weight: 0.03
+    - id: ClothingUnderTopBraSport
+      weight: 0.03
+    - id: ClothingUnderTopBraStrapless
+      weight: 0.03
+    - id: ClothingUnderTopBraThong
+      weight: 0.03
+    # Bottom
+    - id: ClothingUnderBottomGrey
+      weight: 0.03
+    - id: ClothingUnderBottomBabydoll
+      weight: 0.03
+    - id: ClothingUnderBottomBoxers
+      weight: 0.03
+    - id: ClothingUnderBottomFAssblastusa
+      weight: 0.03
+    - id: ClothingUnderBottomFBriefs
+      weight: 0.03
+    - id: ClothingUnderBottomFCommie
+      weight: 0.03
+    - id: ClothingUnderBottomFishnet
+      weight: 0.03
+    - id: ClothingUnderBottomFKinky
+      weight: 0.03
+    - id: ClothingUnderBottomHearts
+      weight: 0.03
+    - id: ClothingUnderBottomLace
+      weight: 0.03
+    - id: ClothingUnderBottomLatex
+      weight: 0.03
+    - id: ClothingUnderBottomLizard
+      weight: 0.03
+    - id: ClothingUnderBottomMankiny
+      weight: 0.03
+    - id: ClothingUnderBottomMAssblastusa
+      weight: 0.03
+    - id: ClothingUnderBottomMBriefs
+      weight: 0.03
+    - id: ClothingUnderBottomMCommie
+      weight: 0.03
+    - id: ClothingUnderBottomMKinky
+      weight: 0.03
+    - id: ClothingUnderBottomNekoBlack
+      weight: 0.03
+    - id: ClothingUnderBottomNekoWhite
+      weight: 0.03
+    - id: ClothingUnderBottomPanties
+      weight: 0.03
+    - id: ClothingUnderBottomSport
+      weight: 0.03
+    - id: ClothingUnderBottomStripe
+      weight: 0.03
+    - id: ClothingUnderBottomStrippedPanties
+      weight: 0.03
+    - id: ClothingUnderBottomThong
+      weight: 0.03
+    # Socks
+    - id: ClothingUnderSocksBeeKnee
+      weight: 0.03
+    - id: ClothingUnderSocksBee
+      weight: 0.03
+    - id: ClothingUnderSocksBlackKnee
+      weight: 0.03
+    - id: ClothingUnderSocksBlackNorm
+      weight: 0.03
+    - id: ClothingUnderSocksBlackShort
+      weight: 0.03
+    - id: ClothingUnderSocksBlackThigh
+      weight: 0.03
+    - id: ClothingUnderSocksWhiteNorm
+      weight: 0.03
+    - id: ClothingUnderSocksWhiteShort
+      weight: 0.03
+    - id: ClothingUnderSocksWhiteKnee
+      weight: 0.03
+    - id: ClothingUnderSocksWhiteThigh
+      weight: 0.03
+    - id: ClothingUnderSocksCoder
+      weight: 0.03
+    - id: ClothingUnderSocksBlue
+      weight: 0.03
+    - id: ClothingUnderSocksCyan
+      weight: 0.03
+    - id: ClothingUnderSocksGreen
+      weight: 0.03
+    - id: ClothingUnderSocksOrange
+      weight: 0.03
+    - id: ClothingUnderSocksPink
+      weight: 0.03
+    - id: ClothingUnderSocksPurple
+      weight: 0.03
+    - id: ClothingUnderSocksYellow
+      weight: 0.03
+    - id: ClothingUnderSocksRainbowKnee
+      weight: 0.03
+    - id: ClothingUnderSocksRainbowThigh
+      weight: 0.03
+    - id: ClothingUnderSocksCommieKnee
+      weight: 0.03
+    - id: ClothingUnderSocksCommieThigh
+      weight: 0.03
+    - id: ClothingUnderSocksAssblastusaKnee
+      weight: 0.03
+    - id: ClothingUnderSocksAssblastusaThigh
+      weight: 0.03
+    - id: ClothingUnderSocksStripedKnee
+      weight: 0.03
+    - id: ClothingUnderSocksStripedThigh
+      weight: 0.03
+    - id: ClothingUnderSocksThinKnee
+      weight: 0.03
+    - id: ClothingUnderSocksThinThigh
+      weight: 0.03
+    - id: ClothingUnderSocksFishnet
+      weight: 0.03
+    - id: ClothingUnderSocksFishnetKnee
+      weight: 0.03
+    - id: ClothingUnderSocksFishnetThigh
+      weight: 0.03
+    - id: ClothingUnderSocksPantyhose
+      weight: 0.03
+    # Chokers
+    - id: ClothingNeckChokerBlack
+      weight: 0.01
+    - id: ClothingNeckChokerCyan
+      weight: 0.01
+    - id: ClothingNeckChokerGreen
+      weight: 0.01
+    - id: ClothingNeckChokerLatex
+      weight: 0.01
+    - id: ClothingNeckChokerOrange
+      weight: 0.01
+    - id: ClothingNeckChokerPurple
+      weight: 0.01
+    - id: ClothingNeckChokerRed
+      weight: 0.01
+    - id: ClothingNeckChokerSpike
+      weight: 0.01
+    - id: ClothingNeckChokerTealBlack
+      weight: 0.01
+    - id: ClothingNeckChokerWhite
+      weight: 0.01
+    - id: ClothingNeckChokerYellow
+      weight: 0.01

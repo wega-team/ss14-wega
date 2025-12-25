@@ -12,7 +12,6 @@ namespace Content.Client.Structure.UI
         [Dependency] private readonly IEntityManager _entityManager = default!;
 
         private BloodStructureMenu? _menu;
-        private bool _menuDisposed = false;
 
         public override void Initialize()
         {
@@ -26,7 +25,7 @@ namespace Content.Client.Structure.UI
             var userEntity = _entityManager.GetEntity(args.Uid);
             if (session?.AttachedEntity.HasValue == true && session.AttachedEntity.Value == userEntity)
             {
-                if (_menu is null || _menu.IsDisposed)
+                if (_menu is null)
                 {
                     _menu = _uiManager.CreateWindow<BloodStructureMenu>();
                     _menu.OnClose += OnMenuClosed;
@@ -42,7 +41,7 @@ namespace Content.Client.Structure.UI
 
                 Timer.Spawn(30000, () =>
                 {
-                    if (_menu != null && !_menuDisposed)
+                    if (_menu != null)
                     {
                         _menu.Close();
                     }
@@ -52,7 +51,6 @@ namespace Content.Client.Structure.UI
 
         private void OnMenuClosed()
         {
-            _menuDisposed = true;
             _menu = null;
         }
     }

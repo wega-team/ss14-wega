@@ -46,6 +46,12 @@
   - type: Storage
     storageOpenSound:
       collection: BikeHorn
+      params:
+        variation: 0.125
+    storageInsertSound:
+      collection: FootstepClown
+      params:
+        variation: 0.125
 
 - type: entity
   parent: ClothingBackpack
@@ -121,6 +127,9 @@
   components:
   - type: Sprite
     sprite: Clothing/Back/Backpacks/mime.rsi
+  - type: Storage
+    storageOpenSound: null
+    storageInsertSound: null
 
 - type: entity
   parent: ClothingBackpack
@@ -199,13 +208,15 @@
   parent: [ ClothingBackpack, BaseCentcommContraband ]
   id: ClothingBackpackERTLeader
   name: ERT leader backpack
-  description: A spacious backpack with lots of pockets, worn by the Commander of an Emergency Response Team.
+  description: A spacious backpack with lots of pockets, worn by the Leader of an Emergency Response Team.
   components:
   - type: Sprite
     sprite: Clothing/Back/Backpacks/ertleader.rsi
   - type: Storage
     grid:
-    - 0,0,10,3
+    - 0,0,8,3
+  - type: ExplosionResistance
+    damageCoefficient: 0.1
 
 - type: entity
   parent: ClothingBackpackERTLeader
@@ -273,7 +284,7 @@
 
 #Syndicate
 - type: entity
-  parent: [ClothingBackpack, BaseSyndicateContraband]
+  parent: [ClothingBackpack, BaseSyndicateContraband, BaseChameleon] # Corvax-wega-add
   id: ClothingBackpackSyndicate
   name: syndicate backpack
   description:
@@ -284,10 +295,21 @@
     damageCoefficient: 0.1
   - type: Storage
     grid:
-    - 0,0,7,3
-    - 8,1,8,3
+    - 0,0,9,5 # Corvax-wega-add
+    - 8,1,9,5 # Corvax-wega-add
   - type: StaticPrice
     price: 1000
+# Corvax-wega-start
+  - type: ChameleonClothing
+    slot: [back]
+    default: ClothingBackpackSyndicate
+  - type: UserInterface
+    interfaces:
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+      enum.ChameleonUiKey.Key:
+        type: ChameleonBoundUserInterface
+# Corvax-wega-end
 
 #Special
 - type: entity

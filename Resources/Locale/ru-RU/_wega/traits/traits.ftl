@@ -13,10 +13,6 @@ trait-sneezing-name = Насморк
 trait-sneezing-desc = Вы бесконтрольно чихаете и кашляете
 trait-noir-vision-name = Синдром детектива
 trait-noir-vision-desc = Вы видите всю гниль этого мира
-trait-tall-name = Высокий
-trait-tall-desc = Вы значительно выше других гумоноидов
-trait-short-name = Низкий
-trait-short-desc = Вы значительно ниже других гумоноидов
 
 # Speech
 trait-auld-imperial-name = Староимпѣрская рѣчь

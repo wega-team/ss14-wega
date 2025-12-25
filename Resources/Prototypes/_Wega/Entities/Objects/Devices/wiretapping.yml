@@ -1,0 +1,176 @@
+- type: entity
+  id: WiretappingTerminal
+  parent: BaseItem
+  name: wiretapping terminal
+  description: Terminal for connecting to the secure network.
+  components:
+  - type: Sprite
+    sprite: Objects/Devices/camera_bug.rsi
+    layers:
+    - state: camera_bug
+  - type: Item
+  - type: ActivatableUI
+    requireActiveHand: false
+    inHandsOnly: false
+    key: enum.SurveillanceCameraMonitorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.SurveillanceCameraMonitorUiKey.Key:
+        type: SurveillanceCameraMonitorBoundUserInterface
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    receiveFrequencyId: SurveillanceCameraBodycam
+    transmitFrequencyId: SurveillanceCameraBodycam
+  - type: SurveillanceCameraMonitor
+
+## Server
+
+- type: entity
+  id: WiretappingServerAlpha
+  parent: BaseItem
+  name: wiretapping server alpha
+  description: Server for creating a secure network.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Devices/wiretapping.rsi
+    layers:
+    - state: wiretapping_server-a
+  - type: Item
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    receiveFrequencyId: SurveillanceCameraBodycam
+    transmitFrequencyId: SurveillanceCameraBodycam
+  - type: WirelessNetworkConnection
+    range: 200
+  - type: SurveillanceCameraRouter
+    subnetFrequency: SurveillanceCameraAlpha
+
+- type: entity
+  id: WiretappingServerBeta
+  parent: WiretappingServerAlpha
+  name: wiretapping server beta
+  description: Server for creating a secure network.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Devices/wiretapping.rsi
+    layers:
+    - state: wiretapping_server-b
+  - type: SurveillanceCameraRouter
+    subnetFrequency: SurveillanceCameraBeta
+  
+- type: entity
+  id: WiretappingServerCharlie
+  parent: WiretappingServerAlpha
+  name: wiretapping server charlie
+  description: Server for creating a secure network.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Devices/wiretapping.rsi
+    layers:
+    - state: wiretapping_server-c
+  - type: SurveillanceCameraRouter
+    subnetFrequency: SurveillanceCameraCharlie
+    
+- type: entity
+  id: WiretappingServerDelta
+  parent: WiretappingServerAlpha
+  name: wiretapping server delta
+  description: Server for creating a secure network.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Devices/wiretapping.rsi
+    layers:
+    - state: wiretapping_server-d
+  - type: SurveillanceCameraRouter
+    subnetFrequency: SurveillanceCameraDelta
+    
+## Camera
+
+- type: entity
+  name: wiretapping camera alpha
+  description: A small camera that clearly isn't watching you. Don't forget to set it up before installing.
+  parent: [ BaseItem, Clothing ]
+  id: WiretappingCameraAlpha
+  components:
+    - type: Sprite
+      sprite: _Wega/Objects/Devices/wiretapping.rsi
+      layers:
+      - state: wiretapping_camera-a
+    - type: DeviceNetwork
+      deviceNetId: Wireless
+      receiveFrequencyId: SurveillanceCameraAlpha
+      transmitFrequencyId: SurveillanceCameraBodycam
+    - type: Clothing
+      quickEquip: true
+      slots:
+      - neck
+    - type: SurveillanceCamera
+      networkSet: true
+    - type: WirelessNetworkConnection
+      range: 200
+    - type: InteractionOutline
+    - type: Eye
+    - type: UserInterface
+      interfaces:
+        enum.SurveillanceCameraSetupUiKey.Camera:
+          type: SurveillanceCameraSetupBoundUi
+    - type: Item
+      size: Tiny
+    - type: Construction
+      deconstructionTarget: null
+      graph: Bodycam
+      node: alpha
+      
+- type: entity
+  name: wiretapping camera beta
+  parent: WiretappingCameraAlpha
+  id: WiretappingCameraBeta
+  components:
+    - type: Sprite
+      sprite: _Wega/Objects/Devices/wiretapping.rsi
+      layers:
+      - state: wiretapping_camera-b
+    - type: DeviceNetwork
+      deviceNetId: Wireless
+      receiveFrequencyId: SurveillanceCameraBeta
+      transmitFrequencyId: SurveillanceCameraBodycam
+    - type: Construction
+      deconstructionTarget: null
+      graph: Bodycam
+      node: beta
+      
+- type: entity
+  name: wiretapping camera charlie
+  parent: WiretappingCameraAlpha
+  id: WiretappingCameraCharlie
+  components:
+    - type: Sprite
+      sprite: _Wega/Objects/Devices/wiretapping.rsi
+      layers:
+      - state: wiretapping_camera-c
+    - type: DeviceNetwork
+      deviceNetId: Wireless
+      receiveFrequencyId: SurveillanceCameraCharlie
+      transmitFrequencyId: SurveillanceCameraBodycam
+    - type: Construction
+      deconstructionTarget: null
+      graph: Bodycam
+      node: charlie
+      
+- type: entity
+  name: wiretapping camera delta
+  parent: WiretappingCameraAlpha
+  id: WiretappingCameraDelta
+  components:
+    - type: Sprite
+      sprite: _Wega/Objects/Devices/wiretapping.rsi
+      layers:
+      - state: wiretapping_camera-d
+    - type: DeviceNetwork
+      deviceNetId: Wireless
+      receiveFrequencyId: SurveillanceCameraDelta
+      transmitFrequencyId: SurveillanceCameraBodycam
+    - type: Construction
+      deconstructionTarget: null
+      graph: Bodycam
+      node: delta

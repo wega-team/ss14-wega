@@ -1,18 +1,17 @@
 using System.Linq;
 using System.Threading.Tasks;
-using Content.Server.Administration.Systems;
-using Content.Server.Atmos.Components;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Bible.Components;
-using Content.Server.Body.Components;
-using Content.Server.Chat.Systems;
 using Content.Server.GameTicking;
 using Content.Server.Ghost.Roles.Components;
 using Content.Server.Pinpointer;
 using Content.Server.Station.Components;
+using Content.Shared.Administration.Systems;
+using Content.Shared.Atmos.Components;
 using Content.Shared.Blood.Cult;
 using Content.Shared.Blood.Cult.Components;
 using Content.Shared.Body.Components;
+using Content.Shared.Chat;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Damage;
 using Content.Shared.DoAfter;
@@ -20,7 +19,6 @@ using Content.Shared.Ghost;
 using Content.Shared.Humanoid;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
-using Content.Shared.Maps;
 using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mindshield.Components;
@@ -33,11 +31,13 @@ using Content.Shared.Standing;
 using Content.Shared.Surgery.Components;
 using Content.Shared.Timing;
 using Robust.Server.GameObjects;
+using Robust.Shared.Audio;
 using Robust.Shared.Console;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Player;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 
@@ -48,12 +48,12 @@ public sealed partial class BloodCultSystem
     [Dependency] private readonly BloodCultSystem _bloodCult = default!;
     [Dependency] private readonly IConsoleHost _consoleHost = default!;
     [Dependency] private readonly FlammableSystem _flammable = default!;
-    [Dependency] private readonly ITileDefinitionManager _tileDefManager = default!;
     [Dependency] private readonly NavMapSystem _navMap = default!;
     [Dependency] private readonly IMapManager _mapMan = default!;
-    [Dependency] private readonly SharedMapSystem _map = default!;
     [Dependency] private readonly RejuvenateSystem _rejuvenate = default!;
+    [Dependency] private readonly SharedGhostSystem _ghost = default!;
 
+    private static readonly EntProtoId ActionComms = "ActionBloodCultComms";
     private const string BloodCultObserver = "MobObserverIfrit";
     private static int _offerings = 3;
     private bool _isRitualRuneUnlocked = false;
@@ -105,7 +105,7 @@ public sealed partial class BloodCultSystem
         else if (selectedRune == "BloodRuneRitualDimensionalRending" && _isRitualRuneUnlocked)
         {
             var xform = Transform(uid);
-            if (!TryComp<MapGridComponent>(xform.GridUid, out var grid) || !HasComp<BecomesStationComponent>(grid.Owner))
+            if (!TryComp<MapGridComponent>(xform.GridUid, out var grid) || !HasComp<BecomesStationComponent>(xform.GridUid.Value))
             {
                 _popup.PopupEntity(Loc.GetString("rune-ritual-failed"), uid, uid, PopupType.MediumCaution);
                 return;
@@ -171,7 +171,7 @@ public sealed partial class BloodCultSystem
             _isRitualRuneUnlocked = false;
         }
 
-        if (TryComp<BloodstreamComponent>(cultist, out var blood) && _blood.GetBloodLevelPercentage(cultist) > 0)
+        if (TryComp<BloodstreamComponent>(cultist, out var blood) && _blood.GetBloodLevel(cultist) > 0)
             _blood.TryModifyBloodLevel(cultist, -5);
         else
         {
@@ -337,16 +337,17 @@ public sealed partial class BloodCultSystem
                 }
                 break;
             case "teleport":
-                var runes = EntityQuery<BloodRuneComponent>(true)
-                    .Where(runeEntity =>
-                        TryComp<BloodRuneComponent>(runeEntity.Owner, out var runeComp) &&
-                        runeComp.Prototype == "teleport" && runeEntity.Owner != rune)
-                    .ToList();
+                var runes = new List<EntityUid>();
+                var runeQuery = EntityQueryEnumerator<BloodRuneComponent>();
+                while (runeQuery.MoveNext(out var runeUid, out var runeCompQ))
+                {
+                    if (runeCompQ.Prototype == "teleport" && runeUid != rune)
+                        runes.Add(runeUid);
+                }
 
                 if (runes.Any() && CheckRuneActivate(coords, 1))
                 {
-                    var randomRuneComponent = runes[new Random().Next(runes.Count)];
-                    var randomRuneEntity = randomRuneComponent.Owner;
+                    var randomRuneEntity = runes[_random.Next(runes.Count)];
                     var runeTransform = _entityManager.GetComponent<TransformComponent>(randomRuneEntity);
                     var runeCoords = runeTransform.Coordinates;
                     SendCultistMessage(cultist, "teleport");
@@ -429,17 +430,11 @@ public sealed partial class BloodCultSystem
                                 );
                             _consoleHost.ExecuteCommand(formattedCommand);
                         }
-                        else if (HasComp<BodyComponent>(target) && !HasComp<BloodCultistComponent>(target)
-                            && currentState is MobState.Dead && !HasComp<BorgChassisComponent>(target) && !HasComp<BloodCultObjectComponent>(target))
+                        else if (HasComp<BodyComponent>(target) && !HasComp<BloodCultistComponent>(target) && currentState is MobState.Dead
+                            && !HasComp<BorgChassisComponent>(target) && !HasComp<BloodCultObjectComponent>(target)
+                            && !HasComp<HumanoidAppearanceComponent>(target)/*Stop killing humanoid this way*/)
                         {
                             SendCultistMessage(cultist, "revive");
-
-                            if (HasComp<HumanoidAppearanceComponent>(target))
-                            {
-                                var soulStone = _entityManager.SpawnEntity("BloodCultSoulStone", Transform(target).Coordinates);
-                                if (TryComp<MindContainerComponent>(target, out var mindContainer) && mindContainer.Mind != null)
-                                    _mind.TransferTo(mindContainer.Mind.Value, soulStone);
-                            }
 
                             // Gib
                             var damage = new DamageSpecifier { DamageDict = { { "Blunt", 1000 } } };
@@ -473,6 +468,7 @@ public sealed partial class BloodCultSystem
                         Entity<BloodRuneComponent>? randomRune = nearbyRunes.Any()
                             ? nearbyRunes[new Random().Next(nearbyRunes.Count)]
                             : null;
+
                         if (randomRune != null)
                         {
                             var randomRuneUid = randomRune.Value;
@@ -499,10 +495,14 @@ public sealed partial class BloodCultSystem
                             }
                         }
 
-                        var barrierRunes = EntityQuery<BloodRuneComponent>(true)
-                        .Where(runeEntity =>
-                            TryComp<BloodRuneComponent>(runeEntity.Owner, out var runeComp) && runeComp.Prototype == "barrier")
-                        .ToList();
+                        var barrierRunes = new List<EntityUid>();
+                        var barrierRuneQuery = EntityQueryEnumerator<BloodRuneComponent>();
+
+                        while (barrierRuneQuery.MoveNext(out var runeUid, out var runeCompQ))
+                        {
+                            if (runeCompQ.Prototype == "barrier")
+                                barrierRunes.Add(runeUid);
+                        }
 
                         var damageFormula = 2 * barrierRunes.Count;
                         var damage = new DamageSpecifier { DamageDict = { { "Slash", damageFormula } } };
@@ -636,8 +636,8 @@ public sealed partial class BloodCultSystem
 
                         var comp = _entityManager.GetComponent<GhostComponent>(ghost);
                         _action.RemoveAction(ghost, comp.ToggleGhostBarActionEntity); // Ghost-Bar-Block
-                        _action.AddAction(ghost, "ActionBloodCultComms");
-                        _entityManager.System<SharedGhostSystem>().SetCanReturnToBody(comp, canReturn);
+                        _action.AddAction(ghost, ActionComms);
+                        _ghost.SetCanReturnToBody((ghost, comp), canReturn);
                         break;
                     }
                     else
@@ -661,7 +661,7 @@ public sealed partial class BloodCultSystem
         var msg = Loc.GetString("blood-ritual-activate-warning",
             ("location", FormattedMessage.RemoveMarkupOrThrow(_navMap.GetNearestBeaconString((rune, xform)))));
         _chat.DispatchGlobalAnnouncement(msg, playSound: false, colorOverride: Color.Red);
-        _audio.PlayGlobal("/Audio/_Wega/Ambience/Antag/bloodcult_scribe.ogg", Filter.Broadcast(), true);
+        _audio.PlayGlobal(new SoundPathSpecifier("/Audio/_Wega/Ambience/Antag/bloodcult_scribe.ogg"), Filter.Broadcast(), true);
         Timer.Spawn(TimeSpan.FromSeconds(45), () =>
         {
             if (runeComp.Activate)
@@ -689,7 +689,7 @@ public sealed partial class BloodCultSystem
                         _mind.TransferTo(mindContainer.Mind.Value, harvester);
 
                     var damage = new DamageSpecifier { DamageDict = { { "Blunt", 1000 } } };
-                    _damage.TryChangeDamage(target, damage, true);
+                    _damage.TryChangeDamage(target.Owner, damage, true);
                 }
             }
             else
@@ -728,7 +728,7 @@ public sealed partial class BloodCultSystem
         component.SelectedEmpoweringSpells.Add(actionEntityUid);
         component.Empowering++;
 
-        if (TryComp<BloodstreamComponent>(cultist, out var blood) && _blood.GetBloodLevelPercentage(cultist) > 0)
+        if (TryComp<BloodstreamComponent>(cultist, out var blood) && _blood.GetBloodLevel(cultist) > 0)
             _blood.TryModifyBloodLevel(cultist, -5);
         else
         {
@@ -829,24 +829,23 @@ public sealed partial class BloodCultSystem
 
     private Color TryFindColor(EntityUid cultist)
     {
-        Color bloodColor;
-        if (TryComp<BloodstreamComponent>(cultist, out var bloodStreamComponent))
+        if (!TryComp<BloodstreamComponent>(cultist, out var bloodStreamComponent))
+            return Color.White;
+
+        string? bloodReagentPrototypeId = null;
+        if (bloodStreamComponent.BloodReferenceSolution.Contents.Count > 0)
         {
-            var bloodReagentPrototypeId = bloodStreamComponent.BloodReagent;
-            if (_prototypeManager.TryIndex(bloodReagentPrototypeId, out ReagentPrototype? reagentPrototype))
-            {
-                bloodColor = reagentPrototype.SubstanceColor;
-            }
-            else
-            {
-                bloodColor = Color.White;
-            }
+            var reagentQuantity = bloodStreamComponent.BloodReferenceSolution.Contents[0];
+            bloodReagentPrototypeId = reagentQuantity.Reagent.Prototype;
         }
-        else
-        {
-            bloodColor = Color.White;
-        }
-        return bloodColor;
+
+        if (bloodReagentPrototypeId == null)
+            return Color.White;
+
+        if (!_prototypeManager.TryIndex(bloodReagentPrototypeId, out ReagentPrototype? reagentPrototype))
+            return Color.White;
+
+        return reagentPrototype.SubstanceColor;
     }
 
     private void DoAfterInteractRune(BloodRuneCleaningDoAfterEvent args)

@@ -18,5 +18,3 @@ names_phantom_last-17 = Бедствия
 names_phantom_last-18 = Дождя
 names_phantom_last-19 = Конца
 names_phantom_last-20 = Потери
-
-

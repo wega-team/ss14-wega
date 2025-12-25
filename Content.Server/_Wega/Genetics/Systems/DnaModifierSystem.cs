@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Content.Server.Administration.Logs;
 using Content.Server.Chat.Systems;
@@ -7,6 +8,8 @@ using Content.Server.Prayer;
 using Content.Shared.Buckle;
 using Content.Shared.Chat.Prototypes;
 using Content.Shared.Damage;
+using Content.Shared.Damage.Components;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Database;
 using Content.Shared.Forensics.Components;
 using Content.Shared.Genetics;
@@ -47,6 +50,8 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
+
+    private static readonly ProtoId<EmotePrototype> Scream = "Scream";
 
     public override void Initialize()
     {
@@ -144,12 +149,12 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
     }
 
     #region Deep Cloning
-    public UniqueIdentifiersPrototype? CloneUniqueIdentifiers(UniqueIdentifiersPrototype? source)
+    public UniqueIdentifiersData? CloneUniqueIdentifiers(UniqueIdentifiersData? source)
     {
         if (source == null)
             return null;
 
-        return (UniqueIdentifiersPrototype)source.Clone();
+        return source.Clone(source);
     }
 
     public List<EnzymesPrototypeInfo>? CloneEnzymesPrototypes(List<EnzymesPrototypeInfo>? source)
@@ -166,7 +171,7 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
     {
         if (TryComp<HumanoidAppearanceComponent>(uid, out var humanoid))
         {
-            var uniqueIdentifiers = new UniqueIdentifiersPrototype
+            var uniqueIdentifiers = new UniqueIdentifiersData
             {
                 ID = $"UniqueIdentifiers{uid}",
             };
@@ -258,24 +263,20 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
             }
 
             // Тон кожи или цвет меха (блоки 13-16)
-            switch (speciesProto.SkinColoration)
+            var skinColorationProto = _prototype.Index<SkinColorationPrototype>(speciesProto.SkinColoration);
+            switch (skinColorationProto.Strategy.InputType)
             {
-                case HumanoidSkinColor.HumanToned:
-                    // Для HumanToned и TintedHues заполняем блок 13 (тон кожи)
+                // Для Unary заполняем блок 13 (тон кожи)
+                case SkinColorationStrategyInput.Unary:
                     uniqueIdentifiers.SkinTone = ConvertSkinToneToHexArray(humanoid.SkinColor);
                     break;
 
-                case HumanoidSkinColor.Hues:
-                case HumanoidSkinColor.TintedHues:
-                case HumanoidSkinColor.VoxFeathers:
-                    // Для Hues и VoxFeathers заполняем блоки 14-16 (цвет меха)
+                // Для Color заполняем блоки 14-16 (цвет меха)
+                case SkinColorationStrategyInput.Color:
                     var furColorArray = ConvertColorToHexArray(humanoid.SkinColor);
                     uniqueIdentifiers.FurColorR = new[] { furColorArray[0], furColorArray[1], furColorArray[2] };
                     uniqueIdentifiers.FurColorG = new[] { furColorArray[3], furColorArray[4], furColorArray[5] };
                     uniqueIdentifiers.FurColorB = new[] { furColorArray[6], furColorArray[7], furColorArray[8] };
-                    break;
-                case HumanoidSkinColor.PhantomBlack:
-                    uniqueIdentifiers.SkinTone = ConvertSkinToneToHexArray(humanoid.SkinColor);
                     break;
             }
 
@@ -411,7 +412,7 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
         else
         {
             var empty = new[] { "0", "0", "0" };
-            var uniqueIdentifiers = new UniqueIdentifiersPrototype
+            var uniqueIdentifiers = new UniqueIdentifiersData
             {
                 ID = $"StructuralEnzymes{uid}",
                 HairColorR = GenerateRandomHexValues(),
@@ -548,14 +549,56 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
                     return componentType != null && HasComp(uid, componentType);
                 });
 
-            if (hasComponent && enzymePrototype.TypeDeviation == EnzymesType.Disease)
+            if (hasComponent)
             {
-                enzyme.HexCode = GetHexCodeDisease();
+                enzyme.HexCode = GetHexCodeForType(enzymePrototype.TypeDeviation);
                 totalInstability += enzymePrototype.CostInstability;
+
+                if (enzymePrototype.TypeDeviation != EnzymesType.Disease
+                    && enzymePrototype.AddComponent != null)
+                {
+                    foreach (var componentEntry in enzymePrototype.AddComponent)
+                    {
+                        var componentType = componentEntry.Value.Component?.GetType();
+                        if (componentType != null && HasComp(uid, componentType))
+                            component.InitialAbilities.Add(componentType);
+                    }
+                }
             }
         }
 
         UpdateInstability(uid, component, totalInstability);
+    }
+
+    private string[] GetHexCodeForType(EnzymesType type)
+    {
+        int firstDigit;
+        switch (type)
+        {
+            case EnzymesType.Disease:
+            case EnzymesType.Minor:
+                firstDigit = 9;
+                break;
+
+            case EnzymesType.Intermediate:
+                firstDigit = 0xC;
+                break;
+
+            case EnzymesType.Base:
+                firstDigit = 0xE;
+                break;
+
+            default:
+                firstDigit = _random.Next(0, 16);
+                break;
+        }
+
+        return new[]
+        {
+            firstDigit.ToString("X1"),
+            _random.Next(0, 16).ToString("X1"),
+            _random.Next(0, 16).ToString("X1")
+        };
     }
 
     private string[] GetHexCodeDisease()
@@ -587,7 +630,7 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
 
             _damage.TryChangeDamage(uid, damage, true);
 
-            _chat.TryEmoteWithoutChat(uid, _prototype.Index<EmotePrototype>("Scream"), true);
+            _chat.TryEmoteWithoutChat(uid, _prototype.Index(Scream), true);
             _popup.PopupEntity(Loc.GetString("dna-instability-stage-two"), uid, uid, PopupType.SmallCaution);
         }
     }
@@ -600,7 +643,7 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
 
             _damage.TryChangeDamage(uid, damage, true);
 
-            _chat.TryEmoteWithoutChat(uid, _prototype.Index<EmotePrototype>("Scream"), true);
+            _chat.TryEmoteWithoutChat(uid, _prototype.Index(Scream), true);
             _popup.PopupEntity(Loc.GetString("dna-instability-stage-three"), uid, uid, PopupType.LargeCaution);
         }
     }
@@ -651,19 +694,19 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
         Dirty(ent, humanoid);
     }
 
-    private void UpdateSkin(Entity<HumanoidAppearanceComponent> humanoid, UniqueIdentifiersPrototype uniqueIdentifiers)
+    private void UpdateSkin(Entity<HumanoidAppearanceComponent> humanoid, UniqueIdentifiersData uniqueIdentifiers)
     {
-        var speciesProto = _prototype.Index<SpeciesPrototype>(humanoid.Comp.Species);
+        var speciesProto = _prototype.Index(humanoid.Comp.Species);
+        var skinColorationProto = _prototype.Index(speciesProto.SkinColoration);
 
-        switch (speciesProto.SkinColoration)
+        switch (skinColorationProto.Strategy.InputType)
         {
-            case HumanoidSkinColor.HumanToned:
-                humanoid.Comp.SkinColor = ConvertSkinToneToColor(uniqueIdentifiers.SkinTone);
+            case SkinColorationStrategyInput.Unary:
+                var color = ConvertSkinToneToColor(uniqueIdentifiers.SkinTone);
+                humanoid.Comp.SkinColor = skinColorationProto.Strategy.EnsureVerified(color);
                 break;
 
-            case HumanoidSkinColor.Hues:
-            case HumanoidSkinColor.TintedHues:
-            case HumanoidSkinColor.VoxFeathers:
+            case SkinColorationStrategyInput.Color:
                 string redHex = uniqueIdentifiers.FurColorR[0] + uniqueIdentifiers.FurColorR[1];
                 string greenHex = uniqueIdentifiers.FurColorG[0] + uniqueIdentifiers.FurColorG[1];
                 string blueHex = uniqueIdentifiers.FurColorB[0] + uniqueIdentifiers.FurColorB[1];
@@ -677,13 +720,12 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
                 float blueNormalized = blue / 255f;
 
                 var newColor = new Color(redNormalized, greenNormalized, blueNormalized);
-
-                humanoid.Comp.SkinColor = newColor;
+                humanoid.Comp.SkinColor = skinColorationProto.Strategy.EnsureVerified(newColor);
                 break;
         }
     }
 
-    private void UpdateMarkings(Entity<HumanoidAppearanceComponent> humanoid, UniqueIdentifiersPrototype uniqueIdentifiers)
+    private void UpdateMarkings(Entity<HumanoidAppearanceComponent> humanoid, UniqueIdentifiersData uniqueIdentifiers)
     {
         var markingSet = humanoid.Comp.MarkingSet;
         var markingPrototypes = _markingIndexer.GetAllMarkingPrototypes();
@@ -696,7 +738,7 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
         _ensureMarking.UpdateMarkingCategory(humanoid, markingSet, MarkingCategories.Tail, uniqueIdentifiers.TailMarkingColorR, uniqueIdentifiers.TailMarkingColorG, uniqueIdentifiers.TailMarkingColorB, uniqueIdentifiers.TailMarkingStyle, humanoid.Comp.Species, markingPrototypes);
     }
 
-    private void UpdateEyeColor(Entity<HumanoidAppearanceComponent> humanoid, UniqueIdentifiersPrototype uniqueIdentifiers)
+    private void UpdateEyeColor(Entity<HumanoidAppearanceComponent> humanoid, UniqueIdentifiersData uniqueIdentifiers)
     {
         string redHex = uniqueIdentifiers.EyeColorR[0] + uniqueIdentifiers.EyeColorR[1];
         string greenHex = uniqueIdentifiers.EyeColorG[0] + uniqueIdentifiers.EyeColorG[1];
@@ -715,7 +757,7 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
         humanoid.Comp.EyeColor = eyeColor;
     }
 
-    private void UpdateGender(Entity<HumanoidAppearanceComponent> humanoid, UniqueIdentifiersPrototype uniqueIdentifiers)
+    private void UpdateGender(Entity<HumanoidAppearanceComponent> humanoid, UniqueIdentifiersData uniqueIdentifiers)
     {
         int[] values = uniqueIdentifiers.Gender
             .Select(hex => Convert.ToInt32(hex, 16))
@@ -790,7 +832,8 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
                     foreach (var componentEntry in enzymePrototype.AddComponent)
                     {
                         var componentType = componentEntry.Value.Component?.GetType();
-                        if (componentType != null && HasComp(ent, componentType))
+                        if (componentType != null && HasComp(ent, componentType)
+                            && !ent.Comp.InitialAbilities.Contains(componentType))
                         {
                             RemComp(ent, componentType);
                             totalInstability -= enzymePrototype.CostInstability;
@@ -823,11 +866,8 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
             // Zero add an entity
             _buckle.TryUnbuckle(target, target, true);
             var child = _entManager.SpawnEntity(component.Lowest, Transform(target).Coordinates);
-            if (TryComp<DamageableComponent>(child, out var damageParent)
-                && _mobThreshold.GetScaledDamage(target, child, out var damage) && damage != null)
-            {
-                _damage.SetDamage(child, damageParent, damage);
-            }
+            if (_mobThreshold.GetScaledDamage(target, child, out var damage) && damage != null)
+                _damage.SetDamage(child, damage);
 
             EnsureComp<DnaLowestComponent>(child).Parent = target;
 
@@ -905,11 +945,8 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
                 if (_mindSystem.TryGetMind(target, out var mindIdLowest, out var mindLowest))
                     _mindSystem.TransferTo(mindIdLowest, parent, mind: mindLowest);
 
-                if (TryComp<DamageableComponent>(parent, out var parentDamage)
-                    && _mobThreshold.GetScaledDamage(target, parent, out var damageLowest) && damageLowest != null)
-                {
-                    _damage.SetDamage(parent, parentDamage, damageLowest);
-                }
+                if (_mobThreshold.GetScaledDamage(target, parent, out var damageLowest) && damageLowest != null)
+                    _damage.SetDamage(parent, damageLowest);
 
                 if (TryComp<DnaModifierComponent>(parent, out var dnaModifier))
                 {
@@ -934,11 +971,8 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
             // Zero add an entity
             _buckle.TryUnbuckle(target, target, true);
             var child = _entManager.SpawnEntity(component.Upper, Transform(target).Coordinates);
-            if (TryComp<DamageableComponent>(child, out var damageParent)
-                && _mobThreshold.GetScaledDamage(target, child, out var damage) && damage != null)
-            {
-                _damage.SetDamage(child, damageParent, damage);
-            }
+            if (_mobThreshold.GetScaledDamage(target, child, out var damage) && damage != null)
+                _damage.SetDamage(child, damage);
 
             // First undress
             if (_inventory.TryGetContainerSlotEnumerator(target, out var enumerator))
@@ -1072,11 +1106,16 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
 
     private void OnDamageChanged(EntityUid uid, DnaModifierComponent component, DamageChangedEvent args)
     {
-        if (args.DamageDelta == null || !args.DamageIncreased || args.DamageDelta.GetTotal() < 0.1f || !args.DamageDelta.DamageDict.ContainsKey("Radiation"))
+        if (args.DamageDelta == null || !args.DamageIncreased || !args.DamageDelta.DamageDict.ContainsKey("Radiation"))
+            return;
+
+        var radiationDamage = args.DamageDelta.DamageDict["Radiation"];
+        if (radiationDamage < 1f)
             return;
 
         if (component.EnzymesPrototypes == null)
             return;
+
         if (_random.Prob(0.05f))
         {
             int countToModify = 1;

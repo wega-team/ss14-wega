@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "license": "CC0-1.0",
+  "copyright": "Sprite by DSID <@544176096271138826>  mody by DSID <@500744677352407051>",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "icon"
+    },
+    {
+      "name": "equipped-HAND",
+      "directions": 4
+    },
+	{
+      "name": "gem"
+    }
+  ]
+}

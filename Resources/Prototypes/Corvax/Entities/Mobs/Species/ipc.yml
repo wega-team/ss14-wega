@@ -5,6 +5,7 @@
   id: BaseMobIpc
   abstract: true
   components:
+  - type: Crawler
   - type: HumanoidAppearance
     species: Ipc
   - type: Icon
@@ -34,7 +35,9 @@
   - type: Damageable
     damageContainer: SiliconIpc
     damageModifierSet: Ipc
-  - type: ToggleableLightVisuals
+  - type: ItemTogglePointLight
+  - type: ToggleableVisuals
+    spriteLayer: light
   - type: PointLight
     enabled: false
     mask: /Textures/Effects/LightMasks/cone.png
@@ -267,7 +270,7 @@
     - reagents: [Water, SpaceCleaner]
       methods: [Touch]
       effects:
-      - !type:WashCreamPieReaction
+      - !type:WashCreamPie
   - type: StatusEffects
     allowed:
     - Stun

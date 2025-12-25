@@ -341,6 +341,9 @@ namespace Content.Server.Carrying
             if (_hands.CountFreeHands(carrier) < carriedComp.FreeHandsRequired)
                 return false;
 
+            if (TryComp<StandingStateComponent>(carrier, out var standing) && !standing.Standing)
+                return false;
+
             return true;
         }
 

@@ -92,7 +92,7 @@ public sealed class MiningConsoleSystem : EntitySystem
 
         if (account.Credits >= 1)
         {
-            _stack.Spawn((int)account.Credits, Credit, Transform(entity).Coordinates);
+            _stack.SpawnAtPosition((int)account.Credits, Credit, Transform(entity).Coordinates);
             account.Credits = 0;
         }
 
@@ -137,8 +137,11 @@ public sealed class MiningConsoleSystem : EntitySystem
 
     private EntityUid? EnsureAccount()
     {
-        var account = EntityQuery<MiningAccountComponent>().FirstOrDefault();
-        return account?.Owner ?? null;
+        var query = EntityQueryEnumerator<MiningAccountComponent>();
+        if (query.MoveNext(out var uid, out _))
+            return uid;
+
+        return null;
     }
 
     public void SwitchGlobalMode(EntityUid console, MiningMode mode)

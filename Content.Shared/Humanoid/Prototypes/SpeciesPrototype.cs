@@ -89,7 +89,7 @@ public sealed partial class SpeciesPrototype : IPrototype
     /// Method of skin coloration used by the species.
     /// </summary>
     [DataField(required: true)]
-    public HumanoidSkinColor SkinColoration { get; private set; }
+    public ProtoId<SkinColorationPrototype> SkinColoration { get; private set; }
 
     [DataField]
     public ProtoId<LocalizedDatasetPrototype> MaleFirstNames { get; private set; } = "NamesFirstMale";
@@ -140,6 +140,14 @@ public sealed partial class SpeciesPrototype : IPrototype
     /// </summary>
     [DataField]
     public int MaxAge = 120;
+
+    // Corvax-Wega-Height-start
+    [DataField]
+    public float MinHeight = 150.0f;
+
+    [DataField]
+    public float MaxHeight = 205.0f;
+    // Corvax-Wega-Height-end
 }
 
 public enum SpeciesNaming : byte

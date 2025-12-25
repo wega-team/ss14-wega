@@ -5,7 +5,7 @@ using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Wires;
 
-namespace Content.Shared._Wega.Android;
+namespace Content.Shared.Android;
 
 public abstract partial class SharedAndroidSystem : EntitySystem
 {
@@ -45,10 +45,7 @@ public abstract partial class SharedAndroidSystem : EntitySystem
         if (!TryComp<WiresPanelComponent>(uid, out var panel))
             return true;
 
-        if (!panel.Open)
-            return false;
-
-        if (user != null && user == uid)
+        if (!panel.Open || user != null && user == uid)
             return false;
 
         return true;

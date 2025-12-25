@@ -12,7 +12,6 @@ namespace Content.Client.Select.Construct.UI
         [Dependency] private readonly IEntityManager _entityManager = default!;
 
         private BloodConstructMenu? _menu;
-        private bool _menuDisposed = false;
 
         public override void Initialize()
         {
@@ -27,10 +26,9 @@ namespace Content.Client.Select.Construct.UI
 
             if (session?.AttachedEntity.HasValue == true && session.AttachedEntity.Value == userEntity)
             {
-                if (_menu is null || _menu.IsDisposed)
+                if (_menu is null)
                 {
                     _menu = _uiManager.CreateWindow<BloodConstructMenu>();
-                    _menu.OnClose += OnMenuClosed;
 
                     _menu.SetData(args.ConstructUid, args.Mind);
 
@@ -43,18 +41,12 @@ namespace Content.Client.Select.Construct.UI
 
                 Timer.Spawn(30000, () =>
                 {
-                    if (_menu != null && !_menuDisposed)
+                    if (_menu != null)
                     {
                         _menu.Close();
                     }
                 });
             }
-        }
-
-        private void OnMenuClosed()
-        {
-            _menuDisposed = true;
-            _menu = null;
         }
     }
 }

@@ -178,13 +178,13 @@
 
 - type: Tag
   id: ShardCrystal
-  
+
 - type: Tag
   id: ArmorScrap
-  
+
 - type: Tag
   id: HalmetScrap
-  
+
 - type: Tag
   id: Salad
 
@@ -193,7 +193,7 @@
 
 - type: Tag
   id: Sheild
-  
+
 - type: Tag
   id: BananiumClakson
 
@@ -227,6 +227,48 @@
 - type: Tag
   id: SlimeRND
 
+- type: Tag
+  id: SyndicateRapier
 
+- type: Tag
+  id: Shrimp
 
+- type: Tag
+  id: Cook
+
+- type: Tag
+  id: MagazineEagle
+
+- type: Tag
+  id: MagazineHristov
+
+- type: Tag
+  id: ExtMagazineRifle
+
+- type: Tag
+  id: Ingredient
+
+- type: Tag
+  id: PlantAnalyzer
+
+- type: Tag
+  id: ClockworkGlassShard
+
+- type: Tag
+  id: SecwayKeys
+
+- type: Tag
+  id: ATVKeys
+
+- type: Tag
+  id: SyndicateSegwayKeys
+
+- type: Tag
+  id: Coin
+
+- type: Tag
+  id: BorgModuleSecurity
+
+- type: Tag
+  id: EvidenceMarker
 

@@ -1,0 +1,47 @@
+- type: marking
+  id: AriralBreastSmall
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Ariral]
+  sexRestriction: [Female]
+  followSkinColor: true
+  forcedColoring: true
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+  sprites:
+  - sprite: _Wega/Mobs/Customization/ariral_breasts.rsi
+    state: small
+
+- type: marking
+  id: AriralBreastMedium
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Ariral]
+  sexRestriction: [Female]
+  followSkinColor: true
+  forcedColoring: true
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+  sprites:
+  - sprite: _Wega/Mobs/Customization/ariral_breasts.rsi
+    state: medium
+
+- type: marking
+  id: AriralBreastBig
+  bodyPart: Special #Не "Chest" чтобы спрайт отобразить по верх рук
+  markingCategory: Chest
+  speciesRestriction: [Ariral]
+  sexRestriction: [Female]
+  followSkinColor: true
+  forcedColoring: true
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+  sprites:
+  - sprite: _Wega/Mobs/Customization/ariral_breasts.rsi
+    state: big

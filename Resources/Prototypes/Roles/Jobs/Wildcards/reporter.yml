@@ -13,7 +13,7 @@
 - type: startingGear
   id: ReporterGear
   equipment:
-    shoes: ClothingShoesColorWhite
+    # shoes: ClothingShoesColorWhite # Corvax-Wega-Edit
     id: ReporterPDA
     ears: ClothingHeadsetService
   # Corvax-Wega-Recorder-start

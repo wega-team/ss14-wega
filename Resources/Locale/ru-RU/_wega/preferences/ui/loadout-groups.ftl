@@ -2,6 +2,7 @@
 loadout-group-top = Верхнее белье
 loadout-group-bottom = Нижнее белье
 loadout-group-socks = Носки
+loadout-group-base-shoes = Обувь, базовая
 
 # Heads
 loadout-group-sponsor-head = Спонсор, голова
@@ -13,6 +14,7 @@ loadout-group-sponsor-neck = Спонсор, шея
 loadout-group-captain-top = Капитан, верхнее белье
 loadout-group-captain-bottom = Капитан, нижнее белье
 loadout-group-captain-socks = Капитан, носки
+loadout-group-capitan-gloves = Капитан, перчатки
 loadout-group-blue-shield-head = Офицер "Синий Щит", голова
 loadout-group-blue-shield-jumpsuit = Офицер "Синий Щит", комбинезон
 loadout-group-blue-shield-backpack = Офицер "Синий Щит", рюкзак
@@ -37,10 +39,12 @@ loadout-group-postman-backpack = Почтальон, рюкзак
 loadout-group-chief-engineer-top = Старший инженер, верхнее белье
 loadout-group-chief-engineer-bottom = Старший инженер, нижнее белье
 loadout-group-chief-engineer-socks = Старший инженер, носки
+loadout-group-senior-engineer-item = Ведущий инженер, спец предметы
 # Science
 loadout-group-research-director-top = Научный руководитель, верхнее белье
 loadout-group-research-director-bottom = Научный руководитель, нижнее белье
 loadout-group-research-director-socks = Научный руководитель, носки
+loadout-group-senior-researcher-item = Ведущий учёный, спец предметы
 # Security
 loadout-group-head-of-security-top = Глава службы безопасности, верхнее белье
 loadout-group-head-of-security-bottom = Глава службы безопасности, нижнее белье
@@ -49,6 +53,7 @@ loadout-group-brigmedic-head = Бригмедик, голова
 loadout-group-brigmedic-jumpsuit = Бригмедик, комбинезон
 loadout-group-brigmedic-backpack = Бригмедик, рюкзак
 loadout-group-brigmedic-outerclothing = Бригмедик, верхняя одежда
+loadout-group-senior-officer-item = Инструктор СБ, спец предметы
 # Medical
 loadout-group-chief-medical-officer-top = Главный врач, верхнее белье
 loadout-group-chief-medical-officer-bottom = Главный врач, нижнее белье

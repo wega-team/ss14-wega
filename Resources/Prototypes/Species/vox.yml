@@ -13,6 +13,9 @@
   naming: First
   sexes:
   - Unsexed
+  # Вот тут мне пох на лор
+  minHeight: 140 # Corvax-Wega-Height
+  maxHeight: 180 # Corvax-Wega-Height
 
 - type: speciesBaseSprites
   id: MobVoxSprites
@@ -46,12 +49,15 @@
       points: 1
       required: false
     Head:
-      points: 1
+      points: 4
       required: true
     Snout:
       points: 1
       required: true
       defaultMarkings: [ VoxBeak ]
+    SnoutCover:
+      points: 1
+      required: false
     Arms:
       points: 4
       required: true

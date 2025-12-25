@@ -202,6 +202,8 @@
     - id: RCD
     - id: RCDAmmo
     - id: MetalFoamGrenade
+    - id: ConstructionBag
+      prob: 0.4
 
 - type: entityTable
   id: FillEngineerHardsuit
@@ -227,11 +229,11 @@
   table: !type:AllSelector
     children:
     - id: ClothingOuterSuitRad
-      amount: !type:ConstantNumberSelector
-        value: 2
+      amount: 2
     - id: GeigerCounter
-      amount: !type:ConstantNumberSelector
-        value: 2
+      amount: 2
+    - id: PillCanisterPotassiumIodide
+      prob: 0.75
 
 - type: entity
   parent: LockerEvacRepair

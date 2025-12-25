@@ -103,7 +103,7 @@ public abstract class SharedBorgSwitchableTypeSystem : EntitySystem
 
     protected void UpdateEntityAppearance(Entity<BorgSwitchableTypeComponent> entity)
     {
-        if (!Prototypes.TryIndex(entity.Comp.SelectedBorgType, out var proto))
+        if (!Prototypes.Resolve(entity.Comp.SelectedBorgType, out var proto))
             return;
 
         UpdateEntityAppearance(entity, proto);
@@ -130,5 +130,24 @@ public abstract class SharedBorgSwitchableTypeSystem : EntitySystem
             tts.VoicePrototypeId = prototype.VoicePrototypeId;
         }
         // Corvax-TTS-end
+
+        if (prototype.SpriteBodyMovementState is { } movementState)
+        {
+            var spriteMovement = EnsureComp<SpriteMovementComponent>(entity);
+            spriteMovement.NoMovementLayers.Clear();
+            spriteMovement.NoMovementLayers["movement"] = new PrototypeLayerData
+            {
+                State = prototype.SpriteBodyState,
+            };
+            spriteMovement.MovementLayers.Clear();
+            spriteMovement.MovementLayers["movement"] = new PrototypeLayerData
+            {
+                State = movementState,
+            };
+        }
+        else
+        {
+            RemComp<SpriteMovementComponent>(entity);
+        }
     }
 }

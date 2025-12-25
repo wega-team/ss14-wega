@@ -17,12 +17,12 @@
       - Catwalk
   - type: TileEntityEffect
     effects:
-    - !type:FlammableReaction
+    - !type:Flammable
       multiplier: 3.75
       multiplierOnExisting: 0.75
     - !type:Ignite
     # Corvax-Wega-Vehicles-start
-    - !type:DamageEntityEffect
+    - !type:Damage
       requiredComponent: Vehicle
       damageType: Blunt
       amount: 500

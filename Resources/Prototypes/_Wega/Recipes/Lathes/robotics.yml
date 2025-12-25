@@ -9,6 +9,79 @@
   result: BorgModuleKinetic
 
 - type: latheRecipe
+  parent: BaseBorgModuleRecipe
+  id: BorgModuleCommonMedical
+  result: BorgModuleCommonMedical
+
+- type: latheRecipe
+  parent: BaseBorgModuleRecipe
+  id: BorgModuleCommonConstruction
+  result: BorgModuleCommonConstruction
+  
+- type: latheRecipe
+  parent: BaseBorgModuleRecipe
+  id: BorgModuleCommonPickaxe
+  result: BorgModuleCommonPickaxe
+
+- type: latheRecipe
+  parent: BaseBorgModuleRecipe
+  id: BorgModuleCommonFight
+  result: BorgModuleCommonFight
+
+- type: latheRecipe
+  parent: BaseBorgModuleRecipe
+  id: BorgModuleCommonPen
+  result: BorgModuleCommonPen
+
+- type: latheRecipe
+  parent: BaseBorgModuleRecipe
+  id: BorgModuleHarvesting
+  result: BorgModuleHarvesting
+
+- type: latheRecipe
+  parent: BaseBorgModuleRecipe
+  id: BorgModuleGardening
+  result: BorgModuleGardening
+  
+- type: latheRecipe
+  parent: BaseBorgModuleRecipe
+  id: BorgModuleClowning
+  result: BorgModuleClowning
+
+- type: latheRecipe
+  parent: BaseBorgModuleRecipe
+  id: BorgModuleMusique
+  result: BorgModuleMusique
+
+- type: latheRecipe
+  parent: BaseGoldBorgModuleRecipe
+  id: BorgModuleSheild
+  result: BorgModuleSheild
+
+- type: latheRecipe
+  parent: BaseGoldBorgModuleRecipe
+  id: BorgModuleSecLethal
+  result: BorgModuleSecLethal
+
+- type: latheRecipe
+  parent: BaseGoldBorgModuleRecipe
+  id: BorgModuleGranader
+  result: BorgModuleGranader
+
+- type: latheRecipe
+  id: BorgModuleCommonHand
+  result: BorgModuleCommonHand
+  categories:
+    - Modules
+  materials:
+    Steel: 1000
+    Glass: 500
+    Plastic: 500
+    Gold: 500
+    Diamond: 200
+# Android
+
+- type: latheRecipe
   parent: BaseRoboticsRecipe
   id: Tyriumpack
   result: Tyriumpack1
@@ -34,10 +107,10 @@
   result: LeftArmSyntheticPry
   completetime: 5
   materials:
-    Steel: 500
-    Plastic: 250
-    Gold: 100
-    Plasma: 100
+    Steel: 750
+    Plastic: 300
+    Gold: 200
+    Plasma: 150
 
 - type: latheRecipe
   parent: BaseRoboticsRecipe
@@ -45,8 +118,8 @@
   result: LeftArmSyntheticDefib
   completetime: 5
   materials:
-    Steel: 500
-    Plastic: 250
+    Steel: 750
+    Plastic: 300
     Silver: 250
 
 - type: latheRecipe
@@ -55,7 +128,38 @@
   result: LeftArmSyntheticProtoKinetic
   completetime: 5
   materials:
-    Steel: 500
-    Plastic: 250
-    Silver: 150
+    Steel: 750
+    Plastic: 300
+    Silver: 200
+    Plasma: 150
+
+- type: latheRecipe
+  parent: BaseRoboticsRecipe
+  id: ArmSyntheticCharger
+  result: LeftArmSyntheticCharger
+  completetime: 5
+  materials:
+    Steel: 750
+    Plastic: 300
+    Gold: 200
+
+- type: latheRecipe
+  parent: BaseRoboticsRecipe
+  id: LegSyntheticMagboots
+  result: LeftLegSyntheticMagboots
+  completetime: 5
+  materials:
+    Steel: 750
+    Plastic: 300
+    Gold: 300
+
+- type: latheRecipe
+  parent: BaseRoboticsRecipe
+  id: LegSyntheticJump
+  result: LeftLegSyntheticJump
+  completetime: 5
+  materials:
+    Steel: 750
+    Plastic: 300
+    Gold: 250
     Plasma: 150

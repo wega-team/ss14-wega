@@ -3,12 +3,18 @@
   id: BarberIDCard
   name: barber ID card
   components:
-    - type: Sprite
-      layers:
-        - state: default
-        - state: idbarber
-    - type: PresetIdCard
-      job: Barber
+  - type: Sprite
+    layers:
+    - state: default
+    - state: stripe_top
+      color: "#639137"
+    - state: stripe_bottom
+      color: "#446326"
+    - sprite: &wega-icon-rsi _Wega/Interface/Misc/job_icons.rsi
+      offset: &wega-icon-offset -0.09375, 0.0625
+      state: Barber
+  - type: PresetIdCard
+    job: Barber
 
 - type: entity
   parent: CentcomIDCard
@@ -28,57 +34,87 @@
   id: GeneticistIDCard
   name: geneticist ID card
   components:
-    - type: Sprite
-      layers:
-        - state: default
-        - state: idgeneticist
-    - type: PresetIdCard
-      job: Geneticist
+  - type: Sprite
+    layers:
+    - state: default
+    - state: stripe_top
+      color: "#68aed6"
+    - state: stripe_bottom
+      color: "#325f7a"
+    - sprite: Interface/Misc/job_icons.rsi
+      offset: *wega-icon-offset
+      state: Geneticist
+  - type: PresetIdCard
+    job: Geneticist
 
 - type: entity
   parent: IDCardStandard
   id: SurgeonIDCard
   name: surgeon ID card
   components:
-    - type: Sprite
-      layers:
-        - state: default
-        - state: idsurgeon
-    - type: PresetIdCard
-      job: Surgeon
+  - type: Sprite
+    layers:
+    - state: default
+    - state: stripe_top
+      color: "#639137"
+    - state: stripe_bottom
+      color: "#446326"
+    - sprite: *wega-icon-rsi
+      offset: *wega-icon-offset
+      state: Surgeon
+  - type: PresetIdCard
+    job: Surgeon
 
 - type: entity
   parent: IDCardStandard
   id: CoronerIDCard
   name: coroner ID card
   components:
-    - type: Sprite
-      layers:
-        - state: default
-        - state: idcoroner
-    - type: PresetIdCard
-      job: Coroner
+  - type: Sprite
+    layers:
+    - state: default
+    - state: stripe_top
+      color: "#639137"
+    - state: stripe_bottom
+      color: "#446326"
+    - sprite: *wega-icon-rsi
+      offset: *wega-icon-offset
+      state: Coroner
+  - type: PresetIdCard
+    job: Coroner
 
 - type: entity
   parent: IDCardStandard
   id: BlueShieldIDCard
   name: blue shield ID card
   components:
-    - type: Sprite
-      layers:
-        - state: centcom
-        - state: idblueshield
-    - type: PresetIdCard
-      job: BlueShieldOfficer
+  - type: Sprite
+    layers:
+    - state: centcom
+    - state: stripe_top
+      color: "#1b67a5"
+    - state: stripe_bottom
+      color: "#0e4069"
+    - sprite: *wega-icon-rsi
+      offset: *wega-icon-offset
+      state: BlueShield
+  - type: PresetIdCard
+    job: BlueShieldOfficer
 
 - type: entity
   parent: IDCardStandard
   id: PostmanIDCard
   name: postman ID card
   components:
-    - type: Sprite
-      layers:
-        - state: default
-        - state: idpostman
-    - type: PresetIdCard
-      job: Postman
+  - type: Sprite
+    layers:
+    - state: default
+    - state: stripe_top
+      color: "#b18644"
+    - state: stripe_bottom
+      color: "#5b4523"
+    - sprite: *wega-icon-rsi
+      offset: *wega-icon-offset
+      state: Postman
+  - type: PresetIdCard
+    job: Postman

@@ -3,11 +3,13 @@
   id: PostmanJumpsuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitPostman
+  groupBy: "wegaJJ"
 
 - type: loadout
   id: PostmanJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtPostman
+  groupBy: "wegaJJ"
 
 # Head
 - type: loadout

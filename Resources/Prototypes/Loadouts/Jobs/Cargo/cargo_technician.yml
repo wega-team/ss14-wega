@@ -1,3 +1,23 @@
+# Senior times
+- type: loadoutEffectGroup
+  id: SeniorCargo
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobCargoTechnician
+      time: 6h
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobSalvageSpecialist
+      time: 6h
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Cargo
+      time: 6h
+
 # Head
 - type: loadout
   id: CargoTechnicianHead
@@ -9,11 +29,13 @@
   id: CargoTechnicianJumpsuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitCargo
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: CargoTechnicianJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtCargo
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 # Back
 - type: loadout
@@ -42,3 +64,18 @@
   id: CargoWinterBoots
   equipment:
     shoes: ClothingShoesBootsWinterCargo
+  groupBy: "wegaJS" # Corvax-Wega-add
+
+# ID
+- type: loadout
+  id: CargoTechnicianPDA
+  equipment:
+    id: CargoPDA
+
+- type: loadout
+  id: SeniorCourierPDA
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SeniorCargo
+  equipment:
+    id: SeniorCourierPDA

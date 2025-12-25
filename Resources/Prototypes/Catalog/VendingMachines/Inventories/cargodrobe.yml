@@ -6,6 +6,12 @@
     ClothingBackpackDuffelCargo: 3
     ClothingUniformJumpsuitCargo: 3
     ClothingUniformJumpskirtCargo: 3
+    # Corvax-Wega-Turtleneck-start
+    ClothingUniformJumpskirtTurtleneckOrange: 2
+    ClothingUniformJumpsuitTurtleneckOrange: 2
+    ClothingUniformJumpskirtTurtleneckBrown: 2
+    ClothingUniformJumpsuitTurtleneckBrown: 2
+    # Corvax-Wega-Turtleneck-end
     ClothingShoesColorBlack: 3
     ClothingHandsGlovesFingerless: 3
     ClothingHeadHatCargosoft: 3

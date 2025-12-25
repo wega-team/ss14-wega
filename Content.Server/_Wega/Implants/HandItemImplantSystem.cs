@@ -7,7 +7,7 @@ using Robust.Server.Audio;
 using Robust.Server.Containers;
 using Robust.Shared.Containers;
 
-namespace Content.Server._Wega.Implants;
+namespace Content.Server.Implants;
 
 public sealed class HandItemImplantSystem : EntitySystem
 {

@@ -1,0 +1,5 @@
+- type: localizedDataset
+  id: NamesAriralFirst
+  values:
+    prefix: names_ariral_first-
+    count: 100

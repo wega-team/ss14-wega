@@ -14,10 +14,49 @@
             "name": "medical"
         },
         {
+            "name": "generic"
+        },
+        {
+            "name": "service"
+        },
+        {
             "name": "cargo"
         },
         {
+            "name": "security"
+        },
+        {
             "name": "icon-kinetic"
+        },
+        {
+            "name": "icon-bar-module"
+        },
+        {
+            "name": "icon-cook-module"
+        },
+        {
+            "name": "icon-fight-common"
+        },
+        {
+            "name": "icon-treatment-common"
+        },
+        {
+            "name": "icon-hand"
+        },
+        {
+            "name": "icon-sheild"
+        },
+        {
+            "name": "icon-gun"
+        },
+        {
+            "name": "icon-grenade"
+        },
+        {
+            "name": "icon-dec"
+        },
+        {
+            "name": "icon-dis"
         },
         {
             "name": "base-icon-inhand-left",

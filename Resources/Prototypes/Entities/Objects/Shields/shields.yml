@@ -187,15 +187,12 @@
   name: cardboard shield
   parent: BaseShield
   id: CardShield
-  description: A shield that wont shield you from much.
+  description: A shield made of cardboard. Won't protect you from much.
   components:
     - type: Sprite
       state: cardshield-icon
     - type: Item
       heldPrefix: cardshield
-    - type: StaminaResistance
-      damageCoefficient: 0.95
-      worn: true
     - type: Blocking
       passiveBlockModifier:
         coefficients:
@@ -522,26 +519,6 @@
                   max: 1
     - type: StaticPrice
       price: 350
-# Corvax-HiddenDesc-Start
-    - type: HiddenDescription
-      entries:
-      - label: corvax-hidden-desc-EnergyShield-syndicate
-        whitelistMind:
-          mindRoles:
-          - TraitorRole
-          - NukeopsRole
-      - label: corvax-hidden-desc-EnergyShield-security
-        jobRequired:
-          - HeadOfSecurity
-          - Detective
-          - SecurityCadet
-          - SecurityOfficer
-          - Warden
-          - Captain
-      - label: corvax-hidden-desc-EnergyShield-cargo
-        jobRequired:
-          - SalvageSpecialist
-# Corvax-HiddenDesc-End
 
 - type: entity
   name: broken energy shield
@@ -556,25 +533,6 @@
       sprite: Objects/Weapons/Melee/e_shield.rsi
       size: Small
       heldPrefix: eshield
-# Corvax-HiddenDesc-Start
-    - type: HiddenDescription
-      entries:
-      - label: corvax-hidden-desc-EnergyShield-syndicate
-        whitelistMind:
-          mindRoles:
-          - TraitorRole
-          - NukeopsRole
-      - label: corvax-hidden-desc-EnergyShield-security
-        jobRequired:
-          - HeadOfSecurity
-          - Detective
-          - SecurityCadet
-          - SecurityOfficer
-          - Warden
-      - label: corvax-hidden-desc-EnergyShield-cargo
-        jobRequired:
-          - SalvageSpecialist
-# Corvax-HiddenDesc-End
 
 - type: entity
   name: telescopic shield

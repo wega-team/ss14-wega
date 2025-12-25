@@ -61,3 +61,4 @@ flavor-base-petroleum = как бензин
 flavor-base-robust = как сила
 flavor-base-chaotic = как хаос
 flavor-base-money = как ваша зарплата
+flavor-base-shrimp = как креветка

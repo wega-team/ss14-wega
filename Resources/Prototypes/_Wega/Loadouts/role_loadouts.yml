@@ -9,6 +9,7 @@
   - BarberOuterClothing
   - CommonBackpack
   - Glasses
+  - BaseShoose
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
@@ -27,8 +28,8 @@
   - SurvivalMedical
   - Trinkets
   - GroupSpeciesBreathTool
-  - Top
-  - Bottom
+  - TopSecurity
+  - BottomSecurity
   - Socks
 
 - type: roleLoadout
@@ -110,6 +111,7 @@
   - PostmanJumpsuit
   - PostmanBackpack
   - Glasses
+  - BaseShoose
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool

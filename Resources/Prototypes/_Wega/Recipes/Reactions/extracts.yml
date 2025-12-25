@@ -10,7 +10,7 @@
     Blood:
       amount: 6
   effects:
-    - !type:CreateEntityReactionEffect
+    - !type:SpawnEntity
       entity: MonkeyCube
 
 - type: reaction
@@ -24,7 +24,7 @@
     Plasma:
       amount: 10
   effects:
-    - !type:CreateEntityReactionEffect
+    - !type:SpawnEntity
       entity: MobXenoSlimeGray
 
 - type: reaction
@@ -62,7 +62,7 @@
   effects:
   - !type:CreateGas
     gas: Plasma
-  - !type:ExplosionReactionEffect
+  - !type:Explosion
     explosionType: Default
     maxIntensity: 20
     intensityPerUnit: 0.5
@@ -113,7 +113,7 @@
     Plasma:
       amount: 2
   effects:
-    - !type:CreateEntityReactionEffect
+    - !type:SpawnEntity
       entity: RandomMetalSheet
 
 - type: reaction
@@ -127,7 +127,7 @@
     Water:
       amount: 2
   effects:
-    - !type:CreateEntityReactionEffect
+    - !type:SpawnEntity
       entity: RandomGlassSheet
 
 # Yellow
@@ -139,8 +139,8 @@
     Blood:
       amount: 2
   effects:
-    - !type:EmpReactionEffect
-      rangePerUnit: 0.2
+    - !type:Emp
+      rangeModifier: 0.2
       maxRange: 6
       energyConsumption: 12500
       duration: 15
@@ -156,7 +156,7 @@
     Plasma:
       amount: 10
   effects:
-    - !type:CreateEntityReactionEffect
+    - !type:SpawnEntity
       entity: SlimePowerCell
 
 - type: reaction
@@ -167,7 +167,7 @@
     Water:
       amount: 2
   effects:
-    - !type:FlashReactionEffect
+    - !type:Flash
 
 # Dark Purple
 - type: reaction
@@ -181,7 +181,7 @@
     Plasma:
       amount: 2
   effects:
-    - !type:CreateEntityReactionEffect
+    - !type:SpawnEntity
       entity: SheetPlasma1
 
 - type: reaction
@@ -195,7 +195,7 @@
     Water:
       amount: 2
   effects:
-    - !type:CreateEntityReactionEffect
+    - !type:SpawnEntity
       entity: SheetPGlass1
 
 # Dark Blue
@@ -232,7 +232,7 @@
     Plasma:
       amount: 2
   effects:
-    - !type:CreateEntityReactionEffect
+    - !type:SpawnEntity
       entity: RandomFoodSingle
 
 - type: reaction
@@ -246,7 +246,7 @@
     Water:
       amount: 2
   effects:
-    - !type:CreateEntityReactionEffect
+    - !type:SpawnEntity
       entity: RandomDrinkGlass
 
 # Bluespace
@@ -261,7 +261,7 @@
     Blood:
       amount: 30
   effects:
-    - !type:CreateEntityReactionEffect
+    - !type:SpawnEntity
       entity: RandomArtifactSpawner
 
 - type: reaction
@@ -275,7 +275,7 @@
     Plasma:
       amount: 30
   effects:
-    - !type:CreateEntityReactionEffect
+    - !type:SpawnEntity
       entity: RandomAnomalySpawner
 
 # Sepia
@@ -290,7 +290,7 @@
     Blood:
       amount: 2
   effects:
-    - !type:CreateEntityReactionEffect
+    - !type:SpawnEntity
       entity: FloorTileItemSepia
 
 - type: reaction
@@ -370,7 +370,7 @@
     Blood:
       amount: 20
   effects:
-    - !type:CreateEntityReactionEffect
+    - !type:SpawnEntity
       entity: RandomNeutralAnimal
 
 - type: reaction
@@ -384,7 +384,7 @@
     Plasma:
       amount: 20
   effects:
-    - !type:CreateEntityReactionEffect
+    - !type:SpawnEntity
       entity: RandomAgressiveAnimal
 
 - type: reaction
@@ -398,7 +398,7 @@
     Water:
       amount: 20
   effects:
-    - !type:CreateEntityReactionEffect
+    - !type:SpawnEntity
       entity: RandomPassiveAnimal
 
 # Oil
@@ -420,7 +420,7 @@
     Plasma:
       amount: 2
   effects:
-  - !type:ExplosionReactionEffect
+  - !type:Explosion
     explosionType: Default
     maxIntensity: 200
     intensityPerUnit: 5
@@ -472,5 +472,5 @@
     Plasma:
       amount: 20
   effects:
-    - !type:CreateEntityReactionEffect
+    - !type:SpawnEntity
       entity: RandomXenoSlime

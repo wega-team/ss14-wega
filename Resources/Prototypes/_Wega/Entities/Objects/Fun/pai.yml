@@ -22,14 +22,3 @@
   - type: Appearance
   - type: Eye
     drawFov: false
-  - type: HiddenDescription
-    entries:
-    - label: corvax-hidden-desc-thief-pai
-      whitelistMind:
-        mindRoles:
-        - ThiefRole
-    - label: corvax-hidden-desc-thief-pai-research
-      jobRequired:
-        - ResearchAssistant
-        - ResearchDirector
-        - Scientist

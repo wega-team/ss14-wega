@@ -24,10 +24,34 @@
       prob: 0.5
     - id: SubWizard
       prob: 0.05
+    - id: Xenoborgs
+      prob: 0.05
 
 - type: entity
   parent: BaseGameRule
   id: SubGamemodesRuleNoWizard
+  components:
+  - type: SubGamemodes
+    rules:
+    - id: Thief
+      prob: 0.5
+    - id: Xenoborgs
+      prob: 0.05
+
+- type: entity
+  parent: BaseGameRule
+  id: SubGamemodesRuleNoXenoborg
+  components:
+  - type: SubGamemodes
+    rules:
+    - id: Thief
+      prob: 0.5
+    - id: SubWizard
+      prob: 0.05
+
+- type: entity
+  parent: BaseGameRule
+  id: SubGamemodesRuleNoWizardNoXenoborg
   components:
   - type: SubGamemodes
     rules:
@@ -177,6 +201,8 @@
         - Syndicate
       mindRoles:
       - MindRoleNukeops
+  - type: DynamicRuleCost
+    cost: 200
 
 - type: entity
   abstract: true
@@ -192,17 +218,21 @@
     maxDifficulty: 5
   - type: AntagSelection
     agentName: traitor-round-end-agent-name
+  - type: DynamicRuleCost
+    cost: 100
 
 - type: entity
   parent: BaseTraitorRule
   id: Traitor
   components:
-  # Corvax-Wega-Vampires-start
+  # Corvax-Wega-SubGameRules-start
   - type: SubGamemodes
     rules:
     - id: SubVampire
       prob: 0.4
-  # Corvax-Wega-Vampires-end
+    - id: SubBloodBrothers
+      prob: 0.5
+  # Corvax-Wega-SubGameRules-end
   - type: GameRule
     minPlayers: 5
     delay:
@@ -217,7 +247,7 @@
       blacklist:
         components:
         - AntagImmune
-      lateJoinAdditional: true
+      lateJoinAdditional: false
       mindRoles:
       - MindRoleTraitor
 
@@ -258,7 +288,21 @@
       - type: ChangelingTransform
       - type: ActionGrant
         actions:
-        - ActionRetractableItemArmBlade # Temporary addition, will inevitably be a purchasable in the bio-store
+        - ActionChangelingStore
+      # TODO: Make it so the changeling gamerule changeling can inherit from the changeling store preset somehow
+      - type: Store
+        name: store-preset-name-changeling
+        categories:
+        - ChangelingAbilities
+        currencyWhitelist:
+        - ChangelingDNA
+        balance:
+          ChangelingDNA: 50
+      - type: UserInterface
+        interfaces:
+          enum.StoreUiKey.Key:
+            type: StoreBoundUserInterface
+            requireInputValidation: false
       mindRoles:
       - MindRoleChangeling
   - type: AntagObjectives
@@ -288,6 +332,8 @@
       - type: HeadRevolutionary
       mindRoles:
       - MindRoleHeadRevolutionary
+  - type: DynamicRuleCost
+    cost: 200
 
 - type: entity
   id: Sandbox
@@ -351,6 +397,8 @@
         nameFormat: name-format-wizard
       mindRoles:
       - MindRoleWizard
+  - type: DynamicRuleCost
+    cost: 150
 
 - type: entity
   id: Zombie
@@ -388,6 +436,8 @@
       # Corvax
       mindRoles:
       - MindRoleInitialInfected
+  - type: DynamicRuleCost
+    cost: 200
 
 # This rule makes the chosen players unable to get other antag rules, as a way to prevent metagaming job rolls.
 # Put this before antags assigned to station jobs, but after non-job antags (NukeOps/Wiz).
@@ -416,11 +466,28 @@
       - !type:NestedSelector
         tableId: BasicAntagEventsTable
       - !type:NestedSelector
+        tableId: ModerateAntagEventsTable
+      - !type:NestedSelector
         tableId: CargoGiftsTable
       - !type:NestedSelector
         tableId: CalmPestEventsTable
       - !type:NestedSelector
         tableId: SpicyPestEventsTable
+
+- type: entityTable
+  id: DynamicGameRulesTable
+  table: !type:AllSelector # we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp
+    children:
+    - !type:NestedSelector
+      tableId: BasicCalmEventsTable
+    - !type:NestedSelector
+      tableId: BasicAntagEventsTable
+    - !type:NestedSelector
+      tableId: CargoGiftsTable
+    - !type:NestedSelector
+      tableId: CalmPestEventsTable
+    - !type:NestedSelector
+      tableId: SpicyPestEventsTable
 
 - type: entityTable
   id: SpaceTrafficControlTable
@@ -442,10 +509,18 @@
       tableId: BasicGameRulesTable
     # Corvax-MRP-start
     minMaxEventTiming:
-      min: 360 # 6 mins
-      max: 1200 # 20 mins
+      min: 300 # 5 mins # C# const- 3
+      max: 900 # 15 mins # C# const- 10
     # Corvax-MRP-end
-  
+
+- type: entity
+  id: DynamicStationEventScheduler # this isn't the dynamic mode, but rather the station event scheduler used for dynamic
+  parent: BaseGameRule
+  components:
+  - type: BasicStationEventScheduler
+    scheduledGameRules: !type:NestedSelector
+      tableId: DynamicGameRulesTable
+
 - type: entity
   id: RampingStationEventScheduler
   parent: BaseGameRule
@@ -492,6 +567,7 @@
     - id: SolidWallRustingVariationPass
     - id: ReinforcedWallRustingVariationPass
     - id: BaseStationEventGhostBarSpawn # Corvax-Wega-GhostBar
+    - id: CutWireVariationPass
     - id: BasicPuddleMessVariationPass
       prob: 0.99
       orGroup: puddleMess
@@ -504,7 +580,7 @@
     - id: SolarPanelEmptyVariationPass
     - id: BasicDecalDirtVariationPass
     - id: BasicDecalGraffitiVariationPass
-    - id: BasicDecalBrunsVariationPass
+    - id: BasicDecalBurnsVariationPass
       prob: 0.50
       orGroup: monospaceDecals
     - id: BasicDecalDirtMonospaceVariationPass

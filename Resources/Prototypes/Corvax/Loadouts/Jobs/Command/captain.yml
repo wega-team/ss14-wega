@@ -3,8 +3,10 @@
   id: CaptainJumpsuitTurtleneck
   equipment:
     jumpsuit: ClothingUniformJumpsuitCapTurtleneck
+  groupBy: "wegaCaC" # Corvax-Wega
 
 - type: loadout
   id: CaptainJumpskirtTurtleneck
   equipment:
     jumpsuit: ClothingUniformJumpskirtCapTurtleneck
+  groupBy: "wegaCaC" # Corvax-Wega

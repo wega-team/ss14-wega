@@ -20,3 +20,7 @@ seeds-teatree-name = древесный чай
 seeds-teatree-display-name = чайное дерево
 seeds-invisiblegrape-name = невидимый виноград
 seeds-invisiblegrape-display-name = лоза невидимого винограда
+seeds-candytree-name = конфета
+seeds-candytree-display-name = конфетное дерево
+seeds-candytreerandom-name = необычная конфета
+seeds-candytreerandom-display-name = необычное конфетное дерево

@@ -88,6 +88,15 @@
         tape_greyscale: Rainbow
 
 - type: entity
+  parent: CassetteTape
+  id: CassetteTapeLong
+  name: cassette tape long
+  description: A magnetic tape that can hold up to ten minutes of content on either side.
+  components:
+  - type: TapeCassette
+    maxCapacity: 600
+
+- type: entity
   suffix: Interview with Garry Smosh
   parent: CassetteTape
   id: CassetteTapeInterview

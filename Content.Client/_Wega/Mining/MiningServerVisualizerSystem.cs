@@ -34,7 +34,7 @@ namespace Content.Client.Mining.Visualizers
                 };
             }
 
-            args.Sprite.LayerSetState(MiningServerVisualLayers.Main, state);
+            SpriteSystem.LayerSetRsiState(uid, MiningServerVisualLayers.Main, state);
         }
     }
 

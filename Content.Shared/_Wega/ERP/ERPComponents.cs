@@ -4,7 +4,6 @@ using Robust.Shared.Serialization;
 namespace Content.Shared.ERP.Components
 {
     [RegisterComponent]
-    [ComponentProtoName("SexToy")]
     public sealed partial class SexToyComponent : Component
     {
         [DataField]
@@ -12,13 +11,11 @@ namespace Content.Shared.ERP.Components
     }
 
     [RegisterComponent]
-    [ComponentProtoName("Vibrator")]
     public sealed partial class VibratorComponent : Component
     {
     }
 
     [RegisterComponent]
-    [ComponentProtoName("Strapon")]
     public sealed partial class StraponComponent : Component
     {
     }

@@ -8,3 +8,7 @@ ent-ClothingBeltStraponEquine = лошадиный страпон
     .desc = { ent-ClothingBeltStraponAvian.desc }
 ent-ClothingBeltStraponHuman = человеческий страпон
     .desc = { ent-ClothingBeltStraponAvian.desc }
+ent-ClothingBeltWhiteSheath = белые сабельные ножны
+   .desc = Стиль, блеск, всё для лучших сабель во вселенной.
+ent-ClothingBeltSheriffSheath = сабельные ножны шерифа
+   .desc = Практичность, прочность, сабля точно не окажется в вашей ноге.

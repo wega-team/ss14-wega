@@ -7,10 +7,13 @@
   markingLimits: MobFelinidMarkingLimits
   dollPrototype: MobFelinidDummy
   skinColoration: HumanToned
+  minHeight: 140
+  maxHeight: 160
 
 - type: speciesBaseSprites
   id: MobFelinidSprites
   sprites:
+    Special: MobHumanoidAnyMarking
     Head: MobHumanHead
     Hair: MobHumanoidAnyMarking
     FacialHair: MobHumanoidAnyMarking
@@ -30,6 +33,9 @@
 - type: markingPoints
   id: MobFelinidMarkingLimits
   points:
+    Special:
+      points: 1
+      required: false
     Hair:
       points: 1
       required: false

@@ -88,3 +88,12 @@
   sprites:
   - sprite: Mobs/Customization/tattoos.rsi
     state: tattoo_eye_l
+
+- type: marking
+  id: Allsuccubus
+  bodyPart: Tail
+  markingCategory: Chest
+  speciesRestriction: [Demon]
+  sprites:
+  - sprite: _Wega/Mobs/Customization/demon.rsi
+    state: succubus

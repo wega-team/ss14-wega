@@ -15,6 +15,7 @@ public sealed class NightVisionOverlay : Overlay
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
 
+    private static readonly ProtoId<ShaderPrototype> NightVision = "NightVision";
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
     public override bool RequestScreenTexture => true;
     private readonly ShaderInstance _baseShader;
@@ -28,7 +29,7 @@ public sealed class NightVisionOverlay : Overlay
     public NightVisionOverlay()
     {
         IoCManager.InjectDependencies(this);
-        _baseShader = _prototypeManager.Index<ShaderPrototype>("NightVision").Instance();
+        _baseShader = _prototypeManager.Index(NightVision).Instance();
     }
 
     protected override bool BeforeDraw(in OverlayDrawArgs args)

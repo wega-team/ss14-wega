@@ -3,3 +3,12 @@
   recipes:
   - Hynospray
   - DefibrillatorCompact
+  - PouchMedical
+
+- type: latheRecipePack
+  id: ImplantMed
+  recipes:
+  - LightImplant
+  - SadTromboneImplant
+  - TrackingImplant
+  - MindShieldImplant

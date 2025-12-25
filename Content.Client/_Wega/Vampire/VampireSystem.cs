@@ -3,6 +3,7 @@ using Content.Client.Movement.Systems;
 using Content.Shared.StatusIcon.Components;
 using Content.Shared.Vampire;
 using Content.Shared.Vampire.Components;
+using Robust.Client.GameObjects;
 using Robust.Client.Player;
 using Robust.Shared.Prototypes;
 
@@ -14,6 +15,7 @@ public sealed class VampireSystem : SharedVampireSystem
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly ContentEyeSystem _contentEye = default!;
     [Dependency] private readonly IEntityManager _entityManager = default!;
+    [Dependency] private readonly SpriteSystem _sprite = default!;
 
     public override void Initialize()
     {
@@ -53,10 +55,9 @@ public sealed class VampireSystem : SharedVampireSystem
         if (args.Alert.ID != ent.Comp.BloodAlert)
             return;
 
-        var sprite = args.SpriteViewEnt.Comp;
         var blood = Math.Clamp(ent.Comp.CurrentBlood.Int(), 0, 999);
-        sprite.LayerSetState(VampireVisualLayers.Digit1, $"{(blood / 100) % 10}");
-        sprite.LayerSetState(VampireVisualLayers.Digit2, $"{(blood / 10) % 10}");
-        sprite.LayerSetState(VampireVisualLayers.Digit3, $"{blood % 10}");
+        _sprite.LayerSetRsiState(args.SpriteViewEnt.Owner, VampireVisualLayers.Digit1, $"{(blood / 100) % 10}");
+        _sprite.LayerSetRsiState(args.SpriteViewEnt.Owner, VampireVisualLayers.Digit2, $"{(blood / 10) % 10}");
+        _sprite.LayerSetRsiState(args.SpriteViewEnt.Owner, VampireVisualLayers.Digit3, $"{blood % 10}");
     }
 }

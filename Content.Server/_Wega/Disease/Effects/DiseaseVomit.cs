@@ -1,6 +1,6 @@
 using JetBrains.Annotations;
 using Content.Shared.Disease;
-using Content.Server.Medical;
+using Content.Shared.Medical;
 
 namespace Content.Server.Disease.Effects
 {

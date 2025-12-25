@@ -1,5 +1,6 @@
 using System.Linq;
 using Content.Shared.Damage;
+using Content.Shared.Damage.Components;
 using Content.Shared.FixedPoint;
 using Content.Shared.Genetics;
 using Content.Shared.Humanoid;
@@ -288,25 +289,15 @@ public sealed class EmpatheticThoughtGenSystem : EntitySystem
         bool isAntag = false;
         string? antagType = null;
 
-        foreach (var roleId in mind.MindRoles)
+        if (mind.RoleType != "Neutral" && mind.RoleType != "Familiar" && mind.RoleType != "Silicon")
         {
-            if (!TryComp<MindRoleComponent>(roleId, out var role))
-                continue;
-
-            if (role.Antag || role.ExclusiveAntag)
-            {
-                isAntag = true;
-                antagType = role.AntagPrototype;
-                break;
-            }
+            isAntag = true;
+            antagType = mind.RoleType;
         }
 
-        if (isAntag)
-        {
-            yield return GetAntagThought(antagType);
-        }
+        yield return GetRoleTypeThought(mind.RoleType);
 
-        foreach (var roleId in mind.MindRoles)
+        foreach (var roleId in mind.MindRoleContainer.ContainedEntities)
         {
             if (!TryComp<MindRoleComponent>(roleId, out var role))
                 continue;
@@ -322,7 +313,11 @@ public sealed class EmpatheticThoughtGenSystem : EntitySystem
             }
         }
 
-        if (!isAntag)
+        if (isAntag)
+        {
+            yield return GetAntagThought(antagType);
+        }
+        else
         {
             yield return _random.Pick(new[] {
                 "*Кофе бы...*",

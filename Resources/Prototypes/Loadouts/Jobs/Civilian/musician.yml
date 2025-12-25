@@ -3,12 +3,13 @@
   id: MusicianJumpsuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitMusician
+  groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: MusicianJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtMusician
-
+  groupBy: "wegaJJ" # Corvax-Wega-add
 # Outerclothing
 - type: loadout
   id: MusicianWintercoat

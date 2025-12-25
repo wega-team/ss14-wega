@@ -9,6 +9,7 @@ namespace Content.Client._Wega.Xenobiology;
 public sealed class SlimeVisualSystem : SharedSlimeVisualSystem
 {
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
+    [Dependency] private readonly SpriteSystem _sprite = default!;
 
     public override void Initialize()
     {
@@ -30,7 +31,7 @@ public sealed class SlimeVisualSystem : SharedSlimeVisualSystem
             ? $"{type.ToString().ToLower()}_baby_slime"
             : $"{type.ToString().ToLower()}_adult_slime";
 
-        args.Sprite.LayerSetState(0, state);
+        _sprite.LayerSetRsiState(ent.Owner, 0, state);
         UpdateDamageVisuals(ent.Owner, stage, type);
     }
 

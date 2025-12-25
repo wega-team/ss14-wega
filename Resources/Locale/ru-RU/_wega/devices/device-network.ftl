@@ -1,2 +1,5 @@
-device-frequency-prototype-name-surveillance-camera-syndicate = Синдикат
-device-frequency-prototype-name-surveillance-camera-syndicate-wiretapping = Синдикат (Прослушивание)
+device-frequency-prototype-name-surveillance-camera = Бодикамеры
+device-frequency-prototype-name-surveillance-camera-alpha = Альфа
+device-frequency-prototype-name-surveillance-camera-beta = Бета
+device-frequency-prototype-name-surveillance-camera-charlie = Чарли
+device-frequency-prototype-name-surveillance-camera-delta = Дельта

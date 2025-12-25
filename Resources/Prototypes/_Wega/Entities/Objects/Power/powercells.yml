@@ -7,7 +7,7 @@
   - type: Sprite
     sprite: _Wega/Objects/Consumable/Food/extracts.rsi
     state: yellow
-  - type: Battery
+  - type: PredictedBattery
     maxCharge: 720
     startingCharge: 720
     pricePerJoule: 0.15
@@ -22,7 +22,7 @@
   - type: Tag
     tags:
       - PowerCell
-  - type: HitscanBatteryAmmoProvider
+  - type: BatteryAmmoProvider
     proto: RedLightLaser
     fireCost: 50
 
@@ -36,7 +36,7 @@
     sprite: _Wega/Objects/Power/power_cells.rsi
     layers:
     - state: superpotato
-  - type: Battery
+  - type: PredictedBattery
     maxCharge: 1800
     startingCharge: 1800
   - type: Tag

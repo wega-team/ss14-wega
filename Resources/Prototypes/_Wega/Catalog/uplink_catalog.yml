@@ -3,11 +3,11 @@
   name: uplink-StickyBomb-name
   description: uplink-StickyBomb-desc
   productEntity: StickyBomb
-  discountCategory: veryRareDiscounts
+  discountCategory: usualDiscounts
   discountDownTo:
     Telecrystal: 1
   cost:
-    Telecrystal: 3
+    Telecrystal: 2
   categories:
   - UplinkExplosives
 
@@ -18,9 +18,9 @@
   productEntity: OverlordCircuitBoard
   discountCategory: veryRareDiscounts
   discountDownTo:
-    Telecrystal: 4
+    Telecrystal: 1
   cost:
-    Telecrystal: 6
+    Telecrystal: 2
   categories:
   - UplinkDisruption
   conditions:
@@ -36,9 +36,9 @@
   productEntity: SyndicateCircuitBoard
   discountCategory: rareDiscounts
   discountDownTo:
-    Telecrystal: 11
+    Telecrystal: 3
   cost:
-    Telecrystal: 15
+    Telecrystal: 4
   categories:
   - UplinkDisruption
   conditions:
@@ -46,19 +46,6 @@
      blacklist:
        tags:
        - NukeOpsUplink
-
-- type: listing
-  id: UplinkWiretappingKit
-  name: uplink-wiretapping-kit-name
-  description: uplink-wiretapping-kit-desc
-  productEntity: WiretappingKit
-  discountCategory: usualDiscounts
-  discountDownTo:
-    Telecrystal: 3
-  cost:
-    Telecrystal: 6
-  categories:
-  - UplinkDeception
 
 - type: listing
   id: UplinkGarrotte
@@ -71,7 +58,7 @@
   cost:
     Telecrystal: 3
   categories:
-  - UplinkDisruption
+  - UplinkWeaponry
 
 - type: listing
   id: UplinkSyndicateSegwayCrate
@@ -80,9 +67,9 @@
   icon: { sprite: /Textures/Objects/Vehicles/syndicatesegway.rsi, state: icon }
   productEntity: CrateFunSyndicateSegway
   discountDownTo:
-    Telecrystal: 3
+    Telecrystal: 1
   cost:
-    Telecrystal: 5
+    Telecrystal: 2
   categories:
   - UplinkPointless
   conditions:
@@ -98,23 +85,34 @@
   productEntity: RCDUpgradeKit
   discountCategory: rareDiscounts
   discountDownTo:
-    Telecrystal: 4
+    Telecrystal: 2
   cost:
-    Telecrystal: 6
+    Telecrystal: 3
   categories:
   - UplinkDisruption
+  
+- type: listing
+  id: UplinkClothingHandsKnuckleDustersStun
+  name: uplink-clothing-hands-knuckle-dusters-stun-name
+  description: clothing-hands-knuckle-dusters-stun-desc
+  icon: { sprite: Clothing/Hands/Gloves/KnuckleDusters/electricknuckleduster.rsi, state: knuckleduster_nocell }
+  productEntity: ClothingHandsKnuckleDustersStun
+  discountCategory: usualDiscounts
+  discountDownTo:
+    Telecrystal: 2
+  cost:
+    Telecrystal: 3
+  categories:
+  - UplinkWeaponry
 
 - type: listing
-  id: UplinkEnergySwordDouble
-  name: uplink-esword-double-name
-  description: uplink-esword-double-desc
-  icon: { sprite: /Textures/Objects/Weapons/Melee/e_sword_double.rsi, state: icon }
-  productEntity: EnergySwordDouble
-  discountCategory: veryRareDiscounts
-  discountDownTo:
-    Telecrystal: 20
+  id: UplinkAdvancedHristov
+  name: uplink-hristov-bundle-name
+  description: uplink-hristov-bundle-desc
+  icon: { sprite: /Textures/Objects/Weapons/Guns/Snipers/heavy_sniper.rsi, state: base }
+  productEntity: ClothingBackpackDuffelSyndicateFilledHristov
   cost:
-    Telecrystal: 26
+    Telecrystal: 18
   categories:
   - UplinkWeaponry
   conditions:
@@ -122,3 +120,250 @@
     whitelist:
       tags:
       - NukeOpsUplink
+
+- type: listing
+  id: UplinkXC67BundleAgent
+  name: uplink-xc67-name
+  description: uplink-xc67-desc
+  icon: { sprite: /Textures/_Wega/Objects/Weapons/Guns/Rifles/xc67.rsi, state: icon}
+  productEntity: ClothingBackpackDuffelSyndicateFilledXC67
+  discountCategory: veryRareDiscounts
+  discountDownTo:
+    Telecrystal: 13
+  cost:
+    Telecrystal: 15
+  categories:
+  - UplinkWeaponry
+  conditions:
+    - !type:StoreWhitelistCondition
+      blacklist:
+        tags:
+          - NukeOpsUplink
+
+
+- type: listing
+  id: UplinkXC67Bundle
+  name: uplink-xc67-name
+  description: uplink-xc67-desc
+  icon: { sprite: /Textures/_Wega/Objects/Weapons/Guns/Rifles/xc67.rsi, state: icon}
+  productEntity: ClothingBackpackDuffelSyndicateFilledXC67
+  cost:
+    Telecrystal: 19
+  categories:
+  - UplinkWeaponry
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - NukeOpsUplink
+
+- type: listing
+  id: UplinkAdvansedMagboots
+  name: uplink-advanced-magboots-name
+  description: uplink-advanced-magboots-desc
+  icon: { sprite: _Wega/Clothing/Shoes/Boots/advanced.rsi, state: icon }
+  productEntity: ClothingShoesBootsMagAdvSynd
+  cost:
+    Telecrystal: 8
+  categories:
+  - UplinkWearables
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - NukeOpsUplink
+
+- type: listing
+  id: UplinkEyesHudSyndicateCamera
+  name: uplink-syndicate-camera-name
+  description: uplink-syndicate-camera-desc
+  icon: { sprite: _Wega/Clothing/Eyes/syndcamerahud.rsi, state: icon }
+  productEntity: ClothingEyesHudSyndicateCamera
+  cost:
+    Telecrystal: 2
+  categories:
+  - UplinkWearables
+
+- type: listing
+  id: UplinkNukeSyndiHoloprojectorField
+  name: uplink-syndiholoprojectorfield-name
+  description: uplink-syndiholoprojectorfield-desc
+  productEntity: SyndiHoloprojectorField
+  cost:
+    Telecrystal: 5
+  categories:
+    - UplinkDeception
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - NukeOpsUplink
+
+- type: listing
+  id: UplinkWeaponXC67ammo
+  name: uplink-xc67ammo-name
+  description: uplink-xc67ammo-desc
+  icon: { sprite: /Textures/_Wega/Objects/Weapons/Guns/Ammunition/Magazine/Rifle/ext_rifle_mag.rsi, state: base }
+  productEntity: ExtMagazineRifle
+  cost:
+    Telecrystal: 1
+  categories:
+  - UplinkAmmo
+
+- type: listing
+  id: UplinkSheathSyndieFilledBox
+  name: uplink-syndicate-rapier-name
+  description: uplink-syndicate-rapier-desc
+  icon: { sprite: _Wega/Objects/Weapons/Melee/syndicate_rapier.rsi, state: icon }
+  productEntity: BeltSheathSyndieFilledBox
+  cost:
+    Telecrystal: 6
+  categories:
+  - UplinkWeaponry
+
+- type: listing
+  id: UplinkMagazinePistolCaselessRifleFree
+  name: uplink-pistol-magazine-caseless-name
+  description: uplink-pistol-magazine-caseless-desc
+  icon: { sprite: /Textures/Objects/Weapons/Guns/Ammunition/Magazine/CaselessRifle/caseless_pistol_mag.rsi, state: red-icon }
+  productEntity: MagazinePistolCaselessRifle
+  categories:
+  - UplinkAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+# For the Python
+- type: listing
+  id: UplinkPistol9mmMagazineFree
+  name: uplink-pistol-magazine-name
+  description: uplink-pistol-magazine-desc
+  icon: { sprite: /Textures/Objects/Weapons/Guns/Ammunition/Magazine/Pistol/pistol_mag.rsi, state: red-icon }
+  productEntity: MagazinePistol
+  categories:
+  - UplinkAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+    
+- type: listing
+  id: UplinkC20RBundleNuke
+  name: uplink-c20r-bundle-name
+  description: uplink-c20r-bundle-desc
+  icon: { sprite: /Textures/Objects/Weapons/Guns/SMGs/c20r.rsi, state: icon }
+  productEntity: ClothingBackpackDuffelSyndicateFilledSMG
+  cost:
+    Telecrystal: 17
+  categories:
+  - UplinkWeaponry
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - NukeOpsUplink
+
+- type: listing
+  id: UplinkEstocBundleNuke
+  name: uplink-estoc-bundle-name
+  description: uplink-estoc-bundle-desc
+  icon: { sprite: /Textures/Objects/Weapons/Guns/Rifles/estoc.rsi, state: icon }
+  productEntity: ClothingBackpackDuffelSyndicateFilledRifle
+  cost:
+    Telecrystal: 13
+  categories:
+  - UplinkWeaponry
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - NukeOpsUplink
+
+- type: listing
+  id: UplinkDesertEagle
+  name: uplink-desert-eagle-name
+  description: uplink-desert-eagle-desc
+  icon: { sprite: _Wega/Objects/Weapons/Guns/Pistols/deserteagle.rsi, state: icon }
+  productEntity: WeaponPistolDesertEagle
+  cost:
+    Telecrystal: 8
+  categories:
+  - UplinkWeaponry
+
+- type: listing
+  id: UplinkMagazineEagle
+  name: uplink-magazine-eagle-name
+  description: uplink-magazine-eagle-desc
+  icon: { sprite: _Wega/Objects/Weapons/Guns/Ammunition/Magazine/Pistol/magazinedeserteagle.rsi, state: base }
+  productEntity: MagazineEagle
+  cost:
+    Telecrystal: 1
+  categories:
+  - UplinkAmmo
+  conditions:
+
+- type: listing
+  id: UplinkMagazineEagleAP
+  name: uplink-magazine-eagle-ap-name
+  description: uplink-magazine-eagle-ap-desc
+  icon: { sprite: _Wega/Objects/Weapons/Guns/Ammunition/Magazine/Pistol/magazinedeserteagle.rsi, state: red }
+  productEntity: MagazineEagleAP
+  cost:
+    Telecrystal: 3
+  categories:
+  - UplinkAmmo
+
+- type: listing
+  id: UplinkBulldogBundleNuke
+  name: uplink-buldog-bundle-name
+  description: uplink-buldog-bundle-desc
+  icon: { sprite: /Textures/Objects/Weapons/Guns/Shotguns/bulldog.rsi, state: icon }
+  productEntity: ClothingBackpackDuffelSyndicateFilledShotgun
+  cost:
+    Telecrystal: 17
+  categories:
+  - UplinkWeaponry
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - NukeOpsUplink
+
+- type: listing
+  id: UplinAmmoSniper
+  name: uplink-ammo-sniper-name
+  description: uplink-ammo-sniper-desc
+  icon: { sprite: _Wega/Objects/Weapons/Guns/Ammunition/Magazine/Sniper/snipers.rsi, state: mag-1 }
+  productEntity: MagazineHristovAdvanced
+  cost:
+    Telecrystal: 2
+  categories:
+  - UplinkAmmo
+
+- type: listing
+  id: UplinkSyndiePlayerInstrument
+  name: uplink-syndie-player-name
+  description: uplink-syndie-player-desc
+  icon: { sprite: _Wega/Objects/Fun/Instruments/syndieplayer.rsi, state: icon }
+  productEntity: SyndiePlayerInstrument
+  categories:
+  - UplinkPointless
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+    
+- type: listing
+  id: UplinkSyndiePouch
+  name: uplink-syndie-pouch-name
+  description: uplink-syndie-pouch-desc
+  icon: { sprite: _Wega/Clothing/Back/Specific/Pouch/base.rsi, state: icon }
+  productEntity: PouchSyndie
+  categories:
+    - UplinkWearables
+  discountCategory: veryRareDiscounts
+  discountDownTo:
+    Telecrystal: 0
+  cost:
+    Telecrystal: 1
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 2

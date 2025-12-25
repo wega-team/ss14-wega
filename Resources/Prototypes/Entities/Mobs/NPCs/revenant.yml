@@ -68,6 +68,10 @@
         type: StoreBoundUserInterface
   - type: Visibility
     layer: 2 #ghost vis layer
+  - type: ActionGrant
+    actions:
+    - ActionRevenantShop
+    - ActionRevenantTransmit # Corvax-Wega-Revenant
   - type: Store
     categories:
     - RevenantAbilities

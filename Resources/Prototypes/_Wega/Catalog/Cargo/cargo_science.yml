@@ -4,7 +4,7 @@
     sprite: _Wega/Structures/Machines/miningserver.rsi
     state: base
   product: CrateMiningServerFlatpack
-  cost: 1000
+  cost: 500
   category: cargoproduct-category-name-science
   group: market
 
@@ -14,7 +14,7 @@
     sprite: _Wega/Structures/Machines/miningserver.rsi
     state: mode1
   product: CrateMiningServerMAXFlatpack
-  cost: 3000
+  cost: 1500
   category: cargoproduct-category-name-science
   group: market
   
@@ -45,5 +45,15 @@
     state: wrapper
   product: SlimeRNDCubeWrapped
   cost: 1000
+  category: cargoproduct-category-name-science
+  group: market
+
+- type: cargoProduct
+  id: CrateGeneticAncestorCube
+  icon:
+    sprite: _Wega/Objects/Misc/ancestorcube.rsi
+    state: box_ancestor
+  product: CrateGeneticAncestorCube
+  cost: 3100
   category: cargoproduct-category-name-science
   group: market

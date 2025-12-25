@@ -1,13 +1,13 @@
 using System.Linq;
 using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
-using Content.Server.Storage.Components;
 using Content.Shared.Audio;
 using Content.Shared.Clothing.Components;
 using Content.Shared.DirtVisuals;
 using Content.Shared.Jittering;
 using Content.Shared.Lock;
 using Content.Shared.Power;
+using Content.Shared.Storage.Components;
 using Content.Shared.Verbs;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
@@ -130,8 +130,13 @@ namespace Content.Server.WashingMachine
                     _dirt.CleanDirt(entity, 100f);
 
                 // This is to clean the switchable clothes
-                var attachedClothing = EntityManager.EntityQuery<AttachedClothingComponent>()
-                    .Where(ac => ac.AttachedUid == entity).Select(ac => ac.Owner).ToList();
+                var attachedClothing = new List<EntityUid>();
+                var attachedClothingQuery = EntityQueryEnumerator<AttachedClothingComponent>();
+                while (attachedClothingQuery.MoveNext(out var clothingUid, out var ac))
+                {
+                    if (ac.AttachedUid == entity)
+                        attachedClothing.Add(clothingUid);
+                }
 
                 foreach (var clothing in attachedClothing)
                 {

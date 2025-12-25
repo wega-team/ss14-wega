@@ -7,6 +7,8 @@ using Content.Shared.Administration.Components;
 using Content.Shared.Administration.Logs;
 using Content.Shared.CombatMode;
 using Content.Shared.Damage;
+using Content.Shared.Damage.Components;
+using Content.Shared.Damage.Events;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Database;
 using Content.Shared.DirtVisuals; // Corvax-Wega-Dirtable
@@ -47,23 +49,24 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
 {
     [Dependency] protected readonly IGameTiming Timing = default!;
     [Dependency] protected readonly IMapManager MapManager = default!;
-    [Dependency] private   readonly INetManager _netMan = default!;
-    [Dependency] private   readonly IPrototypeManager _protoManager = default!;
-    [Dependency] private   readonly IRobustRandom _random = default!;
+    [Dependency] private readonly INetManager _netMan = default!;
+    [Dependency] private readonly IPrototypeManager _protoManager = default!;
+    [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] protected readonly ISharedAdminLogManager AdminLogger = default!;
     [Dependency] protected readonly ActionBlockerSystem Blocker = default!;
     [Dependency] protected readonly DamageableSystem Damageable = default!;
-    [Dependency] private   readonly SharedHandsSystem _hands = default!;
-    [Dependency] private   readonly InventorySystem _inventory = default!;
-    [Dependency] private   readonly MeleeSoundSystem _meleeSound = default!;
+    [Dependency] private readonly SharedHandsSystem _hands = default!;
+    [Dependency] private readonly InventorySystem _inventory = default!;
+    [Dependency] private readonly MeleeSoundSystem _meleeSound = default!;
     [Dependency] protected readonly MobStateSystem MobState = default!;
-    [Dependency] private   readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] protected readonly SharedCombatModeSystem CombatMode = default!;
     [Dependency] protected readonly SharedInteractionSystem Interaction = default!;
-    [Dependency] private   readonly SharedPhysicsSystem _physics = default!;
+    [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] protected readonly SharedPopupSystem PopupSystem = default!;
     [Dependency] protected readonly SharedTransformSystem TransformSystem = default!;
-    [Dependency] private   readonly SharedStaminaSystem _stamina = default!;
+    [Dependency] private readonly SharedStaminaSystem _stamina = default!;
+    [Dependency] private readonly DamageExamineSystem _damageExamine = default!;
     [Dependency] private readonly SharedDirtSystem _dirt = default!; // Corvax-Wega-Dirtable
 
     private const int AttackMask = (int)(CollisionGroup.MobMask | CollisionGroup.Opaque);
@@ -85,6 +88,7 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         SubscribeLocalEvent<MeleeWeaponComponent, HandSelectedEvent>(OnMeleeSelected);
         SubscribeLocalEvent<MeleeWeaponComponent, ShotAttemptedEvent>(OnMeleeShotAttempted);
         SubscribeLocalEvent<MeleeWeaponComponent, GunShotEvent>(OnMeleeShot);
+        SubscribeLocalEvent<MeleeWeaponComponent, DamageExamineEvent>(OnMeleeExamineDamage);
         SubscribeLocalEvent<BonusMeleeDamageComponent, GetMeleeDamageEvent>(OnGetBonusMeleeDamage);
         SubscribeLocalEvent<BonusMeleeDamageComponent, GetHeavyDamageModifierEvent>(OnGetBonusHeavyDamageModifier);
         SubscribeLocalEvent<BonusMeleeAttackRateComponent, GetMeleeAttackRateEvent>(OnGetBonusMeleeAttackRate);
@@ -97,8 +101,7 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         SubscribeAllEvent<StopAttackEvent>(OnStopAttack);
 
 #if DEBUG
-        SubscribeLocalEvent<MeleeWeaponComponent,
-                            MapInitEvent>                   (OnMapInit);
+        SubscribeLocalEvent<MeleeWeaponComponent, MapInitEvent>(OnMapInit);
     }
 
     private void OnMapInit(EntityUid uid, MeleeWeaponComponent component, MapInitEvent args)
@@ -126,6 +129,18 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         }
     }
 
+    private void OnMeleeExamineDamage(EntityUid uid, MeleeWeaponComponent component, ref DamageExamineEvent args)
+    {
+        if (component.Hidden)
+            return;
+
+        var damageSpec = GetDamage(uid, args.User, component);
+
+        if (damageSpec.Empty)
+            return;
+
+        _damageExamine.AddDamageExamine(args.Message, Damageable.ApplyUniversalAllModifiers(damageSpec), Loc.GetString("damage-melee"));
+    }
     private void OnMeleeSelected(EntityUid uid, MeleeWeaponComponent component, HandSelectedEvent args)
     {
         var attackRate = GetAttackRate(uid, args.User, component);
@@ -191,7 +206,7 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
 
     private void OnLightAttack(LightAttackEvent msg, EntitySessionEventArgs args)
     {
-        if (args.SenderSession.AttachedEntity is not {} user)
+        if (args.SenderSession.AttachedEntity is not { } user)
             return;
 
         if (!TryGetWeapon(user, out var weaponUid, out var weapon) ||
@@ -203,23 +218,22 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         AttemptAttack(user, weaponUid, weapon, msg, args.SenderSession);
     }
 
-    private void OnHeavyAttack(HeavyAttackEvent msg, EntitySessionEventArgs args)
+    private void OnHeavyAttack(HeavyAttackEvent msg, EntitySessionEventArgs args) // Corvax-Wega-Change
     {
-        if (args.SenderSession.AttachedEntity is not {} user)
+        var weapon = GetEntity(msg.Weapon); // Corvax-Wega-Add
+        if (args.SenderSession.AttachedEntity is not { } user // Corvax-Wega-Change
+            || TerminatingOrDeleted(user) || TerminatingOrDeleted(weapon)) // Corvax-Wega-Change
             return;
 
-        if (!TryGetWeapon(user, out var weaponUid, out var weapon) ||
-            weaponUid != GetEntity(msg.Weapon))
-        {
+        if (!TryGetWeapon(user, out var weaponUid, out var weaponComp) // Corvax-Wega-Change
+            || weaponUid != weapon || !weaponComp.PossibilityWideAtack) // Corvax-Wega-Change
             return;
-        }
 
-        AttemptAttack(user, weaponUid, weapon, msg, args.SenderSession);
+        AttemptAttack(user, weaponUid, weaponComp, msg, args.SenderSession);
     }
-
     private void OnDisarmAttack(DisarmAttackEvent msg, EntitySessionEventArgs args)
     {
-        if (args.SenderSession.AttachedEntity is not {} user)
+        if (args.SenderSession.AttachedEntity is not { } user)
             return;
 
         if (TryGetWeapon(user, out var weaponUid, out var weapon))
@@ -529,9 +543,8 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         RaiseLocalEvent(target.Value, attackedEvent);
 
         var modifiedDamage = DamageSpecifier.ApplyModifierSets(damage + hitEvent.BonusDamage + attackedEvent.BonusDamage, hitEvent.ModifiersList);
-        var damageResult = Damageable.TryChangeDamage(target, modifiedDamage, origin:user, ignoreResistances:resistanceBypass);
 
-        if (damageResult is {Empty: false})
+        if (Damageable.TryChangeDamage(target.Value, modifiedDamage, out var damageResult, origin:user, ignoreResistances:resistanceBypass))
         {
             _dirt.AddBloodDirtFromDamage(target.Value, user, damageResult); // Corvax-Wega-Dirtable
             // If the target has stamina and is taking blunt damage, they should also take stamina damage based on their blunt to stamina factor
@@ -557,13 +570,13 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
 
         _meleeSound.PlayHitSound(target.Value, user, GetHighestDamageSound(modifiedDamage, _protoManager), hitEvent.HitSoundOverride, component);
 
-        if (damageResult?.GetTotal() > FixedPoint2.Zero)
+        if (damageResult.GetTotal() > FixedPoint2.Zero)
         {
             DoDamageEffect(targets, user, targetXform);
         }
     }
 
-    protected abstract void DoDamageEffect(List<EntityUid> targets, EntityUid? user,  TransformComponent targetXform);
+    protected abstract void DoDamageEffect(List<EntityUid> targets, EntityUid? user, TransformComponent targetXform);
 
     private bool DoHeavyAttack(EntityUid user, HeavyAttackEvent ev, EntityUid meleeUid, MeleeWeaponComponent component, ICommonSession? session)
     {
@@ -686,9 +699,9 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
             RaiseLocalEvent(entity, attackedEvent);
             var modifiedDamage = DamageSpecifier.ApplyModifierSets(damage + hitEvent.BonusDamage + attackedEvent.BonusDamage, hitEvent.ModifiersList);
 
-            var damageResult = Damageable.TryChangeDamage(entity, modifiedDamage, origin: user, ignoreResistances: resistanceBypass);
+            var damageResult = Damageable.ChangeDamage(entity, modifiedDamage, origin: user, ignoreResistances: resistanceBypass);
 
-            if (damageResult != null && damageResult.GetTotal() > FixedPoint2.Zero)
+            if (damageResult.GetTotal() > FixedPoint2.Zero)
             {
                 _dirt.AddBloodDirtFromDamage(entity, user, damageResult); // Corvax-Wega-Dirtable
                 // If the target has stamina and is taking blunt damage, they should also take stamina damage based on their blunt to stamina factor
@@ -732,7 +745,7 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
     {
         // TODO: This is pretty sucky.
         var widthRad = arcWidth;
-        var increments = 1 + 35 * (int) Math.Ceiling(widthRad / (2 * Math.PI));
+        var increments = 1 + 35 * (int)Math.Ceiling(widthRad / (2 * Math.PI));
         var increment = widthRad / increments;
         var baseAngle = angle - widthRad / 2;
 

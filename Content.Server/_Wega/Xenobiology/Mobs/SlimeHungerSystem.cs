@@ -1,6 +1,7 @@
 using System.Linq;
 using Content.Server.Chat.Systems;
 using Content.Shared.Body.Components;
+using Content.Shared.Chat;
 using Content.Shared.DoAfter;
 using Content.Shared.Interaction;
 using Content.Shared.Mobs.Systems;

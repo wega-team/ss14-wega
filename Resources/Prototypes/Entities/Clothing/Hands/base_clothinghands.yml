@@ -9,7 +9,7 @@
     slots: [gloves]
   - type: DiseaseProtection # Corvax-Wega-Disease
     protection: 0.05 # Corvax-Wega-Disease
-  - type: Food
+  - type: Edible
     requiresSpecialDigestion: true
   - type: Item
     size: Small

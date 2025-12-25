@@ -1,0 +1,29 @@
+- type: marking
+  id: AriralEars
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Ariral]
+  followSkinColor: true
+  forcedColoring: true
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+  sprites:
+  - sprite: _Wega/Mobs/Customization/ariral_ears.rsi
+    state: default
+
+- type: marking
+  id: AriralLongEars
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Ariral]
+  followSkinColor: true
+  forcedColoring: true
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+  sprites:
+  - sprite: _Wega/Mobs/Customization/ariral_ears.rsi
+    state: long
