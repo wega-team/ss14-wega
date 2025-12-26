@@ -326,6 +326,6 @@
       Max: 7
       PotencyDivisor: 20
     UnstableMutagen:
-      Min: 1
-      Max: 2
+      Min: 0.1
+      Max: 0.5
       PotencyDivisor: 50

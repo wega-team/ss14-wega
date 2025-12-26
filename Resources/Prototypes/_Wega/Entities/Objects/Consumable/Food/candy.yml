@@ -52,6 +52,7 @@
       - Blood
       - ZombieBlood
 
+
 - type: entity
   name: lollipop
   parent: FoodProduceBase
@@ -88,6 +89,9 @@
           lollipop14: ""
           lollipop15: ""
           lollipop16: ""
+  - type: Tag
+    tags:
+    - Lollipops
 
 - type: entity
   name: lollipop
@@ -129,3 +133,6 @@
           lollipop14: ""
           lollipop15: ""
           lollipop16: ""
+  - type: Tag
+    tags:
+    - Lollipops
