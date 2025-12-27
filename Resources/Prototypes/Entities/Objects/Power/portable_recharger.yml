@@ -36,5 +36,4 @@
         ejectOnInteract: true
         whitelist:
           components:
-          - HitscanBatteryAmmoProvider
-          # - ProjectileBatteryAmmoProvider Corvax-Wega-Add
+          - BatteryAmmoProvider

@@ -18,10 +18,9 @@
   - type: Battery
     maxCharge: 1500
     startingCharge: 1500
-  - type: BatterySelfRecharger
-    autoRecharge: true
+  - type: PredictedBatterySelfRecharger
     autoRechargeRate: 25
-  - type: ProjectileBatteryAmmoProvider
+  - type: BatteryAmmoProvider
     proto: BulletPlasmaCutter
     fireCost: 75
   - type: Appearance

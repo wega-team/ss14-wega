@@ -766,7 +766,6 @@
     - item: MicrowaveForBorg
     - item: BorgGeneratorPocket
     - item: BorgGeneratorMeat
-    - item: BorgGeneratorDrink
     - hand:
         emptyRepresentative: FoodBreadPlain
         emptyLabel: borg-slot-food-empty
@@ -775,6 +774,7 @@
           - SlimeFood
           tags:
           - FoodSnack
+    - item: BorgGeneratorDrink
     - hand:
         emptyLabel: borg-slot-chemical-containers-empty
         emptyRepresentative: DrinkGlass
