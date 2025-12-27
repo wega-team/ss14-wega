@@ -599,6 +599,8 @@
           Quantity: 7
   - type: Edible
     requiresSpecialDigestion: true
+  - type: Extractable
+    grindableSolutionName: food
 
 - type: entity
   name: festive tangerine
