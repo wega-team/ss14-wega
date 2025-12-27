@@ -2,7 +2,7 @@ using System.Collections.Frozen;
 using System.Text.RegularExpressions;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Chat.Prototypes;
-using Content.Shared.Mind;
+using Content.Shared.Mind; // Corvax-Wega-MindChat
 using Content.Shared.Popups;
 using Content.Shared.Radio;
 using Content.Shared.Speech;
