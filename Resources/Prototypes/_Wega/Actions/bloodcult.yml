@@ -1,32 +1,5 @@
 # Basic
 - type: entity
-  id: ActionBloodCultObjective
-  parent: BaseAction
-  name: "[color=red]Objective[/color]"
-  description: "Shows the current purpose of the cult."
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_bloodcult.rsi, state: "vote" }
-    useDelay: 5
-  - type: InstantAction
-    event: !type:BloodCultObjectiveActionEvent
-
-- type: entity
-  id: ActionBloodCultComms
-  parent: BaseAction
-  name: "[color=red]Communication[/color]"
-  description: "Allows you to talk to your fellow humans."
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_bloodcult.rsi, state: "comms" }
-    checkCanInteract: false
-    useDelay: 5
-  - type: InstantAction
-    event: !type:BloodCultCommuneActionEvent
-
-- type: entity
   id: ActionBloodMagic
   parent: BaseAction
   name: "[color=red]Blood magic[/color]"

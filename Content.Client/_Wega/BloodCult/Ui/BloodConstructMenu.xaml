@@ -1,32 +1,27 @@
 <ui:RadialMenu xmlns="https://spacestation14.io"
                xmlns:ui="clr-namespace:Content.Client.UserInterface.Controls"
-               xmlns:local="clr-namespace:Content.Client.Select.Construct.UI;assembly=Content.Client"
-               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-               x:Class="Content.Client.Select.Construct.UI.BloodConstructMenu"
                CloseButtonStyleClass="RadialMenuCloseButton"
-               VerticalExpand="True"
-               HorizontalExpand="True"
-               MinSize="450 450">
+               VerticalExpand="True" HorizontalExpand="True">
 
-    <ui:RadialContainer Name="Main" VerticalExpand="True" HorizontalExpand="True" InitialRadius="64" ReserveSpaceForHiddenChildren="False">
+    <ui:RadialContainer Name="Main" VerticalExpand="True" HorizontalExpand="True" InitialRadius="128" ReserveSpaceForHiddenChildren="False">
         <!-- Juggernaut -->
         <ui:RadialMenuButton Name="BloodJuggernautButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-constuct-juggernaut'}" TargetLayerControlName="BloodJuggernaut">
-            <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/juggernaut.png"/>
+            <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/Interface/Actions/juggernaut.png"/>
         </ui:RadialMenuButton>
 
         <!-- Wraith -->
         <ui:RadialMenuButton Name="BloodWraithButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-constuct-wraith'}" TargetLayerControlName="BloodWraith">
-            <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/wraith.png"/>
+            <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/Interface/Actions/wraith.png"/>
         </ui:RadialMenuButton>
 
         <!-- Artificer -->
         <ui:RadialMenuButton Name="BloodArtificerButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-constuct-artificer'}" TargetLayerControlName="BloodArtificer">
-            <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/artificer.png"/>
+            <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/Interface/Actions/artificer.png"/>
         </ui:RadialMenuButton>
 
         <!-- Proteon -->
         <ui:RadialMenuButton Name="BloodProteonButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-constuct-proteon'}" TargetLayerControlName="BloodProteon">
-            <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/proteon.png"/>
+            <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/Interface/Actions/proteon.png"/>
         </ui:RadialMenuButton>
 
     </ui:RadialContainer>

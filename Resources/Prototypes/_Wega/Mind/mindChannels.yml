@@ -1,0 +1,5 @@
+- type: mindChannel
+  id: MindBloodCult
+  name: blood-cult-mind-channel
+  keycode: 'к'
+  color: "#880000"

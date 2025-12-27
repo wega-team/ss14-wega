@@ -7,7 +7,10 @@
   guides: [ BloodCult ]
   requirements:
   - !type:OverallPlaytimeRequirement
-    time: 54000 # 15h # Corvax-RoleTime
+    time: 50h
+  - !type:DepartmentTimeRequirement
+    department: Security
+    time: 25h
 
 # Ability gears
 - type: startingGear

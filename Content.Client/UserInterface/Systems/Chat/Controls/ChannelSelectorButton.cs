@@ -63,14 +63,30 @@ public sealed class ChannelSelectorButton : ChatPopupButton<ChannelSelectorPopup
             ChatSelectChannel.LOOC => Color.MediumTurquoise,
             ChatSelectChannel.OOC => Color.LightSkyBlue,
             ChatSelectChannel.Dead => Color.MediumPurple,
+            ChatSelectChannel.Mind => Color.Peru, // Corvax-Wega-MindChat
             ChatSelectChannel.Admin => Color.HotPink,
             _ => Color.DarkGray
         };
     }
 
-    public void UpdateChannelSelectButton(ChatSelectChannel channel, Shared.Radio.RadioChannelPrototype? radio)
+    // Corvax-Wega-MindChat-Edit-start
+    public void UpdateChannelSelectButton(ChatSelectChannel channel, Shared.Radio.RadioChannelPrototype? radio, Shared.Mind.MindChannelPrototype? mind)
     {
-        Text = radio != null ? Loc.GetString(radio.Name) : ChannelSelectorName(channel);
-        Modulate = radio?.Color ?? ChannelSelectColor(channel);
+        if (radio != null)
+        {
+            Text = Loc.GetString(radio.Name);
+            Modulate = radio.Color;
+        }
+        else if (mind != null)
+        {
+            Text = Loc.GetString(mind.Name);
+            Modulate = mind.Color;
+        }
+        else
+        {
+            Text = ChannelSelectorName(channel);
+            Modulate = ChannelSelectColor(channel);
+        }
     }
+    // Corvax-Wega-MindChat-Edit-end
 }

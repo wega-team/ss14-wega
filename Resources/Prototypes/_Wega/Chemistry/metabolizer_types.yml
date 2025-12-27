@@ -3,8 +3,8 @@
   name: metabolizer-type-vampire
 
 - type: metabolizerType
-  id: Cultist
-  name: metabolizer-type-cultist
+  id: BloodCultist
+  name: metabolizer-type-blood-cultist
 
 - type: metabolizerType
   id: Ariral

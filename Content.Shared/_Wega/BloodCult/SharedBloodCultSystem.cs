@@ -28,9 +28,7 @@ public abstract class SharedBloodCultSystem : EntitySystem
                     continue;
 
                 var protoId = meta.EntityPrototype?.ID;
-                if (protoId == BloodCultistComponent.CultObjective.Id
-                    || protoId == BloodCultistComponent.CultCommunication.Id
-                    || protoId == BloodCultistComponent.BloodMagic.Id
+                if (protoId == BloodCultistComponent.BloodMagic.Id
                     || protoId == BloodCultistComponent.RecallBloodDagger.Id)
                 {
                     _action.RemoveAction(cultist, actionId);
@@ -38,29 +36,18 @@ public abstract class SharedBloodCultSystem : EntitySystem
             }
         }
 
-        if (bloodCultist.RecallSpearActionEntity != null)
-            _action.RemoveAction(cultist, bloodCultist.RecallSpearActionEntity);
-
-        if (bloodCultist.SelectedSpell != null)
-            _action.RemoveAction(cultist, bloodCultist.SelectedSpell.Value);
+        _action.RemoveAction(cultist, bloodCultist.RecallSpearActionEntity);
+        _action.RemoveAction(cultist, bloodCultist.SelectedSpell);
 
         foreach (var spell in bloodCultist.SelectedEmpoweringSpells)
-        {
-            if (spell != null)
-            {
-                _action.RemoveAction(cultist, spell.Value);
-            }
-        }
+            _action.RemoveAction(cultist, spell);
 
-        var stunTime = TimeSpan.FromSeconds(4);
-        var name = Identity.Entity(cultist, EntityManager);
-
-        _stun.TryKnockdown(cultist, stunTime, true);
-        _popup.PopupEntity(Loc.GetString("blood-cult-break-control", ("name", name)), cultist);
+        _stun.TryKnockdown(cultist, TimeSpan.FromSeconds(4), true);
+        _popup.PopupEntity(Loc.GetString("blood-cult-break-control", ("name", Identity.Entity(cultist, EntityManager))), cultist);
 
         RemComp<BloodCultistComponent>(cultist);
-        if (HasComp<CultistEyesComponent>(cultist)) RemComp<CultistEyesComponent>(cultist);
-        if (HasComp<PentagramDisplayComponent>(cultist)) RemComp<PentagramDisplayComponent>(cultist);
+        RemComp<BloodCultistEyesComponent>(cultist);
+        RemComp<BloodPentagramDisplayComponent>(cultist);
     }
     #endregion
 }

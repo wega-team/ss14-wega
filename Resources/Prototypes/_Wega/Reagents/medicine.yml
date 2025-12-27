@@ -50,7 +50,7 @@
       - !type:HealthChange
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Cultist ]
+          type: [ BloodCultist ]
         damage:
           types:
             Blunt: -0.4

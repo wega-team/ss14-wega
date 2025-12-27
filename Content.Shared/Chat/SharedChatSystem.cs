@@ -2,6 +2,7 @@ using System.Collections.Frozen;
 using System.Text.RegularExpressions;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Chat.Prototypes;
+using Content.Shared.Mind;
 using Content.Shared.Popups;
 using Content.Shared.Radio;
 using Content.Shared.Speech;
@@ -31,11 +32,13 @@ public abstract partial class SharedChatSystem : EntitySystem
     public const char EmotesAltPrefix = '*';
     public const char AdminPrefix = ']';
     public const char WhisperPrefix = ',';
+    public const char MindPrefix = '+'; // Corvax-Wega-MindChat
     public const char DefaultChannelKey = 'а'; // Corvax-Wega-Edit
     // Corvax-TTS-Start: Moved from Server to Shared
     public const int VoiceRange = 10; // how far voice goes in world units
     public const int WhisperClearRange = 2; // how far whisper goes while still being understandable, in world units
     public const int WhisperMuffledRange = 5; // how far whisper goes at all, in world units
+    public const int MindChatRange = 1000; // Corvax-Wega-MindChat
     public static readonly SoundSpecifier DefaultAnnouncementSound
         = new SoundPathSpecifier("/Audio/Announcements/announce.ogg");
 
@@ -57,6 +60,8 @@ public abstract partial class SharedChatSystem : EntitySystem
     /// </summary>
     private FrozenDictionary<char, RadioChannelPrototype> _keyCodes = default!;
 
+    private FrozenDictionary<char, MindChannelPrototype> _mindKeyCodes = default!; // Corvax-Wega-MindChat
+
     public override void Initialize()
     {
         base.Initialize();
@@ -66,6 +71,7 @@ public abstract partial class SharedChatSystem : EntitySystem
         SubscribeLocalEvent<PrototypesReloadedEventArgs>(OnPrototypeReload);
         CacheRadios();
         CacheEmotes();
+        CacheMindChannels(); // Corvax-Wega-MindChat
     }
 
     protected virtual void OnPrototypeReload(PrototypesReloadedEventArgs obj)
@@ -75,6 +81,11 @@ public abstract partial class SharedChatSystem : EntitySystem
 
         if (obj.WasModified<EmotePrototype>())
             CacheEmotes();
+
+        // Corvax-Wega-MindChat-start
+        if (obj.WasModified<MindChannelPrototype>())
+            CacheMindChannels();
+        // Corvax-Wega-MindChat-end
     }
 
     private void CacheRadios()
@@ -82,6 +93,14 @@ public abstract partial class SharedChatSystem : EntitySystem
         _keyCodes = _prototypeManager.EnumeratePrototypes<RadioChannelPrototype>()
             .ToFrozenDictionary(x => x.KeyCode);
     }
+
+    // Corvax-Wega-MindChat-start
+    private void CacheMindChannels()
+    {
+        _mindKeyCodes = _prototypeManager.EnumeratePrototypes<MindChannelPrototype>()
+            .ToFrozenDictionary(x => x.KeyCode);
+    }
+    // Corvax-Wega-MindChat-end
 
     /// <summary>
     ///     Attempts to find an applicable <see cref="SpeechVerbPrototype"/> for a speaking entity's message.
@@ -199,6 +218,42 @@ public abstract partial class SharedChatSystem : EntitySystem
 
         return true;
     }
+
+    // Corvax-Wega-MindChat-start
+    public bool TryProcessMindMessage(
+        EntityUid source,
+        string input,
+        out string output,
+        out MindChannelPrototype? channel,
+        bool quiet = false)
+    {
+        output = input.Trim();
+        channel = null;
+
+        if (input.Length == 0 || !input.StartsWith(MindPrefix))
+            return false;
+
+        if (input.Length < 2 || char.IsWhiteSpace(input[1]))
+        {
+            output = SanitizeMessageCapital(input[1..].TrimStart());
+            if (!quiet)
+                _popup.PopupEntity(Loc.GetString("chat-manager-no-mind-key"), source, source);
+            return true;
+        }
+
+        var channelKey = input[1];
+        channelKey = char.ToLower(channelKey);
+        output = SanitizeMessageCapital(input[2..].TrimStart());
+
+        if (!_mindKeyCodes.TryGetValue(channelKey, out channel) && !quiet)
+        {
+            var msg = Loc.GetString("chat-manager-no-such-mind-channel", ("key", channelKey));
+            _popup.PopupEntity(msg, source, source);
+        }
+
+        return true;
+    }
+    // Corvax-Wega-MindChat-end
 
     public string SanitizeMessageCapital(string message)
     {
@@ -450,6 +505,15 @@ public abstract partial class SharedChatSystem : EntitySystem
         SoundSpecifier? announcementSound = null,
         Color? colorOverride = null)
     { }
+
+    // Corvax-Wega-MindChat-start
+    public virtual void SendMindMessage(
+        EntityUid source,
+        string message,
+        MindChannelPrototype channel,
+        bool ignoreActionBlocker = false)
+    { }
+    // Corvax-Wega-MindChat-end
 }
 
 /// <summary>

@@ -50,13 +50,16 @@
   id: BloodCult
   components:
   - type: GameRule
-    minPlayers: 30
+    minPlayers: 0
   - type: BloodCultRule
+  - type: AntagObjectives
+    objectives:
+      - BloodCultRitualObjective
   - type: AntagSelection
     definitions:
       - prefRoles: [ BloodCultist ]
         max: 4
-        playerRatio: 10
+        playerRatio: 1
         blacklist:
           components:
           - AntagImmune
@@ -66,9 +69,13 @@
         lateJoinAdditional: true
         components:
         - type: BloodCultist
+        - type: MindLink
+          channels: ["MindBloodCult"]
         - type: NpcFactionMember
           factions:
           - BloodCult
+        - type: FriendlyFaction
+          faction: BloodCult
         mindRoles:
         - MindRoleBloodCultist
         briefing:

@@ -18,7 +18,10 @@
   - type: Examiner
     skipChecks: true
   - type: Ghost
+  - type: BloodCultGhost
   - type: Spectral
+  - type: MindLink
+    channels: ["MindBloodCult"]
 
 - type: entity
   id: MobBanshee
@@ -76,6 +79,10 @@
   - type: MovementSpeedModifier
     baseWalkSpeed: 5
     baseSprintSpeed: 5
+  - type: FriendlyFaction
+    faction: BloodCult
+  - type: MindLink
+    channels: ["MindBloodCult"]
 
 - type: entity
   abstract: true
@@ -160,6 +167,10 @@
   - type: NpcFactionMember
     factions:
     - BloodCult
+  - type: FriendlyFaction
+    faction: BloodCult
+  - type: MindLink
+    channels: ["MindBloodCult"]
   - type: ShowCultistIcons
   - type: BloodCultConstruct
   - type: Barotrauma

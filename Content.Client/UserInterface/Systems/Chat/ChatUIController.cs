@@ -21,6 +21,7 @@ using Content.Shared.Chat;
 using Content.Shared.Damage.ForceSay;
 using Content.Shared.Decals;
 using Content.Shared.Input;
+using Content.Shared.Mind; // Corvax-Wega-MindChat
 using Content.Shared.Radio;
 using Content.Shared.Roles.RoleCodeword;
 using Robust.Client.GameObjects;
@@ -84,7 +85,8 @@ public sealed partial class ChatUIController : UIController
         {SharedChatSystem.EmotesAltPrefix, ChatSelectChannel.Emotes},
         {SharedChatSystem.AdminPrefix, ChatSelectChannel.Admin},
         {SharedChatSystem.RadioCommonPrefix, ChatSelectChannel.Radio},
-        {SharedChatSystem.DeadPrefix, ChatSelectChannel.Dead}
+        {SharedChatSystem.DeadPrefix, ChatSelectChannel.Dead},
+        {SharedChatSystem.MindPrefix, ChatSelectChannel.Mind} // Corvax-Wega-MindChat
     };
 
     public static readonly Dictionary<ChatSelectChannel, char> ChannelPrefixes = new()
@@ -97,7 +99,8 @@ public sealed partial class ChatUIController : UIController
         {ChatSelectChannel.Emotes, SharedChatSystem.EmotesPrefix},
         {ChatSelectChannel.Admin, SharedChatSystem.AdminPrefix},
         {ChatSelectChannel.Radio, SharedChatSystem.RadioCommonPrefix},
-        {ChatSelectChannel.Dead, SharedChatSystem.DeadPrefix}
+        {ChatSelectChannel.Dead, SharedChatSystem.DeadPrefix},
+        {ChatSelectChannel.Mind, SharedChatSystem.MindPrefix} // Corvax-Wega-MindChat
     };
 
     /// <summary>
@@ -534,6 +537,7 @@ public sealed partial class ChatUIController : UIController
             FilterableChannels |= ChatChannel.Whisper;
             FilterableChannels |= ChatChannel.Radio;
             FilterableChannels |= ChatChannel.Emotes;
+            FilterableChannels |= ChatChannel.Mind; // Corvax-Wega-MindChat
             FilterableChannels |= ChatChannel.Notifications;
 
             // Can only send local / radio / emote when attached to a non-ghost entity.
@@ -545,6 +549,8 @@ public sealed partial class ChatUIController : UIController
                 CanSendChannels |= ChatSelectChannel.Radio;
                 CanSendChannels |= ChatSelectChannel.Emotes;
             }
+
+            CanSendChannels |= ChatSelectChannel.Mind; // Corvax-Wega-MindChat
         }
 
         // Only ghosts and admins can send / see deadchat.
@@ -692,46 +698,66 @@ public sealed partial class ChatUIController : UIController
            && _chatSys.TryProcessRadioMessage(uid, text, out _, out radioChannel, quiet: true);
     }
 
+    // Corvax-Wega-MindChat-start
+    private bool TryGetMindChannel(string text, out MindChannelPrototype? mindChannel)
+    {
+        mindChannel = null;
+        return _player.LocalEntity is EntityUid { Valid: true } uid
+           && _chatSys != null
+           && _chatSys.TryProcessMindMessage(uid, text, out _, out mindChannel, quiet: true);
+    }
+    // Corvax-Wega-MindChat-end
+
     public void UpdateSelectedChannel(ChatBox box)
     {
-        var (prefixChannel, _, radioChannel) = SplitInputContents(box.ChatInput.Input.Text.ToLower());
+        var (prefixChannel, text, radioChannel, mindChannel) = SplitInputContents(box.ChatInput.Input.Text.ToLower()); // Corvax-Wega-MindChat-Edit
 
         if (prefixChannel == ChatSelectChannel.None)
-            box.ChatInput.ChannelSelector.UpdateChannelSelectButton(box.SelectedChannel, null);
+            box.ChatInput.ChannelSelector.UpdateChannelSelectButton(box.SelectedChannel, null, null); // Corvax-Wega-MindChat-Edit
         else
-            box.ChatInput.ChannelSelector.UpdateChannelSelectButton(prefixChannel, radioChannel);
+            box.ChatInput.ChannelSelector.UpdateChannelSelectButton(prefixChannel, radioChannel, mindChannel); // Corvax-Wega-MindChat-Edit
     }
 
-    public (ChatSelectChannel chatChannel, string text, RadioChannelPrototype? radioChannel) SplitInputContents(string text)
+    public (ChatSelectChannel chatChannel, string text, RadioChannelPrototype? radioChannel, MindChannelPrototype? mindChannel) SplitInputContents(string text) // Corvax-Wega-MindChat-Edit
     {
         text = text.Trim();
         if (text.Length == 0)
-            return (ChatSelectChannel.None, text, null);
+            return (ChatSelectChannel.None, text, null, null); // Corvax-Wega-MindChat-Edit
 
         // We only cut off prefix only if it is not a radio or local channel, which both map to the same /say command
         // because ????????
 
+        // Corvax-Wega-MindChat-Edit-start
         ChatSelectChannel chatChannel;
-        if (TryGetRadioChannel(text, out var radioChannel))
+        RadioChannelPrototype? radioChannel = null;
+        MindChannelPrototype? mindChannel = null;
+
+        if (TryGetRadioChannel(text, out radioChannel))
             chatChannel = ChatSelectChannel.Radio;
+        else if (TryGetMindChannel(text, out mindChannel))
+            chatChannel = ChatSelectChannel.Mind;
         else
             chatChannel = PrefixToChannel.GetValueOrDefault(text[0]);
 
         if ((CanSendChannels & chatChannel) == 0)
-            return (ChatSelectChannel.None, text, null);
+            return (ChatSelectChannel.None, text, null, null);
 
         if (chatChannel == ChatSelectChannel.Radio)
-            return (chatChannel, text, radioChannel);
+            return (chatChannel, text, radioChannel, null);
+
+        if (chatChannel == ChatSelectChannel.Mind)
+            return (chatChannel, text, null, mindChannel);
 
         if (chatChannel == ChatSelectChannel.Local)
         {
             if (_ghost?.IsGhost != true)
-                return (chatChannel, text, null);
+                return (chatChannel, text, null, null);
             else
                 chatChannel = ChatSelectChannel.Dead;
         }
 
-        return (chatChannel, text[1..].TrimStart(), null);
+        return (chatChannel, text[1..].TrimStart(), null, null);
+        // Corvax-Wega-MindChat-Edit-end
     }
 
     public void SendMessage(ChatBox box, ChatSelectChannel channel)
@@ -746,7 +772,7 @@ public sealed partial class ChatUIController : UIController
         if (string.IsNullOrWhiteSpace(text))
             return;
 
-        (var prefixChannel, text, var _) = SplitInputContents(text);
+        (var prefixChannel, text, var _, var _) = SplitInputContents(text); // Corvax-Wega-MindChat-Edit
 
         // Check if message is longer than the character limit
         if (text.Length > MaxMessageLength)
@@ -764,6 +790,12 @@ public sealed partial class ChatUIController : UIController
             // radio must have prefix as it goes through the say command.
             text = $";{text}";
         }
+        // Corvax-Wega-MindChat-start
+        else if (channel == ChatSelectChannel.Mind)
+        {
+            text = $"+{text}";
+        }
+        // Corvax-Wega-MindChat-end
 
         _manager.SendMessage(text, prefixChannel == 0 ? channel : prefixChannel);
     }

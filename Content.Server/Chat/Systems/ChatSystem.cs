@@ -36,6 +36,8 @@ using Robust.Shared.Replays;
 using Robust.Shared.Utility;
 using Content.Shared.Strangulation; // Corvax-Wega-Strangulation
 using Content.Shared.SoundInsolation; // Corvax-Wega-SoundInsolation
+using Content.Shared.Mind; // Corvax-Wega-MindChat
+using Content.Shared.Blood.Cult.Components; // Corvax-Wega-Blood-Cult
 
 namespace Content.Server.Chat.Systems;
 
@@ -235,6 +237,14 @@ public sealed partial class ChatSystem : SharedChatSystem
                 SendEntityWhisper(source, modMessage, range, channel, nameOverride, hideLog, ignoreActionBlocker);
                 return;
             }
+
+            // Corvax-Wega-MindChat-start
+            if (TryProcessMindMessage(source, message, out var mindMessage, out var mindChannel) && mindChannel != null)
+            {
+                SendMindMessage(source, mindMessage, mindChannel, ignoreActionBlocker);
+                return;
+            }
+            // Corvax-Wega-MindChat-end
         }
 
         // Otherwise, send whatever type.
@@ -383,6 +393,66 @@ public sealed partial class ChatSystem : SharedChatSystem
 
         _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Station Announcement on {station} from {sender}: {message}");
     }
+
+    // Corvax-Wega-MindChat-start
+    /// <inheritdoc/>
+    public override void SendMindMessage(
+        EntityUid source,
+        string message,
+        MindChannelPrototype channel,
+        bool ignoreActionBlocker = false)
+    {
+        if (!ignoreActionBlocker && !_actionBlocker.CanSpeak(source))
+            return;
+
+        var name = MetaData(source).EntityName;
+        name = FormattedMessage.EscapeText(name);
+
+        var wrappedMessage = Loc.GetString("chat-mind-message-wrap",
+            ("color", channel.Color),
+            ("channel", $"\\[{channel.LocalizedName}\\]"),
+            ("name", name),
+            ("message", message));
+
+        // Send to all entities with the same mind channel
+        foreach (var (session, _) in GetRecipients(source, MindChatRange))
+        {
+            if ((!TryComp<MindLinkComponent>(session.AttachedEntity, out var mindLink) || !mindLink.Channels.Contains(channel.ID))
+                && !HasComp<AdminMindLinkListenerComponent>(session.AttachedEntity))
+                continue;
+
+            _chatManager.ChatMessageToOne(
+                ChatChannel.Mind,
+                message,
+                wrappedMessage,
+                source,
+                false,
+                session.Channel);
+        }
+
+        // Also send a whisper
+        TrySendInGameICMessage(
+            source,
+            message,
+            InGameICChatType.Whisper,
+            ChatTransmitRange.Normal,
+            nameOverride: name,
+            ignoreActionBlocker: true);
+
+        // Log to admin logs
+        _adminLogger.Add(LogType.Chat, LogImpact.Low,
+            $"Mind message from {ToPrettyString(source):user} on {channel.LocalizedName}: {message}");
+
+        // Record for replay
+        var chat = new ChatMessage(
+            ChatChannel.Mind,
+            message,
+            wrappedMessage,
+            GetNetEntity(source),
+            null);
+        _replay.RecordServerMessage(chat);
+    }
+    // Corvax-Wega-MindChat-end
 
     #endregion
 
@@ -634,6 +704,9 @@ public sealed partial class ChatSystem : SharedChatSystem
 
     private void SendDeadChat(EntityUid source, ICommonSession player, string message, bool hideChat)
     {
+        if (HasComp<BloodCultGhostComponent>(source)) // Corvax-Wega-Blood-Cult-Add
+            return; // Corvax-Wega-Blood-Cult-Add
+
         var clients = GetDeadChatClients();
         var playerName = Name(source);
         string wrappedMessage;
@@ -814,6 +887,7 @@ public sealed partial class ChatSystem : SharedChatSystem
             .AddWhereAttachedEntity(HasComp<GhostComponent>)
             .Recipients
             .Union(_adminManager.ActiveAdmins)
+            .Where(d => !HasComp<BloodCultGhostComponent>(d.AttachedEntity)) // Corvax-Wega-Blood-Cult-Add
             .Select(p => p.Channel);
     }
 

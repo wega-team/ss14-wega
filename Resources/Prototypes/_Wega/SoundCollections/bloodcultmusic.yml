@@ -1,0 +1,4 @@
+- type: soundCollection
+  id: BloodCultMusic
+  files:
+    - /Audio/_Wega/StationEvents/tear_of_veil.ogg

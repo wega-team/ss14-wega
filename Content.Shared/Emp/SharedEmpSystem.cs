@@ -130,6 +130,7 @@ public abstract class SharedEmpSystem : EntitySystem
         {
             if (exclusionsSet.Contains(uid))
                 continue;
+
             TryEmpEffects(uid, energyConsumption, TimeSpan.FromSeconds(duration));
         }
         Spawn(EmpPulseEffectPrototype, coordinates);

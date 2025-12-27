@@ -114,6 +114,7 @@
   - type: MovementSpeedModifier
     baseWalkSpeed: 30
   # Corvax-End
+  - type: AdminMindLinkListener # Corvax-Wega-MindChat
 
 - type: entity
   abstract: true
