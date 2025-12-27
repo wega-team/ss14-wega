@@ -9,7 +9,6 @@
     state: hyno
   - type: Item
     sprite: /Textures/_Wega/Objects/Specific/Medical/hyno.rsi
-    state: hyno
   - type: SolutionContainerManager
     solutions:
       hypospray:

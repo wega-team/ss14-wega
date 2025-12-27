@@ -117,7 +117,6 @@
     proto: BulletDisablerSmg
     fireCost: 62.5
   - type: PredictedBatterySelfRecharger
-    autoRecharge: true
     autoRechargeRate: 10
     autoRechargePauseTime: 40
   - type: AmmoCounter
@@ -238,10 +237,17 @@
   - type: ComponentToggler
     parent: true
     components:
-    - type: RegenerationGen
-      RegenerationModifier: -1
+    - type: PassiveDamage
+      allowedStates:
+      - Alive
+      - Critical
+      - Dead
+      damage:
+        groups:
+          Brute: -1
+          Burn: -1
   - type: PowerCellDraw
-    drawRate: 42 # 200 seconds
+    drawRate: 72 # 10 seconds
   - type: ToggleCellDraw
   - type: PowerCellSlot
     cellSlotId: cell_slot
@@ -1082,9 +1088,6 @@
     - state: borghypo_trico
   - type: Item
     sprite: /Textures/_Wega/Objects/Specific/Medical/hyno.rsi
-    layers:
-    - state: borghypo
-    - state: borghypo_trico
   - type: Label
     currentLabel: reagent-name-tricordrazine
   - type: SolutionContainerManager
@@ -1113,9 +1116,6 @@
     - state: borghypo_bicka
   - type: Item
     sprite: /Textures/_Wega/Objects/Specific/Medical/hyno.rsi
-    layers:
-    - state: borghypo
-    - state: borghypo_bicka
   - type: Label
     currentLabel: reagent-name-bicaridine
   - type: SolutionContainerManager
@@ -1144,9 +1144,6 @@
     - state: borghypo_derma
   - type: Item
     sprite: /Textures/_Wega/Objects/Specific/Medical/hyno.rsi
-    layers:
-    - state: borghypo
-    - state: borghypo_derma
   - type: Label
     currentLabel: reagent-name-dermaline
   - type: SolutionContainerManager
@@ -1175,9 +1172,6 @@
     - state: borghypo_dylov
   - type: Item
     sprite: /Textures/_Wega/Objects/Specific/Medical/hyno.rsi
-    layers:
-    - state: borghypo
-    - state: borghypo_dylov
   - type: Label
     currentLabel: reagent-name-dylovene
   - type: SolutionContainerManager
@@ -1206,9 +1200,6 @@
     - state: borghypo_hyro
   - type: Item
     sprite: /Textures/_Wega/Objects/Specific/Medical/hyno.rsi
-    layers:
-    - state: borghypo
-    - state: borghypo_hyro
   - type: Label
     currentLabel: reagent-name-hyronalin
   - type: SolutionContainerManager
@@ -1237,9 +1228,6 @@
     - state: borghypo_dexal
   - type: Item
     sprite: /Textures/_Wega/Objects/Specific/Medical/hyno.rsi
-    layers:
-    - state: borghypo
-    - state: borghypo_dexal
   - type: Label
     currentLabel: reagent-name-dexalin
   - type: SolutionContainerManager
