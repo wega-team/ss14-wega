@@ -161,6 +161,8 @@
     sprite: Structures/Power/recharger.rsi
   - type: Machine
     board: WeaponCapacitorRechargerCircuitboard
+  - type: Charger  # Corvax-Wega-add
+    chargeRate: 50 # Corvax-Wega-add
   - type: ItemSlots
     slots:
       charger_slot:
@@ -170,7 +172,7 @@
           - HitscanBatteryAmmoProvider
           - ProjectileBatteryAmmoProvider
           - Stunbaton
-          - PowerCell
+          # - PowerCell Corvax-Wega-add
         blacklist:
           tags:
           - PotatoBattery
@@ -216,7 +218,7 @@
       state: "light-off"
       shader: "unshaded"
   - type: Charger
-    chargeRate: 25
+    chargeRate: 55 # Corvax-Wega-add
   - type: ItemSlots
     slots:
       charger_slot:

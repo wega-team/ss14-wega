@@ -5,7 +5,7 @@
   description: High-tech recharger adapted for portability.
   components:
   - type: Item
-    size: Huge
+    size: Ginormous
   - type: Sprite
     sprite: Objects/Power/portable_recharger.rsi
     state: charging
@@ -13,7 +13,7 @@
     equippedPrefix: charging
     quickEquip: false
     slots:
-    - back
+    - suitStorage
   - type: Charger
     slotId: charger_slot
     portable: true
@@ -35,4 +35,4 @@
         whitelist:
           components:
           - HitscanBatteryAmmoProvider
-          - ProjectileBatteryAmmoProvider
+          # - ProjectileBatteryAmmoProvider Corvax-Wega-Add

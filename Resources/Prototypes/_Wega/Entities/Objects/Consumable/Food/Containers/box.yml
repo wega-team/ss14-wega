@@ -46,6 +46,9 @@
     - state: box
       map: ["enum.StorageVisualLayers.Base"]
   - type: Storage
+    whitelist:
+      tags:
+        - Candy
     grid:
     - 0,0,5,3
     maxItemSize: Normal
@@ -60,5 +63,5 @@
     price: 0
   - type: StorageFill
     contents:
-    - id: FoodProduceLollipopBar
+    - id: FoodProduceLollipopMedRandom
       amount: 12

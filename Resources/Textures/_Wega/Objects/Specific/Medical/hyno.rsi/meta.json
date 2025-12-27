@@ -10,6 +10,27 @@
   "states": [
     {
       "name": "hyno"
+    },
+    {
+      "name": "borghypo"
+    },
+    {
+      "name": "borghypo_bicka"
+    },
+    {
+      "name": "borghypo_derma"
+    },
+    {
+      "name": "borghypo_dexal"
+    },
+    {
+      "name": "borghypo_dylov"
+    },
+    {
+      "name": "borghypo_hyro"
+    },
+    {
+      "name": "borghypo_trico"
     }
   ]
 }

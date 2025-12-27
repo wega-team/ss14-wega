@@ -15,6 +15,21 @@
 
 - type: latheRecipe
   parent: BaseBorgModuleRecipe
+  id: BorgModuleCommonMagBoots
+  result: BorgModuleCommonMagBoots
+
+- type: latheRecipe
+  parent: BaseBorgModuleRecipe
+  id: BorgModuleCommonRepeir
+  result: BorgModuleCommonRepeir
+
+- type: latheRecipe
+  parent: BaseBorgModuleRecipe
+  id: BorgModuleCommonSpeed
+  result: BorgModuleCommonSpeed
+
+- type: latheRecipe
+  parent: BaseBorgModuleRecipe
   id: BorgModuleCommonConstruction
   result: BorgModuleCommonConstruction
   
@@ -60,11 +75,6 @@
 
 - type: latheRecipe
   parent: BaseGoldBorgModuleRecipe
-  id: BorgModuleSecLethal
-  result: BorgModuleSecLethal
-
-- type: latheRecipe
-  parent: BaseGoldBorgModuleRecipe
   id: BorgModuleGranader
   result: BorgModuleGranader
 
@@ -85,6 +95,8 @@
   parent: BaseRoboticsRecipe
   id: Tyriumpack
   result: Tyriumpack1
+  categories:
+    - Anroid
   completetime: 1
   materials:
     Steel: 20
@@ -95,6 +107,8 @@
   parent: BaseRoboticsRecipe
   id: AndroidBodyPart
   result: AndroidBodyPart
+  categories:
+    - Anroid
   completetime: 5
   materials:
     Steel: 300
@@ -105,6 +119,8 @@
   parent: BaseRoboticsRecipe
   id: ArmSyntheticPry
   result: LeftArmSyntheticPry
+  categories:
+    - Anroid
   completetime: 5
   materials:
     Steel: 750
@@ -116,6 +132,8 @@
   parent: BaseRoboticsRecipe
   id: ArmSyntheticDefib
   result: LeftArmSyntheticDefib
+  categories:
+    - Anroid
   completetime: 5
   materials:
     Steel: 750
@@ -126,6 +144,8 @@
   parent: BaseRoboticsRecipe
   id: ArmSyntheticProtoKinetic
   result: LeftArmSyntheticProtoKinetic
+  categories:
+    - Anroid
   completetime: 5
   materials:
     Steel: 750
@@ -137,6 +157,8 @@
   parent: BaseRoboticsRecipe
   id: ArmSyntheticCharger
   result: LeftArmSyntheticCharger
+  categories:
+    - Anroid
   completetime: 5
   materials:
     Steel: 750
@@ -147,6 +169,8 @@
   parent: BaseRoboticsRecipe
   id: LegSyntheticMagboots
   result: LeftLegSyntheticMagboots
+  categories:
+    - Anroid
   completetime: 5
   materials:
     Steel: 750
@@ -157,6 +181,8 @@
   parent: BaseRoboticsRecipe
   id: LegSyntheticJump
   result: LeftLegSyntheticJump
+  categories:
+    - Anroid
   completetime: 5
   materials:
     Steel: 750

@@ -468,6 +468,7 @@
   - type: Tag
     tags:
     - Fruit
+    - Candy
 
 - type: entity
   name: lollipop 
@@ -500,3 +501,70 @@
   - type: Tag
     tags:
     - Fruit
+    - Candy
+
+- type: entity
+  name: lollipop 
+  parent: FoodProduceBase
+  id: FoodProduceLollipopMedical
+  suffix: "medical chemicals"
+  description: "the most delicious lollipops and more!"
+  components:
+  - type: FlavorProfile
+    flavors:
+      - sweet
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 5
+        reagents:
+        - ReagentId: Sugar
+          Quantity: 4
+        - ReagentId: UnstableMutagen
+          Quantity: 1
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/candytreerandom.rsi
+  - type: SpawnItemsOnUse
+    items:
+      - id: FoodProduceLollipopMedicalBar
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+  - type: Tag
+    tags:
+    - Fruit
+    - Candy
+
+- type: entity
+  name: lollipop 
+  parent: FoodProduceBase
+  id: FoodProduceLollipopMedRandom
+  suffix: "medical case"
+  description: "the most delicious lollipops and more!"
+  components:
+  - type: FlavorProfile
+    flavors:
+      - sweet
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 5
+        reagents:
+        - ReagentId: Sugar
+          Quantity: 4
+        - ReagentId: UnstableMutagen
+          Quantity: 1
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/candytreerandom.rsi
+  - type: SpawnItemsOnUse
+    items:
+      - id: FoodProduceLollipopBar
+        orGroup: CCandyBorg
+      - id: FoodProduceLollipopMedicalBar
+        prob: 0.5
+        orGroup: CCandyBorg
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+  - type: Tag
+    tags:
+    - Fruit
+    - Candy

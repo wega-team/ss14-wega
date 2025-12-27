@@ -11089,6 +11089,15 @@ entities:
     - type: Transform
       pos: 28.703945,8.421182
       parent: 588
+# Corvax-Wega-Start
+- proto: RareBorgModuleSpawner
+  entities:
+  - uid: 265
+    components:
+    - type: Transform
+      pos: 29.5,8.5
+      parent: 588
+# Corvax-Wega-End
 - proto: StasisBed
   entities:
   - uid: 1425

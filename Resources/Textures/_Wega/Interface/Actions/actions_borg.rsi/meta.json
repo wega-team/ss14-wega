@@ -20,6 +20,12 @@
             "name": "hand-module"
         },
         {
+            "name": "candy-module"
+        },
+        {
+            "name": "repeir-module"
+        },
+        {
             "name": "kinetic-weapon-module"
         },
         {
@@ -51,6 +57,30 @@
         },
         {
             "name": "zipper-module"
+        },
+        {
+            "name": "cook-rare"
+        },
+        {
+            "name": "rcd-rare"
+        },
+        {
+            "name": "med-rare"
+        },
+        {
+            "name": "mining-rare"
+        },
+        {
+            "name": "ubor-rare"
+        },
+        {
+            "name": "lethal-rare"
+        },
+        {
+            "name": "magboots"
+        },
+        {
+            "name": "speed"
         }
     ]
 }

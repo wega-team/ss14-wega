@@ -1,0 +1,29 @@
+- type: entity
+  name: rg 430
+  parent: BaseStorageItem
+  id: WeaponRG430
+  description: Load granade for optimal results.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Launchers/rg_430.rsi
+    layers:
+    - state: base
+  - type: AmmoCounter
+  - type: Gun
+    fireRate: 1
+    selectedMode: SemiAuto
+    availableModes:
+      - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/grenade_launcher.ogg
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+        - Grenade
+    capacity: 3
+    proto: GrenadeFrag
+    soundInsert:
+      path: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+    quickEquip: false
+    slots:
+    - Back
