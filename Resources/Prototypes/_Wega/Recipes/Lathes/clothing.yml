@@ -17,7 +17,7 @@
   materials:
     Cloth: 300
     Durathread: 100
-    Gold: 20
+    # Gold: 20
 
 - type: latheRecipe
   abstract: true
@@ -28,8 +28,8 @@
   materials:
     Cloth: 500
     Durathread: 200
-    Gold: 200
-    Silver: 100
+    # Gold: 200
+    # Silver: 100
 
 - type: latheRecipe
   abstract: true
