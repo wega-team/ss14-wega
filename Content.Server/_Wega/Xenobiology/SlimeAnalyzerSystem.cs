@@ -11,10 +11,10 @@ using Content.Shared.Xenobiology.Systems;
 using Content.Shared.IdentityManagement;
 using Content.Shared.DoAfter;
 using Content.Shared.Popups;
-using Content.Server.PowerCell;
 using Robust.Shared.Timing;
 using Content.Shared.Interaction.Events;
 using Robust.Shared.Containers;
+using Content.Shared.PowerCell;
 
 namespace Content.Server.Medical;
 
@@ -69,7 +69,7 @@ public sealed class SlimeAnalyzerSystem : EntitySystem
 
     private void OnAfterInteract(Entity<SlimeAnalyzerComponent> ent, ref AfterInteractEvent args)
     {
-        if (args.Target == null || !args.CanReach || !HasComp<SlimeHungerComponent>(args.Target) || !_cell.HasDrawCharge(ent, user: args.User))
+        if (args.Target == null || !args.CanReach || !HasComp<SlimeHungerComponent>(args.Target) || !_cell.HasDrawCharge(ent.Owner, user: args.User))
             return;
 
         _audio.PlayPvs(ent.Comp.ScanningBeginSound, ent);
@@ -89,7 +89,7 @@ public sealed class SlimeAnalyzerSystem : EntitySystem
 
     private void OnDoAfter(Entity<SlimeAnalyzerComponent> ent, ref SlimeAnalyzerDoAfterEvent args)
     {
-        if (args.Handled || args.Cancelled || args.Target == null || !_cell.HasDrawCharge(ent, user: args.User))
+        if (args.Handled || args.Cancelled || args.Target == null || !_cell.HasDrawCharge(ent.Owner, user: args.User))
             return;
 
         _audio.PlayPvs(ent.Comp.ScanningEndSound, ent);

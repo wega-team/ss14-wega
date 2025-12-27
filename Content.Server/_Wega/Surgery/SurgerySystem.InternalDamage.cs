@@ -141,7 +141,7 @@ public sealed partial class SurgerySystem
             _popup.PopupEntity(Loc.GetString("surgery-limb-torn-off", ("limb", Name(limbId))), patient, PopupType.SmallCaution);
 
             _audio.PlayPvs(GibSound, patient);
-            if (!_mobState.IsDead(patient) && !HasComp<PainNumbnessComponent>(patient) && !HasComp<SyntheticOperatedComponent>(patient))
+            if (!_mobState.IsDead(patient) && !HasComp<PainNumbnessStatusEffectComponent>(patient) && !HasComp<SyntheticOperatedComponent>(patient))
                 _chat.TryEmoteWithoutChat(patient, _proto.Index(Scream), true);
 
             _pain.AdjustPain(patient, "Physical", 250f);
@@ -232,7 +232,7 @@ public sealed partial class SurgerySystem
                     _bloodstream.TryModifyBleedAmount(entity.Owner, 5f);
 
                 _audio.PlayPvs(GibSound, entity);
-                if (!_mobState.IsDead(entity) && !HasComp<PainNumbnessComponent>(entity) && !HasComp<SyntheticOperatedComponent>(entity))
+                if (!_mobState.IsDead(entity) && !HasComp<PainNumbnessStatusEffectComponent>(entity) && !HasComp<SyntheticOperatedComponent>(entity))
                     _chat.TryEmoteWithoutChat(entity, _proto.Index(Scream), true);
 
                 _transform.SetCoordinates(limbId, Transform(entity).Coordinates);

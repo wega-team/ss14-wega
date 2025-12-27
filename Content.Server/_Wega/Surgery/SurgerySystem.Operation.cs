@@ -142,7 +142,7 @@ public sealed partial class SurgerySystem
         }
 
         // Any action without anesthesia will cause pain.
-        if (!HasComp<SleepingComponent>(patient) && !HasComp<PainNumbnessComponent>(patient) && !comp.OperatedPart
+        if (!HasComp<SleepingComponent>(patient) && !HasComp<PainNumbnessStatusEffectComponent>(patient) && !comp.OperatedPart
             && !_mobState.IsDead(patient) && !HasComp<SyntheticOperatedComponent>(patient))
             _chat.TryEmoteWithoutChat(patient, _proto.Index(Scream), true);
     }
@@ -160,7 +160,14 @@ public sealed partial class SurgerySystem
         if (!TryComp<BloodstreamComponent>(patient, out var bloodstream) || HasComp<SyntheticOperatedComponent>(patient))
             return;
 
-        ApplyBloodToClothing(patient.Comp.Surgeon.Value, bloodstream.BloodReagent, 2f * SharedDirtSystem.MaxDirtLevel);
+        string? bloodReagentId = null;
+        if (bloodstream.BloodReferenceSolution.Contents.Count > 0)
+        {
+            var reagentQuantity = bloodstream.BloodReferenceSolution.Contents[0];
+            bloodReagentId = reagentQuantity.Reagent.Prototype;
+        }
+
+        ApplyBloodToClothing(patient.Comp.Surgeon.Value, bloodReagentId, 2f * SharedDirtSystem.MaxDirtLevel);
         _bloodstream.TryModifyBleedAmount(patient.Owner, 2f);
     }
 
@@ -243,7 +250,14 @@ public sealed partial class SurgerySystem
 
         if (TryComp<BloodstreamComponent>(patient, out var bloodstream) && !HasComp<SyntheticOperatedComponent>(patient))
         {
-            ApplyBloodToClothing(patient.Comp.Surgeon.Value, bloodstream.BloodReagent, 2f * SharedDirtSystem.MaxDirtLevel);
+            string? bloodReagentId = null;
+            if (bloodstream.BloodReferenceSolution.Contents.Count > 0)
+            {
+                var reagentQuantity = bloodstream.BloodReferenceSolution.Contents[0];
+                bloodReagentId = reagentQuantity.Reagent.Prototype;
+            }
+
+            ApplyBloodToClothing(patient.Comp.Surgeon.Value, bloodReagentId, 2f * SharedDirtSystem.MaxDirtLevel);
             _bloodstream.TryModifyBleedAmount(patient.Owner, 2f);
         }
     }
@@ -349,7 +363,14 @@ public sealed partial class SurgerySystem
 
         if (TryComp<BloodstreamComponent>(patient, out var bloodstream) && !HasComp<SyntheticOperatedComponent>(patient))
         {
-            ApplyBloodToClothing(patient.Comp.Surgeon.Value, bloodstream.BloodReagent, 2f * SharedDirtSystem.MaxDirtLevel);
+            string? bloodReagentId = null;
+            if (bloodstream.BloodReferenceSolution.Contents.Count > 0)
+            {
+                var reagentQuantity = bloodstream.BloodReferenceSolution.Contents[0];
+                bloodReagentId = reagentQuantity.Reagent.Prototype;
+            }
+
+            ApplyBloodToClothing(patient.Comp.Surgeon.Value, bloodReagentId, 2f * SharedDirtSystem.MaxDirtLevel);
             _bloodstream.TryModifyBleedAmount(patient.Owner, 2f);
         }
     }
@@ -661,8 +682,11 @@ public sealed partial class SurgerySystem
         };
     }
 
-    public void ApplyBloodToClothing(EntityUid surgeon, string bloodReagentId, float bloodAmount)
+    public void ApplyBloodToClothing(EntityUid surgeon, string? bloodReagentId, float bloodAmount)
     {
+        if (bloodReagentId == null)
+            return;
+
         var bloodSolution = new Solution();
         bloodSolution.AddReagent(bloodReagentId, FixedPoint2.New(bloodAmount));
 
@@ -693,7 +717,7 @@ public sealed partial class SurgerySystem
                 TryAddInternalDamage(patient, "BoneFracture", bodyPart: bodyPart);
                 break;
             case SurgeryFailedType.Pain:
-                if (!HasComp<SleepingComponent>(patient) && !HasComp<PainNumbnessComponent>(patient) && !patient.Comp.OperatedPart && !_mobState.IsDead(patient) && !HasComp<SyntheticOperatedComponent>(patient))
+                if (!HasComp<SleepingComponent>(patient) && !HasComp<PainNumbnessStatusEffectComponent>(patient) && !patient.Comp.OperatedPart && !_mobState.IsDead(patient) && !HasComp<SyntheticOperatedComponent>(patient))
                     _chat.TryEmoteWithoutChat(patient, _proto.Index(Scream), true);
 
                 _jittering.DoJitter(patient, TimeSpan.FromSeconds(5), true);

@@ -73,8 +73,8 @@
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: surgery-module }
 
-# Cargo Module    
-    
+# Cargo Module
+
 - type: entity
   id: BorgModuleKinetic
   parent: [ BaseBorgModuleCargo, BaseProviderBorgModule ]
@@ -132,7 +132,7 @@
     - item: Syringe
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: medical-common-module }
-    
+
 - type: entity
   id: BorgModuleCommonPen
   parent: [ BaseBorgModule, BaseProviderBorgModule ]
@@ -229,7 +229,7 @@
           tags:
           - ConstructionMaterial
     - hand:
-        emptyRepresentative: 
+        emptyRepresentative:
         emptyLabel: borg-slot-flatpacks-empty
         whitelist:
           components:
@@ -396,7 +396,7 @@
           - Fruit
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: cook-module }
-    
+
 - type: entity
   id: BorgModuleBar
   parent: [ BaseBorgModuleService, BaseProviderBorgModule ]

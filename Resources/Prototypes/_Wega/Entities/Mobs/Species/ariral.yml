@@ -85,8 +85,10 @@
     damageContainer: Biological
     damageModifierSet: Ariral
   - type: Bloodstream
-    bloodMaxVolume: 200
-    bloodReagent: AriralBlood
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: AriralBlood
+        Quantity: 200
     bloodlossDamage:
       types:
         Bloodloss: 1.5

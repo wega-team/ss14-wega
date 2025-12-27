@@ -732,24 +732,6 @@
 
 # Wildcards
 - type: roleLoadout
-  id: JobZookeeper
-  groups:
-  - Inventory # Corvax-Loadouts
-  - GroupTankHarness
-  - CommonBackpack
-  - Glasses
-  - BaseShoose # Corvax-Wega-Add
-  - Survival
-  - Trinkets
-  - ZookeeperJobTrinkets
-  - GroupSpeciesBreathTool
-  # Corvax-Wega-start
-  - Top
-  - Bottom
-  - Socks
-  # Corvax-Wega-end
-
-- type: roleLoadout
   id: JobReporter
   groups:
   - Inventory # Corvax-Loadouts
@@ -780,25 +762,6 @@
   - Survival
   - Trinkets
   - PsychologistJobTrinkets
-  - GroupSpeciesBreathTool
-  # Corvax-Wega-start
-  - Top
-  - Bottom
-  - Socks
-  # Corvax-Wega-end
-
-- type: roleLoadout
-  id: JobBoxer
-  groups:
-  - Inventory # Corvax-Loadouts
-  - GroupTankHarness
-  - BoxerJumpsuit
-  - BoxerGloves
-  - CommonBackpack
-  - Glasses
-  - Survival
-  - Trinkets
-  - BoxerJobTrinkets
   - GroupSpeciesBreathTool
   # Corvax-Wega-start
   - Top
@@ -864,6 +827,11 @@
   - SurvivalSyndicate
   - GroupSpeciesBreathTool
   - GroupTankHarness
+
+- type: roleLoadout
+  id: RoleSurvivalMilitaryDouble
+  groups:
+  - SurvivalMilitaryDouble
 
 - type: roleLoadout
   id: RoleSurvivalNukie

@@ -17,8 +17,8 @@ using Content.Shared.Database;
 using Content.Shared.EntityConditions;
 using Content.Shared.EntityConditions.Conditions.Body;
 using Content.Shared.EntityEffects;
-using Content.Shared.EntityEffects.Effects;
 using Content.Shared.EntityEffects.Effects.Body;
+using Content.Shared.EntityEffects.Effects.Damage;
 using Content.Shared.Mobs.Systems;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
@@ -371,9 +371,9 @@ public sealed class RespiratorSystem : EntitySystem
 
         // Corvax-Wega-Strangulation-start
         if (TryComp<StrangulationComponent>(ent, out var strangleComp) && strangleComp != null)
-            _damageableSys.ChangeDamage(ent.Owner, strangleComp.Damage, interruptsDoAfters: false);
+            _damageableSys.ChangeDamage(ent.Owner, strangleComp.Damage, interruptsDoAfters: false, ignoreResistances: true);
         else
-            _damageableSys.ChangeDamage(ent.Owner, ent.Comp.Damage, interruptsDoAfters: false);
+            _damageableSys.ChangeDamage(ent.Owner, ent.Comp.Damage, interruptsDoAfters: false, ignoreResistances: true);
         // Corvax-Wega-Strangulation-end
 
         if (ent.Comp.SuffocationCycles < ent.Comp.SuffocationCycleThreshold)

@@ -76,6 +76,15 @@ public sealed class SmokeSystem : EntitySystem
                 continue;
 
             smoke.NextSecond += TimeSpan.FromSeconds(1);
+
+            // Corvax-Wega-Add-start
+            if (!Exists(smoke.SmokeEntity))
+            {
+                RemComp<SmokeAffectedComponent>(uid);
+                continue;
+            }
+            // Corvax-Wega-Add-end
+
             SmokeReact(uid, smoke.SmokeEntity);
         }
     }
@@ -92,6 +101,9 @@ public sealed class SmokeSystem : EntitySystem
 
     private void OnEndCollide(Entity<SmokeComponent> entity, ref EndCollideEvent args)
     {
+        if (!Exists(entity)) // Corvax-Wega-Add
+            return; // Corvax-Wega-Add
+
         // if we are already in smoke, make sure the thing we are exiting is the current smoke we are in.
         if (_smokeAffectedQuery.TryGetComponent(args.OtherEntity, out var smokeAffectedComponent))
         {
@@ -258,20 +270,23 @@ public sealed class SmokeSystem : EntitySystem
 
     private void ReactWithEntity(EntityUid entity, EntityUid smokeUid, Solution solution, SmokeComponent? component = null)
     {
+        if (!Exists(smokeUid)) // Corvax-Wega-Add
+            return; // Corvax-Wega-Add
+
         if (!Resolve(smokeUid, ref component))
             return;
 
         if (!TryComp<BloodstreamComponent>(entity, out var bloodstream))
             return;
 
-        if (!_solutionContainerSystem.ResolveSolution(entity, bloodstream.ChemicalSolutionName, ref bloodstream.ChemicalSolution, out var chemSolution) || chemSolution.AvailableVolume <= 0)
+        if (!_solutionContainerSystem.ResolveSolution(entity, bloodstream.BloodSolutionName, ref bloodstream.BloodSolution, out var bloodSolution) || bloodSolution.AvailableVolume <= 0)
             return;
 
         var blockIngestion = _internals.AreInternalsWorking(entity);
 
         var cloneSolution = solution.Clone();
         var availableTransfer = FixedPoint2.Min(cloneSolution.Volume, component.TransferRate);
-        var transferAmount = FixedPoint2.Min(availableTransfer, chemSolution.AvailableVolume);
+        var transferAmount = FixedPoint2.Min(availableTransfer, bloodSolution.AvailableVolume);
         var transferSolution = cloneSolution.SplitSolution(transferAmount);
 
         foreach (var reagentQuantity in transferSolution.Contents.ToArray())
@@ -287,7 +302,7 @@ public sealed class SmokeSystem : EntitySystem
         if (blockIngestion)
             return;
 
-        if (_blood.TryAddToChemicals((entity, bloodstream), transferSolution))
+        if (_blood.TryAddToBloodstream((entity, bloodstream), transferSolution))
         {
             // Log solution addition by smoke
             _logger.Add(LogType.ForceFeed, LogImpact.Medium, $"{ToPrettyString(entity):target} ingested smoke {SharedSolutionContainerSystem.ToPrettyString(transferSolution)}");

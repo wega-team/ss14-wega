@@ -2,12 +2,10 @@ using Content.Server.Actions;
 using Content.Server.Hands.Systems;
 using Content.Server.Popups;
 using Content.Server.Power.EntitySystems;
-using Content.Server.PowerCell;
 using Content.Shared._Wega.Implants.Components;
 using Content.Shared.Power.Components;
-using NetCord;
+using Content.Shared.PowerCell;
 using Robust.Server.Audio;
-using static Content.Server.Power.Pow3r.PowerState;
 
 namespace Content.Server._Wega.Implants;
 
@@ -90,9 +88,9 @@ public sealed class BatteryDrainerImplantSystem : EntitySystem
 
     private EntityUid? TryGetBattery(EntityUid uid)
     {
-        if (!_powerCell.TryGetBatteryFromSlot(uid, out var battery, out _))
+        if (!_powerCell.TryGetBatteryFromSlot(uid, out var battery))
         {
-            if (TryComp<BatteryComponent>(uid, out var comp))
+            if (HasComp<BatteryComponent>(uid))
                 return uid;
         }
         else
@@ -109,7 +107,7 @@ public sealed class BatteryDrainerImplantSystem : EntitySystem
         if (!TryComp<BatteryComponent>(target, out var targetBattery))
             return;
 
-        float transfer = Math.Clamp(targetBattery.MaxCharge - targetBattery.CurrentCharge, 0f, battery.CurrentCharge);
+        float transfer = Math.Clamp(targetBattery.MaxCharge - targetBattery.CurrentCharge, 0f, battery.Value.Comp.LastCharge);
         if (transfer == 0f)
         {
             _popup.PopupEntity(Loc.GetString("implant-battery-drainer-no-transfer"), user, user);

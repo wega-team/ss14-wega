@@ -15,8 +15,8 @@ using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Timing;
 using Robust.Shared.Containers;
-using Content.Server.PowerCell;
 using Content.Shared.Item.ItemToggle;
+using Content.Shared.PowerCell;
 
 namespace Content.Server.Botany.Systems;
 
@@ -86,7 +86,7 @@ public sealed class PlantAnalyzerSystem : SharedPlantAnalyzerSystem
 
     private void OnAfterInteract(Entity<PlantAnalyzerComponent> entity, ref AfterInteractEvent args)
     {
-        if (args.Target == null || !args.CanReach || !HasComp<PlantHolderComponent>(args.Target) || !_cell.HasDrawCharge(entity, user: args.User))
+        if (args.Target == null || !args.CanReach || !HasComp<PlantHolderComponent>(args.Target) || !_cell.HasDrawCharge(entity.Owner, user: args.User))
             return;
 
         StartScan(entity, args.User, args.Target.Value);
@@ -98,7 +98,7 @@ public sealed class PlantAnalyzerSystem : SharedPlantAnalyzerSystem
         if (args.Handled)
             return;
 
-        if (!_cell.HasDrawCharge(entity, user: args.User))
+        if (!_cell.HasDrawCharge(entity.Owner, user: args.User))
         {
             _popupSystem.PopupEntity(Loc.GetString("plant-analyzer-no-power"), entity, args.User);
             return;
@@ -117,7 +117,7 @@ public sealed class PlantAnalyzerSystem : SharedPlantAnalyzerSystem
     private void OnDoAfter(Entity<PlantAnalyzerComponent> entity, ref PlantAnalyzerDoAfterEvent args)
     {
         var target = args.Target;
-        if (args.Cancelled || args.Handled || target == null || !_cell.HasDrawCharge(entity, user: args.User))
+        if (args.Cancelled || args.Handled || target == null || !_cell.HasDrawCharge(entity.Owner, user: args.User))
             return;
 
         if (!entity.Comp.Silent)

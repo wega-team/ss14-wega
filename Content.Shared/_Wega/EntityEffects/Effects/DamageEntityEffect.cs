@@ -12,11 +12,11 @@ namespace Content.Shared.EntityEffects.Effects;
 /// The damage amount is equal to <see cref="Damage.Amount"/> modified by scale.
 /// </summary>
 /// <inheritdoc cref="EntityEffectSystem{T,TEffect}"/>
-public sealed partial class DamageEntityEffectSystem : EntityEffectSystem<DamageableComponent, Damage>
+public sealed partial class DamageEntityEffectSystem : EntityEffectSystem<DamageableComponent, EntityDamage>
 {
     [Dependency] private readonly DamageableSystem _damageable = default!;
 
-    protected override void Effect(Entity<DamageableComponent> entity, ref EntityEffectEvent<Damage> args)
+    protected override void Effect(Entity<DamageableComponent> entity, ref EntityEffectEvent<EntityDamage> args)
     {
         var componentType = EntityManager.ComponentFactory.GetRegistration(args.Effect.RequiredComponent).Type;
         if (!EntityManager.HasComponent(entity, componentType))
@@ -31,7 +31,7 @@ public sealed partial class DamageEntityEffectSystem : EntityEffectSystem<Damage
 }
 
 /// <inheritdoc cref="EntityEffect"/>
-public sealed partial class Damage : EntityEffectBase<Damage>
+public sealed partial class EntityDamage : EntityEffectBase<EntityDamage>
 {
     [DataField(required: true, customTypeSerializer: typeof(PrototypeIdSerializer<DamageTypePrototype>))]
     public string DamageType = string.Empty;

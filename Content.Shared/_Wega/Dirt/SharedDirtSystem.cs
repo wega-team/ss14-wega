@@ -75,8 +75,16 @@ public sealed class SharedDirtSystem : EntitySystem
         if (!TryComp<BloodstreamComponent>(target, out var bloodstream))
             return;
 
-        var bloodTypes = new[] { "Slash", "Piercing", "Blunt" };
+        string? bloodReagentId = null;
+        if (bloodstream.BloodReferenceSolution.Contents.Count > 0)
+        {
+            bloodReagentId = bloodstream.BloodReferenceSolution.Contents[0].Reagent.Prototype;
+        }
 
+        if (bloodReagentId == null)
+            return;
+
+        var bloodTypes = new[] { "Slash", "Piercing", "Blunt" };
         FixedPoint2 bloodAmount = 0;
         foreach (var type in bloodTypes)
         {
@@ -88,7 +96,7 @@ public sealed class SharedDirtSystem : EntitySystem
             return;
 
         var bloodSolution = new Solution();
-        bloodSolution.AddReagent(bloodstream.BloodReagent, bloodAmount * (0.2f / DirtAccumulationRate));
+        bloodSolution.AddReagent(bloodReagentId, bloodAmount * (0.2f / DirtAccumulationRate));
 
         var slots = new List<string> { "outerClothing", "jumpsuit", "gloves", "belt", "mask", "head" };
         ApplyDirtToClothing(target, bloodSolution, _random.Pick(slots));

@@ -102,12 +102,12 @@ public sealed class PainSystem : EntitySystem
         switch (effect.Effect)
         {
             case PainEffectType.Emote when effect.Message != null:
-                if (!HasComp<PainNumbnessComponent>(uid))
+                if (!HasComp<PainNumbnessStatusEffectComponent>(uid))
                     _emoting.TryEmoteWithoutChat(uid, effect.Message);
                 break;
 
             case PainEffectType.Popup when effect.Message != null:
-                if (!HasComp<PainNumbnessComponent>(uid))
+                if (!HasComp<PainNumbnessStatusEffectComponent>(uid))
                     _popup.PopupEntity(Loc.GetString(effect.Message), uid, uid, PopupType.SmallCaution);
                 break;
 

@@ -171,7 +171,7 @@ public sealed partial class BloodCultSystem
             _isRitualRuneUnlocked = false;
         }
 
-        if (TryComp<BloodstreamComponent>(cultist, out var blood) && _blood.GetBloodLevelPercentage(cultist) > 0)
+        if (TryComp<BloodstreamComponent>(cultist, out var blood) && _blood.GetBloodLevel(cultist) > 0)
             _blood.TryModifyBloodLevel(cultist, -5);
         else
         {
@@ -728,7 +728,7 @@ public sealed partial class BloodCultSystem
         component.SelectedEmpoweringSpells.Add(actionEntityUid);
         component.Empowering++;
 
-        if (TryComp<BloodstreamComponent>(cultist, out var blood) && _blood.GetBloodLevelPercentage(cultist) > 0)
+        if (TryComp<BloodstreamComponent>(cultist, out var blood) && _blood.GetBloodLevel(cultist) > 0)
             _blood.TryModifyBloodLevel(cultist, -5);
         else
         {
@@ -829,24 +829,23 @@ public sealed partial class BloodCultSystem
 
     private Color TryFindColor(EntityUid cultist)
     {
-        Color bloodColor;
-        if (TryComp<BloodstreamComponent>(cultist, out var bloodStreamComponent))
+        if (!TryComp<BloodstreamComponent>(cultist, out var bloodStreamComponent))
+            return Color.White;
+
+        string? bloodReagentPrototypeId = null;
+        if (bloodStreamComponent.BloodReferenceSolution.Contents.Count > 0)
         {
-            var bloodReagentPrototypeId = bloodStreamComponent.BloodReagent;
-            if (_prototypeManager.TryIndex(bloodReagentPrototypeId, out ReagentPrototype? reagentPrototype))
-            {
-                bloodColor = reagentPrototype.SubstanceColor;
-            }
-            else
-            {
-                bloodColor = Color.White;
-            }
+            var reagentQuantity = bloodStreamComponent.BloodReferenceSolution.Contents[0];
+            bloodReagentPrototypeId = reagentQuantity.Reagent.Prototype;
         }
-        else
-        {
-            bloodColor = Color.White;
-        }
-        return bloodColor;
+
+        if (bloodReagentPrototypeId == null)
+            return Color.White;
+
+        if (!_prototypeManager.TryIndex(bloodReagentPrototypeId, out ReagentPrototype? reagentPrototype))
+            return Color.White;
+
+        return reagentPrototype.SubstanceColor;
     }
 
     private void DoAfterInteractRune(BloodRuneCleaningDoAfterEvent args)

@@ -800,7 +800,7 @@ public sealed partial class BloodCultSystem
                     if (!TryComp<BloodstreamComponent>(target, out var blood) || HasComp<BloodCultistComponent>(target))
                         return;
 
-                    if (_blood.GetBloodLevelPercentage(target) > 0.6)
+                    if (_blood.GetBloodLevel(target) > 0.6)
                     {
                         _blood.TryModifyBloodLevel(target, -50);
                         cultist.BloodCount += 50;
@@ -867,7 +867,7 @@ public sealed partial class BloodCultSystem
 
     private void ExtractBlood(EntityUid cultist, int extractBlood, FixedPoint2 bloodDamage)
     {
-        if (TryComp<BloodstreamComponent>(cultist, out var blood) && _blood.GetBloodLevelPercentage(cultist) > 0)
+        if (TryComp<BloodstreamComponent>(cultist, out var blood) && _blood.GetBloodLevel(cultist) > 0)
             _blood.TryModifyBloodLevel(cultist, extractBlood);
         else
         {

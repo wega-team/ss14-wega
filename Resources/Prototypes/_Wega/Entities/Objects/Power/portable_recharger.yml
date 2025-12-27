@@ -10,7 +10,7 @@
     chargeRate: 50
 
 - type: entity
-  parent: [PortableRecharger, ClothingBackpack] 
+  parent: [PortableRecharger, ClothingBackpack]
   id: PortableRechargerBag
   name: portable recharger bag edition
   description: High-tech recharger adapted for portability. Now have small bag!
@@ -24,9 +24,9 @@
     grid:
     - 0,0,1,1
     - 7,0,8,1
-    
+
 - type: entity
-  parent: [PortableRecharger, ClothingBackpack] 
+  parent: [PortableRecharger, ClothingBackpack]
   id: PortableRechargerTurboBag
   name: portable recharger bag edition
   description: High-tech recharger adapted for portability. Now have small bag!
