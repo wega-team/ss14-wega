@@ -244,3 +244,22 @@
       effects:
       - !type:SatiateThirst
         factor: 2
+
+- type: reagent
+  id: JuiceTangerine
+  parent: BaseJuice
+  name: reagent-name-juicetangerine
+  group: Drinks
+  desc: reagent-desc-juicetangerine
+  physicalDesc: reagent-physical-desc-citric
+  flavor: tangerine
+  color: "#ff6000"
+  metamorphicSprite:
+    sprite: _Wega/Objects/Consumable/Drinks/juice_tangerine_glass.rsi
+    state: icon
+  metamorphicChangeColor: false
+  metabolisms:
+    Drink:
+      effects:
+      - !type:SatiateThirst
+        factor: 2

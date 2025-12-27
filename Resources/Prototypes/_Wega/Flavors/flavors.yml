@@ -327,3 +327,8 @@
   id: shrimp
   flavorType: Base
   description: flavor-base-shrimp
+
+- type: flavor
+  id: tangerine
+  flavorType: Base
+  description: flavor-base-tangerine

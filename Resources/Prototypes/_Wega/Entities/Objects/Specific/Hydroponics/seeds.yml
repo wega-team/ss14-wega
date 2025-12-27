@@ -127,3 +127,23 @@
       seedId: candytreerandom
     - type: Sprite
       sprite: _Wega/Objects/Specific/Hydroponics/candytreerandom.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of candy tangerine
+  id: TangerineSeeds
+  components:
+    - type: Seed
+      seedId: tangerine
+    - type: Sprite
+      sprite: _Wega/Objects/Specific/Hydroponics/tangerine.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of candy festive tangerine
+  id: FestiveTangerineSeeds
+  components:
+    - type: Seed
+      seedId: festivetangerine
+    - type: Sprite
+      sprite: _Wega/Objects/Specific/Hydroponics/festive_tangerine.rsi
