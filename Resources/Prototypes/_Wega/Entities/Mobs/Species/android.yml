@@ -66,7 +66,7 @@
   # TODO, normally make light switching
   - type: GenericVisualizer
     visuals:
-      enum.UnpoweredFlashlightVisuals.LightOn:
+      enum.AndroidVisuals.Light:
         AndroidLeds-leds:
           True: { shader: unshaded }
           False: { shader: shaded }
