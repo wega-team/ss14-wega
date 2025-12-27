@@ -50,7 +50,7 @@
   id: BloodCult
   components:
   - type: GameRule
-    minPlayers: 0
+    minPlayers: 30
   - type: BloodCultRule
   - type: AntagObjectives
     objectives:
@@ -59,7 +59,7 @@
     definitions:
       - prefRoles: [ BloodCultist ]
         max: 4
-        playerRatio: 1
+        playerRatio: 10
         blacklist:
           components:
           - AntagImmune
