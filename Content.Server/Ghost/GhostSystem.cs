@@ -584,7 +584,7 @@ namespace Content.Server.Ghost
 					}
 
 					if (_whitelistSystem.IsWhitelistFail(traitPrototype.Whitelist, spawnedMob) ||
-						_whitelistSystem.IsBlacklistPass(traitPrototype.Blacklist, spawnedMob))
+						_whitelistSystem.IsWhitelistPass(traitPrototype.Blacklist, spawnedMob))
 						continue;
 
 					// Add all components required by the prototype
