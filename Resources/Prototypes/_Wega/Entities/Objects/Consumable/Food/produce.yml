@@ -564,8 +564,6 @@
   - type: Sprite
     sprite: _Wega/Objects/Specific/Hydroponics/tangerine.rsi
     state: open
-    sound:
-      path: /Audio/Effects/packetrip.ogg
   - type: Tag
     tags:
     - Fruit
