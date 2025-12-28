@@ -109,7 +109,17 @@ public sealed partial class BloodCultSystem
             var cultistPosition = _transform.GetMapCoordinates(Transform(cultist));
             isValidSurface = _mapMan.TryFindGridAt(cultistPosition, out _, out _);
 
-            if (!isValidSurface)
+            // If you know any better ways to collect all entities with 1 component into some kind of list, please tell me,
+            // Because I was trying to find this shit at 4 a.m.
+            bool ritualHas = false;
+            var query = EntityQueryEnumerator<BloodRitualDimensionalRendingComponent>();
+            while (query.MoveNext(out _, out _))
+            {
+                ritualHas = true;
+                break;
+            }
+
+            if (!isValidSurface || ritualHas)
             {
                 _popup.PopupEntity(Loc.GetString("rune-ritual-failed"), cultist, cultist, PopupType.MediumCaution);
                 return false;
