@@ -413,6 +413,10 @@ public sealed partial class VampireSystem
 
             if (TryComp(humanoid, out TransformComponent? transform))
             {
+				if (!TryComp<MobStateComponent>(humanoid, out var mobState))
+					continue;
+				if (mobState.CurrentState != MobState.Alive && mobState.CurrentState != MobState.PreCritical) /// Я хочу СВЕЖЕЙ крови.
+					continue;
                 Spawn(args.Proto, transform.Coordinates);
                 _audio.PlayPvs(args.Sound, humanoid);
                 _popup.PopupEntity(Loc.GetString("vampire-predator-senses-puddle"), humanoid, uid, PopupType.SmallCaution);
@@ -614,8 +618,8 @@ public sealed partial class VampireSystem
         }
 
         ExecuteTick();
-        SubtractBloodEssence(uid, 10);
-        args.Handled = true;
+        SubtractBloodEssence(uid, 30);
+		/// args.Handled не будет, чтобы не было кд. Логика - после включения кд для выключения нет, а после выключения есть.
     }
 	
 	private void OnBloodRiteAlert(EntityUid uid, VampireComponent component, VampireBloodRiteAlertEvent ev)
