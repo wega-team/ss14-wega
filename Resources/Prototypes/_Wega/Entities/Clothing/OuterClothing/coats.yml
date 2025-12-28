@@ -57,10 +57,10 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 1.3
-        Slash: 1.3
-        Piercing: 1.2
-        Heat: 1.4
+        Blunt: 2
+        Slash: 2
+        Piercing: 2
+        Heat: 2
   - type: ExplosionResistance
     damageCoefficient: 2
   - type: ClothingSpeedModifier

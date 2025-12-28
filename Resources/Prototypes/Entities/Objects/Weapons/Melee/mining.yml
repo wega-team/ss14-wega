@@ -105,7 +105,6 @@
     color: "#ffeead"
     enabled: false
     radius: 4
-  - type: CultUsableGun # Blood-Cult-Experiment
 
 # Very high burst damage if you land a mark, while also providing a small amount of healing.
 - type: entity

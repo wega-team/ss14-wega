@@ -8,7 +8,6 @@
   - type: Item
     heldPrefix: staff
     size: Normal
-  - type: CultUsableGun # Blood-Cult-Experiment
   - type: Gun
     fireRate: 1
     selectedMode: SemiAuto

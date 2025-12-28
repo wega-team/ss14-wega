@@ -11,7 +11,6 @@
   - type: Item
     sprite: Objects/Weapons/Guns/Pistols/water_pistol.rsi
     size: Small
-  - type: CultUsableGun # Blood-Cult-Experiment
   - type: Gun
     clumsyProof: true
     cameraRecoilScalar: 0 #no recoil
