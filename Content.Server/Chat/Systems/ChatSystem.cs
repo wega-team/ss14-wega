@@ -402,6 +402,9 @@ public sealed partial class ChatSystem : SharedChatSystem
         MindChannelPrototype channel,
         bool ignoreActionBlocker = false)
     {
+        if (string.IsNullOrWhiteSpace(message))
+            return;
+
         if (!ignoreActionBlocker && !_actionBlocker.CanSpeak(source))
             return;
 

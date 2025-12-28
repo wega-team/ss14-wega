@@ -9,7 +9,6 @@ using Content.Client.UserInterface.Systems.Ghost.Widgets; // Corvax-Wega-GhostRe
 using Content.Shared.Mind; // Corvax-Wega-GhostRespawn
 using Robust.Client.UserInterface; // Corvax-Wega-GhostRespawn
 using Content.Client.Wega.Ghost.Respawn; // Corvax-Wega-GhostRespawn
-using Content.Shared.Blood.Cult.Components; // Corvax-Wega-Blood-Cult-Add
 
 namespace Content.Client.Ghost
 {
@@ -61,7 +60,7 @@ namespace Content.Client.Ghost
         // Corvax-Wega-GhostRespawn-end
 
         public GhostComponent? Player => CompOrNull<GhostComponent>(_playerManager.LocalEntity);
-        public bool IsGhost => Player != null && !HasComp<BloodCultGhostComponent>(_playerManager.LocalEntity); // Corvax-Wega-Blood-Cult-Edit
+        public bool IsGhost => Player != null;
 
         public event Action<GhostComponent>? PlayerRemoved;
         public event Action<GhostComponent>? PlayerUpdated;
