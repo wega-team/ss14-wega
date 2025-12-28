@@ -24,3 +24,7 @@ seeds-candytree-name = конфета
 seeds-candytree-display-name = конфетное дерево
 seeds-candytreerandom-name = необычная конфета
 seeds-candytreerandom-display-name = необычное конфетное дерево
+seeds-melon-name = дыня
+seeds-melon-display-name = дыня
+seeds-catmelon-name = кошкодыня
+seeds-catmelon-display-name = кошкодыня

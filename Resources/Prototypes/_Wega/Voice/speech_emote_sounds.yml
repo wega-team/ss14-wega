@@ -299,6 +299,8 @@
       collection: MaleGasp
     DefaultDeathgasp:
       collection: MaleDeathGasp
+    FilinidMeows:
+      collection: FelinidMeowsSound
 
 - type: emoteSounds
   id: FemaleAriral
@@ -341,3 +343,5 @@
       collection: FemaleGasp
     DefaultDeathgasp:
       collection: FemaleDeathGasp
+    FilinidMeows:
+      collection: FelinidMeowsSound

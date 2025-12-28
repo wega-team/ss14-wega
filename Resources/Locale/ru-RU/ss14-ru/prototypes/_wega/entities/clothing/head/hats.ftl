@@ -16,3 +16,5 @@ ent-ClothingHeadHatCapcapWhite = белая фуражка капитана
    .desc = Стильная белая фуражка капитана.
 ent-ClothingHeadHatCapcapSheriff = фуражка шерифа
    .desc = Стильная фуражка шерифа.
+ent-ClothingHeadHatCatEarsMelon = кошкодынные ушки
+   .desc = НЯ?!

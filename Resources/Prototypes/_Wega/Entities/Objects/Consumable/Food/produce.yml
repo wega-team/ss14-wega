@@ -500,3 +500,193 @@
   - type: Tag
     tags:
     - Fruit
+
+- type: entity
+  name: melon
+  parent: [FoodProduceBase, ItemHeftyBase]
+  id: FoodMelon
+  description: "A fruit that charges with solar energy!"
+  components:
+  - type: Item
+    size: Small
+    heldPrefix: produce
+  - type: FlavorProfile
+    flavors:
+      - melon
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 25
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 10
+        - ReagentId: Vitamin
+          Quantity: 10
+        - ReagentId: Water
+          Quantity: 5
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/melon.rsi
+  - type: Produce
+    seedId: melon
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: MelonJuice
+        Quantity: 15
+  - type: Damageable
+    damageContainer: Biological
+  - type: DamageOnHighSpeedImpact
+    minimumSpeed: 0.1
+    damage:
+      types:
+        Blunt: 1
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 1
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: desecration
+      - !type:SpillBehavior
+        solution: food
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: SliceableFood
+    count: 5
+    slice: FoodMelonSlice
+  - type: Tag
+    tags:
+    - Fruit
+
+- type: entity
+  name: melon slice
+  parent: ProduceSliceBase
+  id: FoodMelonSlice
+  description: "a piece of sunshine!"
+  components:
+  - type: Item
+    size: Tiny
+  - type: FlavorProfile
+    flavors:
+      - melon
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/melon.rsi
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 5
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 2
+        - ReagentId: Vitamin
+          Quantity: 2
+        - ReagentId: Water
+          Quantity: 1
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: MelonJuice
+        Quantity: 4
+  - type: Tag
+    tags:
+    - Fruit
+    - Slice
+
+- type: entity
+  name: catmelon
+  parent: [FoodProduceBase, ItemHeftyBase]
+  id: FoodCatMelon
+  description: "Melon with cat ears???"
+  components:
+  - type: Item
+    size: Small
+    heldPrefix: produce
+  - type: FlavorProfile
+    flavors:
+      - melon
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 25
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 10
+        - ReagentId: Vitamin
+          Quantity: 10
+        - ReagentId: CatMelonJuice
+          Quantity: 5
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/catmelon.rsi
+  - type: Produce
+    seedId: catmelon
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: CatMelonJuice
+        Quantity: 15
+  - type: Damageable
+    damageContainer: Biological
+  - type: DamageOnHighSpeedImpact
+    minimumSpeed: 0.1
+    damage:
+      types:
+        Blunt: 1
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 1
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: desecration
+      - !type:SpillBehavior
+        solution: food
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: SliceableFood
+    count: 5
+    slice: FoodCatMelonSlice
+  - type: Butcherable
+    butcheringType: Knife
+    spawned:
+    - id: ClothingHeadHatCatEarsMelon
+  - type: Tag
+    tags:
+    - Fruit
+
+- type: entity
+  name: catmelon slice
+  parent: ProduceSliceBase
+  id: FoodCatMelonSlice
+  description: "Little cute piece!"
+  components:
+  - type: Item
+    size: Tiny
+  - type: FlavorProfile
+    flavors:
+      - melon
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/catmelon.rsi
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 5
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 2
+        - ReagentId: Vitamin
+          Quantity: 2
+        - ReagentId: CatMelonJuice
+          Quantity: 1
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: CatMelonJuice
+        Quantity: 4
+  - type: Tag
+    tags:
+    - Fruit
+    - Slice

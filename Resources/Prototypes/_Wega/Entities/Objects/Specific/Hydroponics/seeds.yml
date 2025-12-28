@@ -127,3 +127,23 @@
       seedId: candytreerandom
     - type: Sprite
       sprite: _Wega/Objects/Specific/Hydroponics/candytreerandom.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of melon seeds
+  id: MelonSeeds
+  components:
+    - type: Seed
+      seedId: melon
+    - type: Sprite
+      sprite: _Wega/Objects/Specific/Hydroponics/melon.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of catmelon seeds
+  id: CatMelonSeeds
+  components:
+    - type: Seed
+      seedId: catmelon
+    - type: Sprite
+      sprite: _Wega/Objects/Specific/Hydroponics/catmelon.rsi

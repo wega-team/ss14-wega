@@ -38,6 +38,9 @@
     TowercapSeeds: 5
     WheatSeeds: 5
     WatermelonSeeds: 5
+    # Corvax-Wega-start
+    MelonSeeds: 5
+    # Corvax-Wega-end
   contrabandInventory:
     TobaccoSeeds: 2
     FoodSnackSemki: 2

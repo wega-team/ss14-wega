@@ -151,3 +151,16 @@
   - type: Tag
     tags:
     - HamsterWearable
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatCatEarsMelon
+  name: catmelon ears
+  description: "NYAH!"
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Head/Hats/catmelon_erars.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Head/Hats/catmelon_erars.rsi
+  - type: AddAccentClothing
+    accent: OwOAccent
