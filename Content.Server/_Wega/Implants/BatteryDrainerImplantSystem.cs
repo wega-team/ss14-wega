@@ -99,26 +99,6 @@ public sealed class BatteryDrainerImplantSystem : EntitySystem
         return null;
     }
 
-    private void ChargeBattery(EntityUid user, BatteryDrainerImplantComponent component, EntityUid target)
-    {
-        if (!_powerCell.TryGetBatteryFromSlot(user, out var battery))
-            return;
-
-        if (!TryComp<BatteryComponent>(target, out var targetBattery))
-            return;
-
-        float transfer = Math.Clamp(targetBattery.MaxCharge - targetBattery.CurrentCharge, 0f, battery.Value.Comp.LastCharge);
-        if (transfer == 0f)
-        {
-            _popup.PopupEntity(Loc.GetString("implant-battery-drainer-no-transfer"), user, user);
-            return;
-        }
-        _powerCell.TryUseCharge(user, transfer);
-        _battery.ChangeCharge(target, transfer);
-
-        _audio.PlayPvs(component.UseSound, user);
-    }
-
     private void TransferCharge(BatteryDrainerImplantComponent component, EntityUid source, EntityUid target, EntityUid user)
     {
         var sourceUid = TryGetBattery(source);

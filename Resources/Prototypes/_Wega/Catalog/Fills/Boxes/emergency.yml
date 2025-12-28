@@ -4,13 +4,15 @@
   id: BoxSurvivalAndroid
   suffix: Android
   components:
-  - type: StorageFill
-    contents:
-    - id: ClothingMaskBreath
-    - id: EmergencyNitrogenTankFilled
-    - id: Flare
-    - id: Tyriumpack3
-    - id: WelderMini
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ClothingMaskBreath
+        - id: EmergencyNitrogenTankFilled
+        - id: Flare
+        - id: Tyriumpack3
+        - id: WelderMini
   - type: Sprite
     layers:
     - state: internals
@@ -24,93 +26,108 @@
   id: BoxSurvivalAndroidExtended
   suffix: Extended Android
   components:
-  - type: StorageFill
-    contents:
-    - id: ClothingMaskBreath
-    - id: ExtendedEmergencyNitrogenTankFilled
-    - id: Flare
-    - id: Tyriumpack3
-    - id: WelderMini
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ClothingMaskBreath
+        - id: ExtendedEmergencyNitrogenTankFilled
+        - id: Flare
+        - id: Tyriumpack3
+        - id: WelderMini
 
 - type: entity
   parent: BoxSurvivalAndroid
   id: BoxSurvivalAndroidMedical
   suffix: Medical Android
   components:
-  - type: StorageFill
-    contents:
-    - id: ClothingMaskBreathMedical
-    - id: EmergencyNitrogenTankFilled
-    - id: Flare
-    - id: Tyriumpack3
-    - id: WelderMini
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ClothingMaskBreathMedical
+        - id: EmergencyNitrogenTankFilled
+        - id: Flare
+        - id: Tyriumpack3
+        - id: WelderMini
 
 - type: entity
   parent: BoxSurvivalAndroid
   id: BoxSurvivalAndroidSecurity
   suffix: Security Android
   components:
-  - type: StorageFill
-    contents:
-    - id: ClothingMaskGasSecurity
-    - id: EmergencyNitrogenTankFilled
-    - id: Flare
-    - id: Tyriumpack3
-    - id: WelderMini
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ClothingMaskGasSecurity
+        - id: EmergencyNitrogenTankFilled
+        - id: Flare
+        - id: Tyriumpack3
+        - id: WelderMini
 
 - type: entity
   parent: BoxHug
   id: BoxAndroidHug
   suffix: Emergency Android
   components:
-  - type: StorageFill
-    contents:
-    - id: ClothingMaskBreath
-    - id: EmergencyNitrogenTankFilled
-    - id: Flare
-    - id: Tyriumpack3
-    - id: WelderMini
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ClothingMaskBreath
+        - id: EmergencyNitrogenTankFilled
+        - id: Flare
+        - id: Tyriumpack3
+        - id: WelderMini
   - type: Label
     currentLabel: reagent-name-nitrogen
 
 - type: entity
-  parent: BoxSurvivalNitrogen
+  parent: BoxSurvivalAndroid
   id: BoxAndroidMime
   suffix: Mime Android
   components:
-  - type: StorageFill
-    contents:
-    - id: ClothingMaskBreath
-    - id: EmergencyNitrogenTankFilled
-    - id: Flare
-    - id: Tyriumpack3
-    - id: WelderMini
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ClothingMaskBreath
+        - id: EmergencyNitrogenTankFilled
+        - id: Flare
+        - id: Tyriumpack3
+        - id: WelderMini
+        - id: FoodBreadNutriBatard
 
 - type: entity
   parent: BoxSurvivalAndroid
   id: BoxSurvivalAndroidBlueShield
   suffix: Blue Shield Android
   components:
-  - type: StorageFill
-    contents:
-    - id: ClothingMaskGasBlueShield
-    - id: ExtendedEmergencyNitrogenTankFilled
-    - id: Flare
-    - id: Tyriumpack3
-    - id: WelderMini
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ClothingMaskGasBlueShield
+        - id: ExtendedEmergencyNitrogenTankFilled
+        - id: Flare
+        - id: Tyriumpack3
+        - id: WelderMini
 
 - type: entity
   parent: BoxSurvivalAndroid
   id: BoxSurvivalAndroidSyndicate
   suffix: Syndicate Android
   components:
-  - type: StorageFill
-    contents:
-    - id: ClothingMaskGasSyndicate
-    - id: ExtendedEmergencyNitrogenTankFilled
-    - id: Flare
-    - id: Tyriumpack3
-    - id: WelderMini
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ClothingMaskGasSyndicate
+        - id: ExtendedEmergencyNitrogenTankFilled
+        - id: Flare
+        - id: Tyriumpack3
+        - id: WelderMini
 
 # BlueShield
 - type: entity
