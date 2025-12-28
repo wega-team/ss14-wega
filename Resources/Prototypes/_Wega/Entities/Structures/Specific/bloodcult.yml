@@ -403,7 +403,6 @@
   - type: BloodPylon
   - type: BloodStructure
     fixture: fix1
-    canInteract: false
   - type: Damageable
     damageContainer: Inorganic
     damageModifierSet: Metallic
