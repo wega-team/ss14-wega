@@ -24,4 +24,9 @@ public sealed partial class MagnetPickupComponent : Component
 
     [ViewVariables(VVAccess.ReadWrite), DataField("range")]
     public float Range = 1f;
+	
+	/// Corvax-Wega-Start
+     [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public bool NeedForSlotFlag = true;
+	/// Corvax-Wega-End
 }

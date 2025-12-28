@@ -359,3 +359,7 @@
     children:
     - id: WeaponLaserCarbine
       amount: 3
+# Corvax-Wega-start
+    - id: PortableRecharger
+      amount: 3
+# Corvax-Wega-end

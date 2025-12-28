@@ -49,6 +49,9 @@
     grid:
     - 0,0,5,3
     maxItemSize: Normal
+    whitelist:
+      tags:
+      - Lollipops
   - type: Item
     shape:
     - 0,0,1,1
@@ -60,5 +63,5 @@
     price: 0
   - type: StorageFill
     contents:
-    - id: FoodProduceLollipopBar
+    - id: FoodProduceLollipopMedRandom
       amount: 12

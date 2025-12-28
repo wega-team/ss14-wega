@@ -76,6 +76,15 @@ public sealed class SmokeSystem : EntitySystem
                 continue;
 
             smoke.NextSecond += TimeSpan.FromSeconds(1);
+
+            // Corvax-Wega-Add-start
+            if (!Exists(smoke.SmokeEntity))
+            {
+                RemComp<SmokeAffectedComponent>(uid);
+                continue;
+            }
+            // Corvax-Wega-Add-end
+
             SmokeReact(uid, smoke.SmokeEntity);
         }
     }
@@ -92,6 +101,9 @@ public sealed class SmokeSystem : EntitySystem
 
     private void OnEndCollide(Entity<SmokeComponent> entity, ref EndCollideEvent args)
     {
+        if (!Exists(entity)) // Corvax-Wega-Add
+            return; // Corvax-Wega-Add
+
         // if we are already in smoke, make sure the thing we are exiting is the current smoke we are in.
         if (_smokeAffectedQuery.TryGetComponent(args.OtherEntity, out var smokeAffectedComponent))
         {
@@ -258,6 +270,9 @@ public sealed class SmokeSystem : EntitySystem
 
     private void ReactWithEntity(EntityUid entity, EntityUid smokeUid, Solution solution, SmokeComponent? component = null)
     {
+        if (!Exists(smokeUid)) // Corvax-Wega-Add
+            return; // Corvax-Wega-Add
+
         if (!Resolve(smokeUid, ref component))
             return;
 

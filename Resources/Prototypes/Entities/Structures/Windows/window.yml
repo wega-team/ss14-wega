@@ -117,6 +117,8 @@
   - type: Occluder
   - type: StaticPrice
     price: 70
+  - type: SoundInsulator # Corvax-Wega-SoundInsolation
+    insulationFactor: 1 # Corvax-Wega-SoundInsolation
 
 - type: entity
   id: WindowRCDResistant
