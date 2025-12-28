@@ -14,12 +14,11 @@
     allowedStates:
     - Alive
     - Critical
-    damageCap: 0
     damage:
       types:
-        Heat: -1
+        Heat: -2
       groups:
-        Brute: -1
+        Brute: -2
     slotId: entity_storage
     whitelist:
       components:

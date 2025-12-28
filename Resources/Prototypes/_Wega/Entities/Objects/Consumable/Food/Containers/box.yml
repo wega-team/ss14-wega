@@ -63,5 +63,5 @@
     price: 0
   - type: StorageFill
     contents:
-    - id: FoodProduceLollipopBar
+    - id: FoodProduceLollipopMedRandom
       amount: 12

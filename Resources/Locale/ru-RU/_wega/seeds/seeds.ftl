@@ -28,3 +28,7 @@ seeds-melon-name = дыня
 seeds-melon-display-name = дыня
 seeds-catmelon-name = кошкодыня
 seeds-catmelon-display-name = кошкодыня
+seeds-tangerine-name = мандарин
+seeds-tangerine-display-name = мандариновое дерево
+seeds-festivetangerine-name = подарин
+seeds-festivetangerine-display-name = подариновая ёлка

@@ -27,4 +27,7 @@ ent-CandyTreeRandomSeeds = пакет семян (необычное конфе�
 ent-MelonSeeds = пакет семян (дыня)
     .desc = { ent-SeedBase.desc }
 ent-CatMelonSeeds = пакет семян (кошкодыня)
+ent-TangerineSeeds = пакет семян (мандарин)
+    .desc = { ent-SeedBase.desc }
+ent-FestiveTangerineSeeds = пакет семян (подарин)
     .desc = { ent-SeedBase.desc }

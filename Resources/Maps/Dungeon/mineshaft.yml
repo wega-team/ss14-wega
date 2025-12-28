@@ -542,13 +542,6 @@ entities:
     - type: Transform
       pos: 43.64335,20.440603
       parent: 2
-- proto: BorgModuleRCD
-  entities:
-  - uid: 801
-    components:
-    - type: Transform
-      pos: 43.352802,21.426386
-      parent: 2
 - proto: Bucket
   entities:
   - uid: 550

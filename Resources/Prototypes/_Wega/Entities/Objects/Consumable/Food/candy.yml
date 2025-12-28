@@ -52,6 +52,21 @@
       - Blood
       - ZombieBlood
 
+- type: weightedRandomFillSolution
+  id: RandomFillLollipopMedical
+  fills:
+    - quantity: 5
+      weight: 1
+      reagents:
+      - Tricordrazine
+      - Tricordrazine
+      - Tricordrazine
+      - Tricordrazine
+      - Tricordrazine
+      - Tricordrazine
+      - Tricordrazine
+      - Tricordrazine
+      - Omnizine
 
 - type: entity
   name: lollipop
@@ -109,6 +124,46 @@
         reagents:
         - ReagentId: Sugar
           Quantity: 5
+  - type: Sprite
+    sprite: _Wega/Objects/Consumable/Food/randomlollipop.rsi
+    layers:
+    - state: lollipop1
+      map: [ "enum.DamageStateVisualLayers.Base" ]
+  - type: RandomSprite
+    available:
+      - enum.DamageStateVisualLayers.Base:
+          lollipop1: ""
+          lollipop2: ""
+          lollipop3: ""
+          lollipop4: ""
+          lollipop5: ""
+          lollipop6: ""
+          lollipop7: ""
+          lollipop8: ""
+          lollipop9: ""
+          lollipop10: ""
+          lollipop11: ""
+          lollipop12: ""
+          lollipop13: ""
+          lollipop14: ""
+          lollipop15: ""
+          lollipop16: ""
+  - type: Tag
+    tags:
+    - Lollipops
+    
+- type: entity
+  name: lollipop
+  parent: FoodProduceBase
+  id: FoodProduceLollipopMedicalBar
+  suffix: "medical chemicals"
+  description: "Extremely tasty lollipop!"
+  components:
+  - type: FlavorProfile
+    flavors: []
+  - type: RandomFillSolution
+    solution: food
+    weightedRandomId: RandomFillLollipopMedical
   - type: Sprite
     sprite: _Wega/Objects/Consumable/Food/randomlollipop.rsi
     layers:

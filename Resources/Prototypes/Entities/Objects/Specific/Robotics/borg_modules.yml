@@ -634,6 +634,7 @@
         whitelist:
           tags:
           - Ore
+          - ArtifactFragment
     # Corvax-Wega-Robot-end
     - item: BorgOreBag
   - type: BorgModuleIcon
@@ -661,8 +662,9 @@
         whitelist:
           tags:
           - Ore
+          - ArtifactFragment
     # Corvax-Wega-Robot-end
-    - item: OreBagOfHolding
+    - item: BorgOreBagOfHolding # BorgOreBagOfHolding Corvax-Wega-Robot-add
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: adv-mining-module }
 
@@ -946,6 +948,15 @@
         whitelist:
           components:
           - Healing
+    # Corvax-Wega-Robot-Start
+    - item: BorgGeneratorProCandy
+    - hand:
+        emptyRepresentative: FoodProduceLollipopMedical
+        emptyLabel: borg-slot-candy-empty
+        whitelist:
+          tags:
+          - Lollipops
+    # Corvax-Wega-Robot-End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: treatment-module }
 
@@ -969,13 +980,13 @@
     # Corvax-Wega-Robot-Start
     - hand:
         emptyLabel: borg-slot-table-empty
-        emptyRepresentative: CheapRollerBedSpawnFolded
+        emptyRepresentative: BorgIconRollerBed
         whitelist:
           components:
           - OperatingTable
     - hand:
         emptyLabel: borg-slot-bodybag-empty
-        emptyRepresentative: BodyBagFolded
+        emptyRepresentative: BorgIconMorgBag
         whitelist:
           tags:
           - BodyBag
@@ -1146,18 +1157,7 @@
   - type: ItemBorgModule
     hands:
     - item: Pen
-    - item: BooksBag
-    - hand:
-        emptyLabel: borg-slot-documents-empty
-        emptyRepresentative: BookBase
-        whitelist:
-          tags:
-          - Book
-          - Dice
-          - Document
-          - Figurine
-          - TabletopBoard
-          - Write
+    # Corvax-Wega-Robot-start
     - hand:
         emptyLabel: borg-slot-documents-empty
         emptyRepresentative: Paper
@@ -1169,6 +1169,32 @@
           - Figurine
           - TabletopBoard
           - Write
+    - item: BooksBag
+    # - hand:
+        # emptyLabel: borg-slot-documents-empty
+        # emptyRepresentative: BookBase
+        # whitelist:
+          # tags:
+          # - Book
+          # - Dice
+          # - Document
+          # - Figurine
+          # - TabletopBoard
+          # - Write
+    # Corvax-Wega-Robot-end
+    # Corvax-Wega-Robot-start
+    # - hand:
+        # emptyLabel: borg-slot-documents-empty
+        # emptyRepresentative: Paper
+        # whitelist:
+          # tags:
+          # - Book
+          # - Dice
+          # - Document
+          # - Figurine
+          # - TabletopBoard
+          # - Write
+    # Corvax-Wega-Robot-end
     - item: HandLabeler
     - item: RubberStampApproved
     - item: RubberStampDenied

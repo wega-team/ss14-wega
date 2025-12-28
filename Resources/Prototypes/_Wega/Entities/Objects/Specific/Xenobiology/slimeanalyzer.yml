@@ -40,6 +40,7 @@
   parent: [ HandheldSlimeAnalyzerUnpowered, PowerCellSlotSmallItem]
   suffix: Powered
   components:
+  - type: PredictedBatteryVisuals
   - type: PowerCellDraw
     drawRate: 1.2
   - type: ToggleCellDraw

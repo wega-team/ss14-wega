@@ -99,6 +99,9 @@
         - id: LemonSeeds
         - id: LimeSeeds
         - id: OrangeSeeds
+        # Corvax-Wega-start
+        - id: TangerineSeeds
+        # Corvax-Wega-end
         - id: OatSeeds
         - id: OnionSeeds
         - id: OnionRedSeeds

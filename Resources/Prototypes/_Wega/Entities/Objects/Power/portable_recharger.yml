@@ -7,16 +7,7 @@
   - type: Sprite
     sprite: _Wega/Objects/Power/portable_rechargeres/turbo_portable_recharger.rsi
   - type: Charger
-    chargeRate: 100
-  - type: ItemSlots
-    slots:
-      charger_slot:
-        ejectOnInteract: true
-        whitelist:
-          components:
-          - BatteryAmmoProvider
-          - Stunbaton
-          - PowerCell
+    chargeRate: 50
 
 - type: entity
   parent: [PortableRecharger, ClothingBackpack]
@@ -27,7 +18,7 @@
   - type: Sprite
     sprite: _Wega/Objects/Power/portable_rechargeres/bag_portable_recharger.rsi
   - type: Charger
-    chargeRate: 25
+    chargeRate: 30
   - type: Storage
     maxItemSize: Huge
     grid:

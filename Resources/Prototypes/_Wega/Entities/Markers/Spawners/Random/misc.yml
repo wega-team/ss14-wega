@@ -1,0 +1,20 @@
+- type: entity
+  name: Rare module spawner
+  id: RareBorgModuleSpawner
+  parent: MarkerBase
+  components:
+    - type: Sprite
+      layers:
+        - state: red
+        - sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
+          state: command
+    - type: RandomSpawner
+      prototypes:
+        - BorgModuleCommonHand
+        - BorgModuleSecRare
+        - BorgModuleCargoRare
+        - BorgModuleEngenerRare
+        - BorgModuleCleanerRare
+        - BorgModuleMedicalRare
+        - BorgModuleServiceRare
+      chance: 1
