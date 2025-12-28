@@ -9915,6 +9915,37 @@ entities:
     - type: Transform
       pos: 17.514208,15.501376
       parent: 1653
+- proto: GeneticAncestorCubeBox
+  entities:
+  - uid: 1562
+    components:
+    - type: Transform
+      pos: 24.538218,15.750836
+      parent: 1653
+- proto: RareBorgModuleSpawner
+  entities:
+  - uid: 1150
+    components:
+    - type: Transform
+      pos: 35.5,14.5
+      parent: 1653
+- proto: RandomXenoSlimeExtract
+  entities:
+  - uid: 1058
+    components:
+    - type: Transform
+      pos: 27.5,0.5
+      parent: 1653
+  - uid: 1113
+    components:
+    - type: Transform
+      pos: 23.5,4.5
+      parent: 1653
+  - uid: 1114
+    components:
+    - type: Transform
+      pos: 31.5,4.5
+      parent: 1653
 - proto: VehicleJanicartDestroyed
   entities:
   - uid: 729

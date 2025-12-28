@@ -489,6 +489,13 @@ entities:
     - pos: 12.278494,46.219402
       parent: 1653
       type: Transform
+- proto: RareBorgModuleSpawner
+  entities:
+  - uid: 496
+    components:
+    - type: Transform
+      pos: 11.5,45.5
+      parent: 1653
 - proto: Chair
   entities:
   - uid: 399
