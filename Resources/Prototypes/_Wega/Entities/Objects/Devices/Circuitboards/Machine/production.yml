@@ -112,3 +112,41 @@
     stackRequirements:
       Manipulator: 2
       Glass: 5
+      
+- type: entity
+  id: ExosuitFabricatorHyperConvectionMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: hyper convection exosuit fabricator board
+  components:
+  - type: Sprite
+    state: science
+  - type: MachineBoard
+    prototype: ExosuitFabricatorHyperConvection
+    stackRequirements:
+      Manipulator: 4
+      Glass: 5
+    tagRequirements:
+      Igniter:
+        amount: 1
+        defaultPrototype: Igniter
+        
+- type: entity
+  id: BorgChargerTurboCircuitboard
+  parent: BaseMachineCircuitboard
+  name: cyborg recharging station machine board
+  description: A machine printed circuit board for a robot recharging station.
+  components:
+    - type: Sprite
+      sprite: Objects/Misc/module.rsi
+      state: charger_APC
+    - type: MachineBoard
+      prototype: BorgChargerTurbo
+      stackRequirements:
+        Manipulator: 2
+        CableMV: 5
+    - type: PhysicalComposition
+      materialComposition:
+        Steel: 25
+        Plastic: 25
+    - type: StaticPrice
+      price: 15

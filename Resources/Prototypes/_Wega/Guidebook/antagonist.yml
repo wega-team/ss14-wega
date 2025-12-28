@@ -7,3 +7,8 @@
   id: BloodCult
   name: guide-entry-blood-cult
   text: "/ServerInfo/_Wega/Guidebook/Antagonist/BloodCult.xml"
+
+- type: guideEntry
+  id: BloodBrothers
+  name: guide-entry-blood-brothers
+  text: "/ServerInfo/_Wega/Guidebook/Antagonist/BloodBrothers.xml"

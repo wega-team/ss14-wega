@@ -1,0 +1,8 @@
+- type: entity
+  id: BorgChassisSecurity
+  parent: BorgChassisSelectable
+  name: security cyborg
+  components:
+  - type: BorgSwitchableType
+    selectedBorgType: security
+  - type: SurgicalSkill # Corvax-Wega-Surgery
