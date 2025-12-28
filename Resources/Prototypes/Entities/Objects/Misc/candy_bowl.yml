@@ -17,7 +17,7 @@
         - Pill
       tags:
         - FoodSnack
-        - Candy # Corvax-Wega-Add
+        - Lollipops # Corvax-Wega-Add
   - type: ContainerContainer
     containers:
       bin-container: !type:Container
@@ -71,4 +71,4 @@
           - Pill
           tags:
           - FoodSnack
-          - Candy # Corvax-Wega-Add
+          - Lollipops # Corvax-Wega-Add

@@ -318,7 +318,7 @@
         emptyLabel: borg-slot-candy-empty
         whitelist:
           tags:
-          - Candy
+          - Lollipops
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: candy-module }
  

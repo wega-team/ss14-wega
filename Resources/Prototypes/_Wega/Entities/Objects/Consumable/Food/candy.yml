@@ -106,8 +106,7 @@
           lollipop16: ""
   - type: Tag
     tags:
-    - Fruit
-    - Candy
+    - Lollipops
 
 - type: entity
   name: lollipop
@@ -151,8 +150,7 @@
           lollipop16: ""
   - type: Tag
     tags:
-    - Fruit
-    - Candy
+    - Lollipops
     
 - type: entity
   name: lollipop
@@ -192,33 +190,4 @@
           lollipop16: ""
   - type: Tag
     tags:
-    - Fruit
-    - Candy
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    - Lollipops

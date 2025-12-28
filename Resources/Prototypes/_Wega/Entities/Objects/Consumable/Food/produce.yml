@@ -467,8 +467,7 @@
       path: /Audio/Effects/unwrap.ogg
   - type: Tag
     tags:
-    - Fruit
-    - Candy
+    - Lollipops
 
 - type: entity
   name: lollipop 
@@ -500,8 +499,7 @@
       path: /Audio/Effects/unwrap.ogg
   - type: Tag
     tags:
-    - Fruit
-    - Candy
+    - Lollipops
 
 - type: entity
   name: lollipop 
@@ -531,8 +529,7 @@
       path: /Audio/Effects/unwrap.ogg
   - type: Tag
     tags:
-    - Fruit
-    - Candy
+    - Lollipops
 
 - type: entity
   name: lollipop 
@@ -566,5 +563,4 @@
       path: /Audio/Effects/unwrap.ogg
   - type: Tag
     tags:
-    - Fruit
-    - Candy
+    - Lollipops
