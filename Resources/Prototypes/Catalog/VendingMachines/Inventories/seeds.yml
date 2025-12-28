@@ -26,6 +26,9 @@
     OnionSeeds: 5
     OnionRedSeeds: 5
     OrangeSeeds: 5
+    # Corvax-Wega-start
+    TangerineSeeds: 5
+    # Corvax-Wega-end
     PeaSeeds: 5
     PoppySeeds: 3
     PotatoSeeds: 5

@@ -329,3 +329,57 @@
       Min: 0.1
       Max: 0.5
       PotencyDivisor: 50
+
+- type: seed
+  id: tangerine
+  name: seeds-tangerine-name
+  noun: seeds-noun-seeds
+  displayName: seeds-tangerine-display-name
+  plantRsi: _Wega/Objects/Specific/Hydroponics/tangerine.rsi
+  packetPrototype: TangerineSeeds
+  productPrototypes:
+    - FoodProduceTangerine
+  mutationPrototypes:
+    - festivetangerine
+  harvestRepeat: Repeat
+  lifespan: 50
+  maturation: 7
+  production: 5
+  yield: 3
+  potency: 10
+  growthStages: 7
+  chemicals:
+    Nutriment:
+      Min: 2
+      Max: 7
+      PotencyDivisor: 10
+    Vitamin:
+      Min: 1
+      Max: 5
+      PotencyDivisor: 15
+
+- type: seed
+  id: festivetangerine
+  name: seeds-festivetangerine-name
+  noun: seeds-noun-seeds
+  displayName: seeds-festivetangerine-display-name
+  plantRsi: _Wega/Objects/Specific/Hydroponics/festive_tangerine.rsi
+  packetPrototype: FestiveTangerineSeeds
+  productPrototypes:
+    - FoodProduceFestiveTangerine
+  harvestRepeat: Repeat
+  lifespan: 50
+  maturation: 7
+  production: 5
+  yield: 3
+  potency: 10
+  growthStages: 5
+  chemicals:
+    Nutriment:
+      Min: 2
+      Max: 7
+      PotencyDivisor: 10
+    Vitamin:
+      Min: 1
+      Max: 5
+      PotencyDivisor: 15

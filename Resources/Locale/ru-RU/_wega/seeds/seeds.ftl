@@ -24,3 +24,7 @@ seeds-candytree-name = конфета
 seeds-candytree-display-name = конфетное дерево
 seeds-candytreerandom-name = необычная конфета
 seeds-candytreerandom-display-name = необычное конфетное дерево
+seeds-tangerine-name = мандарин
+seeds-tangerine-display-name = мандариновое дерево
+seeds-festivetangerine-name = подарин
+seeds-festivetangerine-display-name = подариновая ёлка
