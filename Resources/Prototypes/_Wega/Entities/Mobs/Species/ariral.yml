@@ -72,7 +72,7 @@
       types:
         Asphyxiation: -3.0
   - type: Stamina
-    critThreshold: 70
+    baseCritThreshold: 80
   - type: DiseaseCarrier
   - type: Hunger
   - type: Thirst
