@@ -46,9 +46,6 @@
     - state: box
       map: ["enum.StorageVisualLayers.Base"]
   - type: Storage
-    whitelist:
-      tags:
-        - Lollipops
     grid:
     - 0,0,5,3
     maxItemSize: Normal
