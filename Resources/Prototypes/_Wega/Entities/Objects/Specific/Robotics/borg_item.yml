@@ -1258,8 +1258,6 @@
     - state: bag_folded
   - type: Item
     sprite: Objects/Specific/Medical/Morgue/bodybags.rsi
-    layers:
-    - state: bag_folded
 
 - type: entity
   parent: BaseItem
@@ -1273,5 +1271,3 @@
     - state: cheap_rollerbed_folded
   - type: Item
     sprite: Structures/Furniture/rollerbeds.rsi
-    layers:
-    - state: cheap_rollerbed_folded
