@@ -5,6 +5,20 @@
   inhand:
   - PetCarrierMars
   
+- type: loadout
+  id: BigToyHammer
+  effects:
+  - !type:SponsorLoadoutEffect
+  inhand:
+  - BigToyHammer
+
+- type: loadout
+  id: BigToyHammerRed
+  effects:
+  - !type:SponsorLoadoutEffect
+  inhand:
+  - BigToyHammerRed
+
 ## Eyes
 - type: loadout
   id: ClothingEyesGlassesGarGigaSponsor

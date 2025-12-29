@@ -16,6 +16,58 @@
   name: mars
   description: "He's so small, cute, fluffy and AIRY."
 
+- type: entity
+  parent: BaseItem
+  id: BigToyHammer
+  name: bid rubber hammer
+  description: A brightly colored hammer made of rubber.
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Objects/Fun/big_rubber_hammer.rsi
+    state: icon
+  - type: WeaponRandom
+    damageBonus:
+      types:
+        Blunt: 1000
+  - type: StaminaDamageOnHit
+    damage: 8
+  - type: Item
+    size: Small
+    sprite: _Wega/Sponsors/Objects/Fun/big_rubber_hammer_inhand.rsi
+  - type: Appearance
+  - type: DisarmMalus
+    malus: 0
+  - type: MeleeWeapon
+    wideAnimationRotation: -135
+    soundHit:
+      collection: RubberHammer
+      params:
+        variation: 0.03
+        volume: 3
+    soundNoDamage:
+      collection: RubberHammer
+      params:
+        variation: 0.03
+        volume: 3
+    damage:
+      types:
+        Blunt: 0
+
+- type: entity
+  parent: BigToyHammer
+  id: BigToyHammerRed
+  name: bid red rubber hammer       
+  description: A brightly colored hammer made of rubber.
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Objects/Fun/big_red_rubber_hammer.rsi
+    state: icon
+  - type: Item
+    size: Small
+    sprite: _Wega/Sponsors/Objects/Fun/big_red_rubber_hammer_inhand.rsi
+
 ## SPONSOR LOADOUT WEGA
 
 # Eyes

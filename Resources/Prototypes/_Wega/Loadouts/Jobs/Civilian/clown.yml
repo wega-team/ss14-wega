@@ -1,9 +1,4 @@
 - type: loadout
-  id: ClothingShoesHeelsPink
-  equipment:
-    shoes: ClothingShoesHeelsPink
-
-- type: loadout
   id: ClothingMaskClown
   equipment:
     mask: ClothingMaskClown
