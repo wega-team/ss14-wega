@@ -149,7 +149,8 @@
       sprite: _Wega/Objects/Specific/Hydroponics/catmelon.rsi
 
 - type: entity
-  name: packet of candy tangerine
+  parent: SeedBase
+  name: packet of tangerine seeds
   id: TangerineSeeds
   components:
     - type: Seed
@@ -159,7 +160,7 @@
 
 - type: entity
   parent: SeedBase
-  name: packet of candy festive tangerine
+  name: packet of festive tangerine seeds
   id: FestiveTangerineSeeds
   components:
     - type: Seed

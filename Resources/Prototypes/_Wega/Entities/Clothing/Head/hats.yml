@@ -166,6 +166,7 @@
     accent: OwOAccent
 
 - type: entity
+  parent: ClothingHeadBase
   id: ClothingHeadHatNewYearRed
   name: red new year hat
   description: "The holiday is coming, the holiday is coming!"

@@ -603,7 +603,7 @@
     - Fruit
 
 - type: entity
-name: tangerine open
+  name: tangerine open
   parent: FoodProduceBase
   id: FoodProduceTangerineOpen
   description: "the best New Year's food!"
@@ -633,7 +633,7 @@ name: tangerine open
     - Fruit
 
 - type: entity
-parent: BaseItem
+  parent: BaseItem
   name: tangerine peel
   id: FoodProduceTangerineTrash
   description: It smells strongly of tangerine!
