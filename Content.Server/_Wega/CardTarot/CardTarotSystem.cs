@@ -49,6 +49,7 @@ using Content.Shared.Storage.Components;
 using Content.Shared.Stunnable;
 using Content.Shared.Tag;
 using Content.Shared.Throwing;
+using Content.Shared.Tiles;
 using Content.Shared.Traits.Assorted;
 using Content.Shared.Trigger.Components.Triggers;
 using Content.Shared.Trigger.Systems;
@@ -345,16 +346,16 @@ public sealed class CardTarotSystem : EntitySystem
         if (reversed)
         {
             var nearbyEntity = _entityLookup.GetEntitiesInRange<MobStateComponent>(Transform(target).Coordinates, 6f)
-                .ToList();
+                .Where(e => e.Owner != target).ToList();
 
             foreach (var entity in nearbyEntity)
             {
                 var entityUid = entity.Owner;
-                if (HasComp<PacifiedComponent>(target))
+                if (HasComp<PacifiedComponent>(entityUid))
                     return;
 
-                EnsureComp<PacifiedComponent>(target);
-                Timer.Spawn(TimeSpan.FromSeconds(40), () => { RemComp<PacifiedComponent>(target); });
+                EnsureComp<PacifiedComponent>(entityUid);
+                Timer.Spawn(TimeSpan.FromSeconds(40), () => { RemComp<PacifiedComponent>(entityUid); });
             }
         }
         else
@@ -437,7 +438,7 @@ public sealed class CardTarotSystem : EntitySystem
         }
         else
         {
-            var damage = new DamageSpecifier { DamageDict = { { BluntDamage, -20 } } };
+            var damage = new DamageSpecifier { DamageDict = { { BluntDamage, -40 }, { HeatDamage, -40 }, { PoisonDamage, -40 } } };
             _damage.TryChangeDamage(target, damage, true);
             _blood.TryModifyBloodLevel(target, 100);
         }
@@ -563,7 +564,7 @@ public sealed class CardTarotSystem : EntitySystem
             foreach (var entity in nearbyEntity)
             {
                 var entityUid = entity.Owner;
-                _hallucinations.StartHallucinations(entityUid, "Hallucinations", TimeSpan.FromSeconds(30f), true, "MindBreaker");
+                _hallucinations.StartHallucinations(entityUid, "Hallucinations", TimeSpan.FromMinutes(2), true, "MindBreaker");
             }
         }
         else
@@ -850,7 +851,7 @@ public sealed class CardTarotSystem : EntitySystem
         else
         {
             var grids = _mapManager.GetAllGrids(Transform(target).MapID)
-                .Where(g => !HasComp<BecomesStationComponent>(g)).ToList();
+                .Where(g => !HasComp<BecomesStationComponent>(g) && !HasComp<ProtectedGridComponent>(g)).ToList();
 
             if (grids.Count == 0)
                 return;
