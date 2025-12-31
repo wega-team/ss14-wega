@@ -94,3 +94,38 @@
       - MobXenoSlimePyrite
       - MobXenoSlimeAzure
       - MobXenoSlimeLightPink
+
+- type: entity
+  id: RandomXenoSlimeExtract
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: red
+      - sprite: _Wega/Objects/Consumable/Food/extracts.rsi
+        state: grey
+  - type: RandomSpawner
+    prototypes:
+      - MaterialSlimeExtractGray
+      - MaterialSlimeExtractBlue
+      - MaterialSlimeExtractPurple
+      - MaterialSlimeExtractOrange
+      - MaterialSlimeExtractMetallic
+      - MaterialSlimeExtractDarkPurple
+      - MaterialSlimeExtractGreen
+      - MaterialSlimeExtractDarkBlue
+      - MaterialSlimeExtractPink
+      - MaterialSlimeExtractRed
+      - MaterialSlimeExtractYellow
+      - MaterialSlimeExtractGold
+      - MaterialSlimeExtractSilver
+      - MaterialSlimeExtractBlack
+      - MaterialSlimeExtractSepia
+      - MaterialSlimeExtractOil
+      - MaterialSlimeExtractBluespace
+      - MaterialSlimeExtractAdamantine
+      - MaterialSlimeExtractPyrite
+      - MaterialSlimeExtractAzure
+      - MaterialSlimeExtractLightPink
+      - MaterialSlimeExtractRainbow
+    chance: 0.75

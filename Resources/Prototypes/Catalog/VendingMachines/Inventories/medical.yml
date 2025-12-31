@@ -35,6 +35,7 @@
   id: NanoMedPlusInventory
   startingInventory:
     HandheldHealthAnalyzer: 3
+    FoodBoxLollipop: 1 # Corvax-Wega
     Gauze: 5
     Brutepack: 5
     Ointment: 5
@@ -62,6 +63,7 @@
   id: NanoMedCivilianInventory
   startingInventory:
     HandheldHealthAnalyzer: 3
+    FoodBoxLollipop: 1 # Corvax-Wega
     AloeCream: 3
     Gauze: 5
     Brutepack: 5

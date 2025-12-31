@@ -1,3 +1,4 @@
+using System.Linq;
 using Content.Shared.Atmos;
 using Content.Shared.Atmos.Prototypes;
 using Content.Shared.Chemistry.Reagent;
@@ -17,14 +18,22 @@ public abstract partial class SharedPlantAnalyzerSystem : EntitySystem
         if (gases.Count == 0)
             return "";
 
-        List<int> gasIds = [];
-        foreach (var gas in gases)
-            gasIds.Add((int)gas);
-
         List<string> gasesLoc = [];
-        foreach (var gas in _prototypeManager.EnumeratePrototypes<GasPrototype>())
-            if (gasIds.Contains(int.Parse(gas.ID)))
-                gasesLoc.Add(Loc.GetString(gas.Name));
+        var gasPrototypes = _prototypeManager.EnumeratePrototypes<GasPrototype>().ToArray();
+        foreach (var gas in gases)
+        {
+            var gasProto = gasPrototypes.FirstOrDefault(g =>
+                g.ID.Equals(gas.ToString(), StringComparison.OrdinalIgnoreCase));
+
+            if (gasProto != null)
+            {
+                gasesLoc.Add(Loc.GetString(gasProto.Name));
+            }
+            else
+            {
+                gasesLoc.Add(Loc.GetString($"gases-{gas.ToString().ToLower()}"));
+            }
+        }
 
         return ContentLocalizationManager.FormatList(gasesLoc);
     }

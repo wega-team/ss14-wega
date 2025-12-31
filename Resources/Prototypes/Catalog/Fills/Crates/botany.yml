@@ -99,6 +99,9 @@
         - id: LemonSeeds
         - id: LimeSeeds
         - id: OrangeSeeds
+        # Corvax-Wega-start
+        - id: TangerineSeeds
+        # Corvax-Wega-end
         - id: OatSeeds
         - id: OnionSeeds
         - id: OnionRedSeeds
@@ -106,6 +109,9 @@
         - id: SoybeanSeeds
         - id: GrapeSeeds
         - id: WatermelonSeeds
+        # Corvax-Wega-start
+        - id: MelonSeeds
+        # Corvax-Wega-end
         - id: PeaSeeds
         - id: CherrySeeds
         - id: CottonSeeds

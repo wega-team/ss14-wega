@@ -9915,11 +9915,6 @@ entities:
     - type: Transform
       pos: 17.514208,15.501376
       parent: 1653
-  - uid: 1562
-    components:
-    - type: Transform
-      pos: 24.538218,15.750836
-      parent: 1653
 - proto: VehicleJanicartDestroyed
   entities:
   - uid: 729

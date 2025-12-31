@@ -23,6 +23,9 @@
   - BorgModuleCommonPen
   - BorgModuleCommonFight
   - BorgModuleCommonPickaxe
+  - BorgModuleCommonSpeed
+  - BorgModuleCommonMagBoots
+  - BorgModuleCommonRepeir
  # Corvax-Wega-end
 
 - type: latheRecipePack
@@ -68,7 +71,6 @@
   - BorgModuleClowning
   - BorgModuleSheild
   - BorgModuleGranader
-  - BorgModuleSecLethal
   - BorgModuleCommonHand
  # Corvax-Wega-end
 
