@@ -621,11 +621,6 @@ public sealed partial class VampireSystem
         SubtractBloodEssence(uid, 30);
 		/// args.Handled не будет, чтобы не было кд. Логика - после включения кд для выключения нет, а после выключения есть.
     }
-	
-	private void OnBloodRiteAlert(EntityUid uid, VampireComponent component, VampireBloodRiteAlertEvent ev)
-	{
-		RaiseLocalEvent(uid, new VampireBloodBringersRiteActionEvent());
-	}
 
     #endregion
 
@@ -1279,7 +1274,7 @@ public sealed partial class VampireSystem
     #region Dantalion Abilities
     private void MaxThrallCountUpdate(EntityUid uid, VampireComponent component, MaxThrallCountUpdateEvent args)
     {
-        component.MaxThrallCount += 3;
+        component.MaxThrallCount += 2;
 
         _action.RemoveAction(uid, args.Action!);
     }

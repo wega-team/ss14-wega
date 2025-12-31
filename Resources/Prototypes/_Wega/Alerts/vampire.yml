@@ -25,7 +25,6 @@
 
 - type: alert
   id: AlertBloodRite
-  clickEvent: !type:VampireBloodRiteAlertEvent
   icons:
   - sprite: /Textures/_Wega/Interface/Alerts/bloodrite.rsi
     state: puddle-off # 0
