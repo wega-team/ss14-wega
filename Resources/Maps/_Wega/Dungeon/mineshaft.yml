@@ -544,7 +544,7 @@ entities:
       parent: 2
 - proto: RareBorgModuleSpawner
   entities:
-  - uid: 800
+  - uid: 9875
     components:
     - type: Transform
       pos: 43.5,21.5
