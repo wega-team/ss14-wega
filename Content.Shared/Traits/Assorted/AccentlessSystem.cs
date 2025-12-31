@@ -29,9 +29,7 @@ public sealed class AccentlessSystem : EntitySystem
 	
 	private void OnCloneFinished(EntityUid uid, AccentlessComponent component, CloneFinishedEvent args)
     {
-		
         RemoveAccents(uid, component, new ComponentStartup());
-    
 	}
 }
 
