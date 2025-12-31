@@ -592,10 +592,10 @@ namespace Content.Server.Ghost
 
 					// Add item required by the trait
 					if (traitPrototype.TraitGear == null)
-					continue;
+						continue;
 
 					if (!TryComp<HandsComponent>(spawnedMob, out var handsComponent))
-					continue;
+						continue;
 
 					var inhandEntity = Spawn(traitPrototype.TraitGear, coords);
 					_sharedHandsSystem.TryPickup(spawnedMob,
