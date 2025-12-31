@@ -90,7 +90,7 @@
     Telecrystal: 3
   categories:
   - UplinkDisruption
-  
+
 - type: listing
   id: UplinkClothingHandsKnuckleDustersStun
   name: uplink-clothing-hands-knuckle-dusters-stun-name
@@ -245,7 +245,7 @@
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 1
-    
+
 - type: listing
   id: UplinkC20RBundleNuke
   name: uplink-c20r-bundle-name
@@ -350,7 +350,7 @@
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 1
-    
+
 - type: listing
   id: UplinkSyndiePouch
   name: uplink-syndie-pouch-name
@@ -367,3 +367,21 @@
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 2
+
+- type: listing
+  id: UplinkDiceOfFate
+  name: uplink-syndie-dice-of-fate-name
+  description: uplink-syndie-dice-of-fate-desc
+  icon: { sprite: Objects/Fun/dice.rsi, state: d20_20 }
+  productEntity: DiceOfFate
+  categories:
+    - UplinkJob
+  discountCategory: veryRareDiscounts
+  cost:
+    Telecrystal: 20
+  conditions:
+  - !type:BuyerJobCondition
+    whitelist:
+    - Librarian
+  - !type:ListingLimitedStockCondition
+    stock: 1

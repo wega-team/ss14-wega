@@ -359,6 +359,7 @@
         Piercing: 0.5
         Heat: 0.5
   - type: GroupExamine
+  - type: BloodShieldActivaeble # Corvax-Wega-Blood-Cult
 
 - type: entity
   parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing]

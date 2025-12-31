@@ -15,8 +15,8 @@
     Blunt: 0.4
     Piercing: 0.4
     Cold: 0.1
-    Heat: 1
-    Shock: 1
+    Heat: 0.5
+    Shock: 0.5
     Poison: 0.0
     Radiation: 0.0
 
@@ -63,3 +63,21 @@
     Cold: 1.25
     Heat: 1.25
     Poison: 0.8
+
+- type: damageModifierSet
+  id: DiceOfFateMod
+  coefficients:
+    Asphyxiation: 0.5
+    Bloodloss: 0.5
+    Blunt: 0.5
+    Cellular: 0.5
+    Caustic: 0.5
+    Cold: 0.5
+    Heat: 0.5
+    Piercing: 0.5
+    Poison: 0.5
+    Radiation: 0.5
+    Shock: 0.5
+    Slash: 0.5
+    Structural: 0.5
+    Holy: 0.5

@@ -15,6 +15,11 @@
         - id: d12Dice
         - id: d20Dice
         - id: PercentileDie
+        # Corvax-Wega-DiceOfFate-start
+        # For fun lol
+        - id: DiceOfFate
+          prob: 0.00001
+        # Corvax-Wega-DiceOfFate-end
   - type: Sprite
     sprite: Objects/Fun/dice.rsi
     state: dicebag

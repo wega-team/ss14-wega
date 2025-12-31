@@ -21,6 +21,16 @@
   - type: BloodOrb
 
 - type: entity
+  id: BloodCultShieldEffect
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: OverMobs
+    sprite: _Wega/Effects/shield-bloodcult.rsi
+    state: shield
+
+- type: entity
   id: BloodCultOutEffect
   categories: [ HideSpawnMenu ]
   components:

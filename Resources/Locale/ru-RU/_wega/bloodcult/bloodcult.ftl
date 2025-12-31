@@ -40,6 +40,7 @@ ritual-dimensional-rending-rune = Ритуал Разрыва Измерений
 ritual-dimensional-rending-rune-desc = Вызывает Одно из божеств крови через пространственный разрыв.
 
 # System
+blood-cultist-eyes-glow-examined = [color=red]Глаза {$name} созерцают неестественным цветом, это не к добру...[/color]
 blood-cult-first-warning = Ваши глаза начали полыхать заревом крови
 blood-cult-second-warning = Кровавая пентаграмма образуется над вами, это знак к действию
 blood-dagger-failed-interact = кинжал выскальзывает из вашей руки лезвием нанося увечья
@@ -67,6 +68,7 @@ blood-orb-invalid-input = Невозможное значение, укажит�
 blood-orb-not-enough-blood = У вас не достаточно собранной крови
 blood-orb-success = Вы выделили { $amount } единиц крови
 blood-orb-absorbed = сфера растекается в лужу крови и поглащается
+blood-cult-recharge-failed = недостаточно крови для перезарядки...
 blood-cult-spear-failed = недостаточно крови для призыва копья
 cult-spear-not-found = кровавого копья не существует
 cult-spear-too-far = расстояние до копья слишком велико

@@ -11,6 +11,8 @@ using Content.Shared.Bed.Sleep;
 using Content.Shared.Blood.Cult;
 using Content.Shared.Blood.Cult.Components;
 using Content.Shared.Body.Components;
+using Content.Shared.Card.Tarot;
+using Content.Shared.Card.Tarot.Components;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Clothing;
 using Content.Shared.Cuffs;
@@ -20,9 +22,9 @@ using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.DoAfter;
 using Content.Shared.Doors.Components;
+using Content.Shared.EnergyShield;
 using Content.Shared.FixedPoint;
 using Content.Shared.Fluids.Components;
-using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Humanoid;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
@@ -36,12 +38,14 @@ using Content.Shared.StatusEffectNew;
 using Content.Shared.Stunnable;
 using Content.Shared.Timing;
 using Robust.Server.GameObjects;
+using Robust.Shared.Audio;
 using Robust.Shared.Containers;
 using Robust.Shared.Map;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
 
 namespace Content.Server.Blood.Cult;
 
@@ -56,12 +60,11 @@ public sealed partial class BloodCultSystem
     [Dependency] private readonly FixtureSystem _fixtures = default!;
     [Dependency] private readonly FlashSystem _flash = default!;
     [Dependency] private readonly HallucinationsSystem _hallucinations = default!;
-    [Dependency] private readonly InventorySystem _inventorySystem = default!;
+    [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly ISharedPlayerManager _player = default!;
     [Dependency] private readonly LoadoutSystem _loadout = default!;
     [Dependency] private readonly QuickDialogSystem _quickDialog = default!;
     [Dependency] private readonly SharedCuffableSystem _cuff = default!;
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly SharedStackSystem _stack = default!;
     [Dependency] private readonly SharedStunSystem _stun = default!;
@@ -69,6 +72,8 @@ public sealed partial class BloodCultSystem
     [Dependency] private readonly StatusEffectsSystem _statusEffect = default!;
     [Dependency] private readonly UseDelaySystem _useDelay = default!;
     [Dependency] private readonly VisibilitySystem _visibility = default!;
+
+    private static readonly SoundPathSpecifier CultSpell = new SoundPathSpecifier("/Audio/_Wega/Effects/cult_spell.ogg");
 
     private void InitializeBloodAbilities()
     {
@@ -173,6 +178,7 @@ public sealed partial class BloodCultSystem
         _transform.SetWorldPosition(dagger, cultistPosition);
         _popup.PopupEntity(Loc.GetString("blood-cult-dagger-recalled"), cultist, cultist);
         _hands.TryPickupAnyHand(cultist, dagger);
+        _audio.PlayPvs(CultSpell, dagger);
         args.Handled = true;
     }
 
@@ -468,6 +474,12 @@ public sealed partial class BloodCultSystem
 
     private void OnBloodRecharge(EntityUid cultist, BloodCultistComponent component, BloodCultBloodRechargeActionEvent args)
     {
+        if (component.BloodCount < 75)
+        {
+            _popup.PopupEntity(Loc.GetString("blood-cult-recharge-failed"), cultist, cultist, PopupType.SmallCaution);
+            return;
+        }
+
         var target = args.Target;
         if (TryComp<VeilShifterComponent>(target, out var veilShifter))
         {
@@ -475,9 +487,41 @@ public sealed partial class BloodCultSystem
             veilShifter.ActivationsCount = Math.Min(totalActivations + 4, 4);
 
             _appearance.SetData(target, VeilShifterVisuals.Charged, veilShifter.ActivationsCount > 0);
-        }
 
-        _action.RemoveAction(cultist, args.Action!);
+            component.BloodCount -= 75;
+            _audio.PlayPvs(CultSpell, target);
+            _action.RemoveAction(cultist, args.Action!);
+        }
+        else if (TryComp<BloodShieldActivaebleComponent>(target, out var bloodShield) && !HasComp<EnergyShieldOwnerComponent>(cultist))
+        {
+            _inventory.TryUnequip(cultist, bloodShield.CurrentSlot, force: true);
+            if (_inventory.TryEquip(cultist, target, bloodShield.CurrentSlot, force: true))
+            {
+                var shield = EnsureComp<EnergyShieldOwnerComponent>(cultist);
+                shield.ShieldEntity = Spawn("BloodCultShieldEffect", Transform(cultist).Coordinates);
+                _transform.SetParent(shield.ShieldEntity.Value, cultist);
+
+                _audio.PlayPvs(CultSpell, target);
+            }
+
+            component.BloodCount -= 75;
+            _action.RemoveAction(cultist, args.Action!);
+        }
+        else if (TryComp<CardTarotComponent>(target, out var tarot) && tarot.Card == CardTarot.NotEnchanted
+            && component.BloodCount >= 100)
+        {
+            var allCards = Enum.GetValues<CardTarot>();
+            tarot.Card = (CardTarot)_random.Next(1, allCards.Length);
+
+            bool reversed = _random.Prob(0.5f);
+            if (reversed) tarot.CardType = CardTarotType.Reversed;
+
+            _appearance.SetData(target, CardTarotVisuals.State, tarot.Card);
+            _appearance.SetData(target, CardTarotVisuals.Reversed, reversed);
+
+            component.BloodCount -= 100;
+            _action.RemoveAction(cultist, args.Action!);
+        }
     }
 
     private void OnBloodSpear(EntityUid cultist, BloodCultistComponent component, BloodCultBloodSpearActionEvent args)
@@ -692,17 +736,21 @@ public sealed partial class BloodCultSystem
         }
 
         _popup.PopupEntity(Loc.GetString("blood-cult-twisted-failed"), user, user, PopupType.SmallCaution);
-        QueueDel(spell);
     }
 
     private void TransformAirlock(Entity<BloodSpellComponent> spell, EntityUid user, EntityUid airlock)
     {
         ExtractBlood(user, -12, 8);
 
+        string spawnProto = "AirlockBloodCult";
+        if (TryComp<DoorComponent>(airlock, out var door) && !door.Occludes)
+            spawnProto = "AirlockBloodCultGlass";
+
         var airlockTransform = Transform(airlock).Coordinates;
         QueueDel(airlock);
-        Spawn("AirlockBloodCult", airlockTransform);
 
+        var ent = Spawn(spawnProto, airlockTransform);
+        _audio.PlayPvs(CultSpell, ent);
         QueueDel(spell);
     }
 
@@ -726,6 +774,7 @@ public sealed partial class BloodCultSystem
             TransformPlasteelToRuneMetal(material, coords, stack.Count);
         }
 
+        _audio.PlayPvs(CultSpell, user);
         QueueDel(spell);
     }
 
@@ -794,7 +843,7 @@ public sealed partial class BloodCultSystem
 
         foreach (var (slot, gearPrototype) in slotGearMap)
         {
-            if (!_inventorySystem.TryGetSlotEntity(target, slot, out _, targetInventory))
+            if (!_inventory.TryGetSlotEntity(target, slot, out _, targetInventory))
             {
                 var gear = new List<ProtoId<StartingGearPrototype>> { gearPrototype };
                 _loadout.Equip(target, gear, null);

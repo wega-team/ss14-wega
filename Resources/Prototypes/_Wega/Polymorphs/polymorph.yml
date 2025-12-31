@@ -30,3 +30,12 @@
     entity: MobZilla
     forced: true
     duration: 600
+
+#Other
+- type: polymorph
+  id: ChariotStatue
+  configuration:
+    entity: StatueVenusRed
+    transferName: true
+    forced: true
+    duration: 120

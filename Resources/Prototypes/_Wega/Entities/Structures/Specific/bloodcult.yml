@@ -278,6 +278,7 @@
     - ClothingEyesZealotBlindfold
     - BloodCultVeilShifter
     - BloodCultShuttleCurse
+    - CardTarotNotEnchanted
   - type: Construction
     graph: BloodCultStructureArchivesGraph
     node: BloodCultStructureArchives

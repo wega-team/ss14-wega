@@ -13,17 +13,22 @@ using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Damage;
 using Content.Shared.DoAfter;
+using Content.Shared.EnergyShield;
 using Content.Shared.Examine;
 using Content.Shared.FixedPoint;
+using Content.Shared.Hands.EntitySystems;
+using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Components;
 using Content.Shared.Interaction.Events;
+using Content.Shared.Inventory.Events;
 using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Standing;
 using Content.Shared.Weapons.Melee;
+using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Weapons.Ranged.Events;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
@@ -50,6 +55,7 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
+    [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly SharedMindSystem _mind = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedSolutionContainerSystem _solution = default!;
@@ -62,9 +68,11 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
         InitializeRunes();
         InitializeBloodAbilities();
 
+        SubscribeLocalEvent<BloodCultistEyesComponent, ExaminedEvent>(OnCultistEyesExamined);
+
         SubscribeLocalEvent<BloodCultistComponent, ShotAttemptedEvent>(OnShotAttempted); // Corvax-Wega-Testing
+        SubscribeLocalEvent<BloodCultWeaponComponent, AttemptMeleeEvent>(OnAttemptMelee);
         SubscribeLocalEvent<BloodDaggerComponent, AfterInteractEvent>(OnInteract);
-        SubscribeLocalEvent<AttackAttemptEvent>(OnAttackAttempt);
 
         SubscribeLocalEvent<StoneSoulComponent, ComponentInit>(OnComponentInit);
         SubscribeLocalEvent<StoneSoulComponent, ComponentShutdown>(OnShutdown);
@@ -76,6 +84,8 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
 
         SubscribeLocalEvent<VeilShifterComponent, ExaminedEvent>(OnVeilShifterExamined);
         SubscribeLocalEvent<VeilShifterComponent, UseInHandEvent>(OnVeilShifter);
+
+        SubscribeLocalEvent<BloodShieldActivaebleComponent, GotUnequippedEvent>(OnShieldGotUnequipped);
 
         SubscribeLocalEvent<ConstructComponent, InteractHandEvent>(OnConstructInteract);
         SubscribeLocalEvent<ConstructComponent, BloodConstructSelectMessage>(OnConstructSelect);
@@ -132,6 +142,16 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
         }
     }
 
+    private void OnCultistEyesExamined(EntityUid uid, BloodCultistEyesComponent component, ExaminedEvent args)
+    {
+        if (!args.IsInDetailsRange)
+            return;
+
+        var name = Identity.Name(uid, EntityManager, args.Examiner);
+        if (Name(uid) == name)
+            args.PushMarkup(Loc.GetString("blood-cultist-eyes-glow-examined", ("name", name)));
+    }
+
     // Corvax-Wega-Testing-start
     // Да я пометил тегами чтобы банально не забыть про это и чо?
     private void OnShotAttempted(Entity<BloodCultistComponent> ent, ref ShotAttemptedEvent args)
@@ -144,7 +164,20 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
     }
     // Corvax-Wega-Testing-end
 
-    #region Dagger
+    #region Dagger & Weapon
+    private void OnAttemptMelee(Entity<BloodCultWeaponComponent> entity, ref AttemptMeleeEvent args)
+    {
+        var user = Transform(entity.Owner).ParentUid;
+        if (!HasComp<BloodCultistComponent>(user))
+        {
+            _popup.PopupEntity(Loc.GetString("blood-cult-failed-attack"), user, user, PopupType.SmallCaution);
+
+            var dropEvent = new DropHandItemsEvent();
+            RaiseLocalEvent(user, ref dropEvent);
+            args.Cancelled = true;
+        }
+    }
+
     private void OnInteract(EntityUid uid, BloodDaggerComponent component, AfterInteractEvent args)
     {
         if (args.Handled || !args.CanReach || args.Target is not { Valid: true } target)
@@ -158,6 +191,7 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
             var damage = new DamageSpecifier { DamageDict = { { "Slash", 5 } } };
             _damage.TryChangeDamage(user, damage, true);
             _popup.PopupEntity(Loc.GetString("blood-dagger-failed-interact"), user, user, PopupType.SmallCaution);
+            args.Handled = true;
             return;
         }
 
@@ -236,19 +270,6 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
         else
         {
             _popup.PopupEntity(Loc.GetString("blood-sharpener-failed"), user, user, PopupType.Small);
-        }
-    }
-
-    private void OnAttackAttempt(AttackAttemptEvent args)
-    {
-        if (args.Weapon == null || !HasComp<BloodDaggerComponent>(args.Weapon))
-            return;
-
-        var user = args.Uid;
-        if (!HasComp<BloodCultistComponent>(user))
-        {
-            _popup.PopupEntity(Loc.GetString("blood-cult-failed-attack"), user, user, PopupType.SmallCaution);
-            args.Cancel();
         }
     }
     #endregion
@@ -423,6 +444,17 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
         {
             return direction.Y > 0 ? Vector2.UnitY : -Vector2.UnitY;
         }
+    }
+    #endregion
+
+    #region Shield
+    private void OnShieldGotUnequipped(Entity<BloodShieldActivaebleComponent> ent, ref GotUnequippedEvent args)
+    {
+        if (!TryComp<EnergyShieldOwnerComponent>(args.Equipee, out var energyShield))
+            return;
+
+        QueueDel(energyShield.ShieldEntity);
+        RemComp(args.Equipee, energyShield);
     }
     #endregion
 

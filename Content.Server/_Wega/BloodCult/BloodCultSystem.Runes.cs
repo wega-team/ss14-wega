@@ -109,17 +109,8 @@ public sealed partial class BloodCultSystem
             var cultistPosition = _transform.GetMapCoordinates(Transform(cultist));
             isValidSurface = _mapMan.TryFindGridAt(cultistPosition, out _, out _);
 
-            // If you know any better ways to collect all entities with 1 component into some kind of list, please tell me,
-            // Because I was trying to find this shit at 4 a.m.
-            bool ritualHas = false;
-            var query = EntityQueryEnumerator<BloodRitualDimensionalRendingComponent>();
-            while (query.MoveNext(out _, out _))
-            {
-                ritualHas = true;
-                break;
-            }
-
-            if (!isValidSurface || ritualHas)
+            var ritual = EntityQuery<BloodRitualDimensionalRendingComponent>().FirstOrDefault();
+            if (!isValidSurface || ritual != default)
             {
                 _popup.PopupEntity(Loc.GetString("rune-ritual-failed"), cultist, cultist, PopupType.MediumCaution);
                 return false;
@@ -975,7 +966,7 @@ public sealed partial class BloodCultSystem
     private Color TryFindColor(EntityUid cultist)
     {
         if (!TryComp<BloodstreamComponent>(cultist, out var bloodStreamComponent))
-            return Color.White;
+            return Color.FromHex("#880000");
 
         string? bloodReagentPrototypeId = null;
         if (bloodStreamComponent.BloodReferenceSolution.Contents.Count > 0)
@@ -985,10 +976,10 @@ public sealed partial class BloodCultSystem
         }
 
         if (bloodReagentPrototypeId == null)
-            return Color.White;
+            return Color.FromHex("#880000");
 
         if (!_prototypeManager.TryIndex(bloodReagentPrototypeId, out ReagentPrototype? reagentPrototype))
-            return Color.White;
+            return Color.FromHex("#880000");
 
         return reagentPrototype.SubstanceColor;
     }

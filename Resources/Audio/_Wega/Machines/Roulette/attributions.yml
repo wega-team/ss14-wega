@@ -1,0 +1,4 @@
+- files: ["coindrop.ogg", "coindrop2.ogg", "cursed_jackpot.ogg", "cursed.ogg", "ding_short.ogg", "roulettejackpot.ogg", "roulettewheel.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "Taken from TG Station"
+  source: "https://github.com/tgstation/tgstation"

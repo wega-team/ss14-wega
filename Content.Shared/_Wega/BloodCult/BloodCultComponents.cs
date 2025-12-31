@@ -42,6 +42,9 @@ public sealed partial class ShowCultistIconsComponent : Component;
 public sealed partial class BloodCultObjectComponent : Component;
 
 [RegisterComponent]
+public sealed partial class BloodCultWeaponComponent : Component;
+
+[RegisterComponent]
 public sealed partial class BloodDaggerComponent : Component
 {
     [DataField]
@@ -110,6 +113,12 @@ public sealed partial class BloodStructureComponent : Component
 public sealed partial class BloodPylonComponent : Component
 {
     public float NextTimeTick { get; set; }
+}
+
+[RegisterComponent]
+public sealed partial class BloodShieldActivaebleComponent : Component
+{
+    public string CurrentSlot = "outerClothing";
 }
 
 [RegisterComponent]

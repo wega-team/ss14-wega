@@ -39,7 +39,7 @@ public enum BloodCultRune : byte
 }
 
 [Serializable, NetSerializable]
-public enum RuneColorVisuals
+public enum RuneColorVisuals : byte
 {
     Color
 }
@@ -51,7 +51,7 @@ public enum StoneSoulVisuals : byte
 }
 
 [Serializable, NetSerializable]
-public enum VeilShifterVisuals
+public enum VeilShifterVisuals : byte
 {
     Charged
 }

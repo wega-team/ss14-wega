@@ -50,7 +50,7 @@
     sprite: _Wega/Clothing/OuterClothing/Armor/captain_carapace_green.rsi
   - type: Clothing
     sprite: _Wega/Clothing/OuterClothing/Armor/captain_carapace_green.rsi
-    
+
 - type: entity
   parent: ClothingOuterArmorCaptainCarapace
   id: ClothingOuterArmorCaptainCarapaceWhite

@@ -57,12 +57,12 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 2
-        Slash: 2
-        Piercing: 2
-        Heat: 2
+        Blunt: 1.75
+        Slash: 1.75
+        Piercing: 1.75
+        Heat: 1.75
   - type: ExplosionResistance
-    damageCoefficient: 2
+    damageCoefficient: 1.75
   - type: ClothingSpeedModifier
     walkModifier: 1.6
     sprintModifier: 1.6
@@ -90,7 +90,7 @@
     sprite: _Wega/Clothing/OuterClothing/Coats/captain_green.rsi
   - type: Clothing
     sprite: _Wega/Clothing/OuterClothing/Coats/captain_green.rsi
-    
+
 - type: entity
   parent: ClothingOuterCoatCaptain
   id: ClothingOuterCoatWhite

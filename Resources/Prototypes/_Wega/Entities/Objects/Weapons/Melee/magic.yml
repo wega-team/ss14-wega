@@ -127,13 +127,14 @@
     slots:
     - belt
   - type: BloodDagger
+  - type: BloodCultWeapon
   - type: Tool
     qualities:
       - Slicing
       - BloodDagger
   - type: MeleeWeapon
     wideAnimationRotation: -135
-    attackRate: 0.75
+    attackRate: 1.25
     damage:
       types:
         Slash: 12
@@ -178,10 +179,14 @@
     - back
     - suitStorage
   - type: Item
+    storedRotation: -45
     size: Normal
+    shape:
+    - 0,0,0,2
+  - type: BloodCultWeapon
   - type: MeleeWeapon
     wideAnimationRotation: -135
-    attackRate: 0.75
+    attackRate: 1
     damage:
       types:
         Slash: 25
@@ -205,13 +210,18 @@
     - back
     - suitStorage
   - type: Item
+    storedRotation: -45
     size: Normal
+    shape:
+    - 0,0,1,0
+    - 0,2,0,1
+  - type: BloodCultWeapon
   - type: MeleeWeapon
     wideAnimationRotation: -135
-    attackRate: 0.75
+    attackRate: 2
     damage:
       types:
-        Slash: 25
+        Slash: 10
     soundHit:
         path: /Audio/Weapons/bladeslice.ogg
   - type: DisarmMalus
@@ -232,13 +242,18 @@
     - back
     - suitStorage
   - type: Item
+    storedRotation: -45
     size: Normal
+    shape:
+    - 0,0,2,1
+    - 1,2,1,1
+  - type: BloodCultWeapon
   - type: MeleeWeapon
     wideAnimationRotation: -135
-    attackRate: 0.75
+    attackRate: 0.35
     damage:
       types:
-        Slash: 25
+        Slash: 40
     soundHit:
         path: /Audio/Weapons/bladeslice.ogg
   - type: DisarmMalus
@@ -299,6 +314,7 @@
         transferForensics: true
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+  - type: BloodCultWeapon
   - type: MeleeWeapon
     wideAnimationRotation: -135
     damage:
