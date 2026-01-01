@@ -58,6 +58,14 @@
     guides:
     - AtmosphericNetworkMonitor
     - DeviceMonitoringAndControl
+  # Corvax-Wega-VentCrawling-start
+  - type: VentCrawTube
+    containerId: VentCrawTube
+  - type: VentCrawTransit
+  - type: ContainerContainer
+    containers:
+      VentCrawTube: !type:Container
+  # Corvax-Wega-VentCrawling-end
 
 - type: entity
   parent: GasPipeSensor

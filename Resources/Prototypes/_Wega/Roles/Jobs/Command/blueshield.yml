@@ -37,7 +37,7 @@
     id: BlueShieldPDA
     eyes: ClothingEyesGlassesCommand
     ears: ClothingHeadsetAltCommand
-    belt: ClothingBeltAssaultFilled
+    belt: ClothingBeltMilitaryWebbingFilled
     gloves: ClothingHandsGlovesCombatBlueShield
     pocket1: WeaponBlueLaserPistol
   storage:

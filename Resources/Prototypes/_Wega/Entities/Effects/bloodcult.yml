@@ -21,6 +21,16 @@
   - type: BloodOrb
 
 - type: entity
+  id: BloodCultShieldEffect
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: OverMobs
+    sprite: _Wega/Effects/shield-bloodcult.rsi
+    state: shield
+
+- type: entity
   id: BloodCultOutEffect
   categories: [ HideSpawnMenu ]
   components:
@@ -52,7 +62,7 @@
         !type:String
         "#ff0000"
   - type: BloodRune
-    prototype: default
+    runeType: Default
   - type: TimedDespawn
     lifetime: 4.0
 

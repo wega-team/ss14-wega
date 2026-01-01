@@ -1,35 +1,34 @@
-using Content.Shared.EntityEffects;
-using Robust.Shared.Prototypes;
-using JetBrains.Annotations;
 using Content.Shared.Genetics;
+using Robust.Shared.Prototypes;
 
-namespace Content.Shared.Chemistry.ReagentEffects
+namespace Content.Shared.EntityEffects.Effects;
+
+/// <summary>
+/// Cures a DNA disease with a chance each tick.
+/// The cure chance is equal to <see cref="ChemCureDnaDisease.CureChance"/> modified by scale.
+/// </summary>
+/// <inheritdoc cref="EntityEffectSystem{T,TEffect}"/>
+public sealed partial class ChemCureDnaDiseaseEntityEffectSystem : EntityEffectSystem<DnaModifierComponent, ChemCureDnaDisease>
+{
+    protected override void Effect(Entity<DnaModifierComponent> entity, ref EntityEffectEvent<ChemCureDnaDisease> args)
+    {
+        var cureChance = args.Effect.CureChance * args.Scale;
+
+        var ev = new CureDnaDiseaseAttemptEvent(cureChance);
+        RaiseLocalEvent(entity, ev, false);
+    }
+}
+
+/// <inheritdoc cref="EntityEffect"/>
+public sealed partial class ChemCureDnaDisease : EntityEffectBase<ChemCureDnaDisease>
 {
     /// <summary>
-    /// Cures a disease with a chance each tick.
+    ///     Chance it has each tick to cure a DNA disease, between 0 and 1
     /// </summary>
-    [UsedImplicitly]
-    public sealed partial class ChemCureDnaDisease : EntityEffect
-    {
-        /// <summary>
-        /// Chance it has each tick to cure a disease, between 0 and 1
-        /// </summary>
-        [DataField("cureChance")]
-        public float CureChance = 0.10f;
+    [DataField("cureChance")]
+    public float CureChance = 0.10f;
 
-        protected override string? ReagentEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
-            => Loc.GetString("reagent-effect-guidebook-cure-dna-disease",
-                ("chance", CureChance));
-
-        public override void Effect(EntityEffectBaseArgs args)
-        {
-            if (args is EntityEffectReagentArgs reagentArgs)
-            {
-                float cureChance = CureChance * reagentArgs.Scale.Float();
-
-                var ev = new CureDnaDiseaseAttemptEvent(cureChance);
-                args.EntityManager.EventBus.RaiseLocalEvent(reagentArgs.TargetEntity, ev, false);
-            }
-        }
-    }
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
+        => Loc.GetString("reagent-effect-guidebook-cure-dna-disease",
+            ("chance", CureChance));
 }

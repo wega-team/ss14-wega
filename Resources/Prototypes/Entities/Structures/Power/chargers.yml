@@ -13,6 +13,8 @@
   - type: Appearance
   - type: Charger
     slotId: charger_slot
+  - type: ApcPowerReceiver
+    powerLoad: 1 # same as draw given in ChargerComponent.PassiveDraw; increased when it is actually charging something
   - type: Anchorable
     delay: 1
   - type: Destructible
@@ -161,16 +163,17 @@
     sprite: Structures/Power/recharger.rsi
   - type: Machine
     board: WeaponCapacitorRechargerCircuitboard
+  - type: Charger  # Corvax-Wega-add
+    chargeRate: 50 # Corvax-Wega-add
   - type: ItemSlots
     slots:
       charger_slot:
         ejectOnInteract: true
         whitelist:
           components:
-          - HitscanBatteryAmmoProvider
-          - ProjectileBatteryAmmoProvider
+          - BatteryAmmoProvider
           - Stunbaton
-          - PowerCell
+          # - PowerCell Corvax-Wega-add
         blacklist:
           tags:
           - PotatoBattery
@@ -193,8 +196,7 @@
         ejectOnInteract: true
         whitelist:
           components:
-          - HitscanBatteryAmmoProvider
-          - ProjectileBatteryAmmoProvider
+          - BatteryAmmoProvider
           - Stunbaton
           - PowerCell
         blacklist:
@@ -216,15 +218,14 @@
       state: "light-off"
       shader: "unshaded"
   - type: Charger
-    chargeRate: 25
+    chargeRate: 55 # Corvax-Wega-add
   - type: ItemSlots
     slots:
       charger_slot:
         ejectOnInteract: true
         whitelist:
           components:
-          - HitscanBatteryAmmoProvider
-          - ProjectileBatteryAmmoProvider
+          - BatteryAmmoProvider
           - Stunbaton
         blacklist:
           tags:
@@ -307,3 +308,12 @@
       entity_storage: !type:Container
       machine_board: !type:Container
       machine_parts: !type:Container
+
+- type: entity
+  parent: BorgCharger
+  id: BorgChargerXenoborg
+  name: xenoborg recharging station
+  description: A stationary charger for xenoborgs. Feels claustrophobic.
+  components:
+  - type: Sprite
+    sprite: Structures/Power/xenoborg_charger.rsi

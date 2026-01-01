@@ -62,7 +62,7 @@
             <!-- Chat header -->
             <PanelContainer StyleClasses="AngleRect">
                 <PanelContainer.PanelOverride>
-                    <graphics:StyleBoxFlat BackgroundColor="#878787" />
+                    <graphics:StyleBoxFlat BackgroundColor="#131313" />
                 </PanelContainer.PanelOverride>
                 <BoxContainer Orientation="Horizontal" HorizontalExpand="True" Margin="0 0 0 4">
                     <Label Name="ChatTitle" StyleClasses="LabelHeading" Margin="4 0 0 0" VerticalAlignment="Center" HorizontalExpand="True"/>
@@ -77,9 +77,6 @@
 
             <!-- Messages area -->
             <PanelContainer StyleClasses="AngleRect" VerticalExpand="True">
-                <PanelContainer.PanelOverride>
-                    <graphics:StyleBoxFlat BackgroundColor="#bdbdbd" />
-                </PanelContainer.PanelOverride>
                 <ScrollContainer Name="MessagesScroll" HScrollEnabled="False" VerticalExpand="True" HorizontalExpand="True">
                     <BoxContainer Name="MessagesContainer" Orientation="Vertical" Margin="4"/>
                 </ScrollContainer>

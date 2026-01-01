@@ -1,0 +1,14 @@
+- type: entity
+  id: GiftsGambling
+  parent: CargoGiftsBase
+  components:
+  - type: StationEvent
+    weight: 3
+    duration: 120
+    earliestStart: 20
+    minimumPlayers: 10
+  - type: CargoGiftsRule
+    description: cargo-gift-gambling
+    dest: cargo-gift-default-dest
+    gifts:
+      SlotMachine: 3

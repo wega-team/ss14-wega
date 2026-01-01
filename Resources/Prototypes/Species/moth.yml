@@ -12,6 +12,7 @@
   femaleFirstNames: NamesMothFirstFemale
   maleLastNames: NamesMothLast # Corvax-LastnameGender
   femaleLastNames: NamesMothLast # Corvax-LastnameGender
+  minHeight: 165 # Corvax-Wega-Height
 
 - type: speciesBaseSprites
   id: MobMothSprites

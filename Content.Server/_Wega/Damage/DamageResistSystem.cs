@@ -1,6 +1,7 @@
 using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Prototypes;
+using Content.Shared.Damage.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
@@ -64,7 +65,7 @@ public sealed class DamageResistSystem : EntitySystem
         }
 
         if (healing.DamageDict.Count > 0)
-            _damageable.TryChangeDamage(ent, healing, true);
+            _damageable.TryChangeDamage(ent.Owner, healing, true);
     }
 
     private bool IsHealing(DamageSpecifier damage)

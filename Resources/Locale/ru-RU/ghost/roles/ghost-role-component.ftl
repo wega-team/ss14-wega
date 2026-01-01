@@ -37,6 +37,8 @@ ghost-role-information-silicon-rules =
     Вам [color=red]НЕ[/color] разрешается помнить или говорить имя, внешность и т.д. вашего предыдущего персонажа.
 ghost-role-information-mouse-name = Мышь
 ghost-role-information-mouse-description = Голодная и озорная мышь.
+ghost-role-information-cancer-mouse-name = Раковая мышь
+ghost-role-information-cancer-mouse-description = Облучённая мышь. Распространяйте свой недуг и ищите еду.
 ghost-role-information-mothroach-name = Таракамоль
 ghost-role-information-mothroach-description = Милая озорная таракамоль.
 ghost-role-information-moproach-name = Швабракан
@@ -249,6 +251,10 @@ ghost-role-information-gingerbread-name = Пряничный человечек
 ghost-role-information-gingerbread-description =
     Существо чистого праздничного духа.
     Распространяйте паточную вкуснятину и хорошее настроение.
+ghost-role-information-mothership-core-name = Ядро материнского корабля
+ghost-role-information-mothership-core-desc = Вы - ядро матринского корабля ксеноборгов, помогите им размножиться, боргируя мозги, которые они вам приносят.
+ghost-role-information-xenoborg-name = Ксеноборг
+ghost-role-information-xenoborg-desc = Странный киборг, сделанный, чтобы воспроизводить себя и захватывать станцию, превращая любое разумное существо в ксеноборга.
 ghost-role-information-wizard-name = Волшебник
 ghost-role-information-wizard-desc = ТЫ ВОЛШЕБНИК! Покажи станции, из чего сделана твоя магия.
 ghost-role-information-emotional-support-scurret-name = Слизенёк эмоциональной поддержки

@@ -107,7 +107,7 @@
   - type: Machine
     board: AutolatheMachineCircuitboard
   - type: MaterialStorage
-    whitelist:
+    whitelist: &StandardMaterialWhitelist
       tags:
         - Sheet
         - RawMaterial
@@ -124,6 +124,7 @@
     - AtmosStatic
     - CablesStatic
     - PaperworkStatic
+    - TowelsStatic
     - CargoStatic
     - MaterialsStatic
     - BasicChemistryStatic
@@ -133,9 +134,11 @@
     - PowerCellsStatic
     - ElectronicsStatic
     - ScienceStatic # Corvax-Wega
+    - HydroponicsStatic # Corvax-Wega
   - type: EmagLatheRecipes
     emagStaticPacks:
     - SecurityAmmoStatic
+    - SyndicateAmmoStatic
   - type: BlueprintReceiver
     whitelist:
       tags:
@@ -182,11 +185,7 @@
   - type: Machine
     board: ProtolatheMachineCircuitboard
   - type: MaterialStorage
-    whitelist:
-      tags:
-        - Sheet
-        - RawMaterial
-        - Ingot
+    whitelist: *StandardMaterialWhitelist
   - type: OreSiloClient
   - type: Lathe
     idleState: icon
@@ -272,11 +271,7 @@
     emagDynamicPacks:
     - SecurityBoards
   - type: MaterialStorage
-    whitelist:
-      tags:
-        - Sheet
-        - RawMaterial
-        - Ingot
+    whitelist: *StandardMaterialWhitelist
   - type: OreSiloClient
   - type: RequireProjectileTarget
 
@@ -321,11 +316,7 @@
     - MechParts
     - MechEquipment
   - type: MaterialStorage
-    whitelist:
-      tags:
-      - Sheet
-      - RawMaterial
-      - Ingot
+    whitelist: *StandardMaterialWhitelist
   - type: OreSiloClient
   - type: GuideHelp
     guides:
@@ -409,12 +400,11 @@
     - SecurityWeapons
     - SecurityDisablers
     - ImplantSB # Corvax-Wega-Edit
+  - type: EmagLatheRecipes
+    emagStaticPacks:
+    - SyndicateAmmoStatic
   - type: MaterialStorage
-    whitelist:
-      tags:
-        - Sheet
-        - RawMaterial
-        - Ingot
+    whitelist: *StandardMaterialWhitelist
   - type: OreSiloClient
   - type: LatheAnnouncing
     channels: [Security]
@@ -445,12 +435,11 @@
       runningState: icon
       staticPacks:
       - SecurityAmmoStatic
+    - type: EmagLatheRecipes
+      emagStaticPacks:
+      - SyndicateAmmoStatic
     - type: MaterialStorage
-      whitelist:
-        tags:
-          - Sheet
-          - RawMaterial
-          - Ingot
+      whitelist: *StandardMaterialWhitelist
     - type: OreSiloClient
 
 - type: entity
@@ -516,6 +505,7 @@
     idleState: icon
     runningState: building
     staticPacks:
+    - TowelsStatic
     - ClothingCivilian
     - ClothingCargo
     - ClothingCommand
@@ -530,16 +520,13 @@
     - Carpets
     - Bedsheets
     - CorvaxClothing # Corvax-Clothing
+    - WegaUniform # Corvax-Wega
   - type: EmagLatheRecipes
     emagStaticPacks:
     - ClothingCentComm
     - ClothingSyndie
   - type: MaterialStorage
-    whitelist:
-      tags:
-        - Sheet
-        - RawMaterial
-        - Ingot
+    whitelist: *StandardMaterialWhitelist
   - type: OreSiloClient
 
 - type: entity
@@ -584,6 +571,10 @@
     staticPacks:
     - BioGenIngredientsStatic
     - BioGenMaterialsStatic
+  - type: EmagLatheRecipes
+    emagStaticPacks:
+    - BioGenEmagStatic
+    - HostileCubesStatic
 
 - type: entity
   parent: [ BaseMachinePowered, ConstructibleMachine ] # Corvax-Wega-Lavaland-Edit
@@ -739,11 +730,5 @@
     dynamicPacks:
     - FauxTiles
   - type: MaterialStorage
-    whitelist:
-      tags:
-        - Sheet
-        - Metal
-        - Wooden
-        - RawMaterial
-        - Plastic
+    whitelist: *StandardMaterialWhitelist
   - type: OreSiloClient

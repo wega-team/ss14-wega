@@ -27,22 +27,22 @@
   - type: Gun
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
-  - type: ProjectileBatteryAmmoProvider
-    proto: BulletLaserAdvanced
+  - type: BatteryAmmoProvider
+    proto: RedMediumLaser
     fireCost: 100
   - type: BatteryWeaponFireModes
     fireModes:
-    - proto: BulletLaserAdvanced
+    - proto: RedMediumLaser
       fireCost: 100
       state: lethal
       magState: lethal
-    - proto: BulletDisabler
+    - proto: LaserStun
       fireCost: 62.5
       state: disabler
       magState: disabler
   - type: Item
     heldPrefix: lethal
-  - type: Battery
+  - type: PredictedBattery
     maxCharge: 1500
     startingCharge: 1500
   - type: GenericVisualizer
@@ -59,3 +59,60 @@
     - Sidearm
   - type: StealTarget
     stealGroup: WeaponBlueLaserPistol
+
+- type: entity
+  parent: BaseWeaponBatterySmall
+  id: WeaponDominator
+  name: laser pistol 'Dominator'
+  description: A high-tech weapon created by the environmental organization Sibyl System, specifically designed to fight crime.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Battery/dominator.rsi
+    layers:
+      - state: base
+        map: ["enum.GunVisualLayers.Base"]
+      - state: mode-lethal
+        map: ["Firemode"]
+        shader: unshaded
+      - state: mag-lethal-unshaded-3
+        map: ["enum.GunVisualLayers.MagUnshaded"]
+        shader: unshaded
+  - type: MagazineVisuals
+    magState: mag-lethal
+    steps: 4
+    zeroVisible: true
+  - type: Appearance
+  - type: Clothing
+    sprite: _Wega/Objects/Weapons/Guns/Battery/dominator.rsi
+    slots:
+    - Belt
+  - type: Gun
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
+  - type: BatteryAmmoProvider
+    proto: BulletLaserAdvanced
+    fireCost: 100
+  - type: BatteryWeaponFireModes
+    fireModes:
+    - proto: BulletLaserAdvanced
+      fireCost: 100
+      state: lethal
+      magState: lethal
+    - proto: BulletDisabler
+      fireCost: 62.5
+      state: disabler
+      magState: disabler
+  - type: Item
+    heldPrefix: lethal
+  - type: PredictedBattery
+    maxCharge: 1000
+    startingCharge: 1000
+  - type: GenericVisualizer
+    visuals:
+      enum.BatteryWeaponFireModeVisuals.State:
+        Firemode:
+          disabler: { state: mode-disabler }
+          lethal: { state: mode-lethal }
+  - type: Tag
+    tags:
+    - Sidearm

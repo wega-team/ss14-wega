@@ -12,7 +12,6 @@ namespace Content.Server.Friendly.Faction
             base.Initialize();
 
             SubscribeLocalEvent<FriendlyFactionComponent, MeleeHitEvent>(OnMeleeHit);
-
         }
 
         private void OnMeleeHit(EntityUid uid, FriendlyFactionComponent component, MeleeHitEvent args)

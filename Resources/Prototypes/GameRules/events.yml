@@ -473,7 +473,7 @@
     startAnnouncement: station-event-vent-creatures-start-announcement
     startAudio:
       path: /Audio/Announcements/attention.ogg
-    earliestStart: 30 # Corvax-MRP # 20
+    earliestStart: 20
     minimumPlayers: 15
     weight: 5
     duration: 60
@@ -515,7 +515,7 @@
     startAnnouncement: station-event-vent-creatures-start-announcement
     startAudio:
       path: /Audio/Announcements/attention.ogg
-    earliestStart: 30 # Corvax-MRP # 20
+    earliestStart: 20
     minimumPlayers: 15
     weight: 5
     duration: 60
@@ -550,6 +550,7 @@
     minimumPlayers: 40
     weight: 1 # Zombies was happening basically every single survival round, so now it's super rare
     duration: 1
+    occursDuringRoundEnd: false
   - type: ZombieRule
   - type: AntagSelection
     definitions:
@@ -624,7 +625,7 @@
   id: SleeperAgents
   components:
   - type: StationEvent
-    earliestStart: 40 # Corvax-MRP #
+    earliestStart: 40 # Corvax-MRP # 30
     weight: 8
     minimumPlayers: 15
     maxOccurrences: 1 # can only happen once per round

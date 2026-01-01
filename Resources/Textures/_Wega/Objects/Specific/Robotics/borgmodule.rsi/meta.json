@@ -14,10 +14,82 @@
             "name": "medical"
         },
         {
+            "name": "generic"
+        },
+        {
+            "name": "service"
+        },
+        {
             "name": "cargo"
         },
         {
+            "name": "command"
+        },
+        {
+            "name": "security"
+        },
+        {
             "name": "icon-kinetic"
+        },
+        {
+            "name": "icon-bar-module"
+        },
+        {
+            "name": "icon-cook-module"
+        },
+        {
+            "name": "icon-fight-common"
+        },
+        {
+            "name": "icon-repeir"
+        },
+        {
+            "name": "icon-treatment-common"
+        },
+        {
+            "name": "icon-candy"
+        },
+        {
+            "name": "icon-hand"
+        },
+        {
+            "name": "icon-sheild"
+        },
+        {
+            "name": "icon-gun"
+        },
+        {
+            "name": "icon-grenade"
+        },
+        {
+            "name": "icon-dec"
+        },
+        {
+            "name": "icon-dis"
+        },
+        {
+            "name": "icon-speed"
+        },
+        {
+            "name": "icon-magboots"
+        },
+        {
+            "name": "icon-cook-rare"
+        },
+        {
+            "name": "icon-gun-rare"
+        },
+        {
+            "name": "icon-mining-rare"
+        },
+        {
+            "name": "icon-mop-rare"
+        },
+        {
+            "name": "icon-rcd-rare"
+        },
+        {
+            "name": "icon-doc-rare"
         },
         {
             "name": "base-icon-inhand-left",

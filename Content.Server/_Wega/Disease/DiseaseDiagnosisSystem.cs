@@ -76,7 +76,8 @@ namespace Content.Server.Disease
 
             _removeQueue.Clear();
 
-            foreach (var (_, diseaseMachine) in EntityQuery<DiseaseMachineRunningComponent, DiseaseMachineComponent>())
+            var query = EntityQueryEnumerator<DiseaseMachineRunningComponent, DiseaseMachineComponent>();
+            while (query.MoveNext(out var uid, out _, out var diseaseMachine))
             {
                 diseaseMachine.Accumulator += frameTime;
 
@@ -84,8 +85,8 @@ namespace Content.Server.Disease
                 {
                     diseaseMachine.Accumulator -= diseaseMachine.Delay;
                     var ev = new DiseaseMachineFinishedEvent(diseaseMachine);
-                    RaiseLocalEvent(diseaseMachine.Owner, ev);
-                    _removeQueue.Enqueue(diseaseMachine.Owner);
+                    RaiseLocalEvent(uid, ev);
+                    _removeQueue.Enqueue(uid);
                 }
             }
         }
@@ -344,9 +345,12 @@ namespace Content.Server.Disease
 
                 var known = false;
 
-                foreach (var server in EntityQuery<DiseaseServerComponent>(true))
+                var serverQuery = EntityQueryEnumerator<DiseaseServerComponent>();
+                var currentStation = _stationSystem.GetOwningStation(uid);
+
+                while (serverQuery.MoveNext(out var serverUid, out var server))
                 {
-                    if (_stationSystem.GetOwningStation(server.Owner) != _stationSystem.GetOwningStation(uid))
+                    if (_stationSystem.GetOwningStation(serverUid) != currentStation)
                         continue;
 
                     if (ServerHasDisease(server, args.Machine.Disease))

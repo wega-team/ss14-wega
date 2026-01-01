@@ -101,3 +101,166 @@
     itemIconStyle: BigItem
   - type: InstantAction
     event: !type:MaskFlashActionEvent
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatBeretCaptainWhite
+  name: white captain beret
+  description: A white captain beret, an icon of style.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Head/Hats/white_beret.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Head/Hats/white_beret.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatBeretSheriff
+  name: sheriff beret
+  description: Beret, a favorite among local sheriffs.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Head/Hats/sheriff_beret.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Head/Hats/sheriff_beret.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatCapcapWhite
+  name: white cap cap
+  description: Stylish white cap cap.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Head/Hats/white_capcap.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Head/Hats/white_capcap.rsi
+  - type: Tag
+    tags:
+    - HamsterWearable
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatCapcapSheriff
+  name: sheriff cap
+  description: Stylish sheriff cap.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Head/Hats/sheriff_capcap.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Head/Hats/sheriff_capcap.rsi
+  - type: Tag
+    tags:
+    - HamsterWearable
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatCatEarsMelon
+  name: catmelon ears
+  description: "NYAH!"
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Head/Hats/catmelon_erars.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Head/Hats/catmelon_erars.rsi
+  - type: AddAccentClothing
+    accent: OwOAccent
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatNewYearRed
+  name: red new year hat
+  description: "The holiday is coming, the holiday is coming!"
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Head/Hats/new_yearhat.rsi
+    layers:
+    - state: icon
+      color: red
+    - state: bottom-icon
+  - type: Clothing
+    sprite: _Wega/Clothing/Head/Hats/new_yearhat.rsi
+    clothingVisuals:
+      head:
+      - state: equipped-HEAD
+        color: red
+      - state: bottom-equipped-HEAD
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatNewYearBlue
+  name: blue new year hat
+  description: "The holiday is coming, the holiday is coming!"
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Head/Hats/new_yearhat.rsi
+    layers:
+    - state: icon
+      color: blue
+    - state: bottom-icon
+  - type: Clothing
+    sprite: _Wega/Clothing/Head/Hats/new_yearhat.rsi
+    clothingVisuals:
+      head:
+      - state: equipped-HEAD
+        color: blue
+      - state: bottom-equipped-HEAD
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatNewYearCyan
+  name: cyan new year hat
+  description: "The holiday is coming, the holiday is coming!"
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Head/Hats/new_yearhat.rsi
+    layers:
+    - state: icon
+      color: cyan
+    - state: bottom-icon
+  - type: Clothing
+    sprite: _Wega/Clothing/Head/Hats/new_yearhat.rsi
+    clothingVisuals:
+      head:
+      - state: equipped-HEAD
+        color: cyan
+      - state: bottom-equipped-HEAD
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatNewYearWega
+  name: fuchsia new year hat
+  description: "The holiday is coming, the holiday is coming!"
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Head/Hats/new_yearhat.rsi
+    layers:
+    - state: icon
+      color: "#fd4ae4"
+    - state: bottom-icon
+  - type: Clothing
+    sprite: _Wega/Clothing/Head/Hats/new_yearhat.rsi
+    clothingVisuals:
+      head:
+      - state: equipped-HEAD
+        color: "#fd4ae4"
+      - state: bottom-equipped-HEAD
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatNewYearCentComm
+  name: new year hat CentComm
+  description: "The holiday is coming, the holiday is coming!"
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Head/Hats/new_yearhat.rsi
+    layers:
+    - state: icon
+      color: "#29722e"
+    - state: bottom-icon
+  - type: Clothing
+    sprite: _Wega/Clothing/Head/Hats/new_yearhat.rsi
+    clothingVisuals:
+      head:
+      - state: equipped-HEAD
+        color: "#29722e"
+      - state: bottom-equipped-HEAD

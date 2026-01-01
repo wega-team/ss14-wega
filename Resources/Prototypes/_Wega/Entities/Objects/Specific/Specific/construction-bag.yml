@@ -15,7 +15,7 @@
     - belt
   - type: Storage
     grid:
-    - 0,0,7,4
+    - 0,0,7,5
     maxItemSize: Normal
     quickInsert: true
     areaInsert: true
@@ -23,6 +23,10 @@
       components:
         - LightBulb
         - Battery
-        - Material
-        - MachineBoard
+        - Circuitboard
+        - RCDAmmo
+      tags:
+        - CableCoil
+        - ConstructionMaterial
   - type: Dumpable
+  - type: MagnetPickup

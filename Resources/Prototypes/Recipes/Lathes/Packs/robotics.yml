@@ -16,6 +16,17 @@
   - BorgModuleCable
   - BorgModuleFireExtinguisher
   - BorgModuleInflatable
+  - BorgModuleArtistry
+ # Corvax-Wega-Start
+  - BorgModuleCommonConstruction
+  - BorgModuleCommonMedical
+  - BorgModuleCommonPen
+  - BorgModuleCommonFight
+  - BorgModuleCommonPickaxe
+  - BorgModuleCommonSpeed
+  - BorgModuleCommonMagBoots
+  - BorgModuleCommonRepeir
+ # Corvax-Wega-end
 
 - type: latheRecipePack
   id: BorgLimbsStatic
@@ -34,10 +45,13 @@
   recipes:
   - ProximitySensor
   # Corvax-Wega-Android-Start
-  - AndroidBodyPart 
+  - AndroidBodyPart
   - ArmSyntheticPry
   - ArmSyntheticDefib
   - ArmSyntheticProtoKinetic
+  - ArmSyntheticCharger
+  - LegSyntheticMagboots
+  - LegSyntheticJump
   # Corvax-Wega-Android-End
 
 - type: latheRecipePack
@@ -48,8 +62,17 @@
   - BorgModuleAdvancedClowning
   - BorgModuleAdvancedChemical
   - BorgModuleAdvancedMining
-  - BorgModuleSurgery # Corvax-Wega-T2med
-  - BorgModuleKinetic # Corvax-Wega-Kinetic
+ # Corvax-Wega-Start
+  - BorgModuleSurgery
+  - BorgModuleKinetic
+  - BorgModuleGardening
+  - BorgModuleHarvesting
+  - BorgModuleMusique
+  - BorgModuleClowning
+  - BorgModuleSheild
+  - BorgModuleGranader
+  - BorgModuleCommonHand
+ # Corvax-Wega-end
 
 - type: latheRecipePack
   id: MechParts

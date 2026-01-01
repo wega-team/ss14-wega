@@ -9,9 +9,21 @@
   - FlowerWreath
   - Hairflower
   - Headphones
+  - ThreeCandles # Corvax-Wega-group
+  # Corvax-Wega-start
   - PlushieLizard
   - PlushieSpaceLizard
-  - ThreeCandles
+  - PlushieVulpa
+  - PlushieTajar
+  - PlushieArachind
+  - PlushieMoth
+  - PlushieBee
+  - PlushieNar
+  - PlushieRatvar
+  - PlushieSharkPink
+  - PlushieSharkGrey
+  - PlushieSharkBlue
+  # Corvax-Wega-end
   - Lighter
   - CigPackGreen
   - CigPackRed
@@ -19,6 +31,9 @@
   - CigPackBlack
   - CigarCase
   - CigarGold
+  - BoxFolderBaseThreePapers
+  - BoxFolderPlasticClipboardThreePapers
+  - BoxFolderClipboardThreePapers
   - ClothingNeckLGBTPin
   - ClothingNeckAllyPin
   - ClothingNeckAromanticPin
@@ -59,24 +74,27 @@
   - BrasletSearch
   - BrasletBite
   - BrasletSex
-  - BrasletRape
+  - HatNewYearRed
+  - HatNewYearBlue
+  - HatNewYearCyan
+  - HatNewYearWega
   # Corvax-Wega-end
-  - TowelColorBlack
-  - TowelColorDarkBlue
-  - TowelColorDarkGreen
-  - TowelColorGold
+  - TowelColorWhite
   - TowelColorGray
+  - TowelColorBlack
+  - TowelColorRed
+  - TowelColorOrange
+  - TowelColorLightBrown
+  - TowelColorYellow
+  - TowelColorDarkGreen
   - TowelColorGreen
   - TowelColorLightBlue
-  - TowelColorLightBrown
+  - TowelColorDarkBlue
+  - TowelColorPurple
   - TowelColorMaroon
   - TowelColorMime
-  - TowelColorOrange
-  - TowelColorPurple
-  - TowelColorRed
   - TowelColorSilver
-  - TowelColorWhite
-  - TowelColorYellow
+  - TowelColorGold
   # Corvax-Wega-Sponsors-start
   - PetCarrierMars
   # Corvax-Wega-Sponsors-end
@@ -89,6 +107,11 @@
   - Glasses
   - GlassesJamjar
   - GlassesJensen
+  # Corvax-Wega-start
+  - ClothingEyesGlassesCheapSunglasses
+  - ClothingEyesSalesman
+  # Corvax-Wega-end
+
 
 - type: loadoutGroup
   id: GroupTankHarness
@@ -142,6 +165,12 @@
   loadouts:
   - CaptainHead
   - CaptainCap
+# Corvax-Wega-start
+  - ClothingHeadHatBeretCaptainWhite
+  - ClothingHeadHatCapcapWhite
+  - ClothingHeadHatCapcapSheriff
+  - ClothingHeadHatBeretSheriff
+# Corvax-Wega-end
 
 - type: loadoutGroup
   id: CaptainJumpsuit
@@ -155,6 +184,12 @@
   - CaptainJumpsuitTurtleneck
   - CaptainJumpskirtTurtleneck
   # Corvax-Loadouts-End
+# Corvax-Wega-start
+  - ClothingUniformJumpsuitWhiteCaptain
+  - ClothingUniformJumpskirtWhiteCaptain
+  - ClothingUniformJumpsuitSheriff
+  - ClothingUniformJumpsuitCommandCaptain
+# Corvax-Wega-end
 
 - type: loadoutGroup
   id: CaptainNeck
@@ -164,6 +199,11 @@
   - CaptainCloak
   - CaptainCloakFormal
   - CaptainMantle
+# Corvax-Wega-start
+  - ClothingNeckCaptainWide
+  - ClothingNeckCloakRoyalCaptain
+  - ClothingNeckWhiteMantleCaptain
+# Corvax-Wega-end
 
 - type: loadoutGroup
   id: CaptainBackpack
@@ -172,13 +212,35 @@
   - CaptainBackpack
   - CaptainSatchel
   - CaptainDuffel
+# Corvax-Wega-start
+  - ClothingBackpackCapitanWhite
+  - ClothingSatchelsCapitanWhite
+  - ClothingDuffelsCapitanWhite
+  - ClothingBackpackCapitanGreen
+  - ClothingSatchelsCapitanGreen
+  - ClothingDuffelsCapitanGreen
+# Corvax-Wega-end
 
 - type: loadoutGroup
   id: CaptainOuterClothing
   name: loadout-group-captain-outerclothing
   loadouts:
   - CaptainOuterClothing
-  - CaptainWintercoat
+  - ClothingOuterCoatCaptain  # Corvax-Wega
+# Corvax-Wega-start
+  - ClothingOuterArmorCaptainCarapaceWhite
+  - ClothingOuterCoatWhite
+  - ClothingOuterArmorSherifCarapace
+  - ClothingOuterCoatSherif
+# Corvax-Wega-end
+
+
+- type: loadoutGroup
+  id: CaptainJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieCaptain
 
 - type: loadoutGroup
   id: HoPHead
@@ -223,6 +285,13 @@
   - HoPCoat # Corvax-Wega
   - HoPWintercoat
 
+- type: loadoutGroup
+  id: HoPJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieHeadOfPersonnel
+
 # Civilian
 - type: loadoutGroup
   id: PassengerJumpsuit
@@ -256,6 +325,17 @@
   - JumpskirtColorDarkBlue
   - JumpsuitColorDarkGreen
   - JumpskirtColorDarkGreen
+  - ClothingUniformJumpskirtGreenElegantDress
+  - ClothingUniformJumpskirtRedElegantDress
+  - ClothingUniformJumpskirtBlueElegantDress
+  - ClothingUniformJumpskirtPurpleElegantDress
+  - ClothingUniformJumpskirtBlackElegantDress
+  - ClothingUniformJumpskirtCyanStripedDress
+  - ClothingUniformJumpskirtGreenStripedDress
+  - ClothingUniformJumpskirtRedStripedDress
+  - ClothingUniformJumpskirtOrangeStripedDress
+  - ClothingUniformJumpskirtPinkStripedDress
+  - ClothingUniformJumpskirtYellowOldDress
   - JumpsuitColorTeal
   - JumpskirtColorTeal
   - JumpsuitCasualBlue
@@ -265,8 +345,8 @@
   - JumpsuitCasualRed
   - JumpskirtCasualRed
   - JumpsuitCasualGreen
-  - JumpskirtCasualGreen 
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtCasualGreen
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
@@ -300,6 +380,43 @@
   - JumpsuitTurtleneckWhiteBlackSleeveless
   - JumpsuitTurtleneckWhiteSleeveless
   - JumpskirtTurtleneckWhiteSleeveless
+  - ClothingUniformJumpskirtPurpleTurtleneckDress
+  - ClothingUniformJumpskirtBlueTurtleneckDress
+  - ClothingUniformJumpskirtYellowTurtleneckDress
+  - ClothingUniformJumpskirtGreenTurtleneckDress
+  - ClothingUniformJumpskirtRedTurtleneckDress
+  - ClothingUniformJumpsuitSecBlueOJ
+  - ClothingUniformJumpskirtDetectiveGrey
+  - ClothingUniformJumpsuitDetectiveGrey
+  - ClothingUniformJumpskirtDetective
+  - ClothingUniformJumpsuitDetective
+  - ClothingUniformJumpskirtLawyerBlue
+  - ClothingUniformJumpsuitLawyerBlue
+  - ClothingUniformJumpskirtLawyerPurple
+  - ClothingUniformJumpsuitLawyerPurple
+  - ClothingUniformJumpskirtLawyerRed
+  - ClothingUniformJumpsuitLawyerRed
+  - ClothingUniformJumpskirtLawyerBlack
+  - ClothingUniformJumpsuitLawyerBlack
+  - ClothingUniformJumpskirtLawyerGood
+  - ClothingUniformJumpsuitLawyerGood
+  - ClothingUniformTopColorWhite
+  - ClothingUniformTopColorGrey
+  - ClothingUniformTopColorBlack
+  - ClothingUniformTopColorBlue
+  - ClothingUniformTopColorDarkBlue
+  - ClothingUniformTopColorTeal
+  - ClothingUniformTopColorGreen
+  - ClothingUniformTopColorDarkGreen
+  - ClothingUniformTopColorOrange
+  - ClothingUniformTopColorRed
+  - ClothingUniformTopColorYellow
+  - ClothingUniformTopColorPurple
+  - ClothingUniformTopColorLightBrown
+  - ClothingUniformTopColorBrown
+  - ClothingUniformTopColorMaroon
+  - ClothingUniformTopic
+  - ClothingUniformTopicCool
 # Corvax-Wega-add-end
 
 - type: loadoutGroup
@@ -344,6 +461,38 @@
   loadouts:
   - BlackShoes
   - WinterBoots
+ # Corvax-Wega-Shoes-Start
+  - ClothingShoesColorBlack
+  - ClothingShoesColorBrown
+  - ClothingShoesColorWhite
+  - ClothingShoesColorYellow
+  - ClothingShoesColorGreen
+  - ClothingShoesColorRed
+  - ClothingShoesColorOrange
+  - ClothingShoesColorBlue
+  - ClothingShoesColorPurple
+  - ClothingShoesHeelsBlack
+  - ClothingShoesHeelsGray
+  - ClothingShoesHeelsTurquoise
+  - ClothingShoesHeelsYellow
+  - ClothingShoesHeelsGreen
+  - ClothingShoesHeelsPink
+  - ClothingShoesHeelsOrange
+  - ClothingShoesHeelsRed
+  - ClothingShoesHeelsBlue
+  - ClothingShoesHeelsPurple
+  - ClothingShoesBootsLaceup
+  - ClothingShoesWizard
+  - ClothingShoesTourist
+  - ClothingShoesLeather
+ # Corvax-Wega-Shoes-End
+
+- type: loadoutGroup
+  id: PassengerJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushiePassenger
 
 - type: loadoutGroup
   id: BartenderHead
@@ -383,6 +532,17 @@
   - JumpskirtColorDarkBlue
   - JumpsuitColorDarkGreen
   - JumpskirtColorDarkGreen
+  - ClothingUniformJumpskirtGreenElegantDress
+  - ClothingUniformJumpskirtRedElegantDress
+  - ClothingUniformJumpskirtBlueElegantDress
+  - ClothingUniformJumpskirtPurpleElegantDress
+  - ClothingUniformJumpskirtBlackElegantDress
+  - ClothingUniformJumpskirtCyanStripedDress
+  - ClothingUniformJumpskirtGreenStripedDress
+  - ClothingUniformJumpskirtRedStripedDress
+  - ClothingUniformJumpskirtOrangeStripedDress
+  - ClothingUniformJumpskirtPinkStripedDress
+  - ClothingUniformJumpskirtYellowOldDress
   - JumpsuitColorTeal
   - JumpskirtColorTeal
   - JumpsuitCasualBlue
@@ -392,8 +552,8 @@
   - JumpsuitCasualRed
   - JumpskirtCasualRed
   - JumpsuitCasualGreen
-  - JumpskirtCasualGreen 
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtCasualGreen
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
@@ -427,6 +587,43 @@
   - JumpsuitTurtleneckWhiteBlackSleeveless
   - JumpsuitTurtleneckWhiteSleeveless
   - JumpskirtTurtleneckWhiteSleeveless
+  - ClothingUniformJumpskirtPurpleTurtleneckDress
+  - ClothingUniformJumpskirtBlueTurtleneckDress
+  - ClothingUniformJumpskirtYellowTurtleneckDress
+  - ClothingUniformJumpskirtGreenTurtleneckDress
+  - ClothingUniformJumpskirtRedTurtleneckDress
+  - ClothingUniformJumpsuitSecBlueOJ
+  - ClothingUniformJumpskirtDetectiveGrey
+  - ClothingUniformJumpsuitDetectiveGrey
+  - ClothingUniformJumpskirtDetective
+  - ClothingUniformJumpsuitDetective
+  - ClothingUniformJumpskirtLawyerBlue
+  - ClothingUniformJumpsuitLawyerBlue
+  - ClothingUniformJumpskirtLawyerPurple
+  - ClothingUniformJumpsuitLawyerPurple
+  - ClothingUniformJumpskirtLawyerRed
+  - ClothingUniformJumpsuitLawyerRed
+  - ClothingUniformJumpskirtLawyerBlack
+  - ClothingUniformJumpsuitLawyerBlack
+  - ClothingUniformJumpskirtLawyerGood
+  - ClothingUniformJumpsuitLawyerGood
+  - ClothingUniformTopColorWhite
+  - ClothingUniformTopColorGrey
+  - ClothingUniformTopColorBlack
+  - ClothingUniformTopColorBlue
+  - ClothingUniformTopColorDarkBlue
+  - ClothingUniformTopColorTeal
+  - ClothingUniformTopColorGreen
+  - ClothingUniformTopColorDarkGreen
+  - ClothingUniformTopColorOrange
+  - ClothingUniformTopColorRed
+  - ClothingUniformTopColorYellow
+  - ClothingUniformTopColorPurple
+  - ClothingUniformTopColorLightBrown
+  - ClothingUniformTopColorBrown
+  - ClothingUniformTopColorMaroon
+  - ClothingUniformTopic
+  - ClothingUniformTopicCool
 # Corvax-Wega-add-end
 
 - type: loadoutGroup
@@ -437,6 +634,21 @@
   - BartenderVest
   - BartenderApron
   - BartenderWintercoat
+
+- type: loadoutGroup
+  id: BartenderJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieBartender
+  - BartenderGoldenShaker
+
+- type: loadoutGroup
+  id: ServiceWorkerJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieServiceWorker
 
 - type: loadoutGroup
   id: ChefHead
@@ -481,6 +693,17 @@
   - JumpskirtColorDarkBlue
   - JumpsuitColorDarkGreen
   - JumpskirtColorDarkGreen
+  - ClothingUniformJumpskirtGreenElegantDress
+  - ClothingUniformJumpskirtRedElegantDress
+  - ClothingUniformJumpskirtBlueElegantDress
+  - ClothingUniformJumpskirtPurpleElegantDress
+  - ClothingUniformJumpskirtBlackElegantDress
+  - ClothingUniformJumpskirtCyanStripedDress
+  - ClothingUniformJumpskirtGreenStripedDress
+  - ClothingUniformJumpskirtRedStripedDress
+  - ClothingUniformJumpskirtOrangeStripedDress
+  - ClothingUniformJumpskirtPinkStripedDress
+  - ClothingUniformJumpskirtYellowOldDress
   - JumpsuitColorTeal
   - JumpskirtColorTeal
   - JumpsuitCasualBlue
@@ -490,8 +713,8 @@
   - JumpsuitCasualRed
   - JumpskirtCasualRed
   - JumpsuitCasualGreen
-  - JumpskirtCasualGreen 
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtCasualGreen
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
@@ -525,6 +748,43 @@
   - JumpsuitTurtleneckWhiteBlackSleeveless
   - JumpsuitTurtleneckWhiteSleeveless
   - JumpskirtTurtleneckWhiteSleeveless
+  - ClothingUniformJumpskirtPurpleTurtleneckDress
+  - ClothingUniformJumpskirtBlueTurtleneckDress
+  - ClothingUniformJumpskirtYellowTurtleneckDress
+  - ClothingUniformJumpskirtGreenTurtleneckDress
+  - ClothingUniformJumpskirtRedTurtleneckDress
+  - ClothingUniformJumpsuitSecBlueOJ
+  - ClothingUniformJumpskirtDetectiveGrey
+  - ClothingUniformJumpsuitDetectiveGrey
+  - ClothingUniformJumpskirtDetective
+  - ClothingUniformJumpsuitDetective
+  - ClothingUniformJumpskirtLawyerBlue
+  - ClothingUniformJumpsuitLawyerBlue
+  - ClothingUniformJumpskirtLawyerPurple
+  - ClothingUniformJumpsuitLawyerPurple
+  - ClothingUniformJumpskirtLawyerRed
+  - ClothingUniformJumpsuitLawyerRed
+  - ClothingUniformJumpskirtLawyerBlack
+  - ClothingUniformJumpsuitLawyerBlack
+  - ClothingUniformJumpskirtLawyerGood
+  - ClothingUniformJumpsuitLawyerGood
+  - ClothingUniformTopColorWhite
+  - ClothingUniformTopColorGrey
+  - ClothingUniformTopColorBlack
+  - ClothingUniformTopColorBlue
+  - ClothingUniformTopColorDarkBlue
+  - ClothingUniformTopColorTeal
+  - ClothingUniformTopColorGreen
+  - ClothingUniformTopColorDarkGreen
+  - ClothingUniformTopColorOrange
+  - ClothingUniformTopColorRed
+  - ClothingUniformTopColorYellow
+  - ClothingUniformTopColorPurple
+  - ClothingUniformTopColorLightBrown
+  - ClothingUniformTopColorBrown
+  - ClothingUniformTopColorMaroon
+  - ClothingUniformTopic
+  - ClothingUniformTopicCool
 # Corvax-Wega-add-end
 
 - type: loadoutGroup
@@ -535,6 +795,13 @@
   - ChefApron
   - ChefJacket
   - ChefWintercoat
+
+- type: loadoutGroup
+  id: ChefJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieChef
 
 - type: loadoutGroup
   id: LibrarianJumpsuit
@@ -567,6 +834,17 @@
   - JumpskirtColorDarkBlue
   - JumpsuitColorDarkGreen
   - JumpskirtColorDarkGreen
+  - ClothingUniformJumpskirtGreenElegantDress
+  - ClothingUniformJumpskirtRedElegantDress
+  - ClothingUniformJumpskirtBlueElegantDress
+  - ClothingUniformJumpskirtPurpleElegantDress
+  - ClothingUniformJumpskirtBlackElegantDress
+  - ClothingUniformJumpskirtCyanStripedDress
+  - ClothingUniformJumpskirtGreenStripedDress
+  - ClothingUniformJumpskirtRedStripedDress
+  - ClothingUniformJumpskirtOrangeStripedDress
+  - ClothingUniformJumpskirtPinkStripedDress
+  - ClothingUniformJumpskirtYellowOldDress
   - JumpsuitColorTeal
   - JumpskirtColorTeal
   - JumpsuitCasualBlue
@@ -576,8 +854,8 @@
   - JumpsuitCasualRed
   - JumpskirtCasualRed
   - JumpsuitCasualGreen
-  - JumpskirtCasualGreen 
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtCasualGreen
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
@@ -611,7 +889,51 @@
   - JumpsuitTurtleneckWhiteBlackSleeveless
   - JumpsuitTurtleneckWhiteSleeveless
   - JumpskirtTurtleneckWhiteSleeveless
+  - ClothingUniformJumpskirtPurpleTurtleneckDress
+  - ClothingUniformJumpskirtBlueTurtleneckDress
+  - ClothingUniformJumpskirtYellowTurtleneckDress
+  - ClothingUniformJumpskirtGreenTurtleneckDress
+  - ClothingUniformJumpskirtRedTurtleneckDress
+  - ClothingUniformJumpsuitSecBlueOJ
+  - ClothingUniformJumpskirtDetectiveGrey
+  - ClothingUniformJumpsuitDetectiveGrey
+  - ClothingUniformJumpskirtDetective
+  - ClothingUniformJumpsuitDetective
+  - ClothingUniformJumpskirtLawyerBlue
+  - ClothingUniformJumpsuitLawyerBlue
+  - ClothingUniformJumpskirtLawyerPurple
+  - ClothingUniformJumpsuitLawyerPurple
+  - ClothingUniformJumpskirtLawyerRed
+  - ClothingUniformJumpsuitLawyerRed
+  - ClothingUniformJumpskirtLawyerBlack
+  - ClothingUniformJumpsuitLawyerBlack
+  - ClothingUniformJumpskirtLawyerGood
+  - ClothingUniformJumpsuitLawyerGood
+  - ClothingUniformTopColorWhite
+  - ClothingUniformTopColorGrey
+  - ClothingUniformTopColorBlack
+  - ClothingUniformTopColorBlue
+  - ClothingUniformTopColorDarkBlue
+  - ClothingUniformTopColorTeal
+  - ClothingUniformTopColorGreen
+  - ClothingUniformTopColorDarkGreen
+  - ClothingUniformTopColorOrange
+  - ClothingUniformTopColorRed
+  - ClothingUniformTopColorYellow
+  - ClothingUniformTopColorPurple
+  - ClothingUniformTopColorLightBrown
+  - ClothingUniformTopColorBrown
+  - ClothingUniformTopColorMaroon
+  - ClothingUniformTopic
+  - ClothingUniformTopicCool
 # Corvax-Wega-add-end
+
+- type: loadoutGroup
+  id: LibrarianJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieLibrarian
 
 - type: loadoutGroup
   id: LawyerJumpsuit
@@ -627,74 +949,6 @@
   - LawyerJumpskirtRed
   - LawyerJumpsuitGood
   - LawyerJumpskirtGood
-# Corvax-Wega-add-start
-  - JumpsuitColorWhite
-  - JumpskirtColorWhite
-  - JumpsuitColorBlack
-  - JumpskirtColorBlack
-  - JumpsuitColorBlue
-  - JumpskirtColorBlue
-  - JumpsuitColorYellow
-  - JumpskirtColorYellow
-  - JumpsuitColorGreen
-  - JumpskirtColorGreen
-  - JumpsuitColorOrange
-  - JumpskirtColorOrange
-  - JumpsuitColorRed
-  - JumpskirtColorRed
-  - JumpsuitColorPurple
-  - JumpskirtColorPurple
-  - JumpsuitColorPink
-  - JumpskirtColorPink
-  - JumpsuitColorDarkBlue
-  - JumpskirtColorDarkBlue
-  - JumpsuitColorDarkGreen
-  - JumpskirtColorDarkGreen
-  - JumpsuitColorTeal
-  - JumpskirtColorTeal
-  - JumpsuitCasualBlue
-  - JumpskirtCasualBlue
-  - JumpsuitCasualPurple
-  - JumpskirtCasualPurple
-  - JumpsuitCasualRed
-  - JumpskirtCasualRed
-  - JumpsuitCasualGreen
-  - JumpskirtCasualGreen 
-  - JumpskirtTurtleneckAquamarine   
-  - JumpsuitTurtleneckAquamarine
-  - JumpskirtTurtleneckWhite
-  - JumpsuitTurtleneckWhite
-  - JumpskirtTurtleneckAzure
-  - JumpsuitTurtleneckAzure
-  - JumpskirtTurtleneckYellow
-  - JumpsuitTurtleneckYellow
-  - JumpskirtTurtleneckGreen
-  - JumpsuitTurtleneckGreen
-  - JumpskirtTurtleneckBrown
-  - JumpsuitTurtleneckBrown
-  - JumpskirtTurtleneckRed
-  - JumpsuitTurtleneckRed
-  - JumpskirtTurtleneckOrange
-  - JumpsuitTurtleneckOrange
-  - JumpskirtTurtleneckPink
-  - JumpsuitTurtleneckPink
-  - JumpskirtTurtleneckGrey
-  - JumpsuitTurtleneckGrey
-  - JumpskirtTurtleneckBlue
-  - JumpsuitTurtleneckBlue
-  - JumpskirtTurtleneckPurple
-  - JumpsuitTurtleneckPurple
-  - JumpskirtTurtleneckBlack
-  - JumpsuitTurtleneckBlack
-  - JumpskirtTurtleneckSalat
-  - JumpsuitTurtleneckSalat
-  - JumpsuitTurtleneckSalatblack
-  - JumpskirtTurtleneckBlackSleeveless
-  - JumpsuitTurtleneckBlackSleeveless
-  - JumpsuitTurtleneckWhiteBlackSleeveless
-  - JumpsuitTurtleneckWhiteSleeveless
-  - JumpskirtTurtleneckWhiteSleeveless
-# Corvax-Wega-add-end
 
 - type: loadoutGroup
   id: LawyerNeck
@@ -702,6 +956,13 @@
   minLimit: 0
   loadouts:
   - LawyerNeck
+
+- type: loadoutGroup
+  id: LawyerJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieLawyer
 
 - type: loadoutGroup
   id: ChaplainHead
@@ -762,6 +1023,17 @@
   - JumpskirtColorDarkBlue
   - JumpsuitColorDarkGreen
   - JumpskirtColorDarkGreen
+  - ClothingUniformJumpskirtGreenElegantDress
+  - ClothingUniformJumpskirtRedElegantDress
+  - ClothingUniformJumpskirtBlueElegantDress
+  - ClothingUniformJumpskirtPurpleElegantDress
+  - ClothingUniformJumpskirtBlackElegantDress
+  - ClothingUniformJumpskirtCyanStripedDress
+  - ClothingUniformJumpskirtGreenStripedDress
+  - ClothingUniformJumpskirtRedStripedDress
+  - ClothingUniformJumpskirtOrangeStripedDress
+  - ClothingUniformJumpskirtPinkStripedDress
+  - ClothingUniformJumpskirtYellowOldDress
   - JumpsuitColorTeal
   - JumpskirtColorTeal
   - JumpsuitCasualBlue
@@ -771,8 +1043,8 @@
   - JumpsuitCasualRed
   - JumpskirtCasualRed
   - JumpsuitCasualGreen
-  - JumpskirtCasualGreen 
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtCasualGreen
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
@@ -806,6 +1078,43 @@
   - JumpsuitTurtleneckWhiteBlackSleeveless
   - JumpsuitTurtleneckWhiteSleeveless
   - JumpskirtTurtleneckWhiteSleeveless
+  - ClothingUniformJumpskirtPurpleTurtleneckDress
+  - ClothingUniformJumpskirtBlueTurtleneckDress
+  - ClothingUniformJumpskirtYellowTurtleneckDress
+  - ClothingUniformJumpskirtGreenTurtleneckDress
+  - ClothingUniformJumpskirtRedTurtleneckDress
+  - ClothingUniformJumpsuitSecBlueOJ
+  - ClothingUniformJumpskirtDetectiveGrey
+  - ClothingUniformJumpsuitDetectiveGrey
+  - ClothingUniformJumpskirtDetective
+  - ClothingUniformJumpsuitDetective
+  - ClothingUniformJumpskirtLawyerBlue
+  - ClothingUniformJumpsuitLawyerBlue
+  - ClothingUniformJumpskirtLawyerPurple
+  - ClothingUniformJumpsuitLawyerPurple
+  - ClothingUniformJumpskirtLawyerRed
+  - ClothingUniformJumpsuitLawyerRed
+  - ClothingUniformJumpskirtLawyerBlack
+  - ClothingUniformJumpsuitLawyerBlack
+  - ClothingUniformJumpskirtLawyerGood
+  - ClothingUniformJumpsuitLawyerGood
+  - ClothingUniformTopColorWhite
+  - ClothingUniformTopColorGrey
+  - ClothingUniformTopColorBlack
+  - ClothingUniformTopColorBlue
+  - ClothingUniformTopColorDarkBlue
+  - ClothingUniformTopColorTeal
+  - ClothingUniformTopColorGreen
+  - ClothingUniformTopColorDarkGreen
+  - ClothingUniformTopColorOrange
+  - ClothingUniformTopColorRed
+  - ClothingUniformTopColorYellow
+  - ClothingUniformTopColorPurple
+  - ClothingUniformTopColorLightBrown
+  - ClothingUniformTopColorBrown
+  - ClothingUniformTopColorMaroon
+  - ClothingUniformTopic
+  - ClothingUniformTopicCool
 # Corvax-Wega-add-end
 
 - type: loadoutGroup
@@ -816,15 +1125,23 @@
   - ChaplainNeck
 
 - type: loadoutGroup
+  id: ChaplainJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieChaplain
+
+- type: loadoutGroup
   id: ChaplainBible
   name: loadout-group-chaplain-bible
   minLimit: 1
   loadouts:
   - Bible
-  - BibleDruid
   - BibleNanoTrasen
-  - BibleSatanic
-  - BibleTanakh
+  - BibleDruid
+  - BibleHonk
+  - BibleRatvar
+  - BibleNarsie
 
 - type: loadoutGroup
   id: JanitorHead
@@ -865,6 +1182,17 @@
   - JumpskirtColorDarkBlue
   - JumpsuitColorDarkGreen
   - JumpskirtColorDarkGreen
+  - ClothingUniformJumpskirtGreenElegantDress
+  - ClothingUniformJumpskirtRedElegantDress
+  - ClothingUniformJumpskirtBlueElegantDress
+  - ClothingUniformJumpskirtPurpleElegantDress
+  - ClothingUniformJumpskirtBlackElegantDress
+  - ClothingUniformJumpskirtCyanStripedDress
+  - ClothingUniformJumpskirtGreenStripedDress
+  - ClothingUniformJumpskirtRedStripedDress
+  - ClothingUniformJumpskirtOrangeStripedDress
+  - ClothingUniformJumpskirtPinkStripedDress
+  - ClothingUniformJumpskirtYellowOldDress
   - JumpsuitColorTeal
   - JumpskirtColorTeal
   - JumpsuitCasualBlue
@@ -874,8 +1202,8 @@
   - JumpsuitCasualRed
   - JumpskirtCasualRed
   - JumpsuitCasualGreen
-  - JumpskirtCasualGreen 
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtCasualGreen
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
@@ -909,6 +1237,43 @@
   - JumpsuitTurtleneckWhiteBlackSleeveless
   - JumpsuitTurtleneckWhiteSleeveless
   - JumpskirtTurtleneckWhiteSleeveless
+  - ClothingUniformJumpskirtPurpleTurtleneckDress
+  - ClothingUniformJumpskirtBlueTurtleneckDress
+  - ClothingUniformJumpskirtYellowTurtleneckDress
+  - ClothingUniformJumpskirtGreenTurtleneckDress
+  - ClothingUniformJumpskirtRedTurtleneckDress
+  - ClothingUniformJumpsuitSecBlueOJ
+  - ClothingUniformJumpskirtDetectiveGrey
+  - ClothingUniformJumpsuitDetectiveGrey
+  - ClothingUniformJumpskirtDetective
+  - ClothingUniformJumpsuitDetective
+  - ClothingUniformJumpskirtLawyerBlue
+  - ClothingUniformJumpsuitLawyerBlue
+  - ClothingUniformJumpskirtLawyerPurple
+  - ClothingUniformJumpsuitLawyerPurple
+  - ClothingUniformJumpskirtLawyerRed
+  - ClothingUniformJumpsuitLawyerRed
+  - ClothingUniformJumpskirtLawyerBlack
+  - ClothingUniformJumpsuitLawyerBlack
+  - ClothingUniformJumpskirtLawyerGood
+  - ClothingUniformJumpsuitLawyerGood
+  - ClothingUniformTopColorWhite
+  - ClothingUniformTopColorGrey
+  - ClothingUniformTopColorBlack
+  - ClothingUniformTopColorBlue
+  - ClothingUniformTopColorDarkBlue
+  - ClothingUniformTopColorTeal
+  - ClothingUniformTopColorGreen
+  - ClothingUniformTopColorDarkGreen
+  - ClothingUniformTopColorOrange
+  - ClothingUniformTopColorRed
+  - ClothingUniformTopColorYellow
+  - ClothingUniformTopColorPurple
+  - ClothingUniformTopColorLightBrown
+  - ClothingUniformTopColorBrown
+  - ClothingUniformTopColorMaroon
+  - ClothingUniformTopic
+  - ClothingUniformTopicCool
 # Corvax-Wega-add-end
 
 - type: loadoutGroup
@@ -928,10 +1293,11 @@
   - JanitorWintercoat
 
 - type: loadoutGroup
-  id: JanitorPlunger
-  name: loadout-group-janitor-plunger
+  id: JanitorJobTrinkets
+  name: loadout-group-jobtrinkets
   minLimit: 0
   loadouts:
+  - LizardPlushieJanitor
   - JanitorGoldenPlunger
 
 - type: loadoutGroup
@@ -972,6 +1338,17 @@
   - JumpskirtColorDarkBlue
   - JumpsuitColorDarkGreen
   - JumpskirtColorDarkGreen
+  - ClothingUniformJumpskirtGreenElegantDress
+  - ClothingUniformJumpskirtRedElegantDress
+  - ClothingUniformJumpskirtBlueElegantDress
+  - ClothingUniformJumpskirtPurpleElegantDress
+  - ClothingUniformJumpskirtBlackElegantDress
+  - ClothingUniformJumpskirtCyanStripedDress
+  - ClothingUniformJumpskirtGreenStripedDress
+  - ClothingUniformJumpskirtRedStripedDress
+  - ClothingUniformJumpskirtOrangeStripedDress
+  - ClothingUniformJumpskirtPinkStripedDress
+  - ClothingUniformJumpskirtYellowOldDress
   - JumpsuitColorTeal
   - JumpskirtColorTeal
   - JumpsuitCasualBlue
@@ -981,8 +1358,8 @@
   - JumpsuitCasualRed
   - JumpskirtCasualRed
   - JumpsuitCasualGreen
-  - JumpskirtCasualGreen 
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtCasualGreen
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
@@ -1016,6 +1393,43 @@
   - JumpsuitTurtleneckWhiteBlackSleeveless
   - JumpsuitTurtleneckWhiteSleeveless
   - JumpskirtTurtleneckWhiteSleeveless
+  - ClothingUniformJumpskirtPurpleTurtleneckDress
+  - ClothingUniformJumpskirtBlueTurtleneckDress
+  - ClothingUniformJumpskirtYellowTurtleneckDress
+  - ClothingUniformJumpskirtGreenTurtleneckDress
+  - ClothingUniformJumpskirtRedTurtleneckDress
+  - ClothingUniformJumpsuitSecBlueOJ
+  - ClothingUniformJumpskirtDetectiveGrey
+  - ClothingUniformJumpsuitDetectiveGrey
+  - ClothingUniformJumpskirtDetective
+  - ClothingUniformJumpsuitDetective
+  - ClothingUniformJumpskirtLawyerBlue
+  - ClothingUniformJumpsuitLawyerBlue
+  - ClothingUniformJumpskirtLawyerPurple
+  - ClothingUniformJumpsuitLawyerPurple
+  - ClothingUniformJumpskirtLawyerRed
+  - ClothingUniformJumpsuitLawyerRed
+  - ClothingUniformJumpskirtLawyerBlack
+  - ClothingUniformJumpsuitLawyerBlack
+  - ClothingUniformJumpskirtLawyerGood
+  - ClothingUniformJumpsuitLawyerGood
+  - ClothingUniformTopColorWhite
+  - ClothingUniformTopColorGrey
+  - ClothingUniformTopColorBlack
+  - ClothingUniformTopColorBlue
+  - ClothingUniformTopColorDarkBlue
+  - ClothingUniformTopColorTeal
+  - ClothingUniformTopColorGreen
+  - ClothingUniformTopColorDarkGreen
+  - ClothingUniformTopColorOrange
+  - ClothingUniformTopColorRed
+  - ClothingUniformTopColorYellow
+  - ClothingUniformTopColorPurple
+  - ClothingUniformTopColorLightBrown
+  - ClothingUniformTopColorBrown
+  - ClothingUniformTopColorMaroon
+  - ClothingUniformTopic
+  - ClothingUniformTopicCool
 # Corvax-Wega-add-end
 
 - type: loadoutGroup
@@ -1033,6 +1447,13 @@
   loadouts:
   - BotanistApron
   - BotanistWintercoat
+
+- type: loadoutGroup
+  id: BotanistJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieBotanist
 
 - type: loadoutGroup
   id: ClownHead
@@ -1073,6 +1494,17 @@
   - JumpskirtColorDarkBlue
   - JumpsuitColorDarkGreen
   - JumpskirtColorDarkGreen
+  - ClothingUniformJumpskirtGreenElegantDress
+  - ClothingUniformJumpskirtRedElegantDress
+  - ClothingUniformJumpskirtBlueElegantDress
+  - ClothingUniformJumpskirtPurpleElegantDress
+  - ClothingUniformJumpskirtBlackElegantDress
+  - ClothingUniformJumpskirtCyanStripedDress
+  - ClothingUniformJumpskirtGreenStripedDress
+  - ClothingUniformJumpskirtRedStripedDress
+  - ClothingUniformJumpskirtOrangeStripedDress
+  - ClothingUniformJumpskirtPinkStripedDress
+  - ClothingUniformJumpskirtYellowOldDress
   - JumpsuitColorTeal
   - JumpskirtColorTeal
   - JumpsuitCasualBlue
@@ -1082,8 +1514,8 @@
   - JumpsuitCasualRed
   - JumpskirtCasualRed
   - JumpsuitCasualGreen
-  - JumpskirtCasualGreen 
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtCasualGreen
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
@@ -1117,6 +1549,43 @@
   - JumpsuitTurtleneckWhiteBlackSleeveless
   - JumpsuitTurtleneckWhiteSleeveless
   - JumpskirtTurtleneckWhiteSleeveless
+  - ClothingUniformJumpskirtPurpleTurtleneckDress
+  - ClothingUniformJumpskirtBlueTurtleneckDress
+  - ClothingUniformJumpskirtYellowTurtleneckDress
+  - ClothingUniformJumpskirtGreenTurtleneckDress
+  - ClothingUniformJumpskirtRedTurtleneckDress
+  - ClothingUniformJumpsuitSecBlueOJ
+  - ClothingUniformJumpskirtDetectiveGrey
+  - ClothingUniformJumpsuitDetectiveGrey
+  - ClothingUniformJumpskirtDetective
+  - ClothingUniformJumpsuitDetective
+  - ClothingUniformJumpskirtLawyerBlue
+  - ClothingUniformJumpsuitLawyerBlue
+  - ClothingUniformJumpskirtLawyerPurple
+  - ClothingUniformJumpsuitLawyerPurple
+  - ClothingUniformJumpskirtLawyerRed
+  - ClothingUniformJumpsuitLawyerRed
+  - ClothingUniformJumpskirtLawyerBlack
+  - ClothingUniformJumpsuitLawyerBlack
+  - ClothingUniformJumpskirtLawyerGood
+  - ClothingUniformJumpsuitLawyerGood
+  - ClothingUniformTopColorWhite
+  - ClothingUniformTopColorGrey
+  - ClothingUniformTopColorBlack
+  - ClothingUniformTopColorBlue
+  - ClothingUniformTopColorDarkBlue
+  - ClothingUniformTopColorTeal
+  - ClothingUniformTopColorGreen
+  - ClothingUniformTopColorDarkGreen
+  - ClothingUniformTopColorOrange
+  - ClothingUniformTopColorRed
+  - ClothingUniformTopColorYellow
+  - ClothingUniformTopColorPurple
+  - ClothingUniformTopColorLightBrown
+  - ClothingUniformTopColorBrown
+  - ClothingUniformTopColorMaroon
+  - ClothingUniformTopic
+  - ClothingUniformTopicCool
 # Corvax-Wega-add-end
 
 - type: loadoutGroup
@@ -1152,6 +1621,14 @@
   - EmergencyOxygenClown
   - LoadoutSpeciesVoxNitrogen
   - EmergencyAndroidClown # Corvax-Wega-Android
+
+- type: loadoutGroup
+  id: ClownJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieClown
+  - FlowerWaterClown
 
 - type: loadoutGroup
   id: MimeHead
@@ -1199,6 +1676,17 @@
   - JumpskirtColorDarkBlue
   - JumpsuitColorDarkGreen
   - JumpskirtColorDarkGreen
+  - ClothingUniformJumpskirtGreenElegantDress
+  - ClothingUniformJumpskirtRedElegantDress
+  - ClothingUniformJumpskirtBlueElegantDress
+  - ClothingUniformJumpskirtPurpleElegantDress
+  - ClothingUniformJumpskirtBlackElegantDress
+  - ClothingUniformJumpskirtCyanStripedDress
+  - ClothingUniformJumpskirtGreenStripedDress
+  - ClothingUniformJumpskirtRedStripedDress
+  - ClothingUniformJumpskirtOrangeStripedDress
+  - ClothingUniformJumpskirtPinkStripedDress
+  - ClothingUniformJumpskirtYellowOldDress
   - JumpsuitColorTeal
   - JumpskirtColorTeal
   - JumpsuitCasualBlue
@@ -1208,8 +1696,8 @@
   - JumpsuitCasualRed
   - JumpskirtCasualRed
   - JumpsuitCasualGreen
-  - JumpskirtCasualGreen 
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtCasualGreen
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
@@ -1243,6 +1731,43 @@
   - JumpsuitTurtleneckWhiteBlackSleeveless
   - JumpsuitTurtleneckWhiteSleeveless
   - JumpskirtTurtleneckWhiteSleeveless
+  - ClothingUniformJumpskirtPurpleTurtleneckDress
+  - ClothingUniformJumpskirtBlueTurtleneckDress
+  - ClothingUniformJumpskirtYellowTurtleneckDress
+  - ClothingUniformJumpskirtGreenTurtleneckDress
+  - ClothingUniformJumpskirtRedTurtleneckDress
+  - ClothingUniformJumpsuitSecBlueOJ
+  - ClothingUniformJumpskirtDetectiveGrey
+  - ClothingUniformJumpsuitDetectiveGrey
+  - ClothingUniformJumpskirtDetective
+  - ClothingUniformJumpsuitDetective
+  - ClothingUniformJumpskirtLawyerBlue
+  - ClothingUniformJumpsuitLawyerBlue
+  - ClothingUniformJumpskirtLawyerPurple
+  - ClothingUniformJumpsuitLawyerPurple
+  - ClothingUniformJumpskirtLawyerRed
+  - ClothingUniformJumpsuitLawyerRed
+  - ClothingUniformJumpskirtLawyerBlack
+  - ClothingUniformJumpsuitLawyerBlack
+  - ClothingUniformJumpskirtLawyerGood
+  - ClothingUniformJumpsuitLawyerGood
+  - ClothingUniformTopColorWhite
+  - ClothingUniformTopColorGrey
+  - ClothingUniformTopColorBlack
+  - ClothingUniformTopColorBlue
+  - ClothingUniformTopColorDarkBlue
+  - ClothingUniformTopColorTeal
+  - ClothingUniformTopColorGreen
+  - ClothingUniformTopColorDarkGreen
+  - ClothingUniformTopColorOrange
+  - ClothingUniformTopColorRed
+  - ClothingUniformTopColorYellow
+  - ClothingUniformTopColorPurple
+  - ClothingUniformTopColorLightBrown
+  - ClothingUniformTopColorBrown
+  - ClothingUniformTopColorMaroon
+  - ClothingUniformTopic
+  - ClothingUniformTopicCool
 # Corvax-Wega-add-end
 
 - type: loadoutGroup
@@ -1280,6 +1805,13 @@
   - EmergencyAndroidMime # Corvax-Wega-Android
 
 - type: loadoutGroup
+  id: MimeJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieMime
+
+- type: loadoutGroup
   id: MusicianJumpsuit
   name: loadout-group-musician-jumpsuit
   loadouts:
@@ -1308,6 +1840,17 @@
   - JumpskirtColorDarkBlue
   - JumpsuitColorDarkGreen
   - JumpskirtColorDarkGreen
+  - ClothingUniformJumpskirtGreenElegantDress
+  - ClothingUniformJumpskirtRedElegantDress
+  - ClothingUniformJumpskirtBlueElegantDress
+  - ClothingUniformJumpskirtPurpleElegantDress
+  - ClothingUniformJumpskirtBlackElegantDress
+  - ClothingUniformJumpskirtCyanStripedDress
+  - ClothingUniformJumpskirtGreenStripedDress
+  - ClothingUniformJumpskirtRedStripedDress
+  - ClothingUniformJumpskirtOrangeStripedDress
+  - ClothingUniformJumpskirtPinkStripedDress
+  - ClothingUniformJumpskirtYellowOldDress
   - JumpsuitColorTeal
   - JumpskirtColorTeal
   - JumpsuitCasualBlue
@@ -1317,8 +1860,8 @@
   - JumpsuitCasualRed
   - JumpskirtCasualRed
   - JumpsuitCasualGreen
-  - JumpskirtCasualGreen 
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtCasualGreen
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
@@ -1352,6 +1895,43 @@
   - JumpsuitTurtleneckWhiteBlackSleeveless
   - JumpsuitTurtleneckWhiteSleeveless
   - JumpskirtTurtleneckWhiteSleeveless
+  - ClothingUniformJumpskirtPurpleTurtleneckDress
+  - ClothingUniformJumpskirtBlueTurtleneckDress
+  - ClothingUniformJumpskirtYellowTurtleneckDress
+  - ClothingUniformJumpskirtGreenTurtleneckDress
+  - ClothingUniformJumpskirtRedTurtleneckDress
+  - ClothingUniformJumpsuitSecBlueOJ
+  - ClothingUniformJumpskirtDetectiveGrey
+  - ClothingUniformJumpsuitDetectiveGrey
+  - ClothingUniformJumpskirtDetective
+  - ClothingUniformJumpsuitDetective
+  - ClothingUniformJumpskirtLawyerBlue
+  - ClothingUniformJumpsuitLawyerBlue
+  - ClothingUniformJumpskirtLawyerPurple
+  - ClothingUniformJumpsuitLawyerPurple
+  - ClothingUniformJumpskirtLawyerRed
+  - ClothingUniformJumpsuitLawyerRed
+  - ClothingUniformJumpskirtLawyerBlack
+  - ClothingUniformJumpsuitLawyerBlack
+  - ClothingUniformJumpskirtLawyerGood
+  - ClothingUniformJumpsuitLawyerGood
+  - ClothingUniformTopColorWhite
+  - ClothingUniformTopColorGrey
+  - ClothingUniformTopColorBlack
+  - ClothingUniformTopColorBlue
+  - ClothingUniformTopColorDarkBlue
+  - ClothingUniformTopColorTeal
+  - ClothingUniformTopColorGreen
+  - ClothingUniformTopColorDarkGreen
+  - ClothingUniformTopColorOrange
+  - ClothingUniformTopColorRed
+  - ClothingUniformTopColorYellow
+  - ClothingUniformTopColorPurple
+  - ClothingUniformTopColorLightBrown
+  - ClothingUniformTopColorBrown
+  - ClothingUniformTopColorMaroon
+  - ClothingUniformTopic
+  - ClothingUniformTopicCool
 # Corvax-Wega-add-end
 
 - type: loadoutGroup
@@ -1397,6 +1977,13 @@
   - Ocarina
   - Bagpipe
 
+- type: loadoutGroup
+  id: MusicianJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieMusician
+
 # Cargo
 - type: loadoutGroup
   id: QuartermasterHead
@@ -1437,6 +2024,38 @@
   loadouts:
   - BrownShoes
   - CargoWinterBoots
+ # Corvax-Wega-Shoes-Start
+  - ClothingShoesColorBlack
+  - ClothingShoesColorBrown
+  - ClothingShoesColorWhite
+  - ClothingShoesColorYellow
+  - ClothingShoesColorGreen
+  - ClothingShoesColorRed
+  - ClothingShoesColorOrange
+  - ClothingShoesColorBlue
+  - ClothingShoesColorPurple
+  - ClothingShoesHeelsBlack
+  - ClothingShoesHeelsGray
+  - ClothingShoesHeelsTurquoise
+  - ClothingShoesHeelsYellow
+  - ClothingShoesHeelsGreen
+  - ClothingShoesHeelsPink
+  - ClothingShoesHeelsOrange
+  - ClothingShoesHeelsRed
+  - ClothingShoesHeelsBlue
+  - ClothingShoesHeelsPurple
+  - ClothingShoesBootsLaceup
+  - ClothingShoesWizard
+  - ClothingShoesTourist
+  - ClothingShoesLeather
+ # Corvax-Wega-Shoes-End
+
+- type: loadoutGroup
+  id: QuartermasterJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieQuartermaster
 
 - type: loadoutGroup
   id: CargoTechnicianHead
@@ -1474,6 +2093,17 @@
   - JumpskirtColorDarkBlue
   - JumpsuitColorDarkGreen
   - JumpskirtColorDarkGreen
+  - ClothingUniformJumpskirtGreenElegantDress
+  - ClothingUniformJumpskirtRedElegantDress
+  - ClothingUniformJumpskirtBlueElegantDress
+  - ClothingUniformJumpskirtPurpleElegantDress
+  - ClothingUniformJumpskirtBlackElegantDress
+  - ClothingUniformJumpskirtCyanStripedDress
+  - ClothingUniformJumpskirtGreenStripedDress
+  - ClothingUniformJumpskirtRedStripedDress
+  - ClothingUniformJumpskirtOrangeStripedDress
+  - ClothingUniformJumpskirtPinkStripedDress
+  - ClothingUniformJumpskirtYellowOldDress
   - JumpsuitColorTeal
   - JumpskirtColorTeal
   - JumpsuitCasualBlue
@@ -1483,8 +2113,8 @@
   - JumpsuitCasualRed
   - JumpskirtCasualRed
   - JumpsuitCasualGreen
-  - JumpskirtCasualGreen 
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtCasualGreen
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
@@ -1518,6 +2148,43 @@
   - JumpsuitTurtleneckWhiteBlackSleeveless
   - JumpsuitTurtleneckWhiteSleeveless
   - JumpskirtTurtleneckWhiteSleeveless
+  - ClothingUniformJumpskirtPurpleTurtleneckDress
+  - ClothingUniformJumpskirtBlueTurtleneckDress
+  - ClothingUniformJumpskirtYellowTurtleneckDress
+  - ClothingUniformJumpskirtGreenTurtleneckDress
+  - ClothingUniformJumpskirtRedTurtleneckDress
+  - ClothingUniformJumpsuitSecBlueOJ
+  - ClothingUniformJumpskirtDetectiveGrey
+  - ClothingUniformJumpsuitDetectiveGrey
+  - ClothingUniformJumpskirtDetective
+  - ClothingUniformJumpsuitDetective
+  - ClothingUniformJumpskirtLawyerBlue
+  - ClothingUniformJumpsuitLawyerBlue
+  - ClothingUniformJumpskirtLawyerPurple
+  - ClothingUniformJumpsuitLawyerPurple
+  - ClothingUniformJumpskirtLawyerRed
+  - ClothingUniformJumpsuitLawyerRed
+  - ClothingUniformJumpskirtLawyerBlack
+  - ClothingUniformJumpsuitLawyerBlack
+  - ClothingUniformJumpskirtLawyerGood
+  - ClothingUniformJumpsuitLawyerGood
+  - ClothingUniformTopColorWhite
+  - ClothingUniformTopColorGrey
+  - ClothingUniformTopColorBlack
+  - ClothingUniformTopColorBlue
+  - ClothingUniformTopColorDarkBlue
+  - ClothingUniformTopColorTeal
+  - ClothingUniformTopColorGreen
+  - ClothingUniformTopColorDarkGreen
+  - ClothingUniformTopColorOrange
+  - ClothingUniformTopColorRed
+  - ClothingUniformTopColorYellow
+  - ClothingUniformTopColorPurple
+  - ClothingUniformTopColorLightBrown
+  - ClothingUniformTopColorBrown
+  - ClothingUniformTopColorMaroon
+  - ClothingUniformTopic
+  - ClothingUniformTopicCool
 # Corvax-Wega-add-end
 
 - type: loadoutGroup
@@ -1541,6 +2208,31 @@
   loadouts:
   - BlackShoes
   - CargoWinterBoots
+ # Corvax-Wega-Shoes-Start
+  - ClothingShoesColorBlack
+  - ClothingShoesColorBrown
+  - ClothingShoesColorWhite
+  - ClothingShoesColorYellow
+  - ClothingShoesColorGreen
+  - ClothingShoesColorRed
+  - ClothingShoesColorOrange
+  - ClothingShoesColorBlue
+  - ClothingShoesColorPurple
+  - ClothingShoesHeelsBlack
+  - ClothingShoesHeelsGray
+  - ClothingShoesHeelsTurquoise
+  - ClothingShoesHeelsYellow
+  - ClothingShoesHeelsGreen
+  - ClothingShoesHeelsPink
+  - ClothingShoesHeelsOrange
+  - ClothingShoesHeelsRed
+  - ClothingShoesHeelsBlue
+  - ClothingShoesHeelsPurple
+  - ClothingShoesBootsLaceup
+  - ClothingShoesWizard
+  - ClothingShoesTourist
+  - ClothingShoesLeather
+ # Corvax-Wega-Shoes-End
 
 - type: loadoutGroup
   id: CargoTechnicianID
@@ -1548,6 +2240,13 @@
   loadouts:
   - CargoTechnicianPDA
   - SeniorCourierPDA
+
+- type: loadoutGroup
+  id: CargoTechnicianJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieCargoTechnician
 
 - type: loadoutGroup
   id: SalvageSpecialistBackpack
@@ -1570,6 +2269,13 @@
   loadouts:
   - SalvageBoots
   - CargoWinterBoots
+
+- type: loadoutGroup
+  id: SalvageSpecialistJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieSalvageSpecialist
 
 # Engineering
 - type: loadoutGroup
@@ -1610,6 +2316,38 @@
   loadouts:
   - BrownShoes
   - EngineeringWinterBoots
+ # Corvax-Wega-Shoes-Start
+  - ClothingShoesColorBlack
+  - ClothingShoesColorBrown
+  - ClothingShoesColorWhite
+  - ClothingShoesColorYellow
+  - ClothingShoesColorGreen
+  - ClothingShoesColorRed
+  - ClothingShoesColorOrange
+  - ClothingShoesColorBlue
+  - ClothingShoesColorPurple
+  - ClothingShoesHeelsBlack
+  - ClothingShoesHeelsGray
+  - ClothingShoesHeelsTurquoise
+  - ClothingShoesHeelsYellow
+  - ClothingShoesHeelsGreen
+  - ClothingShoesHeelsPink
+  - ClothingShoesHeelsOrange
+  - ClothingShoesHeelsRed
+  - ClothingShoesHeelsBlue
+  - ClothingShoesHeelsPurple
+  - ClothingShoesBootsLaceup
+  - ClothingShoesWizard
+  - ClothingShoesTourist
+  - ClothingShoesLeather
+ # Corvax-Wega-Shoes-End
+
+- type: loadoutGroup
+  id: ChiefEngineerJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieChiefEngineer
 
 - type: loadoutGroup
   id: TechnicalAssistantJumpsuit
@@ -1640,6 +2378,17 @@
   - JumpskirtColorDarkBlue
   - JumpsuitColorDarkGreen
   - JumpskirtColorDarkGreen
+  - ClothingUniformJumpskirtGreenElegantDress
+  - ClothingUniformJumpskirtRedElegantDress
+  - ClothingUniformJumpskirtBlueElegantDress
+  - ClothingUniformJumpskirtPurpleElegantDress
+  - ClothingUniformJumpskirtBlackElegantDress
+  - ClothingUniformJumpskirtCyanStripedDress
+  - ClothingUniformJumpskirtGreenStripedDress
+  - ClothingUniformJumpskirtRedStripedDress
+  - ClothingUniformJumpskirtOrangeStripedDress
+  - ClothingUniformJumpskirtPinkStripedDress
+  - ClothingUniformJumpskirtYellowOldDress
   - JumpsuitColorTeal
   - JumpskirtColorTeal
   - JumpsuitCasualBlue
@@ -1649,8 +2398,8 @@
   - JumpsuitCasualRed
   - JumpskirtCasualRed
   - JumpsuitCasualGreen
-  - JumpskirtCasualGreen 
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtCasualGreen
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
@@ -1684,7 +2433,51 @@
   - JumpsuitTurtleneckWhiteBlackSleeveless
   - JumpsuitTurtleneckWhiteSleeveless
   - JumpskirtTurtleneckWhiteSleeveless
+  - ClothingUniformJumpskirtPurpleTurtleneckDress
+  - ClothingUniformJumpskirtBlueTurtleneckDress
+  - ClothingUniformJumpskirtYellowTurtleneckDress
+  - ClothingUniformJumpskirtGreenTurtleneckDress
+  - ClothingUniformJumpskirtRedTurtleneckDress
+  - ClothingUniformJumpsuitSecBlueOJ
+  - ClothingUniformJumpskirtDetectiveGrey
+  - ClothingUniformJumpsuitDetectiveGrey
+  - ClothingUniformJumpskirtDetective
+  - ClothingUniformJumpsuitDetective
+  - ClothingUniformJumpskirtLawyerBlue
+  - ClothingUniformJumpsuitLawyerBlue
+  - ClothingUniformJumpskirtLawyerPurple
+  - ClothingUniformJumpsuitLawyerPurple
+  - ClothingUniformJumpskirtLawyerRed
+  - ClothingUniformJumpsuitLawyerRed
+  - ClothingUniformJumpskirtLawyerBlack
+  - ClothingUniformJumpsuitLawyerBlack
+  - ClothingUniformJumpskirtLawyerGood
+  - ClothingUniformJumpsuitLawyerGood
+  - ClothingUniformTopColorWhite
+  - ClothingUniformTopColorGrey
+  - ClothingUniformTopColorBlack
+  - ClothingUniformTopColorBlue
+  - ClothingUniformTopColorDarkBlue
+  - ClothingUniformTopColorTeal
+  - ClothingUniformTopColorGreen
+  - ClothingUniformTopColorDarkGreen
+  - ClothingUniformTopColorOrange
+  - ClothingUniformTopColorRed
+  - ClothingUniformTopColorYellow
+  - ClothingUniformTopColorPurple
+  - ClothingUniformTopColorLightBrown
+  - ClothingUniformTopColorBrown
+  - ClothingUniformTopColorMaroon
+  - ClothingUniformTopic
+  - ClothingUniformTopicCool
 # Corvax-Wega-add-end
+
+- type: loadoutGroup
+  id: TechnicalAssistantJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieTechnicalAssistant
 
 - type: loadoutGroup
   id: StationEngineerHead
@@ -1728,6 +2521,17 @@
   - JumpskirtColorDarkBlue
   - JumpsuitColorDarkGreen
   - JumpskirtColorDarkGreen
+  - ClothingUniformJumpskirtGreenElegantDress
+  - ClothingUniformJumpskirtRedElegantDress
+  - ClothingUniformJumpskirtBlueElegantDress
+  - ClothingUniformJumpskirtPurpleElegantDress
+  - ClothingUniformJumpskirtBlackElegantDress
+  - ClothingUniformJumpskirtCyanStripedDress
+  - ClothingUniformJumpskirtGreenStripedDress
+  - ClothingUniformJumpskirtRedStripedDress
+  - ClothingUniformJumpskirtOrangeStripedDress
+  - ClothingUniformJumpskirtPinkStripedDress
+  - ClothingUniformJumpskirtYellowOldDress
   - JumpsuitColorTeal
   - JumpskirtColorTeal
   - JumpsuitCasualBlue
@@ -1737,8 +2541,8 @@
   - JumpsuitCasualRed
   - JumpskirtCasualRed
   - JumpsuitCasualGreen
-  - JumpskirtCasualGreen 
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtCasualGreen
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
@@ -1772,6 +2576,43 @@
   - JumpsuitTurtleneckWhiteBlackSleeveless
   - JumpsuitTurtleneckWhiteSleeveless
   - JumpskirtTurtleneckWhiteSleeveless
+  - ClothingUniformJumpskirtPurpleTurtleneckDress
+  - ClothingUniformJumpskirtBlueTurtleneckDress
+  - ClothingUniformJumpskirtYellowTurtleneckDress
+  - ClothingUniformJumpskirtGreenTurtleneckDress
+  - ClothingUniformJumpskirtRedTurtleneckDress
+  - ClothingUniformJumpsuitSecBlueOJ
+  - ClothingUniformJumpskirtDetectiveGrey
+  - ClothingUniformJumpsuitDetectiveGrey
+  - ClothingUniformJumpskirtDetective
+  - ClothingUniformJumpsuitDetective
+  - ClothingUniformJumpskirtLawyerBlue
+  - ClothingUniformJumpsuitLawyerBlue
+  - ClothingUniformJumpskirtLawyerPurple
+  - ClothingUniformJumpsuitLawyerPurple
+  - ClothingUniformJumpskirtLawyerRed
+  - ClothingUniformJumpsuitLawyerRed
+  - ClothingUniformJumpskirtLawyerBlack
+  - ClothingUniformJumpsuitLawyerBlack
+  - ClothingUniformJumpskirtLawyerGood
+  - ClothingUniformJumpsuitLawyerGood
+  - ClothingUniformTopColorWhite
+  - ClothingUniformTopColorGrey
+  - ClothingUniformTopColorBlack
+  - ClothingUniformTopColorBlue
+  - ClothingUniformTopColorDarkBlue
+  - ClothingUniformTopColorTeal
+  - ClothingUniformTopColorGreen
+  - ClothingUniformTopColorDarkGreen
+  - ClothingUniformTopColorOrange
+  - ClothingUniformTopColorRed
+  - ClothingUniformTopColorYellow
+  - ClothingUniformTopColorPurple
+  - ClothingUniformTopColorLightBrown
+  - ClothingUniformTopColorBrown
+  - ClothingUniformTopColorMaroon
+  - ClothingUniformTopic
+  - ClothingUniformTopicCool
 # Corvax-Wega-add-end
 
 - type: loadoutGroup
@@ -1796,6 +2637,31 @@
   loadouts:
   - WorkBoots
   - EngineeringWinterBoots
+ # Corvax-Wega-Shoes-Start
+  - ClothingShoesColorBlack
+  - ClothingShoesColorBrown
+  - ClothingShoesColorWhite
+  - ClothingShoesColorYellow
+  - ClothingShoesColorGreen
+  - ClothingShoesColorRed
+  - ClothingShoesColorOrange
+  - ClothingShoesColorBlue
+  - ClothingShoesColorPurple
+  - ClothingShoesHeelsBlack
+  - ClothingShoesHeelsGray
+  - ClothingShoesHeelsTurquoise
+  - ClothingShoesHeelsYellow
+  - ClothingShoesHeelsGreen
+  - ClothingShoesHeelsPink
+  - ClothingShoesHeelsOrange
+  - ClothingShoesHeelsRed
+  - ClothingShoesHeelsBlue
+  - ClothingShoesHeelsPurple
+  - ClothingShoesBootsLaceup
+  - ClothingShoesWizard
+  - ClothingShoesTourist
+  - ClothingShoesLeather
+ # Corvax-Wega-Shoes-End
 
 - type: loadoutGroup
   id: StationEngineerID
@@ -1803,6 +2669,13 @@
   loadouts:
   - StationEngineerPDA
   - SeniorEngineerPDA
+
+- type: loadoutGroup
+  id: StationEngineerJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieStationEngineer
 
 - type: loadoutGroup
   id: AtmosphericTechnicianJumpsuit
@@ -1834,6 +2707,17 @@
   - JumpskirtColorDarkBlue
   - JumpsuitColorDarkGreen
   - JumpskirtColorDarkGreen
+  - ClothingUniformJumpskirtGreenElegantDress
+  - ClothingUniformJumpskirtRedElegantDress
+  - ClothingUniformJumpskirtBlueElegantDress
+  - ClothingUniformJumpskirtPurpleElegantDress
+  - ClothingUniformJumpskirtBlackElegantDress
+  - ClothingUniformJumpskirtCyanStripedDress
+  - ClothingUniformJumpskirtGreenStripedDress
+  - ClothingUniformJumpskirtRedStripedDress
+  - ClothingUniformJumpskirtOrangeStripedDress
+  - ClothingUniformJumpskirtPinkStripedDress
+  - ClothingUniformJumpskirtYellowOldDress
   - JumpsuitColorTeal
   - JumpskirtColorTeal
   - JumpsuitCasualBlue
@@ -1843,8 +2727,8 @@
   - JumpsuitCasualRed
   - JumpskirtCasualRed
   - JumpsuitCasualGreen
-  - JumpskirtCasualGreen 
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtCasualGreen
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
@@ -1878,6 +2762,43 @@
   - JumpsuitTurtleneckWhiteBlackSleeveless
   - JumpsuitTurtleneckWhiteSleeveless
   - JumpskirtTurtleneckWhiteSleeveless
+  - ClothingUniformJumpskirtPurpleTurtleneckDress
+  - ClothingUniformJumpskirtBlueTurtleneckDress
+  - ClothingUniformJumpskirtYellowTurtleneckDress
+  - ClothingUniformJumpskirtGreenTurtleneckDress
+  - ClothingUniformJumpskirtRedTurtleneckDress
+  - ClothingUniformJumpsuitSecBlueOJ
+  - ClothingUniformJumpskirtDetectiveGrey
+  - ClothingUniformJumpsuitDetectiveGrey
+  - ClothingUniformJumpskirtDetective
+  - ClothingUniformJumpsuitDetective
+  - ClothingUniformJumpskirtLawyerBlue
+  - ClothingUniformJumpsuitLawyerBlue
+  - ClothingUniformJumpskirtLawyerPurple
+  - ClothingUniformJumpsuitLawyerPurple
+  - ClothingUniformJumpskirtLawyerRed
+  - ClothingUniformJumpsuitLawyerRed
+  - ClothingUniformJumpskirtLawyerBlack
+  - ClothingUniformJumpsuitLawyerBlack
+  - ClothingUniformJumpskirtLawyerGood
+  - ClothingUniformJumpsuitLawyerGood
+  - ClothingUniformTopColorWhite
+  - ClothingUniformTopColorGrey
+  - ClothingUniformTopColorBlack
+  - ClothingUniformTopColorBlue
+  - ClothingUniformTopColorDarkBlue
+  - ClothingUniformTopColorTeal
+  - ClothingUniformTopColorGreen
+  - ClothingUniformTopColorDarkGreen
+  - ClothingUniformTopColorOrange
+  - ClothingUniformTopColorRed
+  - ClothingUniformTopColorYellow
+  - ClothingUniformTopColorPurple
+  - ClothingUniformTopColorLightBrown
+  - ClothingUniformTopColorBrown
+  - ClothingUniformTopColorMaroon
+  - ClothingUniformTopic
+  - ClothingUniformTopicCool
 # Corvax-Wega-add-end
 
 - type: loadoutGroup
@@ -1902,6 +2823,38 @@
   loadouts:
   - WhiteShoes
   - EngineeringWinterBoots
+ # Corvax-Wega-Shoes-Start
+  - ClothingShoesColorBlack
+  - ClothingShoesColorBrown
+  - ClothingShoesColorWhite
+  - ClothingShoesColorYellow
+  - ClothingShoesColorGreen
+  - ClothingShoesColorRed
+  - ClothingShoesColorOrange
+  - ClothingShoesColorBlue
+  - ClothingShoesColorPurple
+  - ClothingShoesHeelsBlack
+  - ClothingShoesHeelsGray
+  - ClothingShoesHeelsTurquoise
+  - ClothingShoesHeelsYellow
+  - ClothingShoesHeelsGreen
+  - ClothingShoesHeelsPink
+  - ClothingShoesHeelsOrange
+  - ClothingShoesHeelsRed
+  - ClothingShoesHeelsBlue
+  - ClothingShoesHeelsPurple
+  - ClothingShoesBootsLaceup
+  - ClothingShoesWizard
+  - ClothingShoesTourist
+  - ClothingShoesLeather
+ # Corvax-Wega-Shoes-End
+
+- type: loadoutGroup
+  id: AtmosphericTechnicianJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieAtmosphericTechnician
 
 - type: loadoutGroup
   id: SurvivalExtended
@@ -1955,6 +2908,38 @@
   loadouts:
   - BrownShoes
   - ScienceWinterBoots
+ # Corvax-Wega-Shoes-Start
+  - ClothingShoesColorBlack
+  - ClothingShoesColorBrown
+  - ClothingShoesColorWhite
+  - ClothingShoesColorYellow
+  - ClothingShoesColorGreen
+  - ClothingShoesColorRed
+  - ClothingShoesColorOrange
+  - ClothingShoesColorBlue
+  - ClothingShoesColorPurple
+  - ClothingShoesHeelsBlack
+  - ClothingShoesHeelsGray
+  - ClothingShoesHeelsTurquoise
+  - ClothingShoesHeelsYellow
+  - ClothingShoesHeelsGreen
+  - ClothingShoesHeelsPink
+  - ClothingShoesHeelsOrange
+  - ClothingShoesHeelsRed
+  - ClothingShoesHeelsBlue
+  - ClothingShoesHeelsPurple
+  - ClothingShoesBootsLaceup
+  - ClothingShoesWizard
+  - ClothingShoesTourist
+  - ClothingShoesLeather
+ # Corvax-Wega-Shoes-End
+
+- type: loadoutGroup
+  id: ResearchDirectorJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieResearchDirector
 
 - type: loadoutGroup
   id: ScientistHead
@@ -2005,6 +2990,17 @@
   - JumpskirtColorDarkBlue
   - JumpsuitColorDarkGreen
   - JumpskirtColorDarkGreen
+  - ClothingUniformJumpskirtGreenElegantDress
+  - ClothingUniformJumpskirtRedElegantDress
+  - ClothingUniformJumpskirtBlueElegantDress
+  - ClothingUniformJumpskirtPurpleElegantDress
+  - ClothingUniformJumpskirtBlackElegantDress
+  - ClothingUniformJumpskirtCyanStripedDress
+  - ClothingUniformJumpskirtGreenStripedDress
+  - ClothingUniformJumpskirtRedStripedDress
+  - ClothingUniformJumpskirtOrangeStripedDress
+  - ClothingUniformJumpskirtPinkStripedDress
+  - ClothingUniformJumpskirtYellowOldDress
   - JumpsuitColorTeal
   - JumpskirtColorTeal
   - JumpsuitCasualBlue
@@ -2014,8 +3010,8 @@
   - JumpsuitCasualRed
   - JumpskirtCasualRed
   - JumpsuitCasualGreen
-  - JumpskirtCasualGreen 
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtCasualGreen
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
@@ -2049,6 +3045,43 @@
   - JumpsuitTurtleneckWhiteBlackSleeveless
   - JumpsuitTurtleneckWhiteSleeveless
   - JumpskirtTurtleneckWhiteSleeveless
+  - ClothingUniformJumpskirtPurpleTurtleneckDress
+  - ClothingUniformJumpskirtBlueTurtleneckDress
+  - ClothingUniformJumpskirtYellowTurtleneckDress
+  - ClothingUniformJumpskirtGreenTurtleneckDress
+  - ClothingUniformJumpskirtRedTurtleneckDress
+  - ClothingUniformJumpsuitSecBlueOJ
+  - ClothingUniformJumpskirtDetectiveGrey
+  - ClothingUniformJumpsuitDetectiveGrey
+  - ClothingUniformJumpskirtDetective
+  - ClothingUniformJumpsuitDetective
+  - ClothingUniformJumpskirtLawyerBlue
+  - ClothingUniformJumpsuitLawyerBlue
+  - ClothingUniformJumpskirtLawyerPurple
+  - ClothingUniformJumpsuitLawyerPurple
+  - ClothingUniformJumpskirtLawyerRed
+  - ClothingUniformJumpsuitLawyerRed
+  - ClothingUniformJumpskirtLawyerBlack
+  - ClothingUniformJumpsuitLawyerBlack
+  - ClothingUniformJumpskirtLawyerGood
+  - ClothingUniformJumpsuitLawyerGood
+  - ClothingUniformTopColorWhite
+  - ClothingUniformTopColorGrey
+  - ClothingUniformTopColorBlack
+  - ClothingUniformTopColorBlue
+  - ClothingUniformTopColorDarkBlue
+  - ClothingUniformTopColorTeal
+  - ClothingUniformTopColorGreen
+  - ClothingUniformTopColorDarkGreen
+  - ClothingUniformTopColorOrange
+  - ClothingUniformTopColorRed
+  - ClothingUniformTopColorYellow
+  - ClothingUniformTopColorPurple
+  - ClothingUniformTopColorLightBrown
+  - ClothingUniformTopColorBrown
+  - ClothingUniformTopColorMaroon
+  - ClothingUniformTopic
+  - ClothingUniformTopicCool
 # Corvax-Wega-add-end
 
 - type: loadoutGroup
@@ -2078,6 +3111,31 @@
   - WhiteShoes
   - BlackShoes
   - ScienceWinterBoots
+ # Corvax-Wega-Shoes-Start
+  - ClothingShoesColorBlack
+  - ClothingShoesColorBrown
+  - ClothingShoesColorWhite
+  - ClothingShoesColorYellow
+  - ClothingShoesColorGreen
+  - ClothingShoesColorRed
+  - ClothingShoesColorOrange
+  - ClothingShoesColorBlue
+  - ClothingShoesColorPurple
+  - ClothingShoesHeelsBlack
+  - ClothingShoesHeelsGray
+  - ClothingShoesHeelsTurquoise
+  - ClothingShoesHeelsYellow
+  - ClothingShoesHeelsGreen
+  - ClothingShoesHeelsPink
+  - ClothingShoesHeelsOrange
+  - ClothingShoesHeelsRed
+  - ClothingShoesHeelsBlue
+  - ClothingShoesHeelsPurple
+  - ClothingShoesBootsLaceup
+  - ClothingShoesWizard
+  - ClothingShoesTourist
+  - ClothingShoesLeather
+ # Corvax-Wega-Shoes-End
 
 - type: loadoutGroup
   id: ScientistGloves
@@ -2094,6 +3152,13 @@
   loadouts:
   - ScientistPDA
   - SeniorResearcherPDA
+
+- type: loadoutGroup
+  id: ScientistJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieScientist
 
 - type: loadoutGroup
   id: ResearchAssistantJumpsuit
@@ -2124,6 +3189,17 @@
   - JumpskirtColorDarkBlue
   - JumpsuitColorDarkGreen
   - JumpskirtColorDarkGreen
+  - ClothingUniformJumpskirtGreenElegantDress
+  - ClothingUniformJumpskirtRedElegantDress
+  - ClothingUniformJumpskirtBlueElegantDress
+  - ClothingUniformJumpskirtPurpleElegantDress
+  - ClothingUniformJumpskirtBlackElegantDress
+  - ClothingUniformJumpskirtCyanStripedDress
+  - ClothingUniformJumpskirtGreenStripedDress
+  - ClothingUniformJumpskirtRedStripedDress
+  - ClothingUniformJumpskirtOrangeStripedDress
+  - ClothingUniformJumpskirtPinkStripedDress
+  - ClothingUniformJumpskirtYellowOldDress
   - JumpsuitColorTeal
   - JumpskirtColorTeal
   - JumpsuitCasualBlue
@@ -2133,8 +3209,8 @@
   - JumpsuitCasualRed
   - JumpskirtCasualRed
   - JumpsuitCasualGreen
-  - JumpskirtCasualGreen 
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtCasualGreen
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
@@ -2168,7 +3244,51 @@
   - JumpsuitTurtleneckWhiteBlackSleeveless
   - JumpsuitTurtleneckWhiteSleeveless
   - JumpskirtTurtleneckWhiteSleeveless
+  - ClothingUniformJumpskirtPurpleTurtleneckDress
+  - ClothingUniformJumpskirtBlueTurtleneckDress
+  - ClothingUniformJumpskirtYellowTurtleneckDress
+  - ClothingUniformJumpskirtGreenTurtleneckDress
+  - ClothingUniformJumpskirtRedTurtleneckDress
+  - ClothingUniformJumpsuitSecBlueOJ
+  - ClothingUniformJumpskirtDetectiveGrey
+  - ClothingUniformJumpsuitDetectiveGrey
+  - ClothingUniformJumpskirtDetective
+  - ClothingUniformJumpsuitDetective
+  - ClothingUniformJumpskirtLawyerBlue
+  - ClothingUniformJumpsuitLawyerBlue
+  - ClothingUniformJumpskirtLawyerPurple
+  - ClothingUniformJumpsuitLawyerPurple
+  - ClothingUniformJumpskirtLawyerRed
+  - ClothingUniformJumpsuitLawyerRed
+  - ClothingUniformJumpskirtLawyerBlack
+  - ClothingUniformJumpsuitLawyerBlack
+  - ClothingUniformJumpskirtLawyerGood
+  - ClothingUniformJumpsuitLawyerGood
+  - ClothingUniformTopColorWhite
+  - ClothingUniformTopColorGrey
+  - ClothingUniformTopColorBlack
+  - ClothingUniformTopColorBlue
+  - ClothingUniformTopColorDarkBlue
+  - ClothingUniformTopColorTeal
+  - ClothingUniformTopColorGreen
+  - ClothingUniformTopColorDarkGreen
+  - ClothingUniformTopColorOrange
+  - ClothingUniformTopColorRed
+  - ClothingUniformTopColorYellow
+  - ClothingUniformTopColorPurple
+  - ClothingUniformTopColorLightBrown
+  - ClothingUniformTopColorBrown
+  - ClothingUniformTopColorMaroon
+  - ClothingUniformTopic
+  - ClothingUniformTopicCool
 # Corvax-Wega-add-end
+
+- type: loadoutGroup
+  id: ResearchAssistantJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieResearchAssistant
 
 # Security
 - type: loadoutGroup
@@ -2211,6 +3331,14 @@
   - HeadofSecurityWinterCoat
 
 - type: loadoutGroup
+  id: HeadofSecurityJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieHeadofSecurity
+  - SecStar
+
+- type: loadoutGroup
   id: WardenHead
   name: loadout-group-warden-head
   minLimit: 0
@@ -2231,6 +3359,14 @@
   loadouts:
   - WardenCoat
   - WardenArmoredWinterCoat
+
+- type: loadoutGroup
+  id: WardenJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieWarden
+  - SecStar
 
 - type: loadoutGroup
   id: SecurityHead
@@ -2260,6 +3396,9 @@
   - JumpsuitTurtleneckBlack
   - JumpskirtTurtleneckBlackSleeveless
   - JumpsuitTurtleneckBlackSleeveless
+  - ClothingUniformTopColorRed
+  - ClothingUniformTopColorBlack
+  - ClothingUniformTopicCool
 # Corvax-Wega-add-end
 
 - type: loadoutGroup
@@ -2302,6 +3441,14 @@
   - SeniorOfficerPDA
 
 - type: loadoutGroup
+  id: SecurityJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieSecurity
+  - SecStar
+
+- type: loadoutGroup
   id: DetectiveHead
   name: loadout-group-detective-head
   minLimit: 0
@@ -2331,6 +3478,9 @@
   - JumpsuitTurtleneckBlack
   - JumpskirtTurtleneckBlackSleeveless
   - JumpsuitTurtleneckBlackSleeveless
+  - ClothingUniformTopColorRed
+  - ClothingUniformTopColorBlack
+  - ClothingUniformTopicCool
 # Corvax-Wega-add-end
 
 - type: loadoutGroup
@@ -2340,6 +3490,14 @@
   - DetectiveArmorVest
   - DetectiveCoat
   - DetectiveCoatGrey
+
+- type: loadoutGroup
+  id: DetectiveJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieDetective
+  - SecStar
 
 - type: loadoutGroup
   id: SecurityCadetJumpsuit
@@ -2354,7 +3512,17 @@
   - JumpsuitTurtleneckBlack
   - JumpskirtTurtleneckBlackSleeveless
   - JumpsuitTurtleneckBlackSleeveless
+  - ClothingUniformTopColorRed
+  - ClothingUniformTopColorBlack
+  - ClothingUniformTopicCool
 # Corvax-Wega-add-end
+
+- type: loadoutGroup
+  id: SecurityCadetJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieSecurityCadet
 
 - type: loadoutGroup
   id: SurvivalSecurity
@@ -2366,13 +3534,6 @@
   - EmergencyOxygenSecurity
   - LoadoutSpeciesVoxNitrogen
   - EmergencyAndroidSecurity # Corvax-Wega-Android
-
-- type: loadoutGroup
-  id: SecurityStar
-  name: loadout-group-security-star
-  minLimit: 0
-  loadouts:
-  - SecStar
 
 # Medical
 - type: loadoutGroup
@@ -2416,6 +3577,38 @@
   loadouts:
   - BrownShoes
   - MedicalWinterBoots
+ # Corvax-Wega-Shoes-Start
+  - ClothingShoesColorBlack
+  - ClothingShoesColorBrown
+  - ClothingShoesColorWhite
+  - ClothingShoesColorYellow
+  - ClothingShoesColorGreen
+  - ClothingShoesColorRed
+  - ClothingShoesColorOrange
+  - ClothingShoesColorBlue
+  - ClothingShoesColorPurple
+  - ClothingShoesHeelsBlack
+  - ClothingShoesHeelsGray
+  - ClothingShoesHeelsTurquoise
+  - ClothingShoesHeelsYellow
+  - ClothingShoesHeelsGreen
+  - ClothingShoesHeelsPink
+  - ClothingShoesHeelsOrange
+  - ClothingShoesHeelsRed
+  - ClothingShoesHeelsBlue
+  - ClothingShoesHeelsPurple
+  - ClothingShoesBootsLaceup
+  - ClothingShoesWizard
+  - ClothingShoesTourist
+  - ClothingShoesLeather
+ # Corvax-Wega-Shoes-End
+
+- type: loadoutGroup
+  id: ChiefMedicalOfficerJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieChiefMedicalOfficer
 
 - type: loadoutGroup
   id: MedicalDoctorHead
@@ -2444,14 +3637,19 @@
   - MedicalPurpleScrubs
   - MedicalBlackScrubs # Corvax-Wega-add
 # Corvax-Wega-add-start
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
+  - JumpskirtTurtleneckOrange
+  - JumpsuitTurtleneckOrange
   - JumpskirtTurtleneckAzure
   - JumpsuitTurtleneckAzure
   - JumpskirtTurtleneckBlue
   - JumpsuitTurtleneckBlue
+  - ClothingUniformJumpskirtCyanStripedDress
+  - ClothingUniformJumpskirtBlueElegantDress
+  - ClothingUniformJumpskirtBlueTurtleneckDress
 # Corvax-Wega-add-end
 
 - type: loadoutGroup
@@ -2477,6 +3675,31 @@
   loadouts:
   - WhiteShoes
   - MedicalWinterBoots
+ # Corvax-Wega-Shoes-Start
+  - ClothingShoesColorBlack
+  - ClothingShoesColorBrown
+  - ClothingShoesColorWhite
+  - ClothingShoesColorYellow
+  - ClothingShoesColorGreen
+  - ClothingShoesColorRed
+  - ClothingShoesColorOrange
+  - ClothingShoesColorBlue
+  - ClothingShoesColorPurple
+  - ClothingShoesHeelsBlack
+  - ClothingShoesHeelsGray
+  - ClothingShoesHeelsTurquoise
+  - ClothingShoesHeelsYellow
+  - ClothingShoesHeelsGreen
+  - ClothingShoesHeelsPink
+  - ClothingShoesHeelsOrange
+  - ClothingShoesHeelsRed
+  - ClothingShoesHeelsBlue
+  - ClothingShoesHeelsPurple
+  - ClothingShoesBootsLaceup
+  - ClothingShoesWizard
+  - ClothingShoesTourist
+  - ClothingShoesLeather
+ # Corvax-Wega-Shoes-End
 
 - type: loadoutGroup
   id: MedicalDoctorPDA
@@ -2501,21 +3724,40 @@
   - SterileMask
 
 - type: loadoutGroup
+  id: MedicalDoctorJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieMedicalDoctor
+
+- type: loadoutGroup
   id: MedicalInternJumpsuit
   name: loadout-group-medical-intern-jumpsuit
   loadouts:
   - WhiteJumpsuit
   - WhiteJumpskirt
 # Corvax-Wega-add-start
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
+  - JumpskirtTurtleneckOrange
+  - JumpsuitTurtleneckOrange
   - JumpskirtTurtleneckAzure
   - JumpsuitTurtleneckAzure
   - JumpskirtTurtleneckBlue
   - JumpsuitTurtleneckBlue
+  - ClothingUniformJumpskirtCyanStripedDress
+  - ClothingUniformJumpskirtBlueElegantDress
+  - ClothingUniformJumpskirtBlueTurtleneckDress
 # Corvax-Wega-add-end
+
+- type: loadoutGroup
+  id: MedicalInternJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieMedicalIntern
 
 - type: loadoutGroup
   id: ChemistJumpsuit
@@ -2524,14 +3766,19 @@
   - ChemistJumpsuit
   - ChemistJumpskirt
 # Corvax-Wega-add-start
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
+  - JumpskirtTurtleneckOrange
+  - JumpsuitTurtleneckOrange
   - JumpskirtTurtleneckAzure
   - JumpsuitTurtleneckAzure
   - JumpskirtTurtleneckBlue
   - JumpsuitTurtleneckBlue
+  - ClothingUniformJumpskirtCyanStripedDress
+  - ClothingUniformJumpskirtBlueElegantDress
+  - ClothingUniformJumpskirtBlueTurtleneckDress
 # Corvax-Wega-add-end
 
 - type: loadoutGroup
@@ -2552,6 +3799,13 @@
   - ChemistDuffel
 
 - type: loadoutGroup
+  id: ChemistJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieChemist
+
+- type: loadoutGroup
   id: ParamedicHead
   name: loadout-group-paramedic-head
   minLimit: 0
@@ -2565,14 +3819,19 @@
   - ParamedicJumpsuit
   - ParamedicJumpskirt
 # Corvax-Wega-add-start
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
+  - JumpskirtTurtleneckOrange
+  - JumpsuitTurtleneckOrange
   - JumpskirtTurtleneckAzure
   - JumpsuitTurtleneckAzure
   - JumpskirtTurtleneckBlue
   - JumpsuitTurtleneckBlue
+  - ClothingUniformJumpskirtCyanStripedDress
+  - ClothingUniformJumpskirtBlueElegantDress
+  - ClothingUniformJumpskirtBlueTurtleneckDress
 # Corvax-Wega-add-end
 
 - type: loadoutGroup
@@ -2590,6 +3849,38 @@
   - BlueShoes
   - WhiteShoes
   - MedicalWinterBoots
+ # Corvax-Wega-Shoes-Start
+  - ClothingShoesColorBlack
+  - ClothingShoesColorBrown
+  - ClothingShoesColorWhite
+  - ClothingShoesColorYellow
+  - ClothingShoesColorGreen
+  - ClothingShoesColorRed
+  - ClothingShoesColorOrange
+  - ClothingShoesColorBlue
+  - ClothingShoesColorPurple
+  - ClothingShoesHeelsBlack
+  - ClothingShoesHeelsGray
+  - ClothingShoesHeelsTurquoise
+  - ClothingShoesHeelsYellow
+  - ClothingShoesHeelsGreen
+  - ClothingShoesHeelsPink
+  - ClothingShoesHeelsOrange
+  - ClothingShoesHeelsRed
+  - ClothingShoesHeelsBlue
+  - ClothingShoesHeelsPurple
+  - ClothingShoesBootsLaceup
+  - ClothingShoesWizard
+  - ClothingShoesTourist
+  - ClothingShoesLeather
+ # Corvax-Wega-Shoes-End
+
+- type: loadoutGroup
+  id: ParamedicJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieParamedic
 
 - type: loadoutGroup
   id: MedicalEyewear
@@ -2601,6 +3892,11 @@
   - Glasses
   - GlassesJamjar
   - GlassesJensen
+  # Corvax-Wega-start
+  - ClothingEyesGlassesCheapSunglasses
+  - ClothingEyesSalesman
+  # Corvax-Wega-end
+
 
 - type: loadoutGroup
   id: SurvivalMedical
@@ -2643,6 +3939,17 @@
   - JumpskirtColorDarkBlue
   - JumpsuitColorDarkGreen
   - JumpskirtColorDarkGreen
+  - ClothingUniformJumpskirtGreenElegantDress
+  - ClothingUniformJumpskirtRedElegantDress
+  - ClothingUniformJumpskirtBlueElegantDress
+  - ClothingUniformJumpskirtPurpleElegantDress
+  - ClothingUniformJumpskirtBlackElegantDress
+  - ClothingUniformJumpskirtCyanStripedDress
+  - ClothingUniformJumpskirtGreenStripedDress
+  - ClothingUniformJumpskirtRedStripedDress
+  - ClothingUniformJumpskirtOrangeStripedDress
+  - ClothingUniformJumpskirtPinkStripedDress
+  - ClothingUniformJumpskirtYellowOldDress
   - JumpsuitColorTeal
   - JumpskirtColorTeal
   - JumpsuitCasualBlue
@@ -2652,8 +3959,8 @@
   - JumpsuitCasualRed
   - JumpskirtCasualRed
   - JumpsuitCasualGreen
-  - JumpskirtCasualGreen 
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtCasualGreen
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
@@ -2687,7 +3994,51 @@
   - JumpsuitTurtleneckWhiteBlackSleeveless
   - JumpsuitTurtleneckWhiteSleeveless
   - JumpskirtTurtleneckWhiteSleeveless
+  - ClothingUniformJumpskirtPurpleTurtleneckDress
+  - ClothingUniformJumpskirtBlueTurtleneckDress
+  - ClothingUniformJumpskirtYellowTurtleneckDress
+  - ClothingUniformJumpskirtGreenTurtleneckDress
+  - ClothingUniformJumpskirtRedTurtleneckDress
+  - ClothingUniformJumpsuitSecBlueOJ
+  - ClothingUniformJumpskirtDetectiveGrey
+  - ClothingUniformJumpsuitDetectiveGrey
+  - ClothingUniformJumpskirtDetective
+  - ClothingUniformJumpsuitDetective
+  - ClothingUniformJumpskirtLawyerBlue
+  - ClothingUniformJumpsuitLawyerBlue
+  - ClothingUniformJumpskirtLawyerPurple
+  - ClothingUniformJumpsuitLawyerPurple
+  - ClothingUniformJumpskirtLawyerRed
+  - ClothingUniformJumpsuitLawyerRed
+  - ClothingUniformJumpskirtLawyerBlack
+  - ClothingUniformJumpsuitLawyerBlack
+  - ClothingUniformJumpskirtLawyerGood
+  - ClothingUniformJumpsuitLawyerGood
+  - ClothingUniformTopColorWhite
+  - ClothingUniformTopColorGrey
+  - ClothingUniformTopColorBlack
+  - ClothingUniformTopColorBlue
+  - ClothingUniformTopColorDarkBlue
+  - ClothingUniformTopColorTeal
+  - ClothingUniformTopColorGreen
+  - ClothingUniformTopColorDarkGreen
+  - ClothingUniformTopColorOrange
+  - ClothingUniformTopColorRed
+  - ClothingUniformTopColorYellow
+  - ClothingUniformTopColorPurple
+  - ClothingUniformTopColorLightBrown
+  - ClothingUniformTopColorBrown
+  - ClothingUniformTopColorMaroon
+  - ClothingUniformTopic
+  - ClothingUniformTopicCool
 # Corvax-Wega-add-end
+
+- type: loadoutGroup
+  id: ReporterJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieReporter
 
 - type: loadoutGroup
   id: PsychologistJumpsuit
@@ -2718,6 +4069,17 @@
   - JumpskirtColorDarkBlue
   - JumpsuitColorDarkGreen
   - JumpskirtColorDarkGreen
+  - ClothingUniformJumpskirtGreenElegantDress
+  - ClothingUniformJumpskirtRedElegantDress
+  - ClothingUniformJumpskirtBlueElegantDress
+  - ClothingUniformJumpskirtPurpleElegantDress
+  - ClothingUniformJumpskirtBlackElegantDress
+  - ClothingUniformJumpskirtCyanStripedDress
+  - ClothingUniformJumpskirtGreenStripedDress
+  - ClothingUniformJumpskirtRedStripedDress
+  - ClothingUniformJumpskirtOrangeStripedDress
+  - ClothingUniformJumpskirtPinkStripedDress
+  - ClothingUniformJumpskirtYellowOldDress
   - JumpsuitColorTeal
   - JumpskirtColorTeal
   - JumpsuitCasualBlue
@@ -2727,8 +4089,8 @@
   - JumpsuitCasualRed
   - JumpskirtCasualRed
   - JumpsuitCasualGreen
-  - JumpskirtCasualGreen 
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtCasualGreen
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
@@ -2762,23 +4124,51 @@
   - JumpsuitTurtleneckWhiteBlackSleeveless
   - JumpsuitTurtleneckWhiteSleeveless
   - JumpskirtTurtleneckWhiteSleeveless
+  - ClothingUniformJumpskirtPurpleTurtleneckDress
+  - ClothingUniformJumpskirtBlueTurtleneckDress
+  - ClothingUniformJumpskirtYellowTurtleneckDress
+  - ClothingUniformJumpskirtGreenTurtleneckDress
+  - ClothingUniformJumpskirtRedTurtleneckDress
+  - ClothingUniformJumpsuitSecBlueOJ
+  - ClothingUniformJumpskirtDetectiveGrey
+  - ClothingUniformJumpsuitDetectiveGrey
+  - ClothingUniformJumpskirtDetective
+  - ClothingUniformJumpsuitDetective
+  - ClothingUniformJumpskirtLawyerBlue
+  - ClothingUniformJumpsuitLawyerBlue
+  - ClothingUniformJumpskirtLawyerPurple
+  - ClothingUniformJumpsuitLawyerPurple
+  - ClothingUniformJumpskirtLawyerRed
+  - ClothingUniformJumpsuitLawyerRed
+  - ClothingUniformJumpskirtLawyerBlack
+  - ClothingUniformJumpsuitLawyerBlack
+  - ClothingUniformJumpskirtLawyerGood
+  - ClothingUniformJumpsuitLawyerGood
+  - ClothingUniformTopColorWhite
+  - ClothingUniformTopColorGrey
+  - ClothingUniformTopColorBlack
+  - ClothingUniformTopColorBlue
+  - ClothingUniformTopColorDarkBlue
+  - ClothingUniformTopColorTeal
+  - ClothingUniformTopColorGreen
+  - ClothingUniformTopColorDarkGreen
+  - ClothingUniformTopColorOrange
+  - ClothingUniformTopColorRed
+  - ClothingUniformTopColorYellow
+  - ClothingUniformTopColorPurple
+  - ClothingUniformTopColorLightBrown
+  - ClothingUniformTopColorBrown
+  - ClothingUniformTopColorMaroon
+  - ClothingUniformTopic
+  - ClothingUniformTopicCool
 # Corvax-Wega-add-end
 
 - type: loadoutGroup
-  id: BoxerJumpsuit
-  name: loadout-group-boxer-jumpsuit
+  id: PsychologistJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
   loadouts:
-  - BoxerShorts
-  - BoxerShortsWithTop
-
-- type: loadoutGroup
-  id: BoxerGloves
-  name: loadout-group-boxer-gloves
-  loadouts:
-  - RedBoxingGloves
-  - BlueBoxingGloves
-  - GreenBoxingGloves
-  - YellowBoxingGloves
+  - LizardPlushiePsychologist
 
 # Other
 - type: loadoutGroup
@@ -2791,6 +4181,15 @@
   - EmergencyOxygenSyndicate
   - LoadoutSpeciesVoxNitrogen
   - EmergencyAndroidSyndicate # Corvax-Wega-Android
+
+- type: loadoutGroup
+  id: SurvivalMilitaryDouble
+  name: loadout-group-survival-military
+  minLimit: 2
+  hidden: true
+  loadouts:
+  - EmergencyNitrogenMilitaryDouble
+  - EmergencyOxygenMilitaryDouble
 
 - type: loadoutGroup
   id: GroupSpeciesBreathTool

@@ -1,10 +1,11 @@
 using Content.Shared.Actions;
 using Content.Shared.Alert;
 using Robust.Shared.Audio;
-using Robust.Shared.Containers;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
-namespace Content.Shared._Wega.Android;
+using Robust.Shared.Serialization;
+
+namespace Content.Shared.Android;
 
 public sealed partial class ToggleLockActionEvent : InstantActionEvent;
 
@@ -30,7 +31,7 @@ public sealed partial class AndroidComponent : Component
     [DataField]
     public float BasePointLightRadiuse = 2.5f;
     [DataField]
-    public float BasePointLightEnergy = 1.2f;
+    public float BasePointLightEnergy = 1.6f;
     [ViewVariables(VVAccess.ReadWrite)]
     public EntityUid? LightEntity;
     [DataField]
@@ -40,4 +41,10 @@ public sealed partial class AndroidComponent : Component
     [DataField]
     public string TogglelLightAction = "ActionToggleAndroidLeds";
     public EntityUid? ToggleLightActionEntity;
+}
+
+[Serializable, NetSerializable]
+public enum AndroidVisuals : byte
+{
+    Light
 }

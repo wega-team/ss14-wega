@@ -107,3 +107,63 @@
       seedId: invisibleGrape
     - type: Sprite
       sprite: _Wega/Objects/Specific/Hydroponics/Invisiblgrape.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of candy tree seeds
+  id: CandyTreeSeeds
+  components:
+    - type: Seed
+      seedId: candytree
+    - type: Sprite
+      sprite: _Wega/Objects/Specific/Hydroponics/candytree.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of candy tree random seeds
+  id: CandyTreeRandomSeeds
+  components:
+    - type: Seed
+      seedId: candytreerandom
+    - type: Sprite
+      sprite: _Wega/Objects/Specific/Hydroponics/candytreerandom.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of melon seeds
+  id: MelonSeeds
+  components:
+    - type: Seed
+      seedId: melon
+    - type: Sprite
+      sprite: _Wega/Objects/Specific/Hydroponics/melon.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of catmelon seeds
+  id: CatMelonSeeds
+  components:
+    - type: Seed
+      seedId: catmelon
+    - type: Sprite
+      sprite: _Wega/Objects/Specific/Hydroponics/catmelon.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of tangerine seeds
+  id: TangerineSeeds
+  components:
+    - type: Seed
+      seedId: tangerine
+    - type: Sprite
+      sprite: _Wega/Objects/Specific/Hydroponics/tangerine.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of festive tangerine seeds
+  id: FestiveTangerineSeeds
+  components:
+    - type: Seed
+      seedId: festivetangerine
+    - type: Sprite
+      sprite: _Wega/Objects/Specific/Hydroponics/festive_tangerine.rsi

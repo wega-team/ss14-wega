@@ -1,8 +1,10 @@
 using Content.Server.Chat.Systems;
 using Content.Server.DoAfter;
 using Content.Server.Popups;
+using Content.Shared.Chat;
 using Content.Shared.CombatMode.Pacification;
 using Content.Shared.Damage;
+using Content.Shared.Damage.Systems;
 using Content.Shared.DoAfter;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction.Components;

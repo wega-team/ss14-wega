@@ -1,6 +1,5 @@
 using System.Linq;
 using System.Numerics;
-using Content.Shared.Damage;
 using Content.Server.Lavaland.Mobs.Components;
 using Content.Shared.Maps;
 using Content.Shared.Mobs;
@@ -14,6 +13,8 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Content.Shared.Lavaland.Mobs;
+using Content.Shared.Damage.Systems;
+using Content.Shared.Damage.Components;
 
 namespace Content.Server.Lavaland.Mobs;
 

@@ -80,6 +80,19 @@ namespace Content.Client.Access.UI
                 JobPresetOptionButton.AddItem(Loc.GetString(job.Name), _jobPrototypeIds.Count - 1);
             }
 
+            // Corvax-Wega-Edit
+            // SelectAllButton.OnPressed += _ =>
+            // {
+            //     SetAllAccess(true);
+            //     SubmitData();
+            // };
+
+            DeselectAllButton.OnPressed += _ =>
+            {
+                SetAllAccess(false);
+                SubmitData();
+            };
+
             JobPresetOptionButton.OnItemSelected += SelectJobPreset;
 
             // Corvax-Wega-Add-start
@@ -107,14 +120,12 @@ namespace Content.Client.Access.UI
             }
         }
 
-        private void ClearAllAccess()
+        private void SetAllAccess(bool enabled)
         {
             foreach (var button in _accessButtons.ButtonsList.Values)
             {
-                if (button.Pressed)
-                {
-                    button.Pressed = false;
-                }
+                if (!button.Disabled && button.Pressed != enabled)
+                    button.Pressed = enabled;
             }
         }
 
@@ -128,7 +139,7 @@ namespace Content.Client.Access.UI
             JobTitleLineEdit.Text = Loc.GetString(job.Name);
             args.Button.SelectId(args.Id);
 
-            ClearAllAccess();
+            SetAllAccess(false);
 
             // this is a sussy way to do this
             foreach (var access in job.Access)
@@ -173,7 +184,7 @@ namespace Content.Client.Access.UI
             if (!_prototypeManager.TryIndex(groupId, out AccessGroupPrototype? group))
                 return;
 
-            ClearAllAccess();
+            SetAllAccess(false);
 
             foreach (var access in group.Tags)
             {
@@ -228,6 +239,8 @@ namespace Content.Client.Access.UI
 
             JobPresetOptionButton.Disabled = !interfaceEnabled;
             AccessGroupOptionButton.Disabled = !interfaceEnabled; // Corvax-Wega-Add
+
+            DeselectAllButton.Disabled = !interfaceEnabled; // Corvax-Wega-Add
 
             _accessButtons.UpdateState(state.TargetIdAccessList?.ToList() ??
                                        new List<ProtoId<AccessLevelPrototype>>(),

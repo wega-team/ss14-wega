@@ -11,6 +11,8 @@
   femaleFirstNames: NamesAriralFirst
   maleLastNames: NamesAriralLast
   femaleLastNames: NamesAriralLast
+  minHeight: 180
+  maxHeight: 250
 
 - type: speciesBaseSprites
   id: MobAriralSprites

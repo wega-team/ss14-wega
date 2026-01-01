@@ -4,7 +4,7 @@
   bodyPart: Snout
   markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Ipc]
-  sponsorOnly: true # Corvax-Sponsors
+  sponsorOnly: false # Corvax-Wega-Edit
   sprites:
     - sprite: Corvax/Mobs/Customization/Ipc/ips_face.rsi
       state: breakout_s
@@ -15,7 +15,7 @@
   bodyPart: Snout
   markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Ipc]
-  sponsorOnly: true # Corvax-Sponsors
+  sponsorOnly: false # Corvax-Wega-Edit
   sprites:
     - sprite: Corvax/Mobs/Customization/Ipc/ips_face.rsi
       state: nature_s
@@ -26,7 +26,7 @@
   bodyPart: Snout
   markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Ipc]
-  sponsorOnly: true # Corvax-Sponsors
+  sponsorOnly: false # Corvax-Wega-Edit
   sprites:
     - sprite: Corvax/Mobs/Customization/Ipc/ips_face.rsi
       state: eight_s
@@ -37,7 +37,7 @@
   bodyPart: Snout
   markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Ipc]
-  sponsorOnly: true # Corvax-Sponsors
+  sponsorOnly: false # Corvax-Wega-Edit
   sprites:
     - sprite: Corvax/Mobs/Customization/Ipc/ips_face.rsi
       state: orange_hesp_alt_s
@@ -48,7 +48,7 @@
   bodyPart: Snout
   markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Ipc]
-  sponsorOnly: true # Corvax-Sponsors
+  sponsorOnly: false # Corvax-Wega-Edit
   sprites:
     - sprite: Corvax/Mobs/Customization/Ipc/ips_face.rsi
       state: pink_hesp_alt_s
@@ -59,7 +59,7 @@
   bodyPart: Snout
   markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Ipc]
-  sponsorOnly: true # Corvax-Sponsors
+  sponsorOnly: false # Corvax-Wega-Edit
   sprites:
     - sprite: Corvax/Mobs/Customization/Ipc/ips_face.rsi
       state: smoking_s
@@ -70,7 +70,7 @@
   bodyPart: Snout
   markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Ipc]
-  sponsorOnly: true # Corvax-Sponsors
+  sponsorOnly: false # Corvax-Wega-Edit
   sprites:
     - sprite: Corvax/Mobs/Customization/Ipc/ips_face.rsi
       state: rainbow_s
@@ -81,7 +81,7 @@
   bodyPart: Snout
   markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Ipc]
-  sponsorOnly: true # Corvax-Sponsors
+  sponsorOnly: false # Corvax-Wega-Edit
   sprites:
     - sprite: Corvax/Mobs/Customization/Ipc/ips_face.rsi
       state: heart_s
@@ -92,7 +92,7 @@
   bodyPart: Snout
   markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Ipc]
-  sponsorOnly: true # Corvax-Sponsors
+  sponsorOnly: false # Corvax-Wega-Edit
   sprites:
     - sprite: Corvax/Mobs/Customization/Ipc/ips_face.rsi
       state: scroll_s
@@ -103,7 +103,7 @@
   bodyPart: Snout
   markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Ipc]
-  sponsorOnly: true # Corvax-Sponsors
+  sponsorOnly: false # Corvax-Wega-Edit
   sprites:
     - sprite: Corvax/Mobs/Customization/Ipc/ips_face.rsi
       state: scroll_hesp_alt_s
@@ -114,7 +114,7 @@
   bodyPart: Snout
   markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Ipc]
-  sponsorOnly: true # Corvax-Sponsors
+  sponsorOnly: false # Corvax-Wega-Edit
   sprites:
     - sprite: Corvax/Mobs/Customization/Ipc/ips_face.rsi
       state: static_s
@@ -125,7 +125,7 @@
   bodyPart: Snout
   markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Ipc]
-  sponsorOnly: true # Corvax-Sponsors
+  sponsorOnly: false # Corvax-Wega-Edit
   sprites:
     - sprite: Corvax/Mobs/Customization/Ipc/ips_face.rsi
       state: green_s
@@ -136,7 +136,7 @@
   bodyPart: Snout
   markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Ipc]
-  sponsorOnly: true # Corvax-Sponsors
+  sponsorOnly: false # Corvax-Wega-Edit
   sprites:
     - sprite: Corvax/Mobs/Customization/Ipc/ips_face.rsi
       state: yellow_s
@@ -147,7 +147,7 @@
   bodyPart: Snout
   markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Ipc]
-  sponsorOnly: true # Corvax-Sponsors
+  sponsorOnly: false # Corvax-Wega-Edit
   sprites:
     - sprite: Corvax/Mobs/Customization/Ipc/ips_face.rsi
       state: gol_glider_s
@@ -158,7 +158,7 @@
   bodyPart: Snout
   markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Ipc]
-  sponsorOnly: true # Corvax-Sponsors
+  sponsorOnly: false # Corvax-Wega-Edit
   sprites:
     - sprite: Corvax/Mobs/Customization/Ipc/ips_face.rsi
       state: rgb_hesp_alt_s
@@ -169,7 +169,7 @@
   bodyPart: Snout
   markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Ipc]
-  sponsorOnly: true # Corvax-Sponsors
+  sponsorOnly: false # Corvax-Wega-Edit
   sprites:
     - sprite: Corvax/Mobs/Customization/Ipc/ips_face.rsi
       state: goggles_hesp_alt_s
@@ -180,7 +180,7 @@
   bodyPart: Snout
   markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Ipc]
-  sponsorOnly: true # Corvax-Sponsors
+  sponsorOnly: false # Corvax-Wega-Edit
   sprites:
     - sprite: Corvax/Mobs/Customization/Ipc/ips_face.rsi
       state: off_hesp_alt_s
@@ -191,7 +191,7 @@
   bodyPart: Snout
   markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Ipc]
-  sponsorOnly: true # Corvax-Sponsors
+  sponsorOnly: false # Corvax-Wega-Edit
   sprites:
     - sprite: Corvax/Mobs/Customization/Ipc/ips_face.rsi
       state: pink_s
@@ -202,7 +202,7 @@
   bodyPart: Snout
   markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Ipc]
-  sponsorOnly: true # Corvax-Sponsors
+  sponsorOnly: false # Corvax-Wega-Edit
   sprites:
     - sprite: Corvax/Mobs/Customization/Ipc/ips_face.rsi
       state: red_s
@@ -213,7 +213,7 @@
   bodyPart: Snout
   markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Ipc]
-  sponsorOnly: true # Corvax-Sponsors
+  sponsorOnly: false # Corvax-Wega-Edit
   sprites:
     - sprite: Corvax/Mobs/Customization/Ipc/ips_face.rsi
       state: shower_s
@@ -224,7 +224,7 @@
   bodyPart: Snout
   markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Ipc]
-  sponsorOnly: true # Corvax-Sponsors
+  sponsorOnly: false # Corvax-Wega-Edit
   sprites:
     - sprite: Corvax/Mobs/Customization/Ipc/ips_face.rsi
       state: rainbow_hesp_alt_s
@@ -235,7 +235,7 @@
   bodyPart: Snout
   markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Ipc]
-  sponsorOnly: true # Corvax-Sponsors
+  sponsorOnly: false # Corvax-Wega-Edit
   sprites:
     - sprite: Corvax/Mobs/Customization/Ipc/ips_face.rsi
       state: goggles_s
@@ -246,7 +246,7 @@
   bodyPart: Snout
   markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Ipc]
-  sponsorOnly: true # Corvax-Sponsors
+  sponsorOnly: false # Corvax-Wega-Edit
   sprites:
     - sprite: Corvax/Mobs/Customization/Ipc/ips_face.rsi
       state: monoeye_s
@@ -257,7 +257,7 @@
   bodyPart: Snout
   markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Ipc]
-  sponsorOnly: true # Corvax-Sponsors
+  sponsorOnly: false # Corvax-Wega-Edit
   sprites:
     - sprite: Corvax/Mobs/Customization/Ipc/ips_face.rsi
       state: blue_s
@@ -268,7 +268,7 @@
   bodyPart: Snout
   markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Ipc]
-  sponsorOnly: true # Corvax-Sponsors
+  sponsorOnly: false # Corvax-Wega-Edit
   sprites:
     - sprite: Corvax/Mobs/Customization/Ipc/ips_face.rsi
       state: test_s
@@ -279,7 +279,7 @@
   bodyPart: Snout
   markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Ipc]
-  sponsorOnly: true # Corvax-Sponsors
+  sponsorOnly: false # Corvax-Wega-Edit
   sprites:
     - sprite: Corvax/Mobs/Customization/Ipc/ips_face.rsi
       state: rgb_s
@@ -290,7 +290,7 @@
   bodyPart: Snout
   markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Ipc]
-  sponsorOnly: true # Corvax-Sponsors
+  sponsorOnly: false # Corvax-Wega-Edit
   sprites:
     - sprite: Corvax/Mobs/Customization/Ipc/ips_face.rsi
       state: music_s
@@ -301,7 +301,7 @@
   bodyPart: Snout
   markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Ipc]
-  sponsorOnly: true # Corvax-Sponsors
+  sponsorOnly: false # Corvax-Wega-Edit
   sprites:
     - sprite: Corvax/Mobs/Customization/Ipc/ips_face.rsi
       state: console_s
@@ -312,7 +312,7 @@
   bodyPart: Snout
   markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Ipc]
-  sponsorOnly: true # Corvax-Sponsors
+  sponsorOnly: false # Corvax-Wega-Edit
   sprites:
     - sprite: Corvax/Mobs/Customization/Ipc/ips_face.rsi
       state: purple_s
@@ -323,7 +323,7 @@
   bodyPart: Snout
   markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Ipc]
-  sponsorOnly: true # Corvax-Sponsors
+  sponsorOnly: false # Corvax-Wega-Edit
   sprites:
     - sprite: Corvax/Mobs/Customization/Ipc/ips_face.rsi
       state: orange_s
@@ -334,7 +334,7 @@
   bodyPart: Snout
   markingType: NonGenetics # Corvax-Wega-Genetics
   speciesRestriction: [Ipc]
-  sponsorOnly: true # Corvax-Sponsors
+  sponsorOnly: false # Corvax-Wega-Edit
   sprites:
     - sprite: Corvax/Mobs/Customization/Ipc/ips_face.rsi
       state: waiting_s

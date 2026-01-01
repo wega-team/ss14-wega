@@ -1,0 +1,124 @@
+- type: entity
+  parent: BaseMachinePowered
+  id: SlotMachine
+  name: slot machine
+  description: "Gambling for the antisocial. Insert 10 credits and test your luck."
+  components:
+  - type: Sprite
+    sprite: _Wega/Structures/Machines/slot_machine.rsi
+    noRot: true
+    layers:
+    - state: base
+    - state: light
+      map: ["working"]
+      shader: unshaded
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25, -0.4, 0.25, 0.4"
+        density: 190
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: Physics
+    bodyType: Static
+  - type: SlotMachine
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.SlotMachineVisuals.Working:
+        working:
+          True: { state: spinning }
+          False: { state: light }
+  - type: Pullable
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 400
+      behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          BrokenSlotMachine:
+            min: 1
+            max: 1
+          SpaceCash:
+            min: 0
+            max: 10
+        transferForensics: true
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: PointLight
+    radius: 1.8
+    energy: 1.6
+    color: "#882028"
+
+- type: entity
+  parent: BaseMachine
+  id: BrokenSlotMachine
+  name: broken slot machine
+  description: "Apparently, someone was very unlucky and very angry."
+  suffix: Broken
+  components:
+  - type: Sprite
+    sprite: _Wega/Structures/Machines/slot_machine.rsi
+    state: broken
+  - type: Transform
+    noRot: false
+    anchored: false
+  - type: Physics
+    bodyType: Dynamic
+  - type: Anchorable
+  - type: Pullable
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetSteel:
+            min: 1
+            max: 3
+          SheetGlass:
+            min: 1
+            max: 1
+          CableApcStack1:
+            min: 0
+            max: 1
+        transferForensics: true
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+- type: entity
+  parent: SlotMachine
+  id: CursedSlotMachine
+  name: slot machine
+  description: "High stakes, high rewards. An eerie aura emanates from this machine."
+  suffix: Cursed, DO NOT MAP
+  components:
+  - type: SlotMachine
+    spinCost: 50
+  - type: CursedSlotMachine

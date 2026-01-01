@@ -24,10 +24,34 @@
       prob: 0.5
     - id: SubWizard
       prob: 0.05
+    - id: Xenoborgs
+      prob: 0.05
 
 - type: entity
   parent: BaseGameRule
   id: SubGamemodesRuleNoWizard
+  components:
+  - type: SubGamemodes
+    rules:
+    - id: Thief
+      prob: 0.5
+    - id: Xenoborgs
+      prob: 0.05
+
+- type: entity
+  parent: BaseGameRule
+  id: SubGamemodesRuleNoXenoborg
+  components:
+  - type: SubGamemodes
+    rules:
+    - id: Thief
+      prob: 0.5
+    - id: SubWizard
+      prob: 0.05
+
+- type: entity
+  parent: BaseGameRule
+  id: SubGamemodesRuleNoWizardNoXenoborg
   components:
   - type: SubGamemodes
     rules:
@@ -201,12 +225,14 @@
   parent: BaseTraitorRule
   id: Traitor
   components:
-  # Corvax-Wega-Vampires-start
+  # Corvax-Wega-SubGameRules-start
   - type: SubGamemodes
     rules:
     - id: SubVampire
       prob: 0.4
-  # Corvax-Wega-Vampires-end
+    - id: SubBloodBrothers
+      prob: 0.5
+  # Corvax-Wega-SubGameRules-end
   - type: GameRule
     minPlayers: 5
     delay:
@@ -262,7 +288,21 @@
       - type: ChangelingTransform
       - type: ActionGrant
         actions:
-        - ActionRetractableItemArmBlade # Temporary addition, will inevitably be a purchasable in the bio-store
+        - ActionChangelingStore
+      # TODO: Make it so the changeling gamerule changeling can inherit from the changeling store preset somehow
+      - type: Store
+        name: store-preset-name-changeling
+        categories:
+        - ChangelingAbilities
+        currencyWhitelist:
+        - ChangelingDNA
+        balance:
+          ChangelingDNA: 50
+      - type: UserInterface
+        interfaces:
+          enum.StoreUiKey.Key:
+            type: StoreBoundUserInterface
+            requireInputValidation: false
       mindRoles:
       - MindRoleChangeling
   - type: AntagObjectives
@@ -469,10 +509,10 @@
       tableId: BasicGameRulesTable
     # Corvax-MRP-start
     minMaxEventTiming:
-      min: 360 # 6 mins
-      max: 1200 # 20 mins
+      min: 300 # 5 mins # C# const- 3
+      max: 900 # 15 mins # C# const- 10
     # Corvax-MRP-end
-  
+
 - type: entity
   id: DynamicStationEventScheduler # this isn't the dynamic mode, but rather the station event scheduler used for dynamic
   parent: BaseGameRule
@@ -527,6 +567,7 @@
     - id: SolidWallRustingVariationPass
     - id: ReinforcedWallRustingVariationPass
     - id: BaseStationEventGhostBarSpawn # Corvax-Wega-GhostBar
+    - id: CutWireVariationPass
     - id: BasicPuddleMessVariationPass
       prob: 0.99
       orGroup: puddleMess
@@ -539,7 +580,7 @@
     - id: SolarPanelEmptyVariationPass
     - id: BasicDecalDirtVariationPass
     - id: BasicDecalGraffitiVariationPass
-    - id: BasicDecalBrunsVariationPass
+    - id: BasicDecalBurnsVariationPass
       prob: 0.50
       orGroup: monospaceDecals
     - id: BasicDecalDirtMonospaceVariationPass

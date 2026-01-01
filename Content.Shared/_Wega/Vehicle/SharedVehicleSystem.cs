@@ -16,6 +16,7 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Network;
 using Robust.Shared.Physics.Systems;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared.Vehicle;
@@ -42,12 +43,9 @@ public abstract partial class SharedVehicleSystem : EntitySystem
     [Dependency] private readonly SharedMoverController _mover = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
 
-    [ValidatePrototypeId<TagPrototype>]
-    private const string Dump = "DoorBumpOpener";
-    [ValidatePrototypeId<TagPrototype>]
-    private const string Key = "VehicleKey";
-    [ValidatePrototypeId<TagPrototype>]
-    private const string Swim = "CanSwim";
+    private static readonly ProtoId<TagPrototype> Dump = "DoorBumpOpener";
+    private static readonly ProtoId<TagPrototype> Key = "VehicleKey";
+    private static readonly ProtoId<TagPrototype> Swim = "CanSwim";
 
     private const string KeySlot = "key_slot";
 

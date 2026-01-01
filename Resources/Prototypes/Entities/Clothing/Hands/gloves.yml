@@ -13,6 +13,7 @@
     # This needs to be moved to boxinggloves
     #knockdownSound: /Audio/Weapons/boxingbell.ogg
   - type: MeleeWeapon
+    possibilityWideAtack: false # Corvax-Wega-Change
     attackRate: 1.5
     damage:
       types:
@@ -269,14 +270,6 @@
     - objective: MassArrestObjective
       components:
       - type: CriminalRecordsHacker
-# Corvax-HiddenDesc-Start
-  - type: HiddenDescription
-    entries:
-    - label: corvax-hidden-desc-ThievingGloves-thief
-      whitelistMind:
-        mindRoles:
-        - ThiefRole
-# Corvax-HiddenDesc-End
 
 - type: entity
   parent: [ ClothingHandsGlovesColorBlack, BaseSecurityEngineeringContraband ]
@@ -391,19 +384,6 @@
   - type: Thieving
     stripTimeReduction: 1.5
     stealthy: true
-# Corvax-HiddenDesc-Start
-  - type: HiddenDescription
-    entries:
-    - label: corvax-hidden-desc-ThievingGloves-syndicate
-      whitelistMind:
-        mindRoles:
-        - TraitorRole
-        - NukeopsRole
-    - label: corvax-hidden-desc-ThievingGloves-thief
-      whitelistMind:
-        mindRoles:
-        - ThiefRole
-# Corvax-HiddenDesc-End
 
 - type: entity
   parent: ClothingHandsGlovesColorWhite
@@ -649,7 +629,7 @@
     damage: 35
     sound: /Audio/Weapons/egloves.ogg
   - type: LandAtCursor # it deals stamina damage when thrown
-  - type: Battery
+  - type: PredictedBattery
     maxCharge: 1000
     startingCharge: 1000
   - type: GuideHelp

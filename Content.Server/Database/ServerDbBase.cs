@@ -307,6 +307,7 @@ namespace Content.Server.Database
                 sex,
                 gender,
                 status, // Corvax-Wega
+                profile.Height, // Corvax-Wega-Height
                 new HumanoidCharacterAppearance
                 (
                     profile.HairName,
@@ -354,6 +355,7 @@ namespace Content.Server.Database
             profile.BarkVoice = humanoid.BarkVoice; // Corvax-Wega-Barks
             profile.Status = humanoid.Status.ToString(); // Corvax-Wega
             profile.Age = humanoid.Age;
+            profile.Height = humanoid.Height; // Corvax-Wega-Height
             profile.Sex = humanoid.Sex.ToString();
             profile.Gender = humanoid.Gender.ToString();
             profile.HairName = appearance.HairStyleId;

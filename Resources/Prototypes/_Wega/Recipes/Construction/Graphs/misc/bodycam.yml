@@ -1,0 +1,34 @@
+- type: constructionGraph
+  id: Bodycam
+  start: alpha
+  graph:
+  - node: alpha
+    entity: WiretappingCameraAlpha
+    edges:
+    - to: beta
+      steps:
+      - tool: Screwing
+        doAfter: 2
+  - node: beta
+    entity: WiretappingCameraBeta
+    edges:
+    - to: charlie
+      steps:
+      - tool: Screwing
+        doAfter: 2
+  - node: charlie
+    entity: WiretappingCameraCharlie
+    edges:
+    - to: delta
+      steps:
+      - tool: Screwing
+        doAfter: 2
+  - node: delta
+    entity: WiretappingCameraDelta
+    edges:
+    - to: alpha
+      steps:
+      - tool: Screwing
+        doAfter: 2
+
+

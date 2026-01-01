@@ -1,32 +1,43 @@
-using Content.Shared.EntityEffects;
 using Content.Shared.Xenobiology.Components;
-using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
 
-namespace Content.Shared.EntityEffects.Effects
+namespace Content.Shared.EntityEffects.Effects;
+
+/// <summary>
+/// Increases mutation chance for slimes.
+/// The mutation chance increase is equal to <see cref="ChemIncreaseMutationChance.FixedIncrease"/> modified by scale.
+/// </summary>
+/// <inheritdoc cref="EntityEffectSystem{T,TEffect}"/>
+public sealed partial class ChemIncreaseMutationChanceEntityEffectSystem : EntityEffectSystem<SlimeGrowthComponent, ChemIncreaseMutationChance>
 {
-    [UsedImplicitly]
-    public sealed partial class ChemIncreaseMutationChanceEffect : EntityEffect
+    protected override void Effect(Entity<SlimeGrowthComponent> entity, ref EntityEffectEvent<ChemIncreaseMutationChance> args)
     {
-        [DataField]
-        public float FixedIncrease = 0.12f;
+        var fixedIncrease = args.Effect.FixedIncrease * args.Scale;
+        var maxMutationChance = args.Effect.MaxMutationChance;
 
-        [DataField]
-        public float MaxMutationChance = 0.95f;
+        entity.Comp.MutationChance = Math.Min(entity.Comp.MutationChance + fixedIncrease, maxMutationChance);
 
-        protected override string? ReagentEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
-            => Loc.GetString("reagent-effect-guidebook-increase-mutation-chance",
-                ("increase", (int)(FixedIncrease * 100)),
-                ("max", (int)(MaxMutationChance * 100)));
-
-        public override void Effect(EntityEffectBaseArgs args)
-        {
-            if (!args.EntityManager.TryGetComponent<SlimeGrowthComponent>(args.TargetEntity, out var growth))
-                return;
-
-            growth.MutationChance = Math.Min(growth.MutationChance + FixedIncrease, MaxMutationChance);
-
-            args.EntityManager.Dirty(args.TargetEntity, growth);
-        }
+        Dirty(entity);
     }
+}
+
+/// <inheritdoc cref="EntityEffect"/>
+public sealed partial class ChemIncreaseMutationChance : EntityEffectBase<ChemIncreaseMutationChance>
+{
+    /// <summary>
+    ///     Fixed amount to increase mutation chance by.
+    /// </summary>
+    [DataField]
+    public float FixedIncrease = 0.12f;
+
+    /// <summary>
+    ///     Maximum mutation chance.
+    /// </summary>
+    [DataField]
+    public float MaxMutationChance = 0.95f;
+
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
+        => Loc.GetString("reagent-effect-guidebook-increase-mutation-chance",
+            ("increase", (int)(FixedIncrease * 100)),
+            ("max", (int)(MaxMutationChance * 100)));
 }

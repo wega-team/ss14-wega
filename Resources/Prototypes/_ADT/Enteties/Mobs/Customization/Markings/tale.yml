@@ -1,8 +1,0 @@
-﻿- type: marking
-  id: ADTAllsuccubus
-  bodyPart: Tail
-  markingCategory: Chest
-  speciesRestriction: [Demon]
-  sprites:
-  - sprite: _ADT/Mobs/Customization/demons/succubus.rsi
-    state: succubus

@@ -38,3 +38,20 @@
       path: /Audio/Items/flashlight_on.ogg
     soundDeactivate:
       path: /Audio/Items/flashlight_off.ogg
+  # Corvax-Wega-Add-start
+  - type: ActivatableUI
+    singleUser: true
+    verbText: verb-instrument-openui
+    key: enum.InstrumentUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.InstrumentUiKey.Key:
+        type: InstrumentBoundUserInterface
+  - type: Instrument
+    program: 0
+    bank: 0
+    allowPercussion: true
+    allowProgramChange: true
+    respectMidiLimits: true
+  - type: PrivateListening
+  # Corvax-Wega-Add-end

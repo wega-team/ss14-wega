@@ -1,3 +1,3 @@
 metabolizer-type-vampire = Вампир
-metabolizer-type-cultist = Культист
+metabolizer-type-blood-cultist = Культист крови
 metabolizer-type-ariral = Арирал

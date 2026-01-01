@@ -85,6 +85,12 @@
     },
     {
       "name": "charger_arm"
+    },
+    {
+      "name": "magnet_leg"
+    },
+    {
+      "name": "jump_leg"
     }
   ]
 }

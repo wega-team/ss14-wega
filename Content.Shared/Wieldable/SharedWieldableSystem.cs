@@ -24,7 +24,7 @@ using Content.Shared.Wieldable.Components;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Collections;
 using Robust.Shared.Timing;
-using Content.Shared._Wega.Resomi.Abilities;
+using Content.Shared.Resomi.Abilities; // Corvax-Wega-Resomi
 
 namespace Content.Shared.Wieldable;
 
@@ -260,7 +260,7 @@ public abstract class SharedWieldableSystem : EntitySystem
             return false;
         }
 
-        if (_hands.CountFreeableHands((user, hands)) < component.FreeHandsRequired)
+        if (_hands.CountFreeableHands((user, hands), except: uid) < component.FreeHandsRequired)
         {
             if (!quiet)
             {

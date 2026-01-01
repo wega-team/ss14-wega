@@ -16,7 +16,7 @@
   description: "Ah, I See You're a Man of Culture As Well..."
   components:
   - type: Item
-  - type: Food
+  - type: Edible
   - type: Sprite
     sprite: _Wega/Objects/Consumable/Food/japanfood.rsi
     state: porkramen
@@ -43,7 +43,7 @@
   description: So hot and so cute!
   components:
   - type: Item
-  - type: Food
+  - type: Edible
   - type: Sprite
     sprite: _Wega/Objects/Consumable/Food/japanfood.rsi
     state: spicyporkramen

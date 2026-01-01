@@ -17,3 +17,13 @@
   cost: 2000
   category: cargoproduct-category-name-food
   group: market
+
+- type: cargoProduct
+  id: CrateFoodShrimp
+  icon:
+    sprite: _Wega/Objects/Consumable/Food/Baked/shrimpbox.rsi
+    state: box
+  product: CrateFoodShrimp
+  cost: 700
+  category: cargoproduct-category-name-food
+  group: market

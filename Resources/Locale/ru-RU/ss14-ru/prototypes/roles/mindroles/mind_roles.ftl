@@ -1,4 +1,4 @@
-﻿ent-BaseMindRole = Роль сознания
+ent-BaseMindRole = Роль сознания
     .desc = Энтити роли сознания
 ent-BaseMindRoleAntag = { ent-BaseMindRole }
     .desc = { ent-BaseMindRole.desc }
@@ -57,6 +57,10 @@ ent-MindRoleTraitorReinforcement = Роль подкрепление Синди�
 ent-MindRoleTraitorSleeper = Роль спящий агент
     .desc = { ent-MindRoleTraitor.desc }
 ent-MindRoleWizard = Роль призрак
+    .desc = { ent-BaseMindRoleAntag.desc }
+ent-MindRoleMothershipCore = Роль ядро материнского корабля
+    .desc = { ent-BaseMindRoleAntag.desc }
+ent-MindRoleXenoborg = Роль ксеноборг
     .desc = { ent-BaseMindRoleAntag.desc }
 ent-MindRoleInitialInfected = Роль нулевой пациент
     .desc = { ent-BaseMindRoleAntag.desc }

@@ -89,6 +89,33 @@
   - ClothingUnderSocksFishnetThigh
   - ClothingUnderSocksPantyhose
 
+- type: loadoutGroup
+  id: BaseShoose
+  name: loadout-group-base-shoes
+  loadouts:
+  - ClothingShoesColorBlack
+  - ClothingShoesColorBrown
+  - ClothingShoesColorWhite
+  - ClothingShoesColorYellow
+  - ClothingShoesColorGreen
+  - ClothingShoesColorRed
+  - ClothingShoesColorOrange
+  - ClothingShoesColorBlue
+  - ClothingShoesColorPurple
+  - ClothingShoesHeelsBlack
+  - ClothingShoesHeelsGray
+  - ClothingShoesHeelsTurquoise
+  - ClothingShoesHeelsYellow
+  - ClothingShoesHeelsGreen
+  - ClothingShoesHeelsPink
+  - ClothingShoesHeelsOrange
+  - ClothingShoesHeelsRed
+  - ClothingShoesHeelsBlue
+  - ClothingShoesHeelsPurple
+  - ClothingShoesBootsLaceup
+  - ClothingShoesWizard
+  - ClothingShoesTourist
+  - ClothingShoesLeather
 # Heads
 
 #Captain
@@ -97,6 +124,8 @@
   name: loadout-group-captain-top
   loadouts:
   - ClothingUnderTopBraCap # default
+  - ClothingUnderTopBraCapW
+  - ClothingUnderTopBraCapS
   - ClothingUnderTopBraGrey
   - ClothingUnderTopBraAssblastusa
   - ClothingUnderTopBikini
@@ -122,7 +151,11 @@
   loadouts:
   - ClothingUnderBottomMCaptain # default
   - ClothingUnderBottomFCaptain
-  - ClothingUnderBottomGrey 
+  - ClothingUnderBottomMCaptainS
+  - ClothingUnderBottomFCaptainS
+  - ClothingUnderBottomMCaptainW
+  - ClothingUnderBottomFCaptainW
+  - ClothingUnderBottomGrey
   - ClothingUnderBottomBabydoll
   - ClothingUnderBottomBoxers
   - ClothingUnderBottomFAssblastusa
@@ -225,7 +258,7 @@
   name: loadout-group-blue-shield-top
   loadouts:
   - ClothingUnderTopBraBso # default
-  - ClothingUnderTopBraGrey 
+  - ClothingUnderTopBraGrey
   - ClothingUnderTopBraAssblastusa
   - ClothingUnderTopBikini
   - ClothingUnderTopBraChast
@@ -250,7 +283,7 @@
   loadouts:
   - ClothingUnderBottomMBso # default
   - ClothingUnderBottomFBso
-  - ClothingUnderBottomGrey 
+  - ClothingUnderBottomGrey
   - ClothingUnderBottomBabydoll
   - ClothingUnderBottomBoxers
   - ClothingUnderBottomFAssblastusa
@@ -330,7 +363,7 @@
   name: loadout-group-hop-top
   loadouts:
   - ClothingUnderTopBraHop # default
-  - ClothingUnderTopBraGrey 
+  - ClothingUnderTopBraGrey
   - ClothingUnderTopBraAssblastusa
   - ClothingUnderTopBikini
   - ClothingUnderTopBraChast
@@ -355,7 +388,7 @@
   loadouts:
   - ClothingUnderBottomMHop # default
   - ClothingUnderBottomFHop
-  - ClothingUnderBottomGrey 
+  - ClothingUnderBottomGrey
   - ClothingUnderBottomBabydoll
   - ClothingUnderBottomBoxers
   - ClothingUnderBottomFAssblastusa
@@ -453,7 +486,7 @@
   loadouts:
   - ClothingUnderBottomMQm # default
   - ClothingUnderBottomFQm
-  - ClothingUnderBottomGrey 
+  - ClothingUnderBottomGrey
   - ClothingUnderBottomBabydoll
   - ClothingUnderBottomBoxers
   - ClothingUnderBottomFAssblastusa
@@ -526,7 +559,7 @@
   name: loadout-group-chief-engineer-top
   loadouts:
   - ClothingUnderTopBraCe # default
-  - ClothingUnderTopBraGrey 
+  - ClothingUnderTopBraGrey
   - ClothingUnderTopBraAssblastusa
   - ClothingUnderTopBikini
   - ClothingUnderTopBraChast
@@ -551,7 +584,7 @@
   loadouts:
   - ClothingUnderBottomMCe # default
   - ClothingUnderBottomFCe
-  - ClothingUnderBottomGrey 
+  - ClothingUnderBottomGrey
   - ClothingUnderBottomBabydoll
   - ClothingUnderBottomBoxers
   - ClothingUnderBottomFAssblastusa
@@ -624,7 +657,7 @@
   name: loadout-group-research-director-top
   loadouts:
   - ClothingUnderTopBraRd # default
-  - ClothingUnderTopBraGrey 
+  - ClothingUnderTopBraGrey
   - ClothingUnderTopBraAssblastusa
   - ClothingUnderTopBikini
   - ClothingUnderTopBraChast
@@ -649,7 +682,7 @@
   loadouts:
   - ClothingUnderBottomMRd # default
   - ClothingUnderBottomFRd
-  - ClothingUnderBottomGrey 
+  - ClothingUnderBottomGrey
   - ClothingUnderBottomBabydoll
   - ClothingUnderBottomBoxers
   - ClothingUnderBottomFAssblastusa
@@ -747,7 +780,7 @@
   loadouts:
   - ClothingUnderBottomMHos # default
   - ClothingUnderBottomFHos
-  - ClothingUnderBottomGrey 
+  - ClothingUnderBottomGrey
   - ClothingUnderBottomBabydoll
   - ClothingUnderBottomBoxers
   - ClothingUnderBottomFAssblastusa
@@ -820,7 +853,7 @@
   name: loadout-group-chief-medical-officer-top
   loadouts:
   - ClothingUnderTopBraCmo # default
-  - ClothingUnderTopBraGrey 
+  - ClothingUnderTopBraGrey
   - ClothingUnderTopBraAssblastusa
   - ClothingUnderTopBikini
   - ClothingUnderTopBraChast
@@ -949,6 +982,17 @@
   - JumpskirtColorDarkBlue
   - JumpsuitColorDarkGreen
   - JumpskirtColorDarkGreen
+  - ClothingUniformJumpskirtGreenElegantDress
+  - ClothingUniformJumpskirtRedElegantDress
+  - ClothingUniformJumpskirtBlueElegantDress
+  - ClothingUniformJumpskirtPurpleElegantDress
+  - ClothingUniformJumpskirtBlackElegantDress
+  - ClothingUniformJumpskirtCyanStripedDress
+  - ClothingUniformJumpskirtGreenStripedDress
+  - ClothingUniformJumpskirtRedStripedDress
+  - ClothingUniformJumpskirtOrangeStripedDress
+  - ClothingUniformJumpskirtPinkStripedDress
+  - ClothingUniformJumpskirtYellowOldDress
   - JumpsuitColorTeal
   - JumpskirtColorTeal
   - JumpsuitCasualBlue
@@ -958,8 +1002,8 @@
   - JumpsuitCasualRed
   - JumpskirtCasualRed
   - JumpsuitCasualGreen
-  - JumpskirtCasualGreen 
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtCasualGreen
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
@@ -993,6 +1037,43 @@
   - JumpsuitTurtleneckWhiteBlackSleeveless
   - JumpsuitTurtleneckWhiteSleeveless
   - JumpskirtTurtleneckWhiteSleeveless
+  - ClothingUniformJumpskirtPurpleTurtleneckDress
+  - ClothingUniformJumpskirtBlueTurtleneckDress
+  - ClothingUniformJumpskirtYellowTurtleneckDress
+  - ClothingUniformJumpskirtGreenTurtleneckDress
+  - ClothingUniformJumpskirtRedTurtleneckDress
+  - ClothingUniformJumpsuitSecBlueOJ
+  - ClothingUniformJumpskirtDetectiveGrey
+  - ClothingUniformJumpsuitDetectiveGrey
+  - ClothingUniformJumpskirtDetective
+  - ClothingUniformJumpsuitDetective
+  - ClothingUniformJumpskirtLawyerBlue
+  - ClothingUniformJumpsuitLawyerBlue
+  - ClothingUniformJumpskirtLawyerPurple
+  - ClothingUniformJumpsuitLawyerPurple
+  - ClothingUniformJumpskirtLawyerRed
+  - ClothingUniformJumpsuitLawyerRed
+  - ClothingUniformJumpskirtLawyerBlack
+  - ClothingUniformJumpsuitLawyerBlack
+  - ClothingUniformJumpskirtLawyerGood
+  - ClothingUniformJumpsuitLawyerGood
+  - ClothingUniformTopColorWhite
+  - ClothingUniformTopColorGrey
+  - ClothingUniformTopColorBlack
+  - ClothingUniformTopColorBlue
+  - ClothingUniformTopColorDarkBlue
+  - ClothingUniformTopColorTeal
+  - ClothingUniformTopColorGreen
+  - ClothingUniformTopColorDarkGreen
+  - ClothingUniformTopColorOrange
+  - ClothingUniformTopColorRed
+  - ClothingUniformTopColorYellow
+  - ClothingUniformTopColorPurple
+  - ClothingUniformTopColorLightBrown
+  - ClothingUniformTopColorBrown
+  - ClothingUniformTopColorMaroon
+  - ClothingUniformTopic
+  - ClothingUniformTopicCool
 
 - type: loadoutGroup
   id: PostmanBackpack
@@ -1039,6 +1120,17 @@
   - JumpskirtColorDarkBlue
   - JumpsuitColorDarkGreen
   - JumpskirtColorDarkGreen
+  - ClothingUniformJumpskirtGreenElegantDress
+  - ClothingUniformJumpskirtRedElegantDress
+  - ClothingUniformJumpskirtBlueElegantDress
+  - ClothingUniformJumpskirtPurpleElegantDress
+  - ClothingUniformJumpskirtBlackElegantDress
+  - ClothingUniformJumpskirtCyanStripedDress
+  - ClothingUniformJumpskirtGreenStripedDress
+  - ClothingUniformJumpskirtRedStripedDress
+  - ClothingUniformJumpskirtOrangeStripedDress
+  - ClothingUniformJumpskirtPinkStripedDress
+  - ClothingUniformJumpskirtYellowOldDress
   - JumpsuitColorTeal
   - JumpskirtColorTeal
   - JumpsuitCasualBlue
@@ -1048,8 +1140,8 @@
   - JumpsuitCasualRed
   - JumpskirtCasualRed
   - JumpsuitCasualGreen
-  - JumpskirtCasualGreen 
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtCasualGreen
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
@@ -1083,6 +1175,43 @@
   - JumpsuitTurtleneckWhiteBlackSleeveless
   - JumpsuitTurtleneckWhiteSleeveless
   - JumpskirtTurtleneckWhiteSleeveless
+  - ClothingUniformJumpskirtPurpleTurtleneckDress
+  - ClothingUniformJumpskirtBlueTurtleneckDress
+  - ClothingUniformJumpskirtYellowTurtleneckDress
+  - ClothingUniformJumpskirtGreenTurtleneckDress
+  - ClothingUniformJumpskirtRedTurtleneckDress
+  - ClothingUniformJumpsuitSecBlueOJ
+  - ClothingUniformJumpskirtDetectiveGrey
+  - ClothingUniformJumpsuitDetectiveGrey
+  - ClothingUniformJumpskirtDetective
+  - ClothingUniformJumpsuitDetective
+  - ClothingUniformJumpskirtLawyerBlue
+  - ClothingUniformJumpsuitLawyerBlue
+  - ClothingUniformJumpskirtLawyerPurple
+  - ClothingUniformJumpsuitLawyerPurple
+  - ClothingUniformJumpskirtLawyerRed
+  - ClothingUniformJumpsuitLawyerRed
+  - ClothingUniformJumpskirtLawyerBlack
+  - ClothingUniformJumpsuitLawyerBlack
+  - ClothingUniformJumpskirtLawyerGood
+  - ClothingUniformJumpsuitLawyerGood
+  - ClothingUniformTopColorWhite
+  - ClothingUniformTopColorGrey
+  - ClothingUniformTopColorBlack
+  - ClothingUniformTopColorBlue
+  - ClothingUniformTopColorDarkBlue
+  - ClothingUniformTopColorTeal
+  - ClothingUniformTopColorGreen
+  - ClothingUniformTopColorDarkGreen
+  - ClothingUniformTopColorOrange
+  - ClothingUniformTopColorRed
+  - ClothingUniformTopColorYellow
+  - ClothingUniformTopColorPurple
+  - ClothingUniformTopColorLightBrown
+  - ClothingUniformTopColorBrown
+  - ClothingUniformTopColorMaroon
+  - ClothingUniformTopic
+  - ClothingUniformTopicCool
 
 - type: loadoutGroup
   id: GeneticsBackpack
@@ -1122,6 +1251,60 @@
 
 # Security
 - type: loadoutGroup
+  id: TopSecurity
+  name: loadout-group-top
+  loadouts:
+  - ClothingUnderTopBraSecurity # default
+  - ClothingUnderTopBraGrey
+  - ClothingUnderTopBraAssblastusa
+  - ClothingUnderTopBikini
+  - ClothingUnderTopBraChast
+  - ClothingUnderTopBraLatex
+  - ClothingUnderTopBraStripped
+  - ClothingUnderTopBraCommie
+  - ClothingUnderTopCorset
+  - ClothingUnderTopBraFishnet
+  - ClothingUnderTopBraKinky
+  - ClothingUnderTopBraLace
+  - ClothingUnderTopBraLizard
+  - ClothingUnderTopBraNekoBlack
+  - ClothingUnderTopBraNekoWhite
+  - ClothingUnderTopBraPasties
+  - ClothingUnderTopBraSport
+  - ClothingUnderTopBraStrapless
+  - ClothingUnderTopBraThong
+
+- type: loadoutGroup
+  id: BottomSecurity
+  name: loadout-group-bottom
+  loadouts:
+  - ClothingUnderBottomSecurity # default
+  - ClothingUnderBottomGrey
+  - ClothingUnderBottomBabydoll
+  - ClothingUnderBottomBoxers
+  - ClothingUnderBottomFAssblastusa
+  - ClothingUnderBottomFBriefs
+  - ClothingUnderBottomFCommie
+  - ClothingUnderBottomFishnet
+  - ClothingUnderBottomFKinky
+  - ClothingUnderBottomHearts
+  - ClothingUnderBottomLace
+  - ClothingUnderBottomLatex
+  - ClothingUnderBottomLizard
+  - ClothingUnderBottomMankiny
+  - ClothingUnderBottomMAssblastusa
+  - ClothingUnderBottomMBriefs
+  - ClothingUnderBottomMCommie
+  - ClothingUnderBottomMKinky
+  - ClothingUnderBottomNekoBlack
+  - ClothingUnderBottomNekoWhite
+  - ClothingUnderBottomPanties
+  - ClothingUnderBottomSport
+  - ClothingUnderBottomStripe
+  - ClothingUnderBottomStrippedPanties
+  - ClothingUnderBottomThong
+
+- type: loadoutGroup
   id: BrigmedicHead
   name: loadout-group-brigmedic-head
   minLimit: 0
@@ -1141,6 +1324,9 @@
   - JumpsuitTurtleneckBlack
   - JumpskirtTurtleneckBlackSleeveless
   - JumpsuitTurtleneckBlackSleeveless
+  - ClothingUniformTopColorRed
+  - ClothingUniformTopColorBlack
+  - ClothingUniformTopicCool
 
 - type: loadoutGroup
   id: BrigmedicBackpack
@@ -1168,3 +1354,13 @@
   hidden: true
   loadouts:
   - LoadoutSpeciesBreathToolBlueShield
+
+- type: loadoutGroup
+  id: WegaCapitanGloves
+  name: loadout-group-capitan-gloves
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - ClothingHandsGlovesCaptain
+  - ClothingHandsGlovesSheriff
+  - ClothingHandsGlovesCaptainWhite

@@ -45,3 +45,56 @@
     useDelay: 3
     icon: { sprite: _Wega/Interface/Actions/actions_android.rsi, state: defib-off }
     iconOn: { sprite: _Wega/Interface/Actions/actions_android.rsi, state: defib-on }
+
+- type: entity
+  parent: BaseToggleAction
+  id: ActionToggleBodyPartImplantMagboots
+  name: Toggle Magnet leg
+  description: Toggle your inner magboots.
+  components:
+  - type: Action
+    useDelay: 1
+    icon: { sprite: _Wega/Interface/Actions/actions_android.rsi, state: magboots-off }
+    iconOn: { sprite: _Wega/Interface/Actions/actions_android.rsi, state: magboots-on }
+
+- type: entity
+  parent: BaseAction
+  id: ActionBodyPartImplantJump
+  name: Active Jump leg
+  description: Use your implant and make a quick jump forward.
+  components:
+  - type: Action
+    useDelay: 6
+    icon:
+      sprite: _Wega/Interface/Actions/actions_android.rsi
+      state: jump-action
+  - type: InstantAction
+    event: !type:GravityJumpEvent {}
+
+- type: entity
+  parent: BaseAction
+  id: ActionBodyPartImplantCharge
+  name: Charge battery
+  description: Charge the device in your hands.
+  components:
+  - type: Action
+    useDelay: 10
+    icon:
+      sprite: _Wega/Interface/Actions/actions_android.rsi
+      state: charge-action
+  - type: InstantAction
+    event: !type:BatteryChargeActionEvent {}
+
+- type: entity
+  parent: BaseAction
+  id: ActionBodyPartImplantDischarge
+  name: Discharge battery
+  description: Discharge the device in your hands.
+  components:
+  - type: Action
+    useDelay: 10
+    icon:
+      sprite: _Wega/Interface/Actions/actions_android.rsi
+      state: discharge-action
+  - type: InstantAction
+    event: !type:BatteryDischargeActionEvent {}

@@ -1,0 +1,22 @@
+- type: latheRecipePack
+  id: WegaUniform
+  recipes:
+    - ClothingHeadHatCapcapSheriff
+    - ClothingHeadHatBeretSheriff
+    - ClothingUniformJumpsuitCommandCaptain
+    - ClothingUniformJumpsuitSheriff
+    - ClothingHeadHatBeretCaptainWhite
+    - ClothingHeadHatCapcapWhite
+    - ClothingUniformJumpskirtWhiteCaptain
+    - ClothingUniformJumpsuitWhiteCaptain
+    - ClothingNeckWhiteMantleCaptain
+    - ClothingHeadHatPostmansoft
+    - ClothingUniformJumpsuitPostman
+    - ClothingUniformJumpskirtPostman
+    - ClothingHeadHatBeretBlueShield
+    - ClothingUniformJumpskirtBlueShield
+    - ClothingUniformJumpsuitBlueShield
+    - ClothingUniformJumpsuitAltBlueShield
+    - ClothingBeltSheriffSheath
+    - ClothingBeltWhiteSheath
+    - ClothingBeltSheath

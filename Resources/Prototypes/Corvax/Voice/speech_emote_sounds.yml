@@ -99,6 +99,8 @@
       path: /Audio/Corvax/Effects/Tajaran/gasp.ogg
     DefaultDeathgasp:
       collection: MaleDeathGasp
+    FilinidMeows: # Corvax-Wega
+      collection: FelinidMeowsSound # Corvax-Wega
 
 - type: emoteSounds
   id: FemaleTajaran
@@ -131,6 +133,8 @@
       path: /Audio/Corvax/Effects/Tajaran/gasp.ogg
     DefaultDeathgasp:
       collection: FemaleDeathGasp
+    FilinidMeows: # Corvax-Wega
+      collection: FelinidMeowsSound # Corvax-Wega
 
 # species
 - type: emoteSounds

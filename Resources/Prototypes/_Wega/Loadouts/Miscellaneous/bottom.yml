@@ -4,6 +4,11 @@
     underwearbottom: ClothingUnderBottomGrey
 
 - type: loadout
+  id: ClothingUnderBottomSecurity
+  equipment:
+    underwearbottom: ClothingUnderBottomSecurity
+
+- type: loadout
   id: ClothingUnderBottomBabydoll
   equipment:
     underwearbottom: ClothingUnderBottomBabydoll

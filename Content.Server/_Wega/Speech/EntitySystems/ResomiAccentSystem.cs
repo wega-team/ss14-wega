@@ -7,8 +7,21 @@ namespace Content.Server._Wega.Speech.EntitySystems;
 
 public sealed class ResomiAccentSystem : EntitySystem
 {
-
     [Dependency] private readonly IRobustRandom _random = default!;
+
+    private static readonly Regex RegexSh = new("ш+", RegexOptions.Compiled);
+    private static readonly Regex RegexShUpper = new("Ш+", RegexOptions.Compiled);
+    private static readonly Regex RegexCh = new("ч+", RegexOptions.Compiled);
+    private static readonly Regex RegexChUpper = new("Ч+", RegexOptions.Compiled);
+    private static readonly Regex RegexR = new("р+", RegexOptions.Compiled);
+    private static readonly Regex RegexRUpper = new("Р+", RegexOptions.Compiled);
+
+    private static readonly List<string> ShReplacements = new() { "шш", "шшш" };
+    private static readonly List<string> ShUpperReplacements = new() { "ШШ", "ШШШ" };
+    private static readonly List<string> ChReplacements = new() { "щщ", "щщщ" };
+    private static readonly List<string> ChUpperReplacements = new() { "ЩЩ", "ЩЩЩ" };
+    private static readonly List<string> RReplacements = new() { "рр", "ррр" };
+    private static readonly List<string> RUpperReplacements = new() { "РР", "РРР" };
 
     public override void Initialize()
     {
@@ -20,42 +33,13 @@ public sealed class ResomiAccentSystem : EntitySystem
     {
         var message = args.Message;
 
-        // ш => шшш
-        message = Regex.Replace(
-            message,
-            "ш+",
-            _random.Pick(new List<string>() { "шш", "шшш" })
-        );
-        // Ш => ШШШ
-        message = Regex.Replace(
-            message,
-            "Ш+",
-            _random.Pick(new List<string>() { "ШШ", "ШШШ" })
-        );
-        // ч => щщщ
-        message = Regex.Replace(
-            message,
-            "ч+",
-            _random.Pick(new List<string>() { "щщ", "щщщ" })
-        );
-        // Ч => ЩЩЩ
-        message = Regex.Replace(
-            message,
-            "Ч+",
-            _random.Pick(new List<string>() { "ЩЩ", "ЩЩЩ" })
-        );
-        // р => ррр
-        message = Regex.Replace(
-            message,
-            "р+",
-            _random.Pick(new List<string>() { "рр", "ррр" })
-        );
-        // Р => РРР
-        message = Regex.Replace(
-            message,
-            "Р+",
-            _random.Pick(new List<string>() { "РР", "РРР" })
-        );
+        message = RegexSh.Replace(message, _random.Pick(ShReplacements));
+        message = RegexShUpper.Replace(message, _random.Pick(ShUpperReplacements));
+        message = RegexCh.Replace(message, _random.Pick(ChReplacements));
+        message = RegexChUpper.Replace(message, _random.Pick(ChUpperReplacements));
+        message = RegexR.Replace(message, _random.Pick(RReplacements));
+        message = RegexRUpper.Replace(message, _random.Pick(RUpperReplacements));
+
         args.Message = message;
     }
 }

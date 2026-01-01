@@ -11,7 +11,7 @@
     Sugar:
       amount: 2
   effects:
-    - !type:CreateEntityReactionEffect
+    - !type:SpawnEntity
       entity: DoughDangoBall
 
 - type: reaction
@@ -21,7 +21,7 @@
   conserveEnergy: false
   reactants:
     Flour:
-      amount: 10 
+      amount: 10
     TableSalt:
       amount: 1
     OilOlive:
@@ -29,5 +29,5 @@
     Egg:
       amount: 6
   effects:
-    - !type:CreateEntityReactionEffect
+    - !type:SpawnEntity
       entity: RawNoodles

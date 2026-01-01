@@ -49,9 +49,6 @@
   - MagazinePistolSubMachineGunTopMountedEmpty
   - MagazineRifle
   - MagazineRifleEmpty
-  - MagazineShotgun
-  - MagazineShotgunEmpty
-  - MagazineShotgunSlug
   - SpeedLoaderMagnum
   - SpeedLoaderMagnumEmpty
 
@@ -72,12 +69,15 @@
   - HoloprojectorSecurity
   - PortableRecharger
 # Corvax-Wega-Arsenal-start
+  - WeaponDominator
+  - WeaponTaser
   - PortableRechargerBag
   - PortableRechargerTurbo
   - PortableRechargerTurboBag
   - ClothingHeadHelmetFlash
   - ClothingNeckFlashNeck
   - ExmFlash
+  - PouchSec
 # Corvax-Wega-Arsenal-end
   - PowerCageHigh
   - PowerCageMedium
@@ -98,6 +98,8 @@
   - ScienceExplosives # sec gets everything for modular grenade making that sci does
   id: SecurityExplosives
   recipes:
+  - CableDetStack1
+  - EmptyDetonator
   - ExplosivePayload
   - GrenadeBlast
   - GrenadeEMP

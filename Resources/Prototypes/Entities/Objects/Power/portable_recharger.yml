@@ -5,22 +5,24 @@
   description: High-tech recharger adapted for portability.
   components:
   - type: Item
-    size: Huge
+    size: Ginormous
   - type: Sprite
     sprite: Objects/Power/portable_recharger.rsi
-    state: charging
+    layers:
+    - map: ["enum.PowerChargerVisualLayers.Base"]
+      state: charging
+    - map: ["enum.PowerChargerVisualLayers.Light"]
+      state: charging-unlit
+      shader: unshaded
   - type: Clothing
     equippedPrefix: charging
     quickEquip: false
     slots:
-    - back
+    - suitStorage
   - type: Charger
     slotId: charger_slot
     portable: true
   - type: PowerChargerVisuals
-  - type: ApcPowerReceiver
-    needsPower: false
-    powerLoad: 0
   - type: StaticPrice
     price: 500
   - type: Tag
@@ -34,5 +36,4 @@
         ejectOnInteract: true
         whitelist:
           components:
-          - HitscanBatteryAmmoProvider
-          - ProjectileBatteryAmmoProvider
+          - BatteryAmmoProvider

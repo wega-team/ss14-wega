@@ -1,0 +1,51 @@
+- type: entity
+  parent: BaseWeaponRifle
+  id: WeaponRifleXC67
+  name: assault riffle xC-67
+  description: A prototype of a new assault rifle from the creators of the famous C-20r. Uses the .20 cartridge. Advanced ergonomics allow for excellent shooting accuracy.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Rifles/xc67.rsi
+    layers:
+      - state: base
+        map: ["enum.GunVisualLayers.Base"]
+      - state: mag-0
+        map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: _Wega/Objects/Weapons/Guns/Rifles/xc67.rsi
+  - type: Gun
+    fireRate: 6.5
+    selectedMode: FullAuto
+    availableModes:
+    - SemiAuto
+    - FullAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/ltrifle.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: ExtMagazineRifle
+        insertSound: /Audio/Weapons/Guns/MagIn/ltrifle_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/ltrifle_magout.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - MagazineRifle
+            - ExtMagazineRifle
+      gun_chamber:
+        name: Chamber
+        startingItem: CartridgeRifle
+        priority: 1
+        whitelist:
+          tags:
+            - CartridgeRifle
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+      gun_chamber: !type:ContainerSlot
+  - type: MagazineVisuals
+    magState: mag
+    steps: 1
+    zeroVisible: true
+  - type: Appearance

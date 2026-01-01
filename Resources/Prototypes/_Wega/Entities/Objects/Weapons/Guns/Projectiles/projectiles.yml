@@ -9,3 +9,25 @@
     damage:
       types:
         Heat: 17
+
+- type: entity
+  parent: BasicHitscan
+  id: LaserStun
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HitscanStaminaDamage
+    staminaDamage: 33
+  - type: HitscanBasicDamage
+    damage:
+      types:
+        Shock: 1
+  - type: HitscanBasicVisuals
+    muzzleFlash:
+      sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+      state: muzzle_blue
+    travelFlash:
+      sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+      state: beam_blue
+    impactFlash:
+      sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+      state: impact_blue

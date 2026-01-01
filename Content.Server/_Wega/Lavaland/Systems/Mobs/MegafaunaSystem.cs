@@ -1,5 +1,4 @@
 using Content.Shared.Audio;
-using Content.Shared.Damage;
 using Content.Server.Lavaland.Mobs.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
@@ -12,6 +11,7 @@ using Content.Shared.Mobs.Components;
 using Content.Shared.NPC.Systems;
 using Robust.Shared.Prototypes;
 using Content.Shared.NPC.Prototypes;
+using Content.Shared.Damage.Systems;
 
 namespace Content.Server.Lavaland.Mobs;
 

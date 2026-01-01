@@ -33,9 +33,7 @@ namespace Content.Server.Disease.Effects
             if (PolymorphSound != null && polyUid != null)
             {
                 var audioSystem = args.EntityManager.System<SharedAudioSystem>();
-                var soundPath = audioSystem.GetSound(PolymorphSound);
-
-                audioSystem.PlayGlobal(soundPath, Filter.Pvs(polyUid.Value), true, AudioParams.Default);
+                audioSystem.PlayGlobal(PolymorphSound, Filter.Pvs(polyUid.Value), true, AudioParams.Default);
             }
 
             if (PolymorphMessage != null && polyUid != null)

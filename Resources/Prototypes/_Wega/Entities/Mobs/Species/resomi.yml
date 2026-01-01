@@ -50,6 +50,7 @@
         layer:
         - MobLayer
   - type: HumanoidAppearance
+    height: 150
     species: Resomi
   - type: Hunger
   - type: Puller
@@ -65,7 +66,10 @@
     prototype: Resomi
     requiredLegs: 2
   - type: Bloodstream
-    bloodReagent: ResomiBlood
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: ResomiBlood
+        Quantity: 300
     bloodlossDamage:
       types:
         Bloodloss: 1 # They take more damage because they have low blood.
@@ -197,6 +201,11 @@
           32:
             sprite: _Wega/Mobs/Species/Resomi/displacement.rsi
             state: anal
+      outerClothing:
+        sizeMaps:
+          32:
+            sprite: _Wega/Mobs/Species/Resomi/displacement.rsi
+            state: outerclothing
     # Corvax-Wega-end
   - type: DnaModifier
     upper: MobResomi
@@ -208,6 +217,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: HumanoidAppearance
+    height: 150
     species: Resomi
   - type: Hands
     handDisplacement:
@@ -294,4 +304,9 @@
           32:
             sprite: _Wega/Mobs/Species/Resomi/displacement.rsi
             state: anal
+      outerClothing:
+        sizeMaps:
+          32:
+            sprite: _Wega/Mobs/Species/Resomi/displacement.rsi
+            state: outerclothing
     # Corvax-Wega-end

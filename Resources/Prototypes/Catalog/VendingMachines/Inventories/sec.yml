@@ -3,6 +3,7 @@
   startingInventory:
     SecurityWhistle: 5
     Handcuffs: 8
+    BoxBodycam: 1 # Corvax-Wega
     GrenadeFlashBang: 4
     TearGasGrenade: 4
     ClusterBangFull: 2

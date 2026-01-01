@@ -33,6 +33,10 @@
         {
         "name": "outerclothing",
         "directions": 4
+    },
+    {
+      "name": "socks",
+      "directions" : 4
     }
   ]
 }

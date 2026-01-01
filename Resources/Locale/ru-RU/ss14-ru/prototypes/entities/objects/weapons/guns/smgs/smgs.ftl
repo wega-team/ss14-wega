@@ -1,4 +1,4 @@
-﻿ent-BaseWeaponSubMachineGun = BaseSMG
+ent-BaseWeaponSubMachineGun = BaseSMG
     .desc = Дерзай — налетай, целься и стреляй.
 ent-WeaponSubMachineGunAtreides = Атрейдес
     .desc = Пле-ке-ке-ке-ке! Использует патроны калибра .35 авто.
@@ -13,3 +13,6 @@ ent-WeaponSubMachineGunDrozd = Дрозд
 ent-WeaponSubMachineGunWt550 = WT550
     .desc = Отличный пистолет-пулемёт, производства NanoTrasen's Small Arms Division. Использует патроны калибра .35 авто.
     .suffix = Пистолет-пулемёт
+ent-WeaponSubMachineGunBriefcase = коричневый чемодан
+    .desc = Пригодится для переноски предметов в руках.
+    .suffix = Оружие

@@ -1,62 +1,57 @@
 <ui:RadialMenu xmlns="https://spacestation14.io"
                xmlns:ui="clr-namespace:Content.Client.UserInterface.Controls"
-               xmlns:local="clr-namespace:Content.Client.Runes.Panel.Ui;assembly=Content.Client"
-               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-               x:Class="Content.Client.Runes.Panel.Ui.EmpoweringRuneMenu"
                CloseButtonStyleClass="RadialMenuCloseButton"
-               VerticalExpand="True"
-               HorizontalExpand="True"
-               MinSize="450 450">
+               VerticalExpand="True" HorizontalExpand="True">
 
-    <ui:RadialContainer Name="Main" VerticalExpand="True" HorizontalExpand="True" InitialRadius="64" ReserveSpaceForHiddenChildren="False">
+    <ui:RadialContainer Name="Main" VerticalExpand="True" HorizontalExpand="True" InitialRadius="128" ReserveSpaceForHiddenChildren="False">
         <!-- Stun -->
         <ui:RadialMenuButton Name="StunButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-spell-stun'}" TargetLayerControlName="Stun">
-            <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/stun.png"/>
+            <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/Interface/Actions/actions_bloodcult.rsi/stun.png"/>
         </ui:RadialMenuButton>
 
         <!-- Teleport -->
         <ui:RadialMenuButton Name="TeleportButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-spell-teleport'}" TargetLayerControlName="Teleport">
-            <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/teleport.png"/>
+            <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/Interface/Actions/actions_bloodcult.rsi/teleport.png"/>
         </ui:RadialMenuButton>
 
         <!-- Electromagnetic Pulse -->
         <ui:RadialMenuButton Name="ElectromagneticPulseButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-spell-electromagnetic-pulse'}" TargetLayerControlName="ElectromagneticPulse">
-            <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/electromagneticpulse.png"/>
+            <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/Interface/Actions/actions_bloodcult.rsi/electromagneticpulse.png"/>
         </ui:RadialMenuButton>
 
         <!-- Shadow Shackles -->
         <ui:RadialMenuButton Name="ShadowShacklesButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-spell-shadow-shackles'}" TargetLayerControlName="ShadowShackles">
-            <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/shadowshackles.png"/>
+            <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/Interface/Actions/actions_bloodcult.rsi/shadowshackles.png"/>
         </ui:RadialMenuButton>
 
         <!-- Twisted Construction -->
         <ui:RadialMenuButton Name="TwistedConstructionButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-spell-twisted-construction'}" TargetLayerControlName="TwistedConstruction">
-            <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/twistedconstruction.png"/>
+            <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/Interface/Actions/actions_bloodcult.rsi/twistedconstruction.png"/>
         </ui:RadialMenuButton>
 
         <!-- Summon Equipment -->
         <ui:RadialMenuButton Name="SummonEquipmentButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-spell-summon-equipment'}" TargetLayerControlName="SummonEquipment">
-            <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/summonequipment.png"/>
+            <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/Interface/Actions/actions_bloodcult.rsi/summonequipment.png"/>
         </ui:RadialMenuButton>
 
         <!-- Summon Dagger -->
         <ui:RadialMenuButton Name="SummonDaggerButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-spell-summon-dagger'}" TargetLayerControlName="SummonDagger">
-            <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/dagger.png"/>
+            <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/Interface/Actions/actions_bloodcult.rsi/dagger.png"/>
         </ui:RadialMenuButton>
 
         <!-- Hallucinations -->
         <ui:RadialMenuButton Name="HallucinationsButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-spell-hallucinations'}" TargetLayerControlName="Hallucinations">
-            <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/hallucinations.png"/>
+            <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/Interface/Actions/actions_bloodcult.rsi/hallucinations.png"/>
         </ui:RadialMenuButton>
 
         <!-- Conceal Presence -->
         <ui:RadialMenuButton Name="ConcealPresenceButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-spell-conceal-presence'}" TargetLayerControlName="ConcealPresence">
-            <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/concealpresence.png"/>
+            <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/Interface/Actions/actions_bloodcult.rsi/concealpresence.png"/>
         </ui:RadialMenuButton>
 
         <!-- Blood Rites -->
         <ui:RadialMenuButton Name="BloodRitesButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-spell-blood-rites'}" TargetLayerControlName="BloodRites">
-            <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/blood_rites.png"/>
+            <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/Interface/Actions/actions_bloodcult.rsi/blood_rites.png"/>
         </ui:RadialMenuButton>
 
     </ui:RadialContainer>

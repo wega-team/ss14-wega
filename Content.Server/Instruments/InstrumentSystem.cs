@@ -199,7 +199,7 @@ public sealed partial class InstrumentSystem : SharedInstrumentSystem
         if (args.SenderSession.AttachedEntity != instrument.InstrumentPlayer)
             return;
 
-        if (master != null)
+        if (master != null && !HasComp<PrivateListeningComponent>(uid)) // Corvax-Wega-Edit
         {
             if (!HasComp<ActiveInstrumentComponent>(master))
                 return;
@@ -283,6 +283,7 @@ public sealed partial class InstrumentSystem : SharedInstrumentSystem
 
         var list = new ValueList<(NetEntity, string)>();
         var instrumentQuery = GetEntityQuery<InstrumentComponent>();
+        var privateQuery = GetEntityQuery<PrivateListeningComponent>(); // Corvax-Wega-Add
 
         if (!TryComp(uid, out InstrumentComponent? originInstrument)
             || originInstrument.InstrumentPlayer is not {} originPlayer)
@@ -298,6 +299,9 @@ public sealed partial class InstrumentSystem : SharedInstrumentSystem
             // Don't grab puppet instruments.
             if (!instrumentQuery.TryGetComponent(entity, out var instrument) || instrument.Master != null)
                 continue;
+
+            if (privateQuery.HasComponent(entity)) // Corvax-Wega-Add
+                continue; // Corvax-Wega-Add
 
             // We want to use the instrument player's name.
             if (instrument.InstrumentPlayer is not {} playerUid)
@@ -409,7 +413,18 @@ public sealed partial class InstrumentSystem : SharedInstrumentSystem
 
         if (send || !instrument.RespectMidiLimits)
         {
-            RaiseNetworkEvent(msg);
+            // Corvax-Wega-Edit-start
+            var listener = GetInstrumentListener(uid, instrument);
+            if (listener != null)
+            {
+                var filer = Filter.Empty().AddPlayer(args.SenderSession);
+                RaiseNetworkEvent(msg, filer);
+            }
+            else
+            {
+                RaiseNetworkEvent(msg);
+            }
+            // Corvax-Wega-Edit-end
         }
     }
 

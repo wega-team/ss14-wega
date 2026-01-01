@@ -12,6 +12,7 @@ public sealed class NaturalNightVisionOverlay : Overlay
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
 
+    private static readonly ProtoId<ShaderPrototype> NaturalNightVision = "NaturalNightVision";
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
     public override bool RequestScreenTexture => true;
 
@@ -25,7 +26,7 @@ public sealed class NaturalNightVisionOverlay : Overlay
     public NaturalNightVisionOverlay()
     {
         IoCManager.InjectDependencies(this);
-        _nightVisionShader = _prototypeManager.Index<ShaderPrototype>("NaturalNightVision").InstanceUnique();
+        _nightVisionShader = _prototypeManager.Index(NaturalNightVision).InstanceUnique();
     }
 
     protected override bool BeforeDraw(in OverlayDrawArgs args)

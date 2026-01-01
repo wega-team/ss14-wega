@@ -16,6 +16,7 @@
     - SilentStorageUser
     - PreventAccessLogging
     - AllowBiomeLoading
+    - NotGhostnadoWarpable
   - type: Input
     context: "aghost"
   - type: Ghost
@@ -113,6 +114,7 @@
   - type: MovementSpeedModifier
     baseWalkSpeed: 30
   # Corvax-End
+  - type: AdminMindLinkListener # Corvax-Wega-MindChat
 
 - type: entity
   abstract: true

@@ -11,3 +11,5 @@ research-technology-advanced-weapon = Продвинутое вооружени�
 research-technology-mining-servers = Майнинг сервера
 research-technology-pro-surgery = Продвинутые хирургические инструменты
 research-technology-implant_sb = Импланты СБ
+research-technology-pro-robotic = Продвинутая робототехника
+research-technology-handmodule = Манипуляторы киборгов

@@ -1,5 +1,5 @@
 - type: entity
-  parent: 
+  parent:
   - BaseMobSpecies
   - MobBloodstream
   - MobRespirator
@@ -36,9 +36,9 @@
     - map: [ "shoes" ]
     - map: [ "ears" ]
     - map: [ "eyes" ]
+    - map: [ "outerClothing" ]
     - map: [ "belt" ]
     - map: [ "id" ]
-    - map: [ "outerClothing" ]
     - map: [ "back" ]
     - map: [ "neck" ]
     - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
@@ -52,7 +52,7 @@
     - map: [ "pocket2" ]
     - map: ["enum.WiresVisualLayers.MaintenancePanel"]
       sprite: _Wega/Mobs/Species/Android/parts.rsi
-      state: panel 
+      state: panel
     - map: ["enum.HumanoidVisualLayers.Handcuffs"]
       color: "#ffffff"
       sprite: Objects/Misc/handcuffs.rsi
@@ -66,7 +66,7 @@
   # TODO, normally make light switching
   - type: GenericVisualizer
     visuals:
-      enum.UnpoweredFlashlightVisuals.LightOn:
+      enum.AndroidVisuals.Light:
         AndroidLeds-leds:
           True: { shader: unshaded }
           False: { shader: shaded }
@@ -92,6 +92,8 @@
   - type: TypingIndicator
     proto: robot
   - type: Speech
+    allowedEmotes:
+      - LPCmoan
     speechVerb: Robotic
     speechSounds: Borg
   - type: Vocal
@@ -154,7 +156,7 @@
   - type: ContainerContainer
     containers:
       cell_slot: !type:ContainerSlot { }
-      light: 
+      light:
         !type:ContainerSlot
         showEnts: true
   - type: PowerCellSlot
@@ -167,16 +169,20 @@
     slots:
       cell_slot:
         name: power-cell-slot-component-slot-name-default
-        startingItem: PowerCellMedium 
+        startingItem: PowerCellMedium
   - type: ItemToggle
     onActivate: false
-    activated: false 
+    activated: false
     onUse: false
   - type: WiresPanel
   - type: LockedWiresPanel
   - type: Lock
+    unlockOnClick: false
   - type: Bloodstream
-    bloodReagent: Tyrium
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: Tyrium
+        Quantity: 300
     bleedReductionAmount: 0
     bloodRefreshAmount: 0
   - type: Android
@@ -197,12 +203,12 @@
     - reagents: [ Water, SpaceCleaner ]
       methods: [ Touch ]
       effects:
-      - !type:WashCreamPieReaction
+      - !type:WashCreamPie
     - reagents: [ Water ]
       methods: [ Touch ]
       effects:
       - !type:Electrocute
-        electrocuteDamageScale: 1
+        shockDamage: 1
   - type: Operated
     raceGraph: AndroidSurgery
     limbLossChance: 1.75
@@ -211,7 +217,7 @@
   - type: Pain
     profile: SyntheticPainProfile
   - type: Tag
-    tags: 
+    tags:
     - CanPilot
     - FootstepSound
     - DoorBumpOpener

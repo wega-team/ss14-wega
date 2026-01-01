@@ -1,6 +1,7 @@
 using Content.Shared.Disease;
 using Content.Shared.Damage;
 using JetBrains.Annotations;
+using Content.Shared.Damage.Systems;
 
 namespace Content.Server.Disease.Effects
 {

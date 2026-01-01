@@ -43,6 +43,12 @@ public sealed partial class BatteryWeaponFireMode
     [DataField]
     public float FireCost = 100;
 
+    /// <summary>
+    /// Wether or not this fire mode can be used by pacifists
+    /// </summary>
+    [DataField]
+    public bool PacifismAllowedMode = false;
+
     // Corvax-Wega-MagVisuals-start
     [DataField]
     public string State = string.Empty;

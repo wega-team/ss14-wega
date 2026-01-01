@@ -7,20 +7,10 @@
   - type: Sprite
     sprite: _Wega/Objects/Power/portable_rechargeres/turbo_portable_recharger.rsi
   - type: Charger
-    chargeRate: 100
-  - type: ItemSlots
-    slots:
-      charger_slot:
-        ejectOnInteract: true
-        whitelist:
-          components:
-          - HitscanBatteryAmmoProvider
-          - ProjectileBatteryAmmoProvider
-          - Stunbaton
-          - PowerCell
+    chargeRate: 50
 
 - type: entity
-  parent: [PortableRecharger, ClothingBackpack] 
+  parent: [PortableRecharger, ClothingBackpack]
   id: PortableRechargerBag
   name: portable recharger bag edition
   description: High-tech recharger adapted for portability. Now have small bag!
@@ -28,15 +18,15 @@
   - type: Sprite
     sprite: _Wega/Objects/Power/portable_rechargeres/bag_portable_recharger.rsi
   - type: Charger
-    chargeRate: 25
+    chargeRate: 30
   - type: Storage
     maxItemSize: Huge
     grid:
     - 0,0,1,1
     - 7,0,8,1
-    
+
 - type: entity
-  parent: [PortableRecharger, ClothingBackpack] 
+  parent: [PortableRecharger, ClothingBackpack]
   id: PortableRechargerTurboBag
   name: portable recharger bag edition
   description: High-tech recharger adapted for portability. Now have small bag!

@@ -13,7 +13,7 @@ public sealed class CoreTempChangeSystem : EntitySystem
     {
         base.Update(frameTime);
 
-        var query = EntityQueryEnumerator<CoreTempChangeComponent , TransformComponent>();
+        var query = EntityQueryEnumerator<CoreTempChangeComponent, TransformComponent>();
         while (query.MoveNext(out var ent, out var comp, out var xform))
         {
             var grid = xform.GridUid;

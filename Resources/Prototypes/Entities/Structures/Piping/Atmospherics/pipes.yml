@@ -65,6 +65,11 @@
     bodyType: static
   - type: StaticPrice
     price: 30
+  # Corvax-Wega-VentCrawling-start
+  - type: ContainerContainer
+    containers:
+      VentCrawTube: !type:Container
+  # Corvax-Wega-VentCrawling-end
 
 - type: entity
   abstract: true
@@ -157,6 +162,14 @@
     guides:
     - Pipes
     - PipeNetworks
+  # Corvax-Wega-VentCrawling-start
+  - type: VentCrawTube
+    containerId: VentCrawTube
+  - type: VentCrawTransit
+  - type: ContainerContainer
+    containers:
+      VentCrawTube: !type:Container
+  # Corvax-Wega-VentCrawling-end
 
 - type: entity
   parent: GasPipeBase
@@ -207,6 +220,14 @@
     guides:
     - Pipes
     - PipeNetworks
+  # Corvax-Wega-VentCrawling-start
+  - type: VentCrawTube
+    containerId: VentCrawTube
+  - type: VentCrawBend
+  - type: ContainerContainer
+    containers:
+      VentCrawTube: !type:Container
+  # Corvax-Wega-VentCrawling-end
 
 - type: entity
   parent: GasPipeBase
@@ -250,6 +271,18 @@
     guides:
     - Pipes
     - PipeNetworks
+  # Corvax-Wega-VentCrawling-start
+  - type: VentCrawTube
+    containerId: VentCrawTube
+  - type: VentCrawJunction
+    degrees:
+      - 0
+      - 90
+      - -90
+  - type: ContainerContainer
+    containers:
+      VentCrawTube: !type:Container
+  # Corvax-Wega-VentCrawling-end
 
 - type: entity
   parent: GasPipeBase
@@ -295,6 +328,19 @@
     guides:
     - Pipes
     - PipeNetworks
+  # Corvax-Wega-VentCrawling-start
+  - type: VentCrawTube
+    containerId: VentCrawTube
+  - type: VentCrawJunction
+    degrees:
+      - 0
+      - 90
+      - -90
+      - 180
+  - type: ContainerContainer
+    containers:
+      VentCrawTube: !type:Container
+  # Corvax-Wega-VentCrawling-end
 
 - type: entity
   id: GasPipeBroken
@@ -366,31 +412,37 @@
         nodeGroupID: Pipe
         pipeDirection: South
         pipeLayer: 0
+        volume: 50
       south1:
         !type:PipeNode
         nodeGroupID: Pipe
         pipeDirection: South
         pipeLayer: 1
+        volume: 50
       south2:
         !type:PipeNode
         nodeGroupID: Pipe
         pipeDirection: South
         pipeLayer: 2
+        volume: 50
       north0:
         !type:PipeNode
         nodeGroupID: Pipe
         pipeDirection: North
         pipeLayer: 0
+        volume: 50
       north1:
         !type:PipeNode
         nodeGroupID: Pipe
         pipeDirection: North
         pipeLayer: 1
+        volume: 50
       north2:
         !type:PipeNode
         nodeGroupID: Pipe
         pipeDirection: North
         pipeLayer: 2
+        volume: 50
   - type: GasPipeManifold
   - type: AtmosMonitoringConsoleDevice
     navMapBlip: GasPipeManifold
@@ -399,3 +451,15 @@
   - type: Tag
     tags:
     - Unstackable
+  # Corvax-Wega-VentCrawling-start
+  - type: VentCrawTube
+    containerId: VentCrawTube
+  - type: VentCrawJunction
+    degrees:
+      - 0
+      - 180
+  - type: VentCrawManifold
+  - type: ContainerContainer
+    containers:
+      VentCrawTube: !type:Container
+  # Corvax-Wega-VentCrawling-end

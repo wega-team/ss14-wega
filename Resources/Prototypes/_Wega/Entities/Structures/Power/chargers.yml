@@ -1,0 +1,26 @@
+- type: entity
+  parent: BorgCharger
+  id: BorgChargerTurbo
+  name: cyborg recharging turbo station
+  description: A stationary charger for various robotic and cyborg entities. Surprisingly spacious.
+  components:
+  - type: Sprite
+    sprite: _Wega/Structures/Machines/borg_turbocharger.rsi
+  - type: Charger
+    chargeRate: 100
+  - type: Machine
+    board: BorgChargerTurboCircuitboard
+  - type: DamageInContainer
+    allowedStates:
+    - Alive
+    - Critical
+    damage:
+      types:
+        Heat: -2
+      groups:
+        Brute: -2
+    slotId: entity_storage
+    whitelist:
+      components:
+      - BorgChassis
+      - Android

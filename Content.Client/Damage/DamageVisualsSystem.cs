@@ -3,6 +3,7 @@ using Content.Shared.Body.Components; // Corvax-Wega-Surgery
 using Content.Shared.Body.Part; // Corvax-Wega-Surgery
 using Content.Shared.Body.Systems; // Corvax-Wega-Surgery
 using Content.Shared.Damage;
+using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.FixedPoint;
 using Content.Shared.Surgery.Components; // Corvax-Wega-Surgery

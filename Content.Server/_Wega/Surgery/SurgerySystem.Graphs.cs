@@ -115,7 +115,7 @@ public sealed partial class SurgerySystem
 
             // For stacks
             if (TryComp<StackComponent>(item, out var stack) && stack.Count > 1)
-                _stack.SetCount(item, stack.Count - 1);
+                _stack.ReduceCount(item, 1);
 
             bool foundMatch = false;
             float successModifier = 1f;
@@ -387,12 +387,13 @@ public sealed partial class SurgerySystem
             }
         }
 
+        bool hasTool = step.Tool != null && step.Tool.Count != 0;
         bool toolValid = step.Tool == null || step.Tool.Count == 0 || step.Action == SurgeryActionType.StoreItem
             || step.Tool.Any(tool => _tool.HasQuality(item.Value, tool));
         bool tagValid = step.Tag == null || step.Tag.Count == 0 || step.Action == SurgeryActionType.StoreItem
             || step.Tag.Any(tag => _tag.HasTag(item.Value, tag));
 
-        if (!toolValid && !tagValid)
+        if (!toolValid || !hasTool && !tagValid)
         {
             _popup.PopupEntity(Loc.GetString("surgery-missing-tool"), user, user);
             return;

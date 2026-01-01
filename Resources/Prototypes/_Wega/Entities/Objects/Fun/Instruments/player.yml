@@ -1,0 +1,20 @@
+- type: entity
+  parent: BaseKeyedInstrument
+  id: SyndiePlayerInstrument
+  name: syndie player
+  description: opisanie.
+  components:
+  - type: Instrument
+    allowPercussion: true
+    allowProgramChange: true
+    respectMidiLimits: false
+  - type: Sprite
+    sprite: _Wega/Objects/Fun/Instruments/syndieplayer.rsi
+  - type: Item
+    heldPrefix: player
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - neck
+  - type: ActivatableUI
+    inHandsOnly: false

@@ -275,3 +275,171 @@
       Min: 1
       Max: 2
       PotencyDivisor: 35
+
+- type: seed
+  id: candytree
+  name: seeds-candytree-name
+  noun: seeds-noun-seeds
+  displayName: seeds-candytree-display-name
+  plantRsi: _Wega/Objects/Specific/Hydroponics/candytree.rsi
+  packetPrototype: CandyTreeSeeds
+  productPrototypes:
+    - FoodProduceLollipop
+  mutationPrototypes:
+    - candytreerandom
+  harvestRepeat: Repeat
+  lifespan: 50
+  maturation: 6
+  production: 5
+  yield: 3
+  potency: 10
+  growthStages: 5
+  chemicals:
+    Sugar:
+      Min: 1
+      Max: 7
+      PotencyDivisor: 20
+    Vitamin:
+      Min: 1
+      Max: 2
+      PotencyDivisor: 50
+
+- type: seed
+  id: candytreerandom
+  name: seeds-candytreerandom-name
+  noun: seeds-noun-seeds
+  displayName: seeds-candytreerandom-display-name
+  plantRsi: _Wega/Objects/Specific/Hydroponics/candytreerandom.rsi
+  packetPrototype: CandyTreeRandomSeeds
+  productPrototypes:
+    - FoodProduceLollipopRandom
+  harvestRepeat: Repeat
+  lifespan: 50
+  maturation: 6
+  production: 5
+  yield: 3
+  potency: 10
+  growthStages: 5
+  chemicals:
+    Sugar:
+      Min: 1
+      Max: 7
+      PotencyDivisor: 20
+    UnstableMutagen:
+      Min: 0.1
+      Max: 0.5
+      PotencyDivisor: 50
+
+- type: seed
+  id: melon
+  name: seeds-melon-name
+  noun: seeds-noun-seeds
+  displayName: seeds-melon-display-name
+  plantRsi: _Wega/Objects/Specific/Hydroponics/melon.rsi
+  packetPrototype: MelonSeeds
+  productPrototypes:
+    - FoodMelon
+  mutationPrototypes:
+    - catmelon
+  lifespan: 55
+  maturation: 12
+  production: 3
+  yield: 1
+  potency: 1
+  idealLight: 8
+  chemicals:
+    Nutriment:
+      Min: 1
+      Max: 10
+      PotencyDivisor: 10
+    Water:
+      Min: 1
+      Max: 5
+      PotencyDivisor: 20
+    Vitamin:
+      Min: 1
+      Max: 10
+      PotencyDivisor: 10
+
+- type: seed
+  id: catmelon
+  name: seeds-catmelon-name
+  noun: seeds-noun-seeds
+  displayName: seeds-catmelon-display-name
+  plantRsi: _Wega/Objects/Specific/Hydroponics/catmelon.rsi
+  packetPrototype: CatMelonSeeds
+  productPrototypes:
+    - FoodCatMelon
+  lifespan: 55
+  maturation: 12
+  production: 3
+  yield: 1
+  potency: 1
+  idealLight: 8
+  chemicals:
+    Nutriment:
+      Min: 1
+      Max: 10
+      PotencyDivisor: 10
+    Vitamin:
+      Min: 1
+      Max: 10
+      PotencyDivisor: 10
+    CatMelonJuice:
+      Min: 1
+      Max: 5
+      PotencyDivisor: 20
+
+- type: seed
+  id: tangerine
+  name: seeds-tangerine-name
+  noun: seeds-noun-seeds
+  displayName: seeds-tangerine-display-name
+  plantRsi: _Wega/Objects/Specific/Hydroponics/tangerine.rsi
+  packetPrototype: TangerineSeeds
+  productPrototypes:
+    - FoodProduceTangerine
+  mutationPrototypes:
+    - festivetangerine
+  harvestRepeat: Repeat
+  lifespan: 50
+  maturation: 7
+  production: 5
+  yield: 3
+  potency: 10
+  growthStages: 7
+  chemicals:
+    Nutriment:
+      Min: 2
+      Max: 7
+      PotencyDivisor: 10
+    Vitamin:
+      Min: 1
+      Max: 5
+      PotencyDivisor: 15
+
+- type: seed
+  id: festivetangerine
+  name: seeds-festivetangerine-name
+  noun: seeds-noun-seeds
+  displayName: seeds-festivetangerine-display-name
+  plantRsi: _Wega/Objects/Specific/Hydroponics/festive_tangerine.rsi
+  packetPrototype: FestiveTangerineSeeds
+  productPrototypes:
+    - FoodProduceFestiveTangerine
+  harvestRepeat: Repeat
+  lifespan: 50
+  maturation: 7
+  production: 5
+  yield: 3
+  potency: 10
+  growthStages: 5
+  chemicals:
+    Nutriment:
+      Min: 2
+      Max: 7
+      PotencyDivisor: 10
+    Vitamin:
+      Min: 1
+      Max: 5
+      PotencyDivisor: 15

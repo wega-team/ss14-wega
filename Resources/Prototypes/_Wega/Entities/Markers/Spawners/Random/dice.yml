@@ -1,0 +1,11 @@
+- type: entity
+  id: RandomSpellbook
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: RandomSpawner
+    prototypes:
+      - FireballSpellbook
+      - SpawnSpellbook
+      - BlinkBook
+      - ForceWallSpellbook
+      - KnockSpellbook

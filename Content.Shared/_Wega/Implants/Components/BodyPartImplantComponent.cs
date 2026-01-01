@@ -11,6 +11,9 @@ namespace Content.Shared._Wega.Implants.Components
         [DataField]
         public Dictionary<string, BodyPartType> Connections = new();
 
+        [DataField]
+        public Dictionary<string, string> Parts = new();
+
         [DataField("key")]
         public string? ImplantKey;
         [DataField]

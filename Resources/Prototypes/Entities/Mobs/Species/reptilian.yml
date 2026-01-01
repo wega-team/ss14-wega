@@ -98,6 +98,13 @@
             sprite: Corvax/Mobs/Species/displacement.rsi
             state: shoes
       # Corvax-Displacements-End
+      # Corvax-Wega-start
+      socks:
+        sizeMaps:
+          32:
+            sprite: Corvax/Mobs/Species/displacement.rsi
+            state: socks
+      # Corvax-Wega-end
     displacements:
       head:
         sizeMaps:
@@ -121,6 +128,13 @@
             sprite: Corvax/Mobs/Species/displacement.rsi
             state: shoes
     # Corvax-Displacements-End
+    # Corvax-Wega-start
+      socks:
+        sizeMaps:
+          32:
+            sprite: Corvax/Mobs/Species/displacement.rsi
+            state: socks
+    # Corvax-Wega-end
   # Corvax-Wega-Genetics-start
   - type: DnaModifier
     upper: MobReptilian
@@ -165,6 +179,13 @@
             sprite: Corvax/Mobs/Species/displacement.rsi
             state: shoes
       # Corvax-Digitigrade-Ens
+      # Corvax-Wega-start
+      socks:
+        sizeMaps:
+          32:
+            sprite: Corvax/Mobs/Species/displacement.rsi
+            state: socks
+      # Corvax-Wega-end
     displacements:
       head:
         sizeMaps:
@@ -188,5 +209,12 @@
             sprite: Corvax/Mobs/Species/displacement.rsi
             state: shoes
     # Corvax-Digitigrade-End
+      # Corvax-Wega-start
+      socks:
+        sizeMaps:
+          32:
+            sprite: Corvax/Mobs/Species/displacement.rsi
+            state: socks
+      # Corvax-Wega-end
 
 #Weh

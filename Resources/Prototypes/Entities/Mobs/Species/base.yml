@@ -37,9 +37,9 @@
     - map: [ "shoes" ]
     - map: [ "ears" ]
     - map: [ "eyes" ]
-    - map: [ "belt" ]
-    - map: [ "id" ]
     - map: [ "outerClothing" ]
+    - map: [ "belt" ] # Corvax-Wega-Edit
+    - map: [ "id" ] # Corvax-Wega-Edit
     - map: [ "back" ]
     - map: [ "neck" ]
     - map: [ "enum.HumanoidVisualLayers.SnoutCover" ]
@@ -126,7 +126,7 @@
     - reagents: [Water, SpaceCleaner]
       methods: [Touch]
       effects:
-      - !type:WashCreamPieReaction
+      - !type:WashCreamPie
   - type: StatusEffects
     allowed:
     - Electrocution
@@ -135,7 +135,6 @@
     - Muted
     - TemporaryBlindness
     - Pacified
-    - StaminaModifier
     - Flashed
     - RadiationProtection
     - Adrenaline
@@ -190,6 +189,9 @@
     factions:
     - NanoTrasen
   - type: CreamPied
+  - type: ParcelWrapOverride
+    parcelPrototype: WrappedParcelHumanoid
+    wrapDelay: 5
   - type: Stripping
   - type: UserInterface
     interfaces:

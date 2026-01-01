@@ -1,5 +1,6 @@
 # Names
 chat-emote-name-moan = Стонать
+chat-emote-name-LPCmoan = Робо-стон
 chat-emote-name-meows = Мяукать
 chat-emote-name-purring = Мурчать
 chat-emote-name-hisses = Шипеть
@@ -11,6 +12,7 @@ chat-emote-name-rev = Газовать
 
 # Message
 chat-emote-msg-moan = стонет
+chat-emote-msg-LPCmoan = издает робо-стон
 chat-emote-msg-meows = мяукает
 chat-emote-msg-purring = мурчит
 chat-emote-msg-hisses = шипит

@@ -18,7 +18,10 @@
   - type: Examiner
     skipChecks: true
   - type: Ghost
+  - type: BloodCultGhost
   - type: Spectral
+  - type: MindLink
+    channels: ["MindBloodCult"]
 
 - type: entity
   id: MobBanshee
@@ -76,6 +79,10 @@
   - type: MovementSpeedModifier
     baseWalkSpeed: 5
     baseSprintSpeed: 5
+  - type: FriendlyFaction
+    faction: BloodCult
+  - type: MindLink
+    channels: ["MindBloodCult"]
 
 - type: entity
   abstract: true
@@ -145,8 +152,10 @@
     rules: ghost-role-information-construct-rules
   - type: Speech
   - type: Bloodstream
-    bloodMaxVolume: 75
-    bloodReagent: Blood
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: Blood
+        Quantity: 75
     bloodlossDamage:
       types:
         Bloodloss:
@@ -158,6 +167,10 @@
   - type: NpcFactionMember
     factions:
     - BloodCult
+  - type: FriendlyFaction
+    faction: BloodCult
+  - type: MindLink
+    channels: ["MindBloodCult"]
   - type: ShowCultistIcons
   - type: BloodCultConstruct
   - type: Barotrauma
@@ -191,7 +204,7 @@
       170: 0.7
       220: 0.5
   - type: Stamina
-    critThreshold: 300
+    baseCritThreshold: 300
   - type: MovementSpeedModifier
     baseWalkSpeed : 2.4
     baseSprintSpeed : 3.8
@@ -265,7 +278,7 @@
       70: 0.8
       85: 0.5
   - type: Stamina
-    critThreshold: 150
+    baseCritThreshold: 150
   - type: MovementSpeedModifier
     baseWalkSpeed : 3.5
     baseSprintSpeed : 4.9
@@ -329,7 +342,7 @@
     speedModifierThresholds:
       40: 0.8
   - type: Stamina
-    critThreshold: 80
+    baseCritThreshold: 80
   - type: MovementSpeedModifier
     baseWalkSpeed : 3.5
     baseSprintSpeed : 4.5
@@ -399,7 +412,7 @@
       100: 0.9
       130: 0.7
   - type: Stamina
-    critThreshold: 300
+    baseCritThreshold: 300
   - type: MovementSpeedModifier
     baseWalkSpeed : 3.5
     baseSprintSpeed : 4.8
@@ -467,7 +480,7 @@
       70: 0.8
       85: 0.5
   - type: Stamina
-    critThreshold: 100
+    baseCritThreshold: 100
   - type: MovementSpeedModifier
     baseWalkSpeed : 3.5
     baseSprintSpeed : 4.6

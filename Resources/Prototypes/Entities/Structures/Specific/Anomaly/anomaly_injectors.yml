@@ -62,6 +62,12 @@
           Resomi: # Corvax-Wega-Resomi
             sprite: _Wega/Structures/Specific/Anomalies/inner_anom_layer.rsi
             state: fire_RESOMI
+          Arachnid:
+            sprite: Structures/Specific/Anomalies/inner_anom_layer.rsi
+            state: fire_ARACHNID
+          Moth:
+            sprite: Structures/Specific/Anomalies/inner_anom_layer.rsi
+            state: fire_MOTH
 
 - type: entity
   parent: BaseAnomalyInjector
@@ -97,6 +103,12 @@
           Resomi: # Corvax-Wega-Resomi
             sprite: _Wega/Structures/Specific/Anomalies/inner_anom_layer.rsi
             state: shock_RESOMI
+          Arachnid:
+            sprite: Structures/Specific/Anomalies/inner_anom_layer.rsi
+            state: shock_ARACHNID
+          Moth:
+            sprite: Structures/Specific/Anomalies/inner_anom_layer.rsi
+            state: shock_MOTH
 
 - type: entity
   parent: BaseAnomalyInjector
@@ -132,6 +144,12 @@
           Resomi: # Corvax-Wega-Resomi
             sprite: _Wega/Structures/Specific/Anomalies/inner_anom_layer.rsi
             state: shadow_RESOMI
+          Arachnid:
+            sprite: Structures/Specific/Anomalies/inner_anom_layer.rsi
+            state: shadow_ARACHNID
+          Moth:
+            sprite: Structures/Specific/Anomalies/inner_anom_layer.rsi
+            state: shadow_MOTH
 
 - type: entity
   parent: BaseAnomalyInjector
@@ -167,6 +185,12 @@
           Resomi: # Corvax-Wega-Resomi
             sprite: _Wega/Structures/Specific/Anomalies/inner_anom_layer.rsi
             state: frost_RESOMI
+          Arachnid:
+            sprite: Structures/Specific/Anomalies/inner_anom_layer.rsi
+            state: frost_ARACHNID
+          Moth:
+            sprite: Structures/Specific/Anomalies/inner_anom_layer.rsi
+            state: frost_MOTH
 
 - type: entity
   parent: BaseAnomalyInjector
@@ -202,6 +226,12 @@
           Resomi: # Corvax-Wega-Resomi
             sprite: _Wega/Structures/Specific/Anomalies/inner_anom_layer.rsi
             state: flora_RESOMI
+          Arachnid:
+            sprite: Structures/Specific/Anomalies/inner_anom_layer.rsi
+            state: flora_ARACHNID
+          Moth:
+            sprite: Structures/Specific/Anomalies/inner_anom_layer.rsi
+            state: flora_MOTH
 
 - type: entity
   parent: BaseAnomalyInjector
@@ -237,6 +267,12 @@
           Resomi: # Corvax-Wega-Resomi
             sprite: _Wega/Structures/Specific/Anomalies/inner_anom_layer.rsi
             state: bluespace_RESOMI
+          Arachnid:
+            sprite: Structures/Specific/Anomalies/inner_anom_layer.rsi
+            state: bluespace_ARACHNID
+          Moth:
+            sprite: Structures/Specific/Anomalies/inner_anom_layer.rsi
+            state: bluespace_MOTH
 
 - type: entity
   parent: BaseAnomalyInjector
@@ -272,6 +308,12 @@
           Resomi: # Corvax-Wega-Resomi
             sprite: _Wega/Structures/Specific/Anomalies/inner_anom_layer.rsi
             state: flesh_RESOMI
+          Arachnid:
+            sprite: Structures/Specific/Anomalies/inner_anom_layer.rsi
+            state: flesh_ARACHNID
+          Moth:
+            sprite: Structures/Specific/Anomalies/inner_anom_layer.rsi
+            state: flesh_MOTH
 
 - type: entity
   parent: BaseAnomalyInjector
@@ -308,6 +350,12 @@
           Resomi: # Corvax-Wega-Resomi
             sprite: _Wega/Structures/Specific/Anomalies/inner_anom_layer.rsi
             state: grav_RESOMI
+          Arachnid:
+            sprite: Structures/Specific/Anomalies/inner_anom_layer.rsi
+            state: grav_ARACHNID
+          Moth:
+            sprite: Structures/Specific/Anomalies/inner_anom_layer.rsi
+            state: grav_MOTH
 
 - type: entity
   parent: BaseAnomalyInjector
@@ -343,6 +391,12 @@
           Resomi: # Corvax-Wega-Resomi
             sprite: _Wega/Structures/Specific/Anomalies/inner_anom_layer.rsi
             state: tech_RESOMI
+          Arachnid:
+            sprite: Structures/Specific/Anomalies/inner_anom_layer.rsi
+            state: tech_ARACHNID
+          Moth:
+            sprite: Structures/Specific/Anomalies/inner_anom_layer.rsi
+            state: tech_MOTH
 
 - type: entity
   parent: BaseAnomalyInjector
@@ -379,6 +433,12 @@
           Resomi: # Corvax-Wega-Resomi
             sprite: _Wega/Structures/Specific/Anomalies/inner_anom_layer.rsi
             state: rock_RESOMI
+          Arachnid:
+            sprite: Structures/Specific/Anomalies/inner_anom_layer.rsi
+            state: rock_ARACHNID
+          Moth:
+            sprite: Structures/Specific/Anomalies/inner_anom_layer.rsi
+            state: rock_MOTH
 
 - type: entity
   parent: BaseAnomalyInjector

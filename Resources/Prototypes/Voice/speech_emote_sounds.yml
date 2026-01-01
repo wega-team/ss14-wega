@@ -42,6 +42,8 @@
       collection: MaleDeathGasp
     Moan: # Corvax-Wega
       collection: MaleMoans # Corvax-Wega
+    FilinidMeows: # Corvax-Wega
+      collection: FelinidMeowsSound # Corvax-Wega
 
 - type: emoteSounds
   id: FemaleHuman
@@ -86,6 +88,8 @@
       collection: FemaleDeathGasp
     Moan: # Corvax-Wega
       collection: FemaleMoans # Corvax-Wega
+    FilinidMeows: # Corvax-Wega
+      collection: FelinidMeowsSound # Corvax-Wega
 
 - type: emoteSounds
   id: MaleReptilian
@@ -178,6 +182,8 @@
       collection: MaleDeathGasp
     Moan: # Corvax-Wega
       collection: MaleMoans # Corvax-Wega
+    FilinidMeows: # Corvax-Wega
+      collection: FelinidMeowsSound # Corvax-Wega
   params:
     variation: 0.125
 
@@ -224,6 +230,8 @@
       collection: FemaleDeathGasp
     Moan: # Corvax-Wega
       collection: FemaleMoans # Corvax-Wega
+    FilinidMeows: # Corvax-Wega
+      collection: FelinidMeowsSound # Corvax-Wega
   params:
     variation: 0.125
 
@@ -234,15 +242,29 @@
       path: /Audio/Voice/Vox/shriek1.ogg
     Laugh:
       path: /Audio/Voice/Vox/vox_laugh.ogg
+    Cough:
+      path: /Audio/Voice/Vox/vox_cough.ogg
+    Sigh:
+      path: /Audio/Voice/Vox/vox_sigh.ogg
+    Click:
+      path: /Audio/Voice/Vox/vox_click.ogg
+    Chitter:
+      path: /Audio/Voice/Vox/vox_chitter.ogg
     Honk:
       collection: BikeHorn
+    Crying:
+      path: /Audio/Voice/Vox/vox_cry.ogg
     Weh:
       collection: Weh
     Hew:
       collection: Hew
+    Gasp:
+      path: /Audio/Effects/Gasp/vox_gasp.ogg
+    DefaultDeathgasp:
+      path: /Audio/Effects/Gasp/vox_DeathGasp.ogg
   params:
     variation: 0.125
-    # We need vox sounds for the other emotes
+    # TODO: We need vox sounds for the other emotes
 
 - type: emoteSounds
   id: UnisexDiona
@@ -331,6 +353,8 @@
       collection: MaleDeathGasp
     Moan: # Corvax-Wega
       collection: MaleMoans # Corvax-Wega
+    FilinidMeows: # Corvax-Wega
+      collection: FelinidMeowsSound # Corvax-Wega
   params:
     variation: 0.125
     pitch: 0.75
@@ -376,6 +400,8 @@
       collection: FemaleDeathGasp
     Moan: # Corvax-Wega
       collection: FemaleMoans # Corvax-Wega
+    FilinidMeows: # Corvax-Wega
+      collection: FelinidMeowsSound # Corvax-Wega
   params:
     variation: 0.125
     pitch: 0.75
@@ -496,8 +522,22 @@
       collection: VulpkaninBarks
     Whine:
       collection: VulpkaninWhines
+    Crying:
+      collection: VulpkaninWhines
     Howl:
       collection: VulpkaninHowls
+    Weh:
+      collection: Weh
+    Hew:
+      collection: Hew
+    Honk:
+      collection: BikeHorn
+    Gasp:
+      collection: MaleGasp
+    DefaultDeathgasp:
+      collection: MaleDeathGasp
+    FilinidMeows: # Corvax-Wega
+      collection: FelinidMeowsSound # Corvax-Wega
 
 - type: emoteSounds
   id: FemaleVulpkanin
@@ -524,8 +564,22 @@
       collection: VulpkaninBarks
     Whine:
       collection: VulpkaninWhines
+    Crying:
+      collection: VulpkaninWhines
     Howl:
       collection: VulpkaninHowls
+    Weh:
+      collection: Weh
+    Hew:
+      collection: Hew
+    Honk:
+      collection: BikeHorn
+    Gasp:
+      collection: FemaleGasp
+    DefaultDeathgasp:
+      collection: FemaleDeathGasp
+    FilinidMeows: # Corvax-Wega
+      collection: FelinidMeowsSound # Corvax-Wega
 
 # body emotes
 - type: emoteSounds

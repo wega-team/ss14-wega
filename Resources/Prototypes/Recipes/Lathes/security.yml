@@ -77,12 +77,13 @@
   result: PortableRecharger
   categories:
   - Clothing
-  completetime: 15
-  materials: # Corvax-Wega-Arsenal-start
+  completetime: 10 # Corvax-Wega-Arsenal
+  materials: 
+# Corvax-Wega-Arsenal-start
     Steel: 1000
-    Plastic: 500
-    Plasma: 250
-    Glass: 500 # Corvax-Wega-Arsenal-end
+    Plastic: 300
+    Glass: 200
+# Corvax-Wega-Arsenal-end
 
 - type: latheRecipe
   id: ClothingBackpackHarmpack

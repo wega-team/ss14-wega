@@ -65,25 +65,32 @@ namespace Content.Shared.Chat
         /// </summary>
         Dead = 1 << 10,
 
+        // Corvax-Wega-MindChat-start
+        /// <summary>
+        ///     Mind chat
+        /// </summary>
+        Mind = 1 << 11,
+        // Corvax-Wega-MindChat-end
+
         /// <summary>
         ///     Misc admin messages
         /// </summary>
-        Admin = 1 << 11,
+        Admin = 1 << 12, // Corvax-Wega-Edit
 
         /// <summary>
         ///     Admin alerts, messages likely of elevated importance to admins
         /// </summary>
-        AdminAlert = 1 << 12,
+        AdminAlert = 1 << 13, // Corvax-Wega-Edit
 
         /// <summary>
         ///     Admin chat
         /// </summary>
-        AdminChat = 1 << 13,
+        AdminChat = 1 << 14, // Corvax-Wega-Edit
 
         /// <summary>
         ///     Unspecified.
         /// </summary>
-        Unspecified = 1 << 14,
+        Unspecified = 1 << 15, // Corvax-Wega-Edit
 
         /// <summary>
         ///     Channels considered to be IC.

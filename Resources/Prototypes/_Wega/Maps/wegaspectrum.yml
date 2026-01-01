@@ -13,7 +13,7 @@
             !type:NanotrasenNameGenerator
             prefixCreator: 'TZ'
         - type: StationEmergencyShuttle
-          emergencyShuttlePath: /Maps/Shuttles/emergency_box.yml 
+          emergencyShuttlePath: /Maps/Shuttles/emergency_box.yml
         - type: StationJobs
           availableJobs:
             #service
@@ -27,7 +27,7 @@
             Janitor: [ 3, 3 ]
             Chaplain: [ 1, 1 ]
             Librarian: [ 1, 1 ]
-            ServiceWorker: [ 4, 4 ]
+            ServiceWorker: [ 5, 5 ]
             #engineering
             ChiefEngineer: [ 1, 1 ]
             SeniorEngineer: [ 1, 1 ]
@@ -37,7 +37,7 @@
             #medical
             ChiefMedicalOfficer: [ 1, 1 ]
             Geneticist: [ 2, 2 ]
-            Chemist: [ 3, 3 ]
+            Chemist: [ 2, 2 ]
             Surgeon: [ 2, 2 ]
             Coroner: [ 1, 1 ]
             SeniorPhysician: [ 1, 1 ]
@@ -70,7 +70,6 @@
             Mime: [ 1, 1 ]
             Reporter: [ 2, 2 ]
             Musician: [ 3, 3 ]
-            Boxer: [ 2, 2 ]
             # silicon
             StationAi: [ 1, 1 ]
             Borg: [ 2, 2 ]

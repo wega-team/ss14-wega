@@ -23,6 +23,7 @@ public sealed partial class ChannelFilterPopup : Popup
         ChatChannel.LOOC,
         ChatChannel.OOC,
         ChatChannel.Dead,
+        ChatChannel.Mind, // Corvax-Wega-MindChat
         ChatChannel.Admin,
         ChatChannel.AdminAlert,
         ChatChannel.AdminChat,

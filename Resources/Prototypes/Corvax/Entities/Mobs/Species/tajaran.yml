@@ -34,6 +34,13 @@
           32:
             sprite: Corvax/Mobs/Species/displacement.rsi
             state: shoes
+      # Corvax-Wega-start
+      socks:
+        sizeMaps:
+          32:
+            sprite: Corvax/Mobs/Species/displacement.rsi
+            state: socks
+      # Corvax-Wega-end
     displacements:
       jumpsuit:
         sizeMaps:
@@ -50,6 +57,13 @@
           32:
             sprite: Corvax/Mobs/Species/displacement.rsi
             state: outerclothing
+      # Corvax-Wega-start
+      socks:
+        sizeMaps:
+          32:
+            sprite: Corvax/Mobs/Species/displacement.rsi
+            state: socks
+      # Corvax-Wega-end
 
   - type: ContentEye
   - type: Speech
@@ -107,6 +121,13 @@
           32:
             sprite: Corvax/Mobs/Species/displacement.rsi
             state: shoes
+      # Corvax-Wega-start
+      socks:
+        sizeMaps:
+          32:
+            sprite: Corvax/Mobs/Species/displacement.rsi
+            state: socks
+      # Corvax-Wega-end
     displacements:
       jumpsuit:
         sizeMaps:
@@ -123,4 +144,10 @@
           32:
             sprite: Corvax/Mobs/Species/displacement.rsi
             state: outerclothing
-
+      # Corvax-Wega-start
+      socks:
+        sizeMaps:
+          32:
+            sprite: Corvax/Mobs/Species/displacement.rsi
+            state: socks
+      # Corvax-Wega-end

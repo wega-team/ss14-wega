@@ -31,25 +31,27 @@
   suffix: Filled
   parent: BoozeDispenserEmpty
   components:
-  - type: StorageFill
-    contents:
-    - id: DrinkAleBottleFullGrowler
-    - id: DrinkBeerGrowler
-    - id: DrinkCoffeeLiqueurBottleFull
-    - id: DrinkCognacBottleFull
-    - id: DrinkGinBottleFull
-    - id: DrinkMeadJug
-    - id: DrinkRumBottleFull
-    - id: DrinkTequilaBottleFull
-    - id: DrinkVermouthBottleFull
-    - id: DrinkVodkaBottleFull
-    - id: DrinkWhiskeyBottleFull
-    - id: DrinkWineBottleFull
-    # Corvax-Wega-start
-    - id: DrinkAperolBottleFull
-    - id: DrinkJagermeisterBottleFull
-    - id: DrinkSchnapsBottleFull
-    - id: DrinkSambukaBottleFull
-    - id: DrinkBitterBottleFull
-    - id: DrinkSheridanBottleFull
-    # Corvax-Wega-end
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: DrinkAleBottleFullGrowler
+        - id: DrinkBeerGrowler
+        - id: DrinkCoffeeLiqueurBottleFull
+        - id: DrinkCognacBottleFull
+        - id: DrinkGinBottleFull
+        - id: DrinkMeadJug
+        - id: DrinkRumBottleFull
+        - id: DrinkTequilaBottleFull
+        - id: DrinkVermouthBottleFull
+        - id: DrinkVodkaBottleFull
+        - id: DrinkWhiskeyBottleFull
+        - id: DrinkWineBottleFull
+        # Corvax-Wega-start
+        - id: DrinkAperolBottleFull
+        - id: DrinkJagermeisterBottleFull
+        - id: DrinkSchnapsBottleFull
+        - id: DrinkSambukaBottleFull
+        - id: DrinkBitterBottleFull
+        - id: DrinkSheridanBottleFull
+        # Corvax-Wega-end

@@ -46,6 +46,13 @@
         /// </summary>
         Dead = ChatChannel.Dead,
 
+        // Corvax-Wega-MindChat-start
+        /// <summary>
+        ///     Mind chat
+        /// </summary>
+        Mind = ChatChannel.Mind,
+        // Corvax-Wega-MindChat-end
+
         /// <summary>
         ///     Admin chat
         /// </summary>

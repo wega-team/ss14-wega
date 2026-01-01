@@ -14,6 +14,8 @@
   femaleLastNames: NamesArachnidLast # Corvax-LastnameGender
   sexes:
   - Unsexed
+  minHeight: 160 # Corvax-Wega-Height
+  maxHeight: 190 # Corvax-Wega-Height
 
 - type: speciesBaseSprites
   id: MobArachnidSprites

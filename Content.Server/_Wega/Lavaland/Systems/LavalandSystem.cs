@@ -4,6 +4,7 @@ using Content.Server.Lavaland.Components;
 using Content.Server.Parallax;
 using Content.Server.Station.Events;
 using Content.Shared.Damage;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Lavaland.Components;
 using Content.Shared.Tiles;
 using Content.Shared.Weather;

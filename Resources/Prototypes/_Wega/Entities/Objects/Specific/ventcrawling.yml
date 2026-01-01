@@ -1,0 +1,10 @@
+- type: entity
+  id: VentCrawHolder
+  categories: [ HideSpawnMenu ]
+  name: vent claw holder
+  components:
+    - type: VentCrawHolder
+    - type: InputMover
+    - type: ContainerContainer
+      containers:
+        VentCrawHolderComponent: !type:Container

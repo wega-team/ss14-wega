@@ -27,4 +27,10 @@
         - GoliathPlate
         - ToothSharkminnow
         - ToothSpaceCarp
+        - Ring
+        - Coin
+        - Kubok
+      components:
+        - CursedMask
   - type: Dumpable
+  - type: MagnetPickup

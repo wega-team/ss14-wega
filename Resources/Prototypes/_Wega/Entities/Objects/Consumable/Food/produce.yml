@@ -207,7 +207,7 @@
   - type: FlavorProfile
     flavors:
       - banana
-  - type: Food
+  - type: Edible
     trash:
     - TrashBlueSpaceBananaPeel
   - type: SolutionContainerManager
@@ -321,7 +321,7 @@
     intensity: 0.3
     slope: 0.1
   - type: PointLight
-    color: "#19FF19FF" 
+    color: "#19FF19FF"
     energy: 2.5
     radius: 1.5
     softness: 1
@@ -437,3 +437,588 @@
   - type: Tag
     tags:
     - Fruit
+
+- type: entity
+  name: lollipop 
+  parent: FoodProduceBase
+  id: FoodProduceLollipop
+  description: "the most delicious lollipops!"
+  components:
+  - type: FlavorProfile
+    flavors:
+      - sweet
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 5
+        reagents:
+        - ReagentId: Sugar
+          Quantity: 4
+        - ReagentId: Vitamin
+          Quantity: 1
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/candytree.rsi
+  - type: Produce
+    seedId: candytree
+  - type: SpawnItemsOnUse
+    items:
+      - id: FoodProduceLollipopBar
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+  - type: Tag
+    tags:
+    - Lollipops
+
+- type: entity
+  name: lollipop 
+  parent: FoodProduceBase
+  id: FoodProduceLollipopRandom
+  suffix: "random chemicals"
+  description: "the most delicious lollipops and more!"
+  components:
+  - type: FlavorProfile
+    flavors:
+      - sweet
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 5
+        reagents:
+        - ReagentId: Sugar
+          Quantity: 4
+        - ReagentId: UnstableMutagen
+          Quantity: 1
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/candytreerandom.rsi
+  - type: Produce
+    seedId: candytreerandom
+  - type: SpawnItemsOnUse
+    items:
+      - id: FoodProduceLollipopRandomBar
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+  - type: Tag
+    tags:
+    - Lollipops
+
+- type: entity
+  name: lollipop 
+  parent: FoodProduceBase
+  id: FoodProduceLollipopMedical
+  suffix: "medical chemicals"
+  description: "the most delicious lollipops and more!"
+  components:
+  - type: FlavorProfile
+    flavors:
+      - sweet
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 5
+        reagents:
+        - ReagentId: Sugar
+          Quantity: 4
+        - ReagentId: UnstableMutagen
+          Quantity: 1
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/candytreerandom.rsi
+  - type: SpawnItemsOnUse
+    items:
+      - id: FoodProduceLollipopMedicalBar
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+  - type: Tag
+    tags:
+    - Lollipops
+
+- type: entity
+  name: lollipop 
+  parent: FoodProduceBase
+  id: FoodProduceLollipopMedRandom
+  suffix: "medical case"
+  description: "the most delicious lollipops and more!"
+  components:
+  - type: FlavorProfile
+    flavors:
+      - sweet
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 5
+        reagents:
+        - ReagentId: Sugar
+          Quantity: 4
+        - ReagentId: UnstableMutagen
+          Quantity: 1
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/candytreerandom.rsi
+  - type: SpawnItemsOnUse
+    items:
+      - id: FoodProduceLollipopBar
+        orGroup: CCandyBorg
+      - id: FoodProduceLollipopMedicalBar
+        prob: 0.5
+        orGroup: CCandyBorg
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+  - type: Tag
+    tags:
+    - Lollipops
+
+- type: entity
+  name: tangerine
+  parent: FoodProduceBase
+  id: FoodProduceTangerine
+  description: "the best New Year's food!"
+  components:
+  - type: FlavorProfile
+    flavors:
+      - tangerine
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 5
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 3
+        - ReagentId: Vitamin
+          Quantity: 2
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: JuiceTangerine
+        Quantity: 7.5
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/tangerine.rsi
+  - type: Produce
+    seedId: tangerine
+  - type: SpawnItemsOnUse
+    items:
+      - id: FoodProduceTangerineTrash
+      - id: FoodProduceTangerineOpen
+    sound:
+      path: /Audio/Effects/packetrip.ogg
+  - type: Tag
+    tags:
+    - Fruit
+
+- type: entity
+  name: tangerine open
+  parent: FoodProduceBase
+  id: FoodProduceTangerineOpen
+  description: "the best New Year's food!"
+  components:
+  - type: FlavorProfile
+    flavors:
+      - tangerine
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 5
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 3
+        - ReagentId: Vitamin
+          Quantity: 2
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: JuiceTangerine
+        Quantity: 7.5
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/tangerine.rsi
+    state: open
+  - type: Tag
+    tags:
+    - Fruit
+
+- type: entity
+  parent: BaseItem
+  name: tangerine peel
+  id: FoodProduceTangerineTrash
+  description: It smells strongly of tangerine!
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/tangerine.rsi
+    state: trash
+  - type: FlavorProfile
+    flavors:
+      - tangerine
+  - type: Item
+    size: Tiny
+  - type: Tag
+    tags:
+    - Trash
+  - type: SpaceGarbage
+  - type: StaticPrice
+    price: 0
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 7
+        reagents:
+        - ReagentId: Vitamin
+          Quantity: 7
+  - type: Edible
+    requiresSpecialDigestion: true
+  - type: Extractable
+    grindableSolutionName: food
+
+- type: entity
+  name: festive tangerine
+  parent: FoodProduceBase
+  id: FoodProduceFestiveTangerine
+  description: "A beautiful box with a gift!"
+  components:
+  - type: FlavorProfile
+    flavors:
+      - tangerine
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 5
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 3
+        - ReagentId: Vitamin
+          Quantity: 2
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/festive_tangerine.rsi
+  - type: Produce
+    seedId: festivetangerine
+  - type: SpawnItemsOnUse
+    items:
+      - id: FoodProduceFestiveTangerineTrash
+      - id: Bucket
+        orGroup: GiftPool
+      - id: PlushieGhost
+        orGroup: GiftPool
+      - id: PlushieBee
+        orGroup: GiftPool
+      - id: PlushieRGBee
+        orGroup: GiftPool
+      - id: PlushieNuke
+        orGroup: GiftPool
+      - id: PlushieRouny
+        orGroup: GiftPool
+      - id: PlushieLizard #Weh!
+        orGroup: GiftPool
+      - id: PlushieRainbowLizard
+        orGroup: GiftPool
+      - id: PlushieNar
+        orGroup: GiftPool
+      - id: PlushieCarp
+        orGroup: GiftPool
+      - id: PlushieMagicarp
+        orGroup: GiftPool
+      - id: PlushieHolocarp
+        orGroup: GiftPool
+      - id: PlushieRainbowCarp
+        orGroup: GiftPool
+      - id: PlushieSlime
+        orGroup: GiftPool
+      - id: PlushieSnake
+        orGroup: GiftPool
+      - id: PlushieVox
+        orGroup: GiftPool
+      - id: PlushieRatvar
+        orGroup: GiftPool
+      - id: PlushieSpaceLizard
+        orGroup: GiftPool
+      - id: PlushieSharkBlue
+        orGroup: GiftPool
+      - id: PlushieSharkPink
+        orGroup: GiftPool
+      - id: PlushieSharkGrey
+        orGroup: GiftPool
+      - id: ToyAmongPequeno
+        orGroup: GiftPool
+      - id: PlushieDiona
+        orGroup: GiftPool
+      - id: PlushieArachind
+        orGroup: GiftPool
+      - id: ToyMouse
+        orGroup: GiftPool
+      - id: ToyAi
+        orGroup: GiftPool
+      - id: ToyNuke
+        orGroup: GiftPool
+      - id: ToyFigurinePassenger
+        orGroup: GiftPool
+      - id: ToyFigurineGriffin
+        orGroup: GiftPool
+      - id: ToyHonk
+        orGroup: GiftPool
+      - id: ToyIan
+        orGroup: GiftPool
+      - id: ToyMarauder
+        orGroup: GiftPool
+      - id: ToyMauler
+        orGroup: GiftPool
+      - id: ToyGygax
+        orGroup: GiftPool
+      - id: ToyOdysseus
+        orGroup: GiftPool
+      - id: ToyFigurineOwlman
+        orGroup: GiftPool
+      - id: ToyDeathRipley
+        orGroup: GiftPool
+      - id: ToyPhazon
+        orGroup: GiftPool
+      - id: ToyFireRipley
+        orGroup: GiftPool
+      - id: ToyReticence
+        orGroup: GiftPool
+      - id: ToyRipley
+        orGroup: GiftPool
+      - id: ToySeraph
+        orGroup: GiftPool
+      - id: ToyDurand
+        orGroup: GiftPool
+      - id: ToyFigurineSkeleton
+        orGroup: GiftPool
+      - id: FoamBlade
+        orGroup: GiftPool
+      - id: PonderingOrb
+        orGroup: GiftPool
+      - id: Skub
+        orGroup: GiftPool
+      - id: PersonalAI
+        orGroup: GiftPool
+      - id: DiceBag
+        orGroup: GiftPool
+      - id: CrayonBox
+        orGroup: GiftPool
+      - id: ToySword
+        orGroup: GiftPool
+      - id: Coal1
+        orGroup: GiftPool
+      - id: ToyRubberDuck
+        orGroup: GiftPool
+      - id: RGBStaff
+        orGroup: GiftPool
+    sound:
+      path: /Audio/Effects/packetrip.ogg
+  - type: Tag
+    tags:
+    - Fruit
+
+- type: entity
+  name: gift wrapping
+  parent: BaseItem
+  id: FoodProduceFestiveTangerineTrash
+  description: This is rubbish.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/festive_tangerine.rsi
+    state: trash
+  - type: Item
+    size: Tiny
+  - type: Tag
+    tags:
+    - Trash
+  - type: PhysicalComposition
+    materialComposition:
+      Plastic: 100
+  - type: SpaceGarbage
+  - type: StaticPrice
+    price: 0
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 10
+        reagents:
+        - ReagentId: ToxinTrash
+          Quantity: 5
+  - type: Edible
+    requiresSpecialDigestion: true
+
+- type: entity
+  name: melon
+  parent: [FoodProduceBase, ItemHeftyBase]
+  id: FoodMelon
+  description: "A fruit that charges with solar energy!"
+  components:
+  - type: Item
+    size: Small
+    heldPrefix: produce
+  - type: FlavorProfile
+    flavors:
+      - melon
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 25
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 10
+        - ReagentId: Vitamin
+          Quantity: 10
+        - ReagentId: Water
+          Quantity: 5
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/melon.rsi
+  - type: Produce
+    seedId: melon
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: MelonJuice
+        Quantity: 15
+  - type: Damageable
+    damageContainer: Biological
+  - type: DamageOnHighSpeedImpact
+    minimumSpeed: 0.1
+    damage:
+      types:
+        Blunt: 1
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 1
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: desecration
+      - !type:SpillBehavior
+        solution: food
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: SliceableFood
+    count: 5
+    slice: FoodMelonSlice
+  - type: Tag
+    tags:
+    - Fruit
+
+- type: entity
+  name: melon slice
+  parent: ProduceSliceBase
+  id: FoodMelonSlice
+  description: "a piece of sunshine!"
+  components:
+  - type: Item
+    size: Tiny
+  - type: FlavorProfile
+    flavors:
+      - melon
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/melon.rsi
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 5
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 2
+        - ReagentId: Vitamin
+          Quantity: 2
+        - ReagentId: Water
+          Quantity: 1
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: MelonJuice
+        Quantity: 4
+  - type: Tag
+    tags:
+    - Fruit
+    - Slice
+
+- type: entity
+  name: catmelon
+  parent: [FoodProduceBase, ItemHeftyBase]
+  id: FoodCatMelon
+  description: "Melon with cat ears???"
+  components:
+  - type: Item
+    size: Small
+    heldPrefix: produce
+  - type: FlavorProfile
+    flavors:
+      - melon
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 25
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 10
+        - ReagentId: Vitamin
+          Quantity: 10
+        - ReagentId: CatMelonJuice
+          Quantity: 5
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/catmelon.rsi
+  - type: Produce
+    seedId: catmelon
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: CatMelonJuice
+        Quantity: 15
+  - type: Damageable
+    damageContainer: Biological
+  - type: DamageOnHighSpeedImpact
+    minimumSpeed: 0.1
+    damage:
+      types:
+        Blunt: 1
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 1
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: desecration
+      - !type:SpillBehavior
+        solution: food
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: SliceableFood
+    count: 5
+    slice: FoodCatMelonSlice
+  - type: Butcherable
+    butcheringType: Knife
+    spawned:
+    - id: ClothingHeadHatCatEarsMelon
+  - type: Tag
+    tags:
+    - Fruit
+
+- type: entity
+  name: catmelon slice
+  parent: ProduceSliceBase
+  id: FoodCatMelonSlice
+  description: "Little cute piece!"
+  components:
+  - type: Item
+    size: Tiny
+  - type: FlavorProfile
+    flavors:
+      - melon
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/catmelon.rsi
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 5
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 2
+        - ReagentId: Vitamin
+          Quantity: 2
+        - ReagentId: CatMelonJuice
+          Quantity: 1
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: CatMelonJuice
+        Quantity: 4
+  - type: Tag
+    tags:
+    - Fruit
+    - Slice

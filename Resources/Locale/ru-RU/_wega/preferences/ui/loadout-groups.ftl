@@ -2,6 +2,7 @@
 loadout-group-top = Верхнее белье
 loadout-group-bottom = Нижнее белье
 loadout-group-socks = Носки
+loadout-group-base-shoes = Обувь, базовая
 
 # Heads
 
@@ -9,6 +10,7 @@ loadout-group-socks = Носки
 loadout-group-captain-top = Капитан, верхнее белье
 loadout-group-captain-bottom = Капитан, нижнее белье
 loadout-group-captain-socks = Капитан, носки
+loadout-group-capitan-gloves = Капитан, перчатки
 loadout-group-blue-shield-head = Офицер "Синий Щит", голова
 loadout-group-blue-shield-jumpsuit = Офицер "Синий Щит", комбинезон
 loadout-group-blue-shield-backpack = Офицер "Синий Щит", рюкзак

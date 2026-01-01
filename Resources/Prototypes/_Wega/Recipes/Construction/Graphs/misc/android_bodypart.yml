@@ -252,3 +252,78 @@
       completed:
       - !type:PopupUser
         text: partimplant-assembly-leftarm
+
+- type: constructionGraph
+  id: ArmSyntheticCharger
+  start: start
+  graph:
+  - node: start
+    entity: LeftArmSyntheticCharger
+    edges:
+    - to: right
+      steps:
+      - tool: Screwing
+        doAfter: 1
+      completed:
+      - !type:PopupUser
+        text: partimplant-assembly-rightarm
+  - node: right
+    entity: RightArmSyntheticCharger
+    edges:
+    - to: start
+      steps:
+      - tool: Screwing
+        doAfter: 1
+      completed:
+      - !type:PopupUser
+        text: partimplant-assembly-leftarm
+
+- type: constructionGraph
+  id: LegSyntheticMagboots
+  start: start
+  graph:
+  - node: start
+    entity: LeftLegSyntheticMagboots
+    edges:
+    - to: right
+      steps:
+      - tool: Screwing
+        doAfter: 1
+      completed:
+      - !type:PopupUser
+        text: partimplant-assembly-rightarm
+  - node: right
+    entity: RightLegSyntheticMagboots
+    edges:
+    - to: start
+      steps:
+      - tool: Screwing
+        doAfter: 1
+      completed:
+      - !type:PopupUser
+        text: partimplant-assembly-leftarm
+
+- type: constructionGraph
+  id: LegSyntheticJump
+  start: start
+  graph:
+  - node: start
+    entity: LeftLegSyntheticJump
+    edges:
+    - to: right
+      steps:
+      - tool: Screwing
+        doAfter: 1
+      completed:
+      - !type:PopupUser
+        text: partimplant-assembly-rightarm
+  - node: right
+    entity: RightLegSyntheticJump
+    edges:
+    - to: start
+      steps:
+      - tool: Screwing
+        doAfter: 1
+      completed:
+      - !type:PopupUser
+        text: partimplant-assembly-leftarm

@@ -1,8 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Created by IProduceWidgets. Tail sprites by Tiniest Shark (github)",
-  "copyright": "inhand resprited by inventor05(gh: inventor055, discord: qwerty05555)",
+  "copyright": "inhand resprited by inventor05(gh: inventor055, discord: qwerty05555); Resomi Sprite By Laserkaier",
   "size": {
     "x": 32,
     "y": 32
@@ -25,6 +24,10 @@
     },
     {
       "name": "inhand-right",
+      "directions": 4
+    },
+    {
+      "name": "equipped-OUTERCLOTHING-resomi",
       "directions": 4
     }
   ]

@@ -1,10 +1,8 @@
 using Content.Server.Actions;
 using Content.Server.Popups;
-using Content.Server.PowerCell;
 using Content.Server.Stunnable;
-using Content.Shared._Wega.Android;
+using Content.Shared.Android;
 using Content.Shared.Alert;
-using Content.Shared.Damage.Components;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Item.ItemToggle;
@@ -24,8 +22,10 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
+using Content.Shared.Power;
+using Content.Server.Power.EntitySystems;
 
-namespace Content.Server._Wega.Android;
+namespace Content.Server.Android;
 
 public sealed partial class AndroidSystem : SharedAndroidSystem
 {
@@ -37,7 +37,6 @@ public sealed partial class AndroidSystem : SharedAndroidSystem
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly MovementSpeedModifierSystem _movementSpeedModifier = default!;
     [Dependency] private readonly PowerCellSystem _powerCell = default!;
-    [Dependency] private readonly AlertsSystem _alerts = default!;
     [Dependency] private readonly ActionsSystem _actions = default!;
     [Dependency] private readonly LockSystem _lock = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
@@ -45,6 +44,7 @@ public sealed partial class AndroidSystem : SharedAndroidSystem
     [Dependency] private readonly PointLightSystem _pointLight = default!;
     [Dependency] private readonly StunSystem _stun = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
+    [Dependency] private readonly AppearanceSystem _appearance = default!;
 
     public override void Initialize()
     {
@@ -73,6 +73,8 @@ public sealed partial class AndroidSystem : SharedAndroidSystem
                 DoDischargeStun(ent, component);
                 DelayDischargeStun(component);
             }
+
+            UpdatePowerCell(ent, component);
         }
     }
 
@@ -111,7 +113,11 @@ public sealed partial class AndroidSystem : SharedAndroidSystem
         EntityUid lightEntity = component.LightEntity.Value;
 
         if (enabled != null)
+        {
+            _appearance.SetData(uid, AndroidVisuals.Light, enabled.Value);
             _pointLight.SetEnabled(lightEntity, enabled.Value);
+            _audio.PlayPvs(component.ToggleLightSound, uid);
+        }
 
         _pointLight.SetRadius(lightEntity, _toggle.IsActivated(lightEntity) ? component.BasePointLightRadiuse : Math.Max(component.BasePointLightRadiuse / 3f, 1.3f));
         _pointLight.SetEnergy(lightEntity, _toggle.IsActivated(lightEntity) ? component.BasePointLightEnergy : component.BasePointLightEnergy * 0.75f);
@@ -124,8 +130,6 @@ public sealed partial class AndroidSystem : SharedAndroidSystem
 
         Color ledColor = markings[0].MarkingColors[0].WithAlpha(255);
         _pointLight.SetColor(lightEntity, ledColor);
-
-        _audio.PlayPvs(component.ToggleLightSound, uid);
     }
 
     #region Battery
@@ -135,14 +139,15 @@ public sealed partial class AndroidSystem : SharedAndroidSystem
         _powerCell.SetDrawEnabled(uid, args.NewMobState == MobState.Alive);
     }
 
-    private void OnPowerCellChanged(EntityUid uid, AndroidComponent component, PowerCellChangedEvent args)
+    private void OnPowerCellChanged(EntityUid uid, AndroidComponent component, ref PowerCellChangedEvent args)
     {
-        UpdateBatteryAlert((uid, component));
+        UpdatePowerCell(uid, component);
+    }
 
+    private void UpdatePowerCell(EntityUid uid, AndroidComponent component)
+    {
         if (_powerCell.HasDrawCharge(uid))
-        {
             _toggle.TryActivate(uid);
-        }
     }
 
     private void OnPowerCellSlotEmpty(EntityUid uid, AndroidComponent component, ref PowerCellSlotEmptyEvent args)
@@ -164,26 +169,6 @@ public sealed partial class AndroidSystem : SharedAndroidSystem
         _movementSpeedModifier.RefreshMovementSpeedModifiers(uid);
 
         UpdateLight(uid, component);
-    }
-
-    private void UpdateBatteryAlert(Entity<AndroidComponent> ent, PowerCellSlotComponent? slotComponent = null)
-    {
-        if (!_powerCell.TryGetBatteryFromSlot(ent, out var battery, slotComponent))
-        {
-            _alerts.ClearAlert(ent.Owner, ent.Comp.BatteryAlert);
-            _alerts.ShowAlert(ent.Owner, ent.Comp.NoBatteryAlert);
-            return;
-        }
-
-        var chargePercent = (short)MathF.Round(battery.CurrentCharge / battery.MaxCharge * 10f);
-
-        if (chargePercent == 0 && _powerCell.HasDrawCharge(ent, cell: slotComponent))
-        {
-            chargePercent = 1;
-        }
-
-        _alerts.ClearAlert(ent.Owner, ent.Comp.NoBatteryAlert);
-        _alerts.ShowAlert(ent.Owner, ent.Comp.BatteryAlert, chargePercent);
     }
 
     private void DelayDischargeStun(AndroidComponent component)
