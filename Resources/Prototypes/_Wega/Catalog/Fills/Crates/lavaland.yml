@@ -1,3 +1,13 @@
+- type: entity
+  id: CrateNecropolisFilled
+  parent: CrateNecropolis
+  suffix: Filled
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: BasicNecropolisCrateTable
+
 - type: entityTable
   id: BasicNecropolisCrateTable
   table: !type:GroupSelector
@@ -5,7 +15,13 @@
     - id: BloodCultSoulStone
     - id: DarkShard
     - id: ClothingHandsGlovesConcussiveGauntlets
+    - id: WeaponPossessedBlade
+    - id: ClothingOuterArmorCult
+    - id: DrinkUnholyFlaskFull
+    - id: ArmBlade
     - id: RodOfAsclepius
     - id: ShipInBottle
     - id: DustyShard
     - id: CubeRed
+    - id: PKAUpgradeFireRate
+    - id: PKAUpgradeDamage

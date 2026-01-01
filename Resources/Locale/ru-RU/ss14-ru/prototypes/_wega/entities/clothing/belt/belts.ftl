@@ -1,3 +1,5 @@
+ent-ClothingBeltSecondSalvageWebbing = РПС шахтёра
+    .desc = Универсальная разгрузочная система для работы в космосе и не только.
 ent-ClothingBeltStraponAvian = птичий страпон
     .desc = Такой же мягкий и эластичный дилдо, но находящийся на поясе. Перед использованием рекомендуется обязательное смазывание!
 ent-ClothingBeltStraponCanine = собачий страпон

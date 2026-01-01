@@ -1,0 +1,8 @@
+- type: htnCompound
+  id: LegionBehaviorCompound
+  branches:
+    - tasks:
+        - !type:HTNPrimitiveTask
+          operator: !type:MegafaunaMaintainRangeOperator
+            minRange: 3.0
+            maxRange: 5.0

@@ -14,7 +14,6 @@ namespace Content.Client._Wega.Lavaland;
 [GenerateTypedNameReferences]
 public sealed partial class UtilityVendorMenu : FancyWindow
 {
-    [Dependency] private readonly IEntityManager _entityManager = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
 
     public event Action<string>? OnPurchase;
@@ -27,187 +26,163 @@ public sealed partial class UtilityVendorMenu : FancyWindow
 
     public void UpdateState(UtilityVendorBoundUserInterfaceState state)
     {
-        // Обновляем слот карты
-        CardSlot.RemoveAllChildren();
-        if (state.CardEntity != null)
-        {
-            var entityView = new SpriteView
-            {
-                Scale = new Vector2(2, 2),
-                SetSize = new Vector2(64, 64),
-                Margin = new Thickness(4)
-            };
-            entityView.SetEntity(_entityManager.GetEntity(state.CardEntity.Value));
-            CardSlot.AddChild(entityView);
-        }
-
-        // Обновляем баланс
         BalanceLabel.Text = $"Баланс: {state.Points} очков";
 
-        // Обновляем товары
         ItemsContainer.RemoveAllChildren();
         foreach (var (itemId, price) in state.Inventory)
         {
             if (!_prototypeManager.TryIndex<EntityPrototype>(itemId, out var prototype))
                 continue;
 
-            // Создаем красивую кнопку
-            var itemButton = new UtilityVendorItem(itemId, price, prototype.Name);
+            var itemButton = new UtilityVendorItem(itemId, price, prototype.Name, prototype.Description);
             itemButton.OnPressed += _ => OnPurchase?.Invoke(itemId);
             itemButton.Disabled = state.Points < price;
 
             ItemsContainer.AddChild(itemButton);
         }
     }
-}
 
-public sealed class UtilityVendorItem : PanelContainer
-{
-    public event Action<BaseButton.ButtonEventArgs>? OnPressed;
-
-    private static readonly Color DisabledColor = Color.FromHex("#444444");
-    private static readonly Color EnabledColor = Color.FromHex("#2D2D30");
-    private static readonly Color HoveredColor = Color.FromHex("#3A3A3E");
-    private static readonly Color BorderColor = Color.FromHex("#4972A1");
-
-    private readonly Button _button;
-    private readonly StyleBoxFlat _styleBox;
-
-    public bool Disabled
+    private sealed class UtilityVendorItem : PanelContainer
     {
-        get => _button.Disabled;
-        set
+        public event Action<BaseButton.ButtonEventArgs>? OnPressed;
+
+        private static readonly Color DisabledColor = Color.FromHex("#444444");
+        private static readonly Color EnabledColor = Color.FromHex("#2D2D30");
+        private static readonly Color HoveredColor = Color.FromHex("#3A3A3E");
+        private static readonly Color BorderColor = Color.FromHex("#4972A1");
+
+        private readonly Button _button;
+        private readonly StyleBoxFlat _styleBox;
+
+        public bool Disabled
         {
-            _button.Disabled = value;
+            get => _button.Disabled;
+            set
+            {
+                _button.Disabled = value;
+                UpdateColor();
+            }
+        }
+
+        public UtilityVendorItem(string itemId, FixedPoint2 price, string itemName, string itemDesc)
+        {
+            HorizontalExpand = true;
+            MinSize = new Vector2(0, 80);
+            Margin = new Thickness(0, 2);
+
+            _styleBox = new StyleBoxFlat
+            {
+                BackgroundColor = EnabledColor,
+                BorderColor = BorderColor,
+                BorderThickness = new Thickness(1),
+                ContentMarginTopOverride = 8,
+                ContentMarginBottomOverride = 8,
+                ContentMarginLeftOverride = 12,
+                ContentMarginRightOverride = 12
+            };
+            PanelOverride = _styleBox;
+
+            var mainContainer = new BoxContainer
+            {
+                Orientation = BoxContainer.LayoutOrientation.Horizontal,
+                HorizontalExpand = true,
+                VerticalExpand = true
+            };
+
+            var iconContainer = new Control
+            {
+                MinSize = new Vector2(64, 64),
+                HorizontalExpand = false,
+                Margin = new Thickness(0, 0, 12, 0)
+            };
+
+            var entityView = new EntityPrototypeView
+            {
+                Scale = new Vector2(2f, 2f),
+                HorizontalAlignment = HAlignment.Center,
+                VerticalAlignment = VAlignment.Center,
+                OverrideDirection = Direction.South
+            };
+            entityView.SetPrototype(itemId);
+            iconContainer.AddChild(entityView);
+
+            var infoContainer = new BoxContainer
+            {
+                Orientation = BoxContainer.LayoutOrientation.Vertical,
+                HorizontalExpand = true,
+                VerticalExpand = true,
+                VerticalAlignment = VAlignment.Center
+            };
+
+            var nameLabel = new Label
+            {
+                Text = itemName,
+                HorizontalExpand = true,
+                Margin = new Thickness(0, 0, 0, 2)
+            };
+
+            infoContainer.AddChild(nameLabel);
+
+            var priceContainer = new BoxContainer
+            {
+                Orientation = BoxContainer.LayoutOrientation.Vertical,
+                HorizontalExpand = false,
+                MinSize = new Vector2(80, 0),
+                VerticalAlignment = VAlignment.Center,
+                HorizontalAlignment = HAlignment.Right
+            };
+
+            var priceLabel = new Label
+            {
+                Text = $"{price}",
+                HorizontalAlignment = HAlignment.Right,
+                StyleClasses = { "LabelBig" },
+                Margin = new Thickness(0, 0, 0, 2)
+            };
+
+            var pointsLabel = new Label
+            {
+                Text = "ОЧКОВ",
+                HorizontalAlignment = HAlignment.Right,
+                StyleClasses = { "LabelSubText" }
+            };
+
+            priceContainer.AddChild(priceLabel);
+            priceContainer.AddChild(pointsLabel);
+
+            mainContainer.AddChild(iconContainer);
+            mainContainer.AddChild(infoContainer);
+            mainContainer.AddChild(priceContainer);
+
+            _button = new Button
+            {
+                HorizontalExpand = true,
+                VerticalExpand = true,
+                MouseFilter = MouseFilterMode.Stop,
+                ToolTip = itemDesc,
+                Children = { mainContainer }
+            };
+
+            _button.OnPressed += args => OnPressed?.Invoke(args);
+            _button.OnMouseEntered += _ => UpdateColor();
+            _button.OnMouseExited += _ => UpdateColor();
+
+            AddChild(_button);
             UpdateColor();
         }
-    }
 
-    public UtilityVendorItem(string itemId, FixedPoint2 price, string itemName)
-    {
-        HorizontalExpand = true;
-        MinSize = new Vector2(0, 80);
-        Margin = new Thickness(0, 2);
-
-        // Стиль панели как в контрактах
-        _styleBox = new StyleBoxFlat
+        private void UpdateColor()
         {
-            BackgroundColor = EnabledColor,
-            BorderColor = BorderColor,
-            BorderThickness = new Thickness(1),
-            ContentMarginTopOverride = 8,
-            ContentMarginBottomOverride = 8,
-            ContentMarginLeftOverride = 12,
-            ContentMarginRightOverride = 12
-        };
-        PanelOverride = _styleBox;
-
-        // Основной контейнер
-        var mainContainer = new BoxContainer
-        {
-            Orientation = BoxContainer.LayoutOrientation.Horizontal,
-            HorizontalExpand = true,
-            VerticalExpand = true
-        };
-
-        // Иконка слева
-        var iconContainer = new Control
-        {
-            MinSize = new Vector2(64, 64),
-            HorizontalExpand = false,
-            Margin = new Thickness(0, 0, 12, 0)
-        };
-
-        var entityView = new EntityPrototypeView
-        {
-            Scale = new Vector2(2f, 2f),
-            HorizontalAlignment = HAlignment.Center,
-            VerticalAlignment = VAlignment.Center,
-            OverrideDirection = Direction.South
-        };
-        entityView.SetPrototype(itemId);
-        iconContainer.AddChild(entityView);
-
-        // Центральная часть с информацией
-        var infoContainer = new BoxContainer
-        {
-            Orientation = BoxContainer.LayoutOrientation.Vertical,
-            HorizontalExpand = true,
-            VerticalExpand = true,
-            VerticalAlignment = VAlignment.Center
-        };
-
-        // Название предмета
-        var nameLabel = new Label
-        {
-            Text = itemName,
-            HorizontalExpand = true,
-            StyleClasses = { "LabelBig" },
-            Margin = new Thickness(0, 0, 0, 2)
-        };
-
-        infoContainer.AddChild(nameLabel);
-
-        // Правая часть с ценой
-        var priceContainer = new BoxContainer
-        {
-            Orientation = BoxContainer.LayoutOrientation.Vertical,
-            HorizontalExpand = false,
-            MinSize = new Vector2(80, 0),
-            VerticalAlignment = VAlignment.Center,
-            HorizontalAlignment = HAlignment.Right
-        };
-
-        var priceLabel = new Label
-        {
-            Text = $"{price}",
-            HorizontalAlignment = HAlignment.Right,
-            StyleClasses = { "LabelBig" },
-            Margin = new Thickness(0, 0, 0, 2)
-        };
-
-        var pointsLabel = new Label
-        {
-            Text = "ОЧКОВ",
-            HorizontalAlignment = HAlignment.Right,
-            StyleClasses = { "LabelSubText" }
-        };
-
-        priceContainer.AddChild(priceLabel);
-        priceContainer.AddChild(pointsLabel);
-
-        // Собираем всё вместе
-        mainContainer.AddChild(iconContainer);
-        mainContainer.AddChild(infoContainer);
-        mainContainer.AddChild(priceContainer);
-
-        _button = new Button
-        {
-            HorizontalExpand = true,
-            VerticalExpand = true,
-            MouseFilter = MouseFilterMode.Stop,
-            Children = { mainContainer }
-        };
-
-        _button.OnPressed += args => OnPressed?.Invoke(args);
-        _button.OnMouseEntered += _ => UpdateColor();
-        _button.OnMouseExited += _ => UpdateColor();
-
-        AddChild(_button);
-        UpdateColor();
-    }
-
-    private void UpdateColor()
-    {
-        if (_button.Disabled)
-        {
-            _styleBox.BackgroundColor = DisabledColor;
-            _styleBox.BorderColor = Color.FromHex("#666666");
-        }
-        else
-        {
-            _styleBox.BackgroundColor = _button.IsHovered ? HoveredColor : EnabledColor;
-            _styleBox.BorderColor = BorderColor;
+            if (_button.Disabled)
+            {
+                _styleBox.BackgroundColor = DisabledColor;
+                _styleBox.BorderColor = Color.FromHex("#666666");
+            }
+            else
+            {
+                _styleBox.BackgroundColor = _button.IsHovered ? HoveredColor : EnabledColor;
+                _styleBox.BorderColor = BorderColor;
+            }
         }
     }
 }

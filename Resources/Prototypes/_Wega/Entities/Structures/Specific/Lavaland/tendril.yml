@@ -2,8 +2,8 @@
   parent: BaseStructure
   id: NecropolisTendril
   name: necropolis tendril
-  description: ""
-  suffix: ""
+  description: "A giant pulsating spike that sprouts from the depths of the planet. It emits an ominous energy and attracts other horrors of this place."
+  suffix: DO NOT MAP
   components:
   - type: Sprite
     sprite: _Wega/Structures/Specific/Lavaland/tendril.rsi
@@ -34,7 +34,7 @@
               path: /Audio/Effects/demon_dies.ogg
           - !type:SpawnEntitiesBehavior
             spawn:
-              CrateGenericSteel:
+              CrateNecropolisFilled:
                 min: 1
                 max: 1
           - !type:DoActsBehavior

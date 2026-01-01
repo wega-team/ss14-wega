@@ -1,0 +1,57 @@
+- type: entity
+  id: HierophantLavalandSquare
+  suffix: DO NOT MAP
+  name: hierophant square
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Wall
+  components:
+  - type: Sprite
+    sprite: _Wega/Effects/hierophant_effects.rsi
+    state: hierophantblastbegin
+  - type: Transform
+    anchored: true
+  - type: TimedDespawn
+    lifetime: 0.6
+  - type: SpawnOnDespawn
+    prototype: HierophantLavalandDamageField
+
+- type: entity
+  id: HierophantLavalandDamageField
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Effects/hierophant_effects.rsi
+    state: hierophantblastend
+  - type: Transform
+    anchored: true
+  - type: TimedDespawn
+    lifetime: 0.325
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,0.5"
+        layer:
+          - SlipLayer
+        mask:
+          - ItemMask
+        density: 1000
+        hard: false
+  - type: EmitSoundOnSpawn
+    positional: true
+    sound:
+      path: /Audio/_Wega/Mobs/Lavaland/hiero_blast.ogg
+  - type: TriggerOnCollide
+    fixtureID: fix1
+    maxTriggers: 1
+  - type: DamageOnTrigger
+    targetUser: true
+    damage:
+      types:
+        Blunt: 3
+        Heat: 3

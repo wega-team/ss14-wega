@@ -1465,12 +1465,13 @@
   name: Salvage Vendor
   description: A dwarf's best friend!
   components:
-  - type: VendingMachine
-    pack: SalvageEquipmentInventory
-    offState: off
-    brokenState: broken
-    normalState: normal-unshaded
-    denyState: deny-unshaded
+  # Corvax-Wega-Lavaland-Edit
+  # - type: VendingMachine
+  #   pack: SalvageEquipmentInventory
+  #   offState: off
+  #   brokenState: broken
+  #   normalState: normal-unshaded
+  #   denyState: deny-unshaded
   - type: Sprite
     sprite: Structures/Machines/VendingMachines/mining.rsi
     layers:
@@ -1494,11 +1495,75 @@
         type: UtilityVendorBoundUserInterface
       enum.WiresUiKey.Key:
         type: WiresBoundUserInterface
+  # Corvax-Wega-Lavaland-start
+  - type: Voucher
+    typeVoucher: Salvage
   - type: UtilityVendor
     inventory:
-      Pickaxe: 50
+      Flare: 50
+      Crowbar: 100
+      Pickaxe: 100
+      FlashlightLantern: 100
+      HandheldGPSBasic: 200
       RadioHandheld: 200
+      TrackingImplanter: 200
+      FultonBeacon: 400
+      HandCapsule: 400
+      OreBag: 400
+      TrofeiBag: 400
+      ClothingBeltSecondSalvageWebbing: 500
+      WeaponGrapplingGun: 500
+      MedkitBruteFilled: 600
+      MedkitBurnFilled: 600
+      WeaponCrusher: 750
+      WeaponProtoKineticAccelerator: 750
+      ClothingBackpackDuffelSalvageBaseKit: 800
+      MineralScanner: 800
+      Fulton: 1000
+      PKAUpgradeRange: 1000
+      PKAUpgradeDamage: 1000
+      PKAUpgradeFireRate: 1000
+      JetpackMiningFilled: 2000
+      ClothingShoesBootsJump: 2500
+      HandLuxuriousCapsule: 3000
+      # Funny
+      DrinkWhiskeyBottleFull: 100
+      DrinkAbsintheBottleFull: 100
+      Cigar: 100
+      Soap: 200
+      SpaceCash1000: 2000
+      ClothingEyesGlassesGar: 500
   - type: ItemSlots
+    slots:
+      vendor_card:
+        whitelist:
+          components:
+          - PointsCard
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:EmptyContainersBehaviour
+        containers:
+        - vendor_card
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalGlassBreak
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:EmptyContainersBehaviour
+        containers:
+        - vendor_card
+      - !type:DoActsBehavior
+        acts: ["Breakage"]
+      - !type:EjectVendorItems
+  # Corvax-Wega-Lavaland-end
   - type: AccessReader
     access: [["Salvage"]]
   - type: GuideHelp

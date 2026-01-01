@@ -63,3 +63,9 @@
     Cold: 1.25
     Heat: 1.25
     Poison: 0.8
+
+- type: damageModifierSet
+  id: Hierophant
+  coefficients:
+    Piercing: 0.1
+    Heat: 0.5

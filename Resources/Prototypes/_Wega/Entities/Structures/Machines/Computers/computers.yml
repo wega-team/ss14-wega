@@ -107,7 +107,7 @@
   parent: BaseComputerAiAccess
   id: LavalandShuttleConsole
   name: lavaland shuttle console
-  description: ""
+  description: "Use this terminal to call a shuttle to Lavaland, where the real adventure begins."
   components:
   - type: LavalandShuttleConsole
   - type: Sprite
@@ -117,9 +117,9 @@
     - map: ["computerLayerKeyboard"]
       state: generic_keyboard
     - map: ["computerLayerScreen"]
-      state: dna
+      state: mining
     - map: ["computerLayerKeys"]
-      state: rd_key
+      state: mining_key
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
   - type: ActivatableUI
@@ -133,8 +133,8 @@
         type: WiresBoundUserInterface
   - type: ApcPowerReceiver
     powerLoad: 250
-  # - type: Computer
-  #   board: DnaModifierComputerCircuitboard
+  - type: Computer
+    board: LavalandShuttleComputerCircuitboard
   - type: PointLight
     radius: 1.5
     energy: 1.6

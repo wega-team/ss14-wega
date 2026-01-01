@@ -22,3 +22,17 @@
         - id: MicroManipulatorStockPart
           amount: 2
         - id: CapacitorStockPart
+
+- type: entity
+  parent: ClothingBackpackDuffelSalvage
+  id: ClothingBackpackDuffelSalvageBaseKit
+  components:
+    - type: StorageFill
+      contents:
+        - id: WeaponProtoKineticAccelerator
+        - id: SurvivalKnife
+        - id: FlashlightSeclite
+        - id: ClothingEyesGlassesMeson
+        - id: MineralScanner
+        - id: ClothingMaskGasExplorer
+        - id: SalvageIDCard

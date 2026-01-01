@@ -1,9 +1,10 @@
 using Content.Shared.Interaction.Events;
 using Content.Shared.Lavaland.Artefacts.Components;
 using Content.Shared.Popups;
+using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 
-namespace Content.Server.Items.Systems;
+namespace Content.Server.Lavaland.Artefacts.Systems;
 
 public sealed class LinkedCubeSystem : EntitySystem
 {
@@ -64,13 +65,13 @@ public sealed class LinkedCubeSystem : EntitySystem
         if (distance < cube.Comp.MinTeleportDistance)
         {
             _popup.PopupEntity(Loc.GetString("linked-cube-too-close",
-                ("distance", MathF.Round(distance, 1))), user, user);
+                ("distance", distance.ToString("F2"))), user, user);
             return false;
         }
 
         _transform.SetCoordinates(user, Transform(linkedCube).Coordinates);
 
-        _audio.PlayPvs("/Audio/Magic/blink.ogg", user);
+        _audio.PlayPvs(new SoundPathSpecifier("/Audio/Magic/blink.ogg"), user);
         _popup.PopupEntity(Loc.GetString("linked-cube-teleported"), user, user);
 
         return true;

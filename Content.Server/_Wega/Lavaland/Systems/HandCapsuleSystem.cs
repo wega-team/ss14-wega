@@ -22,7 +22,7 @@ public sealed partial class HandCapsuleSystem : EntitySystem
     {
         args.Handled = true;
         var userTransform = Transform(args.User);
-        if (!HasComp<LavalandComponent>(userTransform.MapUid))
+        if (!HasComp<LavalandComponent>(userTransform.MapUid) || userTransform.MapUid != userTransform.GridUid)
         {
             _popup.PopupEntity(Loc.GetString("lavaland-hand-capsule-spawn-failed"), args.User, args.User);
             return;

@@ -19,7 +19,7 @@
   parent: BaseItem
   id: RodOfAsclepius
   name: rod of asclepius
-  description: ""
+  description: "An ancient medical symbol. Allows you to take the Hippocratic Oath, which grants a healing aura and surgical skills at the cost of renouncing violence."
   suffix: DO NOT MAP
   components:
   - type: Sprite
@@ -43,7 +43,7 @@
   parent: BaseItem
   id: ShipInBottle
   name: ship in bottle
-  description: ""
+  description: "A mysterious boat sealed in glass. It is said that it can sail through the hottest lava without a single paddle."
   suffix: DO NOT MAP
   components:
   - type: Sprite
@@ -67,7 +67,7 @@
   parent: BaseItem
   id: DustyShard
   name: dusty shard
-  description: ""
+  description: "A glowing artifact that can summon a loyal miner-bodyguard. Be careful - your fate is linked to it."
   suffix: DO NOT MAP
   components:
   - type: Sprite
@@ -80,7 +80,7 @@
   parent: BaseItem
   id: CubeRed
   name: red cube
-  description: ""
+  description: "One of a pair of linked teleportation cubes. Using it will take you to the blue cube. Hide the second cube in a safe place!"
   suffix: DO NOT MAP
   components:
   - type: Item
@@ -97,7 +97,7 @@
   parent: BaseItem
   id: CubeBlue
   name: blue cube
-  description: ""
+  description: "One of a pair of linked teleportation cubes. Using it will take you to the red cube. Don't lose touch with your partner!"
   suffix: DO NOT MAP
   components:
   - type: Item

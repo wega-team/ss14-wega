@@ -43,6 +43,35 @@
       entities:
         - NecropolisTendril
     - !type:BiomeEntityLayer
+      threshold: 0.995
+      noise:
+        seed: 2
+        noiseType: OpenSimplex2
+        frequency: 2
+      allowedTiles:
+        - FloorBasalt
+      entities:
+        - LavalandFloraCactus1
+        - LavalandFloraCactus2
+        - LavalandFloraCactus3
+        - LavalandFloraCactus4
+        - LavalandFloraPolyporeMushroom1
+        - LavalandFloraPolyporeMushroom2
+        - LavalandFloraPolyporeMushroom3
+        - LavalandFloraPolyporeMushroom4
+        - LavalandFloraInocybeMushroom1
+        - LavalandFloraInocybeMushroom2
+        - LavalandFloraInocybeMushroom3
+        - LavalandFloraInocybeMushroom4
+        - LavalandFloraPorciniMushroom1
+        - LavalandFloraPorciniMushroom2
+        - LavalandFloraPorciniMushroom3
+        - LavalandFloraPorciniMushroom4
+        - LavalandFloraEmbershroom1
+        - LavalandFloraEmbershroom2
+        - LavalandFloraEmbershroom3
+        - LavalandFloraEmbershroom4
+    - !type:BiomeEntityLayer
       threshold: 0.95
       noise:
         seed: 0
@@ -94,11 +123,15 @@
         cellularReturnType: Distance2
       entityWeights:
         WallRockBasalt: 0.97
-        WallRockBasaltCoal: 0.015
+        WallRockBasaltTin: 0.014
+        WallRockBasaltCoal: 0.007
         WallRockBasaltPlasma: 0.007
         WallRockBasaltSilver: 0.004
         WallRockBasaltGold: 0.0025
-        WallRockBasaltUranium: 0.0015
+        WallRockBasaltUranium: 0.001
+        WallRockBasaltDiamond: 0.001
+        WallRockBasaltBananium: 0.0008
+        WallRockBasaltGibtonite: 0.0002
     - !type:BiomeDummyLayer
       id: Loot
     # Fill basalt

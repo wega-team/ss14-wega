@@ -10,3 +10,6 @@ lavaland-shuttle-recall-to-station = Вернуть на станцию
 lavaland-shuttle-call-unavailable = Недоступно
 
 lavaland-hand-capsule-spawn-failed = Невозможно выпустить капсулу здесь
+
+ore-processor-points = На балансе содержится {$points} очков.
+ore-processor-add-points = На баланс карты начислено {$points} очков.

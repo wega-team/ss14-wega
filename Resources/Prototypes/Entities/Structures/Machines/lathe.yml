@@ -586,7 +586,7 @@
     - BioGenMaterialsStatic
 
 - type: entity
-  parent: BaseLathe
+  parent: [ BaseMachinePowered, ConstructibleMachine ] # Corvax-Wega-Lavaland-Edit
   id: OreProcessor
   name: ore processor
   description: It produces sheets and ingots using ores.
@@ -601,8 +601,8 @@
           map: ["enum.PowerDeviceVisualLayers.Powered"]
         - state: inserting
           map: ["enum.MaterialStorageVisualLayers.Inserting"]
-        - state: panel
-          map: ["enum.WiresVisualLayers.MaintenancePanel"]
+        # - state: panel # Corvax-Wega-Lavaland-Edit
+        #   map: ["enum.WiresVisualLayers.MaintenancePanel"] # Corvax-Wega-Lavaland-Edit
     - type: Machine
       board: OreProcessorMachineCircuitboard
     - type: MaterialStorage
@@ -617,6 +617,41 @@
       staticPacks:
       - OreSmelting
       - RGlassSmelting
+    # Corvax-Wega-Lavaland-start
+    - type: Appearance
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            !type:PhysShapeAabb
+            bounds: "-0.4,-0.4,0.4,0.4"
+          density: 190
+          mask:
+          - MachineMask
+          layer:
+            - MachineLayer
+    - type: Destructible
+      thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 100
+        behaviors:
+        - !type:PlaySoundBehavior
+          sound:
+            collection: MetalBreak
+        - !type:ChangeConstructionNodeBehavior
+          node: machineFrame
+        - !type:DoActsBehavior
+          acts: ["Destruction"]
+    - type: OreProcessorPoints
+    - type: Transform
+      anchored: true
+    - type: Pullable
+    - type: StaticPrice
+      price: 800
+    - type: ResearchClient
+    - type: TechnologyDatabase
+    # Corvax-Wega-Lavaland-end
 
 - type: entity
   parent: OreProcessor

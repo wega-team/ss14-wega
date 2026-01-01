@@ -16,3 +16,5 @@ ent-VehicleWheelchair = инвалидная коляска
 ent-VehicleWheelchairFolded = { ent-VehicleWheelchair }
     .desc = { ent-VehicleWheelchair.desc }
     .suffix = Сложенное
+ent-VehicleDragonBoat = лодка дракон
+    .desc = Таинственное судно, способное бесследно скользить по раскалённой лаве. Не требует вёсел и, кажется, движется по собственной воле.

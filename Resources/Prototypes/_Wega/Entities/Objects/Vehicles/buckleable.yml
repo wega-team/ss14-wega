@@ -456,7 +456,7 @@
   parent: BaseVehicleRideable
   id: VehicleDragonBoat
   name: dragon boat
-  description: ""
+  description: "A mysterious vessel that can glide effortlessly through molten lava. It requires no oars and seems to move of its own accord."
   components:
   - type: Boat
   - type: Vehicle

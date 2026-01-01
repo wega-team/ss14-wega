@@ -13,13 +13,11 @@ public enum UtilityVendorUiKey : byte
 [Serializable, NetSerializable]
 public sealed class UtilityVendorBoundUserInterfaceState : BoundUserInterfaceState
 {
-    public readonly NetEntity? CardEntity;
     public readonly FixedPoint2 Points;
     public readonly Dictionary<EntProtoId, FixedPoint2> Inventory;
 
-    public UtilityVendorBoundUserInterfaceState(NetEntity? cardEntity, FixedPoint2 points, Dictionary<EntProtoId, FixedPoint2> inventory)
+    public UtilityVendorBoundUserInterfaceState(FixedPoint2 points, Dictionary<EntProtoId, FixedPoint2> inventory)
     {
-        CardEntity = cardEntity;
         Points = points;
         Inventory = inventory;
     }

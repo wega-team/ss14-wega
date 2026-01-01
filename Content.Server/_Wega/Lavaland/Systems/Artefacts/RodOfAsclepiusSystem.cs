@@ -80,6 +80,7 @@ public sealed class RodOfAsclepiusSystem : EntitySystem
         _doAfter.TryStartDoAfter(doAfterArgs);
         _popup.PopupEntity(Loc.GetString("lavaland-artefacts-rod-oath-start"),
             args.User, args.User);
+
         args.Handled = true;
     }
 

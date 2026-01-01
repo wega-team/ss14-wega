@@ -1,0 +1,10 @@
+- type: entity
+  parent: ClothingBeltStorageBase
+  id: ClothingBeltSecondSalvageWebbing
+  name: salvage rig
+  description: "A universal unloading system for working in space and beyond."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Belt/salvagewebbing.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Belt/salvagewebbing.rsi

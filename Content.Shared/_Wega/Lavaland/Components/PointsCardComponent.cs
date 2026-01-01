@@ -4,7 +4,7 @@ using Robust.Shared.GameStates;
 namespace Content.Shared.Lavaland.Components;
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
-[Access(typeof(UtilityVendorSystem))]
+[Access(typeof(UtilityVendorSystem), typeof(OreProcessorPointsSystem))]
 public sealed partial class PointsCardComponent : Component
 {
     [DataField("points"), AutoNetworkedField]

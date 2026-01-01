@@ -508,3 +508,27 @@
     proto: ProjectileBloodBolt
     capacity: 24
     count: 24
+
+- type: entity
+  id: HierophantClubRod
+  parent: BaseItem
+  name: hierophant rod
+  description: The meek, mysterious artifact sparkles with energy, completely at your disposal, as if a vassal to its suzerain.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/hierophant_club.rsi
+    state: icon
+  - type: Item
+    sprite: _Wega/Objects/Weapons/Melee/hierophant_club64.rsi
+    size: Normal
+  - type: UseDelay
+    delay: 3
+  - type: MeleeWeapon
+    wideAnimationRotation: 90
+    attackRate: 0.75
+    damage:
+      types:
+        Blunt: 10
+  - type: HierophantClub
+  - type: StaticPrice
+    price: 5000

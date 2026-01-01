@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Numerics;
 using Content.Server.Lavaland.Components;
 using Content.Server.Parallax;
@@ -29,6 +30,7 @@ public sealed partial class LavalandSystem : EntitySystem
 
     private const float MinDisatnce = 250f;
     private const float MaxDisatnce = 1500f;
+    private const int MaxBuildings = 50;
 
     public override void Initialize()
     {
@@ -145,10 +147,11 @@ public sealed partial class LavalandSystem : EntitySystem
 
     public void GenerateBuildings(MapId mapId)
     {
-        foreach (var proto in _proto.EnumeratePrototypes<LavalandBuildingPrototype>())
-        {
-            SpawnBuilding(mapId, proto);
-        }
+        var buildingList = _proto.EnumeratePrototypes<LavalandBuildingPrototype>().ToList();
+        _random.Shuffle(buildingList);
+
+        for (var i = 0; i <= MaxBuildings && i < buildingList.Count; i++)
+            SpawnBuilding(mapId, buildingList[i]);
     }
 
     private void SpawnBuilding(MapId mapId, LavalandBuildingPrototype proto)

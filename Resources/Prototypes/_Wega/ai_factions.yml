@@ -17,3 +17,14 @@
   - SimpleHostile
   - Xeno
   - Dragon
+
+- type: npcFaction
+  id: LavalandFauna
+  hostile:
+  - NanoTrasen
+  - Zombie
+  - Vampire
+  - BloodCult
+  - SimpleHostile
+  - Xeno
+  - Dragon
