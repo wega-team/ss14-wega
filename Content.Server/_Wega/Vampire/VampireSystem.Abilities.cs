@@ -109,7 +109,6 @@ public sealed partial class VampireSystem
         SubscribeLocalEvent<VampireComponent, VampirePredatorSensesActionEvent>(OnVampirePredatorSensesAction);
         SubscribeLocalEvent<VampireComponent, VampireBloodEruptionActionEvent>(OnVampireBloodEruptionAction);
         SubscribeLocalEvent<VampireComponent, VampireBloodBringersRiteActionEvent>(OnBloodBringersRite);
-		SubscribeLocalEvent<VampireComponent, VampireBloodRiteAlertEvent>(OnBloodRiteAlert);
 
         // Umbrae
         SubscribeLocalEvent<VampireComponent, VampireCloakOfDarknessActionEvent>(OnCloakOfDarkness);
