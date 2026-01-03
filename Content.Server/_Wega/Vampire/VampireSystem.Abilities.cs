@@ -1570,8 +1570,7 @@ public sealed partial class VampireSystem
 			
 			if (entity.HasValue)
 			{
-				chemicals.AddReagent("Desoxyephedrine", FixedPoint2.New(10));
-				chemicals.AddReagent("Dylovene", FixedPoint2.New(10));
+				chemicals.AddReagent("Stimulants", FixedPoint2.New(10));
 				chemicals.AddReagent("Omnizine", FixedPoint2.New(4));
 				_solution.UpdateChemicals(entity.Value);
 			}
