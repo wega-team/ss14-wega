@@ -1565,7 +1565,7 @@ public sealed partial class VampireSystem
 			if (!TryComp<SolutionContainerManagerComponent>(thrallEntity.Owner, out var container))
 				continue;
 				
-			if (!_solution.TryGetSolution(thrallEntity.Owner, "chemicals", out var entity, out var chemicals))
+			if (!_solution.TryGetSolution(thrallEntity.Owner, "bloodstream", out var entity, out var chemicals))
 				continue;
 			
 			if (entity.HasValue)
@@ -1617,9 +1617,7 @@ public sealed partial class VampireSystem
 			if (HasComp<NullRodOwnerComponent>(person) && !component.TruePowerActive)
 				continue;
 			if (HasComp<PacifiedComponent>(person))
-			{
 				continue;
-			}
 			
 			EnsureComp<PacifiedComponent>(person);
 			var target = person;
