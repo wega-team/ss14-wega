@@ -1,5 +1,6 @@
 using Content.Server.Power.Components;
 using Content.Server.Power.NodeGroups;
+using Content.Shared.Power.Components;
 
 namespace Content.Server.Power.EntitySystems;
 
@@ -52,6 +53,12 @@ public sealed class PowerNetConnectorSystem : EntitySystem
     private void OnApcInit(EntityUid uid, ApcComponent component, ComponentInit args)
     {
         BaseNetConnectorInit(component);
+		
+		/// Now, APCs MaxLoad is 80% of BatteryComponent to prevent map problems and make engi-s life easier. With love.
+		if (!TryComp<BatteryComponent>(uid, out var battery))
+			return;
+	
+		component.MaxLoad = battery.MaxCharge * 0.8f;
     }
 
     public void BaseNetConnectorInit<T>(BaseNetConnectorComponent<T> component) where T : class
