@@ -516,17 +516,20 @@ public sealed partial class BloodCultSystem
             bool reversed = _random.Prob(0.5f);
             if (reversed) tarot.CardType = CardTarotType.Reversed;
 
+			var cardKey = $"tarot-card-{tarot.Card.ToString().ToLowerInvariant()}";
+			var cardName = Loc.GetString(cardKey);
+
             _appearance.SetData(target, CardTarotVisuals.State, tarot.Card);
             _appearance.SetData(target, CardTarotVisuals.Reversed, reversed);
 
-            _meta.SetEntityName(target, Loc.GetString("tarot-card-name"));
+            _meta.SetEntityName(target, cardName);
             _meta.SetEntityDescription(target, Loc.GetString("tarot-card-desc"));
 
             component.BloodCount -= 100;
             _action.RemoveAction(cultist, args.Action!);
         }
     }
-
+	
     private void OnBloodSpear(EntityUid cultist, BloodCultistComponent component, BloodCultBloodSpearActionEvent args)
     {
         if (component.BloodCount < 150)
