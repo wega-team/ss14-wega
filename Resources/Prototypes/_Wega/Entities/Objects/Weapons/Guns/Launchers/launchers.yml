@@ -1,43 +1,39 @@
 - type: entity
-  name: rg 430
-  parent: BaseStorageItem
-  id: WeaponRG430
+  name: ORG 430
+  parent: [ BaseWeaponLauncher, BaseGunWieldable, BaseMajorContraband ]
+  id: WeaponORG430
   description: Load granade for optimal results.
   components:
   - type: Sprite
-    sprite: _Wega/Objects/Weapons/Guns/Launchers/rg_430.rsi
+    sprite: Objects/Weapons/Guns/Launchers/china_lake.rsi
     layers:
-    - state: base
-  - type: Storage
-    maxItemSize: Normal
-    grid:
-    - 0,0,0,1
-    - 1,0,0,0
-    whitelist:
-      tags:
-      - HandGrenade
-      - Grenade
-  - type: Gun
-    fireRate: 2
-    selectedMode: SemiAuto
-    availableModes:
-    - SemiAuto
-    - FullAuto
-    soundGunshot:
-      path: /Audio/Effects/thunk.ogg
-    soundEmpty:
-      path: /Audio/Items/hiss.ogg
-    clumsyProof: true
-  - type: ContainerAmmoProvider
-    container: storagebase
-  - type: Item
-    size: Large
+      - state: icon
+        map: ["enum.GunVisualLayers.Base"]
   - type: Clothing
-    sprite: Objects/Weapons/Guns/Cannons/pie_cannon.rsi
-    quickEquip: false
+    sprite: Objects/Weapons/Guns/Launchers/china_lake.rsi
     slots:
     - Back
-  - type: ContainerContainer
-    containers:
-      storagebase: !type:Container
-        ents: []
+    - suitStorage
+  - type: Item
+    size: Huge
+    shape:
+    - 0,0,4,2
+  - type: AmmoCounter
+  - type: Gun
+    fireRate: 1
+    selectedMode: SemiAuto
+    availableModes:
+      - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/grenade_launcher.ogg
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+        - Grenade
+    capacity: 3
+    proto: GrenadeFrag
+    soundInsert:
+      path: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+  - type: GunRequiresWield
+  - type: StaticPrice
+    price: 10000
