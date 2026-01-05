@@ -1562,18 +1562,14 @@ public sealed partial class VampireSystem
 
 		foreach (var thrallEntity in thrallsInRange)
 		{
-			if (!TryComp<SolutionContainerManagerComponent>(thrallEntity.Owner, out var container))
-				continue;
-				
-			if (!_solution.TryGetSolution(thrallEntity.Owner, "bloodstream", out var entity, out var chemicals))
-				continue;
-			
-			if (entity.HasValue)
-			{
-				chemicals.AddReagent("Stimulants", FixedPoint2.New(10));
-				chemicals.AddReagent("Omnizine", FixedPoint2.New(4));
-				_solution.UpdateChemicals(entity.Value);
-			}
+			if (!TryComp<BloodstreamComponent>(thrallEntity, out var bloodstream) || bloodstream.BloodSolution == null)
+				return;
+
+			var drugQuantity = new ReagentQuantity("Stimulants", FixedPoint2.New(10));
+			var notHealQuantity = new ReagentQuantity("Omnizine", FixedPoint2.New(4));
+
+			_solution.TryAddReagent(bloodstream.BloodSolution.Value, drugQuantity, out _);
+			_solution.TryAddReagent(bloodstream.BloodSolution.Value, notHealQuantity, out _);
 		}
 
 		foreach (var thrallEntity in thrallsInRange)
