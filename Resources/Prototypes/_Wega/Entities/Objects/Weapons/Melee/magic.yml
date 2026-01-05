@@ -224,7 +224,7 @@
     - 0,2,0,1
   - type: BloodCultWeapon
   - type: MeleeWeapon
-    ignoreResistances: true
+    resistanceBypass: true
     autoAttack: true
     wideAnimationRotation: -135
     attackRate: 2
@@ -526,4 +526,3 @@
   - type: BallisticAmmoProvider
     proto: ProjectileBloodBolt
     capacity: 24
-    count: 24
