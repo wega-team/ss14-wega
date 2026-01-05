@@ -1,5 +1,4 @@
 matter-eater-succes = Вы съели {$eat}
-food-system-verb-eat = Съесть
 
 # Messages
 genetics-empathetic-thought-message = Вы вдруг стали замечать в окружающих больше, чем раньше.
