@@ -109,7 +109,19 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
                     .Where(cultist => !_mobState.IsDead(cultist))
                     .ToList();
 
+                var nearbyConstruct = _entityLookup.GetEntitiesInRange<BloodCultConstructComponent>(Transform(pylon).Coordinates, 11f)
+                    .Where(cultist => !_mobState.IsDead(cultist))
+                    .ToList();
+
                 foreach (var target in nearbyCultists)
+                {
+                    var heal = new DamageSpecifier { DamageDict = { { "Blunt", -1 }, { "Slash", -1 } } };
+                    _damage.TryChangeDamage(target.Owner, heal, true);
+
+                    _blood.TryModifyBloodLevel(target.Owner, +1);
+                }
+
+                foreach (var target in nearbyConstruct)
                 {
                     var heal = new DamageSpecifier { DamageDict = { { "Blunt", -1 }, { "Slash", -1 } } };
                     _damage.TryChangeDamage(target.Owner, heal, true);
