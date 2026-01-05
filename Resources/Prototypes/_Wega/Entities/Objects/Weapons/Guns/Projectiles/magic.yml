@@ -11,4 +11,15 @@
   - type: Projectile
     damage:
       types:
-        Blunt: 15
+        Bloodloss: 12
+        Blunt: 3
+  - type: SolutionContainerManager
+    solutions:
+      bolt:
+        maxVol: 1.5
+        reagents:
+        - ReagentId: HemorrhinolBloodCult
+          Quantity: 1.5
+  - type: SolutionInjectOnProjectileHit
+    transferAmount: 1.5
+    solution: bolt
