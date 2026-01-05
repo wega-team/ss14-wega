@@ -6,8 +6,8 @@
       contents:
         - id: ThrusterMachineCircuitboard
           amount: 2
-        - id: SheetSteel
-        - id: MicroManipulatorStockPart
+        - id: SheetSteel10
+        - id: CapacitorStockPart
           amount: 8
 
 - type: entity
@@ -20,7 +20,9 @@
         - id: SheetGlass1
           amount: 2
         - id: MicroManipulatorStockPart
-          amount: 3
+          amount: 2
+        - id: CapacitorStockPart
+
 - type: entity
   parent: ClothingBackpackDuffelSyndicateBundle
   id: ClothingBackpackDuffelSyndicateFilledXC67
