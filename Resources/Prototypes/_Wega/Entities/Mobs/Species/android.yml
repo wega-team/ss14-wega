@@ -200,17 +200,15 @@
       Flammable: [ Touch ]
       Extinguish: [ Touch ]
     reactions:
-    - reagents: [ Water, SpaceCleaner ]
-      methods: [ Touch ]
-      effects:
-      - !type:WashCreamPie
+    # - reagents: [ Water, SpaceCleaner ]
+      # methods: [ Touch ]
+      # effects:
+      # - !type:WashCreamPie
     - reagents: [ Water ]
       methods: [ Touch ]
       effects:
-      - !type:HealthChange
-        damage:
-          types:
-            Shock: 0.5
+      - !type:Electrocute
+        shockDamage: 1
   - type: Operated
     raceGraph: AndroidSurgery
     limbLossChance: 1.75
