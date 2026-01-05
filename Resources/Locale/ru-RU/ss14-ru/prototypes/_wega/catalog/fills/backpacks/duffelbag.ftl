@@ -1,16 +1,16 @@
-ent-ClothingBackpackDuffelVoidThruster = вещмешок с деталями двигателя
+ent-ClothingBackpackDuffelVoidThruster = { ent-ClothingBackpackDuffel }
     .desc = { ent-ClothingBackpackDuffel.desc }
-ent-ClothingBackpackDuffelVoidGyroscope = вещмешок с деталями гироскопа
+ent-ClothingBackpackDuffelVoidGyroscope = { ent-ClothingBackpackDuffel }
     .desc = { ent-ClothingBackpackDuffel.desc }
 ent-ClothingBackpackDuffelSalvageBaseKit = { ent-ClothingBackpackDuffelSalvage }
     .desc = { ent-ClothingBackpackDuffelSalvage.desc }
     .suffix = Набор
 
-ent-ClothingBackpackDuffelSyndicateFilledXC67 = набор "xC-67"
-    .desc = Громко и мощно: Штурмовая винтовка "xC-67" и три магазина к нему на 45 патронов.
+ent-ADTClothingBackpackDuffelSyndicateFilledXC67 = { ent-ClothingBackpackDuffelSyndicate }
+    .desc = { ent-ClothingBackpackDuffelSyndicate.desc }
     .suffix = набор "xC-67"
 
-ent-ClothingBackpackDuffelSyndicateFilledHristov = набор "Христов МК-2"
-    .desc = Метко и больно: Модернизированая снайперская винтовка "Христов МК-2" и 5 магазинов к нему.
-    .suffix = набор "Христов МК-2"
+ent-ADTClothingBackpackDuffelSyndicateFilledHristov = { ent-ClothingBackpackDuffelSyndicate }
+    .desc = { ent-ClothingBackpackDuffelSyndicate.desc }
+    .suffix = набор "Продвинутой снайперской винтовки"
 
