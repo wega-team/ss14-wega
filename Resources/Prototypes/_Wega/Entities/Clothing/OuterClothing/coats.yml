@@ -26,6 +26,7 @@
   name: cult robe
   description: "A set of robes worn by followers of the blood cult. Put on your hood and remove your ID card to hide your identity."
   components:
+  - type: AllowSuitStorage
   - type: Sprite
     sprite: _Wega/Clothing/OuterClothing/Coats/cultrobesalt.rsi
   - type: Clothing
