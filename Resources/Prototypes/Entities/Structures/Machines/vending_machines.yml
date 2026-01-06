@@ -1034,6 +1034,10 @@
     radius: 1
     energy: 2.0
     color: "#78645c"
+  # Corvax-Wega-Add-Start
+  - type: Voucher
+    typeVoucher: Security
+  # Corvax-Wega-Add-End
   - type: GuideHelp
     guides:
     - Security

@@ -1354,9 +1354,6 @@
   - JumpsuitTurtleneckBlack
   - JumpskirtTurtleneckBlackSleeveless
   - JumpsuitTurtleneckBlackSleeveless
-  - ClothingUniformTopColorRed
-  - ClothingUniformTopColorBlack
-  - ClothingUniformTopicCool
 
 - type: loadoutGroup
   id: BrigmedicBackpack

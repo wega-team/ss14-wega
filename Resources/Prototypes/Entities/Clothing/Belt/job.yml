@@ -375,7 +375,7 @@
   - type: Clothing
     sprite: Clothing/Belt/security.rsi
   - type: ExplosionResistance
-    damageCoefficient: 0.9
+    damageCoefficient: 0 # Corvax-Wega-Edit
   - type: Storage
     whitelist:
       tags:

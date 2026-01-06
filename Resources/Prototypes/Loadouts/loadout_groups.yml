@@ -3677,9 +3677,6 @@
   - JumpsuitTurtleneckBlack
   - JumpskirtTurtleneckBlackSleeveless
   - JumpsuitTurtleneckBlackSleeveless
-  - ClothingUniformTopColorRed
-  - ClothingUniformTopColorBlack
-  - ClothingUniformTopicCool
 # Corvax-Wega-add-end
 
 - type: loadoutGroup
@@ -3752,17 +3749,6 @@
   - DetectiveJumpskirt
   - NoirJumpsuit
   - NoirJumpskirt
-# Corvax-Wega-add-start
-  - JumpskirtTurtleneckRed
-  - JumpsuitTurtleneckRed
-  - JumpskirtTurtleneckBlack
-  - JumpsuitTurtleneckBlack
-  - JumpskirtTurtleneckBlackSleeveless
-  - JumpsuitTurtleneckBlackSleeveless
-  - ClothingUniformTopColorRed
-  - ClothingUniformTopColorBlack
-  - ClothingUniformTopicCool
-# Corvax-Wega-add-end
 
 - type: loadoutGroup
   id: DetectiveOuterClothing
@@ -3793,9 +3779,6 @@
   - JumpsuitTurtleneckBlack
   - JumpskirtTurtleneckBlackSleeveless
   - JumpsuitTurtleneckBlackSleeveless
-  - ClothingUniformTopColorRed
-  - ClothingUniformTopColorBlack
-  - ClothingUniformTopicCool
 # Corvax-Wega-add-end
 
 - type: loadoutGroup

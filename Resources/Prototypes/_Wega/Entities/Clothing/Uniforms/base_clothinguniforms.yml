@@ -40,3 +40,11 @@
   components:
   - type: ToggleableSpriteClothing
     defaultSuffix: "-down"
+
+- type: entity
+  abstract: true
+  id: ClothingSecurityUniformBase
+  components:
+  - type: SuitSensor
+    randomMode: false
+    mode: SensorCords
