@@ -89,7 +89,7 @@
   - type: Hands
     showInHands: false
     disableExplosionRecursion: true
-    canBeStripped: false
+    canBeStripped: true #Corvax-Wega-add
   - type: ComplexInteraction
   - type: IntrinsicRadioReceiver
   - type: IntrinsicRadioTransmitter
@@ -252,6 +252,7 @@
     voice: BarksCitadelSynthetic2 # Corvax-Wega-Barks
   - type: TTS # Corvax-TTS
     voice: TrainingRobot
+  - type: OfferGiver # Corvax-Wega-Offer
 
 - type: entity
   abstract: true
