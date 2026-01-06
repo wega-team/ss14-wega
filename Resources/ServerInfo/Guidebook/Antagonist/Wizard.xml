@@ -27,4 +27,190 @@
   Если вы вдруг захотите поразмышлять, не думайте дальше! [bold]Шар Размышлений[/bold] позволяет магу подключаться к сети камер станции, чтобы шпионить за другими незаметно.
   Может быть полезным, если вы пытаетесь что-то спланировать или остаться на шаг впереди от [color=red]Службы Безопасности[/color].
 
+  ## Карты таро
+
+  <Box>
+    <GuideEntityEmbed Entity="CardTarotBoxFilled" Caption="колода карт Таро"/>
+    <GuideEntityEmbed Entity="CardTarotNotEnchanted" Caption="пустая карта Таро"/>
+  </Box>
+
+  Маг всегда имеет при себе 1 полную пачку зачарованный карт Таро.
+  [bold]Использование:[/bold] Карту можно применить на себя (быстрое взаимодействие) или на цель в радиусе [bold]6 клеток[/bold]. После использования карта превращается в пепел. "Использовавшим" считается тот, на кого было направлено действие (вы или цель).
+
+  ### Карта Дурака (The Fool)
+  <Box>
+    <GuideEntityEmbed Entity="CardTarotFool" Caption="(Обычная)"/>
+    <GuideEntityEmbed Entity="CardTarotFoolReversed" Caption="(Перевёрнутая)"/>
+  </Box>
+  - [bold]Прямая:[/bold] Мгновенно телепортирует использовавшего на шаттл прибытия.
+  - [bold]Перевёрнутая:[/bold] Мгновенно снимает всю одежду с использовавшего.
+
+  ### Карта Мага (The Magician)
+  <Box>
+    <GuideEntityEmbed Entity="CardTarotMagician" Caption="(Обычная)"/>
+    <GuideEntityEmbed Entity="CardTarotMagicianReversed" Caption="(Перевёрнутая)"/>
+  </Box>
+  - [bold]Прямая:[/bold] Дарует использовавшему невосприимчивость к боли на 2 минуты.
+  - [bold]Перевёрнутая:[/bold] Сильно отталкивает все объекты в радиусе действия карты.
+
+  ### Карта Верховной Жрицы (The High Priestess)
+  <Box>
+    <GuideEntityEmbed Entity="CardTarotHighPriestess" Caption="(Обычная)"/>
+    <GuideEntityEmbed Entity="CardTarotHighPriestessReversed" Caption="(Перевёрнутая)"/>
+  </Box>
+  - [bold]Прямая:[/bold] Останавливает цель (стан), после чего через короткое время она получает тупой урон.
+  - [bold]Перевёрнутая:[/bold] [italic](эффект отсутствует)[/italic].
+
+  ### Карта Императрицы (The Empress)
+  <Box>
+    <GuideEntityEmbed Entity="CardTarotEmpress" Caption="(Обычная)"/>
+    <GuideEntityEmbed Entity="CardTarotEmpressReversed" Caption="(Перевёрнутая)"/>
+  </Box>
+  - [bold]Прямая:[/bold] Вводит использовавшему 4.5ед. ДизоксиЭфидрина и 12ед. пунктураза (передоз — задуманная особенность).
+  - [bold]Перевёрнутая:[/bold] На 40 секунд делает всех в радиусе действия пацифистами, кроме самого использовавшего.
+
+  ### Карта Императора (The Emperor)
+  <Box>
+    <GuideEntityEmbed Entity="CardTarotEmperor" Caption="(Обычная)"/>
+    <GuideEntityEmbed Entity="CardTarotEmperorReversed" Caption="(Перевёрнутая)"/>
+  </Box>
+  - [bold]Прямая:[/bold] Телепортирует использовавшего на маяк мостика.
+  - [bold]Перевёрнутая:[/bold] Телепортирует использовавшего к одному из глав станции (ВрИО не считаются).
+
+  ### Карта Иерофанта (The Hierophant)
+  <Box>
+    <GuideEntityEmbed Entity="CardTarotHierophant" Caption="(Обычная)"/>
+    <GuideEntityEmbed Entity="CardTarotHierophantReversed" Caption="(Перевёрнутая)"/>
+  </Box>
+  - [bold]Прямая:[/bold] Зачаровывает одежду использовавшего [bold]Кровавым щитом[/bold] (дает этот щит пользователю). Щит на одежде можно перезаряжать, но накладывать несколько нельзя.
+  - [bold]Перевёрнутая:[/bold] [italic](эффект отсутствует)[/italic].
+
+  ### Карта Влюблённых (The Lovers)
+  <Box>
+    <GuideEntityEmbed Entity="CardTarotLovers" Caption="(Обычная)"/>
+    <GuideEntityEmbed Entity="CardTarotLoversReversed" Caption="(Перевёрнутая)"/>
+  </Box>
+  - [bold]Прямая:[/bold] Лечит использовавшего на 40ед. физических повреждений, 40ед. ожогов и 40ед. яда, а также восстанавливает 100ед. крови.
+  - [bold]Перевёрнутая:[/bold] Наносит использовавшему 20ед. физического урона, 20ед. урона ожогами и отнимает 120ед. крови.
+
+  ### Карта Колесницы (The Chariot)
+  <Box>
+    <GuideEntityEmbed Entity="CardTarotChariot" Caption="(Обычная)"/>
+    <GuideEntityEmbed Entity="CardTarotChariotReversed" Caption="(Перевёрнутая)"/>
+  </Box>
+  - [bold]Прямая:[/bold] Накладывает на использовавшего на 10 секунд: ускорение, иммунитет к замедлению, иммунитет к стану и пацифизм.
+  - [bold]Перевёрнутая:[/bold] Превращает использовавшего в статую на 2 минуты.
+
+  ### Карта Правосудия (Justice)
+  <Box>
+    <GuideEntityEmbed Entity="CardTarotJustice" Caption="(Обычная)"/>
+    <GuideEntityEmbed Entity="CardTarotJusticeReversed" Caption="(Перевёрнутая)"/>
+  </Box>
+  - [bold]Прямая:[/bold] Создаёт рядом аптечку, слезоточивую гранату, палочку прохода и 100 кредитов.
+  - [bold]Перевёрнутая:[/bold] Создаёт 1 случайный грузовой контейнер (ящик карго).
+
+  ### Карта Отшельника (The Hermit)
+  <Box>
+    <GuideEntityEmbed Entity="CardTarotHermit" Caption="(Обычная)"/>
+    <GuideEntityEmbed Entity="CardTarotHermitReversed" Caption="(Перевёрнутая)"/>
+  </Box>
+  - [bold]Прямая:[/bold] Телепортирует использовавшего к одному случайному торговому автомату на станции. [italic]"Где он будет? Загадка."[/italic]
+  - [bold]Перевёрнутая:[/bold] Превращает всё оружие, броню и гранаты в радиусе действия в деньги.
+
+  ### Карта Колеса Фортуны (Wheel of Fortune)
+  <Box>
+    <GuideEntityEmbed Entity="CardTarotWheelOfFortune" Caption="(Обычная)"/>
+    <GuideEntityEmbed Entity="CardTarotWheelOfFortuneReversed" Caption="(Перевёрнутая)"/>
+  </Box>
+  - [bold]Прямая:[/bold] Создаёт рядом случайный торговый автомат.
+  - [bold]Перевёрнутая:[/bold] Принудительно заставляет использовавшего бросить [bold]Кубик Судьбы[/bold].
+
+  ### Карта Силы (Strength)
+  <Box>
+    <GuideEntityEmbed Entity="CardTarotStrength" Caption="(Обычная)"/>
+    <GuideEntityEmbed Entity="CardTarotStrengthReversed" Caption="(Перевёрнутая)"/>
+  </Box>
+  - [bold]Прямая:[/bold] Даёт эффект снижения урона, подобный навыку вампира [bold]"Нарастание крови"[/bold], на 30 секунд.
+  - [bold]Перевёрнутая:[/bold] Вызывает сильные галлюцинации на 2 минуты у всех существ в радиусе действия.
+
+  ### Карта Повешенного (The Hanged Man)
+  <Box>
+    <GuideEntityEmbed Entity="CardTarotHangedMan" Caption="(Обычная)"/>
+    <GuideEntityEmbed Entity="CardTarotHangedManReversed" Caption="(Перевёрнутая)"/>
+  </Box>
+  - [bold]Прямая:[/bold] Вызывает эффект гравитационной левитации (в описании отмечено "Не работает").
+  - [bold]Перевёрнутая:[/bold] Создаёт на использовавшем проклятую слот-машину и немедленно запускает одну прокрутку.
+
+  ### Карта Смерти (Death)
+  <Box>
+    <GuideEntityEmbed Entity="CardTarotDeath" Caption="(Обычная)"/>
+    <GuideEntityEmbed Entity="CardTarotDeathReversed" Caption="(Перевёрнутая)"/>
+  </Box>
+  - [bold]Прямая:[/bold] Наносит 20ед. механического и 20ед. термического урона всем в радиусе действия, кроме применившего.
+  - [bold]Перевёрнутая:[/bold] Создаёт рядом [bold]пустую оболочку конструкта[/bold] и [bold]камень души[/bold].
+
+  ### Карта Умеренности (Temperance)
+  <Box>
+    <GuideEntityEmbed Entity="CardTarotTemperance" Caption="(Обычная)"/>
+    <GuideEntityEmbed Entity="CardTarotTemperanceReversed" Caption="(Перевёрнутая)"/>
+  </Box>
+  - [bold]Прямая:[/bold] Полностью излечивает использовавшего от всех болезней, ядов, радиации и снимает эффект опьянения.
+  - [bold]Перевёрнутая:[/bold] Заставляет использовавшего проглотить 5 странных таблеток. [italic]"Что с ним произойдёт? Загадка."[/italic]
+
+  ### Карта Дьявола (The Devil)
+  <Box>
+    <GuideEntityEmbed Entity="CardTarotDevil" Caption="(Обычная)"/>
+    <GuideEntityEmbed Entity="CardTarotDevilReversed" Caption="(Перевёрнутая)"/>
+  </Box>
+  - [bold]Прямая:[/bold] Мгновенно лечит использовавшего на 45ед. механических и 45ед. термических повреждений, а затем в течение 30 секунд снимает суммарно 45ед. физического и термического урона со всех, кто находится рядом (кроме него самого).
+  - [bold]Перевёрнутая:[/bold] Создаёт рядом [bold]активированную светошумовую гранату[/bold].
+
+  ### Карта Башни (The Tower)
+  <Box>
+    <GuideEntityEmbed Entity="CardTarotTower" Caption="(Обычная)"/>
+    <GuideEntityEmbed Entity="CardTarotTowerReversed" Caption="(Перевёрнутая)"/>
+  </Box>
+  - [bold]Прямая:[/bold] Создаёт рядом [bold]активированную кластерную гранату[/bold].
+  - [bold]Перевёрнутая:[/bold] Создаёт груду камней в радиусе действия.
+
+  ### Карта Звёзд (The Stars)
+  <Box>
+    <GuideEntityEmbed Entity="CardTarotStars" Caption="(Обычная)"/>
+    <GuideEntityEmbed Entity="CardTarotStarsReversed" Caption="(Перевёрнутая)"/>
+  </Box>
+  - [bold]Прямая:[/bold] Телепортирует использовавшего к случайному ящику для улик (если такой есть) и открывает его. [italic]"Телепортация может быть небезопасной."[/italic]
+  - [bold]Перевёрнутая:[/bold] Наносит использовавшему 50ед. клеточного урона, вызывает перелом, внутреннее кровотечение или лёгкий ожог, а также создаёт 2 случайные карты Таро.
+
+  ### Карта Луны (The Moon)
+  <Box>
+    <GuideEntityEmbed Entity="CardTarotMoon" Caption="(Обычная)"/>
+    <GuideEntityEmbed Entity="CardTarotMoonReversed" Caption="(Перевёрнутая)"/>
+  </Box>
+  - [bold]Прямая:[/bold] Телепортирует использовавшего на любой существующий космический грид вне станции.
+  - [bold]Перевёрнутая:[/bold] [italic]"Созерцает на применившем самую достоверную информацию о нём."[/italic].
+
+  ### Карта Солнца (The Sun)
+  <Box>
+    <GuideEntityEmbed Entity="CardTarotSun" Caption="(Обычная)"/>
+    <GuideEntityEmbed Entity="CardTarotSunReversed" Caption="(Перевёрнутая)"/>
+  </Box>
+  - [bold]Прямая:[/bold] Полностью исцеляет использовавшего (восстанавливает всё здоровье).
+  - [bold]Перевёрнутая:[/bold] Наносит использовавшему эффект близорукости на 1 минуту.
+
+  ### Карта Суда (Judgement)
+  <Box>
+    <GuideEntityEmbed Entity="CardTarotJudgement" Caption="(Обычная)"/>
+    <GuideEntityEmbed Entity="CardTarotJudgementReversed" Caption="(Перевёрнутая)"/>
+  </Box>
+  - [bold]Прямая:[/bold] Телепортирует к использовавшему всех призраков, находящихся на раунде.
+  - [bold]Перевёрнутая:[/bold] [italic](эффект отсутствует)[/italic].
+
+  ### Карта Мира (The World)
+  <Box>
+    <GuideEntityEmbed Entity="CardTarotTheWorld" Caption="(Обычная)"/>
+    <GuideEntityEmbed Entity="CardTarotTheWorldReversed" Caption="(Перевёрнутая)"/>
+  </Box>
+  - [bold]Прямая:[/bold] Создаёт облако дыма в месте использования.
+  - [bold]Перевёрнутая:[/bold] Создаёт [bold]стенд голопаразита[/bold].
+
 </Document>

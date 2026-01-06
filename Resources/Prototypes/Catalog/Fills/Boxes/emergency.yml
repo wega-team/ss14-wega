@@ -99,7 +99,7 @@
       storagebase: !type:AllSelector
         children:
         - id: ClothingMaskGasSecurity
-        - id: EmergencyOxygenTankFilled
+        - id: DoubleEmergencyOxygenTankFilled # Corvax-Wega-Edit
         - id: EmergencyMedipen
         - id: Flare
         - id: FoodSnackNutribrick
@@ -119,7 +119,7 @@
       storagebase: !type:AllSelector
         children:
         - id: ClothingMaskGasSecurity
-        - id: EmergencyNitrogenTankFilled
+        - id: DoubleEmergencyNitrogenTankFilled # Corvax-Wega-Edit
         - id: EmergencyMedipen
         - id: Flare
         - id: FoodSnackNutribrick

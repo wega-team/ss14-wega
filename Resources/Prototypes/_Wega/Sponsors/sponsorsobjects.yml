@@ -57,7 +57,7 @@
 - type: entity
   parent: BigToyHammer
   id: BigToyHammerRed
-  name: bid red rubber hammer       
+  name: bid red rubber hammer
   description: A brightly colored hammer made of rubber.
   suffix: Sponsor
   components:
@@ -308,7 +308,7 @@
     tags: []
 
 - type: entity
-  parent: ClothingUniformBase
+  parent: [ ClothingUniformBase, ClothingSecurityUniformBase ]
   id: ClothingUniformJumpskirtElegantHOS
   name: elegant dress HOS
   description: A nice and tidy uniform. Shame about the bar though.

@@ -43,6 +43,7 @@
     back:
     - Flash
     - MagazinePistol
+    - SecurityVoucherCard # Corvax-Wega-Voucher
 
 - type: chameleonOutfit
   id: SeniorOfficerChameleonOutfit

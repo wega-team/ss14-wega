@@ -1,0 +1,29 @@
+- type: entity
+  parent: BaseItem
+  id: BaseVoucherCard
+  abstract: true
+  components:
+  - type: ActivatableUI
+    key: enum.VoucherUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.VoucherUiKey.Key:
+        type: VoucherBoundUserInterface
+
+- type: entity
+  parent: BaseVoucherCard
+  id: SecurityVoucherCard
+  name: security voucher card
+  description: "A discount card issued for the security service provided by NanoTrasen for more efficient distribution of equipment among department employees. Used in SecTech."
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/VoucherCard/vouchercard.rsi
+    state: security
+  - type: VoucherCard
+    typeVoucher: Security
+    kits:
+    - SecurityDeterrentKit
+    - SecuritySpareWeaponsKit
+    - SecurityFirstAidKit
+    - SecurityRiotsKit
+    - SecuritySupervisionKit

@@ -65,7 +65,7 @@
       sprite: Corvax/Clothing/Uniforms/Jumpsuit/hop_turtleneck.rsi
 
 - type: entity
-  parent: ClothingUniformToggleableBase
+  parent: [ ClothingUniformToggleableBase, ClothingSecurityUniformBase ] # Corvax-Wega-Edit
   id: ClothingUniformJumpsuitHoSBlack
   name: head of security's black suit
   description: It's Head of Security's black suit.
@@ -87,7 +87,7 @@
       sprite: Corvax/Clothing/Uniforms/Jumpsuit/rd_classical.rsi
 
 - type: entity
-  parent: ClothingUniformToggleableBase
+  parent: [ ClothingUniformToggleableBase, ClothingSecurityUniformBase ] # Corvax-Wega-Edit
   id: ClothingUniformJumpsuitPilot
   name: pilot suit
   description: Security pilot suit.

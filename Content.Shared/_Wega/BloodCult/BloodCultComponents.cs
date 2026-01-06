@@ -1,3 +1,4 @@
+using Content.Shared.Mind;
 using Content.Shared.StatusIcon;
 using Robust.Shared.Audio;
 using Robust.Shared.Containers;
@@ -30,6 +31,8 @@ public sealed partial class BloodCultistComponent : Component
 
     [DataField("cultistStatusIcon")]
     public ProtoId<FactionIconPrototype> StatusIcon { get; set; } = "BloodCultistFaction";
+
+    public ProtoId<MindChannelPrototype> CultMindChannel { get; set; } = "MindBloodCult";
 }
 
 [RegisterComponent]

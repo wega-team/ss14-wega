@@ -55,6 +55,7 @@
   abstract: true
   components:
   - type: Sprite
+    drawdepth: HighFloorObjects
     sprite: _Wega/Structures/Specific/bloodcult_structures.rsi
   - type: Appearance
     appearanceDataInit:
@@ -136,6 +137,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
+    drawdepth: HighFloorObjects
     sprite: _Wega/Structures/Specific/bloodcult_structures_large.rsi
     state: rune_large_anim
   - type: TimedDespawn
