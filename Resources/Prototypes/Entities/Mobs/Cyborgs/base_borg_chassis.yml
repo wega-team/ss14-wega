@@ -89,7 +89,7 @@
   - type: Hands
     showInHands: false
     disableExplosionRecursion: true
-    canBeStripped: false
+    canBeStripped: true #Corvax-Wega-add
   - type: ComplexInteraction
   - type: IntrinsicRadioReceiver
   - type: IntrinsicRadioTransmitter
