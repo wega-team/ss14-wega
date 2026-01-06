@@ -39,7 +39,7 @@
     reflectProb: 0.1
     spread: 90
   - type: Item
-    size: Ginormous
+    size: Normal
     storedSprite:
       state: storage
       sprite: _Wega/Objects/Weapons/Melee/syndicate_rapier_storage_64x.rsi
