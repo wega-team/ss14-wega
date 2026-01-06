@@ -31,11 +31,11 @@ public sealed partial class SlotMachineComponent : Component
     [ViewVariables(VVAccess.ReadOnly)] public int TinyWinPrize = 10;
 
     // Sounds
-    public SoundSpecifier CoinSound = new SoundCollectionSpecifier("CoinDrop");
-    public SoundSpecifier RollSound = new SoundPathSpecifier("/Audio/_Wega/Machines/Roulette/roulettewheel.ogg");
-    public SoundSpecifier EndSound = new SoundPathSpecifier("/Audio/_Wega/Machines/Roulette/ding_short.ogg");
-    public SoundSpecifier JackpotSound = new SoundPathSpecifier("/Audio/_Wega/Machines/Roulette/roulettejackpot.ogg");
-    public SoundSpecifier FailedSound = new SoundPathSpecifier("/Audio/Effects/Cargo/buzz_sigh.ogg");
+    public SoundSpecifier CoinSound = new SoundCollectionSpecifier("CoinDrop", AudioParams.Default.WithVolume(-4));
+    public SoundSpecifier RollSound = new SoundPathSpecifier("/Audio/_Wega/Machines/Roulette/roulettewheel.ogg", AudioParams.Default.WithVolume(-4));
+    public SoundSpecifier EndSound = new SoundPathSpecifier("/Audio/_Wega/Machines/Roulette/ding_short.ogg", AudioParams.Default.WithVolume(-4));
+    public SoundSpecifier JackpotSound = new SoundPathSpecifier("/Audio/_Wega/Machines/Roulette/roulettejackpot.ogg", AudioParams.Default.WithVolume(-4));
+    public SoundSpecifier FailedSound = new SoundPathSpecifier("/Audio/Effects/Cargo/buzz_sigh.ogg", AudioParams.Default.WithVolume(-4));
 }
 
 [RegisterComponent]
