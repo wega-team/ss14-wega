@@ -1,0 +1,69 @@
+- type: voucherKit
+  id: SecurityDeterrentKit
+  name: voucher-security-deterrent-name
+  description: voucher-security-deterrent-desc
+  items:
+  - id: GrenadeStinger
+    amount: 2
+  - id: GrenadeFlashBang
+    amount: 2
+  - id: Handcuffs
+    amount: 2
+  - id: Flash
+
+- type: voucherKit
+  id: SecuritySpareWeaponsKit
+  name: voucher-security-spare-weapons-name
+  description: voucher-security-spare-weapons-desc
+  items:
+  - id: WeaponPistolMk58
+    amount: 2
+  - id: MagazinePistol
+    amount: 4
+  - id: CombatKnife
+
+- type: voucherKit
+  id: SecurityFirstAidKit
+  name: voucher-security-first-aid-name
+  description: voucher-security-first-aid-desc
+  items:
+  - id: Tourniquet
+    amount: 2
+  - id: Brutepack
+    amount: 2
+  - id: Ointment
+    amount: 2
+  - id: EmergencyMedipen
+  - id: Bloodpack
+
+- type: voucherKit
+  id: SecurityRiotsKit
+  name: voucher-security-riots-name
+  description: voucher-security-riots-desc
+  items:
+  - id: RiotBulletShield
+    amount: 2
+  - id: RiotShield
+    amount: 2
+  - id: Stunbaton
+    amount: 2
+  - id: ClusterBangFull
+    amount: 2
+  - id: Zipties
+    amount: 4
+
+- type: voucherKit
+  id: SecuritySupervisionKit
+  name: voucher-security-supervision-name
+  description: voucher-security-supervision-desc
+  icon: { sprite: Objects/Weapons/Melee/truncheon.rsi, state: "icon" }
+  items:
+  - id: WiretappingCameraAlpha
+    amount: 2
+  - id: MagazinePistolHighCapacityPractice
+    amount: 4
+  - id: Truncheon
+  - id: Stunbaton
+  - id: Handcuffs
+    amount: 2
+  - id: Flash

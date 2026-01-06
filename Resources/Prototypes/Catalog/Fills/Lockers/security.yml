@@ -28,7 +28,7 @@
     children:
     - id: FlashlightSeclite
     - id: WeaponDisabler
-    - id: WeaponTaser
+    # - id: WeaponTaser # Corvax-Wega-Edit
     - id: ClothingBeltSecurityFilled
     - id: Flash
     - id: ClothingEyesGlassesSecurity
@@ -51,6 +51,7 @@
       amount: 2
     - id: NetworkConfigurator
     - id: Binoculars
+    - id: SecApartmentTablet # Corvax-Wega-SecApartment
 
 - type: entityTable
   id: FillLockerWardenHarduit
@@ -77,7 +78,7 @@
     - id: FlashlightSeclite
       prob: 0.8
     - id: WeaponDisabler
-    - id: WeaponTaser
+    # - id: WeaponTaser # Corvax-Wega-Edit
     - id: ClothingUniformJumpsuitSecGrey
       prob: 0.3
     - id: ClothingHeadHelmetBasic
@@ -113,7 +114,7 @@
   table: !type:AllSelector
     children:
     - id: ClothingEyesGlassesSecurity
-    - id: WeaponTaser
+    # - id: WeaponTaser # Corvax-Wega-Edit
     - id: WeaponDisabler
     - id: TrackingImplanter
       amount: 2
@@ -150,11 +151,12 @@
     - id: ClothingOuterCoatLabSecurityMedic # Corvax-Resprite
       prob: 0.5
     # Corvax-Wega-Brigmedic-start
-    - id: ClothingMaskBreathMedicalSecurity 
+    - id: ClothingMaskBreathMedicalSecurity
     - id: BoxBodyBag
     - id: Defibrillator
     - id: PowerCellHigh
       amount: 2
+    - id: SurgerykitFilled
     # Corvax-Wega-Brigmedic-end
 
 - type: entity
@@ -189,6 +191,7 @@
     - id: BoxEvidenceMarkers
     - id: HandLabeler
     - id: BoxTapeRecorder # Corvax-Wega-Recorder
+    - id: WeaponDisabler # Corvax-Wega-Add
 
 - type: entity
   id: ClosetBombFilled
