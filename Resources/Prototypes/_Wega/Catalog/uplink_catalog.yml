@@ -217,7 +217,7 @@
   icon: { sprite: _Wega/Objects/Weapons/Melee/syndicate_rapier.rsi, state: icon }
   productEntity: BeltSheathSyndieFilledBox
   cost:
-    Telecrystal: 6
+    Telecrystal: 8
   categories:
   - UplinkWeaponry
 
