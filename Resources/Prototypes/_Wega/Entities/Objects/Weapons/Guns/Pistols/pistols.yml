@@ -3,6 +3,7 @@
   id: WeaponPistolDesertEagle
   name: desert eagle
   description: "Here it is, the embodiment of strength and freedom — the Desert Eagle! The mere mention of this weapon causes a wave of goosebumps and adrenaline."
+  suffix: Pistol
   components:
   - type: Sprite
     sprite: _Wega/Objects/Weapons/Guns/Pistols/deserteagle.rsi

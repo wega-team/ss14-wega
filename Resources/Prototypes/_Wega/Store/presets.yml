@@ -6,8 +6,15 @@
     name: store-preset-name-tactical-interface
     categories:
     - ERTSquad
+    - ERTWeapon
+    - ERTWeaponPro
+    - ERTAmmo
     - ERTEquipment
+    - ERTEquipmentPro
+    - ERTGranades
     - ERTEngineering
+    - ERTMaterials
+    - ERTFlatpack
     - ERTMedicine
     currencyWhitelist:
     - TacticalResource

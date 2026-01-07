@@ -154,7 +154,7 @@
   cost:
     TacticalResource: 8
   categories:
-  - ERTEquipment
+  - ERTWeapon
 
 - type: listing
   id: ERTLaser
@@ -164,7 +164,7 @@
   cost:
     TacticalResource: 9
   categories:
-  - ERTEquipment
+  - ERTWeapon
 
 - type: listing
   id: ERTLecter
@@ -174,7 +174,7 @@
   cost:
     TacticalResource: 7
   categories:
-  - ERTEquipment
+  - ERTWeapon
 
 - type: listing
   id: ERTLecterAmmo
@@ -184,7 +184,7 @@
   cost:
     TacticalResource: 3
   categories:
-  - ERTEquipment
+  - ERTAmmo
 
 - type: listing
   id: ERTDrozd
@@ -194,7 +194,7 @@
   cost:
     TacticalResource: 7
   categories:
-  - ERTEquipment
+  - ERTWeapon
 
 - type: listing
   id: ERTDrozdAmmo
@@ -204,7 +204,7 @@
   cost:
     TacticalResource: 3
   categories:
-  - ERTEquipment
+  - ERTAmmo
 
 - type: listing
   id: ERWt550
@@ -214,7 +214,7 @@
   cost:
     TacticalResource: 7
   categories:
-  - ERTEquipment
+  - ERTWeapon
 
 - type: listing
   id: ERTWt550Ammo
@@ -224,7 +224,7 @@
   cost:
     TacticalResource: 3
   categories:
-  - ERTEquipment
+  - ERTAmmo
 
 - type: listing
   id: ERTEnforcer
@@ -234,7 +234,7 @@
   cost:
     TacticalResource: 7
   categories:
-  - ERTEquipment
+  - ERTWeapon
 
 - type: listing
   id: ERTLethalAmmo
@@ -244,7 +244,7 @@
   cost:
     TacticalResource: 2
   categories:
-  - ERTEquipment
+  - ERTAmmo
 
 - type: listing
   id: ERTIncendiarylAmmo
@@ -254,7 +254,7 @@
   cost:
     TacticalResource: 2
   categories:
-  - ERTEquipment
+  - ERTAmmo
 
 - type: listing
   id: ERTPulsePistol
@@ -264,7 +264,7 @@
   cost:
     TacticalResource: 10
   categories:
-  - ERTEquipment
+  - ERTWeaponPro
   conditions:
   - !type:StoreWhitelistCondition
     blacklist:
@@ -279,7 +279,7 @@
   cost:
     TacticalResource: 25
   categories:
-  - ERTEquipment
+  - ERTWeaponPro
   conditions:
   - !type:StoreWhitelistCondition
     blacklist:
@@ -364,7 +364,7 @@
   cost:
     TacticalResource: 3
   categories:
-  - ERTEquipment
+  - ERTGranades
 
 - type: listing
   id: ERTGrenadeShrapnel
@@ -373,7 +373,7 @@
   cost:
     TacticalResource: 2
   categories:
-  - ERTEquipment
+  - ERTGranades
 
 - type: listing
   id: ERTEmpGrenade
@@ -383,7 +383,7 @@
   cost:
     TacticalResource: 2
   categories:
-  - ERTEquipment
+  - ERTGranades
 
 - type: listing
   id: ERTTearGasGrenade
@@ -393,7 +393,7 @@
   cost:
     TacticalResource: 1
   categories:
-  - ERTEquipment
+  - ERTGranades
 
 - type: listing
   id: ERTJetpackMini
@@ -460,90 +460,99 @@
   name: tactical-interface-steel-name
   description: tactical-interface-steel-desc
   productEntity: CrateMaterialSteel
+  icon: { sprite: /Textures/Objects/Materials/Sheets/metal.rsi, state: steel_3 }
   cost:
     TacticalResource: 2
   categories:
-  - ERTEngineering
+  - ERTMaterials
 
 - type: listing
   id: ERTGlass
   name: tactical-interface-glass-name
   description: tactical-interface-glass-desc
+  icon: { sprite: /Textures/Objects/Materials/Sheets/glass.rsi, state: glass_3 }
   productEntity: CrateMaterialGlass
   cost:
     TacticalResource: 2
   categories:
-  - ERTEngineering
+  - ERTMaterials
 
 - type: listing
   id: ERTPlastic
   name: tactical-interface-plastic-name
   description: tactical-interface-plastic-desc
   productEntity: CrateMaterialPlastic
+  icon: { sprite: /Textures/Objects/Materials/Sheets/other.rsi, state: plastic_3 }
   cost:
     TacticalResource: 2
   categories:
-  - ERTEngineering
+  - ERTMaterials
 
 - type: listing
   id: ERTPlasma
   name: tactical-interface-plasma-name
   description: tactical-interface-plasma-desc
+  icon: { sprite: /Textures/Objects/Materials/Sheets/other.rsi, state: plasma_3 }
   productEntity: CrateMaterialPlasma
   cost:
     TacticalResource: 2
   categories:
-  - ERTEngineering
+  - ERTMaterials
 
 - type: listing
   id: ERTPlasteel
   name: tactical-interface-plasteel-name
   description: tactical-interface-plasteel-desc
+  icon: { sprite: /Textures/Objects/Materials/Sheets/metal.rsi, state: plasteel_3 }
   productEntity: CrateMaterialPlasteel
   cost:
     TacticalResource: 3
   categories:
-  - ERTEngineering
+  - ERTMaterials
 
 - type: listing
   id: ERTGold
   name: tactical-interface-gold-name
   description: tactical-interface-gold-desc
+  icon: { sprite: /Textures/Objects/Materials/ingots.rsi, state: gold_3 }
   productEntity: CrateMaterialGold
   cost:
     TacticalResource: 4
   categories:
-  - ERTEngineering
+  - ERTMaterials
 
 - type: listing
   id: ERTSilver
   name: tactical-interface-silver-name
   description: tactical-interface-silver-desc
+  icon: { sprite: /Textures/Objects/Materials/ingots.rsi, state: silver_3 }
   productEntity: CrateMaterialSilver
   cost:
     TacticalResource: 4
   categories:
-  - ERTEngineering
+  - ERTMaterials
 
 - type: listing
   id: ERTUranium
   name: tactical-interface-uranium-name
   description: tactical-interface-uranium-desc
+  icon: { sprite: /Textures/Objects/Materials/Sheets/other.rsi, state: uranium_3 }
   productEntity: CrateMaterialUranium
   cost:
     TacticalResource: 3
   categories:
-  - ERTEngineering
+  - ERTMaterials
 
 - type: listing
   id: ERTCable
   name: tactical-interface-cable-name
   description: tactical-interface-cable-desc
+  icon: { sprite: /Textures/Objects/Tools/cable-coils.rsi, state: coil-30 }
   productEntity: CrateEngineeringCableBulk
   cost:
     TacticalResource: 2
   categories:
-  - ERTEngineering
+  - ERTMaterials
 
 - type: listing
   id: ERTSuperPacman
@@ -554,7 +563,7 @@
   cost:
     TacticalResource: 5
   categories:
-  - ERTEngineering
+  - ERTFlatpack
 
 - type: listing
   id: ERTPacman
@@ -565,7 +574,7 @@
   cost:
     TacticalResource: 4
   categories:
-  - ERTEngineering
+  - ERTFlatpack
 
 - type: listing
   id: ERTJRPacman
@@ -576,7 +585,7 @@
   cost:
     TacticalResource: 3
   categories:
-  - ERTEngineering
+  - ERTFlatpack
 
 - type: listing
   id: ERTTelecomServer
@@ -587,7 +596,7 @@
   cost:
     TacticalResource: 6
   categories:
-  - ERTEngineering
+  - ERTFlatpack
 
 - type: listing
   id: ERTAdvancedSMES
@@ -598,7 +607,7 @@
   cost:
     TacticalResource: 7
   categories:
-  - ERTEngineering
+  - ERTFlatpack
 
 - type: listing
   id: ERTSubstation
@@ -609,7 +618,7 @@
   cost:
     TacticalResource: 3
   categories:
-  - ERTEngineering
+  - ERTFlatpack
 
 - type: listing
   id: ERTteg
@@ -620,7 +629,7 @@
   cost:
     TacticalResource: 20
   categories:
-  - ERTEngineering
+  - ERTFlatpack
 
 - type: listing
   id: ERTMedkitCombat

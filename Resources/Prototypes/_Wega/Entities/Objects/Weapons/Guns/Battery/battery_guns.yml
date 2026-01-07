@@ -3,6 +3,7 @@
   id: WeaponBlueLaserPistol
   name: blue laser pistol
   description: "Standard officer 'Blue Shield' laser with mode selector. Has non-lethal fire options for suppressing threats and lethal fire for neutralization. Chrome finish and ergonomic grip ensure accuracy and reliability in critical situations."
+  suffix: Pistol
   components:
   - type: Sprite
     sprite: _Wega/Objects/Weapons/Guns/Battery/bluerantiquelasergun.rsi
@@ -65,6 +66,7 @@
   id: WeaponDominator
   name: laser pistol 'Dominator'
   description: A high-tech weapon created by the environmental organization Sibyl System, specifically designed to fight crime.
+  suffix: Pistol
   components:
   - type: Sprite
     sprite: _Wega/Objects/Weapons/Guns/Battery/dominator.rsi
