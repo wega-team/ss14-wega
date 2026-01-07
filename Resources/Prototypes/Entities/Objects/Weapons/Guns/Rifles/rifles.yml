@@ -52,6 +52,11 @@
       gun_chamber: !type:ContainerSlot
   - type: StaticPrice
     price: 500
+  # Corvax-Wega-Suicide-start
+  - type: Execution
+    doAfterDuration: 5.0
+    canMeleeExecute: false
+  # Corvax-Wega-Suicide-end
 
 - type: entity
   name: AKMS
