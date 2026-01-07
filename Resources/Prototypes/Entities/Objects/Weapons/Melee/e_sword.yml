@@ -19,6 +19,7 @@
       malus: 0.6
     - type: Execution
       doAfterDuration: 4.0
+      canGunExecute: false # Corvax-Wega-Suicide
   - type: ItemToggleHot
   - type: ItemToggleSize
     activatedSize: Huge
@@ -131,6 +132,7 @@
       malus: 0.4
     - type: Execution
       doAfterDuration: 4.0
+      canGunExecute: false # Corvax-Wega-Suicide
   - type: Sprite
     sprite: Objects/Weapons/Melee/e_dagger_loud.rsi
     layers:
@@ -195,6 +197,7 @@
       malus: 0.4
     - type: Execution
       doAfterDuration: 4.0
+      canGunExecute: false # Corvax-Wega-Suicide
     - type: Contraband
       severity: Syndicate
   - type: Sprite
@@ -318,6 +321,7 @@
       malus: 0.7
     - type: Execution
       doAfterDuration: 4.0
+      canGunExecute: false # Corvax-Wega-Suicide
   - type: Wieldable
     wieldSound: null # esword light sound instead
   - type: MeleeWeapon
