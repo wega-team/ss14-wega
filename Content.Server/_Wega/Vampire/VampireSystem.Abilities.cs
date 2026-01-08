@@ -1274,7 +1274,7 @@ public sealed partial class VampireSystem
     #region Dantalion Abilities
     private void MaxThrallCountUpdate(EntityUid uid, VampireComponent component, MaxThrallCountUpdateEvent args)
     {
-        component.MaxThrallCount += 2;
+        component.MaxThrallCount++;
 
         _action.RemoveAction(uid, args.Action!);
     }
@@ -1282,13 +1282,10 @@ public sealed partial class VampireSystem
     private void OnAfterEnthrall(EntityUid uid, VampireComponent component, VampireEnthrallActionEvent args)
     {
         var target = args.Target;
-        if (!component.TruePowerActive)
+        if (component.ThrallCount >= component.MaxThrallCount)
         {
-            if (component.ThrallCount >= component.MaxThrallCount)
-            {
-                _popup.PopupEntity(Loc.GetString("vampire-max-trall-reached"), uid, uid, PopupType.Medium);
-                return;
-            }
+            _popup.PopupEntity(Loc.GetString("vampire-max-trall-reached"), uid, uid, PopupType.Medium);
+            return;
         }
 
         if (HasComp<VampireComponent>(target) || HasComp<MindShieldComponent>(target) || HasComp<BibleUserComponent>(target)
