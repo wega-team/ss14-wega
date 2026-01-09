@@ -648,8 +648,9 @@
     - Brutepack
   - type: Sprite
     state: morphine
-  - type: Healing
+  - type: Item
     heldPrefix: morphine
+  - type: Healing
     delay: 1.75
     damageContainers:
       - Android
@@ -658,6 +659,7 @@
       groups:
         Brute: -30 # 10 for each type in the group
         Burn: -30
+    healingBeginSound:
       path: "/Audio/Effects/packetrip.ogg"
     healingEndSound:
       path: "/Audio/Items/squeezebottle.ogg"
