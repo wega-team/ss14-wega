@@ -2,7 +2,7 @@
 # Развед - 100
 # Боевой - 200
 # Специалистов - 160
-
+## Отряд
 - type: listing
   id: ERTSecurityBasic
   name: tactical-interface-ert-security-basic-name
@@ -17,9 +17,6 @@
     whitelist:
       tags:
       - ERTTacticalInterface
-    blacklist:
-      tags:
-      - ERTTacticalInterfaceEVA
 
 - type: listing
   id: ERTSecurity
@@ -27,7 +24,7 @@
   description: tactical-interface-ert-security-desc
   productEntity: RandomHumanoidSpawnerERTSecurityEVALecter
   cost:
-    TacticalResource: 35
+    TacticalResource: 30
   categories:
   - ERTSquad
   conditions:
@@ -45,7 +42,7 @@
   description: tactical-interface-ert-medic-basic-desc
   productEntity: RandomHumanoidSpawnerERTMedical
   cost:
-    TacticalResource: 23
+    TacticalResource: 25
   categories:
   - ERTSquad
   conditions:
@@ -53,9 +50,6 @@
     whitelist:
       tags:
       - ERTTacticalInterface
-    blacklist:
-      tags:
-      - ERTTacticalInterfaceEVA
 
 - type: listing
   id: ERTMedic
@@ -63,7 +57,7 @@
   description: tactical-interface-ert-medic-desc
   productEntity: RandomHumanoidSpawnerERTMedicalEVA
   cost:
-    TacticalResource: 33
+    TacticalResource: 35
   categories:
   - ERTSquad
   conditions:
@@ -76,12 +70,12 @@
       - ERTTacticalInterfaceNotEVA
 
 - type: listing
-  id: ERTEngineer
-  name: tactical-interface-ert-engineer-name
-  description: tactical-interface-ert-engineer-desc
-  productEntity: RandomHumanoidSpawnerERTEngineerEVA
+  id: ERTEngineerBasic
+  name: tactical-interface-ert-engineer-basic-name
+  description: tactical-interface-ert-engineer-basic-desc
+  productEntity: RandomHumanoidSpawnerERTEngineer
   cost:
-    TacticalResource: 32
+    TacticalResource: 25
   categories:
   - ERTSquad
   conditions:
@@ -89,9 +83,21 @@
     whitelist:
       tags:
       - ERTTacticalInterface
-    blacklist:
+
+- type: listing
+  id: ERTEngineer
+  name: tactical-interface-ert-engineer-name
+  description: tactical-interface-ert-engineer-desc
+  productEntity: RandomHumanoidSpawnerERTEngineerEVA
+  cost:
+    TacticalResource: 35
+  categories:
+  - ERTSquad
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
       tags:
-      - ERTTacticalInterfaceCombat
+      - ERTTacticalInterface
 
 - type: listing
   id: ERTJanitorBasic
@@ -107,10 +113,6 @@
     whitelist:
       tags:
       - ERTTacticalInterface
-    blacklist:
-      tags:
-      - ERTTacticalInterfaceCombat
-      - ERTTacticalInterfaceEVA
 
 - type: listing
   id: ERTJanitor
@@ -126,9 +128,38 @@
     whitelist:
       tags:
       - ERTTacticalInterface
+
+- type: listing
+  id: ERTChaplinBasic
+  name: tactical-interface-ert-chaplain-basic-name
+  description: tactical-interface-ert-chaplain-basic-desc
+  productEntity: RandomHumanoidSpawnerERTChaplain
+  cost:
+    TacticalResource: 25
+  categories:
+  - ERTSquad
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - ERTTacticalInterface
+
+- type: listing
+  id: ERTChaplin
+  name: tactical-interface-ert-chaplain-name
+  description: tactical-interface-ert-chaplain-desc
+  productEntity: RandomHumanoidSpawnerERTChaplainEVA
+  cost:
+    TacticalResource: 35
+  categories:
+  - ERTSquad
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - ERTTacticalInterface
     blacklist:
       tags:
-      - ERTTacticalInterfaceCombat
       - ERTTacticalInterfaceNotEVA
 
 - type: listing
@@ -137,7 +168,7 @@
   description: tactical-interface-cburn-agent-desc
   productEntity: RandomHumanoidSpawnerCBURNUnit
   cost:
-    TacticalResource: 35
+    TacticalResource: 30
   categories:
   - ERTSquad
   conditions:
@@ -255,6 +286,41 @@
     TacticalResource: 2
   categories:
   - ERTAmmo
+
+- type: listing
+  id: ERTAmmoAll
+  name: tactical-interface-ammo-all-name
+  description: tactical-interface-ammo-all-desc
+  productEntity: ClothingBackpackERTAmmoAll
+  cost:
+    TacticalResource: 10
+  categories:
+  - ERTAmmo
+
+- type: listing
+  id: ERTPortableRecharger
+  name: tactical-interface-portable-recharger-name
+  description: tactical-interface-portable-recharger-desc
+  productEntity: PortableRecharger
+  cost:
+    TacticalResource: 4
+  categories:
+  - ERTEquipment
+
+- type: listing
+  id: ERTPortableRechargerPro
+  name: tactical-interface-portable-recharger-pro-name
+  description: tactical-interface-portable-recharger-pro-desc
+  productEntity: PortableRechargerTurboBag
+  cost:
+    TacticalResource: 8
+  categories:
+  - ERTEquipmentPro
+  conditions:
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - CBURNTacticalInterface
 
 - type: listing
   id: ERTPulsePistol
@@ -396,6 +462,56 @@
   - ERTGranades
 
 - type: listing
+  id: ERTTearGasGrenadeBox
+  name: tactical-interface-tear-gas-grenade-box-name
+  description: tactical-interface-tear-gas-grenade-box-desc
+  productEntity: BoxTearGas
+  cost:
+    TacticalResource: 2
+  categories:
+  - ERTGranades
+
+- type: listing
+  id: ERTCleanerGrenade
+  name: tactical-interface-cleaner-grenade-name
+  description: tactical-interface-cleaner-grenade-desc
+  productEntity: CleanerGrenade
+  cost:
+    TacticalResource: 1
+  categories:
+  - ERTGranades
+
+- type: listing
+  id: ERTCleanerGrenadeBox
+  name: tactical-interface-cleaner-grenade-box-name
+  description: tactical-interface-cleaner-grenade-box-desc
+  productEntity: BoxCleanerGrenades
+  cost:
+    TacticalResource: 1
+  categories:
+  - ERTGranades
+
+- type: listing
+  id: ERTHolyWaterGrenade
+  name: tactical-interface-holywater-grenade-name
+  description: tactical-interface-holywater-grenade-desc
+  productEntity: HolyWaterGrenade
+  cost:
+    TacticalResource: 2
+  categories:
+  - ERTGranades
+
+- type: listing
+  id: ERTHolyWaterGrenadeBox
+  name: tactical-interface-holywater-grenade-box-name
+  description: tactical-interface-holywater-grenade-box-desc
+  productEntity: BoxHollyGrenade
+  cost:
+    TacticalResource: 4
+  categories:
+  - ERTGranades
+
+- type: listing
   id: ERTJetpackMini
   name: tactical-interface-mini-jetpkac-name
   description: tactical-interface-mini-jetpkac-desc
@@ -426,7 +542,7 @@
   - ERTEquipment  
 
 - type: listing
-  id: ERTRCD
+  id: ERTRCDCombat
   name: tactical-interface-rcd-name
   description: tactical-interface-rcd-desc
   productEntity: RCD
@@ -441,7 +557,7 @@
   description: tactical-interface-rcd-ammo-desc
   productEntity: CrateRCDAmmo
   cost:
-    TacticalResource: 2
+    TacticalResource: 1
   categories:
   - ERTEngineering
 
@@ -451,7 +567,7 @@
   description: tactical-interface-rcd-experimental-desc
   productEntity: RCDRecharging
   cost:
-    TacticalResource: 8
+    TacticalResource: 6
   categories:
   - ERTEngineering
 
@@ -462,7 +578,7 @@
   productEntity: CrateMaterialSteel
   icon: { sprite: /Textures/Objects/Materials/Sheets/metal.rsi, state: steel_3 }
   cost:
-    TacticalResource: 2
+    TacticalResource: 1
   categories:
   - ERTMaterials
 
@@ -473,7 +589,7 @@
   icon: { sprite: /Textures/Objects/Materials/Sheets/glass.rsi, state: glass_3 }
   productEntity: CrateMaterialGlass
   cost:
-    TacticalResource: 2
+    TacticalResource: 1
   categories:
   - ERTMaterials
 
@@ -484,7 +600,7 @@
   productEntity: CrateMaterialPlastic
   icon: { sprite: /Textures/Objects/Materials/Sheets/other.rsi, state: plastic_3 }
   cost:
-    TacticalResource: 2
+    TacticalResource: 1
   categories:
   - ERTMaterials
 
@@ -495,7 +611,7 @@
   icon: { sprite: /Textures/Objects/Materials/Sheets/other.rsi, state: plasma_3 }
   productEntity: CrateMaterialPlasma
   cost:
-    TacticalResource: 2
+    TacticalResource: 1
   categories:
   - ERTMaterials
 
@@ -506,7 +622,7 @@
   icon: { sprite: /Textures/Objects/Materials/Sheets/metal.rsi, state: plasteel_3 }
   productEntity: CrateMaterialPlasteel
   cost:
-    TacticalResource: 3
+    TacticalResource: 2
   categories:
   - ERTMaterials
 
@@ -517,7 +633,7 @@
   icon: { sprite: /Textures/Objects/Materials/ingots.rsi, state: gold_3 }
   productEntity: CrateMaterialGold
   cost:
-    TacticalResource: 4
+    TacticalResource: 2
   categories:
   - ERTMaterials
 
@@ -528,7 +644,7 @@
   icon: { sprite: /Textures/Objects/Materials/ingots.rsi, state: silver_3 }
   productEntity: CrateMaterialSilver
   cost:
-    TacticalResource: 4
+    TacticalResource: 2
   categories:
   - ERTMaterials
 
@@ -539,7 +655,7 @@
   icon: { sprite: /Textures/Objects/Materials/Sheets/other.rsi, state: uranium_3 }
   productEntity: CrateMaterialUranium
   cost:
-    TacticalResource: 3
+    TacticalResource: 2
   categories:
   - ERTMaterials
 
@@ -550,7 +666,7 @@
   icon: { sprite: /Textures/Objects/Tools/cable-coils.rsi, state: coil-30 }
   productEntity: CrateEngineeringCableBulk
   cost:
-    TacticalResource: 2
+    TacticalResource: 1
   categories:
   - ERTMaterials
 
@@ -647,7 +763,7 @@
   description: tactical-interface-medkit-brute-desc
   productEntity: MedkitBruteFilled
   cost:
-    TacticalResource: 2
+    TacticalResource: 1
   categories:
   - ERTMedicine
 
@@ -657,7 +773,7 @@
   description: tactical-interface-medkit-burn-desc
   productEntity: MedkitBurnFilled
   cost:
-    TacticalResource: 2
+    TacticalResource: 1
   categories:
   - ERTMedicine
 
@@ -667,7 +783,7 @@
   description: tactical-interface-medkit-toxin-desc
   productEntity: MedkitToxinFilled
   cost:
-    TacticalResource: 3
+    TacticalResource: 2
   categories:
   - ERTMedicine
 
@@ -677,7 +793,67 @@
   description: tactical-interface-medkit-radiation-desc
   productEntity: MedkitRadiationFilled
   cost:
+    TacticalResource: 2
+  categories:
+  - ERTMedicine
+
+- type: listing
+  id: ERTMedkitAndroid
+  name: tactical-interface-medkit-android-name
+  description: tactical-interface-medkit-android-desc
+  productEntity: MedkitAndroidBlackFilled
+  cost:
+    TacticalResource: 2
+  categories:
+  - ERTMedicine
+
+- type: listing
+  id: ERTMedipenAll
+  name: tactical-interface-mepipen-all-name
+  description: tactical-interface-mepipen-all-desc
+  productEntity: BoxAutoInjectorAll
+  cost:
+    TacticalResource: 12
+  categories:
+  - ERTMedicine
+
+- type: listing
+  id: ERTMedipenMech
+  name: tactical-interface-mepipen-mech-name
+  description: tactical-interface-mepipen-mech-desc
+  productEntity: BoxAutoInjectorMech
+  cost:
+    TacticalResource: 10
+  categories:
+  - ERTMedicine
+
+- type: listing
+  id: ERTMedipenBurn
+  name: tactical-interface-mepipen-burm-name
+  description: tactical-interface-mepipen-burm-desc
+  productEntity: BoxAutoInjectorBurn
+  cost:
+    TacticalResource: 10
+  categories:
+  - ERTMedicine
+
+- type: listing
+  id: ERTMedipenStim
+  name: tactical-interface-mepipen-ert-name
+  description: tactical-interface-mepipen-ert-desc
+  productEntity: Ertpen
+  cost:
     TacticalResource: 3
+  categories:
+  - ERTMedicine
+
+- type: listing
+  id: ERTMedipenCompat
+  name: tactical-interface-mepipen-combat-name
+  description: tactical-interface-mepipen-combat-desc
+  productEntity: CombatMedipen
+  cost:
+    TacticalResource: 4
   categories:
   - ERTMedicine
 

@@ -25,3 +25,9 @@ stack-tourniquet =
         [few] турникета
        *[other] турникетов
     }
+stack-morphine =
+    { $amount ->
+        [1] тюбик нанопасты
+        [few] тюбика нанопасты
+       *[other] тюбиков нанопасты
+    }

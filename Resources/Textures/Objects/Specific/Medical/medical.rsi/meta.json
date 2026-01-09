@@ -47,6 +47,14 @@
 			"name": "morphine"
 		},
 		{
+			"name": "morphine-inhand-left",
+			"directions": 4
+		},
+		{
+			"name": "morphine-inhand-right",
+			"directions": 4
+		},
+		{
 			"name": "ointment"
 		},
         {

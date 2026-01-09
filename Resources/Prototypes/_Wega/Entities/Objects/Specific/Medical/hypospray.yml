@@ -24,40 +24,44 @@
     delay: 4.5
 
 - type: entity
-  name: chemical injector
-  parent: [ChemicalMedipen, BaseSyndicateContraband]
-  id: StimpackEmpty
-  suffix: Empty
+  name: stimpank
+  parent: ChemicalMedipen
+  id: Ertpen
   components:
   - type: Item
+    sprite: /Textures/_Wega/Objects/Specific/Medical/medipen.rsi
     inhandVisuals:
       left:
       - state: base-needle-inhand-left
       - state: base-colorA-inhand-left
-        color: "#9a040e"
+        color: "#7078E1"
       - state: base-colorB-inhand-left
-        color: "#c62933"
       right:
       - state: base-needle-inhand-right
       - state: base-colorA-inhand-right
-        color: "#9a040e"
+        color: "#7078E1"
       - state: base-colorB-inhand-right
-        color: "#c62933"
   - type: Sprite
-    sprite: Objects/Specific/Medical/medipen.rsi
+    sprite: /Textures/_Wega/Objects/Specific/Medical/medipen.rsi
     layers:
-    - state: stimpen
+    - state: ertpen
       map: ["enum.SolutionContainerLayers.Fill"]
+  - type: SolutionContainerVisuals
+    maxFillLevels: 1
+    changeColor: false
+    emptySpriteName: ertpen_empty
   - type: SolutionContainerManager
     solutions:
       pen:
         maxVol: 30
-  - type: SolutionContainerVisuals
-    maxFillLevels: 1
-    changeColor: false
-    emptySpriteName: stimpen_empty
+        reagents:
+        - ReagentId: Stimulants
+          Quantity: 30
   - type: Hypospray
     solutionName: pen
     transferAmount: 30
     onlyAffectsMobs: false
     injectOnly: true
+  - type: StaticPrice
+    price: 1500
+

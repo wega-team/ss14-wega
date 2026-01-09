@@ -30,12 +30,12 @@
     id: CBURNPDA
     pocket1: RadioHandheld
     pocket2: WeaponLaserGun
-    belt: ClothingBeltBandolier
+    belt: ClothingBeltMercWebbing # Corvax-Wega-ERT
   storage:
     back:
     - WeaponShotgunKammerer # Corvax-Wega-ERT
     - BoxShotgunIncendiary
-    - GrenadeFlashBang
+    - GrenadeIncendiary # Corvax-Wega-ERT
     - PillAmbuzolPlus
     - PillAmbuzol
 

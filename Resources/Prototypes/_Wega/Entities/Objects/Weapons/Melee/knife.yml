@@ -49,6 +49,7 @@
   name: arrhythmic knife
   description: They say that fear kills the mind, but sticking a knife in your head also works.
   components:
+  - type: NullRod
   - type: Sprite
     sprite: _Wega/Objects/Weapons/Melee/arrhythmic_knife.rsi
     state: icon

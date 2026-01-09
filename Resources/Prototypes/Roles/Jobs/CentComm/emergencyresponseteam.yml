@@ -140,19 +140,24 @@
     outerClothing: ClothingOuterArmorBasicSlim
     id: ERTChaplainPDA
     ears: ClothingHeadsetAltCentCom
-    belt: ClothingBeltStorageWaistbag
-    pocket1: Flare
+    belt: WeaponNullRodERT # Corvax-Wega
+    pocket1: WeaponPistolMk58 # Corvax-Wega
     pocket2: DrinkWaterBottleFull
     underwearbottom: ClothingUnderBottomHearts # Corvax-Wega
   storage:
     back:
     - BoxCandle
-    - BoxBodyBag
-    - DrinkWaterMelonJuiceJug
+    # - BoxBodyBag # Corvax-Wega
+    # - DrinkWaterMelonJuiceJug # Corvax-Wega
+    - DrinkWaterBottleFull # Corvax-Wega
+    - DrinkWaterBottleFull # Corvax-Wega
+    - HolyWaterGrenade # Corvax-Wega
+    - HolyWaterGrenade # Corvax-Wega
+    - HolyWaterGrenade # Corvax-Wega
     - Lantern
     - Lantern
     - Bible
-    - CombatCrowbar # Corvax-Wega-CombatCrowbar
+#    - CrowbarRed # Corvax-Wega-CombatCrowbar
     - FoodBakedBunHotX
     - FoodBakedBunHotX
     - FoodBakedBunHotX
@@ -172,15 +177,20 @@
     outerClothing: ClothingOuterHardsuitERTChaplain
     id: ERTChaplainPDA
     ears: ClothingHeadsetAltCentCom
-    belt: ClothingBeltStorageWaistbag
-    pocket1: Flare
+    belt: WeaponNullRodERT # Corvax-Wega
+    pocket1: WeaponPistolMk58 # Corvax-Wega
     pocket2: DrinkWaterBottleFull
     underwearbottom: ClothingUnderBottomHearts # Corvax-Wega
   storage:
     back:
     - BoxCandle
-    - BoxBodyBag
-    - DrinkWaterMelonJuiceJug
+    # - BoxBodyBag # Corvax-Wega
+    # - DrinkWaterMelonJuiceJug # Corvax-Wega
+    - DrinkWaterBottleFull # Corvax-Wega
+    - DrinkWaterBottleFull # Corvax-Wega
+    - HolyWaterGrenade # Corvax-Wega
+    - HolyWaterGrenade # Corvax-Wega
+    - HolyWaterGrenade # Corvax-Wega
     - Lantern
     - Lantern
     - Bible
@@ -233,13 +243,15 @@
     id: ERTEngineerPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltChiefEngineerFilled
-    pocket1: Flare
+    pocket1: WeaponPistolMk58 # Corvax-Wega
     pocket2: GasAnalyzer
     underwearbottom: ClothingUnderBottomHearts # Corvax-Wega
   storage:
     back:
     - trayScanner
-    - RCD
+    - CombatRCDExperimental # Corvax-Wega
+    - BorgGeneratorMaterialSteal # Corvax-Wega
+    - BorgGeneratorMaterialPlasteel # Corvax-Wega
     - RCDAmmo
     - RCDAmmo
     - CableMVStack
@@ -262,13 +274,15 @@
     id: ERTEngineerPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltChiefEngineerFilled
-    pocket1: Flare
+    pocket1: WeaponPistolMk58 # Corvax-Wega
     pocket2: GasAnalyzer
     underwearbottom: ClothingUnderBottomHearts # Corvax-Wega
   storage:
     back:
     - trayScanner
-    - RCD
+    - CombatRCDExperimental # Corvax-Wega
+    - BorgGeneratorMaterialSteal # Corvax-Wega
+    - BorgGeneratorMaterialPlasteel # Corvax-Wega
     - RCDAmmo
     - RCDAmmo
     - CableMVStack
@@ -424,13 +438,14 @@
     id: ERTMedicPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltMedicalFilled
-    pocket1: Flare
+    pocket1: WeaponPistolMk58 # Corvax-Wega
+    pocket2: Hypospray # Corvax-Wega-ERT
     underwearbottom: ClothingUnderBottomHearts # Corvax-Wega
   storage:
     back:
     # Corvax-Wega-ERT-start
 #    - Hypospray
-    - SurgerykitFilledPro # Corvax-Wega-Surgery
+    - SurgerykitFilledPro
     - SyringeBluespace
 #    - MedkitCombatFilled
 #    - MedkitCombatFilled
@@ -454,7 +469,8 @@
     id: ERTMedicPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltMedicalFilled
-    pocket1: Flare
+    pocket1: WeaponPistolMk58 # Corvax-Wega
+    pocket2: Hypospray # Corvax-Wega-ERT
     underwearbottom: ClothingUnderBottomHearts # Corvax-Wega
   storage:
     back:
@@ -506,15 +522,24 @@
     id: ERTJanitorPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltJanitorFilled
-    pocket1: Flare
+    pocket1: WeaponPistolMk58 # Corvax-Wega
+    pocket2: Holoprojector # Corvax-Wega
     underwearbottom: ClothingUnderBottomHearts # Corvax-Wega
   storage:
     back:
-    - LightReplacer
-    - BoxLightMixed
-    - BoxLightMixed
-    - Soap
-    - CombatCrowbar # Corvax-Wega-CombatCrowbar
+    - LightReplacerBorg # Corvax-Wega
+    - BoxTrashbag # Corvax-Wega
+    # - BoxLightMixed # Corvax-Wega
+    # - BoxLightMixed # Corvax-Wega
+    # - Soap # Corvax-Wega
+#    - CrowbarRed # Corvax-Wega-CombatCrowbar
+    - WeaponLauncherHydra
+    - GrenadeCleanade # Corvax-Wega
+    - GrenadeCleanade # Corvax-Wega
+    - GrenadeCleanade # Corvax-Wega
+    - GrenadeCleanade # Corvax-Wega
+    - GrenadeCleanade # Corvax-Wega
+    - GrenadeCleanade # Corvax-Wega
     - AdvMopItem
 
 - type: startingGear
@@ -529,15 +554,24 @@
     id: ERTJanitorPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltJanitorFilled
-    pocket1: Flare
+    pocket1: WeaponPistolMk58 # Corvax-Wega
+    pocket2: Holoprojector # Corvax-Wega
     underwearbottom: ClothingUnderBottomHearts # Corvax-Wega
   storage:
     back:
-    - LightReplacer
-    - BoxLightMixed
-    - BoxLightMixed
-    - Soap
+    - LightReplacerBorg # Corvax-Wega
+    - BoxTrashbag # Corvax-Wega
+    # - BoxLightMixed # Corvax-Wega
+    # - BoxLightMixed # Corvax-Wega
+    # - Soap # Corvax-Wega
 #    - CrowbarRed # Corvax-Wega-CombatCrowbar
+    - WeaponLauncherHydra
+    - GrenadeCleanade # Corvax-Wega
+    - GrenadeCleanade # Corvax-Wega
+    - GrenadeCleanade # Corvax-Wega
+    - GrenadeCleanade # Corvax-Wega
+    - GrenadeCleanade # Corvax-Wega
+    - GrenadeCleanade # Corvax-Wega
     - AdvMopItem
 
 - type: chameleonOutfit

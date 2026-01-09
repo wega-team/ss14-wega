@@ -15,7 +15,7 @@
     size: Normal
     shape:
     - 0,0,2,1
-  - type: Battery
+  - type: PredictedBattery
     maxCharge: 1500
     startingCharge: 1500
   - type: PredictedBatterySelfRecharger
@@ -30,7 +30,7 @@
   id: WeaponPlasmaCutterEmpty
   suffix: Empty
   components:
-  - type: Battery
+  - type: PredictedBattery
     maxCharge: 1500
     startingCharge: 0
 

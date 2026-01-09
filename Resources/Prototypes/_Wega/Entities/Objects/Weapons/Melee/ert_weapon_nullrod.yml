@@ -1,0 +1,242 @@
+- type: entity
+  parent: WeaponNullRod
+  id: WeaponNullRodERT
+  suffix: ERT
+  components:
+  - type: NullRod
+    firstNullDamage: 60
+    nullDamage: 30
+  - type: ItemSelector
+    requiredComponents: [ BibleUser ]
+    items:
+    - WeaponHandOfGodERT
+    - ClaymoreERT
+    - WeaponChainswordERT
+    - WeaponForceSwordERT
+    - WeaponHanzoSteelERT
+    - WeaponMultiverseSwordERT
+    - WeaponUnrealSword
+    - WeaponReaperScytheERT
+    - WeaponHighFrequencyBladeERT
+    - WeaponPossessedBladeERT
+    - ArrhythmicKnifeERT
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 25
+
+- type: entity
+  parent: Claymore
+  id: ClaymoreERT
+  suffix: ERT
+  components:
+  - type: MeleeWeapon
+    attackRate: 1.5
+    damage:
+      types:
+        Slash: 30
+    soundHit:
+        path: /Audio/Weapons/bladeslice.ogg
+  - type: NullRod
+    firstNullDamage: 60
+    nullDamage: 30
+  - type: Reflect
+    reflectProb: 0.3
+    spread: 90
+  - type: Clothing
+    sprite: Objects/Weapons/Melee/claymore.rsi
+    slots:
+    - Back
+    - SuitStorage
+    - Belt
+  - type: DisarmMalus
+
+- type: entity
+  parent: WeaponHandOfGod
+  id: WeaponHandOfGodERT
+  name: hand of god
+  suffix: ERT
+  description: "Your hand is now glowing amazingly!"
+  components:
+  - type: NullRod
+  - type: MeleeWeapon
+    autoAttack: true
+    attackRate: 2.0
+    wideAnimationRotation: 180
+    damage:
+      types:
+        Heat: 20
+    animation: WeaponArcClaw
+  - type: IgniteOnMeleeHit
+    fireStacks: 1
+
+- type: entity
+  parent: ClaymoreERT
+  id: WeaponChainswordERT
+  name: chainsword
+  description: Do not allow the heretic vulpa to live.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/chainsword.rsi
+  - type: MeleeWeapon
+    soundHit:
+      path: /Audio/Weapons/chainsaw.ogg
+      params:
+        volume: -3
+  - type: Item
+    storedSprite:
+      state: icon
+      sprite: _Wega/Objects/Weapons/Melee/chainsword.rsi
+    shape:
+    - 0,0,0,3
+  - type: Clothing
+    sprite: _Wega/Objects/Weapons/Melee/chainsword.rsi
+    slots:
+    - Belt
+
+- type: entity
+  parent: ClaymoreERT
+  id: WeaponForceSwordERT
+  name: force sword
+  description: It shines with the power of faith. Or the energy of a battery.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/force_sword.rsi
+  - type: Clothing
+    sprite: _Wega/Objects/Weapons/Melee/force_sword.rsi
+  - type: Item
+    storedSprite:
+      state: icon
+      sprite: _Wega/Objects/Weapons/Melee/force_sword.rsi
+
+- type: entity
+  parent: [ Katana, ClaymoreERT ]
+  id: WeaponHanzoSteelERT
+  name: force sword
+  description: This katana can cut through a holy ClaymoreERT. Along.
+  components:
+  - type: Item
+    storedSprite:
+      state: icon
+      sprite: Objects/Weapons/Melee/katana.rsi
+
+- type: entity
+  parent: ClaymoreERT
+  id: WeaponMultiverseSwordERT
+  name: multiverse sword
+  description: Once a messenger of interdimensional war, now it's just a dormant souvenir. But still sharp.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/multiverse_sword.rsi
+  - type: Clothing
+    sprite: _Wega/Objects/Weapons/Melee/multiverse_sword.rsi
+  - type: Item
+    storedSprite:
+      state: icon
+      sprite: _Wega/Objects/Weapons/Melee/multiverse_sword.rsi
+
+- type: entity
+  parent: BaseSword
+  id: WeaponReaperScytheERT
+  name: reaper scythe
+  description: Don't ask who the bell is tolling for...
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/reaper_scythe.rsi
+  - type: NullRod
+    firstNullDamage: 60
+    nullDamage: 30
+  - type: MeleeWeapon
+    autoAttack: true
+    attackRate: 3
+    damage:
+      types:
+        Slash: 25.5
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Item
+    shape:
+    - 0,0,1,3
+  - type: Clothing
+    sprite: _Wega/Objects/Weapons/Melee/reaper_scythe.rsi
+    slots:
+    - Back
+    - SuitStorage
+  - type: DisarmMalus
+
+- type: entity
+  parent: WeaponReaperScytheERT
+  id: WeaponHighFrequencyBladeERT
+  name: high frequency blade
+  description: Bad references are the DNA of the soul.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/hfrequency_sword.rsi
+  - type: Clothing
+    sprite: _Wega/Objects/Weapons/Melee/hfrequency_sword.rsi
+
+- type: entity
+  parent: WeaponReaperScytheERT
+  id: WeaponPossessedBladeERT
+  name: possessed blade
+  description: When the station is in chaos, it's nice to have a friend by your side.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/possessed_blade.rsi
+  - type: Clothing
+    sprite: _Wega/Objects/Weapons/Melee/possessed_blade.rsi
+    slots:
+    - Belt
+  - type: GhostRole
+    allowSpeech: true
+    makeSentient: true
+    name: ghost-role-information-possessed-blade-name
+    description: ghost-role-information-possessed-blade-description
+    rules: ghost-role-information-familiar-rules
+    raffle:
+      settings: default
+  - type: GhostTakeoverAvailable
+
+- type: entity
+  parent: BaseKnife
+  id: ArrhythmicKnifeERT
+  name: arrhythmic knife
+  description: They say that fear kills the mind, but sticking a knife in your head also works.
+  components:
+  - type: NullRod
+    firstNullDamage: 60
+    nullDamage: 30
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/arrhythmic_knife.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Wega/Objects/Weapons/Melee/arrhythmic_knife.rsi
+    slots:
+    - Belt
+  - type: MeleeWeapon
+    attackRate: 2.25
+    damage:
+      types:
+        Slash: 30
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: EmbeddableProjectile
+    sound: /Audio/Weapons/star_hit.ogg
+    offset: -0.15,0.0
+  - type: LandAtCursor
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Slash: 15
+  - type: DisarmMalus
+    malus: 0.225
+  - type: ThrowingAngle
+    angle: 225
+  - type: ClothingSpeedModifier
+    walkModifier: 1.1
+    sprintModifier: 1.1
+  - type: HeldSpeedModifier
+
+
+
+

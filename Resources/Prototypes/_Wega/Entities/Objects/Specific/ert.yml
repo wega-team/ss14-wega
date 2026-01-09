@@ -49,7 +49,6 @@
   - type: Tag
     tags:
     - ERTTacticalInterface
-    - ERTTacticalInterfaceNotEVA
 
 - type: entity
   parent: [BaseTacticalInterface]

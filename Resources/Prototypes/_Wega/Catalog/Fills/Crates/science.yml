@@ -2,7 +2,7 @@
   id: CrateBoxDnaFisk
   parent: CrateScience
   name: crate with box dna disks
-  description: Contains BoxDnaFisk for save genoms. Requires Science access to open.
+  description: Contains BoxDnaFisk for save genoms.
   components:
   - type: StorageFill
     contents:
@@ -22,7 +22,7 @@
   id: CrateMiningServerMAXFlatpack
   parent: CrateScience
   name: mining servers and console flatpack
-  description: Contains a flatpack of a mining servers and console. Requires Science access to open.
+  description: Contains a flatpack of a mining servers and console.
   components:
   - type: StorageFill
     contents:
@@ -34,7 +34,7 @@
   id: CrateMiningServerFlatpack
   parent: CrateScience
   name: mining server flatpack
-  description: Contains a flatpack of a mining server. Requires Science access to open.
+  description: Contains a flatpack of a mining server.
   components:
   - type: StorageFill
     contents:
@@ -49,3 +49,23 @@
   - type: StorageFill
     contents:
       - id: GeneticAncestorCubeBox
+
+- type: entity
+  id: CrateMedkitAndroid
+  parent: CrateScience
+  name: crate with medkit for anroid
+  description: Contains medkit for anroid.
+  components:
+  - type: StorageFill
+    contents:
+      - id: MedkitAndroid
+      
+- type: entity
+  id: CrateMedkitAndroidBlack
+  parent: CrateScience
+  name: crate with box dna disks
+  description: Contains black medkit for anroid.
+  components:
+  - type: StorageFill
+    contents:
+      - id: MedkitAndroidBlack

@@ -27,12 +27,12 @@
     id: CBURNLeaderPDA
     pocket1: TacticalInterfaceCBURN
     pocket2: WeaponAdvancedLaser
-    belt: ClothingBeltBandolier
+    belt: ClothingBeltMercWebbing
   storage:
     back:
     - WeaponShotgunKammerer
     - BoxShotgunIncendiary
-    - GrenadeFlashBang
+    - GrenadeIncendiary
     - PillAmbuzolPlus
     - PillAmbuzol
     - RadioHandheld

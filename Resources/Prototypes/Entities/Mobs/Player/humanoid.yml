@@ -169,8 +169,8 @@
   suffix: ERTRole, Basic
   components:
     - type: Sprite
-      sprite: Markers/jobs.rsi
-      state: chaplain #needs an ERT variant once a good suit it made.
+      sprite: _Wega/Markers/jobs.rsi # Corvax-wega-ERT
+      state: ertchaplain # Corvax-wega-ERT
     - type: RandomMetadata
       nameSegments:
       - NamesMilitaryFirst
@@ -207,8 +207,8 @@
   suffix: ERTRole, Enviro EVA
   components:
     - type: Sprite
-      sprite: Markers/jobs.rsi
-      state: chaplain #needs an ERT variant once a good suit it made.
+      sprite: _Wega/Markers/jobs.rsi # Corvax-wega-ERT
+      state: ertchaplaineva # Corvax-wega-ERT
     - type: RandomHumanoidSpawner
       settings: ERTChaplainEVA
 

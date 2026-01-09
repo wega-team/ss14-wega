@@ -195,7 +195,7 @@
   - type: Item
     storedOffset: 0,-5
     # Corvax-Wega-gun-start
-  - type: Battery
+  - type: PredictedBattery
     maxCharge: 1250
     startingCharge: 1250
     # Corvax-Wega-gun-end
@@ -464,7 +464,7 @@
   - type: GunWieldBonus
     minAngle: -21
     maxAngle: -32
-  - type: Battery
+  - type: PredictedBattery
     maxCharge: 1500
     startingCharge: 1500
     # Corvax-Wega-gun-end
@@ -534,7 +534,7 @@
   - type: GunWieldBonus
     minAngle: -21
     maxAngle: -32
-  - type: Battery
+  - type: PredictedBattery
     maxCharge: 1500
     startingCharge: 1500
     # Corvax-Wega-gun-end

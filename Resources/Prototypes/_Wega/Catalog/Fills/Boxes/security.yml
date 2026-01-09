@@ -54,3 +54,18 @@
     contents:
       - id: WiretappingCameraAlpha
         amount: 9
+        
+- type: entity
+  name: box with holly grenade
+  id: BoxHollyGrenade
+  parent: BoxCardboard
+  description: A box with holly grenade
+  components:
+  - type: Sprite
+    layers:
+      - state: box_medical
+      - state: flashbang
+  - type: StorageFill
+    contents:
+      - id: HolyWaterGrenade
+        amount: 4

@@ -1,0 +1,28 @@
+#Entities found at entities/objects/specific/medical
+- type: entity
+  id: MedkitAndroidFilled
+  suffix: Filled
+  parent: MedkitAndroid
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: CableApcStack
+        - id: Welder
+        - id: ClothingHeadHatWelding
+        - id: Tyriumpack
+
+- type: entity
+  id: MedkitAndroidBlackFilled
+  suffix: Filled
+  parent: MedkitAndroidBlack
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: Nanopast
+          amount: 2
+        - id: WelderExperimental
+        - id: Tyriumpack
