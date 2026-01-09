@@ -55,6 +55,9 @@ public sealed partial class SharedSharpeningSystem : EntitySystem
 
         _audio.PlayPredicted(sharpener.SharpeningSound, args.Target.Value, args.User);
 
+        if (sharpener.DeleteOnSharpening)
+            QueueDel(args.Target);
+
         args.Handled = true;
     }
 

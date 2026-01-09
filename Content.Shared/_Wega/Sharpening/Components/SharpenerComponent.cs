@@ -14,4 +14,7 @@ public sealed partial class SharpenerComponent : Component
 
     [DataField("SharpeningSound"), AutoNetworkedField]
     public SoundSpecifier SharpeningSound = new SoundPathSpecifier("/Audio/_Wega/Effects/anvil.ogg");
+
+    [DataField("DeleteOnSharpening"), AutoNetworkedField]
+    public bool DeleteOnSharpening = false;
 }
