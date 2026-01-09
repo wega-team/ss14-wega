@@ -1,5 +1,6 @@
 using Robust.Shared.GameStates;
 using Robust.Shared.Audio;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Sharpening.Components;
 
@@ -17,4 +18,7 @@ public sealed partial class SharpenerComponent : Component
 
     [DataField("DeleteOnSharpening"), AutoNetworkedField]
     public bool DeleteOnSharpening = false;
+
+    [DataField("SpawnOnDelete"), AutoNetworkedField]
+    public EntProtoId Prototype = string.Empty;
 }

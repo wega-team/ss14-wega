@@ -4,11 +4,11 @@ using Content.Shared.Interaction;
 using Content.Shared.Weapons.Melee;
 using Robust.Shared.Audio.Systems;
 using Content.Shared.Weapons.Melee.Events;
+using Content.Shared.Sharpening.Events;
 
 namespace Content.Shared.Sharpening.Systems;
 
-
-public sealed partial class SharedSharpeningSystem : EntitySystem
+public abstract class SharedSharpeningSystem : EntitySystem
 {
     [Dependency] private readonly SharedAudioSystem _audio = default!;
 
@@ -53,10 +53,8 @@ public sealed partial class SharedSharpeningSystem : EntitySystem
         ent.Comp.PreviousDamage = weapon.Damage;
         weapon.Damage = ent.Comp.Damage;
 
-        _audio.PlayPredicted(sharpener.SharpeningSound, args.Target.Value, args.User);
-
-        if (sharpener.DeleteOnSharpening)
-            QueueDel(args.Target);
+        var ev = new SharpeningFinishedEvent(GetNetEntity(args.Target.Value), GetNetEntity(ent.Owner));
+        RaiseLocalEvent(args.Target.Value, ev);
 
         args.Handled = true;
     }
