@@ -1,0 +1,7 @@
+- type: entity
+  name: Base Accent Toggle Clothing
+  abstract: true
+  id: BaseAccentToggleClothing
+  components:
+  - type: ToggleClothing
+    action: ActionClothingAccentToggle

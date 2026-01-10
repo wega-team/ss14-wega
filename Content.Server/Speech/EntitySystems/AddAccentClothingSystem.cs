@@ -1,5 +1,6 @@
 using Content.Server.Speech.Components;
 using Content.Shared.Clothing;
+using Content.Shared.Toggleable;
 
 namespace Content.Server.Speech.EntitySystems;
 
@@ -10,6 +11,7 @@ public sealed class AddAccentClothingSystem : EntitySystem
         base.Initialize();
         SubscribeLocalEvent<AddAccentClothingComponent, ClothingGotEquippedEvent>(OnGotEquipped);
         SubscribeLocalEvent<AddAccentClothingComponent, ClothingGotUnequippedEvent>(OnGotUnequipped);
+		SubscribeLocalEvent<AddAccentClothingComponent, ToggleActionEvent>(OnToggleEvent);
     }
 
 
@@ -43,4 +45,21 @@ public sealed class AddAccentClothingSystem : EntitySystem
 
         component.IsActive = false;
     }
+	
+	private void OnToggleEvent(EntityUid uid, AddAccentClothingComponent component, ToggleActionEvent args)
+	{
+		var componentType = Factory.GetRegistration(component.Accent).Type;
+		if (component.IsActive)
+		{
+			RemComp(args.Performer, componentType);
+		    component.IsActive = false;
+		}
+		else
+		{
+			var accentComponent = (Component) Factory.GetComponent(componentType);
+	        AddComp(args.Performer, accentComponent);
+			component.IsActive = true;
+		}
+		args.Handled = true;
+	}
 }

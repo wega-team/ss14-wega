@@ -29,7 +29,7 @@
     - WhitelistChameleon
 
 - type: entity
-  parent: ClothingHeadBaseBeret # Corvax-Wega-Dirtable
+  parent: [ ClothingHeadBaseBeret, BaseAccentToggleClothing ] # Corvax-Wega-Dirtable
   id: ClothingHeadHatBeretFrench
   name: french beret
   description: A French beret. "Vive la France!"
@@ -586,7 +586,7 @@
     - CorgiWearable
 
 - type: entity
-  parent: ClothingHeadBase
+  parent: [ ClothingHeadBase, BaseAccentToggleClothing ]
   id: ClothingHeadHatSombrero
   name: sombrero
   description: "\"Perfect for Space Mexico, si?\""
@@ -679,7 +679,7 @@
     - WhitelistChameleon
 
 - type: entity
-  parent: [ClothingHeadBase, BaseFoldable]
+  parent: [ ClothingHeadBase, BaseFoldable, BaseAccentToggleClothing ]
   id: ClothingHeadHatUshanka
   name: ushanka
   description: "\"Perfect for winter in Siberia, da?\""
@@ -1346,7 +1346,7 @@
     sprite: Clothing/Head/Hats/greyflatcap.rsi
 
 - type: entity
-  parent: ClothingHeadBase
+  parent: [ ClothingHeadBase, BaseAccentToggleClothing ]
   id: ClothingHeadHatBrownFlatcap
   name: brown flatcap
   description: "\"Stupid clown! You made me look bad!\""

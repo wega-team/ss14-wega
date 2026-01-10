@@ -1,0 +1,12 @@
+- type: entity
+  parent: BaseAction
+  id: ActionClothingAccentToggle
+  name: Toogle Accent
+  description: Toggle accent of clothing
+  components:
+  - type: Action
+    itemIconStyle: BigItem
+    priority: -20
+    useDelay: 1
+  - type: InstantAction
+    event: !type:ToggleActionEvent
