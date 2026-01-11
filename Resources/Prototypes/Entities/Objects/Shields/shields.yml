@@ -96,6 +96,10 @@
       state: riot_laser-icon
     - type: Item
       heldPrefix: riot_laser
+    - type: Reflect
+      reflectProb: 0.4
+      reflects:
+        - Energy
     - type: Blocking
       passiveBlockModifier:
         coefficients:

@@ -13,7 +13,7 @@
     sprite: Corvax/Mobs/Species/Vulpkanin/parts.rsi # Mobs/Species/Vulpkanin/parts.rsi # Corvax-CorvaxVulp_Port
     state: full
   - type: Body
-    prototype: Vulpkanin
+    prototype: CorvaxVulpkanin
   - type: Speech
     speechSounds: Vulpkanin
     speechVerb: Vulpkanin
@@ -122,12 +122,6 @@
     - HeadSide
     - FacialHair
     - Hair
-    markingsDisplacement:
-      Hair:
-        sizeMaps:
-          32:
-            sprite: Mobs/Species/Vulpkanin/displacement.rsi
-            state: hair
   - type: Inventory
     speciesId: vulpkanin #временно не corvaxvulpkanin Corvax-CorvaxVulp_Port
     #vulpkanin Corvax-CorvaxVulp_Port start
@@ -233,6 +227,8 @@
     damageRecovery:
       types:
         Asphyxiation: -2.0
+  - type: Carriable # Corvax-Wega-Carrying
+  - type: DiseaseCarrier # Corvax-Wega-Disease
 #vulpkanin Corvax-CorvaxVulp_Port end
 
 - type: entity
