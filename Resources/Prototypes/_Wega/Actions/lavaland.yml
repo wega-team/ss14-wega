@@ -1,0 +1,71 @@
+- type: entity
+  parent: BaseAction
+  id: ActionGoliathTentacle
+  name: "[color=red]Tentacle Slam[/color]"
+  description: Use your tentacles to grab and stun a target player!
+  components:
+  - type: Action
+    raiseOnUser: true
+    icon:
+      sprite: Mobs/Aliens/Asteroid/goliath.rsi
+      state: goliath_tentacle_spawn
+    iconOn:
+      sprite: Mobs/Aliens/Asteroid/goliath.rsi
+      state: goliath_tentacle_wiggle
+    sound:
+      path: "/Audio/Weapons/slash.ogg"
+    useDelay: 12
+  - type: TargetAction
+    range: 7
+  - type: WorldTargetAction
+    event: !type:GoliathSummonTentacleAction
+
+- type: entity
+  parent: BaseAction
+  id: ActionLegionSummon
+  name: Summon Skull
+  description: ""
+  components:
+  - type: Action
+    raiseOnUser: true
+    icon:
+      sprite: _Wega/Mobs/Lavaland/legionskull.rsi
+      state: legion_head_1
+    useDelay: 2.5
+  - type: TargetAction
+    range: 10
+  - type: EntityTargetAction
+    event: !type:LegionSummonSkullAction
+
+- type: entity
+  parent: BaseAction
+  id: ActionMegaLegion
+  name: Mega Legion attack
+  description: ""
+  components:
+  - type: Action
+    raiseOnUser: false
+    icon:
+      sprite: _Wega/Mobs/Lavaland/legionskull.rsi
+      state: legion_head_1
+    useDelay: 1.5
+  - type: TargetAction
+    range: 10
+  - type: EntityTargetAction
+    event: !type:MegaLegionAction
+
+- type: entity
+  parent: BaseAction
+  id: ActionBloodDrunkMinerDash
+  name: Dash
+  description: ""
+  components:
+  - type: Action
+    useDelay: 10
+    icon:
+      sprite: Interface/Actions/jump.rsi
+      state: icon
+  - type: TargetAction
+    range: 10
+  - type: WorldTargetAction
+    event: !type:BloodDrunkMinerDashAction

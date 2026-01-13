@@ -1,0 +1,18 @@
+- type: entity
+  id: PKAUpgradeAoE
+  parent: BasePKAUpgrade
+  name: PKA modkit (aoe)
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+    - state: overlay-1
+      color: "#ec9b2d"
+    - state: overlay-2
+      color: "#a71010"
+    - state: overlay-3
+      color: "#eb4c13"
+  - type: GunUpgrade
+    tags: [ GunUpgradeAoE ]
+    examineText: gun-upgrade-examine-text-aoe
+  - type: GunUpgradeAoE

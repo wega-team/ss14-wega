@@ -1,0 +1,14 @@
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobLegionLavaland
+  name: Legion Lavaland Spawner
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: legion
+      sprite: _Wega/Mobs/Lavaland/legion.rsi
+    - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+    - MobLegionLavaland

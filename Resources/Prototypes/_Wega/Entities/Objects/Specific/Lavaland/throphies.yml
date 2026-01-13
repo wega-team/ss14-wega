@@ -1,0 +1,165 @@
+- type: entity
+  parent: BaseItem
+  id: BaseTrophyLavaland
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Lavaland/trophies.rsi
+  - type: Item
+    size: Small
+  - type: CrusherUpgrade
+  - type: StaticPrice
+    price: 250
+  - type: Tag
+    tags:
+    - CrusherUpgrade
+
+- type: entity
+  parent: BaseTrophyLavaland
+  id: TrophyLavalandLegionSkull
+  name: legion skull
+  description: ""
+  components:
+  - type: Sprite
+    state: skull
+  - type: CrusherUpgrade
+    tags: [ CrusherUpgradeLegion ]
+    examineText: crusher-upgrade-examine-text-legion
+  - type: CrusherLegionSkullUpgrade
+
+- type: entity
+  parent: BaseTrophyLavaland
+  id: TrophyLavalandGoliathTentacle
+  name: goliath tentacle
+  description: ""
+  components:
+  - type: Sprite
+    state: tendril
+  - type: CrusherUpgrade
+    tags: [ CrusherUpgradeGoliath ]
+    examineText: crusher-upgrade-examine-text-goliath
+  - type: CrusherGoliathTentacleUpgrade
+
+- type: entity
+  parent: TrophyLavalandGoliathTentacle
+  id: TrophyLavalandAncientGoliathTentacle
+  name: goliath tentacle
+  description: ""
+  components:
+  - type: Sprite
+    state: ancient_tendril
+
+- type: entity
+  parent: BaseTrophyLavaland
+  id: TrophyLavalandWatcherWing
+  name: watcher wing
+  description: ""
+  components:
+  - type: Sprite
+    state: wing
+  - type: CrusherUpgrade
+    tags: [ CrusherUpgradeWatcher ]
+    examineText: crusher-upgrade-examine-text-watcher
+  - type: CrusherWatcherWingUpgrade
+
+- type: entity
+  parent: TrophyLavalandWatcherWing
+  id: TrophyLavalandIceWatcherWing
+  name: ice watcher wing
+  description: ""
+  components:
+  - type: Sprite
+    state: ice_wing
+  - type: CrusherUpgrade
+    tags: [ CrusherUpgradeWatcher ]
+    examineText: crusher-upgrade-examine-text-ice-watcher
+  - type: CrusherWatcherWingUpgrade
+    resetsTime: 0.8
+
+- type: entity
+  parent: BaseTrophyLavaland
+  id: TrophyLavalandMagmaWatcherWing
+  name: magma watcher wing
+  description: ""
+  components:
+  - type: Sprite
+    state: magma_wing
+  - type: CrusherUpgrade
+    tags: [ CrusherUpgradeMagmaWatcher ]
+    examineText: crusher-upgrade-examine-text-magma-watcher
+  - type: CrusherMagmaWingUpgrade
+    damage:
+      types:
+        Heat: 5
+
+- type: entity
+  parent: BaseTrophyLavaland
+  id: TrophyLavalandBDMEye
+  name: eye of the Blood Drunk Miner
+  description: ""
+  components:
+  - type: Sprite
+    state: eye
+  - type: CrusherUpgrade
+    tags: [ CrusherUpgradeBDM ]
+    examineText: crusher-upgrade-examine-text-blood-brunk-miner
+  - type: CrusherEyeBloodDrunkMinerUpgrade
+
+- type: entity
+  parent: BaseTrophyLavaland
+  id: TrophyLavalandAshDrakeSpike
+  name: ash drake spike
+  description: ""
+  components:
+  - type: Sprite
+    state: spike
+  - type: CrusherUpgrade
+    tags: [ CrusherUpgradeAshDrake ]
+    examineText: crusher-upgrade-examine-text-ash-drake
+  - type: CrusherAshDrakeSpikeUpgrade
+
+- type: entity
+  parent: BaseTrophyLavaland
+  id: TrophyLavalandBubblegumDemonClaws
+  name: demon claws
+  description: ""
+  components:
+  - type: Sprite
+    state: claws
+  - type: CrusherUpgrade
+    tags: [ CrusherUpgradeBubblegum ]
+    examineText: crusher-upgrade-examine-text-bubblegum
+  - type: CrusherDemonClawsUpgrade
+
+- type: entity
+  parent: BaseTrophyLavaland
+  id: TrophyLavalandColossusBlasterTubes
+  name: blaster tubes
+  description: ""
+  components:
+  - type: Sprite
+    state: tubes
+  - type: CrusherUpgrade
+    tags: [ CrusherUpgradeColossus ]
+    examineText: crusher-upgrade-examine-text-colossus
+  - type: CrusherBlasterTubesUpgrade
+    damage:
+      types:
+        Blunt: 15
+
+- type: entity
+  parent: BaseTrophyLavaland
+  id: TrophyLavalandHierophantVortexTalisman
+  name: vortex talisman
+  description: ""
+  components:
+  - type: Sprite
+    state: vortex
+  - type: CrusherUpgrade
+    tags: [ CrusherUpgradeHierophant ]
+    examineText: crusher-upgrade-examine-text-hierophant
+  - type: CrusherVortexTalismanUpgrade
+  - type: PointLight
+    color: "#8f00ec"
+    energy: 40
+    radius: 1.2

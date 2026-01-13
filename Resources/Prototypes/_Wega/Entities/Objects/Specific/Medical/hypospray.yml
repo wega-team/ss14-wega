@@ -61,3 +61,40 @@
     transferAmount: 30
     onlyAffectsMobs: false
     injectOnly: true
+
+- type: entity
+  name: survival medipen
+  parent: ChemicalMedipen
+  id: SurvivalMedipen
+  description: A cocktail of powerful healing chemicals. Contains Leporazine, and Miner's Salve. Slowly heals damage and stabilizes body temperature. You can overdose on these if you use more than one in quick succession.
+  components:
+  - type: Sprite
+    sprite: /Textures/_Wega/Objects/Specific/Medical/medipen.rsi
+    layers:
+    - state: bluepen
+      map: [ "enum.SolutionContainerLayers.Fill" ]
+  - type: Appearance
+  - type: SolutionContainerVisuals
+    maxFillLevels: 1
+    changeColor: false
+    emptySpriteName: bluepen_empty
+  - type: Hypospray
+    solutionName: pen
+    transferAmount: 40
+    onlyAffectsMobs: false
+    injectOnly: true
+  - type: SolutionContainerManager
+    solutions:
+      pen:
+        maxVol: 40
+        reagents:
+          - ReagentId: Leporazine
+            Quantity: 10
+          - ReagentId: Epinephrine
+            Quantity: 10
+          - ReagentId: Lacerinol
+            Quantity: 7.5
+          - ReagentId: Dermaline
+            Quantity: 7.5
+          - ReagentId: Bruizine
+            Quantity: 5

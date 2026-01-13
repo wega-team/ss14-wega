@@ -1,0 +1,19 @@
+- type: entity
+  id: WeaponProtoKineticAcceleratorBDM
+  parent: WeaponProtoKineticAccelerator
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: DeleteOnDrop
+  - type: SpawnOnDelete
+    prototype: WeaponProtoKineticAccelerator
+  - type: Gun
+    fireRate: 0.5
+    selectedMode: SemiAuto
+    angleDecay: 0
+    minAngle: 0
+    maxAngle: 0
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/kinetic_accel.ogg
+    projectileSpeed: 25

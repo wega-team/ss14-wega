@@ -1,0 +1,450 @@
+- type: entity
+  id: BaseMobLavaland
+  parent:
+  - BaseMob
+  - MobDamageable
+  - MobAtmosExposed
+  - MobCombat
+  suffix: AI
+  abstract: true
+  components:
+  - type: Reactive
+    groups:
+      Flammable: [Touch]
+      Extinguish: [Touch]
+      Acidic: [Touch, Ingestion]
+  - type: Climbing
+  - type: NameIdentifier
+    group: GenericNumber
+  - type: StatusEffects
+    allowed:
+    - Electrocution
+    - TemporaryBlindness
+    - RadiationProtection
+    - Adrenaline
+  - type: StandingState
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+    - StunImmune
+  - type: LavalandVisitor
+    immuneToStorm: true
+  - type: Unrevivable # If his dead - his is dead
+    analyzable: false
+  - type: NpcFactionMember
+    factions:
+    - LavalandFauna
+
+#region Goliath
+- type: entity
+  id: BaseMobGoliath
+  parent: [ BaseMobLavaland, MobBloodstream ]
+  name: goliath
+  description: A massive beast that uses long tentacles to ensnare its prey, threatening them is not advised under any conditions.
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Lavaland/goliath.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: goliath1
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: goliath1
+      Dead:
+        Base: goliath_dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3.735
+    baseSprintSpeed: 3.735
+  - type: Bloodstream
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: Blood
+        Quantity: 350
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      300: Dead
+  - type: MeleeWeapon
+    soundHit:
+      path: "/Audio/Weapons/smash.ogg"
+    angle: 0
+    attackRate: 0.75
+    animation: WeaponArcPunch
+    damage:
+      types:
+        Slash: 10
+        Piercing: 10
+  - type: HTN
+    constantlyReplan: false
+    rootTask:
+      task: GoliathCompound
+    blackboard:
+      VisionRadius: !type:Single
+        5
+      AggroVisionRadius: !type:Single
+        9
+      NavSmash: !type:Bool
+        true
+  - type: NPCUseActionOnTarget
+    actionId: ActionGoliathTentacle
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - Goliath
+    - FootstepSound
+    - StunImmune
+  - type: NoSlip
+  - type: Butcherable
+    spawned:
+    - id: FoodMeatGoliath
+      amount: 2
+    - id: MaterialGoliathHide1
+      amount: 1
+    - id: MaterialBones1
+      amount: 2
+  - type: TrophyHunter
+    trophy: TrophyLavalandGoliathTentacle
+
+- type: entity
+  id: MobGoliath
+  parent: BaseMobGoliath
+  name: goliath
+  description: A massive beast that uses long tentacles to ensnare its prey, threatening them is not advised under any conditions.
+  components:
+  - type: RandomSprite
+    available:
+      - enum.DamageStateVisualLayers.Base:
+          goliath1: ""
+          goliath2: ""
+
+- type: entity
+  id: MobAncientGoliath
+  parent: BaseMobGoliath
+  name: ancient goliath
+  description: A very ancient creature that has existed since time immemorial due to its ability to stay young.
+  components:
+  - type: Sprite
+    sprite: Mobs/Aliens/Asteroid/goliath.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: goliath
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: goliath
+      Dead:
+        Base: goliath_dead
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      400: Dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2.835
+    baseSprintSpeed: 2.835
+  - type: TrophyHunter
+    trophy: TrophyLavalandAncientGoliathTentacle
+    dropChance: 0.25 # More chance because he ancient
+#endregion
+
+#region Legion
+- type: entity
+  parent: BaseMobLavaland
+  id: MobLegion
+  name: legion
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Lavaland/legion.rsi
+    state: legion
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      75: Dead
+  - type: NoSlip
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: Skeleton
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3.735
+    baseSprintSpeed: 3.735
+  - type: LegionFauna
+  - type: HTN
+    rootTask:
+      task: LegionBehaviorCompound
+    blackboard:
+      VisionRadius: !type:Single
+        5
+      AggroVisionRadius: !type:Single
+        9
+  - type: NPCUseActionOnTarget
+    actionId: ActionLegionSummon
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - DoorBumpOpener
+    - FootstepSound
+    - StunImmune
+
+- type: entity
+  parent: MobLegion
+  id: MobLegionLavaland
+  name: legion
+  components:
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 75
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          RandomLegionCorpse:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: TrophyHunter
+    trophy: TrophyLavalandLegionSkull
+
+# And here it is small XD
+- type: entity
+  parent: MobLegion
+  id: MobLegionDwarf
+  components:
+  - type: Sprite
+    state: dwarf_legion
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      60: Dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 5.625
+    baseSprintSpeed: 5.625
+
+- type: entity
+  parent: BaseMobLavaland
+  id: MobLegionSkull
+  name: legion skull
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Lavaland/legionskull.rsi
+    state: legion_head_1
+  - type: RandomSprite
+    available:
+      - 0:
+          legion_head_1: ""
+          legion_head_2: ""
+          legion_head_3: ""
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.25
+        density: 130
+        mask:
+        - FlyingMobMask
+        layer:
+        - FlyingMobLayer
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 5
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: NoSlip
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: Skeleton
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4.5
+    baseSprintSpeed: 4.5
+  - type: MeleeWeapon
+    altDisarm: false
+    angle: 0
+    animation: WeaponArcBite
+    soundHit:
+      path: /Audio/Effects/bite.ogg
+    damage:
+      types:
+        Slash: 5
+  - type: TimedDespawn
+    lifetime: 30
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+#endregion
+
+#region Watchers
+- type: entity
+  name: watcher
+  id: MobWatcherBase
+  parent: [ BaseMobLavaland, FlyingMobBase ]
+  abstract: true
+  description: It's like it's staring right through you.
+  components:
+  - type: HTN
+    rootTask:
+      task: SimpleRangedHostileCompound
+    blackboard:
+      VisionRadius: !type:Single
+        2
+      AggroVisionRadius: !type:Single
+        9
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: Mobs/Aliens/Lavaland/watcher.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: base
+    - map: [ "enum.DamageStateVisualLayers.BaseUnshaded" ]
+      state: unshaded
+      shader: unshaded
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.30
+        density: 80
+        mask:
+          - FlyingMobMask
+        layer:
+        - FlyingMobLayer
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: base
+        BaseUnshaded: unshaded
+      Dead:
+        Base: dead
+        BaseUnshaded: dead-unshaded
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      200: Dead
+  - type: Butcherable
+    spawned:
+    - id: DiamondOre1
+      amount: 2
+    - id: MaterialBones1
+      amount: 1
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3.735
+    baseSprintSpeed: 3.735
+  - type: BatteryAmmoProvider
+    proto: WatcherBolt
+    fireCost: 50
+  - type: PredictedBatterySelfRecharger
+    autoRechargeRate: 50
+  - type: PredictedBattery
+    maxCharge: 1000
+    startingCharge: 1000
+  - type: Gun
+    fireRate: 0.5
+    useKey: false
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot: /Audio/Weapons/Guns/Gunshots/taser2.ogg
+  - type: CombatMode
+  - type: InteractionPopup
+    successChance: 0.3
+    interactSuccessString: petting-success-slimes
+    interactFailureString: petting-failure-generic
+    interactSuccessSound:
+      path: /Audio/Animals/lizard_happy.ogg
+
+- type: entity
+  id: MobWatcherLavaland
+  parent: MobWatcherBase
+  components:
+  - type: Sprite
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: base
+    - map: [ "enum.DamageStateVisualLayers.BaseUnshaded" ]
+      state: unshaded
+      shader: unshaded
+      color: red
+  - type: PointLight
+    radius: 1
+    energy: 3
+    color: red
+  - type: TrophyHunter
+    trophy: TrophyLavalandWatcherWing
+
+- type: entity
+  id: MobWatcherIcewing
+  parent: MobWatcherBase
+  name: icewing watcher
+  components:
+  - type: Sprite
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: base
+    - map: [ "enum.DamageStateVisualLayers.BaseUnshaded" ]
+      state: unshaded
+      shader: unshaded
+      color: deepskyblue
+  - type: PointLight
+    radius: 1
+    energy: 3
+    color: deepskyblue
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      170: Dead
+  - type: TrophyHunter
+    trophy: TrophyLavalandIceWatcherWing
+
+- type: entity
+  id: MobWatcherMagmawing
+  parent: MobWatcherBase
+  name: magmawing watcher
+  components:
+  - type: Sprite
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: base
+    - map: [ "enum.DamageStateVisualLayers.BaseUnshaded" ]
+      state: unshaded
+      shader: unshaded
+      color: orangered
+  - type: PointLight
+    radius: 1
+    energy: 3
+    color: orangered
+  - type: BatteryAmmoProvider
+    proto: WatcherBoltMagmawing
+    fireCost: 50
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      225: Dead
+  - type: TrophyHunter
+    trophy: TrophyLavalandMagmaWatcherWing
+
+- type: entity
+  id: MobWatcherPride
+  parent: MobWatcherBase
+  name: pride watcher
+  suffix: Admeme
+  description: This rare subspecies only appears in June.
+  components:
+  - type: Sprite
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: base
+    - map: [ "enum.DamageStateVisualLayers.BaseUnshaded" ]
+      state: unshaded
+      shader: unshaded
+  - type: PointLight
+    radius: 1
+    energy: 3
+  - type: RgbLightController
+    layers: [ 1 ]
+#endregion

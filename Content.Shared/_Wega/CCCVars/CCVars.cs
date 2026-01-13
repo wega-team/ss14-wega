@@ -118,4 +118,19 @@ public sealed class WegaCVars
     /// </summary>
     public static readonly CVarDef<int> NSFWPreferencesLength =
         CVarDef.Create("ic.nsfw_preferences_length", 1024, CVar.SERVER | CVar.REPLICATED);
+
+    /*
+        Lavaland CVars
+    */
+    public static readonly CVarDef<bool> LavalandEnabled =
+        CVarDef.Create("lavaland.enabled", true, CVar.SERVERONLY);
+
+    public static readonly CVarDef<int> LavalandMaxBuildings =
+        CVarDef.Create("lavaland.max_buildings", 64, CVar.SERVER | CVar.REPLICATED);
+
+    public static readonly CVarDef<float> LavalandSpawnIntervalMin =
+        CVarDef.Create("lavaland.spawn_interval_min", 100f, CVar.SERVER | CVar.REPLICATED);
+
+    public static readonly CVarDef<float> LavalandSpawnIntervalMax =
+        CVarDef.Create("lavaland.spawn_interval_max", 1000f, CVar.SERVER | CVar.REPLICATED);
 }

@@ -11,7 +11,7 @@ public sealed partial class HierophantBossComponent : Component
     public HierophantAttackType LastAttack = HierophantAttackType.None;
 
     [DataField("chaserPrototype")]
-    public EntProtoId ChaserPrototype = "HierophantChaser";
+    public EntProtoId ChaserPrototype = "MobHierophantChaser";
 
     public EntityCoordinates HomePosition;
 

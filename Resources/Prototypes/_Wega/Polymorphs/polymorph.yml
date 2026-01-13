@@ -31,6 +31,25 @@
     forced: true
     duration: 600
 
+#Lavaland
+- type: polymorph
+  id: LegionPolymorph
+  configuration:
+    entity: MobLegion
+    forced: true
+    transferDamage: false
+    transferName: true
+    revertOnDeath: true
+
+- type: polymorph
+  id: LegionDwarfPolymorph
+  configuration:
+    entity: MobLegionDwarf
+    forced: true
+    transferDamage: false
+    transferName: true
+    revertOnDeath: true
+
 #Other
 - type: polymorph
   id: ChariotStatue

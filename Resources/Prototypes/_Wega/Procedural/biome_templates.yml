@@ -41,11 +41,26 @@
       allowedTiles:
         - FloorBasalt
       entities:
-        - NecropolisTendril
+        - GoliathNecropolisTendril
+        - LegionNecropolisTendril
+        - WatchersNecropolisTendril
+    - !type:BiomeEntityLayer
+      allowedTiles:
+        - FloorBasalt
+      threshold: 0.997
+      noise:
+        seed: 2
+        noiseType: OpenSimplex2
+        frequency: 2
+      entityWeights:
+        SpawnMobLegionLavaland: 0.1
+        SpawnMobWatcherLavaland: 0.1
+        SpawnMobWatcherMagmawing: 0.1
+        SpawnMobWatcherIcewing: 0.1
     - !type:BiomeEntityLayer
       threshold: 0.995
       noise:
-        seed: 2
+        seed: 3
         noiseType: OpenSimplex2
         frequency: 2
       allowedTiles:
@@ -123,15 +138,15 @@
         cellularReturnType: Distance2
       entityWeights:
         WallRockBasalt: 0.97
-        WallRockBasaltTin: 0.014
-        WallRockBasaltCoal: 0.007
-        WallRockBasaltPlasma: 0.007
-        WallRockBasaltSilver: 0.004
-        WallRockBasaltGold: 0.0025
-        WallRockBasaltUranium: 0.001
-        WallRockBasaltDiamond: 0.001
-        WallRockBasaltBananium: 0.0008
-        WallRockBasaltGibtonite: 0.0002
+        WallRockBasaltLavalandTin: 0.014
+        WallRockBasaltLavalandCoal: 0.007
+        WallRockBasaltLavalandPlasma: 0.007
+        WallRockBasaltLavalandSilver: 0.004
+        WallRockBasaltLavalandGold: 0.0025
+        WallRockBasaltLavalandUranium: 0.001
+        WallRockBasaltLavalandDiamond: 0.001
+        WallRockBasaltLavalandBananium: 0.0008
+        WallRockBasaltLavalandGibtonite: 0.0002
     - !type:BiomeDummyLayer
       id: Loot
     # Fill basalt

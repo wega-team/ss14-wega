@@ -27,6 +27,10 @@ public sealed partial class DamageMarkerComponent : Component
 
     [ViewVariables(VVAccess.ReadWrite), DataField("damage")]
     public DamageSpecifier Damage = new();
+    // Corvax-Wega-Lavaland-start
+    [ViewVariables(VVAccess.ReadWrite), DataField]
+    public float DamageMultiplier = 2f;
+    // Corvax-Wega-Lavaland-end
 
     /// <summary>
     /// Entity that marked this entity for a damage surplus.

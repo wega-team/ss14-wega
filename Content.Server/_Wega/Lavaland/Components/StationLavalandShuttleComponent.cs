@@ -4,7 +4,7 @@ using Robust.Shared.Utility;
 
 namespace Content.Server.Lavaland.Components;
 
-[RegisterComponent, Access(typeof(LavalandShuttleSystem), Friend = AccessPermissions.ReadWrite)]
+[RegisterComponent, Access(typeof(LavalandShuttleSystem))]
 public sealed partial class StationLavalandShuttleComponent : Component
 {
     [DataField]

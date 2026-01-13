@@ -22,6 +22,11 @@ public sealed partial class NavMapBeaconComponent : Component
     [DataField]
     public LocId? DefaultText;
 
+    // Corvax-Wega-Lavaland-start
+    [DataField]
+    public LocId DefaultDesc = "nav-map-beacon-default-desc";
+    // Corvax-Wega-Lavaland-end
+
     [DataField, AutoNetworkedField]
     public Color Color = Color.Orange;
 

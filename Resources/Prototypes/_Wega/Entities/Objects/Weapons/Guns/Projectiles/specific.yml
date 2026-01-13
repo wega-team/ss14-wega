@@ -1,0 +1,15 @@
+- type: entity
+  parent: BaseBullet
+  id: BulletColossus
+  name: "..."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Projectile
+    ignoreResistances: true
+    damage:
+      types:
+        Blunt: 25 #JUDGEMENT!
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+    layers:
+    - state: throwing_knife

@@ -36,7 +36,7 @@ public sealed class LavalandShuttleCallMessage : BoundUserInterfaceMessage
     }
 }
 
-public enum ShuttleStatus
+public enum ShuttleStatus : byte
 {
     Unknown,
     Unavailable,
@@ -46,7 +46,7 @@ public enum ShuttleStatus
     EnRouteToOutpost
 }
 
-public enum DockLocation
+public enum DockLocation : byte
 {
     Station,
     Outpost,

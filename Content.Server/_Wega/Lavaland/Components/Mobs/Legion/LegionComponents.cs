@@ -7,15 +7,9 @@ public sealed partial class LegionBossComponent : Component
 {
     [ViewVariables]
     public LegionState CurrentState = LegionState.Summoning;
-
-    [ViewVariables]
-    public TimeSpan NextStateSwitchTime;
-
-    [ViewVariables]
-    public TimeSpan NextSummonTime;
-
-    [ViewVariables]
-    public TimeSpan NextChargeTime;
+    [ViewVariables] public TimeSpan NextStateSwitchTime;
+    [ViewVariables] public TimeSpan NextSummonTime;
+    [ViewVariables] public TimeSpan NextChargeTime;
 
     [DataField("stateSwitchInterval")]
     public float StateSwitchInterval = 30f;
@@ -35,9 +29,9 @@ public sealed partial class LegionBossComponent : Component
     [DataField("splitPrototypes")]
     public List<EntProtoId> SplitPrototypes = new()
     {
-        "LegionSplitLeft",
-        "LegionSplitRight",
-        "LegionSplitEye"
+        "MobMegaLegionSplitLeft",
+        "MobMegaLegionSplitRight",
+        "MobMegaLegionSplitEye"
     };
 
     [DataField("lootPrototypes")]

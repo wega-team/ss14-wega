@@ -52,4 +52,41 @@
     sprite: _Wega/Clothing/Head/Hoods/Coat/postmanhood.rsi
   - type: Clothing
     sprite: _Wega/Clothing/Head/Hoods/Coat/postmanhood.rsi
-  
+
+- type: entity
+  parent: ClothingHeadHatHoodWinterBase
+  id: ClothingHeadHatHoodExplorer
+  name: explorer hood
+  description: An armoured hood for exploring harsh environments.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Head/Hoods/Coat/explorerhood.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Wega/Clothing/Head/Hoods/Coat/explorerhood.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.65
+        Slash: 0.65
+        Piercing: 0.7
+        Heat: 0.65
+        Caustic: 0.65
+  - type: Dirtable
+    dirtState: explorer-hood
+    equippedDirtState: equipped-explorer-hood
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingHeadHatHoodExplorer
+  id: ClothingHeadHatHoodExplorerBDM
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Unremoveable
+  - type: DeleteOnDrop
+  - type: Dirtable
+    currentDirtLevel: 100
+    dirtColor: "#880000"

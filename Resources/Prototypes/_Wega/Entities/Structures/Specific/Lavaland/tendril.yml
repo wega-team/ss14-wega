@@ -4,16 +4,11 @@
   name: necropolis tendril
   description: "A giant pulsating spike that sprouts from the depths of the planet. It emits an ominous energy and attracts other horrors of this place."
   suffix: DO NOT MAP
+  abstract: true
   components:
   - type: Sprite
     sprite: _Wega/Structures/Specific/Lavaland/tendril.rsi
     state: tendril
-  - type: NecropolisTendril
-    spawnWeights:
-      MobGoliath: 1
-  - type: ConditionalSpawner
-    prototypes:
-      - MobGoliath
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: Rock
@@ -39,3 +34,38 @@
                 max: 1
           - !type:DoActsBehavior
             acts: [ "Destruction" ]
+
+- type: entity
+  parent: NecropolisTendril
+  id: GoliathNecropolisTendril
+  components:
+  - type: NecropolisTendril
+    spawnWeights:
+      MobGoliath: 1
+  - type: ConditionalSpawner
+    prototypes:
+      - MobGoliath
+
+- type: entity
+  parent: NecropolisTendril
+  id: LegionNecropolisTendril
+  components:
+  - type: NecropolisTendril
+    spawnWeights:
+      MobLegionLavaland: 1
+  - type: ConditionalSpawner
+    prototypes:
+      - MobLegionLavaland
+
+- type: entity
+  parent: NecropolisTendril
+  id: WatchersNecropolisTendril
+  components:
+  - type: NecropolisTendril
+    spawnWeights:
+      MobWatcherLavaland: 0.99
+      MobWatcherMagmawing: 0.0075
+      MobWatcherIcewing: 0.0025
+  - type: ConditionalSpawner
+    prototypes:
+      - MobWatcherLavaland

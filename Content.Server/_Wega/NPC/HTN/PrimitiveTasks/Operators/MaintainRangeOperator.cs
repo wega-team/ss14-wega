@@ -4,17 +4,19 @@ using Content.Server.NPC.Pathfinding;
 using Content.Server.NPC.Systems;
 using Robust.Shared.Map;
 using Content.Server.NPC.Components;
-using Content.Server.Lavaland.Mobs;
+using Robust.Shared.Physics.Components;
 
-namespace Content.Server.NPC.HTN.PrimitiveTasks.Operators;
+namespace Content.Server.NPC.HTN.PrimitiveTasks.Operators.Combat;
 
-public sealed partial class MegafaunaMaintainRangeOperator : HTNOperator, IHtnConditionalShutdown
+public sealed partial class MaintainRangeOperator : HTNOperator, IHtnConditionalShutdown
 {
     [Dependency] private readonly IEntityManager _entMan = default!;
     private NPCSteeringSystem _steering = default!;
     private PathfindingSystem _pathfind = default!;
-    private SharedTransformSystem _transformSystem = default!;
-    private MegafaunaSystem _megafauna = default!;
+    private SharedTransformSystem _transform = default!;
+
+    [DataField("targetKey", required: true)]
+    public string TargetKey = default!;
 
     [DataField("minRange")]
     public float MinRange = 3f;
@@ -25,6 +27,12 @@ public sealed partial class MegafaunaMaintainRangeOperator : HTNOperator, IHtnCo
     [DataField("shutdownState")]
     public HTNPlanState ShutdownState { get; private set; } = HTNPlanState.TaskFinished;
 
+    [DataField("pathfindKey")]
+    public string PathfindKey = NPCBlackboard.PathfindKey;
+
+    [DataField("targetCoordinatesKey")]
+    public string TargetCoordinatesKey = "TargetCoordinates";
+
     private const string MovementCancelToken = "MovementCancelToken";
 
     public override void Initialize(IEntitySystemManager sysManager)
@@ -32,175 +40,121 @@ public sealed partial class MegafaunaMaintainRangeOperator : HTNOperator, IHtnCo
         base.Initialize(sysManager);
         _pathfind = sysManager.GetEntitySystem<PathfindingSystem>();
         _steering = sysManager.GetEntitySystem<NPCSteeringSystem>();
-        _transformSystem = sysManager.GetEntitySystem<SharedTransformSystem>();
-        _megafauna = sysManager.GetEntitySystem<MegafaunaSystem>();
+        _transform = sysManager.GetEntitySystem<SharedTransformSystem>();
     }
 
     public override async Task<(bool Valid, Dictionary<string, object>? Effects)> Plan(
         NPCBlackboard blackboard,
         CancellationToken cancelToken)
     {
+        if (!blackboard.TryGetValue<EntityUid>(TargetKey, out var target, _entMan) ||
+            !_entMan.EntityExists(target))
+        {
+            return (false, null);
+        }
+
         var owner = blackboard.GetValue<EntityUid>(NPCBlackboard.Owner);
 
-        var target = _megafauna.FindAttackTarget(owner);
-        if (target == null)
+        if (!_entMan.TryGetComponent<TransformComponent>(owner, out var ownerXform) ||
+            !_entMan.TryGetComponent<PhysicsComponent>(owner, out var body))
             return (false, null);
 
-        var ownerXform = _entMan.GetComponent<TransformComponent>(owner);
-        var targetXform = _entMan.GetComponent<TransformComponent>(target.Value);
+        var targetXform = _entMan.GetComponent<TransformComponent>(target);
 
-        var ownerPos = _transformSystem.GetWorldPosition(ownerXform);
-        var targetPos = _transformSystem.GetWorldPosition(targetXform);
+        var ownerPos = _transform.GetWorldPosition(ownerXform);
+        var targetPos = _transform.GetWorldPosition(targetXform);
         var currentDistance = (targetPos - ownerPos).Length();
+
+        var direction = (ownerPos - targetPos).Normalized();
+        var optimalDistance = (MinRange + MaxRange) / 2f;
 
         if (currentDistance >= MinRange && currentDistance <= MaxRange)
         {
+            var relative = new EntityCoordinates(target, direction * optimalDistance);
             return (true, new Dictionary<string, object>
             {
-                { "TargetCoordinates", ownerXform.Coordinates }
+                { TargetCoordinatesKey, relative }
             });
         }
 
-        if (currentDistance < MinRange)
+        var desiredCoords = new EntityCoordinates(target, direction * optimalDistance);
+
+        var path = await _pathfind.GetPath(
+            owner,
+            ownerXform.Coordinates,
+            desiredCoords,
+            optimalDistance,
+            cancelToken,
+            _pathfind.GetFlags(blackboard));
+
+        if (path.Result != PathResult.Path)
         {
-            var direction = (ownerPos - targetPos).Normalized();
-
-            var idealDistance = (MinRange + MaxRange) / 2f;
-            var awayPosition = targetPos + direction * idealDistance;
-
-            var gridUid = targetXform.GridUid ?? targetXform.MapUid;
-            if (gridUid == null)
-                return (false, null);
-
-            var awayCoords = new EntityCoordinates(gridUid.Value, awayPosition);
-
-            var awayPath = await _pathfind.GetPath(
-                owner,
-                ownerXform.Coordinates,
-                awayCoords,
-                idealDistance * 2f,
-                cancelToken,
-                PathFlags.None);
-
-            if (awayPath.Result == PathResult.Path)
-            {
-                return (true, new Dictionary<string, object>
-                {
-                    { "TargetCoordinates", awayPath.Path[^1].Coordinates }
-                });
-            }
-
-            for (int i = 0; i < 5; i++)
-            {
-                var randomPath = await _pathfind.GetRandomPath(owner, MaxRange, cancelToken);
-                if (randomPath.Result == PathResult.Path)
-                {
-                    var randomCoords = randomPath.Path[^1].Coordinates;
-                    var randomPos = _transformSystem.ToMapCoordinates(randomCoords).Position;
-                    var newDistance = (targetPos - randomPos).Length();
-
-                    if (newDistance > currentDistance + 1f)
-                    {
-                        return (true, new Dictionary<string, object>
-                        {
-                            { "TargetCoordinates", randomCoords }
-                        });
-                    }
-                }
-            }
             return (false, null);
         }
-        else
+
+        return (true, new Dictionary<string, object>
         {
-            var approachPath = await _pathfind.GetPath(
-                owner,
-                ownerXform.Coordinates,
-                targetXform.Coordinates,
-                MaxRange,
-                cancelToken,
-                PathFlags.None);
-
-            if (approachPath.Result == PathResult.Path)
-            {
-                return (true, new Dictionary<string, object>
-                {
-                    { "TargetCoordinates", approachPath.Path[^1].Coordinates }
-                });
-            }
-
-            for (int i = 0; i < 5; i++)
-            {
-                var randomPath = await _pathfind.GetRandomPath(owner, MaxRange, cancelToken);
-                if (randomPath.Result == PathResult.Path)
-                {
-                    var randomCoords = randomPath.Path[^1].Coordinates;
-                    var randomPos = _transformSystem.ToMapCoordinates(randomCoords).Position;
-                    var newDistance = (targetPos - randomPos).Length();
-
-                    if (newDistance < currentDistance - 1f && newDistance >= MinRange)
-                    {
-                        return (true, new Dictionary<string, object>
-                        {
-                            { "TargetCoordinates", randomCoords }
-                        });
-                    }
-                }
-            }
-
-            return (false, null);
-        }
+            { TargetCoordinatesKey, desiredCoords },
+            { PathfindKey, path }
+        });
     }
 
     public override void Startup(NPCBlackboard blackboard)
     {
         base.Startup(blackboard);
 
-        if (!blackboard.TryGetValue<EntityCoordinates>("TargetCoordinates", out var targetCoordinates, _entMan))
+        if (!blackboard.TryGetValue<EntityCoordinates>(TargetCoordinatesKey, out var targetCoords, _entMan))
             return;
 
+        blackboard.Remove<EntityCoordinates>(TargetCoordinatesKey);
+
+        var targetCoordinates = targetCoords;
         var uid = blackboard.GetValue<EntityUid>(NPCBlackboard.Owner);
-        if (!_entMan.TryGetComponent<NPCSteeringComponent>(uid, out var steering))
+
+        var comp = _steering.Register(uid, targetCoordinates);
+
+        var tolerance = (MaxRange - MinRange) / 2f;
+        comp.Range = MathF.Max(comp.Range, tolerance);
+
+        if (blackboard.TryGetValue<PathResultEvent>(PathfindKey, out var result, _entMan))
         {
-            _steering.Register(uid, targetCoordinates);
-        }
-        else
-        {
-            _steering.Register(uid, targetCoordinates, steering);
+            if (blackboard.TryGetValue<EntityCoordinates>(NPCBlackboard.OwnerCoordinates, out var coordinates, _entMan))
+            {
+                var mapCoords = _transform.ToMapCoordinates(coordinates);
+                _steering.PrunePath(uid, mapCoords,
+                    _transform.ToMapCoordinates(targetCoordinates).Position - mapCoords.Position,
+                    result.Path);
+            }
+
+            comp.CurrentPath = new Queue<PathPoly>(result.Path);
         }
     }
 
     public override HTNOperatorStatus Update(NPCBlackboard blackboard, float frameTime)
     {
-        var owner = blackboard.GetValue<EntityUid>(NPCBlackboard.Owner);
-
-        var target = _megafauna.FindAttackTarget(owner);
-        if (target == null)
+        if (!blackboard.TryGetValue<EntityUid>(TargetKey, out var target, _entMan) ||
+            !_entMan.EntityExists(target))
+        {
             return HTNOperatorStatus.Failed;
+        }
 
+        var owner = blackboard.GetValue<EntityUid>(NPCBlackboard.Owner);
         if (!_entMan.TryGetComponent<NPCSteeringComponent>(owner, out var steering))
             return HTNOperatorStatus.Failed;
 
         var ownerXform = _entMan.GetComponent<TransformComponent>(owner);
-        var targetXform = _entMan.GetComponent<TransformComponent>(target.Value);
+        var targetXform = _entMan.GetComponent<TransformComponent>(target);
 
-        var ownerPos = _transformSystem.GetWorldPosition(ownerXform);
-        var targetPos = _transformSystem.GetWorldPosition(targetXform);
+        var ownerPos = _transform.GetWorldPosition(ownerXform);
+        var targetPos = _transform.GetWorldPosition(targetXform);
         var currentDistance = (targetPos - ownerPos).Length();
 
         if (currentDistance >= MinRange && currentDistance <= MaxRange)
-        {
             return HTNOperatorStatus.Finished;
-        }
-
-        if (steering.Status == SteeringStatus.InRange &&
-            (currentDistance < MinRange || currentDistance > MaxRange))
-        {
-            return HTNOperatorStatus.Failed;
-        }
 
         return steering.Status switch
         {
-            SteeringStatus.InRange => HTNOperatorStatus.Finished,
+            SteeringStatus.InRange => (currentDistance >= MinRange && currentDistance <= MaxRange) ? HTNOperatorStatus.Finished : HTNOperatorStatus.Continuing,
             SteeringStatus.NoPath => HTNOperatorStatus.Failed,
             SteeringStatus.Moving => HTNOperatorStatus.Continuing,
             _ => HTNOperatorStatus.Failed
@@ -215,12 +169,25 @@ public sealed partial class MegafaunaMaintainRangeOperator : HTNOperator, IHtnCo
             blackboard.Remove<CancellationTokenSource>(MovementCancelToken);
         }
 
-        blackboard.Remove<EntityCoordinates>("TargetCoordinates");
+        blackboard.Remove<PathResultEvent>(PathfindKey);
+        blackboard.Remove<EntityCoordinates>(TargetCoordinatesKey);
 
         var owner = blackboard.GetValue<EntityUid>(NPCBlackboard.Owner);
         if (_entMan.EntityExists(owner))
-        {
             _steering.Unregister(owner);
-        }
+    }
+
+    public override void TaskShutdown(NPCBlackboard blackboard, HTNOperatorStatus status)
+    {
+        base.TaskShutdown(blackboard, status);
+
+        if (status != HTNOperatorStatus.BetterPlan)
+            ConditionalShutdown(blackboard);
+    }
+
+    public override void PlanShutdown(NPCBlackboard blackboard)
+    {
+        base.PlanShutdown(blackboard);
+        ConditionalShutdown(blackboard);
     }
 }

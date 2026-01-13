@@ -14,4 +14,7 @@ public sealed partial class LavalandBuildingPrototype : IPrototype
 
     [DataField("position")]
     public Vector2? ExactPosition = null;
+
+    [DataField("merge")]
+    public bool MergeWithPlanet = true;
 }

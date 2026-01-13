@@ -1,0 +1,446 @@
+- type: entity
+  id: BaseMobMegafauna
+  abstract: true
+  components:
+  - type: Megafauna
+  - type: NoSlip
+  - type: NpcFactionMember
+    factions:
+    - LavalandFauna
+  - type: LavalandVisitor
+    immuneToStorm: true
+  - type: Unrevivable
+    analyzable: false
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - DoorBumpOpener
+    - StunImmune
+    - SlowImmune
+
+#region Blood Drunk Miner
+- type: entity
+  parent: [ BaseMobMegafauna, BaseMobHuman ]
+  id: MobBloodDrunkMiner
+  name: unknown miner
+  components:
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Blunt
+        damage: 1200
+      behaviors:
+      - !type:GibBehavior { }
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Heat
+        damage: 1500
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawnInContainer: true
+        spawn:
+          Ash:
+            min: 1
+            max: 1
+      - !type:BurnBodyBehavior { }
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MeatLaserImpact
+  - type: NpcFactionMember
+    factions:
+      - AllHostile
+  - type: Loadout
+    prototypes:
+      - BloodDrunkMinerGear
+  - type: InputMover
+  - type: MobMover
+  - type: ScaleVisuals
+    scale: 1.172, 1.172
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      900: Dead
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      540: 0.7
+      720: 0.5
+      900: 0.3
+  - type: BloodDrunkMiner
+  - type: NPCHandSwitcher
+  - type: HTN
+    rootTask:
+      task: SimpleHumanoidHostileCompound
+  - type: NPCUseActionOnTarget
+    actionId: ActionBloodDrunkMinerDash
+  - type: DnaModifier
+    upper: null
+    lowest: null
+  - type: TrophyHunter
+    trophy: TrophyLavalandBDMEye
+    dropChance: 1 # Guaranteed, since it's the boss
+
+- type: startingGear
+  id: BloodDrunkMinerGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSalvageSpecialist
+    id: SalvagePDA
+    ears: ClothingHeadsetCargo
+    eyes: ClothingEyesGlassesMeson
+    mask: ClothingMaskGasExplorer
+    gloves: ClothingHandsGlovesCombat
+    shoes: ClothingShoesBootsSalvage
+    underwearbottom: ClothingUnderBottomGrey
+    head: ClothingHeadHatHoodExplorerBDM
+    outerClothing: ClothingOuterArmorExplorerSuitBDM
+    suitstorage: OxygenTankFilled
+  inhand:
+    - WeaponCleawingSaw
+    - WeaponProtoKineticAcceleratorBDM
+#endregion
+
+#region Hierophant
+- type: entity
+  parent: BaseMobMegafauna
+  id: MobHierophant
+  name: hierophant
+  description: A massive metal club that hangs in the air as though waiting. It'll make you dance to its beat.
+  components:
+  - type: Physics
+    bodyType: KinematicController
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.35,-0.6,0.35,0.6"
+        density: 50
+        mask:
+        - FlyingMobMask
+        layer:
+        - FlyingMobLayer
+  - type: Clickable
+  - type: InteractionOutline
+  - type: InputMover
+  - type: Input
+    context: "human"
+  - type: LagCompensation
+  - type: MobMover
+  - type: Actions
+  - type: Appearance
+  - type: RotationVisuals
+    defaultRotation: 0
+    horizontalRotation: 0
+  - type: DoAfter
+  - type: Examiner
+  - type: Eye
+  - type: ContentEye
+  - type: RequireProjectileTarget
+    active: False
+  - type: CombatMode
+  - type: MobState
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: Hierophant
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _Wega/Mobs/Lavaland/hierophant.rsi
+    state: hierophant
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 1.5
+    baseSprintSpeed: 1.5
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      2500: Dead
+  - type: AmbientSound
+    sound:
+      path: "/Audio/_Wega/Mobs/Lavaland/hiero_bgm.ogg"
+    enabled: false
+    volume: 2
+    range: 15
+  - type: HierophantBoss
+  - type: Megafauna
+    bossMusic:
+      path: "/Audio/_Wega/Mobs/Lavaland/hiero_bgm.ogg"
+  - type: MegafaunaAwareness
+    autoAggro: false
+  - type: MegafaunaAttacks
+  - type: TrophyHunter
+    trophy: TrophyLavalandHierophantVortexTalisman
+    dropChance: 1 # Guaranteed, since it's the boss
+    collectSound:
+      path: "/Audio/Effects/singularity_collapse.ogg" # More Cinema
+
+- type: entity
+  id: MobHierophantChaser
+  name: hierophant chaser
+  suffix: DO NOT MAP
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Wall
+  components:
+  - type: Transform
+    anchored: true
+  - type: HierophantChaser
+#endregion
+
+#region Mega Legion
+- type: entity
+  parent: BaseMobMegafauna
+  id: BaseMobMegaLegion
+  abstract: true
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+  - type: Physics
+    bodyType: KinematicController
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 1
+        density: 50
+        mask:
+        - FlyingMobMask
+        layer:
+        - FlyingMobLayer
+  - type: Clickable
+  - type: InteractionOutline
+  - type: InputMover
+  - type: Input
+    context: "human"
+  - type: LagCompensation
+  - type: MobMover
+  - type: Tag
+    tags:
+    - CannotSuicide
+  - type: NoSlip
+  - type: MobState
+  - type: CombatMode
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: Skeleton
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4.2
+    baseSprintSpeed: 4.2
+  - type: HTN
+    rootTask:
+      task: MegaLegionBehaviorCompound
+    blackboard:
+      VisionRadius: !type:Single
+        5
+      AggroVisionRadius: !type:Single
+        9
+  - type: NPCUseActionOnTarget
+    actionId: ActionMegaLegion
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Blunt: 25
+  - type: Megafauna
+  - type: LegionFauna
+  - type: LegionBoss
+    lootPrototypes:
+      MaterialBones1: 1
+      CrateNecropolisFilled: 0.2
+  - type: TrophyHunter
+    trophy: TrophyLavalandLegionSkull
+
+- type: entity
+  parent: BaseMobMegaLegion
+  id: MobMegaLegion
+  name: legion
+  description: A massive floating skull that watches over the necropolis. Destroy it before it multiplies!
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Lavaland/mega_legion96.rsi
+    state: mega_legion
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      800: Dead
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Blunt: 20
+  - type: LegionBoss
+    summonCount: 3
+    lootPrototypes:
+      MaterialBones: 1
+      CrateNecropolisFilled: 0.2
+
+- type: entity
+  parent: BaseMobMegaLegion
+  id: MobMegaLegionSplitLeft
+  name: legion left part
+  components:
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.75
+        density: 40
+        mask:
+        - FlyingMobMask
+        layer:
+        - FlyingMobLayer
+  - type: Sprite
+    sprite: _Wega/Mobs/Lavaland/mega_legion64.rsi
+    state: mega_legion_right
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4.5
+    baseSprintSpeed: 4.5
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      400: Dead
+  - type: LegionSplit
+    nextSplitPrototype: MobMegaLegionSplitMedium
+
+- type: entity
+  parent: MobMegaLegionSplitLeft
+  id: MobMegaLegionSplitRight
+  name: legion right part
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Lavaland/mega_legion64.rsi
+    state: mega_legion_left
+
+- type: entity
+  parent: MobMegaLegionSplitLeft
+  id: MobMegaLegionSplitEye
+  name: legion eye
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Lavaland/mega_legion64.rsi
+    state: mega_legion_eye
+
+- type: entity
+  parent: BaseMobMegaLegion
+  id: MobMegaLegionSplitMedium
+  name: legion medium
+  components:
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.45
+        density: 30
+        mask:
+        - FlyingMobMask
+        layer:
+        - FlyingMobLayer
+  - type: Sprite
+    sprite: _Wega/Mobs/Lavaland/mega_legion.rsi
+    state: mega_legion
+    scale: "1.35, 1.35"
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 5
+    baseSprintSpeed: 5
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      200: Dead
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Blunt: 15
+  - type: LegionSplit
+    nextSplitPrototype: MobMegaLegionSplitSmall
+  - type: LegionBoss
+    summonCount: 1
+    lootPrototypes:
+      MaterialBones1: 1
+      CrateNecropolisFilled: 0.2
+
+- type: entity
+  parent: BaseMobMegaLegion
+  id: MobMegaLegionSplitSmall
+  name: legion small
+  components:
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.25
+        density: 20
+        mask:
+        - FlyingMobMask
+        layer:
+        - FlyingMobLayer
+  - type: Sprite
+    sprite: _Wega/Mobs/Lavaland/mega_legion.rsi
+    state: mega_legion
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 5.75
+    baseSprintSpeed: 5.75
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      100: Dead
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Blunt: 10
+  - type: LegionSplit
+  - type: LegionBoss
+    summonCount: 1
+    lootPrototypes:
+      MaterialBones1: 1
+      CrateNecropolisFilled: 0.2
+#endregion
+
+#region Colossus
+- type: entity
+  parent: BaseMobMegafauna
+  id: MobColossus
+  name: Colossus
+  description: ""
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Lavaland/colossus.rsi
+    state: colossus
+  - type: MeleeWeapon
+    attackRate: 0.25
+    damage:
+     groups:
+       Brute: 40
+  - type: RechargeBasicEntityAmmo
+    showExamineText: false
+    rechargeCooldown: 0.01
+    rechargeSound: null
+  - type: BasicEntityAmmoProvider
+    proto: BulletColossus
+    capacity: 9999
+    count: 9999
+  - type: Gun
+    fireRate: 100
+    useKey: false
+    selectedMode: FullAuto
+    availableModes:
+      - FullAuto
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 1.125
+    baseSprintSpeed: 1.125
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      2500: Dead
+  - type: HTN
+    rootTask:
+      task: SimpleHumanoidHostileCompound
+  - type: NPCUseActionsOnTarget
+    actionIds:
+    - ActionBloodDrunkMinerDash
+  - type: TrophyHunter
+    trophy: TrophyLavalandColossusBlasterTubes
+    dropChance: 1 # Guaranteed, since it's the boss
+#endregion

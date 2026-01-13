@@ -20,8 +20,9 @@
     - id: DrinkUnholyFlaskFull
     - id: ArmBlade
     - id: RodOfAsclepius
+    - id: CardTarotNotEnchanted
     - id: ShipInBottle
     - id: DustyShard
-    - id: CubeRed
+    - id: CubeRed # He will create the second cube himself
     - id: PKAUpgradeFireRate
     - id: PKAUpgradeDamage

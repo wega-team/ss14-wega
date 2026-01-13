@@ -9,7 +9,10 @@ public sealed partial class NecropolisTendrilComponent : Component
     public Dictionary<EntProtoId, float> SpawnWeights = new();
 
     [DataField]
-    public int MaxSpawns = 4;
+    public int MaxSpawns = 3;
+
+    [DataField]
+    public HashSet<EntityUid> SpawnedMobs = new();
 
     [DataField]
     public float ActivationRadius = 15f;
@@ -22,9 +25,6 @@ public sealed partial class NecropolisTendrilComponent : Component
 
     [DataField]
     public TimeSpan NextSpawnTime = TimeSpan.Zero;
-
-    [DataField]
-    public int SpawnedCount = 0;
 
     [DataField]
     public bool IsActive = false;

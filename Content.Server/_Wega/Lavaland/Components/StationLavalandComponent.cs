@@ -1,4 +1,5 @@
 using Content.Shared.Parallax.Biomes;
+using Content.Shared.Radio;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations;
 using Robust.Shared.Utility;
@@ -15,9 +16,14 @@ public sealed partial class StationLavalandComponent : Component
     public Color MapLightColor = Color.FromHex("#4D4033");
 
     // If null, its random
-    [DataField]
-    public int? Seed = null;
+    [DataField] public int? Seed = null;
 
     [DataField("lavalandAvanpostPath", customTypeSerializer: typeof(ResPathSerializer))]
-    public ResPath LavalandAvanpostPath { get; set; } = new("/Maps/_Wega/Nonstations/cyberiadavanpost.yml");
+    public ResPath LavalandAvanpostPath { get; set; } = new("/Maps/_Wega/Lavaland/cyberiadavanpost.yml");
+}
+
+[RegisterComponent]
+public sealed partial class LavalandAvanpostComponent : Component
+{
+    [DataField] public ProtoId<RadioChannelPrototype> AnnouncementChannel = "Supply";
 }

@@ -1,8 +1,14 @@
 using System.Linq;
 using System.Numerics;
-using Content.Server.Lavaland.Mobs;
 using Content.Server.Lavaland.Mobs.Components;
+using Content.Server.Polymorph.Systems;
+using Content.Shared.Height;
+using Content.Shared.Humanoid;
+using Content.Shared.Lavaland.Components;
+using Content.Shared.Lavaland.Events;
 using Content.Shared.Maps;
+using Content.Shared.Mobs;
+using Content.Shared.Mobs.Systems;
 using Content.Shared.Physics;
 using Content.Shared.Throwing;
 using Robust.Shared.Map;
@@ -11,28 +17,32 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
-namespace Content.Shared.Lavaland.Mobs;
+namespace Content.Server.Lavaland.Mobs;
 
 public sealed partial class LegionSystem : EntitySystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly SharedMapSystem _map = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private readonly SharedMapSystem _map = default!;
     [Dependency] private readonly ThrowingSystem _throwing = default!;
-    [Dependency] private readonly MegafaunaSystem _megafauna = default!;
+    [Dependency] private readonly MobStateSystem _mobState = default!;
+    [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly TurfSystem _turf = default!;
+    [Dependency] private readonly PolymorphSystem _polymorph = default!;
 
-    private static readonly EntProtoId Reward = "";
+    private static readonly EntProtoId Reward = "CrowbarRed";
 
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<LegionBossComponent, MapInitEvent>(OnLegionMapInit);
-        SubscribeLocalEvent<LegionBossComponent, MegafaunaAttackEvent>(OnLegionAttack);
-        SubscribeLocalEvent<LegionBossComponent, MegafaunaKilledEvent>(OnLegionKilled);
+        SubscribeLocalEvent<LegionFaunaComponent, LegionSummonSkullAction>(OnLegionSummon);
+        SubscribeLocalEvent<LegionReversibleComponent, MobStateChangedEvent>(OnReversible);
 
+        SubscribeLocalEvent<LegionBossComponent, MapInitEvent>(OnMegaLegionMapInit);
+        SubscribeLocalEvent<LegionBossComponent, MegaLegionAction>(OnMegaLegionAction);
+        SubscribeLocalEvent<LegionBossComponent, MegafaunaKilledEvent>(OnMegaLegionKilled);
         SubscribeLocalEvent<LegionSplitComponent, MegafaunaKilledEvent>(OnSplitKilled);
     }
 
@@ -40,52 +50,70 @@ public sealed partial class LegionSystem : EntitySystem
     {
         base.Update(frameTime);
 
-        UpdateLegionState(frameTime);
+        var query = EntityQueryEnumerator<LegionBossComponent>();
+        while (query.MoveNext(out _, out var component))
+        {
+            if (_timing.CurTime >= component.NextStateSwitchTime)
+            {
+                component.CurrentState = component.CurrentState == LegionState.Summoning
+                    ? LegionState.Charging : LegionState.Summoning;
+
+                component.NextStateSwitchTime = _timing.CurTime + TimeSpan.FromSeconds(component.StateSwitchInterval);
+            }
+        }
     }
 
-    private void OnLegionMapInit(EntityUid uid, LegionBossComponent component, MapInitEvent args)
+    #region Basic Legion
+    private void OnLegionSummon(Entity<LegionFaunaComponent> entity, ref LegionSummonSkullAction args)
+    {
+        args.Handled = true;
+        // To prevent NPS from spamming skulls without stopping.
+        if (_mobState.IsIncapacitated(entity) || _mobState.IsIncapacitated(args.Target))
+            return;
+
+        var coords = Transform(entity).Coordinates;
+        for (var i = 0; i < args.MaxSpawns; i++)
+            Spawn(args.EntityId, coords);
+    }
+
+    private void OnReversible(Entity<LegionReversibleComponent> entity, ref MobStateChangedEvent args)
+    {
+        if (args.NewMobState != MobState.Critical && args.NewMobState != MobState.Dead)
+            return;
+
+        if (_lookup.GetEntitiesInRange<LegionFaunaComponent>(Transform(entity).Coordinates, 6f).Count > 0)
+        {
+            var legion = TryComp<HumanoidAppearanceComponent>(entity, out var humanoid) && humanoid.Height <= 160
+                || HasComp<SmallHeightComponent>(entity) ? entity.Comp.DwarfPolymorph : entity.Comp.BasePolymorph;
+
+            _polymorph.PolymorphEntity(entity, legion);
+        }
+    }
+    #endregion
+
+    private void OnMegaLegionMapInit(EntityUid uid, LegionBossComponent component, MapInitEvent args)
     {
         component.NextStateSwitchTime = _timing.CurTime + TimeSpan.FromSeconds(component.StateSwitchInterval);
         component.NextSummonTime = _timing.CurTime;
         component.NextChargeTime = _timing.CurTime;
     }
 
-    private void OnLegionAttack(EntityUid uid, LegionBossComponent component, ref MegafaunaAttackEvent args)
+    private void OnMegaLegionAction(EntityUid uid, LegionBossComponent component, ref MegaLegionAction args)
     {
+        // To prevent NPS from spamming without stopping.
+        if (_mobState.IsIncapacitated(uid) || _mobState.IsIncapacitated(args.Target))
+            return;
+
         switch (component.CurrentState)
         {
             case LegionState.Summoning:
                 UpdateSummoningState(uid, component);
                 break;
             case LegionState.Charging:
-                UpdateChargingState(uid, component);
+                UpdateChargingState(uid, component, args.Target);
                 break;
         }
     }
-
-    #region State Management
-
-    private void UpdateLegionState(float frameTime)
-    {
-        var query = EntityQueryEnumerator<LegionBossComponent>();
-        while (query.MoveNext(out _, out var component))
-        {
-            if (_timing.CurTime >= component.NextStateSwitchTime)
-            {
-                SwitchState(component);
-                component.NextStateSwitchTime = _timing.CurTime + TimeSpan.FromSeconds(component.StateSwitchInterval);
-            }
-        }
-    }
-
-    private void SwitchState(LegionBossComponent component)
-    {
-        component.CurrentState = component.CurrentState == LegionState.Summoning
-            ? LegionState.Charging
-            : LegionState.Summoning;
-    }
-
-    #endregion
 
     #region Summoning State
 
@@ -100,9 +128,6 @@ public sealed partial class LegionSystem : EntitySystem
 
     private void SummonMinions(EntityUid uid, LegionBossComponent component)
     {
-        if (_megafauna.FindAttackTarget(uid) == null)
-            return;
-
         var selfCoords = Transform(uid).Coordinates;
         for (int i = 0; i < component.SummonCount; i++)
         {
@@ -118,23 +143,19 @@ public sealed partial class LegionSystem : EntitySystem
 
     #region Charging State
 
-    private void UpdateChargingState(EntityUid uid, LegionBossComponent component)
+    private void UpdateChargingState(EntityUid uid, LegionBossComponent component, EntityUid target)
     {
-        if (_timing.CurTime < component.NextChargeTime)
+        if (target == uid || !Exists(target) || _timing.CurTime < component.NextChargeTime)
             return;
 
-        ChargeAtTarget(uid, component);
+        ChargeAtTarget(uid, component, target);
         component.NextChargeTime = _timing.CurTime + TimeSpan.FromSeconds(component.ChargeInterval);
     }
 
-    private void ChargeAtTarget(EntityUid uid, LegionBossComponent component)
+    private void ChargeAtTarget(EntityUid uid, LegionBossComponent component, EntityUid target)
     {
-        var target = _megafauna.FindAttackTarget(uid);
-        if (target == null)
-            return;
-
         var xform = Transform(uid);
-        var targetCoords = Transform(target.Value).Coordinates;
+        var targetCoords = Transform(target).Coordinates;
 
         var direction = (targetCoords.Position - xform.Coordinates.Position).Normalized();
         var throwing = direction * 6f;
@@ -147,7 +168,7 @@ public sealed partial class LegionSystem : EntitySystem
 
     #region Splitting System
 
-    private void OnLegionKilled(EntityUid uid, LegionBossComponent component, MegafaunaKilledEvent args)
+    private void OnMegaLegionKilled(EntityUid uid, LegionBossComponent component, MegafaunaKilledEvent args)
     {
         var coords = Transform(uid).Coordinates;
         SpawnLootWithChance(component, coords);
@@ -176,10 +197,10 @@ public sealed partial class LegionSystem : EntitySystem
         else
         {
             var allSplits = EntityQuery<LegionSplitComponent>().ToList();
-            if (allSplits.Count != 1)
-                return;
-
-            Spawn(Reward, Transform(uid).Coordinates);
+            if (allSplits.Count == 1)
+            {
+                Spawn(Reward, Transform(uid).Coordinates);
+            }
         }
 
         QueueDel(uid);

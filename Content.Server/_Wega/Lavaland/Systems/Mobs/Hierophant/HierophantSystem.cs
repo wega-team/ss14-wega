@@ -1,6 +1,9 @@
 using System.Linq;
 using System.Numerics;
 using Content.Server.Lavaland.Mobs.Components;
+using Content.Shared.Damage.Components;
+using Content.Shared.Damage.Systems;
+using Content.Shared.Lavaland.Events;
 using Content.Shared.Maps;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
@@ -12,22 +15,22 @@ using Robust.Shared.Map.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
-using Content.Shared.Lavaland.Mobs;
-using Content.Shared.Damage.Systems;
-using Content.Shared.Damage.Components;
 
 namespace Content.Server.Lavaland.Mobs;
 
+/// <summary>
+/// Completely on the server side due to its specific behavior.
+/// </summary>
 public sealed partial class HierophantSystem : EntitySystem
 {
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedMapSystem _map = default!;
-    [Dependency] private readonly MegafaunaSystem _megafauna = default!;
-    [Dependency] private readonly TurfSystem _turf = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private readonly SharedMapSystem _map = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly MegafaunaSystem _megafauna = default!;
+    [Dependency] private readonly TurfSystem _turf = default!;
     [Dependency] private readonly MobThresholdSystem _threshold = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
 
     private const float LowHealthThreshold = 0.5f;
     private static readonly EntProtoId SpawnPrototype = "HierophantLavalandSquare";
@@ -48,9 +51,9 @@ public sealed partial class HierophantSystem : EntitySystem
     {
         base.Update(frameTime);
 
-        UpdateChasers(frameTime);
-        UpdatePassiveMovement(frameTime);
-        UpdateReturnToBase(frameTime);
+        UpdateChasers();
+        UpdatePassiveMovement();
+        UpdateReturnToBase();
     }
 
     #region Passive Movement
@@ -62,7 +65,7 @@ public sealed partial class HierophantSystem : EntitySystem
         component.NextReturnCheckTime = _timing.CurTime + TimeSpan.FromMinutes(component.ReturnCheckInterval);
     }
 
-    private void UpdatePassiveMovement(float frameTime)
+    private void UpdatePassiveMovement()
     {
         var query = EntityQueryEnumerator<HierophantBossComponent>();
         while (query.MoveNext(out var uid, out var component))
@@ -75,7 +78,7 @@ public sealed partial class HierophantSystem : EntitySystem
         }
     }
 
-    private void UpdateReturnToBase(float frameTime)
+    private void UpdateReturnToBase()
     {
         var query = EntityQueryEnumerator<HierophantBossComponent>();
         while (query.MoveNext(out var uid, out var component))
@@ -460,7 +463,7 @@ public sealed partial class HierophantSystem : EntitySystem
         component.NextMoveTime = _timing.CurTime + TimeSpan.FromSeconds(component.MoveInterval);
     }
 
-    private void UpdateChasers(float frameTime)
+    private void UpdateChasers()
     {
         var query = EntityQueryEnumerator<HierophantChaserComponent>();
         while (query.MoveNext(out var uid, out var comp))

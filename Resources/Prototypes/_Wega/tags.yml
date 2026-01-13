@@ -286,3 +286,36 @@
 
 - type: Tag
   id: DockLavalandOutpost
+
+- type: Tag
+  id: GunUpgradeAoE
+
+- type: Tag
+  id: CrusherUpgrade
+
+- type: Tag
+  id: CrusherUpgradeLegion
+
+- type: Tag
+  id: CrusherUpgradeGoliath
+
+- type: Tag
+  id: CrusherUpgradeWatcher
+
+- type: Tag
+  id: CrusherUpgradeMagmaWatcher
+
+- type: Tag
+  id: CrusherUpgradeBDM
+
+- type: Tag
+  id: CrusherUpgradeAshDrake
+
+- type: Tag
+  id: CrusherUpgradeBubblegum
+
+- type: Tag
+  id: CrusherUpgradeColossus
+
+- type: Tag
+  id: CrusherUpgradeHierophant

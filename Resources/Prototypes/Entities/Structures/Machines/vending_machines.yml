@@ -1524,6 +1524,7 @@
       PKAUpgradeRange: 1000
       PKAUpgradeDamage: 1000
       PKAUpgradeFireRate: 1000
+      PKAUpgradeAoE: 2000
       JetpackMiningFilled: 2000
       ClothingShoesBootsJump: 2500
       HandLuxuriousCapsule: 3000

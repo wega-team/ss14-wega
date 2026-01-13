@@ -10,7 +10,7 @@ public sealed partial class LavalandShuttleComponent : Component
     public TimeSpan? NextLaunchTime;
 }
 
-public enum ShuttleState
+public enum ShuttleState : byte
 {
     DockedAtStation,
     DockedAtOutpost,

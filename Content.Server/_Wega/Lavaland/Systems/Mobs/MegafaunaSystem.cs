@@ -5,7 +5,7 @@ using Content.Shared.Mobs.Systems;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
-using Content.Shared.Lavaland.Mobs;
+using Content.Shared.Lavaland.Events;
 using System.Linq;
 using Content.Shared.Mobs.Components;
 using Content.Shared.NPC.Systems;

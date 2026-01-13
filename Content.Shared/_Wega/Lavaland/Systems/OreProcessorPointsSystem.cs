@@ -5,6 +5,8 @@ using Content.Shared.Materials;
 using Content.Shared.Popups;
 using Content.Shared.Stacks;
 
+namespace Content.Shared.Lavaland;
+
 public sealed partial class OreProcessorPointsSystem : EntitySystem
 {
     [Dependency] private readonly SharedPopupSystem _popup = default!;

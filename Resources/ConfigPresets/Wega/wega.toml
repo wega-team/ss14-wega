@@ -20,6 +20,10 @@ night_light_enabled = true
 roundend_vote_enabled = true
 sound_insulation_enabled = true
 
+[npc]
+max_updates = 512
+pathfinding = false
+
 [net]
 tickrate = 30
 

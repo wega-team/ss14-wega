@@ -105,6 +105,18 @@
     color: "#ffeead"
     enabled: false
     radius: 4
+  # Corvax-Wega-Lavaland-start
+  - type: Appearance
+  - type: ToggleableVisuals
+    spriteLayer: light
+  - type: ItemTogglePointLight
+  - type: GenericVisualizer
+    visuals:
+      enum.AmmoVisuals.HasAmmo:
+        empty-icon:
+          True: { visible: False }
+          False: { visible: True }
+  # Corvax-Wega-Lavaland-end
 
 # Very high burst damage if you land a mark, while also providing a small amount of healing.
 - type: entity
@@ -116,7 +128,16 @@
       - Pickaxe
   - type: Sprite
     sprite: Objects/Weapons/Melee/crusher.rsi
-    state: icon
+    # Corvax-Wega-Lavaland-Edit-start
+    layers:
+    - state: icon
+    # - state: icon-lit
+    #   shader: unshaded
+    #   visible: false
+    - state: icon-uncharged
+      visible: false
+      map: [ "empty-icon" ]
+    # Corvax-Wega-Lavaland-Edit-end
   - type: Item
     size: Ginormous
     sprite: Objects/Weapons/Melee/crusher-inhands.rsi
@@ -130,6 +151,16 @@
   - type: UseDelayOnShoot
   - type: UseDelay
     delay: 0.9
+  # Corvax-Wega-Lavaland-start
+  - type: TrophyHuntingTool
+  - type: UpgradeableCrusher
+    whitelist:
+      tags:
+      - CrusherUpgrade
+  - type: ContainerContainer
+    containers:
+      crusher_upgrades: !type:Container
+  # Corvax-Wega-Lavaland-end
   - type: LeechOnMarker
     leech:
       groups:
@@ -175,7 +206,13 @@
   components:
   - type: Sprite
     sprite: Objects/Weapons/Melee/crusher_dagger.rsi
-    state: icon
+    # Corvax-Wega-Lavaland-Edit-start
+    layers:
+    - state: icon
+    # - state: icon-lit
+    #   shader: unshaded
+    #   visible: false
+    # Corvax-Wega-Lavaland-Edit-end
   - type: MeleeWeapon
     autoAttack: true
     wideAnimationRotation: -135
