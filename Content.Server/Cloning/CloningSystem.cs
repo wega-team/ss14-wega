@@ -87,7 +87,12 @@ public sealed partial class CloningSystem : SharedCloningSystem
         _metaData.SetEntityName(clone.Value, originalName);
 
         _adminLogger.Add(LogType.Chat, LogImpact.Medium, $"The body of {original:player} was cloned as {clone.Value:player}");
-        return true;
+        
+		///Corvax-Wega-Tweak: Для компонентов, использующих ивент ComponentStartup
+		var finishedEv = new CloneFinishedEvent(original);
+		RaiseLocalEvent(clone.Value, ref finishedEv);
+		
+		return true;
     }
 
     public override void CloneComponents(EntityUid original, EntityUid clone, ProtoId<CloningSettingsPrototype> settings)

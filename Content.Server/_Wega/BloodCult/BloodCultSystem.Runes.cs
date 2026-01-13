@@ -491,7 +491,7 @@ public sealed partial class BloodCultSystem
     private bool TryReviveDeadCultist(EntityUid target, EntityUid cultist, BloodRuneComponent runeComp)
     {
         if (!HasComp<BloodCultistComponent>(target) || !HasComp<HumanoidAppearanceComponent>(target) ||
-            _mobState.IsDead(target))
+            !_mobState.IsDead(target))
             return false;
 
         var cult = _bloodCult.GetActiveRule();

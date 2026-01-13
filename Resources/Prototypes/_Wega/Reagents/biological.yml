@@ -65,6 +65,9 @@
         - !type:MetabolizerTypeCondition
           type: [ Ariral ]
           inverted: true
+        - !type:MetabolizerTypeCondition
+          type: [ Vampire ]
+          inverted: true
         damage:
           types:
             Poison: 0.5

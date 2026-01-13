@@ -33,7 +33,7 @@
 - type: startingGear
   id: ClownGear
   equipment:
-    mask: ClothingMaskClown
+#    mask: ClothingMaskClown #Corvax-Wega-edit
     pocket1: BikeHorn
     pocket2: ClownRecorder
     id: ClownPDA

@@ -3,6 +3,7 @@ using Content.Shared.Actions;
 using Content.Shared.Actions.Components;
 using Content.Shared.Blood.Cult.Components;
 using Content.Shared.IdentityManagement;
+using Content.Shared.Mind;
 using Content.Shared.Popups;
 using Content.Shared.Stunnable;
 
@@ -41,6 +42,13 @@ public abstract class SharedBloodCultSystem : EntitySystem
 
         foreach (var spell in bloodCultist.SelectedEmpoweringSpells)
             _action.RemoveAction(cultist, spell);
+
+        if (TryComp<MindLinkComponent>(cultist, out var mindLink))
+        {
+            mindLink.Channels.Remove(bloodCultist.CultMindChannel);
+            if (mindLink.Channels.Count == 0)
+                RemComp(cultist, mindLink);
+        }
 
         _stun.TryKnockdown(cultist, TimeSpan.FromSeconds(4), true);
         _popup.PopupEntity(Loc.GetString("blood-cult-break-control", ("name", Identity.Entity(cultist, EntityManager))), cultist);

@@ -26,6 +26,8 @@
   - PermanentBlindness
   - Snoring
   - Unrevivable
+  - Deafness # Corvax-Wega-Add
+  - NoirVision # Corvax-Wega-Add
   # accents
   - Accentless
   - BackwardsAccent
@@ -55,6 +57,12 @@
   - SpanishAccent
   - StutteringAccent
   - TTS # Corvax-TTS
+  - AphasiaAccent # Corvax-Wega-Add
+  - AuldImperialAccent # Corvax-Wega-Add
+  - ClownAccent # Corvax-Wega-Add
+  - LispAccent # Corvax-Wega-Add
+  - UnintelligibleAccent # Corvax-Wega-Add
+ 
 
 # for job-specific traits etc.
 - type: cloningSettings

@@ -1,0 +1,22 @@
+- type: entity
+  id: HeadAnimal
+  name: animal head
+  categories: [ HideSpawnMenu ]
+  parent: PartAnimal
+  components:
+  - type: Sprite
+    layers:
+    - state: head
+  - type: BodyPart
+    partType: Head
+  - type: Gibbable
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: Fat
+        Quantity: 8
+      - ReagentId: Blood
+        Quantity: 15
+  - type: Tag
+    tags:
+      - Trash # i dont want you making monkeys beheaded

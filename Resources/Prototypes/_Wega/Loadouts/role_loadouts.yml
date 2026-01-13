@@ -3,6 +3,8 @@
   groups:
   - Inventory # Corvax-Loadouts
   - GroupTankHarness
+  - SponsorHead
+  - SponsorNeck
   - BartenderJumpsuit
   - BarberOuterClothing
   - CommonBackpack
@@ -35,6 +37,8 @@
   groups:
   - Inventory # Corvax-Loadouts
   - GroupTankHarness
+  - SponsorHead
+  - SponsorNeck
   - GeneticsJumpsuit
   - MedicalGloves
   - GeneticsBackpack
@@ -103,6 +107,7 @@
   - Inventory # Corvax-Loadouts
   - GroupTankHarness
   - PostmanHead
+  - SponsorNeck
   - PostmanJumpsuit
   - PostmanBackpack
   - Glasses

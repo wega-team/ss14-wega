@@ -9,6 +9,7 @@
   - type: Sharp
   - type: Execution
     doAfterDuration: 4.0
+    canGunExecute: false # Corvax-Wega-Suicide
   - type: Utensil
     types:
       - Knife
@@ -389,6 +390,7 @@
     components:
     - type: Execution
       doAfterDuration: 4.0
+      canGunExecute: false # Corvax-Wega-Suicide
     - type: Sharp
     - type: Utensil
       types:

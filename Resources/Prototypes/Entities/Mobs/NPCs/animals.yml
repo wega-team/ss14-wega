@@ -1578,6 +1578,12 @@
   - type: GhostTakeoverAvailable
   - type: Loadout
     prototypes: [SyndicateOperativeGearMonkey]
+  # Corvax-Wega-Genetics-start
+  - type: DnaModifier
+    upper: MobHumanSyndiMonkey
+    lowest: MobBaseSyndicateMonkey
+  # Corvax-Wega-Genetics-end
+
 
 - type: entity
   id: MobMonkeySyndicateAgent
@@ -1587,6 +1593,7 @@
     # make the player a traitor once its taken
   - type: AutoTraitor
     profile: TraitorReinforcement
+
 
 - type: entity
   id: MobMonkeySyndicateAgentNukeops # Reinforcement exclusive to nukeops uplink

@@ -110,7 +110,7 @@
     sprite: _Wega/Objects/Weapons/Guns/Battery/borggun.rsi
     layers:
     - state: icon
-  - type: Battery
+  - type: PredictedBattery
     maxCharge: 1000
     startingCharge: 1000
   - type: BatteryAmmoProvider
@@ -153,7 +153,7 @@
   - type: BatteryAmmoProvider
     proto: RedMediumLaser
     fireCost: 62.5
-  - type: Battery
+  - type: PredictedBattery
     maxCharge: 1000
     startingCharge: 1000
   - type: PredictedBatterySelfRecharger

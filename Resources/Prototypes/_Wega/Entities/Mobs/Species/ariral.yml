@@ -5,6 +5,7 @@
   abstract: true
   components:
   - type: Sprite
+    scale: "1.1, 1.1"
     layers:
     - map: [ "enum.HumanoidVisualLayers.Chest" ]
     - map: [ "enum.HumanoidVisualLayers.Head" ]
@@ -63,6 +64,15 @@
     - HeadTop
     - HeadSide
   - type: Carriable
+  - type: Respirator
+    damage:
+      types:
+        Asphyxiation: 4
+    damageRecovery:
+      types:
+        Asphyxiation: -3.0
+  - type: Stamina
+    baseCritThreshold: 80
   - type: DiseaseCarrier
   - type: Hunger
   - type: Thirst
@@ -94,7 +104,7 @@
         Bloodloss: 1.5
     bloodlossHealDamage:
       types:
-        Bloodloss: -2
+        Bloodloss: -1
     bleedReductionAmount: 0.2
   - type: Temperature
     heatDamageThreshold: 326 # ~ 52 °C
@@ -103,10 +113,10 @@
     specificHeat: 46
     coldDamage:
       types:
-        Cold: 0.25
+        Cold: 0.7
     heatDamage:
       types:
-        Heat: 0.35
+        Heat: 1.5
   - type: TemperatureSpeed
     thresholds:
       280: 0.9

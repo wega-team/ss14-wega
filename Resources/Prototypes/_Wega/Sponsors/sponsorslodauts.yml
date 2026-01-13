@@ -4,3 +4,209 @@
   - !type:SponsorLoadoutEffect
   inhand:
   - PetCarrierMars
+  
+- type: loadout
+  id: BigToyHammer
+  effects:
+  - !type:SponsorLoadoutEffect
+  inhand:
+  - BigToyHammer
+
+- type: loadout
+  id: BigToyHammerRed
+  effects:
+  - !type:SponsorLoadoutEffect
+  inhand:
+  - BigToyHammerRed
+
+## Eyes
+- type: loadout
+  id: ClothingEyesGlassesGarGigaSponsor
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    eyes: ClothingEyesGlassesGarGigaSponsor
+    
+# Head
+- type: loadout
+  id: ClothingHeadHatMagic
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    head: ClothingHeadHatMagic
+
+# Mask
+- type: loadout
+  id: ClothingMaskElegantClownMask
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    mask: ClothingMaskElegantClownMask
+
+# Neck
+- type: loadout
+  id: ClothingNeckCloakMagic
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    neck: ClothingNeckCloakMagic
+
+- type: loadout
+  id: ClothingNeckCloakManly
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    neck: ClothingNeckCloakManly
+
+# Jumpskirt
+- type: loadout
+  id: ClothingUniformJumpskirtBlackrevealingdress
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtBlackrevealingdress
+  groupBy: "sponsorjumpskirt"
+
+- type: loadout
+  id: ClothingUniformJumpskirtRedrevealingdress
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtRedrevealingdress
+  groupBy: "sponsorjumpskirt"
+
+- type: loadout
+  id: ClothingUniformJumpskirtElegantBs
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtElegantBs
+
+- type: loadout
+  id: ClothingUniformJumpskirtElegantCaptain
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtElegantCaptain
+
+- type: loadout
+  id: ClothingUniformJumpskirtElegantCE
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtElegantCE
+
+- type: loadout
+  id: ClothingUniformJumpskirtElegantChaplain
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtElegantChaplain
+
+- type: loadout
+  id: ClothingUniformJumpskirtElegantClown
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtElegantClown
+
+- type: loadout
+  id: ClothingUniformJumpskirtElegantHOP
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtElegantHOP
+
+- type: loadout
+  id: ClothingUniformJumpskirtElegantCMO
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtElegantCMO
+
+- type: loadout
+  id: ClothingUniformJumpskirtElegantHOS
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtElegantHOS
+
+- type: loadout
+  id: ClothingUniformJumpskirtElegantQM
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtElegantQM
+
+- type: loadout
+  id: ClothingUniformJumpskirtElegantRD
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtElegantRD
+
+- type: loadout
+  id: ClothingUniformJumpskirtMagicDress
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtMagicDress
+  groupBy: "sponsorjumpskirt"
+
+- type: loadout
+  id: ClothingUniformJumpskirtNecklineSweater
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtNecklineSweater
+  groupBy: "sponsorjumpskirt"
+
+- type: loadout
+  id: ClothingUniformJumpskirtPinkKimano
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtPinkKimano
+  groupBy: "sponsorjumpskirt"
+
+- type: loadout
+  id: ClothingUniformJumpskirtBlueKimono
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtBlueKimono
+  groupBy: "sponsorjumpskirt"
+
+- type: loadout
+  id: ClothingUniformJumpskirtSexySweater
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtSexySweater
+  groupBy: "sponsorjumpskirt"
+
+# Jumpsuit
+
+- type: loadout
+  id: ClothingUniformJumpsuitManlyPants
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitManlyPants
+  groupBy: "sponsorjumpsuit"
+
+- type: loadout
+  id: ClothingUniformJumpsuitStylishShirt
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitStylishShirt
+  groupBy: "sponsorjumpsuit"
+
+- type: loadout
+  id: ClothingUniformJumpsuitBeautifulSweater
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitBeautifulSweater
+  groupBy: "sponsorjumpsuit"

@@ -59,6 +59,9 @@
   groups:
   - Inventory # Corvax-Loadouts
   - GroupTankHarness
+  # Corvax-Wega-Sponsors-start
+  - SponsorHead
+  # Corvax-Wega-Sponsors-end
   - PassengerJumpsuit
   - CommonBackpack
   - PassengerNeck
@@ -83,6 +86,9 @@
   - Inventory # Corvax-Loadouts
   - GroupTankHarness
   - BartenderHead
+  # Corvax-Wega-Sponsors-start
+  - SponsorNeck
+  # Corvax-Wega-Sponsors-end
   - BartenderJumpsuit
   - CommonBackpack
   - BartenderOuterClothing
@@ -103,6 +109,10 @@
   groups:
   - Inventory # Corvax-Loadouts
   - GroupTankHarness
+  # Corvax-Wega-Sponsors-start
+  - SponsorHead
+  - SponsorNeck
+  # Corvax-Wega-Sponsors-end
   - BartenderJumpsuit
   - CommonBackpack
   - Glasses
@@ -123,6 +133,9 @@
   - Inventory # Corvax-Loadouts
   - GroupTankHarness
   - ChefHead
+  # Corvax-Wega-Sponsors-start
+  - SponsorNeck
+  # Corvax-Wega-Sponsors-end
   - ChefMask
   - ChefJumpsuit
   - CommonBackpack
@@ -144,6 +157,10 @@
   groups:
   - Inventory # Corvax-Loadouts
   - GroupTankHarness
+  # Corvax-Wega-Sponsors-start
+  - SponsorHead
+  - SponsorNeck
+  # Corvax-Wega-Sponsors-end
   - LibrarianJumpsuit
   - CommonBackpack
   - Glasses
@@ -229,6 +246,9 @@
   - Inventory # Corvax-Loadouts
   - GroupTankHarness
   - BotanistHead
+  # Corvax-Wega-Sponsors-start
+  - SponsorNeck
+  # Corvax-Wega-Sponsors-end
   - BotanistJumpsuit
   - BotanistBackpack
   - BotanistOuterClothing
@@ -251,6 +271,10 @@
   - Inventory # Corvax-Loadouts
   - GroupTankHarness
   - ClownHead
+  # Corvax-Wega-Sponsors-start
+  - SponsorNeck
+  # Corvax-Wega-Sponsors-end
+  - ClownMask # Corvax-Wega
   - ClownJumpsuit
   - ClownBackpack
   - ClownOuterClothing
@@ -271,6 +295,9 @@
   - Inventory # Corvax-Loadouts
   - GroupTankHarness
   - MimeHead
+  # Corvax-Wega-Sponsors-start
+  - SponsorNeck
+  # Corvax-Wega-Sponsors-end
   - MimeMask
   - MimeJumpsuit
   - MimeBackpack
@@ -292,6 +319,10 @@
   groups:
   - Inventory # Corvax-Loadouts
   - GroupTankHarness
+  # Corvax-Wega-Sponsors-start
+  - SponsorHead
+  - SponsorNeck
+  # Corvax-Wega-Sponsors-end
   - MusicianJumpsuit
   - CommonBackpack
   - MusicianOuterClothing
@@ -337,6 +368,9 @@
   - Inventory # Corvax-Loadouts
   - GroupTankHarness
   - CargoTechnicianHead
+  # Corvax-Wega-Sponsors-start
+  - SponsorNeck
+  # Corvax-Wega-Sponsors-end
   - CargoTechnicianJumpsuit
   - CargoTechnicianBackpack
   - CargoTechnicianOuterClothing
@@ -358,6 +392,10 @@
   groups:
   - Inventory # Corvax-Loadouts
   - GroupTankHarness
+  # Corvax-Wega-Sponsors-start
+  - SponsorHead
+  - SponsorNeck
+  # Corvax-Wega-Sponsors-end
   - SalvageSpecialistBackpack
   - SalvageSpecialistOuterClothing
   - SalvageSpecialistShoes
@@ -399,6 +437,9 @@
   groups:
   - Inventory # Corvax-Loadouts
   - GroupTankHarness
+  # Corvax-Wega-Sponsors-start
+  - SponsorNeck
+  # Corvax-Wega-Sponsors-end
   - TechnicalAssistantJumpsuit
   - StationEngineerBackpack
   - StationEngineerShoes # Corvax-Add
@@ -418,6 +459,9 @@
   - Inventory # Corvax-Loadouts
   - GroupTankHarness
   - StationEngineerHead
+  # Corvax-Wega-Sponsors-start
+  - SponsorNeck
+  # Corvax-Wega-Sponsors-end
   - StationEngineerJumpsuit
   - StationEngineerBackpack
   - StationEngineerOuterClothing
@@ -438,6 +482,10 @@
   groups:
   - Inventory # Corvax-Loadouts
   - GroupTankHarness
+  # Corvax-Wega-Sponsors-start
+  - SponsorHead
+  - SponsorNeck
+  # Corvax-Wega-Sponsors-end
   - AtmosphericTechnicianJumpsuit
   - AtmosphericTechnicianBackpack
   - AtmosphericTechnicianOuterClothing
@@ -505,6 +553,10 @@
   groups:
   - Inventory # Corvax-Loadouts
   - GroupTankHarness
+  # Corvax-Wega-Sponsors-start
+  - SponsorHead
+  - SponsorNeck
+  # Corvax-Wega-Sponsors-end
   - ResearchAssistantJumpsuit
   - ScientistBackpack
   - Glasses
@@ -649,6 +701,9 @@
   - Inventory # Corvax-Loadouts
   - GroupTankHarness
   - MedicalDoctorHead
+  # Corvax-Wega-Sponsors-start
+  - SponsorNeck
+  # Corvax-Wega-Sponsors-end
   - MedicalMask
   - MedicalDoctorJumpsuit
   - MedicalGloves
@@ -672,6 +727,10 @@
   groups:
   - Inventory # Corvax-Loadouts
   - GroupTankHarness
+  # Corvax-Wega-Sponsors-start
+  - SponsorHead
+  - SponsorNeck
+  # Corvax-Wega-Sponsors-end
   - MedicalInternJumpsuit
   - MedicalBackpack
   - MedicalEyewear
@@ -691,6 +750,10 @@
   groups:
   - Inventory # Corvax-Loadouts
   - GroupTankHarness
+  # Corvax-Wega-Sponsors-start
+  - SponsorHead
+  - SponsorNeck
+  # Corvax-Wega-Sponsors-end
   - MedicalMask
   - ChemistJumpsuit
   - MedicalGloves
@@ -713,6 +776,9 @@
   - Inventory # Corvax-Loadouts
   - GroupTankHarness
   - ParamedicHead
+  # Corvax-Wega-Sponsors-start
+  - SponsorNeck
+  # Corvax-Wega-Sponsors-end
   - MedicalMask
   - ParamedicJumpsuit
   - MedicalGloves
@@ -730,12 +796,15 @@
   - Socks
   # Corvax-Wega-end
 
-# Wildcards
 - type: roleLoadout
   id: JobReporter
   groups:
   - Inventory # Corvax-Loadouts
   - GroupTankHarness
+  # Corvax-Wega-Sponsors-start
+  - SponsorHead
+  - SponsorNeck
+  # Corvax-Wega-Sponsors-end
   - ReporterJumpsuit
   - CommonBackpack
   - Glasses
@@ -755,13 +824,16 @@
   groups:
   - Inventory # Corvax-Loadouts
   - GroupTankHarness
+  # Corvax-Wega-Sponsors-start
+  - SponsorHead
+  - SponsorNeck
+  # Corvax-Wega-Sponsors-end
   - PsychologistJumpsuit
   - MedicalBackpack
   - Glasses
   - BaseShoose # Corvax-Wega-Add
   - Survival
   - Trinkets
-  - PsychologistJobTrinkets
   - GroupSpeciesBreathTool
   # Corvax-Wega-start
   - Top

@@ -268,7 +268,7 @@
     sprite: Clothing/Uniforms/Jumpsuit/cmo_turtle.rsi
 
 - type: entity
-  parent: ClothingUniformToggleableBase # Corvax-Wega-ToggleableClothing-Edit
+  parent: [ ClothingUniformToggleableBase, ClothingSecurityUniformBase ] # Corvax-Wega-Edit
   id: ClothingUniformJumpsuitDetective
   name: hard-worn suit
   description: Someone who wears this means business.
@@ -279,7 +279,7 @@
       sprite: Clothing/Uniforms/Jumpsuit/detective.rsi
 
 - type: entity
-  parent: ClothingUniformToggleableBase # Corvax-Wega-ToggleableClothing-Edit
+  parent: [ ClothingUniformToggleableBase, ClothingSecurityUniformBase ] # Corvax-Wega-Edit
   id: ClothingUniformJumpsuitDetectiveGrey
   name: noir suit
   description: A hard-boiled private investigator's grey suit, complete with tie clip.
@@ -317,7 +317,7 @@
     sprite: Clothing/Uniforms/Jumpsuit/hop.rsi
 
 - type: entity
-  parent: [ClothingUniformToggleableBase, BaseCommandContraband] # Corvax-Wega-ToggleableClothing-Edit
+  parent: [ClothingUniformToggleableBase, ClothingSecurityUniformBase, BaseCommandContraband] # Corvax-Wega-Edit
   id: ClothingUniformJumpsuitHoS
   name: head of security's jumpsuit
   description: It's bright red and rather crisp, much like security's victims tend to be.
@@ -340,7 +340,7 @@
       - state: overlay-inhand-right
 
 - type: entity
-  parent: [ClothingUniformToggleableBase, BaseCommandContraband] # Corvax-Wega-ToggleableClothing-Edit
+  parent: [ClothingUniformToggleableBase, ClothingSecurityUniformBase, BaseCommandContraband] # Corvax-Wega-Edit
   id: ClothingUniformJumpsuitHoSAlt
   name: head of security's turtleneck
   description: It's a turtleneck worn by those strong and disciplined enough to achieve the position of Head of Security.
@@ -351,7 +351,7 @@
     sprite: Clothing/Uniforms/Jumpsuit/hos_alt.rsi
 
 - type: entity
-  parent: [ClothingUniformBase, BaseCommandContraband]
+  parent: [ClothingUniformBase, ClothingSecurityUniformBase, BaseCommandContraband] # Corvax-Wega-Edit
   id: ClothingUniformJumpsuitHoSBlue
   name: head of security's blue jumpsuit
   description: A blue jumpsuit of Head of Security.
@@ -362,7 +362,7 @@
     sprite: Clothing/Uniforms/Jumpsuit/hos_blue.rsi
 
 - type: entity
-  parent: [ClothingUniformBase, BaseCommandContraband]
+  parent: [ClothingUniformBase, ClothingSecurityUniformBase, BaseCommandContraband] # Corvax-Wega-Edit
   id: ClothingUniformJumpsuitHoSGrey
   name: head of security's grey jumpsuit
   description: A grey jumpsuit of Head of Security, which make him look somewhat like a passenger.
@@ -373,7 +373,7 @@
     sprite: Clothing/Uniforms/Jumpsuit/hos_grey.rsi
 
 - type: entity
-  parent: [ClothingUniformBase, BaseCommandContraband]
+  parent: [ClothingUniformBase, ClothingSecurityUniformBase, BaseCommandContraband] # Corvax-Wega-Edit
   id: ClothingUniformJumpsuitHoSParadeMale
   name: head of security's parade uniform
   description: A male head of security's luxury-wear, for special occasions.
@@ -461,7 +461,7 @@
     protection: 0.1 # Corvax-Wega-Disease
 
 - type: entity
-  parent: ClothingUniformToggleableBase # Corvax-Wega-ToggleableClothing-Edit
+  parent: [ ClothingUniformToggleableBase, ClothingSecurityUniformBase ] # Corvax-Wega-Edit
   id: ClothingUniformJumpsuitBrigmedic
   name: brigmedic jumpsuit
   description: This uniform is issued to qualified personnel who have been trained. No one cares that the training took half a day.
@@ -588,7 +588,7 @@
     sprite: Clothing/Uniforms/Jumpsuit/roboticist.rsi
 
 - type: entity
-  parent: [ClothingUniformToggleableBase, BaseSecurityContraband] # Corvax-Wega-ToggleableClothing-Edit
+  parent: [ClothingUniformToggleableBase, ClothingSecurityUniformBase, BaseSecurityContraband] # Corvax-Wega-Edit
   id: ClothingUniformJumpsuitSec
   name: security jumpsuit
   description: A jumpsuit made of strong material, providing robust protection.
@@ -609,7 +609,7 @@
       - state: overlay-inhand-right
 
 - type: entity
-  parent: ClothingUniformBase
+  parent: [ ClothingUniformBase, ClothingSecurityUniformBase ] # Corvax-Wega-Edit
   id: ClothingUniformJumpsuitSecBlue
   name: blue shirt and tie
   description: I'm a little busy right now, Calhoun.
@@ -620,7 +620,7 @@
     sprite: Clothing/Uniforms/Jumpsuit/security_blue.rsi
 
 - type: entity
-  parent: [ClothingUniformToggleableBase, BaseSecurityContraband] # Corvax-Wega-ToggleableClothing-Edit
+  parent: [ClothingUniformToggleableBase, ClothingSecurityUniformBase, BaseSecurityContraband] # Corvax-Wega-Edit
   id: ClothingUniformJumpsuitSecGrey
   name: grey security jumpsuit
   description: A tactical relic of years past before Nanotrasen decided it was cheaper to dye the suits red instead of washing out the blood.
@@ -631,7 +631,7 @@
     sprite: Clothing/Uniforms/Jumpsuit/security_grey.rsi
 
 - type: entity
-  parent: [ClothingUniformBase, BaseSecurityContraband]
+  parent: [ClothingUniformBase, ClothingSecurityUniformBase, BaseSecurityContraband] # Corvax-Wega-Edit
   id: ClothingUniformSecurityTrooper
   name: trooper uniform
   description: A formal uniform issued to the Nanotrasen Troopers, usually it comes with a car.
@@ -642,7 +642,7 @@
     sprite: Clothing/Uniforms/Jumpsuit/security_trooper.rsi
 
 - type: entity
-  parent: [ClothingUniformToggleableBase, BaseSecurityContraband] # Corvax-Wega-ToggleableClothing-Edit
+  parent: [ClothingUniformToggleableBase, ClothingSecurityUniformBase, BaseSecurityContraband] # Corvax-Wega-Edit
   id: ClothingUniformJumpsuitWarden
   name: warden's uniform
   description: A formal security suit for officers complete with Nanotrasen belt buckle.
@@ -1195,7 +1195,7 @@
     protection: 0.1 # Corvax-Wega-Disease
 
 - type: entity
-  parent: [ClothingUniformBase, BaseSecurityContraband]
+  parent: [ClothingUniformBase, ClothingSecurityUniformBase, BaseSecurityContraband] # Corvax-Wega-Edit
   id: ClothingUniformJumpsuitSeniorOfficer
   name: senior officer jumpsuit
   description: A sign of skill and prestige within the security department.

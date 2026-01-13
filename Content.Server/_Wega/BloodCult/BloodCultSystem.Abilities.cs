@@ -519,6 +519,9 @@ public sealed partial class BloodCultSystem
             _appearance.SetData(target, CardTarotVisuals.State, tarot.Card);
             _appearance.SetData(target, CardTarotVisuals.Reversed, reversed);
 
+            _meta.SetEntityName(target, Loc.GetString("tarot-card-name"));
+            _meta.SetEntityDescription(target, Loc.GetString("tarot-card-desc"));
+
             component.BloodCount -= 100;
             _action.RemoveAction(cultist, args.Action!);
         }

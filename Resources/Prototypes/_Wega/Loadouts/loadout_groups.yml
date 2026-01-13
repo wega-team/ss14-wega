@@ -237,6 +237,7 @@
   - BlueShieldJumpsuit
   - BlueShieldAltJumpsuit
   - BlueShieldJumpskirt
+  - ClothingUniformJumpskirtElegantBs
 
 - type: loadoutGroup
   id: BlueshieldBackpack
@@ -953,6 +954,7 @@
   loadouts:
   - HatPostmansoft
   - HatPostmansoftFlipped
+  - ClothingHeadHatMagic
 
 - type: loadoutGroup
   id: PostmanJumpsuit
@@ -960,6 +962,16 @@
   loadouts:
   - PostmanJumpsuit
   - PostmanJumpskirt
+  - ClothingUniformJumpskirtSexySweater
+  - ClothingUniformJumpskirtMagicDress
+  - ClothingUniformJumpskirtBlackrevealingdress
+  - ClothingUniformJumpskirtRedrevealingdress
+  - ClothingUniformJumpskirtNecklineSweater
+  - ClothingUniformJumpskirtPinkKimano
+  - ClothingUniformJumpskirtBlueKimono
+  - ClothingUniformJumpsuitStylishShirt
+  - ClothingUniformJumpsuitManlyPants
+  - ClothingUniformJumpsuitBeautifulSweater
   - JumpsuitColorWhite
   - JumpskirtColorWhite
   - JumpsuitColorBlack
@@ -1091,6 +1103,14 @@
   loadouts:
   - BarberOuterApronBar
 
+- type: loadoutGroup
+  id: ClownMask
+  name: loadout-group-clown-mask
+  loadouts:
+  - ClothingMaskClown
+  - ClothingMaskBlushingClown
+  - ClothingMaskElegantClownMask
+
 # Medical
 - type: loadoutGroup
   id: GeneticsJumpsuit
@@ -1098,6 +1118,16 @@
   loadouts:
   - GeneticsJumpsuit
   - GeneticsJumpskirt
+  - ClothingUniformJumpskirtSexySweater
+  - ClothingUniformJumpskirtMagicDress
+  - ClothingUniformJumpskirtBlackrevealingdress
+  - ClothingUniformJumpskirtRedrevealingdress
+  - ClothingUniformJumpskirtNecklineSweater
+  - ClothingUniformJumpskirtPinkKimano
+  - ClothingUniformJumpskirtBlueKimono
+  - ClothingUniformJumpsuitStylishShirt
+  - ClothingUniformJumpsuitManlyPants
+  - ClothingUniformJumpsuitBeautifulSweater
   - JumpsuitColorWhite
   - JumpskirtColorWhite
   - JumpsuitColorBlack
@@ -1324,9 +1354,6 @@
   - JumpsuitTurtleneckBlack
   - JumpskirtTurtleneckBlackSleeveless
   - JumpsuitTurtleneckBlackSleeveless
-  - ClothingUniformTopColorRed
-  - ClothingUniformTopColorBlack
-  - ClothingUniformTopicCool
 
 - type: loadoutGroup
   id: BrigmedicBackpack

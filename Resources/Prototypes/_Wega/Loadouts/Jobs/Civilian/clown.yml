@@ -1,0 +1,9 @@
+- type: loadout
+  id: ClothingMaskClown
+  equipment:
+    mask: ClothingMaskClown
+
+- type: loadout
+  id: ClothingMaskBlushingClown
+  equipment:
+    mask: ClothingMaskBlushingClown

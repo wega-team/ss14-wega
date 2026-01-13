@@ -100,6 +100,7 @@
   - type: Sharp
   - type: Execution
     doAfterDuration: 4.0
+    canGunExecute: false # Corvax-Wega-Suicide
   - type: UnpoweredFlashlight
   - type: PointLight
     color: "#ffeead"

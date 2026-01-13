@@ -70,7 +70,7 @@ public sealed partial class VoucherKitWindow : RadialMenu
             };
             container.AddChild(icon);
         }
-        else if (kit.Items.Count > 0 && _prototype.TryIndex<EntityPrototype>(kit.Items[0], out var firstItem))
+        else if (kit.Items.Count > 0 && _prototype.TryIndex<EntityPrototype>(kit.Items[0].EntityId, out var firstItem))
         {
             var entityView = new EntityPrototypeView
             {

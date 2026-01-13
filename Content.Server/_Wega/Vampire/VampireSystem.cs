@@ -7,6 +7,7 @@ using Content.Server.Body.Systems;
 using Content.Server.Chat.Systems;
 using Content.Server.Polymorph.Systems;
 using Content.Shared.Actions;
+using Content.Shared.Actions.Components;
 using Content.Shared.Alert;
 using Content.Shared.Atmos.Components;
 using Content.Shared.Body.Components;
@@ -35,6 +36,7 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
+using Robust.Shared.GameObjects;
 using Content.Shared.Genetics;
 using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Hands.EntitySystems;
@@ -43,6 +45,8 @@ using Content.Shared.Nutrition.Components;
 using Content.Shared.Inventory;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Damage.Components;
+using Content.Shared.Tag;
+using Content.Shared.Shaders;
 
 namespace Content.Server.Vampire;
 
@@ -73,6 +77,7 @@ public sealed partial class VampireSystem : SharedVampireSystem
     [Dependency] private readonly MobThresholdSystem _mobThreshold = default!;
     [Dependency] private readonly EntityLookupSystem _entityLookup = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!;
+    [Dependency] private readonly TagSystem _tag = default!;
 
     private static readonly ProtoId<EmotePrototype> Scream = "Scream";
 
@@ -156,10 +161,11 @@ public sealed partial class VampireSystem : SharedVampireSystem
         }
     }
 
-    // Update Alerts
+    // Update Alerts + Tag
     private void OnStartup(EntityUid uid, VampireComponent component, ComponentStartup args)
     {
         _alerts.ShowAlert(uid, component.BloodAlert);
+		_tag.AddTag(uid, "Vampire");
     }
 
     #region Drinking blood
@@ -407,6 +413,18 @@ public sealed partial class VampireSystem : SharedVampireSystem
         {
             component.AcquiredSkills.Add(skill);
             _action.AddAction(uid, skill);
+			
+			if (skill == "ActionVampireBloodSwellAdvanced")
+			{
+			    var oldAction = FindActionByPrototype(uid, "ActionVampireBloodSwell");
+				if (oldAction != null)
+					_action.RemoveAction(uid, oldAction.Value);
+			}
+			
+			if (skill == "ActionVampireBloodBringersRite")
+			{
+				_alerts.ShowAlert(uid, "AlertBloodRite", 0);
+			}
         }
     }
 
@@ -453,8 +471,8 @@ public sealed partial class VampireSystem : SharedVampireSystem
                     { 150f, new List<string> { "ActionEnthrall", "ActionCommune" } },
                     { 250f, new List<string> { "ActionPacify", "ActionSubspaceSwap" } },
                     { 400f, new List<string> { /*"ActionDeployDecoy",*/"ActionMaxThrallCountUpdate1" } },
-                    { 600f, new List<string> { "ActionRallyThralls", "ActionMaxThrallCountUpdate2" } },
-                    { 800f, new List<string> { "ActionBloodBond" } },
+                    { 600f, new List<string> { "ActionRallyThralls", "ActionMaxThrallCountUpdate2", "ActionVampirePacifyNearby" } },
+                    { 800f, new List<string> { "ActionBloodBond", "ActionVampireThrallHeal" } },
                     { 1000f, new List<string> { "ActionMassHysteria", "ActionMaxThrallCountUpdate3" } }
                 };
 
@@ -578,7 +596,7 @@ public sealed partial class VampireSystem : SharedVampireSystem
     }
     #endregion
 
-    #region True Power
+    #region True Power + NightVision
     private void MakeImmuneToHoly(EntityUid vampire, VampireComponent component)
     {
         if (TryComp<ReactiveComponent>(vampire, out var reactive))
@@ -591,8 +609,31 @@ public sealed partial class VampireSystem : SharedVampireSystem
 
         component.TruePowerActive = true;
         RemComp<UnholyComponent>(vampire);
+		var nightvision = EnsureComp<NaturalNightVisionComponent>(vampire);
+		nightvision.VisionRadius = 15;
+		nightvision.TintColor = Color.FromHex("#adadad");
+		Dirty(vampire, nightvision);
 
         _popup.PopupEntity(Loc.GetString("vampire-true-power"), vampire, vampire, PopupType.Medium);
     }
     #endregion
+	
+	private EntityUid? FindActionByPrototype(EntityUid performer, string prototypeId)
+	{
+
+		if (!TryComp<ActionsComponent>(performer, out var actionsComp))
+			return null;
+
+		foreach (var actionEntity in actionsComp.Actions)
+		{
+			if (!TryComp<MetaDataComponent>(actionEntity, out var meta))
+				continue;
+
+			if (meta.EntityPrototype?.ID == prototypeId)
+				return actionEntity;
+		}
+
+		return null;
+	}
+
 }

@@ -135,6 +135,12 @@
         },
         {
             "name": "vampire_coffin"
+        },
+        {
+            "name": "thrallheal"
+        },
+        {
+            "name": "pacifynearby"
         }
     ]
 }

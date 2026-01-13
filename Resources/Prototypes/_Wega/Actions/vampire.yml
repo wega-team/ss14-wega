@@ -38,6 +38,7 @@
   - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "rejuvenate" }
     checkCanInteract: false
+    checkConsciousness: false
     useDelay: 20
     priority: 1
   - type: InstantAction
@@ -55,6 +56,7 @@
     itemIconStyle: BigAction
     sound: !type:SoundPathSpecifier
       path: /Audio/_Wega/Effects/Vampire/glare.ogg
+    checkCanInteract: false
     useDelay: 30
     priority: 1
   - type: TargetAction
@@ -224,7 +226,8 @@
     itemIconStyle: BigAction
     useDelay: 15
   - type: TargetAction
-    range: 16
+    range: 4
+    checkCanAccess: false
   - type: WorldTargetAction
     event: !type:VampireDarkPassageActionEvent
 
@@ -283,6 +286,7 @@
   - type: Action
     icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "rejuvenate" }
     checkCanInteract: false
+    checkConsciousness: false
     useDelay: 20
     priority: 1
   - type: InstantAction
@@ -387,6 +391,7 @@
     useDelay: 30
   - type: TargetAction
     range: 16
+    checkCanAccess: false
   - type: WorldTargetAction
     event: !type:VampireChargeActionEvent
 
@@ -542,3 +547,31 @@
     useDelay: 60
   - type: InstantAction
     event: !type:VampireMassHysteriaActionEvent
+    
+- type: entity
+  id: ActionVampirePacifyNearby
+  parent: BaseAction
+  name: "[color=purple]Psionic waves[/color]"
+  description: "Send large psionic waves to pacify you enemies for some time."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "pacifynearby" }
+    itemIconStyle: BigAction
+    useDelay: 40
+  - type: InstantAction
+    event: !type:VampirePacifyNearbyActionEvent
+    
+- type: entity
+  id: ActionVampireThrallHeal
+  parent: BaseAction
+  name: "[color=purple]Leader's support[/color]"
+  description: "Support your thralls with your speak. Heal them by it and make them rise."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "thrallheal" }
+    itemIconStyle: BigAction
+    useDelay: 90
+  - type: InstantAction
+    event: !type:VampireThrallHealActionEvent

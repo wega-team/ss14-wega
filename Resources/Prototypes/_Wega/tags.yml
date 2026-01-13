@@ -264,6 +264,9 @@
   id: SyndicateSegwayKeys
 
 - type: Tag
+  id: Vampire
+
+- type: Tag
   id: Coin
 
 - type: Tag

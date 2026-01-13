@@ -3,6 +3,7 @@ using Content.Shared.DoAfter;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
+using Content.Shared.Alert;
 
 namespace Content.Shared.Vampire;
 
@@ -105,6 +106,8 @@ public sealed partial class VampireBloodBringersRiteActionEvent : InstantActionE
     public SoundSpecifier Sound = new SoundPathSpecifier("/Audio/Effects/Fluids/splat.ogg");
 }
 
+public sealed partial class VampireBloodRiteAlertEvent : BaseAlertEvent;
+
 // Umbrae Abilities
 public sealed partial class VampireCloakOfDarknessActionEvent : InstantActionEvent { }
 
@@ -191,3 +194,7 @@ public sealed partial class VampireRallyThrallsActionEvent : InstantActionEvent 
 public sealed partial class VampireBloodBondActionEvent : InstantActionEvent { }
 
 public sealed partial class VampireMassHysteriaActionEvent : InstantActionEvent { }
+
+public sealed partial class VampireThrallHealActionEvent : InstantActionEvent { }
+
+public sealed partial class VampirePacifyNearbyActionEvent : InstantActionEvent { }

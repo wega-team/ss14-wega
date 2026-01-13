@@ -1,0 +1,14 @@
+- type: loadoutGroup
+  id: SponsorHead
+  name: loadout-group-sponsor-head
+  minLimit: 0
+  loadouts:
+  - ClothingHeadHatMagic
+
+- type: loadoutGroup
+  id: SponsorNeck
+  name: loadout-group-sponsor-neck
+  minLimit: 0
+  loadouts:
+  - ClothingNeckCloakMagic
+  - ClothingNeckCloakManly

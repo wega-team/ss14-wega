@@ -235,6 +235,59 @@ public abstract partial class SharedGunSystem : EntitySystem
         return result;
     }
 
+    // Corvax-Wega-Suicide-start
+    /// <summary>
+    /// Attempts to shoot directly at a target entity without requiring aim coordinates.
+    /// </summary>
+    public bool AttemptDirectShoot(EntityUid user, EntityUid gunUid, EntityUid target, GunComponent? gun = null)
+    {
+        if (!Resolve(gunUid, ref gun, false))
+            return false;
+
+        if (!_actionBlockerSystem.CanAttack(user))
+            return false;
+
+        var fromCoordinates = Transform(user).Coordinates;
+
+        // Check if we can shoot
+        var prevention = new ShotAttemptedEvent
+        {
+            User = user,
+            Used = (gunUid, gun)
+        };
+        RaiseLocalEvent(gunUid, ref prevention);
+        if (prevention.Cancelled)
+            return false;
+
+        RaiseLocalEvent(user, ref prevention);
+        if (prevention.Cancelled)
+            return false;
+
+        // Get ammo
+        var ev = new TakeAmmoEvent(1, new List<(EntityUid? Entity, IShootable Shootable)>(), fromCoordinates, user);
+        RaiseLocalEvent(gunUid, ev);
+
+        if (ev.Ammo.Count <= 0)
+        {
+            // Empty gun
+            var emptyGunShotEvent = new OnEmptyGunShotEvent(user);
+            RaiseLocalEvent(gunUid, ref emptyGunShotEvent);
+
+            Audio.PlayPredicted(gun.SoundEmpty, gunUid, user);
+            return false;
+        }
+
+        // Shoot directly at the target
+        ShootDirect(gunUid, gun, target, ev.Ammo, user);
+        UpdateAmmoCount(gunUid);
+
+        var shotEv = new GunShotEvent(user, ev.Ammo);
+        RaiseLocalEvent(gunUid, ref shotEv);
+
+        return true;
+    }
+    // Corvax-Wega-Suicide-end
+
     private bool AttemptShoot(EntityUid user, EntityUid gunUid, GunComponent gun)
     {
         if (gun.FireRateModified <= 0f ||
@@ -403,6 +456,21 @@ public abstract partial class SharedGunSystem : EntitySystem
             CauseImpulse(fromCoordinates, toCoordinates.Value, user, userPhysics);
         return true;
     }
+
+    // Corvax-Wega-Suicide-start
+    /// <summary>
+    /// Shoots directly at a target entity without requiring aim coordinates.
+    /// Used for executions and point-blank shots.
+    /// </summary>
+    protected virtual bool ShootDirect(EntityUid gunUid, GunComponent gun, EntityUid target, List<(EntityUid? Entity, IShootable Shootable)> ammo, EntityUid user)
+    {
+        var fromCoordinates = Transform(user).Coordinates;
+        var toCoordinates = Transform(target).Coordinates;
+
+        Shoot(gunUid, gun, ammo, fromCoordinates, toCoordinates, out _, user);
+        return true;
+    }
+    // Corvax-Wega-Suicide-end
 
     public void Shoot(
         EntityUid gunUid,

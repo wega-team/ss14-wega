@@ -22,3 +22,25 @@
       offset: 0.325, 0.25
     - map: [ "enum.VampireVisualLayers.Digit3" ]
       offset: 0.45, 0.25
+
+- type: alert
+  id: AlertBloodRite
+  icons:
+  - sprite: /Textures/_Wega/Interface/Alerts/bloodrite.rsi
+    state: puddle-off # 0
+  - sprite: /Textures/_Wega/Interface/Alerts/bloodrite.rsi
+    state: puddle-on # 1
+  name: alerts-bloodrite-name
+  description: alerts-bloodrite-desc
+  minSeverity: 0
+  maxSeverity: 1
+  
+- type: alert
+  id: AlertEternalDarkness
+  icons:
+  - sprite: /Textures/_Wega/Interface/Alerts/eternaldarkness.rsi
+    state: eternaldarkness
+  name: alerts-eternaldarkness-name
+  description: alerts-eternaldarkness-desc
+  minSeverity: 0
+  maxSeverity: 0

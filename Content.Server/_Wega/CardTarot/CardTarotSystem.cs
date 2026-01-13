@@ -83,6 +83,7 @@ public sealed class CardTarotSystem : EntitySystem
     [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly LockSystem _lock = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
+    [Dependency] private readonly MetaDataSystem _meta = default!;
     [Dependency] private readonly PolymorphSystem _polymorph = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly IMapManager _mapManager = default!;
@@ -788,6 +789,9 @@ public sealed class CardTarotSystem : EntitySystem
 
                 _appearance.SetData(card, CardTarotVisuals.State, tarot.Card);
                 _appearance.SetData(card, CardTarotVisuals.Reversed, reversedCard);
+
+                _meta.SetEntityName(card, Loc.GetString("tarot-card-name"));
+                _meta.SetEntityDescription(card, Loc.GetString("tarot-card-desc"));
 
                 _throwing.TryThrow(card, _random.NextVector2());
             }

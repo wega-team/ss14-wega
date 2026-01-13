@@ -38,8 +38,18 @@ public sealed partial class VoucherKitPrototype : IPrototype
     public string Description = string.Empty;
 
     [DataField("items", required: true)]
-    public List<EntProtoId> Items = new();
+    public List<KitItem> Items = new();
 
     [DataField("icon")]
     public SpriteSpecifier? Icon;
+}
+
+[DataRecord]
+public sealed partial record KitItem
+{
+    [DataField("id")]
+    public EntProtoId EntityId { get; init; }
+
+    [DataField("amount")]
+    public int Amount { get; init; } = 1;
 }

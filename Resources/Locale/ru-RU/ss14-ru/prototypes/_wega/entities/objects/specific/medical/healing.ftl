@@ -103,3 +103,6 @@ ent-PillCanisterDylomet = баночка для таблеток
 ent-PillCanisterFresium = баночка для таблеток
     .suffix = Фризиум 10 ед, 5 шт
     .desc = { ent-PillCanister.desc }
+ent-PillCanisterAmbuzol = баночка для таблеток
+    .suffix = Амбузол 10 ед, 5 шт
+    .desc = { ent-PillCanister.desc }

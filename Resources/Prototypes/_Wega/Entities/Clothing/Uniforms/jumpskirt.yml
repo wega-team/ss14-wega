@@ -13,7 +13,7 @@
   - type: ClothingSterility
 
 - type: entity
-  parent: ClothingUniformBase
+  parent: [ ClothingUniformBase, ClothingSecurityUniformBase ]
   id: ClothingUniformJumpskirtBlueShield
   name: blue shield officer's jumpsuit skirt
   description: The purple uniform of the officer "Blue Shield" is made of dense materials.
@@ -113,7 +113,7 @@
     price: 15
 
 - type: entity
-  parent: ClothingUniformSkirtBase
+  parent: [ ClothingUniformSkirtBase, ClothingSecurityUniformBase ]
   id: ClothingUniformJumpskirtTurtleneckRed
   name: red turtleneck with skirt
   description: Hides blood of clowns well!
@@ -191,7 +191,7 @@
     price: 15
 
 - type: entity
-  parent: ClothingUniformSkirtBase
+  parent: [ ClothingUniformSkirtBase, ClothingSecurityUniformBase ]
   id: ClothingUniformJumpskirtTurtleneckBlack
   name: black turtleneck with skirt
   description: Favourite clothes of bookworms.
@@ -204,7 +204,7 @@
     price: 15
 
 - type: entity
-  parent: ClothingUniformSkirtBase
+  parent: [ ClothingUniformSkirtBase, ClothingSecurityUniformBase ]
   id: ClothingUniformJumpskirtTurtleneckBlackSleeveless
   name: black sleeveless turtleneck with skirt
   description: Black turtleneck sweater with a skirt and no sleeves.

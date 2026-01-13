@@ -61,7 +61,7 @@
       storagebase: !type:AllSelector
         children:
         - id: ClothingMaskGasSecurity
-        - id: EmergencyNitrogenTankFilled
+        - id: DoubleEmergencyNitrogenTankFilled
         - id: Flare
         - id: Tyriumpack3
         - id: WelderMini
@@ -140,7 +140,7 @@
   - type: StorageFill
     contents:
     - id: ClothingMaskGasBlueShield
-    - id: ExtendedEmergencyOxygenTankFilled
+    - id: DoubleEmergencyOxygenTankFilled
     - id: EmergencyMedipen
     - id: Flare
     - id: FoodSnackNutribrick
@@ -158,7 +158,7 @@
   - type: StorageFill
     contents:
     - id: ClothingMaskGasBlueShield
-    - id: ExtendedEmergencyNitrogenTankFilled
+    - id: DoubleEmergencyNitrogenTankFilled
     - id: EmergencyMedipen
     - id: Flare
     - id: FoodSnackNutribrick

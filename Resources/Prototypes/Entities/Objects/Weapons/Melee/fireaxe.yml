@@ -10,6 +10,7 @@
   - type: Sharp
   - type: Execution
     doAfterDuration: 4.0
+    canGunExecute: false # Corvax-Wega-Suicide
   - type: Sprite
     sprite: Objects/Weapons/Melee/fireaxe.rsi
     state: icon

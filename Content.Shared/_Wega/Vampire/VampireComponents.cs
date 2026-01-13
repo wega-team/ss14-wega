@@ -62,6 +62,10 @@ public sealed partial class VampireComponent : Component
     public float NextNullDamageTick { get; set; }
 
     public bool TruePowerActive = false;
+	
+	public bool IsCharging = false;
+	
+    public HashSet<EntityUid> AlreadyHit { get; } = new HashSet<EntityUid>();
 
     public bool PowerActive = false;
 

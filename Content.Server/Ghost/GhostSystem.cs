@@ -45,6 +45,11 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
+using Content.Shared.Traits; // Corvax-Wega-GhostBar
+using Content.Shared.Hands.Components; // Corvax-Wega-GhostBar
+using Content.Shared.Hands.EntitySystems; // Corvax-Wega-GhostBar
+using Content.Shared.Whitelist; // Corvax-Wega-GhostBar
+
 namespace Content.Server.Ghost
 {
     public sealed class GhostSystem : SharedGhostSystem
@@ -77,6 +82,8 @@ namespace Content.Server.Ghost
         [Dependency] private readonly IEntityManager _entityManager = default!; // Corvax-Wega-GhostBar
         [Dependency] private readonly StationSpawningSystem _spawning = default!; // Corvax-Wega-GhostBar
         [Dependency] private readonly LoadoutSystem _loadout = default!; // Corvax-Wega-GhostBar
+		[Dependency] private readonly SharedHandsSystem _sharedHandsSystem = default!; // Corvax-Wega-GhostBar
+        [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!; // Corvax-Wega-GhostBar
 
         private EntityQuery<GhostComponent> _ghostQuery;
         private EntityQuery<PhysicsComponent> _physicsQuery;
@@ -568,6 +575,35 @@ namespace Content.Server.Ghost
                 if (TryComp<FlammableComponent>(spawnedMob, out var flame))
                     _entityManager.RemoveComponent<FlammableComponent>(spawnedMob);
 
+				foreach (var traitId in profile.TraitPreferences)
+				{
+					if (!_prototypeManager.TryIndex<TraitPrototype>(traitId, out var traitPrototype))
+					{
+						Log.Error($"No trait found with ID {traitId}!");
+						return;
+					}
+
+					if (_whitelistSystem.IsWhitelistFail(traitPrototype.Whitelist, spawnedMob) ||
+						_whitelistSystem.IsWhitelistPass(traitPrototype.Blacklist, spawnedMob))
+						continue;
+
+					// Add all components required by the prototype
+					_entityManager.AddComponents(spawnedMob, traitPrototype.Components, false);
+
+					// Add item required by the trait
+					if (traitPrototype.TraitGear == null)
+						continue;
+
+					if (!TryComp<HandsComponent>(spawnedMob, out var handsComponent))
+						continue;
+
+					var inhandEntity = Spawn(traitPrototype.TraitGear, coords);
+					_sharedHandsSystem.TryPickup(spawnedMob,
+					inhandEntity,
+					checkActionBlocker: false,
+					handsComp: handsComponent);
+				}
+
                 if (targetMind != null)
                 {
                     _mind.TransferTo(targetMind.Value, spawnedMob, true);
@@ -579,7 +615,7 @@ namespace Content.Server.Ghost
                     _mind.TransferTo(mindId, spawnedMob, true);
                     args.Handled = true;
                 }
-
+				
                 var ghostBarGear = new ProtoId<StartingGearPrototype>("GhostBarGear");
 
                 if (_loadout != null)

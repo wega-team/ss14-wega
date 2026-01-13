@@ -15,3 +15,436 @@
   categories: [ HideSpawnMenu ]
   name: mars
   description: "He's so small, cute, fluffy and AIRY."
+
+- type: entity
+  parent: BaseItem
+  id: BigToyHammer
+  name: bid rubber hammer
+  description: A brightly colored hammer made of rubber.
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Objects/Fun/big_rubber_hammer.rsi
+    state: icon
+  - type: WeaponRandom
+    damageBonus:
+      types:
+        Blunt: 1000
+  - type: StaminaDamageOnHit
+    damage: 8
+  - type: Item
+    size: Small
+    sprite: _Wega/Sponsors/Objects/Fun/big_rubber_hammer_inhand.rsi
+  - type: Appearance
+  - type: DisarmMalus
+    malus: 0
+  - type: MeleeWeapon
+    wideAnimationRotation: -135
+    soundHit:
+      collection: RubberHammer
+      params:
+        variation: 0.03
+        volume: 3
+    soundNoDamage:
+      collection: RubberHammer
+      params:
+        variation: 0.03
+        volume: 3
+    damage:
+      types:
+        Blunt: 0
+
+- type: entity
+  parent: BigToyHammer
+  id: BigToyHammerRed
+  name: bid red rubber hammer
+  description: A brightly colored hammer made of rubber.
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Objects/Fun/big_red_rubber_hammer.rsi
+    state: icon
+  - type: Item
+    size: Small
+    sprite: _Wega/Sponsors/Objects/Fun/big_red_rubber_hammer_inhand.rsi
+
+## SPONSOR LOADOUT WEGA
+
+# Eyes
+
+- type: entity
+  parent: ClothingEyesBase
+  id: ClothingEyesGlassesGarGigaSponsor
+  name: true giga gar glasses
+  description: We evolve past the person we were a minute before. Little by little we advance with each turn. That's how a drill works!
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Eyes/Glasses/true_manly_glasses.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Eyes/Glasses/true_manly_glasses.rsi
+    clothingVisuals:
+      eyes:
+      - state: equipped-EYES
+      - state: glitter
+        shader: unshaded
+  - type: Tag
+    tags: []
+
+# Head
+
+- type: entity
+  parent: ClothingHeadHatWizardBase
+  id: ClothingHeadHatMagic
+  name: magic hat
+  description: A strange-looking blue hat that most certainly belongs to a powerful magic-user.
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Head/Hats/magic_hat.rsi
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Head/Hats/magic_hat.rsi
+    clothingVisuals:
+      head:
+      - state: equipped-HELMET
+      - state: glitter
+        shader: unshaded
+  - type: Tag
+    tags:
+    - PetWearable
+    - CorgiWearable
+    - ClothMade
+    - Recyclable
+    - HamsterWearable
+
+# Mask
+
+- type: entity
+  parent: ClothingMaskClownBase
+  id: ClothingMaskElegantClownMask
+  name: elegant clown mask
+  description: A mask for a blushing clown.
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Mask/sex_clown.rsi
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Mask/sex_clown.rsi
+  - type: HideLayerClothing
+    slots:
+    - Hair
+  - type: Tag
+    tags: []
+
+# neck
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckCloakMagic
+  name: magic cloak
+  description: Worn by high ranking vampires of the transylvanian society of vampires.
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Neck/Cloak/magic_cloak.rsi
+  - type: Tag
+    tags: []
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckCloakManly
+  name: manly cloak
+  description: Worn by high ranking vampires of the transylvanian society of vampires.
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Neck/Cloak/manly_cloak.rsi
+  - type: Tag
+    tags: []
+
+## UNIFORM
+
+# Jumpskirt
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtBlackrevealingdress
+  name: black revealing dress
+  description: A nice and tidy uniform. Shame about the bar though.
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/black_revealing_dress.rsi
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/black_revealing_dress.rsi
+  - type: Tag
+    tags: []
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtRedrevealingdress
+  name: red revealing dress
+  description: A nice and tidy uniform. Shame about the bar though.
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/red_revealing_dress.rsi
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/red_revealing_dress.rsi
+  - type: Tag
+    tags: []
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtBlueKimono
+  name: blue kimano
+  description: A nice and tidy uniform. Shame about the bar though.
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/blue_kimono.rsi
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/blue_kimono.rsi
+  - type: Tag
+    tags: []
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtElegantBs
+  name: elegant bs
+  description: A nice and tidy uniform. Shame about the bar though.
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/elegant_bs.rsi
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/elegant_bs.rsi
+  - type: Tag
+    tags: []
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtElegantCaptain
+  name: elegant dress capitan
+  description: A nice and tidy uniform. Shame about the bar though.
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/elegant_captain.rsi
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/elegant_captain.rsi
+  - type: Tag
+    tags: []
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtElegantCE
+  name: elegant dress CE
+  description: A nice and tidy uniform. Shame about the bar though.
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/elegant_ce.rai
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/elegant_ce.rai
+  - type: Tag
+    tags: []
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtElegantChaplain
+  name: elegant dress chaplain
+  description: A nice and tidy uniform. Shame about the bar though.
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/elegant_chaplain.rsi
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/elegant_chaplain.rsi
+  - type: Tag
+    tags: []
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtElegantClown
+  name: elegant dress clown
+  description: A nice and tidy uniform. Shame about the bar though.
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/elegant_clown.rsi
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/elegant_clown.rsi
+  - type: Tag
+    tags: []
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtElegantCMO
+  name: elegant dress CMO
+  description: A nice and tidy uniform. Shame about the bar though.
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/elegant_cmo.rsi
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/elegant_cmo.rsi
+  - type: Tag
+    tags: []
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtElegantHOP
+  name: elegant dress HOP
+  description: A nice and tidy uniform. Shame about the bar though.
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/elegant_hop.rsi
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/elegant_hop.rsi
+  - type: Tag
+    tags: []
+
+- type: entity
+  parent: [ ClothingUniformBase, ClothingSecurityUniformBase ]
+  id: ClothingUniformJumpskirtElegantHOS
+  name: elegant dress HOS
+  description: A nice and tidy uniform. Shame about the bar though.
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/elegant_hos.rsi
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/elegant_hos.rsi
+  - type: Tag
+    tags: []
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtElegantQM
+  name: elegant dress QM
+  description: A nice and tidy uniform. Shame about the bar though.
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/elegant_qm.rsi
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/elegant_qm.rsi
+  - type: Tag
+    tags: []
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtElegantRD
+  name: elegant dress RD
+  description: A nice and tidy uniform. Shame about the bar though.
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/elegant_rd.rsi
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/elegant_rd.rsi
+  - type: Tag
+    tags: []
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtMagicDress
+  name: magic dress
+  description: A nice and tidy uniform. Shame about the bar though.
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/magic_dress.rsi
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/magic_dress.rsi
+  - type: Tag
+    tags: []
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtNecklineSweater
+  name: neckline sweater
+  description: A nice and tidy uniform. Shame about the bar though.
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/neckline_sweater.rsi
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/neckline_sweater.rsi
+  - type: Tag
+    tags: []
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtPinkKimano
+  name: pink kimano
+  description: A nice and tidy uniform. Shame about the bar though.
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/pink_kimono.rsi
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/pink_kimono.rsi
+  - type: Tag
+    tags: []
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtSexySweater
+  name: sexy sweater
+  description: A nice and tidy uniform. Shame about the bar though.
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/sexy_sweater.rsi
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/sexy_sweater.rsi
+  - type: Tag
+    tags: []
+
+# Jumpsuit
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitManlyPants
+  name: manly pants
+  description: A nice and tidy uniform. Shame about the bar though.
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpsuit/manly_pants.rsi
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpsuit/manly_pants.rsi
+  - type: Tag
+    tags: []
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitStylishShirt
+  name: stylish shirt
+  description: A nice and tidy uniform. Shame about the bar though.
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpsuit/stylish_shirt.rsi
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpsuit/stylish_shirt.rsi
+  - type: Tag
+    tags: []
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitBeautifulSweater
+  name: beautiful sweater
+  description: A nice and tidy uniform. Shame about the bar though.
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpsuit/beautiful_sweater.rsi
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpsuit/beautiful_sweater.rsi
+  - type: Tag
+    tags: []

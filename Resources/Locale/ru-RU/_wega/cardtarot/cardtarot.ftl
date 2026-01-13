@@ -1,3 +1,6 @@
+tarot-card-name = { ent-BaseCardTarot }
+tarot-card-desc = { ent-BaseCardTarot.desc }
+
 tarot-card-not-enchanted = Карта Таро не зачарована
 tarot-used = {$name} использует карту {$type}
 tarot-card-fool = Дурака

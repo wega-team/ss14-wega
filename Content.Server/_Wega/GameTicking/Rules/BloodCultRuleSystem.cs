@@ -21,6 +21,7 @@ using Content.Shared.Database;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Humanoid;
+using Content.Shared.Mind;
 using Content.Shared.Mindshield.Components;
 using Content.Shared.Mobs;
 using Content.Shared.NPC.Prototypes;
@@ -319,6 +320,9 @@ namespace Content.Server.GameTicking.Rules
             if (mind is { UserId: not null } && _player.TryGetSessionById(mind.UserId, out var session))
                 _antag.SendBriefing(session, MakeBriefing(uid), Color.Red, new SoundPathSpecifier("/Audio/_Wega/Ambience/Antag/bloodcult_start.ogg"));
             RemComp<AutoCultistComponent>(uid);
+
+            var mindLink = EnsureComp<MindLinkComponent>(uid);
+            mindLink.Channels.Add(culsistComp.CultMindChannel);
 
             MakeCultist(uid);
             var query = QueryActiveRules();
