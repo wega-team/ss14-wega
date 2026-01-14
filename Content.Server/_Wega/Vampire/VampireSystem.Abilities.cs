@@ -1614,7 +1614,7 @@ public sealed partial class VampireSystem
 
             EnsureComp<PacifiedComponent>(person);
             var target = person;
-            Timer.Spawn(8000, () => RemComp<PacifiedComponent>(target));
+            Timer.Spawn(3000, () => RemComp<PacifiedComponent>(target));
         }
 
         SubtractBloodEssence(uid, 50);
