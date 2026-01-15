@@ -30,7 +30,7 @@
         - Impassable
         hard: false
   - type: TimedDespawn
-    lifetime: 2.5
+    lifetime: 6.0
   - type: SpawnOnDespawn
     prototype: EffectBloodTentacleRetract
 
@@ -72,7 +72,7 @@
   - type: EffectVisuals
   - type: AnimationPlayer
   - type: TimedDespawn
-    lifetime: 0.0
+    lifetime: 0.05
 
 - type: entity
   id: BloodBarrier
