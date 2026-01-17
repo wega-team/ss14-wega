@@ -6,7 +6,9 @@
   - type: Sprite
     sprite: _Wega/Clothing/Hands/braslets.rsi
   - type: Clothing
-    slots: [gloves]
+    slots:
+    - GLOVES
+    - WRIST
   - type: Item
     size: Small
 

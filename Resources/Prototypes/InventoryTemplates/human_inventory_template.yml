@@ -37,6 +37,12 @@
       uiWindowPos: 3,2
       strippingWindowPos: 2,6
       displayName: Bra
+    - name: wrist
+      slotTexture: wrist
+      slotFlags: WRIST
+      uiWindowPos: 2,3
+      strippingWindowPos: 3,2
+      displayName: Wrist
     # Corvax-Wega-end
     - name: jumpsuit
       slotTexture: uniform

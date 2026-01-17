@@ -16,6 +16,14 @@
       uiWindowPos: 1,1
       strippingWindowPos: 1,2
       displayName: Suit
+     # Corvax-Wega-Start
+    - name: wrist
+      slotTexture: wrist
+      slotFlags: WRIST
+      uiWindowPos: 3,1
+      strippingWindowPos: 3,2
+      displayName: Wrist
+     # Corvax-Wega-End
     - name: gloves
       slotTexture: gloves
       slotFlags: GLOVES
