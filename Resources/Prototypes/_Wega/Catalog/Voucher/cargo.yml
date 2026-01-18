@@ -1,0 +1,54 @@
+- type: voucherKit
+  id: CargoExtractor
+  name: voucher-cargo-extractor-name
+  description: voucher-cargo-extractor-desc
+  items:
+  - id: Fulton
+  - id: FultonBeacon
+
+- type: voucherKit
+  id: CargoCrusher
+  name: voucher-cargo-crusher-name
+  description: voucher-cargo-crusher-desc
+  items:
+  - id: WeaponCrusher
+  - id: Tourniquet
+  
+- type: voucherKit
+  id: CargoMiner
+  name: voucher-cargo-miner-name
+  description: voucher-cargo-miner-desc
+  items:
+  - id: MiningDrill
+  - id: MineralScanner
+  - id: SeismicCharge
+    amount: 2
+  
+- type: voucherKit
+  id: CargoMedic
+  name: voucher-cargo-medic-name
+  description: voucher-cargo-medic-desc
+  items: 
+  - id: MedkitAdvancedFilled
+  - id: EmergencyMedipen
+    amount: 2
+  
+- type: voucherKit
+  id: CargoTank
+  name: voucher-cargo-tank-name
+  description: voucher-cargo-tank-desc
+  items:
+  - id: ClothingOuterHardsuitSalvage
+  - id: PKAUpgradeFireRate
+  
+- type: voucherKit
+  id: CargoNewbie
+  name: voucher-cargo-newbie-name
+  description: voucher-cargo-newbie-desc
+  items:
+  - id: ClothingOuterHardsuitSpatio
+  - id: WeaponProtoKineticAccelerator
+  - id: Pickaxe
+  - id: ClothingHandsGlovesColorYellow
+  - id: JetpackMiningFilled
+  - id: SurvivalKnife

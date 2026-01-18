@@ -22,9 +22,9 @@
     jumpsuit: ClothingUniformJumpsuitSalvageSpecialist
     id: SalvagePDA
     ears: ClothingHeadsetCargo
-  #storage:
-    #back:
-    #- Stuff
+  storage:
+    back:
+    - CargoVoucherCard
 
 - type: chameleonOutfit
   id: SalvageSpecialistChameleonOutfit

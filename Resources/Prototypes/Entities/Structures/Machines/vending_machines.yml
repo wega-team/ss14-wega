@@ -1495,6 +1495,10 @@
   - type: GuideHelp
     guides:
     - Salvage
+  # Corvax-Wega-Add-Start
+  - type: Voucher
+    typeVoucher: Cargo
+  # Corvax-Wega-Add-End
 
 - type: entity
   parent: VendingMachine

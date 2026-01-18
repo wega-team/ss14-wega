@@ -27,3 +27,22 @@
     - SecurityFirstAidKit
     - SecurityRiotsKit
     - SecuritySupervisionKit
+
+- type: entity
+  parent: BaseVoucherCard
+  id: CargoVoucherCard
+  name: cargo voucher card
+  description: "A discount card issued for the specialits of utilization provided by NanoTrasen for more efficient distribution of equipment among department employees. Used in Salvage Vendor."
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/VoucherCard/vouchercard.rsi
+    state: cargo
+  - type: VoucherCard
+    typeVoucher: Cargo
+    kits:
+    - CargoExtractor
+    - CargoMiner
+    - CargoMedic
+    - CargoTank
+    - CargoCrusher
+    - CargoNewbie
