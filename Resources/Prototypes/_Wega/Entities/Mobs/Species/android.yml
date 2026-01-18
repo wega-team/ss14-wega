@@ -227,7 +227,8 @@
       effects:
       - !type:Electrocute
         shockDamage: 0.5
-        minScale: 15
+        minScale: 20
+        electrocuteTime: 0.5
   - type: Operated
     raceGraph: AndroidSurgery
     limbLossChance: 1.75
