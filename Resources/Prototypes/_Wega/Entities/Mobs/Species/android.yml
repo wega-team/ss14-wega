@@ -23,14 +23,14 @@
     - map: [ "enum.HumanoidVisualLayers.UndergarmentTop" ]
     - map: [ "enum.HumanoidVisualLayers.LFoot" ]
     - map: [ "enum.HumanoidVisualLayers.RFoot" ]
+    - map: [ "enum.HumanoidVisualLayers.LHand" ]
+    - map: [ "enum.HumanoidVisualLayers.RHand" ]
     - map: [ "enum.HumanoidVisualLayers.Special" ]
     - map: [ "socks" ]
     - map: [ "underwearbottom" ]
     - map: [ "underweartop" ]
     - map: [ "jumpsuit" ]
     - map: [ "anal" ]
-    - map: [ "enum.HumanoidVisualLayers.LHand" ]
-    - map: [ "enum.HumanoidVisualLayers.RHand" ]
     # Corvax-Wega-end
     - map: [ "gloves" ]
     - map: [ "shoes" ]
@@ -76,10 +76,28 @@
         AndroidLedsStripes-leds_stripes:
           True: { shader: unshaded }
           False: { shader: shaded }
+        AndroidTempleLed-temple_led:
+          True: { shader: unshaded }
+          False: { shader: shaded }
+        AndroidTorsoSpine-body_spine_led:
+          True: { shader: unshaded }
+          False: { shader: shaded }
         AndroidCatEars-ears_cat_led:
           True: { shader: unshaded }
           False: { shader: shaded }
         AndroidCatTail-cat_tail_led:
+          True: { shader: unshaded }
+          False: { shader: shaded }
+        AndroidHeadBulbs-head_bulbs:
+          True: { shader: unshaded }
+          False: { shader: shaded }
+        AndroidOldHead-hare_lit:
+          True: { shader: unshaded }
+          False: { shader: shaded }
+        AndroidIpcHead-ipc_lit:
+          True: { shader: unshaded, visible: true }
+          False: { shader: shaded, visible: false }
+        AndroidScreenHead-screen_lit:
           True: { shader: unshaded }
           False: { shader: shaded }
   - type: WiresVisuals
@@ -207,10 +225,9 @@
     - reagents: [ Water ]
       methods: [ Touch ]
       effects:
-      - !type:HealthChange
-        damage:
-          types:
-            Shock: 0.5
+      - !type:Electrocute
+        shockDamage: 0.5
+        minScale: 15
   - type: Operated
     raceGraph: AndroidSurgery
     limbLossChance: 1.75
