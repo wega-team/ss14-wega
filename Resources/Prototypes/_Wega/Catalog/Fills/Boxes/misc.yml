@@ -7,3 +7,21 @@
     containers:
       entity_storage: !type:NestedSelector
         tableId: MaintenanceLockerLoot
+
+- type: entity
+  parent: BoxCardboard
+  id: BoxHugEmpty
+  name: box of hugs
+  suffix: empty
+  description: A special box for sensitive people.
+  components:
+  - type: Sprite
+    layers:
+    - state: box_hug
+    - state: heart
+  - type: Item
+    heldPrefix: hug
+  - type: Tag
+    tags:
+    - BoxCardboard
+    - BoxHug

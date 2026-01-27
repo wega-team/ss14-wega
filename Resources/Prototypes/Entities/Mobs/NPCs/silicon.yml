@@ -160,7 +160,7 @@
     dataset: FirebotAd
 
 - type: entity
-  parent: MobSiliconBase
+  parent: [ MobSiliconBase, MobCombat ] # Corvax-Wega-Add
   id: MobHonkBot
   name: honkbot
   description: Horrifying.
@@ -221,6 +221,16 @@
       path: /Audio/Items/bikehorn.ogg
       params:
         variation: 0.125
+# Corvax-Wega-start
+  - type: MeleeWeapon
+    attackRate: 0.75
+    hidden: true
+    soundHit:
+      collection: BananiumHorn
+    damage:
+      groups:
+        Brute: 0
+# Corvax-Wega-end
 
 - type: entity
   parent: MobHonkBot
@@ -391,7 +401,7 @@
     templateId: head
 
 - type: entity
-  parent: MobSiliconBase
+  parent: [MobSiliconBase, StripableInventoryBase] # Corvax-Wega-Add
   id: MobSupplyBot
   name: supplybot
   description: Delivers cargo!
@@ -433,6 +443,10 @@
     interfaces:
       enum.StorageUiKey.Key:
         type: StorageBoundUserInterface
+# Corvax-Wega-start
+      enum.StrippingUiKey.Key:
+        type: StrippableBoundUserInterface
+# Corvax-Wega-end
   - type: ContainerContainer
     containers:
       storagebase: !type:Container
@@ -460,6 +474,17 @@
     - Supply
   - type: Puller
     needsHands: false
+# Corvax-Wega-start
+  - type: Body
+    prototype: HugBot
+  - type: ComplexInteraction
+  - type: Hands
+    showInHands: false
+    canBeStripped: true
+  - type: Inventory
+    templateId: bots
+  - type: OfferGiver
+# Corvax-Wega-end
 
 - type: entity
   parent: [ MobSiliconBase, MobCombat ]

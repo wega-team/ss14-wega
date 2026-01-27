@@ -1,4 +1,36 @@
 - type: entity
+  parent: Clothing
+  id: IDCardNeck
+  name: identification neck card
+  description: A card necessary to access various areas aboard the station.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Misc/emenegrcy_id.rsi
+    state: icon
+  - type: Clothing
+    slots:
+    - neck
+    sprite: _Wega/Objects/Misc/emenegrcy_id.rsi
+  - type: Label
+    currentLabel: ancillary-access-group
+  - type: Item
+    size: Small
+    heldPrefix:
+    sprite: _Wega/Objects/Misc/emenegrcy_id.rsi
+    storedRotation: -90
+  - type: Access
+    groups:
+    - AncillaryAccess
+  - type: StationRecordKeyStorage
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+    - WhitelistChameleon
+    - WhitelistChameleonIdCard
+  - type: EdibleMatter # Corvax-Wega-Add
+    canBeEaten: false # Corvax-Wega-Add
+
+- type: entity
   parent: IDCardStandard
   id: BarberIDCard
   name: barber ID card

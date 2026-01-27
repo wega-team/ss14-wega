@@ -58,11 +58,12 @@
 
 # Corvax-Wega-start
   addComponents:
+  - type: ShowElectrocutionHUD
   - type: ShowHealthBars
     damageContainers:
     - Inorganic
     - Silicon
-    - Android #Corvax-Wega-android-health-display\
+    - Android
   - type: ShowAccessReaderSettings
 # Corvax-Wega-end
 

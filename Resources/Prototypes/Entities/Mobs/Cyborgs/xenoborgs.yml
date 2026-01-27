@@ -48,6 +48,7 @@
     damageContainers:
     - Inorganic
     - Silicon
+    - Android #Corvax-Wega-android-health-display
   - type: ItemSlots
     slots:
       cell_slot:

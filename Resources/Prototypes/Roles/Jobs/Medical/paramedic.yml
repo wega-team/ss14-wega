@@ -28,6 +28,7 @@
     id: ParamedicPDA
     ears: ClothingHeadsetMedical
     belt: ClothingBeltMedicalEMTFilled
+    neck: IDCardNeck
   storage:
     back:
     - EmergencyRollerBedSpawnFolded
