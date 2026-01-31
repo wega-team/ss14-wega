@@ -2,7 +2,7 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Server.Lavaland.Mobs.Components;
 
-[RegisterComponent]
+[RegisterComponent, Access(typeof(LegionSystem))]
 public sealed partial class LegionBossComponent : Component
 {
     [ViewVariables]
@@ -11,22 +11,22 @@ public sealed partial class LegionBossComponent : Component
     [ViewVariables] public TimeSpan NextSummonTime;
     [ViewVariables] public TimeSpan NextChargeTime;
 
-    [DataField("stateSwitchInterval")]
+    [DataField]
     public float StateSwitchInterval = 30f;
 
-    [DataField("summonInterval")]
+    [DataField]
     public float SummonInterval = 6f;
 
-    [DataField("chargeInterval")]
+    [DataField]
     public float ChargeInterval = 1.5f;
 
-    [DataField("summonCount")]
+    [DataField]
     public int SummonCount = 2;
 
-    [DataField("minionPrototype")]
+    [DataField]
     public EntProtoId MinionPrototype = "MobLegionSkull";
 
-    [DataField("splitPrototypes")]
+    [DataField]
     public List<EntProtoId> SplitPrototypes = new()
     {
         "MobMegaLegionSplitLeft",
@@ -34,13 +34,16 @@ public sealed partial class LegionBossComponent : Component
         "MobMegaLegionSplitEye"
     };
 
-    [DataField("lootPrototypes")]
+    [DataField]
     public Dictionary<EntProtoId, float> LootPrototypes = new();
+
+    [DataField("rewards")]
+    public List<EntProtoId> RewardsProto = new();
 }
 
 [RegisterComponent]
 public sealed partial class LegionSplitComponent : Component
 {
-    [DataField("nextSplitPrototype")]
+    [DataField("nextSplit")]
     public string? NextSplitPrototype;
 }

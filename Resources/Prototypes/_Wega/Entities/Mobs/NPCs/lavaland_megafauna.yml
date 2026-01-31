@@ -2,8 +2,35 @@
   id: BaseMobMegafauna
   abstract: true
   components:
-  - type: Megafauna
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+  - type: Physics
+    bodyType: KinematicController
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.75
+        density: 50
+        mask:
+          - MobMask
+        layer:
+          - MobLayer
+  - type: RequireProjectileTarget
+    active: false
+  - type: Actions
+  - type: Clickable
+  - type: InteractionOutline
+  - type: LagCompensation
   - type: NoSlip
+  - type: MobState
+  - type: CombatMode
+  - type: Damageable
+    damageContainer: Biological
+  - type: Megafauna
+  - type: NPCIgnoringOptimize
   - type: NpcFactionMember
     factions:
     - LavalandFauna
@@ -18,12 +45,25 @@
     - StunImmune
     - SlowImmune
 
+- type: entity
+  parent: BaseMobMegafauna
+  id: BaseMobMegafaunaMover
+  abstract: true
+  components:
+  - type: InputMover
+  - type: Input
+    context: "human"
+  - type: MobMover
+  - type: MovementSpeedModifier
+
 #region Blood Drunk Miner
 - type: entity
-  parent: [ BaseMobMegafauna, BaseMobHuman ]
+  parent: [ BaseMobHuman, BaseMobMegafauna ]
   id: MobBloodDrunkMiner
   name: unknown miner
   components:
+  - type: RandomHumanoidAppearance
+    randomizeName: false
   - type: Destructible
     thresholds:
     - trigger:
@@ -66,6 +106,13 @@
       540: 0.7
       720: 0.5
       900: 0.3
+  - type: Respirator
+    saturation: 8.0
+    suffocationThreshold: -6.0
+    maxSaturation: 8.0
+    minSaturation: -4.0
+    suffocationCycleThreshold: 6
+    updateIntervalMultiplier: 0.8
   - type: BloodDrunkMiner
   - type: NPCHandSwitcher
   - type: HTN
@@ -79,12 +126,21 @@
   - type: TrophyHunter
     trophy: TrophyLavalandBDMEye
     dropChance: 1 # Guaranteed, since it's the boss
+  - type: NavMapBeacon
+    defaultText: nav-map-beacon-lavaland-signal-bdm
+    defaultDesc: nav-map-beacon-lavaland-signal-bdm-desc
+    color: "#a46106"
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - DoorBumpOpener
+    - StunImmune
+    - SlowImmune
 
 - type: startingGear
   id: BloodDrunkMinerGear
   equipment:
-    jumpsuit: ClothingUniformJumpsuitSalvageSpecialist
-    id: SalvagePDA
+    jumpsuit: ClothingUniformJumpsuitExplorer
     ears: ClothingHeadsetCargo
     eyes: ClothingEyesGlassesMeson
     mask: ClothingMaskGasExplorer
@@ -104,10 +160,8 @@
   parent: BaseMobMegafauna
   id: MobHierophant
   name: hierophant
-  description: A massive metal club that hangs in the air as though waiting. It'll make you dance to its beat.
+  description: "A huge, mysterious scepter made of alien metal and seemingly endowed with its own intelligence. Perhaps its purpose is to defend the structure it resides in."
   components:
-  - type: Physics
-    bodyType: KinematicController
   - type: Fixtures
     fixtures:
       fix1:
@@ -119,37 +173,17 @@
         - FlyingMobMask
         layer:
         - FlyingMobLayer
-  - type: Clickable
-  - type: InteractionOutline
-  - type: InputMover
-  - type: Input
-    context: "human"
-  - type: LagCompensation
-  - type: MobMover
-  - type: Actions
-  - type: Appearance
-  - type: RotationVisuals
-    defaultRotation: 0
-    horizontalRotation: 0
-  - type: DoAfter
-  - type: Examiner
-  - type: Eye
-  - type: ContentEye
-  - type: RequireProjectileTarget
-    active: False
-  - type: CombatMode
-  - type: MobState
   - type: Damageable
     damageContainer: Inorganic
     damageModifierSet: Hierophant
   - type: Sprite
-    noRot: true
-    drawdepth: Mobs
     sprite: _Wega/Mobs/Lavaland/hierophant.rsi
     state: hierophant
-  - type: MovementSpeedModifier
-    baseWalkSpeed: 1.5
-    baseSprintSpeed: 1.5
+  - type: MeleeWeapon
+    altDisarm: false
+    damage:
+     groups:
+       Brute: 20
   - type: MobThresholds
     thresholds:
       0: Alive
@@ -160,13 +194,33 @@
     enabled: false
     volume: 2
     range: 15
-  - type: HierophantBoss
+  - type: PointLight
+    color: "#9900ff"
+    castShadows: false
+    softness: 1
+    radius: 2.5
+    energy: 2.5
   - type: Megafauna
+    isActive: false
     bossMusic:
       path: "/Audio/_Wega/Mobs/Lavaland/hiero_bgm.ogg"
-  - type: MegafaunaAwareness
-    autoAggro: false
-  - type: MegafaunaAttacks
+  - type: HierophantBoss
+    rewards:
+    - HierophantClubRod
+  - type: HTN
+    rootTask:
+      task: HierophantBehaviorCompound
+  - type: NPCUseActionsOnTarget
+    actionIds:
+    - ActionHierophantBlink
+    - ActionHierophantCross
+    - ActionHierophantChaser
+    - ActionHierophantDamageArea
+    actionChances:
+      ActionHierophantBlink: 0.5
+      ActionHierophantCross: 0.5
+      ActionHierophantChaser: 0.5
+      ActionHierophantDamageArea: 0.5
   - type: TrophyHunter
     trophy: TrophyLavalandHierophantVortexTalisman
     dropChance: 1 # Guaranteed, since it's the boss
@@ -176,7 +230,7 @@
 - type: entity
   id: MobHierophantChaser
   name: hierophant chaser
-  suffix: DO NOT MAP
+  categories: [ HideSpawnMenu ]
   placement:
     mode: SnapgridCenter
     snap:
@@ -189,15 +243,12 @@
 
 #region Mega Legion
 - type: entity
-  parent: BaseMobMegafauna
+  parent: BaseMobMegafaunaMover
   id: BaseMobMegaLegion
+  name: legion
+  description: A massive floating skull that watches over the necropolis.
   abstract: true
   components:
-  - type: Sprite
-    noRot: true
-    drawdepth: Mobs
-  - type: Physics
-    bodyType: KinematicController
   - type: Fixtures
     fixtures:
       fix1:
@@ -209,21 +260,7 @@
         - FlyingMobMask
         layer:
         - FlyingMobLayer
-  - type: Clickable
-  - type: InteractionOutline
-  - type: InputMover
-  - type: Input
-    context: "human"
-  - type: LagCompensation
-  - type: MobMover
-  - type: Tag
-    tags:
-    - CannotSuicide
-  - type: NoSlip
-  - type: MobState
-  - type: CombatMode
   - type: Damageable
-    damageContainer: Biological
     damageModifierSet: Skeleton
   - type: MovementSpeedModifier
     baseWalkSpeed: 4.2
@@ -236,8 +273,9 @@
         5
       AggroVisionRadius: !type:Single
         9
-  - type: NPCUseActionOnTarget
-    actionId: ActionMegaLegion
+  - type: NPCUseActionsOnTarget # More Safety
+    actionIds:
+    - ActionMegaLegion
   - type: DamageOtherOnHit
     damage:
       types:
@@ -248,14 +286,15 @@
     lootPrototypes:
       MaterialBones1: 1
       CrateNecropolisFilled: 0.2
+      LegionCore: 0.1
+    rewards:
+    - CrowbarRed
   - type: TrophyHunter
     trophy: TrophyLavalandLegionSkull
 
 - type: entity
   parent: BaseMobMegaLegion
   id: MobMegaLegion
-  name: legion
-  description: A massive floating skull that watches over the necropolis. Destroy it before it multiplies!
   components:
   - type: Sprite
     sprite: _Wega/Mobs/Lavaland/mega_legion96.rsi
@@ -273,11 +312,13 @@
     lootPrototypes:
       MaterialBones: 1
       CrateNecropolisFilled: 0.2
+      LegionCore: 0.1
 
 - type: entity
   parent: BaseMobMegaLegion
   id: MobMegaLegionSplitLeft
   name: legion left part
+  description: "Oh, who would have known it would be so disgusting?"
   components:
   - type: Fixtures
     fixtures:
@@ -301,7 +342,7 @@
       0: Alive
       400: Dead
   - type: LegionSplit
-    nextSplitPrototype: MobMegaLegionSplitMedium
+    nextSplit: MobMegaLegionSplitMedium
 
 - type: entity
   parent: MobMegaLegionSplitLeft
@@ -325,6 +366,7 @@
   parent: BaseMobMegaLegion
   id: MobMegaLegionSplitMedium
   name: legion medium
+  description: "What, again..?"
   components:
   - type: Fixtures
     fixtures:
@@ -353,17 +395,19 @@
       types:
         Blunt: 15
   - type: LegionSplit
-    nextSplitPrototype: MobMegaLegionSplitSmall
+    nextSplit: MobMegaLegionSplitSmall
   - type: LegionBoss
     summonCount: 1
     lootPrototypes:
       MaterialBones1: 1
       CrateNecropolisFilled: 0.2
+      LegionCore: 0.1
 
 - type: entity
   parent: BaseMobMegaLegion
   id: MobMegaLegionSplitSmall
   name: legion small
+  description: "When will it end!?"
   components:
   - type: Fixtures
     fixtures:
@@ -396,19 +440,21 @@
     lootPrototypes:
       MaterialBones1: 1
       CrateNecropolisFilled: 0.2
+      LegionCore: 0.1
 #endregion
 
 #region Colossus
 - type: entity
-  parent: BaseMobMegafauna
+  parent: BaseMobMegafaunaMover
   id: MobColossus
-  name: Colossus
-  description: ""
+  name: colossus
+  description: "A fallen angel who wanders the wastelands of Lavaland, punishing all those he deems impure."
   components:
   - type: Sprite
     sprite: _Wega/Mobs/Lavaland/colossus.rsi
     state: colossus
   - type: MeleeWeapon
+    altDisarm: false
     attackRate: 0.25
     damage:
      groups:
@@ -422,11 +468,16 @@
     capacity: 9999
     count: 9999
   - type: Gun
-    fireRate: 100
+    projectileSpeed: 4
+    fireRate: 10
     useKey: false
-    selectedMode: FullAuto
+    selectedMode: SemiAuto
     availableModes:
-      - FullAuto
+      - SemiAuto
+    showExamineText: false
+    soundGunshot: null
+    soundEmpty: null
+  - type: Pullable
   - type: MovementSpeedModifier
     baseWalkSpeed: 1.125
     baseSprintSpeed: 1.125
@@ -434,13 +485,124 @@
     thresholds:
       0: Alive
       2500: Dead
+  - type: NavMapBeacon
+    defaultText: nav-map-beacon-lavaland-signal-colossus
+    defaultDesc: nav-map-beacon-lavaland-signal-colossus-desc
+    color: "#4daaff"
+  - type: ColossusBoss
   - type: HTN
     rootTask:
-      task: SimpleHumanoidHostileCompound
+      task: MegafaunaBehaviorCompound
+    blackboard:
+      VisionRadius: !type:Single
+        10
+      AggroVisionRadius: !type:Single
+        12
   - type: NPCUseActionsOnTarget
+    delayModifier: 0.5
     actionIds:
-    - ActionBloodDrunkMinerDash
+    - ActionColossusFraction
+    - ActionColossusCross
+    - ActionColossusSpiral
+    - ActionColossusTripleFraction
+    actionChances:
+      ActionColossusFraction: 0.6
+      ActionColossusCross: 0.4
+      ActionColossusSpiral: 0.6
+      ActionColossusTripleFraction: 0.5
   - type: TrophyHunter
     trophy: TrophyLavalandColossusBlasterTubes
     dropChance: 1 # Guaranteed, since it's the boss
+#endregion
+
+#region Ash Drake
+- type: entity
+  parent: BaseMobMegafaunaMover
+  id: MobAshDrake
+  name: ash drake
+  description: "A winged monster, the revered guardian of the Necropolis. A horror in flesh, it roams the barren wasteland, spewing streams of deadly flame."
+  components:
+  - type: Physics
+    bodyType: KinematicController
+    canCollide: false
+  - type: Sprite
+    sprite: _Wega/Mobs/Lavaland/ashdrake.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: dragon
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: dragon
+      Dead:
+        Base: dragon_dead
+  - type: MeleeWeapon
+    altDisarm: false
+    angle: 0
+    animation: WeaponArcBite
+    soundHit:
+      path: /Audio/Effects/bite.ogg
+    attackRate: 0.25
+    damage:
+     type:
+       Slash: 40
+  - type: RechargeBasicEntityAmmo
+    showExamineText: false
+    rechargeCooldown: 0.01
+    rechargeSound: null
+  - type: BasicEntityAmmoProvider
+    proto: BulletAshDrakeFire
+    capacity: 9999
+    count: 9999
+  - type: Gun
+    projectileSpeed: 10
+    fireRate: 10
+    useKey: false
+    selectedMode: SemiAuto
+    availableModes:
+      - SemiAuto
+    showExamineText: false
+    soundGunshot: null
+    soundEmpty: null
+  - type: Pullable
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2.25
+    baseSprintSpeed: 2.25
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      2500: Dead
+  - type: NavMapBeacon
+    defaultText: nav-map-beacon-lavaland-signal-ashdrake
+    defaultDesc: nav-map-beacon-lavaland-signal-ashdrake-desc
+    color: "#a7000b"
+  - type: AshDrakeBoss
+  - type: HTN
+    rootTask:
+      task: MegafaunaBehaviorCompound
+    blackboard:
+      VisionRadius: !type:Single
+        10
+      AggroVisionRadius: !type:Single
+        12
+  - type: NPCUseActionsOnTarget
+    delayModifier: 0.5
+    actionIds:
+    - ActionAshDrakeConeFire
+    - ActionAshDrakeBreathingFire
+    - ActionAshDrakeLava
+    actionChances:
+      ActionAshDrakeConeFire: 0.75
+      ActionAshDrakeBreathingFire: 0.6
+      ActionAshDrakeLava: 0.1
+  - type: TrophyHunter
+    trophy: TrophyLavalandAshDrakeSpike
+    dropChance: 1 # Guaranteed, since it's the boss
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+     enum.VisualLayers.Enabled:
+        enum.DamageStateVisualLayers.Base:
+          True: {visible: false}
+          False: {visible: true}
 #endregion

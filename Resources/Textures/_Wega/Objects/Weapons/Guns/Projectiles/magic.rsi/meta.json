@@ -10,6 +10,10 @@
         {
             "name": "blood_bolt",
             "delays": [ [ 0.1, 0.1, 0.1, 0.1 ] ]
+        },
+        {
+            "name": "magmabolt",
+            "delays": [ [ 0.1, 0.1 ] ]
         }
     ]
 }

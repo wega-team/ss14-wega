@@ -66,7 +66,7 @@
   parent: [ ClothingOuterBaseMedium, AllowSuitStorageClothing, BaseCargoContraband ]
   id: ClothingOuterArmorExplorerSuit
   name: explorer suit
-  description: An armoured suit for exploring harsh environments.
+  description: This is a durable and reinforced type of armor designed for survival in extreme conditions.
   components:
   - type: Sprite
     sprite: _Wega/Clothing/OuterClothing/Armor/explorer_suit.rsi
@@ -76,23 +76,48 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.6
-        Slash: 0.6
-        Piercing: 0.65
-        Heat: 0.6
-        Caustic: 0.6
+        Blunt: 0.7
+        Slash: 0.7
+        Piercing: 0.75
+        Heat: 0.7
+        Caustic: 0.85
   - type: ExplosionResistance
     damageCoefficient: 0.6
-  - type: ToggleableClothing
-    clothingPrototype: ClothingHeadHatHoodExplorer
-  # - type: Construction
-  #   graph: ExplorerSuit
-  #   node: start
   - type: FireProtection
     reduction: 0.4
+  - type: ClothingAshStormProtection
+    modifier: 0.2
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHatHoodExplorer
+    requiredSlot:
+    - outerClothing
+    slot: head
+  - type: ContainerContainer
+    containers:
+      toggleable-clothing: !type:ContainerSlot {}
   - type: Dirtable
     dirtState: explorersuit
     equippedDirtState: equipped-explorersuit
+  - type: Tag
+    tags:
+    - ExplorerSuit
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingOuterArmorExplorerSuit
+  id: ClothingOuterArmorExplorerSuitKhaki
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Armor/explorer_suit_khaki.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Wega/Clothing/OuterClothing/Armor/explorer_suit_khaki.rsi
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHatHoodExplorerKhaki
+  - type: Tag
+    tags:
+    - ExplorerSuitKhaki
+    - WhitelistChameleon
 
 - type: entity
   parent: ClothingOuterArmorExplorerSuit
@@ -106,3 +131,50 @@
   - type: Dirtable
     currentDirtLevel: 100
     dirtColor: "#880000"
+
+- type: entity
+  parent: ClothingOuterArmorExplorerSuit
+  id: ClothingOuterArmorExplorerSuitReinforced
+  name: reinforced explorer suit
+  description: A self-improved version of regular armor. Gives its user more room for error.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Armor/explorer_suit_reinf.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Wega/Clothing/OuterClothing/Armor/explorer_suit_reinf.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.55
+        Heat: 0.5
+        Caustic: 0.75
+  - type: ExplosionResistance
+    damageCoefficient: 0.5
+  - type: FireProtection
+    reduction: 0.5
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHatHoodExplorerReinforced
+  - type: Construction
+    graph: ExplorerSuitReinforced
+    node: explorerSuit
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingOuterArmorExplorerSuitReinforced
+  id: ClothingOuterArmorExplorerSuitKhakiReinforced
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Armor/explorer_suit_khaki_reinf.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Wega/Clothing/OuterClothing/Armor/explorer_suit_khaki_reinf.rsi
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHatHoodExplorerKhakiReinforced
+  - type: Construction
+    graph: ExplorerSuitKhakiReinforced
+    node: explorerSuit

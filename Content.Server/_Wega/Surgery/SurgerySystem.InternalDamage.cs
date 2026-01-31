@@ -366,6 +366,33 @@ public sealed partial class SurgerySystem
             bodyParts.Add(bodyPart);
     }
 
+    public bool TryRemoveInternalDamage(EntityUid target, string damageId, string bodyPart, OperatedComponent? component = null)
+    {
+        if (!Resolve(target, ref component, false))
+            return false;
+
+        if (!component.InternalDamages.TryGetValue(damageId, out var damagedParts))
+            return false;
+
+        if (!damagedParts.Remove(bodyPart))
+            return false;
+
+        if (damagedParts.Count == 0)
+        {
+            component.InternalDamages.Remove(damageId);
+        }
+
+        return true;
+    }
+
+    public bool TryRemoveInternalDamage(EntityUid target, string damageId, OperatedComponent? component = null)
+    {
+        if (!Resolve(target, ref component, false))
+            return false;
+
+        return component.InternalDamages.Remove(damageId);
+    }
+
     #endregion
 
     #region Examine

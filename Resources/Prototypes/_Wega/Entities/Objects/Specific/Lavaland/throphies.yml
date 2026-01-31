@@ -18,7 +18,7 @@
   parent: BaseTrophyLavaland
   id: TrophyLavalandLegionSkull
   name: legion skull
-  description: ""
+  description: "The fused skulls of many creatures, united into a single collective entity. Heavy and cold to the touch."
   components:
   - type: Sprite
     state: skull
@@ -31,7 +31,7 @@
   parent: BaseTrophyLavaland
   id: TrophyLavalandGoliathTentacle
   name: goliath tentacle
-  description: ""
+  description: "A muscular appendage covered in stone plates. It pulsates with the residual life force of a gigantic creature."
   components:
   - type: Sprite
     state: tendril
@@ -44,7 +44,7 @@
   parent: TrophyLavalandGoliathTentacle
   id: TrophyLavalandAncientGoliathTentacle
   name: goliath tentacle
-  description: ""
+  description: "A petrified appendage of an ancient goliath. Its surface is riddled with the cracks of time, but its ancient power still lingers within."
   components:
   - type: Sprite
     state: ancient_tendril
@@ -53,7 +53,7 @@
   parent: BaseTrophyLavaland
   id: TrophyLavalandWatcherWing
   name: watcher wing
-  description: ""
+  description: "A semi-transparent membranous plane that shimmers with a pearly sheen. It seems almost weightless."
   components:
   - type: Sprite
     state: wing
@@ -66,7 +66,7 @@
   parent: TrophyLavalandWatcherWing
   id: TrophyLavalandIceWatcherWing
   name: ice watcher wing
-  description: ""
+  description: "A crystal wing covered in frost. It exudes a slight chill, and ice patterns constantly form on its surface."
   components:
   - type: Sprite
     state: ice_wing
@@ -80,7 +80,7 @@
   parent: BaseTrophyLavaland
   id: TrophyLavalandMagmaWatcherWing
   name: magma watcher wing
-  description: ""
+  description: "A petrified lava form that still emits heat. Inside, you can see veins of molten rock."
   components:
   - type: Sprite
     state: magma_wing
@@ -95,24 +95,25 @@
 - type: entity
   parent: BaseTrophyLavaland
   id: TrophyLavalandBDMEye
-  name: eye of the Blood Drunk Miner
-  description: ""
+  name: eye of the blood drunk miner
+  description: "A cloudy, blood-red eye, with a look of insane rage in its depths. It felt wet and uncomfortably warm to the touch."
   components:
   - type: Sprite
     state: eye
   - type: CrusherUpgrade
     tags: [ CrusherUpgradeBDM ]
-    examineText: crusher-upgrade-examine-text-blood-brunk-miner
+    examineText: crusher-upgrade-examine-text-blood-drunk-miner
   - type: CrusherEyeBloodDrunkMinerUpgrade
 
 - type: entity
   parent: BaseTrophyLavaland
   id: TrophyLavalandAshDrakeSpike
   name: ash drake spike
-  description: ""
+  description: "A massive spike of volcanic glass, streaked with ash. Razor-sharp and incredibly durable."
   components:
   - type: Sprite
     state: spike
+  - type: Sharp
   - type: CrusherUpgrade
     tags: [ CrusherUpgradeAshDrake ]
     examineText: crusher-upgrade-examine-text-ash-drake
@@ -122,7 +123,7 @@
   parent: BaseTrophyLavaland
   id: TrophyLavalandBubblegumDemonClaws
   name: demon claws
-  description: ""
+  description: "Curved claws covered with a sticky substance. They emit a sweet, rotten smell."
   components:
   - type: Sprite
     state: claws
@@ -135,7 +136,7 @@
   parent: BaseTrophyLavaland
   id: TrophyLavalandColossusBlasterTubes
   name: blaster tubes
-  description: ""
+  description: "A set of oddly shaped metal tubes, still smelling of ozone and burnt. There's a soft hum coming from inside."
   components:
   - type: Sprite
     state: tubes
@@ -145,13 +146,13 @@
   - type: CrusherBlasterTubesUpgrade
     damage:
       types:
-        Blunt: 15
+        Blunt: 10
 
 - type: entity
   parent: BaseTrophyLavaland
   id: TrophyLavalandHierophantVortexTalisman
   name: vortex talisman
-  description: ""
+  description: "A cubic artifact made of dark material, with a purple nebula slowly rotating inside. When touched, it seems to vibrate at an inaudible frequency."
   components:
   - type: Sprite
     state: vortex
@@ -163,3 +164,35 @@
     color: "#8f00ec"
     energy: 40
     radius: 1.2
+
+- type: entity
+  parent: BaseItem
+  id: LegionCore
+  name: legion core
+  description: "A mysterious core filled with some kind of energy. Does it seem to be fading away?"
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Lavaland/legioncore.rsi
+    layers:
+    - state: icon_active
+      map: [ "enum.VisualLayers.Layer" ]
+  - type: Item
+    size: Small
+  - type: LegionCore
+    healAmount:
+      types:
+        Blunt: -25
+        Heat: -25
+    internals:
+    - ArterialBleeding
+    - ClosedFracture
+    - OpenFracture
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+     enum.VisualLayers.Enabled:
+        enum.VisualLayers.Layer:
+          True: {state: icon_active}
+          False: {state: icon_base}
+  - type: StaticPrice
+    price: 250

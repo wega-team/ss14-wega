@@ -1,0 +1,15 @@
+- type: entity
+  parent: DefaultStationBeaconSupply
+  id: DefaultStationBeaconCargoLavalandAvanpost
+  suffix: Lavaland Avanpost
+  components:
+  - type: NavMapBeacon
+    defaultText: station-beacon-cargo-lavaland-avanpost
+
+- type: entity
+  parent: DefaultStationBeaconSecurity
+  id: DefaultStationBeaconSecurityPenalServitude
+  suffix: Penal Servitude
+  components:
+  - type: NavMapBeacon
+    defaultText: station-beacon-security-penal-servitude

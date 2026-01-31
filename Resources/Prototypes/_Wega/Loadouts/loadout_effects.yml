@@ -20,3 +20,15 @@
   - !type:SpeciesLoadoutEffect
     species:
     - Android
+
+- type: loadoutEffectGroup
+  id: SalvageVeterancy
+  effects:
+  - !type:AchievementLoadoutEffect
+    requiredAchievements:
+    - FirstBoss
+    - HierophantBoss
+    - MinerBoss
+    - LegionBoss
+    - ColossusBoss
+    requireAll: true

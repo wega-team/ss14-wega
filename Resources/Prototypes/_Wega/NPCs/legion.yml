@@ -1,11 +1,4 @@
 - type: htnCompound
-  id: MegaLegionBehaviorCompound
-  branches:
-    - tasks:
-        - !type:HTNCompoundTask
-          task: LegionMaintainRangePrecondition
-
-- type: htnCompound
   id: LegionBehaviorCompound
   branches:
     - tasks:

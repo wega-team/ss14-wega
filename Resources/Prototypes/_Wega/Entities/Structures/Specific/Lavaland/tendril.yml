@@ -8,7 +8,14 @@
   components:
   - type: Sprite
     sprite: _Wega/Structures/Specific/Lavaland/tendril.rsi
-    state: tendril
+    layers:
+    - state: tendril
+    - state: glow
+      shader: unshaded
+  - type: PointLight
+    color: "#df8409"
+    enabled: true
+    radius: 2
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: Rock

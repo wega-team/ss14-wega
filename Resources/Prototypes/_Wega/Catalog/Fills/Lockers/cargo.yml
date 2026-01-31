@@ -1,0 +1,29 @@
+- type: entity
+  parent: LockerSalvageSpecialist
+  id: LockerSalvageSpecialistLavalandFilled
+  suffix: Filled, Lavaland
+  components:
+    - type: EntityTableContainerFill
+      containers:
+        entity_storage: !type:NestedSelector
+          tableId: LockerFillSalvageSpecialistLavaland
+
+- type: entityTable
+  id: LockerFillSalvageSpecialistLavaland
+  table: !type:AllSelector
+    children:
+    - id: Pickaxe
+    - id: ClothingHeadsetMining
+    - id: FlashlightSeclite
+    - id: HandheldGPSBasic
+    - id: PlantBag
+    - id: OreBag
+    - id: MineralScanner
+    - id: ClothingEyesGlassesMeson
+    - id: WeaponProtoKineticAccelerator
+    - id: SurvivalMedipen
+    - id: HandCapsule
+    - id: Flare
+      prob: 0.3
+      rolls: !type:ConstantNumberSelector
+        value: 3

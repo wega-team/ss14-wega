@@ -16,6 +16,7 @@
   - ClothingMaskWeldingGas
   - ClothingShoesBootsJump
   - LegSyntheticJump # Corvax-Wega-Androids
+  - WeaponPlasmaCutter # Corvax-Wega-Lavaland
 
 - type: technology
   id: SpaceScanning
@@ -173,6 +174,7 @@
     - FultonBeacon
     - ArmSyntheticPry # Corvax-Wega-Androids
     - PouchMaterial # Corvax-Wega-Add
+    - WeaponPlasmaCutterAdv # Corvax-Wega-Lavaland
 
 - type: technology
   id: MassExcavation

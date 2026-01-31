@@ -4,13 +4,13 @@ namespace Content.Server.Lavaland.Components;
 public sealed partial class LavalandShuttleComponent : Component
 {
     [ViewVariables]
-    public ShuttleState State = ShuttleState.DockedAtStation;
+    public LavalandShuttleState State = LavalandShuttleState.DockedAtStation;
 
     [ViewVariables]
     public TimeSpan? NextLaunchTime;
 }
 
-public enum ShuttleState : byte
+public enum LavalandShuttleState : byte
 {
     DockedAtStation,
     DockedAtOutpost,

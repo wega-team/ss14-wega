@@ -1095,6 +1095,16 @@
   - BackpackSatchelPostman
   - BackpackDuffelPostman
 
+- type: loadoutGroup
+  id: SalvageSpecialistJumpsuit
+  name: loadout-group-salvage-specialist-jumpsuit
+  loadouts:
+  - SalvageSpecialistJumpsuit
+  - SalvageSpecialistJumpsuitExplorer
+  - SalvageSpecialistJumpskirtExplorer
+  - SalvageSpecialistJumpsuitExplorerKhaki
+  - SalvageSpecialistJumpskirtExplorerKhaki
+
 # Civilian
 - type: loadoutGroup
   id: BarberOuterClothing

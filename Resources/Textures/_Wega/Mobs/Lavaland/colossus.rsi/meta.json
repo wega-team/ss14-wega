@@ -9,6 +9,7 @@
   "states": [
     {
       "name": "colossus",
+      "directions": 4,
       "delays": [
         [ 1, 0.5, 0.5 ],
         [ 1, 0.5, 0.5 ],

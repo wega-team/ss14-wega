@@ -21,9 +21,11 @@ public sealed partial class BiomeEntityLayer : IBiomeWorldLayer
     /// <inheritdoc/>
     [DataField("invert")] public bool Invert { get; private set; } = false;
 
-    [DataField("entities")]
+    [DataField("entities")] // Corvax-Wega-Lavaland-Edit
     public List<EntProtoId> Entities = new();
 
+    // Corvax-Wega-Lavaland-start
     [DataField("entityWeights")]
     public Dictionary<EntProtoId, float> EntityWeights { get; private set; } = new();
+    // Corvax-Wega-Lavaland-end
 }

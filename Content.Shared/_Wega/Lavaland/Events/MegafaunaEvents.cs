@@ -1,5 +1,7 @@
 using Content.Shared.Actions;
+using Content.Shared.Damage;
 using Robust.Shared.Audio;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Lavaland.Events;
 
@@ -11,12 +13,6 @@ namespace Content.Shared.Lavaland.Events;
 [ByRefEvent]
 public record struct MegafaunaKilledEvent(EntityUid Megafauna, EntityUid? Killer);
 
-[ByRefEvent]
-public record struct MegafaunaStartupEvent();
-
-[ByRefEvent]
-public record struct MegafaunaDeinitEvent();
-
 /// <summary>
 /// An event triggered when a megafauna attacks a target.
 /// </summary>
@@ -24,27 +20,87 @@ public record struct MegafaunaDeinitEvent();
 [ByRefEvent]
 public record struct MegafaunaAttackEvent(EntityUid Target);
 
+// BDM
 public sealed partial class BloodDrunkMinerDashAction : WorldTargetActionEvent
 {
     public SoundSpecifier DashSound = new SoundPathSpecifier("/Audio/Magic/blink.ogg");
 }
 
+// Hierophant
+public sealed partial class HierophantBlinkActionEvent : EntityTargetActionEvent
+{
+    [DataField] public EntProtoId BlinkEffect = "EffectHierophantBlink";
+}
+
+public sealed partial class HierophantCrossActionEvent : EntityTargetActionEvent
+{
+    [DataField] public int CrossLength = 8;
+}
+
+public sealed partial class HierophantChaserActionEvent : EntityTargetActionEvent
+{
+    [DataField] public int ChaserCount = 1;
+    [DataField] public float ChaserDelay = 0.3f;
+}
+
+public sealed partial class HierophantDamageAreaActionEvent : EntityTargetActionEvent
+{
+    [DataField] public int MaxRadius = 6;
+    [DataField] public float WaveDelay = 0.6f;
+}
+
+// Mega Legion
 public sealed partial class MegaLegionAction : EntityTargetActionEvent
 {
 }
 
-public sealed partial class ColossusFractionActionEvent : WorldTargetActionEvent
+// Colossus
+public sealed partial class ColossusFractionActionEvent : EntityTargetActionEvent
+{
+    [DataField] public float FractionSpread = 0.3f;
+    [DataField] public int FractionCount = 5;
+}
+
+public sealed partial class ColossusCrossActionEvent : EntityTargetActionEvent
+{
+    [DataField] public float CrossLength = 10f;
+    [DataField] public float CrossDelay = 1f;
+}
+
+public sealed partial class ColossusSpiralActionEvent : EntityTargetActionEvent
+{
+    [DataField] public int JudgementProjectileCount = 16;
+    [DataField] public float JudgementProjectileDelay = 0.08f;
+    [DataField] public float DieHealthModifier = 0.33f;
+    [DataField] public int DieProjectileCount = 20;
+    [DataField] public float DieProjectileDelay = 0.06f;
+}
+
+public sealed partial class ColossusTripleFractionActionEvent : EntityTargetActionEvent
+{
+    [DataField] public float FractionSpread = 0.3f;
+    [DataField] public int FractionCount = 5;
+    [DataField] public float TripleFractionDelay = 0.5f;
+}
+
+// Ash Drake
+public sealed partial class AshDrakeConeFireActionEvent : EntityTargetActionEvent
 {
 }
 
-public sealed partial class ColossusCrossActionEvent : WorldTargetActionEvent
+public sealed partial class AshDrakeBreathingFireActionEvent : EntityTargetActionEvent
 {
+    [DataField] public float HealthModifier = 0.5f;
 }
 
-public sealed partial class ColossusSpriralActionEvent : WorldTargetActionEvent
+public sealed partial class AshDrakeLavaActionEvent : EntityTargetActionEvent
 {
-}
-
-public sealed partial class ColossusTripleFractionActionEvent : WorldTargetActionEvent
-{
+    [DataField] public float HealthModifier = 0.5f;
+    [DataField] public EntProtoId Lava = "EffectAshDrakeFloorLavaTemp";
+    [DataField] public EntProtoId LavaLess = "EffectAshDrakeFloorLavaLessTemp";
+    [DataField] public EntProtoId Wall = "EffectAshDrakeFireWall";
+    [DataField] public EntProtoId Marker = "EffectMegaFaunaMarker";
+    [DataField] public EntProtoId SafeMarker = "EffectAshDrakeSafeMarker";
+    [DataField(required: true)] public DamageSpecifier LandingDamage;
+    [DataField(required: true)] public DamageSpecifier HealingSpec;
 }

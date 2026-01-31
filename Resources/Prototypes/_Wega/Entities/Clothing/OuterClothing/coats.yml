@@ -101,3 +101,27 @@
     sprite: _Wega/Clothing/OuterClothing/Coats/captain_white.rsi
   - type: Clothing
     sprite: _Wega/Clothing/OuterClothing/Coats/captain_white.rsi
+
+- type: entity
+  parent: ClothingOuterBase
+  id: ClothingOuterCoatPathfinderCloak
+  name: pathfinder cloak
+  description: "A thick cloak made of tendons and skins, designed to protect its wearer from adverse weather conditions."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Coats/pathcloack.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/OuterClothing/Coats/pathcloack.rsi
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHatHoodPathfinder
+    requiredSlot:
+    - outerClothing
+    slot: head
+  - type: ContainerContainer
+    containers:
+      toggleable-clothing: !type:ContainerSlot {}
+  - type: ClothingAshStormProtection
+    modifier: 0.8
+  - type: Construction
+    graph: PathfinderCloak
+    node: cloack

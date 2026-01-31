@@ -23,6 +23,7 @@
     areaInsert: true
     whitelist:
       tags:
+        - CrusherUpgrade
         - SalvageScrap
         - GoliathPlate
         - ToothSharkminnow

@@ -252,3 +252,25 @@
     sprite: _Wega/Clothing/Uniforms/Jumpskirt/white_captain.rsi
   - type: Clothing
     sprite: _Wega/Clothing/Uniforms/Jumpskirt/white_captain.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtExplorer
+  name: explorer jumpskirt
+  description: "It is thick and comfortable, designed for heavy work in difficult conditions."
+  components:
+    - type: Sprite
+      sprite: _Wega/Clothing/Uniforms/Jumpskirt/explorer.rsi
+    - type: Clothing
+      sprite: _Wega/Clothing/Uniforms/Jumpskirt/explorer.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtExplorerKhaki
+  name: explorer jumpskirt
+  description: "It is thick and comfortable, designed for heavy work in difficult conditions."
+  components:
+    - type: Sprite
+      sprite: _Wega/Clothing/Uniforms/Jumpskirt/explorer_khaki.rsi
+    - type: Clothing
+      sprite: _Wega/Clothing/Uniforms/Jumpskirt/explorer_khaki.rsi

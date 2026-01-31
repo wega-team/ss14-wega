@@ -5,3 +5,11 @@
   icon: { sprite: _Wega/Objects/Materials/Sheets/metal.rsi, state: runemetal }
   color: "#3f4857"
   price: 0.05
+
+- type: material
+  id: Magmite
+  stackEntity: SheetMagmite1
+  name: materials-magmite
+  icon: { sprite: _Wega/Objects/Materials/Sheets/metal.rsi, state: magmite }
+  color: "#df7126"
+  price: 1

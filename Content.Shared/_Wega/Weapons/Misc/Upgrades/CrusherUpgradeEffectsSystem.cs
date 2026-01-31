@@ -2,6 +2,7 @@ using System.Linq;
 using System.Numerics;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
+using Content.Shared.Maps;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Physics;
 using Content.Shared.Projectiles;
@@ -11,6 +12,8 @@ using Content.Shared.Weapons.Marker;
 using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Weapons.Ranged.Events;
 using Content.Shared.Weapons.Ranged.Systems;
+using Robust.Shared.Map;
+using Robust.Shared.Map.Components;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
@@ -26,6 +29,8 @@ public sealed class CrusherUpgradeEffectsSystem : EntitySystem
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly TagSystem _tag = default!;
     [Dependency] private readonly ThrowingSystem _throwing = default!;
+    [Dependency] private readonly SharedMapSystem _map = default!;
+    [Dependency] private readonly TurfSystem _turf = default!;
 
     private static readonly ProtoId<TagPrototype> SlowImmune = "SlowImmune";
     private static readonly ProtoId<TagPrototype> StunImmune = "StunImmune";
@@ -208,26 +213,39 @@ public sealed class CrusherUpgradeEffectsSystem : EntitySystem
             return;
 
         var user = args.User;
-
         var userTransform = Transform(user);
         var direction = userTransform.LocalRotation.ToWorldVec().Normalized();
         var perpendicularDirection = new Vector2(-direction.Y, direction.X);
 
-        var spawnedCount = 0;
-        for (int i = -1; i <= 1 && spawnedCount < ent.Comp.SpawnCount; i++)
+        for (int i = -1; i <= 1; i++)
         {
-            var barrier = Spawn(ent.Comp.SpawnProto, userTransform.Coordinates);
+            var offset = perpendicularDirection * i;
+            var spawnCoords = userTransform.Coordinates.Offset(offset);
 
+            if (!CanSpawnAt(spawnCoords))
+                continue;
+
+            var barrier = Spawn(ent.Comp.SpawnProto, spawnCoords);
             var barrierTransform = Transform(barrier);
             barrierTransform.LocalRotation = perpendicularDirection.ToAngle();
-            if (i != 0)
-            {
-                var offset = perpendicularDirection * (i * 1.5f);
-                _transform.SetLocalPositionNoLerp(barrier, userTransform.LocalPosition + offset);
-            }
 
             EnsureComp<PreventCollideComponent>(barrier).Uid = user;
-            spawnedCount++;
         }
+    }
+
+    private bool CanSpawnAt(EntityCoordinates coords)
+    {
+        var gridUid = _transform.GetGrid(coords);
+        if (gridUid == null)
+            return false;
+
+        if (!TryComp<MapGridComponent>(gridUid, out var grid))
+            return false;
+
+        var tilePos = _map.CoordinatesToTile(gridUid.Value, grid, coords);
+        if (!_map.TryGetTileRef(gridUid.Value, grid, tilePos, out var tileRef))
+            return false;
+
+        return !_turf.IsTileBlocked(tileRef, CollisionGroup.Impassable);
     }
 }

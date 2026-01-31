@@ -22,9 +22,19 @@
   id: LavalandFauna
   hostile:
   - NanoTrasen
-  - Zombie
-  - Vampire
-  - BloodCult
-  - SimpleHostile
-  - Xeno
   - Dragon
+  - Mouse
+  - Passive
+  - PetsNT
+  - SimpleHostile
+  - SimpleNeutral
+  - Syndicate
+  - Xeno
+  - Zombie
+  - Revolutionary
+  - Wizard
+  - Xenoborg
+  - AllHostile
+  - Vampire # Corvax-Wega-Vampire
+  - BloodCult # Corvax-Wega-Blood-Cult
+  - LavalandFauna # Corvax-Wega-Lavaland

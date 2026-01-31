@@ -1,6 +1,44 @@
+# No Merged
+- type: lavalandBuilding
+  id: PenalServitude
+  gridPath: /Maps/_Wega/Lavaland/penalservitude.yml
+  position: "-50,50"
+  merge: false
+
+- type: lavalandBuilding
+  id: WinterReserve
+  gridPath: /Maps/_Wega/Lavaland/winterreserve.yml
+  merge: false
+
+- type: lavalandBuilding
+  id: Biosphere
+  gridPath: /Maps/_Wega/Lavaland/biosphere.yml
+  merge: false
+
+- type: lavalandBuilding
+  id: Beach
+  gridPath: /Maps/_Wega/Lavaland/beach.yml
+  merge: false
+
+- type: lavalandBuilding
+  id: PreservedTerrarium
+  gridPath: /Maps/_Wega/Lavaland/preserved_terrarium.yml
+  merge: false
+
+- type: lavalandBuilding
+  id: GolemsShuttle
+  gridPath: /Maps/_Wega/Lavaland/golemsshuttle.yml
+  merge: false
+
+# Other
+- type: lavalandBuilding
+  id: Hierophant
+  gridPath: /Maps/_Wega/Lavaland/hierophant.yml
+  approximate: [200, 300]
+
 - type: lavalandBuilding
   id: Envy
-  gridPath: /Maps/Lavaland/Envy.yml
+  gridPath: /Maps/_Wega/Lavaland/Envy.yml
 
 - type: lavalandBuilding
   id: Gluttony
@@ -8,23 +46,59 @@
 
 - type: lavalandBuilding
   id: Greed
-  gridPath: /Maps/Lavaland/Greed.yml
+  gridPath: /Maps/_Wega/Lavaland/Greed.yml
 
 - type: lavalandBuilding
   id: Pride
   gridPath: /Maps/Lavaland/Pride.yml
 
 - type: lavalandBuilding
+  id: Laziness
+  gridPath: /Maps/_Wega/Lavaland/Laziness.yml
+
+- type: lavalandBuilding
   id: Wrath
   gridPath: /Maps/Lavaland/Wrath.yml
+
+- type: lavalandBuilding
+  id: Barracks
+  gridPath: /Maps/_Wega/Lavaland/barracks.yml
+
+- type: lavalandBuilding
+  id: Butterflys
+  gridPath: /Maps/_Wega/Lavaland/butterflys.yml
+
+- type: lavalandBuilding
+  id: Hospital
+  gridPath: /Maps/_Wega/Lavaland/hospital.yml
+
+- type: lavalandBuilding
+  id: DragonLair
+  gridPath: /Maps/_Wega/Lavaland/dragonlair.yml
+
+- type: lavalandBuilding
+  id: Nesting
+  gridPath: /Maps/_Wega/Lavaland/nesting.yml
+
+- type: lavalandBuilding
+  id: Ritual
+  gridPath: /Maps/_Wega/Lavaland/ritual.yml
+
+- type: lavalandBuilding
+  id: Shelter
+  gridPath: /Maps/_Wega/Lavaland/shelter.yml
+
+- type: lavalandBuilding
+  id: SpiderNest
+  gridPath: /Maps/_Wega/Lavaland/spidernest.yml
 
 - type: lavalandBuilding
   id: Bait
   gridPath: /Maps/Lavaland/bait.yml
 
-# - type: lavalandBuilding
-#   id: BasaltRuin
-#   gridPath: /Maps/Lavaland/basalt_ruin.yml
+- type: lavalandBuilding
+  id: BasaltRuin
+  gridPath: /Maps/_Wega/Lavaland/basalt_ruin.yml
 
 - type: lavalandBuilding
   id: Bridge
@@ -66,9 +140,9 @@
   id: CrashedSloop
   gridPath: /Maps/Lavaland/crashedsloop.yml
 
-# - type: lavalandBuilding
-#   id: CrashedSyndiepod
-#   gridPath: /Maps/Lavaland/crashedsyndiepod.yml
+- type: lavalandBuilding
+  id: CrashedSyndiepod
+  gridPath: /Maps/_Wega/Lavaland/crashedsyndiepod.yml
 
 - type: lavalandBuilding
   id: Enclosure
@@ -76,7 +150,7 @@
 
 - type: lavalandBuilding
   id: EscapePodCrash
-  gridPath: /Maps/Lavaland/escape_pod_crash.yml
+  gridPath: /Maps/_Wega/Lavaland/escape_pod_crash.yml
 
 - type: lavalandBuilding
   id: FleshLab
@@ -91,16 +165,8 @@
   gridPath: /Maps/Lavaland/generator_scrapyard.yml
 
 - type: lavalandBuilding
-  id: GrasslandDome
-  gridPath: /Maps/Lavaland/grasslanddome.yml
-
-- type: lavalandBuilding
   id: HermitBase
-  gridPath: /Maps/Lavaland/hermit_base.yml
-
-- type: lavalandBuilding
-  id: LabourCamp
-  gridPath: /Maps/Lavaland/labour_camp.yml
+  gridPath: /Maps/_Wega/Lavaland/hermit_base.yml
 
 - type: lavalandBuilding
   id: LavaFarm
@@ -119,12 +185,8 @@
   gridPath: /Maps/Lavaland/miming_drill.yml
 
 - type: lavalandBuilding
-  id: MineField
-  gridPath: /Maps/Lavaland/minefield.yml
-
-- type: lavalandBuilding
   id: MinerTomb
-  gridPath: /Maps/Lavaland/miner_tomb.yml
+  gridPath: /Maps/_Wega/Lavaland/miner_tomb.yml
 
 - type: lavalandBuilding
   id: MineShaft
@@ -141,10 +203,6 @@
 - type: lavalandBuilding
   id: PizzaParty
   gridPath: /Maps/Lavaland/pizza_party.yml
-
-- type: lavalandBuilding
-  id: PreservedTerrarium
-  gridPath: /Maps/Lavaland/preserved_terrarium.yml
 
 - type: lavalandBuilding
   id: Ripley
@@ -167,17 +225,13 @@
   gridPath: /Maps/Lavaland/sloth.yml
 
 - type: lavalandBuilding
-  id: SnowyDome
-  gridPath: /Maps/Lavaland/snowydome.yml
-
-- type: lavalandBuilding
   id: SolemnLament
   gridPath: /Maps/Lavaland/solemn_lament.yml
 
 - type: lavalandBuilding
   id: Temple
-  gridPath: /Maps/Lavaland/temple.yml
+  gridPath: /Maps/_Wega/Lavaland/temple.yml
 
-# - type: lavalandBuilding
-#   id: WreckedOutpost
-#   gridPath: /Maps/Lavaland/wrecked_outpost.yml
+- type: lavalandBuilding
+  id: WreckedOutpost
+  gridPath: /Maps/_Wega/Lavaland/wrecked_outpost.yml

@@ -2451,6 +2451,7 @@
   minLimit: 0
   loadouts:
   - SalvageSpecialistWintercoat
+  - SalvageSpecialistArmorExplorerSuitKhaki # Corvax-Wega-Lavaland
 
 - type: loadoutGroup
   id: SalvageSpecialistShoes

@@ -84,7 +84,7 @@
   parent: BaseItem
   id: WeaponCleawingSaw
   name: cleawing saw
-  description: ""
+  description: "A fast-paced saw made from very old and rusty metal."
   components:
   - type: Sprite
     sprite: _Wega/Objects/Weapons/Melee/cleaving_saw.rsi

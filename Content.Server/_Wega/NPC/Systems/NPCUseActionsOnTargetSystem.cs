@@ -3,6 +3,7 @@ using Content.Server.NPC.Components;
 using Content.Server.NPC.HTN;
 using Content.Shared.Actions;
 using Content.Shared.Actions.Components;
+using Content.Shared.Mobs.Systems;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
@@ -13,6 +14,8 @@ public sealed class NPCUseActionsOnTargetSystem : EntitySystem
     [Dependency] private readonly SharedActionsSystem _actions = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly MobStateSystem _mobState = default!;
+    [Dependency] private readonly NPCSystem _npc = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -29,8 +32,14 @@ public sealed class NPCUseActionsOnTargetSystem : EntitySystem
         var query = EntityQueryEnumerator<NPCUseActionsOnTargetComponent, HTNComponent>();
         while (query.MoveNext(out var uid, out var comp, out var htn))
         {
-            if (!htn.Blackboard.TryGetValue<EntityUid>(comp.TargetKey, out var target, EntityManager))
+            if (!htn.Blackboard.TryGetValue<EntityUid>(comp.TargetKey, out var target, EntityManager) || !Exists(target))
                 continue;
+
+            if (_mobState.IsIncapacitated(uid))
+            {
+                _npc.SleepNPC(uid, htn);
+                continue;
+            }
 
             TryUseRandomAction((uid, comp), target);
         }
@@ -42,6 +51,15 @@ public sealed class NPCUseActionsOnTargetSystem : EntitySystem
         {
             ent.Comp.ActionEnts[action] = _actions.AddAction(ent, action);
         }
+    }
+
+    public bool SetDelaySpeed(EntityUid uid, float delayModifier, NPCUseActionsOnTargetComponent? comp = null)
+    {
+        if (!Resolve(uid, ref comp))
+            return false;
+
+        comp.DelayModifier = Math.Clamp(delayModifier, 0.01f, 1.0f);
+        return true;
     }
 
     public bool TryUseRandomAction(Entity<NPCUseActionsOnTargetComponent?> user, EntityUid target)

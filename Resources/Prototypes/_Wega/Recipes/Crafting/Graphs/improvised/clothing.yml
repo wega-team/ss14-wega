@@ -1,0 +1,42 @@
+- type: constructionGraph
+  id: GoliathCloak
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: cloack
+      steps:
+      - material: Sinew
+        amount: 2
+        doAfter: 2.5
+      - material: GoliathHide
+        amount: 4
+        doAfter: 5
+  - node: cloack
+    entity: ClothingNeckCloakGoliathCloak
+
+- type: constructionGraph
+  id: PathfinderCloak
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: cloack
+      steps:
+      - tag: GoliathCloak
+        icon:
+          sprite: Clothing/Neck/Cloaks/goliathcloak.rsi
+          state: icon
+        name: construction-graph-tag-goliath-cloak
+        doAfter: 2.5
+      - material: Sinew
+        amount: 10
+        doAfter: 5
+      - material: Chitin
+        amount: 10
+        doAfter: 5
+      - material: GoliathHide
+        amount: 10
+        doAfter: 5
+  - node: cloack
+    entity: ClothingOuterCoatPathfinderCloak

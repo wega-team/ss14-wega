@@ -1,5 +1,6 @@
 using Content.Server.Lavaland.Components;
 using Content.Server.Shuttles.Components;
+using Content.Server.Station.Components;
 using Content.Shared.Lavaland;
 using Content.Shared.Lavaland.Components;
 using Robust.Server.GameObjects;
@@ -12,12 +13,41 @@ public sealed partial class LavalandShuttleSystem
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
 
-    private void OnConsoleInit(EntityUid uid, LavalandShuttleConsoleComponent component, ComponentInit args)
+    private void OnConsoleInit(EntityUid uid, LavalandShuttleConsoleComponent component, MapInitEvent args)
     {
+        var shuttleQuery = EntityQueryEnumerator<LavalandShuttleComponent>();
+        while (shuttleQuery.MoveNext(out var shuttleUid, out _))
+        {
+            component.ConnectedShuttle = shuttleUid;
+            break;
+        }
+
+        if (component.ConnectedShuttle == null)
+            return;
+
         if (HasComp<LavalandShuttleComponent>(Transform(uid).GridUid))
         {
             component.Location = DockLocation.Shuttle;
             component.ConnectedShuttle = Transform(uid).GridUid;
+            return;
+        }
+
+        var consoleGrid = Transform(uid).GridUid;
+        var consoleMap = Transform(uid).MapUid;
+
+        if (consoleGrid != null)
+        {
+            if (HasComp<BecomesStationComponent>(consoleGrid)
+                && !HasComp<StationCentcommComponent>(consoleGrid))
+            {
+                component.Location = DockLocation.Station;
+                return;
+            }
+        }
+
+        if (consoleMap != null && HasComp<LavalandComponent>(consoleMap))
+        {
+            component.Location = DockLocation.Outpost;
             return;
         }
 
@@ -43,6 +73,16 @@ public sealed partial class LavalandShuttleSystem
 
     private void OnUiOpened(EntityUid uid, LavalandShuttleConsoleComponent comp, BoundUIOpenedEvent args)
     {
+        if (comp.ConnectedShuttle == null)
+        {
+            var shuttleQuery = EntityQueryEnumerator<LavalandShuttleComponent>();
+            while (shuttleQuery.MoveNext(out var shittle, out _))
+            {
+                comp.ConnectedShuttle = shittle;
+                break;
+            }
+        }
+
         UpdateUI(uid, comp);
     }
 
@@ -56,18 +96,18 @@ public sealed partial class LavalandShuttleSystem
             return;
 
         string targetTag;
-        ShuttleState newState;
+        LavalandShuttleState newState;
 
         if (component.Location == DockLocation.Station
-            || component.Location == DockLocation.Shuttle && shuttle.State == ShuttleState.DockedAtStation)
+            || component.Location == DockLocation.Shuttle && shuttle.State == LavalandShuttleState.DockedAtStation)
         {
             targetTag = DockOutpost;
-            newState = ShuttleState.EnRouteToOutpost;
+            newState = LavalandShuttleState.EnRouteToOutpost;
         }
         else
         {
             targetTag = DockStation;
-            newState = ShuttleState.EnRouteToStation;
+            newState = LavalandShuttleState.EnRouteToStation;
         }
 
         var targetDock = FindDockWithTag(targetTag);
@@ -113,10 +153,10 @@ public sealed partial class LavalandShuttleSystem
         {
             status = shuttle.State switch
             {
-                ShuttleState.DockedAtStation => ShuttleStatus.DockedAtStation,
-                ShuttleState.DockedAtOutpost => ShuttleStatus.DockedAtOutpost,
-                ShuttleState.EnRouteToStation => ShuttleStatus.EnRouteToStation,
-                ShuttleState.EnRouteToOutpost => ShuttleStatus.EnRouteToOutpost,
+                LavalandShuttleState.DockedAtStation => ShuttleStatus.DockedAtStation,
+                LavalandShuttleState.DockedAtOutpost => ShuttleStatus.DockedAtOutpost,
+                LavalandShuttleState.EnRouteToStation => ShuttleStatus.EnRouteToStation,
+                LavalandShuttleState.EnRouteToOutpost => ShuttleStatus.EnRouteToOutpost,
                 _ => ShuttleStatus.Unknown
             };
 
@@ -140,11 +180,14 @@ public sealed partial class LavalandShuttleSystem
 
     private bool CanCallShuttle(LavalandShuttleConsoleComponent console, LavalandShuttleComponent shuttle)
     {
-        if (shuttle.State is not (ShuttleState.DockedAtStation or ShuttleState.DockedAtOutpost))
+        if (shuttle.NextLaunchTime > _gameTiming.CurTime)
             return false;
 
-        return console.Location == DockLocation.Station && shuttle.State == ShuttleState.DockedAtStation
-            || console.Location == DockLocation.Outpost && shuttle.State == ShuttleState.DockedAtOutpost
+        if (shuttle.State is not (LavalandShuttleState.DockedAtStation or LavalandShuttleState.DockedAtOutpost))
+            return false;
+
+        return console.Location == DockLocation.Station && shuttle.State == LavalandShuttleState.DockedAtStation
+            || console.Location == DockLocation.Outpost && shuttle.State == LavalandShuttleState.DockedAtOutpost
             || console.Location == DockLocation.Shuttle;
     }
 }

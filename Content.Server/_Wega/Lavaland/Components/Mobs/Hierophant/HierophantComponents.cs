@@ -1,27 +1,15 @@
 using Content.Shared.Damage;
+using Robust.Shared.Audio;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server.Lavaland.Mobs.Components;
 
-[RegisterComponent]
+[RegisterComponent, Access(typeof(HierophantSystem))]
 public sealed partial class HierophantBossComponent : Component
 {
-    [ViewVariables]
-    public HierophantAttackType LastAttack = HierophantAttackType.None;
-
     [DataField("chaserPrototype")]
     public EntProtoId ChaserPrototype = "MobHierophantChaser";
-
-    public EntityCoordinates HomePosition;
-
-    public bool NeedComeBack;
-
-    [ViewVariables]
-    public TimeSpan NextReturnCheckTime;
-
-    [ViewVariables]
-    public float ReturnCheckInterval = 5f;
 
     [ViewVariables]
     public TimeSpan NextPassiveMoveTime;
@@ -29,8 +17,19 @@ public sealed partial class HierophantBossComponent : Component
     [ViewVariables]
     public float PassiveMoveInterval = 3f;
 
-    [DataField("reward")]
-    public EntProtoId RewardProto = "HierophantClubRod";
+    [ViewVariables]
+    public TimeSpan NextReturnCheckTime;
+
+    [ViewVariables]
+    public float ReturnCheckInterval = 5f;
+
+    public EntityCoordinates HomePosition;
+    public bool NeedComeBack;
+
+    [DataField("rewards")]
+    public List<EntProtoId> RewardsProto = new();
+
+    [DataField] public SoundSpecifier BlinkSound = new SoundPathSpecifier("/Audio/Magic/blink.ogg");
 }
 
 [RegisterComponent]

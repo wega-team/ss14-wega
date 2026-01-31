@@ -285,10 +285,19 @@
   id: CanSwim
 
 - type: Tag
+  id: Oar
+
+- type: Tag
   id: DockLavalandStation
 
 - type: Tag
   id: DockLavalandOutpost
+
+- type: Tag
+  id: DockPenalServitudeStation
+
+- type: Tag
+  id: DockPenalServitude
 
 - type: Tag
   id: GunUpgradeAoE
@@ -322,3 +331,24 @@
 
 - type: Tag
   id: CrusherUpgradeHierophant
+
+- type: Tag
+  id: Sinew
+
+- type: Tag
+  id: Chitin
+
+- type: Tag
+  id: ExplorerSuit
+
+- type: Tag
+  id: ExplorerSuitKhaki
+
+- type: Tag
+  id: GoliathCloak
+
+- type: Tag
+  id: Gems
+
+- type: Tag
+  id: DataCrystal

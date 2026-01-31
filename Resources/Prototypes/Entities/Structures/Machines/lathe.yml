@@ -634,6 +634,15 @@
           node: machineFrame
         - !type:DoActsBehavior
           acts: ["Destruction"]
+    - type: ActivatableUI
+      key: enum.LatheUiKey.Key
+    - type: ActivatableUIRequiresPower
+    - type: UserInterface
+      interfaces:
+        enum.LatheUiKey.Key:
+          type: LatheBoundUserInterface
+        enum.ResearchClientUiKey.Key:
+          type: ResearchClientBoundUserInterface
     - type: OreProcessorPoints
     - type: Transform
       anchored: true

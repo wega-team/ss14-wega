@@ -1,0 +1,12 @@
+ent-SpawnMobBloodDrunkMinerLavaland = Спавнер Кровавого шахтёра
+    .desc = { ent-MarkerBase.desc }
+    .suffix = Лаваленд, НЕ МАППИТЬ
+ent-SpawnMobHierophantLavaland = Спавнер Иерофанта
+    .desc = { ent-MarkerBase.desc }
+    .suffix = Лаваленд, НЕ МАППИТЬ
+ent-SpawnMegaLegionLavaland = Спавнер Мега Легиона
+    .desc = { ent-MarkerBase.desc }
+    .suffix = Лаваленд, НЕ МАППИТЬ
+ent-SpawnColossusLavaland = Спавнер Колосса
+    .desc = { ent-MarkerBase.desc }
+    .suffix = Лаваленд, НЕ МАППИТЬ

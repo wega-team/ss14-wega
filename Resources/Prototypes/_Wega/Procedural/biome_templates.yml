@@ -33,31 +33,6 @@
         - Basalt8
         - Basalt9
     - !type:BiomeEntityLayer
-      threshold: 0.997
-      noise:
-        seed: 1
-        noiseType: OpenSimplex2
-        frequency: 2
-      allowedTiles:
-        - FloorBasalt
-      entities:
-        - GoliathNecropolisTendril
-        - LegionNecropolisTendril
-        - WatchersNecropolisTendril
-    - !type:BiomeEntityLayer
-      allowedTiles:
-        - FloorBasalt
-      threshold: 0.997
-      noise:
-        seed: 2
-        noiseType: OpenSimplex2
-        frequency: 2
-      entityWeights:
-        SpawnMobLegionLavaland: 0.1
-        SpawnMobWatcherLavaland: 0.1
-        SpawnMobWatcherMagmawing: 0.1
-        SpawnMobWatcherIcewing: 0.1
-    - !type:BiomeEntityLayer
       threshold: 0.995
       noise:
         seed: 3
@@ -136,6 +111,7 @@
         octaves: 5
         cellularDistanceFunction: Euclidean
         cellularReturnType: Distance2
+      # As I can see, it works much better than I could have imagined.
       entityWeights:
         WallRockBasalt: 0.97
         WallRockBasaltLavalandTin: 0.014

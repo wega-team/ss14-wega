@@ -163,7 +163,9 @@ public sealed partial class HandheldGpsUiSystem : EntitySystem
             var beaconPos = _transform.GetMapCoordinates(uid, xform: transform);
             var distance = (beaconPos.Position - currentPos.Position).Length();
 
-            var beaconName = beacon.Text ?? MetaData(uid).EntityName;
+            var beaconName = MetaData(uid).EntityName;
+            if (!string.IsNullOrEmpty(beacon.Text))
+                beaconName = Loc.GetString(beacon.Text);
             if (!string.IsNullOrEmpty(beacon.DefaultText))
                 beaconName = Loc.GetString(beacon.DefaultText);
 

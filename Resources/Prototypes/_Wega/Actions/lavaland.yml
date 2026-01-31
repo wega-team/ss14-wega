@@ -31,11 +31,75 @@
     icon:
       sprite: _Wega/Mobs/Lavaland/legionskull.rsi
       state: legion_head_1
-    useDelay: 2.5
+    useDelay: 5
   - type: TargetAction
     range: 10
   - type: EntityTargetAction
     event: !type:LegionSummonSkullAction
+
+- type: entity
+  parent: BaseAction
+  id: ActionHierophantBlink
+  name: Blink
+  description: ""
+  components:
+  - type: Action
+    useDelay: 3
+    icon:
+      sprite: _Wega/Objects/Weapons/Melee/hierophant_club.rsi
+      state: icon
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    event: !type:HierophantBlinkActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionHierophantCross
+  name: Cross
+  description: ""
+  components:
+  - type: Action
+    useDelay: 3
+    icon:
+      sprite: _Wega/Objects/Weapons/Melee/hierophant_club.rsi
+      state: icon
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    event: !type:HierophantCrossActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionHierophantChaser
+  name: Chaser
+  description: ""
+  components:
+  - type: Action
+    useDelay: 3
+    icon:
+      sprite: _Wega/Objects/Weapons/Melee/hierophant_club.rsi
+      state: icon
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    event: !type:HierophantChaserActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionHierophantDamageArea
+  name: Damage Area
+  description: ""
+  components:
+  - type: Action
+    useDelay: 3
+    icon:
+      sprite: _Wega/Objects/Weapons/Melee/hierophant_club.rsi
+      state: icon
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    event: !type:HierophantDamageAreaActionEvent
 
 - type: entity
   parent: BaseAction
@@ -69,3 +133,121 @@
     range: 10
   - type: WorldTargetAction
     event: !type:BloodDrunkMinerDashAction
+
+- type: entity
+  parent: BaseAction
+  id: ActionColossusFraction
+  name: Fraction
+  description: ""
+  components:
+  - type: Action
+    useDelay: 5
+    icon:
+      sprite: _Wega/Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+      state: throwing_knife
+  - type: TargetAction
+    range: 10
+  - type: EntityTargetAction
+    event: !type:ColossusFractionActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionColossusCross
+  name: Cross
+  description: ""
+  components:
+  - type: Action
+    useDelay: 5
+    icon:
+      sprite: _Wega/Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+      state: throwing_knife
+  - type: TargetAction
+    range: 10
+  - type: EntityTargetAction
+    event: !type:ColossusCrossActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionColossusSpiral
+  name: Spiral
+  description: ""
+  components:
+  - type: Action
+    useDelay: 5
+    icon:
+      sprite: _Wega/Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+      state: throwing_knife
+  - type: TargetAction
+    range: 10
+  - type: EntityTargetAction
+    event: !type:ColossusSpiralActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionColossusTripleFraction
+  name: Triple Fraction
+  description: ""
+  components:
+  - type: Action
+    useDelay: 5
+    icon:
+      sprite: _Wega/Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+      state: throwing_knife
+  - type: TargetAction
+    range: 10
+  - type: EntityTargetAction
+    event: !type:ColossusTripleFractionActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionAshDrakeConeFire
+  name: Cone Fire
+  description: ""
+  components:
+  - type: Action
+    useDelay: 5
+    icon:
+      sprite: Objects/Magic/magicactions.rsi
+      state: fireball
+  - type: TargetAction
+    range: 10
+  - type: EntityTargetAction
+    event: !type:AshDrakeConeFireActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionAshDrakeBreathingFire
+  name: Breathing Fire
+  description: ""
+  components:
+  - type: Action
+    useDelay: 5
+    icon:
+      sprite: Objects/Magic/magicactions.rsi
+      state: fireball
+  - type: TargetAction
+    range: 10
+  - type: EntityTargetAction
+    event: !type:AshDrakeBreathingFireActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionAshDrakeLava
+  name: Lava
+  description: ""
+  components:
+  - type: Action
+    useDelay: 10
+    icon:
+      sprite: Tiles/Planet/lava.rsi
+      state: lava
+  - type: TargetAction
+    range: 10
+  - type: EntityTargetAction
+    event: !type:AshDrakeLavaActionEvent
+      landingDamage:
+        groups:
+          Brute: 75
+      healingSpec:
+        groups:
+          Brute: -250

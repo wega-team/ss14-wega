@@ -1,0 +1,13 @@
+- type: constructionGraph
+  id: BoneOar
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: oar
+      steps:
+      - material: Bones
+        amount: 8
+        doAfter: 5
+  - node: oar
+    entity: BoneOar

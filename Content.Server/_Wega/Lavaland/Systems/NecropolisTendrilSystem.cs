@@ -5,6 +5,7 @@ using Content.Shared.Destructible;
 using Content.Shared.Ghost;
 using Content.Shared.Lavaland.Components;
 using Content.Shared.Mobs.Systems;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
@@ -15,6 +16,7 @@ namespace Content.Server.Lavaland.Systems;
 
 public sealed class NecropolisTendrilSystem : EntitySystem
 {
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
@@ -67,6 +69,7 @@ public sealed class NecropolisTendrilSystem : EntitySystem
 
         Timer.Spawn(TimeSpan.FromSeconds(ent.Comp.ChasmDelay), () =>
         {
+            _audio.PlayPredicted(ent.Comp.ChasmSound, coordinates, null);
             CreateChasms(coordinates, chasmPrototype);
         });
     }

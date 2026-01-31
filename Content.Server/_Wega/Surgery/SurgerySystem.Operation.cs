@@ -35,7 +35,8 @@ public sealed partial class SurgerySystem
     [Dependency] private readonly SharedSubdermalImplantSystem _implant = default!;
     [Dependency] private readonly SharedInternalStorageSystem _internal = default!;
 
-    private void PerformSurgeryEffect(SurgeryActionType action, string? requiredPart, ProtoId<InternalDamagePrototype>? damageType, float successChance, List<SurgeryFailedType>? failureEffect, EntityUid patient, EntityUid? item)
+    private void PerformSurgeryEffect(SurgeryActionType action, string? requiredPart, ProtoId<InternalDamagePrototype>? damageType, float successChance,
+        List<SurgeryFailedType>? failureEffect, EntityUid patient, EntityUid? item)
     {
         if (!TryComp<OperatedComponent>(patient, out var comp))
             return;
@@ -216,14 +217,7 @@ public sealed partial class SurgerySystem
         if (!RollSuccess(patient, patient.Comp.Surgeon.Value, successChance))
             HandleFailure(patient, failureEffect, requiredPart);
 
-        if (!patient.Comp.InternalDamages.TryGetValue(damageType.Value, out var damagedParts))
-            return;
-
-        damagedParts.Remove(requiredPart);
-        if (damagedParts.Count == 0)
-        {
-            patient.Comp.InternalDamages.Remove(damageType.Value);
-        }
+        TryRemoveInternalDamage(patient, damageType, requiredPart);
     }
 
     private void PerformRemoveOrgan(Entity<OperatedComponent> patient, string? requiredOrgan, float successChance, List<SurgeryFailedType>? failureEffect)

@@ -1,0 +1,12 @@
+ent-MaterialSinew = сухожилие
+    .desc = Настоящий боевой трофей охотника.
+    .suffix = Полный
+ent-MaterialSinew1 = { ent-MaterialSinew }
+    .desc = { ent-MaterialSinew.desc }
+    .suffix = 1
+ent-MaterialChitin = хитин
+    .desc = Хитин какого-то членистоногого, ничего больше.
+    .suffix = Полный
+ent-MaterialChitin1 = { ent-MaterialChitin }
+    .desc = { ent-MaterialChitin.desc }
+    .suffix = 1

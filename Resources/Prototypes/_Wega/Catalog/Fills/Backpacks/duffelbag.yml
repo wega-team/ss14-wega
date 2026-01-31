@@ -21,6 +21,7 @@
           amount: 2
         - id: MicroManipulatorStockPart
           amount: 3
+
 - type: entity
   parent: ClothingBackpackDuffelSyndicateBundle
   id: ClothingBackpackDuffelSyndicateFilledXC67
@@ -53,8 +54,10 @@
       contents:
         - id: WeaponProtoKineticAccelerator
         - id: SurvivalKnife
+        - id: ClothingOuterArmorExplorerSuit
         - id: FlashlightSeclite
         - id: ClothingEyesGlassesMeson
         - id: MineralScanner
         - id: ClothingMaskGasExplorer
         - id: SalvageIDCard
+        - id: SurvivalMedipen

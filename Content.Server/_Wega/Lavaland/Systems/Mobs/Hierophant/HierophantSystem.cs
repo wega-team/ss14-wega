@@ -1,6 +1,8 @@
-using System.Linq;
 using System.Numerics;
 using Content.Server.Lavaland.Mobs.Components;
+using Content.Server.NPC.HTN;
+using Content.Server.NPC.Systems;
+using Content.Shared.Achievements;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Lavaland.Events;
@@ -8,7 +10,6 @@ using Content.Shared.Maps;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Physics;
-using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
@@ -19,30 +20,36 @@ using Robust.Shared.Timing;
 namespace Content.Server.Lavaland.Mobs;
 
 /// <summary>
-/// Completely on the server side due to its specific behavior.
+/// Do you also look at history and it's like there was some kind of great battle?
 /// </summary>
 public sealed partial class HierophantSystem : EntitySystem
 {
+    [Dependency] private readonly SharedAchievementsSystem _achievement = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly SharedMapSystem _map = default!;
+    [Dependency] private readonly NPCUseActionsOnTargetSystem _npcActions = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly SharedMapSystem _map = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly MegafaunaSystem _megafauna = default!;
     [Dependency] private readonly TurfSystem _turf = default!;
     [Dependency] private readonly MobThresholdSystem _threshold = default!;
 
     private const float LowHealthThreshold = 0.5f;
-    private static readonly EntProtoId SpawnPrototype = "HierophantLavalandSquare";
+    private static readonly EntProtoId SpawnPrototype = "EffectHierophantSquare";
 
     public override void Initialize()
     {
         base.Initialize();
 
+        SubscribeLocalEvent<HierophantBossComponent, MegafaunaKilledEvent>(OnHierophantKilled);
+
         SubscribeLocalEvent<HierophantBossComponent, MapInitEvent>(OnHierophantMapInit);
         SubscribeLocalEvent<HierophantBossComponent, DamageChangedEvent>(OnHierophantDamage);
-        SubscribeLocalEvent<HierophantBossComponent, MegafaunaAttackEvent>(OnHierophantAttack);
-        SubscribeLocalEvent<HierophantBossComponent, MegafaunaKilledEvent>(OnHierophantKilled);
+
+        SubscribeLocalEvent<HierophantBossComponent, HierophantBlinkActionEvent>(OnBlinkAction);
+        SubscribeLocalEvent<HierophantBossComponent, HierophantCrossActionEvent>(OnCrossAction);
+        SubscribeLocalEvent<HierophantBossComponent, HierophantChaserActionEvent>(OnChaserAction);
+        SubscribeLocalEvent<HierophantBossComponent, HierophantDamageAreaActionEvent>(OnDamageAreaAction);
 
         SubscribeLocalEvent<HierophantChaserComponent, ComponentStartup>(OnChaserStartup);
     }
@@ -56,6 +63,19 @@ public sealed partial class HierophantSystem : EntitySystem
         UpdateReturnToBase();
     }
 
+    private void OnHierophantKilled(EntityUid uid, HierophantBossComponent component, MegafaunaKilledEvent args)
+    {
+        var coords = Transform(uid).Coordinates;
+        foreach (var reward in component.RewardsProto)
+            Spawn(reward, coords);
+
+        QueueDel(uid);
+        if (args.Killer != null)
+        {
+            _achievement.QueueAchievement(args.Killer.Value, AchievementsEnum.HierophantBoss);
+        }
+    }
+
     #region Passive Movement
 
     private void OnHierophantMapInit(EntityUid uid, HierophantBossComponent component, MapInitEvent args)
@@ -67,33 +87,51 @@ public sealed partial class HierophantSystem : EntitySystem
 
     private void UpdatePassiveMovement()
     {
-        var query = EntityQueryEnumerator<HierophantBossComponent>();
-        while (query.MoveNext(out var uid, out var component))
+        var query = EntityQueryEnumerator<MegafaunaComponent, HierophantBossComponent, HTNComponent>();
+        while (query.MoveNext(out var uid, out var mega, out var component, out var htn))
         {
             if (_timing.CurTime < component.NextPassiveMoveTime)
                 continue;
 
-            MoveTowardsNearestTarget(uid);
+            EntityUid? target = null;
+            if (htn.Blackboard.TryGetValue<EntityUid>(mega.TargetKey, out var targetUid, EntityManager))
+                target = targetUid;
+
+            if (target != null && Exists(target.Value))
+            {
+                MoveTowardsNearestTarget((uid, component), target.Value);
+            }
+
             component.NextPassiveMoveTime = _timing.CurTime + TimeSpan.FromSeconds(component.PassiveMoveInterval);
         }
     }
 
     private void UpdateReturnToBase()
     {
-        var query = EntityQueryEnumerator<HierophantBossComponent>();
-        while (query.MoveNext(out var uid, out var component))
+        var query = EntityQueryEnumerator<MegafaunaComponent, HierophantBossComponent>();
+        while (query.MoveNext(out var uid, out var mega, out var component))
         {
             if (_timing.CurTime < component.NextReturnCheckTime)
                 continue;
 
-            CheckReturnToBase(uid, component);
+            CheckReturnToBase(uid, component, mega.TargetKey);
             component.NextReturnCheckTime = _timing.CurTime + TimeSpan.FromMinutes(component.ReturnCheckInterval);
         }
     }
 
-    private void CheckReturnToBase(EntityUid uid, HierophantBossComponent component)
+    private void CheckReturnToBase(EntityUid uid, HierophantBossComponent component, string targetKey)
     {
-        if (_megafauna.FindAttackTarget(uid) != null || !component.NeedComeBack)
+        if (TryComp<HTNComponent>(uid, out var htn))
+        {
+            EntityUid? target = null;
+            if (htn.Blackboard.TryGetValue<EntityUid>(targetKey, out var targetUid, EntityManager))
+                target = targetUid;
+
+            if (target != null && Exists(target.Value))
+                return;
+        }
+
+        if (!component.NeedComeBack)
             return;
 
         ReturnToBase(uid, component);
@@ -106,20 +144,16 @@ public sealed partial class HierophantSystem : EntitySystem
         Spawn3x3Area(currentPos);
 
         _transform.SetCoordinates(uid, component.HomePosition);
-        _audio.PlayPvs(new SoundPathSpecifier("/Audio/Magic/blink.ogg"), Transform(uid).Coordinates);
+        _audio.PlayPvs(component.BlinkSound, Transform(uid).Coordinates);
         component.NeedComeBack = false;
 
         Spawn3x3Area(component.HomePosition);
     }
 
-    private void MoveTowardsNearestTarget(EntityUid uid)
+    private void MoveTowardsNearestTarget(Entity<HierophantBossComponent> ent, EntityUid target)
     {
-        var target = _megafauna.FindAttackTarget(uid);
-        if (target == null)
-            return;
-
-        var selfCoords = Transform(uid).Coordinates;
-        var targetCoords = Transform(target.Value).Coordinates;
+        var selfCoords = Transform(ent).Coordinates;
+        var targetCoords = Transform(target).Coordinates;
 
         var direction = (targetCoords.Position - selfCoords.Position).Normalized();
         var newCoords = selfCoords.Offset(direction);
@@ -128,8 +162,8 @@ public sealed partial class HierophantSystem : EntitySystem
 
         if (CanSpawnAt(correctedCoords))
         {
-            _transform.SetCoordinates(uid, correctedCoords);
-            _audio.PlayPvs(new SoundPathSpecifier("/Audio/Magic/blink.ogg"), Transform(uid).Coordinates);
+            _transform.SetCoordinates(ent, correctedCoords);
+            _audio.PlayPvs(ent.Comp.BlinkSound, Transform(ent).Coordinates);
         }
     }
 
@@ -148,70 +182,70 @@ public sealed partial class HierophantSystem : EntitySystem
 
     #endregion
 
-    #region Attack System
+    #region Damage System
 
     private void OnHierophantDamage(EntityUid uid, HierophantBossComponent component, DamageChangedEvent args)
     {
-        if (args.DamageIncreased && TryComp<MegafaunaAttacksComponent>(uid, out var attacks))
+        if (args.DamageIncreased && args.Damageable.TotalDamage > 0)
         {
-            var healthRatio = GetHealthRatio(uid);
-            var speedMultiplier = GetAttackSpeedMultiplier(healthRatio);
-            attacks.BaseAttackCooldown = Math.Max(1.5f, 3f / speedMultiplier);
+            UpdateAttackSpeed(uid);
+
             if (!component.NeedComeBack)
                 component.NeedComeBack = true;
         }
     }
 
-    private void OnHierophantAttack(EntityUid uid, HierophantBossComponent component, ref MegafaunaAttackEvent args)
+    private void UpdateAttackSpeed(EntityUid uid)
     {
-        var isLowHealth = IsLowHealth(uid);
-        var attackType = SelectAttackType(component);
+        var healthRatio = GetHealthRatio(uid);
+        var speedMultiplier = GetAttackSpeedMultiplier(healthRatio);
 
-        PerformAttack(uid, component, attackType, args.Target, isLowHealth);
-        component.LastAttack = attackType;
+        _npcActions.SetDelaySpeed(uid, Math.Max(0.3f, Math.Min(1.0f, 1.0f / speedMultiplier)));
     }
 
-    private HierophantAttackType SelectAttackType(HierophantBossComponent component)
-    {
-        var allAttacks = new[]
-        {
-            HierophantAttackType.Blink,
-            HierophantAttackType.Crosses,
-            HierophantAttackType.Chasers,
-            HierophantAttackType.DamageArea
-        };
+    #endregion
 
-        var availableAttacks = allAttacks.Where(a => a != component.LastAttack).ToList();
-        return availableAttacks.Count == 0 ? _random.Pick(allAttacks) : _random.Pick(availableAttacks);
+    #region Action Handlers
+
+    private void OnBlinkAction(Entity<HierophantBossComponent> ent, ref HierophantBlinkActionEvent args)
+    {
+        args.Handled = true;
+
+        var isLowHealth = IsLowHealth(ent);
+        PerformBlinkAttack(ent, args.Target, isLowHealth);
     }
 
-    private void PerformAttack(EntityUid uid, HierophantBossComponent component,
-        HierophantAttackType attackType, EntityUid target, bool isLowHealth)
+    private void OnCrossAction(Entity<HierophantBossComponent> ent, ref HierophantCrossActionEvent args)
     {
-        switch (attackType)
-        {
-            case HierophantAttackType.Blink:
-                PerformBlinkAttack(uid, component, target, isLowHealth);
-                break;
-            case HierophantAttackType.Crosses:
-                PerformCrossAttack(uid, component, target, isLowHealth);
-                break;
-            case HierophantAttackType.Chasers:
-                PerformChaserAttack(uid, component, target, isLowHealth);
-                break;
-            case HierophantAttackType.DamageArea:
-                PerformDamageAreaAttack(uid, component, isLowHealth);
-                break;
-        }
+        args.Handled = true;
+
+        var isLowHealth = IsLowHealth(ent);
+        PerformCrossAttack(ent, args.Target, isLowHealth, args.CrossLength);
+    }
+
+    private void OnChaserAction(Entity<HierophantBossComponent> ent, ref HierophantChaserActionEvent args)
+    {
+        args.Handled = true;
+
+        var isLowHealth = IsLowHealth(ent);
+        PerformChaserAttack(ent, args.Target, isLowHealth, args.ChaserCount, args.ChaserDelay);
+    }
+
+    private void OnDamageAreaAction(Entity<HierophantBossComponent> ent, ref HierophantDamageAreaActionEvent args)
+    {
+        args.Handled = true;
+
+        var isLowHealth = IsLowHealth(ent);
+        PerformDamageAreaAttack(ent, isLowHealth, args.MaxRadius, args.WaveDelay);
     }
 
     #endregion
 
     #region Attack Implementations
 
-    private void PerformBlinkAttack(EntityUid uid, HierophantBossComponent component, EntityUid target, bool isLowHealth)
+    private void PerformBlinkAttack(Entity<HierophantBossComponent> ent, EntityUid target, bool isLowHealth)
     {
-        var selfCoords = Transform(uid).Coordinates;
+        var selfCoords = Transform(ent).Coordinates;
         var targetCoords = Transform(target).Coordinates;
 
         Spawn3x3Area(selfCoords);
@@ -219,31 +253,30 @@ public sealed partial class HierophantSystem : EntitySystem
         var blinkPos = FindBlinkPosition(targetCoords);
         if (blinkPos != null)
         {
-            _transform.SetCoordinates(uid, blinkPos.Value);
-            _audio.PlayPvs(new SoundPathSpecifier("/Audio/Magic/blink.ogg"), Transform(uid).Coordinates);
+            _transform.SetCoordinates(ent, blinkPos.Value);
+            _audio.PlayPvs(ent.Comp.BlinkSound, Transform(ent).Coordinates);
             Spawn3x3Area(blinkPos.Value);
         }
 
         if (isLowHealth)
         {
-            Timer.Spawn(500, () =>
+            Timer.Spawn(TimeSpan.FromMilliseconds(500), () =>
             {
-                if (Deleted(uid)) return;
+                if (!Exists(ent)) return;
 
                 var newBlinkPos = FindBlinkPosition(targetCoords);
                 if (newBlinkPos != null)
                 {
-                    _transform.SetCoordinates(uid, newBlinkPos.Value);
-                    _audio.PlayPvs(new SoundPathSpecifier("/Audio/Magic/blink.ogg"), Transform(uid).Coordinates);
+                    _transform.SetCoordinates(ent, newBlinkPos.Value);
+                    _audio.PlayPvs(ent.Comp.BlinkSound, Transform(ent).Coordinates);
                     Spawn3x3Area(newBlinkPos.Value);
                 }
             });
         }
     }
 
-    private void PerformCrossAttack(EntityUid uid, HierophantBossComponent component, EntityUid target, bool isLowHealth)
+    private void PerformCrossAttack(Entity<HierophantBossComponent> ent, EntityUid target, bool isLowHealth, int lineLength)
     {
-        var lineLength = 8;
         var targetCoords = Transform(target).Coordinates;
 
         if (isLowHealth)
@@ -258,26 +291,25 @@ public sealed partial class HierophantSystem : EntitySystem
         }
     }
 
-    private void PerformChaserAttack(EntityUid uid, HierophantBossComponent component, EntityUid target, bool isLowHealth)
+    private void PerformChaserAttack(Entity<HierophantBossComponent> ent, EntityUid target, bool isLowHealth, int baseCount, float spawnDelay)
     {
-        var selfCoords = Transform(uid).Coordinates;
+        var selfCoords = Transform(ent).Coordinates;
 
-        var baseCount = 1;
         var extraCount = isLowHealth ? 1 : 0;
         var chasersToSpawn = baseCount + extraCount;
 
-        var spawnDelay = 0f;
+        var currentDelay = 0f;
         for (int i = 0; i < chasersToSpawn; i++)
         {
-            var currentDelay = spawnDelay;
-            Timer.Spawn((int)(currentDelay * 1000), () =>
+            var delay = currentDelay;
+            Timer.Spawn(TimeSpan.FromSeconds(delay), () =>
             {
-                if (Deleted(uid)) return;
+                if (!Exists(ent)) return;
 
                 var chaserPos = FindSpawnPositionNear(selfCoords, 2f);
                 if (chaserPos != null)
                 {
-                    var chaser = Spawn(component.ChaserPrototype, chaserPos.Value);
+                    var chaser = Spawn(ent.Comp.ChaserPrototype, chaserPos.Value);
 
                     if (TryComp<HierophantChaserComponent>(chaser, out var chaserComp))
                     {
@@ -288,21 +320,21 @@ public sealed partial class HierophantSystem : EntitySystem
                 }
             });
 
-            spawnDelay += 0.3f;
+            currentDelay += spawnDelay;
         }
     }
 
-    private void PerformDamageAreaAttack(EntityUid uid, HierophantBossComponent component, bool isLowHealth)
+    private void PerformDamageAreaAttack(Entity<HierophantBossComponent> ent, bool isLowHealth, int maxRadius, float waveDelay)
     {
-        var selfCoords = Transform(uid).Coordinates;
-        var maxRadius = isLowHealth ? 8 : 6;
+        var selfCoords = Transform(ent).Coordinates;
+        var radius = isLowHealth ? maxRadius : Math.Max(3, maxRadius / 2);
 
-        for (int wave = 1; wave <= maxRadius; wave++)
+        for (int wave = 1; wave <= radius; wave++)
         {
             var currentWave = wave;
-            Timer.Spawn((int)((wave - 1) * 0.6 * 1000), () =>
+            Timer.Spawn(TimeSpan.FromSeconds((wave - 1) * waveDelay), () =>
             {
-                if (Deleted(uid)) return;
+                if (!Exists(ent)) return;
                 SpawnDamageWave(selfCoords, currentWave);
             });
         }
@@ -426,15 +458,15 @@ public sealed partial class HierophantSystem : EntitySystem
         return !_turf.IsTileBlocked(tileRef, CollisionGroup.Impassable);
     }
 
-    private bool IsLowHealth(EntityUid uid)
+    private bool IsLowHealth(Entity<HierophantBossComponent> ent)
     {
-        if (!TryComp<DamageableComponent>(uid, out var damageable))
+        if (!TryComp<DamageableComponent>(ent, out var damageable))
             return false;
 
-        if (!_threshold.TryGetThresholdForState(uid, MobState.Dead, out var threshold))
+        if (!_threshold.TryGetThresholdForState(ent, MobState.Dead, out var threshold))
             return false;
 
-        return damageable.TotalDamage / threshold >= LowHealthThreshold;
+        return damageable.TotalDamage >= threshold - threshold * LowHealthThreshold;
     }
 
     private float GetHealthRatio(EntityUid uid)
@@ -449,9 +481,7 @@ public sealed partial class HierophantSystem : EntitySystem
     }
 
     private float GetAttackSpeedMultiplier(float healthRatio)
-    {
-        return Math.Max(1.0f, 3.0f - healthRatio * 2f);
-    }
+        => Math.Max(1.0f, 3.0f - healthRatio * 2f);
 
     #endregion
 
@@ -504,18 +534,6 @@ public sealed partial class HierophantSystem : EntitySystem
         var nextPos = current.Offset(direction);
 
         return CanSpawnAt(nextPos) ? nextPos : null;
-    }
-
-    #endregion
-
-    #region Death Handling
-
-    private void OnHierophantKilled(EntityUid uid, HierophantBossComponent component, MegafaunaKilledEvent args)
-    {
-        var coords = Transform(uid).Coordinates;
-        Spawn(component.RewardProto, coords);
-
-        QueueDel(uid);
     }
 
     #endregion

@@ -30,3 +30,14 @@
       state: cpu_supply
     - type: ComputerBoard
       prototype: LavalandShuttleConsole
+
+- type: entity
+  parent: BaseComputerCircuitboard
+  id: LavalandPenalServitudeShuttleComputerCircuitboard
+  name: lavaland penal sarvitude shuttle console computer board
+  description: "The console board for the lavaland penal sarvitude shuttle console."
+  components:
+    - type: Sprite
+      state: cpu_security
+    - type: ComputerBoard
+      prototype: PenalServitudeLavalandShuttleConsole

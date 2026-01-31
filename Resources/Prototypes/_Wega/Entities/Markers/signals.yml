@@ -1,0 +1,52 @@
+- type: entity
+  parent: MarkerBase
+  id: MarkerSignalBase
+  abstract: true
+  components:
+  - type: Sprite
+    layers:
+    - state: blue
+  - type: NavMapBeacon
+    defaultDesc: nav-map-beacon-lavaland-signal-building-desc
+    color: "#a46106"
+
+- type: entity
+  parent: MarkerSignalBase
+  id: MarkerHierophantSignal
+  name: hierophant signal
+  suffix: Lavaland
+  components:
+  - type: NavMapBeacon
+    defaultText: nav-map-beacon-lavaland-signal-hierophant
+    defaultDesc: nav-map-beacon-lavaland-signal-hierophant-desc
+    color: "#9900ff"
+
+- type: entity
+  parent: MarkerSignalBase
+  id: MarkerWinterReserveSignal
+  name: winter reserve signal
+  suffix: Lavaland
+  components:
+  - type: NavMapBeacon
+    defaultText: nav-map-beacon-lavaland-signal-winterreserve
+    color: "#ffffff"
+
+- type: entity
+  parent: MarkerSignalBase
+  id: MarkerBiosphereSignal
+  name: biosphere signal
+  suffix: Lavaland
+  components:
+  - type: NavMapBeacon
+    defaultText: nav-map-beacon-lavaland-signal-biosphere
+    color: "#89a932"
+
+- type: entity
+  parent: MarkerSignalBase
+  id: MarkerBeachSignal
+  name: beach signal
+  suffix: Lavaland
+  components:
+  - type: NavMapBeacon
+    defaultText: nav-map-beacon-lavaland-signal-beach
+    color: "#decfa0"

@@ -1,0 +1,14 @@
+- type: entity
+  parent: MarkerBase
+  id: SpawnCursedSlotMachine
+  name: Cursed Slots Spawner
+  suffix: DO NOT MAP
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Wega/Structures/Machines/slot_machine.rsi
+        state: base
+  - type: ConditionalSpawner
+    prototypes:
+      - CursedSlotMachine

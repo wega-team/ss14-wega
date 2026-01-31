@@ -1,13 +1,15 @@
-using System.Linq;
 using Content.Server.Lavaland.Components;
 using Content.Server.Shuttles.Components;
 using Content.Server.Shuttles.Events;
 using Content.Server.Shuttles.Systems;
+using Content.Server.Station.Components;
 using Content.Server.Station.Events;
+using Content.Shared.CCVar;
 using Content.Shared.Lavaland;
 using Content.Shared.Lavaland.Components;
 using Content.Shared.Tiles;
 using Robust.Server.GameObjects;
+using Robust.Shared.Configuration;
 using Robust.Shared.EntitySerialization.Systems;
 using Robust.Shared.Timing;
 
@@ -15,6 +17,7 @@ namespace Content.Server.Lavaland.Systems;
 
 public sealed partial class LavalandShuttleSystem : EntitySystem
 {
+    [Dependency] private readonly IConfigurationManager _cfg = default!;
     [Dependency] private readonly ShuttleSystem _shuttleSystem = default!;
     [Dependency] private readonly DockingSystem _dockingSystem = default!;
     [Dependency] private readonly MapLoaderSystem _loader = default!;
@@ -29,9 +32,9 @@ public sealed partial class LavalandShuttleSystem : EntitySystem
 
         SubscribeLocalEvent<LavalandShuttleComponent, MapInitEvent>(OnShuttleMapInit);
         SubscribeLocalEvent<LavalandShuttleComponent, FTLCompletedEvent>(OnShuttleArrival);
-        SubscribeLocalEvent<StationLavalandShuttleComponent, StationPostInitEvent>(OnStationStartup);
+        SubscribeLocalEvent<StationLavalandShuttleComponent, StationPostInitEvent>(OnStationStartup, after: [typeof(LavalandSystem)]);
 
-        SubscribeLocalEvent<LavalandShuttleConsoleComponent, ComponentInit>(OnConsoleInit);
+        SubscribeLocalEvent<LavalandShuttleConsoleComponent, MapInitEvent>(OnConsoleInit);
         SubscribeLocalEvent<LavalandShuttleConsoleComponent, BoundUIOpenedEvent>(OnUiOpened);
         SubscribeLocalEvent<LavalandShuttleConsoleComponent, LavalandShuttleCallMessage>(OnShuttleCall);
     }
@@ -40,9 +43,7 @@ public sealed partial class LavalandShuttleSystem : EntitySystem
     {
         var consoleQuery = EntityQueryEnumerator<LavalandShuttleConsoleComponent>();
         while (consoleQuery.MoveNext(out _, out var console))
-        {
             console.ConnectedShuttle = uid;
-        }
     }
 
     private void OnShuttleArrival(EntityUid uid, LavalandShuttleComponent component, ref FTLCompletedEvent args)
@@ -57,13 +58,34 @@ public sealed partial class LavalandShuttleSystem : EntitySystem
             {
                 component.State = oppositeDock.Tag switch
                 {
-                    _ when oppositeDock.Tag == DockStation => ShuttleState.DockedAtStation,
-                    _ when oppositeDock.Tag == DockOutpost => ShuttleState.DockedAtOutpost,
+                    _ when oppositeDock.Tag == DockStation => LavalandShuttleState.DockedAtStation,
+                    _ when oppositeDock.Tag == DockOutpost => LavalandShuttleState.DockedAtOutpost,
                     _ => component.State
                 };
 
                 UpdateConsoles();
                 return;
+            }
+            else if (HasComp<DockingComponent>(dockComp.DockedWith))
+            {
+                var oppositeUid = dockComp.DockedWith.Value;
+                var oppositeGrid = Transform(oppositeUid).GridUid;
+                var oppositeMap = Transform(oppositeUid).MapUid;
+
+                if (HasComp<LavalandComponent>(oppositeMap))
+                {
+                    component.State = LavalandShuttleState.DockedAtOutpost;
+                    UpdateConsoles();
+                    return;
+                }
+
+                if (oppositeGrid != null && HasComp<BecomesStationComponent>(oppositeGrid)
+                    && !HasComp<StationCentcommComponent>(oppositeGrid))
+                {
+                    component.State = LavalandShuttleState.DockedAtStation;
+                    UpdateConsoles();
+                    return;
+                }
             }
         }
 
@@ -71,8 +93,8 @@ public sealed partial class LavalandShuttleSystem : EntitySystem
         if (mapUid != null)
         {
             component.State = HasComp<LavalandComponent>(mapUid)
-                ? ShuttleState.DockedAtOutpost
-                : ShuttleState.DockedAtStation;
+                ? LavalandShuttleState.DockedAtOutpost
+                : LavalandShuttleState.DockedAtStation;
 
             UpdateConsoles();
             return;
@@ -83,7 +105,10 @@ public sealed partial class LavalandShuttleSystem : EntitySystem
 
     private void OnStationStartup(Entity<StationLavalandShuttleComponent> ent, ref StationPostInitEvent args)
     {
-        Timer.Spawn(100, () => AddLavalandShuttle(ent)); // Бля, в такие моменты вы не представляете как я люблю эту игру
+        if (!_cfg.GetCVar(WegaCVars.LavalandEnabled))
+            return;
+
+        Timer.Spawn(100, () => AddLavalandShuttle(ent));
     }
 
     private void AddLavalandShuttle(Entity<StationLavalandShuttleComponent> ent)
@@ -109,39 +134,55 @@ public sealed partial class LavalandShuttleSystem : EntitySystem
         }
 
         ent.Comp.LavalandShuttle = shuttle.Value;
-        EnsureComp<LavalandShuttleComponent>(shuttle.Value);
+        var shuttleComp = EnsureComp<LavalandShuttleComponent>(shuttle.Value);
         EnsureComp<ProtectedGridComponent>(shuttle.Value);
 
-        var stationDock = FindDockWithTag(DockStation);
-        if (stationDock != null && TryComp(shuttle, out TransformComponent? shuttleXform))
+        bool docked = TryDockShuttle(shuttle.Value, DockStation, "station");
+        if (!docked)
         {
-            var stationGrid = Transform(stationDock.Value).GridUid;
-            if (stationGrid == null)
-            {
-                Log.Error($"Lavaland shuttle {ToPrettyString(shuttle)} has no grid to dock at station dock {ToPrettyString(stationDock)}");
-                _map.DeleteMap(tempMapId);
-                return;
-            }
-
-            var config = _dockingSystem.GetDockingConfig(shuttle.Value, stationGrid.Value, DockStation);
-            if (config == null)
-            {
-                Log.Error($"Failed to find docking config for lavaland shuttle {ToPrettyString(shuttle)} at station dock {ToPrettyString(stationDock)}");
-                _map.DeleteMap(tempMapId);
-                return;
-            }
-            _shuttleSystem.FTLDock((shuttle.Value, shuttleXform), config);
+            docked = TryDockShuttle(shuttle.Value, DockOutpost, "outpost");
+            shuttleComp.State = LavalandShuttleState.DockedAtOutpost;
         }
-        else
+
+        if (!docked)
         {
-            Log.Error($"Failed to find station dock {DockStation} for lavaland shuttle {ToPrettyString(shuttle)}");
+            Log.Error($"Failed to dock lavaland shuttle {ToPrettyString(shuttle)} to any available dock");
             _map.DeleteMap(tempMapId);
+            ent.Comp.LavalandShuttle = null;
             return;
         }
 
         _map.DeleteMap(tempMapId);
-
         Log.Info($"Added lavaland shuttle {ToPrettyString(shuttle)} for station {ToPrettyString(ent)}");
+    }
+
+    private bool TryDockShuttle(EntityUid shuttle, string dockTag, string dockName)
+    {
+        var stationDock = FindDockWithTag(dockTag);
+        if (stationDock == null)
+        {
+            Log.Warning($"Failed to find {dockName} dock with tag {dockTag} for lavaland shuttle {ToPrettyString(shuttle)}");
+            return false;
+        }
+
+        var stationGrid = Transform(stationDock.Value).GridUid;
+        if (stationGrid == null)
+        {
+            Log.Error($"Lavaland shuttle {ToPrettyString(shuttle)}: {dockName} dock {ToPrettyString(stationDock)} has no grid");
+            return false;
+        }
+
+        var config = _dockingSystem.GetDockingConfig(shuttle, stationGrid.Value, dockTag);
+        if (config == null)
+        {
+            Log.Warning($"Failed to find docking config for lavaland shuttle {ToPrettyString(shuttle)} at {dockName} dock {ToPrettyString(stationDock)}");
+            return false;
+        }
+
+        var shuttleXform = Transform(shuttle);
+        _shuttleSystem.FTLDock((shuttle, shuttleXform), config);
+        Log.Info($"Lavaland shuttle {ToPrettyString(shuttle)} docked to {dockName} dock");
+        return true;
     }
 
     private EntityUid? FindDockWithTag(string tag)
@@ -150,6 +191,16 @@ public sealed partial class LavalandShuttleSystem : EntitySystem
         while (query.MoveNext(out var uid, out var dock))
         {
             if (dock.Tag == tag)
+                return uid;
+        }
+        // Trying docking on other docks
+        var others = EntityQueryEnumerator<DockingComponent>();
+        while (others.MoveNext(out var uid, out _))
+        {
+            if (tag == DockStation && HasComp<BecomesStationComponent>(Transform(uid).GridUid)
+                && !HasComp<StationCentcommComponent>(Transform(uid).GridUid)) // No Centcomm docks!
+                return uid;
+            else if (tag == DockOutpost && HasComp<LavalandComponent>(Transform(uid).MapUid))
                 return uid;
         }
         return null;

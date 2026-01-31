@@ -52,6 +52,20 @@ public sealed partial class PathfindingSystem
             return 0f;
         }
 
+        // Corvax-Wega-Add-start
+        if (!end.Equals(start))
+        {
+            var ents = new HashSet<EntityUid>();
+            _lookup.GetLocalEntitiesIntersecting(end.GraphUid, end.Box, ents);
+
+            foreach (var ent in ents)
+            {
+                if (_stepTriggerQuery.HasComponent(ent))
+                    return 1000f; // Doubtful, but okэy
+            }
+        }
+        // Corvax-Wega-Add-end
+
         if ((request.CollisionLayer & end.Data.CollisionMask) != 0x0 ||
             (request.CollisionMask & end.Data.CollisionLayer) != 0x0)
         {

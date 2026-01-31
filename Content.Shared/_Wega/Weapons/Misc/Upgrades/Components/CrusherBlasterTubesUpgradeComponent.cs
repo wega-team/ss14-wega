@@ -8,5 +8,5 @@ public sealed partial class CrusherBlasterTubesUpgradeComponent : Component
 {
     [ViewVariables] public bool Active;
     [DataField(required: true)] public DamageSpecifier Damage;
-    [DataField] public float Coefficient = 0.5f;
+    [DataField] public float Coefficient = 0.1f;
 }

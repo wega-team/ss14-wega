@@ -25,3 +25,19 @@ stack-tourniquet =
         [few] турникета
        *[other] турникетов
     }
+stack-sinew =
+    { $amount ->
+        [1] сухожилие
+        [2] сухожилия
+        [3] сухожилия
+        [4] сухожилия
+       *[5] сухожилий
+    }
+stack-chitin =
+    { $amount ->
+        [1] хитин
+        [few] хитина
+       *[other] хитина
+    }
+stak-magmite = магмит
+magmite-ore = магмитовая руда

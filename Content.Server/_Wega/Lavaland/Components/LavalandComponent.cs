@@ -1,5 +1,7 @@
 using Content.Server.Lavaland.Systems;
+using Content.Shared.Lavaland;
 using Content.Shared.Weather;
+using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server.Lavaland.Components;
@@ -8,6 +10,9 @@ namespace Content.Server.Lavaland.Components;
 [Access(typeof(LavalandSystem))]
 public sealed partial class LavalandComponent : Component
 {
+    [DataField]
+    public ProtoId<LavalandPlanetPrototype> PlanetPrototype { get; set; } = "Lavaland";
+
     [DataField]
     public TimeSpan NextWeatherChange = TimeSpan.Zero;
 
@@ -34,14 +39,7 @@ public sealed partial class LavalandComponent : Component
 
     [DataField]
     public float DamageTick = 0f;
-}
 
-public enum LavalandWeatherType : byte
-{
-    None = 0,
-    AshStormLight,
-    AshStormHeavy,
-    VolcanicActivity,
-    AcidRain,
-    StormWind
+    [DataField] public SoundSpecifier RumbleSound = new SoundCollectionSpecifier("PlanetRumblesDistance");
+    [DataField] public SoundSpecifier RockFallSound = new SoundCollectionSpecifier("Explosion");
 }

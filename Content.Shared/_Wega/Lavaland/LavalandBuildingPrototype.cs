@@ -3,6 +3,8 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations;
 using Robust.Shared.Utility;
 
+namespace Content.Shared.Lavaland;
+
 [Prototype("lavalandBuilding")]
 public sealed partial class LavalandBuildingPrototype : IPrototype
 {
@@ -14,6 +16,9 @@ public sealed partial class LavalandBuildingPrototype : IPrototype
 
     [DataField("position")]
     public Vector2? ExactPosition = null;
+
+    [DataField("approximate")]
+    public (float Min, float Max)? ApproximatePosition = null;
 
     [DataField("merge")]
     public bool MergeWithPlanet = true;

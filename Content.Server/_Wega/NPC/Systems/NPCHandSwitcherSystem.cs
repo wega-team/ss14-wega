@@ -3,6 +3,7 @@ using Content.Server.NPC.Components;
 using Content.Server.NPC.HTN;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
+using Content.Shared.Mobs.Systems;
 using Robust.Shared.Timing;
 
 namespace Content.Server.NPC.Systems;
@@ -14,6 +15,8 @@ public sealed class NPCHandSwitcherSystem : EntitySystem
 {
     [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly MobStateSystem _mobState = default!;
+    [Dependency] private readonly NPCSystem _npc = default!;
 
     public override void Update(float frameTime)
     {
@@ -24,6 +27,12 @@ public sealed class NPCHandSwitcherSystem : EntitySystem
         {
             if (!htn.Blackboard.TryGetValue<EntityUid>(comp.TargetKey, out _, EntityManager))
                 continue;
+
+            if (_mobState.IsDead(uid))
+            {
+                _npc.SleepNPC(uid, htn);
+                continue;
+            }
 
             if (_timing.CurTime < comp.NextSwitch)
                 continue;

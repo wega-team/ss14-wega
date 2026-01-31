@@ -27,3 +27,20 @@
     - SecurityFirstAidKit
     - SecurityRiotsKit
     - SecuritySupervisionKit
+
+- type: entity
+  parent: BaseVoucherCard
+  id: SalvageVoucherCard
+  name: salvage voucher card
+  description: "Exchange it at a special terminal for a set of equipment for working in dangerous conditions."
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Misc/vouchers.rsi
+    state: salvage
+  - type: VoucherCard
+    typeVoucher: Salvage
+    kits:
+    - SurvivalExplorerKit
+    - SurvivalFultonKit
+    - SurvivalCrusherKit
+    - SurvivalBaseKit

@@ -1,0 +1,11 @@
+ent-EffectMegaFaunaMarker = ох, нет...
+ent-EffectAshDrakeFire = огонь
+ent-EffectAshDrakeFireCircle = { ent-EffectAshDrakeFire }
+ent-EffectAshDrakeFireWall = { ent-EffectAshDrakeFire }
+ent-EffectAshDrakeCircle = ох, нет...
+ent-EffectAshDrakeSafeMarker = сюда!
+ent-EffectAshDrakeShadow = здесь!
+ent-EffectAshDrakeFloorLavaTemp = { ent-FloorLavaEntity }
+    .desc = { ent-FloorLavaEntity.desc }
+ent-EffectAshDrakeFloorLavaLessTemp = { ent-FloorLavaEntity }
+    .desc = { ent-FloorLavaEntity.desc }

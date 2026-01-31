@@ -33,7 +33,6 @@
   minOreYield: 1
   maxOreYield: 2
 
-
 # Low yields
 - type: ore
   id: OrePlasmaCore
@@ -64,3 +63,9 @@
     OreSilverCore: 1
     OreUraniumCore: 1
     OreBananiumCore: 1
+
+- type: ore
+  id: OreMagmite
+  oreEntity: MagmiteOre1
+  minOreYield: 1
+  maxOreYield: 2

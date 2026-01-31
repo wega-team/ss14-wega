@@ -1470,21 +1470,22 @@
   name: Salvage Vendor
   description: A dwarf's best friend!
   components:
-  # Corvax-Wega-Lavaland-Edit
+  # Corvax-Wega-Lavaland-Edit-start
   # - type: VendingMachine
   #   pack: SalvageEquipmentInventory
   #   offState: off
   #   brokenState: broken
   #   normalState: normal-unshaded
   #   denyState: deny-unshaded
+  # Corvax-Wega-Lavaland-Edit-end
   - type: Sprite
     sprite: Structures/Machines/VendingMachines/mining.rsi
     layers:
     - state: "off"
       map: ["enum.VendingMachineVisualLayers.Base"]
-    - state: "off"
-      map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
-      shader: unshaded
+    # - state: "off"
+    #   map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
+    #   shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: PointLight
@@ -1512,22 +1513,24 @@
       HandheldGPSBasic: 200
       RadioHandheld: 200
       TrackingImplanter: 200
+      Floodlight: 400
       FultonBeacon: 400
       HandCapsule: 400
       OreBag: 400
       TrofeiBag: 400
+      SurvivalMedipen: 500
       ClothingBeltSecondSalvageWebbing: 500
       WeaponGrapplingGun: 500
       MedkitBruteFilled: 600
       MedkitBurnFilled: 600
       WeaponCrusher: 750
       WeaponProtoKineticAccelerator: 750
-      ClothingBackpackDuffelSalvageBaseKit: 800
       MineralScanner: 800
       Fulton: 1000
       PKAUpgradeRange: 1000
       PKAUpgradeDamage: 1000
       PKAUpgradeFireRate: 1000
+      ClothingBackpackDuffelSalvageBaseKit: 1500
       PKAUpgradeAoE: 2000
       JetpackMiningFilled: 2000
       ClothingShoesBootsJump: 2500

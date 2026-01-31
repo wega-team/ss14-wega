@@ -1,19 +1,29 @@
 using System.Linq;
 using System.Numerics;
+using Content.Server.Cargo.Components;
+using Content.Server.CharacterAppearance.Components;
 using Content.Server.Lavaland.Mobs.Components;
 using Content.Server.Polymorph.Systems;
+using Content.Server.Surgery;
+using Content.Shared.Achievements;
+using Content.Shared.Damage.Components;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Height;
 using Content.Shared.Humanoid;
+using Content.Shared.Interaction;
+using Content.Shared.Interaction.Events;
 using Content.Shared.Lavaland.Components;
 using Content.Shared.Lavaland.Events;
 using Content.Shared.Maps;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Physics;
+using Content.Shared.Popups;
 using Content.Shared.Throwing;
+using Content.Shared.Visuals;
+using Robust.Server.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
@@ -21,21 +31,28 @@ namespace Content.Server.Lavaland.Mobs;
 
 public sealed partial class LegionSystem : EntitySystem
 {
+    [Dependency] private readonly SharedAchievementsSystem _achievement = default!;
+    [Dependency] private readonly AppearanceSystem _appearance = default!;
+    [Dependency] private readonly DamageableSystem _damage = default!;
+    [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly SharedMapSystem _map = default!;
-    [Dependency] private readonly ThrowingSystem _throwing = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly TurfSystem _turf = default!;
+    [Dependency] private readonly SharedMapSystem _map = default!;
     [Dependency] private readonly PolymorphSystem _polymorph = default!;
-
-    private static readonly EntProtoId Reward = "CrowbarRed";
+    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private readonly SurgerySystem _surgery = default!;
+    [Dependency] private readonly ThrowingSystem _throwing = default!;
+    [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private readonly TurfSystem _turf = default!;
 
     public override void Initialize()
     {
         base.Initialize();
+
+        SubscribeLocalEvent<LegionCoreComponent, MapInitEvent>(OnLegionCoreMapInit);
+        SubscribeLocalEvent<LegionCoreComponent, UseInHandEvent>(OnLegionCoreUse);
+        SubscribeLocalEvent<LegionCoreComponent, AfterInteractEvent>(OnLegionCoreInteract);
 
         SubscribeLocalEvent<LegionFaunaComponent, LegionSummonSkullAction>(OnLegionSummon);
         SubscribeLocalEvent<LegionReversibleComponent, MobStateChangedEvent>(OnReversible);
@@ -61,7 +78,65 @@ public sealed partial class LegionSystem : EntitySystem
                 component.NextStateSwitchTime = _timing.CurTime + TimeSpan.FromSeconds(component.StateSwitchInterval);
             }
         }
+
+        var coreQuery = EntityQueryEnumerator<LegionCoreComponent>();
+        while (coreQuery.MoveNext(out var uid, out var component))
+        {
+            if (component.AlwaysActive || !component.Active)
+                continue;
+
+            if (_timing.CurTime >= component.ActiveEndTime)
+            {
+                if (TryComp<StaticPriceComponent>(uid, out var price))
+                    price.Price = 0; // He's useless now.
+
+                _appearance.SetData(uid, VisualLayers.Enabled, false);
+                component.Active = false;
+            }
+        }
     }
+
+    #region Legion Core
+
+    private void OnLegionCoreMapInit(EntityUid uid, LegionCoreComponent component, MapInitEvent args)
+    {
+        component.ActiveEndTime = _timing.CurTime + component.ActiveInterval;
+        _appearance.SetData(uid, VisualLayers.Enabled, true);
+    }
+
+    private void OnLegionCoreUse(Entity<LegionCoreComponent> ent, ref UseInHandEvent args)
+    {
+        if (!ent.Comp.Active || !HasComp<DamageableComponent>(args.User))
+        {
+            _popup.PopupEntity(Loc.GetString("legion-core-interact-failed", ("name", Name(ent))), args.User, args.User);
+            return;
+        }
+
+        PerformCoreHeal(args.User, ent);
+    }
+
+    private void OnLegionCoreInteract(Entity<LegionCoreComponent> ent, ref AfterInteractEvent args)
+    {
+        if (!ent.Comp.Active || !HasComp<DamageableComponent>(args.Target))
+        {
+            _popup.PopupEntity(Loc.GetString("legion-core-interact-failed", ("name", Name(ent))), args.User, args.User);
+            return;
+        }
+
+        PerformCoreHeal(args.Target.Value, ent);
+    }
+
+    private void PerformCoreHeal(EntityUid target, Entity<LegionCoreComponent> ent)
+    {
+        _damage.TryChangeDamage(target, ent.Comp.HealAmount, true, false);
+        foreach (var internalDam in ent.Comp.HealInternals)
+            _surgery.TryRemoveInternalDamage(target, internalDam);
+
+        _popup.PopupEntity(Loc.GetString("legion-core-interact-healed"), target, target);
+        QueueDel(ent);
+    }
+
+    #endregion
 
     #region Basic Legion
     private void OnLegionSummon(Entity<LegionFaunaComponent> entity, ref LegionSummonSkullAction args)
@@ -79,6 +154,10 @@ public sealed partial class LegionSystem : EntitySystem
     private void OnReversible(Entity<LegionReversibleComponent> entity, ref MobStateChangedEvent args)
     {
         if (args.NewMobState != MobState.Critical && args.NewMobState != MobState.Dead)
+            return;
+
+        // For skipping corpse on spawn.
+        if (TryComp<RandomHumanoidAppearanceComponent>(entity, out var random) && !random.RandomizeName)
             return;
 
         if (_lookup.GetEntitiesInRange<LegionFaunaComponent>(Transform(entity).Coordinates, 6f).Count > 0)
@@ -199,7 +278,17 @@ public sealed partial class LegionSystem : EntitySystem
             var allSplits = EntityQuery<LegionSplitComponent>().ToList();
             if (allSplits.Count == 1)
             {
-                Spawn(Reward, Transform(uid).Coordinates);
+                if (!TryComp<LegionBossComponent>(uid, out var legion))
+                    return;
+
+                var coords = Transform(uid).Coordinates;
+                foreach (var reward in legion.RewardsProto)
+                    Spawn(reward, coords);
+
+                if (args.Killer != null)
+                {
+                    _achievement.QueueAchievement(args.Killer.Value, AchievementsEnum.LegionBoss);
+                }
             }
         }
 

@@ -611,6 +611,7 @@
       types:
         Blunt: 18
         Slash: 4
+  - type: ProjectilePressure # Corvax-Wega-Lavaland
   - type: Projectile
     impactEffect: BulletImpactEffectKinetic
     damage:

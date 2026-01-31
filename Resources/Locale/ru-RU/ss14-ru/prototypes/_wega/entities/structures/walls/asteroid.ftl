@@ -22,6 +22,6 @@ ent-WallRockBasaltLavalandUranium = { ent-WallRockBasalt }
 ent-WallRockBasaltLavalandBananium = { ent-WallRockBasalt }
     .desc = { ent-WallRockBasalt.desc }
     .suffix = Бананиум, Лаваленд
-ent-WallRockBasaltGibtonite = { ent-WallRockBasalt }
+ent-WallRockBasaltLavalandGibtonite = { ent-WallRockBasalt }
     .desc = { ent-WallRockBasalt.desc }
     .suffix = Гибтонит, Лаваленд

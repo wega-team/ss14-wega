@@ -32,7 +32,6 @@ public sealed class RodOfAsclepiusSystem : EntitySystem
     [Dependency] private readonly SharedItemSystem _item = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
 
-
     public override void Initialize()
     {
         base.Initialize();

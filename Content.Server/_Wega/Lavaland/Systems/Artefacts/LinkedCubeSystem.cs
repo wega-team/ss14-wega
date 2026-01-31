@@ -3,6 +3,7 @@ using Content.Shared.Lavaland.Artefacts.Components;
 using Content.Shared.Popups;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Map;
 
 namespace Content.Server.Lavaland.Artefacts.Systems;
 
@@ -69,7 +70,11 @@ public sealed class LinkedCubeSystem : EntitySystem
             return false;
         }
 
-        _transform.SetCoordinates(user, Transform(linkedCube).Coordinates);
+        var mapUid = _transform.GetMap(linkedCube);
+        if (mapUid == null)
+            return false;
+
+        _transform.SetCoordinates(user, new EntityCoordinates(mapUid.Value, linkedTransform));
 
         _audio.PlayPvs(new SoundPathSpecifier("/Audio/Magic/blink.ogg"), user);
         _popup.PopupEntity(Loc.GetString("linked-cube-teleported"), user, user);

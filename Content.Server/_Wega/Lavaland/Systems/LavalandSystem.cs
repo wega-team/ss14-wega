@@ -5,6 +5,8 @@ using Content.Server.Decals;
 using Content.Server.Lavaland.Components;
 using Content.Server.Parallax;
 using Content.Server.Radio.EntitySystems;
+using Content.Server.Spawners.Components;
+using Content.Server.Spawners.EntitySystems;
 using Content.Server.Station.Events;
 using Content.Shared.Atmos;
 using Content.Shared.Camera;
@@ -14,8 +16,12 @@ using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Decals;
+using Content.Shared.Fluids.Components;
+using Content.Shared.Lavaland;
 using Content.Shared.Lavaland.Components;
+using Content.Shared.Lavaland.Events;
 using Content.Shared.Maps;
+using Content.Shared.Parallax.Biomes;
 using Content.Shared.Pinpointer;
 using Content.Shared.Radio.Components;
 using Content.Shared.Shuttles.Components;
@@ -25,7 +31,10 @@ using Content.Shared.Tiles;
 using Content.Shared.Weather;
 using Robust.Server.GameObjects;
 using Robust.Server.Physics;
+using Robust.Shared.Audio;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;
+using Robust.Shared.EntitySerialization;
 using Robust.Shared.EntitySerialization.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
@@ -38,6 +47,7 @@ namespace Content.Server.Lavaland.Systems;
 
 public sealed partial class LavalandSystem : EntitySystem
 {
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly AtmosphereSystem _atmos = default!;
     [Dependency] private readonly BiomeSystem _biome = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
@@ -69,7 +79,7 @@ public sealed partial class LavalandSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<StationLavalandComponent, StationPostInitEvent>(OnStationStartup);
+        SubscribeLocalEvent<StationLavalandComponent, StationPostInitEvent>(OnStationStartup, before: [typeof(ConditionalSpawnerSystem)]);
     }
 
     #region Weather Procesing
@@ -94,7 +104,7 @@ public sealed partial class LavalandSystem : EntitySystem
 
     private void SendWeatherWarning(EntityUid uid, LavalandComponent comp)
     {
-        var weatherType = GetRandomWeatherType();
+        var weatherType = GetRandomWeatherType(comp);
         var (weatherProto, _) = GetWeatherInfo(weatherType);
 
         comp.UpcomingWeatherType = weatherType;
@@ -137,7 +147,7 @@ public sealed partial class LavalandSystem : EntitySystem
             ApplyWeatherDamage(uid, comp);
             comp.DamageTick = GetDamageInterval(comp.CurrentWeatherType);
             if (comp.CurrentWeatherType == LavalandWeatherType.VolcanicActivity)
-                ApplyVolcanicActivity();
+                ApplyVolcanicActivity(comp);
         }
     }
 
@@ -154,15 +164,43 @@ public sealed partial class LavalandSystem : EntitySystem
         SendWeatherEndAlert(endedWeather);
     }
 
-    private LavalandWeatherType GetRandomWeatherType()
+    private LavalandWeatherType GetRandomWeatherType(LavalandComponent comp)
     {
-        var roll = _random.Next(100);
+        if (!_proto.TryIndex(comp.PlanetPrototype, out LavalandPlanetPrototype? planetProto))
+            return LavalandWeatherType.None;
 
-        if (roll < 40) return LavalandWeatherType.StormWind;
-        if (roll < 70) return LavalandWeatherType.AshStormLight;
-        if (roll < 85) return LavalandWeatherType.AshStormHeavy;
-        if (roll < 95) return LavalandWeatherType.VolcanicActivity;
-        return LavalandWeatherType.AcidRain;
+        var availableWeather = planetProto.AvailableWeather;
+        if (availableWeather.Count == 0)
+            return LavalandWeatherType.None;
+
+        var weatherWeights = new Dictionary<LavalandWeatherType, int>
+        {
+            { LavalandWeatherType.StormWind, 40 },
+            { LavalandWeatherType.AshStormLight, 30 },
+            { LavalandWeatherType.AshStormHeavy, 15 },
+            { LavalandWeatherType.VolcanicActivity, 10 },
+            { LavalandWeatherType.AcidRain, 5 }
+        };
+
+        var filteredWeights = weatherWeights
+            .Where(x => availableWeather.Contains(x.Key))
+            .ToList();
+
+        if (filteredWeights.Count == 0)
+            return LavalandWeatherType.None;
+
+        var totalWeight = filteredWeights.Sum(x => x.Value);
+        var roll = _random.Next(totalWeight);
+        var currentWeight = 0;
+
+        foreach (var (weather, weight) in filteredWeights)
+        {
+            currentWeight += weight;
+            if (roll < currentWeight)
+                return weather;
+        }
+
+        return filteredWeights.First().Key;
     }
 
     private (ProtoId<WeatherPrototype>? proto, TimeSpan duration) GetWeatherInfo(LavalandWeatherType type)
@@ -198,7 +236,7 @@ public sealed partial class LavalandSystem : EntitySystem
                 continue;
 
             var transform = Transform(uid);
-            if (transform.ParentUid != lavalandUid)
+            if (transform.MapUid != lavalandUid)
                 continue;
 
             // Activity don't care about you or who you are.
@@ -215,10 +253,17 @@ public sealed partial class LavalandSystem : EntitySystem
             var damage = GetWeatherDamage(comp.CurrentWeatherType);
             if (damage != null)
             {
-                _damage.TryChangeDamage(uid, damage);
+                var ev = new AshProtectionAttemptEvent();
+                RaiseLocalEvent(uid, ref ev);
+
+                if (ev.Modifier < 1f)
+                {
+                    var damageReduction = 1f - ev.Modifier;
+                    _damage.TryChangeDamage(uid, damage * damageReduction, true);
+                }
             }
 
-            ApplyWeatherEffects(uid, comp.CurrentWeatherType);
+            ApplyWeatherEffects(uid, comp);
         }
     }
 
@@ -234,16 +279,16 @@ public sealed partial class LavalandSystem : EntitySystem
     }
 
     // More Cinema
-    private void ApplyWeatherEffects(EntityUid targetUid, LavalandWeatherType type)
+    private void ApplyWeatherEffects(EntityUid targetUid, LavalandComponent comp)
     {
-        switch (type)
+        switch (comp.CurrentWeatherType)
         {
             case LavalandWeatherType.StormWind:
                 ApplyWindPush(targetUid);
                 break;
 
             case LavalandWeatherType.VolcanicActivity:
-                ApplyVolcanicActivity(targetUid);
+                ApplyVolcanicActivity(comp, targetUid);
                 break;
         }
     }
@@ -251,21 +296,21 @@ public sealed partial class LavalandSystem : EntitySystem
     private void ApplyWindPush(EntityUid targetUid)
     {
         var windDirection = _random.NextAngle().ToVec();
-        var windForce = _random.NextFloat(50f, 150f);
+        var windForce = _random.NextFloat(500f, 1500f);
 
         _physics.ApplyLinearImpulse(targetUid, windDirection * windForce);
     }
 
     #region Volcanic Activity
 
-    private void ApplyVolcanicActivity(EntityUid? targetUid = null)
+    private void ApplyVolcanicActivity(LavalandComponent comp, EntityUid? targetUid = null)
     {
         if (targetUid.HasValue)
         {
-            ApplyEarthquakeToPlayer(targetUid.Value);
+            ApplyEarthquakeToPlayer(targetUid.Value, comp.RumbleSound);
             if (_random.Prob(0.2f))
             {
-                SpawnEffectsNearPlayer(targetUid.Value);
+                SpawnEffectsNearPlayer(targetUid.Value, comp.RockFallSound);
             }
         }
         else
@@ -281,9 +326,9 @@ public sealed partial class LavalandSystem : EntitySystem
                 var max = _cfg.GetCVar(WegaCVars.LavalandSpawnIntervalMax);
 
                 int attempts = 0;
-                int maxAttempts = 10;
+                int maxAttempts = 3;
                 int spawnedCount = 0;
-                int maxSpawns = _random.Next(2, 5);
+                int maxSpawns = _random.Next(1, 3);
 
                 while (spawnedCount < maxSpawns && attempts < maxAttempts)
                 {
@@ -316,17 +361,18 @@ public sealed partial class LavalandSystem : EntitySystem
 
     #region Player Effects
 
-    private void ApplyEarthquakeToPlayer(EntityUid playerUid)
+    private void ApplyEarthquakeToPlayer(EntityUid playerUid, SoundSpecifier sound)
     {
         if (!TryComp<CameraRecoilComponent>(playerUid, out var recoil))
             return;
 
         var intensity = _random.NextFloat(0.3f, 0.7f);
         ApplyCameraShake(playerUid, intensity, recoil);
+        _audio.PlayEntity(sound, playerUid, playerUid);
 
         if (_random.Prob(0.3f))
         {
-            ApplyStrongShake(playerUid, recoil);
+            ApplyStrongShake(playerUid, sound, recoil);
         }
     }
 
@@ -341,19 +387,23 @@ public sealed partial class LavalandSystem : EntitySystem
             TryKnockDown(playerUid);
     }
 
-    private void ApplyStrongShake(EntityUid playerUid, CameraRecoilComponent recoil)
+    private void ApplyStrongShake(EntityUid playerUid, SoundSpecifier sound, CameraRecoilComponent recoil)
     {
         var direction = _random.NextAngle().ToVec();
         var strongKick = direction * _random.NextFloat(0.4f, 0.8f);
 
         Timer.Spawn(TimeSpan.FromSeconds(_random.NextFloat(0.1f, 0.5f)),
-            () => _recoil.KickCamera(playerUid, strongKick, recoil));
+            () =>
+            {
+                _recoil.KickCamera(playerUid, strongKick, recoil);
+                _audio.PlayEntity(sound, playerUid, playerUid);
+            });
     }
 
     private void TryKnockDown(EntityUid playerUid)
     {
         var knockDirection = _random.NextAngle().ToVec();
-        var knockForce = _random.NextFloat(50f, 150f);
+        var knockForce = _random.NextFloat(500f, 1500f);
 
         _physics.ApplyLinearImpulse(playerUid, knockDirection * knockForce);
 
@@ -364,7 +414,7 @@ public sealed partial class LavalandSystem : EntitySystem
         }
     }
 
-    private void SpawnEffectsNearPlayer(EntityUid playerUid)
+    private void SpawnEffectsNearPlayer(EntityUid playerUid, SoundSpecifier sound)
     {
         var playerPos = _transform.GetWorldPosition(playerUid);
         var mapUid = Transform(playerUid).MapUid;
@@ -373,14 +423,14 @@ public sealed partial class LavalandSystem : EntitySystem
             return;
 
         var direction = _random.NextAngle().ToVec();
-
         var effectRoll = _random.Next(100);
 
-        if (effectRoll < 70)
+        if (effectRoll < 80)
         {
             var safeDistance = 6f;
             var formationPos = playerPos + direction * safeDistance;
             SpawnRockFormation(mapUid.Value, formationPos);
+            _audio.PlayPredicted(sound, new EntityCoordinates(mapUid.Value, formationPos), null);
         }
         else
         {
@@ -577,6 +627,13 @@ public sealed partial class LavalandSystem : EntitySystem
 
     private void AddLavaland(Entity<StationLavalandComponent> ent)
     {
+        var planetProto = _random.Pick(ent.Comp.Planets);
+        if (!_proto.TryIndex(planetProto, out var planet))
+        {
+            Log.Error($"Unable lavaland planet prototype '{planetProto}'");
+            return;
+        }
+
         var mapUid = _map.CreateMap(out var mapId);
         if (!_loader.TryLoadGrid(mapId, ent.Comp.LavalandAvanpostPath, out var avanpost, offset: Vector2.Zero))
         {
@@ -586,70 +643,132 @@ public sealed partial class LavalandSystem : EntitySystem
         }
 
         _meta.SetEntityName(mapUid, Loc.GetString("lavaland-map"));
-
+        _meta.SetEntityName(avanpost.Value, Loc.GetString("lavaland-map-avanpost"));
         var avanpostComp = EnsureComp<LavalandAvanpostComponent>(avanpost.Value);
         EnsureComp<ActiveRadioComponent>(avanpost.Value).Channels.Add(avanpostComp.AnnouncementChannel);
         EnsureComp<ProtectedGridComponent>(avanpost.Value);
         EnsureComp<ProtectedGridComponent>(mapUid);
+        EnsureComp<MapGridComponent>(mapUid); // For build processing after creating planet
         EnsureComp<NavMapComponent>(mapUid);
 
-        _biome.EnsurePlanet(mapUid, _proto.Index(ent.Comp.Biome), ent.Comp.Seed, mapLight: ent.Comp.MapLightColor);
-        EnsureComp<LavalandComponent>(mapUid).NextWeatherChange = _gameTiming.CurTime + TimeSpan.FromMinutes(_random.Next(5, 15));
+        _map.CreateMap(out var tempMapId, false);
+        GenerateBuildings(tempMapId, mapUid);
+
+        _biome.EnsurePlanet(mapUid, _proto.Index(planet.Biome), ent.Comp.Seed, mapLight: planet.MapLightColor);
+        var biome = EnsureComp<BiomeComponent>(mapUid);
+        foreach (var layer in planet.BiomeLayers)
+        {
+            _biome.AddMarkerLayer(mapUid, biome, layer);
+        }
+        var lava = EnsureComp<LavalandComponent>(mapUid);
+        lava.NextWeatherChange = _gameTiming.CurTime + TimeSpan.FromMinutes(_random.Next(5, 15));
+        lava.PlanetPrototype = planetProto;
 
         var moles = new float[Atmospherics.AdjustedNumberOfGases];
-        moles[(int)Gas.Oxygen] = 14.022f;
-        moles[(int)Gas.Nitrogen] = 22.878f;
+        for (var i = 0; i < Atmospherics.TotalNumberOfGases && i < planet.GasesContent.Count(); i++)
+            moles[i] = planet.GasesContent[i];
 
-        var mixture = new GasMixture(moles, 299.15f);
+        var mixture = new GasMixture(moles, planet.AtmosphereTemperature);
         _atmos.SetMapAtmosphere(mapUid, false, mixture);
-
-        GenerateBuildings(mapId, mapUid);
     }
 
-    public void GenerateBuildings(MapId mapId, EntityUid mainGrid)
+    public void GenerateBuildings(MapId tempMapId, EntityUid mainGrid)
     {
-        var buildingList = _proto.EnumeratePrototypes<LavalandBuildingPrototype>()
-            .OrderByDescending(b => b.ExactPosition.HasValue)
+        var buildings = _proto.EnumeratePrototypes<LavalandBuildingPrototype>();
+        var buildingList = buildings.OrderByDescending(b => b.ExactPosition.HasValue)
+            .ThenByDescending(b => b.ApproximatePosition.HasValue)
             .ThenBy(b => _random.Next()).ToList();
 
-        for (var i = 0; i <= _cfg.GetCVar(WegaCVars.LavalandMaxBuildings) && i < buildingList.Count; i++)
-            SpawnBuilding(mapId, buildingList[i], mainGrid);
+        var maxBuildings = _cfg.GetCVar(WegaCVars.LavalandMaxBuildings);
+        var minDistanceBetween = _cfg.GetCVar(WegaCVars.LavalandBuildingsDistance);
+        var occupiedPositions = new List<Vector2>();
+
+        for (var i = 0; i <= maxBuildings && i < buildingList.Count; i++)
+        {
+            if (TryFindValidPosition(buildingList[i], occupiedPositions, minDistanceBetween, 50, out var position))
+            {
+                SpawnBuilding(tempMapId, mainGrid, buildingList[i], 200 * i, position);
+                occupiedPositions.Add(position);
+            }
+        }
+
+        _map.QueueDeleteMap(tempMapId);
     }
 
-    private void SpawnBuilding(MapId mapId, LavalandBuildingPrototype proto, EntityUid mainGrid)
+    private bool TryFindValidPosition(LavalandBuildingPrototype proto, List<Vector2> occupiedPositions,
+        float minDistance, int maxAttempts, out Vector2 position)
     {
-        Vector2 position;
-        if (proto.ExactPosition.HasValue)
+        for (int attempt = 0; attempt < maxAttempts; attempt++)
         {
-            position = proto.ExactPosition.Value;
-        }
-        else
-        {
-            var min = _cfg.GetCVar(WegaCVars.LavalandSpawnIntervalMin);
-            var max = _cfg.GetCVar(WegaCVars.LavalandSpawnIntervalMax);
+            if (proto.ExactPosition.HasValue)
+            {
+                position = proto.ExactPosition.Value;
+            }
+            else if (proto.ApproximatePosition.HasValue)
+            {
+                var min = proto.ApproximatePosition.Value.Min;
+                var max = proto.ApproximatePosition.Value.Max;
 
-            var angle = _random.NextAngle();
-            var distance = _random.NextFloat(min, max);
-            position = angle.ToVec() * distance;
+                var angle = _random.NextAngle();
+                var distance = _random.NextFloat(min, max);
+                position = angle.ToVec() * distance;
+            }
+            else
+            {
+                var min = _cfg.GetCVar(WegaCVars.LavalandSpawnIntervalMin);
+                var max = _cfg.GetCVar(WegaCVars.LavalandSpawnIntervalMax);
+
+                var angle = _random.NextAngle();
+                var distance = _random.NextFloat(min, max);
+                position = angle.ToVec() * distance;
+            }
+
+            bool tooClose = false;
+            foreach (var occupiedPos in occupiedPositions)
+            {
+                if ((position - occupiedPos).Length() < minDistance)
+                {
+                    tooClose = true;
+                    break;
+                }
+            }
+
+            if (!tooClose) return true;
         }
 
+        position = Vector2.Zero;
+        return false;
+    }
+
+    private void SpawnBuilding(MapId tempMapId, EntityUid mainGrid, LavalandBuildingPrototype proto,
+        int offset, Vector2 position)
+    {
+        var opts = new DeserializationOptions() { PauseMaps = true };
+
+        var offsetPos = new Vector2(0, offset);
         var alignedPosition = new Vector2((int)position.X, (int)position.Y);
-        if (!_loader.TryLoadGrid(mapId, proto.GridPath, out var buildingGrid, offset: alignedPosition))
+        if (!_loader.TryLoadGrid(tempMapId, proto.GridPath, out var buildingGrid, opts, offsetPos))
         {
             Log.Error($"Failed to load lavaland building {proto.ID} at {position}");
             return;
         }
 
-        _meta.SetEntityName(buildingGrid.Value, "");
         if (proto.MergeWithPlanet && mainGrid != buildingGrid.Value.Owner)
         {
             MergeWithPlanet(mainGrid, buildingGrid.Value.Owner, alignedPosition);
         }
         else
         {
-            _iff.AddIFFFlag(buildingGrid.Value, IFFFlags.Hide);
+            _iff.AddIFFFlag(buildingGrid.Value, IFFFlags.HideLabel);
             EnsureComp<ProtectedGridComponent>(buildingGrid.Value);
+
+            var ents = PickAllSpecificEnts(buildingGrid.Value);
+            _transform.SetCoordinates(buildingGrid.Value.Owner, new EntityCoordinates(mainGrid, alignedPosition));
+
+            RestoreEnts(ents, buildingGrid.Value.Owner, Vector2.Zero);
         }
+
+        Log.Debug($"Loaded lavaland building {proto.ID} at {position}");
     }
 
     private void MergeWithPlanet(EntityUid mainGridUid, EntityUid buildingGridUid, Vector2 offsetPosition)
@@ -663,6 +782,8 @@ public sealed partial class LavalandSystem : EntitySystem
 
         try
         {
+            var relativeRotation = _transform.GetWorldRotation(buildingGridUid) - _transform.GetWorldRotation(mainGridUid);
+
             var offset = new Vector2i((int)offsetPosition.X, (int)offsetPosition.Y);
             if (HasComp<DecalGridComponent>(buildingGridUid))
             {
@@ -676,21 +797,50 @@ public sealed partial class LavalandSystem : EntitySystem
                 }
             }
 
-            var ents = new HashSet<Entity<TransformComponent, MetaDataComponent>>();
-            _lookup.GetChildEntities(buildingGridUid, ents);
-            foreach (var ent in ents)
-            {
-                if (ent.Owner == buildingGridUid)
-                    continue;
-
-                _transform.SetCoordinates(ent, new EntityCoordinates(mainGridUid, ent.Comp1.LocalPosition + offsetPosition), ent.Comp1.LocalRotation, false);
-            }
-
-            _fixture.Merge(mainGridUid, buildingGridUid, offset, Angle.Zero, mainGrid, buildingGrid);
+            var ents = PickAllSpecificEnts(buildingGridUid);
+            _fixture.Merge(mainGridUid, buildingGridUid, offset, relativeRotation, mainGrid, buildingGrid);
+            RestoreEnts(ents, mainGridUid, offset);
         }
         catch (Exception ex)
         {
             Log.Error($"Failed to merge grids: {ex.Message}");
+        }
+    }
+
+    private List<(EntProtoId PrototypeId, Vector2 LocalPosition)> PickAllSpecificEnts(EntityUid buildingGridUid)
+    {
+        var allEnts = new List<(EntProtoId PrototypeId, Vector2 LocalPosition)>();
+
+        var allEntities = new HashSet<Entity<MetaDataComponent>>();
+        _lookup.GetChildEntities(buildingGridUid, allEntities);
+        foreach (var entity in allEntities)
+        {
+            // Add as many as you want.
+            if (HasComp<ConditionalSpawnerComponent>(entity.Owner)
+                || HasComp<EntityTableSpawnerComponent>(entity.Owner)
+                || HasComp<RandomDecalSpawnerComponent>(entity.Owner)
+                || HasComp<RandomSpawnerComponent>(entity.Owner)
+                || HasComp<NavMapBeaconComponent>(entity.Owner)
+                || HasComp<PuddleComponent>(entity.Owner))
+            {
+                var prototype = entity.Comp.EntityPrototype;
+                if (prototype != null)
+                {
+                    var localPos = Transform(entity.Owner).LocalPosition;
+                    allEnts.Add((prototype, localPos));
+                    Del(entity.Owner);
+                }
+            }
+        }
+
+        return allEnts;
+    }
+
+    private void RestoreEnts(List<(EntProtoId PrototypeId, Vector2 LocalPosition)> ents, EntityUid parent, Vector2 offset)
+    {
+        foreach (var (proto, pos) in ents)
+        {
+            Spawn(proto, new EntityCoordinates(parent, pos + offset));
         }
     }
 

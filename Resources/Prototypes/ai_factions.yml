@@ -12,6 +12,7 @@
   - Xenoborg
   - Vampire # Corvax-Wega-Vampire
   - BloodCult # Corvax-Wega-Blood-Cult
+  - LavalandFauna # Corvax-Wega-Lavaland
 
 - type: npcFaction
   id: NanoTrasen
@@ -27,6 +28,7 @@
   - Xenoborg
   - Vampire # Corvax-Wega-Vampire
   - BloodCult # Corvax-Wega-Blood-Cult
+  - LavalandFauna # Corvax-Wega-Lavaland
 
 - type: npcFaction
   id: Mouse
@@ -67,6 +69,7 @@
   - Xenoborg
   - Vampire # Corvax-Wega-Vampire
   - BloodCult # Corvax-Wega-Blood-Cult
+  - LavalandFauna # Corvax-Wega-Lavaland
 
 - type: npcFaction
   id: SimpleNeutral
@@ -83,6 +86,9 @@
   - AllHostile
   - Wizard
   - Xenoborg
+  - Vampire # Corvax-Wega-Vampire
+  - BloodCult # Corvax-Wega-Blood-Cult
+  - LavalandFauna # Corvax-Wega-Lavaland
 
 - type: npcFaction
   id: Xeno
@@ -99,6 +105,7 @@
   - Xenoborg
   - Vampire # Corvax-Wega-Vampire
   - BloodCult # Corvax-Wega-Blood-Cult
+  - LavalandFauna # Corvax-Wega-Lavaland
 
 - type: npcFaction
   id: Zombie
@@ -116,6 +123,7 @@
   - Xenoborg
   - Vampire # Corvax-Wega-Vampire
   - BloodCult # Corvax-Wega-Blood-Cult
+  - LavalandFauna # Corvax-Wega-Lavaland
 
 - type: npcFaction
   id: Revolutionary
@@ -129,6 +137,7 @@
   - Xenoborg
   - Vampire # Corvax-Wega-Vampire
   - BloodCult # Corvax-Wega-Blood-Cult
+  - LavalandFauna # Corvax-Wega-Lavaland
 
 - type: npcFaction
   id: AllHostile
@@ -148,6 +157,7 @@
   - Xenoborg
   - Vampire # Corvax-Wega-Vampire
   - BloodCult # Corvax-Wega-Blood-Cult
+  - LavalandFauna # Corvax-Wega-Lavaland
 
 - type: npcFaction
   id: Wizard
@@ -165,6 +175,9 @@
   - Revolutionary
   - AllHostile
   - Xenoborg
+  - Vampire # Corvax-Wega-Vampire
+  - BloodCult # Corvax-Wega-Blood-Cult
+  - LavalandFauna # Corvax-Wega-Lavaland
 
 - type: npcFaction
   id: Xenoborg
@@ -175,9 +188,12 @@
   - Zombie
   - Revolutionary
   - Wizard
+  - Vampire # Corvax-Wega-Vampire
+  - BloodCult # Corvax-Wega-Blood-Cult
 
   - Xeno # rivalry
 
   # cause they are hostile to them
   - SimpleHostile
   - AllHostile
+  - LavalandFauna # Corvax-Wega-Lavaland

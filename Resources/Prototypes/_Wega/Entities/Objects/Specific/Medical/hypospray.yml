@@ -63,10 +63,10 @@
     injectOnly: true
 
 - type: entity
-  name: survival medipen
   parent: ChemicalMedipen
   id: SurvivalMedipen
-  description: A cocktail of powerful healing chemicals. Contains Leporazine, and Miner's Salve. Slowly heals damage and stabilizes body temperature. You can overdose on these if you use more than one in quick succession.
+  name: survival medipen
+  description: "A cocktail of powerful healing chemicals. Contains everything you need to get out on your own in an emergency. Using more than one at a time can be dangerous!"
   components:
   - type: Sprite
     sprite: /Textures/_Wega/Objects/Specific/Medical/medipen.rsi
@@ -92,7 +92,7 @@
             Quantity: 10
           - ReagentId: Epinephrine
             Quantity: 10
-          - ReagentId: Lacerinol
+          - ReagentId: PolypyryliumOligomers
             Quantity: 7.5
           - ReagentId: Dermaline
             Quantity: 7.5

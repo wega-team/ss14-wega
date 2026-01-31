@@ -357,3 +357,25 @@
       sprite: _Wega/Clothing/Uniforms/Jumpsuit/sheriff.rsi
     - type: Clothing
       sprite: _Wega/Clothing/Uniforms/Jumpsuit/sheriff.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitExplorer
+  name: explorer jumpsuit
+  description: "It is thick and comfortable, designed for heavy work in difficult conditions."
+  components:
+    - type: Sprite
+      sprite: _Wega/Clothing/Uniforms/Jumpsuit/explorer.rsi
+    - type: Clothing
+      sprite: _Wega/Clothing/Uniforms/Jumpsuit/explorer.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitExplorerKhaki
+  name: explorer jumpsuit
+  description: "It is thick and comfortable, designed for heavy work in difficult conditions."
+  components:
+    - type: Sprite
+      sprite: _Wega/Clothing/Uniforms/Jumpsuit/explorer_khaki.rsi
+    - type: Clothing
+      sprite: _Wega/Clothing/Uniforms/Jumpsuit/explorer_khaki.rsi

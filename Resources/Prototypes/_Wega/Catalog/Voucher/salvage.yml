@@ -1,0 +1,32 @@
+- type: voucherKit
+  id: SurvivalExplorerKit
+  name: voucher-explorer-kit-name
+  description: voucher-explorer-kit-desc
+  items:
+  - id: ClothingBeltSecondSalvageWebbing
+  - id: HandCapsule
+
+- type: voucherKit
+  id: SurvivalFultonKit
+  name: voucher-fulton-kit-name
+  description: voucher-fulton-kit-desc
+  icon: { sprite: Objects/Tools/fulton.rsi, state: "extraction_pack" }
+  items:
+  - id: FultonBeacon
+  - id: Fulton
+
+- type: voucherKit
+  id: SurvivalCrusherKit
+  name: voucher-crusher-kit-name
+  description: voucher-crusher-kit-desc
+  items:
+  - id: WeaponCrusher
+  - id: FireExtinguisher
+
+- type: voucherKit
+  id: SurvivalBaseKit
+  name: voucher-base-kit-name
+  description: voucher-base-kit-desc
+  items:
+  - id: ClothingBackpackDuffelSalvageBaseKit
+  - id: OreBag

@@ -35,6 +35,7 @@ loadout-group-quartermaster-socks = Квартирмейстер, носки
 loadout-group-postman-head = Почтальон, голова
 loadout-group-postman-jumpsuit = Почтальон, комбинезон
 loadout-group-postman-backpack = Почтальон, рюкзак
+loadout-group-salvage-specialist-jumpsuit = Утилизатор, комбинезон
 # Engineering
 loadout-group-chief-engineer-top = Старший инженер, верхнее белье
 loadout-group-chief-engineer-bottom = Старший инженер, нижнее белье
@@ -66,3 +67,7 @@ loadout-group-surgeon-jumpsuit = Хирург, комбинезон
 
 # Effects
 loadout-group-allowed-sex-restriction = Этот предмет недоступен для вашего текущего пола.
+loadout-group-achievement-restriction-any = Требуется достичь хотя бы одной из следующих ачивок:
+    {$achievements}
+loadout-group-achievement-restriction-all = Требуется достичь всех следующих ачивок:
+    {$achievements}

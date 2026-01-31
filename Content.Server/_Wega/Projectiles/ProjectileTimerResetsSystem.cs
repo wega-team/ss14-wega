@@ -19,15 +19,32 @@ public sealed class ProjectileTimerResetsSystem : EntitySystem
 
     private void OnProjectileHit(EntityUid entity, ProjectileTimerResetsComponent component, ref ProjectileHitEvent ev)
     {
-        if (!TryComp<NPCUseActionOnTargetComponent>(ev.Target, out var npc))
-            return;
-
-        if (TryComp<ActionComponent>(npc.ActionEnt, out var action))
+        if (TryComp<NPCUseActionOnTargetComponent>(ev.Target, out var npc))
         {
-            var remaining = action.Cooldown?.End - _gameTiming.CurTime ?? TimeSpan.Zero;
-            var newCooldown = remaining + TimeSpan.FromSeconds(component.ResetsTime);
+            if (TryComp<ActionComponent>(npc.ActionEnt, out var actionComp))
+            {
+                var remaining = actionComp.Cooldown?.End - _gameTiming.CurTime ?? TimeSpan.Zero;
+                var newCooldown = remaining + TimeSpan.FromSeconds(component.ResetsTime);
 
-            _action.SetCooldown(npc.ActionEnt, newCooldown);
+                _action.SetCooldown(npc.ActionEnt, newCooldown);
+            }
+        }
+
+        if (TryComp<NPCUseActionsOnTargetComponent>(ev.Target, out var npcs))
+        {
+            foreach (var (_, actionEntity) in npcs.ActionEnts)
+            {
+                if (actionEntity == null)
+                    continue;
+
+                if (TryComp<ActionComponent>(actionEntity.Value, out var actionComp))
+                {
+                    var remaining = actionComp.Cooldown?.End - _gameTiming.CurTime ?? TimeSpan.Zero;
+                    var newCooldown = remaining + TimeSpan.FromSeconds(component.ResetsTime);
+
+                    _action.SetCooldown(actionEntity.Value, newCooldown);
+                }
+            }
         }
     }
 }

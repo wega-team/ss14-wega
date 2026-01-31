@@ -15,6 +15,8 @@
             prefixCreator: 'TZ'
         - type: StationEmergencyShuttle
           emergencyShuttlePath: /Maps/Shuttles/emergency_courser.yml
+        - type: StationLavaland
+          lavalandAvanpost: "/Maps/_Wega/Nonstations/cyberiadavanpost.yml"
         - type: StationJobs
           availableJobs:
             #service

@@ -28,7 +28,8 @@ public sealed class RequireProjectileTargetSystem : EntitySystem
 
         var other = args.OtherEntity;
         if (TryComp(other, out ProjectileComponent? projectile) &&
-            CompOrNull<TargetedProjectileComponent>(other)?.Target != ent)
+            CompOrNull<TargetedProjectileComponent>(other)?.Target != ent
+            && !projectile.IgnoreTargeted) // Corvax-Wega-Edit
         {
             // Prevents shooting out of while inside of crates
             var shooter = projectile.Shooter;

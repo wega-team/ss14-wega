@@ -9,7 +9,7 @@ public sealed partial class HierophantClubComponent : Component
     public EntProtoId ChaserPrototype = "HierophantChaser";
 
     [DataField("damageTilePrototype")]
-    public EntProtoId DamageTilePrototype = "HierophantLavalandSquare";
+    public EntProtoId DamageTilePrototype = "EffectHierophantSquare";
 
     [DataField("maxChasers")]
     public int MaxChasers = 2;

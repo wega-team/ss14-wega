@@ -11,5 +11,5 @@ public sealed partial class StationLavalandShuttleComponent : Component
     public EntityUid? LavalandShuttle;
 
     [DataField("lavalandShuttlePath", customTypeSerializer: typeof(ResPathSerializer))]
-    public ResPath LavalandShuttlePath { get; set; } = new("/Maps/_Wega/Shuttles/cyberiad_lavashuttle.yml");
+    public ResPath LavalandShuttlePath { get; set; } = new("/Maps/_Wega/Shuttles/base_lavalandshuttle.yml");
 }
