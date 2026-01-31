@@ -96,10 +96,12 @@
       state: riot_laser-icon
     - type: Item
       heldPrefix: riot_laser
+    # Corvax-Wega-Add-start
     - type: Reflect
       reflectProb: 0.4
       reflects:
         - Energy
+    # Corvax-Wega-Add-end
     - type: Blocking
       passiveBlockModifier:
         coefficients:
