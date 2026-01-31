@@ -124,7 +124,7 @@
     clothingPrototype: ClothingHeadHatHoodChaplainHood
 
 - type: entity
-  parent: [ ClothingOuterBase, ClothingOuterDamageableBase, BaseAccentToggleClothing ] # Corvax-Wega-Clothing
+  parent: [ ClothingOuterBase, ClothingOuterDamageableBase, BaseAccentToggleClothing ] # Corvax-Wega-Clothing + Corvax-Wega-Accents
   id: ClothingOuterPonchoClassic
   name: classic poncho
   description: A warm and comfy classic poncho.
@@ -159,7 +159,7 @@
     sprite: Clothing/OuterClothing/Misc/judge.rsi
 
 - type: entity
-  parent: [ ClothingOuterBase, ClothingOuterDamageableBase, BaseAccentToggleClothing ] # Corvax-Wega-Clothing
+  parent: [ ClothingOuterBase, ClothingOuterDamageableBase, BaseAccentToggleClothing ] # Corvax-Wega-Clothing + Corvax-Wega-Accents
   id: ClothingOuterPoncho
   name: poncho
   description: A warm and comfy poncho.

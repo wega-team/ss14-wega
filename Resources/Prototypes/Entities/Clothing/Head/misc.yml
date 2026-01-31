@@ -189,7 +189,7 @@
     price: 25
 
 - type: entity
-  parent: [ ClothingHeadBase, BaseAccentToggleClothing ]
+  parent: [ ClothingHeadBase, BaseAccentToggleClothing ] # Corvax-Wega-Accents
   id: ClothingHeadHatFancyCrown
   name: fancy crown
   description: It smells like dead rat. Lets you speak like one!
@@ -252,7 +252,7 @@
   description: "*notices your killsign* owo whats this"
 
 - type: entity
-  parent: [ ClothingHeadBase, BaseAccentToggleClothing ]
+  parent: [ ClothingHeadBase, BaseAccentToggleClothing ] # Corvax-Wega-Accents
   id: ClothingHeadHatDogEars
   name: doggy ears
   description: Only for good boys.
