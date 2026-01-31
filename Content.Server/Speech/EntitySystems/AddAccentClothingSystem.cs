@@ -46,6 +46,7 @@ public sealed class AddAccentClothingSystem : EntitySystem
         component.IsActive = false;
     }
 	
+	// Corvax-Wega-Add-start
 	private void OnToggleEvent(EntityUid uid, AddAccentClothingComponent component, ToggleActionEvent args)
 	{
 		var componentType = Factory.GetRegistration(component.Accent).Type;
@@ -62,4 +63,5 @@ public sealed class AddAccentClothingSystem : EntitySystem
 		}
 		args.Handled = true;
 	}
+	// Corvax-Wega-Add-end
 }
