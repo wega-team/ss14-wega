@@ -34,7 +34,7 @@ public sealed partial class Electrocute : EntityEffectBase<Electrocute>
     /// <summary>
     /// Shock damage we apply to the entity.
     /// </summary>
-    [DataField] public float ShockDamage = 5; //Corvax-Wega-Changes
+    [DataField] public float ShockDamage = 5; // Corvax-Wega-Edit
 
     /// <summary>
     /// Do we refresh the duration? Or add more duration if it already exists.
