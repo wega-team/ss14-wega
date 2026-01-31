@@ -11,7 +11,7 @@ public sealed class AddAccentClothingSystem : EntitySystem
         base.Initialize();
         SubscribeLocalEvent<AddAccentClothingComponent, ClothingGotEquippedEvent>(OnGotEquipped);
         SubscribeLocalEvent<AddAccentClothingComponent, ClothingGotUnequippedEvent>(OnGotUnequipped);
-		SubscribeLocalEvent<AddAccentClothingComponent, ToggleActionEvent>(OnToggleEvent);
+		SubscribeLocalEvent<AddAccentClothingComponent, ToggleActionEvent>(OnToggleEvent); // Corvax-Wega-Add
     }
 
 
