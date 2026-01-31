@@ -122,6 +122,14 @@
     - HeadSide
     - FacialHair
     - Hair
+#   Corvax-Wega-Edit-start
+#     markingsDisplacement:
+#       Hair:
+#         sizeMaps:
+#           32:
+#             sprite: Mobs/Species/Vulpkanin/displacement.rsi
+#             state: hair
+#   Corvax-Wega-Edit-end
   - type: Inventory
     speciesId: vulpkanin #временно не corvaxvulpkanin Corvax-CorvaxVulp_Port
     #vulpkanin Corvax-CorvaxVulp_Port start
