@@ -13,7 +13,7 @@
     sprite: Corvax/Mobs/Species/Vulpkanin/parts.rsi # Mobs/Species/Vulpkanin/parts.rsi # Corvax-CorvaxVulp_Port
     state: full
   - type: Body
-    prototype: CorvaxVulpkanin
+    prototype: Vulpkanin
   - type: Speech
     speechSounds: Vulpkanin
     speechVerb: Vulpkanin
