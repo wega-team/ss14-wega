@@ -10,6 +10,8 @@
     Subframe:
       stationProto: StandardNanotrasenStation
       components:
+        - type: StationCargoShuttle
+          path: /Maps/_Wega/Shuttles/cargo_subframe.yml
         - type: StationNameSetup
           mapNameTemplate: '{0} Сабфрейм {1}'
           nameGenerator:
@@ -25,8 +27,6 @@
                 - type: TradeStation
               paths:
                 - /Maps/_Wega/Shuttles/tradepost_subframe.yml
-        - type: StationCargoShuttle
-          path: Maps/_Wega/Shuttles/cargo_subframe.yml
         - type: StationJobs
           availableJobs:
             # command
