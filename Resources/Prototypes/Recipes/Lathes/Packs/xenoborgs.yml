@@ -19,3 +19,7 @@
   - XenoborgModuleEnergySwordRecipe
   # stealth xenoborg
   - XenoborgModuleSuperCloakDeviceRecipe
+# Corvax-Wega-start
+  - XenoborgModuleCommonRepeir
+  - XenoborgModuleCommonSpeed
+# Corvax-Wega-start

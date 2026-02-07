@@ -1,0 +1,219 @@
+# heavy
+- type: entity
+  parent: Holoprojector
+  id: XenoborgHoloprojectorForcefield
+  name: xenoborg force field projector
+  description: Creates an impassable forcefield that won't let anything through. Close proximity may or may not cause cancer.
+  components:
+    - type: HolosignProjector
+      signProto: XenoborgHolosignForcefield
+      chargeUse: 120
+    - type: Sprite
+      sprite:  _Wega/Objects/Devices/Holoprojectors/xfield.rsi
+      state: icon
+    - type: ItemSlots
+      slots:
+        cell_slot:
+          name: power-cell-slot-component-slot-name-default
+          startingItem: PowerCellMicroreactor
+          disableEject: true
+          swap: false
+
+- type: entity
+  id: XenoborgHolosignForcefield
+  parent: HolosignForcefield
+  name: holographic force field
+  description: A powerful temporal containment field that doesn't let anything through, not even a tesla or singularity.
+  components:
+  - type: Sprite
+    sprite: _Wega/Structures/Holo/xfield.rsi
+    state: icon
+  - type: PointLight
+    enabled: true
+    radius: 3
+    color: "#0033ff"
+  - type: TimedDespawn
+    lifetime: 45
+  - type: Clickable
+  - type: ContainmentField
+    throwForce: 0
+  - type: Destructible
+    thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 200
+        behaviors:
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
+
+# eng
+- type: entity
+  id: XenoRCD
+  parent: [ BaseItem, BaseXenoborgContraband ]
+  name: XenoRCD
+  description: The rapid construction device can be used to quickly place and remove various station structures and fixtures. Requires compressed matter to function.
+  components:
+  - type: RCD
+    availablePrototypes:
+    - FloorXenoborg
+    - FloorBlueCircuit
+    - Plating
+    - Catwalk
+    - Grille
+    - WallXenoborg
+    - WallXenoborgDiagonal
+    - XenoborgWindow
+    - AirlockXenoborgLocked
+    - TubeLightBlue
+    - LVCable
+    - MVCable
+    - HVCable
+    - CableTerminal
+    - Deconstruct
+  - type: LimitedCharges
+    maxCharges: 40
+  - type: Sprite
+    sprite: _Wega/Objects/Tools/xeno-rcd.rsi
+    state: icon
+  - type: Item
+    size: Normal
+  - type: StaticPrice
+    price: 110
+  - type: UserInterface
+    interfaces:
+      enum.RcdUiKey.Key:
+        type: RCDMenuBoundUserInterface
+  - type: ActivatableUI
+    inHandsOnly: true
+    key: enum.RcdUiKey.Key
+  - type: AutoRecharge
+    rechargeDuration: 10
+
+# stels
+- type: entity
+  parent: MiniSyringe
+  id: MiniSyringePax
+  suffix: Pax
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      injector:
+        maxVol: 5
+        reagents:
+        - ReagentId: Pax
+          Quantity: 5
+
+- type: entity
+  parent: MiniSyringe
+  id: MiniSyringeMute
+  suffix: Mute Toxin
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      injector:
+        maxVol: 5
+        reagents:
+        - ReagentId: MuteToxin
+          Quantity: 5
+
+- type: entity
+  parent: BaseItem
+  id: BorgGeneratorMiniSyringeMute
+  name: mini syringeMute generator
+  description: Tastes like cardboard.
+  components:
+  - type: UseDelay
+    delay: 15
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Android/parts.rsi
+    layers:
+      - state: eye_module
+  - type: Item
+    size: Tiny
+  - type: SpawnItemsOnUse
+    uses: 100000
+    items:
+      - id: MiniSyringeMute
+    sound:
+      path: /Audio/Machines/phasein.ogg
+
+- type: entity
+  parent: BaseItem
+  id: BorgGeneratorMiniSyringePax
+  name: mini syringePax generator
+  description: Tastes like cardboard.
+  components:
+  - type: UseDelay
+    delay: 15
+  - type: Sprite
+    sprite: Objects/Devices/gates.rsi
+    layers:
+    - state: base
+  - type: Item
+    size: Tiny
+  - type: SpawnItemsOnUse
+    uses: 100000
+    items:
+      - id: MiniSyringePax
+    sound:
+      path: /Audio/Machines/phasein.ogg
+# mothership
+- type: entity
+  parent: XenoborgHoloprojectorForcefield
+  id: XenoborgHoloprojectorForcefieldMother
+  name: xenoborg force field projector
+  suffix: mothership
+  description: Creates an impassable forcefield that won't let anything through. Close proximity may or may not cause cancer.
+  components:
+    - type: HolosignProjector
+      signProto: XenoborgHolosignForcefieldMother
+      chargeUse: 144
+
+- type: entity
+  id: XenoborgHolosignForcefieldMother
+  parent: XenoborgHolosignForcefield
+  components:
+  - type: TimedDespawn
+    lifetime: 10
+
+- type: entity
+  parent: AccessBreaker
+  id: XenoAccessBreaker
+  suffix: Limited
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tools/xeno_access_breaker.rsi
+    state: icon
+
+# xenoborgs
+- type: entity
+  parent: RepeirModeDevice
+  id: RepeirModeDeviceXenoborg
+  components:
+  - type: ComponentToggler
+    parent: true
+    components:
+    - type: PassiveDamage
+      allowedStates:
+      - Alive
+      - Critical
+      - Dead
+      damage:
+        groups:
+          Brute: -3
+          Burn: -3
+  - type: PowerCellDraw
+    drawRate: 72 # 10 seconds
+  - type: ToggleCellDraw
+  - type: PowerCellSlot
+    cellSlotId: cell_slot
+  - type: ContainerContainer
+    containers:
+      cell_slot: !type:ContainerSlot
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellSmallNuclear
+        disableEject: true
+        swap: false

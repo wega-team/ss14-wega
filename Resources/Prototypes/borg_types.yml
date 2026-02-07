@@ -6,7 +6,7 @@
   dummyPrototype: BorgChassisGeneric
 
   # Functional
-  extraModuleCount: 5
+  extraModuleCount: 3
   moduleWhitelist:
     tags:
     - BorgModuleGeneric
@@ -14,12 +14,23 @@
 
   defaultModules:
   - BorgModuleTool
-  - BorgModuleInflatable
-  - BorgModuleArtifact
-  - BorgModuleAnomaly
+# Corvax-Wega-start
+  - BorgModuleCommonMedical
+  - BorgModuleCommonPickaxe
+  - BorgModuleCommonFight
+  - BorgModuleCommonConstruction
+  - BorgModuleCleaningCommon
+  - BorgModuleCommonCandy
+  # - BorgModuleInflatable
+  # - BorgModuleArtifact
+  # - BorgModuleAnomaly
   radioChannels:
   - Science
-
+  - Engineering
+  - Medical
+  - Service
+  - Supply
+ # Corvax-Wega-end
   # Visual
   inventoryTemplateId: borgShort
   spriteBodyState: robot
@@ -124,6 +135,7 @@
         toggleAction: ActionAGhostShowRadar
   - type: RadarConsole
     followEntity: true
+  - type: HandheldGPS
 # Corvax-Wega-end
 
   # Visual
@@ -154,6 +166,7 @@
     - BorgModuleJanitor
 
   defaultModules:
+  - BorgModuleTool # Corvax-Wega-add
   - BorgModuleCleaning
   - BorgModuleCustodial
 
@@ -260,8 +273,8 @@
     - BorgModuleService
 
   defaultModules:
-  - BorgModuleTool
 # Corvax-Wega-Start
+  # - BorgModuleTool
   # - BorgModuleMusique
   - BorgModuleCook
   - BorgModuleService
@@ -278,6 +291,21 @@
   addComponents:
   - type: ShowThirstIcons
   - type: ShowHungerIcons
+  - type: Instrument
+    allowPercussion: false
+  - type: UserInterface
+    interfaces:
+      enum.SiliconLawsUiKey.Key:
+        type: SiliconLawBoundUserInterface
+        requireInputValidation: false
+      enum.BorgUiKey.Key:
+        type: BorgBoundUserInterface
+      enum.StrippingUiKey.Key:
+        type: StrippableBoundUserInterface
+      enum.BorgSwitchableTypeUiKey.SelectBorgType:
+        type: BorgSelectTypeUserInterface
+      enum.InstrumentUiKey.Key:
+        type: InstrumentBoundUserInterface
 # Corvax-Wega-end
 
   # Visual
