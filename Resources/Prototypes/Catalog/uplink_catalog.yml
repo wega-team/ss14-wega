@@ -1362,7 +1362,7 @@
   productEntity: ReinforcementRadioSyndicateCyborgAssault
   icon: { sprite: Objects/Devices/communication.rsi, state: old-radio-borg-assault }
   cost:
-    Telecrystal: 45 # Corvax-Wega-Syndi
+    Telecrystal: 100 # Corvax-Wega-Syndi
   categories:
     - UplinkAllies
   conditions:

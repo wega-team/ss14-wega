@@ -238,7 +238,7 @@
     footstepSoundCollection:
       collection: FootstepHoverXenoborg
   - type: BorgChassis
-    maxModules: 5
+    maxModules: 4 #Corvax-Wega-add
     hasMindState: xenoborg_stealth_e
     noMindState: xenoborg_stealth_e_r
     moduleWhitelist:

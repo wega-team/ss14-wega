@@ -130,11 +130,11 @@ ent-BorgGeneratorMaterialPlasteel = генератор пачек пластал
     .desc = Генератор материи, настроенный на генерацию пачек пластали.
 
 # Врач
-ent-BorgSyringe = { ent-AdvancedJetInjector }
-    .desc = { ent-AdvancedJetInjector.desc }
+ent-BorgSyringe = { ent-BaseSyringe }
+    .desc = { ent-BaseSyringe.desc }
     .suffix = Киборг
-ent-BorgAdvancedJetInjector = { ent-Syringe }
-    .desc = { ent-Syringe.desc }
+ent-BorgAdvancedJetInjector = { ent-AdvancedJetInjector }
+    .desc = { ent-AdvancedJetInjector.desc }
     .suffix = Киборг
 ent-BorgHypoTricordrazineBase = базовый борг-гипоспрей трикордразина
     .desc = Стерильный инъектор для быстрого введения и генерации трикордразина пациентам. Удешевлённый и более специализированный вариант для медицинских боргов.
