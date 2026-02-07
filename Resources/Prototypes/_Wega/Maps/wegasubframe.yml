@@ -14,7 +14,7 @@
           mapNameTemplate: '{0} Сабфрейм {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
-            prefixCreator: 'SS'
+            prefixCreator: 'NTR'
         - type: StationEmergencyShuttle
           emergencyShuttlePath: /Maps/_Wega/Shuttles/emergency_subframe.yml
         - type: GridSpawn
