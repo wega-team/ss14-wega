@@ -414,8 +414,8 @@
 - type: entity
   parent: DrinkBase
   id: BorgDrinkSolutionCoffe
-  name: coffe generation
-  suffix: Coffe
+  name: coffee generation
+  suffix: Coffee
   description: The trusty mixing buddy of the bartender.
   components:
   - type: Sprite
@@ -424,13 +424,13 @@
     - state: icon
     - state: coffe
   - type: Label
-    currentLabel: reagent-name-coffe
+    currentLabel: reagent-name-coffee
   - type: SolutionContainerManager
     solutions:
       drink:
         maxVol: 30
         reagents:
-        - ReagentId: Coffe
+        - ReagentId: Coffee
           Quantity: 0
   - type: FitsInDispenser
     solution: drink
@@ -438,7 +438,7 @@
     solution: drink
     generated:
       reagents:
-      - ReagentId: Coffe
+      - ReagentId: Coffee
         Quantity: 1
   - type: Unremoveable
   - type: ItemSelector
