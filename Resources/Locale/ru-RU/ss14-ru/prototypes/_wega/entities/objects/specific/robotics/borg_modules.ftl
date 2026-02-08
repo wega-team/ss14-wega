@@ -63,6 +63,18 @@ ent-BorgModuleKinetic = кинетический модуль киборга
 ent-BorgModuleCargoRare = модуль плазменого резака киборга
     .desc = Модуль для добычи руды через забытые технологии плазменных резаков и повышенную перевозку руды.
     .suffix = Редкий
+# НИО, не РНД
+ent-BorgModuleAdvancedAnomaly = продвинутый аномальный модуль киборга
+    .desc = Наличие  М.А.Р.Т.Ы.Х.'а и перчатки Г.О.Р.И.Л.Л.А. поднимает шансы увольнения отдела на 33%. 
+ent-BorgModuleSlime = слаймоводский модуль киборга
+    .desc = Модуль для работы на слаймоферме, продайте как можно больше плортов и...стоп..
+ent-BorgModuleDNA = генетический модуль киборга
+    .desc = Модуль для вкалывания генов и помощи генетикам, вот бы была генетика на бинарном уровне.
+ent-BorgModuleRobotics = модуль конструирования киборгов киборга
+    .desc = Модуль для обслуживания, создания и моральной поддержки киборга от киборга. Правда Вы всё равно нужны будете.
+ent-BorgModuleScienceRND = модуль генерации ОИ
+    .desc = Если за час смены отдел состоит в бедности, данный модуль поможет вам!
+    .suffix = Редкий
 # Ксеноборги
 ent-BorgModuleXenoConstruction = строительный модуль ксеноборга
     .desc = { ent-BaseBorgModule.desc }
@@ -116,3 +128,8 @@ borg-slot-dice-figure-empty = Кубики и фигурки
 borg-slot-nanopasta-empty = Нанопаста
 borg-slot-shield-empty = Щиты
 borg-slot-turelgun-empty = Режимы стрельбы
+borg-slot-anomaly-core = Ядра аномалии
+borg-slot-slime-core-empty = Слаймовый экстракт
+borg-slot-dnainjector-empty = Инъектор и диски ДНК
+borg-slot-bodypartborg-empty = Части киборгов
+borg-slot-components-empty = Компоненты для киборгов

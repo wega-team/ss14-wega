@@ -2,7 +2,7 @@ borg-module-fit = Этот модуль можно установить в { $ty
 borg-type-all = [color=white]любого киборга[/color]
 borg-type-salvage = [color= #d6b328]киборга-шахтёра[/color]
 borg-type-engineer = [color= #ff9900]киборга-инженера[/color]
-borg-type-generic = [color= #666680]обычного киборга[/color]
+borg-type-generic = [color= #FFADFF]киборга-учёного[/color]
 borg-type-janitor = [color= #a747c0]киборга-уборщика[/color]
 borg-type-medical = [color= #5995ba]киборга-доктора[/color]
 borg-type-service = [color= #508242]киборга-официанта[/color]

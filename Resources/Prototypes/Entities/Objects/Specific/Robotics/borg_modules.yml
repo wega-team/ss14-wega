@@ -1219,6 +1219,7 @@
           - XenoArtifact
           tags:
           - ArtifactFragment
+    - item: HolofanProjectorBorgSci
     # Corvax-Wega-Robot-end
     - item: SprayBottle
     - item: GasAnalyzer
@@ -1232,7 +1233,7 @@
           - FitsInDispenser
     - item: GeigerCounter
   - type: BorgModuleIcon
-    icon: { sprite: Interface/Actions/actions_borg.rsi, state: node-scanner-module }
+    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: node-scanner-module } # Corvax-Wega-add
 
 - type: entity
   id: BorgModuleAnomaly
@@ -1262,7 +1263,7 @@
           tags:
           - ConstructionMaterial
   - type: BorgModuleIcon
-    icon: { sprite: Interface/Actions/actions_borg.rsi, state: anomaly-module }
+    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: anomaly-module } # Corvax-Wega-add
 
 # service modules
 - type: entity

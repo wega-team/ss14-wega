@@ -29,8 +29,6 @@
   - BorgModuleCommonCandy
   - BorgModuleCleaningCommon
   - BorgModuleMusique
-  - BorgModuleAnomaly
-  - BorgModuleArtifact
  # Corvax-Wega-end
 
 - type: latheRecipePack
@@ -68,6 +66,8 @@
   - BorgModuleAdvancedTopical
   - BorgModuleAdvancedMining
  # Corvax-Wega-Start
+  - BorgModuleAdvancedAnomaly
+  - BorgModuleRobotics
   - BorgModuleSurgery
   - BorgModuleLethal
   - BorgModuleKinetic

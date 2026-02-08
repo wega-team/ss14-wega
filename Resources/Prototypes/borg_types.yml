@@ -10,7 +10,7 @@
   moduleWhitelist:
     tags:
     - BorgModuleGeneric
-    - BorgModuleScience #until sciborgs are added
+    # - BorgModuleScience until sciborgs are added
 
   defaultModules:
   - BorgModuleTool

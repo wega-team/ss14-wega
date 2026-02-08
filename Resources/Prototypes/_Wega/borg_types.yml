@@ -55,3 +55,47 @@
   # Pet
   petSuccessString: petting-success-security-cyborg
   petFailureString: petting-failure-security-cyborg
+  
+# science borg
+- type: borgType
+  id: science
+
+  # Description
+  dummyPrototype: BorgChassisScience
+
+  # Functional
+  extraModuleCount: 3
+  moduleWhitelist:
+    tags:
+    - BorgModuleGeneric
+    - BorgModuleScience
+
+  defaultModules:
+  - BorgModuleTool
+  - BorgModuleArtifact
+  - BorgModuleAnomaly
+  - BorgModuleSlime
+  - BorgModuleDNA
+  radioChannels:
+  - Science
+
+  addComponents:
+  - type: SolutionScanner
+
+  # Visual
+  inventoryTemplateId: borgShort
+  spriteBodyState: science
+  spriteHasMindState: science_e
+  spriteNoMindState: science_e_r
+  spriteToggleLightState: science_l
+
+  # Pet
+  petSuccessString: petting-success-science-cyborg
+  petFailureString: petting-failure-science-cyborg
+  
+  # Sounds
+  footstepCollection:
+    collection: FootstepHoverBorg
+    
+  # tts
+  voicePrototypeId: Glados

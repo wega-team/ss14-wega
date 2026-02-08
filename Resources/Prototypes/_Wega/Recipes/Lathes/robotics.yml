@@ -5,6 +5,11 @@
 
 - type: latheRecipe
   parent: BaseGoldBorgModuleRecipe
+  id: BorgModuleAdvancedAnomaly
+  result: BorgModuleAdvancedAnomaly
+
+- type: latheRecipe
+  parent: BaseGoldBorgModuleRecipe
   id: BorgModuleLethal
   result: BorgModuleLethal
 
@@ -22,6 +27,11 @@
   parent: BaseBorgModuleRecipe
   id: BorgModuleCommonMedical
   result: BorgModuleCommonMedical
+
+- type: latheRecipe
+  parent: BaseBorgModuleRecipe
+  id: BorgModuleRobotics
+  result: BorgModuleRobotics
 
 - type: latheRecipe
   parent: BaseBorgModuleRecipe
