@@ -14,9 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.2.2
-      - name: Delete sponsor-tiers YAML file
+      - name: Delete Sponsors Content
         run: |
-          rm -f Resources/Prototypes/_Wega/sponsor-tiers.yml
+          rm -f Resources/Prototypes/_Wega/Sponsors
       - name: Setup submodule
         run: |
           git submodule update --init --recursive
