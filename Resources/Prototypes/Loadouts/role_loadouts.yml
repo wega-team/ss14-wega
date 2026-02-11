@@ -61,6 +61,7 @@
   - GroupTankHarness
   # Corvax-Wega-Sponsors-start
   - SponsorHead
+  - SponsorGloves
   # Corvax-Wega-Sponsors-end
   - PassengerJumpsuit
   - CommonBackpack
@@ -88,6 +89,7 @@
   - BartenderHead
   # Corvax-Wega-Sponsors-start
   - SponsorNeck
+  - SponsorGloves
   # Corvax-Wega-Sponsors-end
   - BartenderJumpsuit
   - CommonBackpack
@@ -248,6 +250,7 @@
   - BotanistHead
   # Corvax-Wega-Sponsors-start
   - SponsorNeck
+  - SponsorGloves
   # Corvax-Wega-Sponsors-end
   - BotanistJumpsuit
   - BotanistBackpack
@@ -273,6 +276,7 @@
   - ClownHead
   # Corvax-Wega-Sponsors-start
   - SponsorNeck
+  - SponsorGloves
   # Corvax-Wega-Sponsors-end
   - ClownMask # Corvax-Wega
   - ClownJumpsuit
@@ -281,6 +285,7 @@
   - ClownShoes
   - Glasses
   - SurvivalClown
+  - Trinkets
   - ClownJobTrinkets
   # Corvax-Wega-start
   - Top
@@ -306,6 +311,7 @@
   - Glasses
   - BaseShoose # Corvax-Wega-Add
   - SurvivalMime
+  - Trinkets
   - MimeJobTrinkets
   # Corvax-Wega-start
   - Top
@@ -322,6 +328,7 @@
   # Corvax-Wega-Sponsors-start
   - SponsorHead
   - SponsorNeck
+  - SponsorGloves
   # Corvax-Wega-Sponsors-end
   - MusicianJumpsuit
   - CommonBackpack
@@ -370,6 +377,7 @@
   - CargoTechnicianHead
   # Corvax-Wega-Sponsors-start
   - SponsorNeck
+  - SponsorGloves
   # Corvax-Wega-Sponsors-end
   - CargoTechnicianJumpsuit
   - CargoTechnicianBackpack
@@ -395,6 +403,7 @@
   # Corvax-Wega-Sponsors-start
   - SponsorHead
   - SponsorNeck
+  - SponsorGloves
   # Corvax-Wega-Sponsors-end
   - SalvageSpecialistBackpack
   - SalvageSpecialistOuterClothing
@@ -556,6 +565,7 @@
   # Corvax-Wega-Sponsors-start
   - SponsorHead
   - SponsorNeck
+  - SponsorGloves
   # Corvax-Wega-Sponsors-end
   - ResearchAssistantJumpsuit
   - ScientistBackpack

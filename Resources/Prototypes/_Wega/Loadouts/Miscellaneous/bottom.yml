@@ -152,3 +152,35 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: FemaleRequired
+
+- type: loadout
+  id: ClothingUnderBottomSwimStrapless
+  equipment:
+    underwearbottom: ClothingUnderBottomSwimStrapless
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+
+- type: loadout
+  id: ClothingUnderBottomSwimOnePiece
+  equipment:
+    underwearbottom: ClothingUnderBottomSwimOnePiece
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+
+- type: loadout
+  id: ClothingUnderBottomSwimStripe
+  equipment:
+    underwearbottom: ClothingUnderBottomSwimStripe
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+
+- type: loadout
+  id: ClothingUnderBottomSwimHalter
+  equipment:
+    underwearbottom: ClothingUnderBottomSwimHalter
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired

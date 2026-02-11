@@ -72,25 +72,25 @@
 
 # Eyes
 
-- type: entity
-  parent: ClothingEyesBase
-  id: ClothingEyesGlassesGarGigaSponsor
-  name: true giga gar glasses
-  description: We evolve past the person we were a minute before. Little by little we advance with each turn. That's how a drill works!
-  suffix: Sponsor
-  components:
-  - type: Sprite
-    sprite: _Wega/Sponsors/Clothing/Eyes/Glasses/true_manly_glasses.rsi
-    state: icon
-  - type: Clothing
-    sprite: _Wega/Sponsors/Clothing/Eyes/Glasses/true_manly_glasses.rsi
-    clothingVisuals:
-      eyes:
-      - state: equipped-EYES
-      - state: glitter
-        shader: unshaded
-  - type: Tag
-    tags: []
+#- type: entity
+#  parent: ClothingEyesBase
+#  id: ClothingEyesGlassesGarGigaSponsor
+#  name: true giga gar glasses
+#  description: We evolve past the person we were a minute before. Little by little we advance with each turn. That's how a drill works!
+#  suffix: Sponsor
+#  components:
+#  - type: Sprite
+#    sprite: _Wega/Sponsors/Clothing/Eyes/Glasses/true_manly_glasses.rsi
+#    state: icon
+#  - type: Clothing
+#    sprite: _Wega/Sponsors/Clothing/Eyes/Glasses/true_manly_glasses.rsi
+#    clothingVisuals:
+#      eyes:
+#      - state: equipped-EYES
+#      - state: glitter
+#        shader: unshaded
+#  - type: Tag
+#    tags: []
 
 # Head
 
@@ -117,6 +117,72 @@
     - ClothMade
     - Recyclable
     - HamsterWearable
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatElegantTacticalmaid
+  name: elegant tactical maid band
+  description: The best band for special kitchen tasks.
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Head/Hats/elegant_tacticalmaidheadband.rsi
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Head/Hats/elegant_tacticalmaidheadband.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingEyesGlassesGarGigaSponsor
+  name: true giga gar glasses
+  description: We evolve past the person we were a minute before. Little by little we advance with each turn. That's how a drill works!
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Head/Hats/true_manly_glasses.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Head/Hats/true_manly_glasses.rsi
+    clothingVisuals:
+      head:
+      - state: equipped-HELMET
+      - state: glitter
+        shader: unshaded
+
+- type: entity
+  parent: ClothingHeadHelmetBasic
+  id: ClothingHeadHelmetGarGigaSponsor
+  name: true giga gar helmet
+  description: We evolve past the person we were a minute before. Little by little we advance with each turn. That's how a drill works!
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Head/Helmets/security_manly.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Head/Helmets/security_manly.rsi
+    clothingVisuals:
+      head:
+      - state: equipped-HELMET
+      - state: glitter
+        shader: unshaded
+
+# Hands
+
+- type: entity
+  parent: ClothingHandsBase
+  id: ClothingHandsGlovesElegantTacticalmaid
+  name: elegant tactical maid gloves
+  description: The best gloves for special kitchen tasks
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Hands/Gloves/elegant_tacticalmaidgloves.rsi
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Hands/Gloves/elegant_tacticalmaidgloves.rsi
+  - type: Fiber
+    fiberMaterial: fibers-leather
+    fiberColor: fibers-black
+  - type: FingerprintMask
 
 # Mask
 
@@ -351,6 +417,20 @@
 
 - type: entity
   parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtElegantSecurity
+  name: elegant dress security
+  description: A nice and tidy uniform. Shame about the bar though.
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/elegant_security.rsi
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/elegant_security.rsi
+  - type: Tag
+    tags: []
+
+- type: entity
+  parent: ClothingUniformBase
   id: ClothingUniformJumpskirtMagicDress
   name: magic dress
   description: A nice and tidy uniform. Shame about the bar though.
@@ -405,6 +485,20 @@
   - type: Tag
     tags: []
 
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtElegantTacticalmaid
+  name: elegant dress tactical maid
+  description: High-quality dress produced by the syndicate.
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/elegant_tacticalmaid.rsi
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/elegant_tacticalmaid.rsi
+  - type: Tag
+    tags: []
+
 # Jumpsuit
 
 - type: entity
@@ -448,3 +542,17 @@
     sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpsuit/beautiful_sweater.rsi
   - type: Tag
     tags: []
+
+# Under
+
+- type: entity
+  parent: ClothingUnderBottomBase
+  id: ClothingUnderBottomElegantVampire
+  name: elegant vampire swimsuit
+  description: "If the sun's rays are scorching your snow-white skin, wearing a swimsuit is a bad idea. Don't forget to at least use an umbrella."
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Under/Bottom/elegant_vampire_swimsuit.rsi
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Under/Bottom/elegant_vampire_swimsuit.rsi
