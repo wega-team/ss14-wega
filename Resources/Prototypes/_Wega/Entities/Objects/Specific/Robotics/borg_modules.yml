@@ -687,19 +687,14 @@
         whitelist:
           components:
           - Flash
-    - item: RiotBulletShieldBorg
+    - item: RiotBulletShield
       hand:
         emptyLabel: borg-slot-shield-empty
         emptyRepresentative: RiotBulletShieldBorg
         whitelist:
           tags:
-          - Itemborg
-    - hand:
-        emptyLabel: borg-slot-shield-empty
-        emptyRepresentative: RiotLaserShieldBorg
-        whitelist:
-          tags:
-          - Itemborg
+          - Sheild
+    - item: RefuelingWelder
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: gun-module }
 ## Rare

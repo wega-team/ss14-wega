@@ -24,7 +24,7 @@
   - type: SolutionContainerManager
     solutions:
       melee:
-        maxVol: 10
+        maxVol: 3
   - type: MeleeChemicalInjector
     solution: melee 
   - type: RefillableSolution

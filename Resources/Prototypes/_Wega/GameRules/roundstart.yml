@@ -27,8 +27,8 @@
     agentName: vampire-round-end-name
     definitions:
       - prefRoles: [ Vampire ]
-        max: 10
-        playerRatio: 10
+        max: 4
+        playerRatio: 20
         blacklist:
           components:
           - AntagImmune

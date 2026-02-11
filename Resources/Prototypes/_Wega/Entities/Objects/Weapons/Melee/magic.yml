@@ -224,13 +224,14 @@
     - 0,2,0,1
   - type: BloodCultWeapon
   - type: MeleeWeapon
+    possibilityWideAtack: false
     resistanceBypass: true
     autoAttack: true
     wideAnimationRotation: -135
     attackRate: 2
     damage:
       types:
-        Slash: 20
+        Slash: 10
     soundHit:
         path: /Audio/Weapons/bladeslice.ogg
   - type: DisarmMalus
