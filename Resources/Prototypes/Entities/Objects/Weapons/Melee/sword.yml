@@ -193,7 +193,7 @@
   # Corvax-Wega-NullRod-start
   - type: NullRod
   - type: Reflect
-    reflectProb: 0.1
+    reflectProb: 0.3
     spread: 90
   # Corvax-Wega-NullRod-end
   - type: Clothing
