@@ -10,6 +10,9 @@ loadout-group-sponsor-head = Спонсор, голова
 # Neck
 loadout-group-sponsor-neck = Спонсор, шея
 
+# Gloves
+loadout-group-sponsor-gloves = Спонсор, перчатки
+
 # Command
 loadout-group-captain-top = Капитан, верхнее белье
 loadout-group-captain-bottom = Капитан, нижнее белье
