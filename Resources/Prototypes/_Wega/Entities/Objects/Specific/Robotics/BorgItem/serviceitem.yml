@@ -220,7 +220,6 @@
         Slash: 10
   - type: Item
     size: Normal
-    price: 40
   - type: Unremoveable
   - type: ItemSelector
     items:

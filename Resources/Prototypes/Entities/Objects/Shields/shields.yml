@@ -449,15 +449,14 @@
     - type: Repairable # Negative values represent healing
       qualityNeeded: BloodDagger
       damage:
-      groups:
+        groups:
           Brute: -60 # 20 of each Brute Type - 20% of a basic shield HP
-      types:
+        types:
           Heat: -20
       fuelCost: 0 # 1/2 of a Welder for a full repair
       doAfterDelay: 5
       allowSelfRepair: false
 # Corvax-Wega-end
-
 
 - type: entity
   name: energy shield
