@@ -3,3 +3,9 @@
   name: blood-cult-mind-channel
   keycode: 'к'
   color: "#880000"
+
+- type: mindChannel
+  id: MindXenoborgs
+  name: xenoborg-mind-channel
+  keycode: 'д'
+  color: "#2288ff"

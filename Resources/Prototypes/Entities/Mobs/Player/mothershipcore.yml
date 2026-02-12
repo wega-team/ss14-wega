@@ -163,8 +163,10 @@
     - Structure
   - type: GuideHelp
     guides:
-    # - Robotics Corvax-Wega
-    - Xenoborgs
+    - Xenoborgs # Corvax-Wega-Edit
+    - MindChat # Corvax-Wega-Edit
+    - Robotics
+    # - Xenoborgs  Corvax-Wega-Edit
   - type: Inventory
     templateId: borg
   - type: NpcFactionMember
@@ -245,6 +247,8 @@
     - Inorganic
     - Silicon
     - Android
+  - type: MindLink
+    channels: ["MindXenoborgs"]
 # Corvax-Wega-end
 
 - type: entity
