@@ -11,18 +11,24 @@ namespace Content.Shared.Humanoid.Markings
         Head,
         HeadTop,
         HeadSide,
+        Face, // Plasmeme Port
         Snout,
-        SnoutCover,
         Chest,
-        UndergarmentTop,
-        UndergarmentBottom,
-        Arms,
-        Legs,
+        RightArm,
+        RightHand,
+        LeftArm,
+        LeftHand,
+        RightLeg,
+        RightFoot,
+        LeftLeg,
+        LeftFoot,
+        Underwear,
+        Undershirt,
         Tail,
         Overlay
     }
-
-    // Corvax-Wega-Genetics-start
+    
+        // Corvax-Wega-Genetics-start
     [Serializable, NetSerializable]
     public enum MarkingTypes : byte
     {
@@ -44,20 +50,22 @@ namespace Content.Shared.Humanoid.Markings
                 HumanoidVisualLayers.HeadTop => MarkingCategories.HeadTop,
                 HumanoidVisualLayers.HeadSide => MarkingCategories.HeadSide,
                 HumanoidVisualLayers.Snout => MarkingCategories.Snout,
+                HumanoidVisualLayers.Undershirt => MarkingCategories.Undershirt,
+                HumanoidVisualLayers.Underwear => MarkingCategories.Underwear,
                 HumanoidVisualLayers.Chest => MarkingCategories.Chest,
-                HumanoidVisualLayers.UndergarmentTop => MarkingCategories.UndergarmentTop,
-                HumanoidVisualLayers.UndergarmentBottom => MarkingCategories.UndergarmentBottom,
-                HumanoidVisualLayers.RArm => MarkingCategories.Arms,
-                HumanoidVisualLayers.LArm => MarkingCategories.Arms,
-                HumanoidVisualLayers.RHand => MarkingCategories.Arms,
-                HumanoidVisualLayers.LHand => MarkingCategories.Arms,
-                HumanoidVisualLayers.LLeg => MarkingCategories.Legs,
-                HumanoidVisualLayers.RLeg => MarkingCategories.Legs,
-                HumanoidVisualLayers.LFoot => MarkingCategories.Legs,
-                HumanoidVisualLayers.RFoot => MarkingCategories.Legs,
+                HumanoidVisualLayers.RArm => MarkingCategories.RightArm,
+                HumanoidVisualLayers.LArm => MarkingCategories.LeftArm,
+                HumanoidVisualLayers.RHand => MarkingCategories.RightHand,
+                HumanoidVisualLayers.LHand => MarkingCategories.LeftHand,
+                HumanoidVisualLayers.LLeg => MarkingCategories.LeftLeg,
+                HumanoidVisualLayers.RLeg => MarkingCategories.RightLeg,
+                HumanoidVisualLayers.LFoot => MarkingCategories.LeftFoot,
+                HumanoidVisualLayers.RFoot => MarkingCategories.RightFoot,
+                HumanoidVisualLayers.Wings => MarkingCategories.Wings,
                 HumanoidVisualLayers.Tail => MarkingCategories.Tail,
                 _ => MarkingCategories.Overlay
             };
         }
     }
 }
+
