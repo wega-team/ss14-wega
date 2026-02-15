@@ -55,6 +55,22 @@
     {
       "name": "glow_proteon_cult",
       "directions": 4
-    }
+    },
+	{
+      "name": "idol",
+      "directions": 4
+    },
+	{
+      "name": "inhand-left",
+      "directions": 4
+    },
+	{
+      "name": "inhand-right",
+      "directions": 4
+    },
+	{
+      "name": "0-equipped-HELMET",
+      "directions": 4
+	}
   ]
 }

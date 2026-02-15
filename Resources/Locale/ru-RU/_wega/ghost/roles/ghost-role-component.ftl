@@ -33,3 +33,5 @@ ghost-role-information-possessed-blade-name = Одержимый меч
 ghost-role-information-possessed-blade-description = Ты — древний клинок, пропитанный жаждой крови. Твоя душа, заточённая в стали, жаждет разрушения.
 ghost-role-information-taxibot-name = Таксибот
 ghost-role-information-taxibot-description = Отвезите членов экипажа к месту назначения.
+ghost-role-information-idol-name = Айдол
+ghost-role-information-idol-description = Помощник одинокого Культиста.
