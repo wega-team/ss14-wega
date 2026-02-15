@@ -540,6 +540,7 @@
     availableModes:
       - FullAuto
     soundGunshot: /Audio/Weapons/Guns/Gunshots/Magic/staff_animation.ogg
+
 - type: entity
   parent: SimpleMobConstruct
   id: MobConstructIdol
