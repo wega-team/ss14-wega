@@ -549,19 +549,15 @@
     thresholds:
       0: Alive
       100: Dead
-
   - type: SlowOnDamage
     speedModifierThresholds:
       70: 0.8
       85: 0.5
-
   - type: Stamina
     baseCritThreshold: 100
-
   - type: MovementSpeedModifier
     baseWalkSpeed: 3.1
     baseSprintSpeed: 4.0
-
   - type: Sprite
     sprite: _Wega/Mobs/Demons/bloodcultmobs.rsi
     noRot: true
@@ -571,25 +567,20 @@
     - map: [ "enum.DamageStateVisualLayers.BaseUnshaded" ]
       state: glow_proteon_cult
       shader: unshaded
-
   - type: Item
     size: Normal
-
   - type: Clothing
     quickEquip: false
     sprite: _Wega/Mobs/Demons/bloodcultmobs.rsi
     equippedPrefix: 0
     slots:
     - HEAD
-
   - type: GhostRole
     name: ghost-role-information-idol-name
     description: ghost-role-information-idol-description
-
   - type: HTN
     rootTask:
       task: SimpleRangedHostileCompound
-
   - type: Destructible
     thresholds:
     - trigger:
@@ -607,7 +598,6 @@
           Ash:
             min: 1
             max: 1
-
   - type: MeleeWeapon
     altDisarm: false
     hidden: true
