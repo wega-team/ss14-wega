@@ -30,6 +30,7 @@ type SpriteAccessoryPrototype struct {
 	Categories string          `yaml:"categories"`
 	Id         string          `yaml:"id"`
 	Sprite     SpriteSpecifier `yaml:"sprite"`
+	Shader	string?		`yaml:"shader"`
 }
 
 func (s *SpriteAccessoryPrototype) toMarking() (*MarkingPrototype, error) {

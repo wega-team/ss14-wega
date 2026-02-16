@@ -145,6 +145,15 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
         if (proto.BaseSprite != null)
             _sprite.LayerSetSprite((entity.Owner, sprite), layerIndex, proto.BaseSprite);
     }
+    
+      // impstation edit begin - check if there's a shader defined in the markingPrototype's shader datafield, and if there is...
+	if (markingPrototype.Shader != null)
+	{
+	// use spriteComponent's layersetshader function to set the layer's shader to that which is specified.
+		sprite.LayerSetShader(layerId, markingPrototype.Shader);
+	}
+	// impstation edit end
+      
 
     /// <summary>
     ///     Loads a profile directly into a humanoid.
