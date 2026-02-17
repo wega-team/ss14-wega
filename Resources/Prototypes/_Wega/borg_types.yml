@@ -22,6 +22,7 @@
 
   addComponents:
   - type: ShowJobIcons
+  - type: ShowSquadIcons
   - type: ShowMindShieldIcons
   - type: ShowCriminalRecordIcons
   - type: ShowContrabandDetails

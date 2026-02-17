@@ -76,6 +76,7 @@
     - Silicon
     - Android
   - type: ShowAccessReaderSettings
+  - type: MagbootsImplant
 # Corvax-Wega-end
 
   # Visual
@@ -136,6 +137,7 @@
   - type: RadarConsole
     followEntity: true
   - type: HandheldGPS
+  - type: MagbootsImplant
 # Corvax-Wega-end
 
   # Visual
