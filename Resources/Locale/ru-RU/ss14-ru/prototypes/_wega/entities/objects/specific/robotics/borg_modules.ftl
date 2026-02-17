@@ -128,6 +128,11 @@ borg-slot-dice-figure-empty = Кубики и фигурки
 borg-slot-nanopasta-empty = Нанопаста
 borg-slot-shield-empty = Щиты
 borg-slot-turelgun-empty = Режимы стрельбы
+borg-slot-anomaly-core = Ядра аномалии
+borg-slot-slime-core-empty = Слаймовый экстракт
+borg-slot-dnainjector-empty = Инъектор и диски ДНК
+borg-slot-bodypartborg-empty = Части киборгов
+borg-slot-components-empty = Компоненты для киборгов
 
 ent-ActionBlinkBorg = Блюспейс прыжок
     .desc = Бесконечность не предел!
