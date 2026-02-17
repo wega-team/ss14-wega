@@ -116,3 +116,6 @@ borg-slot-dice-figure-empty = Кубики и фигурки
 borg-slot-nanopasta-empty = Нанопаста
 borg-slot-shield-empty = Щиты
 borg-slot-turelgun-empty = Режимы стрельбы
+
+ent-ActionBlinkBorg = Блюспейс прыжок
+    .desc = Бесконечность не предел!
