@@ -133,3 +133,6 @@ borg-slot-slime-core-empty = Слаймовый экстракт
 borg-slot-dnainjector-empty = Инъектор и диски ДНК
 borg-slot-bodypartborg-empty = Части киборгов
 borg-slot-components-empty = Компоненты для киборгов
+
+ent-ActionBlinkBorg = Блюспейс прыжок
+    .desc = Бесконечность не предел!
