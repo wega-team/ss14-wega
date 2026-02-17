@@ -4,6 +4,132 @@
   id: CultBola
   description: There are some runes depicted on it.
   components:
+  - type: EmitSoundOnThrow
+    sound: /Audio/_Wega/Effects/Vampire/glare.ogg
+  - type: EmitSoundOnLand
+    sound: /Audio/Effects/snap.ogg
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 75
+      behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 15
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/_Wega/Effects/cult_spell.ogg
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
   - type: Sprite
     sprite: _Wega/Objects/Weapons/Throwable/cult_bola.rsi
     state: icon
+  - type: Item
+    size: Normal
+    shape:
+    - 0,0,0,1
+  - type: DamageOnLand
+    damage:
+      types:
+        Blunt: 15
+  - type: Ensnaring
+    freeTime: 1.5
+    breakoutTime: 6.5 #all bola should generally be fast to remove
+    walkSpeed: 0.3 #makeshift bola shouldn't slow too much
+    sprintSpeed: 0.3
+    staminaDamage: 30 # anything but this is gamebreaking
+    canThrowTrigger: true
+    canMoveBreakout: true
+    maxEnsnares: 1
+
+- type: entity
+  name: combat bola
+  parent: [BaseItem, BaseSecurityContraband]
+  id: SecutiryBola
+  description: There are some runes depicted on it.
+  components:
+  - type: DamageOnLand
+    damage:
+      types:
+        Blunt: 3
+  - type: Item
+    size: Small
+    sprite: _Wega/Objects/Weapons/Throwable/sec_bola.rsi
+    heldPrefix: close
+  - type: ItemToggle
+    soundActivate:
+      path: /Audio/Weapons/telescopicon.ogg
+      params:
+        volume: -5
+    soundDeactivate:
+      path: /Audio/Weapons/telescopicoff.ogg
+      params:
+        volume: -5
+  - type: ItemToggleSize
+    activatedSize: Normal
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Throwable/sec_bola.rsi
+    layers:
+      - state: icon-close
+      - state: icon-open
+        visible: false
+        map: [ "baton" ]
+  - type: UseDelay
+    delay: 0.5
+  - type: ToggleableVisuals
+    spriteLayer: baton
+    inhandVisuals:
+      left:
+        - state: inhand-left
+      right:
+        - state: inhand-right
+  - type: Appearance
+  - type: ComponentToggler
+    components:
+    - type: Ensnaring
+      freeTime: 2.0
+      breakoutTime: 3.5 #all bola should generally be fast to remove
+      walkSpeed: 0.5 #makeshift bola shouldn't slow too much
+      sprintSpeed: 0.5
+      staminaDamage: 0 # anything but this is gamebreaking
+      canThrowTrigger: true
+      canMoveBreakout: true
+      maxEnsnares: 1
+  - type: LandAtCursor
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape: !type:PhysShapeCircle
+          radius: 0.4
+        density: 20 # derived from base_item
+        mask:
+        - ItemMask
+        restitution: 0.3
+        friction: 0.2
+  - type: EmitSoundOnThrow
+    sound: /Audio/Weapons/bolathrow.ogg
+  - type: EmitSoundOnLand
+    sound: /Audio/Effects/snap.ogg
+  - type: Damageable
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 75
+      behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 15
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
