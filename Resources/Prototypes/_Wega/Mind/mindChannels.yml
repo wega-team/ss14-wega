@@ -3,3 +3,9 @@
   name: blood-cult-mind-channel
   keycode: 'к'
   color: "#880000"
+
+- type: mindChannel
+  id: MindWorms
+  name: Связь червей
+  keycode: "ч"
+  color: "#2F4F4F"

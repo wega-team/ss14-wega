@@ -1,0 +1,129 @@
+
+- type: entity
+  name: мозговой червь
+  parent: SimpleMobBase
+  id: MobBorer
+  description: Черви лезут в твой разум.
+  components:
+  - type: Sprite
+    drawdepth: SmallMobs
+    sprite: _Wega/Mobs/Aliens/borer/worm.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: worm
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: worm
+      Critical:
+        Base: worm_dead
+      Dead:
+        Base: worm_dead
+  - type: VentCrawler
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 15
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: Butcherable
+    spawned:
+    - id: FoodMeatXeno
+      amount: 1
+  - type: Item
+    size: Tiny
+    heldPrefix: borer_base
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      15: Critical
+      25: Dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed : 2
+    baseSprintSpeed : 3
+  - type: MobStateActions
+    actions:
+      Critical:
+      - ActionCritSuccumb
+      - ActionCritFakeDeath
+      - ActionCritLastWords
+  - type: CanEscapeInventory
+  - type: NaturalNightVision
+    tintColor: "#931a32"
+    visible: true
+  - type: MindLink
+    channels: ["MindWorms"]
+  - type: ZombieImmune
+  - type: MeleeWeapon
+    angle: 0
+    animation: WeaponArcBite
+    damage:
+      types:
+        Poison: 1
+        Piercing: 1
+
+- type: entity
+  parent: BaseItem
+  id: BorerEgg
+  name: подозрительно яйцо
+  description: Выглядит достаточно подозрительно
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Aliens/borer/egg.rsi
+    state: egg
+  - type: GhostRole
+    name: Яйцо мозгового червя
+    description: Заразите всю станцию!
+    rules: ghost-role-information-freeagent-rules
+    mindRoles:
+    - MindRoleGhostRoleFreeAgent
+  - type: Damageable
+    damageContainer: Biological
+  - type: GhostRoleMobSpawner
+    prototype: MobCorticalBorer
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 1
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: desecration
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          BrokenBorerEgg:
+            min: 1
+            max: 1
+        offset: 0
+
+- type: entity
+  parent: BaseItem
+  id: BrokenBorerEgg
+  name: яйцо вкрутую
+  description: Кто его сломал?
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Aliens/borer/egg.rsi
+    state: egg_crushed
+  - type: Damageable
+    damageContainer: Biological
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 1
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: desecration
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
