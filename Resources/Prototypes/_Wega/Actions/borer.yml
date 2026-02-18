@@ -1,0 +1,10 @@
+- type: entity
+  id: BorerInfectionAction
+  parent: BaseAction
+  name: Заражение
+  description: Нажмите ЛКМ, чтобы заразить цель
+  components:
+  - type: Action
+    icon: { _Wega/Interface/Actions/borer.rsi, state: "infection" }
+  - type: InstantAction
+    event: !type:InfectionBorerEvent  

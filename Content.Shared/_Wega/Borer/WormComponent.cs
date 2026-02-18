@@ -2,6 +2,8 @@ using Robust.Shared.Prototypes;
 using Content.Shared.Actions;
 using Robust.Shared.GameStates;
 using Content.Shared.Borer.BorerInfectedEr;
+using Robust.Shared.Serialization;
+using Content.Shared.Actions.Components;
 
 namespace Content.Shared.Borer.Wormer;
 
@@ -43,4 +45,12 @@ public sealed partial class BorerComponent : Component
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite), DataField]
     public bool Reproduce = false;
+
+    [DataField]
+    public EntProtoId InfectionAction = "InfectionBorerEvent";
+
+    [DataField]
+    public EntityUid? InfectionActionEntity;
 }
+
+public sealed partial class InfectionBorerEvent : InstantActionEvent;
