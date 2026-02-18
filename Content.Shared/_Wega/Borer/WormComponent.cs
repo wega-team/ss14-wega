@@ -1,18 +1,23 @@
-namespace Content.Shared.WormInfected;
+using Robust.Shared.Prototypes;
+using Content.Shared.Actions;
+using Robust.Shared.GameStates;
+using Content.Shared.Borer.BorerInfectedEr;
+
+namespace Content.Shared.Borer.Wormer;
 
 [RegisterComponent, NetworkedComponent]
-public sealed partial class WormInfectedComponent : Component
+public sealed partial class BorerComponent : Component
 {
     /// <summary>
     ///     UID Владельца борера
     /// </summary>
     [ViewVariables]
-    public Entity<WormInfectedComponent> Owner = null;
+    public Entity<BorerInfectedComponent> Owner = new();
 
     /// <summary>
     ///     Количество очков эволюции. В отличии от химических, появляются за счёт репродукции, требуются для улучшения.
     /// </summary>
-    [ViewVariables(VVAccess.ReadWrite), AutoNetworkedField, DataField]
+    [ViewVariables(VVAccess.ReadWrite), DataField]
     public int EvolutionPoints = 0;
 
     /// <summary>
@@ -37,5 +42,5 @@ public sealed partial class WormInfectedComponent : Component
     ///     Забирает возможность размножаться, если допустим борер достиг пика эволюции.
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite), DataField]
-    public bool Reproduce = False;
+    public bool Reproduce = false;
 }
