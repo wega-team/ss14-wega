@@ -87,7 +87,7 @@
     storedOffset: 0,-4
   - type: Appearance
   - type: BatteryAmmoProvider
-    proto: RedMediumLaser
+    proto: BulletLaserAdvanced
     fireCost: 100
   - type: Battery
     maxCharge: 1000
