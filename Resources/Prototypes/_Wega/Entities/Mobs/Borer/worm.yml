@@ -67,6 +67,10 @@
       types:
         Poison: 1
         Piercing: 1
+  - type: ActionGrant
+    actions:
+    - BorerInfectionAction
+    - BorerEvolutionStore
 
 - type: entity
   parent: BaseItem

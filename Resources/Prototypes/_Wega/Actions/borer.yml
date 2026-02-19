@@ -5,6 +5,16 @@
   description: Нажмите ЛКМ, чтобы заразить цель
   components:
   - type: Action
-    icon: { _Wega/Interface/Actions/borer.rsi, state: "infection" }
-  - type: InstantAction
+    icon: { sprite: _Wega/Interface/borer.rsi, state: "infection" }
+  - type: EntityTargetAction
+    canTargetSelf: false
     event: !type:InfectionBorerEvent  
+
+- type: entity
+  id: BorerEvolutionStore
+  parent: ActionIntrinsicStore
+  name: Магазин эволюции
+  description: Прокачай своего борера
+  components:
+  - type: Action
+    icon: { sprite: _Wega/Interface/borer.rsi, state: "store" }

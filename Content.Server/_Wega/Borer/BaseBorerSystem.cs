@@ -4,22 +4,24 @@ using Robust.Shared.Containers;
 using Robust.Server.Containers;
 using Content.Shared.Actions;
 using Content.Shared.Actions.Components;
+using Content.Server.Popups;
 
 namespace Content.Server.Borer.BorerInfectedSystem;
 
 public sealed class BaseBorerSystem : EntitySystem
 {
     [Dependency] private readonly SharedActionsSystem _actions = default!;
+    [Dependency] private readonly PopupSystem _popupSystem = default!;
 
     public override void Initialize()
     {
         base.Initialize();
-        SubscribeLocalEvent<BorerComponent, ComponentInit>(OnComponentInit);
+        SubscribeLocalEvent<BorerComponent, InfectionBorerEvent>(OnInfectionUse);
     }
 
-    private void OnComponentInit(Entity<BorerComponent> ent, ref ComponentInit args)
+    private void OnInfectionUse(Entity<BorerComponent> ent, ref ComponentInit args)
     {
-        _actions.AddAction(ref ent.Owner ent.comp.InfectionActionEntity, ent.comp.id);
+         _popupSystem.
+        if 
     }
-
 }
