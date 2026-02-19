@@ -1,0 +1,265 @@
+## Common Speed
+- type: entity
+  parent: BaseItem
+  id: SpeedModeDevice
+  name: speed mode device
+  description: A device that allows go speed.
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Research/anomalyscanner.rsi
+    state: icon
+  - type: ItemToggle
+  - type: ComponentToggler
+    parent: true
+    components:
+    - type: SpeedUpGen
+  - type: PowerCellDraw
+    drawRate: 50.4 # 25 seconds
+  - type: ToggleCellDraw
+  - type: PowerCellSlot
+    cellSlotId: cell_slot
+  - type: ContainerContainer
+    containers:
+      cell_slot: !type:ContainerSlot
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellSmallNuclear
+        disableEject: true
+        swap: false
+
+## Common Magboots
+- type: entity
+  parent: BaseItem
+  id: MagbootsModeDevice
+  name: magboots mode device
+  description: A device that allows go speed.
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Research/anomalyscanner.rsi
+    state: icon
+  - type: ItemToggle
+  - type: ComponentToggler
+    parent: true
+    components:
+    - type: MagbootsImplant
+  - type: PowerCellDraw
+    drawRate: 3,6 # 100 seconds
+  - type: ToggleCellDraw
+  - type: PowerCellSlot
+    cellSlotId: cell_slot
+  - type: ContainerContainer
+    containers:
+      cell_slot: !type:ContainerSlot
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellSmallNuclear
+        disableEject: true
+        swap: false
+
+## Common repeir
+- type: entity
+  parent: BaseItem
+  id: RepeirModeDevice
+  name: repeir mode device
+  description: A device that allows go speed.
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Research/anomalyscanner.rsi
+    state: icon
+  - type: ItemToggle
+  - type: ComponentToggler
+    parent: true
+    components:
+    - type: PassiveDamage
+      allowedStates:
+      - Alive
+      - Critical
+      - Dead
+      damage:
+        groups:
+          Brute: -1.5
+          Burn: -1.5
+  - type: PowerCellDraw
+    drawRate: 72 # 10 seconds
+  - type: ToggleCellDraw
+  - type: PowerCellSlot
+    cellSlotId: cell_slot
+  - type: ContainerContainer
+    containers:
+      cell_slot: !type:ContainerSlot
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellSmallNuclear
+        disableEject: true
+        swap: false
+
+- type: entity
+  parent: BaseItem
+  id: BorgGeneratorNanopast
+  name: nanopast generator
+  description: Tastes like cardboard.
+  components:
+  - type: UseDelay
+    delay: 60
+  - type: Sprite
+    sprite: Structures/Wallmounts/air_monitors_xeno.rsi
+    layers:
+    - state: fire_b1
+  - type: Item
+    size: Tiny
+  - type: SpawnItemsOnUse
+    uses: 100000
+    items:
+      - id: Nanopast1
+    sound:
+      path: /Audio/Machines/phasein.ogg
+
+# Common fight
+- type: entity
+  parent: WeaponMeleeNeedle
+  id: WeaponMeleeNeedleBorg
+  name: security damage stick
+  description: A specialty weapon used in the destruction of unique syndicate morale-boosting equipment.
+  components:
+  - type: MeleeWeapon
+    wideAnimationRotation: -135
+    damage:
+      types:
+        Blunt: 10
+    bluntStaminaDamageFactor: 1.5
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Piercing: 0
+
+# Common mining
+- type: entity
+  name: pickaxe
+  parent: BaseItem
+  id: PickaxeBorg
+  description: Notched to perfection, for jamming it into rocks.
+  components:
+  - type: Tag
+    tags:
+    - Pickaxe
+  - type: Sprite
+    sprite: Objects/Weapons/Melee/pickaxe.rsi
+    state: pickaxe
+  - type: MeleeWeapon
+    attackRate: 0.7
+    wideAnimationRotation: -135
+    soundHit:
+      path: "/Audio/Weapons/smash.ogg"
+      params:
+        volume: -3
+    damage:
+      groups:
+        Brute: 10
+      types:
+        Structural: 30
+  - type: Item
+    size: Normal
+    shape:
+    - 0,0,2,0
+    - 1,1,1,2
+    sprite: Objects/Weapons/Melee/pickaxe.rsi
+    storedRotation: -45
+  - type: UseDelay
+  - type: PhysicalComposition
+    materialComposition:
+      Steel: 100
+      Wood: 100
+
+## Common generator
+- type: entity
+  parent: BaseItem
+  id: BorgGeneratorInflatableWall
+  name: inflatable wall generator
+  description: Tastes like cardboard.
+  components:
+  - type: UseDelay
+    delay: 15
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Android/parts.rsi
+    layers:
+      - state: eye_module
+  - type: Item
+    size: Tiny
+  - type: SpawnItemsOnUse
+    uses: 100000
+    items:
+      - id: InflatableWallStack1
+        orGroup: WallBorg
+      - id: InflatableDoorStack1
+        orGroup: WallBorg
+    sound:
+      path: /Audio/Machines/phasein.ogg
+
+# candy genetator
+- type: entity
+  parent: BaseItem
+  id: BorgGeneratorCommonCandy
+  suffix: 10 medical
+  name: candy generator
+  description: Tastes like cardboard.
+  components:
+  - type: UseDelay
+    delay: 15
+  - type: Sprite
+    sprite: Objects/Devices/gates.rsi
+    layers:
+    - state: base
+  - type: Item
+    size: Tiny
+  - type: SpawnItemsOnUse
+    uses: 100000
+    items:
+      - id: FoodProduceLollipop
+        orGroup: CCandyBorg
+      - id: FoodProduceLollipopMedical
+        prob: 0.1
+        orGroup: CCandyBorg
+    sound:
+      path: /Audio/Machines/phasein.ogg
+
+- type: entity
+  parent: DrinkBase
+  id: BorgDrinkSolutionWaterCommon
+  name: water generation
+  suffix: Water
+  description: The trusty mixing buddy of the bartender.
+  components:
+  - type: Sprite
+    sprite: /Textures/_Wega/Objects/Specific/Robotics/BorgItem/solition_generation.rsi
+    layers:
+    - state: icon
+    - state: water
+  - type: Label
+    currentLabel: reagent-name-water
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: Water
+          Quantity: 0
+  - type: FitsInDispenser
+    solution: drink
+  - type: SolutionRegeneration
+    solution: drink
+    generated:
+      reagents:
+      - ReagentId: Water
+        Quantity: 1
+
+
+
+
+
+

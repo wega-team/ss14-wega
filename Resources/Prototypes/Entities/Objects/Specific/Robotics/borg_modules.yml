@@ -573,6 +573,9 @@
         whitelist:
           tags:
           - Inflatable
+# Corvax-Wega-Robot-Start
+    - item: BorgGeneratorInflatableWall
+# Corvax-Wega-Robot-End    
     - item: BoxInflatable
     - item: WeaponMeleeNeedle
   - type: BorgModuleIcon
@@ -603,13 +606,29 @@
           - Figurine
           - TabletopBoard
           - Write
+          components:
+          - Delivery
+    - hand:
+        emptyLabel: borg-slot-delivery-empty
+        emptyRepresentative: PackageDelivery
+        whitelist:
+          tags:
+          - Book
+          - Dice
+          - Document
+          - Figurine
+          - TabletopBoard
+          - Write
+          components:
+          - Delivery
     - item: BoxFolderYellowEmpty
-    # Corvax-Wega-Robot-End
-    - item: Pen
-    - item: HandLabeler
-    - item: RubberStampApproved
-    - item: RubberStampDenied
-    - item: RadioHandheld
+    # - item: Pen
+        # - item: HandLabeler
+        # - item: RubberStampApproved
+        # - item: RubberStampDenied
+        # - item: RadioHandheld
+    - item: MailBagBorg
+# Corvax-Wega-Robot-End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: appraisal-module }
 
@@ -712,6 +731,15 @@
     - item: WelderExperimental
     - item: Multitool
     - item: RemoteSignallerAdvanced
+# Corvax-Wega-Robot-Start
+    - item: SprayPainter
+    - hand:
+        emptyRepresentative: SprayPainterAmmo
+        emptyLabel: borg-slot-spray-painter-ammo-empty
+        whitelist:
+          components:
+          - SprayPainterAmmo
+# Corvax-Wega-Robot-End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: adv-tools-module }
 
@@ -746,12 +774,21 @@
         whitelist:
           tags:
           - ConstructionMaterial
+# Corvax-Wega-Robot-Start
+    # - hand:
+        # emptyRepresentative: BorgModuleConstructionMaterialPlaceholder
+        # emptyLabel: borg-slot-construction-empty
+        # whitelist:
+          # tags:
+          # - ConstructionMaterial
     - hand:
-        emptyRepresentative: BorgModuleConstructionMaterialPlaceholder
-        emptyLabel: borg-slot-construction-empty
+        emptyRepresentative: FloorTileItemSteel
+        emptyLabel: borg-slot-tiles-empty
         whitelist:
-          tags:
-          - ConstructionMaterial
+          components:
+          - FloorTile
+    - item: ConstructionBag
+# Corvax-Wega-Robot-End
     - hand:
         emptyRepresentative: DoorElectronics
         emptyLabel: borg-slot-circuitboards-empty
@@ -773,24 +810,26 @@
         whitelist:
           components:
           - Flatpack
-    - hand:
-        emptyRepresentative: FloorTileItemSteel
-        emptyLabel: borg-slot-tiles-empty
-        whitelist:
-          components:
-          - FloorTile
-    - hand:
-        emptyRepresentative: FloorTileItemWhite
-        emptyLabel: borg-slot-tiles-empty
-        whitelist:
-          components:
-          - FloorTile
-    - hand:
-        emptyRepresentative: FloorTileItemDark
-        emptyLabel: borg-slot-tiles-empty
-        whitelist:
-          components:
-          - FloorTile
+# Corvax-Wega-Robot-Start
+    # - hand:
+        # emptyRepresentative: FloorTileItemSteel
+        # emptyLabel: borg-slot-tiles-empty
+        # whitelist:
+          # components:
+          # - FloorTile
+    # - hand:
+        # emptyRepresentative: FloorTileItemWhite
+        # emptyLabel: borg-slot-tiles-empty
+        # whitelist:
+          # components:
+          # - FloorTile
+    # - hand:
+        # emptyRepresentative: FloorTileItemDark
+        # emptyLabel: borg-slot-tiles-empty
+        # whitelist:
+          # components:
+          # - FloorTile
+# Corvax-Wega-Robot-End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: construction-module }
 
@@ -835,6 +874,16 @@
   - type: ItemBorgModule
     hands:
     - item: LightReplacer
+# Corvax-Wega-Robot-Start
+    - hand:
+        emptyLabel: borg-slot-box-light-mixed-empty
+        emptyRepresentative: BoxLightMixed
+        whitelist:
+          components:
+          - LightBulb
+          tags:
+          - Lightbox
+    # Corvax-Wega-Robot-end
     - item: BorgTrashBag
     - item: Plunger
     - item: SoapNT
@@ -858,9 +907,18 @@
     - state: icon-mop
   - type: ItemBorgModule
     hands:
-    - item: MopItem
+    - item: BorgMopItem # MopItem Corvax-Wega-Robot
     - item: WireBrush
     - item: BorgBucket
+# Corvax-Wega-Robot-start
+    - item: Beaker
+      hand:
+        emptyLabel: borg-slot-beakers-empty
+        emptyRepresentative: Beaker
+        whitelist:
+          components:
+          - FitsInDispenser
+# Corvax-Wega-Robot-End
     - item: BorgSprayBottle
     - item: HoloprojectorBorg
   - type: BorgModuleIcon
@@ -878,7 +936,8 @@
     - state: icon-mop-adv
   - type: ItemBorgModule
     hands:
-    - item: AdvMopItem
+    - item: BorgAdvMopItem # AdvMopItem Corvax-Wega-Robot
+    - item: BorgTrashBag # Corvax-Wega-Robot
     - item: WireBrushElectrical
     - item: BorgMegaSprayBottle
     - item: HoloprojectorBorg
@@ -922,7 +981,22 @@
   - type: ItemBorgModule
     hands:
     - item: HandheldHealthAnalyzer
-    - item: AdvancedJetInjector
+    # - item: AdvancedJetInjector Corvax-Wega-Robot
+# Corvax-Wega-Robot-Start
+    - item: BorgHypoTricordrazineBase
+      hand:
+        emptyLabel: borg-slot-hypo-empty
+        emptyRepresentative: BorgHypoTricordrazineBase
+        whitelist:
+          tags:
+          - Itemborg
+    - hand:
+        emptyLabel: borg-slot-hypo-empty
+        emptyRepresentative: BorgHypoEpinephrineBase
+        whitelist:
+          tags:
+          - Itemborg
+# Corvax-Wega-Robot-End
     - item: Gauze
       hand:
         emptyLabel: borg-slot-topicals-empty
@@ -951,15 +1025,6 @@
         whitelist:
           components:
           - Healing
-    # Corvax-Wega-Robot-Start
-    - item: BorgGeneratorProCandy
-    - hand:
-        emptyRepresentative: FoodProduceLollipopMedical
-        emptyLabel: borg-slot-candy-empty
-        whitelist:
-          tags:
-          - Lollipops
-    # Corvax-Wega-Robot-End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: treatment-module }
 
@@ -1008,15 +1073,22 @@
     - state: icon-chemist
   - type: ItemBorgModule
     hands:
-    - item: HandLabeler
-    - item: Syringe
+# Corvax-Wega-Robot-Start
+    - item: HandheldHealthAnalyzer
+    - item: BorgSyringe
       hand:
         emptyLabel: borg-slot-injector-dropper-empty
         emptyRepresentative: Syringe
         whitelist:
           tags:
-          - Dropper
-          - Syringe
+          - Itemborg
+    - hand:
+        emptyLabel: borg-slot-injector-dropper-empty
+        emptyRepresentative: AdvancedJetInjector
+        whitelist:
+          tags:
+          - Itemborg
+# Corvax-Wega-Robot-End
     - item: PillCanister
       hand:
         emptyLabel: borg-slot-small-containers-empty
@@ -1044,6 +1116,15 @@
           - FitsInDispenser
           tags:
           - ChemDispensable
+    # Corvax-Wega-Robot-Start
+    - item: BorgGeneratorProCandy
+    - hand:
+        emptyRepresentative: FoodProduceLollipopMedical
+        emptyLabel: borg-slot-candy-empty
+        whitelist:
+          tags:
+          - Lollipops
+    # Corvax-Wega-Robot-End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: chem-module }
 
@@ -1061,27 +1142,57 @@
     hands:
     - item: HandheldHealthAnalyzer
     - item: BorgHypo
-    - item: Gauze
+# Corvax-Wega-Robot-Start
+    - item: BorgDropper
+    - item: Jug
       hand:
-        emptyLabel: borg-slot-topicals-empty
-        emptyRepresentative: Gauze
+        emptyLabel: borg-slot-chemical-containers-empty
+        emptyRepresentative: Beaker
         whitelist:
           components:
-          - Healing
-    - item: Brutepack
+          - FitsInDispenser
+          tags:
+          - ChemDispensable
+    - item: Jug
       hand:
-        emptyLabel: borg-slot-topicals-empty
-        emptyRepresentative: Brutepack
+        emptyLabel: borg-slot-chemical-containers-empty
+        emptyRepresentative: Beaker
         whitelist:
           components:
-          - Healing
-    - item: Ointment
+          - FitsInDispenser
+          tags:
+          - ChemDispensable
+    - item: Jug
       hand:
-        emptyLabel: borg-slot-topicals-empty
-        emptyRepresentative: Ointment
+        emptyLabel: borg-slot-chemical-containers-empty
+        emptyRepresentative: Beaker
         whitelist:
           components:
-          - Healing
+          - FitsInDispenser
+          tags:
+          - ChemDispensable
+    # - item: Gauze
+      # hand:
+        # emptyLabel: borg-slot-topicals-empty
+        # emptyRepresentative: Gauze
+        # whitelist:
+          # components:
+          # - Healing
+    # - item: Brutepack
+      # hand:
+        # emptyLabel: borg-slot-topicals-empty
+        # emptyRepresentative: Brutepack
+        # whitelist:
+          # components:
+          # - Healing
+    # - item: Ointment
+      # hand:
+        # emptyLabel: borg-slot-topicals-empty
+        # emptyRepresentative: Ointment
+        # whitelist:
+          # components:
+          # - Healing
+# Corvax-Wega-Robot-End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: adv-chem-module }
 
@@ -1102,18 +1213,20 @@
     # Corvax-Wega-Robot-Start
     - hand:
         emptyLabel: borg-slot-artefact-empty
-        emptyRepresentative: CheapRollerBedSpawnFolded
+        emptyRepresentative: ComplexXenoArtifactItem
         whitelist:
           components:
           - XenoArtifact
+          tags:
+          - ArtifactFragment
     # Corvax-Wega-Robot-end
     - item: SprayBottle
     - item: GasAnalyzer
-    - item: BorgDropper
-    - item: ChemistryEmptyVial
+    - item: Syringe # Corvax-Wega-Robot
+    - item: Beaker # Corvax-Wega-Robot
       hand:
         emptyLabel: borg-slot-small-containers-empty
-        emptyRepresentative: ChemistryEmptyVial
+        emptyRepresentative: ChemistryEmptyVial 
         whitelist:
           components:
           - FitsInDispenser
@@ -1163,33 +1276,8 @@
     - state: icon-pen
   - type: ItemBorgModule
     hands:
-    - item: Pen
     # Corvax-Wega-Robot-start
-    - hand:
-        emptyLabel: borg-slot-documents-empty
-        emptyRepresentative: Paper
-        whitelist:
-          tags:
-          - Book
-          - Dice
-          - Document
-          - Figurine
-          - TabletopBoard
-          - Write
-    - item: BooksBag
-    # - hand:
-        # emptyLabel: borg-slot-documents-empty
-        # emptyRepresentative: BookBase
-        # whitelist:
-          # tags:
-          # - Book
-          # - Dice
-          # - Document
-          # - Figurine
-          # - TabletopBoard
-          # - Write
-    # Corvax-Wega-Robot-end
-    # Corvax-Wega-Robot-start
+    # - item: Pen
     # - hand:
         # emptyLabel: borg-slot-documents-empty
         # emptyRepresentative: Paper
@@ -1201,10 +1289,32 @@
           # - Figurine
           # - TabletopBoard
           # - Write
-    # Corvax-Wega-Robot-end
-    - item: HandLabeler
-    - item: RubberStampApproved
-    - item: RubberStampDenied
+    # - item: BooksBag
+    # - hand:
+        # emptyLabel: borg-slot-documents-empty
+        # emptyRepresentative: BookBase
+        # whitelist:
+          # tags:
+          # - Book
+          # - Dice
+          # - Document
+          # - Figurine
+          # - TabletopBoard
+          # - Write
+    # - hand:
+        # emptyLabel: borg-slot-documents-empty
+        # emptyRepresentative: Paper
+        # whitelist:
+          # tags:
+          # - Book
+          # - Dice
+          # - Document
+          # - Figurine
+          # - TabletopBoard
+          # - Write
+    # - item: HandLabeler
+    # - item: RubberStampApproved
+    # - item: RubberStampDenied
     # Corvax-Wega-Robot-start
     # - item: BorgDropper
     # - item: DrinkShaker
@@ -1215,8 +1325,32 @@
           # components:
           # - FitsInDispenser
     # - item: BarSpoon
+    - item: BorgDrinkSolutionWaterBase
+      hand:
+        emptyLabel: borg-slot-drinks-empty
+        emptyRepresentative: BorgDrinkSolutionWaterBase
+        whitelist:
+          tags:
+          - Itemborg
     - hand:
-        emptyRepresentative: FoodBreadPlain
+        emptyLabel: borg-slot-drinks-empty
+        emptyRepresentative: BorgDrinkSolutionBeerBase
+        whitelist:
+          tags:
+          - Itemborg
+    - item: BorgGeneratorCup
+    - hand:
+        emptyLabel: borg-slot-chemical-containers-empty
+        emptyRepresentative: DrinkGlass
+        whitelist:
+          components:
+          - FitsInDispenser
+          - SolutionContainerManager
+          tags:
+          - ChemDispensable
+    - item: BorgGeneratorDonts
+    - hand:
+        emptyRepresentative: BorgIconKitchenIcon
         emptyLabel: borg-slot-food-empty
         whitelist:
           components:
@@ -1225,40 +1359,42 @@
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: service-module }
 
-- type: entity
-  id: BorgModuleMusique
-  parent: [ BaseBorgModuleService, BaseProviderBorgModule ]
-  name: musique cyborg module
-  components:
-  - type: Sprite
-    layers:
-    - state: service
-    - state: icon-musique
-  - type: ItemBorgModule
-    hands:
-    - item: SynthesizerInstrument
-      hand:
-        emptyLabel: borg-slot-instruments-empty
-        emptyRepresentative: SynthesizerInstrument
-        whitelist:
-          components:
-          - Instrument
-    - item: ElectricGuitarInstrument
-      hand:
-        emptyLabel: borg-slot-instruments-empty
-        emptyRepresentative: ElectricGuitarInstrument
-        whitelist:
-          components:
-          - Instrument
-    - item: SaxophoneInstrument
-      hand:
-        emptyLabel: borg-slot-instruments-empty
-        emptyRepresentative: SaxophoneInstrument
-        whitelist:
-          components:
-          - Instrument
-  - type: BorgModuleIcon
-    icon: { sprite: Interface/Actions/actions_borg.rsi, state: musical-module }
+# Corvax-Wega-Robot-Start
+# - type: entity
+  # id: BorgModuleMusique
+  # parent: [ BaseBorgModuleService, BaseProviderBorgModule ]
+  # name: musique cyborg module
+  # components:
+  # - type: Sprite
+    # layers:
+    # - state: service
+    # - state: icon-musique
+  # - type: ItemBorgModule
+    # hands:
+    # - item: SynthesizerInstrument
+      # hand:
+        # emptyLabel: borg-slot-instruments-empty
+        # emptyRepresentative: SynthesizerInstrument
+        # whitelist:
+          # components:
+          # - Instrument
+    # - item: ElectricGuitarInstrument
+      # hand:
+        # emptyLabel: borg-slot-instruments-empty
+        # emptyRepresentative: ElectricGuitarInstrument
+        # whitelist:
+          # components:
+          # - Instrument
+    # - item: SaxophoneInstrument
+      # hand:
+        # emptyLabel: borg-slot-instruments-empty
+        # emptyRepresentative: SaxophoneInstrument
+        # whitelist:
+          # components:
+          # - Instrument
+  # - type: BorgModuleIcon
+    # icon: { sprite: Interface/Actions/actions_borg.rsi, state: musical-module }
+# Corvax-Wega-Robot-End
 
 - type: entity
   id: BorgModuleGardening
@@ -1271,18 +1407,34 @@
     - state: icon-gardening
   - type: ItemBorgModule
     hands:
-    - item: HydroponicsToolMiniHoe
-    - item: HydroponicsToolSpade
-    - item: HydroponicsToolClippers
     # Corvax-Wega-Robot-start
+    - item: PlantAnalyzerUnpowered
+    - item: BorgHydroponicsToolMiniHoe
+      hand:
+        emptyLabel: borg-slot-hydro-empty
+        emptyRepresentative: BorgHydroponicsToolMiniHoe
+        whitelist:
+          tags:
+          - Itemborg
+    - hand:
+        emptyLabel: borg-slot-hydro-empty
+        emptyRepresentative: BorgHydroponicsToolSpade
+        whitelist:
+          tags:
+          - Itemborg
     - hand:
         emptyRepresentative: WheatSeeds
         emptyLabel: borg-slot-seed-empty
         whitelist:
           components:
           - Seed
+          tags:
+          - Vegetable
+          - Fruit
+    - item: BorgDropper
     # Corvax-Wega-Robot-end
     - item: Bucket
+    - item: PlantBag # Corvax-Wega-Robot
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: gardening-module }
 
@@ -1326,6 +1478,14 @@
     - item: BikeHorn
     - item: ClownRecorder
     - item: BikeHornInstrument
+# Corvax-Wega-Robot-start
+    - hand:
+        emptyLabel: borg-slot-soap-empty
+        emptyRepresentative: SoapNT
+        whitelist:
+          tags:
+          - Soap
+    # Corvax-Wega-Robot-end
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: clowning-module }
 
@@ -1398,10 +1558,14 @@
       - state: icon-syndicate
     - type: ItemBorgModule
       hands:
-      - item: Crowbar
-      - item: Emag
+      # Corvax-Wega-Robot-start
+      - item: SyndicateJawsOfLife # Crowbar
+      # - item: Emag
       - item: AccessBreaker
+      - item: SyndicateDrill
+      # Corvax-Wega-Robot-End
       - item: PinpointerSyndicateNuclear
+      - item: PinpointerUniversal # Corvax-Wega-Robot-add
     - type: BorgModuleIcon
       icon: { sprite: Interface/Actions/actions_borg.rsi, state: syndicate-operative-module }
 
@@ -1451,8 +1615,24 @@
     - state: icon-syndicate
   - type: ItemBorgModule
     hands:
-    - item: WeaponLightMachineGunL6C
+# Corvax-Wega-Robot-start
+    - item: WeaponLightMachineGunL6CEnergy
+      hand:
+        emptyLabel: borg-slot-gun-empty
+        emptyRepresentative: WeaponLightMachineGunL6C
+        whitelist:
+          tags:
+          - Itemborg
+    - hand:
+        emptyLabel: borg-slot-gun-empty
+        emptyRepresentative: BorgWeaponSniperHristovAdvanced
+        whitelist:
+          tags:
+          - Itemborg
+    - item: CyborgEnergySwordDouble          
     - item: PinpointerSyndicateNuclear
+    - item: PinpointerUniversal # Corvax-Wega-Robot-add
+# Corvax-Wega-Robot-End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: syndicate-l6c-module }
 
@@ -1526,6 +1706,7 @@
   - type: ItemBorgModule
     hands:
     - item: DoorRemoteXenoborg
+    - item: XenoborgHoloprojectorForcefieldMother # Corvax-Wega-Robot-Add
     - hand:
         emptyRepresentative: MMIFilled
         emptyLabel: borg-slot-brains-empty
@@ -1612,7 +1793,14 @@
     - state: icon-xenoborg-access-breaker
   - type: ItemBorgModule
     hands:
-    - item: AccessBreaker
+# Corvax-Wega-Robot-Start
+    - item: Omnitool
+    - item: WelderExperimental
+    - item: XenoAccessBreaker 
+    - item: XenoRCD
+    - item: RemoteSignallerAdvanced
+    - item: SelfRechargingFireExtinguisher
+# Corvax-Wega-Robot-end
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-access-breaker-module }
 
@@ -1645,7 +1833,7 @@
   - type: ItemBorgModule
     hands:
     - item: DoorRemoteXenoborg
-    - item: AccessBreaker
+    - item: XenoAccessBreaker # Corvax-Wega-Robot
     - item: AccessConfiguratorXenoborg
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-door-remote-module }
@@ -1679,6 +1867,7 @@
   - type: ItemBorgModule
     hands:
     - item: WeaponLaserGunXenoborg
+    - item: XenoborgRadioJammer # Corvax-Wega-Robot
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-laser-module }
 
@@ -1695,6 +1884,7 @@
   - type: ItemBorgModule
     hands:
     - item: WeaponLaserCannonXenoborg
+    - item: XenoborgRadioJammer # Corvax-Wega-Robot
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-laser2-module }
 
@@ -1766,6 +1956,25 @@
   - type: ItemBorgModule
     hands:
     - item: NocturineHypo
+ # Corvax-Wega-Robot-start
+    - item: LauncherSyringe
+    - item: BorgGeneratorMiniSyringePax
+    - item: BorgGeneratorMiniSyringeMute
+    - hand:
+        emptyRepresentative: MiniSyringe
+        emptyLabel: borg-slot-minisyringe-empty
+        whitelist:
+          tags:
+          - SyringeGunAmmo
+    - item: Zipties
+      hand:
+        emptyLabel: borg-slot-zipties-empty
+        emptyRepresentative: Zipties
+        whitelist:
+          tags:
+          - Handcuffs
+    - item: BoxZiptie
+ # Corvax-Wega-Robot-start
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-hypo-module }
 
@@ -1798,6 +2007,7 @@
   - type: ItemBorgModule
     hands:
     - item: CloakingDevice
+    - item: ChameleonProjectorNoBattery # Corvax-Wega-Robot
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-eye-module }
 
@@ -1814,5 +2024,6 @@
   - type: ItemBorgModule
     hands:
     - item: SuperCloakingDevice
+    - item: ChameleonProjectorNoBattery # Corvax-Wega-Robot
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-eye2-module }

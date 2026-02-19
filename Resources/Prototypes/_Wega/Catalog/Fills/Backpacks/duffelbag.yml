@@ -21,7 +21,6 @@
           amount: 2
         - id: MicroManipulatorStockPart
           amount: 3
-
 - type: entity
   parent: ClothingBackpackDuffelSyndicateBundle
   id: ClothingBackpackDuffelSyndicateFilledXC67

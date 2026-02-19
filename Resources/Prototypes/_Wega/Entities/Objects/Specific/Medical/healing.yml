@@ -646,6 +646,7 @@
     tags:
     - Ointment
     - Brutepack
+    - Nanopast
   - type: Sprite
     state: morphine
   - type: Item
@@ -654,6 +655,7 @@
     delay: 1.75
     damageContainers:
       - Android
+      - Silicon
     bloodlossModifier: -10 # Tourniquets stop bleeding
     damage:
       groups:

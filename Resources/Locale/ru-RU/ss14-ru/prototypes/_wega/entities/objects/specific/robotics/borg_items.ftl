@@ -1,0 +1,222 @@
+# Обычные
+ent-WeaponMeleeNeedleBorg = стальная палка
+    .desc = Заостренная палка, которая раньше лопала шарики, а теперь будет и лопать головы недругов.
+ent-PickaxeBorg =  кирка
+    .desc = { ent-Pickaxe.desc }
+ent-BorgGeneratorCommonCandy = генератор конфет
+    .desc = Успокойте членов экипажа вкусной ( или нет ) конфеткой! Убедите их, что Вы знакомый дядя для них!
+    .suffix = 10% мед веществ
+ent-RepeirModeDevice = устройство самовосстановления
+    .desc = Устройство для поддержки корпуса в целом состоянии.
+ent-SpeedModeDevice = устройство ускорения
+    .desc = Устройство, которое позволяет ускорить модель киборга на 25 секунд.
+ent-MagbootsModeDevice = устройство примагничивания
+    .desc = Устройство для передвижения киборга в среде без гравитации.
+ent-BorgGeneratorNanopast = генератор нанопасты
+    .desc = Устройство для генерации тюбиков нанопасты, позволяющая экстренно залатать дыры у синтетиков.
+ent-BorgGeneratorInflatableWall = генератор надувных стен и дверей
+    .desc = Устройство для генерации временных барикад в виде надувных стен и дверей.
+ent-BorgDrinkSolutionWaterCommon = синтезатор воды
+    .desc = Молитесь, чтоб водяной чип был в исправности, иначе ждите судьбу 13ой станции.
+
+# СБ
+ent-StunprodBorg = дубинка-шокер
+    .desc = { ent-Stunbaton.desc }
+ent-WeaponMeleeNeedleBorgSec = утяжеленная стальная палка
+    .desc = Заостренная палка, которая раньше лопала шарики, а теперь будет и лопать головы недругов, выглядит масивнее обычной палки.
+ent-HoloprojectorSecurityMicrowave = { ent-HoloprojectorSecurity }
+    .suffix = Микрореакторная
+    .desc = { ent-HoloprojectorSecurity.desc }
+ent-DetectivePDABorg =  КПК для расследований
+    .desc = Пахнет дождём... и маслом....
+ent-WeaponBorgDisabler = режим "Станнер"
+    .desc = Режим стрельбы ствола настроенный на поражение выносливости противника, имеет автоматическую стрельбу.
+ent-WeaponBorgLethal = режим "Летал"
+    .desc = Режим стрельбы ствола настроенный на поражение жизненых функций противника.
+ent-WeaponBorgRG430 = гранатомёт РГ-430
+    .desc = Ручной гранатомёт, который с мощным выхломом позволяет выстреливать гранаты и снаряды.
+ent-WeaponHandGranadeGun = режим "Гранатомет"
+    .desc = Режим стрельбы ствола настроенный на выпуск гранат на более далекое расстояние.
+ent-BoxBorgGranade = коробка с гранатами
+    .desc = Коробка для хранения гранат.
+ent-RiotShieldBorg = встроенная броня от ударов
+    .desc = Наномашины, сынок...
+ent-RiotLaserShieldBorg = встроенная броня от тепловых излучений
+    .desc = Наномашины, сынок...
+ent-RiotBulletShieldBorg = встроенная броня от пуль
+    .desc = Наномашины, сынок...
+ent-TelescopicShieldBorg = встроенная унивирсальная броня
+    .desc = Наномашины, сынок...
+ent-WeaponBorgTurel = режим "Турель Свалина"
+    .desc = Режим стрельбы ствола настроенный на выпуск множества слабых лазерных излучений.
+ent-WeaponBorgDeathGun = режим "Турель Перфоратор"
+    .desc = Режим стрельбы ствола настроенный на выпуск мощных единичных лазерных излучений.
+
+# Сервис
+ent-BorgGeneratorDonts = генератор пончиков
+    .desc = Если бы у службы безопасности был такой прибор...
+ent-BorgGeneratorCup = генератор одноразовых стаканчиков
+    .desc = Коэфицент мусора на станции после изобретения данного прибора повысился на 120%.
+ent-BorgGeneratorDrinkGlass = генератор стаканов
+    .desc = Теперь битьё стаканов не так болезнено для бара.
+ent-MicrowaveForBorg = встроенная микроволновка
+    .desc = Это магия.
+ent-BorgGeneratorPocket = генератор покетов
+    .desc = Генератор материи, настроенный на генерацию различных покетов.
+ent-BorgGeneratorDrink = генератор напитков
+    .desc = Генератор материи, настроенный на генерацию различных напитков.
+ent-BorgGeneratorMeat = генератор мяса
+    .desc = Генератор материи, настроенный на генерацию различных кусочков мяса.
+ent-BoxFreezer = коробка хранилища еды
+    .desc = Коробка для хранения еды, не оставляйте там сырую еду!
+ent-BorgDrinkSolutionWaterBase = синтезатор воды
+    .desc = Синтезатор питьевых реагентов, который в данный момент генерирует воду.
+ent-BorgDrinkSolutionBeerBase = синтезатор пива
+    .desc = Синтезатор питьевых реагентов, который в данный момент генерирует пиво.
+ent-BorgHydroponicsToolMiniHoe = { ent-HydroponicsToolMiniHoe }
+    .desc = { ent-HydroponicsToolMiniHoe.desc }
+    .suffix = Киборг
+ent-BorgHydroponicsToolSpade = { ent-HydroponicsToolSpade }
+    .desc = { ent-HydroponicsToolSpade.desc }
+    .suffix = Киборг
+ent-BorgHydroponicsToolClippers = { ent-HydroponicsToolClippers }
+    .desc = { ent-HydroponicsToolClippers.desc }
+    .suffix = Киборг
+ent-BorgHydroponicsToolScythe = { ent-HydroponicsToolScythe }
+    .desc = { ent-HydroponicsToolScythe.desc }
+    .suffix = Киборг
+ent-BorgHydroponicsToolHatchet = { ent-HydroponicsToolHatchet }
+    .desc = { ent-HydroponicsToolHatchet.desc }
+    .suffix = Киборг
+ent-BorgDrinkSolutionWater = синтезатор воды
+    .desc = Синтезатор питьевых реагентов, который в данный момент генерирует воду.
+ent-BorgDrinkSolutionBeer = синтезатор пива
+    .desc = Синтезатор питьевых реагентов, который в данный момент генерирует пиво.
+ent-BorgDrinkSolutionCoffe = синтезатор кофе
+    .desc = Синтезатор питьевых реагентов, который в данный момент генерирует кофе.
+ent-BorgDrinkSolutionCola = синтезатор колы
+    .desc = Синтезатор питьевых реагентов, который в данный момент генерирует колу.
+ent-BorgDrinkSolutionMilk = синтезатор молока
+    .desc = Синтезатор питьевых реагентов, который в данный момент генерирует молоко.
+ent-BorgDrinkSolutionWine = синтезатор вина
+    .desc = Синтезатор питьевых реагентов, который в данный момент генерирует вино.
+
+
+# Уборщик
+ent-LightReplacerBorg = { ent-LightReplacer }
+    .desc = { ent-LightReplacer.desc }
+    .suffix = Киборг
+ent-WeaponHydraBorg = встроенный гранатомет "Гидра"
+    .desc = Очистительная система "Гидра", теперь вместе с зарядами самовосстановления.
+ent-BorgMopItem = { ent-MopItem }
+    .desc = { ent-MopItem.desc }
+    .suffix = Киборг
+ent-BorgAdvMopItem = { ent-AdvMopItem }
+    .desc = { ent-AdvMopItem.desc }
+    .suffix = Киборг
+
+
+# Инженер
+ent-RCDCombatRecharging = экспериментальное боевое РСУ
+    .desc = Ручное строительное устройство боевого аналога, установленное в киборга, которое на лету производит сжатую материю, используя внутренний фабрикатор.
+    .suffix = Автозарядка
+ent-BorgGeneratorMaterialRod = генератор стержней
+    .desc = Генератор материи, настроенный на генерацию стержней.
+ent-BorgGeneratorTile = генератор плиток
+    .desc = Генератор материи, настроенный на генерацию плиток.
+ent-BorgGeneratorMaterialSteal = генератор пачек стали
+    .desc = Генератор материи, настроенный на генерацию пачек стали.
+ent-BorgGeneratorMaterialPlasteel = генератор пачек пластали
+    .desc = Генератор материи, настроенный на генерацию пачек пластали.
+
+# Врач
+ent-BorgSyringe = { ent-BaseSyringe }
+    .desc = { ent-BaseSyringe.desc }
+    .suffix = Киборг
+ent-BorgAdvancedJetInjector = продвинутый инжектор
+    .desc = Крутой инжектор
+    .suffix = Киборг
+ent-BorgHypoTricordrazineBase = базовый борг-гипоспрей трикордразина
+    .desc = Стерильный инъектор для быстрого введения и генерации трикордразина пациентам. Удешевлённый и более специализированный вариант для медицинских боргов.
+    .suffix = Трикордразин
+ent-BorgHypoEpinephrineBase = базовый борг-гипоспрей эпинефрина
+    .desc = Стерильный инъектор для быстрого введения и генерации эпинефрина пациентам. Удешевлённый и более специализированный вариант для медицинских боргов.
+    .suffix = Эпинефрин
+ent-BorgHypoTricordrazine = продвинутый борг-гипоспрей трикордразина
+    .desc = Стерильный инъектор для быстрого введения и генерации трикордразина пациентам. Удешевлённый и более специализированный вариант для медицинских боргов.
+    .suffix = Трикордразин
+ent-BorgHypoBicaridine = продвинутый борг-гипоспрей бикаридина
+    .desc = Стерильный инъектор для быстрого введения и генерации бикаридина пациентам. Удешевлённый и более специализированный вариант для медицинских боргов.
+    .suffix = Бикаридин
+ent-BorgHypoDermaline = продвинутый борг-гипоспрей дермалина
+    .desc = Стерильный инъектор для быстрого введения и генерации дермалина пациентам. Удешевлённый и более специализированный вариант для медицинских боргов.
+    .suffix = Дермалин
+ent-BorgHypoDylovene = продвинутый борг-гипоспрей диловаена
+    .desc = Стерильный инъектор для быстрого введения и генерации диловена пациентам. Удешевлённый и более специализированный вариант для медицинских боргов.
+    .suffix = Диловен
+ent-BorgHypoHyronalin = продвинутый борг-гипоспрей хироналина
+    .desc = Стерильный инъектор для быстрого введения и генерации хироналина пациентам. Удешевлённый и более специализированный вариант для медицинских боргов.
+    .suffix = Хироналин
+ent-BorgHypoDexalin = продвинутый борг-гипоспрей дексалина
+    .desc = Стерильный инъектор для быстрого введения и генерации дексалина пациентам. Удешевлённый и более специализированный вариант для медицинских боргов.
+    .suffix = Дексалин
+ent-BorgHypoEpinephrine = продвинутый борг-гипоспрей эпинефрина
+    .desc = Стерильный инъектор для быстрого введения и генерации эпинефрина пациентам. Удешевлённый и более специализированный вариант для медицинских боргов.
+    .suffix = Эпинефрин
+ent-BorgGeneratorProCandy = генератор конфет
+    .desc = Успокойте членов экипажа вкусной ( или нет ) конфеткой! Убедите их, что Вы знакомый дядя для них!
+    .suffix = 50% мед веществ
+
+# Карго
+ent-WeaponProtoKineticAcceleratorBorg = протокинетический ускоритель
+    .desc = Стреляет кинетическими зарядами с низким уроном на короткое расстояние.
+ent-MailBagBorg = встроенная сумка для почты
+    .desc = Сумка шахтерского киборга для почты, хотя внешне оно похоже на обычную сумку, вмещает в себя как целая тележка!
+
+# Синдикат
+ent-SyndicateDrill = бур синдиката
+    .desc = Ээээ капитан, этот пристройка тут не нужен.
+ent-BorgWeaponSniperHristovAdvanced = Христов ROW
+    .desc = Христов МК2 для киборгов. На ходу создаёт патроны калибра .60 винтовочный из встроенного самозарядного фабрикатора боеприпасов.
+    .suffix = Синдиборг
+ent-WeaponLightMachineGunL6CEnergy = { ent-WeaponLightMachineGunL6C }
+    .desc = { ent-WeaponLightMachineGunL6C.desc }
+    .suffix = Синдиборг
+ent-WeaponLauncherChinaLakeBorg = china ROW
+    .desc = China Lake для киборгов. На ходу создаёт боезапас встроенного самозарядного фабрикатора.
+    .suffix = Синдиборг
+
+# Ксеноборги
+ent-XenoborgHoloprojectorForcefield = голопроектор силового поля ксеноборгов
+    .desc = Создаёт непроходимое силовое поле, через которое ничего не проходит. Однако поле может пасть.
+ent-XenoborgHolosignForcefield = голографическое силовое поле ксеноборгов
+    .desc = Мощное поле временного сдерживания, которое не пропустит ничего, дела плохи, если оно тут.
+ent-XenoborgHoloprojectorForcefieldMother = { ent-XenoborgHoloprojectorForcefield }
+    .desc = { ent-XenoborgHoloprojectorForcefield.desc }
+    .suffix = Ядро материнского корабля
+ent-XenoAccessBreaker = { ent-AccessBreaker }
+    .desc = { ent-AccessBreaker.desc }
+    .suffix = Ксеноборг
+ent-XenoborgHolosignForcefieldMother = { ent-XenoborgHolosignForcefield }
+    .desc = { ent-XenoborgHolosignForcefield.desc }
+    .suffix = Ядро материнского корабля
+ent-XenoRCD = РСУ ксеноборгов
+    .desc = Прибор коструирования древних знаний ваших создателей по возведению стен, окон подобным тем, что на коробле.
+ent-MiniSyringePax = { ent-MiniSyringe }
+    .desc = { ent-MiniSyringe.desc }
+    .suffix = Пакс
+ent-MiniSyringeMute = { ent-MiniSyringe }
+    .desc = { ent-MiniSyringe.desc }
+    .suffix = Токсин немоты
+ent-BorgGeneratorMiniSyringePax = генератор снарядов пакса
+    .desc = Встроенный генератор снарядов для шприцемета, который не позволит жертве дать отпор.
+ent-BorgGeneratorMiniSyringeMute = генератор снарядов токсина немоты
+    .desc = Встроенный генератор снарядов для шприцемета, который не позволит жертве что-либо сказать.
+ent-RepeirModeDeviceXenoborg = устройство самовосстановления ксеноборгов
+    .desc = Устройство для поддержки корпуса в целом состоянии.
+
+# Иконка
+ent-BorgIconRollerBed = Заглушка
+    .desc = Заглушка
+ent-BorgIconMorgBag = Заглушка
+    .desc = Заглушка

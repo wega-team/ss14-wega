@@ -16,9 +16,9 @@
     - Critical
     damage:
       types:
-        Heat: -2
+        Heat: -3
       groups:
-        Brute: -2
+        Brute: -3
     slotId: entity_storage
     whitelist:
       components:

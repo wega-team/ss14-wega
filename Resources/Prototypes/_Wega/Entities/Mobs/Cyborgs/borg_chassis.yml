@@ -6,3 +6,138 @@
   - type: BorgSwitchableType
     selectedBorgType: security
   - type: SurgicalSkill # Corvax-Wega-Surgery
+
+- type: entity
+  id: BorgChassisSecurityPlayer
+  parent: BorgChassisSecurity
+  name: security cyborg
+  suffix: Sec
+  components:
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMicroreactor
+  - type: ContainerFill
+    containers:
+      borg_module:
+      - BorgModuleGranader
+      - BorgModuleLethal
+      - BorgModuleSecRare
+      - BorgModuleSheild
+
+- type: entity
+  id: BorgChassisGenericPlayer
+  parent: BorgChassisGeneric
+  suffix: Generetic
+  components:
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMicroreactor
+  - type: ContainerFill
+    containers:
+      borg_module:
+      - BorgModuleArtistry
+      - BorgModuleFireExtinguisher
+      - BorgModuleMusique
+      - BorgModuleAnomaly
+      - BorgModuleArtifact
+      - BorgModuleCommonRepeir
+      - BorgModuleInflatable
+      - BorgModuleCommonSpeed
+      - BorgModuleCommonPen
+
+- type: entity
+  id: BorgChassisMiningPlayer
+  parent: BorgChassisMining
+  suffix: Mining
+  components:
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMicroreactor
+  - type: ContainerFill
+    containers:
+      borg_module:
+      - BorgModuleAdvancedMining
+      - BorgModuleKinetic
+      - BorgModuleCargoRare
+
+- type: entity
+  id: BorgChassisEngineerPlayer
+  parent: BorgChassisEngineer
+  suffix: Eng
+  components:
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMicroreactor
+  - type: ContainerFill
+    containers:
+      borg_module:
+      - BorgModuleEngenerRare
+      - BorgModuleAdvancedTool
+
+- type: entity
+  id: BorgChassisJanitorPlayer
+  parent: BorgChassisJanitor
+  suffix: Janitor
+  components:
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMicroreactor
+  - type: ContainerFill
+    containers:
+      borg_module:
+      - BorgModuleCleanerRare
+      - BorgModuleAdvancedCleaning
+
+- type: entity
+  id: BorgChassisMedicalPlayer
+  parent: BorgChassisMedical
+  suffix: Medical
+  components:
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMicroreactor
+  - type: ContainerFill
+    containers:
+      borg_module:
+      - BorgModuleChemical
+      - BorgModuleSurgery
+      - BorgModuleMedicalRare
+
+- type: entity
+  id: BorgChassisServicePlayer
+  parent: BorgChassisService
+  suffix: Service
+  components:
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMicroreactor
+  - type: ContainerFill
+    containers:
+      borg_module:
+      - BorgModuleClowning
+      - BorgModuleAdvancedClowning
+      - BorgModuleGardening
+      - BorgModuleServiceRare
+
+
+
+
+
+
+
+
+

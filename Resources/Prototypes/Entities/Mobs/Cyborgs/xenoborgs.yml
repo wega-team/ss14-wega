@@ -22,7 +22,7 @@
       map: ["light"]
       visible: false
   - type: BorgChassis
-    maxModules: 7
+    maxModules: 4 #Corvax-Wega-add
     hasMindState: xenoborg_engi_e
     noMindState: xenoborg_engi_e_r
     moduleWhitelist:
@@ -37,12 +37,17 @@
       - MMIFilled
       borg_module:
       - XenoborgModuleBasic
-      - BorgModuleAdvancedTool
-      - BorgModuleConstruction
-      - BorgModuleRCD
-      - BorgModuleCable
+# Corvax-Wega-robots-start
+      # - BorgModuleAdvancedTool
+      # - BorgModuleConstruction
+      # - BorgModuleRCD
+      # - BorgModuleRCD
       - XenoborgModuleAccessBreaker
-      - XenoborgModuleFireExtinguisher
+      - BorgModuleXenoConstruction
+      # - BorgModuleCable
+# Corvax-Wega-robots-end
+      # - XenoborgModuleAccessBreaker  # Corvax-Wega-robots
+      # - XenoborgModuleFireExtinguisher # Corvax-Wega-robots
   - type: ShowElectrocutionHUD
   - type: ShowHealthBars
     damageContainers:
@@ -140,12 +145,17 @@
       - XenoborgModuleBasic
       - XenoborgModuleTool
       - XenoborgModuleLaser
-      - XenoborgModuleJammer
+      - XenoborgHoloprojector # XenoborgModuleJammer Corvax-Wega-Add
   - type: ItemSlots
     slots:
       cell_slot:
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellHigh
+# Corvax-Wega-start
+  - type: ShowHealthBars
+    damageContainers:
+    - Biological
+# Corvax-Wega-end
 
 - type: entity
   parent: [ BaseXenoborgChassis, BaseXenoborgTransponder ]
@@ -228,7 +238,7 @@
     footstepSoundCollection:
       collection: FootstepHoverXenoborg
   - type: BorgChassis
-    maxModules: 5
+    maxModules: 4 #Corvax-Wega-add
     hasMindState: xenoborg_stealth_e
     noMindState: xenoborg_stealth_e_r
     moduleWhitelist:
@@ -247,7 +257,7 @@
       - XenoborgModuleBasic
       - XenoborgModuleTool
       - XenoborgModuleHypo
-      - XenoborgModuleChameleonProjector
+      # - XenoborgModuleChameleonProjector Corvax-Wega
       - XenoborgModuleCloakDevice
   - type: ItemSlots
     slots:
@@ -268,11 +278,17 @@
       - MMI
       borg_module:
       - XenoborgModuleBasic
-      - BorgModuleAdvancedTool
-      - BorgModuleConstruction
-      - BorgModuleRCD
-      - BorgModuleCable
+# Corvax-Wega-robots-start
+      # - BorgModuleAdvancedTool
+      # - BorgModuleConstruction
+      # - BorgModuleRCD
+      # - BorgModuleRCD
       - XenoborgModuleAccessBreaker
+      - BorgModuleXenoConstruction
+      # - BorgModuleCable
+# Corvax-Wega-robots-end
+      # - XenoborgModuleAccessBreaker  # Corvax-Wega-robots
+      # - XenoborgModuleFireExtinguisher # Corvax-Wega-robots
       - XenoborgModuleFireExtinguisher
   - type: ItemSlots
     slots:
@@ -293,7 +309,7 @@
       - XenoborgModuleBasic
       - XenoborgModuleTool
       - XenoborgModuleLaser
-      - XenoborgModuleJammer
+      - XenoborgHoloprojector # XenoborgModuleJammer Corvax-Wega-Add
   - type: ItemSlots
     slots:
       cell_slot:
@@ -333,7 +349,7 @@
       - XenoborgModuleBasic
       - XenoborgModuleTool
       - XenoborgModuleHypo
-      - XenoborgModuleChameleonProjector
+      # - XenoborgModuleChameleonProjector Corvax-Wega
       - XenoborgModuleCloakDevice
   - type: ItemSlots
     slots:

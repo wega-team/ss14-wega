@@ -75,6 +75,12 @@
       storagebase:
         id: LightBulb
         amount: 12
+# Corvax-Wega-start
+  - type: Tag
+    tags:
+    - Lightbox
+    - BoxCardboard
+# Corvax-Wega-end
 
 - type: entity
   name: lightbulb box warm

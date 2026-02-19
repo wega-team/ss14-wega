@@ -23,9 +23,9 @@
     - id: Thief
       prob: 0.5
     - id: SubWizard
-      prob: 0.05
+      prob: 0.25 # Corvax-Wega-Edit
     - id: Xenoborgs
-      prob: 0.05
+      prob: 0.25 # Corvax-Wega-Edit
 
 - type: entity
   parent: BaseGameRule
@@ -36,7 +36,7 @@
     - id: Thief
       prob: 0.5
     - id: Xenoborgs
-      prob: 0.05
+      prob: 0.25 # Corvax-Wega-Edit
 
 - type: entity
   parent: BaseGameRule
@@ -47,7 +47,7 @@
     - id: Thief
       prob: 0.5
     - id: SubWizard
-      prob: 0.05
+      prob: 0.25 # Corvax-Wega-Edit
 
 - type: entity
   parent: BaseGameRule
