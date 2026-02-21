@@ -22,7 +22,7 @@ public sealed class HeatResistanceGenSystem : EntitySystem
             ent.Comp.RemFlammable = true;
         }
 
-        if (TryComp<TemperatureComponent>(ent, out var temperature))
+        if (TryComp<TemperatureDamageComponent>(ent, out var temperature))
         {
             temperature.HeatDamageThreshold = temperature.HeatDamageThreshold * ent.Comp.ResistanceRatio;
         }
@@ -32,7 +32,7 @@ public sealed class HeatResistanceGenSystem : EntitySystem
     {
         if (ent.Comp.RemFlammable) AddComp<FlammableComponent>(ent);
 
-        if (TryComp<TemperatureComponent>(ent, out var temperature))
+        if (TryComp<TemperatureDamageComponent>(ent, out var temperature))
         {
             temperature.HeatDamageThreshold = temperature.HeatDamageThreshold / ent.Comp.ResistanceRatio;
         }

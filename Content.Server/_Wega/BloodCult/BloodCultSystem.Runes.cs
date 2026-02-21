@@ -16,6 +16,7 @@ using Content.Shared.Damage;
 using Content.Shared.DoAfter;
 using Content.Shared.Examine;
 using Content.Shared.Ghost;
+using Content.Shared.Gibbing;
 using Content.Shared.Humanoid;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
@@ -43,6 +44,7 @@ namespace Content.Server.Blood.Cult;
 public sealed partial class BloodCultSystem
 {
     [Dependency] private readonly FlammableSystem _flammable = default!;
+    [Dependency] private readonly GibbingSystem _gibbing = default!;
     [Dependency] private readonly IConsoleHost _consoleHost = default!;
     [Dependency] private readonly IMapManager _mapMan = default!;
     [Dependency] private readonly NavMapSystem _navMap = default!;
@@ -370,7 +372,7 @@ public sealed partial class BloodCultSystem
             RemComp<BloodCultObjectComponent>(target);
         }
 
-        _body.GibBody(target);
+        _gibbing.Gib(target);
     }
 
     private void ConvertToCultist(EntityUid target, EntityUid cultist, MapCoordinates coords, BloodRuneComponent runeComp)
@@ -385,7 +387,7 @@ public sealed partial class BloodCultSystem
         SendRuneMessageToCultists(coords, 2f, runeComp.RuneType);
 
         CreateSoulStone(target);
-        _body.GibBody(target);
+        _gibbing.Gib(target);
 
         var cult = _bloodCult.GetActiveRule();
         if (cult != null) cult.Offerings++;
@@ -536,7 +538,7 @@ public sealed partial class BloodCultSystem
             return false;
 
         SendCultistMessage(cultist, runeComp.RuneType);
-        _body.GibBody(target);
+        _gibbing.Gib(target);
 
         var cult = _bloodCult.GetActiveRule();
         if (cult != null) cult.Offerings++;
@@ -844,7 +846,7 @@ public sealed partial class BloodCultSystem
             if (TryComp<MindContainerComponent>(target, out var mindContainer) && mindContainer.Mind != null)
                 _mind.TransferTo(mindContainer.Mind.Value, harvester);
 
-            _body.GibBody(target);
+            _gibbing.Gib(target);
         }
     }
 

@@ -176,6 +176,10 @@
   - type: Construction
     graph: HudMedSec
     node: medsecHud
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+    - HudMedSec
 
 - type: entity
   parent: [ClothingEyesBase, ShowSecurityIcons, ShowMedicalIcons]

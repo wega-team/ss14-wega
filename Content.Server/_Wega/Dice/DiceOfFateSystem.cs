@@ -15,6 +15,7 @@ using Content.Shared.Database;
 using Content.Shared.Dice;
 using Content.Shared.Disease;
 using Content.Shared.Explosion;
+using Content.Shared.Gibbing;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction.Events;
@@ -39,10 +40,10 @@ public sealed class DiceOfFateSystem : EntitySystem
     [Dependency] private readonly SharedAccessSystem _access = default!;
     [Dependency] private readonly IAdminLogManager _admin = default!;
     [Dependency] private readonly AntagSelectionSystem _antag = default!;
-    [Dependency] private readonly BodySystem _body = default!;
     [Dependency] private readonly DamageableSystem _damage = default!;
     [Dependency] private readonly SharedDiseaseSystem _disease = default!;
     [Dependency] private readonly ExplosionSystem _explosion = default!;
+    [Dependency] private readonly GibbingSystem _gibbing = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly MovementSpeedModifierSystem _speed = default!;
@@ -127,7 +128,7 @@ public sealed class DiceOfFateSystem : EntitySystem
 
     private bool CompleteAnnihilation(EntityUid user)
     {
-        _body.GibBody(user, true, splatModifier: 10f);
+        _gibbing.Gib(user, true);
         return true;
     }
 

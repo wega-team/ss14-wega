@@ -81,6 +81,27 @@
         },
         {
             "name": "speed"
+        },
+        {
+            "name": "cleaning-module"
+        },
+        {
+            "name": "musical-module"
+        },
+        {
+            "name": "china-module"
+        },
+        {
+            "name": "construction-module"
+        },
+        {
+            "name": "xfield-module"
+        },
+        {
+            "name": "repeir-xenoborg-module"
+        },
+        {
+            "name": "speed_xenoborg"
         }
     ]
 }

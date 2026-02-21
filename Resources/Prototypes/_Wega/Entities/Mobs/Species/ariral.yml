@@ -107,10 +107,11 @@
         Bloodloss: -1
     bleedReductionAmount: 0.2
   - type: Temperature
-    heatDamageThreshold: 326 # ~ 52 °C
-    coldDamageThreshold: 280 # ~ 7 °C
     currentTemperature: 310.15
     specificHeat: 46
+  - type: TemperatureDamage
+    heatDamageThreshold: 326 # ~ 52 °C
+    coldDamageThreshold: 280 # ~ 7 °C
     coldDamage:
       types:
         Cold: 0.7

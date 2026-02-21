@@ -485,8 +485,8 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:RoleTimeRequirement
-      role: JobLawyer
-      time: 100h
+      role: JobIAA
+      time: 50h
   storage:
     back:
     - TowelColorMaroon

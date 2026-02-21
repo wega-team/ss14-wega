@@ -6,6 +6,7 @@ using Content.Shared.Body.Systems;
 using Content.Shared.Camera;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
+using Content.Shared.Gibbing;
 using Content.Shared.Lavaland.Events;
 using Content.Shared.Maps;
 using Content.Shared.Mobs;
@@ -31,7 +32,7 @@ public sealed partial class AshDrakeSystem : EntitySystem
     [Dependency] private readonly SharedAchievementsSystem _achievement = default!;
     [Dependency] private readonly AppearanceSystem _appearance = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedBodySystem _body = default!;
+    [Dependency] private readonly GibbingSystem _gibbing = default!;
     [Dependency] private readonly SharedCameraRecoilSystem _recoil = default!;
     [Dependency] private readonly DamageableSystem _damage = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
@@ -740,7 +741,7 @@ public sealed partial class AshDrakeSystem : EntitySystem
 
             if (_mobState.IsIncapacitated(entity.Owner))
             {
-                _body.GibBody(entity.Owner); // The End
+                _gibbing.Gib(entity.Owner); // The End
                 continue;
             }
 

@@ -1,6 +1,6 @@
 - type: lobbyBackground
   id: Wega
-  background: /Textures/_Wega/LobbyScreens/wega_new-year.png
+  background: /Textures/_Wega/LobbyScreens/wega_new.png
 
 - type: lobbyBackground
   id: WegaOld

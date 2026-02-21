@@ -1,0 +1,18 @@
+- type: entity
+  parent: SmokeGrenade
+  id: HolyWaterGrenade
+  name: holywater grenade
+  description: Special grenade for janitors, releasing large cloud of space cleaner foam.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Grenades/holywater.rsi
+  - type: SmokeOnTrigger
+    keysIn:
+    - timer
+    duration: 10
+    spreadAmount: 20
+    smokePrototype: Foam
+    solution:
+      reagents:
+      - ReagentId: Holywater
+        Quantity: 75

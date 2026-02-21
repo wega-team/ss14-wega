@@ -36,3 +36,5 @@ ent-BloodCultSpellBloodBarrage = { ent-BaseBloodCultSpell }
     .desc = { ent-BaseBloodCultSpell.desc }
 ent-BloodCultVeilShifter = сдвигатель вуали
     .desc = Маленький посох излучающий странное свечение.
+ent-HandTelekinesisGun = телекинетическая рука
+    .desc = Манипуляция предметами теперь позволительна и без рук!

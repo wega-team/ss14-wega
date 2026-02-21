@@ -2,11 +2,11 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Pain;
 
-[Prototype("painProfile")]
-public sealed class PainProfilePrototype : IPrototype
+[Prototype]
+public sealed partial class PainProfilePrototype : IPrototype
 {
     [IdDataField]
-    public string ID { get; } = default!;
+    public string ID { get; private set; } = default!;
 
     [DataField("painTypes")]
     public Dictionary<string, PainLevel> PainTypes = new();

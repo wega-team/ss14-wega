@@ -9,6 +9,13 @@
     state: hyno
   - type: Item
     sprite: /Textures/_Wega/Objects/Specific/Medical/hyno.rsi
+  - type: Injector
+    solutionName: hypospray
+    ignoreClosed: false
+    activeModeProtoId: HyposprayDynamicMode
+    allowedModes:
+    - HyposprayDynamicMode
+    - HyposprayInjectMode
   - type: SolutionContainerManager
     solutions:
       hypospray:
@@ -17,9 +24,6 @@
     solution: hypospray
   - type: ExaminableSolution
     solution: hypospray
-  - type: Hypospray
-    onlyAffectsMobs: false
-    transferAmount: 5
   - type: UseDelay
     delay: 4.5
 
@@ -56,11 +60,8 @@
     maxFillLevels: 1
     changeColor: false
     emptySpriteName: stimpen_empty
-  - type: Hypospray
+  - type: Injector
     solutionName: pen
-    transferAmount: 30
-    onlyAffectsMobs: false
-    injectOnly: true
 
 - type: entity
   parent: ChemicalMedipen
@@ -78,11 +79,6 @@
     maxFillLevels: 1
     changeColor: false
     emptySpriteName: bluepen_empty
-  - type: Hypospray
-    solutionName: pen
-    transferAmount: 40
-    onlyAffectsMobs: false
-    injectOnly: true
   - type: SolutionContainerManager
     solutions:
       pen:
@@ -98,3 +94,52 @@
             Quantity: 7.5
           - ReagentId: Bruizine
             Quantity: 5
+  - type: Injector
+    solutionName: pen
+    currentTransferAmount: null
+    activeModeProtoId: HyposprayInjectMode
+    allowedModes:
+    - HyposprayInjectMode
+
+- type: entity
+  name: stimpank
+  parent: ChemicalMedipen
+  id: Ertpen
+  components:
+  - type: Item
+    sprite: /Textures/_Wega/Objects/Specific/Medical/medipen.rsi
+    inhandVisuals:
+      left:
+      - state: base-needle-inhand-left
+      - state: base-colorA-inhand-left
+        color: "#7078E1"
+      - state: base-colorB-inhand-left
+      right:
+      - state: base-needle-inhand-right
+      - state: base-colorA-inhand-right
+        color: "#7078E1"
+      - state: base-colorB-inhand-right
+  - type: Sprite
+    sprite: /Textures/_Wega/Objects/Specific/Medical/medipen.rsi
+    layers:
+    - state: ertpen
+      map: ["enum.SolutionContainerLayers.Fill"]
+  - type: SolutionContainerVisuals
+    maxFillLevels: 1
+    changeColor: false
+    emptySpriteName: ertpen_empty
+  - type: SolutionContainerManager
+    solutions:
+      pen:
+        maxVol: 30
+        reagents:
+        - ReagentId: Stimulants
+          Quantity: 30
+  - type: Injector
+    solutionName: pen
+    currentTransferAmount: null
+    activeModeProtoId: HyposprayInjectMode
+    allowedModes:
+    - HyposprayInjectMode
+  - type: StaticPrice
+    price: 1500

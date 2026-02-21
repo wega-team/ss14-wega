@@ -1,0 +1,25 @@
+- type: constructionGraph
+  id: GlassesMed
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: medGlasses
+          steps:
+            - tag: HudMedical
+              name: construction-graph-tag-medical-hud
+              icon:
+                sprite: Clothing/Eyes/Hud/med.rsi
+                state: icon
+              doAfter: 5
+            - tag: Sunglasses
+              name: construction-graph-tag-sun-glasses
+              icon:
+                sprite: Clothing/Eyes/Glasses/sunglasses.rsi
+                state: icon
+              doAfter: 5
+            - material: Cable
+              amount: 5
+              doAfter: 5
+    - node: medGlasses
+      entity: ClothingEyesGlassesMedSunglasses

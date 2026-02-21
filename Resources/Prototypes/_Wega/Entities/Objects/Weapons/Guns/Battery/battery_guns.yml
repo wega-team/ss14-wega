@@ -3,6 +3,7 @@
   id: WeaponBlueLaserPistol
   name: blue laser pistol
   description: "Standard officer 'Blue Shield' laser with mode selector. Has non-lethal fire options for suppressing threats and lethal fire for neutralization. Chrome finish and ergonomic grip ensure accuracy and reliability in critical situations."
+  suffix: Pistol
   components:
   - type: Sprite
     sprite: _Wega/Objects/Weapons/Guns/Battery/bluerantiquelasergun.rsi
@@ -42,7 +43,7 @@
       magState: disabler
   - type: Item
     heldPrefix: lethal
-  - type: PredictedBattery
+  - type: Battery
     maxCharge: 1500
     startingCharge: 1500
   - type: GenericVisualizer
@@ -65,6 +66,7 @@
   id: WeaponDominator
   name: laser pistol 'Dominator'
   description: A high-tech weapon created by the environmental organization Sibyl System, specifically designed to fight crime.
+  suffix: Pistol
   components:
   - type: Sprite
     sprite: _Wega/Objects/Weapons/Guns/Battery/dominator.rsi
@@ -104,7 +106,7 @@
       magState: disabler
   - type: Item
     heldPrefix: lethal
-  - type: PredictedBattery
+  - type: Battery
     maxCharge: 1000
     startingCharge: 1000
   - type: GenericVisualizer
@@ -137,7 +139,7 @@
   - type: Battery
     maxCharge: 1500
     startingCharge: 1500
-  - type: PredictedBatterySelfRecharger
+  - type: BatterySelfRecharger
     autoRechargeRate: 25
   - type: BatteryAmmoProvider
     proto: BulletPlasmaCutter
@@ -211,7 +213,7 @@
   - type: Battery
     maxCharge: 480
     startingCharge: 480
-  - type: PredictedBatterySelfRecharger
+  - type: BatterySelfRecharger
     autoRechargeRate: 5
   - type: Item
     size: Normal
@@ -267,7 +269,7 @@
   - type: BatteryAmmoProvider
     proto: BulletPlasmaCutterMagmaSpreadNarrow
     fireCost: 80
-  - type: PredictedBatterySelfRecharger
+  - type: BatterySelfRecharger
     autoRechargeRate: 20
   - type: StaticPrice
     price: 3000

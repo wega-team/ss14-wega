@@ -220,7 +220,7 @@
     - id: SurgerykitFilledPro # Corvax-Wega-Surgery-Edit
     - id: ClothingHandsGlovesLatexSurgeon # Corvax-Wega-Surgery
     - id: ClothingBackpackDuffelSurgeryFilled
-    - id: ClothingEyesHudMedical
+    - id: ClothingEyesGlassesMedSunglasses
     - id: ClothingHandsGlovesNitrile
     - id: ClothingHeadsetAltMedical
     - id: ClothingMaskSterile

@@ -107,10 +107,10 @@ public sealed class BatteryDrainerImplantSystem : EntitySystem
         if (sourceUid == null || targetUid == null)
             return;
 
-        if (!TryComp<BatteryComponent>(sourceUid, out var sourceBattery) || !TryComp<BatteryComponent>(targetUid, out var targetBattery))
+        if (!HasComp<BatteryComponent>(sourceUid) || !TryComp<BatteryComponent>(targetUid, out var targetBattery))
             return;
 
-        float transfer = Math.Clamp(targetBattery.MaxCharge - targetBattery.CurrentCharge, 0f, sourceBattery.CurrentCharge);
+        float transfer = Math.Clamp(targetBattery.MaxCharge - _battery.GetCharge(targetUid.Value), 0f, _battery.GetCharge(sourceUid.Value));
         if (transfer == 0f)
         {
             _popup.PopupEntity(Loc.GetString("implant-battery-drainer-no-transfer"), user, user);

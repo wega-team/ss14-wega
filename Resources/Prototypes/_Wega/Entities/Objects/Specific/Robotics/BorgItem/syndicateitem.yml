@@ -1,0 +1,182 @@
+- type: entity
+  name: mining drill
+  parent: BaseItem
+  id: SyndicateDrill
+  description: Powerful tool used to quickly drill through rocks.
+  components:
+  - type: Item
+    storedRotation: -90
+  - type: Tag
+    tags:
+    - Pickaxe
+  - type: Sprite
+    sprite: _Wega/Objects/Tools/syndicate_drill.rsi
+    state: icon
+  - type: MeleeWeapon
+    autoAttack: true
+    angle: 0
+    wideAnimationRotation: -90
+    soundHit:
+      path: "/Audio/Items/drill_hit.ogg"
+    attackRate: 4
+    damage:
+      groups:
+        Brute: 12
+      types:
+        Structural: 75
+
+- type: entity
+  parent: BaseItem
+  id: BorgWeaponSniperHristovAdvanced
+  suffix: Syndiborg
+  name: semi-aito Hristov
+  description: A portable anti-material rifle. Uses .60 anti-material ammo upgraded by gorlax marodeurs.
+  components:
+  - type: Item
+    size: Huge
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Snipers/new_hristov.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Gun
+    minAngle: 0
+    maxAngle: 0
+    fireRate: 0.7
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/sniper.ogg
+    soundEmpty:
+      path: /Audio/Weapons/Guns/Empty/empty.ogg
+  - type: BatteryAmmoProvider
+    proto: CartridgeAntiMateriel
+    fireCost: 100
+  - type: BatterySelfRecharger
+    autoRechargeRate: 25
+    autoRechargePauseTime: 20
+  - type: Battery
+    maxCharge: 700
+    startingCharge: 0
+  - type: AmmoCounter
+  - type: Appearance
+  - type: StaticPrice
+    price: 5000
+  - type: Unremoveable
+  - type: ItemSelector
+    items:
+    - BorgWeaponSniperHristovAdvanced
+    - WeaponLightMachineGunL6CEnergy
+  - type: ActivatableUI
+    key: enum.ItemSelectorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.TransferAmountUiKey.Key:
+        type: TransferAmountBoundUserInterface
+      enum.ItemSelectorUiKey.Key:
+        type: ItemSelectorBoundUserInterface
+  - type: Tag
+    tags:
+    - Itemborg
+
+- type: entity
+  name: L6C ROW
+  id: WeaponLightMachineGunL6CEnergy
+  suffix: Syndiborg
+  parent: BaseItem
+  description: A L6 SAW for use by cyborgs. Creates .30 rifle ammo on the fly from an internal ammo fabricator, which slowly self-charges.
+  components:
+    - type: Gun
+      minAngle: 4
+      maxAngle: 25
+      angleIncrease: 4
+      angleDecay: 16
+      fireRate: 8
+      selectedMode: FullAuto
+      availableModes:
+        - FullAuto
+      soundGunshot:
+        path: /Audio/Weapons/Guns/Gunshots/lmg.ogg
+      soundEmpty:
+        path: /Audio/Weapons/Guns/Empty/lmg_empty.ogg
+    - type: Sprite
+      sprite: Objects/Weapons/Guns/LMGs/l6.rsi
+      layers:
+        - state: base
+          map: [ "enum.GunVisualLayers.Base" ]
+        - state: mag-3
+          map: [ "enum.GunVisualLayers.Mag" ]
+    - type: Item
+      size: Huge
+    - type: BatteryAmmoProvider
+      proto: CartridgeLightRifle
+      fireCost: 50
+    - type: BatterySelfRecharger
+      autoRechargeRate: 50
+      autoRechargePauseTime: 20
+    - type: Battery
+      maxCharge: 1500
+      startingCharge: 0
+    - type: AmmoCounter
+    - type: ItemSelector
+      items:
+      - BorgWeaponSniperHristovAdvanced
+      - WeaponLightMachineGunL6CEnergy
+    - type: ActivatableUI
+      key: enum.ItemSelectorUiKey.Key
+    - type: UserInterface
+      interfaces:
+        enum.TransferAmountUiKey.Key:
+          type: TransferAmountBoundUserInterface
+        enum.ItemSelectorUiKey.Key:
+          type: ItemSelectorBoundUserInterface
+    - type: Tag
+      tags:
+      - Itemborg
+
+- type: entity
+  name: china ROW
+  parent: [BaseWeaponLauncher, BaseSyndicateContraband]
+  id: WeaponLauncherChinaLakeBorg
+  suffix: Syndiborg
+  description: PLOOP.
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Launchers/china_lake.rsi
+    layers:
+      - state: icon
+        map: ["enum.GunVisualLayers.Base"]
+  - type: Item
+    size: Huge
+    shape:
+    - 0,0,4,2
+  - type: AmmoCounter
+  - type: Gun
+    fireRate: 1
+    selectedMode: SemiAuto
+    availableModes:
+      - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/grenade_launcher.ogg
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+        - Grenade
+    capacity: 1
+    proto: GrenadeFrag
+    cycleable: false
+    soundInsert:
+      path: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+  - type: StaticPrice
+    price: 10000
+  - type: BallisticAmmoSelfRefiller
+    autoRefillRate: 60
+    affectedByEmp: true
+
+
+
+
+
+
+

@@ -1,0 +1,25 @@
+- type: entity
+  name: android treatment kit
+  description: "A specialized medical kit for when the toxins lab spontaneously burns down."
+  parent: Medkit
+  id: MedkitAndroid
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Medical/firstaidkits.rsi
+    state: firstaid_android
+  - type: Item
+    sprite: _Wega/Objects/Specific/Medical/firstaidkits.rsi
+    heldPrefix: firstaid_android
+    
+- type: entity
+  name: black android treatment kit
+  description: "A specialized medical kit for when the toxins lab spontaneously burns down."
+  parent: Medkit
+  id: MedkitAndroidBlack
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Medical/firstaidkits.rsi
+    state: blackkit_android
+  - type: Item
+    sprite: _Wega/Objects/Specific/Medical/firstaidkits.rsi
+    heldPrefix: blackkit_android

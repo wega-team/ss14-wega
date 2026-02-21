@@ -65,7 +65,7 @@ public abstract partial class SharedGunSystem
         var fromCoordinates = Transform(user).Coordinates;
         var toCoordinates = Transform(target).Coordinates;
 
-        Shoot(gunUid, gun, ammo, fromCoordinates, toCoordinates, out _, user);
+        Shoot((gunUid, gun), ammo, fromCoordinates, toCoordinates, out _, user);
         return true;
     }
 
@@ -216,7 +216,7 @@ public abstract partial class SharedGunSystem
         }
 
         // Shoot confirmed
-        Shoot(gunUid, gun, ev.Ammo, fromCoordinates, toCoordinates.Value, out var userImpulse, user, throwItems: attemptEv.ThrowItems);
+        Shoot((gunUid, gun), ev.Ammo, fromCoordinates, toCoordinates.Value, out var userImpulse);
         var shotEv = new GunShotEvent(user, ev.Ammo);
         RaiseLocalEvent(gunUid, ref shotEv);
 
@@ -227,7 +227,7 @@ public abstract partial class SharedGunSystem
         RaiseLocalEvent(user, ref shooterEv);
 
         if (shooterEv.Push)
-            CauseImpulse(fromCoordinates, toCoordinates.Value, user, userPhysics);
+            CauseImpulse(fromCoordinates, toCoordinates.Value, (user, userPhysics));
         return true;
     }
 
@@ -240,7 +240,7 @@ public abstract partial class SharedGunSystem
         var fromCoordinates = Transform(user).Coordinates;
         var toCoordinates = Transform(target).Coordinates;
 
-        Shoot(gunUid, gun, ammo, fromCoordinates, toCoordinates, out _, user);
+        Shoot((gunUid, gun), ammo, fromCoordinates, toCoordinates, out _, user);
         return true;
     }
 }

@@ -388,3 +388,15 @@
 
 - type: Tag
   id: DataCrystal
+
+- type: Tag
+  id: HudMedSec
+
+- type: Tag
+  id: Lightbox
+
+- type: Tag
+  id: Itemborg
+
+- type: Tag
+  id: Nanopast

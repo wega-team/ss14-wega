@@ -12,6 +12,7 @@ using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Fluids.Components;
 using Content.Shared.Ghost;
+using Content.Shared.Gibbing;
 using Content.Shared.Lavaland.Events;
 using Content.Shared.Maps;
 using Content.Shared.Mobs;
@@ -37,6 +38,7 @@ public sealed partial class BubblegumSystem : EntitySystem
     [Dependency] private readonly AppearanceSystem _appearance = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly DamageableSystem _damage = default!;
+    [Dependency] private readonly GibbingSystem _gibbing = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly SharedMapSystem _map = default!;
@@ -46,7 +48,6 @@ public sealed partial class BubblegumSystem : EntitySystem
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly TurfSystem _turf = default!;
-    [Dependency] private readonly BodySystem _body = default!;
     [Dependency] private readonly NPCSystem _npc = default!;
 
     private const float LowHealthThreshold = 0.5f;
@@ -823,7 +824,7 @@ public sealed partial class BubblegumSystem : EntitySystem
 
             if (_mobState.IsIncapacitated(entity.Owner))
             {
-                _body.GibBody(entity.Owner);
+                _gibbing.Gib(entity.Owner);
                 _dashDamagedTargets.Add(entity.Owner);
                 continue;
             }
@@ -972,7 +973,7 @@ public sealed partial class BubblegumSystem : EntitySystem
         {
             Spawn(comp.HandEffect, Transform(puddle.Owner).Coordinates);
             if (_mobState.IsIncapacitated(target))
-                _body.GibBody(target);
+                _gibbing.Gib(target);
 
             break;
         }

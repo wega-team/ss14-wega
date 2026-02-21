@@ -69,6 +69,6 @@ public sealed class CrayonPreviewOverlay : Overlay
         var grid = transform.GetGrid(player);
         Angle rot = grid != null ? transform.GetWorldRotation(grid.Value) : 0;
 
-        worldHandle.DrawTexture(texture, position, rot + crayon.Angle, color);
+        worldHandle.DrawTexture(texture, position, rot * 2 + crayon.Angle, color);
     }
 }

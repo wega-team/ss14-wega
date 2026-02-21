@@ -57,3 +57,23 @@
   cost: 3100
   category: cargoproduct-category-name-science
   group: market
+
+- type: cargoProduct
+  id: CrateMedkitAndroid
+  icon:
+    sprite: _Wega/Objects/Specific/Medical/firstaidkits.rsi
+    state: firstaid_android
+  product: CrateMedkitAndroid
+  cost: 500
+  category: cargoproduct-category-name-science
+  group: market
+
+- type: cargoProduct
+  id: CrateMedkitAndroidBlack
+  icon:
+    sprite: _Wega/Objects/Specific/Medical/firstaidkits.rsi
+    state: blackkit_android
+  product: CrateMedkitAndroidBlack
+  cost: 1000
+  category: cargoproduct-category-name-science
+  group: market

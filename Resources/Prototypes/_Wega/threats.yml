@@ -1,0 +1,4 @@
+- type: ninjaHackingThreat
+  id: Xenoborgs
+  announcement: terror-xenoborgs
+  rule: Xenoborgs

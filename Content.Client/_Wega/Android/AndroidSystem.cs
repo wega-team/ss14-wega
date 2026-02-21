@@ -1,6 +1,6 @@
+using Content.Client.Power.EntitySystems;
 using Content.Shared.Alert;
 using Content.Shared.Android;
-using Content.Shared.Power.EntitySystems;
 using Content.Shared.PowerCell;
 
 namespace Content.Client.Android;
@@ -8,7 +8,7 @@ namespace Content.Client.Android;
 public sealed class AndroidSystem : SharedAndroidSystem
 {
     [Dependency] private readonly PowerCellSystem _powerCell = default!;
-    [Dependency] private readonly PredictedBatterySystem _battery = default!;
+    [Dependency] private readonly BatterySystem _battery = default!;
     [Dependency] private readonly AlertsSystem _alerts = default!;
 
     public override void Initialize()

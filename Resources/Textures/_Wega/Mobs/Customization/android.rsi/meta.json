@@ -28,6 +28,14 @@
             "directions": 4
         },
         {
+            "name": "body_spine",
+            "directions": 4
+        },
+        {
+            "name": "body_spine_led",
+            "directions": 4
+        },
+        {
             "name": "leds",
             "directions": 4
         },
@@ -37,6 +45,10 @@
         },
         {
             "name": "leds_stripes",
+            "directions": 4
+        },
+        {
+            "name": "temple_led",
             "directions": 4
         },
         {
@@ -96,11 +108,31 @@
             "directions": 4
         },
         {
+            "name": "head_bulbs",
+            "directions": 4
+        },
+        {
             "name": "eyes_visor",
             "directions": 4
         },
         {
             "name": "eyes_visor_led",
+            "directions": 4
+        },
+        {
+            "name": "l_arm_scrap",
+            "directions": 4
+        },
+        {
+            "name": "r_arm_scrap",
+            "directions": 4
+        },
+        {
+            "name": "l_leg_scrap",
+            "directions": 4
+        },
+        {
+            "name": "r_leg_scrap",
             "directions": 4
         }
     ]

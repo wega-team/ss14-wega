@@ -21,12 +21,10 @@
     areaInsert: true
     whitelist:
       components:
-        - LightBulb
         - Battery
         - Circuitboard
-        - RCDAmmo
+        - FloorTile
       tags:
-        - CableCoil
         - ConstructionMaterial
   - type: Dumpable
   - type: MagnetPickup

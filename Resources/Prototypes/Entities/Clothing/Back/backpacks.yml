@@ -214,7 +214,8 @@
     sprite: Clothing/Back/Backpacks/ertleader.rsi
   - type: Storage
     grid:
-    - 0,0,8,3
+    - 0,0,9,5 # Corvax-wega-add
+    - 8,1,9,5 # Corvax-wega-add
   - type: ExplosionResistance
     damageCoefficient: 0.1
 
@@ -375,7 +376,7 @@
   id: ClothingBackpackDebug
   name: wackpack
   description: What the fuck is this?
-  suffix: Debug
+  suffix: DEBUG
   components:
   - type: Storage
     grid:
@@ -391,7 +392,7 @@
   id: ClothingBackpackDebug2
   name: big wackpack
   description: What the fuck is this?
-  suffix: Debug
+  suffix: DEBUG
   components:
   - type: Storage
     grid:
@@ -402,7 +403,7 @@
   id: ClothingBackpackDebug3
   name: gay wackpack
   description: What the fuck is this?
-  suffix: Debug
+  suffix: DEBUG
   components:
   - type: Storage
     grid:
@@ -423,7 +424,7 @@
   id: ClothingBackpackDebug4
   name: offset wackpack
   description: What the fuck is this?
-  suffix: Debug
+  suffix: DEBUG
   components:
   - type: Storage
     grid:

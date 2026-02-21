@@ -1,4 +1,4 @@
-﻿using Content.Shared.Electrocution;
+using Content.Shared.Electrocution;
 using Content.Shared.StatusEffect;
 using Robust.Shared.Prototypes;
 
@@ -34,7 +34,7 @@ public sealed partial class Electrocute : EntityEffectBase<Electrocute>
     /// <summary>
     /// Shock damage we apply to the entity.
     /// </summary>
-    [DataField] public int ShockDamage = 5;
+    [DataField] public float ShockDamage = 5; // Corvax-Wega-Edit
 
     /// <summary>
     /// Do we refresh the duration? Or add more duration if it already exists.

@@ -1,0 +1,872 @@
+- type: entity
+  parent: BaseItem
+  id: BorgGeneratorDonts
+  name: dounts generator
+  description: Tastes like cardboard.
+  components:
+  - type: UseDelay
+    delay: 15
+  - type: Sprite
+    sprite: Objects/Devices/gates.rsi
+    layers:
+    - state: base
+  - type: Item
+    size: Tiny
+  - type: SpawnItemsOnUse
+    uses: 100000
+    items:
+      - id: FoodDonutBungo
+        orGroup: DountBorg
+      - id: FoodDonutJellyBungo
+        orGroup: DountBorg
+      - id: FoodDonutJellyCaramel
+        orGroup: DountBorg
+      - id: FoodDonutJellySpaceman
+        orGroup: DountBorg
+      - id: FoodDonutJellyHomer
+        orGroup: DountBorg
+      - id: FoodDonutJelly
+        orGroup: DountBorg
+      - id: FoodDonutJellyPink
+        orGroup: DountBorg
+      - id: FoodDonutJellySweetpea
+        orGroup: DountBorg
+      - id: FoodDonutJellyChocolate
+        orGroup: DountBorg
+      - id: FoodDonutJellyApple
+        orGroup: DountBorg
+      - id: FoodDonutJellyScurret
+        orGroup: DountBorg
+      - id: FoodDonutPink
+        orGroup: DountBorg
+      - id: FoodDonutSweetpea
+        orGroup: DountBorg
+      - id: FoodDonutHomer
+        orGroup: DountBorg
+      - id: FoodDonutPlain
+        orGroup: DountBorg
+      - id: FoodDonutJellyPlain
+        orGroup: DountBorg
+      - id: FoodDonutJellyBluePumpkin
+        orGroup: DountBorg
+      - id: FoodDonutMeat
+        orGroup: DountBorg
+      - id: FoodDonutCaramel
+        orGroup: DountBorg
+      - id: FoodDonutBluePumpkin
+        orGroup: DountBorg
+      - id: FoodDonutChocolate
+        orGroup: DountBorg
+      - id: FoodDonut
+        orGroup: DountBorg
+      - id: FoodDonutSpaceman
+        orGroup: DountBorg
+      - id: FoodDonutApple
+        orGroup: DountBorg
+    sound:
+      path: /Audio/Machines/phasein.ogg
+
+- type: entity
+  parent: BaseItem
+  id: BorgGeneratorCup
+  name: material generator
+  description: Tastes like cardboard.
+  components:
+  - type: UseDelay
+    delay: 15
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Android/parts.rsi
+    layers:
+      - state: eye_module
+  - type: Item
+    size: Tiny
+  - type: SpawnItemsOnUse
+    uses: 100000
+    items:
+      - id: DrinkWaterCup
+    sound:
+      path: /Audio/Machines/phasein.ogg
+
+- type: entity
+  parent: BaseItem
+  id: BorgGeneratorDrinkGlass
+  name: drink glass generator
+  description: Tastes like cardboard.
+  components:
+  - type: UseDelay
+    delay: 15
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Android/parts.rsi
+    layers:
+      - state: eye_module
+  - type: Item
+    size: Tiny
+  - type: SpawnItemsOnUse
+    uses: 100000
+    items:
+      - id: DrinkGlass
+    sound:
+      path: /Audio/Machines/phasein.ogg
+
+- type: entity
+  parent: BorgDrinkSolutionWater
+  id: BorgDrinkSolutionWaterBase
+  suffix: Water, Base
+  components:
+  - type: ItemSelector
+    items:
+    - BorgDrinkSolutionWaterBase
+    - BorgDrinkSolutionBeerBase
+
+- type: entity
+  parent: BorgDrinkSolutionBeer
+  id: BorgDrinkSolutionBeerBase
+  suffix: Water, Base
+  components:
+  - type: ItemSelector
+    items:
+    - BorgDrinkSolutionWaterBase
+    - BorgDrinkSolutionBeerBase
+
+#Garding
+- type: entity
+  parent: HydroponicsToolMiniHoe
+  suffix: Cyborg
+  id: BorgHydroponicsToolMiniHoe
+  components:
+  - type: Unremoveable
+  - type: ItemSelector
+    items:
+    - BorgHydroponicsToolMiniHoe
+    - BorgHydroponicsToolSpade
+    - BorgHydroponicsToolClippers
+    - BorgHydroponicsToolScythe
+    - BorgHydroponicsToolHatchet
+  - type: ActivatableUI
+    key: enum.ItemSelectorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.TransferAmountUiKey.Key:
+        type: TransferAmountBoundUserInterface
+      enum.ItemSelectorUiKey.Key:
+        type: ItemSelectorBoundUserInterface
+  - type: Tag
+    tags:
+    - Hoe
+    - BotanyHoe
+    - Itemborg
+
+- type: entity
+  parent: HydroponicsToolSpade
+  suffix: Cyborg
+  id: BorgHydroponicsToolSpade
+  components:
+  - type: Unremoveable
+  - type: ItemSelector
+    items:
+    - BorgHydroponicsToolMiniHoe
+    - BorgHydroponicsToolSpade
+    - BorgHydroponicsToolClippers
+    - BorgHydroponicsToolScythe
+    - BorgHydroponicsToolHatchet
+  - type: ActivatableUI
+    key: enum.ItemSelectorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.TransferAmountUiKey.Key:
+        type: TransferAmountBoundUserInterface
+      enum.ItemSelectorUiKey.Key:
+        type: ItemSelectorBoundUserInterface
+  - type: Tag
+    tags:
+    - BotanyShovel
+    - Itemborg
+
+- type: entity
+  parent: HydroponicsToolClippers
+  suffix: Cyborg
+  id: BorgHydroponicsToolClippers
+  components:
+  - type: Unremoveable
+  - type: ItemSelector
+    items:
+    - BorgHydroponicsToolMiniHoe
+    - BorgHydroponicsToolSpade
+    - BorgHydroponicsToolClippers
+    - BorgHydroponicsToolScythe
+    - BorgHydroponicsToolHatchet
+  - type: ActivatableUI
+    key: enum.ItemSelectorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.TransferAmountUiKey.Key:
+        type: TransferAmountBoundUserInterface
+      enum.ItemSelectorUiKey.Key:
+        type: ItemSelectorBoundUserInterface
+  - type: Tag
+    tags:
+    - PlantSampleTaker
+    - Itemborg
+
+- type: entity
+  parent: HydroponicsToolScythe
+  suffix: Cyborg
+  id: BorgHydroponicsToolScythe
+  components:
+  - type: Unremoveable
+  - type: ItemSelector
+    items:
+    - BorgHydroponicsToolMiniHoe
+    - BorgHydroponicsToolSpade
+    - BorgHydroponicsToolClippers
+    - BorgHydroponicsToolScythe
+    - BorgHydroponicsToolHatchet
+  - type: ActivatableUI
+    key: enum.ItemSelectorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.TransferAmountUiKey.Key:
+        type: TransferAmountBoundUserInterface
+      enum.ItemSelectorUiKey.Key:
+        type: ItemSelectorBoundUserInterface
+  - type: Tag
+    tags:
+    - Itemborg
+
+- type: entity
+  parent: HydroponicsToolHatchet
+  suffix: Cyborg
+  id: BorgHydroponicsToolHatchet
+  components:
+  - type: Unremoveable
+  - type: ItemSelector
+    items:
+    - BorgHydroponicsToolMiniHoe
+    - BorgHydroponicsToolSpade
+    - BorgHydroponicsToolClippers
+    - BorgHydroponicsToolScythe
+    - BorgHydroponicsToolHatchet
+  - type: ActivatableUI
+    key: enum.ItemSelectorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.TransferAmountUiKey.Key:
+        type: TransferAmountBoundUserInterface
+      enum.ItemSelectorUiKey.Key:
+        type: ItemSelectorBoundUserInterface
+  - type: Tag
+    tags:
+    - BotanyHatchet
+    - Itemborg
+
+## Service Rare
+
+- type: entity
+  parent: DrinkBase
+  id: BorgDrinkSolutionWater
+  name: water generation
+  suffix: Water
+  description: The trusty mixing buddy of the bartender.
+  components:
+  - type: Sprite
+    sprite: /Textures/_Wega/Objects/Specific/Robotics/BorgItem/solition_generation.rsi
+    layers:
+    - state: icon
+    - state: water
+  - type: Label
+    currentLabel: reagent-name-water
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: Water
+          Quantity: 0
+  - type: FitsInDispenser
+    solution: drink
+  - type: SolutionRegeneration
+    solution: drink
+    generated:
+      reagents:
+      - ReagentId: Water
+        Quantity: 1
+  - type: Unremoveable
+  - type: ItemSelector
+    items:
+    - BorgDrinkSolutionWater
+    - BorgDrinkSolutionCoffe
+    - BorgDrinkSolutionCola
+    - BorgDrinkSolutionMilk
+    - BorgDrinkSolutionBeer
+    - BorgDrinkSolutionWine
+  - type: ActivatableUI
+    key: enum.ItemSelectorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.TransferAmountUiKey.Key:
+        type: TransferAmountBoundUserInterface
+      enum.ItemSelectorUiKey.Key:
+        type: ItemSelectorBoundUserInterface
+  - type: Tag
+    tags:
+    - Itemborg
+
+- type: entity
+  parent: DrinkBase
+  id: BorgDrinkSolutionBeer
+  name: beer generation
+  suffix: Beer
+  description: The trusty mixing buddy of the bartender.
+  components:
+  - type: Sprite
+    sprite: /Textures/_Wega/Objects/Specific/Robotics/BorgItem/solition_generation.rsi
+    layers:
+    - state: icon
+    - state: beer
+  - type: Label
+    currentLabel: reagent-name-beer
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: Beer
+          Quantity: 0
+  - type: FitsInDispenser
+    solution: drink
+  - type: SolutionRegeneration
+    solution: drink
+    generated:
+      reagents:
+      - ReagentId: Beer
+        Quantity: 1
+  - type: Unremoveable
+  - type: ItemSelector
+    items:
+    - BorgDrinkSolutionWater
+    - BorgDrinkSolutionCoffe
+    - BorgDrinkSolutionCola
+    - BorgDrinkSolutionMilk
+    - BorgDrinkSolutionBeer
+    - BorgDrinkSolutionWine
+  - type: ActivatableUI
+    key: enum.ItemSelectorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.TransferAmountUiKey.Key:
+        type: TransferAmountBoundUserInterface
+      enum.ItemSelectorUiKey.Key:
+        type: ItemSelectorBoundUserInterface
+  - type: Tag
+    tags:
+    - Itemborg
+
+- type: entity
+  parent: DrinkBase
+  id: BorgDrinkSolutionWine
+  name: wine generation
+  suffix: Wine
+  description: The trusty mixing buddy of the bartender.
+  components:
+  - type: Sprite
+    sprite: /Textures/_Wega/Objects/Specific/Robotics/BorgItem/solition_generation.rsi
+    layers:
+    - state: icon
+    - state: wine
+  - type: Label
+    currentLabel: reagent-name-wine
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: Wine
+          Quantity: 0
+  - type: FitsInDispenser
+    solution: drink
+  - type: SolutionRegeneration
+    solution: drink
+    generated:
+      reagents:
+      - ReagentId: Wine
+        Quantity: 1
+  - type: Unremoveable
+  - type: ItemSelector
+    items:
+    - BorgDrinkSolutionWater
+    - BorgDrinkSolutionCoffe
+    - BorgDrinkSolutionCola
+    - BorgDrinkSolutionMilk
+    - BorgDrinkSolutionBeer
+    - BorgDrinkSolutionWine
+  - type: ActivatableUI
+    key: enum.ItemSelectorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.TransferAmountUiKey.Key:
+        type: TransferAmountBoundUserInterface
+      enum.ItemSelectorUiKey.Key:
+        type: ItemSelectorBoundUserInterface
+  - type: Tag
+    tags:
+    - Itemborg
+
+- type: entity
+  parent: DrinkBase
+  id: BorgDrinkSolutionCoffe
+  name: coffee generation
+  suffix: Coffee
+  description: The trusty mixing buddy of the bartender.
+  components:
+  - type: Sprite
+    sprite: /Textures/_Wega/Objects/Specific/Robotics/BorgItem/solition_generation.rsi
+    layers:
+    - state: icon
+    - state: coffe
+  - type: Label
+    currentLabel: reagent-name-coffee
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: Coffee
+          Quantity: 0
+  - type: FitsInDispenser
+    solution: drink
+  - type: SolutionRegeneration
+    solution: drink
+    generated:
+      reagents:
+      - ReagentId: Coffee
+        Quantity: 1
+  - type: Unremoveable
+  - type: ItemSelector
+    items:
+    - BorgDrinkSolutionWater
+    - BorgDrinkSolutionCoffe
+    - BorgDrinkSolutionCola
+    - BorgDrinkSolutionMilk
+    - BorgDrinkSolutionBeer
+    - BorgDrinkSolutionWine
+  - type: ActivatableUI
+    key: enum.ItemSelectorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.TransferAmountUiKey.Key:
+        type: TransferAmountBoundUserInterface
+      enum.ItemSelectorUiKey.Key:
+        type: ItemSelectorBoundUserInterface
+  - type: Tag
+    tags:
+    - Itemborg
+
+- type: entity
+  parent: DrinkBase
+  id: BorgDrinkSolutionCola
+  name: cola generation
+  suffix: Cola
+  description: The trusty mixing buddy of the bartender.
+  components:
+  - type: Sprite
+    sprite: /Textures/_Wega/Objects/Specific/Robotics/BorgItem/solition_generation.rsi
+    layers:
+    - state: icon
+    - state: cola
+  - type: Label
+    currentLabel: reagent-name-cola
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: Cola
+          Quantity: 0
+  - type: FitsInDispenser
+    solution: drink
+  - type: SolutionRegeneration
+    solution: drink
+    generated:
+      reagents:
+      - ReagentId: Cola
+        Quantity: 1
+  - type: Unremoveable
+  - type: ItemSelector
+    items:
+    - BorgDrinkSolutionWater
+    - BorgDrinkSolutionCoffe
+    - BorgDrinkSolutionCola
+    - BorgDrinkSolutionMilk
+    - BorgDrinkSolutionBeer
+    - BorgDrinkSolutionWine
+  - type: ActivatableUI
+    key: enum.ItemSelectorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.TransferAmountUiKey.Key:
+        type: TransferAmountBoundUserInterface
+      enum.ItemSelectorUiKey.Key:
+        type: ItemSelectorBoundUserInterface
+  - type: Tag
+    tags:
+    - Itemborg
+
+- type: entity
+  parent: DrinkBase
+  id: BorgDrinkSolutionMilk
+  name: milk generation
+  suffix: Milk
+  description: The trusty mixing buddy of the bartender.
+  components:
+  - type: Sprite
+    sprite: /Textures/_Wega/Objects/Specific/Robotics/BorgItem/solition_generation.rsi
+    layers:
+    - state: icon
+    - state: milk
+  - type: Label
+    currentLabel: reagent-name-milk
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: Milk
+          Quantity: 0
+  - type: FitsInDispenser
+    solution: drink
+  - type: SolutionRegeneration
+    solution: drink
+    generated:
+      reagents:
+      - ReagentId: Milk
+        Quantity: 1
+  - type: Unremoveable
+  - type: ItemSelector
+    items:
+    - BorgDrinkSolutionWater
+    - BorgDrinkSolutionCoffe
+    - BorgDrinkSolutionCola
+    - BorgDrinkSolutionMilk
+    - BorgDrinkSolutionBeer
+    - BorgDrinkSolutionWine
+  - type: ActivatableUI
+    key: enum.ItemSelectorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.TransferAmountUiKey.Key:
+        type: TransferAmountBoundUserInterface
+      enum.ItemSelectorUiKey.Key:
+        type: ItemSelectorBoundUserInterface
+  - type: Tag
+    tags:
+    - Itemborg
+
+- type: entity
+  id: MicrowaveForBorg
+  parent: [ BaseMachinePowered, SmallConstructibleMachine ]
+  name: microwave
+  description: It's magic.
+  components:
+  - type: ApcPowerReceiver
+    needsPower: false
+    powerLoad: 0
+  - type: Microwave
+    capacity: 10
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.MicrowaveVisualState.Bloody:
+        bloody:
+          True: { visible: true }
+          False: { visible: false }
+        bloodyunshaded:
+          True: { visible: true }
+          False: { visible: false }
+      enum.PowerDeviceVisuals.VisualState:
+        enum.MicrowaveVisualizerLayers.Base:
+          Idle: { state: "mw" }
+          Broken: { state: "mwb" }
+          Cooking: { state: "mw" }
+        enum.MicrowaveVisualizerLayers.BaseUnlit:
+          Idle: { state: "mw_unlit" }
+          Broken: { state: "mw_unlit" }
+          Cooking: { state: "mw_running_unlit" }
+        bloodyunshaded:
+          Idle: { visible: false }
+          Broken: { visible: false }
+      enum.PowerDeviceVisuals.Powered:
+        enum.MicrowaveVisualizerLayers.BaseUnlit:
+          True: { visible: true }
+          False: { visible: false }
+  - type: ActivatableUI
+    key: enum.MicrowaveUiKey.Key
+  - type: DeviceLinkSink
+    ports:
+    - On
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    receiveFrequencyId: BasicDevice
+  - type: WirelessNetworkConnection
+    range: 200
+  - type: UserInterface
+    interfaces:
+      enum.MicrowaveUiKey.Key:
+        type: MicrowaveBoundUserInterface
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.3,-0.16,0.3,0.16"
+        density: 190
+        mask:
+        - TabletopMachineMask
+        layer:
+        - TabletopMachineLayer
+  - type: Sprite
+    sprite: Structures/Machines/microwave.rsi
+    drawdepth: SmallObjects
+    snapCardinals: true
+    offset: "0.0,0.2"
+    layers:
+    - state: mw0
+      map: ["enum.MicrowaveVisualizerLayers.Base"]
+    - state: mw_unlit
+      shader: unshaded
+      map: ["enum.MicrowaveVisualizerLayers.BaseUnlit"]
+    - state: mwbloody0
+      map: ["bloody"]
+      visible: false
+    - state: mwbloody1
+      shader: unshaded
+      map: ["bloodyunshaded"]
+      visible: false
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100000000000
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Breakage"]
+  - type: Explosive
+    explosionType: Default
+    maxIntensity: 10
+    totalIntensity: 5
+    intensitySlope: 5
+    canCreateVacuum: false
+    deleteAfterExplosion: false
+  - type: Machine
+    board: MicrowaveMachineCircuitboard
+  - type: ContainerContainer
+    containers:
+      microwave_entity_container: !type:Container
+      machine_board: !type:Container
+      machine_parts: !type:Container
+  - type: EmptyOnMachineDeconstruct
+    containers:
+    - microwave_entity_container
+  - type: GuideHelp
+    guides:
+    - Chef
+    - FoodRecipes
+  - type: Item
+    sprite: Structures/Machines/microwave.rsi
+    size: Ginormous
+  - type: MeleeWeapon
+    attackRate: 0.25
+    soundHit:
+      collection: MetalBreak
+    damage:
+      types:
+        Blunt: 25
+  - type: EmitSoundOnLand
+    sound:
+      collection: MetalBreak
+      params:
+        variation: 0.25
+  - type: DamageExaminable
+
+- type: entity
+  parent: BaseItem
+  id: BorgGeneratorPocket
+  name: pocket generator
+  description: Tastes like cardboard.
+  components:
+  - type: UseDelay
+    delay: 30
+  - type: Sprite
+    sprite: Structures/Wallmounts/air_monitors_xeno.rsi
+    layers:
+    - state: fire_b1
+  - type: Item
+    size: Tiny
+  - type: SpawnItemsOnUse
+    uses: 100000
+    items:
+      - id: FoodDonkpocket
+        orGroup: PocketBorg
+      - id: FoodDonkpocketDank
+        orGroup: PocketBorg
+      - id: FoodDonkpocketSpicy
+        orGroup: PocketBorg
+      - id: FoodDonkpocketTeriyaki
+        orGroup: PocketBorg
+      - id: FoodDonkpocketPizza
+        orGroup: PocketBorg
+      - id: FoodDonkpocketHonk
+        orGroup: PocketBorg
+      - id: FoodDonkpocketBerry
+        orGroup: PocketBorg
+      - id: FoodDonkpocketStonk
+        orGroup: PocketBorg
+      - id: FoodDonkpocketCarp
+        orGroup: PocketBorg
+      - id: FoodDonkpocketDink
+        orGroup: PocketBorg
+      - id: FoodDonkpocketMothWarm
+        orGroup: PocketBorg
+    sound:
+      path: /Audio/Machines/phasein.ogg
+
+- type: entity
+  parent: BaseItem
+  id: BorgGeneratorDrink
+  name: material generator
+  description: Tastes like cardboard.
+  components:
+  - type: UseDelay
+    delay: 15
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Android/parts.rsi
+    layers:
+      - state: eye_module
+  - type: Item
+    size: Tiny
+  - type: SpawnItemsOnUse
+    uses: 100000
+    items:
+      - id: DrinkBeerCan
+        orGroup: DrinkBorg
+      - id: DrinkCafeLatte
+        orGroup: DrinkBorg
+      - id: DrinkChangelingStingCan
+        orGroup: DrinkBorg
+      - id: DrinkColaBottleFull
+        orGroup: DrinkBorg
+      - id: DrinkColaCan
+        orGroup: DrinkBorg
+      - id: DrinkDrGibbCan
+        orGroup: DrinkBorg
+      - id: DrinkEnergyDrinkCan
+        orGroup: DrinkBorg
+      - id: DrinkFourteenLokoCan
+        orGroup: DrinkBorg
+      - id: DrinkGrapeCan
+        orGroup: DrinkBorg
+      - id: DrinkGreenTea
+        orGroup: DrinkBorg
+      - id: DrinkHotCoco
+        orGroup: DrinkBorg
+      - id: DrinkHotCoffee
+        orGroup: DrinkBorg
+      - id: DrinkIcedTeaCan
+        orGroup: DrinkBorg
+      - id: DrinkLemonLimeCan
+        orGroup: DrinkBorg
+      - id: DrinkLemonLimeCranberryCan
+        orGroup: DrinkBorg
+      - id: DrinkPwrGameCan
+        orGroup: DrinkBorg
+      - id: DrinkShamblersJuiceCan
+        orGroup: DrinkBorg
+      - id: DrinkRootBeerCan
+        orGroup: DrinkBorg
+      - id: DrinkSodaWaterCan
+        orGroup: DrinkBorg
+      - id: DrinkSolDryCan
+        orGroup: DrinkBorg
+      - id: DrinkSpaceMountainWindBottleFull
+        orGroup: DrinkBorg
+      - id: DrinkSpaceMountainWindCan
+        orGroup: DrinkBorg
+      - id: DrinkSpaceUpCan
+        orGroup: DrinkBorg
+      - id: DrinkStarkistCan
+        orGroup: DrinkBorg
+      - id: DrinkTeacup
+        orGroup: DrinkBorg
+      - id: DrinkTonicWaterCan
+        orGroup: DrinkBorg
+      - id: DrinkWaterBottleFull
+        orGroup: DrinkBorg
+      - id: DrinkWineCan
+        orGroup: DrinkBorg
+    sound:
+      path: /Audio/Machines/phasein.ogg
+
+- type: entity
+  parent: BaseItem
+  id: BorgGeneratorMeat
+  name: material generator
+  description: Tastes like cardboard.
+  components:
+  - type: UseDelay
+    delay: 20
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Android/parts.rsi
+    layers:
+    - state: gas_module
+  - type: Item
+    size: Tiny
+  - type: SpawnItemsOnUse
+    uses: 100000
+    items:
+      - id: FoodMeat
+        orGroup: MeatBorg
+      - id: FoodMeatBacon
+        orGroup: MeatBorg
+      - id: FoodMeatChicken
+        orGroup: MeatBorg
+      - id: FoodMeatDuck
+        orGroup: MeatBorg
+      - id: FoodMeatCrab
+        orGroup: MeatBorg
+      - id: FoodMeatCutlet
+        orGroup: MeatBorg
+      - id: FoodMeatChickenCutlet
+        orGroup: MeatBorg
+      - id: FoodMeatLizard
+        orGroup: MeatBorg
+      - id: FoodMeatLizardCutlet
+        orGroup: MeatBorg
+      - id: FoodMeatXenoCutlet
+        orGroup: MeatBorg
+      - id: FoodMeatPenguin
+        orGroup: MeatBorg
+      - id: FoodMeatXeno
+        orGroup: MeatBorg
+      - id: FoodMeatBear
+        orGroup: MeatBorg
+      - id: FoodMeatBearCutlet
+        orGroup: MeatBorg
+      - id: FoodMeatPenguinCutlet
+        orGroup: MeatBorg
+    sound:
+      path: /Audio/Machines/phasein.ogg
+
+- type: entity
+  name: box freezer
+  parent: BoxCardboard
+  id: BoxFreezer
+  description: Box with freezer fuction.
+  components:
+  - type: Storage
+    maxItemSize: Normal
+    grid:
+    - 0,0,7,4
+  - type: Sprite
+    layers:
+      - state: boxwide
+  - type: AntiRottingContainer

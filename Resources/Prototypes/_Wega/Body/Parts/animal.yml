@@ -9,7 +9,6 @@
     - state: head
   - type: BodyPart
     partType: Head
-  - type: Gibbable
   - type: Extractable
     juiceSolution:
       reagents:

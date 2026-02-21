@@ -26,6 +26,7 @@
   name: cult robe
   description: "A set of robes worn by followers of the blood cult. Put on your hood and remove your ID card to hide your identity."
   components:
+  - type: AllowSuitStorage
   - type: Sprite
     sprite: _Wega/Clothing/OuterClothing/Coats/cultrobesalt.rsi
   - type: Clothing
@@ -57,12 +58,12 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 1.75
-        Slash: 1.75
-        Piercing: 1.75
-        Heat: 1.75
+        Blunt: 1.5
+        Slash: 1.5
+        Piercing: 1.5
+        Heat: 1.5
   - type: ExplosionResistance
-    damageCoefficient: 1.75
+    damageCoefficient: 1.5
   - type: ClothingSpeedModifier
     walkModifier: 1.6
     sprintModifier: 1.6

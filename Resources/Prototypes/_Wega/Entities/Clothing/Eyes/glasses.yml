@@ -1,0 +1,39 @@
+- type: entity
+  parent: ClothingEyesHudMedical
+  id: ClothingEyesGlassesMedSunglasses
+  name: med sun glasses
+  description: A pair of black sunglasses with medical HUD.
+  components:
+  - type: FlashImmunity
+  - type: EyeProtection
+    protectionTime: 5
+  - type: Sprite
+    sprite: _Wega/Clothing/Eyes/Glasses/medglasses.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Eyes/Glasses/medglasses.rsi
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+  - type: Construction
+    graph: GlassesMed
+    node: medGlasses  
+  
+- type: entity
+  parent: ClothingEyesHudMedSec
+  id: ClothingEyesGlassesMedSecSunglasses
+  name: med-sec sun glasses
+  description: A pair of black sunglasses with security and medical HUD.
+  components:
+  - type: FlashImmunity
+  - type: EyeProtection
+    protectionTime: 5
+  - type: Sprite
+    sprite: _Wega/Clothing/Eyes/Glasses/medsecglasses.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Eyes/Glasses/medsecglasses.rsi
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+  - type: Construction
+    graph: GlassesMedSec
+    node: medsecGlasses

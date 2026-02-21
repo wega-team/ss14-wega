@@ -18,9 +18,6 @@
   - type: DiseaseMachine # Corvax-Wega-Disease
     machineOutput: Vaccine # Corvax-Wega-Disease
   - type: Appearance
-  - type: DiseaseMachineVisuals
-    idleState: icon
-    runningState: running
   - type: Machine
     board: VaccinatorMachineCircuitboard
   - type: ContainerContainer

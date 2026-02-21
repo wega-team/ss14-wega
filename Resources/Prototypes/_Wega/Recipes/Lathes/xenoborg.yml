@@ -1,0 +1,25 @@
+- type: latheRecipe
+  id: AntimovCircuitBoard
+  categories:
+  - Circuitry
+  completetime: 5
+  result: AntimovCircuitBoard
+  materials:
+    Steel: 1500
+    Glass: 1500
+
+- type: latheRecipe
+  parent: BaseXenoborgModulesRecipe
+  id: XenoborgModuleCommonRepeir
+  result: XenoborgModuleCommonRepeir
+  materials:
+    Steel: 1500
+    Glass: 1500
+    
+- type: latheRecipe
+  parent: BaseXenoborgModulesRecipe
+  id: XenoborgModuleCommonSpeed
+  result: XenoborgModuleCommonSpeed
+  materials:
+    Steel: 1500
+    Glass: 1500

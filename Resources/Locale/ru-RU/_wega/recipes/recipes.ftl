@@ -1,2 +1,3 @@
 recipes-resecret-door-name = укреплённая потайная дверь 
 recipes-resecret-door-desc = Потайная дверь, замаскированная под укреплённую стену. Прекрасное решение, чтобы спрятать ваши тёмные делишки.
+construction-graph-tag-medsec-hud = охранный-мед визор

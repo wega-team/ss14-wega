@@ -220,6 +220,10 @@
       weight: 0.06
     - id: ClothingNeckSolarisPin
       weight: 0.06
+    - id: ClothingNeckLumenPin
+      weight: 0.06
+    - id: ClothingNeckVoidPin
+      weight: 0.06
     - id: ClothingNeckWhiteListPin
       weight: 0.06
       # Corvax-Pins-End

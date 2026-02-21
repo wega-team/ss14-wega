@@ -3,10 +3,10 @@
 namespace Content.Shared.Xenobiology;
 
 [Prototype]
-public sealed class CellPrototype : IPrototype
+public sealed partial class CellPrototype : IPrototype
 {
     [IdDataField]
-    public string ID { get; } = string.Empty;
+    public string ID { get; private set; } = string.Empty;
 
     [DataField]
     public LocId Name;

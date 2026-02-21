@@ -15,7 +15,8 @@
   - Syringe
   - PillCanister
   - HandLabeler
-  - BaseChemistryEmptyVial
+  - ChemistryEmptyVial
+  - ChemistryEmptyVialSmall
   - Dropper
 
 - type: latheRecipePack
@@ -40,10 +41,10 @@
   - BoneSetter
   - BoneGel
   - ScalpelLaser
-  - Hemrevein 
-  - Bonesaw 
+  - Hemrevein
+  - Bonesaw
     # Corvax-Wega-Surgery-end
-    
+
 - type: latheRecipePack
   id: MedicalStatic
   recipes:
@@ -55,6 +56,7 @@
   - WhiteCane
   - OffsetCane
   - OffsetCaneWood
+  - JetInjector
 
 - type: latheRecipePack
   id: RollerBedsStatic
@@ -108,6 +110,7 @@
   - SyringeBluespace
   - LauncherSyringe
   - MiniSyringe
+  - AdvancedJetInjector
   - LargeBeaker # Corvax-Wega-Add
 
 - type: latheRecipePack

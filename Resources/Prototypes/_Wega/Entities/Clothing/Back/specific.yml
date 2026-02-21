@@ -24,7 +24,7 @@
     damageCoefficient: 0.9
   - type: StaticPrice
     price: 100
-    
+
 - type: entity
   id: PouchMedical
   parent: PouchBase
@@ -55,7 +55,6 @@
       - SurgeryTool
       - Dropper
       components:
-      - Hypospray
       - Injector
       - Pill
       - HandLabeler
@@ -97,7 +96,7 @@
       - DoorRemote
       - Whistle
       - BalloonPopper
-      
+
 - type: entity
   id: PouchSyndie
   parent: PouchBase

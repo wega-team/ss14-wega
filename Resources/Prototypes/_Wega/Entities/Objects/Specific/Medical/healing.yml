@@ -103,7 +103,7 @@
   - type: Sprite
     state: pill9
   - type: Label
-    currentLabel: bruizine 10u
+    currentLabel: puncturase 10u
   - type: SolutionContainerManager
     solutions:
       food:
@@ -635,4 +635,48 @@
     stackType: Tyriumpack
     count: 3
 
+- type: entity
+  name: nanopast
+  description: "Extremely important liquid for android functioning."
+  parent: BaseHealingItem
+  id: Nanopast
+  suffix: Full
+  components:
+  - type: Tag
+    tags:
+    - Ointment
+    - Brutepack
+    - Nanopast
+  - type: Sprite
+    state: morphine
+  - type: Item
+    heldPrefix: morphine
+  - type: Healing
+    delay: 1.75
+    damageContainers:
+      - Android
+      - Silicon
+    bloodlossModifier: -10 # Tourniquets stop bleeding
+    damage:
+      groups:
+        Brute: -30 # 10 for each type in the group
+        Burn: -30
+    healingBeginSound:
+      path: "/Audio/Effects/packetrip.ogg"
+    healingEndSound:
+      path: "/Audio/Items/squeezebottle.ogg"
+  - type: Stack
+    stackType: Nanopast
+    count: 5
+  - type: StackPrice
+    price: 40
+    
+- type: entity
+  parent: Nanopast
+  id: Nanopast1
+  suffix: Single
+  components:
+  - type: Stack
+    stackType: Nanopast
+    count: 1
 # Corvax-Wega-Android-end

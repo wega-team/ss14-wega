@@ -79,7 +79,8 @@
   tier: 2
   cost: 12500
   recipeUnlocks:
-  - BorgModuleAdvancedChemical
+  - BorgModuleAdvancedTopical
+  - AdvancedJetInjector
   - Hynospray
   - DefibrillatorCompact
   - ArmSyntheticDefib

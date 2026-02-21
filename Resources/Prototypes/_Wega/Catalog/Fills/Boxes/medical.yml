@@ -1,7 +1,7 @@
 - type: entity
   name: pill canister box
   suffix: mech
-  parent: BoxPillCanister
+  parent: BoxCardboard
   id: BoxPillCanisterMech
   description: A box full of pill canisters.
   components:
@@ -21,7 +21,7 @@
 - type: entity
   name: pill canister box
   suffix: burn
-  parent: BoxPillCanister
+  parent: BoxCardboard
   id: BoxPillCanisterBurn
   description: A box full of pill canisters.
   components:
@@ -42,7 +42,7 @@
 - type: entity
   name: pill canister box
   suffix: toxin
-  parent: BoxPillCanister
+  parent: BoxCardboard
   id: BoxPillCanisterToxin
   description: A box full of pill canisters.
   components:
@@ -62,7 +62,7 @@
 - type: entity
   name: pill canister box
   suffix: oxyg
-  parent: BoxPillCanister
+  parent: BoxCardboard
   id: BoxPillCanisterOxyg
   description: A box full of pill canisters.
   components:
@@ -81,10 +81,14 @@
 - type: entity
   name: pill canister box
   suffix: all
-  parent: BoxPillCanister
+  parent: BoxCardboard
   id: BoxPillCanisterAll
   description: A box full of pill canisters.
   components:
+  - type: Sprite
+    layers:
+      - state: box # Corvax-Resprite
+      - state: pillbox
   - type: Label
     currentLabel: all
   - type: StorageFill
@@ -98,7 +102,7 @@
 - type: entity
   name: pill canister box
   suffix: pro
-  parent: BoxPillCanister
+  parent: BoxCardboard
   id: BoxPillCanisterPro
   description: A box full of pill canisters.
   components:
@@ -118,7 +122,7 @@
 - type: entity
   name: pill canister box
   suffix: sec
-  parent: BoxPillCanister
+  parent: BoxCardboard
   id: BoxPillCanisterSB
   description: A box full of pill canisters.
   components:
@@ -132,3 +136,65 @@
     contents:
       - id: PillCanisterExMedipen
       - id: PillCanisterDylomet
+      
+- type: entity
+  name: autoInjector all
+  parent: BoxCardboard
+  suffix: All
+  id: BoxAutoInjectorAll
+  description: A box full of pill canisters.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Storage/box_icons.rsi
+    layers:
+      - state: box # Corvax-Resprite
+      - state: medipen
+  - type: StorageFill
+    contents:
+      - id: AirlossAutoInjector
+        amount: 2
+      - id: BruteAutoInjector
+        amount: 2
+      - id: BurnAutoInjector
+        amount: 2
+      - id: EmergencyMedipen
+      - id: RadAutoInjector
+      - id: AntiPoisonMedipen
+
+- type: entity
+  name: autoInjector box
+  parent: BoxCardboard
+  suffix: Mech
+  id: BoxAutoInjectorMech
+  description: A box full of pill canisters.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Storage/box_icons.rsi
+    layers:
+      - state: box_of_doom # Corvax-Resprite
+      - state: medipen
+  - type: StorageFill
+    contents:
+      - id: PunctAutoInjector
+        amount: 6
+      - id: BruteAutoInjector
+        amount: 3
+
+- type: entity
+  name: autoInjector box
+  parent: BoxCardboard
+  id: BoxAutoInjectorBurn
+  suffix: Burn
+  description: A box full of pill canisters.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Storage/box_icons.rsi
+    layers:
+      - state: box_hug # Corvax-Resprite
+      - state: medipen
+  - type: StorageFill
+    contents:
+      - id: PyraAutoInjector
+        amount: 6
+      - id: BurnAutoInjector
+        amount: 3

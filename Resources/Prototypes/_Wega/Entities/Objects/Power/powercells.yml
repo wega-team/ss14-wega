@@ -7,12 +7,11 @@
   - type: Sprite
     sprite: _Wega/Objects/Consumable/Food/extracts.rsi
     state: yellow
-  - type: PredictedBattery
+  - type: Battery
     maxCharge: 720
     startingCharge: 720
     pricePerJoule: 0.15
   - type: BatterySelfRecharger
-    autoRecharge: true
     autoRechargeRate: 12
   - type: PowerCell
   - type: Explosive
@@ -36,7 +35,7 @@
     sprite: _Wega/Objects/Power/power_cells.rsi
     layers:
     - state: superpotato
-  - type: PredictedBattery
+  - type: Battery
     maxCharge: 1800
     startingCharge: 1800
   - type: Tag
@@ -47,5 +46,4 @@
     graph: PowerCellSuperPotatoCraft
     node: superpotatobattery
   - type: BatterySelfRecharger
-    autoRecharge: true
     autoRechargeRate: 12

@@ -12,7 +12,7 @@
   id: Vampire
   components:
   - type: GameRule
-    minPlayers: 20
+    minPlayers: 5
   - type: VampireRule
   - type: AntagObjectives
     objectives:

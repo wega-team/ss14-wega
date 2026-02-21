@@ -67,6 +67,8 @@
   - ClothingNeckNebulaPin
   - ClothingNeckNovaPin
   - ClothingNeckSolarisPin
+  - ClothingNeckLumenPin
+  - ClothingNeckVoidPin
   - ClothingNeckWhiteListPin
   # Corvax-Loadouts-End
   # Corvax-Wega-start
@@ -74,10 +76,6 @@
   - BrasletSearch
   - BrasletBite
   - BrasletSex
-  - HatNewYearRed
-  - HatNewYearBlue
-  - HatNewYearCyan
-  - HatNewYearWega
   # Corvax-Wega-end
   - TowelColorWhite
   - TowelColorGray

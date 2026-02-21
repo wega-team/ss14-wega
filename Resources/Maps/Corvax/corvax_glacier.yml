@@ -342527,7 +342527,7 @@ entities:
       parent: 41871
     - type: Gun
       fireRate: 2.5
-    - type: PredictedBattery
+    - type: Battery
       startingCharge: 2000
       maxCharge: 2000
 - proto: WeaponLaserCarbine

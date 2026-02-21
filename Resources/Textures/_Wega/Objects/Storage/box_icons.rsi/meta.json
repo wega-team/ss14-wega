@@ -9,6 +9,55 @@
     "states": [
         {
             "name": "tyriumpack"
+        },
+        {
+            "name": "medipen"
+        },
+        {
+            "name": "box"
+        },
+        {
+            "name": "boxwide"
+        },
+        {
+            "name": "boxwidetoy"
+        },
+        {
+            "name": "box_hug"
+        },
+        {
+            "name": "box_of_doom"
+        },
+        {
+            "name": "box_of_doom_big"
+        },
+        {
+            "name": "box_security"
+        },
+        {
+            "name": "box_medical"
+        },
+        {
+            "name": "box_science"
+        },
+        {
+            "name": "internals"
+        },
+        {
+            "name": "inhand-left",
+            "directions": 4
+        },
+        {
+            "name": "inhand-right",
+            "directions": 4
+        },
+        {
+            "name": "hug-inhand-left",
+            "directions": 4
+        },
+        {
+            "name": "hug-inhand-right",
+            "directions": 4
         }
     ]
 }

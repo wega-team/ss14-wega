@@ -186,13 +186,20 @@
   - type: BloodCultWeapon
   - type: MeleeWeapon
     wideAnimationRotation: -135
-    attackRate: 1
+    attackRate: 1.5
     damage:
       types:
-        Slash: 25
+        Slash: 30
     soundHit:
         path: /Audio/Weapons/bladeslice.ogg
   - type: DisarmMalus
+  - type: Reflect
+    reflectProb: .25
+    spread: 90
+  - type: Construction
+    deconstructionTarget: null
+    graph: BloodCultWeapons
+    node: blood
 
 - type: entity
   id: WeaponDeathBlade
@@ -217,14 +224,20 @@
     - 0,2,0,1
   - type: BloodCultWeapon
   - type: MeleeWeapon
+    resistanceBypass: true
+    autoAttack: true
     wideAnimationRotation: -135
     attackRate: 2
     damage:
       types:
-        Slash: 10
+        Slash: 20
     soundHit:
         path: /Audio/Weapons/bladeslice.ogg
   - type: DisarmMalus
+  - type: Construction
+    deconstructionTarget: null
+    graph: BloodCultWeapons
+    node: death
 
 - type: entity
   id: WeaponHellBlade
@@ -249,14 +262,19 @@
     - 1,2,1,1
   - type: BloodCultWeapon
   - type: MeleeWeapon
+    range: 1
     wideAnimationRotation: -135
-    attackRate: 0.35
+    attackRate: 0.75
     damage:
       types:
-        Slash: 40
+        Slash: 50
     soundHit:
         path: /Audio/Weapons/bladeslice.ogg
   - type: DisarmMalus
+  - type: Construction
+    deconstructionTarget: null
+    graph: BloodCultWeapons
+    node: hell
 
 - type: entity
   parent: BaseItem
@@ -316,18 +334,21 @@
         acts: [ "Destruction" ]
   - type: BloodCultWeapon
   - type: MeleeWeapon
+    range: 2.5
+    possibilityWideAtack: false
     wideAnimationRotation: -135
     damage:
       types:
-        Piercing: 29
+        Piercing: 25
     angle: 0
     animation: WeaponArcThrust
     soundHit:
       path: /Audio/Weapons/bladeslice.ogg
   - type: DamageOtherOnHit
+    ignoreResistances: true
     damage:
       types:
-        Piercing: 37
+        Piercing: 41
   - type: IncreaseDamageOnWield
     damage:
       types:
@@ -501,7 +522,7 @@
     fireRate: 2
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/Magic/staff_animation.ogg
-  - type: BasicEntityAmmoProvider
+  - type: AmmoCounter
+  - type: BallisticAmmoProvider
     proto: ProjectileBloodBolt
     capacity: 24
-    count: 24

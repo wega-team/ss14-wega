@@ -130,7 +130,7 @@
     - type: Tag
       tags:
       - CannotSuicide
-      - Brain # Corvax-Wega-Android
+      - BrainSynthetic # Corvax-Wega-Android
     - type: GenericVisualizer
       visuals:
         enum.ToggleableGhostRoleVisuals.Status:

@@ -89,7 +89,7 @@ public sealed class SpraySystem : SharedSpraySystem
 
         // Corvax-Wega-Surgery-start
         if (args.Target != null && HasComp<ItemComponent>(args.Target)
-            && _solutionContainer.TryGetSolution(entity.Owner, SprayComponent.SolutionName, out _, out var solution)
+            && _solutionContainer.TryGetSolution(entity.Owner, entity.Comp.Solution, out _, out var solution)
             && solution.GetTotalPrototypeQuantity("Ethanol") >= FixedPoint2.New(5))
         {
             EnsureComp<SterileComponent>(args.Target.Value);
@@ -106,7 +106,7 @@ public sealed class SpraySystem : SharedSpraySystem
     // Corvax-Wega-Add-start
     private void SpraySelf(Entity<SprayComponent> entity, EntityUid user)
     {
-        if (!_solutionContainer.TryGetSolution(entity.Owner, SprayComponent.SolutionName, out var soln, out var solution))
+        if (!_solutionContainer.TryGetSolution(entity.Owner, entity.Comp.Solution, out var soln, out var solution))
             return;
 
         var ev = new SprayAttemptEvent(user);
@@ -186,7 +186,7 @@ public sealed class SpraySystem : SharedSpraySystem
 
     public override void Spray(Entity<SprayComponent> entity, MapCoordinates mapcoord, EntityUid? user = null)
     {
-        if (!_solutionContainer.TryGetSolution(entity.Owner, SprayComponent.SolutionName, out var soln, out var solution))
+        if (!_solutionContainer.TryGetSolution(entity.Owner, entity.Comp.Solution, out var soln, out var solution))
             return;
 
         var ev = new SprayAttemptEvent(user);

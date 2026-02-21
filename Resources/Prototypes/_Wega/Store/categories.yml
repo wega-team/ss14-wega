@@ -6,19 +6,54 @@
   priority: 0
 
 - type: storeCategory
+  id: ERTWeapon
+  name: store-category-ert-weapon
+  priority: 1
+
+- type: storeCategory
+  id: ERTWeaponPro
+  name: store-category-ert-weapon-pro
+  priority: 2
+
+- type: storeCategory
+  id: ERTAmmo
+  name: store-category-ert-ammo
+  priority: 3
+
+- type: storeCategory
   id: ERTEquipment
   name: store-category-ert-equipment
-  priority: 1
+  priority: 4
+
+- type: storeCategory
+  id: ERTEquipmentPro
+  name: store-category-ert-equipment-pro
+  priority: 5
+
+- type: storeCategory
+  id: ERTGranades
+  name: store-category-ert-granades
+  priority: 6
 
 - type: storeCategory
   id: ERTEngineering
   name: store-category-ert-engineering
-  priority: 2
+  priority: 7
+
+- type: storeCategory
+  id: ERTMaterials
+  name: store-category-ert-materials
+  priority: 8
+
+- type: storeCategory
+  id: ERTFlatpack
+  name: store-category-ert-flatpack
+  priority: 9
 
 - type: storeCategory
   id: ERTMedicine
   name: store-category-ert-medicine
-  priority: 3
+  priority: 10
 
 #Void
 - type: storeCategory

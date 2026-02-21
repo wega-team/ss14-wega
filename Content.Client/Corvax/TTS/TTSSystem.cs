@@ -89,16 +89,28 @@ public sealed class TTSSystem : EntitySystem
         {
             // Corvax-Wega-SoundInsolation-Start
             if (!TryGetEntity(ev.SourceUid.Value, out var sourceEntityOpt) || !sourceEntityOpt.HasValue)
+            {
+                _contentRoot.RemoveFile(filePath);
                 return;
+            }
 
             var sourceEntity = sourceEntityOpt.Value;
+
+            if (!Exists(sourceEntity) || Deleted(sourceEntity))
+            {
+                _contentRoot.RemoveFile(filePath);
+                return;
+            }
 
             float volumeMultiplier = 1f;
             if (_player.LocalEntity != null && Exists(_player.LocalEntity.Value))
             {
                 var insulation = _soundInsulation.GetSoundInsulation(sourceEntity, _player.LocalEntity.Value);
                 if (insulation >= 0.95f)
+                {
+                    _contentRoot.RemoveFile(filePath);
                     return;
+                }
 
                 if (insulation > 0.1f && insulation < 0.95f)
                 {

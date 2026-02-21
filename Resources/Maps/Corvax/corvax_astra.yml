@@ -272841,7 +272841,7 @@ entities:
     - type: Transform
       pos: -0.45866632,-43.426468
       parent: 2
-    - type: PredictedBattery
+    - type: Battery
       startingCharge: 400
       maxCharge: 400
 - proto: WeaponTurretSyndicateBroken

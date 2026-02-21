@@ -3,6 +3,7 @@
   id: WeaponRifleXC67
   name: assault riffle xC-67
   description: A prototype of a new assault rifle from the creators of the famous C-20r. Uses the .20 cartridge. Advanced ergonomics allow for excellent shooting accuracy.
+  suffix: Rifles
   components:
   - type: Sprite
     sprite: _Wega/Objects/Weapons/Guns/Rifles/xc67.rsi

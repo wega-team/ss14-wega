@@ -10,3 +10,153 @@
   collisionMask: FullTileMask
   rotation: Fixed
   fx: EffectRCDDeconstruct4
+  
+# Flooring
+- type: rcd
+  id: FloorXenoborg
+  name: rcd-component-floor-xeno
+  category: WallsAndFlooring
+  sprite: _Wega/Interface/Radial/RCD/FloorTileItemXenoborg.png
+  mode: ConstructTile
+  prototype: FloorXenoborg
+  cost: 1
+  delay: 1
+  collisionMask: InteractImpassable
+  rules:
+    - CanBuildOnEmptyTile
+  fx: EffectRCDConstruct1
+
+- type: rcd
+  id: FloorBlueCircuit
+  name: rcd-component-b-circuit-xeno
+  category: WallsAndFlooring
+  sprite: _Wega/Interface/Radial/RCD/FloorTileItemBCircuit.png
+  mode: ConstructTile
+  prototype: FloorBlueCircuit
+  cost: 1
+  delay: 1
+  collisionMask: InteractImpassable
+  rules:
+    - CanBuildOnEmptyTile
+  fx: EffectRCDConstruct1
+
+# Walls
+- type: rcd
+  id: WallXenoborg
+  category: WallsAndFlooring
+  sprite: _Wega/Interface/Radial/RCD/WallXenoborg.png
+  mode: ConstructObject
+  prototype: WallXenoborg
+  cost: 8
+  delay: 4
+  collisionMask: FullTileMask
+  rotation: Fixed
+  fx: EffectRCDConstruct2
+
+- type: rcd
+  id: WallXenoborgDiagonal
+  category: WallsAndFlooring
+  sprite: _Wega/Interface/Radial/RCD/WallXenoborgDiagonal.png
+  mode: ConstructObject
+  prototype: WallXenoborgDiagonal
+  cost: 8
+  delay: 4
+  collisionMask: FullTileMask
+  rotation: User
+  fx: EffectRCDDeconstruct4
+
+# Windows
+- type: rcd
+  id: XenoborgWindow
+  category: WindowsAndGrilles
+  sprite: _Wega/Interface/Radial/RCD/XenoborgWindow.png
+  mode: ConstructObject
+  prototype: XenoborgWindow
+  cost: 4
+  delay: 3
+  collisionMask: Impassable
+  rules:
+    - IsWindow
+  rotation: Fixed
+  fx: EffectRCDConstruct3
+
+# Airlocks
+- type: rcd
+  id: AirlockXenoborgLocked
+  category: Airlocks
+  sprite: _Wega/Interface/Radial/RCD/AirlockXenoborgLocked.png
+  mode: ConstructObject
+  prototype: AirlockXenoborgLocked
+  cost: 4
+  delay: 4
+  collisionMask: FullTileMask
+  rotation: Camera
+  fx: EffectRCDConstruct4
+
+# Lighting
+- type: rcd
+  id: TubeLightBlue
+  category: Lighting
+  sprite: _Wega/Interface/Radial/RCD/PoweredlightBlue.png
+  mode: ConstructObject
+  prototype: PoweredlightBlue
+  cost: 2
+  delay: 1
+  collisionMask: TabletopMachineMask
+  collisionBounds: "-0.23,-0.49,0.23,-0.36"
+  rotation: User
+  fx: EffectRCDConstruct1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

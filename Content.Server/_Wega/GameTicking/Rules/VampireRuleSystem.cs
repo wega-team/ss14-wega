@@ -132,8 +132,8 @@ namespace Content.Server.GameTicking.Rules
 
         private void SetVampireComponents(EntityUid vampire, VampireComponent _)
         {
-            if (TryComp<TemperatureComponent>(vampire, out var temperatureComponent))
-                temperatureComponent.ColdDamageThreshold = Atmospherics.TCMB;
+            if (TryComp<TemperatureDamageComponent>(vampire, out var temperature))
+                temperature.ColdDamageThreshold = Atmospherics.TCMB;
 
             EnsureComp<UnholyComponent>(vampire);
             EnsureComp<VampireComponent>(vampire);
