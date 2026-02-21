@@ -3,6 +3,10 @@
   name: job-name-clown
   description: job-description-clown
   playTimeTracker: JobClown
+  # Corvax-Wega-SubRoles-start
+  subRoles:
+  - Mime
+  # Corvax-Wega-SubRoles-end
   requirements:
   - !type:OverallPlaytimeRequirement
       time: 3600 #1 hrs # Corvax-RoleTime

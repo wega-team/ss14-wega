@@ -3,6 +3,7 @@
   name: job-name-detective
   description: job-description-detective
   playTimeTracker: JobDetective
+  isSubRole: true # Corvax-Wega-add
   requirements:
     - !type:DepartmentTimeRequirement
       department: Security

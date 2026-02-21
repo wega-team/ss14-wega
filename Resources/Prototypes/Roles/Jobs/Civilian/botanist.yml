@@ -5,6 +5,7 @@
   playTimeTracker: JobBotanist
   startingGear: BotanistGear
   icon: "JobIconBotanist"
+  isSubRole: true # Corvax-Wega-add
   supervisors: job-supervisors-hop
   access:
   - Service

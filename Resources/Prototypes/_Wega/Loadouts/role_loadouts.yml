@@ -12,6 +12,7 @@
   - BaseShoose
   - Survival
   - Trinkets
+  - ServiceWorkerJobTrinkets
   - GroupSpeciesBreathTool
   - Top
   - Bottom
@@ -27,6 +28,7 @@
   - BrigmedicOuterClothing
   - SurvivalMedical
   - Trinkets
+  - SecurityJobTrinkets
   - GroupSpeciesBreathTool
   - TopSecurity
   - BottomSecurity
@@ -114,7 +116,25 @@
   - BaseShoose
   - Survival
   - Trinkets
+  - CargoTechnicianJobTrinkets
   - GroupSpeciesBreathTool
+  - Top
+  - Bottom
+  - Socks
+
+- type: roleLoadout
+  id: JobWardenHelper
+  groups:
+  - Inventory # Corvax-Loadouts
+  - WardenJumpsuit
+  - SecurityBackpack
+  - SecurityBelt
+  - WardenOuterClothing
+  - SecurityShoes
+  - SurvivalSecurity
+  - Trinkets
+  - WardenJobTrinkets
+  - GroupSpeciesBreathToolSecurity
   - Top
   - Bottom
   - Socks

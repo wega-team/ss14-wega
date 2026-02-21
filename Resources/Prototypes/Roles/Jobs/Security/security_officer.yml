@@ -21,6 +21,14 @@
   - Maintenance
   - External
   - Cryogenics
+  # Corvax-Wega-SubRoles-start
+  subRoles:
+  - SeniorOfficer
+  - Detective
+  - Pilot
+  - Brigmedic
+  - WardenHelper
+  # Corvax-Wega-SubRoles-end
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]

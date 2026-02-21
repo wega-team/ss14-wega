@@ -17,6 +17,15 @@
   - Kitchen
   extendedAccess:
   - Hydroponics
+  # Corvax-Wega-SubRoles-start
+  subRoles:
+  - Chaplain
+  - Musician
+  - Librarian
+  - Janitor
+  - Reporter
+  - Barber
+  # Corvax-Wega-SubRoles-end
 
 - type: startingGear
   id: ServiceWorkerGear

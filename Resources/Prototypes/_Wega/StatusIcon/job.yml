@@ -37,3 +37,11 @@
     sprite: /Textures/_Wega/Interface/Misc/job_icons.rsi
     state: Postman
   jobName: job-name-postman
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconWardenHelper
+  icon:
+    sprite: /Textures/_Wega/Interface/Misc/job_icons.rsi
+    state: WardenHelper
+  jobName: job-name-wardenhelper

@@ -8,3 +8,5 @@ ent-SpawnPointBlueShieldOfficer = офицер синий щит
     .desc = { ent-SpawnPointJobBase.desc }
 ent-SpawnPointPostman = почтальон
     .desc = { ent-SpawnPointJobBase.desc }
+ent-SpawnPointWardenHelper = помощник смотрителя
+    .desc = { ent-SpawnPointJobBase.desc }

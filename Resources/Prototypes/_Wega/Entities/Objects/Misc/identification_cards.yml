@@ -150,3 +150,21 @@
       state: Postman
   - type: PresetIdCard
     job: Postman
+
+- type: entity
+  parent: IDCardStandard
+  id: WardenHelperIDCard
+  name: warden assistant ID card
+  components:
+    - type: Sprite
+      layers:
+      - state: default
+      - state: stripe_top
+        color: "#cb0000"
+      - state: stripe_bottom
+        color: "#830000"
+      - sprite: *wega-icon-rsi
+        offset: *wega-icon-offset
+        state: WardenHelper
+    - type: PresetIdCard
+      job: WardenHelper

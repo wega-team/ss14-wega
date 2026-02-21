@@ -4,6 +4,7 @@
   description: job-description-reporter
   playTimeTracker: JobReporter
   startingGear: ReporterGear
+  isSubRole: true # Corvax-Wega-add
   icon: "JobIconReporter"
   supervisors: job-supervisors-hop
   access:

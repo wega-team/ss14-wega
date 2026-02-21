@@ -3,6 +3,7 @@
   name: job-name-barber
   description: job-description-barber
   playTimeTracker: JobBarber
+  isSubRole: true # Corvax-Wega-add
   requirements:
   - !type:OverallPlaytimeRequirement
       time: 7200 #2 hrs # Corvax-RoleTime

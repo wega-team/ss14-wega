@@ -1,24 +1,20 @@
 - type: job
-  id: Warden
-  name: job-name-warden
-  description: job-description-warden
-  playTimeTracker: JobWarden
+  id: WardenHelper
+  name: job-name-wardenHelper
+  description: job-description-wardenHelper
+  playTimeTracker: JobWardenHelper
+  isSubRole: true
   requirements:
     - !type:DepartmentTimeRequirement
       department: Security
-      time: 50h # Corvax-RoleTime
-# Corvax-Wega-Start
-    # - !type:RoleTimeRequirement
-      # role: JobWardenHelper
-      # time: 10h # через неделю после принятия ПРа, чтоб резко вардены не пропали
-# Corvax-Wega-End
+      time: 72000 #20 hrs
     - !type:TraitsRequirement #Corvax-TraitsRequirement
       inverted: true
       traits:
       - Muted
   weight: 5
-  startingGear: WardenGear
-  icon: "JobIconWarden"
+  startingGear: WardenHelperGear
+  icon: "JobIconWardenHelper"
   supervisors: job-supervisors-hos
   canBeAntag: false
   access:
@@ -36,23 +32,25 @@
     implants: [ MindShieldImplant ]
 
 - type: startingGear
-  id: WardenGear
+  id: WardenHelperGear
   equipment:
+    head: ClothingHeadHatWardenHelper
     eyes: ClothingEyesGlassesSecurity
-    id: WardenPDA
+    id: WardenHelperPDA
     ears: ClothingHeadsetSecurity
     pocket1: WeaponPistolMk58
+    pocket2: BookSpaceLaw
   storage:
     back:
     - Flash
     - MagazinePistol
 
 - type: chameleonOutfit
-  id: WardenChameleonOutfit
-  job: Warden
+  id: WardenHelperChameleonOutfit
+  job: WardenHelper
   hasMindShield: true
   equipment:
-    head: ClothingHeadHatWarden
+    head: ClothingHeadHatWardenHelper
     mask: ClothingMaskGasSecurity
     outerClothing: ClothingOuterCoatWarden
     jumpsuit: ClothingUniformJumpsuitWarden

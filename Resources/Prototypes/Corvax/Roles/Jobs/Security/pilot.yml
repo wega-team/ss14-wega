@@ -3,6 +3,7 @@
   name: job-name-pilot
   description: job-description-pilot
   playTimeTracker: JobPilot
+  isSubRole: true # Corvax-Wega-add
   requirements:
   - !type:DepartmentTimeRequirement
     department: Security
