@@ -156,7 +156,6 @@ public sealed class VoiceOfGodSystem : EntitySystem
 
         InitializeCommandsChache();
 
-        SubscribeLocalEvent<VoiceOfGodComponent, TransformSpeechEvent>(OnTransformSpeech);
         SubscribeLocalEvent<VoiceOfGodComponent, EntitySpokeEvent>(OnEntitySpoke);
 
         SubscribeLocalEvent<VoiceOfGodImplantComponent, ImplantImplantedEvent>(OnImplantImplanted);
@@ -172,11 +171,6 @@ public sealed class VoiceOfGodSystem : EntitySystem
         }
 
         _commandsChache = commandsDict.ToFrozenDictionary();
-    }
-
-    private void OnTransformSpeech(Entity<VoiceOfGodComponent> ent, ref TransformSpeechEvent args)
-    {
-        args.Message = $"[color={ent.Comp.MessageColor}]{args.Message}[/color]";
     }
 
     private void OnEntitySpoke(Entity<VoiceOfGodComponent> ent, ref EntitySpokeEvent args)

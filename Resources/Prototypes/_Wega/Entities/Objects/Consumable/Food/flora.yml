@@ -8,8 +8,10 @@
     solutions:
       food:
         reagents:
+        - ReagentId: Omnizine
+          Quantity: 2.5
         - ReagentId: Saline
-          Quantity: 5
+          Quantity: 2.5
   - type: Sprite
     sprite: _Wega/Objects/Consumable/Food/flora.rsi
     state: cactus_fruit

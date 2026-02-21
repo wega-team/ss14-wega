@@ -16,6 +16,7 @@ using Content.Shared.Movement.Systems;
 using Robust.Shared.Random;
 using Robust.Shared.Prototypes;
 using Content.Shared.Damage.Systems;
+using Content.Shared.Lavaland.Components;
 
 namespace Content.Server.Shadow;
 
@@ -95,8 +96,10 @@ public sealed class PhotophobiaSystem : EntitySystem
     private bool CheckNearbyLights(EntityUid uid)
     {
         var xform = Transform(uid);
-        var worldPos = _transform.GetWorldPosition(xform);
+        if (HasComp<LavalandComponent>(xform.MapUid))
+            return true;
 
+        var worldPos = _transform.GetWorldPosition(xform);
         foreach (var (lightUid, light) in _lookup.GetEntitiesInRange<PointLightComponent>(xform.Coordinates, 10f))
         {
             if (!light.Enabled)

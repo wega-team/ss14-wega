@@ -172,3 +172,12 @@
     accentVColor: "#8900c9"
   - type: Icon
     state: pda-miner-medic
+  - type: CartridgeLoader
+    uiKey: enum.PdaUiKey.Key
+    preinstalled:
+      - CrewManifestCartridge
+      - NotekeeperCartridge
+      - NanoTaskCartridge
+      - NewsReaderCartridge
+      - NanoChatCartridge # Corvax-Wega-NanoChat
+      - MedTekCartridge

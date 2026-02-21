@@ -123,6 +123,7 @@
       state: generic_panel_open
   - type: LavalandShuttleConsole
   - type: ActivatableUI
+    singleUser: true
     key: enum.LavalandShuttleConsoleUiKey.Key
   - type: ActivatableUIRequiresPower
   - type: UserInterface
@@ -160,6 +161,7 @@
       state: generic_panel_open
   - type: PenalServitudeShuttleConsole
   - type: ActivatableUI
+    singleUser: true
     key: enum.PenalServitudeLavalandShuttleConsoleUiKey.Key
   - type: ActivatableUIRequiresPower
   - type: UserInterface

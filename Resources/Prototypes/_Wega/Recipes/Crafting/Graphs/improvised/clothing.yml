@@ -10,7 +10,7 @@
         amount: 2
         doAfter: 2.5
       - material: DragonHide
-        amount: 5
+        amount: 4
         doAfter: 5
       - material: Bones
         amount: 10

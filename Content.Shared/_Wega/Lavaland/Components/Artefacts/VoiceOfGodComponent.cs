@@ -5,9 +5,6 @@ namespace Content.Shared.Lavaland.Artefacts.Components;
 [RegisterComponent]
 public sealed partial class VoiceOfGodComponent : Component
 {
-    [DataField]
-    public Color MessageColor = Color.FromHex("#7F282A");
-
     [ViewVariables(VVAccess.ReadOnly)]
     public Dictionary<string, TimeSpan> CommandCooldowns = new();
 }

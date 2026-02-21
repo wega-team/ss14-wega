@@ -16,7 +16,7 @@
         amount: 2
         doAfter: 2.5
       - material: GoliathHide
-        amount: 6
+        amount: 4
         doAfter: 10
   - node: explorerSuit
     entity: ClothingOuterArmorExplorerSuitReinforced
@@ -39,7 +39,7 @@
         amount: 2
         doAfter: 2.5
       - material: GoliathHide
-        amount: 6
+        amount: 4
         doAfter: 10
   - node: explorerSuit
     entity: ClothingOuterArmorExplorerSuitKhakiReinforced

@@ -428,6 +428,10 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
         if (mapUid == null)
             return;
 
+        var avanpost = _lookup.GetEntitiesInRange<LavalandAvanpostComponent>(Transform(playerUid).Coordinates, 60f);
+        if (avanpost.Count > 0)
+            return;
+
         var direction = _random.NextAngle().ToVec();
         var effectRoll = _random.Next(100);
 
