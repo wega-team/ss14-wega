@@ -37,4 +37,6 @@ public sealed partial class GatherableComponent : Component
     /// </summary>
     [DataField]
     public float GatherOffset = 0.3f;
+
+    public bool Gathered; // Corvax-Wega-Lavaland
 }

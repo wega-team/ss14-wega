@@ -104,3 +104,49 @@ public sealed partial class AshDrakeLavaActionEvent : EntityTargetActionEvent
     [DataField(required: true)] public DamageSpecifier LandingDamage;
     [DataField(required: true)] public DamageSpecifier HealingSpec;
 }
+
+// Bubblegum
+public sealed partial class BubblegumRageActionEvent : EntityTargetActionEvent
+{
+}
+
+public sealed partial class BubblegumBloodDiveActionEvent : EntityTargetActionEvent
+{
+    [DataField] public float DiveRange = 5f;
+    [DataField] public float PreDiveDelay = 0.8f;
+}
+
+public sealed partial class BubblegumTripleDashActionEvent : EntityTargetActionEvent
+{
+    [DataField] public List<float> DashDelays = new() { 0.9f, 0.6f, 0.3f };
+    [DataField] public float DashDistance = 6f;
+    [DataField] public float MoveSpeed = 0.1f;
+    [DataField(required: true)] public DamageSpecifier DashDamage;
+    [DataField] public bool UseSineWaveForLast = true;
+}
+
+public sealed partial class BubblegumIllusionDashActionEvent : EntityTargetActionEvent
+{
+    [DataField] public int IllusionCount = 3;
+    [DataField] public float PlacementRadius = 4f;
+    [DataField] public float PreDashDelay = 1f;
+    [DataField(required: true)] public DamageSpecifier IllusionDamage;
+    [DataField] public EntProtoId IllusionPrototype = "MobBubblegumIllusion";
+}
+
+public sealed partial class BubblegumPentagramDashActionEvent : EntityTargetActionEvent
+{
+    [DataField] public float PlacementRadius = 5f;
+    [DataField] public float PreDashDelay = 1.2f;
+    [DataField(required: true)] public DamageSpecifier IllusionDamage;
+    [DataField] public EntProtoId IllusionPrototype = "MobBubblegumIllusion";
+}
+
+public sealed partial class BubblegumChaoticIllusionDashActionEvent : EntityTargetActionEvent
+{
+    [DataField] public int IllusionCount = 2;
+    [DataField] public float PlacementRadius = 6f;
+    [DataField] public float PreDashDelay = 1f;
+    [DataField(required: true)] public DamageSpecifier IllusionDamage;
+    [DataField] public EntProtoId IllusionPrototype = "MobBubblegumIllusion";
+}

@@ -30,6 +30,12 @@ public sealed partial class DamageMarkerComponent : Component
     // Corvax-Wega-Lavaland-start
     [ViewVariables(VVAccess.ReadWrite), DataField]
     public float DamageMultiplier = 2f;
+
+    [ViewVariables(VVAccess.ReadWrite), DataField]
+    public bool Weakening;
+
+    [ViewVariables(VVAccess.ReadWrite), DataField]
+    public float WeakeningModifier = 1f;
     // Corvax-Wega-Lavaland-end
 
     /// <summary>

@@ -118,3 +118,44 @@
   - Top
   - Bottom
   - Socks
+
+- type: roleLoadout
+  id: JobShaftMiner
+  groups:
+  - Inventory # Corvax-Loadouts
+  - GroupTankHarness
+  # Corvax-Wega-Sponsors-start
+  - SponsorHead
+  - SponsorNeck
+  # Corvax-Wega-Sponsors-end
+  - ShaftMinerBackpack
+  - ShaftMinerJumpsuit
+  - ShaftMinerOuterClothing
+  - ShaftMinerShoes
+  - Glasses
+  - Survival
+  - Trinkets
+  - GroupSpeciesBreathTool
+  - Top
+  - Bottom
+  - Socks
+
+- type: roleLoadout
+  id: JobShaftMinerMedic
+  groups:
+  - Inventory # Corvax-Loadouts
+  - GroupTankHarness
+  - ShaftMinerMedicHead
+  # Corvax-Wega-Sponsors-start
+  - SponsorNeck
+  # Corvax-Wega-Sponsors-end
+  - ShaftMinerMedicBackpack
+  - ShaftMinerMedicJumpsuit
+  - ShaftMinerMedicGloves
+  - Glasses
+  - Survival
+  - Trinkets
+  - GroupSpeciesBreathTool
+  - Top
+  - Bottom
+  - Socks

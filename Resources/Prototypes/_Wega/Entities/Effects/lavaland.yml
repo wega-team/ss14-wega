@@ -13,7 +13,7 @@
     layers:
     - state: goliath_tentacle_wiggle
   - type: StunOnContact
-    duration: 10
+    duration: 6
     blacklist:
       tags:
       - Goliath
@@ -306,3 +306,95 @@
     noRot: true
   - type: TimedDespawn
     lifetime: 1
+
+# Bubblegum
+- type: entity
+  id: EffectBubblegumHand
+  name: bubblegum hand
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Transform
+    anchored: True
+  - type: Physics
+    bodyType: Static
+    canCollide: true
+  - type: InteractionOutline
+  - type: Sprite
+    sprite: _Wega/Effects/bubblegumeffects.rsi
+    layers:
+    - state: hand
+  - type: Fixtures
+    fixtures:
+      fix:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        mask:
+        - Impassable
+        layer:
+        - Impassable
+        hard: false
+  - type: DamageOnTrigger
+    targetUser: true
+    damage:
+      types:
+        Blunt: 30
+    blacklist:
+      components:
+      - BubblegumBoss
+  - type: TimedDespawn #do this shit by hand because of fucking course.
+    lifetime: 0.2
+  - type: SpawnOnDespawn
+    prototype: EffectBubblegumHandOut
+
+- type: entity
+  id: BaseEffectBubblegumHandSpawn
+  categories: [ HideSpawnMenu ]
+  name: bubblegum hand
+  abstract: true
+  components:
+  - type: Transform
+    anchored: True
+  - type: Physics
+    bodyType: Static
+    canCollide: false
+  - type: Sprite
+    sprite: _Wega/Effects/bubblegumeffects.rsi
+  - type: InteractionOutline
+  - type: TimedDespawn
+    lifetime: 0.58
+
+- type: entity
+  id: EffectBubblegumHandIn
+  parent: BaseEffectBubblegumHandSpawn
+  categories: [ HideSpawnMenu ]
+  name: bubblegum hand
+  components:
+    - type: Sprite
+      state: handin
+    - type: SpawnOnDespawn
+      prototype: EffectBubblegumHand
+
+- type: entity
+  id: EffectBubblegumHandOut
+  parent: BaseEffectBubblegumHandSpawn
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    state: handout
+  - type: EffectVisuals
+  - type: AnimationPlayer
+
+- type: entity
+  id: EffectBubblegumDashTrail
+  name: "..."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InteractionOutline
+  - type: Sprite
+    sprite: _Wega/Mobs/Lavaland/bubblegum.rsi
+    state: bubblegum
+  - type: Fade
+    fadeDuration: 2
+  - type: TimedDespawn
+    lifetime: 2

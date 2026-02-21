@@ -13,6 +13,8 @@
     requiredTriggeredSpeed: 0
     intersectRatio: 0.1
     blacklist:
+      components:
+        - LavaWalking
       tags:
         - Catwalk
   - type: TileEntityEffect

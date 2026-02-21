@@ -11,7 +11,7 @@
       children:
       - id: SpawnMobWatcherLavaland
     - !type:GroupSelector
-      weight: 20
+      weight: 30  # Увеличил с 20 до 30
       children:
       - id: SpawnMobGoliathLavaland
     - !type:GroupSelector
@@ -42,6 +42,19 @@
       weight: 0.2
       children:
       - id: SpawnColossusLavaland
+    - !type:GroupSelector
+      weight: 0.2
+      children:
+      - id: SpawnAshDrakeLavaland
+    - !type:GroupSelector
+      weight: 0.1
+      children:
+      - id: SpawnBubblegumLavaland
+    # He might be wandering around Lavalend.
+    - !type:GroupSelector
+      weight: 0.2
+      children:
+      - id: SpawnInhabitantTranslocatedVeterinarian
 
 - type: entity
   parent: MarkerBase

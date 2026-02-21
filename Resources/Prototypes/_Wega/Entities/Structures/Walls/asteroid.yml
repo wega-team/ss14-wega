@@ -183,6 +183,52 @@
       visible: false
 
 - type: entity
+  id: WallRockBasaltLavalandGems
+  parent: WallRockBasalt
+  suffix: Gems, Lavaland
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    oreRarityPrototypeId: RandomGemsDistributionStandard
+  - type: Sprite
+    layers:
+    - state: rock_wall
+    - map: [ "enum.EdgeLayer.South" ]
+      state: rock_wall_south
+    - map: [ "enum.EdgeLayer.East" ]
+      state: rock_wall_east
+    - map: [ "enum.EdgeLayer.North" ]
+      state: rock_wall_north
+    - map: [ "enum.EdgeLayer.West" ]
+      state: rock_wall_west
+    - state: rock_gems
+      map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+      visible: false
+
+- type: entity
+  id: WallRockBasaltLavalandMagmite
+  parent: WallRockBasalt
+  suffix: Magmite, Lavaland
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: OreMagmite
+  - type: Sprite
+    layers:
+    - state: rock_wall
+    - map: [ "enum.EdgeLayer.South" ]
+      state: rock_wall_south
+    - map: [ "enum.EdgeLayer.East" ]
+      state: rock_wall_east
+    - map: [ "enum.EdgeLayer.North" ]
+      state: rock_wall_north
+    - map: [ "enum.EdgeLayer.West" ]
+      state: rock_wall_west
+    - state: rock_magmite
+      map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+      visible: false
+
+- type: entity
   parent: [ BaseRockGibtonite, AsteroidRock ]
   id: WallRockBasaltLavalandGibtonite
   suffix: Gibtonite, Lavaland

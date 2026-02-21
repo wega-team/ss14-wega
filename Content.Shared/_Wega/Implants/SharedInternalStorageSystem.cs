@@ -12,7 +12,7 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Implants;
 
-public sealed class SharedInternalStorageSystem : EntitySystem
+public abstract class SharedInternalStorageSystem : EntitySystem
 {
     [Dependency] private readonly SharedActionsSystem _action = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
@@ -24,8 +24,6 @@ public sealed class SharedInternalStorageSystem : EntitySystem
 
     public override void Initialize()
     {
-        base.Initialize();
-
         SubscribeLocalEvent<InternalStorageComponent, ComponentInit>(OnInit);
         SubscribeLocalEvent<InternalStorageComponent, ComponentShutdown>(OnShutdown);
         SubscribeLocalEvent<InternalStorageComponent, ToothImplantActionEvent>(OnToothImplantAction);
@@ -70,7 +68,7 @@ public sealed class SharedInternalStorageSystem : EntitySystem
         Del(pill);
 
         _popup.PopupClient(Loc.GetString("internal-storage-eat-pill"), ent, ent);
-        _audio.PlayPredicted(new SoundPathSpecifier("/Audio/Items/pill.ogg"), ent, ent);
+        _audio.PlayPvs(new SoundPathSpecifier("/Audio/Items/pill.ogg"), ent);
 
         args.Handled = true;
     }

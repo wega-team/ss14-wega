@@ -72,7 +72,7 @@ public abstract class SharedBiomeSystem : EntitySystem
     }
 
     // Corvax-Wega-Lavaland-start
-    private EntProtoId PickWeighted(Dictionary<EntProtoId, float> weightedEntities, float value)
+    private EntProtoId PickWeighted(Dictionary<EntProtoId, float> weightedEntities)
     {
         if (weightedEntities.Count == 0)
             throw new ArgumentException("Weighted entities dictionary is empty");
@@ -80,11 +80,8 @@ public abstract class SharedBiomeSystem : EntitySystem
         if (weightedEntities.Count == 1)
             return weightedEntities.Keys.First();
 
-        value %= 1f;
-        value = Math.Clamp(value, 0f, 1f);
-
         var totalWeight = weightedEntities.Values.Sum();
-        var randomValue = value * totalWeight;
+        var randomValue = _random.NextFloat() * totalWeight;
 
         foreach (var (entityId, weight) in weightedEntities)
         {
@@ -298,7 +295,7 @@ public abstract class SharedBiomeSystem : EntitySystem
 
             if (biomeLayer.EntityWeights.Count > 0)
             {
-                entity = PickWeighted(biomeLayer.EntityWeights, selectionValue);
+                entity = PickWeighted(biomeLayer.EntityWeights);
             }
             else if (biomeLayer.Entities.Count > 0)
             {

@@ -60,6 +60,7 @@
           SheetSteel1:
             min: 3
             max: 5
+  - type: NPCIgnoringOptimize # Corvax-Wega-Add its turret lol
   - type: HTN
     rootTask:
       task: TurretCompound

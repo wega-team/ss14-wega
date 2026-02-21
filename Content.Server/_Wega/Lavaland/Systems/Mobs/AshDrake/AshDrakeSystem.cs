@@ -59,13 +59,10 @@ public sealed partial class AshDrakeSystem : EntitySystem
 
     private void OnAshDrakeKilled(EntityUid uid, AshDrakeBossComponent component, MegafaunaKilledEvent args)
     {
-        var coords = Transform(uid).Coordinates;
-        Spawn(_random.Pick(component.RewardsProto), coords);
+        if (args.Killer == null)
+            return;
 
-        if (args.Killer != null)
-        {
-            _achievement.QueueAchievement(args.Killer.Value, AchievementsEnum.AshDrakeBoss);
-        }
+        _achievement.QueueAchievement(args.Killer.Value, AchievementsEnum.AshDrakeBoss);
     }
 
     #region Cone Fire
@@ -509,7 +506,7 @@ public sealed partial class AshDrakeSystem : EntitySystem
         var distanceToTarget = Vector2.Distance(startPos, targetWorldPos);
 
         float maxDistance;
-        if (distanceToTarget < 2f)
+        if (distanceToTarget < 1f)
         {
             maxDistance = 2f;
         }

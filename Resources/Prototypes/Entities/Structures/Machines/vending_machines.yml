@@ -1505,43 +1505,12 @@
   - type: Voucher
     typeVoucher: Salvage
   - type: UtilityVendor
-    inventory:
-      Flare: 50
-      Crowbar: 100
-      Pickaxe: 100
-      FlashlightLantern: 100
-      HandheldGPSBasic: 200
-      RadioHandheld: 200
-      TrackingImplanter: 200
-      Floodlight: 400
-      FultonBeacon: 400
-      HandCapsule: 400
-      OreBag: 400
-      TrofeiBag: 400
-      SurvivalMedipen: 500
-      ClothingBeltSecondSalvageWebbing: 500
-      WeaponGrapplingGun: 500
-      MedkitBruteFilled: 600
-      MedkitBurnFilled: 600
-      WeaponCrusher: 750
-      WeaponProtoKineticAccelerator: 750
-      MineralScanner: 800
-      Fulton: 1000
-      PKAUpgradeRange: 1000
-      PKAUpgradeDamage: 1000
-      PKAUpgradeFireRate: 1000
-      ClothingBackpackDuffelSalvageBaseKit: 1500
-      PKAUpgradeAoE: 2000
-      JetpackMiningFilled: 2000
-      ClothingShoesBootsJump: 2500
-      HandLuxuriousCapsule: 3000
-      # Funny
-      DrinkWhiskeyBottleFull: 100
-      DrinkAbsintheBottleFull: 100
-      Cigar: 100
-      Soap: 200
-      SpaceCash1000: 2000
-      ClothingEyesGlassesGar: 500
+    categories:
+      - UtilityBasic
+      - UtilityGear
+      - UtilityConsumables
+      - UtilityDiggingTools
+      - UtilityMisc
   - type: ItemSlots
     slots:
       vendor_card:

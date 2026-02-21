@@ -133,3 +133,42 @@
     accentVColor: "#3c4d9b"
   - type: Icon
     state: pda-postman
+
+- type: entity
+  parent: BasePDA
+  id: MinerPDA
+  name: miner PDA
+  description: Smells like ash.
+  components:
+  - type: Pda
+    id: MinerIDCard
+  - type: Appearance
+    appearanceDataInit:
+     enum.PdaVisuals.PdaType:
+       !type:String
+       pda-miner
+  - type: PdaBorderColor
+    borderColor: "#af9366"
+    accentVColor: "#8900c9"
+  - type: Icon
+    state: pda-miner
+
+- type: entity
+  parent: BasePDA
+  id: MinerMedicPDA
+  name: miner medic PDA
+  description: Smells like ash and alcohol.
+  components:
+  - type: Pda
+    id: MinerMedicIDCard
+  - type: Appearance
+    appearanceDataInit:
+     enum.PdaVisuals.PdaType:
+       !type:String
+       pda-miner-medic
+  - type: PdaBorderColor
+    borderColor: "#af9366"
+    accentHColor: "#5d99be"
+    accentVColor: "#8900c9"
+  - type: Icon
+    state: pda-miner-medic

@@ -700,6 +700,70 @@
           successChance: 0.6
 
 # ========================
+# ПЕРЕХОДЫ ГЛОТКИ
+# ========================
+
+- type: surgeryTransition
+  id: OpenThroatTransition
+  target: ThroatOpen
+  label: Вскрыть глотку
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+          - mask
+        - !type:BodyPartCondition
+          bodyPart: head
+      steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+
+- type: surgeryTransition
+  id: CloseThroatTransition
+  target: EndOperation
+  label: Закрыть глотку
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+          - mask
+        - !type:BodyPartCondition
+          bodyPart: head
+      steps:
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+
+# ========================
 # ПЕРЕХОДЫ КОНЕЧНОСТЕЙ
 # ========================
 

@@ -657,7 +657,7 @@ entities:
     - type: Transform
       pos: 2.5,2.5
       parent: 9072
-- proto: VendingMachineWallMedical
+- proto: VendingMachineWallMedicalCivilian
   entities:
   - uid: 9149
     components:

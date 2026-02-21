@@ -2,8 +2,8 @@
         xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
         xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
         Title="{Loc 'ui-achievements-title'}"
-        SetSize="850 800"
-        MinSize="550 800">
+        SetSize="1200 800"
+        MinSize="850 800">
     <BoxContainer Orientation="Vertical" VerticalExpand="True" HorizontalExpand="True">
         <PanelContainer StyleClasses="BackgroundPanel" Margin="10 10 10 5">
             <BoxContainer Orientation="Horizontal" HorizontalExpand="True" Margin="5">

@@ -1,6 +1,7 @@
 - type: entity
   parent: WeaponCrusher
   id: WeaponMagmiteCrusher
+  name: magmite crusher
   components:
   - type: Sprite
     sprite: _Wega/Objects/Weapons/Melee/magmitecrusher.rsi

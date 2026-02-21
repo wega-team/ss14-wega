@@ -1,4 +1,5 @@
 using Content.Shared.Hands.Components;
+using Content.Shared.Lavaland.Components; // Corvax-Wega-Lavaland
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
 
@@ -42,10 +43,35 @@ public abstract partial class SharedStackSystem
         if (amount > 0)
             transferred = Math.Min(transferred, amount.Value);
 
+        TryMergeOreValues(donor, recipient, transferred); // Corvax-Wega-Lavaland
+
         SetCount(donor, donor.Comp.Count - transferred);
         SetCount(recipient, recipient.Comp.Count + transferred);
         return true;
     }
+
+    // Corvax-Wega-Lavaland-start
+    private void TryMergeOreValues(Entity<StackComponent?> donor, Entity<StackComponent?> recipient, int transferred)
+    {
+        if (!TryComp<OreValueComponent>(donor.Owner, out var donorValue))
+            return;
+
+        if (!TryComp<OreValueComponent>(recipient.Owner, out var recipientValue))
+            recipientValue = EnsureComp<OreValueComponent>(recipient.Owner);
+
+        if (!TryComp<StackComponent>(recipient.Owner, out var recipientStack))
+            return;
+
+        var currentRecipientCount = recipientStack.Count;
+        var newTotalCount = currentRecipientCount + transferred;
+
+        var recipientTotalPoints = recipientValue.Points * currentRecipientCount;
+        var donorTotalPoints = donorValue.Points * transferred;
+
+        recipientValue.Points = (recipientTotalPoints + donorTotalPoints) / newTotalCount;
+        recipientValue.Mined = recipientValue.Mined || donorValue.Mined;
+    }
+    // Corvax-Wega-Lavaland-end
 
     /// <summary>
     /// If the given item is a stack, this attempts to find a matching stack in the users hand and merge with that.

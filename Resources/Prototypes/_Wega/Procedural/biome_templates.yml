@@ -33,7 +33,7 @@
         - Basalt8
         - Basalt9
     - !type:BiomeEntityLayer
-      threshold: 0.995
+      threshold: 0.94
       noise:
         seed: 3
         noiseType: OpenSimplex2
@@ -45,6 +45,10 @@
         - LavalandFloraCactus2
         - LavalandFloraCactus3
         - LavalandFloraCactus4
+        - LavalandFloraFireBlossom1
+        - LavalandFloraFireBlossom2
+        - LavalandFloraFireBlossom3
+        - LavalandFloraFireBlossom4
         - LavalandFloraPolyporeMushroom1
         - LavalandFloraPolyporeMushroom2
         - LavalandFloraPolyporeMushroom3
@@ -122,7 +126,9 @@
         WallRockBasaltLavalandUranium: 0.001
         WallRockBasaltLavalandDiamond: 0.001
         WallRockBasaltLavalandBananium: 0.0008
+        WallRockBasaltLavalandGems: 0.0006
         WallRockBasaltLavalandGibtonite: 0.0002
+        WallRockBasaltLavalandMagmite: 0.0002
     - !type:BiomeDummyLayer
       id: Loot
     # Fill basalt

@@ -35,7 +35,14 @@ loadout-group-quartermaster-socks = Квартирмейстер, носки
 loadout-group-postman-head = Почтальон, голова
 loadout-group-postman-jumpsuit = Почтальон, комбинезон
 loadout-group-postman-backpack = Почтальон, рюкзак
-loadout-group-salvage-specialist-jumpsuit = Утилизатор, комбинезон
+loadout-group-shaft-miner-backpack = Шахтёр, рюкзак
+loadout-group-shaft-miner-jumpsuit = Шахтёр, комбинезон
+loadout-group-shaft-miner-outerclothing = Шахтёр, верхняя одежда
+loadout-group-shaft-miner-shoes = Шахтёр, обувь
+loadout-group-shaft-miner-medic-head = Шахтёрский медик, голова
+loadout-group-shaft-miner-medic-backpack = Шахтёрский медик, рюкзак
+loadout-group-shaft-miner-medic-jumpsuit = Шахтёрский медик, комбинезон
+loadout-group-shaft-miner-medic-gloves = Шахтёрский медик, перчатки
 # Engineering
 loadout-group-chief-engineer-top = Старший инженер, верхнее белье
 loadout-group-chief-engineer-bottom = Старший инженер, нижнее белье

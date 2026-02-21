@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: [ Clothing, ClothingUniformDamageableBase ] # Corvax-Wega-Edit
+  parent: [ Clothing, ClothingUniformDamageableBase, BaseUpgradableClothingUniform ] # Corvax-Wega-Edit
   id: UnsensoredClothingUniformBase
   components:
   - type: Sprite

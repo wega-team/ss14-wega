@@ -39,5 +39,13 @@ stack-chitin =
         [few] хитина
        *[other] хитина
     }
+stack-dragon-hide =
+    { $amount ->
+        [1] кожа дракона
+        [2] кожи дракона
+        [3] кожи дракона
+        [4] кожи дракона
+       *[other] кож дракона
+    }
 stak-magmite = магмит
 magmite-ore = магмитовая руда

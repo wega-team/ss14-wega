@@ -113,6 +113,76 @@
           Grown: { state: cactus4 }
           Harvested: { state: cactus4h }
 
+# Fire Blossom
+- type: entity
+  parent: BaseLavalandFlora
+  id: LavalandFloraFireBlossom1
+  name: fire blossom
+  description: "A bright, luminescent flower, incredibly beautiful."
+  components:
+  - type: Sprite
+    layers:
+    - state: fireblossom1
+      map: ["flora"]
+  - type: Flora
+    harvestPrototype: FlowerFireBlossom
+    maxYield: 1
+  - type: PointLight
+    radius: 1.2
+    energy: 2
+    color: "#F54900"
+  - type: GenericVisualizer
+    visuals:
+      enum.FloraVisuals.State:
+        flora:
+          Grown: { state: fireblossom1 }
+          Harvested: { state: fireblossom1h }
+
+- type: entity
+  parent: LavalandFloraFireBlossom1
+  id: LavalandFloraFireBlossom2
+  components:
+  - type: Sprite
+    layers:
+    - state: fireblossom2
+      map: ["flora"]
+  - type: GenericVisualizer
+    visuals:
+      enum.FloraVisuals.State:
+        flora:
+          Grown: { state: fireblossom2 }
+          Harvested: { state: fireblossom2h }
+
+- type: entity
+  parent: LavalandFloraFireBlossom1
+  id: LavalandFloraFireBlossom3
+  components:
+  - type: Sprite
+    layers:
+    - state: fireblossom3
+      map: ["flora"]
+  - type: GenericVisualizer
+    visuals:
+      enum.FloraVisuals.State:
+        flora:
+          Grown: { state: fireblossom3 }
+          Harvested: { state: fireblossom3h }
+
+- type: entity
+  parent: LavalandFloraFireBlossom1
+  id: LavalandFloraFireBlossom4
+  components:
+  - type: Sprite
+    layers:
+    - state: fireblossom4
+      map: ["flora"]
+  - type: GenericVisualizer
+    visuals:
+      enum.FloraVisuals.State:
+        flora:
+          Grown: { state: fireblossom4 }
+          Harvested: { state: fireblossom4h }
+
 # Polypore Mushroom
 - type: entity
   parent: BaseLavalandFlora

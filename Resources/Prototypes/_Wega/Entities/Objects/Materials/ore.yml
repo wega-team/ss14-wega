@@ -12,12 +12,15 @@
   - type: Material
   - type: PhysicalComposition
     materialComposition:
-      MagmiteOre: 500
+      RawMagmite: 100
   - type: PointLight
     radius: 1.2
     energy: 0.8
     castShadows: false
     color: "#df7126"
+  - type: Tag
+    tags:
+    - MagmiteAlloy
 
 - type: entity
   parent: MagmiteOre

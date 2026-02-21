@@ -5,6 +5,7 @@ using Content.Server.NPC.Systems;
 using Content.Shared.Achievements;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
+using Content.Shared.Lavaland.Components;
 using Content.Shared.Lavaland.Events;
 using Content.Shared.Maps;
 using Content.Shared.Mobs;

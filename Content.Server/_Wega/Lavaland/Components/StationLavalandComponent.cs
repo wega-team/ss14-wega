@@ -1,5 +1,4 @@
 using Content.Shared.Lavaland;
-using Content.Shared.Parallax.Biomes;
 using Content.Shared.Radio;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations;

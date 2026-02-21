@@ -31,6 +31,8 @@
             max: 1
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+  - type: PointsCapital
+    points: 100
   - type: Tag
     tags:
     - Gems
@@ -46,7 +48,7 @@
     - state: ruby
     - state: shine
   - type: StaticPrice
-    price: 100
+    price: 200
 
 - type: entity
   id: GemSapphire
@@ -59,7 +61,7 @@
     - state: sapphire
     - state: shine
   - type: StaticPrice
-    price: 100
+    price: 200
 
 - type: entity
   id: GemEmerald
@@ -72,7 +74,7 @@
     - state: emerald
     - state: shine
   - type: StaticPrice
-    price: 100
+    price: 200
 
 - type: entity
   id: GemTopaz
@@ -85,7 +87,7 @@
     - state: topaz
     - state: shine
   - type: StaticPrice
-    price: 100
+    price: 200
 
 - type: entity
   id: GemRuperiumBroken
@@ -101,7 +103,7 @@
   - type: RadiationSource
     intensity: 3
   - type: StaticPrice
-    price: 30
+    price: 60
 
 - type: entity
   id: GemRuperium
@@ -139,8 +141,10 @@
             max: 1
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+  - type: PointsCapital
+    points: 500
   - type: StaticPrice
-    price: 500
+    price: 1000
 
 - type: entity
   id: GemHardenedShell
@@ -159,8 +163,10 @@
   - type: ToolRefinable
     refineResult:
     - id: IngotGold30
+  - type: PointsCapital
+    points: 700
   - type: StaticPrice
-    price: 700
+    price: 1400
 
 - type: entity
   id: GemStabilizedBaroxuldium
@@ -179,8 +185,10 @@
   - type: ToolRefinable
     refineResult:
     - id: SheetPlasma30
+  - type: PointsCapital
+    points: 1000
   - type: StaticPrice
-    price: 1000
+    price: 2000
 
 - type: entity
   id: GemCompactedDilithium
@@ -193,8 +201,10 @@
     - state: purple
     - state: shine
   - type: HandheldGPS
+  - type: PointsCapital
+    points: 1200
   - type: StaticPrice
-    price: 1200
+    price: 2400
 
 - type: entity
   id: GemDragonPearls
@@ -210,8 +220,10 @@
     enabled: true
     color: "#ed7626"
     radius: 1
+  - type: PointsCapital
+    points: 1400
   - type: StaticPrice
-    price: 1400
+    price: 2800
 
 - type: entity
   id: GemHollowCrystal
@@ -227,8 +239,10 @@
     enabled: true
     color: "#4e52f7"
     radius: 1
+  - type: PointsCapital
+    points: 1600
   - type: StaticPrice
-    price: 1600
+    price: 3200
 
 - type: entity
   id: GemBloodStone
@@ -244,8 +258,10 @@
     enabled: true
     color: "#df2d2d"
     radius: 1
+  - type: PointsCapital
+    points: 1800
   - type: StaticPrice
-    price: 1800
+    price: 3800
 
 - type: entity
   id: GemBluespaceDataCrystal
@@ -261,8 +277,10 @@
     enabled: true
     color: "#5583f8"
     radius: 4
+  - type: PointsCapital
+    points: 2000
   - type: StaticPrice
-    price: 2000
+    price: 4000
   - type: Tag
     tags:
     - Gems

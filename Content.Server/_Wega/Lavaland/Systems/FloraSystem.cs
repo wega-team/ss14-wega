@@ -2,6 +2,7 @@ using Content.Shared.DoAfter;
 using Content.Shared.Interaction;
 using Content.Shared.Lavaland.Components;
 using Content.Shared.Tools.Systems;
+using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
@@ -16,6 +17,7 @@ public sealed class FloraSystem : EntitySystem
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
     [Dependency] private readonly SharedToolSystem _tool = default!;
+    [Dependency] private readonly SharedPointLightSystem _light = default!;
 
     public override void Initialize()
     {
@@ -134,6 +136,9 @@ public sealed class FloraSystem : EntitySystem
 
     private void UpdateAppearance(EntityUid uid, FloraComponent component)
     {
+        if (HasComp<PointLightComponent>(uid))
+            _light.SetEnabled(uid, component.IsGrown);
+
         if (!TryComp<AppearanceComponent>(uid, out var appearance))
             return;
 

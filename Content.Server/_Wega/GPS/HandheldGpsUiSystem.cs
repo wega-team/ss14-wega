@@ -166,7 +166,7 @@ public sealed partial class HandheldGpsUiSystem : EntitySystem
             var beaconName = MetaData(uid).EntityName;
             if (!string.IsNullOrEmpty(beacon.Text))
                 beaconName = Loc.GetString(beacon.Text);
-            if (!string.IsNullOrEmpty(beacon.DefaultText))
+            else if (!string.IsNullOrEmpty(beacon.DefaultText))
                 beaconName = Loc.GetString(beacon.DefaultText);
 
             result.Add(new NavBeaconInfo(

@@ -19,6 +19,17 @@
     Diamond: 200
 
 - type: latheRecipe
+  id: WeaponIndustrialFanPlasmaCutter
+  result: WeaponIndustrialFanPlasmaCutterEmpty
+  completetime: 30
+  materials:
+    Steel: 850
+    Glass: 300
+    Plasma: 500
+    Gold: 400
+    Diamond: 200
+
+- type: latheRecipe
   id: WeaponMagmiteCrusher
   result: WeaponMagmiteCrusher
   completetime: 20
@@ -35,6 +46,13 @@
 - type: latheRecipe
   id: WeaponMagmitePlasmaCutter
   result: WeaponMagmitePlasmaCutter
+  completetime: 20
+  materials:
+    Magmite: 1500
+
+- type: latheRecipe
+  id: WeaponMagmiteFanPlasmaCutter
+  result: WeaponMagmiteFanPlasmaCutter
   completetime: 20
   materials:
     Magmite: 1500

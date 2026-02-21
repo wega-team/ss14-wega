@@ -130,6 +130,9 @@
             "name": "pda-miner"
         },
         {
+            "name": "pda-miner-medic"
+        },
+        {
             "name": "pda-pirate"
         },
         {
@@ -161,6 +164,9 @@
         },
         {
             "name": "pda-roboticist"
+        },
+        {
+            "name": "pda-salvage-specialist"
         },
         {
             "name": "pda-science"

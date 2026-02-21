@@ -120,3 +120,17 @@
   - type: ConditionalSpawner
     prototypes:
     - MobHumanInhabitantBeachGuy
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnInhabitantTranslocatedVeterinarian
+  name: Translocated Veterinarian Spawner
+  suffix: Lavaland
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+    - MobHumanInhabitantTranslocatedVeterinarian

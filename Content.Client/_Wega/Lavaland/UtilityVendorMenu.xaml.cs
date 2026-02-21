@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Numerics;
 using Content.Client.UserInterface.Controls;
 using Content.Shared.FixedPoint;
@@ -15,31 +16,83 @@ namespace Content.Client._Wega.Lavaland;
 public sealed partial class UtilityVendorMenu : FancyWindow
 {
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+    [Dependency] private readonly IDependencyCollection _dependencies = default!;
 
     public event Action<string>? OnPurchase;
 
     public UtilityVendorMenu()
     {
         RobustXamlLoader.Load(this);
-        IoCManager.InjectDependencies(this);
+        _dependencies.InjectDependencies(this);
     }
 
     public void UpdateState(UtilityVendorBoundUserInterfaceState state)
     {
-        BalanceLabel.Text = $"Баланс: {state.Points} очков";
+        BalanceLabel.Text = Loc.GetString("utility-vendor-ui-balance", ("points", state.Points));
 
-        ItemsContainer.RemoveAllChildren();
-        foreach (var (itemId, price) in state.Inventory)
+        CategoryTabs.RemoveAllChildren();
+
+        var sortedCategories = state.Categories.OrderBy(c => c.Priority).ToList();
+        var allScrollContainer = new ScrollContainer();
+        var allContainer = new BoxContainer
+        {
+            Orientation = BoxContainer.LayoutOrientation.Vertical,
+            VerticalExpand = true,
+            HorizontalExpand = true
+        };
+
+        TabContainer.SetTabTitle(allScrollContainer, Loc.GetString("utility-vendor-ui-tab-all"));
+        allScrollContainer.AddChild(allContainer);
+        CategoryTabs.AddChild(allScrollContainer);
+
+        PopulateAllCategory(allContainer, sortedCategories, state.Points);
+
+        foreach (var category in sortedCategories)
+        {
+            var scrollContainer = new ScrollContainer();
+            var categoryContainer = new BoxContainer
+            {
+                Orientation = BoxContainer.LayoutOrientation.Vertical,
+                VerticalExpand = true,
+                HorizontalExpand = true
+            };
+
+            TabContainer.SetTabTitle(scrollContainer, Loc.GetString(category.Name));
+            scrollContainer.AddChild(categoryContainer);
+            CategoryTabs.AddChild(scrollContainer);
+
+            PopulateCategoryContainer(categoryContainer, category.Inventory, state.Points);
+        }
+    }
+
+    private void PopulateCategoryContainer(BoxContainer container, Dictionary<EntProtoId, FixedPoint2> inventory, FixedPoint2 points)
+    {
+        foreach (var (itemId, price) in inventory)
         {
             if (!_prototypeManager.TryIndex<EntityPrototype>(itemId, out var prototype))
                 continue;
 
             var itemButton = new UtilityVendorItem(itemId, price, prototype.Name, prototype.Description);
             itemButton.OnPressed += _ => OnPurchase?.Invoke(itemId);
-            itemButton.Disabled = state.Points < price;
+            itemButton.Disabled = points < price;
 
-            ItemsContainer.AddChild(itemButton);
+            container.AddChild(itemButton);
         }
+    }
+
+    private void PopulateAllCategory(BoxContainer container, List<CategoryData> categories, FixedPoint2 points)
+    {
+        var allItems = new Dictionary<EntProtoId, FixedPoint2>();
+        foreach (var category in categories)
+        {
+            foreach (var (itemId, price) in category.Inventory)
+            {
+                if (!allItems.ContainsKey(itemId))
+                    allItems[itemId] = price;
+            }
+        }
+
+        PopulateCategoryContainer(container, allItems, points);
     }
 
     private sealed class UtilityVendorItem : PanelContainer
@@ -142,7 +195,7 @@ public sealed partial class UtilityVendorMenu : FancyWindow
 
             var pointsLabel = new Label
             {
-                Text = "ОЧКОВ",
+                Text = Loc.GetString("utility-vendor-ui-points"),
                 HorizontalAlignment = HAlignment.Right,
                 StyleClasses = { "LabelSubText" }
             };

@@ -126,7 +126,7 @@ public sealed partial class LegionSystem : EntitySystem
         PerformCoreHeal(args.Target.Value, ent);
     }
 
-    private void PerformCoreHeal(EntityUid target, Entity<LegionCoreComponent> ent)
+    public void PerformCoreHeal(EntityUid target, Entity<LegionCoreComponent> ent)
     {
         _damage.TryChangeDamage(target, ent.Comp.HealAmount, true, false);
         foreach (var internalDam in ent.Comp.HealInternals)

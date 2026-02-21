@@ -74,6 +74,13 @@ public abstract class SharedDamageMarkerSystem : EntitySystem
         marker.Damage = new DamageSpecifier(component.Damage);
         marker.Marker = projectile.Weapon.Value;
         marker.EndTime = _timing.CurTime + component.Duration;
+        // Corvax-Wega-Lavaland-start
+        if (component.Weakening)
+        {
+            marker.Weakening = true;
+            marker.WeakeningModifier = component.WeakeningModifier;
+        }
+        // Corvax-Wega-Lavaland-end
         component.Amount--;
         Dirty(args.OtherEntity, marker);
 

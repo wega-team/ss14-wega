@@ -13,9 +13,9 @@ namespace Content.Client._Wega.Achievements;
 [GenerateTypedNameReferences]
 public sealed partial class AchievementsWindow : FancyWindow
 {
+    [Dependency] private readonly IDependencyCollection _dependencies = default!;
     [Dependency] private readonly IEntitySystemManager _sysMan = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
     private readonly AchievementsSystem _achievements;
     private readonly SpriteSystem _spriteSystem;
 
@@ -25,7 +25,7 @@ public sealed partial class AchievementsWindow : FancyWindow
     public AchievementsWindow()
     {
         RobustXamlLoader.Load(this);
-        IoCManager.InjectDependencies(this);
+        _dependencies.InjectDependencies(this);
         _achievements = _sysMan.GetEntitySystem<AchievementsSystem>();
         _spriteSystem = _sysMan.GetEntitySystem<SpriteSystem>();
 
@@ -34,7 +34,7 @@ public sealed partial class AchievementsWindow : FancyWindow
         LoadAchievements();
     }
 
-    private async void LoadAchievements()
+    private void LoadAchievements()
     {
         _allAchievements = _prototypeManager.EnumeratePrototypes<AchievementPrototype>().ToList();
         _achievements.RequestAchievements();

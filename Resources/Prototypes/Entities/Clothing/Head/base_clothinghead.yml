@@ -298,7 +298,6 @@
     - HeadTop
     - HeadSide
   # Corvax-Wega-Dirtable-start
-  - type: DeleteOnDrop
   - type: Dirtable
     dirtState: winterhood
     equippedDirtState: equipped-winterhood

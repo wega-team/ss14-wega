@@ -4,8 +4,8 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 01/15/2026 20:56:57
-  entityCount: 368
+  time: 02/14/2026 12:37:23
+  entityCount: 369
 maps: []
 grids:
 - 10211
@@ -194,6 +194,65 @@ entities:
     - type: ExplosionAirtightGrid
 - proto: AirlockExternalShuttleLocked
   entities:
+  - uid: 1
+    components:
+    - type: Transform
+      pos: 6.5,-3.5
+      parent: 10211
+  - uid: 2
+    components:
+    - type: Transform
+      pos: 8.5,-3.5
+      parent: 10211
+  - uid: 3
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 6.5,0.5
+      parent: 10211
+  - uid: 4
+    components:
+    - type: Transform
+      pos: 12.5,4.5
+      parent: 10211
+  - uid: 5
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 2.5,0.5
+      parent: 10211
+  - uid: 6
+    components:
+    - type: Transform
+      pos: 3.5,4.5
+      parent: 10211
+  - uid: 7
+    components:
+    - type: Transform
+      pos: 5.5,4.5
+      parent: 10211
+  - uid: 8
+    components:
+    - type: Transform
+      pos: 9.5,4.5
+      parent: 10211
+  - uid: 9
+    components:
+    - type: Transform
+      pos: 2.5,-3.5
+      parent: 10211
+  - uid: 10
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 12.5,0.5
+      parent: 10211
+  - uid: 11
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 8.5,0.5
+      parent: 10211
   - uid: 10212
     components:
     - type: Transform
@@ -213,74 +272,6 @@ entities:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 7.5,-8.5
-      parent: 10211
-- proto: AirlockShuttle
-  entities:
-  - uid: 10215
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 2.5,-3.5
-      parent: 10211
-  - uid: 10216
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 2.5,0.5
-      parent: 10211
-  - uid: 10217
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 6.5,-3.5
-      parent: 10211
-  - uid: 10218
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 12.5,4.5
-      parent: 10211
-  - uid: 10219
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 8.5,-3.5
-      parent: 10211
-  - uid: 10220
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 3.5,4.5
-      parent: 10211
-  - uid: 10221
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 5.5,4.5
-      parent: 10211
-  - uid: 10222
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 9.5,4.5
-      parent: 10211
-  - uid: 10223
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 8.5,0.5
-      parent: 10211
-  - uid: 10224
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 12.5,0.5
-      parent: 10211
-  - uid: 10225
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 6.5,0.5
       parent: 10211
 - proto: AirlockVirologyLocked
   entities:
@@ -1460,6 +1451,13 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 2.5,5.5
+      parent: 10211
+- proto: SpawnInhabitantTranslocatedVeterinarian
+  entities:
+  - uid: 12
+    components:
+    - type: Transform
+      pos: 7.5,2.5
       parent: 10211
 - proto: SpawnMobMedibot
   entities:

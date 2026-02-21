@@ -1,5 +1,4 @@
 using Content.Shared.Containers.ItemSlots;
-using Content.Shared.FixedPoint;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
 
@@ -9,10 +8,12 @@ namespace Content.Shared.Lavaland.Components;
 [Access(typeof(UtilityVendorSystem))]
 public sealed partial class UtilityVendorComponent : Component
 {
-    [DataField("inventory"), ViewVariables(VVAccess.ReadOnly)]
-    public Dictionary<EntProtoId, FixedPoint2> Inventory { get; private set; } = new();
+    [DataField, ViewVariables(VVAccess.ReadOnly)]
+    public List<ProtoId<UtilityVendorCategoryPrototype>> Categories { get; private set; } = new();
 
-    [DataField("cardSlot")]
+    [DataField]
     public ItemSlot CardSlot = new();
+
+    [DataField]
     public SoundSpecifier SoundVend = new SoundPathSpecifier("/Audio/Machines/machine_vend.ogg");
 }

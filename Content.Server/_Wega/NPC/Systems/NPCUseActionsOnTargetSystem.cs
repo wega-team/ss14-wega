@@ -4,6 +4,7 @@ using Content.Server.NPC.HTN;
 using Content.Shared.Actions;
 using Content.Shared.Actions.Components;
 using Content.Shared.Mobs.Systems;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
@@ -53,6 +54,105 @@ public sealed class NPCUseActionsOnTargetSystem : EntitySystem
         }
     }
 
+    public void SetActions(EntityUid uid,
+        List<EntProtoId<TargetActionComponent>> actionIds,
+        Dictionary<EntProtoId<TargetActionComponent>, float> chances,
+        NPCUseActionsOnTargetComponent? comp = null)
+    {
+        if (!Resolve(uid, ref comp))
+            return;
+
+        ClearAllActions(uid, comp);
+
+        comp.ActionIds = actionIds?.ToList() ?? new();
+        comp.ActionChances = chances?.ToDictionary(x => x.Key, x => x.Value) ?? new();
+
+        InitializeActions(uid, comp);
+    }
+
+    public void ClearAllActions(EntityUid uid, NPCUseActionsOnTargetComponent? comp = null)
+    {
+        if (!Resolve(uid, ref comp))
+            return;
+
+        foreach (var (_, actionEnt) in comp.ActionEnts)
+        {
+            if (actionEnt != null && Exists(actionEnt.Value))
+            {
+                _actions.RemoveAction(uid, actionEnt.Value);
+            }
+        }
+
+        comp.ActionIds.Clear();
+        comp.ActionEnts.Clear();
+        comp.ActionChances.Clear();
+    }
+
+    public void InitializeActions(EntityUid uid, NPCUseActionsOnTargetComponent? comp = null)
+    {
+        if (!Resolve(uid, ref comp))
+            return;
+
+        foreach (var actionId in comp.ActionIds)
+        {
+            if (!comp.ActionEnts.ContainsKey(actionId))
+            {
+                var actionEnt = _actions.AddAction(uid, actionId);
+                if (actionEnt != null)
+                {
+                    comp.ActionEnts[actionId] = actionEnt;
+                }
+            }
+        }
+    }
+
+    public void SetActionChance(EntityUid uid, EntProtoId<TargetActionComponent> actionId,
+        float chance, NPCUseActionsOnTargetComponent? comp = null)
+    {
+        if (!Resolve(uid, ref comp))
+            return;
+
+        comp.ActionChances[actionId] = Math.Clamp(chance, 0.01f, 1.0f);
+    }
+
+    public void RemoveAction(EntityUid uid, EntProtoId<TargetActionComponent> actionId,
+        NPCUseActionsOnTargetComponent? comp = null)
+    {
+        if (!Resolve(uid, ref comp))
+            return;
+
+        if (comp.ActionEnts.TryGetValue(actionId, out var actionEnt) && actionEnt != null)
+        {
+            _actions.RemoveAction(uid, actionEnt.Value);
+        }
+
+        comp.ActionIds.Remove(actionId);
+        comp.ActionEnts.Remove(actionId);
+        comp.ActionChances.Remove(actionId);
+    }
+
+    public void AddAction(EntityUid uid, EntProtoId<TargetActionComponent> actionId,
+        float? chance = null, NPCUseActionsOnTargetComponent? comp = null)
+    {
+        if (!Resolve(uid, ref comp))
+            return;
+
+        if (!comp.ActionIds.Contains(actionId))
+        {
+            comp.ActionIds.Add(actionId);
+            var actionEnt = _actions.AddAction(uid, actionId);
+            if (actionEnt != null)
+            {
+                comp.ActionEnts[actionId] = actionEnt;
+            }
+        }
+
+        if (chance.HasValue)
+        {
+            comp.ActionChances[actionId] = Math.Clamp(chance.Value, 0.01f, 1.0f);
+        }
+    }
+
     public bool SetDelaySpeed(EntityUid uid, float delayModifier, NPCUseActionsOnTargetComponent? comp = null)
     {
         if (!Resolve(uid, ref comp))
@@ -99,7 +199,6 @@ public sealed class NPCUseActionsOnTargetSystem : EntitySystem
             return false;
 
         _actions.SetEventTarget(selectedAction.Value, target);
-
         _actions.PerformAction(user.Owner, (selectedAction.Value, selectedComp), predicted: false);
 
         if (selectedComp.UseDelay.HasValue)

@@ -13,18 +13,22 @@
   access:
   - Cargo
   - Salvage
+  - LavalandAvanpost # Corvax-Wega-Lavaland
   - Maintenance
   - External
 
 - type: startingGear
   id: SalvageSpecialistGear
   equipment:
-    # jumpsuit: ClothingUniformJumpsuitSalvageSpecialist # Corvax-Wega-Lavaland-Edit
+    jumpsuit: ClothingUniformJumpsuitSalvageSpecialist
     id: SalvagePDA
     ears: ClothingHeadsetCargo
-  #storage:
-    #back:
-    #- Stuff
+  # Corvax-Wega-Lavaland-Edit-start
+  storage:
+    back:
+    - SalvageVoucherCard
+  # Corvax-Wega-Lavaland-Edit-end
+    # - Stuff
 
 - type: chameleonOutfit
   id: SalvageSpecialistChameleonOutfit

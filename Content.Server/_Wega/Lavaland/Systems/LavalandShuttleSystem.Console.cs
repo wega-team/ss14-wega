@@ -15,60 +15,7 @@ public sealed partial class LavalandShuttleSystem
 
     private void OnConsoleInit(EntityUid uid, LavalandShuttleConsoleComponent component, MapInitEvent args)
     {
-        var shuttleQuery = EntityQueryEnumerator<LavalandShuttleComponent>();
-        while (shuttleQuery.MoveNext(out var shuttleUid, out _))
-        {
-            component.ConnectedShuttle = shuttleUid;
-            break;
-        }
-
-        if (component.ConnectedShuttle == null)
-            return;
-
-        if (HasComp<LavalandShuttleComponent>(Transform(uid).GridUid))
-        {
-            component.Location = DockLocation.Shuttle;
-            component.ConnectedShuttle = Transform(uid).GridUid;
-            return;
-        }
-
-        var consoleGrid = Transform(uid).GridUid;
-        var consoleMap = Transform(uid).MapUid;
-
-        if (consoleGrid != null)
-        {
-            if (HasComp<BecomesStationComponent>(consoleGrid)
-                && !HasComp<StationCentcommComponent>(consoleGrid))
-            {
-                component.Location = DockLocation.Station;
-                return;
-            }
-        }
-
-        if (consoleMap != null && HasComp<LavalandComponent>(consoleMap))
-        {
-            component.Location = DockLocation.Outpost;
-            return;
-        }
-
-        var dockQuery = EntityQueryEnumerator<PriorityDockComponent>();
-        while (dockQuery.MoveNext(out var dockUid, out var dock))
-        {
-            if (Transform(dockUid).GridUid != Transform(uid).GridUid)
-                continue;
-
-            if (dock.Tag == DockStation)
-            {
-                component.Location = DockLocation.Station;
-                break;
-            }
-
-            if (dock.Tag == DockOutpost)
-            {
-                component.Location = DockLocation.Outpost;
-                break;
-            }
-        }
+        UpdateLocation(uid, component);
     }
 
     private void OnUiOpened(EntityUid uid, LavalandShuttleConsoleComponent comp, BoundUIOpenedEvent args)
@@ -98,16 +45,19 @@ public sealed partial class LavalandShuttleSystem
         string targetTag;
         LavalandShuttleState newState;
 
-        if (component.Location == DockLocation.Station
-            || component.Location == DockLocation.Shuttle && shuttle.State == LavalandShuttleState.DockedAtStation)
+        if (shuttle.State == LavalandShuttleState.DockedAtStation)
         {
             targetTag = DockOutpost;
             newState = LavalandShuttleState.EnRouteToOutpost;
         }
-        else
+        else if (shuttle.State == LavalandShuttleState.DockedAtOutpost)
         {
             targetTag = DockStation;
             newState = LavalandShuttleState.EnRouteToStation;
+        }
+        else
+        {
+            return;
         }
 
         var targetDock = FindDockWithTag(targetTag);
@@ -137,6 +87,67 @@ public sealed partial class LavalandShuttleSystem
         while (query.MoveNext(out var uid, out var comp))
         {
             UpdateUI(uid, comp);
+        }
+    }
+
+    private void UpdateLocation(EntityUid consoleUid, LavalandShuttleConsoleComponent? component = null)
+    {
+        if (!Resolve(consoleUid, ref component))
+            return;
+
+        if (Transform(consoleUid).GridUid is { } grid && HasComp<LavalandShuttleComponent>(grid))
+        {
+            component.Location = DockLocation.Shuttle;
+            component.ConnectedShuttle = grid;
+            return;
+        }
+
+        var shuttleQuery = EntityQueryEnumerator<LavalandShuttleComponent>();
+        while (shuttleQuery.MoveNext(out var shuttleUid, out _))
+        {
+            component.ConnectedShuttle = shuttleUid;
+            break;
+        }
+
+        if (component.ConnectedShuttle == null)
+            return;
+
+        var consoleGrid = Transform(consoleUid).GridUid;
+        var consoleMap = Transform(consoleUid).MapUid;
+
+        if (consoleGrid != null)
+        {
+            if (HasComp<BecomesStationComponent>(consoleGrid)
+                && !HasComp<StationCentcommComponent>(consoleGrid))
+            {
+                component.Location = DockLocation.Station;
+                return;
+            }
+        }
+
+        if (consoleMap != null && HasComp<LavalandComponent>(consoleMap))
+        {
+            component.Location = DockLocation.Outpost;
+            return;
+        }
+
+        var dockQuery = EntityQueryEnumerator<PriorityDockComponent>();
+        while (dockQuery.MoveNext(out var dockUid, out var dock))
+        {
+            if (Transform(dockUid).GridUid != Transform(consoleUid).GridUid)
+                continue;
+
+            if (dock.Tag == DockStation)
+            {
+                component.Location = DockLocation.Station;
+                break;
+            }
+
+            if (dock.Tag == DockOutpost)
+            {
+                component.Location = DockLocation.Outpost;
+                break;
+            }
         }
     }
 
@@ -186,8 +197,8 @@ public sealed partial class LavalandShuttleSystem
         if (shuttle.State is not (LavalandShuttleState.DockedAtStation or LavalandShuttleState.DockedAtOutpost))
             return false;
 
-        return console.Location == DockLocation.Station && shuttle.State == LavalandShuttleState.DockedAtStation
-            || console.Location == DockLocation.Outpost && shuttle.State == LavalandShuttleState.DockedAtOutpost
-            || console.Location == DockLocation.Shuttle;
+        return console.Location == DockLocation.Shuttle
+            || console.Location == DockLocation.Station
+            || console.Location == DockLocation.Outpost;
     }
 }

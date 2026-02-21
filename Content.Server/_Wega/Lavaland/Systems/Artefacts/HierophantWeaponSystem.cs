@@ -10,7 +10,7 @@ using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Random;
 
-namespace Content.Server.Lavaland.Mobs;
+namespace Content.Server.Lavaland.Artefacts.Systems;
 
 public sealed partial class HierophantClubSystem : EntitySystem
 {
@@ -131,9 +131,7 @@ public sealed partial class HierophantClubSystem : EntitySystem
     }
 
     private void SpawnDamageTile(HierophantClubComponent component, EntityCoordinates coords)
-    {
-        Spawn(component.DamageTilePrototype, coords);
-    }
+        => Spawn(component.DamageTilePrototype, coords);
 
     private EntityCoordinates? FindSpawnPositionNear(EntityCoordinates center, float maxDistance)
     {

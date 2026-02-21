@@ -2,7 +2,7 @@
   parent: ClothingNeckBase
   id: ClothingNeckWingsTail
   name: demon wings
-  description: "Oh no!" 
+  description: "Oh no!"
   components:
   - type: Sprite
     sprite: _Wega/Clothing/Neck/Misc/demonicwings.rsi
@@ -19,3 +19,148 @@
     sprite: _Wega/Clothing/Neck/Misc/wingsagel.rsi
   - type: Clothing
     sprite: _Wega/Clothing/Neck/Misc/wingsagel.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckNecklaceRuby
+  name: necklace
+  description: "How I long to be wrapped in a golden chain."
+  suffix: Ruby
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Neck/Misc/necklace_r.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Neck/Misc/necklace_r.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckNecklaceEmerald
+  name: necklace
+  description: "How I long to be wrapped in a golden chain."
+  suffix: Emerald
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Neck/Misc/necklace_e.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Neck/Misc/necklace_e.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckNecklaceTopaz
+  name: necklace
+  description: "How I long to be wrapped in a golden chain."
+  suffix: Topaz
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Neck/Misc/necklace_t.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Neck/Misc/necklace_t.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckNecklaceRuperium
+  name: necklace
+  description: "How I long to be wrapped in a golden chain."
+  suffix: Ruperium
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Neck/Misc/necklace_rup.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Neck/Misc/necklace_rup.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckNecklaceFrozenDiamond
+  name: necklace
+  description: "How I long to be wrapped in a golden chain."
+  suffix: Frozen Diamond
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Neck/Misc/necklace_f.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Neck/Misc/necklace_f.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckNecklaceHardenedShell
+  name: necklace
+  description: "How I long to be wrapped in a golden chain."
+  suffix: Hardened shell
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Neck/Misc/necklace_h.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Neck/Misc/necklace_h.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckNecklaceStabilizedBaroxuldium
+  name: necklace
+  description: "How I long to be wrapped in a golden chain."
+  suffix: Stabilized baroxuldium
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Neck/Misc/necklace_sb.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Neck/Misc/necklace_sb.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckNecklaceCompactedDilithium
+  name: necklace
+  description: "How I long to be wrapped in a golden chain."
+  suffix: Compacted dilithium
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Neck/Misc/necklace_sb.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Neck/Misc/necklace_sb.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckNecklaceDragonPearls
+  name: necklace
+  description: "How I long to be wrapped in a golden chain."
+  suffix: Dragon Pearls
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Neck/Misc/necklace_dp.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Neck/Misc/necklace_dp.rsi
+  # - type: DragonAmulet
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckNecklaceHollowCrystal
+  name: necklace
+  description: "How I long to be wrapped in a golden chain."
+  suffix: Hollow Crystal
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Neck/Misc/necklace_hol.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Neck/Misc/necklace_hol.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckNecklaceBloodstone
+  name: necklace
+  description: "How I long to be wrapped in a golden chain."
+  suffix: The Bloodstone
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Neck/Misc/necklace_b.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Neck/Misc/necklace_b.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckNecklaceBluespaceData
+  name: necklace
+  description: "How I long to be wrapped in a golden chain."
+  suffix: Bluespace data Crystal
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Neck/Misc/necklace_bd.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Neck/Misc/necklace_bd.rsi

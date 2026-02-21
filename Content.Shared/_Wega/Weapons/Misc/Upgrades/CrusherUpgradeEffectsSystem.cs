@@ -3,6 +3,7 @@ using System.Numerics;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Maps;
+using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Physics;
 using Content.Shared.Projectiles;
@@ -30,6 +31,7 @@ public sealed class CrusherUpgradeEffectsSystem : EntitySystem
     [Dependency] private readonly TagSystem _tag = default!;
     [Dependency] private readonly ThrowingSystem _throwing = default!;
     [Dependency] private readonly SharedMapSystem _map = default!;
+    [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly TurfSystem _turf = default!;
 
     private static readonly ProtoId<TagPrototype> SlowImmune = "SlowImmune";
@@ -39,19 +41,46 @@ public sealed class CrusherUpgradeEffectsSystem : EntitySystem
     {
         base.Initialize();
 
+        // Legion
         SubscribeLocalEvent<CrusherLegionSkullUpgradeComponent, GunRefreshModifiersEvent>(OnLegionFireRateRefresh);
+
+        // Goliath
         SubscribeLocalEvent<CrusherGoliathTentacleUpgradeComponent, MarkerAttackAttemptEvent>(OnGoliathMarkerAttack);
         SubscribeLocalEvent<CrusherGoliathTentacleUpgradeComponent, MeleeHitEvent>(OnGoliathAttacked);
+
+        // Ancient Goliath
+        SubscribeLocalEvent<CrusherAncientGoliathTentacleUpgradeComponent, MarkerAttackAttemptEvent>(OnAncientGoliathMarkerAttack);
+        SubscribeLocalEvent<CrusherAncientGoliathTentacleUpgradeComponent, MeleeHitEvent>(OnAncientGoliathAttacked);
+
+        // Watcher
         SubscribeLocalEvent<CrusherWatcherWingUpgradeComponent, GunShotEvent>(OnWatcherWingGunShot);
+
+        // Magma Watcher
         SubscribeLocalEvent<CrusherMagmaWingUpgradeComponent, AfterMarkerAttackedEvent>(OnMagmaWingAfterMarker);
         SubscribeLocalEvent<CrusherMagmaWingUpgradeComponent, GunShotEvent>(OnMagmaWingGunShot);
+
+        // Marrow Weaver
+        SubscribeLocalEvent<CrusherPoisonFangUpgradeComponent, AfterMarkerAttackedEvent>(OnPoisonFangAfterMarker);
+
+        // Frostbite Weaver
+        SubscribeLocalEvent<CrusherFrostGlandUpgradeComponent, GunShotEvent>(OnFrostGlandGunShot);
+
+        // Blood Drunk Miner
         SubscribeLocalEvent<CrusherEyeBloodDrunkMinerUpgradeComponent, AfterMarkerAttackedEvent>(OnEyeBDMAfterMarker);
+
+        // Ash Drake
         SubscribeLocalEvent<CrusherAshDrakeSpikeUpgradeComponent, AfterMarkerAttackedEvent>(OnAshDrakeSpikeAfterMarker);
+
+        // Bubblegum
         SubscribeLocalEvent<CrusherDemonClawsUpgradeComponent, MarkerAttackAttemptEvent>(OnDemonClawsMarkerAttack);
         SubscribeLocalEvent<CrusherDemonClawsUpgradeComponent, MeleeHitEvent>(OnDemonClawsAttacked);
+
+        // Colossus
         SubscribeLocalEvent<CrusherBlasterTubesUpgradeComponent, AfterMarkerAttackedEvent>(OnBlasterTubesAfterMarker);
         SubscribeLocalEvent<CrusherBlasterTubesUpgradeComponent, GunRefreshModifiersEvent>(OnBlasterTubesRefresh);
         SubscribeLocalEvent<CrusherBlasterTubesUpgradeComponent, GunShotEvent>(OnBlasterTubesGunShot);
+
+        // Hierophant
         SubscribeLocalEvent<CrusherVortexTalismanUpgradeComponent, AfterMarkerAttackedEvent>(OnVortexTalismanAfterMarker);
     }
 
@@ -62,6 +91,9 @@ public sealed class CrusherUpgradeEffectsSystem : EntitySystem
     // Goliath
     private void OnGoliathMarkerAttack(Entity<CrusherGoliathTentacleUpgradeComponent> ent, ref MarkerAttackAttemptEvent args)
     {
+        if (!HasComp<MobThresholdsComponent>(args.User))
+            return;
+
         if (!TryComp<DamageableComponent>(args.User, out var damageable) || damageable.TotalDamage <= 0
             || !_threshold.TryGetThresholdForState(args.User, ent.Comp.TargetState, out var threshold))
             return;
@@ -79,6 +111,9 @@ public sealed class CrusherUpgradeEffectsSystem : EntitySystem
 
     private void OnGoliathAttacked(Entity<CrusherGoliathTentacleUpgradeComponent> ent, ref MeleeHitEvent args)
     {
+        if (!HasComp<MobThresholdsComponent>(args.User))
+            return;
+
         if (!TryComp<DamageableComponent>(args.User, out var damageable) || damageable.TotalDamage <= 0
             || !_threshold.TryGetThresholdForState(args.User, ent.Comp.TargetState, out var threshold))
             return;
@@ -92,6 +127,50 @@ public sealed class CrusherUpgradeEffectsSystem : EntitySystem
 
         bonus = Math.Min(bonus, ent.Comp.MaxCoefficient);
         args.BonusDamage += args.BaseDamage * bonus;
+    }
+
+    // Ancient Goliath
+    private void OnAncientGoliathMarkerAttack(Entity<CrusherAncientGoliathTentacleUpgradeComponent> ent, ref MarkerAttackAttemptEvent args)
+    {
+        if (!HasComp<MobThresholdsComponent>(args.Target))
+            return;
+
+        if (!TryComp<DamageableComponent>(args.Target, out var damageable)
+            || _threshold.TryGetThresholdForState(args.Target, Mobs.MobState.Dead, out var threshold))
+            return;
+
+        if (threshold - threshold * ent.Comp.HealModifier < damageable.TotalDamage)
+            return;
+
+        args.DamageModifier += ent.Comp.Coefficient;
+    }
+
+    private void OnAncientGoliathAttacked(Entity<CrusherAncientGoliathTentacleUpgradeComponent> ent, ref MeleeHitEvent args)
+    {
+        if (args.HitEntities.Count == 0)
+            return;
+
+        bool correct = false;
+        foreach (var hitEnt in args.HitEntities)
+        {
+            if (!HasComp<MobThresholdsComponent>(hitEnt))
+                return;
+
+            if (!TryComp<DamageableComponent>(hitEnt, out var damageable)
+                || _threshold.TryGetThresholdForState(hitEnt, Mobs.MobState.Dead, out var threshold))
+                continue;
+
+            if (threshold - threshold * ent.Comp.HealModifier < damageable.TotalDamage)
+                continue;
+
+            correct = true;
+            break;
+        }
+
+        if (!correct)
+            return;
+
+        args.BonusDamage += args.BaseDamage * ent.Comp.Coefficient;
     }
 
     // Watcher
@@ -122,6 +201,26 @@ public sealed class CrusherUpgradeEffectsSystem : EntitySystem
             {
                 projectile.Damage += ent.Comp.Damage;
                 ent.Comp.Active = false;
+            }
+        }
+    }
+
+    // Marrow Weaver
+    private void OnPoisonFangAfterMarker(Entity<CrusherPoisonFangUpgradeComponent> ent, ref AfterMarkerAttackedEvent args)
+    {
+        EnsureComp<IncreasedDamageComponent>(args.Target).ActiveInterval = TimeSpan.FromSeconds(ent.Comp.Interval);
+        Comp<IncreasedDamageComponent>(args.Target).DamageModifier = ent.Comp.DamageModifier;
+    }
+
+    // Frostbite Weaver
+    private void OnFrostGlandGunShot(Entity<CrusherFrostGlandUpgradeComponent> ent, ref GunShotEvent args)
+    {
+        foreach (var (ammo, _) in args.Ammo)
+        {
+            if (TryComp<DamageMarkerOnCollideComponent>(ammo, out var marker) && !marker.Weakening)
+            {
+                marker.Weakening = true;
+                marker.WeakeningModifier = ent.Comp.DamageModifier;
             }
         }
     }
@@ -177,6 +276,18 @@ public sealed class CrusherUpgradeEffectsSystem : EntitySystem
 
     private void OnDemonClawsAttacked(Entity<CrusherDemonClawsUpgradeComponent> ent, ref MeleeHitEvent args)
     {
+        bool alive = false;
+        foreach (var hitEnt in args.HitEntities)
+        {
+            if (HasComp<MobStateComponent>(hitEnt) && !_mobState.IsDead(hitEnt))
+            {
+                alive = true;
+                break;
+            }
+        }
+
+        if (!alive) return;
+
         args.BonusDamage = args.BaseDamage * ent.Comp.DamageMultiplier;
         if (TryComp<LeechOnMarkerComponent>(ent, out var leech))
         {
@@ -207,6 +318,7 @@ public sealed class CrusherUpgradeEffectsSystem : EntitySystem
         }
     }
 
+    // Hierophant
     private void OnVortexTalismanAfterMarker(Entity<CrusherVortexTalismanUpgradeComponent> ent, ref AfterMarkerAttackedEvent args)
     {
         if (!_net.IsServer)

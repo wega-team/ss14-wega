@@ -35,6 +35,9 @@
     factions:
     - LavalandFauna
 
+#region Goldgrub
+#endregion
+
 #region Goliath
 - type: entity
   id: BaseMobGoliath
@@ -501,7 +504,7 @@
           Quantity: 80
   - type: MeleeChemicalInjector
     solution: melee
-    transferAmount: 5
+    transferAmount: 1.5
   - type: MobThresholds
     thresholds:
       0: Alive
@@ -516,6 +519,8 @@
       amount: 3
     - id: MaterialChitin1
       amount: 4
+  - type: TrophyHunter
+    trophy: TrophyLavalandMarrowWeaverPoisonFang
   - type: ReplacementAccent
     accent: xeno
   - type: NoSlip
@@ -567,4 +572,6 @@
         reagents:
         - ReagentId: Cryoxadone
           Quantity: 80
+  - type: TrophyHunter
+    trophy: TrophyLavalandFrostbiteWeaverFrostGland
 #endregion

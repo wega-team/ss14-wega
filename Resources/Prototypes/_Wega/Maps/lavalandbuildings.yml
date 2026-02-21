@@ -3,6 +3,7 @@
   id: PenalServitude
   gridPath: /Maps/_Wega/Lavaland/penalservitude.yml
   position: "-50,50"
+  ignoring: true
   merge: false
 
 - type: lavalandBuilding
@@ -35,6 +36,19 @@
   id: Hierophant
   gridPath: /Maps/_Wega/Lavaland/hierophant.yml
   approximate: [200, 300]
+  ignoring: true
+
+- type: lavalandBuilding
+  id: Bubblegum
+  gridPath: /Maps/_Wega/Lavaland/bubblegumspawn.yml
+  approximate: [150, 250]
+  ignoring: true
+
+- type: lavalandBuilding
+  id: WorldForge
+  gridPath: /Maps/_Wega/Lavaland/worldforge.yml
+  approximate: [150, 150]
+  ignoring: true
 
 - type: lavalandBuilding
   id: Envy
@@ -75,6 +89,7 @@
 - type: lavalandBuilding
   id: DragonLair
   gridPath: /Maps/_Wega/Lavaland/dragonlair.yml
+  ignoring: true
 
 - type: lavalandBuilding
   id: Nesting

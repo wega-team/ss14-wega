@@ -19,12 +19,12 @@
     penetrationThreshold: 900
     damage:
       types:
-        Heat: 5
+        Heat: 2.5
         Structural: 30
     penetrationDamageTypeRequirement:
     - Structural
   - type: StaminaDamageOnCollide
-    damage: 10
+    damage: 1
   - type: TimedDespawn
     lifetime: 0.2
   - type: PointLight
@@ -62,5 +62,27 @@
   - type: Projectile
     damage:
       types:
-        Heat: 10
+        Heat: 2.5
         Structural: 60
+
+- type: entity
+  name: plasma cutter barrage
+  id: BulletPlasmaCutterSpreadNarrow
+  categories: [ HideSpawnMenu ]
+  parent: BulletPlasmaCutter
+  components:
+  - type: ProjectileSpread
+    proto: BulletPlasmaCutter
+    count: 4
+    spread: 10
+
+- type: entity
+  name: plasma cutter barrage
+  id: BulletPlasmaCutterMagmaSpreadNarrow
+  categories: [ HideSpawnMenu ]
+  parent: BulletPlasmaCutterMagma
+  components:
+  - type: ProjectileSpread
+    proto: BulletPlasmaCutterMagma
+    count: 4
+    spread: 10

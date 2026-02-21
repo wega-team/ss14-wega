@@ -55,3 +55,31 @@
   - type: ConditionalSpawner
     prototypes:
     - MobColossus
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnAshDrakeLavaland
+  name: Ash Drake Spawner
+  suffix: Lavaland, DO NOT MAP
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+    - MobAshDrake
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnBubblegumLavaland
+  name: Bubblegum Spawner
+  suffix: Lavaland, DO NOT MAP
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+    - MobBubblegum

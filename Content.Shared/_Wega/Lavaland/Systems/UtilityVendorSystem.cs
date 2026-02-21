@@ -4,11 +4,13 @@ using Content.Shared.Lavaland.Components;
 using Content.Shared.Whitelist;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Lavaland;
 
 public sealed partial class UtilityVendorSystem : EntitySystem
 {
+    [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly ItemSlotsSystem _itemSlots = default!;
     [Dependency] private readonly SharedUserInterfaceSystem _ui = default!;
@@ -55,10 +57,11 @@ public sealed partial class UtilityVendorSystem : EntitySystem
         if (component.CardSlot.Item is not { } card || !TryComp<PointsCardComponent>(card, out var pointsCard))
             return false;
 
-        if (!component.Inventory.TryGetValue(itemId, out var price) || pointsCard.Points < price)
+        var price = FindItemPrice(itemId, component);
+        if (price == null || pointsCard.Points < price)
             return false;
 
-        pointsCard.Points -= price;
+        pointsCard.Points -= price.Value;
         Dirty(card, pointsCard);
 
         UpdateUI(uid, component);
@@ -69,12 +72,42 @@ public sealed partial class UtilityVendorSystem : EntitySystem
         return true;
     }
 
+    private FixedPoint2? FindItemPrice(string itemId, UtilityVendorComponent component)
+    {
+        foreach (var categoryId in component.Categories)
+        {
+            if (!_prototype.TryIndex(categoryId, out var category))
+                continue;
+
+            if (category.InventoryTemplate.TryGetValue(itemId, out var price))
+                return price;
+        }
+        return null;
+    }
+
     private void UpdateUI(EntityUid uid, UtilityVendorComponent component)
     {
-        var state = new UtilityVendorBoundUserInterfaceState(
-            component.CardSlot.Item != null ? CompOrNull<PointsCardComponent>(component.CardSlot.Item)?.Points ?? FixedPoint2.Zero : FixedPoint2.Zero,
-            component.Inventory
-        );
+        var points = component.CardSlot.Item != null
+            ? CompOrNull<PointsCardComponent>(component.CardSlot.Item)?.Points ?? FixedPoint2.Zero
+            : FixedPoint2.Zero;
+
+        var categoriesData = new List<CategoryData>();
+        foreach (var categoryId in component.Categories)
+        {
+            if (!_prototype.TryIndex(categoryId, out var category))
+                continue;
+
+            categoriesData.Add(new CategoryData(
+                category.ID,
+                category.Name,
+                category.Priority,
+                category.InventoryTemplate
+            ));
+        }
+
+        categoriesData.Sort((a, b) => a.Priority.CompareTo(b.Priority));
+
+        var state = new UtilityVendorBoundUserInterfaceState(points, categoriesData);
         _ui.SetUiState(uid, UtilityVendorUiKey.Key, state);
     }
 }

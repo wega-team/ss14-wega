@@ -1096,14 +1096,73 @@
   - BackpackDuffelPostman
 
 - type: loadoutGroup
-  id: SalvageSpecialistJumpsuit
-  name: loadout-group-salvage-specialist-jumpsuit
+  id: ShaftMinerBackpack
+  name: loadout-group-shaft-miner-backpack
   loadouts:
-  - SalvageSpecialistJumpsuit
-  - SalvageSpecialistJumpsuitExplorer
-  - SalvageSpecialistJumpskirtExplorer
-  - SalvageSpecialistJumpsuitExplorerKhaki
-  - SalvageSpecialistJumpskirtExplorerKhaki
+  - SalvageSpecialistBackpack
+  - SalvageSpecialistSatchel
+  - SalvageSpecialistDuffel
+
+- type: loadoutGroup
+  id: ShaftMinerJumpsuit
+  name: loadout-group-shaft-miner-jumpsuit
+  loadouts:
+  - ShaftMinerJumpsuitExplorer
+  - ShaftMinerJumpskirtExplorer
+  - ShaftMinerJumpsuitExplorerKhaki
+  - ShaftMinerJumpskirtExplorerKhaki
+
+- type: loadoutGroup
+  id: ShaftMinerOuterClothing
+  name: loadout-group-shaft-miner-outerclothing
+  minLimit: 0
+  loadouts:
+  - SalvageSpecialistWintercoat
+  - ShaftMinerArmorExplorerSuitKhaki # Corvax-Wega-Lavaland
+
+- type: loadoutGroup
+  id: ShaftMinerShoes
+  name: loadout-group-shaft-miner-shoes
+  loadouts:
+  - SalvageBoots
+  - CargoWinterBoots
+
+- type: loadoutGroup
+  id: ShaftMinerMedicHead
+  name: loadout-group-shaft-miner-medic-head
+  minLimit: 0
+  loadouts:
+  - MedicalBeret
+  - SeniorPhysicianBeret
+  - CargoTechnicianHead
+  # Corvax-Wega-Sponsors-start
+  - ClothingHeadHatMagic
+  # Corvax-Wega-Sponsors-end
+
+- type: loadoutGroup
+  id: ShaftMinerMedicBackpack
+  name: loadout-group-shaft-miner-medic-backpack
+  loadouts:
+  - MedicalDoctorBackpack
+  - MedicalDoctorSatchel
+  - MedicalDoctorDuffel
+
+- type: loadoutGroup
+  id: ShaftMinerMedicJumpsuit
+  name: loadout-group-shaft-miner-medic-jumpsuit
+  loadouts:
+  - ShaftMinerJumpsuitExplorer
+  - ShaftMinerJumpskirtExplorer
+  - ShaftMinerJumpsuitExplorerKhaki
+  - ShaftMinerJumpskirtExplorerKhaki
+
+- type: loadoutGroup
+  id: ShaftMinerMedicGloves
+  name: loadout-group-shaft-miner-medic-gloves
+  minLimit: 0
+  loadouts:
+  - LatexGloves
+  - NitrileGloves
 
 # Civilian
 - type: loadoutGroup

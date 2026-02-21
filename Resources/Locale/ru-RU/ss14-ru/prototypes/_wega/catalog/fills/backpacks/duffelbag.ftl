@@ -4,6 +4,7 @@ ent-ClothingBackpackDuffelVoidGyroscope = вещмешок с деталями �
     .desc = { ent-ClothingBackpackDuffel.desc }
 ent-ClothingBackpackDuffelSalvageBaseKit = { ent-ClothingBackpackDuffelSalvage }
     .desc = { ent-ClothingBackpackDuffelSalvage.desc }
+    .suffix = Набор
 
 ent-ClothingBackpackDuffelSyndicateFilledXC67 = набор "xC-67"
     .desc = Громко и мощно: Штурмовая винтовка "xC-67" и три магазина к нему на 45 патронов.

@@ -42,8 +42,11 @@ public sealed partial class LavalandShuttleSystem : EntitySystem
     private void OnShuttleMapInit(EntityUid uid, LavalandShuttleComponent component, MapInitEvent args)
     {
         var consoleQuery = EntityQueryEnumerator<LavalandShuttleConsoleComponent>();
-        while (consoleQuery.MoveNext(out _, out var console))
-            console.ConnectedShuttle = uid;
+        while (consoleQuery.MoveNext(out var console, out var consoleComp))
+        {
+            consoleComp.ConnectedShuttle = uid;
+            UpdateLocation(console, consoleComp);
+        }
     }
 
     private void OnShuttleArrival(EntityUid uid, LavalandShuttleComponent component, ref FTLCompletedEvent args)

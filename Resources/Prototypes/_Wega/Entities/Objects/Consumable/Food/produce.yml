@@ -78,6 +78,28 @@
   - type: Appearance
 
 - type: entity
+  parent: BaseItem
+  id: FlowerFireBlossom
+  name: fire blossom
+  description: "Something beautiful."
+  components:
+  - type: Clothing
+    slots:
+    - HEAD
+    quickEquip: false
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/fireblossom.rsi
+    state: produce
+  - type: Produce
+    seedId: fireblossomflower
+  - type: PointLight
+    radius: 1.2
+    energy: 2
+    color: "#F54900"
+  - type: PotencyVisuals
+  - type: Appearance
+
+- type: entity
   name: money cabbage
   description: "Money, money, MONEY!!"
   id: FoodMoneyCabbage
@@ -439,7 +461,7 @@
     - Fruit
 
 - type: entity
-  name: lollipop 
+  name: lollipop
   parent: FoodProduceBase
   id: FoodProduceLollipop
   description: "the most delicious lollipops!"
@@ -470,7 +492,7 @@
     - Lollipops
 
 - type: entity
-  name: lollipop 
+  name: lollipop
   parent: FoodProduceBase
   id: FoodProduceLollipopRandom
   suffix: "random chemicals"
@@ -502,7 +524,7 @@
     - Lollipops
 
 - type: entity
-  name: lollipop 
+  name: lollipop
   parent: FoodProduceBase
   id: FoodProduceLollipopMedical
   suffix: "medical chemicals"
@@ -532,7 +554,7 @@
     - Lollipops
 
 - type: entity
-  name: lollipop 
+  name: lollipop
   parent: FoodProduceBase
   id: FoodProduceLollipopMedRandom
   suffix: "medical case"

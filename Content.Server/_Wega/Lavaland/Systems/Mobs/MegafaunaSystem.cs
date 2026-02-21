@@ -1,9 +1,9 @@
-using Content.Server.Lavaland.Mobs.Components;
 using Content.Server.NPC.HTN;
 using Content.Server.NPC.Systems;
 using Content.Shared.Achievements;
 using Content.Shared.Audio;
 using Content.Shared.Damage.Systems;
+using Content.Shared.Lavaland.Components;
 using Content.Shared.Lavaland.Events;
 using Content.Shared.Mobs;
 using Robust.Shared.Audio.Systems;

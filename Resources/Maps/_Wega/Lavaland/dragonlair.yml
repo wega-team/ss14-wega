@@ -4,7 +4,7 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 01/15/2026 20:58:36
+  time: 02/14/2026 12:23:29
   entityCount: 252
 maps: []
 grids:
@@ -1201,6 +1201,13 @@ entities:
     - type: Transform
       pos: 3.5,8.5
       parent: 6252
+- proto: SpawnAshDrakeLavaland
+  entities:
+  - uid: 1
+    components:
+    - type: Transform
+      pos: 0.5,0.5
+      parent: 6252
 - proto: WallNecropolis
   entities:
   - uid: 6471
@@ -1362,14 +1369,5 @@ entities:
     components:
     - type: Transform
       pos: -2.5,-6.5
-      parent: 6252
-- proto: WarpPoint
-  entities:
-  - uid: 6503
-    components:
-    - type: MetaData
-      name: Логово Дракона
-    - type: Transform
-      pos: 0.5,0.5
       parent: 6252
 ...

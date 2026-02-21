@@ -126,6 +126,11 @@
   - type: TrophyHunter
     trophy: TrophyLavalandBDMEye
     dropChance: 1 # Guaranteed, since it's the boss
+  - type: Butcherable
+    spawned:
+    - id: FoodMeatHuman
+      amount: 5
+    - id: GemStabilizedBaroxuldium
   - type: NavMapBeacon
     defaultText: nav-map-beacon-lavaland-signal-bdm
     defaultDesc: nav-map-beacon-lavaland-signal-bdm-desc
@@ -207,6 +212,7 @@
   - type: HierophantBoss
     rewards:
     - HierophantClubRod
+    - GemCompactedDilithium
   - type: HTN
     rootTask:
       task: HierophantBehaviorCompound
@@ -490,6 +496,8 @@
     defaultDesc: nav-map-beacon-lavaland-signal-colossus-desc
     color: "#4daaff"
   - type: ColossusBoss
+    rewards:
+    - CrateNecropolisColossusFilled
   - type: HTN
     rootTask:
       task: MegafaunaBehaviorCompound
@@ -517,7 +525,7 @@
 
 #region Ash Drake
 - type: entity
-  parent: BaseMobMegafaunaMover
+  parent: [ BaseMobMegafaunaMover, MobBloodstream ]
   id: MobAshDrake
   name: ash drake
   description: "A winged monster, the revered guardian of the Necropolis. A horror in flesh, it roams the barren wasteland, spewing streams of deadly flame."
@@ -572,6 +580,14 @@
     thresholds:
       0: Alive
       2500: Dead
+  - type: Bloodstream
+    bloodlossDamage:
+      types:
+        Bloodloss: 0
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: Blood
+        Quantity: 500
   - type: NavMapBeacon
     defaultText: nav-map-beacon-lavaland-signal-ashdrake
     defaultDesc: nav-map-beacon-lavaland-signal-ashdrake-desc
@@ -598,6 +614,20 @@
   - type: TrophyHunter
     trophy: TrophyLavalandAshDrakeSpike
     dropChance: 1 # Guaranteed, since it's the boss
+  - type: Butcherable
+    spawned:
+    - id: FoodMeatDragon
+      amount: 3
+    - id: DiamondOre1
+      amount: 5
+    - id: GemDragonPearls
+    - id: MaterialSinew1
+      amount: 5
+    - id: MaterialDragonHide1
+      amount: 10
+    - id: MaterialBones1
+      amount: 30
+    - id: CrateNecropolisAshDrakeFilled
   - type: Appearance
   - type: GenericVisualizer
     visuals:
@@ -605,4 +635,178 @@
         enum.DamageStateVisualLayers.Base:
           True: {visible: false}
           False: {visible: true}
+
+- type: entity
+  parent: [ BaseMobMegafaunaMover, MobBloodstream ]
+  id: MobLowerAshDrake
+  name: ash drake
+  description: "A winged monster, the revered guardian of the Necropolis. A horror in flesh, it roams the barren wasteland, spewing streams of deadly flame."
+  suffix: Lower
+  components:
+  - type: Physics
+    bodyType: KinematicController
+    canCollide: false
+  - type: Sprite
+    sprite: _Wega/Mobs/Lavaland/ashdrake.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: dragon
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: dragon
+      Dead:
+        Base: dragon_dead
+  - type: MeleeWeapon
+    altDisarm: false
+    angle: 0
+    animation: WeaponArcBite
+    soundHit:
+      path: /Audio/Effects/bite.ogg
+    attackRate: 1
+    damage:
+     type:
+       Slash: 10
+  - type: RechargeBasicEntityAmmo
+    showExamineText: false
+    rechargeCooldown: 0.01
+    rechargeSound: null
+  - type: BasicEntityAmmoProvider
+    proto: BulletAshDrakeFire
+    capacity: 9999
+    count: 9999
+  - type: Gun
+    projectileSpeed: 10
+    fireRate: 1
+    useKey: false
+    selectedMode: SemiAuto
+    availableModes:
+      - SemiAuto
+    showExamineText: false
+    soundGunshot: null
+    soundEmpty: null
+  - type: Pullable
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2.25
+    baseSprintSpeed: 2.25
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      500: Dead
+  - type: Bloodstream
+    bloodlossDamage:
+      types:
+        Bloodloss: 0
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: Blood
+        Quantity: 500
+#endregion
+
+#region Bubblegum
+- type: entity
+  parent: BaseMobMegafaunaMover
+  id: MobBubblegum
+  name: bubblegum
+  description: "The king of all the slaughter demons."
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Lavaland/bubblegum.rsi
+    layers:
+    - map: ["base"]
+      state: bubblegum
+  - type: MeleeWeapon
+    altDisarm: false
+    attackRate: 0.25
+    damage:
+     groups:
+       Brute: 40
+  - type: Pullable
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2.25
+    baseSprintSpeed: 2.25
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepThud
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      2500: Dead
+  - type: NavMapBeacon
+    defaultText: nav-map-beacon-lavaland-signal-bubblegum
+    defaultDesc: nav-map-beacon-lavaland-signal-bubblegum-desc
+    color: "#880000"
+  - type: BubblegumBoss
+    rewards:
+    - CrateNecropolisBubblegumFilled
+    phase1Actions:
+    - ActionBubblegumRage
+    - ActionBubblegumBloodDive
+    - ActionBubblegumTripleDash
+    phase1Chances:
+      ActionBubblegumRage: 0.1
+      ActionBubblegumBloodDive: 0.5
+      ActionBubblegumTripleDash: 0.8
+    phase2Actions:
+    - ActionBubblegumRage
+    - ActionBubblegumBloodDive
+    - ActionBubblegumIllusionDash
+    - ActionBubblegumPentagramDash
+    - ActionBubblegumChaoticIllusionDash
+    phase2Chances:
+      ActionBubblegumRage: 0.4
+      ActionBubblegumBloodDive: 0.5
+      ActionBubblegumIllusionDash: 0.67
+      ActionBubblegumPentagramDash: 0.33
+      ActionBubblegumChaoticIllusionDash: 0.75
+  - type: HTN
+    rootTask:
+      task: MegafaunaBehaviorCompound
+    blackboard:
+      VisionRadius: !type:Single
+        27
+      AggroVisionRadius: !type:Single
+        24
+  - type: NPCUseActionsOnTarget
+    actionIds:
+    - ActionBubblegumRage
+    - ActionBubblegumBloodDive
+    - ActionBubblegumTripleDash
+    actionChances:
+      ActionBubblegumRage: 0.1
+      ActionBubblegumBloodDive: 0.5
+      ActionBubblegumTripleDash: 0.8
+  - type: TrophyHunter
+    trophy: TrophyLavalandBubblegumDemonClaws
+    dropChance: 1 # Guaranteed, since it's the boss
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+     enum.VisualLayers.Enabled:
+        base:
+          True: {color: red}
+          False: {color: white}
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - DoorBumpOpener
+    - FootstepSound
+    - StunImmune
+    - SlowImmune
+
+- type: entity
+  id: MobBubblegumIllusion
+  name: bubblegum
+  description: "..."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Lavaland/bubblegum.rsi
+    state: bubblegum
+  - type: InteractionOutline
+  - type: BubblegumIllusion
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      2500: Dead
 #endregion

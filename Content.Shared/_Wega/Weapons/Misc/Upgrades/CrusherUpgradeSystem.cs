@@ -1,5 +1,6 @@
 using System.Linq;
 using Content.Shared.Administration.Logs;
+using Content.Shared.Armor;
 using Content.Shared.Database;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;

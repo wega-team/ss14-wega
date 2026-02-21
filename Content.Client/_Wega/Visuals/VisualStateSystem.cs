@@ -19,8 +19,7 @@ public sealed class VisualStateSystem : VisualizerSystem<VisualStateComponent>
     public override void Initialize()
     {
         base.Initialize();
-        SubscribeLocalEvent<VisualStateComponent, GetInhandVisualsEvent>(OnGetHeldVisuals,
-            after: [typeof(ItemSystem)]);
+        SubscribeLocalEvent<VisualStateComponent, GetInhandVisualsEvent>(OnGetHeldVisuals, after: [typeof(ItemSystem)]);
         SubscribeLocalEvent<VisualStateComponent, GetEquipmentVisualsEvent>(OnGetEquipmentVisuals);
     }
 

@@ -95,6 +95,26 @@
 
 - type: entity
   parent: ClothingHeadHatHoodExplorer
+  id: ClothingHeadHatHoodExplorerMedical
+  name: explorer hood medical
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Head/Hoods/Coat/explorerhood_med.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Wega/Clothing/Head/Hoods/Coat/explorerhood_med.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.75
+        Slash: 0.75
+        Piercing: 0.75
+        Heat: 0.6
+        Caustic: 0.5
+
+- type: entity
+  parent: ClothingHeadHatHoodExplorer
   id: ClothingHeadHatHoodExplorerBDM
   categories: [ HideSpawnMenu ]
   components:

@@ -1,5 +1,48 @@
 - type: entity
   parent: BaseAction
+  id: ActionFireSelf
+  name: fire self
+  description: ""
+  components:
+  - type: Action
+    useDelay: 30
+    itemIconStyle: BigAction
+    icon:
+      sprite: Effects/fire.rsi
+      state: fire
+  - type: InstantAction
+    event: !type:FireSelfActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: BecomeToDrakeAction
+  name: become drake
+  description: ""
+  components:
+  - type: Action
+    itemIconStyle: BigAction
+    icon:
+      sprite: Effects/fire.rsi
+      state: fire
+  - type: InstantAction
+    event: !type:BecomeToDrakeActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: DrakeReturnBackAction
+  name: return back
+  description: ""
+  components:
+  - type: Action
+    itemIconStyle: BigAction
+    icon:
+      sprite: Effects/fire.rsi
+      state: fire
+  - type: InstantAction
+    event: !type:DrakeReturnBackActionEvent
+
+- type: entity
+  parent: BaseAction
   id: ActionGoliathTentacle
   name: "[color=red]Tentacle Slam[/color]"
   description: Use your tentacles to grab and stun a target player!
@@ -44,6 +87,7 @@
   description: ""
   components:
   - type: Action
+    raiseOnUser: true
     useDelay: 3
     icon:
       sprite: _Wega/Objects/Weapons/Melee/hierophant_club.rsi
@@ -60,6 +104,7 @@
   description: ""
   components:
   - type: Action
+    raiseOnUser: true
     useDelay: 3
     icon:
       sprite: _Wega/Objects/Weapons/Melee/hierophant_club.rsi
@@ -76,6 +121,7 @@
   description: ""
   components:
   - type: Action
+    raiseOnUser: true
     useDelay: 3
     icon:
       sprite: _Wega/Objects/Weapons/Melee/hierophant_club.rsi
@@ -92,6 +138,7 @@
   description: ""
   components:
   - type: Action
+    raiseOnUser: true
     useDelay: 3
     icon:
       sprite: _Wega/Objects/Weapons/Melee/hierophant_club.rsi
@@ -108,7 +155,7 @@
   description: ""
   components:
   - type: Action
-    raiseOnUser: false
+    raiseOnUser: true
     icon:
       sprite: _Wega/Mobs/Lavaland/legionskull.rsi
       state: legion_head_1
@@ -125,6 +172,7 @@
   description: ""
   components:
   - type: Action
+    raiseOnUser: true
     useDelay: 10
     icon:
       sprite: Interface/Actions/jump.rsi
@@ -141,10 +189,13 @@
   description: ""
   components:
   - type: Action
+    raiseOnUser: true
     useDelay: 5
     icon:
       sprite: _Wega/Objects/Weapons/Guns/Projectiles/projectiles2.rsi
       state: throwing_knife
+    sound:
+      path: "/Audio/_Wega/Effects/narsie_attack.ogg"
   - type: TargetAction
     range: 10
   - type: EntityTargetAction
@@ -157,10 +208,13 @@
   description: ""
   components:
   - type: Action
+    raiseOnUser: true
     useDelay: 5
     icon:
       sprite: _Wega/Objects/Weapons/Guns/Projectiles/projectiles2.rsi
       state: throwing_knife
+    sound:
+      path: "/Audio/_Wega/Effects/narsie_attack.ogg"
   - type: TargetAction
     range: 10
   - type: EntityTargetAction
@@ -173,10 +227,13 @@
   description: ""
   components:
   - type: Action
+    raiseOnUser: true
     useDelay: 5
     icon:
       sprite: _Wega/Objects/Weapons/Guns/Projectiles/projectiles2.rsi
       state: throwing_knife
+    sound:
+      path: "/Audio/_Wega/Effects/narsie_attack.ogg"
   - type: TargetAction
     range: 10
   - type: EntityTargetAction
@@ -189,10 +246,13 @@
   description: ""
   components:
   - type: Action
+    raiseOnUser: true
     useDelay: 5
     icon:
       sprite: _Wega/Objects/Weapons/Guns/Projectiles/projectiles2.rsi
       state: throwing_knife
+    sound:
+      path: "/Audio/_Wega/Effects/narsie_attack.ogg"
   - type: TargetAction
     range: 10
   - type: EntityTargetAction
@@ -205,6 +265,7 @@
   description: ""
   components:
   - type: Action
+    raiseOnUser: true
     useDelay: 5
     icon:
       sprite: Objects/Magic/magicactions.rsi
@@ -221,6 +282,7 @@
   description: ""
   components:
   - type: Action
+    raiseOnUser: true
     useDelay: 5
     icon:
       sprite: Objects/Magic/magicactions.rsi
@@ -237,6 +299,7 @@
   description: ""
   components:
   - type: Action
+    raiseOnUser: true
     useDelay: 10
     icon:
       sprite: Tiles/Planet/lava.rsi
@@ -251,3 +314,117 @@
       healingSpec:
         groups:
           Brute: -250
+
+- type: entity
+  parent: BaseAction
+  id: ActionBubblegumRage
+  name: RAGE
+  description: Become temporarily invulnerable and attack faster!
+  components:
+  - type: Action
+    raiseOnUser: true
+    useDelay: 7
+    icon:
+      sprite: _Wega/Effects/bubblegumeffects.rsi
+      state: hand
+  - type: TargetAction
+    range: 20
+  - type: EntityTargetAction
+    event: !type:BubblegumRageActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionBubblegumBloodDive
+  name: Blood Dive
+  description: Submerge into blood and emerge near your target!
+  components:
+  - type: Action
+    raiseOnUser: true
+    useDelay: 6
+    icon:
+      sprite: _Wega/Effects/bubblegumeffects.rsi
+      state: hand
+  - type: TargetAction
+    range: 20
+  - type: EntityTargetAction
+    event: !type:BubblegumBloodDiveActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionBubblegumTripleDash
+  name: Triple Dash
+  description: Perform three consecutive charges at your target!
+  components:
+  - type: Action
+    raiseOnUser: true
+    useDelay: 8
+    icon:
+      sprite: _Wega/Effects/bubblegumeffects.rsi
+      state: hand
+  - type: TargetAction
+    range: 15
+  - type: EntityTargetAction
+    event: !type:BubblegumTripleDashActionEvent
+      dashDamage:
+        types:
+          Blunt: 30
+
+- type: entity
+  parent: BaseAction
+  id: ActionBubblegumIllusionDash
+  name: Illusion Dash
+  description: Summon illusions to surround and charge your target!
+  components:
+  - type: Action
+    raiseOnUser: true
+    useDelay: 6
+    icon:
+      sprite: _Wega/Effects/bubblegumeffects.rsi
+      state: hand
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    event: !type:BubblegumIllusionDashActionEvent
+      illusionDamage:
+        types:
+          Blunt: 15
+
+- type: entity
+  parent: BaseAction
+  id: ActionBubblegumPentagramDash
+  name: Pentagram Dash
+  description: Surround your target with four illusions and charge from all sides!
+  components:
+  - type: Action
+    raiseOnUser: true
+    useDelay: 6
+    icon:
+      sprite: _Wega/Effects/bubblegumeffects.rsi
+      state: hand
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    event: !type:BubblegumPentagramDashActionEvent
+      illusionDamage:
+        types:
+          Blunt: 15
+
+- type: entity
+  parent: BaseAction
+  id: ActionBubblegumChaoticIllusionDash
+  name: Chaotic Illusion Dash
+  description: Summon random illusions to charge from unpredictable directions!
+  components:
+  - type: Action
+    raiseOnUser: true
+    useDelay: 20
+    icon:
+      sprite: _Wega/Effects/bubblegumeffects.rsi
+      state: hand
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    event: !type:BubblegumChaoticIllusionDashActionEvent
+      illusionDamage:
+        types:
+          Blunt: 15

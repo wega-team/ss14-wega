@@ -1,3 +1,4 @@
+#region Boss Block
 - type: achievement
   id: FirstBoss
   name: achievements-firstboss-name
@@ -40,9 +41,10 @@
   key: AshDrakeBoss
   icon: { sprite: _Wega/Interface/achievements.rsi, state: drake }
 
-# - type: achievement
-#   id: Bubblegum
-#   name: achievements-bubblegumboss-name
-#   description: achievements-bubblegumboss-desc
-#   key: BubblegumBoss
-#   icon: { sprite: _Wega/Interface/achievements.rsi, state: bbgum }
+- type: achievement
+  id: Bubblegum
+  name: achievements-bubblegumboss-name
+  description: achievements-bubblegumboss-desc
+  key: BubblegumBoss
+  icon: { sprite: _Wega/Interface/achievements.rsi, state: bbgum }
+#endregion Boss Block

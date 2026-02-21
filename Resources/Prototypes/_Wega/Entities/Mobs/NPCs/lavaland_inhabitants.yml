@@ -147,3 +147,45 @@
     back:
     - EmergencyOxygenTankFilled
     - ClothingMaskBreath
+
+# Veterinarian
+- type: entity
+  parent: [ BaseMobHuman, BaseMobInhabitants ]
+  id: MobHumanInhabitantTranslocatedVeterinarian
+  name: veterinarian
+  components:
+  - type: RandomHumanoidAppearance
+    randomizeName: true
+  - type: NpcFactionMember
+    factions:
+      - Passive
+  - type: HTN
+    rootTask:
+      task: IdleCompound
+  - type: Loadout
+    prototypes:
+      - InhabitantTranslocatedVeterinarianGear
+
+- type: startingGear
+  id: InhabitantTranslocatedVeterinarianGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorWhite
+    mask: ClothingMaskBreathMedical
+    shoes: ClothingShoesColorWhite
+    gloves: ClothingHandsGlovesLatex
+    underwearbottom: ClothingUnderBottomGrey
+    back: ClothingBackpackSatchelMedical
+    outerClothing: ClothingOuterCoatLabOpened
+    pocket1: EmergencyOxygenTankFilled
+  inhand:
+    - MedkitFilled
+  storage:
+    back:
+    - MedicatedSuture
+    - RegenerativeMesh
+    - Bloodpack
+    - Gauze
+    - SyringeSaline
+    - SyringeEphedrine
+    - BruteAutoInjector
+    - BurnAutoInjector

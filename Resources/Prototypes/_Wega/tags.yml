@@ -127,6 +127,9 @@
 
 - type: Tag
   id: SubdermalHeadImplant
+
+- type: Tag
+  id: DivineVocalCordsImplant
 # Surgery end
 
 # Synthetic Surgery
@@ -288,6 +291,9 @@
   id: Oar
 
 - type: Tag
+  id: HandheldBeacon
+
+- type: Tag
   id: DockLavalandStation
 
 - type: Tag
@@ -303,6 +309,9 @@
   id: GunUpgradeAoE
 
 - type: Tag
+  id: GunUpgradeLifesteal
+
+- type: Tag
   id: CrusherUpgrade
 
 - type: Tag
@@ -312,10 +321,19 @@
   id: CrusherUpgradeGoliath
 
 - type: Tag
+  id: CrusherUpgradeAncientGoliath
+
+- type: Tag
   id: CrusherUpgradeWatcher
 
 - type: Tag
   id: CrusherUpgradeMagmaWatcher
+
+- type: Tag
+  id: CrusherUpgradeMarrowWeaverPoisonfang
+
+- type: Tag
+  id: CrusherUpgradeFrostbiteWeaverFrostGland
 
 - type: Tag
   id: CrusherUpgradeBDM
@@ -333,10 +351,16 @@
   id: CrusherUpgradeHierophant
 
 - type: Tag
+  id: MaterialsThrophy
+
+- type: Tag
   id: Sinew
 
 - type: Tag
   id: Chitin
+
+- type: Tag
+  id: DragonHide
 
 - type: Tag
   id: ExplorerSuit
@@ -346,6 +370,18 @@
 
 - type: Tag
   id: GoliathCloak
+
+- type: Tag
+  id: UniformUpgrade
+
+- type: Tag
+  id: BoneTalismanUpgrade
+
+- type: Tag
+  id: SkullCodpieceUpgrade
+
+- type: Tag
+  id: MagmiteAlloy
 
 - type: Tag
   id: Gems

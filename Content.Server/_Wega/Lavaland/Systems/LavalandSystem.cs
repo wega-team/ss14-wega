@@ -4,8 +4,8 @@ using Content.Server.Atmos.EntitySystems;
 using Content.Server.Decals;
 using Content.Server.Lavaland.Components;
 using Content.Server.Parallax;
+using Content.Server.Power.Components;
 using Content.Server.Radio.EntitySystems;
-using Content.Server.Spawners.Components;
 using Content.Server.Spawners.EntitySystems;
 using Content.Server.Station.Events;
 using Content.Shared.Atmos;
@@ -16,7 +16,6 @@ using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Decals;
-using Content.Shared.Fluids.Components;
 using Content.Shared.Lavaland;
 using Content.Shared.Lavaland.Components;
 using Content.Shared.Lavaland.Events;
@@ -38,6 +37,7 @@ using Robust.Shared.EntitySerialization;
 using Robust.Shared.EntitySerialization.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
+using Robust.Shared.Physics.Components;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -45,7 +45,7 @@ using Robust.Shared.Timing;
 
 namespace Content.Server.Lavaland.Systems;
 
-public sealed partial class LavalandSystem : EntitySystem
+public sealed partial class LavalandSystem : SharedLavalandSystem
 {
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly AtmosphereSystem _atmos = default!;
@@ -298,7 +298,10 @@ public sealed partial class LavalandSystem : EntitySystem
         var windDirection = _random.NextAngle().ToVec();
         var windForce = _random.NextFloat(500f, 1500f);
 
-        _physics.ApplyLinearImpulse(targetUid, windDirection * windForce);
+        if (HasComp<PhysicsComponent>(targetUid))
+        {
+            _physics.ApplyLinearImpulse(targetUid, windDirection * windForce);
+        }
     }
 
     #region Volcanic Activity
@@ -405,7 +408,10 @@ public sealed partial class LavalandSystem : EntitySystem
         var knockDirection = _random.NextAngle().ToVec();
         var knockForce = _random.NextFloat(500f, 1500f);
 
-        _physics.ApplyLinearImpulse(playerUid, knockDirection * knockForce);
+        if (HasComp<PhysicsComponent>(playerUid))
+        {
+            _physics.ApplyLinearImpulse(playerUid, knockDirection * knockForce);
+        }
 
         if (_random.Prob(0.2f))
         {
@@ -613,6 +619,9 @@ public sealed partial class LavalandSystem : EntitySystem
     #endregion
 
     #region Lavaland Procesing
+    /*
+        You've changed 6 times, and now only the best version of you remains.
+     */
 
     private void OnStationStartup(Entity<StationLavalandComponent> ent, ref StationPostInitEvent args)
     {
@@ -651,8 +660,8 @@ public sealed partial class LavalandSystem : EntitySystem
         EnsureComp<MapGridComponent>(mapUid); // For build processing after creating planet
         EnsureComp<NavMapComponent>(mapUid);
 
-        _map.CreateMap(out var tempMapId, false);
-        GenerateBuildings(tempMapId, mapUid);
+        _map.CreateMap(out var tempMapId);
+        GenerateBuildings(mapId, tempMapId, mapUid);
 
         _biome.EnsurePlanet(mapUid, _proto.Index(planet.Biome), ent.Comp.Seed, mapLight: planet.MapLightColor);
         var biome = EnsureComp<BiomeComponent>(mapUid);
@@ -672,10 +681,11 @@ public sealed partial class LavalandSystem : EntitySystem
         _atmos.SetMapAtmosphere(mapUid, false, mixture);
     }
 
-    public void GenerateBuildings(MapId tempMapId, EntityUid mainGrid)
+    public void GenerateBuildings(MapId mapId, MapId tempMapId, EntityUid mainGrid)
     {
         var buildings = _proto.EnumeratePrototypes<LavalandBuildingPrototype>();
-        var buildingList = buildings.OrderByDescending(b => b.ExactPosition.HasValue)
+        var buildingList = buildings.OrderBy(b => b.IgnoringCounting)
+            .ThenByDescending(b => b.ExactPosition.HasValue)
             .ThenByDescending(b => b.ApproximatePosition.HasValue)
             .ThenBy(b => _random.Next()).ToList();
 
@@ -683,16 +693,24 @@ public sealed partial class LavalandSystem : EntitySystem
         var minDistanceBetween = _cfg.GetCVar(WegaCVars.LavalandBuildingsDistance);
         var occupiedPositions = new List<Vector2>();
 
-        for (var i = 0; i <= maxBuildings && i < buildingList.Count; i++)
+        var spawned = 0;
+        foreach (var building in buildingList)
         {
-            if (TryFindValidPosition(buildingList[i], occupiedPositions, minDistanceBetween, 50, out var position))
+            if (!building.IgnoringCounting && spawned >= maxBuildings)
+                continue;
+
+            if (TryFindValidPosition(building, occupiedPositions, minDistanceBetween, 50, out var position))
             {
-                SpawnBuilding(tempMapId, mainGrid, buildingList[i], 200 * i, position);
+                var offsetIndex = occupiedPositions.Count;
+                SpawnBuilding(mapId, tempMapId, mainGrid, building, 200 * offsetIndex, position);
+
                 occupiedPositions.Add(position);
+                if (!building.IgnoringCounting)
+                    spawned++;
             }
         }
 
-        _map.QueueDeleteMap(tempMapId);
+        _map.DeleteMap(tempMapId);
     }
 
     private bool TryFindValidPosition(LavalandBuildingPrototype proto, List<Vector2> occupiedPositions,
@@ -740,14 +758,14 @@ public sealed partial class LavalandSystem : EntitySystem
         return false;
     }
 
-    private void SpawnBuilding(MapId tempMapId, EntityUid mainGrid, LavalandBuildingPrototype proto,
+    private void SpawnBuilding(MapId mapId, MapId tempMapId, EntityUid mainGrid, LavalandBuildingPrototype proto,
         int offset, Vector2 position)
     {
         var opts = new DeserializationOptions() { PauseMaps = true };
 
         var offsetPos = new Vector2(0, offset);
         var alignedPosition = new Vector2((int)position.X, (int)position.Y);
-        if (!_loader.TryLoadGrid(tempMapId, proto.GridPath, out var buildingGrid, opts, offsetPos))
+        if (!_loader.TryLoadGrid(proto.MergeWithPlanet ? tempMapId : mapId, proto.GridPath, out var buildingGrid, opts, offsetPos))
         {
             Log.Error($"Failed to load lavaland building {proto.ID} at {position}");
             return;
@@ -761,11 +779,9 @@ public sealed partial class LavalandSystem : EntitySystem
         {
             _iff.AddIFFFlag(buildingGrid.Value, IFFFlags.HideLabel);
             EnsureComp<ProtectedGridComponent>(buildingGrid.Value);
+            EnsureComp<NavMapComponent>(buildingGrid.Value);
 
-            var ents = PickAllSpecificEnts(buildingGrid.Value);
-            _transform.SetCoordinates(buildingGrid.Value.Owner, new EntityCoordinates(mainGrid, alignedPosition));
-
-            RestoreEnts(ents, buildingGrid.Value.Owner, Vector2.Zero);
+            _transform.SetCoordinates(buildingGrid.Value, new EntityCoordinates(mainGrid, position));
         }
 
         Log.Debug($"Loaded lavaland building {proto.ID} at {position}");
@@ -797,9 +813,31 @@ public sealed partial class LavalandSystem : EntitySystem
                 }
             }
 
-            var ents = PickAllSpecificEnts(buildingGridUid);
+            var anchoredEnts = new HashSet<EntityUid>();
+            var allChildren = new HashSet<EntityUid>();
+            GetAllChildren(Transform(buildingGridUid), allChildren);
+
+            foreach (var child in allChildren)
+            {
+                if (Transform(child).Anchored && !HasComp<CableComponent>(child))
+                    anchoredEnts.Add(child);
+            }
+
+            foreach (var ent in anchoredEnts)
+            {
+                if (Transform(ent).Anchored)
+                    _transform.Unanchor(ent);
+            }
+
             _fixture.Merge(mainGridUid, buildingGridUid, offset, relativeRotation, mainGrid, buildingGrid);
-            RestoreEnts(ents, mainGridUid, offset);
+
+            foreach (var ent in anchoredEnts)
+            {
+                if (!ent.IsValid() || Deleted(ent))
+                    continue;
+
+                _transform.AnchorEntity(ent);
+            }
         }
         catch (Exception ex)
         {
@@ -807,41 +845,18 @@ public sealed partial class LavalandSystem : EntitySystem
         }
     }
 
-    private List<(EntProtoId PrototypeId, Vector2 LocalPosition)> PickAllSpecificEnts(EntityUid buildingGridUid)
+    private void GetAllChildren(TransformComponent transform, HashSet<EntityUid> result)
     {
-        var allEnts = new List<(EntProtoId PrototypeId, Vector2 LocalPosition)>();
-
-        var allEntities = new HashSet<Entity<MetaDataComponent>>();
-        _lookup.GetChildEntities(buildingGridUid, allEntities);
-        foreach (var entity in allEntities)
+        var enumerator = transform.ChildEnumerator;
+        while (enumerator.MoveNext(out var child))
         {
-            // Add as many as you want.
-            if (HasComp<ConditionalSpawnerComponent>(entity.Owner)
-                || HasComp<EntityTableSpawnerComponent>(entity.Owner)
-                || HasComp<RandomDecalSpawnerComponent>(entity.Owner)
-                || HasComp<RandomSpawnerComponent>(entity.Owner)
-                || HasComp<NavMapBeaconComponent>(entity.Owner)
-                || HasComp<PuddleComponent>(entity.Owner))
-            {
-                var prototype = entity.Comp.EntityPrototype;
-                if (prototype != null)
-                {
-                    var localPos = Transform(entity.Owner).LocalPosition;
-                    allEnts.Add((prototype, localPos));
-                    Del(entity.Owner);
-                }
-            }
-        }
+            if (!child.IsValid())
+                continue;
 
-        return allEnts;
-    }
-
-    private void RestoreEnts(List<(EntProtoId PrototypeId, Vector2 LocalPosition)> ents, EntityUid parent, Vector2 offset)
-    {
-        foreach (var (proto, pos) in ents)
-        {
-            Spawn(proto, new EntityCoordinates(parent, pos + offset));
+            result.Add(child);
+            GetAllChildren(Transform(child), result);
         }
+        enumerator.Dispose();
     }
 
     #endregion

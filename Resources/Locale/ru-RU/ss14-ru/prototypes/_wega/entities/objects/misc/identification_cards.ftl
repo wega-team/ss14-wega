@@ -12,3 +12,7 @@ ent-BlueShieldIDCard = ID-карта офицера синий щит
     .desc = { ent-IDCardStandard.desc }
 ent-PostmanIDCard = ID-карта почтальона
     .desc = { ent-IDCardStandard.desc }
+ent-MinerIDCard = ID-карта шахтёра
+    .desc = { ent-IDCardStandard.desc }
+ent-MinerMedicIDCard = ID-карта шахтёра медика
+    .desc = { ent-IDCardStandard.desc }

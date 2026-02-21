@@ -50,6 +50,19 @@
     transferName: true
     revertOnDeath: true
 
+- type: polymorph
+  id: SkeletonPolymorph
+  configuration:
+    entity: MobSkeletonPerson
+    forced: true
+    transferName: true
+
+- type: polymorph
+  id: LowerAshDrakePolymorph
+  configuration:
+    entity: MobLowerAshDrake
+    forced: true
+
 #Other
 - type: polymorph
   id: ChariotStatue

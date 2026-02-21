@@ -174,7 +174,6 @@
     - FultonBeacon
     - ArmSyntheticPry # Corvax-Wega-Androids
     - PouchMaterial # Corvax-Wega-Add
-    - WeaponPlasmaCutterAdv # Corvax-Wega-Lavaland
 
 - type: technology
   id: MassExcavation
@@ -189,6 +188,8 @@
     - OreBagOfHolding
     - MiningDrillDiamond
     - AdvancedMineralScannerEmpty
+    - WeaponPlasmaCutterAdv # Corvax-Wega-Lavaland
+    - WeaponIndustrialFanPlasmaCutter # Corvax-Wega-Lavaland
     - BorgModuleAdvancedMining
     - SalvageExpeditionsComputerCircuitboard # Corvax-Cringe
 

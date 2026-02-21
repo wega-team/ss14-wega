@@ -44,3 +44,18 @@
         Structural: 50
   - type: TimedDespawn
     lifetime: 0.4
+
+- type: entity
+  parent: BaseBullet
+  id: ProjectileSpellStaff
+  name: ""
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: lavastaff
+  - type: Projectile
+    damage:
+      types:
+        Slash: 15

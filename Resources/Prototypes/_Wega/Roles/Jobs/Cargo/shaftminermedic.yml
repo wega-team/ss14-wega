@@ -1,0 +1,42 @@
+- type: job
+  id: ShaftMinerMedic
+  name: job-name-shaft-miner-medic
+  description: job-description-shaft-miner-medic
+  playTimeTracker: JobShaftMinerMedic
+  isSubRole: true
+  requirements:
+    - !type:RoleTimeRequirement
+      role: JobShaftMiner
+      time: 10h
+    - !type:RoleTimeRequirement
+      role: JobChemist
+      time: 5h
+    - !type:DepartmentTimeRequirement
+      department: Medical
+      time: 10h
+  startingGear: ShaftMinerMedicGear
+  icon: "JobIconShaftMinerMedic"
+  supervisors: job-supervisors-qm
+  access:
+  - Cargo
+  - Salvage
+  - LavalandAvanpost
+  - Maintenance
+  - External
+  - Medical
+
+- type: startingGear
+  id: ShaftMinerMedicGear
+  equipment:
+    id: MinerMedicPDA
+    ears: ClothingHeadsetMining
+    eyes: ClothingEyesHudMedical
+    shoes: ClothingShoesColorBlack
+    belt: ClothingBeltMedicalFilled
+    outerClothing: ClothingOuterArmorExplorerSuitMedical
+  storage:
+    back:
+    - SalvageVoucherCard
+    - MedkitAdvancedFilled
+    - SurvivalMedipen
+    - SurvivalKnife

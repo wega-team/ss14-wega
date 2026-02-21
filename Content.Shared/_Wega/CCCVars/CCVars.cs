@@ -135,5 +135,5 @@ public sealed class WegaCVars
         CVarDef.Create("lavaland.spawn_interval_min", 100f, CVar.SERVER | CVar.REPLICATED);
 
     public static readonly CVarDef<float> LavalandSpawnIntervalMax =
-        CVarDef.Create("lavaland.spawn_interval_max", 800f, CVar.SERVER | CVar.REPLICATED);
+        CVarDef.Create("lavaland.spawn_interval_max", 600f, CVar.SERVER | CVar.REPLICATED);
 }

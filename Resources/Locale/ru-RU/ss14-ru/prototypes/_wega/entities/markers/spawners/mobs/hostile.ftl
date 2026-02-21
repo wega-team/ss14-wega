@@ -23,3 +23,6 @@ ent-SpawnInhabitantHermit = Спавнер Отшельника
 ent-SpawnInhabitantBeachGuy = Спавнер Пляжного парня
     .desc = { ent-MarkerBase.desc }
     .suffix = Лаваленд
+ent-SpawnInhabitantTranslocatedVeterinarian = Спавнер Перенесенного ветеринара
+    .desc = { ent-MarkerBase.desc }
+    .suffix = Лаваленд

@@ -18,6 +18,8 @@ public sealed partial class OreProcessorPointsSystem : EntitySystem
         SubscribeLocalEvent<OreProcessorPointsComponent, ExaminedEvent>(OnExamined);
         SubscribeLocalEvent<OreProcessorPointsComponent, MaterialEntityInsertedEvent>(OnMaterialInserted);
         SubscribeLocalEvent<OreProcessorPointsComponent, InteractUsingEvent>(OnInteractUsing);
+
+        SubscribeLocalEvent<PointsCapitalComponent, AfterInteractEvent>(OnAfterInteract);
     }
 
     private void OnExamined(Entity<OreProcessorPointsComponent> entity, ref ExaminedEvent args)
@@ -30,11 +32,14 @@ public sealed partial class OreProcessorPointsSystem : EntitySystem
 
     private void OnMaterialInserted(EntityUid uid, OreProcessorPointsComponent component, ref MaterialEntityInsertedEvent args)
     {
-        if (!TryComp<StackComponent>(args.MaterialComp.Owner, out var stack))
+        var stackEntity = args.MaterialComp.Owner;
+        if (!TryComp<StackComponent>(stackEntity, out var stack))
             return;
 
-        var pointsEarned = CalculatePointsFromMaterials(stack, component);
+        if (!TryComp<OreValueComponent>(stackEntity, out var oreValue) || !oreValue.Mined)
+            return;
 
+        var pointsEarned = CalculateOrePoints(stack, oreValue, component);
         if (pointsEarned > 0)
         {
             component.AccumulatedPoints += pointsEarned;
@@ -42,21 +47,25 @@ public sealed partial class OreProcessorPointsSystem : EntitySystem
         }
     }
 
-    private double CalculatePointsFromMaterials(StackComponent stack, OreProcessorPointsComponent component)
+    private double CalculateOrePoints(StackComponent stack, OreValueComponent oreValue, OreProcessorPointsComponent component)
     {
-        var totalPoints = 0f;
-        if (component.PointMultipliers.TryGetValue(stack.StackTypeId, out var multiplier))
-            totalPoints += stack.Count * multiplier;
-
+        var totalPoints = stack.Count * oreValue.Points;
         return Math.Floor(totalPoints);
     }
 
     private void OnInteractUsing(Entity<OreProcessorPointsComponent> entity, ref InteractUsingEvent args)
     {
-        if (!HasComp<PointsCardComponent>(args.Used))
+        if (TryComp<PointsCapitalComponent>(args.Used, out var capital) && capital.Points > 0 && !capital.CardTransfer)
+        {
+            entity.Comp.AccumulatedPoints += capital.Points;
+            args.Handled = TryQueueDel(args.Used);
             return;
+        }
 
-        args.Handled = TransferPointsToCard(entity, args.Used, args.User);
+        if (HasComp<PointsCardComponent>(args.Used))
+        {
+            args.Handled = TransferPointsToCard(entity, args.Used, args.User);
+        }
     }
 
     public bool TransferPointsToCard(Entity<OreProcessorPointsComponent> entity, EntityUid card, EntityUid user)
@@ -74,8 +83,22 @@ public sealed partial class OreProcessorPointsSystem : EntitySystem
         Dirty(entity.Owner, entity.Comp);
         Dirty(card, pointsCard);
 
-        _popup.PopupClient(Loc.GetString("ore-processor-add-points", ("points", points)), user, user);
+        _popup.PopupEntity(Loc.GetString("ore-processor-add-points", ("points", points)), user, user);
 
         return true;
+    }
+
+    private void OnAfterInteract(Entity<PointsCapitalComponent> entity, ref AfterInteractEvent args)
+    {
+        if (!entity.Comp.CardTransfer || entity.Comp.Points <= 0)
+            return;
+
+        if (!TryComp<PointsCardComponent>(args.Target, out var pointsCard))
+            return;
+
+        var points = entity.Comp.Points;
+        pointsCard.Points += points;
+        _popup.PopupClient(Loc.GetString("points-capital-add-points", ("points", points)), args.User, args.User);
+        Del(entity);
     }
 }

@@ -9,7 +9,6 @@ using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Systems;
-using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
@@ -19,7 +18,6 @@ namespace Content.Server.Lavaland;
 public sealed class ColossusSystem : EntitySystem
 {
     [Dependency] private readonly SharedAchievementsSystem _achievement = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
     [Dependency] private readonly SharedGunSystem _gun = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
@@ -56,7 +54,6 @@ public sealed class ColossusSystem : EntitySystem
         args.Handled = true;
 
         ShootFraction(ent.Owner, args.Target, args.FractionSpread, args.FractionCount);
-        PlayAttackSound(ent);
     }
 
     private void OnCrossAction(Entity<ColossusBossComponent> ent, ref ColossusCrossActionEvent args)
@@ -72,8 +69,6 @@ public sealed class ColossusSystem : EntitySystem
                 ShootDiagonals(ent.Owner, length);
             }
         });
-
-        PlayAttackSound(ent);
     }
 
     private void OnSpiralAction(Entity<ColossusBossComponent> ent, ref ColossusSpiralActionEvent args)
@@ -90,7 +85,6 @@ public sealed class ColossusSystem : EntitySystem
                 ShootSpiral(ent.Owner, args.DieProjectileCount,
                     args.DieProjectileDelay, true);
 
-                PlayAttackSound(ent);
                 return;
             }
         }
@@ -99,8 +93,6 @@ public sealed class ColossusSystem : EntitySystem
 
         ShootSpiral(ent.Owner, args.JudgementProjectileCount,
             args.JudgementProjectileDelay, false);
-
-        PlayAttackSound(ent);
     }
 
     private void OnTripleFractionAction(Entity<ColossusBossComponent> ent, ref ColossusTripleFractionActionEvent args)
@@ -109,8 +101,6 @@ public sealed class ColossusSystem : EntitySystem
 
         ShootTripleFraction(ent.Owner, args.Target, args.FractionSpread,
             args.FractionCount, args.TripleFractionDelay);
-
-        PlayAttackSound(ent);
     }
 
     private void ShootFraction(EntityUid colossus, EntityUid target, float spread, int count)
@@ -260,7 +250,4 @@ public sealed class ColossusSystem : EntitySystem
 
         _gun.ForceShoot(colossus, colossus, gun, targetCoordinates);
     }
-
-    private void PlayAttackSound(Entity<ColossusBossComponent> ent)
-        => _audio.PlayPvs(ent.Comp.AttackSound, ent);
 }

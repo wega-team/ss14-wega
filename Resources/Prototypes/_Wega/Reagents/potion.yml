@@ -301,3 +301,17 @@
       - !type:MovementSpeedModifier
         walkSpeedModifier: 0.95
         sprintSpeedModifier: 0.95
+
+- type: reagent
+  id: StabilizingSerumPotion
+  name: reagent-name-stabilizing-serum-potion
+  group: Medicine
+  desc: reagent-desc-stabilizing-serum-potion
+  physicalDesc: reagent-physical-desc-opaque
+  flavor: medicine
+  color: "#fe0958"
+  reactiveEffects:
+    Special:
+      methods: [ Touch ]
+      effects:
+      - !type:ChemLegionCoreStabilize

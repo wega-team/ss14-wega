@@ -4,8 +4,8 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 01/17/2026 12:18:08
-  entityCount: 1217
+  time: 02/20/2026 13:48:10
+  entityCount: 1231
 maps: []
 grids:
 - 293
@@ -864,6 +864,14 @@ entities:
       - 1884
 - proto: APCBasic
   entities:
+  - uid: 42
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 10.5,7.5
+      parent: 293
+    - type: Fixtures
+      fixtures: {}
   - uid: 342
     components:
     - type: Transform
@@ -1005,6 +1013,56 @@ entities:
       parent: 293
 - proto: CableApcExtension
   entities:
+  - uid: 45
+    components:
+    - type: Transform
+      pos: 10.5,7.5
+      parent: 293
+  - uid: 46
+    components:
+    - type: Transform
+      pos: 11.5,7.5
+      parent: 293
+  - uid: 47
+    components:
+    - type: Transform
+      pos: 12.5,7.5
+      parent: 293
+  - uid: 48
+    components:
+    - type: Transform
+      pos: 12.5,6.5
+      parent: 293
+  - uid: 49
+    components:
+    - type: Transform
+      pos: 12.5,5.5
+      parent: 293
+  - uid: 50
+    components:
+    - type: Transform
+      pos: 12.5,8.5
+      parent: 293
+  - uid: 51
+    components:
+    - type: Transform
+      pos: 12.5,9.5
+      parent: 293
+  - uid: 52
+    components:
+    - type: Transform
+      pos: 12.5,10.5
+      parent: 293
+  - uid: 53
+    components:
+    - type: Transform
+      pos: 12.5,11.5
+      parent: 293
+  - uid: 54
+    components:
+    - type: Transform
+      pos: 12.5,12.5
+      parent: 293
   - uid: 1193
     components:
     - type: Transform
@@ -2029,6 +2087,16 @@ entities:
       parent: 293
 - proto: CableMV
   entities:
+  - uid: 43
+    components:
+    - type: Transform
+      pos: 11.5,7.5
+      parent: 293
+  - uid: 44
+    components:
+    - type: Transform
+      pos: 10.5,7.5
+      parent: 293
   - uid: 1483
     components:
     - type: Transform
@@ -2754,6 +2822,16 @@ entities:
     - type: Transform
       pos: 0.5,0.5
       parent: 293
+- proto: DefibrillatorCabinetFilled
+  entities:
+  - uid: 41
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 9.5,6.5
+      parent: 293
+    - type: Fixtures
+      fixtures: {}
 - proto: DisposalBend
   entities:
   - uid: 1788
@@ -5715,6 +5793,13 @@ entities:
     - type: Transform
       pos: -5.5,-8.5
       parent: 293
+- proto: PowerCellRecharger
+  entities:
+  - uid: 40
+    components:
+    - type: Transform
+      pos: 12.5,-6.5
+      parent: 293
 - proto: Poweredlight
   entities:
   - uid: 2803
@@ -8273,13 +8358,6 @@ entities:
     components:
     - type: Transform
       pos: -10.5,0.5
-      parent: 293
-- proto: WeaponCapacitorRecharger
-  entities:
-  - uid: 3865
-    components:
-    - type: Transform
-      pos: 12.5,-6.5
       parent: 293
 - proto: WeldingFuelTankFull
   entities:

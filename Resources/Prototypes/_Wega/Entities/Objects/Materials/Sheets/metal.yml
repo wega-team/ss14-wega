@@ -60,6 +60,9 @@
   - type: Appearance
   - type: Item
     heldPrefix: magmite
+  - type: Tag
+    tags:
+    - MagmiteAlloy
 
 - type: entity
   parent: SheetMagmite

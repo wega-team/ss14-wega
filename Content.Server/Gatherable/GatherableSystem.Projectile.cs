@@ -16,11 +16,13 @@ public sealed partial class GatherableSystem
         if (!args.OtherFixture.Hard ||
             args.OurFixtureId != SharedProjectileSystem.ProjectileFixture ||
             gathering.Comp.Amount <= 0 ||
-            !TryComp<GatherableComponent>(args.OtherEntity, out var gatherable))
+            !TryComp<GatherableComponent>(args.OtherEntity, out var gatherable) ||
+            gatherable.Gathered) // Corvax-Wega-Lavaland-Edit
         {
             return;
         }
 
+        gatherable.Gathered = true; // Corvax-Wega-Lavaland
         Gather(args.OtherEntity, gathering, gatherable);
         gathering.Comp.Amount--;
 

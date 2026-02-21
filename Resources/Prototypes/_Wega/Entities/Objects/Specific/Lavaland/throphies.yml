@@ -48,6 +48,10 @@
   components:
   - type: Sprite
     state: ancient_tendril
+  - type: CrusherUpgrade
+    tags: [ CrusherUpgradeAncientGoliath ]
+    examineText: crusher-upgrade-examine-text-ancient-goliath
+  - type: CrusherAncientGoliathTentacleUpgrade
 
 - type: entity
   parent: BaseTrophyLavaland
@@ -91,6 +95,32 @@
     damage:
       types:
         Heat: 5
+
+- type: entity
+  parent: BaseTrophyLavaland
+  id: TrophyLavalandMarrowWeaverPoisonFang
+  name: poison fang
+  description: "The curved fang of a marrow weaver, still slick with pale venom. A faint, chemical smell of marrow and decay clings to it."
+  components:
+  - type: Sprite
+    state: fang
+  - type: CrusherUpgrade
+    tags: [ CrusherUpgradeMarrowWeaverPoisonfang ]
+    examineText: crusher-upgrade-examine-text-marrow-weaver
+  - type: CrusherPoisonFangUpgrade
+
+- type: entity
+  parent: BaseTrophyLavaland
+  id: TrophyLavalandFrostbiteWeaverFrostGland
+  name: frost gland
+  description: "A pulsating gland from a frostbite weaver, cold enough to numb your fingers. Pale blue ichor frosts the inside of its translucent membrane."
+  components:
+  - type: Sprite
+    state: ice_gland
+  - type: CrusherUpgrade
+    tags: [ CrusherUpgradeFrostbiteWeaverFrostGland ]
+    examineText: crusher-upgrade-examine-text-frostbite-weaver
+  - type: CrusherFrostGlandUpgrade
 
 - type: entity
   parent: BaseTrophyLavaland
@@ -178,6 +208,11 @@
       map: [ "enum.VisualLayers.Layer" ]
   - type: Item
     size: Small
+  - type: Damageable
+    damageContainer: Clothing
+  - type: Reactive
+    groups:
+      Special: [ Touch ]
   - type: LegionCore
     healAmount:
       types:

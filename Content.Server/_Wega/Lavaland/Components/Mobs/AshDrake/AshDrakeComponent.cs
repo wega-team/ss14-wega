@@ -6,9 +6,6 @@ namespace Content.Server.Lavaland.Mobs.Components;
 [RegisterComponent, Access(typeof(AshDrakeSystem))]
 public sealed partial class AshDrakeBossComponent : Component
 {
-    [DataField("rewards")]
-    public List<EntProtoId> RewardsProto = new();
-
     [DataField] public EntProtoId MeteorCircle = "EffectAshDrakeCircle";
     [DataField] public EntProtoId Shadow = "EffectAshDrakeShadow";
 

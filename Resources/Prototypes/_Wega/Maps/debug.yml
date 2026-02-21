@@ -1,0 +1,20 @@
+- type: gameMap
+  id: WegaLavalandTest
+  mapName: Lavaland Test
+  mapPath: /Maps/_Wega/Test/lavatest.yml
+  minPlayers: 0
+  stations:
+    LavalandTest:
+      stationProto: StandardNanotrasenStation
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: '{0} Theta-12 {1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: 'TZ'
+        - type: StationLavaland
+          lavalandAvanpost: "/Maps/_Wega/Nonstations/cyberiadavanpost.yml"
+        - type: StationJobs
+          availableJobs:
+            ShaftMiner: [ -1, -1 ]
+            ShaftMinerMedic: [ 4, 4 ]

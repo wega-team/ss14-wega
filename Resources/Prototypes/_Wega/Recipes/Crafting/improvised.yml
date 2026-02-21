@@ -43,7 +43,7 @@
   graph: ExplorerSuitReinforced
   startNode: start
   targetNode: explorerSuit
-  category: construction-category-clothing
+  category: construction-category-primitive
   objectType: Item
 
 - type: construction
@@ -51,7 +51,31 @@
   graph: ExplorerSuitKhakiReinforced
   startNode: start
   targetNode: explorerSuit
-  category: construction-category-clothing
+  category: construction-category-primitive
+  objectType: Item
+
+- type: construction
+  id: BoneBracers
+  graph: BoneBracers
+  startNode: start
+  targetNode: bracers
+  category: construction-category-primitive
+  objectType: Item
+
+- type: construction
+  id: BoneTalisman
+  graph: BoneTalisman
+  startNode: start
+  targetNode: talisman
+  category: construction-category-primitive
+  objectType: Item
+
+- type: construction
+  id: SkullCodpiece
+  graph: SkullCodpiece
+  startNode: start
+  targetNode: codpiece
+  category: construction-category-primitive
   objectType: Item
 
 - type: construction
@@ -59,7 +83,7 @@
   graph: GoliathCloak
   startNode: start
   targetNode: cloack
-  category: construction-category-clothing
+  category: construction-category-primitive
   objectType: Item
 
 - type: construction
@@ -67,7 +91,7 @@
   graph: PathfinderCloak
   startNode: start
   targetNode: cloack
-  category: construction-category-clothing
+  category: construction-category-primitive
   objectType: Item
 
 - type: construction
@@ -75,7 +99,7 @@
   graph: BoneOar
   startNode: start
   targetNode: oar
-  category: construction-category-misc
+  category: construction-category-primitive
   objectType: Item
 
 - type: construction
@@ -83,5 +107,5 @@
   graph: VehicleBoat
   startNode: start
   targetNode: boat
-  category: construction-category-misc
+  category: construction-category-primitive
   objectType: Item

@@ -16,3 +16,17 @@
     tags: [ GunUpgradeAoE ]
     examineText: gun-upgrade-examine-text-aoe
   - type: GunUpgradeAoE
+
+- type: entity
+  id: PKAUpgradeLifesteal
+  parent: BasePKAUpgrade
+  name: crystal of vampirism
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tools/upgrade.rsi
+    state: modkit_crystal
+  - type: GunUpgrade
+    tags: [ GunUpgradeLifesteal ]
+    examineText: gun-upgrade-examine-text-lifesteal
+  - type: GunUpgradeLifesteal
+    stealAmount: 2.5

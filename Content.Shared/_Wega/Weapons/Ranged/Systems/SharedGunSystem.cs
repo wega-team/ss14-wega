@@ -16,9 +16,6 @@ public abstract partial class SharedGunSystem
         if (!Resolve(gunUid, ref gun, false))
             return false;
 
-        if (!_actionBlockerSystem.CanAttack(user))
-            return false;
-
         var fromCoordinates = Transform(user).Coordinates;
 
         // Check if we can shoot
@@ -106,9 +103,6 @@ public abstract partial class SharedGunSystem
         if (!Resolve(gunUid, ref gun, false))
             return false;
 
-        if (!_actionBlockerSystem.CanAttack(user))
-            return false;
-
         var fromCoordinates = Transform(user).Coordinates;
 
         // Check if we can shoot
@@ -151,11 +145,8 @@ public abstract partial class SharedGunSystem
 
     private bool ForceShootInternal(EntityUid user, EntityUid gunUid, GunComponent gun)
     {
-        if (gun.FireRateModified <= 0f ||
-            !_actionBlockerSystem.CanAttack(user))
-        {
+        if (gun.FireRateModified <= 0f)
             return false;
-        }
 
         var toCoordinates = gun.ShootCoordinates;
 

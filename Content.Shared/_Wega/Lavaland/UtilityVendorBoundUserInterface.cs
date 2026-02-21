@@ -11,15 +11,32 @@ public enum UtilityVendorUiKey : byte
 }
 
 [Serializable, NetSerializable]
+public sealed class CategoryData
+{
+    public string Id { get; set; }
+    public string Name { get; set; }
+    public int Priority { get; set; }
+    public Dictionary<EntProtoId, FixedPoint2> Inventory { get; set; }
+
+    public CategoryData(string id, string name, int priority, Dictionary<EntProtoId, FixedPoint2> inventory)
+    {
+        Id = id;
+        Name = name;
+        Priority = priority;
+        Inventory = inventory;
+    }
+}
+
+[Serializable, NetSerializable]
 public sealed class UtilityVendorBoundUserInterfaceState : BoundUserInterfaceState
 {
     public readonly FixedPoint2 Points;
-    public readonly Dictionary<EntProtoId, FixedPoint2> Inventory;
+    public readonly List<CategoryData> Categories;
 
-    public UtilityVendorBoundUserInterfaceState(FixedPoint2 points, Dictionary<EntProtoId, FixedPoint2> inventory)
+    public UtilityVendorBoundUserInterfaceState(FixedPoint2 points, List<CategoryData> categories)
     {
         Points = points;
-        Inventory = inventory;
+        Categories = categories;
     }
 }
 

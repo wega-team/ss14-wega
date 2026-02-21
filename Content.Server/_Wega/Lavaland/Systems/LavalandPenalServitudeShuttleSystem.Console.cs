@@ -14,41 +14,7 @@ public sealed partial class LavalandPenalServitudeShuttleSystem
 
     private void OnConsoleInit(EntityUid uid, PenalServitudeShuttleConsoleComponent component, MapInitEvent args)
     {
-        var shuttleQuery = EntityQueryEnumerator<LavalandPenalServitudeShuttleComponent>();
-        while (shuttleQuery.MoveNext(out var shuttle, out _))
-        {
-            component.ConnectedShuttle = shuttle;
-            break;
-        }
-
-        if (component.ConnectedShuttle == null)
-            return;
-
-        if (HasComp<LavalandPenalServitudeShuttleComponent>(Transform(uid).GridUid))
-        {
-            component.Location = PenalServitudeLavalandDockLocation.Shuttle;
-            component.ConnectedShuttle = Transform(uid).GridUid;
-            return;
-        }
-
-        var dockQuery = EntityQueryEnumerator<PriorityDockComponent>();
-        while (dockQuery.MoveNext(out var dockUid, out var dock))
-        {
-            if (Transform(dockUid).GridUid != Transform(uid).GridUid)
-                continue;
-
-            if (dock.Tag == DockStation)
-            {
-                component.Location = PenalServitudeLavalandDockLocation.Station;
-                break;
-            }
-
-            if (dock.Tag == DockPenalServitude)
-            {
-                component.Location = PenalServitudeLavalandDockLocation.PenalServitude;
-                break;
-            }
-        }
+        UpdateLocation(uid, component);
     }
 
     private void OnUiOpened(EntityUid uid, PenalServitudeShuttleConsoleComponent comp, BoundUIOpenedEvent args)
@@ -78,16 +44,19 @@ public sealed partial class LavalandPenalServitudeShuttleSystem
         string targetTag;
         PenalServitudeLavalandShuttleState newState;
 
-        if (component.Location == PenalServitudeLavalandDockLocation.Station
-            || component.Location == PenalServitudeLavalandDockLocation.Shuttle && shuttle.State == PenalServitudeLavalandShuttleState.DockedAtStation)
+        if (shuttle.State == PenalServitudeLavalandShuttleState.DockedAtStation)
         {
             targetTag = DockPenalServitude;
             newState = PenalServitudeLavalandShuttleState.EnRouteToPenalServitude;
         }
-        else
+        else if (shuttle.State == PenalServitudeLavalandShuttleState.DockedAtPenalServitude)
         {
             targetTag = DockStation;
             newState = PenalServitudeLavalandShuttleState.EnRouteToStation;
+        }
+        else
+        {
+            return;
         }
 
         var targetDock = FindDockWithTag(targetTag);
@@ -117,6 +86,48 @@ public sealed partial class LavalandPenalServitudeShuttleSystem
         while (query.MoveNext(out var uid, out var comp))
         {
             UpdateUI(uid, comp);
+        }
+    }
+
+    private void UpdateLocation(EntityUid consoleUid, PenalServitudeShuttleConsoleComponent? component = null)
+    {
+        if (!Resolve(consoleUid, ref component))
+            return;
+
+        if (Transform(consoleUid).GridUid is { } grid && HasComp<LavalandPenalServitudeShuttleComponent>(grid))
+        {
+            component.Location = PenalServitudeLavalandDockLocation.Shuttle;
+            component.ConnectedShuttle = grid;
+            return;
+        }
+
+        var shuttleQuery = EntityQueryEnumerator<LavalandPenalServitudeShuttleComponent>();
+        while (shuttleQuery.MoveNext(out var shuttle, out _))
+        {
+            component.ConnectedShuttle = shuttle;
+            break;
+        }
+
+        if (component.ConnectedShuttle == null)
+            return;
+
+        var dockQuery = EntityQueryEnumerator<PriorityDockComponent>();
+        while (dockQuery.MoveNext(out var dockUid, out var dock))
+        {
+            if (Transform(dockUid).GridUid != Transform(consoleUid).GridUid)
+                continue;
+
+            if (dock.Tag == DockStation)
+            {
+                component.Location = PenalServitudeLavalandDockLocation.Station;
+                break;
+            }
+
+            if (dock.Tag == DockPenalServitude)
+            {
+                component.Location = PenalServitudeLavalandDockLocation.PenalServitude;
+                break;
+            }
         }
     }
 
@@ -166,8 +177,8 @@ public sealed partial class LavalandPenalServitudeShuttleSystem
         if (shuttle.State is not (PenalServitudeLavalandShuttleState.DockedAtStation or PenalServitudeLavalandShuttleState.DockedAtPenalServitude))
             return false;
 
-        return console.Location == PenalServitudeLavalandDockLocation.Station && shuttle.State == PenalServitudeLavalandShuttleState.DockedAtStation
-            || console.Location == PenalServitudeLavalandDockLocation.PenalServitude && shuttle.State == PenalServitudeLavalandShuttleState.DockedAtPenalServitude
-            || console.Location == PenalServitudeLavalandDockLocation.Shuttle;
+        return console.Location == PenalServitudeLavalandDockLocation.Shuttle
+            || console.Location == PenalServitudeLavalandDockLocation.Station
+            || console.Location == PenalServitudeLavalandDockLocation.PenalServitude;
     }
 }

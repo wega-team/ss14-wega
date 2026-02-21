@@ -31,4 +31,6 @@
     - MinerBoss
     - LegionBoss
     - ColossusBoss
+    - AshDrakeBoss
+    - BubblegumBoss
     requireAll: true

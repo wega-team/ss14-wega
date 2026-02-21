@@ -1,19 +1,19 @@
-namespace Content.Shared.Lavaland.Artefacts.Components;
-
 using Robust.Shared.Prototypes;
+
+namespace Content.Shared.Lavaland.Artefacts.Components;
 
 [RegisterComponent]
 public sealed partial class HierophantClubComponent : Component
 {
-    [DataField("chaserPrototype")]
-    public EntProtoId ChaserPrototype = "HierophantChaser";
+    [DataField]
+    public EntProtoId ChaserPrototype = "MobHierophantChaser";
 
-    [DataField("damageTilePrototype")]
+    [DataField]
     public EntProtoId DamageTilePrototype = "EffectHierophantSquare";
 
-    [DataField("maxChasers")]
+    [DataField]
     public int MaxChasers = 2;
 
-    [DataField("crossLength")]
+    [DataField]
     public int CrossLength = 4;
 }

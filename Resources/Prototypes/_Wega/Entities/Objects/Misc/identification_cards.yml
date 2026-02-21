@@ -118,3 +118,39 @@
       state: Postman
   - type: PresetIdCard
     job: Postman
+
+- type: entity
+  parent: IDCardStandard
+  id: MinerIDCard
+  name: miner ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: default
+    - state: stripe_top
+      color: "#b18644"
+    - state: stripe_bottom
+      color: "#5b4523"
+    - sprite: Interface/Misc/job_icons.rsi
+      offset: *wega-icon-offset
+      state: ShaftMiner
+  - type: PresetIdCard
+    job: ShaftMiner
+
+- type: entity
+  parent: IDCardStandard
+  id: MinerMedicIDCard
+  name: miner medic ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: default
+    - state: stripe_top
+      color: "#5d99be"
+    - state: stripe_bottom
+      color: "#5b4523"
+    - sprite: *wega-icon-rsi
+      offset: *wega-icon-offset
+      state: ShaftMinerMedic
+  - type: PresetIdCard
+    job: ShaftMinerMedic

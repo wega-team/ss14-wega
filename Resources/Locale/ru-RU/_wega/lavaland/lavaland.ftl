@@ -1,3 +1,4 @@
+# UI
 lavaland-map = Лаваленд
 lavaland-map-avanpost = Аванпост Лаваленда
 lavaland-shuttle-status = Статус шаттла:
@@ -38,6 +39,7 @@ prison-shuttle-on-cooldown = Перезарядка
 prison-shuttle-cooldown-time = Доступно через { $time }
 prison-shuttle-info-ready = Шаттл готов к отправке
 
+# System
 lavaland-weather-warning-ash-storm-light = Обнаружена легкая пепельная буря. Рекомендуется найти укрытие.
 lavaland-weather-warning-ash-storm-heavy = Обнаружена СИЛЬНАЯ пепельная буря. СРОЧНО ищите укрытие!
 lavaland-weather-warning-volcanic-activity = Обнаружена повышенная вулканическая активность. Остерегайтесь падающих пород и новых лавовых потоков.
@@ -56,6 +58,7 @@ lavaland-hand-capsule-spawn-failed = Невозможно выпустить к�
 
 ore-processor-points = На балансе содержится {$points} очков.
 ore-processor-add-points = На баланс карты начислено {$points} очков.
+points-capital-add-points = На карту зачислено {$points} очков.
 
 legion-core-interact-failed = Вы не можете никак применить {$name}.
 legion-core-interact-healed = Ядро рассыпается даруя вам легкость.

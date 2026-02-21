@@ -69,6 +69,28 @@
       PotencyDivisor: 10
 
 - type: seed
+  id: fireblossomflower
+  name: seeds-fireblossomflower-name
+  noun: seeds-noun-seeds
+  displayName: seeds-fireblossomflower-display-name
+  plantRsi: _Wega/Objects/Specific/Hydroponics/fireblossom.rsi
+  packetPrototype: FireBlossomFlowerSeeds
+  productPrototypes:
+    - FlowerFireBlossom
+  lifespan: 25
+  maturation: 10
+  production: 1
+  yield: 1
+  potency: 10
+  growthStages: 3
+  waterConsumption: 0.60
+  chemicals:
+    Nutriment:
+      Min: 1
+      Max: 10
+      PotencyDivisor: 10
+
+- type: seed
   id: moneyCabbage
   name: seeds-moneyCabbage-name
   noun: seeds-noun-seeds
@@ -123,7 +145,7 @@
       Max: 5
       PotencyDivisor: 20
 
-- type: seed 
+- type: seed
   id: blueSpaceBanana
   name: seeds-bluespacebanana-name
   noun: seeds-noun-seeds

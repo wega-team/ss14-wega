@@ -10,6 +10,7 @@ namespace Content.Client._Wega.Lavaland;
 public sealed partial class LavalandPenalServitudeConsoleWindow : FancyWindow
 {
     [Dependency] private readonly IGameTiming _gameTiming = default!;
+    [Dependency] private readonly IDependencyCollection _dependencies = default!;
 
     public Action? OnCallButtonPressed;
     private TimeSpan? _cooldownEndTime;
@@ -17,7 +18,7 @@ public sealed partial class LavalandPenalServitudeConsoleWindow : FancyWindow
     public LavalandPenalServitudeConsoleWindow()
     {
         RobustXamlLoader.Load(this);
-        IoCManager.InjectDependencies(this);
+        _dependencies.InjectDependencies(this);
 
         CallButton.OnPressed += _ => OnCallButtonPressed?.Invoke();
     }
@@ -83,14 +84,10 @@ public sealed partial class LavalandPenalServitudeConsoleWindow : FancyWindow
         if (!state.CanCallShuttle)
             return Loc.GetString("prison-shuttle-call-unavailable");
 
-        return (state.Location, state.Status) switch
+        return state.Status switch
         {
-            (PenalServitudeLavalandDockLocation.Station, _) => Loc.GetString("prison-shuttle-call-to-prison"),
-            (PenalServitudeLavalandDockLocation.PenalServitude, _) => Loc.GetString("prison-shuttle-recall-to-station"),
-            (PenalServitudeLavalandDockLocation.Shuttle, PenalServitudeLavalandShuttleStatus.DockedAtStation) =>
-                Loc.GetString("prison-shuttle-call-to-prison"),
-            (PenalServitudeLavalandDockLocation.Shuttle, PenalServitudeLavalandShuttleStatus.DockedAtPenalServitude) =>
-                Loc.GetString("prison-shuttle-recall-to-station"),
+            PenalServitudeLavalandShuttleStatus.DockedAtStation => Loc.GetString("prison-shuttle-call-to-prison"),
+            PenalServitudeLavalandShuttleStatus.DockedAtPenalServitude => Loc.GetString("prison-shuttle-recall-to-station"),
             _ => Loc.GetString("prison-shuttle-call-unavailable")
         };
     }

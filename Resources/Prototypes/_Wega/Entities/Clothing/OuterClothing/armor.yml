@@ -121,6 +121,35 @@
 
 - type: entity
   parent: ClothingOuterArmorExplorerSuit
+  id: ClothingOuterArmorExplorerSuitMedical
+  name: explorer suit medical
+  description: A better version of the regular armor, in one copy, for an assistant on the fields of death and stupidity.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Armor/explorer_suit_med.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Wega/Clothing/OuterClothing/Armor/explorer_suit_med.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.55
+        Heat: 0.5
+        Caustic: 0.75
+  - type: ExplosionResistance
+    damageCoefficient: 0.5
+  - type: FireProtection
+    reduction: 0.5
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHatHoodExplorerMedical
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingOuterArmorExplorerSuit
   id: ClothingOuterArmorExplorerSuitBDM
   categories: [ HideSpawnMenu ]
   components:
@@ -178,3 +207,27 @@
   - type: Construction
     graph: ExplorerSuitKhakiReinforced
     node: explorerSuit
+
+- type: entity
+  parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing]
+  id: ClothingOuterArmorHostileEnv
+  name: H.E.C.K. suit
+  description: "Experimental Kinetic Protective Sheathed Suit: A suit specifically designed to protect against a wide range of Lasee hazards. Apparently, this was not enough for its previous owner."
+  components:
+    - type: Sprite
+      sprite: _Wega/Clothing/OuterClothing/Armor/hostile_env.rsi
+    - type: Clothing
+      sprite: _Wega/Clothing/OuterClothing/Armor/hostile_env.rsi
+    - type: Armor
+      modifiers:
+        coefficients:
+          Blunt: 0.3
+          Slash: 0.3
+          Piercing: 0.6
+          Heat: 0.9
+    - type: ExplosionResistance
+      damageCoefficient: 0.5
+    - type: FireProtection
+      reduction: 0.5
+    - type: ClothingAshStormProtection
+      modifier: 0.4

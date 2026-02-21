@@ -174,13 +174,6 @@ entities:
     - type: Transform
       pos: 6.6842346,-0.5103359
       parent: 7313
-- proto: DiceOfFate
-  entities:
-  - uid: 1
-    components:
-    - type: Transform
-      pos: 4.5578613,3.715332
-      parent: 7313
 - proto: DrinkChampagneBottleFull
   entities:
   - uid: 7329

@@ -3,7 +3,7 @@
     xmlns:ui="clr-namespace:Content.Client._Wega.GPS.UI"
     xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
     xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
-    SetSize="500 750" MouseFilter="Stop">
+    SetSize="550 750" MouseFilter="Stop">
 
     <PanelContainer Name="Background" StyleClasses="PdaBackgroundRect" ModulateSelfOverride="#1a1a2e"/>
     <PanelContainer Name="Border" StyleClasses="PdaBorderRect" Modulate="#2d3047"/>

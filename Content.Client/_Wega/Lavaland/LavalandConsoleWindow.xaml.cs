@@ -10,6 +10,7 @@ namespace Content.Client._Wega.Lavaland;
 public sealed partial class LavalandConsoleWindow : FancyWindow
 {
     [Dependency] private readonly IGameTiming _gameTiming = default!;
+    [Dependency] private readonly IDependencyCollection _dependencies = default!;
 
     public Action? OnCallButtonPressed;
     private TimeSpan? _cooldownEndTime;
@@ -17,7 +18,7 @@ public sealed partial class LavalandConsoleWindow : FancyWindow
     public LavalandConsoleWindow()
     {
         RobustXamlLoader.Load(this);
-        IoCManager.InjectDependencies(this);
+        _dependencies.InjectDependencies(this);
 
         CallButton.OnPressed += _ => OnCallButtonPressed?.Invoke();
     }
@@ -83,14 +84,10 @@ public sealed partial class LavalandConsoleWindow : FancyWindow
         if (!state.CanCallShuttle)
             return Loc.GetString("lavaland-shuttle-call-unavailable");
 
-        return (state.Location, state.Status) switch
+        return state.Status switch
         {
-            (DockLocation.Station, _) => Loc.GetString("lavaland-shuttle-call-to-outpost"),
-            (DockLocation.Outpost, _) => Loc.GetString("lavaland-shuttle-recall-to-station"),
-            (DockLocation.Shuttle, ShuttleStatus.DockedAtStation) =>
-                Loc.GetString("lavaland-shuttle-call-to-outpost"),
-            (DockLocation.Shuttle, ShuttleStatus.DockedAtOutpost) =>
-                Loc.GetString("lavaland-shuttle-recall-to-station"),
+            ShuttleStatus.DockedAtStation => Loc.GetString("lavaland-shuttle-call-to-outpost"),
+            ShuttleStatus.DockedAtOutpost => Loc.GetString("lavaland-shuttle-recall-to-station"),
             _ => Loc.GetString("lavaland-shuttle-call-unavailable")
         };
     }

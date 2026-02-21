@@ -1,4 +1,5 @@
 ﻿using Content.Shared.ActionBlocker;
+using Content.Shared.Jaunter; // Corvax-Wega-Lavaland
 using Content.Shared.Movement.Events;
 using Content.Shared.StepTrigger.Systems;
 using Content.Shared.Weapons.Misc;
@@ -18,6 +19,7 @@ public sealed class ChasmSystem : EntitySystem
     [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedGrapplingGunSystem _grapple = default!;
+    [Dependency] private readonly SharedJaunterSystem _jaunter = default!; // Corvax-Wega-Lavaland
 
     public override void Initialize()
     {
@@ -73,6 +75,14 @@ public sealed class ChasmSystem : EntitySystem
             args.Cancelled = true;
             return;
         }
+
+        // Corvax-Wega-Lavaland-start
+        if (_jaunter.TryFindJaunter(args.Tripper, out var jaunter))
+        {
+            args.Cancelled = _jaunter.TryUseJaunter(args.Tripper, jaunter.Value);
+            return;
+        }
+        // Corvax-Wega-Lavaland-end
 
         args.Continue = true;
     }

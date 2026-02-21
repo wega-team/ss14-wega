@@ -411,7 +411,7 @@ entities:
     - type: Transform
       pos: 1.5,1.5
       parent: 9017
-- proto: VendingMachineWallMedical
+- proto: VendingMachineWallMedicalCivilian
   entities:
   - uid: 9055
     components:

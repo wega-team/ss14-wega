@@ -57,3 +57,27 @@
     layers:
       - state: green
       - state: postman
+
+- type: entity
+  id: SpawnPointShaftMiner
+  parent: SpawnPointJobBase
+  name: shaftminer
+  components:
+  - type: SpawnPoint
+    job_id: ShaftMiner
+  - type: Sprite
+    layers:
+      - state: green
+      - state: salvagespecialist
+
+- type: entity
+  id: SpawnPointShaftMinerMedic
+  parent: SpawnPointJobBase
+  name: shaftminerMedic
+  components:
+  - type: SpawnPoint
+    job_id: ShaftMinerMedic
+  - type: Sprite
+    layers:
+      - state: green
+      - state: salvagespecialist
