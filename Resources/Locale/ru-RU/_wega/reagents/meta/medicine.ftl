@@ -6,3 +6,5 @@ reagent-name-formaldehyde = формальдегид
 reagent-desc-formaldehyde = Сильный консервант, замедляющий разложение тканей. Токсичен для живых.
 reagent-name-mutadon = мутадон
 reagent-desc-mutadon = Экспериментальное лекарство, вызывающее обратные генетические мутации.
+reagent-name-lavaland-serum = сыворотка лаваленда
+reagent-desc-lavaland-serum = Странная жидкость с пепельным осадком.

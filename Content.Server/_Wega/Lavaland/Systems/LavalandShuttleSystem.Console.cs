@@ -77,7 +77,7 @@ public sealed partial class LavalandShuttleSystem
         _shuttleSystem.FTLToDock(component.ConnectedShuttle.Value, shuttleComp, gridUid.Value, priorityTag: targetTag);
 
         shuttle.State = newState;
-        shuttle.NextLaunchTime = _gameTiming.CurTime + TimeSpan.FromSeconds(90f);
+        shuttle.NextLaunchTime = _gameTiming.CurTime + TimeSpan.FromSeconds(80f);
         UpdateConsoles();
     }
 

@@ -740,13 +740,12 @@ public sealed partial class BubblegumSystem : EntitySystem
 
         InitializeDash(uid, bossComp, mapUid.Value, startTile, direction);
 
-        var completedSteps = 0;
-        var totalSteps = steps;
+        var stepCounter = new StepCounter { CompletedSteps = 0, TotalSteps = steps };
 
         for (int step = 1; step <= steps; step++)
         {
             ScheduleDashStep(uid, bossComp, mapUid.Value, startTile, direction, step, moveSpeed,
-                damage, totalSteps, completedSteps, isLastDash, onComplete);
+                damage, stepCounter, isLastDash, onComplete);
         }
     }
 
@@ -760,7 +759,7 @@ public sealed partial class BubblegumSystem : EntitySystem
 
     private void ScheduleDashStep(EntityUid uid, BubblegumBossComponent bossComp, EntityUid mapUid,
         Vector2 startTile, Vector2 direction, int step, float moveSpeed, DamageSpecifier damage,
-        int totalSteps, int completedSteps, bool isLastDash, Action? onComplete)
+        StepCounter stepCounter, bool isLastDash, Action? onComplete)
     {
         var currentStep = step;
 
@@ -768,7 +767,7 @@ public sealed partial class BubblegumSystem : EntitySystem
         {
             if (!Exists(uid))
             {
-                if (currentStep == totalSteps)
+                if (currentStep == stepCounter.TotalSteps)
                     onComplete?.Invoke();
                 return;
             }
@@ -787,9 +786,9 @@ public sealed partial class BubblegumSystem : EntitySystem
             CheckDashDamage(uid, currentCoords, damage);
             _audio.PlayPvs(bossComp.DashSound, uid);
 
-            completedSteps++;
+            stepCounter.CompletedSteps++;
 
-            if (completedSteps >= totalSteps)
+            if (stepCounter.CompletedSteps >= stepCounter.TotalSteps)
                 HandleDashCompletion(uid, isLastDash, onComplete);
         });
     }
@@ -1284,4 +1283,10 @@ public sealed partial class BubblegumSystem : EntitySystem
     }
 
     #endregion
+
+    private sealed class StepCounter
+    {
+        public int CompletedSteps { get; set; }
+        public int TotalSteps { get; set; }
+    }
 }

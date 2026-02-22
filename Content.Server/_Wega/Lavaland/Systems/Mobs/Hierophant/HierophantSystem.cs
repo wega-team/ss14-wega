@@ -201,7 +201,7 @@ public sealed partial class HierophantSystem : EntitySystem
         var healthRatio = GetHealthRatio(uid);
         var speedMultiplier = GetAttackSpeedMultiplier(healthRatio);
 
-        _npcActions.SetDelaySpeed(uid, Math.Max(0.3f, Math.Min(1.0f, 1.0f / speedMultiplier)));
+        _npcActions.SetDelaySpeed(uid, Math.Max(0.5f, Math.Min(1.0f, 1.0f / speedMultiplier)));
     }
 
     #endregion

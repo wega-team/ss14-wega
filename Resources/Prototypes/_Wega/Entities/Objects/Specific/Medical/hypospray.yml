@@ -86,13 +86,11 @@
         reagents:
           - ReagentId: Leporazine
             Quantity: 10
+          - ReagentId: LavalandSerum
+            Quantity: 15
           - ReagentId: Epinephrine
             Quantity: 10
-          - ReagentId: PolypyryliumOligomers
-            Quantity: 7.5
-          - ReagentId: Dermaline
-            Quantity: 7.5
-          - ReagentId: Bruizine
+          - ReagentId: Omnizine
             Quantity: 5
   - type: Injector
     solutionName: pen

@@ -311,7 +311,7 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
         if (targetUid.HasValue)
         {
             ApplyEarthquakeToPlayer(targetUid.Value, comp.RumbleSound);
-            if (_random.Prob(0.2f))
+            if (_random.Prob(0.1f))
             {
                 SpawnEffectsNearPlayer(targetUid.Value, comp.RockFallSound);
             }

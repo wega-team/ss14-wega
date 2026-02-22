@@ -180,7 +180,7 @@
     targetUser: true
     damage:
       types:
-        Heat: 10
+        Heat: 2.5
     blacklist:
       components:
       - AshDrakeBoss

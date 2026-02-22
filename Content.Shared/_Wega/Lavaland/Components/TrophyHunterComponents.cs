@@ -15,7 +15,7 @@ public sealed partial class TrophyHunterComponent : Component
     public EntProtoId Trophy;
 
     [DataField]
-    public float DropChance = 0.1f;
+    public float DropChance = 0.25f;
 
     /// <summary>
     /// Determines whether a trophy collection attempt was made to limit it to 1 attempt per mob.

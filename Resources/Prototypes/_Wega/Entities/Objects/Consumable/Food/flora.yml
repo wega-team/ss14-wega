@@ -15,6 +15,9 @@
   - type: Sprite
     sprite: _Wega/Objects/Consumable/Food/flora.rsi
     state: cactus_fruit
+  - type: Tag
+    tags:
+    - Fruit
 
 - type: entity
   parent: FoodProduceBase

@@ -85,7 +85,7 @@
       task: GoliathCompound
     blackboard:
       VisionRadius: !type:Single
-        5
+        9
       AggroVisionRadius: !type:Single
         9
       NavSmash: !type:Bool
@@ -148,7 +148,7 @@
     baseSprintSpeed: 2.835
   - type: TrophyHunter
     trophy: TrophyLavalandAncientGoliathTentacle
-    dropChance: 0.25 # More chance because he ancient
+    dropChance: 0.45 # More chance because he ancient
 #endregion
 
 #region Legion
@@ -178,7 +178,7 @@
       task: LegionBehaviorCompound
     blackboard:
       VisionRadius: !type:Single
-        5
+        9
       AggroVisionRadius: !type:Single
         9
   - type: NPCUseActionOnTarget
@@ -546,7 +546,7 @@
       task: SimpleHostileCompound
     blackboard:
       VisionRadius: !type:Single
-        8
+        9
       AggroVisionRadius: !type:Single
         9
 
