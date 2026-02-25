@@ -24,7 +24,6 @@
   # Corvax-Wega-SubRoles-start
   subRoles:
   - SeniorOfficer
-  - Detective
   - Pilot
   - Brigmedic
   - WardenHelper

@@ -3,7 +3,6 @@
   name: job-name-chef
   description: job-description-chef
   playTimeTracker: JobChef
-  isSubRole: true # Corvax-Wega-add
   requirements:
     - !type:DepartmentTimeRequirement
       department: Civilian

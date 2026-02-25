@@ -3,7 +3,6 @@
   name: job-name-mime
   description: job-description-mime
   playTimeTracker: JobMime
-  isSubRole: true # Corvax-Wega-add
   requirements:
     - !type:OverallPlaytimeRequirement
       time: 1h # Corvax-RoleTime 4

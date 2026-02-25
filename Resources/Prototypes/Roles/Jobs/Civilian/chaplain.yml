@@ -3,10 +3,14 @@
   name: job-name-chaplain
   description: job-description-chaplain
   playTimeTracker: JobChaplain
-  isSubRole: true # Corvax-Wega-add
   startingGear: ChaplainGear
   icon: "JobIconChaplain"
   supervisors: job-supervisors-hop
+# Corvax-Wega-Start
+  requirements:
+  - !type:OverallPlaytimeRequirement
+      time: 20h
+# Corvax-Wega-End
   access:
   - Chapel
   - Maintenance

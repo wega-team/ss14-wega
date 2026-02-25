@@ -13,6 +13,10 @@
   access:
   - Research
   - Maintenance
+  # Corvax-Wega-SubRoles-start
+  subRoles:
+  - SeniorResearcher
+  # Corvax-Wega-SubRoles-end
 
 - type: startingGear
   id: ScientistGear

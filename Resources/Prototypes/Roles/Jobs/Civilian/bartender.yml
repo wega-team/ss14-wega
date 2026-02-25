@@ -3,11 +3,6 @@
   name: job-name-bartender
   description: job-description-bartender
   playTimeTracker: JobBartender
-  # Corvax-Wega-SubRoles-start
-  subRoles:
-  - Chef
-  - Botanist
-  # Corvax-Wega-SubRoles-end
   requirements:
     - !type:DepartmentTimeRequirement
       department: Civilian
