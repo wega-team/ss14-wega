@@ -5,6 +5,7 @@
   playTimeTracker: JobJanitor
   startingGear: JanitorGear
   icon: "JobIconJanitor"
+  isSubRole: true # Corvax-Wega-add
   supervisors: job-supervisors-hop
   access:
   - Service

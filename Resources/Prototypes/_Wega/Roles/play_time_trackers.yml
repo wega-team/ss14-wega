@@ -18,3 +18,6 @@
 
 - type: playTimeTracker
   id: JobPostman
+
+- type: playTimeTracker
+  id: JobWardenHelper

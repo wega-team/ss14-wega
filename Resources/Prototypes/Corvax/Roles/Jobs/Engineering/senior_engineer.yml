@@ -1,6 +1,7 @@
 - type: job
   id: SeniorEngineer
   name: job-name-senior-engineer
+  isSubRole: true # Corvax-Wega-add
   description: job-description-senior-engineer
   playTimeTracker: JobSeniorEngineer
   requirements:

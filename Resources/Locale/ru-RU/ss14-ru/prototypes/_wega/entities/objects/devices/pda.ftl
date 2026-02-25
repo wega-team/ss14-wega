@@ -12,3 +12,5 @@ ent-BlueShieldPDA = КПК офицера "Синий Щит"
     .desc = Ничем не примечательный КПК.
 ent-PostmanPDA = КПК почтальона
     .desc = Небольшой и надежный спутник почтальона, хранящий все маршруты и адреса.
+ent-WardenHelperPDA = КПК помощника смотрителя
+    .desc = { ent-BaseSecurityPDA.desc }

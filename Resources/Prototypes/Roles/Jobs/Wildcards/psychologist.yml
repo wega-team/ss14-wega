@@ -5,6 +5,7 @@
   playTimeTracker: JobPsychologist
   startingGear: PsychologistGear
   icon: "JobIconPsychologist"
+  isSubRole: true # Corvax-Wega-add
   supervisors: job-supervisors-cmo
   access:
   - Medical
