@@ -72,8 +72,6 @@
     key: enum.ItemSelectorUiKey.Key
   - type: UserInterface
     interfaces:
-      enum.TransferAmountUiKey.Key:
-        type: TransferAmountBoundUserInterface
       enum.ItemSelectorUiKey.Key:
         type: ItemSelectorBoundUserInterface
   - type: Tag
@@ -119,6 +117,7 @@
       maxCharge: 1500
       startingCharge: 0
     - type: AmmoCounter
+    - type: Unremoveable
     - type: ItemSelector
       items:
       - BorgWeaponSniperHristovAdvanced
@@ -127,8 +126,6 @@
       key: enum.ItemSelectorUiKey.Key
     - type: UserInterface
       interfaces:
-        enum.TransferAmountUiKey.Key:
-          type: TransferAmountBoundUserInterface
         enum.ItemSelectorUiKey.Key:
           type: ItemSelectorBoundUserInterface
     - type: Tag
