@@ -3,6 +3,7 @@ select-constuct-juggernaut = Джаггернаут
 select-constuct-wraith = Фантом
 select-constuct-artificer = Созидатель
 select-constuct-proteon = Пилон
+select-constuct-idol = Айдол
 
 select-spell-stun = Ошеломление
 select-spell-teleport = Телепорт
