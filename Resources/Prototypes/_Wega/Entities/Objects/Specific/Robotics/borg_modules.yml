@@ -497,7 +497,6 @@
         whitelist:
           components:
           - FitsInDispenser
-          - SolutionContainerManager
           tags:
           - ChemDispensable
   - type: BorgModuleIcon
@@ -674,7 +673,6 @@
         whitelist:
           components:
           - FitsInDispenser
-          - SolutionContainerManager
           tags:
           - ChemDispensable
   - type: BorgModuleIcon
@@ -1074,7 +1072,6 @@
         whitelist:
           components:
           - FitsInDispenser
-          - SolutionContainerManager
           tags:
           - ChemDispensable
     - item: BoxFreezer

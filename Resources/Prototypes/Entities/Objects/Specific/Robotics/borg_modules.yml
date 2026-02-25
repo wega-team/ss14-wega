@@ -1346,7 +1346,6 @@
         whitelist:
           components:
           - FitsInDispenser
-          - SolutionContainerManager
           tags:
           - ChemDispensable
     - item: BorgGeneratorDonts
