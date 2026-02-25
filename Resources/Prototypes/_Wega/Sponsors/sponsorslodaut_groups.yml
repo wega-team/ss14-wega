@@ -4,6 +4,8 @@
   minLimit: 0
   loadouts:
   - ClothingHeadHatMagic
+  - ClothingEyesGlassesGarGigaSponsor
+  - ClothingHeadHatElegantTacticalmaid
 
 - type: loadoutGroup
   id: SponsorNeck
@@ -12,3 +14,10 @@
   loadouts:
   - ClothingNeckCloakMagic
   - ClothingNeckCloakManly
+
+- type: loadoutGroup
+  id: SponsorGloves
+  name: loadout-group-sponsor-gloves
+  minLimit: 0
+  loadouts:
+  - ClothingHandsGlovesElegantTacticalmaid

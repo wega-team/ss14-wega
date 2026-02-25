@@ -105,14 +105,10 @@
   - Glasses
   - GlassesJamjar
   - GlassesJensen
-  # Corvax-Wega-Sponsors-start
-  - ClothingEyesGlassesGarGigaSponsor
-  # Corvax-Wega-Sponsors-end
   # Corvax-Wega-start
   - ClothingEyesGlassesCheapSunglasses
   - ClothingEyesSalesman
   # Corvax-Wega-end
-
 
 - type: loadoutGroup
   id: GroupTankHarness
@@ -166,6 +162,9 @@
   loadouts:
   - CaptainHead
   - CaptainCap
+  # Corvax-Wega-Sponsors-start
+  - ClothingEyesGlassesGarGigaSponsor
+  # Corvax-Wega-Sponsors-end
 # Corvax-Wega-start
   - ClothingHeadHatBeretCaptainWhite
   - ClothingHeadHatCapcapWhite
@@ -241,7 +240,6 @@
   - ClothingOuterCoatSherif
 # Corvax-Wega-end
 
-
 - type: loadoutGroup
   id: CaptainJobTrinkets
   name: loadout-group-jobtrinkets
@@ -255,6 +253,10 @@
   minLimit: 0
   loadouts:
   - HoPHead
+  # Corvax-Wega-Sponsors-start
+  - ClothingEyesGlassesGarGigaSponsor
+  - ClothingHeadHatMagic
+  # Corvax-Wega-Sponsors-end
 
 - type: loadoutGroup
   id: HoPJumpsuit
@@ -277,6 +279,10 @@
   loadouts:
   - HoPCloak
   - HoPMantle
+  # Corvax-Wega-Sponsors-start
+  - ClothingNeckCloakManly
+  - ClothingNeckCloakMagic
+  # Corvax-Wega-Sponsors-end
 
 - type: loadoutGroup
   id: HoPBackpack
@@ -314,12 +320,14 @@
   - RainbowJumpskirt
   # Corvax-Wega-Sponsors-start
   - ClothingUniformJumpskirtSexySweater
+  - ClothingUniformJumpskirtElegantTacticalmaid
   - ClothingUniformJumpskirtMagicDress
   - ClothingUniformJumpskirtBlackrevealingdress
   - ClothingUniformJumpskirtRedrevealingdress
   - ClothingUniformJumpskirtNecklineSweater
   - ClothingUniformJumpskirtPinkKimano
   - ClothingUniformJumpskirtBlueKimono
+  - ClothingUniformJumpskirtElegantTacticalmaid
   - ClothingUniformJumpsuitStylishShirt
   - ClothingUniformJumpsuitManlyPants
   - ClothingUniformJumpsuitBeautifulSweater
@@ -454,6 +462,9 @@
   minLimit: 0
   loadouts:
   - PassengerGloves
+  # Corvax-Wega-Sponsors-start
+  - ClothingHandsGlovesElegantTacticalmaid
+  # Corvax-Wega-Sponsors-end
 
 - type: loadoutGroup
   id: CommonBackpack
@@ -529,6 +540,8 @@
   - BartenderBowler
   # Corvax-Wega-Sponsors-start
   - ClothingHeadHatMagic
+  - ClothingEyesGlassesGarGigaSponsor
+  - ClothingHeadHatElegantTacticalmaid
   # Corvax-Wega-Sponsors-end
 
 - type: loadoutGroup
@@ -546,6 +559,7 @@
   - ClothingUniformJumpskirtNecklineSweater
   - ClothingUniformJumpskirtPinkKimano
   - ClothingUniformJumpskirtBlueKimono
+  - ClothingUniformJumpskirtElegantTacticalmaid
   - ClothingUniformJumpsuitStylishShirt
   - ClothingUniformJumpsuitManlyPants
   - ClothingUniformJumpsuitBeautifulSweater
@@ -699,6 +713,8 @@
   - ChefHead
   # Corvax-Wega-Sponsors-start
   - ClothingHeadHatMagic
+  - ClothingEyesGlassesGarGigaSponsor
+  - ClothingHeadHatElegantTacticalmaid
   # Corvax-Wega-Sponsors-end
 
 - type: loadoutGroup
@@ -723,6 +739,7 @@
   - ClothingUniformJumpskirtPinkKimano
   - ClothingUniformJumpskirtBlueKimono
   - ClothingUniformJumpsuitStylishShirt
+  - ClothingUniformJumpskirtElegantTacticalmaid
   - ClothingUniformJumpsuitManlyPants
   - ClothingUniformJumpsuitBeautifulSweater
   # Corvax-Wega-Sponsors-end
@@ -875,6 +892,7 @@
   - ClothingUniformJumpskirtNecklineSweater
   - ClothingUniformJumpskirtPinkKimano
   - ClothingUniformJumpskirtBlueKimono
+  - ClothingUniformJumpskirtElegantTacticalmaid
   - ClothingUniformJumpsuitStylishShirt
   - ClothingUniformJumpsuitManlyPants
   - ClothingUniformJumpsuitBeautifulSweater
@@ -1048,6 +1066,8 @@
   - ChaplainWitchHatAlt
   # Corvax-Wega-Sponsors-start
   - ClothingHeadHatMagic
+  - ClothingEyesGlassesGarGigaSponsor
+  - ClothingHeadHatElegantTacticalmaid
   # Corvax-Wega-Sponsors-end
 
 - type: loadoutGroup
@@ -1074,6 +1094,7 @@
   - ClothingUniformJumpskirtNecklineSweater
   - ClothingUniformJumpskirtPinkKimano
   - ClothingUniformJumpskirtBlueKimono
+  - ClothingUniformJumpskirtElegantTacticalmaid
   - ClothingUniformJumpsuitStylishShirt
   - ClothingUniformJumpsuitManlyPants
   - ClothingUniformJumpsuitBeautifulSweater
@@ -1211,6 +1232,10 @@
   minLimit: 0
   loadouts:
   - ChaplainNeck
+  # Corvax-Wega-Sponsors-start
+  - ClothingNeckCloakMagic
+  - ClothingNeckCloakManly
+  # Corvax-Wega-Sponsors-end
 
 - type: loadoutGroup
   id: ChaplainJobTrinkets
@@ -1239,6 +1264,8 @@
   - JanitorHead
   # Corvax-Wega-Sponsors-start
   - ClothingHeadHatMagic
+  - ClothingEyesGlassesGarGigaSponsor
+  - ClothingHeadHatElegantTacticalmaid
   # Corvax-Wega-Sponsors-end
 
 - type: loadoutGroup
@@ -1258,6 +1285,7 @@
   - ClothingUniformJumpskirtNecklineSweater
   - ClothingUniformJumpskirtPinkKimano
   - ClothingUniformJumpskirtBlueKimono
+  - ClothingHandsGlovesElegantTacticalmaid
   - ClothingUniformJumpsuitStylishShirt
   - ClothingUniformJumpsuitManlyPants
   - ClothingUniformJumpsuitBeautifulSweater
@@ -1387,6 +1415,9 @@
   - JanitorRubberGloves
   - OrangeGloves
   - PurpleGloves
+  # Corvax-Wega-Sponsors-start
+  - ClothingHandsGlovesElegantTacticalmaid
+  # Corvax-Wega-Sponsors-end
 
 - type: loadoutGroup
   id: JanitorOuterClothing
@@ -1412,6 +1443,8 @@
   - BotanistBandana
   # Corvax-Wega-Sponsors-start
   - ClothingHeadHatMagic
+  - ClothingEyesGlassesGarGigaSponsor
+  - ClothingHeadHatElegantTacticalmaid
   # Corvax-Wega-Sponsors-end
 
 - type: loadoutGroup
@@ -1429,6 +1462,7 @@
   - ClothingUniformJumpskirtNecklineSweater
   - ClothingUniformJumpskirtPinkKimano
   - ClothingUniformJumpskirtBlueKimono
+  - ClothingUniformJumpskirtElegantTacticalmaid
   - ClothingUniformJumpsuitStylishShirt
   - ClothingUniformJumpsuitManlyPants
   - ClothingUniformJumpsuitBeautifulSweater
@@ -1582,6 +1616,8 @@
   - JesterAltHat
   # Corvax-Wega-Sponsors-start
   - ClothingHeadHatMagic
+  - ClothingEyesGlassesGarGigaSponsor
+  - ClothingHeadHatElegantTacticalmaid
   # Corvax-Wega-Sponsors-end
 
 - type: loadoutGroup
@@ -1601,6 +1637,7 @@
   - ClothingUniformJumpskirtNecklineSweater
   - ClothingUniformJumpskirtPinkKimano
   - ClothingUniformJumpskirtBlueKimono
+  - ClothingUniformJumpskirtElegantTacticalmaid
   - ClothingUniformJumpsuitStylishShirt
   - ClothingUniformJumpsuitManlyPants
   - ClothingUniformJumpsuitBeautifulSweater
@@ -1761,6 +1798,7 @@
   id: ClownJobTrinkets
   name: loadout-group-jobtrinkets
   minLimit: 0
+  maxLimit: 4
   loadouts:
   - LizardPlushieClown
   - FlowerWaterClown
@@ -1779,6 +1817,8 @@
   - MimeCap
   # Corvax-Wega-Sponsors-start
   - ClothingHeadHatMagic
+  - ClothingEyesGlassesGarGigaSponsor
+  - ClothingHeadHatElegantTacticalmaid
   # Corvax-Wega-Sponsors-end
 
 - type: loadoutGroup
@@ -1803,6 +1843,7 @@
   - ClothingUniformJumpskirtNecklineSweater
   - ClothingUniformJumpskirtPinkKimano
   - ClothingUniformJumpskirtBlueKimono
+  - ClothingUniformJumpskirtElegantTacticalmaid
   - ClothingUniformJumpsuitStylishShirt
   - ClothingUniformJumpsuitManlyPants
   - ClothingUniformJumpsuitBeautifulSweater
@@ -1979,6 +2020,7 @@
   - ClothingUniformJumpskirtNecklineSweater
   - ClothingUniformJumpskirtPinkKimano
   - ClothingUniformJumpskirtBlueKimono
+  - ClothingUniformJumpskirtElegantTacticalmaid
   - ClothingUniformJumpsuitStylishShirt
   - ClothingUniformJumpsuitManlyPants
   - ClothingUniformJumpsuitBeautifulSweater
@@ -2158,6 +2200,10 @@
   loadouts:
   - QuartermasterHead
   - QuartermasterBeret
+  # Corvax-Wega-Sponsors-start
+  - ClothingHeadHatMagic
+  - ClothingEyesGlassesGarGigaSponsor
+  # Corvax-Wega-Sponsors-end
 
 - type: loadoutGroup
   id: QuartermasterJumpsuit
@@ -2181,6 +2227,7 @@
   - QuartermasterMantle
   # Corvax-Wega-Sponsors-start
   - ClothingNeckCloakManly
+  - ClothingNeckCloakMagic
   # Corvax-Wega-Sponsors-end
 
 - type: loadoutGroup
@@ -2237,6 +2284,8 @@
   - CargoTechnicianHead
   # Corvax-Wega-Sponsors-start
   - ClothingHeadHatMagic
+  - ClothingEyesGlassesGarGigaSponsor
+  - ClothingHeadHatElegantTacticalmaid
   # Corvax-Wega-Sponsors-end
 
 - type: loadoutGroup
@@ -2253,6 +2302,7 @@
   - ClothingUniformJumpskirtNecklineSweater
   - ClothingUniformJumpskirtPinkKimano
   - ClothingUniformJumpskirtBlueKimono
+  - ClothingUniformJumpskirtElegantTacticalmaid
   - ClothingUniformJumpsuitStylishShirt
   - ClothingUniformJumpsuitManlyPants
   - ClothingUniformJumpsuitBeautifulSweater
@@ -2472,6 +2522,7 @@
   loadouts:
   - ChiefEngineerHead
   - ChiefEngineerBeret
+  - ClothingEyesGlassesGarGigaSponsor
 
 - type: loadoutGroup
   id: ChiefEngineerJumpsuit
@@ -2557,6 +2608,7 @@
   - ClothingUniformJumpskirtNecklineSweater
   - ClothingUniformJumpskirtPinkKimano
   - ClothingUniformJumpskirtBlueKimono
+  - ClothingUniformJumpskirtElegantTacticalmaid
   - ClothingUniformJumpsuitStylishShirt
   - ClothingUniformJumpsuitManlyPants
   - ClothingUniformJumpsuitBeautifulSweater
@@ -2696,6 +2748,8 @@
   - SeniorEngineerBeret
   # Corvax-Wega-Sponsors-start
   - ClothingHeadHatMagic
+  - ClothingEyesGlassesGarGigaSponsor
+  - ClothingHeadHatElegantTacticalmaid
   # Corvax-Wega-Sponsors-end
 
 - type: loadoutGroup
@@ -2715,6 +2769,7 @@
   - ClothingUniformJumpskirtNecklineSweater
   - ClothingUniformJumpskirtPinkKimano
   - ClothingUniformJumpskirtBlueKimono
+  - ClothingUniformJumpskirtElegantTacticalmaid
   - ClothingUniformJumpsuitStylishShirt
   - ClothingUniformJumpsuitManlyPants
   - ClothingUniformJumpsuitBeautifulSweater
@@ -2913,6 +2968,7 @@
   - ClothingUniformJumpskirtNecklineSweater
   - ClothingUniformJumpskirtPinkKimano
   - ClothingUniformJumpskirtBlueKimono
+  - ClothingUniformJumpskirtElegantTacticalmaid
   - ClothingUniformJumpsuitStylishShirt
   - ClothingUniformJumpsuitManlyPants
   - ClothingUniformJumpsuitBeautifulSweater
@@ -3193,6 +3249,8 @@
   - ScientificBeret
   # Corvax-Wega-Sponsors-start
   - ClothingHeadHatMagic
+  - ClothingEyesGlassesGarGigaSponsor
+  - ClothingHeadHatElegantTacticalmaid
   # Corvax-Wega-Sponsors-end
 
 - type: loadoutGroup
@@ -3224,6 +3282,7 @@
   - ClothingUniformJumpskirtNecklineSweater
   - ClothingUniformJumpskirtPinkKimano
   - ClothingUniformJumpskirtBlueKimono
+  - ClothingUniformJumpskirtElegantTacticalmaid
   - ClothingUniformJumpsuitStylishShirt
   - ClothingUniformJumpsuitManlyPants
   - ClothingUniformJumpsuitBeautifulSweater
@@ -3406,6 +3465,9 @@
   - LatexGloves
   - PurpleGloves
   - RobohandsGloves
+  # Corvax-Wega-Sponsors-start
+  - ClothingHandsGlovesElegantTacticalmaid
+  # Corvax-Wega-Sponsors-end
 
 - type: loadoutGroup
   id: ScientistPDA
@@ -3435,6 +3497,7 @@
   - ClothingUniformJumpskirtNecklineSweater
   - ClothingUniformJumpskirtPinkKimano
   - ClothingUniformJumpskirtBlueKimono
+  - ClothingUniformJumpskirtElegantTacticalmaid
   - ClothingUniformJumpsuitStylishShirt
   - ClothingUniformJumpsuitManlyPants
   - ClothingUniformJumpsuitBeautifulSweater
@@ -3571,6 +3634,9 @@
   loadouts:
   - HeadofSecurityHead
   - HeadofSecurityBeret
+  # Corvax-Wega-Sponsors-start
+  - ClothingEyesGlassesGarGigaSponsor
+  # Corvax-Wega-Sponsors-end
 
 - type: loadoutGroup
   id: HeadofSecurityJumpsuit
@@ -3624,6 +3690,9 @@
   loadouts:
   - WardenHead
   - WardenBeret
+  # Corvax-Wega-Sponsors-start
+  - ClothingEyesGlassesGarGigaSponsor
+  # Corvax-Wega-Sponsors-end
 
 - type: loadoutGroup
   id: WardenJumpsuit
@@ -3656,6 +3725,9 @@
   - SecurityBeret
   - SecurityHat
   - TrooperHat
+  # Corvax-Wega-Sponsors-start
+  - ClothingHeadHelmetGarGigaSponsor
+  # Corvax-Wega-Sponsors-end
 
 - type: loadoutGroup
   id: SecurityJumpsuit
@@ -3668,6 +3740,9 @@
   - SeniorOfficerJumpsuit
   - SeniorOfficerJumpskirt
   - TrooperUniform
+  # Corvax-Wega-Sponsors-start
+  - ClothingUniformJumpskirtElegantSecurity
+  # Corvax-Wega-Sponsors-end
 # Corvax-Wega-add-start
   - JumpskirtTurtleneckRed
   - JumpsuitTurtleneckRed
@@ -3770,6 +3845,9 @@
   loadouts:
   - SecurityJumpsuitGrey # Corvax-Resprite
   - SecurityJumpskirtGrey # Corvax-Resprite
+  # Corvax-Wega-Sponsors-start
+  - ClothingUniformJumpskirtElegantSecurity
+  # Corvax-Wega-Sponsors-end
 # Corvax-Wega-add-start
   - JumpskirtTurtleneckRed
   - JumpsuitTurtleneckRed
@@ -3890,6 +3968,8 @@
   - NurseHat
   # Corvax-Wega-Sponsors-start
   - ClothingHeadHatMagic
+  - ClothingEyesGlassesGarGigaSponsor
+  - ClothingHeadHatElegantTacticalmaid
   # Corvax-Wega-Sponsors-end
 
 - type: loadoutGroup
@@ -3912,6 +3992,7 @@
   - ClothingUniformJumpskirtNecklineSweater
   - ClothingUniformJumpskirtPinkKimano
   - ClothingUniformJumpskirtBlueKimono
+  - ClothingUniformJumpskirtElegantTacticalmaid
   - ClothingUniformJumpsuitStylishShirt
   - ClothingUniformJumpsuitManlyPants
   - ClothingUniformJumpsuitBeautifulSweater
@@ -4024,6 +4105,7 @@
   - ClothingUniformJumpskirtNecklineSweater
   - ClothingUniformJumpskirtPinkKimano
   - ClothingUniformJumpskirtBlueKimono
+  - ClothingUniformJumpskirtElegantTacticalmaid
   - ClothingUniformJumpsuitStylishShirt
   - ClothingUniformJumpsuitManlyPants
   - ClothingUniformJumpsuitBeautifulSweater
@@ -4065,6 +4147,7 @@
   - ClothingUniformJumpskirtNecklineSweater
   - ClothingUniformJumpskirtPinkKimano
   - ClothingUniformJumpskirtBlueKimono
+  - ClothingUniformJumpskirtElegantTacticalmaid
   - ClothingUniformJumpsuitStylishShirt
   - ClothingUniformJumpsuitManlyPants
   - ClothingUniformJumpsuitBeautifulSweater
@@ -4117,6 +4200,8 @@
   - ParamedicHead
   # Corvax-Wega-Sponsors-start
   - ClothingHeadHatMagic
+  - ClothingEyesGlassesGarGigaSponsor
+  - ClothingHeadHatElegantTacticalmaid
   # Corvax-Wega-Sponsors-end
 
 - type: loadoutGroup
@@ -4133,6 +4218,7 @@
   - ClothingUniformJumpskirtNecklineSweater
   - ClothingUniformJumpskirtPinkKimano
   - ClothingUniformJumpskirtBlueKimono
+  - ClothingUniformJumpskirtElegantTacticalmaid
   - ClothingUniformJumpsuitStylishShirt
   - ClothingUniformJumpsuitManlyPants
   - ClothingUniformJumpsuitBeautifulSweater
@@ -4243,6 +4329,7 @@
   - ClothingUniformJumpskirtNecklineSweater
   - ClothingUniformJumpskirtPinkKimano
   - ClothingUniformJumpskirtBlueKimono
+  - ClothingUniformJumpskirtElegantTacticalmaid
   - ClothingUniformJumpsuitStylishShirt
   - ClothingUniformJumpsuitManlyPants
   - ClothingUniformJumpsuitBeautifulSweater
@@ -4385,6 +4472,7 @@
   - ClothingUniformJumpskirtNecklineSweater
   - ClothingUniformJumpskirtPinkKimano
   - ClothingUniformJumpskirtBlueKimono
+  - ClothingUniformJumpskirtElegantTacticalmaid
   - ClothingUniformJumpsuitStylishShirt
   - ClothingUniformJumpsuitManlyPants
   - ClothingUniformJumpsuitBeautifulSweater
