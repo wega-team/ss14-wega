@@ -8,6 +8,15 @@
   - type: SurgicalSkill # Corvax-Wega-Surgery
 
 - type: entity
+  id: BorgChassisScience
+  parent: BorgChassisSelectable
+  name: science cyborg
+  components:
+  - type: BorgSwitchableType
+    selectedBorgType: science
+  - type: SurgicalSkill # Corvax-Wega-Surgery
+
+- type: entity
   id: BorgChassisSecurityPlayer
   parent: BorgChassisSecurity
   name: security cyborg
@@ -25,6 +34,24 @@
       - BorgModuleLethal
       - BorgModuleSecRare
       - BorgModuleSheild
+
+- type: entity
+  id: BorgChassisSciencePlayer
+  parent: BorgChassisScience
+  name: science cyborg
+  suffix: Science
+  components:
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMicroreactor
+  - type: ContainerFill
+    containers:
+      borg_module:
+      - BorgModuleRobotics
+      - BorgModuleAdvancedAnomaly
+      - BorgModuleScienceRND
 
 - type: entity
   id: BorgChassisGenericPlayer

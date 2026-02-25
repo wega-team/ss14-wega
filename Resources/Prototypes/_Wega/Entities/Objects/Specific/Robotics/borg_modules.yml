@@ -104,6 +104,152 @@
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: kinetic-weapon-module }
 
+
+# Science
+- type: entity
+  id: BorgModuleAdvancedAnomaly
+  parent: [ BaseBorgModuleScience, BaseProviderBorgModule ]
+  name: advanced anomaly cyborg module
+  description: Pee wee has never been so much fun!
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: science
+    - state: icon-anomalies-adv
+  - type: ItemBorgModule
+    hands:
+    - item: AnomalyScanner
+    - item: WeaponPistolCHIMPBorg
+    - item: WeaponGauntletGorilla
+    - hand:
+        emptyRepresentative: AnomalyCoreBluespaceInert
+        emptyLabel: borg-slot-anomaly-core
+        whitelist:
+          tags:
+          - AnomalyCore
+  - type: BorgModuleIcon
+    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: adv-anomaly-module }
+
+- type: entity
+  id: BorgModuleSlime
+  parent: [ BaseBorgModuleScience, BaseProviderBorgModule ]
+  name: slime cyborg module
+  description: Pee wee has never been so much fun!
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: science
+    - state: icon-slime
+  - type: ItemBorgModule
+    hands:
+    - item: HandheldSlimeAnalyzerUnpowered
+    - hand:
+        emptyRepresentative: MaterialSlimeExtractGray
+        emptyLabel: borg-slot-slime-core-empty
+        whitelist:
+          tags:
+          - SlimeRND
+    - item: BorgFireExtinguisher  
+    - item: CombatKnife
+    - hand:
+        emptyRepresentative: BorgIconKitchenIcon
+        emptyLabel: borg-slot-food-empty
+        whitelist:
+          components:
+          - Edible
+  - type: BorgModuleIcon
+    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: slime-module }
+    
+- type: entity
+  id: BorgModuleDNA
+  parent: [ BaseBorgModuleScience, BaseProviderBorgModule ]
+  name: DNA cyborg module
+  description: Pee wee has never been so much fun!
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: science
+    - state: icon-dna
+  - type: ItemBorgModule
+    hands:
+    - hand:
+        emptyRepresentative: DnaInjector
+        emptyLabel: borg-slot-dnainjector-empty
+        whitelist:
+          components:
+          - DnaModifierInjector
+          - DnaModifierDisk
+    - item: BoxDnaFisk
+    - item: Pen
+    - hand:
+        emptyLabel: borg-slot-documents-empty
+        emptyRepresentative: Paper
+        whitelist:
+          tags:
+          - Book
+          - Dice
+          - Document
+          - Figurine
+          - TabletopBoard
+          - Write
+    - item: BorgGeneratorCleanSe
+  - type: BorgModuleIcon
+    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: genetic-module }
+    
+- type: entity
+  id: BorgModuleRobotics
+  parent: [ BaseBorgModuleScience, BaseProviderBorgModule ]
+  name: robotic cyborg module
+  description: Pee wee has never been so much fun!
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: science
+    - state: icon-robotic
+  - type: ItemBorgModule
+    hands:
+    - hand:
+        emptyRepresentative: LightHeadBorg
+        emptyLabel: borg-slot-bodypartborg-empty
+        whitelist:
+          tags:
+          - BorgArm
+          - BorgLeg
+          - BorgHead
+          - BorgTorso
+    - hand:
+        emptyRepresentative: Flash
+        emptyLabel: borg-slot-components-empty
+        whitelist:
+          components:
+          - Flash
+          tags:
+          - CableCoil
+    - hand:
+        emptyRepresentative: MMIFilled
+        emptyLabel: borg-slot-brains-empty
+        whitelist:
+          components:
+          - Brain
+          - BorgBrain
+    - hand:
+        emptyRepresentative: BorgModuleTool
+        emptyLabel: borg-slot-modules-empty
+        whitelist:
+          components:
+          - BorgModule
+    - hand:
+        emptyRepresentative: PowerCellSmall
+        emptyLabel: borg-slot-powercell-empty
+        whitelist:
+          components:
+          - PowerCell
+  - type: BorgModuleIcon
+    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: robotic-module }
 ## Basic Module
 
 - type: entity
@@ -982,6 +1128,38 @@
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: med-rare }
 
+- type: entity
+  id: BorgModuleScienceRND
+  parent: [ BaseBorgModuleScience, BaseProviderBorgModule ]
+  name: RND cyborg module
+  components:
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: base-icon-inhand-left
+        color: "#db3e2a"
+      - state: base-module-inhand-left
+        color: "#1e548a"
+      - state: base-part-inhand-left
+      - state: base-stripes-inhand-left
+        color: "#C3C3C3"
+      right:
+      - state: base-icon-inhand-right
+        color: "#db3e2a"
+      - state: base-module-inhand-right
+        color: "#1e548a"
+      - state: base-part-inhand-right
+      - state: base-stripes-inhand-right
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: command
+    - state: icon-rnd-rare
+  - type: ItemBorgModule
+    hands:
+    - item: BaseResearchAndDevelopmentPointSourceBorg
+  - type: BorgModuleIcon
+    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: rnd-rare }
 ## Syndicate
 - type: entity
   id: BorgModuleChina

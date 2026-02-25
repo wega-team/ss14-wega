@@ -1,8 +1,13 @@
 ent-BorgChassisSecurity = киборг-охранник
     .desc = { ent-BorgChassisSelectable.desc }
+ent-BorgChassisScience = киборг-учёный
+    .desc = { ent-BorgChassisSelectable.desc }
 ent-BorgChassisSecurityPlayer = { ent-BorgChassisSecurity }
     .desc = { ent-BorgChassisSelectable.desc }
     .suffix = Охранник, Батарея, Все модули, НЕ МАППИТЬ
+ent-BorgChassisSciencePlayer = { ent-BorgChassisScience }
+    .desc = { ent-BorgChassisSelectable.desc }
+    .suffix = Учёный, Батарея, Все модули, НЕ МАППИТЬ
 ent-BorgChassisGenericPlayer = { ent-BorgChassisGeneric }
     .desc = { ent-BorgChassisSelectable.desc }
     .suffix = Общий, Батарея, Все модули, НЕ МАППИТЬ
