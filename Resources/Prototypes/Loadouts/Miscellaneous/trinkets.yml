@@ -480,7 +480,7 @@
   groupBy: "towels"
 
 - type: loadout
-  id: TowelColorMime
+  id: TowelColorMime # Wega-mime 
   effects:
   - !type:JobRequirementLoadoutEffect
     requirement:
@@ -489,11 +489,11 @@
       time: 50h
   storage:
     back:
-    - TowelColorMime
+    - TowelColorMime # Wega-mime 
   groupBy: "towels"
 
 - type: loadout
-  id: TowelColorMaroon
+  id: TowelColorMaroon # Corvax-IAA
   effects:
   - !type:JobRequirementLoadoutEffect
     requirement:
@@ -502,7 +502,7 @@
       time: 100h
   storage:
     back:
-    - TowelColorMaroon
+    - TowelColorMaroon # Corvax-IAA
   groupBy: "towels"
 
 - type: loadout
