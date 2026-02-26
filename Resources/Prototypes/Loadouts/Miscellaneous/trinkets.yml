@@ -498,7 +498,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:RoleTimeRequirement
-      role: JobIAA # Corvax-IAA
+      role: JobMime # Corvax-mime
       time: 100h
   storage:
     back:
