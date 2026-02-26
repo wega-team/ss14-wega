@@ -480,29 +480,29 @@
   groupBy: "towels"
 
 - type: loadout
-  id: TowelColorMaroon
-  effects:
-  - !type:JobRequirementLoadoutEffect
-    requirement:
-      !type:RoleTimeRequirement
-      role: JobIAA
-      time: 50h
-  storage:
-    back:
-    - TowelColorMaroon
-  groupBy: "towels"
-
-- type: loadout
   id: TowelColorMime
   effects:
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:RoleTimeRequirement
-      role: JobMime # Corvax-mime
-      time: 100h
+      role: JobMime # Wega-mime 
+      time: 50h
   storage:
     back:
     - TowelColorMime
+  groupBy: "towels"
+
+- type: loadout
+  id: TowelColorMaroon
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobIAA # Corvax-IAA
+      time: 100h
+  storage:
+    back:
+    - TowelColorMaroon
   groupBy: "towels"
 
 - type: loadout
