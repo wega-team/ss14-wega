@@ -493,7 +493,7 @@
   groupBy: "towels"
 
 - type: loadout
-  id: TowelColorMaroon # Corvax-IAA
+  id: TowelColorMaroon # Wega-IAA
   effects:
   - !type:JobRequirementLoadoutEffect
     requirement:
@@ -502,7 +502,7 @@
       time: 100h
   storage:
     back:
-    - TowelColorMaroon # Corvax-IAA
+    - TowelColorMaroon # Wega-IAA
   groupBy: "towels"
 
 - type: loadout
