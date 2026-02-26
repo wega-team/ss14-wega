@@ -157,6 +157,23 @@
     ClothingShoesHeelsBlack: 3
     ClothingShoesLeather: 3
     ClothingShoesHighheelBoots: 1
+    # Gloves
+    ADTClothingHandsCatPawsWhite: 3
+    ADTClothingHandsCatPawsBrown: 3
+    ADTClothingHandsCatPawsBlack: 3
+    ADTClothingHandsCatPawsBlackWhite: 3
+    # Chokers
+    ClothingNeckChokerBlack: 2 # Corvax-Wega-Add
+    ClothingNeckChokerCyan: 2 # Corvax-Wega-Add
+    ClothingNeckChokerGreen: 2 # Corvax-Wega-Add
+    ClothingNeckChokerLatex: 2 # Corvax-Wega-Add
+    ClothingNeckChokerOrange: 2 # Corvax-Wega-Add
+    ClothingNeckChokerPurple: 2 # Corvax-Wega-Add
+    ClothingNeckChokerRed: 2 # Corvax-Wega-Add
+    ClothingNeckChokerSpike: 2 # Corvax-Wega-Add
+    ClothingNeckChokerTealBlack: 2 # Corvax-Wega-Add
+    ClothingNeckChokerWhite: 2 # Corvax-Wega-Add
+    ClothingNeckChokerYellow: 2 # Corvax-Wega-Add
   contrabandInventory:
     ADTClothingNeckScarfUnrobust: 1
     ClothingUniformJumpsuitOperative: 3
@@ -164,3 +181,4 @@
     ClothingHeadHatSyndieMAA: 2
     ClothingNeckScarfStripedSyndieRed: 2
     ClothingNeckScarfStripedSyndieGreen: 2
+    ADTClothingHandsCatPawsWhiteBlackCombat: 1
