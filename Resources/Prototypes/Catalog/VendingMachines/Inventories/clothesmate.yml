@@ -127,6 +127,62 @@
     ClothingEyesGlassesCheapSunglasses: 3
     ClothingNeckDarkGreyCloak: 3 # Corvax-Wega-Add
     ClothingNeckGothicCloak: 3 # Corvax-Wega-Add
+    
+    # Corvax-Wega-Winterdrobe-in-clothesmate-Start
+    ClothingUniformJumpskirtTurtleneckAquamarine: 2
+    ClothingUniformJumpsuitTurtleneckAquamarine: 2
+    ClothingUniformJumpskirtTurtleneckWhite: 2
+    ClothingUniformJumpsuitTurtleneckWhite: 2
+    ClothingUniformJumpskirtTurtleneckAzure: 2
+    ClothingUniformJumpsuitTurtleneckAzure: 2
+    ClothingUniformJumpskirtTurtleneckYellow: 2 
+    ClothingUniformJumpsuitTurtleneckYellow: 2
+    ClothingUniformJumpskirtTurtleneckGreen: 2
+    ClothingUniformJumpsuitTurtleneckGreen: 2
+    ClothingUniformJumpskirtTurtleneckBrown: 2
+    ClothingUniformJumpsuitTurtleneckBrown: 2
+    ClothingUniformJumpskirtTurtleneckRed: 2
+    ClothingUniformJumpsuitTurtleneckRed: 2
+    ClothingUniformJumpskirtTurtleneckOrange: 2
+    ClothingUniformJumpsuitTurtleneckOrange: 2
+    ClothingUniformJumpskirtTurtleneckPink: 2
+    ClothingUniformJumpsuitTurtleneckPink: 2
+    ClothingUniformJumpskirtTurtleneckGrey: 2
+    ClothingUniformJumpsuitTurtleneckGrey: 2 
+    ClothingUniformJumpskirtTurtleneckBlue: 2
+    ClothingUniformJumpsuitTurtleneckBlue: 2 
+    ClothingUniformJumpskirtTurtleneckPurple: 2
+    ClothingUniformJumpsuitTurtleneckPurple: 2 
+    ClothingUniformJumpskirtTurtleneckBlack: 2
+    ClothingUniformJumpsuitTurtleneckBlack: 2
+    ClothingUniformJumpskirtTurtleneckSalat: 2
+    ClothingUniformJumpsuitTurtleneckSalat: 2 
+    ClothingUniformJumpsuitTurtleneckSalatblack: 2 
+    ClothingUniformJumpskirtTurtleneckBlackSleeveless: 2
+    ClothingUniformJumpsuitTurtleneckBlackSleeveless: 2 
+    ClothingUniformJumpsuitTurtleneckWhiteBlackSleeveless: 2 
+    ClothingUniformJumpsuitTurtleneckWhiteSleeveless: 2 
+    ClothingUniformJumpskirtTurtleneckWhiteSleeveless: 2
+    ClothingNeckScarfStripedRed: 3
+    ClothingNeckScarfStripedGreen: 3
+    ClothingNeckScarfStripedBlue: 3
+    ClothingNeckScarfStripedBlack: 3
+    ClothingNeckScarfStripedBrown: 3
+    ClothingNeckScarfStripedLightBlue: 3
+    ClothingNeckScarfStripedOrange: 3
+    ClothingNeckScarfStripedPurple: 3
+    ClothingOuterCoatTrench: 6
+    ClothingOuterWinterCoat: 6
+    ClothingShoesBootsWinter: 6
+    ClothingOuterFlannelRed: 2
+    ClothingOuterFlannelBlue: 2
+    ClothingOuterFlannelGreen: 2
+    ClothingOuterCoatBomber: 3
+    ClothingHeadHatCanadaBeanie: 4
+    ClothingHeadHatSantahat: 2
+    ClothingHeadHatXmasCrown: 2
+    # Corvax-Wega-Winterdrobe-in-clothesmate-End
+    
     # DO NOT ADD MORE, USE UNIFORM DYING
   contrabandInventory:
     ClothingMaskNeckGaiter: 2
@@ -136,4 +192,7 @@
     ToyFigurineGreytider: 1
     ClothingBackpackSatchelSmugglerUnanchored: 1
     ClothingHeadHatSolidHeadband: 2
+    ClothingUniformJumpsuitTurtleneckTactick: 2
+    ClothingNeckScarfStripedSyndieGreen: 3
+    ClothingNeckScarfStripedSyndieRed: 3
   # DO NOT ADD MORE, USE UNIFORM DYING

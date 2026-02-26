@@ -92312,7 +92312,7 @@ entities:
     - type: Transform
       pos: 17.5,29.5
       parent: 1
-- proto: VendingMachineWinter
+- proto: VendingMachineFashion
   entities:
   - uid: 4217
     components:

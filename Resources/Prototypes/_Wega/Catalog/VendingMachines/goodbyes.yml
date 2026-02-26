@@ -9,3 +9,9 @@
   values:
     prefix: thankyou-cosinessmat-
     count: 20
+
+- type: localizedDataset
+  id: FashionOMatGoodbyes
+  values:
+    prefix: thankyou-fashion-
+    count: 4

@@ -503,7 +503,7 @@
     variation: 0.125
   sounds:
     Laugh:
-      collection: MaleLaugh
+      collection: VulpakinLaugh
     Sneeze:
       collection: MaleSneezes
     Cough:
@@ -545,7 +545,7 @@
     variation: 0.125
   sounds:
     Laugh:
-      collection: FemaleLaugh
+      collection: VulpakinLaugh
     Sneeze:
       collection: FemaleSneezes
     Cough:

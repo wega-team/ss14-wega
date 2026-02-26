@@ -114625,7 +114625,7 @@ entities:
     - type: Transform
       pos: -6.5,4.5
       parent: 2
-- proto: VendingMachineWinter
+- proto: VendingMachineFashion
   entities:
   - uid: 15300
     components:

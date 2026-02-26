@@ -1,0 +1,14 @@
+ent-ADTClothingOuterWhiteSweatshirtTop = белая толстовка-топка
+    .desc = Стильная белая толстовка-топка. Производства компании "Modeling Agency Dar-Vaxed".
+ent-ADTClothingOuterGraySweatshirtTop = серая толстовка-топка
+    .desc = Стильная серая толстовка-топка. Производства компании "Modeling Agency Dar-Vaxed".
+ent-ADTClothingOuterBlackSweatshirtTop = чёрная толстовка-топка
+    .desc = Стильная чёрная толстовка-топка. Производства компании "Modeling Agency Dar-Vaxed".
+ent-ADTClothingOuterDutch = голландская куртка
+    .desc = За те долгие ночи на пляже Таити.
+ent-ADTClothingOuterLettermanNanoTrasen = корпоративно-синяя жилетка
+    .desc = Корпоративно-синяя жилетка с гордой буквой "N" на спине. На бирке написано, что она была изготовлена Mr.Chang's corp.
+ent-ADTClothingOuterLettermanSyndie = кроваво-красная жилетка
+    .desc = Кроваво-красная жилетка с огромной буквой "S" на спине. Ничего подозрительного.
+ent-ADTClothingOuterLettermanBlack = чёрная жилетка
+    .desc = Обычная чёрная жилетка.

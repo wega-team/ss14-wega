@@ -85100,7 +85100,7 @@ entities:
     - type: Transform
       pos: 79.5,-3.5
       parent: 2
-- proto: VendingMachineWinter
+- proto: VendingMachineFashion
   entities:
   - uid: 10706
     components:

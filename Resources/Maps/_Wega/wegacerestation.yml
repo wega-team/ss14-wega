@@ -296455,7 +296455,7 @@ entities:
       fixtures: {}
     missingComponents:
     - AccessReader
-- proto: VendingMachineWinter
+- proto: VendingMachineFashion
   entities:
   - uid: 14997
     components:
