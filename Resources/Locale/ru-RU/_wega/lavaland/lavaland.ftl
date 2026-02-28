@@ -43,7 +43,7 @@ prison-shuttle-info-ready = Шаттл готов к отправке
 lavaland-weather-warning-ash-storm-light = Обнаружена легкая пепельная буря. Рекомендуется найти укрытие.
 lavaland-weather-warning-ash-storm-heavy = Обнаружена СИЛЬНАЯ пепельная буря. СРОЧНО ищите укрытие!
 lavaland-weather-warning-volcanic-activity = Обнаружена повышенная вулканическая активность. Остерегайтесь падающих пород и новых лавовых потоков.
-lavaland-weather-warning-acid-rain = Обнаружен кислотный дождь. Используйте кислотостойкую защиту. Портативные убежища будут повреждены.
+lavaland-weather-warning-acid-rain = Обнаружен кислотный дождь. Используйте кислотостойкую защиту.
 lavaland-weather-warning-wind = Обнаружен штормовой ветер. Закрепите снаряжение и будьте готовы к сильным порывам.
 lavaland-weather-warning-default = Обнаружены аномальные погодные условия. Будьте осторожны.
 
@@ -54,7 +54,13 @@ lavaland-weather-end-acid-rain = Кислотный дождь закончил�
 lavaland-weather-end-wind = Штормовой ветер утих. Можно ослабить меры предосторожности.
 lavaland-weather-end-default = Аномальные погодные условия прекратились. Окружающая среда стабилизируется.
 
+lavaland-weather-damaged-ash-storm-light = Мелкий пепел забивается под вашу одежду, оставляя болезненные ожоги
+lavaland-weather-damaged-ash-storm-heavy = Раскаленные частицы копоти впиваются в вашу кожу, причиняя невыносимую боль
+lavaland-weather-damaged-acid-rain = Кислота разъедает вашу кожу, оставляя химические ожоги
+lavaland-weather-damaged-default = Враждебная среда причиняет вам дискомфорт
+
 lavaland-hand-capsule-spawn-failed = Невозможно выпустить капсулу здесь
+lavaland-hand-capsule-spawn-failed-box = Невозможно выпустить капсулу здесь. Необходима расчищенная зона {$box}
 
 ore-processor-points = На балансе содержится {$points} очков.
 ore-processor-add-points = На баланс карты начислено {$points} очков.

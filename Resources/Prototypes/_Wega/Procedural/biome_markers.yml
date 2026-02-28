@@ -1,8 +1,8 @@
 - type: biomeMarkerLayer
   id: RandomNecropolisTendrils
   prototype: SpawnerRandomNecropolisTendril
-  radius: 64
-  maxCount: 24
+  radius: 48
+  maxCount: 28
   size: 512
 
 - type: biomeMarkerLayer

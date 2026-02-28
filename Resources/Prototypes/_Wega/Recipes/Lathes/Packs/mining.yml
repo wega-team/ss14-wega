@@ -2,6 +2,7 @@
   id: MagmiteEquipment
   recipes:
   - SheetMagmite1
+  - WeaponMagmiteProtoKineticAccelerator
   - WeaponMagmiteCrusher
   - WeaponMagmiteCrusherGlaive
   - WeaponMagmitePlasmaCutter

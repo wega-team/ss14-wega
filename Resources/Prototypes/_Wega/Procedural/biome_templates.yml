@@ -66,6 +66,16 @@
         - LavalandFloraEmbershroom3
         - LavalandFloraEmbershroom4
     - !type:BiomeEntityLayer
+      threshold: 0.94
+      noise:
+        seed: 4
+        noiseType: OpenSimplex2
+        frequency: 2
+      allowedTiles:
+        - FloorBasalt
+      entities:
+        - BasaltRandom
+    - !type:BiomeEntityLayer
       threshold: 0.95
       noise:
         seed: 0
@@ -88,19 +98,6 @@
         - FloorBasalt
       entities:
         - FloorLavaEntity
-    # Shit
-    # - !type:BiomeEntityLayer
-    #   threshold: 0.75
-    #   noise:
-    #     seed: 3
-    #     frequency: 0.035
-    #     fractalType: Ridged
-    #     octaves: 2
-    #     lacunarity: 1.6
-    #   allowedTiles:
-    #     - FloorBasalt
-    #   entities:
-    #     - FloorChasmEntity
     # Rock formations
     - !type:BiomeEntityLayer
       allowedTiles:

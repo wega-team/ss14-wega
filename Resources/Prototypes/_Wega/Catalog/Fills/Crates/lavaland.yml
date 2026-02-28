@@ -35,6 +35,7 @@
   id: MagmiteGearTable
   table: !type:GroupSelector
     children:
+    - id: WeaponMagmiteProtoKineticAccelerator
     - id: WeaponMagmiteCrusher
     - id: WeaponMagmiteCrusherGlaive
     - id: WeaponMagmitePlasmaCutter

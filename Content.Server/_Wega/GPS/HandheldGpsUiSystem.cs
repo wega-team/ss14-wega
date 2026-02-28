@@ -1,6 +1,7 @@
 using System.Linq;
 using Content.Shared.GPS;
 using Content.Shared.GPS.Components;
+using Content.Shared.Light.Components;
 using Content.Shared.Pinpointer;
 using Robust.Server.GameObjects;
 using Robust.Shared.Map;
@@ -10,6 +11,7 @@ namespace Content.Server.GPS.Systems;
 
 public sealed partial class HandheldGpsUiSystem : EntitySystem
 {
+    [Dependency] private readonly EntityLookupSystem _lookupSystem = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
@@ -98,6 +100,7 @@ public sealed partial class HandheldGpsUiSystem : EntitySystem
         var mapUid = GetNetEntity(Transform(uid).GridUid);
         var otherGpsList = GetOtherGpsDevices(uid, mapCoords.MapId);
         var navBeacons = GetNavBeacons(uid, mapCoords.MapId);
+        var lavaTiles = GetLavaTiles(uid);
 
         var state = new GpsUpdateState(
             mapUid,
@@ -106,7 +109,8 @@ public sealed partial class HandheldGpsUiSystem : EntitySystem
             component.BroadcastEnabled,
             currentCoords,
             otherGpsList,
-            navBeacons
+            navBeacons,
+            lavaTiles
         );
 
         _ui.SetUiState(uid, GpsUiKey.Key, state);
@@ -180,5 +184,26 @@ public sealed partial class HandheldGpsUiSystem : EntitySystem
         }
 
         return result.OrderBy(b => b.Distance).ToList();
+    }
+
+    private List<LavaTileInfo> GetLavaTiles(EntityUid currentGps)
+    {
+        var result = new List<LavaTileInfo>();
+        var currentPos = _transform.GetMapCoordinates(currentGps);
+
+        var emissions = _lookupSystem.GetEntitiesInRange<TileEmissionComponent>(currentPos, 32f);
+        foreach (var emission in emissions)
+        {
+            var lavaPos = _transform.GetMapCoordinates(emission);
+            var distance = (lavaPos.Position - currentPos.Position).Length();
+
+            result.Add(new LavaTileInfo(
+                ((int)lavaPos.X, (int)lavaPos.Y),
+                emission.Comp.Color,
+                distance
+            ));
+        }
+
+        return result.OrderBy(l => l.Distance).ToList();
     }
 }

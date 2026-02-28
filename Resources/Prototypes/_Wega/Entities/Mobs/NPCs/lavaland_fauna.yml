@@ -31,6 +31,7 @@
     immuneToStorm: true
   - type: Unrevivable # If his dead - his is dead
     analyzable: false
+  - type: NPCAggression
   - type: NpcFactionMember
     factions:
     - LavalandFauna
@@ -59,8 +60,8 @@
       Dead:
         Base: goliath_dead
   - type: MovementSpeedModifier
-    baseWalkSpeed: 3.735
-    baseSprintSpeed: 3.735
+    baseWalkSpeed: 3
+    baseSprintSpeed: 3
   - type: Bloodstream
     bloodReferenceSolution:
       reagents:
@@ -144,8 +145,8 @@
       0: Alive
       400: Dead
   - type: MovementSpeedModifier
-    baseWalkSpeed: 2.835
-    baseSprintSpeed: 2.835
+    baseWalkSpeed: 2.235
+    baseSprintSpeed: 2.235
   - type: TrophyHunter
     trophy: TrophyLavalandAncientGoliathTentacle
     dropChance: 0.45 # More chance because he ancient

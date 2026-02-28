@@ -6,3 +6,11 @@
   biomeLayers:
   - RandomNecropolisTendrils
   - RandomLavalandMob
+  # Ore Veins
+  - OreIronLavaland
+  - OreCoalLavaland
+  - OreQuartzLavaland
+  - OreGoldLavaland
+  - OreSilverLavaland
+  - OrePlasmaLavaland
+  - OreUraniumLavaland

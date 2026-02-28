@@ -13,10 +13,6 @@
     requiredTriggeredSpeed: 0
     intersectRatio: 0.1
     blacklist:
-      # Corvax-Wega-Lavaland-start
-      components:
-        - LavaWalking
-      # Corvax-Wega-Lavaland-end
       tags:
         - Catwalk
   - type: TileEntityEffect
@@ -32,7 +28,10 @@
       damageType: Blunt
       amount: 500
     # Corvax-Wega-Vehicles-end
-  # Corvax-Wega-Lavaland-start
+    # Corvax-Wega-Lavaland-start
+    blacklist:
+      components:
+      - LavaWalking
   - type: SpeedModifierContacts
     walkSpeedModifier: 0.4
     sprintSpeedModifier: 0.4

@@ -6655,7 +6655,7 @@ entities:
     - type: ContainerContainer
       containers:
         vendor_card: !type:ContainerSlot {}
-- proto: VendingMachineTankDispenserEVA
+- proto: VendingMachineTankDispenserExtO2
   entities:
   - uid: 381
     components:

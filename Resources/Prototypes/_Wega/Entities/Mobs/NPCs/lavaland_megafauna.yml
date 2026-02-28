@@ -30,6 +30,7 @@
   - type: Damageable
     damageContainer: Biological
   - type: Megafauna
+  - type: NPCAggression
   - type: NPCIgnoringOptimize
   - type: NpcFactionMember
     factions:
@@ -286,6 +287,10 @@
     damage:
       types:
         Blunt: 25
+  - type: NavMapBeacon
+    defaultText: nav-map-beacon-lavaland-signal-mega-legion
+    defaultDesc: nav-map-beacon-lavaland-signal-mega-legion-desc
+    color: "#e8d9b0"
   - type: Megafauna
   - type: LegionFauna
   - type: LegionBoss
@@ -598,9 +603,9 @@
       task: MegafaunaBehaviorCompound
     blackboard:
       VisionRadius: !type:Single
-        10
+        18
       AggroVisionRadius: !type:Single
-        12
+        18
   - type: NPCUseActionsOnTarget
     delayModifier: 0.5
     actionIds:
@@ -764,9 +769,9 @@
       task: MegafaunaBehaviorCompound
     blackboard:
       VisionRadius: !type:Single
-        27
+        18
       AggroVisionRadius: !type:Single
-        24
+        18
   - type: NPCUseActionsOnTarget
     actionIds:
     - ActionBubblegumRage
@@ -803,6 +808,7 @@
   - type: Sprite
     sprite: _Wega/Mobs/Lavaland/bubblegum.rsi
     state: bubblegum
+    noRot: true
   - type: InteractionOutline
   - type: BubblegumIllusion
   - type: MobThresholds

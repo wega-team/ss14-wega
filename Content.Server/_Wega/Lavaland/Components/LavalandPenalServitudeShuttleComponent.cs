@@ -8,6 +8,9 @@ public sealed partial class LavalandPenalServitudeShuttleComponent : Component
 
     [ViewVariables]
     public TimeSpan? NextLaunchTime;
+
+    [DataField]
+    public float LaunchDelay = 90f;
 }
 
 public enum PenalServitudeLavalandShuttleState : byte

@@ -27,7 +27,7 @@
     - to: bracers
       steps:
       - material: Sinew
-        amount: 4
+        amount: 2
         doAfter: 2.5
       - material: Bones
         amount: 10
@@ -44,10 +44,10 @@
     - to: talisman
       steps:
       - material: Sinew
-        amount: 4
+        amount: 2
         doAfter: 2.5
       - material: Bones
-        amount: 6
+        amount: 4
         doAfter: 2.5
   - node: talisman
     entity: AccessoriesClothingBoneTalisman
@@ -64,7 +64,7 @@
         amount: 4
         doAfter: 2.5
       - material: Bones
-        amount: 12
+        amount: 8
         doAfter: 2.5
   - node: codpiece
     entity: AccessoriesClothingSkullCodpiece

@@ -1,8 +1,8 @@
 using System.Numerics;
 using Content.Server.Lavaland.Mobs.Components;
+using Content.Server.NPC.HTN;
 using Content.Server.NPC.Systems;
 using Content.Shared.Achievements;
-using Content.Shared.Body.Systems;
 using Content.Shared.Camera;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
@@ -262,7 +262,6 @@ public sealed partial class AshDrakeSystem : EntitySystem
 
     private void StartDrakeLandingAfterArena(Entity<AshDrakeBossComponent> drakeUid, LavaArenaData arenaData)
     {
-
         CleanupArenaObjects(arenaData);
 
         var mapUid = _transform.GetMap(drakeUid.Owner);
@@ -335,6 +334,10 @@ public sealed partial class AshDrakeSystem : EntitySystem
         _appearance.SetData(drakeUid.Owner, VisualLayers.Enabled, false);
         RemCompDeferred<GodmodeComponent>(drakeUid.Owner);
         _npc.WakeNPC(drakeUid.Owner);
+        if (arenaData.Args != null)
+        {
+            SetHTNTarget(drakeUid, arenaData.Args.Target);
+        }
 
         PlayAttackSound(drakeUid);
     }
@@ -459,6 +462,7 @@ public sealed partial class AshDrakeSystem : EntitySystem
             _appearance.SetData(ent.Owner, VisualLayers.Enabled, false);
             RemCompDeferred<GodmodeComponent>(ent);
             _npc.WakeNPC(ent.Owner);
+            SetHTNTarget(ent, args.Target);
 
             ShootCircularPattern(ent, 20, 1);
         }
@@ -482,7 +486,7 @@ public sealed partial class AshDrakeSystem : EntitySystem
         var mapUid = _transform.GetMap(ent.Owner);
         if (mapUid == null)
         {
-            EndLavaJump(ent);
+            EndLavaJump(ent, args);
             return;
         }
 
@@ -652,7 +656,7 @@ public sealed partial class AshDrakeSystem : EntitySystem
 
         Timer.Spawn(TimeSpan.FromSeconds(0.5f), () =>
         {
-            EndLavaJump(ent);
+            EndLavaJump(ent, args);
         });
     }
 
@@ -767,11 +771,12 @@ public sealed partial class AshDrakeSystem : EntitySystem
         }
     }
 
-    private void EndLavaJump(Entity<AshDrakeBossComponent> ent)
+    private void EndLavaJump(Entity<AshDrakeBossComponent> ent, AshDrakeLavaActionEvent args)
     {
         _appearance.SetData(ent.Owner, VisualLayers.Enabled, false);
         RemCompDeferred<GodmodeComponent>(ent);
         _npc.WakeNPC(ent.Owner);
+        SetHTNTarget(ent, args.Target);
 
         PlayAttackSound(ent);
     }
@@ -870,6 +875,17 @@ public sealed partial class AshDrakeSystem : EntitySystem
                 PlayAttackSound(ent);
             });
         }
+    }
+
+    private void SetHTNTarget(Entity<AshDrakeBossComponent> boss, EntityUid target)
+    {
+        if (!TryComp<HTNComponent>(boss, out var htn))
+            return;
+
+        if (htn.Blackboard.TryGetValue<EntityUid>(boss.Comp.TargetKey, out var targetEnt, EntityManager) && Exists(targetEnt))
+            return;
+
+        htn.Blackboard.SetValue(boss.Comp.TargetKey, target);
     }
 
     private void ShootAt(EntityUid drake, EntityCoordinates targetCoordinates)

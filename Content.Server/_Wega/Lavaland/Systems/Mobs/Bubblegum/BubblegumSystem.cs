@@ -1,8 +1,8 @@
 using System.Linq;
 using System.Numerics;
-using Content.Server.Body.Systems;
 using Content.Server.Lavaland.Mobs.Components;
 using Content.Server.NPC.Components;
+using Content.Server.NPC.HTN;
 using Content.Server.NPC.Systems;
 using Content.Shared.Achievements;
 using Content.Shared.Actions.Components;
@@ -211,6 +211,7 @@ public sealed partial class BubblegumSystem : EntitySystem
         var mapUid = _transform.GetMap(ent.Owner);
         if (mapUid == null)
             return;
+
         PerformTripleDashStep(ent, target, mapUid.Value, args.DashDamage, args.DashDistance, args.MoveSpeed,
             args.UseSineWaveForLast, args.DashDelays, 0);
     }
@@ -292,21 +293,38 @@ public sealed partial class BubblegumSystem : EntitySystem
             return;
         }
 
-        var targetCoords = Transform(target).Coordinates;
         var mapUid = _transform.GetMap(ent.Owner);
         if (mapUid == null)
         {
             _npc.WakeNPC(ent.Owner);
+            SetHTNTarget(ent, target);
             return;
         }
 
+        PerformIllusionDashIteration(ent, target, mapUid.Value, args, 0);
+    }
+
+    private void PerformIllusionDashIteration(Entity<BubblegumBossComponent> ent, EntityUid target,
+        EntityUid mapUid, BubblegumIllusionDashActionEvent args, int iteration)
+    {
+        if (!Exists(ent.Owner) || !Exists(target) || _mobState.IsDead(ent.Owner))
+        {
+            if (iteration == 0)
+            {
+                _npc.WakeNPC(ent.Owner);
+                SetHTNTarget(ent, target);
+            }
+            return;
+        }
+
+        var targetCoords = Transform(target).Coordinates;
         Spawn(ent.Comp.DashMarker, targetCoords);
 
         var totalEntities = args.IllusionCount + 1;
-        var positions = GetCircularPositions(targetCoords, mapUid.Value, totalEntities, args.PlacementRadius);
+        var positions = GetCircularPositions(targetCoords, mapUid, totalEntities, args.PlacementRadius);
         if (positions.Count < totalEntities)
         {
-            _npc.WakeNPC(ent.Owner);
+            ContinueToNextIteration(ent, target, mapUid, args, iteration);
             return;
         }
 
@@ -316,40 +334,72 @@ public sealed partial class BubblegumSystem : EntitySystem
 
         if (illusions.Count == 0)
         {
-            _npc.WakeNPC(ent.Owner);
+            ContinueToNextIteration(ent, target, mapUid, args, iteration);
             return;
         }
 
         _activeIllusions[ent.Owner] = illusions;
 
         var damage = args.IllusionDamage;
+
         Timer.Spawn(TimeSpan.FromSeconds(args.PreDashDelay), () =>
         {
             if (!Exists(ent.Owner) || !Exists(target))
             {
                 CleanupIllusions(ent.Owner);
-                _npc.WakeNPC(ent.Owner);
+                ContinueToNextIteration(ent, target, mapUid, args, iteration);
                 return;
             }
 
             StartIllusionDashForAll(illusions, targetCoords, damage);
-
-            var dashCoords = GetDashCoordinates(ent, target, mapUid.Value);
-            Spawn(ent.Comp.DashMarker, dashCoords);
-            PerformDash(ent, dashCoords, damage, 0.1f, false);
+            PerformDash(ent, targetCoords, damage, 0.1f, false);
 
             Timer.Spawn(TimeSpan.FromSeconds(1.5f), () =>
             {
-                if (!Exists(ent.Owner) || !Exists(target))
-                {
-                    CleanupIllusions(ent.Owner);
-                    _npc.WakeNPC(ent.Owner);
-                    return;
-                }
+                CleanupIllusions(ent.Owner);
 
-                TriggerTripleDashAfterIllusion(ent, target, damage);
+                var nextIteration = iteration + 1;
+                if (nextIteration < 3)
+                {
+                    PerformIllusionDashIteration(ent, target, mapUid, args, nextIteration);
+                }
+                else
+                {
+                    if (Exists(ent.Owner) && Exists(target))
+                    {
+                        TriggerTripleDashAfterIllusion(ent, target, args.IllusionDamage);
+                    }
+                    else
+                    {
+                        _npc.WakeNPC(ent.Owner);
+                        SetHTNTarget(ent, target);
+                    }
+                }
             });
         });
+    }
+
+    private void ContinueToNextIteration(Entity<BubblegumBossComponent> ent, EntityUid target,
+        EntityUid mapUid, BubblegumIllusionDashActionEvent args, int currentIteration)
+    {
+        var nextIteration = currentIteration + 1;
+
+        if (nextIteration < 3)
+        {
+            PerformIllusionDashIteration(ent, target, mapUid, args, nextIteration);
+        }
+        else
+        {
+            if (Exists(ent.Owner) && Exists(target))
+            {
+                TriggerTripleDashAfterIllusion(ent, target, args.IllusionDamage);
+            }
+            else
+            {
+                _npc.WakeNPC(ent.Owner);
+                SetHTNTarget(ent, target);
+            }
+        }
     }
 
     private void TriggerTripleDashAfterIllusion(Entity<BubblegumBossComponent> ent, EntityUid target,
@@ -410,10 +460,8 @@ public sealed partial class BubblegumSystem : EntitySystem
         ent.Comp.NextBloodDiveTime = _timing.CurTime + TimeSpan.FromSeconds(ent.Comp.BloodDiveCooldown);
     }
 
-    private EntityCoordinates? FindBloodDiveCoordinates(Entity<BubblegumBossComponent> ent,
-        EntityCoordinates targetCoords,
-        EntityUid mapUid,
-        BubblegumBloodDiveActionEvent args)
+    private EntityCoordinates? FindBloodDiveCoordinates(Entity<BubblegumBossComponent> ent, EntityCoordinates targetCoords,
+        EntityUid mapUid, BubblegumBloodDiveActionEvent args)
     {
         var bloodPuddles = _lookup
             .GetEntitiesInRange<PuddleComponent>(targetCoords, args.DiveRange)
@@ -461,6 +509,7 @@ public sealed partial class BubblegumSystem : EntitySystem
         if (mapUid == null)
         {
             _npc.WakeNPC(ent.Owner);
+            SetHTNTarget(ent, target);
             return;
         }
 
@@ -471,6 +520,7 @@ public sealed partial class BubblegumSystem : EntitySystem
         if (positions.Count < totalEntities)
         {
             _npc.WakeNPC(ent.Owner);
+            SetHTNTarget(ent, target);
             return;
         }
 
@@ -481,6 +531,7 @@ public sealed partial class BubblegumSystem : EntitySystem
         if (illusions.Count == 0)
         {
             _npc.WakeNPC(ent.Owner);
+            SetHTNTarget(ent, target);
             return;
         }
 
@@ -493,20 +544,21 @@ public sealed partial class BubblegumSystem : EntitySystem
             {
                 CleanupIllusions(ent.Owner);
                 _npc.WakeNPC(ent.Owner);
+                SetHTNTarget(ent, target);
                 return;
             }
 
             StartIllusionDashForAll(illusions, targetCoords, damage);
-
-            var dashCoords = GetDashCoordinates(ent, target, mapUid.Value);
-            Spawn(ent.Comp.DashMarker, dashCoords);
-            PerformDash(ent, dashCoords, damage, 0.1f, true);
+            PerformDash(ent, targetCoords, damage, 0.1f, true);
 
             Timer.Spawn(TimeSpan.FromSeconds(1.5f), () =>
             {
                 CleanupIllusions(ent.Owner);
                 if (Exists(ent.Owner))
+                {
                     _npc.WakeNPC(ent.Owner);
+                    SetHTNTarget(ent, target);
+                }
             });
         });
     }
@@ -551,25 +603,28 @@ public sealed partial class BubblegumSystem : EntitySystem
         _npc.SleepNPC(ent.Owner);
         SpawnBloodPool(ent);
 
-        var targetCoords = Transform(target).Coordinates;
         var mapUid = _transform.GetMap(ent.Owner);
         if (mapUid == null)
         {
             _npc.WakeNPC(ent.Owner);
+            SetHTNTarget(ent, target);
             return;
         }
 
-        SpawnChaoticMarkers(ent, target, mapUid.Value, args.IllusionCount, args.PlacementRadius);
-        var illusions = SpawnChaoticIllusions(ent, target, targetCoords, args);
+        var bossMarker = GenerateRandomMarker(target, mapUid.Value, args.PlacementRadius);
+        var illusionMarkers = new List<EntityCoordinates>();
+
+        Spawn(ent.Comp.DashMarker, bossMarker);
+        var illusions = SpawnChaoticIllusions(ent, target, mapUid.Value, args, illusionMarkers);
 
         if (illusions.Count == 0)
         {
             _npc.WakeNPC(ent.Owner);
+            SetHTNTarget(ent, target);
             return;
         }
 
         _activeIllusions[ent.Owner] = illusions;
-        MoveBossToRandomIllusion(ent, target, illusions);
 
         Timer.Spawn(TimeSpan.FromSeconds(args.PreDashDelay), () =>
         {
@@ -577,126 +632,100 @@ public sealed partial class BubblegumSystem : EntitySystem
             {
                 CleanupIllusions(ent.Owner);
                 _npc.WakeNPC(ent.Owner);
+                SetHTNTarget(ent, target);
                 return;
             }
 
-            StartChaoticIllusionAttacks(ent, target, illusions, mapUid.Value, args.IllusionDamage);
-            PerformChaoticBossDash(ent, target, mapUid.Value, args.IllusionDamage, waveIndex);
+            StartChaoticIllusionAttacks(illusions, illusionMarkers, args.IllusionDamage);
+            PerformDash(ent, bossMarker, args.IllusionDamage, 0.1f, waveIndex == 4);
 
-            Timer.Spawn(TimeSpan.FromSeconds(1.5f), () =>
+            Timer.Spawn(TimeSpan.FromSeconds(1f), () =>
             {
                 CleanupIllusions(ent.Owner);
                 if (Exists(ent.Owner) && waveIndex == 4)
+                {
                     _npc.WakeNPC(ent.Owner);
+                    SetHTNTarget(ent, target);
+                }
             });
         });
     }
 
-    private void SpawnChaoticMarkers(Entity<BubblegumBossComponent> ent,
-        EntityUid target,
-        EntityUid mapUid,
-        int illusionCount,
-        float placementRadius)
+    private EntityCoordinates GenerateRandomMarker(EntityUid target, EntityUid mapUid, float placementRadius)
     {
-        for (int i = 0; i < illusionCount + 1; i++)
-        {
-            var markerAngle = _random.NextFloat(0, MathF.PI * 2);
-            var markerDistance = _random.NextFloat(2f, placementRadius);
-            var markerOffset = new Vector2(MathF.Cos(markerAngle), MathF.Sin(markerAngle)) * markerDistance;
-            var markerPos = _transform.GetWorldPosition(target) + markerOffset;
-            var markerCenter = GetTileCenter(mapUid, markerPos);
-            var markerCoords = new EntityCoordinates(mapUid, markerCenter);
+        var angle = _random.NextFloat(0, MathF.PI * 2);
+        var distance = _random.NextFloat(1f, placementRadius);
+        var offset = new Vector2(MathF.Cos(angle), MathF.Sin(angle)) * distance;
 
-            Spawn(ent.Comp.DashMarker, markerCoords);
-        }
+        var targetPos = _transform.GetWorldPosition(target);
+        var markerPos = targetPos + offset;
+        var centerPos = GetTileCenter(mapUid, markerPos);
+
+        return new EntityCoordinates(mapUid, centerPos);
     }
 
-    private List<EntityUid> SpawnChaoticIllusions(Entity<BubblegumBossComponent> ent,
-        EntityUid target,
-        EntityCoordinates targetCoords,
-        BubblegumChaoticIllusionDashActionEvent args)
+    private List<EntityUid> SpawnChaoticIllusions(Entity<BubblegumBossComponent> ent, EntityUid target,
+        EntityUid mapUid, BubblegumChaoticIllusionDashActionEvent args, List<EntityCoordinates> illusionMarkers)
     {
         var illusions = new List<EntityUid>();
+        var bossPos = _transform.GetWorldPosition(ent);
+        var bossTile = GetTileCenter(mapUid, bossPos);
 
         for (int i = 0; i < args.IllusionCount; i++)
         {
-            var illusion = TrySpawnChaoticIllusion(ent, target, targetCoords, args);
-            if (illusion != null)
-                illusions.Add(illusion.Value);
+            var marker = GenerateRandomMarker(target, mapUid, args.PlacementRadius);
+            illusionMarkers.Add(marker);
+
+            Spawn(ent.Comp.DashMarker, marker);
+            for (int attempts = 0; attempts < 30; attempts++)
+            {
+                var angle = _random.NextFloat(0, MathF.PI * 2);
+                var distance = _random.NextFloat(2f, args.PlacementRadius);
+                var offset = new Vector2(MathF.Cos(angle), MathF.Sin(angle)) * distance;
+
+                var targetPos = _transform.GetWorldPosition(target);
+                var illusionPos = targetPos + offset;
+                var illusionTile = GetTileCenter(mapUid, illusionPos);
+                var illusionCoords = new EntityCoordinates(mapUid, illusionTile);
+
+                if (!CanSpawnAt(illusionCoords) || illusionTile == bossTile)
+                    continue;
+
+                var direction = (marker.Position - illusionTile).Normalized();
+                var illusion = SpawnAttachedTo(args.IllusionPrototype, illusionCoords, rotation: GetDirectionRotation(direction));
+
+                if (TryComp<BubblegumIllusionComponent>(illusion, out var illusionComp))
+                {
+                    illusionComp.Master = ent.Owner;
+                    illusionComp.Target = target;
+                    illusionComp.TargetPosition = marker;
+                    illusionComp.Damage = args.IllusionDamage;
+                    illusions.Add(illusion);
+                }
+                break;
+            }
         }
 
         return illusions;
     }
 
-    private EntityUid? TrySpawnChaoticIllusion(Entity<BubblegumBossComponent> ent, EntityUid target, EntityCoordinates targetCoords,
-        BubblegumChaoticIllusionDashActionEvent args)
+    private void StartChaoticIllusionAttacks(List<EntityUid> illusions, List<EntityCoordinates> markers, DamageSpecifier damage)
     {
-        for (int attempts = 0; attempts < 50; attempts++)
+        for (int i = 0; i < illusions.Count; i++)
         {
-            var angle = _random.NextFloat(0, MathF.PI * 2);
-            var distance = _random.NextFloat(2f, args.PlacementRadius);
-            var offset = new Vector2(MathF.Cos(angle), MathF.Sin(angle)) * distance;
-            var pos = targetCoords.Offset(offset);
+            var illusion = illusions[i];
+            var marker = markers[i];
 
-            if (!CanSpawnAt(pos))
-                continue;
-
-            return SpawnIllusion(ent, target, targetCoords, pos, args.IllusionPrototype, args.IllusionDamage);
-        }
-
-        var fallbackPos = targetCoords.Offset(new Vector2(
-            _random.NextFloat(-1f, 1f),
-            _random.NextFloat(-1f, 1f)
-        ));
-
-        return SpawnIllusion(ent, target, targetCoords, fallbackPos, args.IllusionPrototype, args.IllusionDamage);
-    }
-
-    private void StartChaoticIllusionAttacks(Entity<BubblegumBossComponent> ent,
-        EntityUid target,
-        List<EntityUid> illusions,
-        EntityUid mapUid,
-        DamageSpecifier damage)
-    {
-        foreach (var illusion in illusions)
-        {
             if (!Exists(illusion))
                 continue;
 
             var randomDelay = _random.NextFloat(0f, 0.3f);
-            var randomOffset = new Vector2(
-                _random.NextFloat(-2f, 2f),
-                _random.NextFloat(-2f, 2f)
-            );
-
-            var targetPos = _transform.GetWorldPosition(target) + randomOffset;
-            var centerDashTarget = GetTileCenter(mapUid, targetPos);
-            var illusionTargetCoords = new EntityCoordinates(mapUid, centerDashTarget);
-
             Timer.Spawn(TimeSpan.FromSeconds(randomDelay), () =>
             {
                 if (Exists(illusion))
-                    StartIllusionDash(illusion, illusionTargetCoords, damage);
+                    StartIllusionDash(illusion, marker, damage);
             });
         }
-    }
-
-    private void PerformChaoticBossDash(Entity<BubblegumBossComponent> ent,
-        EntityUid target,
-        EntityUid mapUid,
-        DamageSpecifier damage,
-        int waveIndex)
-    {
-        var chaoticOffset = new Vector2(
-            _random.NextFloat(-1.5f, 1.5f),
-            _random.NextFloat(-1.5f, 1.5f)
-        );
-
-        var bossTarget = _transform.GetWorldPosition(target) + chaoticOffset;
-        var centerBossTarget = GetTileCenter(mapUid, bossTarget);
-        var bossCoords = new EntityCoordinates(mapUid, centerBossTarget);
-
-        PerformDash(ent, bossCoords, damage, 0.1f, waveIndex == 4);
     }
 
     #endregion
@@ -1065,13 +1094,9 @@ public sealed partial class BubblegumSystem : EntitySystem
         return positions;
     }
 
-    private List<EntityUid> SpawnIllusionCircle(Entity<BubblegumBossComponent> ent,
-        EntityUid target,
-        EntityCoordinates targetCoords,
-        List<EntityCoordinates> positions,
-        int bossIndex,
-        EntProtoId illusionPrototype,
-        DamageSpecifier damage)
+    private List<EntityUid> SpawnIllusionCircle(Entity<BubblegumBossComponent> ent, EntityUid target,
+        EntityCoordinates targetCoords, List<EntityCoordinates> positions, int bossIndex,
+        EntProtoId illusionPrototype, DamageSpecifier damage)
     {
         var illusions = new List<EntityUid>();
 
@@ -1104,14 +1129,12 @@ public sealed partial class BubblegumSystem : EntitySystem
         }
     }
 
-    private EntityUid? SpawnIllusion(Entity<BubblegumBossComponent> ent,
-        EntityUid target,
-        EntityCoordinates targetCoords,
-        EntityCoordinates position,
-        EntProtoId prototype,
+    private EntityUid? SpawnIllusion(Entity<BubblegumBossComponent> ent, EntityUid target,
+        EntityCoordinates targetCoords, EntityCoordinates position, EntProtoId prototype,
         DamageSpecifier damage)
     {
-        var illusion = Spawn(prototype, position);
+        var direction = (targetCoords.Position - position.Position).Normalized();
+        var illusion = SpawnAttachedTo(prototype, position, rotation: GetDirectionRotation(direction));
         if (TryComp<BubblegumIllusionComponent>(illusion, out var illusionComp))
         {
             illusionComp.Master = ent.Owner;
@@ -1130,40 +1153,6 @@ public sealed partial class BubblegumSystem : EntitySystem
         {
             if (Exists(illusion))
                 StartIllusionDash(illusion, targetCoords, damage);
-        }
-    }
-
-    private EntityCoordinates GetDashCoordinates(Entity<BubblegumBossComponent> ent,
-        EntityUid target,
-        EntityUid mapUid)
-    {
-        var bossWorldPos = _transform.GetWorldPosition(ent);
-        var targetWorldPos = _transform.GetWorldPosition(target);
-        var direction = (targetWorldPos - bossWorldPos).Normalized();
-        var dashTarget = targetWorldPos + direction * 1.5f;
-
-        var centerDashTarget = GetTileCenter(mapUid, dashTarget);
-        return new EntityCoordinates(mapUid, centerDashTarget);
-    }
-
-    private void MoveBossToRandomIllusion(Entity<BubblegumBossComponent> ent,
-        EntityUid target,
-        List<EntityUid> illusions)
-    {
-        if (illusions.Count == 0)
-            return;
-
-        var randomIllusion = _random.Pick(illusions);
-        var illusionCoords = Transform(randomIllusion).Coordinates;
-
-        _transform.SetCoordinates(ent.Owner, illusionCoords);
-        SpawnBloodPool(ent.Owner);
-
-        if (TryComp<BubblegumBossComponent>(ent.Owner, out var bossComp))
-        {
-            var direction = (_transform.GetWorldPosition(target) - _transform.GetWorldPosition(ent)).Normalized();
-            SpawnAttachedTo(bossComp.DashTrail, illusionCoords, rotation: GetDirectionRotation(direction));
-            _audio.PlayPvs(bossComp.DashSound, ent.Owner);
         }
     }
 
@@ -1280,6 +1269,17 @@ public sealed partial class BubblegumSystem : EntitySystem
     {
         return direction == Vector2.Zero ? Angle.Zero
             : Angle.FromWorldVec(direction);
+    }
+
+    private void SetHTNTarget(Entity<BubblegumBossComponent> boss, EntityUid target)
+    {
+        if (!TryComp<HTNComponent>(boss, out var htn))
+            return;
+
+        if (htn.Blackboard.TryGetValue<EntityUid>(boss.Comp.TargetKey, out var targetEnt, EntityManager) && Exists(targetEnt))
+            return;
+
+        htn.Blackboard.SetValue(boss.Comp.TargetKey, target);
     }
 
     #endregion

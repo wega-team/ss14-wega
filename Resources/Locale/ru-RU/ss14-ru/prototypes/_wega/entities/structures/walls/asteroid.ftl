@@ -1,3 +1,6 @@
+ent-WallRockBasaltIndestructible = { ent-WallRockBasalt }
+    .desc = { ent-WallRockBasalt.desc }
+    .suffix = Неразрушимый
 ent-WallRockBasaltLavalandCoal = { ent-WallRockBasalt }
     .desc = { ent-WallRockBasalt.desc }
     .suffix = Уголь, Лаваленд

@@ -1,3 +1,4 @@
+using Content.Shared.Visuals;
 using Robust.Client.GameObjects;
 using Robust.Shared.Timing;
 

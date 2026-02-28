@@ -9,6 +9,8 @@
     state: capsule
   - type: HandCapsule
     capsulePath: "/Maps/_Wega/Lavaland/capsule.yml"
+  - type: UseDelay
+    delay: 5
 
 - type: entity
   parent: HandCapsule

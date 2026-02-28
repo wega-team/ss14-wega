@@ -7200,7 +7200,7 @@ entities:
     - type: ContainerContainer
       containers:
         vendor_card: !type:ContainerSlot {}
-- proto: VendingMachineTankDispenserEVA
+- proto: VendingMachineTankDispenserExtO2
   entities:
   - uid: 3054
     components:

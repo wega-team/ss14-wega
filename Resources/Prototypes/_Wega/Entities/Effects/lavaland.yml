@@ -1,4 +1,21 @@
 - type: entity
+  id: FallingRockEffect
+  components:
+  - type: Transform
+    anchored: True
+  - type: Physics
+    bodyType: Static
+  - type: Sprite
+    sprite: _Wega/Effects/falling.rsi
+    state: falling_rock
+  - type: Fade
+    fadeDuration: 4.5
+    startColor: "#FFFFFF00"
+    targetColor: "#FFFFFFFF"
+  - type: TimedDespawn
+    lifetime: 5
+
+- type: entity
   id: GoliathTentacle
   name: tentacle
   components:
@@ -105,6 +122,8 @@
     state: hierophantblastbegin
   - type: Transform
     anchored: true
+  - type: TileEmission
+    color: "#9900FF"
   - type: TimedDespawn
     lifetime: 0.6
   - type: SpawnOnDespawn
@@ -135,6 +154,8 @@
           - ItemMask
         density: 1000
         hard: false
+  - type: TileEmission
+    color: "#9900FF"
   - type: EmitSoundOnSpawn
     positional: true
     sound:
@@ -394,6 +415,7 @@
   - type: Sprite
     sprite: _Wega/Mobs/Lavaland/bubblegum.rsi
     state: bubblegum
+    noRot: true
   - type: Fade
     fadeDuration: 2
   - type: TimedDespawn

@@ -36,5 +36,5 @@ public sealed partial class NecropolisTendrilComponent : Component
     [DataField]
     public float ChasmDelay = 10f;
 
-    [DataField] public SoundSpecifier ChasmSound = new SoundPathSpecifier("/Audio/_Wega/Effects/Planet/rumble.ogg");
+    [DataField] public SoundSpecifier ChasmSound = new SoundPathSpecifier("/Audio/_Wega/Effects/Planet/rumble.ogg", AudioParams.Default.WithVolume(6));
 }

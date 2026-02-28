@@ -29,12 +29,20 @@
     Gold: 400
     Diamond: 200
 
+# Magmite
+- type: latheRecipe
+  id: WeaponMagmiteProtoKineticAccelerator
+  result: WeaponMagmiteProtoKineticAccelerator
+  completetime: 20
+  materials:
+    Magmite: 2000
+
 - type: latheRecipe
   id: WeaponMagmiteCrusher
   result: WeaponMagmiteCrusher
   completetime: 20
   materials:
-    Magmite: 2500
+    Magmite: 2000
 
 - type: latheRecipe
   id: WeaponMagmiteCrusherGlaive

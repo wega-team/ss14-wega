@@ -1,8 +1,8 @@
 using System.Linq;
 using System.Numerics;
-using Content.Client.Pinpointer;
 using Content.Shared.Atmos;
 using Content.Shared.GPS;
+using Content.Shared.Mining.Components;
 using Content.Shared.Pinpointer;
 using Robust.Client.Graphics;
 using Robust.Client.ResourceManagement;
@@ -20,17 +20,20 @@ public sealed class GpsNavMapControl : Control
     private EntityUid? _mapUid;
     private List<GpsDeviceInfo> _gpsDevices = new();
     private List<NavBeaconInfo> _navBeacons = new();
+    private List<LavaTileInfo> _lavaTiles = new();
     private Vector2 _currentPosition;
 
     private float _zoom = 1.0f;
     private const float MinZoom = 0.5f;
     private const float MaxZoom = 4.0f;
 
-    private readonly Color _wallColor = new(102, 217, 102);
+    private readonly Color _rockColor = new(102, 217, 102);
+    private readonly Color _wallColor = new(66, 135, 245);
     private readonly Color _floorColor = new(30, 67, 30, 180);
     private readonly Color _gpsColor = new(76, 201, 240);
     private readonly Color _currentPosColor = new(255, 71, 87);
     private readonly Color _gridColor = new(100, 100, 100, 50);
+    private readonly Color _lavaDefaultColor = new(255, 69, 0);
 
     private bool _showBeaconLabels = true;
     private float _updateTimer;
@@ -72,12 +75,14 @@ public sealed class GpsNavMapControl : Control
         EntityUid? mapUid,
         Vector2 currentPosition,
         List<GpsDeviceInfo> gpsDevices,
-        List<NavBeaconInfo> navBeacons)
+        List<NavBeaconInfo> navBeacons,
+        List<LavaTileInfo> lavaTiles)
     {
         _mapUid = mapUid;
         _currentPosition = currentPosition;
         _gpsDevices = gpsDevices;
         _navBeacons = navBeacons;
+        _lavaTiles = lavaTiles;
     }
 
     public void CenterOnPosition(Vector2 position)
@@ -104,6 +109,7 @@ public sealed class GpsNavMapControl : Control
         var center = size / 2;
 
         DrawGrid(handle, center, size);
+        DrawLavaTiles(handle, center);
         DrawMapTiles(handle, navMap, center);
         DrawGpsDevices(handle, center);
         DrawNavBeacons(handle, center);
@@ -136,6 +142,41 @@ public sealed class GpsNavMapControl : Control
         }
     }
 
+    private void DrawLavaTiles(DrawingHandleScreen handle, Vector2 center)
+    {
+        if (_lavaTiles.Count == 0) return;
+
+        var scale = 4.0f * Zoom;
+        var tileSize = 1.0f * scale;
+
+        foreach (var lava in _lavaTiles)
+        {
+            var screenPos = WorldToScreen(
+                new Vector2(lava.Coordinates.X, lava.Coordinates.Y),
+                center,
+                scale
+            );
+
+            var rect = new UIBox2(
+                screenPos.X - tileSize / 2,
+                screenPos.Y - tileSize / 2,
+                screenPos.X + tileSize / 2,
+                screenPos.Y + tileSize / 2
+            );
+
+            var lavaColor = lava.Color != default ? lava.Color : _lavaDefaultColor;
+            var pulse = (float)Math.Sin(_updateTimer * 3) * 0.2f + 0.8f;
+            var animatedColor = lavaColor.WithAlpha(0.7f * pulse);
+
+            handle.DrawRect(rect, animatedColor);
+
+            if (Zoom > 1.5f)
+            {
+                handle.DrawRect(rect, lavaColor.WithAlpha(0.3f), false);
+            }
+        }
+    }
+
     private void DrawMapTiles(DrawingHandleScreen handle, NavMapComponent navMap, Vector2 center)
     {
         if (!_entityManager.TryGetComponent(_mapUid, out MapGridComponent? grid))
@@ -155,6 +196,7 @@ public sealed class GpsNavMapControl : Control
                 var relativeTile = SharedNavMapSystem.GetTileFromIndex(i);
                 var tileWorldPos = (chunk.Origin * SharedNavMapSystem.ChunkSize + relativeTile) * tileSize;
 
+                var tilePos = new Vector2i((int)tileWorldPos.X, (int)tileWorldPos.Y);
                 var screenPos = WorldToScreen(tileWorldPos, center, scale);
 
                 var tileScreenSize = tileSize * scale;
@@ -172,17 +214,20 @@ public sealed class GpsNavMapControl : Control
 
                 if (Zoom > 1.0f)
                 {
-                    DrawTileWalls(handle, tileData, screenPos, tileScreenSize);
+                    DrawTileWalls(handle, tileData, screenPos, tileScreenSize, tilePos);
                 }
             }
         }
     }
 
-    private void DrawTileWalls(DrawingHandleScreen handle, int tileData, Vector2 screenPos, float tileSize)
+    private void DrawTileWalls(DrawingHandleScreen handle, int tileData, Vector2 screenPos, float tileSize, Vector2i tilePos)
     {
         if (tileSize < 2.0f) return;
 
         var wallSize = Math.Max(1.0f, tileSize * 0.15f);
+
+        bool hasComponent = HasComponentAtTile(tilePos);
+        var wallColor = hasComponent ? _rockColor : _wallColor;
 
         if ((tileData & (1 << ((int)AtmosDirection.North + (int)NavMapChunkType.Wall))) != 0)
         {
@@ -192,7 +237,7 @@ public sealed class GpsNavMapControl : Control
                 screenPos.X + tileSize / 2,
                 screenPos.Y - tileSize / 2 + wallSize
             );
-            handle.DrawRect(wallRect, _wallColor);
+            handle.DrawRect(wallRect, wallColor);
         }
 
         if ((tileData & (1 << ((int)AtmosDirection.South + (int)NavMapChunkType.Wall))) != 0)
@@ -203,7 +248,7 @@ public sealed class GpsNavMapControl : Control
                 screenPos.X + tileSize / 2,
                 screenPos.Y + tileSize / 2
             );
-            handle.DrawRect(wallRect, _wallColor);
+            handle.DrawRect(wallRect, wallColor);
         }
 
         if ((tileData & (1 << ((int)AtmosDirection.East + (int)NavMapChunkType.Wall))) != 0)
@@ -214,7 +259,7 @@ public sealed class GpsNavMapControl : Control
                 screenPos.X + tileSize / 2,
                 screenPos.Y + tileSize / 2
             );
-            handle.DrawRect(wallRect, _wallColor);
+            handle.DrawRect(wallRect, wallColor);
         }
 
         if ((tileData & (1 << ((int)AtmosDirection.West + (int)NavMapChunkType.Wall))) != 0)
@@ -225,7 +270,7 @@ public sealed class GpsNavMapControl : Control
                 screenPos.X - tileSize / 2 + wallSize,
                 screenPos.Y + tileSize / 2
             );
-            handle.DrawRect(wallRect, _wallColor);
+            handle.DrawRect(wallRect, wallColor);
         }
     }
 
@@ -344,6 +389,30 @@ public sealed class GpsNavMapControl : Control
         screenPos.Y = center.Y - offset.Y * scale;
 
         return screenPos;
+    }
+
+    private bool HasComponentAtTile(Vector2i tilePos)
+    {
+        if (_mapUid == null)
+            return false;
+
+        var lookup = _entityManager.System<EntityLookupSystem>();
+        var tileAABB = new Box2(tilePos.X, tilePos.Y, tilePos.X, tilePos.Y);
+
+        var flags = LookupFlags.Approximate | LookupFlags.Static | LookupFlags.StaticSundries;
+        var ents = lookup.GetEntitiesIntersecting(_mapUid.Value, tileAABB, flags);
+        foreach (var uid in ents)
+        {
+            // Why? Because it is the most specific
+            if (_entityManager.HasComponent<MiningScannerViewableComponent>(uid))
+                return true;
+        }
+
+        // If outside the loading area
+        if (ents.Count == 0)
+            return true;
+
+        return false;
     }
 
     protected override void FrameUpdate(FrameEventArgs args)

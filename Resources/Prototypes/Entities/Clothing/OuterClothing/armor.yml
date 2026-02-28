@@ -469,12 +469,14 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.6
-        Slash: 0.8
-        Piercing: 0.4
+        # Corvax-Wega-Lavaland-Edit-start
+        Blunt: 0.3
+        Slash: 0.3
+        Piercing: 0.3
+        # Corvax-Wega-Lavaland-Edit-end
   - type: ClothingSpeedModifier
-    walkModifier: 0.8
-    sprintModifier: 0.8
+    walkModifier: 0.9 # Corvax-Wega-Lavaland-Edit
+    sprintModifier: 0.9 # Corvax-Wega-Lavaland-Edit
   - type: HeldSpeedModifier
   - type: ExplosionResistance
     damageCoefficient: 0.4

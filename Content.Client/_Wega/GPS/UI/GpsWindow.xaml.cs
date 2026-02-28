@@ -22,6 +22,7 @@ public sealed partial class GpsWindow : BaseWindow
 
     private List<GpsDeviceInfo> _lastGpsDevices = new();
     private List<NavBeaconInfo> _lastNavBeacons = new();
+    private List<LavaTileInfo> _lastLavaTiles = new();
     private string? _lastName = null;
     private string? _lastDesc = null;
     private GpsNavMapControl? _navMapControl;
@@ -140,6 +141,7 @@ public sealed partial class GpsWindow : BaseWindow
 
         _lastGpsDevices = state.OtherGpsDevices;
         _lastNavBeacons = state.NavBeacons;
+        _lastLavaTiles = state.LavaTiles;
 
         UpdateBroadcastStatus(state.BroadcastStatus);
         UpdateDevicesList(state.OtherGpsDevices);
@@ -187,7 +189,8 @@ public sealed partial class GpsWindow : BaseWindow
                 _currentMapUid,
                 _currentWorldPosition,
                 _lastGpsDevices,
-                _lastNavBeacons
+                _lastNavBeacons,
+                _lastLavaTiles
             );
         }
     }

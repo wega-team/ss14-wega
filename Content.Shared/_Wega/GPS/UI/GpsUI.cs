@@ -18,6 +18,7 @@ public sealed class GpsUpdateState : BoundUserInterfaceState
     public (int X, int Y) CurrentCoordinates { get; }
     public List<GpsDeviceInfo> OtherGpsDevices { get; }
     public List<NavBeaconInfo> NavBeacons { get; }
+    public List<LavaTileInfo> LavaTiles { get; }
 
     public GpsUpdateState(
         NetEntity? mapUid,
@@ -26,7 +27,8 @@ public sealed class GpsUpdateState : BoundUserInterfaceState
         bool broadcastStatus,
         (int X, int Y) currentCoordinates,
         List<GpsDeviceInfo> otherGpsDevices,
-        List<NavBeaconInfo> navBeacons)
+        List<NavBeaconInfo> navBeacons,
+        List<LavaTileInfo> lavaTiles)
     {
         MapUid = mapUid;
         CurrentGpsName = currentGpsName;
@@ -35,6 +37,7 @@ public sealed class GpsUpdateState : BoundUserInterfaceState
         CurrentCoordinates = currentCoordinates;
         OtherGpsDevices = otherGpsDevices;
         NavBeacons = navBeacons;
+        LavaTiles = lavaTiles;
     }
 }
 
@@ -119,5 +122,23 @@ public sealed class NavBeaconInfo
         Distance = distance;
         Color = color;
         Enabled = enabled;
+    }
+}
+
+[Serializable, NetSerializable]
+public sealed class LavaTileInfo
+{
+    public (int X, int Y) Coordinates { get; }
+    public Color Color { get; }
+    public float Distance { get; }
+
+    public LavaTileInfo(
+        (int X, int Y) coordinates,
+        Color color,
+        float distance)
+    {
+        Coordinates = coordinates;
+        Color = color;
+        Distance = distance;
     }
 }

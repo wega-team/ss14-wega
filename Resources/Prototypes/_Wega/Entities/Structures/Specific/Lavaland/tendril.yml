@@ -12,6 +12,19 @@
     - state: tendril
     - state: glow
       shader: unshaded
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.3,-0.9,0.3,0.3"
+        mask:
+        - MachineMask
+        layer:
+        - BulletImpassable
+        - MidImpassable
+        - LowImpassable
+        density: 1000
   - type: PointLight
     color: "#df8409"
     enabled: true
@@ -21,12 +34,6 @@
     damageModifierSet: Rock
   - type: Destructible
     thresholds:
-      - trigger:
-          !type:DamageTrigger
-          damage: 500
-        behaviors:
-          - !type:DoActsBehavior
-            acts: [ "Destruction" ]
       - trigger:
           !type:DamageTrigger
           damage: 300

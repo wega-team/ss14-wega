@@ -62,6 +62,11 @@ public sealed partial class BubblegumBossComponent : Component
 
     [DataField]
     public SoundSpecifier DashSound = new SoundCollectionSpecifier("FootstepThud");
+
+    /// <summary>
+    /// HTN blackboard key for the target entity
+    /// </summary>
+    public string TargetKey = "Target";
 }
 
 [RegisterComponent]

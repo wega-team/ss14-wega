@@ -1083,4 +1083,56 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
 
         _mapSystem.SetTiles(mapUid, mapGrid, tiles);
     }
+
+    // Corvax-Wega-Add-start
+    public void ReserveTilesInCircle(EntityUid mapUid, Vector2 center, float radius, BiomeComponent? biome = null, MapGridComponent? mapGrid = null)
+    {
+        if (!Resolve(mapUid, ref biome, ref mapGrid, false))
+            return;
+
+        var tiles = new List<(Vector2i Index, Tile Tile)>();
+        var radiusSquared = radius * radius;
+        var minX = (int)Math.Floor(center.X - radius);
+        var maxX = (int)Math.Ceiling(center.X + radius);
+        var minY = (int)Math.Floor(center.Y - radius);
+        var maxY = (int)Math.Ceiling(center.Y + radius);
+
+        for (var x = minX; x <= maxX; x++)
+        {
+            for (var y = minY; y <= maxY; y++)
+            {
+                var tilePos = new Vector2(x + 0.5f, y + 0.5f);
+                var distanceSquared = (tilePos - center).LengthSquared();
+
+                if (distanceSquared > radiusSquared)
+                    continue;
+
+                var index = new Vector2i(x, y);
+
+                Vector2i chunkOrigin;
+                HashSet<Vector2i> modified;
+
+                if (_mapSystem.TryGetTileRef(mapUid, mapGrid, index, out var existingRef) && !existingRef.Tile.IsEmpty)
+                {
+                    chunkOrigin = SharedMapSystem.GetChunkIndices(index, ChunkSize) * ChunkSize;
+                    modified = biome.ModifiedTiles.GetOrNew(chunkOrigin);
+                    modified.Add(index);
+                    continue;
+                }
+
+                if (!TryGetBiomeTile(index, biome.Layers, biome.Seed, (mapUid, mapGrid), out var tile))
+                {
+                    continue;
+                }
+
+                chunkOrigin = SharedMapSystem.GetChunkIndices(index, ChunkSize) * ChunkSize;
+                modified = biome.ModifiedTiles.GetOrNew(chunkOrigin);
+                modified.Add(index);
+                tiles.Add((index, tile.Value));
+            }
+        }
+
+        _mapSystem.SetTiles(mapUid, mapGrid, tiles);
+    }
+    // Corvax-Wega-Add-end
 }

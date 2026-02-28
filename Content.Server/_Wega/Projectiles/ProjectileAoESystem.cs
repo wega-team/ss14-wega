@@ -18,9 +18,13 @@ public sealed class ProjectileAoESystem : EntitySystem
 
     private void OnProjectileHit(EntityUid entity, ProjectileAoEComponent component, ref ProjectileHitEvent ev)
     {
+        var shooter = ev.Shooter;
+        if (shooter == null || shooter == ev.Target)
+            return;
+
         var target = ev.Target;
-        var ents = _lookup.GetEntitiesInRange<DamageableComponent>(Transform(entity).Coordinates, component.DamageRadius)
-            .Where(e => e.Owner != target);
+        var ents = _lookup.GetEntitiesInRange<DamageableComponent>(Transform(target).Coordinates, component.DamageRadius)
+            .Where(e => e.Owner != shooter);
 
         foreach (var ent in ents)
         {

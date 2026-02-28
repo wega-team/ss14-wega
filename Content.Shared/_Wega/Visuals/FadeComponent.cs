@@ -1,6 +1,8 @@
-namespace Content.Client.Visuals;
+using Robust.Shared.GameStates;
 
-[RegisterComponent]
+namespace Content.Shared.Visuals;
+
+[RegisterComponent, NetworkedComponent]
 public sealed partial class FadeComponent : Component
 {
     [DataField]

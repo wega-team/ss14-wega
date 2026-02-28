@@ -92,3 +92,16 @@
   - type: Store
     balance:
       Credit: 5000
+
+- type: entity
+  parent: VendingMachine
+  id: VendingMachineTankDispenserExtO2
+  suffix: More O2
+  name: gas tank dispenser
+  description: A vendor for dispensing gas tanks.
+  components:
+  - type: VendingMachine
+    pack: TankDispenserExtO2Inventory
+  - type: Sprite
+    sprite: Structures/Machines/VendingMachines/tankdispenser.rsi #TODO add visualiser for remaining tanks as layers
+    state: dispenser

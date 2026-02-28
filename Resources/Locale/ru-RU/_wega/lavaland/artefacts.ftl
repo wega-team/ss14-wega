@@ -4,9 +4,9 @@ lavaland-artefacts-rod-bound = Жезл привязывается к руке {
 lavaland-artefacts-rod-disintegrated = {$name} рассыпается в прах!
 
 lavaland-artefacts-rod-latin-oath =
-  Per Hippocratis juramentum et Aesculapii virgam, 
-  ego spondeo me aegris auxilium laturum, 
-  dolorem levaturum, vitam protecturum. 
+  Per Hippocratis juramentum et Aesculapii virgam,
+  ego spondeo me aegris auxilium laturum,
+  dolorem levaturum, vitam protecturum.
   Nunc et in perpetuum, sic fiat!
 
 lavaland-artefacts-ship-in-bottle-spawned = Вы выпускаете таинственную лодку из бутылки!
@@ -17,3 +17,7 @@ lavaland-artefacts-ship-in-bottle-too-far = Лодка слишком далек
 linked-cube-teleported = Вы телепортируетесь к связанному кубу!
 linked-cube-no-pair = Куб не имеет связи с другим кубом.
 linked-cube-too-close = Связанный куб слишком близко ({$distance} м).
+
+dragon-blood-effect-1 = Кровь прожигает вашу плоть оставляя лишь кости. Ачк-Ачк!
+dragon-blood-effect-2 = Вы чувствуете себя необычайно зачарованно?
+dragon-blood-effect-3 = Вы всегда мечтали всем показать свое истинное я

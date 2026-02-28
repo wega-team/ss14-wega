@@ -8,6 +8,7 @@ nav-map-beacon-lavaland-signal-beach = Пляж
 
 nav-map-beacon-lavaland-signal-hierophant = Ревностный сигнал
 nav-map-beacon-lavaland-signal-bdm = Потерянный сигнал
+nav-map-beacon-lavaland-signal-mega-legion = Многоголосый сигнал
 nav-map-beacon-lavaland-signal-colossus = Ангельский сигнал
 nav-map-beacon-lavaland-signal-ashdrake = Огненный сигнал
 nav-map-beacon-lavaland-signal-bubblegum = Кровавый сигнал

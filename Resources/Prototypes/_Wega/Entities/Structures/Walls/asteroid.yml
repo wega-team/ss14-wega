@@ -1,4 +1,32 @@
 - type: entity
+  parent: BaseWall
+  id: WallRockBasaltIndestructible
+  suffix: Indestructible
+  components:
+  - type: Transform
+    noRot: true
+  - type: Icon
+    sprite: Structures/Walls/rock.rsi
+    state: rock_wall
+  - type: IconSmooth
+    key: walls
+    mode: NoSprite
+  - type: MiningScannerViewable
+  - type: SmoothEdge
+  - type: Sprite
+    sprite: Structures/Walls/rock.rsi
+    layers:
+    - state: rock_wall
+    - map: [ "enum.EdgeLayer.South" ]
+      state: rock_wall_south
+    - map: [ "enum.EdgeLayer.East" ]
+      state: rock_wall_east
+    - map: [ "enum.EdgeLayer.North" ]
+      state: rock_wall_north
+    - map: [ "enum.EdgeLayer.West" ]
+      state: rock_wall_west
+
+- type: entity
   id: WallRockBasaltLavalandCoal
   parent: WallRockBasalt
   suffix: Coal, Lavaland
@@ -256,19 +284,6 @@
   id: WallRockBasaltLavalandGibtonite
   suffix: Gibtonite, Lavaland
   components:
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 120
-      behaviors:
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
-      - !type:PlaySoundBehavior
-        sound:
-          path: /Audio/Effects/break_stone.ogg
-          params:
-            volume: -6
   - type: Icon
     sprite: Structures/Walls/rock.rsi
     state: rock_wall

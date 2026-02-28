@@ -1,11 +1,11 @@
 meta:
   format: 7
   category: Grid
-  engineVersion: 267.1.0
+  engineVersion: 270.1.0
   forkId: ""
   forkVersion: ""
-  time: 10/05/2025 09:42:21
-  entityCount: 52
+  time: 02/27/2026 17:12:53
+  entityCount: 59
 maps: []
 grids:
 - 9017
@@ -59,6 +59,7 @@ entities:
     - type: MetaData
       name: Капсула
     - type: Transform
+      parent: invalid
     - type: MapGrid
       chunks:
         0,0:
@@ -133,6 +134,7 @@ entities:
     - type: GasTileOverlay
     - type: RadiationGridResistance
     - type: ImplicitRoof
+    - type: ExplosionAirtightGrid
 - proto: AdminInstantEffectSmoke3
   entities:
   - uid: 1
@@ -140,16 +142,6 @@ entities:
     - type: Transform
       pos: 0.8621869,0.5236107
       parent: 9017
-- proto: AirCanister
-  entities:
-  - uid: 9018
-    components:
-    - type: Transform
-      anchored: True
-      pos: -0.5,1.5
-      parent: 9017
-    - type: Physics
-      bodyType: Static
 - proto: AirlockMiningGlassLocked
   entities:
   - uid: 9019
@@ -157,6 +149,15 @@ entities:
     - type: Transform
       pos: 0.5,-1.5
       parent: 9017
+- proto: APCBasic
+  entities:
+  - uid: 2
+    components:
+    - type: Transform
+      pos: 0.5,2.5
+      parent: 9017
+    - type: Fixtures
+      fixtures: {}
 - proto: AtmosDeviceFanTiny
   entities:
   - uid: 9020
@@ -206,6 +207,40 @@ entities:
     - type: Transform
       pos: 0.5,-1.5
       parent: 9017
+- proto: CableHV
+  entities:
+  - uid: 5
+    components:
+    - type: Transform
+      pos: 1.5,2.5
+      parent: 9017
+  - uid: 6
+    components:
+    - type: Transform
+      pos: 1.5,1.5
+      parent: 9017
+  - uid: 7
+    components:
+    - type: Transform
+      pos: 1.5,0.5
+      parent: 9017
+  - uid: 8
+    components:
+    - type: Transform
+      pos: 2.5,0.5
+      parent: 9017
+- proto: CableMV
+  entities:
+  - uid: 9
+    components:
+    - type: Transform
+      pos: 1.5,2.5
+      parent: 9017
+  - uid: 10
+    components:
+    - type: Transform
+      pos: 0.5,2.5
+      parent: 9017
 - proto: ComfyChair
   entities:
   - uid: 9032
@@ -235,8 +270,8 @@ entities:
           showEnts: False
           occludes: True
           ents:
-          - 9034
           - 9036
+          - 9034
           - 9035
         paper_label: !type:ContainerSlot
           showEnts: False
@@ -251,18 +286,7 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
-- proto: DebugAPC
-  entities:
-  - uid: 9037
-    components:
-    - type: Transform
-      pos: 0.5,2.5
-      parent: 9017
-    - type: BatterySelfRecharger
-      autoRechargeRate: 5000
-      autoRecharge: True
-    - type: Fixtures
-      fixtures: {}
+      storage: 9033
 - proto: FoodBoxDonkpocket
   entities:
   - uid: 9035
@@ -272,6 +296,7 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
+      storage: 9033
 - proto: GasPassiveVent
   entities:
   - uid: 9038
@@ -295,6 +320,13 @@ entities:
     - type: Transform
       pos: -0.5,1.5
       parent: 9017
+- proto: GeneratorWallmountBasic
+  entities:
+  - uid: 4
+    components:
+    - type: Transform
+      pos: 2.5,0.5
+      parent: 9017
 - proto: HandheldGPSBasic
   entities:
   - uid: 9041
@@ -302,6 +334,16 @@ entities:
     - type: Transform
       pos: 1.5929666,1.6003631
       parent: 9017
+- proto: OxygenCanister
+  entities:
+  - uid: 11
+    components:
+    - type: Transform
+      anchored: True
+      pos: -0.5,1.5
+      parent: 9017
+    - type: Physics
+      bodyType: Static
 - proto: PlushieLizard
   entities:
   - uid: 9042
@@ -351,14 +393,6 @@ entities:
       parent: 9017
     - type: Fixtures
       fixtures: {}
-  - uid: 9048
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 1.5,2.5
-      parent: 9017
-    - type: Fixtures
-      fixtures: {}
   - uid: 9049
     components:
     - type: Transform
@@ -390,6 +424,13 @@ entities:
     - type: Transform
       pos: -0.5,0.5
       parent: 9017
+- proto: SubstationWallBasic
+  entities:
+  - uid: 3
+    components:
+    - type: Transform
+      pos: 1.5,2.5
+      parent: 9017
 - proto: SurvivalKnife
   entities:
   - uid: 9036
@@ -399,6 +440,7 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
+      storage: 9033
 - proto: TableReinforced
   entities:
   - uid: 9053

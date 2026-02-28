@@ -6,6 +6,7 @@ using Content.Shared.Throwing;
 using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Weapons.Misc.Upgrades;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Network;
 using Robust.Shared.Random;
 
 namespace Content.Shared.Lavaland;
@@ -16,6 +17,7 @@ public sealed partial class TrophyHunterSystem : EntitySystem
     [Dependency] private readonly ThrowingSystem _throwing = default!;
     [Dependency] private readonly MobThresholdSystem _threshold = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly INetManager _net = default!;
 
     public override void Initialize()
     {
@@ -26,6 +28,9 @@ public sealed partial class TrophyHunterSystem : EntitySystem
 
     private void OnMeleeHit(Entity<TrophyHuntingToolComponent> ent, ref MeleeHitEvent args)
     {
+        if (!_net.IsServer)
+            return;
+
         if (args.HitEntities.Count == 0)
             return;
 

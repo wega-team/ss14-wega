@@ -33,6 +33,12 @@
 
 # Other
 - type: lavalandBuilding
+  id: Necropolis
+  gridPath: /Maps/_Wega/Lavaland/necropolis.yml
+  position: "0,400"
+  ignoring: true
+
+- type: lavalandBuilding
   id: Hierophant
   gridPath: /Maps/_Wega/Lavaland/hierophant.yml
   approximate: [200, 300]
@@ -73,6 +79,14 @@
 - type: lavalandBuilding
   id: Wrath
   gridPath: /Maps/Lavaland/Wrath.yml
+
+- type: lavalandBuilding
+  id: CloningPod
+  gridPath: /Maps/_Wega/Lavaland/cloningpod.yml
+
+- type: lavalandBuilding
+  id: CloningConsole
+  gridPath: /Maps/_Wega/Lavaland/cloningconsole.yml
 
 - type: lavalandBuilding
   id: Barracks
@@ -118,6 +132,7 @@
 - type: lavalandBuilding
   id: Bridge
   gridPath: /Maps/Lavaland/bridge.yml
+  preloading: false
 
 - type: lavalandBuilding
   id: BrokenCargo

@@ -22,6 +22,7 @@ using Content.Shared.Lavaland.Events;
 using Content.Shared.Maps;
 using Content.Shared.Parallax.Biomes;
 using Content.Shared.Pinpointer;
+using Content.Shared.Popups;
 using Content.Shared.Radio.Components;
 using Content.Shared.Shuttles.Components;
 using Content.Shared.Shuttles.Systems;
@@ -45,6 +46,7 @@ using Robust.Shared.Timing;
 
 namespace Content.Server.Lavaland.Systems;
 
+// TODO: До лучших времен доделать настройки планеты через прото под [TOP SECRET].
 public sealed partial class LavalandSystem : SharedLavalandSystem
 {
     [Dependency] private readonly SharedAudioSystem _audio = default!;
@@ -61,6 +63,7 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
     [Dependency] private readonly MetaDataSystem _meta = default!;
     [Dependency] private readonly PhysicsSystem _physics = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly RadioSystem _radio = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedCameraRecoilSystem _recoil = default!;
@@ -74,6 +77,7 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
     private static readonly ProtoId<DamageTypePrototype> CausticDamage = "Caustic";
     private static readonly ProtoId<DamageTypePrototype> BluntDamage = "Blunt";
     private static readonly ProtoId<DamageTypePrototype> HeatDamage = "Heat";
+    private static readonly EntProtoId FallingRock = "FallingRockEffect";
 
     public override void Initialize()
     {
@@ -210,7 +214,7 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
             LavalandWeatherType.AshStormLight => ("AshfallLight", TimeSpan.FromSeconds(_random.Next(60, 120))),
             LavalandWeatherType.AshStormHeavy => ("AshfallHeavy", TimeSpan.FromSeconds(_random.Next(90, 150))),
             LavalandWeatherType.VolcanicActivity => (null, TimeSpan.FromSeconds(_random.Next(60, 120))),
-            LavalandWeatherType.AcidRain => ("Fallout", TimeSpan.FromSeconds(_random.Next(60, 120))),
+            LavalandWeatherType.AcidRain => ("AcidicRain", TimeSpan.FromSeconds(_random.Next(60, 120))),
             LavalandWeatherType.StormWind => (null, TimeSpan.FromSeconds(_random.Next(60, 120))),
             _ => (null, TimeSpan.Zero)
         };
@@ -260,6 +264,8 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
                 {
                     var damageReduction = 1f - ev.Modifier;
                     _damage.TryChangeDamage(uid, damage * damageReduction, true);
+                    _popup.PopupEntity(Loc.GetString(GetWeatherDamageMessage(comp.CurrentWeatherType)),
+                        uid, uid);
                 }
             }
 
@@ -439,8 +445,14 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
         {
             var safeDistance = 6f;
             var formationPos = playerPos + direction * safeDistance;
-            SpawnRockFormation(mapUid.Value, formationPos);
-            _audio.PlayPredicted(sound, new EntityCoordinates(mapUid.Value, formationPos), null);
+
+            Spawn(FallingRock, new EntityCoordinates(mapUid.Value, formationPos));
+            Timer.Spawn(TimeSpan.FromSeconds(5f),
+            () =>
+            {
+                SpawnRockFormation(mapUid.Value, formationPos);
+                _audio.PlayPredicted(sound, new EntityCoordinates(mapUid.Value, formationPos), null);
+            });
         }
         else
         {
@@ -620,11 +632,22 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
         };
     }
 
+    private string GetWeatherDamageMessage(LavalandWeatherType type)
+    {
+        return type switch
+        {
+            LavalandWeatherType.AshStormLight => Loc.GetString("lavaland-weather-damaged-ash-storm-light"),
+            LavalandWeatherType.AshStormHeavy => Loc.GetString("lavaland-weather-damaged-ash-storm-heavy"),
+            LavalandWeatherType.AcidRain => Loc.GetString("lavaland-weather-damaged-acid-rain"),
+            _ => Loc.GetString("lavaland-weather-damaged-default")
+        };
+    }
+
     #endregion
 
     #region Lavaland Procesing
     /*
-        You've changed 6 times, and now only the best version of you remains.
+        You've changed 7... times, and now only the best version of you remains.
      */
 
     private void OnStationStartup(Entity<StationLavalandComponent> ent, ref StationPostInitEvent args)
@@ -661,11 +684,14 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
         EnsureComp<ActiveRadioComponent>(avanpost.Value).Channels.Add(avanpostComp.AnnouncementChannel);
         EnsureComp<ProtectedGridComponent>(avanpost.Value);
         EnsureComp<ProtectedGridComponent>(mapUid);
-        EnsureComp<MapGridComponent>(mapUid); // For build processing after creating planet
+
+        var grid = EnsureComp<MapGridComponent>(mapUid); // For build processing after creating planet
         EnsureComp<NavMapComponent>(mapUid);
 
         _map.CreateMap(out var tempMapId);
-        GenerateBuildings(mapId, tempMapId, mapUid);
+
+        var worldAABBs = new HashSet<Box2>();
+        GenerateBuildings(mapId, tempMapId, mapUid, ref worldAABBs);
 
         _biome.EnsurePlanet(mapUid, _proto.Index(planet.Biome), ent.Comp.Seed, mapLight: planet.MapLightColor);
         var biome = EnsureComp<BiomeComponent>(mapUid);
@@ -673,6 +699,16 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
         {
             _biome.AddMarkerLayer(mapUid, biome, layer);
         }
+
+        PreloadAvanpostArea(mapUid, avanpost.Value, biome, grid);
+
+        // Pre-loading of tiles in merged grids
+        foreach (var worldAABB in worldAABBs)
+        {
+            var tiles = new List<(Vector2i Index, Tile Tile)>();
+            _biome.ReserveTiles(mapUid, worldAABB, tiles, biome, grid);
+        }
+
         var lava = EnsureComp<LavalandComponent>(mapUid);
         lava.NextWeatherChange = _gameTiming.CurTime + TimeSpan.FromMinutes(_random.Next(5, 15));
         lava.PlanetPrototype = planetProto;
@@ -685,7 +721,7 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
         _atmos.SetMapAtmosphere(mapUid, false, mixture);
     }
 
-    public void GenerateBuildings(MapId mapId, MapId tempMapId, EntityUid mainGrid)
+    public void GenerateBuildings(MapId mapId, MapId tempMapId, EntityUid mainGrid, ref HashSet<Box2> worldAABBs)
     {
         var buildings = _proto.EnumeratePrototypes<LavalandBuildingPrototype>();
         var buildingList = buildings.OrderBy(b => b.IgnoringCounting)
@@ -706,7 +742,7 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
             if (TryFindValidPosition(building, occupiedPositions, minDistanceBetween, 50, out var position))
             {
                 var offsetIndex = occupiedPositions.Count;
-                SpawnBuilding(mapId, tempMapId, mainGrid, building, 200 * offsetIndex, position);
+                SpawnBuilding(mapId, tempMapId, mainGrid, building, 200 * offsetIndex, position, ref worldAABBs);
 
                 occupiedPositions.Add(position);
                 if (!building.IgnoringCounting)
@@ -763,7 +799,7 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
     }
 
     private void SpawnBuilding(MapId mapId, MapId tempMapId, EntityUid mainGrid, LavalandBuildingPrototype proto,
-        int offset, Vector2 position)
+        int offset, Vector2 position, ref HashSet<Box2> worldAABBs)
     {
         var opts = new DeserializationOptions() { PauseMaps = true };
 
@@ -777,6 +813,10 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
 
         if (proto.MergeWithPlanet && mainGrid != buildingGrid.Value.Owner)
         {
+            if (proto.PreloadingArea)
+            {
+                worldAABBs.Add(buildingGrid.Value.Comp.LocalAABB.Translated(alignedPosition));
+            }
             MergeWithPlanet(mainGrid, buildingGrid.Value.Owner, alignedPosition);
         }
         else
@@ -861,6 +901,20 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
             GetAllChildren(Transform(child), result);
         }
         enumerator.Dispose();
+    }
+
+    private void PreloadAvanpostArea(EntityUid mapUid, EntityUid avanpostUid, BiomeComponent biome, MapGridComponent grid)
+    {
+        if (!TryComp<MapGridComponent>(avanpostUid, out var avanpostGrid))
+            return;
+
+        var worldPos = _transform.GetWorldPosition(avanpostUid);
+        var localBounds = avanpostGrid.LocalAABB;
+
+        var center = worldPos + localBounds.Center;
+        var radius = Math.Max(localBounds.Width, localBounds.Height) / 2f + 12f;
+
+        _biome.ReserveTilesInCircle(mapUid, center, radius, biome, grid);
     }
 
     #endregion

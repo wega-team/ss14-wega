@@ -5,6 +5,7 @@ using Content.Shared.Interaction;
 using Content.Shared.Lavaland.Artefacts.Components;
 using Content.Shared.Lavaland.Components;
 using Content.Shared.Lavaland.Events;
+using Content.Shared.Popups;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Random;
 
@@ -16,6 +17,7 @@ public sealed class DragonBloodSystem : EntitySystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
     [Dependency] private readonly PolymorphSystem _polymorph = default!;
+    [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
     public override void Initialize()
@@ -61,6 +63,7 @@ public sealed class DragonBloodSystem : EntitySystem
         }
 
         _audio.PlayPredicted(ent.Comp.UseSound, Transform(ent).Coordinates, null);
+        _popup.PopupEntity(Loc.GetString($"dragon-blood-effect-{i}"), args.User, args.User);
         args.Handled = true;
         Del(ent);
     }
