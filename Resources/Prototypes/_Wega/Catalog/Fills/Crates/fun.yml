@@ -32,3 +32,22 @@
           amount: 2
         - id: BlockGameArcadeComputerCircuitboard
           amount: 2
+
+- type: entity
+  id: CrateFunLavaLamp
+  parent: CratePlastic
+  name: crate box of lava lamps
+  description: Рypnotize your moth.
+  components:
+    - type: StorageFill
+      contents:
+        - id: LavaLampPink
+          amount: 2
+        - id: LavaLampBlue
+          amount: 2
+        - id: LavaLampGreen
+          amount: 2
+        - id: LavaLampRed
+          amount: 2
+        - id: LavaLampYellow
+          amount: 2
