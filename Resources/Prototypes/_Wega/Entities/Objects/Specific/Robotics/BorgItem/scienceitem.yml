@@ -1,0 +1,98 @@
+- type: entity
+  parent: WeaponPistolCHIMP
+  id: WeaponPistolCHIMPBorg
+  name: integrated C.H.I.M.P.
+  description: An even smaller particle handcannon, designed for cyborg use.
+  components:
+  - type: BatterySelfRecharger
+    autoRechargeRate: 10
+
+- type: entity
+  parent: BaseItem
+  id: BorgGeneratorCleanSe
+  name: injector clean ce generator
+  description: Tastes like cardboard.
+  components:
+  - type: UseDelay
+    delay: 60
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Android/parts.rsi
+    layers:
+      - state: eye_module
+  - type: Item
+    size: Tiny
+  - type: SpawnItemsOnUse
+    uses: 100000
+    items:
+      - id: DnaInjectorCleanSe
+    sound:
+      path: /Audio/Machines/phasein.ogg
+
+
+
+- type: entity
+  id: BaseResearchAndDevelopmentPointSourceBorg
+  parent: BaseItem
+  name: "base R&D point source"
+  # We should make this abstract once there are actual point sources.
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Research/anomalyscanner.rsi
+    state: icon
+  - type: ResearchClient
+  - type: ItemToggle
+  - type: ComponentToggler
+    components:
+    - type: ResearchPointSource
+      pointspersecond: 25
+      active: true
+  - type: PowerCellDraw
+    drawRate: 37 # 360 seconds
+  - type: ToggleCellDraw
+  - type: PowerCellSlot
+    cellSlotId: cell_slot
+  - type: ContainerContainer
+    containers:
+      cell_slot: !type:ContainerSlot
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellSmallNuclear
+        disableEject: true
+        swap: false
+  - type: ActivatableUI
+    key: enum.ResearchClientUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.ResearchClientUiKey.Key:
+        type: ResearchClientBoundUserInterface
+
+- type: entity
+  parent: HolofanProjectorBorg
+  id: HolofanProjectorBorgSci
+  components:
+  - type: HolosignProjector
+    signProto: HoloFanSci
+    chargeUse: 120
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMicroreactor
+        disableEject: true
+        swap: false
+
+- type: entity
+  id: HoloFanSci
+  parent: HoloFan
+  components:
+  - type: TimedDespawn
+    lifetime: 30
+
+
+
+
+
+
+

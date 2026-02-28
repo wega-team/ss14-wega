@@ -540,9 +540,10 @@
     energy: 7
   - type: GuideHelp
     guides:
-    - Cyborgs
+    - Xenoborgs # Cyborg Corvax-Wega-Edit
+    - MindChat # Corvax-Wega-Edit
     - Robotics
-    - Xenoborgs
+    # - Xenoborgs  Corvax-Wega-Edit
   - type: Access
     tags:
     - Xenoborg
@@ -555,3 +556,7 @@
   - type: Xenoborg
   - type: BypassLock
     bypassDelay: 15 # We don't want people to easily be able to remove xenoborg brains.
+# Corvax-Wega-Start
+  - type: MindLink
+    channels: ["MindXenoborgs"]
+# Corvax-Wega-End

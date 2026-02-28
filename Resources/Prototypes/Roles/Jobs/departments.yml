@@ -124,6 +124,7 @@
   - Pilot # Corvax-Pilot
   - Detective
   - Warden
+  - WardenHelper # Corvax-Wega-WardenHelper
 
 - type: department
   id: Science
@@ -155,6 +156,7 @@
   - Reporter
   - Psychologist
   - Pilot # Corvax-Pilot
+  - WardenHelper # Corvax-Wega-WardenHelper
   - Barber # Corvax-Wega-Barber
   - Geneticist # Corvax-Wega-Genetics
   - Postman # Corvax-Wega-Postman

@@ -6,6 +6,7 @@ job-name-bso = офицер "Синий Щит"
 job-name-postman = почтальон
 job-name-shaft-miner = шахтёр
 job-name-shaft-miner-medic = шахтёрский медик
+job-name-wardenHelper = помощник смотрителя
 
 JobBarber = барбер
 JobCBURNLeader = лидер РХБЗЗ
@@ -15,3 +16,4 @@ JobBlueShieldOfficer = офицер "Синий Щит"
 JobPostman = почтальон
 JobShaftMiner = шахтёр
 JobShaftMinerMedic = шахтёрский медик
+JobWardenHelper = помощник смотрителя

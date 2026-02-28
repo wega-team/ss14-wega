@@ -400,3 +400,6 @@
 
 - type: Tag
   id: Nanopast
+  
+- type: Tag
+  id: AnomalyCore

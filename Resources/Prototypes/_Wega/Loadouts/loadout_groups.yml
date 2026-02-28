@@ -2,6 +2,7 @@
 - type: loadoutGroup
   id: Top
   name: loadout-group-top
+  minLimit: 0
   loadouts:
   - ClothingUnderTopBraGrey # default
   - ClothingUnderTopBraAssblastusa
@@ -50,6 +51,11 @@
   - ClothingUnderBottomStripe
   - ClothingUnderBottomStrippedPanties
   - ClothingUnderBottomThong
+  - ClothingUnderBottomElegantVampire
+  - ClothingUnderBottomSwimHalter
+  - ClothingUnderBottomSwimStripe
+  - ClothingUnderBottomSwimOnePiece
+  - ClothingUnderBottomSwimStrapless
 
 - type: loadoutGroup
   id: Socks

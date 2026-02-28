@@ -30,6 +30,7 @@
     <GuideEntityEmbed Entity="BorgChassisService" Caption="Сервис"/>
     <GuideEntityEmbed Entity="BorgChassisMedical" Caption="Врач"/>
     <GuideEntityEmbed Entity="BorgChassisSecurity" Caption="Охранник"/>
+    <GuideEntityEmbed Entity="BorgChassisScience" Caption="Учёный"/>
   </Box><!--Corvax-wega-end -->
   <Box>
     [italic]Примеры различных шасси киборгов[/italic]

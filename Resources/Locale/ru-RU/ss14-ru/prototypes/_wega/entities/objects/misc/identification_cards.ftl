@@ -18,3 +18,5 @@ ent-MinerMedicIDCard = ID-карта шахтёра медика
     .desc = { ent-IDCardStandard.desc }
 ent-IDCardNeck = бейджик служебного доступа
     .desc = Специальный бейджик с доступами служебной группы, позволяя проходить в большенство помещений. Снимайте только его перед использованием!
+ent-WardenHelperIDCard = ID карта помощника смотрителя
+    .desc = { ent-IDCardStandard.desc }

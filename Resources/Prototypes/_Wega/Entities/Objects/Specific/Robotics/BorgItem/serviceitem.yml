@@ -146,8 +146,6 @@
     key: enum.ItemSelectorUiKey.Key
   - type: UserInterface
     interfaces:
-      enum.TransferAmountUiKey.Key:
-        type: TransferAmountBoundUserInterface
       enum.ItemSelectorUiKey.Key:
         type: ItemSelectorBoundUserInterface
   - type: Tag
@@ -173,8 +171,6 @@
     key: enum.ItemSelectorUiKey.Key
   - type: UserInterface
     interfaces:
-      enum.TransferAmountUiKey.Key:
-        type: TransferAmountBoundUserInterface
       enum.ItemSelectorUiKey.Key:
         type: ItemSelectorBoundUserInterface
   - type: Tag
@@ -199,8 +195,6 @@
     key: enum.ItemSelectorUiKey.Key
   - type: UserInterface
     interfaces:
-      enum.TransferAmountUiKey.Key:
-        type: TransferAmountBoundUserInterface
       enum.ItemSelectorUiKey.Key:
         type: ItemSelectorBoundUserInterface
   - type: Tag
@@ -209,10 +203,23 @@
     - Itemborg
 
 - type: entity
-  parent: HydroponicsToolScythe
+  parent: BaseItem
   suffix: Cyborg
   id: BorgHydroponicsToolScythe
+  name: scythe
+  description: A sharp and curved blade on a long fibremetal handle, this tool makes it easy to reap what you sow.
   components:
+  - type: Sharp
+  - type: Sprite
+    sprite: Objects/Tools/Hydroponics/scythe.rsi
+    state: icon
+  - type: MeleeWeapon
+    wideAnimationRotation: 135
+    damage:
+      types:
+        Slash: 10
+  - type: Item
+    size: Normal
   - type: Unremoveable
   - type: ItemSelector
     items:
@@ -225,8 +232,6 @@
     key: enum.ItemSelectorUiKey.Key
   - type: UserInterface
     interfaces:
-      enum.TransferAmountUiKey.Key:
-        type: TransferAmountBoundUserInterface
       enum.ItemSelectorUiKey.Key:
         type: ItemSelectorBoundUserInterface
   - type: Tag
@@ -250,8 +255,6 @@
     key: enum.ItemSelectorUiKey.Key
   - type: UserInterface
     interfaces:
-      enum.TransferAmountUiKey.Key:
-        type: TransferAmountBoundUserInterface
       enum.ItemSelectorUiKey.Key:
         type: ItemSelectorBoundUserInterface
   - type: Tag

@@ -6,3 +6,4 @@ job-description-bso = Защитите командный состав, капи
 job-description-postman = Доставляйте письма, получайте призент.
 job-description-shaft-miner = Rock and Stone!
 job-description-shaft-miner-medic = Вы та самая сила, способная спасти потерявшихся в пепле шахтёров.
+job-description-wardenHelper = Поддерживайте порядок и чистоту бриге, проверяйте камеры и арсенал, помогайте с допросами.

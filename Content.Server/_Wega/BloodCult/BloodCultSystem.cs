@@ -252,8 +252,11 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
     private void HandleRuneInteraction(AfterInteractEvent args)
     {
         var user = args.User;
-        _doAfterSystem.TryStartDoAfter(new DoAfterArgs(EntityManager, user, TimeSpan.FromSeconds(4f), new BloodRuneCleaningDoAfterEvent(), user, args.Target)
+		var target = args.Target!.Value;
+        _doAfterSystem.TryStartDoAfter(new DoAfterArgs(EntityManager, user, TimeSpan.FromSeconds(4f), new BloodRuneCleaningDoAfterEvent(), user)
         {
+            Target = target,
+            EventTarget = target,
             BreakOnMove = true,
             BreakOnDamage = true,
             MovementThreshold = 0.01f,

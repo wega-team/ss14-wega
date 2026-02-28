@@ -12,3 +12,5 @@ ent-SpawnPointShaftMiner = шахтёр
     .desc = { ent-SpawnPointJobBase.desc }
 ent-SpawnPointShaftMinerMedic = шахтёрский медик
     .desc = { ent-SpawnPointJobBase.desc }
+ent-SpawnPointWardenHelper = помощник смотрителя
+    .desc = { ent-SpawnPointJobBase.desc }

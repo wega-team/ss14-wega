@@ -60,13 +60,16 @@ public abstract class SharedAbsorbentSystem : EntitySystem
         // Corvax-Wega-Blood-Cult-start
         if (TryComp<BloodRuneComponent>(args.Target, out _))
         {
-            _doAfterSystem.TryStartDoAfter(new DoAfterArgs(EntityManager, args.User, TimeSpan.FromSeconds(4f), new BloodRuneCleaningDoAfterEvent(), args.User, args.Target)
-            {
-                BreakOnMove = true,
-                BreakOnDamage = true,
-                MovementThreshold = 0.01f,
-                NeedHand = false
-            });
+			var user = args.User;
+			_doAfterSystem.TryStartDoAfter(new DoAfterArgs(EntityManager, user, TimeSpan.FromSeconds(4f), new BloodRuneCleaningDoAfterEvent(), user)
+			{
+				Target = args.Target!.Value,
+				EventTarget = args.Target!.Value,
+				BreakOnMove = true,
+				BreakOnDamage = true,
+				MovementThreshold = 0.01f,
+				NeedHand = false
+			});
             return;
         }
         // Corvax-Wega-Blood-Cult-end

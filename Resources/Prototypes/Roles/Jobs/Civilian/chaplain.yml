@@ -6,6 +6,11 @@
   startingGear: ChaplainGear
   icon: "JobIconChaplain"
   supervisors: job-supervisors-hop
+# Corvax-Wega-Start
+  requirements:
+  - !type:OverallPlaytimeRequirement
+      time: 20h
+# Corvax-Wega-End
   access:
   - Chapel
   - Maintenance

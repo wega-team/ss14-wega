@@ -21,6 +21,7 @@ public sealed partial class BloodConstructMenu : RadialMenu
         BloodWraithButton.OnButtonUp += _ => HandleConstructSelection("MobConstructWraith");
         BloodArtificerButton.OnButtonUp += _ => HandleConstructSelection("MobConstructArtificer");
         BloodProteonButton.OnButtonUp += _ => HandleConstructSelection("MobConstructProteon");
+		BloodIdolButton.OnButtonUp += _ => HandleConstructSelection("MobConstructIdol");
     }
 
     private void HandleConstructSelection(string constructName)

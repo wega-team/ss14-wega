@@ -16,3 +16,5 @@ ent-MinerPDA = КПК шахтёра
     .desc = Пахнет пеплом.
 ent-MinerMedicPDA = КПК шахтёра медика
     .desc = Пахнет пеплом и спиртом.
+ent-WardenHelperPDA = КПК помощника смотрителя
+    .desc = { ent-BaseSecurityPDA.desc }
