@@ -39,13 +39,12 @@
 - type: damageModifierSet
   id: Demon
   coefficients:
-    Blunt: 1
-    Piercing: 1.1
+    Blunt: 1.05
     Slash: 1.05
-    Cold: 0.7
+    Piercing: 1.05
+    Cold: 0.9
     Heat: 0.85
-    Poison: 0.8
-    Cellular: 1.5
+    Poison: 0.85
 
 - type: damageModifierSet
   id: Phantom
@@ -57,12 +56,10 @@
 - type: damageModifierSet
   id: Ariral
   coefficients:
-    Blunt: 0.85
-    Slash: 0.85
+    Blunt: 1.1
+    Slash: 0.9
     Piercing: 0.9
     Cold: 1.25
-    Heat: 1.25
-    Poison: 0.8
 
 - type: damageModifierSet
   id: DiceOfFateMod

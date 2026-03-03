@@ -97,3 +97,71 @@
   sprites:
   - sprite: _Wega/Mobs/Customization/demon.rsi
     state: succubus
+
+#Half-Lava
+
+- type: marking
+  id: DemonDrakeTile
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Demon]
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+    layers:
+      wendigo-horn-secondary:
+        type:
+          !type:EyeColoring
+  sprites:
+  - sprite: _Wega/Mobs/Customization/demon_lava.rsi
+    state: tail_drake
+  - sprite: _Wega/Mobs/Customization/demon_lava.rsi
+    state: tail_drake_secondary
+
+- type: marking
+  id: DemonDrakeTileAnimated
+  bodyPart: Tail
+  markingCategory: Tail
+  markingType: NonGenetics
+  speciesRestriction: []
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+    layers:
+      wendigo-horn-secondary:
+        type:
+          !type:EyeColoring
+  sprites:
+    - sprite: _Wega/Mobs/Customization/demon_lava.rsi
+      state: tail_drake_wagging
+    - sprite: _Wega/Mobs/Customization/demon_lava.rsi
+      state: tail_drake_wagging_secondary
+
+- type: marking
+  id: DemonDrakeSpine
+  bodyPart: Special
+  markingCategory: Chest
+  speciesRestriction: [Demon]
+  sprites:
+  - sprite: _Wega/Mobs/Customization/demon_lava.rsi
+    state: drake_spine
+
+- type: marking
+  id: DemonDrakeLArm
+  bodyPart: LArm
+  markingCategory: Arms
+  speciesRestriction: [Demon]
+  sprites:
+  - sprite: _Wega/Mobs/Customization/demon_lava.rsi
+    state: l_drake_arm
+
+- type: marking
+  id: DemonDrakeRArm
+  bodyPart: RArm
+  markingCategory: Arms
+  speciesRestriction: [Demon]
+  sprites:
+  - sprite: _Wega/Mobs/Customization/demon_lava.rsi
+    state: r_drake_arm
