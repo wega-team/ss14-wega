@@ -1,0 +1,32 @@
+- type: entity
+  id: PKAUpgradeAoE
+  parent: BasePKAUpgrade
+  name: PKA modkit (aoe)
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+    - state: overlay-1
+      color: "#ec9b2d"
+    - state: overlay-2
+      color: "#a71010"
+    - state: overlay-3
+      color: "#eb4c13"
+  - type: GunUpgrade
+    tags: [ GunUpgradeAoE ]
+    examineText: gun-upgrade-examine-text-aoe
+  - type: GunUpgradeAoE
+
+- type: entity
+  id: PKAUpgradeLifesteal
+  parent: BasePKAUpgrade
+  name: crystal of vampirism
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tools/upgrade.rsi
+    state: modkit_crystal
+  - type: GunUpgrade
+    tags: [ GunUpgradeLifesteal ]
+    examineText: gun-upgrade-examine-text-lifesteal
+  - type: GunUpgradeLifesteal
+    stealAmount: 2.5

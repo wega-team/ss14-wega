@@ -1,0 +1,13 @@
+- type: ghostTheme
+  id: SanabiGhost
+  name: Санаби
+  icon:
+    sprite: _Wega/Mobs/Ghosts/ghost_human.rsi
+    state: sanabi
+
+- type: ghostTheme
+  id: FoxGhost
+  name: Лисица
+  icon:
+    sprite: _Wega/Mobs/Ghosts/ghost_human.rsi
+    state: fox_a

@@ -81,3 +81,9 @@
     Slash: 0.5
     Structural: 0.5
     Holy: 0.5
+
+- type: damageModifierSet
+  id: Hierophant
+  coefficients:
+    Piercing: 0.1
+    Heat: 0.5

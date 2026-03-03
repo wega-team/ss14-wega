@@ -23,6 +23,11 @@
   - MineralScannerEmpty
   - AdvancedMineralScannerEmpty
   - OreBagOfHolding
+  # Corvax-Wega-Lavaland-start
+  - WeaponPlasmaCutter
+  - WeaponPlasmaCutterAdv
+  - WeaponIndustrialFanPlasmaCutter
+  # Corvax-Wega-Lavaland-end
 
 - type: latheRecipePack
   id: CargoBoards

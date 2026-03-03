@@ -1,0 +1,20 @@
+- type: stack
+  parent: BaseMediumStack
+  id: Sinew
+  name: stack-sinew
+  icon: { sprite: _Wega/Objects/Materials/sinew.rsi, state: sinew }
+  spawn: MaterialSinew1
+
+- type: stack
+  parent: BaseMediumStack
+  id: Chitin
+  name: stack-chitin
+  icon: { sprite: _Wega/Objects/Materials/chitin.rsi, state: chitin }
+  spawn: MaterialChitin1
+
+- type: stack
+  parent: BaseMediumStack
+  id: DragonHide
+  name: stack-dragon-hide
+  icon: { sprite: _Wega/Objects/Materials/dragon_hide.rsi, state: dragon_hide }
+  spawn: MaterialDragonHide1

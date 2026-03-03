@@ -30,10 +30,14 @@ public sealed class SharedDirtSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
+        SubscribeLocalEvent<DirtableComponent, ComponentInit>(OnInit);
         SubscribeLocalEvent<DirtableComponent, ComponentGetState>(OnGetState);
         SubscribeLocalEvent<DirtableComponent, FoldedEvent>(OnFolded);
         SubscribeLocalEvent<DirtableComponent, ExaminedEvent>(OnExamined);
     }
+
+    private void OnInit(EntityUid uid, DirtableComponent comp, ref ComponentInit args)
+        => Dirty(uid, comp);
 
     private void OnGetState(EntityUid uid, DirtableComponent comp, ref ComponentGetState args)
     {

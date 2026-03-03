@@ -8,3 +8,56 @@
     sprite:  _Wega/Structures/Machines/hyperconv_exosuit_fabricator.rsi
   - type: Machine
     board: ExosuitFabricatorHyperConvectionMachineCircuitboard
+
+- type: entity
+  id: MagmiteAnvil
+  name: magmite anvil
+  description: "It looks like a very old anvil. I wonder what it's doing here and who worked on it?"
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Appearance
+  - type: Animateable
+  - type: InteractionOutline
+  - type: Transform
+    anchored: true
+  - type: Clickable
+  - type: GravityAffected
+  - type: Sprite
+    sprite: _Wega/Structures/Machines/anvil.rsi
+    snapCardinals: true
+    layers:
+    - state: anvil
+      map: ["enum.LatheVisualLayers.IsRunning"]
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        density: 190
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: Lathe
+    idleState: anvil
+    runningState: anvil_a
+    staticPacks:
+    - MagmiteEquipment
+  - type: MaterialStorage
+    whitelist:
+      tags:
+        - MagmiteAlloy
+  - type: ActivatableUI
+    key: enum.LatheUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.LatheUiKey.Key:
+        type: LatheBoundUserInterface
+  - type: StaticPrice
+    price: 800
+  - type: ResearchClient
+  - type: TechnologyDatabase

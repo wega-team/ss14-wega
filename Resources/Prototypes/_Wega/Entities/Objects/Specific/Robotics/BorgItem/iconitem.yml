@@ -1,0 +1,32 @@
+## item-icon
+- type: entity
+  parent: BaseItem
+  id: BorgIconMorgBag
+  name: BorgIconMorgBag
+  description: BorgIconMorgBag
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Medical/Morgue/bodybags.rsi
+    layers:
+    - state: bag_folded
+
+- type: entity
+  parent: BaseItem
+  id: BorgIconRollerBed
+  name: BorgIconRollerBed
+  description: BorgIconRollerBed
+  components:
+  - type: Sprite
+    sprite: Structures/Furniture/rollerbeds.rsi
+    layers:
+    - state: cheap_rollerbed_folded
+
+- type: entity
+  parent: BaseItem
+  id: BorgIconKitchenIcon
+  name: KitchenIcon
+  description: BorgIconRollerBed
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/iconitem.rsi
+    state: kitchen

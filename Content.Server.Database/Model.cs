@@ -23,6 +23,7 @@ namespace Content.Server.Database
         public DbSet<Profile> Profile { get; set; } = null!;
         public DbSet<AssignedUserId> AssignedUserId { get; set; } = null!;
         public DbSet<Player> Player { get; set; } = default!;
+        public DbSet<Achievement> Achievement { get; set; } = null!; // Corvax-Wega-Achievements
         public DbSet<Admin> Admin { get; set; } = null!;
         public DbSet<AdminRank> AdminRank { get; set; } = null!;
         public DbSet<Round> Round { get; set; } = null!;
@@ -203,6 +204,22 @@ namespace Content.Server.Database
                 .HasOne(p => p.Server)
                 .WithMany(p => p.ConnectionLogs)
                 .OnDelete(DeleteBehavior.SetNull);
+
+            // Corvax-Wega-Achievements-start
+            modelBuilder.Entity<Achievement>()
+                .HasIndex(a => a.PlayerUserId);
+
+            modelBuilder.Entity<Achievement>()
+                .HasIndex(a => new { a.PlayerUserId, a.AchievementKey })
+                .IsUnique();
+
+            modelBuilder.Entity<Achievement>()
+                .HasOne(a => a.Player)
+                .WithMany(p => p.Achievements)
+                .HasForeignKey(a => a.PlayerUserId)
+                .HasPrincipalKey(p => p.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+            // Corvax-Wega-Achievements-end
 
             // SetNull is necessary for created by/edited by-s here,
             // so you can safely delete admins (GDPR right to erasure) while keeping the notes intact
@@ -592,6 +609,11 @@ namespace Content.Server.Database
 
         public DateTime? LastReadRules { get; set; }
 
+        // Corvax-Wega-Achievements-start
+        // Achievements
+        public List<Achievement> Achievements { get; set; } = null!;
+        // Corvax-Wega-Achievements-en
+
         public List<AdminNote> AdminNotesReceived { get; set; } = null!;
         public List<AdminNote> AdminNotesCreated { get; set; } = null!;
         public List<AdminNote> AdminNotesLastEdited { get; set; } = null!;
@@ -610,6 +632,28 @@ namespace Content.Server.Database
         public List<ServerRoleBan> AdminServerRoleBansLastEdited { get; set; } = null!;
         public List<RoleWhitelist> JobWhitelists { get; set; } = null!;
     }
+
+    // Corvax-Wega-Achievements-start
+    [Table("achievement"), Index(nameof(PlayerUserId))]
+    public class Achievement
+    {
+        [Required, Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+
+        [Required, ForeignKey("Player")]
+        public Guid PlayerUserId { get; set; }
+
+        [ForeignKey("PlayerUserId")]
+        [InverseProperty(nameof(Player.Achievements))]
+        public Player Player { get; set; } = null!;
+
+        [Required]
+        public byte AchievementKey { get; set; }
+
+        [Required]
+        public DateTime UnlockedAt { get; set; }
+    }
+    // Corvax-Wega-Achievements-end
 
     [Table("whitelist")]
     public class Whitelist

@@ -24,9 +24,18 @@
     # Corvax-Wega-Vehicles-start
     - !type:Damage
       requiredComponent: Vehicle
+      blacklistedComponent: Boat
       damageType: Blunt
       amount: 500
     # Corvax-Wega-Vehicles-end
+    # Corvax-Wega-Lavaland-start
+    blacklist:
+      components:
+      - LavaWalking
+  - type: SpeedModifierContacts
+    walkSpeedModifier: 0.4
+    sprintSpeedModifier: 0.4
+  # Corvax-Wega-Lavaland-end
   - type: Transform
     anchored: true
   - type: SyncSprite
@@ -62,3 +71,4 @@
   - type: Tag
     tags:
       - HideContextMenu
+      - CanSwim # Corvax-Wega-Lavaland

@@ -16,3 +16,13 @@
   itemDrop: FloorTileItemSepia
   mobAcceleration: 3
   heatCapacity: 10000
+
+- type: tile
+  id: FloorNecropolis
+  name: tiles-necropolis-floor
+  sprite: /Textures/_Wega/Tiles/necropolis.png
+  isSubfloor: true
+  footstepSounds:
+    collection: FootstepFloor
+  heatCapacity: 10000
+  indestructible: true

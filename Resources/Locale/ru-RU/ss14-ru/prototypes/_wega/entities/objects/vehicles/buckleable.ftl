@@ -21,3 +21,7 @@ ent-VehicleUnicycle = моноцикл
 ent-VehicleUnicycleFolded = { ent-VehicleUnicycle }
     .desc = { ent-VehicleUnicycle.desc }
     .suffix = Сложенное
+ent-VehicleBoat = лодка голиафа
+    .desc = Собранная из дерева и шкур голиафа лодка. Нужно весло для использования.
+ent-VehicleDragonBoat = лодка дракон
+    .desc = Таинственное судно, способное бесследно скользить по раскалённой лаве. Не требует вёсел и, кажется, движется по собственной воле.

@@ -45,3 +45,20 @@
       - id: WeaponSniperHristovAdvanced
       - id: MagazineHristovAdvanced
         amount: 4
+
+- type: entity
+  parent: ClothingBackpackDuffelSalvage
+  id: ClothingBackpackDuffelSalvageBaseKit
+  suffix: Kit
+  components:
+    - type: StorageFill
+      contents:
+        - id: WeaponProtoKineticAccelerator
+        - id: SurvivalKnife
+        - id: ClothingOuterArmorExplorerSuit
+        - id: FlashlightSeclite
+        - id: ClothingEyesGlassesMeson
+        - id: MineralScanner
+        - id: ClothingMaskGasExplorer
+        - id: MinerIDCard
+        - id: SurvivalMedipen

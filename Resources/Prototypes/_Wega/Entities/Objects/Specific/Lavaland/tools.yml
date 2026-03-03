@@ -1,0 +1,35 @@
+- type: entity
+  parent: BaseItem
+  id: WormholeJaunter
+  name: jaunter
+  description: "A tool that creates unstable portals. It can save you if you fall into a hole."
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Lavaland/jaunter.rsi
+    state: icon
+  - type: Clothing
+    quickEquip: false
+    slots: [belt]
+  - type: Jaunter
+  - type: Item
+    size: Small
+    grid:
+    - 0,0,1,1
+
+- type: entity
+  parent: BaseItem
+  id: BoneOar
+  name: bone oar
+  description: "A paddle made of bones."
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Lavaland/oar.rsi
+    state: icon
+  - type: Item
+    size: Normal
+  - type: Construction
+    graph: BoneOar
+    node: oar
+  - type: Tag
+    tags:
+    - Oar

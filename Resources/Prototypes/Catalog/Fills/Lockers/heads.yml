@@ -14,7 +14,7 @@
     - id: ClothingHandsKnuckleDustersQM
     - id: PrinterDocFlatpack # Corvax-Printer
     - id: FundingAllocationComputerFlatpack # Corvax-Wega
-
+    - id: LavalandShuttleComputerCircuitboard # Corvax-Wega-Lavaland
 
 - type: entity
   id: LockerQuarterMasterFilled

@@ -1,0 +1,53 @@
+- type: entity
+  parent: BaseClothingAccessories
+  id: AccessoriesClothingBoneTalisman
+  name: bone talisman
+  description: "A crude talisman woven from bones and sinew. Offers minor protection against brute force and heat."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Accessories/bone_talisman.rsi
+    state: icon
+  - type: ClothingUpgrade
+    tags: [ BoneTalismanUpgrade ]
+    examineText: clothing-upgrade-examine-text-bone-talisman
+    sprite: { sprite: _Wega/Clothing/Accessories/bone_talisman.rsi, state: equipped-ACCESSORIES }
+  - type: ClothingAccessoriesProtection
+    modifiers:
+      coefficients:
+        Blunt: 0.95
+        Slash: 0.95
+        Heat: 0.95
+  - type: Construction
+    graph: BoneTalisman
+    node: talisman
+  - type: Tag
+    tags:
+    - UniformUpgrade
+    - BoneTalismanUpgrade
+
+- type: entity
+  parent: BaseClothingAccessories
+  id: AccessoriesClothingSkullCodpiece
+  name: skull codpiece
+  description: "The bleached skull of some unfortunate creature, repurposed as groin armor. Offers minor protection against brute force and heat."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Accessories/skull_codpiece.rsi
+    state: icon
+  - type: ClothingUpgrade
+    tags: [ SkullCodpieceUpgrade ]
+    examineText: clothing-upgrade-examine-text-skull-codpiece
+    sprite: { sprite: _Wega/Clothing/Accessories/skull_codpiece.rsi, state: equipped-ACCESSORIES }
+  - type: ClothingAccessoriesProtection
+    modifiers:
+      coefficients:
+        Blunt: 0.95
+        Slash: 0.95
+        Heat: 0.95
+  - type: Construction
+    graph: SkullCodpiece
+    node: codpiece
+  - type: Tag
+    tags:
+    - UniformUpgrade
+    - SkullCodpieceUpgrade

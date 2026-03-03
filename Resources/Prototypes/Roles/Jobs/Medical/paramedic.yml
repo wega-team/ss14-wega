@@ -3,6 +3,7 @@
   name: job-name-paramedic
   description: job-description-paramedic
   playTimeTracker: JobParamedic
+  isSubRole: true # Corvax-Wega-add
   requirements:
   - !type:DepartmentTimeRequirement
     department: Medical
@@ -13,6 +14,7 @@
   access:
   - Medical
   - Maintenance
+  - LavalandAvanpost # Corvax-Wega-Lavaland
   extendedAccess:
   - Chemistry
   # Corvax-Wega-Surgery-start

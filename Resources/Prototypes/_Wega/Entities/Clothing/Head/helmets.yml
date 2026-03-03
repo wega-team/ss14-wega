@@ -1,0 +1,26 @@
+- type: entity
+  parent: ClothingHeadHelmetBase
+  id: ClothingHeadHelmetHostileEnv
+  name: H.E.C.K. helmet
+  description: "Experimental Kinetic Protective Sheathed Helmet: a helmet specifically designed to protect against a wide range of Lasis hazards. Apparently, its previous owner didn't have enough."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Head/Helmets/hostile_env.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Wega/Clothing/Head/Helmets/hostile_env.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.8
+        Slash: 0.8
+        Piercing: 0.8
+        Caustic: 0.6
+  - type: ClothingAshStormProtection
+    modifier: 0.1
+  - type: EyeProtection
+    protectionTime: 5
+  - type: FlashImmunity
+  - type: Tag
+    tags:
+    - WhitelistChameleon

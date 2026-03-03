@@ -12,6 +12,7 @@
   recipeUnlocks:
   - ProximitySensor
   - AndroidBodyPart # Corvax-Wega-Android
+  - BorgModuleRobotics # Corvax-Wega-Add
 
 - type: technology
   id: BasicAnomalousResearch
@@ -106,6 +107,7 @@
   cost: 10000
   recipeUnlocks:
   - WeaponPistolCHIMP
+  - BorgModuleAdvancedAnomaly # Corvax-Wega-Add
   - AnomalySynchronizerCircuitboard
   - AnomalyVesselExperimentalCircuitboard
   technologyPrerequisites:

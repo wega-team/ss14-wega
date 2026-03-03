@@ -1,0 +1,155 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Taken from https://github.com/tgstation/tgstation",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "cactus1"
+        },
+        {
+            "name": "cactus2"
+        },
+        {
+            "name": "cactus3"
+        },
+        {
+            "name": "cactus4"
+        },
+        {
+            "name": "cactus1h"
+        },
+        {
+            "name": "cactus2h"
+        },
+        {
+            "name": "cactus3h"
+        },
+        {
+            "name": "cactus4h"
+        },
+        {
+            "name": "fireblossom1"
+        },
+        {
+            "name": "fireblossom2"
+        },
+        {
+            "name": "fireblossom3"
+        },
+        {
+            "name": "fireblossom4"
+        },
+        {
+            "name": "fireblossom1h"
+        },
+        {
+            "name": "fireblossom2h"
+        },
+        {
+            "name": "fireblossom3h"
+        },
+        {
+            "name": "fireblossom4h"
+        },
+        {
+            "name": "l_mushroom1"
+        },
+        {
+            "name": "l_mushroom2"
+        },
+        {
+            "name": "l_mushroom3"
+        },
+        {
+            "name": "l_mushroom4"
+        },
+        {
+            "name": "l_mushroom1h"
+        },
+        {
+            "name": "l_mushroom2h"
+        },
+        {
+            "name": "l_mushroom3h"
+        },
+        {
+            "name": "l_mushroom4h"
+        },
+        {
+            "name": "r_mushroom1"
+        },
+        {
+            "name": "r_mushroom2"
+        },
+        {
+            "name": "r_mushroom3"
+        },
+        {
+            "name": "r_mushroom4"
+        },
+        {
+            "name": "r_mushroom1h"
+        },
+        {
+            "name": "r_mushroom2h"
+        },
+        {
+            "name": "r_mushroom3h"
+        },
+        {
+            "name": "r_mushroom4h"
+        },
+        {
+            "name": "s_mushroom1"
+        },
+        {
+            "name": "s_mushroom2"
+        },
+        {
+            "name": "s_mushroom3"
+        },
+        {
+            "name": "s_mushroom4"
+        },
+        {
+            "name": "s_mushroom1h"
+        },
+        {
+            "name": "s_mushroom2h"
+        },
+        {
+            "name": "s_mushroom3h"
+        },
+        {
+            "name": "s_mushroom4h"
+        },
+        {
+            "name": "t_mushroom1"
+        },
+        {
+            "name": "t_mushroom2"
+        },
+        {
+            "name": "t_mushroom3"
+        },
+        {
+            "name": "t_mushroom4"
+        },
+        {
+            "name": "t_mushroom1h"
+        },
+        {
+            "name": "t_mushroom2h"
+        },
+        {
+            "name": "t_mushroom3h"
+        },
+        {
+            "name": "t_mushroom4h"
+        }
+    ]
+}

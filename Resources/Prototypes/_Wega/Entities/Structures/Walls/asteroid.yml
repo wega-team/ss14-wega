@@ -1,0 +1,304 @@
+- type: entity
+  parent: BaseWall
+  id: WallRockBasaltIndestructible
+  suffix: Indestructible
+  components:
+  - type: Transform
+    noRot: true
+  - type: Icon
+    sprite: Structures/Walls/rock.rsi
+    state: rock_wall
+  - type: IconSmooth
+    key: walls
+    mode: NoSprite
+  - type: MiningScannerViewable
+  - type: SmoothEdge
+  - type: Sprite
+    sprite: Structures/Walls/rock.rsi
+    layers:
+    - state: rock_wall
+    - map: [ "enum.EdgeLayer.South" ]
+      state: rock_wall_south
+    - map: [ "enum.EdgeLayer.East" ]
+      state: rock_wall_east
+    - map: [ "enum.EdgeLayer.North" ]
+      state: rock_wall_north
+    - map: [ "enum.EdgeLayer.West" ]
+      state: rock_wall_west
+
+- type: entity
+  id: WallRockBasaltLavalandCoal
+  parent: WallRockBasalt
+  suffix: Coal, Lavaland
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: OreCoal
+  - type: Sprite
+    layers:
+    - state: rock_wall
+    - map: [ "enum.EdgeLayer.South" ]
+      state: rock_wall_south
+    - map: [ "enum.EdgeLayer.East" ]
+      state: rock_wall_east
+    - map: [ "enum.EdgeLayer.North" ]
+      state: rock_wall_north
+    - map: [ "enum.EdgeLayer.West" ]
+      state: rock_wall_west
+    - state: rock_coal
+      map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+      visible: false
+
+- type: entity
+  id: WallRockBasaltLavalandGold
+  parent: WallRockBasalt
+  suffix: Gold, Lavaland
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: OreGold
+  - type: Sprite
+    layers:
+    - state: rock_wall
+    - map: [ "enum.EdgeLayer.South" ]
+      state: rock_wall_south
+    - map: [ "enum.EdgeLayer.East" ]
+      state: rock_wall_east
+    - map: [ "enum.EdgeLayer.North" ]
+      state: rock_wall_north
+    - map: [ "enum.EdgeLayer.West" ]
+      state: rock_wall_west
+    - state: rock_gold
+      map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+      visible: false
+
+- type: entity
+  id: WallRockBasaltLavalandDiamond
+  parent: WallRockBasalt
+  suffix: Diamond, Lavaland
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: OreDiamond
+  - type: Sprite
+    layers:
+    - state: rock_wall
+    - map: [ "enum.EdgeLayer.South" ]
+      state: rock_wall_south
+    - map: [ "enum.EdgeLayer.East" ]
+      state: rock_wall_east
+    - map: [ "enum.EdgeLayer.North" ]
+      state: rock_wall_north
+    - map: [ "enum.EdgeLayer.West" ]
+      state: rock_wall_west
+    - state: rock_diamond
+      map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+      visible: false
+
+- type: entity
+  id: WallRockBasaltLavalandPlasma
+  parent: WallRockBasalt
+  suffix: Plasma, Lavaland
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: OrePlasma
+  - type: Sprite
+    layers:
+    - state: rock_wall
+    - map: [ "enum.EdgeLayer.South" ]
+      state: rock_wall_south
+    - map: [ "enum.EdgeLayer.East" ]
+      state: rock_wall_east
+    - map: [ "enum.EdgeLayer.North" ]
+      state: rock_wall_north
+    - map: [ "enum.EdgeLayer.West" ]
+      state: rock_wall_west
+    - state: rock_phoron
+      map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+      visible: false
+
+- type: entity
+  id: WallRockBasaltLavalandQuartz
+  parent: WallRockBasalt
+  suffix: Quartz, Lavaland
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: OreSpaceQuartz
+  - type: Sprite
+    layers:
+    - state: rock_wall
+    - map: [ "enum.EdgeLayer.South" ]
+      state: rock_wall_south
+    - map: [ "enum.EdgeLayer.East" ]
+      state: rock_wall_east
+    - map: [ "enum.EdgeLayer.North" ]
+      state: rock_wall_north
+    - map: [ "enum.EdgeLayer.West" ]
+      state: rock_wall_west
+    - state: rock_quartz
+      map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+      visible: false
+
+- type: entity
+  id: WallRockBasaltLavalandSilver
+  parent: WallRockBasalt
+  suffix: Silver, Lavaland
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: OreSilver
+  - type: Sprite
+    layers:
+    - state: rock_wall
+    - map: [ "enum.EdgeLayer.South" ]
+      state: rock_wall_south
+    - map: [ "enum.EdgeLayer.East" ]
+      state: rock_wall_east
+    - map: [ "enum.EdgeLayer.North" ]
+      state: rock_wall_north
+    - map: [ "enum.EdgeLayer.West" ]
+      state: rock_wall_west
+    - state: rock_silver
+      map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+      visible: false
+
+- type: entity
+  id: WallRockBasaltLavalandTin
+  parent: WallRockBasalt
+  suffix: Iron, Lavaland
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: OreSteel
+  - type: Sprite
+    layers:
+    - state: rock_wall
+    - map: [ "enum.EdgeLayer.South" ]
+      state: rock_wall_south
+    - map: [ "enum.EdgeLayer.East" ]
+      state: rock_wall_east
+    - map: [ "enum.EdgeLayer.North" ]
+      state: rock_wall_north
+    - map: [ "enum.EdgeLayer.West" ]
+      state: rock_wall_west
+    - state: rock_tin
+      map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+      visible: false
+
+- type: entity
+  id: WallRockBasaltLavalandUranium
+  parent: WallRockBasalt
+  suffix: Uranium, Lavaland
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: OreUranium
+  - type: Sprite
+    layers:
+    - state: rock_wall
+    - map: [ "enum.EdgeLayer.South" ]
+      state: rock_wall_south
+    - map: [ "enum.EdgeLayer.East" ]
+      state: rock_wall_east
+    - map: [ "enum.EdgeLayer.North" ]
+      state: rock_wall_north
+    - map: [ "enum.EdgeLayer.West" ]
+      state: rock_wall_west
+    - state: rock_uranium
+      map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+      visible: false
+
+- type: entity
+  id: WallRockBasaltLavalandBananium
+  parent: WallRockBasalt
+  suffix: Bananium, Lavaland
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: OreBananium
+  - type: Sprite
+    layers:
+    - state: rock_wall
+    - map: [ "enum.EdgeLayer.South" ]
+      state: rock_wall_south
+    - map: [ "enum.EdgeLayer.East" ]
+      state: rock_wall_east
+    - map: [ "enum.EdgeLayer.North" ]
+      state: rock_wall_north
+    - map: [ "enum.EdgeLayer.West" ]
+      state: rock_wall_west
+    - state: rock_bananium
+      map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+      visible: false
+
+- type: entity
+  id: WallRockBasaltLavalandGems
+  parent: WallRockBasalt
+  suffix: Gems, Lavaland
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    oreRarityPrototypeId: RandomGemsDistributionStandard
+  - type: Sprite
+    layers:
+    - state: rock_wall
+    - map: [ "enum.EdgeLayer.South" ]
+      state: rock_wall_south
+    - map: [ "enum.EdgeLayer.East" ]
+      state: rock_wall_east
+    - map: [ "enum.EdgeLayer.North" ]
+      state: rock_wall_north
+    - map: [ "enum.EdgeLayer.West" ]
+      state: rock_wall_west
+    - state: rock_gems
+      map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+      visible: false
+
+- type: entity
+  id: WallRockBasaltLavalandMagmite
+  parent: WallRockBasalt
+  suffix: Magmite, Lavaland
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: OreMagmite
+  - type: Sprite
+    layers:
+    - state: rock_wall
+    - map: [ "enum.EdgeLayer.South" ]
+      state: rock_wall_south
+    - map: [ "enum.EdgeLayer.East" ]
+      state: rock_wall_east
+    - map: [ "enum.EdgeLayer.North" ]
+      state: rock_wall_north
+    - map: [ "enum.EdgeLayer.West" ]
+      state: rock_wall_west
+    - state: rock_magmite
+      map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+      visible: false
+
+- type: entity
+  parent: [ BaseRockGibtonite, AsteroidRock ]
+  id: WallRockBasaltLavalandGibtonite
+  suffix: Gibtonite, Lavaland
+  components:
+  - type: Icon
+    sprite: Structures/Walls/rock.rsi
+    state: rock_wall
+  - type: Sprite
+    sprite: Structures/Walls/rock.rsi
+    layers:
+    - state: rock_wall
+    - map: [ "enum.EdgeLayer.South" ]
+      state: rock_wall_south
+    - map: [ "enum.EdgeLayer.East" ]
+      state: rock_wall_east
+    - map: [ "enum.EdgeLayer.North" ]
+      state: rock_wall_north
+    - map: [ "enum.EdgeLayer.West" ]
+      state: rock_wall_west
+    - state: gibtonite_inactive
+      map: [ "enum.MiningScannerVisualLayers.Overlay", "gib" ]
+      visible: false

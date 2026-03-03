@@ -1,0 +1,129 @@
+# Eng rare
+- type: entity
+  id: RCDCombatRecharging
+  parent: RCD
+  name: experimental RCD combat
+  description: Cyborg-mounted Rapid Construction Device which creates compressed matter on the fly using an internal fabricator.
+  suffix: AutoRecharge
+  components:
+  - type: LimitedCharges
+    maxCharges: 40
+  - type: AutoRecharge
+    rechargeDuration: 10
+  - type: RCD
+    reinforced: true
+    availablePrototypes:
+    - WallSolid
+    - WallReinforced
+    - FloorSteel
+    - Plating
+    - Catwalk
+    - Grille
+    - Window
+    - WindowDirectional
+    - WindowReinforcedDirectional
+    - ReinforcedWindow
+    - Airlock
+    - AirlockGlass
+    - Firelock
+    - TubeLight
+    - BulbLight
+    - LVCable
+    - MVCable
+    - HVCable
+    - CableTerminal
+    - Deconstruct
+  - type: Sprite
+    sprite: _Wega/Objects/Tools/combat-rcd.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Wega/Objects/Tools/combat-rcd.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: StaticPrice
+    price: 1000
+
+- type: entity
+  parent: BaseItem
+  id: BorgGeneratorMaterialRod
+  name: material generator
+  description: Tastes like cardboard.
+  components:
+  - type: UseDelay
+    delay: 120
+  - type: Sprite
+    sprite: Objects/Devices/gates.rsi
+    layers:
+    - state: base
+  - type: Item
+    size: Tiny
+  - type: SpawnItemsOnUse
+    uses: 100000
+    items:
+      - id: PartRodMetal
+    sound:
+      path: /Audio/Machines/phasein.ogg
+
+- type: entity
+  parent: BaseItem
+  id: BorgGeneratorTile
+  name: tile generator
+  description: Tastes like cardboard.
+  components:
+  - type: UseDelay
+    delay: 3
+  - type: Sprite
+    sprite: Structures/Wallmounts/air_monitors_xeno.rsi
+    layers:
+    - state: fire_b1
+  - type: Item
+    size: Tiny
+  - type: SpawnItemsOnUse
+    uses: 100000
+    items:
+      - id: FloorTileItemSteel
+    sound:
+      path: /Audio/Machines/phasein.ogg
+
+- type: entity
+  parent: BaseItem
+  id: BorgGeneratorMaterialSteal
+  name: material generator
+  description: Tastes like cardboard.
+  components:
+  - type: UseDelay
+    delay: 240
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Android/parts.rsi
+    layers:
+    - state: gas_module
+  - type: Item
+    size: Tiny
+  - type: SpawnItemsOnUse
+    uses: 100000
+    items:
+      - id: SheetSteel
+    sound:
+      path: /Audio/Machines/phasein.ogg
+
+- type: entity
+  parent: BaseItem
+  id: BorgGeneratorMaterialPlasteel
+  name: material generator
+  description: Tastes like cardboard.
+  components:
+  - type: UseDelay
+    delay: 360
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Android/parts.rsi
+    layers:
+      - state: eye_module
+  - type: Item
+    size: Tiny
+  - type: SpawnItemsOnUse
+    uses: 100000
+    items:
+      - id: SheetPlasteel
+    sound:
+      path: /Audio/Machines/phasein.ogg

@@ -12,10 +12,20 @@
   - type: Item
     sprite: Objects/Devices/gps.rsi
   - type: HandheldGPS
+    handheld: true # Corvax-Wega-Lavaland
   - type: PhysicalComposition
     materialComposition:
       Steel: 400
       Glass: 150
+  # Corvax-Wega-Lavaland-start
+  - type: HandheldGpsUi
+  - type: ActivatableUI
+    key: enum.GpsUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.GpsUiKey.Key:
+        type: GpsBoundUserInterface
+  # Corvax-Wega-Lavaland-end
   - type: Tag
     tags:
     - GPS

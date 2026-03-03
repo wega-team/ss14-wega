@@ -166,6 +166,52 @@ namespace Content.Server.Database
             DateTimeOffset editedAt);
         #endregion
 
+        // Corvax-Wega-Achievements-start
+        #region Achievements
+
+        /// <summary>
+        /// Get all achievements for a user.
+        /// </summary>
+        Task<List<AchievementRecord>> GetAchievementsAsync(NetUserId userId, CancellationToken cancel = default);
+
+        /// <summary>
+        /// Check if a user has a specific achievement.
+        /// </summary>
+        Task<bool> HasAchievementAsync(NetUserId userId, byte achievementKey, CancellationToken cancel = default);
+
+        /// <summary>
+        /// Add an achievement to a user.
+        /// </summary>
+        Task<bool> AddAchievementAsync(NetUserId userId, byte achievementKey, CancellationToken cancel = default);
+
+        /// <summary>
+        /// Remove a specific achievement from a user.
+        /// </summary>
+        Task<int> RemoveAchievementAsync(NetUserId userId, byte achievementKey, CancellationToken cancel = default);
+
+        /// <summary>
+        /// Clear all achievements for a user.
+        /// </summary>
+        Task<int> ClearAllAchievementsAsync(NetUserId userId, CancellationToken cancel = default);
+
+        /// <summary>
+        /// Remove all achievements with a specific key from all users.
+        /// </summary>
+        Task<int> RemoveAchievementByKeyAsync(byte achievementKey, CancellationToken cancel = default);
+
+        /// <summary>
+        /// Reset all achievements for all users.
+        /// </summary>
+        Task<int> ResetAllAchievementsAsync(CancellationToken cancel = default);
+
+        /// <summary>
+        /// Update achievement key for all users.
+        /// </summary>
+        Task<bool> UpdateAchievementKeyAsync(byte oldKey, byte newKey, CancellationToken cancel = default);
+
+        #endregion
+        // Corvax-Wega-Achievements-end
+
         #region Playtime
 
         /// <summary>
@@ -641,6 +687,60 @@ namespace Content.Server.Database
         // Corvax-Wega-Timepacked-end
 
         #endregion
+
+        // Corvax-Wega-Achievements-start
+        #region Achievements
+
+        public Task<List<AchievementRecord>> GetAchievementsAsync(NetUserId userId, CancellationToken cancel = default)
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetAchievementsAsync(userId, cancel));
+        }
+
+        public Task<bool> HasAchievementAsync(NetUserId userId, byte achievementKey, CancellationToken cancel = default)
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.HasAchievementAsync(userId, achievementKey, cancel));
+        }
+
+        public Task<bool> AddAchievementAsync(NetUserId userId, byte achievementKey, CancellationToken cancel = default)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.AddAchievementAsync(userId, achievementKey, cancel));
+        }
+
+        public Task<int> RemoveAchievementAsync(NetUserId userId, byte achievementKey, CancellationToken cancel = default)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.RemoveAchievementAsync(userId, achievementKey, cancel));
+        }
+
+        public Task<int> ClearAllAchievementsAsync(NetUserId userId, CancellationToken cancel = default)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.ClearAllAchievementsAsync(userId, cancel));
+        }
+
+        public Task<int> RemoveAchievementByKeyAsync(byte achievementKey, CancellationToken cancel = default)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.RemoveAchievementByKeyAsync(achievementKey, cancel));
+        }
+
+        public Task<int> ResetAllAchievementsAsync(CancellationToken cancel = default)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.ResetAllAchievementsAsync(cancel));
+        }
+
+        public Task<bool> UpdateAchievementKeyAsync(byte oldKey, byte newKey, CancellationToken cancel = default)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.UpdateAchievementKeyAsync(oldKey, newKey, cancel));
+        }
+
+        #endregion
+        // Corvax-Wega-Achievements-end
 
         public Task UpdatePlayerRecordAsync(
             NetUserId userId,

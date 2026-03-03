@@ -1,0 +1,136 @@
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobGoliathLavaland
+  name: Goliath Spawner
+  suffix: Lavaland
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: goliath1
+      sprite: _Wega/Mobs/Lavaland/goliath.rsi
+    - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+    - MobGoliath
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobAncientGoliathLavaland
+  name: Goliath Spawner
+  suffix: Lavaland
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: goliath
+      sprite: Mobs/Aliens/Asteroid/goliath.rsi
+    - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+    - MobAncientGoliath
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobLegionLavaland
+  name: Legion Spawner
+  suffix: Lavaland
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: legion
+      sprite: _Wega/Mobs/Lavaland/legion.rsi
+    - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+    - MobLegionLavaland
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobMarrowWeaverLavaland
+  name: Marrow Weaver Spawner
+  suffix: Lavaland
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: weaver
+      sprite: _Wega/Mobs/Lavaland/weaver.rsi
+    - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+    - MobMarrowWeaverLavaland
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobFrostbiteWeaverLavaland
+  name: Frostbite Weaver Spawner
+  suffix: Lavaland
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: weaver_ice
+      sprite: _Wega/Mobs/Lavaland/weaver.rsi
+    - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+    - MobFrostbiteWeaverLavaland
+
+# Inhabitants
+- type: entity
+  parent: MarkerBase
+  id: SpawnInhabitantSquare
+  name: Inhabitant Square Spawner
+  suffix: Lavaland
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+    - MobHumanInhabitantSquare
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnInhabitantHermit
+  name: Hermit Spawner
+  suffix: Lavaland
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+    - MobHumanInhabitantHermit
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnInhabitantBeachGuy
+  name: Beach Guy Spawner
+  suffix: Lavaland
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+    - MobHumanInhabitantBeachGuy
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnInhabitantTranslocatedVeterinarian
+  name: Translocated Veterinarian Spawner
+  suffix: Lavaland
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+    - MobHumanInhabitantTranslocatedVeterinarian

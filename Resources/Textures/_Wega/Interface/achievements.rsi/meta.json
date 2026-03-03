@@ -1,0 +1,32 @@
+{
+    "version": 1,
+	"license": "CC-BY-3.0",
+	"copyright": "aken from tgstation at https://github.com/tgstation/tgstation",
+	"size": {
+		"x": 76,
+		"y": 76
+	},
+	"states": [
+		{
+			"name": "firstboss"
+		},
+		{
+			"name": "bbgum"
+		},
+		{
+			"name": "colossus"
+		},
+		{
+			"name": "drake"
+		},
+		{
+			"name": "hierophant"
+		},
+		{
+			"name": "legion"
+		},
+		{
+			"name": "miner"
+		}
+	]
+}

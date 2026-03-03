@@ -68,8 +68,7 @@ public sealed partial class BloodCultSystem
         SubscribeLocalEvent<BloodCultistComponent, EmpoweringDoAfterEvent>(OnEmpoweringDoAfter);
         SubscribeLocalEvent<BloodRuneComponent, SummoningRuneSelectCultistMessage>(OnSummoningSelected);
 
-        SubscribeLocalEvent<BloodRuneCleaningDoAfterEvent>(DoAfterInteractRune);
-        SubscribeLocalEvent<BloodCultistComponent, BloodRuneCleaningDoAfterEvent>(DoAfterInteractRune);
+        SubscribeLocalEvent<BloodRuneComponent, BloodRuneCleaningDoAfterEvent>(DoAfterInteractRune);
     }
 
     #region Runes
@@ -986,19 +985,11 @@ public sealed partial class BloodCultSystem
         return reagentPrototype.SubstanceColor;
     }
 
-    private void DoAfterInteractRune(BloodRuneCleaningDoAfterEvent args)
+    private void DoAfterInteractRune(EntityUid uid, BloodRuneComponent comp, ref BloodRuneCleaningDoAfterEvent args)
     {
         if (args.Cancelled)
             return;
 
-        QueueDel(args.Target);
-    }
-
-    private void DoAfterInteractRune(EntityUid cultist, BloodCultistComponent component, BloodRuneCleaningDoAfterEvent args)
-    {
-        if (args.Cancelled)
-            return;
-
-        QueueDel(args.Target);
-    }
+        QueueDel(uid);
+	}
 }

@@ -1,0 +1,117 @@
+# Low value
+- type: biomeMarkerLayer
+  id: OreIronLavaland
+  entityMask:
+    AsteroidRock: AsteroidRockTin
+    WallRock: WallRockTin
+    WallRockBasalt: WallRockBasaltLavalandTin
+    WallRockChromite: WallRockChromiteTin
+    WallRockSand: WallRockSandTin
+    WallRockSnow: WallRockSnowTin
+  maxCount: 20
+  minGroupSize: 4
+  maxGroupSize: 8
+  radius: 4
+
+- type: biomeMarkerLayer
+  id: OreQuartzLavaland
+  entityMask:
+    AsteroidRock: AsteroidRockQuartz
+    WallRock: WallRockQuartz
+    WallRockBasalt: WallRockBasaltLavalandQuartz
+    WallRockChromite: WallRockChromiteQuartz
+    WallRockSnow: WallRockSnowQuartz
+  maxCount: 20
+  minGroupSize: 4
+  maxGroupSize: 8
+  radius: 4
+
+- type: biomeMarkerLayer
+  id: OreCoalLavaland
+  entityMask:
+    AsteroidRock: AsteroidRockCoal
+    WallRock: WallRockCoal
+    WallRockBasalt: WallRockBasaltLavalandCoal
+    WallRockChromite: WallRockChromiteCoal
+    WallRockSand: WallRockSandCoal
+    WallRockSnow: WallRockSnowCoal
+  maxCount: 20
+  minGroupSize: 4
+  maxGroupSize: 6
+  radius: 4
+
+# Medium value
+# Gold
+- type: biomeMarkerLayer
+  id: OreGoldLavaland
+  entityMask:
+    AsteroidRock: AsteroidRockGold
+    WallRock: WallRockGold
+    WallRockBasalt: WallRockBasaltLavalandGold
+    WallRockChromite: WallRockChromiteGold
+    WallRockSand: WallRockSandGold
+    WallRockSnow: WallRockSnowGold
+  maxCount: 10
+  minGroupSize: 2
+  maxGroupSize: 5
+  radius: 4
+
+# Silver
+- type: biomeMarkerLayer
+  id: OreSilverLavaland
+  entityMask:
+    AsteroidRock: AsteroidRockSilver
+    WallRock: WallRockSilver
+    WallRockBasalt: WallRockBasaltLavalandSilver
+    WallRockChromite: WallRockChromiteSilver
+    WallRockSand: WallRockSandSilver
+    WallRockSnow: WallRockSnowSilver
+  maxCount: 10
+  minGroupSize: 2
+  maxGroupSize: 5
+  radius: 4
+
+# High value
+# Plasma
+- type: biomeMarkerLayer
+  id: OrePlasmaLavaland
+  entityMask:
+    AsteroidRock: AsteroidRockPlasma
+    WallRock: WallRockPlasma
+    WallRockBasalt: WallRockBasaltLavalandPlasma
+    WallRockChromite: WallRockChromitePlasma
+    WallRockSand: WallRockSandPlasma
+    WallRockSnow: WallRockSnowPlasma
+  maxCount: 6
+  minGroupSize: 2
+  maxGroupSize: 4
+  radius: 4
+
+# Uranium
+- type: biomeMarkerLayer
+  id: OreUraniumLavaland
+  entityMask:
+    AsteroidRock: AsteroidRockUranium
+    WallRock: WallRockUranium
+    WallRockBasalt: WallRockBasaltLavalandUranium
+    WallRockChromite: WallRockChromiteUranium
+    WallRockSand: WallRockSandUranium
+    WallRockSnow: WallRockSnowUranium
+  maxCount: 7
+  minGroupSize: 2
+  maxGroupSize: 4
+  radius: 4
+
+- type: biomeMarkerLayer
+  id: OreDiamondLavaland
+  entityMask:
+    AsteroidRock: AsteroidRockDiamond
+    WallRock: WallRockDiamond
+    WallRockBasalt: WallRockBasaltLavalandDiamond
+    WallRockChromite: WallRockChromiteDiamond
+    WallRockSand: WallRockSandDiamond
+    WallRockSnow: WallRockSnowDiamond
+  maxCount: 3
+  minGroupSize: 1
+  maxGroupSize: 2
+  radius: 4

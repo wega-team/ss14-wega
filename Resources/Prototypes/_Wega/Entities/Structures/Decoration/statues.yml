@@ -1,0 +1,67 @@
+- type: entity
+  parent: BaseStructure
+  id: StatueAshDrake
+  name: statue of dragon
+  description: "That's a drake statue. A towering basalt sculpture of a proud and regal drake. Its eyes are six glowing gemstones."
+  components:
+  - type: Sprite
+    noRot: true
+    sprite: _Wega/Structures/Decoration/statues.rsi
+    state: drake
+    drawdepth: Mobs
+    offset: "0.0,0.5"
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 800
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: "/Audio/Effects/break_stone.ogg"
+          params:
+            volume: -3
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          GemHardenedShell:
+            min: 2
+            max: 3
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+- type: entity
+  parent: BaseStructure
+  id: StatueAshDrakeFalling
+  name: broken statue of dragon
+  description: "That's a drake statue. A towering basalt sculpture of a drake. Cracks run down its surface and parts of it have fallen off."
+  components:
+  - type: Sprite
+    noRot: true
+    sprite: _Wega/Structures/Decoration/statues.rsi
+    state: drake_falling
+    drawdepth: Mobs
+    offset: "0.0,0.5"
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 250
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: "/Audio/Effects/break_stone.ogg"
+          params:
+            volume: -3
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          GemHardenedShell:
+            min: 0
+            max: 1
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]

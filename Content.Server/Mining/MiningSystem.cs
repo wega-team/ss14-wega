@@ -1,4 +1,5 @@
 using Content.Shared.Destructible;
+using Content.Shared.Lavaland.Components; // Corvax-Wega-Lavaland
 using Content.Shared.Mining;
 using Content.Shared.Mining.Components;
 using Content.Shared.Random;
@@ -38,7 +39,15 @@ public sealed class MiningSystem : EntitySystem
         var toSpawn = _random.Next(proto.MinOreYield, proto.MaxOreYield+1);
         for (var i = 0; i < toSpawn; i++)
         {
-            Spawn(proto.OreEntity, coords.Offset(_random.NextVector2(0.2f)));
+            // Corvax-Wega-Lavaland-Edit-start
+            var ore = Spawn(proto.OreEntity, coords.Offset(_random.NextVector2(0.2f)));
+            var valueComp = EnsureComp<OreValueComponent>(ore);
+            if (proto.PointsPerUnit > 0)
+            {
+                valueComp.Points = proto.PointsPerUnit;
+                valueComp.Mined = true;
+            }
+            // Corvax-Wega-Lavaland-Edit-end
         }
     }
 

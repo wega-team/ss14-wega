@@ -334,7 +334,7 @@
       weight: 95
       children:
       - id: Machete
-      - id: Claymore
+    #  - id: Claymore # Corvax-Wega-Tweak
       - id: BaseBallBat
       - id: CombatKnife
       - id: Spear

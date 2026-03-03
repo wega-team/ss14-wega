@@ -1,0 +1,74 @@
+- type: utilityVendorCategory
+  id: UtilityBasic
+  name: utility-vendor-category-basic
+  priority: 1
+  inventory:
+    Flare: 50
+    Crowbar: 100
+    FlashlightLantern: 100
+    HandheldGPSBasic: 200
+    RadioHandheld: 200
+    Floodlight: 400
+
+- type: utilityVendorCategory
+  id: UtilityGear
+  name: utility-vendor-category-gear
+  priority: 2
+  inventory:
+    MineralScanner: 800
+    AdvancedMineralScanner: 3000
+    ClothingBeltSecondSalvageWebbing: 500
+    OreBag: 400
+    TrofeiBag: 400
+    FultonBeacon: 500
+    TrackingImplanter: 200
+    ClothingBackpackDuffelSalvageBaseKit: 2000
+    JetpackMiningFilled: 2000
+    ClothingShoesBootsJump: 2500
+    ClothingOuterHardsuitSalvage: 2500
+
+- type: utilityVendorCategory
+  id: UtilityConsumables
+  name: utility-vendor-category-consumables
+  priority: 3
+  inventory:
+    HandheldBeacon: 20
+    BoxHandheldBeacons: 500
+    FireExtinguisherMini: 400
+    MedkitBruteFilled: 600
+    MedkitBurnFilled: 600
+    SeismicCharge: 500
+    Fulton: 1000
+    WormholeJaunter: 900
+    TransferCard500: 500
+    HandCapsule: 700
+    ChemistryBottleStabilizingSerumP: 600
+    SurvivalMedipen: 800
+
+- type: utilityVendorCategory
+  id: UtilityDiggingTools
+  name: utility-vendor-category-digging
+  priority: 4
+  inventory:
+    Pickaxe: 100
+    WeaponGrapplingGun: 500
+    WeaponCrusher: 750
+    WeaponProtoKineticAccelerator: 750
+    PKAUpgradeRange: 1000
+    PKAUpgradeDamage: 1000
+    PKAUpgradeFireRate: 1000
+    PKAUpgradeAoE: 2000
+    WeaponPlasmaCutterEmpty: 1500
+
+- type: utilityVendorCategory
+  id: UtilityMisc
+  name: utility-vendor-category-misc
+  priority: 12
+  inventory:
+    DrinkAbsintheBottleFull: 500
+    Cigar: 100
+    ClothingEyesGlassesGar: 500
+    HandLuxuriousCapsule: 3000
+    Soap: 200
+    SpaceCash1000: 2000
+    DrinkWhiskeyBottleFull: 500

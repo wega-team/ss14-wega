@@ -3,6 +3,7 @@
   name: job-name-pilot
   description: job-description-pilot
   playTimeTracker: JobPilot
+  isSubRole: true # Corvax-Wega-add
   requirements:
   - !type:DepartmentTimeRequirement
     department: Security
@@ -20,6 +21,7 @@
   - Brig
   - Maintenance
   - Service
+  - LavalandAvanpost # Corvax-Wega-Lavaland
   - External
   - Cryogenics
   special:

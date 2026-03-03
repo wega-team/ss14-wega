@@ -117,3 +117,20 @@
           damage:
             types:
               Caustic: 0.2
+
+- type: reagent
+  id: LavalandSerum
+  name: reagent-name-lavaland-serum
+  group: Medicine
+  desc: reagent-desc-lavaland-serum
+  physicalDesc: reagent-physical-desc-pungent
+  flavor: sharp
+  color: "#a88867"
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:HealthChange
+        damage:
+          groups:
+            Brute: -2.5
+            Burn: -2.5

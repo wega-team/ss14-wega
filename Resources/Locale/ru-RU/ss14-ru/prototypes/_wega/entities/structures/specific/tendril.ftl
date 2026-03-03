@@ -1,0 +1,12 @@
+ent-NecropolisTendril = шип некрополя
+    .desc = Гигантский пульсирующий шип, проросший из самых глубин планеты. Испускает зловещую энергию и привлекает других ужасов этого места.
+    .suffix = НЕ МАППИТЬ
+ent-GoliathNecropolisTendril = { ent-NecropolisTendril }
+    .desc = { ent-NecropolisTendril.desc }
+    .suffix = { ent-NecropolisTendril.suffix }
+ent-LegionNecropolisTendril = { ent-NecropolisTendril }
+    .desc = { ent-NecropolisTendril.desc }
+    .suffix = { ent-NecropolisTendril.suffix }
+ent-WatchersNecropolisTendril = { ent-NecropolisTendril }
+    .desc = { ent-NecropolisTendril.desc }
+    .suffix = { ent-NecropolisTendril.suffix }

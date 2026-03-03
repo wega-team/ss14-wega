@@ -59,4 +59,126 @@
     sprite: _Wega/Clothing/Head/Hoods/Coat/postmanhood.rsi
   - type: Clothing
     sprite: _Wega/Clothing/Head/Hoods/Coat/postmanhood.rsi
-  
+
+- type: entity
+  parent: ClothingHeadHatHoodWinterBase
+  id: ClothingHeadHatHoodExplorer
+  name: explorer hood
+  description: It's quite thick and covering, don't you need it?
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Head/Hoods/Coat/explorerhood.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Wega/Clothing/Head/Hoods/Coat/explorerhood.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.8
+        Caustic: 0.65
+  - type: ClothingAshStormProtection
+    modifier: 0.05
+  - type: Dirtable
+    dirtState: explorer-hood
+    equippedDirtState: equipped-explorer-hood
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingHeadHatHoodExplorer
+  id: ClothingHeadHatHoodExplorerKhaki
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Head/Hoods/Coat/explorerhood_khaki.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Wega/Clothing/Head/Hoods/Coat/explorerhood_khaki.rsi
+
+- type: entity
+  parent: ClothingHeadHatHoodExplorer
+  id: ClothingHeadHatHoodExplorerMedical
+  name: explorer hood medical
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Head/Hoods/Coat/explorerhood_med.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Wega/Clothing/Head/Hoods/Coat/explorerhood_med.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.75
+        Slash: 0.75
+        Piercing: 0.75
+        Heat: 0.6
+        Caustic: 0.5
+
+- type: entity
+  parent: ClothingHeadHatHoodExplorer
+  id: ClothingHeadHatHoodExplorerBDM
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Unremoveable
+  - type: DeleteOnDrop
+  - type: Dirtable
+    currentDirtLevel: 100
+    dirtColor: "#880000"
+
+- type: entity
+  parent: ClothingHeadHatHoodExplorer
+  id: ClothingHeadHatHoodExplorerReinforced
+  name: reinforced explorer hood
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Head/Hoods/Coat/explorerhood_reinf.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Wega/Clothing/Head/Hoods/Coat/explorerhood_reinf.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.75
+        Slash: 0.75
+        Piercing: 0.75
+        Heat: 0.6
+        Caustic: 0.5
+
+- type: entity
+  parent: ClothingHeadHatHoodExplorerReinforced
+  id: ClothingHeadHatHoodExplorerKhakiReinforced
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Head/Hoods/Coat/explorerhood_khaki_reinf.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Wega/Clothing/Head/Hoods/Coat/explorerhood_khaki_reinf.rsi
+
+- type: entity
+  parent: ClothingHeadHatHoodWinterBase
+  id: ClothingHeadHatHoodPathfinder
+  name: pathfinder hood
+  description: It's quite thick and covering, don't you need it?
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Head/Hoods/Coat/pathfinder.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Wega/Clothing/Head/Hoods/Coat/pathfinder.rsi
+  - type: ClothingAshStormProtection
+    modifier: 0.2
+  - type: Dirtable
+    dirtState: explorer-hood
+    equippedDirtState: equipped-explorer-hood
+  - type: Tag
+    tags:
+    - WhitelistChameleon

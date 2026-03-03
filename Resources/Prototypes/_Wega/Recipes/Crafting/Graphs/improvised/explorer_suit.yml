@@ -1,0 +1,45 @@
+- type: constructionGraph
+  id: ExplorerSuitReinforced
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: explorerSuit
+      steps:
+      - tag: ExplorerSuit
+        icon:
+          sprite: _Wega/Clothing/OuterClothing/Armor/explorer_suit.rsi
+          state: icon
+        name: construction-graph-tag-explorer-suit
+        doAfter: 10
+      - material: Sinew
+        amount: 2
+        doAfter: 2.5
+      - material: GoliathHide
+        amount: 4
+        doAfter: 10
+  - node: explorerSuit
+    entity: ClothingOuterArmorExplorerSuitReinforced
+
+- type: constructionGraph
+  id: ExplorerSuitKhakiReinforced
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: explorerSuit
+      steps:
+      - tag: ExplorerSuitKhaki
+        icon:
+          sprite: _Wega/Clothing/OuterClothing/Armor/explorer_suit_khaki.rsi
+          state: icon
+        name: construction-graph-tag-explorer-suit
+        doAfter: 10
+      - material: Sinew
+        amount: 2
+        doAfter: 2.5
+      - material: GoliathHide
+        amount: 4
+        doAfter: 10
+  - node: explorerSuit
+    entity: ClothingOuterArmorExplorerSuitKhakiReinforced

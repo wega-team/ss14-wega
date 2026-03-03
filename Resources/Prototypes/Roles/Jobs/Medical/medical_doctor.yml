@@ -17,8 +17,11 @@
   - Chemistry
   # Corvax-Wega-SubRoles-start
   subRoles:
+  - SeniorPhysician
+  - Paramedic
   - Surgeon
   - Geneticist
+  - Psychologist
   - Coroner
   # Corvax-Wega-SubRoles-end
   special:

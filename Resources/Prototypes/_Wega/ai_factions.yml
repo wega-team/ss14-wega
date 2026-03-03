@@ -17,3 +17,24 @@
   - SimpleHostile
   - Xeno
   - Dragon
+
+- type: npcFaction
+  id: LavalandFauna
+  hostile:
+  - NanoTrasen
+  - Dragon
+  - Mouse
+  - Passive
+  - PetsNT
+  - SimpleHostile
+  - SimpleNeutral
+  - Syndicate
+  - Xeno
+  - Zombie
+  - Revolutionary
+  - Wizard
+  - Xenoborg
+  - AllHostile
+  - Vampire # Corvax-Wega-Vampire
+  - BloodCult # Corvax-Wega-Blood-Cult
+  - LavalandFauna # Corvax-Wega-Lavaland

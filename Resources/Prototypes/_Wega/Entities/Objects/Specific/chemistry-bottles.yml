@@ -1,0 +1,14 @@
+- type: entity
+  id: ChemistryBottleStabilizingSerumP
+  suffix: stabilizing serum
+  parent: BaseChemistryBottleFilled
+  components:
+  - type: Label
+    currentLabel: reagent-name-stabilizing-serum-potion
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: StabilizingSerumPotion
+          Quantity: 30

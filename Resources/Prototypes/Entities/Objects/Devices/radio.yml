@@ -24,21 +24,42 @@
   - type: Tag
     tags:
     - Radio
-
+# Corvax-Wega-Start
 - type: entity
   name: security radio
   description: A handy security radio.
   parent: [ RadioHandheld, BaseSecurityContraband ]
   id: RadioHandheldSecurity
   components:
-  - type: RadioMicrophone
-    broadcastChannel: Security
-    listenRange: 1
-  - type: RadioSpeaker
-    channels:
-    - Security
   - type: Sprite
     sprite: Objects/Devices/securityhandy.rsi
   - type: Item
     sprite: Objects/Devices/securityhandy.rsi
     heldPrefix: walkietalkie
+  - type: EncryptionKeyHolder
+    keySlots: 1
+    keysExtractionMethod: None
+  - type: RadioMicrophone
+    listenRange: 1
+    toggleOnInteract: false
+  - type: RadioSpeaker
+    toggleOnInteract: false
+  - type: Intercom
+  - type: VoiceOverride # This is for the wire that makes an electricity zapping noise.
+    speechVerbOverride: Electricity
+    enabled: false
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeySecurityRadio
+  - type: ContainerContainer
+    containers:
+      key_slots: !type:Container
+  - type: ActivatableUI
+    key: enum.IntercomUiKey.Key
+    singleUser: true
+  - type: UserInterface
+    interfaces:
+      enum.IntercomUiKey.Key:
+        type: IntercomBoundUserInterface
+# Corvax-Wega-end

@@ -16,6 +16,7 @@
   - ClothingMaskWeldingGas
   - ClothingShoesBootsJump
   - LegSyntheticJump # Corvax-Wega-Androids
+  - WeaponPlasmaCutter # Corvax-Wega-Lavaland
 
 - type: technology
   id: SpaceScanning
@@ -187,6 +188,8 @@
     - OreBagOfHolding
     - MiningDrillDiamond
     - AdvancedMineralScannerEmpty
+    - WeaponPlasmaCutterAdv # Corvax-Wega-Lavaland
+    - WeaponIndustrialFanPlasmaCutter # Corvax-Wega-Lavaland
     - BorgModuleAdvancedMining
     - SalvageExpeditionsComputerCircuitboard # Corvax-Cringe
 

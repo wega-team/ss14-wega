@@ -317,3 +317,20 @@
   components:
   - type: Sprite
     sprite: Structures/Power/xenoborg_charger.rsi
+# Corvax-Wega-start
+  - type: Charger
+    chargeRate: 75
+  - type: DamageInContainer
+    allowedStates:
+    - Alive
+    - Critical
+    damage:
+      types:
+        Heat: -3
+      groups:
+        Brute: -3
+    slotId: entity_storage
+    whitelist:
+      components:
+      - BorgChassis
+# Corvax-Wega-end

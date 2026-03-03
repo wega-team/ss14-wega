@@ -1,0 +1,17 @@
+- type: entity
+  parent: CrateBaseWeldable
+  id: CrateNecropolis
+  name: necropolis crate
+  description: "An ancient sarcophagus that emits an ominous glow. Contains rewards for defeating the horrors of the Necropolis. Has strange protective properties."
+  components:
+  - type: Icon
+    sprite: _Wega/Structures/Storage/Crates/necrocrate.rsi
+  - type: Sprite
+    sprite: _Wega/Structures/Storage/Crates/necrocrate.rsi
+  - type: Reflect
+    reflects:
+    - Energy
+    reflectProb: 0.2
+    spread: 90
+  - type: RadiationBlockingContainer
+    resistance: 2.5

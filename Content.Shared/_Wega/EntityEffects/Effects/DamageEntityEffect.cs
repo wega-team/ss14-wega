@@ -44,7 +44,6 @@ public sealed partial class EntityDamage : EntityEffectBase<EntityDamage>
 
     public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
         => Loc.GetString("reagent-effect-guidebook-damage-if-component",
-            ("chance", Probability),
             ("damage", Amount),
             ("type", DamageType),
             ("component", RequiredComponent));

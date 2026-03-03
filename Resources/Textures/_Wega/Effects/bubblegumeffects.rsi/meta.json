@@ -1,0 +1,26 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA 3.0",
+    "copyright": "Sprite created by svarshiksatanist (414799795463651332)",
+    "size": {
+        "x": 30,
+        "y": 53
+    },
+    "states": [
+        {
+            "name": "hand"
+        },
+        {
+            "name": "handin",
+            "delays": [
+                [ 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05 ]
+            ]
+        },
+        {
+            "name": "handout",
+            "delays": [
+                [ 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05 ]
+            ]
+        }
+    ]
+}

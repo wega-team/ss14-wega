@@ -9,6 +9,7 @@
   - type: Item
     sprite: Objects/Materials/ore.rsi
     size: Normal
+  - type: OreValue # Corvax-Wega-Lavaland
   - type: Tag
     tags:
     - Ore

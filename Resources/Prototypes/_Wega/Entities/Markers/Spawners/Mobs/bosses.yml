@@ -1,0 +1,85 @@
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobBloodDrunkMinerLavaland
+  name: Blood Drunk Miner Spawner
+  suffix: Lavaland, DO NOT MAP
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+    - MobBloodDrunkMiner
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobHierophantLavaland
+  name: Hierophant Spawner
+  suffix: Lavaland, DO NOT MAP
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: hierophant
+      sprite: _Wega/Mobs/Lavaland/hierophant.rsi
+    - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+    - MobHierophant
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMegaLegionLavaland
+  name: Mega Legion Spawner
+  suffix: Lavaland, DO NOT MAP
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+    - MobMegaLegion
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnColossusLavaland
+  name: Colossus Spawner
+  suffix: Lavaland, DO NOT MAP
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+    - MobColossus
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnAshDrakeLavaland
+  name: Ash Drake Spawner
+  suffix: Lavaland, DO NOT MAP
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+    - MobAshDrake
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnBubblegumLavaland
+  name: Bubblegum Spawner
+  suffix: Lavaland, DO NOT MAP
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+    - MobBubblegum

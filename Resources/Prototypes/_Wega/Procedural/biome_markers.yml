@@ -1,0 +1,13 @@
+- type: biomeMarkerLayer
+  id: RandomNecropolisTendrils
+  prototype: SpawnerRandomNecropolisTendril
+  radius: 48
+  maxCount: 28
+  size: 512
+
+- type: biomeMarkerLayer
+  id: RandomLavalandMob
+  prototype: SpawnerRandomLavalandMob
+  radius: 32
+  maxCount: 96
+  size: 128

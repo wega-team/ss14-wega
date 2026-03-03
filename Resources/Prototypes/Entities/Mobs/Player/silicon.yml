@@ -555,12 +555,12 @@
       borg_module:
         - BorgModuleOperative
         - BorgModuleL6C
-        - BorgModuleDoubleEsword
+        - BorgModuleChina # BorgModuleDoubleEsword Corvax-Wega
   - type: ItemSlots
     slots:
       cell_slot:
         name: power-cell-slot-component-slot-name-default
-        startingItem: PowerCellHyper
+        startingItem: PowerCellMicroreactor # PowerCellHyper Corvax-Wega
 
 - type: entity
   id: PlayerBorgSyndicateAssaultGhostRole

@@ -48,3 +48,12 @@
   - type: SuitSensor
     randomMode: false
     mode: SensorCords
+
+- type: entity
+  abstract: true
+  id: BaseUpgradableClothingUniform
+  components:
+  - type: UpgradeableClothing
+    whitelist:
+      tags:
+        - UniformUpgrade

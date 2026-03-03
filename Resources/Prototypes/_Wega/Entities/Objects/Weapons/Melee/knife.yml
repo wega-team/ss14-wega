@@ -80,3 +80,38 @@
     walkModifier: 1.1
     sprintModifier: 1.1
   - type: HeldSpeedModifier
+
+- type: entity
+  parent: BaseItem
+  id: WeaponCleawingSaw
+  name: cleawing saw
+  description: "A fast-paced saw made from very old and rusty metal."
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/cleaving_saw.rsi
+    state: icon
+  - type: Item
+    storedRotation: -45
+    size: Small
+  - type: Sharp
+  - type: Execution
+    doAfterDuration: 4.0
+    canGunExecute: false # Corvax-Wega-Suicide
+  - type: Utensil
+    types:
+      - Knife
+  - type: Tool
+    qualities:
+      - Sawing
+    useSound:
+      path: /Audio/Items/Culinary/chop.ogg
+  - type: MeleeWeapon
+    possibilityWideAtack: false
+    attackRate: 2.25
+    damage:
+      types:
+        Slash: 10
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: DisarmMalus
+    malus: 0

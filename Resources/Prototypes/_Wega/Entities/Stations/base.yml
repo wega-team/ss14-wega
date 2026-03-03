@@ -1,0 +1,8 @@
+- type: entity
+  id: BaseStationLavaland
+  abstract: true
+  components:
+    - type: StationLavaland
+      biome: Lavaland
+    - type: StationLavalandShuttle
+    - type: StationLavalandPenalServitudeShuttle

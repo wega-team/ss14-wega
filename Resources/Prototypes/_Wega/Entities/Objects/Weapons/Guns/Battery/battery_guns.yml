@@ -118,3 +118,158 @@
   - type: Tag
     tags:
     - Sidearm
+
+- type: entity
+  name: plasma cutter
+  parent: BaseWeaponBatterySmall
+  id: WeaponPlasmaCutter
+  description: A good mining tool that can help to break through the rocks really fast
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Plasma/cutter.rsi
+    state: icon
+  - type: Gun
+    fireRate: 1
+    soundGunshot:
+      path: /Audio/_Wega/Weapons/Guns/Gunshots/plasma_cutter.ogg
+  - type: Item
+    size: Normal
+    shape:
+    - 0,0,2,1
+  - type: Battery
+    maxCharge: 1500
+    startingCharge: 1500
+  - type: BatterySelfRecharger
+    autoRechargeRate: 25
+  - type: BatteryAmmoProvider
+    proto: BulletPlasmaCutter
+    fireCost: 75
+  - type: Appearance
+
+- type: entity
+  parent: WeaponPlasmaCutter
+  id: WeaponPlasmaCutterEmpty
+  suffix: Empty
+  components:
+  - type: Battery
+    maxCharge: 1500
+    startingCharge: 0
+
+- type: entity
+  name: plasma cutter adv
+  parent: WeaponPlasmaCutter
+  id: WeaponPlasmaCutterAdv
+  description: A good mining tool that can help to break through the rocks really fast
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Plasma/adv_cutter.rsi
+    state: icon
+  - type: Gun
+    fireRate: 1.5
+  - type: Battery
+    maxCharge: 2500
+    startingCharge: 2500
+  - type: BatteryAmmoProvider
+    proto: BulletPlasmaCutterAdv
+    fireCost: 75
+
+- type: entity
+  parent: WeaponPlasmaCutterAdv
+  id: WeaponPlasmaCutterAdvEmpty
+  suffix: Empty
+  components:
+  - type: Battery
+    maxCharge: 2500
+    startingCharge: 0
+
+- type: entity
+  parent: BaseWeaponBatterySmall
+  id: WeaponIndustrialFanPlasmaCutter
+  name: industrial fan cutter
+  description: A plasma cutter that shoots 'buckshot'.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Plasma/shotgun_cutter.rsi
+    layers:
+      - state: base
+        map: ["enum.GunVisualLayers.Base"]
+      - state: mag-unshaded-2
+        map: ["enum.GunVisualLayers.MagUnshaded"]
+        shader: unshaded
+  - type: MagazineVisuals
+    zeroVisible: true
+    magState: mag
+    steps: 3
+  - type: Appearance
+  - type: Clothing
+    sprite: _Wega/Objects/Weapons/Guns/Plasma/shotgun_cutter.rsi
+  - type: Gun
+    fireRate: 1
+    soundGunshot:
+      path: /Audio/_Wega/Weapons/Guns/Gunshots/plasma_cutter.ogg
+  - type: BatteryAmmoProvider
+    proto: BulletPlasmaCutterSpreadNarrow
+    fireCost: 80
+  - type: Battery
+    maxCharge: 480
+    startingCharge: 480
+  - type: BatterySelfRecharger
+    autoRechargeRate: 5
+  - type: Item
+    size: Normal
+    shape:
+    - 0,0,2,1
+
+- type: entity
+  parent: WeaponIndustrialFanPlasmaCutter
+  id: WeaponIndustrialFanPlasmaCutterEmpty
+  suffix: Empty
+  components:
+  - type: Battery
+    maxCharge: 480
+    startingCharge: 0
+
+- type: entity
+  parent: WeaponPlasmaCutter
+  id: WeaponMagmitePlasmaCutter
+  name: magmite plasmacutter
+  description: "A magmitic version of a conventional plasma cutter. At what cost?"
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Plasma/magmite_cutter.rsi
+    layers:
+    - state: icon
+    - state: icon-uncharged
+      visible: false
+      map: [ "empty-icon" ]
+  - type: Gun
+    fireRate: 1.75
+  - type: Battery
+    maxCharge: 5000
+    startingCharge: 5000
+  - type: BatteryAmmoProvider
+    proto: BulletPlasmaCutterMagma
+    fireCost: 100
+  - type: StaticPrice
+    price: 3000
+
+- type: entity
+  parent: WeaponIndustrialFanPlasmaCutter
+  id: WeaponMagmiteFanPlasmaCutter
+  name: magmite fan cutter
+  description: "A magmitic version of a conventional fan cutter. At what cost?"
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Plasma/magmite_shotgun_cutter.rsi
+  - type: Gun
+    fireRate: 1.75
+  - type: Battery
+    maxCharge: 960
+    startingCharge: 960
+  - type: BatteryAmmoProvider
+    proto: BulletPlasmaCutterMagmaSpreadNarrow
+    fireCost: 80
+  - type: BatterySelfRecharger
+    autoRechargeRate: 20
+  - type: StaticPrice
+    price: 3000

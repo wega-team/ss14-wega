@@ -2,7 +2,22 @@
   parent: BaseGoldBorgModuleRecipe
   id: BorgModuleSurgery
   result: BorgModuleSurgery
-  
+
+- type: latheRecipe
+  parent: BaseGoldBorgModuleRecipe
+  id: BorgModuleAdvancedAnomaly
+  result: BorgModuleAdvancedAnomaly
+
+- type: latheRecipe
+  parent: BaseGoldBorgModuleRecipe
+  id: BorgModuleLethal
+  result: BorgModuleLethal
+
+- type: latheRecipe
+  parent: BaseGoldBorgModuleRecipe
+  id: BorgModuleGardening
+  result: BorgModuleGardening
+
 - type: latheRecipe
   parent: BaseGoldBorgModuleRecipe
   id: BorgModuleKinetic
@@ -15,8 +30,38 @@
 
 - type: latheRecipe
   parent: BaseBorgModuleRecipe
+  id: BorgModuleRobotics
+  result: BorgModuleRobotics
+
+- type: latheRecipe
+  parent: BaseBorgModuleRecipe
+  id: BorgModuleAnomaly
+  result: BorgModuleAnomaly
+
+- type: latheRecipe
+  parent: BaseBorgModuleRecipe
+  id: BorgModuleArtifact
+  result: BorgModuleArtifact
+
+- type: latheRecipe
+  parent: BaseBorgModuleRecipe
   id: BorgModuleCommonMagBoots
   result: BorgModuleCommonMagBoots
+
+- type: latheRecipe
+  parent: BaseBorgModuleRecipe
+  id: BorgModuleCommonCandy
+  result: BorgModuleCommonCandy
+
+- type: latheRecipe
+  parent: BaseBorgModuleRecipe
+  id: BorgModuleCleaningCommon
+  result: BorgModuleCleaningCommon
+
+- type: latheRecipe
+  parent: BaseBorgModuleRecipe
+  id: BorgModuleMusique
+  result: BorgModuleMusique
 
 - type: latheRecipe
   parent: BaseBorgModuleRecipe
@@ -52,21 +97,11 @@
   parent: BaseBorgModuleRecipe
   id: BorgModuleHarvesting
   result: BorgModuleHarvesting
-
-- type: latheRecipe
-  parent: BaseBorgModuleRecipe
-  id: BorgModuleGardening
-  result: BorgModuleGardening
   
 - type: latheRecipe
   parent: BaseBorgModuleRecipe
   id: BorgModuleClowning
   result: BorgModuleClowning
-
-- type: latheRecipe
-  parent: BaseBorgModuleRecipe
-  id: BorgModuleMusique
-  result: BorgModuleMusique
 
 - type: latheRecipe
   parent: BaseGoldBorgModuleRecipe

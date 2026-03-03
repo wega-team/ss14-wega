@@ -4,6 +4,7 @@
   description: job-description-musician
   playTimeTracker: JobMusician
   startingGear: MusicianGear
+  isSubRole: true # Corvax-Wega-add
   icon: "JobIconMusician"
   supervisors: job-supervisors-hop # Corvax-JobSupervisors
   access:

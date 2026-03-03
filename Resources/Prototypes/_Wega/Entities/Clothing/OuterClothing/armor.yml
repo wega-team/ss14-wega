@@ -61,3 +61,177 @@
     sprite: _Wega/Clothing/OuterClothing/Armor/captain_carapace_white.rsi
   - type: Clothing
     sprite: _Wega/Clothing/OuterClothing/Armor/captain_carapace_white.rsi
+
+- type: entity
+  parent: [ ClothingOuterBaseMedium, AllowSuitStorageClothing, BaseCargoContraband ]
+  id: ClothingOuterArmorExplorerSuit
+  name: explorer suit
+  description: This is a durable and reinforced type of armor designed for survival in extreme conditions.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Armor/explorer_suit.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Wega/Clothing/OuterClothing/Armor/explorer_suit.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.7
+        Slash: 0.7
+        Piercing: 0.75
+        Heat: 0.7
+        Caustic: 0.85
+  - type: ExplosionResistance
+    damageCoefficient: 0.6
+  - type: FireProtection
+    reduction: 0.4
+  - type: TemperatureProtection
+    heatingCoefficient: 0.5
+  - type: ClothingAshStormProtection
+    modifier: 0.2
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHatHoodExplorer
+    requiredSlot:
+    - outerClothing
+    slot: head
+  - type: ContainerContainer
+    containers:
+      toggleable-clothing: !type:ContainerSlot {}
+  - type: Dirtable
+    dirtState: explorersuit
+    equippedDirtState: equipped-explorersuit
+  - type: Tag
+    tags:
+    - ExplorerSuit
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingOuterArmorExplorerSuit
+  id: ClothingOuterArmorExplorerSuitKhaki
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Armor/explorer_suit_khaki.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Wega/Clothing/OuterClothing/Armor/explorer_suit_khaki.rsi
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHatHoodExplorerKhaki
+  - type: Tag
+    tags:
+    - ExplorerSuitKhaki
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingOuterArmorExplorerSuit
+  id: ClothingOuterArmorExplorerSuitMedical
+  name: explorer suit medical
+  description: A better version of the regular armor, in one copy, for an assistant on the fields of death and stupidity.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Armor/explorer_suit_med.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Wega/Clothing/OuterClothing/Armor/explorer_suit_med.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.55
+        Heat: 0.5
+        Caustic: 0.75
+  - type: ExplosionResistance
+    damageCoefficient: 0.5
+  - type: FireProtection
+    reduction: 0.5
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHatHoodExplorerMedical
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingOuterArmorExplorerSuit
+  id: ClothingOuterArmorExplorerSuitBDM
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Unremoveable
+  - type: DeleteOnDrop
+  - type: SpawnOnDelete
+    prototype: ClothingOuterArmorExplorerSuit
+  - type: Dirtable
+    currentDirtLevel: 100
+    dirtColor: "#880000"
+
+- type: entity
+  parent: ClothingOuterArmorExplorerSuit
+  id: ClothingOuterArmorExplorerSuitReinforced
+  name: reinforced explorer suit
+  description: A self-improved version of regular armor. Gives its user more room for error.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Armor/explorer_suit_reinf.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Wega/Clothing/OuterClothing/Armor/explorer_suit_reinf.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.55
+        Heat: 0.5
+        Caustic: 0.75
+  - type: ExplosionResistance
+    damageCoefficient: 0.5
+  - type: FireProtection
+    reduction: 0.5
+  - type: TemperatureProtection
+    heatingCoefficient: 0.4
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHatHoodExplorerReinforced
+  - type: Construction
+    graph: ExplorerSuitReinforced
+    node: explorerSuit
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingOuterArmorExplorerSuitReinforced
+  id: ClothingOuterArmorExplorerSuitKhakiReinforced
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Armor/explorer_suit_khaki_reinf.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Wega/Clothing/OuterClothing/Armor/explorer_suit_khaki_reinf.rsi
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHatHoodExplorerKhakiReinforced
+  - type: Construction
+    graph: ExplorerSuitKhakiReinforced
+    node: explorerSuit
+
+- type: entity
+  parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing]
+  id: ClothingOuterArmorHostileEnv
+  name: H.E.C.K. suit
+  description: "Experimental Kinetic Protective Sheathed Suit: A suit specifically designed to protect against a wide range of Lasee hazards. Apparently, this was not enough for its previous owner."
+  components:
+    - type: Sprite
+      sprite: _Wega/Clothing/OuterClothing/Armor/hostile_env.rsi
+    - type: Clothing
+      sprite: _Wega/Clothing/OuterClothing/Armor/hostile_env.rsi
+    - type: Armor
+      modifiers:
+        coefficients:
+          Blunt: 0.3
+          Slash: 0.3
+          Piercing: 0.6
+          Heat: 0.9
+    - type: ExplosionResistance
+      damageCoefficient: 0.5
+    - type: FireProtection
+      reduction: 0.5
+    - type: ClothingAshStormProtection
+      modifier: 0.4

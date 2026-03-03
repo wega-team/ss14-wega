@@ -102,3 +102,81 @@
     radius: 1.5
     energy: 1.6
     color: "#b53ca1"
+
+- type: entity
+  parent: BaseComputerAiAccess
+  id: LavalandShuttleConsole
+  name: lavaland shuttle console
+  description: "Use this terminal to call a shuttle to Lavaland, where the real adventure begins."
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: mining
+    - map: ["computerLayerKeys"]
+      state: mining_key
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+  - type: LavalandShuttleConsole
+  - type: ActivatableUI
+    singleUser: true
+    key: enum.LavalandShuttleConsoleUiKey.Key
+  - type: ActivatableUIRequiresPower
+  - type: UserInterface
+    interfaces:
+      enum.LavalandShuttleConsoleUiKey.Key:
+        type: LavalandConsoleBoundUserInterface
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
+  - type: ApcPowerReceiver
+    powerLoad: 250
+  - type: Computer
+    board: LavalandShuttleComputerCircuitboard
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#b53ca1"
+
+- type: entity
+  parent: BaseComputerAiAccess
+  id: PenalServitudeLavalandShuttleConsole
+  name: penal servitude lavaland shuttle console
+  description: "Use this terminal to call a shuttle to Lavaland, where the real adventure begins."
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: security
+    - map: ["computerLayerKeys"]
+      state: security_key
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+  - type: PenalServitudeShuttleConsole
+  - type: ActivatableUI
+    singleUser: true
+    key: enum.PenalServitudeLavalandShuttleConsoleUiKey.Key
+  - type: ActivatableUIRequiresPower
+  - type: UserInterface
+    interfaces:
+      enum.PenalServitudeLavalandShuttleConsoleUiKey.Key:
+        type: LavalandPenalServitudeConsoleBoundUserInterface
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
+  - type: ApcPowerReceiver
+    powerLoad: 250
+  - type: Computer
+    board: LavalandPenalServitudeShuttleComputerCircuitboard
+  - type: AccessReader
+    access: [["Security"]]
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#b53ca1"

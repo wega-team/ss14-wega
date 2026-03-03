@@ -1,0 +1,90 @@
+- type: entity
+  parent: FoodProduceBase
+  id: FoodFloraCactusFruit
+  name: fruit of the barrel cactus
+  description: "A juicy fruit covered with thin thorns. Inside, there is a sweet and sour flesh that perfectly quenches your thirst."
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Omnizine
+          Quantity: 2.5
+        - ReagentId: Saline
+          Quantity: 2.5
+  - type: Sprite
+    sprite: _Wega/Objects/Consumable/Food/flora.rsi
+    state: cactus_fruit
+  - type: Tag
+    tags:
+    - Fruit
+
+- type: entity
+  parent: FoodProduceBase
+  id: FoodFloraPolyporeMushroom
+  name: wood tinder box
+  description: "A tough, leathery mushroom that grows on tree trunks. It is inedible when raw, but dried and processed plates have long been used to make durable tinder and crafts."
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 5
+  - type: Sprite
+    sprite: _Wega/Objects/Consumable/Food/flora.rsi
+    state: mushroom_shavings
+
+- type: entity
+  parent: FoodProduceBase
+  id: FoodFloraInocybeMushroom
+  name: pale fire mushroom
+  description: "A fragile mushroom with a cone-shaped cap covered in cracks. It emits an unsettling, almost invisible glow. It is said that shamans use it to travel to other worlds, but the price for such an experience is terrible."
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: THC
+          Quantity: 2.5
+        - ReagentId: Amatoxin
+          Quantity: 2.5
+  - type: Sprite
+    sprite: _Wega/Objects/Consumable/Food/flora.rsi
+    state: mushroom_cap
+
+- type: entity
+  parent: FoodProduceBase
+  id: FoodFloraPorciniMushroom
+  name: smoky boletus
+  description: "A strong, fleshy mushroom with a distinctive brown cap. When broken, it emits a subtle smell of smoke and old paper. It has a slight stimulating effect."
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nicotine
+          Quantity: 2.5
+        - ReagentId: Saline
+          Quantity: 2.5
+  - type: Sprite
+    sprite: _Wega/Objects/Consumable/Food/flora.rsi
+    state: mushroom_leaf
+
+- type: entity
+  parent: FoodProduceBase
+  id: FoodFloraEmbershroom
+  name: charcoal-fire tinder fungus
+  description: "A heavy, almost stone-like mushroom with the color of a burnt-out coal. In the dark, its veins pulse with a faint red light. When consumed, it induces a sense of euphoria and causes the skin to glow with a residual light."
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Vitamin
+          Quantity: 2.5
+        - ReagentId: SpaceDrugs
+          Quantity: 2.5
+  - type: Sprite
+    sprite: _Wega/Objects/Consumable/Food/flora.rsi
+    state: mushroom_stem

@@ -1,0 +1,50 @@
+#region Boss Block
+- type: achievement
+  id: FirstBoss
+  name: achievements-firstboss-name
+  description: achievements-firstboss-desc
+  key: FirstBoss
+  icon: { sprite: _Wega/Interface/achievements.rsi, state: firstboss }
+
+- type: achievement
+  id: Hierophant
+  name: achievements-hierophantboss-name
+  description: achievements-hierophantboss-desc
+  key: HierophantBoss
+  icon: { sprite: _Wega/Interface/achievements.rsi, state: hierophant }
+
+- type: achievement
+  id: Miner
+  name: achievements-minerboss-name
+  description: achievements-minerboss-desc
+  key: MinerBoss
+  icon: { sprite: _Wega/Interface/achievements.rsi, state: miner }
+
+- type: achievement
+  id: Legion
+  name: achievements-legionboss-name
+  description: achievements-legionboss-desc
+  key: LegionBoss
+  icon: { sprite: _Wega/Interface/achievements.rsi, state: legion }
+
+- type: achievement
+  id: Colossus
+  name: achievements-colossusboss-name
+  description: achievements-colossusboss-desc
+  key: ColossusBoss
+  icon: { sprite: _Wega/Interface/achievements.rsi, state: colossus }
+
+- type: achievement
+  id: AshDrake
+  name: achievements-ashdrakeboss-name
+  description: achievements-ashdrakeboss-desc
+  key: AshDrakeBoss
+  icon: { sprite: _Wega/Interface/achievements.rsi, state: drake }
+
+- type: achievement
+  id: Bubblegum
+  name: achievements-bubblegumboss-name
+  description: achievements-bubblegumboss-desc
+  key: BubblegumBoss
+  icon: { sprite: _Wega/Interface/achievements.rsi, state: bbgum }
+#endregion Boss Block

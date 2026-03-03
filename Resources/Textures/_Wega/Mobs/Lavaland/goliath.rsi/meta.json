@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Taken from https://github.com/ParadiseSS13/Paradise",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "goliath1",
+      "directions": 4
+    },
+    {
+      "name": "goliath2",
+      "directions": 4
+    },
+    {
+      "name": "goliath_dead"
+    }
+  ]
+}
