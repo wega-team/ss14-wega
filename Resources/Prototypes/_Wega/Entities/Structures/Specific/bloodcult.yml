@@ -384,9 +384,10 @@
     fixture: fix1
     sound: "/Audio/_Wega/Effects/anvil.ogg"
     structureGear:
-    - ClothingOuterArmorCult
+    - ClothingOuterArmorBloodCult
     - ClothingOuterFlagellantRobe
     - MirrorShield
+    - ClothingShoesBootsForsaken
   - type: Construction
     graph: BloodCultStructureForgeGraph
     node: BloodCultStructureForge

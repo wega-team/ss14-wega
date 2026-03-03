@@ -189,7 +189,7 @@
     attackRate: 1
     damage:
       types:
-        Slash: 30
+        Slash: 25
     soundHit:
         path: /Audio/Weapons/bladeslice.ogg
   - type: DisarmMalus
@@ -228,7 +228,7 @@
     attackRate: 1
     damage:
       types:
-        Piercing: 30
+        Piercing: 25
     soundHit:
         path: /Audio/Weapons/bladeslice.ogg
   - type: DisarmMalus
@@ -270,7 +270,7 @@
     attackRate: 1
     damage:
       types:
-        Heat: 30
+        Heat: 25
     soundHit:
         path: /Audio/Weapons/bladeslice.ogg
   - type: DisarmMalus
@@ -529,3 +529,4 @@
   - type: BallisticAmmoProvider
     proto: ProjectileBloodBolt
     capacity: 24
+  - type: BloodCultAllowedGun # Corvax-Wega-BloodCult

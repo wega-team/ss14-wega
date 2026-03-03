@@ -99,3 +99,6 @@ blood-cultist-bloodboil-message = Dedo ol'btoh!
 blood-cultist-spiritrealm-message = Gal'h'rfikk harfrandid mud'gib!
 blood-cultist-ritual-message = TOK-LYR RQA-NAP G'OLT-ULOFT!
 blood-cultist-default-message = Durn'koth ya'riska thol'mar!
+
+blood-cult-on-equip-hand = Ваша рука теряет возможность сжаться в кулак из-за проклятия и вы роняете предмет.
+blood-cult-on-equip = Одежда слетает с вас, как только вы её надели из-за проклятия.

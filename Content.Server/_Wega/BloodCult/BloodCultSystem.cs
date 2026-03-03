@@ -168,7 +168,7 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
     // Да я пометил тегами чтобы банально не забыть про это и чо?
     private void OnShotAttempted(Entity<BloodCultistComponent> ent, ref ShotAttemptedEvent args)
     {
-        if (HasComp<DeleteOnDropComponent>(args.Used))
+        if (HasComp<BloodCultAllowedGunComponent>(args.Used))
             return;
 
         _popup.PopupEntity(Loc.GetString("gun-disabled"), ent, ent);
