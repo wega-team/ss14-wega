@@ -32,7 +32,7 @@ public sealed class DamageOnActionSystem : EntitySystem
         if (!TryComp<HungerComponent>(ent.Owner, out var hunger))
             return;
 
-        if (!TryComp<DamageableComponent>(ent.Owner, out var _))
+        if (!HasComp<DamageableComponent>(ent.Owner))
             return;
 
         if (_hunger.GetHunger(hunger) < ent.Comp.HungerPerUse)

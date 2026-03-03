@@ -63,6 +63,8 @@
             sprite: _Wega/Mobs/Species/Harpy/displacement.rsi
             state: jumpsuit
   - type: FlyAbility
+    staminaDamage: 5
+    cooldown: 20
   - type: MovementSpeedModifier
     baseWeightlessAcceleration: 1.25
     baseWeightlessFriction: 1

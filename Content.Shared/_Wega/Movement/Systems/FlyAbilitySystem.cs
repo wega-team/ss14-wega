@@ -41,13 +41,16 @@ public abstract class SharedFlyAbilitySystem : EntitySystem
             if (TryComp<PhysicsComponent>(ent, out var physics))
             {
                 _physics.SetBodyStatus(ent, physics, BodyStatus.InAir, true);
-                if (!TryComp<NoSlipComponent>(ent, out var _))
+                if (!HasComp<NoSlipComponent>(ent))
                     EnsureComp<NoSlipComponent>(ent);
-                if (!TryComp<MovementAlwaysTouchingComponent>(ent, out var _))
+
+                if (!HasComp<MovementAlwaysTouchingComponent>(ent))
                     EnsureComp<MovementAlwaysTouchingComponent>(ent);
-                if (!TryComp<CanMoveInAirComponent>(ent, out var _))
+
+                if (!HasComp<CanMoveInAirComponent>(ent))
                     EnsureComp<CanMoveInAirComponent>(ent);
-                if (ent.Comp.Sound != null && !TryComp<AmbientSoundComponent>(ent, out var _))
+
+                if (ent.Comp.Sound != null && !HasComp<AmbientSoundComponent>(ent))
                 {
                     EnsureComp<AmbientSoundComponent>(ent);
                     _ambient.SetSound(ent.Owner, ent.Comp.Sound);
@@ -61,13 +64,16 @@ public abstract class SharedFlyAbilitySystem : EntitySystem
             if (TryComp<PhysicsComponent>(ent, out var physics))
             {
                 _physics.SetBodyStatus(ent, physics, BodyStatus.OnGround, true);
-                if (TryComp<NoSlipComponent>(ent, out var _))
+                if (HasComp<NoSlipComponent>(ent))
                     RemComp<NoSlipComponent>(ent);
-                if (TryComp<MovementAlwaysTouchingComponent>(ent, out var _))
+
+                if (HasComp<MovementAlwaysTouchingComponent>(ent))
                     RemComp<MovementAlwaysTouchingComponent>(ent);
-                if (TryComp<CanMoveInAirComponent>(ent, out var _))
+
+                if (HasComp<CanMoveInAirComponent>(ent))
                     RemComp<CanMoveInAirComponent>(ent);
-                if (TryComp<AmbientSoundComponent>(ent, out var _))
+
+                if (HasComp<AmbientSoundComponent>(ent))
                     RemComp<AmbientSoundComponent>(ent);
             }
         }
