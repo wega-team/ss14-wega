@@ -45,12 +45,4 @@ public sealed partial class BorerComponent : Component
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite), DataField]
     public bool Reproduce = false;
-
-    [DataField]
-    public EntProtoId InfectionAction = "InfectionBorerEvent";
-
-    [DataField]
-    public EntityUid? InfectionActionEntity;
 }
-
-public sealed partial class InfectionBorerEvent : InstantActionEvent;
