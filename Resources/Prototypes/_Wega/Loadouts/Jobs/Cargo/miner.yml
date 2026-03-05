@@ -1,0 +1,35 @@
+# Jumpsuit
+- type: loadout
+  id: ShaftMinerJumpsuitExplorer
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitExplorer
+
+- type: loadout
+  id: ShaftMinerJumpskirtExplorer
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtExplorer
+
+- type: loadout
+  id: ShaftMinerJumpsuitExplorerKhaki
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitExplorerKhaki
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SalvageVeterancy
+
+- type: loadout
+  id: ShaftMinerJumpskirtExplorerKhaki
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtExplorerKhaki
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SalvageVeterancy
+
+# OuterClothing
+- type: loadout
+  id: ShaftMinerArmorExplorerSuitKhaki
+  equipment:
+    outerClothing: ClothingOuterArmorExplorerSuitKhaki
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SalvageVeterancy

@@ -19,8 +19,13 @@ using Content.Shared.Fluids.EntitySystems;
 using Content.Shared.Fluids.Components;
 using Robust.Server.Containers;
 using Robust.Shared.Map;
-using Content.Shared.Item; // Corvax-Wega-Surgery
-using Content.Shared.Surgery.Components; // Corvax-Wega-Surgery
+// Corvax-Wega-Add-start
+using Content.Shared.Item;
+using Content.Shared.Surgery.Components;
+using Content.Shared.Chemistry.Components;
+using Content.Shared.Chemistry.Components.SolutionManager;
+using Content.Shared.Chemistry;
+// Corvax-Wega-Add-end
 
 namespace Content.Server.Fluids.EntitySystems;
 
@@ -38,6 +43,7 @@ public sealed class SpraySystem : SharedSpraySystem
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
     [Dependency] private readonly ContainerSystem _container = default!;
+    [Dependency] private readonly ReactiveSystem _reactive = default!; // Corvax-Wega-Add
 
     private float _gridImpulseMultiplier;
 
@@ -72,6 +78,15 @@ public sealed class SpraySystem : SharedSpraySystem
         if (args.Handled)
             return;
 
+        // Corvax-Wega-Add-start
+        if (args.Target == args.User)
+        {
+            SpraySelf(entity, args.User);
+            args.Handled = true;
+            return;
+        }
+        // Corvax-Wega-Add-end
+
         // Corvax-Wega-Surgery-start
         if (args.Target != null && HasComp<ItemComponent>(args.Target)
             && _solutionContainer.TryGetSolution(entity.Owner, entity.Comp.Solution, out _, out var solution)
@@ -87,6 +102,78 @@ public sealed class SpraySystem : SharedSpraySystem
 
         Spray(entity, clickPos, args.User);
     }
+
+    // Corvax-Wega-Add-start
+    private void SpraySelf(Entity<SprayComponent> entity, EntityUid user)
+    {
+        if (!_solutionContainer.TryGetSolution(entity.Owner, entity.Comp.Solution, out var soln, out var solution))
+            return;
+
+        var ev = new SprayAttemptEvent(user);
+        RaiseLocalEvent(entity, ref ev);
+        if (ev.Cancelled)
+        {
+            if (ev.CancelPopupMessage != null)
+                _popupSystem.PopupEntity(Loc.GetString(ev.CancelPopupMessage), entity.Owner, user);
+            return;
+        }
+
+        if (_useDelay.IsDelayed((entity, null)))
+            return;
+
+        if (solution.Volume <= 0)
+        {
+            _popupSystem.PopupEntity(Loc.GetString(entity.Comp.SprayEmptyPopupMessage, ("entity", entity)), entity.Owner, user);
+            return;
+        }
+
+        var selfAmount = entity.Comp.TransferAmount / 2;
+        var selfSolution = _solutionContainer.SplitSolution(soln.Value, selfAmount);
+
+        if (selfSolution.Volume <= FixedPoint2.Zero)
+            return;
+
+        CreateSelfVapor(entity, user, selfSolution);
+
+        _audio.PlayPvs(entity.Comp.SpraySound, entity, entity.Comp.SpraySound.Params.WithVariation(0.125f));
+        _popupSystem.PopupEntity(Loc.GetString("spray-self-message", ("user", user)), user, user);
+
+        _useDelay.TryResetDelay(entity);
+    }
+
+    private void CreateSelfVapor(Entity<SprayComponent> entity, EntityUid user, Solution selfSolution)
+    {
+        var userTransform = Transform(user);
+        var userMapPos = _transform.GetMapCoordinates(userTransform);
+
+        var vapor = Spawn(entity.Comp.SprayedPrototype, userMapPos);
+        var vaporXform = Transform(vapor);
+
+        if (TryComp(vapor, out AppearanceComponent? appearance))
+        {
+            _appearance.SetData(vapor, VaporVisuals.Color, selfSolution.GetColor(_proto).WithAlpha(0.5f), appearance);
+            _appearance.SetData(vapor, VaporVisuals.State, true, appearance);
+        }
+
+        var vaporComponent = Comp<VaporComponent>(vapor);
+        var ent = (vapor, vaporComponent);
+        _vapor.TryAddSolution(ent, selfSolution);
+
+        if (TryComp(vapor, out SolutionContainerManagerComponent? contents))
+        {
+            foreach (var (_, soln) in _solutionContainer.EnumerateSolutions((vapor, contents)))
+            {
+                var solution = soln.Comp.Solution;
+                _reactive.DoEntityReaction(user, solution, ReactionMethod.Touch);
+            }
+        }
+
+        var target = userMapPos.Offset(new Vector2(0, 0.5f));
+        var time = 0.5f / entity.Comp.SprayVelocity;
+
+        _vapor.Start(ent, vaporXform, new Vector2(0, 0.5f), entity.Comp.SprayVelocity * 0.5f, target, time, user);
+    }
+    // Corvax-Wega-Add-end
 
     public override void Spray(Entity<SprayComponent> entity, EntityUid? user = null)
     {

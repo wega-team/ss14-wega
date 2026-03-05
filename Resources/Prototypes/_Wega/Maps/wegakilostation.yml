@@ -17,6 +17,9 @@
           emergencyShuttlePath: /Maps/Shuttles/emergency_amber.yml
         - type: StationCargoShuttle
           path: /Maps/_Wega/Shuttles/cargo_kilo.yml
+        - type: StationLavaland
+          planets: [ Lavaland ]
+          enabled: false
         - type: StationJobs
           availableJobs:
             #service
@@ -55,6 +58,7 @@
             #security
             HeadOfSecurity: [ 1, 1 ]
             Warden: [ 1, 1 ]
+            WardenHelper: [ 1, 1 ]
             SeniorOfficer: [ 1, 1 ]
             SecurityOfficer: [ 3, 3 ]
             Detective: [ 1, 1 ]
@@ -64,7 +68,8 @@
             #Lawyer: [ 2, 2 ] # Corvax-IAA
             #supply
             Quartermaster: [ 1, 1 ]
-            SalvageSpecialist: [ 3, 3 ]
+            ShaftMiner: [ 3, 3 ]
+            ShaftMinerMedic: [ 1, 1 ]
             CargoTechnician: [ 3, 3 ]
             #civilian
             Passenger: [ -1, -1 ]
@@ -73,4 +78,4 @@
             Musician: [ 1, 1 ]
             # silicon
             StationAi: [ 1, 1 ]
-            Borg: [ 2, 2 ] 
+            Borg: [ 2, 2 ]

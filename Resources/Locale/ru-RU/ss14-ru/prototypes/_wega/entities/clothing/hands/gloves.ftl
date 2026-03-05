@@ -8,3 +8,5 @@ ent-ClothingHandsGlovesCaptainWhite = белые перчатки капитан
    .desc = Королевские белые перчатки с золотой отделкой. Шикарны.
 ent-ClothingHandsGlovesSheriff = перчатки шерифа
    .desc = Перчатки с эргономичной формой, предназначенные для удержания револьвера.
+ent-ClothingHandsGlovesConcussiveGauntlets = ударные перчатки
+    .desc = Кирки... для ваших рук!

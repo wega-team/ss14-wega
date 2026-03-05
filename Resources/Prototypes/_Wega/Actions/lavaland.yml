@@ -1,0 +1,430 @@
+- type: entity
+  parent: BaseAction
+  id: ActionFireSelf
+  name: fire self
+  description: ""
+  components:
+  - type: Action
+    useDelay: 30
+    itemIconStyle: BigAction
+    icon:
+      sprite: Effects/fire.rsi
+      state: fire
+  - type: InstantAction
+    event: !type:FireSelfActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: BecomeToDrakeAction
+  name: become drake
+  description: ""
+  components:
+  - type: Action
+    itemIconStyle: BigAction
+    icon:
+      sprite: Effects/fire.rsi
+      state: fire
+  - type: InstantAction
+    event: !type:BecomeToDrakeActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: DrakeReturnBackAction
+  name: return back
+  description: ""
+  components:
+  - type: Action
+    itemIconStyle: BigAction
+    icon:
+      sprite: Effects/fire.rsi
+      state: fire
+  - type: InstantAction
+    event: !type:DrakeReturnBackActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionGoliathTentacle
+  name: "[color=red]Tentacle Slam[/color]"
+  description: Use your tentacles to grab and stun a target player!
+  components:
+  - type: Action
+    raiseOnUser: true
+    icon:
+      sprite: Mobs/Aliens/Asteroid/goliath.rsi
+      state: goliath_tentacle_spawn
+    iconOn:
+      sprite: Mobs/Aliens/Asteroid/goliath.rsi
+      state: goliath_tentacle_wiggle
+    sound:
+      path: "/Audio/Weapons/slash.ogg"
+    useDelay: 12
+  - type: TargetAction
+    range: 7
+  - type: WorldTargetAction
+    event: !type:GoliathSummonTentacleAction
+
+- type: entity
+  parent: BaseAction
+  id: ActionLegionSummon
+  name: Summon Skull
+  description: ""
+  components:
+  - type: Action
+    raiseOnUser: true
+    icon:
+      sprite: _Wega/Mobs/Lavaland/legionskull.rsi
+      state: legion_head_1
+    useDelay: 5
+  - type: TargetAction
+    range: 10
+  - type: EntityTargetAction
+    event: !type:LegionSummonSkullAction
+
+- type: entity
+  parent: BaseAction
+  id: ActionHierophantBlink
+  name: Blink
+  description: ""
+  components:
+  - type: Action
+    raiseOnUser: true
+    useDelay: 6
+    icon:
+      sprite: _Wega/Objects/Weapons/Melee/hierophant_club.rsi
+      state: icon
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    event: !type:HierophantBlinkActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionHierophantCross
+  name: Cross
+  description: ""
+  components:
+  - type: Action
+    raiseOnUser: true
+    useDelay: 6
+    icon:
+      sprite: _Wega/Objects/Weapons/Melee/hierophant_club.rsi
+      state: icon
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    event: !type:HierophantCrossActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionHierophantChaser
+  name: Chaser
+  description: ""
+  components:
+  - type: Action
+    raiseOnUser: true
+    useDelay: 6
+    icon:
+      sprite: _Wega/Objects/Weapons/Melee/hierophant_club.rsi
+      state: icon
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    event: !type:HierophantChaserActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionHierophantDamageArea
+  name: Damage Area
+  description: ""
+  components:
+  - type: Action
+    raiseOnUser: true
+    useDelay: 6
+    icon:
+      sprite: _Wega/Objects/Weapons/Melee/hierophant_club.rsi
+      state: icon
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    event: !type:HierophantDamageAreaActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionMegaLegion
+  name: Mega Legion attack
+  description: ""
+  components:
+  - type: Action
+    raiseOnUser: true
+    icon:
+      sprite: _Wega/Mobs/Lavaland/legionskull.rsi
+      state: legion_head_1
+    useDelay: 1.5
+  - type: TargetAction
+    range: 10
+  - type: EntityTargetAction
+    event: !type:MegaLegionAction
+
+- type: entity
+  parent: BaseAction
+  id: ActionBloodDrunkMinerDash
+  name: Dash
+  description: ""
+  components:
+  - type: Action
+    raiseOnUser: true
+    useDelay: 10
+    icon:
+      sprite: Interface/Actions/jump.rsi
+      state: icon
+  - type: TargetAction
+    range: 10
+  - type: WorldTargetAction
+    event: !type:BloodDrunkMinerDashAction
+
+- type: entity
+  parent: BaseAction
+  id: ActionColossusFraction
+  name: Fraction
+  description: ""
+  components:
+  - type: Action
+    raiseOnUser: true
+    useDelay: 5
+    icon:
+      sprite: _Wega/Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+      state: throwing_knife
+    sound:
+      path: "/Audio/_Wega/Effects/narsie_attack.ogg"
+  - type: TargetAction
+    range: 10
+  - type: EntityTargetAction
+    event: !type:ColossusFractionActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionColossusCross
+  name: Cross
+  description: ""
+  components:
+  - type: Action
+    raiseOnUser: true
+    useDelay: 5
+    icon:
+      sprite: _Wega/Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+      state: throwing_knife
+    sound:
+      path: "/Audio/_Wega/Effects/narsie_attack.ogg"
+  - type: TargetAction
+    range: 10
+  - type: EntityTargetAction
+    event: !type:ColossusCrossActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionColossusSpiral
+  name: Spiral
+  description: ""
+  components:
+  - type: Action
+    raiseOnUser: true
+    useDelay: 5
+    icon:
+      sprite: _Wega/Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+      state: throwing_knife
+    sound:
+      path: "/Audio/_Wega/Effects/narsie_attack.ogg"
+  - type: TargetAction
+    range: 10
+  - type: EntityTargetAction
+    event: !type:ColossusSpiralActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionColossusTripleFraction
+  name: Triple Fraction
+  description: ""
+  components:
+  - type: Action
+    raiseOnUser: true
+    useDelay: 5
+    icon:
+      sprite: _Wega/Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+      state: throwing_knife
+    sound:
+      path: "/Audio/_Wega/Effects/narsie_attack.ogg"
+  - type: TargetAction
+    range: 10
+  - type: EntityTargetAction
+    event: !type:ColossusTripleFractionActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionAshDrakeConeFire
+  name: Cone Fire
+  description: ""
+  components:
+  - type: Action
+    raiseOnUser: true
+    useDelay: 8
+    icon:
+      sprite: Objects/Magic/magicactions.rsi
+      state: fireball
+  - type: TargetAction
+    range: 10
+  - type: EntityTargetAction
+    event: !type:AshDrakeConeFireActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionAshDrakeBreathingFire
+  name: Breathing Fire
+  description: ""
+  components:
+  - type: Action
+    raiseOnUser: true
+    useDelay: 8
+    icon:
+      sprite: Objects/Magic/magicactions.rsi
+      state: fireball
+  - type: TargetAction
+    range: 10
+  - type: EntityTargetAction
+    event: !type:AshDrakeBreathingFireActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionAshDrakeLava
+  name: Lava
+  description: ""
+  components:
+  - type: Action
+    raiseOnUser: true
+    useDelay: 20
+    icon:
+      sprite: Tiles/Planet/lava.rsi
+      state: lava
+  - type: TargetAction
+    range: 10
+  - type: EntityTargetAction
+    event: !type:AshDrakeLavaActionEvent
+      landingDamage:
+        groups:
+          Brute: 75
+      healingSpec:
+        groups:
+          Brute: -250
+
+- type: entity
+  parent: BaseAction
+  id: ActionBubblegumRage
+  name: RAGE
+  description: Become temporarily invulnerable and attack faster!
+  components:
+  - type: Action
+    raiseOnUser: true
+    useDelay: 7
+    icon:
+      sprite: _Wega/Effects/bubblegumeffects.rsi
+      state: hand
+  - type: TargetAction
+    range: 20
+  - type: EntityTargetAction
+    event: !type:BubblegumRageActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionBubblegumBloodDive
+  name: Blood Dive
+  description: Submerge into blood and emerge near your target!
+  components:
+  - type: Action
+    raiseOnUser: true
+    useDelay: 6
+    icon:
+      sprite: _Wega/Effects/bubblegumeffects.rsi
+      state: hand
+  - type: TargetAction
+    range: 20
+  - type: EntityTargetAction
+    event: !type:BubblegumBloodDiveActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionBubblegumTripleDash
+  name: Triple Dash
+  description: Perform three consecutive charges at your target!
+  components:
+  - type: Action
+    raiseOnUser: true
+    useDelay: 8
+    icon:
+      sprite: _Wega/Effects/bubblegumeffects.rsi
+      state: hand
+  - type: TargetAction
+    range: 15
+  - type: EntityTargetAction
+    event: !type:BubblegumTripleDashActionEvent
+      dashDamage:
+        types:
+          Blunt: 30
+
+- type: entity
+  parent: BaseAction
+  id: ActionBubblegumIllusionDash
+  name: Illusion Dash
+  description: Summon illusions to surround and charge your target!
+  components:
+  - type: Action
+    raiseOnUser: true
+    useDelay: 6
+    icon:
+      sprite: _Wega/Effects/bubblegumeffects.rsi
+      state: hand
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    event: !type:BubblegumIllusionDashActionEvent
+      illusionDamage:
+        types:
+          Blunt: 15
+
+- type: entity
+  parent: BaseAction
+  id: ActionBubblegumPentagramDash
+  name: Pentagram Dash
+  description: Surround your target with four illusions and charge from all sides!
+  components:
+  - type: Action
+    raiseOnUser: true
+    useDelay: 6
+    icon:
+      sprite: _Wega/Effects/bubblegumeffects.rsi
+      state: hand
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    event: !type:BubblegumPentagramDashActionEvent
+      illusionDamage:
+        types:
+          Blunt: 15
+
+- type: entity
+  parent: BaseAction
+  id: ActionBubblegumChaoticIllusionDash
+  name: Chaotic Illusion Dash
+  description: Summon random illusions to charge from unpredictable directions!
+  components:
+  - type: Action
+    raiseOnUser: true
+    useDelay: 20
+    icon:
+      sprite: _Wega/Effects/bubblegumeffects.rsi
+      state: hand
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    event: !type:BubblegumChaoticIllusionDashActionEvent
+      illusionDamage:
+        types:
+          Blunt: 15

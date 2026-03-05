@@ -4,3 +4,9 @@
     - /Audio/_Wega/Voice/Fulpakin/dog_bark1.ogg
     - /Audio/_Wega/Voice/Fulpakin/dog_bark2.ogg
     - /Audio/_Wega/Voice/Fulpakin/dog_bark2.ogg
+    
+- type: soundCollection
+  id: VulpakinLaugh
+  files:
+    - /Audio/_Wega/Voice/Fulpakin/vulp_laugh2.ogg
+    - /Audio/_Wega/Voice/Fulpakin/vulp_laugh1.ogg

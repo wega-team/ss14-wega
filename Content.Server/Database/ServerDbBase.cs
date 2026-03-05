@@ -423,6 +423,127 @@ namespace Content.Server.Database
         }
         #endregion
 
+        // Corvax-Wega-Achievements-start
+        #region Achievements
+
+        public async Task<List<AchievementRecord>> GetAchievementsAsync(NetUserId userId, CancellationToken cancel = default)
+        {
+            await using var db = await GetDb(cancel);
+
+            var achievements = await db.DbContext.Achievement
+                .Where(a => a.PlayerUserId == userId.UserId)
+                .OrderBy(a => a.UnlockedAt)
+                .ToListAsync(cancel);
+
+            return achievements.Select(a => new AchievementRecord(
+                new NetUserId(a.PlayerUserId),
+                a.AchievementKey,
+                NormalizeDatabaseTime(a.UnlockedAt)
+            )).ToList();
+        }
+
+        public async Task<bool> HasAchievementAsync(NetUserId userId, byte achievementKey, CancellationToken cancel = default)
+        {
+            await using var db = await GetDb(cancel);
+
+            return await db.DbContext.Achievement
+                .AnyAsync(a => a.PlayerUserId == userId.UserId && a.AchievementKey == achievementKey, cancel);
+        }
+
+        public async Task<bool> AddAchievementAsync(NetUserId userId, byte achievementKey, CancellationToken cancel = default)
+        {
+            await using var db = await GetDb(cancel);
+
+            var exists = await db.DbContext.Achievement
+                .AnyAsync(a => a.PlayerUserId == userId.UserId && a.AchievementKey == achievementKey, cancel);
+
+            if (exists) return false;
+
+            var achievement = new Achievement
+            {
+                PlayerUserId = userId.UserId,
+                AchievementKey = achievementKey,
+                UnlockedAt = DateTime.UtcNow
+            };
+
+            db.DbContext.Achievement.Add(achievement);
+            await db.DbContext.SaveChangesAsync(cancel);
+
+            return true;
+        }
+
+        public async Task<int> RemoveAchievementAsync(NetUserId userId, byte achievementKey, CancellationToken cancel = default)
+        {
+            await using var db = await GetDb(cancel);
+
+            var count = await db.DbContext.Achievement
+                .Where(a => a.PlayerUserId == userId.UserId && a.AchievementKey == achievementKey)
+                .ExecuteDeleteAsync(cancel);
+
+            return count;
+        }
+
+        public async Task<int> ClearAllAchievementsAsync(NetUserId userId, CancellationToken cancel = default)
+        {
+            await using var db = await GetDb(cancel);
+
+            var count = await db.DbContext.Achievement
+                .Where(a => a.PlayerUserId == userId.UserId)
+                .ExecuteDeleteAsync(cancel);
+
+            return count;
+        }
+
+        public async Task<int> RemoveAchievementByKeyAsync(byte achievementKey, CancellationToken cancel = default)
+        {
+            await using var db = await GetDb(cancel);
+
+            var count = await db.DbContext.Achievement
+                .Where(a => a.AchievementKey == achievementKey)
+                .ExecuteDeleteAsync(cancel);
+
+            return count;
+        }
+
+        public async Task<int> ResetAllAchievementsAsync(CancellationToken cancel = default)
+        {
+            await using var db = await GetDb(cancel);
+
+            var count = await db.DbContext.Achievement
+                .ExecuteDeleteAsync(cancel);
+
+            return count;
+        }
+
+        public async Task<bool> UpdateAchievementKeyAsync(byte oldKey, byte newKey, CancellationToken cancel = default)
+        {
+            await using var db = await GetDb(cancel);
+
+            var conflicts = await db.DbContext.Achievement
+                .Where(a => a.AchievementKey == oldKey)
+                .Select(a => new
+                {
+                    a.PlayerUserId,
+                    NewKeyExists = db.DbContext.Achievement
+                    .Any(a2 => a2.PlayerUserId == a.PlayerUserId && a2.AchievementKey == newKey)
+                })
+                .Where(x => x.NewKeyExists)
+                .AnyAsync(cancel);
+
+            if (conflicts)
+                return false;
+
+            await db.DbContext.Achievement
+                .Where(a => a.AchievementKey == oldKey)
+                .ExecuteUpdateAsync(setters => setters
+                    .SetProperty(a => a.AchievementKey, newKey), cancellationToken: cancel);
+
+            return true;
+        }
+
+        #endregion
+        // Corvax-Wega-Achievements-end
+
         #region User Ids
         public async Task<NetUserId?> GetAssignedUserIdAsync(string name)
         {

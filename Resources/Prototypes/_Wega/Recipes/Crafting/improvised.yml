@@ -37,3 +37,75 @@
   targetNode: garrottecrafted
   category: construction-category-weapons
   objectType: Item
+
+- type: construction
+  id: ExplorerSuitReinforced
+  graph: ExplorerSuitReinforced
+  startNode: start
+  targetNode: explorerSuit
+  category: construction-category-primitive
+  objectType: Item
+
+- type: construction
+  id: ExplorerSuitKhakiReinforced
+  graph: ExplorerSuitKhakiReinforced
+  startNode: start
+  targetNode: explorerSuit
+  category: construction-category-primitive
+  objectType: Item
+
+- type: construction
+  id: BoneBracers
+  graph: BoneBracers
+  startNode: start
+  targetNode: bracers
+  category: construction-category-primitive
+  objectType: Item
+
+- type: construction
+  id: BoneTalisman
+  graph: BoneTalisman
+  startNode: start
+  targetNode: talisman
+  category: construction-category-primitive
+  objectType: Item
+
+- type: construction
+  id: SkullCodpiece
+  graph: SkullCodpiece
+  startNode: start
+  targetNode: codpiece
+  category: construction-category-primitive
+  objectType: Item
+
+- type: construction
+  id: GoliathCloak
+  graph: GoliathCloak
+  startNode: start
+  targetNode: cloack
+  category: construction-category-primitive
+  objectType: Item
+
+- type: construction
+  id: PathfinderCloak
+  graph: PathfinderCloak
+  startNode: start
+  targetNode: cloack
+  category: construction-category-primitive
+  objectType: Item
+
+- type: construction
+  id: BoneOar
+  graph: BoneOar
+  startNode: start
+  targetNode: oar
+  category: construction-category-primitive
+  objectType: Item
+
+- type: construction
+  id: VehicleBoat
+  graph: VehicleBoat
+  startNode: start
+  targetNode: boat
+  category: construction-category-primitive
+  objectType: Item

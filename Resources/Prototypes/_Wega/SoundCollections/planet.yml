@@ -1,0 +1,7 @@
+- type: soundCollection
+  id: PlanetRumblesDistance
+  files:
+    - /Audio/_Wega/Effects/Planet/rumble_distant1.ogg
+    - /Audio/_Wega/Effects/Planet/rumble_distant2.ogg
+    - /Audio/_Wega/Effects/Planet/rumble_distant3.ogg
+    - /Audio/_Wega/Effects/Planet/rumble_distant4.ogg

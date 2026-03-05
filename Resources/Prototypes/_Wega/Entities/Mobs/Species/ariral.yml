@@ -110,11 +110,11 @@
     currentTemperature: 310.15
     specificHeat: 46
   - type: TemperatureDamage
-    heatDamageThreshold: 326 # ~ 52 °C
-    coldDamageThreshold: 280 # ~ 7 °C
+    heatDamageThreshold: 325
+    coldDamageThreshold: 260
     coldDamage:
       types:
-        Cold: 0.7
+        Cold: 0.1
     heatDamage:
       types:
         Heat: 1.5
@@ -137,6 +137,7 @@
   - type: Wagging
   - type: NaturalNightVision
     tintColor: "#B0E0FF"
+    visionRadius: 3
   - type: Inventory
     displacements:
       jumpsuit:
@@ -159,6 +160,11 @@
     interactSuccessString: petting-success-generic
     interactSuccessSound: /Audio/Effects/thudswoosh.ogg
     messagePerceivedByOthers: petting-success-generic-others
+  - type: Tag
+    tags:
+    - CanPilot
+    - DoorBumpOpener
+    - AnomalyHost
 
 - type: entity
   parent: MobHumanDummy

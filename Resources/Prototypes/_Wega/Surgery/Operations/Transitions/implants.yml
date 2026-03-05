@@ -279,6 +279,40 @@
             collection: Cautery
           time: 2
 
+# Throat
+- type: surgeryTransition
+  id: ImplantingVocalCordsTransition
+  target: ThroatOpen
+  label: "Установить голосовые связки бога"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "DivineVocalCordsImplant"
+          invert: true
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+          - mask
+        - !type:BodyPartCondition
+          bodyPart: head
+      parallel: true
+      steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          sound:
+            collection: Scalpel
+          time: 4
+        - tag: [ DivineVocalCordsImplant ]
+          entityPreview: DivineVocalCordsImplant
+          action: Implanting
+          failureEffect: [ Pain ]
+          sound:
+            collection: Organ
+          time: 5
+
 # ========================
 # УДАЛЕНИЕ ИМПЛАНТОВ
 # ========================
@@ -1793,6 +1827,61 @@
           invert: true
           slots:
           - head
+        - !type:BodyPartCondition
+          bodyPart: head
+      steps:
+        - tool: [ Cautery ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 2
+
+# Throat
+- type: surgeryTransition
+  id: RemoveDivineVocalCordsTransition
+  target: RemoveDivineVocalCordsOperation
+  label: "Извлечь голосовые связки бога"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "DivineVocalCordsImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+          - mask
+        - !type:BodyPartCondition
+          bodyPart: head
+      parallel: true
+      steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          sound:
+            collection: Scalpel
+          time: 4
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: RemoveImplant
+          requiredImplant: "DivineVocalCordsImplant"
+          failureEffect: [ Bleeding ]
+          sound:
+            collection: Retractor
+          time: 8
+
+- type: surgeryTransition
+  id: EndRemoveDivineVocalCordsTransition
+  target: ThroatOpen
+  label: "Завершить"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+          - mask
         - !type:BodyPartCondition
           bodyPart: head
       steps:

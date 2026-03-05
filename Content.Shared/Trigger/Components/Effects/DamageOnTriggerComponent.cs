@@ -1,4 +1,5 @@
 using Content.Shared.Damage;
+using Content.Shared.Whitelist; // Corvax-Wega-Lavaland
 using Robust.Shared.GameStates;
 
 namespace Content.Shared.Trigger.Components.Effects;
@@ -22,4 +23,9 @@ public sealed partial class DamageOnTriggerComponent : BaseXOnTriggerComponent
     /// </summary>
     [DataField(required: true), AutoNetworkedField]
     public DamageSpecifier Damage = default!;
+
+    // Corvax-Wega-Lavaland-start
+    [DataField]
+    public EntityWhitelist Blacklist = new();
+    // Corvax-Wega-Lavaland-end
 }

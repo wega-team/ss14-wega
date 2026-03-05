@@ -13,7 +13,7 @@
     wideAnimationRotation: -135
     angle: 0
     animation: WeaponArcThrust
-    attackRate: 1.2
+    attackRate: 0.8
     range: 2
     damage:
       types:
@@ -24,7 +24,7 @@
   - type: SolutionContainerManager
     solutions:
       melee:
-        maxVol: 10
+        maxVol: 3
   - type: MeleeChemicalInjector
     solution: melee 
   - type: RefillableSolution
@@ -40,6 +40,8 @@
     spread: 90
   - type: Item
     size: Normal
+    shape:
+    - 0,0,0,3
     storedSprite:
       state: storage
       sprite: _Wega/Objects/Weapons/Melee/syndicate_rapier_storage_64x.rsi

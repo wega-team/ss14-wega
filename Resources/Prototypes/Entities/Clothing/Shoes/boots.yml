@@ -42,6 +42,11 @@
   - type: Clothing
     sprite: Clothing/Shoes/Boots/explorer.rsi
   - type: Matchbox
+  # Corvax-Wega-Dirtable-start
+  - type: Dirtable
+    dirtState: salvageboots
+    equippedDirtState: equipped-shoes
+  # Corvax-Wega-Dirtable-end
 
 - type: entity
   parent: ClothingShoesBaseButcherable

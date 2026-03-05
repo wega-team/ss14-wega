@@ -1,0 +1,334 @@
+- type: entity
+  id: BaseFloorEntity
+  abstract: true
+  name: tile
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Physics
+    bodyType: Static
+  - type: Anchorable
+    flags:
+    - Anchorable
+  - type: Rotatable
+  - type: Clickable
+  - type: Sprite
+    sprite: _Wega/Structures/floors.rsi
+    drawdepth: FloorTiles
+  - type: Transform
+    anchored: true
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepFloor
+      params:
+        volume: 8
+  - type: Tag
+    tags:
+      - HideContextMenu
+      - Catwalk
+
+- type: entity
+  parent: BaseFloorEntity
+  id: FloorEntityPristineTile
+  components:
+  - type: Sprite
+    layers:
+    - state: pristine_tile1
+  - type: RandomSprite
+    available:
+      - 0:
+          pristine_tile1: ""
+          pristine_tile2: ""
+          pristine_tile3: ""
+          pristine_tile4: ""
+          pristine_tile5: ""
+          pristine_tile6: ""
+          pristine_tile7: ""
+          pristine_tile8: ""
+          pristine_tile9: ""
+          pristine_tile10: ""
+          pristine_tile11: ""
+          pristine_tile12: ""
+          pristine_tile13: ""
+          pristine_tile14: ""
+          pristine_tile15: ""
+          pristine_tile16: ""
+          pristine_tile17: ""
+          pristine_tile18: ""
+          pristine_tile19: ""
+          pristine_tile20: ""
+          pristine_tile21: ""
+          pristine_tile22: ""
+          pristine_tile23: ""
+          pristine_tile24: ""
+
+- type: entity
+  parent: BaseFloorEntity
+  id: FloorEntityPristineSlab
+  components:
+  - type: Sprite
+    layers:
+    - state: pristine_slab1
+  - type: RandomSprite
+    available:
+      - 0:
+          pristine_slab1: ""
+          pristine_slab2: ""
+          pristine_slab3: ""
+          pristine_slab4: ""
+
+- type: entity
+  parent: BaseFloorEntity
+  id: FloorEntityPristineBlock
+  components:
+  - type: Sprite
+    layers:
+    - state: pristine_block1
+  - type: RandomSprite
+    available:
+      - 0:
+          pristine_block1: ""
+          pristine_block2: ""
+          pristine_block3: ""
+          pristine_block4: ""
+
+- type: entity
+  parent: BaseFloorEntity
+  id: FloorEntityPristineCenter
+  components:
+  - type: Sprite
+    layers:
+    - state: pristine_center1
+  - type: RandomSprite
+    available:
+      - 0:
+          pristine_center1: ""
+          pristine_center2: ""
+          pristine_center3: ""
+          pristine_center4: ""
+
+- type: entity
+  parent: BaseFloorEntity
+  id: FloorEntityPristineSurrounding
+  components:
+  - type: Sprite
+    layers:
+    - state: pristine_surrounding1
+  - type: RandomSprite
+    available:
+      - 0:
+          pristine_surrounding1: ""
+          pristine_surrounding2: ""
+
+- type: entity
+  parent: BaseFloorEntity
+  id: FloorEntityPristineSurroundingTile
+  components:
+  - type: Sprite
+    layers:
+    - state: pristine_surrounding_tile1
+  - type: RandomSprite
+    available:
+      - 0:
+          pristine_surrounding_tile1: ""
+          pristine_surrounding_tile2: ""
+
+- type: entity
+  parent: BaseFloorEntity
+  id: FloorEntityCrackedTile
+  components:
+  - type: Sprite
+    layers:
+    - state: cracked_tile1
+  - type: RandomSprite
+    available:
+      - 0:
+          cracked_tile1: ""
+          cracked_tile2: ""
+          cracked_tile3: ""
+          cracked_tile4: ""
+          cracked_tile5: ""
+          cracked_tile6: ""
+          cracked_tile7: ""
+          cracked_tile8: ""
+          cracked_tile9: ""
+          cracked_tile10: ""
+          cracked_tile11: ""
+          cracked_tile12: ""
+          cracked_tile13: ""
+          cracked_tile14: ""
+          cracked_tile15: ""
+          cracked_tile16: ""
+          cracked_tile17: ""
+          cracked_tile18: ""
+          cracked_tile19: ""
+          cracked_tile20: ""
+          cracked_tile21: ""
+          cracked_tile22: ""
+          cracked_tile23: ""
+          cracked_tile24: ""
+
+- type: entity
+  parent: BaseFloorEntity
+  id: FloorEntityCrackedSlab
+  components:
+  - type: Sprite
+    layers:
+    - state: cracked_slab1
+
+- type: entity
+  parent: BaseFloorEntity
+  id: FloorEntityCrackedBlock
+  components:
+  - type: Sprite
+    layers:
+    - state: cracked_block1
+  - type: RandomSprite
+    available:
+      - 0:
+          cracked_block1: ""
+          cracked_block2: ""
+          cracked_block3: ""
+          cracked_block4: ""
+
+- type: entity
+  parent: BaseFloorEntity
+  id: FloorEntityCrackedCenter
+  components:
+  - type: Sprite
+    layers:
+    - state: cracked_center1
+  - type: RandomSprite
+    available:
+      - 0:
+          cracked_center1: ""
+          cracked_center2: ""
+          cracked_center3: ""
+          cracked_center4: ""
+
+- type: entity
+  parent: BaseFloorEntity
+  id: FloorEntityCrackedSurrounding
+  components:
+  - type: Sprite
+    layers:
+    - state: cracked_surrounding1
+
+- type: entity
+  parent: BaseFloorEntity
+  id: FloorEntityCrackedSurroundingTile
+  components:
+  - type: Sprite
+    layers:
+    - state: cracked_surrounding_tile1
+  - type: RandomSprite
+    available:
+      - 0:
+          cracked_surrounding_tile1: ""
+          cracked_surrounding_tile2: ""
+
+- type: entity
+  parent: BaseFloorEntity
+  id: FloorEntityBurntTile
+  components:
+  - type: Sprite
+    layers:
+    - state: burnt_tile1
+  - type: RandomSprite
+    available:
+      - 0:
+          burnt_tile1: ""
+          burnt_tile2: ""
+          burnt_tile3: ""
+          burnt_tile4: ""
+          burnt_tile5: ""
+          burnt_tile6: ""
+          burnt_tile7: ""
+          burnt_tile8: ""
+          burnt_tile9: ""
+          burnt_tile10: ""
+          burnt_tile11: ""
+          burnt_tile12: ""
+          burnt_tile13: ""
+          burnt_tile14: ""
+          burnt_tile15: ""
+          burnt_tile16: ""
+          burnt_tile17: ""
+          burnt_tile18: ""
+          burnt_tile19: ""
+          burnt_tile20: ""
+          burnt_tile21: ""
+          burnt_tile22: ""
+          burnt_tile23: ""
+          burnt_tile24: ""
+
+- type: entity
+  parent: BaseFloorEntity
+  id: FloorEntityBurntBlock
+  components:
+  - type: Sprite
+    layers:
+    - state: burnt_block1
+  - type: RandomSprite
+    available:
+      - 0:
+          burnt_block1: ""
+          burnt_block2: ""
+          burnt_block3: ""
+          burnt_block4: ""
+
+- type: entity
+  parent: BaseFloorEntity
+  id: FloorEntityBurntSlab
+  components:
+  - type: Sprite
+    layers:
+    - state: burnt_slab1
+  - type: RandomSprite
+    available:
+      - 0:
+          burnt_slab1: ""
+          burnt_slab2: ""
+          burnt_slab3: ""
+          burnt_slab4: ""
+
+- type: entity
+  parent: BaseFloorEntity
+  id: FloorEntityBurntCenter
+  components:
+  - type: Sprite
+    layers:
+    - state: burnt_center1
+  - type: RandomSprite
+    available:
+      - 0:
+          burnt_center1: ""
+          burnt_center2: ""
+          burnt_center3: ""
+          burnt_center4: ""
+
+- type: entity
+  parent: BaseFloorEntity
+  id: FloorEntityBurntSurrounding
+  components:
+  - type: Sprite
+    layers:
+    - state: burnt_surrounding1
+  - type: RandomSprite
+    available:
+      - 0:
+          burnt_surrounding1: ""
+          burnt_surrounding2: ""
+
+- type: entity
+  parent: BaseFloorEntity
+  id: FloorEntityBurntSurroundingTile
+  components:
+  - type: Sprite
+    layers:
+    - state: burnt_surrounding_tile1
+  - type: RandomSprite
+    available:
+      - 0:
+          burnt_surrounding_tile1: ""
+          burnt_surrounding_tile2: ""

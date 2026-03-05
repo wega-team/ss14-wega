@@ -4,6 +4,7 @@ using Content.Shared.Actions;
 using Content.Shared.Audio;
 using Content.Shared.Buckle;
 using Content.Shared.Buckle.Components;
+using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Inventory.VirtualItem;
 using Content.Shared.Item;
 using Content.Shared.Light.Components;
@@ -41,9 +42,13 @@ public abstract partial class SharedVehicleSystem : EntitySystem
     [Dependency] private readonly SharedJointSystem _joints = default!;
     [Dependency] private readonly SharedBuckleSystem _buckle = default!;
     [Dependency] private readonly SharedMoverController _mover = default!;
+    [Dependency] private readonly EntityLookupSystem _lookup = default!;
+    [Dependency] private readonly SharedHandsSystem _hands = default!;
 
     private static readonly ProtoId<TagPrototype> Dump = "DoorBumpOpener";
     private static readonly ProtoId<TagPrototype> Key = "VehicleKey";
+    private static readonly ProtoId<TagPrototype> Swim = "CanSwim";
+    private static readonly ProtoId<TagPrototype> Oar = "Oar";
 
     private const string KeySlot = "key_slot";
 
@@ -137,6 +142,11 @@ public abstract partial class SharedVehicleSystem : EntitySystem
             _actionsSystem.AddAction(args.Buckle, ref ent.Comp.HornActionEntity, ent.Comp.HornAction, ent);
         }
 
+        if (HasComp<BoatComponent>(ent))
+        {
+            _modifier.RefreshMovementSpeedModifiers(ent);
+        }
+
         _joints.ClearJoints(args.Buckle);
 
         _tagSystem.AddTag(ent, Dump);
@@ -210,6 +220,13 @@ public abstract partial class SharedVehicleSystem : EntitySystem
         {
             args.ModifySpeed(0f, 0f);
         }
+
+        if (TryComp<BoatComponent>(ent, out var boat) && ent.Comp.Rider != null
+            && !IsOnValidTile(ent, ent.Comp.Rider.Value, boat.RequiredOal))
+        {
+            args.ModifySpeed(0f, 0f);
+            return;
+        }
     }
 
     // TODO: Shitcode, needs to use sprites instead of actual offsets.
@@ -217,6 +234,15 @@ public abstract partial class SharedVehicleSystem : EntitySystem
     {
         if (args.NewRotation == args.OldRotation)
             return;
+
+        if (TryComp<BoatComponent>(ent, out var boat) && ent.Comp.Rider != null)
+        {
+            var isValidTile = IsOnValidTile(ent, ent.Comp.Rider.Value, boat.RequiredOal);
+            if (!isValidTile)
+            {
+                _modifier.RefreshMovementSpeedModifiers(ent);
+            }
+        }
 
         // This first check is just for safety
         if (ent.Comp.AutoAnimate && !HasComp<InputMoverComponent>(ent))
@@ -307,6 +333,28 @@ public abstract partial class SharedVehicleSystem : EntitySystem
     private void UpdateAutoAnimate(EntityUid uid, bool autoAnimate)
     {
         Appearance.SetData(uid, VehicleVisuals.AutoAnimate, autoAnimate);
+    }
+
+    private bool IsOnValidTile(Entity<VehicleComponent> boat, EntityUid user, bool requiredOal)
+    {
+        var transform = Transform(boat);
+        var coordinates = transform.Coordinates;
+
+        var entities = _lookup.GetEntitiesInRange<TagComponent>(coordinates, 0.01f);
+        foreach (var entity in entities)
+        {
+            if (_tagSystem.HasTag(entity.Owner, Swim))
+            {
+                if (!requiredOal)
+                    return true;
+
+                var activeItem = _hands.GetActiveItem(user);
+                if (activeItem != null && _tagSystem.HasTag(activeItem.Value, Oar))
+                    return true;
+            }
+        }
+
+        return false;
     }
 }
 

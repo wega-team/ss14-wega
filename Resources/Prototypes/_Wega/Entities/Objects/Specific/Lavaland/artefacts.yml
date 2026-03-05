@@ -1,0 +1,253 @@
+- type: entity
+  parent: BaseItem
+  id: DarkShard
+  name: dark shard
+  description: "It looks like something sinister."
+  suffix: DO NOT MAP
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Lavaland/dark_shard.rsi
+  - type: Item
+    size: Large
+  - type: SpawnItemsOnUse
+    items:
+      - id: WeaponCursedKatana
+    sound:
+      path: /Audio/Effects/demon_dies.ogg
+
+- type: entity
+  parent: BaseItem
+  id: RodOfAsclepius
+  name: rod of asclepius
+  description: "An ancient medical symbol. Allows you to take the Hippocratic Oath, which grants a healing aura and surgical skills at the cost of renouncing violence."
+  suffix: DO NOT MAP
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Lavaland/rod_asclepius.rsi
+    layers:
+    - state: icon_dormant
+      map: [ "enum.VisualLayers.Layer" ]
+  - type: Item
+    heldPrefix: dormant
+    size: Normal
+  - type: RodOfAsclepius
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+     enum.VisualLayers.Enabled:
+        enum.VisualLayers.Layer:
+          True: {state: icon_active}
+          False: {state: icon_dormant}
+
+- type: entity
+  parent: BaseItem
+  id: ShipInBottle
+  name: ship in bottle
+  description: "A mysterious boat sealed in glass. It is said that it can sail through the hottest lava without a single paddle."
+  suffix: DO NOT MAP
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Lavaland/boat_bottle.rsi
+    layers:
+    - state: bottle-close
+      map: [ "enum.VisualLayers.Layer" ]
+  - type: Item
+    sprite: _Wega/Objects/Specific/Lavaland/boat_bottle.rsi
+    storedRotation: 90
+  - type: ShipInBottle
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+     enum.VisualLayers.Enabled:
+        enum.VisualLayers.Layer:
+          True: {state: bottle-open}
+          False: {state: bottle-close}
+
+- type: entity
+  parent: BaseItem
+  id: DustyShard
+  name: dusty shard
+  description: "A glowing artifact that can summon a loyal miner-bodyguard. Be careful - your fate is linked to it."
+  suffix: DO NOT MAP
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Lavaland/dusty_shard.rsi
+    state: icon
+  - type: GuardianCreator
+    guardianProto: MobHoloparasiteGuardian
+
+- type: entity
+  parent: BaseItem
+  id: CubeRed
+  name: red cube
+  description: "One of a pair of linked teleportation cubes. Using it will take you to the blue cube. Hide the second cube in a safe place!"
+  suffix: DO NOT MAP
+  components:
+  - type: Item
+    size: Small
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Lavaland/cube.rsi
+    state: red
+  - type: LinkedCube
+    pairPrototype: CubeBlue
+    minTeleportDistance: 4
+    isPrimary: true
+
+- type: entity
+  parent: BaseItem
+  id: CubeBlue
+  name: blue cube
+  description: "One of a pair of linked teleportation cubes. Using it will take you to the red cube. Don't lose touch with your partner!"
+  suffix: DO NOT MAP
+  components:
+  - type: Item
+    size: Small
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Lavaland/cube.rsi
+    state: blue
+  - type: LinkedCube
+    pairPrototype: CubeRed
+    minTeleportDistance: 4
+
+- type: entity
+  parent: BaseItem
+  id: HierophantClubRod
+  name: hierophant rod
+  description: The meek, mysterious artifact sparkles with energy, completely at your disposal, as if a vassal to its suzerain.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/hierophant_club.rsi
+    state: icon
+  - type: Item
+    sprite: _Wega/Objects/Weapons/Melee/hierophant_club64.rsi
+    size: Normal
+  - type: UseDelay
+    delay: 3
+  - type: MeleeWeapon
+    wideAnimationRotation: 90
+    attackRate: 0.75
+    damage:
+      types:
+        Blunt: 10
+  - type: HierophantClub
+  - type: StaticPrice
+    price: 5000
+
+- type: entity
+  parent: BaseItem
+  id: LavaStaffRod
+  name: staff of lava
+  description: "The power of fire and stones is in your hands!"
+  suffix: DO NOT MAP
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Lavaland/lavastaff.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Wega/Objects/Specific/Lavaland/lavastaff.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - SuitStorage
+  - type: Item
+    size: Normal
+    storedRotation: -45
+  - type: MeleeWeapon
+    attackRate: 0.5
+    damage:
+      types:
+        Heat: 15
+  - type: UseDelay
+    delay: 10
+  - type: LavaStaff
+
+- type: entity
+  parent: BaseItem
+  id: BottleDragonBlood
+  name: bottle of dragons blood
+  description: "You're not really going to drink that, are you?"
+  suffix: DO NOT MAP
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Lavaland/vial.rsi
+    state: icon
+  - type: DragonBlood
+
+- type: entity
+  parent: BaseItem
+  id: DivineVocalCordsImplant
+  name: divine vocal cords
+  description: "They carry the voice of the ancient god."
+  suffix: DO NOT MAP
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Lavaland/voicegod.rsi
+    state: icon
+  - type: VoiceOfGodImplant
+  - type: SubdermalImplant
+  - type: Tag
+    tags:
+    - DivineVocalCordsImplant
+
+- type: entity
+  parent: BaseSword
+  id: WeaponSpectralBlade
+  name: spectral blade
+  description: "A rusty, dull blade. It doesn't look like it will deal much damage. It glows faintly."
+  suffix: DO NOT MAP
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/spectral_blade.rsi
+  - type: Item
+    storedRotation: -45
+  - type: MeleeWeapon
+    attackRate: 1
+    damage:
+      types:
+        Slash: 1
+  - type: DisarmMalus
+  - type: SoulStorage
+
+- type: entity
+  parent: BaseSword
+  id: WeaponSpellBlade
+  name: spellblade
+  description: "A deadly combination of laziness and bloodlust, this blade allows the user to dismember their enemies without all the hard work of actually swinging the sword."
+  suffix: DO NOT MAP
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/spell_blade.rsi
+  - type: Clothing
+    sprite: _Wega/Objects/Weapons/Melee/spell_blade.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - SuitStorage
+  - type: Item
+    storedRotation: -45
+    shape:
+    - 0,0,1,2
+  - type: MeleeWeapon
+    attackRate: 1
+    damage:
+      types:
+        Slash: 25
+  - type: Gun
+    soundGunshot: /Audio/Weapons/plasma_cutter.ogg
+    soundEmpty: null
+    fireRate: 1
+    useKey: false
+  - type: AmmoCounter
+  - type: UseDelayOnShoot
+  - type: UseDelay
+    delay: 0.9
+  - type: BasicEntityAmmoProvider
+    proto: ProjectileSpellStaff
+    capacity: 4
+    count: 4
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 5
+  - type: Reflect
+    reflectProb: 0.5
+    spread: 90
+  - type: DisarmMalus

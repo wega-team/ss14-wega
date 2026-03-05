@@ -78,6 +78,12 @@
     - RemoveFakeMindShieldTransition
 
 - type: surgeryPackage
+  id: ThroatImplantPackage
+  transitions:
+    - ImplantingVocalCordsTransition
+    - RemoveDivineVocalCordsTransition
+
+- type: surgeryPackage
   id: AndroidHeadImplantPackage
   transitions:
     - AndroidImplantHeadTransition

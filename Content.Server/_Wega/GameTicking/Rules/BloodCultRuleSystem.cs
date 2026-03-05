@@ -12,6 +12,7 @@ using Content.Server.Objectives.Components;
 using Content.Server.Objectives.Systems;
 using Content.Server.Roles;
 using Content.Server.RoundEnd;
+using Content.Shared.Achievements;
 using Content.Shared.Blood.Cult;
 using Content.Shared.Blood.Cult.Components;
 using Content.Shared.Body.Components;
@@ -38,6 +39,7 @@ namespace Content.Server.GameTicking.Rules
 {
     public sealed class BloodCultRuleSystem : GameRuleSystem<BloodCultRuleComponent>
     {
+        [Dependency] private readonly SharedAchievementsSystem _achievement = default!;
         [Dependency] private readonly ActionsSystem _action = default!;
         [Dependency] private readonly AntagSelectionSystem _antag = default!;
         [Dependency] private readonly BodySystem _body = default!;
@@ -445,7 +447,7 @@ namespace Content.Server.GameTicking.Rules
         private int GetCultEntities()
         {
             var totalCultists = GetAllCultists().Count;
-            var totalConstructs = EntityQuery<BloodCultConstructComponent>().Count();
+            var totalConstructs = GetAllConstructs().Count;
             return totalCultists + totalConstructs;
         }
 
@@ -467,6 +469,16 @@ namespace Content.Server.GameTicking.Rules
                 cultists.Add(uid);
 
             return cultists;
+        }
+
+        private List<EntityUid> GetAllConstructs()
+        {
+            var constructs = new List<EntityUid>();
+            var enumerator = EntityQueryEnumerator<BloodCultConstructComponent>();
+            while (enumerator.MoveNext(out var uid, out _))
+                constructs.Add(uid);
+
+            return constructs;
         }
 
         #endregion
@@ -519,6 +531,14 @@ namespace Content.Server.GameTicking.Rules
             {
                 cult.BloodCultWinCondition.Add(BloodCultWinType.GodCalled);
                 _roundEndSystem.DoRoundEndBehavior(RoundEndBehavior.ShuttleCall, TimeSpan.FromMinutes(1f));
+            }
+
+            var cultists = GetAllCultists();
+            cultists.AddRange(GetAllConstructs());
+            foreach (var cultist in cultists)
+            {
+                // Yes, you have reached this stage, and it was achieved with your help.
+                _achievement.QueueAchievement(cultist, AchievementsEnum.BloodCult);
             }
         }
 

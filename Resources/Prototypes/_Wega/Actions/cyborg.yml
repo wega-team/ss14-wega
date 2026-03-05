@@ -1,0 +1,23 @@
+- type: entity
+  parent: BaseAction
+  id: ActionBlinkBorg
+  name: Bluespase blink
+  description: Teleport to the clicked location.
+  components:
+  - type: Action
+    useDelay: 10
+    itemIconStyle: BigAction
+    sound: !type:SoundPathSpecifier
+      path: "/Audio/Effects/teleport_arrival.ogg"
+      params:
+        volume: 3
+    icon:
+      sprite: _Wega/Interface/Actions/actions_borg.rsi
+      state: blink_borg
+  - type: TargetAction
+    range: 16 # default examine-range.
+    # ^ should probably add better validation that the clicked location is on the users screen somewhere,
+    repeat: false
+    checkCanAccess: false
+  - type: WorldTargetAction
+    event: !type:TeleportSpellEvent

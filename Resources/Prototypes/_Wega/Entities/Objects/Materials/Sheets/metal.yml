@@ -33,3 +33,42 @@
   components:
   - type: Stack
     count: 1
+
+- type: entity
+  parent: SheetOtherBase
+  id: SheetMagmite
+  name: magmite
+  suffix: Full
+  components:
+  - type: Material
+  - type: PhysicalComposition
+    materialComposition:
+      Magmite: 100
+  - type: Stack
+    stackType: Magmite
+    baseLayer: base
+    layerStates:
+    - magmite
+    - magmite_2
+    - magmite_3
+  - type: Sprite
+    sprite: _Wega/Objects/Materials/Sheets/metal.rsi
+    state: magmite_3
+    layers:
+    - state: magmite_3
+      map: ["base"]
+  - type: Appearance
+  - type: Item
+    heldPrefix: magmite
+  - type: Tag
+    tags:
+    - MagmiteAlloy
+
+- type: entity
+  parent: SheetMagmite
+  id: SheetMagmite1
+  name: magmite
+  suffix: Single
+  components:
+  - type: Stack
+    count: 1

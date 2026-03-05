@@ -3,6 +3,7 @@
   name: job-name-senior-physician
   description: job-description-senior-physician
   playTimeTracker: JobSeniorPhysician
+  isSubRole: true # Corvax-Wega-add
   requirements:
     - !type:RoleTimeRequirement
       role: JobChemist

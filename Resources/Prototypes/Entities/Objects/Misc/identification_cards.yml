@@ -27,6 +27,7 @@
     stealGroup: IDCard
   - type: EdibleMatter # Corvax-Wega-Add
     canBeEaten: false # Corvax-Wega-Add
+  - type: PointsCard # Corvax-Wega-Lavaland
 
 #IDs with layers
 

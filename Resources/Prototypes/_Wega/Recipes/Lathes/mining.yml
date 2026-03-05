@@ -1,0 +1,66 @@
+- type: latheRecipe
+  id: WeaponPlasmaCutter
+  result: WeaponPlasmaCutterEmpty
+  completetime: 30
+  materials:
+    Steel: 850
+    Glass: 300
+    Plasma: 500
+
+- type: latheRecipe
+  id: WeaponPlasmaCutterAdv
+  result: WeaponPlasmaCutterAdvEmpty
+  completetime: 30
+  materials:
+    Steel: 850
+    Glass: 300
+    Plasma: 500
+    Gold: 400
+    Diamond: 200
+
+- type: latheRecipe
+  id: WeaponIndustrialFanPlasmaCutter
+  result: WeaponIndustrialFanPlasmaCutterEmpty
+  completetime: 30
+  materials:
+    Steel: 850
+    Glass: 300
+    Plasma: 500
+    Gold: 400
+    Diamond: 200
+
+# Magmite
+- type: latheRecipe
+  id: WeaponMagmiteProtoKineticAccelerator
+  result: WeaponMagmiteProtoKineticAccelerator
+  completetime: 20
+  materials:
+    Magmite: 2000
+
+- type: latheRecipe
+  id: WeaponMagmiteCrusher
+  result: WeaponMagmiteCrusher
+  completetime: 20
+  materials:
+    Magmite: 2000
+
+- type: latheRecipe
+  id: WeaponMagmiteCrusherGlaive
+  result: WeaponMagmiteCrusherGlaive
+  completetime: 20
+  materials:
+    Magmite: 2000
+
+- type: latheRecipe
+  id: WeaponMagmitePlasmaCutter
+  result: WeaponMagmitePlasmaCutter
+  completetime: 20
+  materials:
+    Magmite: 1500
+
+- type: latheRecipe
+  id: WeaponMagmiteFanPlasmaCutter
+  result: WeaponMagmiteFanPlasmaCutter
+  completetime: 20
+  materials:
+    Magmite: 1500

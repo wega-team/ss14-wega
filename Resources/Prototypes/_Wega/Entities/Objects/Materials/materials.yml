@@ -1,0 +1,125 @@
+- type: entity
+  parent: MaterialBase
+  id: MaterialSinew
+  name: sinew
+  description: "A real hunter's battle trophy."
+  suffix: Full
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Materials/sinew.rsi
+    layers:
+    - state: sinew
+      map: [ "base" ]
+  - type: StaticPrice
+    price: 0
+  - type: StackPrice
+    price: 500
+  - type: Appearance
+  - type: Stack
+    stackType: Sinew
+    baseLayer: base
+    layerStates:
+    - sinew
+    - sinew_2
+    - sinew_3
+  - type: Item
+    size: Large
+    sprite: _Wega/Objects/Materials/sinew.rsi
+    shape:
+    - 0,0,1,1
+  - type: Tag
+    tags:
+    - MaterialsThrophy
+    - Sinew
+
+- type: entity
+  parent: MaterialSinew
+  id: MaterialSinew1
+  suffix: 1
+  components:
+  - type: Stack
+    count: 1
+
+- type: entity
+  parent: MaterialBase
+  id: MaterialChitin
+  name: chitin
+  description: "Chitin from some kind of arthropod, nothing more."
+  suffix: Full
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Materials/chitin.rsi
+    layers:
+    - state: chitin
+      map: [ "base" ]
+  - type: StaticPrice
+    price: 0
+  - type: StackPrice
+    price: 500
+  - type: Appearance
+  - type: Stack
+    stackType: Chitin
+    baseLayer: base
+    layerStates:
+    - chitin
+    - chitin_2
+    - chitin_3
+  - type: Item
+    size: Large
+    sprite: _Wega/Objects/Materials/chitin.rsi
+    shape:
+    - 0,0,1,1
+  - type: Tag
+    tags:
+    - MaterialsThrophy
+    - Chitin
+
+- type: entity
+  parent: MaterialChitin
+  id: MaterialChitin1
+  suffix: 1
+  components:
+  - type: Stack
+    count: 1
+
+- type: entity
+  parent: MaterialBase
+  id: MaterialDragonHide
+  name: dragon hide
+  description: "Now that's a worthy catch. Proving who you are."
+  suffix: Full
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Materials/dragon_hide.rsi
+    layers:
+    - state: dragon_hide
+      map: [ "base" ]
+  - type: StaticPrice
+    price: 0
+  - type: StackPrice
+    price: 2000
+  - type: Appearance
+  - type: Stack
+    stackType: DragonHide
+    baseLayer: base
+    layerStates:
+    - dragon_hide
+    - dragon_hide_2
+    - dragon_hide_3
+  - type: Item
+    size: Large
+    sprite: _Wega/Objects/Materials/dragon_hide.rsi
+    shape:
+    - 0,0,2,2
+  - type: Tag
+    tags:
+    - MaterialsThrophy
+    - DragonHide
+
+- type: entity
+  parent: MaterialDragonHide
+  id: MaterialDragonHide1
+  suffix: 1
+  components:
+  - type: Stack
+    count: 1

@@ -20,3 +20,24 @@
   - !type:SpeciesLoadoutEffect
     species:
     - Android
+
+- type: loadoutEffectGroup
+  id: SalvageVeterancy
+  effects:
+  - !type:AchievementLoadoutEffect
+    requiredAchievements:
+    - FirstBoss
+    - HierophantBoss
+    - MinerBoss
+    - LegionBoss
+    - ColossusBoss
+    - AshDrakeBoss
+    - BubblegumBoss
+    requireAll: true
+
+- type: loadoutEffectGroup
+  id: BloodCultAchievement
+  effects:
+  - !type:AchievementLoadoutEffect
+    requiredAchievements:
+    - BloodCult

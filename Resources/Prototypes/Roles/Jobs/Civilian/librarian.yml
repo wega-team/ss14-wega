@@ -5,6 +5,7 @@
   playTimeTracker: JobLibrarian
   startingGear: LibrarianGear
   icon: "JobIconLibrarian"
+  isSubRole: true # Corvax-Wega-add
   supervisors: job-supervisors-hop
   access:
   - Service

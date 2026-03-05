@@ -1,0 +1,92 @@
+- type: entity
+  parent: DefaultStationBeaconSupply
+  id: DefaultStationBeaconCargoLavalandAvanpost
+  suffix: Lavaland Avanpost
+  components:
+  - type: NavMapBeacon
+    defaultText: station-beacon-cargo-lavaland-avanpost
+
+- type: entity
+  parent: DefaultStationBeaconSecurity
+  id: DefaultStationBeaconSecurityPenalServitude
+  suffix: Penal Servitude
+  components:
+  - type: NavMapBeacon
+    defaultText: station-beacon-security-penal-servitude
+
+- type: entity
+  parent: BaseItem
+  id: HandheldBeacon
+  name: handheld beacon
+  description: "A small signal transmitter that needs to be deployed in order to work."
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Devices/handheld_beacon.rsi
+    noRot: true
+    layers:
+    - state: off
+      map: ["base"]
+    - state: unshaded
+      map: ["beacon-on"]
+      shader: unshaded
+      visible: false
+  - type: ConfigurableNavMapBeacon
+  - type: HandheldBeacon
+  - type: NavMapBeacon
+    defaultText: nav-map-beacon-handheld-default
+    defaultDesc: nav-map-beacon-handheld-default-desc
+    color: "#66489c"
+    enabled: false
+  - type: ActivatableUI
+    key: enum.NavMapBeaconUiKey.Key
+    singleUser: true
+  - type: UserInterface
+    interfaces:
+      enum.NavMapBeaconUiKey.Key:
+        type: NavMapBeaconBoundUserInterface
+  - type: Item
+    size: Tiny
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger: # for nukes
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+        - !type:DoActsBehavior
+          acts: ["Destruction"]
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+        - !type:PlaySoundBehavior
+          sound:
+            collection: MetalBreak
+            params:
+              volume: -8
+        - !type:SpawnEntitiesBehavior
+          spawn:
+            SheetSteel1:
+              min: 1
+              max: 1
+          offset: 0
+        - !type:DoActsBehavior
+          acts: ["Breakage"]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.VisualLayers.Enabled:
+        base:
+          True: {state: base}
+          False: {state: off}
+      enum.NavMapBeaconVisuals.Enabled:
+        beacon-on:
+          True: {visible: true}
+          False: {visible: false}
+  - type: Tag
+    tags:
+    - HandheldBeacon
+  - type: StaticPrice
+    price: 25

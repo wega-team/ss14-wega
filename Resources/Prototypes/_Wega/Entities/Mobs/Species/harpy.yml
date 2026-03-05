@@ -35,9 +35,9 @@
     allowedEmotes: ['CatHisses', "CatMeow", 'Growl', 'Purr', 'Beep', 'Click', 'Squeak', 'HarpyRing', 'HarpyPew', 'HarpyBang', 'HarpyRev']
   - type: Vocal
     sounds:
-      Male: SoundsHarpy
-      Female: SoundsHarpy
-      Unsexed: SoundsHarpy
+      Male: MaleHarpy
+      Female: FemaleHarpy
+      Unsexed: MaleHarpy
   - type: DnaModifier
     upper: MobHarpy
     lowest: MobParrot
@@ -51,19 +51,24 @@
         type: SurgeryBoundUserInterface
       enum.InstrumentUiKey.Key:
         type: InstrumentBoundUserInterface
-  - type: ColourBlindness
-    colorFilter: "1.0, 0.8, 0.0"
-    desaturation: 0.4
   - type: Instrument
     allowPercussion: false
     program: 52
   - type: Inventory
+    templateId: harpy
     displacements:
       jumpsuit:
         sizeMaps:
           32:
             sprite: _Wega/Mobs/Species/Harpy/displacement.rsi
             state: jumpsuit
+  - type: FlyAbility
+    staminaDamage: 5
+    cooldown: 20
+  - type: MovementSpeedModifier
+    baseWeightlessAcceleration: 1.25
+    baseWeightlessFriction: 1
+    baseWeightlessModifier: 1
 
 - type: entity
   parent: MobHumanDummy
@@ -81,6 +86,7 @@
     prototype: Harpy
     requiredLegs: 2
   - type: Inventory
+    templateId: harpy
     displacements:
       jumpsuit:
         sizeMaps:

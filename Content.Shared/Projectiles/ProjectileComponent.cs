@@ -81,6 +81,14 @@ public sealed partial class ProjectileComponent : Component
     [DataField]
     public bool ProjectileSpent;
 
+    // Corvax-Wega-Add
+    /// <summary>
+    /// You cannot kill me!
+    /// </summary>
+    [DataField]
+    public bool IgnoreTargeted;
+    // Corvax-Wega-End
+
     /// <summary>
     ///     When a projectile has this threshold set, it will continue to penetrate entities until the damage dealt reaches this threshold.
     /// </summary>

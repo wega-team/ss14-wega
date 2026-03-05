@@ -127,6 +127,9 @@
 
 - type: Tag
   id: SubdermalHeadImplant
+
+- type: Tag
+  id: DivineVocalCordsImplant
 # Surgery end
 
 # Synthetic Surgery
@@ -280,6 +283,123 @@
 
 - type: Tag
   id: CardTarot
-  
+
+- type: Tag
+  id: CanSwim
+
+- type: Tag
+  id: Oar
+
+- type: Tag
+  id: HandheldBeacon
+
+- type: Tag
+  id: DockLavalandStation
+
+- type: Tag
+  id: DockLavalandOutpost
+
+- type: Tag
+  id: DockPenalServitudeStation
+
+- type: Tag
+  id: DockPenalServitude
+
+- type: Tag
+  id: GunUpgradeAoE
+
+- type: Tag
+  id: GunUpgradeLifesteal
+
+- type: Tag
+  id: CrusherUpgrade
+
+- type: Tag
+  id: CrusherUpgradeLegion
+
+- type: Tag
+  id: CrusherUpgradeGoliath
+
+- type: Tag
+  id: CrusherUpgradeAncientGoliath
+
+- type: Tag
+  id: CrusherUpgradeWatcher
+
+- type: Tag
+  id: CrusherUpgradeMagmaWatcher
+
+- type: Tag
+  id: CrusherUpgradeMarrowWeaverPoisonfang
+
+- type: Tag
+  id: CrusherUpgradeFrostbiteWeaverFrostGland
+
+- type: Tag
+  id: CrusherUpgradeBDM
+
+- type: Tag
+  id: CrusherUpgradeAshDrake
+
+- type: Tag
+  id: CrusherUpgradeBubblegum
+
+- type: Tag
+  id: CrusherUpgradeColossus
+
+- type: Tag
+  id: CrusherUpgradeHierophant
+
+- type: Tag
+  id: MaterialsThrophy
+
+- type: Tag
+  id: Sinew
+
+- type: Tag
+  id: Chitin
+
+- type: Tag
+  id: DragonHide
+
+- type: Tag
+  id: ExplorerSuit
+
+- type: Tag
+  id: ExplorerSuitKhaki
+
+- type: Tag
+  id: GoliathCloak
+
+- type: Tag
+  id: UniformUpgrade
+
+- type: Tag
+  id: BoneTalismanUpgrade
+
+- type: Tag
+  id: SkullCodpieceUpgrade
+
+- type: Tag
+  id: MagmiteAlloy
+
+- type: Tag
+  id: Gems
+
+- type: Tag
+  id: DataCrystal
+
 - type: Tag
   id: HudMedSec
+
+- type: Tag
+  id: Lightbox
+
+- type: Tag
+  id: Itemborg
+
+- type: Tag
+  id: Nanopast
+  
+- type: Tag
+  id: AnomalyCore

@@ -1,0 +1,233 @@
+- type: entity
+  parent: BaseItem
+  id: BaseTrophyLavaland
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Lavaland/trophies.rsi
+  - type: Item
+    size: Small
+  - type: CrusherUpgrade
+  - type: StaticPrice
+    price: 250
+  - type: Tag
+    tags:
+    - CrusherUpgrade
+
+- type: entity
+  parent: BaseTrophyLavaland
+  id: TrophyLavalandLegionSkull
+  name: legion skull
+  description: "The fused skulls of many creatures, united into a single collective entity. Heavy and cold to the touch."
+  components:
+  - type: Sprite
+    state: skull
+  - type: CrusherUpgrade
+    tags: [ CrusherUpgradeLegion ]
+    examineText: crusher-upgrade-examine-text-legion
+  - type: CrusherLegionSkullUpgrade
+
+- type: entity
+  parent: BaseTrophyLavaland
+  id: TrophyLavalandGoliathTentacle
+  name: goliath tentacle
+  description: "A muscular appendage covered in stone plates. It pulsates with the residual life force of a gigantic creature."
+  components:
+  - type: Sprite
+    state: tendril
+  - type: CrusherUpgrade
+    tags: [ CrusherUpgradeGoliath ]
+    examineText: crusher-upgrade-examine-text-goliath
+  - type: CrusherGoliathTentacleUpgrade
+
+- type: entity
+  parent: TrophyLavalandGoliathTentacle
+  id: TrophyLavalandAncientGoliathTentacle
+  name: goliath tentacle
+  description: "A petrified appendage of an ancient goliath. Its surface is riddled with the cracks of time, but its ancient power still lingers within."
+  components:
+  - type: Sprite
+    state: ancient_tendril
+  - type: CrusherUpgrade
+    tags: [ CrusherUpgradeAncientGoliath ]
+    examineText: crusher-upgrade-examine-text-ancient-goliath
+  - type: CrusherAncientGoliathTentacleUpgrade
+
+- type: entity
+  parent: BaseTrophyLavaland
+  id: TrophyLavalandWatcherWing
+  name: watcher wing
+  description: "A semi-transparent membranous plane that shimmers with a pearly sheen. It seems almost weightless."
+  components:
+  - type: Sprite
+    state: wing
+  - type: CrusherUpgrade
+    tags: [ CrusherUpgradeWatcher ]
+    examineText: crusher-upgrade-examine-text-watcher
+  - type: CrusherWatcherWingUpgrade
+
+- type: entity
+  parent: TrophyLavalandWatcherWing
+  id: TrophyLavalandIceWatcherWing
+  name: ice watcher wing
+  description: "A crystal wing covered in frost. It exudes a slight chill, and ice patterns constantly form on its surface."
+  components:
+  - type: Sprite
+    state: ice_wing
+  - type: CrusherUpgrade
+    tags: [ CrusherUpgradeWatcher ]
+    examineText: crusher-upgrade-examine-text-ice-watcher
+  - type: CrusherWatcherWingUpgrade
+    resetsTime: 2.8
+
+- type: entity
+  parent: BaseTrophyLavaland
+  id: TrophyLavalandMagmaWatcherWing
+  name: magma watcher wing
+  description: "A petrified lava form that still emits heat. Inside, you can see veins of molten rock."
+  components:
+  - type: Sprite
+    state: magma_wing
+  - type: CrusherUpgrade
+    tags: [ CrusherUpgradeMagmaWatcher ]
+    examineText: crusher-upgrade-examine-text-magma-watcher
+  - type: CrusherMagmaWingUpgrade
+    damage:
+      types:
+        Heat: 5
+
+- type: entity
+  parent: BaseTrophyLavaland
+  id: TrophyLavalandMarrowWeaverPoisonFang
+  name: poison fang
+  description: "The curved fang of a marrow weaver, still slick with pale venom. A faint, chemical smell of marrow and decay clings to it."
+  components:
+  - type: Sprite
+    state: fang
+  - type: CrusherUpgrade
+    tags: [ CrusherUpgradeMarrowWeaverPoisonfang ]
+    examineText: crusher-upgrade-examine-text-marrow-weaver
+  - type: CrusherPoisonFangUpgrade
+
+- type: entity
+  parent: BaseTrophyLavaland
+  id: TrophyLavalandFrostbiteWeaverFrostGland
+  name: frost gland
+  description: "A pulsating gland from a frostbite weaver, cold enough to numb your fingers. Pale blue ichor frosts the inside of its translucent membrane."
+  components:
+  - type: Sprite
+    state: ice_gland
+  - type: CrusherUpgrade
+    tags: [ CrusherUpgradeFrostbiteWeaverFrostGland ]
+    examineText: crusher-upgrade-examine-text-frostbite-weaver
+  - type: CrusherFrostGlandUpgrade
+
+- type: entity
+  parent: BaseTrophyLavaland
+  id: TrophyLavalandBDMEye
+  name: eye of the blood drunk miner
+  description: "A cloudy, blood-red eye, with a look of insane rage in its depths. It felt wet and uncomfortably warm to the touch."
+  components:
+  - type: Sprite
+    state: eye
+  - type: CrusherUpgrade
+    tags: [ CrusherUpgradeBDM ]
+    examineText: crusher-upgrade-examine-text-blood-drunk-miner
+  - type: CrusherEyeBloodDrunkMinerUpgrade
+
+- type: entity
+  parent: BaseTrophyLavaland
+  id: TrophyLavalandAshDrakeSpike
+  name: ash drake spike
+  description: "A massive spike of volcanic glass, streaked with ash. Razor-sharp and incredibly durable."
+  components:
+  - type: Sprite
+    state: spike
+  - type: Sharp
+  - type: CrusherUpgrade
+    tags: [ CrusherUpgradeAshDrake ]
+    examineText: crusher-upgrade-examine-text-ash-drake
+  - type: CrusherAshDrakeSpikeUpgrade
+
+- type: entity
+  parent: BaseTrophyLavaland
+  id: TrophyLavalandBubblegumDemonClaws
+  name: demon claws
+  description: "Curved claws covered with a sticky substance. They emit a sweet, rotten smell."
+  components:
+  - type: Sprite
+    state: claws
+  - type: CrusherUpgrade
+    tags: [ CrusherUpgradeBubblegum ]
+    examineText: crusher-upgrade-examine-text-bubblegum
+  - type: CrusherDemonClawsUpgrade
+
+- type: entity
+  parent: BaseTrophyLavaland
+  id: TrophyLavalandColossusBlasterTubes
+  name: blaster tubes
+  description: "A set of oddly shaped metal tubes, still smelling of ozone and burnt. There's a soft hum coming from inside."
+  components:
+  - type: Sprite
+    state: tubes
+  - type: CrusherUpgrade
+    tags: [ CrusherUpgradeColossus ]
+    examineText: crusher-upgrade-examine-text-colossus
+  - type: CrusherBlasterTubesUpgrade
+    damage:
+      types:
+        Blunt: 10
+
+- type: entity
+  parent: BaseTrophyLavaland
+  id: TrophyLavalandHierophantVortexTalisman
+  name: vortex talisman
+  description: "A cubic artifact made of dark material, with a purple nebula slowly rotating inside. When touched, it seems to vibrate at an inaudible frequency."
+  components:
+  - type: Sprite
+    state: vortex
+  - type: CrusherUpgrade
+    tags: [ CrusherUpgradeHierophant ]
+    examineText: crusher-upgrade-examine-text-hierophant
+  - type: CrusherVortexTalismanUpgrade
+  - type: PointLight
+    color: "#8f00ec"
+    energy: 40
+    radius: 1.2
+
+- type: entity
+  parent: BaseItem
+  id: LegionCore
+  name: legion core
+  description: "A mysterious core filled with some kind of energy. Does it seem to be fading away?"
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Lavaland/legioncore.rsi
+    layers:
+    - state: icon_active
+      map: [ "enum.VisualLayers.Layer" ]
+  - type: Item
+    size: Small
+  - type: Damageable
+    damageContainer: Clothing
+  - type: Reactive
+    groups:
+      Special: [ Touch ]
+  - type: LegionCore
+    healAmount:
+      types:
+        Blunt: -25
+        Heat: -25
+    internals:
+    - ArterialBleeding
+    - ClosedFracture
+    - OpenFracture
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+     enum.VisualLayers.Enabled:
+        enum.VisualLayers.Layer:
+          True: {state: icon_active}
+          False: {state: icon_base}
+  - type: StaticPrice
+    price: 250

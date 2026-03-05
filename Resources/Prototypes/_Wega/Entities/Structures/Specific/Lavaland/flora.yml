@@ -1,0 +1,447 @@
+- type: entity
+  id: BaseLavalandFlora
+  abstract: true
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Lavaland/flora.rsi
+    noRot: true
+  - type: Physics
+    bodyType: Static
+  - type: Transform
+    anchored: true
+  - type: Rotatable
+  - type: Flora
+  - type: Appearance
+
+# Cactus
+- type: entity
+  parent: BaseLavalandFlora
+  id: LavalandFloraCactus1
+  name: barrel cactus
+  description: "A prickly desert dweller that stores moisture in its fleshy stems. It sometimes produces juicy fruits."
+  components:
+  - type: Sprite
+    layers:
+    - state: cactus1
+      map: ["flora"]
+  - type: Flora
+    harvestPrototype: FoodFloraCactusFruit
+    maxYield: 1
+  - type: GenericVisualizer
+    visuals:
+      enum.FloraVisuals.State:
+        flora:
+          Grown: { state: cactus1 }
+          Harvested: { state: cactus1h }
+  - type: CollisionWake
+    enabled: false
+  - type: Fixtures
+    fixtures:
+      slips:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.2,-0.2,0.2,0.2"
+        hard: false
+        layer:
+        - LowImpassable
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.2,-0.2,0.2,0.2"
+        density: 30
+        mask:
+        - ItemMask
+  - type: Slippery
+    slipData:
+      launchForwardsMultiplier: 0
+  - type: StepTrigger
+    intersectRatio: 0.2
+  - type: PreventableStepTrigger
+  - type: TriggerOnStepTrigger
+  - type: DamageOnTrigger
+    targetUser: true
+    damage:
+      types:
+        Piercing: 4.5
+
+- type: entity
+  parent: LavalandFloraCactus1
+  id: LavalandFloraCactus2
+  components:
+  - type: Sprite
+    layers:
+    - state: cactus2
+      map: ["flora"]
+  - type: GenericVisualizer
+    visuals:
+      enum.FloraVisuals.State:
+        flora:
+          Grown: { state: cactus2 }
+          Harvested: { state: cactus2h }
+
+- type: entity
+  parent: LavalandFloraCactus1
+  id: LavalandFloraCactus3
+  components:
+  - type: Sprite
+    layers:
+    - state: cactus3
+      map: ["flora"]
+  - type: GenericVisualizer
+    visuals:
+      enum.FloraVisuals.State:
+        flora:
+          Grown: { state: cactus3 }
+          Harvested: { state: cactus3h }
+
+- type: entity
+  parent: LavalandFloraCactus1
+  id: LavalandFloraCactus4
+  components:
+  - type: Sprite
+    layers:
+    - state: cactus4
+      map: ["flora"]
+  - type: GenericVisualizer
+    visuals:
+      enum.FloraVisuals.State:
+        flora:
+          Grown: { state: cactus4 }
+          Harvested: { state: cactus4h }
+
+# Fire Blossom
+- type: entity
+  parent: BaseLavalandFlora
+  id: LavalandFloraFireBlossom1
+  name: fire blossom
+  description: "A bright, luminescent flower, incredibly beautiful."
+  components:
+  - type: Sprite
+    layers:
+    - state: fireblossom1
+      map: ["flora"]
+  - type: Flora
+    harvestPrototype: FlowerFireBlossom
+    maxYield: 1
+  - type: PointLight
+    radius: 1.2
+    energy: 2
+    color: "#F54900"
+  - type: GenericVisualizer
+    visuals:
+      enum.FloraVisuals.State:
+        flora:
+          Grown: { state: fireblossom1 }
+          Harvested: { state: fireblossom1h }
+
+- type: entity
+  parent: LavalandFloraFireBlossom1
+  id: LavalandFloraFireBlossom2
+  components:
+  - type: Sprite
+    layers:
+    - state: fireblossom2
+      map: ["flora"]
+  - type: GenericVisualizer
+    visuals:
+      enum.FloraVisuals.State:
+        flora:
+          Grown: { state: fireblossom2 }
+          Harvested: { state: fireblossom2h }
+
+- type: entity
+  parent: LavalandFloraFireBlossom1
+  id: LavalandFloraFireBlossom3
+  components:
+  - type: Sprite
+    layers:
+    - state: fireblossom3
+      map: ["flora"]
+  - type: GenericVisualizer
+    visuals:
+      enum.FloraVisuals.State:
+        flora:
+          Grown: { state: fireblossom3 }
+          Harvested: { state: fireblossom3h }
+
+- type: entity
+  parent: LavalandFloraFireBlossom1
+  id: LavalandFloraFireBlossom4
+  components:
+  - type: Sprite
+    layers:
+    - state: fireblossom4
+      map: ["flora"]
+  - type: GenericVisualizer
+    visuals:
+      enum.FloraVisuals.State:
+        flora:
+          Grown: { state: fireblossom4 }
+          Harvested: { state: fireblossom4h }
+
+# Polypore Mushroom
+- type: entity
+  parent: BaseLavalandFlora
+  id: LavalandFloraPolyporeMushroom1
+  name: wood tinder box
+  description: "A tough parasitic fungus that grows in tiers on dead wood. It can be carefully cut off."
+  components:
+  - type: Sprite
+    layers:
+    - state: l_mushroom1
+      map: ["flora"]
+  - type: Flora
+    harvestPrototype: FoodFloraPolyporeMushroom
+    specialTool: Slicing
+  - type: GenericVisualizer
+    visuals:
+      enum.FloraVisuals.State:
+        flora:
+          Grown: { state: l_mushroom1 }
+          Harvested: { state: l_mushroom1h }
+
+- type: entity
+  parent: LavalandFloraPolyporeMushroom1
+  id: LavalandFloraPolyporeMushroom2
+  components:
+  - type: Sprite
+    layers:
+    - state: l_mushroom2
+      map: ["flora"]
+  - type: GenericVisualizer
+    visuals:
+      enum.FloraVisuals.State:
+        flora:
+          Grown: { state: l_mushroom2 }
+          Harvested: { state: l_mushroom2h }
+
+- type: entity
+  parent: LavalandFloraPolyporeMushroom1
+  id: LavalandFloraPolyporeMushroom3
+  components:
+  - type: Sprite
+    layers:
+    - state: l_mushroom3
+      map: ["flora"]
+  - type: GenericVisualizer
+    visuals:
+      enum.FloraVisuals.State:
+        flora:
+          Grown: { state: l_mushroom3 }
+          Harvested: { state: l_mushroom3h }
+
+- type: entity
+  parent: LavalandFloraPolyporeMushroom1
+  id: LavalandFloraPolyporeMushroom4
+  components:
+  - type: Sprite
+    layers:
+    - state: l_mushroom4
+      map: ["flora"]
+  - type: GenericVisualizer
+    visuals:
+      enum.FloraVisuals.State:
+        flora:
+          Grown: { state: l_mushroom4 }
+          Harvested: { state: l_mushroom4h }
+
+# Inocybe Mushroom
+- type: entity
+  parent: BaseLavalandFlora
+  id: LavalandFloraInocybeMushroom1
+  name: pale fire mushroom
+  description: "A fragile mushroom with a cracked cap that emits a subtle glow. It contains powerful psychoactive substances and toxins."
+  components:
+  - type: Sprite
+    layers:
+    - state: r_mushroom1
+      map: ["flora"]
+  - type: Flora
+    harvestPrototype: FoodFloraInocybeMushroom
+    specialTool: Slicing
+  - type: GenericVisualizer
+    visuals:
+      enum.FloraVisuals.State:
+        flora:
+          Grown: { state: r_mushroom1 }
+          Harvested: { state: r_mushroom1h }
+
+- type: entity
+  parent: LavalandFloraInocybeMushroom1
+  id: LavalandFloraInocybeMushroom2
+  components:
+  - type: Sprite
+    layers:
+    - state: r_mushroom2
+      map: ["flora"]
+  - type: GenericVisualizer
+    visuals:
+      enum.FloraVisuals.State:
+        flora:
+          Grown: { state: r_mushroom2 }
+          Harvested: { state: r_mushroom2h }
+
+- type: entity
+  parent: LavalandFloraInocybeMushroom1
+  id: LavalandFloraInocybeMushroom3
+  components:
+  - type: Sprite
+    layers:
+    - state: r_mushroom3
+      map: ["flora"]
+  - type: GenericVisualizer
+    visuals:
+      enum.FloraVisuals.State:
+        flora:
+          Grown: { state: r_mushroom3 }
+          Harvested: { state: r_mushroom3h }
+
+- type: entity
+  parent: LavalandFloraInocybeMushroom1
+  id: LavalandFloraInocybeMushroom4
+  components:
+  - type: Sprite
+    layers:
+    - state: r_mushroom4
+      map: ["flora"]
+  - type: GenericVisualizer
+    visuals:
+      enum.FloraVisuals.State:
+        flora:
+          Grown: { state: r_mushroom4 }
+          Harvested: { state: r_mushroom4h }
+
+# Porcini Mushroom
+- type: entity
+  parent: BaseLavalandFlora
+  id: LavalandFloraPorciniMushroom1
+  name: smoky boletus
+  description: "A strong edible mushroom known for its distinctive aroma. It has a slight stimulating effect."
+  components:
+  - type: Sprite
+    layers:
+    - state: s_mushroom1
+      map: ["flora"]
+  - type: Flora
+    harvestPrototype: FoodFloraPorciniMushroom
+  - type: GenericVisualizer
+    visuals:
+      enum.FloraVisuals.State:
+        flora:
+          Grown: { state: s_mushroom1 }
+          Harvested: { state: s_mushroom1h }
+
+- type: entity
+  parent: LavalandFloraPorciniMushroom1
+  id: LavalandFloraPorciniMushroom2
+  components:
+  - type: Sprite
+    layers:
+    - state: s_mushroom2
+      map: ["flora"]
+  - type: GenericVisualizer
+    visuals:
+      enum.FloraVisuals.State:
+        flora:
+          Grown: { state: s_mushroom2 }
+          Harvested: { state: s_mushroom2h }
+
+- type: entity
+  parent: LavalandFloraPorciniMushroom1
+  id: LavalandFloraPorciniMushroom3
+  components:
+  - type: Sprite
+    layers:
+    - state: s_mushroom3
+      map: ["flora"]
+  - type: GenericVisualizer
+    visuals:
+      enum.FloraVisuals.State:
+        flora:
+          Grown: { state: s_mushroom3 }
+          Harvested: { state: s_mushroom3h }
+
+- type: entity
+  parent: LavalandFloraPorciniMushroom1
+  id: LavalandFloraPorciniMushroom4
+  components:
+  - type: Sprite
+    layers:
+    - state: s_mushroom4
+      map: ["flora"]
+  - type: GenericVisualizer
+    visuals:
+      enum.FloraVisuals.State:
+        flora:
+          Grown: { state: s_mushroom4 }
+          Harvested: { state: s_mushroom4h }
+
+# Embershroom
+- type: entity
+  parent: BaseLavalandFlora
+  id: LavalandFloraEmbershroom1
+  name: charcoal-fire tinder fungus
+  description: "A heavy, almost stone-like mushroom with smoldering veins. Its stem contains substances that cause euphoria."
+  components:
+  - type: Sprite
+    layers:
+    - state: t_mushroom1
+      map: ["flora"]
+  - type: Flora
+    harvestPrototype: FoodFloraEmbershroom
+    specialTool: Slicing
+  - type: GenericVisualizer
+    visuals:
+      enum.FloraVisuals.State:
+        flora:
+          Grown: { state: t_mushroom1 }
+          Harvested: { state: t_mushroom1h }
+
+- type: entity
+  parent: LavalandFloraEmbershroom1
+  id: LavalandFloraEmbershroom2
+  components:
+  - type: Sprite
+    layers:
+    - state: t_mushroom2
+      map: ["flora"]
+  - type: GenericVisualizer
+    visuals:
+      enum.FloraVisuals.State:
+        flora:
+          Grown: { state: t_mushroom2 }
+          Harvested: { state: t_mushroom2h }
+
+- type: entity
+  parent: LavalandFloraEmbershroom1
+  id: LavalandFloraEmbershroom3
+  components:
+  - type: Sprite
+    layers:
+    - state: t_mushroom3
+      map: ["flora"]
+  - type: GenericVisualizer
+    visuals:
+      enum.FloraVisuals.State:
+        flora:
+          Grown: { state: t_mushroom3 }
+          Harvested: { state: t_mushroom3h }
+
+- type: entity
+  parent: LavalandFloraEmbershroom1
+  id: LavalandFloraEmbershroom4
+  components:
+  - type: Sprite
+    layers:
+    - state: t_mushroom4
+      map: ["flora"]
+  - type: GenericVisualizer
+    visuals:
+      enum.FloraVisuals.State:
+        flora:
+          Grown: { state: t_mushroom4 }
+          Harvested: { state: t_mushroom4h }

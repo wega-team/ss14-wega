@@ -24,3 +24,5 @@ reagent-name-cellular-resist-potion = зелье клеточной защиты
 reagent-desc-cellular-resist-potion = Защищает клетки организма от дегенеративных изменений.
 reagent-name-iron-skin-resist-potion = зелье железной кожи
 reagent-desc-iron-skin-resist-potion = Временно укрепляет кожные покровы, повышая устойчивость к физическим повреждениям.
+reagent-name-stabilizing-serum-potion = сыворотка стабилизации
+reagent-desc-stabilizing-serum-potion = Стабилизирует активные ядра легиона и может быть...

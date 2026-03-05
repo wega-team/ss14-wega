@@ -23,6 +23,7 @@
     areaInsert: true
     whitelist:
       tags:
+        - CrusherUpgrade
         - SalvageScrap
         - GoliathPlate
         - ToothSharkminnow
@@ -30,6 +31,7 @@
         - Ring
         - Coin
         - Kubok
+        - MaterialsThrophy
       components:
         - CursedMask
   - type: Dumpable

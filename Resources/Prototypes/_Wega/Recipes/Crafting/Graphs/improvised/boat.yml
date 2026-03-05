@@ -1,0 +1,30 @@
+- type: constructionGraph
+  id: VehicleBoat
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: boat
+      steps:
+      - material: WoodPlank
+        amount: 30
+        doAfter: 5
+      - material: GoliathHide
+        amount: 8
+        doAfter: 8
+  - node: boat
+    entity: VehicleBoat
+    edges:
+      - to: start
+        steps:
+          - tool: Prying
+            doAfter: 10
+        completed:
+          - !type:SpawnPrototype
+            prototype: MaterialWoodPlank1
+            amount: 30
+          - !type:SpawnPrototype
+            prototype: MaterialGoliathHide1
+            amount: 8
+          - !type:EmptyAllContainers
+          - !type:DeleteEntity

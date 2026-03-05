@@ -5,3 +5,5 @@ construction-graph-tag-poppy = мак
 construction-graph-tag-peaceflower = пион
 construction-graph-tag-alienberries = инопланетные ягоды
 construction-graph-tag-soil-bag = мешок почвы
+construction-graph-tag-explorer-suit = костюм исследователя
+construction-graph-tag-goliath-cloak = плащ голиафа

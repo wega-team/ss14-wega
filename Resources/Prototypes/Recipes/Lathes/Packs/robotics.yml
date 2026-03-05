@@ -24,8 +24,11 @@
   - BorgModuleCommonFight
   - BorgModuleCommonPickaxe
   - BorgModuleCommonSpeed
-  - BorgModuleCommonMagBoots
+  # - BorgModuleCommonMagBoots надо будет как-то поменять его
   - BorgModuleCommonRepeir
+  - BorgModuleCommonCandy
+  - BorgModuleCleaningCommon
+  - BorgModuleMusique
  # Corvax-Wega-end
 
 - type: latheRecipePack
@@ -63,11 +66,12 @@
   - BorgModuleAdvancedTopical
   - BorgModuleAdvancedMining
  # Corvax-Wega-Start
+  - BorgModuleAdvancedAnomaly
+  - BorgModuleRobotics
   - BorgModuleSurgery
+  - BorgModuleLethal
   - BorgModuleKinetic
   - BorgModuleGardening
-  - BorgModuleHarvesting
-  - BorgModuleMusique
   - BorgModuleClowning
   - BorgModuleSheild
   - BorgModuleGranader

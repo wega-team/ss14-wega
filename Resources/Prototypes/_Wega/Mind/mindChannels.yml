@@ -9,3 +9,9 @@
   name: Связь червей
   keycode: "ч"
   color: "#2F4F4F"
+
+- type: mindChannel
+  id: MindXenoborgs
+  name: xenoborg-mind-channel
+  keycode: 'д'
+  color: "#2288ff"

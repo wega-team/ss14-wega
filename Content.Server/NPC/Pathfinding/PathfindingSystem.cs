@@ -11,6 +11,7 @@ using Content.Shared.Administration;
 using Content.Shared.Climbing.Components;
 using Content.Shared.Doors.Components;
 using Content.Shared.NPC;
+using Content.Shared.StepTrigger.Components; // Corvax-Wega-Add
 using Robust.Server.Player;
 using Robust.Shared.Enums;
 using Robust.Shared.Map;
@@ -75,6 +76,7 @@ namespace Content.Server.NPC.Pathfinding
         private EntityQuery<FixturesComponent> _fixturesQuery;
         private EntityQuery<MapGridComponent> _gridQuery;
         private EntityQuery<TransformComponent> _xformQuery;
+        private EntityQuery<StepTriggerComponent> _stepTriggerQuery; // Corvax-Wega-Add
 
         public override void Initialize()
         {
@@ -87,6 +89,7 @@ namespace Content.Server.NPC.Pathfinding
             _fixturesQuery = GetEntityQuery<FixturesComponent>();
             _gridQuery = GetEntityQuery<MapGridComponent>();
             _xformQuery = GetEntityQuery<TransformComponent>();
+            _stepTriggerQuery = GetEntityQuery<StepTriggerComponent>(); // Corvax-Wega-Add
 
             _playerManager.PlayerStatusChanged += OnPlayerChange;
             InitializeGrid();

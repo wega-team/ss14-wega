@@ -12,3 +12,5 @@ ent-MobConstructHarvester = Жнец
     .desc = { ent-MobConstructJuggernaut.desc }
 ent-MobConstructProteon = Протеон
     .desc = { ent-MobConstructJuggernaut.desc }
+ent-MobConstructIdol = Айдол
+    .desc = { ent-MobConstructJuggernaut.desc }

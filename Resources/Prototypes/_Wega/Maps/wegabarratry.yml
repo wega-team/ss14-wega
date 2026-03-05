@@ -3,7 +3,7 @@
   mapName: 'Barratry'
   mapPath: /Maps/_Wega/wegabarratry.yml
   minPlayers: 30
-  maxPlayers: 60
+  maxPlayers: 50
   stations:
     Barratry:
       stationProto: StandardNanotrasenStation
@@ -15,6 +15,9 @@
             prefixCreator: '14'
         - type: StationEmergencyShuttle
           emergencyShuttlePath: /Maps/Shuttles/emergency_raven.yml
+        - type: StationLavaland
+          planets: [ Lavaland ]
+          enabled: false
         - type: StationJobs
           availableJobs:
             #service

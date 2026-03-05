@@ -749,6 +749,12 @@
           Quantity: 3
   - type: Item
     heldPrefix: bones
+  # Corvax-Wega-Lavaland-start
+  - type: Tag
+    tags:
+      - RawMaterial
+      - MaterialsThrophy
+  # Corvax-Wega-Lavaland-end
 
 - type: entity
   parent: MaterialBones

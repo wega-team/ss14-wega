@@ -1,0 +1,68 @@
+- type: entity
+  parent: BaseWall
+  id: WallHierophantArena
+  name: hierophant wall
+  components:
+  - type: Tag
+    tags:
+      - Wall
+  - type: Sprite
+    sprite: _Wega/Structures/Walls/hierophant.rsi
+  - type: Icon
+    sprite: _Wega/Structures/Walls/hierophant.rsi
+  - type: Destructible
+  - type: IconSmooth
+    key: walls
+    base: hierophant
+  - type: PointLight
+    radius: 5.0
+    energy: 1.5
+    softness: 1
+    castShadows: false
+
+- type: entity
+  id: WallHierophantTemporary
+  name: hierophant field
+  description: "Keeps the salvager in and... Why are you looking at this in a middle of a fight? You have nothing to do?!"
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Wall
+  components:
+  - type: Transform
+    anchored: true
+  - type: Clickable
+  - type: Rotatable
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,0.5"
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+        density: 1000
+  - type: Sprite
+    noRot: true
+    sprite: _Wega/Structures/Walls/hierophant_temp.rsi
+    drawdepth: Walls
+  - type: Icon
+    sprite: _Wega/Structures/Walls/hierophant_temp.rsi
+    state: full
+  - type: IconSmooth
+    key: hierofield
+    base: hierotemp
+    shader: unshaded
+  - type: PlacementReplacement
+    key: walls
+  - type: Occluder
+    enabled: false
+  - type: TimedDespawn
+    lifetime: 10
+  - type: Tag
+    tags:
+      - Wall

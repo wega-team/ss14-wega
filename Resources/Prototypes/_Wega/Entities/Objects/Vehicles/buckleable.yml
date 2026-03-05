@@ -451,3 +451,72 @@
   components:
     - type: Foldable
       folded: true
+
+- type: entity
+  parent: BaseVehicleRideable
+  id: VehicleBoat
+  name: goliath boat
+  description: "A boat made of wood and goliath's skin. You need an oar to use it."
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Vehicles/boat.rsi
+    layers:
+    - state: boat
+      map: ["enum.VehicleVisualLayers.AutoAnimate"]
+    noRot: true
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 600
+      behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          MaterialWoodPlank1:
+            min: 10
+            max: 15
+          MaterialGoliathHide1:
+            min: 1
+            max: 4
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+  - type: Boat
+  - type: Vehicle
+    hasKey: true
+    southOver: true
+    northOver: true
+    northOverride: -0.1
+    southOverride: 0.1
+  - type: MovementSpeedModifier
+    baseAcceleration: 1
+    baseFriction: 1
+    baseWalkSpeed: 4.5
+    baseSprintSpeed: 7
+  - type: Strap
+    buckleOffset: "0.1, -0.05"
+  - type: Construction
+    graph: VehicleBoat
+    node: boat
+
+- type: entity
+  parent: VehicleBoat
+  id: VehicleDragonBoat
+  name: dragon boat
+  description: "A mysterious vessel that can glide effortlessly through molten lava. It requires no oars and seems to move of its own accord."
+  components:
+  - type: Sprite
+    layers:
+    - state: dragon_boat
+      map: ["enum.VehicleVisualLayers.AutoAnimate"]
+    noRot: true
+  - type: Boat
+    requiredOal: false

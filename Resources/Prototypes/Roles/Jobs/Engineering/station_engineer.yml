@@ -16,6 +16,10 @@
   - External
   extendedAccess:
   - Atmospherics
+  # Corvax-Wega-SubRoles-start
+  subRoles:
+  - SeniorEngineer
+  # Corvax-Wega-SubRoles-end
 
 - type: startingGear
   id: StationEngineerGear

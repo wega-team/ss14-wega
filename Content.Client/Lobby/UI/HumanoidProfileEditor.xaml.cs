@@ -1338,6 +1338,11 @@ namespace Content.Client.Lobby.UI
 
                     // Corvax-Wega-SubRoles-start
                     mainRow.AddChild(selector);
+                    if (job.SubRoles.Count > 0)
+                    {
+                        loadoutWindowBtn.StyleClasses.Add(StyleClass.ButtonOpenRight);
+                    }
+
                     mainRow.AddChild(loadoutWindowBtn);
 
                     // Add toggle button for subroles if they exist
@@ -1346,9 +1351,9 @@ namespace Content.Client.Lobby.UI
                         var toggleButton = new Button
                         {
                             Text = "▼",
-                            MinWidth = 30,
                             HorizontalAlignment = HAlignment.Right,
-                            ToolTip = Loc.GetString("humanoid-profile-editor-toggle-subroles")
+                            ToolTip = Loc.GetString("humanoid-profile-editor-toggle-subroles"),
+                            StyleClasses = { StyleClass.ButtonOpenLeft }
                         };
 
                         var subRolesContainer = new BoxContainer

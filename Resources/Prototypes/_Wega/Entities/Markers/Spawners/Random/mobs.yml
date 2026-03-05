@@ -1,0 +1,69 @@
+- type: entityTable
+  id: LavalandAllMobs
+  table: !type:GroupSelector
+    children:
+    - !type:GroupSelector
+      weight: 25
+      children:
+      - id: SpawnMobLegionLavaland
+    - !type:GroupSelector
+      weight: 25
+      children:
+      - id: SpawnMobWatcherLavaland
+    - !type:GroupSelector
+      weight: 30  # Увеличил с 20 до 30
+      children:
+      - id: SpawnMobGoliathLavaland
+    - !type:GroupSelector
+      weight: 8
+      children:
+      - id: SpawnMobMarrowWeaverLavaland
+    - !type:GroupSelector
+      weight: 5
+      children:
+      - id: SpawnMobFrostbiteWeaverLavaland
+    - !type:GroupSelector
+      weight: 6
+      children:
+      - id: SpawnMobAncientGoliathLavaland
+    - !type:GroupSelector
+      weight: 6
+      children:
+      - id: SpawnMobWatcherMagmawing
+    - !type:GroupSelector
+      weight: 2
+      children:
+      - id: SpawnMobWatcherIcewing
+    - !type:GroupSelector
+      weight: 0.8
+      children:
+      - id: SpawnMobBloodDrunkMinerLavaland
+    - !type:GroupSelector
+      weight: 0.2
+      children:
+      - id: SpawnColossusLavaland
+    - !type:GroupSelector
+      weight: 0.2
+      children:
+      - id: SpawnAshDrakeLavaland
+    - !type:GroupSelector
+      weight: 0.1
+      children:
+      - id: SpawnBubblegumLavaland
+    # He might be wandering around Lavalend.
+    - !type:GroupSelector
+      weight: 0.2
+      children:
+      - id: SpawnInhabitantTranslocatedVeterinarian
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnerRandomLavalandMob
+  name: lavaland mob spawner
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+  - type: EntityTableSpawner
+    table: !type:NestedSelector
+      tableId: LavalandAllMobs

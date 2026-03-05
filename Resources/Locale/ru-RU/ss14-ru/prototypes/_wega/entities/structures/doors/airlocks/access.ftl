@@ -1,0 +1,12 @@
+ent-AirlockExternalGlassShuttleLavalandStation = { ent-AirlockExternalGlass }
+    .suffix = Внешний, Стеклянный, Лаваленд, Станция
+    .desc = { ent-AirlockExternalGlass.desc }
+ent-AirlockExternalGlassShuttleLavalandOutpost = { ent-AirlockExternalGlass }
+    .suffix = Внешний, Стеклянный, Лаваленд, Аванпост
+    .desc = { ent-AirlockExternalGlass.desc }
+ent-AirlockExternalGlassPenalServitudeShuttleLavalandStation = { ent-AirlockExternalGlass }
+    .suffix = Внешний, Стеклянный, Лаваленд, Каторга, Станция
+    .desc = { ent-AirlockExternalGlass.desc }
+ent-AirlockExternalGlassPenalServitudeShuttleLavaland = { ent-AirlockExternalGlass }
+    .suffix = Внешний, Стеклянный, Лаваленд, Каторга
+    .desc = { ent-AirlockExternalGlass.desc }

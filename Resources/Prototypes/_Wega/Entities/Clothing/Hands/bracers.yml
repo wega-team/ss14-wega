@@ -1,0 +1,27 @@
+- type: entity
+  parent: Clothing
+  id: ClothingHandsBoneBracers
+  name: bone bracers
+  description: "Wrist guards made from bone plates. Offers minor protection to your arms without restricting movement."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Hands/bone_bracers.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Wega/Clothing/Hands/bone_bracers.rsi
+    slots: [gloves]
+  - type: Item
+    size: Small
+    storedRotation: -90
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Heat: 0.9
+  - type: Construction
+    graph: BoneBracers
+    node: bracers
+  - type: Tag
+    tags:
+    - WhitelistChameleon

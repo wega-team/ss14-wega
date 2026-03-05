@@ -1,0 +1,16 @@
+- type: lavalandPlanet
+  id: Lavaland
+  biome: Lavaland
+  temperature: 299.15
+  gases: [14.022, 22.878]
+  biomeLayers:
+  - RandomNecropolisTendrils
+  - RandomLavalandMob
+  # Ore Veins
+  - OreIronLavaland
+  - OreCoalLavaland
+  - OreQuartzLavaland
+  - OreGoldLavaland
+  - OreSilverLavaland
+  - OrePlasmaLavaland
+  - OreUraniumLavaland

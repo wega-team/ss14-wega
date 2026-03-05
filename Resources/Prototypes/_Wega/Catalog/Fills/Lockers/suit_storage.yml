@@ -1,3 +1,4 @@
+#Blue Shield
 - type: entity
   id: SuitStorageBlueShield
   parent: SuitStorageBase
@@ -9,3 +10,24 @@
         tableId: FillBlueShieldOfficerHardsuit
   - type: AccessReader
     access: [["Command"]]
+
+#Explorer Suit
+- type: entity
+  id: SuitStorageExplorerSuit
+  parent: SuitStorageBase
+  suffix: Explorer Suit
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillSuitStorageExplorerSuit
+  - type: AccessReader
+    access: [["Salvage"]]
+
+- type: entityTable
+  id: FillSuitStorageExplorerSuit
+  table: !type:AllSelector
+    children:
+    - id: OxygenTankFilled
+    - id: ClothingOuterArmorExplorerSuit
+    - id: ClothingMaskGasExplorer

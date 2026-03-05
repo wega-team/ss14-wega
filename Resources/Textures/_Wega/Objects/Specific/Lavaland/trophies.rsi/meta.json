@@ -1,0 +1,51 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Taken from https://github.com/tgstation/tgstation",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "ancient_tendril"
+        },
+        {
+            "name": "claws"
+        },
+        {
+            "name": "eye"
+        },
+        {
+            "name": "fang"
+        },
+        {
+            "name": "ice_gland"
+        },
+        {
+            "name": "ice_wing"
+        },
+        {
+            "name": "magma_wing"
+        },
+        {
+            "name": "skull"
+        },
+        {
+            "name": "spike"
+        },
+        {
+            "name": "tendril"
+        },
+        {
+            "name": "tubes"
+        },
+        {
+            "name": "vortex",
+            "delays": [ [ 2, 0.25, 0.22, 0.2, 0.17, 0.15, 0.12, 0.1, 0.07, 0.05, 0.25, 0.09, 0.08, 0.07, 0.06, 0.05, 0.04, 0.03, 0.02, 0.01 ] ]
+        },
+        {
+            "name": "wing"
+        }
+    ]
+}

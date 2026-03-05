@@ -82,6 +82,10 @@
                     <BoxContainer Orientation="Horizontal" MinSize="0 40" HorizontalAlignment="Right">
                         <Button Name="AHelpButton" Access="Public" Text="{Loc 'ui-lobby-ahelp-button'}"
                                 StyleClasses="ButtonBig" />
+                        <!-- Corvax-Wega-Achievements-start -->
+                        <Button Name="AchievementsButton" Access="Public" Text="{Loc 'ui-lobby-achievements-button'}"
+                                StyleClasses="ButtonBig" />
+                        <!-- Corvax-Wega-Achievements-end -->
                         <vote:VoteCallMenuButton Name="CallVoteButton" StyleClasses="ButtonBig" />
                         <Button Name="OptionsButton" Access="Public" StyleClasses="ButtonBig"
                                 Text="{Loc 'ui-lobby-options-button'}" />

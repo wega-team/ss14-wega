@@ -1,0 +1,85 @@
+- type: entity
+  parent: BaseStructure
+  id: NecropolisTendril
+  name: necropolis tendril
+  description: "A giant pulsating spike that sprouts from the depths of the planet. It emits an ominous energy and attracts other horrors of this place."
+  suffix: DO NOT MAP
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Wega/Structures/Specific/Lavaland/tendril.rsi
+    layers:
+    - state: tendril
+    - state: glow
+      shader: unshaded
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.3,-0.9,0.3,0.3"
+        mask:
+        - MachineMask
+        layer:
+        - BulletImpassable
+        - MidImpassable
+        - LowImpassable
+        density: 1000
+  - type: PointLight
+    color: "#df8409"
+    enabled: true
+    radius: 2
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Rock
+  - type: Destructible
+    thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 300
+        behaviors:
+          - !type:PlaySoundBehavior
+            sound:
+              path: /Audio/Effects/demon_dies.ogg
+          - !type:SpawnEntitiesBehavior
+            spawn:
+              CrateNecropolisFilled:
+                min: 1
+                max: 1
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
+
+- type: entity
+  parent: NecropolisTendril
+  id: GoliathNecropolisTendril
+  components:
+  - type: NecropolisTendril
+    spawnWeights:
+      MobGoliath: 1
+  - type: ConditionalSpawner
+    prototypes:
+      - MobGoliath
+
+- type: entity
+  parent: NecropolisTendril
+  id: LegionNecropolisTendril
+  components:
+  - type: NecropolisTendril
+    spawnWeights:
+      MobLegionLavaland: 1
+  - type: ConditionalSpawner
+    prototypes:
+      - MobLegionLavaland
+
+- type: entity
+  parent: NecropolisTendril
+  id: WatchersNecropolisTendril
+  components:
+  - type: NecropolisTendril
+    spawnWeights:
+      MobWatcherLavaland: 0.99
+      MobWatcherMagmawing: 0.0075
+      MobWatcherIcewing: 0.0025
+  - type: ConditionalSpawner
+    prototypes:
+      - MobWatcherLavaland

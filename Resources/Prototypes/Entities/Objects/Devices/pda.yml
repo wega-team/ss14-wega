@@ -518,12 +518,12 @@
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
        !type:String
-       pda-miner
+       pda-salvage-specialist # Corvax-Wega-Lavaland-Edit
   - type: PdaBorderColor
     borderColor: "#af9366"
-    accentVColor: "#8900c9"
+    accentHColor: "#8900c9" # Corvax-Wega-Lavaland-Edit
   - type: Icon
-    state: pda-miner
+    state: pda-salvage-specialist # Corvax-Wega-Lavaland-Edit
   - type: CartridgeLoader
     uiKey: enum.PdaUiKey.Key
     preinstalled:

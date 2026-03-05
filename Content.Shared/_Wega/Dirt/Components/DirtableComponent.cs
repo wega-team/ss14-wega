@@ -22,10 +22,10 @@ public sealed partial class DirtableComponent : Component
     [DataField("equippedDirtState")]
     public string EquippedDirtState { get; set; } = "equipped-jumpsuit";
 
-    [ViewVariables]
+    [DataField, ViewVariables(VVAccess.ReadOnly)]
     public FixedPoint2 CurrentDirtLevel { get; set; }
 
-    [ViewVariables]
+    [DataField, ViewVariables(VVAccess.ReadOnly)]
     public Color DirtColor { get; set; } = Color.White;
 
     [ViewVariables]

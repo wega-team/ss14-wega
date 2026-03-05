@@ -20,12 +20,12 @@
   - BigToyHammerRed
 
 ## Eyes
-- type: loadout
-  id: ClothingEyesGlassesGarGigaSponsor
-  effects:
-  - !type:SponsorLoadoutEffect
-  equipment:
-    eyes: ClothingEyesGlassesGarGigaSponsor
+#- type: loadout
+#  id: ClothingEyesGlassesGarGigaSponsor
+#  effects:
+#  - !type:SponsorLoadoutEffect
+#  equipment:
+#    eyes: ClothingEyesGlassesGarGigaSponsor
     
 # Head
 - type: loadout
@@ -34,6 +34,27 @@
   - !type:SponsorLoadoutEffect
   equipment:
     head: ClothingHeadHatMagic
+
+- type: loadout
+  id: ClothingEyesGlassesGarGigaSponsor
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    head: ClothingEyesGlassesGarGigaSponsor
+
+- type: loadout
+  id: ClothingHeadHatElegantTacticalmaid
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    head: ClothingHeadHatElegantTacticalmaid
+
+- type: loadout
+  id: ClothingHeadHelmetGarGigaSponsor
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    head: ClothingHeadHelmetGarGigaSponsor
 
 # Mask
 - type: loadout
@@ -57,6 +78,14 @@
   - !type:SponsorLoadoutEffect
   equipment:
     neck: ClothingNeckCloakManly
+
+# Hands
+- type: loadout
+  id: ClothingHandsGlovesElegantTacticalmaid
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    gloves: ClothingHandsGlovesElegantTacticalmaid
 
 # Jumpskirt
 - type: loadout
@@ -146,6 +175,13 @@
     jumpsuit: ClothingUniformJumpskirtElegantRD
 
 - type: loadout
+  id: ClothingUniformJumpskirtElegantSecurity
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtElegantSecurity
+
+- type: loadout
   id: ClothingUniformJumpskirtMagicDress
   effects:
   - !type:SponsorLoadoutEffect
@@ -185,6 +221,14 @@
     jumpsuit: ClothingUniformJumpskirtSexySweater
   groupBy: "sponsorjumpskirt"
 
+- type: loadout
+  id: ClothingUniformJumpskirtElegantTacticalmaid
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtElegantTacticalmaid
+  groupBy: "sponsorjumpskirt"
+
 # Jumpsuit
 
 - type: loadout
@@ -210,3 +254,14 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitBeautifulSweater
   groupBy: "sponsorjumpsuit"
+
+# Bottom
+
+- type: loadout
+  id: ClothingUnderBottomElegantVampire
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+  equipment:
+    underwearbottom: ClothingUnderBottomElegantVampire

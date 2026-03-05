@@ -160,6 +160,17 @@
   - type: ContainerContainer
     containers:
       toggleable-clothing: !type:ContainerSlot {}
+  # Corvax-Wega-Lavaland-start
+  - type: Construction
+    graph: GoliathCloak
+    node: cloack
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+    - GoliathCloak
+    - ClothMade
+    - Recyclable
+  # Corvax-Wega-Lavaland-end
 
 - type: entity
   parent: ClothingNeckBase

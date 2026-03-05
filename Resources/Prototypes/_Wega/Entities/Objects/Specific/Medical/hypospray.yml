@@ -62,6 +62,38 @@
     emptySpriteName: stimpen_empty
   - type: Injector
     solutionName: pen
+
+- type: entity
+  parent: ChemicalMedipen
+  id: SurvivalMedipen
+  name: survival medipen
+  description: "A cocktail of powerful healing chemicals. Contains everything you need to get out on your own in an emergency. Using more than one at a time can be dangerous!"
+  components:
+  - type: Sprite
+    sprite: /Textures/_Wega/Objects/Specific/Medical/medipen.rsi
+    layers:
+    - state: bluepen
+      map: [ "enum.SolutionContainerLayers.Fill" ]
+  - type: Appearance
+  - type: SolutionContainerVisuals
+    maxFillLevels: 1
+    changeColor: false
+    emptySpriteName: bluepen_empty
+  - type: SolutionContainerManager
+    solutions:
+      pen:
+        maxVol: 40
+        reagents:
+          - ReagentId: Leporazine
+            Quantity: 10
+          - ReagentId: LavalandSerum
+            Quantity: 15
+          - ReagentId: Epinephrine
+            Quantity: 10
+          - ReagentId: Omnizine
+            Quantity: 5
+  - type: Injector
+    solutionName: pen
     currentTransferAmount: null
     activeModeProtoId: HyposprayInjectMode
     allowedModes:
@@ -109,4 +141,3 @@
     - HyposprayInjectMode
   - type: StaticPrice
     price: 1500
-

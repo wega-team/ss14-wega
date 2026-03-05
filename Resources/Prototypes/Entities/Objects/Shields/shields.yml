@@ -415,15 +415,15 @@
     - type: Blocking #Mirror shield reflects heat/laser, but is relatively weak to everything else.
       passiveBlockModifier:
         coefficients:
-          Blunt: 1.2
-          Slash: 1.2
-          Piercing: 1.2
+          Blunt: .9 # 1.2 Corvax-Wega-Edit
+          Slash: .9 # 1.2 Corvax-Wega-Edit
+          Piercing: .9 # 1.2 Corvax-Wega-Edit
           Heat: .7
       activeBlockModifier:
         coefficients:
-          Blunt: 1.2
-          Slash: 1.2
-          Piercing: 1.2
+          Blunt: .9 # 1.2 Corvax-Wega-Edit
+          Slash: .9 # 1.2 Corvax-Wega-Edit
+          Piercing: .9 # 1.2 Corvax-Wega-Edit
           Heat: .6
         flatReductions:
           Heat: 1
@@ -445,6 +445,18 @@
                 SheetGlass:
                   min: 5
                   max: 5
+# Corvax-Wega-start
+    - type: Repairable # Negative values represent healing
+      qualityNeeded: BloodDagger
+      damage:
+        groups:
+          Brute: -60 # 20 of each Brute Type - 20% of a basic shield HP
+        types:
+          Heat: -20
+      fuelCost: 0 # 1/2 of a Welder for a full repair
+      doAfterDelay: 5
+      allowSelfRepair: false
+# Corvax-Wega-end
 
 - type: entity
   name: energy shield

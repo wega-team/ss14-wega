@@ -23,6 +23,11 @@
         <ui:RadialMenuButton Name="BloodProteonButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-constuct-proteon'}" TargetLayerControlName="BloodProteon">
             <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/Interface/Actions/proteon.png"/>
         </ui:RadialMenuButton>
+		
+		<!-- Idol -->
+        <ui:RadialMenuButton Name="BloodIdolButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-constuct-idol'}" TargetLayerControlName="BloodIdol">
+            <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/Interface/Actions/idol.png"/>
+        </ui:RadialMenuButton>
 
     </ui:RadialContainer>
 

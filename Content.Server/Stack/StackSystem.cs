@@ -1,3 +1,4 @@
+using Content.Shared.Lavaland.Components; // Corvax-Wega-Lavaland
 using Content.Shared.Popups;
 using Content.Shared.Stacks;
 using JetBrains.Annotations;
@@ -46,11 +47,25 @@ namespace Content.Server.Stack
             stackComp.Unlimited = false; // Don't let people dupe unlimited stacks
             Dirty(newEntity, stackComp);
 
+            CopyOreValue(ent, newEntity); // Corvax-Wega-Lavaland
+
             var ev = new StackSplitEvent(newEntity);
             RaiseLocalEvent(ent, ref ev);
 
             return newEntity;
         }
+
+        // Corvax-Wega-Lavaland-start
+        private void CopyOreValue(Entity<StackComponent?> source, EntityUid newEntity)
+        {
+            if (!TryComp<OreValueComponent>(source.Owner, out var sourceValue))
+                return;
+
+            var newValue = EnsureComp<OreValueComponent>(newEntity);
+            newValue.Points = sourceValue.Points;
+            newValue.Mined = sourceValue.Mined;
+        }
+        // Corvax-Wega-Lavaland-end
 
         #region SpawnAtPosition
 

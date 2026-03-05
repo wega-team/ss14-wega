@@ -1,5 +1,6 @@
 ghost-respawn-window-title = Правила респавна гостов
 ghost-respawn-window-confirm-button = Я понимаю, респавните меня
+ghost-gui-respawn-button = Респавн
 ghost-gui-respawn-button-denied = Респавн ({$time}s)
 ghost-gui-respawn-button-allowed = Респавн
 ghost-respawn-window-rules =

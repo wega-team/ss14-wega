@@ -6,3 +6,7 @@ ent-LaserStun = оглушающий лазер
     .desc = { ent-BaseBullet.desc }
 ent-BulletPlasmaCutter = плазменный выстрел
     .desc = { ent-BaseBullet.desc }
+ent-BulletPlasmaCutterMagma = плазменный заряд
+    desc = { ent-BaseBullet.desc }
+ent-BulletMagmaCharge = магмитовый снаряд
+    .desc = Помечает цели для нанесения повышенного урона.

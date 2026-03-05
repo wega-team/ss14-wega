@@ -243,6 +243,12 @@
         },
         {
             "name": "gibtonite_inactive"
+        },
+        {
+            "name": "rock_gems"
+        },
+        {
+            "name": "rock_magmite"
         }
     ]
 }

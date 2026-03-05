@@ -52,11 +52,13 @@
   components:
   - type: SolutionContainerManager
     solutions:
-      spray:
+      drink:
         maxVol: 100
         reagents:
         - ReagentId: Ethanol
           Quantity: 100
+  - type: Label
+    currentLabel: ethanol
   - type: Tag
     tags:
       - Spray
@@ -75,7 +77,7 @@
     sprite: _Wega/Objects/Specific/Medical/Surgery/bonesaw.rsi
   - type: Tool
     qualities:
-    - BoneSetter 
+    - BoneSetter
     - Sawing
     - BoneGel
   - type: MeleeWeapon
@@ -215,6 +217,30 @@
   components:
   - type: Sterile
     alwaysSterile: true
+  - type: Unremoveable
+  - type: ItemSelector
+    items:
+    - ScalpelAS
+    - CauteryAS
+    - RetractorAS
+    - HemostatAS
+    - FixOVeinAS
+    - BoneSetterAS
+    - BoneGelAS
+    - SawAS
+    - DrillAS
+  - type: ActivatableUI
+    key: enum.ItemSelectorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.TransferAmountUiKey.Key:
+        type: TransferAmountBoundUserInterface
+      enum.ItemSelectorUiKey.Key:
+        type: ItemSelectorBoundUserInterface
+  - type: Tag
+    tags:
+    - Itemborg
+    - SurgeryTool
 
 - type: entity
   name: bone setter
@@ -224,7 +250,31 @@
   components:
   - type: Sterile
     alwaysSterile: true
-      
+  - type: Unremoveable
+  - type: ItemSelector
+    items:
+    - ScalpelAS
+    - CauteryAS
+    - RetractorAS
+    - HemostatAS
+    - FixOVeinAS
+    - BoneSetterAS
+    - BoneGelAS
+    - SawAS
+    - DrillAS
+  - type: ActivatableUI
+    key: enum.ItemSelectorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.TransferAmountUiKey.Key:
+        type: TransferAmountBoundUserInterface
+      enum.ItemSelectorUiKey.Key:
+        type: ItemSelectorBoundUserInterface
+  - type: Tag
+    tags:
+    - Itemborg
+    - SurgeryTool
+
 - type: entity
   name: bone gel
   parent: BoneGel
@@ -233,7 +283,31 @@
   components:
   - type: Sterile
     alwaysSterile: true
-      
+  - type: Unremoveable
+  - type: ItemSelector
+    items:
+    - ScalpelAS
+    - CauteryAS
+    - RetractorAS
+    - HemostatAS
+    - FixOVeinAS
+    - BoneSetterAS
+    - BoneGelAS
+    - SawAS
+    - DrillAS
+  - type: ActivatableUI
+    key: enum.ItemSelectorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.TransferAmountUiKey.Key:
+        type: TransferAmountBoundUserInterface
+      enum.ItemSelectorUiKey.Key:
+        type: ItemSelectorBoundUserInterface
+  - type: Tag
+    tags:
+    - Itemborg
+    - SurgeryTool
+
 - type: entity
   name: Scalpel
   parent: Scalpel
@@ -242,6 +316,30 @@
   components:
   - type: Sterile
     alwaysSterile: true
+  - type: Unremoveable
+  - type: ItemSelector
+    items:
+    - ScalpelAS
+    - CauteryAS
+    - RetractorAS
+    - HemostatAS
+    - FixOVeinAS
+    - BoneSetterAS
+    - BoneGelAS
+    - SawAS
+    - DrillAS
+  - type: ActivatableUI
+    key: enum.ItemSelectorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.TransferAmountUiKey.Key:
+        type: TransferAmountBoundUserInterface
+      enum.ItemSelectorUiKey.Key:
+        type: ItemSelectorBoundUserInterface
+  - type: Tag
+    tags:
+    - Itemborg
+    - SurgeryTool
 
 - type: entity
   name: cautery
@@ -251,6 +349,30 @@
   components:
   - type: Sterile
     alwaysSterile: true
+  - type: Unremoveable
+  - type: ItemSelector
+    items:
+    - ScalpelAS
+    - CauteryAS
+    - RetractorAS
+    - HemostatAS
+    - FixOVeinAS
+    - BoneSetterAS
+    - BoneGelAS
+    - SawAS
+    - DrillAS
+  - type: ActivatableUI
+    key: enum.ItemSelectorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.TransferAmountUiKey.Key:
+        type: TransferAmountBoundUserInterface
+      enum.ItemSelectorUiKey.Key:
+        type: ItemSelectorBoundUserInterface
+  - type: Tag
+    tags:
+    - Itemborg
+    - SurgeryTool
 
 - type: entity
   name: retractor
@@ -260,6 +382,30 @@
   components:
   - type: Sterile
     alwaysSterile: true
+  - type: Unremoveable
+  - type: ItemSelector
+    items:
+    - ScalpelAS
+    - CauteryAS
+    - RetractorAS
+    - HemostatAS
+    - FixOVeinAS
+    - BoneSetterAS
+    - BoneGelAS
+    - SawAS
+    - DrillAS
+  - type: ActivatableUI
+    key: enum.ItemSelectorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.TransferAmountUiKey.Key:
+        type: TransferAmountBoundUserInterface
+      enum.ItemSelectorUiKey.Key:
+        type: ItemSelectorBoundUserInterface
+  - type: Tag
+    tags:
+    - Itemborg
+    - SurgeryTool
 
 - type: entity
   name: hemostat
@@ -269,6 +415,30 @@
   components:
   - type: Sterile
     alwaysSterile: true
+  - type: Unremoveable
+  - type: ItemSelector
+    items:
+    - ScalpelAS
+    - CauteryAS
+    - RetractorAS
+    - HemostatAS
+    - FixOVeinAS
+    - BoneSetterAS
+    - BoneGelAS
+    - SawAS
+    - DrillAS
+  - type: ActivatableUI
+    key: enum.ItemSelectorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.TransferAmountUiKey.Key:
+        type: TransferAmountBoundUserInterface
+      enum.ItemSelectorUiKey.Key:
+        type: ItemSelectorBoundUserInterface
+  - type: Tag
+    tags:
+    - Itemborg
+    - SurgeryTool
 
 - type: entity
   name: metal saw
@@ -278,6 +448,30 @@
   components:
   - type: Sterile
     alwaysSterile: true
+  - type: Unremoveable
+  - type: ItemSelector
+    items:
+    - ScalpelAS
+    - CauteryAS
+    - RetractorAS
+    - HemostatAS
+    - FixOVeinAS
+    - BoneSetterAS
+    - BoneGelAS
+    - SawAS
+    - DrillAS
+  - type: ActivatableUI
+    key: enum.ItemSelectorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.TransferAmountUiKey.Key:
+        type: TransferAmountBoundUserInterface
+      enum.ItemSelectorUiKey.Key:
+        type: ItemSelectorBoundUserInterface
+  - type: Tag
+    tags:
+    - Itemborg
+    - SurgeryTool
 
 - type: entity
   name: drill
@@ -287,3 +481,27 @@
   components:
   - type: Sterile
     alwaysSterile: true
+  - type: Unremoveable
+  - type: ItemSelector
+    items:
+    - ScalpelAS
+    - CauteryAS
+    - RetractorAS
+    - HemostatAS
+    - FixOVeinAS
+    - BoneSetterAS
+    - BoneGelAS
+    - SawAS
+    - DrillAS
+  - type: ActivatableUI
+    key: enum.ItemSelectorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.TransferAmountUiKey.Key:
+        type: TransferAmountBoundUserInterface
+      enum.ItemSelectorUiKey.Key:
+        type: ItemSelectorBoundUserInterface
+  - type: Tag
+    tags:
+    - Itemborg
+    - SurgeryTool

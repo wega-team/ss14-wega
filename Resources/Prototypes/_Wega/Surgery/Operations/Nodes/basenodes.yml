@@ -90,6 +90,26 @@
     - CompleteHeadAttachmentTransition
 
 # ========================
+# УЗЛЫ ГЛОТКИ
+# ========================
+
+- type: surgeryNode
+  id: ThroatClosed
+  description: Глотка закрыта
+  bodyPart: throat
+  transitions:
+    - OpenThroatTransition
+
+- type: surgeryNode
+  id: ThroatOpen
+  description: Глотка вскрыта
+  bodyPart: throat
+  packages:
+    - ThroatImplantPackage
+  transitions:
+    - CloseThroatTransition
+
+# ========================
 # УЗЛЫ КОНЕЧНОСТЕЙ
 # ========================
 

@@ -44,8 +44,9 @@ public sealed partial class SquadEntry : PanelContainer
         _styles = styles;
         Squad = squad;
 
-        SetupUI();
         SetupStyles();
+        SetupUI();
+
         UpdateUI();
     }
 
@@ -96,6 +97,12 @@ public sealed partial class SquadEntry : PanelContainer
 
         SquadNameEdit.AddStyleClass(SecApartmentStyles.StyleClassConsoleLineEdit);
         SquadDescriptionEdit.AddStyleClass(SecApartmentStyles.StyleClassConsoleLineEdit);
+
+        IconDropdown.AddStyleClass(SecApartmentStyles.StyleClassOptionButton);
+        StatusDropdown.AddStyleClass(SecApartmentStyles.StyleClassOptionButton);
+
+        IconDropdown.OptionStyleClasses.Add(SecApartmentStyles.StyleClassButtonRed);
+        StatusDropdown.OptionStyleClasses.Add(SecApartmentStyles.StyleClassButtonRed);
 
         SquadNameLabel.FontColorOverride = SecApartmentStyles.HeadingColor;
         MembersCountLabel.FontColorOverride = SecApartmentStyles.TextColor;

@@ -17,6 +17,11 @@
             prefixCreator: 'TG'
         - type: StationEmergencyShuttle
           emergencyShuttlePath: /Maps/Shuttles/emergency_meta.yml
+        # Corvax-Wega-Lavalabd-start
+        - type: StationLavaland
+          planets: [ Lavaland ]
+          enabled: false
+        # Corvax-Wega-Lavalabd-end
         - type: StationJobs
           availableJobs:
             #service (18)

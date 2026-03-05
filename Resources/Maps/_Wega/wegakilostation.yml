@@ -1,11 +1,11 @@
 meta:
   format: 7
   category: Map
-  engineVersion: 268.0.0
-  forkId: wega
-  forkVersion: 951e65183889b98eb49c2585cc09ffbbf19a18c1
-  time: 01/07/2026 14:50:07
-  entityCount: 39238
+  engineVersion: 270.1.0
+  forkId: ""
+  forkVersion: ""
+  time: 03/01/2026 12:53:45
+  entityCount: 39237
 maps:
 - 1
 grids:
@@ -12893,6 +12893,7 @@ entities:
     - type: ImplicitRoof
     - type: BecomesStation
       id: Kilo
+    - type: ExplosionAirtightGrid
   - uid: 37255
     components:
     - type: MetaData
@@ -12974,6 +12975,7 @@ entities:
         chunkSize: 4
     - type: GasTileOverlay
     - type: RadiationGridResistance
+    - type: ExplosionAirtightGrid
 - proto: AirAlarm
   entities:
   - uid: 3754
@@ -17325,9 +17327,9 @@ entities:
       rot: 3.141592653589793 rad
       pos: 42.5,47.5
       parent: 2
-- proto: AirlockExternalGlassShuttleLocked
+- proto: AirlockExternalGlassShuttleLavalandStation
   entities:
-  - uid: 30914
+  - uid: 32569
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -75754,12 +75756,6 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -15.5,11.5
       parent: 2
-  - uid: 30864
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 40.5,-12.5
-      parent: 2
   - uid: 30866
     components:
     - type: Transform
@@ -77607,22 +77603,6 @@ entities:
     - type: Transform
       pos: -54.042553,-22.403635
       parent: 2
-- proto: BoxFlare
-  entities:
-  - uid: 32570
-    components:
-    - type: Transform
-      parent: 32569
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 32571
-    components:
-    - type: Transform
-      parent: 32569
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
 - proto: BoxFolderBlue
   entities:
   - uid: 28180
@@ -121343,6 +121323,11 @@ entities:
       rot: 3.141592653589793 rad
       pos: 46.5,-27.5
       parent: 2
+  - uid: 32567
+    components:
+    - type: Transform
+      pos: 40.5,-11.5
+      parent: 2
   - uid: 32616
     components:
     - type: Transform
@@ -121986,6 +121971,11 @@ entities:
     - type: Transform
       pos: -12.5,-17.5
       parent: 2
+  - uid: 30765
+    components:
+    - type: Transform
+      pos: 48.5,1.5
+      parent: 2
   - uid: 31179
     components:
     - type: Transform
@@ -122010,11 +122000,6 @@ entities:
     components:
     - type: Transform
       pos: -52.5,73.5
-      parent: 2
-  - uid: 32567
-    components:
-    - type: Transform
-      pos: 49.5,3.5
       parent: 2
   - uid: 32843
     components:
@@ -124180,6 +124165,10 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
+    - type: ContainerContainer
+      containers:
+        clothing_upgrades: !type:Container
+          ents: []
 - proto: ClothingUniformJumpskirtPrisoner
   entities:
   - uid: 31299
@@ -124188,71 +124177,123 @@ entities:
       parent: 31296
     - type: Physics
       canCollide: False
+    - type: ContainerContainer
+      containers:
+        clothing_upgrades: !type:Container
+          ents: []
   - uid: 31302
     components:
     - type: Transform
       parent: 31296
     - type: Physics
       canCollide: False
+    - type: ContainerContainer
+      containers:
+        clothing_upgrades: !type:Container
+          ents: []
   - uid: 31306
     components:
     - type: Transform
       parent: 31303
     - type: Physics
       canCollide: False
+    - type: ContainerContainer
+      containers:
+        clothing_upgrades: !type:Container
+          ents: []
   - uid: 31309
     components:
     - type: Transform
       parent: 31303
     - type: Physics
       canCollide: False
+    - type: ContainerContainer
+      containers:
+        clothing_upgrades: !type:Container
+          ents: []
   - uid: 31315
     components:
     - type: Transform
       parent: 31310
     - type: Physics
       canCollide: False
+    - type: ContainerContainer
+      containers:
+        clothing_upgrades: !type:Container
+          ents: []
   - uid: 31316
     components:
     - type: Transform
       parent: 31310
     - type: Physics
       canCollide: False
+    - type: ContainerContainer
+      containers:
+        clothing_upgrades: !type:Container
+          ents: []
   - uid: 31426
     components:
     - type: Transform
       pos: -66.38619,-18.213438
       parent: 2
+    - type: ContainerContainer
+      containers:
+        clothing_upgrades: !type:Container
+          ents: []
   - uid: 31427
     components:
     - type: Transform
       pos: -66.63619,-18.197813
       parent: 2
+    - type: ContainerContainer
+      containers:
+        clothing_upgrades: !type:Container
+          ents: []
   - uid: 31428
     components:
     - type: Transform
       pos: -66.82369,-18.197813
       parent: 2
+    - type: ContainerContainer
+      containers:
+        clothing_upgrades: !type:Container
+          ents: []
   - uid: 31429
     components:
     - type: Transform
       pos: -67.07369,-18.197813
       parent: 2
+    - type: ContainerContainer
+      containers:
+        clothing_upgrades: !type:Container
+          ents: []
   - uid: 31430
     components:
     - type: Transform
       pos: -67.26119,-18.182188
       parent: 2
+    - type: ContainerContainer
+      containers:
+        clothing_upgrades: !type:Container
+          ents: []
   - uid: 31431
     components:
     - type: Transform
       pos: -67.52682,-18.182188
       parent: 2
+    - type: ContainerContainer
+      containers:
+        clothing_upgrades: !type:Container
+          ents: []
   - uid: 31432
     components:
     - type: Transform
       pos: -67.74557,-18.182188
       parent: 2
+    - type: ContainerContainer
+      containers:
+        clothing_upgrades: !type:Container
+          ents: []
 - proto: ClothingUniformJumpsuitColorGrey
   entities:
   - uid: 35150
@@ -124260,6 +124301,10 @@ entities:
     - type: Transform
       pos: -53.5,6.5
       parent: 2
+    - type: ContainerContainer
+      containers:
+        clothing_upgrades: !type:Container
+          ents: []
 - proto: ClothingUniformJumpsuitColorWhite
   entities:
   - uid: 29591
@@ -124267,16 +124312,28 @@ entities:
     - type: Transform
       pos: -51.384052,-7.3941984
       parent: 2
+    - type: ContainerContainer
+      containers:
+        clothing_upgrades: !type:Container
+          ents: []
   - uid: 29592
     components:
     - type: Transform
       pos: -51.634052,-7.5973234
       parent: 2
+    - type: ContainerContainer
+      containers:
+        clothing_upgrades: !type:Container
+          ents: []
   - uid: 34729
     components:
     - type: Transform
       pos: -41.45201,41.347958
       parent: 2
+    - type: ContainerContainer
+      containers:
+        clothing_upgrades: !type:Container
+          ents: []
 - proto: ClothingUniformJumpsuitEngineering
   entities:
   - uid: 34246
@@ -124286,6 +124343,10 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
+    - type: ContainerContainer
+      containers:
+        clothing_upgrades: !type:Container
+          ents: []
 - proto: ClothingUniformJumpsuitOperative
   entities:
   - uid: 34695
@@ -124293,6 +124354,10 @@ entities:
     - type: Transform
       pos: -45.336308,37.610577
       parent: 2
+    - type: ContainerContainer
+      containers:
+        clothing_upgrades: !type:Container
+          ents: []
 - proto: ClothingUniformJumpsuitPrisoner
   entities:
   - uid: 31297
@@ -124301,71 +124366,123 @@ entities:
       parent: 31296
     - type: Physics
       canCollide: False
+    - type: ContainerContainer
+      containers:
+        clothing_upgrades: !type:Container
+          ents: []
   - uid: 31298
     components:
     - type: Transform
       parent: 31296
     - type: Physics
       canCollide: False
+    - type: ContainerContainer
+      containers:
+        clothing_upgrades: !type:Container
+          ents: []
   - uid: 31304
     components:
     - type: Transform
       parent: 31303
     - type: Physics
       canCollide: False
+    - type: ContainerContainer
+      containers:
+        clothing_upgrades: !type:Container
+          ents: []
   - uid: 31305
     components:
     - type: Transform
       parent: 31303
     - type: Physics
       canCollide: False
+    - type: ContainerContainer
+      containers:
+        clothing_upgrades: !type:Container
+          ents: []
   - uid: 31311
     components:
     - type: Transform
       parent: 31310
     - type: Physics
       canCollide: False
+    - type: ContainerContainer
+      containers:
+        clothing_upgrades: !type:Container
+          ents: []
   - uid: 31312
     components:
     - type: Transform
       parent: 31310
     - type: Physics
       canCollide: False
+    - type: ContainerContainer
+      containers:
+        clothing_upgrades: !type:Container
+          ents: []
   - uid: 31419
     components:
     - type: Transform
       pos: -67.72424,-18.425806
       parent: 2
+    - type: ContainerContainer
+      containers:
+        clothing_upgrades: !type:Container
+          ents: []
   - uid: 31420
     components:
     - type: Transform
       pos: -67.47424,-18.425806
       parent: 2
+    - type: ContainerContainer
+      containers:
+        clothing_upgrades: !type:Container
+          ents: []
   - uid: 31421
     components:
     - type: Transform
       pos: -67.25549,-18.425806
       parent: 2
+    - type: ContainerContainer
+      containers:
+        clothing_upgrades: !type:Container
+          ents: []
   - uid: 31422
     components:
     - type: Transform
       pos: -67.03674,-18.425806
       parent: 2
+    - type: ContainerContainer
+      containers:
+        clothing_upgrades: !type:Container
+          ents: []
   - uid: 31423
     components:
     - type: Transform
       pos: -66.83362,-18.425806
       parent: 2
+    - type: ContainerContainer
+      containers:
+        clothing_upgrades: !type:Container
+          ents: []
   - uid: 31424
     components:
     - type: Transform
       pos: -66.61487,-18.425806
       parent: 2
+    - type: ContainerContainer
+      containers:
+        clothing_upgrades: !type:Container
+          ents: []
   - uid: 31425
     components:
     - type: Transform
       pos: -66.39612,-18.425806
       parent: 2
+    - type: ContainerContainer
+      containers:
+        clothing_upgrades: !type:Container
+          ents: []
 - proto: ClothingUniformJumpsuitScientist
   entities:
   - uid: 35114
@@ -124375,6 +124492,10 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
+    - type: ContainerContainer
+      containers:
+        clothing_upgrades: !type:Container
+          ents: []
 - proto: ClothingUniformSecurityTrooper
   entities:
   - uid: 26801
@@ -124382,6 +124503,10 @@ entities:
     - type: Transform
       pos: -69.5,-15.5
       parent: 2
+    - type: ContainerContainer
+      containers:
+        clothing_upgrades: !type:Container
+          ents: []
 - proto: Cobweb1
   entities:
   - uid: 28468
@@ -125222,6 +125347,12 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -43.5,-37.5
+      parent: 2
+  - uid: 33237
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 40.5,-12.5
       parent: 2
   - uid: 33536
     components:
@@ -126509,35 +126640,6 @@ entities:
           showEnts: False
           occludes: True
           ent: null
-  - uid: 32569
-    components:
-    - type: Transform
-      pos: 48.5,1.5
-      parent: 2
-    - type: EntityStorage
-      air:
-        volume: 200
-        immutable: False
-        temperature: 293.14673
-        moles:
-          Oxygen: 1.7459903
-          Nitrogen: 6.568249
-    - type: ContainerContainer
-      containers:
-        entity_storage: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 32570
-          - 32571
-          - 32572
-          - 32573
-          - 32574
-          - 32575
-        paper_label: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
   - uid: 34227
     components:
     - type: Transform
@@ -127739,6 +127841,13 @@ entities:
     components:
     - type: Transform
       pos: -36.5,-23.5
+      parent: 2
+- proto: Defibrillator
+  entities:
+  - uid: 33239
+    components:
+    - type: Transform
+      pos: 38.241158,-12.307329
       parent: 2
 - proto: DefibrillatorCabinetFilled
   entities:
@@ -132174,8 +132283,8 @@ entities:
       server: 29990
       connectedToServer: True
     - type: DnaModifierConsole
-      lastSubjectInjectTime: 14446.7441034
-      lastInjectorTime: 14446.7441034
+      lastSubjectInjectTime: 6030.6366566
+      lastInjectorTime: 6030.6366566
   - uid: 30029
     components:
     - type: Transform
@@ -132186,8 +132295,8 @@ entities:
       server: 29990
       connectedToServer: True
     - type: DnaModifierConsole
-      lastSubjectInjectTime: 14446.7441034
-      lastInjectorTime: 14446.7441034
+      lastSubjectInjectTime: 6030.6366566
+      lastInjectorTime: 6030.6366566
 - proto: DogBed
   entities:
   - uid: 18492
@@ -132511,6 +132620,13 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
+- proto: DrinkBeerCan
+  entities:
+  - uid: 32572
+    components:
+    - type: Transform
+      pos: 46.486065,-11.898019
+      parent: 2
 - proto: DrinkBeerGrowler
   entities:
   - uid: 28545
@@ -141600,20 +141716,6 @@ entities:
     - type: Transform
       pos: 33.5,-28.5
       parent: 2
-  - uid: 32574
-    components:
-    - type: Transform
-      parent: 32569
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 32575
-    components:
-    - type: Transform
-      parent: 32569
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
   - uid: 32608
     components:
     - type: Transform
@@ -193207,6 +193309,13 @@ entities:
     - type: Transform
       pos: 28.711473,35.615894
       parent: 2
+- proto: LavalandShuttleConsole
+  entities:
+  - uid: 32568
+    components:
+    - type: Transform
+      pos: 49.5,3.5
+      parent: 2
 - proto: LeftArmBorg
   entities:
   - uid: 29742
@@ -193328,7 +193437,7 @@ entities:
     - type: Transform
       pos: 6.5,-32.5
       parent: 2
-  - uid: 32568
+  - uid: 32570
     components:
     - type: Transform
       pos: 49.5,1.5
@@ -194709,13 +194818,13 @@ entities:
           restitution: 0
           friction: 0.4
     - type: EntityStorage
+      removedMasks: 20
       air:
         volume: 200
         immutable: False
         temperature: 293.14673
         moles: {}
       open: True
-      removedMasks: 20
     - type: PlaceableSurface
       isPlaceable: True
 - proto: LockerWardenFilled
@@ -195276,6 +195385,16 @@ entities:
     components:
     - type: Transform
       pos: -35.641537,-39.530476
+      parent: 2
+  - uid: 32571
+    components:
+    - type: Transform
+      pos: 38.850533,-12.424517
+      parent: 2
+  - uid: 33238
+    components:
+    - type: Transform
+      pos: 38.709908,-12.447954
       parent: 2
   - uid: 34624
     components:
@@ -195961,9 +196080,10 @@ entities:
       parent: 2
 - proto: OreBox
   entities:
-  - uid: 30765
+  - uid: 30864
     components:
     - type: Transform
+      rot: 1.5707963267948966 rad
       pos: 48.5,3.5
       parent: 2
   - uid: 32819
@@ -197366,6 +197486,13 @@ entities:
     - type: Transform
       pos: -4.5,66.5
       parent: 2
+- proto: PlushieLizardMirrored
+  entities:
+  - uid: 30917
+    components:
+    - type: Transform
+      pos: 46.68592,-11.51887
+      parent: 2
 - proto: PlushieMoth
   entities:
   - uid: 29071
@@ -198214,20 +198341,6 @@ entities:
     - type: Transform
       pos: 58.625343,81.59661
       parent: 2
-  - uid: 32572
-    components:
-    - type: Transform
-      parent: 32569
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 32573
-    components:
-    - type: Transform
-      parent: 32569
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
   - uid: 32585
     components:
     - type: Transform
@@ -207209,7 +207322,7 @@ entities:
       pos: 37.5,28.5
       parent: 2
     - type: DnaServer
-      serverId: 214
+      serverId: 215
 - proto: Retractor
   entities:
   - uid: 29260
@@ -208595,11 +208708,6 @@ entities:
       parent: 2
 - proto: SheetPlasteel
   entities:
-  - uid: 30916
-    components:
-    - type: Transform
-      pos: 38.440594,-12.458027
-      parent: 2
   - uid: 32714
     components:
     - type: Transform
@@ -208723,11 +208831,6 @@ entities:
     components:
     - type: Transform
       pos: 25.962128,26.610258
-      parent: 2
-  - uid: 30917
-    components:
-    - type: Transform
-      pos: 38.775887,-12.434356
       parent: 2
   - uid: 31808
     components:
@@ -215013,28 +215116,6 @@ entities:
     - type: Transform
       pos: 18.5,14.5
       parent: 2
-- proto: SpawnPointBoxer
-  entities:
-  - uid: 33074
-    components:
-    - type: Transform
-      pos: -48.5,-4.5
-      parent: 2
-  - uid: 33075
-    components:
-    - type: Transform
-      pos: -47.5,-5.5
-      parent: 2
-  - uid: 33076
-    components:
-    - type: Transform
-      pos: -46.5,-7.5
-      parent: 2
-  - uid: 33077
-    components:
-    - type: Transform
-      pos: -46.5,-2.5
-      parent: 2
 - proto: SpawnPointBrigmedic
   entities:
   - uid: 32226
@@ -215836,33 +215917,6 @@ entities:
     - type: Transform
       pos: 37.5,23.5
       parent: 2
-- proto: SpawnPointSalvageSpecialist
-  entities:
-  - uid: 33236
-    components:
-    - type: Transform
-      pos: 45.5,4.5
-      parent: 2
-  - uid: 33237
-    components:
-    - type: Transform
-      pos: 43.5,3.5
-      parent: 2
-  - uid: 33238
-    components:
-    - type: Transform
-      pos: 45.5,2.5
-      parent: 2
-  - uid: 33239
-    components:
-    - type: Transform
-      pos: 43.5,2.5
-      parent: 2
-  - uid: 33240
-    components:
-    - type: Transform
-      pos: 44.5,2.5
-      parent: 2
 - proto: SpawnPointScientist
   entities:
   - uid: 33241
@@ -216104,6 +216158,45 @@ entities:
     - type: Transform
       pos: -7.5,2.5
       parent: 2
+- proto: SpawnPointShaftMiner
+  entities:
+  - uid: 30867
+    components:
+    - type: Transform
+      pos: 41.5,-11.5
+      parent: 2
+  - uid: 32573
+    components:
+    - type: Transform
+      pos: 43.5,2.5
+      parent: 2
+  - uid: 32574
+    components:
+    - type: Transform
+      pos: 44.5,2.5
+      parent: 2
+  - uid: 32575
+    components:
+    - type: Transform
+      pos: 45.5,2.5
+      parent: 2
+  - uid: 33077
+    components:
+    - type: Transform
+      pos: 40.5,-11.5
+      parent: 2
+  - uid: 33236
+    components:
+    - type: Transform
+      pos: 39.5,-10.5
+      parent: 2
+- proto: SpawnPointShaftMinerMedic
+  entities:
+  - uid: 33074
+    components:
+    - type: Transform
+      pos: 45.5,4.5
+      parent: 2
 - proto: SpawnPointStationEngineer
   entities:
   - uid: 33125
@@ -216216,6 +216309,23 @@ entities:
     components:
     - type: Transform
       pos: -34.5,-23.5
+      parent: 2
+- proto: SpawnPointWardenHelper
+  entities:
+  - uid: 30914
+    components:
+    - type: Transform
+      pos: -54.5,-23.5
+      parent: 2
+  - uid: 30916
+    components:
+    - type: Transform
+      pos: -33.5,-31.5
+      parent: 2
+  - uid: 33076
+    components:
+    - type: Transform
+      pos: -19.5,-30.5
       parent: 2
 - proto: SpawnVehicleJanicart
   entities:
@@ -217516,6 +217626,13 @@ entities:
     - type: Transform
       pos: 7.5,-35.5
       parent: 2
+- proto: SuitStorageBase
+  entities:
+  - uid: 33075
+    components:
+    - type: Transform
+      pos: 42.5,-12.5
+      parent: 2
 - proto: SuitStorageCaptain
   entities:
   - uid: 28147
@@ -217595,11 +217712,6 @@ entities:
     components:
     - type: Transform
       pos: 2.5,-20.5
-      parent: 2
-  - uid: 30867
-    components:
-    - type: Transform
-      pos: 42.5,-12.5
       parent: 2
   - uid: 30941
     components:
@@ -224144,11 +224256,19 @@ entities:
     - type: Transform
       pos: -59.44575,10.162619
       parent: 2
+    - type: ContainerContainer
+      containers:
+        clothing_upgrades: !type:Container
+          ents: []
   - uid: 29355
     components:
     - type: Transform
       pos: -42.449272,10.65024
       parent: 2
+    - type: ContainerContainer
+      containers:
+        clothing_upgrades: !type:Container
+          ents: []
 - proto: UniformShortsRed
   entities:
   - uid: 29578
@@ -224157,24 +224277,40 @@ entities:
       parent: 29573
     - type: Physics
       canCollide: False
+    - type: ContainerContainer
+      containers:
+        clothing_upgrades: !type:Container
+          ents: []
   - uid: 29579
     components:
     - type: Transform
       parent: 29573
     - type: Physics
       canCollide: False
+    - type: ContainerContainer
+      containers:
+        clothing_upgrades: !type:Container
+          ents: []
   - uid: 29585
     components:
     - type: Transform
       parent: 29580
     - type: Physics
       canCollide: False
+    - type: ContainerContainer
+      containers:
+        clothing_upgrades: !type:Container
+          ents: []
   - uid: 29586
     components:
     - type: Transform
       parent: 29580
     - type: Physics
       canCollide: False
+    - type: ContainerContainer
+      containers:
+        clothing_upgrades: !type:Container
+          ents: []
   - uid: 39040
     components:
     - type: Transform
@@ -224182,6 +224318,10 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
+    - type: ContainerContainer
+      containers:
+        clothing_upgrades: !type:Container
+          ents: []
   - uid: 39041
     components:
     - type: Transform
@@ -224189,6 +224329,10 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
+    - type: ContainerContainer
+      containers:
+        clothing_upgrades: !type:Container
+          ents: []
   - uid: 39042
     components:
     - type: Transform
@@ -224196,6 +224340,10 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
+    - type: ContainerContainer
+      containers:
+        clothing_upgrades: !type:Container
+          ents: []
 - proto: UniformShortsRedWithTop
   entities:
   - uid: 29576
@@ -224204,24 +224352,40 @@ entities:
       parent: 29573
     - type: Physics
       canCollide: False
+    - type: ContainerContainer
+      containers:
+        clothing_upgrades: !type:Container
+          ents: []
   - uid: 29577
     components:
     - type: Transform
       parent: 29573
     - type: Physics
       canCollide: False
+    - type: ContainerContainer
+      containers:
+        clothing_upgrades: !type:Container
+          ents: []
   - uid: 29583
     components:
     - type: Transform
       parent: 29580
     - type: Physics
       canCollide: False
+    - type: ContainerContainer
+      containers:
+        clothing_upgrades: !type:Container
+          ents: []
   - uid: 29584
     components:
     - type: Transform
       parent: 29580
     - type: Physics
       canCollide: False
+    - type: ContainerContainer
+      containers:
+        clothing_upgrades: !type:Container
+          ents: []
 - proto: Vaccinator
   entities:
   - uid: 29866
@@ -224555,6 +224719,53 @@ entities:
     - type: Transform
       pos: 46.5,1.5
       parent: 2
+    - type: UtilityVendor
+      cardSlot:
+        priority: 0
+        swap: True
+        blacklist: null
+        insertSound: !type:SoundPathSpecifier
+          params:
+            variation: null
+            playOffsetSeconds: 0
+            loop: False
+            referenceDistance: 1
+            rolloffFactor: 1
+            maxDistance: 15
+            pitch: 1
+            volume: 0
+          path: /Audio/Weapons/Guns/MagIn/revolver_magin.ogg
+        ejectSound: !type:SoundPathSpecifier
+          params:
+            variation: null
+            playOffsetSeconds: 0
+            loop: False
+            referenceDistance: 1
+            rolloffFactor: 1
+            maxDistance: 15
+            pitch: 1
+            volume: 0
+          path: /Audio/Weapons/Guns/MagOut/revolver_magout.ogg
+        disableEject: False
+        insertOnInteract: True
+        ejectOnInteract: False
+        ejectOnUse: False
+        insertVerbText: null
+        ejectVerbText: null
+        ejectOnDeconstruct: True
+        ejectOnBreak: False
+        whitelistFailPopup: null
+        lockedFailPopup: null
+        insertSuccessPopup: null
+        whitelist:
+          requireAll: False
+          tags: null
+          sizes: null
+          components:
+          - PointsCard
+    - type: ContainerContainer
+      containers:
+        vendor_card: !type:ContainerSlot {}
 - proto: VendingMachineSciDrobe
   entities:
   - uid: 29932
@@ -224743,7 +224954,7 @@ entities:
       parent: 2
     - type: Fixtures
       fixtures: {}
-- proto: VendingMachineWinter
+- proto: VendingMachineFashion
   entities:
   - uid: 29485
     components:

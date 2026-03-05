@@ -190,3 +190,17 @@
       visible: false
   - type: Clothing
     equippedPrefix: yellow
+
+- type: entity
+  parent: ClothingNeckChokerBase
+  id: ClothingNeckChokerSecSpike
+  name: security spike choker
+  description: "A rebellious spike choker, designed for that one of femboys in sec."
+  components:
+  - type: Sprite
+    layers:
+    - state: secspike
+      map: [ "unfoldedLayer" ]
+    - state: secspike-lock
+      map: ["foldedLayer"]
+      visible: false

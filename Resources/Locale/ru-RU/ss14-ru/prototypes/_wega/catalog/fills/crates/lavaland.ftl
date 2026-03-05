@@ -1,0 +1,9 @@
+ent-CrateNecropolisFilled = { ent-CrateNecropolis }
+    .desc = { ent-CrateNecropolis.desc }
+    .suffix = Заполенный
+ent-CrateNecropolisAshDrakeFilled = { ent-CrateNecropolis }
+    .desc = { ent-CrateNecropolis.desc }
+ent-CrateNecropolisColossusFilled = { ent-CrateNecropolis }
+    .desc = { ent-CrateNecropolis.desc }
+ent-CrateNecropolisBubblegumFilled = { ent-CrateNecropolis }
+    .desc = { ent-CrateNecropolis.desc }

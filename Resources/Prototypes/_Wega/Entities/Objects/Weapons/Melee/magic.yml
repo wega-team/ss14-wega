@@ -186,7 +186,7 @@
   - type: BloodCultWeapon
   - type: MeleeWeapon
     wideAnimationRotation: -135
-    attackRate: 1.5
+    attackRate: 1
     damage:
       types:
         Slash: 30
@@ -224,16 +224,17 @@
     - 0,2,0,1
   - type: BloodCultWeapon
   - type: MeleeWeapon
-    resistanceBypass: true
-    autoAttack: true
     wideAnimationRotation: -135
-    attackRate: 2
+    attackRate: 1
     damage:
       types:
-        Slash: 20
+        Piercing: 30
     soundHit:
         path: /Audio/Weapons/bladeslice.ogg
   - type: DisarmMalus
+  - type: Reflect
+    reflectProb: .25
+    spread: 90
   - type: Construction
     deconstructionTarget: null
     graph: BloodCultWeapons
@@ -261,13 +262,15 @@
     - 0,0,2,1
     - 1,2,1,1
   - type: BloodCultWeapon
+  - type: Reflect
+    reflectProb: .25
+    spread: 90
   - type: MeleeWeapon
-    range: 1
     wideAnimationRotation: -135
-    attackRate: 0.75
+    attackRate: 1
     damage:
       types:
-        Slash: 50
+        Heat: 30
     soundHit:
         path: /Audio/Weapons/bladeslice.ogg
   - type: DisarmMalus
@@ -309,7 +312,7 @@
     - back
     - suitStorage
   - type: Item
-    size: Ginormous
+    size: Normal
   - type: Wieldable
   - type: Damageable
     damageContainer: Inorganic

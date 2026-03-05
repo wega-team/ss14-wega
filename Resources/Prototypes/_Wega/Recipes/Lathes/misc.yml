@@ -15,9 +15,8 @@
   - Tools
   completetime: 2
   materials:
-    Steel: 150
+    Steel: 100
     Plastic: 300
-    Gold: 100
 
 - type: latheRecipe
   id: TapeRecorder

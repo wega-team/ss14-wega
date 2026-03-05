@@ -480,20 +480,20 @@
   groupBy: "towels"
 
 - type: loadout
-  id: TowelColorMaroon
+  id: TowelColorMime # Wega-mime 
   effects:
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:RoleTimeRequirement
-      role: JobIAA
+      role: JobMime # Wega-mime 
       time: 50h
   storage:
     back:
-    - TowelColorMaroon
+    - TowelColorMime # Wega-mime 
   groupBy: "towels"
 
 - type: loadout
-  id: TowelColorMime
+  id: TowelColorMaroon # Wega-IAA
   effects:
   - !type:JobRequirementLoadoutEffect
     requirement:
@@ -502,7 +502,7 @@
       time: 100h
   storage:
     back:
-    - TowelColorMime
+    - TowelColorMaroon # Wega-IAA
   groupBy: "towels"
 
 - type: loadout

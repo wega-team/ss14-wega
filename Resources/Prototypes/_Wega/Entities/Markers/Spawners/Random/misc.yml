@@ -17,4 +17,5 @@
         - BorgModuleCleanerRare
         - BorgModuleMedicalRare
         - BorgModuleServiceRare
+        - BorgModuleScienceRND
       chance: 1

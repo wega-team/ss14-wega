@@ -1,0 +1,60 @@
+- type: job
+  id: WardenHelper
+  name: job-name-wardenHelper
+  description: job-description-wardenHelper
+  playTimeTracker: JobWardenHelper
+  isSubRole: true
+  requirements:
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 72000 #20 hrs
+    - !type:TraitsRequirement #Corvax-TraitsRequirement
+      inverted: true
+      traits:
+      - Muted
+  weight: 5
+  startingGear: WardenHelperGear
+  icon: "JobIconWardenHelper"
+  supervisors: job-supervisors-hos
+  canBeAntag: false
+  access:
+  - Security
+  - Brig
+  - Armory
+  - Maintenance
+  - External
+  - Detective
+  - Cryogenics
+  - GenpopEnter
+  - GenpopLeave
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+
+- type: startingGear
+  id: WardenHelperGear
+  equipment:
+    head: ClothingHeadHatWardenHelper
+    eyes: ClothingEyesGlassesSecurity
+    id: WardenHelperPDA
+    ears: ClothingHeadsetSecurity
+    pocket1: WeaponPistolMk58
+    pocket2: BookSpaceLaw
+  storage:
+    back:
+    - Flash
+    - MagazinePistol
+
+- type: chameleonOutfit
+  id: WardenHelperChameleonOutfit
+  job: WardenHelper
+  hasMindShield: true
+  equipment:
+    head: ClothingHeadHatWardenHelper
+    mask: ClothingMaskGasSecurity
+    outerClothing: ClothingOuterCoatWarden
+    jumpsuit: ClothingUniformJumpsuitWarden
+    neck: Dinkystar
+    belt: ClothingBeltSecurity
+    gloves: ClothingHandsGlovesCombat
+    shoes: ClothingShoesBootsJack

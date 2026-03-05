@@ -1,0 +1,24 @@
+<Button Name="Container" xmlns="https://spacestation14.io"
+        xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+        ToggleMode="True"
+        HorizontalExpand="True"
+        MouseFilter="Pass">
+    <BoxContainer Orientation="Horizontal" HorizontalExpand="True" Margin="5">
+        <PanelContainer SetSize="76 76" Margin="0 0 10 0">
+            <PanelContainer.PanelOverride>
+                <graphics:StyleBoxFlat BackgroundColor="#1B1B1E" BorderColor="#1E3D2A" BorderThickness="2" />
+            </PanelContainer.PanelOverride>
+            <TextureRect Name="AchievementIcon"
+                         Stretch="KeepCentered" />
+        </PanelContainer>
+
+        <BoxContainer Orientation="Vertical" VerticalExpand="True" HorizontalExpand="True">
+            <BoxContainer Orientation="Horizontal" HorizontalExpand="True">
+                <Label Name="AchievementName" StyleClasses="LabelHeading" />
+                <Control HorizontalExpand="True" />
+                <Label Name="AchievementStatus" StyleClasses="LabelSubText" />
+            </BoxContainer>
+            <RichTextLabel Name="AchievementDescription" VerticalExpand="True" />
+        </BoxContainer>
+    </BoxContainer>
+</Button>

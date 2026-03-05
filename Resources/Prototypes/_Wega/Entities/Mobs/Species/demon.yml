@@ -33,7 +33,6 @@
     damageContainer: Biological
     damageModifierSet: Demon
   - type: MeleeWeapon
-    # hidden: true
     soundHit:
       path: /Audio/Weapons/pierce.ogg
     angle: 30
@@ -46,14 +45,14 @@
     currentTemperature: 310.15
     specificHeat: 46
   - type: TemperatureDamage
-    heatDamageThreshold: 363
-    coldDamageThreshold: 250  #starting temperature damage treshold
+    heatDamageThreshold: 343
+    coldDamageThreshold: 255
     coldDamage:
       types:
-        Cold : 0.2 #per second, scales with temperature & other constants
+        Cold : 0.1
     heatDamage:
       types:
-        Heat : 0.1 #per second, scales with temperature & other constants
+        Heat : 0.5
   - type: TemperatureSpeed
     thresholds:
       285: 0.8
@@ -74,6 +73,26 @@
   - type: DnaModifier
     upper: MobDemon
     lowest: MobMonkeyDemon
+  - type: DamageOnAction
+    damage:
+      types:
+        Blunt: -10
+        Slash: -10
+        Piercing: -10
+        Heat: -10
+        Cold: -10
+        Poison: -10
+        Asphyxiation: -20
+        Bloodloss: -20
+  - type: PassiveDamage
+    allowedStates:
+    - Alive
+    damageCap: 50
+    damage:
+      types:
+        Heat: -0.1
+      groups:
+        Brute: -0.1
 
 - type: entity
   save: false

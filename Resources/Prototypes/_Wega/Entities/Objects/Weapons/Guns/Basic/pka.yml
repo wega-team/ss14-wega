@@ -1,0 +1,42 @@
+- type: entity
+  id: WeaponProtoKineticAcceleratorBDM
+  parent: WeaponProtoKineticAccelerator
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: DeleteOnDrop
+  - type: SpawnOnDelete
+    prototype: WeaponProtoKineticAccelerator
+  - type: Gun
+    fireRate: 0.5
+    selectedMode: SemiAuto
+    angleDecay: 0
+    minAngle: 0
+    maxAngle: 0
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/kinetic_accel.ogg
+    projectileSpeed: 25
+
+- type: entity
+  name: magmite proto-kinetic accelerator
+  id: WeaponMagmiteProtoKineticAccelerator
+  parent: WeaponProtoKineticAccelerator
+  description: Fires low-damage kinetic bolts at a short range. It has the largest capacity for improvements.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Basic/magmite_kinetic_accelerator.rsi
+    layers:
+    - state: icon
+    - state: animation-icon
+      visible: false
+      map: [ "empty-icon" ]
+  - type: Item
+    sprite: _Wega/Objects/Weapons/Guns/Basic/magmite_kinetic_accelerator.rsi
+  - type: Clothing
+    sprite: _Wega/Objects/Weapons/Guns/Basic/magmite_kinetic_accelerator.rsi
+  - type: UpgradeableGun
+    maxUpgradeCount: 4
+    whitelist:
+      tags:
+      - PKAUpgrade

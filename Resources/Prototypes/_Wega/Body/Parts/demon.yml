@@ -134,8 +134,8 @@
     partType: Leg
     symmetry: Left
   - type: MovementBodyPart
-    walkSpeed : 2.5
-    sprintSpeed : 4.5
+    walkSpeed : 2.2
+    sprintSpeed : 4.2
 
 - type: entity
   id: RightLegDemon
@@ -153,8 +153,8 @@
     partType: Leg
     symmetry: Right
   - type: MovementBodyPart
-    walkSpeed : 2.5
-    sprintSpeed : 4.5
+    walkSpeed : 2.2
+    sprintSpeed : 4.2
 
 - type: entity
   id: LeftFootDemon

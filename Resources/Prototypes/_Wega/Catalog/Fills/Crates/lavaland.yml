@@ -1,0 +1,129 @@
+# Basic
+- type: entity
+  parent: CrateNecropolis
+  id: CrateNecropolisFilled
+  suffix: Filled
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: BasicNecropolisCrateTable
+
+- type: entityTable
+  id: BasicNecropolisCrateTable
+  table: !type:GroupSelector
+    children:
+    - id: BloodCultSoulStone
+    - id: DarkShard
+    - id: ClothingHandsGlovesConcussiveGauntlets
+    - id: WeaponPossessedBlade
+    - id: ClothingOuterArmorCult
+    - id: DrinkUnholyFlaskFull
+    - id: ArmBlade
+    - id: RodOfAsclepius
+    - id: CardTarotNotEnchanted
+    - id: ShipInBottle
+    - id: DustyShard
+    - id: CubeRed # He will create the second cube himself
+    - id: PKAUpgradeFireRate
+    - id: PKAUpgradeDamage
+    - id: PKAUpgradeLifesteal
+    - !type:NestedSelector
+      tableId: MagmiteGearTable
+
+- type: entityTable
+  id: MagmiteGearTable
+  table: !type:GroupSelector
+    children:
+    - id: WeaponMagmiteProtoKineticAccelerator
+    - id: WeaponMagmiteCrusher
+    - id: WeaponMagmiteCrusherGlaive
+    - id: WeaponMagmitePlasmaCutter
+    - id: WeaponMagmiteFanPlasmaCutter
+
+# Ash Drake
+- type: entity
+  parent: CrateNecropolis
+  id: CrateNecropolisAshDrakeFilled
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: AshDrakeNecropolisCrateTable
+
+- type: entityTable
+  id: AshDrakeNecropolisCrateTable
+  table: !type:GroupSelector
+    children:
+    - id: WeaponSpectralBlade
+    - id: LavaStaffRod
+    - id: BottleDragonBlood
+    - !type:NestedSelector
+      tableId: FireDrakeTable
+
+- type: entityTable
+  id: FireDrakeTable
+  table: !type:AllSelector
+    children:
+    - id: FireSelfSpellbook
+    - id: WeaponWandFireball
+
+# Colossus
+- type: entity
+  parent: CrateNecropolis
+  id: CrateNecropolisColossusFilled
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: ColossusNecropolisCrateTable
+
+- type: entityTable
+  id: ColossusNecropolisCrateTable
+  table: !type:AllSelector
+    children:
+    - id: GemHollowCrystal
+    - !type:NestedSelector
+      tableId: ColossusRewardsTable
+
+- type: entityTable
+  id: ColossusRewardsTable
+  table: !type:GroupSelector
+    children:
+    - id: DivineVocalCordsImplant
+
+# Bubblegum
+- type: entity
+  parent: CrateNecropolis
+  id: CrateNecropolisBubblegumFilled
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: BubblegumNecropolisCrateTable
+
+- type: entityTable
+  id: BubblegumNecropolisCrateTable
+  table: !type:AllSelector
+    children:
+    - id: GemBloodStone
+    - !type:NestedSelector
+      tableId: BubblegumRewardsTable
+
+- type: entityTable
+  id: BubblegumRewardsTable
+  table: !type:GroupSelector
+    children:
+    - id: WeaponSpellBlade
+    - !type:NestedSelector
+      tableId: HostileEnvTable
+
+- type: entityTable
+  id: HostileEnvTable
+  table: !type:AllSelector
+    children:
+    - id: ClothingOuterArmorHostileEnv
+    - id: ClothingHeadHelmetHostileEnv

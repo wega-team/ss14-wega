@@ -1470,26 +1470,78 @@
   name: Salvage Vendor
   description: A dwarf's best friend!
   components:
-  - type: VendingMachine
-    pack: SalvageEquipmentInventory
-    offState: off
-    brokenState: broken
-    normalState: normal-unshaded
-    denyState: deny-unshaded
+  # Corvax-Wega-Lavaland-Edit-start
+  # - type: VendingMachine
+  #   pack: SalvageEquipmentInventory
+  #   offState: off
+  #   brokenState: broken
+  #   normalState: normal-unshaded
+  #   denyState: deny-unshaded
+  # Corvax-Wega-Lavaland-Edit-end
   - type: Sprite
     sprite: Structures/Machines/VendingMachines/mining.rsi
     layers:
     - state: "off"
       map: ["enum.VendingMachineVisualLayers.Base"]
-    - state: "off"
-      map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
-      shader: unshaded
+    # - state: "off"
+    #   map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
+    #   shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: PointLight
     radius: 1.5
     energy: 3.0
     color: "#b89f25"
+  - type: ActivatableUI
+    key: enum.UtilityVendorUiKey.Key
+  - type: ActivatableUIRequiresPower
+  - type: UserInterface
+    interfaces:
+      enum.UtilityVendorUiKey.Key:
+        type: UtilityVendorBoundUserInterface
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
+  # Corvax-Wega-Lavaland-start
+  - type: Voucher
+    typeVoucher: Salvage
+  - type: UtilityVendor
+    categories:
+      - UtilityBasic
+      - UtilityGear
+      - UtilityConsumables
+      - UtilityDiggingTools
+      - UtilityMisc
+  - type: ItemSlots
+    slots:
+      vendor_card:
+        whitelist:
+          components:
+          - PointsCard
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:EmptyContainersBehaviour
+        containers:
+        - vendor_card
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalGlassBreak
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:EmptyContainersBehaviour
+        containers:
+        - vendor_card
+      - !type:DoActsBehavior
+        acts: ["Breakage"]
+      - !type:EjectVendorItems
+  # Corvax-Wega-Lavaland-end
   - type: AccessReader
     access: [["Salvage"]]
   - type: GuideHelp

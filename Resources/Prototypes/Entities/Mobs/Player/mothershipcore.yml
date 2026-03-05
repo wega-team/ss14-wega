@@ -43,6 +43,7 @@
     staticPacks:
     - EmptyXenoborgs
     - XenoborgUpgradeModules
+    - XenoborgLaws # Corvax-Wega-add
   - type: MaterialStorage
     whitelist:
       tags:
@@ -156,13 +157,16 @@
   - type: MothershipCore
   - type: Tag
     tags:
+    - BypassInteractionRangeChecks # Corvax-Wega-add
     - SiliconEmotes
     - CanPilot
     - Structure
   - type: GuideHelp
     guides:
+    - Xenoborgs # Corvax-Wega-Edit
+    - MindChat # Corvax-Wega-Edit
     - Robotics
-    - Xenoborgs
+    # - Xenoborgs  Corvax-Wega-Edit
   - type: Inventory
     templateId: borg
   - type: NpcFactionMember
@@ -185,7 +189,7 @@
     containers:
       borg_module:
       - MothershipModule
-      - BorgModuleAdvancedTool
+      - XenoborgModuleToolMother # BorgModuleAdvancedTool Corvax-Wega
   - type: ContainerContainer
     containers:
       cell_slot: !type:ContainerSlot { }
@@ -236,6 +240,16 @@
   - type: ShowElectrocutionHUD
   - type: PowerMonitoringCableNetworks
   - type: RadarConsole
+# Corvax-Wega-start
+  - type: ShowHealthBars
+    damageContainers:
+    - Biological
+    - Inorganic
+    - Silicon
+    - Android
+  - type: MindLink
+    channels: ["MindXenoborgs"]
+# Corvax-Wega-end
 
 - type: entity
   parent: BaseAGhostAction

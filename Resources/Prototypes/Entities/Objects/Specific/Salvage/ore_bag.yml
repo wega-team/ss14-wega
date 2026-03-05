@@ -25,6 +25,8 @@
       tags:
         - ArtifactFragment
         - Ore
+        - Gems # Corvax-Wega-Lavaland
+        - MagmiteAlloy # Corvax-Wega-Lavaland
   - type: Dumpable
 
 ## Corvax-Wega-Start
@@ -49,6 +51,7 @@
         tags:
           - ArtifactFragment
           - Ore
+          - Gems # Corvax-Wega-Lavaland
     - type: Sprite
       sprite: Objects/Specific/Mining/ore_bag.rsi
     # Corvax-Wega-Start

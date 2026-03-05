@@ -301,6 +301,7 @@
   - type: FireVisuals
     alternateState: Standing
   - type: StunVisuals
+  - type: LegionReversible # Corvax-Wega-Lavaland
 
 - type: entity
   save: false

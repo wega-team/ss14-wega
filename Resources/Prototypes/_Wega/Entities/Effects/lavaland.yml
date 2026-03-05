@@ -1,0 +1,422 @@
+- type: entity
+  id: FallingRockEffect
+  components:
+  - type: Transform
+    anchored: True
+  - type: Physics
+    bodyType: Static
+  - type: Sprite
+    sprite: _Wega/Effects/falling.rsi
+    state: falling_rock
+  - type: Fade
+    fadeDuration: 4.5
+    startColor: "#FFFFFF00"
+    targetColor: "#FFFFFFFF"
+  - type: TimedDespawn
+    lifetime: 5
+
+- type: entity
+  id: GoliathTentacle
+  name: tentacle
+  components:
+  - type: Transform
+    anchored: True
+  - type: Physics
+    bodyType: Static
+    canCollide: true
+  - type: InteractionOutline
+  - type: Sprite
+    sprite: Mobs/Aliens/Asteroid/goliath.rsi
+    layers:
+    - state: goliath_tentacle_wiggle
+  - type: StunOnContact
+    duration: 6
+    blacklist:
+      tags:
+      - Goliath
+  - type: Fixtures
+    fixtures:
+      fix:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        mask:
+        - Impassable
+        layer:
+        - Impassable
+        hard: false
+  - type: TimedDespawn #do this shit by hand because of fucking course.
+    lifetime: 0.4
+  - type: SpawnOnDespawn
+    prototype: EffectGoliathTentacleRetract
+
+- type: entity
+  id: BaseEffectGoliathTentacleSpawn
+  categories: [ HideSpawnMenu ]
+  name: tentacle
+  abstract: true
+  components:
+  - type: Transform
+    anchored: True
+  - type: Physics
+    bodyType: Static
+    canCollide: false
+  - type: Sprite
+    sprite: Mobs/Aliens/Asteroid/goliath.rsi
+  - type: InteractionOutline
+  - type: TimedDespawn
+    lifetime: 0.7
+
+- type: entity
+  id: EffectGoliathTentacleSpawn
+  parent: BaseEffectGoliathTentacleSpawn
+  categories: [ HideSpawnMenu ]
+  name: tentacle
+  components:
+    - type: Sprite
+      state: goliath_tentacle_spawn
+    - type: SpawnOnDespawn
+      prototype: GoliathTentacle
+
+- type: entity
+  id: EffectGoliathTentacleRetract
+  parent: BaseEffectGoliathTentacleSpawn
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    state: goliath_tentacle_retract
+  - type: EffectVisuals
+  - type: AnimationPlayer
+
+- type: entity
+  id: EffectMegaFaunaMarker
+  name: oh, no...
+  categories: [ HideSpawnMenu ]
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Transform
+    anchored: True
+  - type: Physics
+    bodyType: Static
+  - type: InteractionOutline
+  - type: Sprite
+    noRot: true
+    sprite: _Wega/Effects/effects96x96.rsi
+    state: landing
+  - type: TimedDespawn
+    lifetime: 2
+
+# Hierophant
+- type: entity
+  id: EffectHierophantSquare
+  suffix: DO NOT MAP
+  name: hierophant square
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Wall
+  components:
+  - type: Sprite
+    sprite: _Wega/Effects/hierophant_effects.rsi
+    state: hierophantblastbegin
+  - type: Transform
+    anchored: true
+  - type: TileEmission
+    color: "#9900FF"
+  - type: TimedDespawn
+    lifetime: 0.6
+  - type: SpawnOnDespawn
+    prototype: EffectHierophantDamageField
+
+- type: entity
+  id: EffectHierophantDamageField
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Effects/hierophant_effects.rsi
+    state: hierophantblastend
+  - type: Transform
+    anchored: true
+  - type: TimedDespawn
+    lifetime: 0.325
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,0.5"
+        layer:
+          - SlipLayer
+        mask:
+          - ItemMask
+        density: 1000
+        hard: false
+  - type: TileEmission
+    color: "#9900FF"
+  - type: EmitSoundOnSpawn
+    positional: true
+    sound:
+      path: /Audio/_Wega/Mobs/Lavaland/hiero_blast.ogg
+  - type: TriggerOnCollide
+    fixtureID: fix1
+    maxTriggers: 1
+  - type: DamageOnTrigger
+    targetUser: true
+    damage:
+      types:
+        Blunt: 3
+        Heat: 3
+    blacklist:
+      components:
+      - HierophantBoss
+
+# Ash Drake
+- type: entity
+  id: EffectAshDrakeFire
+  name: fire
+  categories: [ HideSpawnMenu ]
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Transform
+    anchored: True
+  - type: Physics
+    bodyType: Static
+    canCollide: true
+  - type: InteractionOutline
+  - type: Sprite
+    sprite: Effects/fire.rsi
+    color: "#a7000b"
+    state: "2"
+  - type: TriggerOnCollide
+    fixtureID: fix1
+    maxTriggers: 1
+  - type: IgniteOnCollide
+    fixtureId: fix1
+    fireStacks: 1
+  - type: DamageOnTrigger
+    targetUser: true
+    damage:
+      types:
+        Heat: 2.5
+    blacklist:
+      components:
+      - AshDrakeBoss
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,0.5"
+        mask:
+        - FullTileMask
+        layer:
+        - Impassable
+        hard: false
+  - type: TimedDespawn
+    lifetime: 0.5
+
+- type: entity
+  parent: EffectAshDrakeFire
+  id: EffectAshDrakeFireCircle
+  name: fire
+  categories: [ HideSpawnMenu ]
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: DamageOnTrigger
+    targetUser: true
+    damage:
+      types:
+        Heat: 40 # MORE! MORE!
+    blacklist:
+      components:
+      - AshDrakeBoss
+
+- type: entity
+  parent: EffectAshDrakeFire
+  id: EffectAshDrakeFireWall
+  name: fire
+  categories: [ HideSpawnMenu ]
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: TriggerOnCollide
+    fixtureID: fix1
+    maxTriggers: null # Dont do this, please
+  - type: TimedDespawn
+    lifetime: 10
+
+- type: entity
+  id: EffectAshDrakeCircle
+  name: oh, no...
+  categories: [ HideSpawnMenu ]
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Transform
+    anchored: True
+  - type: Physics
+    bodyType: Static
+    canCollide: true
+  - type: InteractionOutline
+  - type: Sprite
+    noRot: true
+    sprite: _Wega/Effects/drakeeffects.rsi
+    state: target_circle
+  - type: TimedDespawn
+    lifetime: 2
+  - type: SpawnOnDespawn
+    prototype: EffectAshDrakeFireCircle
+
+- type: entity
+  id: EffectAshDrakeSafeMarker
+  name: over here!
+  categories: [ HideSpawnMenu ]
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Transform
+    anchored: True
+  - type: Physics
+    bodyType: Static
+  - type: InteractionOutline
+  - type: Sprite
+    noRot: true
+    sprite: _Wega/Effects/drakeeffects.rsi
+    state: safe
+  - type: TimedDespawn
+    lifetime: 1.5
+
+- type: entity
+  id: EffectAshDrakeShadow
+  name: here!
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Transform
+    anchored: True
+  - type: InteractionOutline
+  - type: Sprite
+    noRot: true
+    sprite: _Wega/Mobs/Lavaland/ashdrake.rsi
+    state: shadow
+
+- type: entity
+  parent: FloorLavaEntity
+  id: EffectAshDrakeFloorLavaTemp
+  name: lava
+  description: Don't jump in. It's not worth it, no matter how funny it is.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    noRot: true
+  - type: TimedDespawn
+    lifetime: 5
+
+- type: entity
+  parent: FloorLavaEntity
+  id: EffectAshDrakeFloorLavaLessTemp
+  name: lava
+  description: Don't jump in. It's not worth it, no matter how funny it is.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    noRot: true
+  - type: TimedDespawn
+    lifetime: 1
+
+# Bubblegum
+- type: entity
+  id: EffectBubblegumHand
+  name: bubblegum hand
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Transform
+    anchored: True
+  - type: Physics
+    bodyType: Static
+    canCollide: true
+  - type: InteractionOutline
+  - type: Sprite
+    sprite: _Wega/Effects/bubblegumeffects.rsi
+    layers:
+    - state: hand
+  - type: Fixtures
+    fixtures:
+      fix:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        mask:
+        - Impassable
+        layer:
+        - Impassable
+        hard: false
+  - type: DamageOnTrigger
+    targetUser: true
+    damage:
+      types:
+        Blunt: 30
+    blacklist:
+      components:
+      - BubblegumBoss
+  - type: TimedDespawn #do this shit by hand because of fucking course.
+    lifetime: 0.2
+  - type: SpawnOnDespawn
+    prototype: EffectBubblegumHandOut
+
+- type: entity
+  id: BaseEffectBubblegumHandSpawn
+  categories: [ HideSpawnMenu ]
+  name: bubblegum hand
+  abstract: true
+  components:
+  - type: Transform
+    anchored: True
+  - type: Physics
+    bodyType: Static
+    canCollide: false
+  - type: Sprite
+    sprite: _Wega/Effects/bubblegumeffects.rsi
+  - type: InteractionOutline
+  - type: TimedDespawn
+    lifetime: 0.58
+
+- type: entity
+  id: EffectBubblegumHandIn
+  parent: BaseEffectBubblegumHandSpawn
+  categories: [ HideSpawnMenu ]
+  name: bubblegum hand
+  components:
+    - type: Sprite
+      state: handin
+    - type: SpawnOnDespawn
+      prototype: EffectBubblegumHand
+
+- type: entity
+  id: EffectBubblegumHandOut
+  parent: BaseEffectBubblegumHandSpawn
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    state: handout
+  - type: EffectVisuals
+  - type: AnimationPlayer
+
+- type: entity
+  id: EffectBubblegumDashTrail
+  name: "..."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InteractionOutline
+  - type: Sprite
+    sprite: _Wega/Mobs/Lavaland/bubblegum.rsi
+    state: bubblegum
+    noRot: true
+  - type: Fade
+    fadeDuration: 2
+  - type: TimedDespawn
+    lifetime: 2

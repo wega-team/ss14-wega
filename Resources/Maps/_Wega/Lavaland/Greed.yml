@@ -1,0 +1,746 @@
+meta:
+  format: 7
+  category: Grid
+  engineVersion: 268.0.0
+  forkId: ""
+  forkVersion: ""
+  time: 01/15/2026 23:27:09
+  entityCount: 102
+maps: []
+grids:
+- 7313
+orphans:
+- 7313
+nullspace: []
+tilemap:
+  0: Space
+  30: FloorAsphalt
+  31: FloorAsteroidSand
+  32: FloorAsteroidSandUnvariantized
+  13: FloorAsteroidTile
+  21: FloorAstroGrass
+  38: FloorAstroIce
+  37: FloorAstroSnow
+  36: FloorBar
+  16: FloorBasalt
+  8: FloorBlueCircuit
+  19: FloorBoxing
+  10: FloorBrokenWood
+  25: FloorCave
+  5: FloorDark
+  12: FloorDesert
+  34: FloorElevatorShaft
+  23: FloorFreezer
+  11: FloorLaundry
+  4: FloorLino
+  20: FloorLowDesert
+  29: FloorMining
+  17: FloorMiningDark
+  18: FloorMiningLight
+  28: FloorReinforced
+  9: FloorShowroom
+  33: FloorShuttleBlue
+  24: FloorShuttlePurple
+  35: FloorShuttleWhite
+  2: FloorSteel
+  1: FloorWhite
+  22: FloorWood
+  26: FloorWoodBlack
+  15: FloorWoodLarge
+  27: Lattice
+  3: Plating
+  14: PlatingAsteroid
+  6: PlatingDamaged
+entities:
+- proto: ""
+  entities:
+  - uid: 7313
+    components:
+    - type: MetaData
+      name: Жадность
+    - type: Transform
+      parent: invalid
+    - type: MapGrid
+      chunks:
+        0,0:
+          ind: 0,0
+          tiles: AwAAAAAAABYAAAAAAAAWAAAAAAAACgAAAAAAABYAAAAAAAAWAAAAAAAAFgAAAAAAAAoAAAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAAAAAAWAAAAAAAACgAAAAAAABYAAAAAAAAWAAAAAAAACgAAAAAAABYAAAAAAAAWAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAAAAAAAAAwAAAAAAABYAAAAAAAAWAAAAAAAAFgAAAAAAABYAAAAAAAAWAAAAAAAAAwAAAAAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAAAAAADAAAAAAAAFgAAAAAAAAoAAAAAAAAWAAAAAAAAAwAAAAAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAABYAAAAAAAAWAAAAAAAAFgAAAAAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAAAAAADAAAAAAAAAwAAAAAAAAMAAAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+          version: 7
+        0,-1:
+          ind: 0,-1
+          tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAAAAAAWAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAAAAAADAAAAAAAAFgAAAAAAAAMAAAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAAAAAAAAFgAAAAAAAAoAAAAAAAAWAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAABYAAAAAAAAKAAAAAAAAFgAAAAAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAAAAAAAAAwAAAAAAAAMAAAAAAAAWAAAAAAAACgAAAAAAABYAAAAAAAADAAAAAAAAAwAAAAAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAoAAAAAAAAWAAAAAAAAFgAAAAAAABYAAAAAAAAWAAAAAAAAFgAAAAAAABYAAAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+          version: 7
+    - type: Broadphase
+    - type: Physics
+      bodyStatus: InAir
+      angularDamping: 0.05
+      linearDamping: 0.05
+      fixedRotation: False
+      bodyType: Dynamic
+    - type: Fixtures
+      fixtures: {}
+    - type: OccluderTree
+    - type: SpreaderGrid
+    - type: Shuttle
+      dampingModifier: 0.25
+    - type: GridPathfinding
+    - type: Gravity
+      gravityShakeSound: !type:SoundPathSpecifier
+        path: /Audio/Effects/alert.ogg
+    - type: DecalGrid
+      chunkCollection:
+        version: 2
+        nodes: []
+    - type: GridAtmosphere
+      version: 2
+      data:
+        chunkSize: 4
+    - type: GasTileOverlay
+    - type: RadiationGridResistance
+    - type: ImplicitRoof
+    - type: ExplosionAirtightGrid
+- proto: Carpet
+  entities:
+  - uid: 7315
+    components:
+    - type: Transform
+      pos: 3.5,4.5
+      parent: 7313
+  - uid: 7316
+    components:
+    - type: Transform
+      pos: 4.5,3.5
+      parent: 7313
+  - uid: 7317
+    components:
+    - type: Transform
+      pos: 4.5,4.5
+      parent: 7313
+  - uid: 7318
+    components:
+    - type: Transform
+      pos: 5.5,4.5
+      parent: 7313
+  - uid: 7319
+    components:
+    - type: Transform
+      pos: 5.5,3.5
+      parent: 7313
+  - uid: 7320
+    components:
+    - type: Transform
+      pos: 3.5,3.5
+      parent: 7313
+- proto: CigarGold
+  entities:
+  - uid: 7321
+    components:
+    - type: Transform
+      pos: 3.4322815,4.197858
+      parent: 7313
+  - uid: 7322
+    components:
+    - type: Transform
+      pos: 3.6368713,4.236806
+      parent: 7313
+  - uid: 7323
+    components:
+    - type: Transform
+      pos: 3.695343,4.051801
+      parent: 7313
+  - uid: 7324
+    components:
+    - type: Transform
+      pos: 3.3641052,3.9154816
+      parent: 7313
+- proto: ClothingNeckElysiumPin
+  entities:
+  - uid: 7325
+    components:
+    - type: Transform
+      pos: 3.473297,3.5065389
+      parent: 7313
+- proto: ClothingNeckGoldAutismPin
+  entities:
+  - uid: 7326
+    components:
+    - type: Transform
+      pos: 5.5592346,2.4193516
+      parent: 7313
+- proto: ClothingNeckGoldmedal
+  entities:
+  - uid: 7327
+    components:
+    - type: Transform
+      pos: 6.6842346,-0.5103359
+      parent: 7313
+- proto: DrinkChampagneBottleFull
+  entities:
+  - uid: 7329
+    components:
+    - type: Transform
+      pos: 6.0303345,2.6593015
+      parent: 7313
+- proto: DrinkGoldenCup
+  entities:
+  - uid: 7330
+    components:
+    - type: Transform
+      pos: 5.6039124,4.421102
+      parent: 7313
+- proto: DrinkRumBottleFull
+  entities:
+  - uid: 7331
+    components:
+    - type: Transform
+      pos: 5.828949,-1.4259595
+      parent: 7313
+- proto: DrinkVermouthBottleFull
+  entities:
+  - uid: 7332
+    components:
+    - type: Transform
+      pos: 2.1949768,-0.4321246
+      parent: 7313
+- proto: DrinkWhiskeyBottleFull
+  entities:
+  - uid: 7333
+    components:
+    - type: Transform
+      pos: 5.8094788,-3.4318035
+      parent: 7313
+- proto: DrinkWineBottleFull
+  entities:
+  - uid: 7334
+    components:
+    - type: Transform
+      pos: 3.1733704,-2.3996694
+      parent: 7313
+- proto: FloorTileItemGold
+  entities:
+  - uid: 7335
+    components:
+    - type: Transform
+      pos: 6.666809,1.5737176
+      parent: 7313
+  - uid: 7336
+    components:
+    - type: Transform
+      pos: 3.8024902,2.411108
+      parent: 7313
+  - uid: 7337
+    components:
+    - type: Transform
+      pos: 3.3738403,1.680826
+      parent: 7313
+  - uid: 7338
+    components:
+    - type: Transform
+      pos: 2.5067444,0.45395112
+      parent: 7313
+  - uid: 7339
+    components:
+    - type: Transform
+      pos: 2.915924,-0.2958051
+      parent: 7313
+  - uid: 7340
+    components:
+    - type: Transform
+      pos: 6.5986023,0.37605453
+      parent: 7313
+  - uid: 7341
+    components:
+    - type: Transform
+      pos: 6.0530396,-0.48081034
+      parent: 7313
+  - uid: 7342
+    components:
+    - type: Transform
+      pos: 5.9750977,0.14236414
+      parent: 7313
+- proto: FoodTartGapple
+  entities:
+  - uid: 7343
+    components:
+    - type: Transform
+      pos: 1.4776917,1.0499778
+      parent: 7313
+- proto: GoldDoor
+  entities:
+  - uid: 7344
+    components:
+    - type: Transform
+      pos: 4.5,-5.5
+      parent: 7313
+    missingComponents:
+    - Construction
+    - Destructible
+    - RCDDeconstructable
+- proto: GoldenBikeHorn
+  entities:
+  - uid: 7345
+    components:
+    - type: Transform
+      pos: 5.633148,3.7687163
+      parent: 7313
+- proto: GoldenPlunger
+  entities:
+  - uid: 7346
+    components:
+    - type: Transform
+      pos: 5.340851,3.827139
+      parent: 7313
+- proto: GoldOre1
+  entities:
+  - uid: 7347
+    components:
+    - type: Transform
+      pos: 7.551422,1.4674764
+      parent: 7313
+- proto: IngotGold
+  entities:
+  - uid: 7348
+    components:
+    - type: Transform
+      pos: 7.5231934,1.1104887
+      parent: 7313
+- proto: IngotGold1
+  entities:
+  - uid: 7349
+    components:
+    - type: Transform
+      pos: 1.3754272,0.25551558
+      parent: 7313
+  - uid: 7350
+    components:
+    - type: Transform
+      pos: 1.3948975,0.012087822
+      parent: 7313
+  - uid: 7351
+    components:
+    - type: Transform
+      pos: 1.6969299,0.2263043
+      parent: 7313
+- proto: RandomArcade
+  entities:
+  - uid: 2
+    components:
+    - type: Transform
+      pos: 6.5,2.5
+      parent: 7313
+  - uid: 4
+    components:
+    - type: Transform
+      pos: 2.5,2.5
+      parent: 7313
+- proto: SmallLight
+  entities:
+  - uid: 7353
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 1.5,0.5
+      parent: 7313
+  - uid: 7354
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 7.5,0.5
+      parent: 7313
+  - uid: 7355
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 3.5,-3.5
+      parent: 7313
+  - uid: 7356
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 5.5,-3.5
+      parent: 7313
+  - uid: 7357
+    components:
+    - type: Transform
+      pos: 5.5,4.5
+      parent: 7313
+  - uid: 7358
+    components:
+    - type: Transform
+      pos: 3.5,4.5
+      parent: 7313
+- proto: SpaceCash100
+  entities:
+  - uid: 7359
+    components:
+    - type: Transform
+      pos: 1.5312195,1.5613017
+      parent: 7313
+- proto: SpaceCash1000
+  entities:
+  - uid: 7360
+    components:
+    - type: Transform
+      pos: 7.504547,-0.19651079
+      parent: 7313
+- proto: SpaceCash10000
+  entities:
+  - uid: 7361
+    components:
+    - type: Transform
+      pos: 1.5045471,0.6472392
+      parent: 7313
+- proto: SpaceCash500
+  entities:
+  - uid: 7362
+    components:
+    - type: Transform
+      pos: 7.551422,0.6941142
+      parent: 7313
+  - uid: 7363
+    components:
+    - type: Transform
+      pos: 1.5045471,-0.21994829
+      parent: 7313
+- proto: SpawnCursedSlotMachine
+  entities:
+  - uid: 3
+    components:
+    - type: Transform
+      pos: 4.5,4.5
+      parent: 7313
+- proto: TableCarpet
+  entities:
+  - uid: 7365
+    components:
+    - type: Transform
+      pos: 3.5,4.5
+      parent: 7313
+  - uid: 7366
+    components:
+    - type: Transform
+      pos: 3.5,3.5
+      parent: 7313
+  - uid: 7367
+    components:
+    - type: Transform
+      pos: 5.5,4.5
+      parent: 7313
+  - uid: 7368
+    components:
+    - type: Transform
+      pos: 5.5,3.5
+      parent: 7313
+  - uid: 7369
+    components:
+    - type: Transform
+      pos: 1.5,1.5
+      parent: 7313
+  - uid: 7370
+    components:
+    - type: Transform
+      pos: 1.5,0.5
+      parent: 7313
+  - uid: 7371
+    components:
+    - type: Transform
+      pos: 1.5,-0.5
+      parent: 7313
+  - uid: 7372
+    components:
+    - type: Transform
+      pos: 7.5,1.5
+      parent: 7313
+  - uid: 7373
+    components:
+    - type: Transform
+      pos: 7.5,0.5
+      parent: 7313
+  - uid: 7374
+    components:
+    - type: Transform
+      pos: 7.5,-0.5
+      parent: 7313
+- proto: ToolboxGolden
+  entities:
+  - uid: 7375
+    components:
+    - type: Transform
+      pos: 7.481842,0.20682979
+      parent: 7313
+- proto: WallCult
+  entities:
+  - uid: 7376
+    components:
+    - type: Transform
+      pos: 3.5,-5.5
+      parent: 7313
+    missingComponents:
+    - Destructible
+  - uid: 7377
+    components:
+    - type: Transform
+      pos: 3.5,-4.5
+      parent: 7313
+    missingComponents:
+    - Destructible
+  - uid: 7378
+    components:
+    - type: Transform
+      pos: 2.5,-4.5
+      parent: 7313
+    missingComponents:
+    - Destructible
+  - uid: 7379
+    components:
+    - type: Transform
+      pos: 2.5,-3.5
+      parent: 7313
+    missingComponents:
+    - Destructible
+  - uid: 7380
+    components:
+    - type: Transform
+      pos: 2.5,-2.5
+      parent: 7313
+    missingComponents:
+    - Destructible
+  - uid: 7381
+    components:
+    - type: Transform
+      pos: 2.5,-1.5
+      parent: 7313
+    missingComponents:
+    - Destructible
+  - uid: 7382
+    components:
+    - type: Transform
+      pos: 1.5,-1.5
+      parent: 7313
+    missingComponents:
+    - Destructible
+  - uid: 7383
+    components:
+    - type: Transform
+      pos: 0.5,-1.5
+      parent: 7313
+    missingComponents:
+    - Destructible
+  - uid: 7384
+    components:
+    - type: Transform
+      pos: 0.5,-0.5
+      parent: 7313
+    missingComponents:
+    - Destructible
+  - uid: 7385
+    components:
+    - type: Transform
+      pos: 0.5,0.5
+      parent: 7313
+    missingComponents:
+    - Destructible
+  - uid: 7386
+    components:
+    - type: Transform
+      pos: 0.5,1.5
+      parent: 7313
+    missingComponents:
+    - Destructible
+  - uid: 7387
+    components:
+    - type: Transform
+      pos: 0.5,2.5
+      parent: 7313
+    missingComponents:
+    - Destructible
+  - uid: 7388
+    components:
+    - type: Transform
+      pos: 1.5,2.5
+      parent: 7313
+    missingComponents:
+    - Destructible
+  - uid: 7389
+    components:
+    - type: Transform
+      pos: 1.5,3.5
+      parent: 7313
+    missingComponents:
+    - Destructible
+  - uid: 7390
+    components:
+    - type: Transform
+      pos: 2.5,3.5
+      parent: 7313
+    missingComponents:
+    - Destructible
+  - uid: 7391
+    components:
+    - type: Transform
+      pos: 2.5,4.5
+      parent: 7313
+    missingComponents:
+    - Destructible
+  - uid: 7392
+    components:
+    - type: Transform
+      pos: 2.5,5.5
+      parent: 7313
+    missingComponents:
+    - Destructible
+  - uid: 7393
+    components:
+    - type: Transform
+      pos: 3.5,5.5
+      parent: 7313
+    missingComponents:
+    - Destructible
+  - uid: 7394
+    components:
+    - type: Transform
+      pos: 4.5,5.5
+      parent: 7313
+    missingComponents:
+    - Destructible
+  - uid: 7395
+    components:
+    - type: Transform
+      pos: 5.5,5.5
+      parent: 7313
+    missingComponents:
+    - Destructible
+  - uid: 7396
+    components:
+    - type: Transform
+      pos: 6.5,5.5
+      parent: 7313
+    missingComponents:
+    - Destructible
+  - uid: 7397
+    components:
+    - type: Transform
+      pos: 6.5,4.5
+      parent: 7313
+    missingComponents:
+    - Destructible
+  - uid: 7398
+    components:
+    - type: Transform
+      pos: 6.5,3.5
+      parent: 7313
+    missingComponents:
+    - Destructible
+  - uid: 7399
+    components:
+    - type: Transform
+      pos: 7.5,3.5
+      parent: 7313
+    missingComponents:
+    - Destructible
+  - uid: 7400
+    components:
+    - type: Transform
+      pos: 7.5,2.5
+      parent: 7313
+    missingComponents:
+    - Destructible
+  - uid: 7401
+    components:
+    - type: Transform
+      pos: 8.5,2.5
+      parent: 7313
+    missingComponents:
+    - Destructible
+  - uid: 7402
+    components:
+    - type: Transform
+      pos: 8.5,1.5
+      parent: 7313
+    missingComponents:
+    - Destructible
+  - uid: 7403
+    components:
+    - type: Transform
+      pos: 8.5,0.5
+      parent: 7313
+    missingComponents:
+    - Destructible
+  - uid: 7404
+    components:
+    - type: Transform
+      pos: 8.5,-0.5
+      parent: 7313
+    missingComponents:
+    - Destructible
+  - uid: 7405
+    components:
+    - type: Transform
+      pos: 8.5,-1.5
+      parent: 7313
+    missingComponents:
+    - Destructible
+  - uid: 7406
+    components:
+    - type: Transform
+      pos: 7.5,-1.5
+      parent: 7313
+    missingComponents:
+    - Destructible
+  - uid: 7407
+    components:
+    - type: Transform
+      pos: 6.5,-1.5
+      parent: 7313
+    missingComponents:
+    - Destructible
+  - uid: 7408
+    components:
+    - type: Transform
+      pos: 6.5,-2.5
+      parent: 7313
+    missingComponents:
+    - Destructible
+  - uid: 7409
+    components:
+    - type: Transform
+      pos: 6.5,-3.5
+      parent: 7313
+    missingComponents:
+    - Destructible
+  - uid: 7410
+    components:
+    - type: Transform
+      pos: 6.5,-4.5
+      parent: 7313
+    missingComponents:
+    - Destructible
+  - uid: 7411
+    components:
+    - type: Transform
+      pos: 5.5,-4.5
+      parent: 7313
+    missingComponents:
+    - Destructible
+  - uid: 7412
+    components:
+    - type: Transform
+      pos: 5.5,-5.5
+      parent: 7313
+    missingComponents:
+    - Destructible
+- proto: WeaponRevolverPython
+  entities:
+  - uid: 7414
+    components:
+    - type: Transform
+      pos: 3.520172,4.537789
+      parent: 7313
+- proto: WristwatchGold
+  entities:
+  - uid: 7415
+    components:
+    - type: Transform
+      pos: 2.629547,1.4643633
+      parent: 7313
+...

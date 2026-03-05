@@ -1,0 +1,53 @@
+- type: entity
+  parent: BaseBullet
+  id: BulletColossus
+  name: "..."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Projectile
+    ignoreResistances: true
+    ignoreTargeted: true
+    damage:
+      types:
+        Blunt: 25 #JUDGEMENT!
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+    layers:
+    - state: throwing_knife
+
+- type: entity
+  id: BulletAshDrakeFire
+  name: "how did you see this?"
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Reflective
+  - type: FlyBySound
+  - type: Clickable
+  - type: Physics
+    bodyType: Dynamic
+    linearDamping: 0
+    angularDamping: 0
+  - type: Fixtures
+    fixtures:
+      projectile:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.1,-0.10,0.1,0.30"
+        hard: false
+        mask:
+        - Impassable
+      fly-by:
+        shape: !type:PhysShapeCircle
+          radius: 1.5
+        layer:
+        - Impassable
+        hard: False
+  - type: Projectile
+    damage:
+      types:
+        Blunt: 0
+  - type: TimedSpawner
+    prototypes: ["EffectAshDrakeFire"]
+    intervalSeconds: 0.1
+  - type: TimedDespawn
+    lifetime: 4
