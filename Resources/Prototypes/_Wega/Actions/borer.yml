@@ -8,6 +8,9 @@
     icon: { sprite: _Wega/Interface/borer.rsi, state: "infection" }
   - type: EntityTargetAction
     canTargetSelf: false
+    whitelist:
+      components:
+      - MobState
     event: !type:InfectionBorerEvent  
 
 - type: entity
