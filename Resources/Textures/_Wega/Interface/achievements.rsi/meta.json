@@ -1,12 +1,15 @@
 {
     "version": 1,
 	"license": "CC-BY-3.0",
-	"copyright": "aken from tgstation at https://github.com/tgstation/tgstation",
+	"copyright": "Taken from tgstation at https://github.com/tgstation/tgstation, locked & bloodcult created by svarshiksatanist (414799795463651332)",
 	"size": {
 		"x": 76,
 		"y": 76
 	},
 	"states": [
+		{
+			"name": "locked"
+		},
 		{
 			"name": "firstboss"
 		},
@@ -27,6 +30,9 @@
 		},
 		{
 			"name": "miner"
+		},
+		{
+			"name": "bloodcult"
 		}
 	]
 }

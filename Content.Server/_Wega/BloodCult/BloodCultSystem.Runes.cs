@@ -991,5 +991,5 @@ public sealed partial class BloodCultSystem
             return;
 
         QueueDel(uid);
-	}
+    }
 }

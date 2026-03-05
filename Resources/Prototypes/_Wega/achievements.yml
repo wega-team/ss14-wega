@@ -48,3 +48,10 @@
   key: BubblegumBoss
   icon: { sprite: _Wega/Interface/achievements.rsi, state: bbgum }
 #endregion Boss Block
+
+- type: achievement
+  id: BloodCult
+  name: achievements-bloodcult-name
+  description: achievements-bloodcult-desc
+  key: BloodCult
+  icon: { sprite: _Wega/Interface/achievements.rsi, state: bloodcult }

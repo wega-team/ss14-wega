@@ -133,3 +133,14 @@
     - ClothingHeadHatNewYearWega
   groupBy: "weganewyearhats"
 #endregion
+
+#region Achievements
+- type: loadout
+  id: ToyBloodDagger
+  storage:
+    back:
+    - ToyBloodDagger
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: BloodCultAchievement
+#endregion

@@ -23,4 +23,5 @@ public enum AchievementsEnum : byte
     ColossusBoss = 5,
     AshDrakeBoss = 6,
     BubblegumBoss = 7,
+    BloodCult = 11,
 }

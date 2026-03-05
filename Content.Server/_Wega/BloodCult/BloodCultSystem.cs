@@ -1,7 +1,6 @@
 using System.Linq;
 using System.Numerics;
 using Content.Server.Audio;
-using Content.Server.Body.Systems;
 using Content.Server.GameTicking.Rules;
 using Content.Server.RoundEnd;
 using Content.Shared.Actions;
@@ -43,7 +42,6 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
 {
     [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly BloodCultRuleSystem _bloodCult = default!;
-    [Dependency] private readonly BodySystem _body = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
@@ -252,7 +250,7 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
     private void HandleRuneInteraction(AfterInteractEvent args)
     {
         var user = args.User;
-		var target = args.Target!.Value;
+        var target = args.Target!.Value;
         _doAfterSystem.TryStartDoAfter(new DoAfterArgs(EntityManager, user, TimeSpan.FromSeconds(4f), new BloodRuneCleaningDoAfterEvent(), user)
         {
             Target = target,
