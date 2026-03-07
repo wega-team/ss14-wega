@@ -47,3 +47,4 @@
     node: superpotatobattery
   - type: BatterySelfRecharger
     autoRechargeRate: 12
+    autoRechargePauseTime: 10
