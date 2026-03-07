@@ -9,6 +9,27 @@
   "states": [
 	{
       "name": "kitchen"
+    },
+	{
+      "name": "icon-borg"
+	},
+	{
+      "name": "iconmedical"
+    },
+	{
+      "name": "generic_materials"
+    },
+	{
+      "name": "musical-icon"
+    },
+	{
+      "name": "cabel-icon"
+    },
+	{
+      "name": "generic_materials_cabel"
+    },
+	{
+      "name": "scie-icon"
     }
   ]
 }

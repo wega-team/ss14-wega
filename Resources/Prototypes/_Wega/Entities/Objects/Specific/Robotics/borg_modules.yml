@@ -126,8 +126,22 @@
         emptyRepresentative: AnomalyCoreBluespaceInert
         emptyLabel: borg-slot-anomaly-core
         whitelist:
-          tags:
+          components:
           - AnomalyCore
+    - hand:
+        emptyRepresentative: ConstrukAndCabel
+        emptyLabel: borg-slot-construction-empty
+        whitelist:
+          tags:
+          - ConstructionMaterial
+          - CableCoil
+    - hand:
+        emptyRepresentative: ScientistIcon # Corvax-Wega-Robot
+        emptyLabel: borg-slot-diski-empty
+        whitelist:
+          components:
+          - ResearchDisk
+          - TechnologyDisk
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: adv-anomaly-module }
 
@@ -152,13 +166,16 @@
           tags:
           - SlimeRND
     - item: BorgFireExtinguisher  
-    - item: CombatKnife
+    - item: KitchenKnife
     - hand:
         emptyRepresentative: BorgIconKitchenIcon
         emptyLabel: borg-slot-food-empty
         whitelist:
           components:
           - Edible
+        blacklist:
+          components:
+          - Clothing
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: slime-module }
     
@@ -222,7 +239,7 @@
           - BorgHead
           - BorgTorso
     - hand:
-        emptyRepresentative: Flash
+        emptyRepresentative: BorgIcon
         emptyLabel: borg-slot-components-empty
         whitelist:
           components:
@@ -242,6 +259,12 @@
         whitelist:
           components:
           - BorgModule
+    - hand:
+        emptyRepresentative: LeftArmSyntheticPry
+        emptyLabel: borg-slot-bodypart-empty
+        whitelist:
+          tags:
+          - BaseBodyPart
     - hand:
         emptyRepresentative: PowerCellSmall
         emptyLabel: borg-slot-powercell-empty
@@ -270,7 +293,7 @@
     - item: Brutepack
       hand:
         emptyLabel: borg-slot-topicals-empty
-        emptyRepresentative: Brutepack
+        emptyRepresentative: MedicalIcon
         whitelist:
           components:
           - Healing
@@ -372,6 +395,8 @@
           tags:
           - Ore
           - ArtifactFragment
+          - MagmiteAlloy
+          - Gems 
     - item: BorgOreBag
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: pickaxe-common-module }
@@ -540,21 +565,21 @@
     - item: SynthesizerInstrument
       hand:
         emptyLabel: borg-slot-instruments-empty
-        emptyRepresentative: SynthesizerInstrument
+        emptyRepresentative: MusicIcon
         whitelist:
           components:
           - Instrument
     - item: ElectricGuitarInstrument
       hand:
         emptyLabel: borg-slot-instruments-empty
-        emptyRepresentative: ElectricGuitarInstrument
+        emptyRepresentative: MusicIcon
         whitelist:
           components:
           - Instrument
     - item: SaxophoneInstrument
       hand:
         emptyLabel: borg-slot-instruments-empty
-        emptyRepresentative: SaxophoneInstrument
+        emptyRepresentative: MusicIcon
         whitelist:
           components:
           - Instrument
@@ -930,6 +955,8 @@
           tags:
           - Ore
           - ArtifactFragment
+          - MagmiteAlloy
+          - Gems 
     - item: BorgOreBagOfHolding
     - item: BorgOreBagOfHolding
   - type: BorgModuleIcon
@@ -1052,6 +1079,9 @@
         whitelist:
           components:
           - Edible
+        blacklist:
+          components:
+          - Clothing
     - item: BorgDrinkSolutionWater
       hand:
         emptyLabel: borg-slot-drinks-empty
@@ -1225,7 +1255,6 @@
         emptyLabel: borg-slot-construction-empty
         whitelist:
           tags:
-          - ConstructionMaterial
           - CableCoil
     - hand:
         emptyRepresentative: SpaceHeaterFlatpack
@@ -1237,7 +1266,7 @@
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: construction-module }
 
 - type: entity
-  parent: [ BaseXenoborgModuleHeavy, BaseProviderBorgModule, BaseXenoborgContraband ]
+  parent: [ BaseXenoborgModuleEngi, BaseProviderBorgModule, BaseXenoborgContraband ]
   id: XenoborgHoloprojector
   name:  holoprojector xenoborg module
   description: Module with a laser gun.
@@ -1245,7 +1274,7 @@
   - type: Sprite
     sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
     layers:
-    - state: xenoborg_heavy
+    - state: xenoborg_engi
     - state: icon-xenoborg-holowall
   - type: ItemBorgModule
     hands:
@@ -1256,7 +1285,7 @@
         whitelist:
           tags:
           - Nanopast
-    - item: BorgGeneratorNanopast
+    - item: BorgGeneratorNanopastXenoborg
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: xfield-module }
 
@@ -1313,3 +1342,21 @@
     - item: RemoteSignallerAdvanced
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-tool-module }
+    
+- type: entity
+  parent: [ BaseXenoborgModuleStealth, BaseProviderBorgModule, BaseXenoborgContraband ]
+  id: XenoborgModuleEMP
+  name: emp xenoborg module
+  description: Module with a self-refilling nocturine hypo.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: xenoborg_stealth
+    - state: icon-emp
+  - type: ItemBorgModule
+    hands:
+    - item: WeaponIonCarabine
+    - item: XenoborgHoloprojectorEMPTrap
+  - type: BorgModuleIcon
+    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: emp-module }

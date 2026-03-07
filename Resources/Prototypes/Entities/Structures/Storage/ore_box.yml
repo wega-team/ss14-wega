@@ -58,6 +58,11 @@
     whitelist:
       tags:
       - Ore
+      # Corvax-Wega-Start
+      - ArtifactFragment
+      - MagmiteAlloy
+      - Gems 
+      # Corvax-Wega-end
   - type: UserInterface
     interfaces:
       enum.StorageUiKey.Key:

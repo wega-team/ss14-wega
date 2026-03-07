@@ -403,3 +403,9 @@
   
 - type: Tag
   id: AnomalyCore
+
+- type: Tag
+  id: BorgScience
+
+- type: Tag
+  id: DocumentBorg

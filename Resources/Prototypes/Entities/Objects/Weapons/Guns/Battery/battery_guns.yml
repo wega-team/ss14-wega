@@ -350,6 +350,10 @@
     tags:
     - Sidearm
     - LaserWeapon
+# Corvax-Wega-gun-start
+  - type: EmpResistance
+    strengthMultiplier: 0
+# Corvax-Wega-gun-end
 
 - type: entity
   name: pulse carbine
@@ -393,6 +397,10 @@
   - type: Battery
     maxCharge: 5000
     startingCharge: 5000
+# Corvax-Wega-gun-start
+  - type: EmpResistance
+    strengthMultiplier: 0
+# Corvax-Wega-gun-end
 
 - type: entity
   name: pulse rifle
@@ -434,6 +442,10 @@
   - type: Battery
     maxCharge: 40000
     startingCharge: 40000
+# Corvax-Wega-gun-start
+  - type: EmpResistance
+    strengthMultiplier: 0
+# Corvax-Wega-gun-end
 
 - type: entity
   name: laser cannon

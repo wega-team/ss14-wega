@@ -312,6 +312,7 @@
     - BorgLimbsStatic
     dynamicPacks:
     - Robotics
+    - ScienceReach # Corvax-Wega-Edit
     - BorgModules
     - MechParts
     - MechEquipment
@@ -400,6 +401,7 @@
     - SecurityWeapons
     - SecurityDisablers
     - ImplantSB # Corvax-Wega-Edit
+    - ScienceReach # Corvax-Wega-Edit
   - type: EmagLatheRecipes
     emagStaticPacks:
     - SyndicateAmmoStatic

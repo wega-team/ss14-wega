@@ -117,7 +117,7 @@
       heldPrefix: riot_laser
     # Corvax-Wega-Add-start
     - type: Reflect
-      reflectProb: 0.4
+      reflectProb: 0.25
       reflects:
         - Energy
     # Corvax-Wega-Add-end
