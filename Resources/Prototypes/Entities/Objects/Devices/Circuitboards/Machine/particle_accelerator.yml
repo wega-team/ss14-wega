@@ -55,7 +55,7 @@
     - type: Sprite
       state: engineering
     - type: MachineBoard
-      prototype: ParticleAcceleratorEmitterStarboardUnfinished
+      prototype: ParticleAcceleratorEmitterPortUnfinished # Corvax-Wega-PA-Rotate
       stackRequirements:
         Glass: 5
         Steel: 5
@@ -83,7 +83,7 @@
     - type: Sprite
       state: engineering
     - type: MachineBoard
-      prototype: ParticleAcceleratorEmitterPortUnfinished
+      prototype: ParticleAcceleratorEmitterStarboardUnfinished # Corvax-Wega-PA-Rotate
       stackRequirements:
         Glass: 5
         Steel: 5
