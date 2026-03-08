@@ -3,7 +3,7 @@
   id: MobRandomServiceCorpse
   suffix: Dead, Service
   components:
-  - type: Loadout
+  - type: ForceLoadout # Corvax-Wega-Force-Loadout
     prototypes:
       - HoPGear
       - ClownGear
@@ -21,7 +21,7 @@
   id: MobRandomEngineerCorpse
   suffix: Dead, Engineer
   components:
-  - type: Loadout
+  - type: ForceLoadout # Corvax-Wega-Force-Loadout
     prototypes:
     - TechnicalAssistantGear
     - AtmosphericTechnicianGear
@@ -32,7 +32,7 @@
   id: MobRandomCargoCorpse
   suffix: Dead, Cargo
   components:
-  - type: Loadout
+  - type: ForceLoadout # Corvax-Wega-Force-Loadout
     prototypes:
     - CargoTechGear
     - SalvageSpecialistGear
@@ -42,7 +42,7 @@
   id: MobRandomMedicCorpse
   suffix: Dead, Medic
   components:
-  - type: Loadout
+  - type: ForceLoadout # Corvax-Wega-Force-Loadout
     prototypes:
     - MedicalInternGear
     - PsychologistGear
@@ -54,7 +54,7 @@
   id: MobRandomScienceCorpse
   suffix: Dead, Science
   components:
-  - type: Loadout
+  - type: ForceLoadout # Corvax-Wega-Force-Loadout
     prototypes:
     - ResearchAssistantGear
     - ScientistGear
@@ -64,7 +64,7 @@
   id: MobRandomSecurityCorpse
   suffix: Dead, Security
   components:
-  - type: Loadout
+  - type: ForceLoadout # Corvax-Wega-Force-Loadout
     prototypes:
     - SecurityCadetGear
     - SecurityOfficerGear
@@ -76,7 +76,7 @@
   id: MobRandomCommandCorpse
   suffix: Dead, Command
   components:
-  - type: Loadout
+  - type: ForceLoadout # Corvax-Wega-Force-Loadout
     prototypes:
     - HoPGear
     - CentcommGear
