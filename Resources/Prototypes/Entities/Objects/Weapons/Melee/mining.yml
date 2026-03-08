@@ -218,6 +218,12 @@
     # - state: icon-lit
     #   shader: unshaded
     #   visible: false
+  - type: Tool
+    qualities:
+      - Slicing
+      - Screwing
+    useSound:
+      path: /Audio/Items/Culinary/chop.ogg
     # Corvax-Wega-Lavaland-Edit-end
   - type: MeleeWeapon
     autoAttack: true

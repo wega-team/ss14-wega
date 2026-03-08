@@ -113,7 +113,7 @@
       injector:
         maxVol: 5
         reagents:
-        - ReagentId: Impedrezene
+        - ReagentId: ImpedrezeneNoDamage
           Quantity: 5
 
 - type: entity
