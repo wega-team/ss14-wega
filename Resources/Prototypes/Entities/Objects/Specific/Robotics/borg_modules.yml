@@ -880,11 +880,14 @@
     # Corvax-Wega-Robot-Start
     # - item: BorgFireExtinguisher
     - hand:
-        emptyLabel: borg-slot-jetpack-empty
-        emptyRepresentative: JetpackMiningFilled
+        emptyLabel: borg-slot-jetpack-tank-empty
+        emptyRepresentative: BallonIcon
         whitelist:
           components:
-          - Jetpack
+          - GasTank
+        blacklist:
+          components:
+          - Magboots
     # Corvax-Wega-Robot-end
     - item: BorgHandheldGPSBasic
     - item: GasAnalyzer

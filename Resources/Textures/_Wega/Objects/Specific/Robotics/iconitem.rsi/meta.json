@@ -14,7 +14,7 @@
       "name": "icon-borg"
 	},
 	{
-      "name": "iconmedical"
+      "name": "icon-medical"
     },
 	{
       "name": "generic_materials"
@@ -27,6 +27,9 @@
     },
 	{
       "name": "generic_materials_cabel"
+    },
+	{
+      "name": "ballon-icon"
     },
 	{
       "name": "scie-icon"

@@ -107,6 +107,7 @@ borg-slot-ingredient-empty = Ингредиенты
 borg-slot-meat-empty = Мясо и яйца
 borg-slot-botany-empty = Фрукты и овощи
 borg-slot-jetpack-empty = Джетпак
+borg-slot-jetpack-tank-empty = Джет и баллоны
 borg-slot-table-empty = Каталка
 borg-slot-bodybag-empty = Мешок для тела
 borg-slot-artefact-empty = Артефакт

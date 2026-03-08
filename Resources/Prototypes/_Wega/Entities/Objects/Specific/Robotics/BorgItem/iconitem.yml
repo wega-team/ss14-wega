@@ -54,7 +54,7 @@
   components:
   - type: Sprite
     sprite: _Wega/Objects/Specific/Robotics/iconitem.rsi
-    state: iconmedical
+    state: icon-medical
 
 - type: entity
   parent: BaseItem
@@ -99,3 +99,14 @@
   - type: Sprite
     sprite: _Wega/Objects/Specific/Robotics/iconitem.rsi
     state: scie-icon
+
+- type: entity
+  parent: BaseItem
+  id: BallonIcon
+  name: BallonIcon
+  categories: [ HideSpawnMenu ]
+  description: BorgIconRollerBed
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/iconitem.rsi
+    state: ballon-icon
