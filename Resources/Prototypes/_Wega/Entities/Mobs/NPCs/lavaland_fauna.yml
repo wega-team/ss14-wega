@@ -321,7 +321,7 @@
   components:
   - type: HTN
     rootTask:
-      task: SimpleRangedHostileCompound
+      task: WatchersBehaviorCompound
     blackboard:
       VisionRadius: !type:Single
         2
