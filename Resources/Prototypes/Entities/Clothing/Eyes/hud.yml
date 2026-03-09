@@ -77,6 +77,10 @@
   - type: Clothing
     sprite: Clothing/Eyes/Hud/command.rsi
   - type: ShowJobIcons
+# Corvax-Wega-start
+  - type: ShowMindShieldIcons
+  - type: ShowCriminalRecordIcons
+# Corvax-Wega-End
   - type: Tag
     tags:
     - PetWearable

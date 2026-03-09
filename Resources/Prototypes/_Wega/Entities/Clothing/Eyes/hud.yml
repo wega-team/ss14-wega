@@ -26,3 +26,29 @@
     tags:
     - PetWearable
     - WhitelistChameleon
+
+- type: entity
+  parent: [ClothingEyesBase, ShowSecurityIcons, BaseCentcommContraband]
+  id: ClothingERTHud
+  name: ert hud
+  description: Right now we can watching, how sec bite a clown.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Eyes/ert_hud.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Eyes/ert_hud.rsi
+  - type: EyeProtection
+  - type: ShowMindShieldIcons
+  - type: ShowCriminalRecordIcons
+  - type: ShowJobIcons
+  - type: SolutionScanner
+  - type: Tag
+    tags:
+    - PetWearable
+    - WhitelistChameleon
+  - type: ShowHealthBars
+    damageContainers:
+    - Inorganic
+    - Silicon
+    - Android #Corvax-Wega-android-health-display
+    - Biological

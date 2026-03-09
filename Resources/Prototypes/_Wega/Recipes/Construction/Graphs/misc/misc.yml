@@ -1,0 +1,43 @@
+- type: constructionGraph
+  id: BlueSheild
+  start: start
+  graph:
+    - node: start
+      entity: BrokenBlueSheildSheild
+      edges:
+      - to: wiredapron
+        steps:
+        - material: Cable
+          amount: 15
+          doAfter: 10
+    - node: wiredapron
+      entity: BrokenBlueSheildSheild
+      edges:
+      - to: bluesheildfinished
+        steps:
+        - tool: Pulsing
+          doAfter: 20     
+    - node: bluesheildfinished
+      entity: BlueSheildSheild
+      
+- type: constructionGraph
+  id: EnergySheild
+  start: start
+  graph:
+    - node: start
+      entity: BrokenEnergyShieldWega
+      edges:
+      - to: wiredapron
+        steps:
+        - material: Cable
+          amount: 15
+          doAfter: 10
+    - node: wiredapron
+      entity: BrokenEnergyShieldWega
+      edges:
+      - to: bluesheildfinished
+        steps:
+        - tool: Pulsing
+          doAfter: 20     
+    - node: bluesheildfinished
+      entity: EnergyShield

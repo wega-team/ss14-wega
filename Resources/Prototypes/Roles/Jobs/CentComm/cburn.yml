@@ -21,8 +21,8 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitColorBrown
     back: ClothingBackpackDuffelCBURN
-    mask: ClothingMaskGasERT
-    eyes: ClothingEyesGlassesSecurity
+    mask: ClothingMaskGasERT # Corvax-Wega-ERT
+    eyes: ClothingERTHud  # Corvax-Wega-ERT
     ears: ClothingHeadsetAltCentCom
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitCBURN
