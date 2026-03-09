@@ -1805,7 +1805,7 @@
           - ConstructionMaterial
     - item: XenoborgMaterialBag
     - item: PinpointerMothership
-    - item: HandheldGPSBasic
+    - item: BorgHandheldGPSBasic # Corvax-Wega-add
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-basic-module }
 
@@ -1950,7 +1950,7 @@
     - state: icon-xenoborg-space-movement
   - type: ItemBorgModule
     hands:
-    - item: HandheldGPSBasic
+    - item: BorgHandheldGPSBasic # Corvax-Wega-add
     - item: HandHeldMassScannerBorg
     - item: PinpointerMothership
     - item: HandheldStationMapUnpowered
