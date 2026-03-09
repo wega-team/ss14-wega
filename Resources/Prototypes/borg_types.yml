@@ -137,6 +137,7 @@
   - type: RadarConsole
     followEntity: true
   - type: HandheldGPS
+    gPSName : Шахтёрский киборг
   - type: MagbootsImplant
 # Corvax-Wega-end
 
