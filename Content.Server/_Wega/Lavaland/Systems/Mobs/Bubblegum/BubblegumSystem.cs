@@ -251,6 +251,14 @@ public sealed partial class BubblegumSystem : EntitySystem
         var centerDashTarget = GetTileCenter(mapUid, dashTarget);
         var markerCoords = new EntityCoordinates(mapUid, centerDashTarget);
 
+        if (!IsValidSpawnPosition(markerCoords))
+        {
+            var safeCoords = FindSafePositionNear(ent, markerCoords);
+            if (safeCoords == null)
+                return;
+            markerCoords = safeCoords.Value;
+        }
+
         Spawn(ent.Comp.DashMarker, markerCoords);
 
         PerformDash(ent, markerCoords, dashDamage, moveSpeed, stepIndex == 2,
@@ -318,7 +326,20 @@ public sealed partial class BubblegumSystem : EntitySystem
         }
 
         var targetCoords = Transform(target).Coordinates;
-        Spawn(ent.Comp.DashMarker, targetCoords);
+
+        var markerCoords = targetCoords;
+        if (!IsValidSpawnPosition(markerCoords))
+        {
+            var safeCoords = FindSafePositionNear(ent, markerCoords);
+            if (safeCoords == null)
+            {
+                ContinueToNextIteration(ent, target, mapUid, args, iteration);
+                return;
+            }
+            markerCoords = safeCoords.Value;
+        }
+
+        Spawn(ent.Comp.DashMarker, markerCoords);
 
         var totalEntities = args.IllusionCount + 1;
         var positions = GetCircularPositions(targetCoords, mapUid, totalEntities, args.PlacementRadius);
@@ -448,6 +469,14 @@ public sealed partial class BubblegumSystem : EntitySystem
         if (diveCoords == null)
             return;
 
+        if (!IsValidSpawnPosition(diveCoords.Value))
+        {
+            var safeCoords = FindSafePositionNear(ent, diveCoords.Value);
+            if (safeCoords == null)
+                return;
+            diveCoords = safeCoords;
+        }
+
         Timer.Spawn(TimeSpan.FromSeconds(args.PreDiveDelay), () =>
         {
             if (!Exists(ent.Owner))
@@ -513,7 +542,20 @@ public sealed partial class BubblegumSystem : EntitySystem
             return;
         }
 
-        Spawn(ent.Comp.DashMarker, targetCoords);
+        var markerCoords = targetCoords;
+        if (!IsValidSpawnPosition(markerCoords))
+        {
+            var safeCoords = FindSafePositionNear(ent, markerCoords);
+            if (safeCoords == null)
+            {
+                _npc.WakeNPC(ent.Owner);
+                SetHTNTarget(ent, target);
+                return;
+            }
+            markerCoords = safeCoords.Value;
+        }
+
+        Spawn(ent.Comp.DashMarker, markerCoords);
 
         const int totalEntities = 5;
         var positions = GetCircularPositions(targetCoords, mapUid.Value, totalEntities, args.PlacementRadius);
@@ -583,7 +625,7 @@ public sealed partial class BubblegumSystem : EntitySystem
         for (int wave = 0; wave < 5; wave++)
         {
             var currentWave = wave;
-            var waveDelay = wave * 2.5f;
+            var waveDelay = wave * 2.3f;
 
             Timer.Spawn(TimeSpan.FromSeconds(waveDelay), () =>
             {
@@ -613,6 +655,18 @@ public sealed partial class BubblegumSystem : EntitySystem
 
         var bossMarker = GenerateRandomMarker(target, mapUid.Value, args.PlacementRadius);
         var illusionMarkers = new List<EntityCoordinates>();
+
+        if (!IsValidSpawnPosition(bossMarker))
+        {
+            var safeCoords = FindSafePositionNear(ent, bossMarker);
+            if (safeCoords == null)
+            {
+                _npc.WakeNPC(ent.Owner);
+                SetHTNTarget(ent, target);
+                return;
+            }
+            bossMarker = safeCoords.Value;
+        }
 
         Spawn(ent.Comp.DashMarker, bossMarker);
         var illusions = SpawnChaoticIllusions(ent, target, mapUid.Value, args, illusionMarkers);
@@ -674,6 +728,15 @@ public sealed partial class BubblegumSystem : EntitySystem
         for (int i = 0; i < args.IllusionCount; i++)
         {
             var marker = GenerateRandomMarker(target, mapUid, args.PlacementRadius);
+
+            if (!IsValidSpawnPosition(marker))
+            {
+                var safeCoords = FindValidPositionNear(marker, args.PlacementRadius);
+                if (safeCoords == null)
+                    continue;
+                marker = safeCoords.Value;
+            }
+
             illusionMarkers.Add(marker);
 
             Spawn(ent.Comp.DashMarker, marker);
@@ -735,6 +798,12 @@ public sealed partial class BubblegumSystem : EntitySystem
     private void PerformDash(EntityUid uid, EntityCoordinates target, DamageSpecifier damage,
         float moveSpeed, bool isLastDash, Action? onComplete = null)
     {
+        if (!IsValidSpawnPosition(target))
+        {
+            onComplete?.Invoke();
+            return;
+        }
+
         var startPos = _transform.GetWorldPosition(uid);
         var targetPos = target.Position;
 
@@ -806,6 +875,13 @@ public sealed partial class BubblegumSystem : EntitySystem
             var tileCenter = GetTileCenter(mapUid, currentPos);
             var currentCoords = new EntityCoordinates(mapUid, tileCenter);
 
+            if (!IsValidSpawnPosition(currentCoords))
+            {
+                if (currentStep == stepCounter.TotalSteps)
+                    onComplete?.Invoke();
+                return;
+            }
+
             _transform.SetCoordinates(uid, currentCoords);
             SpawnBloodPool(uid);
 
@@ -871,6 +947,9 @@ public sealed partial class BubblegumSystem : EntitySystem
         if (!TryComp<BubblegumIllusionComponent>(uid, out var illusion))
             return;
 
+        if (!IsValidSpawnPosition(target))
+            return;
+
         illusion.TargetPosition = target;
 
         var startPos = _transform.GetWorldPosition(uid);
@@ -915,6 +994,9 @@ public sealed partial class BubblegumSystem : EntitySystem
             var currentPos = startTile + stepVector;
             var tileCenter = GetTileCenter(mapUid, currentPos);
             var currentCoords = new EntityCoordinates(mapUid, tileCenter);
+
+            if (!IsValidSpawnPosition(currentCoords))
+                return;
 
             _transform.SetCoordinates(uid, currentCoords);
 
@@ -1119,6 +1201,14 @@ public sealed partial class BubblegumSystem : EntitySystem
 
     private void PlaceBossAtPosition(Entity<BubblegumBossComponent> ent, EntityUid target, EntityCoordinates position)
     {
+        if (!IsValidSpawnPosition(position))
+        {
+            var safePos = FindSafePositionNear(ent, position);
+            if (safePos == null)
+                return;
+            position = safePos.Value;
+        }
+
         _transform.SetCoordinates(ent.Owner, position);
 
         if (TryComp<BubblegumBossComponent>(ent.Owner, out var bossComp))
@@ -1133,6 +1223,9 @@ public sealed partial class BubblegumSystem : EntitySystem
         EntityCoordinates targetCoords, EntityCoordinates position, EntProtoId prototype,
         DamageSpecifier damage)
     {
+        if (!IsValidSpawnPosition(position))
+            return null;
+
         var direction = (targetCoords.Position - position.Position).Normalized();
         var illusion = SpawnAttachedTo(prototype, position, rotation: GetDirectionRotation(direction));
         if (TryComp<BubblegumIllusionComponent>(illusion, out var illusionComp))
@@ -1196,7 +1289,7 @@ public sealed partial class BubblegumSystem : EntitySystem
             return FindNearestValidPosition(mapUid, position);
 
         if (!TryComp<MapGridComponent>(gridUid, out var grid))
-            return position;
+            return FindNearestValidPosition(mapUid, position);
 
         var tilePos = _map.CoordinatesToTile(gridUid.Value, grid, coordinates);
         return _map.GridTileToWorld(gridUid.Value, grid, tilePos).Position;
@@ -1231,21 +1324,90 @@ public sealed partial class BubblegumSystem : EntitySystem
         return !_turf.IsTileBlocked(tileRef, CollisionGroup.Impassable);
     }
 
-    private Vector2 FindNearestValidPosition(EntityUid mapUid, Vector2 position)
+    private bool IsValidSpawnPosition(EntityCoordinates coords)
     {
-        for (float radius = 0.5f; radius <= 5f; radius += 0.5f)
+        var mapUid = _transform.GetMap(coords);
+        if (mapUid == null)
+            return false;
+
+        var gridUid = _transform.GetGrid(coords);
+        if (gridUid == null)
+            return false;
+
+        if (!TryComp<MapGridComponent>(gridUid, out var grid))
+            return false;
+
+        var tilePos = _map.CoordinatesToTile(gridUid.Value, grid, coords);
+        if (!_map.TryGetTileRef(gridUid.Value, grid, tilePos, out var tileRef))
+            return false;
+
+        return !_turf.IsTileBlocked(tileRef, CollisionGroup.Impassable);
+    }
+
+    private EntityCoordinates? FindSafePositionNear(Entity<BubblegumBossComponent> ent, EntityCoordinates original)
+    {
+        var mapUid = _transform.GetMap(original);
+        if (mapUid == null)
+            return null;
+
+        for (float radius = 0.5f; radius <= 10f; radius += 0.5f)
         {
             for (int angle = 0; angle < 360; angle += 45)
             {
                 var rad = MathF.PI * angle / 180f;
                 var offset = new Vector2(MathF.Cos(rad), MathF.Sin(rad)) * radius;
-                var testPos = position + offset;
+                var testPos = original.Position + offset;
+                var testCoords = new EntityCoordinates(mapUid.Value, testPos);
 
-                var testCoords = new EntityCoordinates(mapUid, testPos);
-                var testGrid = _transform.GetGrid(testCoords);
+                if (IsValidSpawnPosition(testCoords))
+                    return testCoords;
+            }
+        }
 
-                if (testGrid != null)
-                    return testPos;
+        return FindNearestGridPosition(ent, mapUid.Value);
+    }
+
+    private EntityCoordinates? FindNearestGridPosition(Entity<BubblegumBossComponent> ent, EntityUid mapUid)
+    {
+        var gridQuery = EntityQueryEnumerator<MapGridComponent>();
+        while (gridQuery.MoveNext(out var gridUid, out var grid))
+        {
+            if (Transform(gridUid).ParentUid != mapUid)
+                continue;
+
+            var gridCenter = _transform.GetWorldPosition(gridUid);
+            var coords = new EntityCoordinates(mapUid, gridCenter);
+
+            if (IsValidSpawnPosition(coords))
+                return coords;
+        }
+
+        return null;
+    }
+
+    private Vector2 FindNearestValidPosition(EntityUid mapUid, Vector2 position)
+    {
+        var gridQuery = EntityQueryEnumerator<MapGridComponent>();
+        while (gridQuery.MoveNext(out var gridUid, out _))
+        {
+            if (Transform(gridUid).ParentUid != mapUid)
+                continue;
+
+            var worldBounds = _transform.GetWorldPosition(gridUid);
+            var gridRadius = 10f;
+
+            for (float radius = 0.5f; radius <= gridRadius; radius += 0.5f)
+            {
+                for (int angle = 0; angle < 360; angle += 30)
+                {
+                    var rad = MathF.PI * angle / 180f;
+                    var offset = new Vector2(MathF.Cos(rad), MathF.Sin(rad)) * radius;
+                    var testPos = worldBounds + offset;
+
+                    var testCoords = new EntityCoordinates(mapUid, testPos);
+                    if (CanSpawnAt(testCoords))
+                        return testPos;
+                }
             }
         }
 

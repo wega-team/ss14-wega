@@ -16,6 +16,7 @@ using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Decals;
+using Content.Shared.Gravity;
 using Content.Shared.Lavaland;
 using Content.Shared.Lavaland.Components;
 using Content.Shared.Lavaland.Events;
@@ -55,6 +56,7 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
     [Dependency] private readonly IConfigurationManager _cfg = default!;
     [Dependency] private readonly DamageableSystem _damage = default!;
     [Dependency] private readonly DecalSystem _decals = default!;
+    [Dependency] private readonly SharedGravitySystem _gravity = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly GridFixtureSystem _fixture = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
@@ -348,7 +350,15 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
                     var spawnPos = angle.ToVec() * distance;
 
                     var spawnCoords = new EntityCoordinates(mapUid.Value, spawnPos);
-                    if (_lookup.GetEntitiesInRange<ActorComponent>(spawnCoords, 1f).ToList().Count > 0)
+                    if (_lookup.GetEntitiesInRange<ActorComponent>(spawnCoords, 1f).Any())
+                        continue;
+
+                    var protectedGrids = _lookup.GetEntitiesInRange<GridLavalandWeatherProtectionComponent>(spawnCoords, 10f);
+                    if (protectedGrids.Any())
+                        continue;
+
+                    var avanpost = _lookup.GetEntitiesInRange<LavalandAvanpostComponent>(spawnCoords, 16f);
+                    if (avanpost.Any())
                         continue;
 
                     var effectRoll = _random.Next(100);
@@ -434,8 +444,12 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
         if (mapUid == null)
             return;
 
-        var avanpost = _lookup.GetEntitiesInRange<LavalandAvanpostComponent>(Transform(playerUid).Coordinates, 60f);
+        var avanpost = _lookup.GetEntitiesInRange<LavalandAvanpostComponent>(Transform(playerUid).Coordinates, 48f);
         if (avanpost.Count > 0)
+            return;
+
+        var gridnWeatherProtection = _lookup.GetEntitiesInRange<GridLavalandWeatherProtectionComponent>(Transform(playerUid).Coordinates, 48f);
+        if (gridnWeatherProtection.Count > 0)
             return;
 
         var direction = _random.NextAngle().ToVec();
@@ -647,7 +661,7 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
 
     #region Lavaland Procesing
     /*
-        You've changed 7... times, and now only the best version of you remains.
+        You've changed 8...... times, and now only the best version of you remains.
      */
 
     private void OnStationStartup(Entity<StationLavalandComponent> ent, ref StationPostInitEvent args)
@@ -719,19 +733,28 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
 
         var mixture = new GasMixture(moles, planet.AtmosphereTemperature);
         _atmos.SetMapAtmosphere(mapUid, false, mixture);
+
+        var affectedQuery = EntityQueryEnumerator<TransformComponent, GravityAffectedComponent>();
+        while (affectedQuery.MoveNext(out var uid, out var transform, out var affected))
+        {
+            if (transform.MapUid != mapUid)
+                continue;
+
+            _gravity.RefreshWeightless((uid, affected));
+        }
     }
 
     public void GenerateBuildings(MapId mapId, MapId tempMapId, EntityUid mainGrid, ref HashSet<Box2> worldAABBs)
     {
         var buildings = _proto.EnumeratePrototypes<LavalandBuildingPrototype>();
-        var buildingList = buildings.OrderBy(b => b.IgnoringCounting)
-            .ThenByDescending(b => b.ExactPosition.HasValue)
-            .ThenByDescending(b => b.ApproximatePosition.HasValue)
-            .ThenBy(b => _random.Next()).ToList();
+        var buildingList = buildings.Select(b => new { Building = b, RandomValue = _random.Next() })
+            .OrderByDescending(x => x.Building.IgnoringCounting).ThenByDescending(x => x.Building.ExactPosition.HasValue)
+            .ThenByDescending(x => x.Building.ApproximatePosition.HasValue).ThenBy(x => x.RandomValue)
+            .Select(x => x.Building).ToList();
 
         var maxBuildings = _cfg.GetCVar(WegaCVars.LavalandMaxBuildings);
         var minDistanceBetween = _cfg.GetCVar(WegaCVars.LavalandBuildingsDistance);
-        var occupiedPositions = new List<Vector2>();
+        var occupiedAreas = new List<Box2>();
 
         var spawned = 0;
         foreach (var building in buildingList)
@@ -739,12 +762,13 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
             if (!building.IgnoringCounting && spawned >= maxBuildings)
                 continue;
 
-            if (TryFindValidPosition(building, occupiedPositions, minDistanceBetween, 50, out var position))
+            if (TryFindValidPosition(building, occupiedAreas, minDistanceBetween, 12, out var position))
             {
-                var offsetIndex = occupiedPositions.Count;
+                var offsetIndex = occupiedAreas.Count;
                 SpawnBuilding(mapId, tempMapId, mainGrid, building, 200 * offsetIndex, position, ref worldAABBs);
 
-                occupiedPositions.Add(position);
+                var lastAABB = worldAABBs.Last();
+                occupiedAreas.Add(lastAABB);
                 if (!building.IgnoringCounting)
                     spawned++;
             }
@@ -753,7 +777,7 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
         _map.DeleteMap(tempMapId);
     }
 
-    private bool TryFindValidPosition(LavalandBuildingPrototype proto, List<Vector2> occupiedPositions,
+    private bool TryFindValidPosition(LavalandBuildingPrototype proto, List<Box2> occupiedAreas,
         float minDistance, int maxAttempts, out Vector2 position)
     {
         for (int attempt = 0; attempt < maxAttempts; attempt++)
@@ -781,10 +805,15 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
                 position = angle.ToVec() * distance;
             }
 
+            position = new Vector2((int)position.X, (int)position.Y);
+
+            var tempBounds = new Box2(-4, -4, 4, 4).Translated(position);
+
             bool tooClose = false;
-            foreach (var occupiedPos in occupiedPositions)
+            foreach (var occupiedArea in occupiedAreas)
             {
-                if ((position - occupiedPos).Length() < minDistance)
+                var expandedArea = occupiedArea.Enlarged(minDistance);
+                if (expandedArea.Intersects(tempBounds))
                 {
                     tooClose = true;
                     break;
@@ -822,10 +851,12 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
         else
         {
             _iff.AddIFFFlag(buildingGrid.Value, IFFFlags.HideLabel);
+            EnsureComp<GridLavalandWeatherProtectionComponent>(buildingGrid.Value);
             EnsureComp<ProtectedGridComponent>(buildingGrid.Value);
             EnsureComp<NavMapComponent>(buildingGrid.Value);
 
             _transform.SetCoordinates(buildingGrid.Value, new EntityCoordinates(mainGrid, position));
+            worldAABBs.Add(buildingGrid.Value.Comp.LocalAABB.Translated(alignedPosition));
         }
 
         Log.Debug($"Loaded lavaland building {proto.ID} at {position}");

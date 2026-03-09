@@ -136,6 +136,8 @@
     powerLoad: 250
   - type: Computer
     board: LavalandShuttleComputerCircuitboard
+  - type: AccessReader
+    access: [["LavalandAvanpost"]]
   - type: PointLight
     radius: 1.5
     energy: 1.6
