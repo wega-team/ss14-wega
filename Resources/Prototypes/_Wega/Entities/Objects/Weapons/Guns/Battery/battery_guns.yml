@@ -60,6 +60,8 @@
     - Sidearm
   - type: StealTarget
     stealGroup: WeaponBlueLaserPistol
+  - type: EmpResistance
+    strengthMultiplier: 0
 
 - type: entity
   parent: BaseWeaponBatterySmall
