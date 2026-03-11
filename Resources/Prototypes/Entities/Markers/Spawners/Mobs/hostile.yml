@@ -266,3 +266,18 @@
   - type: ConditionalSpawner
     prototypes:
     - MobWatcherPride
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobClockworkDefender
+  name: clockwork defender Spawner
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: unshaded
+      sprite: _Wega/Mobs/Lavaland/clockwork_defender.rsi
+    - state: base
+  - type: ConditionalSpawner
+    prototypes:
+    - MobClockworkDefender

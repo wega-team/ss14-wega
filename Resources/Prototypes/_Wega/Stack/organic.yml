@@ -18,3 +18,10 @@
   name: stack-dragon-hide
   icon: { sprite: _Wega/Objects/Materials/dragon_hide.rsi, state: dragon_hide }
   spawn: MaterialDragonHide1
+
+- type: stack
+  parent: BaseMediumStack
+  id: ConsecratedIngot
+  name: Consecrated-Ingot
+  icon: { sprite: _Wega/Objects/Materials/dragon_hide.rsi, state: dragon_hide }
+  spawn: MaterialConsecratedIngot1
