@@ -6,6 +6,7 @@
   - Brutepack
   - Ointment
   - Gauze
+  - PouchMedical # Corvax-Wega-Edit
 
 - type: latheRecipePack
   id: BasicChemistryStatic

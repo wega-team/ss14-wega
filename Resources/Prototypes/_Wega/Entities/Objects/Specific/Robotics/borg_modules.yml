@@ -314,6 +314,40 @@
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: medical-common-module }
 
 - type: entity
+  id: BorgModuleFulton
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: fulton module
+  description: Everyone can heal your action!
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: generic
+    - state: icon-fulton
+  - type: ItemBorgModule
+    hands:
+    - item: CargoHoloprojectorField
+    - hand:
+        emptyLabel: borg-slot-beacon-empty
+        emptyRepresentative: FultonBeacon
+        whitelist:
+          components:
+          - ThiefBeacon
+          - FultonBeacon
+    - item: HandheldBeacon
+      hand:
+        emptyLabel: borg-slot-fulton-empty
+        emptyRepresentative: Fulton
+        whitelist:
+          tags:
+          - HandheldBeacon
+          components:
+          - Fulton
+    - item: BoxFulton
+  - type: BorgModuleIcon
+    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: fulton-module }
+
+- type: entity
   id: BorgModuleCommonPen
   parent: [ BaseBorgModule, BaseProviderBorgModule ]
   name: pen common module

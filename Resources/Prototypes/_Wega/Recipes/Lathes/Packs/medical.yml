@@ -3,7 +3,6 @@
   recipes:
   - Hynospray
   - DefibrillatorCompact
-  - PouchMedical
 
 - type: latheRecipePack
   id: ImplantMed

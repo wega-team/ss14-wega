@@ -103,7 +103,6 @@
   - HoloprojectorSecurity
   - WeaponDisablerSMG
   - BorgModuleSheild # Corvax-Wega
-  - PouchSec # Corvax-Wega-Add
 
 - type: technology
   id: ExplosiveTechnology

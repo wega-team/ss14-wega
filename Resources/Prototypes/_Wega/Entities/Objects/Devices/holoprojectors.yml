@@ -34,7 +34,7 @@
   components:
     - type: HolosignProjector
       signProto: SyndiHolosignForcefield
-      chargeUse: 100
+      chargeUse: 240
     - type: Sprite
       sprite: _Wega/Objects/Devices/Holoprojectors/field.rsi
       state: icon
@@ -45,4 +45,30 @@
       slots:
         cell_slot:
           name: power-cell-slot-component-slot-name-default
-          startingItem: PowerCellHigh
+          startingItem: PowerCellMicroreactor
+          disableEject: true
+          swap: false
+
+- type: entity
+  parent: HoloprojectorField
+  id: CargoHoloprojectorField
+  name: holocreate projector
+  description: Creates an impassable forcefield that won't let anything through. Close proximity may or may not cause cancer.
+  components:
+    - type: HolosignProjector
+      signProto: HoloCreate
+      chargeUse: 720
+      anchor: false
+    - type: Sprite
+      sprite: _Wega/Objects/Devices/Holoprojectors/cargo.rsi
+      state: icon
+    - type: Tag
+      tags:
+        - HolofanProjector
+    - type: ItemSlots
+      slots:
+        cell_slot:
+          name: power-cell-slot-component-slot-name-default
+          startingItem: PowerCellMicroreactor
+          disableEject: true
+          swap: false

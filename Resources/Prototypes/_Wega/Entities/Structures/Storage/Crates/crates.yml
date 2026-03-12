@@ -15,3 +15,79 @@
     spread: 90
   - type: RadiationBlockingContainer
     resistance: 2.5
+
+- type: entity
+  parent: [ BaseStructureDynamic, BasePaperLabelableVisualized ]
+  id: HoloCreate
+  name: holo crate
+  description: A large container for items.
+  components:
+  - type: TriggerOnSpawn
+  - type: TimerTrigger
+    delay: 480
+    popup : null
+    examinable : false
+  - type: DamageOnTrigger
+    damage:
+      types:
+        Blunt: 5000
+    keysIn:
+    - timer
+  - type: Animateable
+  - type: Transform
+    noRot: true
+    anchored: false
+  - type: Icon
+    sprite: _Wega/Structures/Storage/Crates/holo.rsi
+    state: icon
+  - type: Sprite
+    noRot: true
+    sprite: _Wega/Structures/Storage/Crates/holo.rsi
+    layers:
+    - state: base
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: closed
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: paper
+      sprite: Structures/Storage/Crates/labels.rsi
+      map: ["enum.PaperLabelVisuals.Layer"]
+  - type: InteractionOutline
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.29"
+        density: 50
+        mask:
+        - CrateMask #this is so they can go under plastic flaps
+        layer:
+        - MachineLayer
+  - type: EntityStorage
+  - type: PlaceableSurface
+    isPlaceable: false # defaults to closed.
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/teleport_arrival.ogg
+  - type: EntityStorageVisuals
+    stateDoorOpen: open
+    stateDoorClosed: closed
+  - type: ContainerContainer
+    containers:
+      entity_storage: !type:Container
+      paper_label: !type:ContainerSlot
+  - type: StaticPrice
+    price: 0
+  - type: RequireProjectileTarget
