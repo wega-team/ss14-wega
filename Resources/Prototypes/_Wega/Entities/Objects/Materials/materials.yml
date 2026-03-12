@@ -134,7 +134,7 @@
   - type: Sprite
     sprite: _Wega/Objects/Materials/consecrated_ingot.rsi
     layers:
-    - state: consecrated
+    - state: consecrated_3
       map: [ "base" ]
   - type: StaticPrice
     price: 0
