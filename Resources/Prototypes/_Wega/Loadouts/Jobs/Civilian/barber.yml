@@ -4,3 +4,33 @@
   equipment:
     outerClothing: ClothingOuterApronBar
   groupBy: "wegaJJ"
+
+- type: loadout
+  id: ClothingUniformJumpsuitBartenderVestGreen
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitBartenderVestGreen
+  groupBy: "wegaJJ"
+
+- type: loadout
+  id: ClothingUniformJumpsuitBartenderVestRed
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitBartenderVestRed
+  groupBy: "wegaJJ"
+
+- type: loadout
+  id: ClothingUniformJumpsuitBartenderVest
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitBartenderVest
+  groupBy: "wegaJJ"
+
+- type: loadout
+  id: ClothingUniformJumpsuitBartenderGreen
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitBartenderGreen
+  groupBy: "wegaJJ"
+
+- type: loadout
+  id: ClothingUniformJumpsuitBartenderRed
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitBartenderRed
+  groupBy: "wegaJJ"

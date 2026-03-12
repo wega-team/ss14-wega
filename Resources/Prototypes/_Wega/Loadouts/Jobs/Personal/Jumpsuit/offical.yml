@@ -1,0 +1,231 @@
+- type: loadout
+  id: ClothingUniformJumpsuitSecBlueOJ
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSecBlue
+  groupBy: "wegaOJ" 
+
+- type: loadout
+  id: ClothingUniformJumpskirtDetectiveGrey
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtDetectiveGrey
+  groupBy: "wegaOJ" 
+
+- type: loadout
+  id: ClothingUniformJumpsuitDetectiveGrey
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitDetectiveGrey
+  groupBy: "wegaOJ" 
+
+- type: loadout
+  id: ClothingUniformJumpskirtDetective
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtDetective
+  groupBy: "wegaOJ" 
+
+- type: loadout
+  id: ClothingUniformJumpsuitDetective
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitDetective
+  groupBy: "wegaOJ" 
+
+- type: loadout
+  id: ClothingUniformJumpskirtLawyerBlue
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtLawyerBlue
+  groupBy: "wegaOJ" 
+
+- type: loadout
+  id: ClothingUniformJumpsuitLawyerBlue
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitLawyerBlue
+  groupBy: "wegaOJ" 
+
+- type: loadout
+  id: ClothingUniformJumpskirtLawyerPurple
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtLawyerPurple
+  groupBy: "wegaOJ" 
+
+- type: loadout
+  id: ClothingUniformJumpsuitLawyerPurple
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitLawyerPurple
+  groupBy: "wegaOJ" 
+  
+- type: loadout
+  id: ClothingUniformJumpskirtLawyerRed
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtLawyerRed
+  groupBy: "wegaOJ" 
+
+- type: loadout
+  id: ClothingUniformJumpsuitLawyerRed
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitLawyerRed
+  groupBy: "wegaOJ" 
+
+- type: loadout
+  id: ClothingUniformJumpskirtLawyerBlack
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtLawyerBlack
+  groupBy: "wegaOJ" 
+
+- type: loadout
+  id: ClothingUniformJumpsuitLawyerBlack
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitLawyerBlack
+  groupBy: "wegaOJ" 
+
+- type: loadout
+  id: ClothingUniformJumpskirtLawyerGood
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtLawyerGood
+  groupBy: "wegaOJ" 
+
+- type: loadout
+  id: ClothingUniformJumpsuitLawyerGood
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitLawyerGood
+  groupBy: "wegaOJ" 
+
+- type: loadout
+  id: ClothingUniformJumpsuitRedVictorianSuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitRedVictorianSuit
+  groupBy: "wegaOJ" 
+
+- type: loadout
+  id: ClothingUniformJumpsuitBlackVictorianSuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitBlackVictorianSuit
+  groupBy: "wegaOJ" 
+
+- type: loadout
+  id: ClothingUniformJumpsuitBarberBrown
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitBarberBrown
+  groupBy: "wegaOJ" 
+
+- type: loadout
+  id: ClothingUniformJumpsuitBarber
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitBarber
+  groupBy: "wegaOJ" 
+
+- type: loadout
+  id: ClothingUniformJumpsuitTuxedo
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitTuxedo
+  groupBy: "wegaOJ" 
+
+- type: loadout
+  id: ClothingUniformJumpsuitTuxedoWhite
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitTuxedoWhite
+  groupBy: "wegaOJ" 
+
+- type: loadout
+  id: ClothingUniformJumpsuitTuxedoRed
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitTuxedoRed
+  groupBy: "wegaOJ" 
+
+- type: loadout
+  id: ClothingUniformJumpsuitTuxedoHell
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitTuxedoHell
+  groupBy: "wegaOJ" 
+
+- type: loadout
+  id: ClothingUniformDressVintage
+  equipment:
+    jumpsuit: ClothingUniformDressVintage
+  groupBy: "wegaOJ" 
+
+- type: loadout
+  id: ClothingUniformTangoDressBlack
+  equipment:
+    jumpsuit: ClothingUniformTangoDressBlack
+  groupBy: "wegaOJ" 
+
+- type: loadout
+  id: ClothingUniformTangoDressWhite
+  equipment:
+    jumpsuit: ClothingUniformTangoDressWhite
+  groupBy: "wegaOJ" 
+
+- type: loadout
+  id: ClothingUniformJumpsuitBlackShirt
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitBlackShirt
+  groupBy: "wegaOJ" 
+
+- type: loadout
+  id: ClothingUniformJumpsuitBlueShirt
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitBlueShirt
+  groupBy: "wegaOJ" 
+
+- type: loadout
+  id: ClothingUniformJumpsuitPurpleShirt
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitPurpleShirt
+  groupBy: "wegaOJ" 
+
+- type: loadout
+  id: ClothingUniformJumpsuitRedShirt
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitRedShirt
+  groupBy: "wegaOJ" 
+
+- type: loadout
+  id: ClothingUniformJumpsuitWhiteShirt
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitWhiteShirt
+  groupBy: "wegaOJ" 
+
+- type: loadout
+  id: ClothingUniformJumpsuitFancyShirt
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitFancyShirt
+  groupBy: "wegaOJ" 
+
+- type: loadout
+  id: ClothingUniformJumpsuitRedPlaidShirt
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitRedPlaidShirt
+  groupBy: "wegaOJ" 
+
+  # - ClothingUniformJumpsuitSecBlueOJ
+  # - ClothingUniformJumpskirtDetectiveGrey
+  # - ClothingUniformJumpsuitDetectiveGrey
+  # - ClothingUniformJumpskirtDetective
+  # - ClothingUniformJumpsuitDetective
+  # - ClothingUniformJumpskirtLawyerBlue
+  # - ClothingUniformJumpsuitLawyerBlue
+  # - ClothingUniformJumpskirtLawyerPurple
+  # - ClothingUniformJumpsuitLawyerPurple
+  # - ClothingUniformJumpskirtLawyerRed
+  # - ClothingUniformJumpsuitLawyerRed
+  # - ClothingUniformJumpskirtLawyerBlack
+  # - ClothingUniformJumpsuitLawyerBlack
+  # - ClothingUniformJumpskirtLawyerGood
+  # - ClothingUniformJumpsuitLawyerGood
+  # - ClothingUniformJumpsuitRedVictorianSuit
+  # - ClothingUniformJumpsuitBlackVictorianSuit
+  # - ClothingUniformJumpsuitBarberBrown
+  # - ClothingUniformJumpsuitBarber
+  # - ClothingUniformJumpsuitTuxedo
+  # - ClothingUniformJumpsuitTuxedoWhite
+  # - ClothingUniformJumpsuitTuxedoRed
+  # - ClothingUniformJumpsuitTuxedoHell
+  # - ClothingUniformDressVintage
+  # - ClothingUniformTangoDressBlack
+  # - ClothingUniformTangoDressWhite
+  # - ClothingUniformJumpsuitBlackShirt
+  # - ClothingUniformJumpsuitBlueShirt
+  # - ClothingUniformJumpsuitPurpleShirt
+  # - ClothingUniformJumpsuitRedShirt
+  # - ClothingUniformJumpsuitWhiteShirt
+  # - ClothingUniformJumpsuitFancyShirt
+  # - ClothingUniformJumpsuitRedPlaidShirt

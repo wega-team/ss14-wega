@@ -26,6 +26,19 @@
   loadouts:
   - SeniorEngineerJumpsuit
   - SeniorEngineerJumpskirt
+  # Corvax-Wega-Sponsors-start
+  - ClothingUniformJumpskirtSexySweater
+  - ClothingUniformJumpskirtMagicDress
+  - ClothingUniformJumpskirtBlackrevealingdress
+  - ClothingUniformJumpskirtRedrevealingdress
+  - ClothingUniformJumpskirtNecklineSweater
+  - ClothingUniformJumpskirtPinkKimano
+  - ClothingUniformJumpskirtBlueKimono
+  - ClothingUniformJumpskirtElegantTacticalmaid
+  - ClothingUniformJumpsuitStylishShirt
+  - ClothingUniformJumpsuitManlyPants
+  - ClothingUniformJumpsuitBeautifulSweater
+  # Corvax-Wega-Sponsors-end
 # Corvax-Wega-add-start
   - JumpsuitColorWhite
   - JumpskirtColorWhite
@@ -69,8 +82,8 @@
   - JumpsuitCasualRed
   - JumpskirtCasualRed
   - JumpsuitCasualGreen
-  - JumpskirtCasualGreen
-  - JumpskirtTurtleneckAquamarine
+  - JumpskirtCasualGreen 
+  - JumpskirtTurtleneckAquamarine   
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
@@ -124,6 +137,24 @@
   - ClothingUniformJumpsuitLawyerBlack
   - ClothingUniformJumpskirtLawyerGood
   - ClothingUniformJumpsuitLawyerGood
+  - ClothingUniformJumpsuitRedVictorianSuit
+  - ClothingUniformJumpsuitBlackVictorianSuit
+  - ClothingUniformJumpsuitBarberBrown
+  - ClothingUniformJumpsuitBarber
+  - ClothingUniformJumpsuitTuxedo
+  - ClothingUniformJumpsuitTuxedoWhite
+  - ClothingUniformJumpsuitTuxedoRed
+  - ClothingUniformJumpsuitTuxedoHell
+  - ClothingUniformDressVintage
+  - ClothingUniformTangoDressBlack
+  - ClothingUniformTangoDressWhite
+  - ClothingUniformJumpsuitBlackShirt
+  - ClothingUniformJumpsuitBlueShirt
+  - ClothingUniformJumpsuitPurpleShirt
+  - ClothingUniformJumpsuitRedShirt
+  - ClothingUniformJumpsuitWhiteShirt
+  - ClothingUniformJumpsuitFancyShirt
+  - ClothingUniformJumpsuitRedPlaidShirt
   - ClothingUniformTopColorWhite
   - ClothingUniformTopColorGrey
   - ClothingUniformTopColorBlack
@@ -220,6 +251,19 @@
   loadouts:
   - SeniorResearcherJumpsuit
   - SeniorResearcherJumpskirt
+  # Corvax-Wega-Sponsors-start
+  - ClothingUniformJumpskirtSexySweater
+  - ClothingUniformJumpskirtMagicDress
+  - ClothingUniformJumpskirtBlackrevealingdress
+  - ClothingUniformJumpskirtRedrevealingdress
+  - ClothingUniformJumpskirtNecklineSweater
+  - ClothingUniformJumpskirtPinkKimano
+  - ClothingUniformJumpskirtBlueKimono
+  - ClothingUniformJumpskirtElegantTacticalmaid
+  - ClothingUniformJumpsuitStylishShirt
+  - ClothingUniformJumpsuitManlyPants
+  - ClothingUniformJumpsuitBeautifulSweater
+  # Corvax-Wega-Sponsors-end
 # Corvax-Wega-add-start
   - JumpsuitColorWhite
   - JumpskirtColorWhite
@@ -263,8 +307,8 @@
   - JumpsuitCasualRed
   - JumpskirtCasualRed
   - JumpsuitCasualGreen
-  - JumpskirtCasualGreen
-  - JumpskirtTurtleneckAquamarine
+  - JumpskirtCasualGreen 
+  - JumpskirtTurtleneckAquamarine   
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
@@ -318,6 +362,24 @@
   - ClothingUniformJumpsuitLawyerBlack
   - ClothingUniformJumpskirtLawyerGood
   - ClothingUniformJumpsuitLawyerGood
+  - ClothingUniformJumpsuitRedVictorianSuit
+  - ClothingUniformJumpsuitBlackVictorianSuit
+  - ClothingUniformJumpsuitBarberBrown
+  - ClothingUniformJumpsuitBarber
+  - ClothingUniformJumpsuitTuxedo
+  - ClothingUniformJumpsuitTuxedoWhite
+  - ClothingUniformJumpsuitTuxedoRed
+  - ClothingUniformJumpsuitTuxedoHell
+  - ClothingUniformDressVintage
+  - ClothingUniformTangoDressBlack
+  - ClothingUniformTangoDressWhite
+  - ClothingUniformJumpsuitBlackShirt
+  - ClothingUniformJumpsuitBlueShirt
+  - ClothingUniformJumpsuitPurpleShirt
+  - ClothingUniformJumpsuitRedShirt
+  - ClothingUniformJumpsuitWhiteShirt
+  - ClothingUniformJumpsuitFancyShirt
+  - ClothingUniformJumpsuitRedPlaidShirt
   - ClothingUniformTopColorWhite
   - ClothingUniformTopColorGrey
   - ClothingUniformTopColorBlack
@@ -424,6 +486,9 @@
   loadouts:
   - JumpsuitPilot
   - JumpskirtPilot
+  # Corvax-Wega-Sponsors-start
+  - ClothingUniformJumpskirtElegantSecurity
+  # Corvax-Wega-Sponsors-end
 # Corvax-Wega-add-start
   - JumpskirtTurtleneckRed
   - JumpsuitTurtleneckRed
@@ -453,6 +518,9 @@
   loadouts:
   - SeniorOfficerJumpsuit
   - SeniorOfficerJumpskirt
+  # Corvax-Wega-Sponsors-start
+  - ClothingUniformJumpskirtElegantSecurity
+  # Corvax-Wega-Sponsors-end
 # Corvax-Wega-add-start
   - JumpskirtTurtleneckRed
   - JumpsuitTurtleneckRed
@@ -519,6 +587,19 @@
   loadouts:
   - SeniorPhysicianJumpsuit
   - SeniorPhysicianJumpskirt
+  # Corvax-Wega-Sponsors-start
+  - ClothingUniformJumpskirtSexySweater
+  - ClothingUniformJumpskirtMagicDress
+  - ClothingUniformJumpskirtBlackrevealingdress
+  - ClothingUniformJumpskirtRedrevealingdress
+  - ClothingUniformJumpskirtNecklineSweater
+  - ClothingUniformJumpskirtPinkKimano
+  - ClothingUniformJumpskirtBlueKimono
+  - ClothingUniformJumpskirtElegantTacticalmaid
+  - ClothingUniformJumpsuitStylishShirt
+  - ClothingUniformJumpsuitManlyPants
+  - ClothingUniformJumpsuitBeautifulSweater
+  # Corvax-Wega-Sponsors-end
 # Corvax-Wega-add-start
   - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
