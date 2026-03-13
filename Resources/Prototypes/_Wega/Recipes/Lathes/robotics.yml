@@ -25,6 +25,11 @@
 
 - type: latheRecipe
   parent: BaseBorgModuleRecipe
+  id: BorgModuleDNA
+  result: BorgModuleDNA
+
+- type: latheRecipe
+  parent: BaseBorgModuleRecipe
   id: BorgModuleCommonMedical
   result: BorgModuleCommonMedical
 
@@ -224,3 +229,15 @@
     Plastic: 300
     Gold: 250
     Plasma: 150
+    
+- type: latheRecipe
+  parent: BaseRoboticsRecipe
+  id: Nanopast1
+  result: Nanopast1
+  completetime: 1.5
+  materials:
+    Steel: 50
+    Plastic: 75
+    Plasma: 50
+    
+ 

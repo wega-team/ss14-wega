@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Numerics;
 using Content.Server.Lavaland.Mobs.Components;
 using Content.Server.NPC.HTN;
@@ -166,18 +167,21 @@ public sealed partial class AshDrakeSystem : EntitySystem
     #region Lava Arena
     private void StartLavaArena(Entity<AshDrakeBossComponent> ent, AshDrakeLavaActionEvent args)
     {
-        _appearance.SetData(ent.Owner, VisualLayers.Enabled, true);
-        EnsureComp<GodmodeComponent>(ent);
-        _npc.SleepNPC(ent.Owner);
-
         var targetWorldPos = _transform.GetWorldPosition(args.Target);
 
         var mapUid = _transform.GetMap(ent.Owner);
         if (mapUid == null)
+            return;
+
+        if (!IsAreaClearForArena(mapUid.Value, targetWorldPos, 6))
         {
-            EndLavaArena(ent, args, false);
+            StartLavaJump(ent, args);
             return;
         }
+
+        _appearance.SetData(ent.Owner, VisualLayers.Enabled, true);
+        EnsureComp<GodmodeComponent>(ent);
+        _npc.SleepNPC(ent.Owner);
 
         var arenaData = new LavaArenaData
         {
@@ -200,6 +204,37 @@ public sealed partial class AshDrakeSystem : EntitySystem
             if (Exists(ent.Owner) && _activeArenas.ContainsKey(ent.Owner))
                 StartArenaPhase(ent);
         });
+    }
+
+    private bool IsAreaClearForArena(EntityUid mapUid, Vector2 centerPos, int arenaSize)
+    {
+        var halfSize = arenaSize / 2;
+        var worldAABB = new Box2(
+            new Vector2(centerPos.X - halfSize, centerPos.Y - halfSize),
+            new Vector2(centerPos.X + halfSize, centerPos.Y + halfSize)
+        );
+
+        for (int x = -halfSize; x <= halfSize; x++)
+        {
+            for (int y = -halfSize; y <= halfSize; y++)
+            {
+                var testPos = centerPos + new Vector2(x, y);
+                if (!IsValidMapPosition(mapUid, testPos))
+                    return false;
+            }
+        }
+        var coordinates = new EntityCoordinates(mapUid, centerPos);
+        var entitiesInArea = _lookup.GetEntitiesInRange(coordinates, halfSize, LookupFlags.Static);
+
+        foreach (var entity in entitiesInArea)
+        {
+            if (_activeArenas.Values.Any(data => data.Walls.Contains(entity)))
+                continue;
+
+            return false;
+        }
+
+        return true;
     }
 
     private void CreateFireWalls(EntityUid mapUid, Vector2 centerPos, int size, EntProtoId wallProto, LavaArenaData arenaData)
@@ -422,7 +457,7 @@ public sealed partial class AshDrakeSystem : EntitySystem
         var distanceFromCenter = Vector2.Distance(targetPos, arenaData.ArenaCenter);
         var arenaRadius = arenaData.ArenaSize / 2f + 0.5f;
 
-        if (distanceFromCenter > arenaRadius)
+        if (arenaData.CurrentPhase < arenaData.TotalPhases && distanceFromCenter > arenaRadius)
         {
             EndLavaArena(drakeUid, arenaData.Args, false);
         }

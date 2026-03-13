@@ -38,6 +38,12 @@
             "name": "xenoborg_heavy"
         },
         {
+            "name": "xenoborg_engi"
+        },
+        {
+            "name": "xenoborg_stealth"
+        },
+        {
             "name": "icon-kinetic"
         },
         {
@@ -114,6 +120,9 @@
         },
         {
             "name": "icon-dna"
+        },
+        {
+            "name": "icon-emp"
         },
         {
             "name": "icon-xenoborg-holowall"

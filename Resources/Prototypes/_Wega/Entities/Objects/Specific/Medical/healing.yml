@@ -652,7 +652,8 @@
   - type: Item
     heldPrefix: morphine
   - type: Healing
-    delay: 1.75
+    delay: 1.25
+    selfHealPenaltyMultiplier: 0
     damageContainers:
       - Android
       - Silicon

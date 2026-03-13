@@ -22,7 +22,7 @@
       entity_storage: !type:NestedSelector
         tableId: FillSuitStorageExplorerSuit
   - type: AccessReader
-    access: [["Salvage"]]
+    access: [["LavalandAvanpost"]]
 
 - type: entityTable
   id: FillSuitStorageExplorerSuit

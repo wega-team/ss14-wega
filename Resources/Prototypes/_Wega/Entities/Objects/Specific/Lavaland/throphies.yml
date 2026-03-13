@@ -78,7 +78,7 @@
     tags: [ CrusherUpgradeWatcher ]
     examineText: crusher-upgrade-examine-text-ice-watcher
   - type: CrusherWatcherWingUpgrade
-    resetsTime: 2.8
+    resetsTime: 2
 
 - type: entity
   parent: BaseTrophyLavaland

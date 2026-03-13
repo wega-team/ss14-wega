@@ -17,3 +17,27 @@
         type: Update
       - !type:ModifyBleed
         amount: 0.5
+        
+- type: reagent
+  id: ImpedrezeneNoDamage
+  name: reagent-name-impedrezene
+  group: Narcotics
+  desc: reagent-desc-impedrezene
+  physicalDesc: reagent-physical-desc-acrid
+  contrabandSeverity: Minor
+  flavor: bitter
+  color: "#215263"
+  metabolisms:
+    Narcotic:
+      effects:
+      - !type:MovementSpeedModifier
+        walkSpeedModifier: 0.5
+        sprintSpeedModifier: 0.5
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectSeeingRainbow
+        time: 10
+        type: Add
+      - !type:Vomit # Vomiting is a symptom of brain damage
+        probability: 0.05
+      - !type:Drunk # Headaches and slurring are major symptoms of brain damage, this is close enough
+        boozePower: 5

@@ -35,11 +35,13 @@
   equipment:
     shoes: ClothingShoesBootsJackBlueFilled
     id: BlueShieldPDA
-    eyes: ClothingEyesGlassesCommand
+    eyes: ClothingERTHud
     ears: ClothingHeadsetAltCommand
+    mask: ClothingMaskGasERTBlueSheild
     belt: ClothingBeltMilitaryWebbingFilled
     gloves: ClothingHandsGlovesCombatBlueShield
     pocket1: WeaponBlueLaserPistol
+    pocket2: BlueSheildSheild
   storage:
     back:
     - MagazinePistol

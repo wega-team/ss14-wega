@@ -1,0 +1,22 @@
+- type: entity
+  parent: CollideFloorTrap
+  id: FloorTrapEMPXenoborg
+  name: EMP floor trap
+  components:
+    - type: Sprite
+      drawdepth: Items
+      sprite: Objects/Misc/landmine.rsi
+      layers:
+      - state: landmine
+      - state: landmine-unshaded
+    - type: TriggerOnCollide
+      fixtureID: floortrap
+      maxTriggers: 1
+    - type: EmpOnTrigger
+      range: 0.5
+      energyConsumption: 1080
+    - type: DeleteOnTrigger
+    - type: Stealth
+      lastVisibility: 0.1
+    - type: TimedDespawn
+      lifetime: 120

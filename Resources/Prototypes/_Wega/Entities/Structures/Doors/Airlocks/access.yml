@@ -7,7 +7,7 @@
     tag: DockLavalandStation
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsExternal ]
+      board: [ DoorElectronicsLavalandAvanpost ]
 
 - type: entity
   parent: AirlockGlassShuttle
@@ -18,7 +18,7 @@
     tag: DockLavalandOutpost
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsExternal ]
+      board: [ DoorElectronicsLavalandAvanpost ]
 
 - type: entity
   parent: AirlockGlassShuttle
@@ -29,7 +29,7 @@
     tag: DockPenalServitudeStation
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsExternal ]
+      board: [ DoorElectronicsLavalandAvanpost ]
 
 - type: entity
   parent: AirlockGlassShuttle
@@ -40,4 +40,22 @@
     tag: DockPenalServitude
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsExternal ]
+      board: [ DoorElectronicsLavalandAvanpost ]
+
+- type: entity
+  parent: AirlockSalvage
+  id: AirlockLavalandAvanpostLocked
+  suffix: Avanpost, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsLavalandAvanpost ]
+
+- type: entity
+  parent: AirlockSalvageGlass
+  id: AirlockLavalandAvanpostGlassLocked
+  suffix: Avanpost, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsLavalandAvanpost ]

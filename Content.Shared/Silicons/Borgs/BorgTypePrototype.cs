@@ -6,6 +6,7 @@ using Content.Shared.Whitelist;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
 using Content.Shared.Corvax.TTS; // Corvax-Wega-tts-borg
+using Content.Shared.Lock; // Corvax-Wega-borg
 
 namespace Content.Shared.Silicons.Borgs;
 
@@ -160,4 +161,11 @@ public sealed partial class BorgTypePrototype : IPrototype
     [DataField]
     public string? VoicePrototypeId { get; set; } = "TrainingRobot";
     // Corvax-TTS-end
+
+    /// Corvax-Wega-Start
+    /// Blacklist Locks LockingWhitelistComponent
+    /// </summary>
+    [DataField]
+    public EntityWhitelist? Blacklist { get; set; }
+	// Corvax-Wega-End
 }

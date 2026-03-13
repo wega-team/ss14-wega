@@ -36,8 +36,8 @@
     layers:
     - state: superpotato
   - type: Battery
-    maxCharge: 1800
-    startingCharge: 1800
+    maxCharge: 140
+    startingCharge: 140
   - type: Tag
     tags:
       - PotatoBattery
@@ -47,3 +47,4 @@
     node: superpotatobattery
   - type: BatterySelfRecharger
     autoRechargeRate: 12
+    autoRechargePauseTime: 10

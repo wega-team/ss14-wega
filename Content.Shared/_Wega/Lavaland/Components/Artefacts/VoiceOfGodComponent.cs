@@ -5,8 +5,14 @@ namespace Content.Shared.Lavaland.Artefacts.Components;
 [RegisterComponent]
 public sealed partial class VoiceOfGodComponent : Component
 {
+    [DataField]
+    public float GlobalCooldown = 30f;
+
     [ViewVariables(VVAccess.ReadOnly)]
     public Dictionary<string, TimeSpan> CommandCooldowns = new();
+
+    [ViewVariables(VVAccess.ReadOnly)]
+    public TimeSpan LastCommandUse = TimeSpan.Zero;
 }
 
 [RegisterComponent]

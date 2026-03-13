@@ -467,21 +467,21 @@
     hands:
     - item: CableApcStack10
       hand:
-        emptyRepresentative: CableApcStack10
+        emptyRepresentative: CabelIcon # Corvax-Wega-Robot
         emptyLabel: borg-slot-cables-empty
         whitelist:
           tags:
           - CableCoil
     - item: CableMVStack10
       hand:
-        emptyRepresentative: CableMVStack10
+        emptyRepresentative: CabelIcon # Corvax-Wega-Robot
         emptyLabel: borg-slot-cables-empty
         whitelist:
           tags:
           - CableCoil
     - item: CableHVStack10
       hand:
-        emptyRepresentative: CableHVStack10
+        emptyRepresentative: CabelIcon # Corvax-Wega-Robot
         emptyLabel: borg-slot-cables-empty
         whitelist:
           tags:
@@ -595,6 +595,13 @@
     hands:
     - item: AppraisalTool
     # Corvax-Wega-Robot-Start
+    - item: DocumentBorg
+      hand:
+        emptyLabel: borg-slot-cargodoc-empty
+        emptyRepresentative: DocumentBorg
+        whitelist:
+          tags:
+          - DocumentBorg
     - hand:
         emptyLabel: borg-slot-documents-empty
         emptyRepresentative: Paper
@@ -623,11 +630,17 @@
           - Delivery
     - item: BoxFolderYellowEmpty
     # - item: Pen
-        # - item: HandLabeler
+    - item: HandLabeler
         # - item: RubberStampApproved
         # - item: RubberStampDenied
         # - item: RadioHandheld
     - item: MailBagBorg
+    - hand:
+        emptyLabel: borg-slot-cash-empty
+        emptyRepresentative: SpaceCash
+        whitelist:
+          components:
+          - Cash
 # Corvax-Wega-Robot-End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: appraisal-module }
@@ -654,6 +667,8 @@
           tags:
           - Ore
           - ArtifactFragment
+          - MagmiteAlloy
+          - Gems 
     # Corvax-Wega-Robot-end
     - item: BorgOreBag
   - type: BorgModuleIcon
@@ -682,6 +697,8 @@
           tags:
           - Ore
           - ArtifactFragment
+          - MagmiteAlloy
+          - Gems 
     # Corvax-Wega-Robot-end
     - item: BorgOreBagOfHolding # BorgOreBagOfHolding Corvax-Wega-Robot-add
   - type: BorgModuleIcon
@@ -701,6 +718,19 @@
     - item: WeaponGrapplingGun
     # Corvax-Wega-Robot-Start
     # - item: BorgFireExtinguisher
+    - item: FireExtinguisher
+    - hand:
+        emptyLabel: borg-slot-handcapsule-empty
+        emptyRepresentative: HandCapsule
+        whitelist:
+          components:
+          - HandCapsule
+    - hand:
+        emptyLabel: borg-slot-jaunter-empty
+        emptyRepresentative: WormholeJaunter
+        whitelist:
+          components:
+          - Jaunter
     - hand:
         emptyLabel: borg-slot-jetpack-empty
         emptyRepresentative: JetpackMiningFilled
@@ -709,7 +739,7 @@
           - Jetpack
     # Corvax-Wega-Robot-end
     - item: BorgHandheldGPSBasic
-    - item: HandHeldMassScannerBorg
+    # - item: HandHeldMassScannerBorg # Corvax-Wega-Robot
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: grappling-module }
 
@@ -748,7 +778,7 @@
   parent: BaseItem
   components:
   - type: Sprite
-    sprite: Objects/Materials/Sheets/other.rsi
+    sprite: _Wega/Objects/Specific/Robotics/iconitem.rsi # Corvax-Wega-Robot
     state: generic_materials
 
 - type: entity
@@ -798,12 +828,14 @@
         blacklist:
           components:
           - SiliconLawProvider
-    - hand:
-        emptyRepresentative: MicroManipulatorStockPart
-        emptyLabel: borg-slot-construction-empty
-        whitelist:
-          tags:
-          - ConstructionMaterial
+# Corvax-Wega-start
+    # - hand:
+        # emptyRepresentative: BorgModuleConstructionMaterialPlaceholder # Corvax-Wega-Robot
+        # emptyLabel: borg-slot-construction-empty
+        # whitelist:
+          # tags:
+          # - ConstructionMaterial
+# Corvax-Wega-End
     - hand:
         emptyRepresentative: SpaceHeaterFlatpack
         emptyLabel: borg-slot-flatpacks-empty
@@ -848,11 +880,14 @@
     # Corvax-Wega-Robot-Start
     # - item: BorgFireExtinguisher
     - hand:
-        emptyLabel: borg-slot-jetpack-empty
-        emptyRepresentative: JetpackMiningFilled
+        emptyLabel: borg-slot-jetpack-tank-empty
+        emptyRepresentative: BallonIcon
         whitelist:
           components:
-          - Jetpack
+          - GasTank
+        blacklist:
+          components:
+          - Magboots
     # Corvax-Wega-Robot-end
     - item: BorgHandheldGPSBasic
     - item: GasAnalyzer
@@ -1000,28 +1035,28 @@
     - item: Gauze
       hand:
         emptyLabel: borg-slot-topicals-empty
-        emptyRepresentative: Gauze
+        emptyRepresentative: MedicalIcon
         whitelist:
           components:
           - Healing
     - item: Brutepack
       hand:
         emptyLabel: borg-slot-topicals-empty
-        emptyRepresentative: Brutepack
+        emptyRepresentative: MedicalIcon
         whitelist:
           components:
           - Healing
     - item: Ointment
       hand:
         emptyLabel: borg-slot-topicals-empty
-        emptyRepresentative: Ointment
+        emptyRepresentative: MedicalIcon
         whitelist:
           components:
           - Healing
     - item: Bloodpack
       hand:
         emptyLabel: borg-slot-topicals-empty
-        emptyRepresentative: Bloodpack
+        emptyRepresentative: MedicalIcon
         whitelist:
           components:
           - Healing
@@ -1041,6 +1076,7 @@
     hands:
     - item: HandheldHealthAnalyzer
     - item: DefibrillatorOneHandedUnpowered
+    - item: HandheldCrewMonitorBorg # Corvax-Wega-Robot 
     - item: Crowbar
     - item: BorgFireExtinguisher
     - item: BorgHandheldGPSBasic
@@ -1251,17 +1287,27 @@
     - item: AnomalyLocatorWideUnpowered
     - item: HandLabeler
     - hand:
-        emptyRepresentative: SheetRGlass
+        emptyRepresentative: ConstrukAndCabel # Corvax-Wega-Robot
         emptyLabel: borg-slot-construction-empty
         whitelist:
           tags:
           - ConstructionMaterial
+          - CableCoil # Corvax-Wega-Robot
+# Corvax-Wega-Start
+    # - hand:
+        # emptyRepresentative: SheetPlasma # Corvax-Wega-Robot
+        # emptyLabel: borg-slot-construction-empty
+        # whitelist:
+          # tags:
+          # - ConstructionMaterial
     - hand:
-        emptyRepresentative: SheetPlasma # Corvax-Wega-Robot
-        emptyLabel: borg-slot-construction-empty
+        emptyRepresentative: ScientistIcon # Corvax-Wega-Robot
+        emptyLabel: borg-slot-diski-empty
         whitelist:
-          tags:
-          - ConstructionMaterial
+          components:
+          - ResearchDisk
+          - TechnologyDisk
+# Corvax-Wega-end
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: anomaly-module } # Corvax-Wega-add
 
@@ -1355,6 +1401,9 @@
         whitelist:
           components:
           - Edible
+        blacklist:
+          components:
+          - Clothing
     # Corvax-Wega-Robot-end
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: service-module }
@@ -1756,7 +1805,7 @@
           - ConstructionMaterial
     - item: XenoborgMaterialBag
     - item: PinpointerMothership
-    - item: HandheldGPSBasic
+    - item: BorgHandheldGPSBasic # Corvax-Wega-add
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-basic-module }
 
@@ -1798,6 +1847,7 @@
     - item: WelderExperimental
     - item: XenoAccessBreaker 
     - item: XenoRCD
+    - item: Multitool
     - item: RemoteSignallerAdvanced
     - item: SelfRechargingFireExtinguisher
 # Corvax-Wega-Robot-end
@@ -1833,7 +1883,6 @@
   - type: ItemBorgModule
     hands:
     - item: DoorRemoteXenoborg
-    - item: XenoAccessBreaker # Corvax-Wega-Robot
     - item: AccessConfiguratorXenoborg
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-door-remote-module }
@@ -1851,6 +1900,7 @@
   - type: ItemBorgModule
     hands:
     - item: XenoborgRadioJammer
+    - item: RepeirModeDeviceXenoborgHeavy # Corvax-Wega-Robot
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-jammer-module }
 
@@ -1867,7 +1917,7 @@
   - type: ItemBorgModule
     hands:
     - item: WeaponLaserGunXenoborg
-    - item: XenoborgRadioJammer # Corvax-Wega-Robot
+    - item: XenoborgHoloprojectorForcefield # Corvax-Wega-Robot
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-laser-module }
 
@@ -1884,7 +1934,7 @@
   - type: ItemBorgModule
     hands:
     - item: WeaponLaserCannonXenoborg
-    - item: XenoborgRadioJammer # Corvax-Wega-Robot
+    - item: XenoborgHoloprojectorForcefield # Corvax-Wega-Robot
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-laser2-module }
 
@@ -1900,7 +1950,7 @@
     - state: icon-xenoborg-space-movement
   - type: ItemBorgModule
     hands:
-    - item: HandheldGPSBasic
+    - item: BorgHandheldGPSBasic # Corvax-Wega-add
     - item: HandHeldMassScannerBorg
     - item: PinpointerMothership
     - item: HandheldStationMapUnpowered
@@ -1959,7 +2009,7 @@
  # Corvax-Wega-Robot-start
     - item: LauncherSyringe
     - item: BorgGeneratorMiniSyringePax
-    - item: BorgGeneratorMiniSyringeMute
+    - item: BorgGeneratorMiniSyringeImpedrezene
     - hand:
         emptyRepresentative: MiniSyringe
         emptyLabel: borg-slot-minisyringe-empty

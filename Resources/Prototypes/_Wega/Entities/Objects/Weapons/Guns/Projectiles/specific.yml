@@ -9,7 +9,7 @@
     ignoreTargeted: true
     damage:
       types:
-        Blunt: 25 #JUDGEMENT!
+        Blunt: 20 #JUDGEMENT!
   - type: Sprite
     sprite: _Wega/Objects/Weapons/Guns/Projectiles/projectiles2.rsi
     layers:

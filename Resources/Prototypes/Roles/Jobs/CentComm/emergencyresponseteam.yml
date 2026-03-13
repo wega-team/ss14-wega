@@ -42,7 +42,7 @@
     back: ClothingBackpackERTLeader
     shoes: ClothingShoesBootsMagCombat # Corvax-Wega-MagCombat
     mask: ClothingMaskGasERT
-    eyes: ClothingEyesHudMedSec
+    eyes: ClothingERTHud # Corvax-Wega-ERT
     neck: Whistle
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitERTLeader
@@ -149,7 +149,7 @@
     back: ClothingBackpackERTChaplain
     shoes: ClothingShoesBootsMagCombat # Corvax-Wega-MagCombat
     mask: ClothingMaskGasERT
-    eyes: ClothingEyesHudMedical
+    eyes: ClothingERTHud # Corvax-Wega-ERT
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitERTChaplain
     id: ERTChaplainPDA
@@ -211,7 +211,7 @@
   equipment:
     shoes: ClothingShoesBootsJackFilled
     head: ClothingHeadHelmetERTEngineer
-    eyes: ClothingEyesGlassesMeson # Corvax-Wega
+    eyes: ClothingERTHud # Corvax-Wega-ERT
     gloves: ClothingHandsGlovesCombat # Corvax-Wega
     outerClothing: ClothingOuterArmorBasicSlim # Corvax-Wega
     id: ERTEngineerPDA # Corvax-Wega
@@ -242,7 +242,7 @@
     back: ClothingBackpackERTEngineer
     shoes: ClothingShoesBootsMagCombat # Corvax-Wega-MagCombat
     mask: ClothingMaskGasERT
-    eyes: ClothingEyesHudDiagnostic
+    eyes: ClothingERTHud # Corvax-Wega-ERT
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitERTEngineer
     id: ERTEngineerPDA
@@ -335,7 +335,7 @@
     back: ClothingBackpackERTSecurity
     shoes: ClothingShoesBootsMagCombat # Corvax-Wega-MagCombat
     mask: ClothingMaskGasERT
-    eyes: ClothingEyesHudSecurity
+    eyes: ClothingERTHud # Corvax-Wega-ERT
     gloves: ClothingHandsGlovesCombat
     neck: SecurityWhistle
     outerClothing: ClothingOuterHardsuitERTSecurity
@@ -360,7 +360,7 @@
     back: ClothingBackpackERTSecurity # Corvax-Wega
     shoes: ClothingShoesBootsMagCombat # Corvax-Wega-MagCombat
     mask: ClothingMaskGasERT
-    eyes: ClothingEyesHudSecurity
+    eyes: ClothingERTHud # Corvax-Wega-ERT
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitERTSecurity
     id: ERTSecurityPDA
@@ -412,7 +412,7 @@
   equipment:
     shoes: ClothingShoesBootsJackFilled
     head: ClothingHeadHelmetERTMedic
-    eyes: ClothingEyesHudMedical # Corvax-Wega
+    eyes: ClothingERTHud # Corvax-Wega-ERT
     gloves: ClothingHandsGlovesLatexSurgeon # Corvax-Wega-Surgery
     outerClothing: ClothingOuterArmorBasicSlim # Corvax-Wega
     id: ERTMedicPDA # Corvax-Wega
@@ -438,7 +438,7 @@
     back: ClothingBackpackERTMedical
     shoes: ClothingShoesBootsMagCombat # Corvax-Wega-MagCombat
     mask: ClothingMaskGasERT
-    eyes: ClothingEyesHudMedical
+    eyes: ClothingERTHud # Corvax-Wega-ERT
     gloves: ClothingHandsGlovesLatexSurgeon # Corvax-Wega-Surgery
     outerClothing: ClothingOuterHardsuitERTMedical
     id: ERTMedicPDA
@@ -519,7 +519,7 @@
     back: ClothingBackpackERTJanitor
     shoes: ClothingShoesBootsMagCombat # Corvax-Wega-MagCombat
     mask: ClothingMaskGasERT
-    eyes: ClothingEyesGlassesChemical
+    eyes: ClothingERTHud # Corvax-Wega-ERT
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitERTJanitor
     id: ERTJanitorPDA
@@ -549,4 +549,4 @@
   equipment:
     head: ClothingHeadHelmetHardsuitERTJanitor
     neck: ClothingNeckScarfStripedPurple
-    eyes: ClothingEyesGlassesSunglasses
+    eyes: ClothingERTHud # Corvax-Wega-ERT

@@ -180,8 +180,8 @@ public sealed class CrusherUpgradeEffectsSystem : EntitySystem
     {
         foreach (var (ammo, _) in args.Ammo)
         {
-            if (ammo == null)
-                return;
+            if (ammo == null || !HasComp<ProjectileComponent>(ammo.Value))
+                continue;
 
             var timer = EnsureComp<ProjectileTimerResetsComponent>(ammo.Value);
             timer.ResetsTime = ent.Comp.ResetsTime;
@@ -196,8 +196,8 @@ public sealed class CrusherUpgradeEffectsSystem : EntitySystem
     {
         foreach (var (ammo, _) in args.Ammo)
         {
-            if (!ent.Comp.Active)
-                return;
+            if (ammo == null || !ent.Comp.Active)
+                continue;
 
             if (TryComp<ProjectileComponent>(ammo, out var projectile))
             {
@@ -219,6 +219,9 @@ public sealed class CrusherUpgradeEffectsSystem : EntitySystem
     {
         foreach (var (ammo, _) in args.Ammo)
         {
+            if (ammo == null || !HasComp<ProjectileComponent>(ammo.Value))
+                continue;
+
             if (TryComp<DamageMarkerOnCollideComponent>(ammo, out var marker) && !marker.Weakening)
             {
                 marker.Weakening = true;
@@ -319,7 +322,7 @@ public sealed class CrusherUpgradeEffectsSystem : EntitySystem
     {
         foreach (var (ammo, _) in args.Ammo)
         {
-            if (!ent.Comp.Active)
+            if (ammo == null || !ent.Comp.Active)
                 return;
 
             if (TryComp<ProjectileComponent>(ammo, out var projectile))

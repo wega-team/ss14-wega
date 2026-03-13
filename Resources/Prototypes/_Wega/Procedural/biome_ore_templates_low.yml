@@ -83,8 +83,8 @@
     WallRockSand: WallRockSandPlasma
     WallRockSnow: WallRockSnowPlasma
   maxCount: 6
-  minGroupSize: 2
-  maxGroupSize: 4
+  minGroupSize: 3
+  maxGroupSize: 5
   radius: 4
 
 # Uranium

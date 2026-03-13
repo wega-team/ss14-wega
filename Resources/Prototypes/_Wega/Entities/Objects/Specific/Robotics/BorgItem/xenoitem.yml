@@ -105,21 +105,21 @@
 
 - type: entity
   parent: MiniSyringe
-  id: MiniSyringeMute
-  suffix: Mute Toxin
+  id: MiniSyringeImpedrezene
+  suffix: Impedrezene
   components:
   - type: SolutionContainerManager
     solutions:
       injector:
         maxVol: 5
         reagents:
-        - ReagentId: MuteToxin
+        - ReagentId: ImpedrezeneNoDamage
           Quantity: 5
 
 - type: entity
   parent: BaseItem
-  id: BorgGeneratorMiniSyringeMute
-  name: mini syringeMute generator
+  id: BorgGeneratorMiniSyringeImpedrezene
+  name: mini MiniSyringeImpedrezene generator
   description: Tastes like cardboard.
   components:
   - type: UseDelay
@@ -133,7 +133,7 @@
   - type: SpawnItemsOnUse
     uses: 100000
     items:
-      - id: MiniSyringeMute
+      - id: MiniSyringeImpedrezene
     sound:
       path: /Audio/Machines/phasein.ogg
 
@@ -217,3 +217,61 @@
         startingItem: PowerCellSmallNuclear
         disableEject: true
         swap: false
+
+- type: entity
+  parent: Holoprojector
+  id: XenoborgHoloprojectorEMPTrap
+  name: xenoborg EMP projector
+  description: Creates an impassable forcefield that won't let anything through. Close proximity may or may not cause cancer.
+  components:
+    - type: HolosignProjector
+      signProto: FloorTrapEMPXenoborg
+      chargeUse: 360
+    - type: Sprite
+      sprite:  _Wega/Objects/Devices/Holoprojectors/xfield.rsi
+      state: icon
+    - type: ItemSlots
+      slots:
+        cell_slot:
+          name: power-cell-slot-component-slot-name-default
+          startingItem: PowerCellMicroreactor
+          disableEject: true
+          swap: false
+
+- type: entity
+  parent: RepeirModeDevice
+  id: RepeirModeDeviceXenoborgHeavy
+  components:
+  - type: ComponentToggler
+    parent: true
+    components:
+    - type: PassiveDamage
+      allowedStates:
+      - Alive
+      - Critical
+      - Dead
+      damage:
+        groups:
+          Brute: -6
+          Burn: -6
+
+- type: entity
+  parent: BaseItem
+  id: BorgGeneratorNanopastXenoborg
+  name: nanopast generator
+  description: Tastes like cardboard.
+  components:
+  - type: UseDelay
+    delay: 120
+  - type: Sprite
+    sprite: Structures/Wallmounts/air_monitors_xeno.rsi
+    layers:
+    - state: fire_b1
+  - type: Item
+    size: Tiny
+  - type: SpawnItemsOnUse
+    uses: 100000
+    items:
+      - id: Nanopast
+    sound:
+      path: /Audio/Machines/phasein.ogg

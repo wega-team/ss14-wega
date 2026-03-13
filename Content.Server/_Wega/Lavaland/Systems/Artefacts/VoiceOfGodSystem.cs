@@ -200,6 +200,9 @@ public sealed class VoiceOfGodSystem : EntitySystem
 
     private void ProcessCommand(Entity<VoiceOfGodComponent> ent, VoiceOfGodCommand command, string originalMessage)
     {
+        if (_timing.CurTime < ent.Comp.LastCommandUse + TimeSpan.FromSeconds(ent.Comp.GlobalCooldown))
+            return;
+
         if (ent.Comp.CommandCooldowns.TryGetValue(command.Id, out var lastUse))
         {
             var cooldownEnd = lastUse + TimeSpan.FromSeconds(command.Cooldown);
@@ -214,8 +217,9 @@ public sealed class VoiceOfGodSystem : EntitySystem
         }
 
         ent.Comp.CommandCooldowns[command.Id] = _timing.CurTime;
+        ent.Comp.LastCommandUse = _timing.CurTime;
 
-        _admin.Add(LogType.Action, LogImpact.Medium,
+        _admin.Add(LogType.Action, LogImpact.Extreme,
             $"{ToPrettyString(ent):player} used Voice of God command '{command.Id}' with message: {originalMessage}");
     }
 

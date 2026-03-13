@@ -115,6 +115,7 @@
   recipeUnlocks:
   - MedicalScannerMachineCircuitboard
   - DnaModifierComputerCircuitboard
+  - BorgModuleDNA
 
 - type: technology
   id: ProSurgery

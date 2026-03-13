@@ -74,6 +74,7 @@ public sealed partial class IdCardConsoleComponent : Component
         "Security",
         "Service",
         "Theatre",
+        "LavalandAvanpost" // Corvax-Wega-Lavaland
     };
 
     [Serializable, NetSerializable]

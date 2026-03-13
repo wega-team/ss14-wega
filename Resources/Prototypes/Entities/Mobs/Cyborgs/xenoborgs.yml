@@ -44,6 +44,7 @@
       # - BorgModuleRCD
       - XenoborgModuleAccessBreaker
       - BorgModuleXenoConstruction
+      - XenoborgHoloprojector
       # - BorgModuleCable
 # Corvax-Wega-robots-end
       # - XenoborgModuleAccessBreaker  # Corvax-Wega-robots
@@ -145,7 +146,7 @@
       - XenoborgModuleBasic
       - XenoborgModuleTool
       - XenoborgModuleLaser
-      - XenoborgHoloprojector # XenoborgModuleJammer Corvax-Wega-Add
+      - XenoborgModuleJammer
   - type: ItemSlots
     slots:
       cell_slot:
@@ -309,11 +310,12 @@
       # - BorgModuleRCD
       - XenoborgModuleAccessBreaker
       - BorgModuleXenoConstruction
+      - XenoborgHoloprojector
       # - BorgModuleCable
 # Corvax-Wega-robots-end
       # - XenoborgModuleAccessBreaker  # Corvax-Wega-robots
       # - XenoborgModuleFireExtinguisher # Corvax-Wega-robots
-      - XenoborgModuleFireExtinguisher
+      # - XenoborgModuleFireExtinguisher # Corvax-Wega-robots
   - type: ItemSlots
     slots:
       cell_slot:
@@ -333,7 +335,7 @@
       - XenoborgModuleBasic
       - XenoborgModuleTool
       - XenoborgModuleLaser
-      - XenoborgHoloprojector # XenoborgModuleJammer Corvax-Wega-Add
+      - XenoborgModuleJammer
   - type: ItemSlots
     slots:
       cell_slot:

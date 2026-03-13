@@ -797,3 +797,6 @@ HandheldHealthAnalyzerEmpty: HandheldHealthAnalyzer
 
 #2026-01-09
 BorgModuleAdvancedChemical: BorgModuleAdvancedTopical
+
+#2026-03-11 - CW
+SpawnMobSlimeGray: null

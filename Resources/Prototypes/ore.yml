@@ -5,19 +5,21 @@
 - type: ore
   id: OreSteel
   oreEntity: SteelOre1
-  pointsPerUnit: 1 # Corvax-Wega-Lavaland
+  pointsPerUnit: 2 # Corvax-Wega-Lavaland
   minOreYield: 1
   maxOreYield: 5
 
 - type: ore
   id: OreSpaceQuartz
   oreEntity: SpaceQuartz1
+  pointsPerUnit: 2 # Corvax-Wega-Lavaland
   minOreYield: 1
   maxOreYield: 5
 
 - type: ore
   id: OreCoal
   oreEntity: Coal1
+  pointsPerUnit: 1 # Corvax-Wega-Lavaland
   minOreYield: 1
   maxOreYield: 5
 
@@ -25,14 +27,14 @@
 - type: ore
   id: OreGold
   oreEntity: GoldOre1
-  pointsPerUnit: 18 # Corvax-Wega-Lavaland
+  pointsPerUnit: 25 # Corvax-Wega-Lavaland
   minOreYield: 1
   maxOreYield: 3
 
 - type: ore
   id: OreSilver
   oreEntity: SilverOre1
-  pointsPerUnit: 16 # Corvax-Wega-Lavaland
+  pointsPerUnit: 20 # Corvax-Wega-Lavaland
   minOreYield: 1
   maxOreYield: 3
 
@@ -46,14 +48,14 @@
 - type: ore
   id: OrePlasma
   oreEntity: PlasmaOre1
-  pointsPerUnit: 15 # Corvax-Wega-Lavaland
+  pointsPerUnit: 30 # Corvax-Wega-Lavaland
   minOreYield: 1
   maxOreYield: 2
 
 - type: ore
   id: OreUranium
   oreEntity: UraniumOre1
-  pointsPerUnit: 30 # Corvax-Wega-Lavaland
+  pointsPerUnit: 40 # Corvax-Wega-Lavaland
   minOreYield: 1
   maxOreYield: 2
 

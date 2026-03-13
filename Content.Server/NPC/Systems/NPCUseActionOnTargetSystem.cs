@@ -55,6 +55,9 @@ public sealed class NPCUseActionOnTargetSystem : EntitySystem
                 continue;
 
             // Corvax-Wega-Add-start
+            if (htn.Plan == null)
+                continue;
+
             if (_mobState.IsIncapacitated(uid))
             {
                 _npc.SleepNPC(uid, htn);

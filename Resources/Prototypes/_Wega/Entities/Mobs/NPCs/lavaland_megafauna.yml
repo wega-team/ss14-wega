@@ -464,6 +464,7 @@
     sprite: _Wega/Mobs/Lavaland/colossus.rsi
     state: colossus
   - type: MeleeWeapon
+    ignoreAttempted: true
     altDisarm: false
     attackRate: 0.25
     damage:
@@ -487,6 +488,7 @@
     showExamineText: false
     soundGunshot: null
     soundEmpty: null
+  - type: VoiceOfGod # Maybe...
   - type: Pullable
   - type: MovementSpeedModifier
     baseWalkSpeed: 1.125
@@ -549,6 +551,7 @@
       Dead:
         Base: dragon_dead
   - type: MeleeWeapon
+    ignoreAttempted: true
     altDisarm: false
     angle: 0
     animation: WeaponArcBite

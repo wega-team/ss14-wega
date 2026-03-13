@@ -25,4 +25,10 @@ public sealed class LockingWhitelistSystem : EntitySystem
 
         args.Cancelled = true;
     }
+	// Corvax-Wega-Start
+    public void SetList(Entity<LockingWhitelistComponent> ent, EntityWhitelist list)
+    {
+        ent.Comp.Blacklist = list;
+    }
+	// Corvax-Wega-End
 }

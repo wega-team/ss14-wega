@@ -1,5 +1,7 @@
 borg-slot-cables-empty = Кабели
-borg-slot-construction-empty = Строительные материалы
+# Corvax-Wega-start
+borg-slot-construction-empty = Ресурсы и модульная часть
+# Corvax-Wega-end
 borg-slot-circuitboards-empty = Платы
 borg-slot-flatpacks-empty = Упаковки
 borg-slot-tiles-empty = Плитки
@@ -8,7 +10,9 @@ borg-slot-small-containers-empty = Маленькие ёмкости
 borg-slot-chemical-containers-empty = Химические ёмкости
 borg-slot-documents-empty = Книги и бумаги
 borg-slot-soap-empty = Мыло
-borg-slot-instruments-empty = Музыкальные инструменты
+# Corvax-Wega-start
+borg-slot-instruments-empty = Муз. инструменты
+# Corvax-Wega-end
 borg-slot-beakers-empty = Мензурки
 borg-slot-brains-empty = Мозги и ММИ
 borg-slot-modules-empty = Модули

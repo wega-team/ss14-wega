@@ -45,8 +45,20 @@
   ignoring: true
 
 - type: lavalandBuilding
+  id: BloodDrunkMiner
+  gridPath: /Maps/_Wega/Lavaland/blooddrunkminerspawn.yml
+  approximate: [150, 250]
+  ignoring: true
+
+- type: lavalandBuilding
   id: Bubblegum
   gridPath: /Maps/_Wega/Lavaland/bubblegumspawn.yml
+  approximate: [150, 250]
+  ignoring: true
+
+- type: lavalandBuilding
+  id: Colossus
+  gridPath: /Maps/_Wega/Lavaland/colossusspawn.yml
   approximate: [150, 250]
   ignoring: true
 

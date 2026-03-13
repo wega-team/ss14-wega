@@ -12,6 +12,7 @@
   recipeUnlocks:
   - BorgChargerTurboCircuitboard
   - ExosuitFabricatorHyperConvectionMachineCircuitboard
+  - Nanopast1
   technologyPrerequisites:
   - BasicRobotics
 
