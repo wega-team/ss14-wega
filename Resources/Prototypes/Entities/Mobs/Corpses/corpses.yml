@@ -58,6 +58,16 @@
     prototypes:
     - ResearchAssistantGear
     - ScientistGear
+# Corvax-Wega-start
+    - RobotechGearCleaner
+    - RobotechGearGun
+    - RobotechGearEng
+    - RobotechGearRND
+    - RobotechGearMedical
+    - RobotechGearCargo
+    - RobotechGearService
+    - RobotechGearCommon
+# Corvax-Wega-end
 
 - type: entity
   parent: SalvageHumanCorpse

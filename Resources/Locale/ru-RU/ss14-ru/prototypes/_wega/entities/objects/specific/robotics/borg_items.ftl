@@ -190,6 +190,7 @@ ent-BaseResearchAndDevelopmentPointSourceBorg = генератор ОИ
     .desc = Устройство, которое способно генерировать ОИ буквально из воздуха, главное переодически его проверять.
 ent-HolofanProjectorBorgSci = встроенный атмос голопроектор
     .desc = ВНИМАНИЕ, данный проектор испукает более слабые барьеры, время жизни таких барьеров крайне низко!
+    .suffix = Борг НИО
 ent-HoloFanSci = { ent-HoloFan }
     .desc = { ent-HoloFan.desc }
 
