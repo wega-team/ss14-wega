@@ -67,6 +67,7 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
 
         InitializeRunes();
         InitializeBloodAbilities();
+        InitializeEquipment();
 
         SubscribeLocalEvent<BloodCultistEyesComponent, ExaminedEvent>(OnCultistEyesExamined);
 
