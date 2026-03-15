@@ -266,6 +266,7 @@ public sealed class SharedExecutionSystem : EntitySystem
             if (!_gun.AttemptDirectShoot(attacker, weapon, victim, gun))
             {
                 _combat.SetInCombatMode(attacker, prev);
+				entity.Comp.Executing = false;
                 return;
             }
 
