@@ -649,6 +649,9 @@
           - SlimeFood
           tags:
           - Ingredient
+          - Packet
+          - SaltShaker
+          - PepperShaker
           - Enzyme
           - Mayo
           - FoodSnack
