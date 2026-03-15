@@ -70,6 +70,26 @@
     animation: WeaponArcClaw
   - type: IgniteOnMeleeHit
     fireStacks: 1
+  - type: SolutionContainerManager
+    solutions:
+      Welder:
+        reagents:
+        - ReagentId: WeldingFuel
+          Quantity: 4
+        maxVol: 4
+  - type: SolutionRegeneration
+    solution: Welder
+    generated:
+      reagents:
+      - ReagentId: WeldingFuel
+        Quantity: 0.1
+  - type: RefillableSolution
+    solution: Welder
+  - type: ItemToggleHot
+  - type: IgnitionSource
+    ignited: false
+  - type: ItemToggle
+    predictable: false
 
 - type: entity
   parent: BaseItem
