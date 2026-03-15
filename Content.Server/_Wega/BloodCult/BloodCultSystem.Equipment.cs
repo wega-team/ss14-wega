@@ -1,26 +1,17 @@
 using Content.Shared.Inventory.Events;
 using Content.Shared.Hands;
-using Content.Shared.Hands.EntitySystems;
-using Content.Shared.IdentityManagement;
-using Content.Shared.Item;
 using Content.Shared.Popups;
 using Content.Shared.Throwing;
 using Content.Shared.Blood.Cult.Components;
-using Robust.Shared.Random;
 
-namespace Content.Server.NullRod;
+namespace Content.Server.Blood.Cult;
 
-public sealed class BloodCultSystem : EntitySystem
+public sealed partial class BloodCultSystem
 {
     [Dependency] private readonly ThrowingSystem _throwing = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-	
-    public override void Initialize()
-    {
-        base.Initialize();
 
+    private void InitializeEquipment()
+    {
         SubscribeLocalEvent<BloodCultEquipmentComponent, GotEquippedEvent>(OnDidEquip);
         SubscribeLocalEvent<BloodCultEquipmentComponent, BeforeGettingEquippedHandEvent>(OnHandPickUp);
     }
@@ -36,7 +27,7 @@ public sealed class BloodCultSystem : EntitySystem
         _throwing.TryThrow(ent, _random.NextVector2(), 1);
         _popup.PopupEntity(Loc.GetString("blood-cult-on-equip"),
             args.Equipee,
-			args.Equipee,
+            args.Equipee,
             PopupType.MediumCaution);
     }
 
@@ -55,7 +46,7 @@ public sealed class BloodCultSystem : EntitySystem
         _throwing.TryThrow(ent, _random.NextVector2(), 1);
         _popup.PopupEntity(Loc.GetString("blood-cult-on-equip-hand"),
             args.User,
-			args.User,
+            args.User,
             PopupType.MediumCaution);
-	}
+    }
 }
