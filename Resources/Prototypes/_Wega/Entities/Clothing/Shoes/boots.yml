@@ -17,9 +17,8 @@
     sprite: _Wega/Clothing/Shoes/Boots/cult_boots.rsi
   - type: Clothing
     sprite: _Wega/Clothing/Shoes/Boots/cult_boots.rsi
-  - type: NoSlip
   - type: SlowedOverSlippery
-    slowdownModifier: 0.7
+    slowdownModifier: 0.6
   - type: SpeedModifierContactCapClothing
-    maxContactSprintSlowdown: 0.7
-    maxContactWalkSlowdown: 0.7
+    maxContactSprintSlowdown: 0.6
+    maxContactWalkSlowdown: 0.6

@@ -270,7 +270,7 @@
     attackRate: 1
     damage:
       types:
-        Heat: 25
+        Heat: 20
     soundHit:
         path: /Audio/Weapons/bladeslice.ogg
   - type: DisarmMalus

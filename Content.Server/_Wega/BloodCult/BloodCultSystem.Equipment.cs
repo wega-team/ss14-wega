@@ -6,7 +6,9 @@ using Content.Shared.Item;
 using Content.Shared.Popups;
 using Content.Shared.Throwing;
 using Content.Shared.Blood.Cult.Components;
+using Content.Shared.Weapons.Melee.Events;
 using Robust.Shared.Random;
+
 
 namespace Content.Server.NullRod;
 
@@ -23,6 +25,7 @@ public sealed class BloodCultSystem : EntitySystem
 
         SubscribeLocalEvent<BloodCultEquipmentComponent, GotEquippedEvent>(OnDidEquip);
         SubscribeLocalEvent<BloodCultEquipmentComponent, BeforeGettingEquippedHandEvent>(OnHandPickUp);
+		SubscribeLocalEvent<BloodCultWeaponComponent, MeleeHitEvent>(OnBloodCultMeleeHit);
     }
 
     private void OnDidEquip(Entity<BloodCultEquipmentComponent> ent, ref GotEquippedEvent args)
@@ -57,5 +60,25 @@ public sealed class BloodCultSystem : EntitySystem
             args.User,
 			args.User,
             PopupType.MediumCaution);
+	}
+	
+	private void OnBloodCultMeleeHit(EntityUid uid, BloodCultWeaponComponent comp, MeleeHitEvent args)
+	{
+		if (!args.IsHit || args.HitEntities.Count == 0)
+			return;
+
+		if (args.HitEntities is not List<EntityUid> hitList)
+			return;
+
+		for (int i = hitList.Count - 1; i >= 0; i--)
+		{
+			var target = hitList[i];
+
+			if (HasComp<BloodCultistComponent>(target))
+				hitList.RemoveAt(i);
+		}
+
+		if (hitList.Count == 0)
+			args.Handled = true;
 	}
 }
