@@ -20,3 +20,5 @@ ent-ClothingOuterArmorExplorerSuitKhakiReinforced = { ent-ClothingOuterArmorExpl
     .desc = { ent-ClothingOuterArmorExplorerSuitReinforced.desc }
 ent-ClothingOuterArmorHostileEnv = H.E.C.K. костюм
     .desc = Экспериментальный Кинетический Защитный Обшитый Костюм: костюм, специально созданный для защиты от широкого спектра опасностей Лазиса. Прошлому его владельцу этого, видимо, не хватило.
+ClothingOuterArmorBloodCult = { ent-ClothingOuterArmorCult }
+    .desc = { ent-ClothingOuterArmorCult.desc }
