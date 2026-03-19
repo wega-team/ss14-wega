@@ -3,13 +3,13 @@
   id: SubVampire
   components:
   - type: GameRule
-    minPlayers: 25
+    minPlayers: 15
   - type: AntagSelection
     agentName: vampire-round-end-name
     definitions:
       - prefRoles: [ Vampire ]
-        max: 2
-        playerRatio: 25
+        max: 4
+        playerRatio: 15
         blacklist:
           components:
           - AntagImmune
