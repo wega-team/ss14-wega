@@ -108,7 +108,7 @@
     sprite: Clothing/OuterClothing/Vests/detvest.rsi
 
 - type: entity
-  parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing]
+  parent: ClothingOuterBaseLarge # Corvax-Wega-Edit
   id: ClothingOuterArmorBaseCarapace
   abstract: true
   components:
