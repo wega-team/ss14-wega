@@ -155,6 +155,7 @@
   - type: GuideHelp
     guides:
     - ShuttleCraft
+  - type: StationAiWhitelist # Corvax-Wega-Edit
 
 - type: entity
   parent: BaseComputerShuttle

@@ -53,6 +53,7 @@
   - type: ExtensionCableReceiver
   - type: LightningTarget
     priority: 1
+  - type: StationAiWhitelist # Corvax-Wega-Edit
 
 - type: entity
   abstract: true

@@ -219,6 +219,7 @@
     intensitySlope: 2
     totalIntensity: 100
   - type: WallMount
+  - type: StationAiWhitelist # Corvax-Wega-Edit
 
 # Substations in use
 
