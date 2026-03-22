@@ -2,6 +2,7 @@ using System.Linq;
 using Content.Shared.Chat;
 using Content.Shared.Database;
 using Content.Shared.DoAfter;
+using Content.Shared.Ghost;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Popups;
 using Content.Shared.Verbs;
@@ -32,6 +33,10 @@ public sealed class InteractionActionSystem : EntitySystem
     private void OnGetVerb(Entity<InteractionActionsComponent> ent, ref GetVerbsEvent<Verb> args)
     {
         if (!args.CanAccess || !args.CanInteract || args.Hands == null)
+            return;
+
+        // I think it might be cool... But no.
+        if (HasComp<GhostComponent>(args.User))
             return;
 
         var availableActions = GetAvailableActions(args.User, ent);
