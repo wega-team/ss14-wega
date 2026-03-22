@@ -89,7 +89,7 @@ public sealed class SharedMagbootsSystem : EntitySystem
         var query = EntityQueryEnumerator<MagbootsComponent, ItemToggleComponent, TransformComponent>();
         while (query.MoveNext(out var uid, out var magboots, out _, out var xform))
         {
-            if (xform.GridUid != args.ChangedGridIndex && xform.MapUid != args.ChangedGridIndex)
+            if (magboots.DisabledAutoMode || xform.GridUid != args.ChangedGridIndex && xform.MapUid != args.ChangedGridIndex)
                 continue;
 
             if (!_container.TryGetContainingContainer((uid, null, null), out var container))
@@ -119,7 +119,7 @@ public sealed class SharedMagbootsSystem : EntitySystem
         if (!_inventory.TryGetSlotEntity(ent, "shoes", out var worn) || !TryComp<MagbootsComponent>(worn, out var magboots))
             return;
 
-        if (args.Transform.GridUid == null)
+        if (magboots.DisabledAutoMode || args.Transform.GridUid == null)
             return;
 
         var hasGravity = _gravity.EntityGridOrMapHaveGravity((args.Transform.GridUid.Value, null));
@@ -142,7 +142,8 @@ public sealed class SharedMagbootsSystem : EntitySystem
     public bool IsWearingMagboots(EntityUid uid)
     {
         return _inventory.TryGetSlotEntity(uid, "shoes", out var boots)
-            && HasComp<MagbootsComponent>(boots);
+            && TryComp<MagbootsComponent>(boots, out var magboots)
+            && !magboots.DisabledAutoMode;
     }
 
     public bool IsMagbootsActive(EntityUid uid)

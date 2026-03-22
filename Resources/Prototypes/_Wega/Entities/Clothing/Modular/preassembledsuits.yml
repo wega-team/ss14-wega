@@ -1,0 +1,208 @@
+- type: entity
+  parent: ClothingModularControllerEngineering
+  id: ClothingModularControllerEngineeringPreassembled
+  suffix: Preassembled
+  components:
+  - type: ModularSuitPreassembled
+    modules:
+    - StorageSuitModule
+    - WeldingSuitModule
+    - RadiationShieldSuitModule
+    - MagnetSuitModule
+
+- type: entity
+  parent: ClothingModularControllerAtmospheric
+  id: ClothingModularControllerAtmosphericPreassembled
+  suffix: Preassembled
+  components:
+  - type: ModularSuitPreassembled
+    modules:
+    - StorageSuitModule
+    - WeldingSuitModule
+    - RadiationShieldSuitModule
+    - MagnetSuitModule
+    - TRaySuitModule
+
+- type: entity
+  parent: ClothingModularControllerAdvanced
+  id: ClothingModularControllerAdvancedPreassembled
+  suffix: Preassembled
+  components:
+  - type: ModularSuitPreassembled
+    modules:
+    - StorageLargeSuitModule
+    - WeldingSuitModule
+    - RadiationShieldSuitModule
+    - JetpackSuitModule
+    - NoSlipSuitModule
+
+- type: entity
+  parent: ClothingModularControllerMining
+  id: ClothingModularControllerMiningPreassembled
+  suffix: Preassembled
+  components:
+  - type: ModularSuitPreassembled
+    modules:
+    - StorageSuitModule
+    - GPSSuitModule
+    - OreBagSuitModule
+    - ModularSuitModuleGrabber
+
+- type: entity
+  parent: ClothingModularControllerMedical
+  id: ClothingModularControllerMedicalPreassembled
+  suffix: Preassembled
+  components:
+  - type: ModularSuitPreassembled
+    modules:
+    - StorageSuitModule
+    - HealthAnalyzerSuitModule
+    - VisorMedicalSuitModule
+    - QuickCarrySuitModule
+
+- type: entity
+  parent: ClothingModularControllerRescue
+  id: ClothingModularControllerRescuePreassembled
+  suffix: Preassembled
+  components:
+  - type: ModularSuitPreassembled
+    modules:
+    - StorageSuitModule
+    - HealthAnalyzerSuitModule
+    - DefibrillatorSuitModule
+    - VisorMedicalSuitModule
+    - QuickCarrySuitModule
+
+- type: entity
+  parent: ClothingModularControllerResearch
+  id: ClothingModularControllerResearchPreassembled
+  suffix: Preassembled
+  components:
+  - type: ModularSuitPreassembled
+    modules:
+    - StorageLargeSuitModule
+    - WeldingSuitModule
+    - RadiationShieldSuitModule
+    - SolutionScannerSuitModule
+    - TRaySuitModule
+
+- type: entity
+  parent: ClothingModularControllerSecurity
+  id: ClothingModularControllerSecurityPreassembled
+  suffix: Preassembled
+  components:
+  - type: ModularSuitPreassembled
+    modules:
+    - StorageSuitModule
+    - MagnetSuitModule
+    - ArmorBossterSuitModule
+    - VisorSecuritySuitModule
+
+- type: entity
+  parent: ClothingModularControllerSafeguard
+  id: ClothingModularControllerSafeguardPreassembled
+  suffix: Preassembled
+  components:
+  - type: ModularSuitPreassembled
+    modules:
+    - StorageLargeSuitModule
+    - MagnetSuitModule
+    - JetpackSuitModule
+    - ArmorBossterSuitModule
+    - VisorSecuritySuitModule
+
+- type: entity
+  parent: ClothingModularControllerMagnate
+  id: ClothingModularControllerMagnatePreassembled
+  suffix: Preassembled
+  components:
+  - type: ModularSuitPreassembled
+    modules:
+    - StorageLargeSuitModule
+    - MagnetSuitModule
+    - JetpackAdvancedSuitModule
+
+- type: entity
+  parent: ClothingModularControllerCosmohonk
+  id: ClothingModularControllerCosmohonkPreassembled
+  suffix: Preassembled
+  components:
+  - type: ModularSuitPreassembled
+    modules:
+    - StorageSuitModule
+    - BikeHornSuitModule
+
+- type: entity
+  parent: ClothingModularControllerSyndicate
+  id: ClothingModularControllerSyndicatePreassembled
+  suffix: Preassembled
+  components:
+  - type: ModularSuitPreassembled
+    modules:
+    - StorageSyndicateSuitModule
+    - EMPShieldAdvancedSuitModule
+    - MagnetSuitModule
+    - JetpackAdvancedSuitModule
+    - ArmorBossterSuitModule
+
+- type: entity
+  parent: ClothingModularControllerApocryphal
+  id: ClothingModularControllerApocryphalPreassembled
+  suffix: Preassembled
+  components:
+  - type: ModularSuitPreassembled
+    modules:
+    - StorageHoldingSuitModule
+    - EMPShieldAdvancedSuitModule
+    - ArmorBossterSuitModule
+    - JetpackAdvancedSuitModule
+    - NoSlipSuitModule
+    - QuickCarrySuitModule
+    - RadiationShieldSuitModule
+    - WeldingSuitModule
+    - HolsterSuitModule
+
+- type: entity
+  parent: ClothingModularControllerCorporate
+  id: ClothingModularControllerCorporatePreassembled
+  suffix: Preassembled
+  components:
+  - type: ModularSuitPreassembled
+    modules:
+    - StorageHoldingSuitModule
+    - EMPShieldAdvancedSuitModule
+    - JetpackAdvancedSuitModule
+    - ArmorBossterSuitModule
+    - NoSlipSuitModule
+    - RadiationShieldSuitModule
+    - WeldingSuitModule
+
+- type: entity
+  parent: ClothingModularControllerResponsory
+  id: ClothingModularControllerResponsoryPreassembled
+  suffix: Preassembled
+  components:
+  - type: ModularSuitPreassembled
+    modules:
+    - StorageLargeSuitModule
+    - EMPShieldSuitModule
+    - JetpackSuitModule
+    - ArmorBossterSuitModule
+    - MagnetSuitModule
+    - RadiationShieldSuitModule
+    - WeldingSuitModule
+
+- type: entity
+  parent: ClothingModularControllerInquisitory
+  id: ClothingModularControllerInquisitoryPreassembled
+  suffix: Preassembled
+  components:
+  - type: ModularSuitPreassembled
+    modules:
+    - StorageLargeSuitModule
+    - EMPShieldSuitModule
+    - JetpackSuitModule
+    - ArmorBossterSuitModule
+    - MagnetSuitModule
+    - RadiationShieldSuitModule
+    - WeldingSuitModule

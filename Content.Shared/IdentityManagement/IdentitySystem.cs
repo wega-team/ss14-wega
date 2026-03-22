@@ -8,6 +8,7 @@ using Content.Shared.Humanoid;
 using Content.Shared.IdentityManagement.Components;
 using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
+using Content.Shared.Item.ItemToggle.Components; // Corvax-Wega-Add
 using Content.Shared.VoiceMask;
 using Robust.Shared.Containers;
 using Robust.Shared.Enums;
@@ -44,6 +45,7 @@ public sealed class IdentitySystem : EntitySystem
         SubscribeLocalEvent<IdentityBlockerComponent, SeeIdentityAttemptEvent>(OnSeeIdentity);
         SubscribeLocalEvent<IdentityBlockerComponent, InventoryRelayedEvent<SeeIdentityAttemptEvent>>(OnRelaySeeIdentity);
         SubscribeLocalEvent<IdentityBlockerComponent, ItemMaskToggledEvent>(OnMaskToggled);
+        SubscribeLocalEvent<IdentityBlockerComponent, ItemToggledEvent>(OnItemToggled); // Corvax-Wega-Add
 
         SubscribeLocalEvent<IdentityComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<IdentityComponent, ComponentInit>(OnComponentInit);
@@ -120,6 +122,14 @@ public sealed class IdentitySystem : EntitySystem
         ent.Comp.Enabled = !args.Mask.Comp.IsToggled;
         Dirty(ent);
     }
+
+    // Corvax-Wega-Add-start
+    private void OnItemToggled(Entity<IdentityBlockerComponent> ent, ref ItemToggledEvent args)
+    {
+        ent.Comp.Enabled = args.Activated;
+        Dirty(ent);
+    }
+    // Corvax-Wega-Add-end
 
     #endregion
 

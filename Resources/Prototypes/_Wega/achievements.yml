@@ -55,3 +55,10 @@
   description: achievements-bloodcult-desc
   key: BloodCult
   icon: { sprite: _Wega/Interface/achievements.rsi, state: bloodcult }
+
+- type: achievement
+  id: Springlock
+  name: achievements-springlock-name
+  description: achievements-springlock-desc
+  key: Springlock
+  icon: { sprite: _Wega/Interface/achievements.rsi, state: springlock }

@@ -1,6 +1,7 @@
 using Content.Shared.Clothing.Components;
 using Content.Shared.Humanoid;
 using Content.Shared.Inventory;
+using Content.Shared.Item.ItemToggle.Components; // Corvax-Wega-Add
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 
@@ -16,6 +17,7 @@ public sealed class HideLayerClothingSystem : EntitySystem
         SubscribeLocalEvent<HideLayerClothingComponent, ClothingGotUnequippedEvent>(OnHideGotUnequipped);
         SubscribeLocalEvent<HideLayerClothingComponent, ClothingGotEquippedEvent>(OnHideGotEquipped);
         SubscribeLocalEvent<HideLayerClothingComponent, ItemMaskToggledEvent>(OnHideToggled);
+        SubscribeLocalEvent<HideLayerClothingComponent, ItemToggledEvent>(OnItemToggled); // Corvax-Wega-Add
     }
 
     private void OnHideToggled(Entity<HideLayerClothingComponent> ent, ref ItemMaskToggledEvent args)
@@ -23,6 +25,19 @@ public sealed class HideLayerClothingSystem : EntitySystem
         if (args.Wearer != null)
             SetLayerVisibility(ent!, args.Wearer.Value, hideLayers: true);
     }
+
+    // Corvax-Wega-Add-start
+    private void OnItemToggled(Entity<HideLayerClothingComponent> ent, ref ItemToggledEvent args)
+    {
+        if (!TryComp<ClothingComponent>(ent, out var clothing) || args.User == null)
+            return;
+
+        if (clothing.InSlotFlag != null)
+        {
+            SetLayerVisibility(ent!, args.User.Value, args.Activated);
+        }
+    }
+    // Corvax-Wega-Add-end
 
     private void OnHideGotEquipped(Entity<HideLayerClothingComponent> ent, ref ClothingGotEquippedEvent args)
     {
@@ -98,6 +113,9 @@ public sealed class HideLayerClothingSystem : EntitySystem
 
         if (!clothing.Comp1.HideOnToggle)
             return true;
+
+        if (TryComp<ItemToggleComponent>(clothing, out var toggle))
+            return toggle.Activated;
 
         if (!TryComp(clothing, out MaskComponent? mask))
             return true;

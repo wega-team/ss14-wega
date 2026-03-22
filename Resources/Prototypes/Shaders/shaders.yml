@@ -135,3 +135,8 @@
   id: NaturalNightVision
   kind: source
   path: "/Textures/_Wega/Shaders/nightvision.swsl"
+
+- type: shader
+  id: Rave
+  kind: source
+  path: "/Textures/_Wega/Shaders/rave.swsl"

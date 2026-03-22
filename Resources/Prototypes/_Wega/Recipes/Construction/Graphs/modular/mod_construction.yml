@@ -1,0 +1,85 @@
+- type: constructionGraph
+  id: ModularSuit
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: mod
+      steps:
+      - tag: ModularSuitCore
+        name: construction-graph-tag-modular-suit-core
+        icon:
+          sprite: "_Wega/Objects/Specific/Robotics/modular_suits.rsi"
+          state: "mod-core-standard"
+        doAfter: 3
+        completed:
+        - !type:VisualizerDataInt
+          key: "enum.ModilarSuitAssemblyVisuals.State"
+          data: 1
+
+      - tool: Screwing
+        doAfter: 2
+        completed:
+        - !type:VisualizerDataInt
+          key: "enum.ModilarSuitAssemblyVisuals.State"
+          data: 2
+
+      - tag: ModularSuitHelmet
+        name: construction-graph-tag-modular-suit-helmet
+        icon:
+          sprite: "_Wega/Objects/Specific/Robotics/modular_suits.rsi"
+          state: "helmet"
+        doAfter: 2
+        completed:
+        - !type:VisualizerDataInt
+          key: "enum.ModilarSuitAssemblyVisuals.State"
+          data: 3
+
+      - tag: ModularSuitChestPlate
+        name: construction-graph-tag-modular-suit-chestplate
+        icon:
+          sprite: "_Wega/Objects/Specific/Robotics/modular_suits.rsi"
+          state: "chestplate"
+        doAfter: 2
+        completed:
+        - !type:VisualizerDataInt
+          key: "enum.ModilarSuitAssemblyVisuals.State"
+          data: 4
+
+      - tag: ModularSuitGauntlets
+        name: construction-graph-tag-modular-suit-gauntlets
+        icon:
+          sprite: "_Wega/Objects/Specific/Robotics/modular_suits.rsi"
+          state: "gauntlets"
+        doAfter: 2
+        completed:
+        - !type:VisualizerDataInt
+          key: "enum.ModilarSuitAssemblyVisuals.State"
+          data: 5
+
+      - tag: ModularSuitBoots
+        name: construction-graph-tag-modular-suit-boots
+        icon:
+          sprite: "_Wega/Objects/Specific/Robotics/modular_suits.rsi"
+          state: "boots"
+        doAfter: 2
+        completed:
+        - !type:VisualizerDataInt
+          key: "enum.ModilarSuitAssemblyVisuals.State"
+          data: 6
+
+      - tool: Anchoring
+        doAfter: 4
+        completed:
+        - !type:VisualizerDataInt
+          key: "enum.ModilarSuitAssemblyVisuals.State"
+          data: 7
+
+      - tool: Screwing
+        doAfter: 2
+
+  - node: mod
+    actions:
+    - !type:DestroyEntity {}
+    - !type:SpawnPrototype
+      prototype: ModularSuitConstructionFinished

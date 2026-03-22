@@ -71,6 +71,13 @@
     castShadows: false
   - type: RadiationSource
     intensity: 5
+  # Corvax-Wega-Add-start
+  - type: Tag
+    tags:
+    - ForceableFollow
+    - AnomalyCore
+    - GravityCore
+  # Corvax-Wega-Add-end
 
 - type: entity
   parent: BaseAnomalyCore
@@ -235,6 +242,13 @@
     energy: 3.5
     color: "#00ccff"
     castShadows: false
+  # Corvax-Wega-Add-start
+  - type: Tag
+    tags:
+    - ForceableFollow
+    - AnomalyCore
+    - BluespaceCore
+  # Corvax-Wega-Add-end
 
 - type: entity
   parent: BaseAnomalyCore

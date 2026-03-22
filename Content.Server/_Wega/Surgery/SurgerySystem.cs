@@ -16,6 +16,7 @@ using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Jittering;
 using Content.Shared.Mobs.Systems;
+using Content.Shared.Modular.Suit;
 using Content.Shared.Popups;
 using Content.Shared.Rejuvenate;
 using Content.Shared.Surgery.Components;
@@ -378,6 +379,9 @@ public sealed partial class SurgerySystem : EntitySystem
 
     private void OnIsEquipping(Entity<OperatedComponent> ent, ref IsEquippingAttemptEvent args)
     {
+        if (HasComp<ModularSuitPartComponent>(args.Equipment))
+            return;
+
         if ((args.SlotFlags == SlotFlags.FEET || args.SlotFlags == SlotFlags.SOCKS) &&
             (!HasRequiredLimbs(ent, BodyPartType.Leg) || !HasRequiredLimbs(ent, BodyPartType.Foot)))
         {

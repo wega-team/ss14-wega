@@ -16,6 +16,7 @@ achievements-colossusboss-name = Убийца Колосса
 achievements-ashdrakeboss-name = Убийца Дрейка
 achievements-bubblegumboss-name = Убийца Бубльгума
 achievements-bloodcult-name = Апостол крови
+achievements-springlock-name = Человек в MODSuit
 
 # Description
 achievements-firstboss-desc = Вы прошли долгий путь от вопроса о том, как переключать руки.
@@ -26,3 +27,4 @@ achievements-colossusboss-desc = Чем они крупнее... тем лучш
 achievements-ashdrakeboss-desc = Теперь я могу носить рунические пластины!
 achievements-bubblegumboss-desc = Думаю, в конце концов, он был сделан не из конфет.
 achievements-bloodcult-desc = Кровь богу крови!
+achievements-springlock-desc = Не обращайте внимания на предупреждающую надпись на модуле с пружинным замком.

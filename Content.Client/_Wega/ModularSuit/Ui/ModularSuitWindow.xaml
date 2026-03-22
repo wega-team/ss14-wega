@@ -1,0 +1,127 @@
+<ui:ModularSuitWindow
+    xmlns="https://spacestation14.io"
+    xmlns:ui="clr-namespace:Content.Client._Wega.ModularSuit.Ui"
+    xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+    xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+    SetSize="550 700" MouseFilter="Stop">
+
+    <PanelContainer Name="Background" StyleClasses="PdaBackgroundRect" ModulateSelfOverride="#2a2a2a"/>
+    <PanelContainer Name="Border" StyleClasses="PdaBorderRect" />
+
+    <BoxContainer Orientation="Vertical" HorizontalExpand="True">
+
+        <BoxContainer SetHeight="32" Margin="12 8 12 4" Orientation="Horizontal" HorizontalExpand="True">
+            <TextureRect TexturePath="/Textures/_Wega/Interface/Logo/nakamura_logo.png" SetSize="32 32" Margin="0 0 6 0" VerticalAlignment="Center"/>
+            <Label Text="{Loc 'modsuit-ui-title'}" StyleClasses="LabelBig" VAlign="Center"
+                   FontColorOverride="#ffaa33" HorizontalExpand="True"/>
+            <TextureButton Name="CloseButton" StyleClasses="windowCloseButton"
+                           Modulate="#ff6666" VerticalAlignment="Center" Margin="0 4 4 0"/>
+        </BoxContainer>
+
+        <Control Margin="18 0" RectClipContent="True" VerticalExpand="True" HorizontalExpand="True">
+            <PanelContainer Name="ContentBorder" StyleClasses="PdaBackground"/>
+            <Control Name="ContentsContainer" Margin="3 3">
+
+                <PanelContainer Name="ContentBackground" StyleClasses="PdaContentBackground"/>
+
+                <BoxContainer Orientation="Vertical">
+
+                    <PanelContainer Margin="10 5 10 5">
+                        <PanelContainer.PanelOverride>
+                            <gfx:StyleBoxFlat BorderColor="#FFFFFF" BorderThickness="2" />
+                        </PanelContainer.PanelOverride>
+
+                        <BoxContainer Orientation="Vertical" MinHeight="120" Margin="5 5 5 5">
+                            <Label Text="{Loc 'modsuit-ui-suit-status'}" StyleClasses="ConsoleSubHeading" HorizontalAlignment="Center" />
+
+                            <PanelContainer StyleClasses="LowDivider" HorizontalExpand="True" Margin="-5 5 -5 5" SetHeight="2">
+                                <PanelContainer.PanelOverride>
+                                    <gfx:StyleBoxFlat BackgroundColor="#FFFFFF" />
+                                </PanelContainer.PanelOverride>
+                            </PanelContainer>
+
+                            <GridContainer Columns="2" Margin="5">
+                                <Label Text="{Loc 'modsuit-ui-wearer'}" FontColorOverride="#aaccff"/>
+                                <Label Name="WearerNameLabel" Text="—" FontColorOverride="#ffffff" HorizontalAlignment="Right"/>
+
+                                <Label Text="{Loc 'modsuit-ui-core-charge'}" FontColorOverride="#aaccff"/>
+                                <BoxContainer Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <ProgressBar Name="CoreChargeBar" MinValue="0" MaxValue="100" MinWidth="80" Margin="0 0 4 0"/>
+                                    <Label Name="CoreChargeLabel" Text="0/100" FontColorOverride="#ffaa33"/>
+                                </BoxContainer>
+
+                                <Label Text="{Loc 'modsuit-ui-battery'}" FontColorOverride="#aaccff"/>
+                                <Label Name="BatteryStatusLabel" Text="{Loc 'modsuit-ui-no-battery'}" FontColorOverride="#ffaa33" HorizontalAlignment="Right"/>
+                            </GridContainer>
+                        </BoxContainer>
+                    </PanelContainer>
+
+                    <PanelContainer Margin="10 0 10 5">
+                        <PanelContainer.PanelOverride>
+                            <gfx:StyleBoxFlat BorderColor="#FFFFFF" BorderThickness="2" />
+                        </PanelContainer.PanelOverride>
+
+                        <BoxContainer Orientation="Vertical">
+                            <Label Text="{Loc 'modsuit-ui-power-control'}" StyleClasses="ConsoleSubHeading" HorizontalAlignment="Center" Margin="0 5 0 5" />
+
+                            <PanelContainer StyleClasses="LowDivider" HorizontalExpand="True" SetHeight="2">
+                                <PanelContainer.PanelOverride>
+                                    <gfx:StyleBoxFlat BackgroundColor="#FFFFFF" />
+                                </PanelContainer.PanelOverride>
+                            </PanelContainer>
+
+                            <BoxContainer Orientation="Horizontal" Margin="10 10 10 10">
+                                <controls:MonotoneButton Name="ActivateButton" StyleClasses="OpenBoth" Pressed="False"
+                                                         ToggleMode="True" HorizontalExpand="True"/>
+                            </BoxContainer>
+                        </BoxContainer>
+                    </PanelContainer>
+
+                    <TabContainer Name="Tabs" VerticalExpand="True" HorizontalExpand="True" Margin="10 0 10 10"
+                                  TabFontColorOverride="#ffaa33" TabFontColorInactiveOverride="#aaccff">
+
+                        <BoxContainer Orientation="Vertical">
+                            <BoxContainer Orientation="Horizontal" Margin="0 5">
+                                <Label Text="{Loc 'modsuit-ui-modules'}" StyleClasses="ConsoleSubHeading" FontColorOverride="#ffaa33" HorizontalExpand="True"/>
+                                <Label Name="ModulesCountLabel" Text="0" FontColorOverride="#aaccff" HorizontalAlignment="Right"/>
+                            </BoxContainer>
+
+                            <PanelContainer StyleClasses="AngleRect" VerticalExpand="True">
+                                <PanelContainer.PanelOverride>
+                                    <gfx:StyleBoxFlat BackgroundColor="#1e2b3c" BorderColor="#ffaa33" BorderThickness="1" />
+                                </PanelContainer.PanelOverride>
+
+                                <ScrollContainer VerticalExpand="True" HScrollEnabled="False">
+                                    <BoxContainer Name="ModulesContainer" Orientation="Vertical" Margin="4"/>
+                                </ScrollContainer>
+                            </PanelContainer>
+                        </BoxContainer>
+
+                        <BoxContainer Orientation="Vertical">
+                            <BoxContainer Orientation="Horizontal" Margin="0 5">
+                                <Label Text="{Loc 'modsuit-ui-parts'}" StyleClasses="ConsoleSubHeading" FontColorOverride="#ffaa33" HorizontalExpand="True"/>
+                                <Label Name="PartsCountLabel" Text="0" FontColorOverride="#aaccff" HorizontalAlignment="Right"/>
+                            </BoxContainer>
+
+                            <PanelContainer StyleClasses="AngleRect" VerticalExpand="True">
+                                <PanelContainer.PanelOverride>
+                                    <gfx:StyleBoxFlat BackgroundColor="#1e2b3c" BorderColor="#ffaa33" BorderThickness="1" />
+                                </PanelContainer.PanelOverride>
+
+                                <ScrollContainer VerticalExpand="True" HScrollEnabled="False">
+                                    <BoxContainer Name="PartsContainer" Orientation="Vertical" Margin="4"/>
+                                </ScrollContainer>
+                            </PanelContainer>
+                        </BoxContainer>
+                    </TabContainer>
+
+                </BoxContainer>
+            </Control>
+        </Control>
+
+        <BoxContainer Orientation="Horizontal" SetHeight="25" Margin="0 5 0 5">
+            <Label Name="Footer" Text="{Loc 'modsuit-ui-os-footer'}" HorizontalExpand="True"
+                   HorizontalAlignment="Right" Margin="10 0"/>
+        </BoxContainer>
+    </BoxContainer>
+</ui:ModularSuitWindow>

@@ -4,3 +4,7 @@ ent-JetpackMining = джетпак
 ent-JetpackMiningFilled = джетпак
     .suffix = Заполненный
     .desc = { ent-JetpackMining.desc }
+ent-JetpackBlueModule = джетпак
+    .desc = { ent-JetpackBlue.desc }
+ent-JetpackSecurityModule = джетпак
+    .desc = { ent-JetpackSecurity.desc }
