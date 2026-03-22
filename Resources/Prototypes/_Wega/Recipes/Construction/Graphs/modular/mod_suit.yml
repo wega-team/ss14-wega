@@ -8,7 +8,7 @@
         # 1. Basic
         - to: basic_suit
           steps:
-            - tag: BasicPlanting
+            - tag: BasicPlating
               name: construction-graph-tag-basic-plating-kit
               icon:
                 sprite: "_Wega/Objects/Specific/Robotics/modular_suits.rsi"
@@ -29,7 +29,7 @@
         # 2. Civilian
         - to: civilian_suit
           steps:
-            - tag: CivilianPlanting
+            - tag: CivilianPlating
               name: construction-graph-tag-civilian-plating-kit
               icon:
                 sprite: "_Wega/Objects/Specific/Robotics/modular_suits.rsi"
@@ -50,7 +50,7 @@
         # 3. Clown
         - to: clown_suit
           steps:
-            - tag: ClownPlanting
+            - tag: ClownPlating
               name: construction-graph-tag-clown-reinforcement-kit
               icon:
                 sprite: "_Wega/Objects/Specific/Robotics/modular_suits.rsi"
@@ -71,7 +71,7 @@
         # 4. Engineering
         - to: engineering_suit
           steps:
-            - tag: EngineeringPlanting
+            - tag: EngineeringPlating
               name: construction-graph-tag-engineering-reinforcement-kit
               icon:
                 sprite: "_Wega/Objects/Specific/Robotics/modular_suits.rsi"
@@ -92,7 +92,7 @@
         # 5. Atmos
         - to: atmos_suit
           steps:
-            - tag: AtmosPlanting
+            - tag: AtmosPlating
               name: construction-graph-tag-atmospheric-plating-kit
               icon:
                 sprite: "_Wega/Objects/Specific/Robotics/modular_suits.rsi"
@@ -113,7 +113,7 @@
         # 6. White Engineering
         - to: white_engineering_suit
           steps:
-            - tag: WhiteEngineeringPlanting
+            - tag: WhiteEngineeringPlating
               name: construction-graph-tag-white-engineering-kit
               icon:
                 sprite: "_Wega/Objects/Specific/Robotics/modular_suits.rsi"
@@ -134,7 +134,7 @@
         # 7. Security
         - to: security_suit
           steps:
-            - tag: SecurityPlanting
+            - tag: SecurityPlating
               name: construction-graph-tag-security-reinforcement-kit
               icon:
                 sprite: "_Wega/Objects/Specific/Robotics/modular_suits.rsi"
@@ -155,7 +155,7 @@
         # 8. Red Security
         - to: red_security_suit
           steps:
-            - tag: RedSecurityPlanting
+            - tag: RedSecurityPlating
               name: construction-graph-tag-red-security-kit
               icon:
                 sprite: "_Wega/Objects/Specific/Robotics/modular_suits.rsi"
@@ -176,7 +176,7 @@
         # 9. Rescue
         - to: resque_suit
           steps:
-            - tag: VoidParamedPlanting
+            - tag: ResquePlating
               name: construction-graph-tag-rescue-kit
               icon:
                 sprite: "_Wega/Objects/Specific/Robotics/modular_suits.rsi"
@@ -197,7 +197,7 @@
         # 10. Medical
         - to: medical_suit
           steps:
-            - tag: MedicalPlanting
+            - tag: MedicalPlating
               name: construction-graph-tag-medical-support-kit
               icon:
                 sprite: "_Wega/Objects/Specific/Robotics/modular_suits.rsi"
@@ -218,7 +218,7 @@
         # 11. RD
         - to: rd_suit
           steps:
-            - tag: RDPlanting
+            - tag: RDPlating
               name: construction-graph-tag-research-director-kit
               icon:
                 sprite: "_Wega/Objects/Specific/Robotics/modular_suits.rsi"
