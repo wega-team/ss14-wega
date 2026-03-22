@@ -43,6 +43,7 @@ using Content.Shared.Disease.Components; // Corvax-Wega-Disease
 using Content.Shared.NPC.Prototypes;
 using Content.Shared.Roles;
 using Content.Shared.Temperature.Components;
+using Content.Server.NPC.Components; // Corvax-Wega-Zombie
 
 namespace Content.Server.Zombies;
 
@@ -130,6 +131,7 @@ public sealed partial class ZombieSystem
 
         //you're a real zombie now, son.
         var zombiecomp = AddComp<ZombieComponent>(target);
+        EnsureComp<NPCIgnoringOptimizeComponent>(target); // Corvax-Wega-Zombie
 
         //we need to basically remove all of these because zombies shouldn't
         //get diseases, breath, be thirst, be hungry, die in space, get double sentience, have offspring or be paraplegic.
