@@ -1,0 +1,59 @@
+- type: interactionAction
+  parent: BaseAliveMobAction
+  id: BloodCultCutVeinInteraction
+  name: interaction-harm-cultist-cut-vein
+  icon: { sprite: "_Wega/Objects/Weapons/Melee/blood_dagger.rsi", state: "icon" }
+  canInteractSelf: true
+  onlyInteractSelf: true
+  cooldown: 30
+  delay: 2.5
+  conditions:
+  - !type:WhitelistCondition
+    whitelist:
+      components:
+      - BloodCultist
+    target: User
+  - !type:SpeciesCondition
+    invert: true
+    specieses:
+    - Android
+    - Ipc
+  - !type:HasItemInHandCondition
+    tool: Slicing
+  effects:
+  - !type:BleedEffect
+    amount: 5
+  - !type:DamageEffect
+    ignoreResistances: true
+    damage:
+      types:
+        Slash: 5
+  - !type:PlaySoundEffect
+    sound:
+      path: "/Audio/Weapons/bladeslice.ogg"
+  - !type:PopupMessageEffect
+    userMessage: interaction-action-harm-cultist-cut-vein-user
+    colorMessage: Red
+
+- type: interactionAction
+  id: ArtificialRespirationAction
+  name: interaction-respiration-name
+  abstract: true
+  delayStartUserMessage: interaction-action-delay-respiration-user
+  delayStartTargetMessage: interaction-action-delay-respiration-target
+  delayStartOtherMessage: interaction-action-delay-respiration-other
+  cooldown: 2.5
+  delay: 1
+  conditions:
+  - !type:MobStateCondition
+    state: Critical
+  - !type:DistanceCondition
+    maxRange: 0.8
+  effects:
+  - !type:DamageEffect
+    ignoreResistances: true
+    damage:
+      types:
+        Asphyxiation: -10
+  - !type:SendMessageEffect
+    message: interaction-action-respiration-emote
