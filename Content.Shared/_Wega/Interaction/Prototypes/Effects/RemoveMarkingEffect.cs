@@ -22,5 +22,6 @@ public sealed partial class RemoveMarkingEffect : InteractionEffect
             return;
 
         humanoid.MarkingSet.RemoveCategory(Categories);
+        entityManager.Dirty(target, humanoid);
     }
 }

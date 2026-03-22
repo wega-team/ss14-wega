@@ -102,6 +102,8 @@
       path: "/Audio/Weapons/bladeslice.ogg"
   - !type:RemoveMarkingEffect
     categories: Tail
+  - !type:BleedEffect
+    amount: 2
   - !type:DamageEffect
     ignoreResistances: true
     damage:
@@ -115,8 +117,8 @@
   id: HarmCutMothTailInteraction
   name: interaction-harm-cut-moth-tail
   icon: { sprite: "Objects/Weapons/Melee/combat_knife.rsi", state: "icon" }
-  delayStartUserMessage: interaction-action-delay-moth-cut-tail-user
-  delayStartTargetMessage: interaction-action-delay-moth-cut-tail-target
+  delayStartUserMessage: interaction-action-delay-cut-moth-tail-user
+  delayStartTargetMessage: interaction-action-delay-cut-moth-tail-target
   delayStartOtherMessage: interaction-action-delay-cut-moth-tail-other
   delayStartColorMessage: Red
   cooldown: 45
@@ -138,6 +140,8 @@
       path: "/Audio/Weapons/bladeslice.ogg"
   - !type:RemoveMarkingEffect
     categories: Tail
+  - !type:BleedEffect
+    amount: 2
   - !type:DamageEffect
     ignoreResistances: true
     damage:
@@ -181,6 +185,8 @@
       path: "/Audio/Weapons/bladeslice.ogg"
   - !type:RemoveMarkingEffect
     categories: HeadTop
+  - !type:BleedEffect
+    amount: 2
   - !type:DamageEffect
     ignoreResistances: true
     damage:
@@ -217,6 +223,8 @@
       path: "/Audio/Weapons/bladeslice.ogg"
   - !type:RemoveMarkingEffect
     categories: HeadTop
+  - !type:BleedEffect
+    amount: 2
   - !type:DamageEffect
     ignoreResistances: true
     damage:
@@ -229,6 +237,7 @@
   parent: BaseHarmAction
   id: HarmGunInteraction
   name: interaction-harm-gun
+  icon: { sprite: "Objects/Weapons/Guns/Pistols/viper.rsi", state: "icon" }
   cooldown: 10
   priority: 1
   conditions:
