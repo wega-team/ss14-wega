@@ -330,8 +330,6 @@ namespace Content.Server.Zombies
             RemComp<GhostRoleComponent>(ent);
             RemComp<ActiveNPCComponent>(ent);
             // Corvax-Wega-Zombie end
-
-
         }
 
         // Remove the role when getting cloned, getting gibbed and borged, or leaving the body via any other method.
@@ -342,14 +340,6 @@ namespace Content.Server.Zombies
             // Corvax-Wega-Zombie start
             EnsureComp<NPCIgnoringOptimizeComponent>(ent);
             EnsureComp<ActiveNPCComponent>(ent);
-            EnsureComp<GhostRoleMobSpawnerComponent>(ent);
-
-            var ghostRole = EnsureComp<GhostRoleComponent>(ent);
-            EnsureComp<GhostTakeoverAvailableComponent>(ent);
-            ghostRole.RoleName = Loc.GetString("zombie-generic");
-            ghostRole.RoleDescription = Loc.GetString("zombie-role-desc");
-            ghostRole.RoleRules = Loc.GetString("zombie-role-rules");
-            ghostRole.MindRoles.Add(MindRoleZombie);
             // Corvax-Wega-Zombie end
         }
     }
