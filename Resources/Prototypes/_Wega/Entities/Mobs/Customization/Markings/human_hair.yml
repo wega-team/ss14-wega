@@ -1,3 +1,59 @@
+- type: marking
+  id: HumanHairMelissa
+  bodyPart: Hair
+  markingCategory: Hair
+  sprites:
+    - sprite: _Wega/Mobs/Customization/human_hair.rsi
+      state: melissa
+
+- type: marking
+  id: HumanHairCuteHair
+  bodyPart: Hair
+  markingCategory: Hair
+  sprites:
+    - sprite: _Wega/Mobs/Customization/human_hair.rsi
+      state: cute_hair
+
+- type: marking
+  id: HumanHairKamina
+  bodyPart: Hair
+  markingCategory: Hair
+  sprites:
+    - sprite: _Wega/Mobs/Customization/human_hair.rsi
+      state: kamina
+
+- type: marking
+  id: HumanHairMelissaGradient
+  bodyPart: Hair
+  markingCategory: Hair
+  sprites:
+    - sprite: _Wega/Mobs/Customization/human_hair.rsi
+      state: melissa
+    - sprite: _Wega/Mobs/Customization/human_hair.rsi
+      state: melissa_secondary
+
+- type: marking
+  id: HumanHairCuteHairGradient
+  bodyPart: Hair
+  markingCategory: Hair
+  sprites:
+    - sprite: _Wega/Mobs/Customization/human_hair.rsi
+      state: cute_hair
+    - sprite: _Wega/Mobs/Customization/human_hair.rsi
+      state: cute_hair_secondary1
+    - sprite: _Wega/Mobs/Customization/human_hair.rsi
+      state: cute_hair_secondary2
+
+- type: marking
+  id: HumanHairKaminaGradient
+  bodyPart: Hair
+  markingCategory: Hair
+  sprites:
+    - sprite: _Wega/Mobs/Customization/human_hair.rsi
+      state: kamina
+    - sprite: _Wega/Mobs/Customization/human_hair.rsi
+      state: kamina_secondary
+
 # Gradient
 - type: marking
   id: HumanHairAfroGradient

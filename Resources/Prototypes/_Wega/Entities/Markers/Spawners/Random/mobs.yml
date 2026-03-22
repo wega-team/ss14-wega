@@ -17,6 +17,10 @@
     - !type:GroupSelector
       weight: 8
       children:
+      - id: SpawnMobClockworkDefender
+    - !type:GroupSelector
+      weight: 8
+      children:
       - id: SpawnMobMarrowWeaverLavaland
     - !type:GroupSelector
       weight: 5

@@ -6,3 +6,19 @@
       sprite: _Wega/Clothing/Shoes/Boots/jackboots_blue.rsi
     - type: Clothing
       sprite: _Wega/Clothing/Shoes/Boots/jackboots_blue.rsi
+      
+- type: entity
+  parent: [ClothingShoesBaseButcherable, BaseMinorContraband]
+  id: ClothingShoesBootsForsaken
+  name: forsaken boots
+  description: Cursed boots that grip the ground with an unnatural tenacity. The blood cult's dark magic ensures you'll never slip.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Shoes/Boots/cult_boots.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Shoes/Boots/cult_boots.rsi
+  - type: SlowedOverSlippery
+    slowdownModifier: 0.7
+  - type: SpeedModifierContactCapClothing
+    maxContactSprintSlowdown: 0.6
+    maxContactWalkSlowdown: 0.6

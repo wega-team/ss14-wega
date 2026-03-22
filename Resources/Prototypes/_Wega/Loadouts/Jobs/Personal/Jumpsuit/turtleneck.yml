@@ -1,0 +1,273 @@
+- type: loadout
+  id: JumpskirtTurtleneckAquamarine
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtTurtleneckAquamarine
+  groupBy: "wegaTJ"    
+    
+- type: loadout
+  id: JumpsuitTurtleneckAquamarine
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitTurtleneckAquamarine  
+  groupBy: "wegaTJ"    
+    
+- type: loadout
+  id: JumpskirtTurtleneckWhite
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtTurtleneckWhite
+  groupBy: "wegaTJ"    
+    
+- type: loadout
+  id: JumpsuitTurtleneckWhite
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitTurtleneckWhite  
+  groupBy: "wegaTJ" 
+
+- type: loadout
+  id: JumpskirtTurtleneckAzure
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtTurtleneckAzure
+  groupBy: "wegaTJ"    
+    
+- type: loadout
+  id: JumpsuitTurtleneckAzure
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitTurtleneckAzure  
+  groupBy: "wegaTJ" 
+
+- type: loadout
+  id: JumpskirtTurtleneckYellow
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtTurtleneckYellow
+  groupBy: "wegaTJ"    
+    
+- type: loadout
+  id: JumpsuitTurtleneckYellow
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitTurtleneckYellow  
+  groupBy: "wegaTJ" 
+
+- type: loadout
+  id: JumpskirtTurtleneckGreen
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtTurtleneckGreen
+  groupBy: "wegaTJ"    
+    
+- type: loadout
+  id: JumpsuitTurtleneckGreen
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitTurtleneckGreen  
+  groupBy: "wegaTJ" 
+
+- type: loadout
+  id: JumpskirtTurtleneckBrown
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtTurtleneckBrown
+  groupBy: "wegaTJ"    
+    
+- type: loadout
+  id: JumpsuitTurtleneckBrown
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitTurtleneckBrown  
+  groupBy: "wegaTJ" 
+
+- type: loadout
+  id: JumpskirtTurtleneckRed
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtTurtleneckRed
+  groupBy: "wegaTJ"    
+    
+- type: loadout
+  id: JumpsuitTurtleneckRed
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitTurtleneckRed  
+  groupBy: "wegaTJ" 
+
+- type: loadout
+  id: JumpskirtTurtleneckOrange
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtTurtleneckOrange
+  groupBy: "wegaTJ"    
+    
+- type: loadout
+  id: JumpsuitTurtleneckOrange
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitTurtleneckOrange  
+  groupBy: "wegaTJ" 
+
+- type: loadout
+  id: JumpskirtTurtleneckPink
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtTurtleneckPink
+  groupBy: "wegaTJ"    
+    
+- type: loadout
+  id: JumpsuitTurtleneckPink
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitTurtleneckPink  
+  groupBy: "wegaTJ" 
+
+- type: loadout
+  id: JumpskirtTurtleneckGrey
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtTurtleneckGrey
+  groupBy: "wegaTJ"    
+    
+- type: loadout
+  id: JumpsuitTurtleneckGrey
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitTurtleneckGrey  
+  groupBy: "wegaTJ" 
+
+- type: loadout
+  id: JumpskirtTurtleneckBlue
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtTurtleneckBlue
+  groupBy: "wegaTJ"    
+    
+- type: loadout
+  id: JumpsuitTurtleneckBlue
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitTurtleneckBlue  
+  groupBy: "wegaTJ" 
+
+- type: loadout
+  id: JumpskirtTurtleneckPurple
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtTurtleneckPurple
+  groupBy: "wegaTJ"    
+    
+- type: loadout
+  id: JumpsuitTurtleneckPurple
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitTurtleneckPurple  
+  groupBy: "wegaTJ" 
+
+- type: loadout
+  id: JumpskirtTurtleneckBlack
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtTurtleneckBlack
+  groupBy: "wegaTJ"    
+    
+- type: loadout
+  id: JumpsuitTurtleneckBlack
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitTurtleneckBlack  
+  groupBy: "wegaTJ" 
+
+- type: loadout
+  id: JumpskirtTurtleneckSalat
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtTurtleneckSalat
+  groupBy: "wegaTJ"    
+    
+- type: loadout
+  id: JumpsuitTurtleneckSalat
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitTurtleneckSalat  
+  groupBy: "wegaTJ" 
+
+- type: loadout
+  id: JumpsuitTurtleneckSalatblack
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitTurtleneckSalatblack
+  groupBy: "wegaTJ"    
+    
+- type: loadout
+  id: JumpskirtTurtleneckBlackSleeveless
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtTurtleneckBlackSleeveless  
+  groupBy: "wegaTJ" 
+
+- type: loadout
+  id: JumpsuitTurtleneckBlackSleeveless
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitTurtleneckBlackSleeveless
+  groupBy: "wegaTJ"    
+    
+- type: loadout
+  id: JumpsuitTurtleneckWhiteBlackSleeveless
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitTurtleneckWhiteBlackSleeveless  
+  groupBy: "wegaTJ" 
+  
+- type: loadout
+  id: JumpsuitTurtleneckWhiteSleeveless
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitTurtleneckWhiteSleeveless
+  groupBy: "wegaTJ"    
+    
+- type: loadout
+  id: JumpskirtTurtleneckWhiteSleeveless
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtTurtleneckWhiteSleeveless
+  groupBy: "wegaTJ" 
+
+- type: loadout
+  id: ClothingUniformJumpskirtPurpleTurtleneckDress
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtPurpleTurtleneckDress  
+  groupBy: "wegaTJ" 
+
+- type: loadout
+  id: ClothingUniformJumpskirtBlueTurtleneckDress
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtBlueTurtleneckDress
+  groupBy: "wegaTJ"    
+    
+- type: loadout
+  id: ClothingUniformJumpskirtYellowTurtleneckDress
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtYellowTurtleneckDress  
+  groupBy: "wegaTJ" 
+  
+- type: loadout
+  id: ClothingUniformJumpskirtGreenTurtleneckDress
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtGreenTurtleneckDress
+  groupBy: "wegaTJ"    
+    
+- type: loadout
+  id: ClothingUniformJumpskirtRedTurtleneckDress
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtRedTurtleneckDress
+  groupBy: "wegaTJ" 
+
+  # - JumpskirtTurtleneckAquamarine   
+  # - JumpsuitTurtleneckAquamarine
+  # - JumpskirtTurtleneckWhite
+  # - JumpsuitTurtleneckWhite
+  # - JumpskirtTurtleneckAzure
+  # - JumpsuitTurtleneckAzure
+  # - JumpskirtTurtleneckYellow
+  # - JumpsuitTurtleneckYellow
+  # - JumpskirtTurtleneckGreen
+  # - JumpsuitTurtleneckGreen
+  # - JumpskirtTurtleneckBrown
+  # - JumpsuitTurtleneckBrown
+  # - JumpskirtTurtleneckRed
+  # - JumpsuitTurtleneckRed
+  # - JumpskirtTurtleneckOrange
+  # - JumpsuitTurtleneckOrange
+  # - JumpskirtTurtleneckPink
+  # - JumpsuitTurtleneckPink
+  # - JumpskirtTurtleneckGrey
+  # - JumpsuitTurtleneckGrey
+  # - JumpskirtTurtleneckBlue
+  # - JumpsuitTurtleneckBlue
+  # - JumpskirtTurtleneckPurple
+  # - JumpsuitTurtleneckPurple
+  # - JumpskirtTurtleneckBlack
+  # - JumpsuitTurtleneckBlack
+  # - JumpskirtTurtleneckSalat
+  # - JumpsuitTurtleneckSalat
+  # - JumpsuitTurtleneckSalatblack
+  # - JumpskirtTurtleneckBlackSleeveless
+  # - JumpsuitTurtleneckBlackSleeveless
+  # - JumpsuitTurtleneckWhiteBlackSleeveless
+  # - JumpsuitTurtleneckWhiteSleeveless
+  # - JumpskirtTurtleneckWhiteSleeveless
+  # - ClothingUniformJumpskirtPurpleTurtleneckDress
+  # - ClothingUniformJumpskirtBlueTurtleneckDress
+  # - ClothingUniformJumpskirtYellowTurtleneckDress
+  # - ClothingUniformJumpskirtGreenTurtleneckDress
+  # - ClothingUniformJumpskirtRedTurtleneckDress

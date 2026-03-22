@@ -1,175 +1,27 @@
 - type: vendingMachineInventory
   id: FashionOMatInventory
   startingInventory:
-    # Head
-    ClothingHeadHatFlowerWreath: 3
-    ClothingHeadHatHairflower: 3
-    ClothingHeadWehcellentCap: 3
-    ClothingHeadHatUshanka: 5
-    ClothingHeadHatStrawHat: 3
-    ClothingHeadHatCanadaBeanie: 12
-    ClothingHeadHatMagician: 3
-    ClothingHeadHatHetmanHat: 3
-    ClothingOuterPonchoClassic: 3
-    ClothingHeadHatCowboyBrown: 3
-    ClothingHeadHatCowboyBlack: 3
-    ClothingHeadHatCowboyGrey: 3
-    ClothingHeadHatCowboyRed: 3
-    ClothingHeadHatCowboyWhite: 3
-    ClothingHeadHatCowboyBountyHunter: 3
-    ClothingHeadFishCap: 3
-    ClothingHeadPropellerHat: 3
-    ClothingHeadHatSombrero: 3
-    ClothingHeadHatFez: 3
     ClothingHeadHatSolidHeadband: 3
-    ClothingHeadHatWizard: 3
-    ClothingHeadHatRedwizard: 3
     ClothingHeadHatAnimalCatBlack: 2
     ClothingHeadHatAnimalCat: 2
-    SprayFlowerPin: 3
-    # Eyes
     ClothingEyesSalesman: 3
     ClothingEyesGlassesJensen: 3
     ClothingEyesEyepatch: 3
     ClothingEyesGlassesMonocle: 3
-    # Neck
     ClothingMaskNeckGaiter: 3
     ClothingMaskNeckGaiterRed: 3
-    ClothingOuterPoncho: 3
     ClothingNeckGoldTie: 5
-    ClothingNeckScarfLongWhite: 5
-    ClothingNeckScarfLongPurple: 5
-    ClothingNeckScarfLongGreen: 5
-    ClothingNeckScarfLongBlack: 5
-    ClothingNeckScarfLongOrange: 5
-    ClothingNeckScarfLongYellow: 5
-    ClothingNeckScarfLongRed: 5
-    ClothingNeckScarfLongBlue: 5
-    ClothingNeckScarfLongPink: 5
-    ClothingNeckScarfStripedWhite: 5
-    # Belt
     ClothingBeltSuspendersRed: 3
     ClothingBeltSuspendersBlack: 3
     ClothingBeltBrownSuspenders: 5
-    # Outerclothing
-    ClothingOuterHoodieBlack: 3
-    ClothingOuterCoatExpensive: 3
-    ClothingOuterCoatJensen: 3
-    ClothingOuterDutch: 5
-    ClothingOuterWhiteSweatshirtTop: 5
-    ClothingOuterGraySweatshirtTop: 5
-    ClothingOuterBlackSweatshirtTop: 5
-    ClothingOuterLettermanNanoTrasen: 5
-    ClothingOuterLettermanSyndie: 5
-    ClothingOuterLettermanBlack: 5
-    ClothingOuterCoatAshen: 3
-    ClothingOuterApronBar: 5
-    ClothingOuterHoodieGrey: 3
-    ClothingOuterCoatGentle: 5
-    # Costumes
-    ClothingNeckHorrific: 3
-    ClothingUniformJumpsuitSuperstarCop: 3
-    ClothingOuterDiscoAssBlazer: 3
-    ClothingShoesGreenLizardskin: 3
-    ClothingEyesBinoclardLenses: 3
-    ClothingHandsGlovesAerostatic: 3
-    ClothingUniformJumpsuitAerostatic: 3
-    ClothingOuterAerostaticBomberJacket: 3
-    ClothingShoesAerostatic: 3
-    ClothingUniformJumpskirtSchool: 3
-    ClothingShoesSchoolBlack: 3
-    ClothingShoesSchoolWhite: 3
-    ClothingUniformJumpsuitDameDane: 3
-    ClothingShoesDameDane: 3
-    ClothingOuterDameDane: 3
-    # Uniform
-    ClothingUniformJumpsuitMime: 3
-    ClothingUniformJumpskirtMime: 3
-    ClothingUniformJumpskirtBlackElegantDress: 3
-    ClothingUniformJumpskirtGreenElegantDress: 3
-    ClothingUniformJumpskirtRedElegantDress: 3
-    ClothingUniformJumpskirtBlueElegantDress: 3
-    ClothingUniformJumpskirtPurpleElegantDress: 3
-    ClothingUniformJumpsuitTacticool: 3
-    ClothingUniformJumpskirtTacticool: 3
-    ClothingUniformJumpsuitTurtleneckTactick: 3
-    ClothingUniformJumpsuitFamilyGuy: 3
-    ClothingUniformJumpsuitDenimPants: 5
-    ClothingUniformJumpsuitBlackPants: 5
-    ClothingUniformJumpsuitWhitePants: 5
-    ClothingUniformJumpsuitBlackShorts: 5
-    ClothingUniformJumpsuitWhiteShorts: 5
-    ClothingUniformJumpsuitDenim: 5
-    ClothingUniformJumpsuitCamouflageTshirt: 5
-    ClothingUniformJumpsuitCamouflageTshirtDesert: 5
-    ClothingUniformJumpsuitSerious: 5
-    ClothingUniformJumpsuitBlackShirt: 5
-    ClothingUniformJumpsuitBlueShirt: 5
-    ClothingUniformJumpsuitPurpleShirt: 5
-    ClothingUniformJumpsuitRedShirt: 5
-    ClothingUniformJumpsuitWhiteShirt: 5
-    ClothingUniformJumpsuitFancyShirt: 5
-    ClothingUniformJumpsuitRedPlaidShirt: 5
-    ClothingUniformJumpsuitHawaiiShirt: 5
-    ClothingUniformJumpsuitGothicAttire: 5
-    ClothingUniformJumpsuitOldGreySuit: 5
-    ClothingUniformJumpsuitOldBrownSuit: 5
-    ClothingUniformJumpsuitSweatshirtBright: 5
-    ClothingUniformJumpsuitTuxedo: 5
-    ClothingUniformJumpsuitTuxedoWhite: 5
-    ClothingUniformJumpsuitTuxedoRed: 5
-    ClothingUniformJumpsuitTuxedoHell: 5
-    ClothingUniformDressVintage: 1
-    ClothingUniformTangoDressBlack: 1
-    ClothingUniformTangoDressWhite: 1
-    ClothingUniformSwimBlack: 2
-    ClothingUniformSwimBlue: 1
-    ClothingUniformSwimDarkGreen: 1
-    ClothingUniformSwimGreen: 2
-    ClothingUniformSwimPurple: 2
-    ClothingUniformSwimRed: 1
-    ClothingUniformJumpsuitRedVictorianSuit: 5
-    ClothingUniformJumpsuitBlackVictorianSuit: 5
-    ClothingUniformJumpsuitBarberBrown: 5
-    ClothingUniformJumpsuitBarber: 5
-    ClothingUniformKimanoZero: 5
-    ClothingUniformJumpsuitBartenderVestGreen: 3
-    ClothingUniformJumpsuitBartenderVestRed: 3
-    ClothingUniformJumpsuitBartenderVest: 3
-    ClothingUniformJumpsuitBartenderGreen: 3
-    ClothingUniformJumpsuitBartenderRed: 3
-    ClothingUniformJumpskirtDetective: 3
-    ClothingUniformJumpsuitDetective: 3
-    ClothingUniformJumpskirtDetectiveGrey: 3
-    ClothingUniformJumpsuitDetectiveGrey: 3
-    ClothingUniformJumpsuitJournalist: 3
-    ClothingUniformJumpsuitPsychologist: 3
-    ClothingUniformJumpsuitSecBlue: 5
-    # Boots
-    ClothingShoesBootsCowboyBrown: 3
-    ClothingShoesBootsCowboyWhite: 3
-    ClothingShoesBootsCowboyBlack: 3
-    ClothingShoesBootsCowboyFancy: 3
-    ClothingShoesHeelsBlack: 3
-    ClothingShoesLeather: 3
-    ClothingShoesHighheelBoots: 1
-    # Gloves
+    OfficalSelector: 15
+    OtherModeSuitSelector: 15
+    OtherClouthSelector: 10
     ClothingHandsCatPawsWhite: 3
     ClothingHandsCatPawsBrown: 3
     ClothingHandsCatPawsBlack: 3
     ClothingHandsCatPawsBlackWhite: 3
-    # Chokers
-    ClothingNeckChokerBlack: 2 # Corvax-Wega-Add
-    ClothingNeckChokerCyan: 2 # Corvax-Wega-Add
-    ClothingNeckChokerGreen: 2 # Corvax-Wega-Add
-    ClothingNeckChokerLatex: 2 # Corvax-Wega-Add
-    ClothingNeckChokerOrange: 2 # Corvax-Wega-Add
-    ClothingNeckChokerPurple: 2 # Corvax-Wega-Add
-    ClothingNeckChokerRed: 2 # Corvax-Wega-Add
-    ClothingNeckChokerSpike: 2 # Corvax-Wega-Add
-    ClothingNeckChokerTealBlack: 2 # Corvax-Wega-Add
-    ClothingNeckChokerWhite: 2 # Corvax-Wega-Add
-    ClothingNeckChokerYellow: 2 # Corvax-Wega-Add
+    ChoeckerSelector: 10
   contrabandInventory:
     ClothingNeckScarfUnrobust: 1
     ClothingUniformJumpsuitOperative: 3

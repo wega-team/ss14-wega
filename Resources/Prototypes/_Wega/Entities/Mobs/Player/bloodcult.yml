@@ -581,7 +581,7 @@
     description: ghost-role-information-idol-description
   - type: HTN
     rootTask:
-      task: SimpleRangedHostileCompound
+      task: MouseCompound
   - type: Destructible
     thresholds:
     - trigger:

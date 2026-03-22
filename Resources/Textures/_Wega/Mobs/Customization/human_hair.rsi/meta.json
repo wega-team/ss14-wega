@@ -1090,6 +1090,34 @@
       {
         "name": "ziegler_secondary",
         "directions": 4
+      },
+      {
+        "name": "melissa",
+        "directions": 4
+      },
+      {
+        "name": "melissa_secondary",
+        "directions": 4
+      },
+      {
+        "name": "cute_hair",
+        "directions": 4
+      },
+      {
+        "name": "cute_hair_secondary1",
+        "directions": 4
+      },
+      {
+        "name": "cute_hair_secondary2",
+        "directions": 4
+      },
+      {
+        "name": "kamina",
+        "directions": 4
+      },
+      {
+        "name": "kamina_secondary",
+        "directions": 4
       }
     ]
   }
