@@ -318,6 +318,7 @@
     - LVCable
     - MVCable
     - HVCable
+    - SurveillanceCameraGeneral # Corvax-Wega-Edit
     - CableTerminal
     - Deconstruct
   - type: LimitedCharges
