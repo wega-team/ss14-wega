@@ -92,10 +92,12 @@ public sealed partial class ResearchConsoleMenu : FancyWindow
         var disciplineText = Loc.GetString("research-discipline-none");
         var disciplineColor = Color.Gray;
 
+        /*Corvax-Wega-edit-start
         var msg = new FormattedMessage();
-        //msg.AddMarkupOrThrow(Loc.GetString("research-console-menu-main-discipline", # Corvax-Wega-edit
+        msg.AddMarkupOrThrow(Loc.GetString("research-console-menu-main-discipline",
             ("name", disciplineText) ("color", disciplineColor);
         MainDisciplineLabel.SetMessage(msg);
+        Corvax-Wega-edit-end*/
 
         TierDisplayContainer.Children.Clear();
         foreach (var disciplineId in database.SupportedDisciplines)

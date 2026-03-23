@@ -2,7 +2,6 @@
 
 research-console-menu-title = Консоль R&D
 research-console-menu-research-points-text = Очки исследований: { $points }
-research-console-menu-main-discipline = Все дисциплины доступны к иследованию
 research-console-menu-server-selection-button = Список серверов
 research-console-menu-server-sync-button = Синхронизировать
 research-console-menu-server-research-button = Исследовать
