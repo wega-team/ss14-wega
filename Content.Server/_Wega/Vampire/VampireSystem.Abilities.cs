@@ -817,6 +817,7 @@ public sealed partial class VampireSystem
 
         _emp.EmpPulse(originCoords, 4, 5000, TimeSpan.FromSeconds(30), uid);
 
+		SubtractBloodEssence(uid, 20);
         args.Handled = true;
     }
 
@@ -854,14 +855,14 @@ public sealed partial class VampireSystem
         {
             component.PowerActive = false;
             _alerts.ClearAlert(uid, "AlertEternalDarkness");
-            RaiseNetworkEvent(new VampireToggleFovEvent(netEntity));
+            RaiseNetworkEvent(new VampireToggleFovEvent(netEntity, true));
             args.Handled = true;
             return;
         }
 
         _alerts.ShowAlert(uid, "AlertEternalDarkness", 0);
         component.PowerActive = true;
-        RaiseNetworkEvent(new VampireToggleFovEvent(netEntity));
+        RaiseNetworkEvent(new VampireToggleFovEvent(netEntity, false));
         _popup.PopupEntity(Loc.GetString("vampire-blood-true-power-started"), uid, uid, PopupType.SmallCaution);
 
         void ExecuteTick()
@@ -878,7 +879,7 @@ public sealed partial class VampireSystem
             {
                 _popup.PopupEntity(Loc.GetString("vampire-blood-sacrifice-insufficient-blood"), uid, uid, PopupType.SmallCaution);
                 component.PowerActive = false;
-                RaiseNetworkEvent(new VampireToggleFovEvent(netEntity));
+                RaiseNetworkEvent(new VampireToggleFovEvent(netEntity, true));
                 _alerts.ClearAlert(uid, "AlertEternalDarkness");
                 return;
             }

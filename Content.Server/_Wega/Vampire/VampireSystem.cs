@@ -47,6 +47,7 @@ using Content.Shared.Damage.Systems;
 using Content.Shared.Damage.Components;
 using Content.Shared.Tag;
 using Content.Shared.Shaders;
+using Content.Shared.SSDIndicator;
 
 namespace Content.Server.Vampire;
 
@@ -229,6 +230,15 @@ public sealed partial class VampireSystem : SharedVampireSystem
             _popup.PopupEntity(Loc.GetString("vampire-blooddrink-not-thrall"), uid, uid, PopupType.SmallCaution);
             return false;
         }
+
+        if (TryComp<SSDIndicatorComponent>(args.Target, out var targetSSDComponent))
+        {
+			if (targetSSDComponent.IsSSD)
+			{
+				_popup.PopupEntity(Loc.GetString("vampire-blooddrink-ssd"), uid, uid, PopupType.SmallCaution);
+				return false;
+			}
+		}
 
         return true;
     }
