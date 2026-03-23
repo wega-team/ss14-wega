@@ -202,7 +202,7 @@
     state: holding
   discipline: Industrial
   tier: 3
-  cost: 15000
+  cost: 30000 # Corvax-Wega-Edit
   recipeUnlocks:
   - ClothingBackpackHolding
   - ClothingBackpackSatchelHolding
@@ -216,7 +216,7 @@
     state: microreactor
   discipline: Industrial
   tier: 3
-  cost: 10000
+  cost: 25000 # Corvax-Wega-Edit
   recipeUnlocks:
   - PowerCellMicroreactor
   - PowerCellHyper

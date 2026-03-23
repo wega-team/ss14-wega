@@ -223,7 +223,7 @@
     state: icon
   discipline: Arsenal
   tier: 3
-  cost: 15000
+  cost: 30000 # Corvax-Wega-Edit
   recipeUnlocks:
   - WeaponAdvancedLaser
   - WeaponTemperatureGun # Corvax-Wega-Arsenal
@@ -251,7 +251,7 @@
     state: icon
   discipline: Arsenal
   tier: 3
-  cost: 15000
+  cost: 30000 # Corvax-Wega-Edit
   recipeUnlocks:
   - GrenadeEMP
   - PowerCageHigh

@@ -141,7 +141,7 @@
     state: beakerbluespace
   discipline: Biochemical
   tier: 3
-  cost: 10000
+  cost: 20000
   recipeUnlocks:
   - BluespaceBeaker
   - SyringeBluespace
@@ -154,7 +154,7 @@
     state: syringe_gun
   discipline: Biochemical
   tier: 3
-  cost: 15000
+  cost: 30000
   recipeUnlocks:
   - LauncherSyringe
   - MiniSyringe
