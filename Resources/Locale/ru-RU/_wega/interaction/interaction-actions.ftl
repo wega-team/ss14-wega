@@ -7,7 +7,7 @@ interaction-knockdown-name = Опустить
 interaction-pat-name = Погладить
 interaction-pat-ears-name = Почесать за ушком
 interaction-blessing-name = Благославить
-interaction-pull-tail-name = потянуть за хвост
+interaction-pull-tail-name = Потянуть за хвост
 
 # Harm
 interaction-harm-twist = Заломать
