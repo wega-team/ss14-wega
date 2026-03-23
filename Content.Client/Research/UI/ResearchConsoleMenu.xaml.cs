@@ -95,7 +95,7 @@ public sealed partial class ResearchConsoleMenu : FancyWindow
         /*Corvax-Wega-edit-start
         var msg = new FormattedMessage();
         msg.AddMarkupOrThrow(Loc.GetString("research-console-menu-main-discipline",
-            ("name", disciplineText) ("color", disciplineColor);
+            ("name", disciplineText), ("color", disciplineColor);
         MainDisciplineLabel.SetMessage(msg);
         Corvax-Wega-edit-end*/
 

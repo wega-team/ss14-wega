@@ -225,6 +225,7 @@ public abstract class SharedResearchSystem : EntitySystem
         var discipline = PrototypeManager.Index(prototype.Discipline);
         if (prototype.Tier < discipline.LockoutTier)
             return;
+        //component.MainDiscipline = prototype.Discipline; # Corvax-Wega-Edit
         Dirty(uid, component);
 
         var ev = new TechnologyDatabaseModifiedEvent();
