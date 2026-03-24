@@ -2,7 +2,6 @@
 holopad-window-title = { CAPITALIZE($title) }
 holopad-window-subtitle = [color=white][bold]Система голографической связи[/bold][/color]
 holopad-window-options = [color=darkgray][font size=10][italic]Пожалуйста, выберите вариант из списка ниже[/italic][/font][/color]
-
 # Call status
 holopad-window-no-calls-in-progress = Никакие голо-звонки не ведутся
 holopad-window-incoming-call = Входящий голо-звонок от:
@@ -15,7 +14,6 @@ holopad-window-ai-request = Ваше присутствие запрашивае
 holopad-window-emergency-broadcast-in-progress = [color=#cf2f2f][bold]Ведётся экстренная трансляция[/bold][/color]
 holopad-window-controls-locked-out = Управление этим устройством заблокировано:
 holopad-window-controls-unlock-countdown = Оно автоматически разблокируется через: { $countdown }
-
 # Buttons
 holopad-window-answer-call = Ответить на звонок
 holopad-window-end-call = Завершить звонок
@@ -24,25 +22,20 @@ holopad-window-activate-projector = Активировать проектор
 holopad-window-emergency-broadcast = Экстренная трансляция
 holopad-window-emergency-broadcast-with-countdown = Экстренная трансляция ({ $countdown })
 holopad-window-access-denied = В доступе отказано
-
 # Contact list
 holopad-window-select-contact-from-list = Выберите контакт для начала голо-звонка
 holopad-window-fetching-contacts-list = Нет голопадов, с которыми можно связаться
 holopad-window-contact-label = { CAPITALIZE($label) }
 holopad-window-filter-line-placeholder = Поиск контакта
-
 # Flavor
 holopad-window-flavor-left = ⚠ Не входите пока проектор активен
 holopad-window-flavor-right = v3.0.9
-
 # Holograms
 holopad-hologram-name = голограмма { $name }
-
 # Holopad actions
 holopad-activate-projector-verb = Активировать голопроектор
 holopad-ai-is-unable-to-reach-holopad = Вы не можете связаться с источником вызова, он находится слишком далеко от вашего ядра.
 holopad-ai-is-unable-to-activate-projector = Вы не можете активировать голопроектор, он находится слишком далеко от вашего ядра.
-
 # Mapping prototypes
 # General
 holopad-general-tools = Общий — Инструменты
@@ -54,7 +47,6 @@ holopad-general-lounge = Общий — Зона отдыха
 holopad-general-arcade = Общий — Аркады
 holopad-general-evac = Общий — Эвак
 holopad-general-arrivals = Общий — Прибытие
-
 # Command
 holopad-command-bridge = Командование — Мостик
 holopad-command-vault = Командование — Хранилище
@@ -68,7 +60,6 @@ holopad-command-qm = Командование — КМ
 holopad-command-ce = Командование — СИ
 holopad-command-rd = Командование — НР
 holopad-command-hos = Командование — ГСБ
-
 # Science
 holopad-science-anomaly = Научный — Аномалистика
 holopad-science-artifact = Научный — Ксеноархеология
@@ -78,7 +69,6 @@ holopad-science-robotics = Научный — Робототехника
 holopad-science-rnd = Научный — РНД
 holopad-science-front = Научный — Приёмная
 holopad-science-breakroom = Научный — Комната отдыха
-
 # Medical
 holopad-medical-medbay = Медицинский — Медбей
 holopad-medical-chemistry = Медицинский — Химия
@@ -90,7 +80,6 @@ holopad-medical-virology = Медицинский — Вирусология
 holopad-medical-front = Медицинский — Приёмная
 holopad-medical-breakroom = Медицинский — Комната отдыха
 holopad-medical-clinic = Медицинский — Клиника
-
 # Cargo
 holopad-cargo-front = Снабжение — Приёмная
 holopad-cargo-bay = Снабжение — Грузовой отсек
@@ -99,7 +88,6 @@ holopad-cargo-breakroom = Снабжение — Комната отдыха
 holopad-cargo-ats = Снабжение — АТС
 holopad-cargo-shuttle = Снабжение — Шаттл
 holopad-cargo-mailroom = Снабжение — Почта
-
 # Engineering
 holopad-engineering-atmos-front = Атмос — Приёмная
 holopad-engineering-atmos-main = Атмос — Главный
@@ -112,8 +100,7 @@ holopad-engineering-tech-vault = Инженерный — Техническое
 holopad-engineering-ame = Инженерный — ДАМ
 holopad-engineering-power = Инженерный — Питание
 holopad-engineering-main = Инженерный — Главный
-
-# Security
+# S ecurity
 holopad-security-front = СБ — Приёмная
 holopad-security-brig = СБ — Бриг
 holopad-security-warden = СБ — Смотритель
@@ -128,7 +115,6 @@ holopad-security-locker-room = СБ — Раздевалка
 holopad-security-brig-med = СБ — Бригмед
 holopad-security-evac-checkpoint = СБ — КПП Эвакуация
 holopad-security-arrivals-checkpoint = СБ — КПП Прибытие
-
 # Service
 holopad-service-janitor = Сервис — Уборщик
 holopad-service-bar = Сервис — Бар
@@ -144,7 +130,6 @@ holopad-service-musician = Сервис — Музыкант
 holopad-service-mime = Сервис — Мим
 holopad-service-clown-mime = Сервис — Клоун/Мим
 holopad-service-gameroom = Сервис — Игровая комната
-
 # AI
 holopad-ai-core = ИИ — Ядро
 holopad-ai-main = ИИ — Главный
@@ -152,10 +137,8 @@ holopad-ai-upload = ИИ — Загрузка
 holopad-ai-backup-power = ИИ — Резервное питание
 holopad-ai-entrance = ИИ — Вход
 holopad-ai-chute = ИИ — Транспортный блок
-
 # Long Range
 holopad-station-bridge = Станция — Мостик
 holopad-station-cargo-bay = Станция — Грузовой отсек
-
 # CentComm
 holopad-centcomm-evac = Центком — Эвакуационный шаттл

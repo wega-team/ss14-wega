@@ -12,7 +12,6 @@ month-9 = Сентябрь
 month-10 = Октябрь
 month-11 = Ноябрь
 month-12 = Декабрь
-
 datepicker-month = Месяц
 datepicker-day = День
 datepicker-year = Год

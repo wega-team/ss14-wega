@@ -34,11 +34,3 @@
       accentVColor: "#DFDFDF"
     - type: Icon
       state: pda-seniorofficer
-    - type: CartridgeLoader
-      preinstalled:
-      - CrewManifestCartridge
-      - NotekeeperCartridge
-      - NanoTaskCartridge
-      - NewsReaderCartridge
-      - WantedListCartridge
-      - AstroNavCartridge

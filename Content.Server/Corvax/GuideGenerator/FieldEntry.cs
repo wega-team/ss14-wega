@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Globalization;
-using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using Robust.Shared.Serialization.Markdown;
@@ -12,8 +11,6 @@ namespace Content.Server.Corvax.GuideGenerator;
 
 public static class FieldEntry
 {
-    private static readonly Regex DoubleEntryRegex = new(@"^[+-]?\d+\.\d+$");
-
     public static object? DataNodeToObject(DataNode node)
     {
         if (node is MappingDataNode mapping)
@@ -39,34 +36,13 @@ public static class FieldEntry
 
         if (node is SequenceDataNode sequence)
         {
-            var items = new List<object?>();
+            var list = new List<object?>();
             foreach (var item in sequence)
             {
-                items.Add(DataNodeToObject(item));
+                list.Add(DataNodeToObject(item));
             }
 
-            var typedMap = new Dictionary<string, object?>();
-            var canRewrite = true;
-            foreach (var obj in items)
-            {
-                if (obj is not Dictionary<string, object?> dict ||
-                    !dict.TryGetValue("type", out var typeVal) ||
-                    typeVal is null)
-                {
-                    canRewrite = false;
-                    break;
-                }
-
-                var key = $"type:{typeVal}";
-                var cloned = new Dictionary<string, object?>(dict);
-                cloned.Remove("type");
-                typedMap[key] = cloned;
-            }
-
-            if (canRewrite && typedMap.Count > 0)
-                return typedMap;
-
-            return items;
+            return list;
         }
 
         if (node is ValueDataNode value)
@@ -82,7 +58,8 @@ public static class FieldEntry
             if (int.TryParse(raw, NumberStyles.Integer, CultureInfo.InvariantCulture, out var intRes))
                 return intRes;
 
-            if (DoubleEntryRegex.IsMatch(raw) &&
+            // Accept decimals only in a strict single-dot format.
+            if (Regex.IsMatch(raw, @"^[+-]?\d+\.\d+$") &&
                 double.TryParse(raw, NumberStyles.Float | NumberStyles.AllowThousands, CultureInfo.InvariantCulture, out var doubleRes))
                 return doubleRes;
 
@@ -90,44 +67,6 @@ public static class FieldEntry
         }
 
         return node.ToString();
-    }
-
-    public static void NormalizeFlagsToSequences(object instance, MappingDataNode node)
-    {
-        var type = instance.GetType();
-        const BindingFlags flags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.IgnoreCase;
-
-        foreach (var key in node.Keys.ToList())
-        {
-            var prop = type.GetProperty(key, flags);
-            MemberInfo? member = prop != null && prop.GetGetMethod(true) != null ? prop : type.GetField(key, flags);
-            if (member == null)
-                continue;
-
-            var memberType = member is PropertyInfo p ? p.PropertyType : ((FieldInfo)member).FieldType;
-            if (!memberType.IsEnum)
-                continue;
-
-            if (memberType.GetCustomAttribute<FlagsAttribute>(false) == null)
-                continue;
-
-            var value = member is PropertyInfo p2 ? p2.GetValue(instance) : ((FieldInfo)member).GetValue(instance);
-            if (value == null)
-                continue;
-
-            var intVal = Convert.ToInt64(value);
-            var names = new List<string>();
-            foreach (var v in Enum.GetValues(memberType))
-            {
-                var i = Convert.ToInt64(v);
-                if (i == 0)
-                    continue;
-                if ((i & (i - 1)) == 0 && (intVal & i) != 0)
-                    names.Add(Enum.GetName(memberType, v)!);
-            }
-
-            node[key] = new SequenceDataNode(names.ToArray());
-        }
     }
 
     public static void EnsureFieldsCollectionsInitialized(object instance)

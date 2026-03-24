@@ -11,10 +11,6 @@
   - Headphones
   - ThreeCandles # Corvax-Wega-group
   # Corvax-Wega-start
-  - ToyBloodDagger # Achievements
-  - OtherClouthSelector
-  - ScarfSelector
-  - ChoeckerSelector
   - PlushieLizard
   - PlushieSpaceLizard
   - PlushieVulpa
@@ -27,8 +23,7 @@
   - PlushieSharkPink
   - PlushieSharkGrey
   - PlushieSharkBlue
-  - ClothingMaskNeckGaiter
-  - ClothingMaskNeckGaiterRed
+  - ToyBloodDagger # Achievements
   # Corvax-Wega-end
   - Lighter
   - CigPackGreen
@@ -112,10 +107,8 @@
   - GlassesJamjar
   - GlassesJensen
   # Corvax-Wega-start
-  - ClothingEyesGlassesMonocle
   - ClothingEyesGlassesCheapSunglasses
   - ClothingEyesSalesman
-  - ClothingEyesEyepatch
   # Corvax-Wega-end
 
 - type: loadoutGroup
@@ -335,6 +328,7 @@
   - ClothingUniformJumpskirtNecklineSweater
   - ClothingUniformJumpskirtPinkKimano
   - ClothingUniformJumpskirtBlueKimono
+  - ClothingUniformJumpskirtElegantTacticalmaid
   - ClothingUniformJumpsuitStylishShirt
   - ClothingUniformJumpsuitManlyPants
   - ClothingUniformJumpsuitBeautifulSweater
@@ -382,8 +376,8 @@
   - JumpsuitCasualRed
   - JumpskirtCasualRed
   - JumpsuitCasualGreen
-  - JumpskirtCasualGreen 
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtCasualGreen
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
@@ -437,24 +431,6 @@
   - ClothingUniformJumpsuitLawyerBlack
   - ClothingUniformJumpskirtLawyerGood
   - ClothingUniformJumpsuitLawyerGood
-  - ClothingUniformJumpsuitRedVictorianSuit
-  - ClothingUniformJumpsuitBlackVictorianSuit
-  - ClothingUniformJumpsuitBarberBrown
-  - ClothingUniformJumpsuitBarber
-  - ClothingUniformJumpsuitTuxedo
-  - ClothingUniformJumpsuitTuxedoWhite
-  - ClothingUniformJumpsuitTuxedoRed
-  - ClothingUniformJumpsuitTuxedoHell
-  - ClothingUniformDressVintage
-  - ClothingUniformTangoDressBlack
-  - ClothingUniformTangoDressWhite
-  - ClothingUniformJumpsuitBlackShirt
-  - ClothingUniformJumpsuitBlueShirt
-  - ClothingUniformJumpsuitPurpleShirt
-  - ClothingUniformJumpsuitRedShirt
-  - ClothingUniformJumpsuitWhiteShirt
-  - ClothingUniformJumpsuitFancyShirt
-  - ClothingUniformJumpsuitRedPlaidShirt
   - ClothingUniformTopColorWhite
   - ClothingUniformTopColorGrey
   - ClothingUniformTopColorBlack
@@ -590,11 +566,6 @@
   - ClothingUniformJumpsuitBeautifulSweater
   # Corvax-Wega-Sponsors-end
 # Corvax-Wega-add-start
-  - ClothingUniformJumpsuitBartenderVestGreen
-  - ClothingUniformJumpsuitBartenderVestRed
-  - ClothingUniformJumpsuitBartenderVest
-  - ClothingUniformJumpsuitBartenderGreen
-  - ClothingUniformJumpsuitBartenderRed
   - JumpsuitColorWhite
   - JumpskirtColorWhite
   - JumpsuitColorBlack
@@ -637,8 +608,8 @@
   - JumpsuitCasualRed
   - JumpskirtCasualRed
   - JumpsuitCasualGreen
-  - JumpskirtCasualGreen 
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtCasualGreen
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
@@ -692,24 +663,6 @@
   - ClothingUniformJumpsuitLawyerBlack
   - ClothingUniformJumpskirtLawyerGood
   - ClothingUniformJumpsuitLawyerGood
-  - ClothingUniformJumpsuitRedVictorianSuit
-  - ClothingUniformJumpsuitBlackVictorianSuit
-  - ClothingUniformJumpsuitBarberBrown
-  - ClothingUniformJumpsuitBarber
-  - ClothingUniformJumpsuitTuxedo
-  - ClothingUniformJumpsuitTuxedoWhite
-  - ClothingUniformJumpsuitTuxedoRed
-  - ClothingUniformJumpsuitTuxedoHell
-  - ClothingUniformDressVintage
-  - ClothingUniformTangoDressBlack
-  - ClothingUniformTangoDressWhite
-  - ClothingUniformJumpsuitBlackShirt
-  - ClothingUniformJumpsuitBlueShirt
-  - ClothingUniformJumpsuitPurpleShirt
-  - ClothingUniformJumpsuitRedShirt
-  - ClothingUniformJumpsuitWhiteShirt
-  - ClothingUniformJumpsuitFancyShirt
-  - ClothingUniformJumpsuitRedPlaidShirt
   - ClothingUniformTopColorWhite
   - ClothingUniformTopColorGrey
   - ClothingUniformTopColorBlack
@@ -834,8 +787,8 @@
   - JumpsuitCasualRed
   - JumpskirtCasualRed
   - JumpsuitCasualGreen
-  - JumpskirtCasualGreen 
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtCasualGreen
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
@@ -889,24 +842,6 @@
   - ClothingUniformJumpsuitLawyerBlack
   - ClothingUniformJumpskirtLawyerGood
   - ClothingUniformJumpsuitLawyerGood
-  - ClothingUniformJumpsuitRedVictorianSuit
-  - ClothingUniformJumpsuitBlackVictorianSuit
-  - ClothingUniformJumpsuitBarberBrown
-  - ClothingUniformJumpsuitBarber
-  - ClothingUniformJumpsuitTuxedo
-  - ClothingUniformJumpsuitTuxedoWhite
-  - ClothingUniformJumpsuitTuxedoRed
-  - ClothingUniformJumpsuitTuxedoHell
-  - ClothingUniformDressVintage
-  - ClothingUniformTangoDressBlack
-  - ClothingUniformTangoDressWhite
-  - ClothingUniformJumpsuitBlackShirt
-  - ClothingUniformJumpsuitBlueShirt
-  - ClothingUniformJumpsuitPurpleShirt
-  - ClothingUniformJumpsuitRedShirt
-  - ClothingUniformJumpsuitWhiteShirt
-  - ClothingUniformJumpsuitFancyShirt
-  - ClothingUniformJumpsuitRedPlaidShirt
   - ClothingUniformTopColorWhite
   - ClothingUniformTopColorGrey
   - ClothingUniformTopColorBlack
@@ -1006,8 +941,8 @@
   - JumpsuitCasualRed
   - JumpskirtCasualRed
   - JumpsuitCasualGreen
-  - JumpskirtCasualGreen 
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtCasualGreen
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
@@ -1061,24 +996,6 @@
   - ClothingUniformJumpsuitLawyerBlack
   - ClothingUniformJumpskirtLawyerGood
   - ClothingUniformJumpsuitLawyerGood
-  - ClothingUniformJumpsuitRedVictorianSuit
-  - ClothingUniformJumpsuitBlackVictorianSuit
-  - ClothingUniformJumpsuitBarberBrown
-  - ClothingUniformJumpsuitBarber
-  - ClothingUniformJumpsuitTuxedo
-  - ClothingUniformJumpsuitTuxedoWhite
-  - ClothingUniformJumpsuitTuxedoRed
-  - ClothingUniformJumpsuitTuxedoHell
-  - ClothingUniformDressVintage
-  - ClothingUniformTangoDressBlack
-  - ClothingUniformTangoDressWhite
-  - ClothingUniformJumpsuitBlackShirt
-  - ClothingUniformJumpsuitBlueShirt
-  - ClothingUniformJumpsuitPurpleShirt
-  - ClothingUniformJumpsuitRedShirt
-  - ClothingUniformJumpsuitWhiteShirt
-  - ClothingUniformJumpsuitFancyShirt
-  - ClothingUniformJumpsuitRedPlaidShirt
   - ClothingUniformTopColorWhite
   - ClothingUniformTopColorGrey
   - ClothingUniformTopColorBlack
@@ -1183,6 +1100,16 @@
   - ClothingUniformJumpsuitManlyPants
   - ClothingUniformJumpsuitBeautifulSweater
   # Corvax-Wega-Sponsors-end
+
+- type: loadoutGroup
+  id: ChaplainOuterClothing
+  name: loadout-group-chaplain-outerclothing
+  minLimit: 0
+  loadouts:
+  - ChaplainPlagueSuit
+  - ChaplainNunRobe
+  - ChaplainBlackHoodie
+  - ChaplainHoodie
 # Corvax-Wega-add-start
   - JumpsuitColorWhite
   - JumpskirtColorWhite
@@ -1226,8 +1153,8 @@
   - JumpsuitCasualRed
   - JumpskirtCasualRed
   - JumpsuitCasualGreen
-  - JumpskirtCasualGreen 
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtCasualGreen
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
@@ -1281,24 +1208,6 @@
   - ClothingUniformJumpsuitLawyerBlack
   - ClothingUniformJumpskirtLawyerGood
   - ClothingUniformJumpsuitLawyerGood
-  - ClothingUniformJumpsuitRedVictorianSuit
-  - ClothingUniformJumpsuitBlackVictorianSuit
-  - ClothingUniformJumpsuitBarberBrown
-  - ClothingUniformJumpsuitBarber
-  - ClothingUniformJumpsuitTuxedo
-  - ClothingUniformJumpsuitTuxedoWhite
-  - ClothingUniformJumpsuitTuxedoRed
-  - ClothingUniformJumpsuitTuxedoHell
-  - ClothingUniformDressVintage
-  - ClothingUniformTangoDressBlack
-  - ClothingUniformTangoDressWhite
-  - ClothingUniformJumpsuitBlackShirt
-  - ClothingUniformJumpsuitBlueShirt
-  - ClothingUniformJumpsuitPurpleShirt
-  - ClothingUniformJumpsuitRedShirt
-  - ClothingUniformJumpsuitWhiteShirt
-  - ClothingUniformJumpsuitFancyShirt
-  - ClothingUniformJumpsuitRedPlaidShirt
   - ClothingUniformTopColorWhite
   - ClothingUniformTopColorGrey
   - ClothingUniformTopColorBlack
@@ -1317,17 +1226,6 @@
   - ClothingUniformTopic
   - ClothingUniformTopicCool
 # Corvax-Wega-add-end
-
-
-- type: loadoutGroup
-  id: ChaplainOuterClothing
-  name: loadout-group-chaplain-outerclothing
-  minLimit: 0
-  loadouts:
-  - ChaplainPlagueSuit
-  - ChaplainNunRobe
-  - ChaplainBlackHoodie
-  - ChaplainHoodie
 
 - type: loadoutGroup
   id: ChaplainNeck
@@ -1436,8 +1334,8 @@
   - JumpsuitCasualRed
   - JumpskirtCasualRed
   - JumpsuitCasualGreen
-  - JumpskirtCasualGreen 
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtCasualGreen
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
@@ -1491,24 +1389,6 @@
   - ClothingUniformJumpsuitLawyerBlack
   - ClothingUniformJumpskirtLawyerGood
   - ClothingUniformJumpsuitLawyerGood
-  - ClothingUniformJumpsuitRedVictorianSuit
-  - ClothingUniformJumpsuitBlackVictorianSuit
-  - ClothingUniformJumpsuitBarberBrown
-  - ClothingUniformJumpsuitBarber
-  - ClothingUniformJumpsuitTuxedo
-  - ClothingUniformJumpsuitTuxedoWhite
-  - ClothingUniformJumpsuitTuxedoRed
-  - ClothingUniformJumpsuitTuxedoHell
-  - ClothingUniformDressVintage
-  - ClothingUniformTangoDressBlack
-  - ClothingUniformTangoDressWhite
-  - ClothingUniformJumpsuitBlackShirt
-  - ClothingUniformJumpsuitBlueShirt
-  - ClothingUniformJumpsuitPurpleShirt
-  - ClothingUniformJumpsuitRedShirt
-  - ClothingUniformJumpsuitWhiteShirt
-  - ClothingUniformJumpsuitFancyShirt
-  - ClothingUniformJumpsuitRedPlaidShirt
   - ClothingUniformTopColorWhite
   - ClothingUniformTopColorGrey
   - ClothingUniformTopColorBlack
@@ -1631,8 +1511,8 @@
   - JumpsuitCasualRed
   - JumpskirtCasualRed
   - JumpsuitCasualGreen
-  - JumpskirtCasualGreen 
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtCasualGreen
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
@@ -1686,24 +1566,6 @@
   - ClothingUniformJumpsuitLawyerBlack
   - ClothingUniformJumpskirtLawyerGood
   - ClothingUniformJumpsuitLawyerGood
-  - ClothingUniformJumpsuitRedVictorianSuit
-  - ClothingUniformJumpsuitBlackVictorianSuit
-  - ClothingUniformJumpsuitBarberBrown
-  - ClothingUniformJumpsuitBarber
-  - ClothingUniformJumpsuitTuxedo
-  - ClothingUniformJumpsuitTuxedoWhite
-  - ClothingUniformJumpsuitTuxedoRed
-  - ClothingUniformJumpsuitTuxedoHell
-  - ClothingUniformDressVintage
-  - ClothingUniformTangoDressBlack
-  - ClothingUniformTangoDressWhite
-  - ClothingUniformJumpsuitBlackShirt
-  - ClothingUniformJumpsuitBlueShirt
-  - ClothingUniformJumpsuitPurpleShirt
-  - ClothingUniformJumpsuitRedShirt
-  - ClothingUniformJumpsuitWhiteShirt
-  - ClothingUniformJumpsuitFancyShirt
-  - ClothingUniformJumpsuitRedPlaidShirt
   - ClothingUniformTopColorWhite
   - ClothingUniformTopColorGrey
   - ClothingUniformTopColorBlack
@@ -1824,8 +1686,8 @@
   - JumpsuitCasualRed
   - JumpskirtCasualRed
   - JumpsuitCasualGreen
-  - JumpskirtCasualGreen 
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtCasualGreen
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
@@ -1879,24 +1741,6 @@
   - ClothingUniformJumpsuitLawyerBlack
   - ClothingUniformJumpskirtLawyerGood
   - ClothingUniformJumpsuitLawyerGood
-  - ClothingUniformJumpsuitRedVictorianSuit
-  - ClothingUniformJumpsuitBlackVictorianSuit
-  - ClothingUniformJumpsuitBarberBrown
-  - ClothingUniformJumpsuitBarber
-  - ClothingUniformJumpsuitTuxedo
-  - ClothingUniformJumpsuitTuxedoWhite
-  - ClothingUniformJumpsuitTuxedoRed
-  - ClothingUniformJumpsuitTuxedoHell
-  - ClothingUniformDressVintage
-  - ClothingUniformTangoDressBlack
-  - ClothingUniformTangoDressWhite
-  - ClothingUniformJumpsuitBlackShirt
-  - ClothingUniformJumpsuitBlueShirt
-  - ClothingUniformJumpsuitPurpleShirt
-  - ClothingUniformJumpsuitRedShirt
-  - ClothingUniformJumpsuitWhiteShirt
-  - ClothingUniformJumpsuitFancyShirt
-  - ClothingUniformJumpsuitRedPlaidShirt
   - ClothingUniformTopColorWhite
   - ClothingUniformTopColorGrey
   - ClothingUniformTopColorBlack
@@ -2048,8 +1892,8 @@
   - JumpsuitCasualRed
   - JumpskirtCasualRed
   - JumpsuitCasualGreen
-  - JumpskirtCasualGreen 
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtCasualGreen
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
@@ -2103,24 +1947,6 @@
   - ClothingUniformJumpsuitLawyerBlack
   - ClothingUniformJumpskirtLawyerGood
   - ClothingUniformJumpsuitLawyerGood
-  - ClothingUniformJumpsuitRedVictorianSuit
-  - ClothingUniformJumpsuitBlackVictorianSuit
-  - ClothingUniformJumpsuitBarberBrown
-  - ClothingUniformJumpsuitBarber
-  - ClothingUniformJumpsuitTuxedo
-  - ClothingUniformJumpsuitTuxedoWhite
-  - ClothingUniformJumpsuitTuxedoRed
-  - ClothingUniformJumpsuitTuxedoHell
-  - ClothingUniformDressVintage
-  - ClothingUniformTangoDressBlack
-  - ClothingUniformTangoDressWhite
-  - ClothingUniformJumpsuitBlackShirt
-  - ClothingUniformJumpsuitBlueShirt
-  - ClothingUniformJumpsuitPurpleShirt
-  - ClothingUniformJumpsuitRedShirt
-  - ClothingUniformJumpsuitWhiteShirt
-  - ClothingUniformJumpsuitFancyShirt
-  - ClothingUniformJumpsuitRedPlaidShirt
   - ClothingUniformTopColorWhite
   - ClothingUniformTopColorGrey
   - ClothingUniformTopColorBlack
@@ -2243,8 +2069,8 @@
   - JumpsuitCasualRed
   - JumpskirtCasualRed
   - JumpsuitCasualGreen
-  - JumpskirtCasualGreen 
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtCasualGreen
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
@@ -2298,24 +2124,6 @@
   - ClothingUniformJumpsuitLawyerBlack
   - ClothingUniformJumpskirtLawyerGood
   - ClothingUniformJumpsuitLawyerGood
-  - ClothingUniformJumpsuitRedVictorianSuit
-  - ClothingUniformJumpsuitBlackVictorianSuit
-  - ClothingUniformJumpsuitBarberBrown
-  - ClothingUniformJumpsuitBarber
-  - ClothingUniformJumpsuitTuxedo
-  - ClothingUniformJumpsuitTuxedoWhite
-  - ClothingUniformJumpsuitTuxedoRed
-  - ClothingUniformJumpsuitTuxedoHell
-  - ClothingUniformDressVintage
-  - ClothingUniformTangoDressBlack
-  - ClothingUniformTangoDressWhite
-  - ClothingUniformJumpsuitBlackShirt
-  - ClothingUniformJumpsuitBlueShirt
-  - ClothingUniformJumpsuitPurpleShirt
-  - ClothingUniformJumpsuitRedShirt
-  - ClothingUniformJumpsuitWhiteShirt
-  - ClothingUniformJumpsuitFancyShirt
-  - ClothingUniformJumpsuitRedPlaidShirt
   - ClothingUniformTopColorWhite
   - ClothingUniformTopColorGrey
   - ClothingUniformTopColorBlack
@@ -2543,8 +2351,8 @@
   - JumpsuitCasualRed
   - JumpskirtCasualRed
   - JumpsuitCasualGreen
-  - JumpskirtCasualGreen 
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtCasualGreen
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
@@ -2598,24 +2406,6 @@
   - ClothingUniformJumpsuitLawyerBlack
   - ClothingUniformJumpskirtLawyerGood
   - ClothingUniformJumpsuitLawyerGood
-  - ClothingUniformJumpsuitRedVictorianSuit
-  - ClothingUniformJumpsuitBlackVictorianSuit
-  - ClothingUniformJumpsuitBarberBrown
-  - ClothingUniformJumpsuitBarber
-  - ClothingUniformJumpsuitTuxedo
-  - ClothingUniformJumpsuitTuxedoWhite
-  - ClothingUniformJumpsuitTuxedoRed
-  - ClothingUniformJumpsuitTuxedoHell
-  - ClothingUniformDressVintage
-  - ClothingUniformTangoDressBlack
-  - ClothingUniformTangoDressWhite
-  - ClothingUniformJumpsuitBlackShirt
-  - ClothingUniformJumpsuitBlueShirt
-  - ClothingUniformJumpsuitPurpleShirt
-  - ClothingUniformJumpsuitRedShirt
-  - ClothingUniformJumpsuitWhiteShirt
-  - ClothingUniformJumpsuitFancyShirt
-  - ClothingUniformJumpsuitRedPlaidShirt
   - ClothingUniformTopColorWhite
   - ClothingUniformTopColorGrey
   - ClothingUniformTopColorBlack
@@ -2804,7 +2594,6 @@
   minLimit: 0
   loadouts:
   - LizardPlushieChiefEngineer
-  - PlushieTeg # Corvax-Wega-Add
 
 - type: loadoutGroup
   id: TechnicalAssistantJumpsuit
@@ -2868,8 +2657,8 @@
   - JumpsuitCasualRed
   - JumpskirtCasualRed
   - JumpsuitCasualGreen
-  - JumpskirtCasualGreen 
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtCasualGreen
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
@@ -2923,24 +2712,6 @@
   - ClothingUniformJumpsuitLawyerBlack
   - ClothingUniformJumpskirtLawyerGood
   - ClothingUniformJumpsuitLawyerGood
-  - ClothingUniformJumpsuitRedVictorianSuit
-  - ClothingUniformJumpsuitBlackVictorianSuit
-  - ClothingUniformJumpsuitBarberBrown
-  - ClothingUniformJumpsuitBarber
-  - ClothingUniformJumpsuitTuxedo
-  - ClothingUniformJumpsuitTuxedoWhite
-  - ClothingUniformJumpsuitTuxedoRed
-  - ClothingUniformJumpsuitTuxedoHell
-  - ClothingUniformDressVintage
-  - ClothingUniformTangoDressBlack
-  - ClothingUniformTangoDressWhite
-  - ClothingUniformJumpsuitBlackShirt
-  - ClothingUniformJumpsuitBlueShirt
-  - ClothingUniformJumpsuitPurpleShirt
-  - ClothingUniformJumpsuitRedShirt
-  - ClothingUniformJumpsuitWhiteShirt
-  - ClothingUniformJumpsuitFancyShirt
-  - ClothingUniformJumpsuitRedPlaidShirt
   - ClothingUniformTopColorWhite
   - ClothingUniformTopColorGrey
   - ClothingUniformTopColorBlack
@@ -2966,7 +2737,6 @@
   minLimit: 0
   loadouts:
   - LizardPlushieTechnicalAssistant
-  - PlushieTeg # Corvax-Wega-Add
 
 - type: loadoutGroup
   id: StationEngineerHead
@@ -3048,8 +2818,8 @@
   - JumpsuitCasualRed
   - JumpskirtCasualRed
   - JumpsuitCasualGreen
-  - JumpskirtCasualGreen 
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtCasualGreen
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
@@ -3103,24 +2873,6 @@
   - ClothingUniformJumpsuitLawyerBlack
   - ClothingUniformJumpskirtLawyerGood
   - ClothingUniformJumpsuitLawyerGood
-  - ClothingUniformJumpsuitRedVictorianSuit
-  - ClothingUniformJumpsuitBlackVictorianSuit
-  - ClothingUniformJumpsuitBarberBrown
-  - ClothingUniformJumpsuitBarber
-  - ClothingUniformJumpsuitTuxedo
-  - ClothingUniformJumpsuitTuxedoWhite
-  - ClothingUniformJumpsuitTuxedoRed
-  - ClothingUniformJumpsuitTuxedoHell
-  - ClothingUniformDressVintage
-  - ClothingUniformTangoDressBlack
-  - ClothingUniformTangoDressWhite
-  - ClothingUniformJumpsuitBlackShirt
-  - ClothingUniformJumpsuitBlueShirt
-  - ClothingUniformJumpsuitPurpleShirt
-  - ClothingUniformJumpsuitRedShirt
-  - ClothingUniformJumpsuitWhiteShirt
-  - ClothingUniformJumpsuitFancyShirt
-  - ClothingUniformJumpsuitRedPlaidShirt
   - ClothingUniformTopColorWhite
   - ClothingUniformTopColorGrey
   - ClothingUniformTopColorBlack
@@ -3201,7 +2953,6 @@
   minLimit: 0
   loadouts:
   - LizardPlushieStationEngineer
-  - PlushieTeg # Corvax-Wega-Add
 
 - type: loadoutGroup
   id: AtmosphericTechnicianJumpsuit
@@ -3266,8 +3017,8 @@
   - JumpsuitCasualRed
   - JumpskirtCasualRed
   - JumpsuitCasualGreen
-  - JumpskirtCasualGreen 
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtCasualGreen
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
@@ -3321,24 +3072,6 @@
   - ClothingUniformJumpsuitLawyerBlack
   - ClothingUniformJumpskirtLawyerGood
   - ClothingUniformJumpsuitLawyerGood
-  - ClothingUniformJumpsuitRedVictorianSuit
-  - ClothingUniformJumpsuitBlackVictorianSuit
-  - ClothingUniformJumpsuitBarberBrown
-  - ClothingUniformJumpsuitBarber
-  - ClothingUniformJumpsuitTuxedo
-  - ClothingUniformJumpsuitTuxedoWhite
-  - ClothingUniformJumpsuitTuxedoRed
-  - ClothingUniformJumpsuitTuxedoHell
-  - ClothingUniformDressVintage
-  - ClothingUniformTangoDressBlack
-  - ClothingUniformTangoDressWhite
-  - ClothingUniformJumpsuitBlackShirt
-  - ClothingUniformJumpsuitBlueShirt
-  - ClothingUniformJumpsuitPurpleShirt
-  - ClothingUniformJumpsuitRedShirt
-  - ClothingUniformJumpsuitWhiteShirt
-  - ClothingUniformJumpsuitFancyShirt
-  - ClothingUniformJumpsuitRedPlaidShirt
   - ClothingUniformTopColorWhite
   - ClothingUniformTopColorGrey
   - ClothingUniformTopColorBlack
@@ -3412,7 +3145,6 @@
   minLimit: 0
   loadouts:
   - LizardPlushieAtmosphericTechnician
-  - PlushieTeg # Corvax-Wega-Add
 
 - type: loadoutGroup
   id: SurvivalExtended
@@ -3599,8 +3331,8 @@
   - JumpsuitCasualRed
   - JumpskirtCasualRed
   - JumpsuitCasualGreen
-  - JumpskirtCasualGreen 
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtCasualGreen
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
@@ -3654,24 +3386,6 @@
   - ClothingUniformJumpsuitLawyerBlack
   - ClothingUniformJumpskirtLawyerGood
   - ClothingUniformJumpsuitLawyerGood
-  - ClothingUniformJumpsuitRedVictorianSuit
-  - ClothingUniformJumpsuitBlackVictorianSuit
-  - ClothingUniformJumpsuitBarberBrown
-  - ClothingUniformJumpsuitBarber
-  - ClothingUniformJumpsuitTuxedo
-  - ClothingUniformJumpsuitTuxedoWhite
-  - ClothingUniformJumpsuitTuxedoRed
-  - ClothingUniformJumpsuitTuxedoHell
-  - ClothingUniformDressVintage
-  - ClothingUniformTangoDressBlack
-  - ClothingUniformTangoDressWhite
-  - ClothingUniformJumpsuitBlackShirt
-  - ClothingUniformJumpsuitBlueShirt
-  - ClothingUniformJumpsuitPurpleShirt
-  - ClothingUniformJumpsuitRedShirt
-  - ClothingUniformJumpsuitWhiteShirt
-  - ClothingUniformJumpsuitFancyShirt
-  - ClothingUniformJumpsuitRedPlaidShirt
   - ClothingUniformTopColorWhite
   - ClothingUniformTopColorGrey
   - ClothingUniformTopColorBlack
@@ -3832,8 +3546,8 @@
   - JumpsuitCasualRed
   - JumpskirtCasualRed
   - JumpsuitCasualGreen
-  - JumpskirtCasualGreen 
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtCasualGreen
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
@@ -3887,24 +3601,6 @@
   - ClothingUniformJumpsuitLawyerBlack
   - ClothingUniformJumpskirtLawyerGood
   - ClothingUniformJumpsuitLawyerGood
-  - ClothingUniformJumpsuitRedVictorianSuit
-  - ClothingUniformJumpsuitBlackVictorianSuit
-  - ClothingUniformJumpsuitBarberBrown
-  - ClothingUniformJumpsuitBarber
-  - ClothingUniformJumpsuitTuxedo
-  - ClothingUniformJumpsuitTuxedoWhite
-  - ClothingUniformJumpsuitTuxedoRed
-  - ClothingUniformJumpsuitTuxedoHell
-  - ClothingUniformDressVintage
-  - ClothingUniformTangoDressBlack
-  - ClothingUniformTangoDressWhite
-  - ClothingUniformJumpsuitBlackShirt
-  - ClothingUniformJumpsuitBlueShirt
-  - ClothingUniformJumpsuitPurpleShirt
-  - ClothingUniformJumpsuitRedShirt
-  - ClothingUniformJumpsuitWhiteShirt
-  - ClothingUniformJumpsuitFancyShirt
-  - ClothingUniformJumpsuitRedPlaidShirt
   - ClothingUniformTopColorWhite
   - ClothingUniformTopColorGrey
   - ClothingUniformTopColorBlack
@@ -4005,9 +3701,6 @@
   loadouts:
   - WardenJumpsuit
   - WardenJumpskirt
-  # Corvax-Wega-Sponsors-start
-  - ClothingUniformJumpskirtElegantSecurity
-  # Corvax-Wega-Sponsors-end
 
 - type: loadoutGroup
   id: WardenOuterClothing
@@ -4685,8 +4378,8 @@
   - JumpsuitCasualRed
   - JumpskirtCasualRed
   - JumpsuitCasualGreen
-  - JumpskirtCasualGreen 
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtCasualGreen
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
@@ -4740,24 +4433,6 @@
   - ClothingUniformJumpsuitLawyerBlack
   - ClothingUniformJumpskirtLawyerGood
   - ClothingUniformJumpsuitLawyerGood
-  - ClothingUniformJumpsuitRedVictorianSuit
-  - ClothingUniformJumpsuitBlackVictorianSuit
-  - ClothingUniformJumpsuitBarberBrown
-  - ClothingUniformJumpsuitBarber
-  - ClothingUniformJumpsuitTuxedo
-  - ClothingUniformJumpsuitTuxedoWhite
-  - ClothingUniformJumpsuitTuxedoRed
-  - ClothingUniformJumpsuitTuxedoHell
-  - ClothingUniformDressVintage
-  - ClothingUniformTangoDressBlack
-  - ClothingUniformTangoDressWhite
-  - ClothingUniformJumpsuitBlackShirt
-  - ClothingUniformJumpsuitBlueShirt
-  - ClothingUniformJumpsuitPurpleShirt
-  - ClothingUniformJumpsuitRedShirt
-  - ClothingUniformJumpsuitWhiteShirt
-  - ClothingUniformJumpsuitFancyShirt
-  - ClothingUniformJumpsuitRedPlaidShirt
   - ClothingUniformTopColorWhite
   - ClothingUniformTopColorGrey
   - ClothingUniformTopColorBlack
@@ -4846,8 +4521,8 @@
   - JumpsuitCasualRed
   - JumpskirtCasualRed
   - JumpsuitCasualGreen
-  - JumpskirtCasualGreen 
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtCasualGreen
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
@@ -4901,24 +4576,6 @@
   - ClothingUniformJumpsuitLawyerBlack
   - ClothingUniformJumpskirtLawyerGood
   - ClothingUniformJumpsuitLawyerGood
-  - ClothingUniformJumpsuitRedVictorianSuit
-  - ClothingUniformJumpsuitBlackVictorianSuit
-  - ClothingUniformJumpsuitBarberBrown
-  - ClothingUniformJumpsuitBarber
-  - ClothingUniformJumpsuitTuxedo
-  - ClothingUniformJumpsuitTuxedoWhite
-  - ClothingUniformJumpsuitTuxedoRed
-  - ClothingUniformJumpsuitTuxedoHell
-  - ClothingUniformDressVintage
-  - ClothingUniformTangoDressBlack
-  - ClothingUniformTangoDressWhite
-  - ClothingUniformJumpsuitBlackShirt
-  - ClothingUniformJumpsuitBlueShirt
-  - ClothingUniformJumpsuitPurpleShirt
-  - ClothingUniformJumpsuitRedShirt
-  - ClothingUniformJumpsuitWhiteShirt
-  - ClothingUniformJumpsuitFancyShirt
-  - ClothingUniformJumpsuitRedPlaidShirt
   - ClothingUniformTopColorWhite
   - ClothingUniformTopColorGrey
   - ClothingUniformTopColorBlack

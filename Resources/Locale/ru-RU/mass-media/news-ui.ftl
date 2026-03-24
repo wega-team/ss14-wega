@@ -39,6 +39,5 @@ news-write-ui-richtext-tooltip =
     { "[bullet/]bolditalic" }
     { "[bullet/]color" }
     { "[bullet/]bullet[/color]" }
-
 news-pda-notification-header = Новая новостная статья
 news-publish-admin-announcement = { $actor } опубликовал(а) новостную статью { $title } за авторством { $author }

@@ -1,8 +1,6 @@
 # Nouns
-# Nouns
 seeds-noun-seeds = семян
 seeds-noun-spores = спор
-
 # Seeds
 seeds-wheat-name = пшеница
 seeds-wheat-display-name = стебли пшеницы

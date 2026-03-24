@@ -7,19 +7,10 @@ using System.Text.RegularExpressions;
 using Robust.Shared.ContentPack;
 using Robust.Shared.Utility;
 
-namespace Content.Server.Corvax.GuideGenerator;
+namespace Content.Server.GuideGenerator;
 
 public static class LocJsonGenerator
 {
-
-    // Matches top-level message/term identifiers at start of line (no leading whitespace or comment).
-    private static readonly Regex TopEntryRegex =
-        new(@"(?m)^(?!\s|#)([^\s=]+)\s*=", RegexOptions.Compiled | RegexOptions.CultureInvariant);
-
-    // Matches attribute lines like "    .attr-name ="
-    private static readonly Regex AttrRegex =
-        new(@"(?m)^\s*\.(?<name>[A-Za-z0-9_\-]+)\s*=", RegexOptions.Compiled | RegexOptions.CultureInvariant);
-
     private static string GetStringSafe(string key)
     {
         try
@@ -51,6 +42,11 @@ public static class LocJsonGenerator
             .ToArray();
         var keys = new Dictionary<string, HashSet<string>>();
 
+        // Matches top-level message/term identifiers at start of line (no leading whitespace or comment).
+        var topEntryRegex = new Regex(@"(?m)^(?!\s|#)([^\s=]+)\s*=", RegexOptions.Compiled);
+        // Matches attribute lines like "    .attr-name ="
+        var attrRegex = new Regex(@"(?m)^\s*\.(?<name>[A-Za-z0-9_\-]+)\s*=", RegexOptions.Compiled);
+
         foreach (var path in files)
         {
             using var stream = res.ContentFileRead(path);
@@ -59,7 +55,7 @@ public static class LocJsonGenerator
             // Normalize line endings to simplify indexing.
             contents = contents.Replace("\r\n", "\n");
 
-            var matches = TopEntryRegex.Matches(contents);
+            var matches = topEntryRegex.Matches(contents);
             for (var mi = 0; mi < matches.Count; mi++)
             {
                 var m = matches[mi];
@@ -74,7 +70,7 @@ public static class LocJsonGenerator
                 var end = mi + 1 < matches.Count ? matches[mi + 1].Index : contents.Length;
                 var block = contents.Substring(start, end - start);
 
-                var attrMatches = AttrRegex.Matches(block);
+                var attrMatches = attrRegex.Matches(block);
                 foreach (Match am in attrMatches)
                 {
                     var attrName = am.Groups["name"].Value;

@@ -15,10 +15,5 @@ namespace Content.Server.Holosign
         /// </summary>
         [ViewVariables(VVAccess.ReadWrite), DataField("chargeUse")]
         public float ChargeUse = 50f;
-
-		// Corvax-Wega-start 
-        [DataField]
-        public bool Anchor = true;
-		// Corvax-Wega-end
     }
 }

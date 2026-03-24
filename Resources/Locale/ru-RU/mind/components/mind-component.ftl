@@ -1,4 +1,4 @@
-# MindContainerComponent localization
+# MindComponent localization
 
 comp-mind-ghosting-prevented = Вы не можете стать призраком в данный момент.
 

@@ -1,7 +1,3 @@
-marking-HumanHairMelissa = Звёздный хвост
-marking-HumanHairCuteHair = Звёздные хвостики
-marking-HumanHairKamina = Спиральный бунтарь
-
 # Gradient
 marking-HumanHairAfroGradient = Афро (Градиент)
 marking-HumanHairAfro2Gradient = Афро 2 (Градиент)
@@ -273,10 +269,7 @@ marking-HumanHairVictoryGradient = Победа (Градиент)
 marking-HumanHairViperGradient = Гадюка (Градиент)
 marking-HumanHairWifeGradient = Жена (Градиент)
 marking-HumanHairZieglerGradient = Циглер (Градиент)
-marking-HumanHairMelissaGradient = Звёздный хвост (Градиент)
-marking-HumanHairKaminaGradient = Спиральный бунтарь (Градиент)
 
 # Mixed Color
 marking-HumanHairNitoriTwo = Нитори (Градиент, Кончики)
 marking-HumanHairNitoriHarley = Харли (Градиент)
-marking-HumanHairCuteHairGradient = Звёздные хвостики (Градиент)

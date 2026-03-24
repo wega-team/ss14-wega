@@ -6,7 +6,6 @@
         [high] высокий
        *[other] неизвестно
     }
-
 entity-heater-examined =
     Выбран режим { $setting ->
         [off] [color=gray]{ -entity-heater-setting-name(setting: "off") }[/color]

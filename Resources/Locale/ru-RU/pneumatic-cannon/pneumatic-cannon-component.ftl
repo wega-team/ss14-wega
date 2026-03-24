@@ -18,4 +18,3 @@ pneumatic-cannon-component-change-power =
 ## Shown when being stunned by having the power too high.
 
 pneumatic-cannon-component-power-stun = { CAPITALIZE($cannon) } сбивает вас с ног!
-

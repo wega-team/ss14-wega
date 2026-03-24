@@ -45,7 +45,6 @@ public static class PrototypeJsonGenerator
                     FieldEntry.EnsureFieldsCollectionsInitialized(instance);
                     var defaultNode = ser.WriteValueAs<MappingDataNode>(kind, instance, true);
                     defaultNode.Remove("id");
-                    FieldEntry.NormalizeFlagsToSequences(instance, defaultNode);
                     defaultObj = FieldEntry.DataNodeToObject(defaultNode);
                 }
             }
@@ -67,10 +66,7 @@ public static class PrototypeJsonGenerator
             };
 
             res.UserData.CreateDir(destRoot);
-            var kindName = proto.TryGetKindFrom(kind, out var actualKindName)
-                ? actualKindName
-                : kind.Name;
-            var fileName = TextTools.DecapitalizeString(kindName) + ".json";
+            var fileName = PrototypeUtility.CalculatePrototypeName(kind.Name) + ".json";
             var file = res.UserData.OpenWriteText(destRoot / fileName);
             file.Write(JsonSerializer.Serialize(outObj, serializeOptions));
             file.Flush();

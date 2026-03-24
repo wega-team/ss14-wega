@@ -20,4 +20,3 @@ advertisement-boozeomat-19 = Тост за прогресс!
 thankyou-boozeomat-1 = Пожалуйста, пейте ответственно!
 thankyou-boozeomat-2 = Пожалуйста, пейте безответственно!
 thankyou-boozeomat-3 = Пожалуйста, наслаждайтесь вашим напитком!
-

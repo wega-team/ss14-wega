@@ -1,6 +1,6 @@
-ent-ClothingBeltMilitaryWebbingFilled = { ent-ClothingBeltMilitaryWebbing }
+ent-ClothingBeltMilitaryWebbingFilled = { ent-ClothingBeltAssault }
     .suffix = Заполненный
-    .desc = { ent-ClothingBeltMilitaryWebbing.desc }
+    .desc = { ent-ClothingBeltAssault.desc }
 
 ent-ClothingBeltSheathSyndicateFilled = { ent-ClothingBeltSheathSyndicate }
     .suffix = Заполненый

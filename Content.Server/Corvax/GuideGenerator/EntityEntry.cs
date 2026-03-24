@@ -1,9 +1,9 @@
 using System.Linq;
 using System.Text.Json.Serialization;
-using Content.Shared.Labels.Components;
 using Robust.Shared.Prototypes;
+using Content.Shared.Labels.Components;
 
-namespace Content.Server.Corvax.GuideGenerator;
+namespace Content.Server.GuideGenerator;
 
 public sealed class EntityEntry
 {
@@ -24,13 +24,10 @@ public sealed class EntityEntry
 
     public EntityEntry(EntityPrototype proto)
     {
-        var prototypeManager = IoCManager.Resolve<IPrototypeManager>();
-        var loc = IoCManager.Resolve<ILocalizationManager>();
-
         Id = proto.ID;
-        Name = TextTools.CapitalizeString(TextTools.GetDisplayName(proto, prototypeManager, loc));
+        Name = TextTools.TextTools.CapitalizeString(proto.Name); // Corvax-Wiki
         Description = proto.Description;
-        Suffix = proto.EditorSuffix ?? "";
+        Suffix = proto.EditorSuffix != null ? proto.EditorSuffix : "";
 
         Label = proto.Components.Values
             .Select(x => x.Component)

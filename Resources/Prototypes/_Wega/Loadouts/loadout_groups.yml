@@ -56,12 +56,6 @@
   - ClothingUnderBottomSwimStripe
   - ClothingUnderBottomSwimOnePiece
   - ClothingUnderBottomSwimStrapless
-  - ClothingUniformSwimBlack
-  - ClothingUniformSwimBlue
-  - ClothingUniformSwimDarkGreen
-  - ClothingUniformSwimGreen
-  - ClothingUniformSwimPurple
-  - ClothingUniformSwimRed
 
 - type: loadoutGroup
   id: Socks
@@ -191,17 +185,6 @@
   - ClothingUnderBottomStripe
   - ClothingUnderBottomStrippedPanties
   - ClothingUnderBottomThong
-  - ClothingUnderBottomElegantVampire
-  - ClothingUnderBottomSwimHalter
-  - ClothingUnderBottomSwimStripe
-  - ClothingUnderBottomSwimOnePiece
-  - ClothingUnderBottomSwimStrapless
-  - ClothingUniformSwimBlack
-  - ClothingUniformSwimBlue
-  - ClothingUniformSwimDarkGreen
-  - ClothingUniformSwimGreen
-  - ClothingUniformSwimPurple
-  - ClothingUniformSwimRed
 
 - type: loadoutGroup
   id: CaptainSocks
@@ -331,17 +314,6 @@
   - ClothingUnderBottomStripe
   - ClothingUnderBottomStrippedPanties
   - ClothingUnderBottomThong
-  - ClothingUnderBottomElegantVampire
-  - ClothingUnderBottomSwimHalter
-  - ClothingUnderBottomSwimStripe
-  - ClothingUnderBottomSwimOnePiece
-  - ClothingUnderBottomSwimStrapless
-  - ClothingUniformSwimBlack
-  - ClothingUniformSwimBlue
-  - ClothingUniformSwimDarkGreen
-  - ClothingUniformSwimGreen
-  - ClothingUniformSwimPurple
-  - ClothingUniformSwimRed
 
 - type: loadoutGroup
   id: BlueShieldSocks
@@ -447,17 +419,6 @@
   - ClothingUnderBottomStripe
   - ClothingUnderBottomStrippedPanties
   - ClothingUnderBottomThong
-  - ClothingUnderBottomElegantVampire
-  - ClothingUnderBottomSwimHalter
-  - ClothingUnderBottomSwimStripe
-  - ClothingUnderBottomSwimOnePiece
-  - ClothingUnderBottomSwimStrapless
-  - ClothingUniformSwimBlack
-  - ClothingUniformSwimBlue
-  - ClothingUniformSwimDarkGreen
-  - ClothingUniformSwimGreen
-  - ClothingUniformSwimPurple
-  - ClothingUniformSwimRed
 
 - type: loadoutGroup
   id: HoPSocks
@@ -556,17 +517,6 @@
   - ClothingUnderBottomStripe
   - ClothingUnderBottomStrippedPanties
   - ClothingUnderBottomThong
-  - ClothingUnderBottomElegantVampire
-  - ClothingUnderBottomSwimHalter
-  - ClothingUnderBottomSwimStripe
-  - ClothingUnderBottomSwimOnePiece
-  - ClothingUnderBottomSwimStrapless
-  - ClothingUniformSwimBlack
-  - ClothingUniformSwimBlue
-  - ClothingUniformSwimDarkGreen
-  - ClothingUniformSwimGreen
-  - ClothingUniformSwimPurple
-  - ClothingUniformSwimRed
 
 - type: loadoutGroup
   id: QuartermasterSocks
@@ -665,17 +615,6 @@
   - ClothingUnderBottomStripe
   - ClothingUnderBottomStrippedPanties
   - ClothingUnderBottomThong
-  - ClothingUnderBottomElegantVampire
-  - ClothingUnderBottomSwimHalter
-  - ClothingUnderBottomSwimStripe
-  - ClothingUnderBottomSwimOnePiece
-  - ClothingUnderBottomSwimStrapless
-  - ClothingUniformSwimBlack
-  - ClothingUniformSwimBlue
-  - ClothingUniformSwimDarkGreen
-  - ClothingUniformSwimGreen
-  - ClothingUniformSwimPurple
-  - ClothingUniformSwimRed
 
 - type: loadoutGroup
   id: ChiefEngineerSocks
@@ -774,17 +713,6 @@
   - ClothingUnderBottomStripe
   - ClothingUnderBottomStrippedPanties
   - ClothingUnderBottomThong
-  - ClothingUnderBottomElegantVampire
-  - ClothingUnderBottomSwimHalter
-  - ClothingUnderBottomSwimStripe
-  - ClothingUnderBottomSwimOnePiece
-  - ClothingUnderBottomSwimStrapless
-  - ClothingUniformSwimBlack
-  - ClothingUniformSwimBlue
-  - ClothingUniformSwimDarkGreen
-  - ClothingUniformSwimGreen
-  - ClothingUniformSwimPurple
-  - ClothingUniformSwimRed
 
 - type: loadoutGroup
   id: ResearchDirectorSocks
@@ -883,17 +811,6 @@
   - ClothingUnderBottomStripe
   - ClothingUnderBottomStrippedPanties
   - ClothingUnderBottomThong
-  - ClothingUnderBottomElegantVampire
-  - ClothingUnderBottomSwimHalter
-  - ClothingUnderBottomSwimStripe
-  - ClothingUnderBottomSwimOnePiece
-  - ClothingUnderBottomSwimStrapless
-  - ClothingUniformSwimBlack
-  - ClothingUniformSwimBlue
-  - ClothingUniformSwimDarkGreen
-  - ClothingUniformSwimGreen
-  - ClothingUniformSwimPurple
-  - ClothingUniformSwimRed
 
 - type: loadoutGroup
   id: HeadofSecuritySocks
@@ -992,17 +909,6 @@
   - ClothingUnderBottomStripe
   - ClothingUnderBottomStrippedPanties
   - ClothingUnderBottomThong
-  - ClothingUnderBottomElegantVampire
-  - ClothingUnderBottomSwimHalter
-  - ClothingUnderBottomSwimStripe
-  - ClothingUnderBottomSwimOnePiece
-  - ClothingUnderBottomSwimStrapless
-  - ClothingUniformSwimBlack
-  - ClothingUniformSwimBlue
-  - ClothingUniformSwimDarkGreen
-  - ClothingUniformSwimGreen
-  - ClothingUniformSwimPurple
-  - ClothingUniformSwimRed
 
 - type: loadoutGroup
   id: ChiefMedicalOfficerSocks
@@ -1114,8 +1020,8 @@
   - JumpsuitCasualRed
   - JumpskirtCasualRed
   - JumpsuitCasualGreen
-  - JumpskirtCasualGreen 
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtCasualGreen
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
@@ -1169,24 +1075,6 @@
   - ClothingUniformJumpsuitLawyerBlack
   - ClothingUniformJumpskirtLawyerGood
   - ClothingUniformJumpsuitLawyerGood
-  - ClothingUniformJumpsuitRedVictorianSuit
-  - ClothingUniformJumpsuitBlackVictorianSuit
-  - ClothingUniformJumpsuitBarberBrown
-  - ClothingUniformJumpsuitBarber
-  - ClothingUniformJumpsuitTuxedo
-  - ClothingUniformJumpsuitTuxedoWhite
-  - ClothingUniformJumpsuitTuxedoRed
-  - ClothingUniformJumpsuitTuxedoHell
-  - ClothingUniformDressVintage
-  - ClothingUniformTangoDressBlack
-  - ClothingUniformTangoDressWhite
-  - ClothingUniformJumpsuitBlackShirt
-  - ClothingUniformJumpsuitBlueShirt
-  - ClothingUniformJumpsuitPurpleShirt
-  - ClothingUniformJumpsuitRedShirt
-  - ClothingUniformJumpsuitWhiteShirt
-  - ClothingUniformJumpsuitFancyShirt
-  - ClothingUniformJumpsuitRedPlaidShirt
   - ClothingUniformTopColorWhite
   - ClothingUniformTopColorGrey
   - ClothingUniformTopColorBlack
@@ -1357,8 +1245,8 @@
   - JumpsuitCasualRed
   - JumpskirtCasualRed
   - JumpsuitCasualGreen
-  - JumpskirtCasualGreen 
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtCasualGreen
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
@@ -1412,24 +1300,6 @@
   - ClothingUniformJumpsuitLawyerBlack
   - ClothingUniformJumpskirtLawyerGood
   - ClothingUniformJumpsuitLawyerGood
-  - ClothingUniformJumpsuitRedVictorianSuit
-  - ClothingUniformJumpsuitBlackVictorianSuit
-  - ClothingUniformJumpsuitBarberBrown
-  - ClothingUniformJumpsuitBarber
-  - ClothingUniformJumpsuitTuxedo
-  - ClothingUniformJumpsuitTuxedoWhite
-  - ClothingUniformJumpsuitTuxedoRed
-  - ClothingUniformJumpsuitTuxedoHell
-  - ClothingUniformDressVintage
-  - ClothingUniformTangoDressBlack
-  - ClothingUniformTangoDressWhite
-  - ClothingUniformJumpsuitBlackShirt
-  - ClothingUniformJumpsuitBlueShirt
-  - ClothingUniformJumpsuitPurpleShirt
-  - ClothingUniformJumpsuitRedShirt
-  - ClothingUniformJumpsuitWhiteShirt
-  - ClothingUniformJumpsuitFancyShirt
-  - ClothingUniformJumpsuitRedPlaidShirt
   - ClothingUniformTopColorWhite
   - ClothingUniformTopColorGrey
   - ClothingUniformTopColorBlack
@@ -1538,17 +1408,6 @@
   - ClothingUnderBottomStripe
   - ClothingUnderBottomStrippedPanties
   - ClothingUnderBottomThong
-  - ClothingUnderBottomElegantVampire
-  - ClothingUnderBottomSwimHalter
-  - ClothingUnderBottomSwimStripe
-  - ClothingUnderBottomSwimOnePiece
-  - ClothingUnderBottomSwimStrapless
-  - ClothingUniformSwimBlack
-  - ClothingUniformSwimBlue
-  - ClothingUniformSwimDarkGreen
-  - ClothingUniformSwimGreen
-  - ClothingUniformSwimPurple
-  - ClothingUniformSwimRed
 
 - type: loadoutGroup
   id: BrigmedicHead

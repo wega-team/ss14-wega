@@ -1,6 +1,6 @@
-ent-BoxDonkSoftBase = коробка игрушечных патронов
+ent-BoxDonkSoftBase = коробка поролоновых дротиков
     .desc = { ent-BaseItem.desc }
 ent-BoxDonkSoftBox = коробка поролоновых дротиков
-    .desc = Картонная коробка с поролоновыми дротиками.
+    .desc = { ent-BoxDonkSoftBase.desc }
 ent-BoxCartridgeCap = коробка пистонов
-    .desc = Картонная коробка с пистонами.
+    .desc = { ent-BaseMagazineBoxMagnum.desc }

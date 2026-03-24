@@ -4,7 +4,6 @@ using Content.Shared.Implants.Components;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Mobs;
-using Content.Shared.Corvax.TTS;
 
 namespace Content.Shared.Implants;
 
@@ -18,7 +17,6 @@ public abstract partial class SharedSubdermalImplantSystem
         SubscribeLocalEvent<ImplantedComponent, TransformSpeakerNameEvent>(RelayToImplantEvent);
         SubscribeLocalEvent<ImplantedComponent, TransformSpeechEvent>(RelayToImplantEvent);
         SubscribeLocalEvent<ImplantedComponent, SeeIdentityAttemptEvent>(RelayToImplantEvent);
-        SubscribeLocalEvent<ImplantedComponent, TransformSpeakerVoiceEvent>(RelayToImplantEvent);
     }
 
     /// <summary>

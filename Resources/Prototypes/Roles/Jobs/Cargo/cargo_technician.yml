@@ -22,7 +22,6 @@
   equipment:
     ears: ClothingHeadsetCargo
     pocket1: AppraisalTool
-    pocket2: CargoHoloprojectorField # Corvax-Wega-Add
   #storage:
     #back:
     #- Stuff

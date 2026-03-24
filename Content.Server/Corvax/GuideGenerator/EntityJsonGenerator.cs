@@ -3,7 +3,7 @@ using System.Linq;
 using System.Text.Json;
 using Robust.Shared.Prototypes;
 
-namespace Content.Server.Corvax.GuideGenerator;
+namespace Content.Server.GuideGenerator;
 
 public sealed class EntityJsonGenerator
 {

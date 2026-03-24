@@ -20,7 +20,6 @@
     capacity: 10
     count: 10
   - type: PacifismAllowedGun
-  - type: BloodCultAllowedGun # Corvax-Wega-BloodCult
 
 - type: entity
   name: staff of entrance
@@ -41,4 +40,3 @@
     proto: ProjectilePolyboltDoor
     capacity: 10
     count: 10
-  - type: BloodCultAllowedGun # Corvax-Wega-BloodCult

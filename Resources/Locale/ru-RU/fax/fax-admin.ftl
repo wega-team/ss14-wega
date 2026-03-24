@@ -1,7 +1,6 @@
 # Command
 cmd-faxui-desc = Открыть админ окно отправки факсов
 cmd-faxui-help = Использование: faxui
-
 # Window
 admin-fax-title = Менеджер админ факса
 admin-fax-fax = Факс:

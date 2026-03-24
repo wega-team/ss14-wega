@@ -1,4 +1,4 @@
-# Names
+﻿# Имена
 chat-emote-name-scream = Кричать
 chat-emote-name-laugh = Смеяться
 chat-emote-name-honk = Хонк
@@ -37,8 +37,7 @@ chat-emote-name-snarl = Скалиться
 chat-emote-name-whine = Скулить
 chat-emote-name-howl = Выть
 chat-emote-name-growl = Рычать
-
-# Message
+# Сообщение
 chat-emote-msg-scream = кричит!
 chat-emote-msg-laugh = смеётся.
 chat-emote-msg-honk = хонкает.

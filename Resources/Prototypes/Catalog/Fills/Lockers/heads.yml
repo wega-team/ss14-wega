@@ -52,7 +52,7 @@
       conditions:
       - !type:PlayerCountCondition
         max: 15
-    - id: SecApartmentTablet # Corvax-SecApartment
+    - id: SecApartmentTablet # Corvax-Wega-SecApartment
     # Corvax-Resprite-Start
     - id: ClothingHeadCaptainHat
     - id: ClothingOuterCoatCaptain

@@ -49,7 +49,6 @@
   - type: PhysicalComposition
     materialComposition:
       Plastic: 150
-  - type: BloodCultAllowedGun # Corvax-Wega-BloodCult
 
 - type: entity
   id: WeaponWaterPistol
