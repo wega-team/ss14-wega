@@ -27,7 +27,7 @@ interaction-action-harmless-blessing-emote = благословляет {$target
 interaction-action-harmless-blessing-target = {$user} благословляет вас.
 interaction-action-harmless-blessing-other = {$user} благословляет {$target}.
 
-interaction-action-harmless-delay-pull-tail-emote = вы резко дергаете за хвост {$target}.
+interaction-action-harmless-delay-pull-tail-user = вы резко дергаете за хвост {$target}.
 interaction-action-harmless-delay-pull-tail-target = {$user} резко дёргает вас за хвост.
 interaction-action-harmless-delay-pull-tail-other = {$user} резко дёргает за хвост {$target}.
 
