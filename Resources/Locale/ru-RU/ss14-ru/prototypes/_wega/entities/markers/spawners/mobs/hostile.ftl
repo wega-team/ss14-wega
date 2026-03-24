@@ -13,6 +13,9 @@ ent-SpawnMobMarrowWeaverLavaland = Спавнер Костномозгового
 ent-SpawnMobFrostbiteWeaverLavaland = Спавнер Морозного Костномозгового ткача
     .desc = { ent-MarkerBase.desc }
     .suffix = Лаваленд
+ent-SpawnMobClockworkDefender = Cпавнер Механического рыцаря
+    .desc = { ent-MarkerBase.desc }
+    .suffix = Лаваленд
 # Inhabitants
 ent-SpawnInhabitantSquare = Спавнер Жителя заповедника
     .desc = { ent-MarkerBase.desc }

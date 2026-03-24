@@ -885,6 +885,7 @@
         whitelist:
           components:
           - GasTank
+          - AmeFuelContainer
         blacklist:
           components:
           - Magboots

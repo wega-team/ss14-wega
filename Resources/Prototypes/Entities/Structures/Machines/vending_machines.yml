@@ -1282,6 +1282,10 @@
     screenState: screen
   - type: DatasetVocalizer
     dataset: AutoDrobeAds
+  # Corvax-Wega-Add-Start
+  - type: Voucher
+    typeVoucher: Theater
+  # Corvax-Wega-Add-End
   - type: SpeakOnUIClosed
     pack: GenericVendGoodbyes
   - type: Sprite

@@ -6570,12 +6570,6 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 7.5,-1.5
       parent: 104
-  - uid: 2292
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 7.5,-2.5
-      parent: 104
   - uid: 2295
     components:
     - type: Transform
@@ -15276,5 +15270,13 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 5.5,-10.5
+      parent: 104
+- proto: ComputerNukieDelivery
+  entities:
+  - uid: 2292
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 7.5,-2.5
       parent: 104
 ...

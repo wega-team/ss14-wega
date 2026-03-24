@@ -55,3 +55,5 @@ stack-dragon-hide =
     }
 stak-magmite = магмит
 magmite-ore = магмитовая руда
+
+consecrated-ingot = священная сталь

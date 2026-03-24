@@ -394,6 +394,8 @@ public sealed partial class ChatSystem : SharedChatSystem
         _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Station Announcement on {station} from {sender}: {message}");
     }
 
+    #endregion
+
     // Corvax-Wega-MindChat-start
     /// <inheritdoc/>
     public override void SendMindMessage(
@@ -457,7 +459,20 @@ public sealed partial class ChatSystem : SharedChatSystem
     }
     // Corvax-Wega-MindChat-end
 
-    #endregion
+    // Corvax-Wega-Interactions-start
+    /// <inheritdoc/>
+    public override void SendMessageToOne(
+        EntityUid target, string message,
+        Color? colorOverride = null)
+    {
+        if (!TryComp<ActorComponent>(target, out var actor))
+            return;
+
+        var color = colorOverride ?? Color.White;
+        _chatManager.ChatMessageToOne(ChatChannel.Server, message,
+            message, target, false, actor.PlayerSession.Channel, color);
+    }
+    // Corvax-Wega-Interactions-end
 
     #region Private API
 

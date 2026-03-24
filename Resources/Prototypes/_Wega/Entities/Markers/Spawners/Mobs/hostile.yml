@@ -78,6 +78,22 @@
     prototypes:
     - MobFrostbiteWeaverLavaland
 
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobClockworkDefender
+  name: clockwork defender Spawner
+  suffix: Lavaland
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: base
+      sprite: _Wega/Mobs/Lavaland/clockwork_defender.rsi
+    - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+    - MobClockworkDefender
+
 # Inhabitants
 - type: entity
   parent: MarkerBase

@@ -31,7 +31,7 @@
           shader: unshaded
           map: [ "shield" ]
     - type: Item
-      size: Small
+      size: Normal
       sprite: _Wega/Objects/Shields/blueshieldshield.rsi
     - type: UseDelay
       delay: 0.5
@@ -137,7 +137,7 @@
       state: icon
     - type: Item
       sprite: _Wega/Objects/Shields/blueshieldshield.rsi
-      size: Small
+      size: Normal
     - type: Construction
       graph: BlueSheild
       node: start

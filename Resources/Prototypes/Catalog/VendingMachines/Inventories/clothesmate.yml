@@ -7,182 +7,134 @@
     ClothingBackpackSatchel: 3
     ClothingBackpackSatchelLeather: 2
     ClothingRandomSpawner: 8
-    ClothingUniformRandomBraWega: 8  # Corvax-Wega
-    ClothingUniformRandomShorts: 8 # Corvax-Wega
-    ClothingHeadHatBeret: 4
-    ClothingHeadBandBlack: 2
-    ClothingHeadBandBlue: 2
-    ClothingHeadBandGreen: 2
-    ClothingHeadBandRed: 2
-    ClothingHeadBandSkull: 2
-    ClothingHeadHatGreyFlatcap: 3
-    ClothingHeadHatBrownFlatcap: 3
-    ClothingUniformJumpsuitColorGrey: 8
-    ClothingUniformJumpskirtColorGrey: 8
-    ClothingUniformJumpsuitColorWhite: 3
-    ClothingUniformJumpskirtColorWhite: 3
-    ClothingUniformJumpsuitColorBlack: 3
-    ClothingUniformJumpskirtColorBlack: 3
-    ClothingUniformJumpsuitColorBlue: 2
-    ClothingUniformJumpskirtColorBlue: 2
-    ClothingUniformJumpsuitColorYellow: 2
-    ClothingUniformJumpskirtColorYellow: 2
-    ClothingUniformJumpsuitColorGreen: 2
+# Corvax-Wega-Start
+    ClothingUniformRandomBraWega: 15
+    ClothingUniformRandomShorts: 15
+    JumpsuitSelector: 15
+    TopSelector: 15
+    OtherJumpsuitSelector: 15
+    TurtleneckSelector: 15
+    HatSelector: 20
+    ShooseSelector: 20
+    GlovesSelector: 10
+    ScarfSelector: 10
+    # ClothingHeadHatBeret: 4
+    # ClothingHeadBandBlack: 2
+    # ClothingHeadBandBlue: 2
+    # ClothingHeadBandGreen: 2
+    # ClothingHeadBandRed: 2
+    # ClothingHeadBandSkull: 2
+    # ClothingHeadHatGreyFlatcap: 3
+    # ClothingHeadHatBrownFlatcap: 3
+    # ClothingUniformJumpsuitColorGrey: 8
+    # ClothingUniformJumpskirtColorGrey: 8
+    # ClothingUniformJumpsuitColorWhite: 3
+    # ClothingUniformJumpskirtColorWhite: 3
+    # ClothingUniformJumpsuitColorBlack: 3
+    # ClothingUniformJumpskirtColorBlack: 3
+    # ClothingUniformJumpsuitColorBlue: 2
+    # ClothingUniformJumpskirtColorBlue: 2
+    # ClothingUniformJumpsuitColorYellow: 2
+    # ClothingUniformJumpskirtColorYellow: 2
+    # ClothingUniformJumpsuitColorGreen: 2
     # DO NOT ADD MORE, USE UNIFORM DYING
-    ClothingUniformJumpskirtColorGreen: 2
-    ClothingUniformJumpsuitColorOrange: 2
-    ClothingUniformJumpskirtColorOrange: 2
-    ClothingUniformJumpsuitColorRed: 2
-    ClothingUniformJumpskirtColorRed: 2
-    ClothingUniformJumpsuitColorPurple: 2
-    ClothingUniformJumpskirtColorPurple: 2
-    ClothingUniformJumpsuitColorPink: 2
-    ClothingUniformJumpskirtColorPink: 2
-    ClothingUniformJumpsuitColorDarkBlue: 2
-    ClothingUniformJumpskirtColorDarkBlue: 2
-    ClothingUniformJumpsuitColorDarkGreen:  2
-    ClothingUniformJumpskirtColorDarkGreen: 2
-    ClothingUniformJumpsuitColorTeal: 2
-    ClothingUniformJumpskirtColorTeal: 2
-    ClothingUniformJumpsuitHawaiBlack: 2
-    ClothingUniformJumpsuitHawaiBlue: 2
-    ClothingUniformJumpsuitHawaiRed: 2
-    ClothingUniformJumpsuitHawaiYellow: 2
-    ClothingUniformJumpsuitFlannel: 2
-    ClothingUniformJumpsuitCasualBlue: 2
-    ClothingUniformJumpskirtCasualBlue: 2
-    ClothingUniformJumpsuitCasualPurple: 2
-    ClothingUniformJumpskirtCasualPurple: 2
-    ClothingUniformJumpsuitCasualRed: 2
-    ClothingUniformJumpskirtCasualRed: 2
-    ClothingUniformJumpsuitCasualGreen: 2
-    ClothingUniformJumpskirtCasualGreen: 2
-    # Corvax-Wega-start
-    ClothingUniformTopColorWhite: 2
-    ClothingUniformTopColorGrey: 2
-    ClothingUniformTopColorBlack: 2
-    ClothingUniformTopColorBlue: 2
-    ClothingUniformTopColorDarkBlue: 2
-    ClothingUniformTopColorTeal: 2
-    ClothingUniformTopColorGreen: 2
-    ClothingUniformTopColorDarkGreen: 2
-    ClothingUniformTopColorOrange: 2
-    ClothingUniformTopColorRed: 2
-    ClothingUniformTopColorYellow: 2
-    ClothingUniformTopColorPurple: 2
-    ClothingUniformTopColorLightBrown: 2
-    ClothingUniformTopColorBrown: 2
-    ClothingUniformTopColorMaroon: 2
-    ClothingUniformTopic: 2
-    ClothingUniformTopicCool: 2
-    # Corvax-Wega-end
+    # ClothingUniformJumpskirtColorGreen: 2
+    # ClothingUniformJumpsuitColorOrange: 2
+    # ClothingUniformJumpskirtColorOrange: 2
+    # ClothingUniformJumpsuitColorRed: 2
+    # ClothingUniformJumpskirtColorRed: 2
+    # ClothingUniformJumpsuitColorPurple: 2
+    # ClothingUniformJumpskirtColorPurple: 2
+    # ClothingUniformJumpsuitColorPink: 2
+    # ClothingUniformJumpskirtColorPink: 2
+    # ClothingUniformJumpsuitColorDarkBlue: 2
+    # ClothingUniformJumpskirtColorDarkBlue: 2
+    # ClothingUniformJumpsuitColorDarkGreen:  2
+    # ClothingUniformJumpskirtColorDarkGreen: 2
+    # ClothingUniformJumpsuitColorTeal: 2
+    # ClothingUniformJumpskirtColorTeal: 2
+    # ClothingUniformJumpsuitHawaiBlack: 2
+    # ClothingUniformJumpsuitHawaiBlue: 2
+    # ClothingUniformJumpsuitHawaiRed: 2
+    # ClothingUniformJumpsuitHawaiYellow: 2
+    # ClothingUniformJumpsuitFlannel: 2
+    # ClothingUniformJumpsuitCasualBlue: 2
+    # ClothingUniformJumpskirtCasualBlue: 2
+    # ClothingUniformJumpsuitCasualPurple: 2
+    # ClothingUniformJumpskirtCasualPurple: 2
+    # ClothingUniformJumpsuitCasualRed: 2
+    # ClothingUniformJumpskirtCasualRed: 2
+    # ClothingUniformJumpsuitCasualGreen: 2
+    # ClothingUniformJumpskirtCasualGreen: 2
+    # ClothingUniformTopColorWhite: 2
+    # ClothingUniformTopColorGrey: 2
+    # ClothingUniformTopColorBlack: 2
+    # ClothingUniformTopColorBlue: 2
+    # ClothingUniformTopColorDarkBlue: 2
+    # ClothingUniformTopColorTeal: 2
+    # ClothingUniformTopColorGreen: 2
+    # ClothingUniformTopColorDarkGreen: 2
+    # ClothingUniformTopColorOrange: 2
+    # ClothingUniformTopColorRed: 2
+    # ClothingUniformTopColorYellow: 2
+    # ClothingUniformTopColorPurple: 2
+    # ClothingUniformTopColorLightBrown: 2
+    # ClothingUniformTopColorBrown: 2
+    # ClothingUniformTopColorMaroon: 2
+    # ClothingUniformTopic: 2
+    # ClothingUniformTopicCool: 2
     # DO NOT ADD MORE, USE UNIFORM DYING
-    ClothingShoesColorBlack: 8
-    ClothingShoesColorBrown: 4
-    ClothingShoesColorWhite: 3
-    ClothingShoesColorBlue: 2
-    ClothingShoesColorYellow: 2
-    ClothingShoesColorGreen: 2
-    ClothingShoesColorOrange: 2
-    ClothingShoesColorRed: 2
-    ClothingShoesColorPurple: 2
-    ClothingShoesLeather: 2 # Corvax-Wega-Add
-    ClothingShoesBootsLaceup: 2 # Corvax-Wega-Add
-    ClothingShoesHeelsBlack: 2 # Corvax-Wega-Add
-    ClothingShoesHeelsGray: 2 # Corvax-Wega-Add
-    ClothingShoesHeelsBlue: 2 # Corvax-Wega-Add
-    ClothingShoesHeelsGreen: 2 # Corvax-Wega-Add
-    ClothingShoesHeelsTurquoise: 2 # Corvax-Wega-Add
-    ClothingShoesHeelsPink: 2 # Corvax-Wega-Add
-    ClothingShoesHeelsPurple: 2 # Corvax-Wega-Add
-    ClothingShoesHeelsRed: 2 # Corvax-Wega-Add
-    ClothingShoesHeelsOrange: 2 # Corvax-Wega-Add
-    ClothingShoesHeelsYellow: 2 # Corvax-Wega-Add
-    ClothingHeadHatGreysoft: 8
-    ClothingHeadHatMimesoft: 3
-    ClothingHeadHatBluesoft: 2
-    ClothingHeadHatYellowsoft: 2
-    ClothingHeadHatGreensoft: 2
-    ClothingHeadHatOrangesoft: 2
-    ClothingHeadHatRedsoft: 2
+    # ClothingShoesColorBlack: 8
+    # ClothingShoesColorBrown: 4
+    # ClothingShoesColorWhite: 3
+    # ClothingShoesColorBlue: 2
+    # ClothingShoesColorYellow: 2
+    # ClothingShoesColorGreen: 2
+    # ClothingShoesColorOrange: 2
+    # ClothingShoesColorRed: 2
+    # ClothingShoesColorPurple: 2
+    # ClothingShoesLeather: 2
+    # ClothingShoesBootsLaceup: 2
+    # ClothingShoesHeelsBlack: 2
+    # ClothingShoesHeelsGray: 2
+    # ClothingShoesHeelsBlue: 2
+    # ClothingShoesHeelsGreen: 2
+    # ClothingShoesHeelsTurquoise: 2
+    # ClothingShoesHeelsPink: 2
+    # ClothingShoesHeelsPurple: 2
+    # ClothingShoesHeelsRed: 2
+    # ClothingShoesHeelsOrange: 2
+    # ClothingShoesHeelsYellow: 2
+    # ClothingHeadHatGreysoft: 8
+    # ClothingHeadHatMimesoft: 3
+    # ClothingHeadHatBluesoft: 2
+    # ClothingHeadHatYellowsoft: 2
+    # ClothingHeadHatGreensoft: 2
+    # ClothingHeadHatOrangesoft: 2
+    # ClothingHeadHatRedsoft: 2
     # DO NOT ADD MORE, USE UNIFORM DYING
-    ClothingHeadHatBlacksoft: 2
-    ClothingHeadHatPurplesoft: 2
-    ClothingHeadHatCorpsoft: 2
-    ClothingHeadFishCap: 2
-    ClothingHeadRastaHat: 2
-    ClothingHeadPropellerHat: 2
+    # ClothingHeadHatBlacksoft: 2
+    # ClothingHeadHatPurplesoft: 2
+    # ClothingHeadHatCorpsoft: 2
+    # ClothingHeadFishCap: 2
+    # ClothingHeadRastaHat: 2
+    # ClothingHeadPropellerHat: 2
     ClothingBeltStorageWaistbag: 3
     ClothingEyesGlasses: 6
-    ClothingHandsGlovesColorBlack: 4
-    ClothingHandsGlovesColorGray: 4
-    ClothingHandsGlovesColorBrown: 2
-    ClothingHandsGlovesColorWhite: 2
-    ClothingHandsGlovesColorRed: 2
-    ClothingHandsGlovesColorBlue: 2
-    ClothingHandsGlovesColorTeal: 2
-    ClothingHandsGlovesColorGreen: 2
-    ClothingHandsGlovesColorOrange: 2
-    ClothingHandsGlovesColorPurple: 2
+    # ClothingHandsGlovesColorBlack: 4
+    # ClothingHandsGlovesColorGray: 4
+    # ClothingHandsGlovesColorBrown: 2
+    # ClothingHandsGlovesColorWhite: 2
+    # ClothingHandsGlovesColorRed: 2
+    # ClothingHandsGlovesColorBlue: 2
+    # ClothingHandsGlovesColorTeal: 2
+    # ClothingHandsGlovesColorGreen: 2
+    # ClothingHandsGlovesColorOrange: 2
+    # ClothingHandsGlovesColorPurple: 2
     ClothingEyesGlassesCheapSunglasses: 3
-    ClothingNeckDarkGreyCloak: 3 # Corvax-Wega-Add
-    ClothingNeckGothicCloak: 3 # Corvax-Wega-Add
-    
-    # Corvax-Wega-Winterdrobe-in-clothesmate-Start
-    ClothingUniformJumpskirtTurtleneckAquamarine: 2
-    ClothingUniformJumpsuitTurtleneckAquamarine: 2
-    ClothingUniformJumpskirtTurtleneckWhite: 2
-    ClothingUniformJumpsuitTurtleneckWhite: 2
-    ClothingUniformJumpskirtTurtleneckAzure: 2
-    ClothingUniformJumpsuitTurtleneckAzure: 2
-    ClothingUniformJumpskirtTurtleneckYellow: 2 
-    ClothingUniformJumpsuitTurtleneckYellow: 2
-    ClothingUniformJumpskirtTurtleneckGreen: 2
-    ClothingUniformJumpsuitTurtleneckGreen: 2
-    ClothingUniformJumpskirtTurtleneckBrown: 2
-    ClothingUniformJumpsuitTurtleneckBrown: 2
-    ClothingUniformJumpskirtTurtleneckRed: 2
-    ClothingUniformJumpsuitTurtleneckRed: 2
-    ClothingUniformJumpskirtTurtleneckOrange: 2
-    ClothingUniformJumpsuitTurtleneckOrange: 2
-    ClothingUniformJumpskirtTurtleneckPink: 2
-    ClothingUniformJumpsuitTurtleneckPink: 2
-    ClothingUniformJumpskirtTurtleneckGrey: 2
-    ClothingUniformJumpsuitTurtleneckGrey: 2 
-    ClothingUniformJumpskirtTurtleneckBlue: 2
-    ClothingUniformJumpsuitTurtleneckBlue: 2 
-    ClothingUniformJumpskirtTurtleneckPurple: 2
-    ClothingUniformJumpsuitTurtleneckPurple: 2 
-    ClothingUniformJumpskirtTurtleneckBlack: 2
-    ClothingUniformJumpsuitTurtleneckBlack: 2
-    ClothingUniformJumpskirtTurtleneckSalat: 2
-    ClothingUniformJumpsuitTurtleneckSalat: 2 
-    ClothingUniformJumpsuitTurtleneckSalatblack: 2 
-    ClothingUniformJumpskirtTurtleneckBlackSleeveless: 2
-    ClothingUniformJumpsuitTurtleneckBlackSleeveless: 2 
-    ClothingUniformJumpsuitTurtleneckWhiteBlackSleeveless: 2 
-    ClothingUniformJumpsuitTurtleneckWhiteSleeveless: 2 
-    ClothingUniformJumpskirtTurtleneckWhiteSleeveless: 2
-    ClothingNeckScarfStripedRed: 3
-    ClothingNeckScarfStripedGreen: 3
-    ClothingNeckScarfStripedBlue: 3
-    ClothingNeckScarfStripedBlack: 3
-    ClothingNeckScarfStripedBrown: 3
-    ClothingNeckScarfStripedLightBlue: 3
-    ClothingNeckScarfStripedOrange: 3
-    ClothingNeckScarfStripedPurple: 3
-    ClothingOuterCoatTrench: 6
-    ClothingOuterWinterCoat: 6
-    ClothingShoesBootsWinter: 6
-    ClothingOuterFlannelRed: 2
-    ClothingOuterFlannelBlue: 2
-    ClothingOuterFlannelGreen: 2
-    ClothingOuterCoatBomber: 3
-    ClothingHeadHatCanadaBeanie: 4
-    ClothingHeadHatSantahat: 2
-    ClothingHeadHatXmasCrown: 2
-    # Corvax-Wega-Winterdrobe-in-clothesmate-End
-    
+    ClothingNeckDarkGreyCloak: 3
+    ClothingNeckGothicCloak: 3
+    # Corvax-Wega-end 
     # DO NOT ADD MORE, USE UNIFORM DYING
   contrabandInventory:
     ClothingMaskNeckGaiter: 2
@@ -193,6 +145,4 @@
     ClothingBackpackSatchelSmugglerUnanchored: 1
     ClothingHeadHatSolidHeadband: 2
     ClothingUniformJumpsuitTurtleneckTactick: 2
-    ClothingNeckScarfStripedSyndieGreen: 3
-    ClothingNeckScarfStripedSyndieRed: 3
   # DO NOT ADD MORE, USE UNIFORM DYING

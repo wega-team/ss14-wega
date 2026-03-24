@@ -184,6 +184,7 @@
     interactSuccessString: hugging-success-generic
     interactSuccessSound: /Audio/Effects/thudswoosh.ogg
     messagePerceivedByOthers: hugging-success-generic-others
+  - type: InteractionActions # Corvax-Wega-Interactions
   - type: CanHostGuardian
   - type: NpcFactionMember
     factions:

@@ -258,7 +258,18 @@
       - ReagentId: Water
         Quantity: 1
 
-
+- type: entity
+  name: box fulton
+  parent: BoxCardboard
+  id: BoxFulton
+  description: Box with freezer fuction.
+  components:
+  - type: Storage
+    grid:
+    - 0,0,1,2
+  - type: Sprite
+    layers:
+      - state: box_of_doom_big
 
 
 

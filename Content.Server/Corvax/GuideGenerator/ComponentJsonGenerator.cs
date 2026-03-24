@@ -28,6 +28,7 @@ public static class ComponentJsonGenerator
             foreach (var (compName, entry) in entProto.Components)
             {
                 var node = ser.WriteValueAs<MappingDataNode>(entry.Component.GetType(), entry.Component);
+                FieldEntry.NormalizeFlagsToSequences(entry.Component, node);
                 var compFields = FieldEntry.DataNodeToObject(node);
 
                 if (!output.TryGetValue(compName, out var map))
@@ -56,6 +57,7 @@ public static class ComponentJsonGenerator
                     FieldEntry.EnsureFieldsCollectionsInitialized(compInstance);
                     entMan.AddComponent(uid, compInstance);
                     var node = ser.WriteValueAs<MappingDataNode>(compInstance.GetType(), compInstance, true);
+                    FieldEntry.NormalizeFlagsToSequences(compInstance, node);
                     defaultObj = FieldEntry.DataNodeToObject(node);
                 }
                 catch
@@ -81,7 +83,7 @@ public static class ComponentJsonGenerator
             };
 
             res.UserData.CreateDir(destRoot);
-            var fileName = PrototypeUtility.CalculatePrototypeName(compName) + ".json";
+            var fileName = TextTools.DecapitalizeString(compName) + ".json";
             var file = res.UserData.OpenWriteText(destRoot / fileName);
             file.Write(JsonSerializer.Serialize(outObj, serializeOptions));
             file.Flush();

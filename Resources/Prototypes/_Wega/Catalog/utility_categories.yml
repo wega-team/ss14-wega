@@ -9,6 +9,7 @@
     HandheldGPSBasic: 200
     RadioHandheld: 200
     Floodlight: 400
+    CargoHoloprojectorField: 700
     DoubleEmergencyOxygenTankFilled: 900
 
 - type: utilityVendorCategory

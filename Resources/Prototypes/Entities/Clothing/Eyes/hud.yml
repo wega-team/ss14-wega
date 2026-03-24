@@ -4,7 +4,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: ShowJobIcons
-  - type: ShowSquadIcons # Corvax-Wega-Add
+  - type: ShowSquadIcons # Corvax-SecApartment
   - type: ShowMindShieldIcons
   - type: ShowCriminalRecordIcons
   - type: ShowContrabandDetails

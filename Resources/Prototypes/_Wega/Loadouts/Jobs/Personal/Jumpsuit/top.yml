@@ -1,0 +1,125 @@
+- type: loadout
+  id: ClothingUniformTopColorWhite
+  equipment:
+    jumpsuit: ClothingUniformTopColorWhite
+  groupBy: "wegaToJ" 
+  
+- type: loadout
+  id: ClothingUniformTopColorGrey
+  equipment:
+    jumpsuit: ClothingUniformTopColorGrey
+  groupBy: "wegaToJ" 
+
+- type: loadout
+  id: ClothingUniformTopColorBlack
+  equipment:
+    jumpsuit: ClothingUniformTopColorBlack
+  groupBy: "wegaToJ" 
+
+- type: loadout
+  id: ClothingUniformTopColorBlue
+  equipment:
+    jumpsuit: ClothingUniformTopColorBlue
+  groupBy: "wegaToJ" 
+
+- type: loadout
+  id: ClothingUniformTopColorDarkBlue
+  equipment:
+    jumpsuit: ClothingUniformTopColorDarkBlue
+  groupBy: "wegaToJ" 
+
+- type: loadout
+  id: ClothingUniformTopColorTeal
+  equipment:
+    jumpsuit: ClothingUniformTopColorTeal
+  groupBy: "wegaToJ" 
+
+- type: loadout
+  id: ClothingUniformTopColorGreen
+  equipment:
+    jumpsuit: ClothingUniformTopColorGreen
+  groupBy: "wegaToJ" 
+
+- type: loadout
+  id: ClothingUniformTopColorDarkGreen
+  equipment:
+    jumpsuit: ClothingUniformTopColorDarkGreen
+  groupBy: "wegaToJ" 
+
+- type: loadout
+  id: ClothingUniformTopColorOrange
+  equipment:
+    jumpsuit: ClothingUniformTopColorOrange
+  groupBy: "wegaToJ" 
+
+- type: loadout
+  id: ClothingUniformTopColorPink
+  equipment:
+    jumpsuit: ClothingUniformTopColorPink
+  groupBy: "wegaToJ" 
+
+- type: loadout
+  id: ClothingUniformTopColorRed
+  equipment:
+    jumpsuit: ClothingUniformTopColorRed
+  groupBy: "wegaToJ" 
+
+- type: loadout
+  id: ClothingUniformTopColorYellow
+  equipment:
+    jumpsuit: ClothingUniformTopColorYellow
+  groupBy: "wegaToJ" 
+
+- type: loadout
+  id: ClothingUniformTopColorPurple
+  equipment:
+    jumpsuit: ClothingUniformTopColorPurple
+  groupBy: "wegaToJ" 
+
+- type: loadout
+  id: ClothingUniformTopColorLightBrown
+  equipment:
+    jumpsuit: ClothingUniformTopColorLightBrown
+  groupBy: "wegaToJ" 
+
+- type: loadout
+  id: ClothingUniformTopColorBrown
+  equipment:
+    jumpsuit: ClothingUniformTopColorBrown
+  groupBy: "wegaToJ" 
+
+- type: loadout
+  id: ClothingUniformTopColorMaroon
+  equipment:
+    jumpsuit: ClothingUniformTopColorMaroon
+  groupBy: "wegaToJ" 
+
+- type: loadout
+  id: ClothingUniformTopic
+  equipment:
+    jumpsuit: ClothingUniformTopic
+  groupBy: "wegaToJ" 
+
+- type: loadout
+  id: ClothingUniformTopicCool
+  equipment:
+    jumpsuit: ClothingUniformTopicCool
+  groupBy: "wegaToJ" 
+
+  # - ClothingUniformTopColorWhite
+  # - ClothingUniformTopColorGrey
+  # - ClothingUniformTopColorBlack
+  # - ClothingUniformTopColorBlue
+  # - ClothingUniformTopColorDarkBlue
+  # - ClothingUniformTopColorTeal
+  # - ClothingUniformTopColorGreen
+  # - ClothingUniformTopColorDarkGreen
+  # - ClothingUniformTopColorOrange
+  # - ClothingUniformTopColorRed
+  # - ClothingUniformTopColorYellow
+  # - ClothingUniformTopColorPurple
+  # - ClothingUniformTopColorLightBrown
+  # - ClothingUniformTopColorBrown
+  # - ClothingUniformTopColorMaroon
+  # - ClothingUniformTopic
+  # - ClothingUniformTopicCool

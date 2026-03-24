@@ -50,3 +50,4 @@
     - Belt
   - type: UseDelay
     delay: 1
+  - type: BloodCultAllowedGun # Corvax-Wega-BloodCult

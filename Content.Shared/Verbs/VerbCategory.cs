@@ -90,5 +90,7 @@ namespace Content.Shared.Verbs
 
         public static readonly VerbCategory ToggleHeadsetSound = new("verb-categories-toggle-headset-sound", null); // Corvax-Wega-Headset
         public static readonly VerbCategory CargoAccount = new("verb-categories-cargo-account", null); // Corvax-Wega-Chaneable-Cargo-Account
+        public static readonly VerbCategory Interaction = // Corvax-Wega-Interactions
+            new("verb-categories-interaction", "/Textures/Interface/VerbIcons/group.svg.192dpi.png"); // Corvax-Wega-Interactions
     }
 }

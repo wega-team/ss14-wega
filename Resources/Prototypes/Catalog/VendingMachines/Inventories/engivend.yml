@@ -5,13 +5,14 @@
     ClothingEyesHudDiagnostic: 4
     ClothingHeadHatWelding: 6
     CrowbarYellow: 8
+    ConstructionBag: 4 #Corvax-Wega
+    PouchMaterial: 4 #Corvax-Wega
     Multitool: 4
     NetworkConfigurator: 5
     PowerCellMedium: 5
     ClothingHandsGlovesColorYellow: 6
     BoxInflatable: 2
     ClothingHeadHatCone: 4
-    ConstructionBag: 2 #Corvax-Wega
   contrabandInventory:
     CowToolboxFilled: 1
     DrinkBeerCan: 3

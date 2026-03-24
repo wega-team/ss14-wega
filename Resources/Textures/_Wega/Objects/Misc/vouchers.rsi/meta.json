@@ -1,14 +1,47 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Taken from https://github.com/tgstation/tgstation",
+  "copyright": "Taken from https://github.com/tgstation/tgstation, security by zekins3366",
   "size": {
     "x": 32,
     "y": 32
   },
   "states": [
     {
+      "name": "chocker"
+    },
+    {
+      "name": "clouth"
+    },
+    {
+      "name": "gloves"
+    },
+    {
+      "name": "hat"
+    },
+    {
+      "name": "otherclout"
+    },
+    {
       "name": "salvage"
+    },
+    {
+      "name": "scarf"
+    },
+    {
+      "name": "security"
+    },
+    {
+      "name": "shoose"
+    },
+    {
+      "name": "theather"
+    },
+    {
+      "name": "top"
+    },
+    {
+      "name": "turtleneck"
     }
   ]
 }

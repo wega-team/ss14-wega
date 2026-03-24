@@ -75,6 +75,7 @@
       - BorgModuleInflatable
       - BorgModuleCommonSpeed
       - BorgModuleCommonPen
+      - BorgModuleFulton
 
 - type: entity
   id: BorgChassisMiningPlayer

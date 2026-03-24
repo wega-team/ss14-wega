@@ -144,3 +144,48 @@
   - !type:GroupLoadoutEffect
     proto: BloodCultAchievement
 #endregion
+
+- type: loadout
+  id: OtherClouthSelector
+  storage:
+    back:
+    - OtherClouthSelector
+  groupBy: "wegaSelector"
+
+- type: loadout
+  id: ScarfSelector
+  storage:
+    back:
+    - ScarfSelector
+  groupBy: "wegaSelector"
+
+- type: loadout
+  id: ChoeckerSelector
+  storage:
+    back:
+    - ChoeckerSelector
+  groupBy: "wegaSelector"
+
+- type: loadout
+  id: ClothingMaskNeckGaiter
+  storage:
+    back:
+    - ClothingMaskNeckGaiter
+  groupBy: "wegaMask"
+
+- type: loadout
+  id: ClothingMaskNeckGaiterRed
+  storage:
+    back:
+    - ClothingMaskNeckGaiterRed
+  groupBy: "wegaMask"
+
+- type: loadout
+  id: PlushieTeg
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SeniorEngineering
+  storage:
+    back:
+    - PlushieTeg
+  groupBy: "wegaToy"

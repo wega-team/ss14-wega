@@ -47,6 +47,13 @@ public sealed partial class BloodCultObjectComponent : Component;
 [RegisterComponent]
 public sealed partial class BloodCultWeaponComponent : Component;
 
+ // Чтобы культисты могли использовать то, что по сути им можно использовать и на геймплей в ПВП особо не влияет.
+[RegisterComponent]
+public sealed partial class BloodCultAllowedGunComponent : Component;
+
+[RegisterComponent]
+public sealed partial class BloodCultEquipmentComponent : Component;
+
 [RegisterComponent]
 public sealed partial class BloodDaggerComponent : Component
 {

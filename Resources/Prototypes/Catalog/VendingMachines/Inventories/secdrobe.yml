@@ -4,6 +4,7 @@
     ClothingBackpackSecurity: 3
     ClothingBackpackSatchelSecurity: 3
     ClothingBackpackDuffelSecurity: 3
+    PouchSec: 4 # Corvax-Wega-Add
     ClothingUniformJumpsuitSec: 3
     # Corvax-Wega-Turtleneck-start
     ClothingUniformJumpskirtSec: 3

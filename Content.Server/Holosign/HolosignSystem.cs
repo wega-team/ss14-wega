@@ -51,7 +51,7 @@ public sealed class HolosignSystem : EntitySystem
         var holoUid = Spawn(component.SignProto, args.ClickLocation.SnapToGrid(EntityManager));
         var xform = Transform(holoUid);
         // TODO: Just make the prototype anchored
-        if (!xform.Anchored)
+        if (!xform.Anchored  && component.Anchor == true) // Corvax-Wega-Change
             _transform.AnchorEntity(holoUid, xform); // anchor to prevent any tempering with (don't know what could even interact with it)
 
         args.Handled = true;

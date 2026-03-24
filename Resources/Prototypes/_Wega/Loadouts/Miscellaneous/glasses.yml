@@ -18,6 +18,14 @@
     eyes: ClothingEyesGlassesCheapSunglasses
 
 - type: loadout
+  id: ClothingEyesGlassesMonocle
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: Command
+  equipment:
+    eyes: ClothingEyesGlassesMonocle
+
+- type: loadout
   id: ClothingEyesSalesman
   effects:
   - !type:GroupLoadoutEffect
@@ -25,3 +33,7 @@
   equipment:
     eyes: ClothingEyesSalesman
 
+- type: loadout
+  id: ClothingEyesEyepatch
+  equipment:
+    eyes: ClothingEyesEyepatch

@@ -1,0 +1,95 @@
+- type: startingGear
+  id: RobotechGearCleaner
+  equipment:
+    head: ClothingHeadHatCorpsoft
+    neck: ClothingNeckTieSci
+    outerClothing: ClothingOuterCoatRobo
+    gloves: ClothingHandsGlovesRobohands
+    shoes: ClothingShoesChameleon
+    jumpsuit: ClothingUniformJumpsuitRoboticist
+    belt: ClothingBeltUtilityFilled
+    pocket1: BorgModuleCleanerRare
+    
+- type: startingGear
+  id: RobotechGearGun
+  equipment:
+    head: ClothingHeadHatCorpsoft
+    neck: ClothingNeckTieSci
+    outerClothing: ClothingOuterCoatRobo
+    gloves: ClothingHandsGlovesRobohands
+    shoes: ClothingShoesChameleon
+    jumpsuit: ClothingUniformJumpsuitRoboticist
+    belt: ClothingBeltUtilityFilled
+    pocket1: BorgModuleSecRare
+    
+- type: startingGear
+  id: RobotechGearEng
+  equipment:
+    head: ClothingHeadHatCorpsoft
+    neck: ClothingNeckTieSci
+    outerClothing: ClothingOuterCoatRobo
+    gloves: ClothingHandsGlovesRobohands
+    shoes: ClothingShoesChameleon
+    jumpsuit: ClothingUniformJumpsuitRoboticist
+    belt: ClothingBeltUtilityFilled
+    pocket1: BorgModuleEngenerRare
+
+- type: startingGear
+  id: RobotechGearRND
+  equipment:
+    head: ClothingHeadHatCorpsoft
+    neck: ClothingNeckTieSci
+    outerClothing: ClothingOuterCoatRobo
+    gloves: ClothingHandsGlovesRobohands
+    shoes: ClothingShoesChameleon
+    jumpsuit: ClothingUniformJumpsuitRoboticist
+    belt: ClothingBeltUtilityFilled
+    pocket1: BorgModuleScienceRND
+
+- type: startingGear
+  id: RobotechGearMedical
+  equipment:
+    head: ClothingHeadHatCorpsoft
+    neck: ClothingNeckTieSci
+    outerClothing: ClothingOuterCoatRobo
+    gloves: ClothingHandsGlovesRobohands
+    shoes: ClothingShoesChameleon
+    jumpsuit: ClothingUniformJumpsuitRoboticist
+    belt: ClothingBeltUtilityFilled
+    pocket1: BorgModuleMedicalRare
+    
+- type: startingGear
+  id: RobotechGearCargo
+  equipment:
+    head: ClothingHeadHatCorpsoft
+    neck: ClothingNeckTieSci
+    outerClothing: ClothingOuterCoatRobo
+    gloves: ClothingHandsGlovesRobohands
+    shoes: ClothingShoesChameleon
+    jumpsuit: ClothingUniformJumpsuitRoboticist
+    belt: ClothingBeltUtilityFilled
+    pocket1: BorgModuleCargoRare
+    
+- type: startingGear
+  id: RobotechGearService
+  equipment:
+    head: ClothingHeadHatCorpsoft
+    neck: ClothingNeckTieSci
+    outerClothing: ClothingOuterCoatRobo
+    gloves: ClothingHandsGlovesRobohands
+    shoes: ClothingShoesChameleon
+    jumpsuit: ClothingUniformJumpsuitRoboticist
+    belt: ClothingBeltUtilityFilled
+    pocket1: BorgModuleServiceRare
+
+- type: startingGear
+  id: RobotechGearCommon
+  equipment:
+    head: ClothingHeadHatCorpsoft
+    neck: ClothingNeckTieSci
+    outerClothing: ClothingOuterCoatRobo
+    gloves: ClothingHandsGlovesRobohands
+    shoes: ClothingShoesChameleon
+    jumpsuit: ClothingUniformJumpsuitRoboticist
+    belt: ClothingBeltUtilityFilled
+    pocket1: BorgModuleCommonHand

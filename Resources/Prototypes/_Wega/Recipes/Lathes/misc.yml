@@ -27,3 +27,13 @@
   materials:
     Steel: 250
     Plastic: 250
+
+- type: latheRecipe
+  id: CargoHoloprojectorField
+  result: CargoHoloprojectorField
+  categories:
+  - Tools
+  completetime: 5
+  materials:
+    Steel: 500
+    Plastic: 300

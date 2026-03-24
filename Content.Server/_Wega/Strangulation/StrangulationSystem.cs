@@ -24,7 +24,7 @@ using Content.Shared.StatusEffectNew;
 
 namespace Content.Server.Strangulation
 {
-    public sealed class StrangulationSystem : EntitySystem
+    public sealed partial class StrangulationSystem : SharedStrangulationSystem
     {
         [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
         [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
@@ -76,12 +76,13 @@ namespace Content.Server.Strangulation
 
             AlternativeVerb verb = new()
             {
+                Priority = 1,
+                Text = Loc.GetString("strangle-verb"),
+                Category = VerbCategory.Interaction,
                 Act = () =>
                 {
                     TryStartStrangle(args.User, args.Target);
                 },
-                Text = Loc.GetString("strangle-verb"),
-
             };
             args.Verbs.Add(verb);
         }
