@@ -1,0 +1,202 @@
+- type: interactionAction
+  parent: BaseAliveMobAction
+  id: SpankInteraction
+  name: interaction-spank-name
+  cooldown: 2.5
+  conditions:
+  - !type:DistanceCondition
+    maxRange: 1.2
+  effects:
+  - !type:PlaySoundEffect
+    sound:
+      collection: Slaps
+  - !type:StaminaDamageEffect
+    amount: 5
+  - !type:PopupMessageEffect
+    otherMessage: interaction-action-harmless-spank-other
+  - !type:SendMessageEffect
+    message: interaction-action-harmless-spank-emote
+
+- type: interactionAction
+  parent: BaseAliveMobAction
+  id: SlapInteraction
+  name: interaction-slap-name
+  cooldown: 2.5
+  conditions:
+  - !type:DistanceCondition
+    maxRange: 1.2
+  effects:
+  - !type:PlaySoundEffect
+    sound:
+      collection: Slaps
+  - !type:StaminaDamageEffect
+    amount: 1.5
+  - !type:PopupMessageEffect
+    otherMessage: interaction-action-harmless-slap-other
+  - !type:SendMessageEffect
+    message: interaction-action-harmless-slap-emote
+
+- type: interactionAction
+  parent: BaseAliveMobAction
+  id: KissInteraction
+  name: interaction-kiss-name
+  cooldown: 2.5
+  conditions:
+  - !type:DistanceCondition
+    maxRange: 1.2
+  effects:
+  - !type:PlaySoundEffect
+    sound:
+      collection: Kisses
+  - !type:PopupMessageEffect
+    targetMessage: interaction-action-harmless-kiss-target
+    otherMessage: interaction-action-harmless-kiss-other
+  - !type:SendMessageEffect
+    message: interaction-action-harmless-kiss-emote
+  - !type:SpawnEntitiesEffect
+    spawnEntities: [ EffectHearts ]
+
+- type: interactionAction
+  id: StandInteraction
+  name: interaction-stand-name
+  cooldown: 10
+  delay: 1
+  conditions:
+  - !type:MobStateCondition
+    state: Alive
+  - !type:DistanceCondition
+    maxRange: 0.8
+  - !type:KnockdownCondition
+  effects:
+  - !type:StandEffect
+  - !type:PlaySoundEffect
+    sound:
+      path: "/Audio/Effects/thudswoosh.ogg"
+  - !type:PopupMessageEffect
+    otherMessage: interaction-action-harmless-stand-other
+  - !type:SendMessageEffect
+    message: interaction-action-harmless-stand-emote
+
+- type: interactionAction
+  id: KnockdownInteraction
+  name: interaction-knockdown-name
+  delayStartUserMessage: interaction-action-delay-knockdown-user
+  delayStartTargetMessage: interaction-action-delay-knockdown-target
+  delayStartOtherMessage: interaction-action-delay-knockdown-other
+  delayStartColorMessage: Red
+  cooldown: 20
+  delay: 3
+  conditions:
+  - !type:MobStateCondition
+    state: Alive
+  - !type:DistanceCondition
+    maxRange: 0.8
+  - !type:KnockdownCondition
+    invert: true
+  effects:
+  - !type:KnockdownEffect
+  - !type:PlaySoundEffect
+    sound:
+      path: "/Audio/Effects/thudswoosh.ogg"
+  - !type:PopupMessageEffect
+    otherMessage: interaction-action-knockdown-other
+  - !type:SendMessageEffect
+    message: interaction-action-knockdown-emote
+
+- type: interactionAction
+  parent: BaseAliveMobAction
+  id: PatInteraction
+  name: interaction-pat-name
+  cooldown: 2.5
+  conditions:
+  - !type:DistanceCondition
+    maxRange: 1.2
+  effects:
+  - !type:PlaySoundEffect
+    sound:
+      path: "/Audio/Effects/thudswoosh.ogg"
+  - !type:PopupMessageEffect
+    targetMessage: interaction-action-harmless-pat-target
+    otherMessage: interaction-action-harmless-pat-other
+  - !type:SendMessageEffect
+    message: interaction-action-harmless-pat-emote
+
+- type: interactionAction
+  parent: BaseAliveMobAction
+  id: PatEarsInteraction
+  name: interaction-pat-ears-name
+  cooldown: 2.5
+  conditions:
+  - !type:MarkingPresentCondition
+    categories: HeadTop
+  - !type:SpeciesCondition
+    invert: true
+    specieses:
+    - Android
+    - Ipc
+    - Demon
+    - Resomi
+    - Vox
+    - Reptilian
+    - Moth
+  - !type:DistanceCondition
+    maxRange: 1.2
+  effects:
+  - !type:PlaySoundEffect
+    sound:
+      path: "/Audio/Effects/thudswoosh.ogg"
+  - !type:PopupMessageEffect
+    targetMessage: interaction-action-harmless-pat-ears-target
+    otherMessage: interaction-action-harmless-pat-ears-other
+  - !type:SendMessageEffect
+    message: interaction-action-harmless-pat-ears-emote
+  - !type:SpawnEntitiesEffect
+    spawnEntities: [ EffectHearts ]
+
+- type: interactionAction
+  parent: BaseAliveMobAction
+  id: BlessingInteraction
+  name: interaction-blessing-name
+  cooldown: 5
+  conditions:
+  - !type:WhitelistCondition
+    whitelist:
+      components:
+      - BibleUser
+    target: User
+  - !type:DistanceCondition
+    maxRange: 1.2
+  effects:
+  - !type:PlaySoundEffect
+    sound:
+      path: "/Audio/Effects/holy.ogg"
+  - !type:PopupMessageEffect
+    targetMessage: interaction-action-harmless-blessing-target
+    otherMessage: interaction-action-harmless-blessing-other
+  - !type:SendMessageEffect
+    message: interaction-action-harmless-blessing-emote
+
+- type: interactionAction
+  parent: BaseAliveMobAction
+  id: PullTailInteraction
+  name: interaction-pull-tail-name
+  delayStartTargetMessage: interaction-action-harmless-delay-pull-tail-target
+  delayStartOtherMessage: interaction-action-harmless-delay-pull-tail-other
+  delayStartColorMessage: Red
+  cooldown: 5
+  delay: 0.1
+  conditions:
+  - !type:MarkingPresentCondition
+    categories: Tail
+  - !type:SpeciesCondition
+    invert: true
+    specieses:
+    - Moth
+  - !type:DistanceCondition
+    maxRange: 1.2
+  effects:
+  - !type:StaminaDamageEffect
+    amount: 7
+  - !type:PlaySoundEffect
+    sound:
+      path: "/Audio/Effects/thudswoosh.ogg"

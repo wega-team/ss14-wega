@@ -150,6 +150,33 @@
           32:
             sprite: _Wega/Mobs/Species/Ariral/displacement.rsi
             state: shoes
+      outerClothing:
+        sizeMaps:
+          32:
+            sprite: _Wega/Mobs/Species/Ariral/displacement.rsi
+            state: outerclothing
+      socks:
+        sizeMaps:
+          32:
+            sprite: _Wega/Mobs/Species/Ariral/displacement.rsi
+            state: socks
+
+    femaleDisplacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: _Wega/Mobs/Species/Ariral/displacement.rsi
+            state: jumpsuit
+      shoes:
+        sizeMaps:
+          32:
+            sprite: _Wega/Mobs/Species/Ariral/displacement.rsi
+            state: shoes
+      outerClothing:
+        sizeMaps:
+          32:
+            sprite: _Wega/Mobs/Species/Ariral/displacement.rsi
+            state: outerclothing
       socks:
         sizeMaps:
           32:
@@ -244,6 +271,33 @@
           32:
             sprite: _Wega/Mobs/Species/Ariral/displacement.rsi
             state: shoes
+      outerClothing:
+        sizeMaps:
+          32:
+            sprite: _Wega/Mobs/Species/Ariral/displacement.rsi
+            state: outerclothing
+      socks:
+        sizeMaps:
+          32:
+            sprite: _Wega/Mobs/Species/Ariral/displacement.rsi
+            state: socks
+
+    femaleDisplacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: _Wega/Mobs/Species/Ariral/displacement.rsi
+            state: jumpsuit
+      shoes:
+        sizeMaps:
+          32:
+            sprite: _Wega/Mobs/Species/Ariral/displacement.rsi
+            state: shoes
+      outerClothing:
+        sizeMaps:
+          32:
+            sprite: _Wega/Mobs/Species/Ariral/displacement.rsi
+            state: outerclothing
       socks:
         sizeMaps:
           32:

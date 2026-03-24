@@ -1,0 +1,261 @@
+- type: interactionAction
+  parent: BaseHarmAction
+  id: HarmTwistInteraction
+  name: interaction-harm-twist
+  icon: { sprite: "Objects/Misc/handcuffs.rsi", state: "handcuff" }
+  delayStartUserMessage: interaction-action-delay-grapple-user
+  delayStartTargetMessage: interaction-action-delay-grapple-target
+  delayStartOtherMessage: interaction-action-delay-grapple-other
+  delayStartColorMessage: Red
+  cooldown: 45
+  delay: 0.8
+  priority: 10
+  conditions:
+  - !type:KnockdownCondition
+    invert: true
+  - !type:CuffedCondition
+    invert: true
+  - !type:HasItemInHandCondition
+    whitelist:
+      components:
+      - Handcuff
+  - !type:WhitelistCondition
+    invert: true
+    whitelist:
+      components:
+      - WeaknessGen
+    target: User
+  effects:
+  - !type:PlaySoundEffect
+    sound:
+      path: "/Audio/Effects/thudswoosh.ogg"
+  - !type:ProbEffect
+    prob: 0.8
+    effects:
+    - !type:KnockdownEffect
+    - !type:ShacklingEffect
+    - !type:SendMessageEffect
+      message: interaction-action-grapple-emote
+  - !type:ProbEffect
+    target: User
+    prob: 1
+    effects:
+    - !type:StaminaDamageEffect
+      amount: 20
+
+- type: interactionAction
+  parent: BaseHarmAction
+  id: CauterizeCigaretteInteraction
+  name: interaction-harm-cauterize
+  icon: { sprite: "Objects/Consumable/Smokeables/Cigarettes/cigarette.rsi", state: "unlit-icon" }
+  delayStartUserMessage: interaction-action-delay-cauterize-user
+  delayStartTargetMessage: interaction-action-delay-cauterize-target
+  delayStartOtherMessage: interaction-action-delay-cauterize-other
+  delayStartColorMessage: Red
+  canInteractSelf: true
+  cooldown: 2.5
+  delay: 0.1
+  conditions:
+  - !type:HasItemInHandCondition
+    whitelist:
+      requireAll: true
+      components:
+      - Cigar
+      - Burning
+    target: User
+  effects:
+  - !type:PlaySoundEffect
+    sound:
+      path: "/Audio/Effects/cig_snuff.ogg"
+  - !type:DamageEffect
+    ignoreResistances: true
+    damage:
+      types:
+        Heat: 0.5
+
+- type: interactionAction
+  parent: BaseHarmAction
+  id: HarmCutTailInteraction
+  name: interaction-harm-cut-tail
+  icon: { sprite: "Objects/Weapons/Melee/combat_knife.rsi", state: "icon" }
+  delayStartUserMessage: interaction-action-delay-cut-tail-user
+  delayStartTargetMessage: interaction-action-delay-cut-tail-target
+  delayStartOtherMessage: interaction-action-delay-cut-tail-other
+  delayStartColorMessage: Red
+  cooldown: 45
+  delay: 5
+  priority: 1
+  conditions:
+  - !type:MarkingPresentCondition
+    categories: Tail
+  - !type:SpeciesCondition
+    invert: true
+    specieses:
+    - Moth
+  - !type:HasItemInHandCondition
+    whitelist:
+      components:
+      - Sharp
+  effects:
+  - !type:PlaySoundEffect
+    sound:
+      path: "/Audio/Weapons/bladeslice.ogg"
+  - !type:RemoveMarkingEffect
+    categories: Tail
+  - !type:BleedEffect
+    amount: 2
+  - !type:DamageEffect
+    ignoreResistances: true
+    damage:
+      types:
+        Slash: 10
+  - !type:SendMessageEffect
+    message: interaction-action-cut-tail-emote
+
+- type: interactionAction
+  parent: BaseHarmAction
+  id: HarmCutMothTailInteraction
+  name: interaction-harm-cut-moth-tail
+  icon: { sprite: "Objects/Weapons/Melee/combat_knife.rsi", state: "icon" }
+  delayStartUserMessage: interaction-action-delay-cut-moth-tail-user
+  delayStartTargetMessage: interaction-action-delay-cut-moth-tail-target
+  delayStartOtherMessage: interaction-action-delay-cut-moth-tail-other
+  delayStartColorMessage: Red
+  cooldown: 45
+  delay: 7
+  priority: 1
+  conditions:
+  - !type:MarkingPresentCondition
+    categories: Tail
+  - !type:SpeciesCondition
+    specieses:
+    - Moth
+  - !type:HasItemInHandCondition
+    whitelist:
+      components:
+      - Sharp
+  effects:
+  - !type:PlaySoundEffect
+    sound:
+      path: "/Audio/Weapons/bladeslice.ogg"
+  - !type:RemoveMarkingEffect
+    categories: Tail
+  - !type:BleedEffect
+    amount: 2
+  - !type:DamageEffect
+    ignoreResistances: true
+    damage:
+      types:
+        Slash: 10
+  - !type:SendMessageEffect
+    message: interaction-action-cut-moth-tail-emote
+
+- type: interactionAction
+  parent: BaseHarmAction
+  id: HarmCutEarsInteraction
+  name: interaction-harm-cut-ears
+  icon: { sprite: "Objects/Weapons/Melee/combat_knife.rsi", state: "icon" }
+  delayStartUserMessage: interaction-action-delay-cut-ears-user
+  delayStartTargetMessage: interaction-action-delay-cut-ears-target
+  delayStartOtherMessage: interaction-action-delay-cut-ears-other
+  delayStartColorMessage: Red
+  cooldown: 45
+  delay: 5
+  priority: 1
+  conditions:
+  - !type:MarkingPresentCondition
+    categories: HeadTop
+  - !type:SpeciesCondition
+    invert: true
+    specieses:
+    - Android
+    - Ipc
+    - Demon
+    - Resomi
+    - Vox
+    - Reptilian
+    - Moth
+  - !type:HasItemInHandCondition
+    whitelist:
+      components:
+      - Sharp
+  effects:
+  - !type:PlaySoundEffect
+    sound:
+      path: "/Audio/Weapons/bladeslice.ogg"
+  - !type:RemoveMarkingEffect
+    categories: HeadTop
+  - !type:BleedEffect
+    amount: 2
+  - !type:DamageEffect
+    ignoreResistances: true
+    damage:
+      types:
+        Slash: 10
+  - !type:SendMessageEffect
+    message: interaction-action-cut-ears-emote
+
+- type: interactionAction
+  parent: BaseHarmAction
+  id: HarmCutMothEarsInteraction
+  name: interaction-harm-cut-moth-ears
+  icon: { sprite: "Objects/Weapons/Melee/combat_knife.rsi", state: "icon" }
+  delayStartUserMessage: interaction-action-delay-cut-moth-ears-user
+  delayStartTargetMessage: interaction-action-delay-cut-moth-ears-target
+  delayStartOtherMessage: interaction-action-delay-cut-moth-ears-other
+  delayStartColorMessage: Red
+  cooldown: 45
+  delay: 5
+  priority: 1
+  conditions:
+  - !type:MarkingPresentCondition
+    categories: HeadTop
+  - !type:SpeciesCondition
+    specieses:
+    - Moth
+  - !type:HasItemInHandCondition
+    whitelist:
+      components:
+      - Sharp
+  effects:
+  - !type:PlaySoundEffect
+    sound:
+      path: "/Audio/Weapons/bladeslice.ogg"
+  - !type:RemoveMarkingEffect
+    categories: HeadTop
+  - !type:BleedEffect
+    amount: 2
+  - !type:DamageEffect
+    ignoreResistances: true
+    damage:
+      types:
+        Slash: 10
+  - !type:SendMessageEffect
+    message: interaction-action-cut-moth-ears-emote
+
+- type: interactionAction
+  parent: BaseHarmAction
+  id: HarmGunInteraction
+  name: interaction-harm-gun
+  icon: { sprite: "Objects/Weapons/Guns/Pistols/viper.rsi", state: "icon" }
+  cooldown: 10
+  priority: 1
+  conditions:
+  - !type:HasItemInHandCondition
+    whitelist:
+      components:
+      - Gun
+  effects:
+  - !type:PlaySoundEffect
+    sound:
+      collection: MetalThud
+  - !type:DamageEffect
+    ignoreResistances: true
+    damage:
+      types:
+        Blunt: 5
+  - !type:PopupMessageEffect
+    targetMessage: interaction-action-gun-target
+    otherMessage: interaction-action-gun-other
+  - !type:SendMessageEffect
+    message: interaction-action-gun-emote
