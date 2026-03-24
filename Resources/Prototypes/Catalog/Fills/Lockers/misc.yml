@@ -203,6 +203,12 @@
     - !type:NestedSelector
       tableId: SyndieMaintLoot
       prob: 0.05
+    # Corvax-Wega-ModularSuit-start
+    # Maintenance Modsuit Modules
+    - !type:NestedSelector
+      tableId: MaintModsuitModulesTable
+      prob: 0.05
+    # Corvax-Wega-ModularSuit-end
     # Recursive
     - id: ClosetMaintenanceFilledRandom
       prob: 0.01
