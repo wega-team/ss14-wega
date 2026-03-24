@@ -1,3 +1,11 @@
 - type: latheCategory
   id: Anroid
   name: lathe-category-android
+  
+- type: latheCategory
+  id: ModesuitPart
+  name: lathe-category-modepart
+  
+- type: latheCategory
+  id: ModesuitModule
+  name: lathe-category-modemodule

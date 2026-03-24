@@ -15,6 +15,7 @@
   - HotplateMachineCircuitboard
   - ChemicalPayload
   - ClothingEyesGlassesChemical
+  - SolutionScannerSuitModule
   - ChemistryEmptyBottle01
   - Jug
 
@@ -52,6 +53,21 @@
   - VaccinatorMachineCircuitboard
   - DiagnoserMachineCircuitboard
 
+- type: technology
+  id: MedicalModifier
+  name: research-technology-medical-modifier
+  icon:
+    sprite: _Wega/Clothing/Modular/Medical/control.rsi
+    state: icon
+  discipline: Biochemical
+  tier: 1
+  cost: 10000
+  recipeUnlocks:
+  - ArmSyntheticDefib
+  - DefibrillatorSuitModule
+  - InjectorSuitModule
+  - MedicalPlating
+  
 # Tier 2
 
 - type: technology
@@ -71,7 +87,7 @@
 
 - type: technology
   id: MechanizedTreatment
-  name: research-technology-mechanized-treatment
+  name: research-technology-mechanized-treatment-wega
   icon:
     sprite: Mobs/Silicon/chassis.rsi
     state: medical
@@ -83,7 +99,6 @@
   - AdvancedJetInjector
   - Hynospray
   - DefibrillatorCompact
-  - ArmSyntheticDefib
 
 - type: technology
   id: ChemicalDispensary

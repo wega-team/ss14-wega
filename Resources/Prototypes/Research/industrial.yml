@@ -15,7 +15,6 @@
   - OreProcessorIndustrialMachineCircuitboard
   - ClothingMaskWeldingGas
   - ClothingShoesBootsJump
-  - LegSyntheticJump # Corvax-Wega-Androids
   - WeaponPlasmaCutter # Corvax-Wega-Lavaland
 
 - type: technology
@@ -26,10 +25,11 @@
     state: icon
   discipline: Industrial
   tier: 1
-  cost: 5000
+  cost: 7500 # 5000 Corvax-Wega-edit
   recipeUnlocks:
   - RadarConsoleCircuitboard
   - HandHeldMassScanner
+  - GPSSuitModule # Corvax-Wega-Add
 
 - type: technology
   id: AdvancedPowercells
@@ -90,6 +90,7 @@
   - SolarControlComputerCircuitboard
   - SolarTrackerElectronics
   - EmitterCircuitboard
+  - ModularSuitCorePlasma # Corvax-Wega-add
 
 - type: technology
   id: AtmosphericTech
@@ -148,11 +149,13 @@
     state: icon
   discipline: Industrial
   tier: 2
-  cost: 7500
+  cost: 10000 # Corvax-Wega-edit 7500
   recipeUnlocks:
   - HellfireFreezerMachineCircuitBoard
   - PortableScrubberMachineCircuitBoard
   - HolofanProjector
+  - AtmosPlating # Corvax-Wega-Add
+  # - TemperatureRegulatorSuitModule # Corvax-Wega-add
   technologyPrerequisites:
   - AtmosphericTech
 
@@ -172,7 +175,6 @@
     - BorgModuleAdvancedTool
     - Fulton
     - FultonBeacon
-    - ArmSyntheticPry # Corvax-Wega-Androids
 
 - type: technology
   id: MassExcavation
@@ -207,6 +209,7 @@
   - ClothingBackpackHolding
   - ClothingBackpackSatchelHolding
   - ClothingBackpackDuffelHolding
+  - StorageHoldingSuitModule # Corvax-Wega-add
 
 - type: technology
   id: OptimizedMicrogalvanism
@@ -220,5 +223,6 @@
   recipeUnlocks:
   - PowerCellMicroreactor
   - PowerCellHyper
+  # - ModularSuitCoreInfinite # Corvax-Wega-Add
   technologyPrerequisites:
   - AdvancedPowercells

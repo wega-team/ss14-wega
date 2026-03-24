@@ -64,11 +64,12 @@
     state: icon
   discipline: Experimental
   tier: 1
-  cost: 7500
+  cost: 10000 # 7500 Corvax-Wega-Edit
   recipeUnlocks:
   - ClothingShoesBootsMagSci
   - ClothingShoesBootsMoon
   - LegSyntheticMagboots # Corvax-Wega-Androids
+  - MagnetSuitModule # Corvax-Wega-add
 
 - type: technology
   id: AnomalyCoreHarnessing
@@ -78,9 +79,13 @@
     state: icon
   discipline: Experimental
   tier: 1
-  cost: 10000
+  cost: 15000 # 10000 Corvax-Wega-edit
   recipeUnlocks:
   - WeaponGauntletGorilla
+# Corvax-Wega-start
+  - AntiGravitySuitModule
+  - TeleporterSuitModule
+# Corvax-Wega-end
 
 # Tier 2
 
@@ -138,6 +143,7 @@
   recipeUnlocks:
     - WeaponForceGun
     - WeaponTetherGun
+    - KinesisSuitModule # Corvax-Wega-Edit
 
 # Tier 3
 

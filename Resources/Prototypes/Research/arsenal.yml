@@ -129,13 +129,17 @@
   id: SpecialMeans
   name: research-technology-special-means
   icon:
-    sprite: Clothing/Back/Backpacks/electropack.rsi
+    sprite: _Wega/Clothing/Modular/Security/control.rsi
     state: icon
   discipline: Arsenal
   tier: 1
-  cost: 5000
+  cost: 10000 # Corvax-Wega-Edit 5000
   recipeUnlocks:
   - ClothingBackpackElectropack
+  - SecurityPlating
+  - ArmorBossterSuitModule
+  - EMPShieldSuitModule
+
 
 # Tier 2
 
