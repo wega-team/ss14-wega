@@ -1388,7 +1388,7 @@
   - ClothingUniformJumpskirtNecklineSweater
   - ClothingUniformJumpskirtPinkKimano
   - ClothingUniformJumpskirtBlueKimono
-  - ClothingHandsGlovesElegantTacticalmaid
+  - ClothingUniformJumpskirtElegantTacticalmaid
   - ClothingUniformJumpsuitStylishShirt
   - ClothingUniformJumpsuitManlyPants
   - ClothingUniformJumpsuitBeautifulSweater
@@ -3959,6 +3959,7 @@
   # Corvax-Loadouts-End
   # Corvax-Wega-Sponsors-start
   - ClothingUniformJumpskirtElegantHOS
+  - ClothingUniformJumpskirtElegantSecurity
   # Corvax-Wega-Sponsors-end
 
 - type: loadoutGroup

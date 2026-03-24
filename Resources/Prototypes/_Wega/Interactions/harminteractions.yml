@@ -82,8 +82,8 @@
   delayStartTargetMessage: interaction-action-delay-cut-tail-target
   delayStartOtherMessage: interaction-action-delay-cut-tail-other
   delayStartColorMessage: Red
-  cooldown: 45
-  delay: 5
+  cooldown: 60
+  delay: 10
   priority: 1
   conditions:
   - !type:MarkingPresentCondition
@@ -121,8 +121,8 @@
   delayStartTargetMessage: interaction-action-delay-cut-moth-tail-target
   delayStartOtherMessage: interaction-action-delay-cut-moth-tail-other
   delayStartColorMessage: Red
-  cooldown: 45
-  delay: 7
+  cooldown: 60
+  delay: 10
   priority: 1
   conditions:
   - !type:MarkingPresentCondition
@@ -159,8 +159,8 @@
   delayStartTargetMessage: interaction-action-delay-cut-ears-target
   delayStartOtherMessage: interaction-action-delay-cut-ears-other
   delayStartColorMessage: Red
-  cooldown: 45
-  delay: 5
+  cooldown: 60
+  delay: 10
   priority: 1
   conditions:
   - !type:MarkingPresentCondition
@@ -204,8 +204,8 @@
   delayStartTargetMessage: interaction-action-delay-cut-moth-ears-target
   delayStartOtherMessage: interaction-action-delay-cut-moth-ears-other
   delayStartColorMessage: Red
-  cooldown: 45
-  delay: 5
+  cooldown: 60
+  delay: 10
   priority: 1
   conditions:
   - !type:MarkingPresentCondition
