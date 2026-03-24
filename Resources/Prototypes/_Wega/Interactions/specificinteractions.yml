@@ -38,6 +38,7 @@
 - type: interactionAction
   id: ArtificialRespirationAction
   name: interaction-respiration-name
+  abstract: true
   delayStartUserMessage: interaction-action-delay-respiration-user
   delayStartTargetMessage: interaction-action-delay-respiration-target
   delayStartOtherMessage: interaction-action-delay-respiration-other
