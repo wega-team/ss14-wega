@@ -180,7 +180,7 @@
   parent: BaseAliveMobAction
   id: PullTailInteraction
   name: interaction-pull-tail-name
-  delayStartUserMessage: interaction-action-delay-pull-tail-user
+  delayStartUserMessage: interaction-action-harmless-delay-pull-tail-user
   delayStartTargetMessage: interaction-action-harmless-delay-pull-tail-target
   delayStartOtherMessage: interaction-action-harmless-delay-pull-tail-other
   delayStartColorMessage: Red
