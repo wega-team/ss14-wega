@@ -164,7 +164,7 @@
   id: FillAtmosphericsHardsuit
   table: !type:AllSelector
     children:
-    - id: ClothingOuterHardsuitAtmos
+    - id: ClothingModularControllerAtmosphericPreassembled # Corvax-Wega-ModularSuits-Edit
     - id: OxygenTankFilled
     - id: ClothingMaskBreath
 
@@ -209,7 +209,7 @@
   id: FillEngineerHardsuit
   table: !type:AllSelector
     children:
-    - id: ClothingOuterHardsuitEngineering
+    - id: ClothingModularControllerEngineeringPreassembled # Corvax-Wega-ModularSuits-Edit
     - id: OxygenTankFilled
     - id: ClothingShoesBootsMag
     - id: ClothingMaskBreath

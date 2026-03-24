@@ -37,7 +37,6 @@ public sealed class ModularSuitGrabberModuleSystem : EntitySystem
 
         SubscribeLocalEvent<ModularSuitGrabberModuleComponent, ModularSuitRemovedEvent>(OnModuleRemoved);
         SubscribeLocalEvent<ModularSuitGrabberModuleComponent, ModularSuitModuleToggledEvent>(OnModuleToggled);
-        SubscribeLocalEvent<ModularSuitGrabberModuleComponent, EntityTerminatingEvent>(OnModuleTerminating);
     }
 
     private void OnMapInit(Entity<ModularSuitGrabberToolComponent> tool, ref MapInitEvent args)
@@ -181,20 +180,15 @@ public sealed class ModularSuitGrabberModuleSystem : EntitySystem
         if (args.Activated)
             return;
 
-        ClearContainer(module);
+        ClearContainer(module, args.Suit);
     }
 
     private void OnModuleRemoved(Entity<ModularSuitGrabberModuleComponent> module, ref ModularSuitRemovedEvent args)
     {
-        ClearContainer(module);
+        ClearContainer(module, args.Suit);
     }
 
-    private void OnModuleTerminating(Entity<ModularSuitGrabberModuleComponent> module, ref EntityTerminatingEvent args)
-    {
-        ClearContainer(module);
-    }
-
-    private void ClearContainer(Entity<ModularSuitGrabberModuleComponent> module)
+    private void ClearContainer(Entity<ModularSuitGrabberModuleComponent> module, EntityUid suit)
     {
         if (!TryComp<ModularSuitItemModuleComponent>(module, out var itemModule))
             return;
@@ -214,7 +208,11 @@ public sealed class ModularSuitGrabberModuleSystem : EntitySystem
         if (grabber == null || !_container.TryGetContainer(grabber.Value, Container, out var container))
             return;
 
-        _container.EmptyContainer(container, true);
+        var coords = Transform(suit).Coordinates;
+        if (TryComp<ModularSuitComponent>(suit, out var modular) && modular.Wearer != null)
+            coords = Transform(modular.Wearer.Value).Coordinates;
+
+        _container.EmptyContainer(container, true, coords);
     }
 
     private bool IsUnGrabable(EntityUid uid)

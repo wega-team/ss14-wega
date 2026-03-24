@@ -149,11 +149,6 @@
           coolingCoefficient: 0.01
         - type: FireProtection
           reduction: 0.8
-  - type: ItemSlots
-    slots:
-      cell_slot:
-        name: power-cell-slot-component-slot-name-default
-        startingItem: PowerCellHigh
 
 - type: entity
   parent: ClothingModularHelmetBase
@@ -294,11 +289,6 @@
   - type: ClothingSpeedModifier
     walkModifier: 1.0
     sprintModifier: 1.0
-  - type: ItemSlots
-    slots:
-      cell_slot:
-        name: power-cell-slot-component-slot-name-default
-        startingItem: PowerCellMicroreactor
 
 - type: entity
   parent: ClothingModularHelmetBase
@@ -452,7 +442,7 @@
     slots:
       cell_slot:
         name: power-cell-slot-component-slot-name-default
-        startingItem: PowerCellMedium
+        startingItem: PowerCellSmall
       item:
         name: clothing-hardsuits-jetpack
         whitelist:
@@ -600,11 +590,6 @@
   - type: ClothingSpeedModifier
     walkModifier: 0.75
     sprintModifier: 0.75
-  - type: ItemSlots
-    slots:
-      cell_slot:
-        name: power-cell-slot-component-slot-name-default
-        startingItem: PowerCellMedium
 
 - type: entity
   parent: ClothingModularHelmetBase
@@ -944,11 +929,6 @@
   - type: ClothingSpeedModifier
     walkModifier: 0.9
     sprintModifier: 0.9
-  - type: ItemSlots
-    slots:
-      cell_slot:
-        name: power-cell-slot-component-slot-name-default
-        startingItem: PowerCellMicroreactor
 
 - type: entity
   parent: ClothingModularHelmetBase
@@ -1329,11 +1309,6 @@
   - type: ClothingSpeedModifier
     walkModifier: 1
     sprintModifier: 1
-  - type: ItemSlots
-    slots:
-      cell_slot:
-        name: power-cell-slot-component-slot-name-default
-        startingItem: PowerCellMedium
 
 - type: entity
   parent: ClothingModularHelmetBase
@@ -1476,11 +1451,6 @@
         - type: TemperatureProtection
           heatingCoefficient: 0.01
           coolingCoefficient: 0.01
-  - type: ItemSlots
-    slots:
-      cell_slot:
-        name: power-cell-slot-component-slot-name-default
-        startingItem: PowerCellMedium
 
 - type: entity
   parent: ClothingModularHelmetBase
@@ -1621,11 +1591,6 @@
   - type: ClothingSpeedModifier
     walkModifier: 0.7
     sprintModifier: 0.7
-  - type: ItemSlots
-    slots:
-      cell_slot:
-        name: power-cell-slot-component-slot-name-default
-        startingItem: PowerCellMedium
 
 - type: entity
   parent: ClothingModularHelmetBase
@@ -1760,11 +1725,6 @@
   - type: ClothingSpeedModifier
     walkModifier: 0.9
     sprintModifier: 0.9
-  - type: ItemSlots
-    slots:
-      cell_slot:
-        name: power-cell-slot-component-slot-name-default
-        startingItem: PowerCellMicroreactor
 
 - type: entity
   parent: ClothingModularHelmetBase
@@ -2008,11 +1968,6 @@
         - type: TemperatureProtection
           heatingCoefficient: 0.01
           coolingCoefficient: 0.01
-  - type: ItemSlots
-    slots:
-      cell_slot:
-        name: power-cell-slot-component-slot-name-default
-        startingItem: PowerCellHigh
 
 - type: entity
   parent: ClothingModularHelmetBase
@@ -2149,11 +2104,6 @@
   - type: ClothingSpeedModifier
     walkModifier: 0.95
     sprintModifier: 0.95
-  - type: ItemSlots
-    slots:
-      cell_slot:
-        name: power-cell-slot-component-slot-name-default
-        startingItem: PowerCellHigh
 
 - type: entity
   parent: ClothingModularHelmetBase
@@ -2296,11 +2246,6 @@
   - type: ClothingSpeedModifier
     walkModifier: 0.9
     sprintModifier: 0.9
-  - type: ItemSlots
-    slots:
-      cell_slot:
-        name: power-cell-slot-component-slot-name-default
-        startingItem: PowerCellMedium
 
 - type: entity
   parent: ClothingModularHelmetBase
@@ -2658,11 +2603,6 @@
   - type: ClothingSpeedModifier
     walkModifier: 0.9
     sprintModifier: 0.9
-  - type: ItemSlots
-    slots:
-      cell_slot:
-        name: power-cell-slot-component-slot-name-default
-        startingItem: PowerCellHigh
 
 - type: entity
   parent: ClothingModularHelmetBase
@@ -2802,11 +2742,8 @@
   - type: ClothingSpeedModifier
     walkModifier: 0.75
     sprintModifier: 0.75
-  - type: ItemSlots
-    slots:
-      cell_slot:
-        name: power-cell-slot-component-slot-name-default
-        startingItem: PowerCellHigh
+  - type: StealTarget
+    stealGroup: ClothingOuterHardsuitRd
 
 - type: entity
   parent: ClothingModularHelmetBase
@@ -2944,11 +2881,6 @@
   - type: ClothingSpeedModifier
     walkModifier: 0.9
     sprintModifier: 0.9
-  - type: ItemSlots
-    slots:
-      cell_slot:
-        name: power-cell-slot-component-slot-name-default
-        startingItem: PowerCellMicroreactor
 
 - type: entity
   parent: ClothingModularHelmetBase
@@ -3089,11 +3021,6 @@
         - type: TemperatureProtection
           heatingCoefficient: 0.01
           coolingCoefficient: 0.01
-  - type: ItemSlots
-    slots:
-      cell_slot:
-        name: power-cell-slot-component-slot-name-default
-        startingItem: PowerCellHigh
 
 - type: entity
   parent: ClothingModularHelmetBase
@@ -3235,11 +3162,6 @@
   - type: ClothingSpeedModifier
     walkModifier: 0.75
     sprintModifier: 0.75
-  - type: ItemSlots
-    slots:
-      cell_slot:
-        name: power-cell-slot-component-slot-name-default
-        startingItem: PowerCellHigh
 
 - type: entity
   parent: ClothingModularHelmetBase
@@ -3381,11 +3303,6 @@
   - type: ClothingSpeedModifier
     walkModifier: 0.9
     sprintModifier: 0.9
-  - type: ItemSlots
-    slots:
-      cell_slot:
-        name: power-cell-slot-component-slot-name-default
-        startingItem: PowerCellMedium
 
 - type: entity
   parent: ClothingModularHelmetBase

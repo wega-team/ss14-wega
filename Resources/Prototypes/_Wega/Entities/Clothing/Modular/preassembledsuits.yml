@@ -30,6 +30,11 @@
     - WeldingSuitModule
     - RadiationShieldSuitModule
     - MagnetSuitModule
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMedium
 
 - type: entity
   parent: ClothingModularControllerAtmospheric
@@ -44,6 +49,11 @@
     - RadiationShieldSuitModule
     - MagnetSuitModule
     - TRaySuitModule
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMedium
 
 - type: entity
   parent: ClothingModularControllerAdvanced
@@ -58,6 +68,11 @@
     - RadiationShieldSuitModule
     - JetpackSuitModule
     - MagnetAdvancedSuitModule
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellHigh
 
 - type: entity
   parent: ClothingModularControllerPrototype
@@ -87,6 +102,16 @@
     - WeldingSuitModule
     - JetpackAdvancedSuitModule
     - DrillSuitModule
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMedium
+      item:
+        name: clothing-hardsuits-jetpack
+        whitelist:
+          tags:
+          - Jetpack
 
 - type: entity
   parent: ClothingModularControllerMining
@@ -101,6 +126,11 @@
     - OreBagSuitModule
     - GrabberSuitModule
     - DrillSuitModule
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMedium
 
 - type: entity
   parent: ClothingModularControllerLoader
@@ -125,6 +155,11 @@
     - HealthAnalyzerSuitModule
     - VisorMedicalSuitModule
     - QuickCarrySuitModule
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellHigh
 
 - type: entity
   parent: ClothingModularControllerRescue
@@ -139,6 +174,11 @@
     - DefibrillatorSuitModule
     - VisorMedicalSuitModule
     - QuickCarrySuitModule
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellHigh
 
 - type: entity
   parent: ClothingModularControllerResearch
@@ -153,6 +193,11 @@
     - RadiationShieldSuitModule
     - SolutionScannerSuitModule
     - TRaySuitModule
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellHigh
 
 - type: entity
   parent: ClothingModularControllerSecurity
@@ -166,6 +211,11 @@
     - MagnetSuitModule
     - ArmorBossterSuitModule
     - VisorSecuritySuitModule
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellHigh
 
 - type: entity
   parent: ClothingModularControllerSafeguard
@@ -180,6 +230,11 @@
     - JetpackSuitModule
     - ArmorBossterSuitModule
     - VisorSecuritySuitModule
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellHigh
 
 - type: entity
   parent: ClothingModularControllerMagnate
@@ -193,6 +248,11 @@
     - PaperDispenserSuitModule
     - MagnetSuitModule
     - JetpackAdvancedSuitModule
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellHigh
 
 - type: entity
   parent: ClothingModularControllerCosmohonk
@@ -218,6 +278,11 @@
     - MagnetSuitModule
     - JetpackAdvancedSuitModule
     - ArmorBossterSuitModule
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMedium
 
 - type: entity
   parent: ClothingModularControllerElite
@@ -232,6 +297,11 @@
     - MagnetSuitModule
     - JetpackAdvancedSuitModule
     - ArmorBossterSuitModule
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMedium
 
 - type: entity
   parent: ClothingModularControllerApocryphal
@@ -250,6 +320,11 @@
     - RadiationShieldSuitModule
     - WeldingSuitModule
     - HolsterSuitModule
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMicroreactor
 
 - type: entity
   parent: ClothingModularControllerCorporate
@@ -267,6 +342,11 @@
     - MagnetAdvancedSuitModule
     - RadiationShieldSuitModule
     - WeldingSuitModule
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMicroreactor
 
 - type: entity
   parent: ClothingModularControllerResponsory
@@ -283,6 +363,11 @@
     - MagnetSuitModule
     - RadiationShieldSuitModule
     - WeldingSuitModule
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMicroreactor
 
 - type: entity
   parent: ClothingModularControllerInquisitory
@@ -299,3 +384,8 @@
     - MagnetSuitModule
     - RadiationShieldSuitModule
     - WeldingSuitModule
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMicroreactor

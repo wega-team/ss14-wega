@@ -14,3 +14,7 @@ ent-ClothingBackpackDuffelSyndicateFilledHristov = набор "Христов М
     .desc = Метко и больно: Модернизированая снайперская винтовка "Христов МК-2" и 5 магазинов к нему.
     .suffix = набор "Христов МК-2"
 
+ent-ClothingBackpackDuffelSyndicateControllerBundle = набор скафандров Синдиката
+    .desc = Содержит фирменный кроваво-красный комбинезон Синдиката.
+ent-ClothingBackpackDuffelEnergyShieldModuleBundle = набор модулей энергетического щита
+    .desc = Содержит пять модулей энергетического щита. Позволяет оснастить всю команду личной защитой.

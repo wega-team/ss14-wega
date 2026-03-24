@@ -23,7 +23,9 @@ public abstract partial class SharedModularSuitSystem : EntitySystem
     [Dependency] private readonly SharedAudioSystem _audioSystem = default!;
     [Dependency] private readonly SharedUserInterfaceSystem _uiSystem = default!;
 
+    public const string CoreContainer = "suit_core";
     public const string PartContainer = "suit_part";
+    public const string ModuleContainer = "suit_module";
     public const string HiddenClothingContainer = "suit_hidden";
 
     public override void Initialize()

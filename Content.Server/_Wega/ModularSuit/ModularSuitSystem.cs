@@ -29,8 +29,6 @@ public sealed partial class ModularSuitSystem : SharedModularSuitSystem
     [Dependency] private readonly SharedToolSystem _tool = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
 
-    public const string CoreContainer = "suit_core";
-    public const string ModuleContainer = "suit_module";
     private const float ModuleExtractTime = 1.5f;
     private const float CoreExtractTime = 4.0f;
     private const float PartExtractTime = 5.0f;

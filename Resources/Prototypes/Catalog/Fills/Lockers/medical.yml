@@ -124,7 +124,7 @@
   id: LockerFillParamedic
   table: !type:AllSelector
     children:
-    - id: ClothingOuterHardsuitVoidParamed
+    - id: ClothingModularControllerRescuePreassembled # Corvax-Wega-ModularSuits-Edit
     - id: ClothingOuterCoatParamedicWB
     - id: ClothingHeadHatParamedicsoft
     - id: ClothingOuterWinterPara

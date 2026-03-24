@@ -62,3 +62,30 @@
         - id: ClothingMaskGasExplorer
         - id: MinerIDCard
         - id: SurvivalMedipen
+
+- type: entity
+  parent: ClothingBackpackDuffelSyndicateBundle
+  id: ClothingBackpackDuffelSyndicateControllerBundle
+  name: syndicate hardsuit bundle
+  description: "Contains the Syndicate's signature blood red hardsuit."
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ClothingModularControllerSyndicatePreassembled
+        - !type:NestedSelector
+          tableId: SyndicateHardsuitExtrasEntityTable
+
+- type: entity
+  parent: ClothingBackpackDuffelSyndicateBundle
+  id: ClothingBackpackDuffelEnergyShieldModuleBundle
+  name: energy shield module bundle
+  description: Contains five energy shield modules. Allows equipping an entire team with personal protective forcefields.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: EnergyShieldSuitModule
+          amount: 5

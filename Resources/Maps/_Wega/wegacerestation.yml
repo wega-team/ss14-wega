@@ -135390,7 +135390,7 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
-- proto: ClothingOuterHardsuitClown
+- proto: ClothingModularControllerCosmohonkPreassembled
   entities:
   - uid: 20420
     components:

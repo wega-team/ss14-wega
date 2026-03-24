@@ -113022,7 +113022,7 @@ entities:
     - type: Transform
       pos: -34.371685,63.562946
       parent: 326
-- proto: ClothingOuterHardsuitClown
+- proto: ClothingModularControllerCosmohonkPreassembled
   entities:
   - uid: 16645
     components:

@@ -390,3 +390,88 @@
     - Librarian
   - !type:ListingLimitedStockCondition
     stock: 1
+
+- type: listing
+  id: UplinNoSlipSuitModule
+  name: uplink-syndie-noslip-module-name
+  description: uplink-syndie-noslip-module-desc
+  icon: { sprite: _Wega/Objects/Specific/Robotics/modules.rsi, state: noslip }
+  productEntity: NoSlipSuitModule
+  categories:
+  - UplinkWearables
+  cost:
+    Telecrystal: 1
+
+- type: listing
+  id: UplinkPlateCompressionSuitModule
+  name: uplink-syndie-plate-compression-name
+  description: uplink-syndie-plate-compression-desc
+  icon: { sprite: _Wega/Objects/Specific/Robotics/modules.rsi, state: plate_compression }
+  productEntity: PlateCompressionSuitModule
+  categories:
+    - UplinkJob
+  discountCategory: veryRareDiscounts
+  cost:
+    Telecrystal: 2
+  conditions:
+  - !type:BuyerJobCondition
+    whitelist:
+    - AtmosphericTechnician
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: UplinEnergyShieldSuitModuleNukeOps
+  name: uplink-syndie-energy-shield-module-name
+  description: uplink-syndie-energy-shield-module-desc
+  icon: { sprite: _Wega/Objects/Specific/Robotics/modules.rsi, state: energy_shield }
+  productEntity: EnergyShieldSuitModule
+  categories:
+  - UplinkWearables
+  discountDownTo:
+    Telecrystal: 6
+  cost:
+    Telecrystal: 8
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - NukeOpsUplink
+
+- type: listing
+  id: UplinkHardsuitSyndieNukeOps
+  name: uplink-hardsuit-syndie-name
+  description: uplink-hardsuit-syndie-desc
+  icon: { sprite: /Textures/_Wega/Clothing/Modular/Syndicate/control.rsi, state: icon }
+  productEntity: ClothingBackpackDuffelSyndicateControllerBundle
+  discountCategory: veryRareDiscounts
+  discountDownTo:
+    Telecrystal: 4
+  cost:
+    Telecrystal: 8
+  categories:
+  - UplinkWearables
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - NukeOpsUplink
+
+- type: listing
+  id: UplinkEnergyShieldModuleBundle
+  name: uplink-energy-shield-module-bundle-name
+  description: uplink-energy-shield-module-bundle-desc
+  icon: { sprite: _Wega/Objects/Specific/Robotics/modules.rsi, state: energy_shield }
+  productEntity: ClothingBackpackDuffelEnergyShieldModuleBundle
+  discountCategory: veryRareDiscounts
+  discountDownTo:
+    Telecrystal: 24
+  cost:
+    Telecrystal: 32
+  categories:
+  - UplinkWearables
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - NukeOpsUplink

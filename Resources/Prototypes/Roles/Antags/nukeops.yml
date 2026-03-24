@@ -48,12 +48,12 @@
   id: SyndicateOperativeGearFullNoUplink
   equipment:
     jumpsuit: ClothingUniformJumpsuitOperative
-    back: ClothingBackpackDuffelSyndicate
+    back: ClothingModularControllerSyndicatePreassembled # Corvax-Wega-ModularSuits-Edit
     mask: ClothingMaskGasSyndicate
     eyes: ClothingEyesHudSyndicate
     ears: ClothingHeadsetAltSyndicate
     gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterHardsuitSyndie
+    # outerClothing: ClothingOuterHardsuitSyndie # Corvax-Wega-ModularSuits-Edit
     shoes: ClothingShoesBootsCombatFilled
     id: SyndiOperativePDA
     pocket2: PlushieCarp
@@ -88,7 +88,8 @@
   equipment:
     id: SyndiCommanderPDA
     neck: SyndicateWhistle
-    outerClothing: ClothingOuterHardsuitSyndieCommander
+    back: ClothingModularControllerElitePreassembled # Corvax-Wega-ModularSuits-Edit
+    # outerClothing: ClothingOuterHardsuitSyndieCommander # Corvax-Wega-ModularSuits-Edit
   inhand:
   - NukeOpsDeclarationOfWar
 
@@ -107,8 +108,8 @@
   parent: SyndicateOperativeGearFull
   equipment:
     eyes: ClothingEyesHudSyndicateAgent
-    outerClothing: ClothingOuterHardsuitSyndieMedic
-    shoes: ClothingShoesBootsMagSyndie
+    # outerClothing: ClothingOuterHardsuitSyndieMedic # Corvax-Wega-ModularSuits-Edit
+    # shoes: ClothingShoesBootsMagSyndie # Corvax-Wega-ModularSuits-Edit
     id: SyndiCorpsmanPDA
     belt: ClothingBeltMilitaryWebbingMedFilled
   storage:

@@ -174,9 +174,9 @@
             - !type:DestroyEntity {}
 
         # 9. Rescue
-        - to: resque_suit
+        - to: rescue_suit
           steps:
-            - tag: ResquePlating
+            - tag: RescuePlating
               name: construction-graph-tag-rescue-kit
               icon:
                 sprite: "_Wega/Objects/Specific/Robotics/modular_suits.rsi"
@@ -276,7 +276,7 @@
         - !type:SpawnPrototype
           prototype: ClothingModularControllerSafeguard
 
-    - node: resque_suit
+    - node: rescue_suit
       actions:
         - !type:SpawnPrototype
           prototype: ClothingModularControllerRescue

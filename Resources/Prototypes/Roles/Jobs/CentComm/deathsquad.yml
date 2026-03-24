@@ -20,12 +20,12 @@
   id: DeathSquadGear
   equipment:
     jumpsuit: ClothingUniformJumpsuitDeathSquad
-    back: ClothingBackpackDeathSquad
+    back: ClothingModularControllerApocryphalPreassembled # Corvax-Wega-ModularSuits-Edit
     mask: ClothingMaskGasDeathSquad
     eyes: ClothingERTHud # Corvax-Wega-ERT
     ears: ClothingHeadsetAltCentCom
     gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterHardsuitDeathsquad
+    # outerClothing: ClothingOuterHardsuitDeathsquad # Corvax-Wega-ModularSuits-Edit
     shoes: ClothingShoesBootsMagAdv
     id: DeathsquadPDA
     pocket1: EnergySword

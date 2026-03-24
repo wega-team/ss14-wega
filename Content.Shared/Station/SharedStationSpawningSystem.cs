@@ -3,11 +3,13 @@ using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Inventory;
 using Content.Shared.Item;
+using Content.Shared.Modular.Suit; // Corvax-Wega-ModularSuits-Add
 using Content.Shared.Preferences.Loadouts;
 using Content.Shared.Roles;
 using Content.Shared.Storage;
 using Content.Shared.Storage.EntitySystems;
 using Robust.Shared.Collections;
+using Robust.Shared.Containers; // Corvax-Wega-ModularSuits-Add
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
@@ -23,6 +25,7 @@ public abstract class SharedStationSpawningSystem : EntitySystem
     [Dependency] private readonly MetaDataSystem _metadata = default!;
     [Dependency] private readonly SharedStorageSystem _storage = default!;
     [Dependency] private readonly SharedTransformSystem _xformSystem = default!;
+    [Dependency] private readonly SharedContainerSystem _container = default!; // Corvax-Wega-ModularSuits-Add
 
     private EntityQuery<HandsComponent> _handsQuery;
     private EntityQuery<InventoryComponent> _inventoryQuery;
@@ -158,18 +161,37 @@ public abstract class SharedStationSpawningSystem : EntitySystem
                 if (entProtos == null || entProtos.Count == 0)
                     continue;
 
-                if (inventoryComp != null &&
-                    InventorySystem.TryGetSlotEntity(entity, slotName, out var slotEnt, inventoryComponent: inventoryComp) &&
-                    _storageQuery.TryComp(slotEnt, out var storage))
+                // Corvax-Wega-ModularSuits-Edit-start
+                if (inventoryComp != null && InventorySystem.TryGetSlotEntity(entity, slotName, out var slotEnt, inventoryComponent: inventoryComp))
                 {
-
-                    foreach (var entProto in entProtos)
+                    if (TryComp<ModularSuitComponent>(slotEnt, out var modularSuit))
                     {
-                        var spawnedEntity = Spawn(entProto, coords);
-
-                        _storage.Insert(slotEnt.Value, spawnedEntity, out _, storageComp: storage, playSound: false);
+                        if (_container.TryGetContainer(slotEnt.Value, SharedModularSuitSystem.ModuleContainer, out var moduleContainer))
+                        {
+                            foreach (var module in moduleContainer.ContainedEntities)
+                            {
+                                if (TryComp<StorageComponent>(module, out var storage))
+                                {
+                                    foreach (var entProto in entProtos)
+                                    {
+                                        var spawnedEntity = Spawn(entProto, coords);
+                                        _storage.Insert(module, spawnedEntity, out _, storageComp: storage, playSound: false);
+                                    }
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    else if (_storageQuery.TryComp(slotEnt, out var storage))
+                    {
+                        foreach (var entProto in entProtos)
+                        {
+                            var spawnedEntity = Spawn(entProto, coords);
+                            _storage.Insert(slotEnt.Value, spawnedEntity, out _, storageComp: storage, playSound: false);
+                        }
                     }
                 }
+                // Corvax-Wega-ModularSuits-Edit-end
             }
         }
 
