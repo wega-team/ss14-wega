@@ -115,6 +115,10 @@ public sealed class SlipperySystem : EntitySystem
 
         var attemptEv = new SlipAttemptEvent(uid);
         RaiseLocalEvent(other, attemptEv);
+        // Corvax-Wega-Slip-Start
+     // if (attemptEv.SlowOverSlippery)
+      //	_speedModifier.AddModifiedEntity(other);
+        // Corvax-Wega-Slip-End
 
         if (attemptEv.NoSlip)
             return;
