@@ -514,13 +514,6 @@ public abstract partial class SharedChatSystem : EntitySystem
         bool ignoreActionBlocker = false)
     { }
     // Corvax-Wega-MindChat-end
-
-    // Corvax-Wega-MindChat-start
-    public virtual void SendMessageToOne(
-        EntityUid target, string message,
-        Color? colorOverride = null)
-    { }
-    // Corvax-Wega-MindChat-end
 }
 
 /// <summary>

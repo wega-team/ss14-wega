@@ -3,7 +3,7 @@ using Content.Shared.Movement.Events;
 
 namespace Content.Shared.Strangulation
 {
-    public abstract class SharedStrangulationSystem : EntitySystem
+    public sealed class SharedStrangulationSystem : EntitySystem
     {
         [Dependency] private readonly ActionBlockerSystem _actionBlockerSystem = default!;
 
@@ -29,7 +29,6 @@ namespace Content.Shared.Strangulation
         {
             if (component.Cancelled)
                 return;
-
             args.Cancel();
         }
     }

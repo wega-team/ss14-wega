@@ -1,4 +1,4 @@
-strangle-verb = Задушить
+strangle-verb = Душить
 strangle-delay-start = Вас пытаются задушить
 strangle-delay-start-self = Вы пытаетесь задушить сам себя
 strangle-start-internal = Вас ДУШАТ

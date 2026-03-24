@@ -4,5 +4,3 @@ verb-common-toggle-headset-enabled = Включить звук
 verb-common-toggle-headset-disabled = Выключить звук
 
 verb-categories-cargo-account = Сменить аккаунт
-
-verb-categories-interaction = Взаимодействия
