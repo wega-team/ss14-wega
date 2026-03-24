@@ -64,12 +64,14 @@ public sealed class SlipperySystem : EntitySystem
         SlipperyComponent component,
         ref StepTriggerAttemptEvent args)
     {
+        // Corvax-Wega-Slip-Start
 		var attemptEv = new SlipAttemptEvent(uid);
 		RaiseLocalEvent(args.Tripper, attemptEv);
 
 		if (attemptEv.SlowOverSlippery)
 			_speedModifier.AddModifiedEntity(args.Tripper);
-		
+        // Corvax-Wega-Slip-End
+        
         args.Continue |= CanSlip(uid, args.Tripper);
     }
 
