@@ -22,11 +22,11 @@
   cost: 7500
   recipeUnlocks:
     - OreBagSuitModule
-    # - DrillSuitModule
+    - DrillSuitModule
     - EngineeringPlating
     - ArmSyntheticPry
     - LegSyntheticJump
-    
+
 - type: technology
   id: Gidravlik
   name: research-technology-gidravlik
@@ -38,8 +38,8 @@
   cost: 7500
   recipeUnlocks:
     - QuickCarrySuitModule
-    - ModularSuitModuleGrabber
-    
+    - GrabberSuitModule
+
 - type: technology
   id: AdvencedIndustrialModifier
   name: research-technology-adv-industrial-modifier
@@ -52,4 +52,4 @@
   recipeUnlocks:
     - StorageLargeSuitModule
     - JetpackSuitModule
-    # - ConstructorSuitModule
+    - ConstructorSuitModule

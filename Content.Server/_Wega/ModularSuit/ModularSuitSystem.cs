@@ -244,34 +244,30 @@ public sealed partial class ModularSuitSystem : SharedModularSuitSystem
         if (!container.ContainedEntities.Contains(args.Used.Value))
             return;
 
+        switch (args.Type)
+        {
+            case ModularSuitPart.Module:
+                if (TryComp<ModularSuitModuleComponent>(args.Used.Value, out var module))
+                {
+                    if (module.CanBeDisabled) module.IsActive = false;
+                    var ev = new ModularSuitRemovedEvent(suit, args.User);
+                    RaiseLocalEvent(args.Used.Value, ref ev);
+                }
+                break;
+            case ModularSuitPart.Part:
+                RemoveDependentModules(suit, args.Used.Value);
+                if (HasComp<PointLightComponent>(args.Used.Value))
+                    _light.SetEnabled(args.Used.Value, false);
+                break;
+        }
+
         if (Container.Remove(args.Used.Value, container))
         {
             Popup.PopupEntity(Loc.GetString("modsuit-extract-success", ("item", Name(args.Used.Value))), suit, args.User);
             _hands.TryPickupAnyHand(args.User, args.Used.Value);
 
-            switch (args.Type)
-            {
-                case ModularSuitPart.Module:
-                    if (TryComp<ModularSuitModuleComponent>(args.Used.Value, out var module))
-                    {
-                        if (module.CanBeDisabled) module.IsActive = false; // You like spaghetti?
-
-                        var ev = new ModularSuitRemovedEvent(suit, args.User);
-                        RaiseLocalEvent(args.Used.Value, ref ev);
-                    }
-                    break;
-                case ModularSuitPart.Core:
-                    CheckSuitAssembly(suit);
-                    break;
-                case ModularSuitPart.Part:
-                    CheckSuitAssembly(suit);
-                    RemoveDependentModules(suit, args.Used.Value);
-                    if (HasComp<PointLightComponent>(args.Used.Value))
-                        _light.SetEnabled(args.Used.Value, false);
-                    break;
-            }
-
             Dirty(suit.Owner, suit.Comp);
+            CheckSuitAssembly(suit);
             args.Handled = true;
 
             _audio.PlayPredicted(suit.Comp.EjectSound, suit.Owner, null);

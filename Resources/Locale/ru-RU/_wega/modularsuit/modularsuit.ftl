@@ -1,5 +1,5 @@
 # UI
-modsuit-ui-title = Контроллер MODsuit
+modsuit-ui-title = Контроллер MODSuit
 modsuit-ui-suit-status = Состояние костюма
 modsuit-ui-power-control = Управление питанием
 modsuit-ui-activate = АКТИВИРОВАТЬ
@@ -16,14 +16,14 @@ modsuit-ui-parts = Части
 modsuit-ui-no-power-usage = Пассивно НЕ потребляет энергию
 modsuit-ui-power-usage = Потребляет {$power} Вт
 modsuit-ui-power-instance-usage = За использование потребляет {$power} Вт
-modsuit-ui-os-footer = MODsuit#OS ™ v2.5
+modsuit-ui-os-footer = MODSuit#OS ™ v2.5
 modsuit-ui-no-modules = Модули не установлены
 modsuit-ui-no-parts = Части не установлены
 modsuit-tab-modules = МОДУЛИ
 modsuit-tab-parts = ЧАСТИ
 
 modsuit-light-ui-title = Настройка модуля света
-modsuit-light-ui-color = Цвет света
+modsuit-light-ui-color = Цвет свечения
 modsuit-light-ui-multicoloured = Разноцветный режим
 modsuit-light-ui-confirm = Подтвердить
 
@@ -64,6 +64,8 @@ modsuit-verb-extract-part-desc = Извлечь часть костюма
 modsuit-continue-sealing = Продолжение герметизации следующей части...
 modsuit-impossible-equipped-part = Невозможно одеть часть модульного скафандра без контроллера.
 
+modsuit-light-on = Вы включаете свет костюма.
+modsuit-light-off = Вы выключаете свет костюма.
 modsuit-teleporter-no-targets = Поблизости нет допустимых целей для телепортации.
 modsuit-holster-empty-hand = Нету подходяшего предмета для перемещения в кобуру.
 modsuit-holster-cant-holster = Невозможно поместить этот предмет в кобуру.
@@ -85,8 +87,6 @@ modsuit-tanning-used = Вы чувствуете тёплое свечение, 
 modsuit-tanning-max = Ваша кожа не может стать ещё темнее больше.
 modsuit-atrocinator-used = Таинственная сила вырывается из костюма, разбрасывая всех вокруг!
 modsuit-atrocinator-no-targets = Ничего не происходит...
-modsuit-light-on = Вы включаете свет костюма.
-modsuit-light-off = Вы выключаете свет костюма.
 
 # Requires
 modsuit-module-requires-item = Для работы модуля требуется установленный элемент.

@@ -33,8 +33,8 @@
   - RadiationShieldSuitModule
   - StorageSuitModule
   - HealthAnalyzerSuitModule
-  # - FlashlightSuitModule
-  # - PaperDispenserSuitModule
+  - FlashlightSuitModule
+  - PaperDispenserSuitModule
 
 - type: latheRecipePack
   id: ModesuitModuleReach
@@ -46,7 +46,7 @@
   - MagnetSuitModule
   - GPSSuitModule
   - QuickCarrySuitModule
-  - ModularSuitModuleGrabber
+  - GrabberSuitModule
   - DefibrillatorSuitModule
   - BurgerDispenserSuitModule
   - InjectorSuitModule
@@ -56,17 +56,17 @@
   - ApparatusSuitModule
   - SolutionScannerSuitModule
   - TeleporterSuitModule
-  # - ConstructorSuitModule 
-  # - DrillSuitModule
-  # - AdvancedFlashlightSuitModule
-  # - TemperatureRegulatorSuitModule
+  - ConstructorSuitModule
+  - DrillSuitModule
+  - AdvancedFlashlightSuitModule
+  - TemperatureRegulatorSuitModule
 
 - type: latheRecipePack
   id: ModesuitModuleSecStatic
   recipes:
   - VisorSecuritySuitModule
   - HolsterSuitModule
-  
+
 - type: latheRecipePack
   id: ModesuitModuleSecReach
   recipes:

@@ -468,6 +468,9 @@
   id: StorageSuitModule
 
 - type: Tag
+  id: FlashlightSuitModule
+
+- type: Tag
   id: VisorSuitModule
 
 - type: Tag

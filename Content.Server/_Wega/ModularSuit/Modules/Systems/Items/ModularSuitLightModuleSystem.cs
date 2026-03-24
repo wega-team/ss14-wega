@@ -1,13 +1,17 @@
-using Content.Shared.Modular.Suit;
-using Content.Shared.Inventory;
+using System.Diagnostics.CodeAnalysis;
+using Content.Shared.Clothing.Components;
 using Content.Shared.Interaction;
+using Content.Shared.Inventory;
+using Content.Shared.Modular.Suit;
 using Content.Shared.Tools.Systems;
 using Robust.Server.GameObjects;
+using Robust.Shared.Containers;
 
 namespace Content.Server.Modular.Suit;
 
 public sealed class ModularSuitLightModuleSystem : EntitySystem
 {
+    [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly SharedPointLightSystem _light = default!;
     [Dependency] private readonly SharedToolSystem _tool = default!;
@@ -67,7 +71,7 @@ public sealed class ModularSuitLightModuleSystem : EntitySystem
 
     private void OnModuleRemoved(Entity<ModularSuitLightModuleComponent> module, ref ModularSuitRemovedEvent args)
     {
-        RemoveLight(args.User, module);
+        RemoveLight(args.User, args.Suit, module.Comp);
     }
 
     private void OnModuleToggled(Entity<ModularSuitLightModuleComponent> module, ref ModularSuitModuleToggledEvent args)
@@ -75,21 +79,67 @@ public sealed class ModularSuitLightModuleSystem : EntitySystem
         if (args.Activated)
             return;
 
-        RemoveLight(args.Wearer, module);
+        RemoveLight(args.Wearer, args.Suit, module.Comp);
     }
 
-    private void RemoveLight(EntityUid? user, Entity<ModularSuitLightModuleComponent> module)
+    private void RemoveLight(EntityUid? user, EntityUid suit, ModularSuitLightModuleComponent component)
     {
         if (user == null)
             return;
 
-        if (!_inventory.TryGetSlotEntity(user.Value, module.Comp.TargetSlot, out var targetEntity))
+        if (!TryGetTargetEntity(user, suit, component.TargetSlot, out var targetEntity))
             return;
 
         _light.SetEnabled(targetEntity.Value, false);
-        if (module.Comp.GuaranteedRemoved != null)
+        if (component.GuaranteedRemoved != null)
         {
-            EntityManager.RemoveComponents(targetEntity.Value, module.Comp.GuaranteedRemoved);
+            EntityManager.RemoveComponents(targetEntity.Value, component.GuaranteedRemoved);
         }
+    }
+
+    private bool TryGetTargetEntity(EntityUid? user, EntityUid suit, string targetSlot, [NotNullWhen(true)] out EntityUid? targetEntity)
+    {
+        targetEntity = null;
+        if (user != null && _inventory.TryGetSlotEntity(user.Value, targetSlot, out var wearerSlot))
+        {
+            targetEntity = wearerSlot;
+            return true;
+        }
+
+        if (targetSlot == "back")
+        {
+            targetEntity = suit;
+            return true;
+        }
+
+        var partContainer = _container.GetContainer(suit, SharedModularSuitSystem.PartContainer);
+        foreach (var part in partContainer.ContainedEntities)
+        {
+            if (TryComp<ClothingComponent>(part, out var clothing) && clothing.Slots.HasFlag(GetSlotFlag(targetSlot)))
+            {
+                targetEntity = part;
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private SlotFlags GetSlotFlag(string slot)
+    {
+        return slot switch
+        {
+            "head" => SlotFlags.HEAD,
+            "eyes" => SlotFlags.EYES,
+            "ears" => SlotFlags.EARS,
+            "mask" => SlotFlags.MASK,
+            "outerClothing" => SlotFlags.OUTERCLOTHING,
+            "jumpsuit" => SlotFlags.INNERCLOTHING,
+            "neck" => SlotFlags.NECK,
+            "belt" => SlotFlags.BELT,
+            "gloves" => SlotFlags.GLOVES,
+            "shoes" => SlotFlags.FEET,
+            _ => SlotFlags.NONE
+        };
     }
 }

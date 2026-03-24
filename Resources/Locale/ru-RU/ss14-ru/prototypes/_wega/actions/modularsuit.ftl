@@ -4,7 +4,7 @@ ent-OpenStorageModuleAction = [color=#58c4e8]Открыть модуль хра�
 ent-ToggleLightModuleAction = [color=#58c4e8]Переключить свет[/color]
     .desc = Включает или выключает встроенную систему освещения костюма.
 ent-ActivateTeleporterModuleAction = [color=#58c4e8]Активировать телепортатор[/color]
-    .desc = Мгновенно телепортирует пользователя в выбранную точку. Требует блюспейс-ядро.
+    .desc = Мгновенно телепортирует пользователя на место случайного существа поблизости. Требует блюспейс-ядро.
 ent-ToggleHolsterModuleAction = [color=#58c4e8]Переключить кобуру[/color]
     .desc = Выдвигает или убирает кобуру для быстрого доступа к оружию.
 ent-ActivatePaperDispenserModuleAction = [color=#58c4e8]Активировать диспенсер бумаги[/color]

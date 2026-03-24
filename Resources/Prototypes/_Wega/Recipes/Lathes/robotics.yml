@@ -82,7 +82,7 @@
   parent: BaseBorgModuleRecipe
   id: BorgModuleCommonConstruction
   result: BorgModuleCommonConstruction
-  
+
 - type: latheRecipe
   parent: BaseBorgModuleRecipe
   id: BorgModuleCommonPickaxe
@@ -102,7 +102,7 @@
   parent: BaseBorgModuleRecipe
   id: BorgModuleHarvesting
   result: BorgModuleHarvesting
-  
+
 - type: latheRecipe
   parent: BaseBorgModuleRecipe
   id: BorgModuleClowning
@@ -229,7 +229,7 @@
     Plastic: 300
     Gold: 250
     Plasma: 150
-    
+
 - type: latheRecipe
   parent: BaseRoboticsRecipe
   id: Nanopast1
@@ -239,7 +239,7 @@
     Steel: 50
     Plastic: 75
     Plasma: 50
-    
+
 # modesuit
 - type: latheRecipe
   abstract: true
@@ -250,7 +250,7 @@
   materials:
     Steel: 250
     Glass: 100
-    
+
 - type: latheRecipe
   abstract: true
   id: BaseModesuitModule
@@ -277,13 +277,13 @@
 - type: latheRecipe
   parent: BaseModesuitPart
   id: ModularSuitConstruction
-  result: ModularSuitConstruction 
+  result: ModularSuitConstruction
   completetime: 10
   materials:
     Steel: 500
     Plasteel: 500
     Glass: 400
-    
+
 - type: latheRecipe
   parent: BaseModesuitPart
   id: ModularSuitBoots
@@ -486,8 +486,8 @@
 
 - type: latheRecipe
   parent: BaseGoldModesuitModule
-  id: ModularSuitModuleGrabber
-  result: ModularSuitModuleGrabber
+  id: GrabberSuitModule
+  result: GrabberSuitModule
 
 - type: latheRecipe
   parent: BaseGoldModesuitModule

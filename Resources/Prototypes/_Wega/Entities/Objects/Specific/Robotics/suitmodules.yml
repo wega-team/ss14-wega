@@ -1219,10 +1219,11 @@
   name: advanced magnet suit module
   description: "A sophisticated upgrade to Nakamura Engineering's magnetic stability system, featuring computerized auto-toggling and enhanced grip calibration. Unlike the basic model, these electromagnets intelligently adjust their field strength based on surface conditions and user intent, eliminating the 'stickiness' reported with older versions. Includes a neural-link interface that intuitively engages magnetic grip only when needed, allowing for seamless movement transitions. Originally developed for the Chief Engineer's advanced suit, this module has since been made available to engineering personnel who demand the best in mobility control."
   components:
-  - type: ModularSuitModule
-    powerUsage: 0
+  - type: ModularSuitModuleEffect
     activeComponents:
     - type: NoSlip
     - type: Magboots
       disabledAutoMode: true
       disabledAutoOff: true
+  - type: ModularSuitModule
+    powerUsage: 0

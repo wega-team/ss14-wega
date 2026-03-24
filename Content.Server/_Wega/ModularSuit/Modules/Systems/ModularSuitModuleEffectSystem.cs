@@ -1,10 +1,14 @@
-using Content.Shared.Modular.Suit;
+using System.Diagnostics.CodeAnalysis;
+using Content.Shared.Clothing.Components;
 using Content.Shared.Inventory;
+using Content.Shared.Modular.Suit;
+using Robust.Shared.Containers;
 
 namespace Content.Server.Modular.Suit;
 
 public sealed class ModularSuitSuitEffectSystem : EntitySystem
 {
+    [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly InventorySystem _inventory = default!;
 
     public override void Initialize()
@@ -19,14 +23,14 @@ public sealed class ModularSuitSuitEffectSystem : EntitySystem
     private void OnModuleInstalled(Entity<ModularSuitModuleEffectComponent> module, ref ModularSuitInstalledEvent args)
     {
         if (TryComp<ModularSuitModuleComponent>(module.Owner, out var moduleComp) && moduleComp.IsActive)
-            ApplyEffects(args.User, module.Comp);
+            ApplyEffects(args.User, args.Suit, module.Comp);
     }
 
     private void OnModuleRemoved(Entity<ModularSuitModuleEffectComponent> module, ref ModularSuitRemovedEvent args)
     {
         if (module.Comp.ActiveComponents != null)
         {
-            RemoveEffects(args.User, module.Comp);
+            RemoveEffects(args.User, args.Suit, module.Comp);
         }
     }
 
@@ -34,20 +38,20 @@ public sealed class ModularSuitSuitEffectSystem : EntitySystem
     {
         if (args.Activated)
         {
-            ApplyEffects(args.Wearer, module.Comp);
+            ApplyEffects(args.Wearer, args.Suit, module.Comp);
         }
         else
         {
-            RemoveEffects(args.Wearer, module.Comp);
+            RemoveEffects(args.Wearer, args.Suit, module.Comp);
         }
     }
 
-    private void ApplyEffects(EntityUid? user, ModularSuitModuleEffectComponent component)
+    private void ApplyEffects(EntityUid? user, EntityUid suit, ModularSuitModuleEffectComponent component)
     {
-        if (user == null || component.ActiveComponents == null)
+        if (component.ActiveComponents == null)
             return;
 
-        if (!_inventory.TryGetSlotEntity(user.Value, component.TargetSlot, out var targetEntity))
+        if (!TryGetTargetEntity(user, suit, component.TargetSlot, out var targetEntity))
             return;
 
         EntityManager.AddComponents(targetEntity.Value, component.ActiveComponents);
@@ -61,12 +65,12 @@ public sealed class ModularSuitSuitEffectSystem : EntitySystem
         }
     }
 
-    private void RemoveEffects(EntityUid? user, ModularSuitModuleEffectComponent component)
+    private void RemoveEffects(EntityUid? user, EntityUid suit, ModularSuitModuleEffectComponent component)
     {
-        if (user == null || component.ActiveComponents == null)
+        if (component.ActiveComponents == null)
             return;
 
-        if (!_inventory.TryGetSlotEntity(user.Value, component.TargetSlot, out var targetEntity))
+        if (!TryGetTargetEntity(user, suit, component.TargetSlot, out var targetEntity))
             return;
 
         EntityManager.RemoveComponents(targetEntity.Value, component.ActiveComponents);
@@ -75,5 +79,51 @@ public sealed class ModularSuitSuitEffectSystem : EntitySystem
         {
             EntityManager.AddComponents(targetEntity.Value, component.ReturnedComponents);
         }
+    }
+
+    private bool TryGetTargetEntity(EntityUid? user, EntityUid suit, string targetSlot, [NotNullWhen(true)] out EntityUid? targetEntity)
+    {
+        targetEntity = null;
+        if (user != null && _inventory.TryGetSlotEntity(user.Value, targetSlot, out var wearerSlot))
+        {
+            targetEntity = wearerSlot;
+            return true;
+        }
+
+        if (targetSlot == "back")
+        {
+            targetEntity = suit;
+            return true;
+        }
+
+        var partContainer = _container.GetContainer(suit, SharedModularSuitSystem.PartContainer);
+        foreach (var part in partContainer.ContainedEntities)
+        {
+            if (TryComp<ClothingComponent>(part, out var clothing) && clothing.Slots.HasFlag(GetSlotFlag(targetSlot)))
+            {
+                targetEntity = part;
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private SlotFlags GetSlotFlag(string slot)
+    {
+        return slot switch
+        {
+            "head" => SlotFlags.HEAD,
+            "eyes" => SlotFlags.EYES,
+            "ears" => SlotFlags.EARS,
+            "mask" => SlotFlags.MASK,
+            "outerClothing" => SlotFlags.OUTERCLOTHING,
+            "jumpsuit" => SlotFlags.INNERCLOTHING,
+            "neck" => SlotFlags.NECK,
+            "belt" => SlotFlags.BELT,
+            "gloves" => SlotFlags.GLOVES,
+            "shoes" => SlotFlags.FEET,
+            _ => SlotFlags.NONE
+        };
     }
 }

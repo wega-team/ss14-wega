@@ -5,7 +5,6 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    startDelay: true
     useDelay: 2
   - type: InstantAction
     event: !type:ToggleSuitUiActionEvent
@@ -19,7 +18,7 @@
   components:
   - type: Action
     startDelay: true
-    useDelay: 5
+    useDelay: 2
     icon: { sprite: _Wega/Interface/Actions/actions_modules.rsi, state: storage }
   - type: InstantAction
     event: !type:OpenStorageModuleEvent
@@ -32,7 +31,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    useDelay: 0.5
+    useDelay: 1
     icon: { sprite: _Wega/Interface/Actions/actions_modules.rsi, state: light-off}
     iconOn: { sprite: _Wega/Interface/Actions/actions_modules.rsi, state: light-on }
   - type: InstantAction
@@ -42,7 +41,7 @@
   parent: BaseAction
   id: ActivateTeleporterModuleAction
   name: "[color=#58c4e8]Activate Teleporter[/color]"
-  description: "Instantly teleports the user to a targeted location. Requires a bluespace core to function."
+  description: "Instantly teleports the user to the location of a random nearby creature. Requires a bluespace core to function."
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
