@@ -30,7 +30,6 @@ public sealed class SlipperySystem : EntitySystem
     [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly SpeedModifierContactsSystem _speedModifier = default!;
-    [Dependency] private readonly MovementSpeedModifierSystem _movementSpeedModifier = default!;
 
     private EntityQuery<KnockedDownComponent> _knockedDownQuery;
     private EntityQuery<PhysicsComponent> _physicsQuery;
