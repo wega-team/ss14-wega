@@ -20,5 +20,6 @@
   - type: SlowedOverSlippery
     slowdownModifier: 0.7
   - type: SpeedModifierContactCapClothing
-    maxContactSprintSlowdown: 0.6
-    maxContactWalkSlowdown: 0.6
+    maxContactSprintSlowdown: 0.7
+    maxContactWalkSlowdown: 0.7
+  - type: BloodCultEquipment

@@ -30,6 +30,7 @@ public sealed class SlipperySystem : EntitySystem
     [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly SpeedModifierContactsSystem _speedModifier = default!;
+    [Dependency] private readonly MovementSpeedModifierSystem _movementSpeedModifier = default!;
 
     private EntityQuery<KnockedDownComponent> _knockedDownQuery;
     private EntityQuery<PhysicsComponent> _physicsQuery;
@@ -64,6 +65,12 @@ public sealed class SlipperySystem : EntitySystem
         SlipperyComponent component,
         ref StepTriggerAttemptEvent args)
     {
+		var attemptEv = new SlipAttemptEvent(uid);
+		RaiseLocalEvent(args.Tripper, attemptEv);
+
+		if (attemptEv.SlowOverSlippery)
+			_speedModifier.AddModifiedEntity(args.Tripper);
+		
         args.Continue |= CanSlip(uid, args.Tripper);
     }
 
@@ -107,8 +114,6 @@ public sealed class SlipperySystem : EntitySystem
 
         var attemptEv = new SlipAttemptEvent(uid);
         RaiseLocalEvent(other, attemptEv);
-        if (attemptEv.SlowOverSlippery)
-            _speedModifier.AddModifiedEntity(other);
 
         if (attemptEv.NoSlip)
             return;

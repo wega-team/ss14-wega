@@ -158,6 +158,29 @@
     damage:
       types:
         Slash: 12
+  - type: DamageOtherOnHit
+    ignoreResistances: true
+    damage:
+      types:
+        Slash: 10
+        Piercing: 15
+  - type: ThrowingAngle
+    angle: 225
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape: !type:PolygonShape
+          radius: 0.01
+          vertices:
+          - -0.475,-0.225
+          - -0.225,-0.475
+          - 0.525,0.275
+          - 0.275,0.525
+        density: 20 # derived from base_item
+        mask:
+        - ItemMask
+        restitution: 0.3
+        friction: 0.2
   - type: UserInterface
     interfaces:
       enum.BloodRunesUiKey.Key:
