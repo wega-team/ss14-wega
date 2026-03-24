@@ -11,6 +11,11 @@
   - StationAiIconDorf
   - StationAiIconHeartline
   - StationAiIconSmiley
+    # Corvax-Wega-Edit-start
+  - StationAiIconBinary
+  - StationAiIconBlue
+  - StationAiIconCat
+    # Corvax-Wega-Edit-end
 
 - type: stationAiCustomizationGroup
   id: StationAiHolograms
@@ -22,6 +27,16 @@
   - StationAiHologramFace
   - StationAiHologramCat
   - StationAiHologramDog
+    # Corvax-Wega-Edit-start
+  - StationAiHologramAlgalone
+  - StationAiHologramFractalsnowflake
+  - StationAiHologramLongrun
+  - StationAiHologramNtpaint
+  - StationAiHologramPuredata
+  - StationAiHologramRorschach
+  - StationAiHologramSeraphim
+  - StationAiHologramTripleaffirmative
+    # Corvax-Wega-Edit-end
 
 # Iconography
 - type: stationAiCustomization

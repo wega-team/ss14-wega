@@ -1,0 +1,35 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Sprite made by @Boiwab",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "ai_algalone"
+        },
+        {
+            "name": "ai_fractalsnowflake"
+        },
+        {
+            "name": "ai_longrun"
+        },
+        {
+            "name": "ai_ntpaint"
+        },
+        {
+            "name": "ai_puredata"
+        },
+        {
+            "name": "ai_rorschach"
+        },
+        {
+            "name": "ai_seraphim"
+        },
+        {
+            "name": "ai_tripleaffirmative"
+        }
+    ]
+}
