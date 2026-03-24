@@ -36,6 +36,10 @@
   - type: PhysicalComposition
     materialComposition:
       Steel: 75
+# Corvax-Wega-start
+  - type: Item
+    size: Normal
+# Corvax-Wega-end
 
 - type: entity
   parent: [DrinkBaseMaterialPorcelain, DrinkBase]

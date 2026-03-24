@@ -32,6 +32,10 @@
   name: force field projector
   description: Creates an impassable forcefield that won't let anything through. Close proximity may or may not cause cancer.
   components:
+    - type: Item
+      size: Normal
+      shape:
+      - 0,0,0,1
     - type: HolosignProjector
       signProto: SyndiHolosignForcefield
       chargeUse: 240
@@ -55,6 +59,10 @@
   name: holocreate projector
   description: Creates an impassable forcefield that won't let anything through. Close proximity may or may not cause cancer.
   components:
+    - type: Item
+      size: Normal
+      shape:
+      - 0,0,0,1
     - type: HolosignProjector
       signProto: HoloCreate
       chargeUse: 720
