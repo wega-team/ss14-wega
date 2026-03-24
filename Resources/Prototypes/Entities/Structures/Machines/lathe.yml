@@ -309,10 +309,14 @@
     staticPacks:
     - RoboticsStatic
     - BorgModulesStatic
-    - BorgLimbsStatic
+    - BorgLimbsStatic 
+    - ModesuitPartStatic # Corvax-Wega-Edit
+    - ModesuitModuleStatic # Corvax-Wega-Edit
     dynamicPacks:
     - Robotics
     - ScienceReach # Corvax-Wega-Edit
+    - ModesuitPlatingReach # Corvax-Wega-Edit
+    - ModesuitModuleReach # Corvax-Wega-Edit
     - BorgModules
     - MechParts
     - MechEquipment
@@ -322,6 +326,12 @@
   - type: GuideHelp
     guides:
     - Robotics
+# Corvax-wega-start
+  - type: EmagLatheRecipes
+    emagStaticPacks:
+    - ModesuitModuleSecStatic
+    - ModesuitModuleSecReach
+# Corvax-wega-end
 
 - type: entity
   id: Biofabricator
@@ -391,6 +401,7 @@
     - SecurityPracticeStatic
     - SecurityAmmoStatic
     - SecurityWeaponsStatic
+    - ModesuitModuleSecStatic # Corvax-Wega-Edit
     dynamicPacks:
     - SalvageSecurityBoards
     - SalvageSecurityWeapons
@@ -402,6 +413,7 @@
     - SecurityDisablers
     - ImplantSB # Corvax-Wega-Edit
     - ScienceReach # Corvax-Wega-Edit
+    - ModesuitModuleSecReach # Corvax-Wega-Edit
   - type: EmagLatheRecipes
     emagStaticPacks:
     - SyndicateAmmoStatic
