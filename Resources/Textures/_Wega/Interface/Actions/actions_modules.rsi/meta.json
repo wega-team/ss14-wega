@@ -30,6 +30,15 @@
         },
         {
             "name": "teleporter"
+        },
+        {
+            "name": "paper"
+        },
+        {
+            "name": "light-off"
+        },
+        {
+            "name": "light-on"
         }
     ]
 }

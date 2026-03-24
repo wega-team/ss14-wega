@@ -8,6 +8,15 @@ namespace Content.Shared.Modular.Suit;
 
 public sealed partial class OpenStorageModuleEvent : InstantActionEvent { }
 
+public sealed partial class ToggleLightModuleEvent : InstantActionEvent
+{
+    [DataField]
+    public SoundSpecifier TurnOnSound = new SoundPathSpecifier("/Audio/Items/flashlight_on.ogg");
+
+    [DataField]
+    public SoundSpecifier TurnOffSound = new SoundPathSpecifier("/Audio/Items/flashlight_off.ogg");
+}
+
 public sealed partial class ActivateTeleporterModuleEvent : InstantActionEvent
 {
     [DataField]
@@ -47,7 +56,7 @@ public sealed partial class ActivateAtrocinatorModuleEvent : InstantActionEvent
     public SoundSpecifier ActivationSound = new SoundCollectionSpecifier("RadiationPulse");
 }
 
-public sealed partial class ActivateTanningModuleEvent : InstantActionEvent;
+public sealed partial class ActivateTanningModuleEvent : InstantActionEvent { }
 
 [Serializable, NetSerializable]
 public sealed partial class ModuleGrabberDoAfterEvent : SimpleDoAfterEvent;

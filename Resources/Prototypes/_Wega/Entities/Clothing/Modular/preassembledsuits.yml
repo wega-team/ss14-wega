@@ -1,4 +1,24 @@
 - type: entity
+  parent: ClothingModularControllerStandard
+  id: ClothingModularControllerStandardPreassembled
+  suffix: Preassembled
+  components:
+  - type: ModularSuitPreassembled
+    modules:
+    - StorageSuitModule
+    - FlashlightSuitModuleCyan
+
+- type: entity
+  parent: ClothingModularControllerCivilian
+  id: ClothingModularControllerCivilianPreassembled
+  suffix: Preassembled
+  components:
+  - type: ModularSuitPreassembled
+    modules:
+    - StorageSuitModule
+    - FlashlightSuitModuleAqua
+
+- type: entity
   parent: ClothingModularControllerEngineering
   id: ClothingModularControllerEngineeringPreassembled
   suffix: Preassembled
@@ -6,6 +26,7 @@
   - type: ModularSuitPreassembled
     modules:
     - StorageSuitModule
+    - FlashlightSuitModuleCyan
     - WeldingSuitModule
     - RadiationShieldSuitModule
     - MagnetSuitModule
@@ -18,6 +39,7 @@
   - type: ModularSuitPreassembled
     modules:
     - StorageSuitModule
+    - FlashlightSuitModuleCyan
     - WeldingSuitModule
     - RadiationShieldSuitModule
     - MagnetSuitModule
@@ -31,10 +53,40 @@
   - type: ModularSuitPreassembled
     modules:
     - StorageLargeSuitModule
+    - AdvancedFlashlightSuitModuleAmber
     - WeldingSuitModule
     - RadiationShieldSuitModule
     - JetpackSuitModule
-    - NoSlipSuitModule
+    - MagnetAdvancedSuitModule
+
+- type: entity
+  parent: ClothingModularControllerPrototype
+  id: ClothingModularControllerPrototypePreassembled
+  suffix: Preassembled
+  components:
+  - type: ModularSuitPreassembled
+    modules:
+    - StorageSuitModule
+    - FlashlightSuitModuleAqua
+    - GPSSuitModule
+    - OreBagSuitModule
+    - MagnetSuitModule
+
+- type: entity
+  parent: ClothingModularControllerAsteroid
+  id: ClothingModularControllerAsteroidPreassembled
+  suffix: Preassembled
+  components:
+  - type: ModularSuitPreassembled
+    modules:
+    - StorageSuitModule
+    - AdvancedFlashlightSuitModuleAqua
+    - GPSSuitModule
+    - OreBagSuitModule
+    - MagnetSuitModule
+    - WeldingSuitModule
+    - JetpackAdvancedSuitModule
+    - DrillSuitModule
 
 - type: entity
   parent: ClothingModularControllerMining
@@ -44,9 +96,22 @@
   - type: ModularSuitPreassembled
     modules:
     - StorageSuitModule
+    - AdvancedFlashlightSuitModuleAqua
     - GPSSuitModule
     - OreBagSuitModule
-    - ModularSuitModuleGrabber
+    - GrabberSuitModule
+    - DrillSuitModule
+
+- type: entity
+  parent: ClothingModularControllerLoader
+  id: ClothingModularControllerLoaderPreassembled
+  suffix: Preassembled
+  components:
+  - type: ModularSuitPreassembled
+    modules:
+    - StorageSuitModule
+    - FlashlightSuitModuleMint
+    - GrabberSuitModule
 
 - type: entity
   parent: ClothingModularControllerMedical
@@ -56,6 +121,7 @@
   - type: ModularSuitPreassembled
     modules:
     - StorageSuitModule
+    - FlashlightSuitModuleLavender
     - HealthAnalyzerSuitModule
     - VisorMedicalSuitModule
     - QuickCarrySuitModule
@@ -68,6 +134,7 @@
   - type: ModularSuitPreassembled
     modules:
     - StorageSuitModule
+    - AdvancedFlashlightSuitModulePink
     - HealthAnalyzerSuitModule
     - DefibrillatorSuitModule
     - VisorMedicalSuitModule
@@ -81,6 +148,7 @@
   - type: ModularSuitPreassembled
     modules:
     - StorageLargeSuitModule
+    - AdvancedFlashlightSuitModuleAqua
     - WeldingSuitModule
     - RadiationShieldSuitModule
     - SolutionScannerSuitModule
@@ -94,6 +162,7 @@
   - type: ModularSuitPreassembled
     modules:
     - StorageSuitModule
+    - FlashlightSuitModuleDarkOrange
     - MagnetSuitModule
     - ArmorBossterSuitModule
     - VisorSecuritySuitModule
@@ -106,6 +175,7 @@
   - type: ModularSuitPreassembled
     modules:
     - StorageLargeSuitModule
+    - AdvancedFlashlightSuitModuleOrange
     - MagnetSuitModule
     - JetpackSuitModule
     - ArmorBossterSuitModule
@@ -119,6 +189,8 @@
   - type: ModularSuitPreassembled
     modules:
     - StorageLargeSuitModule
+    - AdvancedFlashlightSuitModulePurple
+    - PaperDispenserSuitModule
     - MagnetSuitModule
     - JetpackAdvancedSuitModule
 
@@ -130,6 +202,7 @@
   - type: ModularSuitPreassembled
     modules:
     - StorageSuitModule
+    - FlashlightSuitModuleRed
     - BikeHornSuitModule
 
 - type: entity
@@ -140,6 +213,21 @@
   - type: ModularSuitPreassembled
     modules:
     - StorageSyndicateSuitModule
+    - FlashlightSuitModuleGreen
+    - EMPShieldAdvancedSuitModule
+    - MagnetSuitModule
+    - JetpackAdvancedSuitModule
+    - ArmorBossterSuitModule
+
+- type: entity
+  parent: ClothingModularControllerElite
+  id: ClothingModularControllerElitePreassembled
+  suffix: Preassembled
+  components:
+  - type: ModularSuitPreassembled
+    modules:
+    - StorageSyndicateSuitModule
+    - AdvancedFlashlightSuitModuleGold
     - EMPShieldAdvancedSuitModule
     - MagnetSuitModule
     - JetpackAdvancedSuitModule
@@ -153,10 +241,11 @@
   - type: ModularSuitPreassembled
     modules:
     - StorageHoldingSuitModule
+    - AdvancedFlashlightSuitModuleAqua
     - EMPShieldAdvancedSuitModule
     - ArmorBossterSuitModule
     - JetpackAdvancedSuitModule
-    - NoSlipSuitModule
+    - MagnetAdvancedSuitModule
     - QuickCarrySuitModule
     - RadiationShieldSuitModule
     - WeldingSuitModule
@@ -170,10 +259,12 @@
   - type: ModularSuitPreassembled
     modules:
     - StorageHoldingSuitModule
+    - AdvancedFlashlightSuitModuleAqua
+    - PaperDispenserSuitModule
     - EMPShieldAdvancedSuitModule
     - JetpackAdvancedSuitModule
     - ArmorBossterSuitModule
-    - NoSlipSuitModule
+    - MagnetAdvancedSuitModule
     - RadiationShieldSuitModule
     - WeldingSuitModule
 
@@ -185,6 +276,7 @@
   - type: ModularSuitPreassembled
     modules:
     - StorageLargeSuitModule
+    - AdvancedFlashlightSuitModuleAqua
     - EMPShieldSuitModule
     - JetpackSuitModule
     - ArmorBossterSuitModule
@@ -200,6 +292,7 @@
   - type: ModularSuitPreassembled
     modules:
     - StorageLargeSuitModule
+    - AdvancedFlashlightSuitModuleAqua
     - EMPShieldSuitModule
     - JetpackSuitModule
     - ArmorBossterSuitModule

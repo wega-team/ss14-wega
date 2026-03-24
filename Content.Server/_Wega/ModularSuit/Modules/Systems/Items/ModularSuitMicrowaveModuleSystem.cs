@@ -13,12 +13,12 @@ namespace Content.Server.Modular.Suit;
 
 public sealed class ModularSuitMicrowaveSystem : EntitySystem
 {
-    [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
-    [Dependency] private readonly TemperatureSystem _temperature = default!;
+    [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly ModularSuitSystem _modularSuit = default!;
+    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private readonly TemperatureSystem _temperature = default!;
 
     public override void Initialize()
     {

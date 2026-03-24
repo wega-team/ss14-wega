@@ -176,27 +176,10 @@
         Piercing: 0.95
         Heat: 0.90
         Radiation: 0.25
-  - type: ModularSuitPart
-    partType: Helmet
-  - type: Tag
-    tags:
-    - WhitelistChameleon
-
-- type: entity
-  parent: ClothingModularHelmetBase
-  id: ClothingModularHelmetLightBase
-  abstract: true
-  components:
-  - type: EdibleMatter
-    canBeEaten: false
-  - type: ItemTogglePointLight
   - type: PointLight
     enabled: false
-    radius: 3
-    energy: 2
     mask: /Textures/Effects/LightMasks/cone.png
     autoRot: true
-    netsync: false
   - type: LightBehaviour
     behaviours:
       - !type:FadeBehaviour
@@ -219,6 +202,11 @@
     startingCharge: 600
   - type: BatterySelfRecharger
     autoRechargeRate: 2
+  - type: ModularSuitPart
+    partType: Helmet
+  - type: Tag
+    tags:
+    - WhitelistChameleon
 
 - type: entity
   parent: [ BaseItem, BaseClothingModularToggler, AllowSuitStorageClothing ]
@@ -319,6 +307,7 @@
       - state: sealed-equipped-FEET-reptilian
   - type: ModularSuitPart
     partType: Boots
+  - type: HeldSpeedModifier
   - type: ProtectedFromStepTriggers
     slots: WITHOUT_POCKET
   - type: Tag

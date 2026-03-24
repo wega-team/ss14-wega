@@ -27,7 +27,7 @@
         - ClothingModularBootsStandard
 
 - type: entity
-  parent: ClothingModularHelmetLightBase
+  parent: ClothingModularHelmetBase
   id: ClothingModularHelmetStandard
   name: standard modsuit helmet
   description: A sealed helmet with basic protection. Features a retractable visor with cyan lighting.
@@ -58,6 +58,8 @@
       - state: visor-unshaded-vox
         shader: unshaded
         color: "#79f8e6"
+  - type: PointLight
+    color: "#79f8e6"
 
 - type: entity
   parent: ClothingModularChestPlateBase
@@ -154,7 +156,7 @@
         startingItem: PowerCellHigh
 
 - type: entity
-  parent: ClothingModularHelmetLightBase
+  parent: ClothingModularHelmetBase
   id: ClothingModularHelmetAdvanced
   name: advanced modsuit helmet
   description: An advanced helmet with a polished white finish. Features enhanced protection and an amber visor.
@@ -187,7 +189,6 @@
         color: "#cc793d"
   - type: PointLight
     color: "#cc793d"
-    energy: 3
 
 - type: entity
   parent: ClothingModularChestPlateBase
@@ -287,6 +288,9 @@
         - type: TemperatureProtection
           heatingCoefficient: 0.001
           coolingCoefficient: 0.001
+    blacklist:
+      tags:
+        - TemperatureRegulatorModuleConflict
   - type: ClothingSpeedModifier
     walkModifier: 1.0
     sprintModifier: 1.0
@@ -297,7 +301,7 @@
         startingItem: PowerCellMicroreactor
 
 - type: entity
-  parent: ClothingModularHelmetLightBase
+  parent: ClothingModularHelmetBase
   id: ClothingModularHelmetApocryphal
   name: apocryphal modsuit helmet
   description: A high-tech helmet with a cyan visor and exceptional protective capabilities. The pinnacle of defensive technology.
@@ -456,7 +460,7 @@
           - Jetpack
 
 - type: entity
-  parent: ClothingModularHelmetLightBase
+  parent: ClothingModularHelmetBase
   id: ClothingModularHelmetAsteroid
   name: asteroid modsuit helmet
   description: A rugged mining helmet with enhanced lighting. Protects against ash storms and impacts.
@@ -489,8 +493,6 @@
         color: "#a4fef4"
   - type: PointLight
     color: "#a4fef4"
-    radius: 7
-    energy: 3
 
 - type: entity
   parent: ClothingModularChestPlateBase
@@ -592,9 +594,12 @@
           coolingCoefficient: 0.001
         - type: FireProtection
           reduction: 0.8
+    blacklist:
+      tags:
+        - TemperatureRegulatorModuleConflict
   - type: ClothingSpeedModifier
-    walkModifier: 0.7
-    sprintModifier: 0.7
+    walkModifier: 0.75
+    sprintModifier: 0.75
   - type: ItemSlots
     slots:
       cell_slot:
@@ -602,7 +607,7 @@
         startingItem: PowerCellMedium
 
 - type: entity
-  parent: ClothingModularHelmetLightBase
+  parent: ClothingModularHelmetBase
   id: ClothingModularHelmetAtmospheric
   name: atmospheric modsuit helmet
   description: A heat-resistant helmet with a cyan visor. Essential for working in extreme temperature environments.
@@ -716,7 +721,7 @@
         - ClothingModularBootsChrono
 
 - type: entity
-  parent: ClothingModularHelmetLightBase
+  parent: ClothingModularHelmetBase
   id: ClothingModularHelmetChrono
   name: chrono modsuit helmet
   description: A strange helmet with a blue-cyan visor. It seems to distort light around it.
@@ -819,7 +824,7 @@
         - ClothingModularBootsCivilian
 
 - type: entity
-  parent: ClothingModularHelmetLightBase
+  parent: ClothingModularHelmetBase
   id: ClothingModularHelmetCivilian
   name: civilian modsuit helmet
   description: A lightweight civilian helmet with a cyan visor. Not rated for vacuum exposure.
@@ -946,7 +951,7 @@
         startingItem: PowerCellMicroreactor
 
 - type: entity
-  parent: ClothingModularHelmetLightBase
+  parent: ClothingModularHelmetBase
   id: ClothingModularHelmetCorporate
   name: corporate modsuit helmet
   description: A stylish corporate helmet with a cyan visor. Projects authority while providing excellent protection.
@@ -1063,7 +1068,7 @@
         - ClothingModularBootsCorpsman
 
 - type: entity
-  parent: ClothingModularHelmetLightBase
+  parent: ClothingModularHelmetBase
   id: ClothingModularHelmetCorpsman
   name: corpsman modsuit helmet
   description: A medical helmet with a white visor. The corpsman variant offers a distinct look.
@@ -1183,7 +1188,7 @@
     sprintModifier: 0.9
 
 - type: entity
-  parent: ClothingModularHelmetLightBase
+  parent: ClothingModularHelmetBase
   id: ClothingModularHelmetCosmohonk
   name: cosmohonk modsuit helmet
   description: A clown-themed helmet with a red visor. Honk!
@@ -1318,6 +1323,9 @@
           coolingCoefficient: 0.001
         - type: FireProtection
           reduction: 0.8
+    blacklist:
+      tags:
+        - TemperatureRegulatorModuleConflict
   - type: ClothingSpeedModifier
     walkModifier: 1
     sprintModifier: 1
@@ -1328,7 +1336,7 @@
         startingItem: PowerCellMedium
 
 - type: entity
-  parent: ClothingModularHelmetLightBase
+  parent: ClothingModularHelmetBase
   id: ClothingModularHelmetElite
   name: elite modsuit helmet
   description: An elite helmet with a golden visor. Enhanced protection for the most dangerous missions.
@@ -1475,7 +1483,7 @@
         startingItem: PowerCellMedium
 
 - type: entity
-  parent: ClothingModularHelmetLightBase
+  parent: ClothingModularHelmetBase
   id: ClothingModularHelmetEnchanted
   name: enchanted modsuit helmet
   description: A magical helmet with a cyan-blue visor. Counts as wizard robes for spellcasting purposes.
@@ -1620,7 +1628,7 @@
         startingItem: PowerCellMedium
 
 - type: entity
-  parent: ClothingModularHelmetLightBase
+  parent: ClothingModularHelmetBase
   id: ClothingModularHelmetEngineering
   name: engineering modsuit helmet
   description: An engineering helmet with a cyan visor. Essential for maintenance work in hazardous environments.
@@ -1759,7 +1767,7 @@
         startingItem: PowerCellMicroreactor
 
 - type: entity
-  parent: ClothingModularHelmetLightBase
+  parent: ClothingModularHelmetBase
   id: ClothingModularHelmetInquisitory
   name: inquisitory modsuit helmet
   description: A striking helmet with a cyan visor. Intimidates those who witness your judgment.
@@ -1883,7 +1891,7 @@
         - ClothingModularBootsLoader
 
 - type: entity
-  parent: ClothingModularHelmetLightBase
+  parent: ClothingModularHelmetBase
   id: ClothingModularHelmetLoader
   name: loader modsuit helmet
   description: A practical helmet with a cyan-green visor. Designed for cargo operations.
@@ -2007,7 +2015,7 @@
         startingItem: PowerCellHigh
 
 - type: entity
-  parent: ClothingModularHelmetLightBase
+  parent: ClothingModularHelmetBase
   id: ClothingModularHelmetMagnate
   name: magnate modsuit helmet
   description: A regal helmet with a purple visor. Projects authority and inspires confidence.
@@ -2148,7 +2156,7 @@
         startingItem: PowerCellHigh
 
 - type: entity
-  parent: ClothingModularHelmetLightBase
+  parent: ClothingModularHelmetBase
   id: ClothingModularHelmetMedical
   name: medical modsuit helmet
   description: A medical helmet with a purple visor. Provides disease protection and a clear view of your patients.
@@ -2295,7 +2303,7 @@
         startingItem: PowerCellMedium
 
 - type: entity
-  parent: ClothingModularHelmetLightBase
+  parent: ClothingModularHelmetBase
   id: ClothingModularHelmetMining
   name: mining modsuit helmet
   description: A rugged mining helmet with a cyan visor. Features ash protection and a powerful light.
@@ -2328,8 +2336,6 @@
         color: "#a4fef4"
   - type: PointLight
     color: "#a4fef4"
-    radius: 5
-    energy: 3
   - type: Armor
     modifiers:
       coefficients:
@@ -2538,7 +2544,7 @@
           coolingCoefficient: 0.01
 
 - type: entity
-  parent: ClothingModularHelmetLightBase
+  parent: ClothingModularHelmetBase
   id: ClothingModularHelmetPrototype
   name: prototype modsuit helmet
   description: A bulky prototype helmet with a cyan visor. Not exactly space-efficient, but it gets the job done.
@@ -2571,7 +2577,6 @@
         color: "#a4fef4"
   - type: PointLight
     color: "#a4fef4"
-    radius: 6
 
 - type: entity
   parent: ClothingModularChestPlateBase
@@ -2660,7 +2665,7 @@
         startingItem: PowerCellHigh
 
 - type: entity
-  parent: ClothingModularHelmetLightBase
+  parent: ClothingModularHelmetBase
   id: ClothingModularHelmetRescue
   name: rescue modsuit helmet
   description: A medical rescue helmet with a soft pink visor. Designed for extracting patients from hazardous environments.
@@ -2693,8 +2698,6 @@
         color: "#f7e0e1"
   - type: PointLight
     color: "#f7e0e1"
-    radius: 5
-    energy: 2
   - type: DiseaseProtection
     protection: 0.15
   - type: Armor
@@ -2806,7 +2809,7 @@
         startingItem: PowerCellHigh
 
 - type: entity
-  parent: ClothingModularHelmetLightBase
+  parent: ClothingModularHelmetBase
   id: ClothingModularHelmetResearch
   name: research modsuit helmet
   description: A research helmet with a cyan visor. Built to withstand explosive forces.
@@ -2948,7 +2951,7 @@
         startingItem: PowerCellMicroreactor
 
 - type: entity
-  parent: ClothingModularHelmetLightBase
+  parent: ClothingModularHelmetBase
   id: ClothingModularHelmetResponsory
   name: responsory modsuit helmet
   description: A sleek rescue helmet with a cyan visor. Designed for rapid emergency response.
@@ -3093,7 +3096,7 @@
         startingItem: PowerCellHigh
 
 - type: entity
-  parent: ClothingModularHelmetLightBase
+  parent: ClothingModularHelmetBase
   id: ClothingModularHelmetSafeguard
   name: safeguard modsuit helmet
   description: An advanced security helmet with a golden visor. Projects authority and offers superior protection.
@@ -3239,7 +3242,7 @@
         startingItem: PowerCellHigh
 
 - type: entity
-  parent: ClothingModularHelmetLightBase
+  parent: ClothingModularHelmetBase
   id: ClothingModularHelmetSecurity
   name: security modsuit helmet
   description: A security helmet with an orange visor. Projects authority in any situation.
@@ -3385,7 +3388,7 @@
         startingItem: PowerCellMedium
 
 - type: entity
-  parent: ClothingModularHelmetLightBase
+  parent: ClothingModularHelmetBase
   id: ClothingModularHelmetSyndicate
   name: syndicate modsuit helmet
   description: A sleek syndicate helmet with a green visor. Illegal in most systems.

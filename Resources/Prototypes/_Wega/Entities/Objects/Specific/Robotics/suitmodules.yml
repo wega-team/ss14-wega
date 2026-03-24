@@ -107,6 +107,161 @@
     grid:
     - 0,0,19,9
 
+# Flashlight
+- type: entity
+  parent: BaseSuitModule
+  id: BaseFlashlightSuitModule
+  abstract: true
+  components:
+  - type: Sprite
+    state: flashlight
+  - type: UserInterface
+    interfaces:
+      enum.LightModuleUiKey.Key:
+        type: LightModuleBoundUserInterface
+  - type: ModularSuitActionModule
+    action: ToggleLightModuleAction
+  - type: ModularSuitLightModule
+    guaranteedRemoved:
+    - type: RgbLightController
+  - type: ModularSuitModule
+    tags: [ FlashlightSuitModule ]
+    modulePart: Helmet
+    powerUsage: 0.005
+    canBeDisabled: false
+    active: true
+    verbIcon:
+      sprite: *modules-rsi
+      state: flashlight
+  - type: Tag
+    tags:
+    - FlashlightSuitModule
+
+- type: entity
+  parent: BaseFlashlightSuitModule
+  id: BaseAdvancedFlashlightSuitModule
+  abstract: true
+  components:
+  - type: ModularSuitLightModule
+    lightEnergy: 3
+    lightRadius: 6
+
+- type: entity
+  parent: BaseFlashlightSuitModule
+  id: FlashlightSuitModule
+  name: flashlight suit module
+  description: "A simple pair of flashlights installed on the left and right sides of the helmet, useful for providing light in a variety of ranges and colors. Some survivalists prefer the color green for their illumination, for reasons unknown."
+
+- type: entity
+  parent: BaseAdvancedFlashlightSuitModule
+  id: AdvancedFlashlightSuitModule
+  name: advanced flashlight suit module
+  description: "An advanced illumination system with adjustable brightness and a wide spectrum of colors. Includes ambient light sensors for automatic adjustment, as well as an emergency signaling mode. Perfect for exploring dark corridors, maintenance tunnels, and emergency situations. The light color can be customized to any preference."
+
+- type: entity
+  parent: FlashlightSuitModule
+  id: FlashlightSuitModuleCyan
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ModularSuitLightModule
+    lightColor: "#79f8e6"
+
+- type: entity
+  parent: FlashlightSuitModule
+  id: FlashlightSuitModuleAqua
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ModularSuitLightModule
+    lightColor: "#a4fef4"
+
+- type: entity
+  parent: FlashlightSuitModule
+  id: FlashlightSuitModuleRed
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ModularSuitLightModule
+    lightColor: "#e40000"
+
+- type: entity
+  parent: FlashlightSuitModule
+  id: FlashlightSuitModuleMint
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ModularSuitLightModule
+    lightColor: "#77e3bf"
+
+- type: entity
+  parent: FlashlightSuitModule
+  id: FlashlightSuitModuleLavender
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ModularSuitLightModule
+    lightColor: "#907993"
+
+- type: entity
+  parent: FlashlightSuitModule
+  id: FlashlightSuitModuleDarkOrange
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ModularSuitLightModule
+    lightColor: "#ee8e2e"
+
+- type: entity
+  parent: FlashlightSuitModule
+  id: FlashlightSuitModuleGreen
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ModularSuitLightModule
+    lightColor: "#83db2b"
+
+- type: entity
+  parent: AdvancedFlashlightSuitModule
+  id: AdvancedFlashlightSuitModuleAmber
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ModularSuitLightModule
+    lightColor: "#cc793d"
+
+- type: entity
+  parent: AdvancedFlashlightSuitModule
+  id: AdvancedFlashlightSuitModuleAqua
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ModularSuitLightModule
+    lightColor: "#a4fef4"
+
+- type: entity
+  parent: AdvancedFlashlightSuitModule
+  id: AdvancedFlashlightSuitModuleGold
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ModularSuitLightModule
+    lightColor: "#ffd480"
+
+- type: entity
+  parent: AdvancedFlashlightSuitModule
+  id: AdvancedFlashlightSuitModulePurple
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ModularSuitLightModule
+    lightColor: "#b88ae5"
+
+- type: entity
+  parent: AdvancedFlashlightSuitModule
+  id: AdvancedFlashlightSuitModulePink
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ModularSuitLightModule
+    lightColor: "#f7e0e1"
+
+- type: entity
+  parent: AdvancedFlashlightSuitModule
+  id: AdvancedFlashlightSuitModuleOrange
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ModularSuitLightModule
+    lightColor: "#facb3e"
+
 # Visor
 - type: entity
   parent: BaseSuitModule
@@ -196,6 +351,10 @@
     verbIcon:
       sprite: *modules-rsi
       state: meson_visor
+  - type: Tag
+    tags:
+    - VisorSuitModule
+    - WeldingModuleConflict
 
 - type: entity
   parent: BaseVisorSuitModule
@@ -222,7 +381,7 @@
   description: "A module that uses a gravitational core to make the user completely weightless."
   components:
   - type: Sprite
-    state: antigrav_core
+    state: antigrav
   - type: RadiationBlockingContainer
     resistance: 5
   - type: ModularSuitModuleContainerRequirement
@@ -235,7 +394,7 @@
     powerUsage: 0.45
     verbIcon:
       sprite: *modules-rsi
-      state: antigrav_core
+      state: antigrav
   - type: ContainerContainer
     containers:
       module_core: !type:ContainerSlot { }
@@ -246,6 +405,13 @@
         whitelist:
           tags:
           - GravityCore
+  - type: ItemMapper
+    mapLayers:
+      antigrav_core:
+        whitelist:
+          tags:
+          - GravityCore
+  - type: Appearance
 
 - type: entity
   parent: BaseSuitModule
@@ -254,7 +420,7 @@
   description: "A module that uses a bluespace core to let the user transport their particles elsewhere."
   components:
   - type: Sprite
-    state: teleporter_core
+    state: teleporter
   - type: ModularSuitActionModule
     action: ActivateTeleporterModuleAction
   - type: ModularSuitModuleContainerRequirement
@@ -266,7 +432,7 @@
     active: true
     verbIcon:
       sprite: *modules-rsi
-      state: teleporter_core
+      state: teleporter
   - type: ContainerContainer
     containers:
       module_core: !type:ContainerSlot { }
@@ -277,6 +443,13 @@
         whitelist:
           tags:
           - BluespaceCore
+  - type: ItemMapper
+    mapLayers:
+      teleporter_core:
+        whitelist:
+          tags:
+          - BluespaceCore
+  - type: Appearance
 
 # Printed
 - type: entity
@@ -300,6 +473,9 @@
     verbIcon:
       sprite: *modules-rsi
       state: welding
+  - type: Tag
+    tags:
+    - WeldingModuleConflict
 
 - type: entity
   parent: BaseSuitModule
@@ -313,6 +489,7 @@
     handId: tray-hand
     item: trayScanner
   - type: ModularSuitModule
+    modulePart: Gloves
     powerUsage: 0.15
     verbIcon:
       sprite: *modules-rsi
@@ -330,6 +507,7 @@
     handId: health-analyzer-hand
     item: HandheldHealthAnalyzer
   - type: ModularSuitModule
+    modulePart: Gloves
     powerUsage: 0.75
     verbIcon:
       sprite: *modules-rsi
@@ -347,6 +525,7 @@
     handId: defibrillator-hand
     item: DefibrillatorOneHandedUnpowered
   - type: ModularSuitModule
+    modulePart: Gloves
     powerUsage: 2
     verbIcon:
       sprite: *modules-rsi
@@ -365,6 +544,7 @@
     item: JetpackBlueModule
   - type: ModularSuitModule
     tags: [ JetpackSuitModule ]
+    modulePart: Torso
     powerUsage: 1.25
     verbIcon:
       sprite: *modules-rsi
@@ -388,8 +568,11 @@
     - type: Magboots
       disabledAutoMode: true
       disabledAutoOff: true
+    - type: ClothingSpeedModifier
+      walkModifier: 0.75
+      sprintModifier: 0.75
   - type: ModularSuitModule
-    tags: [ NoSlipSuitModule ]
+    tags: [ MagneticSuitModule ]
     modulePart: Boots
     powerUsage: 0.4
     verbIcon:
@@ -397,7 +580,7 @@
       state: magnet
   - type: Tag
     tags:
-    - NoSlipSuitModule
+    - MagneticSuitModule
 
 - type: entity
   parent: BaseSuitModule
@@ -410,6 +593,7 @@
   - type: ModularSuitActionModule
     action: ToggleHolsterModuleAction
   - type: ModularSuitModule
+    modulePart: Torso
     powerInstanceUsage: 2.5
     canBeDisabled: false
     active: true
@@ -460,6 +644,7 @@
     - type: Geiger
       attachedToSuit: true
   - type: ModularSuitModule
+    modulePart: Torso
     powerUsage: 0.3
     verbIcon:
       sprite: *modules-rsi
@@ -479,10 +664,38 @@
       strengthMultiplier: 0
   - type: ModularSuitModule
     tags: [ EMPShieldSuitModule ]
+    modulePart: Torso
     powerUsage: 0.3
     verbIcon:
       sprite: *modules-rsi
       state: empshield
+
+- type: entity
+  parent: BaseSuitModule
+  id: TemperatureRegulatorSuitModule
+  name: temperature regulator suit module
+  description: "Advanced climate control, using an inner body glove interwoven with thousands of tiny, flexible cooling lines. This circulates coolant at various user-controlled temperatures, ensuring maximum comfort even for those who like it hot. Once installed, this module becomes an integral part of the suit and cannot be removed. Incompatible with certain MODsuit models."
+  components:
+  - type: Sprite
+    state: regulator
+  - type: ModularSuitPermanentInstalled
+  - type: ModularSuitModuleEffect
+    targetSlot: outerClothing
+    activeComponents:
+    - type: TemperatureProtection
+      heatingCoefficient: 0.001
+      coolingCoefficient: 0.001
+  - type: ModularSuitModule
+    modulePart: Torso
+    canBeDisabled: false
+    powerUsage: 0.15
+    active: true
+    verbIcon:
+      sprite: *modules-rsi
+      state: regulator
+  - type: Tag
+    tags:
+    - TemperatureRegulatorModuleConflict
 
 - type: entity
   parent: BaseSuitModule
@@ -502,6 +715,28 @@
 
 - type: entity
   parent: BaseSuitModule
+  id: ConstructorSuitModule
+  name: constructor suit module
+  description: "This module entirely occupies the wearer's forearm, notably causing conflict with advanced arm servos meant to carry crewmembers. However, it functions as an extremely advanced construction hologram scanner, as well as containing the latest engineering schematics combined with inbuilt memory to help the user build structures."
+  components:
+  - type: Sprite
+    state: constructor
+  - type: ModularSuitItemModule
+    handId: rcd-hand
+    item: RCDRecharging
+  - type: ModularSuitModule
+    tags: [ CarryConstructorModuleConflict ]
+    modulePart: Gloves
+    powerUsage: 1
+    verbIcon:
+      sprite: *modules-rsi
+      state: constructor
+  - type: Tag
+    tags:
+    - CarryConstructorModuleConflict
+
+- type: entity
+  parent: BaseSuitModule
   id: QuickCarrySuitModule
   name: quick carry suit module
   description: "A suite of advanced servos, redirecting power from the suit's arms to help carry the wounded; or simply for fun. However, Nanotrasen has locked the module's ability to assist in hand-to-hand combat."
@@ -518,10 +753,13 @@
     verbIcon:
       sprite: *modules-rsi
       state: carry
+  - type: Tag
+    tags:
+    - CarryConstructorModuleConflict
 
 - type: entity
   parent: BaseSuitModule
-  id: ModularSuitModuleGrabber
+  id: GrabberSuitModule
   name: grabber module
   description: "A series of actuators installed into both arms of the suit, boasting a lifting capacity of almost a ton. However, this design has been locked by Nanotrasen to be primarily utilized for lifting various crates. A lot of people would say that loading cargo is a dull job, but you could not disagree more."
   components:
@@ -532,6 +770,7 @@
     handId: grabber-hand
     item: ModularSuitGrabberTool
   - type: ModularSuitModule
+    modulePart: Gloves
     powerInstanceUsage: 10
     verbIcon:
       sprite: *modules-rsi
@@ -551,6 +790,24 @@
 
 - type: entity
   parent: BaseSuitModule
+  id: DrillSuitModule
+  name: drill module
+  description: "An integrated drill, typically extending over the user's hand. While useful for drilling through rock, your drill is surely the one that both pierces and creates the heavens."
+  components:
+  - type: Sprite
+    state: drill
+  - type: ModularSuitItemModule
+    handId: drill-hand
+    item: MiningDrill
+  - type: ModularSuitModule
+    modulePart: Gloves
+    powerUsage: 0.5
+    verbIcon:
+      sprite: *modules-rsi
+      state: drill
+
+- type: entity
+  parent: BaseSuitModule
   id: InjectorSuitModule
   name: injector suit module
   description: "A module installed into the wrist of the suit, this functions as a high-capacity syringe, with a tip fine enough to locate the emergency injection ports on any suit of armor, penetrating it with ease. Even yours."
@@ -561,6 +818,7 @@
     handId: injector-hand
     item: AdvancedJetInjector
   - type: ModularSuitModule
+    modulePart: Gloves
     powerUsage: 0.3
     verbIcon:
       sprite: *modules-rsi
@@ -578,6 +836,7 @@
     handId: bikehorn-hand
     item: BikeHorn
   - type: ModularSuitModule
+    modulePart: Gloves
     verbIcon:
       sprite: *modules-rsi
       state: bikehorn
@@ -594,6 +853,7 @@
     handId: orebag-hand
     item: BorgOreBag
   - type: ModularSuitModule
+    modulePart: Gloves
     verbIcon:
       sprite: *modules-rsi
       state: ore
@@ -610,6 +870,7 @@
     handId: microwave-hand
     item: ModularSuitMicrowaveBeam
   - type: ModularSuitModule
+    modulePart: Gloves
     powerInstanceUsage: 10
     verbIcon:
       sprite: *modules-rsi
@@ -689,6 +950,25 @@
     verbIcon:
       sprite: *modules-rsi
       state: apparatus
+
+- type: entity
+  parent: BaseSuitModule
+  id: PaperDispenserSuitModule
+  name: paper dispenser suit module
+  description: "A compact paper synthesizer utilizing the same advanced fax and printer technology found in Nanotrasen offices. Converts electrical energy into high-quality paper stock, ensuring you never run out of forms, manifests, or note-taking materials. Popular among cargo technicians and bureaucrats alike."
+  components:
+  - type: Sprite
+    state: paper_maker
+  - type: ModularSuitActionModule
+    action: ActivatePaperDispenserModuleAction
+  - type: ModularSuitModule
+    modulePart: Gloves
+    powerInstanceUsage: 10
+    canBeDisabled: false
+    active: true
+    verbIcon:
+      sprite: *modules-rsi
+      state: paper_maker
 
 # Maintenance
 - type: entity
@@ -784,7 +1064,7 @@
           Shock: 0.8
           Caustic: 0.8
   - type: ModularSuitModule
-    tags: [ ArmorBoosterSuitModule ]
+    tags: [ ArmorBoosterSuitModule, CompressionModuleConflict ]
     modulePart: Torso
     canBeDisabled: false
     powerUsage: 0.3
@@ -795,6 +1075,7 @@
   - type: Tag
     tags:
     - ArmorBoosterSuitModule
+    - CompressionModuleConflict
 
 - type: entity
   parent: ArmorBossterSuitModule
@@ -803,7 +1084,6 @@
   description: "An advanced version of the armor booster, this module provides superior protection against all forms of damage while also maintaining suit integrity in the harshest environments. The pinnacle of Cybersun Industries defensive technology."
   components:
   - type: ModularSuitModuleEffect
-    targetSlot: outerClothing
     activeComponents:
     - type: PressureProtection
       highPressureMultiplier: 1
@@ -829,8 +1109,8 @@
   - type: ModularSuitActionModule
     action: ActivateEnergyShieldModuleAction
   - type: ModularSuitModule
-    modulePrefix: 'C'
     modulePart: Torso
+    modulePrefix: 'C'
     powerInstanceUsage: 10
     powerUsage: 0.4
     verbIcon:
@@ -851,7 +1131,7 @@
   parent: BaseSuitModule
   id: NoSlipSuitModule
   name: noslip suit module
-  description: "These are a modified variant of standard magnetic boots, utilizing piezoelectric crystals on the soles. The two plates on the bottom of the boots automatically extend and magnetize as the user steps; a pull that's too weak to offer them the ability to affix to a hull, but just strong enough to protect against the fact that you didn't read the wet floor sign. Honk Co. has come out numerous times in protest of these modules being legal."
+  description: "A classified Cybersun Industries prototype, reverse-engineered from salvaged Syndicate equipment. These advanced piezoelectric stabilizers provide perfect traction on any surface without the power drain or magnetic signature of standard magboots. Originally designed for covert operatives who need to move silently through any environment without leaving traces. Nanotrasen has declared these modules contraband, but they remain a favorite among those who work against the corporation's interests. Honk Co. has filed numerous protests regarding the legality of these modules, citing unfair competitive advantage in the slip-prevention market."
   components:
   - type: Sprite
     state: noslip
@@ -859,20 +1139,44 @@
     targetSlot: shoes
     activeComponents:
     - type: NoSlip
-    - type: Magboots
-      disabledAutoMode: true
-      disabledAutoOff: true
   - type: ModularSuitModule
-    tags: [ NoSlipSuitModule ]
     modulePart: Boots
+    modulePrefix: 'C'
     canBeDisabled: false
     active: true
     verbIcon:
       sprite: *modules-rsi
       state: noslip
+
+- type: entity
+  parent: BaseSuitModule
+  id: PlateCompressionSuitModule
+  name: plate compression suit module
+  description: "A banned Cybersun Industries development. Nanocompressors temporarily reduce the volume of armor plates and servos, allowing the wearer to squeeze through vents and other narrow passages. The suit's removal mechanism is locked while the module is active, making it impossible to take off without external assistance. Incompatible with armor booster modules due to compression system overload."
+  components:
+  - type: Sprite
+    state: plate_compression
+  - type: ModularSuitPermanentInstalled
+  - type: ModularSuitModuleEffect
+    activeComponents:
+    - type: SelfUnremovableClothing
+    # Just in case
+    returnedComponents:
+    - type: SelfUnremovableClothing
+  - type: ModularSuitModuleWearerEffect
+    activeComponents:
+    - type: VentCrawler
+  - type: ModularSuitModule
+    tags: [ CompressionModuleConflict ]
+    modulePart: Torso
+    modulePrefix: 'C'
+    active: true
+    verbIcon:
+      sprite: *modules-rsi
+      state: plate_compression
   - type: Tag
     tags:
-    - NoSlipSuitModule
+    - CompressionModuleConflict
 
 - type: entity
   parent: BaseSuitModule
@@ -908,3 +1212,17 @@
     verbIcon:
       sprite: *modules-rsi
       state: jetpack_advanced
+
+- type: entity
+  parent: MagnetSuitModule
+  id: MagnetAdvancedSuitModule
+  name: advanced magnet suit module
+  description: "A sophisticated upgrade to Nakamura Engineering's magnetic stability system, featuring computerized auto-toggling and enhanced grip calibration. Unlike the basic model, these electromagnets intelligently adjust their field strength based on surface conditions and user intent, eliminating the 'stickiness' reported with older versions. Includes a neural-link interface that intuitively engages magnetic grip only when needed, allowing for seamless movement transitions. Originally developed for the Chief Engineer's advanced suit, this module has since been made available to engineering personnel who demand the best in mobility control."
+  components:
+  - type: ModularSuitModule
+    powerUsage: 0
+    activeComponents:
+    - type: NoSlip
+    - type: Magboots
+      disabledAutoMode: true
+      disabledAutoOff: true

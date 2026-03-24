@@ -10,7 +10,9 @@ using Content.Shared.Popups;
 using Content.Shared.Tools.Components;
 using Content.Shared.Tools.Systems;
 using Content.Shared.Verbs;
+using Content.Shared.Whitelist;
 using Content.Shared.Wires;
+using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Utility;
@@ -20,10 +22,12 @@ namespace Content.Server.Modular.Suit;
 public sealed partial class ModularSuitSystem : SharedModularSuitSystem
 {
     [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
-    [Dependency] private readonly SharedToolSystem _tool = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private readonly SharedHandsSystem _hands = default!;
+    [Dependency] private readonly SharedPointLightSystem _light = default!;
     [Dependency] private readonly LockSystem _lock = default!;
+    [Dependency] private readonly SharedToolSystem _tool = default!;
+    [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
 
     public const string CoreContainer = "suit_core";
     public const string ModuleContainer = "suit_module";
@@ -89,7 +93,7 @@ public sealed partial class ModularSuitSystem : SharedModularSuitSystem
             {
                 if (Inventory.TryGetSlotEntity(ent.Comp.Wearer.Value, slot, out var equippedItem) && equippedItem == partUid)
                 {
-                    if (Inventory.TryUnequip(ent.Comp.Wearer.Value, slot, out var removedItem))
+                    if (Inventory.TryUnequip(ent.Comp.Wearer.Value, slot, out var removedItem, force: true))
                         RemComp<AttachedModularSuitPartComponent>(removedItem.Value);
                 }
             }
@@ -257,9 +261,13 @@ public sealed partial class ModularSuitSystem : SharedModularSuitSystem
                     }
                     break;
                 case ModularSuitPart.Core:
+                    CheckSuitAssembly(suit);
+                    break;
                 case ModularSuitPart.Part:
                     CheckSuitAssembly(suit);
                     RemoveDependentModules(suit, args.Used.Value);
+                    if (HasComp<PointLightComponent>(args.Used.Value))
+                        _light.SetEnabled(args.Used.Value, false);
                     break;
             }
 
@@ -545,6 +553,12 @@ public sealed partial class ModularSuitSystem : SharedModularSuitSystem
             return false;
         }
 
+        if (suit.Comp.BlacklistModules != null && _whitelist.IsWhitelistPass(suit.Comp.BlacklistModules, module.Owner))
+        {
+            Popup.PopupEntity(Loc.GetString("modsuit-module-blacklist-conflict"), suit, user);
+            return false;
+        }
+
         if (module.Comp.Tags.Count > 0)
         {
             var moduleProto = Prototype(module);
@@ -554,15 +568,15 @@ public sealed partial class ModularSuitSystem : SharedModularSuitSystem
                 if (!TryComp<ModularSuitModuleComponent>(existing, out var existingComp))
                     continue;
 
-                if (moduleProto == Prototype(existing))
-                {
-                    Popup.PopupEntity(Loc.GetString("modsuit-module-proto-conflict"), suit, user);
-                    return false;
-                }
-
                 if (existingComp.Tags.Intersect(module.Comp.Tags).Any())
                 {
                     Popup.PopupEntity(Loc.GetString("modsuit-module-tag-conflict"), suit, user);
+                    return false;
+                }
+
+                if (moduleProto == Prototype(existing))
+                {
+                    Popup.PopupEntity(Loc.GetString("modsuit-module-proto-conflict"), suit, user);
                     return false;
                 }
             }

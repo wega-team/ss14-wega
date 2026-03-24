@@ -61,5 +61,10 @@ public sealed class ModularSuitWearerEffectSystem : EntitySystem
             return;
 
         EntityManager.RemoveComponents(user.Value, component.ActiveComponents);
+
+        if (component.ReturnedComponents != null)
+        {
+            EntityManager.AddComponents(user.Value, component.ReturnedComponents);
+        }
     }
 }

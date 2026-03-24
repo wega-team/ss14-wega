@@ -9,8 +9,8 @@ namespace Content.Server.Modular.Suit;
 
 public sealed class ModularSuitActionModuleSystem : EntitySystem
 {
-    [Dependency] private readonly SharedActionsSystem _actions = default!;
     [Dependency] private readonly ActionContainerSystem _actionContainer = default!;
+    [Dependency] private readonly SharedActionsSystem _actions = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
 

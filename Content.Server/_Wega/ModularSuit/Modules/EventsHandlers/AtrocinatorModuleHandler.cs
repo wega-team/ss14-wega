@@ -1,7 +1,6 @@
 using Content.Shared.Modular.Suit;
 using Content.Shared.Throwing;
 using Robust.Shared.Random;
-using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Stunnable;
@@ -10,10 +9,10 @@ namespace Content.Server.Modular.Suit;
 
 public sealed class AtrocinatorModuleHandler : ModuleActionHandler
 {
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly ThrowingSystem _throwing = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
+    [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedStunSystem _stun = default!;
+    [Dependency] private readonly ThrowingSystem _throwing = default!;
 
     private const float Radius = 5f;
     private const float ThrowStrength = 20f;

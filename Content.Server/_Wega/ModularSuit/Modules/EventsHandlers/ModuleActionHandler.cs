@@ -11,8 +11,8 @@ public abstract partial class ModuleActionHandler : EntitySystem
 {
     [Dependency] protected readonly SharedAudioSystem Audio = default!;
     [Dependency] protected readonly SharedContainerSystem Container = default!;
-    [Dependency] protected readonly SharedPopupSystem Popup = default!;
     [Dependency] protected readonly ModularSuitSystem ModularSuit = default!;
+    [Dependency] protected readonly SharedPopupSystem Popup = default!;
 
     public BaseContainer? GetModulesContainer(EntityUid suitUid)
     {

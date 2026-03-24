@@ -26,6 +26,20 @@
 
 - type: entity
   parent: BaseAction
+  id: ToggleLightModuleAction
+  name: "[color=#58c4e8]Toggle Light[/color]"
+  description: "Turns the suit's integrated lighting system on or off."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 0.5
+    icon: { sprite: _Wega/Interface/Actions/actions_modules.rsi, state: light-off}
+    iconOn: { sprite: _Wega/Interface/Actions/actions_modules.rsi, state: light-on }
+  - type: InstantAction
+    event: !type:ToggleLightModuleEvent
+
+- type: entity
+  parent: BaseAction
   id: ActivateTeleporterModuleAction
   name: "[color=#58c4e8]Activate Teleporter[/color]"
   description: "Instantly teleports the user to a targeted location. Requires a bluespace core to function."
@@ -52,6 +66,25 @@
     iconOn: { sprite: _Wega/Interface/Actions/actions_modules.rsi, state: holster-out }
   - type: InstantAction
     event: !type:ToggleHolsterModuleEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActivatePaperDispenserModuleAction
+  name: "[color=#58c4e8]Activate Paper Dispenser[/color]"
+  description: "Synthesizes fresh paper using advanced fax and printer technology. Converts suit power into high-quality stationery. Perfect for paperwork emergencies or when you just need to leave a note."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    startDelay: true
+    useDelay: 30
+    icon: { sprite: _Wega/Interface/Actions/actions_modules.rsi, state: paper }
+  - type: InstantAction
+    event: !type:ActivateDispenserModuleEvent
+      spawnedProto:
+      - Paper
+      - PaperOffice
+      activateSound:
+        path: "/Audio/Machines/printer.ogg"
 
 - type: entity
   parent: BaseAction

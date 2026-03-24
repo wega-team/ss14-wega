@@ -21,6 +21,9 @@
       "delays": [ [ 0.1, 0.1, 0.1, 0.1, 0.1, 0.1 ] ]
     },
     {
+      "name": "flashlight"
+    },
+    {
       "name": "medhud_visor"
     },
     {
@@ -33,7 +36,13 @@
       "name": "meson_visor"
     },
     {
+      "name": "antigrav"
+    },
+    {
       "name": "antigrav_core"
+    },
+    {
+      "name": "teleporter"
     },
     {
       "name": "teleporter_core"
@@ -69,16 +78,25 @@
       "name": "empshield"
     },
     {
+      "name": "regulator"
+    },
+    {
       "name": "scanner"
     },
     {
       "name": "gps"
     },
     {
+      "name": "constructor"
+    },
+    {
       "name": "carry"
     },
     {
       "name": "clamp"
+    },
+    {
+      "name": "drill"
     },
     {
       "name": "injector"
@@ -94,6 +112,9 @@
     },
     {
       "name": "apparatus"
+    },
+    {
+      "name": "paper_maker"
     },
     {
       "name": "kinesis"
@@ -128,6 +149,9 @@
     },
     {
       "name": "jetpack_advanced"
+    },
+    {
+      "name": "plate_compression"
     }
   ]
 }

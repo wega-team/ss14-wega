@@ -1,5 +1,6 @@
 using Content.Shared.Actions.Components;
 using Content.Shared.Tools;
+using Content.Shared.Whitelist;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
@@ -35,6 +36,9 @@ public sealed partial class ModularSuitComponent : Component
 
     [DataField("activeComponents")]
     public Dictionary<string, ComponentRegistry>? SlotActiveComponents { get; set; }
+
+    [DataField("blacklist")]
+    public EntityWhitelist? BlacklistModules { get; set; }
 
     [DataField]
     public ProtoId<ToolQualityPrototype> Tool = "Screwing";

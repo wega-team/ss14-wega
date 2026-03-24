@@ -15,10 +15,10 @@ public sealed class AffectedModuleSpringlockSystem : EntitySystem
 {
     [Dependency] private readonly SharedAchievementsSystem _achievement = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly DamageableSystem _damage = default!;
     [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly SharedModularSuitSystem _modular = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly DamageableSystem _damage = default!;
 
     public override void Initialize()
     {

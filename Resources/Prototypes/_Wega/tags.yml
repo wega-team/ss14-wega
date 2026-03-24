@@ -477,7 +477,13 @@
   id: JetpackSuitModule
 
 - type: Tag
+  id: MagneticSuitModule
+
+- type: Tag
   id: EMPShieldSuitModule
+
+- type: Tag
+  id: TemperatureRegulatorModuleConflict
 
 - type: Tag
   id: CarryConstructorModuleConflict
@@ -486,4 +492,4 @@
   id: ArmorBoosterSuitModule
 
 - type: Tag
-  id: NoSlipSuitModule
+  id: CompressionModuleConflict

@@ -22,6 +22,11 @@ modsuit-ui-no-parts = Части не установлены
 modsuit-tab-modules = МОДУЛИ
 modsuit-tab-parts = ЧАСТИ
 
+modsuit-light-ui-title = Настройка модуля света
+modsuit-light-ui-color = Цвет света
+modsuit-light-ui-multicoloured = Разноцветный режим
+modsuit-light-ui-confirm = Подтвердить
+
 # Suit Parts
 modsuit-part-helmet = Шлем
 modsuit-part-torso = Торс
@@ -38,6 +43,7 @@ modsuit-part-already-installed = Эта часть уже установлена
 modsuit-module-installed = Модуль установлен.
 modsuit-module-removed = Модуль извлечён.
 modsuit-module-permanent = Этот модуль нельзя извлечь.
+modsuit-module-blacklist-conflict = Невозможно установить данный модуль на этот костюм.
 modsuit-module-proto-conflict = Точно такой же модуль уже установлен.
 modsuit-module-tag-conflict = Модуль с такой функцией уже установлен.
 modsuit-module-requires-part = Этот модуль требует установленной части "{$part}".
@@ -79,6 +85,8 @@ modsuit-tanning-used = Вы чувствуете тёплое свечение, 
 modsuit-tanning-max = Ваша кожа не может стать ещё темнее больше.
 modsuit-atrocinator-used = Таинственная сила вырывается из костюма, разбрасывая всех вокруг!
 modsuit-atrocinator-no-targets = Ничего не происходит...
+modsuit-light-on = Вы включаете свет костюма.
+modsuit-light-off = Вы выключаете свет костюма.
 
 # Requires
 modsuit-module-requires-item = Для работы модуля требуется установленный элемент.

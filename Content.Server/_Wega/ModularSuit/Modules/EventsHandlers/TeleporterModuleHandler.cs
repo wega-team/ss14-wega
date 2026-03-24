@@ -6,9 +6,9 @@ namespace Content.Server.Modular.Suit;
 
 public sealed class TeleporterModuleHandler : ModuleActionHandler
 {
+    [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
 
     public const float TeleportRadius = 5f;
 

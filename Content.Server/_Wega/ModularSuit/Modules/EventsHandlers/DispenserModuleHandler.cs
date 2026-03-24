@@ -6,8 +6,8 @@ namespace Content.Server.Modular.Suit;
 
 public sealed class DispenserModuleHandler : ModuleActionHandler
 {
-    [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!;
+    [Dependency] private readonly IRobustRandom _random = default!;
 
     public override void Initialize()
     {

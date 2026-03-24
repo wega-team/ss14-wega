@@ -9,8 +9,8 @@ namespace Content.Server.Modular.Suit;
 
 public sealed class ModularSuitItemModuleSystem : EntitySystem
 {
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
+    [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly ItemToggleSystem _toggle = default!;
 
     public override void Initialize()

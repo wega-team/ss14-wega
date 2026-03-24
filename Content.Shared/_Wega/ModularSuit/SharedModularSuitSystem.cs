@@ -14,11 +14,11 @@ namespace Content.Shared.Modular.Suit;
 
 public abstract partial class SharedModularSuitSystem : EntitySystem
 {
-    [Dependency] protected readonly SharedContainerSystem Container = default!;
     [Dependency] protected readonly IGameTiming GameTiming = default!;
-    [Dependency] protected readonly SharedPopupSystem Popup = default!;
-    [Dependency] protected readonly ItemToggleSystem Toggle = default!;
     [Dependency] protected readonly InventorySystem Inventory = default!;
+    [Dependency] protected readonly ItemToggleSystem Toggle = default!;
+    [Dependency] protected readonly SharedContainerSystem Container = default!;
+    [Dependency] protected readonly SharedPopupSystem Popup = default!;
     [Dependency] private readonly ActionContainerSystem _actionContainer = default!;
     [Dependency] private readonly SharedAudioSystem _audioSystem = default!;
     [Dependency] private readonly SharedUserInterfaceSystem _uiSystem = default!;
