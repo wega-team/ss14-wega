@@ -273,18 +273,3 @@
   collisionMask: Impassable
   rotation: User
   fx: EffectRCDConstruct0
-
-# Corvax-Wega-Edit-Start
-- type: rcd
-  id: SurveillanceCameraGeneral
-  category: Electrical
-  sprite: _Wega/Structures/Wallmounts/camera.png
-  mode: ConstructObject
-  prototype: SurveillanceCameraGeneral
-  cost: 1
-  delay: 0
-  collisionMask: FullTileMask
-  rotation: Fixed
-  fx: EffectRCDConstruct2
-# Corvax-Wega-Edit-End
-
