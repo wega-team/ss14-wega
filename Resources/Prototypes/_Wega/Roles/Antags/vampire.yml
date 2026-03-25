@@ -7,7 +7,7 @@
   guides: [ Vampires ]
   requirements:
   - !type:OverallPlaytimeRequirement
-    time: 50h # Corvax-RoleTime
+    time: 50h
   - !type:DepartmentTimeRequirement
     department: Security
     time: 25h
