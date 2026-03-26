@@ -35,32 +35,32 @@
   result: WeaponMagmiteProtoKineticAccelerator
   completetime: 20
   materials:
-    Magmite: 2000
+    Magmite: 200
 
 - type: latheRecipe
   id: WeaponMagmiteCrusher
   result: WeaponMagmiteCrusher
   completetime: 20
   materials:
-    Magmite: 2000
+    Magmite: 200
 
 - type: latheRecipe
   id: WeaponMagmiteCrusherGlaive
   result: WeaponMagmiteCrusherGlaive
   completetime: 20
   materials:
-    Magmite: 2000
+    Magmite: 200
 
 - type: latheRecipe
   id: WeaponMagmitePlasmaCutter
   result: WeaponMagmitePlasmaCutter
   completetime: 20
   materials:
-    Magmite: 1500
+    Magmite: 100
 
 - type: latheRecipe
   id: WeaponMagmiteFanPlasmaCutter
   result: WeaponMagmiteFanPlasmaCutter
   completetime: 20
   materials:
-    Magmite: 1500
+    Magmite: 100
