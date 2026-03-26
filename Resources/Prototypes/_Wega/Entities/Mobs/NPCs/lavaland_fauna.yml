@@ -77,8 +77,8 @@
       Dead:
         Base: goliath_dead
   - type: MovementSpeedModifier
-    baseWalkSpeed: 3
-    baseSprintSpeed: 3
+    baseWalkSpeed: 1.25
+    baseSprintSpeed: 1.25
   - type: Bloodstream
     bloodReferenceSolution:
       reagents:
@@ -95,11 +95,13 @@
     soundHit:
       path: "/Audio/Weapons/smash.ogg"
     angle: 0
-    attackRate: 0.75
+    attackRate: 0.5
     animation: WeaponArcPunch
     damage:
       types:
-        Slash: 15
+        Slash: 20
+  - type: Reflect
+    reflectProb: 0.25
   - type: HTN
     constantlyReplan: false
     rootTask:
@@ -160,6 +162,10 @@
         Base: goliath
       Dead:
         Base: goliath_dead
+  - type: MeleeWeapon
+    damage:
+      types:
+        Slash: 25
   - type: MobThresholds
     thresholds:
       0: Alive
@@ -167,9 +173,6 @@
   - type: SlowOnDamage
     speedModifierThresholds:
       250: 0.75
-  - type: MovementSpeedModifier
-    baseWalkSpeed: 2.235
-    baseSprintSpeed: 2.235
   - type: TrophyHunter
     trophy: TrophyLavalandAncientGoliathTentacle
     dropChance: 0.45 # More chance because he ancient
@@ -301,6 +304,7 @@
     animation: WeaponArcBite
     soundHit:
       path: /Audio/Effects/bite.ogg
+    attackRate: 0.5
     damage:
       types:
         Slash: 5
@@ -371,8 +375,8 @@
     - id: MaterialSinew1
       amount: 2
   - type: MovementSpeedModifier
-    baseWalkSpeed: 3.735
-    baseSprintSpeed: 3.735
+    baseWalkSpeed: 1.5
+    baseSprintSpeed: 1.5
   - type: BatteryAmmoProvider
     proto: WatcherBolt
     fireCost: 50
@@ -541,7 +545,7 @@
       220: Dead
   - type: SlowOnDamage
     speedModifierThresholds:
-      150: 0.75
+      200: 2.25
   - type: Butcherable
     spawned:
     - id: UraniumOre1
@@ -572,8 +576,8 @@
   - type: NaturalNightVision
   - type: VentCrawler
   - type: MovementSpeedModifier
-    baseWalkSpeed: 3.735
-    baseSprintSpeed: 3.735
+    baseWalkSpeed: 1.25
+    baseSprintSpeed: 1.25
   - type: HTN
     rootTask:
       task: SimpleHostileCompound
@@ -599,6 +603,9 @@
         Base: weaver_ice
       Dead:
         Base: weaver_ice_dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 1.5
+    baseSprintSpeed: 1.5
   - type: SolutionContainerManager
     solutions:
       melee:
