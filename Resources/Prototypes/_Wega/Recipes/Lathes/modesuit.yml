@@ -1,0 +1,358 @@
+# modesuit
+- type: latheRecipe
+  abstract: true
+  id: BaseModesuitPart
+  categories:
+  - ModesuitPart
+  completetime: 5
+  materials:
+    Steel: 250
+    Glass: 100
+
+- type: latheRecipe
+  abstract: true
+  id: BaseModesuitModule
+  categories:
+  - ModesuitModule
+  completetime: 3
+  materials:
+    Steel: 500
+    Glass: 500
+    Plastic: 250
+
+- type: latheRecipe
+  abstract: true
+  id: BaseGoldModesuitModule
+  categories:
+  - ModesuitModule
+  completetime: 3
+  materials:
+    Steel: 500
+    Glass: 500
+    Plastic: 250
+    Gold: 100
+
+- type: latheRecipe
+  parent: BaseModesuitPart
+  id: ModularSuitConstruction
+  result: ModularSuitConstruction
+  completetime: 10
+  materials:
+    Steel: 500
+    Plasteel: 500
+    Glass: 400
+
+- type: latheRecipe
+  parent: BaseModesuitPart
+  id: ModularSuitBoots
+  result: ModularSuitBoots
+
+- type: latheRecipe
+  parent: BaseModesuitPart
+  id: ModularSuitHelmet
+  result: ModularSuitHelmet
+
+- type: latheRecipe
+  parent: BaseModesuitPart
+  id: ModularSuitChestPlate
+  result: ModularSuitChestPlate
+
+- type: latheRecipe
+  parent: BaseModesuitPart
+  id: ModularSuitGauntlets
+  result: ModularSuitGauntlets
+
+- type: latheRecipe
+  parent: BaseModesuitPart
+  id: BasicPlating
+  result: BasicPlating
+  materials:
+    Steel: 400
+    Plasteel: 100
+
+- type: latheRecipe
+  parent: BaseModesuitPart
+  id: CivilianPlating
+  result: CivilianPlating
+  materials:
+    Steel: 500
+    Plasteel: 150
+    Glass: 100
+
+- type: latheRecipe
+  parent: BaseModesuitPart
+  id: AtmosPlating
+  result: AtmosPlating
+  materials:
+    Steel: 500
+    Plasteel: 250
+    Glass: 200
+
+- type: latheRecipe
+  parent: BaseModesuitPart
+  id: EngineeringPlating
+  result: EngineeringPlating
+  materials:
+    Steel: 500
+    Plasteel: 200
+    Glass: 150
+
+- type: latheRecipe
+  parent: BaseModesuitPart
+  id: ClownPlating
+  result: ClownPlating
+  materials:
+    Steel: 500
+    Bananium: 200
+    Glass: 100
+
+- type: latheRecipe
+  parent: BaseModesuitPart
+  id: MedicalPlating
+  result: MedicalPlating
+  materials:
+    Steel: 400
+    Glass: 400
+    Plasteel: 100
+
+- type: latheRecipe
+  parent: BaseModesuitPart
+  id: SecurityPlating
+  result: SecurityPlating
+  materials:
+    Steel: 1000
+    Plasteel: 500
+    Glass: 400
+
+- type: latheRecipe
+  parent: BaseModesuitPart
+  id: ModularSuitCorePlasma
+  result: ModularSuitCorePlasma
+  materials:
+    Steel: 300
+    Plastic: 250
+    Glass: 250
+    Plasma: 200
+
+- type: latheRecipe
+  parent: BaseModesuitPart
+  id: ModularSuitCoreInfinite
+  result: ModularSuitCoreInfinite
+  materials:
+    Steel: 750
+    Plastic: 500
+    Glass: 400
+    Plasma: 200
+    Uranium: 200
+
+- type: latheRecipe
+  parent: BaseModesuitPart
+  id: ModularSuitCoreStandard
+  result: ModularSuitCoreStandard
+  materials:
+    Steel: 300
+    Plastic: 250
+    Glass: 250
+
+- type: latheRecipe
+  parent: BaseModesuitModule
+  id: TRaySuitModule
+  result: TRaySuitModule
+
+- type: latheRecipe
+  parent: BaseModesuitModule
+  id: TetherSuitModule
+  result: TetherSuitModule
+
+- type: latheRecipe
+  parent: BaseModesuitModule
+  id: BikeHornSuitModule
+  result: BikeHornSuitModule
+
+- type: latheRecipe
+  parent: BaseModesuitModule
+  id: VisorDiagnosticSuitModule
+  result: VisorDiagnosticSuitModule
+
+- type: latheRecipe
+  parent: BaseModesuitModule
+  id: VisorMedicalSuitModule
+  result: VisorMedicalSuitModule
+
+- type: latheRecipe
+  parent: BaseModesuitModule
+  id: WeldingSuitModule
+  result: WeldingSuitModule
+
+- type: latheRecipe
+  parent: BaseModesuitModule
+  id: VisorMesonSuitModule
+  result: VisorMesonSuitModule
+
+- type: latheRecipe
+  parent: BaseModesuitModule
+  id: RadiationShieldSuitModule
+  result: RadiationShieldSuitModule
+
+- type: latheRecipe
+  parent: BaseModesuitModule
+  id: StorageSuitModule
+  result: StorageSuitModule
+  materials:
+    Steel: 250
+    Glass: 100
+
+- type: latheRecipe
+  parent: BaseModesuitModule
+  id: HealthAnalyzerSuitModule
+  result: HealthAnalyzerSuitModule
+
+- type: latheRecipe
+  parent: BaseModesuitModule
+  id: MicrowaveBeamSuitModule
+  result: MicrowaveBeamSuitModule
+
+- type: latheRecipe
+  parent: BaseGoldModesuitModule
+  id: AntiGravitySuitModule
+  result: AntiGravitySuitModule
+
+- type: latheRecipe
+  parent: BaseGoldModesuitModule
+  id: StorageHoldingSuitModule
+  result: StorageHoldingSuitModule
+  materials:
+    Steel: 2000
+    Silver: 750
+    Plasma: 1500
+    Uranium: 150
+
+- type: latheRecipe
+  parent: BaseModesuitModule
+  id: StorageLargeSuitModule
+  result: StorageLargeSuitModule
+
+- type: latheRecipe
+  parent: BaseModesuitModule
+  id: MagnetSuitModule
+  result: MagnetSuitModule
+
+- type: latheRecipe
+  parent: BaseModesuitModule
+  id: GPSSuitModule
+  result: GPSSuitModule
+
+- type: latheRecipe
+  parent: BaseGoldModesuitModule
+  id: QuickCarrySuitModule
+  result: QuickCarrySuitModule
+
+- type: latheRecipe
+  parent: BaseGoldModesuitModule
+  id: GrabberSuitModule
+  result: GrabberSuitModule
+
+- type: latheRecipe
+  parent: BaseGoldModesuitModule
+  id: DefibrillatorSuitModule
+  result: DefibrillatorSuitModule
+
+- type: latheRecipe
+  parent: BaseGoldModesuitModule
+  id: BurgerDispenserSuitModule
+  result: BurgerDispenserSuitModule
+
+- type: latheRecipe
+  parent: BaseGoldModesuitModule
+  id: InjectorSuitModule
+  result: InjectorSuitModule
+
+- type: latheRecipe
+  parent: BaseGoldModesuitModule
+  id: JetpackSuitModule
+  result: JetpackSuitModule
+
+- type: latheRecipe
+  parent: BaseGoldModesuitModule
+  id: KinesisSuitModule
+  result: KinesisSuitModule
+
+- type: latheRecipe
+  parent: BaseModesuitModule
+  id: OreBagSuitModule
+  result: OreBagSuitModule
+
+- type: latheRecipe
+  parent: BaseGoldModesuitModule
+  id: ApparatusSuitModule
+  result: ApparatusSuitModule
+
+- type: latheRecipe
+  parent: BaseModesuitModule
+  id: SolutionScannerSuitModule
+  result: SolutionScannerSuitModule
+
+- type: latheRecipe
+  parent: BaseGoldModesuitModule
+  id: TeleporterSuitModule
+  result: TeleporterSuitModule
+
+- type: latheRecipe
+  parent: BaseGoldModesuitModule
+  id: ConstructorSuitModule
+  result: ConstructorSuitModule
+  materials:
+    Steel: 500
+    Glass: 500
+    Plastic: 250
+    Gold: 100
+    Diamond: 100
+
+- type: latheRecipe
+  parent: BaseGoldModesuitModule
+  id: DrillSuitModule
+  result: DrillSuitModule
+
+- type: latheRecipe
+  parent: BaseModesuitModule
+  id: FlashlightSuitModule
+  result: FlashlightSuitModule
+  materials:
+    Steel: 250
+    Glass: 100
+
+- type: latheRecipe
+  parent: BaseModesuitModule
+  id: PaperDispenserSuitModule
+  result: PaperDispenserSuitModule
+
+- type: latheRecipe
+  parent: BaseGoldModesuitModule
+  id: AdvancedFlashlightSuitModule
+  result: AdvancedFlashlightSuitModule
+
+- type: latheRecipe
+  parent: BaseGoldModesuitModule
+  id: TemperatureRegulatorSuitModule
+  result: TemperatureRegulatorSuitModule
+
+# Sec-Mode
+- type: latheRecipe
+  parent: BaseModesuitModule
+  id: VisorSecuritySuitModule
+  result: VisorSecuritySuitModule
+
+- type: latheRecipe
+  parent: BaseModesuitModule
+  id: HolsterSuitModule
+  result: HolsterSuitModule
+
+- type: latheRecipe
+  parent: BaseGoldModesuitModule
+  id: EMPShieldSuitModule
+  result: EMPShieldSuitModule
+
+- type: latheRecipe
+  parent: BaseGoldModesuitModule
+  id: ArmorBossterSuitModule
+  result: ArmorBossterSuitModule
