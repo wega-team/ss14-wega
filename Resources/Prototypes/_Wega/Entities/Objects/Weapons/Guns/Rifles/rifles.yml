@@ -88,8 +88,6 @@
     projectileSpeed: 40
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/batrifle.ogg
-    soundRack:
-      path: /Audio/Weapons/Guns/Cock/sf_rifle_cock.ogg
   - type: ChamberMagazineAmmoProvider
   - type: ItemSlots
     slots:
