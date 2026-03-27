@@ -1,0 +1,27 @@
+- type: entity
+  name: Blue Shield handheld monitor
+  categories: [ DoNotMap ]
+  parent: [ BaseHandheldComputer, BaseGrandTheftContraband ]
+  id: HandheldCrewMonitorBlueshield
+  description: Personal monitor for Blue Shield officers
+  components:
+  - type: Item
+    heldPrefix: scanner
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Medical/handheldblueshield.rsi
+    state: scanner
+  - type: ActivatableUI
+    key: enum.CrewMonitoringUIKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.CrewMonitoringUIKey.Key:
+        type: CrewMonitoringBoundUserInterface
+  - type: CrewMonitoringConsole
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    receiveFrequencyId: CrewMonitor
+  - type: WirelessNetworkConnection
+    range: 1000
+  - type: StationLimitedNetwork
+  - type: StaticPrice
+    price: 1000

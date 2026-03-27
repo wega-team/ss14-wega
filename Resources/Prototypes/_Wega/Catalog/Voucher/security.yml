@@ -67,3 +67,41 @@
   - id: Handcuffs
     amount: 2
   - id: Flash
+
+- type: voucherKit
+  id: BlueShieldkit1
+  name: voucher-security-jay-name
+  description: voucher-security-jay-desc
+  icon: { sprite: _Wega/Objects/Weapons/Guns/Rifles/jay.rsi, state: "icon" }
+  items:
+  - id: WeaponRifleJay
+  - id: MagazineRifle
+    amount: 3
+  - id: MagazineBoxRifle
+
+- type: voucherKit
+  id: BlueShieldkit2
+  name: voucher-security-berkut-name
+  description: voucher-security-berkut-desc
+  icon: { sprite: _Wega/Objects/Weapons/Guns/SMGs/berkut.rsi, state: "icon" }
+  items:
+  - id: WeaponSubmachinegunBerkut
+  - id: MagazinePistolSubMachineGun
+    amount: 3
+  - id: MagazineBoxPistol
+
+- type: voucherKit
+  id: BlueShieldkit3
+  name: voucher-security-pulsar-name
+  description: voucher-security-pulsar-desc
+  icon: { sprite: _Wega/Objects/Weapons/Guns/Battery/pulsar.rsi, state: "icon" }
+  items:
+  - id: WeaponEnergyPulsar
+
+- type: voucherKit
+  id: BlueShieldkit4
+  name: voucher-security-baton-name
+  description: voucher-security-baton-desc
+  icon: { sprite: _Wega/Objects/Weapons/Melee/batonBS.rsi, state: "stunbaton_off" }
+  items:
+  - id: StunbatonBlueshield

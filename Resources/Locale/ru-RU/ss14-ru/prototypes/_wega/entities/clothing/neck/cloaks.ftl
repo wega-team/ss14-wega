@@ -18,3 +18,5 @@ ent-ClothingNeckCloakSyndicateAdmiral = плащ адмирала синдика
    .desc = Красный плащ, прошитый золотой тканью.
 ent-ClothingNeckWhiteMantleCaptain = белая мантия капитана
    .desc = Мантия капитана, с белым пухом.
+ent-ClothingNeckMantleBlueShield = мантия офицера "Синий Щит"
+    .desc = Мантия для защитников, рискующих своей грудью ради НаноТрейзен!
