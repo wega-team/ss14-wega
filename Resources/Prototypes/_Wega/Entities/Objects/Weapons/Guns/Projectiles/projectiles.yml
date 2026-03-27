@@ -49,7 +49,6 @@
   name: pulsar shot
   id: PulsarProjectile
   parent: BulletLaser
-  noSpawn: true
   components:
   - type: Reflective
   - type: FlyBySound
