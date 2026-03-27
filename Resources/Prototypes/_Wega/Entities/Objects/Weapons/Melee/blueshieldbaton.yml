@@ -1,5 +1,5 @@
 - type: entity
-  name: Blue shield baton
+  name: Blue shield Stunbaton
   parent: [BaseItem, BaseSecurityContraband]
   id: StunbatonBlueshield
   description: Special baton for harming people
