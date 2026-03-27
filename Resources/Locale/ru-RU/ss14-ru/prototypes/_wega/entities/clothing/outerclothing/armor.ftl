@@ -22,5 +22,3 @@ ent-ClothingOuterArmorHostileEnv = H.E.C.K. костюм
     .desc = Экспериментальный Кинетический Защитный Обшитый Костюм: костюм, специально созданный для защиты от широкого спектра опасностей Лазиса. Прошлому его владельцу этого, видимо, не хватило.
 ent-ClothingOuterArmorBloodCult = { ent-ClothingOuterArmorCult }
     .desc = { ent-ClothingOuterArmorCult.desc }
-ent-ClothingVestBlueShieldAlt = бронежилет офицера "Синий Щит"
-    .desc = Бронежилет типа МК V. Более эластичен. Менее громоздкий..
