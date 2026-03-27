@@ -11,6 +11,16 @@ voucher-security-first-aid-desc = Содержит в себе пару набо
 voucher-security-riots-desc = Содержит в себе пару баллистических и противоударных щитов, пару кластерных светошумовых гранат, пару шок-дубинок и стяжки
 voucher-security-supervision-desc = Содержит в себе пару нагрудных камер, 4 тренировчоных магазина для Mk58, дубинку, запасную шок-дубинку, пару наручников и вспышку
 
+# BlueShield
+voucher-security-jay-name = Набор штурмовой винтовки
+voucher-security-berkut-name = Набор пистолета-пулемёта
+voucher-security-pulsar-name = Набор энерго-карабина
+voucher-security-baton-name = Набор многофункциональной дубинки
+
+voucher-security-jay-desc = Содержит в себе штурмовую винтовку - Сойка, и дополнительные патроны к ней
+voucher-security-berkut-desc = Содержит в себе пистолет-пулемёт - Беркут, и дополнительные патроны к нему
+voucher-security-pulsar-desc = Содержит в себе энергетический карабин "Пульсар"
+voucher-security-baton-desc = Содержит в себе многофункциональную дубинку, способную наносить повышенный вред здоровью при включенном состоянии.
 # Salvage
 voucher-explorer-kit-name = Набор Иследователя
 voucher-fulton-kit-name = Набор Эвакуации фултона
