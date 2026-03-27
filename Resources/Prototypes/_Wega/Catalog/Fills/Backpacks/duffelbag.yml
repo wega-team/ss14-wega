@@ -6,8 +6,8 @@
       contents:
         - id: ThrusterMachineCircuitboard
           amount: 2
-        - id: SheetSteel
-        - id: MicroManipulatorStockPart
+        - id: SheetSteel10
+        - id: CapacitorStockPart
           amount: 8
 
 - type: entity

@@ -1,8 +1,6 @@
 ent-PartAndroid = часть тела андроида
     .desc = { ent-BaseItem.desc }
-ent-HeadAndroid = голова андроида
-    .desc = { ent-PartAndroid.desc }
-ent-TorsoAndroid = торс андроида
+ent-HeadAndroid = торс андроида
     .desc = { ent-PartAndroid.desc }
 ent-LeftArmAndroid = левая рука андроида
     .desc = { ent-PartAndroid.desc }
