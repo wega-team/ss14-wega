@@ -254,7 +254,6 @@
     sprite: _Wega/Clothing/OuterClothing/Armor/blueshieldvest.rsi
   - type: Clothing
     sprite: _Wega/Clothing/OuterClothing/Armor/blueshieldvest.rsi
-    size: Huge
   - type: Armor
     modifiers:
       coefficients:
