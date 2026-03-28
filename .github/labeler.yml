@@ -43,7 +43,7 @@
   - changed-files:
     - any-glob-to-any-file: "**/*.xaml*"
 
-":baby_chick: YMLLL :baby_chick:":
+":baby_chick: YML :baby_chick:":
   - changed-files:
     - all-glob-to-any-file: 
       - "Resources/Prototypes/**/*.yml"
