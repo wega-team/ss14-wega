@@ -114,6 +114,7 @@
     requirePower: true
     highVoltageNode: input
     mediumVoltageNode: ame
+  - type: StationAiWhitelist # Corvax-Wega-Edit
 
 - type: entity
   categories: [ HideSpawnMenu ]

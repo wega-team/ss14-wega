@@ -15,7 +15,10 @@ public sealed class ModularSuitBoundUserInterfaceState : BoundUserInterfaceState
     public float CoreCharge { get; }
     public float MaxCoreCharge { get; }
     public bool HasCore { get; }
+    public bool InfinityCore { get; }
     public bool HasBattery { get; }
+    public float BatteryCharge { get; }
+    public float MaxBatteryCharge { get; }
     public float TotalPowerDraw { get; }
     public List<SuitModuleEntry> Modules { get; }
     public List<SuitPartEntry> Parts { get; }
@@ -26,7 +29,10 @@ public sealed class ModularSuitBoundUserInterfaceState : BoundUserInterfaceState
         float coreCharge,
         float maxCoreCharge,
         bool hasCore,
+        bool infinityCore,
         bool hasBattery,
+        float batteryCharge,
+        float maxBatteryCharge,
         float totalPowerDraw,
         List<SuitModuleEntry> modules,
         List<SuitPartEntry> parts,
@@ -36,7 +42,10 @@ public sealed class ModularSuitBoundUserInterfaceState : BoundUserInterfaceState
         CoreCharge = coreCharge;
         MaxCoreCharge = maxCoreCharge;
         HasCore = hasCore;
+        InfinityCore = infinityCore;
         HasBattery = hasBattery;
+        BatteryCharge = batteryCharge;
+        MaxBatteryCharge = maxBatteryCharge;
         TotalPowerDraw = totalPowerDraw;
         Modules = modules;
         Parts = parts;

@@ -35,11 +35,11 @@
   components:
   - type: ModularSuitPreassembled
     modules:
-    - StorageSuitModule
-    - FlashlightSuitModuleCyan
     - WeldingSuitModule
     - RadiationShieldSuitModule
     - MagnetSuitModule
+    - StorageSuitModule
+    - FlashlightSuitModuleCyan
   - type: ItemSlots
     slots:
       cell_slot:
@@ -62,12 +62,12 @@
         - ClothingModularBootsAtmospheric
   - type: ModularSuitPreassembled
     modules:
-    - StorageSuitModule
-    - FlashlightSuitModuleCyan
     - WeldingSuitModule
     - RadiationShieldSuitModule
     - MagnetSuitModule
     - TRaySuitModule
+    - StorageSuitModule
+    - FlashlightSuitModuleCyan
   - type: ItemSlots
     slots:
       cell_slot:
@@ -81,12 +81,12 @@
   components:
   - type: ModularSuitPreassembled
     modules:
-    - StorageLargeSuitModule
-    - AdvancedFlashlightSuitModuleAmber
     - WeldingSuitModule
     - RadiationShieldSuitModule
     - JetpackSuitModule
     - MagnetAdvancedSuitModule
+    - StorageLargeSuitModule
+    - AdvancedFlashlightSuitModuleAmber
   - type: ItemSlots
     slots:
       cell_slot:
@@ -100,11 +100,11 @@
   components:
   - type: ModularSuitPreassembled
     modules:
-    - StorageSuitModule
-    - FlashlightSuitModuleAqua
     - GPSSuitModule
     - OreBagSuitModule
     - MagnetSuitModule
+    - StorageSuitModule
+    - FlashlightSuitModuleAqua
   - type: ItemSlots
     slots:
       cell_slot:
@@ -118,14 +118,14 @@
   components:
   - type: ModularSuitPreassembled
     modules:
-    - StorageSuitModule
-    - AdvancedFlashlightSuitModuleAqua
     - GPSSuitModule
     - OreBagSuitModule
     - MagnetSuitModule
     - WeldingSuitModule
     - JetpackAdvancedSuitModule
     - DrillSuitModule
+    - StorageSuitModule
+    - AdvancedFlashlightSuitModuleAqua
   - type: ItemSlots
     slots:
       cell_slot:
@@ -144,12 +144,12 @@
   components:
   - type: ModularSuitPreassembled
     modules:
-    - StorageSuitModule
-    - AdvancedFlashlightSuitModuleAqua
     - GPSSuitModule
     - OreBagSuitModule
     - GrabberSuitModule
     - DrillSuitModule
+    - StorageSuitModule
+    - AdvancedFlashlightSuitModuleAqua
   - type: ItemSlots
     slots:
       cell_slot:
@@ -163,9 +163,9 @@
   components:
   - type: ModularSuitPreassembled
     modules:
+    - GrabberSuitModule
     - StorageSuitModule
     - FlashlightSuitModuleMint
-    - GrabberSuitModule
   - type: ItemSlots
     slots:
       cell_slot:
@@ -179,11 +179,11 @@
   components:
   - type: ModularSuitPreassembled
     modules:
-    - StorageSuitModule
-    - FlashlightSuitModuleLavender
     - HealthAnalyzerSuitModule
     - VisorMedicalSuitModule
     - QuickCarrySuitModule
+    - StorageSuitModule
+    - FlashlightSuitModuleLavender
   - type: ItemSlots
     slots:
       cell_slot:
@@ -197,12 +197,12 @@
   components:
   - type: ModularSuitPreassembled
     modules:
-    - StorageSuitModule
-    - AdvancedFlashlightSuitModulePink
     - HealthAnalyzerSuitModule
     - DefibrillatorSuitModule
     - VisorMedicalSuitModule
     - QuickCarrySuitModule
+    - StorageSuitModule
+    - AdvancedFlashlightSuitModulePink
   - type: ItemSlots
     slots:
       cell_slot:
@@ -216,12 +216,12 @@
   components:
   - type: ModularSuitPreassembled
     modules:
-    - StorageLargeSuitModule
-    - AdvancedFlashlightSuitModuleAqua
     - WeldingSuitModule
     - RadiationShieldSuitModule
     - SolutionScannerSuitModule
     - TRaySuitModule
+    - StorageLargeSuitModule
+    - AdvancedFlashlightSuitModuleAqua
   - type: ItemSlots
     slots:
       cell_slot:
@@ -235,11 +235,11 @@
   components:
   - type: ModularSuitPreassembled
     modules:
-    - StorageSuitModule
-    - FlashlightSuitModuleDarkOrange
     - MagnetSuitModule
     - ArmorBossterSuitModule
     - VisorSecuritySuitModule
+    - StorageSuitModule
+    - FlashlightSuitModuleDarkOrange
   - type: ItemSlots
     slots:
       cell_slot:
@@ -253,12 +253,12 @@
   components:
   - type: ModularSuitPreassembled
     modules:
-    - StorageLargeSuitModule
-    - AdvancedFlashlightSuitModuleOrange
     - MagnetSuitModule
     - JetpackSuitModule
     - ArmorBossterSuitModule
     - VisorSecuritySuitModule
+    - StorageLargeSuitModule
+    - AdvancedFlashlightSuitModuleOrange
   - type: ItemSlots
     slots:
       cell_slot:
@@ -272,11 +272,11 @@
   components:
   - type: ModularSuitPreassembled
     modules:
-    - StorageLargeSuitModule
-    - AdvancedFlashlightSuitModulePurple
     - PaperDispenserSuitModule
     - MagnetSuitModule
     - JetpackAdvancedSuitModule
+    - StorageLargeSuitModule
+    - AdvancedFlashlightSuitModulePurple
   - type: ItemSlots
     slots:
       cell_slot:
@@ -290,9 +290,9 @@
   components:
   - type: ModularSuitPreassembled
     modules:
+    - BikeHornSuitModule
     - StorageSuitModule
     - FlashlightSuitModuleRed
-    - BikeHornSuitModule
   - type: ItemSlots
     slots:
       cell_slot:
@@ -306,17 +306,17 @@
   components:
   - type: ModularSuitPreassembled
     modules:
-    - StorageSyndicateSuitModule
-    - FlashlightSuitModuleGreen
     - EMPShieldAdvancedSuitModule
     - MagnetSuitModule
     - JetpackAdvancedSuitModule
     - ArmorBossterSuitModule
+    - StorageSyndicateSuitModule
+    - FlashlightSuitModuleGreen
   - type: ItemSlots
     slots:
       cell_slot:
         name: power-cell-slot-component-slot-name-default
-        startingItem: PowerCellMedium
+        startingItem: PowerCellHyper
 
 - type: entity
   parent: [ ClothingModularControllerLockedBase, ClothingModularControllerElite ]
@@ -325,17 +325,17 @@
   components:
   - type: ModularSuitPreassembled
     modules:
-    - StorageSyndicateSuitModule
-    - AdvancedFlashlightSuitModuleGold
     - EMPShieldAdvancedSuitModule
     - MagnetSuitModule
     - JetpackAdvancedSuitModule
     - ArmorBossterSuitModule
+    - StorageSyndicateSuitModule
+    - AdvancedFlashlightSuitModuleGold
   - type: ItemSlots
     slots:
       cell_slot:
         name: power-cell-slot-component-slot-name-default
-        startingItem: PowerCellMedium
+        startingItem: PowerCellHyper
 
 - type: entity
   parent: [ ClothingModularControllerLockedBase, ClothingModularControllerApocryphal ]
@@ -344,8 +344,6 @@
   components:
   - type: ModularSuitPreassembled
     modules:
-    - StorageHoldingSuitModule
-    - AdvancedFlashlightSuitModuleAqua
     - EMPShieldAdvancedSuitModule
     - ArmorBossterSuitModule
     - JetpackAdvancedSuitModule
@@ -354,6 +352,8 @@
     - RadiationShieldSuitModule
     - WeldingSuitModule
     - HolsterSuitModule
+    - StorageHoldingSuitModule
+    - AdvancedFlashlightSuitModuleAqua
   - type: ItemSlots
     slots:
       cell_slot:
@@ -367,8 +367,6 @@
   components:
   - type: ModularSuitPreassembled
     modules:
-    - StorageHoldingSuitModule
-    - AdvancedFlashlightSuitModuleAqua
     - PaperDispenserSuitModule
     - EMPShieldAdvancedSuitModule
     - JetpackAdvancedSuitModule
@@ -376,6 +374,8 @@
     - MagnetAdvancedSuitModule
     - RadiationShieldSuitModule
     - WeldingSuitModule
+    - StorageHoldingSuitModule
+    - AdvancedFlashlightSuitModuleAqua
   - type: ItemSlots
     slots:
       cell_slot:
@@ -389,14 +389,14 @@
   components:
   - type: ModularSuitPreassembled
     modules:
-    - StorageLargeSuitModule
-    - AdvancedFlashlightSuitModuleAqua
     - EMPShieldSuitModule
     - JetpackSuitModule
     - ArmorBossterSuitModule
     - MagnetSuitModule
     - RadiationShieldSuitModule
     - WeldingSuitModule
+    - StorageLargeSuitModule
+    - AdvancedFlashlightSuitModuleAqua
   - type: ItemSlots
     slots:
       cell_slot:
@@ -410,14 +410,14 @@
   components:
   - type: ModularSuitPreassembled
     modules:
-    - StorageLargeSuitModule
-    - AdvancedFlashlightSuitModuleAqua
     - EMPShieldSuitModule
     - JetpackSuitModule
     - ArmorBossterSuitModule
     - MagnetSuitModule
     - RadiationShieldSuitModule
     - WeldingSuitModule
+    - StorageLargeSuitModule
+    - AdvancedFlashlightSuitModuleAqua
   - type: ItemSlots
     slots:
       cell_slot:

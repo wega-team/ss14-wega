@@ -1,7 +1,6 @@
 using Content.Shared.Modular.Suit;
 using Content.Shared.Storage;
 using Content.Shared.Storage.EntitySystems;
-using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
 
 namespace Content.Server.Modular.Suit;
@@ -10,7 +9,6 @@ public sealed class ModularSuitStorageModuleSystem : EntitySystem
 {
     [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly SharedStorageSystem _storage = default!;
-    [Dependency] private readonly UserInterfaceSystem _ui = default!;
 
     public override void Initialize()
     {
@@ -22,9 +20,6 @@ public sealed class ModularSuitStorageModuleSystem : EntitySystem
 
     private void OnModuleInstalled(Entity<ModularSuitStorageModuleComponent> module, ref ModularSuitInstalledEvent args)
     {
-        if (!TryComp<ModularSuitModuleComponent>(module.Owner, out var moduleComp) || !moduleComp.IsActive)
-            return;
-
         AddStorageToSuit(args.Suit, module);
     }
 
@@ -64,9 +59,6 @@ public sealed class ModularSuitStorageModuleSystem : EntitySystem
             coords = Transform(modular.Wearer.Value).Coordinates;
 
         _container.EmptyContainer(storage.Container, true, coords);
-
-        if (_ui.HasUi(suit, StorageComponent.StorageUiKey.Key))
-            _ui.CloseUi(suit, StorageComponent.StorageUiKey.Key);
 
         RemComp<StorageComponent>(suit);
     }

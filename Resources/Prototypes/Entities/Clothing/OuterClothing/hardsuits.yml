@@ -40,6 +40,7 @@
     tags:
     - CorgiWearable
     - Hardsuit
+    - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
 
 #Engineering Hardsuit
@@ -77,6 +78,7 @@
     tags:
     - CorgiWearable
     - Hardsuit
+    - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
 
 #Spationaut Hardsuit
@@ -110,6 +112,7 @@
   - type: Tag
     tags:
     - Hardsuit
+    - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
     - HardsuitSpatio
     - CorgiWearable
@@ -158,6 +161,7 @@
     tags:
     - CorgiWearable
     - Hardsuit
+    - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
 
 #Goliath Hardsuit
@@ -207,6 +211,7 @@
     tags:
     - CorgiWearable
     - Hardsuit
+    - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
 
 #Maxim Hardsuit
@@ -285,6 +290,7 @@
     tags:
     - CorgiWearable
     - Hardsuit
+    - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
 
 #Brigmedic Hardsuit
@@ -382,6 +388,7 @@
     tags:
     - CorgiWearable
     - Hardsuit
+    - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
 
 #Chief Engineer's Hardsuit
@@ -421,6 +428,7 @@
     tags:
     - CorgiWearable
     - Hardsuit
+    - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
 
 #Chief Medical Officer's Hardsuit
@@ -455,6 +463,7 @@
     tags:
     - CorgiWearable
     - Hardsuit
+    - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
 
 #Research Director's Hardsuit
@@ -496,6 +505,7 @@
     - HighRiskItem
     - CorgiWearable
     - Hardsuit
+    - ModNotEquipable # Corvax-Wega-ModularSuit
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitRd
   - type: StaticPrice
@@ -610,6 +620,7 @@
     tags:
     - MonkeyWearable
     - Hardsuit
+    - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
     - CorgiWearable
     - ScurretWearable
@@ -632,6 +643,7 @@
   - type: Tag
     tags:
     - Hardsuit
+    - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
   - type: DiseaseProtection # Corvax-Wega-Disease
     protection: 0.2 # Corvax-Wega-Disease
@@ -670,7 +682,7 @@
         Caustic: 0.5
   - type: Item
     size: Huge
-  - type: ClothingSpeedModifier 
+  - type: ClothingSpeedModifier
     walkModifier: 1 # Corvax-Wega-Change
     sprintModifier: 1 # Corvax-Wega-Change
   - type: HeldSpeedModifier
@@ -682,6 +694,7 @@
     tags:
     - CorgiWearable
     - Hardsuit
+    - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
 
 #Syndicate Commander Hardsuit
@@ -721,6 +734,7 @@
     tags:
     - CorgiWearable
     - Hardsuit
+    - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
 
 
@@ -761,6 +775,7 @@
     - MonkeyWearable
     - CorgiWearable
     - Hardsuit
+    - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
 
 #Wizard Hardsuit
@@ -798,6 +813,7 @@
     tags:
     - CorgiWearable
     - Hardsuit
+    - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
 
 #Ling Space Suit
@@ -980,6 +996,7 @@
   - type: Tag
     tags:
     - Hardsuit
+    - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
 
 #ERT Janitor Hardsuit

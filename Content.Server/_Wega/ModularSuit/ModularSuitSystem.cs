@@ -41,7 +41,6 @@ public sealed partial class ModularSuitSystem : SharedModularSuitSystem
         InitializeUi();
 
         SubscribeLocalEvent<ModularSuitComponent, ComponentInit>(OnSuitInit);
-        SubscribeLocalEvent<ModularSuitComponent, EntityTerminatingEvent>(OnTerminating);
         SubscribeLocalEvent<ModularSuitComponent, GetVerbsEvent<Verb>>(OnGetVerbs);
         SubscribeLocalEvent<ModularSuitComponent, ModularSuitExtractDoAfterEvent>(OnDoAfterComplete);
         SubscribeLocalEvent<ModularSuitComponent, InteractUsingEvent>(OnSuitInteractUsing);
@@ -58,81 +57,6 @@ public sealed partial class ModularSuitSystem : SharedModularSuitSystem
         Container.EnsureContainer<Container>(ent, PartContainer);
         Container.EnsureContainer<Container>(ent, ModuleContainer);
         Container.EnsureContainer<Container>(ent, HiddenClothingContainer);
-    }
-
-    private void OnTerminating(Entity<ModularSuitComponent> ent, ref EntityTerminatingEvent args)
-    {
-        var coreContainer = Container.GetContainer(ent, CoreContainer);
-        if (coreContainer.ContainedEntities.Count > 0)
-        {
-            var core = coreContainer.ContainedEntities[0];
-            Container.Remove(core, coreContainer);
-        }
-
-        var moduleContainer = Container.GetContainer(ent, ModuleContainer);
-        foreach (var module in moduleContainer.ContainedEntities.ToList())
-        {
-            if (Container.Remove(module, moduleContainer))
-            {
-                if (TryComp<ModularSuitModuleComponent>(module, out var moduleComp) && moduleComp.CanBeDisabled)
-                    moduleComp.IsActive = false;
-
-                var ev = new ModularSuitRemovedEvent(ent.Owner, ent.Comp.Wearer ?? ent.Owner);
-                RaiseLocalEvent(module, ref ev);
-            }
-        }
-
-        if (ent.Comp.Wearer != null && TryComp<ModularSuitEquippedComponent>(ent, out var equipped))
-        {
-            foreach (var (slot, partUid) in equipped.EquippedParts.ToList())
-            {
-                if (Inventory.TryGetSlotEntity(ent.Comp.Wearer.Value, slot, out var equippedItem) && equippedItem == partUid)
-                {
-                    if (Inventory.TryUnequip(ent.Comp.Wearer.Value, slot, out var removedItem, force: true))
-                        RemComp<AttachedModularSuitPartComponent>(removedItem.Value);
-                }
-            }
-
-            equipped.EquippedParts.Clear();
-        }
-
-        var partContainer = Container.GetContainer(ent, PartContainer);
-        foreach (var part in partContainer.ContainedEntities.ToList())
-        {
-            if (Container.Remove(part, partContainer))
-            {
-                if (TryComp<ItemToggleComponent>(part, out var toggle) && Toggle.IsActivated((part, toggle)))
-                    Toggle.TryDeactivate(part, null, false);
-            }
-        }
-
-        if (TryComp<ModularSuitHiddenClothingComponent>(ent, out var hiddenComp))
-        {
-            var hiddenContainer = Container.GetContainer(ent, HiddenClothingContainer);
-            foreach (var (slot, itemUid) in hiddenComp.HiddenItems.ToList())
-            {
-                if (!hiddenContainer.Contains(itemUid))
-                    continue;
-
-                if (ent.Comp.Wearer != null && Exists(ent.Comp.Wearer.Value))
-                {
-                    if (Container.Remove(itemUid, hiddenContainer))
-                    {
-                        if (!Inventory.TryGetSlotEntity(ent.Comp.Wearer.Value, slot, out var currentItem)
-                            || !HasComp<ModularSuitPartComponent>(currentItem))
-                        {
-                            Inventory.TryEquip(ent.Comp.Wearer.Value, itemUid, slot, force: true);
-                        }
-                    }
-                }
-                else
-                {
-                    Container.Remove(itemUid, hiddenContainer);
-                }
-            }
-
-            hiddenComp.HiddenItems.Clear();
-        }
     }
 
     private void OnGetVerbs(Entity<ModularSuitComponent> suit, ref GetVerbsEvent<Verb> args)
@@ -221,7 +145,9 @@ public sealed partial class ModularSuitSystem : SharedModularSuitSystem
         var doAfterArgs = new DoAfterArgs(EntityManager, user, delay,
             new ModularSuitExtractDoAfterEvent(type), suit, suit, target)
         {
-            BreakOnDamage = true
+            BreakOnMove = true,
+            BreakOnDamage = true,
+            MovementThreshold = 0.01f
         };
 
         _doAfter.TryStartDoAfter(doAfterArgs);
@@ -523,9 +449,7 @@ public sealed partial class ModularSuitSystem : SharedModularSuitSystem
                     var doAfterArgs = new DoAfterArgs(EntityManager, args.User, delay,
                         new ModularSuitPartSealDoAfterEvent(true), partUid, partUid)
                     {
-                        BreakOnMove = true,
-                        BreakOnDamage = true,
-                        MovementThreshold = 0.01f
+                        BreakOnDamage = true
                     };
 
                     _doAfter.TryStartDoAfter(doAfterArgs);

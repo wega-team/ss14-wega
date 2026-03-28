@@ -80,6 +80,8 @@ public sealed partial class ModularSuitSystem
 
         float coreCharge = 0;
         float maxCoreCharge = 100;
+        float coreMultiplier = 1.0f;
+        bool infinityCore = false;
         bool hasCore = false;
 
         var coreContainer = Container.GetContainer(ent, CoreContainer);
@@ -89,11 +91,21 @@ public sealed partial class ModularSuitSystem
             {
                 coreCharge = core.Charge;
                 maxCoreCharge = core.MaxCharge;
+                coreMultiplier = core.DrawMultiplier;
+                infinityCore = core.Infinite;
                 hasCore = true;
             }
         }
 
-        bool hasBattery = _powerCell.HasBattery(ent.Owner);
+        bool hasBattery = false;
+        float batteryCharge = 0;
+        float maxBatteryCharge = 0;
+        if (_powerCell.TryGetBatteryFromSlot(ent.Owner, out var battery))
+        {
+            batteryCharge = battery.Value.Comp.LastCharge;
+            maxBatteryCharge = battery.Value.Comp.MaxCharge;
+            hasBattery = true;
+        }
 
         float totalPowerDraw = ent.Comp.BasePowerDraw;
         var modules = new List<SuitModuleEntry>();
@@ -156,12 +168,16 @@ public sealed partial class ModularSuitSystem
         if (ent.Comp.Wearer != null)
             wearerName = Name(ent.Comp.Wearer.Value);
 
+        totalPowerDraw *= coreMultiplier;
         var state = new ModularSuitBoundUserInterfaceState(
             ent.Comp.Active,
             coreCharge,
             maxCoreCharge,
             hasCore,
+            infinityCore,
             hasBattery,
+            batteryCharge,
+            maxBatteryCharge,
             totalPowerDraw,
             modules,
             parts,

@@ -38,7 +38,7 @@ public sealed class ModularSuitMicrowaveSystem : EntitySystem
 
     private void OnInteract(Entity<ModularSuitMicrowaveModuleComponent> module, ref AfterInteractEvent args)
     {
-        if (args.Handled || args.Target == null || args.Target == args.User)
+        if (args.Handled || !args.CanReach || args.Target == null || args.Target == args.User)
             return;
 
         if (!TryComp<ModularSuitCarrierComponent>(args.User, out var carrier) || string.IsNullOrEmpty(carrier.CurrentSlot)

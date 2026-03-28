@@ -34,27 +34,34 @@
                         <BoxContainer Orientation="Vertical" MinHeight="120" Margin="5 5 5 5">
                             <Label Text="{Loc 'modsuit-ui-suit-status'}" StyleClasses="ConsoleSubHeading" HorizontalAlignment="Center" />
 
-                            <PanelContainer StyleClasses="LowDivider" HorizontalExpand="True" Margin="-5 5 -5 5" SetHeight="2">
+                            <PanelContainer StyleClasses="LowDivider" HorizontalExpand="True" Margin="-5 5 -5 5">
                                 <PanelContainer.PanelOverride>
                                     <gfx:StyleBoxFlat BackgroundColor="#FFFFFF" />
                                 </PanelContainer.PanelOverride>
                             </PanelContainer>
 
                             <GridContainer Columns="2" Margin="5">
-                                <Label Text="{Loc 'modsuit-ui-wearer'}" FontColorOverride="#aaccff"/>
-                                <Label Name="WearerNameLabel" Text="—" FontColorOverride="#ffffff" HorizontalAlignment="Right"/>
+                                <Label Text="{Loc 'modsuit-ui-wearer'}" FontColorOverride="#aaccff" HorizontalExpand="True"/>
+                                <Label Name="WearerNameLabel" Text="—" FontColorOverride="#ffffff" HorizontalAlignment="Right" HorizontalExpand="True"/>
 
-                                <Label Text="{Loc 'modsuit-ui-core-charge'}" FontColorOverride="#aaccff"/>
-                                <BoxContainer Orientation="Horizontal" HorizontalAlignment="Right">
-                                    <ProgressBar Name="CoreChargeBar" MinValue="0" MaxValue="100" MinWidth="80" Margin="0 0 4 0"/>
-                                    <Label Name="CoreChargeLabel" Text="0/100" FontColorOverride="#ffaa33"/>
+                                <Label Text="{Loc 'modsuit-ui-core-charge'}" FontColorOverride="#aaccff" HorizontalExpand="True"/>
+                                <BoxContainer Orientation="Horizontal" HorizontalAlignment="Right" HorizontalExpand="True">
+                                    <Label Name="CoreChargeLabel" Text="0/100" FontColorOverride="#ffaa33" MinWidth="70" HorizontalAlignment="Right" Margin="0 0 8 0"/>
+                                    <ProgressBar Name="CoreChargeBar" MinValue="0" MaxValue="100" MinWidth="80"/>
                                 </BoxContainer>
 
-                                <Label Text="{Loc 'modsuit-ui-battery'}" FontColorOverride="#aaccff"/>
-                                <Label Name="BatteryStatusLabel" Text="{Loc 'modsuit-ui-no-battery'}" FontColorOverride="#ffaa33" HorizontalAlignment="Right"/>
+                                <Label Text="{Loc 'modsuit-ui-battery'}" FontColorOverride="#aaccff" HorizontalExpand="True"/>
+                                <BoxContainer Orientation="Horizontal" HorizontalAlignment="Right" HorizontalExpand="True">
+                                    <Label Name="BatteryChargeLabel" Text="0/0" FontColorOverride="#ffaa33" MinWidth="70" HorizontalAlignment="Right" Margin="0 0 8 0" Visible="False"/>
+                                    <ProgressBar Name="BatteryChargeBar" MinValue="0" MaxValue="100" MinWidth="80" Visible="False"/>
+                                    <Label Name="BatteryStatusLabel" Text="{Loc 'modsuit-ui-no-battery'}" FontColorOverride="#ffaa33" HorizontalAlignment="Right" MinWidth="70"/>
+                                </BoxContainer>
 
-                                <Label Text="{Loc 'modsuit-ui-power-draw'}" FontColorOverride="#aaccff"/>
-                                <Label Name="PowerDrawLabel" FontColorOverride="#ffaa33" HorizontalAlignment="Right"/>
+                                <Label Text="{Loc 'modsuit-ui-power-draw'}" FontColorOverride="#aaccff" HorizontalExpand="True"/>
+                                <Label Name="PowerDrawLabel" FontColorOverride="#ffaa33" HorizontalAlignment="Right" HorizontalExpand="True"/>
+
+                                <Label Text="{Loc 'modsuit-ui-remaining-time'}" FontColorOverride="#aaccff" HorizontalExpand="True"/>
+                                <Label Name="RemainingTimeLabel" FontColorOverride="#ffaa33" HorizontalAlignment="Right" HorizontalExpand="True"/>
                             </GridContainer>
                         </BoxContainer>
                     </PanelContainer>
@@ -67,7 +74,7 @@
                         <BoxContainer Orientation="Vertical">
                             <Label Text="{Loc 'modsuit-ui-power-control'}" StyleClasses="ConsoleSubHeading" HorizontalAlignment="Center" Margin="0 5 0 5" />
 
-                            <PanelContainer StyleClasses="LowDivider" HorizontalExpand="True" SetHeight="2">
+                            <PanelContainer StyleClasses="LowDivider" HorizontalExpand="True" >
                                 <PanelContainer.PanelOverride>
                                     <gfx:StyleBoxFlat BackgroundColor="#FFFFFF" />
                                 </PanelContainer.PanelOverride>
@@ -124,7 +131,7 @@
 
         <BoxContainer Orientation="Horizontal" SetHeight="25" Margin="0 5 0 5">
             <Label Name="Footer" Text="{Loc 'modsuit-ui-os-footer'}" HorizontalExpand="True"
-                   HorizontalAlignment="Right" Margin="10 0"/>
+                   HorizontalAlignment="Right" Margin="10 0" FontColorOverride="#4a5a6a"/>
         </BoxContainer>
     </BoxContainer>
 </ui:ModularSuitWindow>

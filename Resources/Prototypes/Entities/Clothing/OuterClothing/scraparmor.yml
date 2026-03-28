@@ -86,3 +86,4 @@
   - type: Tag
     tags:
     - ArmorScrap # Corvax-Wega
+    - ModNotEquipable # Corvax-Wega-ModularSuit

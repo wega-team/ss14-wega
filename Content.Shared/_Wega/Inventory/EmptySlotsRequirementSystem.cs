@@ -1,10 +1,12 @@
 using Content.Shared.Inventory.Events;
 using Content.Shared.Modular.Suit;
+using Content.Shared.Whitelist;
 
 namespace Content.Shared.Inventory;
 
 public sealed partial class EmptySlotsRequirementSystem : EntitySystem
 {
+    [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
     [Dependency] private readonly InventorySystem _inventory = default!;
 
     public override void Initialize()
@@ -51,8 +53,12 @@ public sealed partial class EmptySlotsRequirementSystem : EntitySystem
 
             if (_inventory.TryGetSlotContainer(target, slot.Name, out var container, out _, inventory))
             {
-                if (container.ContainedEntity != null)
+                var item = container.ContainedEntity;
+                if (item != null)
                 {
+                    if (ent.Comp.Blacklist != null && _whitelist.IsWhitelistFail(ent.Comp.Blacklist, item.Value))
+                        return;
+
                     args.Reason = Loc.GetString("empty-slots-requirement-blocked");
                     args.Cancel();
                     return;
@@ -78,8 +84,12 @@ public sealed partial class EmptySlotsRequirementSystem : EntitySystem
 
             if (_inventory.TryGetSlotContainer(target, slot.Name, out var container, out _, inventory))
             {
-                if (container.ContainedEntity != null)
+                var item = container.ContainedEntity;
+                if (item != null)
                 {
+                    if (ent.Comp.Blacklist != null && _whitelist.IsWhitelistFail(ent.Comp.Blacklist, item.Value))
+                        return;
+
                     args.Cancel();
                     return;
                 }

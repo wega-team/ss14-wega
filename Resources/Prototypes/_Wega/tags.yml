@@ -417,6 +417,9 @@
   id: DocumentBorg
 
 - type: Tag
+  id: ModNotEquipable
+
+- type: Tag
   id: ModularSuitCore
 
 - type: Tag

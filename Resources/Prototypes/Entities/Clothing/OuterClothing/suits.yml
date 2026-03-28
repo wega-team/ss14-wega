@@ -24,6 +24,7 @@
   - type: Tag
     tags:
     - Hardsuit
+    - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
   - type: ProtectedFromStepTriggers
     slots: WITHOUT_POCKET
@@ -110,6 +111,7 @@
     slots: WITHOUT_POCKET
   - type: Tag
     tags:
+    - ModNotEquipable # Corvax-Wega-ModularSuit
     - CorgiWearable
     - WhitelistChameleon
   - type: HideLayerClothing

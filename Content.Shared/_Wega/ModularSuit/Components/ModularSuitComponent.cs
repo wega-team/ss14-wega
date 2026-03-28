@@ -63,13 +63,13 @@ public sealed partial class ModularSuitComponent : Component
     public SoundSpecifier InsertSound = new SoundPathSpecifier("/Audio/Weapons/Guns/MagIn/revolver_magin.ogg");
 
     [DataField]
-    public SoundSpecifier LowPowerSound = new SoundPathSpecifier("/Audio/_Wega/Effects/Modsuit/lowpower.ogg", AudioParams.Default.WithVolume(-4));
+    public SoundSpecifier LowPowerSound = new SoundPathSpecifier("/Audio/_Wega/Effects/Modsuit/lowpower.ogg", AudioParams.Default.WithVolume(2));
 
     [DataField]
     public SoundSpecifier CriticalDamageSound = new SoundPathSpecifier("/Audio/_Wega/Effects/Modsuit/critnano.ogg");
 
     [DataField]
-    public SoundSpecifier CriticalDestroySound = new SoundPathSpecifier("/Audio/_Wega/Effects/Modsuit/critdestr.ogg");
+    public SoundSpecifier CriticalDestroySound = new SoundPathSpecifier("/Audio/_Wega/Effects/Modsuit/critdestr.ogg", AudioParams.Default.WithVolume(2));
 
     [DataField]
     public SoundSpecifier NominalSound = new SoundPathSpecifier("/Audio/_Wega/Effects/Modsuit/nominal.ogg", AudioParams.Default.WithVolume(-2));

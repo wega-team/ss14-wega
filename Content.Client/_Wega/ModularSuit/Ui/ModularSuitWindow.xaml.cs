@@ -61,11 +61,103 @@ public sealed partial class ModularSuitWindow : BaseWindow
             CoreChargeLabel.Text = Loc.GetString("modsuit-ui-no-core");
         }
 
-        BatteryStatusLabel.Text = state.HasBattery
-            ? Loc.GetString("modsuit-ui-battery-present")
-            : Loc.GetString("modsuit-ui-no-battery");
+        var powerDrawW = state.TotalPowerDraw;
 
-        PowerDrawLabel.Text = Loc.GetString("modsuit-ui-power-draw-value", ("power", Math.Round(state.TotalPowerDraw, 2)));
+        if (powerDrawW > 0 && powerDrawW < 0.01f)
+            PowerDrawLabel.Text = Loc.GetString("modsuit-ui-power-draw-value", ("power", "<0.01"));
+        else
+            PowerDrawLabel.Text = state.InfinityCore
+                ? Loc.GetString("modsuit-ui-power-draw-error")
+                : Loc.GetString("modsuit-ui-power-draw-value", ("power", Math.Round(powerDrawW, 2)));
+
+        if (state.HasBattery && !state.InfinityCore)
+        {
+            var batteryPercent = state.BatteryCharge / state.MaxBatteryCharge * 100;
+            BatteryChargeBar.Value = batteryPercent;
+            BatteryChargeBar.MaxValue = 100;
+            BatteryChargeBar.Visible = true;
+
+            BatteryChargeLabel.Text = $"{state.BatteryCharge:F0}/{state.MaxBatteryCharge:F0}";
+            BatteryChargeLabel.Visible = true;
+            BatteryStatusLabel.Visible = false;
+
+            if (powerDrawW > 0)
+            {
+                var coreRemainingSec = state.CoreCharge / powerDrawW;
+                var batteryRemainingSec = state.BatteryCharge / powerDrawW;
+                var totalRemainingSec = coreRemainingSec + batteryRemainingSec;
+
+                if (totalRemainingSec < 60)
+                {
+                    RemainingTimeLabel.Text = Loc.GetString("modsuit-ui-time-critical", ("seconds", (int)totalRemainingSec));
+                }
+                else if (totalRemainingSec < 3600)
+                {
+                    var minutes = (int)(totalRemainingSec / 60);
+                    var seconds = (int)(totalRemainingSec % 60);
+                    RemainingTimeLabel.Text = Loc.GetString("modsuit-ui-time-minutes", ("minutes", minutes), ("seconds", seconds));
+                }
+                else
+                {
+                    var hours = (int)(totalRemainingSec / 3600);
+                    var minutes = (int)((totalRemainingSec % 3600) / 60);
+                    RemainingTimeLabel.Text = Loc.GetString("modsuit-ui-time-hours", ("hours", hours), ("minutes", minutes));
+                }
+            }
+            else
+            {
+                RemainingTimeLabel.Text = Loc.GetString("modsuit-ui-time-infinite");
+            }
+        }
+        else if (state.InfinityCore)
+        {
+            BatteryChargeBar.Visible = false;
+            BatteryChargeLabel.Visible = false;
+            BatteryStatusLabel.Text = Loc.GetString("modsuit-ui-infinity-core");
+            BatteryStatusLabel.FontColorOverride = Color.FromHex("#f04c4c");
+            BatteryStatusLabel.Visible = true;
+
+            PowerDrawLabel.Text = Loc.GetString("modsuit-ui-power-draw-error");
+            RemainingTimeLabel.Text = Loc.GetString("modsuit-ui-time-infinite");
+        }
+        else
+        {
+            BatteryChargeBar.Visible = false;
+            BatteryChargeLabel.Visible = false;
+            BatteryStatusLabel.Text = Loc.GetString("modsuit-ui-no-battery");
+            BatteryStatusLabel.FontColorOverride = Color.FromHex("#ffaa33");
+            BatteryStatusLabel.Visible = true;
+
+            if (powerDrawW > 0 && state.CoreCharge > 0)
+            {
+                var remainingSec = state.CoreCharge / powerDrawW;
+
+                if (remainingSec < 60)
+                    RemainingTimeLabel.Text = Loc.GetString("modsuit-ui-time-critical", ("seconds", (int)remainingSec));
+                else if (remainingSec < 3600)
+                {
+                    var minutes = (int)(remainingSec / 60);
+                    var seconds = (int)(remainingSec % 60);
+                    RemainingTimeLabel.Text = Loc.GetString("modsuit-ui-time-minutes", ("minutes", minutes), ("seconds", seconds))
+                        + $" {Loc.GetString("modsuit-ui-time-core")}";
+                }
+                else
+                {
+                    var hours = (int)(remainingSec / 3600);
+                    var minutes = (int)((remainingSec % 3600) / 60);
+                    RemainingTimeLabel.Text = Loc.GetString("modsuit-ui-time-hours", ("hours", hours), ("minutes", minutes))
+                        + $" {Loc.GetString("modsuit-ui-time-core")}";
+                }
+            }
+            else if (state.CoreCharge <= 0)
+            {
+                RemainingTimeLabel.Text = Loc.GetString("modsuit-ui-time-depleted");
+            }
+            else
+            {
+                RemainingTimeLabel.Text = Loc.GetString("modsuit-ui-time-infinite");
+            }
+        }
 
         ActivateButton.Pressed = state.Active;
         ActivateButton.Text = state.Active

@@ -28,6 +28,12 @@
     dirtState: evasuit
     equippedDirtState: equipped-evasuit
   # Corvax-Wega-Dirtable-end
+  # Corvax-Wega-ModularSuit-start
+  - type: Tag
+    tags:
+      - ModNotEquipable
+      - WhitelistChameleon
+  # Corvax-Wega-ModularSuit-end
 
 - type: entity
   abstract: true
@@ -149,6 +155,7 @@
   - type: Tag
     tags:
     - Hardsuit
+    - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
   - type: ProtectedFromStepTriggers
     slots: WITHOUT_POCKET
@@ -204,6 +211,12 @@
     dirtState: evasuit
     equippedDirtState: equipped-evasuit
   # Corvax-Wega-Dirtable-end
+  # Corvax-Wega-ModularSuit-start
+  - type: Tag
+    tags:
+      - ModNotEquipable
+      - WhitelistChameleon
+  # Corvax-Wega-ModularSuit-end
 
 - type: entity
   parent: ClothingOuterBase

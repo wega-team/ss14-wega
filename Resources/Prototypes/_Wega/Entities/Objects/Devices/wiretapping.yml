@@ -57,7 +57,7 @@
     - state: wiretapping_server-b
   - type: SurveillanceCameraRouter
     subnetFrequency: SurveillanceCameraBeta
-  
+
 - type: entity
   id: WiretappingServerCharlie
   parent: WiretappingServerAlpha
@@ -70,7 +70,7 @@
     - state: wiretapping_server-c
   - type: SurveillanceCameraRouter
     subnetFrequency: SurveillanceCameraCharlie
-    
+
 - type: entity
   id: WiretappingServerDelta
   parent: WiretappingServerAlpha
@@ -83,7 +83,7 @@
     - state: wiretapping_server-d
   - type: SurveillanceCameraRouter
     subnetFrequency: SurveillanceCameraDelta
-    
+
 ## Camera
 
 - type: entity
@@ -120,7 +120,9 @@
       deconstructionTarget: null
       graph: Bodycam
       node: alpha
-      
+    - type: StationAiVision
+      range: 2
+
 - type: entity
   name: wiretapping camera beta
   parent: WiretappingCameraAlpha
@@ -138,7 +140,7 @@
       deconstructionTarget: null
       graph: Bodycam
       node: beta
-      
+
 - type: entity
   name: wiretapping camera charlie
   parent: WiretappingCameraAlpha
@@ -156,7 +158,7 @@
       deconstructionTarget: null
       graph: Bodycam
       node: charlie
-      
+
 - type: entity
   name: wiretapping camera delta
   parent: WiretappingCameraAlpha

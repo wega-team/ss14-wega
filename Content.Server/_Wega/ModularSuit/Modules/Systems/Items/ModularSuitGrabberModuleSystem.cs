@@ -46,7 +46,7 @@ public sealed class ModularSuitGrabberModuleSystem : EntitySystem
 
     private void OnInteract(Entity<ModularSuitGrabberToolComponent> tool, ref AfterInteractEvent args)
     {
-        if (args.Handled || args.Target == null || args.Target == args.User)
+        if (args.Handled || !args.CanReach || args.Target == null || args.Target == args.User)
             return;
 
         if (IsUnGrabable(args.Target.Value))

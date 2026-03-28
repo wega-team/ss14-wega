@@ -48,6 +48,7 @@
         - MachineMask
         layer:
         - MachineLayer
+  - type: StationAiWhitelist # Corvax-Wega-Edit
 
 - type: entity
   id: ChemDispenser
