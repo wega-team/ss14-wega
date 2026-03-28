@@ -2,7 +2,7 @@
   - changed-files:
     - any-glob-to-any-file: "**/*.ogg"
 
-":shark: C# :shark:":
+":shark: C### :shark:":
   - changed-files:
     - any-glob-to-any-file: "**/*.cs"
 
