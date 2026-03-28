@@ -45,12 +45,8 @@
 
 ":baby_chick: YML :baby_chick:":
   - changed-files:
-    - all-glob-to-any-file: 
-      - "Resources/Prototypes/**/*.yml"
-    - all-globs-to-all-files:
-      - "!Resources/Maps/**/*.yml"
-      - "!Resources/Prototypes/Maps/**/*.yml"
-      - "!.github workflows/*.yml"
+    - any-glob-to-any-file:
+      - "**/*.yml"
 
 ":wrench: GitHub Workflow :wrench:":
   - changed-files:
