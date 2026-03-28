@@ -47,6 +47,10 @@
   - changed-files:
     - any-glob-to-any-file:
       - "**/*.yml"
+    - all-globs-to-all-files:
+      - "!Resources/Maps/*"
+      - "!Resources/Prototypes/Maps/*"
+
 
 ":wrench: GitHub Workflow :wrench:":
   - changed-files:
