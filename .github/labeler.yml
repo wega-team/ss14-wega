@@ -45,7 +45,7 @@
 
 ":baby_chick: YML :baby_chick:":
   - changed-files:
-    - any-glob-to-any-file: 
+    - all-glob-to-any-file: 
       - "Resources/Prototypes/**/*.yml"
     - all-globs-to-all-files:
       - "!Resources/Maps/**/*.yml"
