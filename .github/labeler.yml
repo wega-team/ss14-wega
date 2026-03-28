@@ -1,4 +1,4 @@
-﻿":musical_note: Audio :musical_note:":
+":musical_note: Audio :musical_note:":
   - changed-files:
     - any-glob-to-any-file: "**/*.ogg"
 
@@ -44,14 +44,12 @@
     - any-glob-to-any-file: "**/*.xaml*"
 
 ":baby_chick: YML :baby_chick:":
-- all:
   - changed-files:
     - any-glob-to-any-file:
       - "**/*.yml"
     - all-globs-to-all-files:
-      - "!Resources/Maps/*"
-      - "!Resources/Prototypes/Maps/*"
-
+      - "!Resources/Maps/**/*.yml"
+      - "!Resources/Prototypes/Maps/**/*.yml"
 
 ":wrench: GitHub Workflow :wrench:":
   - changed-files:
