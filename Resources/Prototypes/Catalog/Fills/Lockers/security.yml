@@ -99,14 +99,8 @@
     - id: ClothingOuterCoatSecurityOvercoat # Corvax-SecFashion
       prob: 0.2
       # Corvax-Wega-Edit-Start
-    - id: WiretappingCameraAlpha
-      prob: 0.065 # 65
-    - id: WiretappingCameraBeta
-      prob: 0.05
-    - id: WiretappingCameraDelta
-      prob: 0.05
-    - id: WiretappingCameraCharlie
-      prob: 0.05 # 1% chance of 2 cameras appearing in a locker
+    - id: WiretappingCameraAlphaOff
+      prob: 0.4
       # Corvax-Wega-Edit-End
 
 - type: entity

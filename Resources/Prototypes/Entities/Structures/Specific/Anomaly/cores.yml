@@ -52,10 +52,22 @@
     color: "#E25822"
     castShadows: false
   - type: IgnitionSource
-    temperature: 400
+    temperature: 700
     ignited: true
   - type: CoreTempChange
-    tempChangePerSecond: 25
+    tempChangePerSecond: 5
+  - type: Gun
+    fireRate: 0.75
+    soundGunshot:
+      path: /Audio/Magic/fireball.ogg
+    projectileSpeed: 25
+  - type: BasicEntityAmmoProvider
+    proto: ProjectileAnomalyFireballMax
+    capacity: 3
+    count: 3
+  - type: AmmoCounter
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 30
 
 - type: entity
   parent: BaseAnomalyCore
@@ -70,7 +82,18 @@
     color: "#1e070e"
     castShadows: false
   - type: RadiationSource
-    intensity: 5
+    intensity: 0.5
+  - type: MeleeThrowOnHit
+  - type: MeleeWeapon
+    attackRate: 0.5
+    angle: 0
+    animation: WeaponArcFist
+    wideAnimationRotation: -135
+    damage:
+      types:
+        Blunt: 0
+    soundHit:
+      path: "/Audio/Effects/radpulse8.ogg"
   # Corvax-Wega-Add-start
   - type: Tag
     tags:
@@ -92,8 +115,19 @@
     color: "#befaff"
     castShadows: false
   - type: CoreTempChange
-    tempChangePerSecond: -25
-## Corvax-Wega-Anomaly-end
+    tempChangePerSecond: -5
+  - type: Gun
+    fireRate: 0.75
+    soundGunshot:
+      path: /Audio/Magic/fireball.ogg
+    projectileSpeed: 25
+  - type: BasicEntityAmmoProvider
+    proto: ProjectileIcicle
+    capacity: 3
+    count: 3
+  - type: AmmoCounter
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 30
 
 - type: entity
   parent: BaseAnomalyCore
@@ -108,32 +142,36 @@
     energy: 3.5
     color: "#cb5b7e"
     castShadows: false
+  - type: Healing
+    damageContainers:
+    - Biological
+    damage:
+      groups: # these are all split across multiple types
+        Brute: -150
+        Burn: -150
+        Toxin: -150
+    bloodlossModifier: -20
+    delay: 1
+    selfHealPenaltyMultiplier: 0
+    healingBeginSound:
+      path: "/Audio/Items/Medical/ointment_begin.ogg"
+      params:
+        volume: 1.0
+        variation: 0.125
+    healingEndSound:
+      path: "/Audio/Items/Medical/ointment_end.ogg"
+      params:
+        volume: 1.0
+        variation: 0.125
 
-## Corvax-Wega-Anomaly-start
 - type: entity
   parent: BaseAnomalyCore
   id: AnomalyCoreRock
   suffix: Rock
   components:
-  - type: OreVein
-    oreChance: 1
-    oreRarityPrototypeId: RandomOreDistributionCore
-  - type: Damageable
-    damageContainer: StructuralInorganic
-    damageModifierSet: Rock
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 2000
-      behaviors:
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
-      - !type:PlaySoundBehavior
-        sound:
-          path: /Audio/Effects/break_stone.ogg
-          params:
-            volume: -6
+  - type: ItemToggle
+  - type: MiningScanner
+    range: 10
   - type: Sprite
     sprite: Structures/Specific/Anomalies/Cores/rock_core.rsi
   - type: PointLight
@@ -141,36 +179,34 @@
     energy: 3.5
     color: "#5ca8cb"
     castShadows: false
+  - type: ItemToggleActiveSound
+    activeSound:
+      path: /Audio/Ambience/Objects/light_hum.ogg
+      params:
+        volume: -10
+        maxDistance: 1
 
-## Corvax-Wega-Anomaly-start
 - type: entity
   parent: BaseAnomalyCore
   id: AnomalyCoreLiquid
   suffix: Liquid
   components:
+  - type: Injector
+    solutionName: hypospray
+    ignoreClosed: false
+    activeModeProtoId: HyposprayDynamicMode
+    allowedModes:
+    - HyposprayDynamicMode
+    - HyposprayInjectMode
+  - type: Spillable
+    solution: hypospray
+  - type: ExaminableSolution
+    solution: hypospray
+    exactVolume: true
   - type: SolutionContainerManager
     solutions:
-      beaker:
-        maxVol: 150
-  - type: FitsInDispenser
-    solution: beaker
-  - type: RefillableSolution
-    solution: beaker
-  - type: DrainableSolution
-    solution: beaker
-  - type: ExaminableSolution
-    solution: beaker
-  - type: DrawableSolution
-    solution: beaker
-  - type: InjectableSolution
-    solution: beaker
-  - type: SolutionTransfer
-    canChangeTransferAmount: true
-  - type: Edible
-    edible: Drink
-    solution: beaker
-    destroyOnEmpty: false
-    utensil: None
+      hypospray:
+        maxVol: 10
   - type: Appearance
   - type: GenericVisualizer
     visuals:
@@ -218,11 +254,6 @@
   - type: ContainerContainer
     containers:
       storagebase: !type:Container
-  - type: Construction
-    graph: BoxCardboard
-    node: boxcardboard
-    containers:
-      - entity_storage
   - type: Item
     size: Ginormous
     shape:
@@ -255,12 +286,6 @@
   id: AnomalyCoreElectricity
   suffix: Electricity
   components:
-  - type: PowerCell
-  - type: Battery
-    maxCharge: 360
-    startingCharge: 0
-  - type: BatterySelfRecharger
-    autoRechargeRate: 12
   - type: Sprite
     sprite: Structures/Specific/Anomalies/Cores/electric_core.rsi
   - type: PointLight
@@ -269,15 +294,24 @@
     color: "#ffffaa"
     castShadows: false
   - type: Electrified
-## Corvax-Wega-Anomaly-end
+  - type: Gun
+    fireRate: 0.75
+    soundGunshot:
+      path: /Audio/Magic/fireball.ogg
+    projectileSpeed: 25
+  - type: BasicEntityAmmoProvider
+    proto: IonScan
+    capacity: 2
+    count: 2
+  - type: AmmoCounter
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 30
 
 - type: entity
   parent: BaseAnomalyCore
   id: AnomalyCoreFlora
   suffix: Flora
   components:
-  - type: Seed
-    seedId: anomalyBerry
   - type: Sprite
     sprite: Structures/Specific/Anomalies/Cores/flora_core.rsi
   - type: PointLight
@@ -285,10 +319,21 @@
     energy: 2.0
     color: "#6270bb"
     castShadows: false
+  - type: Gun
+    fireRate: 0.75
+    soundGunshot:
+      path: /Audio/Magic/fireball.ogg
+    projectileSpeed: 25
+  - type: BasicEntityAmmoProvider
+    proto: ProjectilePolyboltLightPerson
+    capacity: 3
+    count: 3
+  - type: AmmoCounter
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 30
 
-# Corvax-Wega-Anomaly-start
 - type: entity
-  parent: [ BaseAnomalyCore, BaseShadow ]
+  parent: BaseAnomalyCore # Corvax-Wega-add BaseShadow
   id: AnomalyCoreShadow
   suffix: Shadow
   components:
@@ -307,6 +352,8 @@
   id: AnomalyCoreTech
   suffix: Tech
   components:
+  - type: AutoRecharge
+    rechargeDuration: 600
   - type: Emag
   - type: LimitedCharges
     maxCharges: 1
@@ -333,7 +380,7 @@
     castShadows: false
 
 # Inert cores
-
+# Corvax-Wega-start
 - type: entity
   parent: BaseAnomalyCore
   id: BaseAnomalyInertCore
@@ -354,13 +401,23 @@
   id: AnomalyCorePyroclasticInert
   suffix: Pyroclastic, Inert
   components:
-  - type: Sprite
-    sprite: Structures/Specific/Anomalies/Cores/pyro_core.rsi
-  - type: PointLight
-    radius: 1.5
-    energy: 2.7
-    color: "#fca3c0"
-    castShadows: false
+    - type: ItemToggle
+    - type: ComponentToggler
+      components:
+      - type: CoreTempChange
+        tempChangePerSecond: 20
+      - type: PointLight
+        radius: 2.5
+        energy: 10
+        color: "#fca3c0"
+        castShadows: false
+    # - type: PointLight
+      # radius: 1.5
+      # energy: 10
+      # color: "#fca3c0"
+      # castShadows: false
+    - type: Sprite
+      sprite: Structures/Specific/Anomalies/Cores/pyro_core.rsi
 
 - type: entity
   parent: BaseAnomalyInertCore
@@ -369,11 +426,21 @@
   components:
   - type: Sprite
     sprite: Structures/Specific/Anomalies/Cores/gravity_core.rsi
-  - type: PointLight
-    radius: 1.5
-    energy: 10
-    color: "#1e070e"
-    castShadows: false
+  - type: ItemToggle
+  - type: ComponentToggler
+    components:
+    - type: PointLight
+      radius: 5.5
+      energy: 100
+      color: "#1e070e"
+      castShadows: false
+    - type: RadiationSource
+      intensity: 3
+  # - type: PointLight
+    # radius: 1.5
+    # energy: 10
+    # color: "#1e070e"
+    # castShadows: false
   # Corvax-Wega-Add-start
   - type: Tag
     tags:
@@ -387,13 +454,23 @@
   id: AnomalyCoreIceInert
   suffix: Ice, Inert
   components:
+  - type: ItemToggle
+  - type: ComponentToggler
+    components:
+    - type: CoreTempChange
+      tempChangePerSecond: -20
+    - type: PointLight
+      radius: 2.5
+      energy: 10
+      color: "#befaff"
+      castShadows: false
   - type: Sprite
     sprite: Structures/Specific/Anomalies/Cores/ice_core.rsi
-  - type: PointLight
-    radius: 1.5
-    energy: 2.7
-    color: "#befaff"
-    castShadows: false
+  # - type: PointLight
+    # radius: 1.5
+    # energy: 2.7
+    # color: "#befaff"
+    # castShadows: false
 
 - type: entity
   parent: BaseAnomalyInertCore
@@ -421,6 +498,25 @@
     energy: 3.5
     color: "#5ca8cb"
     castShadows: false
+  - type: OreVein
+    oreChance: 1
+    oreRarityPrototypeId: RandomOreDistributionCore
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Rock
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 2000
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/break_stone.ogg
+          params:
+            volume: -6
 
 - type: entity
   parent: BaseAnomalyInertCore
@@ -434,6 +530,49 @@
     energy: 3.5
     color: "#ffffff"
     castShadows: false
+  - type: SolutionContainerManager
+    solutions:
+      beaker:
+        maxVol: 150
+  - type: FitsInDispenser
+    solution: beaker
+  - type: RefillableSolution
+    solution: beaker
+  - type: DrainableSolution
+    solution: beaker
+  - type: ExaminableSolution
+    solution: beaker
+  - type: DrawableSolution
+    solution: beaker
+  - type: InjectableSolution
+    solution: beaker
+  - type: SolutionTransfer
+    canChangeTransferAmount: true
+  - type: SolutionItemStatus
+    solution: beaker
+  - type: Edible
+    edible: Drink
+    solution: beaker
+    destroyOnEmpty: false
+    utensil: None
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.AnomalyCoreVisuals.Decaying:
+        decay:
+          True: { visible: true }
+          False: { visible: false }
+  - type: Item
+    size: Normal
+  - type: EmitSoundOnUse #placeholder for future unical mechanic
+    sound:
+      collection: RadiationPulse
+  - type: UseDelay
+    delay: 2
+  - type: Tag
+    tags:
+    - ForceableFollow
+    - AnomalyCore # Corvax-Wega-add
 
 - type: entity
   parent: BaseAnomalyInertCore
@@ -447,6 +586,23 @@
     energy: 3.5
     color: "#00ccff"
     castShadows: false
+  - type: UserInterface
+    interfaces:
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+  - type: Item
+    size: Tiny
+  - type: Storage
+    maxItemSize: Normal
+    grid:
+    - 0,0,2,2
+    storageOpenSound: /Audio/Effects/radpulse8.ogg
+    storageCloseSound: /Audio/Effects/radpulse5.ogg
+    storageInsertSound: /Audio/Effects/radpulse12.ogg
+    storageRemoveSound: /Audio/Effects/radpulse1.ogg
   # Corvax-Wega-Add-start
   - type: Tag
     tags:
@@ -467,6 +623,12 @@
     energy: 2.0
     color: "#ffffaa"
     castShadows: false
+  - type: PowerCell
+  - type: Battery
+    maxCharge: 1080
+    startingCharge: 0
+  - type: BatterySelfRecharger
+    autoRechargeRate: 12
 
 - type: entity
   parent: BaseAnomalyInertCore
@@ -495,6 +657,8 @@
     energy: 2.0
     color: "#793a80"
     castShadows: false
+  - type: SpawnOnTrigger
+    proto: ShadowKudzu
 
 - type: entity
   parent: BaseAnomalyInertCore
@@ -508,7 +672,14 @@
     energy: 2.0
     color: "#56c1e8"
     castShadows: false
-
+  - type: Emag
+    emagImmuneTag: AccessBreakerImmune
+    emagType: Access
+  - type: LimitedCharges
+    maxCharges: 1
+  - type: AutoRecharge
+    rechargeDuration: 300
+    
 - type: entity
   parent: BaseAnomalyInertCore
   id: AnomalyCoreSantaInert

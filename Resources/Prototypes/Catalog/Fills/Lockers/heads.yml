@@ -345,8 +345,7 @@
     - id: WantedListCartridge
     - id: DrinkHosFlask
     # Corvax-Wega-Start
-    - id: ServerWiretappingKit
-    - id: WiretappingTerminal
+    - id: WiretappingServerAlpha
     - id: ClothingOuterWinterHoS
     - id: SecurityVoucherCard
       amount: !type:ConstantNumberSelector
