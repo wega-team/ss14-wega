@@ -72,8 +72,8 @@
             Postman: [ 1, 1 ]
             #civilian
             Passenger: [ -1, -1 ]
-            Clown: [ 1, 1 ]
-            Mime: [ 1, 1 ]
+            Clown: [ 4, 4 ]
+            Mime: [ 2, 2 ]
             Reporter: [ 1, 1 ]
             Musician: [ 2, 2 ]
             Barber: [ 1, 1 ]
