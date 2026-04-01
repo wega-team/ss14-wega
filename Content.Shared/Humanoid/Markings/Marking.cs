@@ -95,7 +95,17 @@ public partial record struct Marking
         List<Color> colorList = new();
         foreach (string color in split[1].Split(','))
         {
-            colorList.Add(Color.FromHex(color));
+            // Corvax-Wega-Convertation-start
+            var cleanedColor = color.Trim('[', ']', '"', ' ');
+            if (string.IsNullOrEmpty(cleanedColor))
+                continue;
+
+            var hexColor = cleanedColor.StartsWith('#')
+                ? cleanedColor
+                : $"#{cleanedColor}";
+
+            colorList.Add(Color.FromHex(hexColor));
+            // Corvax-Wega-Convertation-end
         }
 
         return new Marking(split[0], colorList);
