@@ -123,3 +123,44 @@
   components:
   - type: Stack
     count: 1
+
+- type: entity
+  parent: MaterialBase
+  id: MaterialConsecratedIngot
+  name: consecrated ingot
+  description: "A piece of the old world."
+  suffix: Full
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Materials/consecrated_ingot.rsi
+    layers:
+    - state: consecrated_3
+      map: [ "base" ]
+  - type: StaticPrice
+    price: 0
+  - type: StackPrice
+    price: 1000
+  - type: Appearance
+  - type: Stack
+    stackType: ConsecratedIngot
+    baseLayer: base
+    layerStates:
+    - consecrated
+    - consecrated_2
+    - consecrated_3
+  - type: Item
+    size: Large
+    sprite: _Wega/Objects/Materials/consecrated_ingot.rsi
+    shape:
+    - 0,0,1,1
+  - type: Tag
+    tags:
+    - MaterialsThrophy
+
+- type: entity
+  parent: MaterialConsecratedIngot
+  id: MaterialConsecratedIngot1
+  suffix: 1
+  components:
+  - type: Stack
+    count: 1

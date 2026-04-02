@@ -7,7 +7,6 @@ using Content.Server.Bible.Components;
 using Content.Server.Destructible;
 using Content.Server.Hallucinations;
 using Content.Server.Prayer;
-using Content.Server.Pinpointer;
 using Content.Shared.Actions.Components;
 using Content.Shared.Body.Components;
 using Content.Shared.Chemistry.Components;
@@ -58,12 +57,9 @@ using Content.Shared.StatusEffectNew;
 using Content.Shared.Stunnable;
 using Content.Shared.Shaders;
 using Content.Shared.Emp;
-using Content.Shared.Chemistry.Components.SolutionManager;
-using Content.Shared.Chemistry.EntitySystems;
-using Content.Server.Chemistry.EntitySystems;
-using Content.Server.Chemistry.Containers.EntitySystems;
 using Content.Shared.Movement.Pulling.Components;
 using Content.Shared.Chemistry.Reagent;
+using Content.Shared.Body;
 
 namespace Content.Server.Vampire;
 
@@ -86,7 +82,7 @@ public sealed partial class VampireSystem
     [Dependency] private readonly StatusEffectsSystem _statusEffect = default!;
     [Dependency] private readonly AtmosphereSystem _atmosphereSystem = default!;
     [Dependency] private readonly SharedStaminaSystem _stamina = default!;
-    [Dependency] private readonly NavMapSystem _navMap = default!;
+    // [Dependency] private readonly NavMapSystem _navMap = default!;
     [Dependency] private readonly MovementModStatusSystem _movementMod = default!;
     [Dependency] private readonly SharedEmpSystem _emp = default!;
 
@@ -404,7 +400,7 @@ public sealed partial class VampireSystem
     private void OnVampirePredatorSensesAction(EntityUid uid, VampireComponent component, VampirePredatorSensesActionEvent args)
     {
         var mapCoords = _transform.GetMapCoordinates(uid);
-        var nearbyHumanoids = _entityLookup.GetEntitiesInRange<HumanoidAppearanceComponent>(mapCoords, 6f);
+        var nearbyHumanoids = _entityLookup.GetEntitiesInRange<HumanoidProfileComponent>(mapCoords, 6f);
 
         foreach (var humanoidEntity in nearbyHumanoids)
         {
@@ -912,7 +908,9 @@ public sealed partial class VampireSystem
 
         if (component.CurrentBlood >= 200 && TryComp<DamageableComponent>(uid, out var damageableComponent))
         {
-            var totalDamage = damageableComponent.Damage.DamageDict.Values.Sum(d => d.Float());
+            var totalDamage = _damage.GetTotalDamage((uid, damageableComponent)).Float();
+            if (totalDamage <= 0)
+                return;
 
             float CalculateHealing(float damage, float minHeal, float maxHeal)
             {
@@ -921,7 +919,7 @@ public sealed partial class VampireSystem
 
             var healingSpec = new DamageSpecifier
             {
-                DamageDict = new Dictionary<string, FixedPoint2> { { "Asphyxiation", FixedPoint2.New(CalculateHealing(totalDamage, -5f, -25f)) } }
+                DamageDict = { { "Asphyxiation", FixedPoint2.New(CalculateHealing(totalDamage, -5f, -25f)) } }
             };
 
             var otherDamageTypes = new[] { "Blunt", "Slash", "Piercing", "Heat", "Poison" };
@@ -1394,7 +1392,7 @@ public sealed partial class VampireSystem
         }
 
         var target = args.Target;
-        if (TryComp<HumanoidAppearanceComponent>(target, out var humanoid))
+        if (TryComp<HumanoidProfileComponent>(target, out var humanoid))
         {
             if (HasComp<NullRodOwnerComponent>(target) && !component.TruePowerActive)
             {
@@ -1427,7 +1425,7 @@ public sealed partial class VampireSystem
         }
 
         var target = args.Target;
-        if (!TryComp(target, out HumanoidAppearanceComponent? humanoid))
+        if (!HasComp<HumanoidProfileComponent>(target))
         {
             _popup.PopupEntity(Loc.GetString("vampire-teleport-failed"), uid, uid, PopupType.Small);
             return;
@@ -1549,10 +1547,7 @@ public sealed partial class VampireSystem
         var healingAmount = FixedPoint2.New(-10f);
 
         var damageTypes = new[] { "Bloodloss", "Asphyxiation", "Blunt", "Slash", "Piercing", "Heat", "Poison" };
-        var healingSpec = new DamageSpecifier
-        {
-            DamageDict = new Dictionary<string, FixedPoint2>()
-        };
+        var healingSpec = new DamageSpecifier();
 
         foreach (var damageType in damageTypes)
         {
@@ -1603,7 +1598,7 @@ public sealed partial class VampireSystem
             _popup.PopupEntity(Loc.GetString("vampire-blood-sacrifice-insufficient-blood"), uid, uid, PopupType.SmallCaution);
             return;
         }
-        var peopleInRange = _entityLookup.GetEntitiesInRange<HumanoidAppearanceComponent>(Transform(uid).Coordinates, 6);
+        var peopleInRange = _entityLookup.GetEntitiesInRange<HumanoidProfileComponent>(Transform(uid).Coordinates, 6);
         foreach (var person in peopleInRange)
         {
             if (HasComp<ThrallComponent>(person) || HasComp<VampireComponent>(person))

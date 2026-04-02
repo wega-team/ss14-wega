@@ -19,6 +19,11 @@
           emergencyShuttlePath: /Maps/Corvax/Shuttles/emergency_corvaxsilly.yml
         - type: StationCargoShuttle
           path: /Maps/Corvax/Shuttles/cargo_corvaxsilly.yml
+        # Corvax-Wega-Lavalabd-start
+        - type: StationLavaland
+          planets: [ Lavaland ]
+          enabled: false
+        # Corvax-Wega-Lavalabd-end
         - type: StationJobs
           availableJobs:
             # command

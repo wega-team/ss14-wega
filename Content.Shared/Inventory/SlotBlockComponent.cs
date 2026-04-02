@@ -13,4 +13,9 @@ public sealed partial class SlotBlockComponent : Component
     /// </summary>
     [DataField(required: true), AutoNetworkedField]
     public SlotFlags Slots = SlotFlags.NONE;
+
+    // Corvax-Wega-ModularSuit-start
+    [DataField, AutoNetworkedField]
+    public bool Enabled = true;
+    // Corvax-Wega-ModularSuit-end
 }

@@ -92,7 +92,7 @@
       probability: 0.5
       damage:
         types:
-          Toxic: 1
+          Poison: 1
       stages:
         - 2
     - !type:DiseasePolymorph
@@ -141,7 +141,7 @@
       damage:
         types:
           Piercing: 1
-          Bleeding: 2
+          Bloodloss: 2
       stages:
         - 1
         - 2
@@ -209,9 +209,8 @@
     - !type:DiseaseHealthChange
       probability: 0.05
       damage:
-        types:
-          Bacterial: 1
-          Toxin: 0.5
+        groups:
+          Toxin: 1
     - !type:DiseasePopUp
       probability: 0.03
       message: disease-surgical-wound-pain

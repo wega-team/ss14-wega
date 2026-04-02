@@ -138,8 +138,8 @@
           invert: true
           slots:
           - head
-        - !type:BodyPartCondition
-          bodyPart: head
+        - !type:OrganPresentCondition
+          organ: Head
       steps:
         - tool: [ Drilling ]
           tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
@@ -160,8 +160,8 @@
           invert: true
           slots:
           - head
-        - !type:BodyPartCondition
-          bodyPart: head
+        - !type:OrganPresentCondition
+          organ: Head
       parallel: true
       steps:
         - tag: [ SubdermalHeadImplant ]
@@ -182,8 +182,8 @@
           invert: true
           slots:
           - head
-        - !type:BodyPartCondition
-          bodyPart: head
+        - !type:OrganPresentCondition
+          organ: Head
       steps:
         - tool: [ Cautery ]
           tag: [ Cigarette, Lighter, Welder ]
@@ -204,8 +204,8 @@
           slots:
           - head
           - mask
-        - !type:BodyPartCondition
-          bodyPart: head
+        - !type:OrganPresentCondition
+          organ: Head
       steps:
         - tool: [ Drilling ]
           tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
@@ -227,8 +227,8 @@
           slots:
           - head
           - mask
-        - !type:BodyPartCondition
-          bodyPart: head
+        - !type:OrganPresentCondition
+          organ: Head
       parallel: true
       steps:
         # Insert
@@ -268,8 +268,8 @@
           slots:
           - head
           - mask
-        - !type:BodyPartCondition
-          bodyPart: head
+        - !type:OrganPresentCondition
+          organ: Head
       steps:
         - tool: [ Cautery ]
           tag: [ Cigarette, Lighter, Welder ]
@@ -294,8 +294,8 @@
           slots:
           - head
           - mask
-        - !type:BodyPartCondition
-          bodyPart: head
+        - !type:OrganPresentCondition
+          organ: Head
       parallel: true
       steps:
         - tool: [ Scalpel ]
@@ -1714,8 +1714,8 @@
           invert: true
           slots:
           - head
-        - !type:BodyPartCondition
-          bodyPart: head
+        - !type:OrganPresentCondition
+          organ: Head
       steps:
         - tool: [ Drilling ]
           tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
@@ -1736,8 +1736,8 @@
           invert: true
           slots:
           - head
-        - !type:BodyPartCondition
-          bodyPart: head
+        - !type:OrganPresentCondition
+          organ: Head
       parallel: true
       steps:
         - tool: [ Retractor ]
@@ -1759,8 +1759,8 @@
           invert: true
           slots:
           - head
-        - !type:BodyPartCondition
-          bodyPart: head
+        - !type:OrganPresentCondition
+          organ: Head
       steps:
         - tool: [ Cautery ]
           action: ClampBleeding
@@ -1782,8 +1782,8 @@
           invert: true
           slots:
           - head
-        - !type:BodyPartCondition
-          bodyPart: head
+        - !type:OrganPresentCondition
+          organ: Head
       steps:
         - tool: [ Drilling ]
           tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
@@ -1804,8 +1804,8 @@
           invert: true
           slots:
           - head
-        - !type:BodyPartCondition
-          bodyPart: head
+        - !type:OrganPresentCondition
+          organ: Head
       parallel: true
       steps:
         - tool: [ Retractor ]
@@ -1827,8 +1827,8 @@
           invert: true
           slots:
           - head
-        - !type:BodyPartCondition
-          bodyPart: head
+        - !type:OrganPresentCondition
+          organ: Head
       steps:
         - tool: [ Cautery ]
           action: ClampBleeding
@@ -1851,8 +1851,8 @@
           slots:
           - head
           - mask
-        - !type:BodyPartCondition
-          bodyPart: head
+        - !type:OrganPresentCondition
+          organ: Head
       parallel: true
       steps:
         - tool: [ Scalpel ]
@@ -1882,8 +1882,8 @@
           slots:
           - head
           - mask
-        - !type:BodyPartCondition
-          bodyPart: head
+        - !type:OrganPresentCondition
+          organ: Head
       steps:
         - tool: [ Cautery ]
           action: ClampBleeding

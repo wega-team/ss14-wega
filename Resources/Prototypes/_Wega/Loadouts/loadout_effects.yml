@@ -34,3 +34,10 @@
     - AshDrakeBoss
     - BubblegumBoss
     requireAll: true
+
+- type: loadoutEffectGroup
+  id: BloodCultAchievement
+  effects:
+  - !type:AchievementLoadoutEffect
+    requiredAchievements:
+    - BloodCult

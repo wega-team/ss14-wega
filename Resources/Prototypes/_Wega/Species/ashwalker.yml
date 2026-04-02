@@ -1,74 +1,11 @@
-- type: species
-  id: AshWalker
-  name: species-name-ashwalker
-  roundStart: false
-  prototype: MobAshWalker
-  sprites: MobAshWalkerSprites
-  defaultSkinTone: "#34a223"
-  markingLimits: MobAshWalkerMarkingLimits
-  dollPrototype: MobAshWalkerDummy
-  skinColoration: Hues
-  maleFirstNames: NamesReptilianMale
-  femaleFirstNames: NamesReptilianFemale
-  naming: FirstDashFirst
-
-- type: speciesBaseSprites
-  id: MobAshWalkerSprites
-  sprites:
-    Head: MobReptilianHead
-    Snout: MobHumanoidAnyMarking
-    UndergarmentTop: MobHumanoidAnyMarking
-    UndergarmentBottom: MobHumanoidAnyMarking
-    Chest: MobReptilianTorso
-    HeadTop: MobHumanoidAnyMarking
-    HeadSide: MobHumanoidAnyMarking
-    Tail: MobHumanoidAnyMarking
-    Eyes: MobHumanoidEyes
-    LArm: MobReptilianLArm
-    RArm: MobReptilianRArm
-    LHand: MobReptilianLHand
-    RHand: MobReptilianRHand
-    LLeg: MobReptilianLLegDigi # Corvax-Digitigrade
-    RLeg: MobReptilianRLegDigi # Corvax-Digitigrade
-    LFoot: MobReptilianLFootDigi # Corvax-Digitigrade
-    RFoot: MobReptilianRFootDigi # Corvax-Digitigrade
-
-- type: markingPoints
-  id: MobAshWalkerMarkingLimits
-  onlyWhitelisted: true
-  points:
-    Hair:
-      points: 0
-      required: false
-    FacialHair:
-      points: 0
-      required: false
-    Tail:
-      points: 1
-      required: true
-      defaultMarkings: [ LizardTailSmooth ]
-    Snout:
-      points: 1
-      required: true
-      defaultMarkings: [ LizardSnoutRound ]
-    HeadTop:
-      points: 2
-      required: false
-    HeadSide:
-      points: 2 # Corvax-Wega-Edit
-      required: false
-    UndergarmentTop:
-      points: 1
-      required: false
-    UndergarmentBottom:
-      points: 1
-      required: false
-    Chest:
-      points: 3
-      required: false
-    Legs:
-      points: 2
-      required: false
-    Arms:
-      points: 2
-      required: false
+# - type: species
+#   id: AshWalker
+#   name: species-name-ashwalker
+#   roundStart: false
+#   prototype: MobAshWalker
+#   defaultSkinTone: "#34a223"
+#   dollPrototype: AppearanceAshWalker
+#   skinColoration: Hues
+#   maleFirstNames: NamesReptilianMale
+#   femaleFirstNames: NamesReptilianFemale
+#   naming: FirstDashFirst

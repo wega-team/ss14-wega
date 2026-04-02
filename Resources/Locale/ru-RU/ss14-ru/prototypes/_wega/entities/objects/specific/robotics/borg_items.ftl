@@ -1,8 +1,9 @@
 # Обычные
 ent-WeaponMeleeNeedleBorg = стальная палка
     .desc = Заостренная палка, которая раньше лопала шарики, а теперь будет и лопать головы недругов.
-ent-PickaxeBorg =  кирка
+ent-PickaxeBorg =  встроенная кирка
     .desc = { ent-Pickaxe.desc }
+    .suffix = Киборг
 ent-BorgGeneratorCommonCandy = генератор конфет
     .desc = Успокойте членов экипажа вкусной ( или нет ) конфеткой! Убедите их, что Вы знакомый дядя для них!
     .suffix = 10% мед веществ
@@ -18,6 +19,8 @@ ent-BorgGeneratorInflatableWall = генератор надувных стен �
     .desc = Устройство для генерации временных барикад в виде надувных стен и дверей.
 ent-BorgDrinkSolutionWaterCommon = синтезатор воды
     .desc = Молитесь, чтоб водяной чип был в исправности, иначе ждите судьбу 13ой станции.
+ent-BoxFulton = коробка для хранения фултонов и маячков
+    .desc = Носите с собой хотя бы один фултон и два маячка станционарных.
 
 # СБ
 ent-StunprodBorg = дубинка-шокер
@@ -130,6 +133,9 @@ ent-BorgGeneratorMaterialPlasteel = генератор пачек пластал
     .desc = Генератор материи, настроенный на генерацию пачек пластали.
 
 # Врач
+ent-HandheldCrewMonitorBorg = встроенный монитор экипажа
+    .desc = НаноТрейзен не смогла встроить в Вас монитор, так что довольствуетесь этим.
+    .suffix = Киборг
 ent-BorgSyringe = { ent-BaseSyringe }
     .desc = { ent-BaseSyringe.desc }
     .suffix = Киборг
@@ -172,6 +178,8 @@ ent-WeaponProtoKineticAcceleratorBorg = протокинетический ус�
     .desc = Стреляет кинетическими зарядами с низким уроном на короткое расстояние.
 ent-MailBagBorg = встроенная сумка для почты
     .desc = Сумка шахтерского киборга для почты, хотя внешне оно похоже на обычную сумку, вмещает в себя как целая тележка!
+ent-DocumentBorg = карта очков киборга
+    .desc = Теперь Вы официально способны получать очки с переработчика руды. Не забудьте подписать только карту на всякий случай. 
 
 # НИО, не РНД йоу
 ent-WeaponPistolCHIMPBorg = встроенный излучатель М.А.Р.Т.Ы.Х.
@@ -182,6 +190,7 @@ ent-BaseResearchAndDevelopmentPointSourceBorg = генератор ОИ
     .desc = Устройство, которое способно генерировать ОИ буквально из воздуха, главное переодически его проверять.
 ent-HolofanProjectorBorgSci = встроенный атмос голопроектор
     .desc = ВНИМАНИЕ, данный проектор испукает более слабые барьеры, время жизни таких барьеров крайне низко!
+    .suffix = Борг НИО
 ent-HoloFanSci = { ent-HoloFan }
     .desc = { ent-HoloFan.desc }
 
@@ -217,15 +226,21 @@ ent-XenoRCD = РСУ ксеноборгов
 ent-MiniSyringePax = { ent-MiniSyringe }
     .desc = { ent-MiniSyringe.desc }
     .suffix = Пакс
-ent-MiniSyringeMute = { ent-MiniSyringe }
+ent-MiniSyringeImpedrezene = { ent-MiniSyringe }
     .desc = { ent-MiniSyringe.desc }
-    .suffix = Токсин немоты
+    .suffix = Импедризин
 ent-BorgGeneratorMiniSyringePax = генератор снарядов пакса
     .desc = Встроенный генератор снарядов для шприцемета, который не позволит жертве дать отпор.
-ent-BorgGeneratorMiniSyringeMute = генератор снарядов токсина немоты
+ent-BorgGeneratorMiniSyringeImpedrezene = генератор снарядов импедризина
     .desc = Встроенный генератор снарядов для шприцемета, который не позволит жертве что-либо сказать.
+ent-XenoborgHoloprojectorEMPTrap = проектор ЭМИ ловушек
+    .desc = Устройство для создания проекции ловушки, которая существует 2 минуты.
 ent-RepeirModeDeviceXenoborg = устройство самовосстановления ксеноборгов
     .desc = Устройство для поддержки корпуса в целом состоянии.
+ent-RepeirModeDeviceXenoborgHeavy = устройство самовосстановления тяжёлого ксеноборга
+    .desc = Устройство для поддержки корпуса в целом состоянии усилинное под Ваш вес.
+ent-BorgGeneratorNanopastXenoborg = генератор нанопасты ксеноборгов
+    .desc = Устройство для генерации тюбиков нанопасты, позволяющая экстренно залатать дыры у синтетиков.
 
 # Иконка
 ent-BorgIconRollerBed = Заглушка

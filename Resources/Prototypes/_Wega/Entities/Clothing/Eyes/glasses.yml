@@ -16,8 +16,8 @@
     - WhitelistChameleon
   - type: Construction
     graph: GlassesMed
-    node: medGlasses  
-  
+    node: medGlasses
+
 - type: entity
   parent: ClothingEyesHudMedSec
   id: ClothingEyesGlassesMedSecSunglasses
@@ -37,3 +37,21 @@
   - type: Construction
     graph: GlassesMedSec
     node: medsecGlasses
+
+# ADT
+
+- type: entity
+  parent: ClothingEyesBase
+  id: ClothingEyesGlassesMonocle
+  name: monocle
+  description: An outdated optical device for correcting vision or demonstrating arrogance.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Eyes/Glasses/monocle.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Eyes/Glasses/monocle.rsi
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+  - type: IdentityBlocker
+    coverage: EYES

@@ -1,12 +1,9 @@
 using System.Linq;
-using Content.Shared.Body.Components; // Corvax-Wega-Surgery
-using Content.Shared.Body.Part; // Corvax-Wega-Surgery
-using Content.Shared.Body.Systems; // Corvax-Wega-Surgery
 using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Prototypes;
+using Content.Shared.Damage.Systems;
 using Content.Shared.FixedPoint;
-using Content.Shared.Surgery.Components; // Corvax-Wega-Surgery
 using Robust.Client.GameObjects;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
@@ -32,15 +29,13 @@ namespace Content.Client.Damage;
 public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponent>
 {
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly SharedBodySystem _body = default!; // Corvax-Wega-Surgery
+    [Dependency] private readonly DamageableSystem _damageable = default!;
 
     public override void Initialize()
     {
         base.Initialize();
 
         SubscribeLocalEvent<DamageVisualsComponent, ComponentInit>(InitializeEntity);
-        SubscribeLocalEvent<OperatedComponent, BodyPartRemovedEvent>(OnBodyPartRemoved); // Corvax-Wega-Surgery
-        SubscribeLocalEvent<OperatedComponent, BodyPartAddedEvent>(OnBodyPartAdded); // Corvax-Wega-Surgery
     }
 
     private void InitializeEntity(EntityUid entity, DamageVisualsComponent comp, ComponentInit args)
@@ -181,7 +176,7 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
             // See if that group is in our entity's damage container.
             else if (!damageVisComp.Overlay && damageVisComp.DamageGroup != null)
             {
-                if (!damageContainer.SupportedGroups.Contains(damageVisComp.DamageGroup))
+                if (!damageContainer.SupportedGroups.Contains(damageVisComp.DamageGroup.Value))
                 {
                     Log.Error($"Damage keys were invalid for entity {entity}.");
                     damageVisComp.Valid = false;
@@ -391,7 +386,7 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
         if (!AppearanceSystem.TryGetData<DamageVisualizerGroupData>(uid, DamageVisualizerKeys.DamageUpdateGroups,
                 out var data, component))
         {
-            data = new DamageVisualizerGroupData(Comp<DamageableComponent>(uid).DamagePerGroup.Keys.ToList());
+            data = new DamageVisualizerGroupData(_damageable.GetDamagePerGroup(uid).Keys.ToList());
         }
 
         UpdateDamageVisuals(data.GroupList, (uid, damageComponent, spriteComponent, damageVisComp));
@@ -403,50 +398,21 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
     ///     layer will no longer be visible, or obtain
     ///     any damage updates.
     /// </summary>
-    /// // Corvax-Wega-Surgery-Edit-start
     private void UpdateDisabledLayers(EntityUid uid, SpriteComponent spriteComponent, AppearanceComponent component, DamageVisualsComponent damageVisComp)
     {
-        if (damageVisComp.Disabled)
-        {
-            foreach (var layer in damageVisComp.TargetLayerMapKeys)
-            {
-                if (damageVisComp.TrackAllDamage)
-                {
-                    spriteComponent.LayerSetVisible($"{layer}trackDamage", false);
-                    continue;
-                }
-
-                if (damageVisComp.DamageOverlayGroups == null)
-                    continue;
-
-                foreach (var damageGroup in damageVisComp.DamageOverlayGroups.Keys)
-                {
-                    spriteComponent.LayerSetVisible($"{layer}{damageGroup}", false);
-                }
-            }
-            return;
-        }
-
         foreach (var layer in damageVisComp.TargetLayerMapKeys)
         {
-            var hasPart = HasBodyPart(uid, layer);
+            // I assume this gets set by something like body system if limbs are missing???
+            // TODO is this actually used by anything anywhere?
             AppearanceSystem.TryGetData(uid, layer, out bool disabled, component);
 
-            var isDisabled = !hasPart || disabled;
-            if (damageVisComp.DisabledLayers[layer] == isDisabled)
+            if (damageVisComp.DisabledLayers[layer] == disabled)
                 continue;
 
-            damageVisComp.DisabledLayers[layer] = isDisabled;
-
-            var threshold = damageVisComp.TrackAllDamage
-                ? damageVisComp.LastDamageThreshold
-                : damageVisComp.LastThresholdPerGroup.TryGetValue(damageVisComp.DamageGroup ?? "", out var t) ? t : FixedPoint2.Zero;
-
-            var shouldBeVisible = !isDisabled && threshold > damageVisComp.Thresholds[0];
-
+            damageVisComp.DisabledLayers[layer] = disabled;
             if (damageVisComp.TrackAllDamage)
             {
-                SpriteSystem.LayerSetVisible((uid, spriteComponent), $"{layer}trackDamage", shouldBeVisible);
+                SpriteSystem.LayerSetVisible((uid, spriteComponent), $"{layer}trackDamage", !disabled);
                 continue;
             }
 
@@ -455,11 +421,10 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
 
             foreach (var damageGroup in damageVisComp.DamageOverlayGroups.Keys)
             {
-                SpriteSystem.LayerSetVisible((uid, spriteComponent), $"{layer}{damageGroup}", shouldBeVisible);
+                SpriteSystem.LayerSetVisible((uid, spriteComponent), $"{layer}{damageGroup}", !disabled);
             }
         }
     }
-    /// // Corvax-Wega-Surgery-Edit-end
 
     /// <summary>
     ///     Checks the overlay ordering on the current
@@ -523,11 +488,10 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
     /// </summary>
     private void UpdateDamageVisuals(Entity<DamageableComponent, SpriteComponent, DamageVisualsComponent> entity)
     {
-        var damageComponent = entity.Comp1;
         var spriteComponent = entity.Comp2;
         var damageVisComp = entity.Comp3;
 
-        if (!CheckThresholdBoundary(damageComponent.TotalDamage, damageVisComp.LastDamageThreshold, damageVisComp, out var threshold))
+        if (!CheckThresholdBoundary(_damageable.GetTotalDamage(entity.AsNullable()), damageVisComp.LastDamageThreshold, damageVisComp, out var threshold))
             return;
 
         damageVisComp.LastDamageThreshold = threshold;
@@ -550,11 +514,11 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
     ///     according to the list of damage groups
     ///     passed into it.
     /// </summary>
-    private void UpdateDamageVisuals(List<string> delta, Entity<DamageableComponent, SpriteComponent, DamageVisualsComponent> entity)
+    private void UpdateDamageVisuals(List<ProtoId<DamageGroupPrototype>> delta, Entity<DamageableComponent, SpriteComponent, DamageVisualsComponent> entity)
     {
-        var damageComponent = entity.Comp1;
         var spriteComponent = entity.Comp2;
         var damageVisComp = entity.Comp3;
+        var damage = _damageable.GetAllDamage((entity.Owner, entity.Comp1));
 
         foreach (var damageGroup in delta)
         {
@@ -562,7 +526,7 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
                 continue;
 
             if (!_prototypeManager.TryIndex<DamageGroupPrototype>(damageGroup, out var damageGroupPrototype)
-                || !damageComponent.Damage.TryGetDamageInGroup(damageGroupPrototype, out var damageTotal))
+                || !damage.TryGetDamageInGroup(damageGroupPrototype, out var damageTotal))
                 continue;
 
             if (!damageVisComp.LastThresholdPerGroup.TryGetValue(damageGroup, out var lastThreshold)
@@ -627,7 +591,7 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
         }
         else if (damageVisComp.DamageGroup != null)
         {
-            UpdateDamageVisuals(new List<string>() { damageVisComp.DamageGroup }, entity);
+            UpdateDamageVisuals(new() { damageVisComp.DamageGroup.Value }, entity);
         }
         else if (damageVisComp.DamageOverlay != null)
         {
@@ -759,63 +723,4 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
             SpriteSystem.LayerSetRsiState(spriteEnt.AsNullable(), spriteLayer, $"{statePrefix}_{threshold}");
         }
     }
-
-    // Corvax-Wega-Surgery-start
-    private bool HasBodyPart(EntityUid uid, object layerMapKey)
-    {
-        if (layerMapKey is not Enum layerEnum)
-            return true;
-
-        var layerName = layerEnum.ToString();
-        BodyPartSymmetry? symmetry = layerName switch
-        {
-            "LArm" => BodyPartSymmetry.Left,
-            "RArm" => BodyPartSymmetry.Right,
-            "LLeg" => BodyPartSymmetry.Left,
-            "RLeg" => BodyPartSymmetry.Right,
-            _ => null
-        };
-
-        var partType = layerName switch
-        {
-            "LArm" or "RArm" => BodyPartType.Arm,
-            "LLeg" or "RLeg" => BodyPartType.Leg,
-            "Head" => BodyPartType.Head,
-            "Chest" => BodyPartType.Torso,
-            _ => BodyPartType.Other
-        };
-
-        if (TryComp<BodyComponent>(uid, out var body))
-        {
-            foreach (var (_, part) in _body.GetBodyChildrenOfType(uid, partType, body))
-            {
-                if (symmetry == null || part.Symmetry == symmetry)
-                    return true;
-            }
-            return false;
-        }
-
-        return true;
-    }
-
-    private void OnBodyPartRemoved(Entity<OperatedComponent> ent, ref BodyPartRemovedEvent args)
-    {
-        if (TryComp<DamageVisualsComponent>(ent, out var damageVisComp) &&
-            TryComp<SpriteComponent>(ent, out var spriteComponent) &&
-            TryComp<AppearanceComponent>(ent, out var appearanceComponent))
-        {
-            UpdateDisabledLayers(ent, spriteComponent, appearanceComponent, damageVisComp);
-        }
-    }
-
-    private void OnBodyPartAdded(Entity<OperatedComponent> ent, ref BodyPartAddedEvent args)
-    {
-        if (TryComp<DamageVisualsComponent>(ent, out var damageVisComp) &&
-            TryComp<SpriteComponent>(ent, out var spriteComponent) &&
-            TryComp<AppearanceComponent>(ent, out var appearanceComponent))
-        {
-            UpdateDisabledLayers(ent, spriteComponent, appearanceComponent, damageVisComp);
-        }
-    }
-    // Corvax-Wega-Surgery-end
 }

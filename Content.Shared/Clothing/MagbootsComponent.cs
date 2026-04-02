@@ -5,7 +5,7 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Clothing;
 
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true)] // Corvax-Wega-AdvMagboots-Edit
 [Access(typeof(SharedMagbootsSystem))]
 public sealed partial class MagbootsComponent : Component
 {
@@ -18,8 +18,13 @@ public sealed partial class MagbootsComponent : Component
     [DataField]
     public bool RequiresGrid = true;
 
-    [DataField] // Corvax-Wega-AdvMagboots
-    public bool DisabledAutoOff = false; // Corvax-Wega-AdvMagboots
+    // Corvax-Wega-AdvMagboots-start
+    [DataField, AutoNetworkedField]
+    public bool DisabledAutoMode = false;
+
+    [DataField, AutoNetworkedField]
+    public bool DisabledAutoOff = false;
+    // Corvax-Wega-AdvMagboots-end
 
     /// <summary>
     /// Slot the clothing has to be worn in to work.

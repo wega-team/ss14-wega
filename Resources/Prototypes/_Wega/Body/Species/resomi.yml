@@ -1,0 +1,389 @@
+- type: markingsGroup
+  parent: None
+  id: Resomi
+  onlyGroupWhitelisted: true
+  limits:
+    enum.HumanoidVisualLayers.Head:
+      limit: 2
+      required: false
+    enum.HumanoidVisualLayers.Hair:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.Tail:
+      limit: 2
+      required: true
+      default: [ ResomiTail, ResomiTailFeathers ]
+    enum.HumanoidVisualLayers.Chest:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.LArm:
+      limit: 1
+      required: false
+      default: [ ResomiLArmFeathers ]
+    enum.HumanoidVisualLayers.RArm:
+      limit: 1
+      required: false
+      default: [ ResomiRArmFeathers ]
+    enum.HumanoidVisualLayers.LLeg:
+      limit: 1
+      required: false
+      default: [ ResomiLLegFeathers ]
+    enum.HumanoidVisualLayers.RLeg:
+      limit: 1
+      required: false
+      default: [ ResomiRLegFeathers  ]
+
+- type: entity
+  parent: BaseSpeciesAppearance
+  id: AppearanceResomi
+  name: resomi appearance
+  components:
+  - type: Inventory
+    speciesId: resomi
+    displacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: _Wega/Mobs/Species/Resomi/displacement.rsi
+            state: jumpsuit
+      eyes:
+        sizeMaps:
+          32:
+            sprite: _Wega/Mobs/Species/Resomi/displacement.rsi
+            state: eyes
+      gloves:
+        sizeMaps:
+          32:
+            sprite: _Wega/Mobs/Species/Resomi/displacement.rsi
+            state: hands
+      head:
+        sizeMaps:
+          32:
+            sprite: _Wega/Mobs/Species/Resomi/displacement.rsi
+            state: head
+      back:
+        sizeMaps:
+          32:
+            sprite: _Wega/Mobs/Species/Resomi/displacement.rsi
+            state: back
+      ears:
+        sizeMaps:
+          32:
+            sprite: _Wega/Mobs/Species/Resomi/displacement.rsi
+            state: ears
+      shoes:
+        sizeMaps:
+          32:
+            sprite: _Wega/Mobs/Species/Resomi/displacement.rsi
+            state: feet
+      neck:
+        sizeMaps:
+          32:
+            sprite: _Wega/Mobs/Species/Resomi/displacement.rsi
+            state: neck
+      mask:
+        sizeMaps:
+          32:
+            sprite: _Wega/Mobs/Species/Resomi/displacement.rsi
+            state: mask
+      suitstorage:
+        sizeMaps:
+          32:
+            sprite: _Wega/Mobs/Species/Resomi/displacement.rsi
+            state: suitStorage
+      belt:
+        sizeMaps:
+          32:
+            sprite: _Wega/Mobs/Species/Resomi/displacement.rsi
+            state: belt
+    # Corvax-Wega-start
+      underweartop:
+        sizeMaps:
+          32:
+            sprite: _Wega/Mobs/Species/Resomi/displacement.rsi
+            state: top
+      underwearbottom:
+        sizeMaps:
+          32:
+            sprite: _Wega/Mobs/Species/Resomi/displacement.rsi
+            state: bottom
+      socks:
+        sizeMaps:
+          32:
+            sprite: _Wega/Mobs/Species/Resomi/displacement.rsi
+            state: socks
+      anal:
+        sizeMaps:
+          32:
+            sprite: _Wega/Mobs/Species/Resomi/displacement.rsi
+            state: anal
+      outerClothing:
+        sizeMaps:
+          32:
+            sprite: _Wega/Mobs/Species/Resomi/displacement.rsi
+            state: outerclothing
+    # Corvax-Wega-end
+  - type: Hands
+    handDisplacement:
+      sizeMaps:
+        32:
+          sprite: _Wega/Mobs/Species/Resomi/displacement.rsi
+          state: inHand
+  - type: DamageVisuals
+    thresholds: [ 10, 30, 50, 70]
+    targetLayers:
+    - "enum.HumanoidVisualLayers.Chest"
+    - "enum.HumanoidVisualLayers.Head"
+    - "enum.HumanoidVisualLayers.LArm"
+    - "enum.HumanoidVisualLayers.LLeg"
+    - "enum.HumanoidVisualLayers.RArm"
+    - "enum.HumanoidVisualLayers.RLeg"
+    damageOverlayGroups:
+      Brute:
+        sprite: _Wega/Mobs/Effects/Resomi/brute_damage.rsi
+        color: "#C048C2"
+      Burn:
+        sprite: _Wega/Mobs/Effects/Resomi/burn_damage.rsi
+  - type: FireVisuals
+    sprite: _Wega/Mobs/Effects/onfire.rsi
+    normalState: Resomi_minor_burning
+    alternateState: Resomi_burning
+  - type: InitialBody
+    organs:
+      Torso: OrganResomiTorso
+      Head: OrganResomiHead
+      ArmLeft: OrganResomiArmLeft
+      ArmRight: OrganResomiArmRight
+      HandLeft: OrganResomiHandLeft
+      HandRight: OrganResomiHandRight
+      LegLeft: OrganResomiLegLeft
+      LegRight: OrganResomiLegRight
+      FootLeft: OrganResomiFootLeft
+      FootRight: OrganResomiFootRight
+      Brain: OrganResomiBrain
+      Eyes: OrganResomiEyes
+      Tongue: OrganResomiTongue
+      Appendix: OrganResomiAppendix
+      Ears: OrganResomiEars
+      Lungs: OrganResomiLungs
+      Heart: OrganResomiHeart
+      Stomach: OrganResomiStomach
+      Liver: OrganResomiLiver
+      Kidneys: OrganResomiKidneys
+  - type: HumanoidProfile
+    species: Resomi
+    height: 150
+
+- type: entity
+  name: Urist McRaptor
+  parent:
+  - AppearanceResomi
+  - BaseSpeciesMobOrganic
+  - BaseOperated
+  id: MobResomi
+  components:
+  - type: WeaponsUseInability
+  - type: AgillitySkill
+  - type: ListenUpSkill
+  - type: ChatModifier
+    whisperListeningRange: 4
+  - type: FlashModifier
+    modifier: 2
+  - type: ResomiAccent
+  - type: Fixtures
+    fixtures: # TODO: This needs a second fixture just for mob collisions.
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        # they r very small
+        density: 60
+        restitution: 0.0
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: Puller
+    needsHands: false
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: Resomi
+  - type: Bloodstream
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: ResomiBlood
+        Quantity: 300
+  - type: MeleeWeapon
+    soundHit:
+      collection: AlienClaw
+    angle: 30
+    animation: WeaponArcClaw
+    damage:
+      types:
+        Slash: 5
+  - type: Temperature
+    currentTemperature: 310.15
+    specificHeat: 42
+  - type: TemperatureDamage
+    heatDamageThreshold: 325
+    coldDamageThreshold: 230
+    coldDamage:
+      types:
+        Cold : 0.1 #per second, scales with temperature & other constants
+    heatDamage:
+      types:
+        Heat : 1.5 #per second, scales with temperature & other constants
+  - type: TemperatureSpeed
+    thresholds:
+      260: 0.8
+      250: 0.6
+      230: 0.4
+  - type: ThermalRegulator
+    normalBodyTemperature: 300.15
+  - type: Speech
+    speechSounds: Resomi
+  - type: Vocal
+    sounds:
+      Male: MaleResomi
+      Female: FemaleResomi
+      Unsexed: MaleResomi
+  - type: Respirator
+    damage:
+      types:
+        Asphyxiation: 1.0
+    damageRecovery:
+      types:
+        Asphyxiation: -1.0
+  - type: DnaModifier
+    upper: MobResomi
+    lowest: MobStokkey
+
+- type: entity
+  parent: OrganBase
+  id: OrganResomi
+  abstract: true
+  suffix: Resomi
+
+- type: entity
+  id: OrganResomiMetabolizer
+  abstract: true
+  components:
+  - type: Metabolizer
+    metabolizerTypes: [ Human ]
+
+- type: entity
+  parent: OrganResomi
+  id: OrganResomiInternal
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: Mobs/Species/Human/organs.rsi
+
+- type: entity
+  id: OrganResomiVisual
+  abstract: true
+  components:
+  - type: VisualOrgan
+    data:
+      sprite: _Wega/Mobs/Species/Resomi/parts.rsi
+  - type: VisualOrganMarkings
+    markingData:
+      group: Resomi
+
+- type: entity
+  parent: [ OrganResomi, OrganResomiVisual ]
+  id: OrganResomiExternal
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Resomi/parts.rsi
+
+- type: entity
+  parent: [ OrganBaseTorsoSexed, OrganBaseTorso, OrganResomiExternal ]
+  id: OrganResomiTorso
+
+- type: entity
+  parent: [ OrganBaseHeadSexed, OrganBaseHead, OrganResomiExternal ]
+  id: OrganResomiHead
+  components:
+  - type: VisualOrganMarkings
+    hideableLayers:
+    - enum.HumanoidVisualLayers.Hair
+    - enum.HumanoidVisualLayers.HeadTop
+
+- type: entity
+  parent: [ OrganBaseArmLeft, OrganResomiExternal ]
+  id: OrganResomiArmLeft
+
+- type: entity
+  parent: [ OrganBaseArmRight, OrganResomiExternal ]
+  id: OrganResomiArmRight
+
+- type: entity
+  parent: [ OrganBaseHandLeft, OrganResomiExternal ]
+  id: OrganResomiHandLeft
+
+- type: entity
+  parent: [ OrganBaseHandRight, OrganResomiExternal ]
+  id: OrganResomiHandRight
+
+- type: entity
+  parent: [ OrganBaseLegLeft, OrganResomiExternal ]
+  id: OrganResomiLegLeft
+
+- type: entity
+  parent: [ OrganBaseLegRight, OrganResomiExternal ]
+  id: OrganResomiLegRight
+
+- type: entity
+  parent: [ OrganBaseFootLeft, OrganResomiExternal ]
+  id: OrganResomiFootLeft
+
+- type: entity
+  parent: [ OrganBaseFootRight, OrganResomiExternal ]
+  id: OrganResomiFootRight
+
+- type: entity
+  parent: [ OrganBaseBrain, OrganResomiInternal ]
+  id: OrganResomiBrain
+
+- type: entity
+  parent: [ OrganResomiVisual, OrganBaseEyes, OrganResomiInternal ]
+  id: OrganResomiEyes
+  components:
+  - type: VisualOrgan
+    data:
+      sprite: _Wega/Mobs/Customization/eyes.rsi
+      state: resomi
+
+- type: entity
+  parent: [ OrganBaseTongue, OrganResomiInternal ]
+  id: OrganResomiTongue
+
+- type: entity
+  parent: [ OrganBaseAppendix, OrganResomiInternal ]
+  id: OrganResomiAppendix
+
+- type: entity
+  parent: [ OrganBaseEars, OrganResomiInternal ]
+  id: OrganResomiEars
+
+- type: entity
+  parent: [ OrganBaseLungs, OrganResomiInternal, OrganResomiMetabolizer ]
+  id: OrganResomiLungs
+
+- type: entity
+  parent: [ OrganBaseHeart, OrganResomiInternal, OrganResomiMetabolizer ]
+  id: OrganResomiHeart
+
+- type: entity
+  parent: [ OrganBaseStomach, OrganResomiInternal, OrganResomiMetabolizer ]
+  id: OrganResomiStomach
+
+- type: entity
+  parent: [ OrganBaseLiver, OrganResomiInternal, OrganResomiMetabolizer ]
+  id: OrganResomiLiver
+
+- type: entity
+  parent: [ OrganBaseKidneys, OrganResomiInternal, OrganResomiMetabolizer ]
+  id: OrganResomiKidneys

@@ -1,0 +1,66 @@
+uniform sampler2D SCREEN_TEXTURE;
+uniform highp float time;
+uniform highp float color_r;
+uniform highp float color_g;
+uniform highp float color_b;
+uniform highp float intensity;
+uniform highp float grain;
+uniform highp float distortion;
+
+highp float rand(highp vec2 uv) {
+    return fract(sin(dot(uv, vec2(12.9898, 78.233))) * 43758.5453);
+}
+
+void fragment() {
+    highp vec2 uv = UV;
+    highp vec2 original_uv = uv;
+
+    highp float slowSwayX = sin(time * 1.2) * distortion * 0.008;
+    highp float slowSwayY = cos(time * 1.5) * distortion * 0.006;
+
+    highp float secondarySwayX = sin(time * 2.8) * distortion * 0.004;
+    highp float secondarySwayY = cos(time * 3.2) * distortion * 0.003;
+
+    highp float jitterX = sin(time * 25.0) * distortion * 0.002;
+    highp float jitterY = cos(time * 22.0) * distortion * 0.0015;
+
+    uv.x += slowSwayX + secondarySwayX + jitterX;
+    uv.y += slowSwayY + secondarySwayY + jitterY;
+
+    highp vec4 color = texture(SCREEN_TEXTURE, clamp(uv, 0.001, 0.999));
+    highp vec4 original_color = texture(SCREEN_TEXTURE, original_uv);
+    highp float alpha = color.a;
+
+    highp vec2 screenGradient = original_uv * 2.0 - 1.0;
+    highp float gradient = (screenGradient.x * screenGradient.y) * 0.3;
+    highp float vignette = length(original_uv - 0.5) * 0.2;
+
+    highp vec3 baseColor = vec3(color_r, color_g, color_b);
+
+    highp vec3 dynamicColor = baseColor;
+    dynamicColor.r += sin(time * 0.5) * 0.04;
+    dynamicColor.g += cos(time * 0.7) * 0.04;
+    dynamicColor.b += sin(time * 0.9) * 0.04;
+    dynamicColor = clamp(dynamicColor, 0.0, 1.0);
+
+    highp float neonStrength = (0.3 + gradient * 0.2) * intensity * 0.5;
+    highp vec3 mixed = mix(color.rgb, dynamicColor * (0.85 + gradient * 0.3), neonStrength);
+
+    highp float lum = dot(mixed, vec3(0.299, 0.587, 0.114));
+    highp float noiseAmount = grain * 0.12 * (0.5 + lum * 0.3);
+    highp float noise = (rand(original_uv + floor(time * 12.0)) - 0.5) * noiseAmount;
+    mixed += noise;
+
+    highp float scanline = sin(original_uv.y * 600.0) * 0.02;
+    mixed.rgb -= scanline * (0.4 + 0.3 * sin(time * 20.0));
+
+    highp float flicker = 0.94 + 0.04 * sin(time * 12.0);
+    mixed *= flicker;
+
+    highp vec3 result = mix(original_color.rgb, mixed, 0.38);
+    result = result * (1.0 - vignette * 0.15);
+    result = result * 0.95;
+
+    result = clamp(result, 0.0, 1.0);
+    COLOR = vec4(result, alpha);
+}

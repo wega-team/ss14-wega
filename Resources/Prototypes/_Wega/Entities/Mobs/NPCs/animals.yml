@@ -60,8 +60,7 @@
       types:
         Blunt: 5
         Piercing: 4
-      groups:
-        Burn: 3
+        Heat: 3
     clumsySound:
       path: /Audio/Animals/monkey_scream.ogg
   - type: SentienceTarget
@@ -147,8 +146,7 @@
       types:
         Blunt: 5
         Piercing: 4
-      groups:
-        Burn: 3
+        Heat: 3
     clumsySound:
       path: /Audio/Animals/monkey_scream.ogg
   - type: SentienceTarget
@@ -171,8 +169,6 @@
   - type: DnaModifier
     upper: MobVox
     lowest: MobStokkeyVox
-  - type: Body
-    prototype: Stokkey
   - type: Bloodstream
     bloodReferenceSolution:
       reagents:

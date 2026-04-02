@@ -14,26 +14,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.2.2
-      # Corvax-Secrets-Start
-      - name: Setup secrets
-        env:
-          SSH_KEY: ${{ secrets.SECRETS_PRIVATE_KEY }}
-        if: ${{ env.SSH_KEY != '' }}
+      - name: Delete sponsor secrets content
         run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SECRETS_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          echo "HOST *" > ~/.ssh/config
-          echo "  Hostname github.com" >> ~/.ssh/config
-          echo "  Port 22" >> ~/.ssh/config
-          echo "  StrictHostKeyChecking no" >> ~/.ssh/config
-          git clone git@github.com:corvax-nexus/secrets.git Secrets
-          cp -R Secrets/Resources/Prototypes Resources/Prototypes/CorvaxSecrets
-          cp -R Secrets/Resources/ServerPrototypes Resources/Prototypes/CorvaxSecretsServer
-          cp -R Secrets/Resources/Locale Resources/Locale/ru-RU/corvax-secrets
-          cp -R Secrets/Resources/Textures Resources/Textures/CorvaxSecrets
-          cp -R Secrets/Resources/Audio Resources/Audio/CorvaxSecrets
-      # Corvax-Secrets-End
+          rm -f Resources/Prototypes/_Wega/Sponsors/sponsor-tiers.yml
+          rm -f Resources/Prototypes/_Wega/Sponsors/sponsorghosts.yml
       - name: Setup submodule
         run: |
           git submodule update --init --recursive

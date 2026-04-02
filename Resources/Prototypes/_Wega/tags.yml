@@ -400,6 +400,102 @@
 
 - type: Tag
   id: Nanopast
-  
+
 - type: Tag
   id: AnomalyCore
+
+- type: Tag
+  id: GravityCore
+
+- type: Tag
+  id: BluespaceCore
+
+- type: Tag
+  id: BorgScience
+
+- type: Tag
+  id: DocumentBorg
+
+- type: Tag
+  id: ModNotEquipable
+
+- type: Tag
+  id: ModularSuitCore
+
+- type: Tag
+  id: ModularSuitHelmet
+
+- type: Tag
+  id: ModularSuitChestPlate
+
+- type: Tag
+  id: ModularSuitGauntlets
+
+- type: Tag
+  id: ModularSuitBoots
+
+- type: Tag
+  id: BasicPlating
+
+- type: Tag
+  id: CivilianPlating
+
+- type: Tag
+  id: ClownPlating
+
+- type: Tag
+  id: EngineeringPlating
+
+- type: Tag
+  id: AtmosPlating
+
+- type: Tag
+  id: WhiteEngineeringPlating
+
+- type: Tag
+  id: SecurityPlating
+
+- type: Tag
+  id: RedSecurityPlating
+
+- type: Tag
+  id: RescuePlating
+
+- type: Tag
+  id: MedicalPlating
+
+- type: Tag
+  id: RDPlating
+
+- type: Tag
+  id: StorageSuitModule
+
+- type: Tag
+  id: FlashlightSuitModule
+
+- type: Tag
+  id: VisorSuitModule
+
+- type: Tag
+  id: WeldingModuleConflict
+
+- type: Tag
+  id: JetpackSuitModule
+
+- type: Tag
+  id: MagneticSuitModule
+
+- type: Tag
+  id: EMPShieldSuitModule
+
+- type: Tag
+  id: TemperatureRegulatorModuleConflict
+
+- type: Tag
+  id: CarryConstructorModuleConflict
+
+- type: Tag
+  id: ArmorBoosterSuitModule
+
+- type: Tag
+  id: CompressionModuleConflict

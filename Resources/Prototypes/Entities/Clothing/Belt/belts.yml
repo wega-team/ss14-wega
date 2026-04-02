@@ -205,7 +205,7 @@
   - type: Clothing
     sprite: Clothing/Belt/militarywebbing.rsi
   - type: ExplosionResistance
-    damageCoefficient: 0.1
+    damageCoefficient: 0 # Corvax-Wega-Edit
   - type: StaticPrice
     price: 500
   # Corvax-Wega-Dirtable-start

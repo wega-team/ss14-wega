@@ -1,0 +1,18 @@
+# Tier 1
+
+- type: technology
+  id: CivilianModifier
+  name: research-technology-civilian-modifier
+  icon:
+    sprite: _Wega/Objects/Specific/Robotics/modules.rsi
+    state: microwave_beam
+  discipline: CivilianServices
+  tier: 1
+  cost: 7500
+  recipeUnlocks:
+  - SadTromboneImplant
+  - LightImplant
+  - MicrowaveBeamSuitModule
+  - BurgerDispenserSuitModule
+  - ApparatusSuitModule
+  - AdvancedFlashlightSuitModule

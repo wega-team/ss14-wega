@@ -84490,7 +84490,7 @@ entities:
     - type: Transform
       pos: 10.592993,64.50188
       parent: 2
-- proto: ClothingOuterHardsuitClown
+- proto: ClothingModularControllerCosmohonkPreassembled
   entities:
   - uid: 12835
     components:
@@ -198990,7 +198990,7 @@ entities:
       parent: 2
     - type: Fixtures
       fixtures: {}
-- proto: VendingMachineWinter
+- proto: VendingMachineFashion
   entities:
   - uid: 29615
     components:

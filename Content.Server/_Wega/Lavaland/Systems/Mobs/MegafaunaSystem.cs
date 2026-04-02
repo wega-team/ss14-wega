@@ -1,3 +1,4 @@
+using Content.Server.Lavaland.Mobs.Components;
 using Content.Server.NPC.HTN;
 using Content.Server.NPC.Systems;
 using Content.Shared.Achievements;
@@ -16,6 +17,7 @@ public sealed partial class MegafaunaSystem : EntitySystem
     [Dependency] private readonly SharedAchievementsSystem _achievement = default!;
     [Dependency] private readonly SharedAmbientSoundSystem _ambient = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly DamageableSystem _damage = default!;
     [Dependency] private readonly NPCSystem _npc = default!;
 
     public override void Initialize()
@@ -34,7 +36,8 @@ public sealed partial class MegafaunaSystem : EntitySystem
 
     private void OnDamageChanged(EntityUid uid, MegafaunaComponent component, DamageChangedEvent args)
     {
-        if (!component.IsActive && args.Damageable.TotalDamage > 0)
+        var totalDamage = _damage.GetTotalDamage(uid);
+        if (!component.IsActive && totalDamage > 0)
             ActivateMegafauna(uid, component);
 
         if (TryComp<HTNComponent>(uid, out var htn) && args.Origin != null)
@@ -69,7 +72,7 @@ public sealed partial class MegafaunaSystem : EntitySystem
     private void HandleDeath(EntityUid uid, MobStateChangedEvent args)
     {
         _ambient.SetAmbience(uid, false);
-        if (args.Origin != null)
+        if (args.Origin != null && !HasComp<LegionBossComponent>(uid))
         {
             _achievement.QueueAchievement(args.Origin.Value, AchievementsEnum.FirstBoss);
         }

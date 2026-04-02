@@ -1,12 +1,12 @@
 using System.Linq;
 using System.Numerics;
 using Content.Server.Audio;
-using Content.Server.Body.Systems;
 using Content.Server.GameTicking.Rules;
 using Content.Server.RoundEnd;
 using Content.Shared.Actions;
 using Content.Shared.Blood.Cult;
 using Content.Shared.Blood.Cult.Components;
+using Content.Shared.Body;
 using Content.Shared.Body.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
@@ -43,7 +43,6 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
 {
     [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly BloodCultRuleSystem _bloodCult = default!;
-    [Dependency] private readonly BodySystem _body = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
@@ -67,6 +66,7 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
 
         InitializeRunes();
         InitializeBloodAbilities();
+        InitializeEquipment();
 
         SubscribeLocalEvent<BloodCultistEyesComponent, ExaminedEvent>(OnCultistEyesExamined);
 
@@ -168,7 +168,7 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
     // Да я пометил тегами чтобы банально не забыть про это и чо?
     private void OnShotAttempted(Entity<BloodCultistComponent> ent, ref ShotAttemptedEvent args)
     {
-        if (HasComp<DeleteOnDropComponent>(args.Used))
+        if (HasComp<BloodCultAllowedGunComponent>(args.Used))
             return;
 
         _popup.PopupEntity(Loc.GetString("gun-disabled"), ent, ent);
@@ -231,28 +231,28 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
         if (!HasComp<BodyComponent>(args.Target) || !TryComp<BloodstreamComponent>(args.Target, out var bloodstream))
             return;
 
-        var solution = bloodstream.BloodSolution;
-        if (solution == null)
+        if (!_solution.TryGetSolution(args.Target.Value, bloodstream.BloodSolutionName, out var solution, out var solutionData))
             return;
 
         var holywaterReagentId = new ReagentId("Holywater", new List<ReagentData>());
-        var holywater = solution.Value.Comp.Solution.GetReagentQuantity(holywaterReagentId);
+        var holywater = solutionData.GetReagentQuantity(holywaterReagentId);
 
         if (holywater <= 0)
             return;
 
-        solution.Value.Comp.Solution.RemoveReagent(holywaterReagentId, holywater);
+        var holywaterQuantity = new ReagentQuantity("Holywater", holywater);
+        var removed = _solution.RemoveReagent(solution.Value, holywaterQuantity);
+        if (removed <= 0)
+            return;
 
-        var unholywaterReagentId = new ReagentId("Unholywater", new List<ReagentData>());
-        var unholywaterQuantity = new ReagentQuantity(unholywaterReagentId, holywater);
-
+        var unholywaterQuantity = new ReagentQuantity("Unholywater", removed);
         args.Handled = _solution.TryAddReagent(solution.Value, unholywaterQuantity, out var addedQuantity) && addedQuantity > 0;
     }
 
     private void HandleRuneInteraction(AfterInteractEvent args)
     {
         var user = args.User;
-		var target = args.Target!.Value;
+        var target = args.Target!.Value;
         _doAfterSystem.TryStartDoAfter(new DoAfterArgs(EntityManager, user, TimeSpan.FromSeconds(4f), new BloodRuneCleaningDoAfterEvent(), user)
         {
             Target = target,
@@ -396,7 +396,7 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
         var cult = _bloodCult.GetActiveRule();
         if (cult != null && cult.Curses > 0)
         {
-            _roundEndSystem.CancelRoundEndCountdown(user, true);
+            _roundEndSystem.CancelRoundEndCountdown(user, null, true);
             QueueDel(entity);
             cult.Curses--;
         }

@@ -1,0 +1,425 @@
+- type: entity
+  parent: [ ClothingModularControllerLockedBase, ClothingModularControllerStandard ]
+  id: ClothingModularControllerStandardPreassembled
+  suffix: Preassembled
+  components:
+  - type: ModularSuitPreassembled
+    modules:
+    - StorageSuitModule
+    - FlashlightSuitModuleCyan
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellSmall
+
+- type: entity
+  parent: [ ClothingModularControllerLockedBase, ClothingModularControllerCivilian ]
+  id: ClothingModularControllerCivilianPreassembled
+  suffix: Preassembled
+  components:
+  - type: ModularSuitPreassembled
+    modules:
+    - StorageSuitModule
+    - FlashlightSuitModuleAqua
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellSmall
+
+- type: entity
+  parent: [ ClothingModularControllerLockedBase, ClothingModularControllerEngineering ]
+  id: ClothingModularControllerEngineeringPreassembled
+  suffix: Preassembled
+  components:
+  - type: ModularSuitPreassembled
+    modules:
+    - WeldingSuitModule
+    - RadiationShieldSuitModule
+    - MagnetSuitModule
+    - StorageSuitModule
+    - FlashlightSuitModuleCyan
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMedium
+
+- type: entity
+  parent: [ ClothingModularControllerLockedBase, ClothingModularControllerAtmospheric ]
+  id: ClothingModularControllerAtmosphericPreassembled
+  suffix: Preassembled
+  components:
+  - type: ContainerFill
+    containers:
+      suit_core: &core-slot-plasma #<-- &
+        - ModularSuitCorePlasma
+      suit_part:
+        - ClothingModularHelmetAtmospheric
+        - ClothingModularChestPlateAtmospheric
+        - ClothingModularGauntletsAtmospheric
+        - ClothingModularBootsAtmospheric
+  - type: ModularSuitPreassembled
+    modules:
+    - WeldingSuitModule
+    - RadiationShieldSuitModule
+    - MagnetSuitModule
+    - TRaySuitModule
+    - StorageSuitModule
+    - FlashlightSuitModuleCyan
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMedium
+
+- type: entity
+  parent: [ ClothingModularControllerLockedBase, ClothingModularControllerAdvanced ]
+  id: ClothingModularControllerAdvancedPreassembled
+  suffix: Preassembled
+  components:
+  - type: ModularSuitPreassembled
+    modules:
+    - WeldingSuitModule
+    - RadiationShieldSuitModule
+    - JetpackSuitModule
+    - MagnetAdvancedSuitModule
+    - StorageLargeSuitModule
+    - AdvancedFlashlightSuitModuleAmber
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellHigh
+
+- type: entity
+  parent: [ ClothingModularControllerLockedBase, ClothingModularControllerPrototype ]
+  id: ClothingModularControllerPrototypePreassembled
+  suffix: Preassembled
+  components:
+  - type: ModularSuitPreassembled
+    modules:
+    - GPSSuitModule
+    - OreBagSuitModule
+    - MagnetSuitModule
+    - StorageSuitModule
+    - FlashlightSuitModuleAqua
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellSmall
+
+- type: entity
+  parent: [ ClothingModularControllerLockedBase, ClothingModularControllerAsteroid ]
+  id: ClothingModularControllerAsteroidPreassembled
+  suffix: Preassembled
+  components:
+  - type: ModularSuitPreassembled
+    modules:
+    - GPSSuitModule
+    - OreBagSuitModule
+    - MagnetSuitModule
+    - WeldingSuitModule
+    - JetpackAdvancedSuitModule
+    - DrillSuitModule
+    - StorageSuitModule
+    - AdvancedFlashlightSuitModuleAqua
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMedium
+      item:
+        name: clothing-hardsuits-jetpack
+        whitelist:
+          tags:
+          - Jetpack
+
+- type: entity
+  parent: [ ClothingModularControllerLockedBase, ClothingModularControllerMining ]
+  id: ClothingModularControllerMiningPreassembled
+  suffix: Preassembled
+  components:
+  - type: ModularSuitPreassembled
+    modules:
+    - GPSSuitModule
+    - OreBagSuitModule
+    - GrabberSuitModule
+    - DrillSuitModule
+    - StorageSuitModule
+    - AdvancedFlashlightSuitModuleAqua
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMedium
+
+- type: entity
+  parent: [ ClothingModularControllerLockedBase, ClothingModularControllerLoader ]
+  id: ClothingModularControllerLoaderPreassembled
+  suffix: Preassembled
+  components:
+  - type: ModularSuitPreassembled
+    modules:
+    - GrabberSuitModule
+    - StorageSuitModule
+    - FlashlightSuitModuleMint
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellSmall
+
+- type: entity
+  parent: [ ClothingModularControllerLockedBase, ClothingModularControllerMedical ]
+  id: ClothingModularControllerMedicalPreassembled
+  suffix: Preassembled
+  components:
+  - type: ModularSuitPreassembled
+    modules:
+    - HealthAnalyzerSuitModule
+    - VisorMedicalSuitModule
+    - QuickCarrySuitModule
+    - StorageSuitModule
+    - FlashlightSuitModuleLavender
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellHigh
+
+- type: entity
+  parent: [ ClothingModularControllerLockedBase, ClothingModularControllerRescue ]
+  id: ClothingModularControllerRescuePreassembled
+  suffix: Preassembled
+  components:
+  - type: ModularSuitPreassembled
+    modules:
+    - HealthAnalyzerSuitModule
+    - DefibrillatorSuitModule
+    - VisorMedicalSuitModule
+    - QuickCarrySuitModule
+    - StorageSuitModule
+    - AdvancedFlashlightSuitModulePink
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellHigh
+
+- type: entity
+  parent: [ ClothingModularControllerLockedBase, ClothingModularControllerResearch ]
+  id: ClothingModularControllerResearchPreassembled
+  suffix: Preassembled
+  components:
+  - type: ModularSuitPreassembled
+    modules:
+    - WeldingSuitModule
+    - RadiationShieldSuitModule
+    - SolutionScannerSuitModule
+    - TRaySuitModule
+    - StorageLargeSuitModule
+    - AdvancedFlashlightSuitModuleAqua
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellHigh
+
+- type: entity
+  parent: [ ClothingModularControllerLockedBase, ClothingModularControllerSecurity ]
+  id: ClothingModularControllerSecurityPreassembled
+  suffix: Preassembled
+  components:
+  - type: ModularSuitPreassembled
+    modules:
+    - MagnetSuitModule
+    - ArmorBossterSuitModule
+    - VisorSecuritySuitModule
+    - StorageSuitModule
+    - FlashlightSuitModuleDarkOrange
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellHigh
+
+- type: entity
+  parent: [ ClothingModularControllerLockedBase, ClothingModularControllerSafeguard ]
+  id: ClothingModularControllerSafeguardPreassembled
+  suffix: Preassembled
+  components:
+  - type: ModularSuitPreassembled
+    modules:
+    - MagnetSuitModule
+    - JetpackSuitModule
+    - ArmorBossterSuitModule
+    - VisorSecuritySuitModule
+    - StorageLargeSuitModule
+    - AdvancedFlashlightSuitModuleOrange
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellHigh
+
+- type: entity
+  parent: [ ClothingModularControllerLockedBase, ClothingModularControllerMagnate ]
+  id: ClothingModularControllerMagnatePreassembled
+  suffix: Preassembled
+  components:
+  - type: ModularSuitPreassembled
+    modules:
+    - PaperDispenserSuitModule
+    - MagnetSuitModule
+    - JetpackAdvancedSuitModule
+    - StorageLargeSuitModule
+    - AdvancedFlashlightSuitModulePurple
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellHigh
+
+- type: entity
+  parent: [ ClothingModularControllerLockedBase, ClothingModularControllerCosmohonk ]
+  id: ClothingModularControllerCosmohonkPreassembled
+  suffix: Preassembled
+  components:
+  - type: ModularSuitPreassembled
+    modules:
+    - BikeHornSuitModule
+    - StorageSuitModule
+    - FlashlightSuitModuleRed
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellSmall
+
+- type: entity
+  parent: [ ClothingModularControllerLockedBase, ClothingModularControllerSyndicate ]
+  id: ClothingModularControllerSyndicatePreassembled
+  suffix: Preassembled
+  components:
+  - type: ModularSuitPreassembled
+    modules:
+    - EMPShieldAdvancedSuitModule
+    - MagnetSuitModule
+    - JetpackAdvancedSuitModule
+    - ArmorBossterSuitModule
+    - StorageSyndicateSuitModule
+    - FlashlightSuitModuleGreen
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellHyper
+
+- type: entity
+  parent: [ ClothingModularControllerLockedBase, ClothingModularControllerElite ]
+  id: ClothingModularControllerElitePreassembled
+  suffix: Preassembled
+  components:
+  - type: ModularSuitPreassembled
+    modules:
+    - EMPShieldAdvancedSuitModule
+    - MagnetSuitModule
+    - JetpackAdvancedSuitModule
+    - ArmorBossterSuitModule
+    - StorageSyndicateSuitModule
+    - AdvancedFlashlightSuitModuleGold
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellHyper
+
+- type: entity
+  parent: [ ClothingModularControllerLockedBase, ClothingModularControllerApocryphal ]
+  id: ClothingModularControllerApocryphalPreassembled
+  suffix: Preassembled
+  components:
+  - type: ModularSuitPreassembled
+    modules:
+    - EMPShieldAdvancedSuitModule
+    - ArmorBossterSuitModule
+    - JetpackAdvancedSuitModule
+    - MagnetAdvancedSuitModule
+    - QuickCarrySuitModule
+    - RadiationShieldSuitModule
+    - WeldingSuitModule
+    - HolsterSuitModule
+    - StorageHoldingSuitModule
+    - AdvancedFlashlightSuitModuleAqua
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMicroreactor
+
+- type: entity
+  parent: [ ClothingModularControllerLockedBase, ClothingModularControllerCorporate ]
+  id: ClothingModularControllerCorporatePreassembled
+  suffix: Preassembled
+  components:
+  - type: ModularSuitPreassembled
+    modules:
+    - PaperDispenserSuitModule
+    - EMPShieldAdvancedSuitModule
+    - JetpackAdvancedSuitModule
+    - ArmorBossterSuitModule
+    - MagnetAdvancedSuitModule
+    - RadiationShieldSuitModule
+    - WeldingSuitModule
+    - StorageHoldingSuitModule
+    - AdvancedFlashlightSuitModuleAqua
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMicroreactor
+
+- type: entity
+  parent: [ ClothingModularControllerLockedBase, ClothingModularControllerResponsory ]
+  id: ClothingModularControllerResponsoryPreassembled
+  suffix: Preassembled
+  components:
+  - type: ModularSuitPreassembled
+    modules:
+    - EMPShieldSuitModule
+    - JetpackSuitModule
+    - ArmorBossterSuitModule
+    - MagnetSuitModule
+    - RadiationShieldSuitModule
+    - WeldingSuitModule
+    - StorageLargeSuitModule
+    - AdvancedFlashlightSuitModuleAqua
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMicroreactor
+
+- type: entity
+  parent: [ ClothingModularControllerLockedBase, ClothingModularControllerInquisitory ]
+  id: ClothingModularControllerInquisitoryPreassembled
+  suffix: Preassembled
+  components:
+  - type: ModularSuitPreassembled
+    modules:
+    - EMPShieldSuitModule
+    - JetpackSuitModule
+    - ArmorBossterSuitModule
+    - MagnetSuitModule
+    - RadiationShieldSuitModule
+    - WeldingSuitModule
+    - StorageLargeSuitModule
+    - AdvancedFlashlightSuitModuleAqua
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMicroreactor

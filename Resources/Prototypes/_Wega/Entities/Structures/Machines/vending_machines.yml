@@ -95,6 +95,38 @@
 
 - type: entity
   parent: VendingMachine
+  id: VendingMachineFashion
+  name: Fashion-O-Mat
+  description: Station for the stylish!
+  components:
+  - type: VendingMachine
+    pack: FashionOMatInventory
+    offState: off
+    brokenState: broken
+    normalState: normal-unshaded
+    denyState: deny-unshaded
+  - type: DatasetVocalizer
+    dataset: FashionOMatAds
+  - type: SpeakOnUIClosed
+    pack: FashionOMatGoodbyes
+  - type: Sprite
+    sprite: _Wega/Structures/Machines/VendingMachines/fashiondrobe.rsi
+    layers:
+    - state: "off"
+      map: [ "enum.VendingMachineVisualLayers.Base" ]
+    - state: "off"
+      map: [ "enum.VendingMachineVisualLayers.BaseUnshaded" ]
+      shader: unshaded
+    - state: panel
+      map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+  - type: Speech
+  - type: PointLight
+    radius: 1.8
+    energy: 1
+    color: "#FFFFFF"
+
+- type: entity
+  parent: VendingMachine
   id: VendingMachineTankDispenserExtO2
   suffix: More O2
   name: gas tank dispenser
@@ -105,3 +137,4 @@
   - type: Sprite
     sprite: Structures/Machines/VendingMachines/tankdispenser.rsi #TODO add visualiser for remaining tanks as layers
     state: dispenser
+

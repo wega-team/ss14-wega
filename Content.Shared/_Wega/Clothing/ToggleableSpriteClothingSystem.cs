@@ -1,4 +1,3 @@
-using Content.Shared.Body.Components;
 using Content.Shared.Clothing.Components;
 using Content.Shared.DoAfter;
 using Content.Shared.Verbs;
@@ -19,7 +18,7 @@ public sealed class ToggleableSpriteClothingSystem : EntitySystem
         SubscribeLocalEvent<ToggleableSpriteClothingComponent, ComponentGetState>(OnGetState);
         SubscribeLocalEvent<ToggleableSpriteClothingComponent, GetVerbsEvent<AlternativeVerb>>(AddToggleVerb);
 
-        SubscribeLocalEvent<BodyComponent, ToggleSpriteClothingDoAfterEvent>(OnDoAfter); // Fuck, I'm too lazy to think of something
+        SubscribeLocalEvent<ToggleSpriteClothingDoAfterEvent>(OnDoAfter);
     }
 
     private static void OnGetState(EntityUid uid, ToggleableSpriteClothingComponent component, ref ComponentGetState args)
@@ -60,7 +59,7 @@ public sealed class ToggleableSpriteClothingSystem : EntitySystem
         _doAfterSystem.TryStartDoAfter(args);
     }
 
-    private void OnDoAfter(Entity<BodyComponent> entity, ref ToggleSpriteClothingDoAfterEvent args)
+    private void OnDoAfter(ToggleSpriteClothingDoAfterEvent args)
     {
         if (args.Handled || args.Target == null)
             return;

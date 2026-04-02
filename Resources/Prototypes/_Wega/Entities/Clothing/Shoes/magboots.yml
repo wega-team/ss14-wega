@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ClothingShoesBootsMagBase, ClothingSlotBase, BaseRestrictedContraband]
+  parent: [ClothingShoesBootsMagBase, ClothingSlotBase, BaseCommandContraband]
   id: ClothingShoesBootsMagCombat
   name: combat magboots
   description: A cheap version of the advanced magnetic boot, it has a small knife slot in it.

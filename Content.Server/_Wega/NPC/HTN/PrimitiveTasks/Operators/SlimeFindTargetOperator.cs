@@ -32,7 +32,7 @@ public sealed partial class SlimeFindTargetOperator : HTNOperator
         EntityUid target = default;
         float minDistance = float.MaxValue;
 
-        var query = _entMan.EntityQueryEnumerator<HumanoidAppearanceComponent, TransformComponent>();
+        var query = _entMan.EntityQueryEnumerator<HumanoidProfileComponent, TransformComponent>();
         while (query.MoveNext(out var uid, out _, out var xform))
         {
             if (_entMan.TryGetComponent<SlimeSocialComponent>(owner, out var social) &&

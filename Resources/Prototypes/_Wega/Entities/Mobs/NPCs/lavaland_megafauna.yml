@@ -59,7 +59,7 @@
 
 #region Blood Drunk Miner
 - type: entity
-  parent: [ BaseMobHuman, BaseMobMegafauna ]
+  parent: [ MobHuman, BaseMobMegafauna ]
   id: MobBloodDrunkMiner
   name: unknown miner
   components:
@@ -96,6 +96,7 @@
       - BloodDrunkMinerGear
   - type: InputMover
   - type: MobMover
+  - type: LavaWalking
   - type: ScaleVisuals
     scale: 1.172, 1.172
   - type: MobThresholds
@@ -112,7 +113,6 @@
     suffocationThreshold: -6.0
     maxSaturation: 8.0
     minSaturation: -4.0
-    suffocationCycleThreshold: 6
     updateIntervalMultiplier: 0.8
   - type: BloodDrunkMiner
   - type: NPCHandSwitcher
@@ -188,8 +188,8 @@
   - type: MeleeWeapon
     altDisarm: false
     damage:
-     groups:
-       Brute: 20
+     types:
+       Blunt: 20
   - type: MobThresholds
     thresholds:
       0: Alive
@@ -207,7 +207,6 @@
     radius: 2.5
     energy: 2.5
   - type: Megafauna
-    isActive: false
     bossMusic:
       path: "/Audio/_Wega/Mobs/Lavaland/hiero_bgm.ogg"
   - type: HierophantBoss
@@ -465,11 +464,12 @@
     sprite: _Wega/Mobs/Lavaland/colossus.rsi
     state: colossus
   - type: MeleeWeapon
+    ignoreAttempted: true
     altDisarm: false
     attackRate: 0.25
     damage:
-     groups:
-       Brute: 40
+     types:
+       Blunt: 40
   - type: RechargeBasicEntityAmmo
     showExamineText: false
     rechargeCooldown: 0.01
@@ -488,6 +488,7 @@
     showExamineText: false
     soundGunshot: null
     soundEmpty: null
+  - type: VoiceOfGod # Maybe...
   - type: Pullable
   - type: MovementSpeedModifier
     baseWalkSpeed: 1.125
@@ -550,6 +551,7 @@
       Dead:
         Base: dragon_dead
   - type: MeleeWeapon
+    ignoreAttempted: true
     altDisarm: false
     angle: 0
     animation: WeaponArcBite
@@ -557,7 +559,7 @@
       path: /Audio/Effects/bite.ogg
     attackRate: 0.25
     damage:
-     type:
+     types:
        Slash: 40
   - type: RechargeBasicEntityAmmo
     showExamineText: false
@@ -670,7 +672,7 @@
       path: /Audio/Effects/bite.ogg
     attackRate: 1
     damage:
-     type:
+     types:
        Slash: 10
   - type: RechargeBasicEntityAmmo
     showExamineText: false
@@ -724,8 +726,8 @@
     altDisarm: false
     attackRate: 0.25
     damage:
-     groups:
-       Brute: 40
+     types:
+       Blunt: 40
   - type: Pullable
   - type: MovementSpeedModifier
     baseWalkSpeed: 2.25

@@ -1,0 +1,7 @@
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsLavalandAvanpost
+  suffix: Avanpost, Locked
+  components:
+  - type: AccessReader
+    access: [["LavalandAvanpost"]]

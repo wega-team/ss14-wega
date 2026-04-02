@@ -1,0 +1,160 @@
+- type: entity
+  name: energy shield
+  parent: [BaseItem, BaseCommandContraband]
+  id: BlueSheildSheild
+  description: Exotic energy shield, when folded, can even fit in your pocket.
+  components:
+    - type: ItemToggle
+      soundActivate:
+        path: /Audio/Weapons/ebladeon.ogg
+      soundDeactivate:
+        path: /Audio/Weapons/ebladeoff.ogg
+    - type: ItemToggleActiveSound
+      activeSound:
+        path: /Audio/Weapons/ebladehum.ogg
+    - type: ItemToggleSize
+      activatedSize: Huge
+    - type: ComponentToggler
+      components:
+      - type: DisarmMalus
+        malus: 0.6
+      - type: HolosignProjector
+        signProto: HolosignForcefieldBlueSheild
+        chargeUse: 240
+    - type: Sprite
+      sprite: _Wega/Objects/Shields/blueshieldshield.rsi
+      layers:
+        - state: icon
+        - state: icon-on
+          color: "#FFFFFF"
+          visible: false
+          shader: unshaded
+          map: [ "shield" ]
+    - type: Item
+      size: Normal
+      sprite: _Wega/Objects/Shields/blueshieldshield.rsi
+    - type: UseDelay
+      delay: 0.5
+    - type: ToggleableVisuals
+      spriteLayer: shield
+      inhandVisuals:
+        left:
+          - state: inhand-left-shield
+            shader: unshaded
+        right:
+          - state: inhand-right-shield
+            shader: unshaded
+    - type: PointLight
+      netsync: false
+      enabled: false
+      radius: 1.5
+      energy: 2
+      color: blue
+    - type: ItemTogglePointLight
+    - type: Reflect
+      reflectProb: 0.4
+      reflects:
+        - Energy
+    - type: Blocking
+      passiveBlockModifier:
+        coefficients:
+          Blunt: 1.0
+          Slash: 0.9
+          Piercing: 0.85
+          Heat: 0.6
+      activeBlockModifier:
+        coefficients:
+          Blunt: 1.2
+          Slash: 0.85
+          Piercing: 0.5
+          Heat: 0.4
+        flatReductions:
+          Heat: 1
+          Piercing: 1
+    - type: Appearance
+    - type: Damageable
+      damageContainer: Shield
+    - type: ExaminableDamage
+      messages: EnergyShieldMessages
+    - type: Destructible
+      thresholds:
+        - trigger:
+            !type:DamageTrigger
+            damage: 180
+          behaviors:
+            - !type:DoActsBehavior
+              acts: [ "Destruction" ]
+        - trigger:
+            !type:DamageTrigger
+            damage: 120
+          behaviors:
+            - !type:DoActsBehavior
+              acts: [ "Destruction" ]
+            - !type:PlaySoundBehavior
+              sound:
+                collection: GlassBreak
+            - !type:SpawnEntitiesBehavior
+              spawn:
+                BrokenBlueSheildSheild:
+                  min: 1
+                  max: 1
+    - type: Construction
+      graph: BlueSheild
+      node: bluesheildfinished
+    - type: StaticPrice
+      price: 5000
+    - type: Repairable # Negative values represent healing
+      qualityNeeded: Pulsing
+      damage:
+        groups:
+          Brute: -15 # 20 of each Brute Type - 20% of a basic shield HP
+        types:
+          Heat: -5
+      fuelCost: 0 # 1/2 of a Welder for a full repair
+      doAfterDelay: 1
+      allowSelfRepair: false
+    - type: ContainerContainer
+      containers:
+        cell_slot: !type:ContainerSlot {}
+    - type: PowerCellSlot
+      cellSlotId: cell_slot
+    - type: ItemSlots
+      slots:
+        cell_slot:
+          name: power-cell-slot-component-slot-name-default
+          startingItem: PowerCellMicroreactor
+          disableEject: true
+          swap: false
+
+- type: entity
+  name: broken energy shield
+  parent: BaseItem
+  id: BrokenBlueSheildSheild
+  description: Something inside is burned out, it is no longer functional.
+  components:
+    - type: Sprite
+      sprite: _Wega/Objects/Shields/blueshieldshield.rsi
+      state: icon
+    - type: Item
+      sprite: _Wega/Objects/Shields/blueshieldshield.rsi
+      size: Normal
+    - type: Construction
+      graph: BlueSheild
+      node: start
+      
+- type: entity
+  name: broken energy shield
+  parent: BaseItem
+  id: BrokenEnergyShieldWega
+  description: Something inside is burned out, it is no longer functional.
+  components:
+    - type: Sprite
+      sprite: Objects/Weapons/Melee/e_shield.rsi
+      state: eshield-icon
+    - type: Item
+      sprite: Objects/Weapons/Melee/e_shield.rsi
+      size: Small
+      heldPrefix: eshield
+    - type: Construction
+      graph: EnergySheild
+      node: start

@@ -97,6 +97,7 @@ public sealed partial class EncryptionKeySystem : EntitySystem
             TryInsertKey(uid, component, args);
         }
         else if (TryComp<ToolComponent>(args.Used, out var tool)
+                 && component.KeysExtractionMethod != null // Corvax-Wega-Add
                  && _tool.HasQuality(args.Used, component.KeysExtractionMethod, tool)
                  && component.KeyContainer.ContainedEntities.Count > 0) // dont block deconstruction
         {
@@ -154,6 +155,11 @@ public sealed partial class EncryptionKeySystem : EntitySystem
             _popup.PopupClient(Loc.GetString("encryption-keys-no-keys"), uid, args.User);
             return;
         }
+
+        // Corvax-Wega-Add-start
+        if (component.KeysExtractionMethod == null)
+            return;
+        // Corvax-Wega-Add-end
 
         _tool.UseTool(args.Used, args.User, uid, 1f, component.KeysExtractionMethod, new EncryptionRemovalFinishedEvent(), toolComponent: tool);
     }

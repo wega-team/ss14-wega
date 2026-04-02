@@ -67,6 +67,9 @@ public abstract class SharedGasTankSystem : EntitySystem
 
     private void OnGetActions(EntityUid uid, GasTankComponent component, GetItemActionsEvent args)
     {
+        if (component.ToggleAction == null) // Corvax-Wega-Add
+            return; // Corvax-Wega-Add
+
         args.AddAction(ref component.ToggleActionEntity, component.ToggleAction);
         Dirty(uid, component);
     }

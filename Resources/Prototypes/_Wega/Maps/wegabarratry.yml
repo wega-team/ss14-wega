@@ -15,6 +15,9 @@
             prefixCreator: '14'
         - type: StationEmergencyShuttle
           emergencyShuttlePath: /Maps/Shuttles/emergency_raven.yml
+        - type: StationLavaland
+          planets: [ Lavaland ]
+          enabled: false
         - type: StationJobs
           availableJobs:
             #service

@@ -1,0 +1,8 @@
+- type: marking
+  id: VulpIronJaw
+  bodyPart: Snout
+  markingType: NonGenetics
+  groupWhitelist: [ Vulpkanin ]
+  sprites:
+    - sprite: _Wega/Mobs/Customization/vulpkanin_iron_jaw.rsi
+      state: iron_jaw

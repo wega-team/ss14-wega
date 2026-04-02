@@ -24,7 +24,7 @@
     - to: complete
       completed:
       - !type:SpawnPrototype
-        prototype: LeftArmAndroid
+        prototype: OrganAndroidArmLeft
         amount: 1
       - !type:DeleteEntity {}
       steps:
@@ -44,7 +44,7 @@
     - to: complete
       completed:
       - !type:SpawnPrototype
-        prototype: LeftHandAndroid
+        prototype: OrganAndroidHandLeft
         amount: 1
       - !type:DeleteEntity {}
       steps:
@@ -64,7 +64,7 @@
     - to: complete
       completed:
       - !type:SpawnPrototype
-        prototype: RightArmAndroid
+        prototype: OrganAndroidArmRight
         amount: 1
       - !type:DeleteEntity {}
       steps:
@@ -84,7 +84,7 @@
     - to: complete
       completed:
       - !type:SpawnPrototype
-        prototype: RightHandAndroid
+        prototype: OrganAndroidHandRight
         amount: 1
       - !type:DeleteEntity {}
       steps:
@@ -104,7 +104,7 @@
     - to: complete
       completed:
       - !type:SpawnPrototype
-        prototype: LeftLegAndroid
+        prototype: OrganAndroidLegLeft
         amount: 1
       - !type:DeleteEntity {}
       steps:
@@ -124,7 +124,7 @@
     - to: complete
       completed:
       - !type:SpawnPrototype
-        prototype: LeftFootAndroid
+        prototype: OrganAndroidFootLeft
         amount: 1
       - !type:DeleteEntity {}
       steps:
@@ -144,14 +144,14 @@
     - to: complete
       completed:
       - !type:SpawnPrototype
-        prototype: RightLegAndroid
+        prototype: OrganAndroidLegRight
         amount: 1
       - !type:DeleteEntity {}
       steps:
       - material: Steel
         amount: 2
         doAfter: 2
-  
+
   - node: rightFootAssembly
     edges:
     - to: leftArmAssembly
@@ -164,7 +164,7 @@
     - to: complete
       completed:
       - !type:SpawnPrototype
-        prototype: RightFootAndroid
+        prototype: OrganAndroidFootRight
         amount: 1
       - !type:DeleteEntity {}
       steps:
@@ -178,152 +178,152 @@
 #   Импланты частей тела
 # ========================
 
-- type: constructionGraph
-  id: ArmSyntheticPry
-  start: start
-  graph:
-  - node: start
-    entity: LeftArmSyntheticPry
-    edges:
-    - to: right
-      steps:
-      - tool: Screwing
-        doAfter: 1
-      completed:
-      - !type:PopupUser
-        text: partimplant-assembly-rightarm
-  - node: right
-    entity: RightArmSyntheticPry
-    edges:
-    - to: start
-      steps:
-      - tool: Screwing
-        doAfter: 1
-      completed:
-      - !type:PopupUser
-        text: partimplant-assembly-leftarm
+# - type: constructionGraph
+#   id: ArmSyntheticPry
+#   start: start
+#   graph:
+#   - node: start
+#     entity: LeftArmSyntheticPry
+#     edges:
+#     - to: right
+#       steps:
+#       - tool: Screwing
+#         doAfter: 1
+#       completed:
+#       - !type:PopupUser
+#         text: partimplant-assembly-rightarm
+#   - node: right
+#     entity: RightArmSyntheticPry
+#     edges:
+#     - to: start
+#       steps:
+#       - tool: Screwing
+#         doAfter: 1
+#       completed:
+#       - !type:PopupUser
+#         text: partimplant-assembly-leftarm
 
-- type: constructionGraph
-  id: ArmSyntheticDefib
-  start: start
-  graph:
-  - node: start
-    entity: LeftArmSyntheticDefib
-    edges:
-    - to: right
-      steps:
-      - tool: Screwing
-        doAfter: 1
-      completed:
-      - !type:PopupUser
-        text: partimplant-assembly-rightarm
-  - node: right
-    entity: RightArmSyntheticDefib
-    edges:
-    - to: start
-      steps:
-      - tool: Screwing
-        doAfter: 1
-      completed:
-      - !type:PopupUser
-        text: partimplant-assembly-leftarm
+# - type: constructionGraph
+#   id: ArmSyntheticDefib
+#   start: start
+#   graph:
+#   - node: start
+#     entity: LeftArmSyntheticDefib
+#     edges:
+#     - to: right
+#       steps:
+#       - tool: Screwing
+#         doAfter: 1
+#       completed:
+#       - !type:PopupUser
+#         text: partimplant-assembly-rightarm
+#   - node: right
+#     entity: RightArmSyntheticDefib
+#     edges:
+#     - to: start
+#       steps:
+#       - tool: Screwing
+#         doAfter: 1
+#       completed:
+#       - !type:PopupUser
+#         text: partimplant-assembly-leftarm
 
-- type: constructionGraph
-  id: ArmSyntheticProtoKinetic
-  start: start
-  graph:
-  - node: start
-    entity: LeftArmSyntheticProtoKinetic
-    edges:
-    - to: right
-      steps:
-      - tool: Screwing
-        doAfter: 1
-      completed:
-      - !type:PopupUser
-        text: partimplant-assembly-rightarm
-  - node: right
-    entity: RightArmSyntheticProtoKinetic
-    edges:
-    - to: start
-      steps:
-      - tool: Screwing
-        doAfter: 1
-      completed:
-      - !type:PopupUser
-        text: partimplant-assembly-leftarm
+# - type: constructionGraph
+#   id: ArmSyntheticProtoKinetic
+#   start: start
+#   graph:
+#   - node: start
+#     entity: LeftArmSyntheticProtoKinetic
+#     edges:
+#     - to: right
+#       steps:
+#       - tool: Screwing
+#         doAfter: 1
+#       completed:
+#       - !type:PopupUser
+#         text: partimplant-assembly-rightarm
+#   - node: right
+#     entity: RightArmSyntheticProtoKinetic
+#     edges:
+#     - to: start
+#       steps:
+#       - tool: Screwing
+#         doAfter: 1
+#       completed:
+#       - !type:PopupUser
+#         text: partimplant-assembly-leftarm
 
-- type: constructionGraph
-  id: ArmSyntheticCharger
-  start: start
-  graph:
-  - node: start
-    entity: LeftArmSyntheticCharger
-    edges:
-    - to: right
-      steps:
-      - tool: Screwing
-        doAfter: 1
-      completed:
-      - !type:PopupUser
-        text: partimplant-assembly-rightarm
-  - node: right
-    entity: RightArmSyntheticCharger
-    edges:
-    - to: start
-      steps:
-      - tool: Screwing
-        doAfter: 1
-      completed:
-      - !type:PopupUser
-        text: partimplant-assembly-leftarm
+# - type: constructionGraph
+#   id: ArmSyntheticCharger
+#   start: start
+#   graph:
+#   - node: start
+#     entity: LeftArmSyntheticCharger
+#     edges:
+#     - to: right
+#       steps:
+#       - tool: Screwing
+#         doAfter: 1
+#       completed:
+#       - !type:PopupUser
+#         text: partimplant-assembly-rightarm
+#   - node: right
+#     entity: RightArmSyntheticCharger
+#     edges:
+#     - to: start
+#       steps:
+#       - tool: Screwing
+#         doAfter: 1
+#       completed:
+#       - !type:PopupUser
+#         text: partimplant-assembly-leftarm
 
-- type: constructionGraph
-  id: LegSyntheticMagboots
-  start: start
-  graph:
-  - node: start
-    entity: LeftLegSyntheticMagboots
-    edges:
-    - to: right
-      steps:
-      - tool: Screwing
-        doAfter: 1
-      completed:
-      - !type:PopupUser
-        text: partimplant-assembly-rightarm
-  - node: right
-    entity: RightLegSyntheticMagboots
-    edges:
-    - to: start
-      steps:
-      - tool: Screwing
-        doAfter: 1
-      completed:
-      - !type:PopupUser
-        text: partimplant-assembly-leftarm
+# - type: constructionGraph
+#   id: LegSyntheticMagboots
+#   start: start
+#   graph:
+#   - node: start
+#     entity: LeftLegSyntheticMagboots
+#     edges:
+#     - to: right
+#       steps:
+#       - tool: Screwing
+#         doAfter: 1
+#       completed:
+#       - !type:PopupUser
+#         text: partimplant-assembly-rightarm
+#   - node: right
+#     entity: RightLegSyntheticMagboots
+#     edges:
+#     - to: start
+#       steps:
+#       - tool: Screwing
+#         doAfter: 1
+#       completed:
+#       - !type:PopupUser
+#         text: partimplant-assembly-leftarm
 
-- type: constructionGraph
-  id: LegSyntheticJump
-  start: start
-  graph:
-  - node: start
-    entity: LeftLegSyntheticJump
-    edges:
-    - to: right
-      steps:
-      - tool: Screwing
-        doAfter: 1
-      completed:
-      - !type:PopupUser
-        text: partimplant-assembly-rightarm
-  - node: right
-    entity: RightLegSyntheticJump
-    edges:
-    - to: start
-      steps:
-      - tool: Screwing
-        doAfter: 1
-      completed:
-      - !type:PopupUser
-        text: partimplant-assembly-leftarm
+# - type: constructionGraph
+#   id: LegSyntheticJump
+#   start: start
+#   graph:
+#   - node: start
+#     entity: LeftLegSyntheticJump
+#     edges:
+#     - to: right
+#       steps:
+#       - tool: Screwing
+#         doAfter: 1
+#       completed:
+#       - !type:PopupUser
+#         text: partimplant-assembly-rightarm
+#   - node: right
+#     entity: RightLegSyntheticJump
+#     edges:
+#     - to: start
+#       steps:
+#       - tool: Screwing
+#         doAfter: 1
+#       completed:
+#       - !type:PopupUser
+#         text: partimplant-assembly-leftarm

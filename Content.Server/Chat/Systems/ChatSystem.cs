@@ -70,7 +70,7 @@ public sealed partial class ChatSystem : SharedChatSystem
     // public const int WhisperClearRange = 2; // how far whisper goes while still being understandable, in world units
     // public const int WhisperMuffledRange = 5; // how far whisper goes at all, in world units
     // Corvax-TTS-End
-    public readonly SoundSpecifier DefaultAnnouncementSound = new SoundPathSpecifier("/Audio/Corvax/Announcements/announce.ogg"); // Corvax-Announcements
+    public new readonly SoundSpecifier DefaultAnnouncementSound = new SoundPathSpecifier("/Audio/Corvax/Announcements/announce.ogg"); // Corvax-Announcements
     public const string CentComAnnouncementSound = "/Audio/Corvax/Announcements/centcomm.ogg"; // Corvax-Announcements
 
     private bool _loocEnabled = true;
@@ -163,7 +163,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         bool ignoreActionBlocker = false
         )
     {
-        if (HasComp<GhostComponent>(source) && !HasComp<HumanoidAppearanceComponent>(source)) // Corvax-Wega-Ghostbar
+        if (HasComp<GhostComponent>(source) && !HasComp<HumanoidProfileComponent>(source)) // Corvax-Wega-Ghostbar
         {
             // Ghosts can only send dead chat messages, so we'll forward it to InGame OOC.
             TrySendInGameOOCMessage(source, message, InGameOOCChatType.Dead, range == ChatTransmitRange.HideChat, shell, player);
@@ -394,6 +394,8 @@ public sealed partial class ChatSystem : SharedChatSystem
         _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Station Announcement on {station} from {sender}: {message}");
     }
 
+    #endregion
+
     // Corvax-Wega-MindChat-start
     /// <inheritdoc/>
     public override void SendMindMessage(
@@ -457,7 +459,20 @@ public sealed partial class ChatSystem : SharedChatSystem
     }
     // Corvax-Wega-MindChat-end
 
-    #endregion
+    // Corvax-Wega-Interactions-start
+    /// <inheritdoc/>
+    public override void SendMessageToOne(
+        EntityUid target, string message,
+        Color? colorOverride = null)
+    {
+        if (!TryComp<ActorComponent>(target, out var actor))
+            return;
+
+        var color = colorOverride ?? Color.White;
+        _chatManager.ChatMessageToOne(ChatChannel.Server, message,
+            message, target, false, actor.PlayerSession.Channel, color);
+    }
+    // Corvax-Wega-Interactions-end
 
     #region Private API
 

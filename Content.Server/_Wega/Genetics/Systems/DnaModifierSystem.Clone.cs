@@ -1,11 +1,8 @@
-using System.Linq;
-using Content.Server.Humanoid;
+using Content.Shared.Body;
 using Content.Shared.Corvax.TTS;
 using Content.Shared.DetailExaminable;
 using Content.Shared.Forensics.Components;
 using Content.Shared.Genetics;
-using Content.Shared.Humanoid;
-using Content.Shared.Humanoid.Markings;
 using Content.Shared.Inventory;
 using Content.Shared.Speech.Synthesis.Components;
 using Content.Shared.Wagging;
@@ -14,7 +11,7 @@ namespace Content.Server.Genetics.System;
 
 public sealed partial class DnaModifierSystem
 {
-    [Dependency] private readonly HumanoidAppearanceSystem _humanoid = default!;
+    [Dependency] private readonly SharedVisualBodySystem _visualBody = default!;
 
     public bool TryCloneHumanoid(Entity<DnaModifierComponent> entity, Entity<DnaModifierComponent> target)
     {
@@ -27,9 +24,9 @@ public sealed partial class DnaModifierSystem
     }
 
     private void CloneHumanoid(Entity<DnaModifierComponent> entity, Entity<DnaModifierComponent> target,
-        HumanoidAppearanceComponent? humanoid = null, HumanoidAppearanceComponent? targetHumanoid = null)
+        VisualBodyComponent? visualBody = null, VisualBodyComponent? targetVisualBody = null)
     {
-        if (!Resolve(entity, ref humanoid) || !Resolve(target, ref targetHumanoid))
+        if (!Resolve(entity, ref visualBody) || !Resolve(target, ref targetVisualBody))
             return;
 
         if (target.Comp.UniqueIdentifiers == null)
@@ -37,14 +34,15 @@ public sealed partial class DnaModifierSystem
 
         EnsureComp<DnaClonedComponent>(entity);
 
-        humanoid.Species = targetHumanoid.Species;
+        // Clone all markings
+        if (_visualBody.TryGatherMarkingsData(target.Owner, null, out _, out _, out var targetApplied))
+            _visualBody.ApplyMarkings(entity, targetApplied);
+
         entity.Comp.UniqueIdentifiers = CloneUniqueIdentifiers(target.Comp.UniqueIdentifiers);
-        if (TryComp<DetailExaminableComponent>(entity, out var detail))
-        {
-            detail.Content = "";
-            if (TryComp<DetailExaminableComponent>(target, out var targetDetail))
-                detail.Content = targetDetail.Content;
-        }
+
+        if (TryComp<DetailExaminableComponent>(entity, out var detail) &&
+            TryComp<DetailExaminableComponent>(target, out var targetDetail))
+            detail.Content = targetDetail.Content;
 
         _metaData.SetEntityName(entity, Name(target));
         if (TryComp<DnaComponent>(entity, out var dna) && TryComp<DnaComponent>(target, out var targetDna))
@@ -68,12 +66,6 @@ public sealed partial class DnaModifierSystem
             RemComp<WaggingComponent>(entity);
 
         entity.Comp.UniqueIdentifiers!.Gender = target.Comp.UniqueIdentifiers!.Gender;
-
-        // Nose cloning
-        if (targetHumanoid.MarkingSet.TryGetCategory(MarkingCategories.Snout, out var snoutMarkings))
-            _humanoid.AddMarking(entity, snoutMarkings.First().MarkingId, targetHumanoid.SkinColor);
-        else
-            humanoid.MarkingSet.RemoveCategory(MarkingCategories.Snout);
 
         Dirty(entity, entity.Comp);
         TryChangeUniqueIdentifiers(entity);

@@ -45,6 +45,7 @@
       projectiles: !type:ContainerSlot
   - type: ContainerAmmoProvider
     container: projectiles
+  - type: BloodCultAllowedGun # Corvax-Wega-BloodCult
 
 - type: entity
   id: BowImprovised

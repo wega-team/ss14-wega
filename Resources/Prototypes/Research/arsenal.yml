@@ -8,11 +8,12 @@
     state: icon
   discipline: Arsenal
   tier: 1
-  cost: 5000
+  cost: 7500 # Corvax-Wega-Edit
   recipeUnlocks:
   - WeaponProtoKineticAccelerator
   - ShuttleGunKineticCircuitboard
-  - ArmSyntheticProtoKinetic # Corvax-Wega-Androids
+  - BorgModuleKinetic # Corvax-Wega-Kinetic
+  # - ArmSyntheticProtoKinetic # Corvax-Wega-Androids
   # These are roundstart but not replenishable for salvage
 
 - type: technology
@@ -102,7 +103,6 @@
   - HoloprojectorSecurity
   - WeaponDisablerSMG
   - BorgModuleSheild # Corvax-Wega
-  - PouchSec # Corvax-Wega-Add
 
 - type: technology
   id: ExplosiveTechnology
@@ -129,13 +129,17 @@
   id: SpecialMeans
   name: research-technology-special-means
   icon:
-    sprite: Clothing/Back/Backpacks/electropack.rsi
+    sprite: _Wega/Clothing/Modular/Security/control.rsi
     state: icon
   discipline: Arsenal
   tier: 1
-  cost: 5000
+  cost: 10000 # Corvax-Wega-Edit 5000
   recipeUnlocks:
   - ClothingBackpackElectropack
+  - SecurityPlating
+  - ArmorBossterSuitModule
+  - EMPShieldSuitModule
+
 
 # Tier 2
 
@@ -178,7 +182,6 @@
   - PKAUpgradeDamage
   - PKAUpgradeRange
   - PKAUpgradeFireRate
-  - BorgModuleKinetic # Corvax-Wega-Kinetic
 
 - type: technology
   id: BasicShuttleArmament

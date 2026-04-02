@@ -67,6 +67,7 @@
   - type: ClothingSpeedModifier
     walkModifier: 1.6
     sprintModifier: 1.6
+  - type: BloodCultEquipment
 
 - type: entity
   parent: ClothingOuterStorageBase
@@ -103,6 +104,92 @@
   - type: Clothing
     sprite: _Wega/Clothing/OuterClothing/Coats/captain_white.rsi
 
+
+# ADT
+
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterDutch
+  name: dutch's jacket
+  description: For those long nights on the beach in Tahiti.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Coats/dutch_jacket.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/OuterClothing/Coats/dutch_jacket.rsi
+
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterLettermanNanoTrasen
+  name: blue letterman jacket
+  description: A blue letterman jacket with a proud Nanotrasen N on the back. The tag says that it was made by Mr.Chang's corp.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Coats/letterman_nanotrasen.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/OuterClothing/Coats/letterman_nanotrasen.rsi
+
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterLettermanSyndie
+  name: blood-red letterman jacket
+  description: A blood-red letterman jacket with a huge S on the back. Nothing suspicious.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Coats/letterman_syndie.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/OuterClothing/Coats/letterman_syndie.rsi
+
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterLettermanBlack
+  name: black letterman jacket
+  description: A black letterman jacket.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Coats/letterman_black.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/OuterClothing/Coats/letterman_black.rsi
+
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterWhiteSweatshirtTop
+  name: white sweatshirt-top
+  description: white sweatshirt-top
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Coats/white_sweatshirttop.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/OuterClothing/Coats/white_sweatshirttop.rsi
+  - type: StaticPrice
+    price: 65
+
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterGraySweatshirtTop
+  name: gray sweatshirt-top
+  description: gray sweatshirt-top
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Coats/gray_sweatshirttop.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/OuterClothing/Coats/gray_sweatshirttop.rsi
+  - type: StaticPrice
+    price: 65
+
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterBlackSweatshirtTop
+  name: black sweatshirt-top
+  description: black sweatshirt-top
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Coats/black_sweatshirttop.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/OuterClothing/Coats/black_sweatshirttop.rsi
+  - type: StaticPrice
+    price: 65
+
 - type: entity
   parent: ClothingOuterBase
   id: ClothingOuterCoatPathfinderCloak
@@ -126,3 +213,4 @@
   - type: Construction
     graph: PathfinderCloak
     node: cloack
+

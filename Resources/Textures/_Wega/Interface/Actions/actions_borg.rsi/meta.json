@@ -125,6 +125,12 @@
             "name": "rnd-rare"
         },
         {
+            "name": "emp-module"
+        },
+        {
+            "name": "fulton-module"
+        },
+        {
             "name": "speed_xenoborg"
         }
     ]

@@ -1,6 +1,5 @@
 ### for technical and/or system messages
 
-
 ## General
 
 shell-command-success = Команда выполнена.
@@ -16,16 +15,15 @@ shell-must-have-body = У вас должно быть тело, чтобы вы
 ## Arguments
 
 shell-need-exactly-one-argument = Нужен ровно один аргумент.
-shell-wrong-arguments-number-need-specific =
-    Нужно { $properAmount } { $properAmount ->
-        [one] аргумент
-        [few] аргумента
-       *[other] аргументов
-    }, было { $currentAmount } { $currentAmount ->
-        [one] аргумент
-        [few] аргумента
-       *[other] аргументов
-    }.
+shell-wrong-arguments-number-need-specific = Нужно { $properAmount } { $properAmount ->
+    [one] аргумент
+    [few] аргумента
+    *[other] аргументов
+}, было { $currentAmount } { $currentAmount ->
+    [one] аргумент
+    [few] аргумента
+    *[other] аргументов
+}.
 shell-argument-must-be-number = Аргумент должен быть числом.
 shell-argument-must-be-boolean = Аргумент должен быть boolean.
 shell-wrong-arguments-number = Неправильное количество аргументов.
@@ -33,6 +31,7 @@ shell-need-between-arguments = Нужно от { $lower } до { $upper } арг
 shell-need-minimum-arguments = Нужно не менее { $minimum } аргументов!
 shell-need-minimum-one-argument = Нужен хотя бы один аргумент!
 shell-need-exactly-zero-arguments = Эта команда принимает ноль аргументов.
+
 shell-argument-uid = EntityUid
 
 ## Guards
@@ -58,6 +57,7 @@ shell-argument-number-must-be-between = Аргумент { $index } должен
 shell-argument-station-id-invalid = Аргумент { $index } должен быть валидным station id!
 shell-argument-map-id-invalid = Аргумент { $index } должен быть валидным map id!
 shell-argument-number-invalid = Аргумент { $index } должен быть валидным числом!
+
 # Hints
 shell-argument-username-hint = <username>
 shell-argument-username-optional-hint = [username]

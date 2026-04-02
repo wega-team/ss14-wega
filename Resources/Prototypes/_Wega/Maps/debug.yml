@@ -14,6 +14,7 @@
             prefixCreator: 'TZ'
         - type: StationLavaland
           lavalandAvanpost: "/Maps/_Wega/Nonstations/cyberiadavanpost.yml"
+          planets: [ Lavaland ]
         - type: StationJobs
           availableJobs:
             ShaftMiner: [ -1, -1 ]

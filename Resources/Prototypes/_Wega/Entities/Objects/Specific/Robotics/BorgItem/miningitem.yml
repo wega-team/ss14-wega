@@ -74,3 +74,17 @@
       tags:
       - Document
       - Paper
+
+- type: entity
+  id: DocumentBorg
+  name: point card cyborg
+  parent: BaseItem
+  description: A bag for carrying mail around the station for cyborg. Made from tanned space bear hide.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Misc/lavaborg_id.rsi
+    state: icon
+  - type: Tag
+    tags:
+    - DocumentBorg
+  - type: PointsCard

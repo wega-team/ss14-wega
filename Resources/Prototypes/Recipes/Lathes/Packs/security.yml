@@ -10,6 +10,7 @@
   - TargetHuman
   - TargetSyndicate
   - Zipties
+  - PouchSec # Corvax-Wega-Add
 
 # Practice ammo/mags and practice weapons
 - type: latheRecipePack
@@ -77,7 +78,6 @@
   - ClothingHeadHelmetFlash
   - ClothingNeckFlashNeck
   - ExmFlash
-  - PouchSec
 # Corvax-Wega-Arsenal-end
   - PowerCageHigh
   - PowerCageMedium

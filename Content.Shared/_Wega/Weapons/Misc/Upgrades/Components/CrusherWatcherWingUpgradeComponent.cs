@@ -6,5 +6,5 @@ namespace Content.Shared.Weapons.Misc.Upgrades;
 public sealed partial class CrusherWatcherWingUpgradeComponent : Component
 {
     [DataField]
-    public float ResetsTime = 1.5f;
+    public float ResetsTime = 1f;
 }

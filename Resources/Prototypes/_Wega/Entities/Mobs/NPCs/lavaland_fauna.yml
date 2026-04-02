@@ -88,6 +88,9 @@
     thresholds:
       0: Alive
       200: Dead
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      125: 0.75
   - type: MeleeWeapon
     soundHit:
       path: "/Audio/Weapons/smash.ogg"
@@ -161,6 +164,9 @@
     thresholds:
       0: Alive
       400: Dead
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      250: 0.75
   - type: MovementSpeedModifier
     baseWalkSpeed: 2.235
     baseSprintSpeed: 2.235
@@ -315,7 +321,7 @@
   components:
   - type: HTN
     rootTask:
-      task: SimpleRangedHostileCompound
+      task: WatchersBehaviorCompound
     blackboard:
       VisionRadius: !type:Single
         2
@@ -353,6 +359,9 @@
     thresholds:
       0: Alive
       200: Dead
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      125: 0.75
   - type: Butcherable
     spawned:
     - id: DiamondOre1
@@ -427,6 +436,9 @@
     thresholds:
       0: Alive
       170: Dead
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      95: 0.75
   - type: Butcherable
     spawned:
     - id: DiamondOre1
@@ -527,6 +539,9 @@
     thresholds:
       0: Alive
       220: Dead
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      150: 0.75
   - type: Butcherable
     spawned:
     - id: UraniumOre1
@@ -593,3 +608,52 @@
   - type: TrophyHunter
     trophy: TrophyLavalandFrostbiteWeaverFrostGland
 #endregion
+
+#region-Golem
+- type: entity
+  name: clockwork defender
+  parent: BaseMobLavaland
+  id: MobClockworkDefender
+  description: A traitorous clockwork knight who lived on, despite its creators destruction.
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Wega/Mobs/Lavaland/clockwork_defender.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: base
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: base
+      Dead:
+        Base: dead
+  - type: MeleeWeapon
+    damage:
+      types:
+        Slash: 13
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      140: Dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4
+    baseSprintSpeed: 4
+  - type: Butcherable
+    spawned:
+    - id: SheetBrass1 # временная заглушка
+      amount: 3
+      prob: 0.5
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+    blackboard:
+      VisionRadius: !type:Single
+        12
+      AggroVisionRadius: !type:Single
+        12
+  - type: NoSlip
+  - type: IgnoreSpiderWeb
+  - type: AntiGravityClothing
+  - type: CombatMode
+#end-region-Golem

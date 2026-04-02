@@ -1,0 +1,175 @@
+- type: entity
+  parent: BaseAction
+  id: ToggleModularSuitDeployAction
+  name: "[color=#58c4e8]Expand Suit[/color]"
+  description: "Opens the modular suit, placing all the installed parts on the body. When pressed again, it closes the suit back into a compact state."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 1.5
+    icon: { sprite: _Wega/Interface/Actions/actions_modules.rsi, state: activate }
+    iconOn: { sprite: _Wega/Interface/Actions/actions_modules.rsi, state: activate-ready }
+    itemIconStyle: BigAction
+  - type: InstantAction
+    event: !type:ToggleDeploySuitActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ToggleModularSuitUiAction
+  name: "[color=#58c4e8]Open MODSuit interface[/color]"
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 2
+    icon: { sprite: _Wega/Interface/Actions/actions_modules.rsi, state: panel }
+  - type: InstantAction
+    event: !type:ToggleSuitUiActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ToggleLightModuleAction
+  name: "[color=#58c4e8]Toggle Light[/color]"
+  description: "Turns the suit's integrated lighting system on or off."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 1
+    icon: { sprite: _Wega/Interface/Actions/actions_modules.rsi, state: light-off }
+    iconOn: { sprite: _Wega/Interface/Actions/actions_modules.rsi, state: light-on }
+  - type: InstantAction
+    event: !type:ToggleLightModuleEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActivateTeleporterModuleAction
+  name: "[color=#58c4e8]Activate Teleporter[/color]"
+  description: "Instantly teleports the user to the location of a random nearby creature. Requires a bluespace core to function."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    startDelay: true
+    useDelay: 20
+    icon: { sprite: _Wega/Interface/Actions/actions_modules.rsi, state: teleporter }
+  - type: InstantAction
+    event: !type:ActivateTeleporterModuleEvent
+
+- type: entity
+  parent: BaseAction
+  id: ToggleHolsterModuleAction
+  name: "[color=#58c4e8]Toggle Holster[/color]"
+  description: "Deploys or retracts the weapon holster for quick firearm access."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    startDelay: true
+    useDelay: 10
+    icon: { sprite: _Wega/Interface/Actions/actions_modules.rsi, state: holster-in }
+    iconOn: { sprite: _Wega/Interface/Actions/actions_modules.rsi, state: holster-out }
+  - type: InstantAction
+    event: !type:ToggleHolsterModuleEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActivatePaperDispenserModuleAction
+  name: "[color=#58c4e8]Activate Paper Dispenser[/color]"
+  description: "Synthesizes fresh paper using advanced fax and printer technology. Converts suit power into high-quality stationery. Perfect for paperwork emergencies or when you just need to leave a note."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    startDelay: true
+    useDelay: 30
+    icon: { sprite: _Wega/Interface/Actions/actions_modules.rsi, state: paper }
+  - type: InstantAction
+    event: !type:ActivateDispenserModuleEvent
+      spawnedProto:
+      - Paper
+      - PaperOffice
+      activateSound:
+        path: "/Audio/Machines/printer.ogg"
+
+- type: entity
+  parent: BaseAction
+  id: ActivateEnergyShieldModuleAction
+  name: "[color=#58c4e8]Activate Energy Shield[/color]"
+  description: "Generates a personal protective forcefield that blocks incoming attacks. Consumes significant power."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    startDelay: true
+    useDelay: 60
+    icon: { sprite: _Wega/Interface/Actions/actions_modules.rsi, state: energyshield }
+  - type: InstantAction
+    event: !type:ActivateEnergyShieldModuleEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActivateBurgerDispenserModuleAction
+  name: "[color=#58c4e8]Activate Burger Dispenser[/color]"
+  description: "Creates an edible burger using the suit's power. The exact type of burger may vary. Earl Grey tea not available."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    startDelay: true
+    useDelay: 120
+    icon: { sprite: _Wega/Interface/Actions/actions_modules.rsi, state: dispenser }
+  - type: InstantAction
+    event: !type:ActivateDispenserModuleEvent
+      spawnedProto:
+      - FoodBurgerAppendix
+      - FoodBurgerBacon
+      - FoodBurgerBaseball
+      - FoodBurgerBear
+      - FoodBurgerBig
+      - FoodBurgerBrain
+      - FoodBurgerCat
+      - FoodBurgerCheese
+      - FoodBurgerChicken
+      - FoodBurgerClown
+      - FoodBurgerCorgi
+      - FoodBurgerCrab
+      - FoodBurgerCrazy
+      - FoodBurgerDuck
+      - FoodBurgerCarp
+      - FoodBurgerFive
+      - FoodBurgerGhost
+      - FoodBurgerHuman
+      - FoodBurgerMcguffin
+      - FoodBurgerMcrib
+      - FoodBurgerMime
+      - FoodBurgerPlain
+      - FoodBurgerRat
+      - FoodBurgerRobot
+      - FoodBurgerSoy
+      - FoodBurgerSpell
+      - FoodBurgerSuper
+      - FoodBurgerTofu
+      - FoodBurgerXeno
+      - FoodBurgerMothRoach
+
+- type: entity
+  parent: BaseAction
+  id: ActivateTanningModuleAction
+  name: "[color=#58c4e8]Activate Tanning[/color]"
+  description: "Activates UV lamps for a safe tan. Skin cancer functionality has not been proven."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    startDelay: true
+    useDelay: 30
+    icon: { sprite: _Wega/Interface/Actions/actions_modules.rsi, state: tanning }
+  - type: InstantAction
+    event: !type:ActivateTanningModuleEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActivateAtrocinatorModuleAction
+  name: "[color=#58c4e8]Activate Atrocinator[/color]"
+  description: "Activates the mysterious orb. Effects vary. Watch your step!"
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    startDelay: true
+    useDelay: 300
+    icon: { sprite: _Wega/Interface/Actions/actions_modules.rsi, state: atrocinator }
+  - type: InstantAction
+    event: !type:ActivateAtrocinatorModuleEvent

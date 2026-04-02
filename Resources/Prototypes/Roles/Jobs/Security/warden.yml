@@ -8,9 +8,9 @@
       department: Security
       time: 50h # Corvax-RoleTime
 # Corvax-Wega-Start
-    # - !type:RoleTimeRequirement
-      # role: JobWardenHelper
-      # time: 10h # через неделю после принятия ПРа, чтоб резко вардены не пропали
+    - !type:RoleTimeRequirement
+      role: JobWardenHelper
+      time: 10h # через неделю после принятия ПРа, чтоб резко вардены не пропали
 # Corvax-Wega-End
     - !type:TraitsRequirement #Corvax-TraitsRequirement
       inverted: true

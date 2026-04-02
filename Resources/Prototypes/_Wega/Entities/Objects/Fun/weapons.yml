@@ -1,0 +1,35 @@
+- type: entity
+  parent: BaseItem
+  id: ToyBloodDagger
+  name: plush dagger
+  description: "Oh, look how soft he is. You don't think he's a threat, do you? Really...?"
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/blood_dagger.rsi
+    state: icon
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - belt
+  - type: EmitSoundOnUse
+    sound: &BasePlushieSound
+      collection: ToySqueak
+      params:
+        volume: -4
+  - type: EmitSoundOnActivate
+    sound: *BasePlushieSound
+  - type: EmitSoundOnCollide
+    sound: *BasePlushieSound
+  - type: EmitSoundOnLand
+    sound: *BasePlushieSound
+  - type: EmitSoundOnTrigger
+    sound: *BasePlushieSound
+  - type: UseDelay
+    delay: 3.0
+  - type: MeleeWeapon
+    wideAnimationRotation: -135
+    attackRate: 1.25
+    soundHit: *BasePlushieSound
+    damage:
+      types:
+        Blunt: 0

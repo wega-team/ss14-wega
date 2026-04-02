@@ -94,12 +94,13 @@ namespace Content.Server.Carrying
 
             AlternativeVerb verb = new()
             {
+                Priority = 2,
+                Text = Loc.GetString("carry-verb"),
+                Category = VerbCategory.Interaction,
                 Act = () =>
                 {
                     StartCarryDoAfter(args.User, uid, component);
-                },
-                Text = Loc.GetString("carry-verb"),
-                Priority = 2
+                }
             };
             args.Verbs.Add(verb);
         }

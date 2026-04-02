@@ -4,7 +4,6 @@
   weights:
     Dragon: 1
     Revenant: 1
-    Xenoborgs: 1 # corvax-wega
 
 - type: ninjaHackingThreat
   id: Dragon

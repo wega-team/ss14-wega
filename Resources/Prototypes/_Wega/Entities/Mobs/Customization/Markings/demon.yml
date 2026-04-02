@@ -1,8 +1,7 @@
 - type: marking
   id: DemonChestCowSpots
   bodyPart: Special
-  markingCategory: Special
-  speciesRestriction: [Demon]
+  groupWhitelist: [Demon]
   sprites:
   - sprite: _Wega/Mobs/Customization/demon.rsi
     state: cow_spots
@@ -10,8 +9,7 @@
 - type: marking
   id: DemonChestGuard
   bodyPart: Special
-  markingCategory: Special
-  speciesRestriction: [Demon]
+  groupWhitelist: [Demon]
   sprites:
   - sprite: _Wega/Mobs/Customization/demon.rsi
     state: guards_stripes
@@ -19,8 +17,7 @@
 - type: marking
   id: DemonChestLinesEmperos
   bodyPart: Special
-  markingCategory: Special
-  speciesRestriction: [Demon]
+  groupWhitelist: [Demon]
   sprites:
   - sprite: _Wega/Mobs/Customization/demon.rsi
     state: lines_emperos
@@ -28,8 +25,7 @@
 - type: marking
   id: DemonChestQueenLines
   bodyPart: Special
-  markingCategory: Special
-  speciesRestriction: [Demon]
+  groupWhitelist: [Demon]
   sprites:
   - sprite: _Wega/Mobs/Customization/demon.rsi
     state: queen_lines
@@ -37,8 +33,7 @@
 - type: marking
   id: DemonChestTreeLines
   bodyPart: Special
-  markingCategory: Special
-  speciesRestriction: [Demon]
+  groupWhitelist: [Demon]
   sprites:
   - sprite: _Wega/Mobs/Customization/demon.rsi
     state: tree_lines
@@ -46,8 +41,7 @@
 - type: marking
   id: DemonChestTrinitySpots
   bodyPart: Special
-  markingCategory: Special
-  speciesRestriction: [Demon]
+  groupWhitelist: [Demon]
   sprites:
   - sprite: _Wega/Mobs/Customization/demon.rsi
     state: trinity_spots
@@ -55,8 +49,7 @@
 - type: marking
   id: DemonGoatee
   bodyPart: FacialHair
-  markingCategory: FacialHair
-  speciesRestriction: [Demon]
+  groupWhitelist: [Demon]
   sprites:
   - sprite: _Wega/Mobs/Customization/demon.rsi
     state: goatee
@@ -64,8 +57,7 @@
 - type: marking
   id: DemonrigthEye
   bodyPart: Eyes
-  markingCategory: Head
-  speciesRestriction: [Demon]
+  groupWhitelist: [Demon]
   coloring:
     default:
       type:
@@ -78,8 +70,7 @@
 - type: marking
   id: DemonleftEye
   bodyPart: Eyes
-  markingCategory: Head
-  speciesRestriction: [Demon]
+  groupWhitelist: [Demon]
   coloring:
     default:
       type:
@@ -92,8 +83,70 @@
 - type: marking
   id: Allsuccubus
   bodyPart: Tail
-  markingCategory: Chest
-  speciesRestriction: [Demon]
+  groupWhitelist: [Demon]
   sprites:
   - sprite: _Wega/Mobs/Customization/demon.rsi
     state: succubus
+
+#Half-Lava
+
+- type: marking
+  id: DemonDrakeTile
+  bodyPart: Tail
+  groupWhitelist: [Demon]
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+    layers:
+      wendigo-horn-secondary:
+        type:
+          !type:EyeColoring
+  sprites:
+  - sprite: _Wega/Mobs/Customization/demon_lava.rsi
+    state: tail_drake
+  - sprite: _Wega/Mobs/Customization/demon_lava.rsi
+    state: tail_drake_secondary
+
+- type: marking
+  id: DemonDrakeTileAnimated
+  bodyPart: Tail
+  markingType: NonGenetics
+  groupWhitelist: []
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+    layers:
+      wendigo-horn-secondary:
+        type:
+          !type:EyeColoring
+  sprites:
+    - sprite: _Wega/Mobs/Customization/demon_lava.rsi
+      state: tail_drake_wagging
+    - sprite: _Wega/Mobs/Customization/demon_lava.rsi
+      state: tail_drake_wagging_secondary
+
+- type: marking
+  id: DemonDrakeSpine
+  bodyPart: Special
+  groupWhitelist: [Demon]
+  sprites:
+  - sprite: _Wega/Mobs/Customization/demon_lava.rsi
+    state: drake_spine
+
+- type: marking
+  id: DemonDrakeLArm
+  bodyPart: LArm
+  groupWhitelist: [Demon]
+  sprites:
+  - sprite: _Wega/Mobs/Customization/demon_lava.rsi
+    state: l_drake_arm
+
+- type: marking
+  id: DemonDrakeRArm
+  bodyPart: RArm
+  groupWhitelist: [Demon]
+  sprites:
+  - sprite: _Wega/Mobs/Customization/demon_lava.rsi
+    state: r_drake_arm

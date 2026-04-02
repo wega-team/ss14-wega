@@ -12,7 +12,7 @@
   - BaseShoose
   - Survival
   - Trinkets
-  - ServiceWorkerJobTrinkets
+  # - ServiceWorkerJobTrinkets
   - GroupSpeciesBreathTool
   - Top
   - Bottom
@@ -42,7 +42,6 @@
   - SponsorHead
   - SponsorNeck
   - GeneticsJumpsuit
-  - MedicalGloves
   - GeneticsBackpack
   - GeneticsOuterClothing
   - MedicalShoes
@@ -80,8 +79,8 @@
   - MedicalBackpack
   - MedicalShoes
   - MedicalDoctorOuterClothing
-  - MedicalEyewear
   - SurvivalMedical
+  - Glasses
   - Trinkets
   - GroupSpeciesBreathToolMedical
   - Top
@@ -116,7 +115,7 @@
   - BaseShoose
   - Survival
   - Trinkets
-  - CargoTechnicianJobTrinkets
+  # - CargoTechnicianJobTrinkets
   - GroupSpeciesBreathTool
   - Top
   - Bottom
@@ -154,7 +153,7 @@
   # Corvax-Wega-Sponsors-end
   - ShaftMinerMedicBackpack
   - ShaftMinerMedicJumpsuit
-  - ShaftMinerMedicGloves
+  # - ShaftMinerMedicGloves
   - Glasses
   - Survival
   - Trinkets

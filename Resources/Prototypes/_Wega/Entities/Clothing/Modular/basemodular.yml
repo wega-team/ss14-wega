@@ -1,0 +1,327 @@
+- type: entity
+  id: BaseClothingModularToggler
+  abstract: true
+  components:
+  - type: Sprite
+    layers:
+    - state: icon
+      map: [ "enum.ToggleableVisuals.Layer" ]
+  - type: ItemToggle
+    onActivate: false
+    onUse: false
+    soundActivate:
+      path: "/Audio/Mecha/mechmove03.ogg"
+    soundDeactivate:
+      path: "/Audio/Mecha/mechmove03.ogg"
+  - type: ToggleableVisuals
+    spriteLayer: "enum.ToggleableVisuals.Layer"
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+     enum.ToggleableVisuals.Enabled:
+        enum.ToggleableVisuals.Layer:
+          True: {state: icon-sealed}
+          False: {state: icon}
+
+- type: entity
+  parent: [ BaseItem, BaseClothingModularToggler, ContentsExplosionResistanceBase ]
+  id: ClothingModularControllerBase
+  abstract: true
+  components:
+  - type: EdibleMatter
+    canBeEaten: false
+  - type: Item
+    size: Huge
+  - type: Clothing
+    stripDelay: 5
+    equipDelay: 2
+    unequipDelay: 2
+    quickEquip: false
+    slots: [ back ]
+    clothingVisuals:
+      back:
+      - state: equipped-BACKPACK
+  - type: ToggleableVisuals
+    clothingVisuals:
+      back:
+      - state: sealed-equipped-BACKPACK
+  - type: ItemToggle
+    soundActivate: null
+    soundDeactivate: null
+  - type: EmptySlotsRequirement
+    slots: [ outerclothing ]
+    blacklist:
+      tags:
+      - ModNotEquipable
+  - type: SlotBlock
+    slots: [ head, outerclothing, gloves, feet ]
+    enabled: false
+  - type: ModularSuit
+    activeComponents:
+      head:
+        - type: PressureProtection
+          highPressureMultiplier: 0.3
+          lowPressureMultiplier: 1000
+        - type: TemperatureProtection
+          heatingCoefficient: 0.1
+          coolingCoefficient: 0.1
+      outerClothing:
+        - type: PressureProtection
+          highPressureMultiplier: 0.3
+          lowPressureMultiplier: 1000
+        - type: TemperatureProtection
+          heatingCoefficient: 0.01
+          coolingCoefficient: 0.01
+  - type: UserInterface
+    interfaces:
+      enum.ModularSuitUiKey.Key:
+        type: ModularSuitBoundUserInterface
+  - type: WiresPanel
+    open: true
+  - type: LockedWiresPanel
+  - type: ContainerContainer
+    containers:
+      cell_slot: !type:ContainerSlot { }
+      suit_core: !type:ContainerSlot { }
+      suit_module: !type:Container { }
+      suit_part: !type:Container { }
+      suit_hidden: !type:Container { }
+  - type: ContainerFill
+    containers:
+      suit_core:
+        - ModularSuitCoreStandard
+  - type: PowerCellSlot
+    cellSlotId: cell_slot
+    fitsInCharger: true
+  - type: Lock
+    locked: false
+    unlockOnClick: false
+  - type: BypassLock
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+  - type: Damageable
+    damageContainer: Clothing
+  - type: Reactive
+    reactions:
+    - reagents: [Water, SpaceCleaner]
+      methods: [Touch]
+      effects:
+      - !type:WashDirt
+  - type: ClothingSpeedModifier
+    walkModifier: 0.8
+    sprintModifier: 0.8
+  - type: ExplosionResistance
+    damageCoefficient: 0 # As backpack
+  - type: HeldSpeedModifier
+  - type: Tag
+    tags:
+      - WhitelistChameleon
+  - type: StaticPrice
+    price: 500
+
+- type: entity
+  parent: [ BaseItem, BaseClothingModularToggler ]
+  id: ClothingModularHelmetBase
+  abstract: true
+  components:
+  - type: EdibleMatter
+    canBeEaten: false
+  - type: Item
+    size: Normal
+  - type: Clothing
+    quickEquip: false
+    slots: [ head ]
+    clothingVisuals:
+      head:
+      - state: equipped-HELMET
+      head-reptilian:
+      - state: equipped-HELMET-reptilian
+      head-vox:
+      - state: equipped-HELMET-vox
+  - type: BreathMask
+  - type: GroupExamine
+  - type: IngestionBlocker
+    enabled: false
+  - type: HideLayerClothing
+    hideOnToggle: true
+    slots:
+    - Hair
+    - Snout
+    - HeadTop
+    - HeadSide
+    - FacialHair
+  - type: DiseaseProtection
+    protection: 0.05
+  - type: IdentityBlocker
+    enabled: false
+  - type: ToggleableVisuals
+    clothingVisuals:
+      head:
+      - state: sealed-equipped-HELMET
+      - state: visor-unshaded
+        shader: unshaded
+      head-reptilian:
+      - state: sealed-equipped-HELMET-reptilian
+      - state: visor-unshaded-reptilian
+        shader: unshaded
+      head-vox:
+      - state: sealed-equipped-HELMET-vox
+      - state: visor-unshaded-vox
+        shader: unshaded
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.90
+        Slash: 0.90
+        Piercing: 0.95
+        Heat: 0.90
+        Radiation: 0.25
+  - type: PointLight
+    enabled: false
+    mask: /Textures/Effects/LightMasks/cone.png
+    autoRot: true
+  - type: LightBehaviour
+    behaviours:
+      - !type:FadeBehaviour
+        id: radiating
+        interpolate: Linear
+        maxDuration: 2.0
+        startValue: 3.0
+        endValue: 2.0
+        isLooped: true
+        reverseWhenFinished: true
+      - !type:PulseBehaviour
+        id: blinking
+        interpolate: Nearest
+        maxDuration: 1.0
+        startValue: 0.1
+        endValue: 2.0
+        isLooped: true
+  - type: Battery
+    maxCharge: 600
+    startingCharge: 600
+  - type: BatterySelfRecharger
+    autoRechargeRate: 2
+  - type: ModularSuitPart
+    partType: Helmet
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+
+- type: entity
+  id: ClothingModularControllerLockedBase
+  abstract: true
+  components:
+  - type: WiresPanel
+    open: false
+  - type: Lock
+    locked: true
+    unlockOnClick: false
+
+- type: entity
+  parent: [ BaseItem, BaseClothingModularToggler, AllowSuitStorageClothing ]
+  id: ClothingModularChestPlateBase
+  abstract: true
+  components:
+  - type: EdibleMatter
+    canBeEaten: false
+  - type: Item
+    size: Normal
+  - type: Clothing
+    quickEquip: false
+    slots: [ outerClothing ]
+    clothingVisuals:
+      outerClothing:
+      - state: equipped-OUTERCLOTHING
+      outerClothing-reptilian:
+      - state: equipped-OUTERCLOTHING-reptilian
+      outerClothing-vox:
+      - state: equipped-OUTERCLOTHING-vox
+  - type: DiseaseProtection
+    protection: 0.05
+  - type: GroupExamine
+  - type: ToggleableVisuals
+    clothingVisuals:
+      outerClothing:
+      - state: sealed-equipped-OUTERCLOTHING
+      outerClothing-reptilian:
+      - state: sealed-equipped-OUTERCLOTHING-reptilian
+      outerClothing-vox:
+      - state: sealed-equipped-OUTERCLOTHING-vox
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.90
+        Slash: 0.90
+        Piercing: 0.95
+        Heat: 0.90
+        Radiation: 0.25
+  - type: ModularSuitPart
+    partType: Torso
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+
+- type: entity
+  parent: [ BaseItem, BaseClothingModularToggler ]
+  id: ClothingModularGauntletsBase
+  abstract: true
+  components:
+  - type: EdibleMatter
+    canBeEaten: false
+  - type: Item
+    size: Small
+    storedRotation: -90
+  - type: Clothing
+    quickEquip: false
+    slots: [ gloves ]
+    clothingVisuals:
+      gloves:
+      - state: equipped-HAND
+  - type: DiseaseProtection
+    protection: 0.05
+  - type: ToggleableVisuals
+    clothingVisuals:
+      gloves:
+      - state: sealed-equipped-HAND
+  - type: ModularSuitPart
+    partType: Gloves
+  - type: DamageOnInteractProtection
+    damageProtection:
+      flatReductions:
+        Heat: 10
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+
+- type: entity
+  parent: [ BaseItem, BaseClothingModularToggler ]
+  id: ClothingModularBootsBase
+  abstract: true
+  components:
+  - type: Item
+    size: Normal
+  - type: Clothing
+    quickEquip: false
+    slots: [ feet ]
+    clothingVisuals:
+      shoes:
+      - state: equipped-FEET
+      shoes-reptilian:
+      - state: equipped-FEET-reptilian
+  - type: ToggleableVisuals
+    clothingVisuals:
+      shoes:
+      - state: sealed-equipped-FEET
+      shoes-reptilian:
+      - state: sealed-equipped-FEET-reptilian
+  - type: ModularSuitPart
+    partType: Boots
+  - type: HeldSpeedModifier
+  - type: ProtectedFromStepTriggers
+    slots: WITHOUT_POCKET
+  - type: Tag
+    tags:
+    - WhitelistChameleon

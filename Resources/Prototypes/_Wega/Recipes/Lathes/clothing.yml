@@ -182,17 +182,17 @@
   result: PouchBase
 
 - type: latheRecipe
-  parent: JobPouch
+  parent: BasePouch
   id: PouchMaterial
   result: PouchMaterial
   
 - type: latheRecipe
-  parent: JobPouch
+  parent: BasePouch
   id: PouchMedical
   result: PouchMedical
   
 - type: latheRecipe
-  parent: JobPouch
+  parent: BasePouch
   id: PouchSec
   result: PouchSec
 

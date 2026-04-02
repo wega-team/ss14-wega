@@ -142912,7 +142912,7 @@ entities:
     - type: Transform
       pos: 52.5,-31.5
       parent: 60
-- proto: VendingMachineWinter
+- proto: VendingMachineFashion
   entities:
   - uid: 17464
     components:

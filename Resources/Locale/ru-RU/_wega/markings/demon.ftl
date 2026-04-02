@@ -79,3 +79,13 @@ marking-DemonBreastDefault = Грудь (Обычная)
 marking-DemonBreastMedium = Грудь (Средняя)
 marking-DemonBreastBig = Грудь (Большая)
 marking-DemonBreastSuperBig = Грудь (Очень большая)
+# Порождения лаваленда
+marking-DemonDrakeTile = Аркана, Хвост Дрейка
+marking-DemonDrakeTile-tail_drake = Хвост
+marking-DemonDrakeTile-tail_drake_wagging_secondary = Шипы
+marking-DemonDrakeSpine = Аркана, Позвонки Дрейка
+marking-DemonDrakeSpine-drake_spine = Позвоночник
+marking-DemonDrakeLArm = Аркана, рука дрейка (левая)
+marking-DemonDrakeLArm-l_drake_arm = рука
+marking-DemonDrakeRArm = Аркана, рука дрейка (правая)
+marking-DemonDrakeRArm-r_drake_arm = рука

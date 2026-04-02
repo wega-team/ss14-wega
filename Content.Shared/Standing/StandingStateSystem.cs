@@ -1,6 +1,3 @@
-using Content.Shared.Body.Components; // Corvax-Wega-Surgery
-using Content.Shared.Body.Part; // Corvax-Wega-Surgery
-using Content.Shared.Buckle.Components; // Corvax-Wega-Surgery
 using Content.Shared.Climbing.Events;
 using Content.Shared.Hands.Components;
 using Content.Shared.Inventory;
@@ -8,7 +5,6 @@ using Content.Shared.Movement.Events;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Physics;
 using Content.Shared.Rotation;
-using Content.Shared.Stunnable; // Corvax-Wega-Surgery
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Systems;
@@ -20,7 +16,6 @@ public sealed class StandingStateSystem : EntitySystem
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
-    [Dependency] private readonly SharedStunSystem _stun = default!; // Corvax-Wega-Surgery
 
     // If StandingCollisionLayer value is ever changed to more than one layer, the logic needs to be edited.
     public const int StandingCollisionLayer = (int)CollisionGroup.MidImpassable;
@@ -33,8 +28,6 @@ public sealed class StandingStateSystem : EntitySystem
         SubscribeLocalEvent<StandingStateComponent, RefreshFrictionModifiersEvent>(OnRefreshFrictionModifiers);
         SubscribeLocalEvent<StandingStateComponent, TileFrictionEvent>(OnTileFriction);
         SubscribeLocalEvent<StandingStateComponent, EndClimbEvent>(OnEndClimb);
-        SubscribeLocalEvent<StandingStateComponent, BodyPartRemovedEvent>(OnBodyPartRemoved); // Corvax-Wega-Surgery
-        SubscribeLocalEvent<StandingStateComponent, UnbuckledEvent>(OnUnbuckled); // Corvax-Wega-Surgery
     }
 
     private void OnMobTargetCollide(Entity<StandingStateComponent> ent, ref AttemptMobTargetCollideEvent args)
@@ -76,23 +69,6 @@ public sealed class StandingStateSystem : EntitySystem
         // Currently only Climbing also edits fixtures layers like this so this is fine for now.
         ChangeLayers(entity);
     }
-
-    // Corvax-Wega-Surgery-Start
-    private void OnBodyPartRemoved(Entity<StandingStateComponent> ent, ref BodyPartRemovedEvent args)
-    {
-        if (args.Part.Comp.PartType == BodyPartType.Leg)
-        {
-            if (!TryComp<BodyComponent>(ent, out var body) || body.LegEntities.Count < body.RequiredLegs)
-                _stun.TryKnockdown(ent.Owner, TimeSpan.FromSeconds(0.5f), true, false, false);
-        }
-    }
-
-    private void OnUnbuckled(Entity<StandingStateComponent> ent, ref UnbuckledEvent args)
-    {
-        if (TryComp<BodyComponent>(ent, out var body) && body.LegEntities.Count < body.RequiredLegs)
-            _stun.TryKnockdown(ent.Owner, TimeSpan.FromSeconds(0.5f), true, false, false);
-    }
-    // Corvax-Wega-Surgery-End
 
     public bool IsMatchingState(Entity<StandingStateComponent?> entity, bool standing)
     {

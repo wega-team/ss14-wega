@@ -47,15 +47,15 @@
   id: Robotics
   recipes:
   - ProximitySensor
-  # Corvax-Wega-Android-Start
-  - AndroidBodyPart
-  - ArmSyntheticPry
-  - ArmSyntheticDefib
-  - ArmSyntheticProtoKinetic
-  - ArmSyntheticCharger
-  - LegSyntheticMagboots
-  - LegSyntheticJump
-  # Corvax-Wega-Android-End
+  # # Corvax-Wega-Android-Start
+  # - AndroidBodyPart
+  # - ArmSyntheticPry
+  # - ArmSyntheticDefib
+  # - ArmSyntheticProtoKinetic
+  # - ArmSyntheticCharger
+  # - LegSyntheticMagboots
+  # - LegSyntheticJump
+  # # Corvax-Wega-Android-End
 
 - type: latheRecipePack
   id: BorgModules
@@ -76,6 +76,7 @@
   - BorgModuleSheild
   - BorgModuleGranader
   - BorgModuleCommonHand
+  - BorgModuleDNA
  # Corvax-Wega-end
 
 - type: latheRecipePack

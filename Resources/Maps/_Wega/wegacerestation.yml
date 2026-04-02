@@ -135390,7 +135390,7 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
-- proto: ClothingOuterHardsuitClown
+- proto: ClothingModularControllerCosmohonkPreassembled
   entities:
   - uid: 20420
     components:
@@ -296703,7 +296703,7 @@ entities:
       fixtures: {}
     missingComponents:
     - AccessReader
-- proto: VendingMachineWinter
+- proto: VendingMachineFashion
   entities:
   - uid: 14997
     components:

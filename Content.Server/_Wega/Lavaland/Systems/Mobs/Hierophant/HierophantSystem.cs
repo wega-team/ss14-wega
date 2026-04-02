@@ -27,6 +27,7 @@ public sealed partial class HierophantSystem : EntitySystem
 {
     [Dependency] private readonly SharedAchievementsSystem _achievement = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly DamageableSystem _damage = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly SharedMapSystem _map = default!;
     [Dependency] private readonly NPCUseActionsOnTargetSystem _npcActions = default!;
@@ -187,7 +188,8 @@ public sealed partial class HierophantSystem : EntitySystem
 
     private void OnHierophantDamage(EntityUid uid, HierophantBossComponent component, DamageChangedEvent args)
     {
-        if (args.DamageIncreased && args.Damageable.TotalDamage > 0)
+        var totalDamage = _damage.GetTotalDamage(uid);
+        if (args.DamageIncreased && totalDamage > 0)
         {
             UpdateAttackSpeed(uid);
 
@@ -461,24 +463,20 @@ public sealed partial class HierophantSystem : EntitySystem
 
     private bool IsLowHealth(Entity<HierophantBossComponent> ent)
     {
-        if (!TryComp<DamageableComponent>(ent, out var damageable))
-            return false;
-
+        var totalDamage = _damage.GetTotalDamage(ent.Owner);
         if (!_threshold.TryGetThresholdForState(ent, MobState.Dead, out var threshold))
             return false;
 
-        return damageable.TotalDamage >= threshold - threshold * LowHealthThreshold;
+        return totalDamage >= threshold - threshold * LowHealthThreshold;
     }
 
     private float GetHealthRatio(EntityUid uid)
     {
-        if (!TryComp<DamageableComponent>(uid, out var damageable))
-            return 1f;
-
+        var totalDamage = _damage.GetTotalDamage(uid);
         if (!_threshold.TryGetThresholdForState(uid, MobState.Dead, out var threshold))
             return 1f;
 
-        return 1f - (float)(double)(damageable.TotalDamage / threshold);
+        return 1f - (float)(double)(totalDamage / threshold);
     }
 
     private float GetAttackSpeedMultiplier(float healthRatio)

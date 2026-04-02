@@ -10,7 +10,7 @@
   collisionMask: FullTileMask
   rotation: Fixed
   fx: EffectRCDDeconstruct4
-  
+
 # Flooring
 - type: rcd
   id: FloorXenoborg
@@ -107,56 +107,15 @@
   rotation: User
   fx: EffectRCDConstruct1
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# Electrical
+- type: rcd
+  id: SurveillanceCameraGeneral
+  category: Electrical
+  sprite: _Wega/Structures/Wallmounts/camera.png
+  mode: ConstructObject
+  prototype: SurveillanceCameraGeneral
+  cost: 1
+  delay: 0
+  collisionMask: FullTileMask
+  rotation: Fixed
+  fx: EffectRCDConstruct2

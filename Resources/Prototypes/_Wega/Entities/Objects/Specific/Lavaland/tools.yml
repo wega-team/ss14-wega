@@ -13,7 +13,7 @@
   - type: Jaunter
   - type: Item
     size: Small
-    grid:
+    shape:
     - 0,0,1,1
 
 - type: entity

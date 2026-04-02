@@ -180,9 +180,6 @@
   - type: Metabolizer
     solutionOnBody: false
     metabolizerTypes: [ Bloodsucker ]
-    groups:
-      - id: Medicine
-      - id: Poison
   - type: Tag
     tags:
     - DoorBumpOpener
@@ -581,7 +578,7 @@
     description: ghost-role-information-idol-description
   - type: HTN
     rootTask:
-      task: SimpleRangedHostileCompound
+      task: MouseCompound
   - type: Destructible
     thresholds:
     - trigger:

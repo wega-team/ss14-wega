@@ -113,7 +113,7 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
 
     private void OnMeleeShotAttempted(EntityUid uid, MeleeWeaponComponent comp, ref ShotAttemptedEvent args)
     {
-        if (comp.NextAttack > Timing.CurTime)
+        if (comp.NextAttack > Timing.CurTime && !comp.IgnoreAttempted) // Corvax-Wega-Edit
             args.Cancel();
     }
 
@@ -220,14 +220,16 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
 
     private void OnHeavyAttack(HeavyAttackEvent msg, EntitySessionEventArgs args) // Corvax-Wega-Change
     {
-        var weapon = GetEntity(msg.Weapon); // Corvax-Wega-Add
-        if (args.SenderSession.AttachedEntity is not { } user // Corvax-Wega-Change
-            || TerminatingOrDeleted(user) || TerminatingOrDeleted(weapon)) // Corvax-Wega-Change
+        // Corvax-Wega-Change-start
+        var weapon = GetEntity(msg.Weapon);
+        if (args.SenderSession.AttachedEntity is not { } user
+            || TerminatingOrDeleted(user) || TerminatingOrDeleted(weapon))
             return;
 
-        if (!TryGetWeapon(user, out var weaponUid, out var weaponComp) // Corvax-Wega-Change
-            || weaponUid != weapon || !weaponComp.PossibilityWideAtack) // Corvax-Wega-Change
+        if (!TryGetWeapon(user, out var weaponUid, out var weaponComp)
+            || weaponUid != weapon || !weaponComp.PossibilityWideAtack)
             return;
+        // Corvax-Wega-Change-end
 
         AttemptAttack(user, weaponUid, weaponComp, msg, args.SenderSession);
     }

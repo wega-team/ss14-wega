@@ -17,6 +17,9 @@
           emergencyShuttlePath: /Maps/Shuttles/emergency_amber.yml
         - type: StationCargoShuttle
           path: /Maps/_Wega/Shuttles/cargo_kilo.yml
+        - type: StationLavaland
+          planets: [ Lavaland ]
+          enabled: false
         - type: StationJobs
           availableJobs:
             #service

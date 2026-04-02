@@ -57,8 +57,6 @@
     tags:
       - BrainSynthetic
   - type: Brain
-  - type: Organ
-    organType: Brain
   # Corvax-Wega-Android-end
 
 - type: entity
@@ -148,6 +146,4 @@
         - SecretStash
     # Corvax-Wega-Android-start
     - type: Brain
-    - type: Organ
-      organType: Brain
     # Corvax-Wega-Android-end

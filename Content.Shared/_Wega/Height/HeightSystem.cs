@@ -17,7 +17,7 @@ public sealed class HeightSystem : EntitySystem
 
     private void OnSmallHeightComponentStartup(Entity<SmallHeightComponent> ent, ref ComponentStartup args)
     {
-        if (!TryComp<HumanoidAppearanceComponent>(ent, out var humanoid))
+        if (!TryComp<HumanoidProfileComponent>(ent, out var humanoid))
             return;
 
         ent.Comp.LastHeight = humanoid.Height;
@@ -28,7 +28,7 @@ public sealed class HeightSystem : EntitySystem
 
     private void OnBigHeightComponentStartup(Entity<BigHeightComponent> ent, ref ComponentStartup args)
     {
-        if (!TryComp<HumanoidAppearanceComponent>(ent, out var humanoid))
+        if (!TryComp<HumanoidProfileComponent>(ent, out var humanoid))
             return;
 
         ent.Comp.LastHeight = humanoid.Height;
@@ -40,7 +40,7 @@ public sealed class HeightSystem : EntitySystem
 
     private void OnSmallHeightComponentShutdown(Entity<SmallHeightComponent> ent, ref ComponentShutdown args)
     {
-        if (!TryComp<HumanoidAppearanceComponent>(ent, out var humanoid) || ent.Comp.LastHeight == default)
+        if (!TryComp<HumanoidProfileComponent>(ent, out var humanoid) || ent.Comp.LastHeight == default)
             return;
 
         humanoid.Height = ent.Comp.LastHeight;
@@ -50,7 +50,7 @@ public sealed class HeightSystem : EntitySystem
 
     private void OnBigHeightComponentShutdown(Entity<BigHeightComponent> ent, ref ComponentShutdown args)
     {
-        if (!TryComp<HumanoidAppearanceComponent>(ent, out var humanoid) || ent.Comp.LastHeight == default)
+        if (!TryComp<HumanoidProfileComponent>(ent, out var humanoid) || ent.Comp.LastHeight == default)
             return;
 
         humanoid.Height = ent.Comp.LastHeight;

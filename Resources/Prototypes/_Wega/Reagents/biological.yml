@@ -11,15 +11,13 @@
     requiredSlipSpeed: 4
     superSlippery: true
   metabolisms:
-    Drink:
+    Digestion:
       effects:
       - !type:SatiateThirst
         factor: 4
-    Food:
-      effects:
-        - !type:AdjustReagent
-          reagent: UncookedAnimalProteins
-          amount: 0.1
+      - !type:AdjustReagent
+        reagent: UncookedAnimalProteins
+        amount: 0.1
   footstepSound:
     collection: FootstepBlood
     params:
@@ -50,7 +48,7 @@
   recognizable: true
   physicalDesc: reagent-physical-desc-ferrous
   metabolisms:
-    Drink:
+    Digestion:
       effects:
       - !type:SatiateThirst
         factor: 1.0
@@ -58,7 +56,7 @@
         - !type:MetabolizerTypeCondition
           type: [ Ariral ]
           inverted: true
-    Poison:
+    Bloodstream:
       effects:
       - !type:HealthChange
         conditions:
@@ -86,11 +84,11 @@
   recognizable: false
   physicalDesc: reagent-physical-desc-metallic
   metabolisms:
-    Drink:
+    Digestion:
       effects:
       - !type:SatiateThirst
         factor: 1.0
-    Poison:
+    Bloodstream:
       effects:
       - !type:HealthChange
         damage:

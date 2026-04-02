@@ -233080,7 +233080,6 @@ entities:
     - type: Transform
       pos: 9.5,-11.5
       parent: 2
-    - type: Timer
   - uid: 25526
     components:
     - type: Transform

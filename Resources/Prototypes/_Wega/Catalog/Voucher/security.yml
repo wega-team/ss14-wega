@@ -58,7 +58,7 @@
   description: voucher-security-supervision-desc
   icon: { sprite: Objects/Weapons/Melee/truncheon.rsi, state: "icon" }
   items:
-  - id: WiretappingCameraAlpha
+  - id: WiretappingCameraAlphaOff
     amount: 2
   - id: MagazinePistolHighCapacityPractice
     amount: 4

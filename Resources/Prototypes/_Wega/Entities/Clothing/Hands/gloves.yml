@@ -48,6 +48,139 @@
   - type: Clothing
     sprite: _Wega/Clothing/Hands/sheriff_gloves.rsi
 
+
+# ADT Paws
+- type: entity
+  parent: ClothingHandsGlovesSyntheticBase
+  id: ClothingHandsCatPawsWhite
+  name: white cat paws
+  description: Super soft white cat paws, especially for the most brutal station workers.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Hands/Gloves/white.rsi
+    state: icon
+  - type: Item
+  - type: Clothing
+    sprite: _Wega/Clothing/Hands/Gloves/white.rsi
+    clothingVisuals:
+      gloves:
+      - state: equipped-HAND
+  - type: Fiber
+    fiberColor: fibers-white
+
+- type: entity
+  parent: ClothingHandsGlovesSyntheticBase
+  id: ClothingHandsCatPawsBrown
+  name: brown cat paws
+  description: Super soft white cat paws, especially for the most brutal station workers.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Hands/Gloves/brown.rsi
+    state: icon
+  - type: Item
+  - type: Clothing
+    sprite: _Wega/Clothing/Hands/Gloves/brown.rsi
+    clothingVisuals:
+      gloves:
+      - state: equipped-HAND
+  - type: Fiber
+    fiberColor: fibers-brown
+
+- type: entity
+  parent: ClothingHandsGlovesSyntheticBase
+  id: ClothingHandsCatPawsBlack
+  name: black cat paws
+  description: Super soft white cat paws, especially for the most brutal station workers.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Hands/Gloves/black.rsi
+    state: icon
+  - type: Item
+  - type: Clothing
+    sprite: _Wega/Clothing/Hands/Gloves/black.rsi
+    clothingVisuals:
+      gloves:
+      - state: equipped-HAND
+  - type: Fiber
+    fiberColor: fibers-black
+
+- type: entity
+  parent: ClothingHandsGlovesSyntheticBase
+  id: ClothingHandsCatPawsBlackWhite
+  name: black and white cat paws
+  description: Super soft white cat paws, especially for the most brutal station workers.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Hands/Gloves/black_white.rsi
+    state: icon
+  - type: Item
+  - type: Clothing
+    sprite: _Wega/Clothing/Hands/Gloves/black_white.rsi
+    clothingVisuals:
+      gloves:
+      - state: equipped-HAND
+  - type: Fiber
+    fiberColor: fibers-grey
+
+# Боевая версия перчаток в аплинке
+- type: entity
+  parent: ClothingHandsCatPawsWhite
+  id: ClothingHandsCatPawsWhiteCombat
+  name: white cat paws combat
+  description: Super soft white cat paws, especially for the most brutal station workers.
+  suffix: Combat
+  components:
+  - type: MeleeWeapon
+    damage:
+      types:
+        Piercing: 8
+    soundHit:
+      collection: AlienClaw
+
+- type: entity
+  parent: ClothingHandsCatPawsBrown
+  id: ClothingHandsCatPawsBrownCombat
+  name: brown cat paws combat
+  description: Super soft white cat paws, especially for the most brutal station workers.
+  suffix: Combat
+  components:
+  - type: MeleeWeapon
+    damage:
+      types:
+        Piercing: 8
+    soundHit:
+      collection: AlienClaw
+
+- type: entity
+  parent: ClothingHandsCatPawsBlack
+  id: ClothingHandsCatPawsBlackCombat
+  name: black cat paws combat
+  description: Super soft white cat paws, especially for the most brutal station workers.
+  suffix: Combat
+  components:
+  - type: MeleeWeapon
+    damage:
+      types:
+        Piercing: 8
+    soundHit:
+      collection: AlienClaw
+
+- type: entity
+  parent: ClothingHandsCatPawsBlackWhite
+  id: ClothingHandsCatPawsWhiteBlackCombat
+  name: black and white cat paws combat
+  description: Super soft white cat paws, especially for the most brutal station workers.
+  suffix: Combat
+  components:
+  - type: MeleeWeapon
+    damage:
+      types:
+        Piercing: 8
+    soundHit:
+      collection: AlienClaw
+# ADT End Paws
+#endregion Paws
+
 - type: entity
   parent: ClothingHandsBase
   id: ClothingHandsGlovesConcussiveGauntlets
@@ -66,10 +199,9 @@
       path: "/Audio/Items/drill_hit.ogg"
     attackRate: 4
     damage:
-      groups:
-        Brute: 6
       types:
         Structural: 30
+        Blunt: 6
     mustBeEquippedToUse: true
   - type: Fiber
     fiberMaterial: fibers-durathread
@@ -77,3 +209,4 @@
   - type: FingerprintMask
   - type: StaticPrice
     price: 2500
+

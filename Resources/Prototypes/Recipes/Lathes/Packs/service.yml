@@ -30,6 +30,8 @@
   - TapeRecorder # Corvax-Wega-Recorder
   - CassetteTapeLong # Corvax-Wega-Recorder
   - PouchBase # Corvax-Wega-add
+  - PouchMaterial # Corvax-Wega-add
+  - CargoHoloprojectorField # Corvax-Wega-add
 
 - type: latheRecipePack
   id: ServiceBoardsStatic

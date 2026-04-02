@@ -1,0 +1,75 @@
+- type: latheRecipePack
+  id: ModesuitPartStatic
+  recipes:
+  - ModularSuitConstruction
+  - ModularSuitHelmet
+  - ModularSuitBoots
+  - ModularSuitChestPlate
+  - ModularSuitGauntlets
+  - BasicPlating
+  - CivilianPlating
+  - ModularSuitCoreStandard
+
+- type: latheRecipePack
+  id: ModesuitPlatingReach
+  recipes:
+  - AtmosPlating
+  - EngineeringPlating
+  - ClownPlating
+  - MedicalPlating
+  - ModularSuitCorePlasma
+  - ModularSuitCoreInfinite
+
+- type: latheRecipePack
+  id: ModesuitModuleStatic
+  recipes:
+  - TRaySuitModule
+  - TetherSuitModule
+  - BikeHornSuitModule
+  - VisorDiagnosticSuitModule
+  - VisorMedicalSuitModule
+  - WeldingSuitModule
+  - VisorMesonSuitModule
+  - RadiationShieldSuitModule
+  - StorageSuitModule
+  - HealthAnalyzerSuitModule
+  - FlashlightSuitModule
+  - PaperDispenserSuitModule
+
+- type: latheRecipePack
+  id: ModesuitModuleReach
+  recipes:
+  - MicrowaveBeamSuitModule
+  - AntiGravitySuitModule
+  - StorageHoldingSuitModule
+  - StorageLargeSuitModule
+  - MagnetSuitModule
+  - GPSSuitModule
+  - QuickCarrySuitModule
+  - GrabberSuitModule
+  - DefibrillatorSuitModule
+  - BurgerDispenserSuitModule
+  - InjectorSuitModule
+  - JetpackSuitModule
+  - KinesisSuitModule
+  - OreBagSuitModule
+  - ApparatusSuitModule
+  - SolutionScannerSuitModule
+  - TeleporterSuitModule
+  - ConstructorSuitModule
+  - DrillSuitModule
+  - AdvancedFlashlightSuitModule
+  - TemperatureRegulatorSuitModule
+
+- type: latheRecipePack
+  id: ModesuitModuleSecStatic
+  recipes:
+  - VisorSecuritySuitModule
+  - HolsterSuitModule
+
+- type: latheRecipePack
+  id: ModesuitModuleSecReach
+  recipes:
+  - EMPShieldSuitModule
+  - ArmorBossterSuitModule
+  - SecurityPlating

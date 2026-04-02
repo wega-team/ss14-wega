@@ -1,5 +1,0 @@
-- type: entity
-  save: false
-  name: Urist McAshWalker
-  parent: BaseMobAshWalker
-  id: MobAshWalker

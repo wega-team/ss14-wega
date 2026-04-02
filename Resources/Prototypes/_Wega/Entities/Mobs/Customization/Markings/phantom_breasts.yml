@@ -1,10 +1,8 @@
 - type: marking
   id: PhantomBreastSmall
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [Phantom]
+  groupWhitelist: [Phantom]
   sexRestriction: [Female]
-  followSkinColor: true
   forcedColoring: true
   coloring:
     default:
@@ -17,10 +15,8 @@
 - type: marking
   id: PhantomBreastDefault
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [Phantom]
+  groupWhitelist: [Phantom]
   sexRestriction: [Female]
-  followSkinColor: true
   forcedColoring: true
   coloring:
     default:
@@ -33,10 +29,8 @@
 - type: marking
   id: PhantomBreastMedium
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [Phantom]
+  groupWhitelist: [Phantom]
   sexRestriction: [Female]
-  followSkinColor: true
   forcedColoring: true
   coloring:
     default:
@@ -49,10 +43,8 @@
 - type: marking
   id: PhantomBreastBig
   bodyPart: Special
-  markingCategory: Chest
-  speciesRestriction: [Phantom]
+  groupWhitelist: [Phantom]
   sexRestriction: [Female]
-  followSkinColor: true
   forcedColoring: true
   coloring:
     default:
@@ -65,10 +57,8 @@
 - type: marking
   id: PhantomBreastSuperBig
   bodyPart: Special
-  markingCategory: Chest
-  speciesRestriction: [Phantom]
+  groupWhitelist: [Phantom]
   sexRestriction: [Female]
-  followSkinColor: true
   forcedColoring: true
   coloring:
     default:

@@ -35,6 +35,12 @@
     solution: food
   - type: TrashOnSolutionEmpty
     solution: food
+# Corvax-Wega-start
+  - type: Tag
+    tags:
+      - Ingredient
+# Corvax-Wega-end
+
 - type: entity
   abstract: true
   parent: ReagentContainerBase
@@ -295,6 +301,7 @@
   - type: Tag
     tags:
       - Mayo
+      - Ingredient # Corvax-Wega-change
 
 # - type: entity
 #   parent: ReagentPacketBase
@@ -328,6 +335,11 @@
         reagents:
         - ReagentId: Nutriment
           Quantity: 15
+# Corvax-Wega-start
+  - type: Tag
+    tags:
+      - Ingredient
+# Corvax-Wega-end
 
 - type: entity
   parent: FoodBakingBase
@@ -516,6 +528,7 @@
   - type: Tag
     tags:
     - ClothMade
+    
   - type: SolutionContainerManager
     solutions:
       food:
@@ -586,6 +599,7 @@
   - type: Tag
     tags:
      - ClothMade
+     - Ingredient # Corvax-Wega-add
 
 - type: entity
   name: raw pastry base
@@ -979,6 +993,11 @@
       reagents:
       - ReagentId: CocoaPowder
         Quantity: 2
+# Corvax-Wega-start
+  - type: Tag
+    tags:
+      - Ingredient
+# Corvax-Wega-end
 
 - type: entity
   parent: FoodBakingBase

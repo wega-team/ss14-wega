@@ -1,7 +1,5 @@
 using Content.Server.Antag;
 using Content.Server.Atmos.Components;
-using Content.Server.Body.Components;
-using Content.Server.Body.Systems;
 using Content.Server.GameTicking.Rules.Components;
 using Content.Server.Roles;
 using Content.Server.Actions;
@@ -18,16 +16,19 @@ using Content.Shared.Nutrition.Components;
 using Content.Shared.Temperature.Components;
 using Content.Shared.Vampire.Components;
 using Content.Shared.Damage.Systems;
+using Content.Shared.Body;
+using Content.Shared.Metabolism;
+using System.Linq;
 
 namespace Content.Server.GameTicking.Rules
 {
     public sealed class VampireRuleSystem : GameRuleSystem<VampireRuleComponent>
     {
         [Dependency] private readonly AntagSelectionSystem _antag = default!;
-        [Dependency] private readonly BodySystem _body = default!;
         [Dependency] private readonly MetabolizerSystem _metabolism = default!;
         [Dependency] private readonly ActionsSystem _actions = default!;
         [Dependency] private readonly DamageableSystem _damage = default!;
+        [Dependency] private readonly SharedVisualBodySystem _visualBody = default!;
 
         public override void Initialize()
         {
@@ -55,7 +56,7 @@ namespace Content.Server.GameTicking.Rules
 
         private string MakeBriefing(EntityUid ent)
         {
-            var isHuman = HasComp<HumanoidAppearanceComponent>(ent);
+            var isHuman = HasComp<HumanoidProfileComponent>(ent);
             var briefing = isHuman
                 ? Loc.GetString("vampire-role-greeting-human")
                 : Loc.GetString("vampire-role-greeting-animal");
@@ -75,7 +76,7 @@ namespace Content.Server.GameTicking.Rules
         private float GetTotalBloodDrankInRound()
         {
             var totalBloodDrank = 0f;
-            foreach (var vampireEntity in EntityManager.EntityQuery<VampireComponent>(true))
+            foreach (var vampireEntity in EntityQuery<VampireComponent>(true))
             {
                 totalBloodDrank += vampireEntity.TotalBloodDrank;
             }
@@ -115,13 +116,13 @@ namespace Content.Server.GameTicking.Rules
 
         private void HandleMetabolismAndOrgans(EntityUid vampire)
         {
-            if (TryComp<BodyComponent>(vampire, out var bodyComponent))
+            if (TryComp<BodyComponent>(vampire, out var bodyComponent) && bodyComponent.Organs != null)
             {
-                foreach (var organ in _body.GetBodyOrgans(vampire, bodyComponent))
+                foreach (var organ in bodyComponent.Organs.ContainedEntities)
                 {
-                    if (TryComp<MetabolizerComponent>(organ.Id, out var metabolizer))
+                    if (TryComp<MetabolizerComponent>(organ, out var metabolizer))
                     {
-                        if (TryComp<StomachComponent>(organ.Id, out _))
+                        if (TryComp<StomachComponent>(organ, out _))
                             _metabolism.ClearMetabolizerTypes(metabolizer);
 
                         _metabolism.TryAddMetabolizerType(metabolizer, VampireComponent.MetabolizerVampire);
@@ -153,10 +154,15 @@ namespace Content.Server.GameTicking.Rules
 
         private void UpdateAppearance(EntityUid vampire)
         {
-            if (TryComp<HumanoidAppearanceComponent>(vampire, out var appearanceComponent))
+            if (_visualBody.TryGatherMarkingsData(vampire, null, out var profiles, out _, out _))
             {
-                appearanceComponent.EyeColor = Color.FromHex("#E22218FF");
-                Dirty(vampire, appearanceComponent);
+                var newEyeColor = Color.FromHex("#E22218FF");
+
+                var updatedProfiles = profiles.ToDictionary(
+                    pair => pair.Key,
+                    pair => pair.Value with { EyeColor = newEyeColor });
+
+                _visualBody.ApplyProfiles(vampire, updatedProfiles);
             }
         }
 

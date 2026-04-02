@@ -46,7 +46,8 @@ public sealed class DamageInContainerSystem : SharedDamageInContainerSystem
                 if (!TryComp<DamageableComponent>(contained, out var damage))
                     continue;
 
-                if (comp.DamageCap != 0 && damage.TotalDamage >= comp.DamageCap)
+                var totalDamage = _damageable.GetTotalDamage((contained, damage));
+                if (comp.DamageCap != 0 && totalDamage >= comp.DamageCap)
                     continue;
 
                 if (_whitelistSystem.IsWhitelistFail(comp.Whitelist, contained))

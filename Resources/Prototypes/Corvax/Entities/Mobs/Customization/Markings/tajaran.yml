@@ -1,495 +1,440 @@
-- type: humanoidBaseSprite
-  id: MobTajaranEyes
-  baseSprite:
-    sprite: Corvax/Mobs/Customization/Tajaran/tajaran_eyes.rsi
-    state: eyes
-
 - type: marking
   id: TajaranPatch
-  markingCategory: Overlay
   bodyPart: Chest
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_overlay.rsi
       state: patch
 
 - type: marking
   id: TajaranSkeletonBody
-  markingCategory: Overlay
   bodyPart: Chest
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_overlay.rsi
       state: skeleton_body
 
 # - type: marking
 #   id: Points
-#   markingCategory: Overlay
 #   bodyPart: Chest
-#   speciesRestriction: [Tajaran]
-#   sponsorOnly: false # Corvax-Wega-Edit
+#   groupWhitelist: [Tajaran]
+#   # sponsorOnly: true # Corvax-Wega-Temporarily
 #   sprites:
 #     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_overlay.rsi
 #       state: points
 
 - type: marking
   id: TajaranBlotsBody
-  markingCategory: Overlay
   bodyPart: Chest
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_overlay.rsi
       state: blots_body
 
 - type: marking
   id: TajaranStripesBody
-  markingCategory: Overlay
   bodyPart: Chest
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_overlay.rsi
       state: stripes_body
 
 # - type: marking
 #   id: GradientRleg
-#   markingCategory: Legs
 #   bodyPart: RFoot
-#   speciesRestriction: [Tajaran]
-#   sponsorOnly: false # Corvax-Wega-Edit
+#   groupWhitelist: [Tajaran]
+#   # sponsorOnly: true # Corvax-Wega-Temporarily
 #   sprites:
 #     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_parts.rsi
 #       state: gradient_RLeg
 
 # - type: marking
 #   id: GradientLleg
-#   markingCategory: Legs
 #   bodyPart: LFoot
-#   speciesRestriction: [Tajaran]
-#   sponsorOnly: false # Corvax-Wega-Edit
+#   groupWhitelist: [Tajaran]
+#   # sponsorOnly: true # Corvax-Wega-Temporarily
 #   sprites:
 #     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_parts.rsi
 #       state: gradient_LLeg
 
 - type: marking
   id: TajaranGradientLhand
-  markingCategory: Arms
   bodyPart: LHand
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_parts.rsi
       state: gradient_LHand
 
 - type: marking
   id: TajaranGradientLarm
-  markingCategory: Arms
   bodyPart: LArm
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_parts.rsi
       state: gradient_LArm
 
 - type: marking
   id: TajaranGradientRhand
-  markingCategory: Arms
   bodyPart: RHand
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_parts.rsi
       state: gradient_RHand
 
 - type: marking
   id: TajaranGradientRarm
-  markingCategory: Arms
   bodyPart: RArm
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_parts.rsi
       state: gradient_RArm
 
 - type: marking
   id: TajaranSpikey
-  markingCategory: Hair
   bodyPart: Hair
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_hairs.rsi
       state: spikey
 
 - type: marking
   id: TajaranTajaranHairLadiesretro
-  markingCategory: Hair
   bodyPart: Hair
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_hairs.rsi
       state: ladiesretro
 
 - type: marking
   id: TajaranHairBraid
-  markingCategory: Hair
   bodyPart: Hair
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_hairs.rsi
       state: braid
 
 - type: marking
   id: TajaranHairEyebrows
-  markingCategory: Hair
   bodyPart: Hair
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_hairs.rsi
       state: eyebrows
 
 - type: marking
   id: TajaranHairPigtail
-  markingCategory: Hair
   bodyPart: Hair
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_hairs.rsi
       state: pigtail
 
 - type: marking
   id: TajaranHairCurly
-  markingCategory: Hair
   bodyPart: Hair
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_hairs.rsi
       state: curly
 
 - type: marking
   id: TajaranHairBob
-  markingCategory: Hair
   bodyPart: Hair
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_hairs.rsi
       state: bob
 
 - type: marking
   id: TajaranHairFingerwave
-  markingCategory: Hair
   bodyPart: Hair
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_hairs.rsi
       state: fingerwave
 
 - type: marking
   id: TajaranHairPlait
-  markingCategory: Hair
   bodyPart: Hair
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_hairs.rsi
       state: plait
 
 - type: marking
   id: TajaranHairPonytail
-  markingCategory: Hair
   bodyPart: Hair
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_hairs.rsi
       state: ponytail
 
 - type: marking
   id: TajaranHairClean
-  markingCategory: Hair
   bodyPart: Hair
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_hairs.rsi
       state: clean
 
 - type: marking
   id: TajaranHairRattail
-  markingCategory: Hair
   bodyPart: Hair
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_hairs.rsi
       state: rattail
 
 - type: marking
   id: TajaranHairBedhead
-  markingCategory: Hair
   bodyPart: Hair
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_hairs.rsi
       state: bedhead
 
 - type: marking
   id: TajaranHairVictory
-  markingCategory: Hair
   bodyPart: Hair
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_hairs.rsi
       state: victory
 
 - type: marking
   id: TajaranHairShaggy
-  markingCategory: Hair
   bodyPart: Hair
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_hairs.rsi
       state: shaggy
 
 - type: marking
   id: TajaranHairMohawk
-  markingCategory: Hair
   bodyPart: Hair
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_hairs.rsi
       state: mohawk
 
 - type: marking
   id: TajaranHairBangs
-  markingCategory: Hair
   bodyPart: Hair
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_hairs.rsi
       state: bangs
 
 - type: marking
   id: TajaranHairMessy
-  markingCategory: Hair
   bodyPart: Hair
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_hairs.rsi
       state: messy
 
 - type: marking
   id: TajaranHairStraight
-  markingCategory: Hair
   bodyPart: Hair
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_hairs.rsi
       state: straight
 
 - type: marking
   id: TajaranHairLong
-  markingCategory: Hair
   bodyPart: Hair
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_hairs.rsi
       state: long
 
 - type: marking
   id: TajaranMustache2
-  markingCategory: FacialHair
   bodyPart: FacialHair
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_facial_hairs.rsi
       state: mustache_2
 
 - type: marking
   id: TajaranBeard
-  markingCategory: FacialHair
   bodyPart: FacialHair
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_facial_hairs.rsi
       state: beard
 
 - type: marking
   id: TajaranMustache3
-  markingCategory: FacialHair
   bodyPart: FacialHair
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_facial_hairs.rsi
       state: mustache_3
 
 - type: marking
   id: TajaranCheeks
-  markingCategory: FacialHair
   bodyPart: FacialHair
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_facial_hairs.rsi
       state: cheeks
 
 - type: marking
   id: TajaranMustache
-  markingCategory: FacialHair
   bodyPart: FacialHair
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_facial_hairs.rsi
       state: mustache
 
 - type: marking
   id: TajaranPatch2
-  markingCategory: Head
   bodyPart: Head
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_head.rsi
       state: patch_2
 
 - type: marking
   id: TajaranEyeStripesHead
-  markingCategory: Head
   bodyPart: Head
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_head.rsi
       state: eye_stripes_head
 
 - type: marking
   id: TajaranOutears
-  markingCategory: HeadTop
   bodyPart: HeadTop
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_head.rsi
       state: outears
 
 - type: marking
   id: TajaranTigerHead
-  markingCategory: Head
   bodyPart: Head
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_head.rsi
       state: tiger_head
 
 - type: marking
   id: TajaranMuzzle
-  markingCategory: Snout
   bodyPart: Snout
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_head.rsi
       state: muzzle
 
 - type: marking
   id: TajaranTigerFace
-  markingCategory: Head
   bodyPart: Head
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_head.rsi
       state: tiger_face
 
 - type: marking
   id: TajaranStarHead
-  markingCategory: Head
   bodyPart: Head
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_head.rsi
       state: star_head
 
 - type: marking
   id: TajaranInears
-  markingCategory: HeadTop
   bodyPart: HeadTop
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_head.rsi
       state: inears
 
 - type: marking
   id: TajaranNose
-  markingCategory: Snout
   bodyPart: Snout
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_head.rsi
       state: nose
 
 - type: marking
   id: TajaranRaccoon-head
-  markingCategory: Head
   bodyPart: Head
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_head.rsi
       state: raccoon-head
 
 - type: marking
   id: TajaranManeHead
-  markingCategory: Head
   bodyPart: Head
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_head.rsi
       state: mane_head
 
 - type: marking
   id: TajaranMuzzleinears
-  markingCategory: Snout
   bodyPart: Snout
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_head.rsi
       state: muzzleinears
 
 - type: marking
   id: TajaranTailFluffy
-  markingCategory: Tail
   bodyPart: Tail
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_tail.rsi
       state: tail_fluffy
@@ -497,40 +442,36 @@
 
 - type: marking
   id: TajaranBelly2
-  markingCategory: Chest
   bodyPart: Chest
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_chest.rsi
       state: belly2
 
 - type: marking
   id: TajaranChest
-  markingCategory: Chest
   bodyPart: Chest
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_chest.rsi
       state: chest
 
 - type: marking
   id: TajaranBelly1
-  markingCategory: Chest
   bodyPart: Chest
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_chest.rsi
       state: belly1
 
 - type: marking
   id: TajaranBelly3
-  markingCategory: Chest
   bodyPart: Chest
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_chest.rsi
       state: belly3
@@ -538,8 +479,7 @@
 - type: marking
   id: TajaranTailM
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: []
+  groupWhitelist: []
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_tail.rsi
       state: tail_m
@@ -547,9 +487,8 @@
 - type: marking
   id: TajaranTailRing
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_tail.rsi
       state: tail_m
@@ -558,10 +497,9 @@
 
 - type: marking
   id: TajaranTailSkeleton
-  markingCategory: Tail
   bodyPart: Tail
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_tail.rsi
       state: tail_m
@@ -570,10 +508,9 @@
 
 - type: marking
   id: TajaranTailTip
-  markingCategory: Tail
   bodyPart: Tail
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_tail.rsi
       state: tail_m
@@ -582,10 +519,9 @@
 
 - type: marking
   id: TajaranTailFluffySkeleton
-  markingCategory: Tail
   bodyPart: Tail
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_tail.rsi
       state: tail_fluffy
@@ -595,10 +531,9 @@
 
 - type: marking
   id: TajaranTailWingler1
-  markingCategory: Tail
   bodyPart: Tail
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_tail.rsi
       state: tail_fluffy
@@ -607,10 +542,9 @@
 
 - type: marking
   id: TajaranTailWingler2
-  markingCategory: Tail
   bodyPart: Tail
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_tail.rsi
       state: tail_fluffy
@@ -619,10 +553,9 @@
 
 - type: marking
   id: TajaranTailWingler3
-  markingCategory: Tail
   bodyPart: Tail
-  speciesRestriction: [Tajaran]
-  sponsorOnly: false # Corvax-Wega-Edit
+  groupWhitelist: [Tajaran]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_tail.rsi
       state: tail_fluffy
@@ -633,19 +566,15 @@
 - type: marking
   id: TajaranTailFluffyAnimated
   bodyPart: Tail
-  markingCategory: Tail
-  markingType: NonGenetics # Corvax-Wega-Genetics
-  speciesRestriction: []
+  groupWhitelist: []
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_tail.rsi
       state: tail_fluffy_wagging
 
 - type: marking
   id: TailWingler1Animated
-  markingCategory: Tail
-  markingType: NonGenetics # Corvax-Wega-Genetics
   bodyPart: Tail
-  speciesRestriction: []
+  groupWhitelist: []
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_tail.rsi
       state: tail_fluffy_wagging
@@ -654,10 +583,8 @@
 
 - type: marking
   id: TailWingler2Animated
-  markingCategory: Tail
-  markingType: NonGenetics # Corvax-Wega-Genetics
   bodyPart: Tail
-  speciesRestriction: []
+  groupWhitelist: []
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_tail.rsi
       state: tail_fluffy_wagging
@@ -666,10 +593,8 @@
 
 - type: marking
   id: TailWingler3Animated
-  markingCategory: Tail
-  markingType: NonGenetics # Corvax-Wega-Genetics
   bodyPart: Tail
-  speciesRestriction: []
+  groupWhitelist: []
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_tail.rsi
       state: tail_fluffy_wagging
@@ -679,9 +604,7 @@
 - type: marking
   id: TailFluffySkeletonAnimated
   bodyPart: Tail
-  markingCategory: Tail
-  markingType: NonGenetics # Corvax-Wega-Genetics
-  speciesRestriction: []
+  groupWhitelist: []
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_tail.rsi
       state: tail_fluffy_wagging
@@ -690,10 +613,8 @@
 
 - type: marking
   id: TailTipAnimated
-  markingCategory: Tail
-  markingType: NonGenetics # Corvax-Wega-Genetics
   bodyPart: Tail
-  speciesRestriction: []
+  groupWhitelist: []
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_tail.rsi
       state: tail_m_wagging
@@ -704,9 +625,7 @@
 - type: marking
   id: TajaranTailMAnimated
   bodyPart: Tail
-  markingCategory: Tail
-  markingType: NonGenetics # Corvax-Wega-Genetics
-  speciesRestriction: []
+  groupWhitelist: []
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_tail.rsi
       state: tail_m_wagging
@@ -715,8 +634,7 @@
   id: TailRingAnimated
   markingType: NonGenetics # Corvax-Wega-Genetics
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: []
+  groupWhitelist: []
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_tail.rsi
       state: tail_m_wagging
@@ -725,10 +643,8 @@
 
 - type: marking
   id: TailSkeletonAnimated
-  markingCategory: Tail
-  markingType: NonGenetics # Corvax-Wega-Genetics
   bodyPart: Tail
-  speciesRestriction: []
+  groupWhitelist: []
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_tail.rsi
       state: tail_m_wagging

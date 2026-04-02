@@ -1,0 +1,3425 @@
+# ====================================================================================== #
+#                                        REMARK
+#          Please do not add non-removable components to the costume parts.
+#    Please pay attention to the & key and transfer it completely or cut off its use.
+#  Please use the parents of each part, they are perfectly complemented and configured.
+# ====================================================================================== #
+
+# Standard
+- type: entity
+  parent: ClothingModularControllerBase
+  id: ClothingModularControllerStandard
+  name: standard modsuit controller
+  description: A standard controller for modular suits from Nakamura Engineering. Manages power distribution and module integration.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Standard/control.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Standard/control.rsi
+  - type: ContainerFill
+    containers:
+      suit_core: &core-slot #<-- &
+        - ModularSuitCoreStandard
+      suit_part:
+        - ClothingModularHelmetStandard
+        - ClothingModularChestPlateStandard
+        - ClothingModularGauntletsStandard
+        - ClothingModularBootsStandard
+
+- type: entity
+  parent: ClothingModularHelmetBase
+  id: ClothingModularHelmetStandard
+  name: standard modsuit helmet
+  description: A sealed helmet with basic protection. Features a retractable visor with cyan lighting.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Standard/helmet.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Standard/helmet.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Standard/helmet.rsi
+      state: icon-sealed
+  - type: ToggleableVisuals
+    clothingVisuals:
+      head:
+      - state: sealed-equipped-HELMET
+      - state: visor-unshaded
+        shader: unshaded
+        color: "#79f8e6"
+      head-reptilian:
+      - state: sealed-equipped-HELMET-reptilian
+      - state: visor-unshaded-reptilian
+        shader: unshaded
+        color: "#79f8e6"
+      head-vox:
+      - state: sealed-equipped-HELMET-vox
+      - state: visor-unshaded-vox
+        shader: unshaded
+        color: "#79f8e6"
+  - type: PointLight
+    color: "#79f8e6"
+
+- type: entity
+  parent: ClothingModularChestPlateBase
+  id: ClothingModularChestPlateStandard
+  name: standard modsuit chestplate
+  description: A basic armor plate for modular suits. Provides standard protection and serves as the main mounting point for modules.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Standard/chestplate.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Standard/chestplate.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Standard/chestplate.rsi
+      state: icon-sealed
+
+- type: entity
+  parent: ClothingModularGauntletsBase
+  id: ClothingModularGauntletsStandard
+  name: standard modsuit gauntlets
+  description: Reinforced gauntlets with integrated servo systems. Allow installation of hand-related modules.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Standard/gauntlets.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Standard/gauntlets.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Standard/gauntlets.rsi
+      state: icon-sealed
+
+- type: entity
+  parent: ClothingModularBootsBase
+  id: ClothingModularBootsStandard
+  name: standard modsuit boots
+  description: Sealed boots with magnetic anchoring systems. Serve as the foundation for mobility-related modules.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Standard/boots.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Standard/boots.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Standard/boots.rsi
+      state: icon-sealed
+
+# Advanced
+- type: entity
+  parent: ClothingModularControllerBase
+  id: ClothingModularControllerAdvanced
+  name: advanced modsuit controller
+  description: An upgraded controller with enhanced thermal regulation. Belongs to the Chief Engineer.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Advanced/control.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Advanced/control.rsi
+  - type: ContainerFill
+    containers:
+      suit_core: &core-slot-plasma #<-- &
+        - ModularSuitCorePlasma
+      suit_part:
+        - ClothingModularHelmetAdvanced
+        - ClothingModularChestPlateAdvanced
+        - ClothingModularGauntletsAdvanced
+        - ClothingModularBootsAdvanced
+  - type: ModularSuit
+    activeComponents:
+      head:
+        - type: PressureProtection
+          highPressureMultiplier: 0.08
+          lowPressureMultiplier: 1000
+        - type: TemperatureProtection
+          heatingCoefficient: 0.1
+          coolingCoefficient: 0.1
+        - type: FireProtection
+          reduction: 0.2
+      outerClothing:
+        - type: PressureProtection
+          highPressureMultiplier: 0.02
+          lowPressureMultiplier: 1000
+        - type: TemperatureProtection
+          heatingCoefficient: 0.01
+          coolingCoefficient: 0.01
+        - type: FireProtection
+          reduction: 0.8
+
+- type: entity
+  parent: ClothingModularHelmetBase
+  id: ClothingModularHelmetAdvanced
+  name: advanced modsuit helmet
+  description: An advanced helmet with a polished white finish. Features enhanced protection and an amber visor.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Advanced/helmet.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Advanced/helmet.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Advanced/helmet.rsi
+      state: icon-sealed
+  - type: ToggleableVisuals
+    clothingVisuals:
+      head:
+      - state: sealed-equipped-HELMET
+      - state: visor-unshaded
+        shader: unshaded
+        color: "#cc793d"
+      head-reptilian:
+      - state: sealed-equipped-HELMET-reptilian
+      - state: visor-unshaded-reptilian
+        shader: unshaded
+        color: "#cc793d"
+      head-vox:
+      - state: sealed-equipped-HELMET-vox
+      - state: visor-unshaded-vox
+        shader: unshaded
+        color: "#cc793d"
+  - type: PointLight
+    color: "#cc793d"
+
+- type: entity
+  parent: ClothingModularChestPlateBase
+  id: ClothingModularChestPlateAdvanced
+  name: advanced modsuit chestplate
+  description: An upgraded armor plate with superior protection against heat and explosions. Features a distinctive white finish.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Advanced/chestplate.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Advanced/chestplate.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Advanced/chestplate.rsi
+      state: icon-sealed
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.8
+        Slash: 0.8
+        Piercing: 0.8
+        Heat: 0.4
+        Radiation: 0.0
+        Caustic: 0.7
+  - type: ExplosionResistance
+    damageCoefficient: 0.2
+
+- type: entity
+  parent: ClothingModularGauntletsBase
+  id: ClothingModularGauntletsAdvanced
+  name: advanced modsuit gauntlets
+  description: Advanced gauntlets with complete electrical insulation. Perfect for working with hazardous equipment.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Advanced/gauntlets.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Advanced/gauntlets.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Advanced/gauntlets.rsi
+      state: icon-sealed
+  - type: Insulated
+
+- type: entity
+  parent: ClothingModularBootsBase
+  id: ClothingModularBootsAdvanced
+  name: advanced modsuit boots
+  description: Advanced boots with enhanced magnetic anchoring and improved traction systems.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Advanced/boots.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Advanced/boots.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Advanced/boots.rsi
+      state: icon-sealed
+
+# Apocryphal
+- type: entity
+  parent: ClothingModularControllerBase
+  id: ClothingModularControllerApocryphal
+  name: apocryphal modsuit controller
+  description: A high-tech, only technically legal, armored suit controller created by a collaboration between Nanotrasen and Apadyne Technologies.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Apocryphal/control.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Apocryphal/control.rsi
+  - type: ContainerFill
+    containers:
+      suit_core: &core-slot-infinite #<-- &
+        - ModularSuitCoreInfinite
+      suit_part:
+        - ClothingModularHelmetApocryphal
+        - ClothingModularChestPlateApocryphal
+        - ClothingModularGauntletsApocryphal
+        - ClothingModularBootsApocryphal
+  - type: ModularSuit
+    activeComponents:
+      head:
+        - type: PressureProtection
+          highPressureMultiplier: 0.08
+          lowPressureMultiplier: 1000
+        - type: TemperatureProtection
+          heatingCoefficient: 0.1
+          coolingCoefficient: 0.1
+        - type: FireProtection
+          reduction: 0.2
+      outerClothing:
+        - type: PressureProtection
+          highPressureMultiplier: 0.02
+          lowPressureMultiplier: 1000
+        - type: TemperatureProtection
+          heatingCoefficient: 0.001
+          coolingCoefficient: 0.001
+    blacklist:
+      tags:
+        - TemperatureRegulatorModuleConflict
+  - type: ClothingSpeedModifier
+    walkModifier: 1.0
+    sprintModifier: 1.0
+
+- type: entity
+  parent: ClothingModularHelmetBase
+  id: ClothingModularHelmetApocryphal
+  name: apocryphal modsuit helmet
+  description: A high-tech helmet with a cyan visor and exceptional protective capabilities. The pinnacle of defensive technology.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Apocryphal/helmet.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Apocryphal/helmet.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Apocryphal/helmet.rsi
+      state: icon-sealed
+  - type: ToggleableVisuals
+    clothingVisuals:
+      head:
+      - state: sealed-equipped-HELMET
+      - state: visor-unshaded
+        shader: unshaded
+        color: "#a4fef4"
+      head-reptilian:
+      - state: sealed-equipped-HELMET-reptilian
+      - state: visor-unshaded-reptilian
+        shader: unshaded
+        color: "#a4fef4"
+      head-vox:
+      - state: sealed-equipped-HELMET-vox
+      - state: visor-unshaded-vox
+        shader: unshaded
+        color: "#a4fef4"
+  - type: PointLight
+    color: "#a4fef4"
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.80
+        Slash: 0.80
+        Piercing: 0.80
+        Heat: 0.80
+        Radiation: 0.80
+        Caustic: 0.95
+
+- type: entity
+  parent: ClothingModularChestPlateBase
+  id: ClothingModularChestPlateApocryphal
+  name: apocryphal modsuit chestplate
+  description: An incredibly durable chestplate offering near-impenetrable protection against all forms of damage. Sterilized for medical applications.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Apocryphal/chestplate.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Apocryphal/chestplate.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Apocryphal/chestplate.rsi
+      state: icon-sealed
+  - type: ClothingSterility
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.1
+        Slash: 0.1
+        Piercing: 0.1
+        Heat: 0.1
+        Radiation: 0.1
+        Caustic: 0.1
+  - type: StaminaResistance
+    damageCoefficient: 0.15
+  - type: ExplosionResistance
+    damageCoefficient: 0.2
+
+- type: entity
+  parent: ClothingModularGauntletsBase
+  id: ClothingModularGauntletsApocryphal
+  name: apocryphal modsuit gauntlets
+  description: High-tech gauntlets with complete electrical insulation. Engineered for maximum protection.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Apocryphal/gauntlets.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Apocryphal/gauntlets.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Apocryphal/gauntlets.rsi
+      state: icon-sealed
+  - type: Insulated
+
+- type: entity
+  parent: ClothingModularBootsBase
+  id: ClothingModularBootsApocryphal
+  name: apocryphal modsuit boots
+  description: Advanced boots with heavy-duty construction. Each step announces your presence with authority.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Apocryphal/boots.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Apocryphal/boots.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Apocryphal/boots.rsi
+      state: icon-sealed
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepHeavy
+
+# Asteroid
+- type: entity
+  parent: ClothingModularControllerBase
+  id: ClothingModularControllerAsteroid
+  name: asteroid modsuit controller
+  description: A rugged controller optimized for mining operations. Designed to withstand the harsh conditions of asteroid fields.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Asteroid/control.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Asteroid/control.rsi
+  - type: ContainerFill
+    containers:
+      suit_core: *core-slot
+      suit_part:
+        - ClothingModularHelmetAsteroid
+        - ClothingModularChestPlateAsteroid
+        - ClothingModularGauntletsAsteroid
+        - ClothingModularBootsAsteroid
+  - type: ModularSuit
+    activeComponents:
+      head:
+        - type: PressureProtection
+          highPressureMultiplier: 0.525
+          lowPressureMultiplier: 1000
+        - type: TemperatureProtection
+          heatingCoefficient: 0.1
+          coolingCoefficient: 0.1
+      outerClothing:
+        - type: PressureProtection
+          highPressureMultiplier: 0.5
+          lowPressureMultiplier: 1000
+        - type: TemperatureProtection
+          heatingCoefficient: 0.01
+          coolingCoefficient: 0.01
+  - type: ClothingSpeedModifier
+    walkModifier: 0.75
+    sprintModifier: 0.75
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+      item:
+        name: clothing-hardsuits-jetpack
+        whitelist:
+          tags:
+          - Jetpack
+
+- type: entity
+  parent: ClothingModularHelmetBase
+  id: ClothingModularHelmetAsteroid
+  name: asteroid modsuit helmet
+  description: A rugged mining helmet with enhanced lighting. Protects against ash storms and impacts.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Asteroid/helmet.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Asteroid/helmet.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Asteroid/helmet.rsi
+      state: icon-sealed
+  - type: ToggleableVisuals
+    clothingVisuals:
+      head:
+      - state: sealed-equipped-HELMET
+      - state: visor-unshaded
+        shader: unshaded
+        color: "#a4fef4"
+      head-reptilian:
+      - state: sealed-equipped-HELMET-reptilian
+      - state: visor-unshaded-reptilian
+        shader: unshaded
+        color: "#a4fef4"
+      head-vox:
+      - state: sealed-equipped-HELMET-vox
+      - state: visor-unshaded-vox
+        shader: unshaded
+        color: "#a4fef4"
+  - type: PointLight
+    color: "#a4fef4"
+
+- type: entity
+  parent: ClothingModularChestPlateBase
+  id: ClothingModularChestPlateAsteroid
+  name: asteroid modsuit chestplate
+  description: A durable mining chestplate with good protection against kinetic impacts and moderate environmental hazards.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Asteroid/chestplate.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Asteroid/chestplate.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Asteroid/chestplate.rsi
+      state: icon-sealed
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.7
+        Slash: 0.6
+        Piercing: 0.7
+        Heat: 0.7
+        Radiation: 0.3
+        Caustic: 0.7
+  - type: ExplosionResistance
+    damageCoefficient: 0.7
+
+- type: entity
+  parent: ClothingModularGauntletsBase
+  id: ClothingModularGauntletsAsteroid
+  name: asteroid modsuit gauntlets
+  description: Rugged mining gauntlets with partial electrical insulation. Designed for handling excavation equipment.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Asteroid/gauntlets.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Asteroid/gauntlets.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Asteroid/gauntlets.rsi
+      state: icon-sealed
+  - type: Insulated
+    coefficient: 0.5
+
+- type: entity
+  parent: ClothingModularBootsBase
+  id: ClothingModularBootsAsteroid
+  name: asteroid modsuit boots
+  description: Sturdy mining boots with reinforced soles for walking on rough terrain.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Asteroid/boots.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Asteroid/boots.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Asteroid/boots.rsi
+      state: icon-sealed
+
+# Atmospheric
+- type: entity
+  parent: ClothingModularControllerBase
+  id: ClothingModularControllerAtmospheric
+  name: atmospheric modsuit controller
+  description: A specialized controller with extreme thermal regulation for atmospheric technicians. Capable of withstanding the hottest environments.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Atmospheric/control.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Atmospheric/control.rsi
+  - type: ContainerFill
+    containers:
+      suit_core: *core-slot
+      suit_part:
+        - ClothingModularHelmetAtmospheric
+        - ClothingModularChestPlateAtmospheric
+        - ClothingModularGauntletsAtmospheric
+        - ClothingModularBootsAtmospheric
+  - type: ModularSuit
+    activeComponents:
+      head:
+        - type: PressureProtection
+          highPressureMultiplier: 0.08
+          lowPressureMultiplier: 1000
+        - type: TemperatureProtection
+          heatingCoefficient: 0.005
+          coolingCoefficient: 0.005
+        - type: FireProtection
+          reduction: 0.2
+      outerClothing:
+        - type: PressureProtection
+          highPressureMultiplier: 0.02
+          lowPressureMultiplier: 1000
+        - type: TemperatureProtection
+          heatingCoefficient: 0.001
+          coolingCoefficient: 0.001
+        - type: FireProtection
+          reduction: 0.8
+    blacklist:
+      tags:
+        - TemperatureRegulatorModuleConflict
+  - type: ClothingSpeedModifier
+    walkModifier: 0.75
+    sprintModifier: 0.75
+
+- type: entity
+  parent: ClothingModularHelmetBase
+  id: ClothingModularHelmetAtmospheric
+  name: atmospheric modsuit helmet
+  description: A heat-resistant helmet with a cyan visor. Essential for working in extreme temperature environments.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Atmospheric/helmet.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Atmospheric/helmet.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Atmospheric/helmet.rsi
+      state: icon-sealed
+  - type: ToggleableVisuals
+    clothingVisuals:
+      head:
+      - state: sealed-equipped-HELMET
+      - state: visor-unshaded
+        shader: unshaded
+        color: "#79f8e6"
+      head-reptilian:
+      - state: sealed-equipped-HELMET-reptilian
+      - state: visor-unshaded-reptilian
+        shader: unshaded
+        color: "#79f8e6"
+      head-vox:
+      - state: sealed-equipped-HELMET-vox
+      - state: visor-unshaded-vox
+        shader: unshaded
+        color: "#79f8e6"
+  - type: PointLight
+    color: "#79f8e6"
+
+- type: entity
+  parent: ClothingModularChestPlateBase
+  id: ClothingModularChestPlateAtmospheric
+  name: atmospheric modsuit chestplate
+  description: A fire-resistant chestplate designed for atmospheric technicians. Provides excellent thermal protection.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Atmospheric/chestplate.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Atmospheric/chestplate.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Atmospheric/chestplate.rsi
+      state: icon-sealed
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.8
+        Radiation: 0.5
+  - type: ExplosionResistance
+    damageCoefficient: 0.5
+
+- type: entity
+  parent: ClothingModularGauntletsBase
+  id: ClothingModularGauntletsAtmospheric
+  name: atmospheric modsuit gauntlets
+  description: Heat-resistant gauntlets with complete electrical insulation. Designed for working near plasma fires.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Atmospheric/gauntlets.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Atmospheric/gauntlets.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Atmospheric/gauntlets.rsi
+      state: icon-sealed
+  - type: Insulated
+
+- type: entity
+  parent: ClothingModularBootsBase
+  id: ClothingModularBootsAtmospheric
+  name: atmospheric modsuit boots
+  description: Heat-resistant boots with standard magnetic anchoring. Stable even in the hottest conditions.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Atmospheric/boots.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Atmospheric/boots.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Atmospheric/boots.rsi
+      state: icon-sealed
+
+# Chrono
+- type: entity
+  parent: ClothingModularControllerBase
+  id: ClothingModularControllerChrono
+  name: chrono modsuit controller
+  description: A mysterious controller with temporal artifacts. Where did you even get this?
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Chrono/control.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Chrono/control.rsi
+  - type: ContainerFill
+    containers:
+      suit_core: *core-slot
+      suit_part:
+        - ClothingModularHelmetChrono
+        - ClothingModularChestPlateChrono
+        - ClothingModularGauntletsChrono
+        - ClothingModularBootsChrono
+
+- type: entity
+  parent: ClothingModularHelmetBase
+  id: ClothingModularHelmetChrono
+  name: chrono modsuit helmet
+  description: A strange helmet with a blue-cyan visor. It seems to distort light around it.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Chrono/helmet.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Chrono/helmet.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Chrono/helmet.rsi
+      state: icon-sealed
+  - type: ToggleableVisuals
+    clothingVisuals:
+      head:
+      - state: sealed-equipped-HELMET
+      - state: visor-unshaded
+        shader: unshaded
+        color: "#6ee2ff"
+      head-reptilian:
+      - state: sealed-equipped-HELMET-reptilian
+      - state: visor-unshaded-reptilian
+        shader: unshaded
+        color: "#6ee2ff"
+      head-vox:
+      - state: sealed-equipped-HELMET-vox
+      - state: visor-unshaded-vox
+        shader: unshaded
+        color: "#6ee2ff"
+  - type: PointLight
+    color: "#6ee2ff"
+
+- type: entity
+  parent: ClothingModularChestPlateBase
+  id: ClothingModularChestPlateChrono
+  name: chrono modsuit chestplate
+  description: A mysterious chestplate with unknown properties. Time seems to flow differently around it.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Chrono/chestplate.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Chrono/chestplate.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Chrono/chestplate.rsi
+      state: icon-sealed
+
+- type: entity
+  parent: ClothingModularGauntletsBase
+  id: ClothingModularGauntletsChrono
+  name: chrono modsuit gauntlets
+  description: Mysterious gauntlets that seem to exist slightly out of sync with reality.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Chrono/gauntlets.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Chrono/gauntlets.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Chrono/gauntlets.rsi
+      state: icon-sealed
+
+- type: entity
+  parent: ClothingModularBootsBase
+  id: ClothingModularBootsChrono
+  name: chrono modsuit boots
+  description: Strange boots that leave no footprints. Or do they?
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Chrono/boots.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Chrono/boots.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Chrono/boots.rsi
+      state: icon-sealed
+
+# Civilian
+- type: entity
+  parent: ClothingModularControllerBase
+  id: ClothingModularControllerCivilian
+  name: civilian modsuit controller
+  description: A lightweight controller for civilian use.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Civilian/control.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Civilian/control.rsi
+  - type: ContainerFill
+    containers:
+      suit_core: *core-slot
+      suit_part:
+        - ClothingModularHelmetCivilian
+        - ClothingModularChestPlateCivilian
+        - ClothingModularGauntletsCivilian
+        - ClothingModularBootsCivilian
+  - type: ClothingSpeedModifier
+    walkModifier: 0.9
+    sprintModifier: 0.9
+
+- type: entity
+  parent: ClothingModularHelmetBase
+  id: ClothingModularHelmetCivilian
+  name: civilian modsuit helmet
+  description: A lightweight civilian helmet with a cyan visor. Not rated for vacuum exposure.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Civilian/helmet.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Civilian/helmet.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Civilian/helmet.rsi
+      state: icon-sealed
+  - type: ToggleableVisuals
+    clothingVisuals:
+      head:
+      - state: sealed-equipped-HELMET
+      - state: visor-unshaded
+        shader: unshaded
+        color: "#a4fef4"
+      head-reptilian:
+      - state: sealed-equipped-HELMET-reptilian
+      - state: visor-unshaded-reptilian
+        shader: unshaded
+        color: "#a4fef4"
+      head-vox:
+      - state: sealed-equipped-HELMET-vox
+      - state: visor-unshaded-vox
+        shader: unshaded
+        color: "#a4fef4"
+  - type: PointLight
+    color: "#a4fef4"
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.95
+        Slash: 0.95
+        Heat: 0.95
+        Radiation: 0.4
+
+- type: entity
+  parent: ClothingModularChestPlateBase
+  id: ClothingModularChestPlateCivilian
+  name: civilian modsuit chestplate
+  description: A lightweight civilian chestplate. Provides minimal protection but maximum mobility.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Civilian/chestplate.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Civilian/chestplate.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Civilian/chestplate.rsi
+      state: icon-sealed
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.95
+        Slash: 0.95
+        Heat: 0.95
+        Radiation: 0.4
+
+- type: entity
+  parent: ClothingModularGauntletsBase
+  id: ClothingModularGauntletsCivilian
+  name: civilian modsuit gauntlets
+  description: Lightweight civilian gauntlets. Good for everyday tasks, not for combat.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Civilian/gauntlets.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Civilian/gauntlets.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Civilian/gauntlets.rsi
+      state: icon-sealed
+
+- type: entity
+  parent: ClothingModularBootsBase
+  id: ClothingModularBootsCivilian
+  name: civilian modsuit boots
+  description: Lightweight civilian boots. Comfortable for extended wear.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Civilian/boots.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Civilian/boots.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Civilian/boots.rsi
+      state: icon-sealed
+
+# Corporate
+- type: entity
+  parent: ClothingModularControllerBase
+  id: ClothingModularControllerCorporate
+  name: corporate modsuit controller
+  description: A prestigious controller for high-ranking Nanotrasen officers. Combines style with advanced protection.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Corporate/control.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Corporate/control.rsi
+  - type: ContainerFill
+    containers:
+      suit_core: *core-slot-infinite
+      suit_part:
+        - ClothingModularHelmetCorporate
+        - ClothingModularChestPlateCorporate
+        - ClothingModularGauntletsCorporate
+        - ClothingModularBootsCorporate
+  - type: ModularSuit
+    activeComponents:
+      head:
+        - type: PressureProtection
+          highPressureMultiplier: 0.08
+          lowPressureMultiplier: 1000
+        - type: TemperatureProtection
+          heatingCoefficient: 0.1
+          coolingCoefficient: 0.1
+      outerClothing:
+        - type: PressureProtection
+          highPressureMultiplier: 0.05
+          lowPressureMultiplier: 1000
+        - type: TemperatureProtection
+          heatingCoefficient: 0.01
+          coolingCoefficient: 0.01
+  - type: ClothingSpeedModifier
+    walkModifier: 0.9
+    sprintModifier: 0.9
+
+- type: entity
+  parent: ClothingModularHelmetBase
+  id: ClothingModularHelmetCorporate
+  name: corporate modsuit helmet
+  description: A stylish corporate helmet with a cyan visor. Projects authority while providing excellent protection.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Corporate/helmet.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Corporate/helmet.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Corporate/helmet.rsi
+      state: icon-sealed
+  - type: ToggleableVisuals
+    clothingVisuals:
+      head:
+      - state: sealed-equipped-HELMET
+      - state: visor-unshaded
+        shader: unshaded
+        color: "#a4fef4"
+      head-reptilian:
+      - state: sealed-equipped-HELMET-reptilian
+      - state: visor-unshaded-reptilian
+        shader: unshaded
+        color: "#a4fef4"
+      head-vox:
+      - state: sealed-equipped-HELMET-vox
+      - state: visor-unshaded-vox
+        shader: unshaded
+        color: "#a4fef4"
+  - type: PointLight
+    color: "#a4fef4"
+
+- type: entity
+  parent: ClothingModularChestPlateBase
+  id: ClothingModularChestPlateCorporate
+  name: corporate modsuit chestplate
+  description: A refined corporate chestplate with balanced protection. Designed to impress and protect.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Corporate/chestplate.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Corporate/chestplate.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Corporate/chestplate.rsi
+      state: icon-sealed
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.5
+        Heat: 0.5
+        Radiation: 0.5
+        Caustic: 0.5
+  - type: ExplosionResistance
+    damageCoefficient: 0.5
+  - type: StaminaResistance
+    damageCoefficient: 0.75
+
+- type: entity
+  parent: ClothingModularGauntletsBase
+  id: ClothingModularGauntletsCorporate
+  name: corporate modsuit gauntlets
+  description: Stylish corporate gauntlets with complete electrical insulation. Form meets function.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Corporate/gauntlets.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Corporate/gauntlets.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Corporate/gauntlets.rsi
+      state: icon-sealed
+  - type: Insulated
+
+- type: entity
+  parent: ClothingModularBootsBase
+  id: ClothingModularBootsCorporate
+  name: corporate modsuit boots
+  description: Polished corporate boots with standard magnetic anchoring. Every step means business.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Corporate/boots.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Corporate/boots.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Corporate/boots.rsi
+      state: icon-sealed
+
+# Corpsman
+- type: entity
+  parent: ClothingModularControllerBase
+  id: ClothingModularControllerCorpsman
+  name: corpsman modsuit controller
+  description: A medical controller with an alternate color scheme. Designed for field medics.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Corpsman/control.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Corpsman/control.rsi
+  - type: ContainerFill
+    containers:
+      suit_core: *core-slot
+      suit_part:
+        - ClothingModularHelmetCorpsman
+        - ClothingModularChestPlateCorpsman
+        - ClothingModularGauntletsCorpsman
+        - ClothingModularBootsCorpsman
+
+- type: entity
+  parent: ClothingModularHelmetBase
+  id: ClothingModularHelmetCorpsman
+  name: corpsman modsuit helmet
+  description: A medical helmet with a white visor. The corpsman variant offers a distinct look.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Corpsman/helmet.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Corpsman/helmet.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Corpsman/helmet.rsi
+      state: icon-sealed
+  - type: ToggleableVisuals
+    clothingVisuals:
+      head:
+      - state: sealed-equipped-HELMET
+      - state: visor-unshaded
+        shader: unshaded
+        color: "#ffffff"
+      head-reptilian:
+      - state: sealed-equipped-HELMET-reptilian
+      - state: visor-unshaded-reptilian
+        shader: unshaded
+        color: "#ffffff"
+      head-vox:
+      - state: sealed-equipped-HELMET-vox
+      - state: visor-unshaded-vox
+        shader: unshaded
+        color: "#ffffff"
+
+- type: entity
+  parent: ClothingModularChestPlateBase
+  id: ClothingModularChestPlateCorpsman
+  name: corpsman modsuit chestplate
+  description: A medical chestplate with a distinct corpsman color scheme.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Corpsman/chestplate.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Corpsman/chestplate.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Corpsman/chestplate.rsi
+      state: icon-sealed
+
+- type: entity
+  parent: ClothingModularGauntletsBase
+  id: ClothingModularGauntletsCorpsman
+  name: corpsman modsuit gauntlets
+  description: Medical gauntlets in corpsman colors. Designed for patient care.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Corpsman/gauntlets.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Corpsman/gauntlets.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Corpsman/gauntlets.rsi
+      state: icon-sealed
+
+- type: entity
+  parent: ClothingModularBootsBase
+  id: ClothingModularBootsCorpsman
+  name: corpsman modsuit boots
+  description: Medical boots in corpsman colors. Ready for rapid response.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Corpsman/boots.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Corpsman/boots.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Corpsman/boots.rsi
+      state: icon-sealed
+
+# Cosmohonk
+- type: entity
+  parent: ClothingModularControllerBase
+  id: ClothingModularControllerCosmohonk
+  name: cosmohonk modsuit controller
+  description: A controller from Honk Ltd. Most of the tech went into reducing power consumption. Protects against low-humor environments.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Cosmohonk/control.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Cosmohonk/control.rsi
+  - type: ContainerFill
+    containers:
+      suit_core: *core-slot
+      suit_part:
+        - ClothingModularHelmetCosmohonk
+        - ClothingModularChestPlateCosmohonk
+        - ClothingModularGauntletsCosmohonk
+        - ClothingModularBootsCosmohonk
+  - type: ModularSuit
+    activeComponents:
+      head:
+        - type: PressureProtection
+          highPressureMultiplier: 0.3
+          lowPressureMultiplier: 1000
+        - type: TemperatureProtection
+          heatingCoefficient: 0.1
+          coolingCoefficient: 0.1
+      outerClothing:
+        - type: PressureProtection
+          highPressureMultiplier: 0.5
+          lowPressureMultiplier: 1000
+        - type: TemperatureProtection
+          heatingCoefficient: 0.01
+          coolingCoefficient: 0.01
+  - type: ClothingSpeedModifier
+    walkModifier: 0.9
+    sprintModifier: 0.9
+
+- type: entity
+  parent: ClothingModularHelmetBase
+  id: ClothingModularHelmetCosmohonk
+  name: cosmohonk modsuit helmet
+  description: A clown-themed helmet with a red visor. Honk!
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Cosmohonk/helmet.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Cosmohonk/helmet.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Cosmohonk/helmet.rsi
+      state: icon-sealed
+  - type: ToggleableVisuals
+    clothingVisuals:
+      head:
+      - state: sealed-equipped-HELMET
+      - state: visor-unshaded
+        shader: unshaded
+        color: "#e40000"
+      head-reptilian:
+      - state: sealed-equipped-HELMET-reptilian
+      - state: visor-unshaded-reptilian
+        shader: unshaded
+        color: "#e40000"
+      head-vox:
+      - state: sealed-equipped-HELMET-vox
+      - state: visor-unshaded-vox
+        shader: unshaded
+        color: "#e40000"
+  - type: PointLight
+    color: "#e40000"
+
+- type: entity
+  parent: ClothingModularChestPlateBase
+  id: ClothingModularChestPlateCosmohonk
+  name: cosmohonk modsuit chestplate
+  description: A clown-themed chestplate. Surprisingly durable for something so silly.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Cosmohonk/chestplate.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Cosmohonk/chestplate.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Cosmohonk/chestplate.rsi
+      state: icon-sealed
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Caustic: 0.8
+  - type: ExplosionResistance
+    damageCoefficient: 0.9
+
+- type: entity
+  parent: ClothingModularGauntletsBase
+  id: ClothingModularGauntletsCosmohonk
+  name: cosmohonk modsuit gauntlets
+  description: Clown-themed gauntlets. Perfect for delivering honks.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Cosmohonk/gauntlets.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Cosmohonk/gauntlets.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Cosmohonk/gauntlets.rsi
+      state: icon-sealed
+
+- type: entity
+  parent: ClothingModularBootsBase
+  id: ClothingModularBootsCosmohonk
+  name: cosmohonk modsuit boots
+  description: Clown-themed boots that make a distinctive sound with every step. Honk honk!
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Cosmohonk/boots.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Cosmohonk/boots.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Cosmohonk/boots.rsi
+      state: icon-sealed
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepClown
+      params:
+        variation: 0.17
+
+# Elite
+- type: entity
+  parent: ClothingModularControllerBase
+  id: ClothingModularControllerElite
+  name: elite modsuit controller
+  description: An upgraded controller from Cybersun Industries with enhanced performance characteristics.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Elite/control.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Elite/control.rsi
+  - type: ContainerFill
+    containers:
+      suit_core: *core-slot-plasma
+      suit_part:
+        - ClothingModularHelmetElite
+        - ClothingModularChestPlateElite
+        - ClothingModularGauntletsElite
+        - ClothingModularBootsElite
+  - type: ModularSuit
+    activeComponents:
+      head:
+        - type: PressureProtection
+          highPressureMultiplier: 0.08
+          lowPressureMultiplier: 1000
+        - type: TemperatureProtection
+          heatingCoefficient: 0.005
+          coolingCoefficient: 0.005
+        - type: FireProtection
+          reduction: 0.2
+      outerClothing:
+        - type: PressureProtection
+          highPressureMultiplier: 0.02
+          lowPressureMultiplier: 1000
+        - type: TemperatureProtection
+          heatingCoefficient: 0.001
+          coolingCoefficient: 0.001
+        - type: FireProtection
+          reduction: 0.8
+    blacklist:
+      tags:
+        - TemperatureRegulatorModuleConflict
+  - type: ClothingSpeedModifier
+    walkModifier: 1
+    sprintModifier: 1
+
+- type: entity
+  parent: ClothingModularHelmetBase
+  id: ClothingModularHelmetElite
+  name: elite modsuit helmet
+  description: An elite helmet with a golden visor. Enhanced protection for the most dangerous missions.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Elite/helmet.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Elite/helmet.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Elite/helmet.rsi
+      state: icon-sealed
+  - type: ToggleableVisuals
+    clothingVisuals:
+      head:
+      - state: sealed-equipped-HELMET
+      - state: visor-unshaded
+        shader: unshaded
+        color: "#ffd480"
+      head-reptilian:
+      - state: sealed-equipped-HELMET-reptilian
+      - state: visor-unshaded-reptilian
+        shader: unshaded
+        color: "#ffd480"
+      head-vox:
+      - state: sealed-equipped-HELMET-vox
+      - state: visor-unshaded-vox
+        shader: unshaded
+        color: "#ffd480"
+  - type: PointLight
+    color: "#ffd480"
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9
+
+- type: entity
+  parent: ClothingModularChestPlateBase
+  id: ClothingModularChestPlateElite
+  name: elite modsuit chestplate
+  description: An elite chestplate with superior protection against most damage types. The pinnacle of defensive engineering.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Elite/chestplate.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Elite/chestplate.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Elite/chestplate.rsi
+      state: icon-sealed
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.6
+        Slash: 0.6
+        Piercing: 0.6
+        Heat: 0.2
+        Radiation: 0
+        Caustic: 0.5
+  - type: DiseaseProtection
+    protection: 0.2
+  - type: ExplosionResistance
+    damageCoefficient: 0.2
+  - type: StaminaResistance
+    damageCoefficient: 0.6
+
+- type: entity
+  parent: ClothingModularGauntletsBase
+  id: ClothingModularGauntletsElite
+  name: elite modsuit gauntlets
+  description: Elite gauntlets with complete electrical insulation. Designed for operatives who demand the best.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Elite/gauntlets.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Elite/gauntlets.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Elite/gauntlets.rsi
+      state: icon-sealed
+  - type: Insulated
+
+- type: entity
+  parent: ClothingModularBootsBase
+  id: ClothingModularBootsElite
+  name: elite modsuit boots
+  description: Elite boots with enhanced mobility systems. Move faster than ever before.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Elite/boots.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Elite/boots.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Elite/boots.rsi
+      state: icon-sealed
+
+# Enchanted
+- type: entity
+  parent: ClothingModularControllerBase
+  id: ClothingModularControllerEnchanted
+  name: enchanted modsuit controller
+  description: A relatively low-tech controller from the Wizard Federation. Surprisingly protective despite its arcane origins.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Enchanted/control.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Enchanted/control.rsi
+  - type: ContainerFill
+    containers:
+      suit_core: *core-slot
+      suit_part:
+        - ClothingModularHelmetEnchanted
+        - ClothingModularChestPlateEnchanted
+        - ClothingModularGauntletsEnchanted
+        - ClothingModularBootsEnchanted
+  - type: ModularSuit
+    activeComponents:
+      head:
+        - type: PressureProtection
+          highPressureMultiplier: 0.27
+          lowPressureMultiplier: 1000
+        - type: TemperatureProtection
+          heatingCoefficient: 0.1
+          coolingCoefficient: 0.1
+      outerClothing:
+        - type: PressureProtection
+          highPressureMultiplier: 0.05
+          lowPressureMultiplier: 1000
+        - type: TemperatureProtection
+          heatingCoefficient: 0.01
+          coolingCoefficient: 0.01
+
+- type: entity
+  parent: ClothingModularHelmetBase
+  id: ClothingModularHelmetEnchanted
+  name: enchanted modsuit helmet
+  description: A magical helmet with a cyan-blue visor. Counts as wizard robes for spellcasting purposes.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Enchanted/helmet.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Enchanted/helmet.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Enchanted/helmet.rsi
+      state: icon-sealed
+  - type: ToggleableVisuals
+    clothingVisuals:
+      head:
+      - state: sealed-equipped-HELMET
+      - state: visor-unshaded
+        shader: unshaded
+        color: "#2ddaff"
+      head-reptilian:
+      - state: sealed-equipped-HELMET-reptilian
+      - state: visor-unshaded-reptilian
+        shader: unshaded
+        color: "#2ddaff"
+      head-vox:
+      - state: sealed-equipped-HELMET-vox
+      - state: visor-unshaded-vox
+        shader: unshaded
+        color: "#2ddaff"
+  - type: PointLight
+    color: "#2ddaff"
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9
+
+- type: entity
+  parent: ClothingModularChestPlateBase
+  id: ClothingModularChestPlateEnchanted
+  name: enchanted modsuit chestplate
+  description: A magical chestplate with strong protective enchantments. Resists physical and elemental damage.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Enchanted/chestplate.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Enchanted/chestplate.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Enchanted/chestplate.rsi
+      state: icon-sealed
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.6
+        Slash: 0.6
+        Piercing: 0.4
+        Heat: 0.25
+        Radiation: 0.25
+        Caustic: 0.75
+  - type: ExplosionResistance
+    damageCoefficient: 0.5
+
+- type: entity
+  parent: ClothingModularGauntletsBase
+  id: ClothingModularGauntletsEnchanted
+  name: enchanted modsuit gauntlets
+  description: Magical gauntlets that channel arcane energy. Counts as wizard robes.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Enchanted/gauntlets.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Enchanted/gauntlets.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Enchanted/gauntlets.rsi
+      state: icon-sealed
+
+- type: entity
+  parent: ClothingModularBootsBase
+  id: ClothingModularBootsEnchanted
+  name: enchanted modsuit boots
+  description: Magical boots that softly glow with arcane light. Counts as wizard robes.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Enchanted/boots.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Enchanted/boots.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Enchanted/boots.rsi
+      state: icon-sealed
+
+# Engineering
+- type: entity
+  parent: ClothingModularControllerBase
+  id: ClothingModularControllerEngineering
+  name: engineering modsuit controller
+  description: Nakamura Engineering's classic engineer controller. Features excellent heat and electrical resistance.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Engineering/control.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Engineering/control.rsi
+  - type: ContainerFill
+    containers:
+      suit_core: *core-slot
+      suit_part:
+        - ClothingModularHelmetEngineering
+        - ClothingModularChestPlateEngineering
+        - ClothingModularGauntletsEngineering
+        - ClothingModularBootsEngineering
+  - type: ModularSuit
+    activeComponents:
+      head:
+        - type: PressureProtection
+          highPressureMultiplier: 0.1
+          lowPressureMultiplier: 1000
+        - type: TemperatureProtection
+          heatingCoefficient: 0.1
+          coolingCoefficient: 0.1
+      outerClothing:
+        - type: PressureProtection
+          highPressureMultiplier: 0.04
+          lowPressureMultiplier: 1000
+        - type: TemperatureProtection
+          heatingCoefficient: 0.01
+          coolingCoefficient: 0.01
+  - type: ClothingSpeedModifier
+    walkModifier: 0.7
+    sprintModifier: 0.7
+
+- type: entity
+  parent: ClothingModularHelmetBase
+  id: ClothingModularHelmetEngineering
+  name: engineering modsuit helmet
+  description: An engineering helmet with a cyan visor. Essential for maintenance work in hazardous environments.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Engineering/helmet.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Engineering/helmet.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Engineering/helmet.rsi
+      state: icon-sealed
+  - type: ToggleableVisuals
+    clothingVisuals:
+      head:
+      - state: sealed-equipped-HELMET
+      - state: visor-unshaded
+        shader: unshaded
+        color: "#79f8e6"
+      head-reptilian:
+      - state: sealed-equipped-HELMET-reptilian
+      - state: visor-unshaded-reptilian
+        shader: unshaded
+        color: "#79f8e6"
+      head-vox:
+      - state: sealed-equipped-HELMET-vox
+      - state: visor-unshaded-vox
+        shader: unshaded
+        color: "#79f8e6"
+  - type: PointLight
+    color: "#79f8e6"
+
+- type: entity
+  parent: ClothingModularChestPlateBase
+  id: ClothingModularChestPlateEngineering
+  name: engineering modsuit chestplate
+  description: An engineering chestplate with good protection against electrical shocks and moderate environmental hazards.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Engineering/chestplate.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Engineering/chestplate.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Engineering/chestplate.rsi
+      state: icon-sealed
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Shock: 0.8
+        Caustic: 0.5
+        Radiation: 0.2
+  - type: ExplosionResistance
+    damageCoefficient: 0.5
+
+- type: entity
+  parent: ClothingModularGauntletsBase
+  id: ClothingModularGauntletsEngineering
+  name: engineering modsuit gauntlets
+  description: Insulated engineering gauntlets. Perfect for working with live wires.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Engineering/gauntlets.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Engineering/gauntlets.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Engineering/gauntlets.rsi
+      state: icon-sealed
+  - type: Insulated
+
+- type: entity
+  parent: ClothingModularBootsBase
+  id: ClothingModularBootsEngineering
+  name: engineering modsuit boots
+  description: Engineering boots with standard magnetic anchoring. Reliable in any maintenance situation.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Engineering/boots.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Engineering/boots.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Engineering/boots.rsi
+      state: icon-sealed
+
+# Inquisitory
+- type: entity
+  parent: ClothingModularControllerBase
+  id: ClothingModularControllerInquisitory
+  name: inquisitory modsuit controller
+  description: A high-speed rescue controller with an alternate color scheme. For those who judge swiftly.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Inquisitory/control.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Inquisitory/control.rsi
+  - type: ContainerFill
+    containers:
+      suit_core: *core-slot-infinite
+      suit_part:
+        - ClothingModularHelmetInquisitory
+        - ClothingModularChestPlateInquisitory
+        - ClothingModularGauntletsInquisitory
+        - ClothingModularBootsInquisitory
+  - type: ModularSuit
+    activeComponents:
+      head:
+        - type: PressureProtection
+          highPressureMultiplier: 0.08
+          lowPressureMultiplier: 1000
+        - type: TemperatureProtection
+          heatingCoefficient: 0.1
+          coolingCoefficient: 0.1
+      outerClothing:
+        - type: PressureProtection
+          highPressureMultiplier: 0.05
+          lowPressureMultiplier: 1000
+        - type: TemperatureProtection
+          heatingCoefficient: 0.01
+          coolingCoefficient: 0.01
+  - type: ClothingSpeedModifier
+    walkModifier: 0.9
+    sprintModifier: 0.9
+
+- type: entity
+  parent: ClothingModularHelmetBase
+  id: ClothingModularHelmetInquisitory
+  name: inquisitory modsuit helmet
+  description: A striking helmet with a cyan visor. Intimidates those who witness your judgment.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Inquisitory/helmet.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Inquisitory/helmet.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Inquisitory/helmet.rsi
+      state: icon-sealed
+  - type: ToggleableVisuals
+    clothingVisuals:
+      head:
+      - state: sealed-equipped-HELMET
+      - state: visor-unshaded
+        shader: unshaded
+        color: "#a4fef4"
+      head-reptilian:
+      - state: sealed-equipped-HELMET-reptilian
+      - state: visor-unshaded-reptilian
+        shader: unshaded
+        color: "#a4fef4"
+      head-vox:
+      - state: sealed-equipped-HELMET-vox
+      - state: visor-unshaded-vox
+        shader: unshaded
+        color: "#a4fef4"
+  - type: PointLight
+    color: "#a4fef4"
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9
+
+- type: entity
+  parent: ClothingModularChestPlateBase
+  id: ClothingModularChestPlateInquisitory
+  name: inquisitory modsuit chestplate
+  description: A well-balanced chestplate with good all-around protection. Judge, jury, and protector.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Inquisitory/chestplate.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Inquisitory/chestplate.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Inquisitory/chestplate.rsi
+      state: icon-sealed
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.5
+        Heat: 0.5
+        Radiation: 0.5
+        Caustic: 0.5
+  - type: ExplosionResistance
+    damageCoefficient: 0.5
+  - type: StaminaResistance
+    damageCoefficient: 0.75
+
+- type: entity
+  parent: ClothingModularGauntletsBase
+  id: ClothingModularGauntletsInquisitory
+  name: inquisitory modsuit gauntlets
+  description: Insulated gauntlets with a commanding presence.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Inquisitory/gauntlets.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Inquisitory/gauntlets.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Inquisitory/gauntlets.rsi
+      state: icon-sealed
+  - type: Insulated
+
+- type: entity
+  parent: ClothingModularBootsBase
+  id: ClothingModularBootsInquisitory
+  name: inquisitory modsuit boots
+  description: Boots that carry you swiftly to deliver judgment.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Inquisitory/boots.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Inquisitory/boots.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Inquisitory/boots.rsi
+      state: icon-sealed
+
+# Loader
+- type: entity
+  parent: ClothingModularControllerBase
+  id: ClothingModularControllerLoader
+  name: loader modsuit controller
+  description: An unsealed experimental motorized harness from Scarborough Arms for efficient munition supplies.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Loader/control.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Loader/control.rsi
+  - type: ContainerFill
+    containers:
+      suit_core: *core-slot
+      suit_part:
+        - ClothingModularHelmetLoader
+        - ClothingModularChestPlateLoader
+        - ClothingModularGauntletsLoader
+        - ClothingModularBootsLoader
+
+- type: entity
+  parent: ClothingModularHelmetBase
+  id: ClothingModularHelmetLoader
+  name: loader modsuit helmet
+  description: A practical helmet with a cyan-green visor. Designed for cargo operations.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Loader/helmet.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Loader/helmet.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Loader/helmet.rsi
+      state: icon-sealed
+  - type: ToggleableVisuals
+    clothingVisuals:
+      head:
+      - state: sealed-equipped-HELMET
+      - state: visor-unshaded
+        shader: unshaded
+        color: "#77e3bf"
+      head-reptilian:
+      - state: sealed-equipped-HELMET-reptilian
+      - state: visor-unshaded-reptilian
+        shader: unshaded
+        color: "#77e3bf"
+      head-vox:
+      - state: sealed-equipped-HELMET-vox
+      - state: visor-unshaded-vox
+        shader: unshaded
+        color: "#77e3bf"
+  - type: PointLight
+    color: "#77e3bf"
+
+- type: entity
+  parent: ClothingModularChestPlateBase
+  id: ClothingModularChestPlateLoader
+  name: loader modsuit chestplate
+  description: A durable chestplate designed for heavy lifting and cargo handling.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Loader/chestplate.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Loader/chestplate.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Loader/chestplate.rsi
+      state: icon-sealed
+
+- type: entity
+  parent: ClothingModularGauntletsBase
+  id: ClothingModularGauntletsLoader
+  name: loader modsuit gauntlets
+  description: Reinforced gauntlets for handling cargo crates. Built for the hardworking quartermaster.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Loader/gauntlets.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Loader/gauntlets.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Loader/gauntlets.rsi
+      state: icon-sealed
+
+- type: entity
+  parent: ClothingModularBootsBase
+  id: ClothingModularBootsLoader
+  name: loader modsuit boots
+  description: Sturdy boots for navigating cargo bays and loading docks.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Loader/boots.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Loader/boots.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Loader/boots.rsi
+      state: icon-sealed
+
+# Magnate
+- type: entity
+  parent: ClothingModularControllerBase
+  id: ClothingModularControllerMagnate
+  name: magnate modsuit controller
+  description: A fancy, highly protective controller for Nanotrasen captains. Shock, fire, and acid-proof with high capacity and speed.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Magnate/control.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Magnate/control.rsi
+  - type: ContainerFill
+    containers:
+      suit_core: *core-slot-infinite
+      suit_part:
+        - ClothingModularHelmetMagnate
+        - ClothingModularChestPlateMagnate
+        - ClothingModularGauntletsMagnate
+        - ClothingModularBootsMagnate
+  - type: ModularSuit
+    activeComponents:
+      head:
+        - type: PressureProtection
+          highPressureMultiplier: 0.3
+          lowPressureMultiplier: 1000
+        - type: TemperatureProtection
+          heatingCoefficient: 0.1
+          coolingCoefficient: 0.1
+      outerClothing:
+        - type: PressureProtection
+          highPressureMultiplier: 0.02
+          lowPressureMultiplier: 1000
+        - type: TemperatureProtection
+          heatingCoefficient: 0.01
+          coolingCoefficient: 0.01
+
+- type: entity
+  parent: ClothingModularHelmetBase
+  id: ClothingModularHelmetMagnate
+  name: magnate modsuit helmet
+  description: A regal helmet with a purple visor. Projects authority and inspires confidence.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Magnate/helmet.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Magnate/helmet.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Magnate/helmet.rsi
+      state: icon-sealed
+  - type: ToggleableVisuals
+    clothingVisuals:
+      head:
+      - state: sealed-equipped-HELMET
+      - state: visor-unshaded
+        shader: unshaded
+        color: "#b88ae5"
+      head-reptilian:
+      - state: sealed-equipped-HELMET-reptilian
+      - state: visor-unshaded-reptilian
+        shader: unshaded
+        color: "#b88ae5"
+      head-vox:
+      - state: sealed-equipped-HELMET-vox
+      - state: visor-unshaded-vox
+        shader: unshaded
+        color: "#b88ae5"
+  - type: PointLight
+    color: "#b88ae5"
+
+- type: entity
+  parent: ClothingModularChestPlateBase
+  id: ClothingModularChestPlateMagnate
+  name: magnate modsuit chestplate
+  description: A prestigious chestplate with exceptional protection. Fit for the captain of a Nanotrasen station.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Magnate/chestplate.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Magnate/chestplate.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Magnate/chestplate.rsi
+      state: icon-sealed
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.8
+        Slash: 0.8
+        Piercing: 0.6
+        Heat: 0.5
+        Radiation: 0.5
+        Caustic: 0.6
+  - type: ExplosionResistance
+    damageCoefficient: 0.5
+
+- type: entity
+  parent: ClothingModularGauntletsBase
+  id: ClothingModularGauntletsMagnate
+  name: magnate modsuit gauntlets
+  description: Elegant gauntlets with complete electrical insulation. Command with confidence.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Magnate/gauntlets.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Magnate/gauntlets.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Magnate/gauntlets.rsi
+      state: icon-sealed
+  - type: Insulated
+
+- type: entity
+  parent: ClothingModularBootsBase
+  id: ClothingModularBootsMagnate
+  name: magnate modsuit boots
+  description: Polished boots that command respect with every step.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Magnate/boots.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Magnate/boots.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Magnate/boots.rsi
+      state: icon-sealed
+
+# Medical
+- type: entity
+  parent: ClothingModularControllerBase
+  id: ClothingModularControllerMedical
+  name: medical modsuit controller
+  description: A lightweight controller from DeForest Medical Corporation. Prioritizes mobility while maintaining adequate protection.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Medical/control.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Medical/control.rsi
+  - type: ContainerFill
+    containers:
+      suit_core: *core-slot
+      suit_part:
+        - ClothingModularHelmetMedical
+        - ClothingModularChestPlateMedical
+        - ClothingModularGauntletsMedical
+        - ClothingModularBootsMedical
+  - type: ModularSuit
+    activeComponents:
+      head:
+        - type: PressureProtection
+          highPressureMultiplier: 0.6
+          lowPressureMultiplier: 1000
+        - type: TemperatureProtection
+          heatingCoefficient: 0.1
+          coolingCoefficient: 0.1
+      outerClothing:
+        - type: PressureProtection
+          highPressureMultiplier: 0.3
+          lowPressureMultiplier: 1000
+        - type: TemperatureProtection
+          heatingCoefficient: 0.01
+          coolingCoefficient: 0.01
+        - type: ZombificationResistance
+          zombificationResistanceCoefficient: 0.4
+  - type: ClothingSpeedModifier
+    walkModifier: 0.95
+    sprintModifier: 0.95
+
+- type: entity
+  parent: ClothingModularHelmetBase
+  id: ClothingModularHelmetMedical
+  name: medical modsuit helmet
+  description: A medical helmet with a purple visor. Provides disease protection and a clear view of your patients.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Medical/helmet.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Medical/helmet.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Medical/helmet.rsi
+      state: icon-sealed
+  - type: ToggleableVisuals
+    clothingVisuals:
+      head:
+      - state: sealed-equipped-HELMET
+      - state: visor-unshaded
+        shader: unshaded
+        color: "#907993"
+      head-reptilian:
+      - state: sealed-equipped-HELMET-reptilian
+      - state: visor-unshaded-reptilian
+        shader: unshaded
+        color: "#907993"
+      head-vox:
+      - state: sealed-equipped-HELMET-vox
+      - state: visor-unshaded-vox
+        shader: unshaded
+        color: "#907993"
+  - type: PointLight
+    color: "#907993"
+  - type: DiseaseProtection
+    protection: 0.15
+
+- type: entity
+  parent: ClothingModularChestPlateBase
+  id: ClothingModularChestPlateMedical
+  name: medical modsuit chestplate
+  description: A lightweight medical chestplate with disease protection. Designed for rapid response.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Medical/chestplate.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Medical/chestplate.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Medical/chestplate.rsi
+      state: icon-sealed
+  - type: Armor
+    modifiers:
+      coefficients:
+        Caustic: 0.1
+  - type: DiseaseProtection
+    protection: 0.2
+
+- type: entity
+  parent: ClothingModularGauntletsBase
+  id: ClothingModularGauntletsMedical
+  name: medical modsuit gauntlets
+  description: Medical gauntlets for patient care. Dexterous enough for delicate procedures.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Medical/gauntlets.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Medical/gauntlets.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Medical/gauntlets.rsi
+      state: icon-sealed
+
+- type: entity
+  parent: ClothingModularBootsBase
+  id: ClothingModularBootsMedical
+  name: medical modsuit boots
+  description: Lightweight medical boots for quick response to emergencies.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Medical/boots.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Medical/boots.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Medical/boots.rsi
+      state: icon-sealed
+
+# Mining
+- type: entity
+  parent: ClothingModularControllerBase
+  id: ClothingModularControllerMining
+  name: mining modsuit controller
+  description: A powerful mining controller with numerous built-in modules. Power-efficient and rugged.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Mining/control.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Mining/control.rsi
+  - type: ContainerFill
+    containers:
+      suit_core: *core-slot
+      suit_part:
+        - ClothingModularHelmetMining
+        - ClothingModularChestPlateMining
+        - ClothingModularGauntletsMining
+        - ClothingModularBootsMining
+  - type: ModularSuit
+    activeComponents:
+      head:
+        - type: PressureProtection
+          highPressureMultiplier: 0.3
+          lowPressureMultiplier: 1000
+        - type: TemperatureProtection
+          heatingCoefficient: 0.1
+          coolingCoefficient: 0.1
+        - type: ClothingAshStormProtection
+          modifier: 0.2
+      outerClothing:
+        - type: PressureProtection
+          highPressureMultiplier: 0.3
+          lowPressureMultiplier: 1000
+        - type: TemperatureProtection
+          heatingCoefficient: 0.01
+          coolingCoefficient: 0.01
+        - type: ClothingAshStormProtection
+          modifier: 0.2
+        - type: FireProtection
+          reduction: 0.5
+      gloves:
+        - type: ClothingAshStormProtection
+          modifier: 0.1
+      shoes:
+        - type: ClothingAshStormProtection
+          modifier: 0.1
+  - type: ClothingSpeedModifier
+    walkModifier: 0.9
+    sprintModifier: 0.9
+
+- type: entity
+  parent: ClothingModularHelmetBase
+  id: ClothingModularHelmetMining
+  name: mining modsuit helmet
+  description: A rugged mining helmet with a cyan visor. Features ash protection and a powerful light.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Mining/helmet.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Mining/helmet.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Mining/helmet.rsi
+      state: icon-sealed
+  - type: ToggleableVisuals
+    clothingVisuals:
+      head:
+      - state: sealed-equipped-HELMET
+      - state: visor-unshaded
+        shader: unshaded
+        color: "#a4fef4"
+      head-reptilian:
+      - state: sealed-equipped-HELMET-reptilian
+      - state: visor-unshaded-reptilian
+        shader: unshaded
+        color: "#a4fef4"
+      head-vox:
+      - state: sealed-equipped-HELMET-vox
+      - state: visor-unshaded-vox
+        shader: unshaded
+        color: "#a4fef4"
+  - type: PointLight
+    color: "#a4fef4"
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.75
+        Slash: 0.75
+        Piercing: 0.75
+        Heat: 0.6
+        Caustic: 0.5
+
+- type: entity
+  parent: ClothingModularChestPlateBase
+  id: ClothingModularChestPlateMining
+  name: mining modsuit chestplate
+  description: A durable mining chestplate with good protection against impacts and environmental hazards.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Mining/chestplate.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Mining/chestplate.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Mining/chestplate.rsi
+      state: icon-sealed
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.55
+        Heat: 0.5
+        Caustic: 0.75
+  - type: ExplosionResistance
+    damageCoefficient: 0.5
+
+- type: entity
+  parent: ClothingModularGauntletsBase
+  id: ClothingModularGauntletsMining
+  name: mining modsuit gauntlets
+  description: Reinforced mining gauntlets with partial electrical insulation. Perfect for handling excavation tools.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Mining/gauntlets.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Mining/gauntlets.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Mining/gauntlets.rsi
+      state: icon-sealed
+  - type: Insulated
+    coefficient: 0.5
+
+- type: entity
+  parent: ClothingModularBootsBase
+  id: ClothingModularBootsMining
+  name: mining modsuit boots
+  description: Sturdy mining boots for traversing asteroid terrain. Good grip on loose surfaces.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Mining/boots.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Mining/boots.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Mining/boots.rsi
+      state: icon-sealed
+
+# Ninja
+# - type: entity
+#   parent: ClothingModularControllerBase
+#   id: ClothingModularControllerNinja
+#   name: ninja modsuit controller
+#   description: ""
+#   components:
+#   - type: Sprite
+#     sprite: _Wega/Clothing/Modular/Ninja/control.rsi
+#   - type: Clothing
+#     sprite: _Wega/Clothing/Modular/Ninja/control.rsi
+#   - type: ContainerFill
+#     containers:
+#       suit_core: *core-slot
+#       suit_part:
+#         - ClothingModularHelmetNinja
+#         - ClothingModularChestPlateNinja
+#         - ClothingModularGauntletsNinja
+#         - ClothingModularBootsNinja
+
+# - type: entity
+#   parent: ClothingModularHelmetBase
+#   id: ClothingModularHelmetNinja
+#   name: ninja modsuit helmet
+#   description: ""
+#   categories: [ HideSpawnMenu ]
+#   components:
+#   - type: Sprite
+#     sprite: _Wega/Clothing/Modular/Ninja/helmet.rsi
+#   - type: Clothing
+#     sprite: _Wega/Clothing/Modular/Ninja/helmet.rsi
+#   - type: ModularSuitPart
+#     verbIcon:
+#       sprite: _Wega/Clothing/Modular/Ninja/helmet.rsi
+#       state: icon-sealed
+#   - type: ToggleableVisuals
+#     clothingVisuals:
+#       head:
+#       - state: sealed-equipped-HELMET
+#       - state: visor-unshaded
+#         shader: unshaded
+#         color: "#83db2b"
+#       head-reptilian:
+#       - state: sealed-equipped-HELMET-reptilian
+#       - state: visor-unshaded-reptilian
+#         shader: unshaded
+#         color: "#83db2b"
+#       head-vox:
+#       - state: sealed-equipped-HELMET-vox
+#       - state: visor-unshaded-vox
+#         shader: unshaded
+#         color: "#83db2b"
+
+# - type: entity
+#   parent: ClothingModularChestPlateBase
+#   id: ClothingModularChestPlateNinja
+#   name: ninja modsuit chestplate
+#   description: ""
+#   categories: [ HideSpawnMenu ]
+#   components:
+#   - type: Sprite
+#     sprite: _Wega/Clothing/Modular/Ninja/chestplate.rsi
+#   - type: Clothing
+#     sprite: _Wega/Clothing/Modular/Ninja/chestplate.rsi
+#   - type: ModularSuitPart
+#     verbIcon:
+#       sprite: _Wega/Clothing/Modular/Ninja/chestplate.rsi
+#       state: icon-sealed
+
+# - type: entity
+#   parent: ClothingModularGauntletsBase
+#   id: ClothingModularGauntletsNinja
+#   name: ninja modsuit gauntlets
+#   description: ""
+#   categories: [ HideSpawnMenu ]
+#   components:
+#   - type: Sprite
+#     sprite: _Wega/Clothing/Modular/Ninja/gauntlets.rsi
+#   - type: Clothing
+#     sprite: _Wega/Clothing/Modular/Ninja/gauntlets.rsi
+#   - type: ModularSuitPart
+#     verbIcon:
+#       sprite: _Wega/Clothing/Modular/Ninja/gauntlets.rsi
+#       state: icon-sealed
+#   - type: Insulated
+
+# - type: entity
+#   parent: ClothingModularBootsBase
+#   id: ClothingModularBootsNinja
+#   name: ninja modsuit boots
+#   description: ""
+#   categories: [ HideSpawnMenu ]
+#   components:
+#   - type: Sprite
+#     sprite: _Wega/Clothing/Modular/Ninja/boots.rsi
+#   - type: Clothing
+#     sprite: _Wega/Clothing/Modular/Ninja/boots.rsi
+#   - type: ModularSuitPart
+#     verbIcon:
+#       sprite: _Wega/Clothing/Modular/Ninja/boots.rsi
+#       state: icon-sealed
+
+# Prototype
+- type: entity
+  parent: ClothingModularControllerBase
+  id: ClothingModularControllerPrototype
+  name: prototype modsuit controller
+  description: A prototype modular suit powered by locomotives. While comfortable and spacious, it remains bulky and power-inefficient.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Prototype/control.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Prototype/control.rsi
+  - type: ContainerFill
+    containers:
+      suit_core: *core-slot
+      suit_part:
+        - ClothingModularHelmetPrototype
+        - ClothingModularChestPlatePrototype
+        - ClothingModularGauntletsPrototype
+        - ClothingModularBootsPrototype
+  - type: ModularSuit
+    activeComponents:
+      head:
+        - type: PressureProtection
+          highPressureMultiplier: 0.72
+          lowPressureMultiplier: 1000
+        - type: TemperatureProtection
+          heatingCoefficient: 0.1
+          coolingCoefficient: 0.1
+      outerClothing:
+        - type: PressureProtection
+          highPressureMultiplier: 0.7
+          lowPressureMultiplier: 1000
+        - type: TemperatureProtection
+          heatingCoefficient: 0.01
+          coolingCoefficient: 0.01
+
+- type: entity
+  parent: ClothingModularHelmetBase
+  id: ClothingModularHelmetPrototype
+  name: prototype modsuit helmet
+  description: A bulky prototype helmet with a cyan visor. Not exactly space-efficient, but it gets the job done.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Prototype/helmet.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Prototype/helmet.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Prototype/helmet.rsi
+      state: icon-sealed
+  - type: ToggleableVisuals
+    clothingVisuals:
+      head:
+      - state: sealed-equipped-HELMET
+      - state: visor-unshaded
+        shader: unshaded
+        color: "#a4fef4"
+      head-reptilian:
+      - state: sealed-equipped-HELMET-reptilian
+      - state: visor-unshaded-reptilian
+        shader: unshaded
+        color: "#a4fef4"
+      head-vox:
+      - state: sealed-equipped-HELMET-vox
+      - state: visor-unshaded-vox
+        shader: unshaded
+        color: "#a4fef4"
+  - type: PointLight
+    color: "#a4fef4"
+
+- type: entity
+  parent: ClothingModularChestPlateBase
+  id: ClothingModularChestPlatePrototype
+  name: prototype modsuit chestplate
+  description: A bulky prototype chestplate with good explosion resistance. The research director's choice.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Prototype/chestplate.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Prototype/chestplate.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Prototype/chestplate.rsi
+      state: icon-sealed
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Radiation: 0.3
+        Caustic: 0.8
+
+- type: entity
+  parent: ClothingModularGauntletsBase
+  id: ClothingModularGauntletsPrototype
+  name: prototype modsuit gauntlets
+  description: Bulky prototype gauntlets with partial insulation. Not the most refined, but functional.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Prototype/gauntlets.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Prototype/gauntlets.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Prototype/gauntlets.rsi
+      state: icon-sealed
+  - type: Insulated
+    coefficient: 0.5
+
+- type: entity
+  parent: ClothingModularBootsBase
+  id: ClothingModularBootsPrototype
+  name: prototype modsuit boots
+  description: Heavy prototype boots. They'll get you where you need to go, eventually.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Prototype/boots.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Prototype/boots.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Prototype/boots.rsi
+      state: icon-sealed
+
+# Rescue
+- type: entity
+  parent: ClothingModularControllerBase
+  id: ClothingModularControllerRescue
+  name: rescue modsuit controller
+  description: An advanced version of DeForest Medical Corporation's medical suit, designed for quick rescue of bodies from the most dangerous environments.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Rescue/control.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Rescue/control.rsi
+  - type: ContainerFill
+    containers:
+      suit_core: *core-slot
+      suit_part:
+        - ClothingModularHelmetRescue
+        - ClothingModularChestPlateRescue
+        - ClothingModularGauntletsRescue
+        - ClothingModularBootsRescue
+  - type: ClothingSpeedModifier
+    walkModifier: 0.9
+    sprintModifier: 0.9
+
+- type: entity
+  parent: ClothingModularHelmetBase
+  id: ClothingModularHelmetRescue
+  name: rescue modsuit helmet
+  description: A medical rescue helmet with a soft pink visor. Designed for extracting patients from hazardous environments.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Rescue/helmet.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Rescue/helmet.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Rescue/helmet.rsi
+      state: icon-sealed
+  - type: ToggleableVisuals
+    clothingVisuals:
+      head:
+      - state: sealed-equipped-HELMET
+      - state: visor-unshaded
+        shader: unshaded
+        color: "#f7e0e1"
+      head-reptilian:
+      - state: sealed-equipped-HELMET-reptilian
+      - state: visor-unshaded-reptilian
+        shader: unshaded
+        color: "#f7e0e1"
+      head-vox:
+      - state: sealed-equipped-HELMET-vox
+      - state: visor-unshaded-vox
+        shader: unshaded
+        color: "#f7e0e1"
+  - type: PointLight
+    color: "#f7e0e1"
+  - type: DiseaseProtection
+    protection: 0.15
+  - type: Armor
+    modifiers:
+      coefficients:
+        Heat: 0.90
+        Radiation: 0.75
+
+- type: entity
+  parent: ClothingModularChestPlateBase
+  id: ClothingModularChestPlateRescue
+  name: rescue modsuit chestplate
+  description: A rescue chestplate with excellent environmental protection. Built for the most dangerous rescue operations.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Rescue/chestplate.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Rescue/chestplate.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Rescue/chestplate.rsi
+      state: icon-sealed
+  - type: Armor
+    modifiers:
+      coefficients:
+        Heat: 0.90
+        Radiation: 0.75
+        Caustic: 0.5
+  - type: DiseaseProtection
+    protection: 0.15
+
+- type: entity
+  parent: ClothingModularGauntletsBase
+  id: ClothingModularGauntletsRescue
+  name: rescue modsuit gauntlets
+  description: Rescue gauntlets with partial insulation. Designed for patient handling in dangerous conditions.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Rescue/gauntlets.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Rescue/gauntlets.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Rescue/gauntlets.rsi
+      state: icon-sealed
+  - type: Insulated
+    coefficient: 0.5
+
+- type: entity
+  parent: ClothingModularBootsBase
+  id: ClothingModularBootsRescue
+  name: rescue modsuit boots
+  description: Rescue boots designed for rapid response and patient evacuation.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Rescue/boots.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Rescue/boots.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Rescue/boots.rsi
+      state: icon-sealed
+
+# Research
+- type: entity
+  parent: ClothingModularControllerBase
+  id: ClothingModularControllerResearch
+  name: research modsuit controller
+  description: A private military EOD controller from Aussec Armory, intended for explosive research. Bulky, but expansive.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Research/control.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Research/control.rsi
+  - type: ContainerFill
+    containers:
+      suit_core: *core-slot
+      suit_part:
+        - ClothingModularHelmetResearch
+        - ClothingModularChestPlateResearch
+        - ClothingModularGauntletsResearch
+        - ClothingModularBootsResearch
+  - type: ModularSuit
+    activeComponents:
+      head:
+        - type: PressureProtection
+          highPressureMultiplier: 0.6
+          lowPressureMultiplier: 1000
+        - type: TemperatureProtection
+          heatingCoefficient: 0.1
+          coolingCoefficient: 0.1
+      outerClothing:
+        - type: PressureProtection
+          highPressureMultiplier: 0.02
+          lowPressureMultiplier: 1000
+        - type: TemperatureProtection
+          heatingCoefficient: 0.01
+          coolingCoefficient: 0.01
+  - type: ClothingSpeedModifier
+    walkModifier: 0.75
+    sprintModifier: 0.75
+  - type: StealTarget
+    stealGroup: ClothingOuterHardsuitRd
+
+- type: entity
+  parent: ClothingModularHelmetBase
+  id: ClothingModularHelmetResearch
+  name: research modsuit helmet
+  description: A research helmet with a cyan visor. Built to withstand explosive forces.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Research/helmet.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Research/helmet.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Research/helmet.rsi
+      state: icon-sealed
+  - type: ToggleableVisuals
+    clothingVisuals:
+      head:
+      - state: sealed-equipped-HELMET
+      - state: visor-unshaded
+        shader: unshaded
+        color: "#a4fef4"
+      head-reptilian:
+      - state: sealed-equipped-HELMET-reptilian
+      - state: visor-unshaded-reptilian
+        shader: unshaded
+        color: "#a4fef4"
+      head-vox:
+      - state: sealed-equipped-HELMET-vox
+      - state: visor-unshaded-vox
+        shader: unshaded
+        color: "#a4fef4"
+  - type: PointLight
+    color: "#a4fef4"
+  - type: DiseaseProtection
+    protection: 0.15
+
+- type: entity
+  parent: ClothingModularChestPlateBase
+  id: ClothingModularChestPlateResearch
+  name: research modsuit chestplate
+  description: A research chestplate with exceptional explosion resistance. Perfect for studying unstable materials.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Research/chestplate.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Research/chestplate.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Research/chestplate.rsi
+      state: icon-sealed
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.6
+        Slash: 0.8
+        Piercing: 0.9
+        Heat: 0.3
+        Radiation: 0.1
+        Caustic: 0.2
+  - type: ExplosionResistance
+    damageCoefficient: 0.1
+
+- type: entity
+  parent: ClothingModularGauntletsBase
+  id: ClothingModularGauntletsResearch
+  name: research modsuit gauntlets
+  description: Research gauntlets with partial insulation. Designed for handling experimental equipment.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Research/gauntlets.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Research/gauntlets.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Research/gauntlets.rsi
+      state: icon-sealed
+  - type: Insulated
+    coefficient: 0.5
+
+- type: entity
+  parent: ClothingModularBootsBase
+  id: ClothingModularBootsResearch
+  name: research modsuit boots
+  description: Sturdy research boots for navigating blast zones and laboratories alike.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Research/boots.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Research/boots.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Research/boots.rsi
+      state: icon-sealed
+
+# Responsory
+- type: entity
+  parent: ClothingModularControllerBase
+  id: ClothingModularControllerResponsory
+  name: responsory modsuit controller
+  description: A high-speed rescue controller from Nanotrasen, intended for its emergency response teams.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Responsory/control.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Responsory/control.rsi
+  - type: ContainerFill
+    containers:
+      suit_core: *core-slot-infinite
+      suit_part:
+        - ClothingModularHelmetResponsory
+        - ClothingModularChestPlateResponsory
+        - ClothingModularGauntletsResponsory
+        - ClothingModularBootsResponsory
+  - type: ModularSuit
+    activeComponents:
+      head:
+        - type: PressureProtection
+          highPressureMultiplier: 0.08
+          lowPressureMultiplier: 1000
+        - type: TemperatureProtection
+          heatingCoefficient: 0.1
+          coolingCoefficient: 0.1
+      outerClothing:
+        - type: PressureProtection
+          highPressureMultiplier: 0.05
+          lowPressureMultiplier: 1000
+        - type: TemperatureProtection
+          heatingCoefficient: 0.01
+          coolingCoefficient: 0.01
+  - type: ClothingSpeedModifier
+    walkModifier: 0.9
+    sprintModifier: 0.9
+
+- type: entity
+  parent: ClothingModularHelmetBase
+  id: ClothingModularHelmetResponsory
+  name: responsory modsuit helmet
+  description: A sleek rescue helmet with a cyan visor. Designed for rapid emergency response.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Responsory/helmet.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Responsory/helmet.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Responsory/helmet.rsi
+      state: icon-sealed
+  - type: ToggleableVisuals
+    clothingVisuals:
+      head:
+      - state: sealed-equipped-HELMET
+      - state: visor-unshaded
+        shader: unshaded
+        color: "#a4fef4"
+      head-reptilian:
+      - state: sealed-equipped-HELMET-reptilian
+      - state: visor-unshaded-reptilian
+        shader: unshaded
+        color: "#a4fef4"
+      head-vox:
+      - state: sealed-equipped-HELMET-vox
+      - state: visor-unshaded-vox
+        shader: unshaded
+        color: "#a4fef4"
+  - type: PointLight
+    color: "#a4fef4"
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9
+
+- type: entity
+  parent: ClothingModularChestPlateBase
+  id: ClothingModularChestPlateResponsory
+  name: responsory modsuit chestplate
+  description: A well-balanced rescue chestplate with excellent all-around protection.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Responsory/chestplate.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Responsory/chestplate.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Responsory/chestplate.rsi
+      state: icon-sealed
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.5
+        Heat: 0.5
+        Radiation: 0.5
+        Caustic: 0.5
+  - type: ExplosionResistance
+    damageCoefficient: 0.5
+  - type: StaminaResistance
+    damageCoefficient: 0.75
+
+- type: entity
+  parent: ClothingModularGauntletsBase
+  id: ClothingModularGauntletsResponsory
+  name: responsory modsuit gauntlets
+  description: Insulated rescue gauntlets for rapid response operations.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Responsory/gauntlets.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Responsory/gauntlets.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Responsory/gauntlets.rsi
+      state: icon-sealed
+  - type: Insulated
+
+- type: entity
+  parent: ClothingModularBootsBase
+  id: ClothingModularBootsResponsory
+  name: responsory modsuit boots
+  description: High-speed rescue boots for emergency response teams.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Responsory/boots.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Responsory/boots.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Responsory/boots.rsi
+      state: icon-sealed
+
+# Safeguard
+- type: entity
+  parent: ClothingModularControllerBase
+  id: ClothingModularControllerSafeguard
+  name: safeguard modsuit controller
+  description: An advanced security controller from Apadyne Technologies. Belongs to the Head of Security.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Safeguard/control.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Safeguard/control.rsi
+  - type: ContainerFill
+    containers:
+      suit_core: *core-slot-plasma
+      suit_part:
+        - ClothingModularHelmetSafeguard
+        - ClothingModularChestPlateSafeguard
+        - ClothingModularGauntletsSafeguard
+        - ClothingModularBootsSafeguard
+  - type: ModularSuit
+    activeComponents:
+      head:
+        - type: PressureProtection
+          highPressureMultiplier: 0.45
+          lowPressureMultiplier: 1000
+        - type: TemperatureProtection
+          heatingCoefficient: 0.1
+          coolingCoefficient: 0.1
+      outerClothing:
+        - type: PressureProtection
+          highPressureMultiplier: 0.45
+          lowPressureMultiplier: 1000
+        - type: TemperatureProtection
+          heatingCoefficient: 0.01
+          coolingCoefficient: 0.01
+
+- type: entity
+  parent: ClothingModularHelmetBase
+  id: ClothingModularHelmetSafeguard
+  name: safeguard modsuit helmet
+  description: An advanced security helmet with a golden visor. Projects authority and offers superior protection.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Safeguard/helmet.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Safeguard/helmet.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Safeguard/helmet.rsi
+      state: icon-sealed
+  - type: ToggleableVisuals
+    clothingVisuals:
+      head:
+      - state: sealed-equipped-HELMET
+      - state: visor-unshaded
+        shader: unshaded
+        color: "#facb3e"
+      head-reptilian:
+      - state: sealed-equipped-HELMET-reptilian
+      - state: visor-unshaded-reptilian
+        shader: unshaded
+        color: "#facb3e"
+      head-vox:
+      - state: sealed-equipped-HELMET-vox
+      - state: visor-unshaded-vox
+        shader: unshaded
+        color: "#facb3e"
+  - type: PointLight
+    color: "#facb3e"
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9
+
+- type: entity
+  parent: ClothingModularChestPlateBase
+  id: ClothingModularChestPlateSafeguard
+  name: safeguard modsuit chestplate
+  description: An advanced security chestplate with excellent protection against all forms of attack.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Safeguard/chestplate.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Safeguard/chestplate.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Safeguard/chestplate.rsi
+      state: icon-sealed
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.6
+        Slash: 0.5
+        Piercing: 0.5
+        Heat: 0.8
+        Radiation: 0.5
+        Caustic: 0.6
+  - type: ExplosionResistance
+    damageCoefficient: 0.5
+
+- type: entity
+  parent: ClothingModularGauntletsBase
+  id: ClothingModularGauntletsSafeguard
+  name: safeguard modsuit gauntlets
+  description: Advanced security gauntlets with complete electrical insulation.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Safeguard/gauntlets.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Safeguard/gauntlets.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Safeguard/gauntlets.rsi
+      state: icon-sealed
+  - type: Insulated
+
+- type: entity
+  parent: ClothingModularBootsBase
+  id: ClothingModularBootsSafeguard
+  name: safeguard modsuit boots
+  description: Advanced security boots for maintaining order.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Safeguard/boots.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Safeguard/boots.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Safeguard/boots.rsi
+      state: icon-sealed
+
+# Security
+- type: entity
+  parent: ClothingModularControllerBase
+  id: ClothingModularControllerSecurity
+  name: security modsuit controller
+  description: A security controller from Apadyne Technologies. Offers high protection at the cost of carrying capacity.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Security/control.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Security/control.rsi
+  - type: ContainerFill
+    containers:
+      suit_core: *core-slot
+      suit_part:
+        - ClothingModularHelmetSecurity
+        - ClothingModularChestPlateSecurity
+        - ClothingModularGauntletsSecurity
+        - ClothingModularBootsSecurity
+  - type: ModularSuit
+    activeComponents:
+      head:
+        - type: PressureProtection
+          highPressureMultiplier: 0.525
+          lowPressureMultiplier: 1000
+        - type: TemperatureProtection
+          heatingCoefficient: 0.1
+          coolingCoefficient: 0.1
+      outerClothing:
+        - type: PressureProtection
+          highPressureMultiplier: 0.5
+          lowPressureMultiplier: 1000
+        - type: TemperatureProtection
+          heatingCoefficient: 0.01
+          coolingCoefficient: 0.01
+  - type: ClothingSpeedModifier
+    walkModifier: 0.75
+    sprintModifier: 0.75
+
+- type: entity
+  parent: ClothingModularHelmetBase
+  id: ClothingModularHelmetSecurity
+  name: security modsuit helmet
+  description: A security helmet with an orange visor. Projects authority in any situation.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Security/helmet.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Security/helmet.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Security/helmet.rsi
+      state: icon-sealed
+  - type: ToggleableVisuals
+    clothingVisuals:
+      head:
+      - state: sealed-equipped-HELMET
+      - state: visor-unshaded
+        shader: unshaded
+        color: "#ee8e2e"
+      head-reptilian:
+      - state: sealed-equipped-HELMET-reptilian
+      - state: visor-unshaded-reptilian
+        shader: unshaded
+        color: "#ee8e2e"
+      head-vox:
+      - state: sealed-equipped-HELMET-vox
+      - state: visor-unshaded-vox
+        shader: unshaded
+        color: "#ee8e2e"
+  - type: PointLight
+    color: "#ee8e2e"
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9
+
+- type: entity
+  parent: ClothingModularChestPlateBase
+  id: ClothingModularChestPlateSecurity
+  name: security modsuit chestplate
+  description: A security chestplate with solid protection against physical attacks.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Security/chestplate.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Security/chestplate.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Security/chestplate.rsi
+      state: icon-sealed
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.6
+        Slash: 0.6
+        Piercing: 0.6
+        Heat: 0.8
+        Caustic: 0.7
+  - type: ExplosionResistance
+    damageCoefficient: 0.4
+
+- type: entity
+  parent: ClothingModularGauntletsBase
+  id: ClothingModularGauntletsSecurity
+  name: security modsuit gauntlets
+  description: Security gauntlets with partial insulation. Designed for maintaining order.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Security/gauntlets.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Security/gauntlets.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Security/gauntlets.rsi
+      state: icon-sealed
+  - type: Insulated
+    coefficient: 0.5
+
+- type: entity
+  parent: ClothingModularBootsBase
+  id: ClothingModularBootsSecurity
+  name: security modsuit boots
+  description: Security boots for patrolling the station.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Security/boots.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Security/boots.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Security/boots.rsi
+      state: icon-sealed
+
+# Syndicate
+- type: entity
+  parent: ClothingModularControllerBase
+  id: ClothingModularControllerSyndicate
+  name: syndicate modsuit controller
+  description: A controller designed by Gorlex Marauders, offering armor ruled illegal in most of Spinward Stellar.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Syndicate/control.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Syndicate/control.rsi
+  - type: ContainerFill
+    containers:
+      suit_core: *core-slot-plasma
+      suit_part:
+        - ClothingModularHelmetSyndicate
+        - ClothingModularChestPlateSyndicate
+        - ClothingModularGauntletsSyndicate
+        - ClothingModularBootsSyndicate
+  - type: ModularSuit
+    activeComponents:
+      head:
+        - type: PressureProtection
+          highPressureMultiplier: 0.08
+          lowPressureMultiplier: 1000
+        - type: TemperatureProtection
+          heatingCoefficient: 0.1
+          coolingCoefficient: 0.1
+      outerClothing:
+        - type: PressureProtection
+          highPressureMultiplier: 0.05
+          lowPressureMultiplier: 1000
+        - type: TemperatureProtection
+          heatingCoefficient: 0.01
+          coolingCoefficient: 0.01
+  - type: ClothingSpeedModifier
+    walkModifier: 0.9
+    sprintModifier: 0.9
+
+- type: entity
+  parent: ClothingModularHelmetBase
+  id: ClothingModularHelmetSyndicate
+  name: syndicate modsuit helmet
+  description: A sleek syndicate helmet with a green visor. Illegal in most systems.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Syndicate/helmet.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Syndicate/helmet.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Syndicate/helmet.rsi
+      state: icon-sealed
+  - type: ToggleableVisuals
+    clothingVisuals:
+      head:
+      - state: sealed-equipped-HELMET
+      - state: visor-unshaded
+        shader: unshaded
+        color: "#83db2b"
+      head-reptilian:
+      - state: sealed-equipped-HELMET-reptilian
+      - state: visor-unshaded-reptilian
+        shader: unshaded
+        color: "#83db2b"
+      head-vox:
+      - state: sealed-equipped-HELMET-vox
+      - state: visor-unshaded-vox
+        shader: unshaded
+        color: "#83db2b"
+  - type: PointLight
+    color: "#83db2b"
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9
+
+- type: entity
+  parent: ClothingModularChestPlateBase
+  id: ClothingModularChestPlateSyndicate
+  name: syndicate modsuit chestplate
+  description: A syndicate chestplate with excellent all-around protection. Built for operatives.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Syndicate/chestplate.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Syndicate/chestplate.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Syndicate/chestplate.rsi
+      state: icon-sealed
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.5
+        Heat: 0.5
+        Radiation: 0.5
+        Caustic: 0.5
+  - type: ExplosionResistance
+    damageCoefficient: 0.5
+  - type: StaminaResistance
+    damageCoefficient: 0.75
+
+- type: entity
+  parent: ClothingModularGauntletsBase
+  id: ClothingModularGauntletsSyndicate
+  name: syndicate modsuit gauntlets
+  description: Syndicate gauntlets with complete electrical insulation.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Syndicate/gauntlets.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Syndicate/gauntlets.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Syndicate/gauntlets.rsi
+      state: icon-sealed
+  - type: Insulated
+
+- type: entity
+  parent: ClothingModularBootsBase
+  id: ClothingModularBootsSyndicate
+  name: syndicate modsuit boots
+  description: Syndicate boots for covert operations.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Modular/Syndicate/boots.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Modular/Syndicate/boots.rsi
+  - type: ModularSuitPart
+    verbIcon:
+      sprite: _Wega/Clothing/Modular/Syndicate/boots.rsi
+      state: icon-sealed

@@ -70,6 +70,26 @@
     animation: WeaponArcClaw
   - type: IgniteOnMeleeHit
     fireStacks: 1
+  - type: SolutionContainerManager
+    solutions:
+      Welder:
+        reagents:
+        - ReagentId: WeldingFuel
+          Quantity: 4
+        maxVol: 4
+  - type: SolutionRegeneration
+    solution: Welder
+    generated:
+      reagents:
+      - ReagentId: WeldingFuel
+        Quantity: 0.1
+  - type: RefillableSolution
+    solution: Welder
+  - type: ItemToggleHot
+  - type: IgnitionSource
+    ignited: false
+  - type: ItemToggle
+    predictable: false
 
 - type: entity
   parent: BaseItem
@@ -138,6 +158,29 @@
     damage:
       types:
         Slash: 12
+  - type: DamageOtherOnHit
+    ignoreResistances: true
+    damage:
+      types:
+        Slash: 10
+        Piercing: 15
+  - type: ThrowingAngle
+    angle: 225
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape: !type:PolygonShape
+          radius: 0.01
+          vertices:
+          - -0.475,-0.225
+          - -0.225,-0.475
+          - 0.525,0.275
+          - 0.275,0.525
+        density: 20 # derived from base_item
+        mask:
+        - ItemMask
+        restitution: 0.3
+        friction: 0.2
   - type: UserInterface
     interfaces:
       enum.BloodRunesUiKey.Key:
@@ -189,13 +232,10 @@
     attackRate: 1
     damage:
       types:
-        Slash: 30
+        Slash: 25
     soundHit:
         path: /Audio/Weapons/bladeslice.ogg
   - type: DisarmMalus
-  - type: Reflect
-    reflectProb: .25
-    spread: 90
   - type: Construction
     deconstructionTarget: null
     graph: BloodCultWeapons
@@ -228,13 +268,10 @@
     attackRate: 1
     damage:
       types:
-        Piercing: 30
+        Piercing: 25
     soundHit:
         path: /Audio/Weapons/bladeslice.ogg
   - type: DisarmMalus
-  - type: Reflect
-    reflectProb: .25
-    spread: 90
   - type: Construction
     deconstructionTarget: null
     graph: BloodCultWeapons
@@ -262,15 +299,12 @@
     - 0,0,2,1
     - 1,2,1,1
   - type: BloodCultWeapon
-  - type: Reflect
-    reflectProb: .25
-    spread: 90
   - type: MeleeWeapon
     wideAnimationRotation: -135
     attackRate: 1
     damage:
       types:
-        Heat: 30
+        Heat: 20
     soundHit:
         path: /Audio/Weapons/bladeslice.ogg
   - type: DisarmMalus
@@ -529,3 +563,4 @@
   - type: BallisticAmmoProvider
     proto: ProjectileBloodBolt
     capacity: 24
+  - type: BloodCultAllowedGun # Corvax-Wega-BloodCult

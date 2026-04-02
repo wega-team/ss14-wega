@@ -32,6 +32,7 @@
     - MVCable
     - HVCable
     - CableTerminal
+    - SurveillanceCameraGeneral
     - Deconstruct
   - type: Sprite
     sprite: _Wega/Objects/Tools/combat-rcd.rsi

@@ -49,7 +49,11 @@
       containers:
         board: !type:Container
     - type: ApcPowerReceiver
-      powerLoad: 200
+      powerLoad: 50
+    - type: PowerState
+      idlePowerDraw: 50
+      workingPowerDraw: 200
+    - type: UIPowerState
     - type: Construction
       graph: StationMap
       node: station_map
@@ -95,6 +99,7 @@
       blacklist:
         tags:
         - NoConsoleSound
+    - type: StationAiWhitelist # Corvax-Wega-Edit
 
 - type: entity
   parent: BaseWallmountMetallic

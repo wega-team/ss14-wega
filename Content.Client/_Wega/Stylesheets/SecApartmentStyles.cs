@@ -149,6 +149,22 @@ public sealed class SecApartmentStyles
         );
     }
 
+    public static StyleRule CreateOptionButtonBackgroundRule()
+    {
+        return new StyleRule(
+            new SelectorElement(typeof(PanelContainer), new[] { OptionButton.StyleClassOptionsBackground }, null, null),
+            new[]
+            {
+                new StyleProperty(PanelContainer.StylePropertyPanel, new StyleBoxFlat
+                {
+                    BackgroundColor = Color.FromHex("#330000"),
+                    BorderColor = TabActiveColor,
+                    BorderThickness = new Thickness(1)
+                })
+            }
+        );
+    }
+
     public static StyleRule CreateTabContainerRule(StyleBox tabActiveStyle, StyleBox tabInactiveStyle,
         StyleBox panelStyle, Font font, Color activeColor, Color inactiveColor)
     {

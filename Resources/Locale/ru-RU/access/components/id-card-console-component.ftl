@@ -12,6 +12,7 @@ id-card-console-window-access-levels-label = Уровни доступа
 id-card-console-window-sub-label = NanoID Nexus v2.0
 id-card-console-window-select-all-button = Выдать все
 id-card-console-window-deselect-all-button = Убрать все
+
 access-id-card-console-component-no-hands-error = У вас нет рук.
 id-card-console-privileged-id = Основная ID
 id-card-console-target-id = Целевая ID

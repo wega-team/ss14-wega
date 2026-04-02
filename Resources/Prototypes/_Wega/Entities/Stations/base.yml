@@ -3,6 +3,6 @@
   abstract: true
   components:
     - type: StationLavaland
-      biome: Lavaland
+      planets: [ Lavaland ]
     - type: StationLavalandShuttle
     - type: StationLavalandPenalServitudeShuttle

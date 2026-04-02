@@ -12,7 +12,6 @@
   - type: Item
     sprite: Objects/Devices/gps.rsi
   - type: HandheldGPS
-    handheld: true # Corvax-Wega-Lavaland
   - type: PhysicalComposition
     materialComposition:
       Steel: 400
@@ -35,3 +34,8 @@
   parent: HandheldGPSBasic
   id: BorgHandheldGPSBasic
   description: A miniaturized Global Positioning System for use in cyborg units.
+  components:
+  # Corvax-Wega-Lavaland-start
+  - type: HandheldGpsUi
+    broadcastEnabled: false
+  # Corvax-Wega-Lavaland-end

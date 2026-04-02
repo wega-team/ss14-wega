@@ -38,8 +38,8 @@
     clothingPrototype: ClothingHeadHelmetHardsuitAtmos
   - type: Tag
     tags:
-    - CorgiWearable
     - Hardsuit
+    - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
 
 #Engineering Hardsuit
@@ -75,8 +75,8 @@
     clothingPrototype: ClothingHeadHelmetHardsuitEngineering
   - type: Tag
     tags:
-    - CorgiWearable
     - Hardsuit
+    - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
 
 #Spationaut Hardsuit
@@ -110,9 +110,9 @@
   - type: Tag
     tags:
     - Hardsuit
+    - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
     - HardsuitSpatio
-    - CorgiWearable
 
 #Salvage Hardsuit
 - type: entity
@@ -156,8 +156,8 @@
   # Corvax-Wega-Salvage-end
   - type: Tag
     tags:
-    - CorgiWearable
     - Hardsuit
+    - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
 
 #Goliath Hardsuit
@@ -205,8 +205,8 @@
   # Corvax-Wega-Salvage-end
   - type: Tag
     tags:
-    - CorgiWearable
     - Hardsuit
+    - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
 
 #Maxim Hardsuit
@@ -283,8 +283,8 @@
     clothingPrototype: ClothingHeadHelmetHardsuitSecurity
   - type: Tag
     tags:
-    - CorgiWearable
     - Hardsuit
+    - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
 
 #Brigmedic Hardsuit
@@ -380,8 +380,8 @@
     clothingPrototype: ClothingHeadHelmetHardsuitCap
   - type: Tag
     tags:
-    - CorgiWearable
     - Hardsuit
+    - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
 
 #Chief Engineer's Hardsuit
@@ -419,8 +419,8 @@
     clothingPrototype: ClothingHeadHelmetHardsuitEngineeringWhite
   - type: Tag
     tags:
-    - CorgiWearable
     - Hardsuit
+    - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
 
 #Chief Medical Officer's Hardsuit
@@ -453,8 +453,8 @@
     clothingPrototype: ClothingHeadHelmetHardsuitMedical
   - type: Tag
     tags:
-    - CorgiWearable
     - Hardsuit
+    - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
 
 #Research Director's Hardsuit
@@ -494,8 +494,8 @@
     tags:
     - WhitelistChameleon
     - HighRiskItem
-    - CorgiWearable
     - Hardsuit
+    - ModNotEquipable # Corvax-Wega-ModularSuit
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitRd
   - type: StaticPrice
@@ -610,8 +610,8 @@
     tags:
     - MonkeyWearable
     - Hardsuit
+    - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
-    - CorgiWearable
     - ScurretWearable
   - type: StaticPrice
     price: 5000
@@ -632,6 +632,7 @@
   - type: Tag
     tags:
     - Hardsuit
+    - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
   - type: DiseaseProtection # Corvax-Wega-Disease
     protection: 0.2 # Corvax-Wega-Disease
@@ -670,7 +671,7 @@
         Caustic: 0.5
   - type: Item
     size: Huge
-  - type: ClothingSpeedModifier 
+  - type: ClothingSpeedModifier
     walkModifier: 1 # Corvax-Wega-Change
     sprintModifier: 1 # Corvax-Wega-Change
   - type: HeldSpeedModifier
@@ -680,8 +681,8 @@
     protection: 0.2 # Corvax-Wega-Disease
   - type: Tag
     tags:
-    - CorgiWearable
     - Hardsuit
+    - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
 
 #Syndicate Commander Hardsuit
@@ -719,8 +720,8 @@
     clothingPrototype: ClothingHeadHelmetHardsuitSyndieCommander
   - type: Tag
     tags:
-    - CorgiWearable
     - Hardsuit
+    - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
 
 
@@ -759,8 +760,8 @@
   - type: Tag
     tags:
     - MonkeyWearable
-    - CorgiWearable
     - Hardsuit
+    - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
 
 #Wizard Hardsuit
@@ -796,8 +797,8 @@
     clothingPrototype: ClothingHeadHelmetHardsuitWizard
   - type: Tag
     tags:
-    - CorgiWearable
     - Hardsuit
+    - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
 
 #Ling Space Suit
@@ -980,6 +981,7 @@
   - type: Tag
     tags:
     - Hardsuit
+    - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
 
 #ERT Janitor Hardsuit

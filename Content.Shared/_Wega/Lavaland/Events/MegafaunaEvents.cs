@@ -29,7 +29,6 @@ public sealed partial class BloodDrunkMinerDashAction : WorldTargetActionEvent
 // Hierophant
 public sealed partial class HierophantBlinkActionEvent : EntityTargetActionEvent
 {
-    [DataField] public EntProtoId BlinkEffect = "EffectHierophantBlink";
 }
 
 public sealed partial class HierophantCrossActionEvent : EntityTargetActionEvent
@@ -137,7 +136,7 @@ public sealed partial class BubblegumIllusionDashActionEvent : EntityTargetActio
 public sealed partial class BubblegumPentagramDashActionEvent : EntityTargetActionEvent
 {
     [DataField] public float PlacementRadius = 5f;
-    [DataField] public float PreDashDelay = 1.2f;
+    [DataField] public float PreDashDelay = 1f;
     [DataField(required: true)] public DamageSpecifier IllusionDamage;
     [DataField] public EntProtoId IllusionPrototype = "MobBubblegumIllusion";
 }
@@ -146,7 +145,7 @@ public sealed partial class BubblegumChaoticIllusionDashActionEvent : EntityTarg
 {
     [DataField] public int IllusionCount = 2;
     [DataField] public float PlacementRadius = 6f;
-    [DataField] public float PreDashDelay = 1f;
+    [DataField] public float PreDashDelay = 0.8f;
     [DataField(required: true)] public DamageSpecifier IllusionDamage;
     [DataField] public EntProtoId IllusionPrototype = "MobBubblegumIllusion";
 }

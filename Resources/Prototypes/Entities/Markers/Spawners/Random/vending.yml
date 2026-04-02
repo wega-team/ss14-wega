@@ -48,6 +48,8 @@
       weight: 40
     - id: VendingMachineWinter
       weight: 40
+    - id: VendingMachineFashion # Corvax-Wega-Fashion
+      weight: 40
     - id: VendingMachinePride
       weight: 10
     - id: VendingMachineTheater

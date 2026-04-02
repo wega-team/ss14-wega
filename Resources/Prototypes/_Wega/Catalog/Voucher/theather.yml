@@ -1,0 +1,160 @@
+- type: voucherKit
+  id: ClownAlt1
+  name: voucher-general-clownalt1-name
+  description: voucher-general-clownalt1-desc
+  items:
+  - id: ClothingHeadHatJester
+  - id: ClothingUniformJumpsuitJester
+  - id: ClothingOuterWinterClown
+
+- type: voucherKit
+  id: ClownAlt2
+  name: voucher-general-clownalt2-name
+  description: voucher-general-clownalt2-desc
+  items:
+  - id: ClothingHeadHatJesterAlt
+  - id: ClothingUniformJumpsuitJesterAlt
+  - id: ClothingShoesJester
+
+- type: voucherKit
+  id: Cardborg
+  name: voucher-general-cargborg-name
+  description: voucher-general-cargborg-desc
+  items:
+  - id: ClothingHeadHatCardborg
+  - id: ClothingOuterCardborg
+
+- type: voucherKit
+  id: Aerostatic
+  name: voucher-general-aerostatic-name
+  description: voucher-general-aerostatic-desc
+  items:
+  - id: ClothingOuterAerostaticBomberJacket
+  - id: ClothingNeckHorrific
+  - id: ClothingUniformJumpsuitSuperstarCop
+  - id: ClothingOuterDiscoAssBlazer
+  - id: ClothingShoesGreenLizardskin
+  - id: ClothingEyesBinoclardLenses
+  - id: ClothingHandsGlovesAerostatic
+  - id: ClothingUniformJumpsuitAerostatic
+  - id: ClothingShoesAerostatic
+
+- type: voucherKit
+  id: SchoolWhite
+  name: voucher-general-schoolw-name
+  description: voucher-general-schoolw-desc
+  items:
+  - id: ClothingShoesSchoolWhite
+  - id: ClothingUniformJumpskirtSchool
+
+- type: voucherKit
+  id: SchoolBlack
+  name: voucher-general-schoolb-name
+  description: voucher-general-schoolb-desc
+  items:
+  - id: ClothingShoesSchoolBlack
+  - id: ClothingUniformJumpskirtSchool
+
+- type: voucherKit
+  id: Sombrero
+  name: voucher-general-sombrero-name
+  description: voucher-general-sombrero-desc
+  items:
+  - id: ClothingOuterPonchoClassic
+  - id: ClothingHeadHatSombrero
+
+- type: voucherKit
+  id: SombreroClassik
+  name: voucher-general-sombreroc-name
+  description: voucher-general-sombreroc-desc
+  items:
+  - id: ClothingOuterPoncho
+  - id: ClothingHeadHatSombrero
+
+- type: voucherKit
+  id: Pwig
+  name: voucher-general-pwig-name
+  description: voucher-general-pwig-desc
+  items:
+  - id: ClothingHeadHatPwig
+  - id: ClothingOuterRobesJudge
+
+- type: voucherKit
+  id: Santa
+  name: voucher-general-santa-name
+  description: voucher-general-santa-desc
+  items:
+  - id: ClothingHeadHatSantahat
+  - id: ClothingOuterSanta
+
+- type: voucherKit
+  id: Skub
+  name: voucher-general-skub-name
+  description: voucher-general-skub-desc
+  items:
+  - id: ClothingHeadHatSkub
+  - id: ClothingOuterSkub
+
+- type: voucherKit
+  id: Chiken
+  name: voucher-general-chiken-name
+  description: voucher-general-chiken-desc
+  items:
+  - id: ClothingHeadHatChickenhead
+  - id: ClothingOuterSuitChicken
+
+- type: voucherKit
+  id: Shrine
+  name: voucher-general-shrine-name
+  description: voucher-general-shrine-desc
+  items:
+  - id: ClothingHeadHatShrineMaidenWig
+  - id: ClothingOuterSuitShrineMaiden
+  - id: Gohei
+
+- type: voucherKit
+  id: Witch
+  name: voucher-general-witch-name
+  description: voucher-general-witch-desc
+  items:
+  - id: ClothingHeadHatWitch1
+  - id: ClothingOuterSuitWitchRobes
+
+- type: voucherKit
+  id: Racoon
+  name: voucher-general-racoon-name
+  description: voucher-general-racoon-desc
+  items:
+  - id: ClothingHeadHatRedRacoon
+  - id: ClothingOuterRedRacoon
+
+- type: voucherKit
+  id: DameDane
+  name: voucher-general-damedane-name
+  description: voucher-general-damedane-desc
+  items:
+  - id: ClothingUniformJumpsuitDameDane
+  - id: ClothingShoesDameDane
+  - id: ClothingOuterDameDane
+
+- type: voucherKit
+  id: Gladiator
+  name: voucher-general-gladiator-name
+  description: voucher-general-gladiator-desc
+  items:
+  - id: ClothingHeadHatGladiator
+  - id: ClothingUniformJumpsuitGladiator
+
+- type: voucherKit
+  id: Casa
+  name: voucher-general-casa-name
+  description: voucher-general-casa-desc
+  items:
+  - id: ClothingUniformJumpsuitKimono
+  - id: ClothingHeadHatCasa
+
+
+
+
+
+

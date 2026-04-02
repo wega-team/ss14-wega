@@ -184,3 +184,60 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: FemaleRequired
+
+- type: loadout
+  id: ClothingUniformSwimBlack
+  equipment:
+    underwearbottom: ClothingUniformSwimBlack
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+    
+- type: loadout
+  id: ClothingUniformSwimBlue
+  equipment:
+    underwearbottom: ClothingUniformSwimBlue
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+
+- type: loadout
+  id: ClothingUniformSwimDarkGreen
+  equipment:
+    underwearbottom: ClothingUniformSwimDarkGreen
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+
+- type: loadout
+  id: ClothingUniformSwimGreen
+  equipment:
+    underwearbottom: ClothingUniformSwimGreen
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+    
+- type: loadout
+  id: ClothingUniformSwimPurple
+  equipment:
+    underwearbottom: ClothingUniformSwimPurple
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+
+- type: loadout
+  id: ClothingUniformSwimRed
+  equipment:
+    underwearbottom: ClothingUniformSwimRed
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+
+
+
+
+
+
+
+
+

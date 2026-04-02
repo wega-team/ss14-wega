@@ -58,6 +58,11 @@
     whitelist:
       tags:
       - Ore
+      # Corvax-Wega-Start
+      - ArtifactFragment
+      - MagmiteAlloy
+      - Gems 
+      # Corvax-Wega-end
   - type: UserInterface
     interfaces:
       enum.StorageUiKey.Key:
@@ -78,3 +83,8 @@
         - MachineMask
         layer:
         - MachineLayer
+  # Corvax-Wega-Lavaland-start
+  - type: MagnetPickup
+    needForSlotFlag: false
+    range: 1.5
+  # Corvax-Wega-Lavaland-end

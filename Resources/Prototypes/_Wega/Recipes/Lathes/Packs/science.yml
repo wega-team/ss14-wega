@@ -4,3 +4,8 @@
   id: ScienceStatic
   recipes:
   - HandheldSlimeAnalyzer
+  
+- type: latheRecipePack
+  id: ScienceReach
+  recipes:
+  - Nanopast1

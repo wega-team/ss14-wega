@@ -17,6 +17,7 @@
           emergencyShuttlePath: /Maps/Shuttles/emergency_courser.yml
         - type: StationLavaland
           lavalandAvanpost: "/Maps/_Wega/Nonstations/cyberiadavanpost.yml"
+          planets: [ Lavaland ]
         - type: StationJobs
           availableJobs:
             #service

@@ -9,6 +9,7 @@ using Content.Shared.Database;
 using Content.Shared.FixedPoint;
 using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
+using Content.Shared.Modular.Suit; // Corvax-Wega-ModularSuit
 using Robust.Shared.Containers;
 
 namespace Content.Server.Atmos.EntitySystems
@@ -60,6 +61,17 @@ namespace Content.Server.Atmos.EntitySystems
             {
                 UpdateCachedResistances(uid, barotrauma);
             }
+
+            // Corvax-Wega-ModularSuit-start
+            if (TryComp<AttachedModularSuitPartComponent>(uid, out var attached) && attached.Suit != null)
+            {
+                if (TryComp<ModularSuitComponent>(attached.Suit.Value, out var modular) && modular.Wearer != null)
+                {
+                    if (TryComp<BarotraumaComponent>(modular.Wearer.Value, out var wearerBarotrauma))
+                        UpdateCachedResistances(modular.Wearer.Value, wearerBarotrauma);
+                }
+            }
+            // Corvax-Wega-ModularSuit-end
         }
 
         private void OnPressureProtectionEquipped(EntityUid uid, PressureProtectionComponent pressureProtection, GotEquippedEvent args)
@@ -211,9 +223,10 @@ namespace Content.Server.Atmos.EntitySystems
             while (enumerator.MoveNext(out var uid, out var barotrauma, out var damageable))
             {
                 var totalDamage = FixedPoint2.Zero;
+                var damageSpecifier = _damageableSystem.GetAllDamage((uid, damageable));
                 foreach (var (barotraumaDamageType, _) in barotrauma.Damage.DamageDict)
                 {
-                    if (!damageable.Damage.DamageDict.TryGetValue(barotraumaDamageType, out var damage))
+                    if (!damageSpecifier.DamageDict.TryGetValue(barotraumaDamageType, out var damage))
                         continue;
                     totalDamage += damage;
                 }

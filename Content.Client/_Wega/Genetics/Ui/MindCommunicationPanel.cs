@@ -26,7 +26,7 @@ public sealed partial class MindCommunicationPanel : DefaultWindow
 
     private void InitializeTargets()
     {
-        var actorQuery = _entityManager.EntityQueryEnumerator<ActorComponent, MetaDataComponent, HumanoidAppearanceComponent>();
+        var actorQuery = _entityManager.EntityQueryEnumerator<ActorComponent, MetaDataComponent, HumanoidProfileComponent>();
         while (actorQuery.MoveNext(out var uid, out _, out var metaData, out _))
         {
             var entityName = metaData.EntityName;

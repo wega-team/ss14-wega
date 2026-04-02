@@ -74,9 +74,10 @@
   components:
   - type: Repairable # Negative values represent healing
     damage:
-      groups:
-        Brute: -60 # 20 of each Brute Type - 20% of a basic shield HP
       types:
+        Blunt: -20
+        Slash: -20
+        Piercing: -20
         Heat: -20
     fuelCost: 10 # 1/2 of a Welder for a full repair
     doAfterDelay: 5
@@ -117,7 +118,7 @@
       heldPrefix: riot_laser
     # Corvax-Wega-Add-start
     - type: Reflect
-      reflectProb: 0.4
+      reflectProb: 0.25
       reflects:
         - Energy
     # Corvax-Wega-Add-end
@@ -553,11 +554,26 @@
                 collection: GlassBreak
             - !type:SpawnEntitiesBehavior
               spawn:
-                BrokenEnergyShield:
+                BrokenEnergyShieldWega: # Corvax-Wega-change
                   min: 1
                   max: 1
     - type: StaticPrice
       price: 350
+    # Corvax-Wega-start
+    - type: Construction
+      graph: EnergySheild
+      node: bluesheildfinished
+    - type: Repairable # Negative values represent healing
+      qualityNeeded: Pulsing
+      damage:
+        groups:
+          Brute: -15 # 20 of each Brute Type - 20% of a basic shield HP
+        types:
+          Heat: -5
+      fuelCost: 0 # 1/2 of a Welder for a full repair
+      doAfterDelay: 1
+      allowSelfRepair: false
+   # Corvax-Wega-End
 
 - type: entity
   name: broken energy shield

@@ -1,0 +1,358 @@
+# Construction
+- type: entity
+  id: ModularSuitConstruction
+  name: modular construction
+  description: "A partially assembled modular suit frame. Requires a core, armor parts, plating, and a power cell to complete."
+  components:
+  - type: Animateable
+  - type: Clickable
+  - type: InteractionOutline
+  - type: MovedByPressure
+  - type: Pullable
+  - type: DamageExaminable
+  - type: Appearance
+  - type: ModularSuitAssemblyVisuals
+    statePrefix: mod
+  - type: Sprite
+    sprite: &mod-rsi _Wega/Objects/Specific/Robotics/modular_suits.rsi
+    drawdepth: Items
+    noRot: true
+    state: mod0
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.25,0.25,0.25"
+        density: 20
+        mask:
+        - ItemMask
+        restitution: 0.3  # fite me
+        friction: 0.2
+  - type: EmitSoundOnCollide
+    sound:
+      collection: WeakHit
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Effects/drop.ogg
+      params:
+        volume: 2
+  - type: DamageOnHighSpeedImpact
+    damage:
+      types:
+        Blunt: 5
+    soundHit:
+      collection: MetalThud
+  - type: CollisionWake
+  - type: GravityAffected
+  - type: Physics
+    bodyType: Dynamic
+    fixedRotation: false
+  - type: Construction
+    graph: ModularSuit
+    node: start
+    defaultTarget: mod
+
+- type: entity
+  parent: ModularSuitConstruction
+  id: ModularSuitConstructionFinished
+  name: modular construction
+  description: "A fully assembled modular suit frame. Ready for plating installation and power cell insertion."
+  components:
+  - type: Sprite
+    state: mod8
+  - type: Construction
+    graph: ModularSuitVariants
+    node: base_suit
+    defaultTarget: base_suit
+
+# Cores
+- type: entity
+  parent: BaseItem
+  id: BaseModularSuitCore
+  abstract: true
+  components:
+  - type: Item
+    size: Small
+    storedRotation: -90
+  - type: Sprite
+    sprite: *mod-rsi
+
+- type: entity
+  parent: BaseModularSuitCore
+  id: ModularSuitCoreStandard
+  name: modular suit core
+  description: "Nakamura Engineering's standard suit core. Provides baseline power distribution for modular suits."
+  components:
+  - type: Sprite
+    state: mod-core-standard
+  - type: ModularSuitCore
+    verbIcon:
+      sprite: *mod-rsi
+      state: mod-core-standard
+  - type: Tag
+    tags:
+    - ModularSuitCore
+
+- type: entity
+  parent: BaseModularSuitCore
+  id: ModularSuitCorePlasma
+  name: modular suit plasma core
+  description: "An advanced plasma-fueled core. Offers twice the capacity of standard models, perfect for extended operations."
+  components:
+  - type: Sprite
+    state: mod-core-plasma
+  - type: ModularSuitCore
+    multiplier: 0.5
+    maxCharge: 200
+    charge: 200
+    verbIcon:
+      sprite: *mod-rsi
+      state: mod-core-plasma
+
+- type: entity
+  parent: BaseModularSuitCore
+  id: ModularSuitCoreInfinite
+  name: modular suit infinite core
+  description: "An experimental core with an unlimited power source. Where did you even get this?"
+  components:
+  - type: Sprite
+    state: mod-core-infinite
+  - type: ModularSuitCore
+    infinite: true
+    verbIcon:
+      sprite: *mod-rsi
+      state: mod-core-infinite
+
+# Parts
+- type: entity
+  parent: BaseItem
+  id: ModularSuitHelmet
+  name: modular suit helmet
+  description: "A sealed helmet for modular suits. Provides head protection and houses visor module interfaces."
+  components:
+  - type: Item
+    size: Normal
+  - type: Sprite
+    sprite: *mod-rsi
+    state: helmet
+  - type: ModularSuitPart
+    partType: Helmet
+    verbIcon:
+      sprite: *mod-rsi
+      state: helmet
+  - type: Tag
+    tags:
+    - ModularSuitHelmet
+
+- type: entity
+  parent: BaseItem
+  id: ModularSuitChestPlate
+  name: modular suit chestplate
+  description: "The primary armor plate for modular suits. Protects the torso and serves as the mounting point for most modules."
+  components:
+  - type: Item
+    size: Normal
+  - type: Sprite
+    sprite: *mod-rsi
+    state: chestplate
+  - type: ModularSuitPart
+    partType: Torso
+    verbIcon:
+      sprite: *mod-rsi
+      state: chestplate
+  - type: Tag
+    tags:
+    - ModularSuitChestPlate
+
+- type: entity
+  parent: BaseItem
+  id: ModularSuitGauntlets
+  name: modular suit gauntlets
+  description: "Reinforced gauntlets with integrated servo systems. Allow installation of hand-related modules."
+  components:
+  - type: Item
+    size: Small
+    storedRotation: -90
+  - type: Sprite
+    sprite: *mod-rsi
+    state: gauntlets
+  - type: ModularSuitPart
+    partType: Gloves
+    verbIcon:
+      sprite: *mod-rsi
+      state: gauntlets
+  - type: Tag
+    tags:
+    - ModularSuitGauntlets
+
+- type: entity
+  parent: BaseItem
+  id: ModularSuitBoots
+  name: modular suit boots
+  description: "Sealed boots with magnetic anchoring systems. Serve as the foundation for mobility-related modules."
+  components:
+  - type: Item
+    size: Normal
+  - type: Sprite
+    sprite: *mod-rsi
+    state: boots
+  - type: ModularSuitPart
+    partType: Boots
+    verbIcon:
+      sprite: *mod-rsi
+      state: boots
+  - type: Tag
+    tags:
+    - ModularSuitBoots
+
+# Platings
+- type: entity
+  parent: BaseItem
+  id: BasePlating
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: *mod-rsi
+
+- type: entity
+  parent: BasePlating
+  id: BasicPlating
+  name: base suit plating
+  description: "Nakamura Engineering's standard plating. Offers baseline protection with slightly improved mobility."
+  components:
+  - type: Sprite
+    state: standard-plating
+  - type: Tag
+    tags:
+    - BasicPlating
+
+- type: entity
+  parent: BasePlating
+  id: CivilianPlating
+  name: civilian suit plating
+  description: "Lightweight civilian plating. Offers no vacuum protection, but doesn't hinder movement at all."
+  components:
+  - type: Sprite
+    sprite: *mod-rsi
+    state: civilian-plating
+  - type: Tag
+    tags:
+    - CivilianPlating
+
+- type: entity
+  parent: BasePlating
+  id: ClownPlating
+  name: clown suit plating
+  description: "Honk Ltd. plating. Protects against low-humor environments. Most of the tech went into reducing power consumption."
+  components:
+  - type: Sprite
+    sprite: *mod-rsi
+    state: cosmohonk-plating
+  - type: Tag
+    tags:
+    - ClownPlating
+
+- type: entity
+  parent: BasePlating
+  id: EngineeringPlating
+  name: engineering suit plating
+  description: "Nakamura Engineering's classic engineer plating. Features excellent heat and electrical resistance."
+  components:
+  - type: Sprite
+    sprite: *mod-rsi
+    state: engineering-plating
+  - type: Tag
+    tags:
+    - EngineeringPlating
+
+- type: entity
+  parent: BasePlating
+  id: AtmosPlating
+  name: atmospheric suit plating
+  description: "Specialized plating for atmospheric technicians. Provides extreme thermal resistance beyond standard engineering models."
+  components:
+  - type: Sprite
+    sprite: *mod-rsi
+    state: atmospheric-plating
+  - type: Tag
+    tags:
+    - AtmosPlating
+
+- type: entity
+  parent: BasePlating
+  id: WhiteEngineeringPlating
+  name: advanced suit plating
+  description: "An upgraded engineering suit with a polished white finish. Offers superior acid and fire protection."
+  components:
+  - type: Sprite
+    sprite: *mod-rsi
+    state: advanced-plating
+  - type: Tag
+    tags:
+    - WhiteEngineeringPlating
+
+- type: entity
+  parent: BasePlating
+  id: SecurityPlating
+  name: security suit plating
+  description: "Apadyne Technologies security plating. Provides high protection at the cost of carrying capacity."
+  components:
+  - type: Sprite
+    sprite: *mod-rsi
+    state: security-plating
+  - type: Tag
+    tags:
+    - SecurityPlating
+
+- type: entity
+  parent: BasePlating
+  id: RedSecurityPlating
+  name: safeguard suit plating
+  description: "Advanced security plating. Features enhanced protection and mobility compared to standard models."
+  components:
+  - type: Sprite
+    sprite: *mod-rsi
+    state: safeguard-plating
+  - type: Tag
+    tags:
+    - RedSecurityPlating
+
+- type: entity
+  parent: BasePlating
+  id: RescuePlating
+  name: rescue suit plating
+  description: "Specialized medical plating designed for extraction from hazardous environments. Includes an integrated quick-carry system."
+  components:
+  - type: Sprite
+    sprite: *mod-rsi
+    state: rescue-plating
+  - type: Tag
+    tags:
+    - RescuePlating
+
+- type: entity
+  parent: BasePlating
+  id: MedicalPlating
+  name: medical suit plating
+  description: "DeForest Medical Corporation's lightweight plating. Prioritizes mobility while maintaining adequate protection."
+  components:
+  - type: Sprite
+    sprite: *mod-rsi
+    state: medical-plating
+  - type: Tag
+    tags:
+    - MedicalPlating
+
+- type: entity
+  parent: BasePlating
+  id: RDPlating
+  name: research suit plating
+  description: "Aussec Armory's private military plating for explosive research. Bulky, but offers comprehensive protection."
+  components:
+  - type: Sprite
+    sprite: *mod-rsi
+    state: research-plating
+  - type: Tag
+    tags:
+    - RDPlating

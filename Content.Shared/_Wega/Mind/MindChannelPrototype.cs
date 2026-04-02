@@ -2,7 +2,7 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Mind;
 
-[Prototype("mindChannel")]
+[Prototype]
 public sealed partial class MindChannelPrototype : IPrototype
 {
     /// <summary>

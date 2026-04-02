@@ -79,3 +79,6 @@ auto_call_time = 150
 preset_enabled = false
 timerpreset = 240
 map_enabled = true
+
+[control]
+storage_limit = 2

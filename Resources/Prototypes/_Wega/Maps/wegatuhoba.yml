@@ -17,6 +17,9 @@
             prefixCreator: 'SS'
         - type: StationEmergencyShuttle
           emergencyShuttlePath: /Maps/_Wega/Shuttles/emergency_tuhoba.yml
+        - type: StationLavaland
+          planets: [ Lavaland ]
+          enabled: false
         - type: StationJobs
           availableJobs:
             # command

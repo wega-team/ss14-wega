@@ -4,7 +4,6 @@ using Content.Shared.Clothing; // Corvax-Wega-Wielder
 using Content.Shared.ImpulseFlash.Components; // Corvax-Wega-Arsenal
 using Content.Shared.Actions; // Corvax-Wega-Arsenal
 using Content.Shared.Inventory.Events; // Corvax-Wega-Arsenal
-using Content.Shared.Inventory; // Corvax-Wega-Arsenal
 using Content.Shared.Examine;
 using Content.Shared.Eye.Blinding.Components;
 using Content.Shared.Flash.Components;
@@ -221,10 +220,7 @@ public abstract class SharedFlashSystem : EntitySystem
         _entityLookup.GetEntitiesInRange(transform.Coordinates, range, _entSet);
         foreach (var entity in _entSet)
         {
-            // TODO: Use RandomPredicted https://github.com/space-wizards/RobustToolbox/pull/5849
-            var seed = SharedRandomExtensions.HashCodeCombine((int)_timing.CurTick.Value, GetNetEntity(entity).Id);
-            var rand = new System.Random(seed);
-            if (!rand.Prob(probability))
+            if (!SharedRandomExtensions.PredictedProb(_timing, probability, GetNetEntity(entity)))
                 continue;
 
             // Is the entity affected by the flash either through status effects or by taking damage?

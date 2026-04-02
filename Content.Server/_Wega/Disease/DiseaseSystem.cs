@@ -388,7 +388,7 @@ namespace Content.Server.Disease
                 return true;
 
             if (_inventorySystem.TryGetSlotEntity(uid, "mask", out var maskUid) &&
-                EntityManager.TryGetComponent<IngestionBlockerComponent>(maskUid, out var blocker) &&
+                TryComp<IngestionBlockerComponent>(maskUid, out var blocker) &&
                 blocker.Enabled)
                 return true;
 
@@ -425,7 +425,7 @@ namespace Content.Server.Disease
                 return;
 
             Vaccinate(carrier, component.Disease);
-            EntityManager.DeleteEntity(uid);
+            Del(uid);
             args.Handled = true;
         }
     }

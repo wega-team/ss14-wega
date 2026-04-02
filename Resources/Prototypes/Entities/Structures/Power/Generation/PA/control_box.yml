@@ -71,6 +71,7 @@
         ghostProto: ParticleAcceleratorEmitterStarboard
         graph: ParticleAcceleratorEmitterStarboard
         expectedNode: completed
+  - type: StationAiWhitelist # Corvax-Wega-Edit
 
 # Unfinished
 

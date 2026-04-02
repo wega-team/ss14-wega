@@ -13,6 +13,7 @@
     # - BorgModuleScience until sciborgs are added
 
   defaultModules:
+  - BorgModulePrying
   - BorgModuleTool
 # Corvax-Wega-start
   - BorgModuleCommonMedical
@@ -58,6 +59,7 @@
     - BorgModuleEngineering
 
   defaultModules:
+  - BorgModulePrying
   - BorgModuleTool
   - BorgModuleConstruction
   - BorgModuleRCD
@@ -106,6 +108,7 @@
     - BorgModuleCargo
 
   defaultModules:
+  - BorgModulePrying
   - BorgModuleTool
   - BorgModuleMining
   - BorgModuleTraversal
@@ -137,6 +140,7 @@
   - type: RadarConsole
     followEntity: true
   - type: HandheldGPS
+    gPSName : Шахтёрский киборг
   - type: MagbootsImplant
 # Corvax-Wega-end
 
@@ -169,6 +173,7 @@
 
   defaultModules:
   - BorgModuleTool # Corvax-Wega-add
+  - BorgModulePrying
   - BorgModuleCleaning
   - BorgModuleCustodial
 
@@ -226,6 +231,7 @@
     - BorgModuleMedical
 
   defaultModules:
+  - BorgModulePrying
   - BorgModuleChemical
   - BorgModuleTopicals
   - BorgModuleRescue
@@ -279,6 +285,7 @@
   # - BorgModuleTool
   # - BorgModuleMusique
   - BorgModuleCook
+  - BorgModulePrying
   - BorgModuleService
   - BorgModuleBar
   # - BorgModuleClowning

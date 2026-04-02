@@ -18,12 +18,41 @@ public sealed class AntiGravityClothingSystem : EntitySystem
     /// <inheritdoc/>
     public override void Initialize()
     {
+        SubscribeLocalEvent<AntiGravityClothingComponent, ComponentAdd>(OnAdd); // Corvax-Wega-Add
+        SubscribeLocalEvent<AntiGravityClothingComponent, ComponentRemove>(OnRemove); // Corvax-Wega-Add
+
         SubscribeLocalEvent<AntiGravityClothingComponent, InventoryRelayedEvent<IsWeightlessEvent>>(OnIsWeightless);
         SubscribeLocalEvent<AntiGravityClothingComponent, ClothingGotEquippedEvent>(OnEquipped);
         SubscribeLocalEvent<AntiGravityClothingComponent, ClothingGotUnequippedEvent>(OnUnequipped);
         SubscribeLocalEvent<AntiGravityClothingComponent, InventoryRelayedEvent<DownedEvent>>(OnDowned);
         SubscribeLocalEvent<AntiGravityClothingComponent, InventoryRelayedEvent<StoodEvent>>(OnStood);
     }
+
+    // Corvax-Wega-Add-start
+    private void OnAdd(Entity<AntiGravityClothingComponent> ent, ref ComponentAdd args)
+    {
+        if (!TryComp<ClothingComponent>(ent, out var clothing) || clothing.InSlotFlag == null)
+            return;
+
+        var wearer = Transform(ent).ParentUid;
+        if (_standing.IsDown(wearer))
+            return;
+
+        _gravity.RefreshWeightless(wearer, true);
+    }
+
+    private void OnRemove(Entity<AntiGravityClothingComponent> ent, ref ComponentRemove args)
+    {
+        if (!TryComp<ClothingComponent>(ent, out var clothing) || clothing.InSlotFlag == null)
+            return;
+
+        var wearer = Transform(ent).ParentUid;
+        if (_standing.IsDown(wearer))
+            return;
+
+        _gravity.RefreshWeightless(wearer, false);
+    }
+    // Corvax-Wega-Add-end
 
     private void OnIsWeightless(Entity<AntiGravityClothingComponent> ent, ref InventoryRelayedEvent<IsWeightlessEvent> args)
     {

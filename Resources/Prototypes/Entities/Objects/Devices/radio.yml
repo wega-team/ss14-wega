@@ -24,6 +24,7 @@
   - type: Tag
     tags:
     - Radio
+
 # Corvax-Wega-Start
 - type: entity
   name: security radio
@@ -38,7 +39,7 @@
     heldPrefix: walkietalkie
   - type: EncryptionKeyHolder
     keySlots: 1
-    keysExtractionMethod: None
+    keysExtractionMethod: null
   - type: RadioMicrophone
     listenRange: 1
     toggleOnInteract: false

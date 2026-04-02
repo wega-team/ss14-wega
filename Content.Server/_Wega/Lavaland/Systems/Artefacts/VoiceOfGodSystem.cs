@@ -15,6 +15,7 @@ using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Database;
+using Content.Shared.FixedPoint;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Implants;
@@ -22,6 +23,7 @@ using Content.Shared.Lavaland.Artefacts.Components;
 using Content.Shared.Medical;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
+using Content.Shared.Speech.Muting;
 using Content.Shared.StatusEffectNew;
 using Content.Shared.Stunnable;
 using Content.Shared.Throwing;
@@ -143,7 +145,6 @@ public sealed class VoiceOfGodSystem : EntitySystem
     private static readonly ProtoId<DamageTypePrototype> BluntDamage = "Blunt";
 
     private static readonly EntProtoId ForceSleeping = "StatusEffectForcedSleeping";
-    private static readonly EntProtoId Muted = "Muted";
 
     private static readonly ProtoId<EmotePrototype> Deathgasp = "DefaultDeathgasp";
     private static readonly ProtoId<EmotePrototype> Salute = "Salute";
@@ -200,6 +201,9 @@ public sealed class VoiceOfGodSystem : EntitySystem
 
     private void ProcessCommand(Entity<VoiceOfGodComponent> ent, VoiceOfGodCommand command, string originalMessage)
     {
+        if (_timing.CurTime < ent.Comp.LastCommandUse + TimeSpan.FromSeconds(ent.Comp.GlobalCooldown))
+            return;
+
         if (ent.Comp.CommandCooldowns.TryGetValue(command.Id, out var lastUse))
         {
             var cooldownEnd = lastUse + TimeSpan.FromSeconds(command.Cooldown);
@@ -214,8 +218,9 @@ public sealed class VoiceOfGodSystem : EntitySystem
         }
 
         ent.Comp.CommandCooldowns[command.Id] = _timing.CurTime;
+        ent.Comp.LastCommandUse = _timing.CurTime;
 
-        _admin.Add(LogType.Action, LogImpact.Medium,
+        _admin.Add(LogType.Action, LogImpact.Extreme,
             $"{ToPrettyString(ent):player} used Voice of God command '{command.Id}' with message: {originalMessage}");
     }
 
@@ -354,7 +359,14 @@ public sealed class VoiceOfGodSystem : EntitySystem
 
     private void ApplySilence(EntityUid target, float duration)
     {
-        _statusEffects.TryAddStatusEffectDuration(target, Muted, TimeSpan.FromSeconds(duration));
+        if (HasComp<MutedComponent>(target))
+            return;
+
+        EnsureComp<MutedComponent>(target);
+        Timer.Spawn(TimeSpan.FromSeconds(duration), () =>
+        {
+            RemComp<MutedComponent>(target);
+        });
     }
 
     private void ApplyWakeUp(EntityUid target)
@@ -367,14 +379,17 @@ public sealed class VoiceOfGodSystem : EntitySystem
         if (!TryComp<DamageableComponent>(target, out var damageable))
             return;
 
-        var damagedTypes = damageable.Damage.DamageDict
-            .Where(x => x.Value > 0).Select(x => x.Key).ToList();
+        var positiveDamage = _damage.GetPositiveDamage((target, damageable));
+        var damagedTypes = positiveDamage.DamageDict.Keys.ToList();
 
         if (damagedTypes.Count == 0)
             return;
 
         var type = damagedTypes[_random.Next(damagedTypes.Count)];
-        var healAmount = Math.Min(damageable.Damage.DamageDict[type].Float(), amount);
+        if (!positiveDamage.DamageDict.TryGetValue(type, out var currentDamage))
+            return;
+
+        var healAmount = FixedPoint2.Min(currentDamage, amount);
 
         var healSpecifier = new DamageSpecifier();
         healSpecifier.DamageDict[type] = -healAmount;

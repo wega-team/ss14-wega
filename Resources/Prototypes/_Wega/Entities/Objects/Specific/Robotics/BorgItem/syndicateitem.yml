@@ -20,10 +20,9 @@
       path: "/Audio/Items/drill_hit.ogg"
     attackRate: 4
     damage:
-      groups:
-        Brute: 12
       types:
         Structural: 75
+        Blunt: 12
 
 - type: entity
   parent: BaseItem

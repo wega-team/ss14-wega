@@ -93975,7 +93975,7 @@ entities:
       parent: 1
     - type: Fixtures
       fixtures: {}
-- proto: VendingMachineWinter
+- proto: VendingMachineFashion
   entities:
   - uid: 4217
     components:

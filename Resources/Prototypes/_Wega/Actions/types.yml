@@ -1,0 +1,22 @@
+﻿- type: entity
+  parent: BaseAction
+  id: ActionSwitchHarpyFly
+  name: Fly
+  description: Take off, passing small obstacles and chasms
+  components:
+  - type: Action
+    icon: { sprite: _Wega/Interface/Actions/actions_harpy.rsi, state: "FlyOff" }
+    iconOn: { sprite: _Wega/Interface/Actions/actions_harpy.rsi, state: "FlyOn" }
+  - type: InstantAction
+    event: !type:FlyAbilityEvent
+
+- type: entity
+  parent: BaseAction
+  id: InstantRegeneration
+  name: Instant regeneration
+  description: "Your second wind, your second chance"
+  components:
+  - type: Action
+    icon: { sprite: _Wega/Interface/Actions/action_demon.rsi, state: "instant_regeneration" }
+  - type: InstantAction
+    event: !type:DamageOnActionEvent

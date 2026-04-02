@@ -5,4 +5,4 @@ upgradeable-clothing-popup-already-present = Такое улучшение уж�
 clothing-upgrade-examine-header = Надетые улучшения:
 
 clothing-upgrade-examine-text-bone-talisman = Костяной талисман [color=#e6dbc1][bold]защищает[/bold][/color] от грубых, режущих атак и ожогов.
-clothing-upgrade-example-text-skull-codpiece = Череп на поясе [color=#e6dbc1][bold]оберегает[/bold][/color] от случайных ударов и искр.
+clothing-upgrade-examine-text-skull-codpiece = Череп на поясе [color=#e6dbc1][bold]оберегает[/bold][/color] от случайных ударов и искр.

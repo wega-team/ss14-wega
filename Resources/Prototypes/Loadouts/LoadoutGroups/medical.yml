@@ -1,0 +1,420 @@
+# Generic
+
+- type: loadoutGroup
+  id: MedicalMask
+  name: loadout-group-medical-mask
+  minLimit: 0
+  loadouts:
+  - SterileMask
+
+- type: loadoutGroup
+  id: MedicalBackpack
+  name: loadout-group-medical-doctor-backpack
+  loadouts:
+  - MedicalDoctorBackpack
+  - MedicalDoctorSatchel
+  - MedicalDoctorDuffel
+
+- type: loadoutGroup
+  id: MedicalShoes
+  name: loadout-group-medical-doctor-shoes
+  loadouts:
+  - WhiteShoes
+  - MedicalWinterBoots
+  # Corvax-Wega-Shoes-Start
+  - ClothingShoesColorBlack
+  - ClothingShoesColorBrown
+  - ClothingShoesColorWhite
+  - ClothingShoesColorYellow
+  - ClothingShoesColorGreen
+  - ClothingShoesColorRed
+  - ClothingShoesColorOrange
+  - ClothingShoesColorBlue
+  - ClothingShoesColorPurple
+  - ClothingShoesHeelsBlack
+  - ClothingShoesHeelsGray
+  - ClothingShoesHeelsTurquoise
+  - ClothingShoesHeelsYellow
+  - ClothingShoesHeelsGreen
+  - ClothingShoesHeelsPink
+  - ClothingShoesHeelsOrange
+  - ClothingShoesHeelsRed
+  - ClothingShoesHeelsBlue
+  - ClothingShoesHeelsPurple
+  - ClothingShoesBootsLaceup
+  - ClothingShoesWizard
+  - ClothingShoesTourist
+  - ClothingShoesLeather
+  # Corvax-Wega-Shoes-End
+
+- type: loadoutGroup
+  id: SurvivalMedical
+  name: loadout-group-survival-medical
+  minLimit: 2
+  hidden: true
+  loadouts:
+  - EmergencyNitrogenMedical
+  - EmergencyOxygenMedical
+  - LoadoutSpeciesVoxNitrogen
+  - EmergencyAndroidMedical # Corvax-Wega-Android
+
+# Chief Medical Officer
+
+- type: loadoutGroup
+  id: ChiefMedicalOfficerHead
+  name: loadout-group-chief-medical-officer-head
+  minLimit: 0
+  loadouts:
+  - ChiefMedicalOfficerBeret
+  - CMOMedicalHeadMirror
+  - CmoSurgeryCap # Corvax-Wega-add
+
+- type: loadoutGroup
+  id: ChiefMedicalOfficerJumpsuit
+  name: loadout-group-chief-medical-officer-jumpsuit
+  loadouts:
+  - ChiefMedicalOfficerJumpsuit
+  - ChiefMedicalOfficerJumpskirt
+  - ChiefMedicalOfficerTurtleneckJumpsuit
+  - ChiefMedicalOfficerTurtleneckJumpskirt
+  - ChiefMedicalCmoScrubs # Corvax-Wega-add
+  # Corvax-Wega-Sponsors-start
+  - ClothingUniformJumpskirtElegantCMO
+  # Corvax-Wega-Sponsors-end
+
+- type: loadoutGroup
+  id: ChiefMedicalOfficerOuterClothing
+  name: loadout-group-chief-medical-officer-outerclothing
+  minLimit: 0
+  loadouts:
+  - ChiefMedicalOfficerLabCoat
+  - ChiefMedicalOfficerWintercoat
+
+- type: loadoutGroup
+  id: ChiefMedicalOfficerNeck
+  name: loadout-group-chief-medical-officer-neck
+  minLimit: 0
+  loadouts:
+  - ChiefMedicalOfficerCloak
+  - ChiefMedicalOfficerMantle
+
+- type: loadoutGroup
+  id: ChiefMedicalOfficerShoes
+  name: loadout-group-chief-medical-officer-shoes
+  loadouts:
+  - BrownShoes
+  - MedicalWinterBoots
+ # Corvax-Wega-Shoes-Start
+  - ClothingShoesColorBlack
+  - ClothingShoesColorBrown
+  - ClothingShoesColorWhite
+  - ClothingShoesColorYellow
+  - ClothingShoesColorGreen
+  - ClothingShoesColorRed
+  - ClothingShoesColorOrange
+  - ClothingShoesColorBlue
+  - ClothingShoesColorPurple
+  - ClothingShoesHeelsBlack
+  - ClothingShoesHeelsGray
+  - ClothingShoesHeelsTurquoise
+  - ClothingShoesHeelsYellow
+  - ClothingShoesHeelsGreen
+  - ClothingShoesHeelsPink
+  - ClothingShoesHeelsOrange
+  - ClothingShoesHeelsRed
+  - ClothingShoesHeelsBlue
+  - ClothingShoesHeelsPurple
+  - ClothingShoesBootsLaceup
+  - ClothingShoesWizard
+  - ClothingShoesTourist
+  - ClothingShoesLeather
+ # Corvax-Wega-Shoes-End
+
+#- type: loadoutGroup
+#  id: ChiefMedicalOfficerJobTrinkets
+#  name: loadout-group-jobtrinkets
+#  minLimit: 0
+#  loadouts:
+
+# Medical Doctor
+
+- type: loadoutGroup
+  id: MedicalDoctorHead
+  name: loadout-group-medical-doctor-head
+  minLimit: 0
+  loadouts:
+  - MedicalBeret
+  - SeniorPhysicianBeret
+  - MedicalHeadMirror
+  - BlueSurgeryCap
+  - GreenSurgeryCap
+  - PurpleSurgeryCap
+  - BlackSurgeryCap # Corvax-Wega-add
+  - NurseHat
+  # Corvax-Wega-Sponsors-start
+  - ClothingHeadHatMagic
+  - ClothingEyesGlassesGarGigaSponsor
+  - ClothingHeadHatElegantTacticalmaid
+  # Corvax-Wega-Sponsors-end
+
+- type: loadoutGroup
+  id: MedicalDoctorJumpsuit
+  name: loadout-group-medical-doctor-jumpsuit
+  loadouts:
+  - MedicalDoctorJumpsuit
+  - MedicalDoctorJumpskirt
+  - SeniorPhysicianJumpsuit
+  - SeniorPhysicianJumpskirt
+  - MedicalBlueScrubs
+  - MedicalGreenScrubs
+  - MedicalPurpleScrubs
+  - MedicalBlackScrubs # Corvax-Wega-add
+  # Corvax-Wega-Sponsors-start
+  - ClothingUniformJumpskirtSexySweater
+  - ClothingUniformJumpskirtMagicDress
+  - ClothingUniformJumpskirtBlackrevealingdress
+  - ClothingUniformJumpskirtRedrevealingdress
+  - ClothingUniformJumpskirtNecklineSweater
+  - ClothingUniformJumpskirtPinkKimano
+  - ClothingUniformJumpskirtBlueKimono
+  - ClothingUniformJumpskirtElegantTacticalmaid
+  - ClothingUniformJumpsuitStylishShirt
+  - ClothingUniformJumpsuitManlyPants
+  - ClothingUniformJumpsuitBeautifulSweater
+  # Corvax-Wega-Sponsors-end
+  # Corvax-Wega-add-start
+  - JumpskirtTurtleneckAquamarine
+  - JumpsuitTurtleneckAquamarine
+  - JumpskirtTurtleneckWhite
+  - JumpsuitTurtleneckWhite
+  - JumpskirtTurtleneckOrange
+  - JumpsuitTurtleneckOrange
+  - JumpskirtTurtleneckAzure
+  - JumpsuitTurtleneckAzure
+  - JumpskirtTurtleneckBlue
+  - JumpsuitTurtleneckBlue
+  - ClothingUniformJumpskirtCyanStripedDress
+  - ClothingUniformJumpskirtBlueElegantDress
+  - ClothingUniformJumpskirtBlueTurtleneckDress
+  # Corvax-Wega-add-end
+
+- type: loadoutGroup
+  id: MedicalDoctorOuterClothing
+  name: loadout-group-medical-doctor-outerclothing
+  minLimit: 0
+  loadouts:
+  - RegularLabCoat
+  - MedicalDoctorWintercoat
+  - SeniorPhysicianLabCoat
+
+- type: loadoutGroup
+  id: MedicalDoctorPDA
+  name: loadout-group-medical-doctor-id
+  loadouts:
+  - MedicalDoctorPDA
+  - SeniorPhysicianPDA
+
+#- type: loadoutGroup
+#  id: MedicalDoctorJobTrinkets
+#  name: loadout-group-jobtrinkets
+#  minLimit: 0
+#  loadouts:
+
+# Medical Intern
+
+- type: loadoutGroup
+  id: MedicalInternJumpsuit
+  name: loadout-group-medical-intern-jumpsuit
+  loadouts:
+  - WhiteJumpsuit
+  - WhiteJumpskirt
+  # Corvax-Wega-Sponsors-start
+  - ClothingUniformJumpskirtSexySweater
+  - ClothingUniformJumpskirtMagicDress
+  - ClothingUniformJumpskirtBlackrevealingdress
+  - ClothingUniformJumpskirtRedrevealingdress
+  - ClothingUniformJumpskirtNecklineSweater
+  - ClothingUniformJumpskirtPinkKimano
+  - ClothingUniformJumpskirtBlueKimono
+  - ClothingUniformJumpskirtElegantTacticalmaid
+  - ClothingUniformJumpsuitStylishShirt
+  - ClothingUniformJumpsuitManlyPants
+  - ClothingUniformJumpsuitBeautifulSweater
+  # Corvax-Wega-Sponsors-end
+  # Corvax-Wega-add-start
+  - JumpskirtTurtleneckAquamarine
+  - JumpsuitTurtleneckAquamarine
+  - JumpskirtTurtleneckWhite
+  - JumpsuitTurtleneckWhite
+  - JumpskirtTurtleneckOrange
+  - JumpsuitTurtleneckOrange
+  - JumpskirtTurtleneckAzure
+  - JumpsuitTurtleneckAzure
+  - JumpskirtTurtleneckBlue
+  - JumpsuitTurtleneckBlue
+  - ClothingUniformJumpskirtCyanStripedDress
+  - ClothingUniformJumpskirtBlueElegantDress
+  - ClothingUniformJumpskirtBlueTurtleneckDress
+  # Corvax-Wega-add-end
+
+#- type: loadoutGroup
+#  id: MedicalInternJobTrinkets
+#  name: loadout-group-jobtrinkets
+#  minLimit: 0
+#  loadouts:
+
+# Chemist
+
+- type: loadoutGroup
+  id: ChemistJumpsuit
+  name: loadout-group-chemist-jumpsuit
+  loadouts:
+  - ChemistJumpsuit
+  - ChemistJumpskirt
+  # Corvax-Wega-Sponsors-start
+  - ClothingUniformJumpskirtSexySweater
+  - ClothingUniformJumpskirtMagicDress
+  - ClothingUniformJumpskirtBlackrevealingdress
+  - ClothingUniformJumpskirtRedrevealingdress
+  - ClothingUniformJumpskirtNecklineSweater
+  - ClothingUniformJumpskirtPinkKimano
+  - ClothingUniformJumpskirtBlueKimono
+  - ClothingUniformJumpskirtElegantTacticalmaid
+  - ClothingUniformJumpsuitStylishShirt
+  - ClothingUniformJumpsuitManlyPants
+  - ClothingUniformJumpsuitBeautifulSweater
+  # Corvax-Wega-Sponsors-end
+  # Corvax-Wega-add-start
+  - JumpskirtTurtleneckAquamarine
+  - JumpsuitTurtleneckAquamarine
+  - JumpskirtTurtleneckWhite
+  - JumpsuitTurtleneckWhite
+  - JumpskirtTurtleneckOrange
+  - JumpsuitTurtleneckOrange
+  - JumpskirtTurtleneckAzure
+  - JumpsuitTurtleneckAzure
+  - JumpskirtTurtleneckBlue
+  - JumpsuitTurtleneckBlue
+  - ClothingUniformJumpskirtCyanStripedDress
+  - ClothingUniformJumpskirtBlueElegantDress
+  - ClothingUniformJumpskirtBlueTurtleneckDress
+  # Corvax-Wega-add-end
+
+- type: loadoutGroup
+  id: ChemistOuterClothing
+  name: loadout-group-chemist-outerclothing
+  minLimit: 0
+  loadouts:
+  - RegularLabCoat
+  - ChemistLabCoat
+  - ChemistWintercoat
+
+- type: loadoutGroup
+  id: ChemistBackpack
+  name: loadout-group-chemist-backpack
+  loadouts:
+  - ChemistBackpack
+  - ChemistSatchel
+  - ChemistDuffel
+
+#- type: loadoutGroup
+#  id: ChemistJobTrinkets
+#  name: loadout-group-jobtrinkets
+#  minLimit: 0
+#  loadouts:
+
+# Paramedic
+
+- type: loadoutGroup
+  id: ParamedicHead
+  name: loadout-group-paramedic-head
+  minLimit: 0
+  loadouts:
+  - ParamedicHead
+  # Corvax-Wega-Sponsors-start
+  - ClothingHeadHatMagic
+  - ClothingEyesGlassesGarGigaSponsor
+  - ClothingHeadHatElegantTacticalmaid
+  # Corvax-Wega-Sponsors-end
+
+- type: loadoutGroup
+  id: ParamedicJumpsuit
+  name: loadout-group-paramedic-jumpsuit
+  loadouts:
+  - ParamedicJumpsuit
+  - ParamedicJumpskirt
+  # Corvax-Wega-Sponsors-start
+  - ClothingUniformJumpskirtSexySweater
+  - ClothingUniformJumpskirtMagicDress
+  - ClothingUniformJumpskirtBlackrevealingdress
+  - ClothingUniformJumpskirtRedrevealingdress
+  - ClothingUniformJumpskirtNecklineSweater
+  - ClothingUniformJumpskirtPinkKimano
+  - ClothingUniformJumpskirtBlueKimono
+  - ClothingUniformJumpskirtElegantTacticalmaid
+  - ClothingUniformJumpsuitStylishShirt
+  - ClothingUniformJumpsuitManlyPants
+  - ClothingUniformJumpsuitBeautifulSweater
+  # Corvax-Wega-Sponsors-end
+  # Corvax-Wega-add-start
+  - JumpskirtTurtleneckAquamarine
+  - JumpsuitTurtleneckAquamarine
+  - JumpskirtTurtleneckWhite
+  - JumpsuitTurtleneckWhite
+  - JumpskirtTurtleneckOrange
+  - JumpsuitTurtleneckOrange
+  - JumpskirtTurtleneckAzure
+  - JumpsuitTurtleneckAzure
+  - JumpskirtTurtleneckBlue
+  - JumpsuitTurtleneckBlue
+  - ClothingUniformJumpskirtCyanStripedDress
+  - ClothingUniformJumpskirtBlueElegantDress
+  - ClothingUniformJumpskirtBlueTurtleneckDress
+  # Corvax-Wega-add-end
+
+- type: loadoutGroup
+  id: ParamedicOuterClothing
+  name: loadout-group-paramedic-outerclothing
+  minLimit: 0
+  loadouts:
+  - ParamedicWindbreaker
+  - ParamedicWintercoat
+
+- type: loadoutGroup
+  id: ParamedicShoes
+  name: loadout-group-paramedic-shoes
+  loadouts:
+  - BlueShoes
+  - WhiteShoes
+  - MedicalWinterBoots
+  # Corvax-Wega-Shoes-Start
+  - ClothingShoesColorBlack
+  - ClothingShoesColorBrown
+  - ClothingShoesColorWhite
+  - ClothingShoesColorYellow
+  - ClothingShoesColorGreen
+  - ClothingShoesColorRed
+  - ClothingShoesColorOrange
+  - ClothingShoesColorBlue
+  - ClothingShoesColorPurple
+  - ClothingShoesHeelsBlack
+  - ClothingShoesHeelsGray
+  - ClothingShoesHeelsTurquoise
+  - ClothingShoesHeelsYellow
+  - ClothingShoesHeelsGreen
+  - ClothingShoesHeelsPink
+  - ClothingShoesHeelsOrange
+  - ClothingShoesHeelsRed
+  - ClothingShoesHeelsBlue
+  - ClothingShoesHeelsPurple
+  - ClothingShoesBootsLaceup
+  - ClothingShoesWizard
+  - ClothingShoesTourist
+  - ClothingShoesLeather
+  # Corvax-Wega-Shoes-End
+
+#- type: loadoutGroup
+#  id: ParamedicJobTrinkets
+#  name: loadout-group-jobtrinkets
+#  minLimit: 0
+#  loadouts:

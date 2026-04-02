@@ -52,7 +52,8 @@
       - BorgModuleRobotics
       - BorgModuleAdvancedAnomaly
       - BorgModuleScienceRND
-
+      - BorgModuleDNA
+   
 - type: entity
   id: BorgChassisGenericPlayer
   parent: BorgChassisGeneric
@@ -69,12 +70,12 @@
       - BorgModuleArtistry
       - BorgModuleFireExtinguisher
       - BorgModuleMusique
-      - BorgModuleAnomaly
-      - BorgModuleArtifact
+      - BorgModuleCommonHand
       - BorgModuleCommonRepeir
       - BorgModuleInflatable
       - BorgModuleCommonSpeed
       - BorgModuleCommonPen
+      - BorgModuleFulton
 
 - type: entity
   id: BorgChassisMiningPlayer
@@ -138,7 +139,7 @@
   - type: ContainerFill
     containers:
       borg_module:
-      - BorgModuleChemical
+      - BorgModuleAdvancedTopical
       - BorgModuleSurgery
       - BorgModuleMedicalRare
 

@@ -10,3 +10,46 @@
   recipeUnlocks:
     - MiningServerCircuitboard
     - MiningMonitoringComputerCircuitboard
+
+- type: technology
+  id: IndustrialModifier
+  name: research-technology-industrial-modifier
+  icon:
+    sprite: _Wega/Objects/Specific/Robotics/modules.rsi
+    state: ore
+  discipline: Industrial
+  tier: 1
+  cost: 7500
+  recipeUnlocks:
+    - OreBagSuitModule
+    - DrillSuitModule
+    - EngineeringPlating
+    # - ArmSyntheticPry
+    # - LegSyntheticJump
+
+- type: technology
+  id: Gidravlik
+  name: research-technology-gidravlik
+  icon:
+    sprite: _Wega/Objects/Specific/Robotics/modules.rsi
+    state: clamp
+  discipline: Industrial
+  tier: 1
+  cost: 7500
+  recipeUnlocks:
+    - QuickCarrySuitModule
+    - GrabberSuitModule
+
+- type: technology
+  id: AdvencedIndustrialModifier
+  name: research-technology-adv-industrial-modifier
+  icon:
+    sprite: _Wega/Objects/Specific/Robotics/modules.rsi
+    state: jetpack
+  discipline: Industrial
+  tier: 2
+  cost: 7500
+  recipeUnlocks:
+    - StorageLargeSuitModule
+    - JetpackSuitModule
+    - ConstructorSuitModule

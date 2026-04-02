@@ -1,5 +1,5 @@
-using Content.Server.Atmos.EntitySystems;
 using Content.Server.NodeContainer.Nodes;
+using Content.Shared.Atmos;
 using Content.Shared.NodeContainer;
 using Content.Shared.VentCraw.Components;
 

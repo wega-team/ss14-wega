@@ -31,3 +31,17 @@
     impactFlash:
       sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
       state: impact_blue
+
+- type: entity
+  parent: Pulse
+  id: IonScan
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HitscanBasicDamage
+    damage:
+      types:
+        Shock: 10
+  - type: HitscanEMP
+    range: 0.25
+    energyConsumption: 720
+

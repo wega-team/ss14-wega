@@ -174,8 +174,8 @@
           invert: true
           slots:
           - head
-        - !type:BodyPartCondition
-          bodyPart: head
+        - !type:OrganPresentCondition
+          organ: Head
       steps:
         - tool: [ Welding, Cautery ]
           action: Weld
@@ -205,8 +205,8 @@
           invert: true
           slots:
           - head
-        - !type:BodyPartCondition
-          bodyPart: head
+        - !type:OrganPresentCondition
+          organ: Head
       steps:
         - tool: [ Screwing ]
           tag: [ Knife, Shiv, BasicGlassShard]
@@ -242,8 +242,8 @@
           invert: true
           slots:
           - head
-        - !type:BodyPartCondition
-          bodyPart: head
+        - !type:OrganPresentCondition
+          organ: Head
       parallel: true
       steps:
         # Камеры
@@ -275,9 +275,9 @@
   label: Голова
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
+        - !type:OrganPresentCondition
           invert: true
-          bodyPart: head
+          organ: Head
       steps:
         - tool: [ Screwing ]
           tag: [ Knife, Shiv, BasicGlassShard]
@@ -290,8 +290,8 @@
           action: MendWire
           time: 2
         - tag: [ Head ]
-          action: AttachPart
-          requiredPart: head
+          action: InsertOrgan
+          requiredPart: Head
           time: 8
           sound:
             path: /Audio/Items/ratchet.ogg
@@ -307,8 +307,8 @@
   label: Отсоединить левую руку
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: left_arm
+        - !type:OrganPresentCondition
+          organ: ArmLeft
       steps:
         - tool: [ Screwing ]
           tag: [ Knife, Shiv, BasicGlassShard]
@@ -323,8 +323,8 @@
   label: Отсоединить левую руку
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: left_arm
+        - !type:OrganPresentCondition
+          organ: ArmLeft
       steps:
         - tool: [ Cutting ]
           tag: [ Knife, Shiv, BasicGlassShard]
@@ -346,11 +346,11 @@
           time: 2
         - tool: [ Screwing ]
           tag: [ Knife, Shiv, BasicGlassShard]
-          action: RemovePart
+          action: RemoveOrgan
           sound:
             collection: Screwdriver
           time: 2
-          requiredPart: left_arm
+          requiredPart: ArmLeft
 
 - type: surgeryTransition
   id: AndroidAttachLeftArmTransition
@@ -358,9 +358,9 @@
   label: Прикрепить левую руку
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
+        - !type:OrganPresentCondition
           invert: true
-          bodyPart: left_arm
+          organ: ArmLeft
       steps:
         - tool: [ Screwing ]
           tag: [ Knife, Shiv, BasicGlassShard]
@@ -380,8 +380,8 @@
           action: MendWire
           time: 2
         - tag: [ LeftArmSynthetic ]
-          action: AttachPart
-          requiredPart: left_arm
+          action: InsertOrgan
+          requiredPart: ArmLeft
           time: 2
 
 # ПРАВАЯ РУКА
@@ -391,8 +391,8 @@
   label: Отсоединить правую руку
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: right_arm
+        - !type:OrganPresentCondition
+          organ: ArmRight
       steps:
         - tool: [ Screwing ]
           tag: [ Knife, Shiv, BasicGlassShard]
@@ -407,8 +407,8 @@
   label: Отсоединить правую руку
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: right_arm
+        - !type:OrganPresentCondition
+          organ: ArmRight
       steps:
         - tool: [ Cutting ]
           tag: [ Knife, Shiv, BasicGlassShard]
@@ -430,11 +430,11 @@
           time: 2
         - tool: [ Screwing ]
           tag: [ Knife, Shiv, BasicGlassShard]
-          action: RemovePart
+          action: RemoveOrgan
           sound:
             collection: Screwdriver
           time: 2
-          requiredPart: right_arm
+          requiredPart: ArmRight
 
 - type: surgeryTransition
   id: AndroidAttachRightArmTransition
@@ -442,9 +442,9 @@
   label: Прикрепить правую руку
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
+        - !type:OrganPresentCondition
           invert: true
-          bodyPart: right_arm
+          organ: ArmRight
       steps:
         - tool: [ Screwing ]
           tag: [ Knife, Shiv, BasicGlassShard]
@@ -464,8 +464,8 @@
           action: MendWire
           time: 2
         - tag: [ RightArmSynthetic ]
-          action: AttachPart
-          requiredPart: right_arm
+          action: InsertOrgan
+          requiredPart: ArmRight
           time: 2
 
 # ЛЕВАЯ КИСТЬ
@@ -475,10 +475,10 @@
   label: Отсоединить левую кисть
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: left_arm
-        - !type:BodyPartCondition
-          bodyPart: left_hand
+        - !type:OrganPresentCondition
+          organ: ArmLeft
+        - !type:OrganPresentCondition
+          organ: HandLeft
       steps:
         - tool: [ Screwing ]
           tag: [ Knife, Shiv, BasicGlassShard]
@@ -513,11 +513,11 @@
           time: 2
         - tool: [ Screwing ]
           tag: [ Knife, Shiv, BasicGlassShard]
-          action: RemovePart
+          action: RemoveOrgan
           sound:
             collection: Screwdriver
           time: 2
-          requiredPart: left_hand
+          requiredPart: HandLeft
 
 - type: surgeryTransition
   id: AndroidAttachLeftHandTransition
@@ -525,11 +525,11 @@
   label: Прикрепить левую кисть
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
+        - !type:OrganPresentCondition
           invert: true
-          bodyPart: left_hand
-        - !type:BodyPartCondition
-          bodyPart: left_arm
+          organ: HandLeft
+        - !type:OrganPresentCondition
+          organ: ArmLeft
       steps:
         - tool: [ Screwing ]
           tag: [ Knife, Shiv, BasicGlassShard]
@@ -549,8 +549,8 @@
           action: MendWire
           time: 2
         - tag: [ LeftHandSynthetic ]
-          action: AttachPart
-          requiredPart: left_hand
+          action: InsertOrgan
+          requiredPart: HandLeft
           time: 2
 
 #ПРАВАЯ КИСТЬ
@@ -560,10 +560,10 @@
   label: Отсоединить правую кисть
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: right_arm
-        - !type:BodyPartCondition
-          bodyPart: right_hand
+        - !type:OrganPresentCondition
+          organ: ArmRight
+        - !type:OrganPresentCondition
+          organ: HandRight
       steps:
         - tool: [ Screwing ]
           tag: [ Knife, Shiv, BasicGlassShard]
@@ -598,11 +598,11 @@
           time: 2
         - tool: [ Screwing ]
           tag: [ Knife, Shiv, BasicGlassShard]
-          action: RemovePart
+          action: RemoveOrgan
           sound:
             collection: Screwdriver
           time: 2
-          requiredPart: right_hand
+          requiredPart: HandRight
 
 - type: surgeryTransition
   id: AndroidAttachRightHandTransition
@@ -610,11 +610,11 @@
   label: Прикрепить правую кисть
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
+        - !type:OrganPresentCondition
           invert: true
-          bodyPart: right_hand
-        - !type:BodyPartCondition
-          bodyPart: right_arm
+          organ: HandRight
+        - !type:OrganPresentCondition
+          organ: ArmRight
       steps:
         - tool: [ Screwing ]
           tag: [ Knife, Shiv, BasicGlassShard]
@@ -634,8 +634,8 @@
           action: MendWire
           time: 2
         - tag: [ RightHandSynthetic ]
-          action: AttachPart
-          requiredPart: right_hand
+          action: InsertOrgan
+          requiredPart: HandRight
           time: 2
 
 # ЛЕВАЯ НОГА
@@ -645,8 +645,8 @@
   label: Отсоединить левую ногу
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: left_leg
+        - !type:OrganPresentCondition
+          organ: LegLeft
       steps:
         - tool: [ Screwing ]
           tag: [ Knife, Shiv, BasicGlassShard]
@@ -661,8 +661,8 @@
   label: Отсоединить левую ногу
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: left_leg
+        - !type:OrganPresentCondition
+          organ: LegLeft
       steps:
         - tool: [ Cutting ]
           tag: [ Knife, Shiv, BasicGlassShard]
@@ -690,11 +690,11 @@
           time: 2
         - tool: [ Anchoring ]
           tag: [ Wirecutter, Pipe ]
-          action: RemovePart
+          action: RemoveOrgan
           sound:
             path: /Audio/Items/ratchet.ogg
           time: 2
-          requiredPart: left_leg
+          requiredPart: LegLeft
 
 - type: surgeryTransition
   id: AndroidAttachLeftLegTransition
@@ -702,9 +702,9 @@
   label: Прикрепить левую ногу
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
+        - !type:OrganPresentCondition
           invert: true
-          bodyPart: left_leg
+          organ: LegLeft
       steps:
         - tool: [ Screwing ]
           tag: [ Knife, Shiv, BasicGlassShard]
@@ -724,8 +724,8 @@
           action: MendWire
           time: 2
         - tag: [ LeftLegSynthetic ]
-          action: AttachPart
-          requiredPart: left_leg
+          action: InsertOrgan
+          requiredPart: LegLeft
           time: 2
         - tool: [ Anchoring ]
           tag: [ Wirecutter, Pipe ]
@@ -742,8 +742,8 @@
   label: Отсоединить правую ногу
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: right_leg
+        - !type:OrganPresentCondition
+          organ: LegRight
       steps:
         - tool: [ Screwing ]
           tag: [ Knife, Shiv, BasicGlassShard]
@@ -758,8 +758,8 @@
   label: Отсоединить правую ногу
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: right_leg
+        - !type:OrganPresentCondition
+          organ: LegRight
       steps:
         - tool: [ Cutting ]
           tag: [ Knife, Shiv, BasicGlassShard]
@@ -787,11 +787,11 @@
           time: 2
         - tool: [ Anchoring ]
           tag: [ Wirecutter, Pipe ]
-          action: RemovePart
+          action: RemoveOrgan
           sound:
             path: /Audio/Items/ratchet.ogg
           time: 2
-          requiredPart: right_leg
+          requiredPart: LegRight
 
 - type: surgeryTransition
   id: AndroidAttachRightLegTransition
@@ -799,9 +799,9 @@
   label: Прикрепить правую ногу
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
+        - !type:OrganPresentCondition
           invert: true
-          bodyPart: right_leg
+          organ: LegRight
       steps:
         - tool: [ Screwing ]
           tag: [ Knife, Shiv, BasicGlassShard]
@@ -821,8 +821,8 @@
           action: MendWire
           time: 2
         - tag: [ RightLegSynthetic ]
-          action: AttachPart
-          requiredPart: right_leg
+          action: InsertOrgan
+          requiredPart: LegRight
           time: 2
         - tool: [ Anchoring ]
           tag: [ Wirecutter, Pipe ]
@@ -838,10 +838,10 @@
   label: Отсоединить левую стопу
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: left_leg
-        - !type:BodyPartCondition
-          bodyPart: left_foot
+        - !type:OrganPresentCondition
+          organ: LegLeft
+        - !type:OrganPresentCondition
+          organ: FootLeft
       steps:
         - tool: [ Screwing ]
           tag: [ Knife, Shiv, BasicGlassShard]
@@ -856,10 +856,10 @@
   label: Отсоединить левую стопу
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: left_leg
-        - !type:BodyPartCondition
-          bodyPart: left_foot
+        - !type:OrganPresentCondition
+          organ: LegLeft
+        - !type:OrganPresentCondition
+          organ: FootLeft
       steps:
         - tool: [ Cutting ]
           tag: [ Knife, Shiv, BasicGlassShard]
@@ -887,11 +887,11 @@
           time: 2
         - tool: [ Anchoring ]
           tag: [ Wirecutter, Pipe ]
-          action: RemovePart
+          action: RemoveOrgan
           sound:
             path: /Audio/Items/ratchet.ogg
           time: 2
-          requiredPart: left_foot
+          requiredPart: FootLeft
 
 - type: surgeryTransition
   id: AndroidAttachLeftFootTransition
@@ -899,11 +899,11 @@
   label: Прикрепить левую стопу
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: left_leg
-        - !type:BodyPartCondition
+        - !type:OrganPresentCondition
+          organ: LegLeft
+        - !type:OrganPresentCondition
           invert: true
-          bodyPart: left_foot
+          organ: FootLeft
       steps:
         - tool: [ Screwing ]
           tag: [ Knife, Shiv, BasicGlassShard]
@@ -923,8 +923,8 @@
           action: MendWire
           time: 2
         - tag: [ LeftFootSynthetic ]
-          action: AttachPart
-          requiredPart: left_foot
+          action: InsertOrgan
+          requiredPart: FootLeft
           time: 2
         - tool: [ Anchoring ]
           tag: [ Wirecutter, Pipe ]
@@ -939,11 +939,11 @@
   target: AndroidAmputateRightFootProcess
   label: Отсоединить правую стопу
   stepGroups:
-    - conditions: 
-        - !type:BodyPartCondition
-          bodyPart: right_leg
-        - !type:BodyPartCondition
-          bodyPart: right_foot
+    - conditions:
+        - !type:OrganPresentCondition
+          organ: LegRight
+        - !type:OrganPresentCondition
+          organ: FootRight
       steps:
         - tool: [ Screwing ]
           tag: [ Knife, Shiv, BasicGlassShard]
@@ -958,10 +958,10 @@
   label: Отсоединить правую стопу
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: right_leg
-        - !type:BodyPartCondition
-          bodyPart: right_foot
+        - !type:OrganPresentCondition
+          organ: LegRight
+        - !type:OrganPresentCondition
+          organ: FootRight
       steps:
         - tool: [ Cutting ]
           tag: [ Knife, Shiv, BasicGlassShard]
@@ -989,11 +989,11 @@
           time: 2
         - tool: [ Anchoring ]
           tag: [ Wirecutter, Pipe ]
-          action: RemovePart
+          action: RemoveOrgan
           sound:
             path: /Audio/Items/ratchet.ogg
           time: 2
-          requiredPart: right_foot
+          requiredPart: FootRight
 
 - type: surgeryTransition
   id: AndroidAttachRightFootTransition
@@ -1001,11 +1001,11 @@
   label: Прикрепить правую стопу
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: right_leg
-        - !type:BodyPartCondition
+        - !type:OrganPresentCondition
+          organ: LegRight
+        - !type:OrganPresentCondition
           invert: true
-          bodyPart: right_foot
+          organ: FootRight
       steps:
         - tool: [ Screwing ]
           tag: [ Knife, Shiv, BasicGlassShard]
@@ -1025,8 +1025,8 @@
           action: MendWire
           time: 2
         - tag: [ RightFootSynthetic ]
-          action: AttachPart
-          requiredPart: right_foot
+          action: InsertOrgan
+          requiredPart: FootRight
           time: 2
         - tool: [ Anchoring ]
           tag: [ Wirecutter, Pipe ]

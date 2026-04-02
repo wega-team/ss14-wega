@@ -5,6 +5,7 @@ using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Fluids.Components;
 using Content.Shared.Interaction.Components;
 using Content.Shared.Inventory;
+using Content.Shared.Item.ItemToggle.Components; // Corvax-Wega-Add
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Storage;
 using Content.Shared.Weapons.Ranged.Systems;
@@ -19,6 +20,7 @@ public sealed partial class IngestionSystem
     {
         SubscribeLocalEvent<UnremoveableComponent, IngestibleEvent>(OnUnremovableIngestion);
         SubscribeLocalEvent<IngestionBlockerComponent, ItemMaskToggledEvent>(OnBlockerMaskToggled);
+        SubscribeLocalEvent<IngestionBlockerComponent, ItemToggledEvent>(OnBlockerToggled); // Corvax-Wega-Add
         SubscribeLocalEvent<IngestionBlockerComponent, IngestionAttemptEvent>(OnIngestionBlockerAttempt);
         SubscribeLocalEvent<IngestionBlockerComponent, InventoryRelayedEvent<IngestionAttemptEvent>>(OnIngestionBlockerAttempt);
 
@@ -47,6 +49,13 @@ public sealed partial class IngestionSystem
     {
         ent.Comp.Enabled = !args.Mask.Comp.IsToggled;
     }
+
+    // Corvax-Wega-Add-start
+    private void OnBlockerToggled(Entity<IngestionBlockerComponent> ent, ref ItemToggledEvent args)
+    {
+        ent.Comp.Enabled = args.Activated;
+    }
+    // Corvax-Wega-Add-end
 
     private void OnIngestionBlockerAttempt(Entity<IngestionBlockerComponent> entity, ref IngestionAttemptEvent args)
     {

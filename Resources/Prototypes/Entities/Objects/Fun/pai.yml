@@ -104,6 +104,10 @@
   - type: Tag
     tags:
     - SiliconEmotes
+    # Corvax-Wega-Edit-Start
+  - type: StationAiVision
+    range: 1
+    # Corvax-Wega-Edit-End
 
 - type: entity
   parent: [ PersonalAI, BaseSyndicateContraband]
@@ -143,6 +147,10 @@
   - type: Vocal
     sounds:
       Unsexed: UnisexSiliconSyndicate
+    # Corvax-Wega-Edit-Start
+  - type: StationAiVision
+    range: -1 # don`t show nuke/traitor
+    # Corvax-Wega-Edit-end
 
 - type: entity
   parent: PersonalAI

@@ -255,7 +255,7 @@ public sealed class PaperSystem : EntitySystem
     private void AddSignVerb(EntityUid uid, PenComponent pen, GetVerbsEvent<AlternativeVerb> args)
     {
         if (!args.CanAccess || !args.CanInteract || !args.Using.HasValue
-            || !_tagSystem.HasTag(args.Using.Value, "Write"))
+            || !_tagSystem.HasTag(args.Using.Value, WriteTag))
             return;
 
         AlternativeVerb verb = new()

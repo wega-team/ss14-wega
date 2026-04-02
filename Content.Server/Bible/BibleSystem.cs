@@ -18,6 +18,7 @@ using Content.Shared.Vampire.Components; // Corvax-Wega-Vampire
 using Content.Shared.Verbs;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers; // Corvax-Wega-Vampire
+using Robust.Shared.Map;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Timing; // Corvax-Wega-Vampire
@@ -183,6 +184,9 @@ namespace Content.Server.Bible
 
                 _audio.PlayPvs(component.HealSoundPath, args.User);
                 _delay.TryResetDelay((uid, useDelay));
+
+                if (component.HealingLightEffect.HasValue)
+                    Spawn(component.HealingLightEffect.Value, new EntityCoordinates(args.Target.Value, default));
             }
             else
             {

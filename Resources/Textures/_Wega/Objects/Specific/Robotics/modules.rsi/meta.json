@@ -1,0 +1,157 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Sprite taken from https://github.com/ss220-space/Paradise",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "storage"
+    },
+    {
+      "name": "storage_large"
+    },
+    {
+      "name": "storage_syndi"
+    },
+    {
+      "name": "storage_holding",
+      "delays": [ [ 0.1, 0.1, 0.1, 0.1, 0.1, 0.1 ] ]
+    },
+    {
+      "name": "flashlight"
+    },
+    {
+      "name": "medhud_visor"
+    },
+    {
+      "name": "diaghud_visor"
+    },
+    {
+      "name": "sechud_visor"
+    },
+    {
+      "name": "meson_visor"
+    },
+    {
+      "name": "antigrav"
+    },
+    {
+      "name": "antigrav_core"
+    },
+    {
+      "name": "teleporter"
+    },
+    {
+      "name": "teleporter_core"
+    },
+    {
+      "name": "welding"
+    },
+    {
+      "name": "tray"
+    },
+    {
+      "name": "health"
+    },
+    {
+      "name": "defibrillator"
+    },
+    {
+      "name": "jetpack"
+    },
+    {
+      "name": "magnet"
+    },
+    {
+      "name": "holster"
+    },
+    {
+      "name": "tether"
+    },
+    {
+      "name": "radshield"
+    },
+    {
+      "name": "empshield"
+    },
+    {
+      "name": "regulator"
+    },
+    {
+      "name": "scanner"
+    },
+    {
+      "name": "gps"
+    },
+    {
+      "name": "constructor"
+    },
+    {
+      "name": "carry"
+    },
+    {
+      "name": "clamp"
+    },
+    {
+      "name": "drill"
+    },
+    {
+      "name": "injector"
+    },
+    {
+      "name": "bikehorn"
+    },
+    {
+      "name": "ore"
+    },
+    {
+      "name": "microwave_beam"
+    },
+    {
+      "name": "apparatus"
+    },
+    {
+      "name": "paper_maker"
+    },
+    {
+      "name": "kinesis"
+    },
+    {
+      "name": "kinesis-core"
+    },
+    {
+      "name": "springlock"
+    },
+    {
+      "name": "rave_visor",
+      "delays": [ [ 0.1, 0.1, 0.1 ] ]
+    },
+    {
+      "name": "tanning"
+    },
+    {
+      "name": "atrocinator"
+    },
+    {
+      "name": "armor_booster"
+    },
+    {
+      "name": "energy_shield"
+    },
+    {
+      "name": "noslip"
+    },
+    {
+      "name": "dispenser"
+    },
+    {
+      "name": "jetpack_advanced"
+    },
+    {
+      "name": "plate_compression"
+    }
+  ]
+}

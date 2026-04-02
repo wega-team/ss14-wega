@@ -41,7 +41,7 @@ public sealed class EmpatheticThoughtGenSystem : EntitySystem
     #region Base Logic
     private void GenerateEmpatheticThought(EntityUid uid, EmpatheticThoughtGenComponent comp)
     {
-        var nearbyEntities = _entityLookup.GetEntitiesInRange<HumanoidAppearanceComponent>(Transform(uid).Coordinates, comp.Range)
+        var nearbyEntities = _entityLookup.GetEntitiesInRange<HumanoidProfileComponent>(Transform(uid).Coordinates, comp.Range)
             .Where(e => e.Owner != uid).ToList();
         if (nearbyEntities.Count == 0)
             return;
@@ -66,9 +66,9 @@ public sealed class EmpatheticThoughtGenSystem : EntitySystem
 
         var thoughts = new List<string>();
 
-        AddHealthThoughts(target, thoughts);
+        // AddHealthThoughts(target, thoughts);
 
-        AddDamageThoughts(target, thoughts);
+        // AddDamageThoughts(target, thoughts);
 
         if (_mindSystem.TryGetMind(target, out var mindId, out var mind))
         {
@@ -80,209 +80,209 @@ public sealed class EmpatheticThoughtGenSystem : EntitySystem
             : "*...*";
     }
 
-    private void AddHealthThoughts(EntityUid target, List<string> thoughts)
-    {
-        var healthFraction = GetHealthFraction(target);
-        var damageLevel = 1f - healthFraction;
+    // private void AddHealthThoughts(EntityUid target, List<string> thoughts)
+    // {
+    //     var healthFraction = GetHealthFraction(target);
+    //     var damageLevel = 1f - healthFraction;
 
-        if (damageLevel == 0f)
-            return;
+    //     if (damageLevel == 0f)
+    //         return;
 
-        if (damageLevel <= 0.3f)
-        {
-            thoughts.AddRange(new[]
-            {
-                "*Ай, зацепился...*",
-                "*Что-то колет в боку...*",
-                "*Голова слегка пульсирует.*",
-                "*Синяк, кажется...*",
-                "*Чувствую себя разбитым.*"
-            });
-        }
-        else if (damageLevel <= 0.6f)
-        {
-            thoughts.AddRange(new[]
-            {
-                "*Блин, как же больно...*",
-                "*Надо перевязать рану...*",
-                "*Дышать трудно...*",
-                "*Всё плывёт перед глазами.*",
-                "*Нужен болеутоляющий...*",
-                "*Кровь... надо остановить кровь.*"
-            });
-        }
-        else if (damageLevel <= 0.9f)
-        {
-            thoughts.AddRange(new[]
-            {
-                "*Теряю силы...*",
-                "*Помогите...*",
-                "*Не могу двигаться...*",
-                "*Боже, как же это больно!*",
-                "*Всё... я не выживу...*",
-                "*Глаза закрываются...*"
-            });
-        }
-        else
-        {
-            thoughts.AddRange(new[]
-            {
-                "*Всё... конец...*",
-                "*Прощайте...*",
-                "*Больше не могу...*",
-                "*Кто-нибудь... спасите...*",
-                "*Мама...*",
-                "*Темно... так темно...*"
-            });
-        }
-    }
+    //     if (damageLevel <= 0.3f)
+    //     {
+    //         thoughts.AddRange(new[]
+    //         {
+    //             "*Ай, зацепился...*",
+    //             "*Что-то колет в боку...*",
+    //             "*Голова слегка пульсирует.*",
+    //             "*Синяк, кажется...*",
+    //             "*Чувствую себя разбитым.*"
+    //         });
+    //     }
+    //     else if (damageLevel <= 0.6f)
+    //     {
+    //         thoughts.AddRange(new[]
+    //         {
+    //             "*Блин, как же больно...*",
+    //             "*Надо перевязать рану...*",
+    //             "*Дышать трудно...*",
+    //             "*Всё плывёт перед глазами.*",
+    //             "*Нужен болеутоляющий...*",
+    //             "*Кровь... надо остановить кровь.*"
+    //         });
+    //     }
+    //     else if (damageLevel <= 0.9f)
+    //     {
+    //         thoughts.AddRange(new[]
+    //         {
+    //             "*Теряю силы...*",
+    //             "*Помогите...*",
+    //             "*Не могу двигаться...*",
+    //             "*Боже, как же это больно!*",
+    //             "*Всё... я не выживу...*",
+    //             "*Глаза закрываются...*"
+    //         });
+    //     }
+    //     else
+    //     {
+    //         thoughts.AddRange(new[]
+    //         {
+    //             "*Всё... конец...*",
+    //             "*Прощайте...*",
+    //             "*Больше не могу...*",
+    //             "*Кто-нибудь... спасите...*",
+    //             "*Мама...*",
+    //             "*Темно... так темно...*"
+    //         });
+    //     }
+    // }
 
-    private void AddDamageThoughts(EntityUid target, List<string> thoughts)
-    {
-        if (!TryComp<DamageableComponent>(target, out var damage))
-            return;
+    // private void AddDamageThoughts(EntityUid target, List<string> thoughts)
+    // {
+    //     if (!TryComp<DamageableComponent>(target, out var damage))
+    //         return;
 
-        foreach (var (damageType, amount) in damage.Damage.DamageDict)
-        {
-            if (amount <= 0) continue;
+    //     foreach (var (damageType, amount) in damage.Damage.DamageDict)
+    //     {
+    //         if (amount <= 0) continue;
 
-            switch (damageType)
-            {
-                case "Asphyxiation":
-                    thoughts.AddRange(new[] {
-                        "*Не могу... дышать...*",
-                        "*Лёгкие горят!*",
-                        "*Воздуха... нужно воздуха...*",
-                        "*Кто-то... перекройте вентиляцию...*",
-                        "*Голова кружится... не хватает кислорода...*",
-                        "*Всё плывёт... надо найти скафандр...*"
-                    });
-                    break;
+    //         switch (damageType)
+    //         {
+    //             case "Asphyxiation":
+    //                 thoughts.AddRange(new[] {
+    //                     "*Не могу... дышать...*",
+    //                     "*Лёгкие горят!*",
+    //                     "*Воздуха... нужно воздуха...*",
+    //                     "*Кто-то... перекройте вентиляцию...*",
+    //                     "*Голова кружится... не хватает кислорода...*",
+    //                     "*Всё плывёт... надо найти скафандр...*"
+    //                 });
+    //                 break;
 
-                case "Bloodloss":
-                    thoughts.AddRange(new[] {
-                        "*Так... холодно...*",
-                        "*Всё тело... леденеет...*",
-                        "*Кровь... слишком много крови на полу...*",
-                        "*Почему так... темнеет...*",
-                        "*Надо бы... перевязаться...*",
-                        "*Где медик?! Я истекаю кровью!*"
-                    });
-                    break;
+    //             case "Bloodloss":
+    //                 thoughts.AddRange(new[] {
+    //                     "*Так... холодно...*",
+    //                     "*Всё тело... леденеет...*",
+    //                     "*Кровь... слишком много крови на полу...*",
+    //                     "*Почему так... темнеет...*",
+    //                     "*Надо бы... перевязаться...*",
+    //                     "*Где медик?! Я истекаю кровью!*"
+    //                 });
+    //                 break;
 
-                case "Blunt":
-                    thoughts.AddRange(new[] {
-                        "*Всё тело болит...*",
-                        "*Кажется, сломалось... что-то важное...*",
-                        "*Кто-то устроил мне встречу с полом...*",
-                        "*Надо бы проверить... все ли кости целы...*",
-                        "*Ощущение, что меня переехал грузовик...*",
-                        "*Эти синяки будут красиво смотреться...*"
-                    });
-                    break;
+    //             case "Blunt":
+    //                 thoughts.AddRange(new[] {
+    //                     "*Всё тело болит...*",
+    //                     "*Кажется, сломалось... что-то важное...*",
+    //                     "*Кто-то устроил мне встречу с полом...*",
+    //                     "*Надо бы проверить... все ли кости целы...*",
+    //                     "*Ощущение, что меня переехал грузовик...*",
+    //                     "*Эти синяки будут красиво смотреться...*"
+    //                 });
+    //                 break;
 
-                case "Cellular":
-                    thoughts.AddRange(new[] {
-                        "*Клетки горят!*",
-                        "*Тело... разваливается на части...*",
-                        "*Что-то не так... на молекулярном уровне...*",
-                        "*Ощущение, будто меня растворяют...*",
-                        "*Кто-то играет с моей ДНК...*",
-                        "*Это не боль... это что-то хуже...*"
-                    });
-                    break;
+    //             case "Cellular":
+    //                 thoughts.AddRange(new[] {
+    //                     "*Клетки горят!*",
+    //                     "*Тело... разваливается на части...*",
+    //                     "*Что-то не так... на молекулярном уровне...*",
+    //                     "*Ощущение, будто меня растворяют...*",
+    //                     "*Кто-то играет с моей ДНК...*",
+    //                     "*Это не боль... это что-то хуже...*"
+    //                 });
+    //                 break;
 
-                case "Caustic":
-                    thoughts.AddRange(new[] {
-                        "*Кожа пузырится!*",
-                        "*АААА! Это жжётся!*",
-                        "*Кто-то вылейте на меня воду!*",
-                        "*Химический ожог... самый болезненный...*",
-                        "*Пахнет жареным мясом... это я?*",
-                        "*Надо срочно в дезинфекцию!*"
-                    });
-                    break;
+    //             case "Caustic":
+    //                 thoughts.AddRange(new[] {
+    //                     "*Кожа пузырится!*",
+    //                     "*АААА! Это жжётся!*",
+    //                     "*Кто-то вылейте на меня воду!*",
+    //                     "*Химический ожог... самый болезненный...*",
+    //                     "*Пахнет жареным мясом... это я?*",
+    //                     "*Надо срочно в дезинфекцию!*"
+    //                 });
+    //                 break;
 
-                case "Cold":
-                    thoughts.AddRange(new[] {
-                        "*Зубы стучат...*",
-                        "*Всё тело... дрожит...*",
-                        "*Так холодно... что даже больно...*",
-                        "*Пальцы... не чувствую пальцев...*",
-                        "*Обморожение - это не весело...*",
-                        "*Где бы найти тёплый уголок...*"
-                    });
-                    break;
+    //             case "Cold":
+    //                 thoughts.AddRange(new[] {
+    //                     "*Зубы стучат...*",
+    //                     "*Всё тело... дрожит...*",
+    //                     "*Так холодно... что даже больно...*",
+    //                     "*Пальцы... не чувствую пальцев...*",
+    //                     "*Обморожение - это не весело...*",
+    //                     "*Где бы найти тёплый уголок...*"
+    //                 });
+    //                 break;
 
-                case "Heat":
-                    thoughts.AddRange(new[] {
-                        "*Слишком жарко...*",
-                        "*Горю... буквально...*",
-                        "*Почему я пахну жареным?*",
-                        "*Надо бы... отползти от этого пламени...*",
-                        "*Ожоги... везде ожоги...*",
-                        "*Это не сауна... это ад...*"
-                    });
-                    break;
+    //             case "Heat":
+    //                 thoughts.AddRange(new[] {
+    //                     "*Слишком жарко...*",
+    //                     "*Горю... буквально...*",
+    //                     "*Почему я пахну жареным?*",
+    //                     "*Надо бы... отползти от этого пламени...*",
+    //                     "*Ожоги... везде ожоги...*",
+    //                     "*Это не сауна... это ад...*"
+    //                 });
+    //                 break;
 
-                case "Piercing":
-                case "Slash":
-                    thoughts.AddRange(new[] {
-                        "*Кровь... много крови...*",
-                        "*Кажется, что-то важное прокололи...*",
-                        "*Где медик?! У меня течь!*",
-                        "*Этот нож был... совсем нестерильный...*",
-                        "*Рваная рана... самая противная...*",
-                        "*Кто-нибудь... тампон?!*"
-                    });
-                    break;
+    //             case "Piercing":
+    //             case "Slash":
+    //                 thoughts.AddRange(new[] {
+    //                     "*Кровь... много крови...*",
+    //                     "*Кажется, что-то важное прокололи...*",
+    //                     "*Где медик?! У меня течь!*",
+    //                     "*Этот нож был... совсем нестерильный...*",
+    //                     "*Рваная рана... самая противная...*",
+    //                     "*Кто-нибудь... тампон?!*"
+    //                 });
+    //                 break;
 
-                case "Poison":
-                    thoughts.AddRange(new[] {
-                        "*Что-то не так с желудком...*",
-                        "*Всё крутится... и не только в голове...*",
-                        "*Вырвет... сейчас вырвет...*",
-                        "*Кто-то подмешал мне яд...*",
-                        "*Печень... болит печень...*",
-                        "*На вкус как... смерть...*"
-                    });
-                    break;
+    //             case "Poison":
+    //                 thoughts.AddRange(new[] {
+    //                     "*Что-то не так с желудком...*",
+    //                     "*Всё крутится... и не только в голове...*",
+    //                     "*Вырвет... сейчас вырвет...*",
+    //                     "*Кто-то подмешал мне яд...*",
+    //                     "*Печень... болит печень...*",
+    //                     "*На вкус как... смерть...*"
+    //                 });
+    //                 break;
 
-                case "Radiation":
-                    thoughts.AddRange(new[] {
-                        "*Чувствую... радиацию...*",
-                        "*Кости... болят кости...*",
-                        "*Во рту... металлический привкус...*",
-                        "*Сколько же у меня... теперь раков?*",
-                        "*Кожа... странно зудит...*",
-                        "*Надо бы... проверить дозиметр... если бы он был...*"
-                    });
-                    break;
+    //             case "Radiation":
+    //                 thoughts.AddRange(new[] {
+    //                     "*Чувствую... радиацию...*",
+    //                     "*Кости... болят кости...*",
+    //                     "*Во рту... металлический привкус...*",
+    //                     "*Сколько же у меня... теперь раков?*",
+    //                     "*Кожа... странно зудит...*",
+    //                     "*Надо бы... проверить дозиметр... если бы он был...*"
+    //                 });
+    //                 break;
 
-                case "Shock":
-                    thoughts.AddRange(new[] {
-                        "*Мышцы сводит...*",
-                        "*Тело... не слушается...*",
-                        "*Кто-то выключите этот ток!*",
-                        "*Судороги... везде судороги...*",
-                        "*Ощущение, будто меня жуёт розетка...*",
-                        "*Зубы... сами стучат...*"
-                    });
-                    break;
+    //             case "Shock":
+    //                 thoughts.AddRange(new[] {
+    //                     "*Мышцы сводит...*",
+    //                     "*Тело... не слушается...*",
+    //                     "*Кто-то выключите этот ток!*",
+    //                     "*Судороги... везде судороги...*",
+    //                     "*Ощущение, будто меня жуёт розетка...*",
+    //                     "*Зубы... сами стучат...*"
+    //                 });
+    //                 break;
 
-                case "Holy":
-                    thoughts.AddRange(new[] {
-                        "*Голос... в голове...*",
-                        "*Кто-то шепчет... но никого нет...*",
-                        "*Святость... жжётся...*",
-                        "*Моя душа... болит...*",
-                        "*Это не просто боль... это искупление...*",
-                        "*Грехи... все мои грехи...*"
-                    });
-                    break;
-            }
-        }
-    }
+    //             case "Holy":
+    //                 thoughts.AddRange(new[] {
+    //                     "*Голос... в голове...*",
+    //                     "*Кто-то шепчет... но никого нет...*",
+    //                     "*Святость... жжётся...*",
+    //                     "*Моя душа... болит...*",
+    //                     "*Это не просто боль... это искупление...*",
+    //                     "*Грехи... все мои грехи...*"
+    //                 });
+    //                 break;
+    //         }
+    //     }
+    // }
 
     private IEnumerable<string> GetRoleSpecificThoughts(EntityUid mindId, MindComponent mind)
     {
@@ -880,23 +880,23 @@ public sealed class EmpatheticThoughtGenSystem : EntitySystem
     #endregion
 
     #region Other Logic
-    private float GetHealthFraction(EntityUid uid)
-    {
-        if (!TryComp<DamageableComponent>(uid, out var damage))
-            return 1f;
+    // private float GetHealthFraction(EntityUid uid)
+    // {
+    //     if (!TryComp<DamageableComponent>(uid, out var damage))
+    //         return 1f;
 
-        if (TryComp<MobThresholdsComponent>(uid, out var thresholds))
-        {
-            var deathThreshold = thresholds.Thresholds
-                .FirstOrNull(t => t.Value == MobState.Dead)?.Key ?? FixedPoint2.Zero;
+    //     if (TryComp<MobThresholdsComponent>(uid, out var thresholds))
+    //     {
+    //         var deathThreshold = thresholds.Thresholds
+    //             .FirstOrNull(t => t.Value == MobState.Dead)?.Key ?? FixedPoint2.Zero;
 
-            if (deathThreshold > FixedPoint2.Zero)
-            {
-                return Math.Clamp(1f - (damage.TotalDamage.Float() / deathThreshold.Float()), 0f, 1f);
-            }
-        }
+    //         if (deathThreshold > FixedPoint2.Zero)
+    //         {
+    //             return Math.Clamp(1f - (damage.TotalDamage.Float() / deathThreshold.Float()), 0f, 1f);
+    //         }
+    //     }
 
-        return 1f - Math.Clamp(damage.TotalDamage.Float() / 100f, 0f, 1f);
-    }
+    //     return 1f - Math.Clamp(damage.TotalDamage.Float() / 100f, 0f, 1f);
+    // }
     #endregion
 }

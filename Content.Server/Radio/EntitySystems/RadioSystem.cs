@@ -204,11 +204,11 @@ public sealed class RadioSystem : EntitySystem
         if (!_inventory.TryGetSlotEntity(senderUid, "id", out var idUid))
             return null;
 
-        if (EntityManager.TryGetComponent(idUid, out PdaComponent? pda) && pda.ContainedId != null)
+        if (TryComp(idUid, out PdaComponent? pda) && pda.ContainedId != null)
         {
             return TryComp<IdCardComponent>(pda.ContainedId, out var idComp) ? idComp : null;
         }
-        return EntityManager.TryGetComponent(idUid, out IdCardComponent? id) ? id : null;
+        return TryComp(idUid, out IdCardComponent? id) ? id : null;
     }
     // Corvax-Wega-end
 

@@ -1,6 +1,7 @@
 using Content.Server.Lavaland.Mobs.Components;
 using Content.Shared.Achievements;
 using Content.Shared.Lavaland.Events;
+using Content.Shared.SSDIndicator;
 using Robust.Shared.Audio.Systems;
 
 namespace Content.Server.Lavaland.Mobs;
@@ -15,8 +16,16 @@ public sealed partial class BloodDrunkMinerSystem : EntitySystem
     {
         base.Initialize();
 
+        SubscribeLocalEvent<BloodDrunkMinerComponent, MapInitEvent>(OnMapInit);
+
         SubscribeLocalEvent<BloodDrunkMinerComponent, MegafaunaKilledEvent>(OnBloodDrunkMinerKilled);
         SubscribeLocalEvent<BloodDrunkMinerComponent, BloodDrunkMinerDashAction>(OnDash);
+    }
+
+    // I don't want to add 200+ fields from parents just to remove 1 component from the prototype.
+    private void OnMapInit(Entity<BloodDrunkMinerComponent> ent, ref MapInitEvent args)
+    {
+        RemComp<SSDIndicatorComponent>(ent);
     }
 
     private void OnBloodDrunkMinerKilled(EntityUid uid, BloodDrunkMinerComponent component, MegafaunaKilledEvent args)

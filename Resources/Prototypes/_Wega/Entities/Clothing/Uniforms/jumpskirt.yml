@@ -253,6 +253,69 @@
   - type: Clothing
     sprite: _Wega/Clothing/Uniforms/Jumpskirt/white_captain.rsi
 
+# ADT
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtBartenderRed
+  name: bartender's uniform
+  description: A nice and tidy uniform. Shame about the bar though.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/bartender_red.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/bartender_red.rsi
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtBartenderGreen
+  name: bartender's uniform
+  description: A nice and tidy uniform. Shame about the bar though.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/bartender_green.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/bartender_green.rsi
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformDressVintage
+  name: vintage dress
+  description: A beautiful vintage dress for special occasions.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/dress_vintage.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/dress_vintage.rsi
+  - type: StaticPrice
+    price: 85
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformTangoDressBlack
+  name: black tango dress
+  description: An elegant black tango dress for passionate dances.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/tango_dress_black.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/tango_dress_black.rsi
+  - type: StaticPrice
+    price: 85
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformTangoDressWhite
+  name: white tango dress
+  description: A graceful white tango dress for elegant performances.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/tango_dress_white.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/tango_dress_white.rsi
+  - type: StaticPrice
+    price: 85
+
 - type: entity
   parent: ClothingUniformBase
   id: ClothingUniformJumpskirtExplorer
@@ -274,3 +337,4 @@
       sprite: _Wega/Clothing/Uniforms/Jumpskirt/explorer_khaki.rsi
     - type: Clothing
       sprite: _Wega/Clothing/Uniforms/Jumpskirt/explorer_khaki.rsi
+

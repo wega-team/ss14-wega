@@ -18,8 +18,10 @@
       areaInsert: true
       whitelist:
         tags:
-          - ArtifactFragment
           - Ore
+          - ArtifactFragment
+          - MagmiteAlloy
+          - Gems 
     - type: Sprite
       sprite: Objects/Specific/Mining/ore_bag_holding.rsi
     # Corvax-Wega-Start

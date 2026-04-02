@@ -313,6 +313,20 @@
   components:
   - type: Sprite
     noRot: true
+  - type: TriggerOnCollide
+    fixtureID: fix1
+    maxTriggers: 1
+  - type: IgniteOnCollide
+    fixtureId: fix1
+    fireStacks: 2
+  - type: DamageOnTrigger
+    targetUser: true
+    damage:
+      types:
+        Heat: 5
+    blacklist:
+      components:
+      - AshDrakeBoss
   - type: TimedDespawn
     lifetime: 5
 

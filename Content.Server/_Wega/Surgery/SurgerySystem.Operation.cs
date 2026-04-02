@@ -1,10 +1,8 @@
 using System.Linq;
 using Content.Server.Body.Systems;
 using Content.Shared.Bed.Sleep;
+using Content.Shared.Body;
 using Content.Shared.Body.Components;
-using Content.Shared.Body.Organ;
-using Content.Shared.Body.Part;
-using Content.Shared.Body.Systems;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
@@ -21,7 +19,6 @@ using Content.Shared.Surgery;
 using Content.Shared.Surgery.Components;
 using Content.Shared.Traits.Assorted;
 using Robust.Shared.Audio;
-using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
@@ -30,7 +27,6 @@ namespace Content.Server.Surgery;
 public sealed partial class SurgerySystem
 {
     [Dependency] private readonly BloodstreamSystem _bloodstream = default!;
-    [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly SharedDirtSystem _dirt = default!;
     [Dependency] private readonly SharedSubdermalImplantSystem _implant = default!;
     [Dependency] private readonly SharedInternalStorageSystem _internal = default!;
@@ -70,14 +66,6 @@ public sealed partial class SurgerySystem
 
             case SurgeryActionType.InsertOrgan:
                 PerformInsertOrgan((patient, comp), item, requiredPart, successChance, failureEffect);
-                break;
-
-            case SurgeryActionType.RemovePart:
-                PerformRemovePart((patient, comp), requiredPart, successChance, failureEffect);
-                break;
-
-            case SurgeryActionType.AttachPart:
-                PerformAttachPart((patient, comp), item, requiredPart, successChance, failureEffect);
                 break;
 
             case SurgeryActionType.Implanting:
@@ -228,19 +216,26 @@ public sealed partial class SurgerySystem
         if (!RollSuccess(patient, patient.Comp.Surgeon.Value, successChance))
             HandleFailure(patient, failureEffect);
 
-        var organs = _body.GetBodyOrgans(patient)
-            .Where(o => o.Component.OrganType == requiredOrgan)
-            .ToList();
-
-        if (organs.Count == 0)
+        if (!TryComp<BodyComponent>(patient, out var body) || body.Organs == null)
             return;
 
-        foreach (var (organId, _) in organs)
+        EntityUid? organToRemove = null;
+        foreach (var organ in body.Organs.ContainedEntities)
         {
-            _body.RemoveOrgan(organId);
-            _popup.PopupEntity(Loc.GetString("surgery-organ-removed"), patient);
-            _hands.TryPickupAnyHand(patient.Comp.Surgeon.Value, organId);
+            if (TryComp<OrganComponent>(organ, out var organComp) && organComp.Category == requiredOrgan)
+            {
+                organToRemove = organ;
+                break;
+            }
         }
+
+        if (organToRemove == null)
+            return;
+
+        _container.Remove(organToRemove.Value, body.Organs);
+
+        _popup.PopupEntity(Loc.GetString("surgery-organ-removed"), patient);
+        _hands.TryPickupAnyHand(patient.Comp.Surgeon.Value, organToRemove.Value);
 
         if (TryComp<BloodstreamComponent>(patient, out var bloodstream) && !HasComp<SyntheticOperatedComponent>(patient))
         {
@@ -264,136 +259,14 @@ public sealed partial class SurgerySystem
         if (!RollSuccess(patient, patient.Comp.Surgeon.Value, successChance))
             HandleFailure(patient, failureEffect);
 
-        var targetSlot = FindOrganSlot(patient, requiredOrgan);
-        if (targetSlot == null)
+        if (!TryComp<BodyComponent>(patient, out var body) || body.Organs == null)
             return;
 
-        if (_body.InsertOrgan(targetSlot.Value.PartUid, item.Value, targetSlot.Value.SlotId))
-        {
-            if (!HasComp<SterileComponent>(item.Value) && _random.Prob(0.4f))
-                _disease.TryAddDisease(patient, "SurgicalSepsis");
-
-            _popup.PopupEntity(Loc.GetString("surgery-organ-inserted"), patient);
-        }
-    }
-
-    private void PerformRemovePart(Entity<OperatedComponent> patient, string? requiredPart, float successChance, List<SurgeryFailedType>? failureEffect)
-    {
-        if (patient.Comp.Surgeon == null || string.IsNullOrEmpty(requiredPart))
-            return;
-
-        if (!RollSuccess(patient, patient.Comp.Surgeon.Value, successChance))
-            HandleFailure(patient, failureEffect, requiredPart);
-
-        var bodyParts = new List<(EntityUid Id, BodyPartComponent Component)>();
-
-        if (requiredPart.Contains('_'))
-        {
-            var parts = requiredPart.Split('_');
-
-            if (parts.Length == 2)
-            {
-                var symmetry = parts[0].ToLower() switch
-                {
-                    "left" => BodyPartSymmetry.Left,
-                    "right" => BodyPartSymmetry.Right,
-                    _ => BodyPartSymmetry.None
-                };
-
-                var partType = parts[1].ToLower() switch
-                {
-                    "arm" => BodyPartType.Arm,
-                    "hand" => BodyPartType.Hand,
-                    "leg" => BodyPartType.Leg,
-                    "foot" => BodyPartType.Foot,
-                    _ => BodyPartType.Other
-                };
-
-                bodyParts = _body.GetBodyChildren(patient)
-                    .Where(p => p.Component.PartType == partType && p.Component.Symmetry == symmetry)
-                    .ToList();
-            }
-        }
-        else
-        {
-            var partType = requiredPart.ToLower() switch
-            {
-                "torso" => BodyPartType.Torso,
-                "head" => BodyPartType.Head,
-                "tail" => BodyPartType.Tail,
-                // To account for primates.
-                "hands" => BodyPartType.Hand,
-                "legs" => BodyPartType.Leg,
-                "feet" => BodyPartType.Foot,
-                _ => BodyPartType.Other
-            };
-
-            bodyParts = _body.GetBodyChildren(patient)
-                .Where(p => p.Component.PartType == partType)
-                .ToList();
-        }
-
-        if (bodyParts.Count == 0)
-            return;
-
-        foreach (var (partId, part) in bodyParts)
-        {
-            var parentSlot = _body.GetParentPartAndSlotOrNull(partId);
-            if (parentSlot == null)
-                continue;
-
-            var (parentId, slotId) = parentSlot.Value;
-            if (TryComp<BodyPartComponent>(parentId, out var parentPart))
-            {
-                var containerId = SharedBodySystem.GetPartSlotContainerId(slotId);
-                if (_container.TryGetContainer(parentId, containerId, out var container))
-                {
-                    _container.Remove(partId, container);
-                    _popup.PopupEntity(Loc.GetString("surgery-part-removed"), patient);
-                    _hands.TryPickupAnyHand(patient.Comp.Surgeon.Value, partId);
-                }
-            }
-        }
-
-        if (TryComp<BloodstreamComponent>(patient, out var bloodstream) && !HasComp<SyntheticOperatedComponent>(patient))
-        {
-            string? bloodReagentId = null;
-            if (bloodstream.BloodReferenceSolution.Contents.Count > 0)
-            {
-                var reagentQuantity = bloodstream.BloodReferenceSolution.Contents[0];
-                bloodReagentId = reagentQuantity.Reagent.Prototype;
-            }
-
-            ApplyBloodToClothing(patient.Comp.Surgeon.Value, bloodReagentId, 2f * SharedDirtSystem.MaxDirtLevel);
-            _bloodstream.TryModifyBleedAmount(patient.Owner, 2f);
-        }
-    }
-
-    private void PerformAttachPart(Entity<OperatedComponent> patient, EntityUid? item, string? requiredPart, float successChance, List<SurgeryFailedType>? failureEffect)
-    {
-        if (patient.Comp.Surgeon == null || item == null || string.IsNullOrEmpty(requiredPart) || !HasComp<BodyPartComponent>(item))
-            return;
-
-        if (!RollSuccess(patient, patient.Comp.Surgeon.Value, successChance))
-            HandleFailure(patient, failureEffect, requiredPart);
-
-        var slotId = ParseSlotId(requiredPart.ToLower(), SharedBodySystem.PartSlotContainerIdPrefix);
-        if (string.IsNullOrEmpty(slotId))
-            return;
-
-        var parentPart = _body.GetBodyPartsWithSlot(patient, slotId).FirstOrDefault();
-        if (parentPart == EntityUid.Invalid)
-            return;
-
-        if (!_body.AttachPart(parentPart, slotId, item.Value))
-            return;
-
-        CreateChildSlotsForPart(item.Value, patient);
-
+        _container.Insert(item.Value, body.Organs);
         if (!HasComp<SterileComponent>(item.Value) && _random.Prob(0.4f))
             _disease.TryAddDisease(patient, "SurgicalSepsis");
 
-        _popup.PopupEntity(Loc.GetString("surgery-part-attached"), patient);
+        _popup.PopupEntity(Loc.GetString("surgery-organ-inserted"), patient);
     }
 
     private void PerformImplant(Entity<OperatedComponent> patient, EntityUid? item, string? requiredPart, float successChance, List<SurgeryFailedType>? failureEffect)
@@ -404,7 +277,7 @@ public sealed partial class SurgerySystem
         if (!RollSuccess(patient, patient.Comp.Surgeon.Value, successChance))
             HandleFailure(patient, failureEffect, requiredPart);
 
-        if (!TryComp<SubdermalImplantComponent>(item.Value, out var implantComp))
+        if (!HasComp<SubdermalImplantComponent>(item.Value))
             return;
 
         _implant.ForceImplant(patient.Owner, item.Value);
@@ -452,7 +325,7 @@ public sealed partial class SurgerySystem
             HandleFailure(patient, failureEffect);
 
         // You can't perform a mobs, body part, organ, or implant in this way
-        if (HasComp<BodyComponent>(item) || HasComp<BodyPartComponent>(item) || HasComp<OrganComponent>(item)
+        if (HasComp<BodyComponent>(item) || HasComp<OrganComponent>(item)
             || HasComp<SubdermalImplantComponent>(item) || !_internal.TryStoreItem(patient.Owner, item.Value, requiredPart))
             _popup.PopupEntity(Loc.GetString("surgery-store-item-failed"), patient);
         else
@@ -485,8 +358,14 @@ public sealed partial class SurgerySystem
             return;
 
         _damage.TryChangeDamage(patient.Owner, new DamageSpecifier { DamageDict = { { BluntDamage, 2f } } }, true);
-        if (TryComp<DamageableComponent>(patient, out var damageable) && damageable.TotalDamage >= 50)
-            _audio.PlayPvs(new SoundCollectionSpecifier("sparks"), patient.Owner);
+        if (TryComp<DamageableComponent>(patient, out var damageable))
+        {
+            var totalDamage = _damage.GetTotalDamage((patient, damageable));
+            if (totalDamage >= 50)
+            {
+                _audio.PlayPvs(new SoundCollectionSpecifier("sparks"), patient.Owner);
+            }
+        }
     }
 
     private void PerformScrew(Entity<OperatedComponent> patient)
@@ -593,87 +472,6 @@ public sealed partial class SurgerySystem
             adjustedChance *= tableModifier;
 
         return _random.Prob(adjustedChance);
-    }
-
-    private (EntityUid PartUid, string SlotId)? FindOrganSlot(EntityUid bodyId, string organType)
-    {
-        foreach (var part in _body.GetBodyChildren(bodyId))
-        {
-            foreach (var (slotId, _) in part.Component.Organs)
-            {
-                if (slotId.Equals(organType, StringComparison.OrdinalIgnoreCase))
-                {
-                    return (part.Id, slotId);
-                }
-            }
-        }
-        return null;
-    }
-
-    private string? ParseSlotId(string? fullSlotId, string prefix)
-    {
-        if (string.IsNullOrEmpty(fullSlotId))
-            return null;
-
-        return fullSlotId.StartsWith(prefix)
-            ? fullSlotId.Substring(prefix.Length)
-            : fullSlotId;
-    }
-
-    private void CreateChildSlotsForPart(EntityUid attachedPart, Entity<OperatedComponent> patient)
-    {
-        if (!TryComp<BodyPartComponent>(attachedPart, out var partComp))
-            return;
-
-        var defaultSlots = GetDefaultSlotsForPartType(partComp.PartType, partComp.Symmetry);
-        foreach (var slotId in defaultSlots)
-        {
-            var containerId = SharedBodySystem.GetPartSlotContainerId(slotId);
-            if (!_container.TryGetContainer(attachedPart, containerId, out _))
-            {
-                CreateSlotInPart(attachedPart, slotId, GetChildPartTypeForSlot(slotId));
-            }
-        }
-    }
-
-    private void CreateSlotInPart(EntityUid part, string slotId, BodyPartType slotType)
-    {
-        if (!TryComp<BodyPartComponent>(part, out var partComp))
-            return;
-
-        _body.TryCreatePartSlot(part, slotId, slotType, out _, partComp);
-    }
-
-    private List<string> GetDefaultSlotsForPartType(BodyPartType partType, BodyPartSymmetry symmetry)
-    {
-        var slots = new List<string>();
-        switch (partType)
-        {
-            case BodyPartType.Arm:
-                slots.Add(symmetry == BodyPartSymmetry.Left ? "left_hand" : "right_hand");
-                break;
-            case BodyPartType.Leg:
-                slots.Add(symmetry == BodyPartSymmetry.Left ? "left_foot" : "right_foot");
-                break;
-            case BodyPartType.Torso:
-                slots.AddRange(new[] { "left_arm", "right_arm", "left_leg", "right_leg", "head" });
-                break;
-        }
-
-        return slots;
-    }
-
-    private BodyPartType GetChildPartTypeForSlot(string slotId)
-    {
-        return slotId.ToLower() switch
-        {
-            var s when s.Contains("hand") => BodyPartType.Hand,
-            var s when s.Contains("foot") => BodyPartType.Foot,
-            var s when s.Contains("arm") => BodyPartType.Arm,
-            var s when s.Contains("leg") => BodyPartType.Leg,
-            var s when s.Contains("head") => BodyPartType.Head,
-            _ => BodyPartType.Other
-        };
     }
 
     public void ApplyBloodToClothing(EntityUid surgeon, string? bloodReagentId, float bloodAmount)

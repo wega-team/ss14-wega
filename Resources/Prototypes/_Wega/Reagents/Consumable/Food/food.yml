@@ -7,7 +7,7 @@
   flavor: shrimp
   color: "#24591F"
   metabolisms:
-    Narcotic:
+    Bloodstream:
       effects:
       - !type:ModifyStatusEffect
         effectProto: StatusEffectSeeingRainbow
@@ -26,7 +26,7 @@
         conditions:
         - !type:MetabolizerTypeCondition
           type: [ Ariral ]
-    Food:
+    Digestion:
       effects:
       - !type:SatiateHunger
         conditions:

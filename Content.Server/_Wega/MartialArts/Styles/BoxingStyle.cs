@@ -89,7 +89,7 @@ public sealed partial class MartialArtsSystem
 
         if (TryComp<DamageableComponent>(target, out var damage))
         {
-            var totalDamage = damage.TotalDamage;
+            var totalDamage = _damage.GetTotalDamage((target, damage));
             if (totalDamage >= 125)
                 return;
 

@@ -18,14 +18,13 @@
       params:
         volume: -3
     damage:
-      groups:
-        Brute: 5
+      types:
+        Piercing: 5
   - type: Wieldable
   - type: IncreaseDamageOnWield
     damage:
-      groups:
-        Brute: 10
       types:
+        Piercing: 10
         Structural: 30
   - type: Item
     size: Normal
@@ -62,9 +61,8 @@
       path: "/Audio/Items/drill_hit.ogg"
     attackRate: 4
     damage:
-      groups:
-        Brute: 3
       types:
+        Piercing: 3
         Structural: 15
 
 - type: entity
@@ -84,9 +82,8 @@
       path: "/Audio/Items/drill_hit.ogg"
     attackRate: 4
     damage:
-      groups:
-        Brute: 6
       types:
+        Piercing: 6
         Structural: 30
 
 
@@ -169,8 +166,10 @@
   # Corvax-Wega-Lavaland-end
   - type: LeechOnMarker
     leech:
-      groups:
-        Brute: -6
+      types:
+        Blunt: -2
+        Slash: -2
+        Piercing: -2
   - type: Gun
     soundGunshot: /Audio/Weapons/plasma_cutter.ogg
     fireRate: 1
@@ -202,6 +201,7 @@
   - type: GunRequiresWield
   - type: DisarmMalus
   - type: Prying
+  - type: BloodCultAllowedGun # Corvax-Wega-BloodCult
 
 # No mark ability in exchange for wideswing, autoattack, and being one-handed
 - type: entity
@@ -218,6 +218,12 @@
     # - state: icon-lit
     #   shader: unshaded
     #   visible: false
+  - type: Tool
+    qualities:
+      - Slicing
+      - Screwing
+    useSound:
+      path: /Audio/Items/Culinary/chop.ogg
     # Corvax-Wega-Lavaland-Edit-end
   - type: MeleeWeapon
     autoAttack: true
@@ -281,8 +287,10 @@
     count: 1
   - type: LeechOnMarker
     leech:
-      groups:
-        Brute: -21
+      types:
+        Blunt: -5
+        Piercing: -5
+        Slash: -5
   - type: Tag
     tags:
       - Pickaxe

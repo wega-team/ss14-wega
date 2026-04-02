@@ -49,9 +49,10 @@
       areaInsert: true
       whitelist:
         tags:
-          - ArtifactFragment
           - Ore
-          - Gems # Corvax-Wega-Lavaland
+          - ArtifactFragment
+          - MagmiteAlloy
+          - Gems 
     - type: Sprite
       sprite: Objects/Specific/Mining/ore_bag.rsi
     # Corvax-Wega-Start

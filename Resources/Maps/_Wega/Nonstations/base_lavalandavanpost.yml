@@ -1,10 +1,10 @@
 meta:
   format: 7
   category: Grid
-  engineVersion: 268.0.0
+  engineVersion: 270.1.0
   forkId: ""
   forkVersion: ""
-  time: 01/17/2026 12:16:42
+  time: 03/09/2026 21:18:58
   entityCount: 1122
 maps: []
 grids:
@@ -626,8 +626,13 @@ entities:
     - type: Transform
       pos: 2.5,7.5
       parent: 1
-- proto: AirlockExternalGlass
+- proto: AirlockExternalGlassLocked
   entities:
+  - uid: 937
+    components:
+    - type: Transform
+      pos: 10.5,10.5
+      parent: 1
   - uid: 1063
     components:
     - type: Transform
@@ -638,27 +643,6 @@ entities:
     - type: Transform
       pos: 7.5,10.5
       parent: 1
-    - type: DeviceLinkSink
-      invokeCounter: 1
-    - type: DeviceLinkSource
-      linkedPorts:
-        1065:
-        - - DoorStatus
-          - DoorBolt
-- proto: AirlockExternalGlassLocked
-  entities:
-  - uid: 1065
-    components:
-    - type: Transform
-      pos: 10.5,10.5
-      parent: 1
-    - type: DeviceLinkSink
-      invokeCounter: 1
-    - type: DeviceLinkSource
-      linkedPorts:
-        1064:
-        - - DoorStatus
-          - DoorBolt
 - proto: AirlockExternalGlassShuttleLavalandOutpost
   entities:
   - uid: 938
@@ -674,6 +658,40 @@ entities:
     - type: Transform
       pos: -22.5,2.5
       parent: 1
+- proto: AirlockLavalandAvanpostGlassLocked
+  entities:
+  - uid: 1066
+    components:
+    - type: Transform
+      pos: 3.5,1.5
+      parent: 1
+  - uid: 1067
+    components:
+    - type: Transform
+      pos: 2.5,10.5
+      parent: 1
+  - uid: 1068
+    components:
+    - type: Transform
+      pos: 3.5,0.5
+      parent: 1
+  - uid: 1069
+    components:
+    - type: Transform
+      pos: -2.5,0.5
+      parent: 1
+  - uid: 1071
+    components:
+    - type: Transform
+      pos: -11.5,0.5
+      parent: 1
+- proto: AirlockLavalandAvanpostLocked
+  entities:
+  - uid: 1065
+    components:
+    - type: Transform
+      pos: -28.5,-1.5
+      parent: 1
 - proto: AirlockMaintLocked
   entities:
   - uid: 1072
@@ -685,42 +703,6 @@ entities:
     components:
     - type: Transform
       pos: -17.5,2.5
-      parent: 1
-- proto: AirlockSalvageGlass
-  entities:
-  - uid: 937
-    components:
-    - type: Transform
-      pos: -11.5,0.5
-      parent: 1
-  - uid: 1069
-    components:
-    - type: Transform
-      pos: -2.5,0.5
-      parent: 1
-- proto: AirlockSalvageGlassLocked
-  entities:
-  - uid: 1066
-    components:
-    - type: Transform
-      pos: 2.5,10.5
-      parent: 1
-  - uid: 1067
-    components:
-    - type: Transform
-      pos: 3.5,0.5
-      parent: 1
-  - uid: 1068
-    components:
-    - type: Transform
-      pos: 3.5,1.5
-      parent: 1
-- proto: AirlockSalvageLocked
-  entities:
-  - uid: 1071
-    components:
-    - type: Transform
-      pos: -28.5,-1.5
       parent: 1
 - proto: AirSensor
   entities:

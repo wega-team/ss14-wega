@@ -88,7 +88,7 @@ namespace Content.Server.SexToy.System
             if (_entManager.TryGetComponent<MetaDataComponent>(user, out var metaDataComponent))
                 userName = metaDataComponent.EntityName;
 
-            if (target != null && TryComp<HumanoidAppearanceComponent>(target, out var targetAppearance))
+            if (target != null && TryComp<HumanoidProfileComponent>(target, out var targetAppearance))
             {
                 var isValid = true;
                 string messageUser = "";

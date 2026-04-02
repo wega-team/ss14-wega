@@ -1,0 +1,205 @@
+- type: constructionGraph
+  id: ModularSuitVariants
+  start: base_suit
+  graph:
+    - node: base_suit
+      entity: ModularSuitConstructionFinished
+      edges:
+        # 1. Basic
+        - to: basic_suit
+          steps:
+            - tag: BasicPlating
+              name: construction-graph-tag-basic-plating-kit
+              icon:
+                sprite: "_Wega/Objects/Specific/Robotics/modular_suits.rsi"
+                state: "standard-plating"
+            - tool: Screwing
+              doAfter: 2
+          completed:
+            - !type:DestroyEntity {}
+
+        # 2. Civilian
+        - to: civilian_suit
+          steps:
+            - tag: CivilianPlating
+              name: construction-graph-tag-civilian-plating-kit
+              icon:
+                sprite: "_Wega/Objects/Specific/Robotics/modular_suits.rsi"
+                state: "civilian-plating"
+            - tool: Screwing
+              doAfter: 2
+          completed:
+            - !type:DestroyEntity {}
+
+        # 3. Clown
+        - to: clown_suit
+          steps:
+            - tag: ClownPlating
+              name: construction-graph-tag-clown-reinforcement-kit
+              icon:
+                sprite: "_Wega/Objects/Specific/Robotics/modular_suits.rsi"
+                state: "cosmohonk-plating"
+            - tool: Screwing
+              doAfter: 2
+          completed:
+            - !type:DestroyEntity {}
+
+        # 4. Engineering
+        - to: engineering_suit
+          steps:
+            - tag: EngineeringPlating
+              name: construction-graph-tag-engineering-reinforcement-kit
+              icon:
+                sprite: "_Wega/Objects/Specific/Robotics/modular_suits.rsi"
+                state: "engineering-plating"
+            - tool: Screwing
+              doAfter: 2
+          completed:
+            - !type:DestroyEntity {}
+
+        # 5. Atmos
+        - to: atmos_suit
+          steps:
+            - tag: AtmosPlating
+              name: construction-graph-tag-atmospheric-plating-kit
+              icon:
+                sprite: "_Wega/Objects/Specific/Robotics/modular_suits.rsi"
+                state: "atmospheric-plating"
+            - tool: Screwing
+              doAfter: 2
+          completed:
+            - !type:DestroyEntity {}
+
+        # 6. White Engineering
+        - to: white_engineering_suit
+          steps:
+            - tag: WhiteEngineeringPlating
+              name: construction-graph-tag-white-engineering-kit
+              icon:
+                sprite: "_Wega/Objects/Specific/Robotics/modular_suits.rsi"
+                state: "advanced-plating"
+            - tool: Screwing
+              doAfter: 2
+          completed:
+            - !type:DestroyEntity {}
+
+        # 7. Security
+        - to: security_suit
+          steps:
+            - tag: SecurityPlating
+              name: construction-graph-tag-security-reinforcement-kit
+              icon:
+                sprite: "_Wega/Objects/Specific/Robotics/modular_suits.rsi"
+                state: "security-plating"
+            - tool: Screwing
+              doAfter: 2
+          completed:
+            - !type:DestroyEntity {}
+
+        # 8. Red Security
+        - to: red_security_suit
+          steps:
+            - tag: RedSecurityPlating
+              name: construction-graph-tag-red-security-kit
+              icon:
+                sprite: "_Wega/Objects/Specific/Robotics/modular_suits.rsi"
+                state: "safeguard-plating"
+            - tool: Screwing
+              doAfter: 2
+          completed:
+            - !type:DestroyEntity {}
+
+        # 9. Rescue
+        - to: rescue_suit
+          steps:
+            - tag: RescuePlating
+              name: construction-graph-tag-rescue-kit
+              icon:
+                sprite: "_Wega/Objects/Specific/Robotics/modular_suits.rsi"
+                state: "rescue-plating"
+            - tool: Screwing
+              doAfter: 2
+          completed:
+            - !type:DestroyEntity {}
+
+        # 10. Medical
+        - to: medical_suit
+          steps:
+            - tag: MedicalPlating
+              name: construction-graph-tag-medical-support-kit
+              icon:
+                sprite: "_Wega/Objects/Specific/Robotics/modular_suits.rsi"
+                state: "medical-plating"
+            - tool: Screwing
+              doAfter: 2
+          completed:
+            - !type:DestroyEntity {}
+
+        # 11. RD
+        - to: rd_suit
+          steps:
+            - tag: RDPlating
+              name: construction-graph-tag-research-director-kit
+              icon:
+                sprite: "_Wega/Objects/Specific/Robotics/modular_suits.rsi"
+                state: "research-plating"
+              doAfter: 2
+            - tool: Screwing
+              doAfter: 2
+          completed:
+            - !type:DestroyEntity {}
+
+    - node: basic_suit
+      actions:
+        - !type:SpawnPrototype
+          prototype: ClothingModularControllerStandard
+
+    - node: civilian_suit
+      actions:
+        - !type:SpawnPrototype
+          prototype: ClothingModularControllerCivilian
+
+    - node: clown_suit
+      actions:
+        - !type:SpawnPrototype
+          prototype: ClothingModularControllerCosmohonk
+
+    - node: engineering_suit
+      actions:
+        - !type:SpawnPrototype
+          prototype: ClothingModularControllerEngineering
+
+    - node: atmos_suit
+      actions:
+        - !type:SpawnPrototype
+          prototype: ClothingModularControllerAtmospheric
+
+    - node: white_engineering_suit
+      actions:
+        - !type:SpawnPrototype
+          prototype: ClothingModularControllerAdvanced
+
+    - node: security_suit
+      actions:
+        - !type:SpawnPrototype
+          prototype: ClothingModularControllerSecurity
+
+    - node: red_security_suit
+      actions:
+        - !type:SpawnPrototype
+          prototype: ClothingModularControllerSafeguard
+
+    - node: rescue_suit
+      actions:
+        - !type:SpawnPrototype
+          prototype: ClothingModularControllerRescue
+
+    - node: medical_suit
+      actions:
+        - !type:SpawnPrototype
+          prototype: ClothingModularControllerMedical
+
+    - node: rd_suit
+      actions:
+        - !type:SpawnPrototype
+          prototype: ClothingModularControllerResearch

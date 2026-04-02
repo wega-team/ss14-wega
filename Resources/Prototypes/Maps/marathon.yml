@@ -17,6 +17,11 @@
             prefixCreator: '14'
         - type: StationEmergencyShuttle
           emergencyShuttlePath: /Maps/Shuttles/emergency_rod.yml
+        # Corvax-Wega-Lavalabd-start
+        - type: StationLavaland
+          planets: [ Lavaland ]
+          enabled: false
+        # Corvax-Wega-Lavalabd-end
         - type: StationJobs
           availableJobs:
             #service

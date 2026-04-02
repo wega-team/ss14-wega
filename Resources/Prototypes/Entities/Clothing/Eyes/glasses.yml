@@ -214,6 +214,10 @@
   - type: IdentityBlocker
     coverage: EYES
   - type: ShowJobIcons
+# Corvax-Wega-start
+  - type: ShowMindShieldIcons
+  - type: ShowCriminalRecordIcons
+# Corvax-Wega-End
 
 - type: entity
   parent: ClothingEyesBase
@@ -249,6 +253,7 @@
   - type: GroupExamine
   - type: IdentityBlocker
     coverage: EYES
+  - type: ThermalSight
 
 - type: entity
   parent: ClothingEyesBase

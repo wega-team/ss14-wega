@@ -10,8 +10,6 @@ public enum SurgeryActionType : byte
     HealInternalDamage,
     RemoveOrgan,
     InsertOrgan,
-    RemovePart,
-    AttachPart,
     Implanting,
     RemoveImplant,
     StoreItem,

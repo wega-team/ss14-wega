@@ -56,7 +56,7 @@
   # Pet
   petSuccessString: petting-success-security-cyborg
   petFailureString: petting-failure-security-cyborg
-  
+
 # science borg
 - type: borgType
   id: science
@@ -76,7 +76,7 @@
   - BorgModuleArtifact
   - BorgModuleAnomaly
   - BorgModuleSlime
-  - BorgModuleDNA
+
   radioChannels:
   - Science
 
@@ -100,3 +100,6 @@
     
   # tts
   voicePrototypeId: Glados
+
+  blacklist:
+    components:

@@ -12,8 +12,8 @@
   - type: Tag
     tags:
     - SuitEVA
+    - ModNotEquipable # Corvax-Wega-ModularSuit
     - MonkeyWearable
-    - CorgiWearable
     - WhitelistChameleon
 
 #Syndicate EVA
@@ -30,6 +30,7 @@
   - type: Tag
     tags:
     - SuitEVA
+    - ModNotEquipable # Corvax-Wega-ModularSuit
     - MonkeyWearable
     - WhitelistChameleon
   - type: StaticPrice
@@ -61,6 +62,7 @@
       toggleable-clothing: !type:ContainerSlot {}
   - type: Tag
     tags:
+    - ModNotEquipable # Corvax-Wega-ModularSuit
     - OuterSuitAvar # Corvax-Wega
     - CorgiWearable
     - ScurretWearable
@@ -88,6 +90,7 @@
   - type: Tag
     tags:
     - SuitEVA
+    - ModNotEquipable # Corvax-Wega-ModularSuit
     - MonkeyWearable
     - WhitelistChameleon
 
@@ -174,5 +177,5 @@
       toggleable-clothing: !type:ContainerSlot {}
   - type: Tag
     tags:
-    - CorgiWearable
+    - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon

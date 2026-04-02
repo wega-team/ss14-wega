@@ -1,0 +1,20 @@
+<controls:FancyWindow xmlns="https://spacestation14.io"
+    xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+    xmlns:customControls="clr-namespace:Content.Client.Administration.UI.CustomControls"
+    Title="{Loc 'modsuit-light-ui-title'}" MinSize="400 300" SetSize="400 300">
+
+    <BoxContainer Orientation="Vertical" Margin="10">
+
+        <Label Text="{Loc 'modsuit-light-ui-color'}" StyleClasses="LabelHeading" Margin="0 0 0 5"/>
+        <ColorSelectorSliders Name="ColorSelector" IsAlphaVisible="False" Margin="0 0 0 10"/>
+
+        <CheckBox Name="MulticolouredCheckbox" Text="{Loc 'modsuit-light-ui-multicoloured'}" Margin="0 5"/>
+
+        <customControls:HSeparator StyleClasses="LowDivider" Margin="0 0 0 10"/>
+
+        <BoxContainer Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5">
+            <Button Name="ConfirmationButton" Text="{Loc 'modsuit-light-ui-confirm'}" MinSize="80 30"/>
+        </BoxContainer>
+
+    </BoxContainer>
+</controls:FancyWindow>

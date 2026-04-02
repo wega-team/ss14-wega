@@ -1,7 +1,7 @@
 using Content.Shared.Alert;
-using Content.Shared.Body.Prototypes;
 using Content.Shared.Damage;
 using Content.Shared.FixedPoint;
+using Content.Shared.Metabolism;
 using Content.Shared.StatusIcon;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
@@ -18,12 +18,12 @@ public sealed partial class VampireComponent : Component
 
     public static readonly DamageSpecifier HolyDamage = new()
     {
-        DamageDict = new Dictionary<string, FixedPoint2>() { { "Heat", 10 } }
+        DamageDict = { { "Heat", 10 } }
     };
 
     public static readonly DamageSpecifier SpaceDamage = new()
     {
-        DamageDict = new Dictionary<string, FixedPoint2>() { { "Heat", 2.5 } }
+        DamageDict = { { "Heat", 2.5 } }
     };
 
     public static readonly EntProtoId DrinkActionPrototype = "ActionDrinkBlood";
@@ -62,9 +62,9 @@ public sealed partial class VampireComponent : Component
     public float NextNullDamageTick { get; set; }
 
     public bool TruePowerActive = false;
-	
-	public bool IsCharging = false;
-	
+
+    public bool IsCharging = false;
+
     public HashSet<EntityUid> AlreadyHit { get; } = new HashSet<EntityUid>();
 
     public bool PowerActive = false;

@@ -49,6 +49,11 @@
     price: 800
   - type: ResearchClient
   - type: TechnologyDatabase
+  - type: ApcPowerReceiver
+    powerLoad: 150
+  - type: PowerState
+    idlePowerDraw: 150
+    workingPowerDraw: 1000
 
 # a lathe that can be sped up with space lube / slowed down with glue
 - type: entity
@@ -309,9 +314,14 @@
     staticPacks:
     - RoboticsStatic
     - BorgModulesStatic
-    - BorgLimbsStatic
+    - BorgLimbsStatic 
+    - ModesuitPartStatic # Corvax-Wega-Edit
+    - ModesuitModuleStatic # Corvax-Wega-Edit
     dynamicPacks:
     - Robotics
+    - ScienceReach # Corvax-Wega-Edit
+    - ModesuitPlatingReach # Corvax-Wega-Edit
+    - ModesuitModuleReach # Corvax-Wega-Edit
     - BorgModules
     - MechParts
     - MechEquipment
@@ -321,6 +331,12 @@
   - type: GuideHelp
     guides:
     - Robotics
+# Corvax-wega-start
+  - type: EmagLatheRecipes
+    emagStaticPacks:
+    - ModesuitModuleSecStatic
+    - ModesuitModuleSecReach
+# Corvax-wega-end
 
 - type: entity
   id: Biofabricator
@@ -385,11 +401,14 @@
   - type: Lathe
     idleState: icon
     runningState: icon
+    unlitIdleState: unlit
+    unlitRunningState: unlit-building
     staticPacks:
     - SecurityEquipmentStatic
     - SecurityPracticeStatic
     - SecurityAmmoStatic
     - SecurityWeaponsStatic
+    - ModesuitModuleSecStatic # Corvax-Wega-Edit
     dynamicPacks:
     - SalvageSecurityBoards
     - SalvageSecurityWeapons
@@ -400,6 +419,8 @@
     - SecurityWeapons
     - SecurityDisablers
     - ImplantSB # Corvax-Wega-Edit
+    - ScienceReach # Corvax-Wega-Edit
+    - ModesuitModuleSecReach # Corvax-Wega-Edit
   - type: EmagLatheRecipes
     emagStaticPacks:
     - SyndicateAmmoStatic
@@ -433,6 +454,8 @@
     - type: Lathe
       idleState: icon
       runningState: icon
+      unlitIdleState: unlit
+      unlitRunningState: unlit-building
       staticPacks:
       - SecurityAmmoStatic
     - type: EmagLatheRecipes
@@ -464,6 +487,8 @@
   - type: Lathe
     idleState: icon
     runningState: icon
+    unlitIdleState: unlit
+    unlitRunningState: unlit-building
     staticPacks:
     - TopicalsStatic
     - MedicalStatic

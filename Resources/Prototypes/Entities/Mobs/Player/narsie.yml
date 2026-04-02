@@ -100,7 +100,6 @@
       tags:
       - GhostOnlyWarp
   # Corvax-Wega-Blood-Cult-start
-  - type: Timer
   - type: TimedSpawner
     prototypes:
     - MobConstructHarvester

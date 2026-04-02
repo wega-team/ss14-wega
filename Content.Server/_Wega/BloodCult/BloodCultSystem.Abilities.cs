@@ -870,7 +870,7 @@ public sealed partial class BloodCultSystem
         {
             handled = HealCultist(cultist, target);
         }
-        else if (HasComp<HumanoidAppearanceComponent>(target) && !HasComp<NullRodOwnerComponent>(target))
+        else if (HasComp<HumanoidProfileComponent>(target) && !HasComp<NullRodOwnerComponent>(target))
         {
             handled = StealBloodFromHumanoid(cultist, user, target);
         }
@@ -899,12 +899,13 @@ public sealed partial class BloodCultSystem
         var totalBlood = cultist.BloodCount;
         var prioritizedDamageTypes = new[] { "Blunt", "Piercing", "Heat", "Slash", "Caustic" };
 
+        var positiveDamage = _damage.GetPositiveDamage((target, damage));
         foreach (var damageType in prioritizedDamageTypes)
         {
             if (totalBlood <= 0)
                 break;
 
-            if (damage.Damage.DamageDict.TryGetValue(damageType, out var currentDamage) && currentDamage > 0)
+            if (positiveDamage.DamageDict.TryGetValue(damageType, out var currentDamage) && currentDamage > 0)
             {
                 var healAmount = FixedPoint2.Min(currentDamage, totalBlood);
                 var healSpecifier = new DamageSpecifier { DamageDict = { { damageType, -healAmount } } };
@@ -971,21 +972,23 @@ public sealed partial class BloodCultSystem
         var absorbedBlood = 0;
         foreach (var containedEntity in container.ContainedEntities.ToList())
         {
-            if (!TryComp(containedEntity, out SolutionComponent? solutionComponent))
+            if (!_solution.TryGetSolution(containedEntity, null, out var solutionComp, out var solutionData))
                 continue;
 
-            foreach (var reagent in solutionComponent.Solution.Contents.ToList())
+            var bloodReagents = solutionData.Contents
+                .Where(r => r.Reagent.Prototype == "Blood" || r.Reagent.Prototype == "CopperBlood")
+                .ToList();
+
+            foreach (var reagent in bloodReagents)
             {
-                if (reagent.Reagent.Prototype == "Blood" || reagent.Reagent.Prototype == "CopperBlood")
-                {
-                    absorbedBlood += reagent.Quantity.Int();
-                    solutionComponent.Solution.RemoveReagent(reagent.Reagent, reagent.Quantity);
-                }
+                absorbedBlood += reagent.Quantity.Int();
+                _solution.RemoveReagent(solutionComp.Value, reagent);
             }
 
-            Spawn("BloodCultFloorGlowEffect", Transform(puddle).Coordinates);
+            if (bloodReagents.Count > 0)
+                Spawn("BloodCultFloorGlowEffect", Transform(puddle).Coordinates);
 
-            if (solutionComponent.Solution.Contents.Count == 0)
+            if (_solution.TryGetSolution(containedEntity, null, out _, out var updatedSolution) && updatedSolution.Contents.Count == 0)
                 QueueDel(puddle);
         }
 

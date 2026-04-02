@@ -573,21 +573,21 @@
   products:
     Monako: 5
 
-- type: reaction
-  id: SlimeDrink
-  requiredMixerCategories:
-  - Shake
-  reactants:
-    Slime:
-      amount: 5
-    Ice:
-      amount: 2
-    Sugar:
-      amount: 1
-    Gin:
-      amount: 2
-  products:
-    SlimeDrink: 5
+# - type: reaction
+#   id: SlimeDrink
+#   requiredMixerCategories:
+#   - Shake
+#   reactants:
+#     Slime:
+#       amount: 5
+#     Ice:
+#       amount: 2
+#     Sugar:
+#       amount: 1
+#     Gin:
+#       amount: 2
+#   products:
+#     SlimeDrink: 5
 
 - type: reaction
   id: InnocentERP
@@ -724,7 +724,7 @@
       amount: 1
   products:
     NewYorker: 7
-    
+
 - type: reaction
   id: MilkshakeChockolate
   requiredMixerCategories:

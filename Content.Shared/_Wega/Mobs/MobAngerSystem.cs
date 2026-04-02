@@ -1,4 +1,5 @@
 using Content.Shared.Damage.Components;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Mobs.Anger.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Components;
@@ -9,6 +10,7 @@ namespace Content.Shared.Mobs.Anger;
 
 public sealed class MobAngerSystem : EntitySystem
 {
+    [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly MovementSpeedModifierSystem _speed = default!;
     [Dependency] private readonly MobThresholdSystem _threshold = default!;
 
@@ -25,10 +27,13 @@ public sealed class MobAngerSystem : EntitySystem
         if (comp.Anger)
             return;
 
-        if (_threshold.TryGetThresholdForState(uid, MobState.Dead, out var threshold)
-            && TryComp<DamageableComponent>(uid, out var damageable) && damageable.TotalDamage > 0)
+        if (!TryComp<DamageableComponent>(uid, out var damageable))
+            return;
+
+        var totalDamage = _damageable.GetTotalDamage((uid, damageable));
+        if (_threshold.TryGetThresholdForState(uid, MobState.Dead, out var threshold) && totalDamage > 0)
         {
-            if (damageable.TotalDamage >= threshold - threshold * comp.AngerThreshold)
+            if (totalDamage >= threshold - threshold * comp.AngerThreshold)
             {
                 comp.Anger = true;
                 if (TryComp(uid, out MovementSpeedModifierComponent? speed))

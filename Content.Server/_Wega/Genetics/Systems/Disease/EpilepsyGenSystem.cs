@@ -18,6 +18,8 @@ public sealed class EpilepsySystem : EntitySystem
     [Dependency] private readonly SharedStunSystem _stun = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
+    private static readonly ProtoId<EmotePrototype> Scream = "Scream";
+
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
@@ -33,7 +35,7 @@ public sealed class EpilepsySystem : EntitySystem
                     _stun.TryUpdateParalyzeDuration(uid, TimeSpan.FromSeconds(15));
                     _jitteringSystem.DoJitter(uid, TimeSpan.FromSeconds(15), true);
                     _popup.PopupClient(Loc.GetString("disease-epilepsy-massage"), uid, PopupType.Medium);
-                    _chat.TryEmoteWithoutChat(uid, _prototypeManager.Index<EmotePrototype>("Scream"), true);
+                    _chat.TryEmoteWithoutChat(uid, _prototypeManager.Index(Scream), true);
                 }
             }
             epilepsy.NextTimeTick -= frameTime;

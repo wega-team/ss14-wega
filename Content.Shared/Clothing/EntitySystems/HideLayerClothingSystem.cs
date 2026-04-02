@@ -1,6 +1,7 @@
 using Content.Shared.Clothing.Components;
 using Content.Shared.Humanoid;
 using Content.Shared.Inventory;
+using Content.Shared.Item.ItemToggle.Components; // Corvax-Wega-Add
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 
@@ -8,7 +9,7 @@ namespace Content.Shared.Clothing.EntitySystems;
 
 public sealed class HideLayerClothingSystem : EntitySystem
 {
-    [Dependency] private readonly SharedHumanoidAppearanceSystem _humanoid = default!;
+    [Dependency] private readonly SharedHideableHumanoidLayersSystem _hideableHumanoidLayers = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
     public override void Initialize()
@@ -16,6 +17,7 @@ public sealed class HideLayerClothingSystem : EntitySystem
         SubscribeLocalEvent<HideLayerClothingComponent, ClothingGotUnequippedEvent>(OnHideGotUnequipped);
         SubscribeLocalEvent<HideLayerClothingComponent, ClothingGotEquippedEvent>(OnHideGotEquipped);
         SubscribeLocalEvent<HideLayerClothingComponent, ItemMaskToggledEvent>(OnHideToggled);
+        SubscribeLocalEvent<HideLayerClothingComponent, ItemToggledEvent>(OnItemToggled); // Corvax-Wega-Add
     }
 
     private void OnHideToggled(Entity<HideLayerClothingComponent> ent, ref ItemMaskToggledEvent args)
@@ -23,6 +25,19 @@ public sealed class HideLayerClothingSystem : EntitySystem
         if (args.Wearer != null)
             SetLayerVisibility(ent!, args.Wearer.Value, hideLayers: true);
     }
+
+    // Corvax-Wega-Add-start
+    private void OnItemToggled(Entity<HideLayerClothingComponent> ent, ref ItemToggledEvent args)
+    {
+        if (!TryComp<ClothingComponent>(ent, out var clothing) || args.User == null)
+            return;
+
+        if (clothing.InSlotFlag != null)
+        {
+            SetLayerVisibility(ent!, args.User.Value, args.Activated);
+        }
+    }
+    // Corvax-Wega-Add-end
 
     private void OnHideGotEquipped(Entity<HideLayerClothingComponent> ent, ref ClothingGotEquippedEvent args)
     {
@@ -36,7 +51,7 @@ public sealed class HideLayerClothingSystem : EntitySystem
 
     private void SetLayerVisibility(
         Entity<HideLayerClothingComponent?, ClothingComponent?> clothing,
-        Entity<HumanoidAppearanceComponent?> user,
+        Entity<HideableHumanoidLayersComponent?> user,
         bool hideLayers)
     {
         if (_timing.ApplyingState)
@@ -51,7 +66,6 @@ public sealed class HideLayerClothingSystem : EntitySystem
 
         hideLayers &= IsEnabled(clothing!);
 
-        var hideable = user.Comp.HideLayersOnEquip;
         var inSlot = clothing.Comp2.InSlotFlag ?? SlotFlags.NONE;
 
         // This method should only be getting called while the clothing is equipped (though possibly currently in
@@ -60,18 +74,13 @@ public sealed class HideLayerClothingSystem : EntitySystem
         DebugTools.AssertNotNull(clothing.Comp2.InSlotFlag);
         DebugTools.AssertNotEqual(inSlot, SlotFlags.NONE);
 
-        var dirty = false;
-
         // iterate the HideLayerClothingComponent's layers map and check that
         // the clothing is (or was)equipped in a matching slot.
         foreach (var (layer, validSlots) in clothing.Comp1.Layers)
         {
-            if (!hideable.Contains(layer))
-                continue;
-
             // Only update this layer if we are currently equipped to the relevant slot.
             if (validSlots.HasFlag(inSlot))
-                _humanoid.SetLayerVisibility(user!, layer, !hideLayers, inSlot, ref dirty);
+                _hideableHumanoidLayers.SetLayerOcclusion(user, layer, hideLayers, inSlot);
         }
 
         // Fallback for obsolete field: assume we want to hide **all** layers, as long as we are equipped to any
@@ -82,13 +91,9 @@ public sealed class HideLayerClothingSystem : EntitySystem
         {
             foreach (var layer in slots)
             {
-                if (hideable.Contains(layer))
-                    _humanoid.SetLayerVisibility(user!, layer, !hideLayers, inSlot, ref dirty);
+                _hideableHumanoidLayers.SetLayerOcclusion(user, layer, hideLayers, inSlot);
             }
         }
-
-        if (dirty)
-            Dirty(user!);
     }
 
     private bool IsEnabled(Entity<HideLayerClothingComponent, ClothingComponent> clothing)
@@ -98,6 +103,9 @@ public sealed class HideLayerClothingSystem : EntitySystem
 
         if (!clothing.Comp1.HideOnToggle)
             return true;
+
+        if (TryComp<ItemToggleComponent>(clothing, out var toggle))
+            return toggle.Activated;
 
         if (!TryComp(clothing, out MaskComponent? mask))
             return true;

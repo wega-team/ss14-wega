@@ -8,7 +8,7 @@
         <Button Name="Button"
                 HorizontalExpand="True"
                 StyleClasses="ButtonSquare">
-            <Label Name="Name" HorizontalExpand="True" Margin="8 0"/>
+            <Label Name="NameLabel" HorizontalExpand="True" Margin="8 0"/>
         </Button>
     </BoxContainer>
 </Control>

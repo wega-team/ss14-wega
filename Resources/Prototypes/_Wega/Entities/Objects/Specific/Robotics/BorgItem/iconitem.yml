@@ -2,6 +2,7 @@
 - type: entity
   parent: BaseItem
   id: BorgIconMorgBag
+  categories: [ HideSpawnMenu ]
   name: BorgIconMorgBag
   description: BorgIconMorgBag
   components:
@@ -14,6 +15,7 @@
   parent: BaseItem
   id: BorgIconRollerBed
   name: BorgIconRollerBed
+  categories: [ HideSpawnMenu ]
   description: BorgIconRollerBed
   components:
   - type: Sprite
@@ -25,8 +27,86 @@
   parent: BaseItem
   id: BorgIconKitchenIcon
   name: KitchenIcon
+  categories: [ HideSpawnMenu ]
   description: BorgIconRollerBed
   components:
   - type: Sprite
     sprite: _Wega/Objects/Specific/Robotics/iconitem.rsi
     state: kitchen
+    
+- type: entity
+  parent: BaseItem
+  id: BorgIcon
+  name: BorgIcon
+  categories: [ HideSpawnMenu ]
+  description: BorgIconRollerBed
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/iconitem.rsi
+    state: icon-borg
+
+- type: entity
+  parent: BaseItem
+  id: MedicalIcon
+  name: MedicalIcon
+  categories: [ HideSpawnMenu ]
+  description: BorgIconRollerBed
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/iconitem.rsi
+    state: icon-medical
+
+- type: entity
+  parent: BaseItem
+  id: MusicIcon
+  name: MusicIcon
+  categories: [ HideSpawnMenu ]
+  description: BorgIconRollerBed
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/iconitem.rsi
+    state: musical-icon
+
+- type: entity
+  parent: BaseItem
+  id: CabelIcon
+  name: CabelIcon
+  categories: [ HideSpawnMenu ]
+  description: BorgIconRollerBed
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/iconitem.rsi
+    state: cabel-icon
+
+- type: entity
+  parent: BaseItem
+  id: ConstrukAndCabel
+  name: ConstrukAndCabel
+  categories: [ HideSpawnMenu ]
+  description: BorgIconRollerBed
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/iconitem.rsi
+    state: generic_materials_cabel
+
+- type: entity
+  parent: BaseItem
+  id: ScientistIcon
+  name: ScientistIcon
+  categories: [ HideSpawnMenu ]
+  description: BorgIconRollerBed
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/iconitem.rsi
+    state: scie-icon
+
+- type: entity
+  parent: BaseItem
+  id: BallonIcon
+  name: BallonIcon
+  categories: [ HideSpawnMenu ]
+  description: BorgIconRollerBed
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/iconitem.rsi
+    state: ballon-icon

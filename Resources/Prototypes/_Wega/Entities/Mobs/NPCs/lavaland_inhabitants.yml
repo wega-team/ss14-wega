@@ -10,7 +10,7 @@
 
 # Inhabitant Square
 - type: entity
-  parent: [ BaseMobHuman, BaseMobInhabitants ]
+  parent: [ MobHuman, BaseMobInhabitants ]
   id: MobHumanInhabitantSquare
   name: inhabitant of the square
   components:
@@ -40,7 +40,7 @@
 
 # Hermit
 - type: entity
-  parent: [ BaseMobHuman, BaseMobInhabitants ]
+  parent: [ MobHuman, BaseMobInhabitants ]
   id: MobHumanInhabitantHermit
   name: hermit
   components:
@@ -51,7 +51,6 @@
     suffocationThreshold: -6.0
     maxSaturation: 8.0
     minSaturation: -4.0
-    suffocationCycleThreshold: 6
     updateIntervalMultiplier: 0.8
   - type: NpcFactionMember
     factions:
@@ -76,7 +75,7 @@
 
 # Beach Guys
 - type: entity
-  parent: [ BaseMobHuman, BaseMobInhabitants ]
+  parent: [ MobHuman, BaseMobInhabitants ]
   id: MobHumanInhabitantBeachGuy
   name: beach Guy
   components:
@@ -150,7 +149,7 @@
 
 # Veterinarian
 - type: entity
-  parent: [ BaseMobHuman, BaseMobInhabitants ]
+  parent: [ MobHuman, BaseMobInhabitants ]
   id: MobHumanInhabitantTranslocatedVeterinarian
   name: veterinarian
   components:

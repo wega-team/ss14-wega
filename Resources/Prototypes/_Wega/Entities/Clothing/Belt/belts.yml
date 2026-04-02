@@ -22,6 +22,36 @@
   - type: Clothing
     sprite: _Wega/Clothing/Belt/sheriff_sheath.rsi
 
+# ADT
+
+- type: entity
+  parent: ClothingBeltBase
+  id: ClothingBeltBlackSuspenders
+  name: black suspenders
+  description: A suspenders made with elastic ribbon and the addition of rubber. Made by company "Modeling Agency Dar-Vaxed".
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Belt/black_suspenders.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Belt/black_suspenders.rsi #спрайты от prazat911
+    quickEquip: true
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: ClothingBeltBase
+  id: ClothingBeltBrownSuspenders
+  name: brown suspenders
+  description: A suspenders made of rough leather. Made by company "Modeling Agency Dar-Vaxed".
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Belt/leather_suspenders.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Belt/leather_suspenders.rsi #спрайты от prazat911
+    quickEquip: true
+  - type: StaticPrice
+    price: 15
+
 - type: entity
   parent: ClothingBeltStorageBase
   id: ClothingBeltSecondSalvageWebbing

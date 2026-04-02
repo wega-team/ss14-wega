@@ -23,3 +23,11 @@
   materials:
     Steel: 1500
     Glass: 1500
+    
+- type: latheRecipe
+  parent: BaseXenoborgModulesRecipe
+  id: XenoborgModuleEMP
+  result: XenoborgModuleEMP
+  materials:
+    Steel: 1500
+    Glass: 1500
