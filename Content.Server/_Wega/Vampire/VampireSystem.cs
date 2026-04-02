@@ -7,7 +7,7 @@ using Content.Server.Body.Systems;
 using Content.Server.Chat.Systems;
 using Content.Server.Polymorph.Systems;
 using Content.Server.NPC.HTN;
-using Content.Server.CharacterAppearance.Components;
+using Content.Server.Humanoid.Components;
 using Content.Shared.Actions;
 using Content.Shared.Actions.Components;
 using Content.Shared.Alert;
