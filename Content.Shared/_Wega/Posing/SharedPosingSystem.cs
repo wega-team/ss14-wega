@@ -8,7 +8,7 @@ using Content.Shared.Standing;
 using Content.Shared.Stunnable;
 using Robust.Shared.Input.Binding;
 
-namespace Content.Shared.ADT.Posing;
+namespace Content.Shared.Posing;
 
 public abstract partial class SharedPosingSystem : EntitySystem
 {
