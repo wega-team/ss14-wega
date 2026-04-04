@@ -25,7 +25,7 @@
   parent: [ BaseSyndicateContraband, ClothingOuterWinterWarden ]
   id: ClothingOuterWinterBlueShieldAlt
   name: winter armorcoat Blue Shield
-  description: Good quality coat 
+  description: Good quality coat.
   components:
   - type: Armor
     modifiers:
