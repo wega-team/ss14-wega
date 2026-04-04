@@ -918,10 +918,10 @@
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
-    totalIntensity: 175 # Corvax-Wega-Edit
+    totalIntensity: 50
     intensitySlope: 1
-    maxIntensity: 10 # Corvax-Wega-Edit
-    canCreateVacuum: true # Corvax-Wega-Edit
+    maxIntensity: 5
+    canCreateVacuum: false
   - type: ContainerContainer
     containers:
       cluster-payload: !type:Container
