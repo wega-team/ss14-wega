@@ -67,7 +67,7 @@
   parent: ClothingBeltMilitaryWebbing
   id: ClothingBeltMilitaryWebbingAlt
   name: light military webbing
-  description: standart light webbing
+  description: Standart light webbing.
   components:
   - type: Sprite
     sprite: _Wega/Clothing/Belt/webbingblueshield.rsi
