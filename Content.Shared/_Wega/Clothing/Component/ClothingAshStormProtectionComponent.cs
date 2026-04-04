@@ -2,9 +2,10 @@ using Robust.Shared.GameStates;
 
 namespace Content.Shared.Clothing.Components;
 
-[RegisterComponent, NetworkedComponent, Access(typeof(ClothingAshStormProtectionSystem))]
+[Access(typeof(ClothingAshStormProtectionSystem))]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true)]
 public sealed partial class ClothingAshStormProtectionComponent : Component
 {
-    [DataField]
+    [DataField, AutoNetworkedField]
     public float Modifier = 0.5f;
 }
