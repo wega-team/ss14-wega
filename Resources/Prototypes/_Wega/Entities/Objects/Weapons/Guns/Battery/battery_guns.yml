@@ -316,7 +316,7 @@
   name: energy carabine "Pulsar"
   parent: [BaseWeaponBattery, BaseSecurityContraband, BaseGunWieldable]
   id: WeaponEnergyPulsar
-  description: High stop-power energy carabine
+  description: High stop-power energy carabine.
   components:
   - type: Sprite
     sprite: _Wega/Objects/Weapons/Guns/Battery/pulsar.rsi
