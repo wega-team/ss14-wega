@@ -5,11 +5,17 @@
   parent: ClothingBeltMilitaryWebbing
   suffix: Filled
   components:
-  - type: StorageFill
-    contents:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:NestedSelector
+        tableId: BeltBlueShieldEntityLable
+
+- type: entityTable
+  id: BeltBlueShieldEntityLable
+  table: !type:AllSelector
+    children:
     - id: Stunbaton
     - id: Handcuffs
-    - id: AdvancedJetInjector
     - id: ChemistryBottleBicaridine
     - id: ChemistryBottleBicaridine
     - id: ChemistryBottleDermaline
