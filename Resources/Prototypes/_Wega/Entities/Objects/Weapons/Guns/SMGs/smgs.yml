@@ -56,10 +56,10 @@
             - CartridgePistolFoam
 
 - type: entity
-  name: Berkut
+  name: berkut
   parent: BaseWeaponRifle
   id: WeaponSubmachinegunBerkut
-  description: automatic SMG military class
+  description: Automatic SMG military class.
   components:
   - type: Sprite
     sprite:  _Wega/Objects/Weapons/Guns/SMGs/berkut.rsi
