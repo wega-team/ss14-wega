@@ -248,7 +248,7 @@
   parent: ClothingOuterArmorBasic
   id: ClothingVestBlueShieldAlt
   name: blue shield vest
-  description: Type V bulletproof vest
+  description: Type V bulletproof vest.
   components:
   - type: Sprite
     sprite: _Wega/Clothing/OuterClothing/Armor/blueshieldvest.rsi
