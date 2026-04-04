@@ -79,8 +79,8 @@
 - type: entity
   parent: BaseVoucherCard
   id: BlueShieldVoucherCard
-  name: Blue Shield voucher card
-  description: Voucher card for extend arsenal blue shield Officer
+  name: blue shield voucher card
+  description: Voucher card for extend arsenal blue shield Officer.
   components:
   - type: Sprite
     sprite: _Wega/Objects/Misc/vouchers.rsi
