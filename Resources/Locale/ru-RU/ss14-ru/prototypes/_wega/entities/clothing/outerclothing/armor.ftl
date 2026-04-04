@@ -23,4 +23,4 @@ ent-ClothingOuterArmorHostileEnv = H.E.C.K. костюм
 ent-ClothingOuterArmorBloodCult = { ent-ClothingOuterArmorCult }
     .desc = { ent-ClothingOuterArmorCult.desc }
 ent-ClothingVestBlueShieldAlt = бронежилет офицера "Синий Щит"
-    .desc = Бронежилет типа МК V. Более эластичен. Менее громоздкий..
+    .desc = Бронежилет типа МК V. Более эластичен. Менее громоздкий.
