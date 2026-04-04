@@ -52,10 +52,10 @@
   - type: Appearance
 
 - type: entity
-  name: Jay
+  name: jay
   parent: BaseWeaponRifle
   id: WeaponRifleJay
-  description: automatic assault rifle military class
+  description: Automatic assault rifle military class.
   components:
   - type: Sprite
     sprite: _Wega/Objects/Weapons/Guns/Rifles/jay.rsi
