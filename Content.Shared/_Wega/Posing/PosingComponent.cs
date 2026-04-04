@@ -1,7 +1,7 @@
 using System.Numerics;
 using Robust.Shared.GameStates;
 
-namespace Content.Shared.ADT.Posing;
+namespace Content.Shared.Posing;
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true)]
 public sealed partial class PosingComponent : Component
