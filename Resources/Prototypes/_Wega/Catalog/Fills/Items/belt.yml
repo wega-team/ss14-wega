@@ -1,7 +1,7 @@
 - type: entity
   id: ClothingBeltMilitaryWebbingFilled
   name: assault belt
-  description: tactical assault belt
+  description: Tactical assault belt.
   parent: ClothingBeltMilitaryWebbing
   suffix: Filled
   components:
