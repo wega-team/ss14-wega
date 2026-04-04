@@ -43,6 +43,3 @@
     sprite: _Wega/Clothing/OuterClothing/WinterCoats/altBScoat.rsi
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterBlueShieldAlt
-    requiredSlot:
-    - outerclothing
-    slot: head
