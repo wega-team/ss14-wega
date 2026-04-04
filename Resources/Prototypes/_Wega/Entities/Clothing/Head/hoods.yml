@@ -187,7 +187,7 @@
   parent: ClothingHeadHatHoodWinterBase
   id: ClothingHeadHatHoodWinterBlueShieldAlt
   categories: [ HideSpawnMenu ]
-  name: Blue Shield coat's hood
+  name: blue shield coat's hood
   components:
   - type: Sprite
     sprite: _Wega/Clothing/Head/Hoods/Coat/hoodblueshieldalt.rsi
