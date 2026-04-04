@@ -1,0 +1,25 @@
+- type: constructionGraph
+  id: RazGlove
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: RazorGlov
+      steps:
+      - tag: Gloves
+        name: ent-ClothingHandsCatPawsBlackWhite
+        icon:
+          sprite: Objects/Tools/wirecutters.rsi
+          state: cutters
+        doAfter: 4
+      - tag: Wirecutter
+        name: ent-Wirecutter
+        icon:
+          sprite: _Wega/Clothing/Hands/Gloves/black_white.rsi
+          state: icon
+        doAfter: 4
+      - material: Cable
+        amount: 5
+        doAfter: 4
+  - node: RazorGlov
+    entity: ClothingHandsRazorGloves
