@@ -9,14 +9,14 @@
       - tag: Gloves
         name: ent-ClothingHandsCatPawsBlackWhite
         icon:
-          sprite: Objects/Tools/wirecutters.rsi
-          state: cutters
+          sprite: _Wega/Clothing/Hands/Gloves/black_white.rsi
+          state: icon
         doAfter: 4
       - tag: Wirecutter
         name: ent-Wirecutter
         icon:
-          sprite: _Wega/Clothing/Hands/Gloves/black_white.rsi
-          state: icon
+          sprite: Objects/Tools/wirecutters.rsi
+          state: cutters
         doAfter: 4
       - material: Cable
         amount: 5
