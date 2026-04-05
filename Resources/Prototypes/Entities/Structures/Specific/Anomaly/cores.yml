@@ -142,27 +142,27 @@
     energy: 3.5
     color: "#cb5b7e"
     castShadows: false
-  - type: Healing
-    damageContainers:
-    - Biological
-    damage:
-      groups: # these are all split across multiple types
-        Brute: -150
-        Burn: -150
-        Toxin: -150
-    bloodlossModifier: -20
-    delay: 1
-    selfHealPenaltyMultiplier: 0
-    healingBeginSound:
-      path: "/Audio/Items/Medical/ointment_begin.ogg"
-      params:
-        volume: 1.0
-        variation: 0.125
-    healingEndSound:
-      path: "/Audio/Items/Medical/ointment_end.ogg"
-      params:
-        volume: 1.0
-        variation: 0.125
+  # - type: Healing
+  #   damageContainers:
+  #   - Biological
+  #   damage:
+  #     groups: # these are all split across multiple types
+  #       Brute: -150
+  #       Burn: -150
+  #       Toxin: -150
+  #   bloodlossModifier: -20
+  #   delay: 1
+  #   selfHealPenaltyMultiplier: 0
+  #   healingBeginSound:
+  #     path: "/Audio/Items/Medical/ointment_begin.ogg"
+  #     params:
+  #       volume: 1.0
+  #       variation: 0.125
+  #   healingEndSound:
+  #     path: "/Audio/Items/Medical/ointment_end.ogg"
+  #     params:
+  #       volume: 1.0
+  #       variation: 0.125
 
 - type: entity
   parent: BaseAnomalyCore
@@ -679,7 +679,7 @@
     maxCharges: 1
   - type: AutoRecharge
     rechargeDuration: 300
-    
+
 - type: entity
   parent: BaseAnomalyInertCore
   id: AnomalyCoreSantaInert

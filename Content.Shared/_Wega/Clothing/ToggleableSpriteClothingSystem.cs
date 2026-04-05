@@ -1,5 +1,6 @@
 using Content.Shared.Clothing.Components;
 using Content.Shared.DoAfter;
+using Content.Shared.Inventory;
 using Content.Shared.Verbs;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.GameStates;
@@ -18,7 +19,7 @@ public sealed class ToggleableSpriteClothingSystem : EntitySystem
         SubscribeLocalEvent<ToggleableSpriteClothingComponent, ComponentGetState>(OnGetState);
         SubscribeLocalEvent<ToggleableSpriteClothingComponent, GetVerbsEvent<AlternativeVerb>>(AddToggleVerb);
 
-        SubscribeLocalEvent<ToggleSpriteClothingDoAfterEvent>(OnDoAfter);
+        SubscribeLocalEvent<InventoryComponent, ToggleSpriteClothingDoAfterEvent>(OnDoAfter);
     }
 
     private static void OnGetState(EntityUid uid, ToggleableSpriteClothingComponent component, ref ComponentGetState args)
@@ -59,7 +60,7 @@ public sealed class ToggleableSpriteClothingSystem : EntitySystem
         _doAfterSystem.TryStartDoAfter(args);
     }
 
-    private void OnDoAfter(ToggleSpriteClothingDoAfterEvent args)
+    private void OnDoAfter(Entity<InventoryComponent> entity, ref ToggleSpriteClothingDoAfterEvent args)
     {
         if (args.Handled || args.Target == null)
             return;

@@ -82,6 +82,7 @@
   parent:
   - AppearanceIpc
   - BaseSpeciesMob
+  - BaseOperated # Corvax-Wega-Surgery
   id: MobIpc
   name: Urist McHands
   components:
@@ -139,6 +140,8 @@
         type: StrippableBoundUserInterface
       enum.IpcFaceUiKey.Face:
         type: IpcFaceUserInterface
+      enum.SurgeryUiKey.Key: # Corvax-Wega-Surgery
+        type: SurgeryBoundUserInterface # Corvax-Wega-Surgery
   - type: InteractionPopup
     successChance: 1
     interactSuccessString: hugging-success-generic
@@ -263,6 +266,15 @@
     shiveringHeatRegulation: 2000
     normalBodyTemperature: 310.15
     thermalRegulationTemperatureThreshold: 2
+  # Corvax-Wega-Surgery-start
+  # - type: Operated
+  #   raceGraph: IpcSurgery
+  #   limbLossChance: 2
+  #   specialTool: Screwing
+  # - type: SyntheticOperated
+  # - type: Pain
+  #   profile: SyntheticPainProfile
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   parent: OrganBase

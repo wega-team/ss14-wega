@@ -195,6 +195,13 @@ namespace Content.Client.Options.UI.Tabs
             AddButton(ContentKeyFunctions.RotateStoredItem);
             AddButton(ContentKeyFunctions.SaveItemLocation);
             AddButton(ContentKeyFunctions.OfferItem); /// Corvax-Wega-Offer
+            AddButton(ContentKeyFunctions.TogglePosing); // Corvax-Wega-Posing
+            AddButton(ContentKeyFunctions.PosingOffsetLeft); // Corvax-Wega-Posing
+            AddButton(ContentKeyFunctions.PosingOffsetRight); // Corvax-Wega-Posing
+            AddButton(ContentKeyFunctions.PosingOffsetUp); // Corvax-Wega-Posing
+            AddButton(ContentKeyFunctions.PosingOffsetDown); // Corvax-Wega-Posing
+            AddButton(ContentKeyFunctions.PosingRotateNegative); // Corvax-Wega-Posing
+            AddButton(ContentKeyFunctions.PosingRotatePositive); // Corvax-Wega-Posing
 
             AddHeader("ui-options-header-interaction-adv");
             AddButton(ContentKeyFunctions.SmartEquipBackpack);

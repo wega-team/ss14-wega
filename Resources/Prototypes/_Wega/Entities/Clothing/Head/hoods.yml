@@ -182,3 +182,14 @@
   - type: Tag
     tags:
     - WhitelistChameleon
+
+- type: entity
+  parent: ClothingHeadHatHoodWinterBase
+  id: ClothingHeadHatHoodWinterBlueShieldAlt
+  categories: [ HideSpawnMenu ]
+  name: blue shield coat's hood
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Head/Hoods/Coat/hoodblueshieldalt.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Head/Hoods/Coat/hoodblueshieldalt.rsi

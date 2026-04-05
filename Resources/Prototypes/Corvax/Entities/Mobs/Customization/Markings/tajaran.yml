@@ -567,6 +567,7 @@
   id: TajaranTailFluffyAnimated
   bodyPart: Tail
   groupWhitelist: []
+  markingType: NonGenetics # Corvax-Wega-Genetics
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_tail.rsi
       state: tail_fluffy_wagging
@@ -575,6 +576,7 @@
   id: TailWingler1Animated
   bodyPart: Tail
   groupWhitelist: []
+  markingType: NonGenetics # Corvax-Wega-Genetics
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_tail.rsi
       state: tail_fluffy_wagging
@@ -585,6 +587,7 @@
   id: TailWingler2Animated
   bodyPart: Tail
   groupWhitelist: []
+  markingType: NonGenetics # Corvax-Wega-Genetics
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_tail.rsi
       state: tail_fluffy_wagging
@@ -595,6 +598,7 @@
   id: TailWingler3Animated
   bodyPart: Tail
   groupWhitelist: []
+  markingType: NonGenetics # Corvax-Wega-Genetics
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_tail.rsi
       state: tail_fluffy_wagging
@@ -605,6 +609,7 @@
   id: TailFluffySkeletonAnimated
   bodyPart: Tail
   groupWhitelist: []
+  markingType: NonGenetics # Corvax-Wega-Genetics
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_tail.rsi
       state: tail_fluffy_wagging
@@ -615,6 +620,7 @@
   id: TailTipAnimated
   bodyPart: Tail
   groupWhitelist: []
+  markingType: NonGenetics # Corvax-Wega-Genetics
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_tail.rsi
       state: tail_m_wagging
@@ -626,15 +632,16 @@
   id: TajaranTailMAnimated
   bodyPart: Tail
   groupWhitelist: []
+  markingType: NonGenetics # Corvax-Wega-Genetics
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_tail.rsi
       state: tail_m_wagging
 
 - type: marking
   id: TailRingAnimated
-  markingType: NonGenetics # Corvax-Wega-Genetics
   bodyPart: Tail
   groupWhitelist: []
+  markingType: NonGenetics # Corvax-Wega-Genetics
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_tail.rsi
       state: tail_m_wagging
@@ -645,6 +652,7 @@
   id: TailSkeletonAnimated
   bodyPart: Tail
   groupWhitelist: []
+  markingType: NonGenetics # Corvax-Wega-Genetics
   sprites:
     - sprite: Corvax/Mobs/Customization/Tajaran/tajaran_tail.rsi
       state: tail_m_wagging

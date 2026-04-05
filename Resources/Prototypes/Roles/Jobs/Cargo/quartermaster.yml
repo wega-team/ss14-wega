@@ -7,9 +7,10 @@
 #    - !type:RoleTimeRequirement
 #      role: JobCargoTechnician
 #      time: 21600 #6 hrs
-    - !type:RoleTimeRequirement
-      role: JobSalvageSpecialist
-      time: 10h # Corvax-RoleTime 2.5
+    # Corvax-Wega-Edit
+    # - !type:RoleTimeRequirement
+    #   role: JobSalvageSpecialist
+    #   time: 10h # Corvax-RoleTime 2.5
     - !type:DepartmentTimeRequirement
       department: Cargo
       time: 10h
@@ -19,6 +20,16 @@
       inverted: true
       traits:
       - Muted
+    # Corvax-Wega-AnyRequirement-Edit-start
+    - !type:AnyRequirement
+      requirements:
+        - !type:RoleTimeRequirement
+          role: JobSalvageSpecialist
+          time: 10h
+        - !type:RoleTimeRequirement
+          role: JobShaftMiner
+          time: 10h
+    # Corvax-Wega-AnyRequirement-Edit-end
   weight: 10
   startingGear: QuartermasterGear
   icon: "JobIconQuarterMaster"

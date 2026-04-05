@@ -12,15 +12,33 @@
         },
         {
             "name": "equipped-EYES",
-            "directions": 4
+            "directions": 4,
+            "delays": [
+                [ 0.2, 0.2 ],
+                [ 0.2, 0.2 ],
+                [ 0.2, 0.2 ],
+                [ 0.2, 0.2 ]
+            ]
         },
         {
             "name": "equipped-EYES-arachnid",
-            "directions": 4
+            "directions": 4,
+            "delays": [
+                [ 0.2, 0.2 ],
+                [ 0.2, 0.2 ],
+                [ 0.2, 0.2 ],
+                [ 0.2, 0.2 ]
+            ]
         },
         {
             "name": "equipped-EYES-moth",
-            "directions": 4
+            "directions": 4,
+            "delays": [
+                [ 0.2, 0.2 ],
+                [ 0.2, 0.2 ],
+                [ 0.2, 0.2 ],
+                [ 0.2, 0.2 ]
+            ]
         },
         {
             "name": "inhand-left",

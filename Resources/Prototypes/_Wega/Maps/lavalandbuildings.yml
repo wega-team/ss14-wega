@@ -2,7 +2,7 @@
 - type: lavalandBuilding
   id: PenalServitude
   gridPath: /Maps/_Wega/Lavaland/penalservitude.yml
-  position: "-50,50"
+  position: "-300,200"
   ignoring: true
   merge: false
 
@@ -53,13 +53,13 @@
 - type: lavalandBuilding
   id: Bubblegum
   gridPath: /Maps/_Wega/Lavaland/bubblegumspawn.yml
-  approximate: [150, 250]
+  approximate: [300, 450]
   ignoring: true
 
 - type: lavalandBuilding
   id: Colossus
   gridPath: /Maps/_Wega/Lavaland/colossusspawn.yml
-  approximate: [150, 250]
+  approximate: [300, 450]
   ignoring: true
 
 - type: lavalandBuilding

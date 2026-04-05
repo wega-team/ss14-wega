@@ -501,6 +501,9 @@
   id: CompressionModuleConflict
 
 - type: Tag
+  id: NoSlipModuleConflict
+
+- type: Tag
   id: FireBomb
 
 - type: Tag

@@ -6,6 +6,8 @@ using Content.Server.Bible.Components;
 using Content.Server.Body.Systems;
 using Content.Server.Chat.Systems;
 using Content.Server.Polymorph.Systems;
+using Content.Server.NPC.HTN;
+using Content.Server.Humanoid.Components;
 using Content.Shared.Actions;
 using Content.Shared.Actions.Components;
 using Content.Shared.Alert;
@@ -47,6 +49,9 @@ using Content.Shared.Damage.Systems;
 using Content.Shared.Damage.Components;
 using Content.Shared.Tag;
 using Content.Shared.Shaders;
+using Content.Shared.SSDIndicator;
+using Content.Shared.Mobs.Components;
+using Content.Shared.Mobs;
 using Content.Shared.Body;
 
 namespace Content.Server.Vampire;
@@ -228,6 +233,21 @@ public sealed partial class VampireSystem : SharedVampireSystem
         if (TryComp<ThrallComponent>(args.Target, out var targetThrallComponent))
         {
             _popup.PopupEntity(Loc.GetString("vampire-blooddrink-not-thrall"), uid, uid, PopupType.SmallCaution);
+            return false;
+        }
+
+        if (TryComp<SSDIndicatorComponent>(args.Target, out var targetSSDComponent) && TryComp<MobStateComponent>(args.Target, out var targetMobState))
+        {
+			if (targetSSDComponent.IsSSD && targetMobState.CurrentState != MobState.Dead)
+			{
+				_popup.PopupEntity(Loc.GetString("vampire-blooddrink-ssd"), uid, uid, PopupType.SmallCaution);
+				return false;
+			}
+		}
+		
+        if (TryComp<HTNComponent>(args.Target, out var htnComponent) || TryComp<RandomHumanoidAppearanceComponent>(args.Target, out var targetRandomAppearence))
+        {
+            _popup.PopupEntity(Loc.GetString("vampire-blooddrink-not-sentient"), uid, uid, PopupType.SmallCaution);
             return false;
         }
 

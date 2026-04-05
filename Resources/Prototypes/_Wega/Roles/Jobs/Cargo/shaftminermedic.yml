@@ -29,7 +29,7 @@
   id: ShaftMinerMedicGear
   equipment:
     id: MinerMedicPDA
-    ears: ClothingHeadsetMining
+    ears: ClothingHeadsetMiningMedical
     eyes: ClothingEyesHudMedical
     shoes: ClothingShoesColorBlack
     belt: ClothingBeltMedicalFilled

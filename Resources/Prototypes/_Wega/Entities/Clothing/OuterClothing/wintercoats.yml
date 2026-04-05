@@ -20,3 +20,26 @@
     sprite: _Wega/Clothing/OuterClothing/WinterCoats/blueshield.rsi
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterBlueShield
+
+- type: entity
+  parent: [ BaseSyndicateContraband, ClothingOuterWinterWarden ]
+  id: ClothingOuterWinterBlueShieldAlt
+  name: winter armorcoat Blue Shield
+  description: Good quality coat.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.6
+        Slash: 0.6
+        Piercing: 0.6
+        Heat: 0.6
+        Caustic: 0.75
+  - type: ExplosionResistance
+    damageCoefficient: 0.9
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/WinterCoats/altBScoat.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/OuterClothing/WinterCoats/altBScoat.rsi
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHatHoodWinterBlueShieldAlt

@@ -1,12 +1,27 @@
 - type: entity
   id: ClothingBeltMilitaryWebbingFilled
+  name: assault belt
+  description: Tactical assault belt.
   parent: ClothingBeltMilitaryWebbing
   suffix: Filled
   components:
   - type: EntityTableContainerFill
     containers:
       storagebase: !type:NestedSelector
-        tableId: BeltSecurityEntityTable
+        tableId: BeltBlueShieldEntityLable
+
+- type: entityTable
+  id: BeltBlueShieldEntityLable
+  table: !type:AllSelector
+    children:
+    - id: Stunbaton
+    - id: Handcuffs
+    - id: ChemistryBottleBicaridine
+    - id: ChemistryBottleBicaridine
+    - id: ChemistryBottleDermaline
+    - id: ChemistryBottleDermaline
+    - id: ChemistryBottleEphedrine
+    - id: ChemistryBottleEphedrine
 
 - type: entity
   id: ClothingBeltSheathSyndicateFilled

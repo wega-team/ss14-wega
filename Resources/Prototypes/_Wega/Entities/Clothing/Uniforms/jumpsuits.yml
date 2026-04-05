@@ -828,3 +828,13 @@
     - type: Clothing
       sprite: _Wega/Clothing/Uniforms/Jumpsuit/explorer_khaki.rsi
 
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitBlueShieldRock
+  name: rock blue shield uniform
+  description: Comleted in blue-shield style uniform.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpsuit/BSuniformalt.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpsuit/BSuniformalt.rsi

@@ -144,16 +144,10 @@
       LegRight: OrganAndroidLegRight
       FootLeft: OrganAndroidFootLeft
       FootRight: OrganAndroidFootRight
-      Brain: OrganAndroidBrain
+      Brain: MMIFilled
       Eyes: OrganAndroidEyes
-      Tongue: OrganAndroidTongue
-      Appendix: OrganAndroidAppendix
-      Ears: OrganAndroidEars
       Lungs: OrganAndroidGas
       Heart: OrganAndroidTyrium
-      Stomach: OrganAndroidStomach
-      Liver: OrganAndroidLiver
-      Kidneys: OrganAndroidKidneys
   - type: HumanoidProfile
     species: Android
 
@@ -387,34 +381,6 @@
 - type: entity
   parent: [ OrganBaseFootRight, OrganAndroidExternal ]
   id: OrganAndroidFootRight
-
-- type: entity
-  parent: [ OrganBaseBrain, OrganAndroidInternal ]
-  id: OrganAndroidBrain
-
-- type: entity
-  parent: [ OrganBaseTongue, OrganAndroidInternal ]
-  id: OrganAndroidTongue
-
-- type: entity
-  parent: [ OrganBaseAppendix, OrganAndroidInternal ]
-  id: OrganAndroidAppendix
-
-- type: entity
-  parent: [ OrganBaseEars, OrganAndroidInternal ]
-  id: OrganAndroidEars
-
-- type: entity
-  parent: [ OrganBaseStomach, OrganAndroidInternal, OrganAndroidMetabolizer ]
-  id: OrganAndroidStomach
-
-- type: entity
-  parent: [ OrganBaseLiver, OrganAndroidInternal, OrganAndroidMetabolizer ]
-  id: OrganAndroidLiver
-
-- type: entity
-  parent: [ OrganBaseKidneys, OrganAndroidInternal, OrganAndroidMetabolizer ]
-  id: OrganAndroidKidneys
 
 - type: entity
   parent: [ OrganBaseLungs, OrganAndroidInternal, OrganAndroidMetabolizer ]
