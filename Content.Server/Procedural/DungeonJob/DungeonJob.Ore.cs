@@ -141,10 +141,12 @@ public sealed partial class DungeonJob
                     }
                 }
 
+#if DEBUG // Corvax-Wega-Add-start
                 if (groupSize > 0)
                 {
                     _sawmill.Warning($"Found remaining group size for ore veins of {gen.Replacement ?? "null"}!");
                 }
+#endif    // Corvax-Wega-Add-end
             }
         }
     }
