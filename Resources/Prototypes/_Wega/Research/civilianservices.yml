@@ -11,7 +11,7 @@
   cost: 7500
   recipeUnlocks:
   - SadTromboneImplant
-  - SecurityDeathImplant
+  - SecurityDeathImplant  # Corvax-Wega-securitydeathimplants
   - LightImplant
   - MicrowaveBeamSuitModule
   - BurgerDispenserSuitModule
