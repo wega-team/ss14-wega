@@ -40,6 +40,7 @@
       params:
         variation: 0.125
 
+ # Corvax-Wega-securitydeathimplants
 - type: entity
   parent: BaseSubdermalImplant
   id: SecurityDeathImplant
@@ -62,6 +63,7 @@
   - type: EmitSoundOnTrigger
     sound:
       path: /Audio/_Wega/Mobs/sec_death.ogg
+ # Corvax-Wega-securitydeathimplants-end
 
 - type: entity
   parent: BaseSubdermalImplant

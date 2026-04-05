@@ -30,7 +30,7 @@
     allowDeimplantAll: false
     deimplantWhitelist:
     - SadTromboneImplant
-    - SecurityDeathImplant
+    - SecurityDeathImplant  # Corvax-Wega-securitydeathimplants
     - LightImplant
     - BikeHornImplant
     - TrackingImplant

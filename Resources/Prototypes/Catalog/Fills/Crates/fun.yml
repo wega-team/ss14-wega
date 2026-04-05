@@ -278,7 +278,7 @@
       entity_storage:
         id: SadTromboneImplanter
         amount: 3
-
+ # Corvax-Wega-securitydeathimplants
 - type: entity
   parent: CrateGenericSteel
   id: CrateFunSecurityDeathImplants
@@ -290,7 +290,7 @@
       entity_storage:
         id: SecurityDeathImplanter
         amount: 3
-
+ # Corvax-Wega-securitydeathimplants-end
 - type: entity
   parent: CrateGenericSteel
   id: CrateFunLightImplants

@@ -99,6 +99,7 @@
     Steel: 500
     Plastic: 300
 
+ # Corvax-Wega-securitydeathimplants
 - type: latheRecipe
   id: SecurityDeathImplant
   result: SecurityDeathImplant
@@ -106,6 +107,8 @@
   materials:
     Steel: 500
     Plastic: 300
+
+# Corvax-Wega-securitydeathimplants-end
 
 - type: latheRecipe
   id: TrackingImplant

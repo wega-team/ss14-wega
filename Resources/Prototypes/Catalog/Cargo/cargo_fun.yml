@@ -161,6 +161,7 @@
   category: cargoproduct-category-name-fun
   group: market
 
+ # Corvax-Wega-securitydeathimplants
 - type: cargoProduct
   id: FunSecurityDeathImplants
   icon:
@@ -170,6 +171,8 @@
   cost: 1000
   category: cargoproduct-category-name-fun
   group: market
+
+ # Corvax-Wega-securitydeathimplants-end
 
 - type: cargoProduct
   id: FunLightImplants
