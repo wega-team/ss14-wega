@@ -16,6 +16,7 @@
     children:
     - id: Stunbaton
     - id: Handcuffs
+    - id: AdvancedJetInjector
     - id: ChemistryBottleBicaridine
     - id: ChemistryBottleBicaridine
     - id: ChemistryBottleDermaline
