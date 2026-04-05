@@ -31,7 +31,7 @@ public sealed class HealthExaminableSystem : EntitySystem
         {
             Act = () =>
             {
-                var markup = CreateMarkup(uid, component, damage, args.User);
+                var markup = CreateMarkup(uid, component, damage, args.User); // Corvax-Wega-Edit
                 _examineSystem.SendExamineTooltip(args.User, uid, markup, false, false);
             },
             Text = Loc.GetString("health-examinable-verb-text"),
@@ -44,7 +44,7 @@ public sealed class HealthExaminableSystem : EntitySystem
         args.Verbs.Add(verb);
     }
 
-    public FormattedMessage CreateMarkup(EntityUid uid, HealthExaminableComponent component, DamageableComponent damage, EntityUid examiner)
+    public FormattedMessage CreateMarkup(EntityUid uid, HealthExaminableComponent component, DamageableComponent damage, EntityUid examiner) // Corvax-Wega-Edit
     {
         var msg = new FormattedMessage();
 
@@ -97,7 +97,7 @@ public sealed class HealthExaminableSystem : EntitySystem
         }
 
         // Anything else want to add on to this?
-        RaiseLocalEvent(uid, new HealthBeingExaminedEvent(msg, examiner), true);
+        RaiseLocalEvent(uid, new HealthBeingExaminedEvent(msg, examiner), true); // Corvax-Wega-Edit
 
         return msg;
     }
@@ -113,7 +113,7 @@ public sealed class HealthBeingExaminedEvent
     public FormattedMessage Message;
     public EntityUid Examiner; // Corvax-Wega-Add
 
-    public HealthBeingExaminedEvent(FormattedMessage message, EntityUid examiner)
+    public HealthBeingExaminedEvent(FormattedMessage message, EntityUid examiner) // Corvax-Wega-Edit
     {
         Message = message;
         Examiner = examiner; // Corvax-Wega-Add

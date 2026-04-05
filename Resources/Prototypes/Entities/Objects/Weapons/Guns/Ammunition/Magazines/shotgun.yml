@@ -9,7 +9,7 @@
     - MagazineShotgun
   - type: BallisticAmmoProvider
     mayTransfer: true
-    breakOnMoveFill: false
+    breakOnMoveFill: false # Corvax-Wega-Edit
     whitelist:
       tags:
         - ShellShotgun

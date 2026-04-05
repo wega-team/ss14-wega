@@ -83,6 +83,7 @@
   components:
   - type: Rotatable
     rotateWhileAnchored: true
+  # Corvax-Wega-Start
   - type: Vehicle
     hasKey: true
     useHand: false
@@ -96,12 +97,13 @@
   - type: InputMover
   - type: Physics
     bodyType: KinematicController
+  # Corvax-Wega-End
 
 #Starts anchored, can be rotated while anchored
 - type: entity
   name: stool
   id: StoolBase
-  parent: UnanchoredChairBase
+  parent: UnanchoredChairBase # Corvax-Wega-Edit
   abstract: true
   placement:
     mode: SnapgridCenter

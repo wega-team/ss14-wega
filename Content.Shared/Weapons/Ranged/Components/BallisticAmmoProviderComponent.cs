@@ -59,8 +59,9 @@ public sealed partial class BallisticAmmoProviderComponent : Component
     [DataField]
     public TimeSpan FillDelay = TimeSpan.FromSeconds(0.5);
 
+
     /// <summary>
-    /// TryStartDoAfter boolean for BreakOnMove
+    /// TryStartDoAfter boolean for BreakOnMove, Corvax Wega thing
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite), DataField]
     public bool BreakOnMoveFill = true;
