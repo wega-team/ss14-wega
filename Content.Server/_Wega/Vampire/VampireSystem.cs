@@ -39,6 +39,7 @@ using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 using Robust.Shared.GameObjects;
+using Robust.Shared.Timing;
 using Content.Shared.Genetics;
 using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Hands.EntitySystems;
@@ -53,6 +54,7 @@ using Content.Shared.SSDIndicator;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Body;
+using Content.Shared.HealthExaminable;
 
 namespace Content.Server.Vampire;
 
@@ -100,6 +102,10 @@ public sealed partial class VampireSystem : SharedVampireSystem
         // Drinking Blood
         SubscribeLocalEvent<VampireComponent, VampireDrinkingBloodActionEvent>(OnDrinkBlood);
         SubscribeLocalEvent<VampireComponent, VampireDrinkingBloodDoAfterEvent>(DrinkDoAfter);
+
+		// Got bitten
+        SubscribeLocalEvent<BittenByVampireComponent, ComponentInit>(OnGotBitten);
+        SubscribeLocalEvent<BittenByVampireComponent, HealthBeingExaminedEvent>(OnHealthBeingExamined);
 
         // Distribute Damage
         SubscribeLocalEvent<VampireComponent, DamageChangedEvent>(OnDamageChanged);
@@ -288,6 +294,7 @@ public sealed partial class VampireSystem : SharedVampireSystem
 
         _audio.PlayPvs(component.BloodDrainSound, uid, AudioParams.Default.WithVolume(-3f));
         _blood.TryModifyBloodLevel(args.Target.Value, -(byte)(volumeToConsume * 0.5f));
+		EnsureComp<BittenByVampireComponent>(args.Target.Value);
 
         if (HasComp<BibleUserComponent>(args.Target) && !component.TruePowerActive)
         {
@@ -663,4 +670,20 @@ public sealed partial class VampireSystem : SharedVampireSystem
 
         return null;
     }
+
+    // Medics can see bite on your neck
+    private void OnGotBitten(EntityUid uid, BittenByVampireComponent component, ComponentInit args)
+    {
+		Timer.Spawn(TimeSpan.FromSeconds(900f), () => RemComp<BittenByVampireComponent>(uid));
+    }
+	
+    private void OnHealthBeingExamined(Entity<BittenByVampireComponent> ent, ref HealthBeingExaminedEvent args)
+    {
+        if (HasComp<SurgicalSkillComponent>(args.Examiner))
+        {
+            args.Message.PushNewline();
+            args.Message.AddMarkupOrThrow(Loc.GetString("vampire-bittenbyvampire-examine"));
+        }
+	}
+	
 }

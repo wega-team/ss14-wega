@@ -77,8 +77,8 @@
       coefficients:
         Blunt: 0.9
         Slash: 0.9
-        Piercing: 0.9
-        Heat: 0.8
+        Piercing: 0.95
+        Heat: 0.85
         Caustic: 0.65
   - type: ClothingAshStormProtection
     modifier: 0.05
@@ -116,8 +116,8 @@
       coefficients:
         Blunt: 0.75
         Slash: 0.75
-        Piercing: 0.75
-        Heat: 0.6
+        Piercing: 0.85
+        Heat: 0.75
         Caustic: 0.5
 
 - type: entity
@@ -147,8 +147,8 @@
       coefficients:
         Blunt: 0.75
         Slash: 0.75
-        Piercing: 0.75
-        Heat: 0.6
+        Piercing: 0.85
+        Heat: 0.75
         Caustic: 0.5
 
 - type: entity

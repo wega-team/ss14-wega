@@ -19,6 +19,7 @@ vampire-ingest-holyblood = ВЫ НЕ МОЖЕТЕ ПИТЬ СВЯТУЮ КРОВ
 vampire-full-stomach = Вы не можете пить больше
 vampire-startlight-burning = ВАША КОЖА ПОЛЫХАЕТ!
 vampire-true-power = Вы чувствуете истинную силу
+vampire-bittenbyvampire-examine = [color=red]Кажется, на шее есть укус[/color]
 
 # Abilities
 vampire-hungry = Вы ещё слишком голодны для эволюции
