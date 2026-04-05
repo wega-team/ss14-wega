@@ -10,6 +10,7 @@
         name: ent-ClothingHandsGlovesColorYellow
         icon:
           sprite: Clothing/Hands/Gloves/Color/yellow.rsi
+          state: icon
         doAfter: 4
       - tag: Wirecutter
         name: ent-Wirecutter
