@@ -87,6 +87,7 @@
   - type: Vehicle
     hasKey: true
     useHand: false
+    hornSound: null
   - type: MovementSpeedModifier
     weightlessModifier: 0
     baseAcceleration: 2
