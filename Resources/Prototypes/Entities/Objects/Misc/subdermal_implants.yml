@@ -42,6 +42,29 @@
 
 - type: entity
   parent: BaseSubdermalImplant
+  id: SecurityDeathImplant
+  name: security death implant
+  description: This implant plays a distinctive security alarm sound when the user dies.
+  # categories: [ HideSpawnMenu ] # Corvax-Wega-Surgery-Edit
+  components:
+  # Corvax-Wega-Surgery-start
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Medical/Surgery/implants.rsi
+    state: clown
+  # Corvax-Wega-Surgery-end
+  - type: SubdermalImplant
+    whitelist:
+      components:
+      - MobState # admeme implanting a chair with implant needs to give the chair mobstate so it can die first
+  - type: TriggerOnMobstateChange
+    mobState:
+    - Dead
+  - type: EmitSoundOnTrigger
+    sound:
+      path: /Audio/_Wega/Mobs/sec_death.ogg
+
+- type: entity
+  parent: BaseSubdermalImplant
   id: LightImplant
   name: light implant
   description: This implant emits light from the user's skin on activation.

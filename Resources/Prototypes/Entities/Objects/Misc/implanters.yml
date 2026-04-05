@@ -30,6 +30,7 @@
     allowDeimplantAll: false
     deimplantWhitelist:
     - SadTromboneImplant
+    - SecurityDeathImplant
     - LightImplant
     - BikeHornImplant
     - TrackingImplant
@@ -164,6 +165,14 @@
   components:
   - type: Implanter
     implant: SadTromboneImplant
+
+- type: entity
+  id: SecurityDeathImplanter
+  name: security death implanter
+  parent: BaseImplantOnlyImplanter
+  components:
+  - type: Implanter
+    implant: SecurityDeathImplant
 
 - type: entity
   id: LightImplanter

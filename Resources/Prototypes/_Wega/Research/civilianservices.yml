@@ -11,6 +11,7 @@
   cost: 7500
   recipeUnlocks:
   - SadTromboneImplant
+  - SecurityDeathImplant
   - LightImplant
   - MicrowaveBeamSuitModule
   - BurgerDispenserSuitModule

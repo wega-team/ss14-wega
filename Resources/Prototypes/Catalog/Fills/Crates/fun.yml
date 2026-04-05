@@ -281,6 +281,18 @@
 
 - type: entity
   parent: CrateGenericSteel
+  id: CrateFunSecurityDeathImplants
+  name: security death implants
+  description: A distinctive sound for when security meets their end. Implant these for a proper send-off!
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage:
+        id: SecurityDeathImplanter
+        amount: 3
+
+- type: entity
+  parent: CrateGenericSteel
   id: CrateFunLightImplants
   name: light implants
   description: Light up your skin with these implants!

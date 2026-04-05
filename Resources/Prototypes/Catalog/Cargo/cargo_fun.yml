@@ -162,6 +162,16 @@
   group: market
 
 - type: cargoProduct
+  id: FunSecurityDeathImplants
+  icon:
+    sprite: Objects/Specific/Medical/implanter.rsi
+    state: implanter0
+  product: CrateFunSecurityDeathImplants
+  cost: 1000
+  category: cargoproduct-category-name-fun
+  group: market
+
+- type: cargoProduct
   id: FunLightImplants
   icon:
     sprite: Objects/Specific/Medical/implanter.rsi
