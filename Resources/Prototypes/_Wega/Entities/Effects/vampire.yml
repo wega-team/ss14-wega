@@ -12,8 +12,10 @@
     sprite: _Wega/Effects/bloodtentacle.rsi
     layers:
     - state: blood_tendril
-  - type: StunOnContact
-    blacklist:
+  - type: SpeedModifierContacts
+    walkSpeedModifier: 0.3
+    sprintSpeedModifier: 0.3
+    ignoreWhitelist:
       tags:
       - Vampire
   - type: Fixtures
@@ -28,7 +30,7 @@
         - Impassable
         hard: false
   - type: TimedDespawn
-    lifetime: 0.4
+    lifetime: 6.0
   - type: SpawnOnDespawn
     prototype: EffectBloodTentacleRetract
 
@@ -69,6 +71,8 @@
     state: blood_tendril
   - type: EffectVisuals
   - type: AnimationPlayer
+  - type: TimedDespawn
+    lifetime: 0.05
 
 - type: entity
   id: BloodBarrier

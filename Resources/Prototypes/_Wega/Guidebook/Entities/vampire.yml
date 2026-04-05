@@ -228,12 +228,28 @@
     state: thralls_up
 
 - type: entity
+  id: GuidebookVampirePacifyNearby
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    state: pacifynearby
+
+- type: entity
   id: GuidebookVampireBloodBond
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _Wega/Interface/Actions/actions_vampire.rsi
     state: blood_bond
+
+- type: entity
+  id: GuidebookVampireThrallHeal
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    state: thrallheal
 
 - type: entity
   id: GuidebookVampireMassHysteria
