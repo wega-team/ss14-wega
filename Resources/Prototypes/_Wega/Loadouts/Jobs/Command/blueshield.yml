@@ -61,7 +61,7 @@
   id: BlueShieldOuterWinter
   equipment:
     outerClothing: ClothingOuterWinterBlueShield
-
+    
  - type: loadout
   id: BlueShieldOuterWinterAlt
   equipment:
