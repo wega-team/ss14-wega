@@ -14,13 +14,11 @@
     - WhitelistChameleon
     - Kangaroo
   - type: MeleeWeapon
-    autoAttack: false
-    attackRate: 1
     damage:
       types:
-       Blunt: 8
+       Slash: 8
     soundHit:
-      collection: Punch
+      path: /Audio/Weapons/bladeslice.ogg
     animation: WeaponArcFist
     mustBeEquippedToUse: true
   - type: Construction

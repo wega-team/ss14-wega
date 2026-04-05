@@ -7,10 +7,9 @@
     - to: RazorGlov
       steps:
       - tag: Gloves
-        name: ent-ClothingHandsCatPawsBlackWhite
+        name: ent-ClothingHandsGlovesColorYellow
         icon:
-          sprite: _Wega/Clothing/Hands/Gloves/black_white.rsi
-          state: icon
+          sprite: Clothing/Hands/Gloves/Color/yellow.rsi
         doAfter: 4
       - tag: Wirecutter
         name: ent-Wirecutter
