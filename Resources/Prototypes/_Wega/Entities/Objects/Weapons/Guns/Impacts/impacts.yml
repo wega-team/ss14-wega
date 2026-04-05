@@ -11,7 +11,7 @@
       map: ["enum.EffectLayers.Unshaded"]
       sprite: Objects/Weapons/Guns/Projectiles/projectiles_tg.rsi
       state: impact_laser_greyscale
-      color: #f5f5f5
+      color: "#f5f5f5"
   - type: EffectVisuals
   - type: Tag
     tags:
