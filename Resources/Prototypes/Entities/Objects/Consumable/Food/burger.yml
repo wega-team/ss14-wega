@@ -1337,3 +1337,28 @@
     tags:
     - Meat
 
+# Corvax-Wega-Edit-Start
+- type: entity
+  parent: FoodBurgerBase
+  id: FoodBurgerCum
+  name: cum-burger
+  description: Right into him? Seriously?
+  components:
+  - type: Item
+    storedOffset: 0,1
+  - type: FlavorProfile
+    flavors:
+      - bun
+      - funny
+  - type: Sprite
+    state: cumburger
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 10
+        reagents:
+        - ReagentId: Cum
+          Quantity: 5
+        - ReagentId: Protein
+          Quantity: 5
+  # Corvax-Wega-Edit-End

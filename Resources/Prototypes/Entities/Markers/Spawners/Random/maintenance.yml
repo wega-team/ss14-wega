@@ -279,6 +279,7 @@
       - id: trayScanner
       - id: HandheldGPSBasic
       - id: HandLabeler
+      - id: BookCum #Corvax-Wega-Edit
       - id: GlowstickGreen
       - id: Bucket
       - id: RadioHandheld

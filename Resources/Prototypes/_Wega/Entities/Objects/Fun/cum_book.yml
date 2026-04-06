@@ -1,0 +1,13 @@
+- type: entity
+  parent: BaseItem
+  id: BookCum
+  name: dark book
+  description: A small book, what if you open it?
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Fun/Instruments/cum_book.rsi
+    state: icon
+  - type: SpawnItemsOnUse
+    items:
+      - id: FoodBurgerCum
+    uses: 10
