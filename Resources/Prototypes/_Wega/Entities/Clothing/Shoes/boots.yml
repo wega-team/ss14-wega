@@ -22,4 +22,4 @@
   - type: SpeedModifierContactCapClothing
     maxContactSprintSlowdown: 0.7
     maxContactWalkSlowdown: 0.7
-  - type: BloodCultEquipment
+  - type: CultEquipment

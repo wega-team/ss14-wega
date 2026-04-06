@@ -67,7 +67,7 @@
   - type: ClothingSpeedModifier
     walkModifier: 1.6
     sprintModifier: 1.6
-  - type: BloodCultEquipment
+  - type: CultEquipment
 
 - type: entity
   parent: ClothingOuterStorageBase

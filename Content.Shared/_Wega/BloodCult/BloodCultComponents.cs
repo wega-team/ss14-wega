@@ -45,14 +45,14 @@ public sealed partial class ShowCultistIconsComponent : Component;
 public sealed partial class BloodCultObjectComponent : Component;
 
 [RegisterComponent]
-public sealed partial class BloodCultWeaponComponent : Component;
+public sealed partial class CultWeaponComponent : Component;
 
  // Чтобы культисты могли использовать то, что по сути им можно использовать и на геймплей в ПВП особо не влияет.
 [RegisterComponent]
 public sealed partial class BloodCultAllowedGunComponent : Component;
 
 [RegisterComponent]
-public sealed partial class BloodCultEquipmentComponent : Component;
+public sealed partial class CultEquipmentComponent : Component;
 
 [RegisterComponent]
 public sealed partial class BloodDaggerComponent : Component

@@ -242,7 +242,7 @@
   name: acolyte armor
   description: An evil-looking piece of cult armor, made of bones.
   components:
-  - type: BloodCultEquipment
+  - type: CultEquipment
 
 - type: entity
   parent: ClothingOuterArmorBasic

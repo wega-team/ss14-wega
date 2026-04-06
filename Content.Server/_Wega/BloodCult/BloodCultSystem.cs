@@ -30,12 +30,14 @@ using Content.Shared.Standing;
 using Content.Shared.Weapons.Melee;
 using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Weapons.Ranged.Events;
+using Content.Shared.Veil.Cult.Components;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
+
 
 namespace Content.Server.Blood.Cult;
 
@@ -71,7 +73,7 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
         SubscribeLocalEvent<BloodCultistEyesComponent, ExaminedEvent>(OnCultistEyesExamined);
 
         SubscribeLocalEvent<BloodCultistComponent, ShotAttemptedEvent>(OnShotAttempted); // Corvax-Wega-Testing
-        SubscribeLocalEvent<BloodCultWeaponComponent, AttemptMeleeEvent>(OnAttemptMelee);
+        SubscribeLocalEvent<CultWeaponComponent, AttemptMeleeEvent>(OnAttemptMelee);
         SubscribeLocalEvent<BloodDaggerComponent, AfterInteractEvent>(OnInteract);
 
         SubscribeLocalEvent<StoneSoulComponent, ComponentInit>(OnComponentInit);
@@ -177,10 +179,10 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
     // Corvax-Wega-Testing-end
 
     #region Dagger & Weapon
-    private void OnAttemptMelee(Entity<BloodCultWeaponComponent> entity, ref AttemptMeleeEvent args)
+    private void OnAttemptMelee(Entity<CultWeaponComponent> entity, ref AttemptMeleeEvent args)
     {
         var user = Transform(entity.Owner).ParentUid;
-        if (!HasComp<BloodCultistComponent>(user))
+        if (!HasComp<BloodCultistComponent>(user) || !HasComp<VeilCultistComponent>(user))
         {
             _popup.PopupEntity(Loc.GetString("blood-cult-failed-attack"), user, user, PopupType.SmallCaution);
 
