@@ -1311,10 +1311,10 @@
   id: UplinkReinforcementRadioSyndicateCyborgAssault
   name:  uplink-reinforcement-radio-cyborg-assault-name
   description: uplink-reinforcement-radio-cyborg-assault-desc
-  productEntity: ReinforcementRadioSyndicateCyborgAssault
+  productEntity: BorgKit # ReinforcementRadioSyndicateCyborgAssault Corvax-Wega-Syndi
   icon: { sprite: Objects/Devices/communication.rsi, state: old-radio-borg-assault }
   cost:
-    Telecrystal: 100 # Corvax-Wega-Syndi
+    Telecrystal: 75 # 60 Corvax-Wega-Syndi
   categories:
     - UplinkAllies
   conditions:

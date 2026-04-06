@@ -118,7 +118,7 @@
   table: !type:AllSelector
     children:
     - id: ClothingEyesHudMedical
-    - id: ClothingModularControllerRescuePreassembled # Corvax-Wega-ModularSuits-Edit
+    - id: HardsuitParamedicSelector # Corvax-Wega-ModularSuits-Edit
     - id: ClothingBeltMedicalEMTFilled
     - id: JetInjector
     - id: HandheldHealthAnalyzer
