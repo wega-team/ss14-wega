@@ -1,231 +1,156 @@
 - type: entity
   parent: BaseItem
+  id: BaseHardsuitSelector
+  components:
+  - type: Sprite
+    state: icon
+  - type: Item
+    size: Huge
+  - type: ItemSelector
+  - type: ActivatableUI
+    key: enum.ItemSelectorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.ItemSelectorUiKey.Key:
+        type: ItemSelectorBoundUserInterface
+
+- type: entity
+  parent: BaseHardsuitSelector
   id: HardsuitCESelector
   name: CE hardsuit selector
   description: "An obsidian rod that strikes paranormal things."
-  suffix: HardSuit
+  suffix: Selector
   components:
   - type: Sprite
     sprite: _Wega/Objects/Misc/HardsuitSelector/advanced.rsi
-    state: icon
-  - type: Item
-    sprite: _Wega/Objects/Misc/HardsuitSelector/advanced.rsi
-    size: Huge
   - type: ItemSelector
     items:
     - ClothingModularControllerAdvancedPreassembled
     - ClothingOuterHardsuitEngineeringWhite
-  - type: ActivatableUI
-    key: enum.ItemSelectorUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.ItemSelectorUiKey.Key:
-        type: ItemSelectorBoundUserInterface
         
+
 - type: entity
-  parent: BaseItem
+  parent: BaseHardsuitSelector
   id: HardsuitAtmosSelector
   name: atmos hardsuit selector
   description: "An obsidian rod that strikes paranormal things."
-  suffix: HardSuit
+  suffix: Selector
   components:
   - type: Sprite
     sprite: _Wega/Objects/Misc/HardsuitSelector/atmospheric.rsi
-    state: icon
-  - type: Item
-    sprite: _Wega/Objects/Misc/HardsuitSelector/atmospheric.rsi
-    size: Huge
   - type: ItemSelector
     items:
     - ClothingModularControllerAtmosphericPreassembled
     - ClothingOuterHardsuitAtmos
-  - type: ActivatableUI
-    key: enum.ItemSelectorUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.ItemSelectorUiKey.Key:
-        type: ItemSelectorBoundUserInterface
 
 - type: entity
-  parent: BaseItem
+  parent: BaseHardsuitSelector
   id: HardsuitCapSelector
   name: cap hardsuit selector
   description: "An obsidian rod that strikes paranormal things."
-  suffix: HardSuit
+  suffix: Selector
   components:
   - type: Sprite
     sprite: _Wega/Objects/Misc/HardsuitSelector/cap.rsi
-    state: icon
-  - type: Item
-    size: Huge
   - type: ItemSelector
     items:
     - ClothingModularControllerMagnatePreassembled
     - ClothingOuterHardsuitCap
-  - type: ActivatableUI
-    key: enum.ItemSelectorUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.ItemSelectorUiKey.Key:
-        type: ItemSelectorBoundUserInterface
 
 - type: entity
-  parent: BaseItem
+  parent: BaseHardsuitSelector
   id: HardsuitClownSelector
   name: clown hardsuit selector
   description: "An obsidian rod that strikes paranormal things."
-  suffix: HardSuit
+  suffix: Selector
   components:
   - type: Sprite
     sprite: _Wega/Objects/Misc/HardsuitSelector/clown.rsi
-    state: icon
-  - type: Item
-    size: Huge
   - type: ItemSelector
     items:
     - ClothingModularControllerCosmohonkPreassembled
     - ClothingOuterHardsuitClown
-  - type: ActivatableUI
-    key: enum.ItemSelectorUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.ItemSelectorUiKey.Key:
-        type: ItemSelectorBoundUserInterface
 
 - type: entity
-  parent: BaseItem
+  parent: BaseHardsuitSelector
   id: HardsuitEngSelector
   name: engineer hardsuit selector
   description: "An obsidian rod that strikes paranormal things."
-  suffix: HardSuit
+  suffix: Selector
   components:
   - type: Sprite
     sprite: _Wega/Objects/Misc/HardsuitSelector/engineer.rsi
-    state: icon
-  - type: Item
-    size: Huge
   - type: ItemSelector
     items:
     - ClothingModularControllerEngineeringPreassembled
     - ClothingOuterHardsuitEngineering
-  - type: ActivatableUI
-    key: enum.ItemSelectorUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.ItemSelectorUiKey.Key:
-        type: ItemSelectorBoundUserInterface
 
 - type: entity
-  parent: BaseItem
+  parent: BaseHardsuitSelector
   id: HardsuitHosSelector
   name: hos hardsuit selector
   description: "An obsidian rod that strikes paranormal things."
-  suffix: HardSuit
+  suffix: Selector
   components:
   - type: Sprite
     sprite: _Wega/Objects/Misc/HardsuitSelector/hos.rsi
-    state: icon
-  - type: Item
-    size: Huge
   - type: ItemSelector
     items:
     - ClothingModularControllerSafeguardPreassembled
     - ClothingOuterHardsuitSecurityRed
-  - type: ActivatableUI
-    key: enum.ItemSelectorUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.ItemSelectorUiKey.Key:
-        type: ItemSelectorBoundUserInterface
 
 - type: entity
-  parent: BaseItem
+  parent: BaseHardsuitSelector
   id: HardsuitMedicalSelector
   name: medical hardsuit selector
   description: "An obsidian rod that strikes paranormal things."
-  suffix: HardSuit
+  suffix: Selector
   components:
   - type: Sprite
     sprite: _Wega/Objects/Misc/HardsuitSelector/medical.rsi
-    state: icon
-  - type: Item
-    size: Huge
   - type: ItemSelector
     items:
     - ClothingModularControllerMedicalPreassembled
     - ClothingOuterHardsuitMedical
-  - type: ActivatableUI
-    key: enum.ItemSelectorUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.ItemSelectorUiKey.Key:
-        type: ItemSelectorBoundUserInterface
 
 - type: entity
-  parent: BaseItem
+  parent: BaseHardsuitSelector
   id: HardsuitParamedicSelector
   name: paramed hardsuit selector
   description: "An obsidian rod that strikes paranormal things."
-  suffix: HardSuit
+  suffix: Selector
   components:
   - type: Sprite
     sprite: _Wega/Objects/Misc/HardsuitSelector/paramedic.rsi
-    state: icon
-  - type: Item
-    size: Huge
   - type: ItemSelector
     items:
     - ClothingModularControllerRescuePreassembled
     - ClothingOuterHardsuitVoidParamed
-  - type: ActivatableUI
-    key: enum.ItemSelectorUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.ItemSelectorUiKey.Key:
-        type: ItemSelectorBoundUserInterface
 
 - type: entity
-  parent: BaseItem
+  parent: BaseHardsuitSelector
   id: HardsuitProtoSelector
   name: salvage hardsuit selector
   description: "An obsidian rod that strikes paranormal things."
-  suffix: HardSuit
+  suffix: Selector
   components:
   - type: Sprite
     sprite: _Wega/Objects/Misc/HardsuitSelector/prototype.rsi
-    state: icon
-  - type: Item
-    size: Huge
   - type: ItemSelector
     items:
     - ClothingModularControllerPrototypePreassembled
     - ClothingOuterHardsuitSpatio
-  - type: ActivatableUI
-    key: enum.ItemSelectorUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.ItemSelectorUiKey.Key:
-        type: ItemSelectorBoundUserInterface
-
+    
 - type: entity
-  parent: BaseItem
+  parent: BaseHardsuitSelector
   id: HardsuitSecSelector
   name: sec hardsuit selector
   description: "An obsidian rod that strikes paranormal things."
-  suffix: HardSuit
+  suffix: Selector
   components:
   - type: Sprite
     sprite: _Wega/Objects/Misc/HardsuitSelector/secutiry.rsi
-    state: icon
-  - type: Item
-    size: Huge
   - type: ItemSelector
     items:
     - ClothingModularControllerSecurityPreassembled
     - ClothingOuterHardsuitSecurity
-  - type: ActivatableUI
-    key: enum.ItemSelectorUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.ItemSelectorUiKey.Key:
-        type: ItemSelectorBoundUserInterface
