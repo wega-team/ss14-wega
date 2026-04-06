@@ -154,10 +154,12 @@ borg-slot-handcapsule-empty = Ручные капсулы
 borg-slot-jaunter-empty = Джаунтер
 borg-slot-bodypart-empty = Протезы и конечности
 borg-slot-cargodoc-empty = Карта очков
-borg-slot-cash-empty = Кредиты
+borg-slot-cash-empty = Кредиты и диски
 borg-slot-diski-empty = Диски ОИ и технологий
 borg-slot-beacon-empty = Маяки
 borg-slot-fulton-empty = Фултоны и стан.маячки
+borg-slot-swap-empty = Вакцина и палочки
+borg-slot-spray-empty = Спреи
 
 ent-ActionBlinkBorg = Блюспейс прыжок
     .desc = Бесконечность не предел!

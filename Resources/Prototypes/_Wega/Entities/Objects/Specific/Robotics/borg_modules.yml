@@ -55,6 +55,13 @@
         whitelist:
           tags:
           - Itemborg
+    - item: SprayBottleEthanol
+      hand:
+        emptyRepresentative: SprayBottle
+        emptyLabel: borg-slot-spray-empty
+        whitelist:
+          tags:
+          - Spray
     - hand:
         emptyRepresentative: OrganHumanHeart
         emptyLabel: borg-slot-biomaterials-empty
