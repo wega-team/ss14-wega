@@ -45,10 +45,6 @@ public sealed class ColossusSystem : EntitySystem
             Spawn(reward, coords);
 
         QueueDel(uid);
-        if (args.Killer != null)
-        {
-            _achievement.QueueAchievement(args.Killer.Value, AchievementsEnum.ColossusBoss);
-        }
     }
 
     private void OnFractionAction(Entity<ColossusBossComponent> ent, ref ColossusFractionActionEvent args)

@@ -145,9 +145,6 @@ public sealed partial class BubblegumSystem : EntitySystem
         foreach (var reward in component.RewardsProto)
             Spawn(reward, coords);
 
-        if (args.Killer != null)
-            _achievement.QueueAchievement(args.Killer.Value, AchievementsEnum.BubblegumBoss);
-
         QueueDel(uid);
     }
 

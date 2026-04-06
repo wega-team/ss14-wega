@@ -18,7 +18,6 @@ public sealed partial class BloodDrunkMinerSystem : EntitySystem
 
         SubscribeLocalEvent<BloodDrunkMinerComponent, MapInitEvent>(OnMapInit);
 
-        SubscribeLocalEvent<BloodDrunkMinerComponent, MegafaunaKilledEvent>(OnBloodDrunkMinerKilled);
         SubscribeLocalEvent<BloodDrunkMinerComponent, BloodDrunkMinerDashAction>(OnDash);
     }
 
@@ -26,14 +25,6 @@ public sealed partial class BloodDrunkMinerSystem : EntitySystem
     private void OnMapInit(Entity<BloodDrunkMinerComponent> ent, ref MapInitEvent args)
     {
         RemComp<SSDIndicatorComponent>(ent);
-    }
-
-    private void OnBloodDrunkMinerKilled(EntityUid uid, BloodDrunkMinerComponent component, MegafaunaKilledEvent args)
-    {
-        if (args.Killer == null)
-            return;
-
-        _achievement.QueueAchievement(args.Killer.Value, AchievementsEnum.MinerBoss);
     }
 
     private void OnDash(Entity<BloodDrunkMinerComponent> ent, ref BloodDrunkMinerDashAction args)

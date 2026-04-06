@@ -72,10 +72,6 @@ public sealed partial class HierophantSystem : EntitySystem
             Spawn(reward, coords);
 
         QueueDel(uid);
-        if (args.Killer != null)
-        {
-            _achievement.QueueAchievement(args.Killer.Value, AchievementsEnum.HierophantBoss);
-        }
     }
 
     #region Passive Movement

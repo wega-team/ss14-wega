@@ -52,19 +52,9 @@ public sealed partial class AshDrakeSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<AshDrakeBossComponent, MegafaunaKilledEvent>(OnAshDrakeKilled);
-
         SubscribeLocalEvent<AshDrakeBossComponent, AshDrakeConeFireActionEvent>(OnConeFireAction);
         SubscribeLocalEvent<AshDrakeBossComponent, AshDrakeBreathingFireActionEvent>(OnBreathingFireAction);
         SubscribeLocalEvent<AshDrakeBossComponent, AshDrakeLavaActionEvent>(OnLavaAction);
-    }
-
-    private void OnAshDrakeKilled(EntityUid uid, AshDrakeBossComponent component, MegafaunaKilledEvent args)
-    {
-        if (args.Killer == null)
-            return;
-
-        _achievement.QueueAchievement(args.Killer.Value, AchievementsEnum.AshDrakeBoss);
     }
 
     #region Cone Fire

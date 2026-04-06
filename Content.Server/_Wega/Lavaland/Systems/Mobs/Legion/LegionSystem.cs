@@ -260,7 +260,8 @@ public sealed partial class LegionSystem : EntitySystem
             var spawnPos = FindSpawnPositionNear(coords, 2f);
             if (spawnPos != null)
             {
-                Spawn(prototype, spawnPos.Value);
+                var splitEntity = Spawn(prototype, spawnPos.Value);
+                TransferDamageContributors(uid, splitEntity);
             }
         }
 
@@ -285,11 +286,7 @@ public sealed partial class LegionSystem : EntitySystem
                 foreach (var reward in legion.RewardsProto)
                     Spawn(reward, coords);
 
-                if (args.Killer != null)
-                {
-                    _achievement.QueueAchievement(args.Killer.Value, AchievementsEnum.FirstBoss);
-                    _achievement.QueueAchievement(args.Killer.Value, AchievementsEnum.LegionBoss);
-                }
+                GrantAchievementsForLegion(uid);
             }
         }
 
@@ -304,7 +301,8 @@ public sealed partial class LegionSystem : EntitySystem
             var spawnPos = FindSpawnPositionNear(coords, 2f);
             if (spawnPos != null)
             {
-                Spawn(component.NextSplitPrototype, spawnPos.Value);
+                var nextSplit = Spawn(component.NextSplitPrototype, spawnPos.Value);
+                TransferDamageContributors(uid, nextSplit);
             }
         }
     }
@@ -322,6 +320,53 @@ public sealed partial class LegionSystem : EntitySystem
                 }
             }
         }
+    }
+
+    private void GrantAchievementsForLegion(EntityUid lastSplit)
+    {
+        if (!TryComp<MegafaunaDamageContributorComponent>(lastSplit, out var contributor))
+            return;
+
+        if (contributor.AchievementsGranted)
+            return;
+
+        contributor.AchievementsGranted = true;
+
+        var totalDamage = contributor.TotalDamageReceived;
+        if (totalDamage <= 0)
+            return;
+
+        var threshold = contributor.Threshold;
+        foreach (var (player, damage) in contributor.Contributors)
+        {
+            var percentage = damage / totalDamage;
+            if (percentage >= threshold)
+            {
+                _achievement.QueueAchievement(player, AchievementsEnum.FirstBoss);
+                _achievement.QueueAchievement(player, AchievementsEnum.LegionBoss);
+            }
+        }
+
+        contributor.Contributors.Clear();
+    }
+
+    private void TransferDamageContributors(EntityUid from, EntityUid to)
+    {
+        if (!TryComp<MegafaunaDamageContributorComponent>(from, out var fromContrib))
+            return;
+
+        var toContrib = EnsureComp<MegafaunaDamageContributorComponent>(to);
+        foreach (var (player, damage) in fromContrib.Contributors)
+        {
+            toContrib.Contributors.TryGetValue(player, out var current);
+            toContrib.Contributors[player] = current + damage;
+        }
+        toContrib.TotalDamageReceived += fromContrib.TotalDamageReceived;
+
+        toContrib.Threshold = fromContrib.Threshold;
+        toContrib.AchievementId = fromContrib.AchievementId;
+
+        fromContrib.Contributors.Clear();
     }
 
     #endregion
