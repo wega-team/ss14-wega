@@ -53,12 +53,12 @@
   - Salvage
   - Security
   - Brig
-  - Lawyer
   - Cargo
   - Atmospherics
   - Medical
   - GenpopEnter
   - GenpopLeave
+  - LavalandAvanpost # Corvax-Wega-Lavaland
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]

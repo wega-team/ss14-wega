@@ -19,12 +19,31 @@
   supervisors: job-supervisors-centcom
   canBeAntag: false
   access:
+  - Cryogenics
+  - LavalandAvanpost # Corvax-Wega-Lavaland
+  - Bar
   - Service
   - Brig
   - Maintenance
   - Command
+  - Janitor
+  - Theatre
+  - Kitchen
+  - Chapel
+  - Hydroponics
   - External
+  - Chemistry
+  - Engineering
+  - Research
+  - Detective
+  - Salvage
+  - Security
   - Lawyer
+  - Cargo
+  - Atmospherics
+  - Medical
+  - GenpopEnter
+  - GenpopLeave
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
