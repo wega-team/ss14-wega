@@ -189,3 +189,10 @@
     back:
     - PlushieTeg
   groupBy: "wegaToy"
+
+- type: loadout
+  id: BookCum
+  storage:
+    back:
+    - BookCum
+  groupBy: "book"
