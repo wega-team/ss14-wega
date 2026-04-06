@@ -1,6 +1,7 @@
 - type: entity
   parent: BaseItem
   id: BaseHardsuitSelector
+  abstract: true
   components:
   - type: Sprite
     state: icon
