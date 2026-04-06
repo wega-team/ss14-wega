@@ -1,5 +1,4 @@
 using Content.Server.Lavaland.Mobs.Components;
-using Content.Shared.Achievements;
 using Content.Shared.Lavaland.Events;
 using Content.Shared.SSDIndicator;
 using Robust.Shared.Audio.Systems;
@@ -8,7 +7,6 @@ namespace Content.Server.Lavaland.Mobs;
 
 public sealed partial class BloodDrunkMinerSystem : EntitySystem
 {
-    [Dependency] private readonly SharedAchievementsSystem _achievement = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
 
