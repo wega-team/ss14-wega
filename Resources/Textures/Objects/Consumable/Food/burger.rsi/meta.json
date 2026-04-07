@@ -384,7 +384,17 @@
             "directions": 4
         },
         {
-            "name": "cumburger"
+            "name": "cumburger",
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
         }
     ]
 }
