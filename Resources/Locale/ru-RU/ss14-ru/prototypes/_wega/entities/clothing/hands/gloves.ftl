@@ -12,3 +12,5 @@ ent-ClothingHandsGlovesConcussiveGauntlets = ударные перчатки
     .desc = Кирки... для ваших рук!
 ent-ClothingHandsRazorGloves = разрывные перчатки
     .desc = Всё гениальное просто.
+ent-ClothingHandsClockworkGauntlets = тяжелые перчатки технокульта
+    .desc = Тяжелые латунные перчатки, созданные для того, чтобы ударять по неверным!

@@ -596,7 +596,7 @@
   id: WeaponClockHammer
   parent: BaseItem
   name: clock hammer
-  description: 
+  description: A large and lifty hammer, that can throw it targets on hit. For the righteous of Ratvar.
   components:
   - type: Sharp
   - type: Sprite
@@ -609,7 +609,7 @@
   - type: MeleeWeapon
     # resistanceBypassPercentage: 0.4 #for future
     wideAnimationRotation: -135
-    attackRate: 0.7
+    attackRate: 0.6
     damage:
       types:
         Blunt: 10
@@ -630,7 +630,7 @@
         Blunt: 25
   - type: MeleeThrowOnHit
     activateOnThrown: true
-    distance: 10
+    distance: 4
     speed: 5
   - type: StaminaDamageOnHit
     damage: 25

@@ -1,0 +1,11 @@
+- type: entity
+  id: VeilCultStrangeShard
+  parent: BaseItem
+  name: strange shard
+  description: Some strange levitating shards.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/VeilCult/strange_shard.rsi
+  - type: Tag
+    tags:
+    - StrangeShard

@@ -511,3 +511,16 @@
 
 - type: Tag
   id: Saw
+  
+  # Veil Cult Tags Start
+  
+- type: Tag
+  id: InteractionCog
+  
+- type: Tag
+  id: StrangeShard
+  
+- type: Tag
+  id: SoulVessel
+  
+  # Veil Cult Tags End

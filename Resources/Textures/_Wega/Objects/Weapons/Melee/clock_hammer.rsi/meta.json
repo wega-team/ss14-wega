@@ -25,6 +25,12 @@
         {
             "name": "wielded-inhand-right",
             "directions": 4
+        },
+        {
+          "name": "overlay1"
+        },
+        {
+          "name": "overlay2"
         }
     ]
 }
