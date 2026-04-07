@@ -110,3 +110,15 @@
   - type: Sprite
     sprite: _Wega/Objects/Specific/Robotics/iconitem.rsi
     state: ballon-icon
+
+- type: entity
+  parent: BaseItem
+  id: CashIcon
+  name: CashIcon
+  categories: [ HideSpawnMenu ]
+  description: CashIcon
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/iconitem.rsi
+    state: cash-icon
+    

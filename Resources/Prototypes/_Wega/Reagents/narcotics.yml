@@ -15,7 +15,7 @@
   color: "#C2FFE0"
   flavor: tea
   metabolisms:
-    Poison:
+    Bloodstream:
       effects:
       - !type:GenericStatusEffect
         key: Pacified
@@ -31,12 +31,6 @@
         - !type:ReagentCondition
           reagent: RelaxingTea
           min: 50
-    Drink:
-      effects:
-      - !type:SatiateThirst
-        factor: 5
-    Narcotic:
-      effects:
       - !type:GenericStatusEffect
         key: SeeingRainbows
         component: SeeingRainbows
@@ -51,6 +45,10 @@
         - "relaxingtea-effect-at-love"
         - "relaxingtea-effect-forget-grievances"
         - "relaxingtea-effect-at-peace"
+    Digestion:
+      effects:
+      - !type:SatiateThirst
+        factor: 5
 
 - type: reagent
   id: GrapeJuiceInvisible
@@ -60,7 +58,7 @@
   physicalDesc: reagent-physical-desc-soothing
   color: "#AAAAAA"
   metabolisms:
-    Poison:
+    Bloodstream:
       metabolismRate: 0.3
       effects:
       - !type:GenericStatusEffect
@@ -83,7 +81,7 @@
   color: "#964B00"
   flavor: sweet
   metabolisms:
-    Poison:
+    Bloodstream:
       effects:
       - !type:Polymorph
         prototype: PolymorphGingerbread
@@ -94,8 +92,6 @@
         - !type:ReagentCondition
           reagent: BakeryJuice
           min: 10
-    Narcotic:
-      effects:
       - !type:PopupMessage
         type: Local
         visualType: Medium

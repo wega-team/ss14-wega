@@ -77,7 +77,7 @@ public sealed class HandItemImplantSystem : EntitySystem
         if (!item.ItemEntity.HasValue || component.Container == null)
             return;
 
-        EntityManager.DeleteEntity(item.ItemEntity);
+        Del(item.ItemEntity);
         component.Items.RemoveAt(itemIndex);
     }
 

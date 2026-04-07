@@ -1,0 +1,22 @@
+- type: constructionGraph
+  id: ModMasc
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: voiceMasc
+      steps:
+      - material: Cable
+        amount: 5
+        doAfter: 2
+      - tag: VoiceTrigger
+        name: ent-VoiceTrigger
+        icon:
+          sprite: Objects/Devices/voice.rsi
+          state: voice
+        doAfter: 2
+      - material: Cloth
+        amount: 6
+        doAfter: 2
+  - node: voiceMasc
+    entity: ClothingMaskGasVoiceChameleon

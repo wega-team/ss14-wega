@@ -13,7 +13,7 @@
   - !type:PlantAdjustHealth
     amount: -1
   metabolisms:
-    Narcotic:
+    Bloodstream:
       effects:
       - !type:ChemReinforcedExtracts
         conditions:
@@ -47,7 +47,7 @@
   flavor: medicine
   color: "#1E90FF"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
       - !type:ChemStabilizeMutationChance
         conditions:
@@ -78,7 +78,7 @@
       - !type:AdjustTemperature
         amount: -5000
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
         - !type:GenericStatusEffect
           key: SlowMetabolism
@@ -94,7 +94,7 @@
   flavor: medicine
   color: "#007FFF"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
       - !type:ChemReinforcedExtracts
         conditions:
@@ -103,9 +103,9 @@
           min: 5
       - !type:HealthChange
         damage:
-          groups:
-            Brute: -0.5
-            Burn: -0.5
+          types:
+            Blunt: -0.5
+            Heat: -0.5
         conditions:
         - !type:ReagentCondition
           reagent: SlimeReinforcer
@@ -123,7 +123,7 @@
   flavor: toxinsspecial
   color: "#007FFF"
   metabolisms:
-    Poison:
+    Bloodstream:
       effects:
       - !type:ChemIncreaseMutationChance
         conditions:
@@ -140,7 +140,7 @@
   flavor: medicine
   color: "#303030"
   metabolisms:
-    Narcotic:
+    Bloodstream:
       effects:
       - !type:MovementSpeedModifier
         walkSpeedModifier: 1.35
@@ -169,7 +169,7 @@
   flavor: medicine
   color: "#FFB6C1"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
       - !type:MakeSentient
         conditions:
@@ -186,7 +186,7 @@
   flavor: medicine
   color: "#FFC0CB"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
       - !type:ChemIncreaseFriendship
         conditions:
@@ -203,7 +203,7 @@
   flavor: bitter
   color: "#000000"
   metabolisms:
-    Poison:
+    Bloodstream:
       effects:
       - !type:HealthChange
         damage:
@@ -223,7 +223,7 @@
   flavor: medicine
   color: "#FAFAD2"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
       - !type:ChemDamageResist
         damageTypes: [ "Heat" ]
@@ -249,7 +249,7 @@
   flavor: medicine
   color: "#FAFAD2"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
       - !type:ChemDamageResist
         damageTypes: [ "Radiation" ]
@@ -271,7 +271,7 @@
   flavor: medicine
   color: "#00FF00"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
       - !type:ChemDamageResist
         damageTypes: [ "Cellular" ]
@@ -289,7 +289,7 @@
   flavor: medicine
   color: "#66FF66"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
       - !type:ChemDamageResist
         damageTypes: [ "Blunt", "Piercing", "Slash" ]

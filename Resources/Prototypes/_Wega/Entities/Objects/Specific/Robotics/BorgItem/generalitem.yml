@@ -80,9 +80,11 @@
       - Critical
       - Dead
       damage:
-        groups:
-          Brute: -1.5
-          Burn: -1.5
+        types:
+          Blunt: -1
+          Slash: -1
+          Piercing: -1
+          Heat: -1.5
   - type: PowerCellDraw
     drawRate: 72 # 10 seconds
   - type: ToggleCellDraw
@@ -159,10 +161,9 @@
       params:
         volume: -3
     damage:
-      groups:
-        Brute: 10
       types:
         Structural: 30
+        Blunt: 10
   - type: Item
     size: Normal
     shape:

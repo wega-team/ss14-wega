@@ -12,7 +12,6 @@
   rules:
   - Traitor
   - SubGamemodesRule
-  - SpaceTrafficControlFriendlyEventScheduler
   - BasicRoundstartVariation
 
 # Antags

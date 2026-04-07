@@ -1,0 +1,195 @@
+# - type: entity
+#   parent: BaseSpeciesAppearance
+#   id: AppearanceAshWalker
+#   name: ashwalker appearance
+#   components:
+#   - type: Inventory
+#     templateId: ashwalker
+#     speciesId: ashwalker
+#   - type: InitialBody
+#     organs:
+#       Torso: OrganAshWalkerTorso
+#       Head: OrganAshWalkerHead
+#       ArmLeft: OrganAshWalkerArmLeft
+#       ArmRight: OrganAshWalkerArmRight
+#       HandLeft: OrganAshWalkerHandLeft
+#       HandRight: OrganAshWalkerHandRight
+#       LegLeft: OrganAshWalkerLegLeft
+#       LegRight: OrganAshWalkerLegRight
+#       FootLeft: OrganAshWalkerFootLeft
+#       FootRight: OrganAshWalkerFootRight
+#       Brain: OrganAshWalkerBrain
+#       Eyes: OrganAshWalkerEyes
+#       Tongue: OrganAshWalkerTongue
+#       Appendix: OrganAshWalkerAppendix
+#       Ears: OrganAshWalkerEars
+#       Lungs: OrganAshWalkerLungs
+#       Heart: OrganAshWalkerHeart
+#       Stomach: OrganAshWalkerStomach
+#       Liver: OrganAshWalkerLiver
+#       Kidneys: OrganAshWalkerKidneys
+#   - type: HumanoidProfile
+#     species: AshWalker
+
+# - type: entity
+#   parent:
+#   - AppearanceAshWalker
+#   - MobReptilian
+#   id: MobAshWalker
+#   name: Urist McAshWalker
+#   components:
+#   - type: LavalandVisitor
+#     immuneToStorm: true
+#   - type: MovementSpeedModifier
+#     baseWalkSpeed: 3.675
+#     baseSprintSpeed: 6.615
+#   - type: Respirator
+#     saturation: 8.0
+#     suffocationThreshold: -6.0
+#     maxSaturation: 8.0
+#     minSaturation: -4.0
+#     updateIntervalMultiplier: 0.8
+#     damage:
+#       types:
+#         Asphyxiation: 5.0
+#     damageRecovery:
+#       types:
+#         Asphyxiation: -1.0
+
+# - type: entity
+#   id: OrganAshWalkerLungs
+#   parent: OrganHumanLungs
+#   name: lungs
+#   description: "Filters oxygen from an atmosphere, which is then sent into the bloodstream to be used as an electron carrier."
+#   components:
+#   - type: Metabolizer
+#     removeEmpty: true
+#     solutionOnBody: false
+#     solution: "Lung"
+#     metabolizerTypes: [ Human ]
+#     groups:
+#     - id: Gas
+#       rateModifier: 35.0
+#   - type: SolutionContainerManager
+#     solutions:
+#       organ:
+#         reagents:
+#         - ReagentId: Nutriment
+#           Quantity: 10
+#       Lung:
+#         maxVol: 35.0
+#         canReact: false
+#       food:
+#         maxVol: 5
+#         reagents:
+#         - ReagentId: UncookedAnimalProteins
+#           Quantity: 5
+
+# - type: entity
+#   parent: OrganBase
+#   id: OrganAshWalker
+#   abstract: true
+#   suffix: AshWalker
+
+# - type: entity
+#   parent: OrganAshWalker
+#   id: OrganAshWalkerInternal
+#   abstract: true
+#   components:
+#   - type: Sprite
+#     sprite: Mobs/Species/Human/organs.rsi
+
+# - type: entity
+#   id: OrganAshWalkerVisual
+#   abstract: true
+#   components:
+#   - type: VisualOrgan
+#     data:
+#       sprite: _Wega/Mobs/Species/AshWalker/parts.rsi
+#   - type: VisualOrganMarkings
+#     markingData:
+#       group: AshWalker
+
+# - type: entity
+#   parent: [ OrganAshWalker, OrganAshWalkerVisual ]
+#   id: OrganAshWalkerExternal
+#   abstract: true
+#   components:
+#   - type: Sprite
+#     sprite: _Wega/Mobs/Species/AshWalker/parts.rsi
+
+# - type: entity
+#   parent: [ OrganBaseTorso, OrganAshWalkerExternal ]
+#   id: OrganAshWalkerTorso
+
+# - type: entity
+#   parent: [ OrganBaseHead, OrganAshWalkerExternal ]
+#   id: OrganAshWalkerHead
+
+# - type: entity
+#   parent: [ OrganBaseArmLeft, OrganAshWalkerExternal ]
+#   id: OrganAshWalkerArmLeft
+
+# - type: entity
+#   parent: [ OrganBaseArmRight, OrganAshWalkerExternal ]
+#   id: OrganAshWalkerArmRight
+
+# - type: entity
+#   parent: [ OrganBaseHandLeft, OrganAshWalkerExternal ]
+#   id: OrganAshWalkerHandLeft
+
+# - type: entity
+#   parent: [ OrganBaseHandRight, OrganAshWalkerExternal ]
+#   id: OrganAshWalkerHandRight
+
+# - type: entity
+#   parent: [ OrganBaseLegLeft, OrganAshWalkerExternal ]
+#   id: OrganAshWalkerLegLeft
+
+# - type: entity
+#   parent: [ OrganBaseLegRight, OrganAshWalkerExternal ]
+#   id: OrganAshWalkerLegRight
+
+# - type: entity
+#   parent: [ OrganBaseFootLeft, OrganAshWalkerExternal ]
+#   id: OrganAshWalkerFootLeft
+
+# - type: entity
+#   parent: [ OrganBaseFootRight, OrganAshWalkerExternal ]
+#   id: OrganAshWalkerFootRight
+
+# - type: entity
+#   parent: [ OrganBaseBrain, OrganAshWalkerInternal ]
+#   id: OrganAshWalkerBrain
+
+# - type: entity
+#   parent: [ OrganAshWalkerVisual, OrganBaseEyes, OrganAshWalkerInternal ]
+#   id: OrganAshWalkerEyes
+
+# - type: entity
+#   parent: [ OrganBaseTongue, OrganAshWalkerInternal ]
+#   id: OrganAshWalkerTongue
+
+# - type: entity
+#   parent: [ OrganBaseAppendix, OrganAshWalkerInternal ]
+#   id: OrganAshWalkerAppendix
+
+# - type: entity
+#   parent: [ OrganBaseEars, OrganAshWalkerInternal ]
+#   id: OrganAshWalkerEars
+
+# - type: entity
+#   parent: [ OrganBaseHeart, OrganAshWalkerInternal ]
+#   id: OrganAshWalkerHeart
+
+# - type: entity
+#   parent: [ OrganBaseStomach, OrganAshWalkerInternal ]
+#   id: OrganAshWalkerStomach
+
+# - type: entity
+#   parent: [ OrganBaseLiver, OrganAshWalkerInternal ]
+#   id: OrganAshWalkerLiver
+
+# - type: entity
+#   parent: [ OrganBaseKidneys, OrganAshWalkerInternal ]
+#   id: OrganAshWalkerKidneys

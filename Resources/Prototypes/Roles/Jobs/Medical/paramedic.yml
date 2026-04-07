@@ -29,11 +29,6 @@
   equipment:
     id: ParamedicPDA
     ears: ClothingHeadsetMedical
-    belt: ClothingBeltMedicalEMTFilled
-    neck: IDCardNeck
-  storage:
-    back:
-    - EmergencyRollerBedSpawnFolded
 
 - type: chameleonOutfit
   id: ParamedicChameleonOutfit

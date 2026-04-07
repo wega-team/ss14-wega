@@ -9,7 +9,7 @@
   flavor: sharp
   color: "#96424f"
   metabolisms:
-    Poison:
+    Bloodstream:
       effects:
       - !type:ModifyStatusEffect
         effectProto: StatusEffectHemorrhage
@@ -17,7 +17,7 @@
         type: Update
       - !type:ModifyBleed
         amount: 0.5
-        
+
 - type: reagent
   id: ImpedrezeneNoDamage
   name: reagent-name-impedrezene
@@ -28,7 +28,7 @@
   flavor: bitter
   color: "#215263"
   metabolisms:
-    Narcotic:
+    Bloodstream:
       effects:
       - !type:MovementSpeedModifier
         walkSpeedModifier: 0.5

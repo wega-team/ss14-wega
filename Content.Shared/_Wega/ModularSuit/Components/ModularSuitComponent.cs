@@ -17,6 +17,9 @@ public sealed partial class ModularSuitComponent : Component
     [ViewVariables(VVAccess.ReadOnly), AutoNetworkedField]
     public EntityUid? Wearer;
 
+    [ViewVariables(VVAccess.ReadOnly)]
+    public bool Equipped => Wearer != null;
+
     [ViewVariables, AutoNetworkedField]
     public EntityUid? ToggleDeployActionEntity;
 

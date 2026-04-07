@@ -20,7 +20,7 @@ public sealed partial class CellEntryControl : Control
         Cell = cell;
         Remote = remote;
 
-        Name.Text = cell.Name;
+        NameLabel.Text = cell.Name;
         Color.ModulateSelfOverride = cell.Color;
 
         Button.OnPressed += _ => OnSelect?.Invoke(this);

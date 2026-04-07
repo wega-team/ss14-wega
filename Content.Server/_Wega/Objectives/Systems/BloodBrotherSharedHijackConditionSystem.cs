@@ -67,7 +67,7 @@ public sealed class BloodBrotherSharedHijackConditionSystem : EntitySystem
     private bool IsShuttleHijackedByBloodBrothers(EntityUid shuttleGridId, EntityUid objectiveUid, EntityUid mindId)
     {
         var gridPlayers = Filter.BroadcastGrid(shuttleGridId).Recipients;
-        var humanoids = GetEntityQuery<HumanoidAppearanceComponent>();
+        var humanoids = GetEntityQuery<HumanoidProfileComponent>();
         var cuffable = GetEntityQuery<CuffableComponent>();
         EntityQuery<MobStateComponent>();
 

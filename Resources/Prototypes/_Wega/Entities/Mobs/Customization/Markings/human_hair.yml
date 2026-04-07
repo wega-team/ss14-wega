@@ -1,7 +1,6 @@
 - type: marking
   id: HumanHairMelissa
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: _Wega/Mobs/Customization/human_hair.rsi
       state: melissa
@@ -9,7 +8,6 @@
 - type: marking
   id: HumanHairCuteHair
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: _Wega/Mobs/Customization/human_hair.rsi
       state: cute_hair
@@ -17,7 +15,6 @@
 - type: marking
   id: HumanHairKamina
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: _Wega/Mobs/Customization/human_hair.rsi
       state: kamina
@@ -25,7 +22,6 @@
 - type: marking
   id: HumanHairMelissaGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: _Wega/Mobs/Customization/human_hair.rsi
       state: melissa
@@ -35,7 +31,6 @@
 - type: marking
   id: HumanHairCuteHairGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: _Wega/Mobs/Customization/human_hair.rsi
       state: cute_hair
@@ -47,7 +42,6 @@
 - type: marking
   id: HumanHairKaminaGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: _Wega/Mobs/Customization/human_hair.rsi
       state: kamina
@@ -58,7 +52,6 @@
 - type: marking
   id: HumanHairAfroGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: afro
@@ -68,7 +61,6 @@
 - type: marking
   id: HumanHairAfro2Gradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: afro2
@@ -78,7 +70,6 @@
 - type: marking
   id: HumanHairBigafroGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: bigafro
@@ -88,7 +79,6 @@
 - type: marking
   id: HumanHairAntennaGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: antenna
@@ -98,7 +88,6 @@
 - type: marking
   id: HumanHairBaldingGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: e
@@ -108,7 +97,6 @@
 - type: marking
   id: HumanHairBedheadGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: bedhead
@@ -118,7 +106,6 @@
 - type: marking
   id: HumanHairBedheadv2Gradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: bedheadv2
@@ -128,7 +115,6 @@
 - type: marking
   id: HumanHairBedheadv3Gradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: bedheadv3
@@ -138,7 +124,6 @@
 - type: marking
   id: HumanHairPulatoGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: pulato
@@ -148,7 +133,6 @@
 - type: marking
   id: HumanHairLongBedheadGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: long_bedhead
@@ -158,7 +142,6 @@
 - type: marking
   id: HumanHairLongBedhead2Gradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: long_bedhead2
@@ -168,7 +151,6 @@
 - type: marking
   id: HumanHairFloorlengthBedheadGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: floorlength_bedhead
@@ -178,7 +160,6 @@
 - type: marking
   id: HumanHairBeehiveGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: beehive
@@ -188,7 +169,6 @@
 - type: marking
   id: HumanHairBeehivev2Gradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: beehivev2
@@ -198,7 +178,6 @@
 - type: marking
   id: HumanHairBobGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: bob
@@ -208,7 +187,6 @@
 - type: marking
   id: HumanHairBob2Gradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: bob2
@@ -218,7 +196,6 @@
 - type: marking
   id: HumanHairBobcutGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: bobcut
@@ -228,7 +205,6 @@
 - type: marking
   id: HumanHairBob4Gradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: bob4
@@ -238,7 +214,6 @@
 - type: marking
   id: HumanHairBob5Gradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: bob5
@@ -248,7 +223,6 @@
 - type: marking
   id: HumanHairBobcurlGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: bobcurl
@@ -258,7 +232,6 @@
 - type: marking
   id: HumanHairBoddickerGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: boddicker
@@ -268,7 +241,6 @@
 - type: marking
   id: HumanHairBowlcutGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: bowlcut
@@ -278,7 +250,6 @@
 - type: marking
   id: HumanHairBowlcut2Gradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: bowlcut2
@@ -288,7 +259,6 @@
 - type: marking
   id: HumanHairBraidGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: braid
@@ -298,7 +268,6 @@
 - type: marking
   id: HumanHairBraidedGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: braided
@@ -308,7 +277,6 @@
 - type: marking
   id: HumanHairBraidfrontGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: braidfront
@@ -318,7 +286,6 @@
 - type: marking
   id: HumanHairBraid2Gradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: braid2
@@ -328,7 +295,6 @@
 - type: marking
   id: HumanHairHbraidGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: hbraid
@@ -338,7 +304,6 @@
 - type: marking
   id: HumanHairShortbraidGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: shortbraid
@@ -348,7 +313,6 @@
 - type: marking
   id: HumanHairBraidtailGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: braidtail
@@ -358,7 +322,6 @@
 - type: marking
   id: HumanHairBunGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: bun
@@ -368,7 +331,6 @@
 - type: marking
   id: HumanHairBunhead2Gradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: bunhead2
@@ -378,7 +340,6 @@
 - type: marking
   id: HumanHairBun3Gradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: bun3
@@ -388,7 +349,6 @@
 - type: marking
   id: HumanHairLargebunGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: largebun
@@ -398,7 +358,6 @@
 - type: marking
   id: HumanHairManbunGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: manbun
@@ -408,7 +367,6 @@
 - type: marking
   id: HumanHairTightbunGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: tightbun
@@ -418,7 +376,6 @@
 - type: marking
   id: HumanHairBusinessGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: business
@@ -428,7 +385,6 @@
 - type: marking
   id: HumanHairBusiness2Gradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: business2
@@ -438,7 +394,6 @@
 - type: marking
   id: HumanHairBusiness3Gradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: business3
@@ -448,7 +403,6 @@
 - type: marking
   id: HumanHairBusiness4Gradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: business4
@@ -458,7 +412,6 @@
 - type: marking
   id: HumanHairBuzzcutGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: buzzcut
@@ -468,7 +421,6 @@
 - type: marking
   id: HumanHairCiaGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: cia
@@ -478,7 +430,6 @@
 - type: marking
   id: HumanHairClassicAfroGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: classicafro
@@ -488,7 +439,6 @@
 - type: marking
   id: HumanHairClassicBigAfroGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: classicbigafro
@@ -498,7 +448,6 @@
 - type: marking
   id: HumanHairClassicBusinessGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: classicbusiness
@@ -508,7 +457,6 @@
 - type: marking
   id: HumanHairClassicCiaGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: classiccia
@@ -518,7 +466,6 @@
 - type: marking
   id: HumanHairClassicCornrows2Gradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: classiccornrows2
@@ -528,7 +475,6 @@
 - type: marking
   id: HumanHairClassicFloorlengthBedheadGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: classicfloorlength_bedhead
@@ -538,7 +484,6 @@
 - type: marking
   id: HumanHairClassicModernGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: classicmodern
@@ -548,7 +493,6 @@
 - type: marking
   id: HumanHairClassicMulderGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: classicmulder
@@ -558,7 +502,6 @@
 - type: marking
   id: HumanHairClassicWispGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: classicwisp
@@ -568,7 +511,6 @@
 - type: marking
   id: HumanHairCoffeehouseGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: coffeehouse
@@ -578,7 +520,6 @@
 - type: marking
   id: HumanHairComboverGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: combover
@@ -588,7 +529,6 @@
 - type: marking
   id: HumanHairCornrowsGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: cornrows
@@ -598,7 +538,6 @@
 - type: marking
   id: HumanHairCornrows2Gradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: cornrows2
@@ -608,7 +547,6 @@
 - type: marking
   id: HumanHairCornrowbunGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: cornrowbun
@@ -618,7 +556,6 @@
 - type: marking
   id: HumanHairCornrowbraidGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: cornrowbraid
@@ -628,7 +565,6 @@
 - type: marking
   id: HumanHairCornrowtailGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: cornrowtail
@@ -638,7 +574,6 @@
 - type: marking
   id: HumanHairCrewcutGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: crewcut
@@ -648,7 +583,6 @@
 - type: marking
   id: HumanHairCrewcut2Gradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: crewcut2
@@ -658,7 +592,6 @@
 - type: marking
   id: HumanHairCurlsGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: curls
@@ -668,7 +601,6 @@
 - type: marking
   id: HumanHairCGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: c
@@ -678,7 +610,6 @@
 - type: marking
   id: HumanHairDandypompadourGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: dandypompadour
@@ -688,7 +619,6 @@
 - type: marking
   id: HumanHairDevilockGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: devilock
@@ -698,7 +628,6 @@
 - type: marking
   id: HumanHairDoublebunGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: doublebun
@@ -708,7 +637,6 @@
 - type: marking
   id: HumanHairDoublebunLongGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
   - sprite: Mobs/Customization/human_hair.rsi
     state: doublebun_long
@@ -718,7 +646,6 @@
 - type: marking
   id: HumanHairDreadsGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: dreads
@@ -728,7 +655,6 @@
 - type: marking
   id: HumanHairDrillruruGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: drillruru
@@ -738,7 +664,6 @@
 - type: marking
   id: HumanHairDrillhairextendedGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: drillhairextended
@@ -748,7 +673,6 @@
 - type: marking
   id: HumanHairEmoGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: emo
@@ -758,7 +682,6 @@
 - type: marking
   id: HumanHairEmofringeGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: emofringe
@@ -768,7 +691,6 @@
 - type: marking
   id: HumanHairNofadeGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: nofade
@@ -778,7 +700,6 @@
 - type: marking
   id: HumanHairHighfadeGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: highfade
@@ -788,7 +709,6 @@
 - type: marking
   id: HumanHairMedfadeGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: medfade
@@ -798,7 +718,6 @@
 - type: marking
   id: HumanHairLowfadeGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: lowfade
@@ -808,7 +727,6 @@
 - type: marking
   id: HumanHairBaldfadeGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: baldfade
@@ -818,7 +736,6 @@
 - type: marking
   id: HumanHairFeatherGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: feather
@@ -828,7 +745,6 @@
 - type: marking
   id: HumanHairFatherGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: father
@@ -838,7 +754,6 @@
 - type: marking
   id: HumanHairSargeantGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: sargeant
@@ -848,7 +763,6 @@
 - type: marking
   id: HumanHairFlairGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: flair
@@ -858,7 +772,6 @@
 - type: marking
   id: HumanHairBigflattopGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: bigflattop
@@ -868,7 +781,6 @@
 - type: marking
   id: HumanHairFlowGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: f
@@ -878,7 +790,6 @@
 - type: marking
   id: HumanHairGelledGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: gelled
@@ -888,7 +799,6 @@
 - type: marking
   id: HumanHairGentleGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: gentle
@@ -898,7 +808,6 @@
 - type: marking
   id: HumanHairHalfbangGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: halfbang
@@ -908,7 +817,6 @@
 - type: marking
   id: HumanHairHalfbang2Gradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: halfbang2
@@ -918,7 +826,6 @@
 - type: marking
   id: HumanHairHalfshavedGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: halfshaved
@@ -928,7 +835,6 @@
 - type: marking
   id: HumanHairHedgehogGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: hedgehog
@@ -938,7 +844,6 @@
 - type: marking
   id: HumanHairHimecutGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: himecut
@@ -948,7 +853,6 @@
 - type: marking
   id: HumanHairHimecut2Gradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: himecut2
@@ -958,7 +862,6 @@
 - type: marking
   id: HumanHairShorthimeGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: shorthime
@@ -968,7 +871,6 @@
 - type: marking
   id: HumanHairHimeupGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: himeup
@@ -978,7 +880,6 @@
 - type: marking
   id: HumanHairHitopGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: hitop
@@ -988,7 +889,6 @@
 - type: marking
   id: HumanHairJadeGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: jade
@@ -998,7 +898,6 @@
 - type: marking
   id: HumanHairJensenGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: jensen
@@ -1008,7 +907,6 @@
 - type: marking
   id: HumanHairJoestarGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: joestar
@@ -1018,7 +916,6 @@
 - type: marking
   id: HumanHairKeanuGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: keanu
@@ -1028,7 +925,6 @@
 - type: marking
   id: HumanHairKusanagiGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: kusanagi
@@ -1038,7 +934,6 @@
 - type: marking
   id: HumanHairLongGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: long
@@ -1048,7 +943,6 @@
 - type: marking
   id: HumanHairLong2Gradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: long2
@@ -1058,7 +952,6 @@
 - type: marking
   id: HumanHairLong3Gradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: long3
@@ -1068,7 +961,6 @@
 - type: marking
   id: HumanHairLongWithBundlesGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: longbundled
@@ -1078,7 +970,6 @@
 - type: marking
   id: HumanHairLongovereyeGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: longovereye
@@ -1088,7 +979,6 @@
 - type: marking
   id: HumanHairLbangsGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: lbangs
@@ -1098,7 +988,6 @@
 - type: marking
   id: HumanHairLongemoGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: longemo
@@ -1108,7 +997,6 @@
 - type: marking
   id: HumanHairLongfringeGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: longfringe
@@ -1118,7 +1006,6 @@
 - type: marking
   id: HumanHairLongsidepartGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: longsidepart
@@ -1128,7 +1015,6 @@
 - type: marking
   id: HumanHairMegaeyebrowsGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: megaeyebrows
@@ -1138,7 +1024,6 @@
 - type: marking
   id: HumanHairMessyGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: messy
@@ -1148,7 +1033,6 @@
 - type: marking
   id: HumanHairModernGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: modern
@@ -1158,7 +1042,6 @@
 - type: marking
   id: HumanHairMohawkGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: d
@@ -1168,7 +1051,6 @@
 - type: marking
   id: HumanHairNitoriGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: nitori
@@ -1178,7 +1060,6 @@
 - type: marking
   id: HumanHairReversemohawkGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: reversemohawk
@@ -1188,7 +1069,6 @@
 - type: marking
   id: HumanHairUnshavenMohawkGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: unshaven_mohawk
@@ -1198,7 +1078,6 @@
 - type: marking
   id: HumanHairMulderGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: mulder
@@ -1208,7 +1087,6 @@
 - type: marking
   id: HumanHairOdangoGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: odango
@@ -1218,7 +1096,6 @@
 - type: marking
   id: HumanHairOmbreGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: ombre
@@ -1228,7 +1105,6 @@
 - type: marking
   id: HumanHairOneshoulderGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: oneshoulder
@@ -1238,7 +1114,6 @@
 - type: marking
   id: HumanHairShortovereyeGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: shortovereye
@@ -1248,7 +1123,6 @@
 - type: marking
   id: HumanHairOxtonGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: oxton
@@ -1258,7 +1132,6 @@
 - type: marking
   id: HumanHairPartedGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: parted
@@ -1268,7 +1141,6 @@
 - type: marking
   id: HumanHairPartGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: part
@@ -1278,7 +1150,6 @@
 - type: marking
   id: HumanHairKagamiGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: kagami
@@ -1288,7 +1159,6 @@
 - type: marking
   id: HumanHairPigtailsGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: pigtails
@@ -1298,7 +1168,6 @@
 - type: marking
   id: HumanHairPigtails2Gradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: pigtails2
@@ -1308,7 +1177,6 @@
 - type: marking
   id: HumanHairPixieGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: pixie
@@ -1318,7 +1186,6 @@
 - type: marking
   id: HumanHairPompadourGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: pompadour
@@ -1328,7 +1195,6 @@
 - type: marking
   id: HumanHairBigpompadourGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: bigpompadour
@@ -1338,7 +1204,6 @@
 - type: marking
   id: HumanHairPonytailGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: ponytail
@@ -1348,7 +1213,6 @@
 - type: marking
   id: HumanHairPonytail2Gradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: ponytail2
@@ -1358,7 +1222,6 @@
 - type: marking
   id: HumanHairPonytail3Gradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: ponytail3
@@ -1368,7 +1231,6 @@
 - type: marking
   id: HumanHairPonytail4Gradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: ponytail4
@@ -1378,7 +1240,6 @@
 - type: marking
   id: HumanHairPonytail5Gradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: ponytail5
@@ -1388,7 +1249,6 @@
 - type: marking
   id: HumanHairPonytail6Gradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: ponytail6
@@ -1398,7 +1258,6 @@
 - type: marking
   id: HumanHairPonytail7Gradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: ponytail7
@@ -1408,7 +1267,6 @@
 - type: marking
   id: HumanHairHighponytailGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: highponytail
@@ -1418,7 +1276,6 @@
 - type: marking
   id: HumanHairStailGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: stail
@@ -1428,7 +1285,6 @@
 - type: marking
   id: HumanHairLongstraightponytailGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: longstraightponytail
@@ -1438,7 +1294,6 @@
 - type: marking
   id: HumanHairCountryGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: country
@@ -1448,7 +1303,6 @@
 - type: marking
   id: HumanHairFringetailGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: fringetail
@@ -1458,7 +1312,6 @@
 - type: marking
   id: HumanHairSidetailGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: sidetail
@@ -1468,7 +1321,6 @@
 - type: marking
   id: HumanHairSidetail2Gradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: sidetail2
@@ -1478,7 +1330,6 @@
 - type: marking
   id: HumanHairSidetail3Gradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: sidetail3
@@ -1488,7 +1339,6 @@
 - type: marking
   id: HumanHairSidetail4Gradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: sidetail4
@@ -1498,7 +1348,6 @@
 - type: marking
   id: HumanHairSpikyponytailGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: spikyponytail
@@ -1508,7 +1357,6 @@
 - type: marking
   id: HumanHairPoofyGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: poofy
@@ -1518,7 +1366,6 @@
 - type: marking
   id: HumanHairQuiffGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: quiff
@@ -1528,7 +1375,6 @@
 - type: marking
   id: HumanHairRoninGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: ronin
@@ -1538,7 +1384,6 @@
 - type: marking
   id: HumanHairShavedGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: shaved
@@ -1548,7 +1393,6 @@
 - type: marking
   id: HumanHairShavedpartGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: shavedpart
@@ -1558,7 +1402,6 @@
 - type: marking
   id: HumanHairShortbangsGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: shortbangs
@@ -1568,7 +1411,6 @@
 - type: marking
   id: HumanHairAGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: a
@@ -1578,7 +1420,6 @@
 - type: marking
   id: HumanHairShorthair2Gradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: shorthair2
@@ -1588,7 +1429,6 @@
 - type: marking
   id: HumanHairShorthair3Gradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: shorthair3
@@ -1598,7 +1438,6 @@
 - type: marking
   id: HumanHairDGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: d
@@ -1608,7 +1447,6 @@
 - type: marking
   id: HumanHairEGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: e
@@ -1618,7 +1456,6 @@
 - type: marking
   id: HumanHairFGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: f
@@ -1628,7 +1465,6 @@
 - type: marking
   id: HumanHairShorthairgGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: shorthairg
@@ -1638,7 +1474,6 @@
 - type: marking
   id: HumanHair80sGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: 80s
@@ -1648,7 +1483,6 @@
 - type: marking
   id: HumanHairRosaGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: rosa
@@ -1658,7 +1492,6 @@
 - type: marking
   id: HumanHairBGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: b
@@ -1668,7 +1501,6 @@
 - type: marking
   id: HumanHairSidecutGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: sidecut
@@ -1678,7 +1510,6 @@
 - type: marking
   id: HumanHairSkinheadGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: skinhead
@@ -1688,7 +1519,6 @@
 - type: marking
   id: HumanHairProtagonistGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: protagonist
@@ -1698,7 +1528,6 @@
 - type: marking
   id: HumanHairSpikeyGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: spikey
@@ -1708,7 +1537,6 @@
 - type: marking
   id: HumanHairSpikyGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: spiky
@@ -1718,7 +1546,6 @@
 - type: marking
   id: HumanHairSpiky2Gradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: spiky2
@@ -1728,7 +1555,6 @@
 - type: marking
   id: HumanHairSpookyLongGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: spookylong
@@ -1738,7 +1564,6 @@
 - type: marking
   id: HumanHairSweptGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: swept
@@ -1748,7 +1573,6 @@
 - type: marking
   id: HumanHairSwept2Gradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: swept2
@@ -1758,7 +1582,6 @@
 - type: marking
   id: HumanHairThinningGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: thinning
@@ -1768,7 +1591,6 @@
 - type: marking
   id: HumanHairThinningfrontGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: thinningfront
@@ -1778,7 +1600,6 @@
 - type: marking
   id: HumanHairThinningrearGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: thinningrear
@@ -1788,7 +1609,6 @@
 - type: marking
   id: HumanHairTopknotGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: topknot
@@ -1798,7 +1618,6 @@
 - type: marking
   id: HumanHairTressshoulderGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: tressshoulder
@@ -1808,7 +1627,6 @@
 - type: marking
   id: HumanHairTrimmedGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: trimmed
@@ -1818,7 +1636,6 @@
 - type: marking
   id: HumanHairTrimflatGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: trimflat
@@ -1828,7 +1645,6 @@
 - type: marking
   id: HumanHairTwintailGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: twintail
@@ -1838,7 +1654,6 @@
 - type: marking
   id: HumanHairTwoStrandsGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: twostrands
@@ -1848,7 +1663,6 @@
 - type: marking
   id: HumanHairUndercutGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: undercut
@@ -1858,7 +1672,6 @@
 - type: marking
   id: HumanHairUndercutleftGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: undercutleft
@@ -1868,7 +1681,6 @@
 - type: marking
   id: HumanHairUndercutrightGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: undercutright
@@ -1878,7 +1690,6 @@
 - type: marking
   id: HumanHairUnkeptGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: unkept
@@ -1888,7 +1699,6 @@
 - type: marking
   id: HumanHairUpdoGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: updo
@@ -1898,7 +1708,6 @@
 - type: marking
   id: HumanHairVlongGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: vlong
@@ -1908,7 +1717,6 @@
 - type: marking
   id: HumanHairLongestGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: longest
@@ -1918,7 +1726,6 @@
 - type: marking
   id: HumanHairLongest2Gradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: longest2
@@ -1928,7 +1735,6 @@
 - type: marking
   id: HumanHairVeryshortovereyealternateGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: veryshortovereyealternate
@@ -1938,7 +1744,6 @@
 - type: marking
   id: HumanHairVlongfringeGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: vlongfringe
@@ -1948,7 +1753,6 @@
 - type: marking
   id: HumanHairVolajuGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: volaju
@@ -1958,7 +1762,6 @@
 - type: marking
   id: HumanHairWispGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: wisp
@@ -1968,7 +1771,6 @@
 - type: marking
   id: HumanHairUnevenGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: uneven
@@ -1978,7 +1780,6 @@
 - type: marking
   id: HumanHairTailedGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: tailed
@@ -1988,7 +1789,6 @@
 - type: marking
   id: HumanHairClassicLong2Gradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: classiclong2
@@ -1998,7 +1798,6 @@
 - type: marking
   id: HumanHairClassicLong3Gradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: classiclong3
@@ -2008,7 +1807,6 @@
 - type: marking
   id: HumanHairShapedGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: shaped
@@ -2018,7 +1816,6 @@
 - type: marking
   id: HumanHairLongBowGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: longbow
@@ -2028,7 +1825,6 @@
 - type: marking
   id: HumanHairAfricanPigtailsGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: africanpigtails
@@ -2038,7 +1834,6 @@
 - type: marking
   id: HumanHairAfropuffdoubleGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: afropuffdouble
@@ -2048,7 +1843,6 @@
 - type: marking
   id: HumanHairAfropuffleftGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: afropuffleft
@@ -2058,7 +1852,6 @@
 - type: marking
   id: HumanHairAfropuffrightGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: afropuffright
@@ -2068,7 +1861,6 @@
 - type: marking
   id: HumanHairAmazonGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: amazon
@@ -2078,7 +1870,6 @@
 - type: marking
   id: HumanHairAstolfoGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: astolfo
@@ -2088,7 +1879,6 @@
 - type: marking
   id: HumanHairBaumGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: baum
@@ -2098,7 +1888,6 @@
 - type: marking
   id: HumanHairBeachwaveGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: beachwave
@@ -2108,7 +1897,6 @@
 - type: marking
   id: HumanHairBluntbangsGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: bluntbangs
@@ -2118,7 +1906,6 @@
 - type: marking
   id: HumanHairBluntbangsAltGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: bluntbangs_alt
@@ -2128,7 +1915,6 @@
 - type: marking
   id: HumanHairBobcutAltGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: bobcutalt
@@ -2138,7 +1924,6 @@
 - type: marking
   id: HumanHairBunhead4Gradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: bunhead4
@@ -2148,7 +1933,6 @@
 - type: marking
   id: HumanHairCombedGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: combed
@@ -2158,7 +1942,6 @@
 - type: marking
   id: HumanHairCombedbobGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: combedbob
@@ -2168,7 +1951,6 @@
 - type: marking
   id: HumanHairCottonGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: cotton
@@ -2178,7 +1960,6 @@
 - type: marking
   id: HumanHairCurlyGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: curly
@@ -2188,7 +1969,6 @@
 - type: marking
   id: HumanHairDaveGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: dave
@@ -2198,7 +1978,6 @@
 - type: marking
   id: HumanHairDiagonalBangsGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: diagonal_bangs
@@ -2208,7 +1987,6 @@
 - type: marking
   id: HumanHairEmoshortGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: emoshort
@@ -2218,7 +1996,6 @@
 - type: marking
   id: HumanHairFingerwaveGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: fingerwave
@@ -2228,7 +2005,6 @@
 - type: marking
   id: HumanHairFluffyShortGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: fluffy_short
@@ -2238,7 +2014,6 @@
 - type: marking
   id: HumanHairFortunetellerGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: fortuneteller
@@ -2248,7 +2023,6 @@
 - type: marking
   id: HumanHairFortunetellerAltGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: fortuneteller_alt
@@ -2258,7 +2032,6 @@
 - type: marking
   id: HumanHairFroofylongGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: froofylong
@@ -2268,7 +2041,6 @@
 - type: marking
   id: HumanHairGeishaGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: geisha
@@ -2278,7 +2050,6 @@
 - type: marking
   id: HumanHairGentle21Gradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: gentle21
@@ -2288,7 +2059,6 @@
 - type: marking
   id: HumanHairGlammetalGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: glammetal
@@ -2298,7 +2068,6 @@
 - type: marking
   id: HumanHairGloomyLongGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: gloomy_long
@@ -2308,7 +2077,6 @@
 - type: marking
   id: HumanHairGloomyMediumGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: gloomy_medium
@@ -2318,7 +2086,6 @@
 - type: marking
   id: HumanHairGrandeGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: grande
@@ -2328,7 +2095,6 @@
 - type: marking
   id: HumanHairHalfshaveGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: halfshave
@@ -2338,7 +2104,6 @@
 - type: marking
   id: HumanHairHalfshaveglamorousGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: halfshave_glamorous
@@ -2348,7 +2113,6 @@
 - type: marking
   id: HumanHairHalfshaveLongGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: halfshave_long
@@ -2358,7 +2122,6 @@
 - type: marking
   id: HumanHairHalfshaveMessyGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: halfshave_messy
@@ -2368,7 +2131,6 @@
 - type: marking
   id: HumanHairHalfshaveMessyLongGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: halfshave_messylong
@@ -2378,7 +2140,6 @@
 - type: marking
   id: HumanHairHalfshaveSnoutGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: halfshave_snout
@@ -2388,7 +2149,6 @@
 - type: marking
   id: HumanHairHightightGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: hightight
@@ -2398,7 +2158,6 @@
 - type: marking
   id: HumanHairHyenamaneGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: hyenamane
@@ -2408,7 +2167,6 @@
 - type: marking
   id: HumanHairJessicaGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: jessica
@@ -2418,7 +2176,6 @@
 - type: marking
   id: HumanHairLong4Gradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: long4
@@ -2428,7 +2185,6 @@
 - type: marking
   id: HumanHairLongdtailsGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: longdtails
@@ -2438,7 +2194,6 @@
 - type: marking
   id: HumanHairLongerAltGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: longeralt
@@ -2448,7 +2203,6 @@
 - type: marking
   id: HumanHairLongovereyeAltGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: longovereye_alt
@@ -2458,7 +2212,6 @@
 - type: marking
   id: HumanHairLongsidepartstraightGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: longsidepartstraight
@@ -2468,7 +2221,6 @@
 - type: marking
   id: HumanHairLooseSlickedGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: loose_slicked
@@ -2478,7 +2230,6 @@
 - type: marking
   id: HumanHairMediumbraidGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: mediumbraid
@@ -2488,7 +2239,6 @@
 - type: marking
   id: HumanHairNewyouGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: newyou
@@ -2498,7 +2248,6 @@
 - type: marking
   id: HumanHairPonytailAltGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: ponytailalt
@@ -2508,7 +2257,6 @@
 - type: marking
   id: HumanHairPonytailFGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: ponytailf
@@ -2518,7 +2266,6 @@
 - type: marking
   id: HumanHairPoofy2Gradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: poofy2
@@ -2528,7 +2275,6 @@
 - type: marking
   id: HumanHairQuadcurlsGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: quadcurls
@@ -2538,7 +2284,6 @@
 - type: marking
   id: HumanHairSabitsukiGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: sabitsuki
@@ -2548,7 +2293,6 @@
 - type: marking
   id: HumanHairScullyGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: scully
@@ -2558,7 +2302,6 @@
 - type: marking
   id: HumanHairShorthair4Gradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: shorthair4
@@ -2568,7 +2311,6 @@
 - type: marking
   id: HumanHairShyGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: shy
@@ -2578,7 +2320,6 @@
 - type: marking
   id: HumanHairSimplePonytailGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: simple_ponytail
@@ -2588,7 +2329,6 @@
 - type: marking
   id: HumanHairSleazeGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: sleaze
@@ -2598,7 +2338,6 @@
 - type: marking
   id: HumanHairSlightlyMessyGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: slightlymessy
@@ -2608,7 +2347,6 @@
 - type: marking
   id: HumanHairSlimedropletGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: slimedroplet
@@ -2618,7 +2356,6 @@
 - type: marking
   id: HumanHairSlimedropletAltGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: slimedroplet_alt
@@ -2628,7 +2365,6 @@
 - type: marking
   id: HumanHairSlimespikesGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: slimespikes
@@ -2638,7 +2374,6 @@
 - type: marking
   id: HumanHairSlimetendrilsGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: slimetendrils
@@ -2648,7 +2383,6 @@
 - type: marking
   id: HumanHairSlimetendrilsAltGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: slimetendrils_alt
@@ -2658,7 +2392,6 @@
 - type: marking
   id: HumanHairSpicyGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: spicy
@@ -2668,7 +2401,6 @@
 - type: marking
   id: HumanHairTwintailFloorGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: twintail_floor
@@ -2678,7 +2410,6 @@
 - type: marking
   id: HumanHairVeryshortovereyeGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: veryshortovereye
@@ -2688,7 +2419,6 @@
 - type: marking
   id: HumanHairVictoryGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: victory
@@ -2698,7 +2428,6 @@
 - type: marking
   id: HumanHairViperGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: viper
@@ -2708,7 +2437,6 @@
 - type: marking
   id: HumanHairWifeGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: wife
@@ -2718,7 +2446,6 @@
 - type: marking
   id: HumanHairZieglerGradient
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Corvax/Mobs/Customization/human_hair.rsi
       state: ziegler
@@ -2729,7 +2456,6 @@
 - type: marking
   id: HumanHairNitoriTwo
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: nitori
@@ -2739,7 +2465,6 @@
 - type: marking
   id: HumanHairNitoriHarley
   bodyPart: Hair
-  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: nitori

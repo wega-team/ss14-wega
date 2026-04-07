@@ -1,5 +1,4 @@
-using Content.Shared.Body.Components;
-using Content.Shared.Damage;
+using Content.Shared.Body;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Martial.Arts;
 using Content.Shared.Martial.Arts.Components;

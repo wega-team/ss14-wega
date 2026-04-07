@@ -137,7 +137,7 @@ public sealed class GeneralStationRecordConsoleSystem : EntitySystem
         if (!_inventory.TryGetSlotEntity(senderUid, "id", out var idUid))
             return null;
 
-        if (EntityManager.TryGetComponent(idUid, out PdaComponent? pda) && pda.ContainedId != null)
+        if (TryComp(idUid, out PdaComponent? pda) && pda.ContainedId != null)
         {
             return pda.ContainedId;
         }

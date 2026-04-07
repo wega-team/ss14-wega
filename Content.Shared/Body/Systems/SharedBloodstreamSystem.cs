@@ -41,7 +41,6 @@ public abstract class SharedBloodstreamSystem : EntitySystem
     [Dependency] private readonly AlertsSystem _alertsSystem = default!;
     [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
     [Dependency] private readonly DamageableSystem _damageableSystem = default!;
-    [Dependency] private readonly SharedBodySystem _body = default!; // Corvax-Wega-Surgery
 
     public override void Initialize()
     {
@@ -72,33 +71,6 @@ public abstract class SharedBloodstreamSystem : EntitySystem
 
             bloodstream.NextUpdate += bloodstream.AdjustedUpdateInterval;
             DirtyField(uid, bloodstream, nameof(BloodstreamComponent.NextUpdate)); // needs to be dirtied on the client so it can be rerolled during prediction
-
-            // Corvax-Wega-Surgery-start
-            var hasHeart = false;
-            if (TryComp<BodyComponent>(uid, out var body))
-            {
-                var organs = _body.GetBodyOrgans(uid, body);
-                foreach (var (organId, _) in organs)
-                {
-                    if (HasComp<HeartComponent>(organId))
-                    {
-                        hasHeart = true;
-                        break;
-                    }
-                }
-            }
-
-            if (!hasHeart && HasComp<HumanoidAppearanceComponent>(uid))
-            {
-                var damage = new DamageSpecifier();
-                damage.DamageDict.Add("Bloodloss", 2.5f);
-                _damageableSystem.TryChangeDamage(uid, damage);
-
-                TryModifyBloodLevel((uid, bloodstream), -bloodstream.BleedAmount);
-                TryModifyBleedAmount((uid, bloodstream), -bloodstream.BleedReductionAmount);
-                continue;
-            }
-            // Corvax-Wega-Surgery-end
 
             if (!SolutionContainer.ResolveSolution(uid, bloodstream.BloodSolutionName, ref bloodstream.BloodSolution))
                 continue;
@@ -226,16 +198,13 @@ public abstract class SharedBloodstreamSystem : EntitySystem
         var totalFloat = total.Float();
         TryModifyBleedAmount(ent.AsNullable(), totalFloat);
 
-        /// Critical hit. Causes target to lose blood, using the bleed rate modifier of the weapon, currently divided by 5
-        /// The crit chance is currently the bleed rate modifier divided by 25.
-        /// Higher damage weapons have a higher chance to crit!
+        // Critical hit. Causes target to lose blood, using the bleed rate modifier of the weapon, currently divided by 5
+        // The crit chance is currently the bleed rate modifier divided by 25.
+        // Higher damage weapons have a higher chance to crit!
 
-        // TODO: Replace with RandomPredicted once the engine PR is merged
         // Use both the receiver and the damage causing entity for the seed so that we have different results for multiple attacks in the same tick
-        var seed = SharedRandomExtensions.HashCodeCombine((int)_timing.CurTick.Value, GetNetEntity(ent).Id, GetNetEntity(args.Origin)?.Id ?? 0 );
-        var rand = new System.Random(seed);
         var prob = Math.Clamp(totalFloat / 25, 0, 1);
-        if (totalFloat > 0 && rand.Prob(prob))
+        if (totalFloat > 0 && SharedRandomExtensions.PredictedProb(_timing, prob, GetNetEntity(ent), GetNetEntity(args.Origin)))
         {
             TryBleedOut(ent.AsNullable(), total / 5);
             _audio.PlayPredicted(ent.Comp.InstantBloodSound, ent, args.Origin);

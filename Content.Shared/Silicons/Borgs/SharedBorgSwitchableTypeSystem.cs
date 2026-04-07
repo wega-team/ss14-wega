@@ -6,7 +6,6 @@ using Content.Shared.Movement.Components;
 using Content.Shared.Silicons.Borgs.Components;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
-using Content.Shared.Corvax.TTS; // Corvax-Wega-tts-borg
 using Content.Shared.Lock; // Corvax-Wega-borg
 
 namespace Content.Shared.Silicons.Borgs;
@@ -130,13 +129,13 @@ public abstract class SharedBorgSwitchableTypeSystem : EntitySystem
         {
             tts.VoicePrototypeId = prototype.VoicePrototypeId;
         }
-		// Corvax-TTS-end
-		// Corvax-Wega-Start
+        // Corvax-TTS-end
+        // Corvax-Wega-Start
         if (TryComp(entity, out LockingWhitelistComponent? locking) && prototype.Blacklist != null)
         {
             _lockingWhiteList.SetList((entity.Owner, locking), prototype.Blacklist);
         }
-		// Corvax-Wega-End
+        // Corvax-Wega-End
 
         if (prototype.SpriteBodyMovementState is { } movementState)
         {

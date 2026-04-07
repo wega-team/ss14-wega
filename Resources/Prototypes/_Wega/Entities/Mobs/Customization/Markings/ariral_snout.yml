@@ -1,8 +1,7 @@
 - type: marking
   id: AriralWhiskers
   bodyPart: Snout
-  markingCategory: Snout
-  speciesRestriction: [Ariral]
+  groupWhitelist: [Ariral]
   forcedColoring: true
   coloring:
     default:
@@ -16,8 +15,7 @@
 - type: marking
   id: AriralShortWhiskers
   bodyPart: Snout
-  markingCategory: Snout
-  speciesRestriction: [Ariral]
+  groupWhitelist: [Ariral]
   forcedColoring: true
   coloring:
     default:

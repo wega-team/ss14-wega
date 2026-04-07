@@ -1,7 +1,6 @@
 using Content.Shared.Actions;
 using Content.Shared.DoAfter;
 using Content.Shared.Movement.Events;
-using Content.Shared.Popups;
 
 namespace Content.Shared.Resomi.Abilities.Hearing;
 
@@ -9,7 +8,6 @@ public abstract class SharedListenUpSkillSystem : EntitySystem
 {
     [Dependency] private readonly SharedActionsSystem _actionsSystem = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
 
     public override void Initialize()
     {

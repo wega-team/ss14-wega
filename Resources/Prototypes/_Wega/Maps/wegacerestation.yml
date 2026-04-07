@@ -17,6 +17,8 @@
         - type: StationLavaland
           lavalandAvanpost: "/Maps/_Wega/Nonstations/cyberiadavanpost.yml"
           planets: [ Lavaland ]
+        - type: StationLavalandPenalServitudeShuttle
+          shuttlePath: "/Maps/_Wega/Shuttles/cere_penalservitude_shuttle.yml"
         - type: StationJobs
           availableJobs:
             #service

@@ -251,7 +251,7 @@
         # Insert
         - action: StoreItem
           failureEffect: [ Pain ]
-          requiredPart: torso
+          requiredPart: Torso
           sound:
             collection: Organ
           time: 4
@@ -260,7 +260,7 @@
               checkForSpace: true
         - action: StoreItem
           failureEffect: [ Pain ]
-          requiredPart: torso
+          requiredPart: Torso
           sound:
             collection: Organ
           time: 4
@@ -269,7 +269,7 @@
               checkForSpace: true
         - action: StoreItem
           failureEffect: [ Pain ]
-          requiredPart: torso
+          requiredPart: Torso
           sound:
             collection: Organ
           time: 4
@@ -282,7 +282,7 @@
           tag: [ Crowbar ]
           action: RetrieveItems
           failureEffect: [ Pain ]
-          requiredPart: torso
+          requiredPart: Torso
           sound:
             collection: Organ
           time: 4
@@ -363,8 +363,8 @@
           invert: true
           slots:
           - head
-        - !type:BodyPartCondition
-          bodyPart: head
+        - !type:OrganPresentCondition
+          organ: Head
       steps:
         - tool: [ Scalpel ]
           tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
@@ -415,8 +415,8 @@
           invert: true
           slots:
           - head
-        - !type:BodyPartCondition
-          bodyPart: head
+        - !type:OrganPresentCondition
+          organ: Head
       steps:
         - tool: [ Scalpel ]
           tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
@@ -467,8 +467,8 @@
           invert: true
           slots:
           - head
-        - !type:BodyPartCondition
-          bodyPart: head
+        - !type:OrganPresentCondition
+          organ: Head
       parallel: true
       steps:
         # Мозг
@@ -537,8 +537,8 @@
           invert: true
           slots:
           - head
-        - !type:BodyPartCondition
-          bodyPart: head
+        - !type:OrganPresentCondition
+          organ: Head
       steps:
         - tool: [ Scalpel ]
           tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
@@ -567,34 +567,34 @@
           invert: true
           slots:
           - head
-        - !type:BodyPartCondition
-          bodyPart: head
+        - !type:OrganPresentCondition
+          organ: Head
       parallel: true
       steps:
         # Insert
         - action: StoreItem
           failureEffect: [ Pain ]
-          requiredPart: head
+          requiredPart: Head
           sound:
             collection: Organ
           time: 4
           conditions:
             - !type:InternalStorageCondition
               checkForSpace: true
-              part: head
+              part: Head
 
         # Retrieve
         - tool: [ Retractor ]
           tag: [ Crowbar ]
           action: RetrieveItems
           failureEffect: [ Pain ]
-          requiredPart: head
+          requiredPart: Head
           sound:
             collection: Organ
           time: 4
           conditions:
             - !type:InternalStorageCondition
-              part: head
+              part: Head
 
 - type: surgeryTransition
   id: EndInternalHeadTransition
@@ -606,8 +606,8 @@
           invert: true
           slots:
           - head
-        - !type:BodyPartCondition
-          bodyPart: head
+        - !type:OrganPresentCondition
+          organ: Head
       steps:
         - tool: [ Cautery ]
           tag: [ Cigarette, Lighter, Welder ]
@@ -657,9 +657,9 @@
   label: Голова
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
+        - !type:OrganPresentCondition
           invert: true
-          bodyPart: head
+          organ: Head
       steps:
         - tool: [ Scalpel ]
           tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
@@ -693,9 +693,9 @@
           time: 4
           successChance: 0.95
         - tag: [ Head ]
-          action: AttachPart
+          action: InsertOrgan
           failureEffect: [ Pain ]
-          requiredPart: head
+          requiredPart: Head
           time: 12
           successChance: 0.6
 
@@ -714,8 +714,8 @@
           slots:
           - head
           - mask
-        - !type:BodyPartCondition
-          bodyPart: head
+        - !type:OrganPresentCondition
+          organ: Head
       steps:
         - tool: [ Scalpel ]
           tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
@@ -752,8 +752,8 @@
           slots:
           - head
           - mask
-        - !type:BodyPartCondition
-          bodyPart: head
+        - !type:OrganPresentCondition
+          organ: Head
       steps:
         - tool: [ Retractor ]
           tag: [ Crowbar ]
@@ -783,8 +783,8 @@
           time: 4
           successChance: 0.95
           conditions:
-            - !type:BodyPartCondition
-              bodyPart: left_arm
+            - !type:OrganPresentCondition
+              organ: ArmLeft
 
 - type: surgeryTransition
   id: AmputateLeftArmFinishTransition
@@ -794,11 +794,11 @@
     - steps:
         - tool: [ Sawing ]
           tag: [ BotanyHatchet, FireAxe ]
-          action: RemovePart
+          action: RemoveOrgan
           failureEffect: [ Bleeding, Pain ]
           sound:
             path: /Audio/_Wega/Medical/Surgery/saw.ogg
-          requiredPart: left_arm
+          requiredPart: ArmLeft
           time: 8
 
 - type: surgeryTransition
@@ -816,9 +816,9 @@
           time: 4
           successChance: 0.95
           conditions:
-            - !type:BodyPartCondition
+            - !type:OrganPresentCondition
               invert: true
-              bodyPart: left_arm
+              organ: ArmLeft
 
 - type: surgeryTransition
   id: AttachLeftArmProcessTransition
@@ -826,9 +826,9 @@
   label: Прикрепить левую руку
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
+        - !type:OrganPresentCondition
           invert: true
-          bodyPart: left_arm
+          organ: ArmLeft
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -854,9 +854,9 @@
           time: 4
           successChance: 0.95
         - tag: [ LeftArm ]
-          action: AttachPart
+          action: InsertOrgan
           failureEffect: [ Pain ]
-          requiredPart: left_arm
+          requiredPart: ArmLeft
           time: 6
           successChance: 0.85
 
@@ -876,8 +876,8 @@
           time: 4
           successChance: 0.95
           conditions:
-            - !type:BodyPartCondition
-              bodyPart: right_arm
+            - !type:OrganPresentCondition
+              organ: ArmRight
 
 - type: surgeryTransition
   id: AmputateRightArmFinishTransition
@@ -887,11 +887,11 @@
     - steps:
         - tool: [ Sawing ]
           tag: [ BotanyHatchet, FireAxe ]
-          action: RemovePart
+          action: RemoveOrgan
           failureEffect: [ Bleeding, Pain ]
           sound:
             path: /Audio/_Wega/Medical/Surgery/saw.ogg
-          requiredPart: right_arm
+          requiredPart: ArmRight
           time: 6
 
 - type: surgeryTransition
@@ -909,9 +909,9 @@
           time: 4
           successChance: 0.95
           conditions:
-            - !type:BodyPartCondition
+            - !type:OrganPresentCondition
               invert: true
-              bodyPart: right_arm
+              organ: ArmRight
 
 - type: surgeryTransition
   id: AttachRightArmProcessTransition
@@ -919,9 +919,9 @@
   label: Прикрепить правую руку
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
+        - !type:OrganPresentCondition
           invert: true
-          bodyPart: right_arm
+          organ: ArmRight
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -938,9 +938,9 @@
             collection: Retractor
           time: 4
         - tag: [ RightArm ]
-          action: AttachPart
+          action: InsertOrgan
           failureEffect: [ Pain ]
-          requiredPart: right_arm
+          requiredPart: ArmRight
           time: 6
           successChance: 0.85
 
@@ -960,10 +960,10 @@
           time: 4
           successChance: 0.95
           conditions:
-            - !type:BodyPartCondition
-              bodyPart: left_arm
-            - !type:BodyPartCondition
-              bodyPart: left_hand
+            - !type:OrganPresentCondition
+              organ: ArmLeft
+            - !type:OrganPresentCondition
+              organ: HandLeft
 
 - type: surgeryTransition
   id: AmputateLeftHandFinishTransition
@@ -973,11 +973,11 @@
     - steps:
         - tool: [ Sawing ]
           tag: [ BotanyHatchet, FireAxe ]
-          action: RemovePart
+          action: RemoveOrgan
           failureEffect: [ Bleeding, Pain ]
           sound:
             path: /Audio/_Wega/Medical/Surgery/saw.ogg
-          requiredPart: left_hand
+          requiredPart: HandLeft
           time: 8
 
 - type: surgeryTransition
@@ -995,11 +995,11 @@
           time: 4
           successChance: 0.95
           conditions:
-            - !type:BodyPartCondition
-              bodyPart: left_arm
-            - !type:BodyPartCondition
+            - !type:OrganPresentCondition
+              organ: ArmLeft
+            - !type:OrganPresentCondition
               invert: true
-              bodyPart: left_hand
+              organ: HandLeft
 
 - type: surgeryTransition
   id: AttachLeftHandProcessTransition
@@ -1007,11 +1007,11 @@
   label: Прикрепить левую кисть
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: left_arm
-        - !type:BodyPartCondition
+        - !type:OrganPresentCondition
+          organ: ArmLeft
+        - !type:OrganPresentCondition
           invert: true
-          bodyPart: left_hand
+          organ: HandLeft
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -1028,9 +1028,9 @@
             collection: Retractor
           time: 4
         - tag: [ LeftHand ]
-          action: AttachPart
+          action: InsertOrgan
           failureEffect: [ Pain ]
-          requiredPart: left_hand
+          requiredPart: HandLeft
           time: 6
           successChance: 0.85
 
@@ -1050,10 +1050,10 @@
           time: 4
           successChance: 0.95
           conditions:
-            - !type:BodyPartCondition
-              bodyPart: right_arm
-            - !type:BodyPartCondition
-              bodyPart: right_hand
+            - !type:OrganPresentCondition
+              organ: ArmRight
+            - !type:OrganPresentCondition
+              organ: HandRight
 
 - type: surgeryTransition
   id: AmputateRightHandFinishTransition
@@ -1063,11 +1063,11 @@
     - steps:
         - tool: [ Sawing ]
           tag: [ BotanyHatchet, FireAxe ]
-          action: RemovePart
+          action: RemoveOrgan
           failureEffect: [ Bleeding, Pain ]
           sound:
             path: /Audio/_Wega/Medical/Surgery/saw.ogg
-          requiredPart: right_hand
+          requiredPart: HandRight
           time: 6
 
 - type: surgeryTransition
@@ -1085,11 +1085,11 @@
           time: 4
           successChance: 0.95
           conditions:
-            - !type:BodyPartCondition
-              bodyPart: right_arm
-            - !type:BodyPartCondition
+            - !type:OrganPresentCondition
+              organ: ArmRight
+            - !type:OrganPresentCondition
               invert: true
-              bodyPart: right_hand
+              organ: HandRight
 
 - type: surgeryTransition
   id: AttachRightHandProcessTransition
@@ -1097,11 +1097,11 @@
   label: Прикрепить правую кисть
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: right_arm
-        - !type:BodyPartCondition
+        - !type:OrganPresentCondition
+          organ: ArmRight
+        - !type:OrganPresentCondition
           invert: true
-          bodyPart: right_hand
+          organ: HandRight
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -1118,9 +1118,9 @@
             collection: Retractor
           time: 4
         - tag: [ RightHand ]
-          action: AttachPart
+          action: InsertOrgan
           failureEffect: [ Pain ]
-          requiredPart: right_hand
+          requiredPart: HandRight
           time: 6
           successChance: 0.85
 
@@ -1140,8 +1140,8 @@
           time: 4
           successChance: 0.95
           conditions:
-            - !type:BodyPartCondition
-              bodyPart: left_leg
+            - !type:OrganPresentCondition
+              organ: LegLeft
 
 - type: surgeryTransition
   id: AmputateLeftLegFinishTransition
@@ -1151,11 +1151,11 @@
     - steps:
         - tool: [ Sawing ]
           tag: [ BotanyHatchet, FireAxe ]
-          action: RemovePart
+          action: RemoveOrgan
           failureEffect: [ Bleeding, Pain ]
           sound:
             path: /Audio/_Wega/Medical/Surgery/saw.ogg
-          requiredPart: left_leg
+          requiredPart: LegLeft
           time: 8
 
 - type: surgeryTransition
@@ -1173,9 +1173,9 @@
           time: 4
           successChance: 0.95
           conditions:
-            - !type:BodyPartCondition
+            - !type:OrganPresentCondition
               invert: true
-              bodyPart: left_leg
+              organ: LegLeft
 
 - type: surgeryTransition
   id: AttachLeftLegProcessTransition
@@ -1183,9 +1183,9 @@
   label: Прикрепить левую ногу
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
+        - !type:OrganPresentCondition
           invert: true
-          bodyPart: left_leg
+          organ: LegLeft
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -1202,9 +1202,9 @@
             collection: Retractor
           time: 4
         - tag: [ LeftLeg ]
-          action: AttachPart
+          action: InsertOrgan
           failureEffect: [ Pain ]
-          requiredPart: left_leg
+          requiredPart: LegLeft
           time: 6
           successChance: 0.85
 
@@ -1224,8 +1224,8 @@
           time: 4
           successChance: 0.95
           conditions:
-            - !type:BodyPartCondition
-              bodyPart: right_leg
+            - !type:OrganPresentCondition
+              organ: LegRight
 
 - type: surgeryTransition
   id: AmputateRightLegFinishTransition
@@ -1235,11 +1235,11 @@
     - steps:
         - tool: [ Sawing ]
           tag: [ BotanyHatchet, FireAxe ]
-          action: RemovePart
+          action: RemoveOrgan
           failureEffect: [ Bleeding, Pain ]
           sound:
             path: /Audio/_Wega/Medical/Surgery/saw.ogg
-          requiredPart: right_leg
+          requiredPart: LegRight
           time: 6
 
 - type: surgeryTransition
@@ -1257,9 +1257,9 @@
           time: 4
           successChance: 0.95
           conditions:
-            - !type:BodyPartCondition
+            - !type:OrganPresentCondition
               invert: true
-              bodyPart: right_leg
+              organ: LegRight
 
 - type: surgeryTransition
   id: AttachRightLegProcessTransition
@@ -1267,9 +1267,9 @@
   label: Прикрепить правую ногу
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
+        - !type:OrganPresentCondition
           invert: true
-          bodyPart: right_leg
+          organ: LegRight
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -1286,9 +1286,9 @@
             collection: Retractor
           time: 4
         - tag: [ RightLeg ]
-          action: AttachPart
+          action: InsertOrgan
           failureEffect: [ Pain ]
-          requiredPart: right_leg
+          requiredPart: LegRight
           time: 6
           successChance: 0.85
 
@@ -1308,10 +1308,10 @@
           time: 4
           successChance: 0.95
           conditions:
-            - !type:BodyPartCondition
-              bodyPart: left_leg
-            - !type:BodyPartCondition
-              bodyPart: left_foot
+            - !type:OrganPresentCondition
+              organ: LegLeft
+            - !type:OrganPresentCondition
+              organ: FootLeft
 
 - type: surgeryTransition
   id: AmputateLeftFootFinishTransition
@@ -1321,11 +1321,11 @@
     - steps:
         - tool: [ Sawing ]
           tag: [ BotanyHatchet, FireAxe ]
-          action: RemovePart
+          action: RemoveOrgan
           failureEffect: [ Bleeding, Pain ]
           sound:
             path: /Audio/_Wega/Medical/Surgery/saw.ogg
-          requiredPart: left_foot
+          requiredPart: FootLeft
           time: 8
 
 - type: surgeryTransition
@@ -1343,11 +1343,11 @@
           time: 4
           successChance: 0.95
           conditions:
-            - !type:BodyPartCondition
-              bodyPart: left_leg
-            - !type:BodyPartCondition
+            - !type:OrganPresentCondition
+              organ: LegLeft
+            - !type:OrganPresentCondition
               invert: true
-              bodyPart: left_foot
+              organ: FootLeft
 
 - type: surgeryTransition
   id: AttachLeftFootProcessTransition
@@ -1355,11 +1355,11 @@
   label: Прикрепить левую стопу
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: left_leg
-        - !type:BodyPartCondition
+        - !type:OrganPresentCondition
+          organ: LegLeft
+        - !type:OrganPresentCondition
           invert: true
-          bodyPart: left_foot
+          organ: FootLeft
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -1376,9 +1376,9 @@
             collection: Retractor
           time: 4
         - tag: [ LeftFoot ]
-          action: AttachPart
+          action: InsertOrgan
           failureEffect: [ Pain ]
-          requiredPart: left_foot
+          requiredPart: FootLeft
           time: 6
           successChance: 0.85
 
@@ -1398,10 +1398,10 @@
           time: 4
           successChance: 0.95
           conditions:
-            - !type:BodyPartCondition
-              bodyPart: right_leg
-            - !type:BodyPartCondition
-              bodyPart: right_foot
+            - !type:OrganPresentCondition
+              organ: LegRight
+            - !type:OrganPresentCondition
+              organ: FootRight
 
 - type: surgeryTransition
   id: AmputateRightFootFinishTransition
@@ -1411,11 +1411,11 @@
     - steps:
         - tool: [ Sawing ]
           tag: [ BotanyHatchet, FireAxe ]
-          action: RemovePart
+          action: RemoveOrgan
           failureEffect: [ Bleeding, Pain ]
           sound:
             path: /Audio/_Wega/Medical/Surgery/saw.ogg
-          requiredPart: right_foot
+          requiredPart: FootRight
           time: 6
 
 - type: surgeryTransition
@@ -1433,11 +1433,11 @@
           time: 4
           successChance: 0.95
           conditions:
-            - !type:BodyPartCondition
-              bodyPart: right_leg
-            - !type:BodyPartCondition
+            - !type:OrganPresentCondition
+              organ: LegRight
+            - !type:OrganPresentCondition
               invert: true
-              bodyPart: right_foot
+              organ: FootRight
 
 - type: surgeryTransition
   id: AttachRightFootProcessTransition
@@ -1445,11 +1445,11 @@
   label: Прикрепить правую стопу
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: right_leg
-        - !type:BodyPartCondition
+        - !type:OrganPresentCondition
+          organ: LegRight
+        - !type:OrganPresentCondition
           invert: true
-          bodyPart: right_foot
+          organ: FootRight
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -1466,9 +1466,9 @@
             collection: Retractor
           time: 4
         - tag: [ RightFoot ]
-          action: AttachPart
+          action: InsertOrgan
           failureEffect: [ Pain ]
-          requiredPart: right_foot
+          requiredPart: FootRight
           time: 6
           successChance: 0.85
 

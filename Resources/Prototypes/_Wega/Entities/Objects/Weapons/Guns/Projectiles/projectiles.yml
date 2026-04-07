@@ -45,3 +45,40 @@
     range: 0.25
     energyConsumption: 720
 
+- type: entity
+  name: pulsar shot
+  id: PulsarProjectile
+  parent: BulletLaser
+  components:
+  - type: Reflective
+  - type: FlyBySound
+    sound:
+      collection: EnergyMiss
+      params:
+        volume: 5
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Projectiles/projectilepulsar.rsi
+    layers:
+    - state: magnum_piercing
+      shader: unshaded
+  - type: Ammo
+  - type: Projectile
+    impactEffect: BulletImpactEffectWhite
+    damage:
+      types:
+        Heat: 26
+    soundHit:
+      path: "/Audio/Weapons/Guns/Hits/laser_sear_wall.ogg"
+  - type: Fixtures
+    fixtures:
+      projectile:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.1,-0.1,0.1,0.1"
+        hard: false
+        mask:
+        - Opaque
+  - type: PointLight
+    radius: 1.5
+    energy: 4.6
+    color: "#ffffff"

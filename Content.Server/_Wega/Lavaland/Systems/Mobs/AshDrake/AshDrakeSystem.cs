@@ -3,7 +3,6 @@ using System.Numerics;
 using Content.Server.Lavaland.Mobs.Components;
 using Content.Server.NPC.HTN;
 using Content.Server.NPC.Systems;
-using Content.Shared.Achievements;
 using Content.Shared.Camera;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
@@ -30,7 +29,6 @@ namespace Content.Server.Lavaland.Mobs;
 
 public sealed partial class AshDrakeSystem : EntitySystem
 {
-    [Dependency] private readonly SharedAchievementsSystem _achievement = default!;
     [Dependency] private readonly AppearanceSystem _appearance = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly GibbingSystem _gibbing = default!;
@@ -52,19 +50,9 @@ public sealed partial class AshDrakeSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<AshDrakeBossComponent, MegafaunaKilledEvent>(OnAshDrakeKilled);
-
         SubscribeLocalEvent<AshDrakeBossComponent, AshDrakeConeFireActionEvent>(OnConeFireAction);
         SubscribeLocalEvent<AshDrakeBossComponent, AshDrakeBreathingFireActionEvent>(OnBreathingFireAction);
         SubscribeLocalEvent<AshDrakeBossComponent, AshDrakeLavaActionEvent>(OnLavaAction);
-    }
-
-    private void OnAshDrakeKilled(EntityUid uid, AshDrakeBossComponent component, MegafaunaKilledEvent args)
-    {
-        if (args.Killer == null)
-            return;
-
-        _achievement.QueueAchievement(args.Killer.Value, AchievementsEnum.AshDrakeBoss);
     }
 
     #region Cone Fire
@@ -120,10 +108,10 @@ public sealed partial class AshDrakeSystem : EntitySystem
         if (_random.NextDouble() < 0.5)
             StartMeteorShower(ent);
 
-        if (TryComp<DamageableComponent>(ent, out var damageable)
-            && _threshold.TryGetThresholdForState(ent, MobState.Dead, out var threshold))
+        var totalDamage = _damage.GetTotalDamage(ent.Owner);
+        if (totalDamage > 0 && _threshold.TryGetThresholdForState(ent, MobState.Dead, out var threshold))
         {
-            if (damageable.TotalDamage >= threshold - threshold * args.HealthModifier)
+            if (totalDamage >= threshold - threshold * args.HealthModifier)
             {
                 ShootCircularPattern(ent, 12, 1);
                 return;
@@ -151,16 +139,16 @@ public sealed partial class AshDrakeSystem : EntitySystem
     private void OnLavaAction(Entity<AshDrakeBossComponent> ent, ref AshDrakeLavaActionEvent args)
     {
         args.Handled = true;
-        if (TryComp<DamageableComponent>(ent, out var damageable)
-            && _threshold.TryGetThresholdForState(ent, MobState.Dead, out var threshold))
+
+        var totalDamage = _damage.GetTotalDamage(ent.Owner);
+        if (_threshold.TryGetThresholdForState(ent, MobState.Dead, out var threshold))
         {
-            if (damageable.TotalDamage >= threshold - threshold * args.HealthModifier)
+            if (totalDamage >= threshold - threshold * args.HealthModifier)
             {
                 StartLavaArena(ent, args);
                 return;
             }
         }
-
         StartLavaJump(ent, args);
     }
 
@@ -733,7 +721,7 @@ public sealed partial class AshDrakeSystem : EntitySystem
         }
 
         var damageRadius = 1.5f;
-        var directHitEntities = _lookup.GetEntitiesInRange<ActorComponent>(landingCoords, damageRadius);
+        var directHitEntities = _lookup.GetEntitiesInRange<ActorComponent>(landingCoords, damageRadius, LookupFlags.Uncontained);
         foreach (var entity in directHitEntities)
         {
             if (entity.Owner == ent.Owner)
@@ -772,7 +760,7 @@ public sealed partial class AshDrakeSystem : EntitySystem
         var damageRadius = 1.5f;
         var landingCoords = new EntityCoordinates(mapUid.Value, centerPos);
 
-        var entities = _lookup.GetEntitiesInRange<MobStateComponent>(landingCoords, damageRadius);
+        var entities = _lookup.GetEntitiesInRange<MobStateComponent>(landingCoords, damageRadius, LookupFlags.Uncontained);
         foreach (var entity in entities)
         {
             if (entity.Owner == ent.Owner)

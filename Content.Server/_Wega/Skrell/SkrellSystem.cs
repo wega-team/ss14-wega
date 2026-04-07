@@ -2,15 +2,17 @@ using Content.Shared.Inventory.Events;
 using Content.Shared.Skrell;
 using Content.Shared.Inventory;
 using Content.Shared.Humanoid;
-using Content.Shared.Humanoid.Markings;
 using Content.Shared.MagicMirror;
 using Robust.Shared.Timing;
+using Content.Shared.Body;
+using System.Linq;
 
 namespace Content.Server.Skrell;
 
 public sealed class SkrellSystem : EntitySystem
 {
     [Dependency] private readonly InventorySystem _inventorySystem = default!;
+    [Dependency] private readonly SharedVisualBodySystem _visualBody = default!;
 
     public override void Initialize()
     {
@@ -35,12 +37,12 @@ public sealed class SkrellSystem : EntitySystem
 
     private bool CheckCondition(EntityUid uid)
     {
-        if (TryComp<HumanoidAppearanceComponent>(uid, out var humanoid))
-        {
-            if (!humanoid.MarkingSet.TryGetCategory(MarkingCategories.Hair, out var hairMarkings) || hairMarkings.Count == 0)
-                return true;
-        }
-        return false;
+        if (!HasComp<VisualBodyComponent>(uid))
+            return false;
+
+        return !_visualBody.TryGatherMarkingsData(uid, null, out _, out _, out var applied)
+            || applied.Values.All(organMarkings => !organMarkings.ContainsKey(HumanoidVisualLayers.Hair)
+            || organMarkings[HumanoidVisualLayers.Hair].Count == 0);
     }
 
     private void OnRemoveSlot(HairMarkingRemovedEvent args)

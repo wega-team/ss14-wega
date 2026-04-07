@@ -1,5 +1,4 @@
 using Content.Server.Spawners.Components;
-using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
@@ -9,7 +8,6 @@ public sealed class SpawnerSystem : EntitySystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
 
     public override void Initialize()
     {

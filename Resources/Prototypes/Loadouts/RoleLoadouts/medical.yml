@@ -1,0 +1,123 @@
+## Role Loadouts
+
+- type: roleLoadout
+  id: JobChiefMedicalOfficer
+  groups:
+  - Inventory # Corvax-Loadouts
+  - GroupTankHarness
+  - ChiefMedicalOfficerHead
+  - MedicalMask
+  - ChiefMedicalOfficerJumpsuit
+  - MedicalBackpack
+  - ChiefMedicalOfficerOuterClothing
+  - ChiefMedicalOfficerNeck
+  - ChiefMedicalOfficerShoes
+  # Corvax-Wega-start
+  - ChiefMedicalOfficerTop
+  - ChiefMedicalOfficerBottom
+  - ChiefMedicalOfficerSocks
+  # Corvax-Wega-end
+  - Glasses
+  - SurvivalMedical
+  - Trinkets
+#  - ChiefMedicalOfficerJobTrinkets
+  - GroupSpeciesBreathToolMedical
+
+- type: roleLoadout
+  id: JobMedicalDoctor
+  groups:
+  - Inventory # Corvax-Loadouts
+  - GroupTankHarness
+  - MedicalDoctorHead
+  # Corvax-Wega-Sponsors-start
+  - SponsorNeck
+  # Corvax-Wega-Sponsors-end
+  - MedicalMask
+  - MedicalDoctorJumpsuit
+  - MedicalBackpack
+  - MedicalDoctorOuterClothing
+  - MedicalShoes
+  - MedicalDoctorPDA
+  - Glasses
+  - SurvivalMedical
+  - Trinkets
+#  - MedicalDoctorJobTrinkets
+  - GroupSpeciesBreathToolMedical
+  # Corvax-Wega-start
+  - Top
+  - Bottom
+  - Socks
+  # Corvax-Wega-end
+
+- type: roleLoadout
+  id: JobMedicalIntern
+  groups:
+  - Inventory # Corvax-Loadouts
+  - GroupTankHarness
+  # Corvax-Wega-Sponsors-start
+  - SponsorHead
+  - SponsorNeck
+  # Corvax-Wega-Sponsors-end
+  - MedicalInternJumpsuit
+  - MedicalBackpack
+  - Glasses
+  - BaseShoose # Corvax-Wega-Add
+  - SurvivalMedical
+  - Trinkets
+#  - MedicalInternJobTrinkets
+  - GroupSpeciesBreathToolMedical
+  # Corvax-Wega-start
+  - Top
+  - Bottom
+  - Socks
+  # Corvax-Wega-end
+
+- type: roleLoadout
+  id: JobChemist
+  groups:
+  - Inventory # Corvax-Loadouts
+  - GroupTankHarness
+  # Corvax-Wega-Sponsors-start
+  - SponsorHead
+  - SponsorNeck
+  # Corvax-Wega-Sponsors-end
+  - MedicalMask
+  - ChemistJumpsuit
+  - ChemistBackpack
+  - ChemistOuterClothing
+  - MedicalShoes
+  - Glasses
+  - SurvivalMedical
+  - Trinkets
+#  - ChemistJobTrinkets
+  - GroupSpeciesBreathToolMedical
+  # Corvax-Wega-start
+  - Top
+  - Bottom
+  - Socks
+  # Corvax-Wega-end
+
+- type: roleLoadout
+  id: JobParamedic
+  groups:
+  - Inventory # Corvax-Loadouts
+  - GroupTankHarness
+  - ParamedicHead
+  # Corvax-Wega-Sponsors-start
+  - SponsorNeck
+  # Corvax-Wega-Sponsors-end
+  - MedicalMask
+  - ParamedicJumpsuit
+  - MedicalBackpack
+  - ParamedicOuterClothing
+  - ParamedicShoes
+  - Glasses
+  - SurvivalMedical
+  - Trinkets
+#  - ParamedicJobTrinkets
+  - GroupSpeciesBreathToolMedical
+  # Corvax-Wega-start
+  - Top
+  - Bottom
+  - Socks
+  # Corvax-Wega-end

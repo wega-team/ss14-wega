@@ -15,6 +15,7 @@ using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Database;
+using Content.Shared.FixedPoint;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Implants;
@@ -378,14 +379,17 @@ public sealed class VoiceOfGodSystem : EntitySystem
         if (!TryComp<DamageableComponent>(target, out var damageable))
             return;
 
-        var damagedTypes = damageable.Damage.DamageDict
-            .Where(x => x.Value > 0).Select(x => x.Key).ToList();
+        var positiveDamage = _damage.GetPositiveDamage((target, damageable));
+        var damagedTypes = positiveDamage.DamageDict.Keys.ToList();
 
         if (damagedTypes.Count == 0)
             return;
 
         var type = damagedTypes[_random.Next(damagedTypes.Count)];
-        var healAmount = Math.Min(damageable.Damage.DamageDict[type].Float(), amount);
+        if (!positiveDamage.DamageDict.TryGetValue(type, out var currentDamage))
+            return;
+
+        var healAmount = FixedPoint2.Min(currentDamage, amount);
 
         var healSpecifier = new DamageSpecifier();
         healSpecifier.DamageDict[type] = -healAmount;

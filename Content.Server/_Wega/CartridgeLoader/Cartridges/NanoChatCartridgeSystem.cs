@@ -362,8 +362,14 @@ public sealed class NanoChatCartridgeSystem : SharedNanoChatCartridgeSystem
 
         if (TryComp<CartridgeComponent>(recipientEntity, out var cartridge)
             && cartridge.LoaderUid.HasValue && !recipientComp.MutedSound)
-            _audio.PlayPvs(recipientComp.Sound, recipientEntity);
-
+			{
+				_audio.PlayPvs(recipientComp.Sound, recipientEntity);
+				_cartridgeLoader.SendNotification(
+					cartridge.LoaderUid.Value,
+					Loc.GetString("nanochat-pda-notification-header"),
+					Loc.GetString("nanochat-pda-notification-fromwho", ("user", sender.Comp.OwnerName)));
+			}
+			
         UpdateUiState((recipientEntity, recipientComp));
         UpdateUiState(sender);
     }

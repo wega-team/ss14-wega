@@ -4,7 +4,17 @@
   equipment:
     head: ClothingHeadHatBeretBlueShield
 
+- type: loadout
+  id: BlueshieldHeadAlt
+  equipment:
+    head: ClothingHeadHelmetBlueShield
+
 # Jumpsuit
+- type: loadout
+  id: BlueShieldJumpsuitAlt
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitBlueShieldRock
+    
 - type: loadout
   id: BlueShieldJumpsuit
   equipment:
@@ -43,9 +53,19 @@
     outerClothing: ClothingOuterArmorBlueShield
 
 - type: loadout
+  id: BlueshieldOterArmorAlt
+  equipment:
+    outerClothing: ClothingVestBlueShieldAlt
+
+- type: loadout
   id: BlueShieldOuterWinter
   equipment:
     outerClothing: ClothingOuterWinterBlueShield
+    
+- type: loadout
+  id: BlueShieldOuterWinterAlt
+  equipment:
+    outerClothing: ClothingOuterWinterBlueShieldAlt
 
 #Top
 - type: loadout

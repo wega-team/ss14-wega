@@ -1,5 +1,5 @@
 using Content.Shared._Wega.Implants.Components;
-using Content.Shared.Body.Part;
+using Content.Shared.Body;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
@@ -9,10 +9,10 @@ namespace Content.Shared._Wega.Implants.Components
     public sealed partial class BodyPartImplantComponent : Component
     {
         [DataField]
-        public Dictionary<string, BodyPartType> Connections = new();
+        public Dictionary<ProtoId<OrganCategoryPrototype>, string> Connections = new();
 
         [DataField]
-        public Dictionary<string, string> Parts = new();
+        public Dictionary<string, ProtoId<OrganCategoryPrototype>> Parts = new();
 
         [DataField("key")]
         public string? ImplantKey;
@@ -22,7 +22,7 @@ namespace Content.Shared._Wega.Implants.Components
 }
 
 [ByRefEvent]
-public readonly record struct BodyPartImplantAddedEvent(string Slot, Entity<BodyPartImplantComponent?> Part);
+public readonly record struct BodyPartImplantAddedEvent(Entity<BodyPartImplantComponent?> Part);
 
 [ByRefEvent]
-public readonly record struct BodyPartImplantRemovedEvent(string Slot, Entity<BodyPartImplantComponent?> Part);
+public readonly record struct BodyPartImplantRemovedEvent(Entity<BodyPartImplantComponent?> Part);

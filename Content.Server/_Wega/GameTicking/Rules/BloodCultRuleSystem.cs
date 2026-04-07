@@ -15,6 +15,7 @@ using Content.Server.RoundEnd;
 using Content.Shared.Achievements;
 using Content.Shared.Blood.Cult;
 using Content.Shared.Blood.Cult.Components;
+using Content.Shared.Body;
 using Content.Shared.Body.Components;
 using Content.Shared.Clumsy;
 using Content.Shared.CombatMode.Pacification;
@@ -22,6 +23,7 @@ using Content.Shared.Database;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Humanoid;
+using Content.Shared.Metabolism;
 using Content.Shared.Mind;
 using Content.Shared.Mindshield.Components;
 using Content.Shared.Mobs;
@@ -42,7 +44,6 @@ namespace Content.Server.GameTicking.Rules
         [Dependency] private readonly SharedAchievementsSystem _achievement = default!;
         [Dependency] private readonly ActionsSystem _action = default!;
         [Dependency] private readonly AntagSelectionSystem _antag = default!;
-        [Dependency] private readonly BodySystem _body = default!;
         [Dependency] private readonly IEntityManager _entityManager = default!;
         [Dependency] private readonly ISharedPlayerManager _player = default!;
         [Dependency] private readonly IAdminLogManager _adminLogManager = default!;
@@ -55,6 +56,7 @@ namespace Content.Server.GameTicking.Rules
         [Dependency] private readonly IRobustRandom _random = default!;
         [Dependency] private readonly SharedAudioSystem _audio = default!;
         [Dependency] private readonly SharedPopupSystem _popup = default!;
+        [Dependency] private readonly SharedVisualBodySystem _visualBody = default!;
         [Dependency] private readonly ObjectivesSystem _objectives = default!;
         [Dependency] private readonly TargetObjectiveSystem _target = default!;
         [Dependency] private readonly MetaDataSystem _meta = default!;
@@ -156,7 +158,7 @@ namespace Content.Server.GameTicking.Rules
             }
 
             var globalCandidates = new List<EntityUid>();
-            var globalEnumerator = EntityQueryEnumerator<HumanoidAppearanceComponent, ActorComponent>();
+            var globalEnumerator = EntityQueryEnumerator<HumanoidProfileComponent, ActorComponent>();
             while (globalEnumerator.MoveNext(out var uid, out _, out _))
             {
                 if (cult.SelectedTargets.Contains(uid) || HasComp<BloodCultistComponent>(uid))
@@ -178,7 +180,7 @@ namespace Content.Server.GameTicking.Rules
         private EntityUid? FindNewRandomTarget(BloodCultRuleComponent cult, EntityUid excludedTarget)
         {
             var candidates = new List<EntityUid>();
-            var query = EntityQueryEnumerator<HumanoidAppearanceComponent, ActorComponent>();
+            var query = EntityQueryEnumerator<HumanoidProfileComponent, ActorComponent>();
             while (query.MoveNext(out var uid, out _, out _))
             {
                 if (uid == excludedTarget || cult.SelectedTargets.Contains(uid)
@@ -267,13 +269,13 @@ namespace Content.Server.GameTicking.Rules
 
         private void HandleMetabolism(EntityUid cultist)
         {
-            if (TryComp<BodyComponent>(cultist, out var bodyComponent))
+            if (TryComp<BodyComponent>(cultist, out var bodyComponent) && bodyComponent.Organs != null)
             {
-                foreach (var organ in _body.GetBodyOrgans(cultist, bodyComponent))
+                foreach (var organ in bodyComponent.Organs.ContainedEntities)
                 {
-                    if (TryComp<MetabolizerComponent>(organ.Id, out var metabolizer))
+                    if (TryComp<MetabolizerComponent>(organ, out var metabolizer))
                     {
-                        if (TryComp<StomachComponent>(organ.Id, out _))
+                        if (TryComp<StomachComponent>(organ, out _))
                             _metabolism.ClearMetabolizerTypes(metabolizer);
 
                         _metabolism.TryAddMetabolizerType(metabolizer, "BloodCultist");
@@ -298,7 +300,7 @@ namespace Content.Server.GameTicking.Rules
                 break;
             }
 
-            var isHuman = HasComp<HumanoidAppearanceComponent>(ent);
+            var isHuman = HasComp<HumanoidProfileComponent>(ent);
             var briefing = isHuman
                 ? Loc.GetString("blood-cult-role-greeting-human", ("god", selectedGod))
                 : Loc.GetString("blood-cult-role-greeting-animal", ("god", selectedGod));
@@ -437,10 +439,15 @@ namespace Content.Server.GameTicking.Rules
 
         private void UpdateCultistEyes(EntityUid cultist)
         {
-            if (TryComp<HumanoidAppearanceComponent>(cultist, out var appearanceComponent))
+            if (_visualBody.TryGatherMarkingsData(cultist, null, out var profiles, out _, out _))
             {
-                appearanceComponent.EyeColor = Color.FromHex("#E22218FF");
-                Dirty(cultist, appearanceComponent);
+                var cultistEyeColor = Color.FromHex("#E22218FF");
+
+                var updatedProfiles = profiles.ToDictionary(
+                    pair => pair.Key,
+                    pair => pair.Value with { EyeColor = cultistEyeColor });
+
+                _visualBody.ApplyProfiles(cultist, updatedProfiles);
             }
         }
 
@@ -454,7 +461,7 @@ namespace Content.Server.GameTicking.Rules
         private int GetPlayerCount()
         {
             int count = 0;
-            var players = AllEntityQuery<HumanoidAppearanceComponent, ActorComponent, TransformComponent>();
+            var players = AllEntityQuery<HumanoidProfileComponent, ActorComponent, TransformComponent>();
             while (players.MoveNext(out _, out _, out _, out _))
                 count++;
 

@@ -7,7 +7,7 @@
   guides: [ Revolutionaries ]
   requirements:
   - !type:OverallPlaytimeRequirement
-    time: 30h # Corvax-RoleTime 1
+    time: 100h # Corvax-Wega-Edit
 
 - type: antag
   id: Rev

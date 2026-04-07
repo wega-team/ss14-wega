@@ -1,0 +1,157 @@
+- type: entity
+  parent: BaseItem
+  id: BaseHardsuitSelector
+  abstract: true
+  components:
+  - type: Sprite
+    state: icon
+  - type: Item
+    size: Huge
+  - type: ItemSelector
+  - type: ActivatableUI
+    key: enum.ItemSelectorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.ItemSelectorUiKey.Key:
+        type: ItemSelectorBoundUserInterface
+
+- type: entity
+  parent: BaseHardsuitSelector
+  id: HardsuitCESelector
+  name: CE hardsuit selector
+  description: "An obsidian rod that strikes paranormal things."
+  suffix: Selector
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Misc/HardsuitSelector/advanced.rsi
+  - type: ItemSelector
+    items:
+    - ClothingModularControllerAdvancedPreassembled
+    - ClothingOuterHardsuitEngineeringWhite
+        
+
+- type: entity
+  parent: BaseHardsuitSelector
+  id: HardsuitAtmosSelector
+  name: atmos hardsuit selector
+  description: "An obsidian rod that strikes paranormal things."
+  suffix: Selector
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Misc/HardsuitSelector/atmospheric.rsi
+  - type: ItemSelector
+    items:
+    - ClothingModularControllerAtmosphericPreassembled
+    - ClothingOuterHardsuitAtmos
+
+- type: entity
+  parent: BaseHardsuitSelector
+  id: HardsuitCapSelector
+  name: cap hardsuit selector
+  description: "An obsidian rod that strikes paranormal things."
+  suffix: Selector
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Misc/HardsuitSelector/cap.rsi
+  - type: ItemSelector
+    items:
+    - ClothingModularControllerMagnatePreassembled
+    - ClothingOuterHardsuitCap
+
+- type: entity
+  parent: BaseHardsuitSelector
+  id: HardsuitClownSelector
+  name: clown hardsuit selector
+  description: "An obsidian rod that strikes paranormal things."
+  suffix: Selector
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Misc/HardsuitSelector/clown.rsi
+  - type: ItemSelector
+    items:
+    - ClothingModularControllerCosmohonkPreassembled
+    - ClothingOuterHardsuitClown
+
+- type: entity
+  parent: BaseHardsuitSelector
+  id: HardsuitEngSelector
+  name: engineer hardsuit selector
+  description: "An obsidian rod that strikes paranormal things."
+  suffix: Selector
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Misc/HardsuitSelector/engineer.rsi
+  - type: ItemSelector
+    items:
+    - ClothingModularControllerEngineeringPreassembled
+    - ClothingOuterHardsuitEngineering
+
+- type: entity
+  parent: BaseHardsuitSelector
+  id: HardsuitHosSelector
+  name: hos hardsuit selector
+  description: "An obsidian rod that strikes paranormal things."
+  suffix: Selector
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Misc/HardsuitSelector/hos.rsi
+  - type: ItemSelector
+    items:
+    - ClothingModularControllerSafeguardPreassembled
+    - ClothingOuterHardsuitSecurityRed
+
+- type: entity
+  parent: BaseHardsuitSelector
+  id: HardsuitMedicalSelector
+  name: medical hardsuit selector
+  description: "An obsidian rod that strikes paranormal things."
+  suffix: Selector
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Misc/HardsuitSelector/medical.rsi
+  - type: ItemSelector
+    items:
+    - ClothingModularControllerMedicalPreassembled
+    - ClothingOuterHardsuitMedical
+
+- type: entity
+  parent: BaseHardsuitSelector
+  id: HardsuitParamedicSelector
+  name: paramed hardsuit selector
+  description: "An obsidian rod that strikes paranormal things."
+  suffix: Selector
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Misc/HardsuitSelector/paramedic.rsi
+  - type: ItemSelector
+    items:
+    - ClothingModularControllerRescuePreassembled
+    - ClothingOuterHardsuitVoidParamed
+
+- type: entity
+  parent: BaseHardsuitSelector
+  id: HardsuitProtoSelector
+  name: salvage hardsuit selector
+  description: "An obsidian rod that strikes paranormal things."
+  suffix: Selector
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Misc/HardsuitSelector/prototype.rsi
+  - type: ItemSelector
+    items:
+    - ClothingModularControllerPrototypePreassembled
+    - ClothingOuterHardsuitSpatio
+    
+- type: entity
+  parent: BaseHardsuitSelector
+  id: HardsuitSecSelector
+  name: sec hardsuit selector
+  description: "An obsidian rod that strikes paranormal things."
+  suffix: Selector
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Misc/HardsuitSelector/secutiry.rsi
+  - type: ItemSelector
+    items:
+    - ClothingModularControllerSecurityPreassembled
+    - ClothingOuterHardsuitSecurity

@@ -55,6 +55,11 @@
 
 - type: latheRecipe
   parent: BaseBorgModuleRecipe
+  id: BorgModuleNightVison
+  result: BorgModuleNightVison
+
+- type: latheRecipe
+  parent: BaseBorgModuleRecipe
   id: BorgModuleCommonCandy
   result: BorgModuleCommonCandy
 
@@ -143,92 +148,92 @@
     Plastic: 20
     Plasma: 15
 
-- type: latheRecipe
-  parent: BaseRoboticsRecipe
-  id: AndroidBodyPart
-  result: AndroidBodyPart
-  categories:
-    - Anroid
-  completetime: 5
-  materials:
-    Steel: 300
-    Plastic: 250
-    Silver: 150
+# - type: latheRecipe
+#   parent: BaseRoboticsRecipe
+#   id: AndroidBodyPart
+#   result: AndroidBodyPart
+#   categories:
+#     - Anroid
+#   completetime: 5
+#   materials:
+#     Steel: 300
+#     Plastic: 250
+#     Silver: 150
 
-- type: latheRecipe
-  parent: BaseRoboticsRecipe
-  id: ArmSyntheticPry
-  result: LeftArmSyntheticPry
-  categories:
-    - Anroid
-  completetime: 5
-  materials:
-    Steel: 750
-    Plastic: 300
-    Gold: 200
-    Plasma: 150
+# - type: latheRecipe
+#   parent: BaseRoboticsRecipe
+#   id: ArmSyntheticPry
+#   result: LeftArmSyntheticPry
+#   categories:
+#     - Anroid
+#   completetime: 5
+#   materials:
+#     Steel: 750
+#     Plastic: 300
+#     Gold: 200
+#     Plasma: 150
 
-- type: latheRecipe
-  parent: BaseRoboticsRecipe
-  id: ArmSyntheticDefib
-  result: LeftArmSyntheticDefib
-  categories:
-    - Anroid
-  completetime: 5
-  materials:
-    Steel: 750
-    Plastic: 300
-    Silver: 250
+# - type: latheRecipe
+#   parent: BaseRoboticsRecipe
+#   id: ArmSyntheticDefib
+#   result: LeftArmSyntheticDefib
+#   categories:
+#     - Anroid
+#   completetime: 5
+#   materials:
+#     Steel: 750
+#     Plastic: 300
+#     Silver: 250
 
-- type: latheRecipe
-  parent: BaseRoboticsRecipe
-  id: ArmSyntheticProtoKinetic
-  result: LeftArmSyntheticProtoKinetic
-  categories:
-    - Anroid
-  completetime: 5
-  materials:
-    Steel: 750
-    Plastic: 300
-    Silver: 200
-    Plasma: 150
+# - type: latheRecipe
+#   parent: BaseRoboticsRecipe
+#   id: ArmSyntheticProtoKinetic
+#   result: LeftArmSyntheticProtoKinetic
+#   categories:
+#     - Anroid
+#   completetime: 5
+#   materials:
+#     Steel: 750
+#     Plastic: 300
+#     Silver: 200
+#     Plasma: 150
 
-- type: latheRecipe
-  parent: BaseRoboticsRecipe
-  id: ArmSyntheticCharger
-  result: LeftArmSyntheticCharger
-  categories:
-    - Anroid
-  completetime: 5
-  materials:
-    Steel: 750
-    Plastic: 300
-    Gold: 200
+# - type: latheRecipe
+#   parent: BaseRoboticsRecipe
+#   id: ArmSyntheticCharger
+#   result: LeftArmSyntheticCharger
+#   categories:
+#     - Anroid
+#   completetime: 5
+#   materials:
+#     Steel: 750
+#     Plastic: 300
+#     Gold: 200
 
-- type: latheRecipe
-  parent: BaseRoboticsRecipe
-  id: LegSyntheticMagboots
-  result: LeftLegSyntheticMagboots
-  categories:
-    - Anroid
-  completetime: 5
-  materials:
-    Steel: 750
-    Plastic: 300
-    Gold: 300
+# - type: latheRecipe
+#   parent: BaseRoboticsRecipe
+#   id: LegSyntheticMagboots
+#   result: LeftLegSyntheticMagboots
+#   categories:
+#     - Anroid
+#   completetime: 5
+#   materials:
+#     Steel: 750
+#     Plastic: 300
+#     Gold: 300
 
-- type: latheRecipe
-  parent: BaseRoboticsRecipe
-  id: LegSyntheticJump
-  result: LeftLegSyntheticJump
-  categories:
-    - Anroid
-  completetime: 5
-  materials:
-    Steel: 750
-    Plastic: 300
-    Gold: 250
-    Plasma: 150
+# - type: latheRecipe
+#   parent: BaseRoboticsRecipe
+#   id: LegSyntheticJump
+#   result: LeftLegSyntheticJump
+#   categories:
+#     - Anroid
+#   completetime: 5
+#   materials:
+#     Steel: 750
+#     Plastic: 300
+#     Gold: 250
+#     Plasma: 150
 
 - type: latheRecipe
   parent: BaseRoboticsRecipe

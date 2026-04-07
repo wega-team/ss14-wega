@@ -2,10 +2,7 @@ using System.Linq;
 using Content.Server.Administration.Logs;
 using Content.Server.Chat.Systems;
 using Content.Server.Disease;
-using Content.Shared.Body.Components;
-using Content.Shared.Body.Part;
-using Content.Shared.Body.Prototypes;
-using Content.Shared.Body.Systems;
+using Content.Shared.Body;
 using Content.Shared.Buckle.Components;
 using Content.Shared.Chat.Prototypes;
 using Content.Shared.Damage.Prototypes;
@@ -25,6 +22,7 @@ using Content.Shared.Throwing;
 using Content.Shared.Tools;
 using Content.Shared.Tools.Systems;
 using Robust.Server.GameObjects;
+using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
@@ -33,10 +31,10 @@ namespace Content.Server.Surgery;
 public sealed partial class SurgerySystem : EntitySystem
 {
     [Dependency] private readonly IAdminLogManager _admin = default!;
-    [Dependency] private readonly SharedBodySystem _body = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
     [Dependency] private readonly DamageableSystem _damage = default!;
     [Dependency] private readonly DiseaseSystem _disease = default!;
+    [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly SharedJitteringSystem _jittering = default!;
     [Dependency] private readonly SharedToolSystem _tool = default!;
@@ -89,7 +87,6 @@ public sealed partial class SurgerySystem : EntitySystem
 
         SubscribeLocalEvent<OperatedComponent, RejuvenateEvent>(OnRejuvenate);
         SubscribeLocalEvent<OperatedComponent, IsEquippingAttemptEvent>(OnIsEquipping);
-        SubscribeLocalEvent<OperatedComponent, BodyPartRemovedEvent>(OnBodyPartsChanged);
 
         SubscribeLocalEvent<SterileComponent, ExaminedEvent>(OnSterileExamined);
         SubscribeLocalEvent<SterileComponent, ThrownEvent>(OnThrow);
@@ -155,95 +152,62 @@ public sealed partial class SurgerySystem : EntitySystem
     {
         ent.Comp.InternalDamages.Clear();
         ent.Comp.ResetOperationState("Default");
-        RestoreMissingLimbs(ent);
+        RestoreMissingOrgans(ent);
     }
 
-    private void RestoreMissingLimbs(Entity<OperatedComponent> entity)
+    private void RestoreMissingOrgans(Entity<OperatedComponent> entity)
     {
-        if (!TryComp<BodyComponent>(entity, out var body) || body.Prototype == null)
+        if (!TryComp<BodyComponent>(entity, out var body) || body.Organs == null)
             return;
 
-        var rootPart = _body.GetRootPartOrNull(entity, body);
-        if (rootPart == null)
-            return;
-
-        var prototype = _proto.Index(body.Prototype.Value);
-        foreach (var (slotId, slot) in prototype.Slots)
+        // Get all current organs
+        var existingOrgans = new HashSet<ProtoId<OrganCategoryPrototype>>();
+        foreach (var organ in body.Organs.ContainedEntities)
         {
-            if (slotId == prototype.Root)
+            if (TryComp<OrganComponent>(organ, out var organComp) && organComp.Category != null)
+                existingOrgans.Add(organComp.Category.Value);
+        }
+
+        // Get the initial body configuration
+        if (!TryComp<InitialBodyComponent>(entity, out var initialBody))
+            return;
+
+        foreach (var (organCategory, organProto) in initialBody.Organs)
+        {
+            if (existingOrgans.Contains(organCategory))
                 continue;
 
-            bool partExists = false;
-            foreach (var part in _body.GetBodyChildren(entity, body))
-            {
-                var parentAndSlot = _body.GetParentPartAndSlotOrNull(part.Id);
-                if (parentAndSlot != null && parentAndSlot.Value.Slot == slotId)
-                {
-                    partExists = true;
-                    break;
-                }
-            }
+            // Spawn missing organ
+            var newOrgan = Spawn(organProto, Transform(entity).Coordinates);
+            _container.Insert(newOrgan, body.Organs);
 
-            if (!partExists && slot.Part != null)
-            {
-                var newPart = Spawn(slot.Part, Transform(entity).Coordinates);
-                var newPartComp = Comp<BodyPartComponent>(newPart);
+            var insertedEvent = new OrganInsertedIntoEvent(newOrgan);
+            RaiseLocalEvent(entity, ref insertedEvent);
 
-                var parentSlot = prototype.Slots.FirstOrDefault(s => s.Value.Connections.Contains(slotId));
-                if (parentSlot.Value != null)
-                {
-                    foreach (var parentPart in _body.GetBodyChildren(entity, body))
-                    {
-                        if (_body.CanAttachPart(parentPart.Id, slotId, newPart, parentPart.Component, newPartComp))
-                        {
-                            _body.AttachPart(parentPart.Id, slotId, newPart, parentPart.Component, newPartComp);
-                            break;
-                        }
-                    }
-                }
-
-                if (slot.Organs != null)
-                {
-                    foreach (var (organSlot, organPrototype) in slot.Organs)
-                    {
-                        var newOrgan = Spawn(organPrototype, Transform(entity).Coordinates);
-                        _body.InsertOrgan(newOrgan, newPart, organSlot);
-                    }
-                }
-            }
+            var gotInsertedEvent = new OrganGotInsertedEvent(entity);
+            RaiseLocalEvent(newOrgan, ref gotInsertedEvent);
         }
     }
 
     private void RegenerateMissingLimbs(Entity<OperatedComponent> entity)
     {
-        if (!TryComp<BodyComponent>(entity, out var body) || body.Prototype == null)
+        if (!TryComp<BodyComponent>(entity, out var body) || body.Organs == null)
             return;
 
-        var rootPart = _body.GetRootPartOrNull(entity, body);
-        if (rootPart == null)
+        if (!TryComp<InitialBodyComponent>(entity, out var initialBody))
             return;
 
-        var prototype = _proto.Index(body.Prototype.Value);
-        var missingLimbs = new List<(string slotId, BodyPrototypeSlot slot)>();
-
-        var existingParts = new Dictionary<string, EntityUid>();
-        foreach (var part in _body.GetBodyChildren(entity, body))
+        // Get current organs
+        var existingOrgans = new HashSet<ProtoId<OrganCategoryPrototype>>();
+        foreach (var organ in body.Organs.ContainedEntities)
         {
-            var parentAndSlot = _body.GetParentPartAndSlotOrNull(part.Id);
-            if (parentAndSlot != null)
-            {
-                existingParts[parentAndSlot.Value.Slot] = part.Id;
-            }
+            if (TryComp<OrganComponent>(organ, out var organComp) && organComp.Category != null)
+                existingOrgans.Add(organComp.Category.Value);
         }
 
-        foreach (var (slotId, slot) in prototype.Slots)
-        {
-            if (slotId == prototype.Root || slot.Part == null)
-                continue;
-
-            if (!existingParts.ContainsKey(slotId))
-                missingLimbs.Add((slotId, slot));
-        }
+        var missingLimbs = initialBody.Organs
+            .Where(kvp => !existingOrgans.Contains(kvp.Key))
+            .ToList();
 
         if (missingLimbs.Count == 0)
             return;
@@ -253,127 +217,18 @@ public sealed partial class SurgerySystem : EntitySystem
             .Take(entity.Comp.MaxLimbsPerCycle)
             .ToList();
 
-        foreach (var (slotId, slot) in limbsToRegenerate)
+        foreach (var (organCategory, organProto) in limbsToRegenerate)
         {
-            RegenerateSingleLimb(entity, slotId, slot, existingParts);
-        }
-    }
+            var newOrgan = Spawn(organProto, Transform(entity).Coordinates);
+            _container.Insert(newOrgan, body.Organs);
 
-    private void RegenerateSingleLimb(Entity<OperatedComponent> entity, string slotId, BodyPrototypeSlot slot, Dictionary<string, EntityUid>? existingParts = null)
-    {
-        if (!TryComp<BodyComponent>(entity, out var body) || body.Prototype == null)
-            return;
+            var insertedEvent = new OrganInsertedIntoEvent(newOrgan);
+            RaiseLocalEvent(entity, ref insertedEvent);
 
-        var prototype = _proto.Index(body.Prototype.Value);
-
-        existingParts ??= new Dictionary<string, EntityUid>();
-        foreach (var part in _body.GetBodyChildren(entity, body))
-        {
-            var parentAndSlot = _body.GetParentPartAndSlotOrNull(part.Id);
-            if (parentAndSlot != null)
-            {
-                existingParts[parentAndSlot.Value.Slot] = part.Id;
-            }
-        }
-
-        string? parentSlotId = null;
-        EntityUid? parentPart = null;
-        foreach (var (potentialParentSlotId, potentialParentSlot) in prototype.Slots)
-        {
-            if (potentialParentSlot.Connections?.Contains(slotId) == true)
-            {
-                parentSlotId = potentialParentSlotId;
-                break;
-            }
-        }
-
-        if (parentSlotId != null && existingParts.TryGetValue(parentSlotId, out var parentId))
-            parentPart = parentId;
-
-        if (parentPart == null && parentSlotId != null && prototype.Slots.TryGetValue(parentSlotId, out var parentSlotDef))
-        {
-            if (parentSlotDef.Part != null)
-            {
-                var parentPartEntity = Spawn(parentSlotDef.Part, Transform(entity).Coordinates);
-                var parentPartComp = Comp<BodyPartComponent>(parentPartEntity);
-
-                string? grandParentSlotId = null;
-                EntityUid? grandParentPart = null;
-                foreach (var (potentialGrandParentSlotId, potentialGrandParentSlot) in prototype.Slots)
-                {
-                    if (potentialGrandParentSlot.Connections?.Contains(parentSlotId) == true)
-                    {
-                        grandParentSlotId = potentialGrandParentSlotId;
-                        break;
-                    }
-                }
-
-                if (grandParentSlotId != null && existingParts.TryGetValue(grandParentSlotId, out var grandParentId))
-                {
-                    grandParentPart = grandParentId;
-                }
-
-                if (grandParentPart == null)
-                {
-                    var rootPart = _body.GetRootPartOrNull(entity, body);
-                    if (rootPart != null)
-                    {
-                        grandParentPart = rootPart.Value.Entity;
-                    }
-                }
-
-                if (grandParentPart != null && _body.CanAttachPart(grandParentPart.Value, parentSlotId, parentPartEntity, Comp<BodyPartComponent>(grandParentPart.Value), parentPartComp))
-                {
-                    _body.AttachPart(grandParentPart.Value, parentSlotId, parentPartEntity, Comp<BodyPartComponent>(grandParentPart.Value), parentPartComp);
-                    parentPart = parentPartEntity;
-
-                    existingParts[parentSlotId] = parentPartEntity;
-
-                    CreateChildSlotsForPart(parentPartEntity, entity);
-                }
-                else
-                {
-                    QueueDel(parentPartEntity);
-                    return;
-                }
-            }
-        }
-
-        if (parentPart == null)
-        {
-            var rootPart = _body.GetRootPartOrNull(entity, body);
-            if (rootPart != null)
-            {
-                parentPart = rootPart.Value.Entity;
-            }
-        }
-
-        if (parentPart == null || !Exists(parentPart) || Deleted(parentPart.Value))
-            return;
-
-        var newPart = Spawn(slot.Part, Transform(entity).Coordinates);
-        var newPartComp = Comp<BodyPartComponent>(newPart);
-
-        if (_body.CanAttachPart(parentPart.Value, slotId, newPart, Comp<BodyPartComponent>(parentPart.Value), newPartComp))
-        {
-            _body.AttachPart(parentPart.Value, slotId, newPart, Comp<BodyPartComponent>(parentPart.Value), newPartComp);
-
-            if (slot.Organs != null)
-            {
-                foreach (var (organSlot, organPrototype) in slot.Organs)
-                {
-                    var newOrgan = Spawn(organPrototype, Transform(entity).Coordinates);
-                    _body.InsertOrgan(newOrgan, newPart, organSlot);
-                }
-            }
-
-            CreateChildSlotsForPart(newPart, entity);
+            var gotInsertedEvent = new OrganGotInsertedEvent(entity);
+            RaiseLocalEvent(newOrgan, ref gotInsertedEvent);
 
             _popup.PopupEntity(Loc.GetString("surgery-limb-regenerated"), entity, entity);
-        }
-        else
-        {
-            QueueDel(newPart);
         }
     }
 
@@ -382,43 +237,37 @@ public sealed partial class SurgerySystem : EntitySystem
         if (HasComp<ModularSuitPartComponent>(args.Equipment))
             return;
 
-        if ((args.SlotFlags == SlotFlags.FEET || args.SlotFlags == SlotFlags.SOCKS) &&
-            (!HasRequiredLimbs(ent, BodyPartType.Leg) || !HasRequiredLimbs(ent, BodyPartType.Foot)))
+        if ((args.SlotFlags == SlotFlags.FEET || args.SlotFlags == SlotFlags.SOCKS)
+            && (!HasRequiredOrgans(ent, "FootLeft", "FootRight") && !HasRequiredOrgans(ent, "LegLeft", "LegRight")))
         {
             args.Cancel();
             return;
         }
 
-        if (args.SlotFlags == SlotFlags.GLOVES &&
-            (!HasRequiredLimbs(ent, BodyPartType.Arm) || !HasRequiredLimbs(ent, BodyPartType.Hand)))
+        if (args.SlotFlags == SlotFlags.GLOVES
+            && (!HasRequiredOrgans(ent, "HandLeft", "HandRight") && !HasRequiredOrgans(ent, "ArmLeft", "ArmRight")))
         {
             args.Cancel();
             return;
         }
 
         if ((args.SlotFlags == SlotFlags.HEAD || args.SlotFlags == SlotFlags.EYES || args.SlotFlags == SlotFlags.EARS ||
-            args.SlotFlags == SlotFlags.MASK) && !_body.GetBodyChildrenOfType(ent, BodyPartType.Head).Any())
+            args.SlotFlags == SlotFlags.MASK) && !HasRequiredOrgans(ent, "Head"))
             args.Cancel();
-    }
-
-    private void OnBodyPartsChanged(Entity<OperatedComponent> ent, ref BodyPartRemovedEvent args)
-    {
-        OnBodyPartRemoved(ent, args.Part.Comp.PartType);
-        CheckAndRemoveInvalidClothing(ent);
     }
 
     public void CheckAndRemoveInvalidClothing(Entity<OperatedComponent> ent)
     {
-        if (!HasRequiredLimbs(ent, BodyPartType.Leg) || !HasRequiredLimbs(ent, BodyPartType.Foot))
+        if (!HasRequiredOrgans(ent, "LeftLeg", "RightLeg") && !HasRequiredOrgans(ent, "LeftFoot", "RightFoot"))
         {
             _inventory.TryUnequip(ent, "shoes", force: true);
             _inventory.TryUnequip(ent, "socks", force: true);
         }
 
-        if (!HasRequiredLimbs(ent, BodyPartType.Arm) || !HasRequiredLimbs(ent, BodyPartType.Hand))
+        if (!HasRequiredOrgans(ent, "LeftArm", "RightArm") && !HasRequiredOrgans(ent, "LeftHand", "RightHand"))
             _inventory.TryUnequip(ent, "gloves", force: true);
 
-        if (!_body.GetBodyChildrenOfType(ent, BodyPartType.Head).Any())
+        if (!HasRequiredOrgans(ent, "Head"))
         {
             string[] headSlots = { "head", "mask", "eyes", "ears" };
             foreach (var slot in headSlots)
@@ -428,17 +277,24 @@ public sealed partial class SurgerySystem : EntitySystem
         }
     }
 
-    private bool HasRequiredLimbs(EntityUid uid, BodyPartType partType)
+    private bool HasRequiredOrgans(EntityUid uid, params string[] organCategories)
     {
-        var parts = _body.GetBodyChildrenOfType(uid, partType).ToList();
+        if (!TryComp<BodyComponent>(uid, out var body) || body.Organs == null)
+            return false;
 
-        bool hasLeft = parts.Any(p => p.Component.Symmetry == BodyPartSymmetry.Left);
-        bool hasRight = parts.Any(p => p.Component.Symmetry == BodyPartSymmetry.Right);
+        var existingCategories = new HashSet<ProtoId<OrganCategoryPrototype>>();
+        foreach (var organ in body.Organs.ContainedEntities)
+        {
+            if (TryComp<OrganComponent>(organ, out var organComp) && organComp.Category != null)
+                existingCategories.Add(organComp.Category.Value);
+        }
 
-        if (partType == BodyPartType.Head)
-            return parts.Count > 0;
-
-        return hasLeft && hasRight;
+        foreach (var category in organCategories)
+        {
+            if (!existingCategories.Contains(category))
+                return false;
+        }
+        return true;
     }
 
     private void OnSterileExamined(Entity<SterileComponent> entity, ref ExaminedEvent args)

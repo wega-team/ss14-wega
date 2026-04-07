@@ -18,7 +18,7 @@ public sealed partial class GenderConditon : InteractionCondition
 
     public override bool Check(EntityUid user, EntityUid target, IEntityManager entityManager)
     {
-        if (!entityManager.TryGetComponent<HumanoidAppearanceComponent>(target, out var humanoid))
+        if (!entityManager.TryGetComponent<HumanoidProfileComponent>(target, out var humanoid))
             return false;
 
         return Genders.Contains(humanoid.Gender);

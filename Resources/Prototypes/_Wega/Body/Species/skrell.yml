@@ -1,0 +1,237 @@
+- type: markingsGroup
+  parent: None
+  id: Skrell
+  onlyGroupWhitelisted: true
+  limits:
+    enum.HumanoidVisualLayers.Head:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.HeadTop:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.Hair:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.Tail:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.Chest:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.LArm:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.RArm:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.LLeg:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.RLeg:
+      limit: 1
+      required: false
+
+- type: entity
+  parent: BaseSpeciesAppearance
+  id: AppearanceSkrell
+  name: skrell appearance
+  components:
+  - type: InitialBody
+    organs:
+      Torso: OrganSkrellTorso
+      Head: OrganSkrellHead
+      ArmLeft: OrganSkrellArmLeft
+      ArmRight: OrganSkrellArmRight
+      HandLeft: OrganSkrellHandLeft
+      HandRight: OrganSkrellHandRight
+      LegLeft: OrganSkrellLegLeft
+      LegRight: OrganSkrellLegRight
+      FootLeft: OrganSkrellFootLeft
+      FootRight: OrganSkrellFootRight
+      Brain: OrganSkrellBrain
+      Eyes: OrganSkrellEyes
+      Tongue: OrganSkrellTongue
+      Appendix: OrganSkrellAppendix
+      Ears: OrganSkrellEars
+      Lungs: OrganSkrellLungs
+      Heart: OrganSkrellHeart
+      Stomach: OrganSkrellStomach
+      Liver: OrganSkrellLiver
+      Kidneys: OrganSkrellKidneys
+  - type: HumanoidProfile
+    species: Skrell
+
+- type: entity
+  parent:
+  - AppearanceSkrell
+  - BaseSpeciesMobOrganic
+  - BaseOperated
+  id: MobSkrell
+  name: Urist McSkrell
+  components:
+  - type: Skrell
+  - type: Thirst
+    baseDecayRate: 0.15
+  - type: SolutionScanner
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: Skrell
+  - type: Reactive
+    groups:
+      Flammable: [ Touch ]
+      Extinguish: [ Touch ]
+    reactions:
+    - reagents: [ Water ]
+      methods: [ Touch ]
+      effects:
+      - !type:WashCreamPie
+    - reagents: [ Water ]
+      methods: [ Touch ]
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+            Heat: -1
+            Blunt: -1
+            Poison: -0.75
+    - reagents: [ Holywater ]
+      methods: [ Touch ]
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+            Heat: -0.25
+            Blunt: -0.25
+  - type: Butcherable
+    butcheringType: Spike
+    spawned:
+    - id: FoodMeatSkrell
+      amount: 5
+  - type: DnaModifier
+    upper: MobSkrell
+    lowest: MobSkrellkey
+
+- type: entity
+  parent: OrganBase
+  id: OrganSkrell
+  abstract: true
+  suffix: Skrell
+
+- type: entity
+  id: OrganSkrellMetabolizer
+  abstract: true
+  components:
+  - type: Metabolizer
+    metabolizerTypes: [ Human ]
+
+- type: entity
+  parent: OrganSkrell
+  id: OrganSkrellInternal
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: Mobs/Species/Human/organs.rsi
+
+- type: entity
+  id: OrganSkrellVisual
+  abstract: true
+  components:
+  - type: VisualOrgan
+    data:
+      sprite: _Wega/Mobs/Species/Skrell/parts.rsi
+  - type: VisualOrganMarkings
+    markingData:
+      group: Skrell
+
+- type: entity
+  parent: [ OrganSkrell, OrganSkrellVisual ]
+  id: OrganSkrellExternal
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Skrell/parts.rsi
+
+- type: entity
+  parent: [ OrganBaseTorsoSexed, OrganBaseTorso, OrganSkrellExternal ]
+  id: OrganSkrellTorso
+
+- type: entity
+  parent: [ OrganBaseHeadSexed, OrganBaseHead, OrganSkrellExternal ]
+  id: OrganSkrellHead
+  components:
+  - type: VisualOrganMarkings
+    hideableLayers:
+    - enum.HumanoidVisualLayers.HeadTop
+    - enum.HumanoidVisualLayers.Hair
+
+- type: entity
+  parent: [ OrganBaseArmLeft, OrganSkrellExternal ]
+  id: OrganSkrellArmLeft
+
+- type: entity
+  parent: [ OrganBaseArmRight, OrganSkrellExternal ]
+  id: OrganSkrellArmRight
+
+- type: entity
+  parent: [ OrganBaseHandLeft, OrganSkrellExternal ]
+  id: OrganSkrellHandLeft
+
+- type: entity
+  parent: [ OrganBaseHandRight, OrganSkrellExternal ]
+  id: OrganSkrellHandRight
+
+- type: entity
+  parent: [ OrganBaseLegLeft, OrganSkrellExternal ]
+  id: OrganSkrellLegLeft
+
+- type: entity
+  parent: [ OrganBaseLegRight, OrganSkrellExternal ]
+  id: OrganSkrellLegRight
+
+- type: entity
+  parent: [ OrganBaseFootLeft, OrganSkrellExternal ]
+  id: OrganSkrellFootLeft
+
+- type: entity
+  parent: [ OrganBaseFootRight, OrganSkrellExternal ]
+  id: OrganSkrellFootRight
+
+- type: entity
+  parent: [ OrganBaseBrain, OrganSkrellInternal ]
+  id: OrganSkrellBrain
+
+- type: entity
+  parent: [ OrganSkrellVisual, OrganBaseEyes, OrganSkrellInternal ]
+  id: OrganSkrellEyes
+
+- type: entity
+  parent: [ OrganBaseTongue, OrganSkrellInternal ]
+  id: OrganSkrellTongue
+
+- type: entity
+  parent: [ OrganBaseAppendix, OrganSkrellInternal ]
+  id: OrganSkrellAppendix
+
+- type: entity
+  parent: [ OrganBaseEars, OrganSkrellInternal ]
+  id: OrganSkrellEars
+
+- type: entity
+  parent: [ OrganBaseLungs, OrganSkrellInternal, OrganSkrellMetabolizer ]
+  id: OrganSkrellLungs
+
+- type: entity
+  parent: [ OrganBaseHeart, OrganSkrellInternal, OrganSkrellMetabolizer ]
+  id: OrganSkrellHeart
+
+- type: entity
+  parent: [ OrganBaseStomach, OrganSkrellInternal, OrganSkrellMetabolizer ]
+  id: OrganSkrellStomach
+
+- type: entity
+  parent: [ OrganBaseLiver, OrganSkrellInternal, OrganSkrellMetabolizer ]
+  id: OrganSkrellLiver
+
+- type: entity
+  parent: [ OrganBaseKidneys, OrganSkrellInternal, OrganSkrellMetabolizer ]
+  id: OrganSkrellKidneys

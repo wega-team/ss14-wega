@@ -13,7 +13,7 @@
   - WeaponProtoKineticAccelerator
   - ShuttleGunKineticCircuitboard
   - BorgModuleKinetic # Corvax-Wega-Kinetic
-  - ArmSyntheticProtoKinetic # Corvax-Wega-Androids
+  # - ArmSyntheticProtoKinetic # Corvax-Wega-Androids
   # These are roundstart but not replenishable for salvage
 
 - type: technology

@@ -23,8 +23,8 @@ lavaland-shuttle-info-ready = Система готова к транспорт�
 
 prison-shuttle-status = Статус шаттла:
 prison-shuttle-current-location = Ваше местоположение:
-prison-shuttle-status-docked-station = Пристыкован на станции
-prison-shuttle-status-docked-prison = Пристыкован в каторге
+prison-shuttle-status-docked-station = Пристыкован к станции
+prison-shuttle-status-docked-prison = Пристыкован к каторге
 prison-shuttle-status-enroute-station = Направляется на станцию
 prison-shuttle-status-enroute-prison = Направляется в каторгу
 prison-shuttle-status-unknown = Неизвестно

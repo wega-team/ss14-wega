@@ -295,7 +295,7 @@ public sealed class PlantAnalyzerSystem : SharedPlantAnalyzerSystem
         }
 
         // Spawn a piece of paper.
-        var printed = EntityManager.SpawnEntity(component.MachineOutput, Transform(uid).Coordinates);
+        var printed = Spawn(component.MachineOutput, Transform(uid).Coordinates);
         _handsSystem.PickupOrDrop(args.Actor, printed, checkActionBlocker: false);
 
         if (!TryComp<PaperComponent>(printed, out var paperComp))

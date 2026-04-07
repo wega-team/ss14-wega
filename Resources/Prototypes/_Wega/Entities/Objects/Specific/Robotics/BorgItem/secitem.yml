@@ -19,7 +19,7 @@
   description: Better pray it won't burn your hands off.
   components:
   - type: Gun
-    fireRate: 2
+    fireRate: 2.5
     selectedMode: Fullauto
     availableModes:
     - Fullauto
@@ -39,10 +39,10 @@
     startingCharge: 1000
   - type: BatteryAmmoProvider
     proto: BulletDisablerSmg
-    fireCost: 62.5
+    fireCost: 40
   - type: BatterySelfRecharger
     autoRechargeRate: 10
-    autoRechargePauseTime: 40
+    autoRechargePauseTime: 20
   - type: AmmoCounter
 
 - type: entity

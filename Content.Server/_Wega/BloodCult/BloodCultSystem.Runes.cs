@@ -9,6 +9,7 @@ using Content.Shared.Administration.Systems;
 using Content.Shared.Atmos.Components;
 using Content.Shared.Blood.Cult;
 using Content.Shared.Blood.Cult.Components;
+using Content.Shared.Body;
 using Content.Shared.Body.Components;
 using Content.Shared.Chat;
 using Content.Shared.Chemistry.Reagent;
@@ -295,7 +296,7 @@ public sealed partial class BloodCultSystem
 
     private void HandleOfferingRune(EntityUid rune, BloodRuneComponent runeComp, EntityUid cultist, MapCoordinates coords)
     {
-        var targets = _entityLookup.GetEntitiesInRange<HumanoidAppearanceComponent>(coords, 1f);
+        var targets = _entityLookup.GetEntitiesInRange<HumanoidProfileComponent>(coords, 1f);
         foreach (var targetEntity in targets)
         {
             var target = targetEntity.Owner;
@@ -491,7 +492,7 @@ public sealed partial class BloodCultSystem
 
     private bool TryReviveDeadCultist(EntityUid target, EntityUid cultist, BloodRuneComponent runeComp)
     {
-        if (!HasComp<BloodCultistComponent>(target) || !HasComp<HumanoidAppearanceComponent>(target) ||
+        if (!HasComp<BloodCultistComponent>(target) || !HasComp<HumanoidProfileComponent>(target) ||
             !_mobState.IsDead(target))
             return false;
 
@@ -517,7 +518,7 @@ public sealed partial class BloodCultSystem
 
     private bool TryCreateGhostRoleForCultist(EntityUid target, EntityUid cultist, BloodRuneComponent runeComp)
     {
-        if (!HasComp<BloodCultistComponent>(target) || !HasComp<HumanoidAppearanceComponent>(target))
+        if (!HasComp<BloodCultistComponent>(target) || !HasComp<HumanoidProfileComponent>(target))
             return false;
 
         if (!TryComp<MindContainerComponent>(target, out var mind) || mind.Mind is not null ||
@@ -533,7 +534,7 @@ public sealed partial class BloodCultSystem
     {
         if (!HasComp<BodyComponent>(target) || HasComp<BloodCultistComponent>(target) ||
             !_mobState.IsDead(target) || HasComp<BorgChassisComponent>(target) ||
-            HasComp<BloodCultObjectComponent>(target) || HasComp<HumanoidAppearanceComponent>(target))
+            HasComp<BloodCultObjectComponent>(target) || HasComp<HumanoidProfileComponent>(target))
             return false;
 
         SendCultistMessage(cultist, runeComp.RuneType);

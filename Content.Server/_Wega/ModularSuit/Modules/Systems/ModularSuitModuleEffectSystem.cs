@@ -61,7 +61,13 @@ public sealed class ModularSuitSuitEffectSystem : EntitySystem
         {
             var compType = entry.Component.GetType();
             if (EntityManager.TryGetComponent(targetEntity.Value, compType, out var comp))
-                Dirty(targetEntity.Value, comp);
+            {
+                var reg = EntityManager.ComponentFactory.GetRegistration(compType);
+                if (reg.NetID != null)
+                {
+                    Dirty(targetEntity.Value, comp);
+                }
+            }
         }
     }
 
@@ -84,46 +90,63 @@ public sealed class ModularSuitSuitEffectSystem : EntitySystem
     private bool TryGetTargetEntity(EntityUid? user, EntityUid suit, string targetSlot, [NotNullWhen(true)] out EntityUid? targetEntity)
     {
         targetEntity = null;
-        if (user != null && _inventory.TryGetSlotEntity(user.Value, targetSlot, out var wearerSlot))
-        {
-            targetEntity = wearerSlot;
-            return true;
-        }
-
         if (targetSlot == "back")
         {
             targetEntity = suit;
             return true;
         }
 
+        if (user != null && _inventory.TryGetSlotEntity(user.Value, targetSlot, out var wearerSlot))
+        {
+            if (HasComp<ModularSuitPartComponent>(wearerSlot))
+            {
+                targetEntity = wearerSlot;
+                return true;
+            }
+        }
+
         var partContainer = _container.GetContainer(suit, SharedModularSuitSystem.PartContainer);
         foreach (var part in partContainer.ContainedEntities)
         {
-            if (TryComp<ClothingComponent>(part, out var clothing) && clothing.Slots.HasFlag(GetSlotFlag(targetSlot)))
-            {
-                targetEntity = part;
-                return true;
-            }
+            if (!HasComp<ModularSuitPartComponent>(part))
+                continue;
+
+            if (!TryGetSlotFromClothing(part, out var slot) || slot != targetSlot)
+                continue;
+
+            targetEntity = part;
+            return true;
         }
 
         return false;
     }
 
-    private SlotFlags GetSlotFlag(string slot)
+    private bool TryGetSlotFromClothing(EntityUid uid, out string? slot)
     {
-        return slot switch
+        slot = string.Empty;
+        if (!TryComp<ClothingComponent>(uid, out var clothing))
+            return false;
+
+        var flags = clothing.Slots;
+        if (flags == SlotFlags.NONE)
+            return false;
+
+        slot = flags switch
         {
-            "head" => SlotFlags.HEAD,
-            "eyes" => SlotFlags.EYES,
-            "ears" => SlotFlags.EARS,
-            "mask" => SlotFlags.MASK,
-            "outerClothing" => SlotFlags.OUTERCLOTHING,
-            "jumpsuit" => SlotFlags.INNERCLOTHING,
-            "neck" => SlotFlags.NECK,
-            "belt" => SlotFlags.BELT,
-            "gloves" => SlotFlags.GLOVES,
-            "shoes" => SlotFlags.FEET,
-            _ => SlotFlags.NONE
+            SlotFlags.HEAD => "head",
+            SlotFlags.EYES => "eyes",
+            SlotFlags.EARS => "ears",
+            SlotFlags.MASK => "mask",
+            SlotFlags.OUTERCLOTHING => "outerClothing",
+            SlotFlags.INNERCLOTHING => "jumpsuit",
+            SlotFlags.NECK => "neck",
+            SlotFlags.BACK => "back", // idk why
+            SlotFlags.BELT => "belt",
+            SlotFlags.GLOVES => "gloves",
+            SlotFlags.FEET => "shoes",
+            _ => null
         };
+
+        return slot != null;
     }
 }

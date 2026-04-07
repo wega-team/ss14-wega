@@ -283,12 +283,14 @@ namespace Content.Server.Genetics.System
 
                             if (deathHealth > FixedPoint2.Zero)
                             {
-                                float currentHealth = 1.0f - (damage.TotalDamage.Float() / deathHealth.Float());
+                                var totalDamage = _damage.GetTotalDamage(scanBody.Value);
+                                float currentHealth = 1.0f - (totalDamage.Float() / deathHealth.Float());
                                 scannerBodyHealth = Math.Clamp(currentHealth, 0f, 1f);
                             }
                         }
 
-                        if (damage.Damage.DamageDict.TryGetValue(RadDamage, out var radiationDamage))
+                        var positiveDamage = _damage.GetPositiveDamage((scanBody.Value, damage));
+                        if (positiveDamage.DamageDict.TryGetValue(RadDamage, out var radiationDamage))
                             scannerBodyRadiation = Math.Clamp(radiationDamage.Float() / 200f, 0f, 1f);
                     }
 

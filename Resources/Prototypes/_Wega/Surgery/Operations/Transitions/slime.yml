@@ -57,19 +57,19 @@
           action: RemoveOrgan
           failureEffect: [ Bleeding, Pain ]
           entityPreview: SentientSlimeCore
-          requiredPart: SlimeCore
+          requiredPart: Heart
           sound:
             path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 3
           successChance: 0.8
           conditions:
             - !type:OrganPresentCondition
-              organ: SlimeCore
+              organ: Heart
         - tag: [ SlimeCore ]
           action: InsertOrgan
           failureEffect: [ Pain ]
           entityPreview: SentientSlimeCore
-          requiredPart: SlimeCore
+          requiredPart: Heart
           sound:
             collection: Squishes
           time: 3
@@ -77,7 +77,7 @@
           conditions:
             - !type:OrganPresentCondition
               invert: true
-              organ: SlimeCore
+              organ: Heart
 
         # Легкие
         - tool: [ Hemostat ]
@@ -148,8 +148,8 @@
           invert: true
           slots:
           - head
-        - !type:BodyPartCondition
-          bodyPart: head
+        - !type:OrganPresentCondition
+          organ: Head
       steps:
         - tool: [ Scalpel ]
           tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
@@ -205,7 +205,7 @@
     - conditions:
         - !type:InternalDamageCondition
           damageType: MuscleTears
-          bodyPart: torso
+          bodyPart: Torso
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -224,7 +224,7 @@
           time: 4
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
-          requiredPart: torso
+          requiredPart: Torso
           damageType: MuscleTears
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -241,7 +241,7 @@
     - conditions:
         - !type:InternalDamageCondition
           damageType: MildBurns
-          bodyPart: torso
+          bodyPart: Torso
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -260,7 +260,7 @@
           time: 4
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
-          requiredPart: torso
+          requiredPart: Torso
           damageType: MildBurns
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -277,7 +277,7 @@
     - conditions:
         - !type:InternalDamageCondition
           damageType: DeepBurns
-          bodyPart: torso
+          bodyPart: Torso
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -295,7 +295,7 @@
             collection: Retractor
           time: 4
         - tag: [ Ointment ]
-          requiredPart: torso
+          requiredPart: Torso
           damageType: DeepBurns
           action: HealInternalDamage
           sound:
@@ -310,7 +310,7 @@
     - conditions:
         - !type:InternalDamageCondition
           damageType: BulletWound
-          bodyPart: torso
+          bodyPart: Torso
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -329,7 +329,7 @@
           time: 4
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
-          requiredPart: torso
+          requiredPart: Torso
           damageType: BulletWound
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]

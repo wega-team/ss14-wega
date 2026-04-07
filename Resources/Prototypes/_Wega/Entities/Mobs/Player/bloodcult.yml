@@ -180,9 +180,6 @@
   - type: Metabolizer
     solutionOnBody: false
     metabolizerTypes: [ Bloodsucker ]
-    groups:
-      - id: Medicine
-      - id: Poison
   - type: Tag
     tags:
     - DoorBumpOpener

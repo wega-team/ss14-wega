@@ -123,6 +123,8 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
 
     private void StartWeather(EntityUid uid, LavalandComponent comp)
     {
+        var mapId = Transform(uid).MapID;
+
         comp.CurrentWeatherType = comp.UpcomingWeatherType;
         comp.CurrentWeatherProto = comp.UpcomingWeatherProto;
         comp.CurrentWeatherEnd = _gameTiming.CurTime + GetWeatherInfo(comp.CurrentWeatherType).duration;
@@ -135,7 +137,7 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
 
         if (comp.CurrentWeatherProto != null)
         {
-            _weather.SetWeather(Transform(uid).MapID, _proto.Index(comp.CurrentWeatherProto.Value), comp.CurrentWeatherEnd);
+            _weather.TrySetWeather(mapId, comp.CurrentWeatherProto.Value, out _, comp.CurrentWeatherEnd - _gameTiming.CurTime);
         }
     }
 
@@ -160,12 +162,13 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
     private void EndWeather(EntityUid uid, LavalandComponent comp)
     {
         var endedWeather = comp.CurrentWeatherType;
+        var mapId = Transform(uid).MapID;
 
         comp.CurrentWeatherType = LavalandWeatherType.None;
         comp.CurrentWeatherProto = null;
         comp.DamageTick = 0f;
 
-        _weather.SetWeather(Transform(uid).MapID, null, null);
+        _weather.TrySetWeather(mapId, null, out _);
 
         SendWeatherEndAlert(endedWeather);
     }
@@ -209,14 +212,15 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
         return filteredWeights.First().Key;
     }
 
-    private (ProtoId<WeatherPrototype>? proto, TimeSpan duration) GetWeatherInfo(LavalandWeatherType type)
+    private (EntProtoId? proto, TimeSpan duration) GetWeatherInfo(LavalandWeatherType type)
     {
+        // Yeeeeeeeeeeee, the fierce hardcore proved itself in one upstream, after which a refactor was planned!
         return type switch
         {
-            LavalandWeatherType.AshStormLight => ("AshfallLight", TimeSpan.FromSeconds(_random.Next(60, 120))),
-            LavalandWeatherType.AshStormHeavy => ("AshfallHeavy", TimeSpan.FromSeconds(_random.Next(90, 150))),
+            LavalandWeatherType.AshStormLight => ("WeatherAshfallLight", TimeSpan.FromSeconds(_random.Next(60, 120))),
+            LavalandWeatherType.AshStormHeavy => ("WeatherAshfallHeavy", TimeSpan.FromSeconds(_random.Next(90, 150))),
             LavalandWeatherType.VolcanicActivity => (null, TimeSpan.FromSeconds(_random.Next(60, 120))),
-            LavalandWeatherType.AcidRain => ("AcidicRain", TimeSpan.FromSeconds(_random.Next(60, 120))),
+            LavalandWeatherType.AcidRain => ("WeatherAcidRain", TimeSpan.FromSeconds(_random.Next(60, 120))),
             LavalandWeatherType.StormWind => (null, TimeSpan.FromSeconds(_random.Next(60, 120))),
             _ => (null, TimeSpan.Zero)
         };

@@ -44,7 +44,7 @@
   - PowerCellHigh
   - TurboItemRechargerCircuitboard
   - SMESAdvancedMachineCircuitboard
-  - ArmSyntheticCharger # Corvax-Wega-Androids
+  # - ArmSyntheticCharger # Corvax-Wega-Androids
 
 - type: technology
   id: MechanicalCompression

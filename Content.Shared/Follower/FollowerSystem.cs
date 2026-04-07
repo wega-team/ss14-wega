@@ -185,7 +185,7 @@ public sealed class FollowerSystem : EntitySystem
     /// <param name="entity">The entity to be followed</param>
     public void StartFollowingEntity(EntityUid follower, EntityUid entity)
     {
-        if (HasComp<HumanoidAppearanceComponent>(follower)) // Corvax-Wega-GhostBar
+        if (HasComp<HumanoidProfileComponent>(follower)) // Corvax-Wega-GhostBar
             return; // Corvax-Wega-GhostBar
 
         if (follower == entity || TerminatingOrDeleted(entity))

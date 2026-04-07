@@ -11,7 +11,7 @@
   cost: 5000
   recipeUnlocks:
   - ProximitySensor
-  - AndroidBodyPart # Corvax-Wega-Android
+  # - AndroidBodyPart # Corvax-Wega-Android
   - BorgModuleRobotics # Corvax-Wega-Add
 
 - type: technology
@@ -68,7 +68,7 @@
   recipeUnlocks:
   - ClothingShoesBootsMagSci
   - ClothingShoesBootsMoon
-  - LegSyntheticMagboots # Corvax-Wega-Androids
+  # - LegSyntheticMagboots # Corvax-Wega-Androids
   - MagnetSuitModule # Corvax-Wega-add
 
 - type: technology

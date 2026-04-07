@@ -76,13 +76,13 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.75
-        Slash: 0.75
-        Piercing: 0.75
-        Heat: 0.75
+        Blunt: 0.7
+        Slash: 0.7
+        Piercing: 0.9
+        Heat: 0.7
         Caustic: 0.85
   - type: ExplosionResistance
-    damageCoefficient: 0.75
+    damageCoefficient: 0.8
   - type: FireProtection
     reduction: 0.25
   - type: TemperatureProtection
@@ -135,13 +135,13 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.55
-        Slash: 0.55
-        Piercing: 0.6
-        Heat: 0.65
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.8
+        Heat: 0.5
         Caustic: 0.75
   - type: ExplosionResistance
-    damageCoefficient: 0.5
+    damageCoefficient: 0.6
   - type: FireProtection
     reduction: 0.5
   - type: ToggleableClothing
@@ -177,13 +177,13 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.55
-        Slash: 0.55
-        Piercing: 0.6
-        Heat: 0.65
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.8
+        Heat: 0.5
         Caustic: 0.75
   - type: ExplosionResistance
-    damageCoefficient: 0.5
+    damageCoefficient: 0.6
   - type: FireProtection
     reduction: 0.5
   - type: TemperatureProtection
@@ -247,3 +247,27 @@
   description: An evil-looking piece of cult armor, made of bones.
   components:
   - type: BloodCultEquipment
+
+- type: entity
+  parent: ClothingOuterArmorBasic
+  id: ClothingVestBlueShieldAlt
+  name: blue shield vest
+  description: Type V bulletproof vest.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Armor/blueshieldvest.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/OuterClothing/Armor/blueshieldvest.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.6
+        Heat: 0.5
+  - type: ExplosionResistance
+    damageCoefficient: 0.65
+  - type: ClothingSpeedModifier
+    walkModifier: 1.0
+    sprintModifier: 1.0
+  - type: HeldSpeedModifier

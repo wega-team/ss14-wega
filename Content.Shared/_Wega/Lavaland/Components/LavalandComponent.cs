@@ -24,13 +24,13 @@ public sealed partial class LavalandComponent : Component
     public LavalandWeatherType UpcomingWeatherType = LavalandWeatherType.None;
 
     [DataField]
-    public ProtoId<WeatherPrototype>? UpcomingWeatherProto;
+    public EntProtoId? UpcomingWeatherProto;
 
     [DataField]
     public LavalandWeatherType CurrentWeatherType = LavalandWeatherType.None;
 
     [DataField]
-    public ProtoId<WeatherPrototype>? CurrentWeatherProto;
+    public EntProtoId? CurrentWeatherProto;
 
     [DataField]
     public bool WarningSent = false;

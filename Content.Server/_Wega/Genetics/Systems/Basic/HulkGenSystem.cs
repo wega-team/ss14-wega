@@ -2,7 +2,7 @@ using System.Linq;
 using Content.Server.Destructible;
 using Content.Server.Polymorph.Systems;
 using Content.Shared.Actions;
-using Content.Shared.Body.Components;
+using Content.Shared.Body;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Genetics;
@@ -52,7 +52,7 @@ public sealed class HulkGenSystem : EntitySystem
     {
         args.Handled = true;
         if (!TryComp<DnaModifierComponent>(ent, out var dnaModifier) || dnaModifier.EnzymesPrototypes == null
-            || !TryComp<HumanoidAppearanceComponent>(ent, out var humanoid))
+            || !TryComp<HumanoidProfileComponent>(ent, out var humanoid))
             return;
 
         foreach (var enzymeInfo in dnaModifier.EnzymesPrototypes)
@@ -72,7 +72,7 @@ public sealed class HulkGenSystem : EntitySystem
         _polymorph.PolymorphEntity(ent, polymorph);
     }
 
-    private bool CheckSpeciesEntity(HumanoidAppearanceComponent humanoid)
+    private bool CheckSpeciesEntity(HumanoidProfileComponent humanoid)
     {
         var altSpecies = new[]
         {

@@ -27,34 +27,14 @@ public sealed class ProjectileLifestealSystem : EntitySystem
             return;
 
         var shooter = ev.Shooter.Value;
-        if (!TryComp<DamageableComponent>(shooter, out var damageable) || damageable.TotalDamage == 0)
+        var totalDamage = _damage.GetTotalDamage(shooter);
+        if (totalDamage == 0)
             return;
 
-        var totalDamage = damageable.TotalDamage;
         var healAmount = FixedPoint2.Min(component.StealAmount, totalDamage);
         if (healAmount <= 0)
             return;
 
-        var toHeal = new DamageSpecifier();
-
-        var remainingHeal = healAmount;
-        var sortedDamages = damageable.Damage.DamageDict.Where(x => x.Value > 0)
-            .OrderByDescending(x => x.Value).ToList();
-
-        foreach (var (damageType, currentDamage) in sortedDamages)
-        {
-            if (remainingHeal <= 0)
-                break;
-
-            var healForThisType = FixedPoint2.Min(currentDamage, remainingHeal);
-
-            toHeal.DamageDict[damageType] = -healForThisType;
-            remainingHeal -= healForThisType;
-        }
-
-        if (toHeal.DamageDict.Count > 0)
-        {
-            _damage.TryChangeDamage(shooter, toHeal, true, false);
-        }
+        _damage.HealDistributed(shooter, healAmount);
     }
 }

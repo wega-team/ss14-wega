@@ -199,9 +199,10 @@
       - Critical
       - Dead
       damage:
-        groups:
-          Brute: -3
-          Burn: -3
+        types:
+          Blunt: -2
+          Piercing: -3
+          Heat: -3
   - type: PowerCellDraw
     drawRate: 72 # 10 seconds
   - type: ToggleCellDraw
@@ -251,9 +252,10 @@
       - Critical
       - Dead
       damage:
-        groups:
-          Brute: -6
-          Burn: -6
+        types:
+          Blunt: -3
+          Piercing: -6
+          Heat: -6
 
 - type: entity
   parent: BaseItem

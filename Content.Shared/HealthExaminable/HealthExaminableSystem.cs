@@ -1,4 +1,5 @@
 using Content.Shared.Damage.Components;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Examine;
 using Content.Shared.FixedPoint;
 using Content.Shared.IdentityManagement;
@@ -10,6 +11,7 @@ namespace Content.Shared.HealthExaminable;
 public sealed class HealthExaminableSystem : EntitySystem
 {
     [Dependency] private readonly ExamineSystemShared _examineSystem = default!;
+    [Dependency] private readonly DamageableSystem _damageable = default!;
 
     public override void Initialize()
     {
@@ -29,7 +31,7 @@ public sealed class HealthExaminableSystem : EntitySystem
         {
             Act = () =>
             {
-                var markup = CreateMarkup(uid, component, damage);
+                var markup = CreateMarkup(uid, component, damage, args.User); // Corvax-Wega-Edit
                 _examineSystem.SendExamineTooltip(args.User, uid, markup, false, false);
             },
             Text = Loc.GetString("health-examinable-verb-text"),
@@ -42,14 +44,15 @@ public sealed class HealthExaminableSystem : EntitySystem
         args.Verbs.Add(verb);
     }
 
-    public FormattedMessage CreateMarkup(EntityUid uid, HealthExaminableComponent component, DamageableComponent damage)
+    public FormattedMessage CreateMarkup(EntityUid uid, HealthExaminableComponent component, DamageableComponent damage, EntityUid examiner) // Corvax-Wega-Edit
     {
         var msg = new FormattedMessage();
 
         var first = true;
+        var damageSpecifier = _damageable.GetAllDamage((uid, damage));
         foreach (var type in component.ExaminableTypes)
         {
-            if (!damage.Damage.DamageDict.TryGetValue(type, out var dmg))
+            if (!damageSpecifier.DamageDict.TryGetValue(type, out var dmg))
                 continue;
 
             if (dmg == FixedPoint2.Zero)
@@ -94,7 +97,7 @@ public sealed class HealthExaminableSystem : EntitySystem
         }
 
         // Anything else want to add on to this?
-        RaiseLocalEvent(uid, new HealthBeingExaminedEvent(msg), true);
+        RaiseLocalEvent(uid, new HealthBeingExaminedEvent(msg, examiner), true); // Corvax-Wega-Edit
 
         return msg;
     }
@@ -108,9 +111,11 @@ public sealed class HealthExaminableSystem : EntitySystem
 public sealed class HealthBeingExaminedEvent
 {
     public FormattedMessage Message;
+    public EntityUid Examiner; // Corvax-Wega-Add
 
-    public HealthBeingExaminedEvent(FormattedMessage message)
+    public HealthBeingExaminedEvent(FormattedMessage message, EntityUid examiner) // Corvax-Wega-Edit
     {
         Message = message;
+        Examiner = examiner; // Corvax-Wega-Add
     }
 }

@@ -63,11 +63,11 @@
   tier: 1
   cost: 10000
   recipeUnlocks:
-  - ArmSyntheticDefib
+  # - ArmSyntheticDefib
   - DefibrillatorSuitModule
   - InjectorSuitModule
   - MedicalPlating
-  
+
 # Tier 2
 
 - type: technology

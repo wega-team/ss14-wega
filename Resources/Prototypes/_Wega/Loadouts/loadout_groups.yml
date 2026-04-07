@@ -252,6 +252,7 @@
   minLimit: 0
   loadouts:
   - BlueshieldHead
+  - BlueshieldHeadAlt
 
 - type: loadoutGroup
   id: BlueShieldJumpsuit
@@ -261,6 +262,7 @@
   - BlueShieldAltJumpsuit
   - BlueShieldJumpskirt
   - ClothingUniformJumpskirtElegantBs
+  - BlueShieldJumpsuitAlt
 
 - type: loadoutGroup
   id: BlueshieldBackpack
@@ -276,6 +278,8 @@
   loadouts:
   - BlueshieldOterArmor
   - BlueShieldOuterWinter
+  - BlueshieldOterArmorAlt
+  - BlueShieldOuterWinterAlt
 
 - type: loadoutGroup
   id: BlueShieldTop
@@ -1114,8 +1118,8 @@
   - JumpsuitCasualRed
   - JumpskirtCasualRed
   - JumpsuitCasualGreen
-  - JumpskirtCasualGreen 
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtCasualGreen
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
@@ -1274,13 +1278,13 @@
   - ShaftMinerJumpsuitExplorerKhaki
   - ShaftMinerJumpskirtExplorerKhaki
 
-- type: loadoutGroup
-  id: ShaftMinerMedicGloves
-  name: loadout-group-shaft-miner-medic-gloves
-  minLimit: 0
-  loadouts:
-  - LatexGloves
-  - NitrileGloves
+# - type: loadoutGroup
+#   id: ShaftMinerMedicGloves
+#   name: loadout-group-shaft-miner-medic-gloves
+#   minLimit: 0
+#   loadouts:
+#   - LatexGloves
+#   - NitrileGloves
 
 # Civilian
 - type: loadoutGroup
@@ -1357,8 +1361,8 @@
   - JumpsuitCasualRed
   - JumpskirtCasualRed
   - JumpsuitCasualGreen
-  - JumpskirtCasualGreen 
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtCasualGreen
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite

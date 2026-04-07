@@ -1,4 +1,5 @@
 using Content.Shared.Damage.Components;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Lavaland.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
@@ -14,6 +15,7 @@ namespace Content.Shared.Lavaland;
 public sealed partial class TrophyHunterSystem : EntitySystem
 {
     [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly ThrowingSystem _throwing = default!;
     [Dependency] private readonly MobThresholdSystem _threshold = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
@@ -39,23 +41,27 @@ public sealed partial class TrophyHunterSystem : EntitySystem
             if (!TryComp<TrophyHunterComponent>(hitEnt, out var trophyComp) || trophyComp.Collected)
                 continue;
 
-            if (!TryComp<DamageableComponent>(hitEnt, out var damageable) || damageable.TotalDamage <= 0)
+            if (!TryComp<DamageableComponent>(hitEnt, out var damageable))
                 return;
+
+            var totalDamage = _damageable.GetTotalDamage((hitEnt, damageable));
+            if (totalDamage <= 0)
+                continue;
 
             if (_threshold.TryGetThresholdForState(hitEnt, MobState.Dead, out var threshold))
             {
-                var currentDamage = damageable.TotalDamage.Float();
+                var currentDamage = totalDamage.Float();
                 var baseDamage = args.BaseDamage.GetTotal().Float();
                 var bonusDamage = args.BonusDamage.GetTotal().Float();
 
-                var totalDamage = currentDamage + baseDamage + bonusDamage;
+                var newTotalDamage = currentDamage + baseDamage + bonusDamage;
 
-                if (totalDamage < threshold)
-                    return;
+                if (newTotalDamage < threshold)
+                    continue;
 
                 trophyComp.Collected = true;
                 if (!_random.Prob(trophyComp.DropChance))
-                    return;
+                    continue;
 
                 var trophy = Spawn(trophyComp.Trophy, Transform(hitEnt).Coordinates);
                 _throwing.TryThrow(trophy, _random.NextVector2());

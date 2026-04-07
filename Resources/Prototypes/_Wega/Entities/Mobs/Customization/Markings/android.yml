@@ -1,8 +1,7 @@
 - type: marking
   id: AndroidAntennaLeft
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [ Android ]
+  groupWhitelist: [ Android ]
   coloring:
     default:
       type:
@@ -15,8 +14,7 @@
 - type: marking
   id: AndroidAntennaRight
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [ Android ]
+  groupWhitelist: [ Android ]
   coloring:
     default:
       type:
@@ -29,8 +27,7 @@
 - type: marking
   id: AndroidAntennaCrown
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [ Android ]
+  groupWhitelist: [ Android ]
   coloring:
     default:
       type:
@@ -43,8 +40,7 @@
 - type: marking
   id: AndroidHeadBulbs
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [ Android ]
+  groupWhitelist: [ Android ]
   coloring:
     default:
       type:
@@ -57,8 +53,7 @@
 - type: marking
   id: AndroidTorsoFemaleStandart
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [ Android ]
+  groupWhitelist: [ Android ]
   sexRestriction: [ Female ]
   sponsorOnly: false
   coloring:
@@ -72,8 +67,7 @@
 - type: marking
   id: AndroidTorsoFemaleBreast
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [ Android ]
+  groupWhitelist: [ Android ]
   sexRestriction: [ Female ]
   sponsorOnly: false
   coloring:
@@ -87,8 +81,7 @@
 - type: marking
   id: AndroidTorsoFemaleBigBreast
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [ Android ]
+  groupWhitelist: [ Android ]
   sexRestriction: [ Female ]
   sponsorOnly: false
   coloring:
@@ -102,8 +95,7 @@
 - type: marking
   id: AndroidTorsoFemaleNoBreast
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [ Android ]
+  groupWhitelist: [ Android ]
   sexRestriction: [ Female ]
   sponsorOnly: false
   coloring:
@@ -117,8 +109,7 @@
 - type: marking
   id: AndroidTorsoMale
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [ Android ]
+  groupWhitelist: [ Android ]
   sexRestriction: [ Male ]
   sponsorOnly: false
   coloring:
@@ -132,8 +123,7 @@
 - type: marking
   id: AndroidTorsoSpine
   bodyPart: Special
-  markingCategory: Chest
-  speciesRestriction: [ Android ]
+  groupWhitelist: [ Android ]
   sexRestriction: [ Female ]
   sponsorOnly: false
   coloring:
@@ -146,7 +136,6 @@
         type:
           !type:CategoryColoring
           category: Special
-          
   sprites:
   - sprite: _Wega/Mobs/Customization/android.rsi
     state: body_spine
@@ -156,8 +145,7 @@
 - type: marking
   id: AndroidLeds
   bodyPart: Special
-  markingCategory: Special
-  speciesRestriction: [ Android ]
+  groupWhitelist: [ Android ]
   sponsorOnly: false
   coloring:
     default:
@@ -171,8 +159,7 @@
 - type: marking
   id: AndroidLedsLove
   bodyPart: Special
-  markingCategory: Special
-  speciesRestriction: [ Android ]
+  groupWhitelist: [ Android ]
   sponsorOnly: false
   coloring:
     default:
@@ -186,8 +173,7 @@
 - type: marking
   id: AndroidLedsStripes
   bodyPart: Special
-  markingCategory: Special
-  speciesRestriction: [ Android ]
+  groupWhitelist: [ Android ]
   sponsorOnly: false
   coloring:
     default:
@@ -201,8 +187,7 @@
 - type: marking
   id: AndroidTempleLed
   bodyPart: HeadTop
-  markingCategory: Head
-  speciesRestriction: [ Android ]
+  groupWhitelist: [ Android ]
   sponsorOnly: false
   coloring:
     default:
@@ -216,8 +201,7 @@
 - type: marking
   id: AndroidCatEars
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [ Android ]
+  groupWhitelist: [ Android ]
   sponsorOnly: false
   coloring:
     default:
@@ -237,8 +221,7 @@
 - type: marking
   id: AndroidCatTail
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [ Android ]
+  groupWhitelist: [ Android ]
   sponsorOnly: false
   coloring:
     default:
@@ -259,8 +242,7 @@
 - type: marking
   id: AndroidEyesVisor
   bodyPart: Eyes
-  markingCategory: Head
-  speciesRestriction: [ Android ]
+  groupWhitelist: [ Android ]
   sponsorOnly: false
   coloring:
     default:
@@ -280,8 +262,7 @@
 - type: marking
   id: AndroidScrapArmLeft
   bodyPart: Special
-  markingCategory: Arms
-  speciesRestriction: [ Android ]
+  groupWhitelist: [ Android ]
   sponsorOnly: false
   coloring:
     default:
@@ -295,8 +276,7 @@
 - type: marking
   id: AndroidScrapArmRight
   bodyPart: Special
-  markingCategory: Arms
-  speciesRestriction: [ Android ]
+  groupWhitelist: [ Android ]
   sponsorOnly: false
   coloring:
     default:
@@ -310,8 +290,7 @@
 - type: marking
   id: AndroidScrapLegLeft
   bodyPart: Special
-  markingCategory: Legs
-  speciesRestriction: [ Android ]
+  groupWhitelist: [ Android ]
   sponsorOnly: false
   coloring:
     default:
@@ -325,8 +304,7 @@
 - type: marking
   id: AndroidScrapLegRight
   bodyPart: Special
-  markingCategory: Legs
-  speciesRestriction: [ Android ]
+  groupWhitelist: [ Android ]
   sponsorOnly: false
   coloring:
     default:
@@ -340,8 +318,7 @@
 - type: marking
   id: AndroidOldHead
   bodyPart: HeadTop
-  markingCategory: Head
-  speciesRestriction: [ Android ]
+  groupWhitelist: [ Android ]
   sponsorOnly: false
   coloring:
     layers:
@@ -366,8 +343,7 @@
 - type: marking
   id: AndroidIpcHead
   bodyPart: HeadTop
-  markingCategory: Head
-  speciesRestriction: [ Android ]
+  groupWhitelist: [ Android ]
   sponsorOnly: false
   coloring:
     layers:
@@ -393,8 +369,7 @@
 - type: marking
   id: AndroidScreenHead
   bodyPart: Eyes
-  markingCategory: Head
-  speciesRestriction: [ Android ]
+  groupWhitelist: [ Android ]
   sponsorOnly: false
   coloring:
     layers:
@@ -420,8 +395,7 @@
 - type: marking
   id: AndroidAnimatronicHead
   bodyPart: Head
-  markingCategory: Head
-  speciesRestriction: [ Android ]
+  groupWhitelist: [ Android ]
   sponsorOnly: false
   coloring:
     default:

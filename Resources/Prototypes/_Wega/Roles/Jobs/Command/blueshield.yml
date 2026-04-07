@@ -41,8 +41,8 @@
     belt: ClothingBeltMilitaryWebbingFilled
     gloves: ClothingHandsGlovesCombatBlueShield
     pocket1: WeaponBlueLaserPistol
-    pocket2: BlueSheildSheild
   storage:
     back:
     - MagazinePistol
     - WeaponPistolMk58
+    - BlueSheildSheild

@@ -1,15 +1,16 @@
 # Components
-spray-painter-ammo-on-examine =
-    Содержит { $charges } { $charge ->
-        [1] заряд
-        [few] заряда
-       *[other] зарядов
-    }.
+spray-painter-ammo-on-examine = Содержит { $charges } { $charge ->
+    [1] заряд
+    [few] заряда
+    *[other] зарядов
+}.
 spray-painter-ammo-after-interact-full = Краскопульт полон!
 spray-painter-ammo-after-interact-refilled = Вы заправляете краскопульт.
 
 spray-painter-interact-no-charges = Не хватает краски.
 spray-painter-interact-nothing-to-remove = Нечего удалять!
+spray-painter-interact-no-color-pick = Нет цвета для взятия!
+spray-painter-interact-color-picked = Взят цвет из '{ $id }'.
 
 spray-painter-on-examined-painted-message = Выглядит свежеокрашенным.
 spray-painter-style-not-available = Выбранный стиль нельзя применить к этому объекту.

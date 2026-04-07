@@ -199,10 +199,9 @@
       path: "/Audio/Items/drill_hit.ogg"
     attackRate: 4
     damage:
-      groups:
-        Brute: 6
       types:
         Structural: 30
+        Blunt: 6
     mustBeEquippedToUse: true
   - type: Fiber
     fiberMaterial: fibers-durathread

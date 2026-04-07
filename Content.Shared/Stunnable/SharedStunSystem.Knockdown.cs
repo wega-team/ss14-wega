@@ -327,9 +327,6 @@ public abstract partial class SharedStunSystem
         if (entity.Comp.NextUpdate > GameTiming.CurTime)
             return false;
 
-        if (!TryComp<BodyComponent>(entity, out var body) || body.LegEntities.Count < body.RequiredLegs)
-            return false;
-
         return Blocker.CanMove(entity);
     }
 

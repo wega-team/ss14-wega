@@ -1,4 +1,4 @@
-﻿ent-MuzzleFlashEffect = { "" }
+ent-MuzzleFlashEffect = { "" }
     .desc = { "" }
 ent-MuzzleFlashEffectOmnilaser = { ent-MuzzleFlashEffect }
     .desc = { ent-MuzzleFlashEffect.desc }
@@ -103,6 +103,8 @@ ent-BulletEnergyTurretDisabler = заряд станнера
 ent-TeslaGunBullet = молния Тесла-пушки
     .desc = { ent-BaseBullet.desc }
 ent-BulletLaser = лазерный заряд
+    .desc = { ent-BaseBullet.desc }
+ent-PulsarProjectile = заряд пульсара
     .desc = { ent-BaseBullet.desc }
 ent-BulletLaserSpread = широкий лазерный залп
     .desc = { ent-BulletLaser.desc }

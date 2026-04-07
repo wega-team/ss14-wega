@@ -123,7 +123,7 @@ public sealed partial class ModularSuitSystem : SharedModularSuitSystem
 
         foreach (var part in containers[PartContainer].ContainedEntities)
         {
-            if (suit.Comp.Wearer != null || !TryComp<ModularSuitPartComponent>(part, out var partComp))
+            if (suit.Comp.Equipped || !TryComp<ModularSuitPartComponent>(part, out var partComp))
                 continue;
 
             var extractVerb = new Verb
@@ -253,7 +253,7 @@ public sealed partial class ModularSuitSystem : SharedModularSuitSystem
                 return;
             }
 
-            if (suit.Comp.Wearer != null)
+            if (suit.Comp.Equipped)
             {
                 Popup.PopupEntity(Loc.GetString("modsuit-cant-install-part-worn"), suit.Owner, args.User);
                 return;

@@ -3,6 +3,7 @@ using System.Numerics;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Maps;
+using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Physics;
@@ -96,11 +97,14 @@ public sealed class CrusherUpgradeEffectsSystem : EntitySystem
         if (!HasComp<MobThresholdsComponent>(args.User))
             return;
 
-        if (!TryComp<DamageableComponent>(args.User, out var damageable) || damageable.TotalDamage <= 0
-            || !_threshold.TryGetThresholdForState(args.User, ent.Comp.TargetState, out var threshold))
+        if (!TryComp<DamageableComponent>(args.User, out var damageable))
             return;
 
-        var currentDamage = damageable.TotalDamage.Float();
+        var totalDamage = _damage.GetTotalDamage((args.User, damageable));
+        if (totalDamage <= 0 || !_threshold.TryGetThresholdForState(args.User, ent.Comp.TargetState, out var threshold))
+            return;
+
+        var currentDamage = totalDamage.Float();
         var thresholdFloat = threshold.Value.Float();
         if (currentDamage >= thresholdFloat)
             return;
@@ -116,11 +120,14 @@ public sealed class CrusherUpgradeEffectsSystem : EntitySystem
         if (!HasComp<MobThresholdsComponent>(args.User))
             return;
 
-        if (!TryComp<DamageableComponent>(args.User, out var damageable) || damageable.TotalDamage <= 0
-            || !_threshold.TryGetThresholdForState(args.User, ent.Comp.TargetState, out var threshold))
+        if (!TryComp<DamageableComponent>(args.User, out var damageable))
             return;
 
-        var currentDamage = damageable.TotalDamage.Float();
+        var totalDamage = _damage.GetTotalDamage((args.User, damageable));
+        if (totalDamage <= 0 || !_threshold.TryGetThresholdForState(args.User, ent.Comp.TargetState, out var threshold))
+            return;
+
+        var currentDamage = totalDamage.Float();
         var thresholdFloat = threshold.Value.Float();
         if (currentDamage >= thresholdFloat)
             return;
@@ -137,11 +144,14 @@ public sealed class CrusherUpgradeEffectsSystem : EntitySystem
         if (!HasComp<MobThresholdsComponent>(args.Target))
             return;
 
-        if (!TryComp<DamageableComponent>(args.Target, out var damageable)
-            || _threshold.TryGetThresholdForState(args.Target, Mobs.MobState.Dead, out var threshold))
+        if (!TryComp<DamageableComponent>(args.Target, out var damageable))
             return;
 
-        if (threshold - threshold * ent.Comp.HealModifier < damageable.TotalDamage)
+        var totalDamage = _damage.GetTotalDamage((args.Target, damageable));
+        if (!_threshold.TryGetThresholdForState(args.Target, MobState.Dead, out var threshold))
+            return;
+
+        if (threshold - threshold * ent.Comp.HealModifier < totalDamage)
             return;
 
         args.DamageModifier += ent.Comp.Coefficient;
@@ -158,11 +168,14 @@ public sealed class CrusherUpgradeEffectsSystem : EntitySystem
             if (!HasComp<MobThresholdsComponent>(hitEnt))
                 return;
 
-            if (!TryComp<DamageableComponent>(hitEnt, out var damageable)
-                || _threshold.TryGetThresholdForState(hitEnt, Mobs.MobState.Dead, out var threshold))
+            if (!TryComp<DamageableComponent>(hitEnt, out var damageable))
                 continue;
 
-            if (threshold - threshold * ent.Comp.HealModifier < damageable.TotalDamage)
+            var totalDamage = _damage.GetTotalDamage((hitEnt, damageable));
+            if (!_threshold.TryGetThresholdForState(hitEnt, MobState.Dead, out var threshold))
+                continue;
+
+            if (threshold - threshold * ent.Comp.HealModifier < totalDamage)
                 continue;
 
             correct = true;

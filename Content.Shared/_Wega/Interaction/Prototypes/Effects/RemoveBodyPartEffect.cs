@@ -1,7 +1,7 @@
-using Content.Shared.Body.Part;
-using Content.Shared.Body.Systems;
+using Content.Shared.Body;
 using Content.Shared.Hands.EntitySystems;
 using Robust.Shared.Containers;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Interaction;
 
@@ -15,10 +15,10 @@ namespace Content.Shared.Interaction;
 public sealed partial class RemoveBodyPartEffect : InteractionEffect
 {
     /// <summary>
-    /// The identifier of the body part to be removed.
+    /// The category of the body part to be removed (e.g., "Head", "LeftArm").
     /// </summary>
     [DataField]
-    public string BodyPart { get; private set; } = string.Empty;
+    public ProtoId<OrganCategoryPrototype>? BodyPart { get; private set; }
 
     /// <summary>
     /// Whether to attempt to automatically select the deleted part by the user.
@@ -28,24 +28,34 @@ public sealed partial class RemoveBodyPartEffect : InteractionEffect
 
     public override void Apply(EntityUid user, EntityUid target, IEntityManager entityManager)
     {
-        var bodySystem = entityManager.System<SharedBodySystem>();
-        var part = bodySystem.GetBodyPartById(target, BodyPart);
-        if (part == null)
+        var containerSystem = entityManager.System<SharedContainerSystem>();
+        if (!entityManager.TryGetComponent<BodyComponent>(target, out var bodyComp) || bodyComp.Organs == null)
             return;
 
-        var containerSystem = entityManager.System<SharedContainerSystem>();
-        if (entityManager.HasComponent<BodyPartComponent>(part.Value))
+        var organsList = new List<EntityUid>();
+        foreach (var organ in bodyComp.Organs.ContainedEntities)
+            organsList.Add(organ);
+
+        EntityUid? organToRemove = null;
+        foreach (var organ in organsList)
         {
-            var containerId = SharedBodySystem.GetPartSlotContainerId(BodyPart);
-            if (containerSystem.TryGetContainer(part.Value, containerId, out var container))
+            if (entityManager.TryGetComponent<OrganComponent>(organ, out var organComp)
+                && organComp.Category == BodyPart)
             {
-                containerSystem.Remove(part.Value, container);
-                if (TryPickup)
-                {
-                    var handsSystem = entityManager.System<SharedHandsSystem>();
-                    handsSystem.TryPickupAnyHand(user, part.Value);
-                }
+                organToRemove = organ;
+                break;
             }
+        }
+
+        if (organToRemove == null)
+            return;
+
+        containerSystem.Remove(organToRemove.Value, bodyComp.Organs);
+
+        if (TryPickup)
+        {
+            var handsSystem = entityManager.System<SharedHandsSystem>();
+            handsSystem.TryPickupAnyHand(user, organToRemove.Value);
         }
     }
 }

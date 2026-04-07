@@ -111,7 +111,7 @@
         reagents:
         - ReagentId: Puncturase
           Quantity: 10
-          
+
 - type: entity
   name: pill
   suffix: Insuzine 10u
@@ -231,7 +231,7 @@
         reagents:
         - ReagentId: DexalinPlus
           Quantity: 10
-          
+
 - type: entity
   name: pill
   suffix: Saline 10u
@@ -311,7 +311,7 @@
         reagents:
         - ReagentId: Diphenhydramine
           Quantity: 10
-                 
+
 - type: entity
   name: pill
   suffix: Desoxyephedrine + dyloven 15u
@@ -333,7 +333,7 @@
           Quantity: 10
         - ReagentId: Dylovene
           Quantity: 5
-         
+
 - type: entity
   name: pill
   suffix: Epinephrine + Tranexamic Acid 15u
@@ -355,8 +355,8 @@
         - ReagentId: Epinephrine
           Quantity: 12
         - ReagentId: TranexamicAcid
-          Quantity: 3 
-          
+          Quantity: 3
+
 - type: entity
   name: pill
   suffix: Fresium 10u
@@ -402,7 +402,7 @@
     contents:
     - id: PillLacerinol
       amount: 5
-      
+
 - type: entity
   name: pill canister
   parent: PillCanister
@@ -415,7 +415,7 @@
     contents:
     - id: PillPuncturase
       amount: 5
-      
+
 - type: entity
   name: pill canister
   parent: PillCanister
@@ -432,14 +432,14 @@
 - type: entity
   name: pill canister
   parent: PillCanister
-  id: PillCanisterLeporazine 
+  id: PillCanisterLeporazine
   suffix: Leporazine  10u, 5
   components:
   - type: Label
     currentLabel: leporazine  10u
   - type: StorageFill
     contents:
-    - id: PillLeporazine 
+    - id: PillLeporazine
       amount: 5
 
 - type: entity
@@ -571,7 +571,7 @@
     contents:
     - id: PillDylomet
       amount: 3
-      
+
 - type: entity
   name: pill canister
   parent: PillCanister
@@ -659,9 +659,9 @@
       - Silicon
     bloodlossModifier: -10 # Tourniquets stop bleeding
     damage:
-      groups:
-        Brute: -30 # 10 for each type in the group
-        Burn: -30
+      types:
+        Blunt: -30 # 10 for each type in the group
+        Heat: -30
     healingBeginSound:
       path: "/Audio/Effects/packetrip.ogg"
     healingEndSound:
@@ -671,7 +671,7 @@
     count: 5
   - type: StackPrice
     price: 40
-    
+
 - type: entity
   parent: Nanopast
   id: Nanopast1

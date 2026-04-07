@@ -1,7 +1,5 @@
-using Content.Shared.Body.Systems;
 using Content.Shared.Clothing.Components;
 using Content.Shared.Roles;
-using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Content.Server.Clothing.Systems;
@@ -10,9 +8,6 @@ namespace Content.Shared.Clothing;
 
 public sealed class ForceLoadoutSystem : EntitySystem
 {
-
-    [Dependency] private readonly ActorSystem _actors = default!;
-    [Dependency] private readonly IPrototypeManager _protoMan = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly OutfitSystem _outfitSystem = default!;
 
@@ -20,7 +15,7 @@ public sealed class ForceLoadoutSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<ForceLoadoutComponent, MapInitEvent>(OnMapInit, after: [typeof(SharedBodySystem)]);
+        SubscribeLocalEvent<ForceLoadoutComponent, MapInitEvent>(OnMapInit);
     }
 
     private void OnMapInit(EntityUid uid, ForceLoadoutComponent component, MapInitEvent args)

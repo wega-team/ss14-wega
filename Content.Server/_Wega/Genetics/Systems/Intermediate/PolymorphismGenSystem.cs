@@ -31,10 +31,10 @@ public sealed class PolymorphismGenSystem : EntitySystem
     private void OnPolymorphism(Entity<PolymorphismGenComponent> ent, ref PolymorphismActionEvent args)
     {
         args.Handled = true;
-        if (!HasComp<DnaModifierComponent>(ent) || !HasComp<HumanoidAppearanceComponent>(ent))
+        if (!HasComp<DnaModifierComponent>(ent) || !HasComp<HumanoidProfileComponent>(ent))
             return;
 
-        if (!HasComp<DnaModifierComponent>(args.Target) || !HasComp<HumanoidAppearanceComponent>(args.Target))
+        if (!HasComp<DnaModifierComponent>(args.Target) || !HasComp<HumanoidProfileComponent>(args.Target))
             return;
 
         var doAfterArgs = new DoAfterArgs(

@@ -632,17 +632,19 @@ public sealed class CardTarotSystem : EntitySystem
             if (TryComp<DiseaseCarrierComponent>(target, out var disease))
                 disease.Diseases.Clear();
 
-            if (TryComp<DamageableComponent>(target, out var damageable))
+            if (HasComp<DamageableComponent>(target))
             {
-                var damageTypes = new[] { RadiationDamage, PoisonDamage };
-                foreach (var damageType in damageTypes)
-                {
-                    if (damageable.Damage.DamageDict.TryGetValue(damageType, out var currentDamage) && currentDamage > 0)
-                    {
-                        var healSpecifier = new DamageSpecifier { DamageDict = { { damageType, -currentDamage } } };
-                        _damage.TryChangeDamage(target, healSpecifier, true);
-                    }
-                }
+                var healSpecifier = new DamageSpecifier();
+
+                var damage = _damage.GetAllDamage(target);
+                if (damage.DamageDict.TryGetValue(RadiationDamage, out var radDamage) && radDamage > 0)
+                    healSpecifier.DamageDict[RadiationDamage] = -radDamage;
+
+                if (damage.DamageDict.TryGetValue(PoisonDamage, out var poisonDamage) && poisonDamage > 0)
+                    healSpecifier.DamageDict[PoisonDamage] = -poisonDamage;
+
+                if (healSpecifier.DamageDict.Count > 0)
+                    _damage.TryChangeDamage(target, healSpecifier, true);
             }
         }
     }
@@ -846,7 +848,7 @@ public sealed class CardTarotSystem : EntitySystem
         {
             // Well, like i couldn't think of anything smarter
             var message = Loc.GetString("tarot-moon-m-message");
-            if (TryComp<HumanoidAppearanceComponent>(target, out var humanoid) && humanoid.Gender == Gender.Female)
+            if (TryComp<HumanoidProfileComponent>(target, out var humanoid) && humanoid.Gender == Gender.Female)
                 message = Loc.GetString("tarot-moon-f-message");
 
             _chat.TrySendInGameICMessage(target, message, InGameICChatType.Speak, false);

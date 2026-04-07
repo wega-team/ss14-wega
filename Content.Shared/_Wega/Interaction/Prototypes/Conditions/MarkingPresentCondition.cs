@@ -1,3 +1,4 @@
+using Content.Shared.Body;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Markings;
 
@@ -11,16 +12,24 @@ namespace Content.Shared.Interaction;
 public sealed partial class MarkingPresentCondition : InteractionCondition
 {
     /// <summary>
-    /// Marking categories for verification. <see cref="MarkingCategories"/>
+    /// Visual layer for verification. <see cref="HumanoidVisualLayers"/>
     /// </summary>
     [DataField(required: true)]
-    public MarkingCategories Categories { get; private set; }
+    public HumanoidVisualLayers Layer { get; private set; }
 
     public override bool Check(EntityUid user, EntityUid target, IEntityManager entityManager)
     {
-        if (!entityManager.TryGetComponent<HumanoidAppearanceComponent>(target, out var humanoid))
+        var visualSystem = entityManager.System<SharedVisualBodySystem>();
+        if (!visualSystem.TryGatherMarkingsData(target, null, out _, out _, out var applied))
             return false;
 
-        return humanoid.MarkingSet.TryGetCategory(Categories, out _);
+        // Check if any organ has markings on the specified layer
+        foreach (var organMarkings in applied.Values)
+        {
+            if (organMarkings.TryGetValue(Layer, out var markings) && markings.Count > 0)
+                return true;
+        }
+
+        return false;
     }
 }

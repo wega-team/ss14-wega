@@ -102,7 +102,7 @@ namespace Content.Server.Vibrator.System
             var invalidGenderMessage = Loc.GetString("interaction-cant-do-this");
             var invalidSpeciesMessage = Loc.GetString("interaction-no-race");
 
-            if (!_entManager.TryGetComponent<HumanoidAppearanceComponent>(target, out var targetAppearance))
+            if (!_entManager.TryGetComponent<HumanoidProfileComponent>(target, out var targetAppearance))
             {
                 if (_entManager.TryGetComponent<ActorComponent>(user, out var userActor))
                     _popupSystem.PopupEntity(noHumanoidMessage, user, userActor.PlayerSession, PopupType.Small);

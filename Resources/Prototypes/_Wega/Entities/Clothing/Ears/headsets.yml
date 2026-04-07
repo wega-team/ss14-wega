@@ -1,0 +1,12 @@
+- type: entity
+  parent: ClothingHeadsetMining
+  id: ClothingHeadsetMiningMedical
+  name: mining medic headset
+  description: Headset used by medical miners.
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyCargo
+      - EncryptionKeyMedical
+      - EncryptionKeyCommon

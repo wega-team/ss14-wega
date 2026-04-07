@@ -114,7 +114,7 @@ namespace Content.Server.Disease
             }
 
             if (_inventorySystem.TryGetSlotEntity(args.Target.Value, "mask", out var maskUid) &&
-                EntityManager.TryGetComponent<IngestionBlockerComponent>(maskUid, out var blocker) &&
+                TryComp<IngestionBlockerComponent>(maskUid, out var blocker) &&
                 blocker.Enabled)
             {
                 _popupSystem.PopupEntity(Loc.GetString("swab-mask-blocked", ("target", Identity.Entity(args.Target.Value, EntityManager)), ("mask", maskUid)), args.User, args.User);
@@ -158,7 +158,7 @@ namespace Content.Server.Disease
             _addQueue.Enqueue(uid);
             UpdateAppearance(uid, true, true);
             _audio.PlayPvs(new SoundPathSpecifier("/Audio/Machines/diagnoser_printing.ogg"), uid, AudioParams.Default.WithLoop(false));
-            EntityManager.DeleteEntity(args.Used);
+            Del(args.Used);
         }
 
         /// <summary>
@@ -189,7 +189,7 @@ namespace Content.Server.Disease
             _addQueue.Enqueue(uid);
             UpdateAppearance(uid, true, true);
             _audio.PlayPvs(new SoundPathSpecifier("/Audio/Machines/vaccinator_running.ogg"), uid, AudioParams.Default.WithLoop(false));
-            EntityManager.DeleteEntity(args.Used);
+            Del(args.Used);
         }
 
         /// <summary>

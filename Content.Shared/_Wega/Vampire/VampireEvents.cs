@@ -134,10 +134,12 @@ public sealed partial class VampireEternalDarknessActionEvent : InstantActionEve
 public sealed partial class VampireToggleFovEvent : EntityEventArgs
 {
     public NetEntity User { get; }
+	public bool Enabled { get; }
 
-    public VampireToggleFovEvent(NetEntity user)
+    public VampireToggleFovEvent(NetEntity user, bool enabled)
     {
         User = user;
+		Enabled = enabled;
     }
 }
 

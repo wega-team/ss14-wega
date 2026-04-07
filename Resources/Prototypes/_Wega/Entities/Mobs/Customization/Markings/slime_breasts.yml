@@ -1,10 +1,8 @@
 - type: marking
   id: SlimeBreastBig
-  bodyPart: Chest 
-  markingCategory: Chest
-  speciesRestriction: [SlimePerson]
+  bodyPart: Chest
+  groupWhitelist: [Slime]
   sexRestriction: [Female]
-  followSkinColor: true
   forcedColoring: true
   coloring:
     default:
@@ -16,11 +14,9 @@
 
 - type: marking
   id: SlimeBreastSuperBig
-  bodyPart: Chest 
-  markingCategory: Chest
-  speciesRestriction: [SlimePerson]
+  bodyPart: Chest
+  groupWhitelist: [Slime]
   sexRestriction: [Female]
-  followSkinColor: true
   forcedColoring: true
   coloring:
     default:

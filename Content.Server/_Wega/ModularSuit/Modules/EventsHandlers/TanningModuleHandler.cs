@@ -1,10 +1,13 @@
-using Content.Shared.Humanoid;
+using System.Linq;
+using Content.Shared.Body;
 using Content.Shared.Modular.Suit;
 
 namespace Content.Server.Modular.Suit;
 
 public sealed class TanningModuleHandler : ModuleActionHandler
 {
+    [Dependency] private readonly SharedVisualBodySystem _visualBody = default!;
+
     private const float MinColorValue = 0.3f;
     private const float DarkenFactor = 0.85f;
 
@@ -25,10 +28,16 @@ public sealed class TanningModuleHandler : ModuleActionHandler
             return;
 
         var user = args.Performer;
-        if (!TryComp<HumanoidAppearanceComponent>(user, out var humanoid))
+        if (!_visualBody.TryGatherMarkingsData(user, null, out var profiles, out _, out _))
             return;
 
-        var currentColor = humanoid.SkinColor;
+        Color currentColor = Color.White;
+        foreach (var profile in profiles.Values)
+        {
+            currentColor = profile.SkinColor;
+            break;
+        }
+
         if (currentColor.R <= MinColorValue
             && currentColor.G <= MinColorValue
             && currentColor.B <= MinColorValue)
@@ -43,8 +52,11 @@ public sealed class TanningModuleHandler : ModuleActionHandler
             Math.Max(MinColorValue, currentColor.B * DarkenFactor)
         );
 
-        humanoid.SkinColor = newColor;
-        Dirty(user, humanoid);
+        var updatedProfiles = profiles.ToDictionary(
+            pair => pair.Key,
+            pair => pair.Value with { SkinColor = newColor });
+
+        _visualBody.ApplyProfiles(user, updatedProfiles);
 
         ModularSuit.UseCoreCharge(ent.Owner, moduleComp.PowerInstanceUsage);
         Popup.PopupEntity(Loc.GetString("modsuit-tanning-used"), user, user);

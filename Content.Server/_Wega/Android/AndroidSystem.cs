@@ -2,9 +2,8 @@ using Content.Server.Actions;
 using Content.Server.Popups;
 using Content.Server.Stunnable;
 using Content.Shared.Android;
-using Content.Shared.Alert;
+using Content.Shared.Body;
 using Content.Shared.Humanoid;
-using Content.Shared.Humanoid.Markings;
 using Content.Shared.Item.ItemToggle;
 using Content.Shared.Item.ItemToggle.Components;
 using Content.Shared.Lock;
@@ -13,7 +12,6 @@ using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Systems;
 using Content.Shared.PowerCell;
-using Content.Shared.PowerCell.Components;
 using Content.Shared.Standing;
 using Content.Shared.Toggleable;
 using Content.Shared.Wires;
@@ -22,8 +20,6 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
-using Content.Shared.Power;
-using Content.Server.Power.EntitySystems;
 
 namespace Content.Server.Android;
 
@@ -31,7 +27,6 @@ public sealed partial class AndroidSystem : SharedAndroidSystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
-
     [Dependency] private readonly ItemToggleSystem _toggle = default!;
     [Dependency] private readonly SharedMindSystem _mind = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
@@ -45,6 +40,7 @@ public sealed partial class AndroidSystem : SharedAndroidSystem
     [Dependency] private readonly StunSystem _stun = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly AppearanceSystem _appearance = default!;
+    [Dependency] private readonly SharedVisualBodySystem _visualBody = default!;
 
     public override void Initialize()
     {
@@ -122,13 +118,19 @@ public sealed partial class AndroidSystem : SharedAndroidSystem
         _pointLight.SetRadius(lightEntity, _toggle.IsActivated(lightEntity) ? component.BasePointLightRadiuse : Math.Max(component.BasePointLightRadiuse / 3f, 1.3f));
         _pointLight.SetEnergy(lightEntity, _toggle.IsActivated(lightEntity) ? component.BasePointLightEnergy : component.BasePointLightEnergy * 0.75f);
 
-        if (!TryComp<HumanoidAppearanceComponent>(uid, out var appearance))
+        if (!_visualBody.TryGatherMarkingsData(uid, null, out _, out _, out var applied))
             return;
 
-        if (!appearance.MarkingSet.TryGetCategory(MarkingCategories.Special, out var markings) || markings.Count == 0)
-            return;
+        Color ledColor = Color.White;
+        foreach (var organMarkings in applied.Values)
+        {
+            if (organMarkings.TryGetValue(HumanoidVisualLayers.Special, out var markings) && markings.Count > 0)
+            {
+                ledColor = markings[0].MarkingColors.Count > 0 ? markings[0].MarkingColors[0].WithAlpha(255) : Color.White;
+                break;
+            }
+        }
 
-        Color ledColor = markings[0].MarkingColors[0].WithAlpha(255);
         _pointLight.SetColor(lightEntity, ledColor);
     }
 

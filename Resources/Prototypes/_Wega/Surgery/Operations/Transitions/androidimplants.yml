@@ -43,8 +43,8 @@
           invert: true
           slots:
           - head
-        - !type:BodyPartCondition
-          bodyPart: head
+        - !type:OrganPresentCondition
+          organ: Head
       steps:
         - tag: [ SubdermalHeadImplant ]
           entityPreview: EmptySubdermalImplant
@@ -104,7 +104,7 @@
           action: RemoveImplant
           requiredImplant: "SadTromboneImplant"
           sound:
-            path: /Audio/Items/wirecutter.ogg 
+            path: /Audio/Items/wirecutter.ogg
           time: 2
 
 # LightImplant
@@ -146,7 +146,7 @@
           action: RemoveImplant
           requiredImplant: "LightImplant"
           sound:
-            path: /Audio/Items/wirecutter.ogg 
+            path: /Audio/Items/wirecutter.ogg
           time: 2
 
 # BikeHorn
@@ -188,7 +188,7 @@
           action: RemoveImplant
           requiredImplant: "BikeHornImplant"
           sound:
-            path: /Audio/Items/wirecutter.ogg 
+            path: /Audio/Items/wirecutter.ogg
           time: 2
 
 # Tracking
@@ -230,7 +230,7 @@
           action: RemoveImplant
           requiredImplant: "TrackingImplant"
           sound:
-            path: /Audio/Items/wirecutter.ogg 
+            path: /Audio/Items/wirecutter.ogg
           time: 2
 
 # Storage
@@ -272,7 +272,7 @@
           action: RemoveImplant
           requiredImplant: "StorageImplant"
           sound:
-            path: /Audio/Items/wirecutter.ogg 
+            path: /Audio/Items/wirecutter.ogg
           time: 2
 
 # Freedom
@@ -314,7 +314,7 @@
           action: RemoveImplant
           requiredImplant: "FreedomImplant"
           sound:
-            path: /Audio/Items/wirecutter.ogg 
+            path: /Audio/Items/wirecutter.ogg
           time: 2
 
 # Radio
@@ -356,7 +356,7 @@
           action: RemoveImplant
           requiredImplant: "RadioImplant"
           sound:
-            path: /Audio/Items/wirecutter.ogg 
+            path: /Audio/Items/wirecutter.ogg
           time: 2
 
 # Uplink
@@ -398,7 +398,7 @@
           action: RemoveImplant
           requiredImplant: "UplinkImplant"
           sound:
-            path: /Audio/Items/wirecutter.ogg 
+            path: /Audio/Items/wirecutter.ogg
           time: 2
 
 # Emp
@@ -440,7 +440,7 @@
           action: RemoveImplant
           requiredImplant: "EmpImplant"
           sound:
-            path: /Audio/Items/wirecutter.ogg 
+            path: /Audio/Items/wirecutter.ogg
           time: 2
 
 # Scram
@@ -482,7 +482,7 @@
           action: RemoveImplant
           requiredImplant: "ScramImplant"
           sound:
-            path: /Audio/Items/wirecutter.ogg 
+            path: /Audio/Items/wirecutter.ogg
           time: 2
 
 # DnaScrambler
@@ -524,7 +524,7 @@
           action: RemoveImplant
           requiredImplant: "DnaScramblerImplant"
           sound:
-            path: /Audio/Items/wirecutter.ogg 
+            path: /Audio/Items/wirecutter.ogg
           time: 2
 
 # ChameleonController
@@ -566,7 +566,7 @@
           action: RemoveImplant
           requiredImplant: "ChameleonControllerImplant"
           sound:
-            path: /Audio/Items/wirecutter.ogg 
+            path: /Audio/Items/wirecutter.ogg
           time: 2
 
 # RadioCentcomm
@@ -608,7 +608,7 @@
           action: RemoveImplant
           requiredImplant: "RadioCentcommImplant"
           sound:
-            path: /Audio/Items/wirecutter.ogg 
+            path: /Audio/Items/wirecutter.ogg
           time: 2
 
 #Head
@@ -626,8 +626,8 @@
           invert: true
           slots:
           - head
-        - !type:BodyPartCondition
-          bodyPart: head
+        - !type:OrganPresentCondition
+          organ: Head
       steps:
         - tool: [ Screwing ]
           tag: [ Knife, Shiv, BasicGlassShard]
@@ -646,15 +646,15 @@
           invert: true
           slots:
           - head
-        - !type:BodyPartCondition
-          bodyPart: head
+        - !type:OrganPresentCondition
+          organ: Head
       steps:
         - tool: [ Cutting ]
           tag: [ Knife, Shiv, BasicGlassShard]
           action: RemoveImplant
           requiredImplant: "MindShieldImplant"
           sound:
-            path: /Audio/Items/wirecutter.ogg 
+            path: /Audio/Items/wirecutter.ogg
           time: 2
 
 # FakeMindShield
@@ -670,8 +670,8 @@
           invert: true
           slots:
           - head
-        - !type:BodyPartCondition
-          bodyPart: head
+        - !type:OrganPresentCondition
+          organ: Head
       steps:
         - tool: [ Screwing ]
           tag: [ Knife, Shiv, BasicGlassShard]
@@ -690,13 +690,13 @@
           invert: true
           slots:
           - head
-        - !type:BodyPartCondition
-          bodyPart: head
+        - !type:OrganPresentCondition
+          organ: Head
       steps:
         - tool: [ Cutting ]
           tag: [ Knife, Shiv, BasicGlassShard]
           action: RemoveImplant
           requiredImplant: "FakeMindShieldImplant"
           sound:
-            path: /Audio/Items/wirecutter.ogg 
+            path: /Audio/Items/wirecutter.ogg
           time: 2

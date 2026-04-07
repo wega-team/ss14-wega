@@ -1,5 +1,5 @@
 using System.Linq;
-using Content.Shared.Body.Components;
+using Content.Shared.Body;
 using Content.Shared.Clothing.Components;
 using Content.Shared.DirtVisuals;
 using Content.Shared.Ghost;

@@ -1,9 +1,8 @@
 - type: marking
   id: CatEars
-  bodyPart: Special
-  markingCategory: Special
-  speciesRestriction: [Human]
-#  sponsorOnly: true # Corvax-Wega-Temporarily
+  bodyPart: HeadTop
+  groupWhitelist: [Human]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   coloring:
     default:
       type:
@@ -25,9 +24,8 @@
 - type: marking
   id: CatTail
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [Human]
-#  sponsorOnly: true # Corvax-Wega-Temporarily
+  groupWhitelist: [Human]
+  # sponsorOnly: true # Corvax-Wega-Temporarily
   coloring:
     default:
       type:

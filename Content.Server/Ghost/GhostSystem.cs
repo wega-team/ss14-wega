@@ -20,6 +20,7 @@ using Content.Shared.Eye;
 using Content.Shared.FixedPoint;
 using Content.Shared.Follower;
 using Content.Shared.Ghost;
+using Content.Shared.GhostTypes;
 using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
@@ -79,10 +80,11 @@ namespace Content.Server.Ghost
         [Dependency] private readonly IRobustRandom _random = default!;
         [Dependency] private readonly TagSystem _tag = default!;
         [Dependency] private readonly NameModifierSystem _nameMod = default!;
+        [Dependency] private readonly GhostSpriteStateSystem _ghostState = default!;
         [Dependency] private readonly IEntityManager _entityManager = default!; // Corvax-Wega-GhostBar
         [Dependency] private readonly StationSpawningSystem _spawning = default!; // Corvax-Wega-GhostBar
         [Dependency] private readonly LoadoutSystem _loadout = default!; // Corvax-Wega-GhostBar
-		[Dependency] private readonly SharedHandsSystem _sharedHandsSystem = default!; // Corvax-Wega-GhostBar
+        [Dependency] private readonly SharedHandsSystem _sharedHandsSystem = default!; // Corvax-Wega-GhostBar
         [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!; // Corvax-Wega-GhostBar
 
         private EntityQuery<GhostComponent> _ghostQuery;
@@ -245,7 +247,7 @@ namespace Content.Server.Ghost
 
         private void OnMapInit(EntityUid uid, GhostComponent component, MapInitEvent args)
         {
-            if (HasComp<HumanoidAppearanceComponent>(uid)) // Corvax-Wega-GhostBar
+            if (HasComp<HumanoidProfileComponent>(uid)) // Corvax-Wega-GhostBar
                 return; // Corvax-Wega-GhostBar
 
             _actions.AddAction(uid, ref component.BooActionEntity, component.BooAction);
@@ -360,7 +362,7 @@ namespace Content.Server.Ghost
 
         private void WarpTo(EntityUid uid, EntityUid target)
         {
-            if (HasComp<HumanoidAppearanceComponent>(uid)) // Corvax-Wega-GhostBar
+            if (HasComp<HumanoidProfileComponent>(uid)) // Corvax-Wega-GhostBar
                 return; // Corvax-Wega-GhostBar
 
             _adminLog.Add(LogType.GhostWarp, $"{ToPrettyString(uid)} ghost warped to {ToPrettyString(target)}");
@@ -505,6 +507,11 @@ namespace Content.Server.Ghost
             var ghost = SpawnAtPosition(GameTicker.ObserverPrototypeName, spawnPosition.Value);
             var ghostComponent = Comp<GhostComponent>(ghost);
 
+            if (TryComp<GhostSpriteStateComponent>(ghost, out var state))  // If more TryComps are added this should be turned into an event
+            {
+                _ghostState.SetGhostSprite((ghost, state), mind);
+            }
+
             // Try setting the ghost entity name to either the character name or the player name.
             // If all else fails, it'll default to the default entity prototype name, "observer".
             // However, that should rarely happen.
@@ -615,7 +622,7 @@ namespace Content.Server.Ghost
                     _mind.TransferTo(mindId, spawnedMob, true);
                     args.Handled = true;
                 }
-				
+
                 var ghostBarGear = new ProtoId<StartingGearPrototype>("GhostBarGear");
 
                 if (_loadout != null)
@@ -704,7 +711,8 @@ namespace Content.Server.Ghost
                         && TryComp<MobThresholdsComponent>(playerEntity, out var thresholds))
                     {
                         var playerDeadThreshold = _mobThresholdSystem.GetThresholdForState(playerEntity.Value, MobState.Dead, thresholds);
-                        dealtDamage = playerDeadThreshold - damageable.TotalDamage;
+                        dealtDamage = playerDeadThreshold -
+                                      _damageable.GetTotalDamage((playerEntity.Value, damageable));
                     }
 
                     DamageSpecifier damage = new(_prototypeManager.Index(AsphyxiationDamageType), dealtDamage);

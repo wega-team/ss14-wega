@@ -38,7 +38,6 @@ using Content.Server.Hallucinations;
 using Content.Server.NPC.HTN;
 using Content.Server.NPC.Systems;
 using Content.Server.Prayer;
-using Content.Shared.Body.Components;
 using Content.Shared.CombatMode;
 using Content.Shared.NPC.Components;
 using Content.Shared.NPC.Systems;
@@ -51,6 +50,7 @@ using Content.Shared.Disease.Components;
 using Content.Shared.NullRod.Components;
 using Robust.Server.Containers;
 using Content.Shared.Weapons.Ranged.Components;
+using Content.Shared.Body;
 // Corvax-Wega-Revenant-end
 
 namespace Content.Server.Revenant.EntitySystems;
@@ -115,7 +115,7 @@ public sealed partial class RevenantSystem
             return;
         }
 
-        if (!HasComp<MobStateComponent>(target) || !HasComp<HumanoidAppearanceComponent>(target) || HasComp<RevenantComponent>(target))
+        if (!HasComp<MobStateComponent>(target) || !HasComp<HumanoidProfileComponent>(target) || HasComp<RevenantComponent>(target))
             return;
 
         args.Handled = true;
@@ -405,7 +405,7 @@ public sealed partial class RevenantSystem
     private void OnTransmitAction(EntityUid uid, RevenantComponent component, RevenantTransmitActionEvent args)
     {
         var target = args.Target;
-        if (args.Handled || !HasComp<HumanoidAppearanceComponent>(target)
+        if (args.Handled || !HasComp<HumanoidProfileComponent>(target)
             || !TryComp<ActorComponent>(uid, out var playerActor))
             return;
 

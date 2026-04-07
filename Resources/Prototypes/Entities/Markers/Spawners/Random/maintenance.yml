@@ -284,6 +284,7 @@
       - id: RadioHandheld
       - id: AppraisalTool
       - id: ModularReceiver
+      - id: CirularSaw # Corvax-Wega-Edit
       - id: WeaponFlareGun
       - id: BarberScissors
       - !type:GroupSelector
@@ -341,6 +342,7 @@
       - id: RifleStock
       - id: ModularReceiver
       - id: HydroponicsToolScythe
+      - id: CirularSaw # Corvax-Wega-Edit
     # Rare Group
     - !type:GroupSelector
       weight: 5
@@ -392,16 +394,16 @@
   id: MaintenancePlantSpawner
   parent: MarkerBase
   components:
-    - type: Sprite
-      layers:
-        - state: red
-        - sprite: Objects/Misc/spaceshroom.rsi
-          state: structure
-    - type: RandomSpawner
-      prototypes:
-        - Spaceshroom
-      chance: 0.6
-      offset: 0.0
+  - type: Sprite
+    layers:
+      - state: red
+      - sprite: Objects/Misc/spaceshroom.rsi
+        state: structure
+  - type: EntityTableSpawner
+    table:
+      id: Spaceshroom
+      prob: 0.6
+    offset: 0.0
 
 
 - type: entityTable

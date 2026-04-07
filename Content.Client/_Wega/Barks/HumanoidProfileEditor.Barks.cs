@@ -1,5 +1,4 @@
 using System.Linq;
-using Content.Client.Lobby;
 using Content.Shared.Speech.Synthesis;
 using Content.Client.Speech.Synthesis.System;
 
@@ -59,5 +58,11 @@ public sealed partial class HumanoidProfileEditor
             return;
 
         _entManager.System<BarkSystem>().RequestPreviewBark(Profile.BarkVoice);
+    }
+
+    private void SetBarkVoice(string newVoice)
+    {
+        Profile = Profile?.WithBarkVoice(newVoice);
+        SetDirty();
     }
 }

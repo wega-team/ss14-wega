@@ -1,6 +1,6 @@
 using System.Linq;
 using Content.Server.Stack;
-using Content.Shared.Body.Organ;
+using Content.Shared.Body;
 using Content.Shared.DoAfter;
 using Content.Shared.Hands.Components;
 using Content.Shared.Implants.Components;

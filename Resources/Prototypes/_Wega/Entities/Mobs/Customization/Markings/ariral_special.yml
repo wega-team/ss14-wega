@@ -1,8 +1,7 @@
 - type: marking
   id: AriralStripes
   bodyPart: Special
-  markingCategory: Special
-  speciesRestriction: [Ariral]
+  groupWhitelist: [Ariral]
   sexRestriction: [Male]
   coloring:
     default:
@@ -15,8 +14,7 @@
 - type: marking
   id: AriralStripesF
   bodyPart: Special
-  markingCategory: Special
-  speciesRestriction: [Ariral]
+  groupWhitelist: [Ariral]
   sexRestriction: [Female]
   coloring:
     default:
@@ -29,8 +27,7 @@
 - type: marking
   id: AriralSpots
   bodyPart: Special
-  markingCategory: Special
-  speciesRestriction: [Ariral]
+  groupWhitelist: [Ariral]
   coloring:
     default:
       type:

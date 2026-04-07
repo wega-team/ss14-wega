@@ -31,3 +31,46 @@
     - id: OxygenTankFilled
     - id: ClothingOuterArmorExplorerSuit
     - id: ClothingMaskGasExplorer
+
+#Clown
+- type: entity
+  id: SuitStorageHardsuitClown
+  parent: SuitStorageBase
+  suffix: Clown
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillSuitStorageHardsuitClown
+  - type: AccessReader
+    access: [["Theatre"]]
+
+- type: entityTable
+  id: FillSuitStorageHardsuitClown
+  table: !type:AllSelector
+    children:
+    - id: EmergencyFunnyOxygenTankFilled
+    - id: HardsuitClownSelector
+    # - id: ClothingMaskBreath A clown's mask is already a breathing mask.
+
+#Mime
+- type: entity
+  id: SuitStorageHardsuitMime
+  parent: SuitStorageBase
+  suffix: Mime
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillSuitStorageHardsuitMime
+  - type: AccessReader
+    access: [["Theatre"]]
+
+- type: entityTable
+  id: FillSuitStorageHardsuitMime
+  table: !type:AllSelector
+    children:
+    - id: OxygenTankFilled
+    - id: NitrogenTankFilled
+    - id: ClothingOuterHardsuitMime
+    # - id: ClothingMaskBreath A mime's mask is already a breathing mask.

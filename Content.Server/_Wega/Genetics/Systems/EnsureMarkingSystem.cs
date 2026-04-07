@@ -1,5 +1,5 @@
 using System.Linq;
-using Content.Server.Humanoid;
+using Content.Shared.Body;
 using Content.Shared.Genetics;
 using Content.Shared.Genetics.Systems;
 using Content.Shared.Humanoid;
@@ -10,7 +10,7 @@ namespace Content.Server.Genetics.System;
 
 public sealed class EnsureMarkingSystem : EntitySystem
 {
-    [Dependency] private readonly HumanoidAppearanceSystem _humanoid = default!;
+    [Dependency] private readonly SharedVisualBodySystem _visualBody = default!;
 
     public static readonly ProtoId<MarkingPrototype> DefaultHorns = "LizardHornsDemonic";
 
@@ -24,20 +24,60 @@ public sealed class EnsureMarkingSystem : EntitySystem
 
     private void OnHornsInit(Entity<EnsureHornsGenComponent> ent, ref ComponentInit args)
     {
-        if (TryComp<HumanoidAppearanceComponent>(ent, out _))
-            _humanoid.AddMarking(ent, DefaultHorns, Color.Black);
+        if (HasComp<VisualBodyComponent>(ent))
+            ApplyHornsMarking(ent);
     }
 
     private void OnHornsShutdown(Entity<EnsureHornsGenComponent> ent, ref ComponentShutdown args)
     {
-        if (TryComp<HumanoidAppearanceComponent>(ent, out _))
-            _humanoid.RemoveMarking(ent, DefaultHorns);
+        if (HasComp<VisualBodyComponent>(ent))
+            RemoveHornsMarking(ent);
+    }
+
+    private void ApplyHornsMarking(EntityUid ent)
+    {
+        if (!_visualBody.TryGatherMarkingsData(ent, null, out _, out _, out var applied))
+            return;
+
+        // Add horns to head organ
+        foreach (var (organCategory, organMarkings) in applied)
+        {
+            if (!organMarkings.TryGetValue(HumanoidVisualLayers.HeadTop, out var markings))
+            {
+                markings = new List<Marking>();
+                organMarkings[HumanoidVisualLayers.HeadTop] = markings;
+            }
+
+            // Check if horns already exist
+            if (!markings.Any(m => m.MarkingId == DefaultHorns))
+            {
+                markings.Add(new Marking(DefaultHorns, new List<Color> { Color.Black }));
+            }
+        }
+
+        _visualBody.ApplyMarkings(ent, applied);
+    }
+
+    private void RemoveHornsMarking(EntityUid ent)
+    {
+        if (!_visualBody.TryGatherMarkingsData(ent, null, out _, out _, out var applied))
+            return;
+
+        foreach (var organMarkings in applied.Values)
+        {
+            if (organMarkings.TryGetValue(HumanoidVisualLayers.HeadTop, out var markings))
+            {
+                markings.RemoveAll(m => m.MarkingId == DefaultHorns);
+                if (markings.Count == 0) organMarkings.Remove(HumanoidVisualLayers.HeadTop);
+            }
+        }
+
+        _visualBody.ApplyMarkings(ent, applied);
     }
 
     public void UpdateMarkingCategory(
-        Entity<HumanoidAppearanceComponent> humanoid,
-        MarkingSet markingSet,
-        MarkingCategories category,
+        EntityUid ent,
+        HumanoidVisualLayers layer,
         string[] colorR, string[] colorG, string[] colorB,
         string[] style, string species,
         List<MarkingPrototypeInfo> markingPrototypes,
@@ -45,20 +85,45 @@ public sealed class EnsureMarkingSystem : EntitySystem
         string[]? secondaryColorG = null,
         string[]? secondaryColorB = null)
     {
-        markingSet.RemoveCategory(category);
-        if (style.All(c => c == "0"))
+        // Remove existing markings on this layer
+        if (!_visualBody.TryGatherMarkingsData(ent, null, out _, out _, out var applied))
             return;
 
-        if (category == MarkingCategories.HeadTop && HasComp<EnsureHornsGenComponent>(humanoid))
+        foreach (var organMarkings in applied.Values)
         {
-            _humanoid.AddMarking(humanoid, DefaultHorns, Color.Black);
+            if (organMarkings.ContainsKey(layer))
+                organMarkings.Remove(layer);
+        }
+
+        // Check if we should skip (all zeros)
+        if (style.All(c => c == "0"))
+        {
+            _visualBody.ApplyMarkings(ent, applied);
             return;
         }
 
+        // Handle horns special case
+        if (layer == HumanoidVisualLayers.HeadTop && HasComp<EnsureHornsGenComponent>(ent))
+        {
+            foreach (var organMarkings in applied.Values)
+            {
+                if (!organMarkings.TryGetValue(layer, out var markings))
+                {
+                    markings = new List<Marking>();
+                    organMarkings[layer] = markings;
+                }
+                markings.Add(new Marking(DefaultHorns, new List<Color> { Color.Black }));
+            }
+            _visualBody.ApplyMarkings(ent, applied);
+            return;
+        }
+
+        // Find best matching marking
         var bestMatch = FindBestMatchingMarking(style, species, markingPrototypes);
         if (bestMatch == null)
             return;
 
+        // Build colors
         string redHex = colorR[0] + colorR[1];
         string greenHex = colorG[0] + colorG[1];
         string blueHex = colorB[0] + colorB[1];
@@ -68,13 +133,11 @@ public sealed class EnsureMarkingSystem : EntitySystem
         int blue = Convert.ToInt32(blueHex, 16);
 
         var mainColor = new Color(red / 255f, green / 255f, blue / 255f);
-
         var colors = new List<Color> { mainColor };
 
-        if (category == MarkingCategories.Hair &&
-            secondaryColorR != null &&
-            secondaryColorG != null &&
-            secondaryColorB != null)
+        // Add secondary color for hair
+        if (layer == HumanoidVisualLayers.Hair &&
+            secondaryColorR != null && secondaryColorG != null && secondaryColorB != null)
         {
             string secondaryRedHex = secondaryColorR[0] + secondaryColorR[1];
             string secondaryGreenHex = secondaryColorG[0] + secondaryColorG[1];
@@ -88,7 +151,18 @@ public sealed class EnsureMarkingSystem : EntitySystem
             colors.Add(secondaryColor);
         }
 
-        _humanoid.AddMarkingWithColors(humanoid, bestMatch.MarkingPrototypeId, colors);
+        // Apply marking to all organs that support this layer
+        foreach (var organMarkings in applied.Values)
+        {
+            if (!organMarkings.TryGetValue(layer, out var markings))
+            {
+                markings = new List<Marking>();
+                organMarkings[layer] = markings;
+            }
+            markings.Add(new Marking(bestMatch.MarkingPrototypeId, colors));
+        }
+
+        _visualBody.ApplyMarkings(ent, applied);
     }
 
     private MarkingPrototypeInfo? FindBestMatchingMarking(string[] style, string species, List<MarkingPrototypeInfo> markingPrototypes)
@@ -98,7 +172,8 @@ public sealed class EnsureMarkingSystem : EntitySystem
 
         foreach (var marking in markingPrototypes)
         {
-            if (!string.IsNullOrEmpty(marking.Species) && !marking.Species.Contains(species))
+            // Check species compatibility
+            if (!string.IsNullOrEmpty(marking.Groups) && !marking.Groups.Contains(species))
                 continue;
 
             int score = CalculateStyleMatchScore(marking.HexValue, style);
@@ -124,7 +199,6 @@ public sealed class EnsureMarkingSystem : EntitySystem
             int targetValue = Convert.ToInt32(targetStyle[i], 16);
             score += Math.Abs(markingValue - targetValue);
         }
-
         return score;
     }
 }

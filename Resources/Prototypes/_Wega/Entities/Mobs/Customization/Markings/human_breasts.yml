@@ -1,10 +1,8 @@
 - type: marking
   id: HumanBreastSmall
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [Human, Dwarf, Felinid]
+  groupWhitelist: [Human, Felinid]
   sexRestriction: [Female]
-  followSkinColor: true
   forcedColoring: true
   coloring:
     default:
@@ -17,10 +15,8 @@
 - type: marking
   id: HumanBreastDefault
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [Human, Dwarf, Felinid]
+  groupWhitelist: [Human, Felinid]
   sexRestriction: [Female]
-  followSkinColor: true
   forcedColoring: true
   coloring:
     default:
@@ -33,10 +29,8 @@
 - type: marking
   id: HumanBreastMedium
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [Human, Dwarf, Felinid]
+  groupWhitelist: [Human, Felinid]
   sexRestriction: [Female]
-  followSkinColor: true
   forcedColoring: true
   coloring:
     default:
@@ -49,10 +43,8 @@
 - type: marking
   id: HumanBreastBig
   bodyPart: Special #Не "Chest" чтобы спрайт отобразить по верх рук
-  markingCategory: Chest
-  speciesRestriction: [Human, Dwarf, Felinid]
+  groupWhitelist: [Human, Felinid]
   sexRestriction: [Female]
-  followSkinColor: true
   forcedColoring: true
   coloring:
     default:
@@ -65,10 +57,8 @@
 - type: marking
   id: HumanBreastSuperBig
   bodyPart: Special #Не "Chest" чтобы спрайт отобразить по верх рук
-  markingCategory: Chest
-  speciesRestriction: [Human, Dwarf, Felinid]
+  groupWhitelist: [Human, Felinid]
   sexRestriction: [Female]
-  followSkinColor: true
   forcedColoring: true
   coloring:
     default:

@@ -125,9 +125,9 @@
         ballistic-ammo: !type:Container
     - type: BallisticAmmoProvider
       capacity: 5
-      proto: GrenadeCleanade
+      proto: BulletGrenadeCleanade
       cycleable: false
     - type: BallisticAmmoSelfRefiller
-      autoRefillRate: 5
+      autoRefillRate: 15
       affectedByEmp: true
     - type: AmmoCounter

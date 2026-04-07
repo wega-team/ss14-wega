@@ -19,7 +19,7 @@ public sealed partial class DamageEntityEffectSystem : EntityEffectSystem<Damage
     protected override void Effect(Entity<DamageableComponent> entity, ref EntityEffectEvent<EntityDamage> args)
     {
         var componentType = EntityManager.ComponentFactory.GetRegistration(args.Effect.RequiredComponent).Type;
-        if (!EntityManager.HasComponent(entity, componentType))
+        if (!HasComp(entity, componentType))
             return;
 
         var damageAmount = args.Effect.Amount * args.Scale;
