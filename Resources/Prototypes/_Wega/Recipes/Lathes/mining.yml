@@ -56,7 +56,7 @@
   result: WeaponMagmitePlasmaCutter
   completetime: 20
   materials:
-    Magmite: 100
+    Magmite: 250
 
 - type: latheRecipe
   id: WeaponMagmiteFanPlasmaCutter
