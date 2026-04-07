@@ -105,11 +105,6 @@
       price: 5000
     - type: Repairable # Negative values represent healing
       qualityNeeded: Pulsing
-      damage:
-        groups:
-          Brute: -15 # 20 of each Brute Type - 20% of a basic shield HP
-        types:
-          Heat: -5
       fuelCost: 0 # 1/2 of a Welder for a full repair
       doAfterDelay: 1
       allowSelfRepair: false
@@ -141,7 +136,7 @@
     - type: Construction
       graph: BlueSheild
       node: start
-      
+
 - type: entity
   name: broken energy shield
   parent: BaseItem

@@ -82,7 +82,7 @@
 
 - type: marking
   id: Allsuccubus
-  bodyPart: Tail
+  bodyPart: Chest
   groupWhitelist: [Demon]
   sprites:
   - sprite: _Wega/Mobs/Customization/demon.rsi

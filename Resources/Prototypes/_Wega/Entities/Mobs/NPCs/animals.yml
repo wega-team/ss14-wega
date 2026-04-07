@@ -223,8 +223,7 @@
       types:
         Blunt: 5
         Piercing: 4
-      groups:
-        Burn: 3
+        Heat: 3
     clumsySound:
       path: /Audio/Animals/monkey_scream.ogg
   - type: DnaModifier

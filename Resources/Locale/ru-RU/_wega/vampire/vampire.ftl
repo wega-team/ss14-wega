@@ -11,12 +11,15 @@ vampire-blooddrink-self = Вы не можете пить свою кровь
 vampire-blooddrink-rotted = Оно гниет!
 vampire-blooddrink-not-vampire = Вы не можете испить кровь вампира
 vampire-blooddrink-not-thrall = Вы не можете испить кровь тралла
+vampire-blooddrink-not-sentient = Вы не можете испить кровь неразумного
 vampire-blooddrink-empty = Жертва иссякла
 vampire-blooddrink-maxed-out = Вы уже насытились достаточно с этой жертвы
+vampire-blooddrink-ssd = Вы не можете испить кровь спящего
 vampire-ingest-holyblood = ВЫ НЕ МОЖЕТЕ ПИТЬ СВЯТУЮ КРОВЬ!!!
 vampire-full-stomach = Вы не можете пить больше
 vampire-startlight-burning = ВАША КОЖА ПОЛЫХАЕТ!
 vampire-true-power = Вы чувствуете истинную силу
+vampire-bittenbyvampire-examine = [color=red]Кажется, на шее есть укус[/color]
 
 # Abilities
 vampire-hungry = Вы ещё слишком голодны для эволюции

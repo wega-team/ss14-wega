@@ -3,7 +3,6 @@ using System.Numerics;
 using Content.Server.Lavaland.Mobs.Components;
 using Content.Server.NPC.HTN;
 using Content.Server.NPC.Systems;
-using Content.Shared.Achievements;
 using Content.Shared.Camera;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
@@ -30,7 +29,6 @@ namespace Content.Server.Lavaland.Mobs;
 
 public sealed partial class AshDrakeSystem : EntitySystem
 {
-    [Dependency] private readonly SharedAchievementsSystem _achievement = default!;
     [Dependency] private readonly AppearanceSystem _appearance = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly GibbingSystem _gibbing = default!;
@@ -52,19 +50,9 @@ public sealed partial class AshDrakeSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<AshDrakeBossComponent, MegafaunaKilledEvent>(OnAshDrakeKilled);
-
         SubscribeLocalEvent<AshDrakeBossComponent, AshDrakeConeFireActionEvent>(OnConeFireAction);
         SubscribeLocalEvent<AshDrakeBossComponent, AshDrakeBreathingFireActionEvent>(OnBreathingFireAction);
         SubscribeLocalEvent<AshDrakeBossComponent, AshDrakeLavaActionEvent>(OnLavaAction);
-    }
-
-    private void OnAshDrakeKilled(EntityUid uid, AshDrakeBossComponent component, MegafaunaKilledEvent args)
-    {
-        if (args.Killer == null)
-            return;
-
-        _achievement.QueueAchievement(args.Killer.Value, AchievementsEnum.AshDrakeBoss);
     }
 
     #region Cone Fire

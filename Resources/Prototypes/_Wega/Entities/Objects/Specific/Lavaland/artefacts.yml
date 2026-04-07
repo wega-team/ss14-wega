@@ -7,8 +7,9 @@
   components:
   - type: Sprite
     sprite: _Wega/Objects/Specific/Lavaland/dark_shard.rsi
+    state: icon
   - type: Item
-    size: Large
+    size: Normal
   - type: SpawnItemsOnUse
     items:
       - id: WeaponCursedKatana

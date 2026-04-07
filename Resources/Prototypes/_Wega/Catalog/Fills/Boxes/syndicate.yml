@@ -12,3 +12,19 @@
           # amount: 1
         # - id: WiretappingCamera
           # amount: 4
+          
+- type: entity
+  id: BorgKit
+  parent: [BoxCardboard, BaseSyndicateContraband]
+  name: cyborg Kit
+  suffix: Filled
+  components:
+    - type: Sprite
+      layers:
+        - state: box_of_doom
+    - type: StorageFill
+      contents:
+        - id: ReinforcementRadioSyndicateCyborgAssault
+        - id: ModuleSyndiWeapon
+        - id: ModuleSyndiSupport
+        - id: Screwdriver

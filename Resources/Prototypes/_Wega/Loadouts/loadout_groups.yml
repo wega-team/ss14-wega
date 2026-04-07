@@ -252,6 +252,7 @@
   minLimit: 0
   loadouts:
   - BlueshieldHead
+  - BlueshieldHeadAlt
 
 - type: loadoutGroup
   id: BlueShieldJumpsuit
@@ -261,6 +262,7 @@
   - BlueShieldAltJumpsuit
   - BlueShieldJumpskirt
   - ClothingUniformJumpskirtElegantBs
+  - BlueShieldJumpsuitAlt
 
 - type: loadoutGroup
   id: BlueshieldBackpack
@@ -276,6 +278,8 @@
   loadouts:
   - BlueshieldOterArmor
   - BlueShieldOuterWinter
+  - BlueshieldOterArmorAlt
+  - BlueShieldOuterWinterAlt
 
 - type: loadoutGroup
   id: BlueShieldTop

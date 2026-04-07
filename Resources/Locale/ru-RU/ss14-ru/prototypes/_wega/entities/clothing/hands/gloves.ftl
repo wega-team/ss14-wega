@@ -10,3 +10,5 @@ ent-ClothingHandsGlovesSheriff = перчатки шерифа
    .desc = Перчатки с эргономичной формой, предназначенные для удержания револьвера.
 ent-ClothingHandsGlovesConcussiveGauntlets = ударные перчатки
     .desc = Кирки... для ваших рук!
+ent-ClothingHandsRazorGloves = разрывные перчатки
+    .desc = Всё гениальное просто.

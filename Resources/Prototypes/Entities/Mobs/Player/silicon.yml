@@ -558,8 +558,8 @@
         - PositronicBrain
       borg_module:
         - BorgModuleOperative
-        - BorgModuleL6C
-        - BorgModuleChina # BorgModuleDoubleEsword Corvax-Wega
+        # - BorgModuleL6C Corvax-Wega
+        # BorgModuleDoubleEsword Corvax-Wega
   - type: ItemSlots
     slots:
       cell_slot:

@@ -69,6 +69,14 @@ namespace Content.Shared.Input
         public static readonly BoundKeyFunction ZoomIn = "ZoomIn";
         public static readonly BoundKeyFunction ResetZoom = "ResetZoom";
 
+        public static readonly BoundKeyFunction TogglePosing = "TogglePosing"; // Corvax-Wega-Posing
+        public static readonly BoundKeyFunction PosingOffsetLeft = "PosingOffsetLeft"; // Corvax-Wega-Posing
+        public static readonly BoundKeyFunction PosingOffsetRight = "PosingOffsetRight"; // Corvax-Wega-Posing
+        public static readonly BoundKeyFunction PosingOffsetUp = "PosingOffsetUp"; // Corvax-Wega-Posing
+        public static readonly BoundKeyFunction PosingOffsetDown = "PosingOffsetDown"; // Corvax-Wega-Posing
+        public static readonly BoundKeyFunction PosingRotateNegative = "PosingRotateNegative"; // Corvax-Wega-Posing
+        public static readonly BoundKeyFunction PosingRotatePositive = "PosingRotatePositive"; // Corvax-Wega-Posing
+
         public static readonly BoundKeyFunction ArcadeUp = "ArcadeUp";
         public static readonly BoundKeyFunction ArcadeDown = "ArcadeDown";
         public static readonly BoundKeyFunction ArcadeLeft = "ArcadeLeft";

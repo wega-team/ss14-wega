@@ -1,11 +1,11 @@
 meta:
   format: 7
   category: Map
-  engineVersion: 270.1.0
+  engineVersion: 275.0.0
   forkId: ""
   forkVersion: ""
-  time: 03/01/2026 12:34:23
-  entityCount: 49273
+  time: 04/04/2026 18:50:11
+  entityCount: 49271
 maps:
 - 1
 grids:
@@ -271,6 +271,8 @@ entities:
       shakeTimes: 10
     - type: ImplicitRoof
     - type: ExplosionAirtightGrid
+    - type: TileHistory
+      chunkHistory: {}
   - uid: 326
     components:
     - type: MetaData
@@ -18400,6 +18402,8 @@ entities:
     - type: NightLightning
     - type: ImplicitRoof
     - type: ExplosionAirtightGrid
+    - type: TileHistory
+      chunkHistory: {}
   - uid: 46850
     components:
     - type: MetaData
@@ -18483,6 +18487,8 @@ entities:
         chunkSize: 4
     - type: ImplicitRoof
     - type: ExplosionAirtightGrid
+    - type: TileHistory
+      chunkHistory: {}
   - uid: 46869
     components:
     - type: MetaData
@@ -18702,6 +18708,8 @@ entities:
         chunkSize: 4
     - type: ImplicitRoof
     - type: ExplosionAirtightGrid
+    - type: TileHistory
+      chunkHistory: {}
   - uid: 47240
     components:
     - type: MetaData
@@ -19101,6 +19109,8 @@ entities:
     - type: NavMap
     - type: ImplicitRoof
     - type: ExplosionAirtightGrid
+    - type: TileHistory
+      chunkHistory: {}
   - uid: 48329
     components:
     - type: MetaData
@@ -19278,6 +19288,8 @@ entities:
         chunkSize: 4
     - type: ImplicitRoof
     - type: ExplosionAirtightGrid
+    - type: TileHistory
+      chunkHistory: {}
   - uid: 48382
     components:
     - type: MetaData
@@ -19334,6 +19346,8 @@ entities:
       data:
         chunkSize: 4
     - type: ImplicitRoof
+    - type: TileHistory
+      chunkHistory: {}
   - uid: 48383
     components:
     - type: MetaData
@@ -19751,6 +19765,8 @@ entities:
         chunkSize: 4
     - type: ImplicitRoof
     - type: ExplosionAirtightGrid
+    - type: TileHistory
+      chunkHistory: {}
   - uid: 48702
     components:
     - type: MetaData
@@ -19805,6 +19821,8 @@ entities:
         chunkSize: 4
     - type: ImplicitRoof
     - type: ExplosionAirtightGrid
+    - type: TileHistory
+      chunkHistory: {}
   - uid: 48760
     components:
     - type: MetaData
@@ -20113,6 +20131,8 @@ entities:
         chunkSize: 4
     - type: ImplicitRoof
     - type: ExplosionAirtightGrid
+    - type: TileHistory
+      chunkHistory: {}
 - proto: AccessConfigurator
   entities:
   - uid: 327
@@ -26540,7 +26560,7 @@ entities:
       pos: -28.5,38.5
       parent: 326
     - type: Door
-      secondsUntilStateChange: -278097.53
+      secondsUntilStateChange: -278135.3
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -27146,7 +27166,7 @@ entities:
       pos: 33.5,-33.5
       parent: 326
     - type: Door
-      secondsUntilStateChange: -83117.305
+      secondsUntilStateChange: -83155.08
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -27761,7 +27781,7 @@ entities:
       pos: -19.5,51.5
       parent: 326
     - type: Door
-      secondsUntilStateChange: -147576.38
+      secondsUntilStateChange: -147614.14
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -112625,6 +112645,42 @@ entities:
     - type: Transform
       pos: -12.549652,13.499908
       parent: 48383
+- proto: HardsuitClownSelector
+  entities:
+  - uid: 16645
+    components:
+    - type: Transform
+      parent: 16643
+    - type: GroupExamine
+      group:
+      - hoverMessage: ""
+        contextText: verb-examine-group-other
+        icon: /Textures/Interface/examine-star.png
+        components:
+        - Armor
+        - ClothingSpeedModifier
+        entries:
+        - message: Понижает вашу скорость на [color=yellow]10%[/color].
+          priority: 0
+          component: ClothingSpeedModifier
+        - message: >-
+            Обеспечивает следующую защиту:
+
+            - [color=yellow]Ударный[/color] урон снижается на [color=lightblue]10%[/color].
+
+            - [color=yellow]Режущий[/color] урон снижается на [color=lightblue]10%[/color].
+
+            - [color=yellow]Колющий[/color] урон снижается на [color=lightblue]10%[/color].
+
+            - [color=yellow]Кислотный[/color] урон снижается на [color=lightblue]20%[/color].
+
+            - [color=orange]Взрывной[/color] урон снижается на [color=lightblue]10%[/color].
+          priority: 0
+          component: Armor
+        title: null
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
 - proto: ClothingMultipleHeadphones
   entities:
   - uid: 16698
@@ -113022,42 +113078,6 @@ entities:
     - type: Transform
       pos: -34.371685,63.562946
       parent: 326
-- proto: ClothingModularControllerCosmohonkPreassembled
-  entities:
-  - uid: 16645
-    components:
-    - type: Transform
-      parent: 16643
-    - type: GroupExamine
-      group:
-      - hoverMessage: ""
-        contextText: verb-examine-group-other
-        icon: /Textures/Interface/examine-star.png
-        components:
-        - Armor
-        - ClothingSpeedModifier
-        entries:
-        - message: Понижает вашу скорость на [color=yellow]10%[/color].
-          priority: 0
-          component: ClothingSpeedModifier
-        - message: >-
-            Обеспечивает следующую защиту:
-
-            - [color=yellow]Ударный[/color] урон снижается на [color=lightblue]10%[/color].
-
-            - [color=yellow]Режущий[/color] урон снижается на [color=lightblue]10%[/color].
-
-            - [color=yellow]Колющий[/color] урон снижается на [color=lightblue]10%[/color].
-
-            - [color=yellow]Кислотный[/color] урон снижается на [color=lightblue]20%[/color].
-
-            - [color=orange]Взрывной[/color] урон снижается на [color=lightblue]10%[/color].
-          priority: 0
-          component: Armor
-        title: null
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
 - proto: ClothingOuterHoodieChaplain
   entities:
   - uid: 16746
@@ -129964,9 +129984,11 @@ entities:
       rot: 3.141592653589793 rad
       pos: 3.5,-46.5
       parent: 326
+    - type: ApcPowerReceiver
+      powerLoad: 50
     - type: DnaModifierConsole
-      lastSubjectInjectTime: 5055.3820922
-      lastInjectorTime: 5055.3820922
+      lastSubjectInjectTime: 848.7115401
+      lastInjectorTime: 848.7115401
     - type: DnaClient
       server: 37000
       connectedToServer: True
@@ -129975,9 +129997,11 @@ entities:
     - type: Transform
       pos: 3.5,-42.5
       parent: 326
+    - type: ApcPowerReceiver
+      powerLoad: 50
     - type: DnaModifierConsole
-      lastSubjectInjectTime: 5055.3820922
-      lastInjectorTime: 5055.3820922
+      lastSubjectInjectTime: 848.7115401
+      lastInjectorTime: 848.7115401
     - type: DnaClient
       server: 37000
       connectedToServer: True
@@ -139396,7 +139420,7 @@ entities:
       pos: 25.5,-30.5
       parent: 326
     - type: Door
-      secondsUntilStateChange: -83272.87
+      secondsUntilStateChange: -83310.64
       state: Closing
     - type: Firelock
       emergencyCloseCooldown: 35105.5982297
@@ -229691,7 +229715,7 @@ entities:
       pos: 5.5,-6.5
       parent: 326
     - type: Door
-      secondsUntilStateChange: -300432.88
+      secondsUntilStateChange: -300470.66
       state: Closing
   - uid: 32336
     components:
@@ -232056,18 +232080,14 @@ entities:
       parent: 326
 - proto: LavalandShuttleConsole
   entities:
-  - uid: 8
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 84.5,12.5
-      parent: 326
   - uid: 10
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 35.5,29.5
       parent: 326
+    - type: ApcPowerReceiver
+      powerLoad: 50
 - proto: LedLightTube
   entities:
   - uid: 32668
@@ -238398,6 +238418,16 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -103.44956,36.214527
       parent: 326
+- proto: PenalServitudeLavalandShuttleConsole
+  entities:
+  - uid: 8
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 84.5,12.5
+      parent: 326
+    - type: ApcPowerReceiver
+      powerLoad: 50
 - proto: PenCap
   entities:
   - uid: 33455
@@ -258839,7 +258869,7 @@ entities:
       pos: -16.5,-53.5
       parent: 326
     - type: DnaServer
-      serverId: 294
+      serverId: 317
 - proto: RevolverCapGun
   entities:
   - uid: 37001
@@ -268644,18 +268674,6 @@ entities:
     components:
     - type: Transform
       pos: 79.5,-0.5
-      parent: 326
-- proto: SpawnMobSlimeGray
-  entities:
-  - uid: 38213
-    components:
-    - type: Transform
-      pos: -43.5,-45.5
-      parent: 326
-  - uid: 38214
-    components:
-    - type: Transform
-      pos: -39.5,-35.5
       parent: 326
 - proto: SpawnMobSlothPaperwork
   entities:
@@ -284379,6 +284397,18 @@ entities:
     - type: Transform
       pos: -48.5,-0.5
       parent: 326
+- proto: VendingMachineFashion
+  entities:
+  - uid: 40549
+    components:
+    - type: Transform
+      pos: 41.5,-13.5
+      parent: 326
+  - uid: 40550
+    components:
+    - type: Transform
+      pos: 35.5,-8.5
+      parent: 326
 - proto: VendingMachineGames
   entities:
   - uid: 40472
@@ -284929,18 +284959,6 @@ entities:
       parent: 326
     - type: Fixtures
       fixtures: {}
-- proto: VendingMachineFashion
-  entities:
-  - uid: 40549
-    components:
-    - type: Transform
-      pos: 41.5,-13.5
-      parent: 326
-  - uid: 40550
-    components:
-    - type: Transform
-      pos: 35.5,-8.5
-      parent: 326
 - proto: VendingMachineYouTool
   entities:
   - uid: 40551
@@ -319916,7 +319934,7 @@ entities:
       pos: -5.5,63.5
       parent: 326
     - type: Door
-      secondsUntilStateChange: -301061.66
+      secondsUntilStateChange: -301099.44
       state: Opening
   - uid: 45538
     components:

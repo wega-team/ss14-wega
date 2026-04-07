@@ -55,8 +55,13 @@
         whitelist:
           tags:
           - Itemborg
-    - item: SprayBottle
-    - item: BorgDropper
+    - item: SprayBottleEthanol
+      hand:
+        emptyRepresentative: SprayBottle
+        emptyLabel: borg-slot-spray-empty
+        whitelist:
+          tags:
+          - Spray
     - hand:
         emptyRepresentative: OrganHumanHeart
         emptyLabel: borg-slot-biomaterials-empty
@@ -71,6 +76,7 @@
         whitelist:
           components:
           - SubdermalImplant
+          - Implanter
           tags:
           - SubdermalHeadImplant
           - Pill
@@ -563,7 +569,7 @@
 
 - type: entity
   id: BorgModuleCommonRepeir
-  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  parent: [ BaseBorgModule ]
   name: repeir module
   description: Everyone can heal your action!
   components:
@@ -572,18 +578,46 @@
     layers:
     - state: generic
     - state: icon-repeir
-  - type: ItemBorgModule
-    hands:
-    - item: RepeirModeDevice
-    - hand:
-        emptyRepresentative: Nanopast
-        emptyLabel: borg-slot-nanopasta-empty
-        whitelist:
-          tags:
-          - Nanopast
-    - item: BorgGeneratorNanopast
-  - type: BorgModuleIcon
-    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: repeir-module }
+  - type: ComponentBorgModule
+    components:
+    - type: PassiveDamage
+      allowedStates:
+      - Alive
+      - Critical
+      - Dead
+      damage:
+        types:
+          Blunt: -0.1
+          Slash: -0.1
+          Piercing: -0.1
+          Heat: -0.1
+    # hands:
+    # - item: RepeirModeDevice
+    # - hand:
+        # emptyRepresentative: Nanopast
+        # emptyLabel: borg-slot-nanopasta-empty
+        # whitelist:
+          # tags:
+          # - Nanopast
+    # - item: BorgGeneratorNanopast
+  # - type: BorgModuleIcon
+    # icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: repeir-module }
+
+- type: entity
+  id: BorgModuleNightVison
+  parent: [ BaseBorgModule ]
+  name: night vison module
+  description: Everyone can heal your action!
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: generic
+    - state: icon-gps
+  - type: ComponentBorgModule
+    components:
+    - type: NaturalNightVision
+      tintColor: "#449544"
 
 - type: entity
   id: BorgModuleMusique
@@ -727,7 +761,6 @@
           components:
           - FitsInDispenser
     - item: BarSpoon
-    - item: Crowbar
     - item: DrinkGlass
       hand:
         emptyLabel: borg-slot-chemical-containers-empty
@@ -792,7 +825,6 @@
     hands:
     - item: ForensicScanner
     - item: DetectivePDABorg
-    - item: Crowbar
     - item: ForensicPad
       hand:
         emptyLabel: borg-slot-forensic-pad-empty
@@ -1224,32 +1256,106 @@
     - item: BaseResearchAndDevelopmentPointSourceBorg
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: rnd-rare }
+
 ## Syndicate
 - type: entity
   id: BorgModuleChina
-  parent: [ BaseBorgModuleSyndicate, BaseProviderBorgModule, BaseSyndicateContraband ]
+  parent: [ BaseBorgModuleSyndicateAssault, BaseProviderBorgModule, BaseSyndicateContraband ]
   name: china cyborg module
   description: A weapons module that comes with a double energy sword.
   components:
   - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
     layers:
     - state: syndicate
-    - state: icon-syndicate
+    - state: icon-fugas
   - type: ItemBorgModule
     hands:
     - item: WeaponLauncherChinaLakeBorg
-    - hand:
-        emptyRepresentative: Nanopast
-        emptyLabel: borg-slot-nanopasta-empty
-        whitelist:
-          tags:
-          - Nanopast
-    - item: BorgGeneratorNanopast
     - item: PinpointerSyndicateNuclear
     - item: PinpointerUniversal # Corvax-Wega-Robot-add
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: china-module }
 
+- type: entity
+  id: BorgModuleSniper
+  parent: [ BaseBorgModuleSyndicateAssault, BaseProviderBorgModule, BaseSyndicateContraband ]
+  name: sniper cyborg module
+  description: A weapons module that comes with a double energy sword.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: syndicate
+    - state: icon-sniper
+  - type: ItemBorgModule
+    hands:
+    - item: BorgWeaponSniperHristovAdvanced
+    - item: WeaponPistolDesertEagleBorg
+    - item: PinpointerSyndicateNuclear
+    - item: PinpointerUniversal # Corvax-Wega-Robot-add
+  - type: BorgModuleIcon
+    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: sniper-module }
+
+- type: entity
+  id: BorgModuleCR20Advensed
+  parent: [ BaseBorgModuleSyndicateAssault, BaseProviderBorgModule, BaseSyndicateContraband ]
+  name: cr20 cyborg module
+  description: A weapons module that comes with a double energy sword.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: syndicate
+    - state: icon-cr20-gun
+  - type: ItemBorgModule
+    hands:
+    - item: WeaponSubMachineGunC20rROWAdvensed
+    - item: CyborgEnergySword
+    - item: PinpointerSyndicateNuclear
+    - item: PinpointerUniversal # Corvax-Wega-Robot-add
+  - type: BorgModuleIcon
+    icon: { sprite: Interface/Actions/actions_borg.rsi, state: syndicate-c20r-module }
+
+- type: entity
+  id: BorgModuleNightVisonSyndi
+  parent: [ BaseBorgModuleSyndicateAssault, BaseSyndicateContraband ]
+  name: nightvison cyborg module
+  description: A weapons module that comes with a double energy sword.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: syndicate
+    - state: icon-nightvison
+  - type: ComponentBorgModule
+    components:
+    - type: NaturalNightVision
+      tintColor: "#953c3c"
+      
+- type: entity
+  id: BorgModuleRepiarSyndi
+  parent: [ BaseBorgModuleSyndicateAssault, BaseSyndicateContraband ]
+  name: repiar cyborg module
+  description: A weapons module that comes with a double energy sword.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: syndicate
+    - state: icon-treatment-syndi
+  - type: ComponentBorgModule
+    components:
+    - type: PassiveDamage
+      allowedStates:
+      - Alive
+      - Critical
+      damage:
+        types:
+          Blunt: -0.3
+          Slash: -0.3
+          Piercing: -0.3
+          Heat: -0.3
 ## Xenoborg
 - type: entity
   id: BorgModuleXenoConstruction
@@ -1328,7 +1434,7 @@
 
 - type: entity
   id: XenoborgModuleCommonRepeir
-  parent: [ BaseXenoborgModuleGeneric, BaseProviderBorgModule, BaseXenoborgContraband ]
+  parent: [ BaseXenoborgModuleGeneric, BaseXenoborgContraband ]
   name: repeir xenoborg module
   description: Everyone can heal your action!
   components:
@@ -1337,11 +1443,40 @@
     layers:
     - state: xenoborg_generic
     - state: icon-repeir
-  - type: ItemBorgModule
-    hands:
-    - item: RepeirModeDeviceXenoborg
-  - type: BorgModuleIcon
-    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: repeir-xenoborg-module }
+  - type: ComponentBorgModule
+    components:
+    - type: PassiveDamage
+      allowedStates:
+      - Alive
+      - Critical
+      - Dead
+      damage:
+        types:
+          Blunt: -0.3
+          Slash: -0.3
+          Piercing: -0.3
+          Heat: -0.3
+  # - type: ItemBorgModule
+    # hands:
+    # - item: RepeirModeDeviceXenoborg
+  # - type: BorgModuleIcon
+    # icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: repeir-xenoborg-module }
+
+- type: entity
+  id: BorgModuleNightVisoXenoborg
+  parent: [ BaseXenoborgModuleGeneric, BaseXenoborgContraband ]
+  name: nightvison cyborg module
+  description: A weapons module that comes with a double energy sword.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: xenoborg_generic
+    - state: icon-nightvison-xenoborg
+  - type: ComponentBorgModule
+    components:
+    - type: NaturalNightVision
+      tintColor: "#1e1e95"
 
 - type: entity
   id: XenoborgModuleCommonSpeed

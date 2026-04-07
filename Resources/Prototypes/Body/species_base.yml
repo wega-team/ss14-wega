@@ -93,6 +93,7 @@
     - Stealth # Corvax-Wega-HydroponicsUpdate
     - StealthOnMove # Corvax-Wega-HydroponicsUpdate
   - type: Carriable # Corvax-Wega-Carrying
+  - type: Posing # Corvax-Wega-Posing
   - type: Identity
   - type: IdExaminable
   - type: Internals

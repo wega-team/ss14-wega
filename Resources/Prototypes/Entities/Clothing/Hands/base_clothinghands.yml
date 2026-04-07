@@ -63,6 +63,11 @@
   - type: Fiber
     fiberMaterial: fibers-synthetic
   - type: FingerprintMask
+    # Corvax-Wega-Edit-Start
+  - type: Tag
+    tags:
+    - Gloves
+    # Corvax-Wega-Edit-End
 
 - type: entity
   abstract: true

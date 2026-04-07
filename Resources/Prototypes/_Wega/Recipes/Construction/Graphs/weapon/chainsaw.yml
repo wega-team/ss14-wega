@@ -1,0 +1,22 @@
+- type: constructionGraph
+  id: CirSaw
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: circular
+      steps:
+      - material: Cable
+        amount: 3
+        doAfter: 6
+      - material: Plasteel
+        amount: 3
+        doAfter: 3
+      - tag: Saw
+        name: ent-CirularSaw
+        icon:
+          sprite: _Wega/Objects/Devices/circular_saw.rsi
+          state: icon
+        doAfter: 5
+  - node: circular
+    entity: ChainsawGreen

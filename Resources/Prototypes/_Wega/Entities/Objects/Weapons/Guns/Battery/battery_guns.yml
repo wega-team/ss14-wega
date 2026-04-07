@@ -311,3 +311,44 @@
   - type: BatteryAmmoProvider
     proto: IonScan
     fireCost: 500
+
+- type: entity
+  name: energy carabine "Pulsar"
+  parent: [BaseWeaponBattery, BaseSecurityContraband, BaseGunWieldable]
+  id: WeaponEnergyPulsar
+  description: High stop-power energy carabine.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Battery/pulsar.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-unshaded-4
+      map: ["enum.GunVisualLayers.MagUnshaded"]
+      shader: unshaded
+  - type: Clothing
+    sprite: _Wega/Objects/Weapons/Guns/Battery/pulsar.rsi
+  - type: MagazineVisuals
+    magState: mag
+    steps: 5
+    zeroVisible: false
+  - type: Appearance
+  - type: Gun
+    selectedMode: FullAuto
+    fireRate: 2.8
+    availableModes:
+      - SemiAuto
+      - FullAuto
+    projectileSpeed: 40
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
+  - type: BatteryAmmoProvider
+    proto: PulsarProjectile
+    fireCost: 200
+  - type: Battery
+    maxCharge: 3200
+    startingCharge: 3200
+  - type: BatterySelfRecharger
+    autoRechargeRate: 35
+  - type: Item
+    size: Large

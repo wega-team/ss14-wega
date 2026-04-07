@@ -9,6 +9,10 @@
       steps:
       - tool: Screwing
         doAfter: 2
+    - to: alt
+      steps:
+      - tool: Slicing
+        doAfter: 2
   - node: alt
     entity: WiretappingCameraAlpha
     edges:
@@ -19,6 +23,10 @@
     - to: off
       steps:
       - tool: Screwing
+        doAfter: 2
+    - to: off
+      steps:
+      - tool: Slicing
         doAfter: 2
   - node: stand
     entity: WiretappingCameraAlphaAlt
@@ -31,5 +39,8 @@
       steps:
       - tool: Screwing
         doAfter: 2
-
+    - to: off
+      steps:
+      - tool: Slicing
+        doAfter: 2
 

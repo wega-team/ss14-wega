@@ -100,6 +100,9 @@ public sealed partial class BeaconSoulComponent : Component
     public EntityUid VampireOwner = EntityUid.Invalid;
 }
 
+[RegisterComponent, NetworkedComponent]
+public sealed partial class BittenByVampireComponent : Component;
+
 /// <summary>
 /// A component for testing vampire arson near holy sites.
 /// </summary>

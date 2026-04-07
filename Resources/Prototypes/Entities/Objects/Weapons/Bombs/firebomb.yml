@@ -55,6 +55,11 @@
   - type: Construction
     graph: FireBomb
     node: firebomb
+    # Corvax-Wega-Edit-Start
+  - type: Tag
+    tags:
+    - FireBomb
+    # Corvax-Wega-Edit-End
 
 # has igniter but no fuel or wires
 - type: entity

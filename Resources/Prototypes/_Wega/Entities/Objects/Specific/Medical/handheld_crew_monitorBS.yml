@@ -1,0 +1,13 @@
+- type: entity
+  name: blue shield handheld monitor
+  categories: [ DoNotMap ]
+  parent: HandheldCrewMonitor
+  id: HandheldCrewMonitorBlueshield
+  description: Personal monitor for Blue Shield officers.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Medical/handheldblueshield.rsi
+  - type: WirelessNetworkConnection
+    range: 1000
+  - type: StaticPrice
+    price: 1000

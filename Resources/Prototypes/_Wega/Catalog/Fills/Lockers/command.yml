@@ -11,7 +11,14 @@
     - id: MedkitFilled
     - id: ClothingNeckCloakBlueShield
     - id: ClothingUniformJumpsuitAltBlueShield
-    - id: ClothingOuterWinterBlueShield
+    - id: BlueShieldVoucherCard
+    - id: ClothingHeadHelmetBlueShield
+    - id: HandheldCrewMonitorBlueshield
+    - id: ClothingVestBlueShieldAlt
+    - id: ClothingBeltMilitaryWebbingAlt
+    - id: ClothingNeckMantleBlueShield
+    - id: ClothingUniformJumpsuitBlueShieldRock
+    - id: ClothingOuterWinterBlueShieldAlt
 
 # Hardsuit table, used for suit storage as well
 - type: entityTable

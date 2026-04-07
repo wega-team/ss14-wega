@@ -22,50 +22,40 @@ public sealed class TimePackCommand : IConsoleCommand
     {
         { 1, new List<(string, int)>
             {
-                ("Overall", 8400),
-                ("JobCaptain", 1200),
-                ("JobStationEngineer", 1200),
-                ("JobMedicalDoctor", 1200),
-                ("JobSecurityOfficer", 1200),
-                ("JobWarden", 600),
-                ("JobAtmosphericTechnician", 1200),
-                ("JobChemist", 600),
-                ("JobScientist", 900),
-                ("JobSalvageSpecialist", 600),
+                ("Overall", 60),
+                ("JobStationEngineer", 300),
+                ("JobTechnicalAssistant", 300),
+                ("JobMedicalDoctor", 180),
+                ("JobMedicalIntern", 120),
+                ("JobResearchAssistant", 300),
+                ("JobCargoTechnician", 180),
                 ("JobServiceWorker", 60)
             }
         },
         { 2, new List<(string, int)>
             {
-                ("JobSecurityOfficer", 1200),
-                ("JobWarden", 600),
-                ("Overall", 600)
+                ("JobStationEngineer", 300),
+                ("JobTechnicalAssistant", 300),
+                ("Overall", 60)
             }
         },
         { 3, new List<(string, int)>
             {
-                ("JobAtmosphericTechnician", 600),
-                ("JobStationEngineer", 1200)
+                ("JobMedicalDoctor", 180),
+                ("JobMedicalIntern", 120)
             }
         },
         { 4, new List<(string, int)>
             {
-                ("JobChemist", 600),
-                ("JobMedicalDoctor", 1200)
+                ("JobResearchAssistant", 300)
             }
         },
         { 5, new List<(string, int)>
             {
-                ("JobScientist", 900)
+                ("JobCargoTechnician", 180)
             }
         },
         { 6, new List<(string, int)>
-            {
-                ("JobSalvageSpecialist", 600),
-                ("Overall", 2400)
-            }
-        },
-        { 7, new List<(string, int)>
             {
                 ("JobBorg", 900)
             }
@@ -149,7 +139,11 @@ public sealed class TimePackCommand : IConsoleCommand
     public CompletionResult GetCompletion(IConsoleShell shell, string[] args)
     {
         if (args.Length == 1)
-            return CompletionResult.FromHint("Enter username");
+        {
+            return CompletionResult.FromHintOptions(
+                CompletionHelper.SessionNames(players: _playerManager),
+                "Enter username");
+        }
 
         if (args.Length > 1)
         {

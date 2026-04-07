@@ -568,7 +568,7 @@
       walkModifier: 0.8
       sprintModifier: 0.8
   - type: ModularSuitModule
-    tags: [ MagneticSuitModule ]
+    tags: [ MagneticSuitModule, NoSlipModuleConflict ]
     modulePart: Boots
     powerUsage: 0.4
     verbIcon:
@@ -1140,6 +1140,7 @@
     activeComponents:
     - type: NoSlip
   - type: ModularSuitModule
+    tags: [ NoSlipModuleConflict ]
     modulePart: Boots
     modulePrefix: 'C'
     canBeDisabled: false

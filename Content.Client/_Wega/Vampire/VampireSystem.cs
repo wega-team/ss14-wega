@@ -13,7 +13,7 @@ public sealed class VampireSystem : SharedVampireSystem
 {
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly ContentEyeSystem _contentEye = default!;
+    [Dependency] private readonly SharedEyeSystem _eye = default!;
     [Dependency] private readonly IEntityManager _entityManager = default!;
     [Dependency] private readonly SpriteSystem _sprite = default!;
 
@@ -32,8 +32,11 @@ public sealed class VampireSystem : SharedVampireSystem
         var userEntity = _entityManager.GetEntity(args.User);
         var eyeComponent = _entityManager.GetComponent<EyeComponent>(userEntity);
         if (userEntity == _playerManager.LocalEntity)
-            _contentEye.RequestToggleFov(userEntity, eyeComponent);
-    }
+		{
+			eyeComponent.NetSyncEnabled = false;
+            _eye.SetDrawFov(userEntity, args.Enabled, eyeComponent);
+		}
+	}
 
     private void GetVampireIcons(Entity<VampireComponent> ent, ref GetStatusIconsEvent args)
     {

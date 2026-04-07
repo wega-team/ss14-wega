@@ -76,27 +76,19 @@
     - Gladiator
     - Casa
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- type: entity
+  parent: BaseVoucherCard
+  id: BlueShieldVoucherCard
+  name: blue shield voucher card
+  description: Voucher card for extend arsenal blue shield Officer.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Misc/vouchers.rsi
+    state: blueshield
+  - type: VoucherCard
+    typeVoucher: Security
+    kits:
+    - BlueShieldkit1
+    - BlueShieldkit2
+    - BlueShieldkit3
+    - BlueShieldkit4
