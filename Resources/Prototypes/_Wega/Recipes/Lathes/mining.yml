@@ -35,7 +35,7 @@
   result: WeaponMagmiteProtoKineticAccelerator
   completetime: 20
   materials:
-    Magmite: 200
+    Magmite: 400
 
 - type: latheRecipe
   id: WeaponMagmiteCrusher
