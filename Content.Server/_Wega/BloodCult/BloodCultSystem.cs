@@ -182,7 +182,7 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
     private void OnAttemptMelee(Entity<CultWeaponComponent> entity, ref AttemptMeleeEvent args)
     {
         var user = Transform(entity.Owner).ParentUid;
-        if (!HasComp<BloodCultistComponent>(user) || !HasComp<VeilCultistComponent>(user))
+        if (!HasComp<BloodCultistComponent>(user) && !HasComp<VeilCultistComponent>(user))
         {
             _popup.PopupEntity(Loc.GetString("blood-cult-failed-attack"), user, user, PopupType.SmallCaution);
 
