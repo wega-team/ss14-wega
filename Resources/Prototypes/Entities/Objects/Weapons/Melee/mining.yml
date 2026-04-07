@@ -105,11 +105,6 @@
     radius: 4
   # Corvax-Wega-Lavaland-start
   - type: Appearance
-  - type: UpgradeableCrusher
-    maxUpgradeCount: 6
-    whitelist:
-      tags:
-      - CrusherUpgrade
   - type: ToggleableVisuals
     spriteLayer: light
   - type: ItemTogglePointLight
@@ -156,6 +151,11 @@
     delay: 0.9
   # Corvax-Wega-Lavaland-start
   - type: TrophyHuntingTool
+  - type: UpgradeableCrusher
+    maxUpgradeCount: 6
+    whitelist:
+      tags:
+      - CrusherUpgrade
   - type: ContainerContainer
     containers:
       crusher_upgrades: !type:Container
