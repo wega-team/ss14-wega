@@ -16,5 +16,5 @@
   id: GirlGhost
   name: Красотка
   icon:
-    sprite: _Wega/Mobs/Ghosts/ghost_human.rsi
+    sprite: _Wega/Mobs/Ghosts/ghost_human64.rsi
     state: girl_a
