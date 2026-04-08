@@ -3,8 +3,8 @@
   "license": "CC-BY-NC-ND-3.0",
   "copyright": "Ownership of the sprites has been transferred to the Corvax Wega project",
   "size": {
-    "x": 32,
-    "y": 32
+    "x": 64,
+    "y": 64
   },
   "states": [
     {
