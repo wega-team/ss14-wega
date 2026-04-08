@@ -41,6 +41,7 @@
           components:
           - AntagImmune
           - Pacified # Diona ha-ha-ha
+        lateJoinAdditional: true
 
 # Extended testing
 - type: entity

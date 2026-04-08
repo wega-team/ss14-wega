@@ -6,6 +6,8 @@ using Content.Server.Bible.Components;
 using Content.Server.Body.Systems;
 using Content.Server.Chat.Systems;
 using Content.Server.Polymorph.Systems;
+using Content.Server.NPC.HTN;
+using Content.Server.Humanoid.Components;
 using Content.Shared.Actions;
 using Content.Shared.Actions.Components;
 using Content.Shared.Alert;
@@ -37,6 +39,7 @@ using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 using Robust.Shared.GameObjects;
+using Robust.Shared.Timing;
 using Content.Shared.Genetics;
 using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Hands.EntitySystems;
@@ -47,7 +50,11 @@ using Content.Shared.Damage.Systems;
 using Content.Shared.Damage.Components;
 using Content.Shared.Tag;
 using Content.Shared.Shaders;
+using Content.Shared.SSDIndicator;
+using Content.Shared.Mobs.Components;
+using Content.Shared.Mobs;
 using Content.Shared.Body;
+using Content.Shared.HealthExaminable;
 
 namespace Content.Server.Vampire;
 
@@ -95,6 +102,10 @@ public sealed partial class VampireSystem : SharedVampireSystem
         // Drinking Blood
         SubscribeLocalEvent<VampireComponent, VampireDrinkingBloodActionEvent>(OnDrinkBlood);
         SubscribeLocalEvent<VampireComponent, VampireDrinkingBloodDoAfterEvent>(DrinkDoAfter);
+
+		// Got bitten
+        SubscribeLocalEvent<BittenByVampireComponent, ComponentInit>(OnGotBitten);
+        SubscribeLocalEvent<BittenByVampireComponent, HealthBeingExaminedEvent>(OnHealthBeingExamined);
 
         // Distribute Damage
         SubscribeLocalEvent<VampireComponent, DamageChangedEvent>(OnDamageChanged);
@@ -231,6 +242,21 @@ public sealed partial class VampireSystem : SharedVampireSystem
             return false;
         }
 
+        if (TryComp<SSDIndicatorComponent>(args.Target, out var targetSSDComponent) && TryComp<MobStateComponent>(args.Target, out var targetMobState))
+        {
+			if (targetSSDComponent.IsSSD && targetMobState.CurrentState != MobState.Dead)
+			{
+				_popup.PopupEntity(Loc.GetString("vampire-blooddrink-ssd"), uid, uid, PopupType.SmallCaution);
+				return false;
+			}
+		}
+		
+        if (TryComp<HTNComponent>(args.Target, out var htnComponent) || TryComp<RandomHumanoidAppearanceComponent>(args.Target, out var targetRandomAppearence))
+        {
+            _popup.PopupEntity(Loc.GetString("vampire-blooddrink-not-sentient"), uid, uid, PopupType.SmallCaution);
+            return false;
+        }
+
         return true;
     }
 
@@ -268,6 +294,7 @@ public sealed partial class VampireSystem : SharedVampireSystem
 
         _audio.PlayPvs(component.BloodDrainSound, uid, AudioParams.Default.WithVolume(-3f));
         _blood.TryModifyBloodLevel(args.Target.Value, -(byte)(volumeToConsume * 0.5f));
+		EnsureComp<BittenByVampireComponent>(args.Target.Value);
 
         if (HasComp<BibleUserComponent>(args.Target) && !component.TruePowerActive)
         {
@@ -643,4 +670,20 @@ public sealed partial class VampireSystem : SharedVampireSystem
 
         return null;
     }
+
+    // Medics can see bite on your neck
+    private void OnGotBitten(EntityUid uid, BittenByVampireComponent component, ComponentInit args)
+    {
+		Timer.Spawn(TimeSpan.FromSeconds(900f), () => RemComp<BittenByVampireComponent>(uid));
+    }
+	
+    private void OnHealthBeingExamined(Entity<BittenByVampireComponent> ent, ref HealthBeingExaminedEvent args)
+    {
+        if (HasComp<SurgicalSkillComponent>(args.Examiner))
+        {
+            args.Message.PushNewline();
+            args.Message.AddMarkupOrThrow(Loc.GetString("vampire-bittenbyvampire-examine"));
+        }
+	}
+	
 }

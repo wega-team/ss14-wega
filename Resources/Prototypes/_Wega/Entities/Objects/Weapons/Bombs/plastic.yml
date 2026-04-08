@@ -30,7 +30,7 @@
     ports:
       - Timer
   - type: Explosive
-    explosionType: Default 
+    explosionType: Default
     totalIntensity: 35
     intensitySlope: 10
     maxIntensity: 7.5
@@ -42,3 +42,25 @@
     blacklist:
       components:
       - Sticky
+
+- type: entity
+  name: explosion package
+  description: An extremely sticky bomb that can be attached to anything.
+  parent: SeismicCharge
+  id: ExplosionPackage
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Bombs/exp_package.rsi
+    state: icon
+    layers:
+    - state: icon
+      map: ["base"]
+  - type: Construction
+    graph: PxpPackage
+    node: explosionPack
+  - type: Explosive
+    explosionType: FireBomb
+    totalIntensity: 100
+    intensitySlope: 3
+    maxIntensity: 12
+    canCreateVacuum: false

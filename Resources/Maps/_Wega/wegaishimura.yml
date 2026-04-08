@@ -79979,7 +79979,7 @@ entities:
     - type: Transform
       pos: 54.511852,-13.46858
       parent: 2
-- proto: ClothingModularControllerCosmohonkPreassembled
+- proto: HardsuitClownSelector
   entities:
   - uid: 1118
     components:

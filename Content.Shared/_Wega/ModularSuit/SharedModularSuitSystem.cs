@@ -238,7 +238,7 @@ public abstract partial class SharedModularSuitSystem : EntitySystem
         {
             if (Inventory.TryGetSlotEntity(wearer, slot, out var equipped) && equipped == partUid)
             {
-                if (Inventory.TryUnequip(wearer, slot, out var removedItem))
+                if (Inventory.TryUnequip(wearer, slot, out var removedItem, force: true))
                 {
                     Container.Insert(removedItem.Value, partContainer);
                     RemComp<AttachedModularSuitPartComponent>(removedItem.Value);
@@ -344,7 +344,7 @@ public abstract partial class SharedModularSuitSystem : EntitySystem
         }
 
         if (Container.Remove(itemUid, hiddenContainer))
-            Inventory.TryEquip(wearer, itemUid, slot);
+            Inventory.TryEquip(wearer, itemUid, slot, force: true);
 
         hiddenComp.HiddenItems.Remove(slot);
         Dirty(suit.Owner, hiddenComp);

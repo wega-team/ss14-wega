@@ -654,10 +654,12 @@
     - item: MailBagBorg
     - hand:
         emptyLabel: borg-slot-cash-empty
-        emptyRepresentative: SpaceCash
+        emptyRepresentative: CashIcon
         whitelist:
           components:
           - Cash
+          tags:
+          - CoordinatesDisk
 # Corvax-Wega-Robot-End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: appraisal-module }
@@ -1095,7 +1097,7 @@
     - item: HandheldHealthAnalyzer
     - item: DefibrillatorOneHandedUnpowered
     - item: HandheldCrewMonitorBorg # Corvax-Wega-Robot 
-    - item: Crowbar
+    # - item: Crowbar # Corvax-Wega-Robot 
     - item: BorgFireExtinguisher
     - item: BorgHandheldGPSBasic
     - item: HandLabeler
@@ -1129,19 +1131,7 @@
     hands:
 # Corvax-Wega-Robot-Start
     - item: HandheldHealthAnalyzer
-    - item: BorgSyringe
-      hand:
-        emptyLabel: borg-slot-injector-dropper-empty
-        emptyRepresentative: Syringe
-        whitelist:
-          tags:
-          - Itemborg
-    - hand:
-        emptyLabel: borg-slot-injector-dropper-empty
-        emptyRepresentative: AdvancedJetInjector
-        whitelist:
-          tags:
-          - Itemborg
+    - item: AdvancedJetInjector
 # Corvax-Wega-Robot-End
     - item: PillCanister
       hand:
@@ -1178,6 +1168,13 @@
         whitelist:
           tags:
           - Lollipops
+    - hand:
+        emptyRepresentative: DiseaseSwab
+        emptyLabel: borg-slot-swap-empty
+        whitelist:
+          components:
+          - DiseaseSwab
+          - DiseaseVaccine
     # Corvax-Wega-Robot-End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: chem-module }
@@ -1683,22 +1680,15 @@
   - type: ItemBorgModule
     hands:
 # Corvax-Wega-Robot-start
-    - item: WeaponLightMachineGunL6CEnergy
-      hand:
-        emptyLabel: borg-slot-gun-empty
-        emptyRepresentative: WeaponLightMachineGunL6C
-        whitelist:
-          tags:
-          - Itemborg
-    - hand:
-        emptyLabel: borg-slot-gun-empty
-        emptyRepresentative: BorgWeaponSniperHristovAdvanced
-        whitelist:
-          tags:
-          - Itemborg
-    - item: CyborgEnergySwordDouble          
+    - item: WeaponLightMachineGunL6C         
     - item: PinpointerSyndicateNuclear
     - item: PinpointerUniversal # Corvax-Wega-Robot-add
+  - type: ComponentBorgModule
+    components:
+    - type: Reflect
+      reflectProb: 0.15
+      slotFlags:
+      - NONE
 # Corvax-Wega-Robot-End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: syndicate-l6c-module }

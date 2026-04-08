@@ -115,6 +115,8 @@
     minSaturation: -4.0
     updateIntervalMultiplier: 0.8
   - type: BloodDrunkMiner
+  - type: MegafaunaDamageContributor
+    achievement: MinerBoss
   - type: NPCHandSwitcher
   - type: HTN
     rootTask:
@@ -213,6 +215,8 @@
     rewards:
     - HierophantClubRod
     - GemCompactedDilithium
+  - type: MegafaunaDamageContributor
+    achievement: HierophantBoss
   - type: HTN
     rootTask:
       task: HierophantBehaviorCompound
@@ -299,6 +303,8 @@
       LegionCore: 0.1
     rewards:
     - CrowbarRed
+  - type: MegafaunaDamageContributor
+    achievement: LegionBoss
   - type: TrophyHunter
     trophy: TrophyLavalandLegionSkull
 
@@ -504,6 +510,8 @@
   - type: ColossusBoss
     rewards:
     - CrateNecropolisColossusFilled
+  - type: MegafaunaDamageContributor
+    achievement: ColossusBoss
   - type: HTN
     rootTask:
       task: MegafaunaBehaviorCompound
@@ -600,6 +608,8 @@
     defaultDesc: nav-map-beacon-lavaland-signal-ashdrake-desc
     color: "#a7000b"
   - type: AshDrakeBoss
+  - type: MegafaunaDamageContributor
+    achievement: AshDrakeBoss
   - type: HTN
     rootTask:
       task: MegafaunaBehaviorCompound
@@ -766,6 +776,8 @@
       ActionBubblegumIllusionDash: 0.67
       ActionBubblegumPentagramDash: 0.33
       ActionBubblegumChaoticIllusionDash: 0.75
+  - type: MegafaunaDamageContributor
+    achievement: BubblegumBoss
   - type: HTN
     rootTask:
       task: MegafaunaBehaviorCompound

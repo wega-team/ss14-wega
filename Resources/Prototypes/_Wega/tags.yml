@@ -499,3 +499,15 @@
 
 - type: Tag
   id: CompressionModuleConflict
+
+- type: Tag
+  id: NoSlipModuleConflict
+
+- type: Tag
+  id: FireBomb
+
+- type: Tag
+  id: Gloves
+
+- type: Tag
+  id: Saw

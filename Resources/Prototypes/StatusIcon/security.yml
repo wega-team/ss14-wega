@@ -62,7 +62,7 @@
   layer: Mod
   isShaded: true
   icon:
-    sprite: /Textures/Interface/Misc/job_icons.rsi
+    sprite: /Textures/_Wega/Interface/Misc/job_icons.rsi # Corvax-Wega-Edit
     state: MindShield
 
 - type: securityIcon

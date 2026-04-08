@@ -7,7 +7,10 @@
   guides: [ Traitors ]
   requirements:
   - !type:OverallPlaytimeRequirement
-    time: 30h # Corvax-RoleTime 1
+    time: 50h # Corvax-Wega-Edit
+  - !type:DepartmentTimeRequirement # Corvax-Wega-Edit
+    department: Security
+    time: 10h # Corvax-Wega-Edit
 
 - type: antag
   id: TraitorSleeper

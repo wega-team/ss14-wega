@@ -49,87 +49,60 @@
       path: /Audio/Weapons/Guns/Gunshots/sniper.ogg
     soundEmpty:
       path: /Audio/Weapons/Guns/Empty/empty.ogg
-  - type: BatteryAmmoProvider
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+      - CartridgePistol
+    capacity: 6
     proto: CartridgeAntiMateriel
-    fireCost: 100
-  - type: BatterySelfRecharger
-    autoRechargeRate: 25
-    autoRechargePauseTime: 20
-  - type: Battery
-    maxCharge: 700
-    startingCharge: 0
+    cycleable: false # No synthesizing ammo for your syndicate masters.
+  - type: BallisticAmmoSelfRefiller
+    autoRefillRate: 20s
+    affectedByEmp: true
   - type: AmmoCounter
   - type: Appearance
   - type: StaticPrice
     price: 5000
-  - type: Unremoveable
-  - type: ItemSelector
-    items:
-    - BorgWeaponSniperHristovAdvanced
-    - WeaponLightMachineGunL6CEnergy
-  - type: ActivatableUI
-    key: enum.ItemSelectorUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.ItemSelectorUiKey.Key:
-        type: ItemSelectorBoundUserInterface
-  - type: Tag
-    tags:
-    - Itemborg
 
-- type: entity
-  name: L6C ROW
-  id: WeaponLightMachineGunL6CEnergy
-  suffix: Syndiborg
-  parent: BaseItem
-  description: A L6 SAW for use by cyborgs. Creates .30 rifle ammo on the fly from an internal ammo fabricator, which slowly self-charges.
-  components:
-    - type: Gun
-      minAngle: 4
-      maxAngle: 25
-      angleIncrease: 4
-      angleDecay: 16
-      fireRate: 8
-      selectedMode: FullAuto
-      availableModes:
-        - FullAuto
-      soundGunshot:
-        path: /Audio/Weapons/Guns/Gunshots/lmg.ogg
-      soundEmpty:
-        path: /Audio/Weapons/Guns/Empty/lmg_empty.ogg
-    - type: Sprite
-      sprite: Objects/Weapons/Guns/LMGs/l6.rsi
-      layers:
-        - state: base
-          map: [ "enum.GunVisualLayers.Base" ]
-        - state: mag-3
-          map: [ "enum.GunVisualLayers.Mag" ]
-    - type: Item
-      size: Huge
-    - type: BatteryAmmoProvider
-      proto: CartridgeLightRifle
-      fireCost: 50
-    - type: BatterySelfRecharger
-      autoRechargeRate: 50
-      autoRechargePauseTime: 20
-    - type: Battery
-      maxCharge: 1500
-      startingCharge: 0
-    - type: AmmoCounter
-    - type: Unremoveable
-    - type: ItemSelector
-      items:
-      - BorgWeaponSniperHristovAdvanced
-      - WeaponLightMachineGunL6CEnergy
-    - type: ActivatableUI
-      key: enum.ItemSelectorUiKey.Key
-    - type: UserInterface
-      interfaces:
-        enum.ItemSelectorUiKey.Key:
-          type: ItemSelectorBoundUserInterface
-    - type: Tag
-      tags:
-      - Itemborg
+# - type: entity
+  # name: L6C ROW
+  # id: WeaponLightMachineGunL6CEnergy
+  # suffix: Syndiborg
+  # parent: BaseItem
+  # description: A L6 SAW for use by cyborgs. Creates .30 rifle ammo on the fly from an internal ammo fabricator, which slowly self-charges.
+  # components:
+    # - type: Gun
+      # minAngle: 4
+      # maxAngle: 25
+      # angleIncrease: 4
+      # angleDecay: 16
+      # fireRate: 8
+      # selectedMode: FullAuto
+      # availableModes:
+        # - FullAuto
+      # soundGunshot:
+        # path: /Audio/Weapons/Guns/Gunshots/lmg.ogg
+      # soundEmpty:
+        # path: /Audio/Weapons/Guns/Empty/lmg_empty.ogg
+    # - type: Sprite
+      # sprite: Objects/Weapons/Guns/LMGs/l6.rsi
+      # layers:
+        # - state: base
+          # map: [ "enum.GunVisualLayers.Base" ]
+        # - state: mag-3
+          # map: [ "enum.GunVisualLayers.Mag" ]
+    # - type: Item
+      # size: Huge
+    # - type: BatteryAmmoProvider
+      # proto: CartridgeLightRifle
+      # fireCost: 50
+    # - type: BatterySelfRecharger
+      # autoRechargeRate: 50
+      # autoRechargePauseTime: 20
+    # - type: Battery
+      # maxCharge: 1500
+    # - type: AmmoCounter
+    # - type: Unremoveable
 
 - type: entity
   name: china ROW
@@ -170,9 +143,144 @@
     autoRefillRate: 60
     affectedByEmp: true
 
+- type: entity
+  parent: BaseItem
+  id: WeaponPistolDesertEagleBorg
+  suffix: Syndiborg
+  name: semi-aito desert eagle
+  description: A portable anti-material rifle. Uses .60 anti-material ammo upgraded by gorlax marodeurs.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Pistols/deserteagle.rsi
+    layers:
+      - state: base
+        map: ["enum.GunVisualLayers.Base"]
+      - state: mag-0
+        map: ["enum.GunVisualLayers.Mag"]
+  - type: Item
+    size: Small
+  - type: Clothing
+    sprite: _Wega/Objects/Weapons/Guns/Pistols/deserteagle.rsi
+    quickEquip: false
+    slots:
+    - suitStorage
+    - Belt
+  - type: Gun
+    fireRate: 2
+    selectedMode: SemiAuto
+    availableModes:
+      - SemiAuto
+    soundGunshot:
+      path: /Audio/_Wega/Weapons/Guns/Gunshots/deserteagle.ogg
+      params:
+        volume: 2
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+      - CartridgePistol
+    capacity: 7
+    proto: BulletMagnum
+    cycleable: false # No synthesizing ammo for your syndicate masters.
+  - type: BallisticAmmoSelfRefiller
+    autoRefillRate: 10s
+    affectedByEmp: true
+  - type: AmmoCounter
+  - type: Appearance
+  - type: StaticPrice
+    price: 5000
 
+- type: entity
+  name: C-20r ROW #I think ROW stands for Recharging Onboard Weapon so i'm following the L6C's example
+  id: WeaponSubMachineGunC20rROWAdvensed
+  parent: BaseItem
+  description: A burst-fire C-20r submachine gun for use by cyborgs. Creates .35 caliber ammo on the fly from an internal ammo fabricator, which slowly self-charges.
+  components:
+  - type: Gun
+    minAngle: 2
+    maxAngle: 16
+    angleIncrease: 4
+    angleDecay: 16
+    fireRate: 8
+    burstFireRate: 8
+    shotsPerBurst: 5
+    selectedMode: FullAuto
+    availableModes:
+    - Burst
+    - FullAuto
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/c-20r.ogg
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/SMGs/c20r.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-5
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Item
+    size: Huge
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+      - CartridgePistol
+    capacity: 30
+    proto: CartridgePistol
+    cycleable: false # No synthesizing ammo for your syndicate masters.
+  - type: BallisticAmmoSelfRefiller
+    autoRefillRate: 4s
+    affectedByEmp: true
+  - type: AmmoCounter
 
+- type: entity
+  parent: BaseItem
+  id: ModuleSyndiWeapon
+  name: Module weapon
+  description: "An obsidian rod that strikes paranormal things."
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: syndicate
+    - state: icon-w
+  - type: Item
+    size: Small
+  - type: ItemSelector
+    items:
+    - BorgModuleSniper
+    - BorgModuleCR20Advensed
+    - BorgModuleL6C
+  - type: ActivatableUI
+    key: enum.ItemSelectorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.ItemSelectorUiKey.Key:
+        type: ItemSelectorBoundUserInterface
 
-
-
-
+- type: entity
+  parent: BaseItem
+  id: ModuleSyndiSupport
+  name: Module support
+  description: "An obsidian rod that strikes paranormal things."
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: syndicate
+    - state: icon-syndicate
+  - type: Item
+    size: Small
+  - type: ItemSelector
+    items:
+    - BorgModuleNightVisonSyndi
+    - BorgModuleChina
+    - BorgModuleRepiarSyndi
+  - type: ActivatableUI
+    key: enum.ItemSelectorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.ItemSelectorUiKey.Key:
+        type: ItemSelectorBoundUserInterface
+ 

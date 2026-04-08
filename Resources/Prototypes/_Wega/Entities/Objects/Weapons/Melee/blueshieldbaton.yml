@@ -1,0 +1,26 @@
+- type: entity
+  name: blue shield stun baton
+  parent: Stunbaton
+  id: StunbatonBlueshield
+  description: Special baton for harming people.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/batonBS.rsi
+  - type: ItemToggleMeleeWeapon
+    activatedDamage:
+      types:
+        Blunt: 15
+        Heat: 18
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 15
+  - type: StaminaDamageOnHit
+    damage: 15
+  - type: StaminaDamageOnCollide
+    damage: 15
+  - type: Battery
+    maxCharge: 750
+    startingCharge: 750
+  - type: Clothing
+    sprite: _Wega/Objects/Weapons/Melee/batonBS.rsi

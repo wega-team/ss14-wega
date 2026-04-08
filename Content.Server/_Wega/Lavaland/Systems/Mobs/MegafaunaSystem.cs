@@ -40,6 +40,19 @@ public sealed partial class MegafaunaSystem : EntitySystem
         if (!component.IsActive && totalDamage > 0)
             ActivateMegafauna(uid, component);
 
+        if (args.Origin != null && HasComp<ActorComponent>(args.Origin))
+        {
+            var damageContributor = EnsureComp<MegafaunaDamageContributorComponent>(uid);
+
+            var damageDelta = args.DamageDelta?.GetTotal() ?? 0f;
+            if (damageDelta > 0)
+            {
+                damageContributor.Contributors.TryGetValue(args.Origin.Value, out var current);
+                damageContributor.Contributors[args.Origin.Value] = current + damageDelta;
+                damageContributor.TotalDamageReceived += damageDelta;
+            }
+        }
+
         if (TryComp<HTNComponent>(uid, out var htn) && args.Origin != null)
             htn.Blackboard.SetValue(component.TargetKey, args.Origin.Value);
     }
@@ -48,6 +61,8 @@ public sealed partial class MegafaunaSystem : EntitySystem
     {
         if (args.NewMobState != MobState.Dead)
             return;
+
+        GrantAchievementsToContributors(uid);
 
         HandleDeath(uid, args);
     }
@@ -69,13 +84,42 @@ public sealed partial class MegafaunaSystem : EntitySystem
         _npc.WakeNPC(uid);
     }
 
+    private void GrantAchievementsToContributors(EntityUid megafaunaUid)
+    {
+        if (HasComp<LegionBossComponent>(megafaunaUid)) // Specific
+            return;
+
+        if (!TryComp<MegafaunaDamageContributorComponent>(megafaunaUid, out var contributor))
+            return;
+
+        if (contributor.AchievementsGranted)
+            return;
+
+        contributor.AchievementsGranted = true;
+
+        var totalDamage = contributor.TotalDamageReceived;
+        if (totalDamage <= 0)
+            return;
+
+        var threshold = contributor.Threshold;
+        var achievementId = contributor.AchievementId;
+
+        foreach (var (player, damage) in contributor.Contributors)
+        {
+            var percentage = damage / totalDamage;
+            if (percentage >= threshold)
+            {
+                _achievement.QueueAchievement(player, achievementId);
+                _achievement.QueueAchievement(player, AchievementsEnum.FirstBoss);
+            }
+        }
+
+        contributor.Contributors.Clear();
+    }
+
     private void HandleDeath(EntityUid uid, MobStateChangedEvent args)
     {
         _ambient.SetAmbience(uid, false);
-        if (args.Origin != null && !HasComp<LegionBossComponent>(uid))
-        {
-            _achievement.QueueAchievement(args.Origin.Value, AchievementsEnum.FirstBoss);
-        }
 
         var killedEvent = new MegafaunaKilledEvent
         {

@@ -15,7 +15,7 @@
   components:
   - type: Sprite
     sprite: _Wega/Clothing/Back/Duffels/postman.rsi
-    
+
 - type: entity
   parent: ClothingBackpackDuffel
   id: ClothingDuffelsCapitanWhite
@@ -24,12 +24,28 @@
   components:
   - type: Sprite
     sprite: _Wega/Clothing/Back/Duffels/captain_white.rsi
-    
+
 - type: entity
   parent: ClothingBackpackDuffel
   id: ClothingDuffelsCapitanGreen
-  name: sherif duffel 
+  name: sherif duffel
   description: It looks like a military development, although the coloring is unusual. A very stylish and practical backpack.
   components:
   - type: Sprite
     sprite: _Wega/Clothing/Back/Duffels/captain_green.rsi
+
+- type: entity
+  parent: ClothingBackpack
+  id: ClothingBackpackBig
+  name: big backpack
+  description: Large bag for large things.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Back/Duffels/big_backpack.rsi
+  - type: Storage
+    grid:
+    - 0,0,6,6
+    maxItemSize: Huge
+  - type: Construction
+    graph: BigBag
+    node: Bigbackpack

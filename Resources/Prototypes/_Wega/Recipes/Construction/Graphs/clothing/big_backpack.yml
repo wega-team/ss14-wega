@@ -1,0 +1,13 @@
+- type: constructionGraph
+  id: BigBag
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: Bigbackpack
+      steps:
+      - material: Durathread
+        amount: 12
+        doAfter: 9
+  - node: Bigbackpack
+    entity: ClothingBackpackBig

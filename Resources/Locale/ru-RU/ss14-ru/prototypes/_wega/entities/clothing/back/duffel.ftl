@@ -6,3 +6,5 @@ ent-ClothingDuffelsCapitanGreen = вещмешок шерифа
     .desc = Это особый вещмешок, изготавливаемый исключительно для шерифов Nanotrasen.
 ent-ClothingDuffelsCapitanWhite = белый вещмешок капитана
     .desc = Это особый вещмешок, изготавливаемый исключительно для элегантных капитанов Nanotrasen.
+ent-ClothingBackpackBig = большой вещмешок
+    .desc = Большая сумка для больших вещей.

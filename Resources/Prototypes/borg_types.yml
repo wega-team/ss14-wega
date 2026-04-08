@@ -172,7 +172,6 @@
     - BorgModuleJanitor
 
   defaultModules:
-  - BorgModuleTool # Corvax-Wega-add
   - BorgModulePrying
   - BorgModuleCleaning
   - BorgModuleCustodial

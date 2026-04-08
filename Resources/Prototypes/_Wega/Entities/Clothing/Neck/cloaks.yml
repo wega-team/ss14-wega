@@ -100,3 +100,14 @@
   components:
     - type: Sprite
       sprite: _Wega/Clothing/Neck/Cloaks/white_captain_mantle.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckMantleBlueShield
+  name: blue shield Mantle
+  description: Good quality Mantle for Blueshield Officers.
+  components:
+   - type: Sprite
+     sprite: _Wega/Clothing/Neck/Cloaks/BSmantle.rsi
+   - type: Clothing
+     sprite: _Wega/Clothing/Neck/Cloaks/BSmantle.rsi

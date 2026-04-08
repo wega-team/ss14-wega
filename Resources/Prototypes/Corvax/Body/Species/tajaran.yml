@@ -101,6 +101,13 @@
           32:
             sprite: Corvax/Mobs/Species/displacement.rsi
             state: shoes
+      # Corvax-Wega-start
+      socks:
+        sizeMaps:
+          32:
+            sprite: Corvax/Mobs/Species/displacement.rsi
+            state: socks
+      # Corvax-Wega-end
     displacements:
       jumpsuit:
         sizeMaps:
@@ -117,6 +124,13 @@
           32:
             sprite: Corvax/Mobs/Species/displacement.rsi
             state: outerclothing
+      # Corvax-Wega-start
+      socks:
+        sizeMaps:
+          32:
+            sprite: Corvax/Mobs/Species/displacement.rsi
+            state: socks
+      # Corvax-Wega-end
 
 - type: entity
   save: false
@@ -124,6 +138,7 @@
   parent:
   - AppearanceTajaran
   - BaseSpeciesMobOrganic
+  - BaseOperated # Corvax-Wega-Surgery
   id: MobTajaran
   components:
   - type: Hunger
@@ -157,6 +172,13 @@
       types:
         Asphyxiation: -2.0
   - type: Wagging
+  # Corvax-Wega-Add-start
+  - type: NaturalNightVision
+    tintColor: "#0f5e7f"
+  - type: DnaModifier
+    upper: MobTajaran
+    lowest: MobTajkey
+  # Corvax-Wega-Add-end
 
 - type: entity
   parent: OrganBase

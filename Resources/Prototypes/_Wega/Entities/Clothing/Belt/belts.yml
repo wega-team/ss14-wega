@@ -62,3 +62,14 @@
     sprite: _Wega/Clothing/Belt/salvagewebbing.rsi
   - type: Clothing
     sprite: _Wega/Clothing/Belt/salvagewebbing.rsi
+
+- type: entity
+  parent: ClothingBeltMilitaryWebbing
+  id: ClothingBeltMilitaryWebbingAlt
+  name: light military webbing
+  description: Standart light webbing.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Belt/webbingblueshield.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Belt/webbingblueshield.rsi

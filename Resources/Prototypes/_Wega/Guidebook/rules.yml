@@ -1,6 +1,6 @@
 - type: guideEntry
   id: WegaRuleset
-  name: Правила сервера
+  name: wega-ruleset-name
   priority: 0
   ruleEntry: true
   text: "/ServerInfo/_Wega/Guidebook/ServerRules/WegaRuleset.xml"
@@ -30,161 +30,161 @@
 
 - type: guideEntry
   id: WegaPunishmentTypes
-  name: Игровые наказания
+  name: wega-punishment-types-name
   priority: 21
   ruleEntry: true
   text: "/ServerInfo/_Wega/Guidebook/ServerRules/PunishmentTypes.xml"
 
 - type: guideEntry
   id: WegaRule0
-  name: Правило 0
+  name: wega-rule-0-name
   priority: 1
   ruleEntry: true
   text: "/ServerInfo/_Wega/Guidebook/ServerRules/Rule0.xml"
 
 - type: guideEntry
   id: WegaRule1
-  name: Правило 1
+  name: wega-rule-1-name
   priority: 2
   ruleEntry: true
   text: "/ServerInfo/_Wega/Guidebook/ServerRules/Rule1.xml"
 
 - type: guideEntry
   id: WegaRule2
-  name: Правило 2
+  name: wega-rule-2-name
   priority: 3
   ruleEntry: true
   text: "/ServerInfo/_Wega/Guidebook/ServerRules/Rule2.xml"
 
 - type: guideEntry
   id: WegaRule3
-  name: Правило 3
+  name: wega-rule-3-name
   priority: 4
   ruleEntry: true
   text: "/ServerInfo/_Wega/Guidebook/ServerRules/Rule3.xml"
 
 - type: guideEntry
   id: WegaRule31
-  name: Правило 3.1
+  name: wega-rule-31-name
   priority: 5
   ruleEntry: true
   text: "/ServerInfo/_Wega/Guidebook/ServerRules/Rule3.1.xml"
 
 - type: guideEntry
   id: WegaRule32
-  name: Правило 3.2
+  name: wega-rule-32-name
   priority: 6
   ruleEntry: true
   text: "/ServerInfo/_Wega/Guidebook/ServerRules/Rule3.2.xml"
 
 - type: guideEntry
   id: WegaRule33
-  name: Правило 3.3
+  name: wega-rule-33-name
   priority: 7
   ruleEntry: true
   text: "/ServerInfo/_Wega/Guidebook/ServerRules/Rule3.3.xml"
 
 - type: guideEntry
   id: WegaRule34
-  name: Правило 3.4
+  name: wega-rule-34-name
   priority: 8
   ruleEntry: true
   text: "/ServerInfo/_Wega/Guidebook/ServerRules/Rule3.4.xml"
 
 - type: guideEntry
   id: WegaRule35
-  name: Правило 3.5
+  name: wega-rule-35-name
   priority: 9
   ruleEntry: true
   text: "/ServerInfo/_Wega/Guidebook/ServerRules/Rule3.5.xml"
 
 - type: guideEntry
   id: WegaRule36
-  name: Правило 3.6
+  name: wega-rule-36-name
   priority: 10
   ruleEntry: true
   text: "/ServerInfo/_Wega/Guidebook/ServerRules/Rule3.6.xml"
 
 - type: guideEntry
   id: WegaRule37
-  name: Правило 3.7
+  name: wega-rule-37-name
   priority: 11
   ruleEntry: true
   text: "/ServerInfo/_Wega/Guidebook/ServerRules/Rule3.7.xml"
 
 - type: guideEntry
   id: WegaRule38
-  name: Правило 3.8
+  name: wega-rule-38-name
   priority: 12
   ruleEntry: true
   text: "/ServerInfo/_Wega/Guidebook/ServerRules/Rule3.8.xml"
 
 - type: guideEntry
   id: WegaRule39
-  name: Правило 3.9
+  name: wega-rule-39-name
   priority: 13
   ruleEntry: true
   text: "/ServerInfo/_Wega/Guidebook/ServerRules/Rule3.9.xml"
 
 - type: guideEntry
   id: WegaRule4
-  name: Правило 4
+  name: wega-rule-4-name
   priority: 14
   ruleEntry: true
   text: "/ServerInfo/_Wega/Guidebook/ServerRules/Rule4.xml"
 
 - type: guideEntry
   id: WegaRule5
-  name: Правило 5
+  name: wega-rule-5-name
   priority: 15
   ruleEntry: true
   text: "/ServerInfo/_Wega/Guidebook/ServerRules/Rule5.xml"
 
 - type: guideEntry
   id: WegaRule6
-  name: Правило 6
+  name: wega-rule-6-name
   priority: 16
   ruleEntry: true
   text: "/ServerInfo/_Wega/Guidebook/ServerRules/Rule6.xml"
 
 - type: guideEntry
   id: WegaRule7
-  name: Правило 7
+  name: wega-rule-7-name
   priority: 17
   ruleEntry: true
   text: "/ServerInfo/_Wega/Guidebook/ServerRules/Rule7.xml"
 
 - type: guideEntry
   id: WegaRule8
-  name: Правило 8
+  name: wega-rule-8-name
   priority: 18
   ruleEntry: true
   text: "/ServerInfo/_Wega/Guidebook/ServerRules/Rule8.xml"
 
 - type: guideEntry
   id: WegaRule81
-  name: Правило 8.1
+  name: wega-rule-81-name
   priority: 19
   ruleEntry: true
   text: "/ServerInfo/_Wega/Guidebook/ServerRules/Rule8.1.xml"
 
 - type: guideEntry
   id: WegaRule82
-  name: Правило 8.2
+  name: wega-rule-82-name
   priority: 20
   ruleEntry: true
   text: "/ServerInfo/_Wega/Guidebook/ServerRules/Rule8.2.xml"
 
 - type: guideEntry
   id: WegaRule83
-  name: Правило 8.3
+  name: wega-rule-83-name
   priority: 21
   ruleEntry: true
   text: "/ServerInfo/_Wega/Guidebook/ServerRules/Rule8.3.xml"
 
 - type: guideEntry
   id: WegaRule9
-  name: Правило 9
+  name: wega-rule-9-name
   priority: 22
   ruleEntry: true
   text: "/ServerInfo/_Wega/Guidebook/ServerRules/Rule9.xml"

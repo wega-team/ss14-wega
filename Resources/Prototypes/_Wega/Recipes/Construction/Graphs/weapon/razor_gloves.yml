@@ -1,0 +1,25 @@
+- type: constructionGraph
+  id: RazGlove
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: RazorGlov
+      steps:
+      - tag: Gloves
+        name: ent-ClothingHandsGlovesColorYellow
+        icon:
+          sprite: Clothing/Hands/Gloves/Color/yellow.rsi
+          state: icon
+        doAfter: 4
+      - tag: Wirecutter
+        name: ent-Wirecutter
+        icon:
+          sprite: Objects/Tools/wirecutters.rsi
+          state: cutters
+        doAfter: 4
+      - material: Cable
+        amount: 5
+        doAfter: 4
+  - node: RazorGlov
+    entity: ClothingHandsRazorGloves

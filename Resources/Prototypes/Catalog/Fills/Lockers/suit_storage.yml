@@ -182,7 +182,7 @@
   table: !type:AllSelector
     children:
     - id: OxygenTankFilled
-    - id: ClothingModularControllerSecurityPreassembled # Corvax-Wega-ModularSuits-Edit
+    - id: HardsuitSecSelector # Corvax-Wega-ModularSuits-Edit
     - id: ClothingMaskBreath
 
 #CE's hardsuit

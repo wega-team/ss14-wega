@@ -158,8 +158,23 @@ public sealed partial class HumanoidCharacterAppearanceV1
     [DataField("hair")]
     public string HairStyleId;
 
+    // Corvax-Wega-Convert-Edit-start
     [DataField]
-    public Color HairColor;
+    private object? _hairColor;
+
+    public Color HairColor
+    {
+        get
+        {
+            if (_hairColor is string str)
+                return Color.TryFromHex(str) ?? Color.Black;
+            if (_hairColor is List<object> list && list.Count > 0 && list[0] is string listStr)
+                return Color.TryFromHex(listStr) ?? Color.Black;
+            return Color.Black;
+        }
+        set => _hairColor = value.ToHex();
+    }
+    // Corvax-Wega-Convert-Edit-end
 
     [DataField("facialHair")]
     public string FacialHairStyleId;

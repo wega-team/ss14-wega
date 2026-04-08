@@ -25,7 +25,7 @@
       required: true
       default: [ DemomTail ]
     enum.HumanoidVisualLayers.Chest:
-      limit: 4
+      limit: 1
       required: false
     enum.HumanoidVisualLayers.LArm:
       limit: 1
