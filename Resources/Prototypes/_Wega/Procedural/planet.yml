@@ -3,6 +3,12 @@
   biome: Lavaland
   temperature: 299.15
   gases: [14.022, 22.878]
+  weather:
+  - StormWind
+  - AshStormLight
+  - AshStormHeavy
+  - VolcanicActivity
+  - AcidRain
   biomeLayers:
   - RandomNecropolisTendrils
   - RandomLavalandMob

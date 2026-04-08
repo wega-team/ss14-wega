@@ -17,8 +17,11 @@ public sealed partial class LavalandBuildingPrototype : IPrototype
     /// <summary>
     /// Why should I explain anything? Sosal?
     /// </summary>
-    [DataField("gridPath", required: true, customTypeSerializer: typeof(ResPathSerializer))]
+    [DataField(required: true, customTypeSerializer: typeof(ResPathSerializer))]
     public ResPath GridPath = default!;
+
+    [DataField("planet")]
+    public ProtoId<LavalandPlanetPrototype> CurrentPlanet = "Lavaland";
 
     /// <summary>
     /// Preloading the grid for a specific position on the map.

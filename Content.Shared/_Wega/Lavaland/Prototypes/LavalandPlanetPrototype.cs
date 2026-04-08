@@ -20,15 +20,8 @@ public sealed partial class LavalandPlanetPrototype : IPrototype
     [DataField]
     public List<ProtoId<BiomeMarkerLayerPrototype>> BiomeLayers = new();
 
-    [DataField]
-    public List<LavalandWeatherType> AvailableWeather = new()
-    {
-        LavalandWeatherType.StormWind,
-        LavalandWeatherType.AshStormLight,
-        LavalandWeatherType.AshStormHeavy,
-        LavalandWeatherType.VolcanicActivity,
-        LavalandWeatherType.AcidRain
-    };
+    [DataField("weather")]
+    public List<ProtoId<LavalandWeatherEntryPrototype>> AvailableWeather = new();
 
     [DataField("temperature")]
     public float AtmosphereTemperature = 293.15f;
@@ -40,9 +33,6 @@ public sealed partial class LavalandPlanetPrototype : IPrototype
 public enum LavalandWeatherType : byte
 {
     None = 0,
-    AshStormLight,
-    AshStormHeavy,
     VolcanicActivity,
-    AcidRain,
     StormWind
 }
