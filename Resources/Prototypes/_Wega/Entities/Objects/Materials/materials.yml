@@ -156,6 +156,9 @@
   - type: Tag
     tags:
     - MaterialsThrophy
+  - type: Currency
+    price:
+      MaterialConsecratedIngot: 1
 
 - type: entity
   parent: MaterialConsecratedIngot

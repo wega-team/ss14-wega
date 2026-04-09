@@ -39,3 +39,16 @@
     - Credit
     balance:
       Telecrystal: 0
+
+- type: entity
+  id: StorePresetRevolution
+  abstract: true
+  components:
+  - type: Store
+    name: store-preset-name-revolution
+    categories:
+    - RevolutionSupport
+    currencyWhitelist:
+    - HelpfulResource
+    balance:
+      HelpfulResource: 0

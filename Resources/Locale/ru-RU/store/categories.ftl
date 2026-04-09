@@ -26,3 +26,6 @@ store-caregory-spellbook-events = Заклинания событий
 
 # Nukie Delivery
 store-category-nukie-delivery = Offers
+
+# Revolution
+store-category-support = общая поддержка
