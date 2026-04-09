@@ -1,0 +1,56 @@
+- type: entity
+  id: BaseVeilCultStructure
+  parent: BaseStructure
+  abstract: true
+  components:
+  - type: Anchorable
+    tool: VeilCultClockworkSlab
+  - type: Physics
+    bodyType: Dynamic
+  - type: InteractionOutline
+  # - type: BloodStructure
+    # fixture: fix1
+  # - type: UserInterface
+  #   interfaces:
+  #     enum.BloodStructureUiKey.Key:
+  #       type: BloodStructureBoundUserInterface
+
+- type: entity
+  id: VeilCultBeacon
+  parent: BaseVeilCultStructure
+  name: beacon
+  description: Ominous beacon of the Veil Cult.
+  suffix: DO NOT MAP
+  components:
+  - type: Anchorable
+    tool: VeilCultClockworkSlab
+  - type: Sprite
+    sprite: _Wega/Structures/Specific/veilcult_structures.rsi
+    state: beacon
+  - type: Physics
+    bodyType: Dynamic
+  # - type: BloodPylon
+  # - type: BloodStructure
+  #   fixture: fix1
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/break_stone.ogg
+      # - !type:SpawnEntitiesBehavior
+      #   spawn:
+      #     SheetRuneMetal1:
+      #       min: 0
+      #       max: 3  --- заглушки
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  # - type: Construction
+  #   graph: BloodCultStructurePylonGraph
+  #   node: BloodCultStructurePylon

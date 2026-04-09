@@ -1,0 +1,11 @@
+- type: entity
+  id: VeilCultClockworkSlab
+  parent: BaseItem
+  name: clockwork slab
+  description: A heavy slab with intricate clockwork mechanisms. It hums with a strange energy.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/VeilCult/clockwork_slab.rsi
+  # - type: Tag
+  #   tags:
+  #   - StrangeShard
