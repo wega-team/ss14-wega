@@ -1,0 +1,14 @@
+# Basic
+- type: entity
+  id: ActionMidasTouch
+  parent: BaseAction
+  name: "[color=red]Midas Touch[/color]"
+  description: "Summon abilities with your hands."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon: { sprite: _Wega/Objects/Weapons/Melee/magic_hand.rsi, state: "midas_touch" }
+    useDelay: 15
+    priority: 1
+  - type: InstantAction
+    event: !type:VeilCultMidasTouchActionEvent

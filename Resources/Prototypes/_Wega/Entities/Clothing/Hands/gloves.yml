@@ -214,13 +214,13 @@
   parent: ClothingHandsBase
   id: ClothingHandsClockworkGauntlets
   components:
-    - type: Armor
-      modifiers:
-        coefficients:
-          Blunt: 0.9
-          Slash: 0.8
-          Piercing: 9
-          Heat: 0.85
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.8
+        Piercing: 0.9
+        Heat: 0.85
   - type: Sprite
     sprite: _Wega/Clothing/Hands/clockwork_gauntlets.rsi
     state: icon

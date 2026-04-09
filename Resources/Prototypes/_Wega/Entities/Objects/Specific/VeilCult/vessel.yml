@@ -1,6 +1,6 @@
 - type: entity
   id: VeilCultSoulVessel
-  parent: BloodCultSoulStone
+  parent: BaseItem
   name: soul vessel
   description: A little box made of brass that contains somebody soul.
   components:

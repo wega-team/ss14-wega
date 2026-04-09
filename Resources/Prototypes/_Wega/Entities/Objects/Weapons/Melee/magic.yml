@@ -696,3 +696,18 @@
     damage:
       types:
         Piercing: 10
+        
+- type: entity
+  parent: BaseItem
+  id: VeilCultMidasTouch
+  name: midas touch
+  description: Magic from the other world.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/magic_hand.rsi
+    state: midas_touch
+  - type: DeleteOnDrop
+  - type: EdibleMatter
+    canBeEaten: false
+  - type: Item
+    size: Ginormous
