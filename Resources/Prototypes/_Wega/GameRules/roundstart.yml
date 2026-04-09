@@ -105,6 +105,42 @@
           - AntagImmune
           - Pacified # Diona ha-ha-ha
 
+- type: entity
+  parent: BaseGameRule
+  id: VeilCult
+  components:
+  - type: GameRule
+    minPlayers: 30
+  - type: VeilCultRule
+  - type: AntagObjectives
+    objectives:
+      - VeilCultRitualObjective
+  - type: AntagSelection
+    definitions:
+      - prefRoles: [ VeilCultist ]
+        max: 4
+        playerRatio: 10
+        blacklist:
+          components:
+          - AntagImmune
+          - BibleUser
+          - Android
+          - Ipc
+        lateJoinAdditional: true
+        components:
+        - type: VeilCultist
+        - type: MindLink
+          channels: ["MindVeilCult"]
+        - type: NpcFactionMember
+          factions:
+          - VeilCult
+        - type: FriendlyFaction
+          faction: VeilCult
+        mindRoles:
+        - MindRoleVeilCult
+        briefing:
+          sound: "/Audio/_Wega/Ambience/Antag/bloodcult_start.ogg"
+
 # event schedulers
 
 - type: entityTable

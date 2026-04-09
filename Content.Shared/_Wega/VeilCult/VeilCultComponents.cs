@@ -8,5 +8,45 @@ using Robust.Shared.Prototypes;
 namespace Content.Shared.Veil.Cult.Components;
 
 [RegisterComponent, NetworkedComponent]
-public sealed partial class VeilCultistComponent : Component;
-// пока что тут пусто.
+public sealed partial class VeilCultistComponent : Component
+{
+
+    public static readonly EntProtoId MidasTouch = "ActionMidasTouch";
+
+    [DataField("cultistStatusIcon")]
+    public ProtoId<FactionIconPrototype> StatusIcon { get; set; } = "VeilCultistFaction";
+
+    public ProtoId<MindChannelPrototype> CultMindChannel { get; set; } = "MindVeilCult";
+}
+
+[RegisterComponent]
+public sealed partial class VeilRitualDimensionalRendingComponent : Component
+{
+    [ViewVariables(VVAccess.ReadWrite), DataField]
+    public TimeSpan ActivateTime = TimeSpan.Zero;
+
+    public bool Activate = false;
+
+    public float NextTimeTick { get; set; }
+
+    [DataField("ritualMusic")]
+    public SoundSpecifier RitualMusic = new SoundCollectionSpecifier("VeilCultMusic");
+
+    public bool SoundPlayed;
+}
+
+
+[RegisterComponent, NetworkedComponent]
+public sealed partial class VeilCultConstructComponent : Component;
+
+[RegisterComponent, NetworkedComponent]
+public sealed partial class VeilCultBeaconComponent : Component;
+
+/// <summary>
+/// Заглушка для логики
+/// </summary>
+[RegisterComponent]
+public sealed partial class VeilCultistHandsComponent : Component;
+
+[RegisterComponent, NetworkedComponent]
+public sealed partial class VeilCogDisplayComponent : Component;
