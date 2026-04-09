@@ -8,12 +8,14 @@
       channels:
       - Common
       - Command
+      - Security
+      # Corvax-Wega-Add-start 
       - Engineering
       - Medical
       - Science
-      - Security
       - Service
       - Supply
+      # Corvax-Wega-Add-end
       defaultChannel: Command
     - type: Sprite
       layers:
