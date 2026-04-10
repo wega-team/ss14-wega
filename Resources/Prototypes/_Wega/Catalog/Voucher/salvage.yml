@@ -20,7 +20,7 @@
   name: voucher-crusher-kit-name
   description: voucher-crusher-kit-desc
   items:
-  - id: WeaponCrusher
+  - id: OtherCreshSelector
   - id: FireExtinguisher
 
 - type: voucherKit

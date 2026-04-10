@@ -80,3 +80,145 @@
       - Pickaxe
   - type: StaticPrice
     price: 2850
+
+- type: entity
+  parent: WeaponCrusher
+  id: WeaponCrusherHarpoon
+  name: harpoon
+  description: A handy harpoon for stabbing attacks.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/harpoon.rsi
+    state: icon
+  - type: Item
+    size: Ginormous
+    sprite: _Wega/Objects/Weapons/Melee/harpoon.rsi
+  - type: Clothing
+    sprite: _Wega/Objects/Weapons/Melee/harpoon.rsi
+    quickEquip: false
+    slots:
+    - back
+    - suitStorage
+  - type: UseDelay
+    delay: 1.5
+  - type: LeechOnMarker
+    leech:
+      types:
+        Blunt: -2
+        Slash: -2
+        Piercing: -10
+  - type: MeleeWeapon
+    animation: WeaponArcThrust
+    attackRate: 2
+    wideAnimationRotation: -135
+    damage:
+      types:
+        Piercing: 12
+        Blunt: 2
+        Slash: 2
+    angle: 0
+    animation: WeaponArcThrust
+    soundHit:
+      collection: MetalThud
+  - type: Tag
+    tags:
+      - Pickaxe
+  - type: StaticPrice
+    price: 3000
+
+- type: entity
+  parent: WeaponCrusherHarpoon
+  id: WeaponCrusherSword
+  name: sword
+  description: A cutting sword for convenient attacks.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/sword.rsi
+    state: icon
+  - type: Item
+    size: Ginormous
+    sprite: _Wega/Objects/Weapons/Melee/sword.rsi
+  - type: Clothing
+    sprite: _Wega/Objects/Weapons/Melee/sword.rsi
+    quickEquip: false
+    slots:
+    - back
+    - suitStorage
+  - type: MeleeWeapon
+    attackRate: 2
+    wideAnimationRotation: -1
+    damage:
+      types:
+        Piercing: 1
+        Blunt: 2
+        Slash: 13
+    soundHit:
+      collection: MetalThud
+  - type: UseDelay
+    delay: 1.8
+  - type: LeechOnMarker
+    leech:
+      types:
+        Blunt: -2
+        Slash: -10
+        Piercing: -2
+  - type: Reflect # sword-cool
+    reflectProb: 0.1
+
+- type: entity
+  parent: WeaponCrusherDagger
+  id: WeaponDaggerCrusher
+  name: sword
+  description: A cutting sword for convenient attacks.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/dagger.rsi
+    state: icon
+  - type: Item
+    size: Small
+    sprite: _Wega/Objects/Weapons/Melee/dagger.rsi
+  - type: Clothing
+    sprite: _Wega/Objects/Weapons/Melee/dagger.rsi
+    quickEquip: false
+    slots:
+    - back
+    - suitStorage
+  - type: LeechOnMarker
+    leech:
+      types:
+        Blunt: -2
+        Slash: -5
+        Piercing: -2
+
+- type: entity
+  id: WeaponCrusherBlaster
+  parent: WeaponProtoKineticAcceleratorBase
+  name: blaster-crusher
+  description:
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Pistols/blaster.rsi
+    state: icon
+  - type: Item
+    sprite: _Wega/Objects/Weapons/Guns/Pistols/blaster.rsi
+    size: Small
+    shape:
+    - 0,0,2,1
+  - type: Clothing
+    sprite: _Wega/Objects/Weapons/Guns/Pistols/blaster.rsi
+    quickEquip: false
+    slots:
+    - back
+    - suitStorage
+  - type: Gun
+    fireRate: 1
+    selectedMode: SemiAuto
+    angleDecay: 0
+    minAngle: 0
+    maxAngle: 0
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/kinetic_accel.ogg
+    projectileSpeed: 15
