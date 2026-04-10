@@ -4,6 +4,7 @@ using Content.Shared.ActionBlocker;
 using Content.Shared.Damage.Components;
 using Content.Shared.Input;
 using Content.Shared.Mobs;
+using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Events;
 using Content.Shared.Standing;
 using Content.Shared.Stunnable;
@@ -18,6 +19,7 @@ public abstract partial class SharedPosingSystem : EntitySystem
 {
     [Dependency] private readonly ActionBlockerSystem _actionBlocker = default!;
     [Dependency] private readonly StandingStateSystem _standing = default!;
+    [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
     private readonly Dictionary<EntityUid, (float Angle, float OffsetX, float OffsetY, TimeSpan LastUpdate)> _continuousInput = new();
@@ -177,6 +179,9 @@ public abstract partial class SharedPosingSystem : EntitySystem
 
     private bool CanTogglePosing(EntityUid uid)
     {
+        if (!_mobState.IsAlive(uid))
+            return false;
+
         if (!_actionBlocker.CanConsciouslyPerformAction(uid))
             return false;
 
