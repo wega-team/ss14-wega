@@ -12,8 +12,16 @@
     department: Security
     time: 25h
     
+- type: startingGear
+  id: HeadVeilCultistGear
+  storage:
+    back:
+    - SheetBrass10
+    - VeilCultClockworkSlab  
+  
 # Ability gears
 - type: startingGear
   id: VeilCultMidasTouchGear
   inhand:
     - VeilCultMidasTouch
+    

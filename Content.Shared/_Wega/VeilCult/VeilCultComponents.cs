@@ -39,13 +39,30 @@ public sealed partial class VeilRitualDimensionalRendingComponent : Component
 [RegisterComponent, NetworkedComponent]
 public sealed partial class VeilCultConstructComponent : Component;
 
+[RegisterComponent]
+public sealed partial class VeilCultBeaconComponent : Component
+{
+    public float NextTimeTick { get; set; }
+}
+
 [RegisterComponent, NetworkedComponent]
-public sealed partial class VeilCultBeaconComponent : Component;
+public sealed partial class AutoVeilCultistComponent : Component;
+
+[RegisterComponent, NetworkedComponent]
+public sealed partial class InteractionCogInfectedComponent : Component
+{
+	public float PowerRate = 10000f;
+	
+	[DataField("drainSound")]
+    public SoundSpecifier Sound = new SoundPathSpecifier("/Audio/_Wega/Items/Specific/interaction_cog_drain.ogg");
+	
+    public float NextTimeTick { get; set; }
+}
 
 /// <summary>
 /// Заглушка для логики
 /// </summary>
-[RegisterComponent]
+[RegisterComponent, NetworkedComponent]
 public sealed partial class VeilCultistHandsComponent : Component;
 
 [RegisterComponent, NetworkedComponent]

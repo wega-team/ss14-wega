@@ -48,5 +48,5 @@
       - ShowCultistIcons
   locationPreference: Right
   icon:
-    sprite: /Textures/_Wega/Interface/Misc/bloodcult_icons.rsi
+    sprite: /Textures/_Wega/Interface/Misc/veilcult_icons.rsi
     state: Cultist

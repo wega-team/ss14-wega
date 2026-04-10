@@ -155,6 +155,16 @@
     guides:
     - VoltageNetworks
     - Power
+  - type: ContainerContainer
+    containers:
+      integration_cog: !type:ContainerSlot
+  - type: ItemSlots
+    slots:
+      integration_cog:
+        # ejectOnInteract: true
+        whitelist:
+          tags:
+          - InteractionCog
 
 # APC under construction
 - type: entity

@@ -137,9 +137,10 @@
         - type: FriendlyFaction
           faction: VeilCult
         mindRoles:
-        - MindRoleVeilCult
+        - MindRoleVeilCultist
         briefing:
-          sound: "/Audio/_Wega/Ambience/Antag/bloodcult_start.ogg"
+          sound: "/Audio/_Wega/Ambience/Antag/veilcult_start.ogg"
+        startingGear: HeadVeilCultistGear
 
 # event schedulers
 

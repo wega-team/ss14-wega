@@ -79,6 +79,7 @@ namespace Content.Server.GameTicking.Rules
             SubscribeLocalEvent<GodCalledEvent>(OnGodCalled);
             SubscribeLocalEvent<RitualConductedEvent>(OnRitualConducted);
 
+            SubscribeLocalEvent<AutoVeilCultistComponent, ComponentStartup>(OnAutoCultistAdded);
             SubscribeLocalEvent<VeilCultistComponent, ComponentRemove>(OnComponentRemove);
             SubscribeLocalEvent<VeilCultistComponent, MobStateChangedEvent>(OnMobStateChanged);
             SubscribeLocalEvent<VeilCultistComponent, EntityZombifiedEvent>(OnCultistZombified);
@@ -206,12 +207,38 @@ namespace Content.Server.GameTicking.Rules
                 var objective = _objectives.TryCreateObjective(mindId, mind, cult.ObjectivePrototype);
                 if (objective == null)
                     continue;
-
-                _target.SetTarget(objective.Value, target);
-                _meta.SetEntityName(objective.Value, Loc.GetString("objective-condition-veil-ritual-beacon-title",
-                    ("targetName", Name(target)))); // <see cref="ObjectiveAssignedEvent"/> here doesn't worked, or i'm stupid
-                _mind.AddObjective(mindId, mind, objective.Value);
+				
+				if (TryComp<WarpPointComponent>(target, out var warp) && warp.Location != null)
+				{				
+					_target.SetTarget(objective.Value, target);
+					_meta.SetEntityName(objective.Value, Loc.GetString("objective-condition-veil-ritual-beacon-title",
+						("targetName", warp.Location))); // <see cref="ObjectiveAssignedEvent"/> here doesn't worked, or i'm stupid
+					_mind.AddObjective(mindId, mind, objective.Value);
+				}
             }
+        }
+		
+        private void OnAutoCultistAdded(EntityUid uid, AutoVeilCultistComponent comp, ComponentStartup args)
+        {
+            if (!_mind.TryGetMind(uid, out var mindId, out var mind) || HasComp<VeilCultistComponent>(uid))
+            {
+                RemComp<AutoVeilCultistComponent>(uid);
+                return;
+            }
+
+            _npcFaction.AddFaction(uid, VeilCultNpcFaction);
+            var culsistComp = EnsureComp<VeilCultistComponent>(uid);
+            _adminLogManager.Add(LogType.Mind, LogImpact.Medium, $"{ToPrettyString(uid)} converted into a Veil Cult");
+            if (mindId == default || !_role.MindHasRole<VeilCultistComponent>(mindId))
+                _role.MindAddRole(mindId, "MindRoleVeilCultist");
+            if (mind is { UserId: not null } && _player.TryGetSessionById(mind.UserId, out var session))
+                _antag.SendBriefing(session, MakeBriefing(uid), Color.Orange, new SoundPathSpecifier("/Audio/_Wega/Ambience/Antag/veilcult_start.ogg"));
+            RemComp<AutoVeilCultistComponent>(uid);
+
+            var mindLink = EnsureComp<MindLinkComponent>(uid);
+            mindLink.Channels.Add(culsistComp.CultMindChannel);
+
+            MakeCultist(uid);
         }
 		
         private void CheckStage()

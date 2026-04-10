@@ -68,4 +68,4 @@
   name: achievements-veilcult-name
   description: achievements-veilcult-desc
   key: VeilCult
-  icon: { sprite: _Wega/Interface/achievements.rsi, state: bloodcult }
+  icon: { sprite: _Wega/Interface/achievements.rsi, state: veilcult }

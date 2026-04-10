@@ -25,11 +25,11 @@
   - type: Anchorable
     tool: VeilCultClockworkSlab
   - type: Sprite
-    sprite: _Wega/Structures/Specific/veilcult_structures.rsi
+    sprite: _Wega/Structures/Specific/VeilCult/beacon.rsi
     state: beacon
   - type: Physics
     bodyType: Dynamic
-  # - type: BloodPylon
+  - type: VeilCultBeacon
   # - type: BloodStructure
   #   fixture: fix1
   - type: Damageable
@@ -44,11 +44,11 @@
       - !type:PlaySoundBehavior
         sound:
           path: /Audio/Effects/break_stone.ogg
-      # - !type:SpawnEntitiesBehavior
-      #   spawn:
-      #     SheetRuneMetal1:
-      #       min: 0
-      #       max: 3  --- заглушки
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetBrass:
+            min: 0
+            max: 3  
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   # - type: Construction

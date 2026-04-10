@@ -2,6 +2,7 @@ using Content.Server.Power.NodeGroups;
 using Content.Shared.APC;
 using Robust.Shared.Audio;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
+using Robust.Shared.Containers;
 
 namespace Content.Server.Power.Components;
 
@@ -59,6 +60,20 @@ public sealed partial class ApcComponent : BaseApcNetComponent
     /// </summary>
     [DataField]
     public bool TripFlag;
+	
+	// Corvax-Wega-VeilCult-Start
+	/// <summary>
+    /// The container ID for the int cog
+    /// </summary>
+    [DataField]
+    public string CogSlotId = "integration_cog";
+
+    /// <summary>
+    /// The container for the int cog
+    /// </summary>
+    [ViewVariables]
+    public ContainerSlot CogSlot = default!;
+	// Corvax-Wega-VeilCult-End
 
     // TODO ECS power a little better!
     // End the suffering
