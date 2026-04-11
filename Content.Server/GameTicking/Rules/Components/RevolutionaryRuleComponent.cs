@@ -27,6 +27,5 @@ public sealed partial class RevolutionaryRuleComponent : Component
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public TimeSpan ShuttleCallTime = TimeSpan.FromMinutes(5);
-    [DataField]
-    public int AmountPerRev = 1;
+    [DataField] public int AmountPerRev = 1; //Corvax-Wega-Edit
 }
