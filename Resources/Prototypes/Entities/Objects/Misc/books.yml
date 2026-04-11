@@ -519,8 +519,8 @@
   parent: [ BaseItem, StorePresetRevolution ]
   id: BookRandomRevolution
   suffix: random visual, revolition
-  name: "Newton's Guide to Atmos: Vents and More"
-  description: There are endless illegible notes scribbled in the margins. Most of the text is covered in handwritten question marks.
+  name: Moral Manual
+  description: The margins are littered with endless, illegible notes. Most of the text is empty blocks of text.
   components:
   - type: RandomMetadata
     nameSegments:
