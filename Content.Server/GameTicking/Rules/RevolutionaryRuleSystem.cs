@@ -176,7 +176,7 @@ public sealed class RevolutionaryRuleSystem : GameRuleSystem<RevolutionaryRuleCo
             if (!_tag.HasTag(storeUid, RevShopTagPrototype))  //tag RevShop
                 continue;
 
-            _store.TryAddCurrency(new() { { HelpfulResourceCurrencyPrototype, revRule.Comp.Amount } }, storeUid, component);
+            _store.TryAddCurrency(new() { { HelpfulResourceCurrencyPrototype, revRule.Comp.AmountPerRev } }, storeUid, component);
         }
         //Corvax-Wega-Edit-End
         if (ev.User != null)

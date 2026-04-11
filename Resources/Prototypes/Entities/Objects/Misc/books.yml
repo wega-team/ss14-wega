@@ -610,7 +610,7 @@
     key: enum.StoreUiKey.Key
   - type: Store
     balance:
-      HelpfulResource: 1
+      HelpfulResource: 0
   - type: UseDelayOnMeleeHit
   - type: MeleeWeapon
     wideAnimationRotation: 180
