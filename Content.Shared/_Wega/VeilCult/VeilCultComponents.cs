@@ -51,7 +51,7 @@ public sealed partial class AutoVeilCultistComponent : Component;
 [RegisterComponent, NetworkedComponent]
 public sealed partial class InteractionCogInfectedComponent : Component
 {
-	public float PowerRate = 10000f;
+	public float PowerRate = 25000f;
 	
 	[DataField("drainSound")]
     public SoundSpecifier Sound = new SoundPathSpecifier("/Audio/_Wega/Items/Specific/interaction_cog_drain.ogg");
@@ -59,11 +59,28 @@ public sealed partial class InteractionCogInfectedComponent : Component
     public float NextTimeTick { get; set; }
 }
 
+[RegisterComponent]
+public sealed partial class EnchantableComponent : Component
+{
+    [DataField("enchants", required: true)]
+    public List<EntProtoId> Enchants = new();
+	
+    [DataField("delay")]
+    public TimeSpan Delay = TimeSpan.FromSeconds(5);
+	
+	[DataField("cost")]
+	public float Cost = 100f;
+	
+}
+
 /// <summary>
 /// Заглушка для логики
 /// </summary>
 [RegisterComponent, NetworkedComponent]
 public sealed partial class VeilCultistHandsComponent : Component;
+
+[RegisterComponent, NetworkedComponent]
+public sealed partial class EnchantedComponent : Component;
 
 [RegisterComponent, NetworkedComponent]
 public sealed partial class VeilCogDisplayComponent : Component;

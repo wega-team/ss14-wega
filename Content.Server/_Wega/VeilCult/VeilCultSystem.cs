@@ -73,6 +73,7 @@ public sealed partial class VeilCultSystem : SharedVeilCultSystem
         base.Initialize();
 
         InitializeVeilAbilities();
+		InitializeEnchantments();
 		
 		SubscribeLocalEvent<VeilCultistHandsComponent, ExaminedEvent>(OnCultistHandsExamined);
 		SubscribeLocalEvent<VeilCultBeaconComponent, ComponentInit>(OnBeaconSpawn);
@@ -128,21 +129,20 @@ public sealed partial class VeilCultSystem : SharedVeilCultSystem
             if (cogQueryComponent.NextTimeTick <= 0)
             {
                 cogQueryComponent.NextTimeTick = 5;
-				if (TryComp<BatteryComponent>(Transform(cog).ParentUid, out var battery))
+				if (TryComp<BatteryComponent>(cog, out var battery))
 				{
-					if (_battery.TryUseCharge((Transform(cog).ParentUid, battery), cogQueryComponent.PowerRate))
+					if (_battery.TryUseCharge((cog, battery), cogQueryComponent.PowerRate))
 					{
-						_audio.PlayPvs(_audio.ResolveSound(cogQueryComponent.Sound), Transform(cog).ParentUid);
 						var cult = _veilCult.GetActiveRule();
 						if (cult != null)
 						{
 							cult.EnergyCount += 10;
 						}
+						_audio.PlayPvs(_audio.ResolveSound(cogQueryComponent.Sound), cog);
 					}
 				}
 			}
-			else
-				cogQueryComponent.NextTimeTick -= frameTime;
+			cogQueryComponent.NextTimeTick -= frameTime;
 		}
 	}
 

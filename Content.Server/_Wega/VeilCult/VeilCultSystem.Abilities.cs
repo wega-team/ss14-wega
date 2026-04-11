@@ -77,23 +77,22 @@ public sealed partial class VeilCultSystem
     private void InitializeVeilAbilities()
     {
 
+        SubscribeLocalEvent<VeilCultistComponent, VeilCultMidasTouchGetHandEvent>(OnMidasTouch);
         // Abilities
-        SubscribeLocalEvent<VeilCultistComponent, VeilCultMidasTouchActionEvent>(OnMidasTouch);
     }
 
 
     #region Abilities
 
-    private void OnMidasTouch(EntityUid cultist, VeilCultistComponent component, VeilCultMidasTouchActionEvent args)
-    {
-        var spellGear = new ProtoId<StartingGearPrototype>("VeilCultMidasTouchGear");
+	public void OnMidasTouch(EntityUid cultist, VeilCultistComponent component, VeilCultMidasTouchGetHandEvent args)
+	{
+		var spellGear = new ProtoId<StartingGearPrototype>("VeilCultMidasTouchGear");
 
-        var dropEvent = new DropHandItemsEvent();
-        RaiseLocalEvent(cultist, ref dropEvent);
-        List<ProtoId<StartingGearPrototype>> gear = new() { spellGear };
-        _loadout.Equip(cultist, gear, null);
-
-        args.Handled = true;
-    }
+		var dropEvent = new DropHandItemsEvent();
+		RaiseLocalEvent(cultist, ref dropEvent);
+		List<ProtoId<StartingGearPrototype>> gear = new() { spellGear };
+		_loadout.Equip(cultist, gear, null);
+	}
+	
     #endregion
 }

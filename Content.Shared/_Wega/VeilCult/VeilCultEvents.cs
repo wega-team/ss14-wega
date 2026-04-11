@@ -11,3 +11,13 @@ public sealed partial class VeilCultMidasTouchActionEvent : InstantActionEvent
 {
 }
 
+public sealed partial class VeilCultMidasTouchGetHandEvent : InstantActionEvent
+{
+}
+
+[Serializable, NetSerializable]
+public sealed partial class EnchantingDoAfterEvent : SimpleDoAfterEvent
+{
+	public EntProtoId Entity;
+}
+

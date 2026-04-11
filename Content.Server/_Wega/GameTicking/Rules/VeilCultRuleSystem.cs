@@ -349,6 +349,18 @@ namespace Content.Server.GameTicking.Rules
             return null;
         }
 		
+		public bool TryUseEnergy(float amount)
+		{
+			var comp = GetActiveRule();
+			if (comp == null)
+				return true;
+			
+			if (comp.EnergyCount < amount)
+				return false;
+			
+			comp.EnergyCount -= amount;
+				return true;
+		}
 		// endround
 
         protected override void AppendRoundEndText(EntityUid uid,

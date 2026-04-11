@@ -12,7 +12,7 @@ public sealed partial class VeilCultRuleComponent : Component
 {
 	
 	[DataField]
-    public int EnergyCount;
+    public float EnergyCount;
 
     [DataField]
     public VeilCultWinType WinType = VeilCultWinType.Neutral;

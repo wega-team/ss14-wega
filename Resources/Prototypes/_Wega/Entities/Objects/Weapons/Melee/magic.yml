@@ -567,8 +567,9 @@
 
 - type: entity
   id: WeaponClockworkSword
-  parent: BaseItem
+  parent: BaseEnchantable
   name: clockwork sword
+  suffix: XYUHYA
   description: A sword with a large winding gear on the hilt. Weapon of the righteous Ratvar.
   components:
   - type: Sharp
@@ -591,10 +592,14 @@
     soundHit:
         path: /Audio/Weapons/bladeslice.ogg
   - type: DisarmMalus
+  - type: Enchantable
+    enchants:
+    - BloodRatvarianSpear
+    - WeaponClockHammer
   
 - type: entity
   id: WeaponClockHammer
-  parent: BaseItem
+  parent: BaseEnchantable
   name: clock hammer
   description: A large and lifty hammer, that can throw it targets on hit. For the righteous of Ratvar.
   components:
@@ -640,9 +645,13 @@
     walkModifier: 0.8
     sprintModifier: 0.8
   - type: Wieldable
+  - type: Enchantable
+    enchants:
+    - BloodRatvarianSpear
+    - WeaponClockworkSword
     
 - type: entity
-  parent: BaseItem
+  parent: BaseEnchantable
   id: BloodRatvarianSpear
   name: ratvarian spear
   description: The spear formed from clockwork metal for righteous of Ratvar.
@@ -696,6 +705,10 @@
     damage:
       types:
         Piercing: 10
+  - type: Enchantable
+    enchants:
+    - WeaponClockHammer
+    - WeaponClockworkSword
         
 - type: entity
   parent: BaseItem
