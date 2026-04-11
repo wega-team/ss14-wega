@@ -597,6 +597,7 @@
   - type: Tag
     tags:
     - Book
+    - RevShop
   - type: DamageOtherOnHit
     damage:
       types:
@@ -609,7 +610,7 @@
     key: enum.StoreUiKey.Key
   - type: Store
     balance:
-      HelpfulResource: 0
+      HelpfulResource: 1
   - type: UseDelayOnMeleeHit
   - type: MeleeWeapon
     wideAnimationRotation: 180

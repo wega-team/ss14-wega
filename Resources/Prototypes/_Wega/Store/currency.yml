@@ -15,4 +15,4 @@
   displayName: store-currency-display-helpful-resource
   canWithdraw: false
   cash:
-    1: MaterialConsecratedIngot1
+    1: MaterialConsecratedIngot
