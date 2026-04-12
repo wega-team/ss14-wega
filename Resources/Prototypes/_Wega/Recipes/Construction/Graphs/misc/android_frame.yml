@@ -1,9 +1,9 @@
 - type: constructionGraph
   id: AndroidEndoskeleton
-  entity: AndroidEndoskeleton
   start: start
   graph:
   - node: start
+    entity: AndroidEndoskeleton
     edges:
     - to: frame
       steps:
