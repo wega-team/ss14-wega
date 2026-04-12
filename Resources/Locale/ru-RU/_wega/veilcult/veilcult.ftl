@@ -1,1 +1,2 @@
 veil-cultist-hands-glow-examined = [color=orange]Вы замечаете латунное покрытие на их руках со слабым свечением Это не к добру..[/color]
+veil-cult-energy-amount = У праведников { $energy } единиц энергии.

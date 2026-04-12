@@ -5,6 +5,8 @@ using Content.Server.GameTicking.Rules;
 using Content.Server.RoundEnd;
 using Content.Shared.Actions;
 using Content.Shared.Veil.Cult;
+using Content.Shared.Veil.Cult.UI;
+using Content.Shared.Veil.Cult.Components;
 using Content.Shared.Body;
 using Content.Shared.Body.Components;
 using Content.Shared.Chemistry.EntitySystems;
@@ -30,16 +32,17 @@ using Content.Shared.Standing;
 using Content.Shared.Weapons.Melee;
 using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Weapons.Ranged.Events;
-using Content.Shared.Veil.Cult.Components;
 using Content.Shared.PowerCell;
 using Content.Shared.Power.EntitySystems;
 using Content.Shared.Power.Components;
+using Content.Shared.Humanoid;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
+using Robust.Shared.GameObjects;
 
 
 namespace Content.Server.Veil.Cult;
@@ -77,6 +80,9 @@ public sealed partial class VeilCultSystem : SharedVeilCultSystem
 		
 		SubscribeLocalEvent<VeilCultistHandsComponent, ExaminedEvent>(OnCultistHandsExamined);
 		SubscribeLocalEvent<VeilCultBeaconComponent, ComponentInit>(OnBeaconSpawn);
+		SubscribeLocalEvent<VeilCultAltarComponent, VeilAltarSelectEnergyMessage>(OnSelectEnergy);
+		SubscribeLocalEvent<VeilCultAltarComponent, VeilAltarSelectOfferMessage>(OnSelectOffer);
+		SubscribeLocalEvent<VeilCultAltarComponent, ActivateInWorldEvent>(UseVeilAltar);
     }
 
     public override void Update(float frameTime)
@@ -172,4 +178,47 @@ public sealed partial class VeilCultSystem : SharedVeilCultSystem
 			}
 		}
 	}
+	
+    private void UseVeilAltar(EntityUid uid, VeilCultAltarComponent component, ActivateInWorldEvent args)
+    {
+        if (args.Handled)
+            return;
+		
+		if (!HasComp<VeilCultistComponent>(args.User))
+			return;
+
+        OpenAltarSelectionUI(uid, component, args.User);
+        args.Handled = true;
+    }
+
+    private void OpenAltarSelectionUI(EntityUid altar, VeilCultAltarComponent component, EntityUid user)
+    {
+        var state = new VeilAltarState(
+			GetNetEntity(user),
+			GetNetEntity(altar));
+
+        _ui.OpenUi(altar, VeilAltarUiKey.Key, user);
+		
+    }
+	
+    private void OnSelectOffer(EntityUid uid, VeilCultAltarComponent component, VeilAltarSelectOfferMessage args)
+	{
+	    var targets = _entityLookup.GetEntitiesInRange<HumanoidProfileComponent>(Transform(uid).Coordinates, 1f);
+		foreach (var target in targets)
+		{
+			if (HasComp<VeilCultistComponent>(target))
+				continue;
+			
+			EnsureComp<AutoVeilCultistComponent>(target);
+			break;
+		}
+	}
+	
+    private void OnSelectEnergy(EntityUid uid, VeilCultAltarComponent component, VeilAltarSelectEnergyMessage args)
+	{
+		var cult = _veilCult.GetActiveRule();
+		if (cult != null)
+			_popup.PopupEntity(Loc.GetString("veil-cult-energy-amount", ("energy", cult.EnergyCount)), uid, PopupType.Medium);
+	}
+	
 }

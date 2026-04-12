@@ -39,6 +39,9 @@ public sealed partial class VeilRitualDimensionalRendingComponent : Component
 [RegisterComponent, NetworkedComponent]
 public sealed partial class VeilCultConstructComponent : Component;
 
+[RegisterComponent, NetworkedComponent]
+public sealed partial class VeilCultAltarComponent : Component;
+
 [RegisterComponent]
 public sealed partial class VeilCultBeaconComponent : Component
 {
