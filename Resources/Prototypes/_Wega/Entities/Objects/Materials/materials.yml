@@ -158,7 +158,7 @@
     - MaterialsThrophy
   - type: Currency
     price:
-      MaterialConsecratedIngot: 1
+      MaterialConsecratedIngot1: 1
 
 - type: entity
   parent: MaterialConsecratedIngot
