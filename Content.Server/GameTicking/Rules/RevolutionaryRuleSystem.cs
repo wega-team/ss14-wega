@@ -169,14 +169,15 @@ public sealed class RevolutionaryRuleSystem : GameRuleSystem<RevolutionaryRuleCo
         _npcFaction.AddFaction(ev.Target, RevolutionaryNpcFaction);
         var revComp = EnsureComp<RevolutionaryComponent>(ev.Target);
         //Corvax-Wega-Edit-Start
-        Entity<RevolutionaryRuleComponent> revRule;
-        var enumerator = EntityQueryEnumerator<StoreComponent>();
-        while (enumerator.MoveNext(out var storeUid, out var component))
+        var children = Transform(uid).ChildEnumerator;
+        while (children.MoveNext(out var storeUid))
         {
-            if (!_tag.HasTag(storeUid, RevShopTagPrototype))  //tag RevShop
-                continue;
-
-            _store.TryAddCurrency(new() { { HelpfulResourceCurrencyPrototype, revRule.Comp.AmountPerRev } }, storeUid, component);
+            if (_tag.HasTag(storeUid, RevShopTagPrototype) && TryComp<StoreComponent>(storeUid, out var store))  //tag RevShop
+			{
+				_store.TryAddCurrency(new() { { HelpfulResourceCurrencyPrototype, comp.AmountPerRev } }, storeUid, store);
+				break;
+			}
+			continue;
         }
         //Corvax-Wega-Edit-End
         if (ev.User != null)

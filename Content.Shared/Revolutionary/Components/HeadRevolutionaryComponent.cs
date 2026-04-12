@@ -24,4 +24,7 @@ public sealed partial class HeadRevolutionaryComponent : Component
     public TimeSpan StunTime = TimeSpan.FromSeconds(3);
 
     public override bool SessionSpecific => true;
+	
+    [DataField] 
+	public int AmountPerRev = 1; //Corvax-Wega-Edit
 }
