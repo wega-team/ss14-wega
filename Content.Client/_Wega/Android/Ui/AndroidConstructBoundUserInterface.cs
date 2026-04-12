@@ -1,19 +1,10 @@
-using Content.Client.Humanoid;
 using Content.Shared._Wega.Android;
-using Content.Shared.Cargo;
-using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Preferences;
-using Content.Shared.Spawning;
 using JetBrains.Annotations;
 using Robust.Client.UserInterface;
-using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Configuration;
 using Robust.Shared.Prototypes;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using static Robust.Client.Input.Mouse;
 
 namespace Content.Client._Wega.Android.Ui;
 

@@ -1,9 +1,6 @@
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.UserInterface;
 using Robust.Shared.Containers;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Content.Shared._Wega.Android;
 

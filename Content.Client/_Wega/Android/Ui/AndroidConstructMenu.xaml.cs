@@ -1,6 +1,4 @@
-using Content.Client.Administration.UI.Notes;
 using Content.Client.Humanoid;
-using Content.Client.Stylesheets;
 using Content.Shared.CCVar;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Markings;
@@ -12,11 +10,7 @@ using Robust.Client.UserInterface.CustomControls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Configuration;
 using Robust.Shared.Prototypes;
-using System;
-using System.Collections.Generic;
 using System.Numerics;
-using System.Text;
-using static Robust.Client.UserInterface.Controls.MenuBar;
 
 namespace Content.Client._Wega.Android.Ui;
 
