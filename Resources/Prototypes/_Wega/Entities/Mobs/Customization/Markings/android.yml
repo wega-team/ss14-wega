@@ -301,7 +301,7 @@
 
 - type: marking
   id: AndroidScrapLegLeft
-  bodyPart: Special
+  bodyPart: LLeg
   groupWhitelist: [ Android ]
   sponsorOnly: false
   coloring:
@@ -315,7 +315,7 @@
 
 - type: marking
   id: AndroidScrapLegRight
-  bodyPart: Special
+  bodyPart: RLeg
   groupWhitelist: [ Android ]
   sponsorOnly: false
   coloring:
