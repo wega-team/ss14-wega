@@ -66,7 +66,7 @@ public sealed class RevolutionaryRuleSystem : GameRuleSystem<RevolutionaryRuleCo
     [Dependency] private readonly TagSystem _tag = default!;
 
     private static readonly ProtoId<TagPrototype> RevShopTagPrototype = "RevShop";
-    private static readonly ProtoId<CurrencyPrototype> HelpfulResourceCurrencyPrototype = "MaterialConsecratedIngot";
+    private static readonly ProtoId<CurrencyPrototype> HelpfulResourceCurrencyPrototype = "HelpfulResource";
     //Corvax-Wega-Edit-End
     //Used in OnPostFlash, no reference to the rule component is available
     public readonly ProtoId<NpcFactionPrototype> RevolutionaryNpcFaction = "Revolutionary";
@@ -172,6 +172,19 @@ public sealed class RevolutionaryRuleSystem : GameRuleSystem<RevolutionaryRuleCo
         var children = Transform(uid).ChildEnumerator;
         while (children.MoveNext(out var storeUid))
         {
+			if (HasComp<ContainerManagerComponent>(storeUid))
+			{
+				var childrenSecond = Transform(storeUid).ChildEnumerator;
+				while (childrenSecond.MoveNext(out var childUid))
+				{
+				    if (_tag.HasTag(childUid, RevShopTagPrototype) && TryComp<StoreComponent>(childUid, out var childrenStore))  //tag RevShop
+					{
+						_store.TryAddCurrency(new() { { HelpfulResourceCurrencyPrototype, comp.AmountPerRev } }, childUid, childrenStore);
+						break;
+					}
+				}
+			}
+            
             if (_tag.HasTag(storeUid, RevShopTagPrototype) && TryComp<StoreComponent>(storeUid, out var store))  //tag RevShop
 			{
 				_store.TryAddCurrency(new() { { HelpfulResourceCurrencyPrototype, comp.AmountPerRev } }, storeUid, store);
