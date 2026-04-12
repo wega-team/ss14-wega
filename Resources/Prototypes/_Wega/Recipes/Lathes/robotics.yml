@@ -134,6 +134,7 @@
     Plastic: 500
     Gold: 500
     Diamond: 200
+
 # Android
 
 - type: latheRecipe
@@ -141,31 +142,45 @@
   id: Tyriumpack
   result: Tyriumpack1
   categories:
-    - Anroid
+    - Android
   completetime: 1
   materials:
     Steel: 20
     Plastic: 20
     Plasma: 15
 
-# - type: latheRecipe
-#   parent: BaseRoboticsRecipe
-#   id: AndroidBodyPart
-#   result: AndroidBodyPart
-#   categories:
-#     - Anroid
-#   completetime: 5
-#   materials:
-#     Steel: 300
-#     Plastic: 250
-#     Silver: 150
+- type: latheRecipe
+  parent: BaseRoboticsRecipe
+  id: AndroidBodyPart
+  result: AndroidBodyPart
+  categories:
+    - Android
+  completetime: 5
+  materials:
+    Steel: 250
+    Plastic: 250
+    Silver: 150
+
+- type: latheRecipe
+  parent: BaseRoboticsRecipe
+  id: AndroidEndoskeleton
+  result: AndroidEndoskeleton
+  categories:
+    - Android
+  completetime: 5
+  materials:
+    Steel: 1000
+    Glass: 1500 
+    Plastic: 500
+    Gold: 500
+    Plasma: 500
 
 # - type: latheRecipe
 #   parent: BaseRoboticsRecipe
 #   id: ArmSyntheticPry
 #   result: LeftArmSyntheticPry
 #   categories:
-#     - Anroid
+#     - Android
 #   completetime: 5
 #   materials:
 #     Steel: 750
@@ -178,7 +193,7 @@
 #   id: ArmSyntheticDefib
 #   result: LeftArmSyntheticDefib
 #   categories:
-#     - Anroid
+#     - Android
 #   completetime: 5
 #   materials:
 #     Steel: 750
@@ -190,7 +205,7 @@
 #   id: ArmSyntheticProtoKinetic
 #   result: LeftArmSyntheticProtoKinetic
 #   categories:
-#     - Anroid
+#     - Android
 #   completetime: 5
 #   materials:
 #     Steel: 750
@@ -203,7 +218,7 @@
 #   id: ArmSyntheticCharger
 #   result: LeftArmSyntheticCharger
 #   categories:
-#     - Anroid
+#     - Android
 #   completetime: 5
 #   materials:
 #     Steel: 750
@@ -215,7 +230,7 @@
 #   id: LegSyntheticMagboots
 #   result: LeftLegSyntheticMagboots
 #   categories:
-#     - Anroid
+#     - Android
 #   completetime: 5
 #   materials:
 #     Steel: 750
@@ -227,7 +242,7 @@
 #   id: LegSyntheticJump
 #   result: LeftLegSyntheticJump
 #   categories:
-#     - Anroid
+#     - Android
 #   completetime: 5
 #   materials:
 #     Steel: 750

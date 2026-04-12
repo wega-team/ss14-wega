@@ -8,11 +8,13 @@
     state: fab-idle
   discipline: Experimental
   tier: 2
-  cost: 10000
+  cost: 15000
   recipeUnlocks:
   - BorgChargerTurboCircuitboard
   - ExosuitFabricatorHyperConvectionMachineCircuitboard
   - Nanopast1
+  - AndroidBodyPart
+  - AndroidEndoskeleton
   technologyPrerequisites:
   - BasicRobotics
 

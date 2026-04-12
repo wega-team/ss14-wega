@@ -2,6 +2,9 @@
   id: Android
 
 - type: Tag
+  id: AndroidPart
+
+- type: Tag
   id: SoulStone
 
 - type: Tag
