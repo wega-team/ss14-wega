@@ -98,7 +98,7 @@ ent-FloorTrapEMPXenoborg = ловушка ЭМИ
     .desc = { ent-CollideFloorTrap.desc }
 # Синдикат
 ent-BorgModuleChina = подрывной модуль киборга
-    .desc = Модуль с China ROW, нет ниччего круче на спецоперациях, чем взрывы!
+    .desc = Модуль с China ROW, нет ничего круче на спецоперациях, чем взрывы!
 ent-BorgModuleSniper = снайперский модуль киборга
     .desc = Модуль с Христов ROW и вспомогательным ПО ROW, разница между психом и убийцей то, что первое это болезнь, а второе профессия!
 ent-BorgModuleCR20Advensed = модуль киборга с C-20u ROW
@@ -159,6 +159,7 @@ borg-slot-diski-empty = Диски ОИ и технологий
 borg-slot-beacon-empty = Маяки
 borg-slot-fulton-empty = Фултоны и стан.маячки
 borg-slot-swap-empty = Вакцина и палочки
+borg-slot-swap-only-empty = Стерильные палочки
 borg-slot-spray-empty = Спреи
 
 ent-ActionBlinkBorg = Блюспейс прыжок

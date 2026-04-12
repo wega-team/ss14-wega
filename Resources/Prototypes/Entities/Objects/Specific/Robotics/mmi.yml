@@ -57,6 +57,16 @@
     tags:
       - BrainSynthetic
   - type: Brain
+  - type: HandheldGPS
+    gPSName: Киборг
+  - type: HandheldGpsUi
+    broadcastEnabled: false
+  - type: ActivatableUI
+    key: enum.GpsUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.GpsUiKey.Key:
+        type: GpsBoundUserInterface
   # Corvax-Wega-Android-end
 
 - type: entity
@@ -146,4 +156,14 @@
         - SecretStash
     # Corvax-Wega-Android-start
     - type: Brain
+    - type: HandheldGPS
+      gPSName: Киборг
+    - type: HandheldGpsUi
+      broadcastEnabled: false
+    - type: ActivatableUI
+      key: enum.GpsUiKey.Key
+    - type: UserInterface
+      interfaces:
+        enum.GpsUiKey.Key:
+          type: GpsBoundUserInterface
     # Corvax-Wega-Android-end

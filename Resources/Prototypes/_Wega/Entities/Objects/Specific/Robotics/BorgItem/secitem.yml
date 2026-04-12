@@ -41,7 +41,7 @@
     proto: BulletDisablerSmg
     fireCost: 40
   - type: BatterySelfRecharger
-    autoRechargeRate: 10
+    autoRechargeRate: 40
     autoRechargePauseTime: 20
   - type: AmmoCounter
 
@@ -93,8 +93,8 @@
     maxCharge: 1000
     startingCharge: 1000
   - type: BatterySelfRecharger
-    autoRechargeRate: 10
-    autoRechargePauseTime: 40
+    autoRechargeRate: 25
+    autoRechargePauseTime: 20
   - type: AmmoCounter
 
 # SEC Dec

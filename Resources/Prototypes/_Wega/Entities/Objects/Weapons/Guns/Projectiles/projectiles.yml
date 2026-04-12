@@ -9,6 +9,15 @@
     damage:
       types:
         Heat: 17
+  - type: Fixtures
+    fixtures:
+      projectile:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.1,-0.1,0.1,0.1"
+        hard: false
+        mask:
+        - Opaque
 
 - type: entity
   parent: BasicHitscan
