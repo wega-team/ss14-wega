@@ -18,6 +18,7 @@ using Content.Shared.Store.Components;
 using Content.Shared.Store.Events;
 using Content.Shared.Tag;
 using Content.Shared.UserInterface;
+using Robust.Shared.Containers;
 //Corvax-Wega-Edit-End
 using Content.Shared.Database;
 using Content.Shared.Flash;
