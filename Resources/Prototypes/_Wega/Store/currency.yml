@@ -13,6 +13,4 @@
 - type: currency
   id: HelpfulResource
   displayName: store-currency-display-helpful-resource
-  cash:
-    1: MaterialConsecratedIngot1
   canWithdraw: false

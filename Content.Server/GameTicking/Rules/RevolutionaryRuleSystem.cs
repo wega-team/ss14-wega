@@ -11,14 +11,10 @@ using Content.Server.RoundEnd;
 using Content.Server.Shuttles.Systems;
 using Content.Server.Station.Systems;
 //Corvax-Wega-Edit-Start
-using Content.Server.Store.Components;
 using Content.Server.Store.Systems;
 using Content.Shared.Store;
 using Content.Shared.Store.Components;
-using Content.Shared.Store.Events;
 using Content.Shared.Tag;
-using Content.Shared.UserInterface;
-using Robust.Shared.Containers;
 //Corvax-Wega-Edit-End
 using Content.Shared.Database;
 using Content.Shared.Flash;
@@ -62,13 +58,13 @@ public sealed class RevolutionaryRuleSystem : GameRuleSystem<RevolutionaryRuleCo
     [Dependency] private readonly RoundEndSystem _roundEnd = default!;
     [Dependency] private readonly SharedStunSystem _stun = default!;
     [Dependency] private readonly StationSystem _stationSystem = default!;
-    //Corvax-Wega-Edit-Start
+    // Corvax-Wega-Revolutionary-Start
     [Dependency] private readonly StoreSystem _store = default!;
     [Dependency] private readonly TagSystem _tag = default!;
 
     private static readonly ProtoId<TagPrototype> RevShopTagPrototype = "RevShop";
     private static readonly ProtoId<CurrencyPrototype> HelpfulResourceCurrencyPrototype = "HelpfulResource";
-    //Corvax-Wega-Edit-End
+    // Corvax-Wega-Revolutionary-End
     //Used in OnPostFlash, no reference to the rule component is available
     public readonly ProtoId<NpcFactionPrototype> RevolutionaryNpcFaction = "Revolutionary";
     public readonly ProtoId<NpcFactionPrototype> RevPrototypeId = "Rev";
@@ -170,28 +166,9 @@ public sealed class RevolutionaryRuleSystem : GameRuleSystem<RevolutionaryRuleCo
         _npcFaction.AddFaction(ev.Target, RevolutionaryNpcFaction);
         var revComp = EnsureComp<RevolutionaryComponent>(ev.Target);
         //Corvax-Wega-Edit-Start
-        var children = Transform(uid).ChildEnumerator;
-        while (children.MoveNext(out var storeUid))
+        if (ev.Used != null && _tag.HasTag(ev.Used.Value, RevShopTagPrototype) && TryComp<StoreComponent>(ev.Used.Value, out var store))
         {
-			if (HasComp<ContainerManagerComponent>(storeUid))
-			{
-				var childrenSecond = Transform(storeUid).ChildEnumerator;
-				while (childrenSecond.MoveNext(out var childUid))
-				{
-				    if (_tag.HasTag(childUid, RevShopTagPrototype) && TryComp<StoreComponent>(childUid, out var childrenStore))  //tag RevShop
-					{
-						_store.TryAddCurrency(new() { { HelpfulResourceCurrencyPrototype, comp.AmountPerRev } }, childUid, childrenStore);
-						break;
-					}
-				}
-			}
-            
-            if (_tag.HasTag(storeUid, RevShopTagPrototype) && TryComp<StoreComponent>(storeUid, out var store))  //tag RevShop
-			{
-				_store.TryAddCurrency(new() { { HelpfulResourceCurrencyPrototype, comp.AmountPerRev } }, storeUid, store);
-				break;
-			}
-			continue;
+            _store.TryAddCurrency(new() { { HelpfulResourceCurrencyPrototype, comp.AmountPerRev } }, ev.Used.Value, store);
         }
         //Corvax-Wega-Edit-End
         if (ev.User != null)

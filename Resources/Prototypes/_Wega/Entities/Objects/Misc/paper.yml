@@ -25,3 +25,108 @@
   parent: Paper
   id: TapeRecorderTranscript
   name: record transcript
+
+- type: entity
+  parent: [ BaseItem, StorePresetRevolution ]
+  id: BookRandomRevolution
+  suffix: random visual, revolition
+  name: Moral Manual
+  description: The margins are littered with endless, illegible notes. Most of the text is empty blocks of text.
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - BookHintAppearances
+    - BookTypes
+    nameFormat: name-format-book
+  - type: RandomSprite
+    available:
+      - cover:
+          cover_base: Sixteen
+          cover_old: Sixteen
+          cover_strong: Sixteen
+        decor:
+          decor_wingette: Sixteen
+          decor_wingette_circle: Sixteen
+          decor_bottom: Sixteen
+          decor_middle: Sixteen
+          decor_spine: Sixteen
+          decor_diagonal: Sixteen
+          decor_vertical_middle: Sixteen
+          icon_corner: Sixteen
+          icon_mount: ""
+        icon:
+          icon_biohazard: Sixteen
+          icon_borg: ""
+          icon_banana: ""
+          icon_glow: Sixteen
+          icon_hacking: ""
+          icon_law: Sixteen
+          icon_magnifier: ""
+          icon_nuclear: ""
+          icon_time: Sixteen
+          icon_aurora: Sixteen
+          icon_briefcase: ""
+          icon_eye: ""
+          icon_letter_N: ""
+          icon_letter_P: ""
+          icon_lightning: ""
+          icon_planet: ""
+          icon_possum: ""
+          icon_question: Sixteen
+          icon_scmmd: ""
+          icon_stars: Sixteen
+          icon_stars2: Sixteen
+          icon_temple: Sixteen
+          icon_tree: ""
+          icon_pentagramm: Sixteen
+          icon_fish: ""
+          icon_origami: ""
+          icon_skull: ""
+          icon_text: ""
+          icon_text2: ""
+          icon_text3: ""
+        overlay:
+          overlay_blood: ""
+          overlay_dirt: Sixteen
+          detail_bookmark: Sixteen
+          detail_rivets: Sixteen
+          overlay_null: ""
+  - type: Sprite
+    sprite: Objects/Misc/books.rsi
+    layers:
+    - state: paper
+    - state: cover_base
+      color: "#332d27"
+      map: [ "cover" ]
+    - state: decor_wingette
+      color: "#453f3a"
+      map: [ "decor" ]
+    - state: icon_text
+      map: [ "icon" ]
+    - state: overlay_null
+      map: [ "overlay" ]
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Blunt: 1
+  - type: UserInterface
+    interfaces:
+      enum.StoreUiKey.Key:
+        type: StoreBoundUserInterface
+  - type: ActivatableUI
+    key: enum.StoreUiKey.Key
+  - type: Store
+    balance:
+      HelpfulResource: 0
+  - type: UseDelayOnMeleeHit
+  - type: MeleeWeapon
+    wideAnimationRotation: 180
+    damage:
+      types:
+        Blunt: 0
+    angle: 10
+  - type: Flash
+  - type: Tag
+    tags:
+    - Book
+    - RevShop
