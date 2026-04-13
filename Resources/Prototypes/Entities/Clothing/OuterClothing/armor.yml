@@ -349,7 +349,13 @@
         Piercing: 0.5
         Heat: 0.5
   - type: GroupExamine
-  - type: BloodShieldActivaeble # Corvax-Wega-Blood-Cult
+  # Corvax-Wega-Blood-Cult-Start
+  - type: BloodShieldActivaeble
+  - type: ClothingSpeedModifier 
+    walkModifier: 1
+    sprintModifier: 1
+  - type: HeldSpeedModifier
+  # Corvax-Wega-Blood-Cult-End
 
 - type: entity
   parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing]
