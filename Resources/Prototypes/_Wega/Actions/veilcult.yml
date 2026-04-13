@@ -12,3 +12,172 @@
     priority: 1
   - type: InstantAction
     event: !type:VeilCultMidasTouchActionEvent
+    
+- type: entity
+  parent: BaseAction
+  id: ActionVeilCultActivateCrusher
+  name: Activate Enchant
+  description: Toggle enchant of this item.
+  components:
+  - type: Action
+    itemIconStyle: BigItem
+    priority: -20
+    useDelay: 1
+  - type: InstantAction
+    event: !type:CrusherEnchantActionEvent
+    
+- type: entity
+  parent: BaseAction
+  id: ActionVeilCultActivateConfusion
+  name: Activate Enchant
+  description: Toggle enchant of this item.
+  components:
+  - type: Action
+    itemIconStyle: BigItem
+    priority: -20
+    useDelay: 1
+  - type: InstantAction
+    event: !type:ConfusionEnchantActionEvent
+    
+- type: entity
+  parent: BaseAction
+  id: ActionVeilCultActivateKnockback
+  name: Activate Enchant
+  description: Toggle enchant of this item.
+  components:
+  - type: Action
+    itemIconStyle: BigItem
+    priority: -20
+    useDelay: 1
+  - type: InstantAction
+    event: !type:KnockbackEnchantActionEvent
+   
+- type: entity
+  parent: BaseAction
+  id: ActionVeilCultActivateSwordsmen
+  name: Activate Enchant
+  description: Toggle enchant of this item.
+  components:
+  - type: Action
+    itemIconStyle: BigItem
+    priority: -20
+    useDelay: 1
+  - type: InstantAction
+    event: !type:SwordsmenEnchantActionEvent
+    
+- type: entity
+  parent: BaseAction
+  id: ActionVeilCultActivateBloodshed
+  name: Activate Enchant
+  description: Toggle enchant of this item.
+  components:
+  - type: Action
+    itemIconStyle: BigItem
+    priority: -20
+    useDelay: 1
+  - type: InstantAction
+    event: !type:BloodshedEnchantActionEvent
+    
+- type: entity
+  parent: BaseAction
+  id: ActionVeilCultActivateHaste
+  name: Activate Enchant
+  description: Toggle enchant of this item.
+  components:
+  - type: Action
+    itemIconStyle: BigItem
+    priority: -20
+    useDelay: 1
+  - type: InstantAction
+    event: !type:HasteEnchantActionEvent
+    
+- type: entity
+  parent: BaseAction
+  id: ActionVeilCultActivateReflection
+  name: Activate Enchant
+  description: Toggle enchant of this item.
+  components:
+  - type: Action
+    itemIconStyle: BigItem
+    priority: -20
+    useDelay: 1
+  - type: InstantAction
+    event: !type:ReflectionEnchantActionEvent
+    
+- type: entity
+  parent: BaseAction
+  id: ActionVeilCultActivateCamouflage
+  name: Activate Enchant
+  description: Toggle enchant of this item.
+  components:
+  - type: Action
+    itemIconStyle: BigItem
+    priority: -20
+    useDelay: 1
+  - type: InstantAction
+    event: !type:CamouflageEnchantActionEvent
+    
+- type: entity
+  parent: BaseAction
+  id: ActionVeilCultActivateAbsorb
+  name: Activate Enchant
+  description: Toggle enchant of this item.
+  components:
+  - type: Action
+    itemIconStyle: BigItem
+    priority: -20
+    useDelay: 1
+  - type: InstantAction
+    event: !type:AbsorbEnchantActionEvent
+    
+- type: entity
+  parent: BaseAction
+  id: ActionVeilCultActivateFlash
+  name: Activate Enchant
+  description: Toggle enchant of this item.
+  components:
+  - type: Action
+    itemIconStyle: BigItem
+    priority: -20
+    useDelay: 1
+  - type: InstantAction
+    event: !type:FlashEnchantActionEvent
+    
+- type: entity
+  parent: BaseAction
+  id: ActionVeilCultActivateHardenPlates
+  name: Activate Enchant
+  description: Toggle enchant of this item.
+  components:
+  - type: Action
+    itemIconStyle: BigItem
+    priority: -20
+    useDelay: 1
+  - type: InstantAction
+    event: !type:HardenPlatesEnchantActionEvent
+    
+- type: entity
+  parent: BaseAction
+  id: ActionVeilCultActivateNorthStar
+  name: Activate Enchant
+  description: Toggle enchant of this item.
+  components:
+  - type: Action
+    itemIconStyle: BigItem
+    priority: -20
+    useDelay: 1
+  - type: InstantAction
+    event: !type:NorthStarEnchantActionEvent
+    
+- type: entity
+  parent: BaseAction
+  id: ActionVeilCultActivateRedFlame
+  name: Activate Enchant
+  description: Toggle enchant of this item.
+  components:
+  - type: Action
+    itemIconStyle: BigItem
+    priority: -20
+    useDelay: 1
+  - type: InstantAction
+    event: !type:RedFlameEnchantActionEvent

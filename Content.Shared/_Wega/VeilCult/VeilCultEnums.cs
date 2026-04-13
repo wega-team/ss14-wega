@@ -5,7 +5,7 @@ using Robust.Shared.Serialization;
 namespace Content.Shared.Veil.Cult;
 
 [Serializable, NetSerializable]
-public enum VeilCultEnchantment : byte
+public enum VeilCultEnchantStatus : byte
 {
     Stun,
     ForcePassge,

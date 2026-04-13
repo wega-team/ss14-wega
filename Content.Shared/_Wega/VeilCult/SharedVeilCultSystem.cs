@@ -11,6 +11,8 @@ using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.DoAfter;
+using Content.Shared.Movement.Systems;
+using Content.Shared.Movement.Events;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Veil.Cult;
@@ -31,6 +33,7 @@ public abstract class SharedVeilCultSystem : EntitySystem
 
 		SubscribeLocalEvent<VeilCultistComponent, VeilCultMidasTouchActionEvent>(OnMidasTouch);
         SubscribeLocalEvent<EnchantableComponent, EnchantSelectedMessage>(OnEnchantSelected);
+		SubscribeLocalEvent<ConfusionComponent, MoveInputEvent>(OnMoveInput);
     }
 	
 
@@ -140,6 +143,33 @@ public abstract class SharedVeilCultSystem : EntitySystem
             _ui.OpenUi(card, EnchantUiKey.Key, user);
             _ui.SetUiState(card, EnchantUiKey.Key, state);
         }
+    }
+
+    private void OnMoveInput(EntityUid uid, ConfusionComponent comp, ref MoveInputEvent ev)
+    {
+
+        var mover = ev.Entity.Comp;
+
+        mover.HeldMoveButtons = Invert(mover.HeldMoveButtons);
+    }
+
+    private MoveButtons Invert(MoveButtons buttons)
+    {
+        MoveButtons result = MoveButtons.None;
+
+        if ((buttons & MoveButtons.Up) != 0)
+            result |= MoveButtons.Down;
+
+        if ((buttons & MoveButtons.Down) != 0)
+            result |= MoveButtons.Up;
+
+        if ((buttons & MoveButtons.Left) != 0)
+            result |= MoveButtons.Right;
+
+        if ((buttons & MoveButtons.Right) != 0)
+            result |= MoveButtons.Left;
+
+        return result;
     }
 	
 }
