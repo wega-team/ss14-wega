@@ -1,11 +1,62 @@
 - type: entity
   id: VeilCultStrangeShard
-  parent: BaseItem
+  parent: BaseEnchantable
   name: strange shard
   description: Some strange levitating shards.
   components:
   - type: Sprite
     sprite: _Wega/Objects/Specific/VeilCult/strange_shard.rsi
+    state: icon
   - type: Tag
     tags:
     - StrangeShard
+  - type: Enchantable
+    enchants:
+    - VeilCultStrangeShardTimeStop
+    - VeilCultStrangeShardReconstruction
+    - VeilCultStrangeShardEmp
+    
+# ENCHANTS
+
+- type: entity
+  id: VeilCultStrangeShardTimeStop
+  parent: VeilCultStrangeShard
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/VeilCult/strange_shard.rsi
+    layers:
+    - state: icon
+    - state: timestop
+      shader: unshaded
+      visible: true
+  - type: Enchanted
+  - type: TimeStopEnchant
+  
+- type: entity
+  id: VeilCultStrangeShardReconstruction
+  parent: VeilCultStrangeShard
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/VeilCult/strange_shard.rsi
+    layers:
+    - state: icon
+    - state: reconstruction
+      shader: unshaded
+      visible: true
+  - type: Enchanted
+  - type: ReconstructionEnchant
+  
+- type: entity
+  id: VeilCultStrangeShardEmp
+  parent: VeilCultStrangeShard
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/VeilCult/strange_shard.rsi
+    layers:
+    - state: icon
+    - state: emp
+      shader: unshaded
+      visible: true
+  - type: Enchanted
+  - type: EmpEnchant
+    

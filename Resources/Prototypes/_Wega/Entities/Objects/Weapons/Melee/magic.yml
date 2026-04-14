@@ -569,7 +569,6 @@
   id: WeaponClockworkSword
   parent: BaseEnchantable
   name: clockwork sword
-  suffix: XYUHYA
   description: A sword with a large winding gear on the hilt. Weapon of the righteous Ratvar.
   components:
   - type: Sharp
@@ -594,8 +593,8 @@
   - type: DisarmMalus
   - type: Enchantable
     enchants:
-    - BloodRatvarianSpear
-    - WeaponClockHammer
+    - WeaponClockworkSwordSwordsmen
+    - WeaponClockworkSwordBloodshed
   
 - type: entity
   id: WeaponClockHammer
@@ -603,7 +602,6 @@
   name: clock hammer
   description: A large and lifty hammer, that can throw it targets on hit. For the righteous of Ratvar.
   components:
-  - type: Sharp
   - type: Sprite
     sprite: _Wega/Objects/Weapons/Melee/clock_hammer.rsi
     state: icon
@@ -614,7 +612,7 @@
   - type: MeleeWeapon
     # resistanceBypassPercentage: 0.4 #for future
     wideAnimationRotation: -135
-    attackRate: 0.6
+    attackRate: 0.7
     damage:
       types:
         Blunt: 10
@@ -633,10 +631,6 @@
     damage:
       types:
         Blunt: 25
-  - type: MeleeThrowOnHit
-    activateOnThrown: true
-    distance: 4
-    speed: 5
   - type: StaminaDamageOnHit
     damage: 25
   - type: StaminaDamageOnCollide
@@ -647,12 +641,12 @@
   - type: Wieldable
   - type: Enchantable
     enchants:
-    - BloodRatvarianSpear
-    - WeaponClockworkSword
+    - WeaponClockHammerKnockback
+    - WeaponClockHammerCrusher
     
 - type: entity
   parent: BaseEnchantable
-  id: BloodRatvarianSpear
+  id: WeaponRatvarianSpear
   name: ratvarian spear
   description: The spear formed from clockwork metal for righteous of Ratvar.
   components:
@@ -707,8 +701,8 @@
         Piercing: 10
   - type: Enchantable
     enchants:
-    - WeaponClockHammer
-    - WeaponClockworkSword
+    - WeaponRatvarianSpearElectricalTouch
+    - WeaponRatvarianSpearConfusion
         
 - type: entity
   parent: BaseItem

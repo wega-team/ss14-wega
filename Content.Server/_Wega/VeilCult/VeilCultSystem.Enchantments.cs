@@ -57,6 +57,7 @@ using Content.Shared.Android;
 using Content.Shared.Access.Components;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Movement.Components;
+using Content.Shared.CombatMode.Pacification;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Containers;
@@ -97,8 +98,8 @@ public sealed partial class VeilCultSystem
 		SubscribeLocalEvent<ConfusionEnchantComponent, MeleeHitEvent>(ConfusionOnMeleeHit);
 		SubscribeLocalEvent<KnockbackEnchantComponent, MeleeHitEvent>(KnockbackOnMeleeHit);
 		SubscribeLocalEvent<StunEnchantComponent, MeleeHitEvent>(StunOnMeleeHit);
-		SubscribeLocalEvent<ForcePassageEnchantComponent, LightAttackEvent>(ForcePassageOnLightAttack);
-		SubscribeLocalEvent<TerraformEnchantComponent, LightAttackEvent>(TerraformOnLightAttack);
+		SubscribeLocalEvent<ForcePassageEnchantComponent, MeleeHitEvent>(ForcePassageOnMeleeHit);
+		SubscribeLocalEvent<TerraformEnchantComponent, MeleeHitEvent>(TerraformOnMeleeHit);
 		SubscribeLocalEvent<ElectricalTouchEnchantComponent, MeleeHitEvent>(ElectricalTouchOnMeleeHit);
 		SubscribeLocalEvent<BloodshedEnchantComponent, MeleeHitEvent>(BloodshedOnMeleeHit);
 		
@@ -114,6 +115,7 @@ public sealed partial class VeilCultSystem
 		SubscribeLocalEvent<SealWoundsEnchantComponent, AfterInteractEvent>(SealWoundOnUse);
 		
         SubscribeLocalEvent<EnchantableComponent, EnchantingDoAfterEvent>(EnchantDoAfter);
+		SubscribeLocalEvent<VeilCultistComponent, VeilCultTeleportDoAfterEvent>(OnTeleportSuccess);
 		
     }
 	
@@ -209,6 +211,7 @@ public sealed partial class VeilCultSystem
         var shield = EnsureComp<EnergyShieldOwnerComponent>(user);
         shield.ShieldEntity = Spawn("EnergyShieldEffect", Transform(user).Coordinates);
         shield.SustainingCount = 5;	
+        _transform.SetParent(shield.ShieldEntity.Value, user);
 	}
 			
 	
@@ -239,7 +242,7 @@ public sealed partial class VeilCultSystem
 			EnsureComp<FlashImmunityComponent>(construct.Owner);
 			Timer.Spawn(TimeSpan.FromSeconds(1), () => RemComp<FlashImmunityComponent>(construct.Owner));
 		}
-		_flash.FlashArea(uid, args.Performer, 10f, TimeSpan.FromSeconds(3));
+		_flash.FlashArea(args.Performer, args.Performer, 10f, TimeSpan.FromSeconds(3));
 		RemComp<FlashEnchantComponent>(uid);
 		RemComp<EnchantedComponent>(uid);
 	}
@@ -386,34 +389,38 @@ public sealed partial class VeilCultSystem
 			
 	}
 	
-	private void TerraformOnLightAttack(EntityUid uid, TerraformEnchantComponent comp, LightAttackEvent args)
+	private void TerraformOnMeleeHit(EntityUid uid, TerraformEnchantComponent comp, MeleeHitEvent args)
 	{
-		if (args.Target == null)
+		if (args.Direction != null || args.HitEntities == null)
 			return;
 		
-		var target = GetEntity(args.Target.Value);
-		
-		if (MetaData(target).EntityPrototype?.ID == "WallSolid")
+		foreach (var target in args.HitEntities)
 		{
-			Spawn("SolidSecretDoor", Transform(target).Coordinates);
-			QueueDel(target);
-			RemComp<EnchantedComponent>(uid);
-			RemComp<TerraformEnchantComponent>(uid);
+			if (MetaData(target).EntityPrototype?.ID == "WallSolid")
+			{
+				Spawn("SolidSecretDoor", Transform(target).Coordinates);
+				QueueDel(target);
+				RemComp<EnchantedComponent>(uid);
+				RemComp<TerraformEnchantComponent>(uid);
+				break;
+			}
 		}
 	}
 	
-	private void ForcePassageOnLightAttack(EntityUid uid, ForcePassageEnchantComponent comp, LightAttackEvent args)
+	private void ForcePassageOnMeleeHit(EntityUid uid, ForcePassageEnchantComponent comp, MeleeHitEvent args)
 	{
-		if (args.Target == null)
+		if (args.Direction != null || args.HitEntities == null)
 			return;
 		
-		var target = GetEntity(args.Target.Value);
-
-		if (HasComp<AirlockComponent>(target) && HasComp<AccessReaderComponent>(target))
+		foreach (var target in args.HitEntities)
 		{
-			RemComp<AccessReaderComponent>(target);
-			RemComp<EnchantedComponent>(uid);
-			RemComp<ForcePassageEnchantComponent>(uid);
+			if (HasComp<AirlockComponent>(target) && HasComp<AccessReaderComponent>(target))
+			{
+				RemComp<AccessReaderComponent>(target);
+				RemComp<EnchantedComponent>(uid);
+				RemComp<ForcePassageEnchantComponent>(uid);
+				break;
+			}
 		}
 	}
 	
@@ -433,8 +440,6 @@ public sealed partial class VeilCultSystem
 	
 	private void OnReflectionHitscan(EntityUid uid, ReflectionEnchantComponent comp, HitScanReflectAttemptEvent args)
 	{
-		if (args.Reflected)
-			return;
 		
 		comp.Uses -= 1;
 		if (comp.Uses <= 0)
@@ -447,8 +452,6 @@ public sealed partial class VeilCultSystem
 	
 	private void OnReflectionProjecile(EntityUid uid, ReflectionEnchantComponent comp, ProjectileReflectAttemptEvent args)
 	{
-		if (args.Cancelled)
-			return;
 		
 		comp.Uses -= 1;
 		if (comp.Uses <= 0)
@@ -487,7 +490,7 @@ public sealed partial class VeilCultSystem
         var doAfterEventArgs = new DoAfterArgs(EntityManager, args.User, TimeSpan.FromSeconds(4),
             new VeilCultTeleportDoAfterEvent(),
             eventTarget: args.User,
-			target: args.User)
+			target: uid)
         {
             BreakOnMove = false,
             BreakOnDamage = true,
@@ -510,11 +513,22 @@ public sealed partial class VeilCultSystem
 		Spawn("BloodCultOutEffect", Transform(uid).Coordinates);
         _transform.SetCoordinates(uid, coordinates);
         Spawn("BloodCultInEffect", coordinates);
-        QueueDel(args.Used);
+		if (args.Target != null)
+		{
+			RemComp<EnchantedComponent>(args.Target.Value);
+			RemComp<TeleportationEnchantComponent>(args.Target.Value);
+		}
 	}
 	
 	private void TimeStopOnUseInHand(EntityUid uid, TimeStopEnchantComponent comp, UseInHandEvent args)
 	{
+		var nearbyCultists = _entityLookup.GetEntitiesInRange<VeilCultistComponent>(Transform(uid).Coordinates, 5f);
+		foreach (var cultist in nearbyCultists)
+		{
+			EnsureComp<PacifiedComponent>(cultist);
+			Timer.Spawn(TimeSpan.FromSeconds(3), () => RemComp<PacifiedComponent>(cultist));
+		}
+		
         var nearbyTargets = _entityLookup.GetEntitiesInRange<MobStateComponent>(Transform(uid).Coordinates, 3f)
            .Where(target => !HasComp<VeilCultistComponent>(target.Owner))
            .Where(target => !HasComp<VeilCultConstructComponent>(target.Owner))
@@ -524,12 +538,12 @@ public sealed partial class VeilCultSystem
 			EnsureComp<AdminFrozenComponent>(target);
 			Timer.Spawn(TimeSpan.FromSeconds(5), () => RemComp<AdminFrozenComponent>(target));
 		}
-		   
+		QueueDel(uid);
 	}
 	
 	private void HidingCloacksOnUseInHand(EntityUid uid, HidingsClockEnchantComponent comp, UseInHandEvent args)
 	{
-		var structures = _entityLookup.GetEntitiesInRange<VeilCultStructureComponent>(Transform(uid).Coordinates, 5f);
+		var structures = _entityLookup.GetEntitiesInRange<VeilCultStructureComponent>(Transform(uid).Coordinates, comp.Radius);
 		foreach (var structure in structures)
 		{
 			if (TryComp<VeilCultStructureComponent>(structure.Owner, out var cultStructure))
@@ -554,6 +568,12 @@ public sealed partial class VeilCultSystem
                 }
 				cultStructure.IsActive = !cultStructure.IsActive;
 			}
+		}
+		comp.Uses -= 1;
+		if (comp.Uses <= 0)
+		{
+			RemComp<HidingsClockEnchantComponent>(uid);
+			RemComp<EnchantedComponent>(uid);
 		}
 	}
 	

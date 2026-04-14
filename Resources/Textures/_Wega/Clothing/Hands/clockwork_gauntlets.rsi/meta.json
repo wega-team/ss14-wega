@@ -13,6 +13,15 @@
       {
         "name": "equipped-HAND",
         "directions": 4
+      },
+      {
+        "name": "northstar"
+      },
+      {
+        "name": "redflame"
+      },
+      {
+        "name": "stun"
       }
     ]
   }

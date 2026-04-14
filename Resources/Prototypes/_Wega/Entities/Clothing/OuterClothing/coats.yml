@@ -215,7 +215,7 @@
     node: cloack
 
 - type: entity
-  parent: ClothingOuterStorageBase
+  parent: [ ClothingOuterStorageBase, BaseEnchantable ]
   id: ClothingOuterVeilCultRobes
   name: clockwork robe
   description: "None of those can escape the fate of DEATH!"
@@ -235,4 +235,8 @@
         Heat: 0.7
   - type: ExplosionResistance
     damageCoefficient: 0.9
+  - type: Enchantable
+    enchants:
+    - ClothingOuterVeilCultRobesCamouflage
+    - ClothingOuterVeilCultRobesHaste
 

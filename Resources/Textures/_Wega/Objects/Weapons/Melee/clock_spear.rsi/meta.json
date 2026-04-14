@@ -29,6 +29,12 @@
         {
             "name": "wielded-inhand-right",
             "directions": 4
+        },
+        {
+            "name": "confusion"
+        },
+        {
+            "name": "electricaltouch"
         }
     ]
 }

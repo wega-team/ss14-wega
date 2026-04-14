@@ -97,4 +97,5 @@
     interfaces:
       enum.VeilAltarUiKey.Key:
         type: VeilAltarBoundUserInterface
-  - type: VeilCultBeacon
+  - type: VeilCultAltar
+  - type: VeilCultStructure

@@ -26,6 +26,7 @@ public abstract class SharedVeilCultSystem : EntitySystem
     [Dependency] private readonly SharedHandsSystem _hands = default!;	
 	[Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
+    [Dependency] private readonly MovementSpeedModifierSystem _speed = default!;
 
     public override void Initialize()
     {
@@ -33,7 +34,10 @@ public abstract class SharedVeilCultSystem : EntitySystem
 
 		SubscribeLocalEvent<VeilCultistComponent, VeilCultMidasTouchActionEvent>(OnMidasTouch);
         SubscribeLocalEvent<EnchantableComponent, EnchantSelectedMessage>(OnEnchantSelected);
-		SubscribeLocalEvent<ConfusionComponent, MoveInputEvent>(OnMoveInput);
+		SubscribeLocalEvent<ConfusionComponent, ComponentInit>(OnInit);
+		SubscribeLocalEvent<ConfusionComponent, ComponentShutdown>(OnShutdown);
+		SubscribeLocalEvent<ConfusionComponent, RefreshMovementSpeedModifiersEvent>(Invert);
+		
     }
 	
 
@@ -145,31 +149,19 @@ public abstract class SharedVeilCultSystem : EntitySystem
         }
     }
 
-    private void OnMoveInput(EntityUid uid, ConfusionComponent comp, ref MoveInputEvent ev)
+    private void OnInit(EntityUid uid, ConfusionComponent component, ComponentInit args)
     {
-
-        var mover = ev.Entity.Comp;
-
-        mover.HeldMoveButtons = Invert(mover.HeldMoveButtons);
+        _speed.RefreshMovementSpeedModifiers(uid);
     }
 
-    private MoveButtons Invert(MoveButtons buttons)
+    private void OnShutdown(EntityUid uid, ConfusionComponent component, ComponentShutdown args)
     {
-        MoveButtons result = MoveButtons.None;
+        _speed.RefreshMovementSpeedModifiers(uid);
+    }
 
-        if ((buttons & MoveButtons.Up) != 0)
-            result |= MoveButtons.Down;
-
-        if ((buttons & MoveButtons.Down) != 0)
-            result |= MoveButtons.Up;
-
-        if ((buttons & MoveButtons.Left) != 0)
-            result |= MoveButtons.Right;
-
-        if ((buttons & MoveButtons.Right) != 0)
-            result |= MoveButtons.Left;
-
-        return result;
+    private void Invert(EntityUid uid, ConfusionComponent component, RefreshMovementSpeedModifiersEvent args)
+    {
+        args.ModifySpeed(-1f, -1f);
     }
 	
 }

@@ -36,6 +36,24 @@
         {
             "name": "inhand-right",
             "directions": 4
+        },
+        {
+            "name": "teleportation"
+        },
+        {
+            "name": "sealwounds"
+        },
+        {
+            "name": "stun"
+        },
+        {
+            "name": "forcepassage"
+        },
+        {
+            "name": "hidingsclock"
+        },
+        {
+            "name": "terraform"
         }
     ]
 }

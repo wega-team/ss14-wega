@@ -17,6 +17,18 @@
     {
       "name": "equipped-OUTERCLOTHING-reptilian",
       "directions": 4
+    },
+    {
+      "name": "absorb"
+    },
+    {
+      "name": "hardenplates"
+    },
+    {
+      "name": "flash"
+    },
+    {
+      "name": "reflection"
     }
   ]
 }

@@ -117,7 +117,7 @@ public sealed partial class StunEnchantComponent : Component
 public sealed partial class ForcePassageEnchantComponent : Component
 {
     [DataField("proto")]
-	public EntProtoId Proto;
+	public EntProtoId Proto; // for future
 }
 
 [RegisterComponent, NetworkedComponent]
@@ -136,7 +136,7 @@ public sealed partial class HidingsClockEnchantComponent : Component
 	public int Uses = 2;
 	
     [DataField("radius")]
-	public float Radius = 10f;
+	public float Radius = 5f;
 }
 
 [RegisterComponent, NetworkedComponent]

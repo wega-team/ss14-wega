@@ -11,16 +11,13 @@
       "name": "icon"
     },
     {
-      "name": "overlay1"
+      "name": "timestop"
     },
     {
-      "name": "overlay2"
+      "name": "reconstruction"
     },
     {
-      "name": "overlay3"
-    },
-    {
-      "name": "overlay4"
+      "name": "emp"
     }
   ]
 }

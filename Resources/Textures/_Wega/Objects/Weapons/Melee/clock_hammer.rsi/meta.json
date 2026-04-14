@@ -27,10 +27,10 @@
             "directions": 4
         },
         {
-          "name": "overlay1"
+          "name": "crusher"
         },
         {
-          "name": "overlay2"
+          "name": "knockback"
         }
     ]
 }
