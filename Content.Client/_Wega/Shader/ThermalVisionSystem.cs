@@ -1,0 +1,42 @@
+using Content.Shared.Inventory;
+using Content.Shared.Thermal.Components;
+using Content.Shared.Hands;
+using Content.Shared.Inventory.Events;
+using Robust.Shared.GameObjects;
+using Robust.Client.Graphics;
+
+namespace Content.Client.Thermal.EntitySystems;
+
+public sealed class ThermalVisionFovSystem : EntitySystem
+{
+    [Dependency] private readonly IEyeManager _eyeManager = default!;
+
+    private bool _originalDrawFov = true;
+
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        SubscribeLocalEvent<ThermalVisionComponent, GotEquippedEvent>(OnThermalEquipped);
+        SubscribeLocalEvent<ThermalVisionComponent, GotUnequippedEvent>(OnThermalUnequipped);
+    }
+
+    private void OnThermalEquipped(EntityUid uid, ThermalVisionComponent component, GotEquippedEvent args)
+    {
+        if (args.Slot != "eyes")
+            return;
+
+        _originalDrawFov = _eyeManager.CurrentEye.DrawFov;
+        _eyeManager.CurrentEye.DrawFov = false;
+        component.DrawFovDisabled = true;
+    }
+
+    private void OnThermalUnequipped(EntityUid uid, ThermalVisionComponent component, GotUnequippedEvent args)
+    {
+        if (args.Slot != "eyes")
+            return;
+
+        _eyeManager.CurrentEye.DrawFov = _originalDrawFov;
+        component.DrawFovDisabled = false;
+    }
+}

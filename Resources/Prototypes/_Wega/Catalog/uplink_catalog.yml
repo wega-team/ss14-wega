@@ -185,6 +185,20 @@
   - UplinkWearables
 
 - type: listing
+  id: UplinkEyesHudSyndicateCamera
+  name: uplink-syndicate-googles-name
+  description: uplink-syndicate-googles-desc
+  icon: { sprite: _Wega/Clothing/Eyes/Glasses/thermal.rsi, state: icon }
+  productEntity: ThermalGoggles
+  discountCategory: rareDiscounts
+  discountDownTo:
+    Telecrystal: 4
+  cost:
+    Telecrystal: 6
+  categories:
+  - UplinkWearables
+
+- type: listing
   id: UplinkNukeSyndiHoloprojectorField
   name: uplink-syndiholoprojectorfield-name
   description: uplink-syndiholoprojectorfield-desc
