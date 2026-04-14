@@ -214,3 +214,25 @@
     graph: PathfinderCloak
     node: cloack
 
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterVeilCultRobes
+  name: clockwork robe
+  description: "None of those can escape the fate of DEATH!"
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Coats/clockrobe.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/OuterClothing/Coats/clockrobe.rsi
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHatHoodVeilCultRobes
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.7
+        Slash: 0.7
+        Piercing: 0.7
+        Heat: 0.7
+  - type: ExplosionResistance
+    damageCoefficient: 0.9
+
