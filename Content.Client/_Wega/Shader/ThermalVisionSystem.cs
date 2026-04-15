@@ -3,7 +3,7 @@ using Content.Shared.Thermal.Components;
 using Content.Shared.Hands;
 using Content.Shared.Inventory.Events;
 using Robust.Shared.GameObjects;
-using Robust.Client.Graphics;
+using Robust.Client.Graphics; //port only with permission of the code creator
 
 namespace Content.Client.Thermal.EntitySystems;
 
