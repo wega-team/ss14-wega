@@ -718,3 +718,4 @@
     canBeEaten: false
   - type: Item
     size: Ginormous
+  - type: MidasHand

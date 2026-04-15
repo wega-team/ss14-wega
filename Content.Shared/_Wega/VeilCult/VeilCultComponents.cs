@@ -94,6 +94,9 @@ public sealed partial class EnchantedComponent : Component;
 [RegisterComponent, NetworkedComponent]
 public sealed partial class VeilCogDisplayComponent : Component;
 
+[RegisterComponent, NetworkedComponent]
+public sealed partial class MidasHandComponent : Component;
+
 /// <summary>
 /// Зачарования.
 /// </summary>

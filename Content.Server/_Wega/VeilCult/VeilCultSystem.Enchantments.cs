@@ -103,8 +103,8 @@ public sealed partial class VeilCultSystem
 		SubscribeLocalEvent<ElectricalTouchEnchantComponent, MeleeHitEvent>(ElectricalTouchOnMeleeHit);
 		SubscribeLocalEvent<BloodshedEnchantComponent, MeleeHitEvent>(BloodshedOnMeleeHit);
 		
-		SubscribeLocalEvent<ReflectionEnchantComponent, ProjectileReflectAttemptEvent>(OnReflectionProjecile);
-		SubscribeLocalEvent<ReflectionEnchantComponent, HitScanReflectAttemptEvent>(OnReflectionHitscan);
+        Subs.SubscribeWithRelay<ReflectionEnchantComponent, ProjectileReflectAttemptEvent>(OnReflectionProjecile, baseEvent: false);
+        Subs.SubscribeWithRelay<ReflectionEnchantComponent, HitScanReflectAttemptEvent>(OnReflectionHitscan, baseEvent: false);
 		
 		SubscribeLocalEvent<ReconstructionEnchantComponent, UseInHandEvent>(ReconstructionOnUseInHand);
 		SubscribeLocalEvent<EmpEnchantComponent, UseInHandEvent>(EmpOnUseInHand);
@@ -203,6 +203,7 @@ public sealed partial class VeilCultSystem
 		EnsureComp<ReflectComponent>(uid, out var refl);
 		refl.ReflectingInHands = false;
 		refl.ReflectProb = 1f;
+		refl.InRightPlace = true;
 	}
 	
 	private void OnActivateAbsorb(EntityUid uid, EnchantedComponent comp, AbsorbEnchantActionEvent args)

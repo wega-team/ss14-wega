@@ -79,3 +79,14 @@ public sealed partial class VeilCultTeleportDoAfterEvent : SimpleDoAfterEvent
 {
 }
 
+[Serializable, NetSerializable]
+public sealed partial class MidasTouchDoAfterEvent : SimpleDoAfterEvent
+{
+}
+
+[ByRefEvent]
+public record struct SiliconVeilCultHackedEvent(EntityUid user);
+
+
+
+

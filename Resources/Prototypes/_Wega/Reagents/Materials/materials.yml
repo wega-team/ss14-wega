@@ -13,3 +13,11 @@
   icon: { sprite: _Wega/Objects/Materials/Sheets/metal.rsi, state: magmite }
   color: "#df7126"
   price: 1
+  
+- type: material
+  id: ChargedBrass
+  stackEntity: SheetChargedBrass1
+  name: materials-chargedbrass
+  icon: { sprite: _Wega/Objects/Materials/Sheets/metal.rsi, state: chargedbrass }
+  color: "#3f4857"
+  price: 0.05
