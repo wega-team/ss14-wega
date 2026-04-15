@@ -185,7 +185,7 @@
   - UplinkWearables
 
 - type: listing
-  id: UplinkEyesHudSyndicateCamera
+  id: UplinkEyesThermalGoggles
   name: uplink-syndicate-googles-name
   description: uplink-syndicate-googles-desc
   icon: { sprite: _Wega/Clothing/Eyes/Glasses/thermal.rsi, state: icon }
