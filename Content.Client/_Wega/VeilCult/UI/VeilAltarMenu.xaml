@@ -7,14 +7,14 @@
 
     <ui:RadialContainer Name="Main" VerticalExpand="True" HorizontalExpand="True" InitialRadius="128" ReserveSpaceForHiddenChildren="False">
         <!-- Invite -->
-        <ui:RadialMenuButton Name="OfferButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-veil-offer'}" TargetLayerControlName="Offer">
+        <ui:RadialMenuButtonWithSector Name="OfferButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-veil-offer'}" TargetLayerControlName="Offer">
             <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/Interface/Actions/gear.png"/>
-        </ui:RadialMenuButton>
+        </ui:RadialMenuButtonWithSector>
 
         <!-- Energy -->
-        <ui:RadialMenuButton Name="EnergyButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-veil-energy'}" TargetLayerControlName="Energy">
+        <ui:RadialMenuButtonWithSector Name="EnergyButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-veil-energy'}" TargetLayerControlName="Energy">
             <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/Interface/Actions/energy.png"/>
-        </ui:RadialMenuButton>
+        </ui:RadialMenuButtonWithSector>
 
     </ui:RadialContainer>
 

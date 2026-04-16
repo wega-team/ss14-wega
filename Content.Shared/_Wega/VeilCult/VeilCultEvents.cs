@@ -84,6 +84,11 @@ public sealed partial class MidasTouchDoAfterEvent : SimpleDoAfterEvent
 {
 }
 
+[Serializable, NetSerializable]
+public sealed partial class StrangeShardDoAfterEvent : SimpleDoAfterEvent
+{
+}
+
 [ByRefEvent]
 public record struct SiliconVeilCultHackedEvent(EntityUid user);
 

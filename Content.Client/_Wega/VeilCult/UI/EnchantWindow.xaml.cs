@@ -44,10 +44,10 @@ public sealed partial class EnchantWindow : RadialMenu
         }
     }
 
-    private RadialMenuContextualCentralTextureButton CreateEntityButton(EntityPrototype enchant)
+    private RadialMenuButtonWithSector CreateEntityButton(EntityPrototype enchant)
     {
 		string suffix = enchant.EditorSuffix ?? "unknown";
-        var button = new RadialMenuContextualCentralTextureButton
+        var button = new RadialMenuButtonWithSector
         {
             ToolTip = Loc.GetString(suffix),
             SetSize = new Vector2(72, 72),

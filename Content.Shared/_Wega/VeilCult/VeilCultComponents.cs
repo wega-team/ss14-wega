@@ -82,6 +82,18 @@ public sealed partial class EnchantableComponent : Component
 	
 }
 
+[RegisterComponent]
+public sealed partial class VeilCultPortalComponent : Component
+{
+
+    public float NextTimeTick { get; set; }
+
+    [DataField("ritualMusic")]
+    public SoundSpecifier RitualMusic = new SoundCollectionSpecifier("BloodCultMusic");
+
+    public bool SoundPlayed;
+}
+
 /// <summary>
 /// Заглушка для логики
 /// </summary>
@@ -96,6 +108,9 @@ public sealed partial class VeilCogDisplayComponent : Component;
 
 [RegisterComponent, NetworkedComponent]
 public sealed partial class MidasHandComponent : Component;
+
+[RegisterComponent, NetworkedComponent]
+public sealed partial class StrangeShardComponent : Component;
 
 /// <summary>
 /// Зачарования.

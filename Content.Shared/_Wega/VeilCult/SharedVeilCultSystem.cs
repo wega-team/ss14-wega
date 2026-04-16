@@ -35,7 +35,7 @@ public abstract class SharedVeilCultSystem : EntitySystem
 		SubscribeLocalEvent<VeilCultistComponent, VeilCultMidasTouchActionEvent>(OnMidasTouch);
         SubscribeLocalEvent<EnchantableComponent, EnchantSelectedMessage>(OnEnchantSelected);
 		SubscribeLocalEvent<ConfusionComponent, ComponentInit>(OnInit);
-		SubscribeLocalEvent<ConfusionComponent, ComponentShutdown>(OnShutdown);
+		SubscribeLocalEvent<ConfusionComponent, ComponentRemove>(OnShutdown);
 		SubscribeLocalEvent<ConfusionComponent, RefreshMovementSpeedModifiersEvent>(Invert);
 		
     }
@@ -154,7 +154,7 @@ public abstract class SharedVeilCultSystem : EntitySystem
         _speed.RefreshMovementSpeedModifiers(uid);
     }
 
-    private void OnShutdown(EntityUid uid, ConfusionComponent component, ComponentShutdown args)
+    private void OnShutdown(EntityUid uid, ConfusionComponent component, ComponentRemove args)
     {
         _speed.RefreshMovementSpeedModifiers(uid);
     }

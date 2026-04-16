@@ -82,8 +82,9 @@ public sealed partial class VeilCultSystem
     {
 
         SubscribeLocalEvent<VeilCultistComponent, VeilCultMidasTouchGetHandEvent>(OnMidasTouch);
-        SubscribeLocalEvent<MidasHandComponent, AfterInteractEvent>(OnInteract);
-        SubscribeLocalEvent<MidasHandComponent, MidasTouchDoAfterEvent>(DoAfterInteract);
+        SubscribeLocalEvent<MidasHandComponent, AfterInteractEvent>(OnInteractHand);
+        SubscribeLocalEvent<StrangeShardComponent, AfterInteractEvent>(OnInteractShard);
+        SubscribeLocalEvent<MidasHandComponent, MidasTouchDoAfterEvent>(DoAfterInteractHand);
         // Abilities
     }
 
@@ -102,24 +103,30 @@ public sealed partial class VeilCultSystem
 	
     #endregion
 	
-	private void OnInteract(EntityUid uid, MidasHandComponent component, AfterInteractEvent args)
+	private void OnInteractHand(EntityUid uid, MidasHandComponent component, AfterInteractEvent args)
 	{
-	        var doAfterEventArgs = new DoAfterArgs(EntityManager, args.User, TimeSpan.FromSeconds(2),
-            new MidasTouchDoAfterEvent(),
-            eventTarget: uid,
-			target: args.Target)
-        {
-            BreakOnMove = true,
-            BreakOnDamage = true,
-            MovementThreshold = 0.01f,
-            NeedHand = false
-        };
+		if (HasComp<StackComponent>(args.Target) || HasComp<StationAiCoreComponent>(args.Target) || HasComp<SiliconLawProviderComponent>(args.Target))
+		{
+				var doAfterEventArgs = new DoAfterArgs(EntityManager, args.User, TimeSpan.FromSeconds(2),
+				new MidasTouchDoAfterEvent(),
+				eventTarget: uid,
+				target: args.Target)
+			{
+				BreakOnMove = true,
+				BreakOnDamage = true,
+				MovementThreshold = 0.01f,
+				NeedHand = false
+			};
 
-            _doAfterSystem.TryStartDoAfter(doAfterEventArgs);
+				_doAfterSystem.TryStartDoAfter(doAfterEventArgs);
+		}
 	}
 	
-	private void DoAfterInteract(EntityUid uid, MidasHandComponent component, MidasTouchDoAfterEvent args)
+	private void DoAfterInteractHand(EntityUid uid, MidasHandComponent component, MidasTouchDoAfterEvent args)
 	{
+		if (args.Cancelled)
+			return;
+		
 		if (args.Target != null)
 		{
 			if (TryComp<StackComponent>(args.Target, out var stack))
@@ -143,6 +150,7 @@ public sealed partial class VeilCultSystem
 				return;
 			}
 		}
+		
 		
 	}
 	
@@ -219,6 +227,46 @@ public sealed partial class VeilCultSystem
 				}
 			}
 		}
-
 	}
+	
+	private void OnInteractShard(EntityUid uid, StrangeShardComponent component, AfterInteractEvent args)
+	{
+		if (HasComp<VeilCultistComponent>(args.Target))
+		{
+				var doAfterEventArgs = new DoAfterArgs(EntityManager, args.User, TimeSpan.FromSeconds(3),
+				new StrangeShardDoAfterEvent(),
+				eventTarget: args.Target,
+				target: uid)
+			{
+				BreakOnMove = true,
+				BreakOnDamage = true,
+				MovementThreshold = 0.01f,
+				NeedHand = false
+			};
+
+				_doAfterSystem.TryStartDoAfter(doAfterEventArgs);
+		}
+		
+		if (HasComp<VeilCultAltarComponent>(args.Target))
+		{
+			if (!_veilCult.CheckObjectives())
+			{
+				_popup.PopupEntity(Loc.GetString("veil-cult-objectives-not-complete"), args.User, args.User, PopupType.LargeCaution);
+				return;
+			}
+				var doAfterEventArgs = new DoAfterArgs(EntityManager, args.User, TimeSpan.FromSeconds(6),
+				new StrangeShardDoAfterEvent(),
+				eventTarget: args.Target,
+				target: uid)
+			{
+				BreakOnMove = true,
+				BreakOnDamage = true,
+				MovementThreshold = 0.01f,
+				NeedHand = false
+			};
+
+				_doAfterSystem.TryStartDoAfter(doAfterEventArgs);
+		}
+	}
+	
 }

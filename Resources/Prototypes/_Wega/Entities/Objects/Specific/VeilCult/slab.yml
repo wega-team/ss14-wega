@@ -7,6 +7,11 @@
   - type: Sprite
     sprite: _Wega/Objects/Specific/VeilCult/clockwork_slab.rsi
     state: clock_slab
+  - type: MeleeWeapon
+    attackRate: 1
+    damage:
+      types:
+        Blunt: 0
   - type: Enchantable
     enchants:
     - VeilCultClockworkSlabStun
@@ -24,6 +29,7 @@
 - type: entity
   id: VeilCultClockworkSlabStun
   parent: VeilCultClockworkSlab
+  suffix: Stun
   components:
   - type: Sprite
     sprite: _Wega/Objects/Specific/VeilCult/clockwork_slab.rsi
@@ -38,6 +44,7 @@
 - type: entity
   id: VeilCultClockworkSlabTeleportation
   parent: VeilCultClockworkSlab
+  suffix: Teleportation
   components:
   - type: Sprite
     sprite: _Wega/Objects/Specific/VeilCult/clockwork_slab.rsi
@@ -52,6 +59,7 @@
 - type: entity
   id: VeilCultClockworkSlabTerraform
   parent: VeilCultClockworkSlab
+  suffix: Terraform
   components:
   - type: Sprite
     sprite: _Wega/Objects/Specific/VeilCult/clockwork_slab.rsi
@@ -66,6 +74,7 @@
 - type: entity
   id: VeilCultClockworkSlabForcePassage
   parent: VeilCultClockworkSlab
+  suffix: Force Passage
   components:
   - type: Sprite
     sprite: _Wega/Objects/Specific/VeilCult/clockwork_slab.rsi
@@ -80,6 +89,7 @@
 - type: entity
   id: VeilCultClockworkSlabHidingsClock
   parent: VeilCultClockworkSlab
+  suffix: Hidings Clock
   components:
   - type: Sprite
     sprite: _Wega/Objects/Specific/VeilCult/clockwork_slab.rsi
@@ -94,6 +104,7 @@
 - type: entity
   id: VeilCultClockworkSlabSealWounds
   parent: VeilCultClockworkSlab
+  suffix: Seal Wounds
   components:
   - type: Sprite
     sprite: _Wega/Objects/Specific/VeilCult/clockwork_slab.rsi

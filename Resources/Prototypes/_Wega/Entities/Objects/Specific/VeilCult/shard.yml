@@ -10,6 +10,7 @@
   - type: Tag
     tags:
     - StrangeShard
+  - type: StrangeShard
   - type: Enchantable
     enchants:
     - VeilCultStrangeShardTimeStop
@@ -21,6 +22,7 @@
 - type: entity
   id: VeilCultStrangeShardTimeStop
   parent: VeilCultStrangeShard
+  suffix: Time Stop
   components:
   - type: Sprite
     sprite: _Wega/Objects/Specific/VeilCult/strange_shard.rsi
@@ -35,6 +37,7 @@
 - type: entity
   id: VeilCultStrangeShardReconstruction
   parent: VeilCultStrangeShard
+  suffix: Reconstruction
   components:
   - type: Sprite
     sprite: _Wega/Objects/Specific/VeilCult/strange_shard.rsi
@@ -49,6 +52,7 @@
 - type: entity
   id: VeilCultStrangeShardEmp
   parent: VeilCultStrangeShard
+  suffix: EMP
   components:
   - type: Sprite
     sprite: _Wega/Objects/Specific/VeilCult/strange_shard.rsi

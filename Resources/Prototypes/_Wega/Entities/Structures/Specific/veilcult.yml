@@ -99,3 +99,48 @@
         type: VeilAltarBoundUserInterface
   - type: VeilCultAltar
   - type: VeilCultStructure
+  
+ 
+- type: entity
+  parent: BaseStructure
+  id: VeilCultPortal
+  name: portal
+  components:
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 1.5
+        mask:
+        - Impassable
+        layer:
+        - WallLayer
+        density: 1000
+  - type: Sprite
+    noRot: true
+    sprite: _Wega/Structures/Specific/VeilCult/portal.rsi
+    state: portal
+    scale: 1.5, 1.5
+  - type: PointLight
+    radius: 5
+    energy: 3
+    color: "#E39612"
+  - type: NightLightBlocked # Corvax-Wega-NightLight
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralMetallic
+  - type: Destructible
+    thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 400
+        behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+  - type: AmbientSound
+    volume: 2
+    range: 10
+    sound:
+      path: /Audio/Ambience/Objects/anomaly_generator.ogg
+  - type: VeilCultPortal

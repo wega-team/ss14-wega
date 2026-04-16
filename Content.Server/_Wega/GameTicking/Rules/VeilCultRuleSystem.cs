@@ -39,6 +39,7 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Robust.Shared.GameObjects;
 
 namespace Content.Server.GameTicking.Rules
 {
@@ -64,6 +65,7 @@ namespace Content.Server.GameTicking.Rules
         [Dependency] private readonly TargetObjectiveSystem _target = default!;
         [Dependency] private readonly MetaDataSystem _meta = default!;
         [Dependency] private readonly SharedStationSystem _stationSystem = default!;
+		[Dependency] private readonly EntityLookupSystem _entityLookup = default!;
 
         public readonly ProtoId<NpcFactionPrototype> VeilCultNpcFaction = "VeilCult";
 
@@ -360,6 +362,21 @@ namespace Content.Server.GameTicking.Rules
 			
 			comp.EnergyCount -= amount;
 				return true;
+		}
+		
+		public bool CheckObjectives()
+		{
+			var cult = GetActiveRule();
+			if (cult == null)
+				return false;
+			
+			foreach (var target in cult.SelectedTargets)
+			{			
+				var beacons = _entityLookup.GetEntitiesInRange<VeilCultBeaconComponent>(Transform(target).Coordinates, 10f);
+				if (beacons.Count < 1)
+					return false;
+			}
+			return true;
 		}
 		// endround
 
