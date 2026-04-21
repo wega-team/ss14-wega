@@ -460,6 +460,7 @@
         whitelist:
           tags:
           - ConstructionMaterial
+          - PowerCell
     - hand:
         emptyRepresentative: DoorElectronics
         emptyLabel: borg-slot-circuitboards-empty
@@ -1369,19 +1370,23 @@
   - type: ItemBorgModule
     hands:
     - hand:
-        emptyRepresentative: BorgModuleConstructionMaterialPlaceholder
+        emptyRepresentative: ConstrukAndCabel
         emptyLabel: borg-slot-construction-empty
         whitelist:
           tags:
           - ConstructionMaterial
+          - PowerCell
+          - CableCoil
     - hand:
-        emptyRepresentative: BorgModuleConstructionMaterialPlaceholder
+        emptyRepresentative: ConstrukAndCabel
         emptyLabel: borg-slot-construction-empty
         whitelist:
           tags:
           - ConstructionMaterial
+          - PowerCell
+          - CableCoil
     - hand:
-        emptyRepresentative: FloorTileItemSteel
+        emptyRepresentative: FloorTileItemXenoborg
         emptyLabel: borg-slot-tiles-empty
         whitelist:
           components:
@@ -1393,12 +1398,6 @@
         whitelist:
           components:
           - Circuitboard
-    - hand:
-        emptyRepresentative: CableApcStack10
-        emptyLabel: borg-slot-construction-empty
-        whitelist:
-          tags:
-          - CableCoil
     - hand:
         emptyRepresentative: SpaceHeaterFlatpack
         emptyLabel: borg-slot-flatpacks-empty

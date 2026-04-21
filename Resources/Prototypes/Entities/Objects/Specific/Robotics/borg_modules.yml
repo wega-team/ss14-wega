@@ -817,12 +817,14 @@
         whitelist:
           tags:
           - ConstructionMaterial
+          - PowerCell # Corvax-Wega-robots
     - hand:
         emptyRepresentative: BorgModuleConstructionMaterialPlaceholder
         emptyLabel: borg-slot-construction-empty
         whitelist:
           tags:
           - ConstructionMaterial
+          - PowerCell # Corvax-Wega-robots
 # Corvax-Wega-Robot-Start
     # - hand:
         # emptyRepresentative: BorgModuleConstructionMaterialPlaceholder
