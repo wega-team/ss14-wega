@@ -187,7 +187,7 @@
   - type: MovementAlwaysTouching # it flies in space with tiny thrusters
   - type: FlashImmunity
   - type: BorgChassis
-    maxModules: 4
+    maxModules: 5 # Corvax-Wega-Edit 4 - > 5
     hasMindState: xenoborg_scout_e
     noMindState: xenoborg_scout_e_r
     moduleWhitelist:
@@ -206,6 +206,7 @@
       - XenoborgModuleTool
       - XenoborgModuleSword
       - XenoborgModuleSpaceMovement
+      - XenoborgModuleJump # Corvax-Wega-add
   - type: ItemSlots
     slots:
       cell_slot:
