@@ -53,9 +53,6 @@
       components:
       - SecretStash
   # Corvax-Wega-Android-start
-  - type: Tag
-    tags:
-      - BrainSynthetic
   - type: Brain
   - type: UserInterface
     interfaces:
@@ -137,6 +134,7 @@
     - type: Tag
       tags:
       - CannotSuicide
+      - BaseOrgan # Corvax-Wega-Android
       - BrainSynthetic # Corvax-Wega-Android
     - type: GenericVisualizer
       visuals:

@@ -144,7 +144,7 @@
       LegRight: OrganAndroidLegRight
       FootLeft: OrganAndroidFootLeft
       FootRight: OrganAndroidFootRight
-      Brain: MMIFilled
+      Brain: PositronicBrain
       Eyes: OrganAndroidEyes
       Lungs: OrganAndroidGas
       Heart: OrganAndroidTyrium
@@ -252,8 +252,8 @@
     interfaces:
       enum.StrippingUiKey.Key:
         type: StrippableBoundUserInterface
-      # enum.SurgeryUiKey.Key:
-      #   type: SurgeryBoundUserInterface
+      enum.SurgeryUiKey.Key:
+        type: SurgeryBoundUserInterface
   - type: InteractionPopup
     interactSuccessSound:
       path: /Audio/Ambience/Objects/periodic_beep.ogg
@@ -273,13 +273,13 @@
         shockDamage: 1
         minScale: 20
         electrocuteTime: 1
-  # - type: Operated
-  #   raceGraph: AndroidSurgery
-  #   limbLossChance: 1.75
-  #   specialTool: Screwing
+  - type: Operated
+    raceGraph: AndroidSurgery
+    limbLossChance: 1.75
+    specialTool: Screwing
   - type: SyntheticOperated
-  # - type: Pain
-  #   profile: SyntheticPainProfile
+  - type: Pain
+    profile: SyntheticPainProfile
   - type: Tag
     tags:
     - CanPilot
@@ -353,34 +353,74 @@
 - type: entity
   parent: [ OrganBaseArmLeft, OrganAndroidExternal ]
   id: OrganAndroidArmLeft
+  components:
+  - type: Tag
+    tags:
+    - BaseBodyPart
+    - LeftArmSynthetic
 
 - type: entity
   parent: [ OrganBaseArmRight, OrganAndroidExternal ]
   id: OrganAndroidArmRight
+  components:
+  - type: Tag
+    tags:
+    - BaseBodyPart
+    - RightArmSynthetic
 
 - type: entity
   parent: [ OrganBaseHandLeft, OrganAndroidExternal ]
   id: OrganAndroidHandLeft
+  components:
+  - type: Tag
+    tags:
+    - BaseBodyPart
+    - LeftHandSynthetic
 
 - type: entity
   parent: [ OrganBaseHandRight, OrganAndroidExternal ]
   id: OrganAndroidHandRight
+  components:
+  - type: Tag
+    tags:
+    - BaseBodyPart
+    - RightHandSynthetic
 
 - type: entity
   parent: [ OrganBaseLegLeft, OrganAndroidExternal ]
   id: OrganAndroidLegLeft
+  components:
+  - type: Tag
+    tags:
+    - BaseBodyPart
+    - LeftLegSynthetic
 
 - type: entity
   parent: [ OrganBaseLegRight, OrganAndroidExternal ]
   id: OrganAndroidLegRight
+  components:
+  - type: Tag
+    tags:
+    - BaseBodyPart
+    - RightLegSynthetic
 
 - type: entity
   parent: [ OrganBaseFootLeft, OrganAndroidExternal ]
   id: OrganAndroidFootLeft
+  components:
+  - type: Tag
+    tags:
+    - BaseBodyPart
+    - LeftFootSynthetic
 
 - type: entity
   parent: [ OrganBaseFootRight, OrganAndroidExternal ]
   id: OrganAndroidFootRight
+  components:
+  - type: Tag
+    tags:
+    - BaseBodyPart
+    - RightFootSynthetic
 
 - type: entity
   parent: [ OrganBaseLungs, OrganAndroidInternal, OrganAndroidMetabolizer ]
@@ -396,8 +436,8 @@
     alert: LowNitrogen
   - type: Tag
     tags:
-      - BaseOrgan
-      - LungsSynthetic
+    - BaseOrgan
+    - LungsSynthetic
 
 - type: entity
   parent: [ OrganBaseHeart, OrganAndroidInternal, OrganAndroidMetabolizer ]
@@ -411,8 +451,8 @@
       - state: tyrium_module
   - type: Tag
     tags:
-      - BaseOrgan
-      - HeartSynthetic
+    - BaseOrgan
+    - HeartSynthetic
 
 - type: entity
   parent: [ OrganAndroidVisual, OrganBaseEyes, OrganAndroidInternal ]
@@ -431,5 +471,5 @@
       state: eyes
   - type: Tag
     tags:
-      - BaseOrgan
-      - EyesSynthetic
+    - BaseOrgan
+    - EyesSynthetic

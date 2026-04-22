@@ -52,11 +52,43 @@ public sealed class VisualBodySystem : SharedVisualBodySystem
     private void OnOrganGotInserted(Entity<VisualOrganComponent> ent, ref OrganGotInsertedEvent args)
     {
         ApplyVisual(ent, args.Target);
+
+        // Corvax-Wega-Surgery-start
+        // To hardcode this shit? Yes, Rico. Hardcode.
+        if (TryComp<OrganComponent>(ent, out var organComp) && organComp.Category?.Id == "Head"
+            && TryComp<BodyComponent>(args.Target, out var body) && body.Organs != null)
+        {
+            foreach (var organ in body.Organs.ContainedEntities)
+            {
+                if (TryComp<OrganComponent>(organ, out var eyeComp) && eyeComp.Category?.Id == "Eyes"
+                    && TryComp<VisualOrganComponent>(organ, out var eyeVisual))
+                {
+                    ApplyVisual((organ, eyeVisual), args.Target);
+                }
+            }
+        }
+        // Corvax-Wega-Surgery-end
     }
 
     private void OnOrganGotRemoved(Entity<VisualOrganComponent> ent, ref OrganGotRemovedEvent args)
     {
         RemoveVisual(ent, args.Target);
+
+        // Corvax-Wega-Surgery-start
+        // To hardcode this shit? Yes, Rico. Hardcode.
+        if (TryComp<OrganComponent>(ent, out var organComp) && organComp.Category?.Id == "Head"
+            && TryComp<BodyComponent>(args.Target, out var body) && body.Organs != null)
+        {
+            foreach (var organ in body.Organs.ContainedEntities)
+            {
+                if (TryComp<OrganComponent>(organ, out var eyeComp) && eyeComp.Category?.Id == "Eyes"
+                    && TryComp<VisualOrganComponent>(organ, out var eyeVisual))
+                {
+                    RemoveVisual((organ, eyeVisual), args.Target);
+                }
+            }
+        }
+        // Corvax-Wega-Surgery-end
     }
 
     private void OnOrganState(Entity<VisualOrganComponent> ent, ref AfterAutoHandleStateEvent args)
