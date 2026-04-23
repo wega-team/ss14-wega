@@ -166,7 +166,7 @@ public sealed class RevolutionaryRuleSystem : GameRuleSystem<RevolutionaryRuleCo
         _npcFaction.AddFaction(ev.Target, RevolutionaryNpcFaction);
         var revComp = EnsureComp<RevolutionaryComponent>(ev.Target);
         //Corvax-Wega-Edit-Start
-        if (ev.Used != null && _tag.HasTag(ev.Used.Value, RevShopTagPrototype) && TryComp<StoreComponent>(ev.Used.Value, out var store))
+        if (!HasComp<AlwaysRevolutionaryConvertibleComponent>(ev.Target) && ev.Used != null && _tag.HasTag(ev.Used.Value, RevShopTagPrototype) && TryComp<StoreComponent>(ev.Used.Value, out var store))
         {
             _store.TryAddCurrency(new() { { HelpfulResourceCurrencyPrototype, comp.AmountPerRev } }, ev.Used.Value, store);
         }
