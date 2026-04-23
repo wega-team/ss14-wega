@@ -53,10 +53,16 @@
       components:
       - SecretStash
   # Corvax-Wega-Android-start
-  - type: Tag
-    tags:
-      - BrainSynthetic
   - type: Brain
+  - type: UserInterface
+    interfaces:
+      enum.NavMapBeaconUiKey.Key:
+        type: NavMapBeaconBoundUserInterface
+  - type: ActivatableUI
+    key: enum.NavMapBeaconUiKey.Key
+  - type: NavMapBeacon
+    enabled: false
+  - type: ConfigurableNavMapBeacon
   # Corvax-Wega-Android-end
 
 - type: entity
@@ -128,6 +134,7 @@
     - type: Tag
       tags:
       - CannotSuicide
+      - BaseOrgan # Corvax-Wega-Android
       - BrainSynthetic # Corvax-Wega-Android
     - type: GenericVisualizer
       visuals:
@@ -146,4 +153,15 @@
         - SecretStash
     # Corvax-Wega-Android-start
     - type: Brain
+    - type: Organ
+      category: Brain
+    - type: UserInterface
+      interfaces:
+        enum.NavMapBeaconUiKey.Key:
+          type: NavMapBeaconBoundUserInterface
+    - type: ActivatableUI
+      key: enum.NavMapBeaconUiKey.Key
+    - type: NavMapBeacon
+      enabled: false
+    - type: ConfigurableNavMapBeacon
     # Corvax-Wega-Android-end

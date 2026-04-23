@@ -1,9 +1,11 @@
 using System.Linq;
+using Content.Shared.Body; // Corvax-Wega-Surgery
 using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Damage.Systems;
 using Content.Shared.FixedPoint;
+using Content.Shared.Surgery.Components; // Corvax-Wega-Surgery
 using Robust.Client.GameObjects;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
@@ -36,6 +38,8 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
         base.Initialize();
 
         SubscribeLocalEvent<DamageVisualsComponent, ComponentInit>(InitializeEntity);
+        SubscribeLocalEvent<OperatedComponent, OrganRemovedFromEvent>(OnOrganRemoved); // Corvax-Wega-Surgery
+        SubscribeLocalEvent<OperatedComponent, OrganInsertedIntoEvent>(OnOrganInserted); // Corvax-Wega-Surgery
     }
 
     private void InitializeEntity(EntityUid entity, DamageVisualsComponent comp, ComponentInit args)
@@ -402,17 +406,21 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
     {
         foreach (var layer in damageVisComp.TargetLayerMapKeys)
         {
-            // I assume this gets set by something like body system if limbs are missing???
-            // TODO is this actually used by anything anywhere?
-            AppearanceSystem.TryGetData(uid, layer, out bool disabled, component);
+            // Corvax-Wega-Surgery-Edit-start
+            var hasOrgan = HasOrgan(uid, layer);
 
-            if (damageVisComp.DisabledLayers[layer] == disabled)
+            AppearanceSystem.TryGetData(uid, layer, out bool appearanceDisabled, component);
+            var isDisabled = !hasOrgan || appearanceDisabled;
+
+            if (damageVisComp.DisabledLayers.GetValueOrDefault(layer) == isDisabled)
                 continue;
 
-            damageVisComp.DisabledLayers[layer] = disabled;
+            damageVisComp.DisabledLayers[layer] = isDisabled;
+
             if (damageVisComp.TrackAllDamage)
             {
-                SpriteSystem.LayerSetVisible((uid, spriteComponent), $"{layer}trackDamage", !disabled);
+                var shouldShow = !isDisabled && damageVisComp.LastDamageThreshold > damageVisComp.Thresholds[0];
+                SpriteSystem.LayerSetVisible((uid, spriteComponent), $"{layer}trackDamage", shouldShow);
                 continue;
             }
 
@@ -421,10 +429,75 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
 
             foreach (var damageGroup in damageVisComp.DamageOverlayGroups.Keys)
             {
-                SpriteSystem.LayerSetVisible((uid, spriteComponent), $"{layer}{damageGroup}", !disabled);
+                var threshold = damageVisComp.LastThresholdPerGroup.TryGetValue(damageGroup, out var t) ? t : FixedPoint2.Zero;
+
+                var shouldShow = !isDisabled && threshold > damageVisComp.Thresholds[0];
+                SpriteSystem.LayerSetVisible((uid, spriteComponent), $"{layer}{damageGroup}", shouldShow);
             }
+            // Corvax-Wega-Surgery-Edit-end
         }
     }
+
+    // Corvax-Wega-Surgery-start
+    private bool HasOrgan(EntityUid uid, object layerMapKey)
+    {
+        if (layerMapKey is not Enum layerEnum)
+            return true;
+
+        var layerName = layerEnum.ToString();
+        if (!TryComp<BodyComponent>(uid, out var body) || body.Organs == null)
+            return true;
+
+        var requiredCategory = layerName switch
+        {
+            "LArm" => "ArmLeft",
+            "RArm" => "ArmRight",
+            "LHand" => "HandLeft",
+            "RHand" => "HandRight",
+            "LLeg" => "LegLeft",
+            "RLeg" => "LegRight",
+            "LFoot" => "FootLeft",
+            "RFoot" => "FootRight",
+            "Head" => "Head",
+            "Chest" => "Torso",
+            _ => null
+        };
+
+        if (requiredCategory == null)
+            return true;
+
+        foreach (var organ in body.Organs.ContainedEntities)
+        {
+            if (TryComp<OrganComponent>(organ, out var organComp) &&
+                organComp.Category?.Id == requiredCategory)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private void OnOrganRemoved(Entity<OperatedComponent> ent, ref OrganRemovedFromEvent args)
+    {
+        if (TryComp<DamageVisualsComponent>(ent, out var damageVisComp) &&
+            TryComp<SpriteComponent>(ent, out var spriteComponent) &&
+            TryComp<AppearanceComponent>(ent, out var appearanceComponent))
+        {
+            UpdateDisabledLayers(ent, spriteComponent, appearanceComponent, damageVisComp);
+        }
+    }
+
+    private void OnOrganInserted(Entity<OperatedComponent> ent, ref OrganInsertedIntoEvent args)
+    {
+        if (TryComp<DamageVisualsComponent>(ent, out var damageVisComp) &&
+            TryComp<SpriteComponent>(ent, out var spriteComponent) &&
+            TryComp<AppearanceComponent>(ent, out var appearanceComponent))
+        {
+            UpdateDisabledLayers(ent, spriteComponent, appearanceComponent, damageVisComp);
+        }
+    }
+    // Corvax-Wega-Surgery-end
 
     /// <summary>
     ///     Checks the overlay ordering on the current

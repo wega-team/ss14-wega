@@ -38,27 +38,78 @@ public sealed partial class SurgerySystem
 
     private void InternalDamageInitialize()
     {
-        SubscribeLocalEvent<OperatedComponent, OrganGotRemovedEvent>(OnOrganRemoved);
+        SubscribeLocalEvent<OperatedComponent, OrganRemovedFromEvent>(OnOrganRemoved);
         SubscribeLocalEvent<OperatedComponent, DamageChangedEvent>(OnDamage);
         SubscribeLocalEvent<OperatedComponent, ExaminedEvent>(OnOperatedExamined);
     }
 
     #region Process damage
 
-    private void OnOrganRemoved(Entity<OperatedComponent> ent, ref OrganGotRemovedEvent args)
+    private void OnOrganRemoved(Entity<OperatedComponent> ent, ref OrganRemovedFromEvent args)
     {
-        if (!TryComp<OrganComponent>(args.Target, out var organComp))
+        if (!TryComp<OrganComponent>(args.Organ, out var organComp))
             return;
 
-        // Check if it's a leg organ (category ID contains "Leg")
         var categoryId = organComp.Category?.Id;
-        if (categoryId != null && categoryId.Contains("Leg"))
-        {
-            if (!HasComp<BodyComponent>(ent))
-                return;
 
-            _stun.TryKnockdown(ent.Owner, TimeSpan.FromSeconds(2f), true, false);
+        if (categoryId != null)
+        {
+            if (categoryId.Contains("Arm"))
+            {
+                RemoveDependentOrgan(ent, args.Organ, "Hand");
+            }
+            else if (categoryId.Contains("Leg"))
+            {
+                RemoveDependentOrgan(ent, args.Organ, "Foot");
+            }
+
+            if (categoryId.Contains("Leg"))
+            {
+                if (!HasComp<BodyComponent>(ent))
+                    return;
+                _stun.TryKnockdown(ent.Owner, TimeSpan.FromSeconds(2f), true, false);
+            }
         }
+    }
+
+    private void RemoveDependentOrgan(Entity<OperatedComponent> ent, EntityUid parentOrgan, string dependentType)
+    {
+        if (!TryComp<BodyComponent>(ent, out var body) || body.Organs == null)
+            return;
+
+        if (!TryComp<OrganComponent>(parentOrgan, out var parentComp))
+            return;
+
+        var parentCategory = parentComp.Category?.Id;
+        if (parentCategory == null)
+            return;
+
+        string side = parentCategory.Contains("Left") ? "Left"
+            : parentCategory.Contains("Right") ? "Right"
+            : "";
+
+        if (string.IsNullOrEmpty(side))
+            return;
+
+        string dependentCategory = $"{dependentType}{side}";
+
+        EntityUid? dependentOrgan = null;
+        foreach (var organ in body.Organs.ContainedEntities)
+        {
+            if (TryComp<OrganComponent>(organ, out var organComp) && organComp.Category?.Id == dependentCategory)
+            {
+                dependentOrgan = organ;
+                break;
+            }
+        }
+
+        if (dependentOrgan == null)
+            return;
+
+        _container.Remove(dependentOrgan.Value, body.Organs);
+
+        _transform.SetCoordinates(dependentOrgan.Value, Transform(ent).Coordinates);
+        _physics.ApplyLinearImpulse(dependentOrgan.Value, _random.NextVector2() * 15f);
     }
 
     private void OnDamage(Entity<OperatedComponent> ent, ref DamageChangedEvent args)
@@ -254,8 +305,7 @@ public sealed partial class SurgerySystem
     private List<InternalDamagePrototype> GetMatchingDamagePrototypes(string id)
     {
         return _proto.EnumeratePrototypes<InternalDamagePrototype>()
-            .Where(p => p.SupportedTypes.Contains(id))
-            .ToList();
+            .Where(p => p.SupportedTypes.Contains(id)).ToList();
     }
 
     private void TryAddInternalDamages(Entity<OperatedComponent> ent, InternalDamagePrototype possibleDamage)
@@ -285,7 +335,9 @@ public sealed partial class SurgerySystem
             return null;
 
         var bodyParts = body.Organs.ContainedEntities
-            .Where(organ => !HasComp<SubdermalImplantComponent>(organ))
+            .Where(organ =>
+                Parts.Any(tag => _tag.HasTag(organ, tag))
+                && !HasComp<SubdermalImplantComponent>(organ))
             .Select(organ => GetOrganName(organ))
             .ToList();
 
@@ -327,10 +379,10 @@ public sealed partial class SurgerySystem
             if (!TryComp<BodyComponent>(target, out var body) || body.Organs == null)
                 return false;
 
-            var hasPart = body.Organs.ContainedEntities.Any(organ =>
+            var organEntity = body.Organs.ContainedEntities.FirstOrDefault(organ =>
                 GetOrganName(organ).Equals(bodyPart, StringComparison.OrdinalIgnoreCase));
 
-            if (!hasPart)
+            if (!Parts.Any(tag => _tag.HasTag(organEntity, tag)) || HasComp<SubdermalImplantComponent>(organEntity))
                 return false;
         }
         else
@@ -352,8 +404,8 @@ public sealed partial class SurgerySystem
             component.InternalDamages.Add(damageId, bodyParts);
         }
 
-        if (bodyPart != null && !bodyParts.Contains(bodyPart))
-            bodyParts.Add(bodyPart);
+        if (bodyPart != null && !bodyParts.Contains(bodyPart.ToLower()))
+            bodyParts.Add(bodyPart.ToLower());
     }
 
     public bool TryRemoveInternalDamage(EntityUid target, string damageId, string bodyPart, OperatedComponent? component = null)
@@ -364,7 +416,7 @@ public sealed partial class SurgerySystem
         if (!component.InternalDamages.TryGetValue(damageId, out var damagedParts))
             return false;
 
-        if (!damagedParts.Remove(bodyPart))
+        if (!damagedParts.Remove(bodyPart.ToLower()))
             return false;
 
         if (damagedParts.Count == 0)

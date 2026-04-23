@@ -205,7 +205,7 @@ namespace Content.Server.Disease
             if (!clothing.Slots.HasFlag(args.SlotFlags))
                 return;
             // Give the user the component's disease resist
-            if (TryComp<DiseaseCarrierComponent>(args.Equipee, out var carrier))
+            if (TryComp<DiseaseCarrierComponent>(args.EquipTarget, out var carrier))
                 carrier.DiseaseResist += component.Protection;
             // Set the component to active to the unequip check isn't CBT
             component.IsActive = true;
@@ -221,7 +221,7 @@ namespace Content.Server.Disease
             // Only undo the resistance if it was affecting the user
             if (!component.IsActive)
                 return;
-            if (TryComp<DiseaseCarrierComponent>(args.Equipee, out var carrier))
+            if (TryComp<DiseaseCarrierComponent>(args.EquipTarget, out var carrier))
                 carrier.DiseaseResist -= component.Protection;
             component.IsActive = false;
         }

@@ -26,12 +26,6 @@
         color: "#FF0000"
       Burn:
         sprite: Mobs/Effects/burn_damage.rsi
-  - type: GenericVisualizer
-    visuals:
-      enum.CreamPiedVisuals.Creamed:
-        clownedon:
-          True: { visible: true }
-          False: { visible: false }
   - type: StatusIcon
     bounds: -0.5,-0.5,0.5,0.5
   - type: JobStatus
@@ -86,7 +80,6 @@
     - TemporaryBlindness
     - Pacified
     - Flashed
-    - RadiationProtection
     - Adrenaline
     - Hallucinations # Corvax-Wega-Hallucinations
     - Dizzy # Corvax-Wega-Dizzy
@@ -137,6 +130,9 @@
     factions:
     - NanoTrasen
   - type: CreamPied
+    sprite:
+      sprite: Effects/creampie.rsi
+      state: creampie_human
   - type: ParcelWrapOverride
     parcelPrototype: WrappedParcelHumanoid
     wrapDelay: 5
@@ -171,6 +167,8 @@
     deathPenalty: 0.01 # However they really ought to be living and intact, otherwise they're worth 100x less.
   - type: CanEscapeInventory # Corvax-Wega-Carrying
   - type: MagbootsUser # Corvax-Wega-AdvMagboots
+  - type: RandomPrice
+    maxRandomPrice: 20000
   - type: Tag
     tags:
     - CanPilot

@@ -13,6 +13,7 @@
     - BorgModuleSecurity
 
   defaultModules:
+  - BorgModulePrying
   - BorgModuleDisabler
   - BorgModuleDetective
 
@@ -72,6 +73,7 @@
     - BorgModuleScience
 
   defaultModules:
+  - BorgModulePrying
   - BorgModuleTool
   - BorgModuleArtifact
   - BorgModuleAnomaly

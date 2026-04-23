@@ -16,22 +16,20 @@ public sealed partial class BloodCultSystem
     {
         SubscribeLocalEvent<BloodCultEquipmentComponent, GotEquippedEvent>(OnDidEquip);
         SubscribeLocalEvent<BloodCultEquipmentComponent, BeforeGettingEquippedHandEvent>(OnHandPickUp);
-		SubscribeLocalEvent<BloodCultWeaponComponent, MeleeHitEvent>(OnBloodCultMeleeHit);
+        SubscribeLocalEvent<BloodCultWeaponComponent, MeleeHitEvent>(OnBloodCultMeleeHit);
     }
 
     private void OnDidEquip(Entity<BloodCultEquipmentComponent> ent, ref GotEquippedEvent args)
     {
 
-        if (HasComp<BloodCultistComponent>(args.Equipee))
+        if (HasComp<BloodCultistComponent>(args.EquipTarget))
             return;
 
-        _transform.SetCoordinates(ent, Transform(args.Equipee).Coordinates);
+        _transform.SetCoordinates(ent, Transform(args.EquipTarget).Coordinates);
         _transform.AttachToGridOrMap(ent);
         _throwing.TryThrow(ent, _random.NextVector2(), 1);
         _popup.PopupEntity(Loc.GetString("blood-cult-on-equip"),
-            args.Equipee,
-            args.Equipee,
-            PopupType.MediumCaution);
+            args.EquipTarget, args.EquipTarget, PopupType.MediumCaution);
     }
 
     private void OnHandPickUp(Entity<BloodCultEquipmentComponent> ent, ref BeforeGettingEquippedHandEvent args)
@@ -51,26 +49,25 @@ public sealed partial class BloodCultSystem
             args.User,
             args.User,
             PopupType.MediumCaution);
-	}
-	
-	private void OnBloodCultMeleeHit(EntityUid uid, BloodCultWeaponComponent comp, MeleeHitEvent args)
-	{
-		if (!args.IsHit || args.HitEntities.Count == 0)
-			return;
+    }
 
-		if (args.HitEntities is not List<EntityUid> hitList)
-			return;
+    private void OnBloodCultMeleeHit(EntityUid uid, BloodCultWeaponComponent comp, MeleeHitEvent args)
+    {
+        if (!args.IsHit || args.HitEntities.Count == 0)
+            return;
 
-		for (int i = hitList.Count - 1; i >= 0; i--)
-		{
-			var target = hitList[i];
+        if (args.HitEntities is not List<EntityUid> hitList)
+            return;
 
-			if (HasComp<BloodCultistComponent>(target))
-				hitList.RemoveAt(i);
-		}
+        for (int i = hitList.Count - 1; i >= 0; i--)
+        {
+            var target = hitList[i];
+            if (HasComp<BloodCultistComponent>(target))
+                hitList.RemoveAt(i);
+        }
 
-		if (hitList.Count == 0)
-			args.Handled = true;
-	}
+        if (hitList.Count == 0)
+            args.Handled = true;
+    }
 }
 

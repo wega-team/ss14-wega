@@ -267,13 +267,13 @@
     normalBodyTemperature: 310.15
     thermalRegulationTemperatureThreshold: 2
   # Corvax-Wega-Surgery-start
-  # - type: Operated
-  #   raceGraph: IpcSurgery
-  #   limbLossChance: 2
-  #   specialTool: Screwing
-  # - type: SyntheticOperated
-  # - type: Pain
-  #   profile: SyntheticPainProfile
+  - type: Operated
+    raceGraph: IpcSurgery
+    limbLossChance: 2
+    specialTool: Screwing
+  - type: SyntheticOperated
+  - type: Pain
+    profile: SyntheticPainProfile
   # Corvax-Wega-Surgery-end
 
 - type: entity

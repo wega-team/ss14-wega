@@ -39,3 +39,12 @@
   materials:
     Steel: 1500
     Glass: 1500
+
+- type: latheRecipe
+  parent: BaseXenoborgModulesRecipe
+  id: XenoborgModuleTileGun
+  result: XenoborgModuleTileGun
+  materials:
+    Steel: 1500
+    Glass: 1500
+    

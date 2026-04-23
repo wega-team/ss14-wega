@@ -82,7 +82,7 @@
   - type: EmagSiliconLaw
     stunTime: 5
   - type: SiliconLawProvider
-    laws: NTDefault # Corvax-NTDefault
+    laws: NTDefaultBorgs # Corvax-Wega-edit NTDefault Corvax-NTDefault
   - type: IonStormTarget
   - type: Inventory
     templateId: borg
