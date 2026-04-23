@@ -292,7 +292,7 @@
   icon: { sprite: /Textures/Objects/Weapons/Guns/Launchers/china_lake.rsi, state: icon }
   productEntity: BriefcaseWeaponChinaLakeFilled
   cost:
-    Telecrystal: 13 # Corvax-Wega-Syndi
+    Telecrystal: 20
   categories:
   - UplinkWeaponry
   conditions:
@@ -1324,7 +1324,7 @@
   productEntity: BorgKit # ReinforcementRadioSyndicateCyborgAssault Corvax-Wega-Syndi
   icon: { sprite: Objects/Devices/communication.rsi, state: old-radio-borg-assault }
   cost:
-    Telecrystal: 75 # 60 Corvax-Wega-Syndi
+    Telecrystal: 60
   categories:
     - UplinkAllies
   conditions:

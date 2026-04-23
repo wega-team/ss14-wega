@@ -155,3 +155,46 @@
     items:
     - ClothingModularControllerSecurityPreassembled
     - ClothingOuterHardsuitSecurity
+
+- type: entity
+  parent: BaseHardsuitSelector
+  id: HardsuitEliteSelector
+  name: elite hardsuit selector
+  description: "An obsidian rod that strikes paranormal things."
+  suffix: Selector
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Misc/HardsuitSelector/elite.rsi
+  - type: ItemSelector
+    items:
+    - ClothingModularControllerElitePreassembled
+    - ClothingOuterHardsuitSyndieElite
+
+- type: entity
+  parent: BaseHardsuitSelector
+  id: HardsuitOperSelector
+  name: operative hardsuit selector
+  description: "An obsidian rod that strikes paranormal things."
+  suffix: Selector
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Misc/HardsuitSelector/operative.rsi
+  - type: ItemSelector
+    items:
+    - ClothingModularControllerSyndicatePreassembled
+    - ClothingOuterHardsuitSyndie
+
+- type: entity
+  parent: BaseHardsuitSelector
+  id: HardsuitOperMedSelector
+  name: operative med hardsuit selector
+  description: "An obsidian rod that strikes paranormal things."
+  suffix: Selector
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Misc/HardsuitSelector/operative.rsi
+  - type: ItemSelector
+    items:
+    - ClothingModularControllerSyndicatePreassembled
+    - ClothingOuterHardsuitSyndieMedic
+

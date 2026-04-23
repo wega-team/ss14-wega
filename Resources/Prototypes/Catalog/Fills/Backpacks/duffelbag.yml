@@ -326,7 +326,7 @@
     containers:
       storagebase: !type:AllSelector
         children:
-        - id: ClothingOuterHardsuitSyndie
+        - id: HardsuitOperSelector # Corvax-Wega-Edit
         - !type:NestedSelector
           tableId: SyndicateHardsuitExtrasEntityTable
 
@@ -340,10 +340,9 @@
     containers:
       storagebase: !type:AllSelector
         children:
-        - id: ClothingModularControllerElitePreassembled # Corvax-Wega-ModularSuits-Edit
+        - id: HardsuitEliteSelector # Corvax-Wega-Edit
         - !type:NestedSelector
           tableId: SyndicateHardsuitExtrasEntityTable
-
 - type: entity
   parent: ClothingBackpackDuffelSyndicateBundle
   id: ClothingBackpackDuffelSyndicateHardsuitExtrasBundle

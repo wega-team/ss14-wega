@@ -1,31 +1,53 @@
+# Ваучеры
 ent-SalvageVoucherCard = карта ваучера утилизации
     .desc = Обменяйте в специальном терминале на набор снаряжения для работы в опасных условиях.
 ent-TheatherVoucherCard = карта ваучера костюмов
     .desc = Невероятный список костюмов только в этом ваучере, взять набор можете у театромата!
+ent-BlueShieldVoucherCard = карточка-ваучер синего щита
+    .desc = Дисконтная карта, выпущенная для офицеров "Синий Щит". Позволяет расширить арсенал владельца. Используется в СБТехе.
+ent-SecurityVoucherCard = карточка-ваучер безопасности
+    .desc = Дисконтная карта, выпущенная для службы безопасности, предоставляемой компанией NanoTrasen, для более эффективного распределения оборудования между сотрудниками отдела. Используется в СБТехе.
+
+
+# Селектор одеждлы
 ent-JumpsuitSelector = преобразователь комбенизонов
     .desc = Ваучер карта, способная генерировать вещи прямо на руках!
+    .suffix = Селектор
 ent-TopSelector = преобразователь топиков
     .desc = { ent-JumpsuitSelector.desc }
+    .suffix = Селектор
 ent-HatSelector = преобразователь шляп
     .desc = { ent-JumpsuitSelector.desc }
+    .suffix = Селектор
 ent-ShooseSelector = преобразователь обуви
     .desc = { ent-JumpsuitSelector.desc }
+    .suffix = Селектор
 ent-GlovesSelector = преобразователь перчаток
     .desc = { ent-JumpsuitSelector.desc }
+    .suffix = Селектор
 ent-OtherJumpsuitSelector = преобразователь классической одежды
     .desc = { ent-JumpsuitSelector.desc }
+    .suffix = Селектор
 ent-TurtleneckSelector = преобразователь водолазок
     .desc = { ent-JumpsuitSelector.desc }
+    .suffix = Селектор
 ent-ScarfSelector = преобразователь шарфов
     .desc = { ent-JumpsuitSelector.desc }
+    .suffix = Селектор
 ent-ChoeckerSelector = преобразователь чокеров
     .desc = { ent-JumpsuitSelector.desc }
+    .suffix = Селектор
 ent-OtherClouthSelector = преобразователь верхней одежды
     .desc = { ent-JumpsuitSelector.desc }
+    .suffix = Селектор
 ent-OfficalSelector = преобразователь официальной одежды
     .desc = { ent-JumpsuitSelector.desc }
+    .suffix = Селектор
 ent-OtherModeSuitSelector = преобразователь модной одежды
     .desc = { ent-JumpsuitSelector.desc }
+    .suffix = Селектор
+
+# Селектор Скафандров
 ent-HardsuitCESelector = преобразователь скафандра СИ
     .desc = Как в такую коробочку помещается такой скафандр!
     .suffix = Селектор
@@ -54,5 +76,14 @@ ent-HardsuitProtoSelector = преобразователь скафандра у
     .desc = { ent-HardsuitCESelector.desc }
     .suffix = Селектор
 ent-HardsuitSecSelector = преобразователь скафандра СБ
+    .desc = { ent-HardsuitCESelector.desc }
+    .suffix = Селектор
+ent-HardsuitEliteSelector = преобразователь элитного скафандра
+    .desc = { ent-HardsuitCESelector.desc }
+    .suffix = Селектор
+ent-HardsuitOperSelector = преобразователь кровавого-красного скафандра
+    .desc = { ent-HardsuitCESelector.desc }
+    .suffix = Селектор
+ent-HardsuitOperMedSelector = преобразователь медицинского кровавого-красного скафандра
     .desc = { ent-HardsuitCESelector.desc }
     .suffix = Селектор

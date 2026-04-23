@@ -51,8 +51,6 @@
     verbIcon:
       sprite: *modules-rsi
       state: storage
-  - type: Storage
-    maxItemSize: Normal
 
 - type: entity
   parent: BaseStorageSuitModule

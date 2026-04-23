@@ -21,3 +21,7 @@ linked-cube-too-close = Связанный куб слишком близко ({
 dragon-blood-effect-1 = Кровь прожигает вашу плоть оставляя лишь кости. Ачк-Ачк!
 dragon-blood-effect-2 = Вы чувствуете себя необычайно зачарованно?
 dragon-blood-effect-3 = Вы всегда мечтали всем показать свое истинное я
+
+lava-staff-remove = Лава уходит вглубь
+lava-staff-create = Лава поднимается с песков
+lava-staff-cant-use = Лавы нет в этой местности
