@@ -404,8 +404,8 @@ public sealed partial class SurgerySystem
             component.InternalDamages.Add(damageId, bodyParts);
         }
 
-        if (bodyPart != null && !bodyParts.Contains(bodyPart))
-            bodyParts.Add(bodyPart);
+        if (bodyPart != null && !bodyParts.Contains(bodyPart.ToLower()))
+            bodyParts.Add(bodyPart.ToLower());
     }
 
     public bool TryRemoveInternalDamage(EntityUid target, string damageId, string bodyPart, OperatedComponent? component = null)
@@ -416,7 +416,7 @@ public sealed partial class SurgerySystem
         if (!component.InternalDamages.TryGetValue(damageId, out var damagedParts))
             return false;
 
-        if (!damagedParts.Remove(bodyPart))
+        if (!damagedParts.Remove(bodyPart.ToLower()))
             return false;
 
         if (damagedParts.Count == 0)

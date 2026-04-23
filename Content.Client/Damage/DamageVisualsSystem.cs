@@ -466,7 +466,6 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
         if (requiredCategory == null)
             return true;
 
-        // Проверяем наличие органа с нужной категорией
         foreach (var organ in body.Organs.ContainedEntities)
         {
             if (TryComp<OrganComponent>(organ, out var organComp) &&
