@@ -69,8 +69,7 @@
   - type: Clothing
     sprite: _Wega/Clothing/Eyes/Glasses/thermal.rsi
   - type: ThermalVision
-    fovMultiplier: 1.5
-    drawFovDisabled: false
+    drawFov: false
   - type: Tag
     tags:
     - WhitelistChameleon
