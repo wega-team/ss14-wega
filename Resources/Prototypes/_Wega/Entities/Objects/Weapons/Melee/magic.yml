@@ -232,7 +232,7 @@
     attackRate: 1
     damage:
       types:
-        Slash: 25
+        Slash: 30
     soundHit:
         path: /Audio/Weapons/bladeslice.ogg
   - type: DisarmMalus
@@ -268,7 +268,7 @@
     attackRate: 1
     damage:
       types:
-        Piercing: 25
+        Piercing: 30
     soundHit:
         path: /Audio/Weapons/bladeslice.ogg
   - type: DisarmMalus
@@ -304,7 +304,7 @@
     attackRate: 1
     damage:
       types:
-        Heat: 20
+        Heat: 25
     soundHit:
         path: /Audio/Weapons/bladeslice.ogg
   - type: DisarmMalus

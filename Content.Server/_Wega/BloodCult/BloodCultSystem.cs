@@ -36,6 +36,10 @@ using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
+using Content.Shared.Clothing; 
+using Content.Shared.IdentityManagement;
+using Content.Shared.IdentityManagement.Components;
+using Content.Shared.Inventory;
 
 namespace Content.Server.Blood.Cult;
 
@@ -159,9 +163,20 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
         if (!args.IsInDetailsRange)
             return;
 
-        var name = Identity.Name(uid, EntityManager, args.Examiner);
-        if (Name(uid) == name)
-            args.PushMarkup(Loc.GetString("blood-cultist-eyes-glow-examined", ("name", name)));
+		if (TryComp<InventoryComponent>(uid, out var inventory))
+		{
+			var clothes = _inventory.GetSlotEnumerator((uid, inventory), SlotFlags.WITHOUT_POCKET);
+			while (clothes.NextItem(out var cloth, out var slot))
+			{
+				if  (TryComp<IdentityBlockerComponent>(cloth, out var blocker) &&  blocker.Coverage.HasFlag(IdentityBlockerCoverage.EYES) && blocker.Enabled)
+				{
+					return;
+				}
+			}
+		}
+		
+		var name = Identity.Name(uid, EntityManager, args.Examiner);
+		args.PushMarkup(Loc.GetString("blood-cultist-eyes-glow-examined", ("name", name)));
     }
 
     // Corvax-Wega-Testing-start

@@ -190,8 +190,18 @@ public sealed partial class BloodCultSystem
         if (!args.IsInDetailsRange || !HasComp<BloodCultistComponent>(args.Examiner))
             return;
 
+        var cult = _bloodCult.GetActiveRule();
+        if (cult == null)
+            return;
+
         args.PushMarkup(component.LocDesc);
-    }
+		
+		if (component.RuneType == BloodCultRune.Revive)
+		{
+			args.PushMarkup(Loc.GetString("revive-alive-count",("alive", cult.Offerings/3)));
+			args.PushMarkup(Loc.GetString("revive-offering-count",("offerings", cult.Offerings)));
+		}
+	}
 
     private void OnRitualInteract(EntityUid rune, BloodRitualDimensionalRendingComponent component, InteractHandEvent args)
     {

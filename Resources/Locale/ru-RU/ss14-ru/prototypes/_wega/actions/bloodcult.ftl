@@ -32,13 +32,13 @@ ent-ActionBloodCultBloodRites = [color=red]Кровавый обряд[/color]
 ent-ActionBloodCultOrb = [color=red]Кровавая сфера[/color]
     .desc = Способность позволяющая передать кровь другому культисту.
 ent-ActionBloodCultRecharge = [color=red]Кровавая перезарядка[/color]
-    .desc = Способность позволяющая перезарядить магическое снаряжение.
+    .desc = Способность позволяющая перезарядить магическое снаряжение. Способность стоит 75 крови!
 ent-ActionBloodCultSpear = [color=red]Кровавое копье[/color]
-    .desc = Способность позволяющая призвать кровавое копье.
+    .desc = Способность позволяющая призвать кровавое копье. Способность стоит 150 крови!
 ent-RecallBloodCultSpear = [color=red]Вернуть копье[/color]
     .desc = Способность позволяющая призвать кровавое копье.
 ent-ActionBloodCultBoltBarrage = [color=red]Кровавое шквал болтов[/color]
-    .desc = Способность позволяющая призвать кровавое копье.
+    .desc = Способность позволяющая стрелять стрелять болтами. Способность стоит 200 крови!
 
 # Construct
 ent-TeleportConstructSpell = Бестелестность
