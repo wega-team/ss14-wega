@@ -46,12 +46,6 @@
           type: ChameleonBoundUserInterface
         enum.VoiceMaskUIKey.Key:
           type: VoiceMaskBoundUserInterface
-      # Corvax-Wega-Edit-Start
-    - type: Construction
-      graph: ModMasc
-      node: voiceMasc
-      # Corvax-Wega-Edit-End
-
 
 - type: entity
   parent: ClothingMaskBase

@@ -7,7 +7,7 @@
     - to: Bigbackpack
       steps:
       - material: Durathread
-        amount: 12
-        doAfter: 9
+        amount: 16
+        doAfter: 12
   - node: Bigbackpack
     entity: ClothingBackpackBig
