@@ -40,13 +40,21 @@ spiritrealm-rune-desc = Позволяет самому стать духом, �
 ritual-dimensional-rending-rune = Ритуал Разрыва Измерений
 ritual-dimensional-rending-rune-desc = Вызывает Одно из божеств крови через пространственный разрыв.
 
-revive-offering-count = Текущее количество жертв: [color=red]{ $offerings }[/color].
-revive-alive-count = Ритуал возрождения можно провести [color=red]{ $alive }[/color] { $alive ->
+revive-offering-count = Принесено [color=#880000]{ $offerings }[/color] { $offerings ->
+    [one]жертва
+    [few]жертвы
+    *[other]жертв
+}.
+revive-alive-count = Возрождение доступно ещё [color=#880000]{ $alive }[/color] { $alive ->
     [one]раз
     [few]раза
     *[other]раз
 }.
-blood-rites-count = Количество собранной крови: [color=red]{ $blood }[/color].
+blood-rites-count = Собрано [color=#880000]{ $blood }[/color] { $blood ->
+    [one]единица крови
+    [few]единицы крови
+    *[other]единиц крови
+}.
 
 # System
 blood-cultist-eyes-glow-examined = [color=red]Глаза {$name} созерцают неестественным цветом, это не к добру...[/color]

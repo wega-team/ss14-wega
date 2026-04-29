@@ -411,7 +411,9 @@ public sealed partial class BloodCultSystem
 
      private void OnExamine(EntityUid uid, BloodSpellComponent spell, ExaminedEvent args)
     {
-        if (TryComp<BloodCultistComponent>(args.Examiner, out var cultist) && spell.SpellType == BloodCultSpell.BloodRites)
+        if (spell.SpellType != BloodCultSpell.BloodRites)
+            return;
+        if (TryComp<BloodCultistComponent>(args.Examiner, out var cultist))
         {
             args.PushMarkup(Loc.GetString("blood-rites-count",
                 ("blood", cultist.BloodCount)));

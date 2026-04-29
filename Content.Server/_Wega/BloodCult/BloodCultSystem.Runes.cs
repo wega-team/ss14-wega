@@ -198,8 +198,8 @@ public sealed partial class BloodCultSystem
 		
 		if (component.RuneType == BloodCultRune.Revive)
 		{
-			args.PushMarkup(Loc.GetString("revive-alive-count",("alive", cult.Offerings/3)));
-			args.PushMarkup(Loc.GetString("revive-offering-count",("offerings", cult.Offerings)));
+			args.PushMarkup(Loc.GetString("revive-alive-count",("alive", cult.Offerings/3)), priority: -1);
+			args.PushMarkup(Loc.GetString("revive-offering-count",("offerings", cult.Offerings)), priority: -2);
 		}
 	}
 
