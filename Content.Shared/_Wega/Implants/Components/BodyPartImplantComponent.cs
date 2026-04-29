@@ -1,24 +1,22 @@
-using Content.Shared._Wega.Implants.Components;
-using Content.Shared.Body;
+using Content.Shared.Tools;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
-namespace Content.Shared._Wega.Implants.Components
+namespace Content.Shared._Wega.Implants.Components;
+
+[RegisterComponent, NetworkedComponent]
+public sealed partial class BodyPartImplantComponent : Component
 {
-    [RegisterComponent, NetworkedComponent]
-    public sealed partial class BodyPartImplantComponent : Component
-    {
-        [DataField]
-        public Dictionary<ProtoId<OrganCategoryPrototype>, string> Connections = new();
+    [DataField]
+    public Dictionary<string, ComponentRegistry> Configurations = new();
+    [DataField]
+    public ProtoId<ToolQualityPrototype> ConfigurationTool = "Screwing";
+    public int CurrentConfig = 0;
 
-        [DataField]
-        public Dictionary<string, ProtoId<OrganCategoryPrototype>> Parts = new();
-
-        [DataField("key")]
-        public string? ImplantKey;
-        [DataField]
-        public ComponentRegistry? ImplantComponents = default!;
-    }
+    [DataField("key")]
+    public string? ImplantKey;
+    [DataField]
+    public ComponentRegistry ImplantComponents = new();
 }
 
 [ByRefEvent]
