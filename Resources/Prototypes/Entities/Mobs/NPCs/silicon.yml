@@ -476,6 +476,12 @@
   - type: Hands
     showInHands: false
     canBeStripped: true
+    activeHandId: Right
+    hands:
+      Right:
+        location: Right
+      Left:
+        location: Left
   - type: Inventory
     templateId: bots
   - type: OfferGiver
