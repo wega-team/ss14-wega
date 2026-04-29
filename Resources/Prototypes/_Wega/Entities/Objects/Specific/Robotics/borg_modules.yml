@@ -250,6 +250,7 @@
         whitelist:
           components:
           - Flash
+          - HandheldGPS
           tags:
           - CableCoil
     - hand:

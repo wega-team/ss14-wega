@@ -4,3 +4,6 @@ materials-runemetal = рунический метал
 
 # Ores
 materials-raw-magmite = магмитовая руда
+
+# Other
+materials-brain = мозги

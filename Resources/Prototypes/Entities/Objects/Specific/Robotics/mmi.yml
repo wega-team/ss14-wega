@@ -39,10 +39,22 @@
     proto: robot
   - type: Speech
     speechSounds: Pai
+# Corvax-Wega-start
   - type: ItemSlots
+    slots:
+      gps_slot:
+        name: gps-slot-name
+        insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
+        startingItem: HandheldGPSBasicOff
+        whitelist:
+          components:
+          - HandheldGPS
   - type: ContainerContainer
     containers:
       brain_slot: !type:ContainerSlot
+      gps_slot: !type:ContainerSlot
+# Corvax-Wega-end
   - type: Appearance
   - type: GuideHelp
     guides:
@@ -54,15 +66,6 @@
       - SecretStash
   # Corvax-Wega-Android-start
   - type: Brain
-  - type: UserInterface
-    interfaces:
-      enum.NavMapBeaconUiKey.Key:
-        type: NavMapBeaconBoundUserInterface
-  - type: ActivatableUI
-    key: enum.NavMapBeaconUiKey.Key
-  - type: NavMapBeacon
-    enabled: false
-  - type: ConfigurableNavMapBeacon
   # Corvax-Wega-Android-end
 
 - type: entity
@@ -155,13 +158,17 @@
     - type: Brain
     - type: Organ
       category: Brain
-    - type: UserInterface
-      interfaces:
-        enum.NavMapBeaconUiKey.Key:
-          type: NavMapBeaconBoundUserInterface
-    - type: ActivatableUI
-      key: enum.NavMapBeaconUiKey.Key
-    - type: NavMapBeacon
-      enabled: false
-    - type: ConfigurableNavMapBeacon
+    - type: ItemSlots
+      slots:
+        gps_slot:
+          name: gps-slot-name
+          insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+          ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
+          startingItem: HandheldGPSBasicOff
+          whitelist:
+            components:
+            - HandheldGPS
+    - type: ContainerContainer
+      containers:
+        gps_slot: !type:ContainerSlot
     # Corvax-Wega-Android-end

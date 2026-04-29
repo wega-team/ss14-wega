@@ -48,3 +48,12 @@
     Steel: 1500
     Glass: 1500
     
+- type: latheRecipe
+  parent: BaseXenoborgModulesRecipe
+  categories:
+  - Robotics
+  id: XPositronicBrain
+  result: PositronicBrain
+  materials:
+    PrintBrain: 100
+    Steel: 1500

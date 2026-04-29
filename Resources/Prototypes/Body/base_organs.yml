@@ -318,6 +318,14 @@
     tags:
     - BaseOrgan
     - Brain
+    - OrganicBrain
+  - type: Material
+  - type: Stack
+    stackType: PrinterBrain
+    count: 1
+  - type: PhysicalComposition
+    materialComposition:
+      PrintBrain: 100
   # Corvax-Wega-Surgery-end
 
 - type: entity

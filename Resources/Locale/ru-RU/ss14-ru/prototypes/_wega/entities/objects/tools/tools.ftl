@@ -3,3 +3,6 @@ ent-CombatRCD = боевой РСУ
 ent-CombatRCDExperimental = экспериментальное боевое РСУ
     .desc = Блюспейс-улучшенное боевое ручное строительное устройство, пассивно регенерирующее сжатую материю.
     .suffix = ОБР и Адмены
+ent-HandheldGPSBasicOff = { ent-HandheldGPSBasic }
+    .desc = { ent-HandheldGPSBasic.desc }
+    .suffix = Выключен
