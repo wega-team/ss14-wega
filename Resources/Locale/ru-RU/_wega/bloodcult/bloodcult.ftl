@@ -55,6 +55,11 @@ blood-rites-count = Собрано [color=#880000]{ $blood }[/color] { $blood ->
     [few]единицы крови
     *[other]единиц крови
 }.
+revive-need-more = Нужно ещё [color=#880000]{ $needed }[/color] { $needed ->
+    [one]жертва
+    [few]жертвы
+    *[other]жертв
+}.
 
 # System
 blood-cultist-eyes-glow-examined = [color=red]Глаза {$name} созерцают неестественным цветом, это не к добру...[/color]
