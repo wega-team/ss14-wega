@@ -4,12 +4,17 @@ using Content.Shared.Interaction.Components;
 using Content.Shared.Localizations;
 using Content.Shared.Silicons.Borgs.Components;
 using Robust.Shared.Containers;
+using Content.Shared.Tag;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Silicons.Borgs;
 
 public abstract partial class SharedBorgSystem
 {
     [Dependency] private readonly EntityQuery<BorgModuleComponent> _moduleQuery = default!;
+    [Dependency] private readonly TagSystem _tagSystem = default!;
+
+    private static readonly ProtoId<TagPrototype> ItemborgTag = "Itemborg";
 
     public void InitializeModule()
     {
