@@ -15,10 +15,4 @@ public sealed partial class TelekinesisGenComponent : Component
 
     [ViewVariables]
     public EntityUid? TelekinesisItem;
-	
-    /// <summary>
-    ///     The currently active hand.
-    /// </summary>
-    [DataField]
-    public HandLocation HandLocation = HandLocation.Middle;
 }
