@@ -598,10 +598,10 @@
       - Dead
       damage:
         types:
-          Blunt: -0.1
-          Slash: -0.1
-          Piercing: -0.1
-          Heat: -0.1
+          Blunt: -0.25
+          Slash: -0.25
+          Piercing: -0.25
+          Heat: -0.25
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: repeir-module }
 
@@ -1354,10 +1354,10 @@
       - Critical
       damage:
         types:
-          Blunt: -0.3
-          Slash: -0.3
-          Piercing: -0.3
-          Heat: -0.3
+          Blunt: -1
+          Slash: -1
+          Piercing: -1
+          Heat: -1
 ## Xenoborg
 - type: entity
   id: BorgModuleXenoConstruction
@@ -1461,10 +1461,10 @@
       - Dead
       damage:
         types:
-          Blunt: -0.3
-          Slash: -0.3
-          Piercing: -0.3
-          Heat: -0.3
+          Blunt: -0.5
+          Slash: -0.5
+          Piercing: -0.5
+          Heat: -0.5
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: repeir-xenoborg-module }
 
