@@ -1,6 +1,5 @@
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
-using Content.Shared.Hands.Components;
 
 namespace Content.Shared.Genetics;
 
