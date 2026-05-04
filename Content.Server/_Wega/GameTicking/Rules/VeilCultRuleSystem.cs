@@ -241,6 +241,7 @@ namespace Content.Server.GameTicking.Rules
             mindLink.Channels.Add(culsistComp.CultMindChannel);
 
             MakeCultist(uid);
+			_objectives.TryCreateObjective(mindId, mind, "VeilCultRitualObjective");
         }
 		
         private void CheckStage()

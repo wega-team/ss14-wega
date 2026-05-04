@@ -417,7 +417,7 @@
     - type: StaminaDamageOnCollide
       damage: 30
     - type: Reflect
-      reflectProb: 0.25
+      reflectProb: 0.15
       spread: 90
     - type: DamageOtherOnHit
       damage:
@@ -425,7 +425,7 @@
           Blunt: 10
     - type: MeleeThrowOnHit
       activateOnThrown: true
-      distance: 4
+      distance: 1
       speed: 5
     - type: MeleeWeapon
       attackRate: 0.4

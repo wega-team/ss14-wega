@@ -25,6 +25,8 @@
     useDelay: 1
   - type: InstantAction
     event: !type:CrusherEnchantActionEvent
+  - type: LimitedCharges
+    maxCharges: 1
     
 - type: entity
   parent: BaseAction
@@ -38,6 +40,8 @@
     useDelay: 1
   - type: InstantAction
     event: !type:ConfusionEnchantActionEvent
+  - type: LimitedCharges
+    maxCharges: 1
     
 - type: entity
   parent: BaseAction
@@ -51,6 +55,8 @@
     useDelay: 1
   - type: InstantAction
     event: !type:KnockbackEnchantActionEvent
+  - type: LimitedCharges
+    maxCharges: 1
    
 - type: entity
   parent: BaseAction
@@ -64,6 +70,8 @@
     useDelay: 1
   - type: InstantAction
     event: !type:SwordsmenEnchantActionEvent
+  - type: LimitedCharges
+    maxCharges: 1
     
 - type: entity
   parent: BaseAction
@@ -77,6 +85,8 @@
     useDelay: 1
   - type: InstantAction
     event: !type:BloodshedEnchantActionEvent
+  - type: LimitedCharges
+    maxCharges: 1
     
 - type: entity
   parent: BaseAction
@@ -90,6 +100,8 @@
     useDelay: 1
   - type: InstantAction
     event: !type:HasteEnchantActionEvent
+  - type: LimitedCharges
+    maxCharges: 1
     
 - type: entity
   parent: BaseAction
@@ -103,6 +115,8 @@
     useDelay: 1
   - type: InstantAction
     event: !type:ReflectionEnchantActionEvent
+  - type: LimitedCharges
+    maxCharges: 1
     
 - type: entity
   parent: BaseAction
@@ -116,6 +130,8 @@
     useDelay: 1
   - type: InstantAction
     event: !type:CamouflageEnchantActionEvent
+  - type: LimitedCharges
+    maxCharges: 1
     
 - type: entity
   parent: BaseAction
@@ -129,6 +145,8 @@
     useDelay: 1
   - type: InstantAction
     event: !type:AbsorbEnchantActionEvent
+  - type: LimitedCharges
+    maxCharges: 1
     
 - type: entity
   parent: BaseAction
@@ -142,6 +160,8 @@
     useDelay: 1
   - type: InstantAction
     event: !type:FlashEnchantActionEvent
+  - type: LimitedCharges
+    maxCharges: 1
     
 - type: entity
   parent: BaseAction
@@ -155,6 +175,8 @@
     useDelay: 1
   - type: InstantAction
     event: !type:HardenPlatesEnchantActionEvent
+  - type: LimitedCharges
+    maxCharges: 1
     
 - type: entity
   parent: BaseAction
@@ -168,6 +190,8 @@
     useDelay: 1
   - type: InstantAction
     event: !type:NorthStarEnchantActionEvent
+  - type: LimitedCharges
+    maxCharges: 1
     
 - type: entity
   parent: BaseAction
@@ -181,3 +205,5 @@
     useDelay: 1
   - type: InstantAction
     event: !type:RedFlameEnchantActionEvent
+  - type: LimitedCharges
+    maxCharges: 1

@@ -597,6 +597,32 @@
     - WeaponClockworkSwordBloodshed
   
 - type: entity
+  id: WeaponClockworkSwordBorg
+  parent: BaseEnchantable
+  name: clockwork sword
+  description: A sword with a large winding gear on the hilt. Weapon of the righteous Ratvar.
+  components:
+  - type: Sharp
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/clockwork_sword.rsi
+    state: icon
+  - type: Item
+    storedRotation: -45
+    size: Normal
+    shape:
+    - 0,0,0,2
+  - type: MeleeWeapon
+    wideAnimationRotation: -135
+    # resistanceBypassPercentage: 0.1 # for future
+    attackRate: 1
+    damage:
+      types:
+        Slash: 20
+    soundHit:
+        path: /Audio/Weapons/bladeslice.ogg
+  - type: DisarmMalus
+  
+- type: entity
   id: WeaponClockHammer
   parent: BaseEnchantable
   name: clock hammer

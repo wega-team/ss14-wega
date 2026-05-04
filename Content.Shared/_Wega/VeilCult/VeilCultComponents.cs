@@ -40,7 +40,11 @@ public sealed partial class VeilRitualDimensionalRendingComponent : Component
 public sealed partial class VeilCultConstructComponent : Component;
 
 [RegisterComponent, NetworkedComponent]
-public sealed partial class VeilCultAltarComponent : Component;
+public sealed partial class VeilCultAltarComponent : Component
+{
+	[DataField("sound")]
+    public SoundSpecifier Sound = new SoundPathSpecifier("/Audio/_Wega/Effects/altar.ogg");
+}
 
 [RegisterComponent, NetworkedComponent]
 public sealed partial class VeilCultStructureComponent : Component
@@ -63,7 +67,7 @@ public sealed partial class InteractionCogInfectedComponent : Component
 	public float PowerRate = 25000f;
 	
 	[DataField("drainSound")]
-    public SoundSpecifier Sound = new SoundPathSpecifier("/Audio/_Wega/Items/Specific/interaction_cog_drain.ogg");
+    public SoundSpecifier Sound = new SoundPathSpecifier("/Audio/_Wega/Effects/interaction_cog_drain.ogg");
 	
     public float NextTimeTick { get; set; }
 }
@@ -111,6 +115,15 @@ public sealed partial class MidasHandComponent : Component;
 
 [RegisterComponent, NetworkedComponent]
 public sealed partial class StrangeShardComponent : Component;
+
+[RegisterComponent, NetworkedComponent]
+public sealed partial class CogscarabComponent : Component;
+
+[RegisterComponent, NetworkedComponent]
+public sealed partial class VeilCultLatheComponent : Component;
+
+[RegisterComponent, NetworkedComponent]
+public sealed partial class SoulVesselComponent : Component;
 
 /// <summary>
 /// Зачарования.

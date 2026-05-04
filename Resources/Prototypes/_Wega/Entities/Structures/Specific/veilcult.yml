@@ -100,6 +100,61 @@
   - type: VeilCultAltar
   - type: VeilCultStructure
   
+- type: entity
+  id: VeilCultClockworkLathe
+  parent: BaseVeilCultStructure
+  name: clockwork lathe
+  components:
+  - type: Sprite
+    sprite: _Wega/Structures/Specific/VeilCult/clockwork_lathe.rsi
+    snapCardinals: true
+    layers:
+    - state: icon
+      map: ["enum.LatheVisualLayers.IsRunning"]
+  - type: Appearance
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        density: 190
+        mask:
+        - MachineMask
+        layer:
+          - MachineLayer
+  - type: MaterialStorage
+    whitelist: &StandardMaterialWhitelist
+      tags:
+        - Brass
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: UserInterface
+    interfaces:
+      enum.LatheUiKey.Key:
+        type: LatheBoundUserInterface
+      enum.ResearchClientUiKey.Key:
+        type: ResearchClientBoundUserInterface
+  - type: Transform
+    anchored: true
+  - type: Pullable
+  - type: StaticPrice
+    price: 800
+  - type: ResearchClient
+  - type: TechnologyDatabase
+  - type: Lathe
+    idleState: icon
+    runningState: building
+    staticPacks:
+    - VeilCultStatic
+  - type: VeilCultStructure
+  - type: VeilCultLathe
  
 - type: entity
   parent: BaseStructure

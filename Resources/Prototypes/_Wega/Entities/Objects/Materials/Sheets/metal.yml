@@ -111,6 +111,10 @@
   - type: Appearance
   - type: Item
     heldPrefix: chargedbrass
+  - type: Tag
+    tags:
+    - Brass
+    - ConstructionMaterial
 
 - type: entity
   parent: SheetChargedBrass

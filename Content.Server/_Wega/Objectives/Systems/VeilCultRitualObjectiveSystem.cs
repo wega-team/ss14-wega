@@ -20,20 +20,19 @@ public sealed class VeilCultRitualObjectiveSystem : EntitySystem
     private void OnGetProgress(EntityUid uid, VeilCultRitualObjectiveComponent comp, ref ObjectiveGetProgressEvent args)
     {
         var cult = _veilCult.GetActiveRule();
-        if (cult == null || !cult.RitualStage)
-        {
-            args.Progress = 0f;
-            return;
-        }
+        args.Progress = 0f;
 
-        var condition = cult.VeilCultWinCondition.ToList();
-        if (condition.Contains(VeilCultWinType.GodCalled))
-        {
-            args.Progress = 1f;
-        }
-        else
-        {
-            args.Progress = 0.5f;
-        }
+		if (cult != null)
+		{
+			if (cult.RitualGoing)
+			{
+				args.Progress = 0.5f;
+			}
+			var condition = cult.VeilCultWinCondition.ToList();
+			if (condition.Contains(VeilCultWinType.GodCalled))
+			{
+				args.Progress = 1f;
+			}
+		}
     }
 }

@@ -4,6 +4,8 @@ using Content.Server.Audio;
 using Content.Server.GameTicking.Rules;
 using Content.Server.RoundEnd;
 using Content.Server.Pinpointer;
+using Content.Server.Bible.Components;
+using Content.Server.Roles;
 using Content.Shared.Actions;
 using Content.Shared.Blood.Cult;
 using Content.Shared.Veil.Cult;
@@ -39,6 +41,13 @@ using Content.Shared.Power.EntitySystems;
 using Content.Shared.Power.Components;
 using Content.Shared.Humanoid;
 using Content.Shared.Administration.Systems;
+using Content.Shared.Construction.Components;
+using Content.Shared.Construction.EntitySystems;
+using Content.Shared.Gibbing;
+using Content.Shared.Mindshield.Components;
+using Content.Shared.NullRod.Components;
+using Content.Shared.Lathe;
+using Content.Shared.Roles;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
@@ -76,6 +85,9 @@ public sealed partial class VeilCultSystem : SharedVeilCultSystem
     [Dependency] private readonly SharedBatterySystem _battery = default!;
     [Dependency] private readonly RejuvenateSystem _rejuvenate = default!;
 	[Dependency] private readonly NavMapSystem _navMap = default!;
+    [Dependency] private readonly SharedRoleSystem _roles = default!;
+    [Dependency] private readonly GibbingSystem _gibbing = default!;
+	[Dependency] private readonly AnchorableSystem _anchorable = default!;
 
 
     public override void Initialize()
@@ -87,9 +99,13 @@ public sealed partial class VeilCultSystem : SharedVeilCultSystem
 		
 		SubscribeLocalEvent<VeilCultistHandsComponent, ExaminedEvent>(OnCultistHandsExamined);
 		SubscribeLocalEvent<VeilCultBeaconComponent, ComponentInit>(OnBeaconSpawn);
+		
 		SubscribeLocalEvent<VeilCultAltarComponent, VeilAltarSelectEnergyMessage>(OnSelectEnergy);
 		SubscribeLocalEvent<VeilCultAltarComponent, VeilAltarSelectOfferMessage>(OnSelectOffer);
 		SubscribeLocalEvent<VeilCultAltarComponent, ActivateInWorldEvent>(UseVeilAltar);
+		SubscribeLocalEvent<VeilCultLatheComponent, ActivateInWorldEvent>(UseVeilLathe);
+		
+        SubscribeLocalEvent<VeilCultBeaconComponent, AnchorAttemptEvent>(OnAnchor);
 		
         SubscribeLocalEvent<VeilCultistComponent, StrangeShardDoAfterEvent>(DoAfterInteractShardCultist);
         SubscribeLocalEvent<VeilCultAltarComponent, StrangeShardDoAfterEvent>(DoAfterInteractShardAltar);
@@ -102,7 +118,7 @@ public sealed partial class VeilCultSystem : SharedVeilCultSystem
         var beaconQuery = EntityQueryEnumerator<VeilCultBeaconComponent>();
         while (beaconQuery.MoveNext(out var beacon, out var beaconQueryComponent))
         {
-            if (beaconQueryComponent.NextTimeTick <= 0)
+            if (beaconQueryComponent.NextTimeTick <= 0 && Transform(beacon).Anchored)
             {
                 beaconQueryComponent.NextTimeTick = 5;
                 var nearbyCultists = _entityLookup.GetEntitiesInRange<VeilCultistComponent>(Transform(beacon).Coordinates, 11f)
@@ -177,6 +193,21 @@ public sealed partial class VeilCultSystem : SharedVeilCultSystem
         }
 	}
 
+
+    private void OnAnchor(EntityUid uid, VeilCultBeaconComponent component, AnchorAttemptEvent args)
+	{
+		var beacons = _entityLookup.GetEntitiesInRange<VeilCultBeaconComponent>(Transform(uid).Coordinates, 20f);
+
+		if (beacons.Count > 1)
+		{
+			_popup.PopupEntity(Loc.GetString("veil-cult-beacons-in-range"), uid, PopupType.Medium);
+			if (args.Cancelled)
+				return;
+
+			args.Cancel();
+		}
+	}
+
     private void OnCultistHandsExamined(EntityUid uid, VeilCultistHandsComponent component, ExaminedEvent args)
     {
         if (!args.IsInDetailsRange)
@@ -191,16 +222,15 @@ public sealed partial class VeilCultSystem : SharedVeilCultSystem
 	
 	private void OnBeaconSpawn(EntityUid uid, VeilCultBeaconComponent component, ComponentInit args)
     {
-		if (TryComp<TransformComponent>(uid, out var transform))
-		{
-			var beacons = _entityLookup.GetEntitiesInRange<VeilCultBeaconComponent>(
-				Transform(uid).Coordinates, 20f);
 
-			if (beacons.Count > 1)
-			{
-				Spawn("SheetBrass6", Transform(uid).Coordinates);
-				QueueDel(uid);
-			}
+		var beacons = _entityLookup.GetEntitiesInRange<VeilCultBeaconComponent>(
+			Transform(uid).Coordinates, 20f);
+
+		if (beacons.Count > 1)
+		{
+			_popup.PopupEntity(Loc.GetString("veil-cult-beacons-in-range"), uid, PopupType.Medium);
+			Spawn("SheetBrass6", Transform(uid).Coordinates);
+			QueueDel(uid);
 		}
 	}
 	
@@ -209,7 +239,7 @@ public sealed partial class VeilCultSystem : SharedVeilCultSystem
         if (args.Handled)
             return;
 		
-		if (!HasComp<VeilCultistComponent>(args.User))
+		if (!HasComp<VeilCultistComponent>(args.User) && !HasComp<VeilCultConstructComponent>(args.User))
 			return;
 
         OpenAltarSelectionUI(uid, component, args.User);
@@ -228,15 +258,43 @@ public sealed partial class VeilCultSystem : SharedVeilCultSystem
 	
     private void OnSelectOffer(EntityUid uid, VeilCultAltarComponent component, VeilAltarSelectOfferMessage args)
 	{
-	    var targets = _entityLookup.GetEntitiesInRange<HumanoidProfileComponent>(Transform(uid).Coordinates, 1f);
-		foreach (var target in targets)
+		var cult = _veilCult.GetActiveRule();
+		if (cult == null)
+			return;	
+		
+		_audio.PlayPvs(_audio.ResolveSound(component.Sound), uid);
+		Timer.Spawn(TimeSpan.FromSeconds(2), () =>
 		{
-			if (HasComp<VeilCultistComponent>(target))
-				continue;
-			
-			EnsureComp<AutoVeilCultistComponent>(target);
-			break;
-		}
+		    var targets = _entityLookup.GetEntitiesInRange<HumanoidProfileComponent>(Transform(uid).Coordinates, 1f);
+			foreach (var target in targets)
+			{
+				if (HasComp<VeilCultistComponent>(target) || HasComp<VeilCultConstructComponent>(target) ||
+					HasComp<NullRodOwnerComponent>(target))
+					continue;
+					
+				if (_mobState.IsDead(target) && HasComp<MindShieldComponent>(target) || HasComp<BibleUserComponent>(target))
+				{
+					var soulStone = Spawn("VeilCultSoulVessel", Transform(target).Coordinates);
+					if (TryComp<MindContainerComponent>(target, out var mindContainer) && mindContainer.Mind != null)
+						_mind.TransferTo(mindContainer.Mind.Value, soulStone);
+					_gibbing.Gib(target);
+				}
+				else
+				{
+					if (HasComp<MindShieldComponent>(target) || HasComp<BibleUserComponent>(target))
+						continue;
+					
+					if (TryComp<MindContainerComponent>(target, out var mindContainer) && mindContainer.Mind != null)
+					{
+						EnsureComp<AutoVeilCultistComponent>(target);
+						_rejuvenate.PerformRejuvenate(target);
+					}
+				}
+				
+				cult.EnergyCount += 100;
+				break;
+			}
+		});	
 	}
 	
     private void OnSelectEnergy(EntityUid uid, VeilCultAltarComponent component, VeilAltarSelectEnergyMessage args)
@@ -245,6 +303,18 @@ public sealed partial class VeilCultSystem : SharedVeilCultSystem
 		if (cult != null)
 			_popup.PopupEntity(Loc.GetString("veil-cult-energy-amount", ("energy", cult.EnergyCount)), uid, PopupType.Medium);
 	}
+	
+    private void UseVeilLathe(EntityUid uid, VeilCultLatheComponent component, ActivateInWorldEvent args)
+    {
+        if (args.Handled)
+            return;
+		
+		if (!HasComp<VeilCultistComponent>(args.User) && !HasComp<VeilCultConstructComponent>(args.User))
+			return;
+
+        _ui.OpenUi(uid, LatheUiKey.Key, args.User);
+        args.Handled = true;
+    }
 	
 	private void DoAfterInteractShardAltar(EntityUid uid, VeilCultAltarComponent component, StrangeShardDoAfterEvent args)
 	{
@@ -338,4 +408,16 @@ public sealed partial class VeilCultSystem : SharedVeilCultSystem
 		
 	}
 	
+
+    private void OnStoneSoulInserted(EntityUid uid, SoulVesselComponent comp, AfterInteractEvent args)
+    {
+        if (_mind.TryGetMind(uid, out var mindId, out var mindComp) && HasComp<VeilCultConstructComponent>(args.Target) && args.Target is { } target && !_mind.TryGetMind(target, out var construct, out var constructMind))
+        {
+            _mind.TransferTo(mindId, target, ghostCheckOverride: true, createGhost: true, mind: mindComp);
+			QueueDel(uid);
+
+            if (!_roles.MindHasRole<VeilCultistRoleComponent>(mindId))
+                _roles.MindAddRole(mindId, "MindRoleVeilCultist", silent: true);
+        }
+    }
 }

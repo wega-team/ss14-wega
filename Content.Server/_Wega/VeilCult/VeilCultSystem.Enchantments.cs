@@ -136,6 +136,7 @@ public sealed partial class VeilCultSystem
 	private void OnActivateCrusher(EntityUid uid, EnchantedComponent comp, CrusherEnchantActionEvent args)
 	{
 		EnsureComp<CrusherEnchantComponent>(uid);
+		args.Handled = true;
 	}
 	
 	private void OnActivateKnockback(EntityUid uid, EnchantedComponent comp, KnockbackEnchantActionEvent args)
@@ -144,11 +145,13 @@ public sealed partial class VeilCultSystem
 		EnsureComp<MeleeThrowOnHitComponent>(uid, out var throwOnHit);
 		throwOnHit.Speed = kb.Speed;
 		throwOnHit.Distance = kb.Distance;
+		args.Handled = true;
 	}
 	
 	private void OnActivateConfusion(EntityUid uid, EnchantedComponent comp, ConfusionEnchantActionEvent args)
 	{
 		EnsureComp<ConfusionEnchantComponent>(uid);
+		args.Handled = true;
 	}
 	
 	private void OnActivateSwordsmen(EntityUid uid, EnchantedComponent comp, SwordsmenEnchantActionEvent args)
@@ -169,11 +172,13 @@ public sealed partial class VeilCultSystem
 				weapon.Damage = oldDamage;
 			});
 		}
+		args.Handled = true;
 	}
 	
 	private void OnActivateBloodShed(EntityUid uid, EnchantedComponent comp, BloodshedEnchantActionEvent args)
 	{
 		EnsureComp<BloodshedEnchantComponent>(uid);
+		args.Handled = true;
 	}
 	
 	private void OnActivateHaste(EntityUid uid, EnchantedComponent comp, HasteEnchantActionEvent args)
@@ -195,6 +200,7 @@ public sealed partial class VeilCultSystem
 			Dirty(uid, cloth);
 			_speed.RefreshMovementSpeedModifiers(args.Performer);
 		});
+		args.Handled = true;
 		
 	}
 	
@@ -204,6 +210,7 @@ public sealed partial class VeilCultSystem
 		refl.ReflectingInHands = false;
 		refl.ReflectProb = 1f;
 		refl.InRightPlace = true;
+		args.Handled = true;
 	}
 	
 	private void OnActivateAbsorb(EntityUid uid, EnchantedComponent comp, AbsorbEnchantActionEvent args)
@@ -213,6 +220,7 @@ public sealed partial class VeilCultSystem
         shield.ShieldEntity = Spawn("EnergyShieldEffect", Transform(user).Coordinates);
         shield.SustainingCount = 5;	
         _transform.SetParent(shield.ShieldEntity.Value, user);
+		args.Handled = true;
 	}
 			
 	
@@ -227,6 +235,7 @@ public sealed partial class VeilCultSystem
 			RemComp<CamouflageEnchantComponent>(uid);
 			RemComp<EnchantedComponent>(uid);
 		});
+		args.Handled = true;
 	}
 	
 	private void OnActivateFlash(EntityUid uid, EnchantedComponent comp, FlashEnchantActionEvent args)
@@ -246,6 +255,7 @@ public sealed partial class VeilCultSystem
 		_flash.FlashArea(args.Performer, args.Performer, 10f, TimeSpan.FromSeconds(3));
 		RemComp<FlashEnchantComponent>(uid);
 		RemComp<EnchantedComponent>(uid);
+		args.Handled = true;
 	}
 	
 	private void OnActivateHardenPlates(EntityUid uid, EnchantedComponent comp, HardenPlatesEnchantActionEvent args)
@@ -272,6 +282,7 @@ public sealed partial class VeilCultSystem
 			});
 			
 		}
+		args.Handled = true;
 	}
 	
 	private void OnActivateNorthStar(EntityUid uid, EnchantedComponent comp, NorthStarEnchantActionEvent args)
@@ -288,6 +299,7 @@ public sealed partial class VeilCultSystem
 				RemComp<NorthStarEnchantComponent>(uid);
 			});
 		}
+		args.Handled = true;
 	}
 	
 	private void OnActivateRedFlame(EntityUid uid, EnchantedComponent comp, RedFlameEnchantActionEvent args)
@@ -301,6 +313,7 @@ public sealed partial class VeilCultSystem
 			RemComp<EnchantedComponent>(uid);
 			RemComp<IgniteOnMeleeHitComponent>(uid);
 		});
+		args.Handled = true;
 	}
 	
 	private void KnockbackOnMeleeHit(EntityUid uid, KnockbackEnchantComponent comp, MeleeHitEvent args)

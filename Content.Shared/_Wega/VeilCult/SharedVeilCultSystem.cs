@@ -14,6 +14,8 @@ using Content.Shared.DoAfter;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Movement.Events;
 using Robust.Shared.Prototypes;
+using TimedDespawnComponent = Robust.Shared.Spawners.TimedDespawnComponent;
+using Robust.Shared.Player;
 
 namespace Content.Shared.Veil.Cult;
 
@@ -34,6 +36,7 @@ public abstract class SharedVeilCultSystem : EntitySystem
 
 		SubscribeLocalEvent<VeilCultistComponent, VeilCultMidasTouchActionEvent>(OnMidasTouch);
         SubscribeLocalEvent<EnchantableComponent, EnchantSelectedMessage>(OnEnchantSelected);
+		SubscribeLocalEvent<CogscarabComponent, PlayerAttachedEvent>(OnPlayerAttached);
 		SubscribeLocalEvent<ConfusionComponent, ComponentInit>(OnInit);
 		SubscribeLocalEvent<ConfusionComponent, ComponentRemove>(OnShutdown);
 		SubscribeLocalEvent<ConfusionComponent, RefreshMovementSpeedModifiersEvent>(Invert);
@@ -147,6 +150,13 @@ public abstract class SharedVeilCultSystem : EntitySystem
             _ui.OpenUi(card, EnchantUiKey.Key, user);
             _ui.SetUiState(card, EnchantUiKey.Key, state);
         }
+    }
+	
+    private void OnPlayerAttached(EntityUid uid, CogscarabComponent component, PlayerAttachedEvent args)
+    {
+		EnsureComp<TimedDespawnComponent>(uid, out var despawn);
+		despawn.Lifetime = 15f;
+		RemComp<CogscarabComponent>(uid);
     }
 
     private void OnInit(EntityUid uid, ConfusionComponent component, ComponentInit args)

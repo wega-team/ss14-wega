@@ -7,6 +7,13 @@
   - type: Sprite
     sprite: _Wega/Objects/Specific/VeilCult/clockwork_slab.rsi
     state: clock_slab
+  - type: Tool
+    qualities:
+      - VeilCultClockworkSlab
+    useSound:
+      path: /Audio/_Wega/Effects/cult_spell.ogg
+      params:
+        volume: 0.5
   - type: MeleeWeapon
     attackRate: 1
     damage:

@@ -205,6 +205,8 @@ public sealed partial class VeilCultSystem
 			if (TryComp<StackComponent>(chargedBrass, out var newStack))
 				_stack.SetCount((chargedBrass, newStack), count);
 		}
+		else
+			_popup.PopupEntity(Loc.GetString("veil-cult-not-enough-energy"), metalStack, PopupType.Medium);
     }
 	
 	private void ChangeBorgLaws(EntityUid uid, SiliconLawProviderComponent comp)
