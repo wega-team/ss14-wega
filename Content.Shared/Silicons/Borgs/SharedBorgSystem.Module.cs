@@ -12,7 +12,7 @@ namespace Content.Shared.Silicons.Borgs;
 public abstract partial class SharedBorgSystem
 {
     [Dependency] private readonly EntityQuery<BorgModuleComponent> _moduleQuery = default!;
-    [Dependency] private readonly TagSystem _tagSystem = default!;
+    [Dependency] private readonly TagSystem _tagSystem = default!; // Corvax-Wega-Add
 
     private static readonly ProtoId<TagPrototype> ItemborgTag = "Itemborg"; // Corvax-Wega-Add
 
