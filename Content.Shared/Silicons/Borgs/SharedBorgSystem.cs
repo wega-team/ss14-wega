@@ -54,7 +54,7 @@ public abstract partial class SharedBorgSystem : EntitySystem
     [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly SharedActionsSystem _actions = default!;
     [Dependency] private readonly MetaDataSystem _metaData = default!;
-    [Dependency] private readonly MobStateSystem _mobState = default!;
+    // [Dependency] private readonly MobStateSystem _mobState = default!; Corvax-Wega-Revert
     [Dependency] private readonly ThrowingSystem _throwing = default!;
     [Dependency] private readonly ISharedPlayerManager _player = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
