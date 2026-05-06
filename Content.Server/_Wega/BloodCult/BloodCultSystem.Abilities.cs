@@ -26,6 +26,7 @@ using Content.Shared.EnergyShield;
 using Content.Shared.FixedPoint;
 using Content.Shared.Fluids.Components;
 using Content.Shared.Humanoid;
+using Content.Shared.Hands.Components;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Inventory;
@@ -186,28 +187,44 @@ public sealed partial class BloodCultSystem
 
     private void OnStun(EntityUid cultist, BloodCultistComponent component, BloodCultStunActionEvent args)
     {
-        var spellGear = new ProtoId<StartingGearPrototype>("BloodCultSpellStunGear");
-
-        var dropEvent = new DropHandItemsEvent();
-        RaiseLocalEvent(cultist, ref dropEvent);
-        List<ProtoId<StartingGearPrototype>> gear = new() { spellGear };
-        _loadout.Equip(cultist, gear, null);
-
-        args.Handled = true;
-        EmpoweringCheck(args.Action, component);
+		if (TryComp<HandsComponent>(cultist, out var hands))
+		{
+			var spell = Spawn("BloodCultSpellStun", Transform(cultist).Coordinates);
+			var activeHand = _hands.GetActiveHand((cultist, hands));
+			if (_hands.TryPickupAnyHand(cultist, spell))
+			{
+				args.Handled = true;
+				EmpoweringCheck(args.Action, component);
+			}
+			else if (activeHand != null && _hands.TryForcePickup((cultist, hands), spell, activeHand))
+			{
+				args.Handled = true;
+				EmpoweringCheck(args.Action, component);
+			}
+			else
+				QueueDel(spell);
+		}
     }
 
     private void OnTeleport(EntityUid cultist, BloodCultistComponent component, BloodCultTeleportActionEvent args)
     {
-        var spellGear = new ProtoId<StartingGearPrototype>("BloodCultSpellTeleportGear");
-
-        var dropEvent = new DropHandItemsEvent();
-        RaiseLocalEvent(cultist, ref dropEvent);
-        List<ProtoId<StartingGearPrototype>> gear = new() { spellGear };
-        _loadout.Equip(cultist, gear, null);
-
-        args.Handled = true;
-        EmpoweringCheck(args.Action, component);
+		if (TryComp<HandsComponent>(cultist, out var hands))
+		{
+			var spell = Spawn("BloodCultSpellTeleport", Transform(cultist).Coordinates);
+			var activeHand = _hands.GetActiveHand((cultist, hands));
+			if (_hands.TryPickupAnyHand(cultist, spell))
+			{
+				args.Handled = true;
+				EmpoweringCheck(args.Action, component);
+			}
+			else if (activeHand != null && _hands.TryForcePickup((cultist, hands), spell, activeHand))
+			{
+				args.Handled = true;
+				EmpoweringCheck(args.Action, component);
+			}
+			else
+				QueueDel(spell);
+		}
     }
 
     private void OnElectromagneticPulse(EntityUid cultist, BloodCultistComponent component, BloodCultElectromagneticPulseActionEvent args)
@@ -248,41 +265,65 @@ public sealed partial class BloodCultSystem
 
     private void OnShadowShackles(EntityUid cultist, BloodCultistComponent component, BloodCultShadowShacklesActionEvent args)
     {
-        var spellGear = new ProtoId<StartingGearPrototype>("BloodCultSpellShadowShacklesGear");
-
-        var dropEvent = new DropHandItemsEvent();
-        RaiseLocalEvent(cultist, ref dropEvent);
-        List<ProtoId<StartingGearPrototype>> gear = new() { spellGear };
-        _loadout.Equip(cultist, gear, null);
-
-        args.Handled = true;
-        EmpoweringCheck(args.Action, component);
+		if (TryComp<HandsComponent>(cultist, out var hands))
+		{
+			var spell = Spawn("BloodCultSpellShadowShackles", Transform(cultist).Coordinates);
+			var activeHand = _hands.GetActiveHand((cultist, hands));
+			if (_hands.TryPickupAnyHand(cultist, spell))
+			{
+				args.Handled = true;
+				EmpoweringCheck(args.Action, component);
+			}
+			else if (activeHand != null && _hands.TryForcePickup((cultist, hands), spell, activeHand))
+			{
+				args.Handled = true;
+				EmpoweringCheck(args.Action, component);
+			}
+			else
+				QueueDel(spell);
+		}
     }
 
     private void OnTwistedConstruction(EntityUid cultist, BloodCultistComponent component, BloodCultTwistedConstructionActionEvent args)
     {
-        var spellGear = new ProtoId<StartingGearPrototype>("BloodCultSpellTwistedConstructionGear");
-
-        var dropEvent = new DropHandItemsEvent();
-        RaiseLocalEvent(cultist, ref dropEvent);
-        List<ProtoId<StartingGearPrototype>> gear = new() { spellGear };
-        _loadout.Equip(cultist, gear, null);
-
-        args.Handled = true;
-        EmpoweringCheck(args.Action, component);
+		if (TryComp<HandsComponent>(cultist, out var hands))
+		{
+			var spell = Spawn("BloodCultSpellTwistedConstruction", Transform(cultist).Coordinates);
+			var activeHand = _hands.GetActiveHand((cultist, hands));
+			if (_hands.TryPickupAnyHand(cultist, spell))
+			{
+				args.Handled = true;
+				EmpoweringCheck(args.Action, component);
+			}
+			else if (activeHand != null && _hands.TryForcePickup((cultist, hands), spell, activeHand))
+			{
+				args.Handled = true;
+				EmpoweringCheck(args.Action, component);
+			}
+			else
+				QueueDel(spell);
+		}
     }
 
     private void OnSummonEquipment(EntityUid cultist, BloodCultistComponent component, BloodCultSummonEquipmentActionEvent args)
     {
-        var spellGear = new ProtoId<StartingGearPrototype>("BloodCultSpellSummonEquipmentGear");
-
-        var dropEvent = new DropHandItemsEvent();
-        RaiseLocalEvent(cultist, ref dropEvent);
-        List<ProtoId<StartingGearPrototype>> gear = new() { spellGear };
-        _loadout.Equip(cultist, gear, null);
-
-        args.Handled = true;
-        EmpoweringCheck(args.Action, component);
+		if (TryComp<HandsComponent>(cultist, out var hands))
+		{
+			var spell = Spawn("BloodCultSpellSummonEquipment", Transform(cultist).Coordinates);
+			var activeHand = _hands.GetActiveHand((cultist, hands));
+			if (_hands.TryPickupAnyHand(cultist, spell))
+			{
+				args.Handled = true;
+				EmpoweringCheck(args.Action, component);
+			}
+			else if (activeHand != null && _hands.TryForcePickup((cultist, hands), spell, activeHand))
+			{
+				args.Handled = true;
+				EmpoweringCheck(args.Action, component);
+			}
+			else
+				QueueDel(spell);
+		}
     }
 
     private void OnSummonDagger(EntityUid cultist, BloodCultistComponent component, BloodCultSummonDaggerActionEvent args)
@@ -398,15 +439,23 @@ public sealed partial class BloodCultSystem
     #region Blood Rites
     private void OnBloodRites(EntityUid cultist, BloodCultistComponent component, BloodCultBloodRitesActionEvent args)
     {
-        var spellGear = new ProtoId<StartingGearPrototype>("BloodCultSpellBloodRitesGear");
-
-        var dropEvent = new DropHandItemsEvent();
-        RaiseLocalEvent(cultist, ref dropEvent);
-        List<ProtoId<StartingGearPrototype>> gear = new() { spellGear };
-        _loadout.Equip(cultist, gear, null);
-
-        args.Handled = true;
-        EmpoweringCheck(args.Action, component);
+		if (TryComp<HandsComponent>(cultist, out var hands))
+		{
+			var spell = Spawn("BloodCultSpellBloodRites", Transform(cultist).Coordinates);
+			var activeHand = _hands.GetActiveHand((cultist, hands));
+			if (_hands.TryPickupAnyHand(cultist, spell))
+			{
+				args.Handled = true;
+				EmpoweringCheck(args.Action, component);
+			}
+			else if (activeHand != null && _hands.TryForcePickup((cultist, hands), spell, activeHand))
+			{
+				args.Handled = true;
+				EmpoweringCheck(args.Action, component);
+			}
+			else
+				QueueDel(spell);
+		}
     }
 
      private void OnExamine(EntityUid uid, BloodSpellComponent spell, ExaminedEvent args)
@@ -604,15 +653,25 @@ public sealed partial class BloodCultSystem
             return;
         }
 
-        var boltBarrageGear = new ProtoId<StartingGearPrototype>("BloodCultSpellBloodBarrageGear");
-        var dropEvent = new DropHandItemsEvent();
-        RaiseLocalEvent(cultist, ref dropEvent);
-        List<ProtoId<StartingGearPrototype>> gear = new() { boltBarrageGear };
-        _loadout.Equip(cultist, gear, null);
-
-        component.BloodCount -= 200;
-        _action.RemoveAction(cultist, args.Action!);
-        args.Handled = true;
+		if (TryComp<HandsComponent>(cultist, out var hands))
+		{
+			var spell = Spawn("BloodCultSpellBloodBarrage", Transform(cultist).Coordinates);
+			var activeHand = _hands.GetActiveHand((cultist, hands));
+			if (_hands.TryPickupAnyHand(cultist, spell))
+			{
+				component.BloodCount -= 200;
+				_action.RemoveAction(cultist, args.Action!);
+				args.Handled = true;
+			}
+			else if (activeHand != null && _hands.TryForcePickup((cultist, hands), spell, activeHand))
+			{
+				component.BloodCount -= 200;
+				_action.RemoveAction(cultist, args.Action!);
+				args.Handled = true;
+			}
+			else
+				QueueDel(spell);
+		}
     }
     #endregion Blood Rites
     #endregion Abilities
