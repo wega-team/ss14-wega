@@ -2,3 +2,8 @@
   license: "CC0-1.0"
   copyright: "_stubb"
   source: "https://freesound.org/people/_stubb/sounds/389634/"
+
+- files: ["electrical_short_circuit.ogg", "electrical_short_circuit2.ogg"]
+  license: "CC-BY-NC-3.0"
+  copyright: "Taken from zvukogram.com"
+  source: "https://zvukogram.com/category/zvuki-elektricheskogo-toka/"

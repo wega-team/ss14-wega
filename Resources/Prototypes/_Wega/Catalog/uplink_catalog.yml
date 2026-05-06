@@ -341,6 +341,19 @@
     stock: 2
 
 - type: listing
+  id: UplinkTeleporter
+  name: uplink-syndicate-teleporter-name
+  description: uplink-syndicate-teleporter-desc
+  icon: { sprite: _CorvaxNext/Objects/Devices/syndicate_teleporter.rsi, state: icon }
+  productEntity: SyndicateTeleporter
+  categories:
+    - UplinkWearables
+  cost:
+    Telecrystal: 10
+  categories:
+  - UplinkDisruption
+
+- type: listing
   id: UplinkDiceOfFate
   name: uplink-syndie-dice-of-fate-name
   description: uplink-syndie-dice-of-fate-desc
@@ -423,3 +436,16 @@
     whitelist:
       tags:
       - NukeOpsUplink
+
+- type: listing
+  id: UplinkLoyaltyImplant
+  name: uplink-loyalty-implant-name
+  description: uplink-loyalty-implant-desc
+  icon: { sprite: Objects/Specific/Medical/syndi_implanter.rsi, state: implanter1 }
+  productEntity: LoyaltyImplanter
+  discountDownTo:
+    Telecrystal: 3
+  cost:
+    Telecrystal: 5
+  categories:
+  - UplinkImplants
