@@ -50,6 +50,7 @@ namespace Content.Server.GameTicking.Rules
         [Dependency] private readonly AntagSelectionSystem _antag = default!;
         [Dependency] private readonly IEntityManager _entityManager = default!;
         [Dependency] private readonly ISharedPlayerManager _player = default!;
+		[Dependency] private readonly IPlayerManager _playerManager = default!;
         [Dependency] private readonly IAdminLogManager _adminLogManager = default!;
         [Dependency] private readonly MetabolizerSystem _metabolism = default!;
         [Dependency] private readonly MindSystem _mind = default!;
@@ -66,6 +67,7 @@ namespace Content.Server.GameTicking.Rules
         [Dependency] private readonly MetaDataSystem _meta = default!;
         [Dependency] private readonly SharedStationSystem _stationSystem = default!;
 		[Dependency] private readonly EntityLookupSystem _entityLookup = default!;
+		[Dependency] private readonly ServerGlobalSoundSystem _sound = default!;
 
         public readonly ProtoId<NpcFactionPrototype> VeilCultNpcFaction = "VeilCult";
 
@@ -296,9 +298,10 @@ namespace Content.Server.GameTicking.Rules
                         actorFilter.AddPlayer(actor.PlayerSession);
                         _popup.PopupEntity(Loc.GetString("veil-cult-second-warning"), actorUid, actorUid, PopupType.SmallCaution);
                     }
-
-                    _audio.PlayGlobal(new SoundPathSpecifier("/Audio/_Wega/Ambience/Antag/bloodcult_halos.ogg"), actorFilter, true);
+					
+					_sound.PlayAdminGlobal(Filter.Empty().AddAllPlayers(_playerManager), _audio.ResolveSound(new SoundPathSpecifier("/Audio/_Wega/Ambience/Antag/veilcult_start.ogg"))
                     cult.SecondTriggered = true;
+					_chat.DispatchGlobalAnnouncement(Loc.GetString("veil-cult-second-phase"), playSound: false, colorOverride: Color.Orange);
                 }
             }
         }
