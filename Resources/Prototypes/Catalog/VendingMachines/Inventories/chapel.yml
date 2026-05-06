@@ -25,7 +25,7 @@
     BoxCandleSmall: 2
     Urn: 5
     Bible: 1
-    WeaponNullRod: 1 # Corvax-Wega-Vampire
+    ClothingBeltSheathChaplinFilled: 1 # Corvax-Wega-Vampire
   contrabandInventory:
     FoodBakedBunHotX: 2
     DrinkWineBottleFull: 1

@@ -43,13 +43,6 @@
   - type: Reflect
     reflectProb: 0.3
     spread: 90
-  - type: Clothing
-    sprite: Objects/Weapons/Melee/claymore.rsi
-    slots:
-    - Back
-    - SuitStorage
-    - Belt
-  - type: DisarmMalus
 
 - type: entity
   parent: WeaponHandOfGod
@@ -92,7 +85,7 @@
   - type: Clothing
     sprite: _Wega/Objects/Weapons/Melee/chainsword.rsi
     slots:
-    - Belt
+    - Back
 
 - type: entity
   parent: ClaymoreERT
@@ -101,8 +94,6 @@
   description: It shines with the power of faith. Or the energy of a battery.
   components:
   - type: Sprite
-    sprite: _Wega/Objects/Weapons/Melee/force_sword.rsi
-  - type: Clothing
     sprite: _Wega/Objects/Weapons/Melee/force_sword.rsi
   - type: Item
     storedSprite:
@@ -119,6 +110,9 @@
     storedSprite:
       state: icon
       sprite: Objects/Weapons/Melee/katana.rsi
+  - type: Clothing
+    slots:
+    - Back
 
 - type: entity
   parent: ClaymoreERT
@@ -127,8 +121,6 @@
   description: Once a messenger of interdimensional war, now it's just a dormant souvenir. But still sharp.
   components:
   - type: Sprite
-    sprite: _Wega/Objects/Weapons/Melee/multiverse_sword.rsi
-  - type: Clothing
     sprite: _Wega/Objects/Weapons/Melee/multiverse_sword.rsi
   - type: Item
     storedSprite:
@@ -161,7 +153,6 @@
     sprite: _Wega/Objects/Weapons/Melee/reaper_scythe.rsi
     slots:
     - Back
-    - SuitStorage
   - type: DisarmMalus
 
 - type: entity
@@ -212,7 +203,7 @@
   - type: Clothing
     sprite: _Wega/Objects/Weapons/Melee/arrhythmic_knife.rsi
     slots:
-    - Belt
+    - Back
   - type: MeleeWeapon
     attackRate: 2.25
     damage:

@@ -218,12 +218,12 @@
   components:
   - type: Sprite
     sprite: _Wega/Objects/Weapons/Melee/spell_blade.rsi
-  - type: Clothing
-    sprite: _Wega/Objects/Weapons/Melee/spell_blade.rsi
-    quickEquip: false
-    slots:
-    - Back
-    - SuitStorage
+  # - type: Clothing
+    # sprite: _Wega/Objects/Weapons/Melee/spell_blade.rsi
+    # quickEquip: false
+    # slots:
+    # - Back
+    # - SuitStorage
   - type: Item
     storedRotation: -45
     shape:
