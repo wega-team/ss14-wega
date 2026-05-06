@@ -37,6 +37,26 @@
   - type: Construction
     graph: GlassesMedSec
     node: medsecGlasses
+    
+- type: entity
+  parent: ClothingEyesBase
+  id: ClothingEyesGlassesNightVision
+  name: night vision goggles
+  description: a pair of goggles that allows you to see through dark.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Eyes/nightvision.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Eyes/nightvision.rsi
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+  - type: IdentityBlocker
+    coverage: EYES
+  - type: NightVision
+    tint: "#00800000"
+    activateSound: /Audio/_Wega/Items/activate.ogg
+    deactivateSound: /Audio/_Wega/Items/deactivate.ogg
 
 # ADT
 
