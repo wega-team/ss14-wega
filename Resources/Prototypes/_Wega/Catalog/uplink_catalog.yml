@@ -278,6 +278,19 @@
   - UplinkWeaponry
 
 - type: listing
+  id: UplinkHomerunBat
+  name: uplink-homerun-bat-name
+  description: uplink-homerun-bat-desc
+  productEntity: HomerunBat
+  discountCategory: veryRareDiscounts
+  discountDownTo:
+    Telecrystal: 2
+  cost:
+    Telecrystal: 4
+  categories:
+    - UplinkWeaponry
+
+- type: listing
   id: UplinkMagazineEagle
   name: uplink-magazine-eagle-name
   description: uplink-magazine-eagle-desc

@@ -8,9 +8,11 @@
     sprite: _Wega/Objects/Devices/syndicate_teleporter.rsi
     state: icon
   - type: Item
-  - type: ExperimentalTeleporter
+#  - type: SyndicateTeleporter
   - type: LimitedCharges
     maxCharges: 4
     charges: 4
   - type: AutoRecharge
     rechargeDuration: 10
+  - type: UseDelay
+    delay: 60

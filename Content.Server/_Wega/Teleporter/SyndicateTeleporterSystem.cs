@@ -1,5 +1,8 @@
-using Content.Server.Body.Components;
+/*using Content.Server.Body.Components;
 using Content.Server.Body.Systems;
+using Content.Server._Wega.Teleporter;
+using Robust.Server.GameObjects;
+using Content.Shared.GameTicking;
 using Content.Shared.Body.Systems;
 using Content.Shared.Body;
 using Content.Shared.Body.Components;
@@ -69,5 +72,8 @@ private void OnUseInHand(Entity<SyndicateTeleporterComponent> teleporter, ref Us
     Spawn(TeleportEffectPrototype, resultCoordinates);
 
     _transform.SetCoordinates(e.User, resultCoordinates);
+
+        if (safeCoordinates.Count < 1)
+            _body.GibBody(e.User, true);
 }
 }
