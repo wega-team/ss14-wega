@@ -37,6 +37,8 @@ using Content.Shared.Standing;
 using Content.Shared.StatusEffectNew;
 using Content.Shared.Stunnable;
 using Content.Shared.Timing;
+using Content.Shared.Hands.Components;
+using Content.Shared.Examine;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Containers;
@@ -46,7 +48,6 @@ using Robust.Shared.Physics.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
-using Content.Shared.Examine;
 
 namespace Content.Server.Blood.Cult;
 
@@ -1055,5 +1056,25 @@ public sealed partial class BloodCultSystem
             _action.RemoveAction(spell);
         }
     }
+	
+	private bool TrySpawnSpellInHand(EntityUid uid, EntProtoId proto)
+	{
+		if (!TryComp<HandsComponent>(uid, out var hands))
+			return false;
+
+		var spell = Spawn(proto, Transform(uid).Coordinates);
+		var activeHand = _hands.GetActiveHand((uid, hands));
+			
+		if (_hands.TryPickupAnyHand(uid, spell))
+			return true;
+			
+		else if (activeHand != null && _hands.TryForcePickup((uid, hands), spell, activeHand))
+			return true;
+			
+		else
+			QueueDel(spell);
+			return false;
+		
+	}
     #endregion
 }
