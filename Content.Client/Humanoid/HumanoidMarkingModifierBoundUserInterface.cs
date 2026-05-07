@@ -1,5 +1,4 @@
 using Content.Shared.Humanoid;
-using Content.Shared.Humanoid.Markings;
 using Robust.Client.UserInterface;
 
 namespace Content.Client.Humanoid;
@@ -17,7 +16,6 @@ public sealed class HumanoidMarkingModifierBoundUserInterface : BoundUserInterfa
 
     public HumanoidMarkingModifierBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey)
     {
-
     }
 
     protected override void Open()
@@ -49,5 +47,3 @@ public sealed class HumanoidMarkingModifierBoundUserInterface : BoundUserInterfa
         SendMessage(new HumanoidMarkingModifierMarkingSetMessage(_markingsModel.Markings));
     }
 }
-
-
