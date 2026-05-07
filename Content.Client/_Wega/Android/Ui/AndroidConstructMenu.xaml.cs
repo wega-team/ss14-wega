@@ -52,9 +52,11 @@ public sealed partial class AndroidConstructMenu : BaseWindow
 
     protected override DragMode GetDragModeFor(Vector2 relativeMousePos) => DragMode.Move;
 
-    public void LoadProfile(HumanoidCharacterProfile profile, IConfigurationManager cfgManager,
-                                                              MarkingManager markingManager,
-                                                              IPrototypeManager prototypeManager)
+    public void LoadProfile(
+        HumanoidCharacterProfile profile,
+        IConfigurationManager cfgManager,
+        MarkingManager markingManager,
+        IPrototypeManager prototypeManager)
     {
         Profile = profile;
 
