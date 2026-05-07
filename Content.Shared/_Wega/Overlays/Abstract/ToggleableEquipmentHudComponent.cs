@@ -22,4 +22,10 @@ public abstract partial class ToggleableHudComponent : Component
 	
     [DataField, AutoNetworkedField]
     public SoundSpecifier? DeactivateSound;
+	
+    [DataField("wattage")]
+    public float Wattage { get; set; } = 0f;
+
+    [DataField("activateFailSound")]
+    public SoundSpecifier ActivateFailSound = new SoundPathSpecifier("/Audio/Machines/button.ogg");
 }
