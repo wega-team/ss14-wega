@@ -8,7 +8,6 @@ using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.StatusEffectNew;
 using Content.Shared.Throwing;
-using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
 using Robust.Shared.Timing;
 
@@ -37,69 +36,52 @@ public sealed class FacehuggerSystem : EntitySystem
     {
         base.Update(frameTime);
 
+        var curTime = _timing.CurTime;
+
         var query = EntityQueryEnumerator<FacehuggerComponent>();
         while (query.MoveNext(out var uid, out var hugger))
         {
             if (!IsHuggerAlive(uid))
+                continue;
+
+            if (_container.IsEntityInContainer(uid) || HasComp<ThrownItemComponent>(uid))
+                continue;
+
+            if (hugger.CurrentTarget != null)
             {
-                hugger.CurrentTarget = null;
-                hugger.AttachTime = null;
+                if (curTime >= hugger.AttachTime)
+                {
+                    TryAttach(uid, hugger.CurrentTarget.Value);
+                    hugger.CurrentTarget = null;
+                    hugger.AttachTime = null;
+                }
                 continue;
             }
 
-            if (_container.IsEntityInContainer(uid))
-            {
-                hugger.CurrentTarget = null;
-                hugger.AttachTime = null;
+            FindNewTarget(uid, hugger, curTime);
+        }
+    }
+
+    private void FindNewTarget(EntityUid uid, FacehuggerComponent hugger, TimeSpan curTime)
+    {
+        var coords = Transform(uid).Coordinates;
+        foreach (var (target, _) in _lookup.GetEntitiesInRange<InventoryComponent>(coords, hugger.ProximityRange))
+        {
+            if (target == uid)
                 continue;
-            }
 
-            if (HasComp<ThrownItemComponent>(uid))
-            {
-                hugger.CurrentTarget = null;
-                hugger.AttachTime = null;
+            if (HasComp<FacehuggerComponent>(target) || HasComp<GhostComponent>(target))
                 continue;
-            }
 
-            var coords = Transform(uid).Coordinates;
-            EntityUid? bestTarget = null;
-
-            foreach (var (target, _) in _lookup.GetEntitiesInRange<InventoryComponent>(coords, hugger.ProximityRange))
-            {
-                if (target == uid)
-                    continue;
-                if (HasComp<FacehuggerComponent>(target))
-                    continue;
-                if (HasComp<GhostComponent>(target))
-                    continue;
-                if (HasSealedHelmet(target))
-                    continue;
-                if (!_interaction.InRangeUnobstructed(uid, target, hugger.ProximityRange))
-                    continue;
-
-                bestTarget = target;
-                break;
-            }
-
-            if (bestTarget == null)
-            {
-                hugger.CurrentTarget = null;
-                hugger.AttachTime = null;
+            if (HasSealedHelmet(target))
                 continue;
-            }
 
-            if (hugger.CurrentTarget != bestTarget.Value)
-            {
-                hugger.CurrentTarget = bestTarget.Value;
-                hugger.AttachTime = _timing.CurTime + hugger.AttachDelay;
-            }
+            if (!_interaction.InRangeUnobstructed(uid, target, hugger.ProximityRange))
+                continue;
 
-            if (_timing.CurTime >= hugger.AttachTime)
-            {
-                TryAttach(uid, hugger.CurrentTarget.Value);
-                hugger.CurrentTarget = null;
-                hugger.AttachTime = null;
-            }
+            hugger.CurrentTarget = target;
+            hugger.AttachTime = curTime + hugger.AttachDelay;
+            return;
         }
     }
 
@@ -108,10 +90,7 @@ public sealed class FacehuggerSystem : EntitySystem
         if (!IsHuggerAlive(ent.Owner))
             return;
 
-        if (!HasComp<InventoryComponent>(args.Target))
-            return;
-
-        if (HasComp<GhostComponent>(args.Target))
+        if (!HasComp<InventoryComponent>(args.Target) || HasComp<GhostComponent>(args.Target))
             return;
 
         if (HasSealedHelmet(args.Target))
@@ -128,7 +107,8 @@ public sealed class FacehuggerSystem : EntitySystem
 
     private bool TryAttach(EntityUid hugger, EntityUid target)
     {
-        _inventory.TryUnequip(target, "mask", force: true, silent: true);
+        if (_inventory.TryGetSlotEntity(target, "mask", out var mask) && HasComp<FacehuggerComponent>(mask))
+            return false;
 
         if (!_inventory.TryEquip(target, target, hugger, "mask", force: true, silent: true))
             return false;
