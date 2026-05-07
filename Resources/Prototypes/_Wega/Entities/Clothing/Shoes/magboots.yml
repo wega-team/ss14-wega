@@ -61,3 +61,5 @@
     weightlessModifier: 1.2
   - type: StaticPrice
     price: 5000
+  - type: Magboots # Corvax-Wega-AdvMagboots
+    disabledAutoOff: true # Corvax-Wega-AdvMagboots
