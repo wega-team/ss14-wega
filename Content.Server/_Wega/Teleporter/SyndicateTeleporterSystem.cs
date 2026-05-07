@@ -1,4 +1,4 @@
-/*using Content.Server.Body.Components;
+using Content.Server.Body.Components;
 using Content.Server.Body.Systems;
 using Content.Server._Wega.Teleporter;
 using Robust.Server.GameObjects;

@@ -278,19 +278,6 @@
   - UplinkWeaponry
 
 - type: listing
-  id: UplinkHomerunBat
-  name: uplink-homerun-bat-name
-  description: uplink-homerun-bat-desc
-  productEntity: HomerunBat
-  discountCategory: veryRareDiscounts
-  discountDownTo:
-    Telecrystal: 2
-  cost:
-    Telecrystal: 4
-  categories:
-    - UplinkWeaponry
-
-- type: listing
   id: UplinkMagazineEagle
   name: uplink-magazine-eagle-name
   description: uplink-magazine-eagle-desc
@@ -352,19 +339,6 @@
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 2
-
-- type: listing
-  id: UplinkTeleporter
-  name: uplink-syndicate-teleporter-name
-  description: uplink-syndicate-teleporter-desc
-  icon: { sprite: _CorvaxNext/Objects/Devices/syndicate_teleporter.rsi, state: icon }
-  productEntity: SyndicateTeleporter
-  categories:
-    - UplinkWearables
-  cost:
-    Telecrystal: 10
-  categories:
-  - UplinkDisruption
 
 - type: listing
   id: UplinkDiceOfFate
@@ -456,9 +430,33 @@
   description: uplink-loyalty-implant-desc
   icon: { sprite: Objects/Specific/Medical/syndi_implanter.rsi, state: implanter1 }
   productEntity: LoyaltyImplanter
+  categories:
+  - UplinkImplants
   discountDownTo:
     Telecrystal: 3
   cost:
     Telecrystal: 5
+
+- type: listing
+  id: UplinkHomerunBat
+  name: uplink-homerun-bat-name
+  description: uplink-homerun-bat-desc
+  productEntity: HomerunBat
+  discountCategory: veryRareDiscounts
+  discountDownTo:
+    Telecrystal: 2
+  cost:
+    Telecrystal: 4
   categories:
-  - UplinkImplants
+    - UplinkWeaponry
+
+- type: listing
+  id: UplinkTeleporter
+  name: uplink-syndicate-teleporter-name
+  description: uplink-syndicate-teleporter-desc
+  icon: { sprite: _Wega/Objects/Devices/syndicate_teleporter.rsi, state: icon }
+  productEntity: SyndicateTeleporter
+  categories:
+    - UplinkWearables
+  cost:
+    Telecrystal: 10

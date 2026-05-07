@@ -1,4 +1,4 @@
-/*using Content.Shared.Physics;
+using Content.Shared.Physics;
 using Robust.Shared.GameObjects;
 
 namespace Content.Server._Wega.Teleporter;

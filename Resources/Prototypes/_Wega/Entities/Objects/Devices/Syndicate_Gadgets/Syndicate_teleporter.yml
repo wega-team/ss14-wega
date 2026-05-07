@@ -8,7 +8,7 @@
     sprite: _Wega/Objects/Devices/syndicate_teleporter.rsi
     state: icon
   - type: Item
-#  - type: SyndicateTeleporter
+  - type: SyndicateTeleporter
   - type: LimitedCharges
     maxCharges: 4
     charges: 4
