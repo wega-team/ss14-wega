@@ -200,16 +200,11 @@ public abstract partial class SharedBorgSystem
             if (item is { } pickUp)
             {
                 _hands.DoPickup(chassis, handId, pickUp, hands);
-                if (!hand.ForceRemovable && hand.Hand.Whitelist == null && hand.Hand.Blacklist == null)
+                if (!hand.ForceRemovable && hand.Hand.Whitelist == null && hand.Hand.Blacklist == null 
+				|| _tagSystem.HasTag(pickUp, ItemborgTag)) // Corvax-Wega-Add
                 {
                     EnsureComp<UnremoveableComponent>(pickUp);
                 }
-				// Corvax-Wega-Start
-                if (_tagSystem.HasTag(pickUp, ItemborgTag))
-                {
-                    EnsureComp<UnremoveableComponent>(pickUp);
-                }
-				// Corvax-Wega-End
             }
         }
 
