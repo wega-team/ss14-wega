@@ -24,7 +24,7 @@
       limit: 2
       required: false
     enum.HumanoidVisualLayers.HeadSide:
-      limit: 1
+      limit: 2 # Corvax-Wega-Edit
       required: false
     enum.HumanoidVisualLayers.LArm:
       limit: 1

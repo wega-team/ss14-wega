@@ -114,6 +114,10 @@
       collection: MaleGasp
     DefaultDeathgasp:
       collection: DeathGasp
+    Purr: # Corvax-Wega-Edit
+      collection: ReptilianPurr # Corvax-Wega-Edit
+    FilinidHisses: # Corvax-Wega-Edit
+      path: /Audio/_Wega/Voice/Reptilian/hiss.org # Corvax-Wega-Edit
 
 - type: emoteSounds
   id: FemaleReptilian
@@ -138,6 +142,10 @@
       collection: FemaleGasp
     DefaultDeathgasp:
       collection: FemaleDeathGasp
+    Purr: # Corvax-Wega-Edit
+      collection: ReptilianPurr # Corvax-Wega-Edit
+    FilinidHisses: # Corvax-Wega-Edit
+      path: /Audio/_Wega/Voice/Reptilian/hiss.org # Corvax-Wega-Edit
 
 - type: emoteSounds
   id: MaleSlime

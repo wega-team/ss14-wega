@@ -1,0 +1,14 @@
+- files: ["roar.ogg, roar2.ogg, roar3.ogg, hiss2.ogg, hiss3.ogg, rumble.ogg, rumble2.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "SS13 Skyrat"
+  source: "https://github.com/Skyrat-SS13/Skyrat13/tree/master"
+  
+- files: ["hiss.ogg, lizard_hiss.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "SS13 Tgstation"
+  source: "https://github.com/tgstation/tgstation/tree/master"
+  
+- files: ["purr2.ogg"]
+  license: "CC0-1.0"
+  copyright: "cubilon, edited a lil by MartynDew"
+  source: "https://freesound.org/people/cubilon/sounds/130968/"
