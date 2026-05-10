@@ -44,7 +44,6 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
 //Corvax-Wega-War-Start
-using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using static System.Collections.Specialized.BitVector32;
 //Corvax-Wega-War-End
@@ -56,7 +55,7 @@ using Content.Shared.CombatMode.Pacification;//Corvax-DionaPacifist
 namespace Content.Server.GameTicking.Rules;
 
 //public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
-public sealed partial class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>//Corvax-Wega-Edit
+public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>//Corvax-Wega-Edit
 {
     [Dependency] private readonly AntagSelectionSystem _antag = default!;
     [Dependency] private readonly EmergencyShuttleSystem _emergency = default!;
@@ -128,7 +127,7 @@ public sealed partial class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleCompon
         RaiseLocalEvent(ref ev);
     }
     //Corvax-Wega-War-Start
-    public void ChangeAlert()
+    private void ChangeAlert()
     {
         var query = EntityQueryEnumerator<NukeopsRuleComponent>();
         while (query.MoveNext(out var uid, out var comp))
@@ -137,7 +136,6 @@ public sealed partial class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleCompon
             {
                 if (comp.SetAlertlevel == null || comp.TargetStation == null)
                     continue;
-
                 _alertLevelSystem.SetLevel(comp.TargetStation.Value, comp.SetAlertlevel, true, true, true, true);
                 comp.CanChangeAlertLevel = false;
             }
@@ -478,6 +476,7 @@ public sealed partial class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleCompon
                 nukeops.WarDeclaredTime = Timing.CurTime;
                 var timeRemain = nukeops.WarNukieArriveDelay + Timing.CurTime;
                 ev.DeclaratorEntity.Comp.ShuttleDisabledTime = timeRemain;
+                Timer.Spawn(TimeSpan.FromSeconds(comp.AlertlevelDelay), () => ChangeAlert()); // Corvax-Wega-War
 
                 DistributeExtraTc((uid, nukeops));
             }
@@ -491,14 +490,14 @@ public sealed partial class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleCompon
     /// </summary>
     public WarConditionStatus GetWarCondition(NukeopsRuleComponent nukieRule, WarConditionStatus? oldStatus)
     {
-        if (!nukieRule.CanEnableWarOps)
+/*        if (!nukieRule.CanEnableWarOps) Corvax-Wega-Edit-Start
             return WarConditionStatus.NoWarUnknown;
 
         if (EntityQuery<NukeopsRoleComponent>().Count() < nukieRule.WarDeclarationMinOps)
             return WarConditionStatus.NoWarSmallCrew;
 
         if (nukieRule.LeftOutpost)
-            return WarConditionStatus.NoWarShuttleDeparted;
+            return WarConditionStatus.NoWarShuttleDeparted; Corvax-Wega-Edit-End*/
 
         if (oldStatus == WarConditionStatus.YesWar)
             return WarConditionStatus.WarReady;
