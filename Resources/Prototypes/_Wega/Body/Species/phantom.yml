@@ -225,7 +225,7 @@
   components:
   - type: VisualOrgan
     data:
-      sprite: Mobs/Customization/eyes.rsi
+      sprite: _Wega/Mobs/Customization/phantom.rsi
       state: eyes
 
 - type: entity
