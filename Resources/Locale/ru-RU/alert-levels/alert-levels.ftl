@@ -34,3 +34,9 @@ alert-level-delta-instructions = Обратитесь к главе своего
 alert-level-epsilon = Эпсилон
 alert-level-epsilon-announcement = Центральное Командование объявило уровень угрозы «Эпсилон». Все контракты расторгнуты. Спасибо, что выбрали корпорацию Nanotrasen.
 alert-level-epsilon-instructions = Все контракты расторгнуты. Спасибо, что выбрали корпорацию Nanotrasen.
+
+Corvax-Wega-code-start
+alert-level-martial_law = Военное положение
+alert-level-martial_law-announcement = На станции объявлено военное положение. Все члены экипажа должны немедленно вооружиться и беспрекословно подчиняться всем приказам капитана и главы службы безопасности.
+alert-level-martial_law-instructions = Все члены экипажа обязаны немедленно вооружиться и беспрекословно подчиняться всем приказам капитана и главы службы безопасности.
+Corvax-Wega-code-end

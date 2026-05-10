@@ -81,7 +81,7 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
     private static readonly ProtoId<TagPrototype> NukeOpsUplinkTagPrototype = "NukeOpsUplink";
 
 
-    public override void Initialize()
+    public new void Initialize()
     {
         base.Initialize();
 
@@ -103,26 +103,26 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
         SubscribeLocalEvent<NukeopsRuleComponent, RuleLoadedGridsEvent>(OnRuleLoadedGrids);
     }
     //Corvax-Wega-War-Start
-    public new void Update(float frameTime)
+    public override void Update(float frameTime)
     {
         var query = EntityQueryEnumerator<NukeopsRuleComponent>();
         while (query.MoveNext(out var uid, out var comp))
         {
-            if (comp.CanChangeAlertLevel)
-            {
-                if (_gameTiming.CurTime < comp.AlertlevelTime)
-                    return;
-
                 if (comp.SetAlertlevel == null)
                     continue;
 
-                if (comp.TargetStation == null)
+                if (!comp.CanChangeAlertLevel)
+                    continue;
+
+                if (_gameTiming.CurTime < comp.AlertlevelTime)
+                    return;
+
+                if (comp.TargetStation == null || comp.SetAlertlevel == null)
                     continue;
 
                 _alertLevelSystem.SetLevel(comp.TargetStation.Value, comp.SetAlertlevel, true, true, true, true);
 
                 comp.CanChangeAlertLevel = false;
-            }
         }
     }
     //Corvax-Wega-War-End

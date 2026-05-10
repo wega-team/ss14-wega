@@ -14,7 +14,7 @@ using Content.Shared.Ghost;
 
 namespace Content.Server.StationEvents.Events;
 
-public sealed class RadiationOutburstRule : StationEventSystem<RadiationOutburstRuleComponent> //port only with codeowner permision @4_ydo
+public sealed class RadiationOutburstRuleSystem : StationEventSystem<RadiationOutburstRuleComponent> //port only with codeowner permision @4_ydo
 {
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedContainerSystem _containerSystem = default!;
@@ -82,7 +82,7 @@ public sealed class RadiationOutburstRule : StationEventSystem<RadiationOutburst
         for (int i = 0; i < itemsToIrradiate; i++)
         {
             var target = candidates[i];
-            var rads = _random.Next(2, 7); // Интенсивность 2-7
+            var rads = _random.Next(2, 3); // Интенсивность 2-3
             SetRadiation(target, rads);
         }
 
