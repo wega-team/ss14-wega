@@ -5,6 +5,8 @@
     entity: MobPuddleBlood
     forced: true
     duration: 8
+    polymorphSound:
+      path: "/Audio/Effects/Fluids/splat.ogg"
 
 - type: polymorph
   id: SlimeMorph

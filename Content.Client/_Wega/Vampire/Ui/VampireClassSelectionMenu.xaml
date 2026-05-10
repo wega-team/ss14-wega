@@ -1,16 +1,12 @@
 <ui:RadialMenu xmlns="https://spacestation14.io"
                xmlns:ui="clr-namespace:Content.Client.UserInterface.Controls"
-               xmlns:local="clr-namespace:Content.Client.Select.Class.UI;assembly=Content.Client"
-               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-               x:Class="Content.Client.Select.Class.UI.SelectClassMenu"
                BackButtonStyleClass="RadialMenuBackButton"
                CloseButtonStyleClass="RadialMenuCloseButton"
-               VerticalExpand="True"
-               HorizontalExpand="True"
+               VerticalExpand="True" HorizontalExpand="True"
                MinSize="450 450">
 
     <!-- Main Radial Menu Container -->
-    <ui:RadialContainer Name="Main" VerticalExpand="True" HorizontalExpand="True" InitialRadius="64" ReserveSpaceForHiddenChildren="False">
+    <ui:RadialContainer Name="Main" VerticalExpand="True" HorizontalExpand="True" InitialRadius="128" ReserveSpaceForHiddenChildren="False">
         <!-- Button 1: Hemomancer -->
         <ui:RadialMenuButton Name="HemomancerButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-class-hemomancer'}" TargetLayerControlName="Hemomancer">
             <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/Interface/Actions/claws.png"/>

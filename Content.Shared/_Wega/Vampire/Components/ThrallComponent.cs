@@ -4,11 +4,14 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Vampire.Components;
 
-[RegisterComponent, NetworkedComponent]
+/// <summary>
+/// Determines what the entity is and who it belongs to.
+/// </summary>
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true)]
 public sealed partial class ThrallComponent : Component
 {
-    [DataField]
-    public EntityUid? VampireOwner = null;
+    [ViewVariables(VVAccess.ReadOnly), AutoNetworkedField]
+    public EntityUid? VampireOwner = default!;
 
     [DataField]
     public ProtoId<FactionIconPrototype> StatusIcon = "ThrallFaction";
