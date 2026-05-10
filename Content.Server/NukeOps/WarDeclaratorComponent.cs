@@ -1,4 +1,5 @@
-﻿using Content.Shared.NukeOps;
+﻿using Content.Server.GameTicking.Rules;
+using Content.Shared.NukeOps;
 using Robust.Shared.Audio;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
@@ -16,10 +17,7 @@ public sealed partial class WarDeclaratorComponent : Component
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite)]
     [DataField]
-//Corvax-Wega-Edit-Start
-//    public string Message;
     public string Message;
-//Corvax-Wega-Edit-End
 
     /// <summary>
     /// Permission to customize message text

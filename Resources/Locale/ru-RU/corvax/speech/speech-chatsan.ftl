@@ -178,10 +178,8 @@ corvax-chatsan-word-89 = пруфанул
 corvax-chatsan-replacement-89 = доказал
 corvax-chatsan-word-90 = брух
 corvax-chatsan-replacement-90 = мда...
-corvax-wega-edit-start
 corvax-chatsan-word-91 = имба
-corvax-chatsan-replacement-91 = имба
-corvax-wega-edit-end
+corvax-chatsan-replacement-91 = имба # corvax-wega-edit
 corvax-chatsan-word-92 = разлокать
 corvax-chatsan-replacement-92 = разблокировать
 corvax-chatsan-word-93 = юзать
