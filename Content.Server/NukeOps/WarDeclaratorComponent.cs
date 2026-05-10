@@ -17,7 +17,10 @@ public sealed partial class WarDeclaratorComponent : Component
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite)]
     [DataField]
-    public string Message;
+//Corvax-Wega-Edit-Start
+//    public string Message;
+    public string Message = string.Empty;
+//Corvax-Wega-Edit-End
 
     /// <summary>
     /// Permission to customize message text

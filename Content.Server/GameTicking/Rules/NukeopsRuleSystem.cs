@@ -12,6 +12,12 @@ using Content.Server.Shuttles.Systems;
 using Content.Server.Station.Components;
 using Content.Server.StationRecords.Systems;
 using Content.Server.Store.Systems;
+//Corvax-Wega-War-Start
+using Content.Server.AlertLevel;
+using Content.Server.Station.Systems;
+using Content.Shared.Station.Components;
+using Content.Shared.Store.Components;
+//Corvax-Wega-War-End
 using Content.Shared.Access.Systems;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Mind;
@@ -42,6 +48,11 @@ using Robust.Shared.Utility;
 using System.Data;
 using System.Linq;
 using System.Text;
+//Corvax-Wega-War-Start
+using Robust.Shared.Prototypes;
+using Robust.Shared.Timing;
+using static System.Collections.Specialized.BitVector32;
+//Corvax-Wega-War-End
 using Content.Shared.CombatMode.Pacification;//Corvax-DionaPacifist
 
 namespace Content.Server.GameTicking.Rules;
@@ -64,6 +75,11 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
     [Dependency] private readonly StationRecordsSystem _records = default!;
     [Dependency] private readonly StoreSystem _store = default!;
     [Dependency] private readonly TagSystem _tag = default!;
+    //Corvax-Wega-War-Start
+    [Dependency] private readonly AlertLevelSystem _alertLevelSystem = default!;
+    [Dependency] private readonly IGameTiming _gameTiming = default!;
+    [Dependency] private readonly StationSystem _stationSystem = default!;
+    //Corvax-Wega-War-End
 
     private static readonly ProtoId<CurrencyPrototype> TelecrystalCurrencyPrototype = "Telecrystal";
     private static readonly ProtoId<TagPrototype> NukeOpsUplinkTagPrototype = "NukeOpsUplink";
@@ -90,6 +106,30 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
         SubscribeLocalEvent<NukeopsRuleComponent, AfterAntagEntitySelectedEvent>(OnAfterAntagEntSelected);
         SubscribeLocalEvent<NukeopsRuleComponent, RuleLoadedGridsEvent>(OnRuleLoadedGrids);
     }
+    //Corvax-Wega-War-Start
+    public override void Update(float frameTime)
+    {
+        var query = EntityQueryEnumerator<NukeopsRuleComponent>();
+        while (query.MoveNext(out var uid, out var comp))
+        {
+            if (comp.CanChangeAlertLevel)
+            {
+                if (_gameTiming.CurTime < comp.AlertlevelTime)
+                    return;
+
+                if (comp.SetAlertlevel == null)
+                    continue;
+
+                if (comp.TargetStation == null)
+                    continue;
+
+                _alertLevelSystem.SetLevel(comp.TargetStation.Value, comp.SetAlertlevel, true, true, true, true);
+
+                comp.CanChangeAlertLevel = false;
+            }
+        }
+    }
+    //Corvax-Wega-War-End
 
     protected override void Started(EntityUid uid,
         NukeopsRuleComponent component,
@@ -448,6 +488,10 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
                 nukeops.WarDeclaredTime = Timing.CurTime;
                 var timeRemain = nukeops.WarNukieArriveDelay + Timing.CurTime;
                 ev.DeclaratorEntity.Comp.ShuttleDisabledTime = timeRemain;
+                //Corvax-Wega-Edit-End
+                nukeops.AlertlevelTime = Timing.CurTime + TimeSpan.FromSeconds(nukeops.AlertlevelDelay);
+                nukeops.CanChangeAlertLevel = true;
+                //Corvax-Wega-War-End
 
                 DistributeExtraTc((uid, nukeops));
             }
@@ -461,14 +505,14 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
     /// </summary>
     public WarConditionStatus GetWarCondition(NukeopsRuleComponent nukieRule, WarConditionStatus? oldStatus)
     {
-        if (!nukieRule.CanEnableWarOps)
+/*        if (!nukieRule.CanEnableWarOps) Corvax-Wega-Edit-Start
             return WarConditionStatus.NoWarUnknown;
 
         if (EntityQuery<NukeopsRoleComponent>().Count() < nukieRule.WarDeclarationMinOps)
             return WarConditionStatus.NoWarSmallCrew;
 
         if (nukieRule.LeftOutpost)
-            return WarConditionStatus.NoWarShuttleDeparted;
+            return WarConditionStatus.NoWarShuttleDeparted; Corvax-Wega-Edit-End*/
 
         if (oldStatus == WarConditionStatus.YesWar)
             return WarConditionStatus.WarReady;

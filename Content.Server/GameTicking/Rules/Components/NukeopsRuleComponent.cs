@@ -8,7 +8,8 @@ using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
 namespace Content.Server.GameTicking.Rules.Components;
 
-[RegisterComponent, Access(typeof(NukeopsRuleSystem))]
+//[RegisterComponent, Access(typeof(NukeopsRuleSystem))]
+[RegisterComponent, AutoGenerateComponentPause, Access(typeof(NukeopsRuleSystem))] //Corvax-Wega-Edit
 public sealed partial class NukeopsRuleComponent : Component
 {
     /// <summary>
@@ -16,7 +17,16 @@ public sealed partial class NukeopsRuleComponent : Component
     /// </summary>
     [DataField]
     public RoundEndBehavior RoundEndBehavior = RoundEndBehavior.ShuttleCall;
+    //Corvax-Wega-War-Edit-Start
+    public string? SetAlertlevel = "martial_law";
+    [DataField]
+    public int AlertlevelDelay = 10;
+    [DataField]
+    public bool CanChangeAlertLevel = false;
 
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
+    public TimeSpan AlertlevelTime;
+    //Corvax-Wega-War-Edit-End
     /// <summary>
     /// Text for shuttle call if RoundEndBehavior is ShuttleCall.
     /// </summary>

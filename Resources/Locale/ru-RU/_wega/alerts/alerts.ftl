@@ -8,3 +8,7 @@ alerts-bloodrite-name = [color=purple]Обряд крови[/color]
 alerts-bloodrite-desc = Обратите это место в кровавую баню. Отображает статус способности [color=purple]Обряд крови[/color].
 alerts-eternaldarkness-name = [color=purple]Вечная темнота[/color]
 alerts-eternaldarkness-desc = Жертвы в радиусе 6 тайлов замерзают и вы видите через стены. Отображает статус способности [color=purple]Вечная темнота[/color].
+
+alert-level-martial_law = Военное положение
+alert-level-martial_law-announcement = На станции объявлено военное положение. Все члены экипажа должны немедленно вооружиться и беспрекословно подчиняться всем приказам капитана и главы службы безопасности.
+alert-level-martial_law-instructions = Все члены экипажа обязаны немедленно вооружиться и беспрекословно подчиняться всем приказам капитана и главы службы безопасности.
