@@ -23,9 +23,6 @@ public sealed partial class NukeopsRuleComponent : Component
     public int AlertlevelDelay = 10;
     [DataField]
     public bool CanChangeAlertLevel = false;
-
-    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
-    public TimeSpan AlertlevelTime;
     //Corvax-Wega-War-Edit-End
     /// <summary>
     /// Text for shuttle call if RoundEndBehavior is ShuttleCall.
