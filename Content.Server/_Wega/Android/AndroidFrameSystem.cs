@@ -10,6 +10,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Enums;
 using Content.Server.Popups;
 using Robust.Server.Audio;
+using Content.Shared.Corvax.TTS;
 
 namespace Content.Server._Wega.Android;
 
@@ -86,6 +87,14 @@ public sealed partial class AndroidFrameSystem : SharedAndroidFrameSystem
         _humanoid.ApplyProfileTo(speciesEntity, profile);
         _visualBody.ApplyProfileTo(speciesEntity, profile);
         _metaData.SetEntityName(speciesEntity, profile.Name);
+
+        var tts = EnsureComp<TTSComponent>(speciesEntity);
+        string voice = profile.Sex switch
+        {
+            Sex.Female => "Alyx_Alyx",
+            _ => "Wheatley"
+        };
+        tts.VoicePrototypeId = voice;
 
         // Replace Battery
         if (TryComp<PowerCellSlotComponent>(speciesEntity, out var cellComp) && battery.HasValue &&
