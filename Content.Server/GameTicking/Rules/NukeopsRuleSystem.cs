@@ -15,8 +15,6 @@ using Content.Server.Store.Systems;
 //Corvax-Wega-War-Start
 using Content.Server.AlertLevel;
 using Content.Server.Station.Systems;
-using Content.Shared.Station.Components;
-using Content.Shared.Store.Components;
 //Corvax-Wega-War-End
 using Content.Shared.Access.Systems;
 using Content.Shared.GameTicking.Components;
@@ -49,7 +47,6 @@ using System.Data;
 using System.Linq;
 using System.Text;
 //Corvax-Wega-War-Start
-using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using static System.Collections.Specialized.BitVector32;
 //Corvax-Wega-War-End
@@ -78,7 +75,6 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
     //Corvax-Wega-War-Start
     [Dependency] private readonly AlertLevelSystem _alertLevelSystem = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
-    [Dependency] private readonly StationSystem _stationSystem = default!;
     //Corvax-Wega-War-End
 
     private static readonly ProtoId<CurrencyPrototype> TelecrystalCurrencyPrototype = "Telecrystal";
@@ -107,7 +103,7 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
         SubscribeLocalEvent<NukeopsRuleComponent, RuleLoadedGridsEvent>(OnRuleLoadedGrids);
     }
     //Corvax-Wega-War-Start
-    public override void Update(float frameTime)
+    public new void Update(float frameTime)
     {
         var query = EntityQueryEnumerator<NukeopsRuleComponent>();
         while (query.MoveNext(out var uid, out var comp))
