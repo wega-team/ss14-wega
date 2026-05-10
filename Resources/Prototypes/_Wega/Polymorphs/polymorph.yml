@@ -74,3 +74,11 @@
     transferName: true
     forced: true
     duration: 120
+
+- type: polymorph
+  id: PaiBorgi
+  configuration:
+    entity: Borgi
+    transferName: true
+    revertOnDeath: true
+    transferDamage: false

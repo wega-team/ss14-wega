@@ -37,6 +37,7 @@
     context: "human"
   - type: PAI
   - type: BlockMovement
+    blockInteraction: false #Corvax-Wega-Edit
   - type: ToggleableGhostRole
     examineTextMindPresent: pai-system-pai-installed
     examineTextMindSearching: pai-system-still-searching
@@ -98,6 +99,7 @@
       components:
         - SecretStash
         - WrappedParcel
+  - type: Polymorphable #Corvax-Wega-Edit
   - type: Vocal
     sounds:
       Unsexed: UnisexSilicon
@@ -244,3 +246,20 @@
   - type: InstantAction
     event: !type:OpenUiActionEvent
       key: enum.StationMapUiKey.Key
+
+# Corvax-Wega-Edit-Start
+- type: entity
+  id: ActionPAIPolymorphBorgi
+  name: Borgi Form
+  description: Become your owner's favorite dog and always follow him.
+  components:
+  - type: Action
+    useDelay: 60
+    itemIconStyle: NoItem
+    icon:
+      sprite: _Wega/Interface/Actions/actions_pai.rsi
+      state: pai_borgi
+  - type: InstantAction
+    event: !type:PolymorphActionEvent
+      protoId: PaiBorgi
+# Corvax-Wega-Edit-End
