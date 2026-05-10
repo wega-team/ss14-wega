@@ -12,6 +12,10 @@ using Content.Server.Shuttles.Systems;
 using Content.Server.Station.Components;
 using Content.Server.StationRecords.Systems;
 using Content.Server.Store.Systems;
+//Corvax-Wega-War-Start
+using Content.Server.AlertLevel;
+using Content.Server.Station.Systems;
+//Corvax-Wega-War-End
 using Content.Shared.Access.Systems;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Mind;
@@ -39,6 +43,11 @@ using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
+//Corvax-Wega-War-Start
+using Robust.Shared.Prototypes;
+using Robust.Shared.Timing;
+using static System.Collections.Specialized.BitVector32;
+//Corvax-Wega-War-End
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -65,12 +74,16 @@ public sealed partial class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleCompon
     [Dependency] private readonly StationRecordsSystem _records = default!;
     [Dependency] private readonly StoreSystem _store = default!;
     [Dependency] private readonly TagSystem _tag = default!;
+    //Corvax-Wega-War-Start
+    [Dependency] private readonly AlertLevelSystem _alertLevelSystem = default!;
+    [Dependency] private readonly IGameTiming _gameTiming = default!;
+    //Corvax-Wega-War-End
 
     private static readonly ProtoId<CurrencyPrototype> TelecrystalCurrencyPrototype = "Telecrystal";
     private static readonly ProtoId<TagPrototype> NukeOpsUplinkTagPrototype = "NukeOpsUplink";
 
 
-    public new void Initialize()
+    public override void Initialize()
     {
         base.Initialize();
 
@@ -114,7 +127,23 @@ public sealed partial class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleCompon
         var ev = new NukeopsTargetStationSelectedEvent(uid, component.TargetStation);
         RaiseLocalEvent(ref ev);
     }
+    //Corvax-Wega-War-Start
+    public void ChangeAlert()
+    {
+        var query = EntityQueryEnumerator<NukeopsRuleComponent>();
+        while (query.MoveNext(out var uid, out var comp))
+        {
+            if (comp.CanChangeAlertLevel)
+            {
+                if (comp.SetAlertlevel == null || comp.TargetStation == null)
+                    continue;
 
+                _alertLevelSystem.SetLevel(comp.TargetStation.Value, comp.SetAlertlevel, true, true, true, true);
+                comp.CanChangeAlertLevel = false;
+            }
+        }
+    }
+    //Corvax-Wega-War-End
     #region Event Handlers
     protected override void AppendRoundEndText(EntityUid uid,
         NukeopsRuleComponent component,
