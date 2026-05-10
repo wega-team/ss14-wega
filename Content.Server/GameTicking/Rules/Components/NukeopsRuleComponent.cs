@@ -20,7 +20,7 @@ public sealed partial class NukeopsRuleComponent : Component
     //Corvax-Wega-War-Edit-Start
     public string? SetAlertlevel = "martial_law";
     [DataField]
-    public int AlertlevelDelay = 10;
+    public uint AlertlevelDelay = 10;
     [DataField]
     public bool CanChangeAlertLevel = false;
 

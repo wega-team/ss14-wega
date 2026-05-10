@@ -73,10 +73,7 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>//Co
     [Dependency] private readonly StationRecordsSystem _records = default!;
     [Dependency] private readonly StoreSystem _store = default!;
     [Dependency] private readonly TagSystem _tag = default!;
-    //Corvax-Wega-War-Start
-    [Dependency] private readonly AlertLevelSystem _alertLevelSystem = default!;
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
-    //Corvax-Wega-War-End
+    [Dependency] private readonly AlertLevelSystem _alertLevelSystem = default!; //Corvax-Wega-War-Edit
 
     private static readonly ProtoId<CurrencyPrototype> TelecrystalCurrencyPrototype = "Telecrystal";
     private static readonly ProtoId<TagPrototype> NukeOpsUplinkTagPrototype = "NukeOpsUplink";
