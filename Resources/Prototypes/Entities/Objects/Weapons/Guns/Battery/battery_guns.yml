@@ -336,6 +336,7 @@
     sprite: Objects/Weapons/Guns/Battery/pulse_pistol.rsi
   - type: Gun
     selectedMode: SemiAuto
+    fireRate: 1.5 # Corvax-Wega-Add
     availableModes:
     - SemiAuto
     soundGunshot:
@@ -385,7 +386,7 @@
     # Corvax-Wega-gun-end
   - type: Gun
     selectedMode: SemiAuto
-    fireRate: 3
+    fireRate: 2 # Corvax-Wega-Change 3
     availableModes:
       - SemiAuto
       - FullAuto
@@ -399,7 +400,7 @@
     startingCharge: 5000
 # Corvax-Wega-gun-start
   - type: EmpResistance
-    strengthMultiplier: 0
+    strengthMultiplier: 0.5
 # Corvax-Wega-gun-end
 
 - type: entity
@@ -433,7 +434,10 @@
     maxAngle: -32
     # Corvax-Wega-gun-end
   - type: Gun
-    fireRate: 1.5
+    fireRate: 3 # Corvax-Wega-Chagne 1.5
+    availableModes:
+      - SemiAuto
+      - FullAuto
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser3.ogg
   - type: BatteryAmmoProvider

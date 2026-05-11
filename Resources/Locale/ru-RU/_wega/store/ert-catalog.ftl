@@ -228,3 +228,6 @@ tactical-interface-ambuzol-desc = Стабильный способ излечи
 
 tactical-interface-ambuzol-plus-name = Таблетка Амбузола плюс
 tactical-interface-ambuzol-plus-desc = Иммунитет от зомби.
+
+tactical-interface-bluesheild-name = энергощит "Синий Щит"
+tactical-interface-bluesheild-desc = Специальный щит, который генерирует твердый поток энергии при помощи встроенного проектора, который отражает любые снаряды.

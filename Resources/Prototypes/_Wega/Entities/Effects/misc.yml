@@ -1,0 +1,16 @@
+- type: entity
+  parent: Acidifier
+  id: BluespaceLifeline
+  name: bluespace lifeline
+  description: Teleports your body to save your life!
+  components:
+  - type: Sprite
+    sprite: /Textures/_Wega/Effects/bluespace_lifeline.rsi
+    noRot: true
+    layers:
+    - state: bluespace_lifeline
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Effects/tesla_consume.ogg
+      params:
+        variation: 0.3

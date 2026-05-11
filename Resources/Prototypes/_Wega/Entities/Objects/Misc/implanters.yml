@@ -1,0 +1,7 @@
+- type: entity
+  id: BluseSpaceImplanter
+  name: bluespase implanter
+  parent: BaseImplantOnlyImplanter
+  components:
+  - type: Implanter
+    implant: BluespaceLifelineImplant
