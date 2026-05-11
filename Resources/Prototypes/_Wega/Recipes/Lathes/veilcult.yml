@@ -36,6 +36,14 @@
   materials:
     Brass: 500
     ChargedBrass: 250
+   
+- type: latheRecipe
+  id: ClothingEyesJudicialVisor
+  completetime: 3
+  result: ClothingEyesJudicialVisor
+  materials:
+    Brass: 400
+    ChargedBrass: 200   
     
 - type: latheRecipe
   id: ClothingShoesClockworkTreads

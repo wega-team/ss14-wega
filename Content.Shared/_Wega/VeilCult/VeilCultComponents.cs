@@ -1,5 +1,6 @@
 using Content.Shared.Mind;
 using Content.Shared.StatusIcon;
+using Content.Shared.Teleportation.Components;
 using Robust.Shared.Audio;
 using Robust.Shared.Containers;
 using Robust.Shared.GameStates;
@@ -52,10 +53,18 @@ public sealed partial class VeilCultStructureComponent : Component
 	public bool IsActive = true;
 }
 
-[RegisterComponent]
+[RegisterComponent, NetworkedComponent]
 public sealed partial class VeilCultBeaconComponent : Component
 {
     public float NextTimeTick { get; set; }
+
+    [ViewVariables(VVAccess.ReadWrite), Access(Other = AccessPermissions.ReadWriteExecute)]
+    [DataField]
+    public string AssignedLabel = string.Empty;
+
+    [ViewVariables(VVAccess.ReadWrite)]
+    [DataField]
+    public int MaxLabelChars = 50;
 }
 
 [RegisterComponent, NetworkedComponent]
@@ -154,8 +163,18 @@ public sealed partial class ForcePassageEnchantComponent : Component
 [RegisterComponent, NetworkedComponent]
 public sealed partial class TerraformEnchantComponent : Component;
 
-[RegisterComponent, NetworkedComponent]
-public sealed partial class TeleportationEnchantComponent : Component;
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+public sealed partial class TeleportationEnchantComponent : Component
+{
+    [DataField, AutoNetworkedField]
+    public HashSet<TeleportPoint> AvailableWarps = new();
+
+    [DataField]
+    public EntProtoId? TeleportEffect;
+
+    [DataField]
+    public LocId Name = "teleportation-enchant-window-title";
+}
 
 [RegisterComponent, NetworkedComponent]
 public sealed partial class SealWoundsEnchantComponent : Component;

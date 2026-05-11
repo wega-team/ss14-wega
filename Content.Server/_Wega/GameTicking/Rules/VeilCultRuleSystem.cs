@@ -12,6 +12,8 @@ using Content.Server.Objectives.Components;
 using Content.Server.Objectives.Systems;
 using Content.Server.Roles;
 using Content.Server.RoundEnd;
+using Content.Server.Audio;
+using Content.Server.Chat.Systems;
 using Content.Shared.Achievements;
 using Content.Shared.Veil.Cult;
 using Content.Shared.Blood.Cult;
@@ -34,12 +36,14 @@ using Content.Shared.Popups;
 using Content.Shared.Zombies;
 using Content.Shared.Warps;
 using Content.Shared.Station;
+using Content.Shared.Item;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.GameObjects;
+using Robust.Server.Player;
 
 namespace Content.Server.GameTicking.Rules
 {
@@ -50,7 +54,7 @@ namespace Content.Server.GameTicking.Rules
         [Dependency] private readonly AntagSelectionSystem _antag = default!;
         [Dependency] private readonly IEntityManager _entityManager = default!;
         [Dependency] private readonly ISharedPlayerManager _player = default!;
-		[Dependency] private readonly IPlayerManager _playerManager = default!;
+        [Dependency] private readonly IPlayerManager _playerManager = default!;
         [Dependency] private readonly IAdminLogManager _adminLogManager = default!;
         [Dependency] private readonly MetabolizerSystem _metabolism = default!;
         [Dependency] private readonly MindSystem _mind = default!;
@@ -66,8 +70,9 @@ namespace Content.Server.GameTicking.Rules
         [Dependency] private readonly TargetObjectiveSystem _target = default!;
         [Dependency] private readonly MetaDataSystem _meta = default!;
         [Dependency] private readonly SharedStationSystem _stationSystem = default!;
-		[Dependency] private readonly EntityLookupSystem _entityLookup = default!;
-		[Dependency] private readonly ServerGlobalSoundSystem _sound = default!;
+        [Dependency] private readonly EntityLookupSystem _entityLookup = default!;
+        [Dependency] private readonly ServerGlobalSoundSystem _sound = default!;
+		[Dependency] private readonly ChatSystem _chat = default!;
 
         public readonly ProtoId<NpcFactionPrototype> VeilCultNpcFaction = "VeilCult";
 
@@ -88,18 +93,18 @@ namespace Content.Server.GameTicking.Rules
             SubscribeLocalEvent<VeilCultistComponent, MobStateChangedEvent>(OnMobStateChanged);
             SubscribeLocalEvent<VeilCultistComponent, EntityZombifiedEvent>(OnCultistZombified);
         }
-		
+        
         private void OnCultistSelected(Entity<VeilCultRuleComponent> mindId, ref AfterAntagEntitySelectedEvent args)
         {
             var ent = args.EntityUid;
 
             if (mindId.Comp.SelectedTargets.Count == 0)
                 SelectRandomTargets(mindId.Comp);
-			
+            
             MakeCultist(ent);
             _antag.SendBriefing(ent, MakeBriefing(ent), Color.Orange, null);
         }
-		
+        
         private void MakeCultist(EntityUid ent)
         {
             var actionPrototypes = new[]
@@ -122,7 +127,7 @@ namespace Content.Server.GameTicking.Rules
             HandleMetabolism(ent);
             CreateObjectivesForCultist(ent);
         }
-		
+        
         private void HandleMetabolism(EntityUid cultist)
         {
             if (TryComp<BodyComponent>(cultist, out var bodyComponent) && bodyComponent.Organs != null)
@@ -154,22 +159,25 @@ namespace Content.Server.GameTicking.Rules
         {
             cult.SelectedTargets.Clear();
 
-			var stations = _stationSystem.GetStations();
-			if (stations.Count == 0)
-				return;
+            var stations = _stationSystem.GetStations();
+            if (stations.Count == 0)
+                return;
 
-			var station = stations[0];
-			var mainGrid = _stationSystem.GetLargestGrid(station);
+            var station = stations[0];
+            var mainGrid = _stationSystem.GetLargestGrid(station);
             var placeCandidates = new List<EntityUid>();
-			var enumerator = EntityQueryEnumerator<WarpPointComponent, TransformComponent>();
+            var enumerator = EntityQueryEnumerator<WarpPointComponent, TransformComponent>();
 
-			while (enumerator.MoveNext(out var uid, out var warp, out var xform))
-			{
-				if (xform.GridUid != mainGrid)
+            while (enumerator.MoveNext(out var uid, out var warp, out var xform))
+            {
+                if (xform.GridUid != mainGrid)
+                    continue;
+				
+				if (HasComp<ItemComponent>(uid))
 					continue;
 
-				placeCandidates.Add(uid);		
-			}
+                placeCandidates.Add(uid);       
+            }
 
             if (placeCandidates.Count >= 3)
             {
@@ -192,8 +200,8 @@ namespace Content.Server.GameTicking.Rules
             {
                 cult.SelectedTargets.Add(target);
             }
-		}
-		
+        }
+        
         private void CreateObjectivesForCultist(EntityUid cultist)
         {
             var cult = GetActiveRule();
@@ -211,17 +219,17 @@ namespace Content.Server.GameTicking.Rules
                 var objective = _objectives.TryCreateObjective(mindId, mind, cult.ObjectivePrototype);
                 if (objective == null)
                     continue;
-				
-				if (TryComp<WarpPointComponent>(target, out var warp) && warp.Location != null)
-				{				
-					_target.SetTarget(objective.Value, target);
-					_meta.SetEntityName(objective.Value, Loc.GetString("objective-condition-veil-ritual-beacon-title",
-						("targetName", warp.Location))); // <see cref="ObjectiveAssignedEvent"/> here doesn't worked, or i'm stupid
-					_mind.AddObjective(mindId, mind, objective.Value);
-				}
+                
+                if (TryComp<WarpPointComponent>(target, out var warp) && warp.Location != null)
+                {               
+                    _target.SetTarget(objective.Value, target);
+                    _meta.SetEntityName(objective.Value, Loc.GetString("objective-condition-veil-ritual-beacon-title",
+                        ("targetName", warp.Location))); // <see cref="ObjectiveAssignedEvent"/> here doesn't worked, or i'm stupid
+                    _mind.AddObjective(mindId, mind, objective.Value);
+                }
             }
         }
-		
+        
         private void OnAutoCultistAdded(EntityUid uid, AutoVeilCultistComponent comp, ComponentStartup args)
         {
             if (!_mind.TryGetMind(uid, out var mindId, out var mind) || HasComp<VeilCultistComponent>(uid))
@@ -243,9 +251,9 @@ namespace Content.Server.GameTicking.Rules
             mindLink.Channels.Add(culsistComp.CultMindChannel);
 
             MakeCultist(uid);
-			_objectives.TryCreateObjective(mindId, mind, "VeilCultRitualObjective");
+            _objectives.TryCreateObjective(mindId, mind, "VeilCultRitualObjective");
         }
-		
+        
         private void CheckStage()
         {
             var cult = GetActiveRule();
@@ -298,16 +306,16 @@ namespace Content.Server.GameTicking.Rules
                         actorFilter.AddPlayer(actor.PlayerSession);
                         _popup.PopupEntity(Loc.GetString("veil-cult-second-warning"), actorUid, actorUid, PopupType.SmallCaution);
                     }
-					
-					_sound.PlayAdminGlobal(Filter.Empty().AddAllPlayers(_playerManager), _audio.ResolveSound(new SoundPathSpecifier("/Audio/_Wega/Ambience/Antag/veilcult_start.ogg"))
+                    
+                    _sound.PlayAdminGlobal(Filter.Empty().AddAllPlayers(_playerManager), _audio.ResolveSound(new SoundPathSpecifier("/Audio/_Wega/Ambience/Antag/veilcult_start.ogg")));
                     cult.SecondTriggered = true;
-					_chat.DispatchGlobalAnnouncement(Loc.GetString("veil-cult-second-phase"), playSound: false, colorOverride: Color.Orange);
+                    _chat.DispatchGlobalAnnouncement(Loc.GetString("veil-cult-second-phase"), playSound: false, colorOverride: Color.Orange);
                 }
             }
         }
-		
-		// sub-methods region
-		
+        
+        // sub-methods region
+        
         private int GetCultEntities()
         {
             var totalCultists = GetAllCultists().Count;
@@ -344,7 +352,7 @@ namespace Content.Server.GameTicking.Rules
 
             return constructs;
         }
-		
+        
         public VeilCultRuleComponent? GetActiveRule()
         {
             var query = QueryActiveRules();
@@ -354,35 +362,35 @@ namespace Content.Server.GameTicking.Rules
             }
             return null;
         }
-		
-		public bool TryUseEnergy(float amount)
-		{
-			var comp = GetActiveRule();
-			if (comp == null)
-				return true;
-			
-			if (comp.EnergyCount < amount)
-				return false;
-			
-			comp.EnergyCount -= amount;
-				return true;
-		}
-		
-		public bool CheckObjectives()
-		{
-			var cult = GetActiveRule();
-			if (cult == null)
-				return false;
-			
-			foreach (var target in cult.SelectedTargets)
-			{			
-				var beacons = _entityLookup.GetEntitiesInRange<VeilCultBeaconComponent>(Transform(target).Coordinates, 10f);
-				if (beacons.Count < 1)
-					return false;
-			}
-			return true;
-		}
-		// endround
+        
+        public bool TryUseEnergy(float amount)
+        {
+            var comp = GetActiveRule();
+            if (comp == null)
+                return true;
+            
+            if (comp.EnergyCount < amount)
+                return false;
+            
+            comp.EnergyCount -= amount;
+                return true;
+        }
+        
+        public bool CheckObjectives()
+        {
+            var cult = GetActiveRule();
+            if (cult == null)
+                return false;
+            
+            foreach (var target in cult.SelectedTargets)
+            {           
+                var beacons = _entityLookup.GetEntitiesInRange<VeilCultBeaconComponent>(Transform(target).Coordinates, 10f);
+                if (beacons.Count < 1)
+                    return false;
+            }
+            return true;
+        }
+        // endround
 
         protected override void AppendRoundEndText(EntityUid uid,
             VeilCultRuleComponent component,
@@ -406,9 +414,9 @@ namespace Content.Server.GameTicking.Rules
                 args.AddLine(Loc.GetString("veil-cultist-list-name-user", ("name", name), ("user", sessionData.UserName)));
             }
         }
-		
-		// round stages
-		
+        
+        // round stages
+        
         private void OnGodCalled(GodCalledEvent ev)
         {
             var cult = GetActiveRule();
@@ -479,7 +487,7 @@ namespace Content.Server.GameTicking.Rules
                 cult.WinType = VeilCultWinType.CultLose;
             }
         }
-		
+        
 
     }
 }

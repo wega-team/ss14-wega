@@ -18,5 +18,7 @@ ent-ClothingOuterVeilCultRobes = латунная роба
     .desc = Никто из них не избежит СМЕРТИ!
 ent-ClothingOuterVeilCultRobesHaste = { ent-ClothingOuterVeilCultRobes }
     .desc = { ent-ClothingOuterVeilCultRobes.desc }
+    .suffix = Ускорение
 ent-ClothingOuterVeilCultRobesCamouflage = { ent-ClothingOuterVeilCultRobes }
     .desc = { ent-ClothingOuterVeilCultRobes.desc }
+    .suffix = Камуфляж

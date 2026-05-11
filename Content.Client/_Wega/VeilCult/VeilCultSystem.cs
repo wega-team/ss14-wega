@@ -22,7 +22,7 @@ namespace Content.Client.Veil.Cult
             SubscribeLocalEvent<VeilCultistComponent, GetStatusIconsEvent>(GetCultistIcons);
             SubscribeLocalEvent<VeilCogDisplayComponent, ComponentStartup>(GetHalo);
             SubscribeLocalEvent<VeilCogDisplayComponent, ComponentShutdown>(RemoveHalo);
-			SubscribeLocalEvent<EnchantedComponent, ComponentRemove>(OnEnchantRemove);
+            SubscribeLocalEvent<EnchantedComponent, ComponentRemove>(OnEnchantRemove);
         }
 
         private void GetCultistIcons(Entity<VeilCultistComponent> ent, ref GetStatusIconsEvent args)
@@ -39,9 +39,6 @@ namespace Content.Client.Veil.Cult
             if (_sprite.LayerMapTryGet(uid, CogKey.Halo, out _, true))
                 return;
 
-            var haloVariant = _random.Next(1, 6);
-            var haloState = $"halo{haloVariant}";
-
             var bounds = _sprite.GetLocalBounds((uid, sprite));
             var adj = bounds.Height / 2 + 1.0f / 32 * 6.0f;
 
@@ -49,7 +46,7 @@ namespace Content.Client.Veil.Cult
             {
                 Shader = "unshaded",
                 RsiPath = "_Wega/Interface/Misc/veilcult_cog.rsi",
-                State = haloState,
+                State = "halo",
                 Offset = new Vector2(0.0f, adj)
             };
 
@@ -67,14 +64,14 @@ namespace Content.Client.Veil.Cult
         {
             Halo
         }
-		
-		private void OnEnchantRemove(EntityUid uid, EnchantedComponent comp, ComponentRemove args)
-		{
+        
+        private void OnEnchantRemove(EntityUid uid, EnchantedComponent comp, ComponentRemove args)
+        {
             if (!TryComp<SpriteComponent>(uid, out var sprite))
                 return;
-			
-			if (_sprite.LayerExists(uid, 1))
+            
+            if (_sprite.LayerExists(uid, 1))
                 _sprite.RemoveLayer(uid, 1);
-		}
+        }
     }
 }

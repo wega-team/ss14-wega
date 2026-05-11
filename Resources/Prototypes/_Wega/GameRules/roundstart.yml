@@ -124,8 +124,6 @@
           components:
           - AntagImmune
           - BibleUser
-          - Android
-          - Ipc
         lateJoinAdditional: true
         components:
         - type: VeilCultist

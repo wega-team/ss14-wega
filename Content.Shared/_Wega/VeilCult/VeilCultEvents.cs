@@ -77,6 +77,7 @@ public sealed partial class RedFlameEnchantActionEvent : InstantActionEvent
 [Serializable, NetSerializable]
 public sealed partial class VeilCultTeleportDoAfterEvent : SimpleDoAfterEvent
 {
+	public NetEntity Target;
 }
 
 [Serializable, NetSerializable]
@@ -92,6 +93,36 @@ public sealed partial class StrangeShardDoAfterEvent : SimpleDoAfterEvent
 [ByRefEvent]
 public record struct SiliconVeilCultHackedEvent(EntityUid user);
 
+[Serializable, NetSerializable]
+public sealed class VeilBeaconNameChangedMessage(string name) : BoundUserInterfaceMessage
+{
+    public string Name { get; } = name;
+}
 
+[Serializable, NetSerializable]
+public enum TeleportEnchantUiKey : byte
+{
+    Key
+}
 
+[Serializable, NetSerializable]
+public sealed class TeleportEnchantDestinationMessage(NetEntity netEnt, string pointName) : BoundUserInterfaceMessage
+{
+    public NetEntity NetEnt = netEnt;
+    public string PointName = pointName;
+}
+
+[Serializable, NetSerializable]
+public enum VeilBeaconUiKey
+{
+    Key,
+}
+
+[Serializable, NetSerializable]
+public sealed class VeilCultBeaconComponentState(string assignedLabel) : IComponentState
+{
+    public string AssignedLabel = assignedLabel;
+
+    public int MaxLabelChars;
+}
 
