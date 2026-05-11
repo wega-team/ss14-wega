@@ -58,7 +58,7 @@
 
 - type: entity
   name: Thermal Goggles
-  parent: ClothingEyesBase
+  parent: [ ClothingEyesBase, BaseChameleon ]
   id: ThermalGoggles
   description: See the invisible.
   components:
@@ -69,7 +69,9 @@
   - type: Clothing
     sprite: _Wega/Clothing/Eyes/Glasses/thermal.rsi
   - type: ThermalVision
-    drawFov: false
+  - type: ChameleonClothing
+    slot: [eyes]
+    default: ThermalGoggles
   - type: Tag
     tags:
     - WhitelistChameleon
