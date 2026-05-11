@@ -9,7 +9,7 @@ using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 namespace Content.Server.GameTicking.Rules.Components;
 
 //[RegisterComponent, Access(typeof(NukeopsRuleSystem))]
-[RegisterComponent, AutoGenerateComponentPause, Access(typeof(NukeopsRuleSystem))] //Corvax-Wega-Edit
+[RegisterComponent, Access(typeof(NukeopsRuleSystem))] //Corvax-Wega-Edit
 public sealed partial class NukeopsRuleComponent : Component
 {
     /// <summary>

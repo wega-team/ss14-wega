@@ -77,7 +77,7 @@ public sealed class RadiationOutburstRuleSystem : StationEventSystem<RadiationOu
 
         _random.Shuffle(candidates);
 
-        // доооо 8 норм же?
+        // доооо 8
         var itemsToIrradiate = Math.Min(8, candidates.Count);
         for (int i = 0; i < itemsToIrradiate; i++)
         {
@@ -100,6 +100,8 @@ public sealed class RadiationOutburstRuleSystem : StationEventSystem<RadiationOu
     private void SetRadiation(EntityUid target, float rads)
     {
         var radiationComp = EnsureComp<RadiationSourceComponent>(target);
+    //  radiationComp.Intensity += rads; пока легенько
+        Dirty(target, radiationComp);
 
         Log.Debug($"RadiationOutburst: {target} теперь излучает +{rads} (всего: {radiationComp.Intensity})");
     }

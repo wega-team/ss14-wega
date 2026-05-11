@@ -45,7 +45,6 @@ using Robust.Shared.Random;
 using Robust.Shared.Utility;
 //Corvax-Wega-War-Start
 using Robust.Shared.Timing;
-using static System.Collections.Specialized.BitVector32;
 //Corvax-Wega-War-End
 using System.Data;
 using System.Linq;
@@ -473,7 +472,7 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>//Co
                 nukeops.WarDeclaredTime = Timing.CurTime;
                 var timeRemain = nukeops.WarNukieArriveDelay + Timing.CurTime;
                 ev.DeclaratorEntity.Comp.ShuttleDisabledTime = timeRemain;
-                Timer.Spawn(TimeSpan.FromSeconds(comp.AlertlevelDelay), () => ChangeAlert()); // Corvax-Wega-War
+                Timer.Spawn(TimeSpan.FromSeconds(nukeops.AlertlevelDelay), () => ChangeAlert()); // Corvax-Wega-War
 
                 DistributeExtraTc((uid, nukeops));
             }
