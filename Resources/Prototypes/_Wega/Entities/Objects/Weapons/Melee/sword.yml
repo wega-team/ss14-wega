@@ -17,10 +17,10 @@
       sprite: _Wega/Objects/Weapons/Melee/chainsword.rsi
     shape:
     - 0,0,0,3
-  - type: Clothing
-    sprite: _Wega/Objects/Weapons/Melee/chainsword.rsi
-    slots:
-    - Belt
+  # - type: Clothing
+    # sprite: _Wega/Objects/Weapons/Melee/chainsword.rsi
+    # slots:
+    # - Belt
 
 - type: entity
   parent: Claymore
@@ -30,8 +30,8 @@
   components:
   - type: Sprite
     sprite: _Wega/Objects/Weapons/Melee/force_sword.rsi
-  - type: Clothing
-    sprite: _Wega/Objects/Weapons/Melee/force_sword.rsi
+  # - type: Clothing
+    # sprite: _Wega/Objects/Weapons/Melee/force_sword.rsi
   - type: Item
     storedSprite:
       state: icon
@@ -47,6 +47,9 @@
     storedSprite:
       state: icon
       sprite: Objects/Weapons/Melee/katana.rsi
+  - type: Clothing
+    slots:
+    - Back
 
 - type: entity
   parent: Claymore
@@ -56,8 +59,8 @@
   components:
   - type: Sprite
     sprite: _Wega/Objects/Weapons/Melee/multiverse_sword.rsi
-  - type: Clothing
-    sprite: _Wega/Objects/Weapons/Melee/multiverse_sword.rsi
+  # - type: Clothing
+    # sprite: _Wega/Objects/Weapons/Melee/multiverse_sword.rsi
   - type: Item
     storedSprite:
       state: icon

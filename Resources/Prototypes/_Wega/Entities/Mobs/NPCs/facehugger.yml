@@ -1,0 +1,84 @@
+- type: entity
+  parent: [BaseMob, ClothingMaskBase, MobDamageable]
+  id: MobXenomorphLammar
+  name: xenomorph facehugger
+  description: A writhing nightmare. The facehugger clings to its victim's face, forcibly inserting a xenomorph fetus.
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Aliens/facehugger.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: facehugger
+  - type: Clothing
+    sprite: _Wega/Mobs/Aliens/facehugger.rsi
+    slots: [mask]
+  - type: IngestionBlocker
+  - type: Blindfold
+  - type: AddAccentClothing
+    accent: ReplacementAccent
+    replacement: mumble
+  - type: CanEscapeInventory
+    baseResistTime: 4.5 # баланс, чтоб вечно не мог усыплять, если на нём будет игрок.
+  - type: VentCrawler
+    enterDelay: 1
+  - type: Damageable
+    damageContainer: Biological
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      20: Dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed : 2.5
+    baseSprintSpeed : 5
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: facehugger
+      Dead:
+        Base: facehugger_dead
+  - type: Temperature
+    currentTemperature: 310.15
+  - type: TemperatureDamage
+    heatDamageThreshold: 360
+    coldDamageThreshold: -150
+  - type: Butcherable
+    spawned:
+    - id: FoodMeatXeno
+      amount: 1
+  - type: Facehugger
+  - type: NameIdentifier
+    group: GenericNumber
+  - type: NpcFactionMember
+    factions:
+    - Xeno
+  - type: Physics
+    bodyType: Dynamic
+  - type: CollisionWake
+    enabled: false
+  - type: RequireProjectileTarget
+    active: true
+  - type: Fixtures
+    fixtures:
+      slips:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        layer:
+        - SlipLayer
+        hard: false
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 10
+        mask:
+        - SmallMobMask
+        layer:
+        - SmallMobLayer
+      step:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        layer:
+        - LowImpassable
+        hard: false

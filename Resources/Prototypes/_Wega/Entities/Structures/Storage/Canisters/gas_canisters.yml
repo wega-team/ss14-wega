@@ -8,17 +8,11 @@
       layers:
         - state: redb
     - type: GasCanister
-      gasMixture:
+      air:
         volume: 1500
         moles:
-          - 609.26 # oxygen
-          - 0 # nitrogen
-          - 0 # CO2
-          - 0 # Plasma
-          - 0 # Tritium
-          - 0 #  Water vapor
-          - 0 # Ammonia
-          - 2160.1 # N2O
+          Oxygen: 609.26 # oxygen
+          NitrousOxide: 2160.1 # N2O
         temperature: 293.15
     - type: Destructible
       thresholds:

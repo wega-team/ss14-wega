@@ -74,6 +74,9 @@ public sealed partial class SurgerySystem
 
     private void RemoveDependentOrgan(Entity<OperatedComponent> ent, EntityUid parentOrgan, string dependentType)
     {
+        if (Terminating(ent))
+            return;
+
         if (!TryComp<BodyComponent>(ent, out var body) || body.Organs == null)
             return;
 

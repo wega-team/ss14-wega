@@ -124,8 +124,8 @@
   result: BorgModuleGranader
 
 - type: latheRecipe
-  id: BorgModuleCommonHand
-  result: BorgModuleCommonHand
+  id: ModuleCommand
+  result: ModuleCommand
   categories:
     - Modules
   materials:

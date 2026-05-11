@@ -39,7 +39,7 @@
       components:
       - FloorTile
     capacity: 30
-    proto: FloorTileItemXenoborg # Corvax-Wega-edit
+    proto: FloorTileItemXenoborg
     soundInsert:
       path: /Audio/Weapons/Guns/MagIn/tile_load.ogg
   - type: ContainerContainer

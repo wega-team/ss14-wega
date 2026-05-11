@@ -22,10 +22,10 @@
   id: RobotManipulit
   name: research-technology-handmodule
   icon:
-    sprite: _Wega/Objects/Weapons/Melee/magic_hand.rsi
-    state: icon
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
+    state: command
   discipline: Experimental
   tier: 3
   cost: 10000
   recipeUnlocks:
-  - BorgModuleCommonHand
+  - ModuleCommand

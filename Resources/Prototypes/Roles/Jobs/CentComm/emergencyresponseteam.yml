@@ -120,7 +120,7 @@
     outerClothing: ClothingOuterArmorBasicSlim # Corvax-Wega
     id: ERTChaplainPDA # Corvax-Wega
     ears: ClothingHeadsetAltCentCom # Corvax-Wega
-    belt: WeaponNullRodERT # Corvax-Wega
+    belt: ClothingBeltSheathChaplinFilledERT # Corvax-Wega
     pocket1: WeaponPistolMk58 # Corvax-Wega
     pocket2: DrinkWaterBottleFull # Corvax-Wega
     underwearbottom: ClothingUnderBottomHearts # Corvax-Wega
@@ -154,7 +154,7 @@
     outerClothing: ClothingOuterHardsuitERTChaplain
     id: ERTChaplainPDA
     ears: ClothingHeadsetAltCentCom
-    belt: WeaponNullRodERT # Corvax-Wega
+    belt: ClothingBeltSheathChaplinFilledERT # Corvax-Wega
     pocket1: WeaponPistolMk58 # Corvax-Wega
     pocket2: DrinkWaterBottleFull # Corvax-Wega
     underwearbottom: ClothingUnderBottomHearts # Corvax-Wega

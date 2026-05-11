@@ -571,7 +571,7 @@
 
 - type: entity
   id: BorgModuleCommonRepeir
-  parent: [ BaseBorgModule ]
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
   name: repeir module
   description: Everyone can heal your action!
   components:
@@ -580,6 +580,15 @@
     layers:
     - state: generic
     - state: icon-repeir
+  - type: ItemBorgModule
+    hands:
+    - hand:
+        emptyRepresentative: Nanopast
+        emptyLabel: borg-slot-nanopasta-empty
+        whitelist:
+          tags:
+          - Nanopast
+    - item: BorgGeneratorNanopast
   - type: ComponentBorgModule
     components:
     - type: PassiveDamage
@@ -589,21 +598,12 @@
       - Dead
       damage:
         types:
-          Blunt: -0.1
-          Slash: -0.1
-          Piercing: -0.1
-          Heat: -0.1
-    # hands:
-    # - item: RepeirModeDevice
-    # - hand:
-        # emptyRepresentative: Nanopast
-        # emptyLabel: borg-slot-nanopasta-empty
-        # whitelist:
-          # tags:
-          # - Nanopast
-    # - item: BorgGeneratorNanopast
-  # - type: BorgModuleIcon
-    # icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: repeir-module }
+          Blunt: -0.25
+          Slash: -0.25
+          Piercing: -0.25
+          Heat: -0.25
+  - type: BorgModuleIcon
+    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: repeir-module }
 
 - type: entity
   id: BorgModuleNightVison
@@ -1354,10 +1354,10 @@
       - Critical
       damage:
         types:
-          Blunt: -0.3
-          Slash: -0.3
-          Piercing: -0.3
-          Heat: -0.3
+          Blunt: -1
+          Slash: -1
+          Piercing: -1
+          Heat: -1
 ## Xenoborg
 - type: entity
   id: BorgModuleXenoConstruction
@@ -1434,7 +1434,7 @@
 
 - type: entity
   id: XenoborgModuleCommonRepeir
-  parent: [ BaseXenoborgModuleGeneric, BaseXenoborgContraband ]
+  parent: [ BaseXenoborgModuleGeneric, BaseProviderBorgModule, BaseXenoborgContraband ]
   name: repeir xenoborg module
   description: Everyone can heal your action!
   components:
@@ -1443,6 +1443,15 @@
     layers:
     - state: xenoborg_generic
     - state: icon-repeir
+  - type: ItemBorgModule
+    hands:
+    - hand:
+        emptyRepresentative: Nanopast
+        emptyLabel: borg-slot-nanopasta-empty
+        whitelist:
+          tags:
+          - Nanopast
+    - item: BorgGeneratorNanopast
   - type: ComponentBorgModule
     components:
     - type: PassiveDamage
@@ -1452,15 +1461,12 @@
       - Dead
       damage:
         types:
-          Blunt: -0.3
-          Slash: -0.3
-          Piercing: -0.3
-          Heat: -0.3
-  # - type: ItemBorgModule
-    # hands:
-    # - item: RepeirModeDeviceXenoborg
-  # - type: BorgModuleIcon
-    # icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: repeir-xenoborg-module }
+          Blunt: -0.5
+          Slash: -0.5
+          Piercing: -0.5
+          Heat: -0.5
+  - type: BorgModuleIcon
+    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: repeir-xenoborg-module }
 
 - type: entity
   id: BorgModuleNightVisoXenoborg

@@ -17,6 +17,7 @@ lavaland-artefacts-ship-in-bottle-too-far = Лодка слишком далек
 linked-cube-teleported = Вы телепортируетесь к связанному кубу!
 linked-cube-no-pair = Куб не имеет связи с другим кубом.
 linked-cube-too-close = Связанный куб слишком близко ({$distance} м).
+linked-cube-paused-map = Связанный куб недоступен.
 
 dragon-blood-effect-1 = Кровь прожигает вашу плоть оставляя лишь кости. Ачк-Ачк!
 dragon-blood-effect-2 = Вы чувствуете себя необычайно зачарованно?

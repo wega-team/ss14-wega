@@ -592,7 +592,7 @@
           - Inflatable
 # Corvax-Wega-Robot-Start
     - item: BorgGeneratorInflatableWall
-# Corvax-Wega-Robot-End    
+# Corvax-Wega-Robot-End
     - item: BoxInflatable
     - item: WeaponMeleeNeedle
   - type: BorgModuleIcon
@@ -687,7 +687,7 @@
           - Ore
           - ArtifactFragment
           - MagmiteAlloy
-          - Gems 
+          - Gems
     # Corvax-Wega-Robot-end
     - item: BorgOreBag
   - type: BorgModuleIcon
@@ -717,7 +717,7 @@
           - Ore
           - ArtifactFragment
           - MagmiteAlloy
-          - Gems 
+          - Gems
     # Corvax-Wega-Robot-end
     - item: BorgOreBagOfHolding # BorgOreBagOfHolding Corvax-Wega-Robot-add
   - type: BorgModuleIcon
@@ -1098,8 +1098,8 @@
     hands:
     - item: HandheldHealthAnalyzer
     - item: DefibrillatorOneHandedUnpowered
-    - item: HandheldCrewMonitorBorg # Corvax-Wega-Robot 
-    # - item: Crowbar # Corvax-Wega-Robot 
+    - item: HandheldCrewMonitorBorg # Corvax-Wega-Robot
+    # - item: Crowbar # Corvax-Wega-Robot
     - item: BorgFireExtinguisher
     - item: BorgHandheldGPSBasic
     - item: HandLabeler
@@ -1280,7 +1280,7 @@
     - item: Beaker # Corvax-Wega-Robot
       hand:
         emptyLabel: borg-slot-small-containers-empty
-        emptyRepresentative: ChemistryEmptyVial 
+        emptyRepresentative: ChemistryEmptyVial
         whitelist:
           components:
           - FitsInDispenser
@@ -1690,7 +1690,7 @@
   - type: ItemBorgModule
     hands:
 # Corvax-Wega-Robot-start
-    - item: WeaponLightMachineGunL6C         
+    - item: WeaponLightMachineGunL6C
     - item: PinpointerSyndicateNuclear
     - item: PinpointerUniversal # Corvax-Wega-Robot-add
   - type: ComponentBorgModule
@@ -1863,7 +1863,7 @@
 # Corvax-Wega-Robot-Start
     - item: Omnitool
     - item: WelderExperimental
-    - item: XenoAccessBreaker 
+    - item: XenoAccessBreaker
     - item: XenoRCD
     - item: Multitool
     - item: RemoteSignallerAdvanced
@@ -1917,7 +1917,7 @@
     - state: icon-xenoborg-tile
   - type: ItemBorgModule
     hands:
-    - item: WeaponTileGun # Corvax-Wega-add
+    - item: WeaponTileGun
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-tile-module }
 

@@ -703,6 +703,14 @@
         - BorgModulePrying
         - BorgModuleTool
         - BorgModuleFireExtinguisher
+    # Corvax-Wega-start
+        - BorgModuleCommonMedical
+        - BorgModuleCommonPickaxe
+        - BorgModuleCommonFight
+        - BorgModuleCommonConstruction
+        - BorgModuleCleaningCommon
+        - BorgModuleCommonCandy
+    # Corvax-Wega-End
   - type: ItemSlots
     slots:
       cell_slot:

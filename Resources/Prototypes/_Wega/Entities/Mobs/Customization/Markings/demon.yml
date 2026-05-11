@@ -82,8 +82,15 @@
 
 - type: marking
   id: Allsuccubus
-  bodyPart: Chest
+  bodyPart: Special
   groupWhitelist: [Demon]
+  coloring:
+    default:
+      type:
+        !type:CategoryColoring
+        category: Hair
+      fallbackTypes:
+        - !type:SkinColoring
   sprites:
   - sprite: _Wega/Mobs/Customization/demon.rsi
     state: succubus
@@ -99,7 +106,7 @@
       type:
         !type:SkinColoring
     layers:
-      wendigo-horn-secondary:
+      tail_drake_wagging_secondary:
         type:
           !type:EyeColoring
   sprites:
@@ -118,7 +125,7 @@
       type:
         !type:SkinColoring
     layers:
-      wendigo-horn-secondary:
+      tail_drake_wagging_secondary:
         type:
           !type:EyeColoring
   sprites:
@@ -129,8 +136,15 @@
 
 - type: marking
   id: DemonDrakeSpine
-  bodyPart: Special
+  bodyPart: Chest
   groupWhitelist: [Demon]
+  coloring:
+    default:
+      type:
+        !type:CategoryColoring
+        category: Hair
+      fallbackTypes:
+        - !type:EyeColoring
   sprites:
   - sprite: _Wega/Mobs/Customization/demon_lava.rsi
     state: drake_spine
@@ -139,6 +153,13 @@
   id: DemonDrakeLArm
   bodyPart: LArm
   groupWhitelist: [Demon]
+  coloring:
+    default:
+      type:
+        !type:CategoryColoring
+        category: Hair
+      fallbackTypes:
+        - !type:EyeColoring
   sprites:
   - sprite: _Wega/Mobs/Customization/demon_lava.rsi
     state: l_drake_arm
@@ -147,6 +168,13 @@
   id: DemonDrakeRArm
   bodyPart: RArm
   groupWhitelist: [Demon]
+  coloring:
+    default:
+      type:
+        !type:CategoryColoring
+        category: Hair
+      fallbackTypes:
+        - !type:EyeColoring
   sprites:
   - sprite: _Wega/Mobs/Customization/demon_lava.rsi
     state: r_drake_arm
