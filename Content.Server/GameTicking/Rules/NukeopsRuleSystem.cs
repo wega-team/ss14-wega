@@ -15,6 +15,7 @@ using Content.Server.Store.Systems;
 //Corvax-Wega-War-Start
 using Content.Server.AlertLevel;
 using Content.Server.Station.Systems;
+using Robust.Shared.Timing;
 //Corvax-Wega-War-End
 using Content.Shared.Access.Systems;
 using Content.Shared.GameTicking.Components;
@@ -43,9 +44,6 @@ using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
-//Corvax-Wega-War-Start
-using Robust.Shared.Timing;
-//Corvax-Wega-War-End
 using System.Data;
 using System.Linq;
 using System.Text;
