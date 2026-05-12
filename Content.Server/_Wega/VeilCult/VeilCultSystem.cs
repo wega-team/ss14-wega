@@ -151,7 +151,7 @@ public sealed partial class VeilCultSystem : SharedVeilCultSystem
                 var cult = _veilCult.GetActiveRule();
                 if (cult != null)
                 {
-                    cult.EnergyCount += 10;
+                    cult.EnergyCount += 25;
                 }
             }
             
@@ -229,7 +229,7 @@ public sealed partial class VeilCultSystem : SharedVeilCultSystem
         if (beacons.Count > 1)
         {
             _popup.PopupEntity(Loc.GetString("veil-cult-beacons-in-range"), uid, PopupType.Medium);
-            Spawn("SheetBrass6", Transform(uid).Coordinates);
+            Spawn("SheetChargedBrass6", Transform(uid).Coordinates);
             QueueDel(uid);
         }
 		
