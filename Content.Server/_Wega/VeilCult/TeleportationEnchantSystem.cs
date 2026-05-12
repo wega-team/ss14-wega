@@ -3,18 +3,21 @@ using Content.Shared.Veil.Cult.Components;
 using Content.Shared.UserInterface;
 using Content.Shared.Whitelist;
 using Content.Shared.Teleportation.Components;
+using Robust.Shared.GameObjects;
 
 namespace Content.Server.Veil.Cult;
 
 
 public sealed partial class TeleportionEnchantSystem : SharedTeleportationEnchantSystem
 {
+	[Dependency] private readonly SharedUserInterfaceSystem _ui = default!;
+	
     public override void Initialize()
     {
         base.Initialize();
-
+		
         SubscribeLocalEvent<TeleportationEnchantComponent, MapInitEvent>(OnMapInit);
-        SubscribeLocalEvent<TeleportationEnchantComponent, BeforeActivatableUIOpenEvent>(OnBeforeUiOpen);
+        SubscribeLocalEvent<TeleportationEnchantComponent, BoundUIOpenedEvent>(OnUiOpen);
     }
 
     private void OnMapInit(Entity<TeleportationEnchantComponent> ent, ref MapInitEvent args)
@@ -22,7 +25,7 @@ public sealed partial class TeleportionEnchantSystem : SharedTeleportationEnchan
         UpdateTeleportPoints(ent);
     }
 
-    private void OnBeforeUiOpen(Entity<TeleportationEnchantComponent> ent, ref BeforeActivatableUIOpenEvent args)
+    private void OnUiOpen(Entity<TeleportationEnchantComponent> ent, ref BoundUIOpenedEvent args)
     {
         UpdateTeleportPoints(ent);
     }
@@ -34,8 +37,9 @@ public sealed partial class TeleportionEnchantSystem : SharedTeleportationEnchan
         var allEnts = AllEntityQuery<VeilCultBeaconComponent>();
 
         while (allEnts.MoveNext(out var warpEnt, out var warpPointComp))
-            ent.Comp.AvailableWarps.Add(new TeleportPoint(warpPointComp.AssignedLabel, GetNetEntity(warpEnt)));
+            ent.Comp.AvailableWarps.Add(new TeleportPoint(warpPointComp.AssignedName, GetNetEntity(warpEnt)));
 
+		_ui.SetUiState(ent.Owner, TeleportEnchantUiKey.Key, new TeleportationEnchantBoundUserInterfaceState(ent.Comp.AvailableWarps));
         Dirty(ent);
     }
 }

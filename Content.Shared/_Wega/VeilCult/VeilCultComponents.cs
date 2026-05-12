@@ -60,11 +60,11 @@ public sealed partial class VeilCultBeaconComponent : Component
 
     [ViewVariables(VVAccess.ReadWrite), Access(Other = AccessPermissions.ReadWriteExecute)]
     [DataField]
-    public string AssignedLabel = string.Empty;
+    public string AssignedName = string.Empty;
 
     [ViewVariables(VVAccess.ReadWrite)]
     [DataField]
-    public int MaxLabelChars = 50;
+    public int MaxNameChars = 15;
 }
 
 [RegisterComponent, NetworkedComponent]
@@ -168,9 +168,6 @@ public sealed partial class TeleportationEnchantComponent : Component
 {
     [DataField, AutoNetworkedField]
     public HashSet<TeleportPoint> AvailableWarps = new();
-
-    [DataField]
-    public EntProtoId? TeleportEffect;
 
     [DataField]
     public LocId Name = "teleportation-enchant-window-title";

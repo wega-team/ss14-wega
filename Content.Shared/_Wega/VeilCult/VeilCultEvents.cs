@@ -1,6 +1,7 @@
 using Content.Shared.Actions;
 using Content.Shared.DoAfter;
 using Content.Shared.Eui;
+using Content.Shared.Teleportation.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
@@ -93,16 +94,34 @@ public sealed partial class StrangeShardDoAfterEvent : SimpleDoAfterEvent
 [ByRefEvent]
 public record struct SiliconVeilCultHackedEvent(EntityUid user);
 
+// UI KEYS
+
+
 [Serializable, NetSerializable]
-public sealed class VeilBeaconNameChangedMessage(string name) : BoundUserInterfaceMessage
+public enum EnchantUiKey : byte
 {
-    public string Name { get; } = name;
+    Key
 }
 
 [Serializable, NetSerializable]
 public enum TeleportEnchantUiKey : byte
 {
     Key
+}
+
+[Serializable, NetSerializable]
+public enum VeilBeaconUiKey : byte
+{
+    Key
+}
+
+
+// STATES AND MESSAGES
+
+[Serializable, NetSerializable]
+public sealed class VeilBeaconNameChangedMessage(string name) : BoundUserInterfaceMessage
+{
+    public string Name { get; } = name;
 }
 
 [Serializable, NetSerializable]
@@ -113,16 +132,20 @@ public sealed class TeleportEnchantDestinationMessage(NetEntity netEnt, string p
 }
 
 [Serializable, NetSerializable]
-public enum VeilBeaconUiKey
+public sealed class VeilCultBeaconComponentState(string assignedName) : IComponentState
 {
-    Key,
+    public string AssignedName = assignedName;
+
+    public int MaxNameChars;
 }
 
 [Serializable, NetSerializable]
-public sealed class VeilCultBeaconComponentState(string assignedLabel) : IComponentState
+public sealed class TeleportationEnchantBoundUserInterfaceState : BoundUserInterfaceState
 {
-    public string AssignedLabel = assignedLabel;
+    public HashSet<TeleportPoint> Warps;
 
-    public int MaxLabelChars;
+    public TeleportationEnchantBoundUserInterfaceState(HashSet<TeleportPoint> warps)
+    {
+        Warps = warps;
+    }
 }
-

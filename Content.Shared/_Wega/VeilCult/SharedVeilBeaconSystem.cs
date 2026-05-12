@@ -23,7 +23,6 @@ public abstract class SharedVeilBeaconSystem : EntitySystem
     {
         base.Initialize();
 		
-        SubscribeLocalEvent<VeilCultBeaconComponent, ExaminedEvent>(OnExamined);
         // Bound UI subscriptions
         SubscribeLocalEvent<VeilCultBeaconComponent, VeilBeaconNameChangedMessage>(OnVeilBeaconNameChanged);
         SubscribeLocalEvent<VeilCultBeaconComponent, ComponentGetState>(OnGetState);
@@ -33,9 +32,9 @@ public abstract class SharedVeilBeaconSystem : EntitySystem
 
     private void OnGetState(Entity<VeilCultBeaconComponent> ent, ref ComponentGetState args)
     {
-        args.State = new VeilCultBeaconComponentState(ent.Comp.AssignedLabel)
+        args.State = new VeilCultBeaconComponentState(ent.Comp.AssignedName)
         {
-            MaxLabelChars = ent.Comp.MaxLabelChars,
+            MaxNameChars = ent.Comp.MaxNameChars,
         };
     }
 
@@ -56,12 +55,12 @@ public abstract class SharedVeilBeaconSystem : EntitySystem
         if (args.Current is not VeilCultBeaconComponentState state)
             return;
 
-        ent.Comp.MaxLabelChars = state.MaxLabelChars;
+        ent.Comp.MaxNameChars = state.MaxNameChars;
 
-        if (ent.Comp.AssignedLabel == state.AssignedLabel)
+        if (ent.Comp.AssignedName == state.AssignedName)
             return;
 
-        ent.Comp.AssignedLabel = state.AssignedLabel;
+        ent.Comp.MaxNameChars = state.MaxNameChars;
         UpdateUI(ent);
     }
 
@@ -72,20 +71,13 @@ public abstract class SharedVeilBeaconSystem : EntitySystem
     private void OnVeilBeaconNameChanged(EntityUid uid, VeilCultBeaconComponent beacon, VeilBeaconNameChangedMessage args)
     {
         var name = args.Name.Trim();
-        beacon.AssignedLabel = name[..Math.Min(beacon.MaxLabelChars, name.Length)];
+		if (name.Length > 0)
+			beacon.AssignedName = name[..Math.Min(beacon.MaxNameChars, name.Length)];
+		else
+			beacon.AssignedName = Loc.GetString("veil-cult-unknown-beacon");
         UpdateUI((uid, beacon));
         Dirty(uid, beacon);
 
     }
 
-    private void OnExamined(Entity<VeilCultBeaconComponent> ent, ref ExaminedEvent args)
-    {
-        if (!args.IsInDetailsRange)
-            return;
-
-        var text = ent.Comp.AssignedLabel == string.Empty
-            ? Loc.GetString("hand-labeler-examine-blank")
-            : Loc.GetString("hand-labeler-examine-label-text", ("label-text", ent.Comp.AssignedLabel));
-        args.PushMarkup(text);
-    }
 }

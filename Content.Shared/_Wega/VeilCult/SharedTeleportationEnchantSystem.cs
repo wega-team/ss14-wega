@@ -61,7 +61,7 @@ public abstract partial class SharedTeleportationEnchantSystem : EntitySystem
 		
         RemComp<EnchantedComponent>(args.Used.Value);
         RemComp<TeleportationEnchantComponent>(args.Used.Value);
-		RemComp<UserInterfaceComponent>(args.Used.Value);
+		RemComp<ActivatableUIComponent>(args.Used.Value);
 		args.Handled = true;
     }
 }

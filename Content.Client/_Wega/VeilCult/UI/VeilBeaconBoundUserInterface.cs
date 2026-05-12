@@ -25,7 +25,7 @@ public sealed class VeilBeaconBoundUserInterface : BoundUserInterface
 
         if (_entManager.TryGetComponent(Owner, out VeilCultBeaconComponent? beacon))
         {
-            _window.SetMaxLabelLength(beacon.MaxLabelChars);
+            _window.SetMaxLabelLength(beacon.MaxNameChars);
         }
 
         _window.OnNameChanged += OnNameChanged;
@@ -36,7 +36,7 @@ public sealed class VeilBeaconBoundUserInterface : BoundUserInterface
     private void OnNameChanged(string newName)
     {
         if (_entManager.TryGetComponent(Owner, out VeilCultBeaconComponent? beacon) &&
-            beacon.AssignedLabel.Equals(newName))
+            beacon.AssignedName.Equals(newName))
             return;
 
         SendPredictedMessage(new VeilBeaconNameChangedMessage(newName));
@@ -47,6 +47,6 @@ public sealed class VeilBeaconBoundUserInterface : BoundUserInterface
         if (_window == null || !_entManager.TryGetComponent(Owner, out VeilCultBeaconComponent? component))
             return;
 
-        _window.SetCurrentLabel(component.AssignedLabel);
+        _window.SetCurrentLabel(component.AssignedName);
     }
 }

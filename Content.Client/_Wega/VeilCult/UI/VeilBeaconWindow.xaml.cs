@@ -8,15 +8,16 @@ namespace Content.Client.Veil.Cult.UI
     public sealed partial class VeilBeaconWindow : DefaultWindow
     {
         public event Action<string>? OnNameChanged;
-
+	
+		// Just a copy of HandLabeler UI to name beacons 	
+		
         /// <summary>
         /// Is the user currently entering text into the control?
         /// </summary>
         private bool _focused;
-        // TODO LineEdit Make this a bool on the LineEdit control
 
         private string _name = string.Empty;
-        private string _initialName = Loc.GetString("game-ticker-unknown-role");
+        private string _initialName = string.Empty;
 
         public VeilBeaconWindow()
         {
@@ -42,9 +43,6 @@ namespace Content.Client.Veil.Cult.UI
         protected override void Opened()
         {
             base.Opened();
-
-            // Give the editor keyboard focus, since that's the only
-            // thing the user will want to be doing with this UI
             LabelLineEdit.GrabKeyboardFocus();
         }
 

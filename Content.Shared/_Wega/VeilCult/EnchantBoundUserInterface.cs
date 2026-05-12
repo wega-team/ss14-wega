@@ -5,12 +5,6 @@ using Robust.Shared.Serialization;
 namespace Content.Shared.Veil.Cult.UI;
 
 [Serializable, NetSerializable]
-public enum EnchantUiKey : byte
-{
-    Key
-}
-
-[Serializable, NetSerializable]
 public sealed class EnchantSelectionState : BoundUserInterfaceState
 {
     public readonly List<EntProtoId> AvailableEnchants = new();

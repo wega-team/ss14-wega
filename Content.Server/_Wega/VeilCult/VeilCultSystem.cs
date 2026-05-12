@@ -233,7 +233,7 @@ public sealed partial class VeilCultSystem : SharedVeilCultSystem
             QueueDel(uid);
         }
 		
-		component.AssignedLabel = Loc.GetString("game-ticker-unknown-role");
+		component.AssignedName = Loc.GetString("veil-cult-unknown-beacon");
     }
     
     private void UseVeilAltar(EntityUid uid, VeilCultAltarComponent component, ActivateInWorldEvent args)

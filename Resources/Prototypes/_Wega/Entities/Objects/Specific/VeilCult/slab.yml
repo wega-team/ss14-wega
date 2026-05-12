@@ -64,8 +64,6 @@
   - type: TeleportationEnchant
   - type: UserInterface
     interfaces:
-      enum.EnchantUiKey.Key:
-        type: EnchantBoundUserInterface
       enum.TeleportEnchantUiKey.Key:
         type: TeleportEnchantBoundUserInterface
   - type: ActivatableUI
