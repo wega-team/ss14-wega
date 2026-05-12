@@ -45,9 +45,10 @@ public sealed partial class IngestionSystem
         args.Cancelled = true;
     }
 
-    private void OnBlockerMaskToggled(Entity<IngestionBlockerComponent> ent, ref ItemMaskToggledEvent args)
+    private void OnBlockerMaskToggled(Entity<IngestionBlockerComponent> entity, ref ItemMaskToggledEvent args)
     {
-        ent.Comp.Enabled = !args.Mask.Comp.IsToggled;
+        entity.Comp.Enabled = !args.Mask.Comp.IsToggled;
+        Dirty(entity);
     }
 
     // Corvax-Wega-Add-start

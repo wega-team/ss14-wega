@@ -16,6 +16,7 @@ using Content.Shared.Mobs.Systems;
 using Content.Shared.Modular.Suit;
 using Content.Shared.Popups;
 using Content.Shared.Rejuvenate;
+using Content.Shared.Stunnable;
 using Content.Shared.Surgery.Components;
 using Content.Shared.Tag;
 using Content.Shared.Throwing;
@@ -86,6 +87,7 @@ public sealed partial class SurgerySystem : EntitySystem
         UiInitialize();
 
         SubscribeLocalEvent<OperatedComponent, RejuvenateEvent>(OnRejuvenate);
+        SubscribeLocalEvent<OperatedComponent, StandUpAttemptEvent>(OnStandUpAttempt);
         SubscribeLocalEvent<OperatedComponent, IsEquippingAttemptEvent>(OnIsEquipping);
 
         SubscribeLocalEvent<SterileComponent, ExaminedEvent>(OnSterileExamined);
@@ -153,6 +155,48 @@ public sealed partial class SurgerySystem : EntitySystem
         ent.Comp.InternalDamages.Clear();
         ent.Comp.ResetOperationState("Default");
         RestoreMissingOrgans(ent);
+    }
+
+    private void OnStandUpAttempt(Entity<OperatedComponent> ent, ref StandUpAttemptEvent args)
+    {
+        if (!TryComp<BodyComponent>(ent, out var body) || body.Organs == null)
+            return;
+
+        if (!TryComp<InitialBodyComponent>(ent, out var initialBody))
+            return;
+
+        var existingOrgans = new HashSet<ProtoId<OrganCategoryPrototype>>();
+        foreach (var organ in body.Organs.ContainedEntities)
+        {
+            if (TryComp<OrganComponent>(organ, out var organComp) && organComp.Category != null)
+                existingOrgans.Add(organComp.Category.Value);
+        }
+
+        var requiredLegs = new List<string>();
+        foreach (var (category, _) in initialBody.Organs)
+        {
+            var categoryId = category.Id;
+            if (categoryId.Contains("Leg"))
+            {
+                requiredLegs.Add(categoryId);
+            }
+        }
+
+        if (requiredLegs.Count == 0)
+            return;
+
+        int missingLegs = 0;
+        foreach (var leg in requiredLegs)
+        {
+            if (!existingOrgans.Contains(leg))
+                missingLegs++;
+        }
+
+        if (missingLegs >= 1)
+        {
+            args.Cancelled = true;
+            args.Autostand = false;
+        }
     }
 
     private void RestoreMissingOrgans(Entity<OperatedComponent> entity)

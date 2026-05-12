@@ -11,6 +11,9 @@
   id: Rose
 
 - type: Tag
+  id: RevShop
+
+- type: Tag
   id: Sunflower
 
 - type: Tag
@@ -530,3 +533,6 @@
   id: ChargedBrass
   
   # Veil Cult Tags End
+  
+- type: Tag
+  id: OrganicBrain

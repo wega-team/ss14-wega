@@ -48,7 +48,7 @@
   id: SyndicateOperativeGearFullNoUplink
   equipment:
     jumpsuit: ClothingUniformJumpsuitOperative
-    back: ClothingModularControllerSyndicatePreassembled # Corvax-Wega-ModularSuits-Edit
+    back: ClothingBackpackDuffelSyndicate
     mask: ClothingMaskGasSyndicate
     eyes: ClothingEyesHudSyndicate
     ears: ClothingHeadsetAltSyndicate
@@ -64,6 +64,7 @@
     - WeaponPistolViper
     - PinpointerSyndicateNuclear
     - DeathAcidifierImplanter
+    - HardsuitOperSelector # Corvax-Wega-ModularSuits-Edit
 
 #Nuclear Operative Gear
 - type: startingGear
@@ -88,8 +89,15 @@
   equipment:
     id: SyndiCommanderPDA
     neck: SyndicateWhistle
-    back: ClothingModularControllerElitePreassembled # Corvax-Wega-ModularSuits-Edit
-    # outerClothing: ClothingOuterHardsuitSyndieCommander # Corvax-Wega-ModularSuits-Edit
+    back: ClothingBackpackDuffelSyndicate
+    outerClothing: ClothingOuterHardsuitSyndieCommander
+ # Corvax-Wega-start
+  storage:
+    back:
+    - WeaponPistolViper
+    - PinpointerSyndicateNuclear
+    - DeathAcidifierImplanter
+ # Corvax-Wega-End
   inhand:
   - NukeOpsDeclarationOfWar
 
@@ -117,14 +125,15 @@
     - SyndiHypo
     # - SawAdvanced # Corvax-Wega-Surgery
     # - Cautery # Corvax-Wega-Surgery
-    - CombatKnife
+    # - CombatKnife # Corvax-Wega-edit
     - WeaponPistolViper
     - PinpointerSyndicateNuclear
-    - HandheldHealthAnalyzer
+    # - HandheldHealthAnalyzer # Corvax-Wega-edit
     - CombatMedipen
     - DeathAcidifierImplanter
   inhand: # Corvax-Wega-Surgery
   - SurgerykitFilledSyndie # Corvax-Wega-Surgery
+  - HardsuitOperMedSelector # Corvax-Wega-ModularSuits-Edit
 
 - type: chameleonOutfit
   id: NukeopsMedicOutfit

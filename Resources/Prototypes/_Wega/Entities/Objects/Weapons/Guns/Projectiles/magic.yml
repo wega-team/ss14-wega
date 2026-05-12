@@ -11,7 +11,7 @@
   - type: Projectile
     damage:
       types:
-        Blunt: 12
+        Blunt: 21
   - type: SolutionContainerManager
     solutions:
       bolt:

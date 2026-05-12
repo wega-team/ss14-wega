@@ -4,6 +4,7 @@ using Content.Shared.Atmos;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Damage.Systems;
+using Content.Shared.Disease.Components; // Corvax-Wega-Disease
 using Content.Shared.FixedPoint;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Prototypes;
@@ -105,6 +106,14 @@ public sealed partial class HealthAnalyzerControl : BoxContainer
         // Total Damage
 
         DamageLabel.Text = _damageable.GetTotalDamage(target.Value).ToString();
+
+        // Corvax-Wega-Disease-start
+        // Status Effects / Components
+        StatusEffectsLabel.Text =
+            _entityManager.HasComponent<DiseasedComponent>(target)
+                ? Loc.GetString("disease-scanner-diseased")
+                : Loc.GetString("disease-scanner-not-diseased");
+        // Corvax-Wega-Disease-end
 
         // Alerts
 

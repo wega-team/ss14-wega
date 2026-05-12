@@ -28,7 +28,7 @@ public sealed class ProjectileAoESystem : EntitySystem
 
         foreach (var ent in ents)
         {
-            _damage.TryChangeDamage(ent.Owner, ev.Damage * component.DamageMultiplier);
+            _damage.TryChangeDamage(ent.Owner, ev.Damage * component.DamageMultiplier, origin: shooter);
         }
     }
 }

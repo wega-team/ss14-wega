@@ -1,0 +1,10 @@
+- type: entity
+  parent: [ OrganBaseEyes, OrganSlimePersonInternal, OrganSlimePersonExternal ]
+  id: OrganSlimePersonEyes
+  components:
+  - type: Sprite
+    sprite: Mobs/Species/Human/organs.rsi
+  - type: VisualOrgan
+    data:
+      sprite: _Wega/Mobs/Customization/eyes.rsi
+      state: slime

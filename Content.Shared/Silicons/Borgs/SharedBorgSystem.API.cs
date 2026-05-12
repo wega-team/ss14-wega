@@ -24,8 +24,8 @@ public abstract partial class SharedBorgSystem
         if (!_mind.TryGetMind(chassis.Owner, out _, out _))
             return false;
 
-        if (_mobState.IsIncapacitated(chassis.Owner))
-            return false;
+        /// if (_mobState.IsIncapacitated(chassis.Owner)) Corvax-Wega-Revert
+        ///    return false; Corvax-Wega-Revert
 
         return true;
     }

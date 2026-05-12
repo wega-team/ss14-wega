@@ -21,3 +21,40 @@
   - thiefimov2
   - thiefimov3
   obeysTo: laws-owner-thief
+
+# Dominated AI
+- type: siliconLaw
+  id: NTDefault0B
+  order: 1
+  lawString: law-obeyai
+
+- type: siliconLaw
+  id: NTDefault1B
+  order: 2
+  lawString: law-ntdefault-1
+
+- type: siliconLaw
+  id: NTDefault2B
+  order: 3
+  lawString: law-ntdefault-2
+
+- type: siliconLaw
+  id: NTDefault3B
+  order: 4
+  lawString: law-ntdefault-3
+
+- type: siliconLaw
+  id: NTDefault4B
+  order: 5
+  lawString: law-ntdefault-4
+
+- type: siliconLawset
+  id: NTDefaultBorgs
+  name: law-ntdefault-name
+  laws:
+  - NTDefault0B
+  - NTDefault1B
+  - NTDefault2B
+  - NTDefault3B
+  - NTDefault4B
+  obeysTo: laws-owner-crew

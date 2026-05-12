@@ -285,7 +285,7 @@ public sealed class CrusherUpgradeEffectsSystem : EntitySystem
             if (!HasComp<MobStateComponent>(ent))
                 continue;
 
-            _damage.TryChangeDamage(ent.Owner, args.Damage * entity.Comp.DamageMultiplier);
+            _damage.TryChangeDamage(ent.Owner, args.Damage * entity.Comp.DamageMultiplier, origin: user);
 
             var targetPos = _transform.GetWorldPosition(target);
             var entPos = _transform.GetWorldPosition(ent.Owner);

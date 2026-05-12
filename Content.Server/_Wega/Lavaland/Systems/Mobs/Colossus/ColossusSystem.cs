@@ -1,7 +1,6 @@
 using System.Numerics;
 using Content.Server.Chat.Systems;
 using Content.Server.Lavaland.Mobs.Components;
-using Content.Shared.Achievements;
 using Content.Shared.Chat;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
@@ -18,7 +17,6 @@ namespace Content.Server.Lavaland;
 
 public sealed class ColossusSystem : EntitySystem
 {
-    [Dependency] private readonly SharedAchievementsSystem _achievement = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
     [Dependency] private readonly DamageableSystem _damage = default!;
     [Dependency] private readonly SharedGunSystem _gun = default!;
@@ -45,10 +43,6 @@ public sealed class ColossusSystem : EntitySystem
             Spawn(reward, coords);
 
         QueueDel(uid);
-        if (args.Killer != null)
-        {
-            _achievement.QueueAchievement(args.Killer.Value, AchievementsEnum.ColossusBoss);
-        }
     }
 
     private void OnFractionAction(Entity<ColossusBossComponent> ent, ref ColossusFractionActionEvent args)

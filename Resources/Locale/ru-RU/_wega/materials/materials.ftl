@@ -6,3 +6,6 @@ materials-chargedbrass = заряженная латунь
 
 # Ores
 materials-raw-magmite = магмитовая руда
+
+# Other
+materials-brain = мозги

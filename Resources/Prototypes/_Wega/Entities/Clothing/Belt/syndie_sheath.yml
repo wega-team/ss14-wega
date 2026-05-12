@@ -29,3 +29,38 @@
           tags:
           - SyndicateRapier
   - type: Appearance
+
+- type: entity
+  parent: [ClothingBeltBase, ClothingSlotBase]
+  id: ClothingBeltSheathChaplin
+  name: nullrod sheath
+  description: A sinister, thin sheath, suitable for a rapier.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Belt/chaplin_sheath.rsi
+    state: sheath
+  - type: Clothing
+    sprite: _Wega/Clothing/Belt/chaplin_sheath.rsi
+  - type: Item
+    size: Ginormous
+  - type: ItemSlots
+    slots:
+      item:
+        name: rapier
+        insertVerbText: sheath-insert-verb
+        ejectVerbText: sheath-eject-verb
+        insertSound: /Audio/Items/sheath.ogg
+        ejectSound: /Audio/Items/unsheath.ogg
+        whitelist:
+          components:
+          - NullRod
+        blacklist:
+          components:
+          - Unremoveable
+  - type: ItemMapper
+    mapLayers:
+      sheath-rapier:
+        whitelist:
+          components:
+          - NullRod
+  - type: Appearance

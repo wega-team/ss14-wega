@@ -6,7 +6,7 @@
   dummyPrototype: BorgChassisGeneric
 
   # Functional
-  extraModuleCount: 3
+  extraModuleCount: 4 # 3 Corvax-Wega-Add
   moduleWhitelist:
     tags:
     - BorgModuleGeneric
@@ -52,7 +52,7 @@
   dummyPrototype: BorgChassisEngineer
 
   # Functional
-  extraModuleCount: 3
+  extraModuleCount: 4 # 3 Corvax-Wega-Add
   moduleWhitelist:
     tags:
     - BorgModuleGeneric
@@ -101,7 +101,7 @@
   dummyPrototype: BorgChassisMining
 
   # Functional
-  extraModuleCount: 3
+  extraModuleCount: 4 # 3 Corvax-Wega-Add
   moduleWhitelist:
     tags:
     - BorgModuleGeneric
@@ -140,7 +140,9 @@
   - type: RadarConsole
     followEntity: true
   - type: HandheldGPS
-    gPSName : Шахтёрский киборг
+    gPSName: Шахтёрский киборг
+  - type: HandheldGpsUi
+    broadcastEnabled: false
   - type: MagbootsImplant
 # Corvax-Wega-end
 
@@ -165,14 +167,13 @@
   dummyPrototype: BorgChassisJanitor
 
   # Functional
-  extraModuleCount: 3
+  extraModuleCount: 4 # 3 Corvax-Wega-Add
   moduleWhitelist:
     tags:
     - BorgModuleGeneric
     - BorgModuleJanitor
 
   defaultModules:
-  - BorgModuleTool # Corvax-Wega-add
   - BorgModulePrying
   - BorgModuleCleaning
   - BorgModuleCustodial
@@ -224,7 +225,7 @@
   dummyPrototype: BorgChassisMedical
 
   # Functional
-  extraModuleCount: 3
+  extraModuleCount: 4 # 3 Corvax-Wega-Add
   moduleWhitelist:
     tags:
     - BorgModuleGeneric
@@ -274,7 +275,7 @@
   dummyPrototype: BorgChassisService
 
   # Functional
-  extraModuleCount: 3
+  extraModuleCount: 4 # 3 Corvax-Wega-Add
   moduleWhitelist:
     tags:
     - BorgModuleGeneric

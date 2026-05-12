@@ -8,6 +8,7 @@ using Content.Server.Surgery;
 using Content.Shared.Achievements;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
+using Content.Shared.FixedPoint;
 using Content.Shared.Height;
 using Content.Shared.Humanoid;
 using Content.Shared.Interaction;
@@ -260,7 +261,8 @@ public sealed partial class LegionSystem : EntitySystem
             var spawnPos = FindSpawnPositionNear(coords, 2f);
             if (spawnPos != null)
             {
-                Spawn(prototype, spawnPos.Value);
+                var splitEntity = Spawn(prototype, spawnPos.Value);
+                TransferDamageContributors(uid, splitEntity);
             }
         }
 
@@ -269,6 +271,8 @@ public sealed partial class LegionSystem : EntitySystem
 
     private void OnSplitKilled(EntityUid uid, LegionSplitComponent component, MegafaunaKilledEvent args)
     {
+        RedistributeDamageToAllSplits(uid);
+
         if (!string.IsNullOrEmpty(component.NextSplitPrototype))
         {
             SplitToNextLevel(uid, component);
@@ -285,11 +289,7 @@ public sealed partial class LegionSystem : EntitySystem
                 foreach (var reward in legion.RewardsProto)
                     Spawn(reward, coords);
 
-                if (args.Killer != null)
-                {
-                    _achievement.QueueAchievement(args.Killer.Value, AchievementsEnum.FirstBoss);
-                    _achievement.QueueAchievement(args.Killer.Value, AchievementsEnum.LegionBoss);
-                }
+                GrantAchievementsForLegion(uid);
             }
         }
 
@@ -304,7 +304,8 @@ public sealed partial class LegionSystem : EntitySystem
             var spawnPos = FindSpawnPositionNear(coords, 2f);
             if (spawnPos != null)
             {
-                Spawn(component.NextSplitPrototype, spawnPos.Value);
+                var nextSplit = Spawn(component.NextSplitPrototype, spawnPos.Value);
+                TransferDamageContributors(uid, nextSplit);
             }
         }
     }
@@ -322,6 +323,84 @@ public sealed partial class LegionSystem : EntitySystem
                 }
             }
         }
+    }
+
+    private void GrantAchievementsForLegion(EntityUid lastSplit)
+    {
+        if (!TryComp<MegafaunaDamageContributorComponent>(lastSplit, out var contributor))
+            return;
+
+        if (contributor.AchievementsGranted)
+            return;
+
+        contributor.AchievementsGranted = true;
+
+        FixedPoint2 totalDamage = 0f;
+        foreach (var damage in contributor.Contributors.Values)
+            totalDamage += damage;
+
+        if (totalDamage <= 0)
+            return;
+
+        var threshold = contributor.Threshold;
+        foreach (var (player, damage) in contributor.Contributors)
+        {
+            var percentage = damage / totalDamage;
+            if (percentage >= threshold)
+            {
+                _achievement.QueueAchievement(player, AchievementsEnum.FirstBoss);
+                _achievement.QueueAchievement(player, AchievementsEnum.LegionBoss);
+            }
+        }
+
+        contributor.Contributors.Clear();
+    }
+
+    private void RedistributeDamageToAllSplits(EntityUid dyingSplit)
+    {
+        if (!TryComp<MegafaunaDamageContributorComponent>(dyingSplit, out var dyingContrib))
+            return;
+
+        var livingSplits = new List<EntityUid>();
+        var allSplits = EntityQueryEnumerator<LegionSplitComponent>();
+        while (allSplits.MoveNext(out var uid, out _))
+        {
+            if (uid == dyingSplit || Exists(uid))
+                continue;
+
+            livingSplits.Add(uid);
+        }
+
+        if (livingSplits.Count == 0)
+            return;
+
+        foreach (var living in livingSplits)
+        {
+            var livingContrib = EnsureComp<MegafaunaDamageContributorComponent>(living);
+            foreach (var (player, damage) in dyingContrib.Contributors)
+            {
+                livingContrib.Contributors.TryGetValue(player, out var current);
+                livingContrib.Contributors[player] = current + damage;
+            }
+
+            livingContrib.Threshold = dyingContrib.Threshold;
+        }
+    }
+
+    private void TransferDamageContributors(EntityUid from, EntityUid to)
+    {
+        if (!TryComp<MegafaunaDamageContributorComponent>(from, out var fromContrib))
+            return;
+
+        var toContrib = EnsureComp<MegafaunaDamageContributorComponent>(to);
+        foreach (var (player, damage) in fromContrib.Contributors)
+        {
+            toContrib.Contributors.TryGetValue(player, out var current);
+            toContrib.Contributors[player] = current + damage;
+        }
+
+        toContrib.Threshold = fromContrib.Threshold;
+        toContrib.AchievementId = fromContrib.AchievementId;
     }
 
     #endregion

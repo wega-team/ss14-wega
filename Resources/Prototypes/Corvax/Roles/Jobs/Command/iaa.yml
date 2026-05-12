@@ -25,6 +25,22 @@
   - Command
   - External
   - Lawyer
+  # Corvax-Wega-Add-start
+  - LavalandAvanpost # Corvax-Wega-Lavaland
+  - Bar
+  - Janitor
+  - Theatre
+  - Kitchen
+  - Chapel
+  - Hydroponics
+  - Chemistry
+  - Engineering
+  - Research
+  - Salvage
+  - Cargo
+  - Atmospherics
+  - Medical
+  # Corvax-Wega-Add-end
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]

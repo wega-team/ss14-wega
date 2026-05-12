@@ -3,7 +3,7 @@
   id: Demon
   limits:
     enum.HumanoidVisualLayers.Special:
-      limit: 1
+      limit: 2
       required: false
     enum.HumanoidVisualLayers.HeadTop:
       limit: 1
@@ -25,7 +25,7 @@
       required: true
       default: [ DemomTail ]
     enum.HumanoidVisualLayers.Chest:
-      limit: 1
+      limit: 2
       required: false
     enum.HumanoidVisualLayers.LArm:
       limit: 1

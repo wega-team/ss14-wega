@@ -46,6 +46,7 @@ using Robust.Shared.Physics.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Content.Shared.Examine;
 
 namespace Content.Server.Blood.Cult;
 
@@ -98,6 +99,7 @@ public sealed partial class BloodCultSystem
         SubscribeLocalEvent<BloodCultistComponent, BloodCultBloodRitesActionEvent>(OnBloodRites);
 
         SubscribeLocalEvent<BloodSpellComponent, UseInHandEvent>(BloodRites);
+		SubscribeLocalEvent<BloodSpellComponent, ExaminedEvent>(OnExamine);
         SubscribeLocalEvent<BloodSpellComponent, BloodRitesSelectRitesMessage>(BloodRitesSelect);
         SubscribeLocalEvent<BloodCultistComponent, BloodCultBloodOrbActionEvent>(OnBloodOrb);
         SubscribeLocalEvent<BloodOrbComponent, UseInHandEvent>(OnBloodOrbAbsorbed);
@@ -407,6 +409,17 @@ public sealed partial class BloodCultSystem
         EmpoweringCheck(args.Action, component);
     }
 
+     private void OnExamine(EntityUid uid, BloodSpellComponent spell, ExaminedEvent args)
+    {
+        if (spell.SpellType != BloodCultSpell.BloodRites)
+            return;
+        if (TryComp<BloodCultistComponent>(args.Examiner, out var cultist))
+        {
+            args.PushMarkup(Loc.GetString("blood-rites-count",
+                ("blood", cultist.BloodCount)));
+        }
+    }
+
     private void BloodRites(Entity<BloodSpellComponent> ent, ref UseInHandEvent args)
     {
         if (!HasComp<BloodCultistComponent>(args.User) || ent.Comp.SpellType != BloodCultSpell.BloodRites)
@@ -585,7 +598,7 @@ public sealed partial class BloodCultSystem
 
     private void OnBloodBoltBarrage(EntityUid cultist, BloodCultistComponent component, BloodCultBloodBoltBarrageActionEvent args)
     {
-        if (component.BloodCount < 300)
+        if (component.BloodCount < 200)
         {
             _popup.PopupEntity(Loc.GetString("blood-cult-bolt-barrage-failed"), cultist, cultist, PopupType.SmallCaution);
             return;
@@ -597,7 +610,7 @@ public sealed partial class BloodCultSystem
         List<ProtoId<StartingGearPrototype>> gear = new() { boltBarrageGear };
         _loadout.Equip(cultist, gear, null);
 
-        component.BloodCount -= 300;
+        component.BloodCount -= 200;
         _action.RemoveAction(cultist, args.Action!);
         args.Handled = true;
     }

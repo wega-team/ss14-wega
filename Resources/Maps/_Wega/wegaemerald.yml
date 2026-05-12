@@ -121713,7 +121713,7 @@ entities:
     - type: Transform
       pos: 42.53679,-14.356133
       parent: 2
-- proto: ClothingModularControllerCosmohonkPreassembled
+- proto: HardsuitClownSelector
   entities:
   - uid: 3179
     components:

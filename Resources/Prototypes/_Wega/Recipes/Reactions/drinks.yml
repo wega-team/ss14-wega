@@ -513,15 +513,15 @@
   products:
     QueenMary: 5
 
-- type: reaction
-  id: Box
-  reactants:
-    Gin:
-      amount: 2
-    JuicePotato:
-      amount: 1
-  products:
-    Box: 3
+# - type: reaction
+#   id: Box
+#   reactants:
+#     Gin:
+#       amount: 2
+#     JuicePotato:
+#       amount: 1
+#   products:
+#     Box: 3
 
 - type: reaction
   id: BeerBerryRoyal

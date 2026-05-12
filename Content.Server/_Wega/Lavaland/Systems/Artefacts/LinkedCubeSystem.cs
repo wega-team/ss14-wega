@@ -74,6 +74,11 @@ public sealed class LinkedCubeSystem : EntitySystem
         if (mapUid == null)
             return false;
 
+        if (Paused(linkedCube))
+        {
+            _popup.PopupEntity(Loc.GetString("linked-cube-paused-map"), user, user);
+            return false;
+        }
         _transform.SetCoordinates(user, new EntityCoordinates(mapUid.Value, linkedTransform));
 
         _audio.PlayPvs(new SoundPathSpecifier("/Audio/Magic/blink.ogg"), user);

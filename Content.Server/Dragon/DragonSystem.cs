@@ -1,8 +1,11 @@
+using Content.Server.Fluids.EntitySystems;
 using Content.Server.Objectives.Components;
 using Content.Server.Objectives.Systems;
 using Content.Server.Popups;
 using Content.Shared.Actions;
+using Content.Shared.Chemistry.Components;
 using Content.Shared.Dragon;
+using Content.Shared.Gibbing;
 using Content.Shared.Maps;
 using Content.Shared.Mind;
 using Content.Shared.Mobs;
@@ -11,6 +14,7 @@ using Content.Shared.Movement.Systems;
 using Content.Shared.NPC.Systems;
 using Content.Shared.Zombies;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using System.Numerics; //Corvax-Wega-DragonPushSkill
 using Robust.Shared.Random; //Corvax-Wega-DragonPushSkill
@@ -34,6 +38,8 @@ public sealed partial class DragonSystem : EntitySystem
     [Dependency] private readonly SharedMapSystem _map = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly TurfSystem _turf = default!;
+    [Dependency] private readonly GibbingSystem _gibbing = default!;
+    [Dependency] private readonly SmokeSystem _smoke = default!;
     [Dependency] private readonly IRobustRandom _random = default!; //Corvax-Wega-DragonPushSkill
     [Dependency] private readonly TileSystem _tile = default!; //Corvax-Wega-DragonPushSkill
     [Dependency] private readonly IEntityManager _entityManager = default!; //Corvax-Wega-DragonPushSkill
@@ -108,11 +114,14 @@ public sealed partial class DragonSystem : EntitySystem
             if (!_mobState.IsDead(uid))
                 comp.RiftAccumulator += frameTime;
 
-            // Delete it, naughty dragon!
+            // Gib it, naughty dragon!
             if (comp.RiftAccumulator >= comp.RiftMaxAccumulator)
             {
-                Roar(uid, comp);
-                QueueDel(uid);
+                Roar(uid, comp, Transform(uid).Coordinates);
+                var smoke = Spawn(comp.SmokePrototype, Transform(uid).Coordinates);
+                if (TryComp<SmokeComponent>(smoke, out var smokeComp))
+                    _smoke.StartSmoke(smoke, comp.SmokeSolution, smokeComp.Duration, smokeComp.SpreadAmount, smokeComp);
+                _gibbing.Gib(uid);
             }
         }
     }
@@ -257,10 +266,15 @@ public sealed partial class DragonSystem : EntitySystem
         _faction.AddFaction(ent.Owner, ent.Comp.Faction);
     }
 
-    private void Roar(EntityUid uid, DragonComponent comp)
+    private void Roar(EntityUid uid, DragonComponent comp, EntityCoordinates? coords = null)
     {
         if (comp.SoundRoar != null)
-            _audio.PlayPvs(comp.SoundRoar, uid);
+        {
+            if (coords != null)
+                _audio.PlayPvs(comp.SoundRoar, coords.Value);
+            else
+                _audio.PlayPvs(comp.SoundRoar, uid);
+        }
     }
 
     /// <summary>

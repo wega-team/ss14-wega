@@ -21,3 +21,11 @@
   icon: { sprite: _Wega/Objects/Materials/Sheets/metal.rsi, state: chargedbrass }
   color: "#3f4857"
   price: 0.05
+
+- type: material
+  id: PrintBrain
+  stackEntity: OrganHumanBrain
+  name: materials-brain
+  icon: { sprite: Mobs/Species/Human/organs.rsi, state: brain }
+  color: "#d9d9d9"
+  price: 0.05

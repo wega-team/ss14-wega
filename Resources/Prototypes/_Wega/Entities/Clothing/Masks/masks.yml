@@ -46,3 +46,34 @@
         Slash: 0.90
         Piercing: 0.95
         Heat: 0.95
+
+- type: entity
+  parent: [ClothingMaskBase, BaseChameleon]
+  id: ClothingMaskGasVoice
+  suffix: Voice Mask
+  components:
+    - type: Sprite
+      sprite: Clothing/Mask/gas.rsi
+    - type: Clothing
+      sprite: Clothing/Mask/gas.rsi
+    - type: BreathMask
+    - type: IdentityBlocker
+    - type: Dirtable
+      dirtState: gasmask
+      equippedDirtState: equipped-gasmask
+    - type: VoiceMask
+    - type: UIRequiresLock
+      userInterfaceKeys:
+        - enum.VoiceMaskUIKey.Key
+      accessDeniedSound: null
+      popup: null
+    - type: HideLayerClothing
+      slots:
+      - Snout
+    - type: UserInterface
+      interfaces:
+        enum.VoiceMaskUIKey.Key:
+          type: VoiceMaskBoundUserInterface
+    - type: Construction
+      graph: ModMasc
+      node: voiceMasc

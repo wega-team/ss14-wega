@@ -21,5 +21,6 @@
   id: HeadRevGear
   storage:
     back:
-    - Flash
+    #- Flash
+    - BookRandomRevolution # Corvax-Wega-Revolutionary
     - ClothingEyesGlassesSunglasses

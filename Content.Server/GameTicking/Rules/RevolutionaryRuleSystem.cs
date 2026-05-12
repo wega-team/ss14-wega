@@ -10,6 +10,12 @@ using Content.Server.Roles;
 using Content.Server.RoundEnd;
 using Content.Server.Shuttles.Systems;
 using Content.Server.Station.Systems;
+//Corvax-Wega-Edit-Start
+using Content.Server.Store.Systems;
+using Content.Shared.Store;
+using Content.Shared.Store.Components;
+using Content.Shared.Tag;
+//Corvax-Wega-Edit-End
 using Content.Shared.Database;
 using Content.Shared.Flash;
 using Content.Shared.GameTicking.Components;
@@ -52,7 +58,13 @@ public sealed class RevolutionaryRuleSystem : GameRuleSystem<RevolutionaryRuleCo
     [Dependency] private readonly RoundEndSystem _roundEnd = default!;
     [Dependency] private readonly SharedStunSystem _stun = default!;
     [Dependency] private readonly StationSystem _stationSystem = default!;
+    // Corvax-Wega-Revolutionary-Start
+    [Dependency] private readonly StoreSystem _store = default!;
+    [Dependency] private readonly TagSystem _tag = default!;
 
+    private static readonly ProtoId<TagPrototype> RevShopTagPrototype = "RevShop";
+    private static readonly ProtoId<CurrencyPrototype> HelpfulResourceCurrencyPrototype = "HelpfulResource";
+    // Corvax-Wega-Revolutionary-End
     //Used in OnPostFlash, no reference to the rule component is available
     public readonly ProtoId<NpcFactionPrototype> RevolutionaryNpcFaction = "Revolutionary";
     public readonly ProtoId<NpcFactionPrototype> RevPrototypeId = "Rev";
@@ -146,14 +158,20 @@ public sealed class RevolutionaryRuleSystem : GameRuleSystem<RevolutionaryRuleCo
             !HasComp<HumanoidProfileComponent>(ev.Target) &&
             !alwaysConvertible ||
             !_mobState.IsAlive(ev.Target) ||
-            HasComp<ZombieComponent>(ev.Target))
+            HasComp<ZombieComponent>(ev.Target) ||
+            !HasComp<RevolutionaryConverterComponent>(ev.Used))
         {
             return;
         }
 
         _npcFaction.AddFaction(ev.Target, RevolutionaryNpcFaction);
         var revComp = EnsureComp<RevolutionaryComponent>(ev.Target);
-
+        //Corvax-Wega-Edit-Start
+        if (!HasComp<AlwaysRevolutionaryConvertibleComponent>(ev.Target) && ev.Used != null && _tag.HasTag(ev.Used.Value, RevShopTagPrototype) && TryComp<StoreComponent>(ev.Used.Value, out var store))
+        {
+            _store.TryAddCurrency(new() { { HelpfulResourceCurrencyPrototype, comp.AmountPerRev } }, ev.Used.Value, store);
+        }
+        //Corvax-Wega-Edit-End
         if (ev.User != null)
         {
             _adminLogManager.Add(LogType.Mind,

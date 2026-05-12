@@ -8,7 +8,7 @@
   <Box>
     <GuideEntityEmbed Entity="MobHuman" Caption=""/>
     <GuideEntityEmbed Entity="Bloodpack" Caption=""/>
-    <GuideEntityEmbed Entity="MobCorvaxVulpkanin" Caption=""/>
+    <GuideEntityEmbed Entity="MobVulpkanin" Caption=""/>
   </Box>
 
   [bold][color=#cc3333]Вы - братья по крови, кандидаты в ряды Синдиката![/color][/bold]

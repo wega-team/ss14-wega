@@ -54,6 +54,7 @@
 - type: entity
   parent: BaseSpeciesAppearance
   id: AppearanceSlimePerson
+  categories: [ HideSpawnMenu ]
   name: SlimePerson appearance
   components:
   - type: Inventory
@@ -108,8 +109,8 @@
         type: HumanoidMarkingModifierBoundUserInterface
       enum.StrippingUiKey.Key:
         type: StrippableBoundUserInterface
-      # enum.SurgeryUiKey.Key: # Corvax-Wega-Surgery
-      #   type: SurgeryBoundUserInterface # Corvax-Wega-Surgery
+      enum.SurgeryUiKey.Key: # Corvax-Wega-Surgery
+        type: SurgeryBoundUserInterface # Corvax-Wega-Surgery
   - type: UseDelay
     delay: 0.5
   - type: Speech
@@ -185,9 +186,11 @@
       types:
         Asphyxiation: -1.0
     maxSaturation: 15
-  # - type: Operated # Corvax-Wega-Surgery
-  #   raceGraph: SlimeSurgery # Corvax-Wega-Surgery
-  #   limbRegeneration: true # Corvax-Wega-Surgery
+  # Corvax-Wega-Surgery-start
+  - type: Operated
+    raceGraph: SlimeSurgery
+    limbRegeneration: true
+  # Corvax-Wega-Surgery-end
   # Corvax-Wega-Disease-start
   - type: DiseaseCarrier
     naturalImmunities:
@@ -285,6 +288,12 @@
     maxReagents: 6
     metabolizerTypes: [ Slime ]
     stages: [ Digestion, Bloodstream, Metabolites ]
+  # # Corvax-Wega-Surgery-start
+  # - type: Tag
+  #   tags:
+  #   - BaseOrgan
+  #   - SlimeCore
+  # # Corvax-Wega-Surgery-end
 
 - type: entity
   parent: [ OrganBaseLungs, OrganSlimePersonInternal, OrganSlimePersonMetabolizer ]
@@ -293,16 +302,3 @@
   components:
   - type: Lung
     alert: LowNitrogen
-
-# Corvax-Wega-Add-start
-- type: entity
-  parent: [ OrganBaseEyes, OrganSlimePersonInternal, OrganSlimePersonExternal ]
-  id: OrganSlimePersonEyes
-  components:
-  - type: Sprite
-    sprite: Mobs/Species/Human/organs.rsi
-  - type: VisualOrgan
-    data:
-      sprite: _Wega/Mobs/Customization/eyes.rsi
-      state: slime
-# Corvax-Wega-Add-end

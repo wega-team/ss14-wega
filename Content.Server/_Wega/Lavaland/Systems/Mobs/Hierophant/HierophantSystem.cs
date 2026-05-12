@@ -2,8 +2,6 @@ using System.Numerics;
 using Content.Server.Lavaland.Mobs.Components;
 using Content.Server.NPC.HTN;
 using Content.Server.NPC.Systems;
-using Content.Shared.Achievements;
-using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Lavaland.Components;
 using Content.Shared.Lavaland.Events;
@@ -25,7 +23,6 @@ namespace Content.Server.Lavaland.Mobs;
 /// </summary>
 public sealed partial class HierophantSystem : EntitySystem
 {
-    [Dependency] private readonly SharedAchievementsSystem _achievement = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly DamageableSystem _damage = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
@@ -72,10 +69,6 @@ public sealed partial class HierophantSystem : EntitySystem
             Spawn(reward, coords);
 
         QueueDel(uid);
-        if (args.Killer != null)
-        {
-            _achievement.QueueAchievement(args.Killer.Value, AchievementsEnum.HierophantBoss);
-        }
     }
 
     #region Passive Movement

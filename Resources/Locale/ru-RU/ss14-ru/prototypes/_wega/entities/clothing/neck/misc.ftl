@@ -64,3 +64,5 @@ ent-ClothingNeckNecklaceBloodstone = { ent-ClothingNeckNecklaceRuby }
 ent-ClothingNeckNecklaceBluespaceData = { ent-ClothingNeckNecklaceRuby }
     .desc = { ent-ClothingNeckNecklaceRuby.desc }
     .suffix = Блюспейс дата-кристалл
+ent-ClothingNeckChokerSecSpike = шипастый чокер СБ
+    .desc = Чокер с шипами, созданный для самых сильных девочек СБ.

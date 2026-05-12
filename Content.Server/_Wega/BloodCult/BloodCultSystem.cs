@@ -37,6 +37,9 @@ using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
+using Content.Shared.Clothing; 
+using Content.Shared.IdentityManagement.Components;
+using Content.Shared.Inventory;
 
 
 namespace Content.Server.Blood.Cult;
@@ -161,9 +164,15 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
         if (!args.IsInDetailsRange)
             return;
 
-        var name = Identity.Name(uid, EntityManager, args.Examiner);
-        if (Name(uid) == name)
-            args.PushMarkup(Loc.GetString("blood-cultist-eyes-glow-examined", ("name", name)));
+        var clothes = _inventory.GetSlotEnumerator((uid, null), SlotFlags.WITHOUT_POCKET);
+        while (clothes.NextItem(out var cloth, out var slot))
+        {
+            if (TryComp<IdentityBlockerComponent>(cloth, out var blocker) && blocker.Coverage.HasFlag(IdentityBlockerCoverage.EYES) && blocker.Enabled)
+                return;
+        }
+		
+		var name = Identity.Name(uid, EntityManager, args.Examiner);
+		args.PushMarkup(Loc.GetString("blood-cultist-eyes-glow-examined", ("name", name)));
     }
 
     // Corvax-Wega-Testing-start
@@ -467,11 +476,11 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
     #region Shield
     private void OnShieldGotUnequipped(Entity<BloodShieldActivaebleComponent> ent, ref GotUnequippedEvent args)
     {
-        if (!TryComp<EnergyShieldOwnerComponent>(args.Equipee, out var energyShield))
+        if (!TryComp<EnergyShieldOwnerComponent>(args.EquipTarget, out var energyShield))
             return;
 
         QueueDel(energyShield.ShieldEntity);
-        RemComp(args.Equipee, energyShield);
+        RemComp(args.EquipTarget, energyShield);
     }
     #endregion
 

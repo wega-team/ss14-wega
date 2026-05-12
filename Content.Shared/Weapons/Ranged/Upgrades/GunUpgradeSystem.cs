@@ -142,7 +142,7 @@ public sealed class GunUpgradeSystem : EntitySystem
     {
         foreach (var (ammo, _) in args.Ammo)
         {
-            if (ammo == null)
+            if (ammo == null || !HasComp<ProjectileComponent>(ammo.Value))
                 return;
 
             EnsureComp<ProjectileAoEComponent>(ammo.Value);
@@ -153,7 +153,7 @@ public sealed class GunUpgradeSystem : EntitySystem
     {
         foreach (var (ammo, _) in args.Ammo)
         {
-            if (ammo == null)
+            if (ammo == null || !HasComp<ProjectileComponent>(ammo.Value))
                 return;
 
             EnsureComp<ProjectileLifestealComponent>(ammo.Value).StealAmount = ent.Comp.StealAmount;

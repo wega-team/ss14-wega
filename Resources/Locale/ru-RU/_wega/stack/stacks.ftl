@@ -57,3 +57,5 @@ stak-magmite = магмит
 magmite-ore = магмитовая руда
 
 consecrated-ingot = священная сталь
+
+stak-brain = мозги

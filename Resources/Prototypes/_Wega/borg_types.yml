@@ -6,13 +6,14 @@
   dummyPrototype: BorgChassisSecurity
 
   # Functional
-  extraModuleCount: 3
+  extraModuleCount: 4
   moduleWhitelist:
     tags:
     - BorgModuleGeneric
     - BorgModuleSecurity
 
   defaultModules:
+  - BorgModulePrying
   - BorgModuleDisabler
   - BorgModuleDetective
 
@@ -65,13 +66,14 @@
   dummyPrototype: BorgChassisScience
 
   # Functional
-  extraModuleCount: 3
+  extraModuleCount: 4
   moduleWhitelist:
     tags:
     - BorgModuleGeneric
     - BorgModuleScience
 
   defaultModules:
+  - BorgModulePrying
   - BorgModuleTool
   - BorgModuleArtifact
   - BorgModuleAnomaly

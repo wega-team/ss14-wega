@@ -399,11 +399,6 @@
     sprite: _Wega/Objects/Specific/Hydroponics/energy_potato.rsi
   - type: Produce
     seedId: energyPotato
-  - type: Extractable
-    juiceSolution:
-      reagents:
-      - ReagentId: JuicePotato
-        Quantity: 20
   - type: Tag
     tags:
     - SuperPotato

@@ -1,3 +1,9 @@
 ent-SuitStorageExplorerSuit = { ent-SuitStorageBase }
     .desc = { ent-SuitStorageBase.desc }
     .suffix = Костюм Исследователя
+ent-SuitStorageHardsuitClown = { ent-SuitStorageBase }
+    .desc = { ent-SuitStorageBase.desc }
+    .suffix = Клоун
+ent-SuitStorageHardsuitMime = { ent-SuitStorageBase }
+    .desc = { ent-SuitStorageBase.desc }
+    .suffix = Мим

@@ -1,6 +1,7 @@
 - type: entity
   parent: AppearanceHuman
   id: AppearanceDwarf
+  categories: [ HideSpawnMenu ]
   name: dwarf appearance
   components:
   - type: Inventory
@@ -63,7 +64,7 @@
       Female: FemaleDwarf
       Unsexed: UnisexDwarf
   - type: ReplacementAccent
-    accent: scottish
+    accent: dwarf # Corvax-Wega-Edit
   - type: Speech
     speechSounds: Bass
   # Corvax-Wega-Genetics-start

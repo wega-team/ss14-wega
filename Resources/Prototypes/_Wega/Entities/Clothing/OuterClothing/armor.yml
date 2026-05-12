@@ -78,11 +78,11 @@
       coefficients:
         Blunt: 0.7
         Slash: 0.7
-        Piercing: 0.75
+        Piercing: 0.9
         Heat: 0.7
         Caustic: 0.85
   - type: ExplosionResistance
-    damageCoefficient: 0.6
+    damageCoefficient: 0.8
   - type: FireProtection
     reduction: 0.4
   - type: TemperatureProtection
@@ -137,11 +137,11 @@
       coefficients:
         Blunt: 0.5
         Slash: 0.5
-        Piercing: 0.55
+        Piercing: 0.8
         Heat: 0.5
         Caustic: 0.75
   - type: ExplosionResistance
-    damageCoefficient: 0.5
+    damageCoefficient: 0.6
   - type: FireProtection
     reduction: 0.5
   - type: ToggleableClothing
@@ -179,11 +179,11 @@
       coefficients:
         Blunt: 0.5
         Slash: 0.5
-        Piercing: 0.55
+        Piercing: 0.8
         Heat: 0.5
         Caustic: 0.75
   - type: ExplosionResistance
-    damageCoefficient: 0.5
+    damageCoefficient: 0.6
   - type: FireProtection
     reduction: 0.5
   - type: TemperatureProtection
