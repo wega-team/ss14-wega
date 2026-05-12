@@ -2,6 +2,8 @@ using Content.Shared.Inventory;
 using Content.Shared.Thermal.Components;
 using Content.Shared.Hands;
 using Content.Shared.Inventory.Events;
+using Content.Shared.Trigger.Components.Triggers;
+using Robust.Shared.Timing;
 using Robust.Shared.GameObjects;
 using Robust.Client.Player;
 using Robust.Client.Graphics; //port only with permission of the code creator
