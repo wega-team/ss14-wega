@@ -8,9 +8,9 @@ namespace Content.Client.Veil.Cult.UI
     public sealed partial class VeilBeaconWindow : DefaultWindow
     {
         public event Action<string>? OnNameChanged;
-	
-		// Just a copy of HandLabeler UI to name beacons 	
-		
+    
+        // Just a copy of HandLabeler UI to name beacons    
+        
         /// <summary>
         /// Is the user currently entering text into the control?
         /// </summary>

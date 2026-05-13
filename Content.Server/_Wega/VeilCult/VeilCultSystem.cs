@@ -65,29 +65,20 @@ public sealed partial class VeilCultSystem : SharedVeilCultSystem
 {
     [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly VeilCultRuleSystem _veilCult = default!;
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly MetaDataSystem _meta = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
-    [Dependency] private readonly RoundEndSystem _roundEndSystem = default!;
     [Dependency] private readonly ServerGlobalSoundSystem _sound = default!;
-    [Dependency] private readonly SharedActionsSystem _action = default!;
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-    [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly SharedMindSystem _mind = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SharedSolutionContainerSystem _solution = default!;
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
-    [Dependency] private readonly PowerCellSystem _powerCell = default!;
     [Dependency] private readonly SharedBatterySystem _battery = default!;
     [Dependency] private readonly RejuvenateSystem _rejuvenate = default!;
     [Dependency] private readonly NavMapSystem _navMap = default!;
     [Dependency] private readonly SharedRoleSystem _roles = default!;
     [Dependency] private readonly GibbingSystem _gibbing = default!;
-    [Dependency] private readonly AnchorableSystem _anchorable = default!;
 
 
     public override void Initialize()
@@ -135,6 +126,8 @@ public sealed partial class VeilCultSystem : SharedVeilCultSystem
                     _damage.TryChangeDamage(target.Owner, heal, true);
 
                     _blood.TryModifyBloodLevel(target.Owner, +5);
+                    if (TryComp<BloodstreamComponent>(target.Owner, out var bloodstream))
+                        _blood.TryModifyBleedAmount((target.Owner, bloodstream), -3f);
                 }
 
                 foreach (var target in nearbyConstruct)
@@ -143,6 +136,8 @@ public sealed partial class VeilCultSystem : SharedVeilCultSystem
                     _damage.TryChangeDamage(target.Owner, heal, true);
 
                     _blood.TryModifyBloodLevel(target.Owner, +5);
+                    if (TryComp<BloodstreamComponent>(target.Owner, out var bloodstream))
+                        _blood.TryModifyBleedAmount((target.Owner, bloodstream), -3f);
                     
                     if (TryComp<TimedDespawnComponent>(target, out var despawn))
                         despawn.Lifetime += 25;
@@ -232,8 +227,8 @@ public sealed partial class VeilCultSystem : SharedVeilCultSystem
             Spawn("SheetChargedBrass6", Transform(uid).Coordinates);
             QueueDel(uid);
         }
-		
-		component.AssignedName = Loc.GetString("veil-cult-unknown-beacon");
+        
+        component.AssignedName = Loc.GetString("veil-cult-unknown-beacon");
     }
     
     private void UseVeilAltar(EntityUid uid, VeilCultAltarComponent component, ActivateInWorldEvent args)

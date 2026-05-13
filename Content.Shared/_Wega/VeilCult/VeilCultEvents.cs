@@ -19,7 +19,7 @@ public sealed partial class VeilCultMidasTouchGetHandEvent : InstantActionEvent
 [Serializable, NetSerializable]
 public sealed partial class EnchantingDoAfterEvent : SimpleDoAfterEvent
 {
-	public EntProtoId Entity;
+    public EntProtoId Entity;
 }
 
 
@@ -78,7 +78,7 @@ public sealed partial class RedFlameEnchantActionEvent : InstantActionEvent
 [Serializable, NetSerializable]
 public sealed partial class VeilCultTeleportDoAfterEvent : SimpleDoAfterEvent
 {
-	public NetEntity Target;
+    public NetEntity Target;
 }
 
 [Serializable, NetSerializable]
@@ -95,13 +95,6 @@ public sealed partial class StrangeShardDoAfterEvent : SimpleDoAfterEvent
 public record struct SiliconVeilCultHackedEvent(EntityUid user);
 
 // UI KEYS
-
-
-[Serializable, NetSerializable]
-public enum EnchantUiKey : byte
-{
-    Key
-}
 
 [Serializable, NetSerializable]
 public enum TeleportEnchantUiKey : byte

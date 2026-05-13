@@ -39,3 +39,5 @@ ghost-role-information-idol-description = Помощник одинокого К
 
 ghost-role-information-soul-vessel-name = Вместилище души
 ghost-role-information-soul-vessel-description = Пустующее вместилище души.
+ghost-role-information-cogscarab-name = Латунный скарабей
+ghost-role-information-cogscarab-description = Маленький лучший друг праведников, следите, чтобы ваш механизм был достаточно заведен, чтобы не умереть в случайный момент.

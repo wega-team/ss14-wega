@@ -40,6 +40,9 @@
   - type: CombatMode  
   - type: VeilCultConstruct
   - type: PressureImmunity
+  - type: ActiveRadio
+    channels:
+    - Binary
   
   # Cogscarab
   
@@ -74,8 +77,16 @@
     hands:
       hand_right:
         location: Right
+        whitelist:
+          components:
+          - Tool
+          - Material
       hand_left:
         location: Left
+        whitelist:
+          components:
+          - Tool
+          - Material
     sortedHands:
     - hand_right
     - hand_left
@@ -120,6 +131,7 @@
   - type: GhostRole
     allowMovement: true
     allowSpeech: false
+    name: ghost-role-information-cogscarab-name
     description: ghost-role-information-cogscarab-description
     rules: ghost-role-information-familiar-rules
     raffle:

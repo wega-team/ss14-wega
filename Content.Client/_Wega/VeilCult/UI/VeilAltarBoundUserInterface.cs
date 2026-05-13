@@ -6,8 +6,8 @@ namespace Content.Client.Veil.Cult.Ui;
 
 public sealed class VeilAltarBoundUserInterface : BoundUserInterface
 {
-	[Dependency] private readonly IEntityManager _entMan = default!;
-	
+    [Dependency] private readonly IEntityManager _entMan = default!;
+    
     [ViewVariables]
     private VeilAltarMenu? _menu;
 
@@ -25,7 +25,7 @@ public sealed class VeilAltarBoundUserInterface : BoundUserInterface
             SendMessage(new VeilAltarSelectEnergyMessage(_entMan.GetNetEntity(user)));
             Close();
         };
-		
+        
         _menu.OnSelectOffer += altar =>
         {
             SendMessage(new VeilAltarSelectOfferMessage(_entMan.GetNetEntity(altar)));
@@ -34,7 +34,7 @@ public sealed class VeilAltarBoundUserInterface : BoundUserInterface
 
         _menu.OpenCentered();
     }
-	
+    
     protected override void UpdateState(BoundUserInterfaceState state)
     {
         base.UpdateState(state);

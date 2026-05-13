@@ -38,12 +38,12 @@ public sealed class VeilAltarSelectOfferMessage : BoundUserInterfaceMessage
 [Serializable, NetSerializable]
 public sealed class VeilAltarState : BoundUserInterfaceState
 {
-	public readonly NetEntity User;
+    public readonly NetEntity User;
     public readonly NetEntity Altar;
     
-	public VeilAltarState(NetEntity user, NetEntity altar)
-	{
-		User = user;
-		Altar = altar;
-	}
+    public VeilAltarState(NetEntity user, NetEntity altar)
+    {
+        User = user;
+        Altar = altar;
+    }
 }

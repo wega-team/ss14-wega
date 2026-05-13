@@ -27,3 +27,9 @@ public sealed class EnchantSelectedMessage : BoundUserInterfaceMessage
         EnchantId = enchantId;
     }
 }
+
+[Serializable, NetSerializable]
+public enum EnchantUiKey : byte
+{
+    Key
+}

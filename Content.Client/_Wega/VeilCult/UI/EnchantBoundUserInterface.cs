@@ -33,7 +33,7 @@ public sealed class EnchantBoundUserInterface : BoundUserInterface
     private void OnEnchantSelected(EntProtoId entId)
     {
         if (_playerManager.LocalSession?.AttachedEntity is not { } user)
-			return;
+            return;
         SendMessage(new EnchantSelectedMessage(_entMan.GetNetEntity(user), entId));
         Close();
     }

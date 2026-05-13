@@ -10,19 +10,13 @@ namespace Content.Server.Veil.Cult;
 
 public sealed partial class TeleportionEnchantSystem : SharedTeleportationEnchantSystem
 {
-	[Dependency] private readonly SharedUserInterfaceSystem _ui = default!;
-	
+    [Dependency] private readonly SharedUserInterfaceSystem _ui = default!;
+    
     public override void Initialize()
     {
         base.Initialize();
-		
-        SubscribeLocalEvent<TeleportationEnchantComponent, MapInitEvent>(OnMapInit);
+        
         SubscribeLocalEvent<TeleportationEnchantComponent, BoundUIOpenedEvent>(OnUiOpen);
-    }
-
-    private void OnMapInit(Entity<TeleportationEnchantComponent> ent, ref MapInitEvent args)
-    {
-        UpdateTeleportPoints(ent);
     }
 
     private void OnUiOpen(Entity<TeleportationEnchantComponent> ent, ref BoundUIOpenedEvent args)
@@ -39,7 +33,7 @@ public sealed partial class TeleportionEnchantSystem : SharedTeleportationEnchan
         while (allEnts.MoveNext(out var warpEnt, out var warpPointComp))
             ent.Comp.AvailableWarps.Add(new TeleportPoint(warpPointComp.AssignedName, GetNetEntity(warpEnt)));
 
-		_ui.SetUiState(ent.Owner, TeleportEnchantUiKey.Key, new TeleportationEnchantBoundUserInterfaceState(ent.Comp.AvailableWarps));
+        _ui.SetUiState(ent.Owner, TeleportEnchantUiKey.Key, new TeleportationEnchantBoundUserInterfaceState(ent.Comp.AvailableWarps));
         Dirty(ent);
     }
 }

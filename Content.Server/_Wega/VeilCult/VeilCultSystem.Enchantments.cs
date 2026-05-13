@@ -477,11 +477,15 @@ public sealed partial class VeilCultSystem
         foreach (var cultist in nearbyCultists)
         {
             _damage.TryChangeDamage(cultist.Owner, damage, true);
+            if (TryComp<BloodstreamComponent>(cultist.Owner, out var bloodstream))
+                _blood.TryModifyBleedAmount((cultist.Owner, bloodstream), -5f);
         }
         var nearbyConstruct = _entityLookup.GetEntitiesInRange<VeilCultConstructComponent>(Transform(uid).Coordinates, 3f);
         foreach (var construct in nearbyConstruct)
         {
             _damage.TryChangeDamage(construct.Owner, damage, true);
+            if (TryComp<BloodstreamComponent>(construct.Owner, out var bloodstream))
+                _blood.TryModifyBleedAmount((construct.Owner, bloodstream), -5f);
         }
         var nearbyWalls = _entityLookup.GetEntitiesInRange<OccluderComponent>(Transform(uid).Coordinates, 4f)
             .Where(target => _tag.HasTag(target.Owner, "Wall"))
@@ -573,15 +577,14 @@ public sealed partial class VeilCultSystem
     
     private void SealWoundOnUse(EntityUid uid, SealWoundsEnchantComponent comp, AfterInteractEvent args)
     {
-        if (args.Target != null)
+        if (args.Target != null && HasComp<VeilCultistComponent>(args.Target.Value))
         {
-            if (HasComp<VeilCultistComponent>(args.Target.Value))
-            {
-                var damage = new DamageSpecifier { DamageDict = { { "Blunt", -15 }, { "Slash", -15 }, { "Piercing", -20 }, { "Heat", -30 } } };
-                _damage.TryChangeDamage(args.Target.Value, damage, true);
-                RemComp<EnchantedComponent>(args.Used);
-                RemComp<SealWoundsEnchantComponent>(args.Used);
-            }
+            var damage = new DamageSpecifier { DamageDict = { { "Blunt", -15 }, { "Slash", -15 }, { "Piercing", -20 }, { "Heat", -30 } } };
+            _damage.TryChangeDamage(args.Target.Value, damage, true);
+            if (TryComp<BloodstreamComponent>(args.Target.Value, out var bloodstream))
+                _blood.TryModifyBleedAmount((args.Target.Value, bloodstream), -5f);
+            RemComp<EnchantedComponent>(args.Used);
+            RemComp<SealWoundsEnchantComponent>(args.Used);
         }
     }
 }

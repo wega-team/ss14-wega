@@ -15,19 +15,19 @@ namespace Content.Shared.Veil.Cult;
 public abstract class SharedVeilBeaconSystem : EntitySystem
 {
     [Dependency] protected readonly SharedUserInterfaceSystem UserInterfaceSystem = default!;
-	
+    
     [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
     [Dependency] private readonly INetManager _netManager = default!;
 
     public override void Initialize()
     {
         base.Initialize();
-		
+        
         // Bound UI subscriptions
         SubscribeLocalEvent<VeilCultBeaconComponent, VeilBeaconNameChangedMessage>(OnVeilBeaconNameChanged);
         SubscribeLocalEvent<VeilCultBeaconComponent, ComponentGetState>(OnGetState);
         SubscribeLocalEvent<VeilCultBeaconComponent, ComponentHandleState>(OnHandleState);
-		SubscribeLocalEvent<VeilCultBeaconComponent, ActivateInWorldEvent>(UseVeilBeacon);
+        SubscribeLocalEvent<VeilCultBeaconComponent, ActivateInWorldEvent>(UseVeilBeacon);
     }
 
     private void OnGetState(Entity<VeilCultBeaconComponent> ent, ref ComponentGetState args)
@@ -71,10 +71,10 @@ public abstract class SharedVeilBeaconSystem : EntitySystem
     private void OnVeilBeaconNameChanged(EntityUid uid, VeilCultBeaconComponent beacon, VeilBeaconNameChangedMessage args)
     {
         var name = args.Name.Trim();
-		if (name.Length > 0)
-			beacon.AssignedName = name[..Math.Min(beacon.MaxNameChars, name.Length)];
-		else
-			beacon.AssignedName = Loc.GetString("veil-cult-unknown-beacon");
+        if (name.Length > 0)
+            beacon.AssignedName = name[..Math.Min(beacon.MaxNameChars, name.Length)];
+        else
+            beacon.AssignedName = Loc.GetString("veil-cult-unknown-beacon");
         UpdateUI((uid, beacon));
         Dirty(uid, beacon);
 

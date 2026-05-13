@@ -10,19 +10,19 @@ namespace Content.Client.Veil.Cult.Ui;
 [GenerateTypedNameReferences]
 public sealed partial class VeilAltarMenu : RadialMenu
 {
-	[Dependency] private readonly IEntityManager _entMan = default!;
+    [Dependency] private readonly IEntityManager _entMan = default!;
 
-	public event Action<EntityUid>? OnSelectEnergy;
-	public event Action<EntityUid>? OnSelectOffer;
-	
-	private EntityUid _user;
-	private EntityUid _altar;
-	
-	public void UpdateState(VeilAltarState state)
-	{
-		_user = _entMan.GetEntity(state.User);
-		_altar = _entMan.GetEntity(state.Altar);
-}		
+    public event Action<EntityUid>? OnSelectEnergy;
+    public event Action<EntityUid>? OnSelectOffer;
+    
+    private EntityUid _user;
+    private EntityUid _altar;
+    
+    public void UpdateState(VeilAltarState state)
+    {
+        _user = _entMan.GetEntity(state.User);
+        _altar = _entMan.GetEntity(state.Altar);
+}       
 
     public VeilAltarMenu()
     {

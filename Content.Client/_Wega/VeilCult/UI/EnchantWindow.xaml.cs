@@ -46,7 +46,7 @@ public sealed partial class EnchantWindow : RadialMenu
 
     private RadialMenuButtonWithSector CreateEntityButton(EntityPrototype enchant)
     {
-		string suffix = enchant.EditorSuffix ?? "unknown";
+        string suffix = enchant.EditorSuffix ?? "unknown";
         var button = new RadialMenuButtonWithSector
         {
             ToolTip = Loc.GetString(suffix),
@@ -61,18 +61,18 @@ public sealed partial class EnchantWindow : RadialMenu
             HorizontalAlignment = HAlignment.Center,
             VerticalAlignment = VAlignment.Center
         };
-		
-		if (_prototype.TryIndex<EntityPrototype>(enchant.ID, out var item))
-		{
-			var entityView = new EntityPrototypeView
-			{
-				Scale = new Vector2(1.5f, 1.5f),
-				SetSize = new Vector2(48, 48),
-				Margin = new Thickness(2)
-			};
-			entityView.SetPrototype(item.ID);
-			container.AddChild(entityView);
-		}
+        
+        if (_prototype.TryIndex<EntityPrototype>(enchant.ID, out var item))
+        {
+            var entityView = new EntityPrototypeView
+            {
+                Scale = new Vector2(1.5f, 1.5f),
+                SetSize = new Vector2(48, 48),
+                Margin = new Thickness(2)
+            };
+            entityView.SetPrototype(item.ID);
+            container.AddChild(entityView);
+        }
 
         button.AddChild(container);
         button.OnPressed += _ => OnEnchantSelected?.Invoke(enchant.ID);

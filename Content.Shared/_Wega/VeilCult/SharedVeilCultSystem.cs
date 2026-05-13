@@ -25,8 +25,8 @@ public abstract class SharedVeilCultSystem : EntitySystem
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedStunSystem _stun = default!;
     [Dependency] private readonly SharedUserInterfaceSystem _ui = default!;
-    [Dependency] private readonly SharedHandsSystem _hands = default!;	
-	[Dependency] private readonly IPrototypeManager _prototype = default!;
+    [Dependency] private readonly SharedHandsSystem _hands = default!;  
+    [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
     [Dependency] private readonly MovementSpeedModifierSystem _speed = default!;
 
@@ -34,15 +34,15 @@ public abstract class SharedVeilCultSystem : EntitySystem
     {
         base.Initialize();
 
-		SubscribeLocalEvent<VeilCultistComponent, VeilCultMidasTouchActionEvent>(OnMidasTouch);
+        SubscribeLocalEvent<VeilCultistComponent, VeilCultMidasTouchActionEvent>(OnMidasTouch);
         SubscribeLocalEvent<EnchantableComponent, EnchantSelectedMessage>(OnEnchantSelected);
-		SubscribeLocalEvent<CogscarabComponent, PlayerAttachedEvent>(OnPlayerAttached);
-		SubscribeLocalEvent<ConfusionComponent, ComponentInit>(OnInit);
-		SubscribeLocalEvent<ConfusionComponent, ComponentRemove>(OnShutdown);
-		SubscribeLocalEvent<ConfusionComponent, RefreshMovementSpeedModifiersEvent>(Invert);
-		
+        SubscribeLocalEvent<CogscarabComponent, PlayerAttachedEvent>(OnPlayerAttached);
+        SubscribeLocalEvent<ConfusionComponent, ComponentInit>(OnInit);
+        SubscribeLocalEvent<ConfusionComponent, ComponentRemove>(OnShutdown);
+        SubscribeLocalEvent<ConfusionComponent, RefreshMovementSpeedModifiersEvent>(Invert);
+        
     }
-	
+    
 
     #region Deconvertation
     public void CultistDeconvertation(EntityUid cultist)
@@ -81,31 +81,31 @@ public abstract class SharedVeilCultSystem : EntitySystem
         RemComp<VeilCogDisplayComponent>(cultist);
     }
     #endregion
-	
+    
     private void OnMidasTouch(EntityUid cultist, VeilCultistComponent component, VeilCultMidasTouchActionEvent args)
     {
-		if (_hands.TryGetActiveItem(cultist, out var hand) && hand != null)
-		{
-			var uid = hand.Value;
-			if (TryComp<EnchantableComponent>(uid, out var enchant) && !HasComp<EnchantedComponent>(uid))
-			{
-				TryEnchant(uid, enchant, args);
-			}
-			else
-			{
-				var ev = new VeilCultMidasTouchGetHandEvent();
-				RaiseLocalEvent(cultist, ev);
-			}
-		}
-		
-		else
-		{
-			var ev = new VeilCultMidasTouchGetHandEvent();
-			RaiseLocalEvent(cultist, ev);
-		}
+        if (_hands.TryGetActiveItem(cultist, out var hand) && hand != null)
+        {
+            var uid = hand.Value;
+            if (TryComp<EnchantableComponent>(uid, out var enchant) && !HasComp<EnchantedComponent>(uid))
+            {
+                TryEnchant(uid, enchant, args);
+            }
+            else
+            {
+                var ev = new VeilCultMidasTouchGetHandEvent();
+                RaiseLocalEvent(cultist, ev);
+            }
+        }
+        
+        else
+        {
+            var ev = new VeilCultMidasTouchGetHandEvent();
+            RaiseLocalEvent(cultist, ev);
+        }
         args.Handled = true;
     }
-	
+    
     private void TryEnchant(EntityUid uid, EnchantableComponent component, VeilCultMidasTouchActionEvent args)
     {
         if (args.Handled)
@@ -117,12 +117,12 @@ public abstract class SharedVeilCultSystem : EntitySystem
 
     private void OnEnchantSelected(EntityUid uid, EnchantableComponent component, EnchantSelectedMessage args)
     {
-		var user = GetEntity(args.User);
+        var user = GetEntity(args.User);
         var doAfterDelay = component.Delay;
         var doAfterEventArgs = new DoAfterArgs(EntityManager, user, doAfterDelay,
             new EnchantingDoAfterEvent() { Entity = args.EnchantId },
             eventTarget: uid,
-			target: user)
+            target: user)
         {
             BreakOnMove = true,
             BreakOnDamage = true,
@@ -151,12 +151,12 @@ public abstract class SharedVeilCultSystem : EntitySystem
             _ui.SetUiState(card, EnchantUiKey.Key, state);
         }
     }
-	
+    
     private void OnPlayerAttached(EntityUid uid, CogscarabComponent component, PlayerAttachedEvent args)
     {
-		EnsureComp<TimedDespawnComponent>(uid, out var despawn);
-		despawn.Lifetime = 15f;
-		RemComp<CogscarabComponent>(uid);
+        EnsureComp<TimedDespawnComponent>(uid, out var despawn);
+        despawn.Lifetime = 15f;
+        RemComp<CogscarabComponent>(uid);
     }
 
     private void OnInit(EntityUid uid, ConfusionComponent component, ComponentInit args)
@@ -173,5 +173,5 @@ public abstract class SharedVeilCultSystem : EntitySystem
     {
         args.ModifySpeed(-1f, -1f);
     }
-	
+    
 }

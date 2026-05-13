@@ -9,9 +9,9 @@ namespace Content.Client.Veil.Cult.UI;
 [UsedImplicitly]
 public sealed class TeleportEnchantBoundUserInterface : BoundUserInterface
 {
-	
-	// Copy of TeleportLocationsUI for Teleportation enchantment
-	
+    
+    // Copy of TeleportLocationsUI for Teleportation enchantment
+    
     [ViewVariables]
     private TeleportEnchantMenu? _menu;
 
@@ -34,7 +34,7 @@ public sealed class TeleportEnchantBoundUserInterface : BoundUserInterface
             SendMessage(new TeleportEnchantDestinationMessage(netEnt, pointName));
         };
     }
-	
+    
 
     protected override void UpdateState(BoundUserInterfaceState state)
     {
@@ -43,5 +43,5 @@ public sealed class TeleportEnchantBoundUserInterface : BoundUserInterface
         if (state is TeleportationEnchantBoundUserInterfaceState updateState && _menu != null)
             _menu.UpdateState(updateState);
     }
-	
+    
 }

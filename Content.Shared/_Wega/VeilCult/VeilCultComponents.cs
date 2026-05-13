@@ -43,14 +43,14 @@ public sealed partial class VeilCultConstructComponent : Component;
 [RegisterComponent, NetworkedComponent]
 public sealed partial class VeilCultAltarComponent : Component
 {
-	[DataField("sound")]
+    [DataField("sound")]
     public SoundSpecifier Sound = new SoundPathSpecifier("/Audio/_Wega/Effects/altar.ogg");
 }
 
 [RegisterComponent, NetworkedComponent]
 public sealed partial class VeilCultStructureComponent : Component
 {
-	public bool IsActive = true;
+    public bool IsActive = true;
 }
 
 [RegisterComponent, NetworkedComponent]
@@ -73,11 +73,11 @@ public sealed partial class AutoVeilCultistComponent : Component;
 [RegisterComponent, NetworkedComponent]
 public sealed partial class InteractionCogInfectedComponent : Component
 {
-	public float PowerRate = 25000f;
-	
-	[DataField("drainSound")]
+    public float PowerRate = 25000f;
+    
+    [DataField("drainSound")]
     public SoundSpecifier Sound = new SoundPathSpecifier("/Audio/_Wega/Effects/interaction_cog_drain.ogg");
-	
+    
     public float NextTimeTick { get; set; }
 }
 
@@ -86,13 +86,13 @@ public sealed partial class EnchantableComponent : Component
 {
     [DataField("enchants", required: true)]
     public List<EntProtoId> Enchants = new();
-	
+    
     [DataField("delay")]
     public TimeSpan Delay = TimeSpan.FromSeconds(5);
-	
-	[DataField("cost")]
-	public float Cost = 100f;
-	
+    
+    [DataField("cost")]
+    public float Cost = 100f;
+    
 }
 
 [RegisterComponent]
@@ -142,13 +142,13 @@ public sealed partial class StunEnchantComponent : Component
 {
     [DataField("stunTime")]
     public TimeSpan StunTime = TimeSpan.FromSeconds(5);
-	
+    
     [DataField("muteTime")]
     public TimeSpan MuteTime = TimeSpan.FromSeconds(10);
-	
-	[DataField("mute")]
+    
+    [DataField("mute")]
     public bool Mute = true;
-	
+    
     [DataField("empBorgs")]
     public bool EmpBorgs = true;
 }
@@ -157,7 +157,7 @@ public sealed partial class StunEnchantComponent : Component
 public sealed partial class ForcePassageEnchantComponent : Component
 {
     [DataField("proto")]
-	public EntProtoId Proto; // for future
+    public EntProtoId Proto; // for future
 }
 
 [RegisterComponent, NetworkedComponent]
@@ -179,18 +179,18 @@ public sealed partial class SealWoundsEnchantComponent : Component;
 [RegisterComponent, NetworkedComponent]
 public sealed partial class HidingsClockEnchantComponent : Component
 {
-	[DataField("uses")]
-	public int Uses = 2;
-	
+    [DataField("uses")]
+    public int Uses = 2;
+    
     [DataField("radius")]
-	public float Radius = 5f;
+    public float Radius = 5f;
 }
 
 [RegisterComponent, NetworkedComponent]
 public sealed partial class ElectricalTouchEnchantComponent : Component
 {
-	[DataField("uses")]
-	public int Uses = 3;
+    [DataField("uses")]
+    public int Uses = 3;
 }
 
 [RegisterComponent, NetworkedComponent]
@@ -206,21 +206,21 @@ public sealed partial class CrusherEnchantComponent : Component;
 [RegisterComponent, NetworkedComponent]
 public sealed partial class KnockbackEnchantComponent : Component
 {
-	[DataField("uses")]
-	public int Uses = 3;
-	
-	[DataField("distance")]
-	public float Distance = 3f;
-	
-	[DataField("speed")]
-	public float Speed = 3f;
+    [DataField("uses")]
+    public int Uses = 3;
+    
+    [DataField("distance")]
+    public float Distance = 3f;
+    
+    [DataField("speed")]
+    public float Speed = 3f;
 }
 
 [RegisterComponent, NetworkedComponent]
 public sealed partial class SwordsmenEnchantComponent : Component
 {
-	[DataField("attackRate")]
-	public float AttackRate = 4f;
+    [DataField("attackRate")]
+    public float AttackRate = 4f;
 }
 
 [RegisterComponent, NetworkedComponent]
@@ -231,19 +231,19 @@ public sealed partial class HasteEnchantComponent : Component
 {
     [DataField("time")]
     public TimeSpan Time = TimeSpan.FromSeconds(8);
-	
-	[DataField("sprintModifier")]
-	public float SprintModifier = 1.5f;
-	
-	[DataField("walkModifier")]
-	public float WalkModifier = 1.5f;
+    
+    [DataField("sprintModifier")]
+    public float SprintModifier = 1.5f;
+    
+    [DataField("walkModifier")]
+    public float WalkModifier = 1.5f;
 }
 
 [RegisterComponent, NetworkedComponent]
 public sealed partial class ReflectionEnchantComponent : Component
 {
-	[DataField("uses")]
-	public int Uses = 4;
+    [DataField("uses")]
+    public int Uses = 4;
 }
 
 [RegisterComponent, NetworkedComponent]
@@ -265,8 +265,8 @@ public sealed partial class HardenPlatesEnchantComponent : Component
 [RegisterComponent, NetworkedComponent]
 public sealed partial class NorthStarEnchantComponent : Component
 {
-	[DataField("attackRate")]
-	public float AttackRate = 4f;
+    [DataField("attackRate")]
+    public float AttackRate = 4f;
 }
 
 [RegisterComponent, NetworkedComponent]
@@ -295,7 +295,7 @@ public sealed partial class EmpEnchantComponent : Component
 {
     [DataField("radiusStrong")]
     public float RadiusStrong = 4f;
-	
+    
     [DataField("radiusWeak")]
     public float RadiusWeak = 6f;
 }

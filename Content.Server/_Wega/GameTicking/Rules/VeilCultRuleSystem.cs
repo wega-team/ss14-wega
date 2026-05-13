@@ -52,7 +52,6 @@ namespace Content.Server.GameTicking.Rules
         [Dependency] private readonly SharedAchievementsSystem _achievement = default!;
         [Dependency] private readonly ActionsSystem _action = default!;
         [Dependency] private readonly AntagSelectionSystem _antag = default!;
-        [Dependency] private readonly IEntityManager _entityManager = default!;
         [Dependency] private readonly ISharedPlayerManager _player = default!;
         [Dependency] private readonly IPlayerManager _playerManager = default!;
         [Dependency] private readonly IAdminLogManager _adminLogManager = default!;
@@ -60,19 +59,17 @@ namespace Content.Server.GameTicking.Rules
         [Dependency] private readonly MindSystem _mind = default!;
         [Dependency] private readonly NpcFactionSystem _npcFaction = default!;
         [Dependency] private readonly RoleSystem _role = default!;
-        [Dependency] private readonly SharedHandsSystem _hands = default!;
         [Dependency] private readonly RoundEndSystem _roundEndSystem = default!;
         [Dependency] private readonly IRobustRandom _random = default!;
         [Dependency] private readonly SharedAudioSystem _audio = default!;
         [Dependency] private readonly SharedPopupSystem _popup = default!;
-        [Dependency] private readonly SharedVisualBodySystem _visualBody = default!;
         [Dependency] private readonly ObjectivesSystem _objectives = default!;
         [Dependency] private readonly TargetObjectiveSystem _target = default!;
         [Dependency] private readonly MetaDataSystem _meta = default!;
         [Dependency] private readonly SharedStationSystem _stationSystem = default!;
         [Dependency] private readonly EntityLookupSystem _entityLookup = default!;
         [Dependency] private readonly ServerGlobalSoundSystem _sound = default!;
-		[Dependency] private readonly ChatSystem _chat = default!;
+        [Dependency] private readonly ChatSystem _chat = default!;
 
         public readonly ProtoId<NpcFactionPrototype> VeilCultNpcFaction = "VeilCult";
 
@@ -172,9 +169,9 @@ namespace Content.Server.GameTicking.Rules
             {
                 if (xform.GridUid != mainGrid)
                     continue;
-				
-				if (HasComp<ItemComponent>(uid))
-					continue;
+                
+                if (HasComp<ItemComponent>(uid))
+                    continue;
 
                 placeCandidates.Add(uid);       
             }
@@ -250,9 +247,9 @@ namespace Content.Server.GameTicking.Rules
             var mindLink = EnsureComp<MindLinkComponent>(uid);
             mindLink.Channels.Add(culsistComp.CultMindChannel);
 
-			var ritualObjective = _objectives.TryCreateObjective(mindId, mind, "VeilCultRitualObjective");
-			if (ritualObjective != null)
-				_mind.AddObjective(mindId, mind, ritualObjective.Value);
+            var ritualObjective = _objectives.TryCreateObjective(mindId, mind, "VeilCultRitualObjective");
+            if (ritualObjective != null)
+                _mind.AddObjective(mindId, mind, ritualObjective.Value);
             MakeCultist(uid);
         }
         
