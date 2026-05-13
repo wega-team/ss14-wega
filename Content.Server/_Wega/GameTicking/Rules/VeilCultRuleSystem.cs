@@ -250,8 +250,10 @@ namespace Content.Server.GameTicking.Rules
             var mindLink = EnsureComp<MindLinkComponent>(uid);
             mindLink.Channels.Add(culsistComp.CultMindChannel);
 
+			var ritualObjective = _objectives.TryCreateObjective(mindId, mind, "VeilCultRitualObjective");
+			if (ritualObjective != null)
+				_mind.AddObjective(mindId, mind, ritualObjective.Value);
             MakeCultist(uid);
-            _objectives.TryCreateObjective(mindId, mind, "VeilCultRitualObjective");
         }
         
         private void CheckStage()

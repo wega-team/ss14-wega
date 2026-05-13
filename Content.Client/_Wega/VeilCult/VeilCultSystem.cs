@@ -36,7 +36,7 @@ namespace Content.Client.Veil.Cult
             if (!TryComp<SpriteComponent>(uid, out var sprite))
                 return;
 
-            if (_sprite.LayerMapTryGet(uid, CogKey.Halo, out _, true))
+            if (_sprite.LayerMapTryGet(uid, CogKey.Halo, out _, false))
                 return;
 
             var bounds = _sprite.GetLocalBounds((uid, sprite));

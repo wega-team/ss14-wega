@@ -361,7 +361,7 @@ public sealed partial class VeilCultSystem : SharedVeilCultSystem
         var xform = Transform(uid);
         var msg = Loc.GetString("blood-ritual-activate-warning",
             ("location", FormattedMessage.RemoveMarkupOrThrow(_navMap.GetNearestBeaconString((uid, xform)))));
-        _chat.DispatchGlobalAnnouncement(msg, playSound: false, colorOverride: Color.Red);
+        _chat.DispatchGlobalAnnouncement(msg, playSound: true, colorOverride: Color.Red);
     }
 
     private void CompleteRitual(EntityUid uid)

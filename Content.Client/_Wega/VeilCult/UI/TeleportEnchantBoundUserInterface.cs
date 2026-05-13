@@ -29,9 +29,6 @@ public sealed class TeleportEnchantBoundUserInterface : BoundUserInterface
             return;
 
         _menu.Title = Loc.GetString(teleComp.Name);
-        _menu.Warps = teleComp.AvailableWarps;
-        _menu.AddTeleportButtons();
-
         _menu.TeleportClicked += (netEnt, pointName) =>
         {
             SendMessage(new TeleportEnchantDestinationMessage(netEnt, pointName));
