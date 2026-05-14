@@ -12,6 +12,6 @@
   
 - type: mindChannel
   id: MindVeilCult
-  name: blood-Veil-mind-channel
+  name: veil-cult-mind-channel
   keycode: 'р'
   color: "#330000"
