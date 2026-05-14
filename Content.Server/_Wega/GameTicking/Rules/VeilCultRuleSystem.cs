@@ -176,10 +176,10 @@ namespace Content.Server.GameTicking.Rules
                 placeCandidates.Add(uid);       
             }
 
-            if (placeCandidates.Count >= 3)
+            if (placeCandidates.Count >= 6)
             {
                 var selectedIndices = new HashSet<int>();
-                while (selectedIndices.Count < 3)
+                while (selectedIndices.Count < 6)
                 {
                     var index = _random.Next(0, placeCandidates.Count);
                     selectedIndices.Add(index);
