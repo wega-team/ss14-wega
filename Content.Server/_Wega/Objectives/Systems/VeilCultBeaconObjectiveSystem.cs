@@ -18,22 +18,17 @@ public sealed class VeilCultBeaconObjectiveSystem : EntitySystem
 
     private void OnGetProgress(EntityUid uid, VeilCultBeaconObjectiveComponent comp, ref ObjectiveGetProgressEvent args)
     {
-		if (!_target.GetTarget(uid, out var target) || target == null)
-			return;
+        if (!_target.GetTarget(uid, out var target) || target == null)
+            return;
 
-		var targetUid = target.Value;
+        var targetUid = target.Value;
 
-		if (TryComp<TransformComponent>(targetUid, out var transform))
-		{
-			var nearbyEntity = _entityLookup.GetEntitiesInRange<VeilCultBeaconComponent>(
-				Transform(targetUid).Coordinates, 10f);
-
-			if (nearbyEntity.Count > 0)
-			{
-				args.Progress = 1f;
-				return;
-			}
-		}
+        var nearbyEntity = _entityLookup.GetEntitiesInRange<VeilCultBeaconComponent>(Transform(targetUid).Coordinates, 10f);
+        if (nearbyEntity.Count > 0)
+        {
+            args.Progress = 1f;
+            return;
+        }
 
         args.Progress = 0f;
     }

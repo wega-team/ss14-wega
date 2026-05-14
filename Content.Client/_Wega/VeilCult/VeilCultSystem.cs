@@ -10,9 +10,7 @@ namespace Content.Client.Veil.Cult
 {
     public sealed class VeilCultSystem : SharedVeilCultSystem
     {
-        [Dependency] private readonly AppearanceSystem _appearance = default!;
         [Dependency] private readonly IPrototypeManager _prototype = default!;
-        [Dependency] private readonly IRobustRandom _random = default!;
         [Dependency] private readonly SpriteSystem _sprite = default!;
 
         public override void Initialize()

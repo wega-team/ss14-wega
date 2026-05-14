@@ -79,6 +79,8 @@ public sealed partial class VeilCultSystem
     [Dependency] private readonly TileSystem _tile = default!;
     [Dependency] private readonly SharedMapSystem _map = default!;
     [Dependency] private readonly ITileDefinitionManager _tileDefinitionManager = default!;
+    
+    private static readonly ProtoId<TagPrototype> WallTag = "Wall";
 
     private void InitializeEnchantments()
     {
@@ -504,7 +506,7 @@ public sealed partial class VeilCultSystem
                 _blood.TryModifyBleedAmount((construct.Owner, bloodstream), -5f);
         }
         var nearbyWalls = _entityLookup.GetEntitiesInRange<OccluderComponent>(Transform(uid).Coordinates, 4f)
-            .Where(target => _tag.HasTag(target.Owner, "Wall"))
+            .Where(target => _tag.HasTag(target.Owner, WallTag))
             .ToList();
         foreach (var wall in nearbyWalls)
         {       

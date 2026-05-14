@@ -22,17 +22,17 @@ public sealed class VeilCultRitualObjectiveSystem : EntitySystem
         var cult = _veilCult.GetActiveRule();
         args.Progress = 0f;
 
-		if (cult != null)
-		{
-			if (cult.RitualGoing)
-			{
-				args.Progress = 0.5f;
-			}
-			var condition = cult.VeilCultWinCondition.ToList();
-			if (condition.Contains(VeilCultWinType.GodCalled))
-			{
-				args.Progress = 1f;
-			}
-		}
+        if (cult != null)
+        {
+            if (cult.RitualGoing)
+            {
+                args.Progress = 0.5f;
+            }
+            var condition = cult.VeilCultWinCondition.ToList();
+            if (condition.Contains(VeilCultWinType.GodCalled))
+            {
+                args.Progress = 1f;
+            }
+        }
     }
 }

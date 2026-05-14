@@ -170,9 +170,9 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
             if (TryComp<IdentityBlockerComponent>(cloth, out var blocker) && blocker.Coverage.HasFlag(IdentityBlockerCoverage.EYES) && blocker.Enabled)
                 return;
         }
-		
-		var name = Identity.Name(uid, EntityManager, args.Examiner);
-		args.PushMarkup(Loc.GetString("blood-cultist-eyes-glow-examined", ("name", name)));
+        
+        var name = Identity.Name(uid, EntityManager, args.Examiner);
+        args.PushMarkup(Loc.GetString("blood-cultist-eyes-glow-examined", ("name", name)));
     }
 
     // Corvax-Wega-Testing-start

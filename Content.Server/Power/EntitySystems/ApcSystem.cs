@@ -31,7 +31,7 @@ public sealed class ApcSystem : EntitySystem
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
-	[Dependency] private readonly SharedContainerSystem _container = default!; // Corvax-Wega-VeilCult
+    [Dependency] private readonly SharedContainerSystem _container = default!; // Corvax-Wega-VeilCult
     [Dependency] private readonly ItemSlotsSystem _itemSlots = default!; // Corvax-Wega-VeilCult
 
     public override void Initialize()
@@ -47,7 +47,7 @@ public sealed class ApcSystem : EntitySystem
         SubscribeLocalEvent<ApcComponent, GotEmaggedEvent>(OnEmagged);
 
         SubscribeLocalEvent<ApcComponent, EmpPulseEvent>(OnEmpPulse);
-		
+        
         SubscribeLocalEvent<ApcComponent, ItemSlotInsertAttemptEvent>(OnItemSlotInsertAttempt); // Corvax-Wega-VeilCult
         SubscribeLocalEvent<ApcComponent, ItemSlotEjectAttemptEvent>(OnItemSlotEjectAttempt); // Corvax-Wega-VeilCult
         SubscribeLocalEvent<ApcComponent, EntInsertedIntoContainerMessage>(OnInserted); // Corvax-Wega-VeilCult
@@ -107,13 +107,13 @@ public sealed class ApcSystem : EntitySystem
         // We cannot update immediately, as various network/battery state is not valid yet.
         // Defer until the next tick.
         component.NeedStateUpdate = true;
-		
-		// Corvax-Wega-VeilCult-Start
-		if (!TryComp<ContainerManagerComponent>(uid, out var containerManager))
+        
+        // Corvax-Wega-VeilCult-Start
+        if (!TryComp<ContainerManagerComponent>(uid, out var containerManager))
             return;
 
         component.CogSlot = _container.EnsureContainer<ContainerSlot>(uid, component.CogSlotId, containerManager);
-		// Corvax-Wega-VeilCult-End
+        // Corvax-Wega-VeilCult-End
     }
 
     private void OnBoundUiOpen(EntityUid uid, ApcComponent component, BoundUIOpenedEvent args)
@@ -278,8 +278,8 @@ public sealed class ApcSystem : EntitySystem
             ApcToggleBreaker(uid, component);
         }
     }
-	
-	// Corvax-Wega-VeilCult-Start
+    
+    // Corvax-Wega-VeilCult-Start
     private void OnItemSlotInsertAttempt(Entity<ApcComponent> uid, ref ItemSlotInsertAttemptEvent args)
     {
         if (args.Cancelled)
@@ -294,7 +294,7 @@ public sealed class ApcSystem : EntitySystem
         if (!panel.Open || args.User == uid.Owner)
             args.Cancelled = true;
     }
-	
+    
     private void OnItemSlotEjectAttempt(Entity<ApcComponent> uid, ref ItemSlotEjectAttemptEvent args)
     {
         if (args.Cancelled)
@@ -308,23 +308,23 @@ public sealed class ApcSystem : EntitySystem
 
         if (!panel.Open || args.User == uid.Owner)
             args.Cancelled = true;
-	}
-	
-	protected void OnInserted(Entity<ApcComponent> uid, ref EntInsertedIntoContainerMessage args)
+    }
+    
+    private void OnInserted(Entity<ApcComponent> uid, ref EntInsertedIntoContainerMessage args)
     {
 
         if (args.Container == uid.Comp.CogSlot)
             EnsureComp<InteractionCogInfectedComponent>(uid);
     }
 
-    protected void OnRemoved(Entity<ApcComponent> uid, ref EntRemovedFromContainerMessage args)
+    private void OnRemoved(Entity<ApcComponent> uid, ref EntRemovedFromContainerMessage args)
     {
 
         if (args.Container == uid.Comp.CogSlot && HasComp<InteractionCogInfectedComponent>(uid))
             RemComp<InteractionCogInfectedComponent>(uid);
     }
-	// Corvax-Wega-VeilCult-End
-	
+    // Corvax-Wega-VeilCult-End
+    
 }
 
 [ByRefEvent]
