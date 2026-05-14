@@ -24,7 +24,7 @@ public abstract partial class SharedTeleportationEnchantSystem : EntitySystem
 
     protected virtual void OnTeleportToLocationRequest(Entity<TeleportationEnchantComponent> ent, ref TeleportEnchantDestinationMessage args)
     {
-        if (!TryGetEntity(args.NetEnt, out var telePointEnt) || TerminatingOrDeleted(telePointEnt) || !HasComp<VeilCultBeaconComponent>(telePointEnt) || args.Actor == null)
+        if (!TryGetEntity(args.NetEnt, out var telePointEnt) || TerminatingOrDeleted(telePointEnt) || !HasComp<VeilCultBeaconComponent>(telePointEnt))
             return;
 
         Teleport(args.Actor, args.NetEnt, ent.Owner);
@@ -37,7 +37,7 @@ public abstract partial class SharedTeleportationEnchantSystem : EntitySystem
     private void Teleport(EntityUid user, NetEntity beacon, EntityUid used)
     {
         var doAfterEventArgs = new DoAfterArgs(EntityManager, user, TimeSpan.FromSeconds(4),
-            new VeilCultTeleportDoAfterEvent() { Target = beacon },
+            new VeilCultTeleportDoAfterEvent() { Beacon = beacon },
             eventTarget: user,
             used: used
             )
@@ -52,10 +52,10 @@ public abstract partial class SharedTeleportationEnchantSystem : EntitySystem
     
     private void OnTeleportSuccess(EntityUid uid, VeilCultistComponent comp, VeilCultTeleportDoAfterEvent args)
     {   
-        if (args.Target == null || args.Used == null || args.Cancelled || args.Handled)
+        if (args.Used == null || args.Cancelled || args.Handled)
             return;
         
-        var beacon = GetEntity(args.Target);
+        var beacon = GetEntity(args.Beacon);
         Spawn("BloodCultOutEffect", Transform(uid).Coordinates);
         _transform.SetCoordinates(uid, Transform(beacon).Coordinates);
         

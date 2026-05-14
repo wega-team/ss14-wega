@@ -14,10 +14,8 @@ namespace Content.Shared.Veil.Cult;
 
 public abstract class SharedVeilBeaconSystem : EntitySystem
 {
-    [Dependency] protected readonly SharedUserInterfaceSystem UserInterfaceSystem = default!;
     
-    [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
-    [Dependency] private readonly INetManager _netManager = default!;
+    [Dependency] protected readonly SharedUserInterfaceSystem UserInterfaceSystem = default!;
 
     public override void Initialize()
     {

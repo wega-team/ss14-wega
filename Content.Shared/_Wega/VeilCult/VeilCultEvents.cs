@@ -78,7 +78,7 @@ public sealed partial class RedFlameEnchantActionEvent : InstantActionEvent
 [Serializable, NetSerializable]
 public sealed partial class VeilCultTeleportDoAfterEvent : SimpleDoAfterEvent
 {
-    public NetEntity Target;
+    public NetEntity Beacon;
 }
 
 [Serializable, NetSerializable]
