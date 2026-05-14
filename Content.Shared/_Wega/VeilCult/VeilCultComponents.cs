@@ -157,7 +157,7 @@ public sealed partial class StunEnchantComponent : Component
 public sealed partial class ForcePassageEnchantComponent : Component
 {
     [DataField("proto")]
-    public EntProtoId Proto; // for future
+    public EntProtoId? Proto; // for future
 }
 
 [RegisterComponent, NetworkedComponent]

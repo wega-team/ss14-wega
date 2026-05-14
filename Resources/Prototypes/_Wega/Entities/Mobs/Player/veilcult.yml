@@ -112,7 +112,7 @@
       behaviors:
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-      recursive: false
+        recursive: false
   - type: VentCrawler # Corvax-Wega-VentCrawling
   - type: CriminalRecordsConsole
   - type: UserInterface
