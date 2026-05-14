@@ -23,7 +23,7 @@
     enchants:
     - VeilCultClockworkSlabStun
     - VeilCultClockworkSlabTeleportation
-    - VeilCultClockworkSlabTerraform
+    # - VeilCultClockworkSlabTerraform пока что нет
     - VeilCultClockworkSlabForcePassage
     - VeilCultClockworkSlabSealWounds
     - VeilCultClockworkSlabHidingsClock

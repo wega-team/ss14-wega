@@ -263,7 +263,7 @@ namespace Content.Server.GameTicking.Rules
             var playerCount = GetPlayerCount();
 
             // Second
-            if (playerCount >= 100 && totalCultEntities >= playerCount * 0.1f || playerCount < 100 && totalCultEntities >= playerCount * 0.2f || cult.RitualStage)
+            if (playerCount >= 100 && totalCultEntities >= playerCount * 0.1f || playerCount < 100 && totalCultEntities >= playerCount * 0.2f)
             {
                 foreach (var cultist in GetAllCultists())
                 {
@@ -289,7 +289,7 @@ namespace Content.Server.GameTicking.Rules
             }
 
             // Third
-            if (playerCount >= 100 && totalCultEntities >= playerCount * 0.2f || playerCount < 100 && totalCultEntities >= playerCount * 0.3f || cult.RitualStage)
+            if (playerCount >= 100 && totalCultEntities >= playerCount * 0.2f || playerCount < 100 && totalCultEntities >= playerCount * 0.3f)
             {
                 foreach (var cultist in GetAllCultists())
                 {

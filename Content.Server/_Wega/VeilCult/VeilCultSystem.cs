@@ -327,7 +327,7 @@ public sealed partial class VeilCultSystem : SharedVeilCultSystem
             _popup.PopupEntity(Loc.GetString("veil-cult-ritual-going"), uid, PopupType.Medium);
             return;
         }
-        if (!cult.FirstTriggered)
+        if (!cult.SecondTriggered)
         {
             _popup.PopupEntity(Loc.GetString("veil-cult-too-weak"), uid, PopupType.Medium);
             return;
@@ -354,7 +354,7 @@ public sealed partial class VeilCultSystem : SharedVeilCultSystem
     private void AnnounceRitualActivation(EntityUid uid)
     {
         var xform = Transform(uid);
-        var msg = Loc.GetString("blood-ritual-activate-warning",
+        var msg = Loc.GetString("veil-ritual-activate-warning",
             ("location", FormattedMessage.RemoveMarkupOrThrow(_navMap.GetNearestBeaconString((uid, xform)))));
         _chat.DispatchGlobalAnnouncement(msg, playSound: true, colorOverride: Color.Red);
     }

@@ -74,15 +74,12 @@
     count: 1
     
 - type: entity
-  parent: SheetBrass
+  parent: SheetChargedBrass
   id: SheetChargedBrass6
   name: charged brass
   suffix: 6
   components:
-  - type: Sprite
-    state: brass
   - type: Stack
-    stackType: ChargedBrass
     count: 6
 
 - type: entity

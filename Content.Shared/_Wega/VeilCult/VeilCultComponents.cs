@@ -56,7 +56,7 @@ public sealed partial class VeilCultStructureComponent : Component
 [RegisterComponent, NetworkedComponent]
 public sealed partial class VeilCultBeaconComponent : Component
 {
-    public float NextTimeTick { get; set; }
+    public float NextTimeTick { get; set; } = 5;
 
     [ViewVariables(VVAccess.ReadWrite), Access(Other = AccessPermissions.ReadWriteExecute)]
     [DataField]
@@ -78,7 +78,7 @@ public sealed partial class InteractionCogInfectedComponent : Component
     [DataField("drainSound")]
     public SoundSpecifier Sound = new SoundPathSpecifier("/Audio/_Wega/Effects/interaction_cog_drain.ogg");
     
-    public float NextTimeTick { get; set; }
+    public float NextTimeTick { get; set; } = 5;
 }
 
 [RegisterComponent]

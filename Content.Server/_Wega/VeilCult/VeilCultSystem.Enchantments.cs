@@ -1,14 +1,15 @@
 using System.Linq;
+using Vector2 = System.Numerics.Vector2;
 using Content.Server.Administration;
 using Content.Server.Body.Systems;
 using Content.Server.Chat.Systems;
 using Content.Server.Emp;
 using Content.Server.EUI;
 using Content.Server.Flash;
+using Content.Server.Surgery;
 using Content.Shared.Body.Components;
 using Content.Shared.Veil.Cult.Components;
 using Content.Shared.Veil.Cult;
-using Content.Shared.Chemistry.Components;
 using Content.Shared.Clothing;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
@@ -28,7 +29,6 @@ using Content.Shared.Popups;
 using Content.Shared.Roles;
 using Content.Shared.Stacks;
 using Content.Shared.Standing;
-using Content.Shared.StatusEffectNew;
 using Content.Shared.Stunnable;
 using Content.Shared.Timing;
 using Content.Server.Audio;
@@ -53,6 +53,9 @@ using Content.Shared.Movement.Systems;
 using Content.Shared.Movement.Components;
 using Content.Shared.CombatMode.Pacification;
 using Content.Shared.Tag;
+using Content.Shared.Emag.Systems;
+using Content.Shared.Maps;
+using Content.Shared.Doors.Systems;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Containers;
@@ -63,6 +66,7 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
+using Robust.Shared.Map.Components;
 
 namespace Content.Server.Veil.Cult;
 
@@ -70,6 +74,11 @@ public sealed partial class VeilCultSystem
 {
     [Dependency] private readonly MovementSpeedModifierSystem _speed = default!;
     [Dependency] private readonly TagSystem _tag = default!;
+    [Dependency] private readonly SharedDoorSystem _door = default!;
+    [Dependency] private readonly SurgerySystem _surgery = default!;
+    [Dependency] private readonly TileSystem _tile = default!;
+    [Dependency] private readonly SharedMapSystem _map = default!;
+    [Dependency] private readonly ITileDefinitionManager _tileDefinitionManager = default!;
 
     private void InitializeEnchantments()
     {
@@ -212,7 +221,7 @@ public sealed partial class VeilCultSystem
         var user = args.Performer;
         var shield = EnsureComp<EnergyShieldOwnerComponent>(user);
         shield.ShieldEntity = Spawn("EnergyShieldEffect", Transform(user).Coordinates);
-        shield.SustainingCount = 5; 
+        shield.SustainingCount = 6; 
         _transform.SetParent(shield.ShieldEntity.Value, user);
         args.Handled = true;
     }
@@ -221,7 +230,7 @@ public sealed partial class VeilCultSystem
     private void OnActivateCamouflage(EntityUid uid, EnchantedComponent comp, CamouflageEnchantActionEvent args)
     {
         EnsureComp<StealthComponent>(args.Performer, out var stealth);
-        stealth.LastVisibility = 0.1f;
+        stealth.LastVisibility = 0.2f;
         Dirty(args.Performer, stealth);
         Timer.Spawn(TimeSpan.FromSeconds(10), () => 
         {
@@ -328,9 +337,14 @@ public sealed partial class VeilCultSystem
     {
         if (TryComp<WieldableComponent>(uid, out var wield))
         {
-            if (wield.Wielded)
+            if (wield.Wielded && args.HitEntities != null)
             {
-                args.BonusDamage += new DamageSpecifier { DamageDict = { { "Blunt", 30 } } }; // Тут должна быть логика перелома, но у нас умерла хирургия.
+                args.BonusDamage += new DamageSpecifier { DamageDict = { { "Blunt", 40 } } };
+                foreach (var target in args.HitEntities)
+                {
+                    var selectedInjury = _random.Pick(new[] { "OpenFracture", "ClosedFracture" });
+                    _surgery.TryAddInternalDamage(target, selectedInjury);
+                }
             }
         }
         RemComp<CrusherEnchantComponent>(uid);
@@ -422,11 +436,13 @@ public sealed partial class VeilCultSystem
         
         foreach (var target in args.HitEntities)
         {
-            if (HasComp<AirlockComponent>(target) && HasComp<AccessReaderComponent>(target))
+            if (HasComp<DoorComponent>(target))
             {
-                RemComp<AccessReaderComponent>(target);
+                var emaggedEvent = new GotEmaggedEvent(uid, EmagType.Access);
+                RaiseLocalEvent(target, ref emaggedEvent);
                 RemComp<EnchantedComponent>(uid);
                 RemComp<ForcePassageEnchantComponent>(uid);
+                _door.TryOpen(target);
                 break;
             }
         }
@@ -439,7 +455,7 @@ public sealed partial class VeilCultSystem
             foreach (var target in args.HitEntities)
             {
                 _blood.TryBleedOut(target, 100);
-                // должна быть логика на внутренний кровотек, но хирургии гг.
+                _surgery.TryAddInternalDamage(target, "ArterialBleeding");
             }
             RemComp<BloodshedEnchantComponent>(uid);
             RemComp<EnchantedComponent>(uid);
@@ -494,7 +510,6 @@ public sealed partial class VeilCultSystem
         {       
             if (!_random.Prob(0.7f)) 
                 continue;
-
             var delay = TimeSpan.FromSeconds(_random.NextFloat(0.1f, 1f));
             Timer.Spawn(delay, () =>
             {
@@ -505,6 +520,24 @@ public sealed partial class VeilCultSystem
                 Spawn("WallClock", wallCoords);
                 QueueDel(wall.Owner);
             });
+        }
+        
+        var cultistPos = _transform.GetWorldPosition(args.User);
+        var tileDef = (ContentTileDefinition)_tileDefinitionManager["FloorBrassFilled"];
+        var gridUid = _transform.GetGrid(args.User);
+        if (gridUid != null && TryComp<MapGridComponent>(gridUid.Value, out var grid))
+        {
+            var tiles = _map.GetTilesIntersecting(gridUid.Value, grid,
+                Box2.CenteredAround(cultistPos, new Vector2(4, 4)), ignoreEmpty: true);
+
+            foreach (var tile in tiles)
+            {
+                if (!_random.Prob(0.5f))
+                    continue;
+                
+                var delay = TimeSpan.FromSeconds(_random.NextFloat(0.1f, 1f));
+                Timer.Spawn(delay, () => _tile.ReplaceTile(tile, tileDef));
+            }
         }
         _audio.PlayPvs(CultSpell, args.User);
         QueueDel(uid);

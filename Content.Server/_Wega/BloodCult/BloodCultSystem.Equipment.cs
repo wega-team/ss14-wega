@@ -38,7 +38,7 @@ public sealed partial class BloodCultSystem
         if (args.Cancelled)
             return;
 
-        if (HasComp<BloodCultistComponent>(args.User))
+        if (HasComp<BloodCultistComponent>(args.User) || HasComp<VeilCultistComponent>(args.User))
             return;
 
         args.Cancelled = true;
