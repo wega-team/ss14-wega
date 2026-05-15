@@ -186,6 +186,21 @@ public sealed class SmartEquipSystem : EntitySystem
         {
             if (handItem == null)
             {
+                // Corvax-Wega-Start-DisableSmartEquip
+                if (slots.DisableSmartEquipEject)
+                {
+                    if (!_inventory.CanUnequip(uid, equipmentSlot, out var slotInventoryReason))
+                    {
+                        _popup.PopupClient(Loc.GetString(slotInventoryReason), uid, uid);
+                        return;
+                    }
+
+                    _inventory.TryUnequip(uid, equipmentSlot, inventory: inventory, predicted: true, checkDoafter: true);
+                    _hands.TryPickup(uid, slotItem, handsComp: hands);
+                    return;
+                }
+                // Corvax-Wega-End-DisableSmartEquip
+                
                 ItemSlot? toEjectFrom = null;
 
                 foreach (var slot in slots.Slots.Values)

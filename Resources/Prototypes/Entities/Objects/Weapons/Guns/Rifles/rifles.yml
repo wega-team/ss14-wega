@@ -29,6 +29,7 @@
     soundRack:
       path: /Audio/Weapons/Guns/Cock/sf_rifle_cock.ogg
   - type: ItemSlots
+    disableSmartEquipEject: true # Corvax-Wega-Add
     slots:
       gun_magazine:
         name: Magazine
