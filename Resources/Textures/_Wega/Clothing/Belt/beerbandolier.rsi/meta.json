@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Drawn by Floppa, AKA. Krisp. Edited by MartynDew_ for ItemMapper",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "belt"
+    },
+    {
+      "name": "belt-onebottle"
+    },
+    {
+      "name": "belt-twobottle"
+    },
+    {
+      "name": "belt-threebottle"
+    },
+    {
+      "name": "equipped-BELT",
+      "directions": 4
+    },
+    {
+      "name": "inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "inhand-right",
+      "directions": 4
+    }
+  ]
+}
