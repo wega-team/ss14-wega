@@ -27,4 +27,30 @@
       tags:
         - ConstructionMaterial
   - type: Dumpable
+  
+- type: entity
+  parent: BaseStorageItem
+  id: TechDiskBag
+  name: technology disk bag
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Devices/bag_diski.rsi
+    state: icon
+  - type: Item
+    size: Ginormous
+    storedRotation: -90
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - belt
+  - type: Storage
+    grid:
+    - 0,0,19,9
+    maxItemSize: Normal
+    quickInsert: true
+    areaInsert: true
+    whitelist:
+      components:
+        - TechnologyDisk
+  - type: Dumpable
   - type: MagnetPickup

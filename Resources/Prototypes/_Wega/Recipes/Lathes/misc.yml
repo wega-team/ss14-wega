@@ -37,3 +37,13 @@
   materials:
     Steel: 500
     Plastic: 300
+    
+- type: latheRecipe
+  id: TechDiskBag
+  result: TechDiskBag
+  categories:
+  - Clothing
+  completetime: 5
+  materials:
+    Cloth: 300
+    Durathread: 100
