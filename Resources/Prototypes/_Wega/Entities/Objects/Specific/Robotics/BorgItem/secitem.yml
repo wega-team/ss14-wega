@@ -126,7 +126,7 @@
 # SEC Granader
 - type: entity
   name: hand grenade gun
-  parent: BaseStorageItem
+  parent: BaseItem
   id: WeaponHandGranadeGun
   description: Load granade for optimal results.
   components:
