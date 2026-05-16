@@ -1110,7 +1110,7 @@
   - type: ItemBorgModule
     hands:
     - item: RCDCombatRecharging
-    - item: AccessConfiguratorBorg
+    - item: AccessConfiguratorAllAccses
     - item: BorgGeneratorMaterialRod
     - item: BorgGeneratorTile
     - item: BorgGeneratorMaterialSteal
