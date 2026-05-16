@@ -22,7 +22,7 @@ public sealed partial class NukeopsRuleComponent : Component
     [DataField]
     public uint AlertlevelDelay = 10;
     [DataField]
-    public bool CanChangeAlertLevel = true;
+    public bool CanChangeAlertLevel = false;
 
     //Corvax-Wega-War-Edit-End
     /// <summary>

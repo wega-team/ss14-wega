@@ -484,14 +484,14 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>//Co
     /// </summary>
     public WarConditionStatus GetWarCondition(NukeopsRuleComponent nukieRule, WarConditionStatus? oldStatus)
     {
-        if (!nukieRule.CanEnableWarOps)
+/*        if (!nukieRule.CanEnableWarOps) Corvax-Wega-Edit-Start
             return WarConditionStatus.NoWarUnknown;
 
         if (EntityQuery<NukeopsRoleComponent>().Count() < nukieRule.WarDeclarationMinOps)
             return WarConditionStatus.NoWarSmallCrew;
 
         if (nukieRule.LeftOutpost)
-            return WarConditionStatus.NoWarShuttleDeparted;
+            return WarConditionStatus.NoWarShuttleDeparted; Corvax-Wega-Edit-End*/
 
         if (oldStatus == WarConditionStatus.YesWar)
             return WarConditionStatus.WarReady;
