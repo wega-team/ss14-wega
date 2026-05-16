@@ -25,7 +25,8 @@ public sealed class RadiationOutburstRuleSystem : StationEventSystem<RadiationOu
     private static readonly ProtoId<TagPrototype> HighRiskItemTag = "HighRiskItem";
     private static readonly ProtoId<TagPrototype> OreTag = "Ore";
     private static readonly ProtoId<TagPrototype> ConstructionMaterialTag = "ConstructionMaterial";
-    private static readonly ProtoId<TagPrototype> IngotTag = "Ingot";
+    private static readonly ProtoId<TagPrototype> RawMaterialTag = "RawMaterial";
+    private static readonly ProtoId<TagPrototype> MaterialsThrophyTag = "MaterialsThrophy";
 
     public override void Initialize()
     {
@@ -58,7 +59,7 @@ public sealed class RadiationOutburstRuleSystem : StationEventSystem<RadiationOu
                 continue;
 
             //анти куча материалов чек
-            if (_tagSystem.HasTag(targetUid, OreTag) || _tagSystem.HasTag(targetUid, ConstructionMaterialTag) || _tagSystem.HasTag(targetUid, IngotTag))
+            if (_tagSystem.HasTag(targetUid, OreTag) || _tagSystem.HasTag(targetUid, ConstructionMaterialTag) || _tagSystem.HasTag(targetUid, RawMaterialTag) || _tagSystem.HasTag(targetUid, MaterialsThrophyTag))
                 continue;
 
             // анти педали айтем

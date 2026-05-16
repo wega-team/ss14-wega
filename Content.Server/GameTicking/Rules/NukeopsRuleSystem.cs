@@ -50,9 +50,7 @@ using System.Text;
 using Content.Shared.CombatMode.Pacification;//Corvax-DionaPacifist
 
 namespace Content.Server.GameTicking.Rules;
-
-//public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
-public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>//Corvax-Wega-Edit
+public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
 {
     [Dependency] private readonly AntagSelectionSystem _antag = default!;
     [Dependency] private readonly EmergencyShuttleSystem _emergency = default!;
