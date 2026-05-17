@@ -11,7 +11,7 @@
     layers:
     - state: core
     - state: pulse
-      # map: ["decay"]
+      # map: ["decay"] Corvax-Wega-Change
   - type: Appearance
   - type: GenericVisualizer
     visuals:
