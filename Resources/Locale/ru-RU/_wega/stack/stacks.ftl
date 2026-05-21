@@ -64,4 +64,4 @@ stack-chargedbrass = { $amount ->
     [1] лист
     [few] листа
     *[other] листов
-} пластали
+} заряженной латуни

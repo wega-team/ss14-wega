@@ -10,5 +10,5 @@ veil-beacon-current-name = Текущее название маяка:
 veil-beacon-ui-header = Латунный маяк
 teleportation-enchant-window-title = Зачарование телепортации
 veil-cult-unknown-beacon = Неназванный маяк
-veil-select-offer = Вербовка заблудших
-veil-select-energy = Энергия праведников
+select-veil-offer = Вербовка заблудших
+select-veil-energy = Энергия праведников

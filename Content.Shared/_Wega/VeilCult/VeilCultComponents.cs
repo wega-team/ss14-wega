@@ -134,6 +134,9 @@ public sealed partial class VeilCultLatheComponent : Component;
 [RegisterComponent, NetworkedComponent]
 public sealed partial class SoulVesselComponent : Component;
 
+[RegisterComponent, NetworkedComponent]
+public sealed partial class AbsorbedByVeilComponent : Component;
+
 /// <summary>
 /// Зачарования.
 /// </summary>

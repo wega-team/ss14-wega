@@ -1,4 +1,4 @@
 ent-MobClockworkMarouder = заводной мародёр
     .desc = Ужасный латунный рыцарь, живущий тем, чтобы защитить своих создателей.
-ent-Cogscarab = скарабей
+ent-MobCogscarab = скарабей
     .desc = Маленькая зараза.

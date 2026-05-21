@@ -743,5 +743,12 @@
   - type: EdibleMatter
     canBeEaten: false
   - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#ffec94"
+      right:
+      - state: inhand-right
+        color: "#ffec94"
     size: Ginormous
   - type: MidasHand

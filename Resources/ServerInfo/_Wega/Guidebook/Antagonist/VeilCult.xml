@@ -1,12 +1,12 @@
 <Document>
-  # Культ крови
+  # Праведники Ратвара
 
   <Box>
     [color=#999999][italic]Он спит под пеплом уже много лет. Его кости — из золочённого металла. В его венах — чёрная кровь. Его слова подчиняют разум. Его поступки вершат. Воскресите того, павшего в вечной войне. Нового бога из латуни и бронзы. Да здравствует Ратвар![/italic][/color]
   </Box>
 
   <Box>
-    <GuideEntityEmbed Entity="GuidebookDistortedEffect" Caption=""/>
+    <GuideEntityEmbed Entity="VeilCultPortal" Caption=""/>
   </Box>
 
   [bold][color=#9e6d28]Вы - Праведник Ратвара![/color][/bold]
@@ -15,7 +15,7 @@
 
   [bold][color=crimson]ОСТОРОЖНО: Экипаж будет пытаться уничтожить вас всеми силами![/color][/bold]
 
-  ## Основы культа крови
+  ## Основы праведников Ратвара
 
   - [bold]Скрытность[/bold]
     Культ растёт быстрее, если о нём не знают. Избегайте раскрытия: не стройте базы на видных местах, не выдавайте своих союзников и действуйте тайно.
@@ -130,8 +130,8 @@
   ## Конструкты
 
   <Box>
-    <GuideEntityEmbed Entity="BloodCultConstruct" Caption="конструкт"/>
-    <GuideEntityEmbed Entity="BloodCultSoulStone" Caption="камень души"/>
+    <GuideEntityEmbed Entity="MobClockworkMarouder" Caption="конструкт"/>
+    <GuideEntityEmbed Entity="VeilCultSoulVessel" Caption="вместилище души"/>
   </Box>
 
   Праведники Ратвара часто используют конструкты для усиления своих рядов. Для создания конструкта потребуется:

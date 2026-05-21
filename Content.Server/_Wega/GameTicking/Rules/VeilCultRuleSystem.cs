@@ -14,6 +14,7 @@ using Content.Server.Roles;
 using Content.Server.RoundEnd;
 using Content.Server.Audio;
 using Content.Server.Chat.Systems;
+using Content.Server.Nuke;
 using Content.Shared.Achievements;
 using Content.Shared.Veil.Cult;
 using Content.Shared.Blood.Cult;
@@ -151,7 +152,7 @@ namespace Content.Server.GameTicking.Rules
 
             return briefing;
         }
-
+        
         private void SelectRandomTargets(VeilCultRuleComponent cult)
         {
             cult.SelectedTargets.Clear();
@@ -170,7 +171,7 @@ namespace Content.Server.GameTicking.Rules
                 if (xform.GridUid != mainGrid)
                     continue;
                 
-                if (HasComp<ItemComponent>(uid))
+                if (HasComp<ItemComponent>(uid) || HasComp<NukeComponent>(uid)) // YOU CANT STEAL THE NUKE DUD
                     continue;
 
                 placeCandidates.Add(uid);       

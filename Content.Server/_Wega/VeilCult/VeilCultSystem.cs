@@ -48,6 +48,7 @@ using Content.Shared.Mindshield.Components;
 using Content.Shared.NullRod.Components;
 using Content.Shared.Lathe;
 using Content.Shared.Roles;
+using Content.Shared.Mobs;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
@@ -100,6 +101,7 @@ public sealed partial class VeilCultSystem : SharedVeilCultSystem
         
         SubscribeLocalEvent<VeilCultistComponent, StrangeShardDoAfterEvent>(DoAfterInteractShardCultist);
         SubscribeLocalEvent<VeilCultAltarComponent, StrangeShardDoAfterEvent>(DoAfterInteractShardAltar);
+        SubscribeLocalEvent<VeilCultConstructComponent, MobStateChangedEvent>(OnConstructMobStateChange);
     }
 
     public override void Update(float frameTime)
@@ -271,11 +273,13 @@ public sealed partial class VeilCultSystem : SharedVeilCultSystem
                     
                 if (_mobState.IsDead(target) && HasComp<MindShieldComponent>(target) || HasComp<BibleUserComponent>(target))
                 {
-                    var soulStone = Spawn("VeilCultSoulVessel", Transform(target).Coordinates);
                     if (TryComp<MindContainerComponent>(target, out var mindContainer) && mindContainer.Mind != null)
+                    {
+                        var soulStone = Spawn("VeilCultSoulVessel", Transform(target).Coordinates);
                         _mind.TransferTo(mindContainer.Mind.Value, soulStone);
-                    _gibbing.Gib(target);
-                }
+                        EnsureComp<AbsorbedByVeilComponent>(target);
+                    }
+                }             
                 else
                 {
                     if (HasComp<MindShieldComponent>(target) || HasComp<BibleUserComponent>(target))
@@ -285,10 +289,12 @@ public sealed partial class VeilCultSystem : SharedVeilCultSystem
                     {
                         EnsureComp<AutoVeilCultistComponent>(target);
                         _rejuvenate.PerformRejuvenate(target);
+                        EnsureComp<AbsorbedByVeilComponent>(target);
                     }
                 }
                 
-                cult.EnergyCount += 100;
+                if (!HasComp<AbsorbedByVeilComponent>(target))
+                    cult.EnergyCount += 100;
                 break;
             }
         }); 
@@ -408,13 +414,22 @@ public sealed partial class VeilCultSystem : SharedVeilCultSystem
 
     private void OnStoneSoulInserted(EntityUid uid, SoulVesselComponent comp, AfterInteractEvent args)
     {
-        if (_mind.TryGetMind(uid, out var mindId, out var mindComp) && HasComp<VeilCultConstructComponent>(args.Target) && args.Target is { } target && !_mind.TryGetMind(target, out var construct, out var constructMind))
+        if (_mind.TryGetMind(uid, out var mindId, out var mindComp) && args.Target is { } target && TryComp<MindContainerComponent>(target, out var mindContainer) && mindContainer.Mind != null  && !HasComp<CogscarabComponent>(target))
         {
             _mind.TransferTo(mindId, target, ghostCheckOverride: true, createGhost: true, mind: mindComp);
             QueueDel(uid);
-
-            if (!_roles.MindHasRole<VeilCultistRoleComponent>(mindId))
-                _roles.MindAddRole(mindId, "MindRoleVeilCultist", silent: true);
+        }
+    }
+    
+    private void OnConstructMobStateChange(EntityUid uid, VeilCultConstructComponent comp, MobStateChangedEvent args)
+    {
+        if (args.NewMobState == MobState.Dead && !HasComp<CogscarabComponent>(uid))
+        {
+            if (TryComp<MindContainerComponent>(uid, out var mindContainer) && mindContainer.Mind != null)
+            {
+                var soulStone = Spawn("VeilCultSoulVessel", Transform(uid).Coordinates);
+                _mind.TransferTo(mindContainer.Mind.Value, soulStone);
+            }
         }
     }
 }
