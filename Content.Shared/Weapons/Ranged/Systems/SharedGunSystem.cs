@@ -581,6 +581,13 @@ public abstract partial class SharedGunSystem : EntitySystem
 
         RaiseLocalEvent(gun, ref ev);
 
+        // Corvax-Wega-Species-Edit-Start
+        if (gun.Comp.Holder != null)
+        {
+            RaiseLocalEvent(gun.Comp.Holder.Value, ref ev);
+        }
+        // Corvax-Wega-Species-Edit-End
+
         if (comp.SoundGunshotModified != ev.SoundGunshot)
         {
             comp.SoundGunshotModified = ev.SoundGunshot;

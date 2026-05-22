@@ -178,6 +178,15 @@
   - type: DnaModifier
     upper: MobTajaran
     lowest: MobTajkey
+  - type: PlayerToolModifier
+    pryTimeMultiplier: 0.7
+  - type: BonusStaminaDamage
+    multiplier: 1.33
+  - type: BonusMeleeDamage
+    damageModifierSet:
+      coefficients:
+        Blunt: 0.77
+        Slash: 1.1
   # Corvax-Wega-Add-end
 
 - type: entity

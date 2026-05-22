@@ -181,6 +181,10 @@ public abstract partial class SharedStaminaSystem : EntitySystem
         if (hitEvent.Handled)
             return;
 
+        // Corvax-Wega-Species-Edit-Start
+        RaiseLocalEvent(args.User, hitEvent);
+        // Corvax-Wega-Species-Edit-End
+
         var damage = component.Damage;
 
         damage *= hitEvent.Multiplier;

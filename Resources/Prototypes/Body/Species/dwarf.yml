@@ -67,6 +67,16 @@
     accent: dwarf # Corvax-Wega-Edit
   - type: Speech
     speechSounds: Bass
+  # Corvax-Wega-Species-Edit-Start
+  - type: PlayerToolModifier
+    pryTimeMultiplier: 1.8
+  - type: BonusStaminaDamage
+    multiplier: 0.81
+  - type: BonusMeleeDamage
+    damageModifierSet:
+      coefficients:
+        Piercing: 1.09
+  # Corvax-Wega-Species-Edit-End
   # Corvax-Wega-Genetics-start
   - type: DnaModifier
     upper: MobDwarf

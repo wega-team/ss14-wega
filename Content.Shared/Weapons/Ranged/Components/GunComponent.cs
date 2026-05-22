@@ -145,10 +145,18 @@ public sealed partial class GunComponent : Component
     public EntityUid? Target = null;
 
     /// <summary>
-    ///     The base value for how many shots to fire per burst.
+    /// Who the gun is being held by
+    /// </summary>
+    [ViewVariables]
+    public EntityUid? Holder = null;
+
+    // Corvax-Wega-Species-Edit-Start
+    /// <summary>
+    /// базовое значение кол-во выстрелов 3
     /// </summary>
     [DataField, AutoNetworkedField]
     public int ShotsPerBurst = 3;
+    // Corvax-Wega-Species-Edit-End
 
     /// <summary>
     ///     How many shots to fire per burst.

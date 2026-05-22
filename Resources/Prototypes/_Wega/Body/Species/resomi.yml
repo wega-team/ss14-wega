@@ -257,6 +257,17 @@
   - type: DnaModifier
     upper: MobResomi
     lowest: MobStokkey
+  - type: PlayerToolModifier
+    pryTimeMultiplier: 0.5
+  - type: PlayerAccuracyModifier
+    spreadMultiplier: 1.3
+    maxSpreadAngle: 300
+  - type: BonusStaminaDamage
+    multiplier: 0.7
+  - type: BonusMeleeDamage
+    damageModifierSet:
+      coefficients:
+        Slash: 1.1
 
 - type: entity
   parent: OrganBase

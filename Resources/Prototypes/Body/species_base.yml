@@ -250,3 +250,9 @@
   - type: StunVisuals
   - type: LegionReversible # Corvax-Wega-Lavaland
   - type: DiseaseCarrier # Corvax-Wega-Disease
+  # Corvax-Wega-Species-Edit-Start
+  - type: PlayerToolModifier
+  - type: PlayerAccuracyModifier
+  - type: BonusStaminaDamage
+  - type: BonusMeleeDamage
+  # Corvax-Wega-Species-Edit-End

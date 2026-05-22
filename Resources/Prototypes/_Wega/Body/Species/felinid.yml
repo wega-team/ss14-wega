@@ -128,6 +128,19 @@
   - type: DnaModifier
     upper: MobFelinid
     lowest: MobCat
+  - type: PlayerToolModifier
+    pryTimeMultiplier: 0.6
+  - type: PlayerAccuracyModifier
+    spreadMultiplier: 0.89
+    maxSpreadAngle: 160
+  - type: BonusStaminaDamage
+    multiplier: 1.3
+  - type: BonusMeleeDamage
+    damageModifierSet:
+      coefficients:
+        Blunt: 0.9
+        Slash: 1.19
+        Piercing: 0.91
 
 - type: entity
   parent: OrganBase

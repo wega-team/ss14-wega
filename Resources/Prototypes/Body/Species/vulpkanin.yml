@@ -253,6 +253,18 @@
     sprite:
       sprite: Effects/creampie.rsi
       state: creampie_vulpkanin
+  # Corvax-Wega-Species-Edit-Start
+  - type: PlayerAccuracyModifier
+    spreadMultiplier: 0.88
+    maxSpreadAngle: 170
+  - type: BonusStaminaDamage
+    multiplier: 0.6 # лапки
+  - type: BonusMeleeDamage
+    damageModifierSet:
+      coefficients:
+        Slash: 1.05
+        Piercing: 0.9
+  # Corvax-Wega-Species-Edit-End
   # Corvax-Vulp_Port start
   - type: GrowlingAccent
   - type: Respirator

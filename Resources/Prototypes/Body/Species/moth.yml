@@ -199,6 +199,18 @@
       289: 0.9
       275: 0.8
       250: 0.7
+  # Corvax-Wega-Species-Edit-Start
+  - type: BonusStaminaDamage
+    multiplier: 0.89
+  - type: BonusMeleeDamage
+    damageModifierSet:
+      coefficients:
+        Piercing: 0.95
+        Blunt: 1.12
+  - type: PlayerAccuracyModifier
+    spreadMultiplier: 1.13
+    maxSpreadAngle: 140
+  # Corvax-Wega-Species-Edit-End
   # Corvax-Wega-Genetics-start
   - type: DnaModifier
     upper: MobMoth

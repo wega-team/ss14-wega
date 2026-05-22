@@ -143,6 +143,16 @@
     sprite:
       sprite: Effects/creampie.rsi
       state: creampie_arachnid
+  # Corvax-Wega-Species-Edit-Start
+  - type: PlayerToolModifier
+    pryTimeMultiplier: 0.91
+  - type: PlayerAccuracyModifier
+    spreadMultiplier: 1.3
+  - type: BonusMeleeDamage
+    damageModifierSet:
+      coefficients:
+        Piercing: 1.27
+  # Corvax-Wega-Species-Edit-End
   # Corvax-Wega-Genetics-start
   - type: DnaModifier
     upper: MobArachnid

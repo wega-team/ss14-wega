@@ -280,6 +280,18 @@
   - type: SyntheticOperated
   - type: Pain
     profile: SyntheticPainProfile
+  - type: PlayerToolModifier
+    pryTimeMultiplier: 1.2
+  - type: PlayerAccuracyModifier
+    maxSpreadAngle: 150
+  - type: BonusStaminaDamage
+    multiplier: 0.6
+  - type: BonusMeleeDamage
+    damageModifierSet:
+      coefficients:
+        Blunt: 1.18
+        Slash: 0.87
+        Piercing: 1.02
   - type: Tag
     tags:
     - CanPilot

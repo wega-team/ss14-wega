@@ -155,6 +155,11 @@ public sealed class PryingSystem : EntitySystem
         var modEv = new GetPryTimeModifierEvent(user);
 
         RaiseLocalEvent(target, ref modEv);
+
+        // Corvax-Wega-Species-Edit-Start
+        RaiseLocalEvent(user, ref modEv);
+        // Corvax-Wega-Species-Edit-End
+
         var doAfterArgs = new DoAfterArgs(EntityManager, user, modEv.BaseTime * modEv.PryTimeModifier / toolModifier, new DoorPryDoAfterEvent(), target, target, tool)
         {
             BreakOnDamage = true,

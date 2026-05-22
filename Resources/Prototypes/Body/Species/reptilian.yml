@@ -207,6 +207,21 @@
       295: 0.8
       285: 0.7
   - type: Wagging
+  # Corvax-Wega-Species-Edit-Start
+  - type: PlayerToolModifier
+    pryTimeMultiplier: 1.5
+  - type: PlayerAccuracyModifier
+    spreadMultiplier: 0.8
+    maxSpreadAngle: 300
+  - type: BonusStaminaDamage
+    multiplier: 1.12
+  - type: BonusMeleeDamage
+    damageModifierSet:
+      coefficients:
+        Blunt: 0.88
+        Slash: 1.22
+        Piercing: 1.11
+  # Corvax-Wega-Species-Edit-End
   # Corvax-Wega-Genetics-start
   - type: DnaModifier
     upper: MobReptilian

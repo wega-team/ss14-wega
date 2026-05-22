@@ -172,6 +172,15 @@
     allowedStates:
     - Dead
   - type: Rootable
+  # Corvax-Wega-Species-Edit-Start
+  - type: PlayerToolModifier
+    pryTimeMultiplier: 0.8
+  - type: BonusMeleeDamage
+    damageModifierSet:
+      coefficients:
+        Blunt: 0.99
+        Piercing: 1.11
+  # Corvax-Wega-Species-Edit-End
   # Corvax-Wega-Genetics-start
   - type: DnaModifier
     upper: MobDiona

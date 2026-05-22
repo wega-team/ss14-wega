@@ -128,6 +128,17 @@
   - type: MovementSpeedModifier
     baseWalkSpeed: 4
     baseSprintSpeed: 6
+  - type: PlayerToolModifier
+    pryTimeMultiplier: 1.22
+  - type: PlayerAccuracyModifier
+    spreadMultiplier: 0.93
+    maxSpreadAngle: 198
+  - type: BonusStaminaDamage
+    multiplier: 1.05
+  - type: BonusMeleeDamage
+    damageModifierSet:
+      coefficients:
+        Blunt: 1.14
 
 - type: entity
   parent: OrganBase

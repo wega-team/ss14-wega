@@ -255,7 +255,12 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         var ev = new GetMeleeDamageEvent(uid, new(component.Damage * Damageable.UniversalMeleeDamageModifier), new(), user, component.ResistanceBypass);
         RaiseLocalEvent(uid, ref ev);
 
-        return DamageSpecifier.ApplyModifierSets(ev.Damage, ev.Modifiers);
+        // Corvax-Wega-Species-Edit-Start
+        var userEv = new GetMeleeDamageEvent(uid, new(component.Damage), new(), user, component.ResistanceBypass);
+        RaiseLocalEvent(user, ref userEv);
+
+        return DamageSpecifier.ApplyModifierSets(ev.Damage, ev.Modifiers.Concat(userEv.Modifiers));
+        // Corvax-Wega-Species-Edit-End
     }
 
     public float GetAttackRate(EntityUid uid, EntityUid user, MeleeWeaponComponent? component = null)

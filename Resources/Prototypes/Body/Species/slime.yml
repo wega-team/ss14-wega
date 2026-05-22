@@ -186,6 +186,14 @@
       types:
         Asphyxiation: -1.0
     maxSaturation: 15
+  # Corvax-Wega-Species-Edit-Start
+  - type: PlayerAccuracyModifier
+    maxSpreadAngle: 100
+  - type: BonusMeleeDamage
+    damageModifierSet:
+      coefficients:
+        Blunt: 1.29
+  # Corvax-Wega-Species-Edit-End
   # Corvax-Wega-Surgery-start
   - type: Operated
     raceGraph: SlimeSurgery
