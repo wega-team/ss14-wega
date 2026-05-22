@@ -484,9 +484,9 @@
   - type: EdibleMatter 
     canBeEaten: false 
   - type: WirelessNetworkConnection
-    range: 20000
+    range: 200
   - type: DeviceLinkSource
-    range: 20000
+    range: 200
     ports:
       - OrderSender
   - type: ChangeableCargoAccount

@@ -1,6 +1,6 @@
 - type: listing
   id: RevolitionMagazineMedkitCombatFilled
-  name: ent-MedkitCombatFilled
+  name: reva-kids-name
   description: uplink-combat-medkit-desc
   productEntity: MedkitCombatFilled
   cost:
@@ -8,19 +8,19 @@
   categories:
   - RevolutionSupport
 
-- type: listing
-  id: RevolitionMagazineChemistryBottleNocturine
-  name: ent-ChemistryBottleNocturine
-  description: uplink-nocturine-chemistry-bottle-desc
-  productEntity: ChemistryBottleNocturine
-  cost:
-    HelpfulResource: 1
-  categories:
-  - RevolutionSupport
+# - type: listing
+  # id: RevolitionMagazineChemistryBottleNocturine
+  # name: ent-ChemistryBottleNocturine
+  # description: uplink-nocturine-chemistry-bottle-desc
+  # productEntity: ChemistryBottleNocturine
+  # cost:
+    # HelpfulResource: 1
+  # categories:
+  # - RevolutionSupport
 
 - type: listing
   id: RevolitionMagazineSyndicateJawsOfLife
-  name: ent-SyndicateJawsOfLife
+  name: reva-jaws-name
   description: uplink-syndicate-jaws-of-life-desc
   productEntity: SyndicateJawsOfLife
   cost:
@@ -28,41 +28,41 @@
   categories:
   - RevolutionSupport
 
-- type: listing
-  id: RevolitionMagazineAgentIDCard
-  name: ent-AgentIDCard
-  description: uplink-agent-id-card-desc
-  productEntity: AgentIDCard
-  cost:
-    HelpfulResource: 1
-  categories:
-  - RevolutionSupport
+# - type: listing
+  # id: RevolitionMagazineAgentIDCard
+  # name: ent-AgentIDCard
+  # description: uplink-agent-id-card-desc
+  # productEntity: AgentIDCard
+  # cost:
+    # HelpfulResource: 1
+  # categories:
+  # - RevolutionSupport
 
-- type: listing
-  id: RevolitionMagazineClothingOuterHardsuitCarp
-  name: ent-ClothingOuterHardsuitCarp
-  description: uplink-hardsuit-carp-desc
-  productEntity: ClothingOuterHardsuitCarp
-  cost:
-    HelpfulResource: 1
-  categories:
-  - RevolutionSupport
+# - type: listing
+  # id: RevolitionMagazineClothingOuterHardsuitCarp
+  # name: ent-ClothingOuterHardsuitCarp
+  # description: uplink-hardsuit-carp-desc
+  # productEntity: ClothingOuterHardsuitCarp
+  # cost:
+    # HelpfulResource: 1
+  # categories:
+  # - RevolutionSupport
 
-- type: listing
-  id: RevolitionMagazineClothingShoesChameleonNoSlips
-  name: ent-ClothingShoesChameleonNoSlips
-  description: uplink-clothing-no-slips-shoes-desc
-  productEntity: ClothingShoesChameleonNoSlips
-  cost:
-    HelpfulResource: 1
-  categories:
-  - RevolutionSupport
+# - type: listing
+  # id: RevolitionMagazineClothingShoesChameleonNoSlips
+  # name: ent-ClothingShoesChameleonNoSlips
+  # description: uplink-clothing-no-slips-shoes-desc
+  # productEntity: ClothingShoesChameleonNoSlips
+  # cost:
+    # HelpfulResource: 1
+  # categories:
+  # - RevolutionSupport
 
 - type: listing
   id: RevolitionMagazineBriefcaseSyndieLobbyingBundleFilled
-  name: ent-BriefcaseSyndieLobbyingBundleFilled
-  description: uplink-bribe-desc
-  productEntity: BriefcaseSyndieLobbyingBundleFilled
+  name: reva-cash-name
+  description: reva-cash-desc
+  productEntity: SpaceCash10000
   cost:
     HelpfulResource: 1
   categories:
@@ -78,20 +78,30 @@
   categories:
   - RevolutionSupport
 
+# - type: listing
+  # id: RevolitionMagazineHypopen
+  # name: uplink-hypopen-name
+  # description: uplink-hypopen-desc
+  # icon: { sprite: /Textures/Objects/Misc/pens.rsi, state: pen }
+  # productEntity: HypopenBox
+  # cost:
+    # HelpfulResource: 1
+  # categories:
+  # - RevolutionSupport
+
 - type: listing
-  id: RevolitionMagazineHypopen
-  name: uplink-hypopen-name
-  description: uplink-hypopen-desc
-  icon: { sprite: /Textures/Objects/Misc/pens.rsi, state: pen }
-  productEntity: HypopenBox
+  id: RevolitionMagazineOuterVestWebElite
+  name: reva-tactkik-flame-name
+  description: uplink-clothing-outer-vest-web-elite-desc
+  productEntity: ClothingOuterVestWebElite
   cost:
-    HelpfulResource: 1
+    HelpfulResource: 2
   categories:
   - RevolutionSupport
 
 - type: listing
   id: RevolitionMagazineOuterVestWeb
-  name: ent-ClothingOuterVestWeb
+  name: reva-tactkik-name
   description: uplink-clothing-outer-vest-web-desc
   productEntity: ClothingOuterVestWeb
   cost:
@@ -99,19 +109,19 @@
   categories:
   - RevolutionSupport
 
-- type: listing
-  id: RevolitionMagazineCrateFunSyndicateSegway
-  name: ent-CrateFunSyndicateSegway
-  description: uplink-syndicate-segway-crate-desc
-  productEntity: CrateFunSyndicateSegway
-  cost:
-    HelpfulResource: 2
-  categories:
-  - RevolutionSupport
+# - type: listing
+  # id: RevolitionMagazineCrateFunSyndicateSegway
+  # name: ent-CrateFunSyndicateSegway
+  # description: uplink-syndicate-segway-crate-desc
+  # productEntity: CrateFunSyndicateSegway
+  # cost:
+    # HelpfulResource: 2
+  # categories:
+  # - RevolutionSupport
 
 - type: listing
   id: RevolitionMagazineEncryptionKeySyndie
-  name: ent-EncryptionKeySyndie
+  name: reva-boxkey
   description: uplink-encryption-key-desc
   productEntity: BoxEncryptionKeySyndie
   cost:
@@ -121,7 +131,7 @@
 
 - type: listing
   id: RevolitionMagazineEmag
-  name: ent-Emag
+  name: reva-emag-name
   description: uplink-emag-desc
   productEntity: Emag
   cost:
@@ -142,7 +152,7 @@
 
 - type: listing
   id: RevolitionMagazinePowerSink
-  name: ent-PowerSink
+  name: reva-powerlink-name
   description: uplink-power-sink-desc
   productEntity: PowerSink
   cost:
@@ -152,7 +162,7 @@
 
 - type: listing
   id: RevolitionMagazineClothingHeadHatCatEars
-  name: ent-ClothingHeadHatCatEars
+  name: uplink-cat-ears-name
   description: uplink-cat-ears-desc
   productEntity: ClothingHeadHatCatEars
   cost:
