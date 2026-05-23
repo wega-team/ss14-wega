@@ -78,8 +78,6 @@ public sealed partial class VeilCultSystem : SharedVeilCultSystem
     [Dependency] private readonly SharedBatterySystem _battery = default!;
     [Dependency] private readonly RejuvenateSystem _rejuvenate = default!;
     [Dependency] private readonly NavMapSystem _navMap = default!;
-    [Dependency] private readonly SharedRoleSystem _roles = default!;
-    [Dependency] private readonly GibbingSystem _gibbing = default!;
 
 
     public override void Initialize()
