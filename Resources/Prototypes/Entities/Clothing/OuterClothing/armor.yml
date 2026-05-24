@@ -351,9 +351,6 @@
   - type: GroupExamine
   # Corvax-Wega-Blood-Cult-Start
   - type: BloodShieldActivaeble
-  - type: ClothingSpeedModifier 
-    walkModifier: 1
-    sprintModifier: 1
   - type: HeldSpeedModifier
   # Corvax-Wega-Blood-Cult-End
 
