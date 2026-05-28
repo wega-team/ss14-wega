@@ -116,31 +116,34 @@
             "name": "hysteria"
         },
         {
+            "name": "thrallheal"
+        },
+        {
+            "name": "pacifynearby"
+        },
+        {
             "name": "lunge_finale"
         },
         {
-            "name": "bats_meta"
+            "name": "meta_bats"
         },
         {
             "name": "blood_hound"
         },
         {
-            "name": "vampire_bats"
+            "name": "bats"
         },
         {
             "name": "infected_trophy"
         },
         {
-            "name": "bats_shriek"
+            "name": "shriek"
         },
         {
-            "name": "vampire_coffin"
+            "name": "coffin"
         },
         {
-            "name": "thrallheal"
-        },
-        {
-            "name": "pacifynearby"
+            "name": "revive"
         }
     ]
 }

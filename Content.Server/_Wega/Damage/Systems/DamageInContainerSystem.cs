@@ -1,17 +1,17 @@
-using Robust.Shared.Containers;
-using Content.Shared.Mobs.Components;
-using Robust.Shared.Timing;
-using Robust.Server.Containers;
-using Content.Shared.Whitelist;
-using Content.Shared.Damage;
-using Content.Shared.Damage.Systems;
-using Content.Shared.Damage.Components;
+using System.Linq;
 using Content.Server.Damage.Components;
-
+using Content.Shared.Damage;
+using Content.Shared.Damage.Components;
+using Content.Shared.Damage.Systems;
+using Content.Shared.Mobs.Components;
+using Content.Shared.Whitelist;
+using Robust.Server.Containers;
+using Robust.Shared.Containers;
+using Robust.Shared.Timing;
 
 namespace Content.Server.Damage.Systems;
 
-public sealed class DamageInContainerSystem : SharedDamageInContainerSystem
+public sealed class DamageInContainerSystem : EntitySystem
 {
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
@@ -53,17 +53,43 @@ public sealed class DamageInContainerSystem : SharedDamageInContainerSystem
                 if (_whitelistSystem.IsWhitelistFail(comp.Whitelist, contained))
                     continue;
 
+                DamageSpecifier? finalDamage = null;
+                if (comp.Damage != null && !comp.Damage.Empty && comp.Damage.DamageDict.Values.Any(x => x < 0))
+                {
+                    finalDamage = comp.Damage.Clone();
+                    if (comp.DamageGroups != null && !comp.DamageGroups.Empty)
+                    {
+                        var groupsHeal = _damageable.CreateWeightedHealFromGroups(uid, comp.DamageGroups);
+                        finalDamage += groupsHeal;
+                    }
+                }
+                else if (comp.Damage != null && !comp.Damage.Empty)
+                {
+                    finalDamage = comp.Damage;
+                }
+                else if (comp.DamageGroups != null && !comp.DamageGroups.Empty)
+                {
+                    finalDamage = _damageable.CreateWeightedHealFromGroups(uid, comp.DamageGroups);
+                }
+                else
+                {
+                    continue;
+                }
+
                 if (TryComp<MobStateComponent>(contained, out var mobState))
                 {
                     foreach (var allowedState in comp.AllowedStates)
                     {
                         if (allowedState == mobState.CurrentState)
-                            _damageable.TryChangeDamage(contained, comp.Damage, true, false);
+                        {
+                            _damageable.TryChangeDamage(contained, finalDamage, true, false);
+                            break;
+                        }
                     }
                     continue;
                 }
 
-                _damageable.TryChangeDamage(contained, comp.Damage, true, false);
+                _damageable.TryChangeDamage(contained, finalDamage, true, false);
             }
         }
     }
@@ -79,4 +105,3 @@ public sealed class DamageInContainerSystem : SharedDamageInContainerSystem
         AddComp<ActiveDamageInContainerComponent>(uid);
     }
 }
-

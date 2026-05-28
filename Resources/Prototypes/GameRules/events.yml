@@ -25,6 +25,7 @@
     - id: SpiderSpawnHorde
     - id: VentClog
     - id: DiseaseOutbreak # Corvax-Wega-Disease
+    - id: RadiationOutburst # Corvax-Wega-Edit
 
 - type: entityTable
   id: BasicAntagEventsTable

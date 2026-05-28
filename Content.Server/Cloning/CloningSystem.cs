@@ -92,12 +92,13 @@ public sealed partial class CloningSystem : SharedCloningSystem
         _identity.QueueIdentityUpdate(clone.Value); // We have to manually refresh the identity in case we did not raise events.
 
         _adminLogger.Add(LogType.Chat, LogImpact.Medium, $"The body of {original:player} was cloned as {clone.Value:player}");
-        
-		///Corvax-Wega-Tweak: Для компонентов, использующих ивент ComponentStartup
-		var finishedEv = new CloneFinishedEvent(original);
-		RaiseLocalEvent(clone.Value, ref finishedEv);
-		
-		return true;
+
+        // Corvax-Wega-Tweak-start
+        var finishedEv = new CloneFinishedEvent(original);
+        RaiseLocalEvent(clone.Value, ref finishedEv);
+        // Corvax-Wega-Tweak-end
+
+        return true;
     }
 
     public override void CloneComponents(

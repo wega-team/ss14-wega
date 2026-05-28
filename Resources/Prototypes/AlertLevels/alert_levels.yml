@@ -70,3 +70,15 @@
       emergencyLightColor: DarkViolet
       forceEnableEmergencyLights: true
       shuttleTime: 1200
+#Corvax-Wega-Edit-Start
+    martial_law:
+      announcement: alert-level-martial_law-announcement
+      selectable: false
+      sound:
+        path: /Audio/Corvax/Misc/siren.ogg
+      disableSelection: true
+      color: Maroon
+      emergencyLightColor: Maroon
+      forceEnableEmergencyLights: true
+      shuttleTime: 2700 #быстрее закупайтесь сучки/45 минут
+#Corvax-Wega-Edit-End

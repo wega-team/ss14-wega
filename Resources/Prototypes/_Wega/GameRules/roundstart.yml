@@ -37,6 +37,7 @@
           - Ipc
         lateJoinAdditional: true
         components:
+        - type: Vampire
         - type: NpcFactionMember
           factions:
           - Vampire
