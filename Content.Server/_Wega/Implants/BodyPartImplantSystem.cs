@@ -1,19 +1,28 @@
+using Content.Server.Popups;
+using Content.Server.Tools;
 using Content.Shared._Wega.Implants.Components;
 using Content.Shared.Body;
-using Robust.Shared.Containers;
+using Content.Shared.Examine;
+using Content.Shared.Interaction;
+using Content.Shared.Tools.Components;
+using Robust.Server.GameObjects;
+using Robust.Shared.Utility;
+using System.Linq;
 
 namespace Content.Server.Implants
 {
     public sealed class BodyPartImplantSystem : EntitySystem
     {
-        [Dependency] private readonly SharedContainerSystem _container = default!;
+        [Dependency] private readonly ToolSystem _tool = default!;
+        [Dependency] private readonly PopupSystem _popup = default!;
 
         public override void Initialize()
         {
             base.Initialize();
 
-            SubscribeLocalEvent<BodyPartImplantComponent, MapInitEvent>(OnMapInit);
             SubscribeLocalEvent<BodyPartImplantComponent, ComponentStartup>(OnStartup);
+            SubscribeLocalEvent<BodyPartImplantComponent, ExaminedEvent>(OnExamine);
+            SubscribeLocalEvent<BodyPartImplantComponent, InteractUsingEvent>(OnToolUseAttempt);
 
             SubscribeLocalEvent<BodyComponent, OrganInsertedIntoEvent>(OnOrganInserted);
             SubscribeLocalEvent<BodyComponent, OrganRemovedFromEvent>(OnOrganRemoved);
@@ -21,6 +30,8 @@ namespace Content.Server.Implants
 
         private void OnStartup(Entity<BodyPartImplantComponent> ent, ref ComponentStartup args)
         {
+            UpdateConfig(ent.Owner, null, ent.Comp);
+
             // For implants that are organs themselves
             if (TryComp<OrganComponent>(ent, out var organComp) && organComp.Body != null)
             {
@@ -29,38 +40,39 @@ namespace Content.Server.Implants
             }
         }
 
-        private void OnMapInit(Entity<BodyPartImplantComponent> ent, ref MapInitEvent args)
+        private void OnExamine(EntityUid uid, BodyPartImplantComponent component, ExaminedEvent args)
         {
-            if (!HasComp<OrganComponent>(ent))
+            if (component.Configurations.Count == 0)
                 return;
 
-            // This implant is an organ with slots for other organs
-            foreach (var connection in ent.Comp.Connections)
-            {
-                // Create container for child organs
-                var containerId = $"{ent.Owner}-{connection.Key}";
-                if (!_container.TryGetContainer(ent, containerId, out _))
-                {
-                    _container.EnsureContainer<Container>(ent, containerId);
-                }
-            }
+            var config = component.Configurations.ElementAt(component.CurrentConfig);
+            args.PushMarkup(Loc.GetString("body-part-implant-config-" + config.Key));
+        }
 
-            // Spawn child organs
-            foreach (var (slot, organProto) in ent.Comp.Parts)
-            {
-                var childOrgan = Spawn(organProto, Transform(ent).Coordinates);
-                var containerId = $"{ent.Owner}-{slot}";
+        private void OnToolUseAttempt(EntityUid uid, BodyPartImplantComponent component, InteractUsingEvent args)
+        {
+            if (component.Configurations.Count == 0 || !_tool.HasQuality(args.Used, component.ConfigurationTool))
+                return;
 
-                if (_container.TryGetContainer(ent, containerId, out var container))
-                {
-                    _container.Insert(childOrgan, container);
-                }
-                else
-                {
-                    container = _container.EnsureContainer<Container>(ent, containerId);
-                    _container.Insert(childOrgan, container);
-                }
-            }
+            component.CurrentConfig++;
+            if (component.CurrentConfig >= component.Configurations.Count)
+                component.CurrentConfig = 0;
+
+            _tool.PlayToolSound(args.Used, Comp<ToolComponent>(args.Used), null);
+            UpdateConfig(uid, args.User, component);
+        }
+
+        private void UpdateConfig(EntityUid uid, EntityUid? user, BodyPartImplantComponent component)
+        {
+            if (component.Configurations.Count == 0)
+                return;
+
+            var config = component.Configurations.ElementAt(component.CurrentConfig);
+
+            EntityManager.AddComponents(uid, config.Value);
+
+            if (user != null)
+                _popup.PopupEntity(Loc.GetString("body-part-implant-config-" + config.Key), uid, user.Value);
         }
 
         private void OnOrganInserted(Entity<BodyComponent> body, ref OrganInsertedIntoEvent args)

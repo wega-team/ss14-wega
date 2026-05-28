@@ -460,7 +460,7 @@ public abstract partial class SharedStaminaSystem : EntitySystem
     // Corvax-Wega-Add-start
     public void RemoveStaminaDamage(Entity<StaminaComponent?> ent)
     {
-        if (!Resolve(ent, ref ent.Comp))
+        if (!Resolve(ent, ref ent.Comp, false))
             return;
 
         if (ent.Comp.StaminaDamage >= ent.Comp.CritThreshold)

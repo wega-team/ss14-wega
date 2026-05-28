@@ -8,14 +8,17 @@ namespace Content.Shared.Damage.Components;
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class DamageInContainerComponent : Component
 {
+    [ViewVariables(VVAccess.ReadOnly)]
+    public TimeSpan NextTickTime;
+
     [DataField("interval")]
     public float Interval = 1f;
 
-    [DataField("nextTickTime")]
-    public TimeSpan NextTickTime;
-
-    [DataField(required: true), AutoNetworkedField]
+    [DataField, AutoNetworkedField]
     public DamageSpecifier Damage = default!;
+
+    [DataField, AutoNetworkedField]
+    public GroupHealSpecifier DamageGroups = default!;
 
     [DataField]
     public EntityWhitelist? Whitelist;

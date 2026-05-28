@@ -22,9 +22,6 @@ public sealed partial class HandItemImplantComponent : Component
 [DataRecord]
 public partial struct HandItemImplantSlot
 {
-    [DataField("hand")]
-    public string HandId;
-
     [DataField("prototype")]
     public string ItemPrototype;
     public EntityUid? ItemEntity;
@@ -36,9 +33,8 @@ public partial struct HandItemImplantSlot
     [DataField]
     public EntityUid? ImplantEntity;
 
-    public HandItemImplantSlot(string handId, string itemPrototype, string toggleAction, EntityUid? implant = null)
+    public HandItemImplantSlot(string itemPrototype, string toggleAction, EntityUid? implant = null)
     {
-        HandId = handId;
         ItemPrototype = itemPrototype;
         ToggleActionPrototype = toggleAction;
         ImplantEntity = implant;

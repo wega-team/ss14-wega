@@ -2,9 +2,6 @@
   parent: None
   id: Android
   limits:
-    enum.HumanoidVisualLayers.Special:
-      limit: 2
-      required: false
     enum.HumanoidVisualLayers.Head:
       limit: 1
       required: false
@@ -21,7 +18,7 @@
       limit: 1
       required: false
     enum.HumanoidVisualLayers.Chest:
-      limit: 2
+      limit: 1
       required: false
     enum.HumanoidVisualLayers.LArm:
       limit: 1
@@ -53,15 +50,15 @@
     - map: [ "enum.HumanoidVisualLayers.LLeg" ]
     - map: [ "enum.HumanoidVisualLayers.UndergarmentBottom" ]
     - map: [ "enum.HumanoidVisualLayers.UndergarmentTop" ]
-    - map: [ "enum.HumanoidVisualLayers.LFoot" ]
     - map: [ "enum.HumanoidVisualLayers.RFoot" ]
-    - map: [ "enum.HumanoidVisualLayers.LHand" ]
-    - map: [ "enum.HumanoidVisualLayers.RHand" ]
+    - map: [ "enum.HumanoidVisualLayers.LFoot" ]
     - map: [ "enum.HumanoidVisualLayers.Special" ]
     - map: [ "socks" ]
     - map: [ "underwearbottom" ]
     - map: [ "underweartop" ]
     - map: [ "jumpsuit" ]
+    - map: [ "enum.HumanoidVisualLayers.LHand" ]
+    - map: [ "enum.HumanoidVisualLayers.RHand" ]
     - map: [ "anal" ]
     - map: [ "gloves" ]
     - map: [ "shoes" ]
@@ -247,6 +244,7 @@
         Quantity: 300
     bleedReductionAmount: 0
     bloodRefreshAmount: 0
+  - type: DisableMetabolismEffects
   - type: Android
   - type: UserInterface
     interfaces:
@@ -295,6 +293,107 @@
   components:
   - type: PointLight
     enabled: false
+
+- type: entity
+  id: AndroidEndoskeleton
+  name: "android endoskeleton"
+  description: "A frame for a future android. Inside they are scarier than outside.."
+  components:
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Physics
+    bodyType: Dynamic
+    fixedRotation: false
+  - type: Pullable
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.25,0.25,0.25"
+        density: 100
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+        restitution: 0.3
+        friction: 0.2
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _Wega/Mobs/Species/Android/frame.rsi
+    layers:
+    - state: frame-0
+      map: [ "enum.AndroidFrameVisualLayers.Frame" ]
+  - type: Construction
+    graph: AndroidEndoskeleton
+    node: start
+    defaultTarget: frame
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.AndroidFrameVisuals.ConstructionStage:
+        enum.AndroidFrameVisualLayers.Frame:
+          0: { state: frame-0, visible: true}
+          1: { state: frame-1, visible: true}
+          2: { state: frame-2, visible: true}
+          3: { state: frame-3, visible: true}
+          4: { state: frame-4, visible: true}
+          5: { state: frame-5, visible: true}
+
+- type: entity
+  id: AndroidFrame
+  name: "android frame"
+  description: "Customize the appearance of the assembled android."
+  components:
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Physics
+    bodyType: Dynamic
+    fixedRotation: false
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.25,0.25,0.25"
+        density: 100
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+        restitution: 0.3
+        friction: 0.2
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _Wega/Mobs/Species/Android/frame.rsi
+    state: full
+  - type: AndroidFrame
+  - type: Appearance
+  - type: ActivatableUI
+    key: enum.AndroidConstructUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.AndroidConstructUiKey.Key:
+        type: AndroidConstructBoundUserInterface
+  - type: ContainerContainer
+    containers:
+      battery: !type:ContainerSlot
+      brain: !type:ContainerSlot
+  - type: ItemSlots
+    slots:
+      battery:
+        whitelist:
+          tags:
+          - PowerCell
+      brain:
+        whitelist:
+          tags:
+          - BrainSynthetic
+  - type: Construction
+    graph: AndroidEndoskeleton
+    node: frame
 
 - type: entity
   parent: OrganBase

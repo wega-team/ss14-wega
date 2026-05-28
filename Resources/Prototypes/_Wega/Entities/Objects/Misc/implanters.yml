@@ -1,0 +1,7 @@
+- type: entity
+  id: LoyaltyImplanter
+  name: loyalty implanter
+  parent: BaseImplantOnlyImplanterSyndi
+  components:
+  - type: Implanter
+    implant: LoyaltyImplant

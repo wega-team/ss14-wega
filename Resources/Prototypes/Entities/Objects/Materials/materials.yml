@@ -667,6 +667,7 @@
   - type: Tag
     tags:
     - ToothSpaceCarp
+    - RawMaterial # Corvax-Wega-Edit-Radiation
 
 - type: entity
   parent: MaterialToothSpaceCarp
@@ -710,6 +711,7 @@
     tags:
     - Knife
     - ToothSharkminnow
+    - RawMaterial # Corvax-Wega-Edit-Radiation
 
 - type: entity
   parent: MaterialToothSharkminnow
@@ -816,6 +818,7 @@
   - type: Tag
     tags:
     - GoliathPlate
+    - RawMaterial # Corvax-Wega-Edit-Radiation
 
 - type: entity
   parent: MaterialGoliathHide

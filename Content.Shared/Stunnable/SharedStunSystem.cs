@@ -46,6 +46,7 @@ public abstract partial class SharedStunSystem : EntitySystem
         SubscribeLocalEvent<StunnedComponent, ComponentShutdown>(OnStunShutdown);
 
         SubscribeLocalEvent<StunOnContactComponent, StartCollideEvent>(OnStunOnContactCollide);
+        SubscribeLocalEvent<SlowdownOnContactComponent, StartCollideEvent>(OnSlowdownOnContactCollide); // Corvax-Wega-Add
 
         // Attempt event subscriptions.
         SubscribeLocalEvent<StunnedComponent, ChangeDirectionAttemptEvent>(OnAttempt);

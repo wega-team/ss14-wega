@@ -1,0 +1,114 @@
+<ui:AndroidConstructMenu
+    xmlns="https://spacestation14.io"
+    xmlns:ui="clr-namespace:Content.Client._Wega.Android.Ui"
+    xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+    xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+    xmlns:humanoid="clr-namespace:Content.Client.Humanoid"
+    xmlns:profile="clr-namespace:Content.Client.Lobby.UI.ProfileEditorControls"
+    SetSize="740 700" MouseFilter="Stop">
+
+    <PanelContainer Name="Background" StyleClasses="PdaBackgroundRect" ModulateSelfOverride="#212124"/>
+    <PanelContainer Name="Border" StyleClasses="PdaBorderRect" Modulate="#2d3047"/>
+
+    <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+
+        <!-- Header -->
+        <PanelContainer SetHeight="45" Margin="1" HorizontalExpand="True">
+            <PanelContainer.PanelOverride>
+                <gfx:StyleBoxFlat BackgroundColor="#3b3c4f"/>
+            </PanelContainer.PanelOverride>
+            <BoxContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True" Margin="5">
+                <TextureRect TexturePath="/Textures/Interface/Nano/ntlogo.svg.png" SetSize="28 28" Margin="10 0 10 0"/>
+                <Label Text="{Loc 'android-construct-ui-title'}" StyleClasses="ConsoleHeadingBig" HorizontalExpand="True" FontColorOverride="#ffffff"/>
+                <TextureButton Name="CloseButton" StyleClasses="windowCloseButton" Modulate="#8d92a5" VerticalAlignment="Center"/>
+            </BoxContainer>
+        </PanelContainer>
+
+        <!-- Markings -->
+        <PanelContainer Margin="10" HorizontalExpand="True" SetHeight="300">
+            <PanelContainer.PanelOverride>
+                <gfx:StyleBoxFlat BackgroundColor="#ffffff00" BorderColor="#767a8c" BorderThickness="3" />
+            </PanelContainer.PanelOverride>
+            <BoxContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True" Margin="10">
+                <humanoid:MarkingPicker Name="Markings" Access="Public" HorizontalExpand="True" VerticalExpand="True"/>
+            </BoxContainer>
+        </PanelContainer>
+
+        <PanelContainer Margin="10 5 10 15">
+            <PanelContainer.PanelOverride>
+                <gfx:StyleBoxFlat BorderColor="#767a8c" BorderThickness="1" />
+            </PanelContainer.PanelOverride>
+        </PanelContainer>
+
+        <!-- Info Block -->
+        <BoxContainer HorizontalExpand="True" Orientation="Horizontal" VerticalExpand="True">
+            <!-- Preview -->
+            <BoxContainer Orientation="Vertical">
+                <PanelContainer Margin="10 0 10 10">
+                    <PanelContainer.PanelOverride>
+                        <gfx:StyleBoxFlat BackgroundColor="#ffffff00" BorderColor="#767a8c" BorderThickness="3" />
+                    </PanelContainer.PanelOverride>
+                    <profile:ProfilePreviewSpriteView Name="SpritePreview" Access="Public" Scale="5 5" Margin="8" SizeFlagsStretchRatio="1" />
+                </PanelContainer>
+            </BoxContainer>
+
+            <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+
+                <BoxContainer Orientation="Horizontal" HorizontalExpand="True" Margin="5 0 10 0">
+                    <!-- Name -->
+                    <BoxContainer Orientation="Horizontal" HorizontalExpand="True">
+                        <Label Text="{Loc 'android-construct-ui-name-label'}" />
+                        <LineEdit Name="NameEdit" MinSize="160 0" VerticalAlignment="Center" Margin="5 0 0 0" />
+                    </BoxContainer>
+
+                    <!-- Sex -->
+                    <BoxContainer HorizontalAlignment="Right">
+                        <Label Text="{Loc 'android-construct-ui-sex-label'}" Margin="0 0 5 0"/>
+                        <Control HorizontalExpand="True"/>
+                        <OptionButton Name="SexButton" HorizontalAlignment="Right" />
+                    </BoxContainer>
+                </BoxContainer>
+
+                <!-- Skin -->
+                <PanelContainer HorizontalExpand="True" Margin="0 10 10 10">
+                    <PanelContainer.PanelOverride>
+                        <gfx:StyleBoxFlat BackgroundColor="#2a2b2e"/>
+                    </PanelContainer.PanelOverride>
+                    <BoxContainer Margin="10" HorizontalExpand="True" Orientation="Vertical">
+                        <Label Text="{Loc 'android-construct-ui-skin-color-label'}" Margin="0 0 0 10"/>
+                        <BoxContainer Name="RgbSkinColorContainer" Orientation="Vertical" HorizontalExpand="True"></BoxContainer>
+                    </BoxContainer>
+                </PanelContainer>
+
+            </BoxContainer>
+        </BoxContainer>
+
+        <BoxContainer Orientation="Vertical" HorizontalExpand="True">
+            <!-- Slots Status -->
+            <BoxContainer Orientation="Horizontal" HorizontalExpand="True" Margin="10">
+                <!-- Battery -->
+                <PanelContainer Margin="5" MinWidth="100" Name="BatteryStatusPanel">
+                    <Label Text="{Loc 'android-construct-ui-battery-label-false'}" Margin="5" Name="BatteryStatusText"/>
+                </PanelContainer>
+
+                <!-- Brain -->
+                <PanelContainer Margin="5" MinWidth="100" Name="BrainStatusPanel">
+                    <Label Text="{Loc 'android-construct-ui-brain-label-false'}" Margin="5" Name="BrainStatusText"/>
+                </PanelContainer>
+            </BoxContainer>
+
+            <!-- Assemble -->
+            <PanelContainer SetHeight="45" Margin="1" HorizontalExpand="True">
+                <PanelContainer.PanelOverride>
+                    <gfx:StyleBoxFlat BackgroundColor="#3b3c4f"/>
+                </PanelContainer.PanelOverride>
+                <BoxContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True" Margin="5">
+                    <Button Name="AssembleButton" Text="{Loc 'android-construct-ui-assemble-label'}" MinWidth="30" StyleClasses="ButtonViolet" Margin="0 0 5 0"/>
+                    <Label Text="{Loc 'android-construct-ui-assemble-attention-label'}"/>
+                </BoxContainer>
+            </PanelContainer>
+        </BoxContainer>
+
+    </BoxContainer>
+
+</ui:AndroidConstructMenu>

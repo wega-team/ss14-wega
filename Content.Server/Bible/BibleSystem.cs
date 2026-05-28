@@ -11,10 +11,10 @@ using Content.Shared.Interaction;
 using Content.Shared.Inventory;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
+using Content.Shared.NullRod.Components; // Corvax-Wega-Vampire
 using Content.Shared.Popups;
 using Content.Shared.Stunnable; // Corvax-Wega-Vampire
 using Content.Shared.Timing;
-using Content.Shared.Vampire.Components; // Corvax-Wega-Vampire
 using Content.Shared.Verbs;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers; // Corvax-Wega-Vampire

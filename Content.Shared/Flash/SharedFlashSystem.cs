@@ -294,22 +294,22 @@ public abstract class SharedFlashSystem : EntitySystem
     }
     // Corvax-Wega-Wielder-end
 
-	// Corvax-Wega-Arsenal-start
-	private void OnFlashPulse(Entity<ImpulseFlashComponent> ent,ref MaskFlashActionEvent args)
-	{
-            FlashArea(ent,ent, ent.Comp.Range, ent.Comp.Duration, ent.Comp.SlowTo, probability: ent.Comp.Probability);
-            args.Handled = true;
-	}
+    // Corvax-Wega-Arsenal-start
+    private void OnFlashPulse(Entity<ImpulseFlashComponent> ent,ref MaskFlashActionEvent args)
+    {
+        FlashArea(ent,ent, ent.Comp.Range, ent.Comp.Duration, ent.Comp.SlowTo, probability: ent.Comp.Probability);
+        args.Handled = true;
+    }
 
-	private void OnGetItemActions(Entity<ImpulseFlashComponent> ent, ref GetItemActionsEvent args)
+    private void OnGetItemActions(Entity<ImpulseFlashComponent> ent, ref GetItemActionsEvent args)
     {
         if (_inventorySystem.InSlotWithFlags(ent.Owner, SlotFlags.HEAD) || _inventorySystem.InSlotWithFlags(ent.Owner, SlotFlags.NECK))
-		{
-			var comp = ent.Comp;
-			args.AddAction(ref comp.FlashActionEntity, comp.FlashAction);
-		}
-	}
-   	// Corvax-Wega-Arsenal-end
+        {
+            var comp = ent.Comp;
+            args.AddAction(ref comp.FlashActionEntity, comp.FlashAction);
+        }
+    }
+    // Corvax-Wega-Arsenal-end
 
     private void OnTemporaryBlindnessFlashAttempt(Entity<TemporaryBlindnessComponent> ent, ref FlashAttemptEvent args)
     {

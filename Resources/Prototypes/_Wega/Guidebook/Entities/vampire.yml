@@ -220,6 +220,14 @@
     state: subspace_swap
 
 - type: entity
+  id: GuidebookVampireDeployDecoy
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    state: decoy
+
+- type: entity
   id: GuidebookVampireRallyThralls
   categories: [ HideSpawnMenu ]
   components:
@@ -242,3 +250,108 @@
   - type: Sprite
     sprite: _Wega/Interface/Actions/actions_vampire.rsi
     state: hysteria
+
+- type: entity
+  id: GuidebookVampirePacifyNearby
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    state: pacifynearby
+
+- type: entity
+  id: GuidebookVampireThrallHeal
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    state: thrallheal
+
+# Bestia
+- type: entity
+  id: GuidebookVampireCheckTrophies
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    state: rush
+
+- type: entity
+  id: GuidebookVampireDissect
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    state: claws
+
+- type: entity
+  id: GuidebookVampireInfectedTrophy
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    state: infected_trophy
+
+- type: entity
+  id: GuidebookVampireLunge
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    state: charge
+
+- type: entity
+  id: GuidebookVampireMarkPrey
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    state: predator_sense
+
+- type: entity
+  id: GuidebookVampireMetamorphosisBats
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    state: meta_bats
+
+- type: entity
+  id: GuidebookVampireAnabiosis
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    state: coffin
+
+- type: entity
+  id: GuidebookVampireSummonBats
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    state: bats
+
+- type: entity
+  id: GuidebookVampireMetamorphosisHound
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    state: blood_hound
+
+- type: entity
+  id: GuidebookVampireResonantShriek
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    state: shriek
+
+- type: entity
+  id: GuidebookVampireLungeFinale
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    state: lunge_finale

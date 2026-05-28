@@ -9,3 +9,12 @@
     state: empty
   - type: Item # Corvax-Wega-Surgery
     size: Tiny # Corvax-Wega-Surgery
+
+- type: entity
+  parent: BaseSubdermalImplant
+  id: LoyaltyImplant
+  name: loyalty implant
+  description: This implant grants access to the Centcomm channel without a headset. Only authorized for Centcomm employees.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: MindControlImplant

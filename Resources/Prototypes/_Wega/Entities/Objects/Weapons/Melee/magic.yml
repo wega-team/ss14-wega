@@ -124,6 +124,11 @@
     damage:
       types:
         Blunt: 1
+  - type: VampireClaws
+    healGroups:
+      groups:
+        Brute: -4
+        Burn: -4
   - type: MeleeWeapon
     autoAttack: true
     attackRate: 2.5

@@ -225,4 +225,107 @@
     - !type:DiseaseBedrestCure
       maxLength: 300
 
+- type: disease
+  id: VampireGraveFever
+  name: disease-vampire-grave-fever
+  infectious: false
+  cureResist: 0.15
+  stages:
+    - 0
+    - 180
+    - 600
+  effects:
+    - !type:DiseasePopUp
+      probability: 0.05
+      message: disease-grave-fever-start
+      visualType: Small
+      stages:
+        - 0
+    - !type:DiseaseSnough
+      probability: 0.03
+      emote: Cough
+      stages:
+        - 0
+    - !type:DiseaseAdjustReagent
+      probability: 0.2
+      reagent: Toxin
+      amount: 0.5
+      stages:
+        - 1
+        - 2
+    - !type:DiseaseHealthChange
+      probability: 0.1
+      damage:
+        groups:
+          Toxin: 2
+      stages:
+        - 1
+        - 2
+    - !type:DiseasePopUp
+      probability: 0.03
+      message: disease-grave-fever-weakness
+      visualType: Medium
+      stages:
+        - 1
+        - 2
+    - !type:DiseaseGenericStatusEffect
+      probability: 0.05
+      key: Stun
+      component: Stunned
+      time: 3
+      type: Add
+      stages:
+        - 1
+        - 2
+    - !type:DiseaseHealthChange
+      probability: 0.15
+      damage:
+        groups:
+          Toxin: 3
+          Airloss: 4
+      stages:
+        - 2
+    - !type:DiseaseHealthChange
+      probability: 0.05
+      damage:
+        types:
+          Cellular: 1
+      stages:
+        - 2
+    - !type:DiseaseGenericStatusEffect
+      probability: 0.1
+      key: Stun
+      component: Stunned
+      time: 6
+      type: Add
+      stages:
+        - 2
+    - !type:DiseaseVomit
+      probability: 0.02
+      stages:
+        - 2
+    - !type:DiseasePopUp
+      probability: 0.02
+      message: disease-grave-fever-terminal
+      visualType: Large
+      stages:
+        - 2
+
+  cures:
+    - !type:DiseaseReagentCure
+      reagent: Spaceacillin
+      min: 10
+      stages:
+        - 0
+        - 1
+        - 2
+    - !type:DiseaseBedrestCure
+      maxLength: 90
+      stages:
+        - 0
+    - !type:DiseaseJustWaitCure
+      maxLength: 1800
+      stages:
+        - 0
+
 ### Once radiation is refactored I want it to have a small chance of giving you regular cancer

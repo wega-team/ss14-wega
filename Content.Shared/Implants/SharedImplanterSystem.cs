@@ -172,7 +172,10 @@ public abstract class SharedImplanterSystem : EntitySystem
         }
 
         var ev = new AddImplantAttemptEvent(user, target, implant.Value, implanter);
-        RaiseLocalEvent(target, ev);
+        //Corvax-Wega-Edit-Start
+        //RaiseLocalEvent(target, ev);
+        RaiseLocalEvent(implant.Value, ev);
+        //Corvax-Wega-Edit-End
         return !ev.Cancelled;
     }
 
