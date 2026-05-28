@@ -1,3 +1,4 @@
+using Content.Server.Bible.Components;
 using Content.Shared.Administration.Systems;
 using Content.Shared.Charges.Systems;
 using Content.Shared.Database;
@@ -9,6 +10,7 @@ using Content.Shared.IdentityManagement.Components;
 using Content.Shared.Inventory;
 using Content.Shared.Mindshield.Components;
 using Content.Shared.Popups;
+using Content.Shared.Surgery.Components;
 using Content.Shared.Vampire;
 using Content.Shared.Vampire.Components;
 using Robust.Shared.Audio;
@@ -83,6 +85,12 @@ public sealed partial class VampireSystem
         }
 
         if (!HasComp<HumanoidProfileComponent>(target) || HasComp<VampireComponent>(target) || HasComp<MindShieldComponent>(target))
+        {
+            _popup.PopupEntity(Loc.GetString("vampire-initiation-failed"), ent, ent, PopupType.SmallCaution);
+            return;
+        }
+
+        if (HasComp<SyntheticOperatedComponent>(target) || HasComp<BibleUserComponent>(target))
         {
             _popup.PopupEntity(Loc.GetString("vampire-initiation-failed"), ent, ent, PopupType.SmallCaution);
             return;
