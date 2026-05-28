@@ -537,8 +537,6 @@ public sealed partial class VampireSystem
                 bestia.MaxOrgansPerVictim += bestia.OrgansPerVictimThresholds[threshold];
             }
         }
-
-        Dirty(ent.Owner, bestia);
     }
 
     private void UpdateProtections(Entity<BestiaContainerComponent> ent)

@@ -326,7 +326,6 @@ public sealed partial class VampireSystem
         {
             _container.Insert(targetOrgan, bestia.OrgansContainer);
             UpdateProtections((vampireBody, bestia));
-            Dirty(vampireBody, bestia);
         }
 
         _popup.PopupEntity(Loc.GetString("vampire-bestia-dissect-success", ("organ", Name(targetOrgan))), user, user, PopupType.Medium);

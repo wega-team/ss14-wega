@@ -4,7 +4,7 @@ using Robust.Shared.GameStates;
 namespace Content.Shared.Vampire.Components;
 
 [Access(typeof(SharedVampireSystem))]
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true)]
+[RegisterComponent, NetworkedComponent]
 public sealed partial class BestiaContainerComponent : Component
 {
     public const string ContainerId = "organs_container";
@@ -13,16 +13,16 @@ public sealed partial class BestiaContainerComponent : Component
     public Container OrgansContainer = default!;
 
     // Mew Mew Mew Mew Mew Mew Mew Mew~!
-    [ViewVariables(VVAccess.ReadOnly), AutoNetworkedField]
+    [ViewVariables(VVAccess.ReadOnly)]
     public Dictionary<EntityUid, int> OrgansExtractedFromVictim = new();
 
-    [ViewVariables(VVAccess.ReadOnly), AutoNetworkedField]
+    [ViewVariables(VVAccess.ReadOnly)]
     public int MaxRegularOrgans = 10;
 
-    [ViewVariables(VVAccess.ReadOnly), AutoNetworkedField]
+    [ViewVariables(VVAccess.ReadOnly)]
     public int MaxCriticalOrgans = 2;
 
-    [ViewVariables(VVAccess.ReadOnly), AutoNetworkedField]
+    [ViewVariables(VVAccess.ReadOnly)]
     public int MaxOrgansPerVictim = 1;
 
     [ViewVariables(VVAccess.ReadOnly)]
