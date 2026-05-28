@@ -6,6 +6,7 @@ using Content.Shared.NullRod.Components;
 using Content.Shared.Hands.EntitySystems;
 using Robust.Shared.Timing;
 using Content.Shared.Damage.Systems;
+using Content.Shared.Rejuvenate;
 
 namespace Content.Server.NullRod;
 
@@ -20,6 +21,7 @@ public sealed class NullDamageSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<UnholyComponent, DamageChangedEvent>(OnUnholyDamageTaken);
+        SubscribeLocalEvent<NullDamageComponent, RejuvenateEvent>(OnRejuvenate);
     }
 
     public override void Update(float frameTime)
@@ -80,6 +82,9 @@ public sealed class NullDamageSystem : EntitySystem
         _admin.Add(LogType.Damaged, LogImpact.Low,
             $"{ToPrettyString(uid):target} took {damageToApply} NullDamage from {ToPrettyString(args.Origin.Value):attacker}");
     }
+
+    private void OnRejuvenate(EntityUid uid, NullDamageComponent component, ref RejuvenateEvent args)
+        => RemCompDeferred<NullDamageComponent>(uid);
 
     #endregion
 

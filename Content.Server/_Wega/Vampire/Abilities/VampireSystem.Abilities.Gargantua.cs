@@ -9,13 +9,11 @@ using Content.Shared.Movement.Pulling.Components;
 using Content.Shared.NullRod.Components;
 using Content.Shared.Popups;
 using Content.Shared.Prying.Components;
-using Content.Shared.Throwing;
 using Content.Shared.Vampire;
 using Content.Shared.Vampire.Components;
 using Content.Shared.Weapons.Melee;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Components;
-using Robust.Shared.Physics.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
@@ -24,9 +22,6 @@ namespace Content.Server.Vampire;
 
 public sealed partial class VampireSystem
 {
-    [Dependency] private readonly SharedPhysicsSystem _physics = default!;
-    [Dependency] private readonly ThrowingSystem _throwing = default!;
-
     public static readonly ProtoId<DamageModifierSetPrototype> BloodSwell = "VampireBloodSwell";
 
     private void InitializeGargantua()
@@ -172,11 +167,11 @@ public sealed partial class VampireSystem
             var humanoidPosition = _transform.GetWorldPosition(humanoid);
             var direction = (humanoidPosition - vampirePos).Normalized();
 
-            var force = 5000f;
-            if (physics.Mass < 80f)
+            var force = 10f;
+            if (physics.Mass <= 50f)
                 force *= 2;
 
-            _physics.ApplyLinearImpulse(humanoid, direction * force, body: physics);
+            _throwing.TryThrow(humanoidUid, direction * (force / 2), force);
         }
 
         _audio.PlayPvs(args.Sound, ent);
@@ -244,16 +239,16 @@ public sealed partial class VampireSystem
         var targetPosition = _transform.GetWorldPosition(target);
         var direction = (vampirePosition - targetPosition).Normalized();
 
-        if (TryComp(target, out PhysicsComponent? physics))
+        if (HasComp<PhysicsComponent>(target))
         {
             if (!combatMode.IsInCombatMode)
             {
-                _physics.ApplyLinearImpulse(target, -direction * 5000f, body: physics);
+                _throwing.TryThrow(target, -direction * 3);
                 _stun.TryUpdateStunDuration(target, TimeSpan.FromSeconds(3f));
             }
             else
             {
-                _physics.ApplyLinearImpulse(args.Target, direction * 5000f, body: physics);
+                _throwing.TryThrow(target, direction * 3);
                 _stun.TryUpdateStunDuration(target, TimeSpan.FromSeconds(3f));
             }
         }
@@ -281,11 +276,11 @@ public sealed partial class VampireSystem
         var targetPosition = _transform.ToMapCoordinates(coords, true).Position;
         var direction = (targetPosition - vampirePosition).Normalized();
 
-        // Well, that might cause it to deal damage when the wind blows,
+        // Well, that might cause it to deal damage when the space wind,
         // but that doesn't seem like a problem, does it?
         EntityManager.AddComponents(ent, args.EnsurableComponents, false);
 
-        _throwing.TryThrow(ent, direction, 20f);
+        _throwing.TryThrow(ent, direction * 3);
 
         _audio.PlayPvs(args.Sound, ent);
         SubtractBloodEssence(ent.Owner, args.BloodCost);

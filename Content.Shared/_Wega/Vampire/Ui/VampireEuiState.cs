@@ -1,5 +1,4 @@
 using Content.Shared.Eui;
-using Content.Shared.Vampire.Components;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared.Vampire;

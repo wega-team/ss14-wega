@@ -548,7 +548,9 @@ public abstract partial class SharedActionsSystem : EntitySystem
         // Note that attached entity and attached container are allowed to be null here.
         if (action.Comp.AttachedEntity != null && action.Comp.AttachedEntity != performer)
         {
+#if DEBUG // Corvax-Wega-Add | Disable Error for the non-debug version
             Log.Error($"{ToPrettyString(performer)} is attempting to perform an action {ToPrettyString(action)} that is attached to another entity {ToPrettyString(action.Comp.AttachedEntity)}");
+#endif // Corvax-Wega-Add
             return;
         }
 

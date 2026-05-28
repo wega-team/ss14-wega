@@ -1,13 +1,14 @@
 using System.Linq;
 using Content.Server.Atmos.EntitySystems;
+using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
 using Content.Shared.DoAfter;
 using Content.Shared.Emp;
+using Content.Shared.Mobs.Components;
 using Content.Shared.Movement.Components;
 using Content.Shared.NullRod.Components;
 using Content.Shared.Physics;
 using Content.Shared.Popups;
-using Content.Shared.Stealth;
 using Content.Shared.Stealth.Components;
 using Content.Shared.Vampire;
 using Content.Shared.Vampire.Components;
@@ -20,7 +21,6 @@ public sealed partial class VampireSystem
 {
     [Dependency] private readonly AtmosphereSystem _atmosphere = default!;
     [Dependency] private readonly SharedEmpSystem _emp = default!;
-    [Dependency] private readonly SharedStealthSystem _stealth = default!;
 
     private void InitializeUmbrae()
     {
@@ -189,16 +189,8 @@ public sealed partial class VampireSystem
             return;
         }
 
-        var coords = Transform(ent).Coordinates;
-        var lightsInRange = _entityLookup.GetEntitiesInRange<PointLightComponent>(coords, 15f)
-            .Where(entity => HasComp<DamageableComponent>(entity.Owner)).ToList();
-
-        foreach (var lightEntity in lightsInRange)
-        {
-            _damage.TryChangeDamage(lightEntity.Owner, args.Damage, true, origin: ent);
-        }
-
-        _emp.EmpPulse(coords, 4, 5000, TimeSpan.FromSeconds(30), ent);
+        DamageLightsInRange(ent, 15f, args.Damage);
+        _emp.EmpPulse(Transform(ent).Coordinates, 4, 5000, TimeSpan.FromSeconds(30), ent);
 
         SubtractBloodEssence(ent.Owner, args.BloodCost);
         args.Handled = true;
@@ -233,8 +225,6 @@ public sealed partial class VampireSystem
 
         if (supreme.Active)
         {
-            RaiseNetworkEvent(new VampireToggleFovEvent(netEntity, true));
-
             supreme.Active = false;
             _alerts.ClearAlert(ent.Owner, args.Alert);
             Dirty(ent, supreme);
@@ -244,8 +234,6 @@ public sealed partial class VampireSystem
         }
 
         _alerts.ShowAlert(ent.Owner, args.Alert, 0);
-        RaiseNetworkEvent(new VampireToggleFovEvent(netEntity, false));
-
         supreme.Active = true;
         Dirty(ent, supreme);
 
@@ -258,14 +246,14 @@ public sealed partial class VampireSystem
 
     #region Utility Methods
 
-    private void ExecuteShadowBoxingTick(EntityUid ent, VampireShadowBoxingActionEvent args, int currentTick)
+    private void ExecuteShadowBoxingTick(EntityUid uid, VampireShadowBoxingActionEvent args, int currentTick)
     {
-        if (!Exists(ent) || currentTick >= args.Repeats)
+        if (!Exists(uid) || currentTick >= args.Repeats)
             return;
 
-        Spawn(args.EntityId, Transform(ent).Coordinates);
+        Spawn(args.EntityId, Transform(uid).Coordinates);
 
-        Timer.Spawn(args.TimeInterval, () => ExecuteShadowBoxingTick(ent, args, currentTick + 1));
+        Timer.Spawn(args.TimeInterval, () => ExecuteShadowBoxingTick(uid, args, currentTick + 1));
     }
 
     private void ExecuteEternalDarknessTick(Entity<VampireComponent> ent, SupremeVampireComponent supreme, VampireEternalDarknessActionEvent args, NetEntity netEntity)
@@ -282,8 +270,6 @@ public sealed partial class VampireSystem
         {
             SendFailedPopup(ent);
 
-            RaiseNetworkEvent(new VampireToggleFovEvent(netEntity, true));
-
             supreme.Active = false;
             _alerts.ClearAlert(ent.Owner, args.Alert);
             Dirty(ent, supreme);
@@ -291,9 +277,23 @@ public sealed partial class VampireSystem
         }
 
         CoolSurroundingAtmosphere(ent);
+        DamageLightsInRange(ent, 4f, args.Damage);
         SubtractBloodEssence(ent.Owner, args.BloodCost);
 
         Timer.Spawn(args.TimeInterval, () => ExecuteEternalDarknessTick(ent, supreme, args, netEntity));
+    }
+
+    private void DamageLightsInRange(Entity<VampireComponent> ent, float radius, DamageSpecifier damage)
+    {
+        var coords = Transform(ent).Coordinates;
+        var lightsInRange = _entityLookup.GetEntitiesInRange<PointLightComponent>(coords, radius)
+            .Where(entity => HasComp<DamageableComponent>(entity.Owner)
+                && !HasComp<MobStateComponent>(entity.Owner)).ToList();
+
+        foreach (var lightEntity in lightsInRange)
+        {
+            _damage.TryChangeDamage(lightEntity.Owner, damage, true, origin: ent);
+        }
     }
 
     private void CoolSurroundingAtmosphere(EntityUid ent)
@@ -301,7 +301,7 @@ public sealed partial class VampireSystem
         if (_atmosphere.GetContainingMixture(ent, excite: true) is { } atmosphere)
         {
             const float targetTemperature = 233.15f;
-            const float coolingRate = 10000f;
+            const float coolingRate = 20000f;
 
             var deltaT = targetTemperature - atmosphere.Temperature;
             if (deltaT < 0)

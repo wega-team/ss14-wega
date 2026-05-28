@@ -1,4 +1,4 @@
-# Basic
+#region Basic
 - type: entity
   id: ActionVampireSelectClass
   parent: BaseAction
@@ -40,18 +40,23 @@
     icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "rejuvenate" }
     checkCanInteract: false
     checkConsciousness: false
-    useDelay: 20
+    useDelay: 5
     priority: 1
+  - type: LimitedCharges
+    maxCharges: 1
+  - type: AutoRecharge
+    rechargeDuration: 20
   - type: InstantAction
     event: !type:VampireRejuvenateActionEvent
       bloodCost: 200
       heal:
-        Asphyxiation: -5
-        Blunt: -2
-        Slash: -2
-        Piercing: -2
-        Heat: -2
-        Poison: -2
+        types:
+          Asphyxiation: -5
+          Heat: -2
+          Poison: -2
+      healGroups:
+        groups:
+          Brute: -2
 
 - type: entity
   id: ActionVampireGlare
@@ -66,13 +71,36 @@
     sound: !type:SoundPathSpecifier
       path: /Audio/_Wega/Effects/Vampire/glare.ogg
     checkCanInteract: false
-    useDelay: 30
+    useDelay: 3
     priority: 1
+  - type: LimitedCharges
+    maxCharges: 2
+  - type: AutoRecharge
+    rechargeDuration: 30
   - type: TargetAction
   - type: EntityTargetAction
     event: !type:VampireGlareActionEvent
 
-# Hemomancer
+# Diablerie
+- type: entity
+  id: ActionVampireSacramentInitiation
+  parent: BaseAction
+  name: "[color=purple]Sacrament of Initiation[/color]"
+  description: "You have reached the peak of your power. For 50 blood, you can raise the dead as free-willed vampires. They are not your thralls."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "revive" }
+    itemIconStyle: BigAction
+    useDelay: 300
+    priority: -1
+  - type: TargetAction
+  - type: EntityTargetAction
+    event: !type:VampireSacramentInitiationActionEvent
+      bloodCost: 50
+#endregion
+
+#region Hemomancer
 - type: entity
   id: ActionVampireClaws
   parent: BaseAction
@@ -171,7 +199,7 @@
       bloodCost: 50
       damage:
         types:
-          Blunt: 40
+          Blunt: 20
 
 - type: entity
   id: ActionVampireBloodBringersRite
@@ -187,19 +215,17 @@
   - type: InstantAction
     event: !type:VampireBloodBringersRiteActionEvent
       bloodCost: 5
-      damage:
-        types:
-          Bloodloss: 5
       heal:
         types:
-          Blunt: -8
-          Slash: -8
-          Piercing: -8
           Heat: -1.5
+      healGroups:
+        groups:
+          Brute: -8
       sound:
         path: "/Audio/Effects/Fluids/splat.ogg"
+#endregion
 
-# Umbrae
+#region Umbrae
 - type: entity
   id: ActionVampireCloakOfDarkness
   parent: BaseAction
@@ -315,8 +341,12 @@
   - type: InstantAction
     event: !type:VampireEternalDarknessActionEvent
       bloodCost: 5
+      damage:
+        types:
+          Blunt: 5
+#endregion
 
-# Gargantua
+#region Gargantua
 - type: entity
   id: ActionVampireRejuvenateAdvanced
   parent: BaseAction
@@ -328,18 +358,24 @@
     icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "rejuvenate" }
     checkCanInteract: false
     checkConsciousness: false
-    useDelay: 20
+    useDelay: 5
     priority: 1
+  - type: LimitedCharges
+    maxCharges: 1
+  - type: AutoRecharge
+    rechargeDuration: 20
   - type: InstantAction
     event: !type:VampireRejuvenateActionEvent
       bloodCost: 200
+      advanced: true
       heal:
-        Asphyxiation: -5
-        Blunt: -2
-        Slash: -2
-        Piercing: -2
-        Heat: -2
-        Poison: -2
+        types:
+          Asphyxiation: -5
+          Heat: -2
+          Poison: -2
+      healGroups:
+        groups:
+          Brute: -2
 
 - type: entity
   id: ActionVampireBloodSwell
@@ -448,8 +484,8 @@
     itemIconStyle: BigAction
     useDelay: 30
   - type: TargetAction
-    range: 16
     checkCanAccess: false
+    range: 16
   - type: WorldTargetAction
     event: !type:VampireChargeActionEvent
       bloodCost: 30
@@ -461,44 +497,9 @@
             Structural: 800
       sound:
         path: "/Audio/Effects/Footsteps/largethud.ogg"
+#endregion
 
-# Dantalion
-- type: entity
-  id: ActionMaxThrallCountUpdate1
-  parent: BaseAction
-  name: "[color=purple]Upgrade thralls[/color]"
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "enthrall" }
-    itemIconStyle: BigAction
-  - type: InstantAction
-    event: !type:MaxThrallCountUpdateEvent
-
-- type: entity
-  id: ActionMaxThrallCountUpdate2
-  parent: BaseAction
-  name: "[color=purple]Upgrade thralls[/color]"
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "enthrall" }
-    itemIconStyle: BigAction
-  - type: InstantAction
-    event: !type:MaxThrallCountUpdateEvent
-
-- type: entity
-  id: ActionMaxThrallCountUpdate3
-  parent: BaseAction
-  name: "[color=purple]Upgrade thralls[/color]"
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "enthrall" }
-    itemIconStyle: BigAction
-  - type: InstantAction
-    event: !type:MaxThrallCountUpdateEvent
-
+#region Dantalion
 - type: entity
   id: ActionEnthrall
   parent: BaseAction
@@ -541,6 +542,7 @@
     itemIconStyle: BigAction
     useDelay: 10
   - type: TargetAction
+    range: 7
   - type: EntityTargetAction
     event: !type:VampirePacifyActionEvent
       bloodCost: 30
@@ -562,20 +564,35 @@
     event: !type:VampireSubspaceSwapActionEvent
       bloodCost: 15
 
-#- type: entity
-#  id: ActionDeployDecoy
-#  parent: BaseAction
-#  name: "[color=purple]Deploy decoy[/color]"
-#  description: ""
-#  categories: [ HideSpawnMenu ]
-#  components:
-#  - type: Action
-#    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "decoy" }
-#    itemIconStyle: BigAction
-#    useDelay: 20
-#  - type: InstantAction
-#    event: !type:VampireDeployDecoyActionEvent
-#      bloodCost: 30
+- type: entity
+  id: ActionDeployDecoy
+  parent: BaseAction
+  name: "[color=purple]Deploy decoy[/color]"
+  description: "It creates a copy of you, and you become invisible."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "decoy" }
+    itemIconStyle: BigAction
+    useDelay: 20
+  - type: InstantAction
+    event: !type:VampireDeployDecoyActionEvent
+      bloodCost: 30
+      components:
+      - type: HTN
+        rootTask:
+          task: SimpleHostileCompound
+      - type: NPCIgnoringOptimize
+      - type: NpcFactionMember
+        factions:
+        - Passive
+      - type: NoSlip
+      - type: Tag
+        tags:
+        - CannotSuicide
+        - DoorBumpOpener
+        - StunImmune
+        - SlowImmune
 
 - type: entity
   id: ActionRallyThralls
@@ -622,13 +639,13 @@
     event: !type:VampireThrallHealActionEvent
       bloodCost: 50
       heal:
-        Bloodloss: -10
-        Asphyxiation: -10
-        Blunt: -10
-        Slash: -10
-        Piercing: -10
-        Heat: -10
-        Poison: -10
+        types:
+          Heat: -10
+          Poison: -10
+      healGroups:
+        groups:
+          Airloss: -10
+          Brute: -10
 
 - type: entity
   id: ActionMassHysteria
@@ -659,3 +676,179 @@
   - type: InstantAction
     event: !type:VampirePacifyNearbyActionEvent
       bloodCost: 50
+#endregion
+
+#region Bestia
+- type: entity
+  id: ActionVampireCheckTrophies
+  parent: BaseAction
+  name: "[color=purple]Check Trophies[/color]"
+  description: "Open the interface to view all the organs you have collected and the bonuses they provide."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "rush" }
+    useDelay: 1
+  - type: InstantAction
+    event: !type:VampireCheckTrophiesActionEvent
+
+- type: entity
+  id: ActionVampireDissect
+  parent: BaseAction
+  name: "[color=purple]Dissect[/color]"
+  description: "Surgically extract organs from a living victim. Each organ gives you unique passive or active bonuses."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "claws" }
+    itemIconStyle: BigAction
+    useDelay: 5
+  - type: TargetAction
+  - type: EntityTargetAction
+    event: !type:VampireDissectActionEvent
+      bloodCost: 10
+
+- type: entity
+  id: ActionVampireInfectedTrophy
+  parent: BaseAction
+  name: "[color=purple]Infected Trophy[/color]"
+  description: "Launch a projectile that deals damage, infects the target, and explodes on impact. Damage, infection chance, lifetime, and damage radius scale with your collected organs."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "infected_trophy" }
+    itemIconStyle: BigAction
+    useDelay: 10
+  - type: TargetAction
+    range: 8
+  - type: EntityTargetAction
+    event: !type:VampireInfectedTrophyActionEvent
+      bloodCost: 30
+
+- type: entity
+  id: ActionVampireLunge
+  parent: BaseAction
+  name: "[color=purple]Lunge[/color]"
+  description: "Launch yourself at a target location. Upon landing, you stun and cause bleeding to all enemies in an area. Range, stun duration, blood stolen, and radius scale with your collected organs."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "charge" }
+    itemIconStyle: BigAction
+    useDelay: 5
+  - type: TargetAction
+    checkCanAccess: false
+    range: 11
+  - type: WorldTargetAction
+    event: !type:VampireLungeActionEvent
+      bloodCost: 25
+
+- type: entity
+  id: ActionVampireMarkPrey
+  parent: BaseAction
+  name: "[color=purple]Mark the Prey[/color]"
+  description: "Mark a target, slowing them and dealing periodic burn damage. Mark duration, burn chance, damage, and range scale with your collected organs."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "predator_sense" }
+    itemIconStyle: BigAction
+    useDelay: 20
+  - type: TargetAction
+    range: 8
+  - type: EntityTargetAction
+    event: !type:VampireMarkPreyActionEvent
+      bloodCost: 25
+
+- type: entity
+  id: ActionVampireMetamorphosisBats
+  parent: BaseAction
+  name: "[color=purple]Metamorphosis Bats[/color]"
+  description: "Transform into a swarm of bats. In this form, your health, damage, speed, leeching, and self-healing scale with your collected organs."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "meta_bats" }
+    useDelay: 30
+  - type: InstantAction
+    event: !type:VampireMetamorphosisBatsActionEvent
+      bloodCost: 45
+
+- type: entity
+  id: ActionVampireAnabiosis
+  parent: BaseAction
+  name: "[color=purple]Anabiosis[/color]"
+  description: "Retreat into a coffin to regenerate. The coffin protects you and puts you into a deep sleep, restoring your health over time."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "coffin" }
+    useDelay: 180
+  - type: InstantAction
+    event: !type:VampireAnabiosisActionEvent
+      bloodCost: 70
+
+- type: entity
+  id: ActionVampireSummonBats
+  parent: BaseAction
+  name: "[color=purple]Summon Bats[/color]"
+  description: "Summon 1-4 bats to fight for you. Each bat's health, damage, speed, and leeching scale with your collected organs."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "bats" }
+    useDelay: 30
+  - type: InstantAction
+    event: !type:VampireSummonBatsActionEvent
+      bloodCost: 50
+      sound:
+        path: /Audio/_Wega/Effects/Vampire/bats_spawn.ogg
+
+- type: entity
+  id: ActionVampireMetamorphosisHound
+  parent: BaseAction
+  name: "[color=purple]Metamorphosis Hound[/color]"
+  description: "Transform into a powerful hound. In this form, your health, damage, speed, and self-healing scale with your collected organs."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "blood_hound" }
+    useDelay: 30
+  - type: InstantAction
+    event: !type:VampireMetamorphosisHoundActionEvent
+      bloodCost: 60
+
+# Polymorph
+- type: entity
+  id: ActionVampireResonantShriek
+  parent: BaseAction
+  name: "[color=purple]Resonant Shriek[/color]"
+  description: "Let out a powerful shriek that shatters windows, breaks lights, and stuns everyone nearby. Stun duration and range scale with your collected organs."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "shriek" }
+    useDelay: 20
+  - type: InstantAction
+    event: !type:VampireResonantShriekActionEvent
+      bloodCost: 40
+      damage:
+        types:
+          Structural: 200
+      sound:
+        path: /Audio/_Wega/Effects/Vampire/creepyshriek.ogg
+
+- type: entity
+  id: ActionVampireLungeFinale
+  parent: BaseAction
+  name: "[color=purple]Lunge Finale[/color]"
+  description: "Perform a series of lunges on random nearby victims. Each 10 trophies grants an additional jump. Range, stun duration, blood stolen, and damage radius scale with your collected organs."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "lunge_finale" }
+    useDelay: 20
+  - type: InstantAction
+    event: !type:VampireLungeFinaleActionEvent
+      bloodCost: 80
+#endregion

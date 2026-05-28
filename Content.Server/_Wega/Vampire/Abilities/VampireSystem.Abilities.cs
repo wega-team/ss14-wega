@@ -14,15 +14,31 @@ using Content.Shared.Damage.Systems;
 using Content.Shared.Flash;
 using Content.Shared.StatusEffectNew;
 using Content.Shared.Stunnable;
+using Content.Shared.Damage;
+using Content.Shared.Mobs.Systems;
+using Content.Shared.Mobs;
+using Content.Shared.Stealth;
+using Content.Server.Polymorph.Systems;
+using Content.Server.Surgery;
+using Content.Shared.Surgery;
 
 namespace Content.Server.Vampire;
 
 public sealed partial class VampireSystem
 {
     [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] private readonly MobThresholdSystem _threshold = default!;
     [Dependency] private readonly MovementSpeedModifierSystem _speed = default!;
     [Dependency] private readonly SharedStaminaSystem _stamina = default!;
     [Dependency] private readonly StatusEffectsSystem _status = default!;
+    [Dependency] private readonly SharedStealthSystem _stealth = default!;
+    [Dependency] private readonly SharedFlashSystem _flash = default!;
+    [Dependency] private readonly MovementModStatusSystem _movementMod = default!;
+    [Dependency] private readonly PolymorphSystem _polymorph = default!;
+    [Dependency] private readonly SurgerySystem _surgery = default!;
+
+    private static readonly ProtoId<InternalDamagePrototype> InternalBleeding = "ArterialBleeding";
+    private static readonly EntProtoId ForceSleeping = "StatusEffectForcedSleeping";
 
     private void InitializePowers()
     {
@@ -30,6 +46,7 @@ public sealed partial class VampireSystem
         InitializeUmbrae();
         InitializeGargantua();
         InitializeDantalion();
+        InitializeBestia();
 
         // Basic Abilities
         SubscribeLocalEvent<VampireComponent, VampireRejuvenateActionEvent>(OnRejuvenate);
@@ -38,57 +55,51 @@ public sealed partial class VampireSystem
 
     #region Basic Abilities
 
-    private void OnRejuvenate(EntityUid uid, VampireComponent component, VampireRejuvenateActionEvent args)
+    private void OnRejuvenate(Entity<VampireComponent> ent, ref VampireRejuvenateActionEvent args)
     {
-        if (_mobState.IsDead(uid))
+        if (_mobState.IsDead(args.Performer))
         {
-            _popup.PopupEntity(Loc.GetString("vampire-heal-dead"), uid, uid, PopupType.MediumCaution);
+            _popup.PopupEntity(Loc.GetString("vampire-heal-dead"), args.Performer, args.Performer, PopupType.MediumCaution);
             return;
         }
 
-        TryRemoveKnockdown(uid);
-        _stamina.RemoveStaminaDamage(uid);
+        TryRemoveKnockdown(args.Performer);
+        _stamina.RemoveStaminaDamage(args.Performer);
 
-        if (component.CurrentBlood >= args.BloodCost)
+        if (args.Advanced || ent.Comp.CurrentBlood >= args.BloodCost)
         {
-            ExecuteRejuvenateHealTick(uid, 0, args);
+            ExecuteRejuvenateHealTick(args.Performer, 0, args);
+            if (TryComp<VampireDiablerieComponent>(ent, out var diablerie) && diablerie.DiablerieLevel >= 3)
+                _surgery.TryRemoveInternalDamage(ent, InternalBleeding);
         }
 
         args.Handled = true;
     }
 
-    private void ExecuteRejuvenateHealTick(EntityUid uid, int currentTick, VampireRejuvenateActionEvent args)
-    {
-        if (currentTick >= args.Repeats)
-            return;
-
-        _damage.TryChangeDamage(uid, args.Heal, true, false, origin: uid);
-
-        Timer.Spawn(args.TimeInterval, () => ExecuteRejuvenateHealTick(uid, currentTick + 1, args));
-    }
-
-    private void OnVampireGlare(EntityUid vampire, VampireComponent component, VampireGlareActionEvent args)
+    private void OnVampireGlare(Entity<VampireComponent> ent, ref VampireGlareActionEvent args)
     {
         var target = args.Target;
         if (HasComp<VampireComponent>(target) || HasComp<FlashImmunityComponent>(target))
             return;
 
-        if (HasComp<BibleUserComponent>(target) && !HasTruePower(vampire))
+        if (HasComp<BibleUserComponent>(target) && !HasTruePower(ent))
         {
-            _stun.TryUpdateParalyzeDuration(vampire, TimeSpan.FromSeconds(5f));
-            _chat.TryEmoteWithoutChat(vampire, _proto.Index(Scream), true);
-            _damage.TryChangeDamage(vampire, component.HolyDamage);
+            _stun.TryUpdateParalyzeDuration(args.Performer, TimeSpan.FromSeconds(5f));
+            _chat.TryEmoteWithoutChat(args.Performer, _proto.Index(Scream), true);
+            _damage.TryChangeDamage(args.Performer, ent.Comp.HolyDamage);
             return;
         }
 
         args.Handled = true;
 
-        var ev = new FlashAttemptEvent(target, vampire, null);
+        var ev = new FlashAttemptEvent(target, args.Performer, null);
         RaiseLocalEvent(target, ref ev, true);
         if (ev.Cancelled)
             return;
 
         _stun.TryUpdateParalyzeDuration(target, TimeSpan.FromSeconds(5f));
+        _flash.Flash(target, args.Performer, null, TimeSpan.FromSeconds(3f), 0.8f);
+        _status.TryAddStatusEffectDuration(target, "Muted", TimeSpan.FromSeconds(8f));
     }
 
     #endregion
@@ -110,6 +121,42 @@ public sealed partial class VampireSystem
         return true;
     }
 
+    private void ExecuteRejuvenateHealTick(EntityUid uid, int currentTick, VampireRejuvenateActionEvent args)
+    {
+        if (!Exists(uid) || currentTick >= args.Repeats)
+            return;
+
+        var healingSpec = CalculateScaledHealing(uid, args.Heal, args.HealGroups);
+
+        var stomachCount = GetOrganTypeCount(uid, BestiaOrganType.Stomach);
+        var bonus = stomachCount * 3;
+        if (bonus > 0)
+        {
+            var bonusMultiplier = 1f + (bonus / 100f);
+            healingSpec *= bonusMultiplier;
+        }
+
+        _damage.TryChangeDamage(uid, healingSpec, true, false, origin: uid);
+
+        Timer.Spawn(args.TimeInterval, () => ExecuteRejuvenateHealTick(uid, currentTick + 1, args));
+    }
+
+    private DamageSpecifier CalculateScaledHealing(EntityUid uid, DamageSpecifier heal, GroupHealSpecifier healGroups)
+    {
+        var totalDamage = _damage.GetTotalDamage(uid).Float();
+        if (!_threshold.TryGetThresholdForState(uid, MobState.Dead, out var threshold))
+            return new DamageSpecifier();
+
+        var maxDamage = threshold.Value.Float();
+        var damagePercent = maxDamage > 0 ? (totalDamage / maxDamage) * 100 : 0;
+        var modifier = Math.Clamp(damagePercent / 20.0, 1.0, 5.0);
+
+        var groupHealSpec = _damage.CreateWeightedHealFromGroups(uid, healGroups);
+        var scaledHeal = (heal + groupHealSpec) * modifier;
+
+        return scaledHeal;
+    }
+
     private bool TrySpawnObjectAtPosition(EntityCoordinates coords, EntProtoId entityId, EntityUid uid)
     {
         var grid = _transform.GetGrid(coords);
@@ -119,9 +166,7 @@ public sealed partial class VampireSystem
         if (!TryComp<MapGridComponent>(gridEntityUid, out var gridComp))
             return false;
 
-        var position = coords.Position;
-        var gridPosition = new Vector2i((int)position.X, (int)position.Y);
-        if (!_map.TryGetTileRef(gridEntityUid, gridComp, gridPosition, out var tileRef)
+        if (!_map.TryGetTileRef(gridEntityUid, gridComp, coords, out var tileRef)
             || _turf.IsTileBlocked(tileRef, CollisionGroup.Impassable))
             return false;
 

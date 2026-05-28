@@ -7,6 +7,7 @@ namespace Content.Shared.Vampire.Components;
 /// <summary>
 /// Determines what the entity is and who it belongs to.
 /// </summary>
+[Access(typeof(SharedVampireSystem))]
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true)]
 public sealed partial class ThrallComponent : Component
 {

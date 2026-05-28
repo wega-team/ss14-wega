@@ -1,12 +1,14 @@
 using Content.Shared.Actions;
 using Content.Shared.Alert;
+using Content.Shared.Cloning;
 using Content.Shared.Damage;
+using Content.Shared.Damage.Prototypes;
 using Content.Shared.FixedPoint;
 using Content.Shared.Polymorph;
+using Content.Shared.Projectiles;
 using Content.Shared.Roles;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization;
 
 namespace Content.Shared.Vampire;
 
@@ -20,6 +22,12 @@ public interface IVampireActionEvent
 }
 
 // Base
+public sealed partial class VampireDrinkingBloodActionEvent : EntityTargetActionEvent
+{
+    [DataField]
+    public TimeSpan Delay = TimeSpan.FromSeconds(3);
+}
+
 public sealed partial class VampireSelectClassActionEvent : InstantActionEvent, IVampireActionEvent
 {
     [DataField] public FixedPoint2 BloodCost { get; private set; }
@@ -28,10 +36,16 @@ public sealed partial class VampireSelectClassActionEvent : InstantActionEvent, 
 public sealed partial class VampireRejuvenateActionEvent : InstantActionEvent, IVampireActionEvent
 {
     [DataField]
+    public bool Advanced = false;
+
+    [DataField]
     public int Repeats = 5;
 
     [DataField]
     public DamageSpecifier Heal = default!;
+
+    [DataField]
+    public GroupHealSpecifier HealGroups = default!;
 
     [DataField]
     public TimeSpan TimeInterval = TimeSpan.FromSeconds(3.5);
@@ -41,7 +55,11 @@ public sealed partial class VampireRejuvenateActionEvent : InstantActionEvent, I
 
 public sealed partial class VampireGlareActionEvent : EntityTargetActionEvent { }
 
-public sealed partial class VampireDrinkingBloodActionEvent : EntityTargetActionEvent { }
+// Diablerie
+public sealed partial class VampireSacramentInitiationActionEvent : EntityTargetActionEvent, IVampireActionEvent
+{
+    [DataField] public FixedPoint2 BloodCost { get; private set; }
+}
 
 // Hemomancer Abilities
 public sealed partial class VampireClawsActionEvent : InstantActionEvent, IVampireActionEvent
@@ -81,8 +99,6 @@ public sealed partial class VampireBloodBarrierActionEvent : WorldTargetActionEv
     [DataField]
     public EntProtoId EntityId = "BloodBarrier";
 
-    public bool UseCasterDirection { get; set; } = true;
-
     [DataField] public FixedPoint2 BloodCost { get; private set; }
 }
 
@@ -114,16 +130,13 @@ public sealed partial class VampireBloodEruptionActionEvent : InstantActionEvent
 public sealed partial class VampireBloodBringersRiteActionEvent : InstantActionEvent, IVampireActionEvent
 {
     [DataField]
-    public EntProtoId EntityId = "PuddleBlood";
-
-    [DataField]
     public ProtoId<AlertPrototype> Alert = "AlertBloodRite";
 
     [DataField]
-    public DamageSpecifier Damage = default!;
+    public DamageSpecifier Heal = default!;
 
     [DataField]
-    public DamageSpecifier Heal = default!;
+    public GroupHealSpecifier HealGroups = default!;
 
     [DataField]
     public float StaminaMod = -15f;
@@ -198,24 +211,13 @@ public sealed partial class VampireEternalDarknessActionEvent : InstantActionEve
     public ProtoId<AlertPrototype> Alert = "AlertEternalDarkness";
 
     [DataField]
+    public DamageSpecifier Damage = default!;
+
+    [DataField]
     public TimeSpan TimeInterval = TimeSpan.FromSeconds(1);
 
     [DataField] public FixedPoint2 BloodCost { get; private set; }
 }
-
-[Serializable, NetSerializable]
-public sealed partial class VampireToggleFovEvent : EntityEventArgs
-{
-    public NetEntity User { get; }
-    public bool Enabled { get; }
-
-    public VampireToggleFovEvent(NetEntity user, bool enabled)
-    {
-        User = user;
-        Enabled = enabled;
-    }
-}
-
 
 // Gargantua Abilities
 public sealed partial class VampireBloodSwellActionEvent : InstantActionEvent, IVampireActionEvent
@@ -227,7 +229,7 @@ public sealed partial class VampireBloodSwellActionEvent : InstantActionEvent, I
     public bool Advanced = false;
 
     [DataField]
-    public string BonusDamageType = "Blunt";
+    public ProtoId<DamageTypePrototype> BonusDamageType = "Blunt";
 
     [DataField]
     public float BonusDamageAmount = 14f;
@@ -273,8 +275,6 @@ public sealed partial class VampireChargeActionEvent : WorldTargetActionEvent, I
 }
 
 // Dantalion Abilities
-public sealed partial class MaxThrallCountUpdateEvent : InstantActionEvent { }
-
 public sealed partial class VampireEnthrallActionEvent : EntityTargetActionEvent, IVampireActionEvent
 {
     [DataField] public FixedPoint2 BloodCost { get; private set; }
@@ -297,6 +297,15 @@ public sealed partial class VampireSubspaceSwapActionEvent : EntityTargetActionE
 
 public sealed partial class VampireDeployDecoyActionEvent : InstantActionEvent, IVampireActionEvent
 {
+    [DataField("components")]
+    public ComponentRegistry EnsurableComponents;
+
+    [DataField]
+    public ProtoId<CloningSettingsPrototype> Settings = "BaseClone";
+
+    [DataField]
+    public TimeSpan Time = TimeSpan.FromSeconds(6);
+
     [DataField] public FixedPoint2 BloodCost { get; private set; }
 }
 
@@ -327,6 +336,9 @@ public sealed partial class VampireThrallHealActionEvent : InstantActionEvent, I
     public DamageSpecifier Heal = default!;
 
     [DataField]
+    public GroupHealSpecifier HealGroups = default!;
+
+    [DataField]
     public TimeSpan TimeInterval = TimeSpan.FromSeconds(4);
 
     [DataField] public FixedPoint2 BloodCost { get; private set; }
@@ -337,5 +349,110 @@ public sealed partial class VampirePacifyNearbyActionEvent : InstantActionEvent,
     [DataField]
     public TimeSpan Time = TimeSpan.FromSeconds(8);
 
+    [DataField] public FixedPoint2 BloodCost { get; private set; }
+}
+
+// Bestia Abilities
+public sealed partial class VampireCheckTrophiesActionEvent : InstantActionEvent { }
+
+public sealed partial class VampireDissectActionEvent : EntityTargetActionEvent, IVampireActionEvent
+{
+    [DataField] public FixedPoint2 BloodCost { get; private set; }
+}
+
+public sealed partial class VampireInfectedTrophyActionEvent : EntityTargetActionEvent, IVampireActionEvent
+{
+    [DataField]
+    public EntProtoId<ProjectileComponent> ProjectileId = "ProjectileInfectedTrophy";
+
+    [DataField] public FixedPoint2 BloodCost { get; private set; }
+}
+
+public sealed partial class VampireLungeActionEvent : WorldTargetActionEvent, IVampireActionEvent
+{
+    [DataField] public FixedPoint2 BloodCost { get; private set; }
+}
+
+public sealed partial class VampireMarkPreyActionEvent : EntityTargetActionEvent, IVampireActionEvent
+{
+    [DataField]
+    public ProtoId<DamageTypePrototype> DamageType = "Heat";
+
+    [DataField] public FixedPoint2 BloodCost { get; private set; }
+}
+
+public sealed partial class VampireMetamorphosisBatsActionEvent : InstantActionEvent, IVampireActionEvent
+{
+    [DataField]
+    public ProtoId<PolymorphPrototype> PolymorphProto = "VampireBats";
+
+    [DataField]
+    public ProtoId<DamageTypePrototype> BonusDamageType = "Piercing";
+
+    [DataField]
+    public EntProtoId MistEffect = "VampireMistEffect";
+
+    [DataField]
+    public EntProtoId MistReappearEffect = "VampireMistReappearEffect";
+
+    [DataField] public FixedPoint2 BloodCost { get; private set; }
+}
+
+public sealed partial class VampireAnabiosisActionEvent : InstantActionEvent, IVampireActionEvent
+{
+    [DataField]
+    public EntProtoId CoffinProto = "CrateCoffinVampire";
+
+    [DataField]
+    public TimeSpan Duration = TimeSpan.FromSeconds(30);
+
+    [DataField] public FixedPoint2 BloodCost { get; private set; }
+}
+
+public sealed partial class VampireSummonBatsActionEvent : InstantActionEvent, IVampireActionEvent
+{
+    [DataField]
+    public EntProtoId BatsProto = "MobBats";
+
+    [DataField]
+    public ProtoId<DamageTypePrototype> BonusDamageType = "Piercing";
+
+    [DataField]
+    public SoundSpecifier Sound;
+
+    [DataField] public FixedPoint2 BloodCost { get; private set; }
+}
+
+public sealed partial class VampireMetamorphosisHoundActionEvent : InstantActionEvent, IVampireActionEvent
+{
+    [DataField]
+    public ProtoId<PolymorphPrototype> PolymorphProto = "VampireHound";
+
+    [DataField]
+    public ProtoId<DamageTypePrototype> BonusDamageType = "Piercing";
+
+    [DataField]
+    public EntProtoId MistEffect = "VampireMistEffect";
+
+    [DataField]
+    public EntProtoId MistReappearEffect = "VampireMistReappearEffect";
+
+    [DataField] public FixedPoint2 BloodCost { get; private set; }
+}
+
+// Polymorph Abilities
+public sealed partial class VampireResonantShriekActionEvent : InstantActionEvent, IVampireActionEvent
+{
+    [DataField]
+    public DamageSpecifier Damage = default!;
+
+    [DataField]
+    public SoundSpecifier Sound;
+
+    [DataField] public FixedPoint2 BloodCost { get; private set; }
+}
+
+public sealed partial class VampireLungeFinaleActionEvent : InstantActionEvent, IVampireActionEvent
+{
     [DataField] public FixedPoint2 BloodCost { get; private set; }
 }

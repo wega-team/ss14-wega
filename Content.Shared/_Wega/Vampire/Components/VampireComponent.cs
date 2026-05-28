@@ -13,6 +13,7 @@ namespace Content.Shared.Vampire.Components;
 /// <summary>
 /// The basic component that defines a vampire.
 /// </summary>
+[Access(typeof(SharedVampireSystem))]
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true)]
 public sealed partial class VampireComponent : Component
 {
@@ -40,6 +41,9 @@ public sealed partial class VampireComponent : Component
 
     [ViewVariables(VVAccess.ReadOnly)]
     public float TotalBloodDrank = 0;
+
+    [ViewVariables(VVAccess.ReadOnly), AutoNetworkedField]
+    public Dictionary<EntityUid, FixedPoint2> BloodConsumedFromVictim = new();
 
     [ViewVariables(VVAccess.ReadOnly)]
     public Dictionary<EntProtoId, EntityUid?> AcquiredSkills = new();
@@ -78,10 +82,19 @@ public sealed partial class VampireComponent : Component
         {
             { 150f, new() { "ActionEnthrall", "ActionCommune" } },
             { 250f, new() { "ActionPacify", "ActionSubspaceSwap" } },
-            { 400f, new() { /*"ActionDeployDecoy", */"ActionMaxThrallCountUpdate1" } },
-            { 600f, new() { "ActionRallyThralls", "ActionMaxThrallCountUpdate2", "ActionVampirePacifyNearby" } },
+            { 400f, new() { "ActionDeployDecoy" } },
+            { 600f, new() { "ActionRallyThralls", "ActionVampirePacifyNearby" } },
             { 800f, new() { "ActionBloodBond", "ActionVampireThrallHeal" } },
-            { 1000f, new() { "ActionMassHysteria", "ActionMaxThrallCountUpdate3" } }
+            { 1000f, new() { "ActionMassHysteria" } }
+        },
+        [VampireClassEnum.Bestia] = new()
+        {
+            { 150f, new() { "ActionVampireCheckTrophies", "ActionVampireDissect", "ActionVampireInfectedTrophy" } },
+            { 250f, new() { "ActionVampireLunge", "ActionVampireMarkPrey" } },
+            { 400f, new() { "ActionVampireMetamorphosisBats" } },
+            { 600f, new() { "ActionVampireAnabiosis" } },
+            { 800f, new() { "ActionVampireSummonBats" } },
+            { 1000f, new() { "ActionVampireMetamorphosisHound" } }
         }
     };
 

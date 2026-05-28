@@ -9,6 +9,27 @@
       path: "/Audio/Effects/Fluids/splat.ogg"
 
 - type: polymorph
+  id: VampireBats
+  configuration:
+    entity: MobBats
+    forced: true
+    polymorphSound:
+      path: "/Audio/_Wega/Effects/Vampire/wings_flapping.ogg"
+    exitPolymorphSound:
+      path: "/Audio/_Wega/Effects/Vampire/wings_flapping.ogg"
+
+- type: polymorph
+  id: VampireHound
+  configuration:
+    entity: MobHellHound
+    forced: true
+    polymorphSound:
+      path: "/Audio/_Wega/Effects/Vampire/wings_flapping.ogg"
+    exitPolymorphSound:
+      path: "/Audio/_Wega/Effects/Vampire/wings_flapping.ogg"
+
+#Xenobiology
+- type: polymorph
   id: SlimeMorph
   configuration:
     entity: MobXenoSlimeBlue # I left it blue on purpose

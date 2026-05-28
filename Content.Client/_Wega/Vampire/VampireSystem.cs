@@ -18,32 +18,19 @@ public sealed class VampireSystem : SharedVampireSystem
     [Dependency] private readonly IClientAdminManager _admin = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
-    [Dependency] private readonly SharedEyeSystem _eye = default!;
     [Dependency] private readonly SpriteSystem _sprite = default!;
 
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeNetworkEvent<VampireToggleFovEvent>(OnToggleFoV);
-
         SubscribeLocalEvent<VampireComponent, GetStatusIconsEvent>(GetVampireIcons);
         SubscribeLocalEvent<ThrallComponent, GetStatusIconsEvent>(GetThrallIcons);
-
         SubscribeLocalEvent<VampireComponent, UpdateAlertSpriteEvent>(OnUpdateAlert);
-    }
 
-    private void OnToggleFoV(VampireToggleFovEvent args)
-    {
-        var userEntity = GetEntity(args.User);
-        if (userEntity == _playerManager.LocalEntity)
-        {
-            if (!TryComp<EyeComponent>(userEntity, out var eyeComponent))
-                return;
-
-            eyeComponent.NetSyncEnabled = false;
-            _eye.SetDrawFov(userEntity, args.Enabled, eyeComponent);
-        }
+        SubscribeLocalEvent<VampireDiablerieComponent, ComponentStartup>(OnDiablerieStartup);
+        SubscribeLocalEvent<VampireDiablerieComponent, ComponentShutdown>(OnDiablerieShutdown);
+        SubscribeLocalEvent<VampireDiablerieComponent, AfterAutoHandleStateEvent>(OnDiablerieStateUpdated);
     }
 
     // Okey, let's go
@@ -125,5 +112,79 @@ public sealed class VampireSystem : SharedVampireSystem
         _sprite.LayerSetRsiState(args.SpriteViewEnt.Owner, VampireVisualLayers.Digit2, $"{(blood / 100) % 10}");
         _sprite.LayerSetRsiState(args.SpriteViewEnt.Owner, VampireVisualLayers.Digit3, $"{(blood / 10) % 10}");
         _sprite.LayerSetRsiState(args.SpriteViewEnt.Owner, VampireVisualLayers.Digit4, $"{blood % 10}");
+    }
+
+    private void OnDiablerieStartup(Entity<VampireDiablerieComponent> ent, ref ComponentStartup args)
+        => UpdateDiablerieAura(ent);
+
+    private void OnDiablerieShutdown(Entity<VampireDiablerieComponent> ent, ref ComponentShutdown args)
+        => RemoveDiablerieAura(ent);
+
+    private void OnDiablerieStateUpdated(Entity<VampireDiablerieComponent> ent, ref AfterAutoHandleStateEvent args)
+        => UpdateDiablerieAura(ent);
+
+    private void UpdateDiablerieAura(Entity<VampireDiablerieComponent> ent)
+    {
+        if (!HasComp<SpriteComponent>(ent))
+            return;
+
+        // If the local user is an admin in the ghost?
+        if (_admin.HasFlag(AdminFlags.Admin) && _ghost is { IsGhost: true })
+        {
+            AddOrUpdateAuraLayer(ent);
+            return;
+        }
+
+        var localPlayer = _playerManager.LocalEntity;
+        var isLocalPlayer = localPlayer == ent.Owner;
+        var isExaminerVampire = localPlayer != null && HasComp<VampireComponent>(localPlayer);
+        var level = ent.Comp.DiablerieLevel;
+
+        // Level 1+ aura visible to vampires
+        // Level 3+ aura visible to everyone
+        var canSeeAura = level >= 1 && isExaminerVampire || level >= 3;
+
+        // Self visibility
+        if (isLocalPlayer && level >= 1)
+            canSeeAura = true;
+
+        if (!canSeeAura)
+        {
+            RemoveDiablerieAura(ent);
+            return;
+        }
+
+        AddOrUpdateAuraLayer(ent);
+    }
+
+    private void AddOrUpdateAuraLayer(Entity<VampireDiablerieComponent> ent)
+    {
+        if (!_sprite.LayerMapTryGet(ent.Owner, DiablerieKey.Aura, out var layer, true))
+        {
+            var layerData = new PrototypeLayerData
+            {
+                RsiPath = "/Textures/_Wega/Interface/Misc/vampire_aura.rsi",
+                State = "diablerie_aura"
+            };
+
+            layer = _sprite.AddLayer(ent.Owner, layerData, null);
+            _sprite.LayerMapSet(ent.Owner, DiablerieKey.Aura, layer);
+        }
+
+        _sprite.LayerSetVisible(ent.Owner, layer, true);
+    }
+
+    private void RemoveDiablerieAura(Entity<VampireDiablerieComponent> ent)
+    {
+        if (!HasComp<SpriteComponent>(ent))
+            return;
+
+        if (_sprite.LayerMapTryGet(ent.Owner, DiablerieKey.Aura, out var layer, true))
+            _sprite.RemoveLayer(ent.Owner, layer);
+    }
+
+    private enum DiablerieKey
+    {
+        Aura
     }
 }

@@ -1,6 +1,6 @@
 using Robust.Shared.Serialization;
 
-namespace Content.Shared.Vampire.Components;
+namespace Content.Shared.Vampire;
 
 [Serializable, NetSerializable]
 public enum VampireClassEnum : byte
@@ -10,7 +10,7 @@ public enum VampireClassEnum : byte
     Umbrae,
     Gargantua,
     Dantalion,
-    // Bestia Here! Don't bite me!
+    Bestia // Here! Don't bite me!
 }
 
 [Serializable, NetSerializable]
@@ -20,4 +20,17 @@ public enum VampireVisualLayers : byte
     Digit2,
     Digit3,
     Digit4
+}
+
+// Bestia enum
+[Serializable, NetSerializable]
+public enum BestiaOrganType : byte
+{
+    Unknown = 0,
+    Heart,
+    Lungs,
+    Liver,
+    Kidneys,
+    Eyes,
+    Stomach
 }

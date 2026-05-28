@@ -1,17 +1,19 @@
 using System.Linq;
 using Content.Server.Administration;
-using Content.Server.Antag;
 using Content.Server.Bible.Components;
+using Content.Server.Cloning;
 using Content.Server.Hallucinations;
 using Content.Server.Prayer;
 using Content.Shared.Body;
 using Content.Shared.CombatMode.Pacification;
 using Content.Shared.DoAfter;
 using Content.Shared.Humanoid;
+using Content.Shared.IdentityManagement;
 using Content.Shared.Mindshield.Components;
 using Content.Shared.Movement.Systems;
 using Content.Shared.NullRod.Components;
 using Content.Shared.Popups;
+using Content.Shared.Stealth.Components;
 using Content.Shared.Surgery.Components;
 using Content.Shared.Vampire;
 using Content.Shared.Vampire.Components;
@@ -23,36 +25,24 @@ namespace Content.Server.Vampire;
 
 public sealed partial class VampireSystem
 {
-    [Dependency] private readonly AntagSelectionSystem _antag = default!;
+    [Dependency] private readonly CloningSystem _cloning = default!;
     [Dependency] private readonly HallucinationsSystem _hallucinations = default!;
-    [Dependency] private readonly MovementModStatusSystem _movementMod = default!;
     [Dependency] private readonly PrayerSystem _prayerSystem = default!;
     [Dependency] private readonly QuickDialogSystem _quickDialog = default!;
 
     private void InitializeDantalion()
     {
-        SubscribeLocalEvent<VampireComponent, MaxThrallCountUpdateEvent>(MaxThrallCountUpdate);
         SubscribeLocalEvent<VampireComponent, VampireEnthrallActionEvent>(OnAfterEnthrall);
         SubscribeLocalEvent<VampireComponent, EnthrallDoAfterEvent>(OnEnthrallDoAfter);
         SubscribeLocalEvent<VampireComponent, VampireCommuneActionEvent>(OnCommune);
         SubscribeLocalEvent<VampireComponent, VampirePacifyActionEvent>(OnPacify);
         SubscribeLocalEvent<VampireComponent, VampireSubspaceSwapActionEvent>(OnSubspaceSwap);
+        SubscribeLocalEvent<VampireComponent, VampireDeployDecoyActionEvent>(OnDeployDecoy);
         SubscribeLocalEvent<VampireComponent, VampireRallyThrallsActionEvent>(OnRallyThralls);
         SubscribeLocalEvent<VampireComponent, VampireBloodBondActionEvent>(OnBloodBond);
         SubscribeLocalEvent<VampireComponent, VampireMassHysteriaActionEvent>(OnMassHysteria);
         SubscribeLocalEvent<VampireComponent, VampireThrallHealActionEvent>(OnThrallHeal);
         SubscribeLocalEvent<VampireComponent, VampirePacifyNearbyActionEvent>(OnPacifyNearby);
-    }
-
-    private void MaxThrallCountUpdate(Entity<VampireComponent> ent, ref MaxThrallCountUpdateEvent args)
-    {
-        if (!TryComp<ThrallOwnerComponent>(ent, out var thrallOwner))
-            return;
-
-        thrallOwner.MaxThrallCount++;
-        Dirty(ent.Owner, thrallOwner);
-
-        _action.RemoveAction(ent.Owner, args.Action!);
     }
 
     private void OnAfterEnthrall(Entity<VampireComponent> ent, ref VampireEnthrallActionEvent args)
@@ -70,7 +60,7 @@ public sealed partial class VampireSystem
         if (HasComp<VampireComponent>(target) || HasComp<MindShieldComponent>(target) || HasComp<BibleUserComponent>(target)
             || HasComp<SyntheticOperatedComponent>(target))
         {
-            _popup.PopupEntity(Loc.GetString("vampire-enthall-failed", ("target", target)), ent, ent);
+            _popup.PopupEntity(Loc.GetString("vampire-enthall-failed", ("target", Identity.Name(target, EntityManager))), ent, ent);
             return;
         }
 
@@ -78,12 +68,12 @@ public sealed partial class VampireSystem
         {
             if (trallComponent.VampireOwner == ent.Owner)
             {
-                _popup.PopupEntity(Loc.GetString("vampire-enthall-already", ("target", target)), ent, ent);
+                _popup.PopupEntity(Loc.GetString("vampire-enthall-already", ("target", Identity.Name(target, EntityManager))), ent, ent);
                 return;
             }
             else
             {
-                _popup.PopupEntity(Loc.GetString("vampire-enthall-failed", ("target", target)), ent, ent);
+                _popup.PopupEntity(Loc.GetString("vampire-enthall-failed", ("target", Identity.Name(target, EntityManager))), ent, ent);
                 return;
             }
         }
@@ -126,8 +116,9 @@ public sealed partial class VampireSystem
         if (TryAddThrall(thrallOwner, target))
             Dirty(ent.Owner, thrallOwner);
 
-        _popup.PopupEntity(Loc.GetString("vampire-enthall-success", ("target", target)), ent, ent);
-        _antag.SendBriefing(target, Loc.GetString("thrall-greeting"), Color.Red, new SoundPathSpecifier("/Audio/_Wega/Ambience/Antag/vampare_start.ogg"));
+        _popup.PopupEntity(Loc.GetString("vampire-enthall-success", ("target", Identity.Name(target, EntityManager))), ent, ent);
+        _antag.SendBriefing(target, Loc.GetString("thrall-greeting"), Color.Red,
+            new SoundPathSpecifier("/Audio/_Wega/Ambience/Antag/vampare_start.ogg"));
         SubtractBloodEssence(ent.Owner, args.BloodCost);
     }
 
@@ -159,9 +150,9 @@ public sealed partial class VampireSystem
                     _chat.SendMessageToOne(thrallUid, finalMessage);
                 }
 
-                _popup.PopupEntity(Loc.GetString("vampire-commune-sent"), ent, ent, PopupType.Medium);
                 _chat.SendMessageToOne(ent, finalMessage);
             });
+
         args.Handled = true;
     }
 
@@ -176,13 +167,13 @@ public sealed partial class VampireSystem
         var target = args.Target;
         if (HasComp<HumanoidProfileComponent>(target))
         {
-            if (HasComp<NullRodOwnerComponent>(target) && !HasTruePower(ent))
+            if (HasComp<NullRodOwnerComponent>(target) && !HasTruePower(ent) || HasComp<ThrallComponent>(target))
             {
-                _popup.PopupEntity(Loc.GetString("vampire-pacify-failed", ("target", target)), ent, ent);
+                _popup.PopupEntity(Loc.GetString("vampire-pacify-failed", ("target", Identity.Name(target, EntityManager))), ent, ent);
                 return;
             }
 
-            if (!HasComp<PacifiedComponent>(target))
+            if (!_mobState.IsDead(target) && !HasComp<PacifiedComponent>(target))
             {
                 EnsureComp<PacifiedComponent>(target);
                 Timer.Spawn(args.Time, () => { RemComp<PacifiedComponent>(target); });
@@ -192,7 +183,7 @@ public sealed partial class VampireSystem
             }
             else
             {
-                _popup.PopupEntity(Loc.GetString("vampire-pacify-failed", ("target", target)), ent, ent);
+                _popup.PopupEntity(Loc.GetString("vampire-pacify-failed", ("target", Identity.Name(target, EntityManager))), ent, ent);
                 args.Handled = true;
             }
         }
@@ -228,6 +219,32 @@ public sealed partial class VampireSystem
         args.Handled = true;
     }
 
+    private void OnDeployDecoy(Entity<VampireComponent> ent, ref VampireDeployDecoyActionEvent args)
+    {
+        if (!CheckBloodEssence(ent.Owner, args.BloodCost))
+        {
+            SendFailedPopup(ent);
+            return;
+        }
+
+        if (!_cloning.TryCloning(ent, _transform.GetMapCoordinates(ent), args.Settings, out var clone))
+            return;
+
+        EntityManager.AddComponents(clone.Value, args.EnsurableComponents);
+
+        var stealth = EnsureComp<StealthComponent>(ent);
+        _stealth.SetVisibility(ent, 0f, stealth);
+
+        Timer.Spawn(args.Time, () =>
+        {
+            RemComp<StealthComponent>(ent);
+            Del(clone);
+        });
+
+        SubtractBloodEssence(ent.Owner, args.BloodCost);
+        args.Handled = true;
+    }
+
     private void OnRallyThralls(Entity<VampireComponent> ent, ref VampireRallyThrallsActionEvent args)
     {
         if (!CheckBloodEssence(ent.Owner, args.BloodCost))
@@ -239,8 +256,12 @@ public sealed partial class VampireSystem
         var thrallsInRange = _entityLookup.GetEntitiesInRange<ThrallComponent>(Transform(ent).Coordinates, 7f);
         foreach (var thrallEntity in thrallsInRange)
         {
+            if (_mobState.IsDead(thrallEntity.Owner))
+                continue;
+
             TryRemoveKnockdown(thrallEntity.Owner);
             _stamina.RemoveStaminaDamage(thrallEntity.Owner);
+            _status.TryRemoveStatusEffect(thrallEntity.Owner, ForceSleeping);
         }
 
         SubtractBloodEssence(ent.Owner, args.BloodCost);
@@ -279,7 +300,6 @@ public sealed partial class VampireSystem
         Dirty(ent.Owner, supreme);
 
         ExecuteBloodBondTick(ent, supreme, thrallOwner, args);
-        SubtractBloodEssence(ent.Owner, args.BloodCost);
         args.Handled = true;
     }
 
@@ -323,6 +343,9 @@ public sealed partial class VampireSystem
             if (HasComp<NullRodOwnerComponent>(person) && !HasTruePower(ent))
                 continue;
 
+            if (_mobState.IsDead(person))
+                continue;
+
             if (HasComp<PacifiedComponent>(person))
                 continue;
 
@@ -351,7 +374,7 @@ public sealed partial class VampireSystem
             if (HasComp<NullRodOwnerComponent>(victimEntity) && !HasTruePower(ent))
                 continue;
 
-            _movementMod.TryUpdateMovementSpeedModDuration(victimEntity, MovementModStatusSystem.Slowdown, TimeSpan.FromSeconds(4f), 0.5f);
+            _flash.Flash(victimEntity, ent, null, TimeSpan.FromSeconds(4f), 0.5f);
             _hallucinations.StartHallucinations(victimEntity, "Hallucinations", TimeSpan.FromSeconds(30f), true, "MindBreaker");
         }
 
@@ -388,10 +411,11 @@ public sealed partial class VampireSystem
 
     private void ExecuteThrallHealTick(EntityUid thrallUid, Entity<VampireComponent> vampire, int currentTick, VampireThrallHealActionEvent args)
     {
-        if (currentTick >= args.Repeats)
+        if (!Exists(thrallUid) || !Exists(vampire) || currentTick >= args.Repeats)
             return;
 
-        _damage.TryChangeDamage(thrallUid, args.Heal, true, false, origin: vampire);
+        var healingSpec = CalculateScaledHealing(thrallUid, args.Heal, args.HealGroups);
+        _damage.TryChangeDamage(thrallUid, healingSpec, true, false, origin: vampire);
 
         Timer.Spawn(args.TimeInterval, () => ExecuteThrallHealTick(thrallUid, vampire, currentTick + 1, args));
     }

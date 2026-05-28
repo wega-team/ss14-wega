@@ -1,5 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Numerics;
+using Content.Shared.Body;
 using Content.Shared.Damage;
 using Content.Shared.FixedPoint;
 using Content.Shared.Mobs.Systems;
@@ -11,6 +13,7 @@ namespace Content.Shared.Vampire;
 public abstract class SharedVampireSystem : EntitySystem
 {
     [Dependency] private readonly MobStateSystem _mobState = default!;
+    [Dependency] private readonly SharedVisualBodySystem _visualBody = default!;
 
     #region Blood Management
 
@@ -89,7 +92,7 @@ public abstract class SharedVampireSystem : EntitySystem
 
     public bool CanAddThrall(ThrallOwnerComponent owner)
     {
-        return owner.ThrallCount < owner.MaxThrallCount;
+        return owner.ThrallOwned.Count < owner.MaxThrallCount;
     }
 
     public bool TryAddThrall(ThrallOwnerComponent owner, EntityUid thrallUid)
@@ -100,7 +103,6 @@ public abstract class SharedVampireSystem : EntitySystem
         if (!owner.ThrallOwned.Contains(thrallUid))
         {
             owner.ThrallOwned.Add(thrallUid);
-            owner.ThrallCount++;
             return true;
         }
 
@@ -110,10 +112,7 @@ public abstract class SharedVampireSystem : EntitySystem
     public bool TryRemoveThrall(ThrallOwnerComponent owner, EntityUid thrallUid)
     {
         if (owner.ThrallOwned.Remove(thrallUid))
-        {
-            owner.ThrallCount--;
             return true;
-        }
 
         return false;
     }
@@ -123,6 +122,19 @@ public abstract class SharedVampireSystem : EntitySystem
         return owner.ThrallOwned.Where(Exists)
             .Where(t => !_mobState.IsDead(t))
             .ToList();
+    }
+
+    #endregion
+
+    #region Bestia Management
+
+    public void RecordExtraction(EntityUid vampire, EntityUid victim, [NotNullWhen(true)] out BestiaContainerComponent? bestia)
+    {
+        if (!TryComp(vampire, out bestia))
+            return;
+
+        if (!bestia.OrgansExtractedFromVictim.TryAdd(victim, 1))
+            bestia.OrgansExtractedFromVictim[victim]++;
     }
 
     #endregion
@@ -166,6 +178,46 @@ public abstract class SharedVampireSystem : EntitySystem
         {
             VampireClassEnum.Umbrae => 12,
             _ => 8
+        };
+    }
+
+    #endregion
+
+    #region Eye Color Management
+
+    public void SetEyeColor(EntityUid uid, Color color)
+    {
+        if (_visualBody.TryGatherMarkingsData(uid, null, out var profiles, out _, out _))
+        {
+            var newProfiles = profiles.ToDictionary(
+                kv => kv.Key,
+                kv => kv.Value with { EyeColor = color }
+            );
+            _visualBody.ApplyProfiles(uid, newProfiles);
+        }
+    }
+
+    public Color GetCurrentEyeColor(EntityUid uid)
+    {
+        if (_visualBody.TryGatherMarkingsData(uid, null, out var profiles, out _, out _))
+        {
+            var firstProfile = profiles.Values.FirstOrDefault();
+            return firstProfile.EyeColor;
+        }
+
+        return Color.White;
+    }
+
+    public Color GetVampireEyeColor(VampireClassEnum vampireClass)
+    {
+        return vampireClass switch
+        {
+            VampireClassEnum.Hemomancer => Color.FromHex("#eb251b"),
+            VampireClassEnum.Umbrae => Color.FromHex("#b8188a"),
+            VampireClassEnum.Gargantua => Color.FromHex("#d43a18"),
+            VampireClassEnum.Dantalion => Color.FromHex("#6ab820"),
+            VampireClassEnum.Bestia => Color.FromHex("#c43088"),
+            _ => Color.FromHex("#e22218")
         };
     }
 

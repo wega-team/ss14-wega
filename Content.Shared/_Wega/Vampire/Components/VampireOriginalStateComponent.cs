@@ -8,7 +8,7 @@ namespace Content.Shared.Vampire.Components;
 /// Stores the creature's original data before it becomes a vampire.
 /// Used for restoration when the vampire component is removed.
 /// </summary>
-[RegisterComponent]
+[RegisterComponent, Access(typeof(SharedVampireSystem))]
 public sealed partial class VampireOriginalStateComponent : Component
 {
     [DataField]

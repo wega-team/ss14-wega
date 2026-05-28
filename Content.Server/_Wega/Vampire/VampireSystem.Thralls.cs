@@ -1,9 +1,11 @@
+using System.Linq;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Mindshield.Components;
 using Content.Shared.NullRod.Components;
+using Content.Shared.Popups;
 using Content.Shared.Vampire.Components;
 
 namespace Content.Server.Vampire;
@@ -93,5 +95,31 @@ public sealed partial class VampireSystem
         RemComp<NullDamageComponent>(uid);
         _stun.TryUpdateParalyzeDuration(uid, stunTime);
         _popup.PopupEntity(Loc.GetString("thrall-break-control", ("name", name)), uid);
+    }
+
+    private void UpdateThrallCount(Entity<VampireComponent?, ThrallOwnerComponent?> ent)
+    {
+        if (!Resolve(ent, ref ent.Comp1, false) || !Resolve(ent, ref ent.Comp2, false))
+            return;
+
+        var blood = ent.Comp1.CurrentBlood.Float();
+
+        var sortedThresholds = ent.Comp2.ThrallCountThresholds.Keys.OrderBy(x => x).ToList();
+        foreach (var threshold in sortedThresholds)
+        {
+            if (blood >= threshold && !ent.Comp2.UnlockedThresholds.Contains(threshold))
+                ent.Comp2.UnlockedThresholds.Add(threshold);
+        }
+
+        var totalBonus = ent.Comp2.UnlockedThresholds.Sum(t => ent.Comp2.ThrallCountThresholds[t]);
+
+        var newMaxCount = 1 + totalBonus;
+        if (ent.Comp2.MaxThrallCount != newMaxCount)
+        {
+            ent.Comp2.MaxThrallCount = newMaxCount;
+            Dirty(ent.Owner, ent.Comp2);
+
+            _popup.PopupEntity(Loc.GetString("vampire-trall-count-update", ("count", newMaxCount)), ent, ent, PopupType.Medium);
+        }
     }
 }
