@@ -29,7 +29,7 @@
     sprite: _Wega/Objects/Weapons/Throwable/cult_bola.rsi
     state: icon
   - type: Item
-    size: Normal
+    size: Small
     shape:
     - 0,0,0,1
   - type: DamageOnLand
@@ -133,3 +133,6 @@
           collection: MetalBreak
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+  - type: Tag
+    tags:
+    - Bola 

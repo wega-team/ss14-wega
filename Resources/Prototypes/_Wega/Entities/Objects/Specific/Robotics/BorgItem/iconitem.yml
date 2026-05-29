@@ -122,3 +122,36 @@
     sprite: _Wega/Objects/Specific/Robotics/iconitem.rsi
     state: cash-icon
     
+- type: entity
+  parent: BaseItem
+  id: ConstrukAndBattery
+  name: ConstrukAndCabel
+  categories: [ HideSpawnMenu ]
+  description: CashIcon
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/iconitem.rsi
+    state: generic_materials_battery
+
+- type: entity
+  parent: BaseItem
+  id: BolaIcon
+  name: bolo-icon
+  categories: [ HideSpawnMenu ]
+  description: CashIcon
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/iconitem.rsi
+    state: bolo-icon
+
+- type: entity
+  parent: BaseItem
+  id: GrenIcon
+  name: bgren-icon
+  categories: [ HideSpawnMenu ]
+  description: CashIcon
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/iconitem.rsi
+    state: gren-icon
+

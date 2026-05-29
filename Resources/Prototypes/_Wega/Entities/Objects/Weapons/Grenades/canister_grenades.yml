@@ -16,3 +16,24 @@
       reagents:
       - ReagentId: Holywater
         Quantity: 75
+        
+- type: entity
+  parent: GrenadeStinger
+  id: GrenadeStingerProject
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TriggerOnSpawn
+  
+- type: entity
+  parent: TearGasGrenade
+  id: TearGasGrenadeProject
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TriggerOnSpawn
+  
+- type: entity
+  parent: GrenadeFlashBang
+  id: GrenadeFlashBangProject
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TriggerOnSpawn

@@ -16,6 +16,7 @@
     ClothingOuterArmorBasicSlim: 2
     ClothingOuterVest: 2
     ClothingBeltBandolier: 2
+    ClothingBeltBeerBandolier: 2 # Corvax-Wega-Add
     ClothingEyesGlassesSunglasses: 2
   contrabandInventory:
     ToyFigurineBartender: 1

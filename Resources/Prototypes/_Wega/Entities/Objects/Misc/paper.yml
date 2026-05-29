@@ -126,8 +126,13 @@
         Blunt: 0
     angle: 10
   - type: Flash
+    flashOnUse: false
   - type: RevolutionaryConverter
   - type: Tag
     tags:
     - Book
     - RevShop
+  - type: LimitedCharges
+    maxCharges: 1
+  - type: AutoRecharge
+    rechargeDuration: 30

@@ -20,10 +20,19 @@
       "name": "generic_materials"
     },
 	{
+      "name": "generic_materials_battery"
+    },
+	{
       "name": "musical-icon"
     },
 	{
       "name": "cabel-icon"
+    },
+	{
+      "name": "bolo-icon"
+    },
+	{
+      "name": "gren-icon"
     },
 	{
       "name": "generic_materials_cabel"

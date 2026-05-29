@@ -15,7 +15,7 @@
   - CentralCommand
   special:
   - !type:AddImplantSpecial
-    implants: [ MindShieldImplant, DeathRattleImplantCentcomm ]
+    implants: [ MindShieldImplant, DeathRattleImplantCentcomm, BluespaceLifelineImplant ] # Corvax-Wega-Add
 
 - type: startingGear
   parent: ERTLeaderGearEVA
@@ -107,7 +107,7 @@
     components:
     - type: BibleUser #Lets them heal with bibles
   - !type:AddImplantSpecial
-    implants: [ MindShieldImplant, DeathRattleImplantCentcomm ]
+    implants: [ MindShieldImplant, DeathRattleImplantCentcomm, BluespaceLifelineImplant ] # Corvax-Wega-Add
 
 - type: startingGear
   parent: ERTChaplainGearEVA
@@ -203,7 +203,7 @@
   - CentralCommand
   special:
   - !type:AddImplantSpecial
-    implants: [ MindShieldImplant, DeathRattleImplantCentcomm ]
+    implants: [ MindShieldImplant, DeathRattleImplantCentcomm, BluespaceLifelineImplant ] # Corvax-Wega-Add
 
 - type: startingGear
   parent: ERTEngineerGearEVA
@@ -309,7 +309,7 @@
   - CentralCommand
   special:
   - !type:AddImplantSpecial
-    implants: [ MindShieldImplant, DeathRattleImplantCentcomm ]
+    implants: [ MindShieldImplant, DeathRattleImplantCentcomm, BluespaceLifelineImplant ] # Corvax-Wega-Add
 
 - type: startingGear
   parent: ERTSecurityGearEVA
@@ -404,7 +404,7 @@
   - CentralCommand
   special:
   - !type:AddImplantSpecial
-    implants: [ MindShieldImplant, DeathRattleImplantCentcomm ]
+    implants: [ MindShieldImplant, DeathRattleImplantCentcomm, BluespaceLifelineImplant ] # Corvax-Wega-Add
 
 - type: startingGear
   parent: ERTMedicalGearEVA
@@ -482,7 +482,7 @@
   - CentralCommand
   special:
   - !type:AddImplantSpecial
-    implants: [ MindShieldImplant, DeathRattleImplantCentcomm ]
+    implants: [ MindShieldImplant, DeathRattleImplantCentcomm, BluespaceLifelineImplant ] # Corvax-Wega-Add
 
 - type: startingGear
   parent: ERTJanitorGearEVA

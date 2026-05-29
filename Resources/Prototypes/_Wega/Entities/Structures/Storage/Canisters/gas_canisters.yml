@@ -11,8 +11,8 @@
       air:
         volume: 1500
         moles:
-          Oxygen: 609.26 # oxygen
-          NitrousOxide: 2160.1 # N2O
+          Oxygen: 1938.56 # oxygen
+          NitrousOxide: 830.8 # N2O
         temperature: 293.15
     - type: Destructible
       thresholds:

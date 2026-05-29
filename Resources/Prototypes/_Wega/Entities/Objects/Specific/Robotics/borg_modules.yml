@@ -140,6 +140,7 @@
         whitelist:
           tags:
           - ConstructionMaterial
+          - PowerCell
           - CableCoil
     - hand:
         emptyRepresentative: ScientistIcon # Corvax-Wega-Robot
@@ -889,19 +890,25 @@
     - item: WeaponHandGranadeGun
     - hand:
         emptyLabel: borg-slot-granade-empty
-        emptyRepresentative: ModularGrenade
+        emptyRepresentative: GrenIcon
         whitelist:
           tags:
           - HandGrenade
           - Payload
           - VoiceTrigger
-    - item: BoxBorgGranade
+          components:
+          - PayloadCase
+          - PayloadTrigger
     - hand:
-        emptyLabel: borg-slot-cabeldet-empty
-        emptyRepresentative: CableDetStack
+        emptyLabel: borg-slot-granade-empty
+        emptyRepresentative: BolaIcon
         whitelist:
           tags:
-          - Payload
+          - CableCoil
+          - Bola
+          components:
+          - Ensnaring
+    - item: BoxBorgGranade
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: grenade-module }
 
@@ -1103,6 +1110,7 @@
   - type: ItemBorgModule
     hands:
     - item: RCDCombatRecharging
+    - item: AccessConfiguratorAllAccses
     - item: BorgGeneratorMaterialRod
     - item: BorgGeneratorTile
     - item: BorgGeneratorMaterialSteal

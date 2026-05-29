@@ -308,6 +308,21 @@
   - ERTEquipment
 
 - type: listing
+  id: ERTBlueSheildSheild
+  name: tactical-interface-bluesheild-name
+  description: tactical-interface-bluesheild-desc
+  productEntity: BlueSheildSheild
+  cost:
+    TacticalResource: 5
+  categories:
+  - ERTEquipmentPro
+  conditions:
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - CBURNTacticalInterface
+
+- type: listing
   id: ERTPortableRechargerPro
   name: tactical-interface-portable-recharger-pro-name
   description: tactical-interface-portable-recharger-pro-desc

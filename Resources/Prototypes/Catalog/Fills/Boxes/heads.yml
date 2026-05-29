@@ -92,6 +92,7 @@
         - id: SalvageJobBoardComputerCircuitboard
         - id: MailTeleporterMachineCircuitboard
         - id: FundingAllocationComputerCircuitboard # Corvax-Wega
+        - id: LavalandShuttleComputerCircuitboard # Corvax-Wega
 
 - type: entity
   parent: BoxStamps

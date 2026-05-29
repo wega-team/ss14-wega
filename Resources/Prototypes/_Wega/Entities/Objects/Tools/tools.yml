@@ -99,3 +99,98 @@
   - type: HandheldGpsUi
     broadcastEnabled: false
   # Corvax-Wega-Lavaland-end
+  
+- type: entity
+  parent: AccessConfigurator
+  id: AccessConfiguratorCargo
+  name: cargo access configurator
+  description: A modified access configurator used by the cargo.
+  components:
+  - type: Item
+    size: Normal
+    shape:
+    - 0,0,0,1
+  - type: Sprite
+    sprite: _Wega/Objects/Tools/cargo_access_configurator.rsi
+  - type: Clothing
+    sprite: _Wega/Objects/Tools/cargo_access_configurator.rsi
+  - type: AccessOverrider
+    showPrivilegedId: false
+    accessLevels:
+    - Cargo
+    - Salvage
+    - Quartermaster
+    privilegedIdSlot:
+      name: id-card-console-privileged-id
+      startingItem: QuartermasterIDCard
+      ejectSound: /Audio/Machines/id_swipe.ogg
+      insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+      ejectOnBreak: true
+      disableEject: true
+      swap: false
+      whitelist:
+        components:
+        - IdCard
+    denialSound:
+      path: /Audio/Machines/custom_deny.ogg
+    doAfter: 0.5
+
+- type: entity
+  parent: AccessConfigurator
+  id: AccessConfiguratorSci
+  name: scie access configurator
+  description: A modified access configurator used by the cargo.
+  components:
+  - type: Item
+    size: Normal
+    shape:
+    - 0,0,0,1
+  - type: Sprite
+    sprite: _Wega/Objects/Tools/sci_access_configurator.rsi
+  - type: Clothing
+    sprite: _Wega/Objects/Tools/sci_access_configurator.rsi
+  - type: AccessOverrider
+    showPrivilegedId: false
+    accessLevels:
+    - Research
+    privilegedIdSlot:
+      name: id-card-console-privileged-id
+      startingItem: ResearchIDCard
+      ejectSound: /Audio/Machines/id_swipe.ogg
+      insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+      ejectOnBreak: true
+      disableEject: true
+      swap: false
+      whitelist:
+        components:
+        - IdCard
+    denialSound:
+      path: /Audio/Machines/custom_deny.ogg
+    doAfter: 0.5
+    
+- type: entity
+  parent: AccessConfigurator
+  id: AccessConfiguratorAllAccses
+  name: borg access configurator
+  description: A modified access configurator used by the cargo.
+  components:
+  - type: Item
+    size: Normal
+    shape:
+    - 0,0,0,1
+  - type: AccessOverrider
+    showPrivilegedId: false
+    privilegedIdSlot:
+      name: id-card-console-privileged-id
+      startingItem: CaptainIDCard
+      ejectSound: /Audio/Machines/id_swipe.ogg
+      insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+      ejectOnBreak: true
+      disableEject: true
+      swap: false
+      whitelist:
+        components:
+        - IdCard
+    denialSound:
+      path: /Audio/Machines/custom_deny.ogg
+    doAfter: 0.5

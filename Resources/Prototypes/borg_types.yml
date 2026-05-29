@@ -79,6 +79,7 @@
     - Android
   - type: ShowAccessReaderSettings
   - type: MagbootsImplant
+  - type: ThermalSight
 # Corvax-Wega-end
 
   # Visual

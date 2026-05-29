@@ -11,7 +11,7 @@
     layers:
     - state: core
     - state: pulse
-      map: ["decay"]
+      # map: ["decay"] Corvax-Wega-Change
   - type: Appearance
   - type: GenericVisualizer
     visuals:
@@ -54,8 +54,6 @@
   - type: IgnitionSource
     temperature: 700
     ignited: true
-  - type: CoreTempChange
-    tempChangePerSecond: 5
   - type: Gun
     fireRate: 0.75
     soundGunshot:
@@ -81,8 +79,6 @@
     energy: 10
     color: "#1e070e"
     castShadows: false
-  - type: RadiationSource
-    intensity: 0.5
   - type: MeleeThrowOnHit
   - type: MeleeWeapon
     attackRate: 0.5
@@ -114,8 +110,6 @@
     energy: 2.7
     color: "#befaff"
     castShadows: false
-  - type: CoreTempChange
-    tempChangePerSecond: -5
   - type: Gun
     fireRate: 0.75
     soundGunshot:
@@ -142,27 +136,32 @@
     energy: 3.5
     color: "#cb5b7e"
     castShadows: false
-  # - type: Healing
-  #   damageContainers:
-  #   - Biological
-  #   damage:
-  #     groups: # these are all split across multiple types
-  #       Brute: -150
-  #       Burn: -150
-  #       Toxin: -150
-  #   bloodlossModifier: -20
-  #   delay: 1
-  #   selfHealPenaltyMultiplier: 0
-  #   healingBeginSound:
-  #     path: "/Audio/Items/Medical/ointment_begin.ogg"
-  #     params:
-  #       volume: 1.0
-  #       variation: 0.125
-  #   healingEndSound:
-  #     path: "/Audio/Items/Medical/ointment_end.ogg"
-  #     params:
-  #       volume: 1.0
-  #       variation: 0.125
+  - type: Healing
+    damageContainers:
+    - Biological
+    damage:
+      types: # these are all split across multiple types
+        Blunt: -200
+        Piercing: -200
+        Slash: -200
+        Heat: -200
+        Cold: -200
+        Shock: -200
+        Poison: -150
+        Radiation: -200
+    bloodlossModifier: -20
+    delay: 1
+    selfHealPenaltyMultiplier: 0
+    healingBeginSound:
+      path: "/Audio/Items/Medical/ointment_begin.ogg"
+      params:
+        volume: 1.0
+        variation: 0.125
+    healingEndSound:
+      path: "/Audio/Items/Medical/ointment_end.ogg"
+      params:
+        volume: 1.0
+        variation: 0.125
 
 - type: entity
   parent: BaseAnomalyCore
@@ -257,7 +256,7 @@
   - type: Item
     size: Ginormous
     shape:
-    - 0,0,19,9
+    - 0,0,0,0
   - type: Storage
     maxItemSize: Huge
     grid:

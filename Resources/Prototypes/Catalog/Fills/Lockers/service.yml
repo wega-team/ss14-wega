@@ -18,6 +18,7 @@
     - id: ClothingEyesHudBeer
     - id: HandLabeler
     - id: DrinkBeerBottleFull
+    - id: ClothingBeltBeerBandolier # Corvax-Wega-Add
       amount: !type:BinomialNumberSelector
         trials: 3
     - !type:AllSelector
