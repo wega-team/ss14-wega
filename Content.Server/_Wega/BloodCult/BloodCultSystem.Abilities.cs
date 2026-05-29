@@ -187,28 +187,20 @@ public sealed partial class BloodCultSystem
 
     private void OnStun(EntityUid cultist, BloodCultistComponent component, BloodCultStunActionEvent args)
     {
-        var spellGear = new ProtoId<StartingGearPrototype>("BloodCultSpellStunGear");
-
-        var dropEvent = new DropHandItemsEvent();
-        RaiseLocalEvent(cultist, ref dropEvent);
-        List<ProtoId<StartingGearPrototype>> gear = new() { spellGear };
-        _loadout.Equip(cultist, gear, null);
-
-        args.Handled = true;
-        EmpoweringCheck(args.Action, component);
+        if (TrySpawnSpellInHand(cultist, "BloodCultSpellStun"))
+        {
+            args.Handled = true;
+            EmpoweringCheck(args.Action, component);
+        }
     }
 
     private void OnTeleport(EntityUid cultist, BloodCultistComponent component, BloodCultTeleportActionEvent args)
     {
-        var spellGear = new ProtoId<StartingGearPrototype>("BloodCultSpellTeleportGear");
-
-        var dropEvent = new DropHandItemsEvent();
-        RaiseLocalEvent(cultist, ref dropEvent);
-        List<ProtoId<StartingGearPrototype>> gear = new() { spellGear };
-        _loadout.Equip(cultist, gear, null);
-
-        args.Handled = true;
-        EmpoweringCheck(args.Action, component);
+        if (TrySpawnSpellInHand(cultist, "BloodCultSpellTeleport"))
+        {
+            args.Handled = true;
+            EmpoweringCheck(args.Action, component);
+        }
     }
 
     private void OnElectromagneticPulse(EntityUid cultist, BloodCultistComponent component, BloodCultElectromagneticPulseActionEvent args)
@@ -249,41 +241,29 @@ public sealed partial class BloodCultSystem
 
     private void OnShadowShackles(EntityUid cultist, BloodCultistComponent component, BloodCultShadowShacklesActionEvent args)
     {
-        var spellGear = new ProtoId<StartingGearPrototype>("BloodCultSpellShadowShacklesGear");
-
-        var dropEvent = new DropHandItemsEvent();
-        RaiseLocalEvent(cultist, ref dropEvent);
-        List<ProtoId<StartingGearPrototype>> gear = new() { spellGear };
-        _loadout.Equip(cultist, gear, null);
-
-        args.Handled = true;
-        EmpoweringCheck(args.Action, component);
+        if (TrySpawnSpellInHand(cultist, "BloodCultSpellShadowShackles"))
+        {
+            args.Handled = true;
+            EmpoweringCheck(args.Action, component);
+        }
     }
 
     private void OnTwistedConstruction(EntityUid cultist, BloodCultistComponent component, BloodCultTwistedConstructionActionEvent args)
     {
-        var spellGear = new ProtoId<StartingGearPrototype>("BloodCultSpellTwistedConstructionGear");
-
-        var dropEvent = new DropHandItemsEvent();
-        RaiseLocalEvent(cultist, ref dropEvent);
-        List<ProtoId<StartingGearPrototype>> gear = new() { spellGear };
-        _loadout.Equip(cultist, gear, null);
-
-        args.Handled = true;
-        EmpoweringCheck(args.Action, component);
+        if (TrySpawnSpellInHand(cultist, "BloodCultSpellTwistedConstruction"))
+        {
+            args.Handled = true;
+            EmpoweringCheck(args.Action, component);
+        }
     }
 
     private void OnSummonEquipment(EntityUid cultist, BloodCultistComponent component, BloodCultSummonEquipmentActionEvent args)
     {
-        var spellGear = new ProtoId<StartingGearPrototype>("BloodCultSpellSummonEquipmentGear");
-
-        var dropEvent = new DropHandItemsEvent();
-        RaiseLocalEvent(cultist, ref dropEvent);
-        List<ProtoId<StartingGearPrototype>> gear = new() { spellGear };
-        _loadout.Equip(cultist, gear, null);
-
-        args.Handled = true;
-        EmpoweringCheck(args.Action, component);
+        if (TrySpawnSpellInHand(cultist, "BloodCultSpellSummonEquipment"))
+        {
+            args.Handled = true;
+            EmpoweringCheck(args.Action, component);
+        }
     }
 
     private void OnSummonDagger(EntityUid cultist, BloodCultistComponent component, BloodCultSummonDaggerActionEvent args)
@@ -399,15 +379,11 @@ public sealed partial class BloodCultSystem
     #region Blood Rites
     private void OnBloodRites(EntityUid cultist, BloodCultistComponent component, BloodCultBloodRitesActionEvent args)
     {
-        var spellGear = new ProtoId<StartingGearPrototype>("BloodCultSpellBloodRitesGear");
-
-        var dropEvent = new DropHandItemsEvent();
-        RaiseLocalEvent(cultist, ref dropEvent);
-        List<ProtoId<StartingGearPrototype>> gear = new() { spellGear };
-        _loadout.Equip(cultist, gear, null);
-
-        args.Handled = true;
-        EmpoweringCheck(args.Action, component);
+        if (TrySpawnSpellInHand(cultist, "BloodCultSpellBloodRites"))
+        {
+            args.Handled = true;
+            EmpoweringCheck(args.Action, component);
+        }
     }
 
      private void OnExamine(EntityUid uid, BloodSpellComponent spell, ExaminedEvent args)
@@ -604,16 +580,13 @@ public sealed partial class BloodCultSystem
             _popup.PopupEntity(Loc.GetString("blood-cult-bolt-barrage-failed"), cultist, cultist, PopupType.SmallCaution);
             return;
         }
-
-        var boltBarrageGear = new ProtoId<StartingGearPrototype>("BloodCultSpellBloodBarrageGear");
-        var dropEvent = new DropHandItemsEvent();
-        RaiseLocalEvent(cultist, ref dropEvent);
-        List<ProtoId<StartingGearPrototype>> gear = new() { boltBarrageGear };
-        _loadout.Equip(cultist, gear, null);
-
-        component.BloodCount -= 200;
-        _action.RemoveAction(cultist, args.Action!);
-        args.Handled = true;
+        
+        if (TrySpawnSpellInHand(cultist, "BloodCultSpellBloodBarrage"))
+        {
+            component.BloodCount -= 200;
+            _action.RemoveAction(cultist, args.Action!);
+            args.Handled = true;
+        }
     }
     #endregion Blood Rites
     #endregion Abilities
