@@ -5,7 +5,7 @@
     neck: ClothingNeckTieSci
     outerClothing: ClothingOuterCoatRobo
     gloves: ClothingHandsGlovesRobohands
-    shoes: ClothingShoesChameleon
+    shoes: ClothingShoesColorBlack
     jumpsuit: ClothingUniformJumpsuitRoboticist
     belt: ClothingBeltUtilityFilled
     pocket1: BorgModuleCleanerRare
@@ -17,7 +17,7 @@
     neck: ClothingNeckTieSci
     outerClothing: ClothingOuterCoatRobo
     gloves: ClothingHandsGlovesRobohands
-    shoes: ClothingShoesChameleon
+    shoes: ClothingShoesColorBlack
     jumpsuit: ClothingUniformJumpsuitRoboticist
     belt: ClothingBeltUtilityFilled
     pocket1: BorgModuleSecRare
@@ -29,7 +29,7 @@
     neck: ClothingNeckTieSci
     outerClothing: ClothingOuterCoatRobo
     gloves: ClothingHandsGlovesRobohands
-    shoes: ClothingShoesChameleon
+    shoes: ClothingShoesColorBlack
     jumpsuit: ClothingUniformJumpsuitRoboticist
     belt: ClothingBeltUtilityFilled
     pocket1: BorgModuleEngenerRare
@@ -41,7 +41,7 @@
     neck: ClothingNeckTieSci
     outerClothing: ClothingOuterCoatRobo
     gloves: ClothingHandsGlovesRobohands
-    shoes: ClothingShoesChameleon
+    shoes: ClothingShoesColorBlack
     jumpsuit: ClothingUniformJumpsuitRoboticist
     belt: ClothingBeltUtilityFilled
     pocket1: BorgModuleScienceRND
@@ -53,7 +53,7 @@
     neck: ClothingNeckTieSci
     outerClothing: ClothingOuterCoatRobo
     gloves: ClothingHandsGlovesRobohands
-    shoes: ClothingShoesChameleon
+    shoes: ClothingShoesColorBlack
     jumpsuit: ClothingUniformJumpsuitRoboticist
     belt: ClothingBeltUtilityFilled
     pocket1: BorgModuleMedicalRare
@@ -65,7 +65,7 @@
     neck: ClothingNeckTieSci
     outerClothing: ClothingOuterCoatRobo
     gloves: ClothingHandsGlovesRobohands
-    shoes: ClothingShoesChameleon
+    shoes: ClothingShoesColorBlack
     jumpsuit: ClothingUniformJumpsuitRoboticist
     belt: ClothingBeltUtilityFilled
     pocket1: BorgModuleCargoRare
@@ -77,7 +77,7 @@
     neck: ClothingNeckTieSci
     outerClothing: ClothingOuterCoatRobo
     gloves: ClothingHandsGlovesRobohands
-    shoes: ClothingShoesChameleon
+    shoes: ClothingShoesColorBlack
     jumpsuit: ClothingUniformJumpsuitRoboticist
     belt: ClothingBeltUtilityFilled
     pocket1: BorgModuleServiceRare
@@ -89,7 +89,7 @@
     neck: ClothingNeckTieSci
     outerClothing: ClothingOuterCoatRobo
     gloves: ClothingHandsGlovesRobohands
-    shoes: ClothingShoesChameleon
+    shoes: ClothingShoesColorBlack
     jumpsuit: ClothingUniformJumpsuitRoboticist
     belt: ClothingBeltUtilityFilled
     pocket1: BorgModuleCommonHand

@@ -4,6 +4,7 @@
   id: PhantomHeadBase
   bodyPart: Head
   groupWhitelist: [Phantom]
+  forcedColoring: true
   coloring:
     default:
       type:
@@ -24,6 +25,7 @@
   id: PhantomBadsunEyes
   bodyPart: Head
   groupWhitelist: [Phantom]
+  forcedColoring: true
   coloring:
     default:
       type:
@@ -42,6 +44,7 @@
   id: PhantomSeamstressEyes
   bodyPart: Head
   groupWhitelist: [Phantom]
+  forcedColoring: true
   coloring:
     default:
       type:
@@ -60,12 +63,13 @@
   id: PhantomDeathstareEyes
   bodyPart: Head
   groupWhitelist: [Phantom]
+  forcedColoring: true
   coloring:
     default:
       type:
         !type:SkinColoring
     layers:
-      seamstress-head:
+      deathstare-eye:
         type:
           !type:EyeColoring
   sprites:
@@ -152,6 +156,7 @@
   id: PhantomHarmonyHead
   bodyPart: Head
   groupWhitelist: [Phantom]
+  forcedColoring: true
   coloring:
     default:
       type:
@@ -170,6 +175,7 @@
   id: PhantomMoonHead
   bodyPart: Head
   groupWhitelist: [Phantom]
+  forcedColoring: true
   coloring:
     default:
       type:
@@ -188,6 +194,7 @@
   id: PhantomObserverHead
   bodyPart: Head
   groupWhitelist: [Phantom]
+  forcedColoring: true
   coloring:
     default:
       type:
@@ -206,6 +213,7 @@
   id: PhantomPaladinHead
   bodyPart: Head
   groupWhitelist: [Phantom]
+  forcedColoring: true
   coloring:
     default:
       type:
@@ -224,6 +232,7 @@
   id: PhantomShadowlingHead
   bodyPart: Head
   groupWhitelist: [Phantom]
+  forcedColoring: true
   coloring:
     default:
       type:

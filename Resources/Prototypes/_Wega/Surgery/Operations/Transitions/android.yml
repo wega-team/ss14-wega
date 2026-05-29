@@ -499,18 +499,6 @@
           sound:
             path: /Audio/Items/wirecutter.ogg
           time: 2
-        - tool: [ Cutting ]
-          tag: [ Knife, Shiv, BasicGlassShard]
-          action: StripWire
-          sound:
-            path: /Audio/Items/wirecutter.ogg
-          time: 2
-        - tool: [ Anchoring ]
-          tag: [ Wirecutter, Pipe ]
-          action: Unanchor
-          sound:
-            path: /Audio/Items/ratchet.ogg
-          time: 2
         - tool: [ Screwing ]
           tag: [ Knife, Shiv, BasicGlassShard]
           action: RemoveOrgan
@@ -544,10 +532,6 @@
   label: Прикрепить левую кисть
   stepGroups:
     - steps:
-        - tag: [ CableCoil ]
-          entityPreview: CableApcStack
-          action: MendWire
-          time: 2
         - tag: [ LeftHandSynthetic ]
           action: InsertOrgan
           requiredPart: HandLeft
@@ -584,18 +568,6 @@
           sound:
             path: /Audio/Items/wirecutter.ogg
           time: 2
-        - tool: [ Cutting ]
-          tag: [ Knife, Shiv, BasicGlassShard]
-          action: StripWire
-          sound:
-            path: /Audio/Items/wirecutter.ogg
-          time: 2
-        - tool: [ Anchoring ]
-          tag: [ Wirecutter, Pipe ]
-          action: Unanchor
-          sound:
-            path: /Audio/Items/ratchet.ogg
-          time: 2
         - tool: [ Screwing ]
           tag: [ Knife, Shiv, BasicGlassShard]
           action: RemoveOrgan
@@ -629,10 +601,6 @@
   label: Прикрепить правую кисть
   stepGroups:
     - steps:
-        - tag: [ CableCoil ]
-          entityPreview: CableApcStack
-          action: MendWire
-          time: 2
         - tag: [ RightHandSynthetic ]
           action: InsertOrgan
           requiredPart: HandRight
@@ -669,18 +637,6 @@
           action: CutWire
           sound:
             path: /Audio/Items/wirecutter.ogg
-          time: 2
-        - tool: [ Cutting ]
-          tag: [ Knife, Shiv, BasicGlassShard]
-          action: StripWire
-          sound:
-            path: /Audio/Items/wirecutter.ogg
-          time: 2
-        - tool: [ Anchoring ]
-          tag: [ Wirecutter, Pipe ]
-          action: Unanchor
-          sound:
-            path: /Audio/Items/ratchet.ogg
           time: 2
         - tool: [ Screwing ]
           tag: [ Knife, Shiv, BasicGlassShard]
@@ -767,18 +723,6 @@
           sound:
             path: /Audio/Items/wirecutter.ogg
           time: 2
-        - tool: [ Cutting ]
-          tag: [ Knife, Shiv, BasicGlassShard]
-          action: StripWire
-          sound:
-            path: /Audio/Items/wirecutter.ogg
-          time: 2
-        - tool: [ Anchoring ]
-          tag: [ Wirecutter, Pipe ]
-          action: Unanchor
-          sound:
-            path: /Audio/Items/ratchet.ogg
-          time: 2
         - tool: [ Screwing ]
           tag: [ Knife, Shiv, BasicGlassShard]
           action: Unscrew
@@ -863,27 +807,9 @@
       steps:
         - tool: [ Cutting ]
           tag: [ Knife, Shiv, BasicGlassShard]
-          action: CutWire
-          sound:
-            path: /Audio/Items/wirecutter.ogg
-          time: 2
-        - tool: [ Cutting ]
-          tag: [ Knife, Shiv, BasicGlassShard]
           action: StripWire
           sound:
             path: /Audio/Items/wirecutter.ogg
-          time: 2
-        - tool: [ Anchoring ]
-          tag: [ Wirecutter, Pipe ]
-          action: Unanchor
-          sound:
-            path: /Audio/Items/ratchet.ogg
-          time: 2
-        - tool: [ Screwing ]
-          tag: [ Knife, Shiv, BasicGlassShard]
-          action: Unscrew
-          sound:
-            collection: Screwdriver
           time: 2
         - tool: [ Anchoring ]
           tag: [ Wirecutter, Pipe ]
@@ -918,19 +844,9 @@
   label: Прикрепить левую стопу
   stepGroups:
     - steps:
-        - tag: [ CableCoil ]
-          entityPreview: CableApcStack
-          action: MendWire
-          time: 2
         - tag: [ LeftFootSynthetic ]
           action: InsertOrgan
           requiredPart: FootLeft
-          time: 2
-        - tool: [ Anchoring ]
-          tag: [ Wirecutter, Pipe ]
-          action: Anchor
-          sound:
-            path: /Audio/Items/ratchet.ogg
           time: 2
 
 # ПРАВАЯ СТОПА
@@ -965,27 +881,9 @@
       steps:
         - tool: [ Cutting ]
           tag: [ Knife, Shiv, BasicGlassShard]
-          action: CutWire
-          sound:
-            path: /Audio/Items/wirecutter.ogg
-          time: 2
-        - tool: [ Cutting ]
-          tag: [ Knife, Shiv, BasicGlassShard]
           action: StripWire
           sound:
             path: /Audio/Items/wirecutter.ogg
-          time: 2
-        - tool: [ Anchoring ]
-          tag: [ Wirecutter, Pipe ]
-          action: Unanchor
-          sound:
-            path: /Audio/Items/ratchet.ogg
-          time: 2
-        - tool: [ Screwing ]
-          tag: [ Knife, Shiv, BasicGlassShard]
-          action: Unscrew
-          sound:
-            collection: Screwdriver
           time: 2
         - tool: [ Anchoring ]
           tag: [ Wirecutter, Pipe ]
@@ -1020,19 +918,9 @@
   label: Прикрепить правую стопу
   stepGroups:
     - steps:
-        - tag: [ CableCoil ]
-          entityPreview: CableApcStack
-          action: MendWire
-          time: 2
         - tag: [ RightFootSynthetic ]
           action: InsertOrgan
           requiredPart: FootRight
-          time: 2
-        - tool: [ Anchoring ]
-          tag: [ Wirecutter, Pipe ]
-          action: Anchor
-          sound:
-            path: /Audio/Items/ratchet.ogg
           time: 2
 
 # Завершающий переход конечности

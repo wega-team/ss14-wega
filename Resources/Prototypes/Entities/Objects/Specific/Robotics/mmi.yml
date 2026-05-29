@@ -82,7 +82,7 @@
         - Brain
 
 - type: entity
-  parent: BaseItem
+  parent: [ BaseItem, OrganBaseBrain ] # Corvax-Wega-Android-Edit
   id: PositronicBrain
   name: positronic brain
   description: An artificial brain capable of spontaneous neural activity.

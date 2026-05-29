@@ -126,7 +126,7 @@
 # SEC Granader
 - type: entity
   name: hand grenade gun
-  parent: BaseStorageItem
+  parent: BaseItem
   id: WeaponHandGranadeGun
   description: Load granade for optimal results.
   components:
@@ -134,16 +134,8 @@
     sprite: _Wega/Objects/Weapons/Guns/Battery/borggun.rsi
     layers:
     - state: icon
-  - type: Storage
-    maxItemSize: Normal
-    grid:
-    - 0,0,0,1
-    - 1,0,0,0
-    whitelist:
-      tags:
-      - HandGrenade
   - type: Gun
-    fireRate: 2
+    fireRate: 0.5
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto
@@ -151,15 +143,26 @@
       path: /Audio/Effects/thunk.ogg
     soundEmpty:
       path: /Audio/Items/hiss.ogg
-    clumsyProof: true
-  - type: ContainerAmmoProvider
-    container: storagebase
-  - type: Item
-    size: Large
-  - type: ContainerContainer
-    containers:
-      storagebase: !type:Container
-        ents: []
+  - type: Appearance
+  - type: BatteryAmmoProvider
+    proto: GrenadeStingerProject
+    fireCost: 500
+  - type: Battery
+    maxCharge: 1000
+    startingCharge: 1000
+  - type: BatterySelfRecharger
+    autoRechargeRate: 25
+    autoRechargePauseTime: 20
+  - type: AmmoCounter
+  - type: BatteryWeaponFireModes
+    fireModes:
+    - proto: GrenadeStingerProject
+      fireCost: 500
+    - proto: GrenadeFlashBangProject
+      fireCost: 250
+    - proto: TearGasGrenadeProject
+      fireCost: 500
+
 
 - type: entity
   name: box granade
@@ -172,13 +175,9 @@
       - state: box_of_doom # Corvax-Resprite
       - state: flashbang
   - type: Storage
+    maxItemSize: Normal
     grid:
     - 0,0,4,3
-  - type: StorageFill
-    contents:
-      - id: GrenadeStinger
-      - id: TearGasGrenade
-      - id: GrenadeFlashBang
 
 # SEC Sheild
 - type: entity

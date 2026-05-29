@@ -39,6 +39,7 @@
       path: /Audio/Weapons/Guns/Cock/lmg_cock.ogg
   - type: AmmoCounter
   - type: ItemSlots
+    disableSmartEquipEject: true # Corvax-Wega-Add
     slots:
       gun_magazine:
         name: Magazine

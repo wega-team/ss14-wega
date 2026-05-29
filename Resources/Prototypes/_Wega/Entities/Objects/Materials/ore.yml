@@ -21,6 +21,7 @@
   - type: Tag
     tags:
     - MagmiteAlloy
+    - Ore
 
 - type: entity
   parent: MagmiteOre

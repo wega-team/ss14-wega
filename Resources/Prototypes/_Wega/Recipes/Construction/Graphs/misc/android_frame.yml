@@ -1,0 +1,123 @@
+- type: constructionGraph
+  id: AndroidEndoskeleton
+  start: start
+  graph:
+  - node: start
+    entity: AndroidEndoskeleton
+    edges:
+    - to: frame
+      steps:
+
+      # Left leg
+      - tag: AndroidPart
+        name: construction-graph-tag-android-part
+        icon:
+          sprite: _Wega/Mobs/Species/Android/parts.rsi
+          state: module_part
+        completed:
+        - !type:VisualizerDataInt
+          key: "enum.AndroidFrameVisuals.ConstructionStage"
+          data: 1
+
+      - material: Steel
+        amount: 5
+        doAfter: 3
+
+      - material: Plastic
+        amount: 3
+        doAfter: 1
+
+      - tool: Anchoring
+        doAfter: 3
+
+      # Right leg
+      - tag: AndroidPart
+        name: construction-graph-tag-android-part
+        icon:
+          sprite: _Wega/Mobs/Species/Android/parts.rsi
+          state: module_part
+        completed:
+        - !type:VisualizerDataInt
+          key: "enum.AndroidFrameVisuals.ConstructionStage"
+          data: 2
+
+      - material: Steel
+        amount: 5
+        doAfter: 3
+
+      - material: Plastic
+        amount: 3
+        doAfter: 1
+
+      - tool: Anchoring
+        doAfter: 3
+
+      # Left arm
+      - tag: AndroidPart
+        name: construction-graph-tag-android-part
+        icon:
+          sprite: _Wega/Mobs/Species/Android/parts.rsi
+          state: module_part
+        completed:
+        - !type:VisualizerDataInt
+          key: "enum.AndroidFrameVisuals.ConstructionStage"
+          data: 3
+
+      - material: Steel
+        amount: 5
+        doAfter: 3
+
+      - material: Plastic
+        amount: 3
+        doAfter: 1
+
+      - tool: Screwing
+        doAfter: 3
+
+      # Right arm
+      - tag: AndroidPart
+        name: construction-graph-tag-android-part
+        icon:
+          sprite: _Wega/Mobs/Species/Android/parts.rsi
+          state: module_part
+        completed:
+        - !type:VisualizerDataInt
+          key: "enum.AndroidFrameVisuals.ConstructionStage"
+          data: 4
+
+      - material: Steel
+        amount: 5
+        doAfter: 3
+
+      - material: Plastic
+        amount: 3
+        doAfter: 1
+
+      - tool: Screwing
+        doAfter: 3
+
+      # Head
+      - material: Steel
+        amount: 10
+        doAfter: 3
+        completed:
+        - !type:VisualizerDataInt
+          key: "enum.AndroidFrameVisuals.ConstructionStage"
+          data: 5
+
+      - material: Plastic
+        amount: 3
+        doAfter: 1
+
+      - tool: Screwing
+        doAfter: 3
+
+      - tool: Welding
+        doAfter: 5
+
+      - material: Cable
+        amount: 10
+        doAfter: 3
+
+  - node: frame
+    entity: AndroidFrame

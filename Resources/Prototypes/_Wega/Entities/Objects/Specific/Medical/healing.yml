@@ -653,15 +653,18 @@
     heldPrefix: morphine
   - type: Healing
     delay: 1.25
-    selfHealPenaltyMultiplier: 0
+    selfHealPenaltyMultiplier: 3
     damageContainers:
       - Android
       - Silicon
     bloodlossModifier: -10 # Tourniquets stop bleeding
     damage:
       types:
-        Blunt: -30 # 10 for each type in the group
-        Heat: -30
+        Blunt: -10
+        Slash: -10
+        Piercing: -10
+        Heat: -10
+        Shock: -10
     healingBeginSound:
       path: "/Audio/Effects/packetrip.ogg"
     healingEndSound:

@@ -1,0 +1,9 @@
+ent-MobCarpHoloDragon = { ent-MobCarpHolo }
+    .desc = { ent-MobCarpHolo.desc }
+    .suffix = ВыводокДракона
+ent-MobCarpRainbowDragon = { ent-MobCarpRainbow }
+    .desc = { ent-MobCarpRainbow.desc }
+    .suffix = ВыводокДракона
+ent-MobSharkDragon = { ent-MobShark }
+    .desc = { ent-MobShark.desc }
+    .suffix = ВыводокДракона

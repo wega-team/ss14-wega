@@ -9,3 +9,40 @@
     state: empty
   - type: Item # Corvax-Wega-Surgery
     size: Tiny # Corvax-Wega-Surgery
+
+- type: entity
+  parent: BaseSubdermalImplant
+  id: BluespaceLifelineImplant
+  name: bluespace lifeline implant
+  description: Teleports the hosts body to Central Command on activation. They will not be able to return.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Medical/Surgery/implants.rsi
+    state: nt
+  - type: SubdermalImplant
+    permanent: true
+    implantAction: ActionActivateBluespaceLifeline
+  - type: TriggerOnMobstateChange
+    mobState:
+    - Dead
+  - type: TriggerOnActivateImplant
+  - type: AddComponentsOnTrigger # make them embed into the target, but only when activated so that they can't be metagamed
+    targetUser: true
+    components:
+    - type: TimedDespawn
+      lifetime: 0
+  - type: SpawnOnTrigger
+    proto: BluespaceLifeline
+    predicted: true
+  - type: Tag
+    tags:
+    - SubdermalImplant
+
+- type: entity
+  parent: BaseSubdermalImplant
+  id: LoyaltyImplant
+  name: loyalty implant
+  description: This implant grants access to the Centcomm channel without a headset. Only authorized for Centcomm employees.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: MindControlImplant

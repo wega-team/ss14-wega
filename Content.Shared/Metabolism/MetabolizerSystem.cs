@@ -18,6 +18,7 @@ using Content.Shared.Random.Helpers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
+using Content.Shared._Wega.Metabolism; //Corvax-Wega-edit
 
 namespace Content.Shared.Metabolism;
 
@@ -231,6 +232,11 @@ public sealed class MetabolizerSystem : EntitySystem
                         _entityEffects.ApplyEffect(solutionEntity.Value, effect, scale);
                         break;
                     default:
+                        // Corvax-Wega-Edit-start
+                        if (TryComp<DisableMetabolismEffectsComponent>(actualEntity, out var disable) &&
+                            !disable.AllowedEffects.Contains(effect.GetType()))
+                            break;
+                        // Corvax-Wega-Edit-end
                         _entityEffects.ApplyEffect(actualEntity, effect, scale);
                         break;
                 }

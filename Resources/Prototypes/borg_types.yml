@@ -6,7 +6,7 @@
   dummyPrototype: BorgChassisGeneric
 
   # Functional
-  extraModuleCount: 3
+  extraModuleCount: 4 # 3 Corvax-Wega-Add
   moduleWhitelist:
     tags:
     - BorgModuleGeneric
@@ -52,7 +52,7 @@
   dummyPrototype: BorgChassisEngineer
 
   # Functional
-  extraModuleCount: 3
+  extraModuleCount: 4 # 3 Corvax-Wega-Add
   moduleWhitelist:
     tags:
     - BorgModuleGeneric
@@ -79,6 +79,7 @@
     - Android
   - type: ShowAccessReaderSettings
   - type: MagbootsImplant
+  - type: ThermalSight
 # Corvax-Wega-end
 
   # Visual
@@ -101,7 +102,7 @@
   dummyPrototype: BorgChassisMining
 
   # Functional
-  extraModuleCount: 3
+  extraModuleCount: 4 # 3 Corvax-Wega-Add
   moduleWhitelist:
     tags:
     - BorgModuleGeneric
@@ -167,7 +168,7 @@
   dummyPrototype: BorgChassisJanitor
 
   # Functional
-  extraModuleCount: 3
+  extraModuleCount: 4 # 3 Corvax-Wega-Add
   moduleWhitelist:
     tags:
     - BorgModuleGeneric
@@ -225,7 +226,7 @@
   dummyPrototype: BorgChassisMedical
 
   # Functional
-  extraModuleCount: 3
+  extraModuleCount: 4 # 3 Corvax-Wega-Add
   moduleWhitelist:
     tags:
     - BorgModuleGeneric
@@ -275,7 +276,7 @@
   dummyPrototype: BorgChassisService
 
   # Functional
-  extraModuleCount: 3
+  extraModuleCount: 4 # 3 Corvax-Wega-Add
   moduleWhitelist:
     tags:
     - BorgModuleGeneric

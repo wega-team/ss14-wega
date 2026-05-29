@@ -8,9 +8,9 @@
     WallRockChromite: WallRockChromiteTin
     WallRockSand: WallRockSandTin
     WallRockSnow: WallRockSnowTin
-  maxCount: 20
-  minGroupSize: 4
-  maxGroupSize: 8
+  maxCount: 30
+  minGroupSize: 10
+  maxGroupSize: 15
   radius: 4
 
 - type: biomeMarkerLayer
@@ -21,9 +21,9 @@
     WallRockBasalt: WallRockBasaltLavalandQuartz
     WallRockChromite: WallRockChromiteQuartz
     WallRockSnow: WallRockSnowQuartz
-  maxCount: 20
-  minGroupSize: 4
-  maxGroupSize: 8
+  maxCount: 30
+  minGroupSize: 10
+  maxGroupSize: 15
   radius: 4
 
 - type: biomeMarkerLayer
@@ -35,9 +35,9 @@
     WallRockChromite: WallRockChromiteCoal
     WallRockSand: WallRockSandCoal
     WallRockSnow: WallRockSnowCoal
-  maxCount: 20
-  minGroupSize: 4
-  maxGroupSize: 6
+  maxCount: 30
+  minGroupSize: 8
+  maxGroupSize: 12
   radius: 4
 
 # Medium value
@@ -51,9 +51,9 @@
     WallRockChromite: WallRockChromiteGold
     WallRockSand: WallRockSandGold
     WallRockSnow: WallRockSnowGold
-  maxCount: 10
-  minGroupSize: 2
-  maxGroupSize: 5
+  maxCount: 20
+  minGroupSize: 5
+  maxGroupSize: 10
   radius: 4
 
 # Silver
@@ -66,9 +66,9 @@
     WallRockChromite: WallRockChromiteSilver
     WallRockSand: WallRockSandSilver
     WallRockSnow: WallRockSnowSilver
-  maxCount: 10
-  minGroupSize: 2
-  maxGroupSize: 5
+  maxCount: 20
+  minGroupSize: 5
+  maxGroupSize: 10
   radius: 4
 
 # High value
@@ -82,9 +82,9 @@
     WallRockChromite: WallRockChromitePlasma
     WallRockSand: WallRockSandPlasma
     WallRockSnow: WallRockSnowPlasma
-  maxCount: 6
-  minGroupSize: 3
-  maxGroupSize: 5
+  maxCount: 12
+  minGroupSize: 4
+  maxGroupSize: 8
   radius: 4
 
 # Uranium
@@ -97,9 +97,9 @@
     WallRockChromite: WallRockChromiteUranium
     WallRockSand: WallRockSandUranium
     WallRockSnow: WallRockSnowUranium
-  maxCount: 7
-  minGroupSize: 2
-  maxGroupSize: 4
+  maxCount: 15
+  minGroupSize: 4
+  maxGroupSize: 8
   radius: 4
 
 - type: biomeMarkerLayer
@@ -111,7 +111,7 @@
     WallRockChromite: WallRockChromiteDiamond
     WallRockSand: WallRockSandDiamond
     WallRockSnow: WallRockSnowDiamond
-  maxCount: 3
+  maxCount: 6
   minGroupSize: 1
   maxGroupSize: 2
   radius: 4

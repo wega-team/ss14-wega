@@ -52,3 +52,23 @@
     - id: ClothingBeltSheathSyndicateFilled
     sound:
       path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  id: ClothingBeltSheathChaplinFilled
+  parent: ClothingBeltSheathChaplin
+  suffix: Filled
+  components:
+  - type: ContainerFill
+    containers:
+      item:
+      - WeaponNullRod
+      
+- type: entity
+  id: ClothingBeltSheathChaplinFilledERT
+  parent: ClothingBeltSheathChaplin
+  suffix: Filled, ERT
+  components:
+  - type: ContainerFill
+    containers:
+      item:
+      - WeaponNullRodERT

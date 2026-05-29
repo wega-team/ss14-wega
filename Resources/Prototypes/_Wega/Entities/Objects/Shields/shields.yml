@@ -114,6 +114,7 @@
     - type: PowerCellSlot
       cellSlotId: cell_slot
     - type: ItemSlots
+      disableSmartEquipEject: true
       slots:
         cell_slot:
           name: power-cell-slot-component-slot-name-default

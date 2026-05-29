@@ -12,6 +12,11 @@ using Content.Server.Shuttles.Systems;
 using Content.Server.Station.Components;
 using Content.Server.StationRecords.Systems;
 using Content.Server.Store.Systems;
+//Corvax-Wega-War-Start
+using Content.Server.AlertLevel;
+using Content.Server.Station.Systems;
+using Robust.Shared.Timing;
+//Corvax-Wega-War-End
 using Content.Shared.Access.Systems;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Mind;
@@ -45,7 +50,6 @@ using System.Text;
 using Content.Shared.CombatMode.Pacification;//Corvax-DionaPacifist
 
 namespace Content.Server.GameTicking.Rules;
-
 public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
 {
     [Dependency] private readonly AntagSelectionSystem _antag = default!;
@@ -64,6 +68,7 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
     [Dependency] private readonly StationRecordsSystem _records = default!;
     [Dependency] private readonly StoreSystem _store = default!;
     [Dependency] private readonly TagSystem _tag = default!;
+    [Dependency] private readonly AlertLevelSystem _alertLevelSystem = default!; //Corvax-Wega-War-Edit
 
     private static readonly ProtoId<CurrencyPrototype> TelecrystalCurrencyPrototype = "Telecrystal";
     private static readonly ProtoId<TagPrototype> NukeOpsUplinkTagPrototype = "NukeOpsUplink";
@@ -113,7 +118,22 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
         var ev = new NukeopsTargetStationSelectedEvent(uid, component.TargetStation);
         RaiseLocalEvent(ref ev);
     }
-
+    //Corvax-Wega-War-Start
+    private void ChangeAlert()
+    {
+        var query = EntityQueryEnumerator<NukeopsRuleComponent>();
+        while (query.MoveNext(out var uid, out var comp))
+        {
+            if (comp.CanChangeAlertLevel)
+            {
+                if (comp.SetAlertlevel == null || comp.TargetStation == null)
+                    continue;
+                _alertLevelSystem.SetLevel(comp.TargetStation.Value, comp.SetAlertlevel, true, true, true, true);
+                comp.CanChangeAlertLevel = false;
+            }
+        }
+    }
+    //Corvax-Wega-War-End
     #region Event Handlers
     protected override void AppendRoundEndText(EntityUid uid,
         NukeopsRuleComponent component,
@@ -448,6 +468,7 @@ public sealed class NukeopsRuleSystem : GameRuleSystem<NukeopsRuleComponent>
                 nukeops.WarDeclaredTime = Timing.CurTime;
                 var timeRemain = nukeops.WarNukieArriveDelay + Timing.CurTime;
                 ev.DeclaratorEntity.Comp.ShuttleDisabledTime = timeRemain;
+                Timer.Spawn(TimeSpan.FromSeconds(nukeops.AlertlevelDelay), () => ChangeAlert()); // Corvax-Wega-War
 
                 DistributeExtraTc((uid, nukeops));
             }

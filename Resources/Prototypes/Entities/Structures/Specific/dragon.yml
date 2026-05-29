@@ -6,6 +6,11 @@
     mode: SnapgridCenter
   components:
   - type: DragonRift
+    spawnWeights:
+      MobCarpDragon: 0.59
+      MobSharkDragon: 0.2
+      MobCarpHoloDragon: 0.2
+      MobCarpRainbowDragon: 0.01
   - type: Transform
     anchored: true
   - type: Physics

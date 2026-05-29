@@ -145,3 +145,8 @@
   id: Rave
   kind: source
   path: "/Textures/_Wega/Shaders/rave.swsl"
+
+- type: shader
+  id: NullDamage
+  kind: source
+  path: "/Textures/_Wega/Shaders/nulldamage.swsl"

@@ -28,7 +28,7 @@
       - !type:EvenHealthChange
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Bloodsucker ]
+          type: [ Bloodsucker, Vampire ] # Corvax-Wega-Edit
         damage:
           Brute: -3
           Burn: -1.25
@@ -38,6 +38,12 @@
         damage:
           types:
             Poison: 0.2
+        # Corvax-Wega-Vampire-start
+        conditions:
+          - !type:MetabolizerTypeCondition
+            type: [ Vampire ]
+            inverted: true
+        # Corvax-Wega-Vampire-end
   plantMetabolism:
     - !type:PlantAdjustWater
       amount: 0.5

@@ -13,6 +13,7 @@
     # - id: ZombieOutbreak
     # - id: LoneOpsSpawn
     # - id: DerelictCyborgSpawn
+    - id: RadiationOutburst
     - id: VoidOccurrence
 
 # Events
@@ -44,3 +45,15 @@
     minimumPlayers: 120
   - type: LoadMapRule
     mapPath: /Maps/_Wega/Shuttles/voidshuttle.yml
+
+- type: entity
+  id: RadiationOutburst
+  parent: BaseGameRule
+  components:
+  - type: StationEvent
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
+      weight: 4
+      minimumPlayers: 5
+      duration: 1
+  - type: RadiationOutburstRule

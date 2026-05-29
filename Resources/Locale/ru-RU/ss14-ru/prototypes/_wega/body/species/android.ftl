@@ -54,3 +54,8 @@ ent-OrganAndroidTyrium = тириумовый насос
 ent-OrganAndroidEyes = камеры андроида
     .desc = Высоко-технологичные камеры с блюспейс нейросетями.
     .suffix = { ent-OrganMothInternal.suffix }
+
+ent-AndroidEndoskeleton = эндоскелет андроида
+    .desc = Каркас для будущего андроида. Внутри они выглядят намного страшнее чем снаружи.
+ent-AndroidFrame = каркас андроида
+    .desc = Настройте внешность собираемого робота.

@@ -1,34 +1,21 @@
+using System.Linq;
+using System.Text;
 using Content.Server.Antag;
-using Content.Server.Atmos.Components;
 using Content.Server.GameTicking.Rules.Components;
 using Content.Server.Roles;
-using Content.Server.Actions;
-using Content.Shared.Atmos;
-using Content.Shared.Atmos.Rotting;
-using Content.Shared.Body.Components;
-using Content.Shared.Chemistry;
-using Content.Shared.Chemistry.Reaction;
-using Content.Shared.Clumsy;
-using Content.Shared.CombatMode.Pacification;
+using Content.Shared.FixedPoint;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Humanoid;
-using Content.Shared.Nutrition.Components;
-using Content.Shared.Temperature.Components;
+using Content.Shared.Mind;
+using Content.Shared.Vampire;
 using Content.Shared.Vampire.Components;
-using Content.Shared.Damage.Systems;
-using Content.Shared.Body;
-using Content.Shared.Metabolism;
-using System.Linq;
 
 namespace Content.Server.GameTicking.Rules
 {
     public sealed class VampireRuleSystem : GameRuleSystem<VampireRuleComponent>
     {
         [Dependency] private readonly AntagSelectionSystem _antag = default!;
-        [Dependency] private readonly MetabolizerSystem _metabolism = default!;
-        [Dependency] private readonly ActionsSystem _actions = default!;
-        [Dependency] private readonly DamageableSystem _damage = default!;
-        [Dependency] private readonly SharedVisualBodySystem _visualBody = default!;
+        [Dependency] private readonly SharedMindSystem _mind = default!;
 
         public override void Initialize()
         {
@@ -41,7 +28,6 @@ namespace Content.Server.GameTicking.Rules
         private void OnVampireSelected(Entity<VampireRuleComponent> mindId, ref AfterAntagEntitySelectedEvent args)
         {
             var ent = args.EntityUid;
-            MakeVampire(ent);
             _antag.SendBriefing(ent, MakeBriefing(ent), Color.Purple, null);
         }
 
@@ -56,8 +42,7 @@ namespace Content.Server.GameTicking.Rules
 
         private string MakeBriefing(EntityUid ent)
         {
-            var isHuman = HasComp<HumanoidProfileComponent>(ent);
-            var briefing = isHuman
+            var briefing = HasComp<HumanoidProfileComponent>(ent)
                 ? Loc.GetString("vampire-role-greeting-human")
                 : Loc.GetString("vampire-role-greeting-animal");
 
@@ -69,117 +54,131 @@ namespace Content.Server.GameTicking.Rules
             GameRuleComponent gameRule,
             ref RoundEndTextAppendEvent args)
         {
-            var totalBloodDrank = GetTotalBloodDrankInRound();
-            args.AddLine(Loc.GetString("vampires-drank-total-blood", ("bloodAmount", totalBloodDrank)));
+            if (component.VampiresInfo.Count == 0)
+                return;
+
+            var sb = new StringBuilder();
+            sb.AppendLine(Loc.GetString("vampire-round-end-header"));
+
+            foreach (var (_, info) in component.VampiresInfo)
+            {
+                var name = !string.IsNullOrEmpty(info.Name) ? info.Name : Loc.GetString("generic-unknown");
+                var className = Loc.GetString($"select-class-{info.Class.ToString().ToLower()}");
+                var bloodAmount = info.TotalBloodDrank.Float().ToString("F2");
+                var classColor = GetClassColor(info.Class);
+
+                var line = Loc.GetString("vampire-round-end-info", ("name", name), ("class", className),
+                    ("blood", bloodAmount), ("color", classColor));
+
+                sb.AppendLine(line);
+            }
+
+            sb.AppendLine();
+            var totalBloodDrank = GetTotalBloodDrankInRound(component).ToString("F2");
+            sb.AppendLine(Loc.GetString("vampires-drank-total-blood", ("bloodAmount", totalBloodDrank)));
+
+            args.AddLine(sb.ToString());
         }
 
-        private float GetTotalBloodDrankInRound()
+        private Color GetClassColor(VampireClassEnum vampireClass)
+        {
+            return vampireClass switch
+            {
+                VampireClassEnum.Hemomancer => Color.FromHex("#b82e2e"),
+                VampireClassEnum.Umbrae => Color.FromHex("#6709aa"),
+                VampireClassEnum.Gargantua => Color.FromHex("#b34019"),
+                VampireClassEnum.Dantalion => Color.FromHex("#2a9633"),
+                VampireClassEnum.Bestia => Color.FromHex("#2770c4"),
+                _ => Color.Yellow
+            };
+        }
+
+        private float GetTotalBloodDrankInRound(VampireRuleComponent component)
         {
             var totalBloodDrank = 0f;
-            foreach (var vampireEntity in EntityQuery<VampireComponent>(true))
-            {
-                totalBloodDrank += vampireEntity.TotalBloodDrank;
-            }
+            foreach (var (_, info) in component.VampiresInfo)
+                totalBloodDrank += info.TotalBloodDrank.Float();
 
             return totalBloodDrank;
         }
 
-        private void MakeVampire(EntityUid vampire)
-        {
-            var vampireComponent = EnsureComp<VampireComponent>(vampire);
+        #region Records
 
-            RemoveUnnecessaryComponents(vampire);
-            HandleMetabolismAndOrgans(vampire);
-            SetVampireComponents(vampire, vampireComponent);
-            UpdateAppearance(vampire);
-            AddVampireActions(vampire);
-        }
-
-        private void RemoveUnnecessaryComponents(EntityUid vampire)
+        public void InitVampireRecord(EntityUid vampireUid, VampireComponent? vampireComp = null)
         {
-            var componentsToRemove = new[]
+            if (!Resolve(vampireUid, ref vampireComp, false))
+                return;
+
+            var rule = EntityQuery<VampireRuleComponent>().FirstOrDefault();
+            if (rule == null)
+                return;
+
+            var mindId = _mind.GetMind(vampireUid);
+            if (mindId == null)
+                return;
+
+            if (rule.VampiresInfo.ContainsKey(mindId.Value))
+                return;
+
+            var info = new VampireRoundInfo
             {
-                typeof(PacifiedComponent),
-                typeof(PerishableComponent),
-                typeof(BarotraumaComponent),
-                typeof(TemperatureSpeedComponent),
-                typeof(ThirstComponent),
-                typeof(ClumsyComponent)
+                Name = Name(vampireUid)
             };
 
-            foreach (var compType in componentsToRemove)
-            {
-                if (HasComp(vampire, compType))
-                    RemComp(vampire, compType);
-            }
+            rule.VampiresInfo[mindId.Value] = info;
         }
 
-        private void HandleMetabolismAndOrgans(EntityUid vampire)
+        public void RecordBloodDrank(EntityUid vampireUid, FixedPoint2 amount)
         {
-            if (TryComp<BodyComponent>(vampire, out var bodyComponent) && bodyComponent.Organs != null)
+            if (amount <= 0)
+                return;
+
+            var rule = EntityQuery<VampireRuleComponent>().FirstOrDefault();
+            if (rule == null)
+                return;
+
+            var mindId = _mind.GetMind(vampireUid);
+            if (mindId == null)
+                return;
+
+            if (!rule.VampiresInfo.TryGetValue(mindId.Value, out var info))
             {
-                foreach (var organ in bodyComponent.Organs.ContainedEntities)
+                info = new VampireRoundInfo
                 {
-                    if (TryComp<MetabolizerComponent>(organ, out var metabolizer))
-                    {
-                        if (TryComp<StomachComponent>(organ, out _))
-                            _metabolism.ClearMetabolizerTypes(metabolizer);
-
-                        _metabolism.TryAddMetabolizerType(metabolizer, VampireComponent.MetabolizerVampire);
-                    }
-                }
+                    Name = Name(vampireUid),
+                    Class = CompOrNull<VampireComponent>(vampireUid)?.CurrentEvolution ?? default
+                };
+                rule.VampiresInfo[mindId.Value] = info;
             }
+
+            info.TotalBloodDrank += amount;
         }
 
-        private void SetVampireComponents(EntityUid vampire, VampireComponent _)
+        public void RecordClassSelected(EntityUid vampireUid, VampireClassEnum selectedClass)
         {
-            if (TryComp<TemperatureDamageComponent>(vampire, out var temperature))
-                temperature.ColdDamageThreshold = Atmospherics.TCMB;
+            var rule = EntityQuery<VampireRuleComponent>().FirstOrDefault();
+            if (rule == null)
+                return;
 
-            EnsureComp<UnholyComponent>(vampire);
-            EnsureComp<VampireComponent>(vampire);
+            var mindId = _mind.GetMind(vampireUid);
+            if (mindId == null)
+                return;
 
-            _damage.SetDamageModifierSetId(vampire, "Vampire");
-
-            if (TryComp<ReactiveComponent>(vampire, out var reactive))
+            if (!rule.VampiresInfo.TryGetValue(mindId.Value, out var info))
             {
-                reactive.ReactiveGroups ??= new();
-
-                if (!reactive.ReactiveGroups.ContainsKey("Unholy"))
+                info = new VampireRoundInfo
                 {
-                    reactive.ReactiveGroups.Add("Unholy", new() { ReactionMethod.Touch });
-                }
+                    Name = Name(vampireUid),
+                    Class = selectedClass
+                };
+                rule.VampiresInfo[mindId.Value] = info;
+            }
+            else
+            {
+                info.Class = selectedClass;
             }
         }
 
-        private void UpdateAppearance(EntityUid vampire)
-        {
-            if (_visualBody.TryGatherMarkingsData(vampire, null, out var profiles, out _, out _))
-            {
-                var newEyeColor = Color.FromHex("#E22218FF");
-
-                var updatedProfiles = profiles.ToDictionary(
-                    pair => pair.Key,
-                    pair => pair.Value with { EyeColor = newEyeColor });
-
-                _visualBody.ApplyProfiles(vampire, updatedProfiles);
-            }
-        }
-
-        private void AddVampireActions(EntityUid vampire)
-        {
-            var actionPrototypes = new[]
-            {
-                VampireComponent.DrinkActionPrototype,
-                VampireComponent.SelectClassActionPrototype,
-                VampireComponent.RejuvenateActionPrototype,
-                VampireComponent.GlareActionPrototype
-            };
-
-            foreach (var actionPrototype in actionPrototypes)
-            {
-                _actions.AddAction(vampire, actionPrototype);
-            }
-        }
+        #endregion
     }
 }

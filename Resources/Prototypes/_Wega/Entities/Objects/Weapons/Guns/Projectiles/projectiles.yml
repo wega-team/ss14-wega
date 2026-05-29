@@ -91,3 +91,59 @@
     radius: 1.5
     energy: 4.6
     color: "#ffffff"
+
+- type: entity
+  name: pulse bolt
+  id: BulletPulse
+  parent: BaseBullet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Reflective
+    reflective:
+    - Energy
+  - type: FlyBySound
+    sound:
+      collection: EnergyMiss
+      params:
+        volume: 5
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles_tg.rsi
+    layers:
+    - state: omnilaser
+      shader: unshaded
+  - type: Physics
+  - type: Ammo
+  - type: Projectile
+    impactEffect: BulletImpactEffectDisabler
+    damage:
+      types:
+        Heat: 21
+
+- type: entity
+  id: BulletPulseSpread
+  categories: [ HideSpawnMenu ]
+  parent: BulletPulse
+  components:
+  - type: ProjectileSpread
+    proto: BulletPulse
+    count: 6
+    spread: 10
+    
+- type: entity
+  parent: BasicHitscan
+  id: PulseSniper
+  components:
+  - type: HitscanBasicDamage
+    damage:
+      types:
+        Heat: 90
+  - type: HitscanBasicVisuals
+    muzzleFlash:
+      sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+      state: muzzle_blue
+    travelFlash:
+      sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+      state: beam_blue
+    impactFlash:
+      sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+      state: impact_blue

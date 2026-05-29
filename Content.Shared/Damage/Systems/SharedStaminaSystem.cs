@@ -397,8 +397,7 @@ public abstract partial class SharedStaminaSystem : EntitySystem
         component.Critical = true;
         component.StaminaDamage = component.CritThreshold;
 
-        if (StunSystem.TryUpdateParalyzeDuration(uid, component.StunTime))
-            StunSystem.TrySeeingStars(uid);
+        StunSystem.TryUpdateParalyzeDuration(uid, component.StunTime);
 
         // Give them buffer before being able to be re-stunned
         component.NextUpdate = Timing.CurTime + component.StunTime + StamCritBufferTime;
@@ -461,7 +460,7 @@ public abstract partial class SharedStaminaSystem : EntitySystem
     // Corvax-Wega-Add-start
     public void RemoveStaminaDamage(Entity<StaminaComponent?> ent)
     {
-        if (!Resolve(ent, ref ent.Comp))
+        if (!Resolve(ent, ref ent.Comp, false))
             return;
 
         if (ent.Comp.StaminaDamage >= ent.Comp.CritThreshold)

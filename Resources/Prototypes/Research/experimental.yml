@@ -55,6 +55,7 @@
   cost: 5000
   recipeUnlocks:
   - TechDiskComputerCircuitboard
+  - TechDiskBag # Corvax-Wega-Add
 
 - type: technology
   id: MagnetsTech

@@ -64,7 +64,7 @@
       Female: FemaleDwarf
       Unsexed: UnisexDwarf
   - type: ReplacementAccent
-    accent: scottish
+    accent: dwarf # Corvax-Wega-Edit
   - type: Speech
     speechSounds: Bass
   # Corvax-Wega-Genetics-start

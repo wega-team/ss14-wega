@@ -28,6 +28,8 @@
   - BorgModuleLethal
   - PortableRechargerBag
   - PortableRechargerTurbo
+  technologyPrerequisites:
+  - WeaponizedLaserManipulation
 
 - type: technology
   id: AdvancedFlash
@@ -41,3 +43,5 @@
   recipeUnlocks:
   - ClothingHeadHelmetFlash
   - ClothingNeckFlashNeck
+  technologyPrerequisites:
+  - SpecialMeans

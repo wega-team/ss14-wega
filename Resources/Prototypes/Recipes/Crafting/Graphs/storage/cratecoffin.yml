@@ -24,3 +24,18 @@
               amount: 5
             - !type:EmptyAllContainers
             - !type:DeleteEntity
+
+    # Corvax-Wega-Vampire-start
+    - node: cratecoffinvampire
+      entity: CrateCoffinVampire
+      edges:
+        - to: start
+          steps:
+            - tool: Prying
+              doAfter: 31
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialWoodPlank1
+              amount: 5
+            - !type:DeleteEntity
+    # Corvax-Wega-Vampire-end

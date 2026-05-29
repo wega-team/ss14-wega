@@ -15,3 +15,8 @@ android-part-assembly-rightfoot = Собирается правая стопа. 
 
 partimplant-assembly-leftarm = Собирается левая рука.
 partimplant-assembly-rightarm = Собирается правая рука.
+
+body-part-implant-config-arm-left = Левая рука
+body-part-implant-config-arm-right = Правая рука
+body-part-implant-config-leg-left = Левая нога
+body-part-implant-config-leg-right = Правая нога

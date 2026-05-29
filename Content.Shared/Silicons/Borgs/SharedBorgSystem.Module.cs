@@ -4,12 +4,17 @@ using Content.Shared.Interaction.Components;
 using Content.Shared.Localizations;
 using Content.Shared.Silicons.Borgs.Components;
 using Robust.Shared.Containers;
+using Content.Shared.Tag; // Corvax-Wega-Add
+using Robust.Shared.Prototypes; // Corvax-Wega-Add
 
 namespace Content.Shared.Silicons.Borgs;
 
 public abstract partial class SharedBorgSystem
 {
     [Dependency] private readonly EntityQuery<BorgModuleComponent> _moduleQuery = default!;
+    [Dependency] private readonly TagSystem _tagSystem = default!; // Corvax-Wega-Add
+
+    private static readonly ProtoId<TagPrototype> ItemborgTag = "Itemborg"; // Corvax-Wega-Add
 
     public void InitializeModule()
     {
@@ -195,7 +200,8 @@ public abstract partial class SharedBorgSystem
             if (item is { } pickUp)
             {
                 _hands.DoPickup(chassis, handId, pickUp, hands);
-                if (!hand.ForceRemovable && hand.Hand.Whitelist == null && hand.Hand.Blacklist == null)
+                if (!hand.ForceRemovable && hand.Hand.Whitelist == null && hand.Hand.Blacklist == null 
+				|| _tagSystem.HasTag(pickUp, ItemborgTag)) // Corvax-Wega-Add
                 {
                     EnsureComp<UnremoveableComponent>(pickUp);
                 }

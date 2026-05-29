@@ -23,6 +23,9 @@ namespace Content.Shared.Containers.ItemSlots
         /// </summary>
         [DataField(readOnly:true)]
         public Dictionary<string, ItemSlot> Slots = new();
+        
+        [DataField] // Corvax-Wega-Add
+        public bool DisableSmartEquipEject = false; // Corvax-Wega-Add
 
         // There are two ways to use item slots:
         //

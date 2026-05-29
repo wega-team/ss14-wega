@@ -21,6 +21,48 @@
     state: sheath
   - type: Clothing
     sprite: _Wega/Clothing/Belt/sheriff_sheath.rsi
+    
+- type: entity
+  parent: ClothingBeltStorageBase
+  id: ClothingBeltBeerBandolier
+  name: beer bandolizer
+  description: No need for violence, take some beer!
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Belt/beerbandolier.rsi
+    state: belt
+  - type: Clothing
+    sprite: _Wega/Clothing/Belt/beerbandolier.rsi
+  - type: Appearance
+  - type: Item
+    size: Huge
+  - type: Storage
+    maxItemSize: Normal
+    grid:
+    - 0,0,5,1
+    whitelist:
+      tags:
+        - Beer
+  - type: ItemMapper
+    mapLayers:
+      belt-onebottle:
+        minCount: 1
+        maxCount: 2
+        whitelist:
+          tags:
+          - Beer
+      belt-twobottle:
+        minCount: 3
+        maxCount: 4
+        whitelist:
+          tags:
+          - Beer
+      belt-threebottle:
+        minCount: 5
+        maxCount: 6
+        whitelist:
+          tags:
+          - Beer
 
 # ADT
 
