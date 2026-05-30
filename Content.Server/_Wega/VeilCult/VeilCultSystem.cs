@@ -50,7 +50,6 @@ using Content.Shared.NullRod.Components;
 using Content.Shared.Lathe;
 using Content.Shared.Roles;
 using Content.Shared.Mobs;
-using Content.Shared.Weapons.Ranged.Events;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
