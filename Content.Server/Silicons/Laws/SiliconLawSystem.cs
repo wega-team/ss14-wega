@@ -335,7 +335,7 @@ public sealed class SiliconLawSystem : SharedSiliconLawSystem
             LawString = Loc.GetString("law-midastouched-secrecy"),
             Order = component.Lawset.Laws.Max(law => law.Order) + 1
         });
-        NotifyLawsChanged(uid);
+        NotifyLawsChanged(uid, new SoundPathSpecifier("/Audio/Misc/ratvar_reveal.ogg"));
     }
 	// Corvax-Wega-Veil-Cult-End
 }

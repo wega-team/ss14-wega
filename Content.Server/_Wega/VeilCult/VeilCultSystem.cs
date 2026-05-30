@@ -50,7 +50,7 @@ using Content.Shared.NullRod.Components;
 using Content.Shared.Lathe;
 using Content.Shared.Roles;
 using Content.Shared.Mobs;
-using Content.Shared.Weapons.Ranged.Events;
+using Content.Shared.Silicons.Borgs.Components;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
@@ -433,11 +433,11 @@ public sealed partial class VeilCultSystem : SharedVeilCultSystem
         {
             if (args.Target is { } target && TryComp<MindContainerComponent>(target, out var mindContainer) && !mindContainer.HasMind)
             {
-                if (!HasComp<CogscarabComponent>(target))
-                {
-                    _mind.TransferTo(mindId, target, ghostCheckOverride: true, createGhost: true, mind: mindComp);
-                    QueueDel(uid);
-                }
+                if (HasComp<CogscarabComponent>(target) || HasComp<BorgChassisComponent>(target))
+                    return;
+                
+                _mind.TransferTo(mindId, target, ghostCheckOverride: true, createGhost: true, mind: mindComp);
+                QueueDel(uid);
             }        
         }
     }
