@@ -61,6 +61,8 @@
   - type: ItemToggle
     soundActivate: /Audio/_Wega/Items/activate.ogg
     soundDeactivate: /Audio/_Wega/Items/deactivate.ogg
+    onUse: false
+    onActivate: false
   - type: Appearance
   - type: GenericVisualizer
     visuals:
