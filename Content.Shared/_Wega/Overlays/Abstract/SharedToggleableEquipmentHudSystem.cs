@@ -1,11 +1,9 @@
 using Content.Shared.Actions;
-using Content.Shared.Inventory.Events;
+using Content.Shared.Item.ItemToggle;
 using Content.Shared.Overlays;
-using Content.Shared.Toggleable;
-using Content.Shared.Actions.Components;
 using Content.Shared.Popups;
-using Content.Shared.Power.EntitySystems;
 using Content.Shared.PowerCell;
+using Content.Shared.Toggleable;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Timing;
 
@@ -14,12 +12,12 @@ namespace Content.Shared.Overlay;
 public abstract class SharedToggleableEquipmentHudSystem<T> : EntitySystem where T : ToggleableHudComponent
 {
     [Dependency] private readonly SharedActionsSystem _actions = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!; 
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly PowerCellSystem _powerCell = default!;
-    [Dependency] private readonly SharedBatterySystem _battery = default!;
     [Dependency] private readonly ActionContainerSystem _actionContainer = default!;
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
+    [Dependency] private readonly ItemToggleSystem _toggle = default!;
+    [Dependency] private readonly IGameTiming _gameTiming = default!;
 
     public override void Initialize()
     {
@@ -28,31 +26,29 @@ public abstract class SharedToggleableEquipmentHudSystem<T> : EntitySystem where
         SubscribeLocalEvent<T, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<T, GetItemActionsEvent>(OnGetItemActions);
     }
-        
+
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
+
         var query = EntityQueryEnumerator<T>();
         while (query.MoveNext(out var uid, out var hud))
         {
-            if (hud.Wattage == 0 || !hud.Enabled)
+            if (!hud.Enabled)
                 continue;
-            
-            if (!_powerCell.TryGetBatteryFromSlotOrEntity(uid, out var battery))
+
+            if (hud.NextChargeCheck >= _gameTiming.CurTime)
+                continue;
+
+            if (!_powerCell.HasDrawCharge(uid))
             {
                 TurnOff((uid, hud));
                 continue;
             }
-            
-            if (hud.Enabled && !_battery.TryUseCharge(battery.Value.AsNullable(), hud.Wattage * frameTime))
-            {           
-                TurnOff((uid, hud));
-                continue;
-            }
+
+            hud.NextChargeCheck = _gameTiming.CurTime + hud.ChargeCheckInterval;
         }
     }
-            
-            
 
     private void OnMapInit(Entity<T> ent, ref MapInitEvent args)
     {
@@ -74,41 +70,46 @@ public abstract class SharedToggleableEquipmentHudSystem<T> : EntitySystem where
             return;
 
         args.Handled = true;
-        if (!ent.Comp.Enabled && ent.Comp.Wattage != 0)
+
+        if (!ent.Comp.Enabled)
         {
-            if (!_powerCell.TryGetBatteryFromSlotOrEntity(ent.Owner, out var battery))
+            if (!_powerCell.HasDrawCharge(ent.Owner, user: args.Performer))
             {
-                _audio.PlayPvs(_audio.ResolveSound(ent.Comp.ActivateFailSound), ent);
-                _popup.PopupEntity(Loc.GetString("handheld-light-component-cell-missing-message"), ent, args.Performer);
+                _audio.PlayPvs(ent.Comp.ActivateFailSound, ent);
+                _popup.PopupEntity(Loc.GetString("toggleable-hud-no-power"), ent, args.Performer);
                 return;
             }
 
-            if (ent.Comp.Wattage > _battery.GetCharge(battery.Value.AsNullable()))
-            {
-                _audio.PlayPvs(_audio.ResolveSound(ent.Comp.ActivateFailSound), ent);
-                _popup.PopupEntity(Loc.GetString("handheld-light-component-cell-dead-message"), ent, args.Performer);
-                return;
-            }
+            TryActivate(ent);
         }
-        ent.Comp.Enabled = !ent.Comp.Enabled;
-        
-        _actions.SetToggled(ent.Comp.ActionEntity, ent.Comp.Enabled);
-        _appearance.SetData(ent.Owner, ToggleableVisuals.Enabled, ent.Comp.Enabled);
-        Dirty(ent);
-        
-        if (!ent.Comp.Enabled && ent.Comp.ActivateSound != null)
-            _audio.PlayPvs(_audio.ResolveSound(ent.Comp.ActivateSound), ent.Owner);
-        
-        else if (ent.Comp.Enabled && ent.Comp.DeactivateSound != null)
-            _audio.PlayPvs(_audio.ResolveSound(ent.Comp.DeactivateSound), ent.Owner);
+        else
+        {
+            TurnOff(ent);
+        }
     }
-    
+
+    private bool TryActivate(Entity<T> ent)
+    {
+        if (!_toggle.TryActivate(ent.Owner))
+            return false;
+
+        ent.Comp.Enabled = true;
+        ent.Comp.NextChargeCheck = _gameTiming.CurTime;
+
+        _actions.SetToggled(ent.Comp.ActionEntity, ent.Comp.Enabled);
+        Dirty(ent);
+
+        return true;
+    }
+
     private void TurnOff(Entity<T> ent)
     {
+        if (!ent.Comp.Enabled)
+            return;
+
         ent.Comp.Enabled = false;
-        _appearance.SetData(ent.Owner, ToggleableVisuals.Enabled, ent.Comp.Enabled);
-        Dirty(ent.Owner, ent.Comp);
-        if (ent.Comp.DeactivateSound != null)
-            _audio.PlayPvs(_audio.ResolveSound(ent.Comp.DeactivateSound), ent.Owner);
+        _actions.SetToggled(ent.Comp.ActionEntity, ent.Comp.Enabled);
+        _toggle.TryDeactivate(ent.Owner);
+        Dirty(ent);
     }
 }
