@@ -8,6 +8,7 @@
     sprite: _Wega/Objects/Specific/VeilCult/soul_vessel.rsi
     state: icon
   - type: MindContainer
+  - type: BorgBrain
   - type: BlockMovement
   - type: GhostRole
     allowMovement: false

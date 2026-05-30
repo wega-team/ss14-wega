@@ -163,6 +163,7 @@ namespace Content.Server.GameTicking.Rules
 
             var station = stations[0];
             var mainGrid = _stationSystem.GetLargestGrid(station);
+            cult.Station = mainGrid;
             var placeCandidates = new List<EntityUid>();
             var enumerator = EntityQueryEnumerator<WarpPointComponent, TransformComponent>();
 

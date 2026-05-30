@@ -322,23 +322,20 @@ public sealed class SiliconLawSystem : SharedSiliconLawSystem
     {
         if (component.Lawset == null)
             component.Lawset = GetLawset(component.Laws);
-
-        // Show the silicon has been subverted.
         component.Subverted = true;
 
-        // Add the first emag law before the others
         component.Lawset?.Laws.Insert(0, new SiliconLaw
         {
             LawString = Loc.GetString("law-midastouched-custom"),
             Order = 0
         });
 
-        //Add the secrecy law after the others
         component.Lawset?.Laws.Add(new SiliconLaw
         {
             LawString = Loc.GetString("law-midastouched-secrecy"),
             Order = component.Lawset.Laws.Max(law => law.Order) + 1
         });
+        NotifyLawsChanged(uid);
     }
 	// Corvax-Wega-Veil-Cult-End
 }

@@ -568,7 +568,7 @@
   - type: BallisticAmmoProvider
     proto: ProjectileBloodBolt
     capacity: 24
-  - type: BloodCultAllowedGun # Corvax-Wega-BloodCult
+  - type: CultAllowedGun # Corvax-Wega-Cult
 
 - type: entity
   id: WeaponClockworkSword

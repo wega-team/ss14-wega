@@ -13,6 +13,9 @@ public sealed partial class VeilCultRuleComponent : Component
 	
 	[DataField]
     public float EnergyCount;
+    
+    	[DataField]
+    public EntityUid? Station;
 
     [DataField]
     public VeilCultWinType WinType = VeilCultWinType.Neutral;

@@ -225,6 +225,7 @@ public sealed partial class VeilCultSystem
         shield.ShieldEntity = Spawn("EnergyShieldEffect", Transform(user).Coordinates);
         shield.SustainingCount = 6; 
         _transform.SetParent(shield.ShieldEntity.Value, user);
+        RemComp<EnchantedComponent>(uid);
         args.Handled = true;
     }
             

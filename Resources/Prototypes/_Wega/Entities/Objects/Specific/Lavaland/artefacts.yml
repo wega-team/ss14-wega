@@ -252,4 +252,4 @@
     reflectProb: 0.5
     spread: 90
   - type: DisarmMalus
-  - type: BloodCultAllowedGun # Corvax-Wega-BloodCult
+  - type: CultAllowedGun # Corvax-Wega-Cult

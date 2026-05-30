@@ -6,6 +6,7 @@ veil-cult-not-enough-energy = Недостаточно энергии.
 veil-cult-ritual-going = Где-то уже проводится ритуал.
 veil-cult-too-weak = Религия слишком слаба на данный момент.
 veil-cult-walls = Слишком мало места для портала.
+veil-cult-objectives-not-complete = Нить пространства ещё сильна. Недостаточно маяков.
 veil-beacon-current-name = Текущее название маяка:
 veil-beacon-ui-header = Латунный маяк
 teleportation-enchant-window-title = Зачарование телепортации

@@ -37,6 +37,7 @@
   - type: AntiGravityClothing
   - type: CombatMode  
   - type: VeilCultConstruct
+  - type: MindContainer
   - type: PressureImmunity
   - type: ActiveRadio
     channels:

@@ -49,7 +49,7 @@ public sealed partial class CultWeaponComponent : Component;
 
  // Чтобы культисты могли использовать то, что по сути им можно использовать и на геймплей в ПВП особо не влияет.
 [RegisterComponent]
-public sealed partial class BloodCultAllowedGunComponent : Component;
+public sealed partial class CultAllowedGunComponent : Component;
 
 [RegisterComponent]
 public sealed partial class CultEquipmentComponent : Component;

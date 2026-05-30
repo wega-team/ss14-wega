@@ -15,7 +15,7 @@
   - type: BasicEntityAmmoProvider
     proto: ProjectilePolyboltCarp
     capacity: 5
-  - type: BloodCultAllowedGun # Corvax-Wega-BloodCult
+  - type: CultAllowedGun # Corvax-Wega-Cult
 
 - type: entity
   name: wand of carp polymorph
