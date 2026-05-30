@@ -60,7 +60,7 @@
       forceEnableEmergencyLights: true
       shuttleTime: 300 # Corvax-Wega-Edit
     epsilon:
-      announcement: aalert-level-epsilon-announcement
+      announcement: alert-level-epsilon-announcement
       selectable: false
       sound:
         path: /Audio/Misc/epsilon.ogg
