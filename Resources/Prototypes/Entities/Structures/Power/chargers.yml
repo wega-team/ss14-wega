@@ -344,11 +344,19 @@
   - type: DamageInContainer
     allowedStates:
     - Alive
+    - PreCritical
     - Critical
     damage:
       types:
-        Heat: -3
-        Blunt: -3
+        Heat: -6
+        Blunt: -6   
+        Slash: -6
+        Piercing: -6
+        Shock: -2
+    damageGroups:
+      groups:
+        Brute: 0
+        Burn: 0
     slotId: entity_storage
     whitelist:
       components:

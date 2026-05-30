@@ -99,6 +99,7 @@
   - AdvancedJetInjector
   - Hynospray
   - DefibrillatorCompact
+  - ArmSyntheticDefib
 
 - type: technology
   id: ChemicalDispensary

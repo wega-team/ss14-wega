@@ -18,7 +18,7 @@ public sealed partial class NukeopsRuleComponent : Component
     [DataField]
     public RoundEndBehavior RoundEndBehavior = RoundEndBehavior.ShuttleCall;
     //Corvax-Wega-War-Edit-Start
-    public string? SetAlertlevel = "martial_law";
+    public string? SetAlertlevel = "gamma";
     [DataField]
     public uint AlertlevelDelay = 10;
     [DataField]

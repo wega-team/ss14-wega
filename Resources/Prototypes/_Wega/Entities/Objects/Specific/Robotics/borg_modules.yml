@@ -267,12 +267,12 @@
         whitelist:
           components:
           - BorgModule
-    # - hand:
-    #     emptyRepresentative: LeftArmSyntheticPry
-    #     emptyLabel: borg-slot-bodypart-empty
-    #     whitelist:
-    #       tags:
-    #       - BaseBodyPart
+    - hand:
+        emptyRepresentative: ArmSyntheticPry
+        emptyLabel: borg-slot-bodypart-empty
+        whitelist:
+          tags:
+          - BaseBodyPart
     - hand:
         emptyRepresentative: PowerCellSmall
         emptyLabel: borg-slot-powercell-empty
