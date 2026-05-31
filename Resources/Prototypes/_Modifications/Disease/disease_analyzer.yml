@@ -1,0 +1,29 @@
+- type: entity
+  parent: [BaseItem, PowerCellSlotSmallItem]
+  id: HandheldDiseaseAnalyzer
+  name: анализатор заболеваний
+  description: Портативный анализатор, определяющий наличие инфекции у пациента.
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Medical/healthanalyzer.rsi
+    layers:
+    - state: icon
+      color: "#A8E4A0"
+    - state: analyzer
+      shader: unshaded
+  - type: Item
+    heldPrefix: analyzer
+    storedRotation: -90
+  - type: ActivatableUI
+    key: enum.DiseaseAnalyzerUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.DiseaseAnalyzerUiKey.Key:
+        type: DiseaseAnalyzerBoundUserInterface
+  - type: ItemToggle
+    onUse: false
+  - type: PowerCellDraw
+    drawRate: 1
+  - type: DiseaseAnalyzer
+    scanningEndSound:
+      path: "/Audio/Items/Medical/healthscanner.ogg"

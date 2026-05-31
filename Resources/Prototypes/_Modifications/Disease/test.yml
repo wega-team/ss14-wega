@@ -1,0 +1,71 @@
+- type: entity
+  name: пробирка
+  parent: ChemistryEmptyVial
+  id: DiseaseDataVial
+  suffix: DISEASE
+  description: Маленькая пробирка.
+  components:
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: DiseaseSolution
+        Quantity: 30
+  - type: Label
+    currentLabel: disease-data-vial-label
+  - type: EnsureDiseaseIntoSolution
+    data:
+      activeSymptom:
+      - CoughSymptom
+      speciesWhitelist:
+      - Human
+      mutationPoints: 10000
+  # Modifications-Start-Disease
+  - type: Tag
+    tags: 
+    - DiagnoserFlask
+  # Modifications-End-Disease
+
+- type: entity
+  parent: MobHuman
+  id: TestDiseaseMobHuman
+  name: больной
+  components:
+  - type: Disease
+    data:
+      strainId: TestDisease
+      activeSymptom:
+      - CoughSymptom
+      speciesWhitelist:
+      - Human
+      mutationPoints: 10000
+      
+
+- type: entity
+  name: Disease Urist Spawner
+  id: SpawnTestDiseaseMobHuman
+  parent: MarkerBase
+  suffix: DEBUG
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: Mobs/Species/Human/parts.rsi
+      state: full
+  - type: ConditionalSpawner
+    prototypes:
+    - TestDiseaseMobHuman
+
+- type: entity
+  parent: MobHuman
+  id: TestDiseaseMobHuman2
+  name: больной2
+  components:
+  - type: Disease
+    data:
+      strainId: TestDisease2
+      activeSymptom:
+      - CoughSymptom
+      - VomitSymptom
+      speciesWhitelist:
+      - Human
+      mutationPoints: 10000

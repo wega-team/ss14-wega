@@ -1,0 +1,36 @@
+# Следует изменить базовые прототипы оригинальных биозащитных костюмов.
+
+- type: entity
+  id: NoxClothingOuterBioVirology
+  parent: ClothingOuterBioVirology
+  components:
+  - type: DiseaseResistance
+    coef: 0.5
+
+- type: entity
+  id: NoxClothingHeadHatHoodBioVirology
+  parent: ClothingHeadHatHoodBioVirology
+  components:
+  - type: DiseaseResistance
+    coef: 0.1
+
+- type: entity
+  id: NoxClothingMaskBreathMedical
+  parent: ClothingMaskBreathMedical
+  components:
+  - type: DiseaseResistance
+    coef: 0.1
+
+- type: entity
+  id: NoxClothingMaskBreath
+  parent: ClothingMaskBreath
+  components:
+  - type: DiseaseResistance
+    coef: 0.1
+
+- type: entity
+  id: NoxClothingMaskSterile
+  parent: ClothingMaskSterile
+  components:
+  - type: DiseaseResistance
+    coef: 0.1

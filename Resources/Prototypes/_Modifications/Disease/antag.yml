@@ -1,0 +1,30 @@
+- type: factionIcon
+  id: DiseaseFaction
+  priority: 11
+  visibleToGhosts: false
+  showTo:
+    components:
+      - SentientDisease
+      - ShowAntagIcons
+  icon:
+    sprite: /Textures/_Modifications/Disease/antag_icons.rsi
+    state: Patient
+
+- type: factionIcon
+  id: PrimaryPatientFaction
+  priority: 11
+  visibleToGhosts: false
+  showTo:
+    components:
+      - SentientDisease
+      - ShowAntagIcons
+  icon:
+    sprite: /Textures/_Modifications/Disease/antag_icons.rsi
+    state: PrimaryPatient
+
+- type: antag
+  id: SentientDisease
+  name: roles-antag-sentient-disease-name
+  antagonist: true
+  setPreference: true
+  objective: roles-antag-sentient-disease-objective

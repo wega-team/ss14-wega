@@ -1,0 +1,14 @@
+# Следует изменить базовые прототипы оригинальных кроватей.
+
+- type: entity
+  id: NoxBed
+  parent: Bed
+  components:
+  - type: DiseaseHealingBed
+
+- type: entity
+  id: NoxStasisBed
+  parent: StasisBed
+  components:
+  - type: DiseaseHealingBed
+    regenerationType: Stasis

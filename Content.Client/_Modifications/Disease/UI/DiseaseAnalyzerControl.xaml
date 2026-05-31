@@ -1,0 +1,28 @@
+<!--
+Developed by Nox project.
+Author: KloopRe
+-->
+
+<BoxContainer xmlns="https://spacestation14.io"
+             Orientation="Vertical"
+             HorizontalExpand="True"
+             Margin="5 5 5 5">
+
+    <Label Name="StatusLabel"
+           HorizontalAlignment="Center"
+           StyleClasses="LabelHeading" />
+
+    <PanelContainer Name="InfoPanel"
+                    Visible="False"
+                    Margin="0 8 0 0">
+        <BoxContainer Orientation="Vertical"
+                      Margin="4 4 4 4">
+
+            <Label Name="StrainLabel" />
+            <Label Name="CureProgressLabel" />
+            <Label Name="SymptomCountLabel" />
+
+        </BoxContainer>
+    </PanelContainer>
+
+</BoxContainer>

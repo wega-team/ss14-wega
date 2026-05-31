@@ -37,6 +37,7 @@
   - Atmospherics
   - GenpopEnter
   - GenpopLeave
+  - Virology # Modifications-Disease
 
 - type: accessGroup
   id: General

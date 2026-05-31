@@ -1,0 +1,36 @@
+- type: guideEntry
+  id: Disease
+  name: guide-entry-disease
+  text: "/ServerInfo/_Modifications/Disease/Disease.xml"
+  children:
+  - DiseaseEquipment
+  - DiseaseInfection
+  - DiseaseTreatment
+  - DiseaseEvolution
+  - DiseasePetri
+
+- type: guideEntry
+  id: DiseaseEquipment
+  name: guide-entry-disease-equipment
+  text: "/ServerInfo/_Modifications/Disease/DiseaseEquipment.xml"
+
+- type: guideEntry
+  id: DiseaseInfection
+  name: guide-entry-disease-infection
+  text: "/ServerInfo/_Modifications/Disease/DiseaseInfection.xml"
+
+- type: guideEntry
+  id: DiseaseTreatment
+  name: guide-entry-disease-treatment
+  text: "/ServerInfo/_Modifications/Disease/DiseaseTreatment.xml"
+  filterEnabled: True
+
+- type: guideEntry
+  id: DiseaseEvolution
+  name: guide-entry-disease-evolution
+  text: "/ServerInfo/_Modifications/Disease/DiseaseEvolution.xml"
+
+- type: guideEntry
+  id: DiseasePetri
+  name: guide-entry-disease-petri
+  text: "/ServerInfo/_Modifications/Disease/DiseasePetri.xml"

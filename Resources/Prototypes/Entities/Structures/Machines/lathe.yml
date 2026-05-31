@@ -272,6 +272,7 @@
     - CameraBoards
     - MechBoards
     - ShuttleBoards
+    - VirologyBoards # _Modifications-Disease
   - type: EmagLatheRecipes
     emagDynamicPacks:
     - SecurityBoards

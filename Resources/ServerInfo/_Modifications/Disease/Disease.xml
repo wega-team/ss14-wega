@@ -1,0 +1,29 @@
+<Document>
+# Вирусология
+
+Вирусология — это отдел медицинского блока, занимающийся изучением, диагностикой и лечением инфекционных заболеваний на станции.
+
+Вирусолог работает с заболеваниями: исследует их свойства, разрабатывает лекарства и предотвращает эпидемии.
+
+## Оборудование
+
+<Box>
+<GuideEntityEmbed Entity="HandheldDiseaseAnalyzer"/>
+<GuideEntityEmbed Entity="PetriDash"/>
+<GuideEntityEmbed Entity="DiseaseDetectorEyesGlasses"/>
+</Box>
+
+<Box>
+<GuideEntityEmbed Entity="DiseaseDiagnoserNox"/>
+<GuideEntityEmbed Entity="DiseaseDataServer"/>
+<GuideEntityEmbed Entity="DiseaseSolutionAnalyzer"/>
+</Box>
+
+## С чего начать?
+
+- Используйте [color=cyan]анализатор заболеваний[/color] для диагностики пациентов.
+- Изучите заболевания с помощью [color=cyan]диагноста заболеваний[/color] и [color=cyan]сервера данных[/color].
+- Выращивайте заболевания в [color=cyan]чашах Петри[/color] для исследования.
+- Применяйте [color=cyan]противовирусные препараты[/color] для лечения заражённых.
+
+</Document>
