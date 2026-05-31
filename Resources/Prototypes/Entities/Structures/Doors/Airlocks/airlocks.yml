@@ -169,6 +169,10 @@
     sprite: Structures/Doors/Airlocks/Standard/xenoborg.rsi
   - type: Paintable
     group: null
+# Corvax-Wega-start
+  - type: Airlock
+    openSpriteState: "open"
+# Corvax-Wega-End
 
 - type: entity
   parent: Airlock

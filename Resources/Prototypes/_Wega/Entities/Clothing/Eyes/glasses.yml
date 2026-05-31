@@ -39,7 +39,7 @@
     node: medsecGlasses
     
 - type: entity
-  parent: ClothingEyesBase
+  parent: [ClothingEyesBase, BaseHighlyIllegalContraband]
   id: ClothingEyesGlassesNightVision
   name: night vision goggles
   description: a pair of goggles that allows you to see through dark.
@@ -71,6 +71,14 @@
           True: { state: "icon" }
           False: { state: "icon-off" }
 
+- type: entity
+  parent: ClothingEyesGlassesNightVision
+  id: ClothingEyesGlassesNightVisionNinja
+  name: night vision goggles pavuk
+  description: a pair of goggles that allows you to see through dark.
+  components:
+  - type: FlashImmunity
+  
 # ADT
 
 - type: entity
