@@ -49,13 +49,13 @@
   recipes:
   - ProximitySensor
   # # Corvax-Wega-Android-Start
-  # - AndroidBodyPart
-  # - ArmSyntheticPry
-  # - ArmSyntheticDefib
-  # - ArmSyntheticProtoKinetic
-  # - ArmSyntheticCharger
-  # - LegSyntheticMagboots
-  # - LegSyntheticJump
+  - AndroidBodyPart
+  - ArmSyntheticPry
+  - ArmSyntheticDefib
+  - ArmSyntheticProtoKinetic
+  - ArmSyntheticCharger
+  - LegSyntheticMagboots
+  - LegSyntheticJump
   # # Corvax-Wega-Android-End
 
 - type: latheRecipePack

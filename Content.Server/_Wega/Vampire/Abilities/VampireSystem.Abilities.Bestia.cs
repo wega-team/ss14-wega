@@ -210,7 +210,8 @@ public sealed partial class VampireSystem
         if (!TryComp<EntityStorageComponent>(coffin, out var storage) || storage.Contents.ContainedEntities.Count == 0)
             return;
 
-        foreach (var contentsEnt in storage.Contents.ContainedEntities)
+        var entities = storage.Contents.ContainedEntities.ToList();
+        foreach (var contentsEnt in entities)
         {
             _container.Remove(contentsEnt, storage.Contents);
             _status.TryRemoveStatusEffect(contentsEnt, ForceSleeping);

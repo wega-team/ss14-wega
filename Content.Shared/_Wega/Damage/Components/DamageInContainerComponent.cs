@@ -15,10 +15,10 @@ public sealed partial class DamageInContainerComponent : Component
     public float Interval = 1f;
 
     [DataField, AutoNetworkedField]
-    public DamageSpecifier Damage = default!;
+    public DamageSpecifier? Damage = default!;
 
     [DataField, AutoNetworkedField]
-    public GroupHealSpecifier DamageGroups = default!;
+    public GroupHealSpecifier? DamageGroups = default!;
 
     [DataField]
     public EntityWhitelist? Whitelist;

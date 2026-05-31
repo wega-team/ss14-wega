@@ -22,6 +22,19 @@
     event: !type:DamageOnActionEvent
 
 - type: entity
+  parent: BaseAction
+  id: ActionToggleHud
+  name: Toggle HUD
+  description: Toggles HUD of your cloth.
+  components:
+  - type: Action
+    itemIconStyle: BigItem
+    priority: -20
+    useDelay: 1
+  - type: InstantAction
+    event: !type:ToggleActionEvent
+    
+- type: entity
   parent: BaseSuicideAction
   id: ActionActivateBluespaceLifeline
   name: Activate Bluespace Lifeline

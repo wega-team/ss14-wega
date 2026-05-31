@@ -59,7 +59,7 @@ public sealed class DamageInContainerSystem : EntitySystem
                     finalDamage = comp.Damage.Clone();
                     if (comp.DamageGroups != null && !comp.DamageGroups.Empty)
                     {
-                        var groupsHeal = _damageable.CreateWeightedHealFromGroups(uid, comp.DamageGroups);
+                        var groupsHeal = _damageable.CreateWeightedHealFromGroups(contained, comp.DamageGroups);
                         finalDamage += groupsHeal;
                     }
                 }
@@ -69,12 +69,15 @@ public sealed class DamageInContainerSystem : EntitySystem
                 }
                 else if (comp.DamageGroups != null && !comp.DamageGroups.Empty)
                 {
-                    finalDamage = _damageable.CreateWeightedHealFromGroups(uid, comp.DamageGroups);
+                    finalDamage = _damageable.CreateWeightedHealFromGroups(contained, comp.DamageGroups);
                 }
                 else
                 {
                     continue;
                 }
+
+                if (finalDamage == null)
+                    continue;
 
                 if (TryComp<MobStateComponent>(contained, out var mobState))
                 {

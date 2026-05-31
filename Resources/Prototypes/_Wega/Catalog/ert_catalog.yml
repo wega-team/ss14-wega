@@ -555,6 +555,16 @@
     TacticalResource: 1
   categories:
   - ERTEquipment
+  
+- type: listing
+  id: ERTNightVision
+  name: uplink-nightvision-name
+  description: uplink-nightvision-desc
+  productEntity: ClothingEyesGlassesNightVision
+  cost:
+    TacticalResource: 10
+  categories:
+  - ERTEquipment
 
 - type: listing
   id: ERTRCDCombat

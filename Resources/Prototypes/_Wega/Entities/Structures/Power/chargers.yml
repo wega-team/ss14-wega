@@ -17,7 +17,14 @@
     damage:
       types:
         Heat: -3
-        Blunt: -3
+        Blunt: -3   
+        Slash: -3
+        Piercing: -3
+        Shock: -1
+    damageGroups:
+      groups:
+        Brute: 0
+        Burn: 0
     slotId: entity_storage
     whitelist:
       components:
