@@ -1,5 +1,4 @@
 using Content.Server.Veil.Cult;
-using Content.Shared.Veil.Cult;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server.GameTicking.Rules.Components;
@@ -10,11 +9,10 @@ namespace Content.Server.GameTicking.Rules.Components;
 [RegisterComponent, Access(typeof(VeilCultRuleSystem), typeof(VeilCultSystem))]
 public sealed partial class VeilCultRuleComponent : Component
 {
-	
-	[DataField]
+    [DataField]
     public float EnergyCount;
-    
-    	[DataField]
+
+    [DataField]
     public EntityUid? Station;
 
     [DataField]

@@ -1,23 +1,18 @@
-﻿using Content.Client.Veil.Cult.UI;
-using Content.Shared.Veil.Cult;
+﻿using Content.Shared.Veil.Cult;
 using Content.Shared.Veil.Cult.Components;
 using JetBrains.Annotations;
 using Robust.Client.UserInterface;
 
-namespace Content.Client.Veil.Cult.UI;
+namespace Content.Client._Wega.VeilCult.UI;
 
 [UsedImplicitly]
 public sealed class TeleportEnchantBoundUserInterface : BoundUserInterface
 {
-    
     // Copy of TeleportLocationsUI for Teleportation enchantment
-    
     [ViewVariables]
     private TeleportEnchantMenu? _menu;
 
-    public TeleportEnchantBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey)
-    {
-    }
+    public TeleportEnchantBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey) { }
 
     protected override void Open()
     {
@@ -29,12 +24,11 @@ public sealed class TeleportEnchantBoundUserInterface : BoundUserInterface
             return;
 
         _menu.Title = Loc.GetString(teleComp.Name);
-        _menu.TeleportClicked += (netEnt, pointName) =>
+        _menu.TeleportClicked += netEnt =>
         {
-            SendMessage(new TeleportEnchantDestinationMessage(netEnt, pointName));
+            SendMessage(new TeleportEnchantDestinationMessage(netEnt));
         };
     }
-    
 
     protected override void UpdateState(BoundUserInterfaceState state)
     {
@@ -43,5 +37,4 @@ public sealed class TeleportEnchantBoundUserInterface : BoundUserInterface
         if (state is TeleportationEnchantBoundUserInterfaceState updateState && _menu != null)
             _menu.UpdateState(updateState);
     }
-    
 }

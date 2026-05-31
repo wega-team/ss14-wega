@@ -2,7 +2,6 @@ using Content.Shared.Mind;
 using Content.Shared.StatusIcon;
 using Content.Shared.Teleportation.Components;
 using Robust.Shared.Audio;
-using Robust.Shared.Containers;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
@@ -11,31 +10,14 @@ namespace Content.Shared.Veil.Cult.Components;
 [RegisterComponent, NetworkedComponent]
 public sealed partial class VeilCultistComponent : Component
 {
-
     public static readonly EntProtoId MidasTouch = "ActionMidasTouch";
 
-    [DataField("cultistStatusIcon")]
+    [DataField]
     public ProtoId<FactionIconPrototype> StatusIcon { get; set; } = "VeilCultistFaction";
 
+    [DataField]
     public ProtoId<MindChannelPrototype> CultMindChannel { get; set; } = "MindVeilCult";
 }
-
-[RegisterComponent]
-public sealed partial class VeilRitualDimensionalRendingComponent : Component
-{
-    [ViewVariables(VVAccess.ReadWrite), DataField]
-    public TimeSpan ActivateTime = TimeSpan.Zero;
-
-    public bool Activate = false;
-
-    public float NextTimeTick { get; set; }
-
-    [DataField("ritualMusic")]
-    public SoundSpecifier RitualMusic = new SoundCollectionSpecifier("VeilCultMusic");
-
-    public bool SoundPlayed;
-}
-
 
 [RegisterComponent, NetworkedComponent]
 public sealed partial class VeilCultConstructComponent : Component;
@@ -43,7 +25,7 @@ public sealed partial class VeilCultConstructComponent : Component;
 [RegisterComponent, NetworkedComponent]
 public sealed partial class VeilCultAltarComponent : Component
 {
-    [DataField("sound")]
+    [DataField]
     public SoundSpecifier Sound = new SoundPathSpecifier("/Audio/_Wega/Effects/altar.ogg");
 }
 
@@ -74,34 +56,32 @@ public sealed partial class AutoVeilCultistComponent : Component;
 public sealed partial class InteractionCogInfectedComponent : Component
 {
     public float PowerRate = 25000f;
-    
+
     [DataField("drainSound")]
     public SoundSpecifier Sound = new SoundPathSpecifier("/Audio/_Wega/Effects/interaction_cog_drain.ogg");
-    
+
     public float NextTimeTick { get; set; } = 5;
 }
 
 [RegisterComponent]
 public sealed partial class EnchantableComponent : Component
 {
-    [DataField("enchants", required: true)]
+    [DataField(required: true)]
     public List<EntProtoId> Enchants = new();
-    
-    [DataField("delay")]
+
+    [DataField]
     public TimeSpan Delay = TimeSpan.FromSeconds(5);
-    
-    [DataField("cost")]
+
+    [DataField]
     public float Cost = 100f;
-    
 }
 
 [RegisterComponent]
 public sealed partial class VeilCultPortalComponent : Component
 {
-
     public float NextTimeTick { get; set; }
 
-    [DataField("ritualMusic")]
+    [DataField]
     public SoundSpecifier RitualMusic = new SoundCollectionSpecifier("BloodCultMusic");
 
     public bool SoundPlayed;
@@ -143,23 +123,23 @@ public sealed partial class AbsorbedByVeilComponent : Component;
 [RegisterComponent, NetworkedComponent]
 public sealed partial class StunEnchantComponent : Component
 {
-    [DataField("stunTime")]
+    [DataField]
     public TimeSpan StunTime = TimeSpan.FromSeconds(5);
-    
-    [DataField("muteTime")]
+
+    [DataField]
     public TimeSpan MuteTime = TimeSpan.FromSeconds(10);
-    
-    [DataField("mute")]
+
+    [DataField]
     public bool Mute = true;
-    
-    [DataField("empBorgs")]
+
+    [DataField]
     public bool EmpBorgs = true;
 }
 
 [RegisterComponent, NetworkedComponent]
 public sealed partial class ForcePassageEnchantComponent : Component
 {
-    [DataField("proto")]
+    [DataField]
     public EntProtoId? Proto; // for future
 }
 
@@ -182,24 +162,24 @@ public sealed partial class SealWoundsEnchantComponent : Component;
 [RegisterComponent, NetworkedComponent]
 public sealed partial class HidingsClockEnchantComponent : Component
 {
-    [DataField("uses")]
+    [DataField]
     public int Uses = 2;
-    
-    [DataField("radius")]
+
+    [DataField]
     public float Radius = 5f;
 }
 
 [RegisterComponent, NetworkedComponent]
 public sealed partial class ElectricalTouchEnchantComponent : Component
 {
-    [DataField("uses")]
+    [DataField]
     public int Uses = 3;
 }
 
 [RegisterComponent, NetworkedComponent]
 public sealed partial class ConfusionEnchantComponent : Component
 {
-    [DataField("time")]
+    [DataField]
     public TimeSpan Time = TimeSpan.FromSeconds(15);
 }
 
@@ -209,20 +189,20 @@ public sealed partial class CrusherEnchantComponent : Component;
 [RegisterComponent, NetworkedComponent]
 public sealed partial class KnockbackEnchantComponent : Component
 {
-    [DataField("uses")]
+    [DataField]
     public int Uses = 3;
-    
-    [DataField("distance")]
+
+    [DataField]
     public float Distance = 3f;
-    
-    [DataField("speed")]
+
+    [DataField]
     public float Speed = 3f;
 }
 
 [RegisterComponent, NetworkedComponent]
 public sealed partial class SwordsmenEnchantComponent : Component
 {
-    [DataField("attackRate")]
+    [DataField]
     public float AttackRate = 4f;
 }
 
@@ -232,20 +212,20 @@ public sealed partial class BloodshedEnchantComponent : Component;
 [RegisterComponent, NetworkedComponent]
 public sealed partial class HasteEnchantComponent : Component
 {
-    [DataField("time")]
+    [DataField]
     public TimeSpan Time = TimeSpan.FromSeconds(8);
-    
-    [DataField("sprintModifier")]
+
+    [DataField]
     public float SprintModifier = 1.5f;
-    
-    [DataField("walkModifier")]
+
+    [DataField]
     public float WalkModifier = 1.5f;
 }
 
 [RegisterComponent, NetworkedComponent]
 public sealed partial class ReflectionEnchantComponent : Component
 {
-    [DataField("uses")]
+    [DataField]
     public int Uses = 4;
 }
 
@@ -261,48 +241,47 @@ public sealed partial class FlashEnchantComponent : Component;
 [RegisterComponent, NetworkedComponent]
 public sealed partial class HardenPlatesEnchantComponent : Component
 {
-    [DataField("time")]
+    [DataField]
     public TimeSpan Time = TimeSpan.FromSeconds(8);
 }
 
 [RegisterComponent, NetworkedComponent]
 public sealed partial class NorthStarEnchantComponent : Component
 {
-    [DataField("attackRate")]
+    [DataField]
     public float AttackRate = 4f;
 }
 
 [RegisterComponent, NetworkedComponent]
 public sealed partial class RedFlameEnchantComponent : Component
 {
-    [DataField("time")]
+    [DataField]
     public TimeSpan Time = TimeSpan.FromSeconds(5);
 }
 
 [RegisterComponent, NetworkedComponent]
 public sealed partial class TimeStopEnchantComponent : Component
 {
-    [DataField("time")]
-    public TimeSpan Time = TimeSpan.FromSeconds(6);
+    [DataField]
+    public TimeSpan Time = TimeSpan.FromSeconds(5);
 }
 
 [RegisterComponent, NetworkedComponent]
 public sealed partial class ReconstructionEnchantComponent : Component
 {
-    [DataField("radius")]
+    [DataField]
     public float Radius = 4f;
 }
 
 [RegisterComponent, NetworkedComponent]
 public sealed partial class EmpEnchantComponent : Component
 {
-    [DataField("radiusStrong")]
+    [DataField]
     public float RadiusStrong = 4f;
-    
-    [DataField("radiusWeak")]
+
+    [DataField]
     public float RadiusWeak = 6f;
 }
 
 [RegisterComponent, NetworkedComponent]
 public sealed partial class ConfusionComponent : Component;
-

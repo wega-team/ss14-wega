@@ -1,45 +1,22 @@
-using System.Linq;
-using Content.Server.Administration;
 using Content.Server.Body.Systems;
 using Content.Server.Chat.Systems;
 using Content.Server.Emp;
 using Content.Server.Flash;
 using Content.Shared.Veil.Cult;
 using Content.Shared.Veil.Cult.Components;
-using Content.Shared.Body.Components;
-using Content.Shared.Chemistry.Components;
-using Content.Shared.Clothing;
-using Content.Shared.Cuffs;
-using Content.Shared.Cuffs.Components;
-using Content.Shared.Damage;
-using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.DoAfter;
-using Content.Shared.EnergyShield;
-using Content.Shared.FixedPoint;
-using Content.Shared.Humanoid;
 using Content.Shared.Hands.Components;
 using Content.Shared.Interaction;
-using Content.Shared.Interaction.Events;
 using Content.Shared.Inventory;
-using Content.Shared.NullRod.Components;
 using Content.Shared.Popups;
-using Content.Shared.Roles;
 using Content.Shared.Stacks;
-using Content.Shared.Standing;
 using Content.Shared.Stunnable;
-using Content.Shared.Timing;
 using Content.Shared.Silicons.StationAi;
 using Content.Shared.Silicons.Laws.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
-using Robust.Shared.Containers;
 using Robust.Shared.Map;
-using Robust.Shared.Physics.Components;
-using Robust.Shared.Physics.Systems;
-using Robust.Shared.Player;
-using Robust.Shared.Prototypes;
-using Robust.Shared.Random;
 
 namespace Content.Server.Veil.Cult;
 
@@ -59,20 +36,15 @@ public sealed partial class VeilCultSystem
     [Dependency] private readonly SharedStationAiSystem _stationAi = default!;
 
     private static readonly SoundPathSpecifier CultSpell = new SoundPathSpecifier("/Audio/_Wega/Effects/cult_spell.ogg");
-    private static readonly int EnergyPerOne = 100; // TODO: МБ сделать значение в компоненте рула, а не хардкодом
+    private static readonly int EnergyPerOne = 100; // TODO: МБ сделать значение в компоненте рула, а не хардкодом | Не, похуй, но я бы вывел в константу :P
 
     private void InitializeVeilAbilities()
     {
-
         SubscribeLocalEvent<VeilCultistComponent, VeilCultMidasTouchGetHandEvent>(OnMidasTouch);
         SubscribeLocalEvent<MidasHandComponent, AfterInteractEvent>(OnInteractHand);
         SubscribeLocalEvent<StrangeShardComponent, AfterInteractEvent>(OnInteractShard);
         SubscribeLocalEvent<MidasHandComponent, MidasTouchDoAfterEvent>(DoAfterInteractHand);
-        // Abilities
     }
-
-
-    #region Abilities
 
     public void OnMidasTouch(EntityUid cultist, VeilCultistComponent component, VeilCultMidasTouchGetHandEvent args)
     {
@@ -88,17 +60,13 @@ public sealed partial class VeilCultSystem
                 QueueDel(spell);
         }
     }
-    
-    #endregion
-    
+
     private void OnInteractHand(EntityUid uid, MidasHandComponent component, AfterInteractEvent args)
     {
         if (HasComp<StackComponent>(args.Target) || HasComp<StationAiCoreComponent>(args.Target) || HasComp<SiliconLawProviderComponent>(args.Target))
         {
-                var doAfterEventArgs = new DoAfterArgs(EntityManager, args.User, TimeSpan.FromSeconds(2),
-                new MidasTouchDoAfterEvent(),
-                eventTarget: uid,
-                target: args.Target)
+            var doAfterEventArgs = new DoAfterArgs(EntityManager, args.User, TimeSpan.FromSeconds(2),
+            new MidasTouchDoAfterEvent(), uid, args.Target)
             {
                 BreakOnMove = true,
                 BreakOnDamage = true,
@@ -106,15 +74,15 @@ public sealed partial class VeilCultSystem
                 NeedHand = false
             };
 
-                _doAfterSystem.TryStartDoAfter(doAfterEventArgs);
+            _doAfterSystem.TryStartDoAfter(doAfterEventArgs);
         }
     }
-    
+
     private void DoAfterInteractHand(EntityUid uid, MidasHandComponent component, MidasTouchDoAfterEvent args)
     {
         if (args.Cancelled)
             return;
-        
+
         if (args.Target != null)
         {
             if (TryComp<StackComponent>(args.Target, out var stack))
@@ -123,14 +91,14 @@ public sealed partial class VeilCultSystem
                 QueueDel(uid);
                 return;
             }
-            
+
             if (TryComp<SiliconLawProviderComponent>(args.Target, out var laws))
             {
                 ChangeBorgLaws(args.Target.Value, laws);
                 QueueDel(uid);
                 return;
             }
-            
+
             if (TryComp<StationAiCoreComponent>(args.Target, out var core))
             {
                 ChangeAiLaws(args.Target.Value, core);
@@ -138,10 +106,8 @@ public sealed partial class VeilCultSystem
                 return;
             }
         }
-        
-        
     }
-    
+
     private void TransformMaterial(EntityUid user, EntityUid material, StackComponent stack)
     {
         if (!_prototypeManager.TryIndex(stack.StackTypeId, out var stackPrototype))
@@ -167,25 +133,23 @@ public sealed partial class VeilCultSystem
 
         _audio.PlayPvs(CultSpell, user);
     }
-    
 
     private void TransformSteelToBrass(EntityUid metalStack, EntityCoordinates coords, int count)
     {
         var brass = Spawn("SheetBrass1", coords);
         QueueDel(metalStack);
-        
+
         if (TryComp<StackComponent>(brass, out var newStack))
             _stack.SetCount((brass, newStack), count);
     }
 
     private void TransformToChargedBrass(EntityUid metalStack, EntityCoordinates coords, int count)
     {
-        
         var cult = _veilCult.GetActiveRule();
         if (cult == null)
             return;
-        
-        if (_veilCult.TryUseEnergy(count*EnergyPerOne))
+
+        if (_veilCult.TryUseEnergy(count * EnergyPerOne))
         {
             var chargedBrass = Spawn("SheetChargedBrass1", coords);
             QueueDel(metalStack);
@@ -196,16 +160,15 @@ public sealed partial class VeilCultSystem
         else
             _popup.PopupEntity(Loc.GetString("veil-cult-not-enough-energy"), metalStack, PopupType.Medium);
     }
-    
+
     private void ChangeBorgLaws(EntityUid uid, SiliconLawProviderComponent comp)
     {
         var ev = new SiliconVeilCultHackedEvent();
         RaiseLocalEvent(uid, ref ev);
     }
-    
+
     private void ChangeAiLaws(EntityUid uid, StationAiCoreComponent core)
     {
-        
         if (_stationAi.TryGetHeld((uid, core), out var mind))
         {
             if (mind != null)
@@ -218,15 +181,13 @@ public sealed partial class VeilCultSystem
             }
         }
     }
-    
+
     private void OnInteractShard(EntityUid uid, StrangeShardComponent component, AfterInteractEvent args)
     {
         if (HasComp<VeilCultistComponent>(args.Target))
         {
-                var doAfterEventArgs = new DoAfterArgs(EntityManager, args.User, TimeSpan.FromSeconds(3),
-                new StrangeShardDoAfterEvent(),
-                eventTarget: args.Target,
-                target: uid)
+            var doAfterEventArgs = new DoAfterArgs(EntityManager, args.User, TimeSpan.FromSeconds(3),
+            new StrangeShardDoAfterEvent(), args.Target, uid)
             {
                 BreakOnMove = true,
                 BreakOnDamage = true,
@@ -234,9 +195,9 @@ public sealed partial class VeilCultSystem
                 NeedHand = false
             };
 
-                _doAfterSystem.TryStartDoAfter(doAfterEventArgs);
+            _doAfterSystem.TryStartDoAfter(doAfterEventArgs);
         }
-        
+
         if (HasComp<VeilCultAltarComponent>(args.Target))
         {
             if (!_veilCult.CheckObjectives())
@@ -244,10 +205,9 @@ public sealed partial class VeilCultSystem
                 _popup.PopupEntity(Loc.GetString("veil-cult-objectives-not-complete"), args.User, args.User, PopupType.LargeCaution);
                 return;
             }
-                var doAfterEventArgs = new DoAfterArgs(EntityManager, args.User, TimeSpan.FromSeconds(6),
-                new StrangeShardDoAfterEvent(),
-                eventTarget: args.Target,
-                target: uid)
+
+            var doAfterEventArgs = new DoAfterArgs(EntityManager, args.User, TimeSpan.FromSeconds(6),
+            new StrangeShardDoAfterEvent(), args.Target, uid)
             {
                 BreakOnMove = true,
                 BreakOnDamage = true,
@@ -255,8 +215,7 @@ public sealed partial class VeilCultSystem
                 NeedHand = false
             };
 
-                _doAfterSystem.TryStartDoAfter(doAfterEventArgs);
+            _doAfterSystem.TryStartDoAfter(doAfterEventArgs);
         }
     }
-    
 }

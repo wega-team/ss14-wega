@@ -6,16 +6,15 @@ using Robust.Client.UserInterface.CustomControls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Client.UserInterface.Controls;
 
-namespace Content.Client.Veil.Cult.UI;
+namespace Content.Client._Wega.VeilCult.UI;
 
 [GenerateTypedNameReferences]
 public sealed partial class TeleportEnchantMenu : DefaultWindow
 {
     public string SearchText = "";
-
     public HashSet<TeleportPoint> Warps = new();
 
-    public event Action<NetEntity, string>? TeleportClicked;
+    public event Action<NetEntity>? TeleportClicked;
 
     public TeleportEnchantMenu()
     {
@@ -24,7 +23,7 @@ public sealed partial class TeleportEnchantMenu : DefaultWindow
 
         SearchBar.OnTextChanged += OnSearchTextChanged;
     }
-    
+
     public void UpdateState(TeleportationEnchantBoundUserInterfaceState state)
     {
         Warps = state.Warps;
@@ -34,7 +33,7 @@ public sealed partial class TeleportEnchantMenu : DefaultWindow
     public void AddTeleportButtons()
     {
         TeleportButtonContainer.DisposeAllChildren();
-        
+
         foreach (var points in Warps)
         {
             var name = points.Location;
@@ -51,7 +50,7 @@ public sealed partial class TeleportEnchantMenu : DefaultWindow
                 ClipText = true,
             };
 
-            currentButtonRef.OnPressed += _ => TeleportClicked?.Invoke(teleportPoint, name);
+            currentButtonRef.OnPressed += _ => TeleportClicked?.Invoke(teleportPoint);
             currentButtonRef.Visible = ButtonIsVisible(currentButtonRef);
 
             TeleportButtonContainer.AddChild(currentButtonRef);

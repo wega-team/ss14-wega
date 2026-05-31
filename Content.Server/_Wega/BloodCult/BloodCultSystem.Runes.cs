@@ -196,17 +196,17 @@ public sealed partial class BloodCultSystem
             return;
 
         args.PushMarkup(component.LocDesc);
-		
+
 		if (component.RuneType == BloodCultRune.Revive)
 		{
 			var o = cult.Offerings;
 			var revives = o / 3;
 			var need = 3 - o % 3;
-    
+
             args.PushMarkup(revives > 0
                 ? Loc.GetString("revive-alive-count", ("alive", revives))
                 : Loc.GetString("revive-need-more", ("needed", need)), -1);
-    
+
 			args.PushMarkup(Loc.GetString("revive-offering-count", ("offerings", o)), -2);
 		}
 	}
@@ -842,7 +842,7 @@ public sealed partial class BloodCultSystem
 
         Spawn(GetGodPrototype(), coords);
 
-        RaiseLocalEvent(new GodCalledEvent());
+        RaiseLocalEvent(new BloodGodCalledEvent());
         TransformNearbyCultists(coords);
     }
 

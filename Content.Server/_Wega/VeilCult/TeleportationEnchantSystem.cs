@@ -1,9 +1,6 @@
 using Content.Shared.Veil.Cult;
 using Content.Shared.Veil.Cult.Components;
-using Content.Shared.UserInterface;
-using Content.Shared.Whitelist;
 using Content.Shared.Teleportation.Components;
-using Robust.Shared.GameObjects;
 
 namespace Content.Server.Veil.Cult;
 
@@ -11,11 +8,11 @@ namespace Content.Server.Veil.Cult;
 public sealed partial class TeleportionEnchantSystem : SharedTeleportationEnchantSystem
 {
     [Dependency] private readonly SharedUserInterfaceSystem _ui = default!;
-    
+
     public override void Initialize()
     {
         base.Initialize();
-        
+
         SubscribeLocalEvent<TeleportationEnchantComponent, BoundUIOpenedEvent>(OnUiOpen);
     }
 

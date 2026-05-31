@@ -37,7 +37,7 @@ using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
-using Content.Shared.Clothing; 
+using Content.Shared.Clothing;
 using Content.Shared.IdentityManagement.Components;
 using Content.Shared.Inventory;
 
@@ -170,7 +170,7 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
             if (TryComp<IdentityBlockerComponent>(cloth, out var blocker) && blocker.Coverage.HasFlag(IdentityBlockerCoverage.EYES) && blocker.Enabled)
                 return;
         }
-        
+
         var name = Identity.Name(uid, EntityManager, args.Examiner);
         args.PushMarkup(Loc.GetString("blood-cultist-eyes-glow-examined", ("name", name)));
     }
@@ -191,10 +191,10 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
     private void OnAttemptMelee(Entity<CultWeaponComponent> entity, ref AttemptMeleeEvent args)
     {
         var user = Transform(entity.Owner).ParentUid;
-        if (HasComp<BloodCultistComponent>(args.User) && ent.Comp.Cult == CultType.Blood)
+        if (HasComp<BloodCultistComponent>(args.User) && entity.Comp.Cult == CultType.Blood)
             return;
-        
-        if (HasComp<VeilCultistComponent>(args.User) && ent.Comp.Cult == CultType.Veil)
+
+        if (HasComp<VeilCultistComponent>(args.User) && entity.Comp.Cult == CultType.Veil)
             return;
 
         _popup.PopupEntity(Loc.GetString("blood-cult-failed-attack"), user, user, PopupType.SmallCaution);

@@ -1,4 +1,3 @@
-using Content.Shared.Veil.Cult.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
@@ -18,12 +17,10 @@ public sealed class EnchantSelectionState : BoundUserInterfaceState
 [Serializable, NetSerializable]
 public sealed class EnchantSelectedMessage : BoundUserInterfaceMessage
 {
-    public readonly NetEntity User;
     public readonly EntProtoId EnchantId;
 
-    public EnchantSelectedMessage(NetEntity user, EntProtoId enchantId)
+    public EnchantSelectedMessage(EntProtoId enchantId)
     {
-        User = user;
         EnchantId = enchantId;
     }
 }

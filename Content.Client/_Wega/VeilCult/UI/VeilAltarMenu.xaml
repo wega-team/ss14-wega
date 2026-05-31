@@ -1,7 +1,5 @@
 <ui:RadialMenu xmlns="https://spacestation14.io"
                xmlns:ui="clr-namespace:Content.Client.UserInterface.Controls"
-               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-			   x:Class="Content.Client.Veil.Cult.Ui.VeilAltarMenu"
                CloseButtonStyleClass="RadialMenuCloseButton"
                VerticalExpand="True" HorizontalExpand="True">
 

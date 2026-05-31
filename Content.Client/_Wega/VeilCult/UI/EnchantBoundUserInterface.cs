@@ -1,19 +1,13 @@
-using Content.Shared.Veil.Cult;
-using Content.Shared.Veil.Cult.Components;
 using Content.Shared.Veil.Cult.UI;
 using JetBrains.Annotations;
 using Robust.Client.UserInterface;
-using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 
-namespace Content.Client.Veil.Cult.UI;
+namespace Content.Client._Wega.VeilCult.UI;
 
 [UsedImplicitly]
 public sealed class EnchantBoundUserInterface : BoundUserInterface
 {
-    [Dependency] private readonly IEntityManager _entMan = default!;
-    [Dependency] private readonly ISharedPlayerManager _playerManager = default!;
-
     [ViewVariables]
     private EnchantWindow? _window;
 
@@ -32,9 +26,7 @@ public sealed class EnchantBoundUserInterface : BoundUserInterface
 
     private void OnEnchantSelected(EntProtoId entId)
     {
-        if (_playerManager.LocalSession?.AttachedEntity is not { } user)
-            return;
-        SendMessage(new EnchantSelectedMessage(_entMan.GetNetEntity(user), entId));
+        SendMessage(new EnchantSelectedMessage(entId));
         Close();
     }
 

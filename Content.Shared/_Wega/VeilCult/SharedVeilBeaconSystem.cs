@@ -1,26 +1,17 @@
-using Content.Shared.Administration.Logs;
-using Content.Shared.Database;
-using Content.Shared.Examine;
 using Content.Shared.Interaction;
 using Content.Shared.Veil.Cult.Components;
-using Content.Shared.Popups;
-using Content.Shared.Verbs;
-using Content.Shared.Whitelist;
 using Robust.Shared.GameStates;
-using Robust.Shared.Network;
-using Robust.Shared.GameObjects;
 
 namespace Content.Shared.Veil.Cult;
 
-public abstract class SharedVeilBeaconSystem : EntitySystem
+public sealed class VeilBeaconSystem : EntitySystem
 {
-    
-    [Dependency] protected readonly SharedUserInterfaceSystem UserInterfaceSystem = default!;
+    [Dependency] private readonly SharedUserInterfaceSystem _ui = default!;
 
     public override void Initialize()
     {
         base.Initialize();
-        
+
         // Bound UI subscriptions
         SubscribeLocalEvent<VeilCultBeaconComponent, VeilBeaconNameChangedMessage>(OnVeilBeaconNameChanged);
         SubscribeLocalEvent<VeilCultBeaconComponent, ComponentGetState>(OnGetState);
@@ -29,22 +20,17 @@ public abstract class SharedVeilBeaconSystem : EntitySystem
     }
 
     private void OnGetState(Entity<VeilCultBeaconComponent> ent, ref ComponentGetState args)
-    {
-        args.State = new VeilCultBeaconComponentState(ent.Comp.AssignedName)
-        {
-            MaxNameChars = ent.Comp.MaxNameChars,
-        };
-    }
+        => args.State = new VeilCultBeaconComponentState(ent.Comp.AssignedName, ent.Comp.MaxNameChars);
 
     private void UseVeilBeacon(EntityUid uid, VeilCultBeaconComponent component, ActivateInWorldEvent args)
     {
         if (args.Handled)
             return;
-        
+
         if (!HasComp<VeilCultistComponent>(args.User) && !HasComp<VeilCultConstructComponent>(args.User))
             return;
 
-        UserInterfaceSystem.OpenUi(uid, VeilBeaconUiKey.Key, args.User);
+        _ui.OpenUi(uid, VeilBeaconUiKey.Key, args.User);
         args.Handled = true;
     }
 
@@ -62,10 +48,6 @@ public abstract class SharedVeilBeaconSystem : EntitySystem
         UpdateUI(ent);
     }
 
-    protected virtual void UpdateUI(Entity<VeilCultBeaconComponent> ent)
-    {
-    }
-
     private void OnVeilBeaconNameChanged(EntityUid uid, VeilCultBeaconComponent beacon, VeilBeaconNameChangedMessage args)
     {
         var name = args.Name.Trim();
@@ -73,9 +55,19 @@ public abstract class SharedVeilBeaconSystem : EntitySystem
             beacon.AssignedName = name[..Math.Min(beacon.MaxNameChars, name.Length)];
         else
             beacon.AssignedName = Loc.GetString("veil-cult-unknown-beacon");
-        UpdateUI((uid, beacon));
-        Dirty(uid, beacon);
 
+        Dirty(uid, beacon);
+        UpdateUI((uid, beacon));
     }
 
+    private void UpdateUI(Entity<VeilCultBeaconComponent> ent)
+    {
+        if (_ui.HasUi(ent, VeilBeaconUiKey.Key))
+        {
+            var state = new VeilBeaconNameBoundUserInterfaceState(
+                ent.Comp.AssignedName, ent.Comp.MaxNameChars);
+
+            _ui.SetUiState(ent.Owner, VeilBeaconUiKey.Key, state);
+        }
+    }
 }

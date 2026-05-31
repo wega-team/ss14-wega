@@ -1,21 +1,14 @@
 using Content.Shared.Veil.Cult;
-using Content.Shared.Veil.Cult.Components;
-using Robust.Client.GameObjects;
 using Robust.Client.UserInterface;
 
-namespace Content.Client.Veil.Cult.UI;
+namespace Content.Client._Wega.VeilCult.UI;
 
 public sealed class VeilBeaconBoundUserInterface : BoundUserInterface
 {
-    [Dependency] private readonly IEntityManager _entManager = default!;
-
     [ViewVariables]
     private VeilBeaconWindow? _window;
 
-    public VeilBeaconBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey)
-    {
-        IoCManager.InjectDependencies(this);
-    }
+    public VeilBeaconBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey) { }
 
     protected override void Open()
     {
@@ -23,30 +16,25 @@ public sealed class VeilBeaconBoundUserInterface : BoundUserInterface
 
         _window = this.CreateWindow<VeilBeaconWindow>();
 
-        if (_entManager.TryGetComponent(Owner, out VeilCultBeaconComponent? beacon))
-        {
-            _window.SetMaxLabelLength(beacon.MaxNameChars);
-        }
-
         _window.OnNameChanged += OnNameChanged;
-        Reload();
-        _window.SetInitialNameState(); 
+        _window.SetInitialNameState();
+
+        _window.OpenCentered();
     }
 
     private void OnNameChanged(string newName)
     {
-        if (_entManager.TryGetComponent(Owner, out VeilCultBeaconComponent? beacon) &&
-            beacon.AssignedName.Equals(newName))
-            return;
-
-        SendPredictedMessage(new VeilBeaconNameChangedMessage(newName));
+        SendMessage(new VeilBeaconNameChangedMessage(newName));
     }
 
-    public void Reload()
+    protected override void UpdateState(BoundUserInterfaceState state)
     {
-        if (_window == null || !_entManager.TryGetComponent(Owner, out VeilCultBeaconComponent? component))
-            return;
+        base.UpdateState(state);
 
-        _window.SetCurrentLabel(component.AssignedName);
+        if (state is VeilBeaconNameBoundUserInterfaceState updateState && _window != null)
+        {
+            _window.SetCurrentLabel(updateState.Name);
+            _window.SetMaxLabelLength(updateState.MaxChars);
+        }
     }
 }

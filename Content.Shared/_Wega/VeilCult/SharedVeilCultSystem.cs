@@ -7,15 +7,12 @@ using Content.Shared.IdentityManagement;
 using Content.Shared.Mind;
 using Content.Shared.Popups;
 using Content.Shared.Stunnable;
-using Content.Shared.Interaction;
-using Content.Shared.Interaction.Events;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.DoAfter;
 using Content.Shared.Movement.Systems;
-using Content.Shared.Movement.Events;
 using Robust.Shared.Prototypes;
-using TimedDespawnComponent = Robust.Shared.Spawners.TimedDespawnComponent;
 using Robust.Shared.Player;
+using Robust.Shared.Spawners;
 
 namespace Content.Shared.Veil.Cult;
 
@@ -25,7 +22,7 @@ public abstract class SharedVeilCultSystem : EntitySystem
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedStunSystem _stun = default!;
     [Dependency] private readonly SharedUserInterfaceSystem _ui = default!;
-    [Dependency] private readonly SharedHandsSystem _hands = default!;  
+    [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
     [Dependency] private readonly MovementSpeedModifierSystem _speed = default!;
@@ -40,9 +37,7 @@ public abstract class SharedVeilCultSystem : EntitySystem
         SubscribeLocalEvent<ConfusionComponent, ComponentInit>(OnInit);
         SubscribeLocalEvent<ConfusionComponent, ComponentRemove>(OnShutdown);
         SubscribeLocalEvent<ConfusionComponent, RefreshMovementSpeedModifiersEvent>(Invert);
-        
     }
-    
 
     #region Deconvertation
     public void CultistDeconvertation(EntityUid cultist)
@@ -59,12 +54,9 @@ public abstract class SharedVeilCultSystem : EntitySystem
 
                 var protoId = meta.EntityPrototype?.ID;
                 if (protoId == VeilCultistComponent.MidasTouch.Id)
-                {
                     _action.RemoveAction(cultist, actionId);
-                }
             }
         }
-
 
         if (TryComp<MindLinkComponent>(cultist, out var mindLink))
         {
@@ -81,7 +73,7 @@ public abstract class SharedVeilCultSystem : EntitySystem
         RemComp<VeilCogDisplayComponent>(cultist);
     }
     #endregion
-    
+
     private void OnMidasTouch(EntityUid cultist, VeilCultistComponent component, VeilCultMidasTouchActionEvent args)
     {
         if (_hands.TryGetActiveItem(cultist, out var hand) && hand != null)
@@ -97,15 +89,15 @@ public abstract class SharedVeilCultSystem : EntitySystem
                 RaiseLocalEvent(cultist, ev);
             }
         }
-        
         else
         {
             var ev = new VeilCultMidasTouchGetHandEvent();
             RaiseLocalEvent(cultist, ev);
         }
+
         args.Handled = true;
     }
-    
+
     private void TryEnchant(EntityUid uid, EnchantableComponent component, VeilCultMidasTouchActionEvent args)
     {
         if (args.Handled)
@@ -117,12 +109,10 @@ public abstract class SharedVeilCultSystem : EntitySystem
 
     private void OnEnchantSelected(EntityUid uid, EnchantableComponent component, EnchantSelectedMessage args)
     {
-        var user = GetEntity(args.User);
+        var user = args.Actor;
         var doAfterDelay = component.Delay;
         var doAfterEventArgs = new DoAfterArgs(EntityManager, user, doAfterDelay,
-            new EnchantingDoAfterEvent() { Entity = args.EnchantId },
-            eventTarget: uid,
-            target: user)
+            new EnchantingDoAfterEvent(args.EnchantId), uid, user)
         {
             BreakOnMove = true,
             BreakOnDamage = true,
@@ -130,7 +120,7 @@ public abstract class SharedVeilCultSystem : EntitySystem
             NeedHand = false
         };
 
-            _doAfterSystem.TryStartDoAfter(doAfterEventArgs);
+        _doAfterSystem.TryStartDoAfter(doAfterEventArgs);
     }
 
     private void OpenEnchantSelectionUI(EntityUid card, EnchantableComponent component, EntityUid user)
@@ -151,11 +141,10 @@ public abstract class SharedVeilCultSystem : EntitySystem
             _ui.SetUiState(card, EnchantUiKey.Key, state);
         }
     }
-    
+
     private void OnPlayerAttached(EntityUid uid, CogscarabComponent component, PlayerAttachedEvent args)
     {
-        EnsureComp<TimedDespawnComponent>(uid, out var despawn);
-        despawn.Lifetime = 15f;
+        EnsureComp<TimedDespawnComponent>(uid).Lifetime = 15f;
         RemComp<CogscarabComponent>(uid);
     }
 
@@ -173,5 +162,4 @@ public abstract class SharedVeilCultSystem : EntitySystem
     {
         args.ModifySpeed(-1f, -1f);
     }
-    
 }

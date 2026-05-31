@@ -4,7 +4,6 @@ using Content.Shared.Veil.Cult.Components;
 using Content.Shared.StatusIcon.Components;
 using Robust.Client.GameObjects;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Random;
 
 namespace Content.Client.Veil.Cult
 {
@@ -58,18 +57,18 @@ namespace Content.Client.Veil.Cult
                 _sprite.RemoveLayer(uid, layer);
         }
 
+        private void OnEnchantRemove(EntityUid uid, EnchantedComponent comp, ComponentRemove args)
+        {
+            if (!HasComp<SpriteComponent>(uid))
+                return;
+
+            if (_sprite.LayerExists(uid, 1))
+                _sprite.RemoveLayer(uid, 1);
+        }
+
         private enum CogKey
         {
             Halo
-        }
-        
-        private void OnEnchantRemove(EntityUid uid, EnchantedComponent comp, ComponentRemove args)
-        {
-            if (!TryComp<SpriteComponent>(uid, out var sprite))
-                return;
-            
-            if (_sprite.LayerExists(uid, 1))
-                _sprite.RemoveLayer(uid, 1);
         }
     }
 }

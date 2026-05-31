@@ -1,6 +1,5 @@
 using Content.Shared.Actions;
 using Content.Shared.DoAfter;
-using Content.Shared.Eui;
 using Content.Shared.Teleportation.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
@@ -8,6 +7,14 @@ using Robust.Shared.Serialization;
 namespace Content.Shared.Veil.Cult;
 
 // Events
+public sealed class VeilGodCalledEvent : EntityEventArgs
+{
+}
+
+public sealed class VeilRitualConductedEvent : EntityEventArgs
+{
+}
+
 public sealed partial class VeilCultMidasTouchActionEvent : InstantActionEvent
 {
 }
@@ -20,8 +27,12 @@ public sealed partial class VeilCultMidasTouchGetHandEvent : InstantActionEvent
 public sealed partial class EnchantingDoAfterEvent : SimpleDoAfterEvent
 {
     public EntProtoId Entity;
-}
 
+    public EnchantingDoAfterEvent(EntProtoId entity)
+    {
+        Entity = entity;
+    }
+}
 
 public sealed partial class CrusherEnchantActionEvent : InstantActionEvent
 {
@@ -79,6 +90,11 @@ public sealed partial class RedFlameEnchantActionEvent : InstantActionEvent
 public sealed partial class VeilCultTeleportDoAfterEvent : SimpleDoAfterEvent
 {
     public NetEntity Beacon;
+
+    public VeilCultTeleportDoAfterEvent(NetEntity beacon)
+    {
+        Beacon = beacon;
+    }
 }
 
 [Serializable, NetSerializable]
@@ -92,10 +108,9 @@ public sealed partial class StrangeShardDoAfterEvent : SimpleDoAfterEvent
 }
 
 [ByRefEvent]
-public record struct SiliconVeilCultHackedEvent(EntityUid user);
+public record struct SiliconVeilCultHackedEvent(EntityUid User);
 
 // UI KEYS
-
 [Serializable, NetSerializable]
 public enum TeleportEnchantUiKey : byte
 {
@@ -108,8 +123,19 @@ public enum VeilBeaconUiKey : byte
     Key
 }
 
-
 // STATES AND MESSAGES
+[Serializable, NetSerializable]
+public sealed class VeilBeaconNameBoundUserInterfaceState : BoundUserInterfaceState
+{
+    public string Name;
+    public int MaxChars;
+
+    public VeilBeaconNameBoundUserInterfaceState(string name, int maxChars)
+    {
+        Name = name;
+        MaxChars = maxChars;
+    }
+}
 
 [Serializable, NetSerializable]
 public sealed class VeilBeaconNameChangedMessage(string name) : BoundUserInterfaceMessage
@@ -118,18 +144,16 @@ public sealed class VeilBeaconNameChangedMessage(string name) : BoundUserInterfa
 }
 
 [Serializable, NetSerializable]
-public sealed class TeleportEnchantDestinationMessage(NetEntity netEnt, string pointName) : BoundUserInterfaceMessage
+public sealed class TeleportEnchantDestinationMessage(NetEntity netEnt) : BoundUserInterfaceMessage
 {
     public NetEntity NetEnt = netEnt;
-    public string PointName = pointName;
 }
 
 [Serializable, NetSerializable]
-public sealed class VeilCultBeaconComponentState(string assignedName) : IComponentState
+public sealed class VeilCultBeaconComponentState(string assignedName, int maxNameChars) : IComponentState // <-- Эт не ui тип, а к компонентам ближе
 {
     public string AssignedName = assignedName;
-
-    public int MaxNameChars;
+    public int MaxNameChars = maxNameChars;
 }
 
 [Serializable, NetSerializable]

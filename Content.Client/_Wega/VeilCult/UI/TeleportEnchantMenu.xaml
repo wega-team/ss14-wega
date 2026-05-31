@@ -1,4 +1,7 @@
-﻿<DefaultWindow xmlns="https://spacestation14.io" xmlns:ui="clr-namespace:Content.Client.UserInterface.Controls" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Class="Content.Client.Veil.Cult.UI.TeleportEnchantMenu" Title = "{Loc 'teleportation-enchant-window-title'}" MinSize="450 450" SetSize="450 450">
+﻿<DefaultWindow xmlns="https://spacestation14.io"
+               xmlns:ui="clr-namespace:Content.Client.UserInterface.Controls"
+               Title = "{Loc 'teleportation-enchant-window-title'}"
+               MinSize="450 450">
     <BoxContainer Orientation="Vertical" HorizontalExpand="True" SizeFlagsStretchRatio="0.4">
         <LineEdit Name="SearchBar" PlaceHolder="Search" HorizontalExpand="True" Margin="0 4" />
         <ScrollContainer Name="TeleportScroll" VerticalExpand="True" HorizontalExpand="True" HScrollEnabled="False">

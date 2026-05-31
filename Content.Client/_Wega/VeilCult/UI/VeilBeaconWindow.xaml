@@ -1,10 +1,7 @@
 <DefaultWindow xmlns="https://spacestation14.io"
-			xmlns:ui="clr-namespace:Content.Client.UserInterface.Controls"
-            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-			x:Class="Content.Client.Veil.Cult.UI.VeilBeaconWindow"
-            Title="{Loc 'veil-beacon-ui-header'}"
-            SetWidth="400"
-            MinWidth="150">
+			   xmlns:ui="clr-namespace:Content.Client.UserInterface.Controls"
+               Title="{Loc 'veil-beacon-ui-header'}"
+               SetWidth="400" MinWidth="150">
     <BoxContainer Orientation="Vertical" SeparationOverride="4">
         <Label Name="CurrentTextLabel" Text="{Loc 'veil-beacon-current-name'}" />
         <LineEdit Name="LabelLineEdit" />
