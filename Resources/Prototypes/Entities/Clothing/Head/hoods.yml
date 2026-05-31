@@ -32,6 +32,10 @@
     dirtState: biohead
     equippedDirtState: equipped-biohead
   # Corvax-Wega-Dirtable-end
+  # _Modifications-Disease-start
+  - type: DiseaseResistance
+    coef: 0.2
+  # _Modifications-Disease-end
 
 - type: entity
   parent: ClothingHeadHatHoodBioGeneral
