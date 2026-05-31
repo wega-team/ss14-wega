@@ -75,8 +75,13 @@
     - WhitelistChameleon
   - type: IdentityBlocker
     coverage: EYES
-#  - type: NightVision
-#    tint: "#c242bb"
+  - type: NightVision
+    tint: "#c242bb00"
+  - type: ItemToggle
+    soundActivate: /Audio/_Wega/Items/activate.ogg
+    soundDeactivate: /Audio/_Wega/Items/deactivate.ogg
+    onUse: false
+    onActivate: false
   - type: Appearance
   - type: GenericVisualizer
     visuals:
