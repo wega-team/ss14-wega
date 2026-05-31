@@ -243,6 +243,7 @@
   description: An evil-looking piece of cult armor, made of bones.
   components:
   - type: CultEquipment
+    cult: Blood
 
 - type: entity
   parent: ClothingOuterArmorBasic
@@ -284,10 +285,12 @@
         Blunt: 0.6
         Slash: 0.6
         Piercing: 0.6
-        Heat: 0.5
+        Heat: 0.55
   - type: GroupExamine
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetClockworkCuirass
+  - type: CultEquipment
+    cult: Veil
   - type: Enchantable
     enchants:
     - VeilCultBrassCuirassHardenPlates

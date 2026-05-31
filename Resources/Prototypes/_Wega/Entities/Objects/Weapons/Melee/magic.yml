@@ -153,6 +153,7 @@
     - belt
   - type: BloodDagger
   - type: CultWeapon
+    cult: Blood
   - type: Tool
     qualities:
       - Slicing
@@ -232,6 +233,7 @@
     shape:
     - 0,0,0,2
   - type: CultWeapon
+    cult: Blood
   - type: MeleeWeapon
     wideAnimationRotation: -135
     attackRate: 1
@@ -268,6 +270,7 @@
     - 0,0,1,0
     - 0,2,0,1
   - type: CultWeapon
+    cult: Blood
   - type: MeleeWeapon
     wideAnimationRotation: -135
     attackRate: 1
@@ -304,6 +307,7 @@
     - 0,0,2,1
     - 1,2,1,1
   - type: CultWeapon
+    cult: Blood
   - type: MeleeWeapon
     wideAnimationRotation: -135
     attackRate: 1
@@ -375,6 +379,7 @@
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: CultWeapon
+    cult: Blood
   - type: MeleeWeapon
     range: 2.5
     possibilityWideAtack: false
@@ -586,6 +591,7 @@
     shape:
     - 0,0,0,2
   - type: CultWeapon
+    cult: Veil
   - type: MeleeWeapon
     wideAnimationRotation: -135
     # resistanceBypassPercentage: 0.1 # for future
@@ -640,6 +646,7 @@
     storedRotation: -45
     size: Large
   - type: CultWeapon
+    cult: Veil
   - type: MeleeWeapon
     # resistanceBypassPercentage: 0.4 #for future
     wideAnimationRotation: -135
@@ -712,6 +719,7 @@
     - 0,0,0,3
   - type: Wieldable
   - type: CultWeapon
+    cult: Veil
   - type: MeleeWeapon
     range: 2
     damage:

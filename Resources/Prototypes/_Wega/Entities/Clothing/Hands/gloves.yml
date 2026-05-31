@@ -233,6 +233,7 @@
   - type: FingerprintMask
   - type: Insulated
   - type: CultEquipment
+    cult: Veil
   - type: MeleeWeapon
     attackRate: 1.3
     damage:

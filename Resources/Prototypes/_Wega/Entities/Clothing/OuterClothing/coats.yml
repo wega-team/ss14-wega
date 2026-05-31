@@ -42,6 +42,8 @@
         Heat: 0.8
   - type: ExplosionResistance
     damageCoefficient: 0.9
+  - type: CultEquipment
+    cult: Blood
 
 - type: entity
   parent: ClothingOuterStorageBase
@@ -68,6 +70,7 @@
     walkModifier: 1.6
     sprintModifier: 1.6
   - type: CultEquipment
+    cult: Blood
 
 - type: entity
   parent: ClothingOuterStorageBase
@@ -239,4 +242,6 @@
     enchants:
     - ClothingOuterVeilCultRobesCamouflage
     - ClothingOuterVeilCultRobesHaste
+  - type: CultEquipment
+    cult: Veil
 

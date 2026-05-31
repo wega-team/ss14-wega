@@ -9,6 +9,7 @@ using Content.Shared.Administration.Systems;
 using Content.Shared.Atmos.Components;
 using Content.Shared.Blood.Cult;
 using Content.Shared.Blood.Cult.Components;
+using Content.Shared.Veil.Cult.Components;
 using Content.Shared.Body;
 using Content.Shared.Body.Components;
 using Content.Shared.Chat;
@@ -356,21 +357,24 @@ public sealed partial class BloodCultSystem
     {
         return HasComp<MindShieldComponent>(target)
             || HasComp<BibleUserComponent>(target)
-            || HasComp<BloodCultObjectComponent>(target);
+            || HasComp<BloodCultObjectComponent>(target)
+            || HasComp<VeilCultistComponent>(target);
     }
 
     private bool IsConvertibleTarget(EntityUid target)
     {
         return !HasComp<MindShieldComponent>(target)
             && !HasComp<BibleUserComponent>(target)
-            && !HasComp<SyntheticOperatedComponent>(target);
+            && !HasComp<SyntheticOperatedComponent>(target)
+            && !HasComp<VeilCultistComponent>(target);
     }
 
     private bool IsRegularTarget(EntityUid target)
     {
         return !HasComp<MindShieldComponent>(target)
             && !HasComp<BibleUserComponent>(target)
-            && !HasComp<SyntheticOperatedComponent>(target);
+            && !HasComp<SyntheticOperatedComponent>(target)
+            && !HasComp<VeilCultistComponent>(target);
     }
 
     private void HandleSpecialSacrifice(EntityUid target, EntityUid cultist, MapCoordinates coords, BloodRuneComponent runeComp)

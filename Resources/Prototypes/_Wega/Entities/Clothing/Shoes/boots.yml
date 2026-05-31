@@ -23,6 +23,7 @@
     maxContactSprintSlowdown: 0.7
     maxContactWalkSlowdown: 0.7
   - type: CultEquipment
+    cult: Blood
   
 - type: entity
   parent: ClothingShoesBootsCowboyBrown
@@ -40,5 +41,4 @@
     unequipDelay: 3
   - type: ClothingSlowOnDamageModifier
     modifier: 0.35
-  - type: CultEquipment
 

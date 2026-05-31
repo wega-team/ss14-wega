@@ -191,14 +191,17 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
     private void OnAttemptMelee(Entity<CultWeaponComponent> entity, ref AttemptMeleeEvent args)
     {
         var user = Transform(entity.Owner).ParentUid;
-        if (!HasComp<BloodCultistComponent>(user) && !HasComp<VeilCultistComponent>(user))
-        {
-            _popup.PopupEntity(Loc.GetString("blood-cult-failed-attack"), user, user, PopupType.SmallCaution);
+        if (HasComp<BloodCultistComponent>(args.User) && ent.Comp.Cult == CultType.Blood)
+            return;
+        
+        if (HasComp<VeilCultistComponent>(args.User) && ent.Comp.Cult == CultType.Veil)
+            return;
 
-            var dropEvent = new DropHandItemsEvent();
-            RaiseLocalEvent(user, ref dropEvent);
-            args.Cancelled = true;
-        }
+        _popup.PopupEntity(Loc.GetString("blood-cult-failed-attack"), user, user, PopupType.SmallCaution);
+
+        var dropEvent = new DropHandItemsEvent();
+        RaiseLocalEvent(user, ref dropEvent);
+        args.Cancelled = true;
     }
 
     private void OnInteract(EntityUid uid, BloodDaggerComponent component, AfterInteractEvent args)

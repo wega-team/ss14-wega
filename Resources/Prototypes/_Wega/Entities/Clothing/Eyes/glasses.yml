@@ -125,3 +125,5 @@
   - type: FlashImmunity
   - type: ShowHealthBars
   - type: EyeProtection
+  - type: CultEquipment
+    cult: Veil

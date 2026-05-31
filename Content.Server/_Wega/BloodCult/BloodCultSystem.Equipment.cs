@@ -3,6 +3,7 @@ using Content.Shared.Hands;
 using Content.Shared.Popups;
 using Content.Shared.Throwing;
 using Content.Shared.Blood.Cult.Components;
+using Content.Shared.Blood.Cult;
 using Content.Shared.Veil.Cult.Components;
 using Content.Shared.Weapons.Melee.Events;
 using Robust.Shared.Random;
@@ -23,7 +24,10 @@ public sealed partial class BloodCultSystem
     private void OnDidEquip(Entity<CultEquipmentComponent> ent, ref GotEquippedEvent args)
     {
 
-        if (HasComp<BloodCultistComponent>(args.EquipTarget) || HasComp<VeilCultistComponent>(args.EquipTarget))
+        if (HasComp<BloodCultistComponent>(args.EquipTarget) && ent.Comp.Cult == CultType.Blood)
+            return;
+        
+        if (HasComp<VeilCultistComponent>(args.EquipTarget) && ent.Comp.Cult == CultType.Veil)
             return;
 
         _transform.SetCoordinates(ent, Transform(args.EquipTarget).Coordinates);
@@ -38,7 +42,10 @@ public sealed partial class BloodCultSystem
         if (args.Cancelled)
             return;
 
-        if (HasComp<BloodCultistComponent>(args.User) || HasComp<VeilCultistComponent>(args.User))
+        if (HasComp<BloodCultistComponent>(args.User) && ent.Comp.Cult == CultType.Blood)
+            return;
+        
+        if (HasComp<VeilCultistComponent>(args.User) && ent.Comp.Cult == CultType.Veil)
             return;
 
         args.Cancelled = true;
@@ -63,7 +70,10 @@ public sealed partial class BloodCultSystem
         for (int i = hitList.Count - 1; i >= 0; i--)
         {
             var target = hitList[i];
-            if (HasComp<BloodCultistComponent>(target) || HasComp<VeilCultistComponent>(target))
+            if (HasComp<BloodCultistComponent>(target) && comp.Cult == CultType.Blood)
+                hitList.RemoveAt(i);
+            
+            if (HasComp<VeilCultistComponent>(target) && comp.Cult == CultType.Veil)
                 hitList.RemoveAt(i);
         }
 
