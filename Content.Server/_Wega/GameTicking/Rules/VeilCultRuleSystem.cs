@@ -23,6 +23,7 @@ using Content.Shared.Mobs;
 using Content.Shared.NPC.Prototypes;
 using Content.Shared.NPC.Systems;
 using Content.Shared.Popups;
+using Content.Shared.Pinpointer;
 using Content.Shared.Zombies;
 using Content.Shared.Warps;
 using Content.Shared.Station;
@@ -135,16 +136,16 @@ namespace Content.Server.GameTicking.Rules
             var mainGrid = _stationSystem.GetLargestGrid(station);
             cult.Station = mainGrid;
             var placeCandidates = new List<EntityUid>();
-            var enumerator = EntityQueryEnumerator<WarpPointComponent, TransformComponent>();
+            var enumerator = EntityQueryEnumerator<NavMapBeaconComponent, TransformComponent>(); // WarpPoint doesnt usually work here cuz were using navigation beacons now.
 
-            while (enumerator.MoveNext(out var uid, out _, out var xform))
+            while (enumerator.MoveNext(out var uid, out var beacon, out var xform))
             {
                 if (xform.GridUid != mainGrid)
                     continue;
 
-                if (HasComp<ItemComponent>(uid) || HasComp<NukeComponent>(uid)) // YOU CANT STEAL THE NUKE DUD
+                if (beacon.DefaultText == null)
                     continue;
-
+                
                 placeCandidates.Add(uid);
             }
 
@@ -188,11 +189,11 @@ namespace Content.Server.GameTicking.Rules
                 if (objective == null)
                     continue;
 
-                if (TryComp<WarpPointComponent>(target, out var warp) && warp.Location != null)
+                if (TryComp<NavMapBeaconComponent>(target, out var beacon) && beacon.DefaultText != null)
                 {
                     _target.SetTarget(objective.Value, target);
                     _meta.SetEntityName(objective.Value, Loc.GetString("objective-condition-veil-ritual-beacon-title",
-                        ("targetName", warp.Location))); // <see cref="ObjectiveAssignedEvent"/> here doesn't worked, or i'm stupid
+                        ("targetName", Loc.GetString(beacon.DefaultText))));
                     _mind.AddObjective(mindId, mind, objective.Value);
                 }
             }
