@@ -89,3 +89,42 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+    
+- type: construction
+  id: VeilCultClockworkLathe
+  graph: VeilCultStructureLatheGraph
+  startNode: start
+  targetNode: VeilCultClockworkLathe
+  category: construction-category-veilcult
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+    
+- type: construction
+  id: VeilCultStructureAltar
+  graph: VeilCultStructureAltarGraph
+  startNode: start
+  targetNode: VeilCultStructureAltar
+  category: construction-category-veilcult
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+    
+- type: construction
+  id: VeilCultBeacon
+  graph: VeilCultStructureBeaconGraph
+  startNode: start
+  targetNode: VeilCultBeacon
+  category: construction-category-veilcult
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked

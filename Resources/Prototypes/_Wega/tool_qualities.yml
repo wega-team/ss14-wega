@@ -60,3 +60,10 @@
   toolName: tool-quality-bone-setter-tool-name
   spawn: BoneSetter
   icon: { sprite: _Wega/Objects/Specific/Medical/Surgery/bone_setter.rsi, state: bonesetter }
+  
+- type: tool
+  id: VeilCultClockworkSlab
+  name: tool-quality-dagger-name
+  toolName: tool-quality-clockwork-slab-tool-name
+  spawn: VeilCultClockworkSlab
+  icon: { sprite: _Wega/Objects/Specific/VeilCult/clockwork_slab.rsi, state: clock_slab }

@@ -867,7 +867,7 @@
     node: start
   - type: StaticPrice
     price: 100
-  - type: BloodCultAllowedGun # Corvax-Wega-BloodCult
+  - type: CultAllowedGun # Corvax-Wega-Cult
 
 - type: entity
   parent: [WeaponPistolCHIMP, BaseSyndicateContraband]

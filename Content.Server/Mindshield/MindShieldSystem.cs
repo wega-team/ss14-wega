@@ -7,6 +7,8 @@ using Content.Shared.Implants;
 using Content.Shared.Mindshield.Components;
 using Content.Shared.Revolutionary.Components;
 using Content.Shared.Roles.Components;
+using Content.Shared.Veil.Cult; // Corvax-Wega-Add
+using Content.Shared.Veil.Cult.Components; // Corvax-Wega-Add
 using Robust.Shared.Containers;
 
 namespace Content.Server.Mindshield;
@@ -21,6 +23,7 @@ public sealed class MindShieldSystem : EntitySystem
     [Dependency] private readonly RoleSystem _roleSystem = default!;
     [Dependency] private readonly MindSystem _mindSystem = default!;
     [Dependency] private readonly PopupSystem _popupSystem = default!;
+    [Dependency] private readonly SharedVeilCultSystem _veilCult = default!;
 
     public override void Initialize()
     {
@@ -53,6 +56,11 @@ public sealed class MindShieldSystem : EntitySystem
         {
             _adminLogManager.Add(LogType.Mind, LogImpact.Medium, $"{ToPrettyString(implanted)} was deconverted due to being implanted with a Mindshield.");
         }
+        
+        // Corvax-Wega-VeilCult-Start
+        if (HasComp<VeilCultistComponent>(implanted))
+            _veilCult.CultistDeconvertation(implanted);
+        // Corvax-Wega-VeilCult-End
     }
 
     private void OnImplantRemoved(Entity<MindShieldImplantComponent> ent, ref ImplantRemovedEvent args)

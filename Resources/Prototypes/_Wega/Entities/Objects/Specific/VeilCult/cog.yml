@@ -1,0 +1,14 @@
+- type: entity
+  id: VeilCultInteractionCog
+  parent: BaseItem
+  name: interaction cog
+  description: A little nasty energy consumer.
+  components:
+  - type: Item
+    size: Small
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/VeilCult/interaction_cog.rsi
+    state: icon
+  - type: Tag
+    tags:
+    - InteractionCog

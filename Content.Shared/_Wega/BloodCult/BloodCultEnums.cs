@@ -13,6 +13,13 @@ public enum BloodCultGod : byte
 }
 
 [Serializable, NetSerializable]
+public enum CultType : byte
+{
+    Blood,
+    Veil
+}
+
+[Serializable, NetSerializable]
 public enum BloodCultSpell : byte
 {
     Stun,

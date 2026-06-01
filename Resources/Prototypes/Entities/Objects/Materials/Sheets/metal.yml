@@ -134,6 +134,12 @@
           Quantity: 3.3
         - ReagentId: Copper
           Quantity: 6.7
+  - type: Tag
+    tags:
+    - Brass
+    - ConstructionMaterial
+    - Metal
+    - Sheet
 
 - type: entity
   parent: SheetBrass

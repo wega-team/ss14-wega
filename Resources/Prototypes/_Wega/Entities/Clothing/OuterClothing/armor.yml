@@ -242,7 +242,8 @@
   name: acolyte armor
   description: An evil-looking piece of cult armor, made of bones.
   components:
-  - type: BloodCultEquipment
+  - type: CultEquipment
+    cult: Blood
 
 - type: entity
   parent: ClothingOuterArmorBasic
@@ -267,3 +268,32 @@
     walkModifier: 1.0
     sprintModifier: 1.0
   - type: HeldSpeedModifier
+
+- type: entity
+  parent: [ ClothingOuterBaseLarge, BaseMajorContraband, AllowSuitStorageClothing, BaseEnchantable ]
+  id: VeilCultBrassCuirass
+  name: brass cuirass
+  description: An evil-looking piece of cult armor, made of brass.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Armor/cuirass.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/OuterClothing/Armor/cuirass.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.6
+        Slash: 0.6
+        Piercing: 0.6
+        Heat: 0.55
+  - type: GroupExamine
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetClockworkCuirass
+  - type: CultEquipment
+    cult: Veil
+  - type: Enchantable
+    enchants:
+    - VeilCultBrassCuirassHardenPlates
+    - VeilCultBrassCuirassReflection
+    - VeilCultBrassCuirassAbsorb
+    - VeilCultBrassCuirassFlash

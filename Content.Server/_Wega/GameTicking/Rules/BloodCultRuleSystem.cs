@@ -75,8 +75,8 @@ namespace Content.Server.GameTicking.Rules
             SubscribeLocalEvent<BloodCultObjectComponent, ComponentShutdown>(OnBloodCultObjectShutdown);
             SubscribeLocalEvent<BloodCultObjectComponent, CryostorageEnterEvent>(OnCryostorageEnter);
 
-            SubscribeLocalEvent<GodCalledEvent>(OnGodCalled);
-            SubscribeLocalEvent<RitualConductedEvent>(OnRitualConducted);
+            SubscribeLocalEvent<BloodGodCalledEvent>(OnGodCalled);
+            SubscribeLocalEvent<BloodRitualConductedEvent>(OnRitualConducted);
 
             SubscribeLocalEvent<AutoCultistComponent, ComponentStartup>(OnAutoCultistAdded);
             SubscribeLocalEvent<BloodCultistComponent, ComponentRemove>(OnComponentRemove);
@@ -361,7 +361,7 @@ namespace Content.Server.GameTicking.Rules
             {
                 CheckStage();
                 if (cult.SelectedTargets.Count == 0)
-                    RaiseLocalEvent(new RitualConductedEvent());
+                    RaiseLocalEvent(new BloodRitualConductedEvent());
                 return;
             }
 
@@ -523,7 +523,7 @@ namespace Content.Server.GameTicking.Rules
             return null;
         }
 
-        private void OnGodCalled(GodCalledEvent ev)
+        private void OnGodCalled(BloodGodCalledEvent ev)
         {
             var cult = GetActiveRule();
             if (cult == null)
@@ -549,7 +549,7 @@ namespace Content.Server.GameTicking.Rules
             }
         }
 
-        private void OnRitualConducted(RitualConductedEvent ev)
+        private void OnRitualConducted(BloodRitualConductedEvent ev)
         {
             var cult = GetActiveRule();
             if (cult == null)

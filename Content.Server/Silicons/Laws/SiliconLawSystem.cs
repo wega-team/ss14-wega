@@ -14,6 +14,7 @@ using Content.Shared.Roles;
 using Content.Shared.Roles.Components;
 using Content.Shared.Silicons.Laws;
 using Content.Shared.Silicons.Laws.Components;
+using Content.Shared.Veil.Cult; // Corvax-Wega-VeilCult
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Containers;
@@ -52,6 +53,7 @@ public sealed class SiliconLawSystem : SharedSiliconLawSystem
         SubscribeLocalEvent<SiliconLawProviderComponent, MindAddedMessage>(OnLawProviderMindAdded);
         SubscribeLocalEvent<SiliconLawProviderComponent, MindRemovedMessage>(OnLawProviderMindRemoved);
         SubscribeLocalEvent<SiliconLawProviderComponent, SiliconEmaggedEvent>(OnEmagLawsAdded);
+        SubscribeLocalEvent<SiliconLawProviderComponent, SiliconVeilCultHackedEvent>(OnMidasTouchLawsAdded);
     }
 
     private void OnMapInit(EntityUid uid, SiliconLawBoundComponent component, MapInitEvent args)
@@ -314,6 +316,28 @@ public sealed class SiliconLawSystem : SharedSiliconLawSystem
             SetLaws(lawset.Laws, update, provider.LawUploadSound);
         }
     }
+	
+	// Corvax-Wega-Veil-Cult-Start
+    private void OnMidasTouchLawsAdded(EntityUid uid, SiliconLawProviderComponent component, ref SiliconVeilCultHackedEvent args)
+    {
+        if (component.Lawset == null)
+            component.Lawset = GetLawset(component.Laws);
+        component.Subverted = true;
+
+        component.Lawset?.Laws.Insert(0, new SiliconLaw
+        {
+            LawString = Loc.GetString("law-midastouched-custom"),
+            Order = 0
+        });
+
+        component.Lawset?.Laws.Add(new SiliconLaw
+        {
+            LawString = Loc.GetString("law-midastouched-secrecy"),
+            Order = component.Lawset.Laws.Max(law => law.Order) + 1
+        });
+        NotifyLawsChanged(uid, new SoundPathSpecifier("/Audio/Misc/ratvar_reveal.ogg"));
+    }
+	// Corvax-Wega-Veil-Cult-End
 }
 
 [ToolshedCommand, AdminCommand(AdminFlags.Admin)]

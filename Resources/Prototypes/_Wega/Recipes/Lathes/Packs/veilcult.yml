@@ -1,0 +1,19 @@
+- type: latheRecipePack
+  id: VeilCultStatic
+  recipes:
+  - MobCogscarab
+  - VeilCultSoulVessel
+  - MobClockworkMarouder
+  - VeilCultStrangeShard
+  - VeilCultInteractionCog
+  - ClothingOuterVeilCultRobes
+  - VeilCultBrassCuirass
+  - ClothingShoesClockworkTreads
+  - ClothingHandsClockworkGauntlets
+  - VeilCultClockworkSlab
+  - WeaponClockworkSword
+  - WeaponClockworkHammer
+  - WeaponRatvarianSpear
+  - BorgModuleClockwork
+  - ClockworkShield
+  - ClothingEyesJudicialVisor

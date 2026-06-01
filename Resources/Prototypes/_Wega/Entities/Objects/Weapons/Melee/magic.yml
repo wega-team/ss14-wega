@@ -152,7 +152,8 @@
     slots:
     - belt
   - type: BloodDagger
-  - type: BloodCultWeapon
+  - type: CultWeapon
+    cult: Blood
   - type: Tool
     qualities:
       - Slicing
@@ -231,7 +232,8 @@
     size: Normal
     shape:
     - 0,0,0,2
-  - type: BloodCultWeapon
+  - type: CultWeapon
+    cult: Blood
   - type: MeleeWeapon
     wideAnimationRotation: -135
     attackRate: 1
@@ -267,7 +269,8 @@
     shape:
     - 0,0,1,0
     - 0,2,0,1
-  - type: BloodCultWeapon
+  - type: CultWeapon
+    cult: Blood
   - type: MeleeWeapon
     wideAnimationRotation: -135
     attackRate: 1
@@ -303,7 +306,8 @@
     shape:
     - 0,0,2,1
     - 1,2,1,1
-  - type: BloodCultWeapon
+  - type: CultWeapon
+    cult: Blood
   - type: MeleeWeapon
     wideAnimationRotation: -135
     attackRate: 1
@@ -374,7 +378,8 @@
         transferForensics: true
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-  - type: BloodCultWeapon
+  - type: CultWeapon
+    cult: Blood
   - type: MeleeWeapon
     range: 2.5
     possibilityWideAtack: false
@@ -568,4 +573,195 @@
   - type: BallisticAmmoProvider
     proto: ProjectileBloodBolt
     capacity: 24
-  - type: BloodCultAllowedGun # Corvax-Wega-BloodCult
+  - type: CultAllowedGun # Corvax-Wega-Cult
+
+- type: entity
+  id: WeaponClockworkSword
+  parent: BaseEnchantable
+  name: clockwork sword
+  description: A sword with a large winding gear on the hilt. Weapon of the righteous Ratvar.
+  components:
+  - type: Sharp
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/clockwork_sword.rsi
+    state: icon
+  - type: Item
+    storedRotation: -45
+    size: Normal
+    shape:
+    - 0,0,0,2
+  - type: CultWeapon
+    cult: Veil
+  - type: MeleeWeapon
+    wideAnimationRotation: -135
+    # resistanceBypassPercentage: 0.1 # for future
+    attackRate: 1
+    damage:
+      types:
+        Slash: 20
+    soundHit:
+        path: /Audio/Weapons/bladeslice.ogg
+  - type: DisarmMalus
+  - type: Enchantable
+    enchants:
+    - WeaponClockworkSwordSwordsmen
+    - WeaponClockworkSwordBloodshed
+  
+- type: entity
+  id: WeaponClockworkSwordBorg
+  parent: BaseEnchantable
+  name: clockwork sword
+  description: A sword with a large winding gear on the hilt. Weapon of the righteous Ratvar.
+  components:
+  - type: Sharp
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/clockwork_sword.rsi
+    state: icon
+  - type: Item
+    storedRotation: -45
+    size: Normal
+    shape:
+    - 0,0,0,2
+  - type: MeleeWeapon
+    wideAnimationRotation: -135
+    # resistanceBypassPercentage: 0.1 # for future
+    attackRate: 1
+    damage:
+      types:
+        Slash: 20
+    soundHit:
+        path: /Audio/Weapons/bladeslice.ogg
+  - type: DisarmMalus
+  
+- type: entity
+  id: WeaponClockHammer
+  parent: BaseEnchantable
+  name: clock hammer
+  description: A large and lifty hammer, that can throw it targets on hit. For the righteous of Ratvar.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/clock_hammer.rsi
+    state: icon
+  - type: Item
+    storedRotation: -45
+    size: Large
+  - type: CultWeapon
+    cult: Veil
+  - type: MeleeWeapon
+    # resistanceBypassPercentage: 0.4 #for future
+    wideAnimationRotation: -135
+    attackRate: 0.7
+    damage:
+      types:
+        Blunt: 10
+        Structural: 10
+    soundHit:
+        collection: MetalThud
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Blunt: 15
+        Structural: 40
+  - type: Reflect
+    reflectProb: 0.2
+    spread: 90
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Blunt: 25
+  - type: StaminaDamageOnHit
+    damage: 25
+  - type: StaminaDamageOnCollide
+    damage: 25
+  - type: HeldSpeedModifier
+    walkModifier: 0.8
+    sprintModifier: 0.8
+  - type: Wieldable
+  - type: Enchantable
+    enchants:
+    - WeaponClockHammerKnockback
+    - WeaponClockHammerCrusher
+    
+- type: entity
+  parent: BaseEnchantable
+  id: WeaponRatvarianSpear
+  name: ratvarian spear
+  description: The spear formed from clockwork metal for righteous of Ratvar.
+  components:
+  - type: ThrowingAngle
+    angle: 225
+  - type: LandAtCursor
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape: !type:PolygonShape
+          vertices:
+            - -0.40,-0.30
+            - -0.30,-0.40
+            - 0.40,0.30
+            - 0.30,0.40
+        density: 20
+        mask:
+        - ItemMask
+        restitution: 0.3
+        friction: 0.2
+  - type: Sharp
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/clock_spear.rsi
+    state: icon
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - belt
+  - type: Item
+    size: Normal
+    shape:
+    - 0,0,0,3
+  - type: Wieldable
+  - type: CultWeapon
+    cult: Veil
+  - type: MeleeWeapon
+    range: 2
+    damage:
+      types:
+        Piercing: 15
+    angle: 0
+    animation: WeaponArcThrust
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: DamageOtherOnHit
+    # resistanceBypassPercentage: 0.4 # for future
+    damage:
+      types:
+        Piercing: 50
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Piercing: 10
+  - type: Enchantable
+    enchants:
+    - WeaponRatvarianSpearElectricalTouch
+    - WeaponRatvarianSpearConfusion
+        
+- type: entity
+  parent: BaseItem
+  id: VeilCultMidasTouch
+  name: midas touch
+  description: Magic from the other world.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/magic_hand.rsi
+    state: midas_touch
+  - type: DeleteOnDrop
+  - type: EdibleMatter
+    canBeEaten: false
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#ffec94"
+      right:
+      - state: inhand-right
+        color: "#ffec94"
+    size: Ginormous
+  - type: MidasHand

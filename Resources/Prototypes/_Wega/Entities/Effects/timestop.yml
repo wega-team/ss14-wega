@@ -1,0 +1,22 @@
+- type: entity
+  id: Chronofield
+  name: chronofield
+  description: ZA WARUDO!
+  components:
+  - type: TimedDespawn
+    lifetime: 7
+  - type: Sprite
+    color: "#FFFFFF80"
+    offset: 0, 0.5
+    noRot: true
+    layers:
+      - shader: unshaded
+        sprite: _Wega/Effects/chronofield.rsi
+        state: time
+  - type: Physics
+    bodyType: Static
+  - type: AmbientSound
+    volume: 2
+    range: 5
+    sound:
+      path: /Audio/_Wega/Ambience/clock_tick.ogg

@@ -35,3 +35,11 @@ ghost-role-information-taxibot-name = Таксибот
 ghost-role-information-taxibot-description = Отвезите членов экипажа к месту назначения.
 ghost-role-information-idol-name = Айдол
 ghost-role-information-idol-description = Помощник одинокого Культиста.
+
+
+ghost-role-information-soul-vessel-name = Вместилище души
+ghost-role-information-soul-vessel-description = Пустующее вместилище души.
+ghost-role-information-cogscarab-name = Латунный скарабей
+ghost-role-information-cogscarab-description = Маленький лучший друг праведников, следите, чтобы ваш механизм был достаточно заведен, чтобы не умереть в случайный момент.
+ghost-role-information-ratvar = Ратвар
+ghost-role-information-ratvar-desc = Дальше - больше...

@@ -1,0 +1,19 @@
+<ui:RadialMenu xmlns="https://spacestation14.io"
+               xmlns:ui="clr-namespace:Content.Client.UserInterface.Controls"
+               CloseButtonStyleClass="RadialMenuCloseButton"
+               VerticalExpand="True" HorizontalExpand="True">
+
+    <ui:RadialContainer Name="Main" VerticalExpand="True" HorizontalExpand="True" InitialRadius="128" ReserveSpaceForHiddenChildren="False">
+        <!-- Invite -->
+        <ui:RadialMenuButtonWithSector Name="OfferButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-veil-offer'}" TargetLayerControlName="Offer">
+            <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/Interface/Actions/gear.png"/>
+        </ui:RadialMenuButtonWithSector>
+
+        <!-- Energy -->
+        <ui:RadialMenuButtonWithSector Name="EnergyButton" StyleClasses="RadialMenuButton" SetSize="64 64" ToolTip="{Loc 'select-veil-energy'}" TargetLayerControlName="Energy">
+            <TextureRect VerticalAlignment="Center" HorizontalAlignment="Center" TextureScale="2 2" TexturePath="/Textures/_Wega/Interface/Actions/energy.png"/>
+        </ui:RadialMenuButtonWithSector>
+
+    </ui:RadialContainer>
+
+</ui:RadialMenu>

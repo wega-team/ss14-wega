@@ -38,3 +38,14 @@
   - Vampire # Corvax-Wega-Vampire
   - BloodCult # Corvax-Wega-Blood-Cult
   - LavalandFauna # Corvax-Wega-Lavaland
+  - VeilCult # Corvax-Wega-Veil-Cult
+
+- type: npcFaction
+  id: VeilCult
+  hostile:
+  - NanoTrasen
+  - Zombie
+  - Vampire
+  - SimpleHostile
+  - Xeno
+  - Dragon

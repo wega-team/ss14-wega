@@ -514,7 +514,26 @@
 
 - type: Tag
   id: Saw
-
+  
+  # Veil Cult Tags Start
+  
+- type: Tag
+  id: InteractionCog
+  
+- type: Tag
+  id: StrangeShard
+  
+- type: Tag
+  id: SoulVessel
+  
+- type: Tag
+  id: Brass
+  
+- type: Tag
+  id: ChargedBrass
+  
+  # Veil Cult Tags End
+  
 - type: Tag
   id: OrganicBrain
 

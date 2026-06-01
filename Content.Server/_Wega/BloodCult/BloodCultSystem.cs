@@ -30,15 +30,17 @@ using Content.Shared.Standing;
 using Content.Shared.Weapons.Melee;
 using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Weapons.Ranged.Events;
+using Content.Shared.Veil.Cult.Components;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
-using Content.Shared.Clothing; 
+using Content.Shared.Clothing;
 using Content.Shared.IdentityManagement.Components;
 using Content.Shared.Inventory;
+
 
 namespace Content.Server.Blood.Cult;
 
@@ -74,7 +76,7 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
         SubscribeLocalEvent<BloodCultistEyesComponent, ExaminedEvent>(OnCultistEyesExamined);
 
         SubscribeLocalEvent<BloodCultistComponent, ShotAttemptedEvent>(OnShotAttempted); // Corvax-Wega-Testing
-        SubscribeLocalEvent<BloodCultWeaponComponent, AttemptMeleeEvent>(OnAttemptMelee);
+        SubscribeLocalEvent<CultWeaponComponent, AttemptMeleeEvent>(OnAttemptMelee);
         SubscribeLocalEvent<BloodDaggerComponent, AfterInteractEvent>(OnInteract);
 
         SubscribeLocalEvent<StoneSoulComponent, ComponentInit>(OnComponentInit);
@@ -168,16 +170,16 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
             if (TryComp<IdentityBlockerComponent>(cloth, out var blocker) && blocker.Coverage.HasFlag(IdentityBlockerCoverage.EYES) && blocker.Enabled)
                 return;
         }
-		
-		var name = Identity.Name(uid, EntityManager, args.Examiner);
-		args.PushMarkup(Loc.GetString("blood-cultist-eyes-glow-examined", ("name", name)));
+
+        var name = Identity.Name(uid, EntityManager, args.Examiner);
+        args.PushMarkup(Loc.GetString("blood-cultist-eyes-glow-examined", ("name", name)));
     }
 
     // Corvax-Wega-Testing-start
     // Да я пометил тегами чтобы банально не забыть про это и чо?
     private void OnShotAttempted(Entity<BloodCultistComponent> ent, ref ShotAttemptedEvent args)
     {
-        if (HasComp<BloodCultAllowedGunComponent>(args.Used))
+        if (HasComp<CultAllowedGunComponent>(args.Used))
             return;
 
         _popup.PopupEntity(Loc.GetString("gun-disabled"), ent, ent);
@@ -186,17 +188,20 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
     // Corvax-Wega-Testing-end
 
     #region Dagger & Weapon
-    private void OnAttemptMelee(Entity<BloodCultWeaponComponent> entity, ref AttemptMeleeEvent args)
+    private void OnAttemptMelee(Entity<CultWeaponComponent> entity, ref AttemptMeleeEvent args)
     {
         var user = Transform(entity.Owner).ParentUid;
-        if (!HasComp<BloodCultistComponent>(user))
-        {
-            _popup.PopupEntity(Loc.GetString("blood-cult-failed-attack"), user, user, PopupType.SmallCaution);
+        if (HasComp<BloodCultistComponent>(user) && entity.Comp.Cult == CultType.Blood)
+            return;
 
-            var dropEvent = new DropHandItemsEvent();
-            RaiseLocalEvent(user, ref dropEvent);
-            args.Cancelled = true;
-        }
+        if (HasComp<VeilCultistComponent>(user) && entity.Comp.Cult == CultType.Veil)
+            return;
+
+        _popup.PopupEntity(Loc.GetString("blood-cult-failed-attack"), user, user, PopupType.SmallCaution);
+
+        var dropEvent = new DropHandItemsEvent();
+        RaiseLocalEvent(user, ref dropEvent);
+        args.Cancelled = true;
     }
 
     private void OnInteract(EntityUid uid, BloodDaggerComponent component, AfterInteractEvent args)

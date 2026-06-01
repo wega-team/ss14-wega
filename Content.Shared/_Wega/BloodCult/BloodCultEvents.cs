@@ -7,11 +7,11 @@ using Robust.Shared.Serialization;
 namespace Content.Shared.Blood.Cult;
 
 // Events
-public sealed class GodCalledEvent : EntityEventArgs
+public sealed class BloodGodCalledEvent : EntityEventArgs
 {
 }
 
-public sealed class RitualConductedEvent : EntityEventArgs
+public sealed class BloodRitualConductedEvent : EntityEventArgs
 {
 }
 

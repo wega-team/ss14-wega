@@ -28,4 +28,5 @@ public enum AchievementsEnum : byte
     */
     BloodCult = 11,
     Springlock = 12,
+    VeilCult = 13,
 }
