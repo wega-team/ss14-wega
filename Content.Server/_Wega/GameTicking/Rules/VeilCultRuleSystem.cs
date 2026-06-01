@@ -10,7 +10,6 @@ using Content.Server.Roles;
 using Content.Server.RoundEnd;
 using Content.Server.Audio;
 using Content.Server.Chat.Systems;
-using Content.Server.Nuke;
 using Content.Shared.Achievements;
 using Content.Shared.Veil.Cult.Components;
 using Content.Shared.Clumsy;
@@ -25,9 +24,7 @@ using Content.Shared.NPC.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Pinpointer;
 using Content.Shared.Zombies;
-using Content.Shared.Warps;
 using Content.Shared.Station;
-using Content.Shared.Item;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
@@ -145,7 +142,7 @@ namespace Content.Server.GameTicking.Rules
 
                 if (beacon.DefaultText == null)
                     continue;
-                
+
                 placeCandidates.Add(uid);
             }
 
