@@ -310,14 +310,19 @@ public sealed class NinjaWidowArtSystem : EntitySystem
     private void ExecuteWristLock(EntityUid user, EntityUid target)
     {
         var dropped = false;
+        // Collect held items first — TryDrop mutates the hands, so we can't drop mid-enumeration.
+        var heldItems = new List<EntityUid>();
         foreach (var handId in _hands.EnumerateHands(target))
         {
-            if (!_hands.TryGetHeldItem(target, handId, out var held))
-                continue;
-            if (!_random.Prob(0.15f))
-                continue;
-            _hands.TryDrop(target, held.Value, checkActionBlocker: false);
-            dropped = true;
+            if (_hands.TryGetHeldItem(target, handId, out var held))
+                heldItems.Add(held.Value);
+        }
+
+        // Guaranteed drop from every hand.
+        foreach (var item in heldItems)
+        {
+            if (_hands.TryDrop(target, item, checkActionBlocker: false))
+                dropped = true;
         }
 
         if (!dropped)
