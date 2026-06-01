@@ -1,0 +1,26 @@
+- type: entity
+  id: EnergyNet
+  name: energy net
+  description: An energy net holding its victim in place.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Transform
+    anchored: false
+  - type: Sprite
+    drawdepth: Effects
+    layers:
+    - state: energynet
+      sprite: _Wega/Actions/ninja.rsi
+  - type: EnergyNet
+  - type: Damageable
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 5
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: TimedDespawn
+    lifetime: 20

@@ -193,7 +193,7 @@
     layers:
     - state: green
     - sprite: Objects/Weapons/Melee/energykatana.rsi
-      state: icon
+      state: icon-green
 
 - type: entity
   categories: [ HideSpawnMenu, Spawner ]

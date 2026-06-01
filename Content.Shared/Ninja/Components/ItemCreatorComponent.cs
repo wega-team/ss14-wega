@@ -43,7 +43,7 @@ public sealed partial class ItemCreatorComponent : Component
     /// <summary>
     /// Popup shown to the user when there isn't enough power to create an item.
     /// </summary>
-    [DataField(required: true)]
+    [DataField]
     public LocId NoPowerPopup = string.Empty;
 }
 

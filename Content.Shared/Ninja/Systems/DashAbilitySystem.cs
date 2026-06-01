@@ -87,6 +87,10 @@ public sealed class DashAbilitySystem : EntitySystem
         var xform = Transform(user);
         _transform.SetCoordinates(user, xform, args.Target);
         _transform.AttachToGridOrMap(user, xform);
+
+        var afterEv = new AfterDashEvent(user, origin, args.Target);
+        RaiseLocalEvent(uid, ref afterEv);
+
         args.Handled = true;
     }
 

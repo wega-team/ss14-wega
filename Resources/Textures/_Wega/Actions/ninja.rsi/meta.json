@@ -1,0 +1,481 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Taken from https://github.com/ss220-space/Paradise/blob/82a0643052a6b2888938b6bc5b5ddaf0f13ab94f/icons/mob/actions/actions_ninja.dmi",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "arrows_no_lightning",
+            "delays": [
+                [
+                    1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.3
+                ]
+            ]
+        },
+        {
+            "name": "bsm_0",
+            "delays": [
+                [
+                    2,
+                    0.3,
+                    0.3,
+                    0.3,
+                    0.3
+                ]
+            ]
+        },
+        {
+            "name": "bsm_1",
+            "delays": [
+                [
+                    2,
+                    0.3,
+                    0.3,
+                    0.3,
+                    0.3
+                ]
+            ]
+        },
+        {
+            "name": "bsm_2",
+            "delays": [
+                [
+                    2,
+                    0.3,
+                    0.3,
+                    0.3,
+                    0.3
+                ]
+            ]
+        },
+        {
+            "name": "bsm_3",
+            "delays": [
+                [
+                    2,
+                    0.3,
+                    0.3,
+                    0.3,
+                    0.3
+                ]
+            ]
+        },
+        {
+            "name": "bsm_activation",
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.6,
+                    0.1,
+                    0.1,
+                    0.1,
+                    4
+                ]
+            ]
+        },
+        {
+            "name": "bsm_deactivation",
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.6,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    4
+                ]
+            ]
+        },
+        {
+            "name": "bsm_loading",
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "bsm_wrong",
+            "delays": [
+                [
+                    0.3,
+                    0.3,
+                    0.3,
+                    0.3,
+                    0.3,
+                    0.3,
+                    2
+                ]
+            ]
+        },
+        {
+            "name": "bsm_correct",
+            "delays": [
+                [
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.3,
+                    0.3,
+                    0.3,
+                    0.3,
+                    0.3,
+                    2
+                ]
+            ]
+        },
+        {
+            "name": "ninja_sleeper",
+            "delays": [
+                [
+                    2.5,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "ninja_sleeper_open"
+        },
+        {
+            "name": "arrows_0",
+            "delays": [
+                [
+                    1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "arrows_1",
+            "delays": [
+                [
+                    1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "arrows_2",
+            "delays": [
+                [
+                    1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "arrows_3",
+            "delays": [
+                [
+                    1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "background_green"
+        },
+        {
+            "name": "background_red"
+        },
+        {
+            "name": "background_blue"
+        },
+        {
+            "name": "background_green_active",
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "background_red_active",
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "background_blue_active",
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "smoke_auto"
+        },
+        {
+            "name": "separator"
+        },
+        {
+            "name": "smoke"
+        },
+        {
+            "name": "shuriken",
+            "delays": [
+                [
+                    0.2,
+                    0.2,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "ninja_cloak"
+        },
+        {
+            "name": "ninja_spirit_form"
+        },
+        {
+            "name": "dust"
+        },
+        {
+            "name": "chameleon"
+        },
+        {
+            "name": "kunai",
+            "delays": [
+                [
+                    0.2,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "adrenal"
+        },
+        {
+            "name": "energynet",
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.3,
+                    0.1,
+                    0.1,
+                    0.3,
+                    0.5,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "emergency_blink"
+        },
+        {
+            "name": "ninja_clones"
+        },
+        {
+            "name": "emp"
+        },
+        {
+            "name": "chem_injector",
+            "delays": [
+                [
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2
+                ]
+            ]
+        },
+        {
+            "name": "healthstatus"
+        },
+        {
+            "name": "caltrop",
+            "delays": [
+                [
+                    0.4,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2
+                ]
+            ]
+        },
+        {
+            "name": "cloning"
+        },
+        {
+            "name": "spider_green"
+        },
+        {
+            "name": "spider_red"
+        },
+        {
+            "name": "spider_blue"
+        },
+        {
+            "name": "separator2"
+        },
+        {
+            "name": "work_in_progress"
+        },
+        {
+            "name": "teleconsole",
+            "delays": [
+                [
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2
+                ]
+            ]
+        },
+        {
+            "name": "ai_face"
+        },
+        {
+            "name": "ninja_borg"
+        },
+        {
+            "name": "server"
+        },
+        {
+            "name": "buckler"
+        },
+        {
+            "name": "cash"
+        },
+        {
+            "name": "handcuff"
+        },
+        {
+            "name": "spider_charge"
+        },
+        {
+            "name": "ninja_teleport"
+        },
+        {
+            "name": "headset_green"
+        },
+        {
+            "name": "BSM"
+        },
+        {
+            "name": "changeling"
+        },
+        {
+            "name": "vampire"
+        },
+        {
+            "name": "syndicate"
+        },
+        {
+            "name": "energy_katana_green"
+        }
+    ]
+}

@@ -2,9 +2,24 @@
   id: SpaceNinja
   name: roles-antag-space-ninja-name
   antagonist: true
-  setPreference: false
+  setPreference: true
   objective: roles-antag-space-ninja-objective
   guides: [ SpaceNinja ]
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 10h
+  - !type:DepartmentTimeRequirement
+    department: Security
+    time: 5h
+  - !type:DepartmentTimeRequirement
+    department: Science
+    time: 5h
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+    factions:
+    - SimpleHostile
 
 #Ninja Gear
 - type: startingGear
@@ -24,8 +39,8 @@
     pocket2: PinpointerStation
     belt: EnergyKatana
     underwearbottom: ClothingUnderBottomNinja # Corvax-Wega
-  inhand:
-    - JetpackBlackFilled
+ #  inhand:
+ #    - JetpackBlackFilled # Corvax-Wega-Edit
   storage:
     back: # belt holds katana so satchel has the tools for sabotaging things
     - Crowbar
@@ -38,6 +53,26 @@
     - Flare
     - FoodSnackNutribrick
     - DrinkWaterBottleFull
+
+# Corvax-Wega-Edit-Start
+- type: startingGear
+  id: SpaceNinjaGearRespawn
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitNinja
+    back: ClothingBackpackSatchelNinja
+    mask: ClothingMaskNinja
+    head: ClothingHeadHelmetSpaceNinja
+    eyes: ClothingEyesVisorNinja
+    gloves: ClothingHandsGlovesSpaceNinja
+    outerClothing: ClothingOuterSuitSpaceNinja
+    shoes: ClothingShoesSpaceNinja
+    id: NinjaPDA
+    ears: ClothingHeadsetNinja
+    pocket1: SpiderCharge
+    pocket2: PinpointerStation
+    belt: EnergyKatana
+    underwearbottom: ClothingUnderBottomNinja
+# Corvax-Wega-Edit-End
 
 - type: chameleonOutfit
   id: NinjaChameleonOutfit

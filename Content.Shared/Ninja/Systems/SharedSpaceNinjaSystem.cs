@@ -99,6 +99,7 @@ public abstract class SharedSpaceNinjaSystem : EntitySystem
             Suit.RevealNinja((uid, suit), ent, disable: disable);
     }
 
+
     /// <summary>
     /// Require ninja to fight with HONOR, no guns!
     /// </summary>

@@ -11,21 +11,45 @@
       "name": "icon"
     },
     {
-      "name": "icon-red"
+      "name": "icon_ninja_gloves_classic_blue"
     },
     {
-      "name": "icon-green"
+      "name": "icon_ninja_gloves_classic_red"
     },
     {
-      "name": "equipped-HAND",
+      "name": "icon_ninja_gloves_classic_green"
+    },
+    {
+      "name": "icon_ninja_gloves_new_blue"
+    },
+    {
+      "name": "icon_ninja_gloves_new_red"
+    },
+    {
+      "name": "icon_ninja_gloves_new_green"
+    },
+    {
+      "name": "equipped_ninja_gloves_classic_blue",
       "directions": 4
     },
     {
-      "name": "red-equipped-HAND",
+      "name": "equipped_ninja_gloves_classic_red",
       "directions": 4
     },
     {
-      "name": "green-equipped-HAND",
+      "name": "equipped_ninja_gloves_classic_green",
+      "directions": 4
+    },
+    {
+      "name": "equipped_ninja_gloves_new_blue",
+      "directions": 4
+    },
+    {
+      "name": "equipped_ninja_gloves_new_green",
+      "directions": 4
+    },
+    {
+      "name": "equipped_ninja_gloves_new_red",
       "directions": 4
     },
     {

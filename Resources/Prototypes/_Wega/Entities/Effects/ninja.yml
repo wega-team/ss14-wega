@@ -1,0 +1,70 @@
+- type: entity
+  parent: Smoke
+  id: NinjaSmoke
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: EdgeSpreader
+    id: NinjaSmoke
+
+- type: entity
+  id: NinjaJetpackEffectRed
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TimedDespawn
+    lifetime: 2
+  - type: Sprite
+    drawdepth: SmallMobs
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: ["enum.EffectLayers.Unshaded"]
+      sprite: Effects/atmospherics.rsi
+      state: frezon_old
+      color: "#FF6060"
+  - type: EffectVisuals
+  - type: Tag
+    tags:
+      - HideContextMenu
+  - type: AnimationPlayer
+
+- type: entity
+  id: NinjaJetpackEffectBlue
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TimedDespawn
+    lifetime: 2
+  - type: Sprite
+    drawdepth: SmallMobs
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: ["enum.EffectLayers.Unshaded"]
+      sprite: Effects/atmospherics.rsi
+      state: frezon_old
+      color: "#6060FF"
+  - type: EffectVisuals
+  - type: Tag
+    tags:
+      - HideContextMenu
+  - type: AnimationPlayer
+
+- type: entity
+  id: NinjaJetpackEffectGreen
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TimedDespawn
+    lifetime: 2
+  - type: Sprite
+    drawdepth: SmallMobs
+    noRot: true
+    layers:
+    - shader: unshaded
+      map: ["enum.EffectLayers.Unshaded"]
+      sprite: Effects/atmospherics.rsi
+      state: frezon_old
+      color: "#60FF60"
+  - type: EffectVisuals
+  - type: Tag
+    tags:
+      - HideContextMenu
+  - type: AnimationPlayer

@@ -1,3 +1,16 @@
+# Ninja concentration: severity 0 = on cooldown, severity 1 = active (ready)
+- type: alert
+  id: NinjaConcentration
+  minSeverity: 0
+  maxSeverity: 1
+  icons:
+  - sprite: /Textures/_Wega/Actions/ninja.rsi
+    state: spider_red
+  - sprite: /Textures/_Wega/Actions/ninja.rsi
+    state: energy_katana_green
+  name: alerts-ninja-concentration-name
+  description: alerts-ninja-concentration-desc
+
 - type: alert
   id: Offer
   clickEvent: !type:AcceptOfferAlertEvent

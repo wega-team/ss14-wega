@@ -1,0 +1,68 @@
+<controls:FancyWindow
+    xmlns="https://spacestation14.io"
+    xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+    xmlns:customControls="clr-namespace:Content.Client.Administration.UI.CustomControls"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="{Loc 'mind-scan-machine-window-title'}"
+    MinSize="420 380">
+
+    <BoxContainer Orientation="Vertical" Margin="8">
+
+        <!-- Occupant section -->
+        <BoxContainer Orientation="Horizontal" Margin="0 0 0 8" VerticalExpand="False">
+            <PanelContainer StyleClasses="PanelLow" Margin="0 0 6 0">
+                <SpriteView
+                    Name="OccupantSprite"
+                    OverrideDirection="South"
+                    Scale="2 2"
+                    SetSize="64 64"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center" />
+            </PanelContainer>
+            <BoxContainer Orientation="Vertical" VerticalAlignment="Center" HorizontalExpand="True">
+                <BoxContainer Orientation="Horizontal" Margin="0 0 0 4">
+                    <Label Text="{Loc 'mind-scan-machine-label-name'}" MinWidth="80" FontColorOverride="#AAAAAA"/>
+                    <Label Name="OccupantNameLabel" Text="—" />
+                </BoxContainer>
+                <BoxContainer Orientation="Horizontal">
+                    <Label Text="{Loc 'mind-scan-machine-label-status'}" MinWidth="80" FontColorOverride="#AAAAAA"/>
+                    <Label Name="OccupantStatusLabel" Text="—" />
+                </BoxContainer>
+                <BoxContainer Orientation="Horizontal" Margin="0 4 0 0">
+                    <Label Text="{Loc 'mind-scan-machine-label-damage'}" MinWidth="80" FontColorOverride="#AAAAAA"/>
+                    <Label Name="OccupantDamageLabel" Text="—" />
+                </BoxContainer>
+            </BoxContainer>
+        </BoxContainer>
+
+        <customControls:HSeparator StyleClasses="LowDivider" Margin="0 0 0 8"/>
+
+        <!-- Action buttons -->
+        <BoxContainer Orientation="Vertical" Margin="0 0 0 8" VerticalExpand="False">
+            <Button Name="ScanButton"
+                    Text="{Loc 'mind-scan-machine-button-scan'}"
+                    HorizontalExpand="True"
+                    Margin="0 2"
+                    Disabled="True" />
+            <Button Name="TeleportButton"
+                    Text="{Loc 'mind-scan-machine-button-teleport'}"
+                    HorizontalExpand="True"
+                    Margin="0 2"
+                    Disabled="True" />
+            <Button Name="EjectButton"
+                    Text="{Loc 'mind-scan-machine-button-eject'}"
+                    HorizontalExpand="True"
+                    Margin="0 2"
+                    Disabled="True" />
+        </BoxContainer>
+
+        <customControls:HSeparator StyleClasses="LowDivider" Margin="0 0 0 8"/>
+
+        <!-- Scanned list -->
+        <Label Text="{Loc 'mind-scan-machine-scanned-header'}" StyleClasses="LabelBig" Margin="0 0 0 4"/>
+        <ScrollContainer VerticalExpand="True" MinHeight="80">
+            <BoxContainer Name="ScannedList" Orientation="Vertical" HorizontalExpand="True"/>
+        </ScrollContainer>
+
+    </BoxContainer>
+</controls:FancyWindow>

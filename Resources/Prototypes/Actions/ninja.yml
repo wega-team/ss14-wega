@@ -7,13 +7,14 @@
   components:
   - type: Action
     priority: -13
+  - type: NinjaAbilityBackground
 
 # suit
 - type: entity
   parent: BaseAction
   id: ActionCreateThrowingStar
   name: Create throwing star
-  description: Channels suit power into creating a throwing star that deals extra stamina damage.
+  description: Channels suit power into creating a throwing star that deals extra stamina damage. Costs 14 charge.
   components:
   - type: Action
     useDelay: 0.5
@@ -24,6 +25,7 @@
     priority: -10
   - type: InstantAction
     event: !type:CreateItemEvent {}
+  - type: NinjaAbilityBackground
 
 - type: entity
   parent: BaseAction
@@ -35,17 +37,18 @@
     useDelay: 1
     icon:
       sprite: Objects/Weapons/Melee/energykatana.rsi
-      state: icon
+      state: icon-green
     itemIconStyle: NoItem
     priority: -11
   - type: InstantAction
     event: !type:RecallKatanaEvent {}
+  - type: NinjaAbilityBackground
 
 - type: entity
   parent: BaseAction
   id: ActionNinjaEmp
   name: EM Burst
-  description: Disable any nearby technology with an electro-magnetic pulse.
+  description: Disable any nearby technology with an electro-magnetic pulse. Costs 180 charge.
   components:
   - type: Action
     icon:
@@ -55,6 +58,7 @@
     priority: -13
   - type: InstantAction
     event: !type:NinjaEmpEvent {}
+  - type: NinjaAbilityBackground
 
 - type: entity
   parent: BaseAction
@@ -68,6 +72,216 @@
     priority: -9
   - type: InstantAction
     event: !type:ToggleActionEvent
+  - type: NinjaAbilityBackground
+
+- type: entity
+  parent: BaseAction
+  id: ActionToggleSpiritForm
+  name: Spirit Form
+  description: "Makes your body more ghostly, allowing you to walk through walls. Drains 6% of max charge per second. Unfortunate if the energy runs out in a closed room, isn't it? Cooldown: 25 seconds."
+  components:
+  - type: Action
+    icon:
+      sprite: _Wega/Actions/ninja.rsi
+      state: ninja_spirit_form
+    itemIconStyle: BigAction
+    priority: -15
+  - type: InstantAction
+    event: !type:ToggleSpiritFormEvent {}
+  - type: NinjaAbilityBackground
+
+- type: entity
+  parent: BaseAction
+  id: ActionNinjaSmokeScreen
+  name: Smoke Screen
+  description: "Deploy a volumetric smoke screen to cover your escape. Costs 95 charge. Cooldown: 10 seconds. Lasts 6 seconds."
+  components:
+  - type: Action
+    useDelay: 10
+    icon:
+      sprite: _Wega/Actions/ninja.rsi
+      state: smoke
+    itemIconStyle: NoItem
+    priority: -16
+  - type: InstantAction
+    event: !type:NinjaSmokeScreenEvent {}
+  - type: NinjaAbilityBackground
+
+- type: entity
+  parent: BaseAction
+  id: ActionChainKunai
+  name: Chain Kunai
+  description: "Get over here! Throws a chain kunai that pulls the target to you and knocks them down. Costs 20 charge. Cooldown: 5 seconds."
+  components:
+  - type: Action
+    useDelay: 5
+    icon:
+      sprite: _Wega/Actions/ninja.rsi
+      state: kunai
+    itemIconStyle: NoItem
+    priority: -14
+  - type: TargetAction
+    checkCanAccess: false
+    range: 0
+  - type: WorldTargetAction
+    event: !type:ChainKunaiEvent {}
+  - type: NinjaAbilityBackground
+
+- type: entity
+  parent: BaseAction
+  id: ActionNinjaEnergyClones
+  name: Energy Clones
+  description: "Expend suit power to summon two energy duplicates that hunt down enemies, prioritizing mind-shielded targets. Clones have 50 HP, deal 25 damage and last 20 seconds. Cost: 300 charge. Cooldown: 25 seconds."
+  components:
+  - type: Action
+    useDelay: 25
+    icon:
+      sprite: _Wega/Actions/ninja.rsi
+      state: ninja_clones
+    itemIconStyle: NoItem
+    priority: -17
+  - type: InstantAction
+    event: !type:NinjaEnergyClonesEvent {}
+  - type: NinjaAbilityBackground
+
+- type: entity
+  parent: BaseAction
+  id: ActionNinjaAdrenalineBurst
+  name: Adrenaline Burst
+  description: "Consume 15 units of uranium from the suit's fuel tank to flood your bloodstream with 10u hyperzine and 5u uranium. Insert uranium sheets directly into the suit to refuel. Cooldown: 10 seconds."
+  components:
+  - type: Action
+    useDelay: 10
+    icon:
+      sprite: _Wega/Actions/ninja.rsi
+      state: adrenal
+    itemIconStyle: NoItem
+    priority: -19
+  - type: InstantAction
+    event: !type:NinjaAdrenalineBurstEvent {}
+  - type: NinjaAbilityBackground
+
+- type: entity
+  parent: BaseAction
+  id: ActionNinjaHealingCocktail
+  name: Healing Cocktail
+  description: "Consume 15 units of uranium to inject 20u of Chiurizin — a powerful experimental reagent. Can restore lost limbs, heal bones and organs. WARNING: Chiurizin is slow to clear, expels other reagents, and overdoses at 30u. Overdose may be fatal. Cooldown: 15 seconds."
+  components:
+  - type: Action
+    useDelay: 15
+    icon:
+      sprite: _Wega/Actions/ninja.rsi
+      state: chem_injector
+    itemIconStyle: NoItem
+    priority: -20
+  - type: InstantAction
+    event: !type:NinjaHealingCocktailEvent {}
+  - type: NinjaAbilityBackground
+
+- type: entity
+  parent: BaseMentalAction
+  id: ActionNinjaEmergencyTeleport
+  name: Emergency Teleport
+  description: "Blink to a random location within 4 meters. Can be used while unconscious. Cost: 150 charge. Cooldown: 10 seconds."
+  components:
+  - type: Action
+    useDelay: 10
+    icon:
+      sprite: _Wega/Actions/ninja.rsi
+      state: emergency_blink
+    itemIconStyle: NoItem
+    priority: -18
+  - type: InstantAction
+    event: !type:NinjaEmergencyTeleportEvent {}
+  - type: NinjaAbilityBackground
+
+- type: entity
+  parent: BaseAction
+  id: ActionToggleNinjaJetpack
+  name: Toggle Ninja Jetpack
+  description: "Toggle suit thrusters. Drains 10 charge per second while active."
+  components:
+  - type: Action
+    icon:
+      sprite: Objects/Tanks/Jetpacks/black.rsi
+      state: icon
+    iconOn:
+      sprite: Objects/Tanks/Jetpacks/black.rsi
+      state: icon-on
+    itemIconStyle: NoItem
+    priority: -17
+  - type: InstantAction
+    event: !type:ToggleNinjaJetpackEvent {}
+  - type: NinjaAbilityBackground
+
+- type: entity
+  parent: BaseAction
+  id: ActionNinjaEnergyNet
+  name: Energy Net
+  description: "Ensnare a target in an energy net, preventing them from moving. The net is durable but can be broken by any melee hit. Destroys itself after 20 seconds. Costs 200 charge."
+  components:
+  - type: Action
+    useDelay: 15
+    icon:
+      sprite: _Wega/Actions/ninja.rsi
+      state: energynet
+    itemIconStyle: NoItem
+    priority: -15
+  - type: TargetAction
+    checkCanAccess: false
+    range: 0
+  - type: WorldTargetAction
+    event: !type:NinjaEnergyNetEvent {}
+  - type: NinjaAbilityBackground
+
+- type: entity
+  parent: BaseAction
+  id: ActionNinjaGetChameleonScanner
+  name: Chameleon Scanner
+  description: "Spawns a biometric scanner. Scan a humanoid to copy their appearance, voice and name, and create a holographic ID card. Small passive drain while active."
+  components:
+  - type: Action
+    icon:
+      sprite: _Wega/Actions/ninja.rsi
+      state: chameleon
+    itemIconStyle: NoItem
+    priority: -15
+  - type: InstantAction
+    event: !type:NinjaGetChameleonScannerEvent {}
+  - type: NinjaAbilityBackground
+
+- type: entity
+  parent: BaseAction
+  id: ActionNinjaAutoDust
+  name: Auto Dust
+  description: "Cycle auto-dust trigger: Disabled → On Death → On Critical. When triggered, turns you to ash."
+  components:
+  - type: Action
+    icon:
+      sprite: _Wega/Actions/ninja.rsi
+      state: dust
+    itemIconStyle: NoItem
+    priority: -23
+  - type: InstantAction
+    event: !type:ToggleAutoDustEvent {}
+  - type: NinjaAbilityBackground
+
+- type: entity
+  parent: BaseAction
+  id: ActionNinjaCaltrop
+  name: Electro-Caltrop
+  description: "Deploy 3 electrified caltrop traps in a row behind you. Anyone who steps on them takes 10 piercing damage and is knocked down for 2 seconds. The ninja who deployed them is immune. Cost: 100 charge. Cooldown: 5 seconds. Traps last 10 seconds."
+  components:
+  - type: Action
+    useDelay: 5
+    icon:
+      sprite: _Wega/Actions/ninja.rsi
+      state: caltrop
+    itemIconStyle: NoItem
+    priority: -15
+  - type: InstantAction
+    event: !type:NinjaCaltropEvent {}
+  - type: NinjaAbilityBackground
 
 # katana
 - type: entity
@@ -91,3 +305,4 @@
     range: 0
   - type: WorldTargetAction
     event: !type:DashEvent
+  - type: NinjaAbilityBackground

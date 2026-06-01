@@ -1,5 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using Content.Client.Clothing;
 using Content.Client.DisplacementMap;
 using Content.Client.Examine;
 using Content.Client.Strip;
@@ -247,6 +248,7 @@ namespace Content.Client.Hands.Systems
         {
             if (!Resolve(ent, ref ent.Comp1, ref ent.Comp2, false))
                 return;
+
             var handComp = ent.Comp1;
             var sprite = ent.Comp2;
 
@@ -266,7 +268,8 @@ namespace Content.Client.Hands.Systems
             {
                 foreach (var key in revealedLayers)
                 {
-                    _sprite.RemoveLayer((ent, sprite), key);
+                    if (_sprite.LayerMapTryGet((ent, sprite), key, out _, false))
+                        _sprite.RemoveLayer((ent, sprite), key);
                 }
 
                 revealedLayers.Clear();

@@ -65,7 +65,7 @@
   - type: Objective
     icon:
       sprite: Clothing/Mask/ninja.rsi
-      state: icon
+      state: icon_ninja_mask_classic_green
 
 - type: entity
   parent: [BaseNinjaObjective, BaseCodeObjective]
@@ -88,3 +88,343 @@
     icon:
       sprite: Objects/Weapons/Melee/stunbaton.rsi
       state: stunbaton_on
+
+- type: entity
+  parent: [BaseNinjaObjective, BaseCodeObjective]
+  id: CargoHackObjective
+  name: Steal cargo funds
+  description: Use your gloves on a cargo order console to drain 75% of the cargo account directly into your hands.
+  components:
+  - type: Objective
+    icon:
+      sprite: Objects/Economy/cash.rsi
+      state: cash
+
+# --- Randomised special objectives (one of these three is picked per round) ---
+
+- type: entity
+  parent: BaseNinjaObjective
+  id: NinjaFrameObjective
+  name: Frame a target
+  description: Make security give the chosen crew member a criminal record by any means.
+  components:
+  - type: Objective
+    icon:
+      sprite: Objects/Misc/id_cards.rsi
+      state: default
+  - type: TargetObjective
+    title: objective-condition-ninja-frame-title
+  - type: PickRandomPerson
+    filters:
+    - !type:NoMindShieldMindFilter {}
+  - type: NinjaFrameCondition
+
+- type: entity
+  parent: BaseNinjaObjective
+  id: NinjaProtectObjective
+  name: Protect a target
+  description: Ensure the chosen crew member survives the round. Another antagonist is hunting them.
+  components:
+  - type: Objective
+    icon:
+      sprite: Clothing/Mask/ninja.rsi
+      state: icon_ninja_mask_classic_green
+  - type: TargetObjective
+    title: objective-condition-ninja-protect-title
+  - type: PickKillTargetPerson
+  - type: KeepAliveCondition
+
+- type: entity
+  parent: BaseNinjaObjective
+  id: NinjaIntimidateObjective
+  name: Intimidate a target
+  description: Deal significant damage to the chosen crew member without killing them.
+  components:
+  - type: Objective
+    icon:
+      sprite: Objects/Weapons/Melee/e_sword.rsi
+      state: icon
+  - type: TargetObjective
+    title: objective-condition-ninja-intimidate-title-short
+  - type: PickRandomPerson
+  - type: NinjaIntimidateCondition
+    minDamage: 80
+    maxDamage: 200
+
+- type: entity
+  parent: BaseNinjaObjective
+  id: KidnapObjective
+  name: Kidnap a person of interest
+  description: You have received intelligence on crew members with valuable knowledge. Lure them to your base and scan their minds. You will learn your targets' roles, but not their names — identify them yourself.
+  components:
+  - type: Objective
+    icon:
+      sprite: Clothing/Mask/ninja.rsi
+      state: icon_ninja_mask_classic_green
+  - type: KidnapCondition
+    allowedJobs:
+    - Captain
+    - HeadOfPersonnel
+    - Quartermaster
+    - ChiefEngineer
+    - ChiefMedicalOfficer
+    - ResearchDirector
+    - HeadOfSecurity
+    - StationEngineer
+    - AtmosphericTechnician
+    - TechnicalAssistant
+    - MedicalDoctor
+    - Paramedic
+    - Chemist
+    - MedicalIntern
+    - Psychologist
+    - Scientist
+    - ResearchAssistant
+    - Detective
+    - Warden
+    - SecurityOfficer
+    - SecurityCadet
+    - CargoTechnician
+    - SalvageSpecialist
+    - Janitor
+    - Bartender
+    - Chef
+    - Botanist
+    - ServiceWorker
+    - Chaplain
+    - Clown
+    - Lawyer
+    - Librarian
+    - Musician
+    - Reporter
+
+- type: entity
+  parent: [BaseNinjaObjective, BaseCodeObjective]
+  id: CollectBloodObjective
+  name: objective-collect-blood-title
+  description: objective-collect-blood-description
+  components:
+  - type: Objective
+    icon:
+      sprite: Objects/Specific/Chemistry/vial.rsi
+      state: fill-6
+
+- type: entity
+  parent: [BaseNinjaObjective, BaseCodeObjective]
+  id: AiSabotageObjective
+  name: Sabotage the AI
+  description: Use your gloves on an AI upload console to wipe the AI's laws and replace them with ion storm laws, driving borgs and the AI haywire.
+  components:
+  - type: Objective
+    icon:
+      sprite: Structures/Machines/computers.rsi
+      state: aiupload
+
+- type: entity
+  parent: [BaseNinjaObjective, BaseCodeObjective]
+  id: StealBorgObjective
+  name: Steal a cyborg
+  description: Use your gloves to interface with a station cyborg (not xenoborg or active Syndicate borg) and spend 6 seconds converting it into your ninja borg. The borg brain becomes a chip; if moved to another chassis, that chassis becomes a ninja borg too.
+  components:
+  - type: Objective
+    icon:
+      sprite: _Wega/Mobs/Silicon/ninja.rsi
+      state: ninja
+
+# WeightedRandom prototypes used by AntagRandomObjectives to pick one of the three above.
+
+- type: weightedRandom
+  id: NinjaSpecialObjectiveGroup
+  weights:
+    NinjaFrameObjective: 1
+    NinjaProtectObjective: 1
+    NinjaIntimidateObjective: 1
+
+- type: weightedRandom
+  id: NinjaSpecialObjectiveSets
+  weights:
+    NinjaSpecialObjectiveGroup: 1
+
+# --- NinjaSpawn objective groups (used by NinjaSpawn event rule) ---
+# Group 1: взлом борга (prob: 0.5 in rule)
+- type: weightedRandom
+  id: NinjaSpawnSets1
+  weights:
+    NinjaSpawnGroup1: 1
+
+- type: weightedRandom
+  id: NinjaSpawnGroup1
+  weights:
+    StealBorgObjective: 1
+
+# Group 2: взлом ИИ 50% / взлом серверов РНД 50%
+- type: weightedRandom
+  id: NinjaSpawnSets2
+  weights:
+    NinjaSpawnGroup2: 1
+
+- type: weightedRandom
+  id: NinjaSpawnGroup2
+  weights:
+    AiSabotageObjective: 1
+    StealResearchObjective: 1
+
+# Group 3: взрыв бомбы 25% / подставить цель 25% / преподать урок 50%
+- type: weightedRandom
+  id: NinjaSpawnSets3
+  weights:
+    NinjaSpawnGroup3: 1
+
+- type: weightedRandom
+  id: NinjaSpawnGroup3
+  weights:
+    SpiderChargeObjective: 1
+    NinjaFrameObjective: 1
+    NinjaIntimidateObjective: 2
+
+# Group 4: кража денег 50% / похищение 50%
+- type: weightedRandom
+  id: NinjaSpawnSets4
+  weights:
+    NinjaSpawnGroup4: 1
+
+- type: weightedRandom
+  id: NinjaSpawnGroup4
+  weights:
+    CargoHackObjective: 1
+    KidnapObjective: 1
+
+# --- NinjaKillObjective (used by SubNinja Hacker template) ---
+- type: entity
+  parent: [BaseNinjaObjective, BaseKillObjective]
+  id: NinjaKillObjective
+  name: Eliminate a target
+  description: The chosen crew member must not escape the station alive.
+  components:
+  - type: Objective
+    difficulty: 2.0
+    icon:
+      sprite: Objects/Weapons/Melee/e_sword.rsi
+      state: icon
+  - type: TargetObjective
+    title: objective-condition-maroon-person-title
+  - type: PickRandomPerson
+    filters:
+    - !type:TargetObjectiveMindFilter
+      blacklist:
+        components:
+        - KillPersonCondition
+  - type: KillPersonCondition
+    requireMaroon: false
+
+# --- SubNinja Hacker kill group ---
+- type: weightedRandom
+  id: NinjaHackerKillSets
+  weights:
+    NinjaHackerKillGroup: 1
+
+- type: weightedRandom
+  id: NinjaHackerKillGroup
+  weights:
+    NinjaKillObjective: 1
+
+# --- Ninja steal valuable item (used by SubNinja Defender ×2 and Hacker ×1) ---
+- type: entity
+  abstract: true
+  parent: [BaseNinjaObjective, BaseStealObjective]
+  id: BaseNinjaStealObjective
+  components:
+  - type: StealCondition
+    verifyMapExistence: false
+  - type: Objective
+    difficulty: 2.0
+  - type: ObjectiveLimit
+    limit: 2
+
+- type: entity
+  parent: BaseNinjaStealObjective
+  id: NinjaStealHandTeleporterObjective
+  components:
+  - type: StealCondition
+    stealGroup: HandTeleporter
+
+- type: entity
+  parent: BaseNinjaStealObjective
+  id: NinjaStealCaptainGunObjective
+  components:
+  - type: StealCondition
+    stealGroup: WeaponAntiqueLaser
+    owner: job-name-captain
+
+- type: entity
+  parent: BaseNinjaStealObjective
+  id: NinjaStealCaptainIDObjective
+  components:
+  - type: StealCondition
+    stealGroup: CaptainIDCard
+
+- type: entity
+  parent: BaseNinjaStealObjective
+  id: NinjaStealCaptainJetpackObjective
+  components:
+  - type: Objective
+    difficulty: 2.5
+  - type: StealCondition
+    stealGroup: JetpackCaptainFilled
+    owner: job-name-captain
+
+- type: entity
+  parent: BaseNinjaStealObjective
+  id: NinjaStealEnergyMagnumObjective
+  components:
+  - type: Objective
+    difficulty: 2.5
+  - type: StealCondition
+    stealGroup: WeaponEnergyMagnum
+    owner: job-name-hos
+
+- type: entity
+  parent: BaseNinjaStealObjective
+  id: NinjaStealKravMagaObjective
+  components:
+  - type: Objective
+    difficulty: 2.5
+  - type: StealCondition
+    stealGroup: GlovesKravMaga
+    owner: job-name-warden
+
+- type: entity
+  parent: BaseNinjaStealObjective
+  id: NinjaStealBlueLaserPistolObjective
+  components:
+  - type: Objective
+    difficulty: 2.5
+  - type: StealCondition
+    stealGroup: WeaponBlueLaserPistol
+
+- type: entity
+  parent: BaseNinjaStealObjective
+  id: NinjaStealRDHardsuitObjective
+  components:
+  - type: Objective
+    difficulty: 2.5
+  - type: StealCondition
+    stealGroup: ClothingOuterHardsuitRd
+    owner: job-name-rd
+
+- type: weightedRandom
+  id: NinjaStealSets
+  weights:
+    NinjaStealGroup: 1
+
+- type: weightedRandom
+  id: NinjaStealGroup
+  weights:
+    NinjaStealHandTeleporterObjective: 1
+    NinjaStealCaptainGunObjective: 1
+    NinjaStealCaptainIDObjective: 1
+    NinjaStealCaptainJetpackObjective: 1
+    NinjaStealEnergyMagnumObjective: 1
+    NinjaStealKravMagaObjective: 1
+    NinjaStealBlueLaserPistolObjective: 1
+    NinjaStealRDHardsuitObjective: 1

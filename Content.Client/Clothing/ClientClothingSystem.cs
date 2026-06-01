@@ -110,6 +110,11 @@ public sealed class ClientClothingSystem : ClothingSystem
 
     private void OnGetVisuals(EntityUid uid, ClothingComponent item, GetEquipmentVisualsEvent args)
     {
+        // Ninja chameleon: this worn item's on-body visual is suppressed (mimicking an empty
+        // target slot) while the item stays equipped so its gameplay components keep working.
+        if (HasComp<Content.Shared.Ninja.Components.NinjaHiddenClothingComponent>(uid))
+            return;
+
         if (!TryComp(args.Equipee, out InventoryComponent? inventory))
             return;
 
@@ -252,6 +257,9 @@ public sealed class ClientClothingSystem : ClothingSystem
 
     private void OnDidUnequip(Entity<SpriteComponent> entity, ref DidUnequipEvent args)
     {
+        if (HasComp<SuppressClothingVisualsComponent>(entity))
+            return;
+
         if (!TryComp(entity, out InventorySlotsComponent? inventorySlots))
             return;
 
@@ -290,6 +298,9 @@ public sealed class ClientClothingSystem : ClothingSystem
         InventoryComponent? inventory = null, SpriteComponent? sprite = null, ClothingComponent? clothingComponent = null,
         InventorySlotsComponent? inventorySlots = null)
     {
+        if (HasComp<SuppressClothingVisualsComponent>(equipee))
+            return;
+
         if (!Resolve(equipee, ref inventory, ref sprite, ref inventorySlots) ||
            !Resolve(equipment, ref clothingComponent, false))
         {

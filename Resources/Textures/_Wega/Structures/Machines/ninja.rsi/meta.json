@@ -1,0 +1,25 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Taken from Paradise at https://github.com/ss220-space/Paradise/blob/fe3d2453d6de24d2efc95e962719c6c25c6dda9d/icons/obj/ninjaobjects.dmi",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "ninja_cloning_off"
+        },
+        {
+            "name": "ninja_cloning_on",
+            "delays": [
+                [
+                    0.2,
+                    0.1,
+                    0.2,
+                    0.1
+                ]
+            ]
+        }
+    ]
+}

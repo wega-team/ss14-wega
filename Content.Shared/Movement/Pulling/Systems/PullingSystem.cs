@@ -485,7 +485,9 @@ public sealed class PullingSystem : EntitySystem
 
         if (pullable.Comp.Puller == pullerUid)
         {
-            return TryStopPull(pullable, pullable.Comp);
+            // Pass pullerUid so AttemptStopPullingEvent carries the initiator.
+            // Grab system intercepts this to escalate (combat mode) or release (no combat mode).
+            return TryStopPull(pullable, pullable.Comp, pullerUid);
         }
 
         return TryStartPull(pullerUid, pullable, pullableComp: pullable);

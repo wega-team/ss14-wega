@@ -1065,6 +1065,8 @@
   - type: Access
     tags:
     - Maintenance
+    - NuclearOperative
+    - SyndicateAgent
 
 - type: entity
   parent: [ IDCardStandard, BaseMajorContraband ]

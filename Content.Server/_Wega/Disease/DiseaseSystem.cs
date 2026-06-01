@@ -240,7 +240,7 @@ namespace Content.Server.Disease
 
         public void CureAllDiseases(EntityUid uid, DiseaseCarrierComponent? carrier = null)
         {
-            if (!Resolve(uid, ref carrier))
+            if (!Resolve(uid, ref carrier, logMissing: false))
                 return;
 
             foreach (var disease in carrier.Diseases)

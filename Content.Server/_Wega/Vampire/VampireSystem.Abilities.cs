@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Shared._Wega.Ninja;
 using System.Numerics;
 using Content.Server.Administration;
 using Content.Server.Antag;
@@ -269,7 +270,7 @@ public sealed partial class VampireSystem
     private void OnVampireGlare(EntityUid vampire, VampireComponent component, VampireGlareActionEvent ev)
     {
         var target = ev.Target;
-        if (HasComp<VampireComponent>(target) || HasComp<FlashImmunityComponent>(target))
+        if (HasComp<VampireComponent>(target) || HasComp<FlashImmunityComponent>(target) || HasComp<NinjaVampireProtectionComponent>(target))
             return;
 
         if (HasComp<BibleUserComponent>(target) && !component.TruePowerActive)
@@ -1288,7 +1289,7 @@ public sealed partial class VampireSystem
         }
 
         if (HasComp<VampireComponent>(target) || HasComp<MindShieldComponent>(target) || HasComp<BibleUserComponent>(target)
-            || HasComp<SyntheticOperatedComponent>(target))
+            || HasComp<SyntheticOperatedComponent>(target) || HasComp<NinjaVampireProtectionComponent>(target))
         {
             _popup.PopupEntity(Loc.GetString("vampire-enthall-failed", ("target", target)), uid, uid);
             return;

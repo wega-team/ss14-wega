@@ -53,7 +53,7 @@
       - BorgModuleAdvancedAnomaly
       - BorgModuleScienceRND
       - BorgModuleDNA
-   
+
 - type: entity
   id: BorgChassisGenericPlayer
   parent: BorgChassisGeneric
@@ -160,6 +160,55 @@
       - BorgModuleAdvancedClowning
       - BorgModuleGardening
       - BorgModuleServiceRare
+
+- type: entity
+  id: BorgChassisNinja
+  parent: BaseBorgChassisNT
+  name: борг-ниндзя
+  description: Шасси киборга с контрабандным нейронным чипом. Лояльно только теням.
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Silicon/ninja.rsi
+    layers:
+    - state: ninja
+      map: ["enum.BorgVisualLayers.Body", "movement"]
+    - state: ninja_e
+      map: ["enum.BorgVisualLayers.Light"]
+      shader: unshaded
+      visible: false
+  - type: NinjaBorgVisuals
+  - type: BorgSwitchableType
+    selectedBorgType: ninja
+    inherentRadioChannels:
+    - Common
+    - Binary
+    - Ninja
+  - type: BorgChassis
+    maxModules: 10
+    hasMindState: ninja_e
+    noMindState: ninja_e
+  - type: BorgTransponder
+    sprite:
+      sprite: _Wega/Mobs/Silicon/ninja.rsi
+      state: ninja
+    name: борг-ниндзя
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMicroreactor
+  - type: ContainerFill
+    containers:
+      borg_module:
+      - BorgModuleMedicalRare
+      - BorgModuleSurgery
+      - BorgModuleDisabler
+      - BorgModuleNinjaThermal
+      - BorgModuleNinjaChameleon
+      - BorgModuleNinjaJetpack
+      - BorgModuleNinjaPinpointer
+      - BorgModuleNinjaKatana
+      - BorgModuleNinjaShurikenLauncher
 
 
 

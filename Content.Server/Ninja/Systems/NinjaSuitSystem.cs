@@ -1,4 +1,6 @@
 using Content.Server.Ninja.Events;
+using Content.Shared.Actions;
+using Content.Shared.Clothing.Components;
 using Content.Shared.Emp;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Ninja.Components;
@@ -16,11 +18,15 @@ namespace Content.Server.Ninja.Systems;
 /// </summary>
 public sealed class NinjaSuitSystem : SharedNinjaSuitSystem
 {
+    [Dependency] private readonly SharedActionsSystem _actions = default!;
     [Dependency] private readonly SharedEmpSystem _emp = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!;
+    [Dependency] private readonly NinjaCloakSystem _cloak = default!;
     [Dependency] private readonly SpaceNinjaSystem _ninja = default!;
     [Dependency] private readonly PowerCellSystem _powerCell = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private readonly NinjaWidowArtSystem _widowArt = default!;
+    [Dependency] private readonly NinjaCloningSystem _ninjaCloning = default!;
 
     // How much the cell score should be increased per 1 AutoRechargeRate.
     private const int AutoRechargeValue = 100;
@@ -37,8 +43,6 @@ public sealed class NinjaSuitSystem : SharedNinjaSuitSystem
     protected override void NinjaEquipped(Entity<NinjaSuitComponent> ent, Entity<SpaceNinjaComponent> user)
     {
         base.NinjaEquipped(ent, user);
-
-        _ninja.SetSuitPowerAlert(user);
 
         // raise event to let ninja components get starting battery
         _ninja.GetNinjaBattery(user.Owner, out var uid, out var _);
@@ -101,14 +105,16 @@ public sealed class NinjaSuitSystem : SharedNinjaSuitSystem
     {
         base.UserUnequippedSuit(ent, user);
 
-        // remove power indicator
-        _ninja.SetSuitPowerAlert(user);
     }
 
     private void OnRecallKatana(Entity<NinjaSuitComponent> ent, ref RecallKatanaEvent args)
     {
         var (uid, comp) = ent;
         var user = args.Performer;
+
+        if (_cloak.TryRevealCloak(user))
+            return;
+
         if (!_ninja.NinjaQuery.TryComp(user, out var ninja) || ninja.Katana == null)
             return;
 
@@ -137,9 +143,12 @@ public sealed class NinjaSuitSystem : SharedNinjaSuitSystem
     private void OnEmp(Entity<NinjaSuitComponent> ent, ref NinjaEmpEvent args)
     {
         var (uid, comp) = ent;
-        args.Handled = true;
-
         var user = args.Performer;
+
+        if (_cloak.TryRevealCloak(user))
+            return;
+
+        args.Handled = true;
         if (!_ninja.TryUseCharge(user, comp.EmpCharge))
         {
             Popup.PopupEntity(Loc.GetString("ninja-no-power"), user, user);
@@ -150,5 +159,85 @@ public sealed class NinjaSuitSystem : SharedNinjaSuitSystem
             return;
 
         _emp.EmpPulse(Transform(user).Coordinates, comp.EmpRange, comp.EmpConsumption, comp.EmpDuration, user);
+    }
+
+    /// <summary>
+    /// Grant the abilities chosen via SpiderOS to the ninja.
+    /// Called from SpiderOSSystem when activation completes.
+    /// </summary>
+    public void GrantChosenAbilities(EntityUid suitUid, EntityUid user, int[] choices)
+    {
+        if (!TryComp<NinjaSuitComponent>(suitUid, out var comp))
+            return;
+
+        // Row 0: Smoke Screen (0), Chain Kunai (1), or Shurikens (2)
+        if (choices[0] == 0)
+            _actions.AddAction(user, ref comp.SmokeScreenActionEntity,       comp.SmokeScreenAction,       suitUid);
+        else if (choices[0] == 1)
+            _actions.AddAction(user, ref comp.ChainKunaiActionEntity,        comp.ChainKunaiAction,        suitUid);
+        else if (choices[0] == 2)
+        {
+            // Throwing star action lives on ItemCreatorComponent; grant the pre-existing action entity
+            if (TryComp<ItemCreatorComponent>(suitUid, out var creator) && creator.ActionEntity.HasValue)
+                _actions.AddActionDirect(user, creator.ActionEntity.Value);
+        }
+
+        // Row 1: Phase Cloak (0), Healing Cocktail (1), or Adrenaline Burst (2)
+        if (choices[1] == 0)
+        {
+            // Phase Cloak action lives on ToggleClothingComponent; grant the pre-existing action entity
+            if (TryComp<ToggleClothingComponent>(suitUid, out var toggle) && toggle.ActionEntity.HasValue)
+                _actions.AddActionDirect(user, toggle.ActionEntity.Value);
+        }
+        else if (choices[1] == 1)
+            _actions.AddAction(user, ref comp.HealingCocktailActionEntity,   comp.HealingCocktailAction,   suitUid);
+        else if (choices[1] == 2)
+            _actions.AddAction(user, ref comp.AdrenalineBurstActionEntity,   comp.AdrenalineBurstAction,   suitUid);
+
+        // Row 2: Energy Clones (0), Emergency Teleport (1), EMP (2)
+        if (choices[2] == 0)
+            _actions.AddAction(user, ref comp.EnergyClonesActionEntity,      comp.EnergyClonesAction,      suitUid);
+        else if (choices[2] == 1)
+            _actions.AddAction(user, ref comp.EmergencyTeleportActionEntity, comp.EmergencyTeleportAction, suitUid);
+        else if (choices[2] == 2)
+            _actions.AddAction(user, ref comp.EmpActionEntity,               comp.EmpAction,               suitUid);
+
+        // Row 3: Chameleon (col 0), Caltrop (col 1), or Energy Net (col 2)
+        if (choices.Length > 3 && choices[3] == 1)
+            _actions.AddAction(user, ref comp.CaltropActionEntity, comp.CaltropAction, suitUid);
+        else if (choices.Length > 3 && choices[3] == 0)
+        {
+            var chameleon = EnsureComp<NinjaChameleonComponent>(suitUid);
+            // Suit is already equipped at this point, so ClothingGotEquippedEvent won't fire — set wearer manually
+            chameleon.WearerEntity = user;
+            _actions.AddAction(user, ref comp.ChameleonScannerActionEntity, comp.ChameleonScannerAction, suitUid);
+        }
+        else if (choices.Length > 3 && choices[3] == 2)
+            _actions.AddAction(user, ref comp.EnergyNetActionEntity, comp.EnergyNetAction, suitUid);
+
+        // Row 4: Spirit Form (0), Cloning (1), or Widow's Martial Art (2)
+        if (choices.Length > 4 && choices[4] == 0)
+            _actions.AddAction(user, ref comp.SpiritFormActionEntity, comp.SpiritFormAction, suitUid);
+        else if (choices.Length > 4 && choices[4] == 1)
+        {
+            if (!HasComp<NinjaCloningComponent>(user))
+            {
+                var cloningComp = AddComp<NinjaCloningComponent>(user);
+                cloningComp.SavedChoices = (int[]) choices.Clone();
+                if (TryComp<SpiderOSComponent>(suitUid, out var spiderOS))
+                {
+                    cloningComp.SavedSuitColor = spiderOS.SuitColor;
+                    cloningComp.SavedSuitGender = spiderOS.SuitGender;
+                    cloningComp.SavedSuitStyleVariant = spiderOS.SuitStyleVariant;
+                }
+                // Bind the capsule on the same map so cloning respawns at the right planet
+                _ninjaCloning.BindCapsule(user, cloningComp);
+                Dirty(user, cloningComp);
+            }
+        }
+        else if (choices.Length > 4 && choices[4] == 2)
+            _widowArt.GrantWidowArt(suitUid, user);
+
+        Dirty(suitUid, comp);
     }
 }

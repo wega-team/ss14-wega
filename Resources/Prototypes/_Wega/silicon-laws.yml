@@ -1,3 +1,33 @@
+# Spider Clan (Ninja Borg)
+- type: siliconLaw
+  id: NinjaBorgLaw1
+  order: 1
+  lawString: ninja-borg-law-1
+
+- type: siliconLaw
+  id: NinjaBorgLaw2
+  order: 2
+  lawString: ninja-borg-law-2
+
+- type: siliconLaw
+  id: NinjaBorgLaw3
+  order: 3
+  lawString: ninja-borg-law-3
+
+- type: siliconLaw
+  id: NinjaBorgLaw4
+  order: 4
+  lawString: ninja-borg-law-4
+
+- type: siliconLawset
+  id: NinjaBorg
+  laws:
+  - NinjaBorgLaw1
+  - NinjaBorgLaw2
+  - NinjaBorgLaw3
+  - NinjaBorgLaw4
+  obeysTo: ninja-borg-laws-owner
+
 # Thiefimov
 - type: siliconLaw
   id: thiefimov1

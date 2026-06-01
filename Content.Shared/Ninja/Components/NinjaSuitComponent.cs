@@ -57,6 +57,106 @@ public sealed partial class NinjaSuitComponent : Component
     [DataField]
     public float EmpCharge = 180f;
 
+    /// <summary>
+    /// The action id for toggling Spirit Form (wall phasing).
+    /// </summary>
+    [DataField]
+    public EntProtoId SpiritFormAction = "ActionToggleSpiritForm";
+
+    [DataField, AutoNetworkedField]
+    public EntityUid? SpiritFormActionEntity;
+
+    /// <summary>
+    /// The action id for throwing a chain kunai.
+    /// </summary>
+    [DataField]
+    public EntProtoId ChainKunaiAction = "ActionChainKunai";
+
+    [DataField, AutoNetworkedField]
+    public EntityUid? ChainKunaiActionEntity;
+
+    /// <summary>
+    /// The action id for deploying a smoke screen.
+    /// </summary>
+    [DataField]
+    public EntProtoId SmokeScreenAction = "ActionNinjaSmokeScreen";
+
+    [DataField, AutoNetworkedField]
+    public EntityUid? SmokeScreenActionEntity;
+
+    /// <summary>
+    /// The action id for summoning two energy clones.
+    /// </summary>
+    [DataField]
+    public EntProtoId EnergyClonesAction = "ActionNinjaEnergyClones";
+
+    [DataField, AutoNetworkedField]
+    public EntityUid? EnergyClonesActionEntity;
+
+    /// <summary>
+    /// The action id for emergency teleportation (usable while sleeping).
+    /// </summary>
+    [DataField]
+    public EntProtoId EmergencyTeleportAction = "ActionNinjaEmergencyTeleport";
+
+    [DataField, AutoNetworkedField]
+    public EntityUid? EmergencyTeleportActionEntity;
+
+    /// <summary>
+    /// The action id for dashing with the energy katana.
+    /// </summary>
+    [DataField]
+    public EntProtoId DashAction = "ActionEnergyKatanaDash";
+
+    [DataField, AutoNetworkedField]
+    public EntityUid? DashActionEntity;
+
+    /// <summary>
+    /// The action id for the adrenaline burst (injects hyperzine + uranium from the suit's uranium tank).
+    /// </summary>
+    [DataField]
+    public EntProtoId AdrenalineBurstAction = "ActionNinjaAdrenalineBurst";
+
+    [DataField, AutoNetworkedField]
+    public EntityUid? AdrenalineBurstActionEntity;
+
+    /// <summary>
+    /// The action id for the healing cocktail (injects Chiurizin from the suit's uranium tank).
+    /// </summary>
+    [DataField]
+    public EntProtoId HealingCocktailAction = "ActionNinjaHealingCocktail";
+
+    [DataField, AutoNetworkedField]
+    public EntityUid? HealingCocktailActionEntity;
+
+    /// <summary>
+    /// The action id for throwing an energy net that immobilises a target.
+    /// </summary>
+    [DataField]
+    public EntProtoId EnergyNetAction = "ActionNinjaEnergyNet";
+
+    [DataField, AutoNetworkedField]
+    public EntityUid? EnergyNetActionEntity;
+
+    /// <summary>
+    /// The action id for getting a chameleon scanner (spawns the scanner item).
+    /// </summary>
+    [DataField]
+    public EntProtoId ChameleonScannerAction = "ActionNinjaGetChameleonScanner";
+
+    [DataField, AutoNetworkedField]
+    public EntityUid? ChameleonScannerActionEntity;
+
+    /// <summary>
+    /// The action id for deploying electro-caltrop traps behind the ninja.
+    /// </summary>
+    [DataField]
+    public EntProtoId CaltropAction = "ActionNinjaCaltrop";
+
+    [DataField, AutoNetworkedField]
+    public EntityUid? CaltropActionEntity;
+
+
     // TODO: EmpOnTrigger bruh
     /// <summary>
     /// Range of the EMP in tiles.
@@ -80,3 +180,23 @@ public sealed partial class NinjaSuitComponent : Component
 public sealed partial class RecallKatanaEvent : InstantActionEvent;
 
 public sealed partial class NinjaEmpEvent : InstantActionEvent;
+
+public sealed partial class ToggleSpiritFormEvent : InstantActionEvent;
+
+public sealed partial class ChainKunaiEvent : WorldTargetActionEvent;
+
+public sealed partial class NinjaSmokeScreenEvent : InstantActionEvent;
+
+public sealed partial class NinjaEnergyClonesEvent : InstantActionEvent;
+
+public sealed partial class NinjaEmergencyTeleportEvent : InstantActionEvent;
+
+public sealed partial class NinjaAdrenalineBurstEvent : InstantActionEvent;
+
+public sealed partial class NinjaHealingCocktailEvent : InstantActionEvent;
+
+public sealed partial class NinjaEnergyNetEvent : WorldTargetActionEvent;
+
+public sealed partial class NinjaGetChameleonScannerEvent : InstantActionEvent;
+
+public sealed partial class NinjaCaltropEvent : InstantActionEvent;

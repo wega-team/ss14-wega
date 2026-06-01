@@ -59,3 +59,40 @@
     - MeteorSwarmScheduler
     - SpaceTrafficControlEventScheduler
     - BasicRoundstartVariation
+
+# Ниндзя + Вампиры (Шаблон 'Хакер')
+- type: gamePreset
+  id: SubNinjaHacker
+  alias:
+    - sub-ninja-hacker
+  name: sub-ninja-hacker-title
+  description: sub-ninja-hacker-description
+  showInVote: false
+  rules:
+    - SubNinja
+    - SubNinjaExtraVampire
+    - Vampire
+    - SubGamemodesRule
+    - BasicStationEventScheduler
+    - MeteorSwarmScheduler
+    - SpaceTrafficControlEventScheduler
+    - BasicRoundstartVariation
+
+# Ниндзя + Предатели (Шаблон 'Защитник')
+# TODO: нужна C# логика для гарантии убийственной цели предателя
+- type: gamePreset
+  id: SubNinjaDefender
+  alias:
+    - sub-ninja-defender
+  name: sub-ninja-defender-title
+  description: sub-ninja-defender-description
+  showInVote: false
+  rules:
+    - SubNinjaDefender
+    - SubNinjaExtraTraitor
+    - Traitor
+    - SubGamemodesRule
+    - BasicStationEventScheduler
+    - MeteorSwarmScheduler
+    - SpaceTrafficControlEventScheduler
+    - BasicRoundstartVariation

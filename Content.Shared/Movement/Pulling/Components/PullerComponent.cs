@@ -10,7 +10,7 @@ namespace Content.Shared.Movement.Pulling.Components;
 /// Specifies an entity as being able to pull another entity with <see cref="PullableComponent"/>
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true)]
-[Access(typeof(PullingSystem))]
+[Access(typeof(PullingSystem), Other = AccessPermissions.ReadWriteExecute)]
 public sealed partial class PullerComponent : Component
 {
     // My raiding guild
@@ -28,9 +28,19 @@ public sealed partial class PullerComponent : Component
     public TimeSpan ThrowCooldown = TimeSpan.FromSeconds(1);
 
     // Before changing how this is updated, please see SharedPullerSystem.RefreshMovementSpeed
-    public float WalkSpeedModifier => Pulling == default ? 1.0f : 0.95f;
+    public float WalkSpeedModifier => Pulling == default ? 1.0f : GrabWalkMod ?? 0.95f;
 
-    public float SprintSpeedModifier => Pulling == default ? 1.0f : 0.95f;
+    public float SprintSpeedModifier => Pulling == default ? 1.0f : GrabSprintMod ?? 0.95f;
+
+    /// <summary>
+    /// Override for walk speed while grabbing. Null = default 0.95.
+    /// Set by GrabSystem based on grab phase.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public float? GrabWalkMod;
+
+    [DataField, AutoNetworkedField]
+    public float? GrabSprintMod;
 
     /// <summary>
     /// Entity currently being pulled if applicable.

@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Client.Clothing;
 using Content.Client.DisplacementMap;
 using Content.Shared.Body;
 using Content.Shared.CCVar;
@@ -103,6 +104,9 @@ public sealed class VisualBodySystem : SharedVisualBodySystem
 
     private void ApplyVisual(Entity<VisualOrganComponent> ent, EntityUid target)
     {
+        if (HasComp<SuppressClothingVisualsComponent>(target))
+            return;
+
         if (!_sprite.LayerMapTryGet(target, ent.Comp.Layer, out var index, true))
             return;
 
@@ -111,6 +115,9 @@ public sealed class VisualBodySystem : SharedVisualBodySystem
 
     private void RemoveVisual(Entity<VisualOrganComponent> ent, EntityUid target)
     {
+        if (HasComp<SuppressClothingVisualsComponent>(target))
+            return;
+
         if (!_sprite.LayerMapTryGet(target, ent.Comp.Layer, out var index, true))
             return;
 
@@ -206,6 +213,9 @@ public sealed class VisualBodySystem : SharedVisualBodySystem
         if (!Resolve(target, ref target.Comp))
             return;
 
+        if (HasComp<SuppressClothingVisualsComponent>(target.Owner))
+            return;
+
         var applied = new List<Marking>();
         foreach (var marking in AllMarkings(ent))
         {
@@ -251,6 +261,9 @@ public sealed class VisualBodySystem : SharedVisualBodySystem
     private void RemoveMarkings(Entity<VisualOrganMarkingsComponent> ent, Entity<SpriteComponent?> target)
     {
         if (!Resolve(target, ref target.Comp))
+            return;
+
+        if (HasComp<SuppressClothingVisualsComponent>(target.Owner))
             return;
 
         foreach (var marking in ent.Comp.AppliedMarkings)
@@ -311,6 +324,55 @@ public sealed class VisualBodySystem : SharedVisualBodySystem
                     _sprite.LayerSetVisible(args.Body.Owner, index, args.Args.Visible);
                 }
             }
+        }
+    }
+
+    /// <summary>
+    /// Returns sprite layer keys for every marking currently applied to <paramref name="body"/>'s organs.
+    /// Used to strip a target's markings after they were copied onto another entity via CopySprite.
+    /// </summary>
+    public List<string> GetAppliedMarkingLayerKeys(EntityUid body)
+    {
+        var keys = new List<string>();
+        if (!TryComp<BodyComponent>(body, out var bodyComp) || bodyComp.Organs == null)
+            return keys;
+
+        foreach (var organ in bodyComp.Organs.ContainedEntities)
+        {
+            if (!TryComp<VisualOrganMarkingsComponent>(organ, out var markings))
+                continue;
+
+            foreach (var marking in markings.AppliedMarkings)
+            {
+                if (!_marking.TryGetMarking(marking, out var proto))
+                    continue;
+
+                foreach (var sprite in proto.Sprites)
+                {
+                    if (sprite is SpriteSpecifier.Rsi rsi)
+                        keys.Add($"{proto.ID}-{rsi.RsiState}");
+                }
+            }
+        }
+        return keys;
+    }
+
+    /// <summary>
+    /// Re-applies every organ's body sprite, skin color and markings for <paramref name="body"/>,
+    /// rebuilding the humanoid visuals after the sprite was overwritten externally (e.g. CopySprite).
+    /// </summary>
+    public void RefreshBodyVisuals(EntityUid body)
+    {
+        if (!TryComp<BodyComponent>(body, out var bodyComp) || bodyComp.Organs == null)
+            return;
+
+        foreach (var organ in bodyComp.Organs.ContainedEntities)
+        {
+            if (TryComp<VisualOrganComponent>(organ, out var visual))
+                ApplyVisual((organ, visual), body);
+
+            if (TryComp<VisualOrganMarkingsComponent>(organ, out var markings))
+                ApplyMarkings((organ, markings), body);
         }
     }
 }

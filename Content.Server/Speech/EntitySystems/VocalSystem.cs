@@ -112,6 +112,18 @@ public sealed class VocalSystem : EntitySystem
         return _chat.TryPlayEmoteSound(uid, _proto.Index(sounds), component.ScreamId);
     }
 
+    /// <summary>
+    /// Re-resolves <see cref="VocalComponent.EmoteSounds"/> from the component's current Sounds + sex.
+    /// Call after manually changing Sounds/ScreamId so the actually-played emote sounds update.
+    /// </summary>
+    public void ReloadEmoteSounds(EntityUid uid, VocalComponent? component = null)
+    {
+        if (!Resolve(uid, ref component, false))
+            return;
+        LoadSounds(uid, component);
+        Dirty(uid, component);
+    }
+
     private void LoadSounds(EntityUid uid, VocalComponent component, Sex? sex = null)
     {
         if (component.Sounds == null)

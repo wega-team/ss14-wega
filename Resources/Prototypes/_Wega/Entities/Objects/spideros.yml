@@ -1,0 +1,18 @@
+- type: entity
+  parent: BaseItem
+  id: SpiderOSTerminal
+  name: SpiderOS Terminal
+  description: Spider Clan tactical interface. Configure your suit loadout before the mission begins.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Objects/Devices/pda.rsi
+    state: pda
+    color: "#002211"
+  - type: SpiderOS
+  - type: ActivatableUI
+    key: enum.SpiderOSUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.SpiderOSUiKey.Key:
+        type: SpiderOSBui

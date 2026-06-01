@@ -17,6 +17,7 @@ using Content.Shared.Modular.Suit;
 using Content.Shared.Popups;
 using Content.Shared.Rejuvenate;
 using Content.Shared.Stunnable;
+using Content.Shared.Surgery;
 using Content.Shared.Surgery.Components;
 using Content.Shared.Tag;
 using Content.Shared.Throwing;
@@ -233,7 +234,24 @@ public sealed partial class SurgerySystem : EntitySystem
         }
     }
 
-    private void RegenerateMissingLimbs(Entity<OperatedComponent> entity)
+    public void ClearInternalBleeding(EntityUid uid)
+    {
+        if (!TryComp<OperatedComponent>(uid, out var operated))
+            return;
+
+        var toRemove = new List<ProtoId<InternalDamagePrototype>>();
+        foreach (var (proto, _) in operated.InternalDamages)
+        {
+            if (!_proto.TryIndex(proto, out var dmgProto))
+                continue;
+            if (dmgProto.Category == DamageCategory.InternalBleeding)
+                toRemove.Add(proto);
+        }
+        foreach (var id in toRemove)
+            operated.InternalDamages.Remove(id);
+    }
+
+    public void RegenerateMissingLimbs(Entity<OperatedComponent> entity)
     {
         if (!TryComp<BodyComponent>(entity, out var body) || body.Organs == null)
             return;

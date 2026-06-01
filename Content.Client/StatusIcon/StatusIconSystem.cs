@@ -1,5 +1,6 @@
 using Content.Shared.CCVar;
 using Content.Shared.Ghost;
+using Content.Shared.Ninja.Components;
 using Content.Shared.StatusIcon;
 using Content.Shared.StatusIcon.Components;
 using Content.Shared.Stealth.Components;
@@ -84,6 +85,9 @@ public sealed class StatusIconSystem : SharedStatusIconSystem
             return false;
 
         if (data.HideOnStealth && TryComp<StealthComponent>(ent, out var stealth) && stealth.Enabled)
+            return false;
+
+        if (HasComp<NinjaCloakActiveComponent>(ent))
             return false;
 
         if (TryComp<SpriteComponent>(ent, out var sprite) && !sprite.Visible)

@@ -15,6 +15,7 @@ using Content.Shared.IdentityManagement;
 using Content.Shared.Input;
 using Content.Shared.Inventory;
 using Content.Shared.Inventory.VirtualItem;
+using Content.Shared.Ninja.Components;
 using Content.Shared.Strip.Components;
 using JetBrains.Annotations;
 using Robust.Client.GameObjects;
@@ -113,11 +114,16 @@ namespace Content.Client.Inventory
             _handCount = 0;
             _inventoryDimensions = Vector2i.Zero;
 
+            EntityUid? chameleonSource = null;
+            if (EntMan.TryGetComponent<NinjaChameleonVisualComponent>(Owner, out var chameleon)
+                && EntMan.EntityExists(chameleon!.TargetUid))
+                chameleonSource = chameleon.TargetUid;
+
             if (EntMan.TryGetComponent<InventoryComponent>(Owner, out var inv))
             {
                 foreach (var slot in inv.Slots)
                 {
-                    AddInventoryButton(Owner, slot.Name, inv);
+                    AddInventoryButton(Owner, slot.Name, inv, chameleonSource);
                 }
             }
 
@@ -228,12 +234,20 @@ namespace Content.Client.Inventory
             }
         }
 
-        private void AddInventoryButton(EntityUid invUid, string slotId, InventoryComponent inv)
+        private void AddInventoryButton(EntityUid invUid, string slotId, InventoryComponent inv, EntityUid? chameleonSource = null)
         {
             if (!_inv.TryGetSlotContainer(invUid, slotId, out var container, out var slotDef, inv))
                 return;
 
             var entity = container.ContainedEntity;
+
+            // For chameleon disguise: show the target's item icon in this slot instead of the ninja's
+            if (chameleonSource is { } srcUid
+                && EntMan.TryGetComponent<InventoryComponent>(srcUid, out var srcInv)
+                && _inv.TryGetSlotContainer(srcUid, slotId, out var srcContainer, out _, srcInv))
+            {
+                entity = srcContainer.ContainedEntity;
+            }
 
             // If this is a full pocket, obscure the real entity
             // this does not work for modified clients because they are still sent the real entity

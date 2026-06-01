@@ -1,0 +1,12 @@
+- type: entity
+  id: ChiurizinStasisVisual
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Effects/portal.rsi
+    state: portal-blue
+    drawdepth: Overlays
+  - type: PointLight
+    radius: 2.5
+    energy: 3
+    color: "#5500ff"

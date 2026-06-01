@@ -277,13 +277,13 @@
   parent: [ClothingEyesBase, BaseHighlyIllegalContraband]
   id: ClothingEyesVisorNinja
   name: ninja visor
-  description: An advanced visor protecting a ninja's eyes from flashing lights.
+  description: "An advanced visor with switchable modes: flash protection, night vision, and thermal sight."
   components:
   - type: Sprite
     sprite: Clothing/Eyes/Glasses/ninjavisor.rsi
   - type: Clothing
     sprite: Clothing/Eyes/Glasses/ninjavisor.rsi
-  - type: FlashImmunity
+  - type: NinjaVisor
 
 - type: entity
   parent: [ClothingEyesBase, ShowSecurityIcons, BaseSecurityContraband]

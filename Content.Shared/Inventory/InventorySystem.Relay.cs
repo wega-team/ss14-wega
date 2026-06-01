@@ -33,6 +33,7 @@ using Content.Shared.Weapons.Ranged.Events;
 using Content.Shared.Wieldable;
 using Content.Shared.Zombies;
 using Content.Shared.Lavaland.Events; // Corvax-Wega-Lavaland
+using Content.Shared._Wega.NinjaVisor;
 
 namespace Content.Shared.Inventory;
 
@@ -106,6 +107,7 @@ public partial class InventorySystem
         SubscribeLocalEvent<InventoryComponent, RefreshEquipmentHudEvent<NoirOverlayComponent>>(RefRelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, RefreshEquipmentHudEvent<ThermalSightComponent>>(RefRelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, RefreshEquipmentHudEvent<RaveOverlayComponent>>(RefRelayInventoryEvent); // Corvax-Wega-Add
+        SubscribeLocalEvent<InventoryComponent, RefreshEquipmentHudEvent<NinjaVisorComponent>>(RefRelayInventoryEvent);
 
         SubscribeLocalEvent<InventoryComponent, GetVerbsEvent<EquipmentVerb>>(OnGetEquipmentVerbs);
         SubscribeLocalEvent<InventoryComponent, GetVerbsEvent<InnateVerb>>(OnGetInnateVerbs);

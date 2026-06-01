@@ -90,4 +90,15 @@ public abstract class SharedTypingIndicatorSystem : EntitySystem
 
         _appearance.SetData(uid, TypingIndicatorVisuals.State, state, appearance);
     }
+
+    /// <summary>
+    /// Overrides the entity's typing indicator prototype (the "..." bubble shown while typing).
+    /// Used by the ninja chameleon disguise to mimic the scanned target's species indicator.
+    /// </summary>
+    public void SetTypingIndicatorPrototype(Entity<TypingIndicatorComponent?> ent, ProtoId<TypingIndicatorPrototype> proto)
+    {
+        ent.Comp ??= EnsureComp<TypingIndicatorComponent>(ent);
+        ent.Comp.TypingIndicatorPrototype = proto;
+        Dirty(ent, ent.Comp);
+    }
 }

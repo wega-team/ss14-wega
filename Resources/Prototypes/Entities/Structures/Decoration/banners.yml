@@ -157,4 +157,14 @@
     sprite: Structures/Decoration/banner.rsi
     state: banner-green
 
-
+# Corvax-Wega-Edit-Start
+- type: entity
+  id: BannerNinja
+  parent: BannerBase
+  name: Spider Clan banner
+  description: A flag proudly boasting the logo of the fearfull Spider Clan, known for their assassins, they work for the ones who pay them most.
+  components:
+  - type: Sprite
+    sprite: _Wega/Structures/Decoration/banner.rsi
+    state: ninjaflag
+# Corvax-Wega-Edit-End

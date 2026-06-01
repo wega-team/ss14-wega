@@ -330,12 +330,32 @@
 - type: entity
   parent: [ClothingHeadset, BaseMajorContraband]
   id: ClothingHeadsetNinja
-  name: green headset
+  name: ninja headset
   description: Who could refuse to wear this stylish black and green headset?
   components:
   - type: Sprite
     sprite: Clothing/Ears/Headsets/ninja.rsi
+    layers:
+    - state: icon_classic
+      map: ["enum.Content.Shared.Ninja.NinjaColorLayer.HeadsetBase"]
   - type: Clothing
     sprite: Clothing/Ears/Headsets/ninja.rsi
+    equippedState: equipped_classic-EARS
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.Content.Shared.Ninja.NinjaColorVisuals.HeadsetVariant:
+        enum.Content.Shared.Ninja.NinjaColorLayer.HeadsetBase:
+          0: {state: icon_classic}
+          1: {state: icon_classic}
+          2: {state: icon_classic}
+          3: {state: icon_headset_new_red}
+          4: {state: icon_headset_new_blue}
+          5: {state: icon_headset_new_green}
   - type: EmpResistance
     strengthMultiplier: 0
+  - type: NinjaHeadset
+  - type: EncryptionKeyHolder
+    keySlots: 10
+    keysUnlocked: false
+    keysExtractionMethod: null

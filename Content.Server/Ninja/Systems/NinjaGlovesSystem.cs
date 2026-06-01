@@ -35,10 +35,7 @@ public sealed class NinjaGlovesSystem : SharedNinjaGlovesSystem
             // prevent doing an objective multiple times by toggling gloves after doing them
             // if it's not tied to an objective always add them anyway
             if (!_mind.TryFindObjective((mindId, mind), objId, out var obj))
-            {
-                Log.Error($"Ninja glove ability of {ent} referenced missing objective {ability.Objective} of {_mind.MindOwnerLoggingString(mind)}");
                 continue;
-            }
 
             if (!_objectives.IsCompleted(obj.Value, (mindId, mind)))
                 EntityManager.AddComponents(user, ability.Components);

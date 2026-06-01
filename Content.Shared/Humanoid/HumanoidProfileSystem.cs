@@ -64,6 +64,35 @@ public sealed class HumanoidProfileSystem : EntitySystem
         }
     }
 
+    // Corvax-Wega-start
+    public void SetAge(EntityUid uid, int age, HumanoidProfileComponent? profile = null)
+    {
+        if (!Resolve(uid, ref profile, false))
+            return;
+
+        profile.Age = Math.Max(1, age);
+        Dirty(uid, profile);
+    }
+
+    public void SetSpecies(EntityUid uid, ProtoId<SpeciesPrototype> species, HumanoidProfileComponent? profile = null)
+    {
+        if (!Resolve(uid, ref profile, false))
+            return;
+
+        profile.Species = species;
+        Dirty(uid, profile);
+    }
+
+    public void SetHeight(EntityUid uid, float height, HumanoidProfileComponent? profile = null)
+    {
+        if (!Resolve(uid, ref profile, false))
+            return;
+
+        profile.Height = height;
+        Dirty(uid, profile);
+    }
+    // Corvax-Wega-end
+
     private void OnExamined(Entity<HumanoidProfileComponent> ent, ref ExaminedEvent args)
     {
         var identity = Identity.Entity(ent, EntityManager);

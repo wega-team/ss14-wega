@@ -765,8 +765,23 @@
   components:
   - type: Sprite
     sprite: Clothing/Mask/ninja.rsi
+    layers:
+    - state: icon_ninja_mask_classic_green
+      map: ["enum.Content.Shared.Ninja.NinjaColorLayer.MaskBase"]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.Content.Shared.Ninja.NinjaColorVisuals.MaskVariant:
+        enum.Content.Shared.Ninja.NinjaColorLayer.MaskBase:
+          0: {state: icon_ninja_mask_classic_red}
+          1: {state: icon_ninja_mask_classic_blue}
+          2: {state: icon_ninja_mask_classic_green}
+          3: {state: icon_ninja_mask_new_red}
+          4: {state: icon_ninja_mask_new_blue}
+          5: {state: icon_ninja_mask_new_green}
   - type: Clothing
     sprite: Clothing/Mask/ninja.rsi
+    equippedState: equipped-ninja_mask_classic_red
   - type: Item
     storedRotation: -90
   - type: EyeProtection

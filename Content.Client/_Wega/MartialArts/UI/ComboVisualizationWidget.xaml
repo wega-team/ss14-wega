@@ -1,0 +1,6 @@
+<combo:ComboVisualizationWidget xmlns="https://spacestation14.io"
+    xmlns:combo="clr-namespace:Content.Client._Wega.MartialArts.UI"
+    HorizontalAlignment="Right"
+    VerticalAlignment="Bottom">
+    <BoxContainer Name="IconContainer" Orientation="Horizontal" SeparationOverride="4" />
+</combo:ComboVisualizationWidget>

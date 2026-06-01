@@ -50,6 +50,24 @@ public sealed partial class SpaceNinjaComponent : Component
     public EntProtoId SpiderChargeObjective = "SpiderChargeObjective";
 
     /// <summary>
+    /// Objective to complete after hacking the cargo order console.
+    /// </summary>
+    [DataField]
+    public EntProtoId CargoHackObjective = "CargoHackObjective";
+
+    /// <summary>
+    /// Objective to complete after stealing a borg.
+    /// </summary>
+    [DataField]
+    public EntProtoId StealBorgObjective = "StealBorgObjective";
+
+    /// <summary>
+    /// Objective to complete after hacking the AI upload console.
+    /// </summary>
+    [DataField]
+    public EntProtoId AiSabotageObjective = "AiSabotageObjective";
+
+    /// <summary>
     /// Alert to show for suit power.
     /// </summary>
     [DataField]

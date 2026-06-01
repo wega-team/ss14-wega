@@ -7,6 +7,193 @@
     mapPath: /Maps/_Wega/wegabar.yml
 
 # Rules
+# Шаблон 'Хакер': ниндзя + вампиры. Вампиры спавнятся отдельным правилом Vampire.
+- type: entity
+  parent: BaseGameRule
+  id: SubNinja
+  components:
+  - type: GameRule
+    minPlayers: 40
+  - type: LoadMapRule
+    mapPath: /Maps/_Wega/Nonstations/ninja_planet.yml
+  - type: RuleGrids
+  - type: AntagLoadProfileRule
+  - type: AntagObjectives
+    objectives:
+    - CollectBloodObjective
+    - NinjaSurviveObjective
+  - type: AntagRandomObjectives
+    maxDifficulty: 12
+    sets:
+    - groups: NinjaSpawnSets1
+      prob: 0.75
+      maxPicks: 1
+    - groups: NinjaSpawnSets2
+      maxPicks: 1
+    - groups: NinjaSpawnSets4
+      maxPicks: 1
+    - groups: NinjaStealSets
+      maxPicks: 1
+  - type: NinjaDelayedObjectives
+    sets:
+    - groups: NinjaHackerKillSets
+      maxPicks: 1
+  - type: AntagSelection
+    selectionTime: PrePlayerSpawn
+    agentName: ninja-round-end-agent-name
+    definitions:
+    - prefRoles: [ SpaceNinja ]
+      spawnerPrototype: SpawnPointGhostSpaceNinja
+      min: 1
+      max: 1
+      startingGear: SpaceNinjaGear
+      roleLoadout:
+      - RoleSurvivalSpaceNinja
+      briefing:
+        text: ninja-role-greeting
+        color: Green
+        sound: /Audio/Misc/ninja_greeting.ogg
+      components:
+      - type: SpaceNinja
+      - type: NpcFactionMember
+        factions:
+        - Syndicate
+      - type: AutoDust
+      - type: RandomMetadata
+        nameSegments:
+        - NamesNinjaTitle
+        - NamesNinja
+        nameFormat: name-format-ninja
+      mindRoles:
+      - MindRoleNinja
+
+# Шаблон 'Защитник': ниндзя защищает жертву предателей.
+# TODO: нужна C# логика для гарантии того, что у предателей есть цель-убийство.
+# Предатели спавнятся отдельным правилом Traitor (пресет SubNinjaDefender).
+- type: entity
+  parent: BaseGameRule
+  id: SubNinjaDefender
+  components:
+  - type: GameRule
+    minPlayers: 40
+  - type: LoadMapRule
+    mapPath: /Maps/_Wega/Nonstations/ninja_planet.yml
+  - type: RuleGrids
+  - type: AntagLoadProfileRule
+  - type: AntagObjectives
+    objectives:
+    - NinjaSurviveObjective
+  - type: AntagRandomObjectives
+    maxDifficulty: 7
+    sets:
+    - groups: NinjaSpawnSets1
+      prob: 0.5
+      maxPicks: 1
+    - groups: NinjaStealSets
+      maxPicks: 2
+  - type: NinjaDelayedObjectives
+    fixedObjectives:
+    - NinjaProtectObjective
+    - NinjaFrameObjective
+    - NinjaIntimidateObjective
+  - type: AntagSelection
+    selectionTime: PrePlayerSpawn
+    agentName: ninja-round-end-agent-name
+    definitions:
+    - prefRoles: [ SpaceNinja ]
+      spawnerPrototype: SpawnPointGhostSpaceNinja
+      min: 1
+      max: 1
+      startingGear: SpaceNinjaGear
+      roleLoadout:
+      - RoleSurvivalSpaceNinja
+      briefing:
+        text: ninja-role-greeting
+        color: Green
+        sound: /Audio/Misc/ninja_greeting.ogg
+      components:
+      - type: SpaceNinja
+      - type: NpcFactionMember
+        factions:
+        - Syndicate
+      - type: AutoDust
+      - type: RandomMetadata
+        nameSegments:
+        - NamesNinjaTitle
+        - NamesNinja
+        nameFormat: name-format-ninja
+      mindRoles:
+      - MindRoleNinja
+
+# Гарантированный 1 вампир для пресета SubNinjaHacker — поверх стандартного Vampire-правила
+- type: entity
+  parent: BaseGameRule
+  id: SubNinjaExtraVampire
+  components:
+  - type: GameRule
+    minPlayers: 1
+    cancelPresetOnTooFewPlayers: false
+  - type: VampireRule
+  - type: AntagObjectives
+    objectives:
+      - VampireBloodObjective
+      - EscapeVampirefShuttleObjective
+  - type: AntagRandomObjectives
+    sets:
+    - groups: VampireObjectiveGroups
+      maxPicks: 2
+    maxDifficulty: 5
+  - type: AntagSelection
+    agentName: vampire-round-end-name
+    definitions:
+      - prefRoles: [ Vampire ]
+        min: 1
+        max: 1
+        playerRatio: 1
+        blacklist:
+          components:
+          - AntagImmune
+          - BibleUser
+          - Android
+          - Ipc
+        lateJoinAdditional: true
+        components:
+        - type: NpcFactionMember
+          factions:
+          - Vampire
+        mindRoles:
+        - MindRoleVampire
+        briefing:
+          sound: "/Audio/_Wega/Ambience/Antag/vampare_start.ogg"
+
+# Гарантированный 1 предатель для пресета SubNinjaDefender — поверх стандартного Traitor-правила
+- type: entity
+  parent: BaseGameRule
+  id: SubNinjaExtraTraitor
+  components:
+  - type: GameRule
+    minPlayers: 1
+    cancelPresetOnTooFewPlayers: false
+  - type: TraitorRule
+  - type: AntagRandomObjectives
+    sets:
+    - groups: TraitorObjectiveGroups
+    maxDifficulty: 5
+  - type: AntagSelection
+    selectionTime: IntraPlayerSpawn
+    agentName: traitor-round-end-agent-name
+    definitions:
+    - prefRoles: [ Traitor ]
+      min: 1
+      max: 1
+      playerRatio: 1
+      blacklist:
+        components:
+        - AntagImmune
+      lateJoinAdditional: true
+      mindRoles:
+      - MindRoleTraitor
+
 - type: entity
   parent: BaseGameRule
   id: Vampire

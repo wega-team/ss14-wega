@@ -1,0 +1,171 @@
+- type: entity
+  parent: BaseStructure
+  id: MindScanMachine
+  name: mind-scan machine
+  description: A sinister-looking scanner used to extract and archive neural patterns. The scan chamber can teleport its subject after analysis.
+  components:
+  - type: MindScanMachine
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Transform
+    anchored: true
+  - type: Physics
+    bodyType: Static
+  - type: GenericVisualizer
+    visuals:
+      enum.Content.Shared._Wega.Ninja.MindScanMachineVisuals.Status:
+        ScannerStatus:
+          Open: { state: ninja_sleeper_open }
+          Occupied: { state: ninja_sleeper }
+  - type: Sprite
+    sprite: _Wega/Actions/ninja.rsi
+    layers:
+    - state: ninja_sleeper_open
+      map: ["ScannerStatus"]
+  - type: ContainerContainer
+    containers:
+      mind-scan-body: !type:ContainerSlot {}
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.45,0.4,0.45"
+        density: 100
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: Appearance
+  - type: ActivatableUI
+    key: enum.MindScanMachineUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.MindScanMachineUiKey.Key:
+        type: MindScanMachineBui
+
+- type: entity
+  parent: BaseStructure
+  id: NinjaTeleConsole
+  name: long-distance teleportation console
+  description: A console used to send a Spider Clan operative long distances rapidly.
+  components:
+  - type: NinjaTeleConsole
+  - type: Clickable
+  - type: InteractionOutline
+  - type: WallMount
+  - type: Transform
+    anchored: true
+  - type: Physics
+    bodyType: Static
+  - type: Sprite
+    sprite: _Wega/Actions/ninja.rsi
+    state: teleconsole
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        density: 100
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: ActivatableUI
+    key: enum.NinjaTeleConsoleUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.NinjaTeleConsoleUiKey.Key:
+        type: NinjaTeleConsoleBui
+
+- type: entity
+  parent: BaseStructure
+  id: NinjaBloodScanMachine
+  name: ninja-blood-scan-machine-name
+  description: ninja-blood-scan-machine-desc
+  components:
+  - type: NinjaBloodScanMachine
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Transform
+    anchored: true
+  - type: Physics
+    bodyType: Static
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.Content.Shared._Wega.Ninja.BloodScanMachineVisuals.State:
+        BloodScanState:
+          Idle0: { state: bsm_0 }
+          Idle1: { state: bsm_1 }
+          Idle2: { state: bsm_2 }
+          Idle3: { state: bsm_3 }
+          Activation: { state: bsm_activation }
+          Loading: { state: bsm_loading }
+          Wrong: { state: bsm_wrong }
+          Correct: { state: bsm_correct }
+          Deactivation: { state: bsm_deactivation }
+  - type: Sprite
+    sprite: _Wega/Actions/ninja.rsi
+    layers:
+    - state: bsm_0
+      map: ["BloodScanState"]
+  - type: ContainerContainer
+    containers:
+      blood-scan-vial-0: !type:ContainerSlot {}
+      blood-scan-vial-1: !type:ContainerSlot {}
+      blood-scan-vial-2: !type:ContainerSlot {}
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.45,0.4,0.45"
+        density: 100
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: ActivatableUI
+    key: enum.NinjaBloodScanUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.NinjaBloodScanUiKey.Key:
+        type: NinjaBloodScanMachineBui
+
+- type: entity
+  id: NinjaCloningCapsule
+  name: ninja cloning capsule
+  description: A biomechanical capsule that reconstructs a ninja's body from cellular memory.
+  components:
+  - type: NinjaCloningCapsule
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Transform
+    anchored: true
+  - type: Physics
+    bodyType: Static
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.Content.Shared.Ninja.Components.NinjaCloningCapsuleVisuals.Active:
+        CapsuleStatus:
+          True: { state: ninja_cloning_on }
+          False: { state: ninja_cloning_off }
+  - type: Sprite
+    sprite: _Wega/Structures/Machines/ninja.rsi
+    layers:
+    - state: ninja_cloning_off
+      map: ["CapsuleStatus"]
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        density: 100
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer

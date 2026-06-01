@@ -36,6 +36,20 @@ public sealed partial class ActionComponent : Component
     public SpriteSpecifier? BackgroundOn;
 
     /// <summary>
+    ///     Static background shown behind the action icon when the action is on cooldown.
+    ///     If <see cref="BackgroundReady"/> is not set, this is shown at all times instead of the default slot background.
+    /// </summary>
+    [DataField]
+    public SpriteSpecifier? Background;
+
+    /// <summary>
+    ///     Animated background shown behind the action icon when the action is available (not on cooldown).
+    ///     Falls back to <see cref="Background"/> while on cooldown.
+    /// </summary>
+    [DataField]
+    public SpriteSpecifier? BackgroundReady;
+
+    /// <summary>
     ///     If not null, this color will modulate the action icon color.
     /// </summary>
     /// <remarks>

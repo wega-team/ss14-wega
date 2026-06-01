@@ -1,4 +1,6 @@
+using System.Linq;
 using System.Numerics;
+using Content.Server.Grab.Systems;
 using Content.Server.Stack;
 using Content.Server.Stunnable;
 using Content.Shared.ActionBlocker;
@@ -27,6 +29,7 @@ namespace Content.Server.Hands.Systems
     {
         [Dependency] private readonly IGameTiming _timing = default!;
         [Dependency] private readonly IRobustRandom _random = default!;
+        [Dependency] private readonly GrabSystem _grabSystem = default!;
         [Dependency] private readonly StackSystem _stackSystem = default!;
         [Dependency] private readonly ActionBlockerSystem _actionBlockerSystem = default!;
         [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
@@ -94,12 +97,30 @@ namespace Content.Server.Hands.Systems
             if (TryComp(uid, out PullerComponent? puller) && TryComp(puller.Pulling, out PullableComponent? pullable))
                 _pullingSystem.TryStopPull(puller.Pulling.Value, pullable);
 
-            var offsetRandomCoordinates = _transformSystem.GetMoverCoordinates(args.Target).Offset(_random.NextVector2(1f, 1.5f));
-            if (!ThrowHeldItem(args.Target, offsetRandomCoordinates))
+            // Chance to knock an item loose depends on disarm success probability (from CalculateDisarmChance).
+            if (!_random.Prob(args.PushProbability))
                 return;
 
-            args.PopupPrefix = "disarm-action-";
+            var held = EnumerateHeld((uid, component)).ToList();
+            if (held.Count == 0)
+                return;
 
+            var item = _random.Pick(held);
+            var offsetCoords = _transformSystem.GetMoverCoordinates(args.Target).Offset(_random.NextVector2(1f, 1.5f));
+
+            if (!TryDrop(uid, item, checkActionBlocker: false))
+                return;
+
+            var direction = _transformSystem.ToMapCoordinates(offsetCoords).Position - _transformSystem.GetWorldPosition(uid);
+            if (direction != Vector2.Zero)
+            {
+                var length = direction.Length();
+                var distance = Math.Clamp(length, 0.1f, component.ThrowRange);
+                direction *= distance / length;
+                _throwingSystem.TryThrow(item, direction, component.BaseThrowspeed, uid);
+            }
+
+            args.PopupPrefix = "disarm-action-";
             args.Handled = true; // no shove/stun.
         }
 
@@ -109,6 +130,9 @@ namespace Content.Server.Hands.Systems
         {
             if (playerSession?.AttachedEntity is not {Valid: true} player || !Exists(player) || !coordinates.IsValid(EntityManager))
                 return false;
+
+            if (_grabSystem.TryThrowGrabbed(player, coordinates))
+                return true;
 
             return ThrowHeldItem(player, coordinates);
         }

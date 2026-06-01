@@ -212,7 +212,7 @@ public sealed partial class SurgerySystem
         _admin.Add(LogType.Damaged, LogImpact.High, $"{ToPrettyString(damager):user} cuts off a {Name(limbToRemove)} from {ToPrettyString(patient):target}");
     }
 
-    private void TryDecapitate(EntityUid patient, EntityUid damager)
+    public void TryDecapitate(EntityUid patient, EntityUid damager)
     {
         if (!TryComp<BodyComponent>(patient, out var body) || body.Organs == null)
             return;

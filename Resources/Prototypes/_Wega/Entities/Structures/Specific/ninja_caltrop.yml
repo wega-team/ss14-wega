@@ -1,0 +1,38 @@
+# Electro-caltrop trap deployed by the ninja caltrop ability.
+- type: entity
+  id: NinjaCaltrop
+  name: electro-caltrop
+  description: A sharp electrified spike trap. Step on it and you'll regret it.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Transform
+  - type: Physics
+    bodyType: Static
+    fixedRotation: true
+  - type: Fixtures
+    fixtures:
+      slips:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        hard: false
+        layer:
+          - LowImpassable
+  - type: Sprite
+    drawdepth: Items
+    sprite: _Wega/Structures/Specific/caltrop.rsi
+    layers:
+    - state: caltrops
+  - type: NinjaCaltrop
+  - type: StepTrigger
+    requiredTriggeredSpeed: 0
+  - type: TriggerOnStepTrigger
+  - type: DamageOnTrigger
+    targetUser: true
+    damage:
+      types:
+        Piercing: 10
+  - type: KnockdownOnTrigger
+    targetUser: true
+    knockdownAmount: 2
+  - type: DeleteOnTrigger

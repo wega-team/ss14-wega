@@ -9,6 +9,7 @@ namespace Content.Server.Ninja.Systems;
 
 public sealed class ItemCreatorSystem : SharedItemCreatorSystem
 {
+    [Dependency] private readonly NinjaCloakSystem _cloak = default!;
     [Dependency] private readonly SharedBatterySystem _battery = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
@@ -27,9 +28,12 @@ public sealed class ItemCreatorSystem : SharedItemCreatorSystem
         if (comp.Battery is not { } battery)
             return;
 
-        args.Handled = true;
-
         var user = args.Performer;
+
+        if (_cloak.TryRevealCloak(user))
+            return;
+
+        args.Handled = true;
         if (!_battery.TryUseCharge(battery, comp.Charge))
         {
             _popup.PopupEntity(Loc.GetString(comp.NoPowerPopup), user, user);

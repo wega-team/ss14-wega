@@ -1,0 +1,293 @@
+## Ninja Borg – base and exclusive modules
+
+# Base for all ninja borg modules (unrestricted by borg type)
+- type: entity
+  id: BaseBorgModuleNinja
+  parent: BaseBorgModule
+  abstract: true
+  components:
+  - type: Tag
+    tags:
+    - BorgModuleNinja
+  - type: BorgModule
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: base-icon-inhand-left
+        color: "#2d2d2d"
+      - state: base-module-inhand-left
+        color: "#1a1a1a"
+      - state: base-part-inhand-left
+      - state: base-stripes-inhand-left
+        color: "#66cc66"
+      right:
+      - state: base-icon-inhand-right
+        color: "#2d2d2d"
+      - state: base-module-inhand-right
+        color: "#1a1a1a"
+      - state: base-part-inhand-right
+      - state: base-stripes-inhand-right
+        color: "#66cc66"
+
+## ── Thermal Vision ──────────────────────────────────────────────────────────
+
+- type: entity
+  id: BorgModuleNinjaThermal
+  parent: BaseBorgModuleNinja
+  name: thermal vision module
+  description: A passive module that overlays thermal signatures on the borg's visual feed.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: generic
+    - state: icon-nightvison
+  - type: ComponentBorgModule
+    components:
+    - type: NinjaVisor
+      mode: Thermal
+
+## ── Pinpointer ──────────────────────────────────────────────────────────────
+
+- type: entity
+  id: PinpointerNinja
+  parent: PinpointerBase
+  name: ninja pinpointer
+  description: A pinpointer locked onto space ninja signatures.
+  components:
+  - type: Pinpointer
+    component: SpaceNinja
+    updateTargetName: true
+
+- type: entity
+  id: BorgModuleNinjaPinpointer
+  parent: [BaseBorgModuleNinja, BaseProviderBorgModule]
+  name: ninja pinpointer module
+  description: Provides a pinpointer locked onto the ninja master's signal.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: generic
+    - state: icon-nightvison
+  - type: ItemBorgModule
+    hands:
+    - item: PinpointerNinja
+  - type: BorgModuleIcon
+    icon: { sprite: Objects/Devices/pinpointer.rsi, state: pinpointer }
+
+## ── Ninja Katana ────────────────────────────────────────────────────────────
+
+- type: entity
+  id: BorgNinjaKatana
+  parent: BaseItem
+  name: ninja katana
+  description: A razor-sharp katana blade built for the ninja borg's appendage.
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Melee/energykatana.rsi
+    layers:
+    - state: icon-green
+  - type: Sharp
+  - type: MeleeWeapon
+    attackRate: 1.0
+    damage:
+      types:
+        Slash: 25
+    animation: WeaponArcSlash
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - state: green-inhand-left
+      right:
+      - state: green-inhand-right
+    sprite: Objects/Weapons/Melee/energykatana.rsi
+  - type: Unremoveable
+  - type: Tag
+    tags:
+    - Itemborg
+
+- type: entity
+  id: BorgModuleNinjaKatana
+  parent: [BaseBorgModuleNinja, BaseProviderBorgModule]
+  name: ninja katana module
+  description: A retractable katana blade that deals 25 slashing damage per strike.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: generic
+    - state: icon-fight-common
+  - type: ItemBorgModule
+    hands:
+    - item: BorgNinjaKatana
+      hand:
+        emptyLabel: borg-slot-katana-empty
+        emptyRepresentative: BorgNinjaKatana
+        whitelist:
+          tags:
+          - Itemborg
+  - type: BorgModuleIcon
+    icon: { sprite: Objects/Weapons/Melee/energykatana.rsi, state: icon-green }
+
+## ── Shuriken Launcher ───────────────────────────────────────────────────────
+
+# Projectile fired by the shuriken launcher — spins and embeds on impact.
+- type: entity
+  id: NinjaBorgShurikenProjectile
+  parent: BaseBullet
+  name: borg shuriken
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    noRot: false
+    sprite: Objects/Weapons/Throwable/throwing_star.rsi
+    layers:
+    - state: icon
+      shader: unshaded
+  - type: Fixtures
+    fixtures:
+      projectile:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.10,-0.10,0.10,0.10"
+        hard: false
+        mask:
+        - Opaque
+  - type: Projectile
+    damage:
+      types:
+        Heat: 5
+    soundHit:
+      path: /Audio/Weapons/star_hit.ogg
+  - type: EmbeddableProjectile
+    sound: /Audio/Weapons/star_hit.ogg
+  - type: StaminaDamageOnCollide
+    damage: 15
+  - type: TimedDespawn
+    lifetime: 5
+
+# Borg shuriken (throwable world item, kept for completeness).
+- type: entity
+  id: NinjaBorgShuriken
+  parent: ThrowingStar
+  name: borg shuriken
+  description: A throwing star produced by a ninja borg's launcher.
+  components:
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Heat: 5
+  - type: StaminaDamageOnCollide
+    damage: 15
+  - type: StaminaDamageOnEmbed
+    damage: 8
+
+# Hand-held shuriken launcher — fires NinjaBorgShurikenProjectile in bursts, recharges automatically.
+- type: entity
+  id: WeaponNinjaBorgShurikenLauncher
+  parent: BaseItem
+  name: shuriken launcher
+  description: A wrist-mounted launcher that fires throwing stars in bursts of three. Recharges over time.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Battery/borggun.rsi
+    layers:
+    - state: icon
+  - type: Item
+    size: Normal
+    sprite: _Wega/Objects/Weapons/Guns/Battery/borggun.rsi
+    inhandVisuals:
+      left:
+      - state: icon
+      right:
+      - state: icon
+  - type: Gun
+    shotsPerBurst: 3
+    burstCooldown: 1
+    fireRate: 8
+    selectedMode: Burst
+    availableModes:
+    - Burst
+    angleDecay: 45
+    minAngle: 0
+    maxAngle: 8
+    soundGunshot:
+      path: /Audio/Weapons/star_hit.ogg
+  - type: BasicEntityAmmoProvider
+    proto: NinjaBorgShurikenProjectile
+    capacity: 9
+    count: 9
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 2.0
+    rechargeSound: null
+  - type: Unremoveable
+  - type: Tag
+    tags:
+    - Itemborg
+
+- type: entity
+  id: BorgModuleNinjaShurikenLauncher
+  parent: [BaseBorgModuleNinja, BaseProviderBorgModule]
+  name: shuriken launcher module
+  description: Grants the borg a wrist-mounted shuriken launcher. Holds 4 shots and recharges one shuriken every 3 seconds.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: generic
+    - state: icon-fight-common
+  - type: ItemBorgModule
+    hands:
+    - item: WeaponNinjaBorgShurikenLauncher
+  - type: BorgModuleIcon
+    icon: { sprite: Objects/Weapons/Throwable/throwing_star.rsi, state: icon }
+
+## ── Chameleon ───────────────────────────────────────────────────────────────
+
+- type: entity
+  id: BorgModuleNinjaChameleon
+  parent: BaseBorgModuleNinja
+  name: chameleon module
+  description: Allows the ninja borg to toggle its appearance to look like an ordinary service borg.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: generic
+    - state: icon-dis
+  - type: ComponentBorgModule
+    components:
+    - type: NinjaBorgChameleon
+  - type: BorgModuleIcon
+    icon:
+      sprite: _Wega/Actions/ninja.rsi
+      state: chameleon
+
+## ── Jetpack ─────────────────────────────────────────────────────────────────
+
+- type: entity
+  id: JetpackNinjaBorg
+  parent: JetpackXenoborg
+  name: ninja borg jetpack
+  suffix: Infinite
+
+- type: entity
+  id: BorgModuleNinjaJetpack
+  parent: [BaseBorgModuleNinja, BaseProviderBorgModule]
+  name: jetpack module
+  description: Grants the ninja borg a personal jetpack for zero-gravity movement.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: generic
+    - state: icon-speed
+  - type: ItemBorgModule
+    hands:
+    - item: JetpackNinjaBorg
+  - type: BorgModuleIcon
+    icon: { sprite: Objects/Tanks/Jetpacks/black.rsi, state: icon }

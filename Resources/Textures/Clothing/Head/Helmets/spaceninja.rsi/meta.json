@@ -9,10 +9,17 @@
   },
   "states": [
     {
-      "name": "icon"
+      "name": "icon-ninja_hood_new"
     },
     {
-      "name": "equipped-HELMET",
+      "name": "icon-ninja_hood_classic"
+    },
+    {
+      "name": "equipped-ninja_hood_classic",
+      "directions": 4
+    },
+    {
+      "name": "equipped-ninja_hood_new",
       "directions": 4
     },
     {

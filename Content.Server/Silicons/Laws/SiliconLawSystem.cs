@@ -294,6 +294,24 @@ public sealed class SiliconLawSystem : SharedSiliconLawSystem
         NotifyLawsChanged(target, cue);
     }
 
+    /// <summary>
+    /// Replace the entire lawset of a silicon entity, mark it as subverted,
+    /// notify the player, and add the subverted-silicon mind role.
+    /// </summary>
+    public void SubvertWithLawset(EntityUid uid, SiliconLawset lawset, SoundSpecifier? cue = null)
+    {
+        if (!TryComp<SiliconLawProviderComponent>(uid, out var component))
+            return;
+
+        component.Lawset = lawset;
+        component.Subverted = true;
+
+        NotifyLawsChanged(uid, cue);
+
+        if (_mind.TryGetMind(uid, out var mindId, out var mindComp) && mindComp.OwnedEntity != null)
+            EnsureSubvertedSiliconRole(mindId);
+    }
+
     protected override void OnUpdaterInsert(Entity<SiliconLawUpdaterComponent> ent, ref EntInsertedIntoContainerMessage args)
     {
         // TODO: Prediction dump this

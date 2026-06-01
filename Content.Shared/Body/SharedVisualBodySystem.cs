@@ -77,8 +77,34 @@ public abstract partial class SharedVisualBodySystem : EntitySystem
 
     protected virtual void SetOrganAppearance(Entity<VisualOrganComponent> ent, PrototypeLayerData data)
     {
-        ent.Comp.Data = data;
+        // Store a clone, never the passed reference. PrototypeLayerData is a reference type, and
+        // SetOrganColor / OnVisualOrganApplyProfile mutate Data in place. If we kept the source
+        // reference (e.g. when copying one body's appearance onto another), those later mutations
+        // would bleed across entities — e.g. a ninja's chameleon disguise altering the target's
+        // real skin colour. Cloning keeps each organ's Data fully independent.
+        ent.Comp.Data = ClonePrototypeLayerData(data);
         Dirty(ent);
+    }
+
+    private static PrototypeLayerData ClonePrototypeLayerData(PrototypeLayerData src)
+    {
+        return new PrototypeLayerData
+        {
+            Shader = src.Shader,
+            TexturePath = src.TexturePath,
+            RsiPath = src.RsiPath,
+            State = src.State,
+            Scale = src.Scale,
+            Rotation = src.Rotation,
+            Offset = src.Offset,
+            Visible = src.Visible,
+            Color = src.Color,
+            MapKeys = src.MapKeys != null ? new HashSet<string>(src.MapKeys) : null,
+            RenderingStrategy = src.RenderingStrategy,
+            CopyToShaderParameters = src.CopyToShaderParameters,
+            Cycle = src.Cycle,
+            Loop = src.Loop,
+        };
     }
 
     protected virtual void SetOrganMarkings(Entity<VisualOrganMarkingsComponent> ent, Dictionary<HumanoidVisualLayers, List<Marking>> markings)

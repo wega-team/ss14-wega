@@ -9,10 +9,87 @@
   },
   "states": [
     {
-      "name": "icon"
+      "name": "icon-ninja_suit_classic_blue"
     },
     {
-      "name": "equipped-OUTERCLOTHING",
+      "name": "icon-ninja_suit_classic_blue_f"
+    },
+    {
+      "name": "icon-ninja_suit_classic_green"
+    },
+    {
+      "name": "icon-ninja_suit_classic_green_f"
+    },
+    {
+      "name": "icon-ninja_suit_classic_red"
+    },
+    {
+      "name": "icon-ninja_suit_classic_red_f"
+    },
+    {
+      "name": "icon-ninja_suit_new_blue"
+    },
+    {
+      "name": "icon-ninja_suit_new_blue_f"
+    },
+    {
+      "name": "icon-ninja_suit_new_green"
+    },
+    {
+      "name": "icon-ninja_suit_new_green_f"
+    },
+    {
+      "name": "icon-ninja_suit_new_red"
+    },
+    {
+      "name": "icon-ninja_suit_new_red_f"
+    },
+    {
+      "name": "equipped_ninja_suit_classic_green",
+      "directions": 4
+    },
+    {
+      "name": "equipped_ninja_suit_classic_green_f",
+      "directions": 4
+    },
+    {
+      "name": "equipped_ninja_suit_classic_blue",
+      "directions": 4
+    },
+    {
+      "name": "equipped_ninja_suit_classic_blue_f",
+      "directions": 4
+    },
+    {
+      "name": "equipped_ninja_suit_classic_red",
+      "directions": 4
+    },
+    {
+      "name": "equipped_ninja_suit_classic_red_f",
+      "directions": 4
+    },
+    {
+      "name": "equipped_ninja_suit_new_green",
+      "directions": 4
+    },
+    {
+      "name": "equipped_ninja_suit_new_green_f",
+      "directions": 4
+    },
+    {
+      "name": "equipped_ninja_suit_new_blue",
+      "directions": 4
+    },
+    {
+      "name": "equipped_ninja_suit_new_blue_f",
+      "directions": 4
+    },
+    {
+      "name": "equipped_ninja_suit_new_red",
+      "directions": 4
+    },
+    {
+      "name": "equipped_ninja_suit_new_red_f",
       "directions": 4
     },
     {

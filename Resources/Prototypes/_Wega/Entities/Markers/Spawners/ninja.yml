@@ -1,0 +1,11 @@
+- type: entity
+  id: SpawnPointNinja
+  parent: MarkerBase
+  name: ninja spawn
+  components:
+  - type: SpawnPoint
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: Objects/Weapons/Melee/energykatana.rsi
+      state: icon-green

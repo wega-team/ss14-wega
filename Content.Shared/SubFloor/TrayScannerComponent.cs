@@ -16,7 +16,7 @@ public sealed partial class TrayScannerComponent : Component
     ///     Radius in which the scanner will reveal entities. Centered on the <see cref="LastLocation"/>.
     /// </summary>
     [DataField]
-    public float Range = 4f;
+    public float Range = 2f;
 }
 
 [Serializable, NetSerializable]

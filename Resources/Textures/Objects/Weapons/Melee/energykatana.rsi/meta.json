@@ -9,14 +9,36 @@
     },
     "states": [
         {
-            "name": "icon"
+            "name": "icon-green"
         },
         {
-            "name": "inhand-left",
+            "name": "icon-blue"
+        },
+        {
+            "name": "icon-red"
+        },
+        {
+            "name": "green-inhand-left",
             "directions": 4
         },
         {
-            "name": "inhand-right",
+            "name": "blue-inhand-left",
+            "directions": 4
+        },
+        {
+            "name": "red-inhand-left",
+            "directions": 4
+        },
+        {
+            "name": "green-inhand-right",
+            "directions": 4
+        },
+        {
+            "name": "blue-inhand-right",
+            "directions": 4
+        },
+        {
+            "name": "red-inhand-right",
             "directions": 4
         },
         {
@@ -24,7 +46,15 @@
             "directions": 4
         },
         {
-            "name": "equipped-BELT",
+            "name": "equipped-BELT-green",
+            "directions": 4
+        },
+        {
+            "name": "equipped-BELT-blue",
+            "directions": 4
+        },
+        {
+            "name": "equipped-BELT-red",
             "directions": 4
         }
     ]

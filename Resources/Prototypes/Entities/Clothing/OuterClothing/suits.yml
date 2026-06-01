@@ -153,8 +153,29 @@
   components:
   - type: Sprite
     sprite: Clothing/OuterClothing/Suits/spaceninja.rsi
+    layers:
+    - state: icon-ninja_suit_classic_green
+      map: ["enum.Content.Shared.Ninja.NinjaColorLayer.SuitBase"]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.Content.Shared.Ninja.NinjaColorVisuals.SuitVariant:
+        enum.Content.Shared.Ninja.NinjaColorLayer.SuitBase:
+          0: {state: icon-ninja_suit_classic_red}
+          1: {state: icon-ninja_suit_classic_blue}
+          2: {state: icon-ninja_suit_classic_green}
+          3: {state: icon-ninja_suit_classic_red_f}
+          4: {state: icon-ninja_suit_classic_blue_f}
+          5: {state: icon-ninja_suit_classic_green_f}
+          6: {state: icon-ninja_suit_new_red}
+          7: {state: icon-ninja_suit_new_blue}
+          8: {state: icon-ninja_suit_new_green}
+          9: {state: icon-ninja_suit_new_red_f}
+          10: {state: icon-ninja_suit_new_blue_f}
+          11: {state: icon-ninja_suit_new_green_f}
   - type: Clothing
     sprite: Clothing/OuterClothing/Suits/spaceninja.rsi
+    equippedState: equipped_ninja_suit_classic_green
   # hardsuit stuff
   - type: PressureProtection
     highPressureMultiplier: 0.6
@@ -169,16 +190,18 @@
         Slash: 0.8
         Piercing: 0.8
         Heat: 0.8
-  # phase cloak
+  # phase cloak — only the action button can toggle; block ContextMenu verb and hotkey
+  - type: ItemToggle
+    onUse: false
+    onActivate: false
   - type: ToggleClothing
     action: ActionTogglePhaseCloak
     disableOnUnequip: true
   - type: ComponentToggler
     parent: true
     components:
-    - type: Stealth
-      minVisibility: 0.1
-      lastVisibility: 0.1
+    - type: NinjaCloakActive
+  - type: NinjaCloakHeat
   - type: PowerCellDraw
     drawRate: 1.8 # 200 seconds on the default cell
   - type: ToggleCellDraw
@@ -188,8 +211,18 @@
     charge: 14.4
     spawnedPrototype: ThrowingStarNinja
     noPowerPopup: ninja-no-power
+  # jetpack powered by suit charge
+  - type: NinjaJetpack
+    chargePerSecond: 10
+  - type: ClothingSpeedModifier
+    walkModifier: 1.0
+    sprintModifier: 1.0
   # core ninja suit stuff
   - type: NinjaSuit
+  - type: NinjaUraniumTank
+  - type: SpiritForm
+    drainRate: 0.12
+    speedModifier: 0.8
   - type: EmpResistance
     strengthMultiplier: 0
   - type: UseDelay
@@ -213,6 +246,14 @@
   - type: HideLayerClothing
     slots:
     - Tail
+  - type: SpiderOS
+  - type: ActivatableUI
+    key: enum.SpiderOSUiKey.Key
+    verbOnly: true
+  - type: UserInterface
+    interfaces:
+      enum.SpiderOSUiKey.Key:
+        type: SpiderOSBui
 
 - type: entity
   parent: ClothingOuterBase

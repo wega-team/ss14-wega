@@ -7,10 +7,12 @@ using Content.Shared.FixedPoint;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
+using Content.Shared.Ninja.Components;
 using Content.Shared.StatusIcon;
 using Content.Shared.StatusIcon.Components;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
+using Robust.Client.Player;
 using Robust.Shared.Enums;
 using Robust.Shared.Prototypes;
 using static Robust.Shared.Maths.Color;
@@ -32,16 +34,18 @@ public sealed class EntityHealthBarOverlay : Overlay
     private readonly SpriteSystem _spriteSystem;
     private readonly ProgressColorSystem _progressColor;
     private readonly DamageableSystem _damageable;
+    private readonly IPlayerManager _playerManager;
 
 
     public override OverlaySpace Space => OverlaySpace.WorldSpaceBelowFOV;
     public HashSet<string> DamageContainers = new();
     public ProtoId<HealthIconPrototype>? StatusIcon;
 
-    public EntityHealthBarOverlay(IEntityManager entManager, IPrototypeManager prototype)
+    public EntityHealthBarOverlay(IEntityManager entManager, IPrototypeManager prototype, IPlayerManager playerManager)
     {
         _entManager = entManager;
         _prototype = prototype;
+        _playerManager = playerManager;
         _transform = _entManager.System<SharedTransformSystem>();
         _mobStateSystem = _entManager.System<MobStateSystem>();
         _mobThresholdSystem = _entManager.System<MobThresholdSystem>();
@@ -72,7 +76,11 @@ public sealed class EntityHealthBarOverlay : Overlay
             if (statusIcon != null && !_statusIconSystem.IsVisible((uid, _entManager.GetComponent<MetaDataComponent>(uid)), statusIcon))
                 continue;
 
-            // We want the stealth user to still be able to see his health bar himself
+            // Hide the health bar for cloaked ninjas, but still show it to the ninja themselves
+            if (_entManager.HasComponent<NinjaCloakActiveComponent>(uid) &&
+                _playerManager.LocalSession?.AttachedEntity != uid)
+                continue;
+
             if (!xformQuery.TryGetComponent(uid, out var xform) ||
                 xform.MapID != args.MapId)
                 continue;

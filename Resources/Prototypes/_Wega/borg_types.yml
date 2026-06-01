@@ -105,3 +105,24 @@
 
   blacklist:
     components:
+
+# Ninja borg (locked type — no chassis selection)
+- type: borgType
+  id: ninja
+
+  dummyPrototype: BorgChassisNinja
+
+  # No extra modules — all set via ContainerFill on the chassis
+  extraModuleCount: 0
+  moduleWhitelist:
+    tags:
+    - BorgModuleNinja
+
+  # Visual — matches the ninja chassis sprite
+  inventoryTemplateId: borgShort
+  spriteBodyState: ninja
+  spriteHasMindState: ninja_e
+  spriteNoMindState: ninja_e
+
+  petSuccessString: petting-success-generic-cyborg
+  petFailureString: petting-failure-generic-cyborg

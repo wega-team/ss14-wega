@@ -1,0 +1,53 @@
+- type: entity
+  name: ninja dash lightning
+  id: LightningNinjaDash
+  parent: BaseLightning
+  categories: [ HideSpawnMenu ]
+  components:
+    - type: Sprite
+      sprite: /Textures/Effects/lightning.rsi
+      drawdepth: Effects
+      layers:
+        - state: "yellow_lightning"
+          color: "#65ff00"
+          shader: unshaded
+    - type: Electrified
+      requirePower: false
+      shockDamage: 0
+    - type: Lightning
+      canArc: false
+    - type: PointLight
+      enabled: true
+      color: "#65ff00"
+      radius: 2.5
+      softness: 1
+      autoRot: true
+      castShadows: false
+    - type: TimedDespawn
+      lifetime: 1.5
+
+- type: entity
+  id: LightningNinjaDashRed
+  parent: LightningNinjaDash
+  categories: [ HideSpawnMenu ]
+  components:
+    - type: Sprite
+      layers:
+        - state: "yellow_lightning"
+          color: "#FF3300"
+          shader: unshaded
+    - type: PointLight
+      color: "#FF3300"
+
+- type: entity
+  id: LightningNinjaDashBlue
+  parent: LightningNinjaDash
+  categories: [ HideSpawnMenu ]
+  components:
+    - type: Sprite
+      layers:
+        - state: "yellow_lightning"
+          color: "#3399FF"
+          shader: unshaded
+    - type: PointLight
+      color: "#3399FF"

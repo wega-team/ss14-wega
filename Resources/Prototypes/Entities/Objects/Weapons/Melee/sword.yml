@@ -131,6 +131,7 @@
     - Back
     - Belt
   - type: DisarmMalus
+  - type: NoMartialArtsCombo
 
 - type: entity
   name: energy katana
@@ -142,6 +143,17 @@
     severity: HighlyIllegal
   - type: Sprite
     sprite: Objects/Weapons/Melee/energykatana.rsi
+    layers:
+    - state: icon-green
+      map: ["enum.Content.Shared.Ninja.NinjaColorLayer.KatanaBase"]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.Content.Shared.Ninja.NinjaColorVisuals.KatanaColor:
+        enum.Content.Shared.Ninja.NinjaColorLayer.KatanaBase:
+          0: {state: icon-red}
+          1: {state: icon-blue}
+          2: {state: icon-green}
   - type: MeleeWeapon
     wideAnimationRotation: -60
     damage:
@@ -153,20 +165,22 @@
       sprite: Objects/Weapons/Melee/energykatana_storage_64x.rsi #Done in 64x64 because it looks way too puny in 32x32
     shape:
     - 0,0,0,3
+    heldPrefix: green
   - type: EnergyKatana
-  - type: DashAbility
   - type: LimitedCharges
     maxCharges: 3
   - type: AutoRecharge
     rechargeDuration: 20
   - type: Clothing
     sprite: Objects/Weapons/Melee/energykatana.rsi
+    equippedState: equipped-BELT-green
     slots:
     - Back
     - Belt
   - type: Reflect
     slotFlags:
     - NONE
+  - type: NoMartialArtsCombo
 
 #Greatswords
 - type: entity

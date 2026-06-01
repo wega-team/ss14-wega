@@ -1,0 +1,100 @@
+# Ninja Chameleon ability items
+
+- type: entity
+  parent: BaseItem
+  id: NinjaChameleonScanner
+  name: chameleon scanner
+  description: A compact biometric scanner used by space ninja to copy the appearance of a target. Use it on a humanoid to begin the scan.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Objects/Devices/pda.rsi
+    layers:
+    - map: ["enum.PdaVisualLayers.Base"]
+      state: pda
+      color: "#44FFCC"
+      shader: unshaded
+  - type: Item
+    size: Small
+  - type: ChameleonScanner
+
+# Internal holographic ID card embedded inside the PDA
+- type: entity
+  parent: IDCardStandard
+  id: HolographicNinjaInternalId
+  name: holographic ID
+  description: A holographic identity record embedded in a ninja PDA.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/id_cards.rsi
+    layers:
+    - state: ninja
+      shader: unshaded
+      color: "#88EEFF"
+
+# Holographic PDA with embedded ID card — equips in the "id" slot
+- type: entity
+  id: HolographicNinjaIdCard
+  name: holographic КПК
+  description: A fragile holographic КПК projected by a ninja suit. Fools security sensors, but a single hit will shatter it.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Objects/Devices/pda.rsi
+    layers:
+    - map: ["enum.PdaVisualLayers.Base"]
+      state: pda
+      shader: unshaded
+      color: "#88EEFF"
+    - state: light_overlay
+      map: ["enum.PdaVisualLayers.Flashlight"]
+      shader: unshaded
+      visible: false
+    - state: id_overlay
+      map: ["enum.PdaVisualLayers.IdLight"]
+      shader: unshaded
+      visible: false
+  - type: Icon
+    sprite: Objects/Devices/pda.rsi
+    state: pda
+  - type: Item
+    size: Small
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - idcard
+  - type: Pda
+    idSlot:
+      name: access-id-card-component-default
+      startingItem: HolographicNinjaInternalId
+      # Sealed: the holographic ID is permanent — nothing can be inserted or ejected.
+      locked: true
+      disableEject: true
+      insertOnInteract: false
+      ejectOnInteract: false
+      swap: false
+      ejectSound: /Audio/Machines/id_swipe.ogg
+      insertSound: /Audio/Machines/id_insert.ogg
+      whitelist:
+        components:
+        - IdCard
+  - type: PdaVisuals
+  - type: ContainerContainer
+    containers:
+      PDA-id: !type:ContainerSlot {}
+      PDA-pen: !type:ContainerSlot {}
+      PDA-pai: !type:ContainerSlot {}
+      program-container: !type:Container {}
+  - type: ItemSlots
+  - type: Damageable
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 1
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: HolographicNinjaIdCard

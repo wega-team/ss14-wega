@@ -203,8 +203,19 @@
   components:
   - type: Sprite
     sprite: Clothing/Head/Helmets/spaceninja.rsi
+    layers:
+    - state: icon-ninja_hood_classic
+      map: ["enum.Content.Shared.Ninja.NinjaColorLayer.HelmetBase"]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.Content.Shared.Ninja.NinjaColorVisuals.HelmetVariant:
+        enum.Content.Shared.Ninja.NinjaColorLayer.HelmetBase:
+          0: {state: icon-ninja_hood_classic}
+          1: {state: icon-ninja_hood_new}
   - type: Clothing
     sprite: Clothing/Head/Helmets/spaceninja.rsi
+    equippedState: equipped-ninja_hood_classic
   - type: Tag
     tags:
     - WhitelistChameleon
