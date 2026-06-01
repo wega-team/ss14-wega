@@ -92,10 +92,8 @@ public sealed class NinjaCaltropSystem : EntitySystem
 
     private void OnStepAttempt(Entity<NinjaCaltropComponent> ent, ref StepTriggerAttemptEvent args)
     {
-        // The ninja who placed the caltrops is immune to them
-        if (args.Tripper == ent.Comp.Caster)
-            return;
-
+        // Electro-caltrops trigger for everyone who steps on them, including the ninja who
+        // deployed them — there is no caster immunity.
         args.Continue = true;
     }
 }

@@ -23,6 +23,22 @@ public sealed class NinjaCloningOverlay : Overlay
     private int _frameIndex;
     private float _frameTimer;
 
+    /// <summary>
+    /// Set to true for one read whenever the animation wraps back to its first frame, letting an
+    /// external system (e.g. the cloning sound) stay in sync with the animation loop.
+    /// </summary>
+    public bool LoopedThisFrame { get; private set; }
+
+    /// <summary>Reads and clears the <see cref="LoopedThisFrame"/> flag.</summary>
+    public bool ConsumeLooped()
+    {
+        if (!LoopedThisFrame)
+            return false;
+
+        LoopedThisFrame = false;
+        return true;
+    }
+
     public NinjaCloningOverlay()
     {
         IoCManager.InjectDependencies(this);
@@ -53,6 +69,10 @@ public sealed class NinjaCloningOverlay : Overlay
         {
             _frameTimer -= _frameDelays[_frameIndex];
             _frameIndex = (_frameIndex + 1) % _frames.Length;
+
+            // Wrapped back to the start of the animation — signal one loop completion.
+            if (_frameIndex == 0)
+                LoopedThisFrame = true;
         }
     }
 

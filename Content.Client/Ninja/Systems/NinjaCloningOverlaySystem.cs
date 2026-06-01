@@ -4,13 +4,12 @@ using Robust.Client.Audio;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Shared.Audio;
-using Robust.Shared.Audio.Components;
 using Robust.Shared.Player;
 
 namespace Content.Client.Ninja.Systems;
 
 /// <summary>
-/// Shows a full-screen animation and plays a looping ambient sound while the local player
+/// Shows a full-screen animation and plays a periodic ambient sound while the local player
 /// is waiting for their ninja clone to spawn.
 /// </summary>
 public sealed class NinjaCloningOverlaySystem : EntitySystem
@@ -20,11 +19,12 @@ public sealed class NinjaCloningOverlaySystem : EntitySystem
     [Dependency] private readonly AudioSystem _audio = default!;
 
     private NinjaCloningOverlay _overlay = default!;
-    private EntityUid? _audioStream;
+
+    private bool _active;
 
     private static readonly SoundSpecifier CapsuleSound =
-        new SoundPathSpecifier("/Audio/Machines/scan_loop.ogg",
-            AudioParams.Default.WithVolume(-10f).WithLoop(true));
+        new SoundPathSpecifier("/Audio/_Wega/Effects/ha.ogg",
+            AudioParams.Default.WithVolume(-10f));
 
     public override void Initialize()
     {
@@ -38,28 +38,35 @@ public sealed class NinjaCloningOverlaySystem : EntitySystem
         SubscribeLocalEvent<NinjaCloningComponent, ComponentShutdown>(OnShutdown);
     }
 
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        if (!_active)
+            return;
+
+        // Play one "ha" each time the overlay animation completes a loop, keeping them in sync.
+        if (_overlay.ConsumeLooped())
+            _audio.PlayGlobal(CapsuleSound, Filter.Local(), false);
+    }
+
     private void ShowOverlay()
     {
         _overlayMan.AddOverlay(_overlay);
-        _audioStream ??= _audio.PlayGlobal(CapsuleSound, Filter.Local(), false)?.Entity;
+
+        if (!_active)
+        {
+            _active = true;
+            // Play the first one right away; subsequent ones fire on each animation loop.
+            _audio.PlayGlobal(CapsuleSound, Filter.Local(), false);
+            _overlay.ConsumeLooped(); // clear any pending loop flag so we don't double-play
+        }
     }
 
     private void HideOverlay()
     {
         _overlayMan.RemoveOverlay(_overlay);
-        StopSound();
-    }
-
-    private void StopSound()
-    {
-        if (_audioStream is not { } stream)
-            return;
-
-        // Mute immediately so there is no 1-tick tail while QueueDel propagates.
-        if (TryComp<AudioComponent>(stream, out var audio))
-            _audio.SetGain(stream, 0f, audio);
-
-        _audioStream = _audio.Stop(stream);
+        _active = false;
     }
 
     private void OnStateUpdated(EntityUid uid, NinjaCloningComponent comp, ref AfterAutoHandleStateEvent args)
