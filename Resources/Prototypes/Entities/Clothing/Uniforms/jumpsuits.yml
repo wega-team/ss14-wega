@@ -1070,7 +1070,7 @@
     sprite: Clothing/Uniforms/Jumpsuit/damedaneoutfit.rsi
 
 - type: entity
-  parent: ClothingUniformBase
+  parent: [ ClothingUniformBase, BaseAccentToggleClothing ] # Corvax-Wega-Accents
   id: ClothingUniformJumpsuitPirate
   name: pirate slops
   description: A pirate variation of a space sailor's jumpsuit.

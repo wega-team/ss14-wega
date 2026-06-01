@@ -189,7 +189,7 @@
     price: 25
 
 - type: entity
-  parent: ClothingHeadBase
+  parent: [ ClothingHeadBase, BaseAccentToggleClothing ] # Corvax-Wega-Accents
   id: ClothingHeadHatFancyCrown
   name: fancy crown
   description: It smells like dead rat. Lets you speak like one!
@@ -206,7 +206,7 @@
     accent: MobsterAccent
 
 - type: entity
-  parent: [ ClothingHeadBase, BaseSyndicateContraband ]
+  parent: [ ClothingHeadBase, BaseSyndicateContraband ] # No, you cant turn off your OwO accent, bud
   id: ClothingHeadHatCatEars
   name: cat ears
   description: "NYAH!"
@@ -252,7 +252,7 @@
   description: "*notices your killsign* owo whats this"
 
 - type: entity
-  parent: ClothingHeadBase
+  parent: [ ClothingHeadBase, BaseAccentToggleClothing ] # Corvax-Wega-Accents
   id: ClothingHeadHatDogEars
   name: doggy ears
   description: Only for good boys.

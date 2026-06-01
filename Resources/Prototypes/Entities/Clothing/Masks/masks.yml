@@ -745,7 +745,7 @@
         Heat: 0.95
 
 - type: entity
-  parent: ClothingMaskBase
+  parent: [ ClothingMaskBase, BaseAccentToggleClothing ] # Corvax-Wega-Accents
   id: ClothingMaskItalianMoustache
   name: italian moustache
   description: Made from authentic Italian moustache hairs. Gives the wearer an irresistable urge to gesticulate wildly.

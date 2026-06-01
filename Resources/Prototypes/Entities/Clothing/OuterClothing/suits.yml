@@ -266,7 +266,7 @@
     slots: WITHOUT_POCKET
 
 - type: entity
-  parent: ClothingOuterBase
+  parent: [ BaseAccentToggleClothing, ClothingOuterBase ] # Corvax-Wega-Accents
   id: ClothingOuterSuitIan
   name: ian suit
   description: Who's a good boy?
