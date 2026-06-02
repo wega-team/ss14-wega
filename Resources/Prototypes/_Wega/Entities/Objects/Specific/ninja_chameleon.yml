@@ -88,6 +88,7 @@
       program-container: !type:Container {}
   - type: ItemSlots
   - type: Damageable
+  - type: Injurable
     damageContainer: Inorganic
   - type: Destructible
     thresholds:

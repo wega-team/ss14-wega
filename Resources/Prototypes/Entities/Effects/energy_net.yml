@@ -13,6 +13,7 @@
       sprite: _Wega/Actions/ninja.rsi
   - type: EnergyNet
   - type: Damageable
+  - type: Injurable
     damageContainer: Inorganic
   - type: Destructible
     thresholds:

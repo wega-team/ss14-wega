@@ -539,3 +539,6 @@
 
 - type: Tag
   id: Bola
+
+- type: Tag
+  id: BorgModuleNinja # Cyborg module category for ninja borgs
