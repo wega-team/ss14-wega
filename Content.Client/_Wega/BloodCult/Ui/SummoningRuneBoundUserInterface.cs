@@ -3,7 +3,7 @@ using Robust.Client.UserInterface;
 
 namespace Content.Client._Wega.BloodCult.Ui;
 
-public sealed class SummoningRuneBoundUserInterface : BoundUserInterface
+public sealed partial class SummoningRuneBoundUserInterface : BoundUserInterface
 {
     [ViewVariables]
     private SummoningRuneMenu? _menu;

@@ -121,7 +121,7 @@ public sealed class NinjaBloodScanMachineSystem : EntitySystem
         if (args.Handled)
             return;
 
-        if (!HasComp<SolutionContainerManagerComponent>(args.Used))
+        if (!HasComp<SolutionManagerComponent>(args.Used))
             return;
 
         args.Handled = true;
@@ -176,7 +176,7 @@ public sealed class NinjaBloodScanMachineSystem : EntitySystem
             if (!_hands.TryGetActiveItem((actor, null), out var held))
                 return;
 
-            if (!HasComp<SolutionContainerManagerComponent>(held.Value))
+            if (!HasComp<SolutionManagerComponent>(held.Value))
                 return;
 
             TryInsertItem(ent, ent.Comp, held.Value, actor);
@@ -512,7 +512,7 @@ public sealed class NinjaBloodScanMachineSystem : EntitySystem
         dna       = null;
         donorName = string.Empty;
 
-        if (!TryComp<SolutionContainerManagerComponent>(container, out var solutionMgr))
+        if (!TryComp<SolutionManagerComponent>(container, out var solutionMgr))
             return false;
 
         foreach (var (_, solutionEnt) in _solutionContainer.EnumerateSolutions((container, solutionMgr)))

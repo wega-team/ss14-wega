@@ -1,0 +1,9 @@
+- type: entity
+  parent: BaseItem
+  id: BaseEnchantable
+  abstract: true
+  components:
+  - type: UserInterface
+    interfaces:
+      enum.EnchantUiKey.Key:
+        type: EnchantBoundUserInterface

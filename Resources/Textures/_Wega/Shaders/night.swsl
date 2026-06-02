@@ -13,19 +13,14 @@ void fragment() {
 
     highp float grey = dot(color.rgb, vec3(0.299, 0.587, 0.114));
 
-    highp float threshold = grey * luminance_threshold;
-
-    if (grey < threshold) {
-        grey += (threshold - grey) * brightness;
-        grey = min(grey, 1.0);
+    if (grey < luminance_threshold) {
+        grey += (luminance_threshold - grey) * brightness;
     }
-
-    highp vec3 night_color = mix(color.rgb, tint * grey, 0.8);
-
-    highp float noise = (rand(UV + TIME) - 0.5) * noise_amount * (0.5 - grey * 0.5);
-    night_color += noise;
-
-    night_color *= 0.5;
-
+    
+    grey = clamp(grey, 0.0, 1.0);
+    highp vec3 night_color = tint * grey;
+    highp float noise = (rand(UV + TIME) - 0.5) * noise_amount * (1.0 - grey);
+    night_color += vec3(noise);
     COLOR = vec4(clamp(night_color, 0.0, 1.0), color.a);
 }
+

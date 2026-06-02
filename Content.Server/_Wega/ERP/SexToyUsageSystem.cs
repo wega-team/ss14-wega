@@ -10,12 +10,12 @@ using Robust.Shared.Player;
 
 namespace Content.Server.SexToy.System
 {
-    public sealed class SexToyUsageSystem : EntitySystem
+    public sealed partial class SexToyUsageSystem : EntitySystem
     {
-        [Dependency] private readonly IEntityManager _entManager = default!;
-        [Dependency] private readonly PopupSystem _popupSystem = default!;
-        [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
-        [Dependency] private readonly InventorySystem _inventorySystem = default!;
+        [Dependency] private IEntityManager _entManager = default!;
+        [Dependency] private PopupSystem _popupSystem = default!;
+        [Dependency] private SharedDoAfterSystem _doAfter = default!;
+        [Dependency] private InventorySystem _inventorySystem = default!;
 
         public override void Initialize()
         {

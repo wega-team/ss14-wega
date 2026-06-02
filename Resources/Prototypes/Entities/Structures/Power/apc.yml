@@ -112,8 +112,9 @@
     layoutId: APC
   - type: WiresVisuals
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallicStrong
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -155,6 +156,16 @@
     guides:
     - VoltageNetworks
     - Power
+  - type: ContainerContainer
+    containers:
+      integration_cog: !type:ContainerSlot
+  - type: ItemSlots
+    slots:
+      integration_cog:
+        # ejectOnInteract: true
+        whitelist:
+          tags:
+          - InteractionCog
 
 # APC under construction
 - type: entity

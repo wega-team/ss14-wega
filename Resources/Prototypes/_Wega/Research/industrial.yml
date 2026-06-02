@@ -24,8 +24,8 @@
     - OreBagSuitModule
     - DrillSuitModule
     - EngineeringPlating
-    # - ArmSyntheticPry
-    # - LegSyntheticJump
+    - ArmSyntheticPry
+    - LegSyntheticJump
 
 - type: technology
   id: Gidravlik
@@ -53,3 +53,5 @@
     - StorageLargeSuitModule
     - JetpackSuitModule
     - ConstructorSuitModule
+  technologyPrerequisites:
+  - IndustrialModifier

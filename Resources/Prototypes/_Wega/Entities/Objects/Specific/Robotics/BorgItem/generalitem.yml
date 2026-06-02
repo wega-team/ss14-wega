@@ -253,7 +253,6 @@
   - type: FitsInDispenser
     solution: drink
   - type: SolutionRegeneration
-    solution: drink
     generated:
       reagents:
       - ReagentId: Water

@@ -9,7 +9,7 @@ public enum ModularSuitUiKey : byte
 }
 
 [Serializable, NetSerializable]
-public sealed class ModularSuitBoundUserInterfaceState : BoundUserInterfaceState
+public sealed partial class ModularSuitBoundUserInterfaceState : BoundUserInterfaceState
 {
     public bool Active { get; }
     public float CoreCharge { get; }
@@ -54,7 +54,7 @@ public sealed class ModularSuitBoundUserInterfaceState : BoundUserInterfaceState
 }
 
 [Serializable, NetSerializable]
-public sealed class SuitModuleEntry
+public sealed partial class SuitModuleEntry
 {
     public NetEntity ModuleUid { get; }
     public string Name { get; }
@@ -90,7 +90,7 @@ public sealed class SuitModuleEntry
 }
 
 [Serializable, NetSerializable]
-public sealed class SuitPartEntry
+public sealed partial class SuitPartEntry
 {
     public NetEntity PartUid { get; }
     public string Name { get; }
@@ -105,7 +105,7 @@ public sealed class SuitPartEntry
 }
 
 [Serializable, NetSerializable]
-public sealed class ToggleSuitActiveMessage : BoundUserInterfaceMessage
+public sealed partial class ToggleSuitActiveMessage : BoundUserInterfaceMessage
 {
     public bool Active { get; }
 
@@ -116,7 +116,7 @@ public sealed class ToggleSuitActiveMessage : BoundUserInterfaceMessage
 }
 
 [Serializable, NetSerializable]
-public sealed class ToggleModuleMessage : BoundUserInterfaceMessage
+public sealed partial class ToggleModuleMessage : BoundUserInterfaceMessage
 {
     public NetEntity ModuleUid { get; }
     public bool Active { get; }

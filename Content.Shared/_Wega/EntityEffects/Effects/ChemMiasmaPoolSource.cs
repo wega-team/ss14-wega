@@ -13,7 +13,7 @@ namespace Content.Shared.EntityEffects.Effects;
 /// <inheritdoc cref="EntityEffectSystem{T,TEffect}"/>
 public sealed partial class ChemAtmosPoolSourceEntityEffectSystem : EntityEffectSystem<DiseaseCarrierComponent, ChemAtmosPoolSource>
 {
-    [Dependency] private readonly SharedRottingSystem _rotting = default!;
+    [Dependency] private SharedRottingSystem _rotting = default!;
 
     protected override void Effect(Entity<DiseaseCarrierComponent> entity, ref EntityEffectEvent<ChemAtmosPoolSource> args)
     {

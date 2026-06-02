@@ -13,8 +13,16 @@
   maxCount: 30
 
 - type: stack
+  id: ChargedBrass
+  name: stack-chargedbrass
+  icon: { sprite: _Wega/Objects/Materials/Sheets/metal.rsi, state: chargedbrass }
+  spawn: SheetChargedBrass1
+  maxCount: 30
+  
+- type: stack
   id: PrinterBrain
   name: stak-brain
   icon: { sprite: Mobs/Species/Human/organs.rsi, state: brain }
   spawn: OrganHumanBrain
   maxCount: 1
+

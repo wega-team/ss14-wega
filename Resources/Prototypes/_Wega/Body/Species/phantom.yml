@@ -88,8 +88,9 @@
     speedModifier: 0.70
     interval: 0.5
   - type: Damageable
-    damageContainer: Biological
     damageModifierSet: Phantom
+  - type: Injurable
+    damageContainer: Biological
   - type: ThermalRegulator
     metabolismHeat: 800
     radiatedHeat: 100

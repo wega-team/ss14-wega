@@ -16,38 +16,40 @@ using Content.Shared.Zombies;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
-using System.Numerics; //Corvax-Wega-DragonPushSkill
-using Robust.Shared.Random; //Corvax-Wega-DragonPushSkill
-using Robust.Shared.Physics.Components; //Corvax-Wega-DragonPushSkill
-using Robust.Shared.Physics.Systems; //Corvax-Wega-DragonPushSkill
-using Content.Shared.Stunnable; //Corvax-Wega-DragonPushSkill
-using Content.Shared.Body; //Corvax-Wega-DragonPushSkill
+using System.Numerics; // Corvax-Wega-DragonPushSkill
+using Robust.Shared.Random; // Corvax-Wega-DragonPushSkill
+using Robust.Shared.Physics.Components; // Corvax-Wega-DragonPushSkill
+using Robust.Shared.Physics.Systems; // Corvax-Wega-DragonPushSkill
+using Content.Shared.Stunnable; // Corvax-Wega-DragonPushSkill
+using Content.Shared.Body; // Corvax-Wega-DragonPushSkill
 
 namespace Content.Server.Dragon;
 
 public sealed partial class DragonSystem : EntitySystem
 {
-    [Dependency] private readonly CarpRiftsConditionSystem _carpRifts = default!;
-    [Dependency] private readonly SharedMindSystem _mind = default!;
-    [Dependency] private readonly MovementSpeedModifierSystem _movement = default!;
-    [Dependency] private readonly NpcFactionSystem _faction = default!;
-    [Dependency] private readonly PopupSystem _popup = default!;
-    [Dependency] private readonly SharedActionsSystem _actions = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly SharedMapSystem _map = default!;
-    [Dependency] private readonly MobStateSystem _mobState = default!;
-    [Dependency] private readonly TurfSystem _turf = default!;
-    [Dependency] private readonly GibbingSystem _gibbing = default!;
-    [Dependency] private readonly SmokeSystem _smoke = default!;
-    [Dependency] private readonly IRobustRandom _random = default!; //Corvax-Wega-DragonPushSkill
-    [Dependency] private readonly TileSystem _tile = default!; //Corvax-Wega-DragonPushSkill
-    [Dependency] private readonly IEntityManager _entityManager = default!; //Corvax-Wega-DragonPushSkill
-    [Dependency] private readonly EntityLookupSystem _entityLookup = default!; //Corvax-Wega-DragonPushSkill
-    [Dependency] private readonly SharedPhysicsSystem _physics = default!; //Corvax-Wega-DragonPushSkill
-    [Dependency] private readonly SharedStunSystem _stun = default!; //Corvax-Wega-DragonPushSkill
+    [Dependency] private CarpRiftsConditionSystem _carpRifts = default!;
+    [Dependency] private SharedMindSystem _mind = default!;
+    [Dependency] private MovementSpeedModifierSystem _movement = default!;
+    [Dependency] private NpcFactionSystem _faction = default!;
+    [Dependency] private PopupSystem _popup = default!;
+    [Dependency] private SharedActionsSystem _actions = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private SharedMapSystem _map = default!;
+    [Dependency] private MobStateSystem _mobState = default!;
+    [Dependency] private TurfSystem _turf = default!;
+    [Dependency] private GibbingSystem _gibbing = default!;
+    [Dependency] private SmokeSystem _smoke = default!;
+    // Corvax-Wega-DragonPushSkill-start
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private TileSystem _tile = default!;
+    [Dependency] private IEntityManager _entityManager = default!;
+    [Dependency] private EntityLookupSystem _entityLookup = default!;
+    [Dependency] private SharedPhysicsSystem _physics = default!;
+    [Dependency] private SharedStunSystem _stun = default!;
+    // Corvax-Wega-DragonPushSkill-end
 
-    private EntityQuery<CarpRiftsConditionComponent> _objQuery;
+    [Dependency] private EntityQuery<CarpRiftsConditionComponent> _carpRiftsConditionQuery = default!;
 
     /// <summary>
     /// Minimum distance between 2 rifts allowed.
@@ -64,8 +66,6 @@ public sealed partial class DragonSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-
-        _objQuery = GetEntityQuery<CarpRiftsConditionComponent>();
 
         SubscribeLocalEvent<DragonComponent, MapInitEvent>(OnInit);
         SubscribeLocalEvent<DragonComponent, ComponentShutdown>(OnShutdown);
@@ -301,7 +301,7 @@ public sealed partial class DragonSystem : EntitySystem
 
         foreach (var objId in mind.Objectives)
         {
-            if (_objQuery.TryGetComponent(objId, out var obj))
+            if (_carpRiftsConditionQuery.TryGetComponent(objId, out var obj))
             {
                 _carpRifts.ResetRifts(objId, obj);
                 break;
@@ -322,7 +322,7 @@ public sealed partial class DragonSystem : EntitySystem
 
         foreach (var objId in mind.Objectives)
         {
-            if (_objQuery.TryGetComponent(objId, out var obj))
+            if (_carpRiftsConditionQuery.TryGetComponent(objId, out var obj))
             {
                 _carpRifts.RiftCharged(objId, obj);
                 break;

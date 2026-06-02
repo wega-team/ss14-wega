@@ -36,23 +36,23 @@ using Robust.Shared.Timing;
 namespace Content.Server.Genetics.System
 {
     [UsedImplicitly]
-    public sealed class DnaModifierConsoleSystem : EntitySystem
+    public sealed partial class DnaModifierConsoleSystem : EntitySystem
     {
-        [Dependency] private readonly SharedAudioSystem _audio = default!;
-        [Dependency] private readonly SharedContainerSystem _container = default!;
-        [Dependency] private readonly DamageableSystem _damage = default!;
-        [Dependency] private readonly DeviceLinkSystem _signalSystem = default!;
-        [Dependency] private readonly DnaClientSystem _dnaClient = default!;
-        [Dependency] private readonly DnaModifierSystem _dnaModifier = default!;
-        [Dependency] private readonly IEntityManager _entManager = default!;
-        [Dependency] private readonly IGameTiming _timing = default!;
-        [Dependency] private readonly ItemSlotsSystem _itemSlotsSystem = default!;
-        [Dependency] private readonly PowerReceiverSystem _powerReceiverSystem = default!;
-        [Dependency] private readonly QuickDialogSystem _quickDialog = default!;
-        [Dependency] private readonly IRobustRandom _random = default!;
-        [Dependency] private readonly SharedSolutionContainerSystem _solutionContainerSystem = default!;
-        [Dependency] private readonly SharedTransformSystem _transform = default!;
-        [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
+        [Dependency] private SharedAudioSystem _audio = default!;
+        [Dependency] private SharedContainerSystem _container = default!;
+        [Dependency] private DamageableSystem _damage = default!;
+        [Dependency] private DeviceLinkSystem _signalSystem = default!;
+        [Dependency] private DnaClientSystem _dnaClient = default!;
+        [Dependency] private DnaModifierSystem _dnaModifier = default!;
+        [Dependency] private IEntityManager _entManager = default!;
+        [Dependency] private IGameTiming _timing = default!;
+        [Dependency] private ItemSlotsSystem _itemSlotsSystem = default!;
+        [Dependency] private PowerReceiverSystem _powerReceiverSystem = default!;
+        [Dependency] private QuickDialogSystem _quickDialog = default!;
+        [Dependency] private IRobustRandom _random = default!;
+        [Dependency] private SharedSolutionContainerSystem _solutionContainerSystem = default!;
+        [Dependency] private SharedTransformSystem _transform = default!;
+        [Dependency] private UserInterfaceSystem _uiSystem = default!;
 
         private static readonly EntProtoId Injector = "DnaInjector";
         private static readonly ProtoId<DamageTypePrototype> RadDamage = "Radiation";

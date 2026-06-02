@@ -37,7 +37,48 @@
   - type: Construction
     graph: GlassesMedSec
     node: medsecGlasses
+    
+- type: entity
+  parent: [ClothingEyesBase, BaseHighlyIllegalContraband]
+  id: ClothingEyesGlassesNightVision
+  name: night vision goggles
+  description: a pair of goggles that allows you to see through dark.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Eyes/nightvision.rsi
+    layers:
+    - state: icon-off
+      map: [ "enum.ToggleableVisuals.Layer" ]
+  - type: Clothing
+    sprite: _Wega/Clothing/Eyes/nightvision.rsi
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+  - type: IdentityBlocker
+    coverage: EYES
+  - type: NightVision
+    tint: "#00800000"
+  - type: ItemToggle
+    soundActivate: /Audio/_Wega/Items/activate.ogg
+    soundDeactivate: /Audio/_Wega/Items/deactivate.ogg
+    onUse: false
+    onActivate: false
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.ToggleableVisuals.Enabled:
+        enum.ToggleableVisuals.Layer:
+          True: { state: "icon" }
+          False: { state: "icon-off" }
 
+- type: entity
+  parent: ClothingEyesGlassesNightVision
+  id: ClothingEyesGlassesNightVisionNinja
+  name: night vision goggles pavuk
+  description: a pair of goggles that allows you to see through dark.
+  components:
+  - type: FlashImmunity
+  
 # ADT
 
 - type: entity
@@ -55,3 +96,42 @@
     - WhitelistChameleon
   - type: IdentityBlocker
     coverage: EYES
+    
+# VeilCult
+- type: entity
+  parent: ClothingEyesBase
+  id: ClothingEyesJudicialVisor
+  name: judicial visor
+  description: a pair of goggles that allows you to see through dark.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Eyes/judicialvisor.rsi
+    layers:
+    - state: icon-off
+      map: [ "enum.ToggleableVisuals.Layer" ]
+  - type: Clothing
+    sprite: _Wega/Clothing/Eyes/judicialvisor.rsi
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+  - type: IdentityBlocker
+    coverage: EYES
+  - type: NightVision
+    tint: "#c242bb00"
+  - type: ItemToggle
+    soundActivate: /Audio/_Wega/Items/activate.ogg
+    soundDeactivate: /Audio/_Wega/Items/deactivate.ogg
+    onUse: false
+    onActivate: false
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.ToggleableVisuals.Enabled:
+        enum.ToggleableVisuals.Layer:
+          True: { state: "icon" }
+          False: { state: "icon-off" }
+  - type: FlashImmunity
+  - type: ShowHealthBars
+  - type: EyeProtection
+  - type: CultEquipment
+    cult: Veil

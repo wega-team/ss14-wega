@@ -72,6 +72,16 @@
     - SubNinja
     - SubNinjaExtraVampire
     - Vampire
+
+- type: gamePreset
+  id: VeilCult
+  alias:
+    - veil-cult
+  name: veil-cult-title
+  description: veil-cult-description
+  showInVote: false
+  rules:
+    - VeilCult
     - SubGamemodesRule
     - BasicStationEventScheduler
     - MeteorSwarmScheduler
@@ -91,6 +101,18 @@
     - SubNinjaDefender
     - SubNinjaExtraTraitor
     - Traitor
+
+- type: gamePreset
+  id: Standoff
+  alias:
+    - standoff
+    - standoff-2 # IM SO SORRY I CANT STOP XDDDD
+  name: standoff-title
+  description: standoff-description
+  showInVote: false
+  rules:
+    - VeilCult
+    - BloodCult
     - SubGamemodesRule
     - BasicStationEventScheduler
     - MeteorSwarmScheduler

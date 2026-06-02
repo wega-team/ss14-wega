@@ -23,7 +23,6 @@ public sealed partial class ChiurizinOverdoseEffectSystem : EntityEffectSystem<M
 {
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly SharedStunSystem _stun = default!;
-    [Dependency] private readonly Content.Shared.StatusEffect.StatusEffectsSystem _statusOld = default!;
     [Dependency] private readonly StatusEffectsSystem _statusNew = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedTransformSystem _xform = default!;
@@ -104,11 +103,7 @@ public sealed partial class ChiurizinOverdoseEffectSystem : EntityEffectSystem<M
         // 1%: temporary blindness (5s) + 5 cellular damage
         if (_random.Prob(0.01f))
         {
-            _statusOld.TryAddStatusEffect<TemporaryBlindnessComponent>(
-                uid,
-                TemporaryBlindnessSystem.BlindingStatusEffect,
-                TimeSpan.FromSeconds(5),
-                refresh: false);
+            _statusNew.TryAddStatusEffectDuration(uid, BlindnessSystem.BlindingStatusEffect, TimeSpan.FromSeconds(5));
             _damageable.TryChangeDamage(uid, BrainDamage, ignoreResistances: true);
         }
 

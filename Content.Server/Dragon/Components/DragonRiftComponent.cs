@@ -35,6 +35,9 @@ public sealed partial class DragonRiftComponent : SharedDragonRiftComponent
     [ViewVariables(VVAccess.ReadWrite), DataField("spawnCooldown")]
     public float SpawnCooldown = 30f;
 
-    [ViewVariables(VVAccess.ReadWrite), DataField("spawn", customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
-    public string SpawnPrototype = "MobCarpDragon";
+    [DataField(required: true)] // Corvax-Wega-Add
+    public Dictionary<EntProtoId, float> SpawnWeights = new(); // Corvax-Wega-Add
+
+    // [ViewVariables(VVAccess.ReadWrite), DataField("spawn", customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))] Corvax-Wega-Change
+    // public string SpawnPrototype = "MobCarpDragon"; Corvax-Wega-Change
 }

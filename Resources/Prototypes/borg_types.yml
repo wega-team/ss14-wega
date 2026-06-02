@@ -79,6 +79,7 @@
     - Android
   - type: ShowAccessReaderSettings
   - type: MagbootsImplant
+  - type: ThermalSight
 # Corvax-Wega-end
 
   # Visual
@@ -192,7 +193,6 @@
           - ReagentId: SpaceCleaner
             Quantity: 100
   - type: SolutionRegeneration
-    solution: tank
     generated:
       reagents:
       - ReagentId: SpaceCleaner

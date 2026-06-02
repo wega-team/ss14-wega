@@ -3,7 +3,7 @@ using Robust.Shared.Configuration;
 namespace Content.Shared.CCVar;
 
 [CVarDefs]
-public sealed class WegaCVars
+public sealed partial class WegaCVars
 {
     /*
         Ghost Respawn CVars

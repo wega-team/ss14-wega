@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Made with love by Misha_Unity and Melissandra >//<",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "full"
+    },
+    {
+      "name": "body"
+    },
+    {
+      "name": "l_arm"
+    },
+    {
+      "name": "l_leg"
+    },
+    {
+      "name": "r_arm"
+    },
+    {
+      "name": "frame-0"
+    },
+    {
+      "name": "frame-1"
+    },
+    {
+      "name": "frame-2"
+    },
+    {
+      "name": "frame-3"
+    },
+    {
+      "name": "frame-4"
+    },
+    {
+      "name": "frame-5"
+    }
+  ]
+}

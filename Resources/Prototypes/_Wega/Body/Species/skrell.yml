@@ -76,8 +76,9 @@
     baseDecayRate: 0.15
   - type: SolutionScanner
   - type: Damageable
-    damageContainer: Biological
     damageModifierSet: Skrell
+  - type: Injurable
+    damageContainer: Biological
   - type: Reactive
     groups:
       Flammable: [ Touch ]

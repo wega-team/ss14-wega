@@ -3,7 +3,7 @@ using Content.Shared.Mining.Components;
 
 namespace Content.Client.Mining.Visualizers
 {
-    public sealed class MiningServerVisualizerSystem : VisualizerSystem<MiningServerVisualsComponent>
+    public sealed partial class MiningServerVisualizerSystem : VisualizerSystem<MiningServerVisualsComponent>
     {
         protected override void OnAppearanceChange(EntityUid uid, MiningServerVisualsComponent component, ref AppearanceChangeEvent args)
         {

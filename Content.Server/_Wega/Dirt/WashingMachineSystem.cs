@@ -14,15 +14,15 @@ using Robust.Shared.Containers;
 
 namespace Content.Server.WashingMachine
 {
-    public sealed class WashingMachineSystem : EntitySystem
+    public sealed partial class WashingMachineSystem : EntitySystem
     {
-        [Dependency] private readonly SharedAmbientSoundSystem _ambient = default!;
-        [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-        [Dependency] private readonly SharedAudioSystem _audio = default!;
-        [Dependency] private readonly SharedContainerSystem _container = default!;
-        [Dependency] private readonly SharedDirtSystem _dirt = default!;
-        [Dependency] private readonly SharedJitteringSystem _jittering = default!;
-        [Dependency] private readonly LockSystem _lock = default!;
+        [Dependency] private SharedAmbientSoundSystem _ambient = default!;
+        [Dependency] private SharedAppearanceSystem _appearance = default!;
+        [Dependency] private SharedAudioSystem _audio = default!;
+        [Dependency] private SharedContainerSystem _container = default!;
+        [Dependency] private SharedDirtSystem _dirt = default!;
+        [Dependency] private SharedJitteringSystem _jittering = default!;
+        [Dependency] private LockSystem _lock = default!;
 
         public override void Initialize()
         {

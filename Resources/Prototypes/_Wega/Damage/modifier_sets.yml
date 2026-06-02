@@ -4,8 +4,8 @@
     Blunt: 0.8
     Piercing: 0.8
     Cold: 0.2
-    Heat: 1
-    Shock: 1
+    Heat: 1.5
+    Shock: 1.5
     Poison: 0.0
     Radiation: 0.0
 
@@ -15,8 +15,8 @@
     Blunt: 0.4
     Piercing: 0.4
     Cold: 0.1
-    Heat: 0.5
-    Shock: 0.5
+    Heat: 1.2
+    Shock: 1.2
     Poison: 0.0
     Radiation: 0.0
 

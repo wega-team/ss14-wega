@@ -697,8 +697,9 @@
     energy: 4.0
     color: "#3c5eb5"
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallicStrong
+  - type: Injurable
+    damageContainer: StructuralInorganic
 
 - type: entity
   parent: ComputerComms
@@ -892,6 +893,7 @@
       state: generic_panel_open
   - type: CargoOrderConsole
     removeLimitAccess: [ "Quartermaster" ]
+    allowedGroups: [ "market","SalvageJobReward2","SalvageJobReward3", "SalvageJobRewardMAX"]
   - type: ActiveRadio
     channels:
     - Supply
@@ -1047,6 +1049,7 @@
     announcementChannel: Security
     removeLimitAccess: [ "HeadOfSecurity" ]
     # mode: SendToPrimary # Corvax-Wega
+    allowedGroups: [ "market", "sec", "SalvageJobReward2","SalvageJobReward3", "SalvageJobRewardMAX"]
   - type: ActiveRadio
     channels:
     - Security
@@ -1212,8 +1215,9 @@
     speechVerb: Robotic
     speechSounds: Pai
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallicStrong
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: GuideHelp
     guides:
     - Cloning

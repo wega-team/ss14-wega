@@ -25025,9 +25025,6 @@ entities:
     - type: Transform
       pos: -2.5,-8.5
       parent: 1
-    - type: Damageable
-      damageModifierSet: null
-      damageContainer: null
     - type: Destructible
       thresholds: []
   - uid: 1773
@@ -25035,9 +25032,6 @@ entities:
     - type: Transform
       pos: 35.5,-4.5
       parent: 1
-    - type: Damageable
-      damageModifierSet: null
-      damageContainer: null
     - type: Destructible
       thresholds: []
   - uid: 1807
@@ -25045,9 +25039,6 @@ entities:
     - type: Transform
       pos: 25.5,2.5
       parent: 1
-    - type: Damageable
-      damageModifierSet: null
-      damageContainer: null
     - type: Destructible
       thresholds: []
 - proto: StatueAshDrakeFalling
@@ -25057,9 +25048,6 @@ entities:
     - type: Transform
       pos: 41.5,1.5
       parent: 1
-    - type: Damageable
-      damageModifierSet: null
-      damageContainer: null
     - type: Destructible
       thresholds: []
   - uid: 217
@@ -25067,9 +25055,6 @@ entities:
     - type: Transform
       pos: 3.5,-8.5
       parent: 1
-    - type: Damageable
-      damageModifierSet: null
-      damageContainer: null
     - type: Destructible
       thresholds: []
   - uid: 588
@@ -25077,9 +25062,6 @@ entities:
     - type: Transform
       pos: 35.5,1.5
       parent: 1
-    - type: Damageable
-      damageModifierSet: null
-      damageContainer: null
     - type: Destructible
       thresholds: []
   - uid: 1823
@@ -25087,9 +25069,6 @@ entities:
     - type: Transform
       pos: 41.5,-4.5
       parent: 1
-    - type: Damageable
-      damageModifierSet: null
-      damageContainer: null
     - type: Destructible
       thresholds: []
 - proto: TableBrass

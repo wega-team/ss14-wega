@@ -8,7 +8,7 @@ using Robust.Shared.Serialization;
 namespace Content.Shared.DetailExaminable;
 
 [Serializable, NetSerializable]
-public sealed class DetailExaminableEuiState : EuiStateBase
+public sealed partial class DetailExaminableEuiState : EuiStateBase
 {
     public NetEntity Target;
     public string Name = string.Empty;

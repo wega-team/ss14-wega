@@ -12,14 +12,14 @@ using Robust.Shared.Containers;
 
 namespace Content.Shared.Clothing;
 
-public sealed class SharedMagbootsSystem : EntitySystem
+public sealed partial class SharedMagbootsSystem : EntitySystem
 {
-    [Dependency] private readonly AlertsSystem _alerts = default!;
-    [Dependency] private readonly ItemToggleSystem _toggle = default!;
-    [Dependency] private readonly SharedContainerSystem _container = default!;
-    [Dependency] private readonly SharedGravitySystem _gravity = default!;
-    [Dependency] private readonly InventorySystem _inventory = default!; // Corvax-Wega-AdvMagboots
-    [Dependency] private readonly SharedPopupSystem _popup = default!; // Corvax-Wega-AdvMagboots
+    [Dependency] private AlertsSystem _alerts = default!;
+    [Dependency] private ItemToggleSystem _toggle = default!;
+    [Dependency] private SharedContainerSystem _container = default!;
+    [Dependency] private SharedGravitySystem _gravity = default!;
+    [Dependency] private InventorySystem _inventory = default!; // Corvax-Wega-AdvMagboots
+    [Dependency] private SharedPopupSystem _popup = default!; // Corvax-Wega-AdvMagboots
 
     public override void Initialize()
     {

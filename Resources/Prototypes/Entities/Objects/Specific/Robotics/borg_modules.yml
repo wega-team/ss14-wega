@@ -719,7 +719,7 @@
           - MagmiteAlloy
           - Gems
     # Corvax-Wega-Robot-end
-    - item: BorgOreBagOfHolding # BorgOreBagOfHolding Corvax-Wega-Robot-add
+    - item: BorgOreBagOfHolding
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: adv-mining-module }
 
@@ -781,13 +781,7 @@
     - item: Multitool
     - item: RemoteSignallerAdvanced
 # Corvax-Wega-Robot-Start
-    - item: SprayPainter
-    - hand:
-        emptyRepresentative: SprayPainterAmmo
-        emptyLabel: borg-slot-spray-painter-ammo-empty
-        whitelist:
-          components:
-          - SprayPainterAmmo
+    - item: SprayPainterBorg
 # Corvax-Wega-Robot-End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: adv-tools-module }
@@ -812,14 +806,14 @@
   - type: ItemBorgModule
     hands:
     - hand:
-        emptyRepresentative: BorgModuleConstructionMaterialPlaceholder
+        emptyRepresentative: ConstrukAndBattery # Corvax-Wega-add
         emptyLabel: borg-slot-construction-empty
         whitelist:
           tags:
           - ConstructionMaterial
           - PowerCell # Corvax-Wega-robots
     - hand:
-        emptyRepresentative: BorgModuleConstructionMaterialPlaceholder
+        emptyRepresentative: ConstrukAndBattery # Corvax-Wega-Add
         emptyLabel: borg-slot-construction-empty
         whitelist:
           tags:
@@ -1309,6 +1303,7 @@
         whitelist:
           tags:
           - ConstructionMaterial
+          - PowerCell # Corvax-Wega-Add
           - CableCoil # Corvax-Wega-Robot
 # Corvax-Wega-Start
     # - hand:

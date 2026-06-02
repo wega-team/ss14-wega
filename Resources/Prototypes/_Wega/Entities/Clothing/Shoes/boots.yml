@@ -22,4 +22,23 @@
   - type: SpeedModifierContactCapClothing
     maxContactSprintSlowdown: 0.7
     maxContactWalkSlowdown: 0.7
-  - type: BloodCultEquipment
+  - type: CultEquipment
+    cult: Blood
+  
+- type: entity
+  parent: ClothingShoesBootsCowboyBrown
+  id: ClothingShoesClockworkTreads
+  name: clockwork treads
+  description: Heavy shoes worn by clockwork cultists.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Shoes/Boots/clockwork_treads.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Shoes/Boots/clockwork_treads.rsi
+    # equipSound: /Audio/Mecha/mechmove03.ogg FOR FUTURE SOUNDS
+    # unequipSound: /Audio/Mecha/mechmove03.ogg FOR FUTURE SOUNDS
+    equipDelay: 3
+    unequipDelay: 3
+  - type: ClothingSlowOnDamageModifier
+    modifier: 0.35
+

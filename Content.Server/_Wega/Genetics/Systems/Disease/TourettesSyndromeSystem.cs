@@ -7,12 +7,12 @@ using Robust.Shared.Random;
 
 namespace Content.Server.Genetics.System;
 
-public sealed class TourettesSyndromeSystem : EntitySystem
+public sealed partial class TourettesSyndromeSystem : EntitySystem
 {
-    [Dependency] private readonly ChatSystem _chat = default!;
-    [Dependency] private readonly SharedJitteringSystem _jitteringSystem = default!;
-    [Dependency] private readonly SharedStunSystem _stun = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private ChatSystem _chat = default!;
+    [Dependency] private SharedJitteringSystem _jitteringSystem = default!;
+    [Dependency] private SharedStunSystem _stun = default!;
+    [Dependency] private IRobustRandom _random = default!;
 
     private static readonly IReadOnlyList<string> SwearWords = new List<string>
     {

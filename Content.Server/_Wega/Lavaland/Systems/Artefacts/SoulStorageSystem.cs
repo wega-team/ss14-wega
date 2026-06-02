@@ -7,9 +7,9 @@ using Robust.Shared.Player;
 
 namespace Content.Server.Lavaland.Artefacts.Systems;
 
-public sealed class SoulStorageSystem : EntitySystem
+public sealed partial class SoulStorageSystem : EntitySystem
 {
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
+    [Dependency] private SharedHandsSystem _hands = default!;
 
     public override void Initialize()
     {

@@ -4,7 +4,7 @@ using Content.Shared.Damage.Systems;
 
 namespace Content.Shared.Clothing.Upgrades;
 
-public sealed class ClothingUpgradeEffectsSystem : EntitySystem
+public sealed partial class ClothingUpgradeEffectsSystem : EntitySystem
 {
     public override void Initialize()
     {

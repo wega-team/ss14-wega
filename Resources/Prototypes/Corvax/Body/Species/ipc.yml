@@ -87,8 +87,9 @@
   name: Urist McHands
   components:
   - type: Damageable
-    damageContainer: SiliconIpc
     damageModifierSet: Ipc
+  - type: Injurable
+    damageContainer: SiliconIpc
   - type: DamageVisuals
     damageOverlayGroups:
       Brute:
@@ -149,7 +150,7 @@
     messagePerceivedByOthers: hugging-success-generic-others
   - type: BodyEmotes
     soundsId: IpcEmotes
-    ############################# это работает?
+###
   - type: ItemTogglePointLight
   - type: ToggleableVisuals
     spriteLayer: light
@@ -180,7 +181,7 @@
       startValue: 0.1
       endValue: 2.0
       isLooped: true
-    #############################
+###
   - type: TypingIndicator
     proto: robot
   - type: PowerCellSlot
@@ -234,7 +235,6 @@
       Critical: BorgCrit
       Dead: BorgDead
   - type: Fingerprint
-  - type: Blindable
   - type: Tag
     tags:
     - CanPilot
@@ -242,7 +242,7 @@
     - DoorBumpOpener
     - AnomalyHost
     - Ipc
-  ############ хз зачем было
+###
   - type: Temperature
     currentTemperature: 310.15
     specificHeat: 42

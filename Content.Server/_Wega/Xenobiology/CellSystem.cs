@@ -14,13 +14,13 @@ using Robust.Server.GameObjects;
 
 namespace Content.Server.Xenobiology;
 
-public sealed class CellSystem : SharedCellSystem
+public sealed partial class CellSystem : SharedCellSystem
 {
-    [Dependency] private readonly AppearanceSystem _appearance = default!;
-    [Dependency] private readonly DamageableSystem _damageable = default!;
-    [Dependency] private readonly DoAfterSystem _doAfter = default!;
-    [Dependency] private readonly EntityWhitelistSystem _entityWhitelist = default!;
-    [Dependency] private readonly PopupSystem _popup = default!;
+    [Dependency] private AppearanceSystem _appearance = default!;
+    [Dependency] private DamageableSystem _damageable = default!;
+    [Dependency] private DoAfterSystem _doAfter = default!;
+    [Dependency] private EntityWhitelistSystem _entityWhitelist = default!;
+    [Dependency] private PopupSystem _popup = default!;
 
     public override void Initialize()
     {

@@ -3,7 +3,7 @@ using Robust.Client.UserInterface;
 
 namespace Content.Client._Wega.BloodCult.Ui;
 
-public sealed class EmpoweringRuneBoundUserInterface : BoundUserInterface
+public sealed partial class EmpoweringRuneBoundUserInterface : BoundUserInterface
 {
     [ViewVariables]
     private EmpoweringRuneMenu? _menu;

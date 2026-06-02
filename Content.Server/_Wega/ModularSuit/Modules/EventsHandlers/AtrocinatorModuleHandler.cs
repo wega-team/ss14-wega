@@ -7,12 +7,12 @@ using Content.Shared.Stunnable;
 
 namespace Content.Server.Modular.Suit;
 
-public sealed class AtrocinatorModuleHandler : ModuleActionHandler
+public sealed partial class AtrocinatorModuleHandler : ModuleActionHandler
 {
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly SharedStunSystem _stun = default!;
-    [Dependency] private readonly ThrowingSystem _throwing = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private SharedStunSystem _stun = default!;
+    [Dependency] private ThrowingSystem _throwing = default!;
 
     private const float Radius = 5f;
     private const float ThrowStrength = 20f;

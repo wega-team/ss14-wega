@@ -4,10 +4,10 @@ using Content.Shared.Movement.Events;
 
 namespace Content.Shared.Resomi.Abilities.Hearing;
 
-public abstract class SharedListenUpSkillSystem : EntitySystem
+public abstract partial class SharedListenUpSkillSystem : EntitySystem
 {
-    [Dependency] private readonly SharedActionsSystem _actionsSystem = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
+    [Dependency] private SharedActionsSystem _actionsSystem = default!;
+    [Dependency] private SharedDoAfterSystem _doAfterSystem = default!;
 
     public override void Initialize()
     {

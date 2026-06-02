@@ -3,8 +3,9 @@ using Robust.Client.UserInterface;
 
 namespace Content.Client.Forensics
 {
-    public sealed class ForensicScannerBoundUserInterface : BoundUserInterface
+    public sealed partial class ForensicScannerBoundUserInterface : BoundUserInterface
     {
+        [ViewVariables]
         private ForensicScannerMenu? _window;
 
         public ForensicScannerBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey)

@@ -7,10 +7,10 @@ using Content.Shared.Popups;
 
 namespace Content.Server.Paper;
 
-public sealed class ChameleonStampSystem : EntitySystem
+public sealed partial class ChameleonStampSystem : EntitySystem
 {
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly QuickDialogSystem _quickDialog = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private QuickDialogSystem _quickDialog = default!;
 
     private static readonly Regex HexColorRegex = new Regex("^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{8})$", RegexOptions.Compiled);
 

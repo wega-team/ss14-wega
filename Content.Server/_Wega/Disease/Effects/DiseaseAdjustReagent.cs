@@ -25,11 +25,11 @@ namespace Content.Server.Disease.Effects
 
         public override void Effect(DiseaseEffectArgs args)
         {
-            if (!args.EntityManager.TryGetComponent<BloodstreamComponent>(args.DiseasedEntity, out var bloodstream))
+            if (!args.EntityManager.HasComponent<BloodstreamComponent>(args.DiseasedEntity))
                 return;
 
             var solutionSys = args.EntityManager.EntitySysManager.GetEntitySystem<SharedSolutionContainerSystem>();
-            if (Reagent is null || !solutionSys.TryGetSolution(args.DiseasedEntity, null, out var solutionEntity, out var solution) || solutionEntity is null)
+            if (Reagent is null || !solutionSys.TryGetSolution(args.DiseasedEntity, BloodstreamComponent.DefaultBloodSolutionName, out var solutionEntity, out var solution) || solutionEntity is null)
                 return;
 
             var reagentId = new ReagentId(Reagent, new List<ReagentData>());

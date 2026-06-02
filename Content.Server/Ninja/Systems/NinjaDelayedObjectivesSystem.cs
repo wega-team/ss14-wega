@@ -35,7 +35,8 @@ public sealed class NinjaDelayedObjectivesSystem : GameRuleSystem<NinjaDelayedOb
             if (!TryComp<AntagSelectionComponent>(uid, out var selection))
                 continue;
 
-            foreach (var (mindId, _) in selection.AssignedMinds)
+            foreach (var minds in selection.AssignedMinds.Values)
+            foreach (var (mindId, _) in minds)
             {
                 if (!TryComp<MindComponent>(mindId, out var mind))
                     continue;

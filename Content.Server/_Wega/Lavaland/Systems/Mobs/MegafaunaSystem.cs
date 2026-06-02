@@ -14,11 +14,11 @@ namespace Content.Server.Lavaland.Mobs;
 
 public sealed partial class MegafaunaSystem : EntitySystem
 {
-    [Dependency] private readonly SharedAchievementsSystem _achievement = default!;
-    [Dependency] private readonly SharedAmbientSoundSystem _ambient = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly DamageableSystem _damage = default!;
-    [Dependency] private readonly NPCSystem _npc = default!;
+    [Dependency] private SharedAchievementsSystem _achievement = default!;
+    [Dependency] private SharedAmbientSoundSystem _ambient = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private DamageableSystem _damage = default!;
+    [Dependency] private NPCSystem _npc = default!;
 
     public override void Initialize()
     {

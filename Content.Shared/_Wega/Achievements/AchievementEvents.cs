@@ -5,7 +5,7 @@ using Robust.Shared.Serialization;
 namespace Content.Shared.Achievements;
 
 [Serializable, NetSerializable]
-public sealed class AchievementUnlockedEvent : EntityEventArgs
+public sealed partial class AchievementUnlockedEvent : EntityEventArgs
 {
     public NetEntity User { get; }
     public AchievementsEnum Achievement { get; }
@@ -18,12 +18,12 @@ public sealed class AchievementUnlockedEvent : EntityEventArgs
 }
 
 [Serializable, NetSerializable]
-public sealed class RequestAchievementsEvent : EntityEventArgs
+public sealed partial class RequestAchievementsEvent : EntityEventArgs
 {
 }
 
 [Serializable, NetSerializable]
-public sealed class ResponseAchievementsEvent : EntityEventArgs
+public sealed partial class ResponseAchievementsEvent : EntityEventArgs
 {
     public List<AchievementsEnum> Achievements { get; }
 
@@ -34,7 +34,7 @@ public sealed class ResponseAchievementsEvent : EntityEventArgs
 }
 
 // Server
-public sealed class GetAchievementStateRequestEvent : EntityEventArgs
+public sealed partial class GetAchievementStateRequestEvent : EntityEventArgs
 {
     public NetUserId UserId { get; }
     public byte AchievementKey { get; }
@@ -48,7 +48,7 @@ public sealed class GetAchievementStateRequestEvent : EntityEventArgs
     }
 }
 
-public sealed class GetAchievementsRequestEvent : EntityEventArgs
+public sealed partial class GetAchievementsRequestEvent : EntityEventArgs
 {
     public NetUserId UserId { get; }
     public TaskCompletionSource<List<AchievementsEnum>> CompletionSource { get; }
@@ -60,7 +60,7 @@ public sealed class GetAchievementsRequestEvent : EntityEventArgs
     }
 }
 
-public sealed class AddAchievementRequestEvent : EntityEventArgs
+public sealed partial class AddAchievementRequestEvent : EntityEventArgs
 {
     public NetUserId UserId { get; }
     public byte AchievementKey { get; }

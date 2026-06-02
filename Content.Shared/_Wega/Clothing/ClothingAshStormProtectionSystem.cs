@@ -5,7 +5,7 @@ using Content.Shared.Lavaland.Events;
 
 namespace Content.Shared.Clothing;
 
-public sealed class ClothingAshStormProtectionSystem : EntitySystem
+public sealed partial class ClothingAshStormProtectionSystem : EntitySystem
 {
     public override void Initialize()
     {

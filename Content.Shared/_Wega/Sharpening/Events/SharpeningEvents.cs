@@ -4,7 +4,7 @@ using Robust.Shared.Serialization;
 namespace Content.Shared.Sharpening.Events;
 
 [Serializable, NetSerializable]
-public sealed class SharpeningFinishedEvent : EntityEventArgs
+public sealed partial class SharpeningFinishedEvent : EntityEventArgs
 {
     public NetEntity Sharpener;
     public NetEntity Sharpening;

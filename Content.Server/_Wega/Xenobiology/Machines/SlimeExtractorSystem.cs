@@ -23,19 +23,19 @@ using Robust.Shared.Audio;
 
 namespace Content.Server.Xenobiology
 {
-    public sealed class SlimeExtractorSystem : EntitySystem
+    public sealed partial class SlimeExtractorSystem : EntitySystem
     {
-        [Dependency] private readonly IEntityManager _entManager = default!;
-        [Dependency] private readonly MobStateSystem _mobState = default!;
-        [Dependency] private readonly SharedAudioSystem _audio = default!;
-        [Dependency] private readonly SharedJitteringSystem _jittering = default!;
-        [Dependency] private readonly PuddleSystem _puddle = default!;
-        [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
-        [Dependency] private readonly ThrowingSystem _throwing = default!;
-        [Dependency] private readonly IRobustRandom _random = default!;
-        [Dependency] private readonly InventorySystem _inventory = default!;
-        [Dependency] private readonly SharedTransformSystem _transform = default!;
-        [Dependency] private readonly SharedAmbientSoundSystem _ambient = default!;
+        [Dependency] private IEntityManager _entManager = default!;
+        [Dependency] private MobStateSystem _mobState = default!;
+        [Dependency] private SharedAudioSystem _audio = default!;
+        [Dependency] private SharedJitteringSystem _jittering = default!;
+        [Dependency] private PuddleSystem _puddle = default!;
+        [Dependency] private ISharedAdminLogManager _adminLogger = default!;
+        [Dependency] private ThrowingSystem _throwing = default!;
+        [Dependency] private IRobustRandom _random = default!;
+        [Dependency] private InventorySystem _inventory = default!;
+        [Dependency] private SharedTransformSystem _transform = default!;
+        [Dependency] private SharedAmbientSoundSystem _ambient = default!;
 
         public const string SlimeExtractPrefix = "MaterialSlimeExtract";
 

@@ -5,7 +5,7 @@ using Content.Shared.NullRod.Components;
 
 namespace Content.Server.NullRod;
 
-public sealed class NullRodSystem : EntitySystem
+public sealed partial class NullRodSystem : EntitySystem
 {
     public override void Initialize()
     {

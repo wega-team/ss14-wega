@@ -1,5 +1,8 @@
 using Content.Shared.Blood.Cult;
 using Content.Shared.Blood.Cult.Components;
+using Content.Shared.Veil.Cult;
+using Content.Shared.Veil.Cult.Components;
+using Content.Shared.Humanoid;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared.EntityEffects.Effects;
@@ -8,13 +11,18 @@ namespace Content.Shared.EntityEffects.Effects;
 /// Deconverts forcibly recruited cultists.
 /// </summary>
 /// <inheritdoc cref="EntityEffectSystem{T,TEffect}"/>
-public sealed partial class HolyPurificationEntityEffectSystem : EntityEffectSystem<BloodCultistComponent, HolyPurification>
+public sealed partial class HolyPurificationEntityEffectSystem : EntityEffectSystem<HumanoidProfileComponent, HolyPurification>
 {
-    [Dependency] private readonly SharedBloodCultSystem _bloodCult = default!;
+    [Dependency] private SharedBloodCultSystem _bloodCult = default!;
+    [Dependency] private SharedVeilCultSystem _veilCult = default!;
 
-    protected override void Effect(Entity<BloodCultistComponent> entity, ref EntityEffectEvent<HolyPurification> args)
+    protected override void Effect(Entity<HumanoidProfileComponent> entity, ref EntityEffectEvent<HolyPurification> args)
     {
-        _bloodCult.CultistDeconvertation(entity);
+        if (HasComp<BloodCultistComponent>(entity.Owner))
+            _bloodCult.CultistDeconvertation(entity);
+
+        if (HasComp<VeilCultistComponent>(entity.Owner))
+            _veilCult.CultistDeconvertation(entity);
     }
 }
 

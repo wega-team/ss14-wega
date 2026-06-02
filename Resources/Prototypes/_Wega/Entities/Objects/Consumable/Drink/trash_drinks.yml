@@ -1,6 +1,6 @@
 - type: entity
   name: aperol bottle
-  parent: DrinkBottleBaseEmpty
+  parent: DrinkBottleGlassBase
   id: DrinkAperolBottle
   components:
   - type: Sprite
@@ -8,7 +8,7 @@
 
 - type: entity
   name: aperol bottle
-  parent: DrinkBottleBaseEmpty
+  parent: DrinkBottleGlassBase
   id: DrinkJagermeisterBottle
   components:
   - type: Sprite
@@ -16,7 +16,7 @@
 
 - type: entity
   name: aperol bottle
-  parent: DrinkBottleBaseEmpty
+  parent: DrinkBottleGlassBase
   id: DrinkSchnapsBottle
   components:
   - type: Sprite
@@ -24,7 +24,7 @@
 
 - type: entity
   name: aperol bottle
-  parent: DrinkBottleBaseEmpty
+  parent: DrinkBottleGlassBase
   id: DrinkSambukaBottle
   components:
   - type: Sprite
@@ -32,7 +32,7 @@
 
 - type: entity
   name: aperol bottle
-  parent: DrinkBottleBaseEmpty
+  parent: DrinkBottleGlassBase
   id: DrinkBitterBottle
   components:
   - type: Sprite
@@ -40,7 +40,7 @@
 
 - type: entity
   name: aperol bottle
-  parent: DrinkBottleBaseEmpty
+  parent: DrinkBottleGlassBase
   id: DrinkSheridanBottle
   components:
   - type: Sprite
@@ -48,7 +48,7 @@
 
 - type: entity
   name: aperol bottle
-  parent: DrinkBottleBaseEmpty
+  parent: DrinkBottleGlassBase
   id: DrinkwWhitewineBottle
   components:
   - type: Sprite

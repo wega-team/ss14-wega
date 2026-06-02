@@ -47,32 +47,6 @@
   color: "#ff4d2a"
   recognizable: true
   physicalDesc: reagent-physical-desc-ferrous
-  metabolisms:
-    Digestion:
-      effects:
-      - !type:SatiateThirst
-        factor: 1.0
-        conditions:
-        - !type:MetabolizerTypeCondition
-          type: [ Ariral ]
-          inverted: true
-    Bloodstream:
-      effects:
-      - !type:HealthChange
-        conditions:
-        - !type:MetabolizerTypeCondition
-          type: [ Ariral ]
-          inverted: true
-        - !type:MetabolizerTypeCondition
-          type: [ Vampire ]
-          inverted: true
-        damage:
-          types:
-            Poison: 0.5
-  footstepSound:
-    collection: FootstepBlood
-    params:
-      volume: 6
 
 - type: reagent
   id: Tyrium

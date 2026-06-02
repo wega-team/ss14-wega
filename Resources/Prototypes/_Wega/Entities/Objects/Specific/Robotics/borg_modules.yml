@@ -140,6 +140,7 @@
         whitelist:
           tags:
           - ConstructionMaterial
+          - PowerCell
           - CableCoil
     - hand:
         emptyRepresentative: ScientistIcon # Corvax-Wega-Robot
@@ -266,12 +267,12 @@
         whitelist:
           components:
           - BorgModule
-    # - hand:
-    #     emptyRepresentative: LeftArmSyntheticPry
-    #     emptyLabel: borg-slot-bodypart-empty
-    #     whitelist:
-    #       tags:
-    #       - BaseBodyPart
+    - hand:
+        emptyRepresentative: ArmSyntheticPry
+        emptyLabel: borg-slot-bodypart-empty
+        whitelist:
+          tags:
+          - BaseBodyPart
     - hand:
         emptyRepresentative: PowerCellSmall
         emptyLabel: borg-slot-powercell-empty
@@ -889,19 +890,25 @@
     - item: WeaponHandGranadeGun
     - hand:
         emptyLabel: borg-slot-granade-empty
-        emptyRepresentative: ModularGrenade
+        emptyRepresentative: GrenIcon
         whitelist:
           tags:
           - HandGrenade
           - Payload
           - VoiceTrigger
-    - item: BoxBorgGranade
+          components:
+          - PayloadCase
+          - PayloadTrigger
     - hand:
-        emptyLabel: borg-slot-cabeldet-empty
-        emptyRepresentative: CableDetStack
+        emptyLabel: borg-slot-granade-empty
+        emptyRepresentative: BolaIcon
         whitelist:
           tags:
-          - Payload
+          - CableCoil
+          - Bola
+          components:
+          - Ensnaring
+    - item: BoxBorgGranade
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: grenade-module }
 
@@ -1103,6 +1110,7 @@
   - type: ItemBorgModule
     hands:
     - item: RCDCombatRecharging
+    - item: AccessConfiguratorAllAccses
     - item: BorgGeneratorMaterialRod
     - item: BorgGeneratorTile
     - item: BorgGeneratorMaterialSteal
@@ -1538,3 +1546,23 @@
     - item: XenoborgHoloprojectorEMPTrap
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: emp-module }
+
+  # Clockwork
+  
+- type: entity
+  id: BorgModuleClockwork
+  parent: [ BaseBorgModule, BaseProviderBorgModule, BaseSyndicateContraband ]
+  name: clockwork cyborg module
+  description: A module, made of brass by Rathvar cult members.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: clockwork
+  - type: ItemBorgModule
+    hands:
+    - item: JawsOfLife
+    - item: VeilCultClockworkSlab
+    - item: WeaponClockworkSwordBorg
+  - type: BorgModuleIcon
+    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: clockwork-module }

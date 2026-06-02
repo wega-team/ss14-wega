@@ -7,7 +7,7 @@ namespace Content.Server.Modular.Suit;
 
 public sealed partial class ModularSuitSystem
 {
-    [Dependency] private readonly PowerCellSystem _powerCell = default!;
+    [Dependency] private PowerCellSystem _powerCell = default!;
 
     public const string CellContainer = "cell_slot";
 

@@ -82,8 +82,9 @@
     speechSounds: Lizard
   - type: Wagging
   - type: Damageable
-    damageContainer: Biological
     damageModifierSet: Demon
+  - type: Injurable
+    damageContainer: Biological
   - type: MeleeWeapon
     soundHit:
       path: /Audio/Weapons/pierce.ogg

@@ -10,7 +10,7 @@ public enum SurgeryUiKey
 }
 
 [Serializable, NetSerializable]
-public sealed class SurgeryProcedureDto : BoundUserInterfaceMessage
+public sealed partial class SurgeryProcedureDto : BoundUserInterfaceMessage
 {
     public List<SurgeryGroupDto> Groups;
     public NetEntity PatientId;
@@ -23,7 +23,7 @@ public sealed class SurgeryProcedureDto : BoundUserInterfaceMessage
 }
 
 [Serializable, NetSerializable]
-public sealed class SurgeryGroupDto
+public sealed partial class SurgeryGroupDto
 {
     public string GroupName;
     public string Description;
@@ -40,7 +40,7 @@ public sealed class SurgeryGroupDto
 }
 
 [Serializable, NetSerializable]
-public sealed class SurgeryStepDto
+public sealed partial class SurgeryStepDto
 {
     public string Name;
     public bool IsCompleted;
@@ -70,7 +70,7 @@ public sealed class SurgeryStepDto
 }
 
 [Serializable, NetSerializable]
-public sealed class SurgeryStartMessage : BoundUserInterfaceMessage
+public sealed partial class SurgeryStartMessage : BoundUserInterfaceMessage
 {
     public NetEntity User;
     public ProtoId<SurgeryNodePrototype> TargetNode;

@@ -2,6 +2,6 @@ using Content.Shared.Botany.Systems;
 
 namespace Content.Client.Botany.Systems;
 
-public sealed class PlantAnalyzerSystem : SharedPlantAnalyzerSystem
+public sealed partial class PlantAnalyzerSystem : SharedPlantAnalyzerSystem
 {
 }

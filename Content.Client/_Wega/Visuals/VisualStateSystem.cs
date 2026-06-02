@@ -12,9 +12,9 @@ namespace Content.Client.Visuals;
 /// A visual system is necessary to optimize the process of creating and displaying a visual, without creating a of different visual systems.
 /// Only for integration via code.
 /// </summary>
-public sealed class VisualStateSystem : VisualizerSystem<VisualStateComponent>
+public sealed partial class VisualStateSystem : VisualizerSystem<VisualStateComponent>
 {
-    [Dependency] private readonly SharedItemSystem _item = default!;
+    [Dependency] private SharedItemSystem _item = default!;
 
     public override void Initialize()
     {

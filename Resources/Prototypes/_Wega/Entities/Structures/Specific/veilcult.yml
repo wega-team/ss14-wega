@@ -1,0 +1,209 @@
+- type: entity
+  id: BaseVeilCultStructure
+  parent: BaseStructure
+  abstract: true
+  components:
+  - type: Anchorable
+    tool: VeilCultClockworkSlab
+  - type: Physics
+    bodyType: Dynamic
+  - type: InteractionOutline
+
+- type: entity
+  id: VeilCultBeacon
+  parent: BaseVeilCultStructure
+  name: beacon
+  description: Ominous beacon of the Veil Cult.
+  suffix: DO NOT MAP
+  components:
+  - type: Sprite
+    sprite: _Wega/Structures/Specific/VeilCult/beacon.rsi
+    state: beacon
+    noRot: true
+  - type: Physics
+    bodyType: Dynamic
+  - type: VeilCultBeacon
+  - type: Damageable
+    damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/break_stone.ogg
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetBrass:
+            min: 0
+            max: 3
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Construction
+    graph: VeilCultStructureBeaconGraph
+    node: VeilCultBeacon
+  - type: UserInterface
+    interfaces:
+      enum.VeilBeaconUiKey.Key:
+        type: VeilBeaconBoundUserInterface
+
+- type: entity
+  id: VeilCultStructureAltar
+  parent: BaseVeilCultStructure
+  name: mechanical altar
+  description: The altar of a certain god.
+  suffix: DO NOT MAP
+  components:
+  - type: Sprite
+    sprite: _Wega/Structures/Specific/VeilCult/altar.rsi
+    state: altar
+    noRot: true
+  - type: Damageable
+    damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 125
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/break_stone.ogg
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Fixtures
+    fixtures:
+      fix1:
+        hard: false
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        density: 190
+        mask:
+        - MachineMask
+        layer:
+          - MachineLayer
+  - type: PointLight
+    radius: 1.1
+    energy: 1
+    color: "#a58b17"
+  - type: UserInterface
+    interfaces:
+      enum.VeilAltarUiKey.Key:
+        type: VeilAltarBoundUserInterface
+  - type: VeilCultAltar
+  - type: VeilCultStructure
+  - type: Construction
+    graph: VeilCultStructureAltarGraph
+    node: VeilCultStructureAltar
+
+- type: entity
+  id: VeilCultClockworkLathe
+  parent: BaseVeilCultStructure
+  name: clockwork lathe
+  components:
+  - type: Sprite
+    sprite: _Wega/Structures/Specific/VeilCult/clockwork_lathe.rsi
+    noRot: true
+    snapCardinals: true
+    layers:
+    - state: icon
+      map: ["enum.LatheVisualLayers.IsRunning"]
+  - type: Appearance
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        density: 190
+        mask:
+        - MachineMask
+        layer:
+          - MachineLayer
+  - type: MaterialStorage
+    whitelist: &StandardMaterialWhitelist
+      tags:
+        - Brass
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: UserInterface
+    interfaces:
+      enum.LatheUiKey.Key:
+        type: LatheBoundUserInterface
+      enum.ResearchClientUiKey.Key:
+        type: ResearchClientBoundUserInterface
+  - type: Transform
+    anchored: true
+  - type: Pullable
+  - type: StaticPrice
+    price: 800
+  - type: ResearchClient
+  - type: TechnologyDatabase
+  - type: Lathe
+    idleState: icon
+    runningState: building
+    staticPacks:
+    - VeilCultStatic
+  - type: VeilCultStructure
+  - type: VeilCultLathe
+  - type: Construction
+    graph: VeilCultStructureLatheGraph
+    node: VeilCultClockworkLathe
+
+- type: entity
+  parent: BaseStructure
+  id: VeilCultPortal
+  name: portal
+  components:
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 1.5
+        mask:
+        - Impassable
+        layer:
+        - WallLayer
+        density: 1000
+  - type: Sprite
+    noRot: true
+    sprite: _Wega/Structures/Specific/VeilCult/portal.rsi
+    state: portal
+    scale: 1.5, 1.5
+  - type: PointLight
+    radius: 5
+    energy: 3
+    color: "#E39612"
+  - type: NightLightBlocked # Corvax-Wega-NightLight
+  - type: Damageable
+    damageModifierSet: StructuralMetallic
+  - type: Injurable
+    damageContainer: StructuralInorganic
+  - type: Destructible
+    thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 400
+        behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+  - type: AmbientSound
+    volume: 2
+    range: 10
+    sound:
+      path: /Audio/Ambience/Objects/anomaly_generator.ogg
+  - type: VeilCultPortal

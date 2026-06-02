@@ -10,7 +10,7 @@ public enum SlimeAnalyzerUiKey : byte
 }
 
 [Serializable, NetSerializable]
-public sealed class SlimeAnalyzerScannedUserMessage : BoundUserInterfaceMessage
+public sealed partial class SlimeAnalyzerScannedUserMessage : BoundUserInterfaceMessage
 {
     public NetEntity TargetEntity;
     public float Hunger;

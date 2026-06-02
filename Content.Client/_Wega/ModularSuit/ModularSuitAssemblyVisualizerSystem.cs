@@ -7,7 +7,7 @@ namespace Content.Client.Modular.Suit;
 /// Handles the sprite state changes while
 /// constructing mech assemblies.
 /// </summary>
-public sealed class ModularSuitAssemblyVisualizerSystem : VisualizerSystem<ModularSuitAssemblyVisualsComponent>
+public sealed partial class ModularSuitAssemblyVisualizerSystem : VisualizerSystem<ModularSuitAssemblyVisualsComponent>
 {
     protected override void OnAppearanceChange(EntityUid uid, ModularSuitAssemblyVisualsComponent component,
         ref AppearanceChangeEvent args)

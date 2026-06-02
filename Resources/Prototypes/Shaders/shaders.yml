@@ -59,6 +59,11 @@
   path: "/Textures/Shaders/camera_static.swsl"
 
 - type: shader
+  id: CameraStaticAccessible
+  kind: source
+  path: "/Textures/Shaders/camera_static_accessible.swsl"
+
+- type: shader
   id: Drunk
   kind: source
   path: "/Textures/Shaders/drunk.swsl"
@@ -145,3 +150,8 @@
   id: Rave
   kind: source
   path: "/Textures/_Wega/Shaders/rave.swsl"
+
+- type: shader
+  id: NullDamage
+  kind: source
+  path: "/Textures/_Wega/Shaders/nulldamage.swsl"

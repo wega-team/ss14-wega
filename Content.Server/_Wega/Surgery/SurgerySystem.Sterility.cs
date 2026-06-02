@@ -11,7 +11,7 @@ namespace Content.Server.Surgery;
 
 public sealed partial class SurgerySystem
 {
-    [Dependency] private readonly EntityLookupSystem _entityLookup = default!;
+    [Dependency] private EntityLookupSystem _entityLookup = default!;
 
     private void UpdateOperationSterility(EntityUid patient, OperatedComponent operated)
     {

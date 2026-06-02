@@ -29,10 +29,10 @@ namespace Content.Server.Surgery;
 
 public sealed partial class SurgerySystem
 {
-    [Dependency] private readonly PainSystem _pain = default!;
-    [Dependency] private readonly SharedStunSystem _stun = default!;
-    [Dependency] private readonly PhysicsSystem _physics = default!;
-    [Dependency] private readonly MovementModStatusSystem _movementMod = default!;
+    [Dependency] private PainSystem _pain = default!;
+    [Dependency] private SharedStunSystem _stun = default!;
+    [Dependency] private PhysicsSystem _physics = default!;
+    [Dependency] private MovementModStatusSystem _movementMod = default!;
 
     private static readonly SoundSpecifier GibSound = new SoundPathSpecifier("/Audio/Effects/gib3.ogg");
 

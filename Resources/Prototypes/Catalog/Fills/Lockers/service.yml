@@ -18,6 +18,7 @@
     - id: ClothingEyesHudBeer
     - id: HandLabeler
     - id: DrinkBeerBottleFull
+    - id: ClothingBeltBeerBandolier # Corvax-Wega-Add
       amount: !type:BinomialNumberSelector
         trials: 3
     - !type:AllSelector
@@ -144,7 +145,7 @@
     - id: ClothingHeadBandBotany
     - id: ChemistryBottleRobustHarvest
       prob: 0.3
-    - id: ClothingBeltPlant
+    - id: ClothingBeltPlantFilled
     - id: PlantBag ##Some maps don't have nutrivend
     - id: BoxMouthSwab
     - id: Dropper

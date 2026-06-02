@@ -4,10 +4,10 @@ using Robust.Client.GameObjects;
 
 namespace Content.Client.Shower
 {
-    public sealed class ShowerSystem : EntitySystem
+    public sealed partial class ShowerSystem : EntitySystem
     {
-        [Dependency] private readonly AppearanceSystem _appearance = default!;
-        [Dependency] private readonly SpriteSystem _sprite = default!;
+        [Dependency] private AppearanceSystem _appearance = default!;
+        [Dependency] private SpriteSystem _sprite = default!;
 
         public override void Initialize()
         {

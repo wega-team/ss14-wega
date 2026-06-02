@@ -9,7 +9,7 @@ namespace Content.Client._Wega.Lavaland;
 [GenerateTypedNameReferences]
 public sealed partial class LavalandConsoleWindow : FancyWindow
 {
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
+    [Dependency] private IGameTiming _gameTiming = default!;
 
     public Action? OnCallButtonPressed;
     private TimeSpan? _cooldownEndTime;

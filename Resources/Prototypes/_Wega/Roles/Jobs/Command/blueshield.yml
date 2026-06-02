@@ -20,7 +20,6 @@
   startingGear: BlueShieldOfficerGear
   icon: "JobIconBlueShield"
   supervisors: job-supervisors-centcom
-  canBeAntag: false
   accessGroups:
   - ExtendedAccess
   access:

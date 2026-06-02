@@ -134,6 +134,7 @@
     Plastic: 500
     Gold: 500
     Diamond: 200
+
 # Android
 
 - type: latheRecipe
@@ -141,99 +142,113 @@
   id: Tyriumpack
   result: Tyriumpack1
   categories:
-    - Anroid
+    - Android
   completetime: 1
   materials:
     Steel: 20
     Plastic: 20
     Plasma: 15
 
-# - type: latheRecipe
-#   parent: BaseRoboticsRecipe
-#   id: AndroidBodyPart
-#   result: AndroidBodyPart
-#   categories:
-#     - Anroid
-#   completetime: 5
-#   materials:
-#     Steel: 300
-#     Plastic: 250
-#     Silver: 150
+- type: latheRecipe
+  parent: BaseRoboticsRecipe
+  id: AndroidBodyPart
+  result: AndroidBodyPart
+  categories:
+    - Android
+  completetime: 5
+  materials:
+    Steel: 250
+    Plastic: 250
+    Silver: 150
 
-# - type: latheRecipe
-#   parent: BaseRoboticsRecipe
-#   id: ArmSyntheticPry
-#   result: LeftArmSyntheticPry
-#   categories:
-#     - Anroid
-#   completetime: 5
-#   materials:
-#     Steel: 750
-#     Plastic: 300
-#     Gold: 200
-#     Plasma: 150
+- type: latheRecipe
+  parent: BaseRoboticsRecipe
+  id: AndroidEndoskeleton
+  result: AndroidEndoskeleton
+  categories:
+    - Android
+  completetime: 5
+  materials:
+    Steel: 1000
+    Glass: 1500 
+    Plastic: 500
+    Gold: 500
+    Plasma: 500
 
-# - type: latheRecipe
-#   parent: BaseRoboticsRecipe
-#   id: ArmSyntheticDefib
-#   result: LeftArmSyntheticDefib
-#   categories:
-#     - Anroid
-#   completetime: 5
-#   materials:
-#     Steel: 750
-#     Plastic: 300
-#     Silver: 250
+- type: latheRecipe
+  parent: BaseRoboticsRecipe
+  id: ArmSyntheticPry
+  result: ArmSyntheticPry
+  categories:
+    - Android
+  completetime: 5
+  materials:
+    Steel: 750
+    Plastic: 300
+    Gold: 200
+    Plasma: 150
 
-# - type: latheRecipe
-#   parent: BaseRoboticsRecipe
-#   id: ArmSyntheticProtoKinetic
-#   result: LeftArmSyntheticProtoKinetic
-#   categories:
-#     - Anroid
-#   completetime: 5
-#   materials:
-#     Steel: 750
-#     Plastic: 300
-#     Silver: 200
-#     Plasma: 150
+- type: latheRecipe
+  parent: BaseRoboticsRecipe
+  id: ArmSyntheticDefib
+  result: ArmSyntheticDefib
+  categories:
+    - Android
+  completetime: 5
+  materials:
+    Steel: 750
+    Plastic: 300
+    Silver: 250
 
-# - type: latheRecipe
-#   parent: BaseRoboticsRecipe
-#   id: ArmSyntheticCharger
-#   result: LeftArmSyntheticCharger
-#   categories:
-#     - Anroid
-#   completetime: 5
-#   materials:
-#     Steel: 750
-#     Plastic: 300
-#     Gold: 200
+- type: latheRecipe
+  parent: BaseRoboticsRecipe
+  id: ArmSyntheticProtoKinetic
+  result: ArmSyntheticProtoKinetic
+  categories:
+    - Android
+  completetime: 5
+  materials:
+    Steel: 750
+    Plastic: 300
+    Silver: 200
+    Plasma: 150
 
-# - type: latheRecipe
-#   parent: BaseRoboticsRecipe
-#   id: LegSyntheticMagboots
-#   result: LeftLegSyntheticMagboots
-#   categories:
-#     - Anroid
-#   completetime: 5
-#   materials:
-#     Steel: 750
-#     Plastic: 300
-#     Gold: 300
+- type: latheRecipe
+  parent: BaseRoboticsRecipe
+  id: ArmSyntheticCharger
+  result: ArmSyntheticCharger
+  categories:
+    - Android
+  completetime: 5
+  materials:
+    Steel: 750
+    Plastic: 300
+    Gold: 200
 
-# - type: latheRecipe
-#   parent: BaseRoboticsRecipe
-#   id: LegSyntheticJump
-#   result: LeftLegSyntheticJump
-#   categories:
-#     - Anroid
-#   completetime: 5
-#   materials:
-#     Steel: 750
-#     Plastic: 300
-#     Gold: 250
-#     Plasma: 150
+- type: latheRecipe
+  parent: BaseRoboticsRecipe
+  id: LegSyntheticMagboots
+  result: LegSyntheticMagboots
+  categories:
+    - Android
+  completetime: 5
+  materials:
+    Steel: 750
+    Plastic: 300
+    Gold: 300
+
+- type: latheRecipe
+  parent: BaseRoboticsRecipe
+  id: LegSyntheticJump
+  result: LegSyntheticJump
+  categories:
+    - Android
+  completetime: 5
+  materials:
+    Steel: 750
+    Plastic: 300
+    Gold: 250
+    Plasma: 150
 
 - type: latheRecipe
   parent: BaseRoboticsRecipe

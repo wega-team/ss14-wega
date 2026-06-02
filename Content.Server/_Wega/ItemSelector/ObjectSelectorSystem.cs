@@ -11,9 +11,9 @@ namespace Content.Server.Item.Selector;
 
 public sealed partial class ObjectSelectorSystem : EntitySystem
 {
-    [Dependency] private readonly IAdminLogManager _admin = default!;
-    [Dependency] private readonly UserInterfaceSystem _ui = default!;
-    [Dependency] private readonly IComponentFactory _componentFactory = default!;
+    [Dependency] private IAdminLogManager _admin = default!;
+    [Dependency] private UserInterfaceSystem _ui = default!;
+    [Dependency] private IComponentFactory _componentFactory = default!;
 
     public override void Initialize()
     {

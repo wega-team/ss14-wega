@@ -12,6 +12,33 @@
     department: Security
     time: 25h
 
+- type: antagSpecifier
+  parent: RestrictedAntag
+  id: BloodCultist
+  prefRoles:
+  - BloodCultist
+  allowNonHumans: true
+  multiAntagSetting: None
+  blacklist:
+    components:
+    - AntagImmune
+    - BibleUser
+    - Android
+    - Ipc
+  components:
+  - type: BloodCultist
+  - type: MindLink
+    channels: ["MindBloodCult"]
+  - type: NpcFactionMember
+    factions:
+    - BloodCult
+  - type: FriendlyFaction
+    faction: BloodCult
+  mindRoles:
+  - MindRoleBloodCultist
+  briefing:
+    sound: "/Audio/_Wega/Ambience/Antag/bloodcult_start.ogg"
+
 # Ability gears
 - type: startingGear
   id: BloodCultWeaponBloodGear
@@ -69,37 +96,3 @@
   inhand:
     - WeaponHellDagger
 
-- type: startingGear
-  id: BloodCultSpellStunGear
-  inhand:
-    - BloodCultSpellStun
-
-- type: startingGear
-  id: BloodCultSpellTeleportGear
-  inhand:
-    - BloodCultSpellTeleport
-
-- type: startingGear
-  id: BloodCultSpellShadowShacklesGear
-  inhand:
-    - BloodCultSpellShadowShackles
-
-- type: startingGear
-  id: BloodCultSpellTwistedConstructionGear
-  inhand:
-    - BloodCultSpellTwistedConstruction
-
-- type: startingGear
-  id: BloodCultSpellSummonEquipmentGear
-  inhand:
-    - BloodCultSpellSummonEquipment
-
-- type: startingGear
-  id: BloodCultSpellBloodRitesGear
-  inhand:
-    - BloodCultSpellBloodRites
-
-- type: startingGear
-  id: BloodCultSpellBloodBarrageGear
-  inhand:
-    - BloodCultSpellBloodBarrage

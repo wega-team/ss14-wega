@@ -4,10 +4,10 @@ using Content.Server.CoreTempChange.Components;
 
 namespace Content.Server.CoreTempChange.Effects;
 
-public sealed class CoreTempChangeSystem : EntitySystem
+public sealed partial class CoreTempChangeSystem : EntitySystem
 {
-    [Dependency] private readonly AtmosphereSystem _atmosphere = default!;
-    [Dependency] private readonly TransformSystem _xform = default!;
+    [Dependency] private AtmosphereSystem _atmosphere = default!;
+    [Dependency] private TransformSystem _xform = default!;
 
     public override void Update(float frameTime)
     {

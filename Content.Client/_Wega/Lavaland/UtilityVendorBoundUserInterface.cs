@@ -3,7 +3,7 @@ using Robust.Client.UserInterface;
 
 namespace Content.Client._Wega.Lavaland;
 
-public sealed class UtilityVendorBoundUserInterface : BoundUserInterface
+public sealed partial class UtilityVendorBoundUserInterface : BoundUserInterface
 {
     [ViewVariables]
     private UtilityVendorMenu? _window;

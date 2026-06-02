@@ -6,7 +6,7 @@ namespace Content.Shared.EnergyShield;
 
 public sealed partial class EnergyShieldSystem : EntitySystem
 {
-    [Dependency] private readonly SharedMeleeWeaponSystem _meleeWeapon = default!;
+    [Dependency] private SharedMeleeWeaponSystem _meleeWeapon = default!;
 
     public override void Initialize()
     {

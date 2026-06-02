@@ -2,7 +2,7 @@ using Content.Shared.Interaction.Components;
 
 namespace Content.Server.Interaction;
 
-public sealed class SpawnOnDespawnSystem : EntitySystem
+public sealed partial class SpawnOnDespawnSystem : EntitySystem
 {
     public override void Initialize()
     {

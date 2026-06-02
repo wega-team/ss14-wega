@@ -18,10 +18,10 @@ namespace Content.Server.Administration.Systems;
 
 public sealed partial class AdminVerbSystem
 {
-    [Dependency] private readonly AntagSelectionSystem _antag = default!;
-    [Dependency] private readonly ZombieSystem _zombie = default!;
-    [Dependency] private readonly GameTicker _gameTicker = default!;
-    [Dependency] private readonly OutfitSystem _outfit = default!;
+    [Dependency] private AntagSelectionSystem _antag = default!;
+    [Dependency] private ZombieSystem _zombie = default!;
+    [Dependency] private GameTicker _gameTicker = default!;
+    [Dependency] private OutfitSystem _outfit = default!;
 
     private static readonly EntProtoId DefaultTraitorRule = "Traitor";
     private static readonly EntProtoId DefaultInitialInfectedRule = "Zombie";
@@ -36,6 +36,7 @@ public sealed partial class AdminVerbSystem
     // Corvax-Wega-Antags-start
     private static readonly EntProtoId DefaultVampireRule = "Vampire";
     private static readonly EntProtoId DefaultBloodCultRule = "BloodCult";
+    private static readonly EntProtoId DefaultVeilCultRule = "VeilCult";
     // Corvax-Wega-Antags-end
 
     // All antag verbs have names so invokeverb works.
@@ -260,5 +261,20 @@ public sealed partial class AdminVerbSystem
         };
         args.Verbs.Add(bloodcultist);
         // Corvax-Wega-Blood-Cult-end
+        // Corvax-Wega-Veil-Cult-start
+        Verb veilcultist = new()
+        {
+            Text = Loc.GetString("admin-verb-text-make-veil-culsist"),
+            Category = VerbCategory.Antag,
+            Icon = new SpriteSpecifier.Rsi(new ResPath("_Wega/Interface/Actions/actions_veilcult.rsi"), "verbicon"),
+            Act = () =>
+            {
+                _antag.ForceMakeAntag<VeilCultRuleComponent>(targetPlayer, DefaultVeilCultRule);
+            },
+            Impact = LogImpact.High,
+            Message = Loc.GetString("admin-verb-make-veil-culsist"),
+        };
+        args.Verbs.Add(veilcultist);
+        // Corvax-Wega-Veil-Cult-end
     }
 }

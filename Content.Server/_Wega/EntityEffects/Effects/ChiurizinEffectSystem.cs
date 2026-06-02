@@ -33,7 +33,6 @@ public sealed partial class ChiurizinEffectSystem : EntityEffectSystem<MetaDataC
 {
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly StatusEffectsSystem _statusNew = default!;
-    [Dependency] private readonly Content.Shared.StatusEffect.StatusEffectsSystem _statusOld = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedTransformSystem _xform = default!;
     [Dependency] private readonly HumanoidProfileSystem _humanoid = default!;
@@ -74,8 +73,7 @@ public sealed partial class ChiurizinEffectSystem : EntityEffectSystem<MetaDataC
         // Require ≥25 units in bloodstream to activate; once started, keep going regardless of quantity.
         if (state.CycleCount == 0)
         {
-            if (!TryComp<SolutionContainerManagerComponent>(uid, out var checkMgr) ||
-                !_solution.TryGetSolution((uid, checkMgr), "bloodstream", out _, out var checkBs))
+            if (!_solution.TryGetSolution(uid, "bloodstream", out _, out var checkBs))
                 return;
 
             var chiurizinQty = FixedPoint2.Zero;
@@ -120,8 +118,7 @@ public sealed partial class ChiurizinEffectSystem : EntityEffectSystem<MetaDataC
             state.SavedPosition = _xform.GetMapCoordinates(uid);
 
         // Purge up to 5 other reagents from the bloodstream (1 unit each).
-        if (TryComp<SolutionContainerManagerComponent>(uid, out var purgeMgr) &&
-            _solution.TryGetSolution((uid, purgeMgr), "bloodstream", out var purgeBsEntity, out var purgeBs))
+        if (_solution.TryGetSolution(uid, "bloodstream", out var purgeBsEntity, out var purgeBs))
         {
             var toRemove = new List<string>();
             foreach (var (reagent, _) in purgeBs.Contents)
@@ -148,7 +145,7 @@ public sealed partial class ChiurizinEffectSystem : EntityEffectSystem<MetaDataC
     {
         _drunk.TryRemoveDrunkennessTime(uid, TimeSpan.FromSeconds(4));
         _damageable.TryChangeDamage(uid, HealingDamage, ignoreResistances: true);
-        _statusOld.TryRemoveTime(uid, TemporaryBlindnessSystem.BlindingStatusEffect, TimeSpan.FromSeconds(2));
+        _statusNew.TryRemoveTime(uid, BlindnessSystem.BlindingStatusEffect, TimeSpan.FromSeconds(2));
         _statusNew.TryRemoveTime(uid, SharedStunSystem.StunId, TimeSpan.FromSeconds(5));
         _bloodstream.TryModifyBleedAmount((uid, null), -2f);
         _surgery.ClearInternalBleeding(uid);

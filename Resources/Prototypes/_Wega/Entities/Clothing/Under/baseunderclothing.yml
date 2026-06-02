@@ -1,26 +1,27 @@
-- type: entity
-  abstract: true
-  id: ClothingUnderDamageableBase
-  components:
-  - type: TearableClothing
-  - type: Damageable
-    damageContainer: Clothing
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 17 # 1 saber strikes
-      behaviors:
-      - !type:PlaySoundBehavior
-        sound:
-          collection: TearClothing
-      - !type:EmptyContainersBehaviour
-        containers:
-        - storagebase
-      - !type:DoActsBehavior
-        acts: [ "Destruction" ]
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          MaterialCloth1:
-            min: 2
-            max: 2
+# - type: entity
+#   abstract: true
+#   id: ClothingUnderDamageableBase
+#   components:
+#   - type: TearableClothing
+#   - type: Damageable
+#   - type: Injurable
+#     damageContainer: Clothing
+#   - type: Destructible
+#     thresholds:
+#     - trigger:
+#         !type:DamageTrigger
+#         damage: 17 # 1 saber strikes
+#       behaviors:
+#       - !type:PlaySoundBehavior
+#         sound:
+#           collection: TearClothing
+#       - !type:EmptyContainersBehaviour
+#         containers:
+#         - storagebase
+#       - !type:DoActsBehavior
+#         acts: [ "Destruction" ]
+#       - !type:SpawnEntitiesBehavior
+#         spawn:
+#           MaterialCloth1:
+#             min: 2
+#             max: 2

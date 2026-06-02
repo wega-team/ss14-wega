@@ -5,7 +5,7 @@ using Content.Shared.Temperature.Components;
 
 namespace Content.Server.Genetics.System;
 
-public sealed class ColdResistanceGenSystem : EntitySystem
+public sealed partial class ColdResistanceGenSystem : EntitySystem
 {
     public override void Initialize()
     {

@@ -5,9 +5,9 @@ using Content.Shared.Eui;
 
 namespace Content.Client._Wega.DetailExaminable;
 
-public sealed class DetailExaminableEui : BaseEui
+public sealed partial class DetailExaminableEui : BaseEui
 {
-    [Dependency] private readonly IEntityManager _entManager = default!;
+    [Dependency] private IEntityManager _entManager = default!;
 
     private readonly DetailExaminableWindow _window;
 

@@ -153,6 +153,7 @@
       - ReagentId: DemonsBlood
         Quantity: 20
   - type: Damageable
+  - type: Injurable
     damageContainer: Biological
   - type: DamageOnHighSpeedImpact
     minimumSpeed: 0.1
@@ -883,6 +884,7 @@
       - ReagentId: MelonJuice
         Quantity: 15
   - type: Damageable
+  - type: Injurable
     damageContainer: Biological
   - type: DamageOnHighSpeedImpact
     minimumSpeed: 0.1
@@ -976,6 +978,7 @@
       - ReagentId: CatMelonJuice
         Quantity: 15
   - type: Damageable
+  - type: Injurable
     damageContainer: Biological
   - type: DamageOnHighSpeedImpact
     minimumSpeed: 0.1

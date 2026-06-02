@@ -20,3 +20,33 @@
     icon: { sprite: _Wega/Interface/Actions/action_demon.rsi, state: "instant_regeneration" }
   - type: InstantAction
     event: !type:DamageOnActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionToggleHud
+  name: Toggle HUD
+  description: Toggles HUD of your cloth.
+  components:
+  - type: Action
+    itemIconStyle: BigItem
+    priority: -20
+    useDelay: 1
+  - type: InstantAction
+    event: !type:ToggleActionEvent
+    
+- type: entity
+  parent: BaseSuicideAction
+  id: ActionActivateBluespaceLifeline
+  name: Activate Bluespace Lifeline
+  description: Activates your bluespace lifeline implant, teleporting you far-far away from this station. You won't be able to come back.
+  components:
+  - type: Action
+    checkCanInteract: false
+    checkConsciousness: false
+    itemIconStyle: BigAction
+    priority: -20
+    icon:
+      sprite: _Wega/Effects/bluespace_lifeline.rsi
+      state: bluespace_lifeline
+  - type: InstantAction
+    event: !type:ActivateImplantEvent

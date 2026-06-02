@@ -12,9 +12,11 @@
     sprite: _Wega/Effects/bloodtentacle.rsi
     layers:
     - state: blood_tendril
-  - type: StunOnContact
+  - type: SlowdownOnContact
+    multiplier: 0.4
+    duration: 6
     blacklist:
-      tags:
+      components:
       - Vampire
   - type: Fixtures
     fixtures:
@@ -74,11 +76,9 @@
   id: BloodBarrier
   name: blood barrier
   components:
-  - type: TimedDespawn
-    lifetime: 25
-  - type: Tag
-    tags:
-      - Wall
+  - type: Sprite
+    sprite: _Wega/Effects/bloodbarrier.rsi
+    state: blood_barrier
   - type: Physics
     bodyType: Static
   - type: Fixtures
@@ -92,13 +92,7 @@
         layer:
           - WallLayer
   - type: Airtight
-  - type: Sprite
-    sprite: _Wega/Effects/bloodbarrier.rsi
-    state: blood_barrier
-  - type: Icon
-    sprite: _Wega/Effects/bloodbarrier.rsi
-    state: blood_barrier
-  - type: Damageable
+  - type: Injurable
     damageContainer: Biological
   - type: Destructible
     thresholds:
@@ -116,6 +110,13 @@
       - !type:PlaySoundBehavior
         sound:
           path: /Audio/Items/drink.ogg
+  - type: TimedDespawn
+    lifetime: 25
+  - type: SpawnOnDespawn
+    prototype: PuddleBlood
+  - type: Tag
+    tags:
+      - Wall
 
 - type: entity
   parent: [ CollideFloorTrap, BaseShadow ]
@@ -129,6 +130,7 @@
     lastVisibility: 0.1
   - type: TriggerOnCollide
     fixtureID: floortrap
+    maxTriggers: 1
   - type: FlashOnTrigger
   - type: DamageOnTrigger
     targetUser: true
@@ -136,11 +138,14 @@
     damage:
       types:
         Blunt: 20
+    blacklist:
+      components:
+      - Vampire
   - type: StunOnContact
     fixtureId: floortrap
     duration: 3
     blacklist:
-      tags:
+      components:
       - Vampire
 
 - type: entity
@@ -153,7 +158,7 @@
     state: beacon
   - type: BeaconSoul
   - type: TimedDespawn
-    lifetime: 420.0
+    lifetime: 250.0 # 130s CD + 120s action
   - type: Fixtures
     fixtures:
       fix1:
@@ -192,6 +197,16 @@
   - type: Sprite
     sprite: _Wega/Effects/shadowboxing.rsi
     state: shadow
+  - type: Injurable
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 20
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
   - type: MovementSpeedModifier
     baseWalkSpeed: 20
     baseSprintSpeed: 20
@@ -199,23 +214,17 @@
   - type: MeleeWeapon
     damage:
       types:
+        Blunt: 15
+  - type: DamageOnHit
+    damage:
+      types:
         Blunt: 20
-  - type: NPCMeleeCombat
+  - type: NPCIgnoringOptimize
   - type: NpcFactionMember
     factions:
     - Vampire
   - type: HTN
     rootTask:
-      task: FollowerShadowCompound
+      task: SimpleHostileCompound
   - type: TimedDespawn
-    lifetime: 0.8
-
-- type: htnCompound
-  id: FollowerShadowCompound
-  branches:
-    - tasks:
-        - !type:HTNCompoundTask
-          task: MeleeCombatCompound
-    - tasks:
-        - !type:HTNCompoundTask
-          task: IdleCompound
+    lifetime: 20.0

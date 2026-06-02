@@ -210,3 +210,41 @@
   - type: StaticPrice
     price: 2500
 
+- type: entity
+  parent: [ ClothingHandsBase, BaseEnchantable ]
+  id: ClothingHandsClockworkGauntlets
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.8
+        Piercing: 0.9
+        Heat: 0.85
+  - type: Sprite
+    sprite: _Wega/Clothing/Hands/clockwork_gauntlets.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Wega/Clothing/Hands/clockwork_gauntlets.rsi
+    # equipSound: /Audio/Mecha/mechmove03.ogg FOR FUTURE SOUNDS
+    # unequipSound: /Audio/Mecha/mechmove03.ogg FOR FUTURE SOUNDS
+    equipDelay: 3
+    unequipDelay: 3
+  - type: FingerprintMask
+  - type: Insulated
+  - type: CultEquipment
+    cult: Veil
+  - type: MeleeWeapon
+    attackRate: 1.3
+    damage:
+      types:
+        Blunt: 9
+    soundHit:
+      collection: Punch
+    animation: WeaponArcFist
+    mustBeEquippedToUse: true
+  - type: Enchantable
+    enchants:
+    - ClothingHandsClockworkGauntletsRedFlame
+    - ClothingHandsClockworkGauntletsStun
+    - ClothingHandsClockworkGauntletsNorthStar

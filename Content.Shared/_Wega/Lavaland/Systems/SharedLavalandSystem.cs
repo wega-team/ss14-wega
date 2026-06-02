@@ -1,6 +1,6 @@
 namespace Content.Shared.Lavaland;
 
-public abstract class SharedLavalandSystem : EntitySystem
+public abstract partial class SharedLavalandSystem : EntitySystem
 {
     // Empty
 }

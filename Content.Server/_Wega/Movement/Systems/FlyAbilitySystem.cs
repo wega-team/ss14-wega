@@ -8,12 +8,12 @@ using Content.Server.Popups;
 
 namespace Content.Server.Movement.Systems;
 
-public sealed class FlyAbilitySystem : SharedFlyAbilitySystem
+public sealed partial class FlyAbilitySystem : SharedFlyAbilitySystem
 {
-    [Dependency] private readonly SharedActionsSystem _actions = default!;
-    [Dependency] private readonly StaminaSystem _stamina = default!;
-    [Dependency] private readonly PopupSystem _popup = default!;
-    [Dependency] private readonly MovementSpeedModifierSystem _movementSpeedModifier = default!;
+    [Dependency] private SharedActionsSystem _actions = default!;
+    [Dependency] private StaminaSystem _stamina = default!;
+    [Dependency] private PopupSystem _popup = default!;
+    [Dependency] private MovementSpeedModifierSystem _movementSpeedModifier = default!;
 
     private Entity<ActionComponent> _action;
 

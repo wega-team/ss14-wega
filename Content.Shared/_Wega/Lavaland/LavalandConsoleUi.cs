@@ -15,7 +15,7 @@ public enum PenalServitudeLavalandShuttleConsoleUiKey
 }
 
 [Serializable, NetSerializable]
-public sealed class LavalandShuttleConsoleState : BoundUserInterfaceState
+public sealed partial class LavalandShuttleConsoleState : BoundUserInterfaceState
 {
     public ShuttleStatus Status;
     public DockLocation Location;
@@ -32,7 +32,7 @@ public sealed class LavalandShuttleConsoleState : BoundUserInterfaceState
 }
 
 [Serializable, NetSerializable]
-public sealed class PenalServitudeLavalandShuttleConsoleState : BoundUserInterfaceState
+public sealed partial class PenalServitudeLavalandShuttleConsoleState : BoundUserInterfaceState
 {
     public PenalServitudeLavalandShuttleStatus Status;
     public PenalServitudeLavalandDockLocation Location;
@@ -49,7 +49,7 @@ public sealed class PenalServitudeLavalandShuttleConsoleState : BoundUserInterfa
 }
 
 [Serializable, NetSerializable]
-public sealed class LavalandShuttleCallMessage : BoundUserInterfaceMessage
+public sealed partial class LavalandShuttleCallMessage : BoundUserInterfaceMessage
 {
     public bool ReturnCall;
 
@@ -60,7 +60,7 @@ public sealed class LavalandShuttleCallMessage : BoundUserInterfaceMessage
 }
 
 [Serializable, NetSerializable]
-public sealed class PenalServitudeLavalandShuttleCallMessage : BoundUserInterfaceMessage
+public sealed partial class PenalServitudeLavalandShuttleCallMessage : BoundUserInterfaceMessage
 {
     public bool ReturnCall;
 

@@ -83,6 +83,7 @@
     soundEmpty:
       path: /Audio/Weapons/Guns/Empty/empty.ogg
   - type: ItemSlots
+    disableSmartEquipEject: true # Corvax-Wega-Add
     slots:
       gun_magazine:
         name: Magazine

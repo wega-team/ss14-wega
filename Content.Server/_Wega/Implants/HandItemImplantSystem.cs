@@ -1,6 +1,7 @@
 using Content.Server.Actions;
 using Content.Server.Hands.Systems;
 using Content.Shared._Wega.Implants.Components;
+using Content.Shared.Body;
 using Content.Shared.Interaction.Components;
 using Content.Shared.Toggleable;
 using Robust.Server.Audio;
@@ -9,13 +10,13 @@ using Robust.Shared.Containers;
 
 namespace Content.Server.Implants;
 
-public sealed class HandItemImplantSystem : EntitySystem
+public sealed partial class HandItemImplantSystem : EntitySystem
 {
-    [Dependency] private readonly AudioSystem _audio = default!;
-    [Dependency] private readonly HandsSystem _hands = default!;
-    [Dependency] private readonly ActionsSystem _actions = default!;
+    [Dependency] private AudioSystem _audio = default!;
+    [Dependency] private HandsSystem _hands = default!;
+    [Dependency] private ActionsSystem _actions = default!;
 
-    [Dependency] private readonly ContainerSystem _container = default!;
+    [Dependency] private ContainerSystem _container = default!;
 
     public override void Initialize()
     {
@@ -132,11 +133,23 @@ public sealed class HandItemImplantSystem : EntitySystem
         if (!item.ItemEntity.HasValue || component.Container == null)
             return;
 
-        if (!_hands.TryGetHand(uid, item.HandId, out var _))
+        if (!TryComp<OrganComponent>(item.ImplantEntity, out var organ) || organ.Category == null)
+            return;
+
+        string handId = (string)organ.Category switch
+        {
+            "ArmLeft" => "left",
+            "ArmRight" => "right",
+            "HandLeft" => "left",
+            "HandRight" => "right",
+            _ => string.Empty
+        };
+
+        if (!_hands.TryGetHand(uid, handId, out var _))
             return;
 
         _container.Remove(item.ItemEntity.Value, component.Container);
-        _hands.TryForcePickup(uid, item.ItemEntity.Value, item.HandId);
+        _hands.TryForcePickup(uid, item.ItemEntity.Value, handId, checkActionBlocker: false);
         _audio.PlayPvs(component.ToggleSound, uid);
 
         EnsureComp<UnremoveableComponent>(item.ItemEntity.Value);
@@ -149,7 +162,6 @@ public sealed class HandItemImplantSystem : EntitySystem
 
         RemComp<UnremoveableComponent>(item.ItemEntity.Value);
 
-        _hands.DoDrop(uid, item.HandId);
         _container.Insert(item.ItemEntity.Value, component.Container, null);
         _audio.PlayPvs(component.ToggleSound, uid);
     }
