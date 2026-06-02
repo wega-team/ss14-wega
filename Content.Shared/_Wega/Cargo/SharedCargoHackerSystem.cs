@@ -5,10 +5,10 @@ using Content.Shared.Ninja.Systems;
 
 namespace Content.Shared.Cargo;
 
-public abstract class SharedCargoHackerSystem : EntitySystem
+public abstract partial class SharedCargoHackerSystem : EntitySystem
 {
-    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
-    [Dependency] private readonly SharedNinjaGlovesSystem _gloves = default!;
+    [Dependency] private SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private SharedNinjaGlovesSystem _gloves = default!;
 
     public override void Initialize()
     {

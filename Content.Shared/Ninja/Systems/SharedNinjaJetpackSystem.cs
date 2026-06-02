@@ -10,12 +10,12 @@ using Robust.Shared.Physics.Systems;
 
 namespace Content.Shared.Ninja.Systems;
 
-public abstract class SharedNinjaJetpackSystem : EntitySystem
+public abstract partial class SharedNinjaJetpackSystem : EntitySystem
 {
-    [Dependency] private readonly MovementSpeedModifierSystem _movementSpeedModifier = default!;
-    [Dependency] protected readonly SharedContainerSystem Container = default!;
-    [Dependency] private readonly SharedPhysicsSystem _physics = default!;
-    [Dependency] private readonly ActionContainerSystem _actionContainer = default!;
+    [Dependency] private MovementSpeedModifierSystem _movementSpeedModifier = default!;
+    [Dependency] protected SharedContainerSystem Container = default!;
+    [Dependency] private SharedPhysicsSystem _physics = default!;
+    [Dependency] private ActionContainerSystem _actionContainer = default!;
 
     public override void Initialize()
     {

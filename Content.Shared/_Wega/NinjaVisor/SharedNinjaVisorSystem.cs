@@ -2,9 +2,9 @@ using Content.Shared.Actions;
 
 namespace Content.Shared._Wega.NinjaVisor;
 
-public sealed class SharedNinjaVisorSystem : EntitySystem
+public sealed partial class SharedNinjaVisorSystem : EntitySystem
 {
-    [Dependency] private readonly ActionContainerSystem _actionContainer = default!;
+    [Dependency] private ActionContainerSystem _actionContainer = default!;
 
     public override void Initialize()
     {

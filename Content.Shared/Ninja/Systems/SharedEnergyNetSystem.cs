@@ -15,11 +15,11 @@ namespace Content.Shared.Ninja.Systems;
 /// • Blocks input-driven movement and pull attempts.
 /// • Freezes the physics body to Static so physics impulses (e.g. chain kunai) can't move the target.
 /// </summary>
-public sealed class SharedEnergyNetSystem : EntitySystem
+public sealed partial class SharedEnergyNetSystem : EntitySystem
 {
-    [Dependency] private readonly ActionBlockerSystem  _blocker = default!;
-    [Dependency] private readonly PullingSystem        _pulling = default!;
-    [Dependency] private readonly SharedPhysicsSystem  _physics = default!;
+    [Dependency] private ActionBlockerSystem  _blocker = default!;
+    [Dependency] private PullingSystem        _pulling = default!;
+    [Dependency] private SharedPhysicsSystem  _physics = default!;
 
     public override void Initialize()
     {

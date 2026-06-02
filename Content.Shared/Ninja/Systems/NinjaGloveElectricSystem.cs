@@ -10,9 +10,9 @@ namespace Content.Shared.Ninja.Systems;
 /// DisarmedEvent is directed at the target; we filter via MobStateComponent (present on all mobs)
 /// since StaminaComponent is already taken by SharedStaminaSystem for the same event.
 /// </summary>
-public sealed class NinjaGloveElectricSystem : EntitySystem
+public sealed partial class NinjaGloveElectricSystem : EntitySystem
 {
-    [Dependency] private readonly SharedStaminaSystem _stamina = default!;
+    [Dependency] private SharedStaminaSystem _stamina = default!;
 
     public override void Initialize()
     {
