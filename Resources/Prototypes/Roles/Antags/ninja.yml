@@ -38,9 +38,7 @@
   - type: NpcFactionMember
     factions:
     - Syndicate
-  - type: AutoImplant
-    implants:
-    - DeathAcidifierImplant
+  - type: AutoDust
   - type: RandomMetadata
     nameSegments:
     - NamesNinjaTitle
@@ -49,7 +47,7 @@
   mindRoles:
   - MindRoleNinja
 
-# Corvax-Wega: roundstart ninja variant (SubNinja presets) — picks a player and uses AutoDust instead of the event ghost-role's AutoImplant.
+# Corvax-Wega: roundstart ninja variant (SubNinja presets) — picks a living player (pickPlayer), unlike the event ghost-role SpaceNinja (pickPlayer: false).
 - type: antagSpecifier
   parent: RestrictedAntag
   id: SpaceNinjaRoundstart
@@ -85,7 +83,7 @@
     back: ClothingBackpackSatchelNinja
     mask: ClothingMaskNinja
     head: ClothingHeadHelmetSpaceNinja
-    eyes: ClothingEyesGlassesNightVisionNinja # Corvax-Wega-Edit
+    eyes: ClothingEyesVisorNinja # Corvax-Wega-Edit: родной ниндзя-визор вместо ПНВ
     gloves: ClothingHandsGlovesSpaceNinja
     outerClothing: ClothingOuterSuitSpaceNinja
     shoes: ClothingShoesSpaceNinja
