@@ -14,12 +14,12 @@ using System.Numerics;
 
 namespace Content.Client._Wega.Ninja.UI;
 
-public sealed class NinjaEnergyDisplayOverlay : Overlay
+public sealed partial class NinjaEnergyDisplayOverlay : Overlay
 {
-    [Dependency] private readonly IEntityManager _entMan = default!;
-    [Dependency] private readonly IPlayerManager _player = default!;
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
-    [Dependency] private readonly IResourceCache _resourceCache = default!;
+    [Dependency] private IEntityManager _entMan = default!;
+    [Dependency] private IPlayerManager _player = default!;
+    [Dependency] private IGameTiming _gameTiming = default!;
+    [Dependency] private IResourceCache _resourceCache = default!;
 
     private readonly SpriteSystem _sprite;
 

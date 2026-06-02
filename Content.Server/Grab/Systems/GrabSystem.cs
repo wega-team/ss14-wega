@@ -44,7 +44,7 @@ namespace Content.Server.Grab.Systems;
 /// with decreasing success chances as the grab escalates through three phases.
 /// Phase 3 deals continuous asphyxiation damage and blocks both of the grabber's hands.
 /// </summary>
-public sealed class GrabSystem : EntitySystem
+public sealed partial class GrabSystem : EntitySystem
 {
     private static readonly float[] EscapeChances = { 1.0f, 0.25f, 0.05f };
 
@@ -59,23 +59,23 @@ public sealed class GrabSystem : EntitySystem
     private static readonly SoundSpecifier GrabSound =
         new SoundPathSpecifier("/Audio/Effects/thudswoosh.ogg");
 
-    [Dependency] private readonly ActionBlockerSystem    _actionBlocker = default!;
-    [Dependency] private readonly DamageableSystem       _damage        = default!;
-    [Dependency] private readonly SharedCombatModeSystem _combatMode    = default!;
-    [Dependency] private readonly SharedPopupSystem      _popup         = default!;
-    [Dependency] private readonly SharedTransformSystem  _xform         = default!;
-    [Dependency] private readonly IRobustRandom          _random        = default!;
-    [Dependency] private readonly IGameTiming            _timing        = default!;
-    [Dependency] private readonly SharedAudioSystem             _audio       = default!;
-    [Dependency] private readonly PullingSystem                 _pulling     = default!;
-    [Dependency] private readonly SharedColorFlashEffectSystem  _color       = default!;
-    [Dependency] private readonly VirtualItemSystem             _virtualItem = default!;
-    [Dependency] private readonly AlertsSystem                  _alerts      = default!;
-    [Dependency] private readonly SharedStutteringSystem        _stuttering    = default!;
-    [Dependency] private readonly MovementSpeedModifierSystem _movementSpeed = default!;
-    [Dependency] private readonly SharedPhysicsSystem         _physics       = default!;
-    [Dependency] private readonly SharedStunSystem            _stun          = default!;
-    [Dependency] private readonly ThrowingSystem              _throwing      = default!;
+    [Dependency] private ActionBlockerSystem    _actionBlocker = default!;
+    [Dependency] private DamageableSystem       _damage        = default!;
+    [Dependency] private SharedCombatModeSystem _combatMode    = default!;
+    [Dependency] private SharedPopupSystem      _popup         = default!;
+    [Dependency] private SharedTransformSystem  _xform         = default!;
+    [Dependency] private IRobustRandom          _random        = default!;
+    [Dependency] private IGameTiming            _timing        = default!;
+    [Dependency] private SharedAudioSystem             _audio       = default!;
+    [Dependency] private PullingSystem                 _pulling     = default!;
+    [Dependency] private SharedColorFlashEffectSystem  _color       = default!;
+    [Dependency] private VirtualItemSystem             _virtualItem = default!;
+    [Dependency] private AlertsSystem                  _alerts      = default!;
+    [Dependency] private SharedStutteringSystem        _stuttering    = default!;
+    [Dependency] private MovementSpeedModifierSystem _movementSpeed = default!;
+    [Dependency] private SharedPhysicsSystem         _physics       = default!;
+    [Dependency] private SharedStunSystem            _stun          = default!;
+    [Dependency] private ThrowingSystem              _throwing      = default!;
 
     // Prevents our BeingPulledAttemptEvent handler from intercepting the pull we start in StartGrab.
     private bool _initiatingGrabPull;

@@ -11,10 +11,10 @@ namespace Content.Server.Ninja.Systems;
 /// Allows the ninja headset to copy encryption channels from other headsets by clicking on them.
 /// Keys inside are locked — they cannot be inserted or removed through normal means.
 /// </summary>
-public sealed class NinjaHeadsetSystem : EntitySystem
+public sealed partial class NinjaHeadsetSystem : EntitySystem
 {
-    [Dependency] private readonly SharedContainerSystem _container = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private SharedContainerSystem _container = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
 
     private const string CopiedKeyProto = "EncryptionKeyNinja";
 

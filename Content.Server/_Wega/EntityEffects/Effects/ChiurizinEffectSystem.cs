@@ -31,19 +31,19 @@ namespace Content.Server.EntityEffects.Effects;
 
 public sealed partial class ChiurizinEffectSystem : EntityEffectSystem<MetaDataComponent, Chiurizin>
 {
-    [Dependency] private readonly DamageableSystem _damageable = default!;
-    [Dependency] private readonly StatusEffectsSystem _statusNew = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly SharedTransformSystem _xform = default!;
-    [Dependency] private readonly HumanoidProfileSystem _humanoid = default!;
-    [Dependency] private readonly SharedSolutionContainerSystem _solution = default!;
-    [Dependency] private readonly SharedDrunkSystem _drunk = default!;
-    [Dependency] private readonly DiseaseSystem _disease = default!;
-    [Dependency] private readonly MobStateSystem _mobState = default!;
-    [Dependency] private readonly AdminFrozenSystem _adminFrozen = default!;
-    [Dependency] private readonly SharedStealthSystem _stealth = default!;
-    [Dependency] private readonly SharedBloodstreamSystem _bloodstream = default!;
-    [Dependency] private readonly SurgerySystem _surgery = default!;
+    [Dependency] private DamageableSystem _damageable = default!;
+    [Dependency] private StatusEffectsSystem _statusNew = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private SharedTransformSystem _xform = default!;
+    [Dependency] private HumanoidProfileSystem _humanoid = default!;
+    [Dependency] private SharedSolutionContainerSystem _solution = default!;
+    [Dependency] private SharedDrunkSystem _drunk = default!;
+    [Dependency] private DiseaseSystem _disease = default!;
+    [Dependency] private MobStateSystem _mobState = default!;
+    [Dependency] private AdminFrozenSystem _adminFrozen = default!;
+    [Dependency] private SharedStealthSystem _stealth = default!;
+    [Dependency] private SharedBloodstreamSystem _bloodstream = default!;
+    [Dependency] private SurgerySystem _surgery = default!;
 
     private static readonly DamageSpecifier HealingDamage = new()
     {

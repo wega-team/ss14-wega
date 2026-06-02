@@ -2,9 +2,9 @@ using Robust.Client.Graphics;
 
 namespace Content.Client.Ninja.Systems;
 
-public sealed class NinjaChainKunaiVisualsSystem : EntitySystem
+public sealed partial class NinjaChainKunaiVisualsSystem : EntitySystem
 {
-    [Dependency] private readonly IOverlayManager _overlay = default!;
+    [Dependency] private IOverlayManager _overlay = default!;
 
     public override void Initialize()
     {

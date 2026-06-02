@@ -8,11 +8,11 @@ using Robust.Shared.Timing;
 
 namespace Content.Client.Ninja.Systems;
 
-public sealed class NinjaJetpackSystem : SharedNinjaJetpackSystem
+public sealed partial class NinjaJetpackSystem : SharedNinjaJetpackSystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly SharedMapSystem _mapSystem = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private SharedMapSystem _mapSystem = default!;
 
     // Never predict enabling on client — component arrives from server state only,
     // same as the standard JetpackSystem. This prevents prediction spam.

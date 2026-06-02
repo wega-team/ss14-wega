@@ -10,10 +10,10 @@ namespace Content.Client.Ninja.Systems;
 /// disguise hiding/showing the item's on-body visual), immediately re-render the wearer's
 /// equipment so the change is visible without waiting for an unrelated clothing event.
 /// </summary>
-public sealed class NinjaHiddenClothingVisualSystem : EntitySystem
+public sealed partial class NinjaHiddenClothingVisualSystem : EntitySystem
 {
-    [Dependency] private readonly ClientClothingSystem _clothing = default!;
-    [Dependency] private readonly SharedContainerSystem _container = default!;
+    [Dependency] private ClientClothingSystem _clothing = default!;
+    [Dependency] private SharedContainerSystem _container = default!;
 
     public override void Initialize()
     {

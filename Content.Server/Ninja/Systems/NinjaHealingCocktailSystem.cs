@@ -8,15 +8,15 @@ using Content.Shared.Timing;
 
 namespace Content.Server.Ninja.Systems;
 
-public sealed class NinjaHealingCocktailSystem : EntitySystem
+public sealed partial class NinjaHealingCocktailSystem : EntitySystem
 {
     private const string ChiurizinReagent = "Chiurizin";
     private const string SuitDisableDelayId = "suit_powers";
 
-    [Dependency] private readonly NinjaCloakSystem _cloak = default!;
-    [Dependency] private readonly BloodstreamSystem _blood = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly UseDelaySystem _useDelay = default!;
+    [Dependency] private NinjaCloakSystem _cloak = default!;
+    [Dependency] private BloodstreamSystem _blood = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private UseDelaySystem _useDelay = default!;
 
     public override void Initialize()
     {

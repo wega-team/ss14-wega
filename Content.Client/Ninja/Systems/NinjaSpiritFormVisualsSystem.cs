@@ -7,9 +7,9 @@ namespace Content.Client.Ninja.Systems;
 /// <summary>
 /// Applies an acid-green color tint to the ninja while Spirit Form is active.
 /// </summary>
-public sealed class NinjaSpiritFormVisualsSystem : EntitySystem
+public sealed partial class NinjaSpiritFormVisualsSystem : EntitySystem
 {
-    [Dependency] private readonly SpriteSystem _sprite = default!;
+    [Dependency] private SpriteSystem _sprite = default!;
 
     // acid neon-green tint with slight transparency
     private static readonly Color SpiritColor = Color.FromHex("#00ff22");

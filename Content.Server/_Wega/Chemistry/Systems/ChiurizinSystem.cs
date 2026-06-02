@@ -16,11 +16,11 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Server._Wega.Chemistry.Systems;
 
-public sealed class ChiurizinSystem : EntitySystem
+public sealed partial class ChiurizinSystem : EntitySystem
 {
-    [Dependency] private readonly SharedTransformSystem _xform = default!;
-    [Dependency] private readonly DamageableSystem _damageable = default!;
-    [Dependency] private readonly SharedStealthSystem _stealth = default!;
+    [Dependency] private SharedTransformSystem _xform = default!;
+    [Dependency] private DamageableSystem _damageable = default!;
+    [Dependency] private SharedStealthSystem _stealth = default!;
 
     private static readonly DamageSpecifier StasisHealPerSecond = new()
     {

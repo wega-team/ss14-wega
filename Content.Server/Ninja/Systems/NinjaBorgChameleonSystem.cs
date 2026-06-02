@@ -15,13 +15,13 @@ namespace Content.Server.Ninja.Systems;
 /// Toggles between the ninja skin and the service-borg disguise skin,
 /// and swaps the entity name/description to prevent metagaming.
 /// </summary>
-public sealed class NinjaBorgChameleonSystem : EntitySystem
+public sealed partial class NinjaBorgChameleonSystem : EntitySystem
 {
-    [Dependency] private readonly SharedActionsSystem _actions = default!;
-    [Dependency] private readonly MetaDataSystem _meta = default!;
-    [Dependency] private readonly NameModifierSystem _nameModifier = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
+    [Dependency] private SharedActionsSystem _actions = default!;
+    [Dependency] private MetaDataSystem _meta = default!;
+    [Dependency] private NameModifierSystem _nameModifier = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private IPrototypeManager _prototype = default!;
 
     public override void Initialize()
     {

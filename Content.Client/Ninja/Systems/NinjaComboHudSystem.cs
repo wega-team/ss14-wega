@@ -8,9 +8,9 @@ namespace Content.Client.Ninja.Systems;
 /// The overlay's own Draw() checks every frame whether the local player
 /// has NinjaConcentrationComponent with inputs to render.
 /// </summary>
-public sealed class NinjaComboHudSystem : EntitySystem
+public sealed partial class NinjaComboHudSystem : EntitySystem
 {
-    [Dependency] private readonly IOverlayManager _overlayMan = default!;
+    [Dependency] private IOverlayManager _overlayMan = default!;
 
     public override void Initialize()
     {

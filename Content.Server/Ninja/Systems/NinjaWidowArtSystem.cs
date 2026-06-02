@@ -48,23 +48,23 @@ namespace Content.Server.Ninja.Systems;
 /// - Neck Slice      D/H/D   — instant kill downed target (katana in off-hand; long cooldown)
 /// - Neck Strike             — mutes target 15 s + damage when grabbed from behind while concentrated
 /// </summary>
-public sealed class NinjaWidowArtSystem : EntitySystem
+public sealed partial class NinjaWidowArtSystem : EntitySystem
 {
-    [Dependency] private readonly AlertsSystem           _alerts       = default!;
-    [Dependency] private readonly SharedAudioSystem      _audio        = default!;
-    [Dependency] private readonly DamageableSystem       _damage       = default!;
-    [Dependency] private readonly SurgerySystem          _surgery      = default!;
-    [Dependency] private readonly EntityLookupSystem     _lookup       = default!;
-    [Dependency] private readonly SharedHandsSystem      _hands        = default!;
-    [Dependency] private readonly IGameTiming            _timing       = default!;
-    [Dependency] private readonly IRobustRandom          _random       = default!;
-    [Dependency] private readonly SharedPopupSystem      _popup        = default!;
-    [Dependency] private readonly SharedPhysicsSystem    _physics      = default!;
-    [Dependency] private readonly SharedStunSystem       _stun         = default!;
-    [Dependency] private readonly StatusEffectsSystem     _statusEffect = default!;
-    [Dependency] private readonly ThrowingSystem         _throwing     = default!;
-    [Dependency] private readonly SharedTransformSystem  _xform        = default!;
-    [Dependency] private readonly SharedCombatModeSystem _combatMode   = default!;
+    [Dependency] private AlertsSystem           _alerts       = default!;
+    [Dependency] private SharedAudioSystem      _audio        = default!;
+    [Dependency] private DamageableSystem       _damage       = default!;
+    [Dependency] private SurgerySystem          _surgery      = default!;
+    [Dependency] private EntityLookupSystem     _lookup       = default!;
+    [Dependency] private SharedHandsSystem      _hands        = default!;
+    [Dependency] private IGameTiming            _timing       = default!;
+    [Dependency] private IRobustRandom          _random       = default!;
+    [Dependency] private SharedPopupSystem      _popup        = default!;
+    [Dependency] private SharedPhysicsSystem    _physics      = default!;
+    [Dependency] private SharedStunSystem       _stun         = default!;
+    [Dependency] private StatusEffectsSystem     _statusEffect = default!;
+    [Dependency] private ThrowingSystem         _throwing     = default!;
+    [Dependency] private SharedTransformSystem  _xform        = default!;
+    [Dependency] private SharedCombatModeSystem _combatMode   = default!;
 
     private const float PushSpeed        = 8f;
     private const float TornadoSpeed     = 10f;

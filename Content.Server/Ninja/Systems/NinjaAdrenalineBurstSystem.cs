@@ -12,17 +12,17 @@ using Content.Shared.Timing;
 
 namespace Content.Server.Ninja.Systems;
 
-public sealed class NinjaAdrenalineBurstSystem : EntitySystem
+public sealed partial class NinjaAdrenalineBurstSystem : EntitySystem
 {
     private const string HyperzineReagent   = "Stimulants";
     private const string UraniumReagent     = "Uranium";
     private const string UraniumMaterial    = "Uranium";
     private const string SuitDisableDelayId = "suit_powers";
 
-    [Dependency] private readonly BloodstreamSystem  _blood    = default!;
-    [Dependency] private readonly SharedPopupSystem  _popup    = default!;
-    [Dependency] private readonly UseDelaySystem     _useDelay = default!;
-    [Dependency] private readonly StackSystem        _stack    = default!;
+    [Dependency] private BloodstreamSystem  _blood    = default!;
+    [Dependency] private SharedPopupSystem  _popup    = default!;
+    [Dependency] private UseDelaySystem     _useDelay = default!;
+    [Dependency] private StackSystem        _stack    = default!;
 
     public override void Initialize()
     {

@@ -5,10 +5,10 @@ using Robust.Client.Graphics;
 
 namespace Content.Client._Wega.NinjaVisor;
 
-public sealed class NinjaVisorClientSystem : EquipmentHudSystem<NinjaVisorComponent>
+public sealed partial class NinjaVisorClientSystem : EquipmentHudSystem<NinjaVisorComponent>
 {
-    [Dependency] private readonly IOverlayManager _overlayManager = default!;
-    [Dependency] private readonly ILightManager _lightManager = default!;
+    [Dependency] private IOverlayManager _overlayManager = default!;
+    [Dependency] private ILightManager _lightManager = default!;
 
     private NinjaVisorNightVisionOverlay _nightVision = default!;
     private ThermalMobOverlay _thermal = default!;

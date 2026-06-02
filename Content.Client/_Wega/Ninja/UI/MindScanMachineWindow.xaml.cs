@@ -10,7 +10,7 @@ namespace Content.Client._Wega.Ninja.UI;
 [GenerateTypedNameReferences]
 public sealed partial class MindScanMachineWindow : FancyWindow
 {
-    [Dependency] private readonly IEntityManager _entityManager = default!;
+    [Dependency] private IEntityManager _entityManager = default!;
 
     public event Action? OnScan;
     public event Action? OnEject;

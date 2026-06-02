@@ -14,14 +14,14 @@ namespace Content.Server.Objectives.Systems;
 /// <summary>
 /// Handles the three new randomised ninja objectives: Frame, Protect, and Intimidate.
 /// </summary>
-public sealed class NinjaNewObjectivesSystem : EntitySystem
+public sealed partial class NinjaNewObjectivesSystem : EntitySystem
 {
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly MetaDataSystem _metaData = default!;
-    [Dependency] private readonly SharedJobSystem _job = default!;
-    [Dependency] private readonly SharedMindSystem _mind = default!;
-    [Dependency] private readonly StationRecordsSystem _stationRecords = default!;
-    [Dependency] private readonly TargetObjectiveSystem _target = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private MetaDataSystem _metaData = default!;
+    [Dependency] private SharedJobSystem _job = default!;
+    [Dependency] private SharedMindSystem _mind = default!;
+    [Dependency] private StationRecordsSystem _stationRecords = default!;
+    [Dependency] private TargetObjectiveSystem _target = default!;
 
     public override void Initialize()
     {

@@ -12,11 +12,11 @@ namespace Content.Client.Ninja.Systems;
 /// Shows a full-screen animation and plays a periodic ambient sound while the local player
 /// is waiting for their ninja clone to spawn.
 /// </summary>
-public sealed class NinjaCloningOverlaySystem : EntitySystem
+public sealed partial class NinjaCloningOverlaySystem : EntitySystem
 {
-    [Dependency] private readonly IOverlayManager _overlayMan = default!;
-    [Dependency] private readonly IPlayerManager _player = default!;
-    [Dependency] private readonly AudioSystem _audio = default!;
+    [Dependency] private IOverlayManager _overlayMan = default!;
+    [Dependency] private IPlayerManager _player = default!;
+    [Dependency] private AudioSystem _audio = default!;
 
     private NinjaCloningOverlay _overlay = default!;
 

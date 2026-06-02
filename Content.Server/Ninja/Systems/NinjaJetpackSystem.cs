@@ -4,9 +4,9 @@ using Robust.Shared.Collections;
 
 namespace Content.Server.Ninja.Systems;
 
-public sealed class NinjaJetpackSystem : SharedNinjaJetpackSystem
+public sealed partial class NinjaJetpackSystem : SharedNinjaJetpackSystem
 {
-    [Dependency] private readonly SpaceNinjaSystem _ninja = default!;
+    [Dependency] private SpaceNinjaSystem _ninja = default!;
 
     protected override bool CanEnable(EntityUid uid, NinjaJetpackComponent comp)
     {

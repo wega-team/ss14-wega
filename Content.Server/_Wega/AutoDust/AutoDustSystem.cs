@@ -7,10 +7,10 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Server._Wega.AutoDust;
 
-public sealed class AutoDustSystem : EntitySystem
+public sealed partial class AutoDustSystem : EntitySystem
 {
-    [Dependency] private readonly SharedActionsSystem _actions = default!;
-    [Dependency] private readonly SharedPopupSystem   _popup   = default!;
+    [Dependency] private SharedActionsSystem _actions = default!;
+    [Dependency] private SharedPopupSystem   _popup   = default!;
 
     private static readonly EntProtoId ActionProto = "ActionNinjaAutoDust";
 

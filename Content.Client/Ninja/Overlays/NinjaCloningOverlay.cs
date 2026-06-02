@@ -9,12 +9,12 @@ namespace Content.Client.Ninja.Overlays;
 /// <summary>
 /// Full-screen RSI animation overlay shown while a ninja is waiting for their clone to spawn.
 /// </summary>
-public sealed class NinjaCloningOverlay : Overlay
+public sealed partial class NinjaCloningOverlay : Overlay
 {
     private const string RsiPath = "/Textures/_Wega/Effects/ninjarestart.rsi";
     private const string RsiState = "ninjarestart";
 
-    [Dependency] private readonly IResourceCache _resourceCache = default!;
+    [Dependency] private IResourceCache _resourceCache = default!;
 
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
 

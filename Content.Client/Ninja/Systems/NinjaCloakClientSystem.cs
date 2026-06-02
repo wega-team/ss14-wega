@@ -10,10 +10,10 @@ namespace Content.Client.Ninja.Systems;
 /// Renders the ninja fully invisible (alpha 0, no distortion shader) while phase cloak is active.
 /// Also blocks examine/context-menu access and hides all status icons (job, SSD, etc.).
 /// </summary>
-public sealed class NinjaCloakClientSystem : EntitySystem
+public sealed partial class NinjaCloakClientSystem : EntitySystem
 {
-    [Dependency] private readonly SpriteSystem   _sprite        = default!;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
+    [Dependency] private SpriteSystem   _sprite        = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
 
     private readonly Dictionary<EntityUid, Color> _savedColors = new();
 

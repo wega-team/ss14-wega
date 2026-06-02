@@ -15,12 +15,12 @@ namespace Content.Server.Ninja.Systems;
 /// <summary>
 /// Handles ninja phase cloak: full invisibility, examine blocking, overheating, and spark effects.
 /// </summary>
-public sealed class NinjaCloakSystem : EntitySystem
+public sealed partial class NinjaCloakSystem : EntitySystem
 {
-    [Dependency] private readonly IRobustRandom   _random    = default!;
-    [Dependency] private readonly AudioSystem     _audio     = default!;
-    [Dependency] private readonly InventorySystem _inventory = default!;
-    [Dependency] private readonly ItemToggleSystem _toggle   = default!;
+    [Dependency] private IRobustRandom   _random    = default!;
+    [Dependency] private AudioSystem     _audio     = default!;
+    [Dependency] private InventorySystem _inventory = default!;
+    [Dependency] private ItemToggleSystem _toggle   = default!;
 
     private static readonly SoundSpecifier SparksSound =
         new SoundCollectionSpecifier("sparks", AudioParams.Default.WithVolume(-4f));

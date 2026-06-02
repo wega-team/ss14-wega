@@ -141,7 +141,7 @@
 
 # Не наследует ClothingShoesBaseButcherable — нано-ботинки ниндзи нельзя разделать ножом на ткань.
 - type: entity
-  parent: [ClothingShoesBase, ClothingShoesDamageableBase, BaseHighlyIllegalContraband]
+  parent: [ClothingShoesBase, BaseHighlyIllegalContraband]
   id: ClothingShoesSpaceNinja
   name: space ninja shoes
   description: A pair of nano-enhanced boots with built-in magnetic suction cups.

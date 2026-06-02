@@ -8,9 +8,9 @@ using Robust.Shared.Timing;
 namespace Content.Client.Ninja.UI;
 
 [UsedImplicitly]
-public sealed class SpiderOSBui : BoundUserInterface
+public sealed partial class SpiderOSBui : BoundUserInterface
 {
-    [Dependency] private readonly IPlayerManager _player = default!;
+    [Dependency] private IPlayerManager _player = default!;
 
     private SpiderOSWindow? _window;
 

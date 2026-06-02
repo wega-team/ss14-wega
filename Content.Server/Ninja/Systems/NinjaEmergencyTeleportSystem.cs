@@ -12,7 +12,7 @@ using System.Numerics;
 
 namespace Content.Server.Ninja.Systems;
 
-public sealed class NinjaEmergencyTeleportSystem : EntitySystem
+public sealed partial class NinjaEmergencyTeleportSystem : EntitySystem
 {
     private const float EmergencyTeleportCharge = 150f;
     private const string SuitDisableDelayId = "suit_powers";
@@ -20,14 +20,14 @@ public sealed class NinjaEmergencyTeleportSystem : EntitySystem
     private static readonly SoundSpecifier TeleportSound =
         new SoundPathSpecifier("/Audio/Effects/teleport_arrival.ogg");
 
-    [Dependency] private readonly NinjaCloakSystem _cloak = default!;
-    [Dependency] private readonly SpaceNinjaSystem _ninja = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly TurfSystem _turf = default!;
-    [Dependency] private readonly UseDelaySystem _useDelay = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private NinjaCloakSystem _cloak = default!;
+    [Dependency] private SpaceNinjaSystem _ninja = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private TurfSystem _turf = default!;
+    [Dependency] private UseDelaySystem _useDelay = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
 
     public override void Initialize()
     {

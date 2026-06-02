@@ -8,7 +8,7 @@ using Robust.Shared.Audio.Systems;
 
 namespace Content.Server.Ninja.Systems;
 
-public sealed class NinjaSmokeScreenSystem : EntitySystem
+public sealed partial class NinjaSmokeScreenSystem : EntitySystem
 {
     private const string SuitDisableDelayId = "suit_powers";
     private const float SmokeScreenCharge = 95f;
@@ -22,11 +22,11 @@ public sealed class NinjaSmokeScreenSystem : EntitySystem
         "NinjaSmokeGreen",
     };
 
-    [Dependency] private readonly NinjaCloakSystem _cloak = default!;
-    [Dependency] private readonly SpaceNinjaSystem _ninja = default!;
-    [Dependency] private readonly SmokeSystem _smoke = default!;
-    [Dependency] private readonly UseDelaySystem _useDelay = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private NinjaCloakSystem _cloak = default!;
+    [Dependency] private SpaceNinjaSystem _ninja = default!;
+    [Dependency] private SmokeSystem _smoke = default!;
+    [Dependency] private UseDelaySystem _useDelay = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
 
     public override void Initialize()
     {

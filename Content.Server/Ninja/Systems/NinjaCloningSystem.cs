@@ -30,7 +30,7 @@ namespace Content.Server.Ninja.Systems;
 /// On death: spawn a clone, immediately transfer the player's mind to it, lock it inside the
 /// bound NinjaCloningCapsule structure for 30 seconds, then eject it.
 /// </summary>
-public sealed class NinjaCloningSystem : EntitySystem
+public sealed partial class NinjaCloningSystem : EntitySystem
 {
     private static readonly (string Slot, string Name)[] NinjaSlots =
     [
@@ -43,20 +43,20 @@ public sealed class NinjaCloningSystem : EntitySystem
 
     private const string SyndicateFaction = "Syndicate";
 
-    [Dependency] private readonly ContainerSystem _container = default!;
-    [Dependency] private readonly HumanoidProfileSystem _humanoidProfile = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly IServerPreferencesManager _prefs = default!;
-    [Dependency] private readonly InventorySystem _inventory = default!;
-    [Dependency] private readonly MetaDataSystem _metaData = default!;
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-    [Dependency] private readonly SharedMindSystem _mind = default!;
-    [Dependency] private readonly NinjaSuitSystem _ninjaSuit = default!;
-    [Dependency] private readonly NpcFactionSystem _factions = default!;
-    [Dependency] private readonly SharedStationSpawningSystem _spawning = default!;
-    [Dependency] private readonly SharedVisualBodySystem _visualBody = default!;
-    [Dependency] private readonly SpiderOSSystem _spiderOS = default!;
+    [Dependency] private ContainerSystem _container = default!;
+    [Dependency] private HumanoidProfileSystem _humanoidProfile = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private IServerPreferencesManager _prefs = default!;
+    [Dependency] private InventorySystem _inventory = default!;
+    [Dependency] private MetaDataSystem _metaData = default!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
+    [Dependency] private SharedMindSystem _mind = default!;
+    [Dependency] private NinjaSuitSystem _ninjaSuit = default!;
+    [Dependency] private NpcFactionSystem _factions = default!;
+    [Dependency] private SharedStationSpawningSystem _spawning = default!;
+    [Dependency] private SharedVisualBodySystem _visualBody = default!;
+    [Dependency] private SpiderOSSystem _spiderOS = default!;
 
     public override void Initialize()
     {

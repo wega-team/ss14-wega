@@ -15,11 +15,11 @@ namespace Content.Server.Ninja.Systems;
 /// Assigns ninja objectives that require crew targets (kill, frame, intimidate)
 /// after crew has spawned, since PrePlayerSpawn fires before PickRandomPerson can find anyone.
 /// </summary>
-public sealed class NinjaDelayedObjectivesSystem : GameRuleSystem<NinjaDelayedObjectivesComponent>
+public sealed partial class NinjaDelayedObjectivesSystem : GameRuleSystem<NinjaDelayedObjectivesComponent>
 {
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly SharedMindSystem _mind = default!;
-    [Dependency] private readonly ObjectivesSystem _objectives = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private SharedMindSystem _mind = default!;
+    [Dependency] private ObjectivesSystem _objectives = default!;
 
     public override void Initialize()
     {

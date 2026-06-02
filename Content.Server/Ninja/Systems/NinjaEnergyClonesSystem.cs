@@ -15,7 +15,7 @@ using Robust.Shared.Timing;
 
 namespace Content.Server.Ninja.Systems;
 
-public sealed class NinjaEnergyClonesSystem : EntitySystem
+public sealed partial class NinjaEnergyClonesSystem : EntitySystem
 {
     private const float EnergyClonesCharge = 300f;
     private const int CloneCount = 2;
@@ -24,12 +24,12 @@ public sealed class NinjaEnergyClonesSystem : EntitySystem
     private const string CloneProto = "MobNinjaEnergyClone";
     private const string SuitDisableDelayId = "suit_powers";
 
-    [Dependency] private readonly NinjaCloakSystem _cloak = default!;
-    [Dependency] private readonly SpaceNinjaSystem _ninja = default!;
-    [Dependency] private readonly NpcFactionSystem _faction = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly UseDelaySystem _useDelay = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private NinjaCloakSystem _cloak = default!;
+    [Dependency] private SpaceNinjaSystem _ninja = default!;
+    [Dependency] private NpcFactionSystem _faction = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private UseDelaySystem _useDelay = default!;
+    [Dependency] private IGameTiming _timing = default!;
 
     public override void Initialize()
     {

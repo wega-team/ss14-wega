@@ -10,11 +10,11 @@ using System.Numerics;
 
 namespace Content.Client._Wega.MartialArts.Overlays;
 
-public sealed class ComboVisualizationOverlay : Overlay
+public sealed partial class ComboVisualizationOverlay : Overlay
 {
-    [Dependency] private readonly IEntityManager _entMan        = default!;
-    [Dependency] private readonly IPlayerManager _player        = default!;
-    [Dependency] private readonly IResourceCache _resourceCache = default!;
+    [Dependency] private IEntityManager _entMan        = default!;
+    [Dependency] private IPlayerManager _player        = default!;
+    [Dependency] private IResourceCache _resourceCache = default!;
 
     public override OverlaySpace Space => OverlaySpace.ScreenSpace;
 

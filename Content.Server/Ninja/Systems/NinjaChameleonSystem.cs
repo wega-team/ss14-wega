@@ -42,22 +42,22 @@ namespace Content.Server.Ninja.Systems;
 /// – applies a small passive power drain while the module is active
 /// – disguise is broken by any incoming damage
 /// </summary>
-public sealed class NinjaChameleonSystem : EntitySystem
+public sealed partial class NinjaChameleonSystem : EntitySystem
 {
-    [Dependency] private readonly SpaceNinjaSystem              _ninja             = default!;
-    [Dependency] private readonly SharedHandsSystem             _hands             = default!;
-    [Dependency] private readonly SharedPopupSystem             _popup             = default!;
-    [Dependency] private readonly SharedDoAfterSystem           _doAfter           = default!;
-    [Dependency] private readonly MetaDataSystem                _metaData          = default!;
-    [Dependency] private readonly IdentitySystem                _identity          = default!;
-    [Dependency] private readonly InventorySystem               _inventory         = default!;
-    [Dependency] private readonly HumanoidProfileSystem         _humanoidProfile   = default!;
-    [Dependency] private readonly SharedVisualBodySystem        _visualBody        = default!;
-    [Dependency] private readonly SharedChameleonClothingSystem _chameleonClothing = default!;
-    [Dependency] private readonly SharedContainerSystem         _containerSystem   = default!;
-    [Dependency] private readonly VocalSystem                   _vocal             = default!;
-    [Dependency] private readonly SharedTypingIndicatorSystem   _typingIndicator   = default!;
-    [Dependency] private readonly SharedJobStatusSystem          _jobStatus         = default!;
+    [Dependency] private SpaceNinjaSystem              _ninja             = default!;
+    [Dependency] private SharedHandsSystem             _hands             = default!;
+    [Dependency] private SharedPopupSystem             _popup             = default!;
+    [Dependency] private SharedDoAfterSystem           _doAfter           = default!;
+    [Dependency] private MetaDataSystem                _metaData          = default!;
+    [Dependency] private IdentitySystem                _identity          = default!;
+    [Dependency] private InventorySystem               _inventory         = default!;
+    [Dependency] private HumanoidProfileSystem         _humanoidProfile   = default!;
+    [Dependency] private SharedVisualBodySystem        _visualBody        = default!;
+    [Dependency] private SharedChameleonClothingSystem _chameleonClothing = default!;
+    [Dependency] private SharedContainerSystem         _containerSystem   = default!;
+    [Dependency] private VocalSystem                   _vocal             = default!;
+    [Dependency] private SharedTypingIndicatorSystem   _typingIndicator   = default!;
+    [Dependency] private SharedJobStatusSystem          _jobStatus         = default!;
 
     public override void Initialize()
     {

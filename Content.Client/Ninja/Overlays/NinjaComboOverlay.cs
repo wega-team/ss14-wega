@@ -15,11 +15,11 @@ namespace Content.Client.Ninja.Overlays;
 /// Active whenever the local player has <see cref="NinjaConcentrationComponent"/>.
 /// Independent of hand-item display CVars.
 /// </summary>
-public sealed class NinjaComboOverlay : Overlay
+public sealed partial class NinjaComboOverlay : Overlay
 {
-    [Dependency] private readonly IEntityManager _entMan        = default!;
-    [Dependency] private readonly IPlayerManager _player        = default!;
-    [Dependency] private readonly IResourceCache _resourceCache = default!;
+    [Dependency] private IEntityManager _entMan        = default!;
+    [Dependency] private IPlayerManager _player        = default!;
+    [Dependency] private IResourceCache _resourceCache = default!;
 
     public override OverlaySpace Space => OverlaySpace.ScreenSpace;
 

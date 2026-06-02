@@ -12,14 +12,14 @@ using Robust.Shared.Player;
 
 namespace Content.Server.Ninja.Systems;
 
-public sealed class AiLawHackerSystem : EntitySystem
+public sealed partial class AiLawHackerSystem : EntitySystem
 {
-    [Dependency] private readonly IChatManager _chat = default!;
-    [Dependency] private readonly IonLawSystem _ionLaw = default!;
-    [Dependency] private readonly NinjaGlovesSystem _gloves = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SiliconLawSystem _siliconLaw = default!;
+    [Dependency] private IChatManager _chat = default!;
+    [Dependency] private IonLawSystem _ionLaw = default!;
+    [Dependency] private NinjaGlovesSystem _gloves = default!;
+    [Dependency] private SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SiliconLawSystem _siliconLaw = default!;
 
     public override void Initialize()
     {

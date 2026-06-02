@@ -15,7 +15,7 @@ namespace Content.Server.Ninja.Systems;
 /// • Redirects non-caster melee damage from the netted target to the net entity.
 /// • Cleans up EnergyNettedComponent when the net is destroyed.
 /// </summary>
-public sealed class NinjaEnergyNetSystem : EntitySystem
+public sealed partial class NinjaEnergyNetSystem : EntitySystem
 {
     private const float EnergyNetCharge = 200f;
     private const string SuitDisableDelayId = "suit_powers";
@@ -24,14 +24,14 @@ public sealed class NinjaEnergyNetSystem : EntitySystem
     private static readonly SoundSpecifier NetThrowSound =
         new SoundPathSpecifier("/Audio/Effects/sparks4.ogg");
 
-    [Dependency] private readonly NinjaCloakSystem     _cloak     = default!;
-    [Dependency] private readonly SpaceNinjaSystem    _ninja    = default!;
-    [Dependency] private readonly SharedPopupSystem   _popup    = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly UseDelaySystem      _useDelay = default!;
-    [Dependency] private readonly SharedAudioSystem   _audio    = default!;
-    [Dependency] private readonly EntityLookupSystem  _lookup   = default!;
-    [Dependency] private readonly DamageableSystem    _damageable = default!;
+    [Dependency] private NinjaCloakSystem     _cloak     = default!;
+    [Dependency] private SpaceNinjaSystem    _ninja    = default!;
+    [Dependency] private SharedPopupSystem   _popup    = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private UseDelaySystem      _useDelay = default!;
+    [Dependency] private SharedAudioSystem   _audio    = default!;
+    [Dependency] private EntityLookupSystem  _lookup   = default!;
+    [Dependency] private DamageableSystem    _damageable = default!;
 
     public override void Initialize()
     {

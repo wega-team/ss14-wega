@@ -15,7 +15,7 @@ namespace Content.Server.Ninja.Systems;
 /// <summary>
 /// Handles the Chain Kunai ability: fires a kunai projectile that pulls the victim to the ninja and knocks them down.
 /// </summary>
-public sealed class NinjaChainKunaiSystem : EntitySystem
+public sealed partial class NinjaChainKunaiSystem : EntitySystem
 {
     private const string SuitDisableDelayId = "suit_powers";
     private const float ChainKunaiCharge = 20f;
@@ -25,14 +25,14 @@ public sealed class NinjaChainKunaiSystem : EntitySystem
     private static readonly SoundSpecifier KunaiThrowSound =
         new SoundPathSpecifier("/Audio/_Wega/Weapons/Kunai/short-clang-of-metal-links.ogg");
 
-    [Dependency] private readonly NinjaCloakSystem _cloak = default!;
-    [Dependency] private readonly GunSystem _guns = default!;
-    [Dependency] private readonly SharedPhysicsSystem _physics = default!;
-    [Dependency] private readonly SpaceNinjaSystem _ninja = default!;
-    [Dependency] private readonly SharedStunSystem _stun = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly UseDelaySystem _useDelay = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private NinjaCloakSystem _cloak = default!;
+    [Dependency] private GunSystem _guns = default!;
+    [Dependency] private SharedPhysicsSystem _physics = default!;
+    [Dependency] private SpaceNinjaSystem _ninja = default!;
+    [Dependency] private SharedStunSystem _stun = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private UseDelaySystem _useDelay = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
 
     private readonly Dictionary<EntityUid, EntityUid> _kunaiNinja = new();
 

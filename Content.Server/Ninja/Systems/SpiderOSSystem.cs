@@ -26,18 +26,18 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Server.Ninja.Systems;
 
-public sealed class SpiderOSSystem : EntitySystem
+public sealed partial class SpiderOSSystem : EntitySystem
 {
-    [Dependency] private readonly InventorySystem      _inventory      = default!;
-    [Dependency] private readonly UserInterfaceSystem  _ui             = default!;
-    [Dependency] private readonly ClothingSystem       _clothing       = default!;
-    [Dependency] private readonly AutoDustSystem       _autoDust       = default!;
-    [Dependency] private readonly AppearanceSystem     _appearance     = default!;
-    [Dependency] private readonly SharedItemSystem     _item           = default!;
-    [Dependency] private readonly SharedHandsSystem    _hands          = default!;
-    [Dependency] private readonly NinjaSuitSystem      _ninjaSuit      = default!;
-    [Dependency] private readonly ShuttleConsoleSystem _consoleSystem  = default!;
-    [Dependency] private readonly SharedTransformSystem _transform     = default!;
+    [Dependency] private InventorySystem      _inventory      = default!;
+    [Dependency] private UserInterfaceSystem  _ui             = default!;
+    [Dependency] private ClothingSystem       _clothing       = default!;
+    [Dependency] private AutoDustSystem       _autoDust       = default!;
+    [Dependency] private AppearanceSystem     _appearance     = default!;
+    [Dependency] private SharedItemSystem     _item           = default!;
+    [Dependency] private SharedHandsSystem    _hands          = default!;
+    [Dependency] private NinjaSuitSystem      _ninjaSuit      = default!;
+    [Dependency] private ShuttleConsoleSystem _consoleSystem  = default!;
+    [Dependency] private SharedTransformSystem _transform     = default!;
 
     private float _coordTimer;
 

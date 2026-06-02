@@ -10,10 +10,10 @@ namespace Content.Client.Ninja.Systems;
 /// <summary>
 /// Swaps a borg chassis between its original skin, the ninja skin, and the service-borg disguise skin.
 /// </summary>
-public sealed class NinjaBorgVisualizerSystem : EntitySystem
+public sealed partial class NinjaBorgVisualizerSystem : EntitySystem
 {
-    [Dependency] private readonly BorgSystem _borgSystem = default!;
-    [Dependency] private readonly SpriteSystem _sprite = default!;
+    [Dependency] private BorgSystem _borgSystem = default!;
+    [Dependency] private SpriteSystem _sprite = default!;
 
     private static readonly ResPath NinjaRsi = new("_Wega/Mobs/Silicon/ninja.rsi");
     private static readonly ResPath ChassisRsi = new("Mobs/Silicon/chassis.rsi");

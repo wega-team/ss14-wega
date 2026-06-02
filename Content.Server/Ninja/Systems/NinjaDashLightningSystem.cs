@@ -9,7 +9,7 @@ namespace Content.Server.Ninja.Systems;
 /// <summary>
 /// Fires a revenant-style lightning bolt along the katana dash path.
 /// </summary>
-public sealed class NinjaDashLightningSystem : EntitySystem
+public sealed partial class NinjaDashLightningSystem : EntitySystem
 {
     private static readonly string[] LightningProtos =
     [
@@ -18,9 +18,9 @@ public sealed class NinjaDashLightningSystem : EntitySystem
         "LightningNinjaDash", // green
     ];
 
-    [Dependency] private readonly LightningSystem  _lightning = default!;
-    [Dependency] private readonly TransformSystem  _transform  = default!;
-    [Dependency] private readonly InventorySystem  _inventory  = default!;
+    [Dependency] private LightningSystem  _lightning = default!;
+    [Dependency] private TransformSystem  _transform  = default!;
+    [Dependency] private InventorySystem  _inventory  = default!;
 
     public override void Initialize()
     {

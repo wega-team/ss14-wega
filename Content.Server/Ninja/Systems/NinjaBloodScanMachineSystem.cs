@@ -20,7 +20,7 @@ using Robust.Shared.Timing;
 
 namespace Content.Server.Ninja.Systems;
 
-public sealed class NinjaBloodScanMachineSystem : EntitySystem
+public sealed partial class NinjaBloodScanMachineSystem : EntitySystem
 {
     private const int SlotCount = 3;
 
@@ -36,17 +36,17 @@ public sealed class NinjaBloodScanMachineSystem : EntitySystem
         "ResomiBlood",  // resomi
     };
 
-    [Dependency] private readonly AppearanceSystem        _appearance       = default!;
-    [Dependency] private readonly ChatSystem              _chat             = default!;
-    [Dependency] private readonly TransformSystem         _transform        = default!;
-    [Dependency] private readonly CodeConditionSystem     _codeCondition    = default!;
-    [Dependency] private readonly ContainerSystem         _container        = default!;
-    [Dependency] private readonly SharedHandsSystem       _hands            = default!;
-    [Dependency] private readonly IGameTiming             _timing           = default!;
-    [Dependency] private readonly SharedMindSystem        _mind             = default!;
-    [Dependency] private readonly SharedPopupSystem       _popup            = default!;
-    [Dependency] private readonly SharedSolutionContainerSystem _solutionContainer = default!;
-    [Dependency] private readonly UserInterfaceSystem     _ui               = default!;
+    [Dependency] private AppearanceSystem        _appearance       = default!;
+    [Dependency] private ChatSystem              _chat             = default!;
+    [Dependency] private TransformSystem         _transform        = default!;
+    [Dependency] private CodeConditionSystem     _codeCondition    = default!;
+    [Dependency] private ContainerSystem         _container        = default!;
+    [Dependency] private SharedHandsSystem       _hands            = default!;
+    [Dependency] private IGameTiming             _timing           = default!;
+    [Dependency] private SharedMindSystem        _mind             = default!;
+    [Dependency] private SharedPopupSystem       _popup            = default!;
+    [Dependency] private SharedSolutionContainerSystem _solutionContainer = default!;
+    [Dependency] private UserInterfaceSystem     _ui               = default!;
 
     // Timings that match SS13 original (see ninja_bloodscan_machine.dm)
     private static readonly TimeSpan ActivationDelay  = TimeSpan.FromSeconds(3); // ACTIVATION → LOADING

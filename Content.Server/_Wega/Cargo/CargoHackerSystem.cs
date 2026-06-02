@@ -8,12 +8,12 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Server.Cargo;
 
-public sealed class CargoHackerSystem : SharedCargoHackerSystem
+public sealed partial class CargoHackerSystem : SharedCargoHackerSystem
 {
-    [Dependency] private readonly ChatSystem _chat = default!;
-    [Dependency] private readonly StationSystem _station = default!;
-    [Dependency] private readonly SharedCargoSystem _cargo = default!;
-    [Dependency] private readonly StackSystem _stack = default!;
+    [Dependency] private ChatSystem _chat = default!;
+    [Dependency] private StationSystem _station = default!;
+    [Dependency] private SharedCargoSystem _cargo = default!;
+    [Dependency] private StackSystem _stack = default!;
 
     public override void Initialize()
     {

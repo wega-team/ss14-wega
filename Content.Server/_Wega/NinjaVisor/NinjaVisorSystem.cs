@@ -5,9 +5,9 @@ using Content.Shared.Popups;
 
 namespace Content.Server._Wega.NinjaVisor;
 
-public sealed class NinjaVisorSystem : EntitySystem
+public sealed partial class NinjaVisorSystem : EntitySystem
 {
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
 
     public override void Initialize()
     {

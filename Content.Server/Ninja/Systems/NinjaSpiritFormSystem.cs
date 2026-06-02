@@ -17,17 +17,17 @@ namespace Content.Server.Ninja.Systems;
 /// <summary>
 /// Handles the Spirit Form ability: phase through walls while draining 2% of max battery charge per second.
 /// </summary>
-public sealed class NinjaSpiritFormSystem : EntitySystem
+public sealed partial class NinjaSpiritFormSystem : EntitySystem
 {
     private const string SuitDisableDelayId = "suit_powers";
 
-    [Dependency] private readonly NinjaCloakSystem _cloak = default!;
-    [Dependency] private readonly SharedBatterySystem _battery = default!;
-    [Dependency] private readonly MovementSpeedModifierSystem _movementSpeed = default!;
-    [Dependency] private readonly SharedPhysicsSystem _physics = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SpaceNinjaSystem _ninja = default!;
-    [Dependency] private readonly UseDelaySystem _useDelay = default!;
+    [Dependency] private NinjaCloakSystem _cloak = default!;
+    [Dependency] private SharedBatterySystem _battery = default!;
+    [Dependency] private MovementSpeedModifierSystem _movementSpeed = default!;
+    [Dependency] private SharedPhysicsSystem _physics = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SpaceNinjaSystem _ninja = default!;
+    [Dependency] private UseDelaySystem _useDelay = default!;
 
     public override void Initialize()
     {

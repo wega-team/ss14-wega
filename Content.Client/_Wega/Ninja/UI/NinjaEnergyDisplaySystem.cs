@@ -4,9 +4,9 @@ using Robust.Shared.IoC;
 
 namespace Content.Client._Wega.Ninja.UI;
 
-public sealed class NinjaEnergyDisplaySystem : EntitySystem
+public sealed partial class NinjaEnergyDisplaySystem : EntitySystem
 {
-    [Dependency] private readonly IOverlayManager _overlayManager = default!;
+    [Dependency] private IOverlayManager _overlayManager = default!;
 
     private NinjaEnergyDisplayOverlay _overlay = default!;
 

@@ -6,11 +6,11 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Client._Wega.NinjaVisor;
 
-public sealed class NinjaVisorNightVisionOverlay : Overlay
+public sealed partial class NinjaVisorNightVisionOverlay : Overlay
 {
-    [Dependency] private readonly IEntityManager _entityManager = default!;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IEntityManager _entityManager = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
 
     private static readonly ProtoId<ShaderPrototype> ShaderProto = "NaturalNightVision";
 

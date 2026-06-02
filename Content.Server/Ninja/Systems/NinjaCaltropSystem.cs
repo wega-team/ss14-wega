@@ -13,15 +13,15 @@ namespace Content.Server.Ninja.Systems;
 /// behind the ninja. Each caltrop deals 10 piercing damage and knocks down the
 /// tripper for 2 seconds. The ninja who deployed them is immune to their own caltrops.
 /// </summary>
-public sealed class NinjaCaltropSystem : EntitySystem
+public sealed partial class NinjaCaltropSystem : EntitySystem
 {
     private const float CaltropCharge = 100f;
     private const float CaltropLifetime = 10f;
 
-    [Dependency] private readonly NinjaCloakSystem _cloak      = default!;
-    [Dependency] private readonly SpaceNinjaSystem _ninja     = default!;
-    [Dependency] private readonly SharedMapSystem  _mapSystem  = default!;
-    [Dependency] private readonly TurfSystem       _turf       = default!;
+    [Dependency] private NinjaCloakSystem _cloak      = default!;
+    [Dependency] private SpaceNinjaSystem _ninja     = default!;
+    [Dependency] private SharedMapSystem  _mapSystem  = default!;
+    [Dependency] private TurfSystem       _turf       = default!;
 
     public override void Initialize()
     {

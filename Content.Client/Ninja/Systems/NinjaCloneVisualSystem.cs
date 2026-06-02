@@ -3,9 +3,9 @@ using Robust.Client.GameObjects;
 
 namespace Content.Client.Ninja.Systems;
 
-public sealed class NinjaCloneVisualSystem : EntitySystem
+public sealed partial class NinjaCloneVisualSystem : EntitySystem
 {
-    [Dependency] private readonly SpriteSystem _sprite = default!;
+    [Dependency] private SpriteSystem _sprite = default!;
 
     private readonly HashSet<EntityUid> _pending = new();
 

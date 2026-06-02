@@ -25,19 +25,19 @@ namespace Content.Server.Ninja.Systems;
 /// <summary>
 /// Handles the ninja objective to steal a borg brain and convert it to a ninja borg.
 /// </summary>
-public sealed class NinjaBorgStealSystem : EntitySystem
+public sealed partial class NinjaBorgStealSystem : EntitySystem
 {
-    [Dependency] private readonly DoAfterSystem _doAfter = default!;
-    [Dependency] private readonly NpcFactionSystem _npcFaction = default!;
-    [Dependency] private readonly CodeConditionSystem _codeCondition = default!;
-    [Dependency] private readonly MetaDataSystem _meta = default!;
-    [Dependency] private readonly SharedContainerSystem _container = default!;
-    [Dependency] private readonly IChatManager _chatManager = default!;
-    [Dependency] private readonly SharedMindSystem _mind = default!;
-    [Dependency] private readonly SharedNinjaGlovesSystem _gloves = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SiliconLawSystem _siliconLaw = default!;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
+    [Dependency] private DoAfterSystem _doAfter = default!;
+    [Dependency] private NpcFactionSystem _npcFaction = default!;
+    [Dependency] private CodeConditionSystem _codeCondition = default!;
+    [Dependency] private MetaDataSystem _meta = default!;
+    [Dependency] private SharedContainerSystem _container = default!;
+    [Dependency] private IChatManager _chatManager = default!;
+    [Dependency] private SharedMindSystem _mind = default!;
+    [Dependency] private SharedNinjaGlovesSystem _gloves = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SiliconLawSystem _siliconLaw = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
 
     private const string SyndicateFaction = "Syndicate";
     private const string NanoTrasenFaction = "NanoTrasen";
