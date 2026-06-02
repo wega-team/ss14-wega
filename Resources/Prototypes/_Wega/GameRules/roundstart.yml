@@ -41,31 +41,10 @@
   - type: AntagSelection
     selectionTime: PrePlayerSpawn
     agentName: ninja-round-end-agent-name
-    definitions:
-    - prefRoles: [ SpaceNinja ]
-      spawnerPrototype: SpawnPointGhostSpaceNinja
-      min: 1
-      max: 1
-      startingGear: SpaceNinjaGear
-      roleLoadout:
-      - RoleSurvivalSpaceNinja
-      briefing:
-        text: ninja-role-greeting
-        color: Green
-        sound: /Audio/Misc/ninja_greeting.ogg
-      components:
-      - type: SpaceNinja
-      - type: NpcFactionMember
-        factions:
-        - Syndicate
-      - type: AutoDust
-      - type: RandomMetadata
-        nameSegments:
-        - NamesNinjaTitle
-        - NamesNinja
-        nameFormat: name-format-ninja
-      mindRoles:
-      - MindRoleNinja
+    antags:
+    - !type:FixedAntagCount
+      proto: SpaceNinjaRoundstart
+      playerRatio: 1
 
 # Шаблон 'Защитник': ниндзя защищает жертву предателей.
 # TODO: нужна C# логика для гарантии того, что у предателей есть цель-убийство.
@@ -99,31 +78,10 @@
   - type: AntagSelection
     selectionTime: PrePlayerSpawn
     agentName: ninja-round-end-agent-name
-    definitions:
-    - prefRoles: [ SpaceNinja ]
-      spawnerPrototype: SpawnPointGhostSpaceNinja
-      min: 1
-      max: 1
-      startingGear: SpaceNinjaGear
-      roleLoadout:
-      - RoleSurvivalSpaceNinja
-      briefing:
-        text: ninja-role-greeting
-        color: Green
-        sound: /Audio/Misc/ninja_greeting.ogg
-      components:
-      - type: SpaceNinja
-      - type: NpcFactionMember
-        factions:
-        - Syndicate
-      - type: AutoDust
-      - type: RandomMetadata
-        nameSegments:
-        - NamesNinjaTitle
-        - NamesNinja
-        nameFormat: name-format-ninja
-      mindRoles:
-      - MindRoleNinja
+    antags:
+    - !type:FixedAntagCount
+      proto: SpaceNinjaRoundstart
+      playerRatio: 1
 
 # Гарантированный 1 вампир для пресета SubNinjaHacker — поверх стандартного Vampire-правила
 - type: entity
@@ -145,26 +103,11 @@
     maxDifficulty: 5
   - type: AntagSelection
     agentName: vampire-round-end-name
-    definitions:
-      - prefRoles: [ Vampire ]
-        min: 1
-        max: 1
-        playerRatio: 1
-        blacklist:
-          components:
-          - AntagImmune
-          - BibleUser
-          - Android
-          - Ipc
-        lateJoinAdditional: true
-        components:
-        - type: NpcFactionMember
-          factions:
-          - Vampire
-        mindRoles:
-        - MindRoleVampire
-        briefing:
-          sound: "/Audio/_Wega/Ambience/Antag/vampare_start.ogg"
+    lateJoinAdditional: true
+    antags:
+    - !type:FixedAntagCount
+      proto: Vampire
+      playerRatio: 1
 
 # Гарантированный 1 предатель для пресета SubNinjaDefender — поверх стандартного Traitor-правила
 - type: entity
@@ -180,19 +123,12 @@
     - groups: TraitorObjectiveGroups
     maxDifficulty: 5
   - type: AntagSelection
-    selectionTime: IntraPlayerSpawn
     agentName: traitor-round-end-agent-name
-    definitions:
-    - prefRoles: [ Traitor ]
-      min: 1
-      max: 1
+    lateJoinAdditional: true
+    antags:
+    - !type:FixedAntagCount
+      proto: Traitor
       playerRatio: 1
-      blacklist:
-        components:
-        - AntagImmune
-      lateJoinAdditional: true
-      mindRoles:
-      - MindRoleTraitor
 
 - type: entity
   parent: BaseGameRule

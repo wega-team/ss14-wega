@@ -49,6 +49,34 @@
   mindRoles:
   - MindRoleNinja
 
+# Corvax-Wega: roundstart ninja variant (SubNinja presets) — picks a player and uses AutoDust instead of the event ghost-role's AutoImplant.
+- type: antagSpecifier
+  parent: RestrictedAntag
+  id: SpaceNinjaRoundstart
+  prefRoles:
+  - SpaceNinja
+  spawnerPrototype: SpawnPointGhostSpaceNinja
+  startingGear: SpaceNinjaGear
+  roleLoadout:
+  - RoleSurvivalSpaceNinja
+  briefing:
+    text: ninja-role-greeting
+    color: Green
+    sound: /Audio/Misc/ninja_greeting.ogg
+  components:
+  - type: SpaceNinja
+  - type: NpcFactionMember
+    factions:
+    - Syndicate
+  - type: AutoDust
+  - type: RandomMetadata
+    nameSegments:
+    - NamesNinjaTitle
+    - NamesNinja
+    nameFormat: name-format-ninja
+  mindRoles:
+  - MindRoleNinja
+
 #Ninja Gear
 - type: startingGear
   id: SpaceNinjaGear
