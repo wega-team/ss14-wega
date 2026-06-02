@@ -261,9 +261,6 @@ public sealed partial class VeilCultSystem : SharedVeilCultSystem
                 }
                 else
                 {
-                    if (HasComp<MindShieldComponent>(target) || HasComp<BibleUserComponent>(target))
-                        continue;
-
                     if (!TryComp<MindContainerComponent>(target, out var mindContainer) || mindContainer.Mind == null)
                         continue;
 
