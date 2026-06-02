@@ -48,8 +48,8 @@
 
 - type: entity
   parent: VeilCultBrassCuirass
-  id: VeilCultBrassCuirassFlash
-  suffix: Flash
+  id: VeilCultBrassCuirassSmoke
+  suffix: Smoke
   components:
   - type: Sprite
     sprite: _Wega/Clothing/OuterClothing/Armor/cuirass.rsi
@@ -59,13 +59,13 @@
       shader: unshaded
       visible: true
   - type: Enchanted
-  - type: FlashEnchant
+  - type: SmokeEnchant
   - type: ActionGrant
     actions:
-    - ActionVeilCultActivateFlash
+    - ActionVeilCultActivateSmoke
   - type: ItemActionGrant
     actions: 
-    - ActionVeilCultActivateFlash
+    - ActionVeilCultActivateSmoke
     activeIfWorn: true
     
 - type: entity

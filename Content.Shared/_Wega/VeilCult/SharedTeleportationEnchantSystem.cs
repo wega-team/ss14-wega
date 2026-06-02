@@ -30,7 +30,10 @@ public abstract partial class SharedTeleportationEnchantSystem : EntitySystem
     private void Teleport(EntityUid user, NetEntity beacon, EntityUid used)
     {
         var doAfterEventArgs = new DoAfterArgs(EntityManager, user, TimeSpan.FromSeconds(4),
-            new VeilCultTeleportDoAfterEvent(beacon), user, used)
+            new VeilCultTeleportDoAfterEvent() { Beacon = beacon },
+            eventTarget: user,
+            used: used
+            )
         {
             BreakOnMove = false,
             BreakOnDamage = true,

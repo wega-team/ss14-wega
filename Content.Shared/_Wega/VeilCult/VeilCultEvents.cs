@@ -70,7 +70,7 @@ public sealed partial class AbsorbEnchantActionEvent : InstantActionEvent
 {
 }
 
-public sealed partial class FlashEnchantActionEvent : InstantActionEvent
+public sealed partial class SmokeEnchantActionEvent : InstantActionEvent
 {
 }
 

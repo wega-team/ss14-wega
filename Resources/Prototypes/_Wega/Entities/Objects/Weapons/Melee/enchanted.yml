@@ -187,4 +187,4 @@
   - type: StunEnchant
     mute: false
     empBorgs: false
-    stunTime: 3
+    stunTime: 2

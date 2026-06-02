@@ -68,7 +68,7 @@ public sealed partial class VeilCultSystem
         SubscribeLocalEvent<EnchantedComponent, ReflectionEnchantActionEvent>(OnActivateReflection);
         SubscribeLocalEvent<EnchantedComponent, CamouflageEnchantActionEvent>(OnActivateCamouflage);
         SubscribeLocalEvent<EnchantedComponent, AbsorbEnchantActionEvent>(OnActivateAbsorb);
-        SubscribeLocalEvent<EnchantedComponent, FlashEnchantActionEvent>(OnActivateFlash);
+        SubscribeLocalEvent<EnchantedComponent, SmokeEnchantActionEvent>(OnActivateSmoke);
         SubscribeLocalEvent<EnchantedComponent, HardenPlatesEnchantActionEvent>(OnActivateHardenPlates);
         SubscribeLocalEvent<EnchantedComponent, NorthStarEnchantActionEvent>(OnActivateNorthStar);
         SubscribeLocalEvent<EnchantedComponent, RedFlameEnchantActionEvent>(OnActivateRedFlame);
@@ -91,7 +91,7 @@ public sealed partial class VeilCultSystem
         SubscribeLocalEvent<TimeStopEnchantComponent, UseInHandEvent>(TimeStopOnUseInHand);
         SubscribeLocalEvent<HidingsClockEnchantComponent, UseInHandEvent>(HidingCloacksOnUseInHand);
 
-        SubscribeLocalEvent<SealWoundsEnchantComponent, AfterInteractEvent>(SealWoundOnUse);
+        SubscribeLocalEvent<SealWoundsEnchantComponent, MeleeHitEvent>(SealWoundOnUse);
 
         SubscribeLocalEvent<EnchantableComponent, EnchantingDoAfterEvent>(EnchantDoAfter);
     }
@@ -209,7 +209,7 @@ public sealed partial class VeilCultSystem
     private void OnActivateCamouflage(EntityUid uid, EnchantedComponent comp, CamouflageEnchantActionEvent args)
     {
         EnsureComp<StealthComponent>(args.Performer, out var stealth);
-        stealth.LastVisibility = 0.2f;
+        stealth.LastVisibility = 0.15f;
         Dirty(args.Performer, stealth);
         Timer.Spawn(TimeSpan.FromSeconds(10), () =>
         {
@@ -221,24 +221,12 @@ public sealed partial class VeilCultSystem
         args.Handled = true;
     }
 
-    private void OnActivateFlash(EntityUid uid, EnchantedComponent comp, FlashEnchantActionEvent args)
+    private void OnActivateSmoke(EntityUid uid, EnchantedComponent comp, SmokeEnchantActionEvent args)
     {
-        var nearbyCultists = _entityLookup.GetEntitiesInRange<VeilCultistComponent>(Transform(uid).Coordinates, 10f);
-        foreach (var cultist in nearbyCultists)
-        {
-            EnsureComp<FlashImmunityComponent>(cultist.Owner);
-            Timer.Spawn(TimeSpan.FromSeconds(1), () => RemComp<FlashImmunityComponent>(cultist.Owner));
-        }
-
-        var nearbyConstruct = _entityLookup.GetEntitiesInRange<VeilCultConstructComponent>(Transform(uid).Coordinates, 10f);
-        foreach (var construct in nearbyConstruct)
-        {
-            EnsureComp<FlashImmunityComponent>(construct.Owner);
-            Timer.Spawn(TimeSpan.FromSeconds(1), () => RemComp<FlashImmunityComponent>(construct.Owner));
-        }
-
-        _flash.FlashArea(args.Performer, args.Performer, 10f, TimeSpan.FromSeconds(3));
-        RemComp<FlashEnchantComponent>(uid);
+        var effect = _random.Prob(0.75f) ? "AdminInstantEffectSmoke3" : "AdminInstantEffectSmoke10";
+        Spawn(effect, Transform(uid).Coordinates);
+        
+        RemComp<SmokeEnchantComponent>(uid);
         RemComp<EnchantedComponent>(uid);
 
         args.Handled = true;
@@ -253,9 +241,9 @@ public sealed partial class VeilCultSystem
             var oldPiercing = armor.Modifiers.Coefficients["Piercing"];
             var oldSlash = armor.Modifiers.Coefficients["Slash"];
             var oldBlunt = armor.Modifiers.Coefficients["Blunt"];
-            armor.Modifiers.Coefficients["Blunt"] = 0.3f;
-            armor.Modifiers.Coefficients["Slash"] = 0.3f;
-            armor.Modifiers.Coefficients["Piercing"] = 0.4f;
+            armor.Modifiers.Coefficients["Blunt"] = 0.5f;
+            armor.Modifiers.Coefficients["Slash"] = 0.5f;
+            armor.Modifiers.Coefficients["Piercing"] = 0.35f;
             armor.Modifiers.Coefficients["Heat"] = 0.4f;
             Timer.Spawn(plate.Time, () =>
             {
@@ -278,7 +266,7 @@ public sealed partial class VeilCultSystem
         {
             var oldRate = weapon.AttackRate;
             weapon.AttackRate = enchant.AttackRate;
-            Timer.Spawn(TimeSpan.FromSeconds(6), () =>
+            Timer.Spawn(TimeSpan.FromSeconds(7), () =>
             {
                 weapon.AttackRate = oldRate;
                 RemComp<EnchantedComponent>(uid);
@@ -293,7 +281,7 @@ public sealed partial class VeilCultSystem
     {
         EnsureComp<RedFlameEnchantComponent>(uid, out var enchant);
         EnsureComp<IgniteOnMeleeHitComponent>(uid, out var flame);
-        flame.FireStacks = 1;
+        flame.FireStacks = 2;
         Timer.Spawn(enchant.Time, () =>
         {
             RemComp<RedFlameEnchantComponent>(uid);
@@ -323,7 +311,7 @@ public sealed partial class VeilCultSystem
         {
             if (wield.Wielded && args.HitEntities != null)
             {
-                args.BonusDamage += new DamageSpecifier { DamageDict = { { "Blunt", 40 } } };
+                args.BonusDamage += new DamageSpecifier { DamageDict = { { "Blunt", 30 } } };
                 foreach (var target in args.HitEntities)
                 {
                     var selectedInjury = _random.Pick(new[] { "OpenFracture", "ClosedFracture" });
@@ -378,15 +366,18 @@ public sealed partial class VeilCultSystem
         {
             foreach (var target in args.HitEntities)
             {
-                if (HasComp<StaminaComponent>(target))
+                if (comp.Knockout)
+                    _stun.TryKnockdown(target, comp.StunTime, true, true, true);
+                else
                     _stun.TryUpdateParalyzeDuration(target, comp.StunTime);
 
                 if (comp.Mute)
                 {
-                    if (HasComp<MutedComponent>(target))
-                        continue;
-                    EnsureComp<MutedComponent>(target);
-                    Timer.Spawn(comp.MuteTime, () => RemComp<MutedComponent>(target));
+                    if (!HasComp<MutedComponent>(target))
+                    {
+                        EnsureComp<MutedComponent>(target);
+                        Timer.Spawn(comp.MuteTime, () => RemComp<MutedComponent>(target));
+                    }
                 }
 
                 if (comp.EmpBorgs && HasComp<BorgChassisComponent>(target) || HasComp<AndroidComponent>(target))
@@ -548,7 +539,7 @@ public sealed partial class VeilCultSystem
         foreach (var cultist in nearbyCultists)
         {
             EnsureComp<PacifiedComponent>(cultist);
-            Timer.Spawn(TimeSpan.FromSeconds(3), () => RemComp<PacifiedComponent>(cultist));
+            Timer.Spawn(TimeSpan.FromSeconds(4), () => RemComp<PacifiedComponent>(cultist));
         }
 
         Spawn("Chronofield", Transform(args.User).Coordinates);
@@ -601,18 +592,23 @@ public sealed partial class VeilCultSystem
         }
     }
 
-    private void SealWoundOnUse(EntityUid uid, SealWoundsEnchantComponent comp, AfterInteractEvent args)
+    private void SealWoundOnUse(EntityUid uid, SealWoundsEnchantComponent comp, MeleeHitEvent args)
     {
-        if (args.Target != null && HasComp<VeilCultistComponent>(args.Target.Value))
+        if (args.HitEntities != null)
         {
-            var damage = new DamageSpecifier { DamageDict = { { "Blunt", -15 }, { "Slash", -15 }, { "Piercing", -20 }, { "Heat", -30 } } };
-            _damage.TryChangeDamage(args.Target.Value, damage, true);
+            foreach (var target in args.HitEntities)
+            {
+                if (!HasComp<VeilCultistComponent>(target))
+                    continue;
+                
+                var damage = new DamageSpecifier { DamageDict = { { "Blunt", -10 }, { "Slash", -10 }, { "Piercing", -15 }, { "Heat", -20 } } };
+                _damage.TryChangeDamage(target, damage, true);
 
-            if (TryComp<BloodstreamComponent>(args.Target.Value, out var bloodstream))
-                _blood.TryModifyBleedAmount((args.Target.Value, bloodstream), -5f);
-
-            RemComp<EnchantedComponent>(args.Used);
-            RemComp<SealWoundsEnchantComponent>(args.Used);
+                if (TryComp<BloodstreamComponent>(target, out var bloodstream))
+                    _blood.TryModifyBleedAmount((target, bloodstream), -5f);
+            }
+            RemComp<EnchantedComponent>(uid);
+            RemComp<SealWoundsEnchantComponent>(uid);
         }
     }
 }
