@@ -15,6 +15,7 @@
   - Nanopast1
   - AndroidBodyPart
   - AndroidEndoskeleton
+  - AiRemoteBrain
   technologyPrerequisites:
   - BasicRobotics
 

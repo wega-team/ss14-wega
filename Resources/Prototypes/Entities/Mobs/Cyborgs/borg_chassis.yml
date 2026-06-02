@@ -31,7 +31,11 @@
     inherentRadioChannels:
     - Common
     - Binary
-  - type: SurgicalSkill # Corvax-Wega-Surgery
+  # Corvax-Wega-Edit-Start
+  - type: SurgicalSkill
+  - type: StationAiVision
+    range: 4
+  # Corvax-Wega-Edit-End
 
 - type: entity
   id: BorgChassisGeneric

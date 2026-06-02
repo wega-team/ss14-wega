@@ -65,17 +65,20 @@ public sealed class MindControlSystem : EntitySystem
         if (!TryComp<ActorComponent>(args.Implanted, out var actor))
             return;
 
+        if (HasComp<MindControlComponent>(args.Implanted))
+            return;
+
         if (!_mind.TryGetMind(ent.Comp.Master, out _, out var masterMind) || masterMind.CharacterName == null)
             return;
 
         EnsureComp<MindControlComponent>(args.Implanted);
+
         _antag.SendBriefing(actor.PlayerSession,
             Loc.GetString(ent.Comp.BriefingText, ("master-name", masterMind.CharacterName)),
             null,
             ent.Comp.BriefingSound);
 
-        _status.TryAddStatusEffectDuration(args.Implanted, SleepingSystem.StatusEffectForcedSleeping, TimeSpan.FromSeconds(2));
-        AssignObjective(args.Implanted);
+        _status.TryAddStatusEffectDuration(args.Implanted, "ForcedSleeping", TimeSpan.FromSeconds(2));
     }
 
     private void OnRemoved(Entity<MindControlImplantComponent> ent, ref ImplantRemovedEvent args)
@@ -96,7 +99,7 @@ public sealed class MindControlSystem : EntitySystem
         if (!TryComp<StaminaComponent>(ent.Owner, out var stamina))
             return;
 
-        _stamina.TakeStaminaDamage(ent.Owner, stamina.CritThreshold, stamina);
+        _stamina.TakeStaminaDamage(ent.Owner, 200f, stamina);
         args.Affected = true;
         args.Disabled = true;
     }
@@ -113,8 +116,6 @@ public sealed class MindControlSystem : EntitySystem
         {
             _mind.TryRemoveObjective(mindId, mind, index);
         }
-
-        _popup.PopupEntity(Loc.GetString("mind-control-user-freed"), uid, uid, PopupType.Medium);
     }
 
     private void AssignObjective(EntityUid uid)

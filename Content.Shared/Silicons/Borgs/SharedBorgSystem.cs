@@ -17,6 +17,11 @@ using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Pointing;
+//Corvax-Wega-AiRemoteControl-Start
+using Content.Shared._Wega.Silicons.Borgs.Components;
+using Content.Shared.Silicons.StationAi;
+using Content.Shared.StationAi;
+//Corvax-Wega-AiRemoteControl-End
 using Content.Shared.Popups;
 using Content.Shared.PowerCell;
 using Content.Shared.PowerCell.Components;
@@ -191,6 +196,15 @@ public abstract partial class SharedBorgSystem : EntitySystem
         {
             _mind.TransferTo(mindId, args.Entity, mind: mind);
         }
+
+        // Corvax-Wega-AiRemoteControl-Start
+        if (HasComp<AiRemoteBrainComponent>(args.Entity))
+        {
+            var uid = chassis.Owner;
+            RemComp<AiRemoteControllerComponent>(uid);
+            RemComp<StationAiVisionComponent>(uid);
+        }
+        // Corvax-Wega-AiRemoteControl-End
     }
 
     private void OnMindAdded(Entity<BorgChassisComponent> chassis, ref MindAddedMessage args)
@@ -226,6 +240,7 @@ public abstract partial class SharedBorgSystem : EntitySystem
         var used = args.Used;
         TryComp<BorgBrainComponent>(used, out var brain);
         TryComp<BorgModuleComponent>(used, out var module);
+        TryComp<AiRemoteBrainComponent>(used, out var aiBrain); // Corvax-Wega-AiRemoteControl
 
         if (TryComp<WiresPanelComponent>(chassis, out var panel) && !panel.Open)
         {
@@ -260,6 +275,16 @@ public abstract partial class SharedBorgSystem : EntitySystem
                 $"{args.User} installed module {used} into borg {chassis.Owner}");
             args.Handled = true;
         }
+
+        // Corvax-Wega-AiRemoteControl-Start
+        if (chassis.Comp.BrainEntity == null && aiBrain != null &&
+            _whitelist.IsWhitelistPassOrNull(chassis.Comp.BrainWhitelist, used))
+        {
+            var uid = chassis.Owner;
+            AddComp<AiRemoteControllerComponent>(uid);
+            _container.Insert(used, chassis.Comp.BrainContainer);
+        }
+        // Corvax-Wega-AiRemoteControl-End
     }
 
     // Make the borg slower without power.

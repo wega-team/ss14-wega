@@ -6,6 +6,7 @@ using Content.Shared.Silicons.Laws.Components;
 using Content.Shared.Stunnable;
 using Content.Shared.Wires;
 using Robust.Shared.Audio;
+using Content.Shared._Wega.Silicons.Borgs.Components; //Corvax-Wega-Edit
 
 namespace Content.Shared.Silicons.Laws;
 
@@ -34,6 +35,11 @@ public abstract partial class SharedSiliconLawSystem : EntitySystem
         if (_emag.CheckFlag(uid, EmagType.Interaction))
             return;
 
+        // Corvax-Wega-AiRemoteControl-Start
+        if (HasComp<AiRemoteControllerComponent>(uid))
+            return;
+        // Corvax-Wega-AiRemoteControl-End
+
         // prevent self-emagging
         if (uid == args.UserUid)
         {
@@ -55,7 +61,7 @@ public abstract partial class SharedSiliconLawSystem : EntitySystem
         component.OwnerName = Name(args.UserUid);
 
         NotifyLawsChanged(uid, component.EmaggedSound);
-        if(_mind.TryGetMind(uid, out var mindId, out _))
+        if (_mind.TryGetMind(uid, out var mindId, out _))
             EnsureSubvertedSiliconRole(mindId);
 
         _stunSystem.TryUpdateParalyzeDuration(uid, component.StunTime);

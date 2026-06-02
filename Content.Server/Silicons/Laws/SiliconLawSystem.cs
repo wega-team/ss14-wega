@@ -7,6 +7,11 @@ using Content.Shared.Chat;
 using Content.Shared.Emag.Systems;
 using Content.Shared.GameTicking;
 using Content.Shared.Mind;
+// Corvax-Wega-Edit-Start
+using Content.Shared._Wega.Silicons.Borgs.Components;
+using Content.Shared.Silicons.StationAi;
+using Content.Shared.Tag;
+// Corvax-Wega-Edit-End
 using Content.Shared.Mind.Components;
 using Content.Shared.Overlays;
 using Content.Shared.Radio.Components;
@@ -33,6 +38,7 @@ public sealed class SiliconLawSystem : SharedSiliconLawSystem
     [Dependency] private readonly StationSystem _station = default!;
     [Dependency] private readonly UserInterfaceSystem _userInterface = default!;
     [Dependency] private readonly EmagSystem _emag = default!;
+    [Dependency] private readonly TagSystem _tagSystem = default!; // Corvax-Wega-AiRemoteControl
 
     private static readonly ProtoId<SiliconLawsetPrototype> DefaultCrewLawset = "Crewsimov";
 
@@ -63,6 +69,11 @@ public sealed class SiliconLawSystem : SharedSiliconLawSystem
     {
         if (!TryComp<ActorComponent>(uid, out var actor))
             return;
+
+        // Corvax-Wega-AiRemoteControl-Start
+        if (HasComp<AiRemoteControllerComponent>(uid) || _tagSystem.HasTag(uid, "StationAi")) // skip a law's notification for remotable and AI
+            return;
+        // Corvax-Wega-AiRemoteControl-End
 
         var msg = Loc.GetString("laws-notify");
         var wrappedMessage = Loc.GetString("chat-manager-server-wrap-message", ("message", msg));
@@ -140,6 +151,12 @@ public sealed class SiliconLawSystem : SharedSiliconLawSystem
 
             // gotta tell player to check their laws
             NotifyLawsChanged(uid, component.LawUploadSound);
+
+            // Corvax-Wega-AiRemoteControl-Start
+            if (HasComp<AiRemoteControllerComponent>(uid)) // You can't emag controllable entities
+                return;
+            // Corvax-Wega-AiRemoteControl-End
+
 
             // Show the silicon has been subverted.
             component.Subverted = true;
@@ -302,18 +319,52 @@ public sealed class SiliconLawSystem : SharedSiliconLawSystem
 
         var lawset = provider.Lawset ?? GetLawset(provider.Laws);
 
+        // Corvax-Wega-AiRemoteControl-Start
+        if (lawset == null)
+        {
+            Log.Error($"Lawset is null in OnUpdaterInsert for entity {args.Entity}");
+            return;
+        }
+        // Corvax-Wega-AiRemoteControl-End
+
         var query = EntityManager.CompRegistryQueryEnumerator(ent.Comp.Components);
 
         while (query.MoveNext(out var update))
         {
+
+            // Corvax-Wega-AiRemoteControl-Start
+            if (TryComp<StationAiHeldComponent>(update, out var stationAiHeldComp) && 
+            stationAiHeldComp.CurrentConnectedEntity is { } connectedEntity && 
+            HasComp<SiliconLawProviderComponent>(connectedEntity))
+            {
+            if (lawset != null)
+            SetLaws(lawset.Laws, connectedEntity, provider.LawUploadSound);
+            }
+            // Corvax-Wega-AiRemoteControl-End
+
             if (TryComp<ShowCrewIconsComponent>(update, out var crewIconComp))
             {
                 crewIconComp.UncertainCrewBorder = DefaultCrewLawset != provider.Laws;
                 Dirty(update, crewIconComp);
             }
-            SetLaws(lawset.Laws, update, provider.LawUploadSound);
+
+            if (lawset != null)
+                SetLaws(lawset.Laws, update, provider.LawUploadSound);
         }
     }
+
+    // Corvax-Wega-AiRemoteControl-Start
+    public void SetLawsSilent(List<SiliconLaw> newLaws, EntityUid target, SoundSpecifier? cue = null)
+    {
+        if (!TryComp<SiliconLawProviderComponent>(target, out var component))
+            return;
+
+        if (component.Lawset == null)
+            component.Lawset = new SiliconLawset();
+
+        component.Lawset.Laws = newLaws;
+    }
+    // Corvax-Wega-AiRemoteControl-End
 }
 
 [ToolshedCommand, AdminCommand(AdminFlags.Admin)]
