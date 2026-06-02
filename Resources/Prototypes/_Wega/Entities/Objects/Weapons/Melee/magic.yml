@@ -78,7 +78,6 @@
           Quantity: 4
         maxVol: 4
   - type: SolutionRegeneration
-    solution: Welder
     generated:
       reagents:
       - ReagentId: WeldingFuel

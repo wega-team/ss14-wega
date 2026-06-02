@@ -501,8 +501,8 @@
     oreChance: 1
     oreRarityPrototypeId: RandomOreDistributionCore
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: Rock
+  - type: Injurable
   - type: Destructible
     thresholds:
     - trigger:
