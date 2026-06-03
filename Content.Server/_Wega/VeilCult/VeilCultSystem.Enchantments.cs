@@ -130,6 +130,8 @@ public sealed partial class VeilCultSystem
         EnsureComp<MeleeThrowOnHitComponent>(uid, out var throwOnHit);
         throwOnHit.Speed = kb.Speed;
         throwOnHit.Distance = kb.Distance;
+        if (TryComp<StaminaDamageOnHitComponent>(uid, out var stam))
+            stam.Damage *= 2.5f;
 
         args.Handled = true;
     }
@@ -310,6 +312,8 @@ public sealed partial class VeilCultSystem
             RemComp<KnockbackEnchantComponent>(uid);
             RemComp<MeleeThrowOnHitComponent>(uid);
             RemComp<EnchantedComponent>(uid);
+            if (TryComp<StaminaDamageOnHitComponent>(uid, out var stam))
+                stam.Damage /= 2.5f;
         }
     }
 

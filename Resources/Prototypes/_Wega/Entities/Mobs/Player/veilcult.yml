@@ -104,6 +104,12 @@
   - type: MovementSpeedModifier
     baseWalkSpeed : 2.5
     baseSprintSpeed : 5
+  - type: MeleeWeapon
+    damage:
+      types:
+        Piercing: 5
+  - type: StaminaDamageOnHit
+    damage: 15
   - type: Damageable
     damageModifierSet: Metallic
   - type: Injurable
