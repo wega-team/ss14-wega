@@ -176,11 +176,7 @@ public sealed partial class NinjaSuitSystem : SharedNinjaSuitSystem
         else if (choices[0] == 1)
             _actions.AddAction(user, ref comp.ChainKunaiActionEntity,        comp.ChainKunaiAction,        suitUid);
         else if (choices[0] == 2)
-        {
-            // Throwing star action lives on ItemCreatorComponent; grant the pre-existing action entity
-            if (TryComp<ItemCreatorComponent>(suitUid, out var creator) && creator.ActionEntity.HasValue)
-                _actions.AddActionDirect(user, creator.ActionEntity.Value);
-        }
+            _actions.AddAction(user, ref comp.ShurikenActionEntity, comp.ShurikenAction, suitUid);
 
         // Row 1: Phase Cloak (0), Healing Cocktail (1), or Adrenaline Burst (2)
         if (choices[1] == 0)

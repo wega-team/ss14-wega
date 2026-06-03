@@ -156,6 +156,15 @@ public sealed partial class NinjaSuitComponent : Component
     [DataField, AutoNetworkedField]
     public EntityUid? CaltropActionEntity;
 
+    /// <summary>
+    /// The action id for firing a burst of shurikens at a target location.
+    /// </summary>
+    [DataField]
+    public EntProtoId ShurikenAction = "ActionNinjaShuriken";
+
+    [DataField, AutoNetworkedField]
+    public EntityUid? ShurikenActionEntity;
+
 
     // TODO: EmpOnTrigger bruh
     /// <summary>
@@ -200,3 +209,5 @@ public sealed partial class NinjaEnergyNetEvent : WorldTargetActionEvent;
 public sealed partial class NinjaGetChameleonScannerEvent : InstantActionEvent;
 
 public sealed partial class NinjaCaltropEvent : InstantActionEvent;
+
+public sealed partial class NinjaShurikenThrowEvent : WorldTargetActionEvent;

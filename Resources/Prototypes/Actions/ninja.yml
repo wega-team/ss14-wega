@@ -129,6 +129,26 @@
 
 - type: entity
   parent: BaseAction
+  id: ActionNinjaShuriken
+  name: Shuriken Volley
+  description: "Fire a volley of 3 shurikens toward a chosen spot. Each deals 5 shock and 15 stamina damage and flies through windows. Costs 30 charge. Cooldown: 4 seconds."
+  components:
+  - type: Action
+    useDelay: 4
+    icon:
+      sprite: _Wega/Actions/ninja.rsi
+      state: shuriken
+    itemIconStyle: NoItem
+    priority: -13
+  - type: TargetAction
+    checkCanAccess: false
+    range: 0
+  - type: WorldTargetAction
+    event: !type:NinjaShurikenThrowEvent {}
+  - type: NinjaAbilityBackground
+
+- type: entity
+  parent: BaseAction
   id: ActionNinjaEnergyClones
   name: Energy Clones
   description: "Expend suit power to summon two energy duplicates that hunt down enemies, prioritizing mind-shielded targets. Clones have 50 HP, deal 25 damage and last 20 seconds. Cost: 300 charge. Cooldown: 25 seconds."

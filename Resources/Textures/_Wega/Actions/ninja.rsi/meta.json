@@ -168,6 +168,17 @@
             "name": "ninja_sleeper_open"
         },
         {
+            "name": "shuriken_projectile",
+            "delays": [
+                [
+                    0.025,
+                    0.025,
+                    0.025,
+                    0.025
+                ]
+            ]
+        },
+        {
             "name": "arrows_0",
             "delays": [
                 [

@@ -135,18 +135,19 @@
 
 ## ── Shuriken Launcher ───────────────────────────────────────────────────────
 
-# Projectile fired by the shuriken launcher — spins and embeds on impact.
+# Shared shuriken projectile — fired both by the ninja's Shuriken ability and the borg launcher.
+# Spins (animated), passes through glass/grilles (only collides with Opaque), embeds on impact.
 - type: entity
-  id: NinjaBorgShurikenProjectile
+  id: NinjaShurikenProjectile
   parent: BaseBullet
-  name: borg shuriken
+  name: shuriken
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    noRot: false
-    sprite: Objects/Weapons/Throwable/throwing_star.rsi
+    noRot: true
+    sprite: _Wega/Actions/ninja.rsi
     layers:
-    - state: icon
+    - state: shuriken_projectile
       shader: unshaded
   - type: Fixtures
     fixtures:
@@ -160,7 +161,7 @@
   - type: Projectile
     damage:
       types:
-        Heat: 5
+        Shock: 5
     soundHit:
       path: /Audio/Weapons/star_hit.ogg
   - type: EmbeddableProjectile
@@ -186,7 +187,7 @@
   - type: StaminaDamageOnEmbed
     damage: 8
 
-# Hand-held shuriken launcher — fires NinjaBorgShurikenProjectile in bursts, recharges automatically.
+# Hand-held shuriken launcher — fires NinjaShurikenProjectile in bursts, recharges automatically.
 - type: entity
   id: WeaponNinjaBorgShurikenLauncher
   parent: BaseItem
@@ -218,7 +219,7 @@
     soundGunshot:
       path: /Audio/Weapons/star_hit.ogg
   - type: BasicEntityAmmoProvider
-    proto: NinjaBorgShurikenProjectile
+    proto: NinjaShurikenProjectile
     capacity: 9
     count: 9
   - type: RechargeBasicEntityAmmo
