@@ -131,10 +131,10 @@
   parent: BaseAction
   id: ActionNinjaShuriken
   name: Shuriken Volley
-  description: "Fire a volley of 3 shurikens toward a chosen spot. Each deals 5 shock and 15 stamina damage and flies through windows. Costs 30 charge. Cooldown: 4 seconds."
+  description: "Fire a volley of 3 shurikens toward a chosen spot. Each deals 5 shock and 15 stamina damage and flies through windows. Costs 30 charge. Cooldown: 1.5 seconds."
   components:
   - type: Action
-    useDelay: 4
+    useDelay: 1.5
     icon:
       sprite: _Wega/Actions/ninja.rsi
       state: shuriken
