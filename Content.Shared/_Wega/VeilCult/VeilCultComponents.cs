@@ -190,6 +190,9 @@ public sealed partial class ConfusionEnchantComponent : Component
 public sealed partial class CrusherEnchantComponent : Component;
 
 [RegisterComponent, NetworkedComponent]
+public sealed partial class DismantlingEnchantComponent : Component;
+
+[RegisterComponent, NetworkedComponent]
 public sealed partial class KnockbackEnchantComponent : Component
 {
     [DataField]

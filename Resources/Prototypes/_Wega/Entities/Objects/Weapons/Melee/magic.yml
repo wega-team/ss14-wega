@@ -695,6 +695,7 @@
     enchants:
     - WeaponClockHammerKnockback
     - WeaponClockHammerCrusher
+    - WeaponClockHammerDismantling
 
 - type: entity
   parent: BaseEnchantable

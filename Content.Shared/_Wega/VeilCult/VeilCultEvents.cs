@@ -38,6 +38,10 @@ public sealed partial class CrusherEnchantActionEvent : InstantActionEvent
 {
 }
 
+public sealed partial class DismantlingEnchantActionEvent : InstantActionEvent
+{
+}
+
 public sealed partial class ConfusionEnchantActionEvent : InstantActionEvent
 {
 }

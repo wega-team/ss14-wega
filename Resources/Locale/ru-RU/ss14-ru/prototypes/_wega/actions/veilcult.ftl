@@ -26,3 +26,5 @@ ent-ActionVeilCultActivateKnockback = Активировать Зачарова�
     .desc = Активирует зачарование "Отдача".
 ent-ActionVeilCultActivateConfusion = Активировать Зачарование
     .desc = Активирует зачарование "Запутанность".
+ent-ActionVeilCultActivateDismantling = Активировать Зачарование
+    .desc = Активирует зачарование "Демонтаж".

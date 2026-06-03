@@ -62,6 +62,7 @@ public sealed partial class VeilCultSystem
         SubscribeLocalEvent<EnchantedComponent, CrusherEnchantActionEvent>(OnActivateCrusher);
         SubscribeLocalEvent<EnchantedComponent, ConfusionEnchantActionEvent>(OnActivateConfusion);
         SubscribeLocalEvent<EnchantedComponent, KnockbackEnchantActionEvent>(OnActivateKnockback);
+        SubscribeLocalEvent<EnchantedComponent, DismantlingEnchantActionEvent>(OnActivateDismantling);
         SubscribeLocalEvent<EnchantedComponent, SwordsmenEnchantActionEvent>(OnActivateSwordsmen);
         SubscribeLocalEvent<EnchantedComponent, BloodshedEnchantActionEvent>(OnActivateBloodShed);
         SubscribeLocalEvent<EnchantedComponent, HasteEnchantActionEvent>(OnActivateHaste);
@@ -75,6 +76,7 @@ public sealed partial class VeilCultSystem
 
         // Enchants
         SubscribeLocalEvent<CrusherEnchantComponent, MeleeHitEvent>(CrusherOnMeleeHit);
+        SubscribeLocalEvent<DismantlingEnchantComponent, MeleeHitEvent>(DismantlingOnMeleeHit);
         SubscribeLocalEvent<ConfusionEnchantComponent, MeleeHitEvent>(ConfusionOnMeleeHit);
         SubscribeLocalEvent<KnockbackEnchantComponent, MeleeHitEvent>(KnockbackOnMeleeHit);
         SubscribeLocalEvent<StunEnchantComponent, MeleeHitEvent>(StunOnMeleeHit);
@@ -113,6 +115,12 @@ public sealed partial class VeilCultSystem
     private void OnActivateCrusher(EntityUid uid, EnchantedComponent comp, CrusherEnchantActionEvent args)
     {
         EnsureComp<CrusherEnchantComponent>(uid);
+        args.Handled = true;
+    }
+
+    private void OnActivateDismantling(EntityUid uid, EnchantedComponent comp, DismantlingEnchantActionEvent args)
+    {
+        EnsureComp<DismantlingEnchantComponent>(uid);
         args.Handled = true;
     }
 
@@ -317,11 +325,23 @@ public sealed partial class VeilCultSystem
                     var selectedInjury = _random.Pick(new[] { "OpenFracture", "ClosedFracture" });
                     _surgery.TryAddInternalDamage(target, selectedInjury);
                 }
+                RemComp<CrusherEnchantComponent>(uid);
+                RemComp<EnchantedComponent>(uid);
             }
         }
-
-        RemComp<CrusherEnchantComponent>(uid);
-        RemComp<EnchantedComponent>(uid);
+    }
+    
+    private void DismantlingOnMeleeHit(EntityUid uid, DismantlingEnchantComponent comp, MeleeHitEvent args)
+    {
+        if (TryComp<WieldableComponent>(uid, out var wield))
+        {
+            if (wield.Wielded && args.HitEntities != null)
+            {
+                args.BonusDamage += new DamageSpecifier { DamageDict = { { "Structural", 800 } } };
+                RemComp<DismantlingEnchantComponent>(uid);
+                RemComp<EnchantedComponent>(uid);
+            }
+        }
     }
 
     private void ConfusionOnMeleeHit(EntityUid uid, ConfusionEnchantComponent comp, MeleeHitEvent args)
