@@ -58,6 +58,7 @@ public sealed partial class NinjaChameleonSystem : EntitySystem
     [Dependency] private VocalSystem                   _vocal             = default!;
     [Dependency] private SharedTypingIndicatorSystem   _typingIndicator   = default!;
     [Dependency] private SharedJobStatusSystem          _jobStatus         = default!;
+    [Dependency] private SpiderOSSystem                 _spiderOS          = default!;
 
     public override void Initialize()
     {
@@ -367,6 +368,13 @@ public sealed partial class NinjaChameleonSystem : EntitySystem
 
         CleanupDisguise(suitUid, chameleon, ninja);
         RemoveClothingDisguise(chameleon, ninja);
+
+        // RemoveClothingDisguise restores the ninja's own repainted items to their BASE prototype,
+        // which discards the custom appearance (color/style) the player chose via SpiderOS. Re-apply
+        // those styles so exiting a disguise keeps the look the ninja set up, instead of reverting to
+        // the roundstart green/default. (Matches what re-opening SpiderOS would do.)
+        if (TryComp<SpiderOSComponent>(suitUid, out var spiderOs))
+            _spiderOS.ApplyStyles(ninja, spiderOs);
 
         // Stop showing the target's inventory in the strip menu.
         RemCompDeferred<NinjaChameleonVisualComponent>(ninja);
