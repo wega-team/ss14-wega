@@ -2,7 +2,6 @@ using Content.Server.Chat.Systems;
 using Content.Server.Objectives.Systems;
 using Content.Shared._Wega.Ninja;
 using Content.Shared.Chat;
-using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Forensics.Components;
@@ -518,10 +517,10 @@ public sealed partial class NinjaBloodScanMachineSystem : EntitySystem
         dna       = null;
         donorName = string.Empty;
 
-        if (!TryComp<SolutionManagerComponent>(container, out var solutionMgr))
-            return false;
-
-        foreach (var (_, solutionEnt) in _solutionContainer.EnumerateSolutions((container, solutionMgr)))
+        // Enumerate all solutions, including the entity's own SolutionComponent. Vials (test tubes)
+        // store their contents as a bare SolutionComponent rather than via a SolutionManager, so we
+        // must not require a SolutionManagerComponent here.
+        foreach (var (_, solutionEnt) in _solutionContainer.EnumerateSolutions(container))
         {
             var solution = solutionEnt.Comp.Solution;
 
