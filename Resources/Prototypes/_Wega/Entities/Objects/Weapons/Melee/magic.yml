@@ -601,7 +601,7 @@
     attackRate: 1
     damage:
       types:
-        Slash: 17
+        Slash: 20
     soundHit:
         path: /Audio/Weapons/bladeslice.ogg
   - type: DisarmMalus
@@ -757,7 +757,7 @@
     # resistanceBypassPercentage: 0.4 # for future
     damage:
       types:
-        Piercing: 35
+        Piercing: 50
   - type: IncreaseDamageOnWield
     damage:
       types:
