@@ -1,11 +1,13 @@
 using Content.Client.Power.EntitySystems;
 using Content.Client.Resources;
+using Content.Client.UserInterface.Systems.Hotbar.Widgets;
 using Content.Shared.Ninja.Components;
 using Content.Shared.PowerCell;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Client.ResourceManagement;
+using Robust.Client.UserInterface;
 using Robust.Shared.Enums;
 using Robust.Shared.IoC;
 using Robust.Shared.Timing;
@@ -20,6 +22,7 @@ public sealed partial class NinjaEnergyDisplayOverlay : Overlay
     [Dependency] private IPlayerManager _player = default!;
     [Dependency] private IGameTiming _gameTiming = default!;
     [Dependency] private IResourceCache _resourceCache = default!;
+    [Dependency] private IUserInterfaceManager _uiManager = default!;
 
     private readonly SpriteSystem _sprite;
 
@@ -28,6 +31,8 @@ public sealed partial class NinjaEnergyDisplayOverlay : Overlay
     private const string RsiPath = "/Textures/_Wega/Interface/display_ninja";
     private const float DisplaySize = 130f;
     private const float WarningThreshold = 0.15f;
+    // Gap kept between the display's bottom and the top of the hands hotbar.
+    private const float HotbarMargin = 8f;
 
     private readonly Font _font;
 
@@ -73,10 +78,11 @@ public sealed partial class NinjaEnergyDisplayOverlay : Overlay
         var handle = args.ScreenHandle;
         var bounds = args.ViewportBounds;
         var cx = ((float) bounds.Left + (float) bounds.Right) / 2f;
-        var cy = ((float) bounds.Top + (float) bounds.Bottom) / 2f;
 
         var x = cx - DisplaySize / 2f;
-        var y = cy - DisplaySize / 2f + 400f;
+        // Anchor the display just above the hands hotbar so it is never covered by it,
+        // regardless of window size / UI scale.
+        var y = GetHotbarTop((float) bounds.Bottom) - DisplaySize - HotbarMargin;
 
         handle.DrawTextureRect(texture, UIBox2.FromDimensions(x, y, DisplaySize, DisplaySize), Color.White);
 
@@ -89,5 +95,17 @@ public sealed partial class NinjaEnergyDisplayOverlay : Overlay
             new Vector2(x + (DisplaySize - textWidth) / 2f, y + DisplaySize * 0.63f),
             chargeStr,
             Color.White);
+    }
+
+    /// <summary>
+    /// Returns the physical-pixel Y of the top of the hands hotbar, so HUD elements can be placed
+    /// above it. Falls back to the given screen bottom when the hotbar isn't present.
+    /// </summary>
+    private float GetHotbarTop(float fallbackBottom)
+    {
+        var hotbar = _uiManager.GetActiveUIWidgetOrNull<HotbarGui>();
+        if (hotbar?.HandContainer is { } hands && hands.VisibleInTree)
+            return hands.GlobalPixelPosition.Y;
+        return fallbackBottom;
     }
 }

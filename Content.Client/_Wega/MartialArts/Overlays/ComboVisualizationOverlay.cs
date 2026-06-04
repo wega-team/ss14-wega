@@ -1,8 +1,10 @@
+using Content.Client.UserInterface.Systems.Hotbar.Widgets;
 using Content.Shared.CombatMode;
 using Content.Shared.Martial.Arts.Components;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Client.ResourceManagement;
+using Robust.Client.UserInterface;
 using Robust.Shared.Enums;
 using Robust.Shared.Graphics.RSI;
 using Robust.Shared.Utility;
@@ -15,6 +17,7 @@ public sealed partial class ComboVisualizationOverlay : Overlay
     [Dependency] private IEntityManager _entMan        = default!;
     [Dependency] private IPlayerManager _player        = default!;
     [Dependency] private IResourceCache _resourceCache = default!;
+    [Dependency] private IUserInterfaceManager _uiManager = default!;
 
     public override OverlaySpace Space => OverlaySpace.ScreenSpace;
 
@@ -45,12 +48,16 @@ public sealed partial class ComboVisualizationOverlay : Overlay
         var right  = (float) args.ViewportBounds.Right;
         var bottom = (float) args.ViewportBounds.Bottom;
 
+        // Anchor above the hands hotbar so the icons are never covered by it,
+        // regardless of window size / UI scale.
+        var hotbarTop = GetHotbarTop(bottom);
+        var intentY = hotbarTop - IconSize - MarginBottom;
+
         // Intent icon — always visible
         var intentState = GetIntentState(localEnt.Value);
         if (rsi.TryGetState(intentState, out var intentRsiState))
         {
             var intentX = right - IconSize - MarginRight;
-            var intentY = bottom - IconSize - MarginBottom;
             handle.DrawTextureRect(intentRsiState.Frame0,
                 UIBox2.FromDimensions(intentX, intentY, IconSize, IconSize),
                 Color.White.WithAlpha(0.9f));
@@ -63,7 +70,7 @@ public sealed partial class ComboVisualizationOverlay : Overlay
 
         var total  = comp.Icons.Count * IconSize + (comp.Icons.Count - 1) * IconGap;
         var startX = right  - total  - MarginRight;
-        var iconY  = bottom - IconSize - MarginBottom - IconSize - IconGap;
+        var iconY  = intentY - IconSize - IconGap;
 
         for (var i = 0; i < comp.Icons.Count; i++)
         {
@@ -76,6 +83,18 @@ public sealed partial class ComboVisualizationOverlay : Overlay
                 UIBox2.FromDimensions(x, iconY, IconSize, IconSize),
                 Color.White.WithAlpha(0.9f));
         }
+    }
+
+    /// <summary>
+    /// Returns the physical-pixel Y of the top of the hands hotbar, so HUD elements can be placed
+    /// above it. Falls back to the given screen bottom when the hotbar isn't present.
+    /// </summary>
+    private float GetHotbarTop(float fallbackBottom)
+    {
+        var hotbar = _uiManager.GetActiveUIWidgetOrNull<HotbarGui>();
+        if (hotbar?.HandContainer is { } hands && hands.VisibleInTree)
+            return hands.GlobalPixelPosition.Y;
+        return fallbackBottom;
     }
 
     private string GetIntentState(EntityUid uid)
