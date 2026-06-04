@@ -167,6 +167,9 @@
     - 0,0,0,3
     heldPrefix: green
   - type: EnergyKatana
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Wega/Effects/katana-unsheath.ogg
   - type: LimitedCharges
     maxCharges: 3
   - type: AutoRecharge
