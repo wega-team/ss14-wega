@@ -202,7 +202,7 @@
       borg_module:
       - BorgModuleMedicalRare
       - BorgModuleSurgery
-      - BorgModuleDisabler
+      - BorgModuleCommonFight
       - BorgModuleNinjaThermal
       - BorgModuleNinjaChameleon
       - BorgModuleNinjaJetpack
