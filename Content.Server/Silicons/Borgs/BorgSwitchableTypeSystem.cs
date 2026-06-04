@@ -24,21 +24,25 @@ public sealed class BorgSwitchableTypeSystem : SharedBorgSwitchableTypeSystem
         // Assign radio channels
         string[] radioChannels = [.. ent.Comp.InherentRadioChannels, .. prototype.RadioChannels];
         if (TryComp(ent, out IntrinsicRadioTransmitterComponent? transmitter))
+        {
             transmitter.Channels = [.. radioChannels];
+        }
 
         if (TryComp(ent, out ActiveRadioComponent? activeRadio))
+        {
             activeRadio.Channels = [.. radioChannels];
+        }
 
         // Corvax-Wega-AiRemoteControl-Start
         if (TryComp(ent, out AiRemoteControllerComponent? aiRemoteComp))
         {
-            if (TryComp(aiRemoteComp.AiHolder, out IntrinsicRadioTransmitterComponent? stationAiTransmitter) && transmitter != null)
+            if (aiRemoteComp.AiHolder != null && TryComp(aiRemoteComp.AiHolder.Value, out IntrinsicRadioTransmitterComponent? stationAiTransmitter) && transmitter != null)
             {
                 aiRemoteComp.PreviouslyTransmitterChannels = [.. radioChannels];
                 transmitter.Channels = [.. stationAiTransmitter.Channels];
             }
 
-            if (TryComp(aiRemoteComp.AiHolder, out ActiveRadioComponent? stationAiActiveRadio) && activeRadio != null)
+            if (aiRemoteComp.AiHolder != null && TryComp(aiRemoteComp.AiHolder.Value, out ActiveRadioComponent? stationAiActiveRadio) && activeRadio != null)
             {
                 aiRemoteComp.PreviouslyActiveRadioChannels = [.. radioChannels];
                 activeRadio.Channels = [.. stationAiActiveRadio.Channels];

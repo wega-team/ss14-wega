@@ -45,7 +45,7 @@ namespace Content.Server._Wega.Silicons.Borgs
             entity.Comp.BackToAiActionEntity = backAction;
 
             EntityUid? openMenuAction = null;
-            _actions.AddAction(entity.Owner, ref openMenuAction, "ActionOpenRemoteDevicesMenu");
+            _actions.AddAction(entity.Owner, ref openMenuAction, entity.Comp.OpenRemoteDevicesMenuAction);
             entity.Comp.OpenRemoteDevicesMenuActionEntity = openMenuAction;
         }
         private void OnShutdown(Entity<AiRemoteControllerComponent> entity, ref ComponentShutdown args)
@@ -116,7 +116,7 @@ namespace Content.Server._Wega.Silicons.Borgs
 
             _mind.ControlMob(ai, entity);
             EntityUid? backAction = null;
-            _actions.AddAction(entity, ref backAction, "ActionBackToAi");
+            _actions.AddAction(entity, ref backAction, aiRemoteComp.BackToAiAction);
             aiRemoteComp.BackToAiActionEntity = backAction;
             aiRemoteComp.AiHolder = ai;
             aiRemoteComp.LinkedMind = mindId;

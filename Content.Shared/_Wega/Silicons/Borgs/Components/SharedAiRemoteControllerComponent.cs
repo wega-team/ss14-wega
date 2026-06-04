@@ -13,6 +13,7 @@ namespace Content.Shared._Wega.Silicons.Borgs.Components
         [DataField] public string[]? PreviouslyActiveRadioChannels;
 
         [DataField] public EntProtoId BackToAiAction = "ActionBackToAi";
+        [DataField] public EntProtoId OpenRemoteDevicesMenuAction = "ActionOpenRemoteDevicesMenu";
         [DataField] public EntityUid? BackToAiActionEntity;
         [DataField] public EntityUid? OpenRemoteDevicesMenuActionEntity;
 

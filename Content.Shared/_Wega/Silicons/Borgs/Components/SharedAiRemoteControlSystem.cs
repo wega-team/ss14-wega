@@ -23,12 +23,6 @@ namespace Content.Shared._Wega.Silicons.Borgs
             if (!TryComp<AiRemoteControllerComponent>(entity, out var remoteComp))
                 return;
 
-            if (remoteComp.BackToAiActionEntity != null)
-            {
-                _actions.RemoveAction(entity, remoteComp.BackToAiActionEntity);
-                remoteComp.BackToAiActionEntity = null;
-            }
-
             if (remoteComp.AiHolder == null || Deleted(remoteComp.AiHolder.Value))
                 return;
 
@@ -44,6 +38,9 @@ namespace Content.Shared._Wega.Silicons.Borgs
             stationAiHeldComp.CurrentConnectedEntity = null;
             _mind.TransferTo(remoteComp.LinkedMind.Value, remoteComp.AiHolder);
             _stationAiSystem.SwitchRemoteEntityMode(stationAiCore, true);
+
+            if (_actions == null)
+                return;
 
             if (remoteComp.BackToAiActionEntity != null)
             {
