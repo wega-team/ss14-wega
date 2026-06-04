@@ -12,10 +12,12 @@ using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
 using Content.Shared.Ninja.Components;
 using Content.Shared.Popups;
+using Content.Shared.Tag;
 using Content.Shared.Vampire.Components;
 using Robust.Server.Containers;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
 namespace Content.Server.Ninja.Systems;
@@ -47,6 +49,10 @@ public sealed partial class NinjaBloodScanMachineSystem : EntitySystem
     [Dependency] private SharedPopupSystem       _popup            = default!;
     [Dependency] private SharedSolutionContainerSystem _solutionContainer = default!;
     [Dependency] private UserInterfaceSystem     _ui               = default!;
+    [Dependency] private TagSystem               _tag              = default!;
+
+    // Only vials (test tubes) may be inserted — they uniquely carry this tag.
+    private static readonly ProtoId<TagPrototype> VialTag = "CentrifugeCompatible";
 
     // Timings that match SS13 original (see ninja_bloodscan_machine.dm)
     private static readonly TimeSpan ActivationDelay  = TimeSpan.FromSeconds(3); // ACTIVATION → LOADING
@@ -121,7 +127,7 @@ public sealed partial class NinjaBloodScanMachineSystem : EntitySystem
         if (args.Handled)
             return;
 
-        if (!HasComp<SolutionManagerComponent>(args.Used))
+        if (!_tag.HasTag(args.Used, VialTag))
             return;
 
         args.Handled = true;
@@ -176,7 +182,7 @@ public sealed partial class NinjaBloodScanMachineSystem : EntitySystem
             if (!_hands.TryGetActiveItem((actor, null), out var held))
                 return;
 
-            if (!HasComp<SolutionManagerComponent>(held.Value))
+            if (!_tag.HasTag(held.Value, VialTag))
                 return;
 
             TryInsertItem(ent, ent.Comp, held.Value, actor);
