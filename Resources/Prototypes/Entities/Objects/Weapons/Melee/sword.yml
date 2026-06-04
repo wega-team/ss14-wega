@@ -181,6 +181,7 @@
     - Back
     - Belt
   - type: Reflect
+    reflectProb: 0.1
     slotFlags:
     - NONE
   - type: NoMartialArtsCombo
