@@ -349,6 +349,8 @@ public sealed partial class NinjaWidowArtSystem : EntitySystem
 
         _surgery.TryDecapitate(target, user);
 
+        _audio.PlayPvs(new SoundPathSpecifier("/Audio/_Wega/Effects/katana-slice-loud.ogg"), target);
+
         _popup.PopupEntity(Loc.GetString("widow-art-neck-slice"), user, user);
         _popup.PopupEntity(Loc.GetString("widow-art-neck-slice-target"), target, Filter.PvsExcept(user), true);
 
