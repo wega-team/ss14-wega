@@ -161,9 +161,111 @@
       - BorgModuleGardening
       - BorgModuleServiceRare
 
+## RATVAR
 
+- type: entity
+  id: BaseBorgChassisRatvar
+  parent: BaseBorgChassis
+  abstract: true
+  components:
+  - type: VeilCultConstruct
+  - type: MindLink
+    channels: ["MindVeilCult"]
+  - type: NpcFactionMember
+    factions:
+    - VeilCult
+  - type: FriendlyFaction
+    faction: VeilCult
+  - type: SiliconLawProvider
+    laws: SyndicateStatic
+    subverted: true
+  - type: IntrinsicRadioTransmitter
+    channels:
+    - Binary
+  - type: ActiveRadio
+    channels:
+    - Binary
+  - type: MovementAlwaysTouching
+    allowedEmotes:
+    - Laugh
+  - type: PointLight
+    color: "#dd200b"
+  - type: BypassLock
+    bypassDelay: 15 # We don't want people to easily be able to remove syndieborg brains.
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 75
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Machines/warning_buzzer.ogg
+          params:
+            volume: 5
+    - trigger:
+        !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: WiresPanel
+    openingTool: VeilCultClockworkSlab
 
-
+- type: entity
+  id: BorgChassisRatvar
+  parent: BaseBorgChassisRatvar
+  name: ratvar cyborg
+  description: A streamlined engineering cyborg, equipped with covert modules. Its chameleon projector lets it disguise itself as a Nanotrasen cyborg.
+  components:
+    - type: Sprite
+      sprite: _Wega/Mobs/Silicon/chassis.rsi
+      layers:
+        - state: ratvar
+          map: ["movement"]
+        - state: ratvar_e
+          map: ["enum.BorgVisualLayers.Light"]
+          shader: unshaded
+          visible: false
+        - state: ratvar_l
+          shader: unshaded
+          map: ["light"]
+          visible: false
+    - type: BorgChassis
+      maxModules: 3
+      moduleWhitelist:
+        tags:
+          - BorgModuleGeneric
+          - BorgModuleEngineering
+          - BorgModuleSyndicate
+      hasMindState: ratvar_e
+      noMindState: ratvar
+    - type: ShowHealthBars
+      damageContainers:
+      - Inorganic
+      - Silicon
+    - type: InteractionPopup
+      interactSuccessString: petting-success-syndicate-cyborg
+      interactFailureString: petting-failure-syndicate-cyborg
+      interactSuccessSound:
+        path: /Audio/Ambience/Objects/periodic_beep.ogg
+    - type: SpriteMovement
+      movementLayers:
+        movement:
+          state: ratvar_moving
+      noMovementLayers:
+        movement:
+          state: ratvar
+    - type: ItemSlots
+      slots:
+        cell_slot:
+          name: power-cell-slot-component-slot-name-default
+          startingItem: PowerCellMicroreactor
+          disableEject: true
+          swap: false
 
 
 

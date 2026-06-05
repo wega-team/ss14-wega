@@ -28,6 +28,34 @@
       - state: base-part-inhand-right
       - state: base-stripes-inhand-right
 
+# - type: entity
+  # id: BaseBorgModuleRatvar
+  # parent: BaseBorgModule
+  # abstract: true
+  # components:
+  # - type: Tag
+    # tags:
+    # - BorgModuleRatvar
+  # - type: BorgModule
+    # borgFitTypes:
+    # - borg-type-ratvar
+  # - type: Item
+    # inhandVisuals:
+      # left:
+      # - state: base-icon-inhand-left
+        # color: "#cfba47"
+      # - state: base-module-inhand-left
+        # color: "#cc8120"
+      # - state: base-part-inhand-left
+      # - state: base-stripes-inhand-left
+        # color: "#4b2a16"
+      # right:
+      # - state: base-icon-inhand-right
+        # color: "#cfba47"
+      # - state: base-module-inhand-right
+        # color: "#cc8120"
+      # - state: base-part-inhand-right
+      # - state: base-stripes-inhand-right
 ## Med Module
 - type: entity
   id: BorgModuleSurgery
