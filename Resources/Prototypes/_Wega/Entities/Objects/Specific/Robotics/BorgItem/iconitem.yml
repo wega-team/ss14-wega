@@ -155,3 +155,24 @@
     sprite: _Wega/Objects/Specific/Robotics/iconitem.rsi
     state: gren-icon
 
+- type: entity
+  parent: BaseItem
+  id: RatvarSup
+  name: bgren-icon
+  categories: [ HideSpawnMenu ]
+  description: CashIcon
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/iconitem.rsi
+    state: icon-ratvar-sup
+
+- type: entity
+  parent: BaseItem
+  id: RatvarWep
+  name: bgren-icon
+  categories: [ HideSpawnMenu ]
+  description: CashIcon
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/iconitem.rsi
+    state: icon-ratvar-wep

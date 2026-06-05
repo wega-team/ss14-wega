@@ -532,6 +532,9 @@
 - type: Tag
   id: ChargedBrass
   
+  
+- type: Tag
+  id: VeilWeapon  
   # Veil Cult Tags End
   
 - type: Tag

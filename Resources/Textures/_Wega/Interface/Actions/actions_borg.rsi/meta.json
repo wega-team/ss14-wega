@@ -137,6 +137,12 @@
             "name": "speed_xenoborg"
         },
         {
+            "name": "midas-module"
+        },
+        {
+            "name": "tool-clock-module"
+        },
+        {
             "name": "clockwork-module"
         }
     ]

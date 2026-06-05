@@ -27,9 +27,9 @@
     - VeilCultClockworkSlabForcePassage
     - VeilCultClockworkSlabSealWounds
     - VeilCultClockworkSlabHidingsClock
-  # - type: Tag
-  #   tags:
-  #   - StrangeShard
+  - type: Tag
+    tags:
+    - StrangeShard
   
 # ENCHANTS
 

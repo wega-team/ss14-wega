@@ -215,6 +215,7 @@
   - type: WiresPanel
     openingTool: VeilCultClockworkSlab
 
+
 - type: entity
   id: BorgChassisRatvar
   parent: BaseBorgChassisRatvar
@@ -238,9 +239,7 @@
       maxModules: 3
       moduleWhitelist:
         tags:
-          - BorgModuleGeneric
-          - BorgModuleEngineering
-          - BorgModuleSyndicate
+          - BorgModuleRatvar
       hasMindState: ratvar_e
       noMindState: ratvar
     - type: ShowHealthBars
@@ -266,7 +265,12 @@
           startingItem: PowerCellMicroreactor
           disableEject: true
           swap: false
-
+    - type: ContainerFill
+      containers:
+        borg_module:
+        - BorgModuleClockworkWeapon
+        - BorgModuleClockworkTools
+        - BorgModuleClockworkMidas
 
 
 

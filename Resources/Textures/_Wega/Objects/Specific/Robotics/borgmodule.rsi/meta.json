@@ -23,6 +23,9 @@
             "name": "cargo"
         },
         {
+            "name": "clockwork_module"
+        },
+        {
             "name": "command"
         },
         {

@@ -44,6 +44,12 @@
       "name": "cash-icon"
     },
 	{
+      "name": "icon-ratvar-wep"
+    },
+	{
+      "name": "icon-ratvar-sup"
+    },
+	{
       "name": "scie-icon"
     }
   ]

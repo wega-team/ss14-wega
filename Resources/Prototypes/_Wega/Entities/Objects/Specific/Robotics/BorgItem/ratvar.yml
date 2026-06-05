@@ -1,0 +1,21 @@
+- type: entity
+  parent: ClothingBackpack
+  id: RatvarBorgStorage
+  name: ratvar storage square
+  description: A knockoff version of a bluespace bag, can vacumn up select materials, unfit for use by humanoids due to harmful emissions.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Storage/ratvar_case.rsi
+    state: icon
+  - type: Dumpable
+  - type: Storage
+    grid:
+    - 0,0,3,3
+    quickInsert: true
+    areaInsert: true
+    whitelist:
+      tags:
+        - Brass
+        - StrangeShard
+        - SoulVessel
+        - InteractionCog

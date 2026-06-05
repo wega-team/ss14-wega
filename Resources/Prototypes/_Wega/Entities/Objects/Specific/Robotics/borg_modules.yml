@@ -28,34 +28,35 @@
       - state: base-part-inhand-right
       - state: base-stripes-inhand-right
 
-# - type: entity
-  # id: BaseBorgModuleRatvar
-  # parent: BaseBorgModule
-  # abstract: true
-  # components:
-  # - type: Tag
-    # tags:
-    # - BorgModuleRatvar
-  # - type: BorgModule
-    # borgFitTypes:
-    # - borg-type-ratvar
-  # - type: Item
-    # inhandVisuals:
-      # left:
-      # - state: base-icon-inhand-left
-        # color: "#cfba47"
-      # - state: base-module-inhand-left
-        # color: "#cc8120"
-      # - state: base-part-inhand-left
-      # - state: base-stripes-inhand-left
-        # color: "#4b2a16"
-      # right:
-      # - state: base-icon-inhand-right
-        # color: "#cfba47"
-      # - state: base-module-inhand-right
-        # color: "#cc8120"
-      # - state: base-part-inhand-right
-      # - state: base-stripes-inhand-right
+- type: entity
+  id: BaseBorgModuleRatvar
+  parent: BaseBorgModule
+  abstract: true
+  components:
+  - type: Tag
+    tags:
+    - BorgModuleRatvar
+  - type: BorgModule
+    borgFitTypes:
+    - borg-type-ratvar
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: base-icon-inhand-left
+        color: "#cfba47"
+      - state: base-module-inhand-left
+        color: "#cc8120"
+      - state: base-part-inhand-left
+      - state: base-stripes-inhand-left
+        color: "#4b2a16"
+      right:
+      - state: base-icon-inhand-right
+        color: "#cfba47"
+      - state: base-module-inhand-right
+        color: "#cc8120"
+      - state: base-part-inhand-right
+      - state: base-stripes-inhand-right
+
 ## Med Module
 - type: entity
   id: BorgModuleSurgery
@@ -1578,19 +1579,71 @@
   # Clockwork
   
 - type: entity
-  id: BorgModuleClockwork
-  parent: [ BaseBorgModule, BaseProviderBorgModule, BaseSyndicateContraband ]
+  id: BorgModuleClockworkWeapon
+  parent: [ BaseBorgModuleRatvar, BaseProviderBorgModule ]
   name: clockwork cyborg module
   description: A module, made of brass by Rathvar cult members.
   components:
   - type: Sprite
     sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
     layers:
-    - state: clockwork
+    - state: clockwork_module
   - type: ItemBorgModule
     hands:
-    - item: JawsOfLife
-    - item: VeilCultClockworkSlab
-    - item: WeaponClockworkSwordBorg
+    - hand:
+        emptyRepresentative: RatvarWep
+        emptyLabel: borg-slot-nanopasta-empty
+        whitelist:
+          tags:
+          - VeilWeapon
+    - hand:
+        emptyRepresentative: RatvarSup
+        emptyLabel: borg-slot-nanopasta-empty
+        whitelist:
+          tags:
+          - StrangeShard
+          - InteractionCog
+          - Brass
+          - SoulVessel
+    - item: RatvarBorgStorage
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: clockwork-module }
+    
+- type: entity
+  id: BorgModuleClockworkTools
+  parent: [ BaseBorgModuleRatvar, BaseProviderBorgModule ]
+  name: clockwork cyborg module
+  description: A module, made of brass by Rathvar cult members.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: clockwork_module
+  - type: ItemBorgModule
+    hands:
+    - item: Crowbar
+    - item: Wrench
+    - item: Screwdriver
+    - item: Wirecutter
+    - item: Multitool
+    - item: RefuelingWelder
+  - type: BorgModuleIcon
+    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: tool-clock-module }
+
+- type: entity
+  id: BorgModuleClockworkMidas
+  parent: [ BaseBorgModuleRatvar, BaseProviderBorgModule ]
+  name: clockwork cyborg module
+  description: A module, made of brass by Rathvar cult members.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: clockwork_module
+  - type: ItemBorgModule
+    hands:
+    - item: VeilCultMidasTouch
+  - type: BorgModuleIcon
+    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: midas-module }
+
+
