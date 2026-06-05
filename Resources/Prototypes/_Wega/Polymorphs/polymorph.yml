@@ -105,3 +105,13 @@
     transferName: true
     revertOnDeath: true
     transferDamage: false
+
+- type: polymorph
+  id: Ratvarborg
+  configuration:
+    entity: BorgChassisRatvar
+    transferName: true
+    forced: true
+    revertOnDeath: true
+    transferDamage: false
+    revertOnCrit: false

@@ -262,7 +262,7 @@
       slots:
         cell_slot:
           name: power-cell-slot-component-slot-name-default
-          startingItem: PowerCellMicroreactor
+          startingItem: PowerCellHigh
           disableEject: true
           swap: false
     - type: ContainerFill
@@ -271,7 +271,8 @@
         - BorgModuleClockworkWeapon
         - BorgModuleClockworkTools
         - BorgModuleClockworkMidas
-
+        borg_brain:
+        - PositronicBrain
 
 
 
