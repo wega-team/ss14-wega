@@ -29,6 +29,7 @@ using Content.Shared.Speech;
 using Content.Shared.Speech.Components;
 using Content.Shared.VoiceMask;
 using Robust.Shared.Containers;
+using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server.Ninja.Systems;
@@ -167,7 +168,7 @@ public sealed partial class NinjaChameleonSystem : EntitySystem
 
             args.Handled = true;
 
-            _doAfter.TryStartDoAfter(new DoAfterArgs(EntityManager,
+            if (_doAfter.TryStartDoAfter(new DoAfterArgs(EntityManager,
                 args.User, scanner.Comp.TransformTime,
                 new ChameleonTransformDoAfterEvent(),
                 scanner.Owner,
@@ -178,7 +179,11 @@ public sealed partial class NinjaChameleonSystem : EntitySystem
                 BreakOnMove  = true,
                 BreakOnDamage = true,
                 Hidden       = true,
-            });
+            }))
+            {
+                // Holo self-scan visual: alpha sweep then beta sweep, coloured by suit.
+                SpawnScanEffect(args.User, scanner.Comp.SuitEntity);
+            }
 
             return;
         }
@@ -217,6 +222,10 @@ public sealed partial class NinjaChameleonSystem : EntitySystem
     // On transform complete: apply the stored appearance to the ninja
     private void OnTransformDoAfter(Entity<ChameleonScannerComponent> scanner, ref ChameleonTransformDoAfterEvent args)
     {
+        // Remove the self-scan visual the moment the scan ends, whether it completed or was cancelled.
+        if (TryComp<NinjaChameleonComponent>(scanner.Comp.SuitEntity, out var ch) && ch.WearerEntity is { } scanNinja)
+            ClearScanEffect(scanNinja);
+
         if (args.Cancelled || args.Handled)
             return;
 
@@ -452,6 +461,37 @@ public sealed partial class NinjaChameleonSystem : EntitySystem
     {
         if (chameleon.OriginalName is { } name)
             _metaData.SetEntityName(ninja, name);
+    }
+
+    // Tracks the looping scan effect halves spawned per ninja while they self-scan.
+    private readonly Dictionary<EntityUid, (EntityUid Alpha, EntityUid Beta)> _scanEffects = new();
+
+    /// <summary>
+    /// Spawns the looping holographic self-scan effect, centered on and parented to the ninja, so it
+    /// follows them and animates until <see cref="ClearScanEffect"/> removes it. Alpha renders over
+    /// the ninja, beta under; colour matches their chosen suit colour.
+    /// </summary>
+    private void SpawnScanEffect(EntityUid ninja, EntityUid suit)
+    {
+        ClearScanEffect(ninja);
+
+        var color = TryComp<SpiderOSComponent>(suit, out var spider) ? spider.SuitColor : 2;
+        var colorStr = color switch { 0 => "Red", 1 => "Blue", _ => "Green" };
+
+        var coords = new EntityCoordinates(ninja, System.Numerics.Vector2.Zero);
+        var alpha = Spawn($"NinjaScanAlpha{colorStr}", coords);
+        var beta = Spawn($"NinjaScanBeta{colorStr}", coords);
+        _scanEffects[ninja] = (alpha, beta);
+    }
+
+    /// <summary>Removes the self-scan effect halves once the scan ends (completed or cancelled).</summary>
+    private void ClearScanEffect(EntityUid ninja)
+    {
+        if (!_scanEffects.Remove(ninja, out var effects))
+            return;
+
+        QueueDel(effects.Alpha);
+        QueueDel(effects.Beta);
     }
 
     /// <summary>Deletes fake PDA, restores original id card from stash, and restores modified clothing visuals.</summary>

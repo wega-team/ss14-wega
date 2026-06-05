@@ -5,10 +5,10 @@
   categories: [ HideSpawnMenu ]
   components:
     - type: Sprite
-      sprite: /Textures/Effects/lightning.rsi
+      sprite: /Textures/_Wega/Effects/ninja_blink.rsi
       drawdepth: Effects
       layers:
-        - state: "yellow_lightning"
+        - state: "ninja_blink"
           color: "#65ff00"
           shader: unshaded
     - type: Electrified
@@ -25,29 +25,3 @@
       castShadows: false
     - type: TimedDespawn
       lifetime: 1.5
-
-- type: entity
-  id: LightningNinjaDashRed
-  parent: LightningNinjaDash
-  categories: [ HideSpawnMenu ]
-  components:
-    - type: Sprite
-      layers:
-        - state: "yellow_lightning"
-          color: "#FF3300"
-          shader: unshaded
-    - type: PointLight
-      color: "#FF3300"
-
-- type: entity
-  id: LightningNinjaDashBlue
-  parent: LightningNinjaDash
-  categories: [ HideSpawnMenu ]
-  components:
-    - type: Sprite
-      layers:
-        - state: "yellow_lightning"
-          color: "#3399FF"
-          shader: unshaded
-    - type: PointLight
-      color: "#3399FF"

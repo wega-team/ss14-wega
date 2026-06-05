@@ -68,3 +68,176 @@
     tags:
       - HideContextMenu
   - type: AnimationPlayer
+
+# ── One-shot animated ninja effects (play their RSI animation once, then despawn) ──
+- type: entity
+  abstract: true
+  id: BaseNinjaVisualEffect
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: EffectVisuals
+  - type: AnimationPlayer
+  - type: Tag
+    tags:
+      - HideContextMenu
+
+# Phase cloak: spawned on the ninja when entering/leaving invisibility.
+- type: entity
+  parent: BaseNinjaVisualEffect
+  id: NinjaCloakEffect
+  components:
+  - type: TimedDespawn
+    lifetime: 0.8
+  - type: Sprite
+    drawdepth: OverMobs
+    noRot: false
+    layers:
+    - shader: unshaded
+      map: ["enum.EffectLayers.Unshaded"]
+      sprite: _Wega/Effects/ninja-effect.rsi
+      state: cloak
+
+- type: entity
+  parent: BaseNinjaVisualEffect
+  id: NinjaUncloakEffect
+  components:
+  - type: TimedDespawn
+    lifetime: 0.8
+  - type: Sprite
+    drawdepth: OverMobs
+    noRot: false
+    layers:
+    - shader: unshaded
+      map: ["enum.EffectLayers.Unshaded"]
+      sprite: _Wega/Effects/ninja-effect.rsi
+      state: uncloak
+
+# Katana dash: phase-in at the destination, phase-out at the previous position.
+- type: entity
+  parent: BaseNinjaVisualEffect
+  id: NinjaPhaseInEffect
+  components:
+  - type: TimedDespawn
+    lifetime: 0.8
+  - type: Sprite
+    drawdepth: OverMobs
+    noRot: false
+    layers:
+    - shader: unshaded
+      map: ["enum.EffectLayers.Unshaded"]
+      sprite: _Wega/Effects/ninja-effect.rsi
+      state: phasein
+
+- type: entity
+  parent: BaseNinjaVisualEffect
+  id: NinjaPhaseOutEffect
+  components:
+  - type: TimedDespawn
+    lifetime: 0.8
+  - type: Sprite
+    drawdepth: OverMobs
+    noRot: false
+    layers:
+    - shader: unshaded
+      map: ["enum.EffectLayers.Unshaded"]
+      sprite: _Wega/Effects/ninja-effect.rsi
+      state: phaseout
+
+# Holo self-scan effect (shown while the ninja scans themselves). Centered on the ninja; both
+# halves render at once and loop until the system removes them: alpha draws over the ninja, beta
+# under. Colour matches the ninja's chosen suit colour. No EffectVisuals/TimedDespawn so the RSI
+# state animates continuously; the chameleon system deletes them when the scan ends.
+- type: entity
+  abstract: true
+  id: BaseNinjaScanEffect
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Tag
+    tags:
+      - HideContextMenu
+
+- type: entity
+  abstract: true
+  parent: BaseNinjaScanEffect
+  id: BaseNinjaScanAlpha # renders over the ninja
+  components:
+  - type: Sprite
+    drawdepth: OverMobs
+    noRot: true
+    offset: 0,0.2 # raise the scan effect; increase Y to move it higher
+
+- type: entity
+  abstract: true
+  parent: BaseNinjaScanEffect
+  id: BaseNinjaScanBeta # renders under the ninja
+  components:
+  - type: Sprite
+    drawdepth: BelowMobs
+    noRot: true
+    offset: 0,0.2 # raise the scan effect; increase Y to move it higher
+
+- type: entity
+  parent: BaseNinjaScanAlpha
+  id: NinjaScanAlphaRed
+  components:
+  - type: Sprite
+    layers:
+    - shader: unshaded
+      map: ["enum.EffectLayers.Unshaded"]
+      sprite: _Wega/Effects/holoscal.rsi
+      state: scan_alpha_red
+
+- type: entity
+  parent: BaseNinjaScanBeta
+  id: NinjaScanBetaRed
+  components:
+  - type: Sprite
+    layers:
+    - shader: unshaded
+      map: ["enum.EffectLayers.Unshaded"]
+      sprite: _Wega/Effects/holoscal.rsi
+      state: scan_beta_red
+
+- type: entity
+  parent: BaseNinjaScanAlpha
+  id: NinjaScanAlphaBlue
+  components:
+  - type: Sprite
+    layers:
+    - shader: unshaded
+      map: ["enum.EffectLayers.Unshaded"]
+      sprite: _Wega/Effects/holoscal.rsi
+      state: scan_alpha_blue
+
+- type: entity
+  parent: BaseNinjaScanBeta
+  id: NinjaScanBetaBlue
+  components:
+  - type: Sprite
+    layers:
+    - shader: unshaded
+      map: ["enum.EffectLayers.Unshaded"]
+      sprite: _Wega/Effects/holoscal.rsi
+      state: scan_beta_blue
+
+- type: entity
+  parent: BaseNinjaScanAlpha
+  id: NinjaScanAlphaGreen
+  components:
+  - type: Sprite
+    layers:
+    - shader: unshaded
+      map: ["enum.EffectLayers.Unshaded"]
+      sprite: _Wega/Effects/holoscal.rsi
+      state: scan_alpha_green
+
+- type: entity
+  parent: BaseNinjaScanBeta
+  id: NinjaScanBetaGreen
+  components:
+  - type: Sprite
+    layers:
+    - shader: unshaded
+      map: ["enum.EffectLayers.Unshaded"]
+      sprite: _Wega/Effects/holoscal.rsi
+      state: scan_beta_green

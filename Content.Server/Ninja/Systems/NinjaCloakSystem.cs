@@ -21,6 +21,7 @@ public sealed partial class NinjaCloakSystem : EntitySystem
     [Dependency] private AudioSystem     _audio     = default!;
     [Dependency] private InventorySystem _inventory = default!;
     [Dependency] private ItemToggleSystem _toggle   = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
 
     private static readonly SoundSpecifier SparksSound =
         new SoundCollectionSpecifier("sparks", AudioParams.Default.WithVolume(-4f));
@@ -43,6 +44,8 @@ public sealed partial class NinjaCloakSystem : EntitySystem
             heat.IsCloaked = true;
 
         EnsureComp<FootstepModifierComponent>(uid);
+
+        SpawnCloakEffect(uid, "NinjaCloakEffect");
     }
 
     private void OnCloakShutdown(EntityUid uid, NinjaCloakActiveComponent _, ComponentShutdown args)
@@ -51,6 +54,19 @@ public sealed partial class NinjaCloakSystem : EntitySystem
             heat.IsCloaked = false;
 
         RemComp<FootstepModifierComponent>(uid);
+
+        SpawnCloakEffect(uid, "NinjaUncloakEffect");
+    }
+
+    /// <summary>Spawns a cloak/uncloak effect on the ninja, oriented to the way they are facing.</summary>
+    private void SpawnCloakEffect(EntityUid uid, string proto)
+    {
+        if (TerminatingOrDeleted(uid))
+            return;
+
+        var fx = Spawn(proto, Transform(uid).Coordinates);
+        var facing = TryComp<InputMoverComponent>(uid, out var mover) ? mover.RelativeRotation : Angle.Zero;
+        _transform.SetWorldRotation(fx, facing);
     }
 
     private void OnExamineAttempt(EntityUid uid, NinjaCloakActiveComponent _, ExamineAttemptEvent args)
