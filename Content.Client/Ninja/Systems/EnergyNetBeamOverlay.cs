@@ -12,7 +12,7 @@ public sealed class EnergyNetBeamOverlay : Overlay
 {
     public override OverlaySpace Space => OverlaySpace.WorldSpaceBelowFOV;
 
-    private static readonly Color BeamColor = Color.FromHex("#65ff00");
+    private static readonly Color BeamColor = Color.FromHex("#07c921");
 
     private readonly IEntityManager _entManager;
 
