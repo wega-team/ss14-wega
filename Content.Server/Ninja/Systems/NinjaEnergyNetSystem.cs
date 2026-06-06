@@ -52,8 +52,6 @@ public sealed partial class NinjaEnergyNetSystem : EntitySystem
         if (_cloak.TryRevealCloak(user))
             return;
 
-        args.Handled = true;
-
         if (TryComp<UseDelayComponent>(ent, out var delay) &&
             _useDelay.IsDelayed((ent, delay), SuitDisableDelayId))
             return;
@@ -69,8 +67,16 @@ public sealed partial class NinjaEnergyNetSystem : EntitySystem
             break;
         }
 
+        // Clicked empty space / no valid mob: do nothing and don't start the cooldown.
         if (target == null)
             return;
+
+        // Don't stack nets: refuse if the target is already caught in one.
+        if (HasComp<EnergyNettedComponent>(target.Value))
+        {
+            _popup.PopupEntity(Loc.GetString("energy-net-already-netted"), user, user);
+            return;
+        }
 
         if (!_ninja.TryUseCharge(user, EnergyNetCharge))
         {
@@ -104,6 +110,9 @@ public sealed partial class NinjaEnergyNetSystem : EntitySystem
         });
 
         _popup.PopupEntity(Loc.GetString("energy-net-trapped"), target.Value, PopupType.LargeCaution);
+
+        // Only now (a net was actually cast) does the ability go on cooldown.
+        args.Handled = true;
     }
 
     // ── Damage redirect ───────────────────────────────────────────────────────

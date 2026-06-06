@@ -51,6 +51,7 @@ ninja-adrenaline-no-uranium = Недостаточно урана в костю�
 ninja-adrenaline-activate = Адреналин бьёт в кровь!
 ninja-uranium-full = Топливный бак костюма заполнен!
 energy-net-trapped = Вы пойманы в энергосеть!
+energy-net-already-netted = Цель уже поймана в энергосеть!
 
 ninja-uranium-inserted = Добавлено { $amount } { $amount ->
     [one] лист

@@ -49,6 +49,7 @@ ninja-uranium-full = The suit's uranium tank is full!
 ninja-uranium-inserted = Inserted {$amount} uranium sheet(s). Tank: {$total}/{$max}.
 
 energy-net-trapped = You are caught in an energy net!
+energy-net-already-netted = The target is already caught in an energy net!
 
 chameleon-disguise-applied = You now look like { $target }.
 chameleon-scanner-scan-complete = Scan complete: { $target }. Use the scanner on yourself to transform.

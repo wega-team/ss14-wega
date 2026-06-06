@@ -238,10 +238,10 @@
   parent: BaseAction
   id: ActionNinjaEnergyNet
   name: Energy Net
-  description: "Ensnare a target in an energy net, preventing them from moving. The net is durable but can be broken by any melee hit. Destroys itself after 20 seconds. Costs 200 charge."
+  description: "Ensnare a target in an energy net, preventing them from moving. The net is durable but can be broken by any melee hit. Destroys itself after 20 seconds. Costs 200 charge. Cooldown: 20 seconds."
   components:
   - type: Action
-    useDelay: 15
+    useDelay: 20
     icon:
       sprite: _Wega/Actions/ninja.rsi
       state: energynet
