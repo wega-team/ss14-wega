@@ -161,10 +161,11 @@ public sealed partial class CriminalRecordsConsoleSystem : SharedCriminalRecords
             // this is impossible
             _ => "not-wanted"
         };
-        _radio.SendRadioMessage(ent,
-            Loc.GetString($"criminal-records-console-{statusString}", args),
-            ent.Comp.SecurityChannel,
-            ent);
+        if (!ent.Comp.SuppressStatusRadio)
+            _radio.SendRadioMessage(ent,
+                Loc.GetString($"criminal-records-console-{statusString}", args),
+                ent.Comp.SecurityChannel,
+                ent);
 
         _adminLogger.Add(LogType.Identity, LogImpact.Low, $"{ToPrettyString(mob.Value):name} changed criminal status for {name} to \"{statusString}\"");
 

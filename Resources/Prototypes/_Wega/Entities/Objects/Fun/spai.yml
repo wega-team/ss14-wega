@@ -1,0 +1,192 @@
+# Syndicate Personal AI (СпИИ) — Actions
+
+# Закрытый канал связи — загружен изначально через компонент ActiveRadio на сущности
+
+- type: entity
+  parent: BaseMentalAction
+  id: ActionSPAICameraAccess
+  name: Встроенный камерный жучок
+  description: Подключиться к сети камер видеонаблюдения станции.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon: { sprite: Interface/Actions/actions_ai.rsi, state: camera_light }
+    itemIconStyle: NoItem
+  - type: InstantAction
+    event: !type:OpenUiActionEvent
+      key: enum.SurveillanceCameraMonitorUiKey.Key
+
+- type: entity
+  parent: BaseMentalAction
+  id: ActionSPAISecurityHUD
+  name: Продвинутый HUD Службы Безопасности
+  description: Включить или выключить наложение статусов ареста. Также позволяет открыть записи СБ.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon: { sprite: Interface/Actions/actions_ai.rsi, state: crew_monitor }
+    itemIconStyle: NoItem
+  - type: InstantAction
+    event: !type:SpaiToggleSecurityHudEvent
+
+- type: entity
+  parent: BaseMentalAction
+  id: ActionSPAISecurityRecords
+  name: Продвинутые Записи СБ
+  description: Открыть записи Службы безопасности. Позволяет менять статусы, включая статус казни.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon: { sprite: Interface/Actions/actions_ai.rsi, state: station_records }
+    itemIconStyle: NoItem
+  - type: InstantAction
+    event: !type:OpenUiActionEvent
+      key: enum.CriminalRecordsConsoleKey.Key
+
+- type: entity
+  parent: BaseMentalAction
+  id: ActionSPAIThermalVision
+  name: Термальное зрение
+  description: Включить или выключить термальное зрение — позволяет видеть живые объекты через стены.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon: Interface/Actions/eyeopen.png
+    itemIconStyle: NoItem
+    useDelay: 1
+  - type: InstantAction
+    event: !type:SpaiToggleThermalVisionEvent
+
+# Инъектор химикатов — установочное действие, которое выдаёт 7 действий инъекции
+
+- type: entity
+  parent: BaseMentalAction
+  id: ActionSPAIChemInjectorInstall
+  name: Инъектор Химикатов
+  description: Активировать встроенный химический инъектор. После активации позволяет вводить реагенты в вашего носителя.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon: { sprite: Objects/Specific/Chemistry/syringe.rsi, state: syringe_base0 }
+    itemIconStyle: NoItem
+  - type: InstantAction
+    event: !type:SpaiInstallChemInjectorEvent
+
+# Открыть панель инъектора (выдаётся после установки)
+
+- type: entity
+  parent: BaseMentalAction
+  id: ActionSPAIChemInjectorOpen
+  name: Инъектор Химикатов
+  description: Открыть панель химического инъектора для выбора реагента.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon: { sprite: Objects/Specific/Chemistry/syringe.rsi, state: syringe_base0 }
+    itemIconStyle: NoItem
+  - type: InstantAction
+    event: !type:OpenUiActionEvent
+      key: enum.SpaiChemInjectorUiKey.Key
+
+# Слабые возможности ИИ — установочное действие
+
+- type: entity
+  parent: BaseMentalAction
+  id: ActionSPAIWeakAIInstall
+  name: Слабые возможности ИИ
+  description: Активировать режим взаимодействия с устройствами станции через камеру. Откроет доступ к управлению шлюзами и АРП.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon: { sprite: Interface/Actions/actions_ai.rsi, state: ai_core }
+    itemIconStyle: NoItem
+  - type: InstantAction
+    event: !type:SpaiInstallWeakAiEvent
+
+# Действия взаимодействия с устройствами (выдаются после установки)
+
+- type: entity
+  id: ActionSPAIWeakAIToggleDoor
+  parent: BaseAction
+  name: Открыть/закрыть шлюз
+  description: Открыть или закрыть запитанный шлюз на расстоянии, игнорируя доступ.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon: { sprite: Interface/Actions/actions_ai.rsi, state: unbolt_door }
+    itemIconStyle: NoItem
+    useDelay: 10
+  - type: TargetAction
+    range: 20
+  - type: EntityTargetAction
+    whitelist:
+      components:
+      - Airlock
+    event: !type:SpaiToggleDoorEvent
+
+- type: entity
+  id: ActionSPAIWeakAIBolt
+  parent: BaseAction
+  name: Заболтировать шлюз
+  description: Заблокировать/разблокировать шлюз на расстоянии.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon: { sprite: Interface/Actions/actions_ai.rsi, state: bolt_door }
+    itemIconStyle: NoItem
+    useDelay: 10
+  - type: TargetAction
+    range: 20
+  - type: EntityTargetAction
+    event: !type:SpaiAirlockBoltEvent
+
+- type: entity
+  id: ActionSPAIWeakAIElectrify
+  parent: BaseAction
+  name: Электрифицировать шлюз
+  description: Включить/выключить электрификацию шлюза на расстоянии.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon: { sprite: Interface/Actions/actions_ai.rsi, state: door_overcharge_on }
+    itemIconStyle: NoItem
+    useDelay: 10
+  - type: TargetAction
+    range: 20
+  - type: EntityTargetAction
+    whitelist:
+      components:
+      - Airlock
+    event: !type:SpaiAirlockElectrifyEvent
+
+- type: entity
+  id: ActionSPAIWeakAIEmergencyAccess
+  parent: BaseAction
+  name: Аварийный доступ
+  description: Включить/выключить аварийный доступ к шлюзу на расстоянии.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon: { sprite: Interface/Actions/actions_ai.rsi, state: emergency_on }
+    itemIconStyle: NoItem
+    useDelay: 10
+  - type: TargetAction
+    range: 20
+  - type: EntityTargetAction
+    event: !type:SpaiAirlockEmergencyAccessEvent
+
+- type: entity
+  id: ActionSPAIWeakAIApc
+  parent: BaseAction
+  name: Отключить АРП
+  description: Переключить главный автомат АРП (отключить/включить питание сети) на расстоянии.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon: { sprite: Interface/Actions/actions_ai.rsi, state: emergency_off }
+    itemIconStyle: NoItem
+    useDelay: 10
+  - type: TargetAction
+    range: 20
+  - type: EntityTargetAction
+    event: !type:SpaiApcDisableEvent

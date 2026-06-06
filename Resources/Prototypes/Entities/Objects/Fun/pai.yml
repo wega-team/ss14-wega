@@ -125,17 +125,65 @@
       shader: unshaded
       map: ["screen"]
   - type: ToggleableGhostRole
-    roleName: pai-system-role-name-syndicate
-    roleDescription: pai-system-role-description-syndicate
+    roleName: spai-system-role-name
+    roleDescription: spai-system-role-description
     roleRules: ghost-role-information-familiar-rules
     mindRoles:
     - MindRoleGhostRoleFamiliar
   - type: IntrinsicRadioTransmitter
     channels:
     - Syndicate
+  - type: IntrinsicRadioReceiver
   - type: ActiveRadio
     channels:
+    - Common
+    - Command
+    - Engineering
+    - Medical
+    - Science
+    - Security
+    - Service
+    - Supply
     - Syndicate
+  - type: UserInterface
+    interfaces:
+      enum.StoreUiKey.Key:
+        type: StoreBoundUserInterface
+        requireInputValidation: false
+      enum.RadarConsoleUiKey.Key:
+        type: RadarConsoleBoundUserInterface
+        requireInputValidation: false
+      enum.InstrumentUiKey.Key:
+        type: InstrumentBoundUserInterface
+        requireInputValidation: false
+      enum.StationMapUiKey.Key:
+        type: StationMapBoundUserInterface
+        requireInputValidation: false
+      enum.SurveillanceCameraMonitorUiKey.Key:
+        type: SurveillanceCameraMonitorBoundUserInterface
+        requireInputValidation: false
+      enum.CriminalRecordsConsoleKey.Key:
+        type: CriminalRecordsConsoleBoundUserInterface
+        requireInputValidation: false
+      enum.SpaiChemInjectorUiKey.Key:
+        type: SpaiChemInjectorBoundUserInterface
+        requireInputValidation: false
+  - type: Store
+    categories:
+    - SPAIAbilities
+    - PAIAbilities
+    currencyWhitelist:
+    - SiliconMemory
+    balance:
+      SiliconMemory: 120
+  - type: DeviceNetwork
+    deviceNetId: Wired
+    receiveFrequencyId: SurveillanceCamera
+    transmitFrequencyId: SurveillanceCamera
+  - type: WiredNetworkConnection
+  - type: SurveillanceCameraMonitor
+  - type: CriminalRecordsConsole
+    suppressStatusRadio: true
   - type: Appearance
   - type: GenericVisualizer
     visuals:

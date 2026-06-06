@@ -18,6 +18,9 @@ store-discounted-items = Discounts
 # Revenant
 store-category-abilities = Abilities
 
+# SPAI
+store-category-spai-syndicate = Syndicate
+
 # Wizard
 store-caregory-spellbook-offensive = Offensive Spells
 store-caregory-spellbook-defensive = Defensive Spells

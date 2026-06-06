@@ -1,0 +1,22 @@
+<controls:FancyWindow xmlns="https://spacestation14.io"
+                     xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+                     xmlns:spai="clr-namespace:Content.Client._Wega.SPAI"
+                     Title="{Loc 'spai-injector-window-title'}"
+                     MinSize="320 380"
+                     SetSize="320 420">
+    <BoxContainer Orientation="Vertical" Margin="8">
+        <PanelContainer Margin="0 0 0 8">
+            <Label Name="EnergyLabel"
+                   Access="Public"
+                   HorizontalAlignment="Center"
+                   FontColorOverride="#aaffaa" />
+        </PanelContainer>
+        <ScrollContainer HScrollEnabled="False"
+                         VerticalExpand="True">
+            <GridContainer Name="ReagentGrid"
+                           Access="Public"
+                           Columns="2"
+                           HorizontalExpand="True" />
+        </ScrollContainer>
+    </BoxContainer>
+</controls:FancyWindow>

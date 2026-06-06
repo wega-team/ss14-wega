@@ -485,6 +485,9 @@ uplink-scarf-syndie-green-desc = A stylish striped syndicate green scarf. The pe
 uplink-syndicate-pai-name = Syndicate personal ai device
 uplink-syndicate-pai-desc = A Syndicate variant of the pAI with access to the Syndicate radio channel. We do not guarantee their usefulness.
 
+uplink-spai-name = SPAI — Syndicate Personal AI
+uplink-spai-desc = An advanced Syndicate pAI with enhanced surveillance and hacking capabilities. Hears all radio channels. Comes with a built-in software shop: camera bug, Security HUD and records, thermal vision, chemical injector, and weakened AI capabilities.
+
 uplink-bribe-name = Lobbying Bundle
 uplink-bribe-desc = A heartfelt gift that can help you sway someone's opinion. Real or counterfeit? Yes.
 

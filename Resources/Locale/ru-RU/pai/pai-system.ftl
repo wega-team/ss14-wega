@@ -23,3 +23,21 @@ pai-system-pai-name-raw = пИИ { $name }
 
 pai-system-brick-popup = Микросхемы пИИ громко хлопают и перегорают!
 pai-system-scramble-popup = Микросхемы пИИ перенапряжены электричеством!
+
+spai-system-role-name = СпИИ Синдиката
+spai-system-role-description = Станьте продвинутым Персональным ИИ Синдиката с доступом к инструментам разведки и взлома! (Воспоминания *не* прилагаются.)
+
+spai-thermal-vision-on = Термальное зрение активировано.
+spai-thermal-vision-off = Термальное зрение отключено.
+
+spai-sec-hud-on = HUD Службы Безопасности активирован.
+spai-sec-hud-off = HUD Службы Безопасности отключён.
+
+spai-chem-injector-installed = Инъектор химикатов установлен и готов к использованию.
+spai-weak-ai-installed = Слабые возможности ИИ активированы.
+
+spai-inject-no-carrier = Нет носителя для инъекции.
+spai-inject-no-energy = Недостаточно энергии для инъекции!
+spai-inject-no-bloodstream = Носитель не имеет кровотока.
+spai-inject-success = Инъекция введена.
+spai-inject-fail = Инъекция не удалась.
