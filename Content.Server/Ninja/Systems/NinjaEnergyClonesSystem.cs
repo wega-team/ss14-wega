@@ -48,6 +48,20 @@ public sealed partial class NinjaEnergyClonesSystem : EntitySystem
         var query = EntityQueryEnumerator<NinjaEnergyCloneComponent, NpcFactionMemberComponent>();
         while (query.MoveNext(out var uid, out var clone, out var faction))
         {
+            // If the ninja that spawned this clone is gone, remove the clone — otherwise its
+            // networked NinjaUid reference points at a deleted entity and breaks PVS serialization.
+            if (!Exists(clone.Ninja) || TerminatingOrDeleted(clone.Ninja))
+            {
+                // Clear the stale networked reference first so PVS doesn't try to map a dead entity.
+                if (TryComp<NinjaCloneVisualComponent>(uid, out var staleVisual))
+                {
+                    staleVisual.NinjaUid = EntityUid.Invalid;
+                    Dirty(uid, staleVisual);
+                }
+                QueueDel(uid);
+                continue;
+            }
+
             if (TryComp<MobStateComponent>(uid, out var mobState) && mobState.CurrentState == MobState.Dead)
             {
                 QueueDel(uid);
@@ -95,6 +109,10 @@ public sealed partial class NinjaEnergyClonesSystem : EntitySystem
         var spawnCooldown = _timing.CurTime + TimeSpan.FromSeconds(3);
         foreach (var (coords, ninja, remaining, _) in _pendingSpawns)
         {
+            // Don't spawn orphan clones if the ninja that spawned them is already gone.
+            if (!Exists(ninja) || TerminatingOrDeleted(ninja))
+                continue;
+
             var child = Spawn(CloneProto, coords);
             EnsureComp<TimedDespawnComponent>(child).Lifetime = remaining;
             var childClone = EnsureComp<NinjaEnergyCloneComponent>(child);
