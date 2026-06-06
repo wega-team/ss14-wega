@@ -733,7 +733,7 @@
   - type: Item
     size: Normal
     shape:
-    - 0,0,0,3
+    - 0,0,0,4 # Теперь нельзя носить в сумке.
   - type: Wieldable
   - type: CultWeapon
     cult: Veil
