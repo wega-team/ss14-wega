@@ -10,7 +10,7 @@ namespace Content.Shared.Stealth.Components;
 /// Use other components (like StealthOnMove) to modify this component's visibility based on certain conditions.
 /// </summary>
 [RegisterComponent, NetworkedComponent]
-[Access(typeof(SharedStealthSystem))]
+// [Access(typeof(SharedStealthSystem))] Corvax-Wega-Edit
 public sealed partial class StealthComponent : Component
 {
     /// <summary>
@@ -44,7 +44,7 @@ public sealed partial class StealthComponent : Component
     /// If you don't have anything else updating the stealth, this will just stay at a constant value, which can be useful.
     /// </summary>
     [DataField("lastVisibility")]
-    [Access(typeof(SharedStealthSystem), Other = AccessPermissions.None)]
+    // [Access(typeof(SharedStealthSystem), Other = AccessPermissions.None)] Corvax-Wega-Edit // Go to hell
     public float LastVisibility = 1;
 
 

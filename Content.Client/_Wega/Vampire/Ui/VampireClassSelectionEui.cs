@@ -5,7 +5,7 @@ using JetBrains.Annotations;
 namespace Content.Client._Wega.Vampire.Ui;
 
 [UsedImplicitly]
-public sealed class VampireClassSelectionEui : BaseEui
+public sealed partial class VampireClassSelectionEui : BaseEui
 {
     private readonly VampireClassSelectionMenu _menu;
 

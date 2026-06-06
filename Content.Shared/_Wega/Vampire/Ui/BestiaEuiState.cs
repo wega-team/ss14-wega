@@ -5,7 +5,7 @@ using Robust.Shared.Serialization;
 namespace Content.Shared.Vampire;
 
 [Serializable, NetSerializable]
-public sealed class TrophiesEuiState : EuiStateBase
+public sealed partial class TrophiesEuiState : EuiStateBase
 {
     public List<OrganDisplayInfo> Organs { get; }
     public List<PassiveBonusInfo> PassiveBonuses { get; }
@@ -23,7 +23,7 @@ public sealed class TrophiesEuiState : EuiStateBase
 }
 
 [Serializable, NetSerializable]
-public sealed class OrganDisplayInfo
+public sealed partial class OrganDisplayInfo
 {
     public BestiaOrganType Type { get; set; }
     public int Count { get; set; }
@@ -33,7 +33,7 @@ public sealed class OrganDisplayInfo
 }
 
 [Serializable, NetSerializable]
-public sealed class PassiveBonusInfo
+public sealed partial class PassiveBonusInfo
 {
     public string Name { get; set; } = "";
     public string Value { get; set; } = "";
@@ -42,7 +42,7 @@ public sealed class PassiveBonusInfo
 }
 
 [Serializable, NetSerializable]
-public sealed class AbilityDisplayInfo
+public sealed partial class AbilityDisplayInfo
 {
     public NetEntity Action { get; set; }
     public string Name { get; set; } = "";
@@ -50,7 +50,7 @@ public sealed class AbilityDisplayInfo
 }
 
 [Serializable, NetSerializable]
-public sealed class OrganBonusDetail
+public sealed partial class OrganBonusDetail
 {
     public string OrganType { get; set; } = "";
     public string Description { get; set; } = "";
@@ -58,7 +58,7 @@ public sealed class OrganBonusDetail
 }
 
 [Serializable, NetSerializable]
-public sealed class DissectSelectionEuiState : EuiStateBase
+public sealed partial class DissectSelectionEuiState : EuiStateBase
 {
     public List<NetEntity> AvailableOrgans { get; }
 
@@ -69,7 +69,7 @@ public sealed class DissectSelectionEuiState : EuiStateBase
 }
 
 [Serializable, NetSerializable]
-public sealed class DissectOrganSelectedMessage : EuiMessageBase
+public sealed partial class DissectOrganSelectedMessage : EuiMessageBase
 {
     public NetEntity Target { get; }
 

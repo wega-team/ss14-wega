@@ -26,16 +26,16 @@ namespace Content.Server.Vampire;
 
 public sealed partial class VampireSystem
 {
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly MobThresholdSystem _threshold = default!;
-    [Dependency] private readonly MovementSpeedModifierSystem _speed = default!;
-    [Dependency] private readonly SharedStaminaSystem _stamina = default!;
-    [Dependency] private readonly StatusEffectsSystem _status = default!;
-    [Dependency] private readonly SharedStealthSystem _stealth = default!;
-    [Dependency] private readonly SharedFlashSystem _flash = default!;
-    [Dependency] private readonly MovementModStatusSystem _movementMod = default!;
-    [Dependency] private readonly PolymorphSystem _polymorph = default!;
-    [Dependency] private readonly SurgerySystem _surgery = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private MobThresholdSystem _threshold = default!;
+    [Dependency] private MovementSpeedModifierSystem _speed = default!;
+    [Dependency] private SharedStaminaSystem _stamina = default!;
+    [Dependency] private StatusEffectsSystem _status = default!;
+    [Dependency] private SharedStealthSystem _stealth = default!;
+    [Dependency] private SharedFlashSystem _flash = default!;
+    [Dependency] private MovementModStatusSystem _movementMod = default!;
+    [Dependency] private PolymorphSystem _polymorph = default!;
+    [Dependency] private SurgerySystem _surgery = default!;
 
     private static readonly ProtoId<InternalDamagePrototype> InternalBleeding = "ArterialBleeding";
     private static readonly EntProtoId ForceSleeping = "StatusEffectForcedSleeping";

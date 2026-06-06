@@ -14,8 +14,8 @@ namespace Content.Shared.Modular.Suit;
 /// </summary>
 public abstract partial class SharedModularSuitHiddenClothingSystem : EntitySystem
 {
-    [Dependency] private readonly ItemToggleSystem _toggle = default!;
-    [Dependency] private readonly StandingStateSystem _standing = default!;
+    [Dependency] private ItemToggleSystem _toggle = default!;
+    [Dependency] private StandingStateSystem _standing = default!;
 
     public override void Initialize()
     {

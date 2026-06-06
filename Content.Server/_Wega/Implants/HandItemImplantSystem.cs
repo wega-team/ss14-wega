@@ -10,13 +10,13 @@ using Robust.Shared.Containers;
 
 namespace Content.Server.Implants;
 
-public sealed class HandItemImplantSystem : EntitySystem
+public sealed partial class HandItemImplantSystem : EntitySystem
 {
-    [Dependency] private readonly AudioSystem _audio = default!;
-    [Dependency] private readonly HandsSystem _hands = default!;
-    [Dependency] private readonly ActionsSystem _actions = default!;
+    [Dependency] private AudioSystem _audio = default!;
+    [Dependency] private HandsSystem _hands = default!;
+    [Dependency] private ActionsSystem _actions = default!;
 
-    [Dependency] private readonly ContainerSystem _container = default!;
+    [Dependency] private ContainerSystem _container = default!;
 
     public override void Initialize()
     {

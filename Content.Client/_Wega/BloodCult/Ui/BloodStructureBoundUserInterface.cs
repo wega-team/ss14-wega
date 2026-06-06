@@ -5,7 +5,7 @@ using Robust.Client.UserInterface;
 namespace Content.Client._Wega.BloodCult.Ui;
 
 [UsedImplicitly]
-public sealed class BloodStructureBoundUserInterface : BoundUserInterface
+public sealed partial class BloodStructureBoundUserInterface : BoundUserInterface
 {
     [ViewVariables]
     private BloodStructureMenu? _menu;

@@ -13,15 +13,15 @@ using Robust.Shared.Physics.Components;
 
 namespace Content.Server.Modular.Suit;
 
-public sealed class ModularSuitGrabberModuleSystem : EntitySystem
+public sealed partial class ModularSuitGrabberModuleSystem : EntitySystem
 {
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedContainerSystem _container = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
-    [Dependency] private readonly InventorySystem _inventory = default!;
-    [Dependency] private readonly ModularSuitSystem _modularSuit = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedContainerSystem _container = default!;
+    [Dependency] private SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private InventorySystem _inventory = default!;
+    [Dependency] private ModularSuitSystem _modularSuit = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
 
     public const string Container = "grabber_storage";
 

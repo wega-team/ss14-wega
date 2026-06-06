@@ -8,9 +8,9 @@ namespace Content.Server.Vampire;
 /// <summary>
 /// Medics can see bite on your neck.
 /// </summary>
-public sealed class BittenByVampireSystem : EntitySystem
+public sealed partial class BittenByVampireSystem : EntitySystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private IGameTiming _timing = default!;
 
     public override void Initialize()
     {

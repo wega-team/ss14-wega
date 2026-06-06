@@ -13,6 +13,14 @@
   icon: { sprite: _Wega/Objects/Materials/Sheets/metal.rsi, state: magmite }
   color: "#df7126"
   price: 1
+  
+- type: material
+  id: ChargedBrass
+  stackEntity: SheetChargedBrass1
+  name: materials-chargedbrass
+  icon: { sprite: _Wega/Objects/Materials/Sheets/metal.rsi, state: chargedbrass }
+  color: "#3f4857"
+  price: 0.05
 
 - type: material
   id: PrintBrain
@@ -21,4 +29,3 @@
   icon: { sprite: Mobs/Species/Human/organs.rsi, state: brain }
   color: "#d9d9d9"
   price: 0.05
-  

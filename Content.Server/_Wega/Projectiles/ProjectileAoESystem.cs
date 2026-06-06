@@ -5,10 +5,10 @@ using Content.Shared.Projectiles;
 
 namespace Content.Server.Projectiles;
 
-public sealed class ProjectileAoESystem : EntitySystem
+public sealed partial class ProjectileAoESystem : EntitySystem
 {
-    [Dependency] private readonly DamageableSystem _damage = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
+    [Dependency] private DamageableSystem _damage = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
 
     public override void Initialize()
     {

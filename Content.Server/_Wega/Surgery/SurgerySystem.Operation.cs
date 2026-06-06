@@ -26,10 +26,10 @@ namespace Content.Server.Surgery;
 
 public sealed partial class SurgerySystem
 {
-    [Dependency] private readonly BloodstreamSystem _bloodstream = default!;
-    [Dependency] private readonly SharedDirtSystem _dirt = default!;
-    [Dependency] private readonly SharedSubdermalImplantSystem _implant = default!;
-    [Dependency] private readonly SharedInternalStorageSystem _internal = default!;
+    [Dependency] private BloodstreamSystem _bloodstream = default!;
+    [Dependency] private SharedDirtSystem _dirt = default!;
+    [Dependency] private SharedSubdermalImplantSystem _implant = default!;
+    [Dependency] private SharedInternalStorageSystem _internal = default!;
 
     private void PerformSurgeryEffect(SurgeryActionType action, string? requiredPart, ProtoId<InternalDamagePrototype>? damageType, float successChance,
         List<SurgeryFailedType>? failureEffect, EntityUid patient, EntityUid? item)

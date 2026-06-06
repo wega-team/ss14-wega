@@ -7,11 +7,11 @@ using Robust.Shared.Map;
 
 namespace Content.Server.Lavaland.Artefacts.Systems;
 
-public sealed class LinkedCubeSystem : EntitySystem
+public sealed partial class LinkedCubeSystem : EntitySystem
 {
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
 
     public override void Initialize()
     {

@@ -5,9 +5,9 @@ using Robust.Shared.Input.Binding;
 
 namespace Content.Shared.Crayon;
 
-public abstract class SharedCrayonSystem : EntitySystem
+public abstract partial class SharedCrayonSystem : EntitySystem
 {
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
+    [Dependency] private SharedHandsSystem _hands = default!;
 
     private readonly Angle _rotationIncrement = Angle.FromDegrees(2.5);
 

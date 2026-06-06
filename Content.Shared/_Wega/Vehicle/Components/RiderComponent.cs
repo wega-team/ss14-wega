@@ -20,7 +20,7 @@ public sealed partial class RiderComponent : Component
 }
 
 [Serializable, NetSerializable]
-public sealed class RiderComponentState : ComponentState
+public sealed partial class RiderComponentState : ComponentState
 {
     public NetEntity? Entity;
 }

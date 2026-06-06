@@ -22,3 +22,5 @@ ent-ClothingHeadHatHoodExplorerKhakiReinforced = { ent-ClothingHeadHatHoodExplor
     .desc = { ent-ClothingHeadHatHoodExplorer.desc }
 ent-ClothingHeadHatHoodPathfinder = копюшон первопроходца
     .desc = Он довольно плотный и закрывающий, разве он вам не нужен?
+ent-ClothingHeadHatHoodVeilCultRobes = капюшон латунной робы.
+    .desc = Тёплый и слегка бронированный капюшон, способный держать слабые удары.

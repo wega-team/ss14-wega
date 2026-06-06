@@ -30,7 +30,7 @@ namespace Content.Server.Vampire;
 
 public sealed partial class VampireSystem
 {
-    [Dependency] private readonly LoadoutSystem _loadout = default!;
+    [Dependency] private LoadoutSystem _loadout = default!;
 
     private void InitializeHemomancer()
     {

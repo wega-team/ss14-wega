@@ -6,7 +6,7 @@ using Robust.Client.UserInterface.Controls;
 
 namespace Content.Client._Wega.Stylesheets;
 
-public sealed class SecApartmentStyles
+public sealed partial class SecApartmentStyles
 {
     private readonly IResourceCache _resCache;
 

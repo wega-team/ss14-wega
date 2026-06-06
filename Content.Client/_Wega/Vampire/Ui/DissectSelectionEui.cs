@@ -6,7 +6,7 @@ using JetBrains.Annotations;
 namespace Content.Client._Wega.Vampire.Ui;
 
 [UsedImplicitly]
-public sealed class DissectSelectionEui : BaseEui
+public sealed partial class DissectSelectionEui : BaseEui
 {
     private DissectSelectionMenu _menu;
 

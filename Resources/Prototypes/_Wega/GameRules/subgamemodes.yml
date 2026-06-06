@@ -6,26 +6,14 @@
     minPlayers: 15
   - type: AntagSelection
     agentName: vampire-round-end-name
-    definitions:
-      - prefRoles: [ Vampire ]
+    lateJoinAdditional: true
+    antags:
+    - !type:LinearAntagCount
+      proto: Vampire
+      playerRatio: 15
+      range:
+        min: 1
         max: 4
-        playerRatio: 15
-        blacklist:
-          components:
-          - AntagImmune
-          - BibleUser
-          - Android
-          - Ipc
-        lateJoinAdditional: true
-        components:
-        - type: Vampire
-        - type: NpcFactionMember
-          factions:
-          - Vampire
-        mindRoles:
-        - MindRoleVampire
-        briefing:
-          sound: "/Audio/_Wega/Ambience/Antag/vampare_start.ogg"
 
 - type: entity
   parent: BloodBrothers
@@ -33,16 +21,14 @@
   components:
   - type: AntagSelection
     agentName: blood-brother-round-end-name
-    definitions:
-      - prefRoles: [ BloodBrother ]
+    lateJoinAdditional: true
+    antags:
+    - !type:LinearAntagCount
+      proto: BloodBrother
+      playerRatio: 1
+      range:
         min: 2
         max: 2
-        playerRatio: 1
-        blacklist:
-          components:
-          - AntagImmune
-          - Pacified # Diona ha-ha-ha
-        lateJoinAdditional: true
 
 # Extended testing
 - type: entity
@@ -63,22 +49,13 @@
     maxDifficulty: 2.5
   - type: AntagSelection
     agentName: thief-round-end-agent-name
-    selectionTime: IntraPlayerSpawn
-    definitions:
-    - prefRoles: [ Thief ]
-      max: 4
+    lateJoinAdditional: true
+    antags:
+    - !type:LinearAntagCount
+      proto: Thief
       playerRatio: 15
-      lateJoinAdditional: true
-      allowNonHumans: true
-      multiAntagSetting: NotExclusive
-      startingGear: ThiefGear
-      components:
-      - type: Thieving
-        stripTimeReduction: 2
-        stealthy: true
-      mindRoles:
-      - MindRoleThief
-      briefing:
-        sound: "/Audio/Misc/thief_greeting.ogg"
+      range:
+        min: 0
+        max: 4
   - type: DynamicRuleCost
     cost: 75

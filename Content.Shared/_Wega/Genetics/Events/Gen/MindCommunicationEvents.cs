@@ -8,7 +8,7 @@ public sealed partial class MindCommunicationActionEvent : InstantActionEvent
 }
 
 [Serializable, NetSerializable]
-public sealed class MindCommunicationMenuOpenedEvent : EntityEventArgs
+public sealed partial class MindCommunicationMenuOpenedEvent : EntityEventArgs
 {
     public NetEntity Uid { get; }
 
@@ -19,7 +19,7 @@ public sealed class MindCommunicationMenuOpenedEvent : EntityEventArgs
 }
 
 [Serializable, NetSerializable]
-public sealed class MindCommunicationTargetSelectedEvent : EntityEventArgs
+public sealed partial class MindCommunicationTargetSelectedEvent : EntityEventArgs
 {
     public NetEntity Sender { get; }
     public NetEntity Target { get; }

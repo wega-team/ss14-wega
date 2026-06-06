@@ -73,6 +73,8 @@
     ClothingShoesBootsCowboyBlack: 1
     ClothingShoesBootsCowboyWhite: 1
     ClothingShoesBootsCowboyFancy: 1 # Corvax-Wega-add
+    ClothingHeadHatWizardFake: 1
+    ClothingOuterWizardFake: 1
   contrabandInventory:
     ClothingHeadHatRichard: 1
     ToyFigurineBoxer: 1

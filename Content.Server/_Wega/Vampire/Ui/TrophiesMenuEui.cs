@@ -6,7 +6,7 @@ using JetBrains.Annotations;
 namespace Content.Server.Vampire;
 
 [UsedImplicitly]
-public sealed class TrophiesMenuEui : BaseEui
+public sealed partial class TrophiesMenuEui : BaseEui
 {
     private readonly TrophiesEuiState _state;
 

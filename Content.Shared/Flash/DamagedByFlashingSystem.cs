@@ -5,9 +5,9 @@ using Content.Shared.Damage.Systems;
 
 namespace Content.Shared.Flash;
 
-public sealed class DamagedByFlashingSystem : EntitySystem
+public sealed partial class DamagedByFlashingSystem : EntitySystem
 {
-    [Dependency] private readonly DamageableSystem _damageable = default!;
+    [Dependency] private DamageableSystem _damageable = default!;
 
     // Corvax-Wega-Phantom-Start
     [ValidatePrototypeId<DamageTypePrototype>]

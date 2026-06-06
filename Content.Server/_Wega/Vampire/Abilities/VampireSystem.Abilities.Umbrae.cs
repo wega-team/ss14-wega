@@ -19,8 +19,8 @@ namespace Content.Server.Vampire;
 
 public sealed partial class VampireSystem
 {
-    [Dependency] private readonly AtmosphereSystem _atmosphere = default!;
-    [Dependency] private readonly SharedEmpSystem _emp = default!;
+    [Dependency] private AtmosphereSystem _atmosphere = default!;
+    [Dependency] private SharedEmpSystem _emp = default!;
 
     private void InitializeUmbrae()
     {

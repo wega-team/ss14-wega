@@ -1,0 +1,209 @@
+# Basic
+- type: entity
+  id: ActionMidasTouch
+  parent: BaseAction
+  name: "[color=red]Midas Touch[/color]"
+  description: "Summons Midas Touch in your hand."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon: { sprite: _Wega/Interface/Actions/actions_veilcult.rsi, state: "midastouch" }
+    useDelay: 15
+    priority: 1
+  - type: InstantAction
+    event: !type:VeilCultMidasTouchActionEvent
+    
+- type: entity
+  parent: BaseAction
+  id: ActionVeilCultActivateCrusher
+  name: Activate Enchant
+  description: Toggle enchant of this item.
+  components:
+  - type: Action
+    itemIconStyle: BigItem
+    priority: -20
+    useDelay: 1
+  - type: InstantAction
+    event: !type:CrusherEnchantActionEvent
+  - type: LimitedCharges
+    maxCharges: 1
+    
+- type: entity
+  parent: BaseAction
+  id: ActionVeilCultActivateConfusion
+  name: Activate Enchant
+  description: Toggle enchant of this item.
+  components:
+  - type: Action
+    itemIconStyle: BigItem
+    priority: -20
+    useDelay: 1
+  - type: InstantAction
+    event: !type:ConfusionEnchantActionEvent
+  - type: LimitedCharges
+    maxCharges: 1
+    
+- type: entity
+  parent: BaseAction
+  id: ActionVeilCultActivateKnockback
+  name: Activate Enchant
+  description: Toggle enchant of this item.
+  components:
+  - type: Action
+    itemIconStyle: BigItem
+    priority: -20
+    useDelay: 1
+  - type: InstantAction
+    event: !type:KnockbackEnchantActionEvent
+  - type: LimitedCharges
+    maxCharges: 1
+   
+- type: entity
+  parent: BaseAction
+  id: ActionVeilCultActivateSwordsmen
+  name: Activate Enchant
+  description: Toggle enchant of this item.
+  components:
+  - type: Action
+    itemIconStyle: BigItem
+    priority: -20
+    useDelay: 1
+  - type: InstantAction
+    event: !type:SwordsmenEnchantActionEvent
+  - type: LimitedCharges
+    maxCharges: 1
+    
+- type: entity
+  parent: BaseAction
+  id: ActionVeilCultActivateBloodshed
+  name: Activate Enchant
+  description: Toggle enchant of this item.
+  components:
+  - type: Action
+    itemIconStyle: BigItem
+    priority: -20
+    useDelay: 1
+  - type: InstantAction
+    event: !type:BloodshedEnchantActionEvent
+  - type: LimitedCharges
+    maxCharges: 1
+    
+- type: entity
+  parent: BaseAction
+  id: ActionVeilCultActivateHaste
+  name: Activate Enchant
+  description: Toggle enchant of this item.
+  components:
+  - type: Action
+    itemIconStyle: BigItem
+    priority: -20
+    useDelay: 1
+  - type: InstantAction
+    event: !type:HasteEnchantActionEvent
+  - type: LimitedCharges
+    maxCharges: 1
+    
+- type: entity
+  parent: BaseAction
+  id: ActionVeilCultActivateReflection
+  name: Activate Enchant
+  description: Toggle enchant of this item.
+  components:
+  - type: Action
+    itemIconStyle: BigItem
+    priority: -20
+    useDelay: 1
+  - type: InstantAction
+    event: !type:ReflectionEnchantActionEvent
+  - type: LimitedCharges
+    maxCharges: 1
+    
+- type: entity
+  parent: BaseAction
+  id: ActionVeilCultActivateCamouflage
+  name: Activate Enchant
+  description: Toggle enchant of this item.
+  components:
+  - type: Action
+    itemIconStyle: BigItem
+    priority: -20
+    useDelay: 1
+  - type: InstantAction
+    event: !type:CamouflageEnchantActionEvent
+  - type: LimitedCharges
+    maxCharges: 1
+    
+- type: entity
+  parent: BaseAction
+  id: ActionVeilCultActivateAbsorb
+  name: Activate Enchant
+  description: Toggle enchant of this item.
+  components:
+  - type: Action
+    itemIconStyle: BigItem
+    priority: -20
+    useDelay: 1
+  - type: InstantAction
+    event: !type:AbsorbEnchantActionEvent
+  - type: LimitedCharges
+    maxCharges: 1
+    
+- type: entity
+  parent: BaseAction
+  id: ActionVeilCultActivateFlash
+  name: Activate Enchant
+  description: Toggle enchant of this item.
+  components:
+  - type: Action
+    itemIconStyle: BigItem
+    priority: -20
+    useDelay: 1
+  - type: InstantAction
+    event: !type:FlashEnchantActionEvent
+  - type: LimitedCharges
+    maxCharges: 1
+    
+- type: entity
+  parent: BaseAction
+  id: ActionVeilCultActivateHardenPlates
+  name: Activate Enchant
+  description: Toggle enchant of this item.
+  components:
+  - type: Action
+    itemIconStyle: BigItem
+    priority: -20
+    useDelay: 1
+  - type: InstantAction
+    event: !type:HardenPlatesEnchantActionEvent
+  - type: LimitedCharges
+    maxCharges: 1
+    
+- type: entity
+  parent: BaseAction
+  id: ActionVeilCultActivateNorthStar
+  name: Activate Enchant
+  description: Toggle enchant of this item.
+  components:
+  - type: Action
+    itemIconStyle: BigItem
+    priority: -20
+    useDelay: 1
+  - type: InstantAction
+    event: !type:NorthStarEnchantActionEvent
+  - type: LimitedCharges
+    maxCharges: 1
+    
+- type: entity
+  parent: BaseAction
+  id: ActionVeilCultActivateRedFlame
+  name: Activate Enchant
+  description: Toggle enchant of this item.
+  components:
+  - type: Action
+    itemIconStyle: BigItem
+    priority: -20
+    useDelay: 1
+  - type: InstantAction
+    event: !type:RedFlameEnchantActionEvent
+  - type: LimitedCharges
+    maxCharges: 1

@@ -31,21 +31,21 @@ namespace Content.Server.Surgery;
 
 public sealed partial class SurgerySystem : EntitySystem
 {
-    [Dependency] private readonly IAdminLogManager _admin = default!;
-    [Dependency] private readonly ChatSystem _chat = default!;
-    [Dependency] private readonly DamageableSystem _damage = default!;
-    [Dependency] private readonly DiseaseSystem _disease = default!;
-    [Dependency] private readonly SharedContainerSystem _container = default!;
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
-    [Dependency] private readonly SharedJitteringSystem _jittering = default!;
-    [Dependency] private readonly SharedToolSystem _tool = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly UserInterfaceSystem _ui = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly MobStateSystem _mobState = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly InventorySystem _inventory = default!;
+    [Dependency] private IAdminLogManager _admin = default!;
+    [Dependency] private ChatSystem _chat = default!;
+    [Dependency] private DamageableSystem _damage = default!;
+    [Dependency] private DiseaseSystem _disease = default!;
+    [Dependency] private SharedContainerSystem _container = default!;
+    [Dependency] private SharedHandsSystem _hands = default!;
+    [Dependency] private SharedJitteringSystem _jittering = default!;
+    [Dependency] private SharedToolSystem _tool = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private UserInterfaceSystem _ui = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private MobStateSystem _mobState = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private InventorySystem _inventory = default!;
 
     private static readonly ProtoId<EmotePrototype> Scream = "Scream";
     private static readonly ProtoId<DamageTypePrototype> BluntDamage = "Blunt";

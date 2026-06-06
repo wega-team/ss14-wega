@@ -10,12 +10,12 @@ namespace Content.Server.Pinpointer;
 
 public sealed partial class HandheldBeaconSystem : EntitySystem
 {
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly AppearanceSystem _appearance = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
-    [Dependency] private readonly NavMapSystem _navMap = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly UserInterfaceSystem _ui = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private AppearanceSystem _appearance = default!;
+    [Dependency] private SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private NavMapSystem _navMap = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private UserInterfaceSystem _ui = default!;
 
     public override void Initialize()
     {

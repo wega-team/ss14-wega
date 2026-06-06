@@ -15,10 +15,10 @@ namespace Content.Shared.Jaunter;
 
 public sealed partial class SharedJaunterSystem : EntitySystem
 {
-    [Dependency] private readonly InventorySystem _inventory = default!;
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private InventorySystem _inventory = default!;
+    [Dependency] private SharedHandsSystem _hands = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
 
     private static readonly EntProtoId Lava = "FloorLavaEntity";
     private const float PROBCHANCE = 0.05f;

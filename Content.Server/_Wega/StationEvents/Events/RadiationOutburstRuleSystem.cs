@@ -14,11 +14,11 @@ using Content.Shared.Ghost;
 
 namespace Content.Server.StationEvents.Events;
 
-public sealed class RadiationOutburstRuleSystem : StationEventSystem<RadiationOutburstRuleComponent> //port only with codeowner permision @4_ydo
+public sealed partial class RadiationOutburstRuleSystem : StationEventSystem<RadiationOutburstRuleComponent> //port only with codeowner permision @4_ydo
 {
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly SharedContainerSystem _containerSystem = default!;
-    [Dependency] private readonly TagSystem _tagSystem = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private SharedContainerSystem _containerSystem = default!;
+    [Dependency] private TagSystem _tagSystem = default!;
 
     private EntityQuery<MobStateComponent> _mobStateQuery;
     private EntityQuery<GhostComponent> _ghostQuery;

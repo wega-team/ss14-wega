@@ -9,12 +9,12 @@ using Robust.Shared.Random;
 
 namespace Content.Client.Blood.Cult
 {
-    public sealed class BloodCultSystem : SharedBloodCultSystem
+    public sealed partial class BloodCultSystem : SharedBloodCultSystem
     {
-        [Dependency] private readonly AppearanceSystem _appearance = default!;
-        [Dependency] private readonly IPrototypeManager _prototype = default!;
-        [Dependency] private readonly IRobustRandom _random = default!;
-        [Dependency] private readonly SpriteSystem _sprite = default!;
+        [Dependency] private AppearanceSystem _appearance = default!;
+        [Dependency] private IPrototypeManager _prototype = default!;
+        [Dependency] private IRobustRandom _random = default!;
+        [Dependency] private SpriteSystem _sprite = default!;
 
         public override void Initialize()
         {

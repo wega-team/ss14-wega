@@ -8,13 +8,13 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Server.Vampire;
 
-public sealed class HolyPointSystem : EntitySystem
+public sealed partial class HolyPointSystem : EntitySystem
 {
-    [Dependency] private readonly ChatSystem _chat = default!;
-    [Dependency] private readonly EntityLookupSystem _entityLookup = default!;
-    [Dependency] private readonly FlammableSystem _flammable = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private ChatSystem _chat = default!;
+    [Dependency] private EntityLookupSystem _entityLookup = default!;
+    [Dependency] private FlammableSystem _flammable = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
 
     private static readonly ProtoId<EmotePrototype> Scream = "Scream";
     private static readonly float FireStackCount = 2.5f;

@@ -12,11 +12,11 @@ namespace Content.Server.Administration.Commands;
 /// What are you looking at here?
 
 [AdminCommand(AdminFlags.Permissions)]
-public sealed class AchievementsGrantCommand : IConsoleCommand
+public sealed partial class AchievementsGrantCommand : IConsoleCommand
 {
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IServerDbManager _db = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IServerDbManager _db = default!;
 
     public string Command => "achievements_grant";
     public string Description => Loc.GetString("cmd-achievements_grant-desc");
@@ -100,11 +100,11 @@ public sealed class AchievementsGrantCommand : IConsoleCommand
 }
 
 [AdminCommand(AdminFlags.Permissions)]
-public sealed class AchievementsRevokeCommand : IConsoleCommand
+public sealed partial class AchievementsRevokeCommand : IConsoleCommand
 {
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IServerDbManager _db = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IServerDbManager _db = default!;
 
     public string Command => "achievements_revoke";
     public string Description => Loc.GetString("cmd-achievements_revoke-desc");
@@ -193,11 +193,11 @@ public sealed class AchievementsRevokeCommand : IConsoleCommand
 }
 
 [AdminCommand(AdminFlags.Permissions)]
-public sealed class AchievementsGrantAllCommand : IConsoleCommand
+public sealed partial class AchievementsGrantAllCommand : IConsoleCommand
 {
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IServerDbManager _db = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IServerDbManager _db = default!;
 
     public string Command => "achievements_grantall";
     public string Description => Loc.GetString("cmd-achievements_grantall-desc");
@@ -248,10 +248,10 @@ public sealed class AchievementsGrantAllCommand : IConsoleCommand
 }
 
 [AdminCommand(AdminFlags.Permissions)]
-public sealed class AchievementsClearCommand : IConsoleCommand
+public sealed partial class AchievementsClearCommand : IConsoleCommand
 {
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly IServerDbManager _db = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
+    [Dependency] private IServerDbManager _db = default!;
 
     public string Command => "achievements_clear";
     public string Description => Loc.GetString("cmd-achievements_clear-desc");
@@ -293,11 +293,11 @@ public sealed class AchievementsClearCommand : IConsoleCommand
 }
 
 [AdminCommand(AdminFlags.Admin)]
-public sealed class AchievementsListCommand : IConsoleCommand
+public sealed partial class AchievementsListCommand : IConsoleCommand
 {
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IServerDbManager _db = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IServerDbManager _db = default!;
 
     public string Command => "achievements_list";
     public string Description => Loc.GetString("cmd-achievements_list-desc");

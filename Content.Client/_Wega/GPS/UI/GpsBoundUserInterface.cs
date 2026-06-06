@@ -5,7 +5,7 @@ using Robust.Client.UserInterface;
 namespace Content.Client._Wega.GPS.UI;
 
 [UsedImplicitly]
-public sealed class GpsBoundUserInterface : BoundUserInterface
+public sealed partial class GpsBoundUserInterface : BoundUserInterface
 {
     private GpsWindow? _window;
 

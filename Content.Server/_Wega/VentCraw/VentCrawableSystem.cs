@@ -17,14 +17,14 @@ using Robust.Shared.Timing;
 
 namespace Content.Server.VentCraw;
 
-public sealed class VentCrawableSystem : EntitySystem
+public sealed partial class VentCrawableSystem : EntitySystem
 {
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
-    [Dependency] private readonly SharedAudioSystem _audioSystem = default!;
-    [Dependency] private readonly SharedContainerSystem _containerSystem = default!;
-    [Dependency] private readonly SharedPhysicsSystem _physicsSystem = default!;
-    [Dependency] private readonly SharedTransformSystem _xformSystem = default!;
-    [Dependency] private readonly VentCrawTubeSystem _ventCrawTubeSystem = default!;
+    [Dependency] private IGameTiming _gameTiming = default!;
+    [Dependency] private SharedAudioSystem _audioSystem = default!;
+    [Dependency] private SharedContainerSystem _containerSystem = default!;
+    [Dependency] private SharedPhysicsSystem _physicsSystem = default!;
+    [Dependency] private SharedTransformSystem _xformSystem = default!;
+    [Dependency] private VentCrawTubeSystem _ventCrawTubeSystem = default!;
 
     public static readonly TimeSpan CrawlDelay = TimeSpan.FromSeconds(0.5);
 

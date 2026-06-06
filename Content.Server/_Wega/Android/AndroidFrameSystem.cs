@@ -16,14 +16,14 @@ namespace Content.Server._Wega.Android;
 
 public sealed partial class AndroidFrameSystem : SharedAndroidFrameSystem
 {
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly ContainerSystem _container = default!;
-    [Dependency] private readonly HumanoidProfileSystem _humanoid = default!;
-    [Dependency] private readonly VisualBodySystem _visualBody = default!;
-    [Dependency] private readonly MetaDataSystem _metaData = default!;
-    [Dependency] private readonly NamingSystem _naming = default!;
-    [Dependency] private readonly PopupSystem _popup = default!;
-    [Dependency] private readonly AudioSystem _audio = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private ContainerSystem _container = default!;
+    [Dependency] private HumanoidProfileSystem _humanoid = default!;
+    [Dependency] private VisualBodySystem _visualBody = default!;
+    [Dependency] private MetaDataSystem _metaData = default!;
+    [Dependency] private NamingSystem _naming = default!;
+    [Dependency] private PopupSystem _popup = default!;
+    [Dependency] private AudioSystem _audio = default!;
 
     public override void Initialize()
     {

@@ -8,10 +8,10 @@ namespace Content.Server.Lavaland.Systems;
 
 public sealed partial class HandCapsuleSystem : EntitySystem
 {
-    [Dependency] private readonly MapLoaderSystem _loader = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly UseDelaySystem _useDelay = default!;
+    [Dependency] private MapLoaderSystem _loader = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
+    [Dependency] private UseDelaySystem _useDelay = default!;
 
     public override void Initialize()
     {

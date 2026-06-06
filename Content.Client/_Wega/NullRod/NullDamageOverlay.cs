@@ -7,12 +7,12 @@ using Robust.Shared.Timing;
 
 namespace Content.Client.NullRod;
 
-public sealed class NullDamageOverlay : Overlay
+public sealed partial class NullDamageOverlay : Overlay
 {
-    [Dependency] private readonly IEntityManager _entityManager = default!;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
+    [Dependency] private IEntityManager _entityManager = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IGameTiming _gameTiming = default!;
 
     private static readonly ProtoId<ShaderPrototype> NullDamageShader = "NullDamage";
     public override OverlaySpace Space => OverlaySpace.ScreenSpace;

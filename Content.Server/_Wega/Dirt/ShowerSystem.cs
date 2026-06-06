@@ -10,15 +10,15 @@ using Robust.Shared.Audio.Systems;
 
 namespace Content.Server.Shower
 {
-    public sealed class ShowerSystem : EntitySystem
+    public sealed partial class ShowerSystem : EntitySystem
     {
-        [Dependency] private readonly SharedAmbientSoundSystem _ambient = default!;
-        [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-        [Dependency] private readonly SharedAudioSystem _audio = default!;
-        [Dependency] private readonly SharedSolutionContainerSystem _solutionContainer = default!;
-        [Dependency] private readonly PuddleSystem _puddle = default!;
-        [Dependency] private readonly EntityLookupSystem _lookup = default!;
-        [Dependency] private readonly ReactiveSystem _reactive = default!;
+        [Dependency] private SharedAmbientSoundSystem _ambient = default!;
+        [Dependency] private SharedAppearanceSystem _appearance = default!;
+        [Dependency] private SharedAudioSystem _audio = default!;
+        [Dependency] private SharedSolutionContainerSystem _solutionContainer = default!;
+        [Dependency] private PuddleSystem _puddle = default!;
+        [Dependency] private EntityLookupSystem _lookup = default!;
+        [Dependency] private ReactiveSystem _reactive = default!;
 
         public override void Initialize()
         {

@@ -4,10 +4,10 @@ using Robust.Shared.Random;
 
 namespace Content.Server.Projectiles;
 
-public sealed class ProjectileInfectSystem : EntitySystem
+public sealed partial class ProjectileInfectSystem : EntitySystem
 {
-    [Dependency] private readonly DiseaseSystem _disease = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private DiseaseSystem _disease = default!;
+    [Dependency] private IRobustRandom _random = default!;
 
     public override void Initialize()
     {

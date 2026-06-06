@@ -1,0 +1,39 @@
+- type: entity
+  abstract: true
+  parent: BaseObjective
+  id: BaseVeilCultObjective
+  components:
+  - type: Objective
+    issuer: objective-issuer-veil-god
+  - type: RoleRequirement
+    roles:
+    - VeilCultistRole
+    
+# Kill
+- type: entity
+  parent: BaseVeilCultObjective
+  id: VeilCultBeaconObjective
+  components:
+  - type: Objective
+    unique: false
+    difficulty: 1
+    icon:
+      sprite: _Wega/Structures/Specific/VeilCult/beacon.rsi
+      state: icon
+  - type: TargetObjective
+    title: objective-condition-veil-ritual-person-title
+  - type: VeilCultBeaconObjective
+
+# Complete Ritual
+- type: entity
+  parent: BaseVeilCultObjective
+  id: VeilCultRitualObjective
+  name: Complete ritual
+  components:
+  - type: Objective
+    unique: true
+    difficulty: 1
+    icon:
+      sprite: Objects/Fun/Plushies/ratvar.rsi
+      state: icon
+  - type: VeilCultRitualObjective

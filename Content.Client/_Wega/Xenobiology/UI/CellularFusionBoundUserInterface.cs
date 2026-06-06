@@ -3,7 +3,7 @@ using Robust.Client.UserInterface;
 
 namespace Content.Client._Wega.Xenobiology.UI;
 
-public sealed class CellularFusionBoundUserInterface : BoundUserInterface
+public sealed partial class CellularFusionBoundUserInterface : BoundUserInterface
 {
     [ViewVariables]
     private CellularFusionWindow? _window;

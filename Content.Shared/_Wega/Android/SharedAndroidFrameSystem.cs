@@ -6,8 +6,8 @@ namespace Content.Shared._Wega.Android;
 
 public abstract partial class SharedAndroidFrameSystem : EntitySystem
 {
-    [Dependency] private readonly SharedUserInterfaceSystem _ui = default!;
-    [Dependency] private readonly ItemSlotsSystem _slots = default!;
+    [Dependency] private SharedUserInterfaceSystem _ui = default!;
+    [Dependency] private ItemSlotsSystem _slots = default!;
 
     public override void Initialize()
     {

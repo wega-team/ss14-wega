@@ -5,7 +5,7 @@ using Content.Shared.VentCraw.Components;
 
 namespace Content.Server.VentCraw;
 
-public sealed class BeingVentCrawSystem : EntitySystem
+public sealed partial class BeingVentCrawSystem : EntitySystem
 {
     public override void Initialize()
     {

@@ -59,3 +59,9 @@ magmite-ore = магмитовая руда
 consecrated-ingot = священная сталь
 
 stak-brain = мозги
+
+stack-chargedbrass = { $amount ->
+    [1] лист
+    [few] листа
+    *[other] листов
+} заряженной латуни

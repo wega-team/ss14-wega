@@ -13,12 +13,12 @@ using Robust.Shared.Timing;
 
 namespace Content.Client.Crayon;
 
-public sealed class CrayonSystem : SharedCrayonSystem
+public sealed partial class CrayonSystem : SharedCrayonSystem
 {
-    [Dependency] private readonly SharedChargesSystem _charges = default!;
-    [Dependency] private readonly EntityManager _entityManager = default!;
-    [Dependency] private readonly IOverlayManager _overlay = default!; // Corvax-Wega-Add
-    [Dependency] private readonly SpriteSystem _sprite = default!; // Corvax-Wega-Add
+    [Dependency] private SharedChargesSystem _charges = default!;
+    [Dependency] private EntityManager _entityManager = default!;
+    [Dependency] private IOverlayManager _overlay = default!; // Corvax-Wega-Add
+    [Dependency] private SpriteSystem _sprite = default!; // Corvax-Wega-Add
 
     private CrayonPreviewOverlay? _previewOverlay; // Corvax-Wega-Add
 

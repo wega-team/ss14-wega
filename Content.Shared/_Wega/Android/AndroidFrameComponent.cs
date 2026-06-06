@@ -32,7 +32,7 @@ public enum AndroidConstructUiKey : byte
 }
 
 [Serializable, NetSerializable]
-public sealed class AndroidConstructUiState : BoundUserInterfaceState
+public sealed partial class AndroidConstructUiState : BoundUserInterfaceState
 {
     public AndroidConstructUiState(ProtoId<SpeciesPrototype> species, HumanoidCharacterProfile profile, bool hasBattery, bool hasBrain)
     {
@@ -50,7 +50,7 @@ public sealed class AndroidConstructUiState : BoundUserInterfaceState
 }
 
 [Serializable, NetSerializable]
-public sealed class AndroidConstructEditMessage : BoundUserInterfaceMessage
+public sealed partial class AndroidConstructEditMessage : BoundUserInterfaceMessage
 {
     public AndroidConstructEditMessage(HumanoidCharacterProfile newProfile)
     {
@@ -61,7 +61,7 @@ public sealed class AndroidConstructEditMessage : BoundUserInterfaceMessage
 }
 
 [Serializable, NetSerializable]
-public sealed class AndroidConstructAssembleMessage : BoundUserInterfaceMessage
+public sealed partial class AndroidConstructAssembleMessage : BoundUserInterfaceMessage
 {
     public AndroidConstructAssembleMessage()
     {

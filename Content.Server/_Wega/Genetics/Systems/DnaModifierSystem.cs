@@ -33,24 +33,24 @@ namespace Content.Server.Genetics.System;
 
 public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
 {
-    [Dependency] private readonly IAdminLogManager _admin = default!;
-    [Dependency] private readonly SharedBuckleSystem _buckle = default!;
-    [Dependency] private readonly ChatSystem _chat = default!;
-    [Dependency] private readonly DamageableSystem _damage = default!;
-    [Dependency] private readonly IEntityManager _entManager = default!;
-    [Dependency] private readonly EnsureMarkingSystem _ensureMarking = default!;
-    [Dependency] private readonly StructuralEnzymesIndexerSystem _enzymesIndexer = default!;
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
-    [Dependency] private readonly ServerInventorySystem _inventory = default!;
-    [Dependency] private readonly MarkingPrototypesIndexerSystem _markingIndexer = default!;
-    [Dependency] private readonly MetaDataSystem _metaData = default!;
-    [Dependency] private readonly SharedMindSystem _mindSystem = default!;
-    [Dependency] private readonly MobThresholdSystem _mobThreshold = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly PrayerSystem _prayerSystem = default!;
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private IAdminLogManager _admin = default!;
+    [Dependency] private SharedBuckleSystem _buckle = default!;
+    [Dependency] private ChatSystem _chat = default!;
+    [Dependency] private DamageableSystem _damage = default!;
+    [Dependency] private IEntityManager _entManager = default!;
+    [Dependency] private EnsureMarkingSystem _ensureMarking = default!;
+    [Dependency] private StructuralEnzymesIndexerSystem _enzymesIndexer = default!;
+    [Dependency] private SharedHandsSystem _hands = default!;
+    [Dependency] private ServerInventorySystem _inventory = default!;
+    [Dependency] private MarkingPrototypesIndexerSystem _markingIndexer = default!;
+    [Dependency] private MetaDataSystem _metaData = default!;
+    [Dependency] private SharedMindSystem _mindSystem = default!;
+    [Dependency] private MobThresholdSystem _mobThreshold = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private PrayerSystem _prayerSystem = default!;
+    [Dependency] private IPrototypeManager _prototype = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
 
     private static readonly ProtoId<EmotePrototype> Scream = "Scream";
 

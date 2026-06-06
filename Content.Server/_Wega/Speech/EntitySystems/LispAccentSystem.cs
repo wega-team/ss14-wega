@@ -5,7 +5,7 @@ using Content.Shared.Speech;
 
 namespace Content.Server.Speech.EntitySystems
 {
-    public sealed class HissingAccentSystem : EntitySystem
+    public sealed partial class HissingAccentSystem : EntitySystem
     {
         public override void Initialize()
         {

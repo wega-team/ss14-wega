@@ -13,6 +13,13 @@ public enum BloodCultGod : byte
 }
 
 [Serializable, NetSerializable]
+public enum CultType : byte
+{
+    Blood,
+    Veil
+}
+
+[Serializable, NetSerializable]
 public enum BloodCultSpell : byte
 {
     Stun,
@@ -57,7 +64,7 @@ public enum VeilShifterVisuals : byte
 }
 
 [Serializable, NetSerializable]
-public sealed class BloodMagicState : EuiStateBase
+public sealed partial class BloodMagicState : EuiStateBase
 {
 }
 
@@ -80,7 +87,7 @@ public enum BloodStructureUiKey : byte
 }
 
 [Serializable, NetSerializable]
-public sealed class BloodStructureBoundUserInterfaceState : BoundUserInterfaceState
+public sealed partial class BloodStructureBoundUserInterfaceState : BoundUserInterfaceState
 {
     public readonly List<EntProtoId> Items;
     public BloodStructureBoundUserInterfaceState(List<EntProtoId> items)
@@ -96,7 +103,7 @@ public enum BloodRunesUiKey : byte
 }
 
 [Serializable, NetSerializable]
-public sealed class BloodRitualBoundUserInterfaceState : BoundUserInterfaceState
+public sealed partial class BloodRitualBoundUserInterfaceState : BoundUserInterfaceState
 {
 }
 

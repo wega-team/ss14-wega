@@ -11,7 +11,7 @@ public enum UtilityVendorUiKey : byte
 }
 
 [Serializable, NetSerializable]
-public sealed class CategoryData
+public sealed partial class CategoryData
 {
     public string Id { get; set; }
     public string Name { get; set; }
@@ -28,7 +28,7 @@ public sealed class CategoryData
 }
 
 [Serializable, NetSerializable]
-public sealed class UtilityVendorBoundUserInterfaceState : BoundUserInterfaceState
+public sealed partial class UtilityVendorBoundUserInterfaceState : BoundUserInterfaceState
 {
     public readonly FixedPoint2 Points;
     public readonly List<CategoryData> Categories;
@@ -41,7 +41,7 @@ public sealed class UtilityVendorBoundUserInterfaceState : BoundUserInterfaceSta
 }
 
 [Serializable, NetSerializable]
-public sealed class UtilityVendorPurchaseMessage : BoundUserInterfaceMessage
+public sealed partial class UtilityVendorPurchaseMessage : BoundUserInterfaceMessage
 {
     public readonly string ItemId;
 

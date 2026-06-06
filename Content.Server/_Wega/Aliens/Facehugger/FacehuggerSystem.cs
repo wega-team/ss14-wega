@@ -13,16 +13,16 @@ using Robust.Shared.Timing;
 
 namespace Content.Server._Wega.Aliens.Facehugger;
 
-public sealed class FacehuggerSystem : EntitySystem
+public sealed partial class FacehuggerSystem : EntitySystem
 {
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly InventorySystem _inventory = default!;
-    [Dependency] private readonly SharedContainerSystem _container = default!;
-    [Dependency] private readonly SharedInteractionSystem _interaction = default!;
-    [Dependency] private readonly MobStateSystem _mobState = default!;
-    [Dependency] private readonly StatusEffectsSystem _statusEffects = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly ThrownItemSystem _thrown = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
+    [Dependency] private InventorySystem _inventory = default!;
+    [Dependency] private SharedContainerSystem _container = default!;
+    [Dependency] private SharedInteractionSystem _interaction = default!;
+    [Dependency] private MobStateSystem _mobState = default!;
+    [Dependency] private StatusEffectsSystem _statusEffects = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private ThrownItemSystem _thrown = default!;
 
     private static readonly TimeSpan SleepDuration = TimeSpan.FromSeconds(4);
 
@@ -117,7 +117,7 @@ public sealed class FacehuggerSystem : EntitySystem
 
         return true;
     }
- 
+
     private bool IsHuggerAlive(EntityUid uid)
     {
         if (!TryComp<MobStateComponent>(uid, out var mobState))

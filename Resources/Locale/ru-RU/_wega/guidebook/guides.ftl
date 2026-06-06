@@ -3,3 +3,4 @@ guide-entry-blood-cult = Культ крови
 guide-entry-blood-brothers = Братья по крови
 guide-entry-genetic = Генетик
 guide-entry-mindchat = Чат разума
+guide-entry-veil-cult = Праведник Ратвара

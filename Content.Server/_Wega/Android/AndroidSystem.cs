@@ -25,22 +25,22 @@ namespace Content.Server.Android;
 
 public sealed partial class AndroidSystem : SharedAndroidSystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly ItemToggleSystem _toggle = default!;
-    [Dependency] private readonly SharedMindSystem _mind = default!;
-    [Dependency] private readonly MobStateSystem _mobState = default!;
-    [Dependency] private readonly MovementSpeedModifierSystem _movementSpeedModifier = default!;
-    [Dependency] private readonly PowerCellSystem _powerCell = default!;
-    [Dependency] private readonly ActionsSystem _actions = default!;
-    [Dependency] private readonly LockSystem _lock = default!;
-    [Dependency] private readonly AudioSystem _audio = default!;
-    [Dependency] private readonly PopupSystem _popup = default!;
-    [Dependency] private readonly PointLightSystem _pointLight = default!;
-    [Dependency] private readonly StunSystem _stun = default!;
-    [Dependency] private readonly SharedContainerSystem _container = default!;
-    [Dependency] private readonly AppearanceSystem _appearance = default!;
-    [Dependency] private readonly SharedVisualBodySystem _visualBody = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private ItemToggleSystem _toggle = default!;
+    [Dependency] private SharedMindSystem _mind = default!;
+    [Dependency] private MobStateSystem _mobState = default!;
+    [Dependency] private MovementSpeedModifierSystem _movementSpeedModifier = default!;
+    [Dependency] private PowerCellSystem _powerCell = default!;
+    [Dependency] private ActionsSystem _actions = default!;
+    [Dependency] private LockSystem _lock = default!;
+    [Dependency] private AudioSystem _audio = default!;
+    [Dependency] private PopupSystem _popup = default!;
+    [Dependency] private PointLightSystem _pointLight = default!;
+    [Dependency] private StunSystem _stun = default!;
+    [Dependency] private SharedContainerSystem _container = default!;
+    [Dependency] private AppearanceSystem _appearance = default!;
+    [Dependency] private SharedVisualBodySystem _visualBody = default!;
 
     public override void Initialize()
     {

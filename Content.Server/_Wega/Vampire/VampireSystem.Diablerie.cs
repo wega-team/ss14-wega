@@ -20,8 +20,8 @@ namespace Content.Server.Vampire;
 
 public sealed partial class VampireSystem
 {
-    [Dependency] private readonly RejuvenateSystem _rejuvenate = default!;
-    [Dependency] private readonly SharedChargesSystem _charges = default!;
+    [Dependency] private RejuvenateSystem _rejuvenate = default!;
+    [Dependency] private SharedChargesSystem _charges = default!;
 
     private static readonly EntProtoId Ash = "Ash";
 

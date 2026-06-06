@@ -5,7 +5,7 @@ namespace Content.Shared.Stunnable;
 
 public abstract partial class SharedStunSystem
 {
-    [Dependency] private readonly MovementModStatusSystem _movementMod = default!;
+    [Dependency] private MovementModStatusSystem _movementMod = default!;
 
     private void OnSlowdownOnContactCollide(Entity<SlowdownOnContactComponent> ent, ref StartCollideEvent args)
     {

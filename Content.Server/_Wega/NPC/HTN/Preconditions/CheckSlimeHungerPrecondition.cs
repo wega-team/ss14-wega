@@ -4,7 +4,7 @@ namespace Content.Server.NPC.HTN.Preconditions;
 
 public sealed partial class CheckSlimeHungerPrecondition : HTNPrecondition
 {
-    [Dependency] private readonly IEntityManager _entMan = default!;
+    [Dependency] private IEntityManager _entMan = default!;
 
     [DataField("targetState")]
     public SlimeBehaviorState TargetState;

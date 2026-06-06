@@ -20,20 +20,20 @@ using Content.Shared.PowerCell;
 
 namespace Content.Server.Botany.Systems;
 
-public sealed class PlantAnalyzerSystem : SharedPlantAnalyzerSystem
+public sealed partial class PlantAnalyzerSystem : SharedPlantAnalyzerSystem
 {
-    [Dependency] private readonly BotanySystem _botany = default!;
-    [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
-    [Dependency] private readonly PopupSystem _popupSystem = default!;
-    [Dependency] private readonly SharedHandsSystem _handsSystem = default!;
-    [Dependency] private readonly SharedAudioSystem _audioSystem = default!;
-    [Dependency] private readonly PaperSystem _paperSystem = default!;
-    [Dependency] private readonly LabelSystem _labelSystem = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly PowerCellSystem _cell = default!;
-    [Dependency] private readonly ItemToggleSystem _toggle = default!;
+    [Dependency] private BotanySystem _botany = default!;
+    [Dependency] private UserInterfaceSystem _uiSystem = default!;
+    [Dependency] private IGameTiming _gameTiming = default!;
+    [Dependency] private PopupSystem _popupSystem = default!;
+    [Dependency] private SharedHandsSystem _handsSystem = default!;
+    [Dependency] private SharedAudioSystem _audioSystem = default!;
+    [Dependency] private PaperSystem _paperSystem = default!;
+    [Dependency] private LabelSystem _labelSystem = default!;
+    [Dependency] private SharedDoAfterSystem _doAfterSystem = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private PowerCellSystem _cell = default!;
+    [Dependency] private ItemToggleSystem _toggle = default!;
 
     public override void Initialize()
     {

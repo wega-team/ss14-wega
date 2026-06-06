@@ -11,10 +11,10 @@ using System.Linq;
 
 namespace Content.Server.Implants
 {
-    public sealed class BodyPartImplantSystem : EntitySystem
+    public sealed partial class BodyPartImplantSystem : EntitySystem
     {
-        [Dependency] private readonly ToolSystem _tool = default!;
-        [Dependency] private readonly PopupSystem _popup = default!;
+        [Dependency] private ToolSystem _tool = default!;
+        [Dependency] private PopupSystem _popup = default!;
 
         public override void Initialize()
         {

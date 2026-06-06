@@ -11,14 +11,14 @@ using Robust.Shared.Timing;
 
 namespace Content.Server.Modular.Suit;
 
-public sealed class AffectedModuleSpringlockSystem : EntitySystem
+public sealed partial class AffectedModuleSpringlockSystem : EntitySystem
 {
-    [Dependency] private readonly SharedAchievementsSystem _achievement = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly DamageableSystem _damage = default!;
-    [Dependency] private readonly InventorySystem _inventory = default!;
-    [Dependency] private readonly SharedModularSuitSystem _modular = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private SharedAchievementsSystem _achievement = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private DamageableSystem _damage = default!;
+    [Dependency] private InventorySystem _inventory = default!;
+    [Dependency] private SharedModularSuitSystem _modular = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
 
     public override void Initialize()
     {

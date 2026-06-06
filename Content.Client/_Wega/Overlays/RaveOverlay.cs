@@ -8,8 +8,8 @@ namespace Content.Client.Overlays;
 
 public sealed partial class RaveOverlay : Overlay
 {
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IGameTiming _gameTiming = default!;
 
     private static readonly ProtoId<ShaderPrototype> Shader = "Rave";
 

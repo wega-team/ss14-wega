@@ -12,10 +12,10 @@ using Content.Shared.Vampire.Components;
 
 namespace Content.Server.GameTicking.Rules
 {
-    public sealed class VampireRuleSystem : GameRuleSystem<VampireRuleComponent>
+    public sealed partial class VampireRuleSystem : GameRuleSystem<VampireRuleComponent>
     {
-        [Dependency] private readonly AntagSelectionSystem _antag = default!;
-        [Dependency] private readonly SharedMindSystem _mind = default!;
+        [Dependency] private AntagSelectionSystem _antag = default!;
+        [Dependency] private SharedMindSystem _mind = default!;
 
         public override void Initialize()
         {

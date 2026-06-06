@@ -8,11 +8,11 @@ using Content.Shared.Weapons.Melee.Events;
 
 namespace Content.Shared.Mobs.Anger;
 
-public sealed class MobAngerSystem : EntitySystem
+public sealed partial class MobAngerSystem : EntitySystem
 {
-    [Dependency] private readonly DamageableSystem _damageable = default!;
-    [Dependency] private readonly MovementSpeedModifierSystem _speed = default!;
-    [Dependency] private readonly MobThresholdSystem _threshold = default!;
+    [Dependency] private DamageableSystem _damageable = default!;
+    [Dependency] private MovementSpeedModifierSystem _speed = default!;
+    [Dependency] private MobThresholdSystem _threshold = default!;
 
     public override void Initialize()
     {

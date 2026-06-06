@@ -172,6 +172,7 @@
       Female: FemaleAndroid
       Unsexed: MaleAndroid
   - type: Damageable
+  - type: Injurable
     damageContainer: Android
   - type: DamageVisuals
     damageOverlayGroups:

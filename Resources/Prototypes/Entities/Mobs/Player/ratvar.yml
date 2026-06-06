@@ -97,3 +97,40 @@
     blacklist:
       tags:
       - GhostOnlyWarp
+  # Corvax-Wega-Veil-Cult-start
+  - type: Godmode
+  - type: Eye
+    drawFov: false
+  - type: Puller
+    needsHands: false
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 10
+    baseSprintSpeed: 4
+  - type: GhostTakeoverAvailable
+  - type: GhostRole
+    allowMovement: true
+    allowSpeech: true
+    makeSentient: true
+    name: ghost-role-information-ratvar
+    description: ghost-role-information-ratvar-desc
+    rules: ""
+    raffle:
+      settings: short
+  - type: CombatMode
+  - type: MeleeWeapon
+    resistanceBypass: True
+    altDisarm: false
+    hidden: true
+    angle: 180
+    range: 8
+    animation: WeaponArcClaw
+    soundHit:
+      path: /Audio/Weapons/block_metal1.ogg
+    attackRate: 2
+    damage:
+      types:
+        Blunt: 250
+        Slash: 250
+        Piercing: 50
+        Structural: 2500
+  # Corvax-Wega-Veil-Cult-end

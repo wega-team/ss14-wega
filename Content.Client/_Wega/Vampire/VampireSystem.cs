@@ -12,13 +12,13 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Client.Vampire;
 
-public sealed class VampireSystem : SharedVampireSystem
+public sealed partial class VampireSystem : SharedVampireSystem
 {
-    [Dependency] private readonly GhostSystem? _ghost = default;
-    [Dependency] private readonly IClientAdminManager _admin = default!;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
-    [Dependency] private readonly SpriteSystem _sprite = default!;
+    [Dependency] private GhostSystem _ghost = default!;
+    [Dependency] private IClientAdminManager _admin = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
+    [Dependency] private IPrototypeManager _prototype = default!;
+    [Dependency] private SpriteSystem _sprite = default!;
 
     public override void Initialize()
     {

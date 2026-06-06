@@ -9,14 +9,14 @@ using Robust.Shared.Prototypes;
 namespace Content.Client._Wega.Android.Ui;
 
 [UsedImplicitly]
-public sealed class AndroidConstructBoundUserInterface : BoundUserInterface
+public sealed partial class AndroidConstructBoundUserInterface : BoundUserInterface
 {
     [ViewVariables]
     private AndroidConstructMenu? _menu;
 
-    [Dependency] private readonly IConfigurationManager _cfgManager = default!;
-    [Dependency] private readonly MarkingManager _markingManager = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IConfigurationManager _cfgManager = default!;
+    [Dependency] private MarkingManager _markingManager = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
 
     public HumanoidCharacterProfile Profile = new();
 

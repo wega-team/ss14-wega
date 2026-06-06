@@ -3,6 +3,8 @@ using Content.Shared.Hands;
 using Content.Shared.Popups;
 using Content.Shared.Throwing;
 using Content.Shared.Blood.Cult.Components;
+using Content.Shared.Blood.Cult;
+using Content.Shared.Veil.Cult.Components;
 using Content.Shared.Weapons.Melee.Events;
 using Robust.Shared.Random;
 
@@ -10,19 +12,22 @@ namespace Content.Server.Blood.Cult;
 
 public sealed partial class BloodCultSystem
 {
-    [Dependency] private readonly ThrowingSystem _throwing = default!;
+    [Dependency] private ThrowingSystem _throwing = default!;
 
     private void InitializeEquipment()
     {
-        SubscribeLocalEvent<BloodCultEquipmentComponent, GotEquippedEvent>(OnDidEquip);
-        SubscribeLocalEvent<BloodCultEquipmentComponent, BeforeGettingEquippedHandEvent>(OnHandPickUp);
-        SubscribeLocalEvent<BloodCultWeaponComponent, MeleeHitEvent>(OnBloodCultMeleeHit);
+        SubscribeLocalEvent<CultEquipmentComponent, GotEquippedEvent>(OnDidEquip);
+        SubscribeLocalEvent<CultEquipmentComponent, BeforeGettingEquippedHandEvent>(OnHandPickUp);
+        SubscribeLocalEvent<CultWeaponComponent, MeleeHitEvent>(OnCultMeleeHit);
     }
 
-    private void OnDidEquip(Entity<BloodCultEquipmentComponent> ent, ref GotEquippedEvent args)
+    private void OnDidEquip(Entity<CultEquipmentComponent> ent, ref GotEquippedEvent args)
     {
 
-        if (HasComp<BloodCultistComponent>(args.EquipTarget))
+        if (HasComp<BloodCultistComponent>(args.EquipTarget) && ent.Comp.Cult == CultType.Blood)
+            return;
+
+        if (HasComp<VeilCultistComponent>(args.EquipTarget) && ent.Comp.Cult == CultType.Veil)
             return;
 
         _transform.SetCoordinates(ent, Transform(args.EquipTarget).Coordinates);
@@ -32,12 +37,15 @@ public sealed partial class BloodCultSystem
             args.EquipTarget, args.EquipTarget, PopupType.MediumCaution);
     }
 
-    private void OnHandPickUp(Entity<BloodCultEquipmentComponent> ent, ref BeforeGettingEquippedHandEvent args)
+    private void OnHandPickUp(Entity<CultEquipmentComponent> ent, ref BeforeGettingEquippedHandEvent args)
     {
         if (args.Cancelled)
             return;
 
-        if (HasComp<BloodCultistComponent>(args.User))
+        if (HasComp<BloodCultistComponent>(args.User) && ent.Comp.Cult == CultType.Blood)
+            return;
+
+        if (HasComp<VeilCultistComponent>(args.User) && ent.Comp.Cult == CultType.Veil)
             return;
 
         args.Cancelled = true;
@@ -51,7 +59,7 @@ public sealed partial class BloodCultSystem
             PopupType.MediumCaution);
     }
 
-    private void OnBloodCultMeleeHit(EntityUid uid, BloodCultWeaponComponent comp, MeleeHitEvent args)
+    private void OnCultMeleeHit(EntityUid uid, CultWeaponComponent comp, MeleeHitEvent args)
     {
         if (!args.IsHit || args.HitEntities.Count == 0)
             return;
@@ -62,7 +70,10 @@ public sealed partial class BloodCultSystem
         for (int i = hitList.Count - 1; i >= 0; i--)
         {
             var target = hitList[i];
-            if (HasComp<BloodCultistComponent>(target))
+            if (HasComp<BloodCultistComponent>(target) && comp.Cult == CultType.Blood)
+                hitList.RemoveAt(i);
+
+            if (HasComp<VeilCultistComponent>(target) && comp.Cult == CultType.Veil)
                 hitList.RemoveAt(i);
         }
 
@@ -70,4 +81,3 @@ public sealed partial class BloodCultSystem
             args.Handled = true;
     }
 }
-

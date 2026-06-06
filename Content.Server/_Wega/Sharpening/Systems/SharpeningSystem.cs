@@ -6,9 +6,9 @@ using Robust.Shared.Audio;
 
 namespace Content.Server.Sharpening.Systems;
 
-public sealed class SharpeningSystem : SharedSharpeningSystem
+public sealed partial class SharpeningSystem : SharedSharpeningSystem
 {
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
     public override void Initialize()
     {
         base.Initialize();

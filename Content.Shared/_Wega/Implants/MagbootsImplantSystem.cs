@@ -7,11 +7,11 @@ using Content.Shared.Toggleable;
 
 namespace Content.Shared._Wega.Implants;
 
-public sealed class SharedMagbootsImplantSystem : EntitySystem
+public sealed partial class SharedMagbootsImplantSystem : EntitySystem
 {
-    [Dependency] private readonly SharedActionsSystem _actions = default!;
-    [Dependency] private readonly AlertsSystem _alerts = default!;
-    [Dependency] private readonly SharedGravitySystem _gravity = default!;
+    [Dependency] private SharedActionsSystem _actions = default!;
+    [Dependency] private AlertsSystem _alerts = default!;
+    [Dependency] private SharedGravitySystem _gravity = default!;
 
     public override void Initialize()
     {

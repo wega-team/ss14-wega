@@ -101,8 +101,6 @@
     slots:
       cell_slot:
         name: power-cell-slot-component-slot-name-default
-  - type: Damageable
-    damageContainer: Clothing
   - type: Reactive
     reactions:
     - reagents: [Water, SpaceCleaner]

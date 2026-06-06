@@ -12,7 +12,7 @@ namespace Content.Client._Wega.Xenobiology.UI;
 [GenerateTypedNameReferences]
 public sealed partial class CellularFusionWindow : FancyWindow
 {
-    [Dependency] private readonly IEntityManager _entity = default!;
+    [Dependency] private IEntityManager _entity = default!;
 
     private readonly CellSystem _cell;
 

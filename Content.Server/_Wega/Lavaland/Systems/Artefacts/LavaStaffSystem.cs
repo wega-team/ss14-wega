@@ -9,15 +9,15 @@ using Robust.Shared.Map;
 
 namespace Content.Server.Lavaland.Artefacts.Systems;
 
-public sealed class LavaStaffSystem : EntitySystem
+public sealed partial class LavaStaffSystem : EntitySystem
 {
-    [Dependency] private readonly IMapManager _mapManager = default!;
-    [Dependency] private readonly ITileDefinitionManager _tileDefManager = default!;
-    [Dependency] private readonly SharedMapSystem _map = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly PopupSystem _popup = default!;
-    [Dependency] private readonly UseDelaySystem _useDelay = default!;
+    [Dependency] private IMapManager _mapManager = default!;
+    [Dependency] private ITileDefinitionManager _tileDefManager = default!;
+    [Dependency] private SharedMapSystem _map = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private PopupSystem _popup = default!;
+    [Dependency] private UseDelaySystem _useDelay = default!;
 
     public override void Initialize()
     {

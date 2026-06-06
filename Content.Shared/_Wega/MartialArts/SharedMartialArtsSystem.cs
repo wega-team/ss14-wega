@@ -7,15 +7,14 @@ using Content.Shared.Martial.Arts.Components;
 using Content.Shared.Martial.Arts.Prototypes;
 using Content.Shared.Popups;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Utility;
 
 namespace Content.Shared.Martial.Arts;
 
-public abstract class SharedMartialArtsSystem : EntitySystem
+public abstract partial class SharedMartialArtsSystem : EntitySystem
 {
-    [Dependency] private readonly SharedActionsSystem _action = default!;
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private SharedActionsSystem _action = default!;
+    [Dependency] private IPrototypeManager _prototype = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
 
     public override void Initialize()
     {

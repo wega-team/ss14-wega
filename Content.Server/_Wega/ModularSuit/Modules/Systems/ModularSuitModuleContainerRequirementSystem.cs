@@ -4,10 +4,10 @@ using Robust.Shared.Containers;
 
 namespace Content.Server.Modular.Suit;
 
-public sealed class ModularSuitModuleContainerRequirementSystem : EntitySystem
+public sealed partial class ModularSuitModuleContainerRequirementSystem : EntitySystem
 {
-    [Dependency] private readonly SharedContainerSystem _container = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private SharedContainerSystem _container = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
 
     public override void Initialize()
     {

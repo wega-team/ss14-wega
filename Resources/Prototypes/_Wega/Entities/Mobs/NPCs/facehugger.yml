@@ -22,6 +22,7 @@
   - type: VentCrawler
     enterDelay: 1
   - type: Damageable
+  - type: Injurable
     damageContainer: Biological
   - type: MobThresholds
     thresholds:

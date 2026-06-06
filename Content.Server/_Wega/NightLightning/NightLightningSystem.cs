@@ -9,12 +9,12 @@ using Robust.Shared.Timing;
 
 namespace Content.Server.Night.Lightning;
 
-public sealed class NightLightningSystem : EntitySystem
+public sealed partial class NightLightningSystem : EntitySystem
 {
-    [Dependency] private readonly IConfigurationManager _cfg = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly SharedPointLightSystem _light = default!;
-    [Dependency] private readonly ChatSystem _chat = default!;
+    [Dependency] private IConfigurationManager _cfg = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
+    [Dependency] private SharedPointLightSystem _light = default!;
+    [Dependency] private ChatSystem _chat = default!;
 
     public override void Initialize()
     {

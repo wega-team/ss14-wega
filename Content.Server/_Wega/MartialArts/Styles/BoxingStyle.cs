@@ -11,9 +11,9 @@ namespace Content.Server.Martial.Arts;
 /// Boxe
 public sealed partial class MartialArtsSystem
 {
-    [Dependency] private readonly SharedPhysicsSystem _physics = default!;
-    [Dependency] private readonly IMapManager _mapMan = default!;
-    [Dependency] private readonly SharedMapSystem _map = default!;
+    [Dependency] private SharedPhysicsSystem _physics = default!;
+    [Dependency] private IMapManager _mapMan = default!;
+    [Dependency] private SharedMapSystem _map = default!;
 
     private void InitializeBoxing()
     {

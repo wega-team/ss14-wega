@@ -4,7 +4,7 @@ using Content.Shared.Eui;
 
 namespace Content.Server.Vampire;
 
-public sealed class VampireClassSelectionEui : BaseEui
+public sealed partial class VampireClassSelectionEui : BaseEui
 {
     private readonly EntityUid _vampire;
     private readonly VampireSystem _vampireSystem;

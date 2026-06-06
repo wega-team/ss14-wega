@@ -5,11 +5,11 @@ using Content.Shared.PowerCell;
 
 namespace Content.Client.Android;
 
-public sealed class AndroidSystem : SharedAndroidSystem
+public sealed partial class AndroidSystem : SharedAndroidSystem
 {
-    [Dependency] private readonly PowerCellSystem _powerCell = default!;
-    [Dependency] private readonly BatterySystem _battery = default!;
-    [Dependency] private readonly AlertsSystem _alerts = default!;
+    [Dependency] private PowerCellSystem _powerCell = default!;
+    [Dependency] private BatterySystem _battery = default!;
+    [Dependency] private AlertsSystem _alerts = default!;
 
     public override void Initialize()
     {

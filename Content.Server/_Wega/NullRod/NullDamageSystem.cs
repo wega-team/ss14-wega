@@ -10,11 +10,11 @@ using Content.Shared.Rejuvenate;
 
 namespace Content.Server.NullRod;
 
-public sealed class NullDamageSystem : EntitySystem
+public sealed partial class NullDamageSystem : EntitySystem
 {
-    [Dependency] private readonly IAdminLogManager _admin = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
+    [Dependency] private IAdminLogManager _admin = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private SharedHandsSystem _hands = default!;
 
     public override void Initialize()
     {

@@ -2,6 +2,7 @@ using System.Numerics;
 using Content.Shared.Body;
 using Content.Shared.CombatMode;
 using Content.Shared.Damage.Prototypes;
+using Content.Shared.Ensnaring;
 using Content.Shared.Ensnaring.Components;
 using Content.Shared.FixedPoint;
 using Content.Shared.Movement.Components;
@@ -22,6 +23,8 @@ namespace Content.Server.Vampire;
 
 public sealed partial class VampireSystem
 {
+    [Dependency] private SharedEnsnareableSystem _ensnareable = default!;
+
     public static readonly ProtoId<DamageModifierSetPrototype> BloodSwell = "VampireBloodSwell";
 
     private void InitializeGargantua()
@@ -123,7 +126,7 @@ public sealed partial class VampireSystem
 
     private void OnSeismicStomp(Entity<VampireComponent> ent, ref VampireSeismicStompActionEvent args)
     {
-        if (TryComp(ent, out EnsnareableComponent? ensnareable) && ensnareable.IsEnsnared)
+        if (_ensnareable.IsEnsnared(ent.Owner))
         {
             _popup.PopupEntity(Loc.GetString("vampire-legs-ensnared"), ent, ent, PopupType.Medium);
             return;
@@ -181,7 +184,7 @@ public sealed partial class VampireSystem
 
     private void OnOverwhelmingForce(Entity<VampireComponent> ent, ref VampireOverwhelmingForceActionEvent args)
     {
-        if (TryComp(ent, out EnsnareableComponent? ensnareable) && ensnareable.IsEnsnared)
+        if (_ensnareable.IsEnsnared(ent.Owner))
         {
             _popup.PopupEntity(Loc.GetString("vampire-legs-ensnared"), ent, ent, PopupType.Medium);
             return;
@@ -259,7 +262,7 @@ public sealed partial class VampireSystem
 
     private void OnCharge(Entity<VampireComponent> ent, ref VampireChargeActionEvent args)
     {
-        if (TryComp(ent, out EnsnareableComponent? ensnareable) && ensnareable.IsEnsnared)
+        if (_ensnareable.IsEnsnared(ent.Owner))
         {
             _popup.PopupEntity(Loc.GetString("vampire-legs-ensnared"), ent, ent, PopupType.Medium);
             return;

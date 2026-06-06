@@ -9,15 +9,15 @@ using Robust.Shared.Timing;
 
 namespace Content.Shared.Overlay;
 
-public abstract class SharedToggleableEquipmentHudSystem<T> : EntitySystem where T : ToggleableHudComponent
+public abstract partial class SharedToggleableEquipmentHudSystem<T> : EntitySystem where T : ToggleableHudComponent
 {
-    [Dependency] private readonly SharedActionsSystem _actions = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly PowerCellSystem _powerCell = default!;
-    [Dependency] private readonly ActionContainerSystem _actionContainer = default!;
-    [Dependency] private readonly ItemToggleSystem _toggle = default!;
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
+    [Dependency] private SharedActionsSystem _actions = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private PowerCellSystem _powerCell = default!;
+    [Dependency] private ActionContainerSystem _actionContainer = default!;
+    [Dependency] private ItemToggleSystem _toggle = default!;
+    [Dependency] private IGameTiming _gameTiming = default!;
 
     public override void Initialize()
     {

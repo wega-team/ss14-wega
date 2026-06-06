@@ -8,7 +8,7 @@
     sprite: _Wega/Objects/Weapons/Melee/chainsword.rsi
   - type: MeleeWeapon
     soundHit:
-      path: /Audio/Weapons/chainsaw.ogg
+      path: /Audio/Weapons/chainsaw_rev.ogg
       params:
         volume: -3
   - type: Item

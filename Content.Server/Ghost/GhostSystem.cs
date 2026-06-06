@@ -51,41 +51,41 @@ using Content.Shared.Whitelist; // Corvax-Wega-GhostBar
 
 namespace Content.Server.Ghost
 {
-    public sealed class GhostSystem : SharedGhostSystem
+    public sealed partial class GhostSystem : SharedGhostSystem
     {
-        [Dependency] private readonly SharedActionsSystem _actions = default!;
-        [Dependency] private readonly IAdminLogManager _adminLog = default!;
-        [Dependency] private readonly SharedEyeSystem _eye = default!;
-        [Dependency] private readonly FollowerSystem _followerSystem = default!;
-        [Dependency] private readonly JobSystem _jobs = default!;
-        [Dependency] private readonly EntityLookupSystem _lookup = default!;
-        [Dependency] private readonly MindSystem _minds = default!;
-        [Dependency] private readonly MobStateSystem _mobState = default!;
-        [Dependency] private readonly SharedPhysicsSystem _physics = default!;
-        [Dependency] private readonly ISharedPlayerManager _player = default!;
-        [Dependency] private readonly TransformSystem _transformSystem = default!;
-        [Dependency] private readonly VisibilitySystem _visibilitySystem = default!;
-        [Dependency] private readonly MetaDataSystem _metaData = default!;
-        [Dependency] private readonly MobThresholdSystem _mobThresholdSystem = default!;
-        [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-        [Dependency] private readonly IConfigurationManager _configurationManager = default!;
-        [Dependency] private readonly IChatManager _chatManager = default!;
-        [Dependency] private readonly SharedMindSystem _mind = default!;
-        [Dependency] private readonly GameTicker _gameTicker = default!;
-        [Dependency] private readonly DamageableSystem _damageable = default!;
-        [Dependency] private readonly SharedPopupSystem _popup = default!;
-        [Dependency] private readonly IRobustRandom _random = default!;
-        [Dependency] private readonly TagSystem _tag = default!;
-        [Dependency] private readonly NameModifierSystem _nameMod = default!;
-        [Dependency] private readonly GhostSpriteStateSystem _ghostState = default!;
-        [Dependency] private readonly IEntityManager _entityManager = default!; // Corvax-Wega-GhostBar
-        [Dependency] private readonly StationSpawningSystem _spawning = default!; // Corvax-Wega-GhostBar
-        [Dependency] private readonly LoadoutSystem _loadout = default!; // Corvax-Wega-GhostBar
-        [Dependency] private readonly SharedHandsSystem _sharedHandsSystem = default!; // Corvax-Wega-GhostBar
-        [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!; // Corvax-Wega-GhostBar
+        [Dependency] private SharedActionsSystem _actions = default!;
+        [Dependency] private IAdminLogManager _adminLog = default!;
+        [Dependency] private SharedEyeSystem _eye = default!;
+        [Dependency] private FollowerSystem _followerSystem = default!;
+        [Dependency] private JobSystem _jobs = default!;
+        [Dependency] private EntityLookupSystem _lookup = default!;
+        [Dependency] private MindSystem _minds = default!;
+        [Dependency] private MobStateSystem _mobState = default!;
+        [Dependency] private SharedPhysicsSystem _physics = default!;
+        [Dependency] private ISharedPlayerManager _player = default!;
+        [Dependency] private TransformSystem _transformSystem = default!;
+        [Dependency] private VisibilitySystem _visibilitySystem = default!;
+        [Dependency] private MetaDataSystem _metaData = default!;
+        [Dependency] private MobThresholdSystem _mobThresholdSystem = default!;
+        [Dependency] private IPrototypeManager _prototypeManager = default!;
+        [Dependency] private IConfigurationManager _configurationManager = default!;
+        [Dependency] private IChatManager _chatManager = default!;
+        [Dependency] private SharedMindSystem _mind = default!;
+        [Dependency] private GameTicker _gameTicker = default!;
+        [Dependency] private DamageableSystem _damageable = default!;
+        [Dependency] private SharedPopupSystem _popup = default!;
+        [Dependency] private IRobustRandom _random = default!;
+        [Dependency] private TagSystem _tag = default!;
+        [Dependency] private NameModifierSystem _nameMod = default!;
+        [Dependency] private GhostSpriteStateSystem _ghostState = default!;
+        [Dependency] private IEntityManager _entityManager = default!; // Corvax-Wega-GhostBar
+        [Dependency] private StationSpawningSystem _spawning = default!; // Corvax-Wega-GhostBar
+        [Dependency] private LoadoutSystem _loadout = default!; // Corvax-Wega-GhostBar
+        [Dependency] private SharedHandsSystem _sharedHandsSystem = default!; // Corvax-Wega-GhostBar
+        [Dependency] private EntityWhitelistSystem _whitelistSystem = default!; // Corvax-Wega-GhostBar
 
-        private EntityQuery<GhostComponent> _ghostQuery;
-        private EntityQuery<PhysicsComponent> _physicsQuery;
+        [Dependency] private EntityQuery<GhostComponent> _ghostQuery = default!;
+        [Dependency] private EntityQuery<PhysicsComponent> _physicsQuery = default!;
 
         private static readonly ProtoId<TagPrototype> AllowGhostShownByEventTag = "AllowGhostShownByEvent";
         private static readonly ProtoId<DamageTypePrototype> AsphyxiationDamageType = "Asphyxiation";
@@ -93,9 +93,6 @@ namespace Content.Server.Ghost
         public override void Initialize()
         {
             base.Initialize();
-
-            _ghostQuery = GetEntityQuery<GhostComponent>();
-            _physicsQuery = GetEntityQuery<PhysicsComponent>();
 
             SubscribeLocalEvent<GhostComponent, ComponentStartup>(OnGhostStartup);
             SubscribeLocalEvent<GhostComponent, MapInitEvent>(OnMapInit);

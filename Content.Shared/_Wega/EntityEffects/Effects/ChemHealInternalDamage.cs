@@ -12,7 +12,7 @@ namespace Content.Shared.EntityEffects.Effects;
 /// <inheritdoc cref="EntityEffectSystem{T,TEffect}"/>
 public sealed partial class ChemHealInternalDamageEntityEffectSystem : EntityEffectSystem<OperatedComponent, ChemHealInternalDamage>
 {
-    [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private IRobustRandom _random = default!;
 
     protected override void Effect(Entity<OperatedComponent> entity, ref EntityEffectEvent<ChemHealInternalDamage> args)
     {

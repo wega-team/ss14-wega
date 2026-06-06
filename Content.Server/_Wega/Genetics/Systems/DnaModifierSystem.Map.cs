@@ -5,7 +5,7 @@ namespace Content.Server.Genetics.System;
 
 public sealed partial class DnaModifierSystem
 {
-    [Dependency] private readonly MapSystem _map = default!;
+    [Dependency] private MapSystem _map = default!;
 
     public EntityUid? PausedMap { get; private set; }
 

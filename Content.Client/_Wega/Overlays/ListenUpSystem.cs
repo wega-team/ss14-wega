@@ -6,10 +6,10 @@ using Robust.Shared.Player;
 
 namespace Content.Client._Wega.Overlays;
 
-public sealed class ListenUpSystem : SharedListenUpSkillSystem
+public sealed partial class ListenUpSystem : SharedListenUpSkillSystem
 {
-    [Dependency] private readonly IPlayerManager _player = default!;
-    [Dependency] private readonly IOverlayManager _overlayMan = default!;
+    [Dependency] private IPlayerManager _player = default!;
+    [Dependency] private IOverlayManager _overlayMan = default!;
 
     private ListenUpOverlay _listenUpOverlay = default!;
 

@@ -12,10 +12,10 @@ namespace Content.Server.DetailExaminable;
 
 public sealed partial class DetailExaminableSystem : EntitySystem
 {
-    [Dependency] private readonly ISharedPlayerManager _player = default!;
-    [Dependency] private readonly ExamineSystemShared _examine = default!;
-    [Dependency] private readonly EuiManager _euiMan = default!;
-    [Dependency] private readonly MindSystem _mind = default!;
+    [Dependency] private ISharedPlayerManager _player = default!;
+    [Dependency] private ExamineSystemShared _examine = default!;
+    [Dependency] private EuiManager _euiMan = default!;
+    [Dependency] private MindSystem _mind = default!;
 
     public override void Initialize()
     {

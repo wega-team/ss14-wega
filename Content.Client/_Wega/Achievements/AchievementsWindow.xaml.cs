@@ -13,9 +13,9 @@ namespace Content.Client._Wega.Achievements;
 [GenerateTypedNameReferences]
 public sealed partial class AchievementsWindow : FancyWindow
 {
-    [Dependency] private readonly IDependencyCollection _dependencies = default!;
-    [Dependency] private readonly IEntitySystemManager _sysMan = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IDependencyCollection _dependencies = default!;
+    [Dependency] private IEntitySystemManager _sysMan = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
     private readonly AchievementsSystem _achievements;
     private readonly SpriteSystem _spriteSystem;
 

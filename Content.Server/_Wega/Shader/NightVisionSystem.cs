@@ -3,4 +3,4 @@ using Content.Shared.Overlay;
 
 namespace Content.Server.Overlay;
 
-public sealed class NightVisionSystem : SharedToggleableEquipmentHudSystem<NightVisionComponent>;
+public sealed partial class NightVisionSystem : SharedToggleableEquipmentHudSystem<NightVisionComponent>;

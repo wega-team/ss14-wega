@@ -9,7 +9,7 @@ namespace Content.Shared.Lavaland;
 
 public sealed partial class OreProcessorPointsSystem : EntitySystem
 {
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
 
     public override void Initialize()
     {

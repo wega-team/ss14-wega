@@ -7,7 +7,7 @@ using Content.Shared.FixedPoint;
 namespace Content.Server.Vampire;
 
 [UsedImplicitly]
-public sealed class DissectSelectionEui : BaseEui
+public sealed partial class DissectSelectionEui : BaseEui
 {
     private readonly EntityUid _vampire;
     private readonly EntityUid _target;

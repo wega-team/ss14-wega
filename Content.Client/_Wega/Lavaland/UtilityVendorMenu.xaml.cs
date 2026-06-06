@@ -15,8 +15,8 @@ namespace Content.Client._Wega.Lavaland;
 [GenerateTypedNameReferences]
 public sealed partial class UtilityVendorMenu : FancyWindow
 {
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IDependencyCollection _dependencies = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IDependencyCollection _dependencies = default!;
 
     public event Action<string>? OnPurchase;
 

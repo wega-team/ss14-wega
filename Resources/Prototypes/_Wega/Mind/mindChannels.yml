@@ -9,3 +9,9 @@
   name: xenoborg-mind-channel
   keycode: 'д'
   color: "#2288ff"
+  
+- type: mindChannel
+  id: MindVeilCult
+  name: veil-cult-mind-channel
+  keycode: 'р'
+  color: "#b5a642"

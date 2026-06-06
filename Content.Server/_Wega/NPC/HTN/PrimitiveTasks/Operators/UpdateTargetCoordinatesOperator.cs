@@ -10,7 +10,7 @@ public sealed partial class UpdateTargetCoordinatesOperator : HTNOperator
     [DataField("outputKey")]
     public string OutputKey = default!;
 
-    [Dependency] private readonly IEntityManager _entManager = default!;
+    [Dependency] private IEntityManager _entManager = default!;
 
     public override void Startup(NPCBlackboard blackboard)
     {

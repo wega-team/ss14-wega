@@ -4,7 +4,7 @@ using Robust.Shared.Serialization;
 namespace Content.Shared.Genetics;
 
 [Serializable, NetSerializable]
-public sealed class EnzymeInfo
+public sealed partial class EnzymeInfo
 {
     public string SampleName { get; set; } = string.Empty;
     public UniqueIdentifiersData? Identifier { get; set; }
@@ -22,7 +22,7 @@ public sealed class EnzymeInfo
 }
 
 [Serializable, NetSerializable]
-public sealed class EnzymesPrototypeInfo
+public sealed partial class EnzymesPrototypeInfo
 {
     public string EnzymesPrototypeId { get; set; } = string.Empty;
     public string[] HexCode { get; set; } = new[] { "0", "0", "0" };

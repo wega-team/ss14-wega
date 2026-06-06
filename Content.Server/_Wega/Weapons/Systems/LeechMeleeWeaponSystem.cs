@@ -7,11 +7,11 @@ using Content.Shared.Whitelist;
 
 namespace Content.Server.Weapons.Marker;
 
-public sealed class LeechMeleeWeaponSystem : EntitySystem
+public sealed partial class LeechMeleeWeaponSystem : EntitySystem
 {
-    [Dependency] private readonly EntityWhitelistSystem _entityWhitelist = default!;
-    [Dependency] private readonly DamageableSystem _damageable = default!;
-    [Dependency] private readonly MobStateSystem _mobState = default!;
+    [Dependency] private EntityWhitelistSystem _entityWhitelist = default!;
+    [Dependency] private DamageableSystem _damageable = default!;
+    [Dependency] private MobStateSystem _mobState = default!;
 
     public override void Initialize()
     {

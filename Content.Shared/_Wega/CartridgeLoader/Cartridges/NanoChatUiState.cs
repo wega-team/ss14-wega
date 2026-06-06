@@ -3,7 +3,7 @@ using Robust.Shared.Serialization;
 namespace Content.Shared.CartridgeLoader.Cartridges;
 
 [Serializable, NetSerializable]
-public sealed class NanoChatUiState : BoundUserInterfaceState
+public sealed partial class NanoChatUiState : BoundUserInterfaceState
 {
     public string ChatId;
     public string? ActiveChat;
@@ -29,7 +29,7 @@ public sealed class NanoChatUiState : BoundUserInterfaceState
 }
 
 [Serializable, NetSerializable]
-public sealed class ChatContact
+public sealed partial class ChatContact
 {
     public string ContactId { get; }
     public string ContactName { get; }
@@ -44,7 +44,7 @@ public sealed class ChatContact
 }
 
 [Serializable, NetSerializable]
-public sealed class ChatGroup
+public sealed partial class ChatGroup
 {
     public string GroupId { get; }
     public string GroupName { get; }
@@ -61,7 +61,7 @@ public sealed class ChatGroup
 }
 
 [Serializable, NetSerializable]
-public sealed class ChatMessage
+public sealed partial class ChatMessage
 {
     public string SenderId { get; }
     public string SenderName { get; }

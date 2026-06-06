@@ -18,20 +18,20 @@ using Content.Server.Objectives.Systems;
 
 namespace Content.Server.GameTicking.Rules;
 
-public sealed class BloodBrotherRuleSystem : GameRuleSystem<BloodBrotherRuleComponent>
+public sealed partial class BloodBrotherRuleSystem : GameRuleSystem<BloodBrotherRuleComponent>
 {
-    [Dependency] private readonly AntagSelectionSystem _antag = default!;
-    [Dependency] private readonly SharedJobSystem _jobs = default!;
-    [Dependency] private readonly MindSystem _mindSystem = default!;
-    [Dependency] private readonly NpcFactionSystem _npcFaction = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly SharedRoleSystem _roleSystem = default!;
-    [Dependency] private readonly ObjectivesSystem _objectives = default!;
-    [Dependency] private readonly TargetObjectiveSystem _target = default!;
-    [Dependency] private readonly BloodBrotherSharedConditionSystem _sharedCondition = default!;
-    [Dependency] private readonly BloodBrotherSharedStealConditionSystem _stealCondition = default!;
-    [Dependency] private readonly BloodBrotherSharedKillConditionSystem _killCondition = default!;
+    [Dependency] private AntagSelectionSystem _antag = default!;
+    [Dependency] private SharedJobSystem _jobs = default!;
+    [Dependency] private MindSystem _mindSystem = default!;
+    [Dependency] private NpcFactionSystem _npcFaction = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private SharedRoleSystem _roleSystem = default!;
+    [Dependency] private ObjectivesSystem _objectives = default!;
+    [Dependency] private TargetObjectiveSystem _target = default!;
+    [Dependency] private BloodBrotherSharedConditionSystem _sharedCondition = default!;
+    [Dependency] private BloodBrotherSharedStealConditionSystem _stealCondition = default!;
+    [Dependency] private BloodBrotherSharedKillConditionSystem _killCondition = default!;
 
 
     private static readonly Color BloodBrotherColor = Color.FromHex("#8b0000");

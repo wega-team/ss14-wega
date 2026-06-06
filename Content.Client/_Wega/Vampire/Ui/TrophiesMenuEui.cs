@@ -6,7 +6,7 @@ using JetBrains.Annotations;
 namespace Content.Client._Wega.Vampire.Ui;
 
 [UsedImplicitly]
-public sealed class TrophiesMenuEui : BaseEui
+public sealed partial class TrophiesMenuEui : BaseEui
 {
     private TrophiesMenu _menu;
 

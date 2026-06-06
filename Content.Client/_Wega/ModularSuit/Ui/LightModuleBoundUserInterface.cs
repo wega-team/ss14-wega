@@ -3,7 +3,7 @@ using Robust.Client.UserInterface;
 
 namespace Content.Client._Wega.ModularSuit.Ui;
 
-public sealed class LightModuleBoundUserInterface : BoundUserInterface
+public sealed partial class LightModuleBoundUserInterface : BoundUserInterface
 {
     private LightModuleWindow? _window;
 

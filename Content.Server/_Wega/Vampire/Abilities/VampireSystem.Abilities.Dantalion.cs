@@ -25,10 +25,10 @@ namespace Content.Server.Vampire;
 
 public sealed partial class VampireSystem
 {
-    [Dependency] private readonly CloningSystem _cloning = default!;
-    [Dependency] private readonly HallucinationsSystem _hallucinations = default!;
-    [Dependency] private readonly PrayerSystem _prayerSystem = default!;
-    [Dependency] private readonly QuickDialogSystem _quickDialog = default!;
+    [Dependency] private CloningSystem _cloning = default!;
+    [Dependency] private HallucinationsSystem _hallucinations = default!;
+    [Dependency] private PrayerSystem _prayerSystem = default!;
+    [Dependency] private QuickDialogSystem _quickDialog = default!;
 
     private void InitializeDantalion()
     {

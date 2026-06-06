@@ -16,7 +16,7 @@ namespace Content.Client._Wega.Vampire.Ui;
 [GenerateTypedNameReferences]
 public sealed partial class TrophiesMenu : FancyWindow
 {
-    [Dependency] private readonly IEntityManager _entityManager = default!;
+    [Dependency] private IEntityManager _entityManager = default!;
     private readonly SpriteSystem _spriteSystem;
 
     private static readonly Dictionary<BestiaOrganType, EntProtoId> DefaultOrganProto = new()

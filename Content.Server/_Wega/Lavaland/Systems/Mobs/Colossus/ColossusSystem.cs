@@ -15,14 +15,14 @@ using Robust.Shared.Timing;
 
 namespace Content.Server.Lavaland;
 
-public sealed class ColossusSystem : EntitySystem
+public sealed partial class ColossusSystem : EntitySystem
 {
-    [Dependency] private readonly ChatSystem _chat = default!;
-    [Dependency] private readonly DamageableSystem _damage = default!;
-    [Dependency] private readonly SharedGunSystem _gun = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly MobThresholdSystem _threshold = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private ChatSystem _chat = default!;
+    [Dependency] private DamageableSystem _damage = default!;
+    [Dependency] private SharedGunSystem _gun = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private MobThresholdSystem _threshold = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
 
     public override void Initialize()
     {

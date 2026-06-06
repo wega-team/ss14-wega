@@ -101,8 +101,9 @@
             Heat: -0.25
             Blunt: -0.25
   - type: Damageable
-    damageContainer: Biological
     damageModifierSet: Skrell
+  - type: Injurable
+    damageContainer: Biological
   - type: SolutionScanner
 
 - type: entity

@@ -11,14 +11,14 @@ using Robust.Shared.Audio.Systems;
 
 namespace Content.Server.Modular.Suit;
 
-public sealed class ModularSuitMicrowaveSystem : EntitySystem
+public sealed partial class ModularSuitMicrowaveSystem : EntitySystem
 {
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
-    [Dependency] private readonly InventorySystem _inventory = default!;
-    [Dependency] private readonly ModularSuitSystem _modularSuit = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly TemperatureSystem _temperature = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private InventorySystem _inventory = default!;
+    [Dependency] private ModularSuitSystem _modularSuit = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private TemperatureSystem _temperature = default!;
 
     public override void Initialize()
     {

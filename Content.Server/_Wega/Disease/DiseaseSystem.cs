@@ -26,17 +26,17 @@ namespace Content.Server.Disease
     /// <summary>
     /// Handles disease propagation & curing
     /// </summary>
-    public sealed class DiseaseSystem : SharedDiseaseSystem
+    public sealed partial class DiseaseSystem : SharedDiseaseSystem
     {
-        [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-        [Dependency] private readonly IRobustRandom _random = default!;
-        [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
-        [Dependency] private readonly PopupSystem _popupSystem = default!;
-        [Dependency] private readonly EntityLookupSystem _lookup = default!;
-        [Dependency] private readonly SharedInteractionSystem _interactionSystem = default!;
-        [Dependency] private readonly InventorySystem _inventorySystem = default!;
-        [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
-        [Dependency] private readonly ChatSystem _chatSystem = default!;
+        [Dependency] private IPrototypeManager _prototypeManager = default!;
+        [Dependency] private IRobustRandom _random = default!;
+        [Dependency] private SharedDoAfterSystem _doAfterSystem = default!;
+        [Dependency] private PopupSystem _popupSystem = default!;
+        [Dependency] private EntityLookupSystem _lookup = default!;
+        [Dependency] private SharedInteractionSystem _interactionSystem = default!;
+        [Dependency] private InventorySystem _inventorySystem = default!;
+        [Dependency] private MobStateSystem _mobStateSystem = default!;
+        [Dependency] private ChatSystem _chatSystem = default!;
 
         public override void Initialize()
         {

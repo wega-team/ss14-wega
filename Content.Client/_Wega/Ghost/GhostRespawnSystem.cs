@@ -2,7 +2,7 @@ using Content.Shared.Wega.Ghost.Respawn;
 
 namespace Content.Client.Wega.Ghost.Respawn;
 
-public sealed class GhostRespawnSystem : EntitySystem
+public sealed partial class GhostRespawnSystem : EntitySystem
 {
     public TimeSpan? GhostRespawnTime { get; private set; }
     public event Action? GhostRespawn;
