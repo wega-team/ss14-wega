@@ -1,0 +1,53 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Taken from Paradise at https://github.com/ss220-space/Paradise/blob/5d61e55b637a4e76e182dbae67cd6e2fb4c8dbc4/icons/mob/screen_gen.dmi",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "focus"
+        },
+        {
+            "name": "focus_active_green",
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.5,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "focus_active_red",
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.5,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "focus_active_blue",
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.5,
+                    0.1,
+                    0.1
+                ]
+            ]
+        }
+    ]
+}

@@ -1,5 +1,6 @@
 using Content.Server.Ninja.Events;
 using Content.Shared.Actions;
+using Content.Shared.Charges.Systems;
 using Content.Shared.Clothing.Components;
 using Content.Shared.Emp;
 using Content.Shared.Hands.EntitySystems;
@@ -9,6 +10,7 @@ using Content.Shared.Power.Components;
 using Content.Shared.PowerCell;
 using Content.Shared.PowerCell.Components;
 using Robust.Shared.Containers;
+using Robust.Shared.Utility;
 
 namespace Content.Server.Ninja.Systems;
 
@@ -27,9 +29,37 @@ public sealed partial class NinjaSuitSystem : SharedNinjaSuitSystem
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private NinjaWidowArtSystem _widowArt = default!;
     [Dependency] private NinjaCloningSystem _ninjaCloning = default!;
+    [Dependency] private SharedChargesSystem _charges = default!;
 
     // How much the cell score should be increased per 1 AutoRechargeRate.
     private const int AutoRechargeValue = 100;
+
+    // Dash action icon showing the bound katana's remaining charges (arrows_0..3).
+    private static readonly ResPath DashIconRsi = new("_Wega/Actions/ninja.rsi");
+    private const int MaxDashCharges = 3;
+
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        // Keep the suit's dash action icon (arrows_N) in sync with the bound katana's charges.
+        var query = EntityQueryEnumerator<SpaceNinjaComponent>();
+        while (query.MoveNext(out _, out var ninja))
+        {
+            if (ninja.Katana is not { } katana || ninja.Suit is not { } suit)
+                continue;
+
+            if (!TryComp<NinjaSuitComponent>(suit, out var suitComp) || suitComp.DashActionEntity is not { } action)
+                continue;
+
+            var charges = Math.Clamp(_charges.GetCurrentCharges(katana), 0, MaxDashCharges);
+            if (charges == suitComp.LastShownDashCharges)
+                continue;
+
+            suitComp.LastShownDashCharges = charges;
+            _actions.SetIcon(action, new SpriteSpecifier.Rsi(DashIconRsi, $"arrows_{charges}"));
+        }
+    }
 
     public override void Initialize()
     {

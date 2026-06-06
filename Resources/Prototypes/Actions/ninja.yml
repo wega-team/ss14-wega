@@ -311,9 +311,10 @@
   description: Teleport to anywhere you can see, if your Energy Katana is in your hand.
   components:
   - type: Action
+    # Icon shows the katana's charge count (arrows_0..3); kept in sync by DashAbilitySystem.
     icon:
-      sprite: Objects/Magic/magicactions.rsi
-      state: blink
+      sprite: _Wega/Actions/ninja.rsi
+      state: arrows_3
     itemIconStyle: NoItem
     sound:
       path: /Audio/Magic/blink.ogg

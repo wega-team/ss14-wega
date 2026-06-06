@@ -112,6 +112,11 @@ public sealed partial class NinjaSuitComponent : Component
     public EntityUid? DashActionEntity;
 
     /// <summary>
+    /// Last katana charge count reflected on the dash action icon (arrows_N); -1 forces a refresh.
+    /// </summary>
+    public int LastShownDashCharges = -1;
+
+    /// <summary>
     /// The action id for the adrenaline burst (injects hyperzine + uranium from the suit's uranium tank).
     /// </summary>
     [DataField]

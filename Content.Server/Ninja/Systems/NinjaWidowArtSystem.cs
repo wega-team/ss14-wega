@@ -113,7 +113,7 @@ public sealed partial class NinjaWidowArtSystem : EntitySystem
             if (comp.AlertShowingCooldown && now >= comp.CooldownEnd)
             {
                 comp.AlertShowingCooldown = false;
-                _alerts.ShowAlert(uid, comp.ConcentrationAlert, severity: (short)1);
+                _alerts.ShowAlert(uid, comp.ConcentrationAlert, severity: GetReadySeverity(uid));
             }
 
             // Stop tornado spin once the duration elapses; restore FixedRotation
@@ -166,7 +166,26 @@ public sealed partial class NinjaWidowArtSystem : EntitySystem
     {
         var comp = EnsureComp<NinjaConcentrationComponent>(user);
         comp.AlertShowingCooldown = false;
-        _alerts.ShowAlert(user, comp.ConcentrationAlert, severity: (short)1);
+        _alerts.ShowAlert(user, comp.ConcentrationAlert, severity: GetReadySeverity(user));
+    }
+
+    /// <summary>
+    /// Severity for the "ready" concentration alert, chosen so the icon matches the ninja's SpiderOS
+    /// suit colour: 1 = green, 2 = red, 3 = blue (defaults to green).
+    /// </summary>
+    private short GetReadySeverity(EntityUid user)
+    {
+        var color = 2; // green
+        if (TryComp<SpaceNinjaComponent>(user, out var ninja) && ninja.Suit is { } suit
+            && TryComp<SpiderOSComponent>(suit, out var spider))
+            color = spider.SuitColor;
+
+        return color switch
+        {
+            0 => (short)2, // red
+            1 => (short)3, // blue
+            _ => (short)1, // green
+        };
     }
 
     // ── Combo input recording ──────────────────────────────────────────────────

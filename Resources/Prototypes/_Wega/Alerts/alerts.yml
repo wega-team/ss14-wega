@@ -1,13 +1,18 @@
-# Ninja concentration: severity 0 = on cooldown, severity 1 = active (ready)
+# Ninja concentration: severity 0 = on cooldown; 1/2/3 = ready, coloured by the SpiderOS suit
+# colour (1 = green, 2 = red, 3 = blue).
 - type: alert
   id: NinjaConcentration
   minSeverity: 0
-  maxSeverity: 1
+  maxSeverity: 3
   icons:
-  - sprite: /Textures/_Wega/Actions/ninja.rsi
-    state: spider_red
-  - sprite: /Textures/_Wega/Actions/ninja.rsi
-    state: energy_katana_green
+  - sprite: /Textures/_Wega/Interface/Alerts/focus.rsi
+    state: focus
+  - sprite: /Textures/_Wega/Interface/Alerts/focus.rsi
+    state: focus_active_green
+  - sprite: /Textures/_Wega/Interface/Alerts/focus.rsi
+    state: focus_active_red
+  - sprite: /Textures/_Wega/Interface/Alerts/focus.rsi
+    state: focus_active_blue
   name: alerts-ninja-concentration-name
   description: alerts-ninja-concentration-desc
 

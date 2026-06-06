@@ -3,10 +3,10 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: Effects/portal.rsi
-    state: portal-blue
+    sprite: _Wega/Effects/rift.rsi
+    state: green_rift
     drawdepth: Overlays
   - type: PointLight
     radius: 2.5
     energy: 3
-    color: "#5500ff"
+    color: "#55ff00"
