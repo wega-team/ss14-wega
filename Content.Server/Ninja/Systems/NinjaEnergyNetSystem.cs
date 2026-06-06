@@ -6,6 +6,7 @@ using Content.Shared.Popups;
 using Content.Shared.Timing;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Timing;
 
 namespace Content.Server.Ninja.Systems;
 
@@ -89,6 +90,18 @@ public sealed partial class NinjaEnergyNetSystem : EntitySystem
         nettedComp.Caster    = user;
         nettedComp.NetEntity = net;
         Dirty(target.Value, nettedComp);
+
+        // Green beam between the ninja and the victim for 2 seconds (drawn client-side).
+        var beam = EnsureComp<EnergyNetBeamComponent>(target.Value);
+        beam.Caster = user;
+        Dirty(target.Value, beam);
+
+        var beamTarget = target.Value;
+        Timer.Spawn(TimeSpan.FromSeconds(2), () =>
+        {
+            if (Exists(beamTarget))
+                RemComp<EnergyNetBeamComponent>(beamTarget);
+        });
 
         _popup.PopupEntity(Loc.GetString("energy-net-trapped"), target.Value, PopupType.LargeCaution);
     }
