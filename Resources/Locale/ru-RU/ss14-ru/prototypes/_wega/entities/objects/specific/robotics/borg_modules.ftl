@@ -117,6 +117,7 @@ borg-slot-biomaterials-empty = Органы и протезы
 borg-slot-implants-empty = Имплантаты
 borg-slot-PKA-empty = Модкиты
 borg-slot-flash-empty = Вспышка
+borg-slot-weapon-empty = Оружие
 borg-slot-ore-empty = Руда
 borg-slot-cook-empty = Миски и шампуры
 borg-slot-ingredient-empty = Ингредиенты
