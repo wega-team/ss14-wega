@@ -682,7 +682,7 @@
   - type: DamageOtherOnHit
     damage:
       types:
-        Blunt: 25
+        Blunt: 15
   - type: StaminaDamageOnHit
     damage: 25
   - type: StaminaDamageOnCollide
@@ -757,7 +757,7 @@
     # resistanceBypassPercentage: 0.4 # for future
     damage:
       types:
-        Piercing: 50
+        Piercing: 35
   - type: IncreaseDamageOnWield
     damage:
       types:
