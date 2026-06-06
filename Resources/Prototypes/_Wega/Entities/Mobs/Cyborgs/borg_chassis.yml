@@ -31,9 +31,9 @@
     containers:
       borg_module:
       - BorgModuleGranader
-      - BorgModuleLethal
+      # - BorgModuleLethal
       - BorgModuleSecRare
-      - BorgModuleSheild
+      # - BorgModuleSheild
 
 - type: entity
   id: BorgChassisSciencePlayer

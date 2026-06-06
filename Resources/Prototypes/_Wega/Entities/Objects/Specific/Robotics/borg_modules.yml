@@ -794,6 +794,12 @@
     # - item: StunprodBorg
     - item: WeaponBorgDisabler
     - item: WeaponMeleeNeedleBorgSec
+      hand:
+        emptyLabel: Truncheon
+        emptyRepresentative: Truncheon
+        whitelist:
+          components:
+          - MeleeWeapon
     - item: Flash
       hand:
         emptyLabel: borg-slot-flash-empty
@@ -801,7 +807,13 @@
         whitelist:
           components:
           - Flash
-    - item: HoloprojectorSecurityMicrowave
+    - item: TelescopicShieldBorg
+      hand:
+        emptyLabel: TelescopicShieldBorg
+        emptyRepresentative: TelescopicShieldBorg
+        whitelist:
+          components:
+          - Blocking
     - item: Zipties
       hand:
         emptyLabel: borg-slot-zipties-empty
@@ -809,7 +821,6 @@
         whitelist:
           tags:
           - Handcuffs
-    - item: BoxZiptie
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: zipper-module }
 
