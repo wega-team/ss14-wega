@@ -6,13 +6,12 @@ using Robust.Shared.Serialization;
 
 namespace Content.Shared._Wega.Silicons.Borgs
 {
-    public abstract class SharedAiRemoteControlSystem : EntitySystem
+    public abstract partial class SharedAiRemoteControlSystem : EntitySystem
     {
-        [Dependency] private readonly SharedStationAiSystem _stationAiSystem = default!;
-        [Dependency] private readonly SharedTransformSystem _xformSystem = default!;
-        [Dependency] private readonly SharedMindSystem _mind = default!;
-        [Dependency] private readonly SharedActionsSystem _actions = default!;
-
+        [Dependency] private SharedStationAiSystem _stationAiSystem = default!;
+        [Dependency] private SharedTransformSystem _xformSystem = default!;
+        [Dependency] private SharedMindSystem _mind = default!;
+        [Dependency] private SharedActionsSystem _actions = default!;
         public override void Initialize()
         {
             base.Initialize();

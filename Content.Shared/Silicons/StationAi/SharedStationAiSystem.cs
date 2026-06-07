@@ -66,7 +66,7 @@ public abstract partial class SharedStationAiSystem : EntitySystem
     [Dependency] private StationAiVisionSystem _vision = default!;
     [Dependency] private IPrototypeManager _protoManager = default!;
     [Dependency] private MobStateSystem _mobState = default!;
-    [Dependency] private SharedAiRemoteControlSystem _remoteSystem = default!; 
+    [Dependency] private SharedAiRemoteControlSystem _remoteSystem = default!;
     // Corvax-Wega-AiRemoteControl-End
 
     // StationAiHeld is added to anything inside of an AI core.
