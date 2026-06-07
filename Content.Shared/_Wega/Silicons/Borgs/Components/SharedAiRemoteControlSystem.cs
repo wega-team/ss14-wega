@@ -54,10 +54,12 @@ namespace Content.Shared._Wega.Silicons.Borgs
         }
     }
 
-    public sealed partial class ReturnMindIntoAiEvent : HandledEntityEventArgs
+    [Serializable, NetSerializable]
+    public sealed partial class ReturnMindIntoAiEvent : EntityEventArgs
     {
     }
 
+    [Serializable, NetSerializable]
     public sealed partial class ToggleRemoteDevicesScreenEvent : HandledEntityEventArgs
     {
     }
