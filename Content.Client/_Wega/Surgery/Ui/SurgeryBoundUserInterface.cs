@@ -2,15 +2,12 @@ using Content.Shared.Surgery;
 using Content.Shared.Surgery.Components;
 using JetBrains.Annotations;
 using Robust.Client.UserInterface;
-using Robust.Shared.Player;
 
 namespace Content.Client._Wega.Surgery.Ui;
 
 [UsedImplicitly]
 public sealed partial class SurgeryBoundUserInterface : BoundUserInterface
 {
-    [Dependency] private ISharedPlayerManager _playerManager = default!;
-
     [ViewVariables]
     private SurgeryWindow? _window;
 
@@ -24,19 +21,22 @@ public sealed partial class SurgeryBoundUserInterface : BoundUserInterface
 
         _window.OnStepPressed += (targetNode, stepIndex, isParallel) =>
         {
-            var netEntity = EntMan.GetNetEntity(_playerManager.LocalSession?.AttachedEntity ?? EntityUid.Invalid);
-            SendMessage(new SurgeryStartMessage(netEntity, targetNode, stepIndex, isParallel));
+            SendMessage(new SurgeryStartMessage(targetNode, stepIndex, isParallel));
         };
+    }
+
+    protected override void UpdateState(BoundUserInterfaceState state)
+    {
+        base.UpdateState(state);
+
+        if (EntMan.TryGetComponent(Owner, out OperatedComponent? comp)
+            && state is SurgeryProcedureDtoState procedureState)
+            _window?.UpdateState(procedureState, comp);
     }
 
     protected override void ReceiveMessage(BoundUserInterfaceMessage message)
     {
-        if (_window == null || message is not SurgeryProcedureDto msg)
-            return;
-
-        if (EntMan.TryGetComponent(Owner, out OperatedComponent? comp))
-        {
-            _window.UpdateState(msg, comp);
-        }
+        if (message is SurgerySterilityUpdateMessage msg)
+            _window?.UpdateSterilityToolTip(msg.SterilityInfo);
     }
 }

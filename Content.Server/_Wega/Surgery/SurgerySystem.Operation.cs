@@ -12,6 +12,7 @@ using Content.Shared.FixedPoint;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Implants;
 using Content.Shared.Implants.Components;
+using Content.Shared.Movement.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Random.Helpers;
 using Content.Shared.Silicons.Borgs.Components;
@@ -127,8 +128,10 @@ public sealed partial class SurgerySystem
                 break;
             // Synthetic End
 
-            default: break;
+            default: return;
         }
+
+        ApplySterilityConsequences((patient, comp));
 
         // Any action without anesthesia will cause pain.
         if (!HasComp<SleepingComponent>(patient) && !HasComp<PainNumbnessStatusEffectComponent>(patient) && !comp.OperatedPart
@@ -175,10 +178,7 @@ public sealed partial class SurgerySystem
             return;
 
         if (!RollSuccess(patient, patient.Comp.Surgeon.Value, successChance))
-        {
             HandleFailure(patient, failureEffect);
-            return;
-        }
 
         if (!HasComp<BloodstreamComponent>(patient) || HasComp<SyntheticOperatedComponent>(patient))
             return;
@@ -459,19 +459,71 @@ public sealed partial class SurgerySystem
     private bool RollSuccess(Entity<OperatedComponent> ent, EntityUid surgeon, float baseChance)
     {
         var item = _hands.GetActiveItemOrSelf(surgeon);
-        if (HasComp<SurgicalSkillComponent>(surgeon) && ent.Comp.Sterility == 1f && HasComp<SterileComponent>(item)
-            && SurgeryTools.Any(tool => _tool.HasQuality(item, tool))
-            || Organs.Any(tag => _tag.HasTag(item, tag))
-            || Parts.Any(tag => _tag.HasTag(item, tag)))
+        if (HasComp<SurgicalSkillComponent>(surgeon) && SurgeryTools.Any(tool => _tool.HasQuality(item, tool))
+            || Organs.Any(tag => _tag.HasTag(item, tag)) || Parts.Any(tag => _tag.HasTag(item, tag)))
         {
             return true;
         }
 
-        var adjustedChance = baseChance * Math.Clamp(ent.Comp.Sterility, 0f, 1.5f);
         if (TryGetOperatingTable(ent, out var tableModifier))
-            adjustedChance *= tableModifier;
+            baseChance *= tableModifier;
 
-        return _random.Prob(adjustedChance);
+        return _random.Prob(baseChance);
+    }
+
+    private void ApplySterilityConsequences(Entity<OperatedComponent> patient)
+    {
+        if (patient.Comp.Surgeon == null || HasComp<SyntheticOperatedComponent>(patient))
+            return;
+
+        var sterility = patient.Comp.Sterility;
+        var item = _hands.GetActiveItemOrSelf(patient.Comp.Surgeon.Value);
+        if (sterility >= 0.7f && HasComp<SterileComponent>(item))
+            return;
+
+        if (sterility >= 0.5f)
+        {
+            var painChance = 0.3f + (0.75f - sterility) / 0.25f * 0.4f;
+            if (_random.Prob(painChance))
+            {
+                if (!HasComp<SleepingComponent>(patient) && !HasComp<PainNumbnessStatusEffectComponent>(patient)
+                    && !patient.Comp.OperatedPart && !_mobState.IsDead(patient) && !HasComp<SyntheticOperatedComponent>(patient))
+                    _chat.TryEmoteWithoutChat(patient, _proto.Index(Scream), true);
+
+                _jittering.DoJitter(patient, TimeSpan.FromSeconds(4), true);
+            }
+
+            var slowChance = 0.15f + (0.75f - sterility) / 0.25f * 0.3f;
+            if (_random.Prob(slowChance))
+            {
+                _movementMod.TryUpdateMovementSpeedModDuration(patient, MovementModStatusSystem.Slowdown,
+                    TimeSpan.FromSeconds(30), 0.85f, 0.85f);
+            }
+            return;
+        }
+
+        var painChanceLow = 0.7f + (0.5f - sterility) / 0.3f * 0.2f;
+        if (_random.Prob(painChanceLow))
+        {
+            if (!HasComp<SleepingComponent>(patient) && !HasComp<PainNumbnessStatusEffectComponent>(patient)
+                && !patient.Comp.OperatedPart && !_mobState.IsDead(patient) && !HasComp<SyntheticOperatedComponent>(patient))
+                _chat.TryEmoteWithoutChat(patient, _proto.Index(Scream), true);
+
+            _jittering.DoJitter(patient, TimeSpan.FromSeconds(6), true);
+        }
+
+        var slowChanceLow = 0.45f + (0.5f - sterility) / 0.3f * 0.25f;
+        if (_random.Prob(slowChanceLow))
+        {
+            _movementMod.TryUpdateMovementSpeedModDuration(patient, MovementModStatusSystem.Slowdown,
+                TimeSpan.FromSeconds(45), 0.6f, 0.6f);
+        }
+
+        var sepsisChanceLow = 0.05f + (0.5f - sterility) / 0.3f * 0.05f;
+        if (_random.Prob(sepsisChanceLow))
+        {
+            _disease.TryAddDisease(patient, "SurgicalSepsis");
+        }
     }
 
     public void ApplyBloodToClothing(EntityUid surgeon, string? bloodReagentId, float bloodAmount)
@@ -494,8 +546,7 @@ public sealed partial class SurgerySystem
         var effect = _random.Pick(failureEffect);
         switch (effect)
         {
-            case SurgeryFailedType.Empty:
-                return;
+            case SurgeryFailedType.Empty: return;
             case SurgeryFailedType.Cut:
                 _damage.TryChangeDamage(patient.Owner, new DamageSpecifier { DamageDict = { { SlashDamage, 5 } } }, true);
                 break;
@@ -509,11 +560,14 @@ public sealed partial class SurgerySystem
                 TryAddInternalDamage(patient, "BoneFracture", bodyPart: bodyPart);
                 break;
             case SurgeryFailedType.Pain:
-                if (!HasComp<SleepingComponent>(patient) && !HasComp<PainNumbnessStatusEffectComponent>(patient) && !patient.Comp.OperatedPart && !_mobState.IsDead(patient) && !HasComp<SyntheticOperatedComponent>(patient))
-                    _chat.TryEmoteWithoutChat(patient, _proto.Index(Scream), true);
+                {
+                    if (!HasComp<SleepingComponent>(patient) && !HasComp<PainNumbnessStatusEffectComponent>(patient) && !patient.Comp.OperatedPart
+                        && !_mobState.IsDead(patient) && !HasComp<SyntheticOperatedComponent>(patient))
+                        _chat.TryEmoteWithoutChat(patient, _proto.Index(Scream), true);
 
-                _jittering.DoJitter(patient, TimeSpan.FromSeconds(5), true);
-                break;
+                    _jittering.DoJitter(patient, TimeSpan.FromSeconds(5), true);
+                    break;
+                }
         }
 
         if (effect != SurgeryFailedType.Empty && !_mobState.IsDead(patient))
