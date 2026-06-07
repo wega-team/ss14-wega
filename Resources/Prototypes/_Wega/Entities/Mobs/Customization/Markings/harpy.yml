@@ -61,7 +61,7 @@
 
 - type: marking
   id: HarpyWingDefaultHuescale
-  bodyPart: RArm
+  bodyPart: TailOverlay
   groupWhitelist: [Harpy]
   coloring:
     default:
@@ -77,7 +77,7 @@
 
 - type: marking
   id: HarpyWingDefaultWhitescale
-  bodyPart: RArm
+  bodyPart: TailOverlay
   groupWhitelist: [Harpy]
   coloring:
     default:
@@ -93,7 +93,7 @@
 
 - type: marking
   id: HarpyWingClassic
-  bodyPart: RArm
+  bodyPart: TailOverlay
   groupWhitelist: [Harpy]
   coloring:
     default:
@@ -109,7 +109,7 @@
 
 - type: marking
   id: HarpyWingFoldedHuescale
-  bodyPart: RArm
+  bodyPart: TailOverlay
   groupWhitelist: [Harpy]
   coloring:
     default:
@@ -125,7 +125,7 @@
 
 - type: marking
   id: HarpyWingFoldedWhitescale
-  bodyPart: RArm
+  bodyPart: TailOverlay
   groupWhitelist: [Harpy]
   coloring:
     default:
@@ -141,7 +141,7 @@
 
 - type: marking
   id: HarpyWingOwlHuescale
-  bodyPart: RArm
+  bodyPart: TailOverlay
   groupWhitelist: [Harpy]
   coloring:
     default:
@@ -157,7 +157,7 @@
 
 - type: marking
   id: HarpyWingOwlWhitescale
-  bodyPart: RArm
+  bodyPart: TailOverlay
   groupWhitelist: [Harpy]
   coloring:
     default:
@@ -266,7 +266,7 @@
 
 - type: marking
   id: HarpyWing2ToneClassic
-  bodyPart: RArm
+  bodyPart: TailOverlay
   groupWhitelist: [Harpy]
   sprites:
     - sprite: _Wega/Mobs/Customization/harpy_wings.rsi
@@ -276,7 +276,7 @@
 
 - type: marking
   id: HarpyWing3ToneClassic
-  bodyPart: RArm
+  bodyPart: TailOverlay
   groupWhitelist: [Harpy]
   sprites:
     - sprite: _Wega/Mobs/Customization/harpy_wings.rsi
@@ -288,7 +288,7 @@
 
 - type: marking
   id: HarpyWingSpeckledClassic
-  bodyPart: RArm
+  bodyPart: TailOverlay
   groupWhitelist: [Harpy]
   sprites:
     - sprite: _Wega/Mobs/Customization/harpy_wings.rsi
@@ -298,7 +298,7 @@
 
 - type: marking
   id: HarpyWingUndertoneClassic
-  bodyPart: RArm
+  bodyPart: TailOverlay
   groupWhitelist: [Harpy]
   sprites:
     - sprite: _Wega/Mobs/Customization/harpy_wings.rsi
@@ -308,7 +308,7 @@
 
 - type: marking
   id: HarpyWingTipsClassic
-  bodyPart: RArm
+  bodyPart: TailOverlay
   groupWhitelist: [Harpy]
   sprites:
     - sprite: _Wega/Mobs/Customization/harpy_wings.rsi
@@ -318,7 +318,7 @@
 
 - type: marking
   id: HarpyWingBat
-  bodyPart: RArm
+  bodyPart: TailOverlay
   groupWhitelist: [Harpy]
   sprites:
     - sprite: _Wega/Mobs/Customization/harpy_wings.rsi
@@ -328,7 +328,7 @@
 
 - type: marking
   id: HarpyWingBionic
-  bodyPart: RArm
+  bodyPart: TailOverlay
   groupWhitelist: [Harpy]
   sprites:
     - sprite: _Wega/Mobs/Customization/harpy_wings.rsi

@@ -67,7 +67,7 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
         SubscribeLocalEvent<DnaModifierComponent, CureDnaDiseaseAttemptEvent>(OnTryCureDnaDisease);
         SubscribeLocalEvent<DnaModifierComponent, MutateDnaAttemptEvent>(OnTryMutateDna);
 
-        // SubscribeLocalEvent<DnaModifierComponent, DamageChangedEvent>(OnDamageChanged);
+        SubscribeLocalEvent<DnaModifierComponent, DamageChangedEvent>(OnDamageChanged);
     }
 
     public override void Update(float frameTime)
@@ -1116,45 +1116,45 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
     }
     #endregion
 
-    // private void OnDamageChanged(EntityUid uid, DnaModifierComponent component, DamageChangedEvent args)
-    // {
-    //     if (args.DamageDelta == null || !args.DamageIncreased || !args.DamageDelta.DamageDict.ContainsKey("Radiation"))
-    //         return;
+    private void OnDamageChanged(EntityUid uid, DnaModifierComponent component, DamageChangedEvent args)
+    {
+        if (args.DamageDelta == null || !args.DamageIncreased || !args.DamageDelta.DamageDict.ContainsKey("Radiation"))
+            return;
 
-    //     var radiationDamage = args.DamageDelta.DamageDict["Radiation"];
-    //     if (radiationDamage < 1f)
-    //         return;
+        var radiationDamage = args.DamageDelta.DamageDict["Radiation"];
+        if (radiationDamage < 1.5f)
+            return;
 
-    //     if (component.EnzymesPrototypes == null)
-    //         return;
+        if (component.EnzymesPrototypes == null)
+            return;
 
-    //     if (_random.Prob(0.05f))
-    //     {
-    //         int countToModify = 1;
+        if (_random.Prob(0.05f))
+        {
+            int countToModify = 1;
 
-    //         var diseaseEnzymes = component.EnzymesPrototypes
-    //             .Where(enzyme =>
-    //             {
-    //                 if (!_prototype.TryIndex<StructuralEnzymesPrototype>(enzyme.EnzymesPrototypeId, out var enzymePrototype))
-    //                     return false;
+            var diseaseEnzymes = component.EnzymesPrototypes
+                .Where(enzyme =>
+                {
+                    if (!_prototype.TryIndex<StructuralEnzymesPrototype>(enzyme.EnzymesPrototypeId, out var enzymePrototype))
+                        return false;
 
-    //                 return enzymePrototype.TypeDeviation == EnzymesType.Disease;
-    //             })
-    //             .ToList();
+                    return enzymePrototype.TypeDeviation == EnzymesType.Disease;
+                })
+                .ToList();
 
-    //         var enzymesToModify = diseaseEnzymes
-    //             .OrderBy(_ => _random.Next())
-    //             .Take(countToModify)
-    //             .ToList();
+            var enzymesToModify = diseaseEnzymes
+                .OrderBy(_ => _random.Next())
+                .Take(countToModify)
+                .ToList();
 
-    //         foreach (var enzyme in enzymesToModify)
-    //         {
-    //             enzyme.HexCode = GetHexCodeDisease();
-    //         }
+            foreach (var enzyme in enzymesToModify)
+            {
+                enzyme.HexCode = GetHexCodeDisease();
+            }
 
-    //         TryChangeStructuralEnzymes((uid, component));
+            TryChangeStructuralEnzymes((uid, component));
 
-    //         Dirty(uid, component);
-    //     }
-    // }
+            Dirty(uid, component);
+        }
+    }
 }
