@@ -1,6 +1,7 @@
 <controls:FancyWindow xmlns="https://spacestation14.io"
                       xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
                       xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                       x:Class="Content.Client._Wega.Silicons.Laws.Ui.RemoteDevicesMenu"
                       Title="{Loc ai-remote-ui-menu-title}"
                       MinSize="355 100"
