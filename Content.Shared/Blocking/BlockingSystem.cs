@@ -174,6 +174,7 @@ public sealed partial class BlockingSystem : EntitySystem
             var intersecting = _lookup.GetLocalEntitiesIntersecting(playerTileRef.Value, 0f);
             foreach (var uid in intersecting)
             {
+				TestForUid(user);
                 if (uid != user && _mobQuery.HasComponent(uid))
                 {
                     TooCloseError(user);
@@ -208,7 +209,7 @@ public sealed partial class BlockingSystem : EntitySystem
         return true;
     }
 
-    private void CantBlockError(EntityUid user)
+    private void CantBlockError(EntityUid user, uid)
     {
         var msgError = Loc.GetString("action-popup-blocking-user-cant-block");
         _popupSystem.PopupClient(msgError, user, user);
@@ -220,6 +221,11 @@ public sealed partial class BlockingSystem : EntitySystem
         _popupSystem.PopupClient(msgError, user, user);
     }
 
+    private void TestForUid(EntityUid user, )
+    {
+        var msgError = Loc.GetString(uid);
+        _popupSystem.PopupClient(msgError, user, user);
+    }
     /// <summary>
     /// Called where you want the user to stop blocking.
     /// </summary>

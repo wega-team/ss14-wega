@@ -47,7 +47,15 @@
   materials:
     Steel: 1500
     Glass: 1500
-    
+
+- type: latheRecipe
+  parent: BaseXenoborgModulesRecipe
+  id: ModuleXenoborgModule
+  result: ModuleXenoborgModule
+  materials:
+    Steel: 1500
+    Glass: 1500
+
 - type: latheRecipe
   parent: BaseXenoborgModulesRecipe
   categories:

@@ -660,6 +660,11 @@
           - Cash
           tags:
           - CoordinatesDisk
+  - type: ComponentBorgModule
+    components:
+    - type: TelekinesisGen
+      itemPrototype: TelescopicShieldBorgMining
+      handPos: Left
 # Corvax-Wega-Robot-End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: appraisal-module }
@@ -1690,10 +1695,9 @@
     - item: PinpointerUniversal # Corvax-Wega-Robot-add
   - type: ComponentBorgModule
     components:
-    - type: Reflect
-      reflectProb: 0.15
-      slotFlags:
-      - NONE
+    - type: TelekinesisGen
+      itemPrototype: TelescopicShieldBorgSyndL6
+      handPos: Left
 # Corvax-Wega-Robot-End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: syndicate-l6c-module }
@@ -1794,6 +1798,7 @@
         whitelist:
           components:
           - PowerCell
+    - item: XenoborgModuleBag # Corvax-Wega-Robot-Add
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-module-module }
 
@@ -1984,7 +1989,14 @@
     - item: PinpointerMothership
     - item: HandheldStationMapUnpowered
     - item: WeaponGrapplingGun
-    - item: JetpackXenoborg
+ # Corvax-Wega-Start
+    # - item: JetpackXenoborg
+  - type: ComponentBorgModule
+    components:
+    - type: TelekinesisGen
+      itemPrototype: JetpackXenoborg
+      handPos: Left
+ # Corvax-Wega-end
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-space-movement-module }
 
@@ -2018,7 +2030,7 @@
   - type: ItemBorgModule
     hands:
     - item: KukriKnife
-    - item: JetpackXenoborg
+    # - item: JetpackXenoborg Corvax-Wega-Add
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-sword-module }
 
@@ -2035,7 +2047,7 @@
   - type: ItemBorgModule
     hands:
     - item: EnergyDaggerLoudBlue
-    - item: JetpackXenoborg
+    # - item: JetpackXenoborg Corvax-Wega-Add
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-sword2-module }
 

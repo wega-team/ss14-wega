@@ -259,6 +259,7 @@
   - type: OfferGiver # Corvax-Wega-Offer
   - type: SpeechSynthesis # Corvax-Wega-Barks
     voice: BarksCitadelSynthetic2 # Corvax-Wega-Barks
+  - type: StatusIcon
 
 - type: entity
   abstract: true

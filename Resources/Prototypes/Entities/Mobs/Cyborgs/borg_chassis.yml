@@ -32,6 +32,17 @@
     - Common
     - Binary
   - type: SurgicalSkill # Corvax-Wega-Surgery
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+      gps_slot:
+        name: gps-slot-name
+        insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
+        whitelist:
+          components:
+          - HandheldGPS
 
 - type: entity
   id: BorgChassisGeneric

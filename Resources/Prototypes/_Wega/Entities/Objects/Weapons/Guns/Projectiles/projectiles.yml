@@ -49,10 +49,12 @@
   - type: HitscanBasicDamage
     damage:
       types:
-        Shock: 10
+        Shock: 25
   - type: HitscanEMP
     range: 0.25
-    energyConsumption: 720
+    energyConsumption: 1800
+  - type: HitscanReflect
+    reflectiveType: None
 
 - type: entity
   name: pulsar shot
