@@ -55,7 +55,7 @@ namespace Content.Shared._Wega.Silicons.Borgs
         }
     }
 
-    public sealed partial class ReturnMindIntoAiEvent : EntityEventArgs
+    public sealed partial class ReturnMindIntoAiEvent : HandledEntityEventArgs
     {
     }
 

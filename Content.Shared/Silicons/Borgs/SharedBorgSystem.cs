@@ -195,7 +195,6 @@ public abstract partial class SharedBorgSystem : EntitySystem
         {
             var uid = chassis.Owner;
             RemComp<AiRemoteControllerComponent>(uid);
-            RemComp<StationAiVisionComponent>(uid);
         }
         // Corvax-Wega-AiRemoteControl-End
     }
