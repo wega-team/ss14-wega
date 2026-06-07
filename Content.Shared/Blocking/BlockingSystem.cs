@@ -17,6 +17,7 @@ using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Utility;
+using Content.Shared.Silicons.Borgs.Components; // Corvax-Wega-add
 
 namespace Content.Shared.Blocking;
 
@@ -174,7 +175,7 @@ public sealed partial class BlockingSystem : EntitySystem
             var intersecting = _lookup.GetLocalEntitiesIntersecting(playerTileRef.Value, 0f);
             foreach (var uid in intersecting)
             {
-                if (uid != user && _mobQuery.HasComponent(uid))
+                if (uid != user && _mobQuery.HasComponent(uid) && !HasComp<BorgBrainComponent>(uid)) // Corvax-Wega-change
                 {
                     TooCloseError(user);
                     return false;
