@@ -42,6 +42,7 @@ public sealed partial class SiliconLawSystem : SharedSiliconLawSystem
     [Dependency] private TagSystem _tagSystem = default!; // Corvax-Wega-AiRemoteControl, remove all ReadOnly
 
     private static readonly ProtoId<SiliconLawsetPrototype> DefaultCrewLawset = "Crewsimov";
+    private const string StationAiTag = "StationAi";
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -73,7 +74,7 @@ public sealed partial class SiliconLawSystem : SharedSiliconLawSystem
             return;
 
         // Corvax-Wega-AiRemoteControl-Start
-        if (HasComp<AiRemoteControllerComponent>(uid) || _tagSystem.HasTag(uid, "StationAi")) // skip a law's notification for remotable and AI
+        if (HasComp<AiRemoteControllerComponent>(uid) || _tagSystem.HasTag(uid, StationAiTag)) // skip a law's notification for remotable and AI
             return;
         // Corvax-Wega-AiRemoteControl-End
 
@@ -164,7 +165,7 @@ public sealed partial class SiliconLawSystem : SharedSiliconLawSystem
             component.Subverted = true;
 
             // new laws may allow antagonist behaviour so make it clear for admins
-            if(_mind.TryGetMind(uid, out var mindId, out _))
+            if (_mind.TryGetMind(uid, out var mindId, out _))
                 EnsureSubvertedSiliconRole(mindId);
 
         }
