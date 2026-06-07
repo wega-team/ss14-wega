@@ -201,8 +201,8 @@
 - type: entity
   parent: [BaseNinjaObjective, BaseCodeObjective]
   id: CollectBloodObjective
-  name: objective-collect-blood-title
-  description: objective-collect-blood-description
+  name: Collect vampire blood
+  description: Extract blood samples from 3 different vampires and scan them in the Blood-Scan Machine on the clan's planet.
   components:
   - type: Objective
     icon:
