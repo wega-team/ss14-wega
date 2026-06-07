@@ -34,7 +34,6 @@ public sealed partial class SpaceNinjaSystem : SharedSpaceNinjaSystem
         SubscribeLocalEvent<SpaceNinjaComponent, ResearchStolenEvent>(OnResearchStolen);
         SubscribeLocalEvent<SpaceNinjaComponent, ThreatCalledInEvent>(OnThreatCalledIn);
         SubscribeLocalEvent<SpaceNinjaComponent, CriminalRecordsHackedEvent>(OnCriminalRecordsHacked);
-        SubscribeLocalEvent<SpaceNinjaComponent, CargoHackedEvent>(OnCargoHacked);
         SubscribeLocalEvent<SpaceNinjaComponent, AiLawsHackedEvent>(OnAiLawsHacked);
     }
 
@@ -98,11 +97,6 @@ public sealed partial class SpaceNinjaSystem : SharedSpaceNinjaSystem
     private void OnCriminalRecordsHacked(Entity<SpaceNinjaComponent> ent, ref CriminalRecordsHackedEvent args)
     {
         _codeCondition.SetCompleted(ent.Owner, ent.Comp.MassArrestObjective);
-    }
-
-    private void OnCargoHacked(Entity<SpaceNinjaComponent> ent, ref CargoHackedEvent args)
-    {
-        _codeCondition.SetCompleted(ent.Owner, ent.Comp.CargoHackObjective);
     }
 
     private void OnAiLawsHacked(Entity<SpaceNinjaComponent> ent, ref AiLawsHackedEvent args)

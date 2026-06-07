@@ -65,7 +65,9 @@ public sealed partial class NinjaCloakSystem : EntitySystem
             return;
 
         var fx = Spawn(proto, Transform(uid).Coordinates);
-        var facing = TryComp<InputMoverComponent>(uid, out var mover) ? mover.RelativeRotation : Angle.Zero;
+        // The mob's transform world rotation is its facing (set by the mover), same basis the phase
+        // effect uses. Snap to a cardinal so the directional sprite shows the right frame.
+        var facing = _transform.GetWorldRotation(uid).GetCardinalDir().ToAngle();
         _transform.SetWorldRotation(fx, facing);
     }
 

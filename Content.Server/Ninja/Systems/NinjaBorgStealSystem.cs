@@ -306,7 +306,17 @@ public sealed partial class NinjaBorgStealSystem : EntitySystem
         if (_npcFaction.IsMember(borg.Owner, SyndicateFaction))
             return false;
 
-        // One stolen borg per ninja.
+        // One borg per ninja, permanently: if they've already converted one (objective completed),
+        // they can't make another even after the first borg was gibbed, deleted or reverted.
+        if (TryComp<SpaceNinjaComponent>(user, out var ninja)
+            && _mind.TryGetMind(user, out var mindId, out var mind)
+            && _mind.TryFindObjective((mindId, mind), ninja.StealBorgObjective, out var obj)
+            && _codeCondition.IsCompleted(obj.Value))
+        {
+            return false;
+        }
+
+        // Also block while this ninja still has a living converted borg.
         var query = EntityQueryEnumerator<NinjaBorgComponent>();
         while (query.MoveNext(out _, out var existing))
         {

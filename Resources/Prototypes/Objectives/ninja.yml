@@ -90,15 +90,17 @@
       state: stunbaton_on
 
 - type: entity
-  parent: [BaseNinjaObjective, BaseCodeObjective]
+  parent: BaseNinjaObjective
   id: CargoHackObjective
-  name: Steal cargo funds
-  description: Use your gloves on a cargo order console to drain 75% of the cargo account directly into your hands.
   components:
   - type: Objective
     icon:
       sprite: Objects/Economy/cash.rsi
       state: cash
+  # Must physically hold the credits — draining cargo then putting the money back no longer counts.
+  - type: HoldCreditsCondition
+    min: 6000
+    max: 10000
 
 # --- Randomised special objectives (one of these three is picked per round) ---
 
@@ -117,6 +119,8 @@
   - type: PickRandomPerson
     filters:
     - !type:NoMindShieldMindFilter {}
+    # Only real station crew can be framed — excludes operatives, wizards, survivors, ghost roles.
+    - !type:HasJobMindFilter {}
   - type: NinjaFrameCondition
 
 - type: entity
@@ -224,7 +228,7 @@
   parent: [BaseNinjaObjective, BaseCodeObjective]
   id: StealBorgObjective
   name: Steal a cyborg
-  description: Use your gloves to interface with a station cyborg (not xenoborg or active Syndicate borg) and spend 6 seconds converting it into your ninja borg. The borg brain becomes a chip; if moved to another chassis, that chassis becomes a ninja borg too.
+  description: Use your gloves to interface with a station cyborg (not a xenoborg or an active Syndicate borg) and spend 6 seconds converting it into your ninja borg.
   components:
   - type: Objective
     icon:

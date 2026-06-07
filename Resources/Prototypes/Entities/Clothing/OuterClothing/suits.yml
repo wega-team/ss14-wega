@@ -215,7 +215,7 @@
   - type: NinjaSuit
   - type: NinjaUraniumTank
   - type: SpiritForm
-    drainRate: 0.12
+    drainRate: 0.06
     speedModifier: 0.8
   - type: EmpResistance
     strengthMultiplier: 0

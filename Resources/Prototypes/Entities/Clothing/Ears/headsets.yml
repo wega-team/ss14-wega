@@ -359,3 +359,8 @@
     keySlots: 10
     keysUnlocked: false
     keysExtractionMethod: null
+  # Built-in clan (Ninja) + Binary channels from the start, instead of the inherited common key.
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyNinja

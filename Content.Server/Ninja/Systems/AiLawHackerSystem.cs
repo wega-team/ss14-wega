@@ -1,4 +1,5 @@
 using Content.Server.Chat.Managers;
+using Content.Server.Ninja.Components;
 using Content.Server.Silicons.Laws;
 using Content.Shared.Chat;
 using Content.Shared.DoAfter;
@@ -8,6 +9,7 @@ using Content.Shared.Ninja.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Silicons.Laws;
 using Content.Shared.Silicons.Laws.Components;
+using Content.Shared.Silicons.StationAi;
 using Robust.Shared.Player;
 
 namespace Content.Server.Ninja.Systems;
@@ -27,6 +29,23 @@ public sealed partial class AiLawHackerSystem : EntitySystem
 
         SubscribeLocalEvent<AiLawHackerComponent, BeforeInteractHandEvent>(OnBeforeInteractHand);
         SubscribeLocalEvent<AiLawHackerComponent, AiLawHackDoAfterEvent>(OnDoAfter);
+
+        // Apply previously-hacked ion laws to AIs that appear after the hack (run after the default
+        // lawset is assigned).
+        SubscribeLocalEvent<StationAiHeldComponent, MapInitEvent>(OnAiAppeared, after: [typeof(SiliconLawSystem)]);
+    }
+
+    private void OnAiAppeared(Entity<StationAiHeldComponent> ent, ref MapInitEvent args)
+    {
+        var query = EntityQueryEnumerator<NinjaHackedAiComponent>();
+        while (query.MoveNext(out _, out var hacked))
+        {
+            if (hacked.Lawset == null)
+                continue;
+
+            _siliconLaw.SubvertWithLawset(ent.Owner, hacked.Lawset.Clone());
+            return;
+        }
     }
 
     private void OnBeforeInteractHand(EntityUid uid, AiLawHackerComponent comp, BeforeInteractHandEvent args)
@@ -74,20 +93,16 @@ public sealed partial class AiLawHackerSystem : EntitySystem
             });
         }
 
-        // Apply to every AI entity the console targets
+        // Apply to every AI entity the console currently targets.
         var query = EntityManager.CompRegistryQueryEnumerator(updater.Components);
-        var anyHacked = false;
         while (query.MoveNext(out var ai))
         {
             _siliconLaw.SubvertWithLawset(ai, newLawset.Clone());
-            anyHacked = true;
         }
 
-        if (!anyHacked)
-        {
-            _popup.PopupEntity(Loc.GetString("ninja-ai-hack-no-target"), uid, uid);
-            return;
-        }
+        // Persist the hacked lawset on the console so an AI that joins later inherits it — this way
+        // the sabotage succeeds even when no AI is present at the time of the hack.
+        EnsureComp<NinjaHackedAiComponent>(args.Target.Value).Lawset = newLawset;
 
         _popup.PopupEntity(Loc.GetString("ninja-ai-hack-success"), uid, uid);
 
