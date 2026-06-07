@@ -14,14 +14,14 @@ using Robust.Shared.Player;
 
 namespace Content.Server._Wega.Silicons.Borgs
 {
-    public sealed class AiRemoteControlSystem : SharedAiRemoteControlSystem
+    public sealed partial class AiRemoteControlSystem : SharedAiRemoteControlSystem
     {
-        [Dependency] private readonly SharedActionsSystem _actions = default!;
-        [Dependency] private readonly SiliconLawSystem _lawSystem = default!;
-        [Dependency] private readonly SharedStationAiSystem _stationAiSystem = default!;
-        [Dependency] private readonly SharedMindSystem _mind = default!;
-        [Dependency] private readonly UserInterfaceSystem _userInterface = default!;
-        [Dependency] private readonly SharedTransformSystem _xformSystem = default!;
+        [Dependency] private SharedActionsSystem _actions = default!;
+        [Dependency] private SiliconLawSystem _lawSystem = default!;
+        [Dependency] private SharedStationAiSystem _stationAiSystem = default!;
+        [Dependency] private SharedMindSystem _mind = default!;
+        [Dependency] private UserInterfaceSystem _userInterface = default!;
+        [Dependency] private SharedTransformSystem _xformSystem = default!;
 
         public override void Initialize()
         {
@@ -139,7 +139,7 @@ namespace Content.Server._Wega.Silicons.Borgs
 
             _userInterface.TryToggleUi(uid, RemoteDeviceUiKey.Key, actor.PlayerSession);
 
-            var query = EntityManager.EntityQueryEnumerator<AiRemoteControllerComponent>();
+            var query = EntityQueryEnumerator<AiRemoteControllerComponent>();
 
             var remoteDevices = new List<RemoteDevicesData>();
 
