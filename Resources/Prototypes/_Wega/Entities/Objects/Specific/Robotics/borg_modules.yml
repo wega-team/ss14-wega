@@ -1578,7 +1578,7 @@
           components:
           - Brain
           - BorgBrain
-          - ClothingHeadHatChameleonXenoborg # Corvax-Wega-Add
+          - ChameleonClothing # Corvax-Wega-Add
     - hand:
         emptyRepresentative: XenoborgModuleBasic
         emptyLabel: borg-slot-modules-empty
