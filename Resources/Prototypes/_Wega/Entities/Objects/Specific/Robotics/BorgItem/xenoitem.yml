@@ -357,7 +357,6 @@
   - type: FleetingClothing
     playSoundOnSelfUnequip: false
     examineOthers: null # stealthy unless stripped
-    popup: null
   - type: ActivatableUI
     key: enum.ChameleonUiKey.Key
   - type: UserInterface
