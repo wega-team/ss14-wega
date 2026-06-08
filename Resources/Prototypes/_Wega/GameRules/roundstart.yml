@@ -6,11 +6,30 @@
   - type: LoadMapRule
     mapPath: /Maps/_Wega/wegabar.yml
 
+- type: entity
+  parent: BaseGameRule
+  id: SubGamemodesTraitVampRule
+  components:
+  - type: SubGamemodes
+    rules:
+    - id: SubWizard
+      prob: 0.05
+    - id: SubXenoborgs
+      prob: 0.25
+    - id: Thief
+      prob: 0.5
+
 # Rules
 - type: entity
   parent: BaseGameRule
   id: Vampire
   components:
+  # Corvax-Wega-SubGameRules-start
+  - type: SubGamemodes
+    rules:
+    - id: SubTraitor
+      prob: 0.5
+  # Corvax-Wega-SubGameRules-end
   - type: GameRule
     minPlayers: 5
   - type: VampireRule
@@ -29,10 +48,9 @@
     antags:
     - !type:LinearAntagCount
       proto: Vampire
-      playerRatio: 20
       range:
         min: 1
-        max: 6
+        max: 8
 
 - type: entity
   parent: BaseGameRule
