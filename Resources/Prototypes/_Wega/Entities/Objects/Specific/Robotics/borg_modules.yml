@@ -809,7 +809,7 @@
         whitelist:
           tags:
           - Handcuffs
-  - item: BoxZiptie
+    - item: BoxZiptie
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: zipper-module }
 
