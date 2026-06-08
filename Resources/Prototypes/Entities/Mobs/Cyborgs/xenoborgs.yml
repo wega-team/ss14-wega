@@ -162,6 +162,8 @@
   - type: ShowHealthBars
     damageContainers:
     - Biological
+  - type: Inventory
+    templateId: borgTall
 # Corvax-Wega-end
 
 - type: entity
@@ -242,6 +244,8 @@
   - type: ActionGrant
     actions:
     - ActionBlinkBorg
+  - type: Inventory
+    templateId: borgDutch
 # Corvax-Wega-end
 
 - type: entity
