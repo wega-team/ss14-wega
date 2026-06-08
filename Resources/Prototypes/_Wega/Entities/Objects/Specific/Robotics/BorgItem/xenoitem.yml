@@ -346,3 +346,36 @@
       - !type:PlaySoundBehavior
         sound:
           collection: MetalBreak
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatChameleonXenoborg
+  name: beret
+  description: A beret, an artists favorite headwear.
+  suffix: Chameleon
+  components:
+  - type: FleetingClothing
+    playSoundOnSelfUnequip: false
+    examineOthers: null # stealthy unless stripped
+    popup: null
+  - type: ActivatableUI
+    key: enum.ChameleonUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.ChameleonUiKey.Key:
+        type: ChameleonBoundUserInterface
+  - type: Tag
+    tags: # ignore "WhitelistChameleon" tag
+    - ClothMade
+  - type: Sprite
+    sprite: Clothing/Head/Hats/beret.rsi
+  - type: Clothing
+    sprite: Clothing/Head/Hats/beret.rsi
+  - type: ChameleonClothing
+    slot: [HEAD]
+    default: ClothingHeadHatBeret
+  # Corvax-Wega-Dirtable-start
+  - type: Dirtable
+    dirtState: beret
+    equippedDirtState: equipped-beret
+    # Corvax-Wega-Dirtable-end

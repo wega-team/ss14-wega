@@ -1573,11 +1573,12 @@
     hands:
     - hand:
         emptyRepresentative: MMIFilled
-        emptyLabel: borg-slot-brains-empty
+        emptyLabel: borg-slot-mmi-and-head-brains-empty # Corvax-Wega-Add
         whitelist:
           components:
           - Brain
           - BorgBrain
+          - ClothingHeadHatChameleonXenoborg # Corvax-Wega-Add
     - hand:
         emptyRepresentative: XenoborgModuleBasic
         emptyLabel: borg-slot-modules-empty

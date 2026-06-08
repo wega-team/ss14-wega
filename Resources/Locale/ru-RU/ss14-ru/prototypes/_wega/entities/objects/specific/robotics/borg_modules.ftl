@@ -167,6 +167,7 @@ borg-slot-fulton-empty = Фултоны и стан.маячки
 borg-slot-swap-empty = Вакцина и палочки
 borg-slot-swap-only-empty = Стерильные палочки
 borg-slot-spray-empty = Спреи
+borg-slot-mmi-and-head-brains-empty = Мозги и шляпы
 
 ent-ActionBlinkBorg = Блюспейс прыжок
     .desc = Бесконечность не предел!
