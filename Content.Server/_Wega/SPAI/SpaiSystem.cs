@@ -10,6 +10,7 @@ using Content.Shared.Chemistry.Components;
 using Content.Shared.Doors.Components;
 using Content.Shared.Electrocution;
 using Content.Shared.Interaction;
+using Content.Shared.Mind;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Overlays;
 using Content.Shared._Wega.NinjaVisor;
@@ -24,6 +25,8 @@ namespace Content.Server._Wega.SPAI;
 public sealed partial class SpaiSystem : EntitySystem
 {
     [Dependency] private SharedActionsSystem _actions = default!;
+    [Dependency] private ActionContainerSystem _actionContainer = default!;
+    [Dependency] private SharedMindSystem _mind = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private BloodstreamSystem _bloodstream = default!;
     [Dependency] private SharedElectrocutionSystem _electrify = default!;
@@ -141,8 +144,12 @@ SubscribeLocalEvent<SpaiWeakAiCapabilityComponent, SpaiAirlockEmergencyAccessEve
     private void OnInstallChemInjector(Entity<PAIComponent> ent, ref SpaiInstallChemInjectorEvent args)
     {
         EnsureComp<SpaiChemInjectorComponent>(ent.Owner);
-        _actions.AddAction(ent.Owner, ChemInjectorOpenAction);
-        _actions.RemoveAction(ent.Owner, args.Action!);
+        // Store in mind's container so the action survives polymorph revert (PVS-safe)
+        var container = _mind.TryGetMind(ent.Owner, out var mindId, out _) ? mindId : ent.Owner;
+        _actions.AddAction(ent.Owner, ChemInjectorOpenAction, container);
+        // Remove install action from mind's container and delete it
+        _actionContainer.RemoveAction(new Entity<ActionComponent?>(args.Action.Owner, args.Action.Comp));
+        QueueDel(args.Action.Owner);
         _popup.PopupEntity(Loc.GetString("spai-chem-injector-installed"), ent.Owner, ent.Owner);
         args.Handled = true;
     }
@@ -207,11 +214,13 @@ SubscribeLocalEvent<SpaiWeakAiCapabilityComponent, SpaiAirlockEmergencyAccessEve
     private void OnInstallWeakAi(Entity<PAIComponent> ent, ref SpaiInstallWeakAiEvent args)
     {
         EnsureComp<SpaiWeakAiCapabilityComponent>(ent.Owner);
-
+        // Store in mind's container so actions survive polymorph revert (PVS-safe)
+        var container = _mind.TryGetMind(ent.Owner, out var mindId, out _) ? mindId : ent.Owner;
         foreach (var protoId in WeakAiActions)
-            _actions.AddAction(ent.Owner, protoId);
-
-        _actions.RemoveAction(ent.Owner, args.Action!);
+            _actions.AddAction(ent.Owner, protoId, container);
+        // Remove install action from mind's container and delete it
+        _actionContainer.RemoveAction(new Entity<ActionComponent?>(args.Action.Owner, args.Action.Comp));
+        QueueDel(args.Action.Owner);
         _popup.PopupEntity(Loc.GetString("spai-weak-ai-installed"), ent.Owner, ent.Owner);
         args.Handled = true;
     }

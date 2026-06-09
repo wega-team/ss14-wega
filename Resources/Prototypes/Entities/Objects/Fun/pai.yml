@@ -175,7 +175,7 @@
     currencyWhitelist:
     - SiliconMemory
     balance:
-      SiliconMemory: 120
+      SiliconMemory: 150
   - type: DeviceNetwork
     deviceNetId: Wired
     receiveFrequencyId: SurveillanceCamera
