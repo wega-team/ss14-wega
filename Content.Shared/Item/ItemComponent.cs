@@ -60,6 +60,11 @@ public sealed partial class ItemComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public Vector2i StoredOffset;
+	
+// Corvax-Wega-add
+	[DataField]
+    public bool AddVerb = true;
+// Corvax-Wega-end
 }
 
 /// <summary>

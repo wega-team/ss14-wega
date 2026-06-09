@@ -265,6 +265,7 @@
     sprite: Objects/Specific/Hydroponics/death_nettle.rsi
   - type: Item
     size: Small
+    addVerb: false # Corvax-Wega-add
     sprite: Objects/Specific/Hydroponics/death_nettle.rsi
     heldPrefix: produce
   - type: MeleeWeapon
