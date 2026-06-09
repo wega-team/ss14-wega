@@ -7,11 +7,10 @@
 - type: soundCollection
   id: ReptilianPurr
   files:
-    - /Audio/_Wega/Voice/Reptilian/purr2.ogg
-    - /Audio/_Wega/Voice/Reptilian/rumble.ogg
-    - /Audio/_Wega/Voice/Reptilian/rumble2.ogg
+    - /Audio/_Wega/Voice/Reptilian/urr1.ogg
+    - /Audio/_Wega/Voice/Reptilian/urr2.ogg
+    - /Audio/_Wega/Voice/Reptilian/urr3.ogg
     - /Audio/_Wega/Voice/Reptilian/hiss2.ogg
-    - /Audio/_Wega/Voice/Reptilian/hiss3.ogg
     
 - type: soundCollection
   id: ReptilianGrowl
@@ -19,3 +18,4 @@
     - /Audio/_Wega/Voice/Reptilian/roar.ogg
     - /Audio/_Wega/Voice/Reptilian/roar2.ogg
     - /Audio/_Wega/Voice/Reptilian/roar3.ogg
+    - /Audio/_Wega/Voice/Reptilian/rumble.ogg
