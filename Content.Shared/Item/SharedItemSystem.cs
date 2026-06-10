@@ -119,7 +119,6 @@ public abstract partial class SharedItemSystem : EntitySystem
             args.Using != null ||
             !args.CanAccess ||
             !args.CanInteract ||
-			!component.AddVerb || // Corvax-Wega-add
             !_handsSystem.CanPickupAnyHand(args.User, args.Target, handsComp: args.Hands, item: component))
             return;
 
