@@ -16,7 +16,6 @@ using Content.Shared.Damage.Systems;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Robust.Shared.Timing;
-using Robust.Shared.Random;
 
 namespace Content.Shared.DamageOnPickupSystem.Systems;
 
