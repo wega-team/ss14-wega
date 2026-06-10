@@ -319,14 +319,14 @@
     - type: Armor
       modifiers:
         coefficients:
-          Blunt: 0.5
-          Slash: 0.5
-          Piercing: 0.5
-          Heat: 0.5
+          Blunt: 0.6
+          Slash: 0.6
+          Piercing: 0.7
+          Heat: 0.67
     - type: ExplosionResistance
-      damageCoefficient: 0.5
+      damageCoefficient: 0.8
     - type: FireProtection
-      reduction: 0.5
+      reduction: 0.7
     - type: ClothingSpeedModifier
       walkModifier: 1.0
       sprintModifier: 1.0
@@ -381,4 +381,14 @@
       sprite: _Wega/Clothing/OuterClothing/Armor/chaplain_armor/witchhunter.rsi
     - type: Clothing
       sprite: _Wega/Clothing/OuterClothing/Armor/chaplain_armor/witchhunter.rsi
+
+- type: entity
+  parent: BaseArmorChaplain
+  id: ArmorChaplainSchema
+  name: vampire hunter armor
+  components:
+    - type: Sprite
+      sprite: _Wega/Clothing/OuterClothing/Armor/chaplain_armor/schema_monk.rsi
+    - type: Clothing
+      sprite: _Wega/Clothing/OuterClothing/Armor/chaplain_armor/schema_monk.rsi
 # armor chaplain end

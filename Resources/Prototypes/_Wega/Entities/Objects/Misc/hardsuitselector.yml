@@ -212,8 +212,9 @@
     - BaseArmorChaplain
     - ArmorChaplainHelldiver
     - ArmorChaplainMagic
-    - ArmorChaplainSchema
+    - ArmorChaplainBrass
     - ArmorChaplainInquisitor
     - ArmorChaplainWitchHunter
+    - ArmorChaplainSchema
   - type: Item
     size: Normal # чтоб в лодаут вмещался
