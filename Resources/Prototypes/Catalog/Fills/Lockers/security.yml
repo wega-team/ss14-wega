@@ -107,6 +107,8 @@
       # Corvax-Wega-Edit-Start
     - id: WiretappingCameraAlphaOff
       prob: 0.4
+    - id: CrisisButton
+      prob: 0.2
       # Corvax-Wega-Edit-End
 
 - type: entity

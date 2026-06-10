@@ -28,7 +28,7 @@
   description: voucher-security-first-aid-desc
   items:
   - id: Tourniquet
-    amount: 2
+    amount: 1
   - id: Brutepack
     amount: 2
   - id: Ointment
