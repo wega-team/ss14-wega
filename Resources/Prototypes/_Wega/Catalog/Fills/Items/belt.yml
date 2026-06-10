@@ -90,5 +90,5 @@
     containers:
       storagebase: !type:AllSelector
         children:
-        - id: WeaponPistolJackal
-        - id: WeaponPistolCasul
+        - id: WeaponPistolFailure
+        - id: WeaponPistolUndead

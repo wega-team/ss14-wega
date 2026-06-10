@@ -394,7 +394,7 @@
 - type: entity
   name: Casul
   parent: BaseWeaponBatterySmall
-  id: WeaponPistolCasul
+  id: WeaponPistolUndead
   description: The first of two huge pistols, capable of firing regenerating silver bullets. Incapable of firing without its sister gun.
   components:
   - type: ChaplainItem
@@ -451,8 +451,8 @@
 
 - type: entity
   name: Jackal
-  parent: WeaponPistolCasul
-  id: WeaponPistolJackal
+  parent: WeaponPistolUndead
+  id: WeaponPistolFailure
   description: The second of two huge pistols, capable of firing regenerating silver bullets. Incapable of firing without its sister gun.
   components:
   - type: Sprite
