@@ -18,6 +18,8 @@
   - !type:AddComponentSpecial
     components:
     - type: BibleUser #Lets them heal with bibles
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ] # Corvax-Wega-Edit
 
 - type: startingGear
   id: ChaplainGear
@@ -25,10 +27,11 @@
     # shoes: ClothingShoesColorBlack # Corvax-Wega-Edit
     id: ChaplainPDA
     ears: ClothingHeadsetService
-    belt: ClothingBeltSheathChaplinFilled
+    belt: ClothingBeltSheathChaplinFilled #Wega-Chaplain-Edit
   storage:
     back:
     - RubberStampChaplain
+    - HardsuitChaplain
 
 - type: chameleonOutfit
   id: ChaplainChameleonOutfit

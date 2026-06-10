@@ -192,6 +192,7 @@
     - 0,0,1,3
   # Corvax-Wega-NullRod-start
   - type: NullRod
+  - type: ChaplainItem
   - type: Reflect
     reflectProb: 0.3
     spread: 90

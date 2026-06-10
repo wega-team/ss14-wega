@@ -72,3 +72,23 @@
     containers:
       item:
       - WeaponNullRodERT
+
+- type: entity
+  id: ClothingBeltHolsterFilledChaplain
+  parent: ClothingBeltHolster
+  name: Chaplains' Holster
+  description: A shoulder holster from the Gods. Contains a set of dual pistols.
+  suffix: Filled, Chaplain
+  components:
+  - type: Item
+    size: Ginormous
+  - type: Sprite
+    sprite: _Wega/Clothing/Belt/holster.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Belt/holster.rsi
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: WeaponPistolJackal
+        - id: WeaponPistolCasul

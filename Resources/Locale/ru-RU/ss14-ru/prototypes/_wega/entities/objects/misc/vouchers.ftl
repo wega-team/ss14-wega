@@ -87,3 +87,6 @@ ent-HardsuitOperSelector = преобразователь кровавого-к�
 ent-HardsuitOperMedSelector = преобразователь медицинского кровавого-красного скафандра
     .desc = { ent-HardsuitCESelector.desc }
     .suffix = Селектор
+ent-HardsuitChaplain = преобразователь священного одеяния
+    .desc = { ent-HardsuitCESelector.desc }
+    .suffix = Селектор

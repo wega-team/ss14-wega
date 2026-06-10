@@ -29,10 +29,9 @@ public sealed partial class BloodCultSystem
 
         if (HasComp<VeilCultistComponent>(args.EquipTarget) && ent.Comp.Cult == CultType.Veil)
             return;
-        
+
         if (HasComp<AllowCultEquipmentComponent>(args.EquipTarget))
             return;
-        
         _transform.SetCoordinates(ent, Transform(args.EquipTarget).Coordinates);
         _transform.AttachToGridOrMap(ent);
         _throwing.TryThrow(ent, _random.NextVector2(), 1);

@@ -125,11 +125,14 @@
   storage:
     back:
     - BoxCandle
-    - DrinkWaterBottleFull # Corvax-Wega
-    - DrinkWaterBottleFull # Corvax-Wega
-    - HolyWaterGrenade # Corvax-Wega
-    - HolyWaterGrenade # Corvax-Wega
-    - HolyWaterGrenade # Corvax-Wega
+    # Corvax-Wega-Edit-Start
+    - DrinkWaterBottleFull
+    - DrinkWaterBottleFull
+    - HolyWaterGrenade
+    - HolyWaterGrenade
+    - HolyWaterGrenade
+    - HardsuitChaplain
+    # Corvax-Wega-Edit-End
     - Lantern
     - Lantern
     - Bible

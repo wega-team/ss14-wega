@@ -198,3 +198,22 @@
     - ClothingModularControllerSyndicatePreassembled
     - ClothingOuterHardsuitSyndieMedic
 
+- type: entity
+  parent: BaseHardsuitSelector
+  id: HardsuitChaplain
+  name: operative med hardsuit selector
+  description: "An obsidian rod that strikes paranormal things."
+  suffix: Selector
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Misc/HardsuitSelector/advanced.rsi
+  - type: ItemSelector
+    items:
+    - BaseArmorChaplain
+    - ArmorChaplainHelldiver
+    - ArmorChaplainMagic
+    - ArmorChaplainSchema
+    - ArmorChaplainInquisitor
+    - ArmorChaplainWitchHunter
+  - type: Item
+    size: Normal # чтоб в лодаут вмещался

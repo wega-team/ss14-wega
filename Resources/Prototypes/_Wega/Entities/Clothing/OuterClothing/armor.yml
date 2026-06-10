@@ -304,3 +304,81 @@
     - VeilCultBrassCuirassReflection
     - VeilCultBrassCuirassAbsorb
     - VeilCultBrassCuirassSmoke
+
+# armor chaplain start
+- type: entity
+  parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing]
+  id: BaseArmorChaplain
+  name: crusader armor
+  description: A heavy armor made of reinforced metal plates for for temple ministers.
+  components:
+    - type: Sprite
+      sprite: _Wega/Clothing/OuterClothing/Armor/chaplain_armor/churst_armor.rsi
+    - type: Clothing
+      sprite: _Wega/Clothing/OuterClothing/Armor/chaplain_armor/churst_armor.rsi
+    - type: Armor
+      modifiers:
+        coefficients:
+          Blunt: 0.5
+          Slash: 0.5
+          Piercing: 0.5
+          Heat: 0.5
+    - type: ExplosionResistance
+      damageCoefficient: 0.5
+    - type: FireProtection
+      reduction: 0.5
+    - type: ClothingSpeedModifier
+      walkModifier: 1.0
+      sprintModifier: 1.0
+    - type: ChaplainItem
+
+- type: entity
+  parent: BaseArmorChaplain
+  id: ArmorChaplainHelldiver
+  name: hell armor
+  components:
+    - type: Sprite
+      sprite: _Wega/Clothing/OuterClothing/Armor/chaplain_armor/helldiver.rsi
+    - type: Clothing
+      sprite: _Wega/Clothing/OuterClothing/Armor/chaplain_armor/helldiver.rsi
+
+- type: entity
+  parent: BaseArmorChaplain
+  id: ArmorChaplainMagic
+  name: magic armor
+  components:
+    - type: Sprite
+      sprite: _Wega/Clothing/OuterClothing/Armor/chaplain_armor/magic_armor.rsi
+    - type: Clothing
+      sprite: _Wega/Clothing/OuterClothing/Armor/chaplain_armor/magic_armor.rsi
+
+- type: entity
+  parent: BaseArmorChaplain
+  id: ArmorChaplainBrass
+  name: brass armor
+  components:
+    - type: Sprite
+      sprite: _Wega/Clothing/OuterClothing/Armor/chaplain_armor/clock.rsi
+    - type: Clothing
+      sprite: _Wega/Clothing/OuterClothing/Armor/chaplain_armor/clock.rsi
+
+- type: entity
+  parent: BaseArmorChaplain
+  id: ArmorChaplainInquisitor
+  name: inquisitor armor
+  components:
+    - type: Sprite
+      sprite: _Wega/Clothing/OuterClothing/Armor/chaplain_armor/inquisitor.rsi
+    - type: Clothing
+      sprite: _Wega/Clothing/OuterClothing/Armor/chaplain_armor/inquisitor.rsi
+
+- type: entity
+  parent: BaseArmorChaplain
+  id: ArmorChaplainWitchHunter
+  name: vampire hunter armor
+  components:
+    - type: Sprite
+      sprite: _Wega/Clothing/OuterClothing/Armor/chaplain_armor/witchhunter.rsi
+    - type: Clothing
+      sprite: _Wega/Clothing/OuterClothing/Armor/chaplain_armor/witchhunter.rsi
+# armor chaplain end
