@@ -1,0 +1,12 @@
+namespace Content.Shared.Vampire.Components;
+
+/// <summary>
+/// Just a chill guy.
+/// Defines an entity as a beacon of the soul.
+/// </summary>
+[RegisterComponent]
+public sealed partial class BeaconSoulComponent : Component
+{
+    [DataField]
+    public EntityUid VampireOwner = default!;
+}

@@ -44,6 +44,7 @@
     - any-glob-to-any-file: "**/*.xaml*"
 
 ":baby_chick: YML :baby_chick:":
+- all:
   - changed-files:
     - any-glob-to-any-file:
       - "**/*.yml"

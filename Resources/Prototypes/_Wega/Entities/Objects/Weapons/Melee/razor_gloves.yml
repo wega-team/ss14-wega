@@ -1,0 +1,26 @@
+- type: entity
+  parent: [ClothingHandsKnuckleDusters, BaseMinorContraband]
+  id: ClothingHandsRazorGloves
+  name: razor gloves
+  description: Everything ingenious is simple.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Hands/Gloves/razor_gloves.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Wega/Clothing/Hands/Gloves/razor_gloves.rsi
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+    - Kangaroo
+  - type: MeleeWeapon
+    damage:
+      types:
+       Slash: 8
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+    animation: WeaponArcFist
+    mustBeEquippedToUse: true
+  - type: Construction
+    graph: RazGlove
+    node: RazorGlov

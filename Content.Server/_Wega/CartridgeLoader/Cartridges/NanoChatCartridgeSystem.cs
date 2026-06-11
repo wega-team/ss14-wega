@@ -16,15 +16,15 @@ using Robust.Shared.Utility;
 
 namespace Content.Server.CartridgeLoader.Cartridges;
 
-public sealed class NanoChatCartridgeSystem : SharedNanoChatCartridgeSystem
+public sealed partial class NanoChatCartridgeSystem : SharedNanoChatCartridgeSystem
 {
-    [Dependency] private readonly IAdminLogManager _admin = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly CartridgeLoaderSystem _cartridgeLoader = default!;
-    [Dependency] private readonly SharedContainerSystem _container = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private IAdminLogManager _admin = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private CartridgeLoaderSystem _cartridgeLoader = default!;
+    [Dependency] private SharedContainerSystem _container = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private IRobustRandom _random = default!;
 
     private readonly Dictionary<string, EntityUid> _activeChats = new();
     private readonly Dictionary<string, ChatGroupData> _groups = new();
@@ -362,7 +362,13 @@ public sealed class NanoChatCartridgeSystem : SharedNanoChatCartridgeSystem
 
         if (TryComp<CartridgeComponent>(recipientEntity, out var cartridge)
             && cartridge.LoaderUid.HasValue && !recipientComp.MutedSound)
-            _audio.PlayPvs(recipientComp.Sound, recipientEntity);
+			{
+				_audio.PlayPvs(recipientComp.Sound, recipientEntity);
+				_cartridgeLoader.SendNotification(
+					cartridge.LoaderUid.Value,
+					Loc.GetString("nanochat-pda-notification-header"),
+					Loc.GetString("nanochat-pda-notification-fromwho", ("user", sender.Comp.OwnerName)));
+			}
 
         UpdateUiState((recipientEntity, recipientComp));
         UpdateUiState(sender);

@@ -6,6 +6,7 @@ using Content.Server.RoundEnd;
 using Content.Shared.Actions;
 using Content.Shared.Blood.Cult;
 using Content.Shared.Blood.Cult.Components;
+using Content.Shared.Body;
 using Content.Shared.Body.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
@@ -29,35 +30,40 @@ using Content.Shared.Standing;
 using Content.Shared.Weapons.Melee;
 using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Weapons.Ranged.Events;
+using Content.Shared.Veil.Cult.Components;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
+using Content.Shared.Clothing;
+using Content.Shared.IdentityManagement.Components;
+using Content.Shared.Inventory;
+
 
 namespace Content.Server.Blood.Cult;
 
 public sealed partial class BloodCultSystem : SharedBloodCultSystem
 {
-    [Dependency] private readonly AudioSystem _audio = default!;
-    [Dependency] private readonly BloodCultRuleSystem _bloodCult = default!;
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly MetaDataSystem _meta = default!;
-    [Dependency] private readonly MobStateSystem _mobState = default!;
-    [Dependency] private readonly RoundEndSystem _roundEndSystem = default!;
-    [Dependency] private readonly ServerGlobalSoundSystem _sound = default!;
-    [Dependency] private readonly SharedActionsSystem _action = default!;
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-    [Dependency] private readonly SharedContainerSystem _container = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
-    [Dependency] private readonly SharedMindSystem _mind = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SharedSolutionContainerSystem _solution = default!;
-    [Dependency] private readonly UserInterfaceSystem _ui = default!;
+    [Dependency] private AudioSystem _audio = default!;
+    [Dependency] private BloodCultRuleSystem _bloodCult = default!;
+    [Dependency] private IGameTiming _gameTiming = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private MetaDataSystem _meta = default!;
+    [Dependency] private MobStateSystem _mobState = default!;
+    [Dependency] private RoundEndSystem _roundEndSystem = default!;
+    [Dependency] private ServerGlobalSoundSystem _sound = default!;
+    [Dependency] private SharedActionsSystem _action = default!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
+    [Dependency] private SharedContainerSystem _container = default!;
+    [Dependency] private SharedDoAfterSystem _doAfterSystem = default!;
+    [Dependency] private SharedHandsSystem _hands = default!;
+    [Dependency] private SharedMindSystem _mind = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SharedSolutionContainerSystem _solution = default!;
+    [Dependency] private UserInterfaceSystem _ui = default!;
 
     public override void Initialize()
     {
@@ -70,7 +76,7 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
         SubscribeLocalEvent<BloodCultistEyesComponent, ExaminedEvent>(OnCultistEyesExamined);
 
         SubscribeLocalEvent<BloodCultistComponent, ShotAttemptedEvent>(OnShotAttempted); // Corvax-Wega-Testing
-        SubscribeLocalEvent<BloodCultWeaponComponent, AttemptMeleeEvent>(OnAttemptMelee);
+        SubscribeLocalEvent<CultWeaponComponent, AttemptMeleeEvent>(OnAttemptMelee);
         SubscribeLocalEvent<BloodDaggerComponent, AfterInteractEvent>(OnInteract);
 
         SubscribeLocalEvent<StoneSoulComponent, ComponentInit>(OnComponentInit);
@@ -158,16 +164,22 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
         if (!args.IsInDetailsRange)
             return;
 
+        var clothes = _inventory.GetSlotEnumerator((uid, null), SlotFlags.WITHOUT_POCKET);
+        while (clothes.NextItem(out var cloth, out var slot))
+        {
+            if (TryComp<IdentityBlockerComponent>(cloth, out var blocker) && blocker.Coverage.HasFlag(IdentityBlockerCoverage.EYES) && blocker.Enabled)
+                return;
+        }
+
         var name = Identity.Name(uid, EntityManager, args.Examiner);
-        if (Name(uid) == name)
-            args.PushMarkup(Loc.GetString("blood-cultist-eyes-glow-examined", ("name", name)));
+        args.PushMarkup(Loc.GetString("blood-cultist-eyes-glow-examined", ("name", name)));
     }
 
     // Corvax-Wega-Testing-start
     // Да я пометил тегами чтобы банально не забыть про это и чо?
     private void OnShotAttempted(Entity<BloodCultistComponent> ent, ref ShotAttemptedEvent args)
     {
-        if (HasComp<BloodCultAllowedGunComponent>(args.Used))
+        if (HasComp<CultAllowedGunComponent>(args.Used))
             return;
 
         _popup.PopupEntity(Loc.GetString("gun-disabled"), ent, ent);
@@ -176,17 +188,23 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
     // Corvax-Wega-Testing-end
 
     #region Dagger & Weapon
-    private void OnAttemptMelee(Entity<BloodCultWeaponComponent> entity, ref AttemptMeleeEvent args)
+    private void OnAttemptMelee(Entity<CultWeaponComponent> entity, ref AttemptMeleeEvent args)
     {
         var user = Transform(entity.Owner).ParentUid;
-        if (!HasComp<BloodCultistComponent>(user))
-        {
-            _popup.PopupEntity(Loc.GetString("blood-cult-failed-attack"), user, user, PopupType.SmallCaution);
+        if (HasComp<BloodCultistComponent>(user) && entity.Comp.Cult == CultType.Blood)
+            return;
 
-            var dropEvent = new DropHandItemsEvent();
-            RaiseLocalEvent(user, ref dropEvent);
-            args.Cancelled = true;
-        }
+        if (HasComp<VeilCultistComponent>(user) && entity.Comp.Cult == CultType.Veil)
+            return;
+
+        if (HasComp<AllowCultEquipmentComponent>(user))
+            return;
+
+        _popup.PopupEntity(Loc.GetString("blood-cult-failed-attack"), user, user, PopupType.SmallCaution);
+
+        var dropEvent = new DropHandItemsEvent();
+        RaiseLocalEvent(user, ref dropEvent);
+        args.Cancelled = true;
     }
 
     private void OnInteract(EntityUid uid, BloodDaggerComponent component, AfterInteractEvent args)
@@ -230,21 +248,21 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
         if (!HasComp<BodyComponent>(args.Target) || !TryComp<BloodstreamComponent>(args.Target, out var bloodstream))
             return;
 
-        var solution = bloodstream.BloodSolution;
-        if (solution == null)
+        if (!_solution.TryGetSolution(args.Target.Value, bloodstream.BloodSolutionName, out var solution, out var solutionData))
             return;
 
         var holywaterReagentId = new ReagentId("Holywater", new List<ReagentData>());
-        var holywater = solution.Value.Comp.Solution.GetReagentQuantity(holywaterReagentId);
+        var holywater = solutionData.GetReagentQuantity(holywaterReagentId);
 
         if (holywater <= 0)
             return;
 
-        solution.Value.Comp.Solution.RemoveReagent(holywaterReagentId, holywater);
+        var holywaterQuantity = new ReagentQuantity("Holywater", holywater);
+        var removed = _solution.RemoveReagent(solution.Value, holywaterQuantity);
+        if (removed <= 0)
+            return;
 
-        var unholywaterReagentId = new ReagentId("Unholywater", new List<ReagentData>());
-        var unholywaterQuantity = new ReagentQuantity(unholywaterReagentId, holywater);
-
+        var unholywaterQuantity = new ReagentQuantity("Unholywater", removed);
         args.Handled = _solution.TryAddReagent(solution.Value, unholywaterQuantity, out var addedQuantity) && addedQuantity > 0;
     }
 
@@ -395,7 +413,7 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
         var cult = _bloodCult.GetActiveRule();
         if (cult != null && cult.Curses > 0)
         {
-            _roundEndSystem.CancelRoundEndCountdown(user, true);
+            _roundEndSystem.CancelRoundEndCountdown(user, null, true);
             QueueDel(entity);
             cult.Curses--;
         }
@@ -464,11 +482,11 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
     #region Shield
     private void OnShieldGotUnequipped(Entity<BloodShieldActivaebleComponent> ent, ref GotUnequippedEvent args)
     {
-        if (!TryComp<EnergyShieldOwnerComponent>(args.Equipee, out var energyShield))
+        if (!TryComp<EnergyShieldOwnerComponent>(args.EquipTarget, out var energyShield))
             return;
 
         QueueDel(energyShield.ShieldEntity);
-        RemComp(args.Equipee, energyShield);
+        RemComp(args.EquipTarget, energyShield);
     }
     #endregion
 

@@ -9,11 +9,11 @@ using Content.Shared.Stunnable;
 
 namespace Content.Shared.Blood.Cult;
 
-public abstract class SharedBloodCultSystem : EntitySystem
+public abstract partial class SharedBloodCultSystem : EntitySystem
 {
-    [Dependency] private readonly SharedActionsSystem _action = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SharedStunSystem _stun = default!;
+    [Dependency] private SharedActionsSystem _action = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SharedStunSystem _stun = default!;
 
     #region Deconvertation
     public void CultistDeconvertation(EntityUid cultist)

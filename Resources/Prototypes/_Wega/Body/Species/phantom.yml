@@ -1,0 +1,262 @@
+- type: markingsGroup
+  parent: None
+  id: Phantom
+  limits:
+    enum.HumanoidVisualLayers.Special:
+      limit: 3
+      required: false
+    enum.HumanoidVisualLayers.Head:
+      limit: 1
+      required: true
+      default: [ PhantomHeadBase ]
+    enum.HumanoidVisualLayers.HeadTop:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.Hair:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.FacialHair:
+      limit: 0
+      required: false
+    enum.HumanoidVisualLayers.Snout:
+      limit: 2
+      required: false
+    enum.HumanoidVisualLayers.Chest:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.LArm:
+      limit: 2
+      required: false
+    enum.HumanoidVisualLayers.RArm:
+      limit: 2
+      required: false
+    enum.HumanoidVisualLayers.LLeg:
+      limit: 2
+      required: false
+    enum.HumanoidVisualLayers.RLeg:
+      limit: 2
+      required: false
+
+- type: entity
+  parent: BaseSpeciesAppearance
+  id: AppearancePhantom
+  name: phantom appearance
+  components:
+  - type: Inventory
+    femaleDisplacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: _Wega/Mobs/Species/Phantom/displacement.rsi
+            state: jumpsuit-female
+  - type: InitialBody
+    organs:
+      Torso: OrganPhantomTorso
+      Head: OrganPhantomHead
+      ArmLeft: OrganPhantomArmLeft
+      ArmRight: OrganPhantomArmRight
+      HandLeft: OrganPhantomHandLeft
+      HandRight: OrganPhantomHandRight
+      LegLeft: OrganPhantomLegLeft
+      LegRight: OrganPhantomLegRight
+      FootLeft: OrganPhantomFootLeft
+      FootRight: OrganPhantomFootRight
+      Brain: OrganPhantomBrain
+      Eyes: OrganPhantomEyes
+      Tongue: OrganPhantomTongue
+      Appendix: OrganPhantomAppendix
+      Ears: OrganPhantomEars
+      Lungs: OrganPhantomLungs
+      Heart: OrganPhantomHeart
+      Stomach: OrganPhantomStomach
+      Liver: OrganPhantomLiver
+      Kidneys: OrganPhantomKidneys
+  - type: HumanoidProfile
+    species: Phantom
+
+- type: entity
+  name: Urisst' Mzhand Phantom
+  parent:
+  - AppearancePhantom
+  - BaseSpeciesMobOrganic
+  - BaseOperated
+  id: MobPhantom
+  components:
+  - type: Photophobia
+    applyShadowWeakness: true
+    damagePerLight: 0
+    speedModifier: 0.70
+    interval: 0.5
+  - type: Damageable
+    damageModifierSet: Phantom
+  - type: Injurable
+    damageContainer: Biological
+  - type: ThermalRegulator
+    metabolismHeat: 800
+    radiatedHeat: 100
+    implicitHeatRegulation: 250
+    sweatHeatRegulation: 500
+    shiveringHeatRegulation: 500
+    normalBodyTemperature: 288.15
+    thermalRegulationTemperatureThreshold: 2
+  - type: Temperature
+    currentTemperature: 288.15
+    specificHeat: -20
+  - type: TemperatureDamage
+    heatDamageThreshold: 318.15
+    coldDamageThreshold: 203.15
+    coldDamage:
+      types:
+        Cold : 0.2
+    heatDamage:
+      types:
+        Heat : 0.1
+  - type: TemperatureSpeed
+    thresholds:
+      243: 0.8
+      223: 0.6
+      203: 0.4
+  - type: DamagedByFlashing
+    flashDamage:
+      types:
+        Heat: 5
+    useAdvancedFlashDamage: true
+    multiplier: 1.5
+  - type: NaturalNightVision
+    tintColor: "#999999"
+    visionRadius: 8
+    contrast: 0.8
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4
+    baseSprintSpeed: 6
+
+- type: entity
+  parent: OrganBase
+  id: OrganPhantom
+  abstract: true
+  suffix: Phantom
+
+- type: entity
+  id: OrganPhantomMetabolizer
+  abstract: true
+  components:
+  - type: Metabolizer
+    metabolizerTypes: [ Human ]
+
+- type: entity
+  parent: OrganPhantom
+  id: OrganPhantomInternal
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: Mobs/Species/Human/organs.rsi
+
+- type: entity
+  id: OrganPhantomVisual
+  abstract: true
+  components:
+  - type: VisualOrgan
+    data:
+      sprite: _Wega/Mobs/Species/Phantom/parts.rsi
+  - type: VisualOrganMarkings
+    markingData:
+      group: Phantom
+
+- type: entity
+  parent: [ OrganPhantom, OrganPhantomVisual ]
+  id: OrganPhantomExternal
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Phantom/parts.rsi
+
+- type: entity
+  parent: [ OrganBaseTorsoSexed, OrganBaseTorso, OrganPhantomExternal ]
+  id: OrganPhantomTorso
+
+- type: entity
+  parent: [ OrganBaseHead, OrganPhantomExternal ]
+  id: OrganPhantomHead
+  components:
+  - type: VisualOrganMarkings
+    hideableLayers:
+    - enum.HumanoidVisualLayers.Hair
+    - enum.HumanoidVisualLayers.FacialHair
+    - enum.HumanoidVisualLayers.Snout
+
+- type: entity
+  parent: [ OrganBaseArmLeft, OrganPhantomExternal ]
+  id: OrganPhantomArmLeft
+
+- type: entity
+  parent: [ OrganBaseArmRight, OrganPhantomExternal ]
+  id: OrganPhantomArmRight
+
+- type: entity
+  parent: [ OrganBaseHandLeft, OrganPhantomExternal ]
+  id: OrganPhantomHandLeft
+
+- type: entity
+  parent: [ OrganBaseHandRight, OrganPhantomExternal ]
+  id: OrganPhantomHandRight
+
+- type: entity
+  parent: [ OrganBaseLegLeft, OrganPhantomExternal ]
+  id: OrganPhantomLegLeft
+
+- type: entity
+  parent: [ OrganBaseLegRight, OrganPhantomExternal ]
+  id: OrganPhantomLegRight
+
+- type: entity
+  parent: [ OrganBaseFootLeft, OrganPhantomExternal ]
+  id: OrganPhantomFootLeft
+
+- type: entity
+  parent: [ OrganBaseFootRight, OrganPhantomExternal ]
+  id: OrganPhantomFootRight
+
+- type: entity
+  parent: [ OrganBaseBrain, OrganPhantomInternal ]
+  id: OrganPhantomBrain
+
+- type: entity
+  parent: [ OrganPhantomVisual, OrganBaseEyes, OrganPhantomInternal ]
+  id: OrganPhantomEyes
+  components:
+  - type: VisualOrgan
+    data:
+      sprite: _Wega/Mobs/Customization/phantom.rsi
+      state: eyes
+
+- type: entity
+  parent: [ OrganBaseTongue, OrganPhantomInternal ]
+  id: OrganPhantomTongue
+
+- type: entity
+  parent: [ OrganBaseAppendix, OrganPhantomInternal ]
+  id: OrganPhantomAppendix
+
+- type: entity
+  parent: [ OrganBaseEars, OrganPhantomInternal ]
+  id: OrganPhantomEars
+
+- type: entity
+  parent: [ OrganBaseLungs, OrganPhantomInternal, OrganPhantomMetabolizer ]
+  id: OrganPhantomLungs
+
+- type: entity
+  parent: [ OrganBaseHeart, OrganPhantomInternal, OrganPhantomMetabolizer ]
+  id: OrganPhantomHeart
+
+- type: entity
+  parent: [ OrganBaseStomach, OrganPhantomInternal, OrganPhantomMetabolizer ]
+  id: OrganPhantomStomach
+
+- type: entity
+  parent: [ OrganBaseLiver, OrganPhantomInternal, OrganPhantomMetabolizer ]
+  id: OrganPhantomLiver
+
+- type: entity
+  parent: [ OrganBaseKidneys, OrganPhantomInternal, OrganPhantomMetabolizer ]
+  id: OrganPhantomKidneys

@@ -1,6 +1,6 @@
 using System.Linq;
 using Content.Server.Stack;
-using Content.Shared.Body.Organ;
+using Content.Shared.Body;
 using Content.Shared.DoAfter;
 using Content.Shared.Hands.Components;
 using Content.Shared.Implants.Components;
@@ -17,11 +17,11 @@ namespace Content.Server.Surgery;
 
 public sealed partial class SurgerySystem
 {
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly TagSystem _tag = default!;
-    [Dependency] private readonly ItemToggleSystem _toggle = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
-    [Dependency] private readonly StackSystem _stack = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private TagSystem _tag = default!;
+    [Dependency] private ItemToggleSystem _toggle = default!;
+    [Dependency] private SharedDoAfterSystem _doAfterSystem = default!;
+    [Dependency] private StackSystem _stack = default!;
 
     private void GraphsInitialize()
     {

@@ -139,8 +139,8 @@ ent-HandheldCrewMonitorBorg = встроенный монитор экипажа
 ent-BorgSyringe = { ent-BaseSyringe }
     .desc = { ent-BaseSyringe.desc }
     .suffix = Киборг
-ent-BorgAdvancedJetInjector = продвинутый инжектор
-    .desc = Крутой инжектор
+ent-BorgAdvancedJetInjector = { ent-AdvancedJetInjector }
+    .desc = { ent-AdvancedJetInjector.desc }
     .suffix = Киборг
 ent-BorgHypoTricordrazineBase = базовый борг-гипоспрей трикордразина
     .desc = Стерильный инъектор для быстрого введения и генерации трикордразина пациентам. Удешевлённый и более специализированный вариант для медицинских боргов.
@@ -195,17 +195,26 @@ ent-HoloFanSci = { ent-HoloFan }
     .desc = { ent-HoloFan.desc }
 
 # Синдикат
+ent-ModuleSyndiWeapon = модуль настройки оружия киборга
+    .desc = Настройте вооружение Вашему киборгу!
+ent-ModuleSyndiSupport = модуль настройки вспомогательных систем киборга
+    .desc = Настройте дополнительные системы Вашему киборгу!
 ent-SyndicateDrill = бур синдиката
     .desc = Ээээ капитан, этот пристройка тут не нужен.
 ent-BorgWeaponSniperHristovAdvanced = Христов ROW
     .desc = Христов МК2 для киборгов. На ходу создаёт патроны калибра .60 винтовочный из встроенного самозарядного фабрикатора боеприпасов.
     .suffix = Синдиборг
-ent-WeaponLightMachineGunL6CEnergy = { ent-WeaponLightMachineGunL6C }
-    .desc = { ent-WeaponLightMachineGunL6C.desc }
+ent-WeaponSubMachineGunC20rROWAdvensed = C-20u ROW
+    .desc = Пистолет-пулемёт C-20u для использования киборгами. На ходу создаёт патроны калибра .35 авто из встроенного самозарядного фабрикатора боеприпасов.
+    .suffix = Синдиборг
+ent-WeaponPistolDesertEagleBorg = ПО ROW
+    .desc = Пистолет "пустынный орёл" для использования киборгами. На ходу создаёт патроны калибра .45 магнум из встроенного самозарядного фабрикатора боеприпасов.
     .suffix = Синдиборг
 ent-WeaponLauncherChinaLakeBorg = china ROW
     .desc = China Lake для киборгов. На ходу создаёт боезапас встроенного самозарядного фабрикатора.
     .suffix = Синдиборг
+ent-BorgKit = набор "убийца робот"
+    .desc = Коробка с редспейс телепортом штурмового киборга и двух настраиваемых модулей: вооружения и вспомогательных систем.
 
 # Ксеноборги
 ent-XenoborgHoloprojectorForcefield = голопроектор силового поля ксеноборгов
@@ -241,9 +250,3 @@ ent-RepeirModeDeviceXenoborgHeavy = устройство самовосстан�
     .desc = Устройство для поддержки корпуса в целом состоянии усилинное под Ваш вес.
 ent-BorgGeneratorNanopastXenoborg = генератор нанопасты ксеноборгов
     .desc = Устройство для генерации тюбиков нанопасты, позволяющая экстренно залатать дыры у синтетиков.
-
-# Иконка
-ent-BorgIconRollerBed = Заглушка
-    .desc = Заглушка
-ent-BorgIconMorgBag = Заглушка
-    .desc = Заглушка

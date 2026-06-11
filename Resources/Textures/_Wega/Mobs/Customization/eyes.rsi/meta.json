@@ -10,6 +10,10 @@
       {
           "name": "resomi",
           "directions": 4
+      },
+      {
+          "name": "slime",
+          "directions": 4
       }
     ]
 }

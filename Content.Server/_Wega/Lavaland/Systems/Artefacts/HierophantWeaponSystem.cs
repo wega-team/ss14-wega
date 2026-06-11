@@ -14,11 +14,11 @@ namespace Content.Server.Lavaland.Artefacts.Systems;
 
 public sealed partial class HierophantClubSystem : EntitySystem
 {
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly SharedMapSystem _map = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly TurfSystem _turf = default!;
-    [Dependency] private readonly UseDelaySystem _delay = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private SharedMapSystem _map = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private TurfSystem _turf = default!;
+    [Dependency] private UseDelaySystem _delay = default!;
 
     public override void Initialize()
     {

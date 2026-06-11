@@ -10,7 +10,7 @@
 
 # Inhabitant Square
 - type: entity
-  parent: [ BaseMobHuman, BaseMobInhabitants ]
+  parent: [ MobHuman, BaseMobInhabitants ]
   id: MobHumanInhabitantSquare
   name: inhabitant of the square
   components:
@@ -40,7 +40,7 @@
 
 # Hermit
 - type: entity
-  parent: [ BaseMobHuman, BaseMobInhabitants ]
+  parent: [ MobHuman, BaseMobInhabitants ]
   id: MobHumanInhabitantHermit
   name: hermit
   components:
@@ -75,7 +75,7 @@
 
 # Beach Guys
 - type: entity
-  parent: [ BaseMobHuman, BaseMobInhabitants ]
+  parent: [ MobHuman, BaseMobInhabitants ]
   id: MobHumanInhabitantBeachGuy
   name: beach Guy
   components:
@@ -149,7 +149,7 @@
 
 # Veterinarian
 - type: entity
-  parent: [ BaseMobHuman, BaseMobInhabitants ]
+  parent: [ MobHuman, BaseMobInhabitants ]
   id: MobHumanInhabitantTranslocatedVeterinarian
   name: veterinarian
   components:

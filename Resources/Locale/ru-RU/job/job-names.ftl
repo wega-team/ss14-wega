@@ -6,16 +6,16 @@ job-name-brigmedic = бригмедик
 job-name-cadet = кадет СБ
 job-name-captain = капитан
 job-name-cargotech = грузчик
-job-name-cburn = агент карантинной службы Центком
+job-name-cburn = агент РХБЗЗ
 job-name-ce = старший инженер
-job-name-centcommoff = CentComm Official
+job-name-centcommoff = представитель Центком
 job-name-chef = шеф-повар
 job-name-chaplain = священник
 job-name-chemist = химик
 job-name-clown = клоун
 job-name-cluwne = клувень
 job-name-cmo = главный врач
-job-name-deathsquad = агент Центком
+job-name-deathsquad = агент эскадрона смерти
 job-name-detective = детектив
 job-name-doctor = врач
 job-name-engineer = инженер
@@ -62,13 +62,13 @@ job-name-virologist = вирусолог
 job-name-zookeeper = зоотехник
 
 # antagonist jobs
-job-name-ninja = Ninja
+job-name-ninja = ниндзя
 job-name-syndicate = синдикат
-job-name-syndicate-commander = Syndicate Commander
-job-name-syndicate-corpsman = Syndicate Corpsman
-job-name-syndicate-operative = Syndicate Operative
-job-name-pirate = Pirate
-job-name-wizard = Wizard
+job-name-syndicate-commander = командир оперативников
+job-name-syndicate-corpsman = медик оперативников
+job-name-syndicate-operative = ядерный оперативник
+job-name-pirate = пират
+job-name-wizard = волшебник
 job-name-zombie = зомби
 
 # Job titles

@@ -7,8 +7,9 @@
   components:
   - type: Sprite
     sprite: _Wega/Objects/Specific/Lavaland/dark_shard.rsi
+    state: icon
   - type: Item
-    size: Large
+    size: Normal
   - type: SpawnItemsOnUse
     items:
       - id: WeaponCursedKatana
@@ -217,12 +218,12 @@
   components:
   - type: Sprite
     sprite: _Wega/Objects/Weapons/Melee/spell_blade.rsi
-  - type: Clothing
-    sprite: _Wega/Objects/Weapons/Melee/spell_blade.rsi
-    quickEquip: false
-    slots:
-    - Back
-    - SuitStorage
+  # - type: Clothing
+    # sprite: _Wega/Objects/Weapons/Melee/spell_blade.rsi
+    # quickEquip: false
+    # slots:
+    # - Back
+    # - SuitStorage
   - type: Item
     storedRotation: -45
     shape:
@@ -251,4 +252,4 @@
     reflectProb: 0.5
     spread: 90
   - type: DisarmMalus
-  - type: BloodCultAllowedGun # Corvax-Wega-BloodCult
+  - type: CultAllowedGun # Corvax-Wega-Cult

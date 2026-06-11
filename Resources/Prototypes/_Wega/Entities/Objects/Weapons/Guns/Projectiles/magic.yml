@@ -11,17 +11,16 @@
   - type: Projectile
     damage:
       types:
-        Bloodloss: 12
-        Blunt: 3
+        Blunt: 21
   - type: SolutionContainerManager
     solutions:
       bolt:
-        maxVol: 1.5
+        maxVol: 2
         reagents:
         - ReagentId: HemorrhinolBloodCult
-          Quantity: 1.5
+          Quantity: 2
   - type: SolutionInjectOnProjectileHit
-    transferAmount: 1.5
+    transferAmount: 2
     solution: bolt
 
 - type: entity
@@ -72,3 +71,57 @@
     damage:
       types:
         Slash: 15
+
+- type: entity
+  id: ProjectileAnomalyFireballMax
+  name: fireball
+  description: Hovering blob of flame.
+  parent: ProjectileFireball
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TimedDespawn
+    lifetime: 30
+  - type: Explosive
+    explosionType: Default
+    maxIntensity: 1
+    intensitySlope: 0.1
+    totalIntensity: 0.9
+    maxTileBreak: 0
+
+- type: entity
+  id: ProjectilePolyboltLightPerson
+  parent: ProjectilePolyboltBase
+  name: lightperson polybolt
+  description: Nooo, I don't wanna be lightperson!
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: PolymorphOnTrigger
+    polymorph: ArtifactLuminous
+  - type: WhitelistTriggerCondition
+    userWhitelist:
+      components:
+      - MobState
+
+- type: entity
+  parent: BaseBullet
+  id: ProjectileInfectedTrophy
+  name: ""
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: skull
+  - type: ProjectileInfect
+    infection: VampireGraveFever
+  - type: ProjectileAoE
+    damageRadius: 1
+    damageMultiplier: 1
+  - type: Projectile
+    ignoreResistances: true
+    ignoreTargeted: true
+    damage:
+      types:
+        Blunt: 5
+  - type: TimedDespawn
+    lifetime: 0.175

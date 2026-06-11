@@ -15,6 +15,7 @@ using Content.Server.RoundEnd;
 using Content.Shared.Achievements;
 using Content.Shared.Blood.Cult;
 using Content.Shared.Blood.Cult.Components;
+using Content.Shared.Body;
 using Content.Shared.Body.Components;
 using Content.Shared.Clumsy;
 using Content.Shared.CombatMode.Pacification;
@@ -22,6 +23,7 @@ using Content.Shared.Database;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Humanoid;
+using Content.Shared.Metabolism;
 using Content.Shared.Mind;
 using Content.Shared.Mindshield.Components;
 using Content.Shared.Mobs;
@@ -37,27 +39,27 @@ using Robust.Shared.Random;
 
 namespace Content.Server.GameTicking.Rules
 {
-    public sealed class BloodCultRuleSystem : GameRuleSystem<BloodCultRuleComponent>
+    public sealed partial class BloodCultRuleSystem : GameRuleSystem<BloodCultRuleComponent>
     {
-        [Dependency] private readonly SharedAchievementsSystem _achievement = default!;
-        [Dependency] private readonly ActionsSystem _action = default!;
-        [Dependency] private readonly AntagSelectionSystem _antag = default!;
-        [Dependency] private readonly BodySystem _body = default!;
-        [Dependency] private readonly IEntityManager _entityManager = default!;
-        [Dependency] private readonly ISharedPlayerManager _player = default!;
-        [Dependency] private readonly IAdminLogManager _adminLogManager = default!;
-        [Dependency] private readonly MetabolizerSystem _metabolism = default!;
-        [Dependency] private readonly MindSystem _mind = default!;
-        [Dependency] private readonly NpcFactionSystem _npcFaction = default!;
-        [Dependency] private readonly RoleSystem _role = default!;
-        [Dependency] private readonly SharedHandsSystem _hands = default!;
-        [Dependency] private readonly RoundEndSystem _roundEndSystem = default!;
-        [Dependency] private readonly IRobustRandom _random = default!;
-        [Dependency] private readonly SharedAudioSystem _audio = default!;
-        [Dependency] private readonly SharedPopupSystem _popup = default!;
-        [Dependency] private readonly ObjectivesSystem _objectives = default!;
-        [Dependency] private readonly TargetObjectiveSystem _target = default!;
-        [Dependency] private readonly MetaDataSystem _meta = default!;
+        [Dependency] private SharedAchievementsSystem _achievement = default!;
+        [Dependency] private ActionsSystem _action = default!;
+        [Dependency] private AntagSelectionSystem _antag = default!;
+        [Dependency] private IEntityManager _entityManager = default!;
+        [Dependency] private ISharedPlayerManager _player = default!;
+        [Dependency] private IAdminLogManager _adminLogManager = default!;
+        [Dependency] private MetabolizerSystem _metabolism = default!;
+        [Dependency] private MindSystem _mind = default!;
+        [Dependency] private NpcFactionSystem _npcFaction = default!;
+        [Dependency] private RoleSystem _role = default!;
+        [Dependency] private SharedHandsSystem _hands = default!;
+        [Dependency] private RoundEndSystem _roundEndSystem = default!;
+        [Dependency] private IRobustRandom _random = default!;
+        [Dependency] private SharedAudioSystem _audio = default!;
+        [Dependency] private SharedPopupSystem _popup = default!;
+        [Dependency] private SharedVisualBodySystem _visualBody = default!;
+        [Dependency] private ObjectivesSystem _objectives = default!;
+        [Dependency] private TargetObjectiveSystem _target = default!;
+        [Dependency] private MetaDataSystem _meta = default!;
 
         public readonly ProtoId<NpcFactionPrototype> BloodCultNpcFaction = "BloodCult";
 
@@ -73,8 +75,8 @@ namespace Content.Server.GameTicking.Rules
             SubscribeLocalEvent<BloodCultObjectComponent, ComponentShutdown>(OnBloodCultObjectShutdown);
             SubscribeLocalEvent<BloodCultObjectComponent, CryostorageEnterEvent>(OnCryostorageEnter);
 
-            SubscribeLocalEvent<GodCalledEvent>(OnGodCalled);
-            SubscribeLocalEvent<RitualConductedEvent>(OnRitualConducted);
+            SubscribeLocalEvent<BloodGodCalledEvent>(OnGodCalled);
+            SubscribeLocalEvent<BloodRitualConductedEvent>(OnRitualConducted);
 
             SubscribeLocalEvent<AutoCultistComponent, ComponentStartup>(OnAutoCultistAdded);
             SubscribeLocalEvent<BloodCultistComponent, ComponentRemove>(OnComponentRemove);
@@ -156,7 +158,7 @@ namespace Content.Server.GameTicking.Rules
             }
 
             var globalCandidates = new List<EntityUid>();
-            var globalEnumerator = EntityQueryEnumerator<HumanoidAppearanceComponent, ActorComponent>();
+            var globalEnumerator = EntityQueryEnumerator<HumanoidProfileComponent, ActorComponent>();
             while (globalEnumerator.MoveNext(out var uid, out _, out _))
             {
                 if (cult.SelectedTargets.Contains(uid) || HasComp<BloodCultistComponent>(uid))
@@ -178,7 +180,7 @@ namespace Content.Server.GameTicking.Rules
         private EntityUid? FindNewRandomTarget(BloodCultRuleComponent cult, EntityUid excludedTarget)
         {
             var candidates = new List<EntityUid>();
-            var query = EntityQueryEnumerator<HumanoidAppearanceComponent, ActorComponent>();
+            var query = EntityQueryEnumerator<HumanoidProfileComponent, ActorComponent>();
             while (query.MoveNext(out var uid, out _, out _))
             {
                 if (uid == excludedTarget || cult.SelectedTargets.Contains(uid)
@@ -267,13 +269,13 @@ namespace Content.Server.GameTicking.Rules
 
         private void HandleMetabolism(EntityUid cultist)
         {
-            if (TryComp<BodyComponent>(cultist, out var bodyComponent))
+            if (TryComp<BodyComponent>(cultist, out var bodyComponent) && bodyComponent.Organs != null)
             {
-                foreach (var organ in _body.GetBodyOrgans(cultist, bodyComponent))
+                foreach (var organ in bodyComponent.Organs.ContainedEntities)
                 {
-                    if (TryComp<MetabolizerComponent>(organ.Id, out var metabolizer))
+                    if (TryComp<MetabolizerComponent>(organ, out var metabolizer))
                     {
-                        if (TryComp<StomachComponent>(organ.Id, out _))
+                        if (TryComp<StomachComponent>(organ, out _))
                             _metabolism.ClearMetabolizerTypes(metabolizer);
 
                         _metabolism.TryAddMetabolizerType(metabolizer, "BloodCultist");
@@ -298,7 +300,7 @@ namespace Content.Server.GameTicking.Rules
                 break;
             }
 
-            var isHuman = HasComp<HumanoidAppearanceComponent>(ent);
+            var isHuman = HasComp<HumanoidProfileComponent>(ent);
             var briefing = isHuman
                 ? Loc.GetString("blood-cult-role-greeting-human", ("god", selectedGod))
                 : Loc.GetString("blood-cult-role-greeting-animal", ("god", selectedGod));
@@ -359,7 +361,7 @@ namespace Content.Server.GameTicking.Rules
             {
                 CheckStage();
                 if (cult.SelectedTargets.Count == 0)
-                    RaiseLocalEvent(new RitualConductedEvent());
+                    RaiseLocalEvent(new BloodRitualConductedEvent());
                 return;
             }
 
@@ -437,10 +439,15 @@ namespace Content.Server.GameTicking.Rules
 
         private void UpdateCultistEyes(EntityUid cultist)
         {
-            if (TryComp<HumanoidAppearanceComponent>(cultist, out var appearanceComponent))
+            if (_visualBody.TryGatherMarkingsData(cultist, null, out var profiles, out _, out _))
             {
-                appearanceComponent.EyeColor = Color.FromHex("#E22218FF");
-                Dirty(cultist, appearanceComponent);
+                var cultistEyeColor = Color.FromHex("#E22218FF");
+
+                var updatedProfiles = profiles.ToDictionary(
+                    pair => pair.Key,
+                    pair => pair.Value with { EyeColor = cultistEyeColor });
+
+                _visualBody.ApplyProfiles(cultist, updatedProfiles);
             }
         }
 
@@ -454,7 +461,7 @@ namespace Content.Server.GameTicking.Rules
         private int GetPlayerCount()
         {
             int count = 0;
-            var players = AllEntityQuery<HumanoidAppearanceComponent, ActorComponent, TransformComponent>();
+            var players = AllEntityQuery<HumanoidProfileComponent, ActorComponent, TransformComponent>();
             while (players.MoveNext(out _, out _, out _, out _))
                 count++;
 
@@ -516,7 +523,7 @@ namespace Content.Server.GameTicking.Rules
             return null;
         }
 
-        private void OnGodCalled(GodCalledEvent ev)
+        private void OnGodCalled(BloodGodCalledEvent ev)
         {
             var cult = GetActiveRule();
             if (cult == null)
@@ -542,7 +549,7 @@ namespace Content.Server.GameTicking.Rules
             }
         }
 
-        private void OnRitualConducted(RitualConductedEvent ev)
+        private void OnRitualConducted(BloodRitualConductedEvent ev)
         {
             var cult = GetActiveRule();
             if (cult == null)

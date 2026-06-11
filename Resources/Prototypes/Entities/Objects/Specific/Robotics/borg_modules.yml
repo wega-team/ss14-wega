@@ -454,6 +454,23 @@
 
 # generic modules
 - type: entity
+  id: BorgModulePrying
+  parent: [ BaseBorgModule ]
+  name: prying module
+  description: A universal cyborg module which allows the unit to pry open doors.
+  components:
+  - type: Sprite
+    layers:
+    - state: generic
+    - state: icon-tools
+  - type: ComponentBorgModule
+    components:
+    - type: Prying
+      speedModifier: 1.5
+      useSound:
+        path: /Audio/Items/jaws_pry.ogg
+
+- type: entity
   id: BorgModuleCable
   parent: [ BaseBorgModule, BaseProviderBorgModule ]
   name: cable cyborg module
@@ -575,7 +592,7 @@
           - Inflatable
 # Corvax-Wega-Robot-Start
     - item: BorgGeneratorInflatableWall
-# Corvax-Wega-Robot-End    
+# Corvax-Wega-Robot-End
     - item: BoxInflatable
     - item: WeaponMeleeNeedle
   - type: BorgModuleIcon
@@ -637,10 +654,12 @@
     - item: MailBagBorg
     - hand:
         emptyLabel: borg-slot-cash-empty
-        emptyRepresentative: SpaceCash
+        emptyRepresentative: CashIcon
         whitelist:
           components:
           - Cash
+          tags:
+          - CoordinatesDisk
 # Corvax-Wega-Robot-End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: appraisal-module }
@@ -668,7 +687,7 @@
           - Ore
           - ArtifactFragment
           - MagmiteAlloy
-          - Gems 
+          - Gems
     # Corvax-Wega-Robot-end
     - item: BorgOreBag
   - type: BorgModuleIcon
@@ -698,9 +717,9 @@
           - Ore
           - ArtifactFragment
           - MagmiteAlloy
-          - Gems 
+          - Gems
     # Corvax-Wega-Robot-end
-    - item: BorgOreBagOfHolding # BorgOreBagOfHolding Corvax-Wega-Robot-add
+    - item: BorgOreBagOfHolding
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: adv-mining-module }
 
@@ -762,13 +781,7 @@
     - item: Multitool
     - item: RemoteSignallerAdvanced
 # Corvax-Wega-Robot-Start
-    - item: SprayPainter
-    - hand:
-        emptyRepresentative: SprayPainterAmmo
-        emptyLabel: borg-slot-spray-painter-ammo-empty
-        whitelist:
-          components:
-          - SprayPainterAmmo
+    - item: SprayPainterBorg
 # Corvax-Wega-Robot-End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: adv-tools-module }
@@ -793,17 +806,19 @@
   - type: ItemBorgModule
     hands:
     - hand:
-        emptyRepresentative: BorgModuleConstructionMaterialPlaceholder
+        emptyRepresentative: ConstrukAndBattery # Corvax-Wega-add
         emptyLabel: borg-slot-construction-empty
         whitelist:
           tags:
           - ConstructionMaterial
+          - PowerCell # Corvax-Wega-robots
     - hand:
-        emptyRepresentative: BorgModuleConstructionMaterialPlaceholder
+        emptyRepresentative: ConstrukAndBattery # Corvax-Wega-Add
         emptyLabel: borg-slot-construction-empty
         whitelist:
           tags:
           - ConstructionMaterial
+          - PowerCell # Corvax-Wega-robots
 # Corvax-Wega-Robot-Start
     # - hand:
         # emptyRepresentative: BorgModuleConstructionMaterialPlaceholder
@@ -1077,8 +1092,8 @@
     hands:
     - item: HandheldHealthAnalyzer
     - item: DefibrillatorOneHandedUnpowered
-    - item: HandheldCrewMonitorBorg # Corvax-Wega-Robot 
-    - item: Crowbar
+    - item: HandheldCrewMonitorBorg # Corvax-Wega-Robot
+    # - item: Crowbar # Corvax-Wega-Robot
     - item: BorgFireExtinguisher
     - item: BorgHandheldGPSBasic
     - item: HandLabeler
@@ -1112,19 +1127,7 @@
     hands:
 # Corvax-Wega-Robot-Start
     - item: HandheldHealthAnalyzer
-    - item: BorgSyringe
-      hand:
-        emptyLabel: borg-slot-injector-dropper-empty
-        emptyRepresentative: Syringe
-        whitelist:
-          tags:
-          - Itemborg
-    - hand:
-        emptyLabel: borg-slot-injector-dropper-empty
-        emptyRepresentative: AdvancedJetInjector
-        whitelist:
-          tags:
-          - Itemborg
+    - item: AdvancedJetInjector
 # Corvax-Wega-Robot-End
     - item: PillCanister
       hand:
@@ -1161,6 +1164,13 @@
         whitelist:
           tags:
           - Lollipops
+    - hand:
+        emptyRepresentative: DiseaseSwab
+        emptyLabel: borg-slot-swap-empty
+        whitelist:
+          components:
+          - DiseaseSwab
+          - DiseaseVaccine
     # Corvax-Wega-Robot-End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: chem-module }
@@ -1264,7 +1274,7 @@
     - item: Beaker # Corvax-Wega-Robot
       hand:
         emptyLabel: borg-slot-small-containers-empty
-        emptyRepresentative: ChemistryEmptyVial 
+        emptyRepresentative: ChemistryEmptyVial
         whitelist:
           components:
           - FitsInDispenser
@@ -1293,6 +1303,7 @@
         whitelist:
           tags:
           - ConstructionMaterial
+          - PowerCell # Corvax-Wega-Add
           - CableCoil # Corvax-Wega-Robot
 # Corvax-Wega-Start
     # - hand:
@@ -1484,7 +1495,15 @@
     - item: BorgDropper
     # Corvax-Wega-Robot-end
     - item: Bucket
-    - item: PlantBag # Corvax-Wega-Robot
+    # Corvax-Wega-Robot-Start
+    - hand:
+        emptyRepresentative: DiseaseSwab
+        emptyLabel: borg-slot-swap-only-empty
+        whitelist:
+          components:
+          - DiseaseSwab
+    - item: PlantBag
+    # Corvax-Wega-Robot-End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: gardening-module }
 
@@ -1666,22 +1685,15 @@
   - type: ItemBorgModule
     hands:
 # Corvax-Wega-Robot-start
-    - item: WeaponLightMachineGunL6CEnergy
-      hand:
-        emptyLabel: borg-slot-gun-empty
-        emptyRepresentative: WeaponLightMachineGunL6C
-        whitelist:
-          tags:
-          - Itemborg
-    - hand:
-        emptyLabel: borg-slot-gun-empty
-        emptyRepresentative: BorgWeaponSniperHristovAdvanced
-        whitelist:
-          tags:
-          - Itemborg
-    - item: CyborgEnergySwordDouble          
+    - item: WeaponLightMachineGunL6C
     - item: PinpointerSyndicateNuclear
     - item: PinpointerUniversal # Corvax-Wega-Robot-add
+  - type: ComponentBorgModule
+    components:
+    - type: Reflect
+      reflectProb: 0.15
+      slotFlags:
+      - NONE
 # Corvax-Wega-Robot-End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: syndicate-l6c-module }
@@ -1846,7 +1858,7 @@
 # Corvax-Wega-Robot-Start
     - item: Omnitool
     - item: WelderExperimental
-    - item: XenoAccessBreaker 
+    - item: XenoAccessBreaker
     - item: XenoRCD
     - item: Multitool
     - item: RemoteSignallerAdvanced
@@ -1887,6 +1899,22 @@
     - item: AccessConfiguratorXenoborg
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-door-remote-module }
+
+- type: entity
+  parent: [ BaseXenoborgModuleEngi, BaseProviderBorgModule, BaseXenoborgContraband ]
+  id: XenoborgModuleTileGun
+  name: tile gun xenoborg module
+  description: Module with a tile gun. wait, a what?
+  components:
+  - type: Sprite
+    layers:
+    - state: xenoborg_engi
+    - state: icon-xenoborg-tile
+  - type: ItemBorgModule
+    hands:
+    - item: WeaponTileGun
+  - type: BorgModuleIcon
+    icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-tile-module }
 
 - type: entity
   parent: [ BaseXenoborgModuleHeavy, BaseProviderBorgModule, BaseXenoborgContraband ]
@@ -1959,6 +1987,23 @@
     - item: JetpackXenoborg
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-space-movement-module }
+
+- type: entity
+  parent: [ BaseXenoborgModuleScout, BaseXenoborgContraband ]
+  id: XenoborgModuleJump
+  name: xenoborg jump module
+  description: Module that allows a xenoborg to jump forward.
+  components:
+  - type: ComponentBorgModule
+    components:
+    - type: JumpAbility
+      action: ActionJumpBoost
+      jumpDistance: 4
+      jumpSound: /Audio/Effects/stealthoff.ogg
+  - type: Sprite
+    layers:
+    - state: xenoborg_scout
+    - state: icon-xenoborg-jump
 
 - type: entity
   parent: [ BaseXenoborgModuleScout, BaseProviderBorgModule, BaseXenoborgContraband ]

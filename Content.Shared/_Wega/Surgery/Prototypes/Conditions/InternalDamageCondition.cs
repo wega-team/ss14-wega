@@ -21,6 +21,6 @@ public sealed partial class InternalDamageCondition : SurgeryStepCondition
         if (!operated.InternalDamages.TryGetValue(DamageType, out var bodyParts))
             return false;
 
-        return bodyParts.Contains(BodyPart);
+        return bodyParts.Contains(BodyPart.ToLower());
     }
 }

@@ -29,6 +29,7 @@
   - BorgModuleCommonCandy
   - BorgModuleCleaningCommon
   - BorgModuleMusique
+  - BorgModuleNightVison
  # Corvax-Wega-end
 
 - type: latheRecipePack
@@ -47,7 +48,7 @@
   id: Robotics
   recipes:
   - ProximitySensor
-  # Corvax-Wega-Android-Start
+  # # Corvax-Wega-Android-Start
   - AndroidBodyPart
   - ArmSyntheticPry
   - ArmSyntheticDefib
@@ -55,7 +56,7 @@
   - ArmSyntheticCharger
   - LegSyntheticMagboots
   - LegSyntheticJump
-  # Corvax-Wega-Android-End
+  # # Corvax-Wega-Android-End
 
 - type: latheRecipePack
   id: BorgModules
@@ -75,7 +76,7 @@
   - BorgModuleClowning
   - BorgModuleSheild
   - BorgModuleGranader
-  - BorgModuleCommonHand
+  - ModuleCommand
   - BorgModuleDNA
  # Corvax-Wega-end
 

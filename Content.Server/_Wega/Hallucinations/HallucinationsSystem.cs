@@ -12,14 +12,14 @@ namespace Content.Server.Hallucinations;
 // TODO: Full refactor this shit
 public sealed partial class HallucinationsSystem : EntitySystem
 {
-    [Dependency] private readonly IEntityManager _entityManager = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
-    [Dependency] private readonly SharedEyeSystem _eye = default!;
-    [Dependency] private readonly StatusEffectsSystem _status = default!;
-    [Dependency] private readonly VisibilitySystem _visibilitySystem = default!;
+    [Dependency] private IEntityManager _entityManager = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private ISharedAdminLogManager _adminLogger = default!;
+    [Dependency] private SharedEyeSystem _eye = default!;
+    [Dependency] private StatusEffectsSystem _status = default!;
+    [Dependency] private VisibilitySystem _visibilitySystem = default!;
 
     public override void Initialize()
     {

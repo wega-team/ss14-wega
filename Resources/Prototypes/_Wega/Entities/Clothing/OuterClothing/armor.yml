@@ -78,11 +78,11 @@
       coefficients:
         Blunt: 0.7
         Slash: 0.7
-        Piercing: 0.75
+        Piercing: 0.9
         Heat: 0.7
         Caustic: 0.85
   - type: ExplosionResistance
-    damageCoefficient: 0.6
+    damageCoefficient: 0.8
   - type: FireProtection
     reduction: 0.4
   - type: TemperatureProtection
@@ -137,11 +137,11 @@
       coefficients:
         Blunt: 0.5
         Slash: 0.5
-        Piercing: 0.55
+        Piercing: 0.8
         Heat: 0.5
         Caustic: 0.75
   - type: ExplosionResistance
-    damageCoefficient: 0.5
+    damageCoefficient: 0.6
   - type: FireProtection
     reduction: 0.5
   - type: ToggleableClothing
@@ -179,11 +179,11 @@
       coefficients:
         Blunt: 0.5
         Slash: 0.5
-        Piercing: 0.55
+        Piercing: 0.8
         Heat: 0.5
         Caustic: 0.75
   - type: ExplosionResistance
-    damageCoefficient: 0.5
+    damageCoefficient: 0.6
   - type: FireProtection
     reduction: 0.5
   - type: TemperatureProtection
@@ -242,4 +242,65 @@
   name: acolyte armor
   description: An evil-looking piece of cult armor, made of bones.
   components:
-  - type: BloodCultEquipment
+  - type: CultEquipment
+    cult: Blood
+
+- type: entity
+  parent: ClothingOuterArmorBasic
+  id: ClothingVestBlueShieldAlt
+  name: blue shield vest
+  description: Type V bulletproof vest.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Armor/blueshieldvest.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/OuterClothing/Armor/blueshieldvest.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.6
+        Heat: 0.5
+  - type: ExplosionResistance
+    damageCoefficient: 0.65
+  - type: ClothingSpeedModifier
+    walkModifier: 1.0
+    sprintModifier: 1.0
+  - type: HeldSpeedModifier
+
+- type: entity
+  parent: [ ClothingOuterBaseLarge, BaseMajorContraband, AllowSuitStorageClothing, BaseEnchantable ]
+  id: VeilCultBrassCuirass
+  name: brass cuirass
+  description: An evil-looking piece of cult armor, made of brass.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Armor/cuirass.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/OuterClothing/Armor/cuirass.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.6
+        Slash: 0.6
+        Piercing: 0.6
+        Heat: 0.55
+  - type: ExplosionResistance
+    damageCoefficient: 0.6
+  - type: FireProtection
+    reduction: 0.65
+  - type: TemperatureProtection
+    heatingCoefficient: 0.6
+    coolingCoefficient: 0.8
+  - type: GroupExamine
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetClockworkCuirass
+  - type: CultEquipment
+    cult: Veil
+  - type: Enchantable
+    enchants:
+    - VeilCultBrassCuirassHardenPlates
+    - VeilCultBrassCuirassReflection
+    - VeilCultBrassCuirassAbsorb
+    - VeilCultBrassCuirassSmoke

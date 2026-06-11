@@ -6,11 +6,11 @@ using Content.Shared.Objectives.Components;
 
 namespace Content.Server.Objectives.Systems;
 
-public sealed class BloodBrotherSharedEscapeConditionSystem : EntitySystem
+public sealed partial class BloodBrotherSharedEscapeConditionSystem : EntitySystem
 {
-    [Dependency] private readonly EmergencyShuttleSystem _emergencyShuttle = default!;
-    [Dependency] private readonly SharedMindSystem _mind = default!;
-    [Dependency] private readonly BloodBrotherSharedConditionSystem _sharedCondition = default!;
+    [Dependency] private EmergencyShuttleSystem _emergencyShuttle = default!;
+    [Dependency] private SharedMindSystem _mind = default!;
+    [Dependency] private BloodBrotherSharedConditionSystem _sharedCondition = default!;
 
     public override void Initialize()
     {

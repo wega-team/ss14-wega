@@ -2,6 +2,9 @@
   id: Android
 
 - type: Tag
+  id: AndroidPart
+
+- type: Tag
   id: SoulStone
 
 - type: Tag
@@ -9,6 +12,9 @@
 
 - type: Tag
   id: Rose
+
+- type: Tag
+  id: RevShop
 
 - type: Tag
   id: Sunflower
@@ -267,9 +273,6 @@
   id: SyndicateSegwayKeys
 
 - type: Tag
-  id: Vampire
-
-- type: Tag
   id: Coin
 
 - type: Tag
@@ -499,3 +502,40 @@
 
 - type: Tag
   id: CompressionModuleConflict
+
+- type: Tag
+  id: NoSlipModuleConflict
+
+- type: Tag
+  id: FireBomb
+
+- type: Tag
+  id: Gloves
+
+- type: Tag
+  id: Saw
+  
+  # Veil Cult Tags Start
+  
+- type: Tag
+  id: InteractionCog
+  
+- type: Tag
+  id: StrangeShard
+  
+- type: Tag
+  id: SoulVessel
+  
+- type: Tag
+  id: Brass
+  
+- type: Tag
+  id: ChargedBrass
+  
+  # Veil Cult Tags End
+  
+- type: Tag
+  id: OrganicBrain
+
+- type: Tag
+  id: Bola

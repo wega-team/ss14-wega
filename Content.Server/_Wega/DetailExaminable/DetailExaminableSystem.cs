@@ -12,10 +12,10 @@ namespace Content.Server.DetailExaminable;
 
 public sealed partial class DetailExaminableSystem : EntitySystem
 {
-    [Dependency] private readonly ISharedPlayerManager _player = default!;
-    [Dependency] private readonly ExamineSystemShared _examine = default!;
-    [Dependency] private readonly EuiManager _euiMan = default!;
-    [Dependency] private readonly MindSystem _mind = default!;
+    [Dependency] private ISharedPlayerManager _player = default!;
+    [Dependency] private ExamineSystemShared _examine = default!;
+    [Dependency] private EuiManager _euiMan = default!;
+    [Dependency] private MindSystem _mind = default!;
 
     public override void Initialize()
     {
@@ -49,16 +49,15 @@ public sealed partial class DetailExaminableSystem : EntitySystem
     private void OpenEui(EntityUid user, EntityUid target)
     {
         if (!TryComp<DetailExaminableComponent>(target, out var detail)
-            || !TryComp<HumanoidAppearanceComponent>(target, out var humanoid))
+            || !TryComp<HumanoidProfileComponent>(target, out var humanoid))
             return;
 
         if (_mind.TryGetMind(user, out _, out var mind)
             && mind is { UserId: not null } && _player.TryGetSessionById(mind.UserId, out var session))
         {
             var nsfw = humanoid.Status == Status.No
-                || TryComp<HumanoidAppearanceComponent>(user, out var appearance) && appearance.Status == Status.No
-                ? string.Empty
-                : detail.NSFWContent;
+                || TryComp<HumanoidProfileComponent>(user, out var appearance) && appearance.Status == Status.No
+                ? string.Empty : detail.NSFWContent;
 
             var state = new DetailExaminableEuiState(
                 GetNetEntity(target),

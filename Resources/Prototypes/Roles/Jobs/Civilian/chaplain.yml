@@ -25,6 +25,7 @@
     # shoes: ClothingShoesColorBlack # Corvax-Wega-Edit
     id: ChaplainPDA
     ears: ClothingHeadsetService
+    belt: ClothingBeltSheathChaplinFilled
   storage:
     back:
     - RubberStampChaplain

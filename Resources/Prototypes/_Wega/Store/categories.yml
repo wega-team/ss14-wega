@@ -90,3 +90,9 @@
   id: UplinkVoidSpecial
   name: store-category-void-special
   priority: 6
+
+ #revolution
+- type: storeCategory
+  id: RevolutionSupport
+  name: store-category-support
+  priority: 1

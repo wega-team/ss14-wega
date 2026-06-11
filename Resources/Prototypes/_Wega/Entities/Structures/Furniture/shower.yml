@@ -24,8 +24,9 @@
     sound:
       collection: Shower
   - type: Damageable
-    damageContainer: Inorganic
     damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: Inorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -51,7 +52,6 @@
         - ReagentId: Water
           Quantity: 9999999
   - type: SolutionRegeneration
-    solution: shower
     generated:
       reagents:
       - ReagentId: Water

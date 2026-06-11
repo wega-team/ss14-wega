@@ -143,7 +143,6 @@
         - ReagentId: Tricordrazine
           Quantity: 0
   - type: SolutionRegeneration
-    solution: hypospray
     generated:
       reagents:
       - ReagentId: Tricordrazine
@@ -190,7 +189,6 @@
         - ReagentId: Bicaridine
           Quantity: 0
   - type: SolutionRegeneration
-    solution: hypospray
     generated:
       reagents:
       - ReagentId: Bicaridine
@@ -237,7 +235,6 @@
         - ReagentId: Dermaline
           Quantity: 0
   - type: SolutionRegeneration
-    solution: hypospray
     generated:
       reagents:
       - ReagentId: Dermaline
@@ -284,7 +281,6 @@
         - ReagentId: Dylovene
           Quantity: 0
   - type: SolutionRegeneration
-    solution: hypospray
     generated:
       reagents:
       - ReagentId: Dylovene
@@ -331,7 +327,6 @@
         - ReagentId: Hyronalin
           Quantity: 0
   - type: SolutionRegeneration
-    solution: hypospray
     generated:
       reagents:
       - ReagentId: Hyronalin
@@ -378,7 +373,6 @@
         - ReagentId: Dexalin
           Quantity: 0
   - type: SolutionRegeneration
-    solution: hypospray
     generated:
       reagents:
       - ReagentId: Dexalin
@@ -402,7 +396,7 @@
   - type: Tag
     tags:
     - Itemborg
- 
+
 - type: entity
   parent: BorgHypo
   suffix: epinephrine
@@ -425,7 +419,6 @@
         - ReagentId: Epinephrine
           Quantity: 0
   - type: SolutionRegeneration
-    solution: hypospray
     generated:
       reagents:
       - ReagentId: Epinephrine
@@ -449,4 +442,3 @@
   - type: Tag
     tags:
     - Itemborg
- 

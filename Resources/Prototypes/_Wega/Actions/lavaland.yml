@@ -309,11 +309,12 @@
   - type: EntityTargetAction
     event: !type:AshDrakeLavaActionEvent
       landingDamage:
-        groups:
-          Brute: 75
+        types:
+          Blunt: 75
       healingSpec:
-        groups:
-          Brute: -250
+        types:
+          Blunt: -125
+          Slash: -125
 
 - type: entity
   parent: BaseAction

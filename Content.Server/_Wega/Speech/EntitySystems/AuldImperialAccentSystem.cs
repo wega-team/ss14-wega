@@ -6,7 +6,7 @@ using Content.Shared.Speech;
 
 namespace Content.Server.Speech.EntitySystems
 {
-    public sealed class AuldImperialAccentSystem : EntitySystem
+    public sealed partial class AuldImperialAccentSystem : EntitySystem
     {
         public override void Initialize()
         {

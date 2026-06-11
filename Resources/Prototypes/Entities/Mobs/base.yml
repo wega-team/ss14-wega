@@ -37,7 +37,6 @@
   - type: ContentEye
   - type: CameraRecoil
   - type: MindContainer
-  - type: TTS # Corvax-TTS
   - type: RequireProjectileTarget
     active: False
 
@@ -71,6 +70,7 @@
   abstract: true
   components:
   - type: Damageable
+  - type: Injurable
     damageContainer: Biological
   - type: Destructible
     thresholds:
@@ -126,6 +126,7 @@
       - ActionCritSuccumb
       - ActionCritFakeDeath
       - ActionCritLastWords
+  - type: StoreDamageTakenOnMind
   - type: Deathgasp
   - type: HealthExaminable
     examinableTypes:
@@ -149,6 +150,8 @@
     priority: 2
     lightningExplode: false
   - type: LavalandVisitor # Corvax-Wega-Lavaland
+  - type: GhostOnMove
+    mustBeDead: true
 
 # Used for mobs that can enter combat mode and can attack.
 - type: entity
@@ -162,8 +165,8 @@
     soundHit:
       collection: MetalThud
     damage:
-      groups:
-        Brute: 5
+      types:
+        Blunt: 5
 
 # Used for mobs that are affected by atmospherics, pressure, and heat
 - type: entity
@@ -262,7 +265,7 @@
   id: MobBloodstream
   abstract: true
   components:
-  - type: SolutionContainerManager
+  - type: SolutionManager
   - type: InjectableSolution
     solution: bloodstream
   - type: Bloodstream

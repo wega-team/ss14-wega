@@ -4,7 +4,6 @@ using Content.Server.Lavaland.Mobs.Components;
 using Content.Server.NPC.Components;
 using Content.Server.NPC.HTN;
 using Content.Server.NPC.Systems;
-using Content.Shared.Achievements;
 using Content.Shared.Actions.Components;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Damage;
@@ -34,21 +33,20 @@ namespace Content.Server.Lavaland.Mobs;
 
 public sealed partial class BubblegumSystem : EntitySystem
 {
-    [Dependency] private readonly SharedAchievementsSystem _achievement = default!;
-    [Dependency] private readonly AppearanceSystem _appearance = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly DamageableSystem _damage = default!;
-    [Dependency] private readonly GibbingSystem _gibbing = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly SharedMapSystem _map = default!;
-    [Dependency] private readonly MobStateSystem _mobState = default!;
-    [Dependency] private readonly MobThresholdSystem _threshold = default!;
-    [Dependency] private readonly NPCUseActionsOnTargetSystem _npcActions = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly TurfSystem _turf = default!;
-    [Dependency] private readonly NPCSystem _npc = default!;
+    [Dependency] private AppearanceSystem _appearance = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private DamageableSystem _damage = default!;
+    [Dependency] private GibbingSystem _gibbing = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private SharedMapSystem _map = default!;
+    [Dependency] private MobStateSystem _mobState = default!;
+    [Dependency] private MobThresholdSystem _threshold = default!;
+    [Dependency] private NPCUseActionsOnTargetSystem _npcActions = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private TurfSystem _turf = default!;
+    [Dependency] private NPCSystem _npc = default!;
 
     private const float LowHealthThreshold = 0.5f;
     private const float PassiveHandRadius = 5f;
@@ -144,9 +142,6 @@ public sealed partial class BubblegumSystem : EntitySystem
         var coords = Transform(uid).Coordinates;
         foreach (var reward in component.RewardsProto)
             Spawn(reward, coords);
-
-        if (args.Killer != null)
-            _achievement.QueueAchievement(args.Killer.Value, AchievementsEnum.BubblegumBoss);
 
         QueueDel(uid);
     }
@@ -917,7 +912,7 @@ public sealed partial class BubblegumSystem : EntitySystem
 
     private void CheckDashDamage(EntityUid uid, EntityCoordinates coords, DamageSpecifier damage)
     {
-        var entities = _lookup.GetEntitiesInRange<MobStateComponent>(coords, 1f);
+        var entities = _lookup.GetEntitiesInRange<MobStateComponent>(coords, 1f, LookupFlags.Uncontained);
         foreach (var entity in entities)
         {
             if (entity.Owner == uid || HasComp<BubblegumBossComponent>(entity.Owner))
@@ -1012,7 +1007,7 @@ public sealed partial class BubblegumSystem : EntitySystem
 
     private void CheckIllusionDashDamage(EntityUid uid, EntityUid? master, EntityCoordinates coords, DamageSpecifier damage)
     {
-        var entities = _lookup.GetEntitiesInRange<MobStateComponent>(coords, 1f);
+        var entities = _lookup.GetEntitiesInRange<MobStateComponent>(coords, 1f, LookupFlags.Uncontained);
         foreach (var entity in entities)
         {
             if (entity.Owner == uid || entity.Owner == master)
@@ -1062,7 +1057,7 @@ public sealed partial class BubblegumSystem : EntitySystem
                 continue;
 
             var puddleCoords = Transform(puddle.Owner).Coordinates;
-            var entitiesOnPuddle = _lookup.GetEntitiesInRange<ActorComponent>(puddleCoords, 0.5f)
+            var entitiesOnPuddle = _lookup.GetEntitiesInRange<ActorComponent>(puddleCoords, 0.5f, LookupFlags.Uncontained)
                 .Where(a => HasComp<MobStateComponent>(a.Owner) && !HasComp<GhostComponent>(a.Owner));
 
             foreach (var entity in entitiesOnPuddle)
@@ -1297,13 +1292,11 @@ public sealed partial class BubblegumSystem : EntitySystem
 
     private float GetHealthRatio(EntityUid uid)
     {
-        if (!TryComp<DamageableComponent>(uid, out var damageable))
-            return 1f;
-
+        var totalDamage = _damage.GetTotalDamage(uid);
         if (!_threshold.TryGetThresholdForState(uid, MobState.Dead, out var threshold))
             return 1f;
 
-        return 1f - (float)(damageable.TotalDamage / threshold.Value.Double());
+        return 1f - (float)(totalDamage / threshold.Value.Double());
     }
 
     private bool IsValidMapPosition(EntityUid mapUid, Vector2 position)

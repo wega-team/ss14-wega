@@ -45,8 +45,9 @@
       settings: default
   - type: GhostTakeoverAvailable
   - type: Damageable
-    damageContainer: ManifestedSpirit
     damageModifierSet: ManifestedSpirit
+  - type: Injurable
+    damageContainer: ManifestedSpirit
   - type: Destructible
     thresholds:
     - trigger:
@@ -180,9 +181,6 @@
   - type: Metabolizer
     solutionOnBody: false
     metabolizerTypes: [ Bloodsucker ]
-    groups:
-      - id: Medicine
-      - id: Poison
   - type: Tag
     tags:
     - DoorBumpOpener

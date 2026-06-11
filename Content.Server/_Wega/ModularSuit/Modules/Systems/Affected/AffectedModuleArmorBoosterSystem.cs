@@ -7,7 +7,7 @@ using Content.Shared.Modular.Suit;
 
 namespace Content.Server.Modular.Suit;
 
-public sealed class AffectedModuleArmorBoosterSystem : EntitySystem
+public sealed partial class AffectedModuleArmorBoosterSystem : EntitySystem
 {
     public override void Initialize()
     {

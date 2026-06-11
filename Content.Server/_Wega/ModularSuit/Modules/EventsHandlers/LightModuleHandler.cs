@@ -6,11 +6,11 @@ using Robust.Server.GameObjects;
 
 namespace Content.Server.Modular.Suit;
 
-public sealed class LightModuleHandler : ModuleActionHandler
+public sealed partial class LightModuleHandler : ModuleActionHandler
 {
-    [Dependency] private readonly SharedActionsSystem _actions = default!;
-    [Dependency] private readonly InventorySystem _inventory = default!;
-    [Dependency] private readonly SharedPointLightSystem _light = default!;
+    [Dependency] private SharedActionsSystem _actions = default!;
+    [Dependency] private InventorySystem _inventory = default!;
+    [Dependency] private SharedPointLightSystem _light = default!;
 
     public override void Initialize()
     {

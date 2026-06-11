@@ -2,9 +2,8 @@ using System.Linq;
 using System.Text;
 using Content.Server.Pain;
 using Content.Shared.Armor;
+using Content.Shared.Body;
 using Content.Shared.Body.Components;
-using Content.Shared.Body.Part;
-using Content.Shared.Body.Systems;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
@@ -30,30 +29,90 @@ namespace Content.Server.Surgery;
 
 public sealed partial class SurgerySystem
 {
-    [Dependency] private readonly PainSystem _pain = default!;
-    [Dependency] private readonly SharedStunSystem _stun = default!;
-    [Dependency] private readonly PhysicsSystem _physics = default!;
-    [Dependency] private readonly MovementModStatusSystem _movementMod = default!;
+    [Dependency] private PainSystem _pain = default!;
+    [Dependency] private SharedStunSystem _stun = default!;
+    [Dependency] private PhysicsSystem _physics = default!;
+    [Dependency] private MovementModStatusSystem _movementMod = default!;
 
     private static readonly SoundSpecifier GibSound = new SoundPathSpecifier("/Audio/Effects/gib3.ogg");
 
     private void InternalDamageInitialize()
     {
+        SubscribeLocalEvent<OperatedComponent, OrganRemovedFromEvent>(OnOrganRemoved);
         SubscribeLocalEvent<OperatedComponent, DamageChangedEvent>(OnDamage);
         SubscribeLocalEvent<OperatedComponent, ExaminedEvent>(OnOperatedExamined);
     }
 
     #region Process damage
 
-    private void OnBodyPartRemoved(Entity<OperatedComponent> ent, BodyPartType type)
+    private void OnOrganRemoved(Entity<OperatedComponent> ent, ref OrganRemovedFromEvent args)
     {
-        if (type == BodyPartType.Leg)
-        {
-            if (!HasComp<BodyComponent>(ent))
-                return;
+        if (!TryComp<OrganComponent>(args.Organ, out var organComp))
+            return;
 
-            _stun.TryKnockdown(ent.Owner, TimeSpan.FromSeconds(2f), true, false);
+        var categoryId = organComp.Category?.Id;
+
+        if (categoryId != null)
+        {
+            if (categoryId.Contains("Arm"))
+            {
+                RemoveDependentOrgan(ent, args.Organ, "Hand");
+            }
+            else if (categoryId.Contains("Leg"))
+            {
+                RemoveDependentOrgan(ent, args.Organ, "Foot");
+            }
+
+            if (categoryId.Contains("Leg"))
+            {
+                if (!HasComp<BodyComponent>(ent))
+                    return;
+                _stun.TryKnockdown(ent.Owner, TimeSpan.FromSeconds(2f), true, false);
+            }
         }
+    }
+
+    private void RemoveDependentOrgan(Entity<OperatedComponent> ent, EntityUid parentOrgan, string dependentType)
+    {
+        if (Terminating(ent))
+            return;
+
+        if (!TryComp<BodyComponent>(ent, out var body) || body.Organs == null)
+            return;
+
+        if (!TryComp<OrganComponent>(parentOrgan, out var parentComp))
+            return;
+
+        var parentCategory = parentComp.Category?.Id;
+        if (parentCategory == null)
+            return;
+
+        string side = parentCategory.Contains("Left") ? "Left"
+            : parentCategory.Contains("Right") ? "Right"
+            : "";
+
+        if (string.IsNullOrEmpty(side))
+            return;
+
+        string dependentCategory = $"{dependentType}{side}";
+
+        EntityUid? dependentOrgan = null;
+        foreach (var organ in body.Organs.ContainedEntities)
+        {
+            if (TryComp<OrganComponent>(organ, out var organComp) && organComp.Category?.Id == dependentCategory)
+            {
+                dependentOrgan = organ;
+                break;
+            }
+        }
+
+        if (dependentOrgan == null)
+            return;
+
+        _container.Remove(dependentOrgan.Value, body.Organs);
+
+        _transform.SetCoordinates(dependentOrgan.Value, Transform(ent).Coordinates);
+        _physics.ApplyLinearImpulse(dependentOrgan.Value, _random.NextVector2() * 15f);
     }
 
     private void OnDamage(Entity<OperatedComponent> ent, ref DamageChangedEvent args)
@@ -67,7 +126,7 @@ public sealed partial class SurgerySystem
 
         ProcessDamageTypes(ent, args.DamageDelta);
         if (args.DamageDelta.DamageDict.TryGetValue(SlashDamage, out var slashDamage))
-            TryLoseRandomLimb(ent, args.Origin.Value, slashDamage.Float());
+            TryLoseRandomOrgan(ent, args.Origin.Value, slashDamage.Float());
     }
 
     private void ProcessDamageTypes(Entity<OperatedComponent> ent, DamageSpecifier damageDelta)
@@ -89,7 +148,7 @@ public sealed partial class SurgerySystem
         }
     }
 
-    private void TryLoseRandomLimb(Entity<OperatedComponent> patient, EntityUid damager, float slashDamage)
+    private void TryLoseRandomOrgan(Entity<OperatedComponent> patient, EntityUid damager, float slashDamage)
     {
         if (slashDamage < 15f)
             return;
@@ -111,100 +170,112 @@ public sealed partial class SurgerySystem
         if (!_random.Prob(baseChance * patient.Comp.LimbLossChance))
             return;
 
-        var limbs = _body.GetBodyChildren(patient)
-            .Where(p => p.Component.PartType switch
+        // Get all organs that are limbs (arms, legs, hands, feet)
+        if (!TryComp<BodyComponent>(patient, out var body) || body.Organs == null)
+            return;
+
+        var limbs = body.Organs.ContainedEntities
+            .Where(organ =>
             {
-                BodyPartType.Arm => true,
-                BodyPartType.Hand => true,
-                BodyPartType.Leg => true,
-                BodyPartType.Foot => true,
-                _ => false
+                if (!TryComp<OrganComponent>(organ, out var organComp))
+                    return false;
+
+                var categoryId = organComp.Category?.Id;
+                return categoryId != null &&
+                    (categoryId.Contains("Arm")
+                        || categoryId.Contains("Hand")
+                        || categoryId.Contains("Leg")
+                        || categoryId.Contains("Foot"));
             })
             .ToList();
 
         if (limbs.Count == 0)
             return;
 
-        var (limbId, limbComp) = _random.Pick(limbs);
-        var parentSlot = _body.GetParentPartAndSlotOrNull(limbId);
-        if (parentSlot == null)
-            return;
+        var limbToRemove = _random.Pick(limbs);
 
-        var (parentId, slotId) = parentSlot.Value;
-        if (!TryComp<BodyPartComponent>(parentId, out var parentPart))
-            return;
+        _container.Remove(limbToRemove, body.Organs);
+        _popup.PopupEntity(Loc.GetString("surgery-limb-torn-off", ("limb", Name(limbToRemove))), patient, PopupType.SmallCaution);
 
-        var containerId = SharedBodySystem.GetPartSlotContainerId(slotId);
-        if (_container.TryGetContainer(parentId, containerId, out var container))
-        {
-            _container.Remove(limbId, container);
-            _popup.PopupEntity(Loc.GetString("surgery-limb-torn-off", ("limb", Name(limbId))), patient, PopupType.SmallCaution);
+        _audio.PlayPvs(GibSound, patient);
+        if (!_mobState.IsDead(patient) && !HasComp<PainNumbnessStatusEffectComponent>(patient) && !HasComp<SyntheticOperatedComponent>(patient))
+            _chat.TryEmoteWithoutChat(patient, _proto.Index(Scream), true);
 
-            _audio.PlayPvs(GibSound, patient);
-            if (!_mobState.IsDead(patient) && !HasComp<PainNumbnessStatusEffectComponent>(patient) && !HasComp<SyntheticOperatedComponent>(patient))
-                _chat.TryEmoteWithoutChat(patient, _proto.Index(Scream), true);
+        _pain.AdjustPain(patient, "Physical", 250f);
+        if (HasComp<BloodstreamComponent>(patient))
+            _bloodstream.TryModifyBleedAmount(patient.Owner, 5f);
 
-            _pain.AdjustPain(patient, "Physical", 250f);
-            if (HasComp<BloodstreamComponent>(patient))
-                _bloodstream.TryModifyBleedAmount(patient.Owner, 5f);
+        var xform = Transform(patient);
+        _transform.SetCoordinates(limbToRemove, xform.Coordinates);
+        _physics.ApplyLinearImpulse(limbToRemove, _random.NextVector2() * 20f);
 
-            var xform = Transform(patient);
-            _transform.SetCoordinates(limbId, xform.Coordinates);
-            _physics.ApplyLinearImpulse(limbId, _random.NextVector2() * 20f);
-
-            _admin.Add(LogType.Damaged, LogImpact.High, $"{ToPrettyString(damager):user} cuts off a {Name(limbId)} from {ToPrettyString(patient):target}");
-        }
+        _admin.Add(LogType.Damaged, LogImpact.High, $"{ToPrettyString(damager):user} cuts off a {Name(limbToRemove)} from {ToPrettyString(patient):target}");
     }
 
     private void TryDecapitate(EntityUid patient, EntityUid damager)
     {
-        var head = _body.GetBodyChildrenOfType(patient, BodyPartType.Head).FirstOrDefault();
-        if (head == default)
+        if (!TryComp<BodyComponent>(patient, out var body) || body.Organs == null)
             return;
 
-        var parentSlot = _body.GetParentPartAndSlotOrNull(head.Id);
-        if (parentSlot == null)
-            return;
-
-        var (parentId, slotId) = parentSlot.Value;
-        var containerId = SharedBodySystem.GetPartSlotContainerId(slotId);
-        if (_container.TryGetContainer(parentId, containerId, out var container))
+        EntityUid? head = null;
+        foreach (var organ in body.Organs.ContainedEntities)
         {
-            _container.Remove(head.Id, container);
-            _popup.PopupEntity(Loc.GetString("surgery-decapitated"), patient, PopupType.MediumCaution);
+            if (!TryComp<OrganComponent>(organ, out var organComp))
+                continue;
 
-            _audio.PlayPvs(GibSound, patient);
-
-            // Synthetics ignore head loss.
-            if (!HasComp<SyntheticOperatedComponent>(patient))
+            var categoryId = organComp.Category?.Id;
+            if (categoryId != null && categoryId.Contains("Head"))
             {
-                var damage = new DamageSpecifier { DamageDict = { { SlashDamage, 200 } } };
-                _damage.TryChangeDamage(patient, damage, true);
+                head = organ;
+                break;
             }
-
-            if (HasComp<BloodstreamComponent>(patient))
-                _bloodstream.TryModifyBleedAmount(patient, 10f);
-
-            _transform.SetCoordinates(head.Id, Transform(patient).Coordinates);
-            _physics.ApplyLinearImpulse(head.Id, _random.NextVector2() * 40f);
-
-            _admin.Add(LogType.Damaged, LogImpact.High, $"{ToPrettyString(damager):user} cuts off a HEAD from {ToPrettyString(patient):target}");
         }
+
+        if (head == null)
+            return;
+
+        // Remove head
+        _container.Remove(head.Value, body.Organs);
+        _popup.PopupEntity(Loc.GetString("surgery-decapitated"), patient, PopupType.MediumCaution);
+
+        _audio.PlayPvs(GibSound, patient);
+
+        // Synthetics ignore head loss.
+        if (!HasComp<SyntheticOperatedComponent>(patient))
+        {
+            var damage = new DamageSpecifier { DamageDict = { { SlashDamage, 200 } } };
+            _damage.TryChangeDamage(patient, damage, true);
+        }
+
+        if (HasComp<BloodstreamComponent>(patient))
+            _bloodstream.TryModifyBleedAmount(patient, 10f);
+
+        _transform.SetCoordinates(head.Value, Transform(patient).Coordinates);
+        _physics.ApplyLinearImpulse(head.Value, _random.NextVector2() * 40f);
+
+        _admin.Add(LogType.Damaged, LogImpact.High, $"{ToPrettyString(damager):user} cuts off a HEAD from {ToPrettyString(patient):target}");
     }
 
-    public void ExplosionLimbLoss(Entity<BodyComponent> entity, FixedPoint2 damage)
+    public void ExplosionLimbLoss(EntityUid patient, FixedPoint2 damage)
     {
-        if (!HasComp<OperatedComponent>(entity) || HasComp<GodmodeComponent>(entity))
+        if (!HasComp<OperatedComponent>(patient) || HasComp<GodmodeComponent>(patient))
             return;
 
-        var limbs = _body.GetBodyChildren(entity)
-            .Where(p => p.Component.PartType switch
+        if (!TryComp<BodyComponent>(patient, out var body) || body.Organs == null)
+            return;
+
+        var limbs = body.Organs.ContainedEntities
+            .Where(organ =>
             {
-                BodyPartType.Arm => true,
-                BodyPartType.Hand => true,
-                BodyPartType.Leg => true,
-                BodyPartType.Foot => true,
-                _ => false
+                if (!TryComp<OrganComponent>(organ, out var organComp))
+                    return false;
+
+                var categoryId = organComp.Category?.Id;
+                return categoryId != null &&
+                    (categoryId.Contains("Arm")
+                        || categoryId.Contains("Hand")
+                        || categoryId.Contains("Leg")
+                        || categoryId.Contains("Foot"));
             })
             .ToList();
 
@@ -214,45 +285,35 @@ public sealed partial class SurgerySystem
         int limbsToRemove = damage > 200f ? 2 : 1;
         for (int i = 0; i < limbsToRemove && limbs.Count > 0; i++)
         {
-            var (limbId, limbComp) = _random.Pick(limbs);
-            limbs.Remove((limbId, limbComp));
+            var limbToRemove = _random.Pick(limbs);
+            limbs.Remove(limbToRemove);
 
-            var parentSlot = _body.GetParentPartAndSlotOrNull(limbId);
-            if (parentSlot == null)
-                continue;
+            _container.Remove(limbToRemove, body.Organs);
+            _popup.PopupEntity(Loc.GetString("surgery-explosion-limb-torn-off", ("limb", Name(limbToRemove).ToUpper())), patient, PopupType.MediumCaution);
 
-            var (parentId, slotId) = parentSlot.Value;
-            var containerId = SharedBodySystem.GetPartSlotContainerId(slotId);
-            if (_container.TryGetContainer(parentId, containerId, out var container))
-            {
-                _container.Remove(limbId, container);
-                _popup.PopupEntity(Loc.GetString("surgery-explosion-limb-torn-off", ("limb", Name(limbId).ToUpper())), entity, PopupType.MediumCaution);
+            if (HasComp<BloodstreamComponent>(patient))
+                _bloodstream.TryModifyBleedAmount(patient, 5f);
 
-                if (HasComp<BloodstreamComponent>(entity))
-                    _bloodstream.TryModifyBleedAmount(entity.Owner, 5f);
+            _audio.PlayPvs(GibSound, patient);
+            if (!_mobState.IsDead(patient) && !HasComp<PainNumbnessStatusEffectComponent>(patient) && !HasComp<SyntheticOperatedComponent>(patient))
+                _chat.TryEmoteWithoutChat(patient, _proto.Index(Scream), true);
 
-                _audio.PlayPvs(GibSound, entity);
-                if (!_mobState.IsDead(entity) && !HasComp<PainNumbnessStatusEffectComponent>(entity) && !HasComp<SyntheticOperatedComponent>(entity))
-                    _chat.TryEmoteWithoutChat(entity, _proto.Index(Scream), true);
+            _transform.SetCoordinates(limbToRemove, Transform(patient).Coordinates);
+            _physics.ApplyLinearImpulse(limbToRemove, _random.NextVector2() * (50f + (float)damage));
 
-                _transform.SetCoordinates(limbId, Transform(entity).Coordinates);
-                _physics.ApplyLinearImpulse(limbId, _random.NextVector2() * (50f + (float)damage));
-
-                _admin.Add(LogType.Damaged, LogImpact.High, $"The limb {ToPrettyString(entity):target} '{Name(limbId)}' blown off by the explosion");
-            }
+            _admin.Add(LogType.Damaged, LogImpact.High, $"The limb {Name(limbToRemove)} blown off by the explosion from {ToPrettyString(patient):target}");
         }
     }
 
     private List<InternalDamagePrototype> GetMatchingDamagePrototypes(string id)
     {
         return _proto.EnumeratePrototypes<InternalDamagePrototype>()
-            .Where(p => p.SupportedTypes.Contains(id))
-            .ToList();
+            .Where(p => p.SupportedTypes.Contains(id)).ToList();
     }
 
     private void TryAddInternalDamages(Entity<OperatedComponent> ent, InternalDamagePrototype possibleDamage)
     {
-        if (!TryComp<HumanoidAppearanceComponent>(ent, out var humanoidAppearance)
+        if (!TryComp<HumanoidProfileComponent>(ent, out var humanoidAppearance)
             || possibleDamage.BlacklistSpecies != null && possibleDamage.BlacklistSpecies.Contains(humanoidAppearance.Species))
             return;
 
@@ -273,50 +334,35 @@ public sealed partial class SurgerySystem
 
     private string? SelectBodyPart(EntityUid patient, InternalDamagePrototype damageProto)
     {
-        var bodyParts = _body.GetBodyChildren(patient)
-            .Where(b => !HasComp<SubdermalImplantComponent>(b.Id)).ToList();
+        if (!TryComp<BodyComponent>(patient, out var body) || body.Organs == null)
+            return null;
+
+        var bodyParts = body.Organs.ContainedEntities
+            .Where(organ =>
+                Parts.Any(tag => _tag.HasTag(organ, tag))
+                && !HasComp<SubdermalImplantComponent>(organ))
+            .Select(organ => GetOrganName(organ))
+            .ToList();
 
         if (bodyParts.Count == 0)
             return null;
 
         var availableParts = damageProto.BlacklistPart != null
-            ? FilterByBlacklist(bodyParts, damageProto.BlacklistPart)
-            : bodyParts.Select(b => GetBodyPartName(b.Component)).ToList();
+            ? bodyParts.Where(p => !damageProto.BlacklistPart.Contains(p)).ToList()
+            : bodyParts;
 
         return availableParts.Count > 0 ? _random.Pick(availableParts) : null;
     }
 
-    private List<string> FilterByBlacklist(List<(EntityUid Id, BodyPartComponent Component)> bodyParts, List<string> blacklist)
+    private string GetOrganName(EntityUid organ)
     {
-        var result = new List<string>();
-        foreach (var (uid, component) in bodyParts)
+        if (TryComp<OrganComponent>(organ, out var organComp))
         {
-            if (HasComp<SubdermalImplantComponent>(uid))
-                continue;
-
-            var partName = GetBodyPartName(component);
-            if (!blacklist.Contains(partName))
-            {
-                result.Add(partName);
-            }
+            var categoryId = organComp.Category?.Id;
+            if (categoryId != null)
+                return categoryId.ToLower();
         }
-
-        return result;
-    }
-
-    private string GetBodyPartName(BodyPartComponent component)
-    {
-        var symmetry = component.Symmetry;
-        var partType = component.PartType;
-
-        var symmetryPrefix = symmetry switch
-        {
-            BodyPartSymmetry.Left => "left_",
-            BodyPartSymmetry.Right => "right_",
-            _ => ""
-        };
-
-        return symmetryPrefix + partType.ToString().ToLower();
+        return Name(organ).ToLower();
     }
 
     public bool TryAddInternalDamage(EntityUid target, string damageId, OperatedComponent? component = null, string? bodyPart = null)
@@ -327,20 +373,19 @@ public sealed partial class SurgerySystem
         if (!_proto.TryIndex<InternalDamagePrototype>(damageId, out var damageProto))
             return false;
 
-        if (!TryComp<HumanoidAppearanceComponent>(target, out var humanoidAppearance) || damageProto.BlacklistSpecies != null
+        if (!TryComp<HumanoidProfileComponent>(target, out var humanoidAppearance) || damageProto.BlacklistSpecies != null
             && damageProto.BlacklistSpecies.Contains(humanoidAppearance.Species))
             return false;
 
         if (bodyPart != null)
         {
-            var matchingParts = _body.GetBodyChildren(target)
-                .Where(b => GetBodyPartName(b.Component).Equals(bodyPart, StringComparison.OrdinalIgnoreCase))
-                .ToList();
-
-            if (matchingParts.Count == 0)
+            if (!TryComp<BodyComponent>(target, out var body) || body.Organs == null)
                 return false;
 
-            if (matchingParts.All(b => HasComp<SubdermalImplantComponent>(b.Id)))
+            var organEntity = body.Organs.ContainedEntities.FirstOrDefault(organ =>
+                GetOrganName(organ).Equals(bodyPart, StringComparison.OrdinalIgnoreCase));
+
+            if (!Parts.Any(tag => _tag.HasTag(organEntity, tag)) || HasComp<SubdermalImplantComponent>(organEntity))
                 return false;
         }
         else
@@ -362,8 +407,8 @@ public sealed partial class SurgerySystem
             component.InternalDamages.Add(damageId, bodyParts);
         }
 
-        if (bodyPart != null && !bodyParts.Contains(bodyPart))
-            bodyParts.Add(bodyPart);
+        if (bodyPart != null && !bodyParts.Contains(bodyPart.ToLower()))
+            bodyParts.Add(bodyPart.ToLower());
     }
 
     public bool TryRemoveInternalDamage(EntityUid target, string damageId, string bodyPart, OperatedComponent? component = null)
@@ -374,7 +419,7 @@ public sealed partial class SurgerySystem
         if (!component.InternalDamages.TryGetValue(damageId, out var damagedParts))
             return false;
 
-        if (!damagedParts.Remove(bodyPart))
+        if (!damagedParts.Remove(bodyPart.ToLower()))
             return false;
 
         if (damagedParts.Count == 0)

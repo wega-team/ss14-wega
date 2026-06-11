@@ -288,7 +288,6 @@
   - type: FitsInDispenser
     solution: drink
   - type: SolutionRegeneration
-    solution: drink
     generated:
       reagents:
       - ReagentId: Water
@@ -338,7 +337,6 @@
   - type: FitsInDispenser
     solution: drink
   - type: SolutionRegeneration
-    solution: drink
     generated:
       reagents:
       - ReagentId: Beer
@@ -388,7 +386,6 @@
   - type: FitsInDispenser
     solution: drink
   - type: SolutionRegeneration
-    solution: drink
     generated:
       reagents:
       - ReagentId: Wine
@@ -438,7 +435,6 @@
   - type: FitsInDispenser
     solution: drink
   - type: SolutionRegeneration
-    solution: drink
     generated:
       reagents:
       - ReagentId: Coffee
@@ -488,7 +484,6 @@
   - type: FitsInDispenser
     solution: drink
   - type: SolutionRegeneration
-    solution: drink
     generated:
       reagents:
       - ReagentId: Cola
@@ -538,7 +533,6 @@
   - type: FitsInDispenser
     solution: drink
   - type: SolutionRegeneration
-    solution: drink
     generated:
       reagents:
       - ReagentId: Milk

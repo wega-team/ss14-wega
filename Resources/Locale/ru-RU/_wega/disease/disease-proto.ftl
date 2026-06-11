@@ -4,6 +4,7 @@ disease-proto-spectral-tiredness = спектральное утомление
 disease-proto-lung-cancer = рак лёгких IIIA стадии
 disease-proto-slimeitis = слаймитис
 disease-proto-surgical-sepsis = сепсис внутренних тканей
+disease-vampire-grave-fever = могильная лихорадка
 # Infectious
 disease-proto-space-cold = космическая простуда
 disease-proto-vent-cough = трубный кашель

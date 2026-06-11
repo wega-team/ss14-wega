@@ -10,7 +10,7 @@ namespace Content.Client.UserInterface.Systems.Ghost.Widgets;
 [GenerateTypedNameReferences]
 public sealed partial class GhostGui : UIWidget
 {
-    [Dependency] private readonly IGameTiming _gameTiming = default!; // Corvax-Wega-GhostRespawn
+    [Dependency] private IGameTiming _gameTiming = default!; // Corvax-Wega-GhostRespawn
 
     private TimeSpan? _timeOfDeath; // Corvax-Wega-GhostRespawn
     private float _minTimeToRespawn; // Corvax-Wega-GhostRespawn

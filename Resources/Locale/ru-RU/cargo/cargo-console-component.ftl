@@ -1,5 +1,8 @@
 ## UI
+
 cargo-console-menu-title = Консоль заказа грузов
+cargo-console-menu-flavor-left = Закажи еще больше коробок пиццы, чем обычно!
+cargo-console-menu-flavor-right = v2.1
 cargo-console-menu-account-name-label = Аккаунт:{ " " }
 cargo-console-menu-account-name-none-text = Нет
 cargo-console-menu-account-name-format = [bold][color={ $color }]{ $name }[/color][/bold] [font="Monospace"]\[{ $code }\][/font]
@@ -16,11 +19,14 @@ cargo-console-menu-categories-label = Категории:{ " " }
 cargo-console-menu-search-bar-placeholder = Поиск
 cargo-console-menu-requests-label = Запросы
 cargo-console-menu-orders-label = Заказы
-cargo-console-menu-order-reason-description = Причина: { $reason }
 cargo-console-menu-populate-categories-all-text = Все
-cargo-console-menu-populate-orders-cargo-order-row-product-name-text = { $productName } (x{ $orderAmount }) от { $orderRequester } со счёта [color={ $accountColor }]{ $account }[/color]
-cargo-console-menu-cargo-order-row-approve-button = Одобрить
-cargo-console-menu-cargo-order-row-cancel-button = Отменить
+cargo-console-menu-order-row-title = { $productName } (x{ $orderAmount } за { $orderPrice }$)
+cargo-console-menu-populate-orders-cargo-order-row-product-name-text = Заказчик: { $orderRequester } со счета [color={ $accountColor }]{ $account }[/color]
+cargo-console-menu-order-row-product-description = Причина: { $orderReason }
+cargo-console-menu-order-row-button-approve = Одобрить
+cargo-console-menu-order-row-button-cancel = Отменить
+cargo-console-menu-order-row-alerts-reason-absent = Причина не указана
+cargo-console-menu-order-row-alerts-requester-unknown = Неизвестно
 cargo-console-menu-tab-title-orders = Заказы
 cargo-console-menu-tab-title-funds = Переводы
 cargo-console-menu-account-action-transfer-limit = [bold]Лимит перевода:[/bold] ${ $limit }
@@ -49,8 +55,7 @@ cargo-console-fund-transfer-user-unknown = Неизвестно
 cargo-console-paper-reason-default = Отсутствует
 cargo-console-paper-approver-default = Самостоятельно
 cargo-console-paper-print-name = Заказ #{ $orderNumber }
-cargo-console-paper-print-text =
-    Заказ #{ $orderNumber }
+cargo-console-paper-print-text = Заказ #{ $orderNumber }
     Товар: { $itemName }
     Кол-во: { $orderQuantity }
     Запросил: { $requester }
@@ -78,18 +83,17 @@ cargo-funding-alloc-console-label-help-non-adjustible = Отдел снабже�
 cargo-funding-alloc-console-label-help-adjustible = Остаток доходов от всего, кроме ящиков с замком, распределяется следующим образом:
 cargo-funding-alloc-console-button-save = Сохранить изменения
 cargo-funding-alloc-console-label-save-fail = [bold]Разделение выручки невалидно![/bold] [color=red]({ $pos ->
-        [1] +
-       *[-1] -
-    }{ $val }%)[/color]
+    [1] +
+    *[-1] -
+}{ $val }%)[/color]
 
 # Slip template
-cargo-acquisition-slip-body = [head=3]Детали актива[/head]
-    { "[bold]Товар:[/bold]" } { $product }
+cargo-acquisition-slip-body = [head=3]Детали актива[/head] { "[bold]Товар:[/bold]" } { $product }
     { "[bold]Описание:[/bold]" } { $description }
     { "[bold]Цена за единицу:[/bold" }] ${ $unit }
     { "[bold]Количество:[/bold]" } { $amount }
     { "[bold]Сумма:[/bold]" } ${ $cost }
-    
+
     { "[head=3]Детали покупки[/head]" }
     { "[bold]Заказчик:[/bold]" } { $orderer }
     { "[bold]Причина:[/bold]" } { $reason }

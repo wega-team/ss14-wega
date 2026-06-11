@@ -39,10 +39,22 @@
     proto: robot
   - type: Speech
     speechSounds: Pai
+# Corvax-Wega-start
   - type: ItemSlots
+    slots:
+      gps_slot:
+        name: gps-slot-name
+        insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
+        startingItem: HandheldGPSBasicOff
+        whitelist:
+          components:
+          - HandheldGPS
   - type: ContainerContainer
     containers:
       brain_slot: !type:ContainerSlot
+      gps_slot: !type:ContainerSlot
+# Corvax-Wega-end
   - type: Appearance
   - type: GuideHelp
     guides:
@@ -53,12 +65,14 @@
       components:
       - SecretStash
   # Corvax-Wega-Android-start
-  - type: Tag
-    tags:
-      - BrainSynthetic
   - type: Brain
   - type: Organ
-    organType: Brain
+    category: Brain
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - BaseOrgan # Corvax-Wega-Android
+    - BrainSynthetic # Corvax-Wega-Android
   # Corvax-Wega-Android-end
 
 - type: entity
@@ -130,6 +144,7 @@
     - type: Tag
       tags:
       - CannotSuicide
+      - BaseOrgan # Corvax-Wega-Android
       - BrainSynthetic # Corvax-Wega-Android
     - type: GenericVisualizer
       visuals:
@@ -149,5 +164,18 @@
     # Corvax-Wega-Android-start
     - type: Brain
     - type: Organ
-      organType: Brain
+      category: Brain
+    - type: ItemSlots
+      slots:
+        gps_slot:
+          name: gps-slot-name
+          insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+          ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
+          startingItem: HandheldGPSBasicOff
+          whitelist:
+            components:
+            - HandheldGPS
+    - type: ContainerContainer
+      containers:
+        gps_slot: !type:ContainerSlot
     # Corvax-Wega-Android-end

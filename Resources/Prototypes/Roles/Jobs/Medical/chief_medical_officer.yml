@@ -30,7 +30,6 @@
   startingGear: CMOGear
   icon: "JobIconChiefMedicalOfficer"
   supervisors: job-supervisors-captain
-  canBeAntag: false
   access:
   - Medical
   - Command
@@ -55,7 +54,6 @@
   equipment:
     id: CMOPDA
     ears: ClothingHeadsetCMO
-    belt: ClothingBeltMedicalFilled
   storage:
     back:
     - Flash

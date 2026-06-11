@@ -1,9 +1,7 @@
-using System.Linq; // Corvax-Wega-Surgery
 using System.Numerics;
 using Content.Server.Stack;
 using Content.Server.Stunnable;
 using Content.Shared.ActionBlocker;
-using Content.Shared.Body.Part;
 using Content.Shared.CombatMode;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Explosion;
@@ -15,7 +13,6 @@ using Content.Shared.Movement.Pulling.Systems;
 using Content.Shared.Stacks;
 using Content.Shared.Standing;
 using Content.Shared.Throwing;
-using Robust.Shared.Containers; // Corvax-Wega-Surgery
 using Robust.Shared.GameStates;
 using Robust.Shared.Input.Binding;
 using Robust.Shared.Map;
@@ -26,18 +23,16 @@ using Robust.Shared.Timing;
 
 namespace Content.Server.Hands.Systems
 {
-    public sealed class HandsSystem : SharedHandsSystem
+    public sealed partial class HandsSystem : SharedHandsSystem
     {
-        [Dependency] private readonly IGameTiming _timing = default!;
-        [Dependency] private readonly IRobustRandom _random = default!;
-        [Dependency] private readonly StackSystem _stackSystem = default!;
-        [Dependency] private readonly ActionBlockerSystem _actionBlockerSystem = default!;
-        [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
-        [Dependency] private readonly PullingSystem _pullingSystem = default!;
-        [Dependency] private readonly ThrowingSystem _throwingSystem = default!;
-        [Dependency] private readonly SharedContainerSystem _container = default!; // Corvax-Wega-Surgery
-
-        private EntityQuery<PhysicsComponent> _physicsQuery;
+        [Dependency] private IGameTiming _timing = default!;
+        [Dependency] private IRobustRandom _random = default!;
+        [Dependency] private StackSystem _stackSystem = default!;
+        [Dependency] private ActionBlockerSystem _actionBlockerSystem = default!;
+        [Dependency] private SharedTransformSystem _transformSystem = default!;
+        [Dependency] private PullingSystem _pullingSystem = default!;
+        [Dependency] private ThrowingSystem _throwingSystem = default!;
+        [Dependency] private EntityQuery<PhysicsComponent> _physicsQuery = default!;
 
         /// <summary>
         /// Items dropped when the holder falls down will be launched in
@@ -52,9 +47,6 @@ namespace Content.Server.Hands.Systems
 
             SubscribeLocalEvent<HandsComponent, DisarmedEvent>(OnDisarmed, before: new[] {typeof(StunSystem), typeof(SharedStaminaSystem)});
 
-            SubscribeLocalEvent<HandsComponent, BodyPartAddedEvent>(HandleBodyPartAdded);
-            SubscribeLocalEvent<HandsComponent, BodyPartRemovedEvent>(HandleBodyPartRemoved);
-
             SubscribeLocalEvent<HandsComponent, ComponentGetState>(GetComponentState);
 
             SubscribeLocalEvent<HandsComponent, BeforeExplodeEvent>(OnExploded);
@@ -64,8 +56,6 @@ namespace Content.Server.Hands.Systems
             CommandBinds.Builder
                 .Bind(ContentKeyFunctions.ThrowItemInHand, new PointerInputCmdHandler(HandleThrowItem))
                 .Register<HandsSystem>();
-
-            _physicsQuery = GetEntityQuery<PhysicsComponent>();
         }
 
         public override void Shutdown()
@@ -109,70 +99,6 @@ namespace Content.Server.Hands.Systems
 
             args.Handled = true; // no shove/stun.
         }
-
-        // Corvax-Wega-Surgery-Edit-start
-        private void HandleBodyPartAdded(Entity<HandsComponent> ent, ref BodyPartAddedEvent args)
-        {
-            switch (args.Part.Comp.PartType)
-            {
-                case BodyPartType.Arm:
-                    foreach (var (slotId, child) in args.Part.Comp.Children)
-                    {
-                        if (child.Type == BodyPartType.Hand)
-                        {
-                            var containerSlotId = $"body_part_slot_{slotId}";
-                            if (_container.TryGetContainer(args.Part.Owner, containerSlotId, out var container)
-                                && container.ContainedEntities.Any(e => TryComp<BodyPartComponent>(e, out var partComp)
-                                && partComp.PartType == BodyPartType.Hand))
-                            {
-                                var armLocation = args.Part.Comp.Symmetry switch
-                                {
-                                    BodyPartSymmetry.None => HandLocation.Middle,
-                                    BodyPartSymmetry.Left => HandLocation.Left,
-                                    BodyPartSymmetry.Right => HandLocation.Right,
-                                    _ => HandLocation.Middle
-                                };
-
-                                AddHand(ent.AsNullable(), containerSlotId, armLocation);
-                            }
-                        }
-                    }
-                    break;
-
-                case BodyPartType.Hand:
-                    var location = args.Part.Comp.Symmetry switch
-                    {
-                        BodyPartSymmetry.None => HandLocation.Middle,
-                        BodyPartSymmetry.Left => HandLocation.Left,
-                        BodyPartSymmetry.Right => HandLocation.Right,
-                        _ => HandLocation.Middle
-                    };
-
-                    AddHand(ent.AsNullable(), args.Slot, location);
-                    break;
-            }
-        }
-
-        private void HandleBodyPartRemoved(EntityUid uid, HandsComponent component, ref BodyPartRemovedEvent args)
-        {
-            switch (args.Part.Comp.PartType)
-            {
-                case BodyPartType.Arm:
-                    foreach (var (slotId, child) in args.Part.Comp.Children)
-                    {
-                        if (child.Type == BodyPartType.Hand)
-                        {
-                            RemoveHand(uid, $"body_part_slot_{slotId}");
-                        }
-                    }
-                    break;
-
-                case BodyPartType.Hand:
-                    RemoveHand(uid, args.Slot);
-                    break;
-            }
-        }
-        // Corvax-Wega-Surgery-Edit-end
 
         #region interactions
 

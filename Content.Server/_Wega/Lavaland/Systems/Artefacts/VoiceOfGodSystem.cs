@@ -15,6 +15,7 @@ using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Database;
+using Content.Shared.FixedPoint;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Implants;
@@ -34,27 +35,27 @@ using Robust.Shared.Timing;
 
 namespace Content.Server.Lavaland.Artefacts.Systems;
 
-public sealed class VoiceOfGodSystem : EntitySystem
+public sealed partial class VoiceOfGodSystem : EntitySystem
 {
-    [Dependency] private readonly IAdminLogManager _admin = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly MobStateSystem _mobState = default!;
-    [Dependency] private readonly DamageableSystem _damage = default!;
-    [Dependency] private readonly StatusEffectsSystem _statusEffects = default!;
-    [Dependency] private readonly BloodstreamSystem _bloodstream = default!;
-    [Dependency] private readonly FlammableSystem _flammable = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly SharedPhysicsSystem _physics = default!;
-    [Dependency] private readonly ThrowingSystem _throwing = default!;
-    [Dependency] private readonly SharedStunSystem _stun = default!;
-    [Dependency] private readonly SharedStaminaSystem _stamina = default!;
-    [Dependency] private readonly SharedBuckleSystem _buckle = default!;
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
-    [Dependency] private readonly ChatSystem _chat = default!;
-    [Dependency] private readonly SleepingSystem _sleeping = default!;
-    [Dependency] private readonly VomitSystem _vomit = default!;
+    [Dependency] private IAdminLogManager _admin = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
+    [Dependency] private MobStateSystem _mobState = default!;
+    [Dependency] private DamageableSystem _damage = default!;
+    [Dependency] private StatusEffectsSystem _statusEffects = default!;
+    [Dependency] private BloodstreamSystem _bloodstream = default!;
+    [Dependency] private FlammableSystem _flammable = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private SharedPhysicsSystem _physics = default!;
+    [Dependency] private ThrowingSystem _throwing = default!;
+    [Dependency] private SharedStunSystem _stun = default!;
+    [Dependency] private SharedStaminaSystem _stamina = default!;
+    [Dependency] private SharedBuckleSystem _buckle = default!;
+    [Dependency] private SharedHandsSystem _hands = default!;
+    [Dependency] private ChatSystem _chat = default!;
+    [Dependency] private SleepingSystem _sleeping = default!;
+    [Dependency] private VomitSystem _vomit = default!;
 
     // TODO: Make loc if you not lazy as me.
     private static readonly Dictionary<string, VoiceOfGodCommand> Commands = new()
@@ -378,14 +379,17 @@ public sealed class VoiceOfGodSystem : EntitySystem
         if (!TryComp<DamageableComponent>(target, out var damageable))
             return;
 
-        var damagedTypes = damageable.Damage.DamageDict
-            .Where(x => x.Value > 0).Select(x => x.Key).ToList();
+        var positiveDamage = _damage.GetPositiveDamage((target, damageable));
+        var damagedTypes = positiveDamage.DamageDict.Keys.ToList();
 
         if (damagedTypes.Count == 0)
             return;
 
         var type = damagedTypes[_random.Next(damagedTypes.Count)];
-        var healAmount = Math.Min(damageable.Damage.DamageDict[type].Float(), amount);
+        if (!positiveDamage.DamageDict.TryGetValue(type, out var currentDamage))
+            return;
+
+        var healAmount = FixedPoint2.Min(currentDamage, amount);
 
         var healSpecifier = new DamageSpecifier();
         healSpecifier.DamageDict[type] = -healAmount;
@@ -504,7 +508,7 @@ public sealed class VoiceOfGodSystem : EntitySystem
     #endregion
 }
 
-public sealed class VoiceOfGodCommand
+public sealed partial class VoiceOfGodCommand
 {
     public string Key { get; set; }
     public string Id { get; set; }

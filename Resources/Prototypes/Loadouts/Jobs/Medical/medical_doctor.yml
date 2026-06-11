@@ -1,41 +1,9 @@
-# Senior Time
-- type: loadoutEffectGroup
-  id: SeniorPhysician
-  effects:
-  - !type:JobRequirementLoadoutEffect
-    requirement:
-      !type:RoleTimeRequirement
-      role: JobChemist
-      time: 20h # Corvax-RoleTime
-  - !type:JobRequirementLoadoutEffect
-    requirement:
-      !type:RoleTimeRequirement
-      role: JobMedicalDoctor
-      time: 20h # Corvax-RoleTime
-  - !type:JobRequirementLoadoutEffect
-    requirement:
-      !type:DepartmentTimeRequirement
-      department: Medical
-      time: 60h
-
-# Other Timers
-
-- type: loadoutEffectGroup
-  id: MedicalHeadMirrorTimer
-  effects:
-  - !type:JobRequirementLoadoutEffect
-    requirement:
-      !type:RoleTimeRequirement
-      role: JobMedicalDoctor
-      time: 30h
-
 # Head
-
 - type: loadout
   id: SeniorPhysicianBeret
-  # effects: Corvax-MentorRoles
-  # - !type:GroupLoadoutEffect
-  #   proto: SeniorPhysician
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SeniorPhysician
   equipment:
     head: ClothingHeadHatBeretSeniorPhysician
 
@@ -43,7 +11,7 @@
   id: MedicalHeadMirror
   effects:
   - !type:GroupLoadoutEffect
-    proto: MedicalHeadMirrorTimer
+    proto: MedicalJourneymanTimer
   equipment:
     head: ClothingHeadMirror
 
@@ -87,18 +55,18 @@
 
 - type: loadout
   id: SeniorPhysicianJumpsuit
-  # effects: Corvax-MentorRoles
-  # - !type:GroupLoadoutEffect
-  #   proto: SeniorPhysician
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SeniorPhysician
   equipment:
     jumpsuit: ClothingUniformJumpsuitSeniorPhysician
   groupBy: "wegaJJ" # Corvax-Wega-add
 
 - type: loadout
   id: SeniorPhysicianJumpskirt
-  # effects: Corvax-MentorRoles
-  # - !type:GroupLoadoutEffect
-  #   proto: SeniorPhysician
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SeniorPhysician
   equipment:
     jumpsuit: ClothingUniformJumpskirtSeniorPhysician
   groupBy: "wegaJJ" # Corvax-Wega-add
@@ -145,9 +113,9 @@
 
 - type: loadout
   id: SeniorPhysicianLabCoat
-  # effects: Corvax-MentorRoles
-  # - !type:GroupLoadoutEffect
-  #   proto: SeniorPhysician
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SeniorPhysician
   equipment:
     outerClothing: ClothingOuterCoatLabSeniorPhysician
 
@@ -166,31 +134,14 @@
 
 - type: loadout
   id: SeniorPhysicianPDA
-  # effects: Corvax-MentorRoles
-  # - !type:GroupLoadoutEffect
-  #   proto: SeniorPhysician
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SeniorPhysician
   equipment:
     id: SeniorPhysicianPDA
-
-# Gloves
-- type: loadout
-  id: NitrileGloves
-  equipment:
-    gloves: ClothingHandsGlovesNitrile
 
 #Masks
 - type: loadout
   id: SterileMask
   equipment:
     mask: ClothingMaskSterile
-
-#Eyewear
-- type: loadout
-  id: MedicalHud
-  equipment:
-    eyes: ClothingEyesHudMedical
-
-- type: loadout
-  id: MedicalEyePatchHud
-  equipment:
-    eyes: ClothingEyesEyepatchHudMedical

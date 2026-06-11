@@ -1,8 +1,7 @@
 - type: marking
   id: DemomTail
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [Demon]
+  groupWhitelist: [Demon]
   coloring:
     default:
       type:
@@ -14,8 +13,7 @@
 - type: marking
   id: DemomTail1
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [Demon]
+  groupWhitelist: [Demon]
   coloring:
     default:
       type:
@@ -29,8 +27,7 @@
 - type: marking
   id: DemomTailLong
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [Demon]
+  groupWhitelist: [Demon]
   coloring:
     default:
       type:
@@ -44,8 +41,7 @@
 - type: marking
   id: DemomTailUp
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [Demon]
+  groupWhitelist: [Demon]
   coloring:
     default:
       type:
@@ -60,8 +56,7 @@
 - type: marking
   id: DemomTailAnimated
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: []
+  groupWhitelist: []
   sprites:
   - sprite: _Wega/Mobs/Customization/demon.rsi
     state: tail_waggin
@@ -69,8 +64,7 @@
 - type: marking
   id: DemomTail1Animated
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: []
+  groupWhitelist: []
   sprites:
   - sprite: _Wega/Mobs/Customization/demon.rsi
     state: tail_waggin
@@ -80,8 +74,7 @@
 - type: marking
   id: DemomTailLongAnimated
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: []
+  groupWhitelist: []
   sprites:
   - sprite: _Wega/Mobs/Customization/demon.rsi
     state: tail_waggin
@@ -91,8 +84,7 @@
 - type: marking
   id: DemomTailUpAnimated
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: []
+  groupWhitelist: []
   sprites:
   - sprite: _Wega/Mobs/Customization/demon.rsi
     state: tail_waggin

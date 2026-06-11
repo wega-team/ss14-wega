@@ -193,6 +193,8 @@
     - WeaponIndustrialFanPlasmaCutter # Corvax-Wega-Lavaland
     - BorgModuleAdvancedMining
     - SalvageExpeditionsComputerCircuitboard # Corvax-Cringe
+  technologyPrerequisites: # Corvax-Wega-Add
+  - SalvageEquipment # Corvax-Wega-add
 
 # Tier 3
 

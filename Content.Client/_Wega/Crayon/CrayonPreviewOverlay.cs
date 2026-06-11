@@ -11,13 +11,13 @@ using System.Numerics;
 
 namespace Content.Client.Crayon;
 
-public sealed class CrayonPreviewOverlay : Overlay
+public sealed partial class CrayonPreviewOverlay : Overlay
 {
-    [Dependency] private readonly IInputManager _input = default!;
-    [Dependency] private readonly IPlayerManager _player = default!;
-    [Dependency] private readonly IEyeManager _eye = default!;
-    [Dependency] private readonly IEntityManager _entMan = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] private IInputManager _input = default!;
+    [Dependency] private IPlayerManager _player = default!;
+    [Dependency] private IEyeManager _eye = default!;
+    [Dependency] private IEntityManager _entMan = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
 
     private readonly SpriteSystem _sprite;
 

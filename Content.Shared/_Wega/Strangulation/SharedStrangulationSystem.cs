@@ -3,9 +3,9 @@ using Content.Shared.Movement.Events;
 
 namespace Content.Shared.Strangulation
 {
-    public abstract class SharedStrangulationSystem : EntitySystem
+    public abstract partial class SharedStrangulationSystem : EntitySystem
     {
-        [Dependency] private readonly ActionBlockerSystem _actionBlockerSystem = default!;
+        [Dependency] private ActionBlockerSystem _actionBlockerSystem = default!;
 
         public override void Initialize()
         {

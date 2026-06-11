@@ -50,30 +50,30 @@ namespace Content.Server.Lavaland.Systems;
 // TODO: До лучших времен доделать настройки планеты через прото под [TOP SECRET].
 public sealed partial class LavalandSystem : SharedLavalandSystem
 {
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly AtmosphereSystem _atmos = default!;
-    [Dependency] private readonly BiomeSystem _biome = default!;
-    [Dependency] private readonly IConfigurationManager _cfg = default!;
-    [Dependency] private readonly DamageableSystem _damage = default!;
-    [Dependency] private readonly DecalSystem _decals = default!;
-    [Dependency] private readonly SharedGravitySystem _gravity = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly GridFixtureSystem _fixture = default!;
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
-    [Dependency] private readonly MapLoaderSystem _loader = default!;
-    [Dependency] private readonly MapSystem _map = default!;
-    [Dependency] private readonly MetaDataSystem _meta = default!;
-    [Dependency] private readonly PhysicsSystem _physics = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly RadioSystem _radio = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly SharedCameraRecoilSystem _recoil = default!;
-    [Dependency] private readonly SharedShuttleSystem _iff = default!;
-    [Dependency] private readonly SharedStunSystem _stun = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly SharedWeatherSystem _weather = default!;
-    [Dependency] private readonly TurfSystem _turf = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private AtmosphereSystem _atmos = default!;
+    [Dependency] private BiomeSystem _biome = default!;
+    [Dependency] private IConfigurationManager _cfg = default!;
+    [Dependency] private DamageableSystem _damage = default!;
+    [Dependency] private DecalSystem _decals = default!;
+    [Dependency] private SharedGravitySystem _gravity = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
+    [Dependency] private GridFixtureSystem _fixture = default!;
+    [Dependency] private IGameTiming _gameTiming = default!;
+    [Dependency] private MapLoaderSystem _loader = default!;
+    [Dependency] private MapSystem _map = default!;
+    [Dependency] private MetaDataSystem _meta = default!;
+    [Dependency] private PhysicsSystem _physics = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private RadioSystem _radio = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private SharedCameraRecoilSystem _recoil = default!;
+    [Dependency] private SharedShuttleSystem _iff = default!;
+    [Dependency] private SharedStunSystem _stun = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private SharedWeatherSystem _weather = default!;
+    [Dependency] private TurfSystem _turf = default!;
 
     private static readonly ProtoId<DamageTypePrototype> StructuralDamage = "Structural";
     private static readonly ProtoId<DamageTypePrototype> CausticDamage = "Caustic";
@@ -123,6 +123,8 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
 
     private void StartWeather(EntityUid uid, LavalandComponent comp)
     {
+        var mapId = Transform(uid).MapID;
+
         comp.CurrentWeatherType = comp.UpcomingWeatherType;
         comp.CurrentWeatherProto = comp.UpcomingWeatherProto;
         comp.CurrentWeatherEnd = _gameTiming.CurTime + GetWeatherInfo(comp.CurrentWeatherType).duration;
@@ -135,7 +137,7 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
 
         if (comp.CurrentWeatherProto != null)
         {
-            _weather.SetWeather(Transform(uid).MapID, _proto.Index(comp.CurrentWeatherProto.Value), comp.CurrentWeatherEnd);
+            _weather.TrySetWeather(mapId, comp.CurrentWeatherProto.Value, out _, comp.CurrentWeatherEnd - _gameTiming.CurTime);
         }
     }
 
@@ -160,12 +162,13 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
     private void EndWeather(EntityUid uid, LavalandComponent comp)
     {
         var endedWeather = comp.CurrentWeatherType;
+        var mapId = Transform(uid).MapID;
 
         comp.CurrentWeatherType = LavalandWeatherType.None;
         comp.CurrentWeatherProto = null;
         comp.DamageTick = 0f;
 
-        _weather.SetWeather(Transform(uid).MapID, null, null);
+        _weather.TrySetWeather(mapId, null, out _);
 
         SendWeatherEndAlert(endedWeather);
     }
@@ -209,14 +212,15 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
         return filteredWeights.First().Key;
     }
 
-    private (ProtoId<WeatherPrototype>? proto, TimeSpan duration) GetWeatherInfo(LavalandWeatherType type)
+    private (EntProtoId? proto, TimeSpan duration) GetWeatherInfo(LavalandWeatherType type)
     {
+        // Yeeeeeeeeeeee, the fierce hardcore proved itself in one upstream, after which a refactor was planned!
         return type switch
         {
-            LavalandWeatherType.AshStormLight => ("AshfallLight", TimeSpan.FromSeconds(_random.Next(60, 120))),
-            LavalandWeatherType.AshStormHeavy => ("AshfallHeavy", TimeSpan.FromSeconds(_random.Next(90, 150))),
+            LavalandWeatherType.AshStormLight => ("WeatherAshfallLight", TimeSpan.FromSeconds(_random.Next(60, 120))),
+            LavalandWeatherType.AshStormHeavy => ("WeatherAshfallHeavy", TimeSpan.FromSeconds(_random.Next(90, 150))),
             LavalandWeatherType.VolcanicActivity => (null, TimeSpan.FromSeconds(_random.Next(60, 120))),
-            LavalandWeatherType.AcidRain => ("AcidicRain", TimeSpan.FromSeconds(_random.Next(60, 120))),
+            LavalandWeatherType.AcidRain => ("WeatherAcidRain", TimeSpan.FromSeconds(_random.Next(60, 120))),
             LavalandWeatherType.StormWind => (null, TimeSpan.FromSeconds(_random.Next(60, 120))),
             _ => (null, TimeSpan.Zero)
         };

@@ -9,7 +9,7 @@ public enum LightModuleUiKey : byte
 }
 
 [Serializable, NetSerializable]
-public sealed class LightModuleBoundUserInterfaceState : BoundUserInterfaceState
+public sealed partial class LightModuleBoundUserInterfaceState : BoundUserInterfaceState
 {
     public Color LightColor { get; }
     public bool Multicoloured { get; }
@@ -22,7 +22,7 @@ public sealed class LightModuleBoundUserInterfaceState : BoundUserInterfaceState
 }
 
 [Serializable, NetSerializable]
-public sealed class UpdateLightModuleMessage : BoundUserInterfaceMessage
+public sealed partial class UpdateLightModuleMessage : BoundUserInterfaceMessage
 {
     public Color LightColor { get; }
     public bool Multicoloured { get; }

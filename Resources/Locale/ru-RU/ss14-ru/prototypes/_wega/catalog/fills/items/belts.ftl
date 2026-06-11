@@ -7,3 +7,10 @@ ent-ClothingBeltSheathSyndicateFilled = { ent-ClothingBeltSheathSyndicate }
     .desc = { ent-ClothingBeltSheathSyndicate.desc }
 ent-BeltSheathSyndieFilledBox = завернутая рапира Синдиката
     .desc = Обёртка.
+
+ent-ClothingBeltSheathChaplinFilled = { ent-ClothingBeltSheathChaplin }
+    .suffix = Заполненый
+    .desc = { ent-ClothingBeltSheathChaplin.desc }
+ent-ClothingBeltSheathChaplinFilledERT = { ent-ClothingBeltSheathChaplin }
+    .suffix = Заполненый, ОБР
+    .desc = { ent-ClothingBeltSheathChaplin.desc }

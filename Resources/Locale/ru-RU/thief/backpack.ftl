@@ -5,7 +5,7 @@ thief-backpack-window-description =
     Выберите { $maxCount } { $maxCount ->
         [1] набор
         [few] разных набора
-       *[other] разных наборов
+        *[other] разных наборов
     } из списка.
 
 thief-backpack-window-selected = Выбрано наборов: ({ $selectedCount }/{ $maxCount })
@@ -19,8 +19,8 @@ thief-backpack-button-deselect = Выбрано [X]
 thief-backpack-category-chameleon-name = Набор хамелеона
 thief-backpack-category-chameleon-description =
     Вы — никто и кто угодно, вы — мастер маскировки.
-    В комплект входят: комплект хамелеон-одежды,
-    маскировочный проектор и ID карта агента.
+    В комплект входят: комплект хамелеон-одежды с ID картой агента,
+    маскировочный проектор и имплант "Фальшивый щит разума"
     Маскируйтесь под кого угодно и под что угодно.
 
 thief-backpack-category-tools-name = Набор вломщика

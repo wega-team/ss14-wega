@@ -87,7 +87,7 @@
   priority: 1
   conditions:
   - !type:MarkingPresentCondition
-    categories: Tail
+    layer: Tail
   - !type:SpeciesCondition
     invert: true
     specieses:
@@ -101,7 +101,7 @@
     sound:
       path: "/Audio/Weapons/bladeslice.ogg"
   - !type:RemoveMarkingEffect
-    categories: Tail
+    layer: Tail
   - !type:BleedEffect
     amount: 2
   - !type:DamageEffect
@@ -126,7 +126,7 @@
   priority: 1
   conditions:
   - !type:MarkingPresentCondition
-    categories: Tail
+    layer: Tail
   - !type:SpeciesCondition
     specieses:
     - Moth
@@ -139,7 +139,7 @@
     sound:
       path: "/Audio/Weapons/bladeslice.ogg"
   - !type:RemoveMarkingEffect
-    categories: Tail
+    layer: Tail
   - !type:BleedEffect
     amount: 2
   - !type:DamageEffect
@@ -164,7 +164,7 @@
   priority: 1
   conditions:
   - !type:MarkingPresentCondition
-    categories: HeadTop
+    layer: HeadTop
   - !type:SpeciesCondition
     invert: true
     specieses:
@@ -184,7 +184,7 @@
     sound:
       path: "/Audio/Weapons/bladeslice.ogg"
   - !type:RemoveMarkingEffect
-    categories: HeadTop
+    layer: HeadTop
   - !type:BleedEffect
     amount: 2
   - !type:DamageEffect
@@ -209,7 +209,7 @@
   priority: 1
   conditions:
   - !type:MarkingPresentCondition
-    categories: HeadTop
+    layer: HeadTop
   - !type:SpeciesCondition
     specieses:
     - Moth
@@ -222,7 +222,7 @@
     sound:
       path: "/Audio/Weapons/bladeslice.ogg"
   - !type:RemoveMarkingEffect
-    categories: HeadTop
+    layer: HeadTop
   - !type:BleedEffect
     amount: 2
   - !type:DamageEffect

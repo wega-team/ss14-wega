@@ -3,7 +3,6 @@ using System.Numerics;
 using Content.Server.Lavaland.Mobs.Components;
 using Content.Server.NPC.HTN;
 using Content.Server.NPC.Systems;
-using Content.Shared.Achievements;
 using Content.Shared.Camera;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
@@ -30,21 +29,20 @@ namespace Content.Server.Lavaland.Mobs;
 
 public sealed partial class AshDrakeSystem : EntitySystem
 {
-    [Dependency] private readonly SharedAchievementsSystem _achievement = default!;
-    [Dependency] private readonly AppearanceSystem _appearance = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly GibbingSystem _gibbing = default!;
-    [Dependency] private readonly SharedCameraRecoilSystem _recoil = default!;
-    [Dependency] private readonly DamageableSystem _damage = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly SharedGunSystem _gun = default!;
-    [Dependency] private readonly SharedMapSystem _map = default!;
-    [Dependency] private readonly MobStateSystem _mobState = default!;
-    [Dependency] private readonly MobThresholdSystem _threshold = default!;
-    [Dependency] private readonly NPCSystem _npc = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly TurfSystem _turf = default!;
+    [Dependency] private AppearanceSystem _appearance = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private GibbingSystem _gibbing = default!;
+    [Dependency] private SharedCameraRecoilSystem _recoil = default!;
+    [Dependency] private DamageableSystem _damage = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
+    [Dependency] private SharedGunSystem _gun = default!;
+    [Dependency] private SharedMapSystem _map = default!;
+    [Dependency] private MobStateSystem _mobState = default!;
+    [Dependency] private MobThresholdSystem _threshold = default!;
+    [Dependency] private NPCSystem _npc = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private TurfSystem _turf = default!;
 
     private Dictionary<EntityUid, LavaArenaData> _activeArenas = new();
 
@@ -52,19 +50,9 @@ public sealed partial class AshDrakeSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<AshDrakeBossComponent, MegafaunaKilledEvent>(OnAshDrakeKilled);
-
         SubscribeLocalEvent<AshDrakeBossComponent, AshDrakeConeFireActionEvent>(OnConeFireAction);
         SubscribeLocalEvent<AshDrakeBossComponent, AshDrakeBreathingFireActionEvent>(OnBreathingFireAction);
         SubscribeLocalEvent<AshDrakeBossComponent, AshDrakeLavaActionEvent>(OnLavaAction);
-    }
-
-    private void OnAshDrakeKilled(EntityUid uid, AshDrakeBossComponent component, MegafaunaKilledEvent args)
-    {
-        if (args.Killer == null)
-            return;
-
-        _achievement.QueueAchievement(args.Killer.Value, AchievementsEnum.AshDrakeBoss);
     }
 
     #region Cone Fire
@@ -120,10 +108,10 @@ public sealed partial class AshDrakeSystem : EntitySystem
         if (_random.NextDouble() < 0.5)
             StartMeteorShower(ent);
 
-        if (TryComp<DamageableComponent>(ent, out var damageable)
-            && _threshold.TryGetThresholdForState(ent, MobState.Dead, out var threshold))
+        var totalDamage = _damage.GetTotalDamage(ent.Owner);
+        if (totalDamage > 0 && _threshold.TryGetThresholdForState(ent, MobState.Dead, out var threshold))
         {
-            if (damageable.TotalDamage >= threshold - threshold * args.HealthModifier)
+            if (totalDamage >= threshold - threshold * args.HealthModifier)
             {
                 ShootCircularPattern(ent, 12, 1);
                 return;
@@ -151,16 +139,16 @@ public sealed partial class AshDrakeSystem : EntitySystem
     private void OnLavaAction(Entity<AshDrakeBossComponent> ent, ref AshDrakeLavaActionEvent args)
     {
         args.Handled = true;
-        if (TryComp<DamageableComponent>(ent, out var damageable)
-            && _threshold.TryGetThresholdForState(ent, MobState.Dead, out var threshold))
+
+        var totalDamage = _damage.GetTotalDamage(ent.Owner);
+        if (_threshold.TryGetThresholdForState(ent, MobState.Dead, out var threshold))
         {
-            if (damageable.TotalDamage >= threshold - threshold * args.HealthModifier)
+            if (totalDamage >= threshold - threshold * args.HealthModifier)
             {
                 StartLavaArena(ent, args);
                 return;
             }
         }
-
         StartLavaJump(ent, args);
     }
 
@@ -733,7 +721,7 @@ public sealed partial class AshDrakeSystem : EntitySystem
         }
 
         var damageRadius = 1.5f;
-        var directHitEntities = _lookup.GetEntitiesInRange<ActorComponent>(landingCoords, damageRadius);
+        var directHitEntities = _lookup.GetEntitiesInRange<ActorComponent>(landingCoords, damageRadius, LookupFlags.Uncontained);
         foreach (var entity in directHitEntities)
         {
             if (entity.Owner == ent.Owner)
@@ -772,7 +760,7 @@ public sealed partial class AshDrakeSystem : EntitySystem
         var damageRadius = 1.5f;
         var landingCoords = new EntityCoordinates(mapUid.Value, centerPos);
 
-        var entities = _lookup.GetEntitiesInRange<MobStateComponent>(landingCoords, damageRadius);
+        var entities = _lookup.GetEntitiesInRange<MobStateComponent>(landingCoords, damageRadius, LookupFlags.Uncontained);
         foreach (var entity in entities)
         {
             if (entity.Owner == ent.Owner)
@@ -936,7 +924,7 @@ public sealed partial class AshDrakeSystem : EntitySystem
         => _audio.PlayPvs(ent.Comp.AttackSound, ent);
 }
 
-public sealed class LavaArenaData
+public sealed partial class LavaArenaData
 {
     public Vector2 ArenaCenter;
     public int ArenaSize;

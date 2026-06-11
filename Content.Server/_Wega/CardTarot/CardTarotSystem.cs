@@ -68,38 +68,38 @@ using Robust.Shared.Timing;
 
 namespace Content.Server.Card.Tarot;
 
-public sealed class CardTarotSystem : EntitySystem
+public sealed partial class CardTarotSystem : EntitySystem
 {
-    [Dependency] private readonly AppearanceSystem _appearance = default!;
-    [Dependency] private readonly BloodstreamSystem _blood = default!;
-    [Dependency] private readonly ChatSystem _chat = default!;
-    [Dependency] private readonly SharedContainerSystem _container = default!;
-    [Dependency] private readonly DamageableSystem _damage = default!;
-    [Dependency] private readonly DiceOfFateSystem _dice = default!;
-    [Dependency] private readonly EntityLookupSystem _entityLookup = default!;
-    [Dependency] private readonly SharedGravitySystem _gravity = default!;
-    [Dependency] private readonly HallucinationsSystem _hallucinations = default!;
-    [Dependency] private readonly IngestionSystem _ingestion = default!;
-    [Dependency] private readonly InventorySystem _inventory = default!;
-    [Dependency] private readonly LockSystem _lock = default!;
-    [Dependency] private readonly SharedPhysicsSystem _physics = default!;
-    [Dependency] private readonly MetaDataSystem _meta = default!;
-    [Dependency] private readonly PolymorphSystem _polymorph = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly IMapManager _mapManager = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly RejuvenateSystem _rejuvenate = default!;
-    [Dependency] private readonly SlotMachineSystem _slotMachine = default!;
-    [Dependency] private readonly SharedSolutionContainerSystem _solution = default!;
-    [Dependency] private readonly StackSystem _stack = default!;
-    [Dependency] private readonly StatusEffectsSystem _statusEffects = default!;
-    [Dependency] private readonly SharedStunSystem _stun = default!;
-    [Dependency] private readonly SurgerySystem _surgery = default!;
-    [Dependency] private readonly TagSystem _tag = default!;
-    [Dependency] private readonly ThrowingSystem _throwing = default!;
-    [Dependency] private readonly TriggerSystem _trigger = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private AppearanceSystem _appearance = default!;
+    [Dependency] private BloodstreamSystem _blood = default!;
+    [Dependency] private ChatSystem _chat = default!;
+    [Dependency] private SharedContainerSystem _container = default!;
+    [Dependency] private DamageableSystem _damage = default!;
+    [Dependency] private DiceOfFateSystem _dice = default!;
+    [Dependency] private EntityLookupSystem _entityLookup = default!;
+    [Dependency] private SharedGravitySystem _gravity = default!;
+    [Dependency] private HallucinationsSystem _hallucinations = default!;
+    [Dependency] private IngestionSystem _ingestion = default!;
+    [Dependency] private InventorySystem _inventory = default!;
+    [Dependency] private LockSystem _lock = default!;
+    [Dependency] private SharedPhysicsSystem _physics = default!;
+    [Dependency] private MetaDataSystem _meta = default!;
+    [Dependency] private PolymorphSystem _polymorph = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private IMapManager _mapManager = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private RejuvenateSystem _rejuvenate = default!;
+    [Dependency] private SlotMachineSystem _slotMachine = default!;
+    [Dependency] private SharedSolutionContainerSystem _solution = default!;
+    [Dependency] private StackSystem _stack = default!;
+    [Dependency] private StatusEffectsSystem _statusEffects = default!;
+    [Dependency] private SharedStunSystem _stun = default!;
+    [Dependency] private SurgerySystem _surgery = default!;
+    [Dependency] private TagSystem _tag = default!;
+    [Dependency] private ThrowingSystem _throwing = default!;
+    [Dependency] private TriggerSystem _trigger = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
 
     // 200,000 static variables are ready, and another million is on the way
     private static readonly EntProtoId Ash = "Ash";
@@ -632,17 +632,19 @@ public sealed class CardTarotSystem : EntitySystem
             if (TryComp<DiseaseCarrierComponent>(target, out var disease))
                 disease.Diseases.Clear();
 
-            if (TryComp<DamageableComponent>(target, out var damageable))
+            if (HasComp<DamageableComponent>(target))
             {
-                var damageTypes = new[] { RadiationDamage, PoisonDamage };
-                foreach (var damageType in damageTypes)
-                {
-                    if (damageable.Damage.DamageDict.TryGetValue(damageType, out var currentDamage) && currentDamage > 0)
-                    {
-                        var healSpecifier = new DamageSpecifier { DamageDict = { { damageType, -currentDamage } } };
-                        _damage.TryChangeDamage(target, healSpecifier, true);
-                    }
-                }
+                var healSpecifier = new DamageSpecifier();
+
+                var damage = _damage.GetAllDamage(target);
+                if (damage.DamageDict.TryGetValue(RadiationDamage, out var radDamage) && radDamage > 0)
+                    healSpecifier.DamageDict[RadiationDamage] = -radDamage;
+
+                if (damage.DamageDict.TryGetValue(PoisonDamage, out var poisonDamage) && poisonDamage > 0)
+                    healSpecifier.DamageDict[PoisonDamage] = -poisonDamage;
+
+                if (healSpecifier.DamageDict.Count > 0)
+                    _damage.TryChangeDamage(target, healSpecifier, true);
             }
         }
     }
@@ -846,7 +848,7 @@ public sealed class CardTarotSystem : EntitySystem
         {
             // Well, like i couldn't think of anything smarter
             var message = Loc.GetString("tarot-moon-m-message");
-            if (TryComp<HumanoidAppearanceComponent>(target, out var humanoid) && humanoid.Gender == Gender.Female)
+            if (TryComp<HumanoidProfileComponent>(target, out var humanoid) && humanoid.Gender == Gender.Female)
                 message = Loc.GetString("tarot-moon-f-message");
 
             _chat.TrySendInGameICMessage(target, message, InGameICChatType.Speak, false);

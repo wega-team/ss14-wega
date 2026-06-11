@@ -48,3 +48,7 @@ uplink-syndie-energy-shield-module-name = модуль энергетическ�
 uplink-syndie-energy-shield-module-desc = Уменьшенная версия корабельного deflector-щита. Способен блокировать почти любые атаки ценой значительного расхода энергии.
 uplink-energy-shield-module-bundle-name = набор модулей энергетического щита
 uplink-energy-shield-module-bundle-desc = Комплект из пяти модулей энергетического щита в удобной сумке. Позволяет оснастить всю команду личной защитой.
+uplink-xc67-agent-name = xC-67
+uplink-xc67-agent-desc = Невероятная штурмовая винтовка xC-67, которая позволит бадаться со станцией на равной.
+uplink-nightvision-name = прибор ночного видения
+uplink-nightvision-desc = Прибор, благодаря которому вы сможете видеть в темноте. Очень полезен, если вы собираетесь сделать LIGHTS OFF!

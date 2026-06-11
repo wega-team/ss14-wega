@@ -18,3 +18,11 @@
   - type: DnaModifierDisk
   - type: StaticPrice
     price: 100
+
+- type: entity
+  parent: TechnologyDisk
+  id: TechnologyDiskBiochem
+  suffix: Biochem
+  components:
+  - type: TechnologyDisk
+    discipline: Biochemical

@@ -26,17 +26,17 @@ namespace Content.Server.Disease
     /// <summary>
     /// Handles disease propagation & curing
     /// </summary>
-    public sealed class DiseaseSystem : SharedDiseaseSystem
+    public sealed partial class DiseaseSystem : SharedDiseaseSystem
     {
-        [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-        [Dependency] private readonly IRobustRandom _random = default!;
-        [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
-        [Dependency] private readonly PopupSystem _popupSystem = default!;
-        [Dependency] private readonly EntityLookupSystem _lookup = default!;
-        [Dependency] private readonly SharedInteractionSystem _interactionSystem = default!;
-        [Dependency] private readonly InventorySystem _inventorySystem = default!;
-        [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
-        [Dependency] private readonly ChatSystem _chatSystem = default!;
+        [Dependency] private IPrototypeManager _prototypeManager = default!;
+        [Dependency] private IRobustRandom _random = default!;
+        [Dependency] private SharedDoAfterSystem _doAfterSystem = default!;
+        [Dependency] private PopupSystem _popupSystem = default!;
+        [Dependency] private EntityLookupSystem _lookup = default!;
+        [Dependency] private SharedInteractionSystem _interactionSystem = default!;
+        [Dependency] private InventorySystem _inventorySystem = default!;
+        [Dependency] private MobStateSystem _mobStateSystem = default!;
+        [Dependency] private ChatSystem _chatSystem = default!;
 
         public override void Initialize()
         {
@@ -205,7 +205,7 @@ namespace Content.Server.Disease
             if (!clothing.Slots.HasFlag(args.SlotFlags))
                 return;
             // Give the user the component's disease resist
-            if (TryComp<DiseaseCarrierComponent>(args.Equipee, out var carrier))
+            if (TryComp<DiseaseCarrierComponent>(args.EquipTarget, out var carrier))
                 carrier.DiseaseResist += component.Protection;
             // Set the component to active to the unequip check isn't CBT
             component.IsActive = true;
@@ -221,7 +221,7 @@ namespace Content.Server.Disease
             // Only undo the resistance if it was affecting the user
             if (!component.IsActive)
                 return;
-            if (TryComp<DiseaseCarrierComponent>(args.Equipee, out var carrier))
+            if (TryComp<DiseaseCarrierComponent>(args.EquipTarget, out var carrier))
                 carrier.DiseaseResist -= component.Protection;
             component.IsActive = false;
         }
@@ -388,7 +388,7 @@ namespace Content.Server.Disease
                 return true;
 
             if (_inventorySystem.TryGetSlotEntity(uid, "mask", out var maskUid) &&
-                EntityManager.TryGetComponent<IngestionBlockerComponent>(maskUid, out var blocker) &&
+                TryComp<IngestionBlockerComponent>(maskUid, out var blocker) &&
                 blocker.Enabled)
                 return true;
 
@@ -425,7 +425,7 @@ namespace Content.Server.Disease
                 return;
 
             Vaccinate(carrier, component.Disease);
-            EntityManager.DeleteEntity(uid);
+            Del(uid);
             args.Handled = true;
         }
     }

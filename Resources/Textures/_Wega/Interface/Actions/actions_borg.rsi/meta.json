@@ -131,7 +131,13 @@
             "name": "fulton-module"
         },
         {
+            "name": "sniper-module"
+        },
+        {
             "name": "speed_xenoborg"
+        },
+        {
+            "name": "clockwork-module"
         }
     ]
 }

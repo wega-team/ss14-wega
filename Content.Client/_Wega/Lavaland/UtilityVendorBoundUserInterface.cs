@@ -3,7 +3,7 @@ using Robust.Client.UserInterface;
 
 namespace Content.Client._Wega.Lavaland;
 
-public sealed class UtilityVendorBoundUserInterface : BoundUserInterface
+public sealed partial class UtilityVendorBoundUserInterface : BoundUserInterface
 {
     [ViewVariables]
     private UtilityVendorMenu? _window;
@@ -16,7 +16,7 @@ public sealed class UtilityVendorBoundUserInterface : BoundUserInterface
 
         _window = this.CreateWindow<UtilityVendorMenu>();
         _window.Title = EntMan.GetComponent<MetaDataComponent>(Owner).EntityName;
-        _window.OpenCentered();
+        _window.OpenCenteredLeft();
 
         _window.OnClose += Close;
 

@@ -1,9 +1,9 @@
 using System.Numerics;
 using Content.Server.Chat.Systems;
 using Content.Server.Lavaland.Mobs.Components;
-using Content.Shared.Achievements;
 using Content.Shared.Chat;
 using Content.Shared.Damage.Components;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Lavaland.Events;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
@@ -15,14 +15,14 @@ using Robust.Shared.Timing;
 
 namespace Content.Server.Lavaland;
 
-public sealed class ColossusSystem : EntitySystem
+public sealed partial class ColossusSystem : EntitySystem
 {
-    [Dependency] private readonly SharedAchievementsSystem _achievement = default!;
-    [Dependency] private readonly ChatSystem _chat = default!;
-    [Dependency] private readonly SharedGunSystem _gun = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly MobThresholdSystem _threshold = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private ChatSystem _chat = default!;
+    [Dependency] private DamageableSystem _damage = default!;
+    [Dependency] private SharedGunSystem _gun = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private MobThresholdSystem _threshold = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
 
     public override void Initialize()
     {
@@ -43,10 +43,6 @@ public sealed class ColossusSystem : EntitySystem
             Spawn(reward, coords);
 
         QueueDel(uid);
-        if (args.Killer != null)
-        {
-            _achievement.QueueAchievement(args.Killer.Value, AchievementsEnum.ColossusBoss);
-        }
     }
 
     private void OnFractionAction(Entity<ColossusBossComponent> ent, ref ColossusFractionActionEvent args)
@@ -76,9 +72,10 @@ public sealed class ColossusSystem : EntitySystem
         args.Handled = true;
 
         if (_threshold.TryGetThresholdForState(ent, MobState.Dead, out var threshold)
-            && TryComp<DamageableComponent>(ent, out var damageable) && damageable.TotalDamage > 0)
+            && TryComp<DamageableComponent>(ent, out var damageable))
         {
-            if (damageable.TotalDamage >= threshold - threshold * args.DieHealthModifier)
+            var totalDamage = _damage.GetTotalDamage((ent.Owner, damageable));
+            if (totalDamage > 0 && totalDamage >= threshold - threshold * args.DieHealthModifier)
             {
                 _chat.TrySendInGameICMessage(ent.Owner, "DIE", InGameICChatType.Speak, false, true, ignoreActionBlocker: true);
 

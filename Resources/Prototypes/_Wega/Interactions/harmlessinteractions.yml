@@ -128,7 +128,7 @@
   cooldown: 2.5
   conditions:
   - !type:MarkingPresentCondition
-    categories: HeadTop
+    layer: HeadTop
   - !type:SpeciesCondition
     invert: true
     specieses:
@@ -188,7 +188,7 @@
   delay: 0.1
   conditions:
   - !type:MarkingPresentCondition
-    categories: Tail
+    layer: Tail
   - !type:SpeciesCondition
     invert: true
     specieses:

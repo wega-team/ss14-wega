@@ -2,18 +2,22 @@
   parent: FlaskBase
   id: DrinkUnholyFlask
   name: old flask
-  description: ""
+  description: "Covered with a layer of dust."
   components:
   - type: Sprite
     sprite: _Wega/Objects/Consumable/Drinks/unholyflask.rsi
     state: icon
+  - type: GenericVisualizer
+    visuals:
+      enum.OpenableVisuals.Opened:
+        enum.OpenableVisuals.Layer:
+          True: {state: "icon"} # lid off
+          False: {state: "icon"} # lid on
 
 - type: entity
   parent: DrinkUnholyFlask
   id: DrinkUnholyFlaskFull
-  name: old flask
-  description: ""
-  suffix: full
+  suffix: Full
   components:
   - type: SolutionContainerManager
     solutions:

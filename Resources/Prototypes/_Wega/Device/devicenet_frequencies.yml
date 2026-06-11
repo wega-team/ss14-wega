@@ -8,18 +8,18 @@
   name: device-frequency-prototype-name-surveillance-camera-alpha
   frequency: 1982  
 
-- type: deviceFrequency
-  id: SurveillanceCameraBeta
-  name: device-frequency-prototype-name-surveillance-camera-beta
-  frequency: 1983
+# - type: deviceFrequency
+  # id: SurveillanceCameraBeta
+  # name: device-frequency-prototype-name-surveillance-camera-beta
+  # frequency: 1983
   
-- type: deviceFrequency
-  id: SurveillanceCameraCharlie
-  name: device-frequency-prototype-name-surveillance-camera-charlie
-  frequency: 1985  
+# - type: deviceFrequency
+  # id: SurveillanceCameraCharlie
+  # name: device-frequency-prototype-name-surveillance-camera-charlie
+  # frequency: 1985  
 
-- type: deviceFrequency
-  id: SurveillanceCameraDelta
-  name: device-frequency-prototype-name-surveillance-camera-delta
-  frequency: 1986  
+# - type: deviceFrequency
+  # id: SurveillanceCameraDelta
+  # name: device-frequency-prototype-name-surveillance-camera-delta
+  # frequency: 1986  
 # Don't use 1984 frequency, it's freelance channel

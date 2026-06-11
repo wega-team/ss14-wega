@@ -11,9 +11,9 @@ namespace Content.Server.Martial.Arts;
 /// Boxe
 public sealed partial class MartialArtsSystem
 {
-    [Dependency] private readonly SharedPhysicsSystem _physics = default!;
-    [Dependency] private readonly IMapManager _mapMan = default!;
-    [Dependency] private readonly SharedMapSystem _map = default!;
+    [Dependency] private SharedPhysicsSystem _physics = default!;
+    [Dependency] private IMapManager _mapMan = default!;
+    [Dependency] private SharedMapSystem _map = default!;
 
     private void InitializeBoxing()
     {
@@ -89,7 +89,7 @@ public sealed partial class MartialArtsSystem
 
         if (TryComp<DamageableComponent>(target, out var damage))
         {
-            var totalDamage = damage.TotalDamage;
+            var totalDamage = _damage.GetTotalDamage((target, damage));
             if (totalDamage >= 125)
                 return;
 

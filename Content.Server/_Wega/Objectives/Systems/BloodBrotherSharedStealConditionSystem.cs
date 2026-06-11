@@ -15,16 +15,16 @@ using Content.Shared.CartridgeLoader;
 
 namespace Content.Server.Objectives.Systems;
 
-public sealed class BloodBrotherSharedStealConditionSystem : EntitySystem
+public sealed partial class BloodBrotherSharedStealConditionSystem : EntitySystem
 {
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly MetaDataSystem _metaData = default!;
-    [Dependency] private readonly MobStateSystem _mobState = default!;
-    [Dependency] private readonly SharedInteractionSystem _interaction = default!;
-    [Dependency] private readonly SharedObjectivesSystem _objectives = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly BloodBrotherSharedConditionSystem _sharedCondition = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private MetaDataSystem _metaData = default!;
+    [Dependency] private MobStateSystem _mobState = default!;
+    [Dependency] private SharedInteractionSystem _interaction = default!;
+    [Dependency] private SharedObjectivesSystem _objectives = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
+    [Dependency] private BloodBrotherSharedConditionSystem _sharedCondition = default!;
 
     private EntityQuery<ContainerManagerComponent> _containerQuery;
     private HashSet<Entity<TransformComponent>> _nearestEnts = new();

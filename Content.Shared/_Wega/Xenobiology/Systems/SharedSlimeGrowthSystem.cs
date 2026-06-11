@@ -5,7 +5,7 @@ namespace Content.Shared.Xenobiology.Systems;
 
 public abstract partial class SharedSlimeGrowthSystem : EntitySystem
 {
-    [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private IRobustRandom _random = default!;
 
     public static readonly Dictionary<SlimeType, List<(SlimeType type, float weight)>> MutationTable = new()
     {

@@ -4,9 +4,9 @@ using Content.Shared.Mind;
 
 namespace Content.Server.Objectives.Systems;
 
-public sealed class BloodBrotherSharedConditionSystem : EntitySystem
+public sealed partial class BloodBrotherSharedConditionSystem : EntitySystem
 {
-    [Dependency] private readonly SharedMindSystem _mind = default!;
+    [Dependency] private SharedMindSystem _mind = default!;
 
     public override void Initialize()
     {

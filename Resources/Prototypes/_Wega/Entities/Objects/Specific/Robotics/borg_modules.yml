@@ -55,8 +55,13 @@
         whitelist:
           tags:
           - Itemborg
-    - item: SprayBottle
-    - item: BorgDropper
+    - item: SprayBottleEthanol
+      hand:
+        emptyRepresentative: SprayBottle
+        emptyLabel: borg-slot-spray-empty
+        whitelist:
+          tags:
+          - Spray
     - hand:
         emptyRepresentative: OrganHumanHeart
         emptyLabel: borg-slot-biomaterials-empty
@@ -71,6 +76,7 @@
         whitelist:
           components:
           - SubdermalImplant
+          - Implanter
           tags:
           - SubdermalHeadImplant
           - Pill
@@ -134,6 +140,7 @@
         whitelist:
           tags:
           - ConstructionMaterial
+          - PowerCell
           - CableCoil
     - hand:
         emptyRepresentative: ScientistIcon # Corvax-Wega-Robot
@@ -165,7 +172,7 @@
         whitelist:
           tags:
           - SlimeRND
-    - item: BorgFireExtinguisher  
+    - item: BorgFireExtinguisher
     - item: KitchenKnife
     - hand:
         emptyRepresentative: BorgIconKitchenIcon
@@ -178,7 +185,7 @@
           - Clothing
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: slime-module }
-    
+
 - type: entity
   id: BorgModuleDNA
   parent: [ BaseBorgModuleScience, BaseProviderBorgModule ]
@@ -215,7 +222,7 @@
     - item: BorgGeneratorCleanSe
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: genetic-module }
-    
+
 - type: entity
   id: BorgModuleRobotics
   parent: [ BaseBorgModuleScience, BaseProviderBorgModule ]
@@ -244,6 +251,7 @@
         whitelist:
           components:
           - Flash
+          - HandheldGPS
           tags:
           - CableCoil
     - hand:
@@ -260,7 +268,7 @@
           components:
           - BorgModule
     - hand:
-        emptyRepresentative: LeftArmSyntheticPry
+        emptyRepresentative: ArmSyntheticPry
         emptyLabel: borg-slot-bodypart-empty
         whitelist:
           tags:
@@ -430,7 +438,7 @@
           - Ore
           - ArtifactFragment
           - MagmiteAlloy
-          - Gems 
+          - Gems
     - item: BorgOreBag
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: pickaxe-common-module }
@@ -454,6 +462,7 @@
         whitelist:
           tags:
           - ConstructionMaterial
+          - PowerCell
     - hand:
         emptyRepresentative: DoorElectronics
         emptyLabel: borg-slot-circuitboards-empty
@@ -510,7 +519,7 @@
     - item: SpeedModeDevice
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: speed }
-    
+
 - type: entity
   id: BorgModuleCommonMagBoots
   parent: [ BaseBorgModule, BaseProviderBorgModule ]
@@ -560,7 +569,7 @@
           - ChemDispensable
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: candy-module }
- 
+
 - type: entity
   id: BorgModuleCommonRepeir
   parent: [ BaseBorgModule, BaseProviderBorgModule ]
@@ -574,7 +583,6 @@
     - state: icon-repeir
   - type: ItemBorgModule
     hands:
-    - item: RepeirModeDevice
     - hand:
         emptyRepresentative: Nanopast
         emptyLabel: borg-slot-nanopasta-empty
@@ -582,9 +590,38 @@
           tags:
           - Nanopast
     - item: BorgGeneratorNanopast
+  - type: ComponentBorgModule
+    components:
+    - type: PassiveDamage
+      allowedStates:
+      - Alive
+      - Critical
+      - Dead
+      damage:
+        types:
+          Blunt: -0.25
+          Slash: -0.25
+          Piercing: -0.25
+          Heat: -0.25
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: repeir-module }
-    
+
+- type: entity
+  id: BorgModuleNightVison
+  parent: [ BaseBorgModule ]
+  name: night vison module
+  description: Everyone can heal your action!
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: generic
+    - state: icon-gps
+  - type: ComponentBorgModule
+    components:
+    - type: NaturalNightVision
+      tintColor: "#449544"
+
 - type: entity
   id: BorgModuleMusique
   parent: [ BaseBorgModule, BaseProviderBorgModule ]
@@ -619,7 +656,7 @@
           - Instrument
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: musical-module }
-    
+
 - type: entity
   id: BorgModuleCleaningCommon
   parent: [ BaseBorgModule, BaseProviderBorgModule ]
@@ -727,7 +764,6 @@
           components:
           - FitsInDispenser
     - item: BarSpoon
-    - item: Crowbar
     - item: DrinkGlass
       hand:
         emptyLabel: borg-slot-chemical-containers-empty
@@ -792,7 +828,6 @@
     hands:
     - item: ForensicScanner
     - item: DetectivePDABorg
-    - item: Crowbar
     - item: ForensicPad
       hand:
         emptyLabel: borg-slot-forensic-pad-empty
@@ -855,19 +890,25 @@
     - item: WeaponHandGranadeGun
     - hand:
         emptyLabel: borg-slot-granade-empty
-        emptyRepresentative: ModularGrenade
+        emptyRepresentative: GrenIcon
         whitelist:
           tags:
           - HandGrenade
           - Payload
           - VoiceTrigger
-    - item: BoxBorgGranade
+          components:
+          - PayloadCase
+          - PayloadTrigger
     - hand:
-        emptyLabel: borg-slot-cabeldet-empty
-        emptyRepresentative: CableDetStack
+        emptyLabel: borg-slot-granade-empty
+        emptyRepresentative: BolaIcon
         whitelist:
           tags:
-          - Payload
+          - CableCoil
+          - Bola
+          components:
+          - Ensnaring
+    - item: BoxBorgGranade
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: grenade-module }
 
@@ -947,7 +988,7 @@
         emptyRepresentative: WeaponBorgTurel
         whitelist:
           tags:
-          - Itemborg  
+          - Itemborg
     - item: TelescopicShieldBorg
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: lethal-rare }
@@ -993,7 +1034,7 @@
           - Ore
           - ArtifactFragment
           - MagmiteAlloy
-          - Gems 
+          - Gems
     - item: BorgOreBagOfHolding
     - item: BorgOreBagOfHolding
   - type: BorgModuleIcon
@@ -1069,6 +1110,7 @@
   - type: ItemBorgModule
     hands:
     - item: RCDCombatRecharging
+    - item: AccessConfiguratorAllAccses
     - item: BorgGeneratorMaterialRod
     - item: BorgGeneratorTile
     - item: BorgGeneratorMaterialSteal
@@ -1224,32 +1266,106 @@
     - item: BaseResearchAndDevelopmentPointSourceBorg
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: rnd-rare }
+
 ## Syndicate
 - type: entity
   id: BorgModuleChina
-  parent: [ BaseBorgModuleSyndicate, BaseProviderBorgModule, BaseSyndicateContraband ]
+  parent: [ BaseBorgModuleSyndicateAssault, BaseProviderBorgModule, BaseSyndicateContraband ]
   name: china cyborg module
   description: A weapons module that comes with a double energy sword.
   components:
   - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
     layers:
     - state: syndicate
-    - state: icon-syndicate
+    - state: icon-fugas
   - type: ItemBorgModule
     hands:
     - item: WeaponLauncherChinaLakeBorg
-    - hand:
-        emptyRepresentative: Nanopast
-        emptyLabel: borg-slot-nanopasta-empty
-        whitelist:
-          tags:
-          - Nanopast
-    - item: BorgGeneratorNanopast
     - item: PinpointerSyndicateNuclear
     - item: PinpointerUniversal # Corvax-Wega-Robot-add
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: china-module }
 
+- type: entity
+  id: BorgModuleSniper
+  parent: [ BaseBorgModuleSyndicateAssault, BaseProviderBorgModule, BaseSyndicateContraband ]
+  name: sniper cyborg module
+  description: A weapons module that comes with a double energy sword.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: syndicate
+    - state: icon-sniper
+  - type: ItemBorgModule
+    hands:
+    - item: BorgWeaponSniperHristovAdvanced
+    - item: WeaponPistolDesertEagleBorg
+    - item: PinpointerSyndicateNuclear
+    - item: PinpointerUniversal # Corvax-Wega-Robot-add
+  - type: BorgModuleIcon
+    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: sniper-module }
+
+- type: entity
+  id: BorgModuleCR20Advensed
+  parent: [ BaseBorgModuleSyndicateAssault, BaseProviderBorgModule, BaseSyndicateContraband ]
+  name: cr20 cyborg module
+  description: A weapons module that comes with a double energy sword.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: syndicate
+    - state: icon-cr20-gun
+  - type: ItemBorgModule
+    hands:
+    - item: WeaponSubMachineGunC20rROWAdvensed
+    - item: CyborgEnergySword
+    - item: PinpointerSyndicateNuclear
+    - item: PinpointerUniversal # Corvax-Wega-Robot-add
+  - type: BorgModuleIcon
+    icon: { sprite: Interface/Actions/actions_borg.rsi, state: syndicate-c20r-module }
+
+- type: entity
+  id: BorgModuleNightVisonSyndi
+  parent: [ BaseBorgModuleSyndicateAssault, BaseSyndicateContraband ]
+  name: nightvison cyborg module
+  description: A weapons module that comes with a double energy sword.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: syndicate
+    - state: icon-nightvison
+  - type: ComponentBorgModule
+    components:
+    - type: NaturalNightVision
+      tintColor: "#953c3c"
+      
+- type: entity
+  id: BorgModuleRepiarSyndi
+  parent: [ BaseBorgModuleSyndicateAssault, BaseSyndicateContraband ]
+  name: repiar cyborg module
+  description: A weapons module that comes with a double energy sword.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: syndicate
+    - state: icon-treatment-syndi
+  - type: ComponentBorgModule
+    components:
+    - type: PassiveDamage
+      allowedStates:
+      - Alive
+      - Critical
+      damage:
+        types:
+          Blunt: -1
+          Slash: -1
+          Piercing: -1
+          Heat: -1
 ## Xenoborg
 - type: entity
   id: BorgModuleXenoConstruction
@@ -1263,19 +1379,23 @@
   - type: ItemBorgModule
     hands:
     - hand:
-        emptyRepresentative: BorgModuleConstructionMaterialPlaceholder
+        emptyRepresentative: ConstrukAndCabel
         emptyLabel: borg-slot-construction-empty
         whitelist:
           tags:
           - ConstructionMaterial
+          - PowerCell
+          - CableCoil
     - hand:
-        emptyRepresentative: BorgModuleConstructionMaterialPlaceholder
+        emptyRepresentative: ConstrukAndCabel
         emptyLabel: borg-slot-construction-empty
         whitelist:
           tags:
           - ConstructionMaterial
+          - PowerCell
+          - CableCoil
     - hand:
-        emptyRepresentative: FloorTileItemSteel
+        emptyRepresentative: FloorTileItemXenoborg
         emptyLabel: borg-slot-tiles-empty
         whitelist:
           components:
@@ -1287,12 +1407,6 @@
         whitelist:
           components:
           - Circuitboard
-    - hand:
-        emptyRepresentative: CableApcStack10
-        emptyLabel: borg-slot-construction-empty
-        whitelist:
-          tags:
-          - CableCoil
     - hand:
         emptyRepresentative: SpaceHeaterFlatpack
         emptyLabel: borg-slot-flatpacks-empty
@@ -1339,9 +1453,44 @@
     - state: icon-repeir
   - type: ItemBorgModule
     hands:
-    - item: RepeirModeDeviceXenoborg
+    - hand:
+        emptyRepresentative: Nanopast
+        emptyLabel: borg-slot-nanopasta-empty
+        whitelist:
+          tags:
+          - Nanopast
+    - item: BorgGeneratorNanopast
+  - type: ComponentBorgModule
+    components:
+    - type: PassiveDamage
+      allowedStates:
+      - Alive
+      - Critical
+      - Dead
+      damage:
+        types:
+          Blunt: -0.5
+          Slash: -0.5
+          Piercing: -0.5
+          Heat: -0.5
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: repeir-xenoborg-module }
+
+- type: entity
+  id: BorgModuleNightVisoXenoborg
+  parent: [ BaseXenoborgModuleGeneric, BaseXenoborgContraband ]
+  name: nightvison cyborg module
+  description: A weapons module that comes with a double energy sword.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: xenoborg_generic
+    - state: icon-nightvison-xenoborg
+  - type: ComponentBorgModule
+    components:
+    - type: NaturalNightVision
+      tintColor: "#1e1e95"
 
 - type: entity
   id: XenoborgModuleCommonSpeed
@@ -1359,7 +1508,7 @@
     - item: SpeedModeDevice
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: speed_xenoborg }
-    
+
 - type: entity
   parent: [ BaseXenoborgModuleGeneric, BaseProviderBorgModule, BaseXenoborgContraband ]
   id: XenoborgModuleToolMother
@@ -1379,7 +1528,7 @@
     - item: RemoteSignallerAdvanced
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-tool-module }
-    
+
 - type: entity
   parent: [ BaseXenoborgModuleStealth, BaseProviderBorgModule, BaseXenoborgContraband ]
   id: XenoborgModuleEMP
@@ -1397,3 +1546,23 @@
     - item: XenoborgHoloprojectorEMPTrap
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: emp-module }
+
+  # Clockwork
+  
+- type: entity
+  id: BorgModuleClockwork
+  parent: [ BaseBorgModule, BaseProviderBorgModule, BaseSyndicateContraband ]
+  name: clockwork cyborg module
+  description: A module, made of brass by Rathvar cult members.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: clockwork
+  - type: ItemBorgModule
+    hands:
+    - item: JawsOfLife
+    - item: VeilCultClockworkSlab
+    - item: WeaponClockworkSwordBorg
+  - type: BorgModuleIcon
+    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: clockwork-module }

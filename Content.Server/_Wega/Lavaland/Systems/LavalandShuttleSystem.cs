@@ -17,11 +17,11 @@ namespace Content.Server.Lavaland.Systems;
 
 public sealed partial class LavalandShuttleSystem : EntitySystem
 {
-    [Dependency] private readonly IConfigurationManager _cfg = default!;
-    [Dependency] private readonly ShuttleSystem _shuttleSystem = default!;
-    [Dependency] private readonly DockingSystem _dockingSystem = default!;
-    [Dependency] private readonly MapLoaderSystem _loader = default!;
-    [Dependency] private readonly MapSystem _map = default!;
+    [Dependency] private IConfigurationManager _cfg = default!;
+    [Dependency] private ShuttleSystem _shuttleSystem = default!;
+    [Dependency] private DockingSystem _dockingSystem = default!;
+    [Dependency] private MapLoaderSystem _loader = default!;
+    [Dependency] private MapSystem _map = default!;
 
     private static readonly string DockStation = "DockLavalandStation";
     private static readonly string DockOutpost = "DockLavalandOutpost";

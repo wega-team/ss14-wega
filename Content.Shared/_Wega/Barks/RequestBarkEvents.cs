@@ -3,13 +3,13 @@ using Robust.Shared.Serialization;
 namespace Content.Shared.Speech.Synthesis;
 
 [Serializable, NetSerializable]
-public sealed class RequestPreviewBarkEvent(string barkVoiceId) : EntityEventArgs
+public sealed partial class RequestPreviewBarkEvent(string barkVoiceId) : EntityEventArgs
 {
     public string BarkVoiceId { get; } = barkVoiceId;
 }
 
 [Serializable, NetSerializable]
-public sealed class PlayBarkEvent : EntityEventArgs
+public sealed partial class PlayBarkEvent : EntityEventArgs
 {
     public string SoundPath { get; }
     public NetEntity SourceUid { get; }

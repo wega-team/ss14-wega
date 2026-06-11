@@ -93,8 +93,9 @@
         - WallLayer
         hard: false
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -177,8 +178,9 @@
     bodyType: Dynamic
   - type: Construct
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallic
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -256,8 +258,9 @@
           - MachineLayer
   - type: Appearance
   - type: Damageable
-    damageContainer: Inorganic
     damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: Inorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -307,8 +310,9 @@
         layer:
           - MachineLayer
   - type: Damageable
-    damageContainer: Inorganic
     damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: Inorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -362,8 +366,9 @@
           - MachineLayer
   - type: Appearance
   - type: Damageable
-    damageContainer: Inorganic
     damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: Inorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -408,8 +413,9 @@
   - type: BloodStructure
     fixture: fix1
   - type: Damageable
-    damageContainer: Inorganic
     damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: Inorganic
   - type: Destructible
     thresholds:
     - trigger:

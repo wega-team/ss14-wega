@@ -1,4 +1,5 @@
-using Content.Shared.Body.Systems;
+using Content.Shared.Body;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Interaction;
 
@@ -13,11 +14,22 @@ public sealed partial class BodyPartPresentCondition : InteractionCondition
     /// The identifier of the body part to be checked.
     /// </summary>
     [DataField]
-    public string BodyPart { get; private set; } = string.Empty;
+    public ProtoId<OrganCategoryPrototype> BodyPart { get; private set; }
 
     public override bool Check(EntityUid user, EntityUid target, IEntityManager entityManager)
     {
-        var bodySystem = entityManager.System<SharedBodySystem>();
-        return bodySystem.HasBodyPart(target, BodyPart);
+        if (!entityManager.TryGetComponent<BodyComponent>(target, out var bodyComp) || bodyComp.Organs == null)
+            return false;
+
+        foreach (var organ in bodyComp.Organs.ContainedEntities)
+        {
+            if (entityManager.TryGetComponent<OrganComponent>(organ, out var organComp)
+                && organComp.Category == BodyPart)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

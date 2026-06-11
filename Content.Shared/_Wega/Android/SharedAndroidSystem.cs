@@ -9,7 +9,7 @@ namespace Content.Shared.Android;
 
 public abstract partial class SharedAndroidSystem : EntitySystem
 {
-    [Dependency] private readonly ItemToggleSystem _toggle = default!;
+    [Dependency] private ItemToggleSystem _toggle = default!;
 
     public override void Initialize()
     {

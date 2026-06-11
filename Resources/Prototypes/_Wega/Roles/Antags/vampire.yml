@@ -7,7 +7,33 @@
   guides: [ Vampires ]
   requirements:
   - !type:OverallPlaytimeRequirement
-    time: 54000 # 15h # Corvax-RoleTime
+    time: 50h
+  - !type:DepartmentTimeRequirement
+    department: Security
+    time: 25h
+
+- type: antagSpecifier
+  parent: RestrictedAntag
+  id: Vampire
+  prefRoles:
+  - Vampire
+  allowNonHumans: true
+  multiAntagSetting: None
+  blacklist:
+    components:
+    - AntagImmune
+    - BibleUser
+    - Android
+    - Ipc
+  components:
+  - type: Vampire
+  - type: NpcFactionMember
+    factions:
+    - Vampire
+  mindRoles:
+  - MindRoleVampire
+  briefing:
+    sound: "/Audio/_Wega/Ambience/Antag/vampare_start.ogg"
 
 # Ability gear
 - type: startingGear

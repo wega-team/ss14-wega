@@ -136,10 +136,11 @@
   cost: 10000 # Corvax-Wega-Edit 5000
   recipeUnlocks:
   - ClothingBackpackElectropack
+# Corvax-Wega-start
   - SecurityPlating
   - ArmorBossterSuitModule
   - EMPShieldSuitModule
-
+# Corvax-Wega-End
 
 # Tier 2
 

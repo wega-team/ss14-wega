@@ -5,7 +5,7 @@ namespace Content.Shared.Genetics;
 
 [Serializable, NetSerializable]
 [Access(typeof(SharedDnaModifierSystem), typeof(EnzymeInfo))]
-public sealed class UniqueIdentifiersData
+public sealed partial class UniqueIdentifiersData
 {
     public string ID { get; set; } = string.Empty;
     public string[] HairColorR { get; set; } = Array.Empty<string>();

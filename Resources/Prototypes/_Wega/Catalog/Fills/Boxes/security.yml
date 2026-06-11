@@ -1,4 +1,3 @@
-
 - type: entity
   name: tape recorder box
   parent: BoxCardboard
@@ -22,24 +21,24 @@
       - state: box_security
       - state: recorder
 
-- type: entity
-  id: ServerWiretappingKit
-  parent: BoxCardboard
-  name: server wiretapping kit
-  components:
-    - type: Sprite
-      layers:
-      - state: box_security # Corvax-Resprite
-    - type: StorageFill
-      contents:
-        - id: WiretappingServerAlpha
-          amount: 1
-        - id: WiretappingServerBeta
-          amount: 1
-        - id: WiretappingServerCharlie
-          amount: 1
-        - id: WiretappingServerDelta
-          amount: 1
+# - type: entity
+  # id: ServerWiretappingKit
+  # parent: BoxCardboard
+  # name: server wiretapping kit
+  # components:
+    # - type: Sprite
+      # layers:
+      # - state: box_security # Corvax-Resprite
+    # - type: StorageFill
+      # contents:
+        # - id: WiretappingServerAlpha
+          # amount: 1
+        # - id: WiretappingServerBeta
+          # amount: 1
+        # - id: WiretappingServerCharlie
+          # amount: 1
+        # - id: WiretappingServerDelta
+          # amount: 1
           
 - type: entity
   name: box with bodycam
@@ -52,7 +51,7 @@
       - state: box_of_doom
   - type: StorageFill
     contents:
-      - id: WiretappingCameraAlpha
+      - id: WiretappingCameraAlphaOff
         amount: 9
         
 - type: entity

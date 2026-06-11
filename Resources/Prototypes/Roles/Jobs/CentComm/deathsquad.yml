@@ -7,14 +7,13 @@
   startingGear: DeathSquadGear
   icon: "JobIconDeathSquad"
   supervisors: job-supervisors-centcom
-  canBeAntag: false
   accessGroups:
   - AllAccess
   access:
   - CentralCommand
   special:
   - !type:AddImplantSpecial
-    implants: [ MindShieldImplant, DeathRattleImplantCentcomm ]
+    implants: [ MindShieldImplant, DeathRattleImplantCentcomm, BluespaceLifelineImplant ] # Corvax-Wega-Add
 
 - type: startingGear
   id: DeathSquadGear

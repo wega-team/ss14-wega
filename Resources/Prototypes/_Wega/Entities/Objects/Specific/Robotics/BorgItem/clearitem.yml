@@ -73,13 +73,11 @@
     - type: Absorbent
       pickupAmount: 100
     - type: SolutionRegeneration
-      solution: absorbed
       generated:
         reagents:
         - ReagentId: Water
           Quantity: 5
     - type: SolutionPurge
-      solution: absorbed
       preserve:
       - Water
       quantity: 10
@@ -125,9 +123,9 @@
         ballistic-ammo: !type:Container
     - type: BallisticAmmoProvider
       capacity: 5
-      proto: GrenadeCleanade
+      proto: BulletGrenadeCleanade
       cycleable: false
     - type: BallisticAmmoSelfRefiller
-      autoRefillRate: 5
+      autoRefillRate: 15
       affectedByEmp: true
     - type: AmmoCounter

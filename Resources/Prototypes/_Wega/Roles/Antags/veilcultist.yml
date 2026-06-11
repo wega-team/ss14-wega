@@ -1,0 +1,53 @@
+- type: antag
+  id: VeilCultist
+  name: roles-antag-veil-cultist-name
+  antagonist: true
+  setPreference: true
+  objective: roles-antag-veil-cultist-objective
+  guides: [ VeilCult ]
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 50h
+  - !type:DepartmentTimeRequirement
+    department: Security
+    time: 25h
+
+- type: antagSpecifier
+  parent: RestrictedAntag
+  id: VeilCultist
+  prefRoles:
+  - VeilCultist
+  allowNonHumans: true
+  multiAntagSetting: None
+  startingGear: HeadVeilCultistGear
+  blacklist:
+    components:
+    - AntagImmune
+    - BibleUser
+  components:
+  - type: VeilCultist
+  - type: MindLink
+    channels: ["MindVeilCult"]
+  - type: NpcFactionMember
+    factions:
+    - VeilCult
+  - type: FriendlyFaction
+    faction: VeilCult
+  mindRoles:
+  - MindRoleVeilCultist
+  briefing:
+    sound: "/Audio/_Wega/Ambience/Antag/veilcult_start.ogg"
+
+- type: startingGear
+  id: HeadVeilCultistGear
+  storage:
+    back:
+    - SheetBrass10
+    - VeilCultClockworkSlab
+
+# Ability gears
+- type: startingGear
+  id: VeilCultMidasTouchGear
+  inhand:
+    - VeilCultMidasTouch
+

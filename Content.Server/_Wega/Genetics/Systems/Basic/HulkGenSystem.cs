@@ -2,7 +2,7 @@ using System.Linq;
 using Content.Server.Destructible;
 using Content.Server.Polymorph.Systems;
 using Content.Shared.Actions;
-using Content.Shared.Body.Components;
+using Content.Shared.Body;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Genetics;
@@ -16,16 +16,16 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Server.Genetics.System;
 
-public sealed class HulkGenSystem : EntitySystem
+public sealed partial class HulkGenSystem : EntitySystem
 {
-    [Dependency] private readonly SharedActionsSystem _action = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly DamageableSystem _damage = default!;
-    [Dependency] private readonly DnaModifierSystem _dnaModifier = default!;
-    [Dependency] private readonly PhysicsSystem _physics = default!;
-    [Dependency] private readonly PolymorphSystem _polymorph = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly SharedStunSystem _stun = default!;
+    [Dependency] private SharedActionsSystem _action = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private DamageableSystem _damage = default!;
+    [Dependency] private DnaModifierSystem _dnaModifier = default!;
+    [Dependency] private PhysicsSystem _physics = default!;
+    [Dependency] private PolymorphSystem _polymorph = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private SharedStunSystem _stun = default!;
 
     private static readonly ProtoId<StructuralEnzymesPrototype> HulkGen = "GeneticsHulkBasic";
 
@@ -52,7 +52,7 @@ public sealed class HulkGenSystem : EntitySystem
     {
         args.Handled = true;
         if (!TryComp<DnaModifierComponent>(ent, out var dnaModifier) || dnaModifier.EnzymesPrototypes == null
-            || !TryComp<HumanoidAppearanceComponent>(ent, out var humanoid))
+            || !TryComp<HumanoidProfileComponent>(ent, out var humanoid))
             return;
 
         foreach (var enzymeInfo in dnaModifier.EnzymesPrototypes)
@@ -72,7 +72,7 @@ public sealed class HulkGenSystem : EntitySystem
         _polymorph.PolymorphEntity(ent, polymorph);
     }
 
-    private bool CheckSpeciesEntity(HumanoidAppearanceComponent humanoid)
+    private bool CheckSpeciesEntity(HumanoidProfileComponent humanoid)
     {
         var altSpecies = new[]
         {

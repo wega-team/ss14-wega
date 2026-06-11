@@ -7,22 +7,22 @@ using Robust.Shared.Serialization;
 namespace Content.Shared.Blood.Cult;
 
 // Events
-public sealed class GodCalledEvent : EntityEventArgs
+public sealed partial class BloodGodCalledEvent : EntityEventArgs
 {
 }
 
-public sealed class RitualConductedEvent : EntityEventArgs
+public sealed partial class BloodRitualConductedEvent : EntityEventArgs
 {
 }
 
 [Serializable, NetSerializable]
-public sealed class BloodMagicSelectSpellMessage(EntProtoId spell) : EuiMessageBase
+public sealed partial class BloodMagicSelectSpellMessage(EntProtoId spell) : EuiMessageBase
 {
     public readonly EntProtoId Spell = spell;
 }
 
 [Serializable, NetSerializable]
-public sealed class BloodRitesSelectRitesMessage : BoundUserInterfaceMessage
+public sealed partial class BloodRitesSelectRitesMessage : BoundUserInterfaceMessage
 {
     public EntProtoId Rites { get; }
 
@@ -33,7 +33,7 @@ public sealed class BloodRitesSelectRitesMessage : BoundUserInterfaceMessage
 }
 
 [Serializable, NetSerializable]
-public sealed class BloodConstructSelectMessage : BoundUserInterfaceMessage
+public sealed partial class BloodConstructSelectMessage : BoundUserInterfaceMessage
 {
     public EntProtoId Construct { get; }
 
@@ -44,7 +44,7 @@ public sealed class BloodConstructSelectMessage : BoundUserInterfaceMessage
 }
 
 [Serializable, NetSerializable]
-public sealed class BloodStructureSelectMessage : BoundUserInterfaceMessage
+public sealed partial class BloodStructureSelectMessage : BoundUserInterfaceMessage
 {
     public EntProtoId Item { get; }
 
@@ -55,7 +55,7 @@ public sealed class BloodStructureSelectMessage : BoundUserInterfaceMessage
 }
 
 [Serializable, NetSerializable]
-public sealed class SelectBloodRuneMessage : BoundUserInterfaceMessage
+public sealed partial class SelectBloodRuneMessage : BoundUserInterfaceMessage
 {
     public EntProtoId RuneProtoId { get; }
 
@@ -66,7 +66,7 @@ public sealed class SelectBloodRuneMessage : BoundUserInterfaceMessage
 }
 
 [Serializable, NetSerializable]
-public sealed class EmpoweringRuneSelectSpellMessage : BoundUserInterfaceMessage
+public sealed partial class EmpoweringRuneSelectSpellMessage : BoundUserInterfaceMessage
 {
     public EntProtoId Spell { get; }
 
@@ -77,7 +77,7 @@ public sealed class EmpoweringRuneSelectSpellMessage : BoundUserInterfaceMessage
 }
 
 [Serializable, NetSerializable]
-public sealed class SummoningRuneSelectCultistMessage : BoundUserInterfaceMessage
+public sealed partial class SummoningRuneSelectCultistMessage : BoundUserInterfaceMessage
 {
     public NetEntity CultistUid { get; }
 

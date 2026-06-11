@@ -12,16 +12,16 @@ using Content.Client.Wega.Ghost.Respawn; // Corvax-Wega-GhostRespawn
 
 namespace Content.Client.Ghost
 {
-    public sealed class GhostSystem : SharedGhostSystem
+    public sealed partial class GhostSystem : SharedGhostSystem
     {
-        [Dependency] private readonly IClientConsoleHost _console = default!;
-        [Dependency] private readonly IPlayerManager _playerManager = default!;
-        [Dependency] private readonly SharedActionsSystem _actions = default!;
-        [Dependency] private readonly PointLightSystem _pointLightSystem = default!;
-        [Dependency] private readonly ContentEyeSystem _contentEye = default!;
-        [Dependency] private readonly SpriteSystem _sprite = default!;
-        [Dependency] private readonly IUserInterfaceManager _uiManager = default!; // Corvax-Wega-GhostRespawn
-        [Dependency] private readonly GhostRespawnSystem _respawn = default!; // Corvax-Wega-GhostRespawn
+        [Dependency] private IClientConsoleHost _console = default!;
+        [Dependency] private IPlayerManager _playerManager = default!;
+        [Dependency] private SharedActionsSystem _actions = default!;
+        [Dependency] private PointLightSystem _pointLightSystem = default!;
+        [Dependency] private ContentEyeSystem _contentEye = default!;
+        [Dependency] private SpriteSystem _sprite = default!;
+        [Dependency] private IUserInterfaceManager _uiManager = default!; // Corvax-Wega-GhostRespawn
+        [Dependency] private GhostRespawnSystem _respawn = default!; // Corvax-Wega-GhostRespawn
 
         public int AvailableGhostRoleCount { get; private set; }
 
@@ -50,7 +50,7 @@ namespace Content.Client.Ghost
         // Corvax-Wega-GhostRespawn-start
         public override void Update(float frameTime)
         {
-            foreach (var ghost in EntityManager.EntityQuery<GhostComponent, MindComponent>(true))
+            foreach (var ghost in EntityQuery<GhostComponent, MindComponent>(true))
             {
                 var ui = _uiManager.GetActiveUIWidgetOrNull<GhostGui>();
                 if (ui != null && Player != null)

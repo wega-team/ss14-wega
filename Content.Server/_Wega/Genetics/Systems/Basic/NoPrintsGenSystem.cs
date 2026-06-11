@@ -3,7 +3,7 @@ using Content.Shared.Genetics;
 
 namespace Content.Server.Genetics.System;
 
-public sealed class NoPrintsGenSystem : EntitySystem
+public sealed partial class NoPrintsGenSystem : EntitySystem
 {
     public override void Initialize()
     {

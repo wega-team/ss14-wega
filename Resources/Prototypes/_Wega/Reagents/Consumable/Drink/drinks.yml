@@ -12,7 +12,7 @@
     state: icon
   metamorphicChangeColor: false
   metabolisms:
-    Drink:
+    Digestion:
       effects:
       - !type:SatiateThirst
         factor: 2
@@ -31,7 +31,7 @@
     state: icon
   metamorphicChangeColor: false
   metabolisms:
-    Drink:
+    Digestion:
       effects:
       - !type:SatiateThirst
         factor: 2
@@ -50,7 +50,7 @@
     state: icon
   metamorphicChangeColor: false
   metabolisms:
-    Drink:
+    Digestion:
       effects:
       - !type:SatiateThirst
         factor: 4
@@ -69,7 +69,7 @@
     state: icon
   metamorphicChangeColor: false
   metabolisms:
-    Drink:
+    Digestion:
       effects:
       - !type:SatiateThirst
         factor: 3
@@ -88,7 +88,7 @@
     state: icon
   metamorphicChangeColor: false
   metabolisms:
-    Drink:
+    Digestion:
       effects:
       - !type:SatiateThirst
         factor: 2
@@ -107,7 +107,7 @@
     state: icon
   metamorphicChangeColor: false
   metabolisms:
-    Drink:
+    Digestion:
       effects:
       - !type:SatiateThirst
         factor: 2
@@ -126,7 +126,7 @@
     state: icon
   metamorphicChangeColor: false
   metabolisms:
-    Drink:
+    Digestion:
       effects:
       - !type:SatiateThirst
         factor: 2
@@ -145,7 +145,7 @@
     state: icon
   metamorphicChangeColor: false
   metabolisms:
-    Drink:
+    Digestion:
       effects:
       - !type:SatiateThirst
         factor: 2
@@ -164,7 +164,7 @@
     state: icon
   metamorphicChangeColor: false
   metabolisms:
-    Drink:
+    Digestion:
       effects:
       - !type:SatiateThirst
         factor: 2
@@ -183,7 +183,7 @@
     state: icon
   metamorphicChangeColor: false
   metabolisms:
-    Drink:
+    Digestion:
       effects:
       - !type:SatiateThirst
         factor: 2
@@ -202,11 +202,11 @@
     state: icon
   metamorphicChangeColor: false
   metabolisms:
-    Drink:
+    Digestion:
       effects:
       - !type:SatiateThirst
         factor: 2
-        
+
 - type: reagent
   id: MilkshakeBerry
   parent: BaseJuice
@@ -221,11 +221,11 @@
     state: icon
   metamorphicChangeColor: false
   metabolisms:
-    Drink:
+    Digestion:
       effects:
       - !type:SatiateThirst
         factor: 2
-        
+
 - type: reagent
   id: MilkshakeBanana
   parent: BaseJuice
@@ -240,7 +240,7 @@
     state: icon
   metamorphicChangeColor: false
   metabolisms:
-    Drink:
+    Digestion:
       effects:
       - !type:SatiateThirst
         factor: 2
@@ -259,7 +259,7 @@
     state: icon
   metamorphicChangeColor: false
   metabolisms:
-    Drink:
+    Digestion:
       effects:
       - !type:SatiateThirst
         factor: 2
@@ -278,7 +278,7 @@
     state: icon
   metamorphicChangeColor: false
   metabolisms:
-    Drink:
+    Digestion:
       effects:
       - !type:SatiateThirst
         factor: 2
@@ -294,14 +294,14 @@
   color: "#ffb8ee"
   metamorphicSprite:
     sprite: _Wega/Objects/Consumable/Drinks/catmelon_juice.rsi
-    state: icon 
+    state: icon
   metamorphicChangeColor: false
   metabolisms:
-    Drink:
+    Digestion:
       effects:
       - !type:SatiateThirst
         factor: 2
-    Narcotic:
+    Bloodstream:
       effects:
       - !type:PopupMessage
         type: Local

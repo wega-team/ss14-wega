@@ -1,5 +1,5 @@
+using Content.Shared.Body;
 using Content.Shared.Humanoid;
-using Content.Shared.Humanoid.Markings;
 
 namespace Content.Shared.Interaction;
 
@@ -11,17 +11,20 @@ namespace Content.Shared.Interaction;
 public sealed partial class RemoveMarkingEffect : InteractionEffect
 {
     /// <summary>
-    /// Categories of labels that should be removed. <see cref="MarkingCategories"/>
+    /// Layers of labels that should be removed. <see cref="HumanoidVisualLayers"/>
     /// </summary>
     [DataField(required: true)]
-    public MarkingCategories Categories { get; private set; }
+    public HumanoidVisualLayers Layer { get; private set; }
 
     public override void Apply(EntityUid user, EntityUid target, IEntityManager entityManager)
     {
-        if (!entityManager.TryGetComponent<HumanoidAppearanceComponent>(target, out var humanoid))
+        var visualSystem = entityManager.System<SharedVisualBodySystem>();
+        if (!visualSystem.TryGatherMarkingsData(target, null, out _, out _, out var applied))
             return;
 
-        humanoid.MarkingSet.RemoveCategory(Categories);
-        entityManager.Dirty(target, humanoid);
+        foreach (var organMarkings in applied.Values)
+            organMarkings.Remove(Layer);
+
+        visualSystem.ApplyMarkings(target, applied);
     }
 }

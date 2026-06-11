@@ -10,7 +10,7 @@ namespace Content.Client._Wega.BloodCult.Ui;
 [GenerateTypedNameReferences]
 public sealed partial class SummoningRuneMenu : FancyWindow
 {
-    [Dependency] private readonly IEntityManager _entityManager = default!;
+    [Dependency] private IEntityManager _entityManager = default!;
 
     public event Action<NetEntity>? OnCultistSelected;
 

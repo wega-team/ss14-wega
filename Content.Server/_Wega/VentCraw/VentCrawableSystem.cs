@@ -1,5 +1,6 @@
 using System.Linq;
 using Content.Server.NodeContainer.Nodes;
+using Content.Shared.Body;
 using Content.Shared.Body.Components;
 using Content.Shared.Item;
 using Content.Shared.Movement.Events;
@@ -16,14 +17,14 @@ using Robust.Shared.Timing;
 
 namespace Content.Server.VentCraw;
 
-public sealed class VentCrawableSystem : EntitySystem
+public sealed partial class VentCrawableSystem : EntitySystem
 {
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
-    [Dependency] private readonly SharedAudioSystem _audioSystem = default!;
-    [Dependency] private readonly SharedContainerSystem _containerSystem = default!;
-    [Dependency] private readonly SharedPhysicsSystem _physicsSystem = default!;
-    [Dependency] private readonly SharedTransformSystem _xformSystem = default!;
-    [Dependency] private readonly VentCrawTubeSystem _ventCrawTubeSystem = default!;
+    [Dependency] private IGameTiming _gameTiming = default!;
+    [Dependency] private SharedAudioSystem _audioSystem = default!;
+    [Dependency] private SharedContainerSystem _containerSystem = default!;
+    [Dependency] private SharedPhysicsSystem _physicsSystem = default!;
+    [Dependency] private SharedTransformSystem _xformSystem = default!;
+    [Dependency] private VentCrawTubeSystem _ventCrawTubeSystem = default!;
 
     public static readonly TimeSpan CrawlDelay = TimeSpan.FromSeconds(0.5);
 
@@ -60,7 +61,7 @@ public sealed class VentCrawableSystem : EntitySystem
 
                 if (nextTube != null)
                 {
-                    if (!EntityManager.EntityExists(holder.CurrentTube))
+                    if (!Exists(holder.CurrentTube))
                     {
                         ExitVentCraws(uid, holder);
                         continue;
@@ -148,7 +149,7 @@ public sealed class VentCrawableSystem : EntitySystem
                     _audioSystem.PlayPvs(holder.CrawlSound, uid);
                 }
 
-                if (EntityManager.EntityExists(holder.NextTube.Value))
+                if (Exists(holder.NextTube.Value))
                 {
                     var success = EnterTube(uid, holder.NextTube.Value, holder);
                     if (!success)
@@ -248,7 +249,7 @@ public sealed class VentCrawableSystem : EntitySystem
                 _physicsSystem.WakeBody(entity, body: physics);
         }
 
-        EntityManager.DeleteEntity(uid);
+        Del(uid);
     }
 
     public bool TryInsert(EntityUid uid, EntityUid toInsert, VentCrawHolderComponent? holder = null)
@@ -283,7 +284,7 @@ public sealed class VentCrawableSystem : EntitySystem
 
     private void OnMoveInput(EntityUid uid, VentCrawHolderComponent component, ref MoveInputEvent args)
     {
-        if (!EntityManager.EntityExists(component.CurrentTube))
+        if (!Exists(component.CurrentTube))
         {
             ExitVentCraws(uid, component);
             return;

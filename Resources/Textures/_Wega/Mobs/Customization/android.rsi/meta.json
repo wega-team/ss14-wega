@@ -1,7 +1,7 @@
 ﻿{
     "version": 1,
     "license": "CC-BY-SA-3.0",
-    "copyright": "Made with love by Misha_Unity and Melissandra >//<",
+    "copyright": "Made with love by Misha_Unity and Melissandra >//<; Syth sprites are made by Admiral Eisenberger",
     "size": {
         "x": 32,
         "y": 32
@@ -128,11 +128,67 @@
             "directions": 4
         },
         {
+            "name": "l_hand_scrap",
+            "directions": 4
+        },
+        {
+            "name": "r_hand_scrap",
+            "directions": 4
+        },
+        {
             "name": "l_leg_scrap",
             "directions": 4
         },
         {
             "name": "r_leg_scrap",
+            "directions": 4
+        },
+        {
+            "name": "l_foot_scrap",
+            "directions": 4
+        },
+        {
+            "name": "r_foot_scrap",
+            "directions": 4
+        },
+        {
+            "name": "body_f_synt",
+            "directions": 4
+        },
+        {
+            "name": "body_m_synt",
+            "directions": 4
+        },
+        {
+            "name": "l_arm_synt",
+            "directions": 4
+        },
+        {
+            "name": "r_arm_synt",
+            "directions": 4
+        },
+        {
+            "name": "l_hand_synt",
+            "directions": 4
+        },
+        {
+            "name": "r_hand_synt",
+            "directions": 4
+        },
+        {
+            "name": "l_leg_synt",
+            "directions": 4
+        },
+        {
+            "name": "r_leg_synt",
+            "directions": 4
+        },
+        {
+            "name": "l_foot_synt",
+            "directions": 4
+        },
+        {
+            "name": "r_foot_synt",
             "directions": 4
         }
     ]

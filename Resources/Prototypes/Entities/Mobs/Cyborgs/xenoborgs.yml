@@ -22,7 +22,7 @@
       map: ["light"]
       visible: false
   - type: BorgChassis
-    maxModules: 4 #Corvax-Wega-add
+    maxModules: 5 #Corvax-Wega-add
     hasMindState: xenoborg_engi_e
     noMindState: xenoborg_engi_e_r
     moduleWhitelist:
@@ -85,7 +85,7 @@
       map: ["light"]
       visible: false
   - type: BorgChassis
-    maxModules: 4
+    maxModules: 5 # Corvax-Wega-Change
     hasMindState: xenoborg_heavy_e
     noMindState: xenoborg_heavy_e_r
     moduleWhitelist:
@@ -97,6 +97,7 @@
     baseSprintSpeed : 2.2
   - type: MovementAlwaysTouching # it flies in space by pure will power
   - type: FlashImmunity
+    showInExamine: false
   - type: MobThresholds # tankier
     thresholds:
       0: Alive
@@ -186,8 +187,9 @@
       collection: FootstepHoverXenoborg
   - type: MovementAlwaysTouching # it flies in space with tiny thrusters
   - type: FlashImmunity
+    showInExamine: false
   - type: BorgChassis
-    maxModules: 4
+    maxModules: 6 # Corvax-Wega-Edit 4 - > 6
     hasMindState: xenoborg_scout_e
     noMindState: xenoborg_scout_e_r
     moduleWhitelist:
@@ -206,6 +208,7 @@
       - XenoborgModuleTool
       - XenoborgModuleSword
       - XenoborgModuleSpaceMovement
+      - XenoborgModuleJump # Corvax-Wega-add
   - type: ItemSlots
     slots:
       cell_slot:
@@ -263,7 +266,7 @@
     footstepSoundCollection:
       collection: FootstepHoverXenoborg
   - type: BorgChassis
-    maxModules: 4 #Corvax-Wega-add
+    maxModules: 5 #Corvax-Wega-add 
     hasMindState: xenoborg_stealth_e
     noMindState: xenoborg_stealth_e_r
     moduleWhitelist:

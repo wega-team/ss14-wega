@@ -15,11 +15,11 @@ using Content.Shared.Damage.Prototypes;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Database;
 using Content.Shared.Disease.Components; // Corvax-Wega-GhostBar
-using Content.Shared.Examine;
 using Content.Shared.Eye;
 using Content.Shared.FixedPoint;
 using Content.Shared.Follower;
 using Content.Shared.Ghost;
+using Content.Shared.GhostTypes;
 using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
@@ -44,7 +44,6 @@ using Robust.Shared.Physics.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
-using Robust.Shared.Timing;
 using Content.Shared.Traits; // Corvax-Wega-GhostBar
 using Content.Shared.Hands.Components; // Corvax-Wega-GhostBar
 using Content.Shared.Hands.EntitySystems; // Corvax-Wega-GhostBar
@@ -52,41 +51,41 @@ using Content.Shared.Whitelist; // Corvax-Wega-GhostBar
 
 namespace Content.Server.Ghost
 {
-    public sealed class GhostSystem : SharedGhostSystem
+    public sealed partial class GhostSystem : SharedGhostSystem
     {
-        [Dependency] private readonly SharedActionsSystem _actions = default!;
-        [Dependency] private readonly IAdminLogManager _adminLog = default!;
-        [Dependency] private readonly SharedEyeSystem _eye = default!;
-        [Dependency] private readonly FollowerSystem _followerSystem = default!;
-        [Dependency] private readonly IGameTiming _gameTiming = default!;
-        [Dependency] private readonly JobSystem _jobs = default!;
-        [Dependency] private readonly EntityLookupSystem _lookup = default!;
-        [Dependency] private readonly MindSystem _minds = default!;
-        [Dependency] private readonly MobStateSystem _mobState = default!;
-        [Dependency] private readonly SharedPhysicsSystem _physics = default!;
-        [Dependency] private readonly ISharedPlayerManager _player = default!;
-        [Dependency] private readonly TransformSystem _transformSystem = default!;
-        [Dependency] private readonly VisibilitySystem _visibilitySystem = default!;
-        [Dependency] private readonly MetaDataSystem _metaData = default!;
-        [Dependency] private readonly MobThresholdSystem _mobThresholdSystem = default!;
-        [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-        [Dependency] private readonly IConfigurationManager _configurationManager = default!;
-        [Dependency] private readonly IChatManager _chatManager = default!;
-        [Dependency] private readonly SharedMindSystem _mind = default!;
-        [Dependency] private readonly GameTicker _gameTicker = default!;
-        [Dependency] private readonly DamageableSystem _damageable = default!;
-        [Dependency] private readonly SharedPopupSystem _popup = default!;
-        [Dependency] private readonly IRobustRandom _random = default!;
-        [Dependency] private readonly TagSystem _tag = default!;
-        [Dependency] private readonly NameModifierSystem _nameMod = default!;
-        [Dependency] private readonly IEntityManager _entityManager = default!; // Corvax-Wega-GhostBar
-        [Dependency] private readonly StationSpawningSystem _spawning = default!; // Corvax-Wega-GhostBar
-        [Dependency] private readonly LoadoutSystem _loadout = default!; // Corvax-Wega-GhostBar
-		[Dependency] private readonly SharedHandsSystem _sharedHandsSystem = default!; // Corvax-Wega-GhostBar
-        [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!; // Corvax-Wega-GhostBar
+        [Dependency] private SharedActionsSystem _actions = default!;
+        [Dependency] private IAdminLogManager _adminLog = default!;
+        [Dependency] private SharedEyeSystem _eye = default!;
+        [Dependency] private FollowerSystem _followerSystem = default!;
+        [Dependency] private JobSystem _jobs = default!;
+        [Dependency] private EntityLookupSystem _lookup = default!;
+        [Dependency] private MindSystem _minds = default!;
+        [Dependency] private MobStateSystem _mobState = default!;
+        [Dependency] private SharedPhysicsSystem _physics = default!;
+        [Dependency] private ISharedPlayerManager _player = default!;
+        [Dependency] private TransformSystem _transformSystem = default!;
+        [Dependency] private VisibilitySystem _visibilitySystem = default!;
+        [Dependency] private MetaDataSystem _metaData = default!;
+        [Dependency] private MobThresholdSystem _mobThresholdSystem = default!;
+        [Dependency] private IPrototypeManager _prototypeManager = default!;
+        [Dependency] private IConfigurationManager _configurationManager = default!;
+        [Dependency] private IChatManager _chatManager = default!;
+        [Dependency] private SharedMindSystem _mind = default!;
+        [Dependency] private GameTicker _gameTicker = default!;
+        [Dependency] private DamageableSystem _damageable = default!;
+        [Dependency] private SharedPopupSystem _popup = default!;
+        [Dependency] private IRobustRandom _random = default!;
+        [Dependency] private TagSystem _tag = default!;
+        [Dependency] private NameModifierSystem _nameMod = default!;
+        [Dependency] private GhostSpriteStateSystem _ghostState = default!;
+        [Dependency] private IEntityManager _entityManager = default!; // Corvax-Wega-GhostBar
+        [Dependency] private StationSpawningSystem _spawning = default!; // Corvax-Wega-GhostBar
+        [Dependency] private LoadoutSystem _loadout = default!; // Corvax-Wega-GhostBar
+        [Dependency] private SharedHandsSystem _sharedHandsSystem = default!; // Corvax-Wega-GhostBar
+        [Dependency] private EntityWhitelistSystem _whitelistSystem = default!; // Corvax-Wega-GhostBar
 
-        private EntityQuery<GhostComponent> _ghostQuery;
-        private EntityQuery<PhysicsComponent> _physicsQuery;
+        [Dependency] private EntityQuery<GhostComponent> _ghostQuery = default!;
+        [Dependency] private EntityQuery<PhysicsComponent> _physicsQuery = default!;
 
         private static readonly ProtoId<TagPrototype> AllowGhostShownByEventTag = "AllowGhostShownByEvent";
         private static readonly ProtoId<DamageTypePrototype> AsphyxiationDamageType = "Asphyxiation";
@@ -95,14 +94,9 @@ namespace Content.Server.Ghost
         {
             base.Initialize();
 
-            _ghostQuery = GetEntityQuery<GhostComponent>();
-            _physicsQuery = GetEntityQuery<PhysicsComponent>();
-
             SubscribeLocalEvent<GhostComponent, ComponentStartup>(OnGhostStartup);
             SubscribeLocalEvent<GhostComponent, MapInitEvent>(OnMapInit);
             SubscribeLocalEvent<GhostComponent, ComponentShutdown>(OnGhostShutdown);
-
-            SubscribeLocalEvent<GhostComponent, ExaminedEvent>(OnGhostExamine);
 
             SubscribeLocalEvent<GhostComponent, MindRemovedMessage>(OnMindRemovedMessage);
             SubscribeLocalEvent<GhostComponent, MindUnvisitedMessage>(OnMindUnvisitedMessage);
@@ -220,8 +214,10 @@ namespace Content.Server.Ghost
             }
 
             _eye.RefreshVisibilityMask(uid);
-            var time = _gameTiming.CurTime;
+            var time = _gameTiming.RealTime;
             component.TimeOfDeath = time;
+
+            Dirty(uid, component);
         }
 
         private void OnGhostShutdown(EntityUid uid, GhostComponent component, ComponentShutdown args)
@@ -245,7 +241,7 @@ namespace Content.Server.Ghost
 
         private void OnMapInit(EntityUid uid, GhostComponent component, MapInitEvent args)
         {
-            if (HasComp<HumanoidAppearanceComponent>(uid)) // Corvax-Wega-GhostBar
+            if (HasComp<HumanoidProfileComponent>(uid)) // Corvax-Wega-GhostBar
                 return; // Corvax-Wega-GhostBar
 
             _actions.AddAction(uid, ref component.BooActionEntity, component.BooAction);
@@ -254,16 +250,6 @@ namespace Content.Server.Ghost
             _actions.AddAction(uid, ref component.ToggleFoVActionEntity, component.ToggleFoVAction);
             _actions.AddAction(uid, ref component.ToggleGhostsActionEntity, component.ToggleGhostsAction);
             _actions.AddAction(uid, ref component.ToggleGhostBarActionEntity, component.ToggleGhostBarAction); // Corvax-Wega-GhostBar
-        }
-
-        private void OnGhostExamine(EntityUid uid, GhostComponent component, ExaminedEvent args)
-        {
-            var timeSinceDeath = _gameTiming.RealTime.Subtract(component.TimeOfDeath);
-            var deathTimeInfo = timeSinceDeath.Minutes > 0
-                ? Loc.GetString("comp-ghost-examine-time-minutes", ("minutes", timeSinceDeath.Minutes))
-                : Loc.GetString("comp-ghost-examine-time-seconds", ("seconds", timeSinceDeath.Seconds));
-
-            args.PushMarkup(deathTimeInfo);
         }
 
         #region Ghost Deletion
@@ -360,7 +346,7 @@ namespace Content.Server.Ghost
 
         private void WarpTo(EntityUid uid, EntityUid target)
         {
-            if (HasComp<HumanoidAppearanceComponent>(uid)) // Corvax-Wega-GhostBar
+            if (HasComp<HumanoidProfileComponent>(uid)) // Corvax-Wega-GhostBar
                 return; // Corvax-Wega-GhostBar
 
             _adminLog.Add(LogType.GhostWarp, $"{ToPrettyString(uid)} ghost warped to {ToPrettyString(target)}");
@@ -505,6 +491,11 @@ namespace Content.Server.Ghost
             var ghost = SpawnAtPosition(GameTicker.ObserverPrototypeName, spawnPosition.Value);
             var ghostComponent = Comp<GhostComponent>(ghost);
 
+            if (TryComp<GhostSpriteStateComponent>(ghost, out var state))  // If more TryComps are added this should be turned into an event
+            {
+                _ghostState.SetGhostSprite((ghost, state), mind);
+            }
+
             // Try setting the ghost entity name to either the character name or the player name.
             // If all else fails, it'll default to the default entity prototype name, "observer".
             // However, that should rarely happen.
@@ -615,7 +606,7 @@ namespace Content.Server.Ghost
                     _mind.TransferTo(mindId, spawnedMob, true);
                     args.Handled = true;
                 }
-				
+
                 var ghostBarGear = new ProtoId<StartingGearPrototype>("GhostBarGear");
 
                 if (_loadout != null)
@@ -704,7 +695,8 @@ namespace Content.Server.Ghost
                         && TryComp<MobThresholdsComponent>(playerEntity, out var thresholds))
                     {
                         var playerDeadThreshold = _mobThresholdSystem.GetThresholdForState(playerEntity.Value, MobState.Dead, thresholds);
-                        dealtDamage = playerDeadThreshold - damageable.TotalDamage;
+                        dealtDamage = playerDeadThreshold -
+                                      _damageable.GetTotalDamage((playerEntity.Value, damageable));
                     }
 
                     DamageSpecifier damage = new(_prototypeManager.Index(AsphyxiationDamageType), dealtDamage);

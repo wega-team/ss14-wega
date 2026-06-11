@@ -8,7 +8,7 @@ namespace Content.Shared.Mobs.Systems;
 
 public partial class MobStateSystem
 {
-    [Dependency] private readonly SharedStutteringSystem _stutteringSystem = default!; // Corvax-Wega-PreCritical
+    [Dependency] private SharedStutteringSystem _stutteringSystem = default!; // Corvax-Wega-PreCritical
 
     #region Public API
 

@@ -1,11 +1,11 @@
-using Content.Server.Atmos.EntitySystems;
 using Content.Server.NodeContainer.Nodes;
+using Content.Shared.Atmos;
 using Content.Shared.NodeContainer;
 using Content.Shared.VentCraw.Components;
 
 namespace Content.Server.VentCraw;
 
-public sealed class BeingVentCrawSystem : EntitySystem
+public sealed partial class BeingVentCrawSystem : EntitySystem
 {
     public override void Initialize()
     {

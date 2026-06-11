@@ -14,11 +14,11 @@ using Robust.Shared.Utility;
 
 namespace Content.Shared.Clothing;
 
-public sealed class TearableClothingSystem : EntitySystem
+public sealed partial class TearableClothingSystem : EntitySystem
 {
-    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
-    [Dependency] private readonly DamageableSystem _damage = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private DamageableSystem _damage = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
 
     private static readonly ProtoId<DamageTypePrototype> Damage = "Slash";
 

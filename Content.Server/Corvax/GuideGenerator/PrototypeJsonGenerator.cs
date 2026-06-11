@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Reflection;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using Robust.Shared.ContentPack;
@@ -11,6 +12,12 @@ namespace Content.Server.Corvax.GuideGenerator;
 
 public static class PrototypeJsonGenerator
 {
+    private static readonly JsonSerializerOptions SerializeOptions = new()
+    {
+        WriteIndented = true,
+        Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+    };
+
     public static void PublishAll(IResourceManager res, ResPath destRoot)
     {
         var proto = IoCManager.Resolve<IPrototypeManager>();
@@ -20,6 +27,9 @@ public static class PrototypeJsonGenerator
         {
             // The entity prototype has its own generator due to its size <see cref="EntityJsonGenerator"/>.
             if (kind == typeof(EntityPrototype))
+                continue;
+
+            if (HasUnsafeSerializedDataField(kind))
                 continue;
 
             // Map: entity id -> prototype fields
@@ -42,11 +52,19 @@ public static class PrototypeJsonGenerator
                 var instance = Activator.CreateInstance(kind);
                 if (instance != null)
                 {
-                    FieldEntry.EnsureFieldsCollectionsInitialized(instance);
-                    var defaultNode = ser.WriteValueAs<MappingDataNode>(kind, instance, true);
-                    defaultNode.Remove("id");
-                    FieldEntry.NormalizeFlagsToSequences(instance, defaultNode);
-                    defaultObj = FieldEntry.DataNodeToObject(defaultNode);
+                    try
+                    {
+                        FieldEntry.EnsureFieldsCollectionsInitialized(instance);
+                        var defaultNode = ser.WriteValueAs<MappingDataNode>(kind, instance, true);
+                        defaultNode.Remove("id");
+                        FieldEntry.NormalizeFlagsToSequences(instance, defaultNode);
+                        defaultObj = FieldEntry.DataNodeToObject(defaultNode);
+                    }
+                    finally
+                    {
+                        if (instance is IDisposable disposable)
+                            disposable.Dispose();
+                    }
                 }
             }
             catch
@@ -60,20 +78,90 @@ public static class PrototypeJsonGenerator
                 ["id"] = map
             };
 
-            var serializeOptions = new JsonSerializerOptions
-            {
-                WriteIndented = true,
-                Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
-            };
-
             res.UserData.CreateDir(destRoot);
             var kindName = proto.TryGetKindFrom(kind, out var actualKindName)
                 ? actualKindName
                 : kind.Name;
             var fileName = TextTools.DecapitalizeString(kindName) + ".json";
-            var file = res.UserData.OpenWriteText(destRoot / fileName);
-            file.Write(JsonSerializer.Serialize(outObj, serializeOptions));
-            file.Flush();
+            using var stream = res.UserData.OpenWrite(destRoot / fileName);
+            JsonSerializer.Serialize(stream, outObj, SerializeOptions);
         }
+    }
+
+    private static bool HasUnsafeSerializedDataField(Type type)
+    {
+        return HasUnsafeSerializedDataField(type, new HashSet<Type>());
+    }
+
+    private static bool HasUnsafeSerializedDataField(Type type, HashSet<Type> visited)
+    {
+        const BindingFlags flags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
+
+        if (!visited.Add(type))
+            return false;
+
+        foreach (var field in type.GetFields(flags))
+        {
+            if (!HasDataField(field))
+                continue;
+
+            if (IsUnsafeSerializedType(field.FieldType, visited))
+                return true;
+        }
+
+        foreach (var property in type.GetProperties(flags))
+        {
+            if (!HasDataField(property))
+                continue;
+
+            if (IsUnsafeSerializedType(property.PropertyType, visited))
+                return true;
+        }
+
+        return false;
+    }
+
+    private static bool HasDataField(MemberInfo member)
+    {
+        return member.GetCustomAttributes(inherit: true)
+            .Any(attr => attr.GetType().Name is nameof(DataFieldAttribute) or nameof(IdDataFieldAttribute));
+    }
+
+    private static bool IsUnsafeSerializedType(Type type, HashSet<Type> visited)
+    {
+        type = Nullable.GetUnderlyingType(type) ?? type;
+
+        if (type == typeof(object) ||
+            type == typeof(EntityUid) ||
+            type == typeof(NetEntity))
+        {
+            return true;
+        }
+
+        if (type.IsPrimitive ||
+            type.IsEnum ||
+            type == typeof(string) ||
+            type == typeof(decimal) ||
+            type == typeof(TimeSpan))
+        {
+            return false;
+        }
+
+        if (type.IsArray)
+            return IsUnsafeSerializedType(type.GetElementType()!, visited);
+
+        if (type.IsGenericType)
+        {
+            foreach (var argument in type.GetGenericArguments())
+            {
+                if (IsUnsafeSerializedType(argument, visited))
+                    return true;
+            }
+        }
+
+        return type.GetCustomAttributes(inherit: true)
+                   .Any(attr =>
+                   attr.GetType().Name is nameof(DataDefinitionAttribute) or nameof(SerializableAttribute))
+                && HasUnsafeSerializedDataField(type, visited);
     }
 }

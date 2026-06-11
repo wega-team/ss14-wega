@@ -1,0 +1,13 @@
+- type: entity
+  parent: WeatherBase
+  id: WeatherAcidRain
+  components:
+  - type: WeatherStatusEffect
+    sprite:
+      sprite: /Textures/_Wega/Effects/weather.rsi
+      state: acidic_rain
+    sound:
+      collection: Rain
+      params:
+        loop: true
+        volume: -10

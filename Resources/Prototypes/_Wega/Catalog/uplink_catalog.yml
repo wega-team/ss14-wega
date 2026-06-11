@@ -123,10 +123,10 @@
 
 - type: listing
   id: UplinkXC67BundleAgent
-  name: uplink-xc67-name
-  description: uplink-xc67-desc
+  name: uplink-xc67-agent-name
+  description: uplink-xc67-agent-desc
   icon: { sprite: /Textures/_Wega/Objects/Weapons/Guns/Rifles/xc67.rsi, state: icon}
-  productEntity: ClothingBackpackDuffelSyndicateFilledXC67
+  productEntity: BriefcaseWeaponXc67Filled
   discountCategory: veryRareDiscounts
   discountDownTo:
     Telecrystal: 13
@@ -139,7 +139,6 @@
       blacklist:
         tags:
           - NukeOpsUplink
-
 
 - type: listing
   id: UplinkXC67Bundle
@@ -252,22 +251,6 @@
     stock: 1
 
 - type: listing
-  id: UplinkC20RBundleNuke
-  name: uplink-c20r-bundle-name
-  description: uplink-c20r-bundle-desc
-  icon: { sprite: /Textures/Objects/Weapons/Guns/SMGs/c20r.rsi, state: icon }
-  productEntity: ClothingBackpackDuffelSyndicateFilledSMG
-  cost:
-    Telecrystal: 17
-  categories:
-  - UplinkWeaponry
-  conditions:
-  - !type:StoreWhitelistCondition
-    whitelist:
-      tags:
-      - NukeOpsUplink
-
-- type: listing
   id: UplinkEstocBundleNuke
   name: uplink-estoc-bundle-name
   description: uplink-estoc-bundle-desc
@@ -316,22 +299,6 @@
     Telecrystal: 3
   categories:
   - UplinkAmmo
-
-- type: listing
-  id: UplinkBulldogBundleNuke
-  name: uplink-buldog-bundle-name
-  description: uplink-buldog-bundle-desc
-  icon: { sprite: /Textures/Objects/Weapons/Guns/Shotguns/bulldog.rsi, state: icon }
-  productEntity: ClothingBackpackDuffelSyndicateFilledShotgun
-  cost:
-    Telecrystal: 17
-  categories:
-  - UplinkWeaponry
-  conditions:
-  - !type:StoreWhitelistCondition
-    whitelist:
-      tags:
-      - NukeOpsUplink
 
 - type: listing
   id: UplinAmmoSniper
@@ -439,25 +406,6 @@
       - NukeOpsUplink
 
 - type: listing
-  id: UplinkHardsuitSyndieNukeOps
-  name: uplink-hardsuit-syndie-name
-  description: uplink-hardsuit-syndie-desc
-  icon: { sprite: /Textures/_Wega/Clothing/Modular/Syndicate/control.rsi, state: icon }
-  productEntity: ClothingBackpackDuffelSyndicateControllerBundle
-  discountCategory: veryRareDiscounts
-  discountDownTo:
-    Telecrystal: 4
-  cost:
-    Telecrystal: 8
-  categories:
-  - UplinkWearables
-  conditions:
-  - !type:StoreWhitelistCondition
-    whitelist:
-      tags:
-      - NukeOpsUplink
-
-- type: listing
   id: UplinkEnergyShieldModuleBundle
   name: uplink-energy-shield-module-bundle-name
   description: uplink-energy-shield-module-bundle-desc
@@ -475,3 +423,42 @@
     whitelist:
       tags:
       - NukeOpsUplink
+      
+- type: listing
+  id: UplinkNightVision
+  name: uplink-nightvision-name
+  description: uplink-nightvision-desc
+  productEntity: ClothingEyesGlassesNightVision
+  discountCategory: usualDiscounts
+  discountDownTo:
+    Telecrystal: 2
+  cost:
+    Telecrystal: 3
+  categories:
+  - UplinkWearables
+
+- type: listing
+  id: UplinkLoyaltyImplant
+  name: uplink-loyalty-implant-name
+  description: uplink-loyalty-implant-desc
+  icon: { sprite: Objects/Specific/Medical/syndi_implanter.rsi, state: implanter1 }
+  productEntity: LoyaltyImplanter
+  categories:
+  - UplinkImplants
+  discountDownTo:
+    Telecrystal: 3
+  cost:
+    Telecrystal: 5
+
+- type: listing
+  id: UplinkHomerunBat
+  name: uplink-homerun-bat-name
+  description: uplink-homerun-bat-desc
+  productEntity: HomerunBat
+  discountCategory: veryRareDiscounts
+  discountDownTo:
+    Telecrystal: 2
+  cost:
+    Telecrystal: 4
+  categories:
+    - UplinkWeaponry

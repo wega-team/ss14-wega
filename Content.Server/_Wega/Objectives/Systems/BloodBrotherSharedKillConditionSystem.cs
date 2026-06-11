@@ -7,13 +7,13 @@ using Robust.Shared.Configuration;
 
 namespace Content.Server.Objectives.Systems;
 
-public sealed class BloodBrotherSharedKillConditionSystem : EntitySystem
+public sealed partial class BloodBrotherSharedKillConditionSystem : EntitySystem
 {
-    [Dependency] private readonly EmergencyShuttleSystem _emergencyShuttle = default!;
-    [Dependency] private readonly IConfigurationManager _config = default!;
-    [Dependency] private readonly SharedMindSystem _mind = default!;
-    [Dependency] private readonly TargetObjectiveSystem _target = default!;
-    [Dependency] private readonly BloodBrotherSharedConditionSystem _sharedCondition = default!;
+    [Dependency] private EmergencyShuttleSystem _emergencyShuttle = default!;
+    [Dependency] private IConfigurationManager _config = default!;
+    [Dependency] private SharedMindSystem _mind = default!;
+    [Dependency] private TargetObjectiveSystem _target = default!;
+    [Dependency] private BloodBrotherSharedConditionSystem _sharedCondition = default!;
 
     public override void Initialize()
     {

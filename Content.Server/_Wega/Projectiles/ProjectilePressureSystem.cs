@@ -3,9 +3,9 @@ using Content.Shared.Projectiles;
 
 namespace Content.Server.Projectiles;
 
-public sealed class ProjectilePressureSystem : EntitySystem
+public sealed partial class ProjectilePressureSystem : EntitySystem
 {
-    [Dependency] private readonly AtmosphereSystem _atmos = default!;
+    [Dependency] private AtmosphereSystem _atmos = default!;
 
     private const float NORMALPRESSURE = 101.325f;
 

@@ -4,7 +4,7 @@ using Content.Shared.Xenobiology.Events;
 
 namespace Content.Shared.Xenobiology.Systems.Machines.Connection;
 
-public sealed class CellServerSystem : EntitySystem
+public sealed partial class CellServerSystem : EntitySystem
 {
     public override void Initialize()
     {

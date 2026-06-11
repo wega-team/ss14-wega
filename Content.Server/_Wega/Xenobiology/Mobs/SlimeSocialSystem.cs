@@ -16,14 +16,14 @@ using Robust.Shared.Timing;
 
 namespace Content.Server.Xenobiology;
 
-public sealed class SlimeSocialSystem : EntitySystem
+public sealed partial class SlimeSocialSystem : EntitySystem
 {
-    [Dependency] private readonly ChatSystem _chat = default!;
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
-    [Dependency] private readonly HTNSystem _htn = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly MetaDataSystem _metaData = default!;
-    [Dependency] private readonly MobStateSystem _mobState = default!;
+    [Dependency] private ChatSystem _chat = default!;
+    [Dependency] private IGameTiming _gameTiming = default!;
+    [Dependency] private HTNSystem _htn = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private MetaDataSystem _metaData = default!;
+    [Dependency] private MobStateSystem _mobState = default!;
 
     private static readonly TimeSpan MinCommandInterval = TimeSpan.FromSeconds(6);
 

@@ -28,8 +28,9 @@
     buckleOffset: "0,-0.05"
   - type: Pullable
   - type: Damageable
-    damageContainer: Inorganic
     damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: Inorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -70,7 +71,7 @@
     mode: SnapgridCenter
   components:
   - type: Physics
-    bodyType: Static
+    bodyType: KinematicController
   - type: Transform
     anchored: true
 
@@ -83,12 +84,28 @@
   components:
   - type: Rotatable
     rotateWhileAnchored: true
+  # Corvax-Wega-Start
+  - type: Vehicle
+    hasKey: true
+    useHand: false
+    hornSound: null
+  - type: MovementSpeedModifier
+    weightlessModifier: 0
+    baseAcceleration: 2
+    baseFriction: 2
+    frictionNoInput: 6
+    baseWalkSpeed: 2
+    baseSprintSpeed: 2.5
+  - type: InputMover
+  - type: Physics
+    bodyType: KinematicController
+  # Corvax-Wega-End
 
 #Starts anchored, can be rotated while anchored
 - type: entity
   name: stool
   id: StoolBase
-  parent: OfficeChairBase
+  parent: UnanchoredChairBase # Corvax-Wega-Edit
   abstract: true
   placement:
     mode: SnapgridCenter
@@ -97,6 +114,8 @@
     bodyType: Static
   - type: Transform
     anchored: true
+  - type: Rotatable
+    rotateWhileAnchored: true
 
 - type: entity
   name: chair
@@ -413,8 +432,9 @@
     graph: Seat
     node: stoolCard
   - type: Damageable
-    damageContainer: Inorganic
     damageModifierSet: Card
+  - type: Injurable
+    damageContainer: Inorganic
   - type: Destructible
     thresholds:
     - trigger:

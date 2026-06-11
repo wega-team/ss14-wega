@@ -24,8 +24,8 @@ public abstract partial class SharedBorgSystem
         if (!_mind.TryGetMind(chassis.Owner, out _, out _))
             return false;
 
-        if (_mobState.IsIncapacitated(chassis.Owner))
-            return false;
+        /// if (_mobState.IsIncapacitated(chassis.Owner)) Corvax-Wega-Revert
+        ///    return false; Corvax-Wega-Revert
 
         return true;
     }
@@ -234,6 +234,16 @@ public abstract partial class SharedBorgSystem
                     return false;
                 }
             }
+        }
+
+        var attemptEv = new BorgModuleInsertAttemptEvent(module.Owner, chassis.Owner);
+        RaiseLocalEvent(chassis, ref attemptEv);
+        RaiseLocalEvent(module, ref attemptEv);
+
+        if (attemptEv.Cancelled)
+        {
+            _popup.PopupClient(attemptEv.Reason, chassis.Owner, user);
+            return false;
         }
 
         return true;

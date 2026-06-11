@@ -5,7 +5,9 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Content.Shared.CCVar;
 using Robust.Shared.ContentPack;
+using Robust.Shared.Configuration;
 using Robust.Shared.Utility;
 
 namespace Content.Server.Corvax.GuideGenerator;
@@ -13,11 +15,15 @@ namespace Content.Server.Corvax.GuideGenerator;
 public static class WikiEntityNameGenerator
 {
     private const string ApiEndpoint = "https://station14.ru/api.php";
-    private const string CategoryTitle = "Категория:Сущности";
 
     private static readonly HttpClient HttpClient = new();
+    private static readonly JsonSerializerOptions SerializeOptions = new()
+    {
+        WriteIndented = true,
+        Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+    };
 
-    public static void PublishJson(StreamWriter writer, IResourceManager resourceManager, ResPath destRoot)
+    public static void PublishJson(Stream stream, IResourceManager resourceManager, ResPath destRoot)
     {
         var entityNamePath = destRoot.WithName("entity_name.json");
 
@@ -64,25 +70,24 @@ public static class WikiEntityNameGenerator
                 missing.Add(title);
         }
 
-        var options = new JsonSerializerOptions
-        {
-            WriteIndented = true,
-            Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
-        };
-
-        var outputJson = JsonSerializer.Serialize(missing, options);
-        writer.Write(outputJson);
+        JsonSerializer.Serialize(stream, missing, SerializeOptions);
     }
 
     private static HashSet<string> FetchAllCategoryTitles()
     {
+        var cfg = IoCManager.Resolve<IConfigurationManager>();
+        var projectPrefix = cfg.GetCVar(CCVars.WikiProjectPrefix);
+        var categoryTitle = string.IsNullOrWhiteSpace(projectPrefix)
+            ? "Категория:Сущности"
+            : $"Категория:{projectPrefix}:Сущности";
+
         var titles = new HashSet<string>(StringComparer.Ordinal);
         string? cmContinue = null;
 
         while (true)
         {
             var url =
-                $"{ApiEndpoint}?action=query&list=categorymembers&format=json&cmtype=page&cmlimit=max&cmnamespace=0&cmtitle={Uri.EscapeDataString(CategoryTitle)}";
+                $"{ApiEndpoint}?action=query&list=categorymembers&format=json&cmtype=page&cmlimit=max&cmnamespace=0&cmtitle={Uri.EscapeDataString(categoryTitle)}";
             if (!string.IsNullOrEmpty(cmContinue))
             {
                 url += "&cmcontinue=" + Uri.EscapeDataString(cmContinue);

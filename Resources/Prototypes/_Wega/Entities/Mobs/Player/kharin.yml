@@ -86,7 +86,6 @@
   - type: WarpPoint
     follow: true
     location: Kha'rin
-  - type: Timer
   - type: TimedSpawner
     prototypes:
     - MobConstructHarvester

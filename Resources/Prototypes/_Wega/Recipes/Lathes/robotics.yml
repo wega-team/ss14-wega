@@ -55,6 +55,11 @@
 
 - type: latheRecipe
   parent: BaseBorgModuleRecipe
+  id: BorgModuleNightVison
+  result: BorgModuleNightVison
+
+- type: latheRecipe
+  parent: BaseBorgModuleRecipe
   id: BorgModuleCommonCandy
   result: BorgModuleCommonCandy
 
@@ -119,8 +124,8 @@
   result: BorgModuleGranader
 
 - type: latheRecipe
-  id: BorgModuleCommonHand
-  result: BorgModuleCommonHand
+  id: ModuleCommand
+  result: ModuleCommand
   categories:
     - Modules
   materials:
@@ -129,6 +134,7 @@
     Plastic: 500
     Gold: 500
     Diamond: 200
+
 # Android
 
 - type: latheRecipe
@@ -136,7 +142,7 @@
   id: Tyriumpack
   result: Tyriumpack1
   categories:
-    - Anroid
+    - Android
   completetime: 1
   materials:
     Steel: 20
@@ -148,19 +154,33 @@
   id: AndroidBodyPart
   result: AndroidBodyPart
   categories:
-    - Anroid
+    - Android
   completetime: 5
   materials:
-    Steel: 300
+    Steel: 250
     Plastic: 250
     Silver: 150
 
 - type: latheRecipe
   parent: BaseRoboticsRecipe
-  id: ArmSyntheticPry
-  result: LeftArmSyntheticPry
+  id: AndroidEndoskeleton
+  result: AndroidEndoskeleton
   categories:
-    - Anroid
+    - Android
+  completetime: 5
+  materials:
+    Steel: 1000
+    Glass: 1500 
+    Plastic: 500
+    Gold: 500
+    Plasma: 500
+
+- type: latheRecipe
+  parent: BaseRoboticsRecipe
+  id: ArmSyntheticPry
+  result: ArmSyntheticPry
+  categories:
+    - Android
   completetime: 5
   materials:
     Steel: 750
@@ -171,9 +191,9 @@
 - type: latheRecipe
   parent: BaseRoboticsRecipe
   id: ArmSyntheticDefib
-  result: LeftArmSyntheticDefib
+  result: ArmSyntheticDefib
   categories:
-    - Anroid
+    - Android
   completetime: 5
   materials:
     Steel: 750
@@ -183,9 +203,9 @@
 - type: latheRecipe
   parent: BaseRoboticsRecipe
   id: ArmSyntheticProtoKinetic
-  result: LeftArmSyntheticProtoKinetic
+  result: ArmSyntheticProtoKinetic
   categories:
-    - Anroid
+    - Android
   completetime: 5
   materials:
     Steel: 750
@@ -196,9 +216,9 @@
 - type: latheRecipe
   parent: BaseRoboticsRecipe
   id: ArmSyntheticCharger
-  result: LeftArmSyntheticCharger
+  result: ArmSyntheticCharger
   categories:
-    - Anroid
+    - Android
   completetime: 5
   materials:
     Steel: 750
@@ -208,9 +228,9 @@
 - type: latheRecipe
   parent: BaseRoboticsRecipe
   id: LegSyntheticMagboots
-  result: LeftLegSyntheticMagboots
+  result: LegSyntheticMagboots
   categories:
-    - Anroid
+    - Android
   completetime: 5
   materials:
     Steel: 750
@@ -220,9 +240,9 @@
 - type: latheRecipe
   parent: BaseRoboticsRecipe
   id: LegSyntheticJump
-  result: LeftLegSyntheticJump
+  result: LegSyntheticJump
   categories:
-    - Anroid
+    - Android
   completetime: 5
   materials:
     Steel: 750

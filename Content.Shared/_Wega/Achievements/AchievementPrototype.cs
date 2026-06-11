@@ -3,7 +3,7 @@ using Robust.Shared.Utility;
 
 namespace Content.Shared.Achievements;
 
-[Prototype("achievement")]
+[Prototype]
 public sealed partial class AchievementPrototype : IPrototype
 {
     [IdDataField]

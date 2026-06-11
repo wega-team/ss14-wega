@@ -1,3 +1,5 @@
+using System.Linq;
+using System.Text.RegularExpressions;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server.Corvax.GuideGenerator;
@@ -29,17 +31,64 @@ public sealed class TextTools
             _ => str
         };
     }
+
     public static string GetDisplayName(EntityPrototype proto, IPrototypeManager prototypeManager, ILocalizationManager loc)
     {
-        foreach (var (_, parentProto) in prototypeManager.EnumerateAllParents<EntityPrototype>(proto.ID, includeSelf: true))
+        var visited = new HashSet<string>();
+        var stack = new Stack<string>();
+        stack.Push(proto.ID);
+
+        while (stack.Count > 0)
         {
-            if (parentProto == null)
+            var id = stack.Pop();
+            if (!visited.Add(id))
                 continue;
 
-            var name = parentProto.Name;
-            if (!string.IsNullOrEmpty(name))
-                return name;
+            if (!prototypeManager.TryIndex<EntityPrototype>(id, out var current))
+                continue;
+
+            if (!string.IsNullOrEmpty(current.Name))
+                return current.Name;
+
+            var parents = current.Parents;
+            if (parents == null || parents.Length == 0)
+                continue;
+
+            for (var i = parents.Length - 1; i >= 0; i--)
+            {
+                stack.Push(parents[i]);
+            }
         }
+
         return proto.Name;
+    }
+
+    private static readonly Regex SuffixTokenEdgeGarbageRegex =
+        new(@"^[\p{P}\p{S}\s]+|[\p{P}\p{S}\s]+$", RegexOptions.Compiled);
+
+    public static string NormalizeSuffixToken(string token)
+    {
+        return string.IsNullOrWhiteSpace(token)
+            ? string.Empty
+            : SuffixTokenEdgeGarbageRegex.Replace(token, string.Empty);
+    }
+
+    public static string GetEditorSuffix(
+        string? editorSuffix,
+        IReadOnlySet<string> ignoredTokens,
+        Func<string, string> normalizeToken)
+    {
+        if (string.IsNullOrWhiteSpace(editorSuffix))
+            return string.Empty;
+
+        var parts = editorSuffix
+            .Split([',', ';'], StringSplitOptions.RemoveEmptyEntries)
+            .Select(part => part.Trim())
+            .Where(part => !ignoredTokens.Contains(normalizeToken(part)))
+            .ToArray();
+
+        return parts.Length > 0
+            ? string.Join(", ", parts).ToLowerInvariant()
+            : string.Empty;
     }
 }

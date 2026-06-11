@@ -51,8 +51,6 @@
     verbIcon:
       sprite: *modules-rsi
       state: storage
-  - type: Storage
-    maxItemSize: Normal
 
 - type: entity
   parent: BaseStorageSuitModule
@@ -568,7 +566,7 @@
       walkModifier: 0.8
       sprintModifier: 0.8
   - type: ModularSuitModule
-    tags: [ MagneticSuitModule ]
+    tags: [ MagneticSuitModule, NoSlipModuleConflict ]
     modulePart: Boots
     powerUsage: 0.4
     verbIcon:
@@ -636,7 +634,6 @@
   - type: ModularSuitModuleEffect
     activeComponents:
     - type: RadiationReceiver
-    - type: RadiationProtection
     - type: Geiger
       attachedToSuit: true
   - type: ModularSuitModule
@@ -1140,6 +1137,7 @@
     activeComponents:
     - type: NoSlip
   - type: ModularSuitModule
+    tags: [ NoSlipModuleConflict ]
     modulePart: Boots
     modulePrefix: 'C'
     canBeDisabled: false

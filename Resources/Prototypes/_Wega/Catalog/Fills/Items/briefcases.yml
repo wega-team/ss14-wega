@@ -1,0 +1,10 @@
+- type: entity
+  id: BriefcaseWeaponXc67Filled
+  parent: BriefcaseWeapon
+  name: secure xC-67 case
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: WeaponRifleXC67

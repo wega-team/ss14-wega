@@ -13,14 +13,14 @@ using Robust.Shared.Timing;
 
 namespace Content.Shared.Xenobiology.Systems.Machines;
 
-public sealed class CellMutagenicInjectorSystem : EntitySystem
+public sealed partial class CellMutagenicInjectorSystem : EntitySystem
 {
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedCellSystem _cell = default!;
-    [Dependency] private readonly ItemSlotsSystem _itemSlots = default!;
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
-    [Dependency] private readonly SharedPowerReceiverSystem _powerReceiver = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedCellSystem _cell = default!;
+    [Dependency] private ItemSlotsSystem _itemSlots = default!;
+    [Dependency] private IGameTiming _gameTiming = default!;
+    [Dependency] private SharedPowerReceiverSystem _powerReceiver = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
 
     public override void Initialize()
     {
@@ -60,7 +60,7 @@ public sealed class CellMutagenicInjectorSystem : EntitySystem
             return;
         }
 
-        if (HasComp<HumanoidAppearanceComponent>(target))
+        if (HasComp<HumanoidProfileComponent>(target))
         {
             _popup.PopupPredicted(Loc.GetString("cell-injector-no-humanoid"), ent, null, PopupType.MediumCaution);
             return;
@@ -126,7 +126,7 @@ public sealed class CellMutagenicInjectorSystem : EntitySystem
         if (elapsedTime > ent.Comp.MaxTime)
         {
             QueueDel(ent.Comp.Target);
-            EntityManager.SpawnEntity(ent.Comp.FailedMob, Transform(ent).Coordinates);
+            Spawn(ent.Comp.FailedMob, Transform(ent).Coordinates);
             _popup.PopupPredicted(Loc.GetString("cell-injector-mutate-failed"), ent, null, PopupType.MediumCaution);
         }
         else if (elapsedTime > ent.Comp.MinTime)

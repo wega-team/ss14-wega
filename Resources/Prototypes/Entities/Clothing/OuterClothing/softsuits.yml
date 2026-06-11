@@ -14,7 +14,6 @@
     - SuitEVA
     - ModNotEquipable # Corvax-Wega-ModularSuit
     - MonkeyWearable
-    - CorgiWearable
     - WhitelistChameleon
 
 #Syndicate EVA
@@ -179,5 +178,4 @@
   - type: Tag
     tags:
     - ModNotEquipable # Corvax-Wega-ModularSuit
-    - CorgiWearable
     - WhitelistChameleon

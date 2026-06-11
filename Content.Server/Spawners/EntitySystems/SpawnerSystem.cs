@@ -1,15 +1,13 @@
 using Content.Server.Spawners.Components;
-using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
 namespace Content.Server.Spawners.EntitySystems;
 
-public sealed class SpawnerSystem : EntitySystem
+public sealed partial class SpawnerSystem : EntitySystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private IRobustRandom _random = default!;
 
     public override void Initialize()
     {

@@ -49,6 +49,23 @@
     {
       "name": "magmite-inhand-right",
       "directions": 4
+    },
+    {
+      "name": "chargedbrass"
+    },
+    {
+      "name": "chargedbrass_2"
+    },
+    {
+      "name": "chargedbrass_3"
+    },
+    {
+      "name": "chargedbrass-inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "chargedbrass-inhand-right",
+      "directions": 4
     }
   ]
 }

@@ -1,22 +1,22 @@
-using Robust.Shared.Containers;
-using Content.Shared.Mobs.Components;
-using Robust.Shared.Timing;
-using Robust.Server.Containers;
-using Content.Shared.Whitelist;
-using Content.Shared.Damage;
-using Content.Shared.Damage.Systems;
-using Content.Shared.Damage.Components;
+using System.Linq;
 using Content.Server.Damage.Components;
-
+using Content.Shared.Damage;
+using Content.Shared.Damage.Components;
+using Content.Shared.Damage.Systems;
+using Content.Shared.Mobs.Components;
+using Content.Shared.Whitelist;
+using Robust.Server.Containers;
+using Robust.Shared.Containers;
+using Robust.Shared.Timing;
 
 namespace Content.Server.Damage.Systems;
 
-public sealed class DamageInContainerSystem : SharedDamageInContainerSystem
+public sealed partial class DamageInContainerSystem : EntitySystem
 {
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
-    [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
-    [Dependency] private readonly ContainerSystem _container = default!;
-    [Dependency] private readonly DamageableSystem _damageable = default!;
+    [Dependency] private IGameTiming _gameTiming = default!;
+    [Dependency] private EntityWhitelistSystem _whitelistSystem = default!;
+    [Dependency] private ContainerSystem _container = default!;
+    [Dependency] private DamageableSystem _damageable = default!;
 
     public override void Initialize()
     {
@@ -46,10 +46,37 @@ public sealed class DamageInContainerSystem : SharedDamageInContainerSystem
                 if (!TryComp<DamageableComponent>(contained, out var damage))
                     continue;
 
-                if (comp.DamageCap != 0 && damage.TotalDamage >= comp.DamageCap)
+                var totalDamage = _damageable.GetTotalDamage((contained, damage));
+                if (comp.DamageCap != 0 && totalDamage >= comp.DamageCap)
                     continue;
 
                 if (_whitelistSystem.IsWhitelistFail(comp.Whitelist, contained))
+                    continue;
+
+                DamageSpecifier? finalDamage = null;
+                if (comp.Damage != null && !comp.Damage.Empty && comp.Damage.DamageDict.Values.Any(x => x < 0))
+                {
+                    finalDamage = comp.Damage.Clone();
+                    if (comp.DamageGroups != null && !comp.DamageGroups.Empty)
+                    {
+                        var groupsHeal = _damageable.CreateWeightedHealFromGroups(contained, comp.DamageGroups);
+                        finalDamage += groupsHeal;
+                    }
+                }
+                else if (comp.Damage != null && !comp.Damage.Empty)
+                {
+                    finalDamage = comp.Damage;
+                }
+                else if (comp.DamageGroups != null && !comp.DamageGroups.Empty)
+                {
+                    finalDamage = _damageable.CreateWeightedHealFromGroups(contained, comp.DamageGroups);
+                }
+                else
+                {
+                    continue;
+                }
+
+                if (finalDamage == null)
                     continue;
 
                 if (TryComp<MobStateComponent>(contained, out var mobState))
@@ -57,12 +84,15 @@ public sealed class DamageInContainerSystem : SharedDamageInContainerSystem
                     foreach (var allowedState in comp.AllowedStates)
                     {
                         if (allowedState == mobState.CurrentState)
-                            _damageable.TryChangeDamage(contained, comp.Damage, true, false);
+                        {
+                            _damageable.TryChangeDamage(contained, finalDamage, true, false);
+                            break;
+                        }
                     }
                     continue;
                 }
 
-                _damageable.TryChangeDamage(contained, comp.Damage, true, false);
+                _damageable.TryChangeDamage(contained, finalDamage, true, false);
             }
         }
     }
@@ -78,4 +108,3 @@ public sealed class DamageInContainerSystem : SharedDamageInContainerSystem
         AddComp<ActiveDamageInContainerComponent>(uid);
     }
 }
-

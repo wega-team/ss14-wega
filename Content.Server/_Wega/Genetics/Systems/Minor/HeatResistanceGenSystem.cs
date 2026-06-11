@@ -4,7 +4,7 @@ using Content.Shared.Temperature.Components;
 
 namespace Content.Server.Genetics.System;
 
-public sealed class HeatResistanceGenSystem : EntitySystem
+public sealed partial class HeatResistanceGenSystem : EntitySystem
 {
     public override void Initialize()
     {

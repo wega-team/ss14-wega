@@ -32,6 +32,9 @@
             "name": "science"
         },
         {
+            "name": "syndicate"
+        },
+        {
             "name": "xenoborg_generic"
         },
         {
@@ -42,6 +45,9 @@
         },
         {
             "name": "xenoborg_stealth"
+        },
+        {
+            "name": "clockwork"
         },
         {
             "name": "icon-kinetic"
@@ -83,7 +89,28 @@
             "name": "icon-dis"
         },
         {
+            "name": "icon-cr20-gun"
+        },
+        {
+            "name": "icon-nightvison"
+        },
+        {
+            "name": "icon-nightvison-xenoborg"
+        },
+        {
+            "name": "icon-sniper"
+        },
+        {
+            "name": "icon-treatment-syndi"
+        },
+        {
             "name": "icon-speed"
+        },
+        {
+            "name": "icon-fugas"
+        },
+        {
+            "name": "icon-w"
         },
         {
             "name": "icon-magboots"

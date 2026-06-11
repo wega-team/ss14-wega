@@ -4,9 +4,9 @@ using Robust.Client.GameObjects;
 
 namespace Content.Client.Vehicle;
 
-public sealed class VehicleSystem : SharedVehicleSystem
+public sealed partial class VehicleSystem : SharedVehicleSystem
 {
-    [Dependency] private readonly SpriteSystem _sprite = default!;
+    [Dependency] private SpriteSystem _sprite = default!;
 
     public override void Initialize()
     {

@@ -9,14 +9,16 @@ using Robust.Shared.Random;
 
 namespace Content.Server.Genetics.System;
 
-public sealed class EpilepsySystem : EntitySystem
+public sealed partial class EpilepsySystem : EntitySystem
 {
-    [Dependency] private readonly ChatSystem _chat = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly SharedJitteringSystem _jitteringSystem = default!;
-    [Dependency] private readonly SharedStunSystem _stun = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private ChatSystem _chat = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private SharedJitteringSystem _jitteringSystem = default!;
+    [Dependency] private SharedStunSystem _stun = default!;
+    [Dependency] private IRobustRandom _random = default!;
+
+    private static readonly ProtoId<EmotePrototype> Scream = "Scream";
 
     public override void Update(float frameTime)
     {
@@ -33,7 +35,7 @@ public sealed class EpilepsySystem : EntitySystem
                     _stun.TryUpdateParalyzeDuration(uid, TimeSpan.FromSeconds(15));
                     _jitteringSystem.DoJitter(uid, TimeSpan.FromSeconds(15), true);
                     _popup.PopupClient(Loc.GetString("disease-epilepsy-massage"), uid, PopupType.Medium);
-                    _chat.TryEmoteWithoutChat(uid, _prototypeManager.Index<EmotePrototype>("Scream"), true);
+                    _chat.TryEmoteWithoutChat(uid, _prototypeManager.Index(Scream), true);
                 }
             }
             epilepsy.NextTimeTick -= frameTime;

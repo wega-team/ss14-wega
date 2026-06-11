@@ -11,12 +11,12 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Server.Mining;
 
-public sealed class MiningConsoleSystem : EntitySystem
+public sealed partial class MiningConsoleSystem : EntitySystem
 {
-    [Dependency] private readonly SharedAmbientSoundSystem _ambient = default!;
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-    [Dependency] private readonly StackSystem _stack = default!;
-    [Dependency] private readonly UserInterfaceSystem _ui = default!;
+    [Dependency] private SharedAmbientSoundSystem _ambient = default!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
+    [Dependency] private StackSystem _stack = default!;
+    [Dependency] private UserInterfaceSystem _ui = default!;
 
     private static readonly ProtoId<StackPrototype> Credit = "Credit";
     private static readonly EntProtoId Disk = "ResearchDisk";

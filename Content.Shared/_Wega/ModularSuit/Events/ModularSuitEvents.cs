@@ -1,7 +1,7 @@
 namespace Content.Shared.Modular.Suit;
 
 [ByRefEvent]
-public sealed class ModularSuitDeployAttemptEvent : CancellableEntityEventArgs;
+public sealed partial class ModularSuitDeployAttemptEvent : CancellableEntityEventArgs;
 
 [ByRefEvent]
 public readonly record struct ModularSuitRefreshPowerEvent();
@@ -22,7 +22,7 @@ public readonly record struct ModularSuitRemovedEvent(EntityUid Suit, EntityUid?
 public readonly record struct ModularSuitModuleItemCreatedEvent(EntityUid Module);
 
 [ByRefEvent]
-public sealed class ModularSuitModuleAttemptEvent : CancellableEntityEventArgs
+public sealed partial class ModularSuitModuleAttemptEvent : CancellableEntityEventArgs
 {
     public readonly EntityUid Suit;
 

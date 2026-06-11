@@ -3,6 +3,7 @@ using System.Numerics;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Maps;
+using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Physics;
@@ -22,19 +23,19 @@ using Robust.Shared.Timing;
 
 namespace Content.Shared.Weapons.Misc.Upgrades;
 
-public sealed class CrusherUpgradeEffectsSystem : EntitySystem
+public sealed partial class CrusherUpgradeEffectsSystem : EntitySystem
 {
-    [Dependency] private readonly DamageableSystem _damage = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly INetManager _net = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly MobThresholdSystem _threshold = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly TagSystem _tag = default!;
-    [Dependency] private readonly ThrowingSystem _throwing = default!;
-    [Dependency] private readonly SharedMapSystem _map = default!;
-    [Dependency] private readonly MobStateSystem _mobState = default!;
-    [Dependency] private readonly TurfSystem _turf = default!;
+    [Dependency] private DamageableSystem _damage = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
+    [Dependency] private INetManager _net = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private MobThresholdSystem _threshold = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private TagSystem _tag = default!;
+    [Dependency] private ThrowingSystem _throwing = default!;
+    [Dependency] private SharedMapSystem _map = default!;
+    [Dependency] private MobStateSystem _mobState = default!;
+    [Dependency] private TurfSystem _turf = default!;
 
     private static readonly ProtoId<TagPrototype> SlowImmune = "SlowImmune";
     private static readonly ProtoId<TagPrototype> StunImmune = "StunImmune";
@@ -96,11 +97,14 @@ public sealed class CrusherUpgradeEffectsSystem : EntitySystem
         if (!HasComp<MobThresholdsComponent>(args.User))
             return;
 
-        if (!TryComp<DamageableComponent>(args.User, out var damageable) || damageable.TotalDamage <= 0
-            || !_threshold.TryGetThresholdForState(args.User, ent.Comp.TargetState, out var threshold))
+        if (!TryComp<DamageableComponent>(args.User, out var damageable))
             return;
 
-        var currentDamage = damageable.TotalDamage.Float();
+        var totalDamage = _damage.GetTotalDamage((args.User, damageable));
+        if (totalDamage <= 0 || !_threshold.TryGetThresholdForState(args.User, ent.Comp.TargetState, out var threshold))
+            return;
+
+        var currentDamage = totalDamage.Float();
         var thresholdFloat = threshold.Value.Float();
         if (currentDamage >= thresholdFloat)
             return;
@@ -116,11 +120,14 @@ public sealed class CrusherUpgradeEffectsSystem : EntitySystem
         if (!HasComp<MobThresholdsComponent>(args.User))
             return;
 
-        if (!TryComp<DamageableComponent>(args.User, out var damageable) || damageable.TotalDamage <= 0
-            || !_threshold.TryGetThresholdForState(args.User, ent.Comp.TargetState, out var threshold))
+        if (!TryComp<DamageableComponent>(args.User, out var damageable))
             return;
 
-        var currentDamage = damageable.TotalDamage.Float();
+        var totalDamage = _damage.GetTotalDamage((args.User, damageable));
+        if (totalDamage <= 0 || !_threshold.TryGetThresholdForState(args.User, ent.Comp.TargetState, out var threshold))
+            return;
+
+        var currentDamage = totalDamage.Float();
         var thresholdFloat = threshold.Value.Float();
         if (currentDamage >= thresholdFloat)
             return;
@@ -137,11 +144,14 @@ public sealed class CrusherUpgradeEffectsSystem : EntitySystem
         if (!HasComp<MobThresholdsComponent>(args.Target))
             return;
 
-        if (!TryComp<DamageableComponent>(args.Target, out var damageable)
-            || _threshold.TryGetThresholdForState(args.Target, Mobs.MobState.Dead, out var threshold))
+        if (!TryComp<DamageableComponent>(args.Target, out var damageable))
             return;
 
-        if (threshold - threshold * ent.Comp.HealModifier < damageable.TotalDamage)
+        var totalDamage = _damage.GetTotalDamage((args.Target, damageable));
+        if (!_threshold.TryGetThresholdForState(args.Target, MobState.Dead, out var threshold))
+            return;
+
+        if (threshold - threshold * ent.Comp.HealModifier < totalDamage)
             return;
 
         args.DamageModifier += ent.Comp.Coefficient;
@@ -158,11 +168,14 @@ public sealed class CrusherUpgradeEffectsSystem : EntitySystem
             if (!HasComp<MobThresholdsComponent>(hitEnt))
                 return;
 
-            if (!TryComp<DamageableComponent>(hitEnt, out var damageable)
-                || _threshold.TryGetThresholdForState(hitEnt, Mobs.MobState.Dead, out var threshold))
+            if (!TryComp<DamageableComponent>(hitEnt, out var damageable))
                 continue;
 
-            if (threshold - threshold * ent.Comp.HealModifier < damageable.TotalDamage)
+            var totalDamage = _damage.GetTotalDamage((hitEnt, damageable));
+            if (!_threshold.TryGetThresholdForState(hitEnt, MobState.Dead, out var threshold))
+                continue;
+
+            if (threshold - threshold * ent.Comp.HealModifier < totalDamage)
                 continue;
 
             correct = true;
@@ -272,7 +285,7 @@ public sealed class CrusherUpgradeEffectsSystem : EntitySystem
             if (!HasComp<MobStateComponent>(ent))
                 continue;
 
-            _damage.TryChangeDamage(ent.Owner, args.Damage * entity.Comp.DamageMultiplier);
+            _damage.TryChangeDamage(ent.Owner, args.Damage * entity.Comp.DamageMultiplier, origin: user);
 
             var targetPos = _transform.GetWorldPosition(target);
             var entPos = _transform.GetWorldPosition(ent.Owner);

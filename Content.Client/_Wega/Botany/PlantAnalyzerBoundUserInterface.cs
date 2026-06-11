@@ -5,7 +5,7 @@ using Robust.Client.UserInterface;
 namespace Content.Client._Wega.Botany;
 
 [UsedImplicitly]
-public sealed class PlantAnalyzerBoundUserInterface : BoundUserInterface
+public sealed partial class PlantAnalyzerBoundUserInterface : BoundUserInterface
 {
     [ViewVariables]
     private PlantAnalyzerWindow? _window;

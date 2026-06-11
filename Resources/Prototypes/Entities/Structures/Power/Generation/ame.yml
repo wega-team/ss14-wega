@@ -29,8 +29,9 @@
         layer:
         - WallLayer
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallicStrong
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger: # Excess damage, don't spawn entities
@@ -162,8 +163,9 @@
         layer:
         - WallLayer
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallicStrong
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger: # Excess damage, don't spawn entities

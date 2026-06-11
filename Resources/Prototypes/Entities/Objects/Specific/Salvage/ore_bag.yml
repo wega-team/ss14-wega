@@ -34,13 +34,11 @@
   parent: BaseStorageItem
   id: BorgOreBag
   name: integrated ore bag
-  description: A large ore bag built into the frame of a mining cyborg.
+  description: A large ore bag built into the frame of a mining cyborg. Magnetises any nearby ores when held.
   components:
-    - type: ItemToggle
-    - type: ComponentToggler
-      components:
-      - type: MagnetPickup
-        needForSlotFlag: false
+    - type: MagnetPickup
+      slotFlags: null
+      requireActiveHand: true
     - type: Storage
       maxItemSize: Normal
       grid:
@@ -52,7 +50,7 @@
           - Ore
           - ArtifactFragment
           - MagmiteAlloy
-          - Gems 
+          - Gems
     - type: Sprite
       sprite: Objects/Specific/Mining/ore_bag.rsi
     # Corvax-Wega-Start

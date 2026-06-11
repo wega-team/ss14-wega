@@ -6,10 +6,10 @@ using Robust.Shared.Timing;
 
 namespace Content.Server.Projectiles;
 
-public sealed class ProjectileTimerResetsSystem : EntitySystem
+public sealed partial class ProjectileTimerResetsSystem : EntitySystem
 {
-    [Dependency] private readonly SharedActionsSystem _action = default!;
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
+    [Dependency] private SharedActionsSystem _action = default!;
+    [Dependency] private IGameTiming _gameTiming = default!;
 
     public override void Initialize()
     {

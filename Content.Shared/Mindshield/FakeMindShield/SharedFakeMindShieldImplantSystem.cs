@@ -6,9 +6,9 @@ using Robust.Shared.Containers;
 
 namespace Content.Shared.Mindshield.FakeMindShield;
 
-public sealed class SharedFakeMindShieldImplantSystem : EntitySystem
+public sealed partial class SharedFakeMindShieldImplantSystem : EntitySystem
 {
-    [Dependency] private readonly SharedActionsSystem _actionsSystem = default!;
+    [Dependency] private SharedActionsSystem _actionsSystem = default!;
     public override void Initialize()
     {
         base.Initialize();
@@ -34,8 +34,7 @@ public sealed class SharedFakeMindShieldImplantSystem : EntitySystem
     }
     private void ImplantCheck(EntityUid uid, FakeMindShieldImplantComponent component, ref ImplantImplantedEvent ev)
     {
-        if (ev.Implanted != null)
-            EnsureComp<FakeMindShieldComponent>(ev.Implanted);
+        EnsureComp<FakeMindShieldComponent>(ev.Implanted);
     }
 
     private void ImplantDraw(Entity<FakeMindShieldImplantComponent> ent, ref EntGotRemovedFromContainerMessage ev)

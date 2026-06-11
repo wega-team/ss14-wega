@@ -53,3 +53,5 @@
     - StorageLargeSuitModule
     - JetpackSuitModule
     - ConstructorSuitModule
+  technologyPrerequisites:
+  - IndustrialModifier

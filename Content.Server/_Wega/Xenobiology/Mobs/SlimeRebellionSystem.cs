@@ -4,12 +4,12 @@ using Robust.Shared.Timing;
 
 namespace Content.Server.Xenobiology;
 
-public sealed class SlimeRebellionSystem : EntitySystem
+public sealed partial class SlimeRebellionSystem : EntitySystem
 {
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly SlimeSocialSystem _slimeSocial = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
+    [Dependency] private IGameTiming _gameTiming = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private SlimeSocialSystem _slimeSocial = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
 
     private const int MaxSafeSlimes = 7;
     private const int MinRebellionGroup = 3;

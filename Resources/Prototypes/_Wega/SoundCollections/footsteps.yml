@@ -1,0 +1,5 @@
+- type: soundCollection
+  id: FootstepHeavy
+  files:
+  - /Audio/_Wega/Effects/Footsteps/suitstep1.ogg
+  - /Audio/_Wega/Effects/Footsteps/suitstep2.ogg

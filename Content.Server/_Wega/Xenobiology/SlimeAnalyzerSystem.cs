@@ -18,16 +18,16 @@ using Content.Shared.PowerCell;
 
 namespace Content.Server.Medical;
 
-public sealed class SlimeAnalyzerSystem : EntitySystem
+public sealed partial class SlimeAnalyzerSystem : EntitySystem
 {
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
-    [Dependency] private readonly ItemToggleSystem _toggle = default!;
-    [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly PowerCellSystem _cell = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private IGameTiming _gameTiming = default!;
+    [Dependency] private ItemToggleSystem _toggle = default!;
+    [Dependency] private UserInterfaceSystem _uiSystem = default!;
+    [Dependency] private SharedDoAfterSystem _doAfterSystem = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private PowerCellSystem _cell = default!;
 
     public override void Initialize()
     {

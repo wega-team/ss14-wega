@@ -6,13 +6,14 @@
   dummyPrototype: BorgChassisGeneric
 
   # Functional
-  extraModuleCount: 3
+  extraModuleCount: 4 # 3 Corvax-Wega-Add
   moduleWhitelist:
     tags:
     - BorgModuleGeneric
     # - BorgModuleScience until sciborgs are added
 
   defaultModules:
+  - BorgModulePrying
   - BorgModuleTool
 # Corvax-Wega-start
   - BorgModuleCommonMedical
@@ -51,13 +52,14 @@
   dummyPrototype: BorgChassisEngineer
 
   # Functional
-  extraModuleCount: 3
+  extraModuleCount: 4 # 3 Corvax-Wega-Add
   moduleWhitelist:
     tags:
     - BorgModuleGeneric
     - BorgModuleEngineering
 
   defaultModules:
+  - BorgModulePrying
   - BorgModuleTool
   - BorgModuleConstruction
   - BorgModuleRCD
@@ -77,6 +79,7 @@
     - Android
   - type: ShowAccessReaderSettings
   - type: MagbootsImplant
+  - type: ThermalSight
 # Corvax-Wega-end
 
   # Visual
@@ -99,13 +102,14 @@
   dummyPrototype: BorgChassisMining
 
   # Functional
-  extraModuleCount: 3
+  extraModuleCount: 4 # 3 Corvax-Wega-Add
   moduleWhitelist:
     tags:
     - BorgModuleGeneric
     - BorgModuleCargo
 
   defaultModules:
+  - BorgModulePrying
   - BorgModuleTool
   - BorgModuleMining
   - BorgModuleTraversal
@@ -137,7 +141,9 @@
   - type: RadarConsole
     followEntity: true
   - type: HandheldGPS
-    gPSName : Шахтёрский киборг
+    gPSName: Шахтёрский киборг
+  - type: HandheldGpsUi
+    broadcastEnabled: false
   - type: MagbootsImplant
 # Corvax-Wega-end
 
@@ -162,14 +168,14 @@
   dummyPrototype: BorgChassisJanitor
 
   # Functional
-  extraModuleCount: 3
+  extraModuleCount: 4 # 3 Corvax-Wega-Add
   moduleWhitelist:
     tags:
     - BorgModuleGeneric
     - BorgModuleJanitor
 
   defaultModules:
-  - BorgModuleTool # Corvax-Wega-add
+  - BorgModulePrying
   - BorgModuleCleaning
   - BorgModuleCustodial
 
@@ -187,7 +193,6 @@
           - ReagentId: SpaceCleaner
             Quantity: 100
   - type: SolutionRegeneration
-    solution: tank
     generated:
       reagents:
       - ReagentId: SpaceCleaner
@@ -220,13 +225,14 @@
   dummyPrototype: BorgChassisMedical
 
   # Functional
-  extraModuleCount: 3
+  extraModuleCount: 4 # 3 Corvax-Wega-Add
   moduleWhitelist:
     tags:
     - BorgModuleGeneric
     - BorgModuleMedical
 
   defaultModules:
+  - BorgModulePrying
   - BorgModuleChemical
   - BorgModuleTopicals
   - BorgModuleRescue
@@ -269,7 +275,7 @@
   dummyPrototype: BorgChassisService
 
   # Functional
-  extraModuleCount: 3
+  extraModuleCount: 4 # 3 Corvax-Wega-Add
   moduleWhitelist:
     tags:
     - BorgModuleGeneric
@@ -280,6 +286,7 @@
   # - BorgModuleTool
   # - BorgModuleMusique
   - BorgModuleCook
+  - BorgModulePrying
   - BorgModuleService
   - BorgModuleBar
   # - BorgModuleClowning

@@ -1,0 +1,123 @@
+- type: latheRecipe
+  id: WeaponRatvarianSpear
+  completetime: 5
+  result: WeaponRatvarianSpear
+  materials:
+    Brass: 500
+    ChargedBrass: 500
+    
+- type: latheRecipe
+  id: WeaponClockworkHammer
+  completetime: 5
+  result: WeaponClockHammer
+  materials:
+    Brass: 500
+    ChargedBrass: 500
+    
+- type: latheRecipe
+  id: WeaponClockworkSword
+  completetime: 5
+  result: WeaponClockworkSword
+  materials:
+    Brass: 500
+    ChargedBrass: 500
+    
+- type: latheRecipe
+  id: VeilCultClockworkSlab
+  completetime: 5
+  result: VeilCultClockworkSlab
+  materials:
+    Brass: 500    
+    
+- type: latheRecipe
+  id: ClothingHandsClockworkGauntlets
+  completetime: 3
+  result: ClothingHandsClockworkGauntlets
+  materials:
+    Brass: 500
+    ChargedBrass: 250
+   
+- type: latheRecipe
+  id: ClothingEyesJudicialVisor
+  completetime: 3
+  result: ClothingEyesJudicialVisor
+  materials:
+    Brass: 400
+    ChargedBrass: 200   
+    
+- type: latheRecipe
+  id: ClothingShoesClockworkTreads
+  completetime: 3
+  result: ClothingShoesClockworkTreads
+  materials:
+    Brass: 250
+    
+- type: latheRecipe
+  id: VeilCultBrassCuirass
+  completetime: 5
+  result: VeilCultBrassCuirass
+  materials:
+    Brass: 1000
+    ChargedBrass: 750
+    
+- type: latheRecipe
+  id: ClothingOuterVeilCultRobes
+  completetime: 5
+  result: ClothingOuterVeilCultRobes
+  materials:
+    Brass: 750
+    ChargedBrass: 500
+    
+- type: latheRecipe
+  id: BorgModuleClockwork
+  completetime: 5
+  result: BorgModuleClockwork
+  materials:
+    Brass: 400
+    ChargedBrass: 200
+    
+- type: latheRecipe
+  id: VeilCultInteractionCog
+  completetime: 3
+  result: VeilCultInteractionCog
+  materials:
+    Brass: 100
+    
+- type: latheRecipe
+  id: VeilCultSoulVessel
+  completetime: 5
+  result: VeilCultSoulVessel
+  materials:
+    Brass: 400
+    ChargedBrass: 100
+    
+- type: latheRecipe
+  id: MobCogscarab
+  completetime: 15
+  result: MobCogscarab
+  materials:
+    Brass: 500
+    
+- type: latheRecipe
+  id: MobClockworkMarouder
+  completetime: 15
+  result: MobClockworkMarouder
+  materials:
+    Brass: 750
+    ChargedBrass: 250
+    
+- type: latheRecipe
+  id: VeilCultStrangeShard
+  completetime: 15
+  result: VeilCultStrangeShard
+  materials:
+    Brass: 300
+    ChargedBrass: 500
+    
+- type: latheRecipe
+  id: ClockworkShield
+  completetime: 15
+  result: ClockworkShield
+  materials:
+    Brass: 500
+    ChargedBrass: 100

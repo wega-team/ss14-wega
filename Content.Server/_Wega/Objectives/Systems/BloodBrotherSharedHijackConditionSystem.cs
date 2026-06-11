@@ -12,13 +12,13 @@ using Robust.Shared.Player;
 
 namespace Content.Server.Objectives.Systems;
 
-public sealed class BloodBrotherSharedHijackConditionSystem : EntitySystem
+public sealed partial class BloodBrotherSharedHijackConditionSystem : EntitySystem
 {
-    [Dependency] private readonly EmergencyShuttleSystem _emergencyShuttle = default!;
-    [Dependency] private readonly SharedMindSystem _mind = default!;
-    [Dependency] private readonly SharedRoleSystem _role = default!;
-    [Dependency] private readonly MobStateSystem _mobState = default!;
-    [Dependency] private readonly BloodBrotherSharedConditionSystem _sharedCondition = default!;
+    [Dependency] private EmergencyShuttleSystem _emergencyShuttle = default!;
+    [Dependency] private SharedMindSystem _mind = default!;
+    [Dependency] private SharedRoleSystem _role = default!;
+    [Dependency] private MobStateSystem _mobState = default!;
+    [Dependency] private BloodBrotherSharedConditionSystem _sharedCondition = default!;
 
     public override void Initialize()
     {
@@ -67,7 +67,7 @@ public sealed class BloodBrotherSharedHijackConditionSystem : EntitySystem
     private bool IsShuttleHijackedByBloodBrothers(EntityUid shuttleGridId, EntityUid objectiveUid, EntityUid mindId)
     {
         var gridPlayers = Filter.BroadcastGrid(shuttleGridId).Recipients;
-        var humanoids = GetEntityQuery<HumanoidAppearanceComponent>();
+        var humanoids = GetEntityQuery<HumanoidProfileComponent>();
         var cuffable = GetEntityQuery<CuffableComponent>();
         EntityQuery<MobStateComponent>();
 

@@ -11,8 +11,8 @@ namespace Content.Server.Genetics.System;
 
 public sealed partial class DnaModifierSystem
 {
-    [Dependency] private readonly AudioSystem _audio = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
+    [Dependency] private AudioSystem _audio = default!;
+    [Dependency] private SharedDoAfterSystem _doAfterSystem = default!;
 
     private static readonly ProtoId<DamageTypePrototype> Damage = "Poison";
 

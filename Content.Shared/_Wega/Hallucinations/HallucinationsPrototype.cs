@@ -5,7 +5,7 @@ namespace Content.Shared.Hallucinations;
 /// <summary>
 ///     Packs of entities that can become a hallucination
 /// </summary>
-[Serializable, Prototype("hallucinationsPack")]
+[Prototype("hallucinationsPack")]
 public sealed partial class HallucinationsPrototype : IPrototype
 {
     [IdDataField]

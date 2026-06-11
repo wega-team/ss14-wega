@@ -21,8 +21,10 @@
     - suitStorage
   - type: LeechOnMarker
     leech:
-      groups:
-        Brute: -12
+      types:
+        Blunt: -4
+        Slash: -4
+        Piercing: -4
   - type: PointLight
     color: "#df7126"
   - type: BasicEntityAmmoProvider
@@ -68,8 +70,10 @@
     delay: 1.9
   - type: LeechOnMarker
     leech:
-      groups:
-        Brute: -16
+      types:
+        Blunt: -6
+        Slash: -6
+        Piercing: -6
   - type: MeleeWeapon
   - type: Tag
     tags:

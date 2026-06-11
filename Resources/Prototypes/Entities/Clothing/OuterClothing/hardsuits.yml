@@ -38,7 +38,6 @@
     clothingPrototype: ClothingHeadHelmetHardsuitAtmos
   - type: Tag
     tags:
-    - CorgiWearable
     - Hardsuit
     - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
@@ -76,7 +75,6 @@
     clothingPrototype: ClothingHeadHelmetHardsuitEngineering
   - type: Tag
     tags:
-    - CorgiWearable
     - Hardsuit
     - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
@@ -115,7 +113,6 @@
     - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
     - HardsuitSpatio
-    - CorgiWearable
 
 #Salvage Hardsuit
 - type: entity
@@ -159,7 +156,6 @@
   # Corvax-Wega-Salvage-end
   - type: Tag
     tags:
-    - CorgiWearable
     - Hardsuit
     - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
@@ -209,7 +205,6 @@
   # Corvax-Wega-Salvage-end
   - type: Tag
     tags:
-    - CorgiWearable
     - Hardsuit
     - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
@@ -288,7 +283,6 @@
     clothingPrototype: ClothingHeadHelmetHardsuitSecurity
   - type: Tag
     tags:
-    - CorgiWearable
     - Hardsuit
     - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
@@ -386,7 +380,6 @@
     clothingPrototype: ClothingHeadHelmetHardsuitCap
   - type: Tag
     tags:
-    - CorgiWearable
     - Hardsuit
     - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
@@ -426,7 +419,6 @@
     clothingPrototype: ClothingHeadHelmetHardsuitEngineeringWhite
   - type: Tag
     tags:
-    - CorgiWearable
     - Hardsuit
     - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
@@ -461,7 +453,6 @@
     clothingPrototype: ClothingHeadHelmetHardsuitMedical
   - type: Tag
     tags:
-    - CorgiWearable
     - Hardsuit
     - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
@@ -503,7 +494,6 @@
     tags:
     - WhitelistChameleon
     - HighRiskItem
-    - CorgiWearable
     - Hardsuit
     - ModNotEquipable # Corvax-Wega-ModularSuit
   - type: ToggleableClothing
@@ -622,7 +612,6 @@
     - Hardsuit
     - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
-    - CorgiWearable
     - ScurretWearable
   - type: StaticPrice
     price: 5000
@@ -692,7 +681,6 @@
     protection: 0.2 # Corvax-Wega-Disease
   - type: Tag
     tags:
-    - CorgiWearable
     - Hardsuit
     - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
@@ -732,7 +720,6 @@
     clothingPrototype: ClothingHeadHelmetHardsuitSyndieCommander
   - type: Tag
     tags:
-    - CorgiWearable
     - Hardsuit
     - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
@@ -773,7 +760,6 @@
   - type: Tag
     tags:
     - MonkeyWearable
-    - CorgiWearable
     - Hardsuit
     - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
@@ -811,7 +797,6 @@
     clothingPrototype: ClothingHeadHelmetHardsuitWizard
   - type: Tag
     tags:
-    - CorgiWearable
     - Hardsuit
     - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon

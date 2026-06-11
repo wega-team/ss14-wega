@@ -22,10 +22,14 @@
   equipment:
     ears: ClothingHeadsetCargo
     pocket1: AppraisalTool
-    pocket2: CargoHoloprojectorField # Corvax-Wega-Add
+# Corvax-Wega-Start
   #storage:
     #back:
     #- Stuff
+  storage:
+    back:
+    - CargoHoloprojectorField
+# Corvax-Wega-End
 
 - type: chameleonOutfit
   id: CargoTechnicianChameleonOutfit

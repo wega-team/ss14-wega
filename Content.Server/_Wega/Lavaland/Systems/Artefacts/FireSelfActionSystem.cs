@@ -4,9 +4,9 @@ using Content.Shared.Lavaland.Events;
 
 namespace Content.Server.Lavaland.Artefacts.Systems;
 
-public sealed class FireSelfActionSystem : EntitySystem
+public sealed partial class FireSelfActionSystem : EntitySystem
 {
-    [Dependency] private readonly FlammableSystem _flammable = default!;
+    [Dependency] private FlammableSystem _flammable = default!;
 
     public override void Initialize()
     {

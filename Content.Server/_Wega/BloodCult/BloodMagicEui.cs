@@ -7,7 +7,7 @@ namespace Content.Server.Blood.Cult.UI;
 /// <summary>
 /// Logic for the blood magic window
 /// </summary>
-public sealed class BloodMagicEui(EntityUid cultist, BloodCultSystem bloodCult) : BaseEui
+public sealed partial class BloodMagicEui(EntityUid cultist, BloodCultSystem bloodCult) : BaseEui
 {
     public override EuiStateBase GetNewState()
         => new BloodMagicState();

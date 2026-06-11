@@ -7,15 +7,14 @@ using Content.Shared.Martial.Arts.Components;
 using Content.Shared.Martial.Arts.Prototypes;
 using Content.Shared.Popups;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Utility;
 
 namespace Content.Shared.Martial.Arts;
 
-public abstract class SharedMartialArtsSystem : EntitySystem
+public abstract partial class SharedMartialArtsSystem : EntitySystem
 {
-    [Dependency] private readonly SharedActionsSystem _action = default!;
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private SharedActionsSystem _action = default!;
+    [Dependency] private IPrototypeManager _prototype = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
 
     public override void Initialize()
     {
@@ -79,8 +78,8 @@ public abstract class SharedMartialArtsSystem : EntitySystem
         if (stylePrototype.Actions == null)
             return;
 
-        if (!TryComp<MartialArtsComponent>(args.Equipee, out var martial))
-            martial = EnsureComp<MartialArtsComponent>(args.Equipee);
+        if (!TryComp<MartialArtsComponent>(args.EquipTarget, out var martial))
+            martial = EnsureComp<MartialArtsComponent>(args.EquipTarget);
 
         // Инициализируем список для этого стиля, если его еще нет
         if (!martial.AddedActions.ContainsKey(component.Style))
@@ -90,7 +89,7 @@ public abstract class SharedMartialArtsSystem : EntitySystem
 
         foreach (var action in stylePrototype.Actions)
         {
-            var newAction = _action.AddAction(args.Equipee, action);
+            var newAction = _action.AddAction(args.EquipTarget, action);
             if (newAction != null)
             {
                 martial.AddedActions[component.Style].Add(newAction.Value);
@@ -105,12 +104,12 @@ public abstract class SharedMartialArtsSystem : EntitySystem
             martial.Style.Add(component.Style);
 
         if (component.GotMessage && !string.IsNullOrEmpty(component.EquippedMessage))
-            _popup.PopupEntity(Loc.GetString(component.EquippedMessage), args.Equipee, args.Equipee);
+            _popup.PopupEntity(Loc.GetString(component.EquippedMessage), args.EquipTarget, args.EquipTarget);
     }
 
     private void OnUnequipped(EntityUid uid, MartialArtsClothingComponent component, GotUnequippedEvent args)
     {
-        if (!TryComp<MartialArtsComponent>(args.Equipee, out var martial))
+        if (!TryComp<MartialArtsComponent>(args.EquipTarget, out var martial))
             return;
 
         if (martial.AddedActions == null)
@@ -120,7 +119,7 @@ public abstract class SharedMartialArtsSystem : EntitySystem
         {
             foreach (var actionEntity in actionList)
             {
-                _action.RemoveAction(args.Equipee, actionEntity);
+                _action.RemoveAction(args.EquipTarget, actionEntity);
             }
             martial.AddedActions.Remove(component.Style);
         }
@@ -129,7 +128,7 @@ public abstract class SharedMartialArtsSystem : EntitySystem
             martial.Style.Remove(component.Style);
 
         if (component.GotMessage && !string.IsNullOrEmpty(component.UnequippedMessage))
-            _popup.PopupEntity(Loc.GetString(component.UnequippedMessage), args.Equipee, args.Equipee);
+            _popup.PopupEntity(Loc.GetString(component.UnequippedMessage), args.EquipTarget, args.EquipTarget);
     }
 
     /// <summary>

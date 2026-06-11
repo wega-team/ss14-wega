@@ -6,7 +6,7 @@ using Robust.Shared.Player;
 
 namespace Content.Server.NPC.Systems;
 
-public sealed class NPCAggressionSystem : EntitySystem
+public sealed partial class NPCAggressionSystem : EntitySystem
 {
     public override void Initialize()
     {

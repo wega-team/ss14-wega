@@ -7,9 +7,9 @@ using Robust.Shared.Player;
 
 namespace Content.Server.Lavaland.Artefacts.Systems;
 
-public sealed class SoulStorageSystem : EntitySystem
+public sealed partial class SoulStorageSystem : EntitySystem
 {
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
+    [Dependency] private SharedHandsSystem _hands = default!;
 
     public override void Initialize()
     {
@@ -35,7 +35,7 @@ public sealed class SoulStorageSystem : EntitySystem
         if (args.Origin == null || args.NewMobState != MobState.Dead)
             return;
 
-        if (!HasComp<HumanoidAppearanceComponent>(args.Target)) // Only humanoids
+        if (!HasComp<HumanoidProfileComponent>(args.Target)) // Only humanoids
             return;
 
         var item = _hands.GetActiveItemOrSelf(args.Origin.Value);

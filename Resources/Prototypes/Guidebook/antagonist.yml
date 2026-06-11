@@ -4,6 +4,7 @@
   text: "/ServerInfo/Guidebook/Antagonist/Antagonists.xml"
   children:
   - Traitors
+  - VeilCult # Corvax-Wega-VeilCult
   - Thieves
   - Vampires # Corvax-Wega-Vampire
   - BloodCult # Corvax-Wega-Blood-Cult

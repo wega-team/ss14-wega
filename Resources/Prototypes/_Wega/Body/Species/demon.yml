@@ -1,0 +1,266 @@
+- type: markingsGroup
+  parent: None
+  id: Demon
+  limits:
+    enum.HumanoidVisualLayers.Special:
+      limit: 2
+      required: false
+    enum.HumanoidVisualLayers.HeadTop:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.HeadSide:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.Hair:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.FacialHair:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.Snout:
+      limit: 2
+      required: false
+    enum.HumanoidVisualLayers.Tail:
+      limit: 1
+      required: true
+      default: [ DemomTail ]
+    enum.HumanoidVisualLayers.Chest:
+      limit: 2
+      required: false
+    enum.HumanoidVisualLayers.LArm:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.RArm:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.LLeg:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.RLeg:
+      limit: 1
+      required: false
+
+- type: entity
+  parent: BaseSpeciesAppearance
+  id: AppearanceDemon
+  name: demon appearance
+  components:
+  - type: InitialBody
+    organs:
+      Torso: OrganDemonTorso
+      Head: OrganDemonHead
+      ArmLeft: OrganDemonArmLeft
+      ArmRight: OrganDemonArmRight
+      HandLeft: OrganDemonHandLeft
+      HandRight: OrganDemonHandRight
+      LegLeft: OrganDemonLegLeft
+      LegRight: OrganDemonLegRight
+      FootLeft: OrganDemonFootLeft
+      FootRight: OrganDemonFootRight
+      Brain: OrganDemonBrain
+      Eyes: OrganDemonEyes
+      Tongue: OrganDemonTongue
+      Appendix: OrganDemonAppendix
+      Ears: OrganDemonEars
+      Lungs: OrganDemonLungs
+      Heart: OrganDemonHeart
+      Stomach: OrganDemonStomach
+      Liver: OrganDemonLiver
+      Kidneys: OrganDemonKidneys
+  - type: HumanoidProfile
+    species: Demon
+
+- type: entity
+  name: Urisst' Mzhand Demon
+  parent:
+  - AppearanceDemon
+  - BaseSpeciesMobOrganic
+  - BaseOperated
+  id: MobDemon
+  components:
+  - type: Speech
+    speechSounds: Lizard
+  - type: Wagging
+  - type: Damageable
+    damageModifierSet: Demon
+  - type: Injurable
+    damageContainer: Biological
+  - type: MeleeWeapon
+    soundHit:
+      path: /Audio/Weapons/pierce.ogg
+    angle: 30
+    animation: WeaponArcPunch
+    damage:
+      types:
+        Slash: 2
+        Piercing: 3
+  - type: Temperature
+    currentTemperature: 310.15
+    specificHeat: 46
+  - type: TemperatureDamage
+    heatDamageThreshold: 343
+    coldDamageThreshold: 255
+    coldDamage:
+      types:
+        Cold : 0.1
+    heatDamage:
+      types:
+        Heat : 0.5
+  - type: TemperatureSpeed
+    thresholds:
+      285: 0.8
+      248: 0.6
+      220: 0.4
+  - type: DnaModifier
+    upper: MobDemon
+    lowest: MobMonkeyDemon
+  - type: DamageOnAction
+    damage:
+      types:
+        Blunt: -10
+        Slash: -10
+        Piercing: -10
+        Heat: -10
+        Cold: -10
+        Poison: -10
+        Asphyxiation: -20
+        Bloodloss: -20
+  - type: PassiveDamage
+    allowedStates:
+    - Alive
+    damage:
+      types:
+        Heat: -0.1
+        Blunt: -0.1
+
+- type: entity
+  parent: OrganBase
+  id: OrganDemon
+  abstract: true
+  suffix: Demon
+
+- type: entity
+  id: OrganDemonMetabolizer
+  abstract: true
+  components:
+  - type: Metabolizer
+    metabolizerTypes: [ Animal ]
+
+- type: entity
+  parent: OrganDemon
+  id: OrganDemonInternal
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: Mobs/Species/Human/organs.rsi
+
+- type: entity
+  id: OrganDemonVisual
+  abstract: true
+  components:
+  - type: VisualOrgan
+    data:
+      sprite: _Wega/Mobs/Species/Demon/parts.rsi
+  - type: VisualOrganMarkings
+    markingData:
+      group: Demon
+
+- type: entity
+  parent: [ OrganDemon, OrganDemonVisual ]
+  id: OrganDemonExternal
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Demon/parts.rsi
+
+- type: entity
+  parent: [ OrganBaseTorsoSexed, OrganBaseTorso, OrganDemonExternal ]
+  id: OrganDemonTorso
+
+- type: entity
+  parent: [ OrganBaseHeadSexed, OrganBaseHead, OrganDemonExternal ]
+  id: OrganDemonHead
+  components:
+  - type: VisualOrganMarkings
+    hideableLayers:
+    - enum.HumanoidVisualLayers.Snout
+    - enum.HumanoidVisualLayers.HeadSide
+    - enum.HumanoidVisualLayers.Hair
+    - enum.HumanoidVisualLayers.FacialHair
+
+- type: entity
+  parent: [ OrganBaseArmLeft, OrganDemonExternal ]
+  id: OrganDemonArmLeft
+
+- type: entity
+  parent: [ OrganBaseArmRight, OrganDemonExternal ]
+  id: OrganDemonArmRight
+
+- type: entity
+  parent: [ OrganBaseHandLeft, OrganDemonExternal ]
+  id: OrganDemonHandLeft
+
+- type: entity
+  parent: [ OrganBaseHandRight, OrganDemonExternal ]
+  id: OrganDemonHandRight
+
+- type: entity
+  parent: [ OrganBaseLegLeft, OrganDemonExternal ]
+  id: OrganDemonLegLeft
+
+- type: entity
+  parent: [ OrganBaseLegRight, OrganDemonExternal ]
+  id: OrganDemonLegRight
+
+- type: entity
+  parent: [ OrganBaseFootLeft, OrganDemonExternal ]
+  id: OrganDemonFootLeft
+
+- type: entity
+  parent: [ OrganBaseFootRight, OrganDemonExternal ]
+  id: OrganDemonFootRight
+
+- type: entity
+  parent: [ OrganBaseBrain, OrganDemonInternal ]
+  id: OrganDemonBrain
+
+- type: entity
+  parent: [ OrganDemonVisual, OrganBaseEyes, OrganDemonInternal ]
+  id: OrganDemonEyes
+  components:
+  - type: VisualOrgan
+    data:
+      sprite: Mobs/Customization/eyes.rsi
+      state: eyes
+
+- type: entity
+  parent: [ OrganBaseTongue, OrganDemonInternal ]
+  id: OrganDemonTongue
+
+- type: entity
+  parent: [ OrganBaseAppendix, OrganDemonInternal ]
+  id: OrganDemonAppendix
+
+- type: entity
+  parent: [ OrganBaseEars, OrganDemonInternal ]
+  id: OrganDemonEars
+
+- type: entity
+  parent: [ OrganBaseLungs, OrganDemonInternal, OrganDemonMetabolizer ]
+  id: OrganDemonLungs
+
+- type: entity
+  parent: [ OrganBaseHeart, OrganDemonInternal, OrganDemonMetabolizer ]
+  id: OrganDemonHeart
+
+- type: entity
+  parent: [ OrganBaseStomach, OrganDemonInternal, OrganDemonMetabolizer ]
+  id: OrganDemonStomach
+
+- type: entity
+  parent: [ OrganBaseLiver, OrganDemonInternal, OrganDemonMetabolizer ]
+  id: OrganDemonLiver
+
+- type: entity
+  parent: [ OrganBaseKidneys, OrganDemonInternal, OrganDemonMetabolizer ]
+  id: OrganDemonKidneys

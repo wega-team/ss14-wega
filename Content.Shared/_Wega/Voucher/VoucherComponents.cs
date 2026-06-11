@@ -25,7 +25,7 @@ public sealed partial class VoucherCardComponent : Component
     public ProtoId<VoucherKitPrototype>? CurrentKit = default!;
 }
 
-[Prototype("voucherKit")]
+[Prototype]
 public sealed partial class VoucherKitPrototype : IPrototype
 {
     [IdDataField]

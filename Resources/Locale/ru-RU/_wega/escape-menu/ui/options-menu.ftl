@@ -1,2 +1,9 @@
 ui-options-function-strangle = Душить
 ui-options-function-offer-item = Переключить режим передачи предмета
+ui-options-function-toggle-posing = Переключить режим позирования
+ui-options-function-posing-offset-left = Переместиться влево (позирование)
+ui-options-function-posing-offset-right = Переместиться вправо (позирование)
+ui-options-function-posing-offset-up = Переместиться вверх (позирование)
+ui-options-function-posing-offset-down = Переместиться вниз (позирование)
+ui-options-function-posing-rotate-negative = Повернуть против часовой (позирование)
+ui-options-function-posing-rotate-positive = Повернуть по часовой (позирование)

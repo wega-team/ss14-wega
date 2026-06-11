@@ -10,8 +10,8 @@ namespace Content.Server.Lavaland.Systems;
 
 public sealed partial class LavalandShuttleSystem
 {
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
-    [Dependency] private readonly UserInterfaceSystem _ui = default!;
+    [Dependency] private IGameTiming _gameTiming = default!;
+    [Dependency] private UserInterfaceSystem _ui = default!;
 
     private void OnConsoleInit(EntityUid uid, LavalandShuttleConsoleComponent component, MapInitEvent args)
     {

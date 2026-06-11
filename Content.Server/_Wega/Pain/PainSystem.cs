@@ -13,15 +13,15 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Server.Pain;
 
-public sealed class PainSystem : EntitySystem
+public sealed partial class PainSystem : EntitySystem
 {
-    [Dependency] private readonly ChatSystem _emoting = default!;
-    [Dependency] private readonly SharedJitteringSystem _jittering = default!;
-    [Dependency] private readonly SharedStunSystem _stun = default!;
-    [Dependency] private readonly VomitSystem _vomit = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly MovementModStatusSystem _movementMod = default!;
+    [Dependency] private ChatSystem _emoting = default!;
+    [Dependency] private SharedJitteringSystem _jittering = default!;
+    [Dependency] private SharedStunSystem _stun = default!;
+    [Dependency] private VomitSystem _vomit = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private MovementModStatusSystem _movementMod = default!;
 
     public override void Initialize()
     {

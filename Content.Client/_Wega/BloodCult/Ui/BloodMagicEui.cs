@@ -5,7 +5,7 @@ using JetBrains.Annotations;
 namespace Content.Client._Wega.BloodCult.Ui;
 
 [UsedImplicitly]
-public sealed class BloodMagicEui : BaseEui
+public sealed partial class BloodMagicEui : BaseEui
 {
     private readonly BloodMagicMenu _menu;
 

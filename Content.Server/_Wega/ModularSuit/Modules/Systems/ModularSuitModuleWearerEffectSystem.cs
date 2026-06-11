@@ -2,7 +2,7 @@ using Content.Shared.Modular.Suit;
 
 namespace Content.Server.Modular.Suit;
 
-public sealed class ModularSuitWearerEffectSystem : EntitySystem
+public sealed partial class ModularSuitWearerEffectSystem : EntitySystem
 {
     public override void Initialize()
     {
@@ -51,7 +51,13 @@ public sealed class ModularSuitWearerEffectSystem : EntitySystem
         {
             var compType = entry.Component.GetType();
             if (EntityManager.TryGetComponent(user.Value, compType, out var comp))
-                Dirty(user.Value, comp);
+            {
+                var reg = EntityManager.ComponentFactory.GetRegistration(compType);
+                if (reg.NetID != null)
+                {
+                    Dirty(user.Value, comp);
+                }
+            }
         }
     }
 

@@ -10,7 +10,7 @@ namespace Content.Server.NPC.HTN.PrimitiveTasks.Operators;
 
 public sealed partial class SlimeWanderOperator : HTNOperator, IHtnConditionalShutdown
 {
-    [Dependency] private readonly IEntityManager _entMan = default!;
+    [Dependency] private IEntityManager _entMan = default!;
     private NPCSteeringSystem _steering = default!;
     private PathfindingSystem _pathfind = default!;
 

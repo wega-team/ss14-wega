@@ -5,9 +5,9 @@ using Content.Shared.Popups;
 
 namespace Content.Server.Modular.Suit;
 
-public sealed class ModularSuitSpringlockModuleSystem : EntitySystem
+public sealed partial class ModularSuitSpringlockModuleSystem : EntitySystem
 {
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
 
     public override void Initialize()
     {
@@ -76,6 +76,6 @@ public sealed class ModularSuitSpringlockModuleSystem : EntitySystem
 
     private void OnUnequipped(Entity<ModularSuitSpringlockInstalledComponent> ent, ref GotUnequippedEvent args)
     {
-        RemComp<AffectedModuleSpringlockComponent>(args.Equipee);
+        RemComp<AffectedModuleSpringlockComponent>(args.EquipTarget);
     }
 }

@@ -42,6 +42,7 @@
   - type: TimerTriggerVisuals
     unprimedSprite: base
   - type: Damageable
+  - type: Injurable
     damageContainer: Inorganic
   - type: Destructible
     thresholds:
@@ -55,6 +56,11 @@
   - type: Construction
     graph: FireBomb
     node: firebomb
+    # Corvax-Wega-Edit-Start
+  - type: Tag
+    tags:
+    - FireBomb
+    # Corvax-Wega-Edit-End
 
 # has igniter but no fuel or wires
 - type: entity
@@ -96,13 +102,11 @@
     - state: base
       map: ["enum.OpenableVisuals.Layer"]
     - state: fuel
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 30
-        reagents:
-        - ReagentId: WeldingFuel
-          Quantity: 30
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: WeldingFuel
+        Quantity: 40
   - type: Construction
     node: fuel
     defaultTarget: firebomb

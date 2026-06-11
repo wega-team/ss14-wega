@@ -1,19 +1,20 @@
 using Robust.Shared.GameStates;
+using Content.Shared.Overlays;
 
 namespace Content.Shared.Shaders;
 
-[RegisterComponent, NetworkedComponent]
-public sealed partial class NightVisionComponent : Component
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true)]
+public sealed partial class NightVisionComponent : ToggleableHudComponent
 {
-    [DataField("brightness")]
-    public float Brightness = 1.5f;
+    [DataField("brightness"), AutoNetworkedField]
+    public float Brightness = 1f;
 
-    [DataField("tint")]
+    [DataField("tint"), AutoNetworkedField]
     public Color Tint = Color.FromHex("#1c89f2");
 
-    [DataField("luminanceThreshold")]
-    public float LuminanceThreshold = 0.5f;
+    [DataField("luminanceThreshold"), AutoNetworkedField]
+    public float LuminanceThreshold = 0f;
 
-    [DataField("noiseAmount")]
+    [DataField("noiseAmount"), AutoNetworkedField]
     public float NoiseAmount = 0.075f;
 }

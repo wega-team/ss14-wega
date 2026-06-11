@@ -9,13 +9,13 @@ using Robust.Shared.Player;
 
 namespace Content.Server.MindCommunication;
 
-public sealed class MindCommunicationGenSystem : EntitySystem
+public sealed partial class MindCommunicationGenSystem : EntitySystem
 {
-    [Dependency] private readonly SharedActionsSystem _action = default!;
-    [Dependency] private readonly IAdminLogManager _admin = default!;
-    [Dependency] private readonly QuickDialogSystem _quickDialog = default!;
-    [Dependency] private readonly PrayerSystem _prayerSystem = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private SharedActionsSystem _action = default!;
+    [Dependency] private IAdminLogManager _admin = default!;
+    [Dependency] private QuickDialogSystem _quickDialog = default!;
+    [Dependency] private PrayerSystem _prayerSystem = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
 
     public override void Initialize()
     {

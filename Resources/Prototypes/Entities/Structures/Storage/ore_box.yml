@@ -9,8 +9,9 @@
   - type: Anchorable
   - type: InteractionOutline
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: Wood
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -61,7 +62,7 @@
       # Corvax-Wega-Start
       - ArtifactFragment
       - MagmiteAlloy
-      - Gems 
+      - Gems
       # Corvax-Wega-end
   - type: UserInterface
     interfaces:
@@ -85,6 +86,6 @@
         - MachineLayer
   # Corvax-Wega-Lavaland-start
   - type: MagnetPickup
-    needForSlotFlag: false
+    slotFlags: null
     range: 1.5
   # Corvax-Wega-Lavaland-end

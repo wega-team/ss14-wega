@@ -2,4 +2,4 @@
 
 namespace Content.Client._Wega.Xenobiology;
 
-public sealed class CellSystem : SharedCellSystem;
+public sealed partial class CellSystem : SharedCellSystem;

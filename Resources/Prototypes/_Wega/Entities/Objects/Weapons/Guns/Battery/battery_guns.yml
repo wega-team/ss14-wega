@@ -311,3 +311,81 @@
   - type: BatteryAmmoProvider
     proto: IonScan
     fireCost: 500
+
+- type: entity
+  name: energy carabine "Pulsar"
+  parent: [BaseWeaponBattery, BaseSecurityContraband, BaseGunWieldable]
+  id: WeaponEnergyPulsar
+  description: High stop-power energy carabine.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Battery/pulsar.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-unshaded-4
+      map: ["enum.GunVisualLayers.MagUnshaded"]
+      shader: unshaded
+  - type: Clothing
+    sprite: _Wega/Objects/Weapons/Guns/Battery/pulsar.rsi
+  - type: MagazineVisuals
+    magState: mag
+    steps: 5
+    zeroVisible: false
+  - type: Appearance
+  - type: Gun
+    selectedMode: FullAuto
+    fireRate: 2.8
+    availableModes:
+      - SemiAuto
+      - FullAuto
+    projectileSpeed: 40
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
+  - type: BatteryAmmoProvider
+    proto: PulsarProjectile
+    fireCost: 200
+  - type: Battery
+    maxCharge: 3200
+    startingCharge: 3200
+  - type: BatterySelfRecharger
+    autoRechargeRate: 35
+  - type: Item
+    size: Large
+    
+- type: entity
+  name: pulse shotgun
+  parent: BaseWeaponBattery
+  id: WeaponPulseShotgun
+  description: The final prototype of the energy shotgun, specially designed for death squads. Devoid of firing modes, but more deadly.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Battery/pulseshotgun.rsi
+    layers:
+      - state: base
+        map: ["enum.GunVisualLayers.Base"]
+      - state: mag-unshaded-4
+        map: ["enum.GunVisualLayers.MagUnshaded"]
+        shader: unshaded
+  - type: MagazineVisuals
+    magState: mag
+    steps: 5
+    zeroVisible: false
+  - type: Gun
+    fireRate: 1.5
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/laser3.ogg
+  - type: Wieldable
+    unwieldOnUse: false
+  - type: BatteryAmmoProvider
+    proto: BulletPulseSpread
+    fireCost: 100
+  - type: Item
+    size: Large
+    sprite: _Wega/Objects/Weapons/Guns/Battery/inhands_64.rsi
+    heldPrefix: pulse
+  - type: GunRequiresWield
+  - type: Battery
+    maxCharge: 1000
+    startingCharge: 1000
+  - type: Appearance
