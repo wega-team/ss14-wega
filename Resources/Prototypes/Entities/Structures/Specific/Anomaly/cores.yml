@@ -532,10 +532,10 @@
     energy: 3.5
     color: "#ffffff"
     castShadows: false
-  - type: SolutionContainerManager
-    solutions:
-      beaker:
-        maxVol: 150
+  - type: Solution
+    id: beaker
+    solution:
+      maxVol: 480
   - type: FitsInDispenser
     solution: beaker
   - type: RefillableSolution
