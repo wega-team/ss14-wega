@@ -161,7 +161,6 @@
     suitstorage: OxygenTankFilled
   inhand:
     - WeaponCleawingSaw
-    - WeaponProtoKineticAcceleratorBDM
 #endregion
 
 #region Hierophant
