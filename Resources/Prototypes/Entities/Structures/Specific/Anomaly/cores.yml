@@ -186,10 +186,13 @@
         maxDistance: 1
 
 - type: entity
-  parent: BaseAnomalyCore
+  parent: [BaseAnomalyCore, BaseHypospray]
   id: AnomalyCoreLiquid
   suffix: Liquid
   components:
+  - type: Solution
+    solution:
+      maxVol: 10
   - type: Injector
     solutionName: hypospray
     ignoreClosed: false
