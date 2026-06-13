@@ -625,3 +625,16 @@
     whitelist:
     - ShaftMiner
     - SalvageSpecialist
+    
+- type: listing
+  id: UplinkJumpsuitVentCrawler
+  name: uplink-jumpsuit-ventcrawler-name
+  description: uplink-jumpsuit-ventcrawler-desc
+  productEntity: ClothingUniformJumpsuitVentCrawler
+  discountCategory: rareDiscounts
+  discountDownTo:
+    Telecrystal: 4
+  cost:
+    Telecrystal: 6
+  categories:
+  - UplinkWearables

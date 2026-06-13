@@ -35,7 +35,7 @@
     sprite: _Wega/Objects/Weapons/Melee/contractor_baton.rsi
     state: icon
   - type: MeleeWeapon
-    attackRate: 0.35
+    attackRate: 0.6
     wideAnimationRotation: -135
     damage:
       types:
@@ -47,6 +47,7 @@
     malus: 0.4
   - type: StaminaDamageOnHit
     damage: 75
+  - type: KnockdownOnHit
   - type: Item
     sprite: Objects/Weapons/Melee/contractor_baton.rsi
     size: Normal
