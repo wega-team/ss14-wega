@@ -49,7 +49,7 @@
     damage:
       types:
         Blunt: 10
-        Structural: 30
+        Structural: 20
   - type: Item
     size: Normal
     shape:
