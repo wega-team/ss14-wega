@@ -638,3 +638,8 @@
     Telecrystal: 6
   categories:
   - UplinkWearables
+  conditions:
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - NukeOpsUplink

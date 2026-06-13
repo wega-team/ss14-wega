@@ -2,20 +2,20 @@ namespace Content.Server.Stunnable.Components;
 
 
 [RegisterComponent]
-public sealed partial class MeleeThrowOnHitComponent : Component
+public sealed partial class KnockdownOnHitComponent : Component
 {
-    [Datafield]
+    [DataField]
     public bool KnockdownBorgs = false;
     
-    [Datafield]
+    [DataField]
     public bool Refresh = true;
     
-    [Datafield]
+    [DataField]
     public bool AutoStand = true;
     
-    [Datafield]
+    [DataField]
     public bool DropItems = false;
     
-    [Datafield]
-    public float Time = 3f;
+    [DataField]
+    public TimeSpan Time = TimeSpan.FromSeconds(3);
 }

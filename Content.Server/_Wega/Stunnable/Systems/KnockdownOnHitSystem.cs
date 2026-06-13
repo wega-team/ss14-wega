@@ -1,6 +1,7 @@
 using Content.Server.Stunnable.Components;
 using Content.Shared.Stunnable;
 using Content.Shared.Weapons.Melee.Events;
+using Content.Shared.Silicons.Borgs.Components;
 
 namespace Content.Server.Stunnable.Systems;
     
@@ -28,3 +29,4 @@ public sealed class KnockdownOnHitSystem : EntitySystem
         }
         
     }
+}
