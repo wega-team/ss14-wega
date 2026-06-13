@@ -505,7 +505,7 @@
   productEntity: ContractorBaton
   discountCategory: veryRareDiscounts
   discountDownTo:
-    Telecrystal: 5s
+    Telecrystal: 5
   cost:
     Telecrystal: 7
   categories:
