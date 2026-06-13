@@ -17,6 +17,8 @@
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/kinetic_accel.ogg
     projectileSpeed: 25
+  - type: Wieldable
+    wielded: false
 
 - type: entity
   name: magmite proto-kinetic accelerator
