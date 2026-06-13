@@ -595,7 +595,7 @@
   description: uplink-thieving-desc
   icon: { sprite: Clothing/Hands/Gloves/combat.rsi, state: icon }
   productEntity: ThievingGloves
-  discountCategory: RareDiscounts
+  discountCategory: rareDiscounts
   discountDownTo:
     Telecrystal: 8
   cost:

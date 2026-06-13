@@ -44,7 +44,7 @@
   name: uplink-esword-name
   description: uplink-esword-desc
   icon: { sprite: /Textures/Objects/Weapons/Melee/e_sword.rsi, state: icon }
-  discountCategory: RareDiscounts # Corvax-Wega-Edit
+  discountCategory: rareDiscounts # Corvax-Wega-Edit
   discountDownTo:
     Telecrystal: 6 # Corvax-Wega-Edit
   productEntity: EnergySword
@@ -102,7 +102,7 @@
   name: uplink-gloves-north-star-name
   description: uplink-gloves-north-star-desc
   productEntity: ClothingHandsGlovesNorthStar
-  discountCategory: RareDiscounts # Corvax-Wega-Edit
+  discountCategory: rareDiscounts # Corvax-Wega-Edit
   discountDownTo:
     Telecrystal: 4
   cost:
@@ -236,7 +236,7 @@
   productEntity: BriefcaseWeaponBulldogFilled
   discountCategory: veryRareDiscounts
   discountDownTo:
-    Telecrystal: 10 # Corvax-Wega-Edit
+    Telecrystal: 10
   cost:
     Telecrystal: 13 # Corvax-Wega-Syndi
   categories:
