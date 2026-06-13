@@ -7,11 +7,18 @@
   license: "CC-BY-SA-3.0"
   copyright: "SS13 Tgstation"
   source: "https://github.com/tgstation/tgstation/tree/master"
-  
-- files: ["urr1.ogg, urr2.ogg, urr3.ogg"]
+
+  - files: ["urr1.ogg"]
   license: "CC-BY-SA-3.0"
   copyright: "by krikun12 on DC"
-  source:
-  - "https://soundcloud.com/krikun12/urr1/s-YUM4jqtqyo0?si=5b5a6e1757834f5e9c750a62f33ab966"
-  - "https://soundcloud.com/krikun12/urr2/s-Vv4oNFx8waR?si=5e87f875543740e99a7520d5ee513e6d"
-  - "https://soundcloud.com/krikun12/urr3/s-zkogHje3OE1?si=c88a781e1d8b41fb889791cf09a542fb"
+  source: "https://soundcloud.com/krikun12/urr1/s-YUM4jqtqyo0"
+
+  - files: ["urr2.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "by krikun12 on DC"
+  source: "https://soundcloud.com/krikun12/urr2/s-Vv4oNFx8waR"
+
+  - files: ["urr3.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "by krikun12 on DC"
+  source: "https://soundcloud.com/krikun12/urr3/s-zkogHje3OE1"
