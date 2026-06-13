@@ -4,7 +4,7 @@
   onlyGroupWhitelisted: true
   limits:
     enum.HumanoidVisualLayers.Hair:
-      limit: 0
+      limit: 1 #Corvax-Wega-Edit
       required: false
     enum.HumanoidVisualLayers.FacialHair:
       limit: 0
