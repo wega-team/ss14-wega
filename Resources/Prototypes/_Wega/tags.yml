@@ -310,6 +310,9 @@
 
 - type: Tag
   id: GunUpgradeAoE
+  
+- type: Tag
+  id: GunUpgradePressure
 
 - type: Tag
   id: GunUpgradeLifesteal

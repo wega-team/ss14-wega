@@ -35,7 +35,7 @@
     sender: reaper-has-risen-sender
     sound:
       path: /Audio/_Wega/Effects/ghost.ogg
-    color: red
+    color: "#66b9ae"
   - type: CargoSellBlacklist
   - type: ContentEye
     maxZoom: 2.0,2.0

@@ -124,10 +124,13 @@ public sealed partial class AbsorbedByVeilComponent : Component;
 public sealed partial class StunEnchantComponent : Component
 {
     [DataField]
+    public bool Knockout = false;
+    
+    [DataField]
     public TimeSpan StunTime = TimeSpan.FromSeconds(5);
 
     [DataField]
-    public TimeSpan MuteTime = TimeSpan.FromSeconds(10);
+    public TimeSpan MuteTime = TimeSpan.FromSeconds(8);
 
     [DataField]
     public bool Mute = true;
@@ -187,6 +190,9 @@ public sealed partial class ConfusionEnchantComponent : Component
 public sealed partial class CrusherEnchantComponent : Component;
 
 [RegisterComponent, NetworkedComponent]
+public sealed partial class DismantlingEnchantComponent : Component;
+
+[RegisterComponent, NetworkedComponent]
 public sealed partial class KnockbackEnchantComponent : Component
 {
     [DataField]
@@ -236,7 +242,7 @@ public sealed partial class CamouflageEnchantComponent : Component;
 public sealed partial class AbsorbEnchantComponent : Component;
 
 [RegisterComponent, NetworkedComponent]
-public sealed partial class FlashEnchantComponent : Component;
+public sealed partial class SmokeEnchantComponent : Component;
 
 [RegisterComponent, NetworkedComponent]
 public sealed partial class HardenPlatesEnchantComponent : Component
@@ -263,7 +269,7 @@ public sealed partial class RedFlameEnchantComponent : Component
 public sealed partial class TimeStopEnchantComponent : Component
 {
     [DataField]
-    public TimeSpan Time = TimeSpan.FromSeconds(5);
+    public TimeSpan Time = TimeSpan.FromSeconds(7);
 }
 
 [RegisterComponent, NetworkedComponent]

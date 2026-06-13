@@ -30,6 +30,23 @@
         min: 2
         max: 2
 
+- type: entity
+  parent: Traitor
+  id: SubTraitor
+  components:
+  - type: GameRule
+    minPlayers: 15
+  - type: AntagSelection
+    agentName: traitor-round-end-agent-name
+    lateJoinAdditional: true
+    antags:
+    - !type:LinearAntagCount
+      proto: Traitor
+      playerRatio: 15
+      range:
+        min: 1
+        max: 4
+
 # Extended testing
 - type: entity
   parent: BaseGameRule

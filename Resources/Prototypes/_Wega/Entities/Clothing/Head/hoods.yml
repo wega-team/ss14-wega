@@ -200,6 +200,9 @@
   categories: [ HideSpawnMenu ]
   name: clockwork robe's hood
   components:
+  - type: HideLayerClothing
+    slots:
+    - HeadTop
   - type: Sprite
     sprite: _Wega/Clothing/Head/Hoods/Coat/clockwork_hood.rsi
   - type: Clothing

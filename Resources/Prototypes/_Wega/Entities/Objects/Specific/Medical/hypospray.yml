@@ -1,6 +1,6 @@
 - type: entity
   name: hynospray
-  parent: BaseItem
+  parent: [BaseHypospray, SolutionHyposprayTiny]
   description: A variation of hypospray, having reduced parameters of the measurement volume, drug administration and an increased parameter of transferring liquid to the administration mode.
   id: Hynospray
   components:
@@ -16,16 +16,15 @@
     allowedModes:
     - HyposprayDynamicMode
     - HyposprayInjectMode
-  - type: SolutionContainerManager
-    solutions:
-      hypospray:
-        maxVol: 10
   - type: RefillableSolution
     solution: hypospray
   - type: ExaminableSolution
     solution: hypospray
   - type: UseDelay
     delay: 4.5
+  - type: Solution
+    solution:
+      maxVol: 10
 
 - type: entity
   name: chemical injector
@@ -79,19 +78,17 @@
     maxFillLevels: 1
     changeColor: false
     emptySpriteName: bluepen_empty
-  - type: SolutionContainerManager
-    solutions:
-      pen:
-        maxVol: 40
-        reagents:
-          - ReagentId: Leporazine
-            Quantity: 10
-          - ReagentId: LavalandSerum
-            Quantity: 15
-          - ReagentId: Epinephrine
-            Quantity: 10
-          - ReagentId: Omnizine
-            Quantity: 5
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Leporazine
+        Quantity: 10
+      - ReagentId: LavalandSerum
+        Quantity: 15
+      - ReagentId: Epinephrine
+        Quantity: 10
+      - ReagentId: Omnizine
+        Quantity: 5
   - type: Injector
     solutionName: pen
     currentTransferAmount: null
@@ -126,13 +123,11 @@
     maxFillLevels: 1
     changeColor: false
     emptySpriteName: ertpen_empty
-  - type: SolutionContainerManager
-    solutions:
-      pen:
-        maxVol: 30
-        reagents:
-        - ReagentId: Stimulants
-          Quantity: 30
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Stimulants
+        Quantity: 30
   - type: Injector
     solutionName: pen
     currentTransferAmount: null

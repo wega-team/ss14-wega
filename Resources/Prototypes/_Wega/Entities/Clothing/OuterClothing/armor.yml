@@ -286,6 +286,13 @@
         Slash: 0.6
         Piercing: 0.6
         Heat: 0.55
+  - type: ExplosionResistance
+    damageCoefficient: 0.6
+  - type: FireProtection
+    reduction: 0.65
+  - type: TemperatureProtection
+    heatingCoefficient: 0.6
+    coolingCoefficient: 0.8
   - type: GroupExamine
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetClockworkCuirass
@@ -296,4 +303,4 @@
     - VeilCultBrassCuirassHardenPlates
     - VeilCultBrassCuirassReflection
     - VeilCultBrassCuirassAbsorb
-    - VeilCultBrassCuirassFlash
+    - VeilCultBrassCuirassSmoke

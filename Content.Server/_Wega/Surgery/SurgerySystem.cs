@@ -7,7 +7,6 @@ using Content.Shared.Buckle.Components;
 using Content.Shared.Chat.Prototypes;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Damage.Systems;
-using Content.Shared.Examine;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
@@ -20,7 +19,6 @@ using Content.Shared.Stunnable;
 using Content.Shared.Surgery;
 using Content.Shared.Surgery.Components;
 using Content.Shared.Tag;
-using Content.Shared.Throwing;
 using Content.Shared.Tools;
 using Content.Shared.Tools.Systems;
 using Robust.Server.GameObjects;
@@ -90,9 +88,6 @@ public sealed partial class SurgerySystem : EntitySystem
         SubscribeLocalEvent<OperatedComponent, RejuvenateEvent>(OnRejuvenate);
         SubscribeLocalEvent<OperatedComponent, StandUpAttemptEvent>(OnStandUpAttempt);
         SubscribeLocalEvent<OperatedComponent, IsEquippingAttemptEvent>(OnIsEquipping);
-
-        SubscribeLocalEvent<SterileComponent, ExaminedEvent>(OnSterileExamined);
-        SubscribeLocalEvent<SterileComponent, ThrownEvent>(OnThrow);
     }
 
     public override void Update(float frameTime)
@@ -130,24 +125,6 @@ public sealed partial class SurgerySystem : EntitySystem
                 }
                 operated.NextRegenerationTick -= frameTime;
             }
-        }
-
-        var sterileQuery = EntityQueryEnumerator<SterileComponent>();
-        while (sterileQuery.MoveNext(out var uid, out var sterile))
-        {
-            if (sterile.AlwaysSterile)
-                continue;
-
-            if (sterile.NextUpdateTick <= 0)
-            {
-                sterile.NextUpdateTick = 5f;
-                sterile.Amount -= sterile.DecayRate;
-                if (sterile.Amount <= 0)
-                {
-                    RemComp<SterileComponent>(uid);
-                }
-            }
-            sterile.NextUpdateTick -= frameTime;
         }
     }
 
@@ -358,15 +335,6 @@ public sealed partial class SurgerySystem : EntitySystem
         }
         return true;
     }
-
-    private void OnSterileExamined(Entity<SterileComponent> entity, ref ExaminedEvent args)
-    {
-        if (args.IsInDetailsRange)
-            args.AddMarkup(Loc.GetString("surgery-sterile-examined") + "\n");
-    }
-
-    private void OnThrow(Entity<SterileComponent> entity, ref ThrownEvent args)
-        => RemCompDeferred<SterileComponent>(entity);
 
     private bool TryGetOperatingTable(EntityUid patient, out float tableModifier)
     {

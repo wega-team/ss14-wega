@@ -22,7 +22,7 @@ public sealed partial class TelekinesisGenSystem : EntitySystem
         if (!HasComp<HandsComponent>(uid))
             return;
 
-        _hands.AddHand(uid, component.HandId, HandLocation.Middle);
+        _hands.AddHand(uid, component.HandId, component.HandPos);
 
         var coords = Transform(uid).Coordinates;
         var item = Spawn(component.ItemPrototype, coords);

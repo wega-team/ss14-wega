@@ -1,5 +1,6 @@
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
+using Content.Shared.Hands.Components;
 
 namespace Content.Shared.Genetics;
 
@@ -14,4 +15,7 @@ public sealed partial class TelekinesisGenComponent : Component
 
     [ViewVariables]
     public EntityUid? TelekinesisItem;
+
+    [DataField]
+    public HandLocation HandPos = HandLocation.Middle;
 }

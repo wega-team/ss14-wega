@@ -63,6 +63,9 @@ public sealed partial class CultEquipmentComponent : Component
 }
 
 [RegisterComponent]
+public sealed partial class AllowCultEquipmentComponent : Component;
+
+[RegisterComponent]
 public sealed partial class BloodDaggerComponent : Component
 {
     [DataField]

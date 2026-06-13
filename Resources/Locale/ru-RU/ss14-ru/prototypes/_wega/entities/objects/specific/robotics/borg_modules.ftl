@@ -96,6 +96,8 @@ ent-XenoborgModuleEMP = модуль ЭМИ ксеноборга
     .desc = Модуль для создания различных ЭМИ ловушек, главное скажите другим, где Вы расставили ловушки!
 ent-BorgModuleNightVisoXenoborg = модуль ПНВ ксеноборгов
     .desc = Модуль ПНВ для поддержки зрения в темноте, жалко Вы всё равно видны противнику!
+ent-ModuleXenoborgModule = модуль ксенототехники
+    .desc = Модуль для обслуживания ксеноборгов и других киборгов. Помоги маме собрать конструктор из людей.
 ent-FloorTrapEMPXenoborg = ловушка ЭМИ
     .desc = { ent-CollideFloorTrap.desc }
 # Синдикат
@@ -165,6 +167,7 @@ borg-slot-fulton-empty = Фултоны и стан.маячки
 borg-slot-swap-empty = Вакцина и палочки
 borg-slot-swap-only-empty = Стерильные палочки
 borg-slot-spray-empty = Спреи
+borg-slot-mmi-and-head-brains-empty = Мозги и шляпы
 
 ent-ActionBlinkBorg = Блюспейс прыжок
     .desc = Бесконечность не предел!

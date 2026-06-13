@@ -38,6 +38,10 @@ public sealed partial class CrusherEnchantActionEvent : InstantActionEvent
 {
 }
 
+public sealed partial class DismantlingEnchantActionEvent : InstantActionEvent
+{
+}
+
 public sealed partial class ConfusionEnchantActionEvent : InstantActionEvent
 {
 }
@@ -70,7 +74,7 @@ public sealed partial class AbsorbEnchantActionEvent : InstantActionEvent
 {
 }
 
-public sealed partial class FlashEnchantActionEvent : InstantActionEvent
+public sealed partial class SmokeEnchantActionEvent : InstantActionEvent
 {
 }
 

@@ -30,6 +30,21 @@
     
 - type: entity
   parent: BaseAction
+  id: ActionVeilCultActivateDismantling
+  name: Activate Enchant
+  description: Toggle enchant of this item.
+  components:
+  - type: Action
+    itemIconStyle: BigItem
+    priority: -20
+    useDelay: 1
+  - type: InstantAction
+    event: !type:DismantlingEnchantActionEvent
+  - type: LimitedCharges
+    maxCharges: 1
+    
+- type: entity
+  parent: BaseAction
   id: ActionVeilCultActivateConfusion
   name: Activate Enchant
   description: Toggle enchant of this item.
@@ -150,7 +165,7 @@
     
 - type: entity
   parent: BaseAction
-  id: ActionVeilCultActivateFlash
+  id: ActionVeilCultActivateSmoke
   name: Activate Enchant
   description: Toggle enchant of this item.
   components:
@@ -159,7 +174,7 @@
     priority: -20
     useDelay: 1
   - type: InstantAction
-    event: !type:FlashEnchantActionEvent
+    event: !type:SmokeEnchantActionEvent
   - type: LimitedCharges
     maxCharges: 1
     

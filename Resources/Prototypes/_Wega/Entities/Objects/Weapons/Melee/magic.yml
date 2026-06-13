@@ -593,6 +593,8 @@
     - 0,0,0,2
   - type: CultWeapon
     cult: Veil
+  - type: CultEquipment
+    cult: Veil
   - type: MeleeWeapon
     wideAnimationRotation: -135
     # resistanceBypassPercentage: 0.1 # for future
@@ -618,6 +620,11 @@
   - type: Sprite
     sprite: _Wega/Objects/Weapons/Melee/clockwork_sword.rsi
     state: icon
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - back
+    - suitStorage
   - type: Item
     storedRotation: -45
     size: Normal
@@ -629,7 +636,7 @@
     attackRate: 1
     damage:
       types:
-        Slash: 20
+        Slash: 25
     soundHit:
         path: /Audio/Weapons/bladeslice.ogg
   - type: DisarmMalus
@@ -643,15 +650,21 @@
   - type: Sprite
     sprite: _Wega/Objects/Weapons/Melee/clock_hammer.rsi
     state: icon
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - back
   - type: Item
     storedRotation: -45
     size: Large
   - type: CultWeapon
     cult: Veil
+  - type: CultEquipment
+    cult: Veil
   - type: MeleeWeapon
     # resistanceBypassPercentage: 0.4 #for future
     wideAnimationRotation: -135
-    attackRate: 0.7
+    attackRate: 0.8
     damage:
       types:
         Blunt: 10
@@ -661,27 +674,28 @@
   - type: IncreaseDamageOnWield
     damage:
       types:
-        Blunt: 15
-        Structural: 40
+        Blunt: 20
+        Structural: 50
   - type: Reflect
-    reflectProb: 0.2
+    reflectProb: 0.15
     spread: 90
   - type: DamageOtherOnHit
     damage:
       types:
-        Blunt: 25
+        Blunt: 15
   - type: StaminaDamageOnHit
     damage: 25
   - type: StaminaDamageOnCollide
-    damage: 25
+    damage: 15
   - type: HeldSpeedModifier
-    walkModifier: 0.8
-    sprintModifier: 0.8
+    walkModifier: 0.9
+    sprintModifier: 0.85
   - type: Wieldable
   - type: Enchantable
     enchants:
     - WeaponClockHammerKnockback
     - WeaponClockHammerCrusher
+    - WeaponClockHammerDismantling
 
 - type: entity
   parent: BaseEnchantable
@@ -713,19 +727,28 @@
   - type: Clothing
     quickEquip: false
     slots:
+    - back
+    - suitStorage
     - belt
   - type: Item
     size: Normal
     shape:
-    - 0,0,0,3
+    - 0,0,0,4 # Теперь нельзя носить в сумке.
   - type: Wieldable
   - type: CultWeapon
     cult: Veil
+  - type: CultEquipment
+    cult: Veil
+  - type: EmbeddableProjectile
+    sound: /Audio/Weapons/star_hit.ogg
+    offset: -0.15,0.0
+    removalTime: 3
   - type: MeleeWeapon
+    wideAnimationRotation: -135
     range: 2
     damage:
       types:
-        Piercing: 15
+        Piercing: 10
     angle: 0
     animation: WeaponArcThrust
     soundHit:
@@ -734,11 +757,11 @@
     # resistanceBypassPercentage: 0.4 # for future
     damage:
       types:
-        Piercing: 50
+        Piercing: 35
   - type: IncreaseDamageOnWield
     damage:
       types:
-        Piercing: 10
+        Piercing: 15
   - type: Enchantable
     enchants:
     - WeaponRatvarianSpearElectricalTouch

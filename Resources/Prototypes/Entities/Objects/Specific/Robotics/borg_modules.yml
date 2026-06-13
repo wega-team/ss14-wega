@@ -660,6 +660,11 @@
           - Cash
           tags:
           - CoordinatesDisk
+  - type: ComponentBorgModule
+    components:
+    - type: TelekinesisGen
+      itemPrototype: TelescopicShieldBorgMining
+      handPos: Left
 # Corvax-Wega-Robot-End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: appraisal-module }
@@ -1690,10 +1695,9 @@
     - item: PinpointerUniversal # Corvax-Wega-Robot-add
   - type: ComponentBorgModule
     components:
-    - type: Reflect
-      reflectProb: 0.15
-      slotFlags:
-      - NONE
+    - type: TelekinesisGen
+      itemPrototype: TelescopicShieldBorgSyndL6
+      handPos: Left
 # Corvax-Wega-Robot-End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: syndicate-l6c-module }
@@ -1771,11 +1775,12 @@
     - item: XenoborgHoloprojectorForcefieldMother # Corvax-Wega-Robot-Add
     - hand:
         emptyRepresentative: MMIFilled
-        emptyLabel: borg-slot-brains-empty
+        emptyLabel: borg-slot-mmi-and-head-brains-empty # Corvax-Wega-Add
         whitelist:
           components:
           - Brain
           - BorgBrain
+          - ChameleonClothing
     - hand:
         emptyRepresentative: XenoborgModuleBasic
         emptyLabel: borg-slot-modules-empty
@@ -1783,17 +1788,21 @@
           components:
           - BorgModule
     - hand:
-        emptyRepresentative: BorgModuleConstructionMaterialPlaceholder
+        emptyRepresentative: ConstrukAndBattery # Corvax-Wega-add
         emptyLabel: borg-slot-construction-empty
         whitelist:
           tags:
           - ConstructionMaterial
-    - hand:
-        emptyRepresentative: PowerCellHigh
-        emptyLabel: borg-slot-powercell-empty
-        whitelist:
-          components:
-          - PowerCell
+# Corvax-Wega-Start
+          - PowerCell 
+    # - hand:
+        # emptyRepresentative: PowerCellHigh
+        # emptyLabel: borg-slot-powercell-empty
+        # whitelist:
+          # components:
+          # - PowerCell
+    - item: XenoborgModuleBag
+ # Corvax-Wega-Robot-End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-module-module }
 
@@ -1984,7 +1993,14 @@
     - item: PinpointerMothership
     - item: HandheldStationMapUnpowered
     - item: WeaponGrapplingGun
-    - item: JetpackXenoborg
+ # Corvax-Wega-Start
+    # - item: JetpackXenoborg
+  - type: ComponentBorgModule
+    components:
+    - type: TelekinesisGen
+      itemPrototype: JetpackXenoborg
+      handPos: Left
+ # Corvax-Wega-end
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-space-movement-module }
 
@@ -2018,7 +2034,7 @@
   - type: ItemBorgModule
     hands:
     - item: KukriKnife
-    - item: JetpackXenoborg
+    # - item: JetpackXenoborg Corvax-Wega-Add
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-sword-module }
 
@@ -2035,7 +2051,7 @@
   - type: ItemBorgModule
     hands:
     - item: EnergyDaggerLoudBlue
-    - item: JetpackXenoborg
+    # - item: JetpackXenoborg Corvax-Wega-Add
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-sword2-module }
 

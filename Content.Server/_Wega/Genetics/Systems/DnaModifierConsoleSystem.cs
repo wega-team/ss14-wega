@@ -412,16 +412,15 @@ namespace Content.Server.Genetics.System
                 return;
 
             if (!TryComp<MedicalScannerComponent>(console.GeneticScanner, out var scanner) || scanner.BodyContainer.ContainedEntity == null
-                || !_itemSlotsSystem.TryGetSlot(console.GeneticScanner.Value, SharedDnaModifier.InputSlotName, out var slot))
+                || !_itemSlotsSystem.TryGetSlot(console.GeneticScanner.Value, SharedDnaModifier.InputSlotName, out var slot)
+                || slot.Item == null)
                 return;
 
-            if (slot.Item == null || !HasComp<SolutionContainerManagerComponent>(slot.Item.Value)
-                || !_solutionContainerSystem.TryGetSolution(slot.Item.Value, SharedDnaModifier.SolutionSlotName, out var sourceSolution, out var sourceSolutionComp))
+            if (!_solutionContainerSystem.TryGetSolution(slot.Item.Value, SharedDnaModifier.SolutionSlotName, out var sourceSolution, out var sourceSolutionComp))
                 return;
 
             var targetEntity = scanner.BodyContainer.ContainedEntity.Value;
-            if (!HasComp<SolutionContainerManagerComponent>(targetEntity)
-                || !_solutionContainerSystem.TryGetInjectableSolution(targetEntity, out var targetSolution, out _))
+            if (!_solutionContainerSystem.TryGetInjectableSolution(targetEntity, out var targetSolution, out _))
                 return;
 
             FixedPoint2 transferAmount = args.Amount switch

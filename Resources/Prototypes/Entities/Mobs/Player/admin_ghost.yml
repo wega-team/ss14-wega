@@ -115,6 +115,7 @@
     baseWalkSpeed: 30
   # Corvax-End
   - type: AdminMindLinkListener # Corvax-Wega-MindChat
+  - type: AllowCultEquipment # Corvax-Wega-Cults
 
 - type: entity
   abstract: true

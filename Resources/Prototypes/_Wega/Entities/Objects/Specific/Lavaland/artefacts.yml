@@ -75,7 +75,7 @@
     sprite: _Wega/Objects/Specific/Lavaland/dusty_shard.rsi
     state: icon
   - type: GuardianCreator
-    guardianProto: MobHoloparasiteGuardian
+    guardianProto: MobAshGuardian
 
 - type: entity
   parent: BaseItem

@@ -283,4 +283,20 @@
     interfaces:
       enum.ItemSelectorUiKey.Key:
         type: ItemSelectorBoundUserInterface
- 
+
+- type: entity
+  parent: TelescopicShieldBorg
+  id: TelescopicShieldBorgSyndCr20
+  components:
+    - type: Blocking
+      activeBlockFraction: 0.8
+      passiveBlockFraction: 0.5
+
+- type: entity
+  parent: TelescopicShieldBorg
+  id: TelescopicShieldBorgSyndL6
+  components:
+    - type: Blocking
+      activeBlockFraction: 0.99
+      passiveBlockFraction: 0.8
+

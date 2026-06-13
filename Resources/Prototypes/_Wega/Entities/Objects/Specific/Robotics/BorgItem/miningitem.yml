@@ -88,3 +88,12 @@
     tags:
     - DocumentBorg
   - type: PointsCard
+  
+- type: entity
+  parent: TelescopicShieldBorg
+  id: TelescopicShieldBorgMining
+  components:
+    - type: Blocking
+      activeBlockFraction: 0.5
+      passiveBlockFraction: 0.2
+      

@@ -221,6 +221,10 @@
         Slash: 0.8
         Piercing: 0.9
         Heat: 0.85
+  - type: FireProtection
+    reduction: 0.95
+  - type: TemperatureProtection
+    heatingCoefficient: 0.9
   - type: Sprite
     sprite: _Wega/Clothing/Hands/clockwork_gauntlets.rsi
     state: icon
