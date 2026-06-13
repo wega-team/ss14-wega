@@ -244,8 +244,8 @@ namespace Content.Server.Medical.BiomassReclaimer
             if (!isPlant && !HasComp<MobStateComponent>(dragged))
                 return false;
 
-            if (HasComp<AndroidComponent>(dragged)) // Corvax-Wega-check
-                return false;
+            if (HasComp<AndroidComponent>(dragged)) // Corvax-Wega-Check
+                return false; // Corvax-Wega-Check
 
             if (!Transform(reclaimer).Anchored)
                 return false;
