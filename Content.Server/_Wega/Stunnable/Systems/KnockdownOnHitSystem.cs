@@ -5,7 +5,7 @@ using Content.Shared.Silicons.Borgs.Components;
 
 namespace Content.Server.Stunnable.Systems;
     
-public sealed class KnockdownOnHitSystem : EntitySystem
+public sealed partial class KnockdownOnHitSystem : EntitySystem
 {
     [Dependency] private SharedStunSystem _stunSystem = default!;
 

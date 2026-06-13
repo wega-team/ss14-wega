@@ -505,29 +505,11 @@
   productEntity: ContractorBaton
   discountCategory: veryRareDiscounts
   discountDownTo:
-    Telecrystal: 7
+    Telecrystal: 5s
   cost:
-    Telecrystal: 9
+    Telecrystal: 7
   categories:
     - UplinkWeaponry
-  conditions:
-  - !type:StoreWhitelistCondition
-    blacklist:
-      tags:
-      - NukeOpsUplink
-
-- type: listing
-  id: UplinkSyndieMiniBombAgent
-  name: uplink-mini-bomb-name
-  description: uplink-mini-bomb-desc
-  productEntity: SyndieMiniBomb
-  discountCategory: veryRareDiscounts
-  discountDownTo:
-    Telecrystal: 2
-  cost:
-    Telecrystal: 4 
-  categories:
-    - UplinkExplosives
   conditions:
   - !type:StoreWhitelistCondition
     blacklist:

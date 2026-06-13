@@ -3,7 +3,7 @@ using Content.Shared.VentCraw;
 
 namespace Content.Server.VentCraw;
 
-public sealed partial  class VentCrawlerClothingSystem : EntitySystem
+public sealed partial class VentCrawlerClothingSystem : EntitySystem
 {
 
     public override void Initialize()
