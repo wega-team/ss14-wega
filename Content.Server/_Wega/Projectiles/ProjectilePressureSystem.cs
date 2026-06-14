@@ -1,6 +1,7 @@
 using Content.Server.Atmos.EntitySystems;
 using Content.Shared.Projectiles;
-using Content.Shared.Damage.Systems;
+;using Content.Shared.Damage.Systems;
+using Content.Shared.Damage.Components;
 
 namespace Content.Server.Projectiles;
 
@@ -41,6 +42,7 @@ public sealed partial class ProjectilePressureSystem : EntitySystem
         var bonus = component.Ignore 
             ? ev.Damage * component.DamageMultiplier 
             : ev.Damage * (pressureModifier - 1);
-        ev.Damage += (bonus * _damageableSystem.UniversalProjectileDamageModifier);
+        if (TryComp<DamageableComponent>(ev.Target, out var damage))
+            _damageableSystem.TryChangeDamage((ev.Target, damage), bonus, false);
     }
 }
