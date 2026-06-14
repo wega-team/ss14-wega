@@ -30,3 +30,22 @@
     examineText: gun-upgrade-examine-text-lifesteal
   - type: GunUpgradeLifesteal
     stealAmount: 2.5
+    
+- type: entity
+  id: PKAUpgradePressure
+  parent: BasePKAUpgrade
+  name: PKA modkit (pressure)
+  components:
+  - type: Sprite
+    layers:
+    - state: base
+    - state: overlay-1
+      color: "#722ade"
+    - state: overlay-2
+      color: "#5a0ea1"
+    - state: overlay-3
+      color: "#622ba1"
+  - type: GunUpgrade
+    tags: [ GunUpgradePressure ]
+    examineText: gun-upgrade-examine-text-pressure
+  - type: GunUpgradePressure

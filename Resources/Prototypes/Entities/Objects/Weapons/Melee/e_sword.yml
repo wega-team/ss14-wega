@@ -41,9 +41,9 @@
         variation: 0.125
     activatedDamage:
       types:
-        Slash: 15
-        Heat: 15
-        Structural: 20
+        Slash: 18 # Corvax-Wega-Edit
+        Heat: 18 # Corvax-Wega-Edit 4 hits to crit
+        Structural: 25 # Corvax-Wega-Edit
   - type: MeleeWeapon
     wideAnimationRotation: -135
     attackRate: 1
@@ -307,8 +307,8 @@
         variation: 0.250
     activatedDamage:
         types:
-            Slash: 12
-            Heat: 12
+            Slash: 15 # Corvax-Wega-Edit
+            Heat: 15 # Corvax-Wega-Edit
             Structural: 15
   - type: ItemToggleActiveSound
     activeSound:

@@ -168,8 +168,10 @@
     - MindChat # Corvax-Wega-Edit
     - Robotics
     # - Xenoborgs  Corvax-Wega-Edit
-  - type: Inventory
-    templateId: borg
+# Corvax-Wega-start
+  # - type: Inventory
+    # templateId: borg
+# Corvax-Wega-end
   - type: NpcFactionMember
     factions:
     - Xenoborg

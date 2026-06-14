@@ -23,6 +23,7 @@
       methods: [Touch]
       effects:
       - !type:WashDirt
+  - type: Damageable
   # Corvax-Wega-Dirtable-end
 
 - type: entity

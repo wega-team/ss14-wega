@@ -4,7 +4,6 @@ using Content.Shared.Interaction;
 using Content.Shared.Kitchen.Components;
 using Content.Shared.Surgery;
 using Content.Shared.Surgery.Components;
-using Robust.Shared.Timing;
 
 namespace Content.Server.Surgery;
 
@@ -47,10 +46,7 @@ public sealed partial class SurgerySystem
             return;
 
         var graph = _proto.Index<SurgeryGraphPrototype>(comp.GraphId);
-        Timer.Spawn(250, () =>
-        {
-            UpdateUi(uid, comp, graph);
-        });
+        UpdateUi(uid, args.Actor, comp, graph);
     }
 
     private void OnUnbuckled(Entity<OperatedComponent> ent, ref UnbuckledEvent args)
@@ -61,7 +57,7 @@ public sealed partial class SurgerySystem
         _ui.CloseUi(ent.Owner, SurgeryUiKey.Key);
     }
 
-    private void UpdateUi(EntityUid patient, OperatedComponent comp, SurgeryGraphPrototype graph)
+    private void UpdateUi(EntityUid patient, EntityUid surgeon, OperatedComponent comp, SurgeryGraphPrototype graph)
     {
         if (!_ui.HasUi(patient, SurgeryUiKey.Key))
             return;
@@ -83,7 +79,16 @@ public sealed partial class SurgerySystem
             AddNodeSteps(node, patient, comp, groups);
         }
 
-        _ui.ServerSendUiMessage(patient, SurgeryUiKey.Key,
-            new SurgeryProcedureDto(groups, GetNetEntity(patient)));
+        var sterilityInfo = GetSterilityInfo(patient, surgeon);
+        _ui.SetUiState(patient, SurgeryUiKey.Key, new SurgeryProcedureDtoState(groups, sterilityInfo));
+    }
+
+    private void SendSterilityUpdateToUi(EntityUid patient, EntityUid surgeon)
+    {
+        if (!_ui.HasUi(patient, SurgeryUiKey.Key))
+            return;
+
+        var sterilityInfo = GetSterilityInfo(patient, surgeon);
+        _ui.ServerSendUiMessage(patient, SurgeryUiKey.Key, new SurgerySterilityUpdateMessage(sterilityInfo), surgeon);
     }
 }

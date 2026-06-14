@@ -114,6 +114,22 @@
       collection: MaleGasp
     DefaultDeathgasp:
       collection: DeathGasp
+    # Corvax-Wega-Start
+    Purr:
+      collection: ReptilianPurr 
+    FilinidHisses:
+      collection: ReptilianHiss
+    Growl:
+      collection: ReptilianGrowl
+    Sigh:
+      collection: MaleSigh
+    Sneeze:
+      collection: MaleSneezes
+    Cough:
+      collection: MaleCoughs
+    Snore:
+      collection: Snores
+    # Corvax-Wega-End
 
 - type: emoteSounds
   id: FemaleReptilian
@@ -138,6 +154,22 @@
       collection: FemaleGasp
     DefaultDeathgasp:
       collection: FemaleDeathGasp
+    # Corvax-Wega-Start
+    Purr:
+      collection: ReptilianPurr 
+    FilinidHisses:
+      collection: ReptilianHiss
+    Growl:
+      collection: ReptilianGrowl
+    Sigh:
+      collection: FemaleSigh
+    Sneeze:
+      collection: FemaleSneezes
+    Cough:
+      collection: FemaleCoughs
+    Snore:
+      collection: Snores
+    # Corvax-Wega-End
 
 - type: emoteSounds
   id: MaleSlime

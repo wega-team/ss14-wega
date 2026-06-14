@@ -99,7 +99,15 @@
   - type: HandheldGpsUi
     broadcastEnabled: false
   # Corvax-Wega-Lavaland-end
-  
+ 
+- type: entity #why does this exist? Well, "global positioning system" is too long to fit in the cyborg's hand slot.
+  parent: HandheldGPSBasic
+  id: HandheldGPSBasicBorgOn
+  suffix: Borg
+  components:
+  - type: HandheldGPS
+    gPSName: Киборг
+
 - type: entity
   parent: AccessConfigurator
   id: AccessConfiguratorCargo

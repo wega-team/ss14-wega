@@ -7,11 +7,17 @@
 - type: mindChannel
   id: MindXenoborgs
   name: xenoborg-mind-channel
-  keycode: 'д'
+  keycode: 'б'
   color: "#2288ff"
-  
+
 - type: mindChannel
   id: MindVeilCult
   name: veil-cult-mind-channel
   keycode: 'р'
   color: "#b5a642"
+
+- type: mindChannel
+  id: MindDiona
+  name: diona-mind-channel
+  keycode: 'д'
+  color: "#4db542"

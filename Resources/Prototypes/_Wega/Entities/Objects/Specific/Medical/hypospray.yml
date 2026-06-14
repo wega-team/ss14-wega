@@ -1,6 +1,6 @@
 - type: entity
   name: hynospray
-  parent: BaseItem
+  parent: [BaseHypospray, SolutionHyposprayTiny]
   description: A variation of hypospray, having reduced parameters of the measurement volume, drug administration and an increased parameter of transferring liquid to the administration mode.
   id: Hynospray
   components:
@@ -16,16 +16,15 @@
     allowedModes:
     - HyposprayDynamicMode
     - HyposprayInjectMode
-  - type: SolutionContainerManager
-    solutions:
-      hypospray:
-        maxVol: 10
   - type: RefillableSolution
     solution: hypospray
   - type: ExaminableSolution
     solution: hypospray
   - type: UseDelay
     delay: 4.5
+  - type: Solution
+    solution:
+      maxVol: 10
 
 - type: entity
   name: chemical injector

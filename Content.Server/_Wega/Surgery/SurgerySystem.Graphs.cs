@@ -37,7 +37,7 @@ public sealed partial class SurgerySystem
     /// <param name="args">The SurgeryStartMessage containing details about the surgery start request.</param>
     private void OnSurgeryStart(EntityUid uid, OperatedComponent comp, SurgeryStartMessage args)
     {
-        var user = GetEntity(args.User);
+        var user = args.Actor;
         if (comp.GraphId == null)
             return;
 
@@ -162,7 +162,7 @@ public sealed partial class SurgerySystem
         }
 
         CheckTransitionProgress(uid, comp, graph, transition);
-        UpdateUi(uid, comp, graph);
+        UpdateUi(uid, args.User, comp, graph);
     }
 
     #region Handle Steps
@@ -388,12 +388,11 @@ public sealed partial class SurgerySystem
         }
 
         bool hasTool = step.Tool != null && step.Tool.Count != 0;
-        bool toolValid = step.Tool == null || step.Tool.Count == 0 || step.Action == SurgeryActionType.StoreItem
-            || step.Tool.Any(tool => _tool.HasQuality(item.Value, tool));
-        bool tagValid = step.Tag == null || step.Tag.Count == 0 || step.Action == SurgeryActionType.StoreItem
-            || step.Tag.Any(tag => _tag.HasTag(item.Value, tag));
+        bool hasTag = step.Tag != null && step.Tag.Count != 0;
+        bool toolValid = !hasTool || step.Action == SurgeryActionType.StoreItem || step.Tool!.Any(tool => _tool.HasQuality(item.Value, tool));
+        bool tagValid = !hasTag || step.Action == SurgeryActionType.StoreItem || step.Tag!.Any(tag => _tag.HasTag(item.Value, tag));
 
-        if (!toolValid || !hasTool && !tagValid)
+        if (hasTool && !toolValid && hasTag && !tagValid)
         {
             _popup.PopupEntity(Loc.GetString("surgery-missing-tool"), user, user);
             return;
@@ -453,7 +452,6 @@ public sealed partial class SurgerySystem
             comp.ResetOperationState(transition.Target);
             comp.CurrentNode = transition.Target;
             Dirty(uid, comp);
-            UpdateUi(uid, comp, graph);
         }
     }
 
