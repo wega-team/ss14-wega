@@ -6,6 +6,49 @@ surgery-parallel = (П)
 surgery-tool-required = Требуется инструмент: {$tool}
 surgery-condition-required = Требуется часть тела: {$condition}
 
+surgery-sterility-percent = Стерильность: {$percent}%
+surgery-sterility-negative-header = Факторы риска:
+surgery-sterility-positive-header = Положительные факторы:
+
+# Negative
+surgery-sterility-no-gloves = Нет перчаток
+surgery-sterility-no-mask = Нет маски
+surgery-sterility-no-head = Нет головного убора
+surgery-sterility-no-jumpsuit = Нет комбинезона
+surgery-sterility-no-outerClothing = Нет верхней одежды
+surgery-sterility-no-back = Рюкзак создаёт помехи
+surgery-sterility-no-belt = Пояс мешает
+surgery-sterility-non-sterile-gloves = Нестерильные перчатки
+surgery-sterility-non-sterile-mask = Нестерильная маска
+surgery-sterility-non-sterile-head = Нестерильная шапочка
+surgery-sterility-non-sterile-jumpsuit = Нестерильный комбинезон
+surgery-sterility-non-sterile-outerClothing = Нестерильный халат
+surgery-sterility-non-sterile-back = Грязный рюкзак
+surgery-sterility-non-sterile-belt = Грязный пояс
+surgery-sterility-no-sterile-gloves = Нет стерильных перчаток
+surgery-sterility-no-sterile-mask = Нет стерильной маски
+surgery-sterility-no-sterile-head = Нет стерильной шапочки
+surgery-sterility-no-sterile-jumpsuit = Нет стерильного комбинезона
+surgery-sterility-no-sterile-outerClothing = Нет стерильного халата
+surgery-sterility-no-sterile-back = Нет стерильного рюкзака
+surgery-sterility-no-sterile-belt = Нет стерильного пояса
+surgery-sterility-non-sterile-tool = Нестерильный инструмент
+surgery-sterility-mask-off = Маска опущена
+surgery-sterility-garbage = Мусор рядом ({$count})
+surgery-sterility-bystanders = Зеваки ({$count})
+surgery-sterility-corpses = Трупы рядом ({$count})
+
+# Positive
+surgery-sterility-sterile-gloves = Стерильные перчатки
+surgery-sterility-sterile-mask = Стерильная маска
+surgery-sterility-sterile-head = Стерильная шапочка
+surgery-sterility-sterile-jumpsuit = Стерильный комбинезон
+surgery-sterility-sterile-outerClothing = Стерильный халат
+surgery-sterility-sterile-back = Стерильный рюкзак
+surgery-sterility-sterile-belt = Стерильный пояс
+surgery-sterility-sterile-tool = Стерильный инструмент
+surgery-sterility-operating-table = Операционный стол
+
 surgery-condition-required-head = голова
 surgery-condition-required-tooth = зубы
 surgery-condition-required-torso = тело

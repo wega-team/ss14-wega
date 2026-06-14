@@ -1,22 +1,16 @@
-using Robust.Shared.Timing;
-using Content.Shared.Damage.Systems;
 using Content.Shared.Actions;
 using Content.Shared.Movement.Components;
 using Content.Shared.Slippery;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
-using Content.Shared.Audio;
-using Robust.Shared.Audio.Systems;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Movement.Systems;
 
 public abstract partial class SharedFlyAbilitySystem : EntitySystem
 {
-    [Dependency] protected IGameTiming Timing = default!;
-    [Dependency] private SharedAmbientSoundSystem _ambient = default!;
     [Dependency] private SharedActionsSystem _actions = default!;
     [Dependency] private SharedPhysicsSystem _physics = default!;
-
 
     public override void Initialize()
     {
@@ -50,12 +44,11 @@ public abstract partial class SharedFlyAbilitySystem : EntitySystem
                 if (!HasComp<CanMoveInAirComponent>(ent))
                     EnsureComp<CanMoveInAirComponent>(ent);
 
-                if (ent.Comp.Sound != null && !HasComp<AmbientSoundComponent>(ent))
+
+                if (ent.Comp.Sound != null && !HasComp<FootstepModifierComponent>(ent))
                 {
-                    EnsureComp<AmbientSoundComponent>(ent);
-                    _ambient.SetSound(ent.Owner, ent.Comp.Sound);
-                    _ambient.SetRange(ent.Owner, ent.Comp.SoundRange);
-                    _ambient.SetVolume(ent.Owner, ent.Comp.SoundVolume);
+                    var footstepModifierComp = EnsureComp<FootstepModifierComponent>(ent);
+                    footstepModifierComp.FootstepSoundCollection = ent.Comp.Sound;
                 }
             }
         }
@@ -73,8 +66,8 @@ public abstract partial class SharedFlyAbilitySystem : EntitySystem
                 if (HasComp<CanMoveInAirComponent>(ent))
                     RemComp<CanMoveInAirComponent>(ent);
 
-                if (HasComp<AmbientSoundComponent>(ent))
-                    RemComp<AmbientSoundComponent>(ent);
+                if (HasComp<FootstepModifierComponent>(ent))
+                    RemComp<FootstepModifierComponent>(ent);
             }
         }
     }

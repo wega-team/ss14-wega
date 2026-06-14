@@ -82,12 +82,14 @@
   - type: Physics
     bodyStatus: InAir
   - type: CanMoveInAir
-  - type: EventHorizon
-    radius: 5
-    canBreachContainment: true
-  - type: GravityWell
-    baseRadialAcceleration: 6
-    maxRange: 8
+  # Corvax-Wega-Edit-Start
+  # - type: EventHorizon
+  #   radius: 5
+  #   canBreachContainment: true
+  # - type: GravityWell
+  #   baseRadialAcceleration: 6
+  #   maxRange: 8
+  # Corvax-Wega-Edit-End
   - type: Tag
     tags:
     - GhostOnlyWarp

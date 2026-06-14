@@ -17,14 +17,14 @@ using Robust.Server.Containers;
 using Robust.Shared.Map;
 // Corvax-Wega-Add-start
 using Content.Shared.Item;
-using Content.Shared.Surgery.Components;
 using Content.Shared.Chemistry.Components;
-using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry;
 using Robust.Shared.Prototypes;
 using Content.Shared.FixedPoint;
 using Content.Server.Chemistry.Components;
 using Content.Shared.Vapor;
+using Content.Server.Surgery; // Corvax-Wega-Surgery
+
 // Corvax-Wega-Add-end
 
 namespace Content.Server.Fluids.EntitySystems;
@@ -44,6 +44,7 @@ public sealed partial class SpraySystem : SharedSpraySystem
     [Dependency] private SharedAppearanceSystem _appearance = default!; // Corvax-Wega-Add
     [Dependency] private IPrototypeManager _proto = default!; // Corvax-Wega-Add
     [Dependency] private ReactiveSystem _reactive = default!; // Corvax-Wega-Add
+    [Dependency] private SterileSystem _sterile = default!; // Corvax-Wega-Surgery
 
     private float _gridImpulseMultiplier;
 
@@ -88,11 +89,10 @@ public sealed partial class SpraySystem : SharedSpraySystem
         // Corvax-Wega-Add-end
 
         // Corvax-Wega-Surgery-start
-        if (args.Target != null && HasComp<ItemComponent>(args.Target)
-            && _solutionContainer.TryGetSolution(entity.Owner, entity.Comp.Solution, out _, out var solution)
-            && solution.GetTotalPrototypeQuantity("Ethanol") >= FixedPoint2.New(5))
+        if (args.Target != null && HasComp<ItemComponent>(args.Target) && _solutionContainer.TryGetSolution(entity.Owner, entity.Comp.Solution, out _, out var solution)
+            && Transform(entity).ParentUid != Transform(args.Target.Value).ParentUid) // Spray can't hand interact
         {
-            EnsureComp<SterileComponent>(args.Target.Value);
+            _sterile.ApplySterilityFromSolution(args.Target.Value, solution, entity.Comp.TransferAmount.Float());
         }
         // Corvax-Wega-Surgery-end
 

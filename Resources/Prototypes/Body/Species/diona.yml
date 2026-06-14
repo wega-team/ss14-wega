@@ -177,6 +177,10 @@
     upper: MobDiona
     lowest: MobDionaNymph
   # Corvax-Wega-Genetics-end
+  # Corvax-Wega-Start
+  - type: MindLink
+    channels: ["MindDiona"]
+  # Corvax-Wega-End
 
 - type: entity
   parent: OrganBase

@@ -5,11 +5,13 @@ using Content.Shared.Damage.Components;
 using Content.Shared.Actions.Components;
 using Content.Server.Damage.Systems;
 using Content.Server.Popups;
+using Robust.Shared.Timing;
 
 namespace Content.Server.Movement.Systems;
 
 public sealed partial class FlyAbilitySystem : SharedFlyAbilitySystem
 {
+    [Dependency] private IGameTiming _timing = default!;
     [Dependency] private SharedActionsSystem _actions = default!;
     [Dependency] private StaminaSystem _stamina = default!;
     [Dependency] private PopupSystem _popup = default!;
@@ -34,10 +36,10 @@ public sealed partial class FlyAbilitySystem : SharedFlyAbilitySystem
         {
             if (!TryComp<StaminaComponent>(uid, out var stamina)
                 || !comp.Active
-                || Timing.CurTime < comp.NextTickTime)
+                || _timing.CurTime < comp.NextTickTime)
                 continue;
 
-            comp.NextTickTime = Timing.CurTime + TimeSpan.FromSeconds(comp.Interval);
+            comp.NextTickTime = _timing.CurTime + TimeSpan.FromSeconds(comp.Interval);
 
             _stamina.TryTakeStamina(uid, comp.StaminaDamage);
             if (stamina.StaminaDamage > stamina.CritThreshold * 0.65f)

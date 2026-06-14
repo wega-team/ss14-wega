@@ -551,7 +551,7 @@
     impactEffect: BulletImpactEffectKinetic
     damage:
       types:
-        Blunt: 10 # Corvax-Wega-Lavaland-Edit
+        Blunt: 12 # Corvax-Wega-Lavaland-Edit
         Structural: 30
   # Short lifespan
   - type: TimedDespawn
