@@ -1,6 +1,6 @@
 using Content.Server.Atmos.EntitySystems;
 using Content.Shared.Projectiles;
-;using Content.Shared.Damage.Systems;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Damage.Components;
 
 namespace Content.Server.Projectiles;
