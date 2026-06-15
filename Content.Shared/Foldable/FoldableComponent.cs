@@ -1,5 +1,5 @@
 using Robust.Shared.GameStates;
-using Content.Shared.Whitelist;
+using Content.Shared.Whitelist; // Corvax-Wega-Morgue-change
 
 namespace Content.Shared.Foldable;
 
@@ -19,8 +19,8 @@ public sealed partial class FoldableComponent : Component
     [DataField]
     public bool CanFoldInsideContainer = false;
 
-    [DataField]
-    public EntityWhitelist? DeployedContainerWhitelist;
+    [DataField] // Corvax-Wega-Morgue-change
+    public EntityWhitelist? DeployedContainerWhitelist; // Corvax-Wega-Morgue-change
 
     [DataField]
     public LocId UnfoldVerbText = "unfold-verb";

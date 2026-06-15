@@ -3,16 +3,12 @@ using Content.Shared.Storage.Components;
 using Content.Shared.Examine;
 using Content.Shared.Morgue.Components;
 using Robust.Shared.Player;
-using Content.Shared.Tag;
-using Robust.Shared.Containers;
 
 namespace Content.Shared.Morgue;
 
 public abstract partial class SharedMorgueSystem : EntitySystem
 {
-    [Dependency] private SharedContainerSystem _container = default!;
     [Dependency] private SharedAppearanceSystem _appearance = default!;
-    [Dependency] private TagSystem _tag = default!;
 
     public override void Initialize()
     {
@@ -80,7 +76,7 @@ public abstract partial class SharedMorgueSystem : EntitySystem
                 _appearance.SetData(uid, MorgueVisuals.Contents, MorgueContents.HasSoul, app);
                 return;
             }
-
+            // Corvax-Wega-Morgue-change-start
             if (TryComp<EntityStorageComponent>(ent, out var container))
             {
                 foreach (var enti in container.Contents.ContainedEntities)
@@ -95,6 +91,7 @@ public abstract partial class SharedMorgueSystem : EntitySystem
                     }
                 }
             }
+            // Corvax-Wega-Morgue-change-end
         }
         _appearance.SetData(uid, MorgueVisuals.Contents, hasMob ? MorgueContents.HasMob : MorgueContents.HasContents, app);
     }
