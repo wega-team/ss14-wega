@@ -1,4 +1,5 @@
 using Robust.Shared.GameStates;
+using Content.Shared.Whitelist;
 
 namespace Content.Shared.Foldable;
 
@@ -17,6 +18,9 @@ public sealed partial class FoldableComponent : Component
 
     [DataField]
     public bool CanFoldInsideContainer = false;
+
+    [DataField]
+    public EntityWhitelist? DeployedContainerWhitelist;
 
     [DataField]
     public LocId UnfoldVerbText = "unfold-verb";

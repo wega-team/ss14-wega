@@ -27,6 +27,12 @@
     tags:
     - BodyBag
   - type: Clickable
+  - type: Foldable
+    canFoldInsideContainer: false
+    UnfoldCanPickable: false
+    deployedContainerWhitelist:
+      tags:
+      - Morgue
   - type: InteractionOutline
   - type: MovedByPressure
   - type: Physics
