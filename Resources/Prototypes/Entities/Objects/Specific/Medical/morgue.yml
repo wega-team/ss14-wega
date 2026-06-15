@@ -30,7 +30,6 @@
   # Corvax-Wega-Morgue-change-start
   - type: Foldable
     canFoldInsideContainer: false
-    UnfoldCanPickable: false
     deployedContainerWhitelist:
       tags:
       - Morgue
