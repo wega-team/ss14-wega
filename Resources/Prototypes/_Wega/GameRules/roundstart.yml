@@ -40,7 +40,6 @@
   - type: AntagRandomObjectives
     sets:
     - groups: VampireObjectiveGroups
-      maxPicks: 2
     maxDifficulty: 5
   - type: AntagSelection
     agentName: vampire-round-end-name

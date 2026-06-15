@@ -4,6 +4,7 @@
   id: VampireObjectiveGroups
   weights:
     VampireObjectiveGroupSteal: 1
+    VampireObjectiveGroupKill: 1
 
 - type: weightedRandom
   id: VampireObjectiveGroupSteal
@@ -21,6 +22,12 @@
     VampireGlovesKravMagaStealObjective: 0.5
     VampireBlueLaserPistolStealObjective: 0.5
 
+- type: weightedRandom
+  id: VampireObjectiveGroupKill
+  weights:
+    VampireKillRandomPersonObjective: 1
+    VampireKillStationAiObjective: 0.5
+    VampireKillRandomHeadObjective: 0.5
 # BloodBrother
 
 - type: weightedRandom
