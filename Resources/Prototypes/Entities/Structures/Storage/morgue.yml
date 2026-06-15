@@ -1,12 +1,16 @@
 - type: entity
   id: Morgue
   name: morgue
+  parent: [ BasePaperLabelableVisualized ] # Corvax-Wega-Morgue-change-start
   description: Used to store bodies until someone fetches them. Includes a high-tech alert system for false-positives!
   placement:
     mode: SnapgridCenter
   components:
   - type: Pullable
   - type: Anchorable
+  - type: Tag # Corvax-Wega-Morgue-change-start
+    tags: # Corvax-Wega-Morgue-change-start
+    - Morgue # Corvax-Wega-Morgue-change-start
   - type: Sprite
     sprite: Structures/Storage/morgue.rsi
     layers:
@@ -20,6 +24,8 @@
       visible: false
       map: ["enum.MorgueVisualLayers.Light"]
       shader: unshaded
+    - state: paper # Corvax-Wega-Morgue-change-start
+      map: ["enum.PaperLabelVisuals.Layer"] # Corvax-Wega-Morgue-change-start
   - type: Clickable
   - type: InteractionOutline
   - type: Physics
@@ -36,6 +42,7 @@
         layer:
         - HalfWallLayer
   - type: EntityStorage
+    maxSize: 1
     isCollidableWhenOpen: true
     showContents: false
     capacity: 1
@@ -49,6 +56,7 @@
   - type: ContainerContainer
     containers:
       entity_storage: !type:Container
+      paper_label: !type:ContainerSlot # Corvax-Wega-Morgue-change-start
   - type: Appearance
   - type: GenericVisualizer
     visuals:
@@ -68,6 +76,18 @@
           HasContents: {visible: true, state: morgue_nomob_light}
           HasMob: {visible: true, state: morgue_nosoul_light}
           HasSoul: {visible: true, state: morgue_soul_light}
+  # Corvax-Wega-Morgue-change-start
+      enum.PaperLabelVisuals.HasLabel:
+        enum.PaperLabelVisuals.Layer:
+          True: { visible: true }
+          False: { visible: false }
+      enum.PaperLabelVisuals.LabelType:
+        enum.PaperLabelVisuals.Layer:
+          Paper: { state: paper }
+          Bounty: { state: bounty }
+          CaptainsPaper: { state: captains_paper }
+          Invoice: { state: invoice }
+  # Corvax-Wega-Morgue-change-end
   - type: Transform
     anchored: true
   - type: AntiRottingContainer

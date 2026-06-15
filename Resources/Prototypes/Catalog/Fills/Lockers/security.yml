@@ -107,6 +107,8 @@
       # Corvax-Wega-Edit-Start
     - id: WiretappingCameraAlphaOff
       prob: 0.4
+    - id: CrisisButton
+      prob: 0.2
       # Corvax-Wega-Edit-End
 
 - type: entity
@@ -338,6 +340,8 @@
       amount: 2
     - id: BoxLethalshot
       amount: 4
+    - id: HammerBreachingNT # Corvax-Wega-Edit
+      amount: 1
 
 - type: entity
   id: GunSafeSubMachineGunWt550

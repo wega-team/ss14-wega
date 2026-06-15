@@ -544,4 +544,7 @@
   id: Bola
 
 - type: Tag
+  id: Morgue
+
+- type: Tag
   id: BorgModuleNinja # Cyborg module category for ninja borgs
