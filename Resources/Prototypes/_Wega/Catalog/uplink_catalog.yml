@@ -601,7 +601,7 @@
   cost:
     Telecrystal: 5
   categories:
-    - UplinkJob
+  - UplinkJob
   conditions:
   - !type:BuyerJobCondition
     whitelist:
