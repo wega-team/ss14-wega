@@ -137,3 +137,23 @@
   - type: EyeProtection
   - type: CultEquipment
     cult: Veil
+
+- type: entity
+  parent: [ClothingEyesBase, BaseChameleon, BaseHighlyIllegalContraband]
+  id: ClothingEyesGlassesThermalVision
+  name: engineering goggles
+  description: Goggles that let you see through the thickest of walls and darkness, drawn to look just like a standard pair of engineering goggles.
+  suffix: Thermal, Chameleon
+  components:
+  - type: Sprite
+    sprite: Clothing/Eyes/Glasses/meson.rsi
+  - type: Clothing
+    sprite: Clothing/Eyes/Glasses/meson.rsi
+  - type: IdentityBlocker
+    coverage: EYES
+  - type: Tag
+    tags: [] # ignore "WhitelistChameleon" tag
+  - type: ChameleonClothing
+    slot: [eyes]
+    default: ClothingEyesGlassesMeson
+  - type: ThermalVision

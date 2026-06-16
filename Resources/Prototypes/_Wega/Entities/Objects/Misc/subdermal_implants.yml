@@ -46,3 +46,27 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: MindControlImplant
+
+- type: entity
+  parent: BaseSubdermalImplant
+  id: ThermalVisionImplant
+  name: thermal vision implant
+  description: This implant lets the user see the heat signatures of living creatures through walls and darkness.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Medical/Surgery/implants.rsi
+    state: syndicate
+  - type: SubdermalImplant
+  - type: ThermalVisionImplant
+  - type: Tag
+    tags:
+    - SubdermalImplant
+
+- type: entity
+  parent: BaseImplantOnlyImplanterSyndi
+  id: ThermalVisionImplanter
+  name: thermal vision implanter
+  description: Implants thermal vision, letting the user see living creatures through walls and darkness.
+  components:
+  - type: Implanter
+    implant: ThermalVisionImplant

@@ -462,3 +462,31 @@
     Telecrystal: 4
   categories:
     - UplinkWeaponry
+
+# Thermal vision — chameleon goggles for agents, implant for nuclear operatives
+- type: listing
+  id: UplinkThermalVisionGlasses
+  name: uplink-thermal-vision-glasses-name
+  description: uplink-thermal-vision-glasses-desc
+  icon: { sprite: Clothing/Eyes/Glasses/meson.rsi, state: icon }
+  productEntity: ClothingEyesGlassesThermalVision
+  cost:
+    Telecrystal: 4
+  categories:
+    - UplinkWearables
+
+- type: listing
+  id: UplinkThermalVisionImplanter
+  name: uplink-thermal-vision-implanter-name
+  description: uplink-thermal-vision-implanter-desc
+  icon: { sprite: /Textures/Objects/Specific/Medical/implanter.rsi, state: implanter0 }
+  productEntity: ThermalVisionImplanter
+  cost:
+    Telecrystal: 8
+  categories:
+    - UplinkImplants
+  conditions:
+    - !type:StoreWhitelistCondition
+      whitelist:
+        tags:
+          - NukeOpsUplink
