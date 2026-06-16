@@ -235,6 +235,24 @@
 
 - type: entity
   parent: LightMarker
+  id: EmergencyLightMarker
+  suffix: Emergency
+  components:
+  - type: Sprite
+    layers:
+    - map: ["enum.PoweredLightLayers.Base"]
+      state: base
+    - map: ["enum.PoweredLightLayers.Glow"]
+      state: glow
+      shader: unshaded
+      color: "#FF3333"
+  - type: PointLight
+    enabled: true
+    radius: 6
+    color: "#FF3333"
+
+- type: entity
+  parent: LightMarker
   id: PoweredLightMarkerEmpty
   name: warning light
   description: "A small marker light."

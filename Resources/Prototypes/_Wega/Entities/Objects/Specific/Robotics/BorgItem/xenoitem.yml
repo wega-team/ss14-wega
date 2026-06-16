@@ -277,3 +277,104 @@
       - id: Nanopast
     sound:
       path: /Audio/Machines/phasein.ogg
+
+- type: entity
+  parent: ClothingBackpack
+  id: XenoborgModuleBag
+  name: silicon storage square
+  description: A knockoff version of a bluespace bag, can vacumn up select materials, unfit for use by humanoids due to harmful emissions.
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Robotics/silicon_storage_cube.rsi
+    state: xenoborg
+  - type: MagnetPickup
+  - type: Dumpable
+  - type: Storage
+    grid:
+    - 0,0,5,3
+    quickInsert: true
+    areaInsert: true
+    whitelist:
+      components:
+        - PowerCell
+        - BorgModule
+  - type: Tool
+    qualities:
+      - Screwing
+    useSound:
+      collection: Screwdriver
+      
+- type: entity
+  parent: BaseItemRecharger
+  id: TurboItemRechargerXenoborg
+  name: turbo recharger
+  description: An overclocked recharger. Not recommended for use around asthmatics.
+  components:
+  - type: Sprite
+    sprite: Structures/Power/turbo_recharger.rsi
+  - type: Charger
+    chargeRate: 100
+  - type: ItemSlots
+    slots:
+      charger_slot:
+        ejectOnInteract: false
+        whitelist:
+          components:
+          - BatteryAmmoProvider
+          - Stunbaton
+          - PowerCell
+        blacklist:
+          tags:
+          - PotatoBattery
+  - type: ApcPowerReceiver
+    needsPower: false
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 80000000
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+    - trigger:
+        !type:DamageTrigger
+        damage: 80000000
+      behaviors:
+      - !type:EmptyAllContainersBehaviour
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatChameleonXenoborg
+  name: beret
+  description: A beret, an artists favorite headwear.
+  suffix: Chameleon
+  components:
+  - type: FleetingClothing
+    playSoundOnSelfUnequip: false
+    examineOthers: null # stealthy unless stripped
+  - type: ActivatableUI
+    key: enum.ChameleonUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.ChameleonUiKey.Key:
+        type: ChameleonBoundUserInterface
+  - type: Tag
+    tags: # ignore "WhitelistChameleon" tag
+    - ClothMade
+  - type: Sprite
+    sprite: Clothing/Head/Hats/beret.rsi
+  - type: Clothing
+    sprite: Clothing/Head/Hats/beret.rsi
+  - type: ChameleonClothing
+    slot: [HEAD]
+    default: ClothingHeadHatBeret
+  # Corvax-Wega-Dirtable-start
+  - type: Dirtable
+    dirtState: beret
+    equippedDirtState: equipped-beret
+    # Corvax-Wega-Dirtable-end

@@ -35,7 +35,10 @@ public sealed partial class ProjectilePressureSystem : EntitySystem
             pressureModifier = Math.Max(0.5f, 2 - pressureRatio);
         }
 
-        var bonus = ev.Damage * (pressureModifier - 1);
+        
+        var bonus = component.Ignore 
+            ? ev.Damage * component.DamageMultiplier 
+            : ev.Damage * (pressureModifier - 1);
         ev.Damage += bonus;
     }
 }

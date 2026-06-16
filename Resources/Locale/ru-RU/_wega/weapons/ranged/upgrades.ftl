@@ -2,3 +2,4 @@ upgradeable-gun-popup-no-upgrades = В оружии нету никаких ап
 
 gun-upgrade-examine-text-aoe = Имеет [color=#ec9b2d][bold]урон по площади.[/bold][/color]
 gun-upgrade-examine-text-lifesteal = Немного [color=green][bold]лечит[/bold][/color] при попадании в цель.
+gun-upgrade-examine-text-pressure = [color=red][bold]Игнорирует[/bold][/color] окружающую среду, увеличивая урон вне зависимости от неё.

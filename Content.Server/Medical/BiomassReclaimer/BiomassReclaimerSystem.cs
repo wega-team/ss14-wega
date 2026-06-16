@@ -5,6 +5,7 @@ using Content.Server.Materials;
 using Content.Server.Power.Components;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Audio;
+using Content.Shared.Android; // Corvax-Wega-Edit
 using Content.Shared.Body.Components;
 using Content.Shared.CCVar;
 using Content.Shared.Chemistry.EntitySystems;
@@ -242,6 +243,9 @@ namespace Content.Server.Medical.BiomassReclaimer
             bool isPlant = HasComp<ProduceComponent>(dragged);
             if (!isPlant && !HasComp<MobStateComponent>(dragged))
                 return false;
+
+            if (HasComp<AndroidComponent>(dragged)) // Corvax-Wega-Check
+                return false; // Corvax-Wega-Check
 
             if (!Transform(reclaimer).Anchored)
                 return false;

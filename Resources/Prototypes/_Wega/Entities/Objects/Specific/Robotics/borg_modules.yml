@@ -514,9 +514,10 @@
     layers:
     - state: generic
     - state: icon-speed
-  - type: ItemBorgModule
-    hands:
-    - item: SpeedModeDevice
+  - type: ComponentBorgModule
+    components:
+    - type: SpeedUpGen
+      damageBooster: false
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: speed }
 
@@ -863,7 +864,6 @@
     - state: icon-sheild
   - type: ItemBorgModule
     hands:
-    - item: TelescopicShieldBorg
     - hand:
         emptyRepresentative: Nanopast
         emptyLabel: borg-slot-nanopasta-empty
@@ -871,6 +871,11 @@
           tags:
           - Nanopast
     - item: BorgGeneratorNanopast
+  - type: ComponentBorgModule
+    components:
+    - type: TelekinesisGen
+      itemPrototype: TelescopicShieldBorg
+      handPos: Left
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: sheild-module }
 
@@ -934,14 +939,6 @@
         whitelist:
           components:
           - Flash
-    - item: RiotBulletShield
-      hand:
-        emptyLabel: borg-slot-shield-empty
-        emptyRepresentative: RiotBulletShieldBorg
-        whitelist:
-          tags:
-          - Sheild
-    - item: RefuelingWelder
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: gun-module }
 ## Rare
@@ -989,7 +986,6 @@
         whitelist:
           tags:
           - Itemborg
-    - item: TelescopicShieldBorg
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: lethal-rare }
 
@@ -1304,6 +1300,12 @@
     - item: WeaponPistolDesertEagleBorg
     - item: PinpointerSyndicateNuclear
     - item: PinpointerUniversal # Corvax-Wega-Robot-add
+  - type: ComponentBorgModule
+    components:
+    - type: Reflect
+      reflectProb: 1
+      reflects:
+        - Energy
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: sniper-module }
 
@@ -1324,6 +1326,15 @@
     - item: CyborgEnergySword
     - item: PinpointerSyndicateNuclear
     - item: PinpointerUniversal # Corvax-Wega-Robot-add
+  - type: ComponentBorgModule
+    components:
+    - type: TelekinesisGen
+      itemPrototype: TelescopicShieldBorgSyndCr20
+      handPos: Left
+    - type: Reflect
+      reflectProb: 0.5
+      reflects:
+        - Energy
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: syndicate-c20r-module }
 
@@ -1503,9 +1514,10 @@
     layers:
     - state: xenoborg_generic
     - state: icon-speed
-  - type: ItemBorgModule
-    hands:
-    - item: SpeedModeDevice
+  - type: ComponentBorgModule
+    components:
+    - type: SpeedUpGen
+      damageBooster: false
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: speed_xenoborg }
 
@@ -1546,6 +1558,43 @@
     - item: XenoborgHoloprojectorEMPTrap
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: emp-module }
+
+- type: entity
+  parent: [ BaseXenoborgModuleEngi, BaseProviderBorgModule, BaseXenoborgContraband ]
+  id: ModuleXenoborgModule
+  name: borgmodule module
+  description: A module that helps the mothership borg brains and install other modules.
+  components:
+  - type: Sprite
+    layers:
+    - state: xenoborg_generic
+    - state: icon-xenoborg-basic
+  - type: ItemBorgModule
+    hands:
+    - hand:
+        emptyRepresentative: MMIFilled
+        emptyLabel: borg-slot-mmi-and-head-brains-empty # Corvax-Wega-Add
+        whitelist:
+          components:
+          - Brain
+          - BorgBrain
+          - ChameleonClothing # Corvax-Wega-Add
+    - hand:
+        emptyRepresentative: XenoborgModuleBasic
+        emptyLabel: borg-slot-modules-empty
+        whitelist:
+          components:
+          - BorgModule
+    - hand:
+        emptyRepresentative: PowerCellHigh
+        emptyLabel: borg-slot-powercell-empty
+        whitelist:
+          components:
+          - PowerCell
+    - item: TurboItemRechargerXenoborg
+    - item: XenoborgModuleBag
+  - type: BorgModuleIcon
+    icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-module-module }
 
   # Clockwork
   

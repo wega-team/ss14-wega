@@ -43,3 +43,6 @@ ghost-role-information-cogscarab-name = Латунный скарабей
 ghost-role-information-cogscarab-description = Маленький лучший друг праведников, следите, чтобы ваш механизм был достаточно заведен, чтобы не умереть в случайный момент.
 ghost-role-information-ratvar = Ратвар
 ghost-role-information-ratvar-desc = Дальше - больше...
+
+ghost-role-information-ash-guardian-name = Пепельный страж
+ghost-role-information-ash-guardian-description = Слушайте своего хозяина. Не танкуйте урон. Сильно бейте людей.

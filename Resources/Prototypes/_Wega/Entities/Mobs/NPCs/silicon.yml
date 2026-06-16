@@ -87,7 +87,18 @@
     attackRate: 1
     damage:
       types:
-        Structural: 10 # если застрял
-        Blunt: 3
+        Structural: 12 # если застрял
+        Slash: 11
   - type: CombatMode
     combatToggleAction: ActionCombatModeToggle
+  - type: Puller
+    needsHands: false
+  - type: Prying
+    pryPowered: true
+    force: true
+    speedModifier: 1
+    useSound:
+      path: /Audio/Items/crowbar.ogg
+  - type: NpcFactionMember
+    factions:
+    - Passive

@@ -47,7 +47,15 @@
   materials:
     Steel: 1500
     Glass: 1500
-    
+
+- type: latheRecipe
+  parent: BaseXenoborgModulesRecipe
+  id: ModuleXenoborgModule
+  result: ModuleXenoborgModule
+  materials:
+    Steel: 1500
+    Glass: 1500
+
 - type: latheRecipe
   parent: BaseXenoborgModulesRecipe
   categories:
@@ -57,3 +65,12 @@
   materials:
     PrintBrain: 100
     Steel: 1500
+
+- type: latheRecipe
+  parent: BaseXenoborgModulesRecipe
+  categories:
+  - Circuitry
+  id: ClothingHeadHatChameleonXenoborg
+  result: ClothingHeadHatChameleonXenoborg
+  materials:
+    Steel: 100

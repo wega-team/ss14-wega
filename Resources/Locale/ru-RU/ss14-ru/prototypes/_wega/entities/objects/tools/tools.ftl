@@ -12,3 +12,6 @@ ent-AccessConfiguratorSci = конфигуратор доступа научно
     .desc = Инструмент настройки доступов для научного руководителя, позволяющий настраивать доступ у всех дверей и консолей под доступом научного отдела.
 ent-AccessConfiguratorAllAccses = настроенный конфигуратор доступа
     .desc = Конфигуратор доступа со встроенной картой, имеющая все необходимые доступы.
+ent-HandheldGPSBasicBorgOn = { ent-HandheldGPSBasic }
+    .desc = { ent-HandheldGPSBasic.desc }
+    .suffix = Борговский

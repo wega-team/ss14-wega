@@ -287,19 +287,21 @@
     pierceArmor: true
   - type: Extractable
     grindableSolutionName: food
-  - type: DamageOnInteract
-    damage:
-      types:
-        Heat: 4
-        Caustic: 4
-    throw: true
-    throwSpeed: 3
-    interactTimer: 2 # Stop the player from spam clicking the entity
-    ignoreResistances: false
-    popupText: powered-light-component-burn-hand
-    interactSound: /Audio/Effects/lightburn.ogg
-    stunChance: 0.10
-    stunSeconds: 1.5
+# Corvax-Wega-Start
+  # - type: DamageOnInteract
+    # damage:
+      # types:
+        # Heat: 4
+        # Caustic: 4
+    # throw: true
+    # throwSpeed: 3
+    # interactTimer: 2 # Stop the player from spam clicking the entity
+    # ignoreResistances: false
+    # popupText: powered-light-component-burn-hand
+    # interactSound: /Audio/Effects/lightburn.ogg
+    # stunChance: 0.10
+    # stunSeconds: 1.5
+# Corvax-Wega-End
   - type: Damageable
   - type: Injurable
     damageContainer: Inorganic
@@ -320,6 +322,18 @@
     damage:
       types:
         Blunt: 5 # The nettle will "wilt" after 5 hits.
+# Corvax-Wega-Start
+  - type: DamageOnPickup
+    damage:
+      types:
+        Heat: 4
+        Caustic: 4
+    throw: true
+    throwSpeed: 3
+    ignoreResistances: false
+    popupText: powered-light-component-burn-hand
+    interactSound: /Audio/Effects/lightburn.ogg
+# Corvax-Wega-End
 
 - type: entity
   name: banana

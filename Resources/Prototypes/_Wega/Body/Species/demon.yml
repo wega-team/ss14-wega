@@ -39,6 +39,9 @@
     enum.HumanoidVisualLayers.RLeg:
       limit: 1
       required: false
+    enum.HumanoidVisualLayers.TailOverlay:
+      limit: 1
+      required: false
 
 - type: entity
   parent: BaseSpeciesAppearance

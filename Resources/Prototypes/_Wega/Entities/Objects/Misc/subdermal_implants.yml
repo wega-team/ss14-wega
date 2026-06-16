@@ -70,3 +70,19 @@
   components:
   - type: Implanter
     implant: ThermalVisionImplant
+  
+- type: entity
+  parent: BaseSubdermalImplant
+  id: SmokeImplant
+  name: smoke implant
+  description: This implant releases smoke clouds.
+  categories: [ HideSpawnMenu ]
+  components:
+    - type: SubdermalImplant
+      implantAction: ActionActivateSmoke
+    - type: TriggerOnActivateImplant
+    - type: EmitSoundOnTrigger
+      sound: /Audio/Effects/smoke.ogg
+    - type: SmokeOnTrigger
+      spreadAmount: 20
+      duration: 10

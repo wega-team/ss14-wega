@@ -50,3 +50,16 @@
   icon:
     sprite: /Textures/_Wega/Interface/Misc/veilcult_icons.rsi
     state: Cultist
+    
+- type: factionIcon
+  id: XenoborgFaction
+  priority: 11
+  hideOnStealth: false
+  showTo:
+    components:
+      - Xenoborg
+      - Ghost
+  locationPreference: Left
+  icon:
+    sprite: /Textures/_Wega/Interface/Misc/big_icons.rsi
+    state: Xenoborg

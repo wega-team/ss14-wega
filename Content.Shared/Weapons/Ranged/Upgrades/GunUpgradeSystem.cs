@@ -44,6 +44,7 @@ public sealed partial class GunUpgradeSystem : EntitySystem
         SubscribeLocalEvent<GunUpgradeDamageComponent, GunShotEvent>(OnDamageGunShot);
         SubscribeLocalEvent<GunUpgradeAoEComponent, GunShotEvent>(OnAoEGunShot); // Corvax-Wega-Lavaland
         SubscribeLocalEvent<GunUpgradeLifestealComponent, GunShotEvent>(OnLifestealShot); // Corvax-Wega-Lavaland
+        SubscribeLocalEvent<GunUpgradePressureComponent, GunShotEvent>(OnPressureShot); // Corvax-Wega-Lavaland
     }
 
     private void RelayEvent<T>(Entity<UpgradeableGunComponent> ent, ref T args) where T : notnull
@@ -157,6 +158,15 @@ public sealed partial class GunUpgradeSystem : EntitySystem
                 return;
 
             EnsureComp<ProjectileLifestealComponent>(ammo.Value).StealAmount = ent.Comp.StealAmount;
+        }
+    }
+    
+    private void OnPressureShot(Entity<GunUpgradePressureComponent> ent, ref GunShotEvent args)
+    {
+        foreach (var (ammo, _) in args.Ammo)
+        {
+            if (TryComp<ProjectilePressureComponent>(ammo, out var pressure))
+                pressure.Ignore = true;
         }
     }
     // Corvax-Wega-Lavaland-end
