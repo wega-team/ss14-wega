@@ -51,16 +51,13 @@
     layers:
     - state: stimpen
       map: ["enum.SolutionContainerLayers.Fill"]
-  - type: SolutionContainerManager
-    solutions:
-      pen:
-        maxVol: 30
+  - type: Solution
+    solution:
+      maxVol: 30
   - type: SolutionContainerVisuals
     maxFillLevels: 1
     changeColor: false
     emptySpriteName: stimpen_empty
-  - type: Injector
-    solutionName: pen
 
 - type: entity
   parent: ChemicalMedipen
@@ -120,14 +117,9 @@
     emptySpriteName: ertpen_empty
   - type: Solution
     solution:
+      maxVol: 30
       reagents:
       - ReagentId: Stimulants
         Quantity: 30
-  - type: Injector
-    solutionName: pen
-    currentTransferAmount: null
-    activeModeProtoId: HyposprayInjectMode
-    allowedModes:
-    - HyposprayInjectMode
   - type: StaticPrice
     price: 1500
