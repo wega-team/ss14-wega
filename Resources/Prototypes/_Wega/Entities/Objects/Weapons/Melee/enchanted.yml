@@ -125,6 +125,27 @@
     - ActionVeilCultActivateCrusher
     activeIfWorn: false
     
+- type: entity
+  id: WeaponClockHammerDismantling
+  parent: WeaponClockHammer
+  suffix: Dismantling
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/clock_hammer.rsi
+    layers:
+    - state: icon
+    - state: dismantling
+      shader: unshaded
+      visible: true
+  - type: Enchanted
+  - type: ActionGrant
+    actions:
+    - ActionVeilCultActivateDismantling
+  - type: ItemActionGrant
+    actions: 
+    - ActionVeilCultActivateDismantling
+    activeIfWorn: false
+    
 # GLOVES
     
 - type: entity
@@ -187,4 +208,4 @@
   - type: StunEnchant
     mute: false
     empBorgs: false
-    stunTime: 3
+    stunTime: 2

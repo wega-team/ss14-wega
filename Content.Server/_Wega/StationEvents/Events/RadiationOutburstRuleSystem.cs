@@ -1,5 +1,4 @@
 using Content.Server.StationEvents.Components;
-using Content.Server.Construction.Components;
 using Robust.Shared.Random;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Containers;
@@ -8,7 +7,6 @@ using Content.Shared.GameTicking.Components;
 using Content.Shared.Item;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Tag;
-using Content.Shared.Construction.Components;
 using Content.Shared.Stacks;
 using Content.Shared.Ghost;
 
@@ -23,10 +21,6 @@ public sealed partial class RadiationOutburstRuleSystem : StationEventSystem<Rad
     private EntityQuery<MobStateComponent> _mobStateQuery;
     private EntityQuery<GhostComponent> _ghostQuery;
     private static readonly ProtoId<TagPrototype> HighRiskItemTag = "HighRiskItem";
-    private static readonly ProtoId<TagPrototype> OreTag = "Ore";
-    private static readonly ProtoId<TagPrototype> ConstructionMaterialTag = "ConstructionMaterial";
-    private static readonly ProtoId<TagPrototype> RawMaterialTag = "RawMaterial";
-    private static readonly ProtoId<TagPrototype> MaterialsThrophyTag = "MaterialsThrophy";
 
     public override void Initialize()
     {
@@ -46,7 +40,7 @@ public sealed partial class RadiationOutburstRuleSystem : StationEventSystem<Rad
 
         while (query.MoveNext(out var targetUid, out _, out var xform))
         {
-            // не на обломке какм нить ли
+            // не на обломке каком-нибудь
             if (StationSystem.GetOwningStation(targetUid, xform) != station)
                 continue;
 
@@ -58,8 +52,8 @@ public sealed partial class RadiationOutburstRuleSystem : StationEventSystem<Rad
             if (_tagSystem.HasTag(targetUid, HighRiskItemTag))
                 continue;
 
-            //анти куча материалов чек
-            if (_tagSystem.HasTag(targetUid, OreTag) || _tagSystem.HasTag(targetUid, ConstructionMaterialTag) || _tagSystem.HasTag(targetUid, RawMaterialTag) || _tagSystem.HasTag(targetUid, MaterialsThrophyTag))
+            // анти стаки
+            if (HasComp<StackComponent>(targetUid))
                 continue;
 
             // анти педали айтем
@@ -72,13 +66,11 @@ public sealed partial class RadiationOutburstRuleSystem : StationEventSystem<Rad
         if (candidates.Count == 0)
         {
             Log.Info("RadiationOutburst: Нет предметов для облучения");
-            Announce(station.Value, false);
             return;
         }
 
         _random.Shuffle(candidates);
 
-        // доооо 8
         var itemsToIrradiate = Math.Min(8, candidates.Count);
         for (int i = 0; i < itemsToIrradiate; i++)
         {
@@ -86,8 +78,6 @@ public sealed partial class RadiationOutburstRuleSystem : StationEventSystem<Rad
             var rads = _random.Next(2, 3); // Интенсивность 2-3
             SetRadiation(target, rads);
         }
-
-        Announce(station.Value, true);
     }
 
     private bool IsInsideLivingEntity(EntityUid entity)
@@ -101,23 +91,8 @@ public sealed partial class RadiationOutburstRuleSystem : StationEventSystem<Rad
     private void SetRadiation(EntityUid target, float rads)
     {
         var radiationComp = EnsureComp<RadiationSourceComponent>(target);
-    //  radiationComp.Intensity += rads; пока легенько
         Dirty(target, radiationComp);
 
         Log.Debug($"RadiationOutburst: {target} теперь излучает +{rads} (всего: {radiationComp.Intensity})");
-    }
-
-    private void Announce(EntityUid station, bool success)
-    {
-        var message = success
-            ? "station-event-radiation-outburst-announcement"
-            : "station-event-radiation-outburst-failed";
-
-        ChatSystem.DispatchStationAnnouncement(
-            station,
-            Loc.GetString(message),
-            playDefaultSound: false,
-            colorOverride: Color.Gold
-        );
     }
 }

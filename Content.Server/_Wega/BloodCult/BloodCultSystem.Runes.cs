@@ -19,6 +19,7 @@ using Content.Shared.DoAfter;
 using Content.Shared.Examine;
 using Content.Shared.Ghost;
 using Content.Shared.Gibbing;
+using Content.Shared.Storage.Components;
 using Content.Shared.Humanoid;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
@@ -75,8 +76,22 @@ public sealed partial class BloodCultSystem
 
     #region Runes
 
+    private bool IsInsideClosedLocker(EntityUid entity)
+    {
+        if (!_container.TryGetContainingContainer(entity, out var container))
+            return false;
+
+        if (TryComp<EntityStorageComponent>(container.Owner, out var storage))
+            return !storage.Open;
+
+        return false;
+    }
+
     private void AfterRuneSelect(Entity<BloodDaggerComponent> rune, ref SelectBloodRuneMessage args)
     {
+        if (IsInsideClosedLocker(args.Actor))
+            return;
+
         if (!HasComp<BloodCultistComponent>(args.Actor) || IsInSpace(args.Actor))
             return;
 
@@ -150,6 +165,13 @@ public sealed partial class BloodCultSystem
             return;
         }
 
+        if (IsInsideClosedLocker(cultist))
+        {
+            _popup.PopupEntity(Loc.GetString("rune-cant-draw-in-locker"), cultist, cultist, PopupType.MediumCaution);
+            QueueDel(GetEntity(args.Rune));
+            return;
+        }
+
         var rune = SpawnFinalRune(cultist, args.SelectedRune);
         if (args.SelectedRune == "BloodRuneRitualDimensionalRending")
             AnnounceRitualRune(rune);
@@ -197,19 +219,19 @@ public sealed partial class BloodCultSystem
 
         args.PushMarkup(component.LocDesc);
 
-		if (component.RuneType == BloodCultRune.Revive)
-		{
-			var o = cult.Offerings;
-			var revives = o / 3;
-			var need = 3 - o % 3;
+        if (component.RuneType == BloodCultRune.Revive)
+        {
+            var o = cult.Offerings;
+            var revives = o / 3;
+            var need = 3 - o % 3;
 
             args.PushMarkup(revives > 0
                 ? Loc.GetString("revive-alive-count", ("alive", revives))
                 : Loc.GetString("revive-need-more", ("needed", need)), -1);
 
-			args.PushMarkup(Loc.GetString("revive-offering-count", ("offerings", o)), -2);
-		}
-	}
+            args.PushMarkup(Loc.GetString("revive-offering-count", ("offerings", o)), -2);
+        }
+    }
 
     private void OnRitualInteract(EntityUid rune, BloodRitualDimensionalRendingComponent component, InteractHandEvent args)
     {

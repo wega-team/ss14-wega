@@ -17,6 +17,7 @@ namespace Content.Server._Wega.Implants;
 
 public sealed partial class MindControlSystem : EntitySystem
 {
+    private const string ForcedSleepingEffect = "ForcedSleeping";
     private const string FollowOrdersObjectiveId = "MindControlledFollowOrders";
 
     [Dependency] private PopupSystem _popup = default!;
@@ -65,6 +66,9 @@ public sealed partial class MindControlSystem : EntitySystem
         if (!TryComp<ActorComponent>(args.Implanted, out var actor))
             return;
 
+        if (HasComp<MindControlComponent>(args.Implanted))
+            return;
+
         if (!_mind.TryGetMind(ent.Comp.Master, out _, out var masterMind) || masterMind.CharacterName == null)
             return;
 
@@ -75,7 +79,7 @@ public sealed partial class MindControlSystem : EntitySystem
             null,
             ent.Comp.BriefingSound);
 
-        _status.TryAddStatusEffectDuration(args.Implanted, SleepingSystem.StatusEffectForcedSleeping, TimeSpan.FromSeconds(2));
+        _status.TryAddStatusEffectDuration(args.Implanted, ForcedSleepingEffect, TimeSpan.FromSeconds(5));
         AssignObjective(args.Implanted);
     }
 
@@ -89,7 +93,7 @@ public sealed partial class MindControlSystem : EntitySystem
 
         RemoveObjective(args.Implanted);
         RemCompDeferred<MindControlComponent>(args.Implanted);
-        _status.TryAddStatusEffectDuration(args.Implanted, SleepingSystem.StatusEffectForcedSleeping, TimeSpan.FromSeconds(2));
+        _status.TryAddStatusEffectDuration(args.Implanted, ForcedSleepingEffect, TimeSpan.FromSeconds(5));
     }
 
     private void OnEmpPulse(Entity<MindControlComponent> ent, ref EmpPulseEvent args)
@@ -97,7 +101,8 @@ public sealed partial class MindControlSystem : EntitySystem
         if (!TryComp<StaminaComponent>(ent.Owner, out var stamina))
             return;
 
-        _stamina.TakeStaminaDamage(ent.Owner, stamina.CritThreshold, stamina);
+        var threshold = stamina.CritThreshold;
+        _stamina.TakeStaminaDamage(ent.Owner, threshold, stamina);
         args.Affected = true;
         args.Disabled = true;
     }
@@ -114,8 +119,6 @@ public sealed partial class MindControlSystem : EntitySystem
         {
             _mind.TryRemoveObjective(mindId, mind, index);
         }
-
-        _popup.PopupEntity(Loc.GetString("mind-control-user-freed"), uid, uid, PopupType.Medium);
     }
 
     private void AssignObjective(EntityUid uid)

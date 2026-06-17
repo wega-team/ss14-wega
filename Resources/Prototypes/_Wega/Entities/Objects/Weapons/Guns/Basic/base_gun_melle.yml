@@ -1,0 +1,38 @@
+- type: entity
+  id: BaseGunMeleeSmall # для пестифлюшек
+  abstract: true
+  components:
+  - type: AltFireMelee
+    attackType: Heavy
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 6
+    angle: 60
+    attackRate: 1.25
+    wideAnimationRotation: -90
+    animation: WeaponArcThrust
+    soundHit:
+      collection: MetalThud
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Blunt: 2
+
+- type: entity
+  id: BaseGunMeleeLarge # для всего остального
+  abstract: true
+  components:
+  - type: AltFireMelee
+    attackType: Heavy
+  - type: MeleeWeapon
+    damage:
+      types:
+       Blunt: 12
+    angle: 0
+    attackRate: 1
+    wideAnimationRotation: 45
+    animation: WeaponArcThrust
+    soundHit:
+      collection: MetalThud
+  - type: MeleeRequiresWield

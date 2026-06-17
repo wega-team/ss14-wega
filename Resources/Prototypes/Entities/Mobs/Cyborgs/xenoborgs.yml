@@ -60,6 +60,11 @@
       cell_slot:
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellHigh
+# Corvax-Wega-Start
+  - type: LockingWhitelist # so it can help the mothership borging other xenoborgs
+    blacklist:
+      null
+# Corvax-Wega-End
 
 - type: entity
   parent: [ BaseXenoborgChassis, BaseXenoborgTransponder ]
@@ -157,6 +162,8 @@
   - type: ShowHealthBars
     damageContainers:
     - Biological
+  - type: Inventory
+    templateId: borgTall
 # Corvax-Wega-end
 
 - type: entity
@@ -237,6 +244,8 @@
   - type: ActionGrant
     actions:
     - ActionBlinkBorg
+  - type: Inventory
+    templateId: borgDutch
 # Corvax-Wega-end
 
 - type: entity

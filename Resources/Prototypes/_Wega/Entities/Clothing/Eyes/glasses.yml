@@ -97,7 +97,7 @@
   - type: IdentityBlocker
     coverage: EYES
     
-# VeilCult
+# VeilCults
 - type: entity
   parent: ClothingEyesBase
   id: ClothingEyesJudicialVisor
@@ -118,6 +118,9 @@
     coverage: EYES
   - type: NightVision
     tint: "#c242bb00"
+    brightness: 0.5
+    luminanceThreshold: 0.05
+    noiseAmount: 0.02
   - type: ItemToggle
     soundActivate: /Audio/_Wega/Items/activate.ogg
     soundDeactivate: /Audio/_Wega/Items/deactivate.ogg
@@ -130,7 +133,6 @@
         enum.ToggleableVisuals.Layer:
           True: { state: "icon" }
           False: { state: "icon-off" }
-  - type: FlashImmunity
   - type: ShowHealthBars
   - type: EyeProtection
   - type: CultEquipment

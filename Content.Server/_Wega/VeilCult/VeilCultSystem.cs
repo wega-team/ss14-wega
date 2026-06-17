@@ -91,11 +91,11 @@ public sealed partial class VeilCultSystem : SharedVeilCultSystem
             if (beaconComponent.NextTimeTick <= 0 && transform.Anchored)
             {
                 beaconComponent.NextTimeTick = 5;
-                var nearbyCultists = _entityLookup.GetEntitiesInRange<VeilCultistComponent>(transform.Coordinates, 11f)
+                var nearbyCultists = _entityLookup.GetEntitiesInRange<VeilCultistComponent>(transform.Coordinates, 6f)
                     .Where(cultist => !_mobState.IsDead(cultist))
                     .ToList();
 
-                var nearbyConstruct = _entityLookup.GetEntitiesInRange<VeilCultConstructComponent>(transform.Coordinates, 11f)
+                var nearbyConstruct = _entityLookup.GetEntitiesInRange<VeilCultConstructComponent>(transform.Coordinates, 6f)
                     .Where(cultist => !_mobState.IsDead(cultist))
                     .ToList();
 
@@ -179,7 +179,7 @@ public sealed partial class VeilCultSystem : SharedVeilCultSystem
 
     private void OnAnchor(EntityUid uid, VeilCultBeaconComponent component, AnchorAttemptEvent args)
     {
-        var beacons = _entityLookup.GetEntitiesInRange<VeilCultBeaconComponent>(Transform(uid).Coordinates, 20f);
+        var beacons = _entityLookup.GetEntitiesInRange<VeilCultBeaconComponent>(Transform(uid).Coordinates, 10f);
 
         if (beacons.Count > 1)
         {
@@ -206,7 +206,7 @@ public sealed partial class VeilCultSystem : SharedVeilCultSystem
     private void OnInit(EntityUid uid, VeilCultBeaconComponent component, ComponentInit args)
     {
         var beacons = _entityLookup.GetEntitiesInRange<VeilCultBeaconComponent>(
-            Transform(uid).Coordinates, 20f);
+            Transform(uid).Coordinates, 10f);
 
         if (beacons.Count > 1)
         {
@@ -261,9 +261,6 @@ public sealed partial class VeilCultSystem : SharedVeilCultSystem
                 }
                 else
                 {
-                    if (HasComp<MindShieldComponent>(target) || HasComp<BibleUserComponent>(target))
-                        continue;
-
                     if (!TryComp<MindContainerComponent>(target, out var mindContainer) || mindContainer.Mind == null)
                         continue;
 

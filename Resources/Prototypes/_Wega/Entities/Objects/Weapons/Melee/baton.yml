@@ -1,0 +1,55 @@
+- type: entity
+  name: blue shield stun baton
+  parent: Stunbaton
+  id: StunbatonBlueshield
+  description: Special baton for harming people.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/batonBS.rsi
+  - type: ItemToggleMeleeWeapon
+    activatedDamage:
+      types:
+        Blunt: 15
+        Heat: 18
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 15
+  - type: StaminaDamageOnHit
+    damage: 15
+  - type: StaminaDamageOnCollide
+    damage: 15
+  - type: Battery
+    maxCharge: 750
+    startingCharge: 750
+  - type: Clothing
+    sprite: _Wega/Objects/Weapons/Melee/batonBS.rsi
+    
+- type: entity
+  name: contractor baton
+  parent: [BaseItem, BaseSyndicateContraband]
+  id: ContractorBaton
+  description: "Sir, get down!"
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/contractor_baton.rsi
+    state: icon
+  - type: MeleeWeapon
+    attackRate: 0.6
+    wideAnimationRotation: -135
+    damage:
+      types:
+        Shock: 5
+    possibilityWideAtack: false
+    soundHit:
+      collection: MetalThud
+  - type: DisarmMalus
+    malus: 0.4
+  - type: StaminaDamageOnHit
+    damage: 75
+  - type: KnockdownOnHit
+  - type: Item
+    sprite: Objects/Weapons/Melee/contractor_baton.rsi
+    size: Normal
+    shape:
+    - 0,0,2,3

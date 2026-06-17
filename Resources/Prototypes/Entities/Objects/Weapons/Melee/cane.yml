@@ -35,14 +35,21 @@
   components:
   - type: Sprite
     sprite: Objects/Weapons/Melee/cane_blade.rsi
-  - type: MeleeWeapon
-    wideAnimationRotation: 65
-    attackRate: 1.5
+    # Corvax-Wega-Start
+  - type: MeleeWeapon 
+    possibilityWideAtack: false
+    wideAnimationRotation: -135
+    angle: 0
+    animation: WeaponArcThrust
+    attackRate: 2.5
+    range: 1.2
     damage:
       types:
-        Slash: 17
+        Piercing: 7
+    resistanceBypass: true
     soundHit:
         path: /Audio/Weapons/bladeslice.ogg
+    # Corvax-Wega-End
   - type: Item
     sprite: Objects/Weapons/Melee/cane_blade.rsi
   - type: Tag

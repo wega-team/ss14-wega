@@ -237,7 +237,12 @@
         Piercing: 0.7
         Heat: 0.7
   - type: ExplosionResistance
-    damageCoefficient: 0.9
+    damageCoefficient: 0.8
+  - type: FireProtection
+    reduction: 0.75
+  - type: TemperatureProtection
+    heatingCoefficient: 0.7
+    coolingCoefficient: 0.7
   - type: Enchantable
     enchants:
     - ClothingOuterVeilCultRobesCamouflage

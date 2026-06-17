@@ -78,7 +78,7 @@
       FootRight: OrganSlimePersonFootRight
       Brain: OrganSlimePersonCore
       Lungs: OrganSlimePersonLungs
-      Ears: OrganSlimePersonEyes # Corvax-Wega-Add
+      Eyes: OrganSlimePersonEyes # Corvax-Wega-Add
   - type: HumanoidProfile
     species: SlimePerson
 

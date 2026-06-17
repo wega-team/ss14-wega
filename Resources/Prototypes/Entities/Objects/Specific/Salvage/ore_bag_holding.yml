@@ -23,5 +23,5 @@
   components:
     - type: MagnetPickup
       slotFlags: null
-      range: 2
+      range: 5 # Corvax-Wega-Change
       requireActiveHand: true

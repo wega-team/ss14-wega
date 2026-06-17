@@ -47,6 +47,8 @@
       visible: true
   - type: Enchanted
   - type: StunEnchant
+    knockout: true
+    stunTime: 4
   
 - type: entity
   id: VeilCultClockworkSlabTeleportation

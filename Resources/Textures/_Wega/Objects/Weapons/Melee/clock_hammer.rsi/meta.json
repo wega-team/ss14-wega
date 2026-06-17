@@ -27,10 +27,17 @@
             "directions": 4
         },
         {
-          "name": "crusher"
+            "name": "equipped-BACK",
+            "directions": 4
         },
         {
-          "name": "knockback"
+            "name": "crusher"
+        },
+        {
+            "name": "dismantling"
+        },
+        {
+            "name": "knockback"
         }
     ]
 }

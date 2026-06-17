@@ -197,6 +197,9 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
         if (HasComp<VeilCultistComponent>(user) && entity.Comp.Cult == CultType.Veil)
             return;
 
+        if (HasComp<AllowCultEquipmentComponent>(user))
+            return;
+
         _popup.PopupEntity(Loc.GetString("blood-cult-failed-attack"), user, user, PopupType.SmallCaution);
 
         var dropEvent = new DropHandItemsEvent();
