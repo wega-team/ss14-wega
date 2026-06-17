@@ -545,3 +545,6 @@
 
 - type: Tag
   id: Morgue
+  
+- type: Tag
+  id: BorgModuleSyndicateMedical
