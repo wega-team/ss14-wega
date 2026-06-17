@@ -122,12 +122,12 @@
         reagents:
         - ReagentId: Tricordrazine
           Quantity: 0.5
-      name: Трико
+      name: reagent-name-tricordrazine
     - generated:
         reagents:
         - ReagentId: Epinephrine
           Quantity: 0.5
-      name: Эпинефрин
+      name: reagent-name-epinephrine
       
 - type: entity
   parent: BaseBorgHypoGenerated
@@ -147,34 +147,34 @@
         reagents:
         - ReagentId: Tricordrazine
           Quantity: 0.5
-      name: Трико
+      name: reagent-name-tricordrazine
     - generated:
         reagents:
         - ReagentId: Epinephrine
           Quantity: 0.5
-      name: Эпинефрин
+      name: reagent-name-epinephrine
     - generated:
         reagents:
         - ReagentId: Bicaridine
           Quantity: 0.5
-      name: Бика
+      name: reagent-name-bicaridine
     - generated:
         reagents:
         - ReagentId: Dermaline
           Quantity: 0.5
-      name: Дермалин
+      name: reagent-name-dermaline
     - generated:
         reagents:
         - ReagentId: Dylovene
           Quantity: 0.5
-      name: Диловен
+      name: reagent-name-dylovene
     - generated:
         reagents:
         - ReagentId: Hyronalin
           Quantity: 0.5
-      name: Хиролин
+      name: reagent-name-hyronalin
     - generated:
         reagents:
         - ReagentId: Dexalin
           Quantity: 0.5
-      name: Дексалин
+      name: reagent-name-dexalin

@@ -362,19 +362,19 @@
         reagents:
         - ReagentId: Omnizine
           Quantity: 0.5
-      name: Омнизин
+      name: reagent-name-omnizine
     - generated:
         reagents:
         - ReagentId: Stimulants
           Quantity: 0.5
-      name: Гиперзин
+      name: reagent-name-stimulants
     - generated:
         reagents:
         - ReagentId: DexalinPlus
           Quantity: 0.5
-      name: Дексалин Плюс
+      name: reagent-name-dexalin-plus
     - generated:
         reagents:
         - ReagentId: Mutadon
           Quantity: 0.5
-      name: Мутадон
+      name: reagent-name-mutadon
