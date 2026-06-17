@@ -1,0 +1,1 @@
+console-set-reagent = Текущая генерация вещества: { $reagent }

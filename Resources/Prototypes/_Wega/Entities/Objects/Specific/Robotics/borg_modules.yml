@@ -28,6 +28,35 @@
       - state: base-part-inhand-right
       - state: base-stripes-inhand-right
 
+- type: entity
+  id: BaseBorgModuleSyndicateMedical
+  parent: BaseBorgModule
+  abstract: true
+  components:
+  - type: BorgModule
+    borgFitTypes:
+    - borg-type-syndicate-medical
+  - type: Tag
+    tags:
+    - BorgModuleSyndicateMedical
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: base-icon-inhand-left
+        color: "#FF0000"
+      - state: base-module-inhand-left
+        color: "#891417"
+      - state: base-part-inhand-left
+      - state: base-stripes-inhand-left
+        color: "#7B0F12"
+      right:
+      - state: base-icon-inhand-right
+        color: "#FF0000"
+      - state: base-module-inhand-right
+        color: "#891417"
+      - state: base-part-inhand-right
+      - state: base-stripes-inhand-right
+        color: "#7B0F12"
 ## Med Module
 - type: entity
   id: BorgModuleSurgery
@@ -143,12 +172,22 @@
           - PowerCell
           - CableCoil
     - hand:
+        emptyRepresentative: DoorElectronics
+        emptyLabel: borg-slot-circuitboards-empty
+        whitelist:
+          components:
+          - Circuitboard
+        blacklist:
+          components:
+          - SiliconLawProvider
+    - hand:
         emptyRepresentative: ScientistIcon # Corvax-Wega-Robot
         emptyLabel: borg-slot-diski-empty
         whitelist:
           components:
           - ResearchDisk
           - TechnologyDisk
+    - item: TechDiskBag
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: adv-anomaly-module }
 
@@ -305,19 +344,7 @@
         whitelist:
           components:
           - Healing
-    - item: BorgHypoTricordrazineBase
-      hand:
-        emptyLabel: borg-slot-hypo-empty
-        emptyRepresentative: BorgHypoTricordrazineBase
-        whitelist:
-          tags:
-          - Itemborg
-    - hand:
-        emptyLabel: borg-slot-hypo-empty
-        emptyRepresentative: BorgHypoEpinephrineBase
-        whitelist:
-          tags:
-          - Itemborg
+    - item: BorgHypoGeneratedGeneral
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: medical-common-module }
 
@@ -1214,19 +1241,28 @@
     - state: icon-doc-rare
   - type: ItemBorgModule
     hands:
-    - item: BorgHypoTricordrazine
+    - item: HandheldHealthAnalyzer
+    - item: BorgHypoGeneratedAdvensed
+    - item: BorgDropper
+    - item: SyringeBluespace
+    - item: Jug
       hand:
-        emptyLabel: borg-slot-hypo-empty
-        emptyRepresentative: BorgHypoTricordrazine
+        emptyLabel: borg-slot-chemical-containers-empty
+        emptyRepresentative: Beaker
         whitelist:
+          components:
+          - FitsInDispenser
           tags:
-          - Itemborg
-    - hand:
-        emptyLabel: borg-slot-hypo-empty
-        emptyRepresentative: BorgHypoBicaridine
+          - ChemDispensable
+    - item: Jug
+      hand:
+        emptyLabel: borg-slot-chemical-containers-empty
+        emptyRepresentative: Beaker
         whitelist:
+          components:
+          - FitsInDispenser
           tags:
-          - Itemborg
+          - ChemDispensable
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: med-rare }
 
@@ -1377,6 +1413,97 @@
           Slash: -1
           Piercing: -1
           Heat: -1
+          
+- type: entity
+  id: BorgModuleSurgerySyndicate
+  parent: [ BaseBorgModuleSyndicateMedical, BaseProviderBorgModule ]
+  name: surgery module
+  description: Surgical module, built-in all necessary surgical instruments and sterilization device. Now cutting out the brain of a crew member has become easier!
+  components:
+  - type: Sprite
+    layers:
+    - state: syndicate
+    - state: icon-syndicate
+  - type: ItemBorgModule
+    hands:
+    - item: ScalpelAS
+      hand:
+        emptyLabel: borg-slot-surgery-empty
+        emptyRepresentative: ScalpelAS
+        whitelist:
+          tags:
+          - Itemborg
+    - hand:
+        emptyLabel: borg-slot-surgery-empty
+        emptyRepresentative: CauteryAS
+        whitelist:
+          tags:
+          - Itemborg
+    - item: SprayBottleEthanol
+      hand:
+        emptyRepresentative: SprayBottle
+        emptyLabel: borg-slot-spray-empty
+        whitelist:
+          tags:
+          - Spray
+    - hand:
+        emptyRepresentative: OrganHumanHeart
+        emptyLabel: borg-slot-biomaterials-empty
+        whitelist:
+          components:
+          - Organ
+          tags:
+          - BaseBodyPart
+    - hand:
+        emptyRepresentative: EmptySubdermalImplant
+        emptyLabel: borg-slot-implants-empty
+        whitelist:
+          components:
+          - SubdermalImplant
+          - Implanter
+          tags:
+          - SubdermalHeadImplant
+          - Pill
+  - type: BorgModuleIcon
+    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: surgery-s-module }
+    
+- type: entity
+  id: BorgModuleChemSyndicate
+  parent: [ BaseBorgModuleSyndicateMedical, BaseProviderBorgModule ]
+  name: chem module
+  description: Surgical module, built-in all necessary surgical instruments and sterilization device. Now cutting out the brain of a crew member has become easier!
+  components:
+  - type: Sprite
+    layers:
+    - state: syndicate
+    - state: icon-syndicate
+  - type: ItemBorgModule
+    hands:
+    - item: HandheldHealthAnalyzer
+    - item: BorgHypoGeneratedSyndieGeneral
+    - item: BaseBorgHypoSyndie
+    - item: DefibrillatorSyndicateCyborg
+    - item: Jug
+      hand:
+        emptyLabel: borg-slot-chemical-containers-empty
+        emptyRepresentative: Beaker
+        whitelist:
+          components:
+          - FitsInDispenser
+          tags:
+          - ChemDispensable
+    - item: Jug
+      hand:
+        emptyLabel: borg-slot-chemical-containers-empty
+        emptyRepresentative: Beaker
+        whitelist:
+          components:
+          - FitsInDispenser
+          tags:
+          - ChemDispensable
+  - type: BorgModuleIcon
+    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: chem-s-module }
+ 
 ## Xenoborg
 - type: entity
   id: BorgModuleXenoConstruction

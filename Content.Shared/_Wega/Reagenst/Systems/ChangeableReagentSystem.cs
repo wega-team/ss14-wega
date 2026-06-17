@@ -6,17 +6,17 @@ using Content.Shared.Database;
 using Content.Shared.Examine;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Components;
-using Content.Shared.Reagent.Ranged.Components;
 using Robust.Shared.Prototypes;
 using Content.Shared.Chemistry.Reagent;
+using Content.Shared.ChangeableReagent.Components;
 
-namespace Content.Shared.Reagent.Ranged.Systems;
+namespace Content.Shared.ChangeableReagent;
 
 public sealed partial class ChangeableReagentSystem : EntitySystem
 {
     [Dependency] private IPrototypeManager _prototypeManager = default!;
     [Dependency] private SharedPopupSystem _popupSystem = default!;
-    [Dependency] private SharedSolutionContainerSystem _solutionContainer = default!;
+    [Dependency] private SolutionRegenerationSystem _solutionrRagents = default!;
 
     public override void Initialize()
     {
@@ -31,17 +31,15 @@ public sealed partial class ChangeableReagentSystem : EntitySystem
         if (component.Reagents.Count < 2)
             return;
 
-        var account = GetReagents(component);
+        var account = GetReagent(component);
+		var name = account.Name;
 
-        if (!_prototypeManager.TryIndex<ReagentPrototype>(account.Reagent, out var proto))
-            return;
-
-        args.PushMarkup(Loc.GetString("reagents-set", ("reagent", Loc.GetString(proto.Name))));
+        args.PushMarkup(Loc.GetString("set-reagent", ("reagent", Loc.GetString(name))));
     }
 
-    private ChangeableReagentComponent GetReagents(ChangeableReagentComponent component)
+    private ChangeableReagents GetReagent(ChangeableReagentComponent component)
     {
-        return component.Reagents[component.CurrentAccount];
+        return component.Reagents[component.CurrentReagent];
     }
 
     private void OnGetVerb(EntityUid uid, ChangeableReagentComponent component, GetVerbsEvent<Verb> args)
@@ -52,21 +50,17 @@ public sealed partial class ChangeableReagentSystem : EntitySystem
         if (component.Reagents.Count < 2)
             return;
 
-        if (!_accessReaderSystem.IsAllowed(args.User, uid))
-            return;
-
         for (var i = 0; i < component.Reagents.Count; i++)
         {
-            var account = component.Reagents[i];
-            var proto = _prototypeManager.Index<ReagentPrototype>(account.Reagent);
+            var Reagent = component.Reagents[i];
             var index = i;
 
             var v = new Verb
             {
                 Priority = 1,
                 Category = VerbCategory.ReagentChange,
-                Text = Loc.GetString(proto.Code),
-                Disabled = i == component.CurrentAccount,
+                Text = Loc.GetString(Reagent.Name),
+                Disabled = i == component.CurrentReagent,
                 Impact = LogImpact.Low,
                 DoContactInteraction = true,
                 Act = () =>
@@ -91,21 +85,16 @@ public sealed partial class ChangeableReagentSystem : EntitySystem
 
     private void SetReagent(EntityUid uid, ChangeableReagentComponent component, int index, EntityUid? user = null)
     {
-        var account = component.Reagents[index];
-        component.CurrentAccount = index;
+        var Reagent = component.Reagents[index];
+        component.CurrentReagent = index;
         Dirty(uid, component);
 
-        if (_prototypeManager.TryIndex<ReagentPrototype>(account.Reagent, out var prototype))
+        if (user != null)
+			_popupSystem.PopupClient(Loc.GetString("set-reagent", ("reagent", Loc.GetString(Reagent.Name))), uid, user.Value);
+        
+		if (TryComp(uid, out SolutionRegenerationComponent? reagenComp))
         {
-            if (user != null)
-                _popupSystem.PopupClient(Loc.GetString("reagents-set", ("reagent", Loc.GetString(prototype.Name))), uid, user.Value);
-        }
-
-        if (TryComp(uid, out SolutionRegenerationComponent? sprayComp))
-        {
-            sprayComp.Generated  = account.Reagent;
-
-            Dirty(uid, sprayComp);
+            _solutionrRagents.SetReagent((uid,reagenComp), Reagent.Generated);
         }
     }
 }

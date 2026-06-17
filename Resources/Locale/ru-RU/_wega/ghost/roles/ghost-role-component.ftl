@@ -46,3 +46,5 @@ ghost-role-information-ratvar-desc = Дальше - больше...
 
 ghost-role-information-ash-guardian-name = Пепельный страж
 ghost-role-information-ash-guardian-description = Слушайте своего хозяина. Не танкуйте урон. Сильно бейте людей.
+
+ghost-role-information-syndicate-cyborg-medical-name = Медицинский киборг Синдиката

@@ -1039,19 +1039,7 @@
     - item: HandheldHealthAnalyzer
     # - item: AdvancedJetInjector Corvax-Wega-Robot
 # Corvax-Wega-Robot-Start
-    - item: BorgHypoTricordrazineBase
-      hand:
-        emptyLabel: borg-slot-hypo-empty
-        emptyRepresentative: BorgHypoTricordrazineBase
-        whitelist:
-          tags:
-          - Itemborg
-    - hand:
-        emptyLabel: borg-slot-hypo-empty
-        emptyRepresentative: BorgHypoEpinephrineBase
-        whitelist:
-          tags:
-          - Itemborg
+    - item: BorgHypoGeneratedGeneral
 # Corvax-Wega-Robot-End
     - item: Gauze
       hand:
@@ -1318,12 +1306,22 @@
           # tags:
           # - ConstructionMaterial
     - hand:
+        emptyRepresentative: DoorElectronics
+        emptyLabel: borg-slot-circuitboards-empty
+        whitelist:
+          components:
+          - Circuitboard
+        blacklist:
+          components:
+          - SiliconLawProvider
+    - hand:
         emptyRepresentative: ScientistIcon # Corvax-Wega-Robot
         emptyLabel: borg-slot-diski-empty
         whitelist:
           components:
           - ResearchDisk
           - TechnologyDisk
+    - item: TechDiskBag
 # Corvax-Wega-end
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: anomaly-module } # Corvax-Wega-add
@@ -1637,6 +1635,12 @@
       # - item: Emag
       - item: AccessBreaker
       - item: SyndicateDrill
+      - hand:
+          emptyRepresentative: NukeDisk
+          emptyLabel: borg-slot-nukedisk-empty # Corvax-Wega-Add
+          whitelist:
+            components:
+            - NukeDisk
       # Corvax-Wega-Robot-End
       - item: PinpointerSyndicateNuclear
       - item: PinpointerUniversal # Corvax-Wega-Robot-add
