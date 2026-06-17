@@ -165,7 +165,7 @@
   - type: Speech
     speechSounds: Lizard
     speechVerb: Reptilian
-    allowedEmotes: ['Thump', 'Purr', 'FilinidHisses', 'Growl']
+    allowedEmotes: ['Thump', 'Purr', 'FilinidHisses', 'Growl'] # Corvax-Wega-Edit
   - type: TypingIndicator
     proto: lizard
   - type: CreamPied
