@@ -6,7 +6,6 @@ using Content.Shared.Database;
 using Content.Shared.Examine;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Components;
-using Robust.Shared.Prototypes;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.ChangeableReagent.Components;
 
