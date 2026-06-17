@@ -265,7 +265,7 @@
     - enum.HumanoidVisualLayers.Snout
     - enum.HumanoidVisualLayers.HeadTop
     - enum.HumanoidVisualLayers.HeadSide
-    - enum.HumanoidVisualLayers.Hair
+    - enum.HumanoidVisualLayers.Hair # Corvax-Wega-Add
 
 - type: entity
   parent: [ OrganBaseArmLeft, OrganReptilianExternal ]
