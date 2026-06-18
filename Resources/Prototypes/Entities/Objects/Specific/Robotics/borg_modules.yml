@@ -814,6 +814,8 @@
         emptyRepresentative: ConstrukAndBattery # Corvax-Wega-add
         emptyLabel: borg-slot-construction-empty
         whitelist:
+          components: # Corvax-Wega-Add
+          - PowerCell # Corvax-Wega-Add
           tags:
           - ConstructionMaterial
           - PowerCell # Corvax-Wega-robots
@@ -821,7 +823,9 @@
         emptyRepresentative: ConstrukAndBattery # Corvax-Wega-Add
         emptyLabel: borg-slot-construction-empty
         whitelist:
-          tags:
+          components: # Corvax-Wega-Add
+          - PowerCell # Corvax-Wega-Add
+          tags: 
           - ConstructionMaterial
           - PowerCell # Corvax-Wega-robots
 # Corvax-Wega-Robot-Start
@@ -1294,6 +1298,8 @@
         emptyRepresentative: ConstrukAndCabel # Corvax-Wega-Robot
         emptyLabel: borg-slot-construction-empty
         whitelist:
+          components: # Corvax-Wega-Add
+          - PowerCell # Corvax-Wega-Add
           tags:
           - ConstructionMaterial
           - PowerCell # Corvax-Wega-Add
@@ -1787,6 +1793,8 @@
           - ConstructionMaterial
 # Corvax-Wega-Start
           - PowerCell 
+          components:
+          - PowerCell
     # - hand:
         # emptyRepresentative: PowerCellHigh
         # emptyLabel: borg-slot-powercell-empty

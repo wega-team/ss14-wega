@@ -167,6 +167,8 @@
         emptyRepresentative: ConstrukAndCabel
         emptyLabel: borg-slot-construction-empty
         whitelist:
+          components: 
+          - PowerCell 
           tags:
           - ConstructionMaterial
           - PowerCell
@@ -487,6 +489,8 @@
         emptyRepresentative: BorgModuleConstructionMaterialPlaceholder
         emptyLabel: borg-slot-construction-empty
         whitelist:
+          components: 
+          - PowerCell 
           tags:
           - ConstructionMaterial
           - PowerCell
@@ -1509,6 +1513,8 @@
         emptyRepresentative: ConstrukAndCabel
         emptyLabel: borg-slot-construction-empty
         whitelist:
+          components: 
+          - PowerCell 
           tags:
           - ConstructionMaterial
           - PowerCell
@@ -1517,6 +1523,8 @@
         emptyRepresentative: ConstrukAndCabel
         emptyLabel: borg-slot-construction-empty
         whitelist:
+          components: 
+          - PowerCell 
           tags:
           - ConstructionMaterial
           - PowerCell
