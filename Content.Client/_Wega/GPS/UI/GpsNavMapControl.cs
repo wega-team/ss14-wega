@@ -34,6 +34,8 @@ public sealed class GpsNavMapControl : Control
     private readonly Color _currentPosColor = new(255, 71, 87);
     private readonly Color _gridColor = new(100, 100, 100, 50);
     private readonly Color _lavaDefaultColor = new(255, 69, 0);
+    private readonly Color _childGridWallColor = new(66, 135, 245, 220);
+    private readonly Color _childGridFloorColor = new(66, 135, 245, 120);
 
     private bool _showBeaconLabels = true;
     private float _updateTimer;
@@ -111,6 +113,7 @@ public sealed class GpsNavMapControl : Control
         DrawGrid(handle, center, size);
         DrawLavaTiles(handle, center);
         DrawMapTiles(handle, navMap, center);
+        DrawChildGrids(handle, center);
         DrawGpsDevices(handle, center);
         DrawNavBeacons(handle, center);
         DrawCurrentPosition(handle, center);
@@ -228,6 +231,113 @@ public sealed class GpsNavMapControl : Control
 
         bool hasComponent = HasComponentAtTile(tilePos);
         var wallColor = hasComponent ? _rockColor : _wallColor;
+
+        if ((tileData & (1 << ((int)AtmosDirection.North + (int)NavMapChunkType.Wall))) != 0)
+        {
+            var wallRect = new UIBox2(
+                screenPos.X - tileSize / 2,
+                screenPos.Y - tileSize / 2,
+                screenPos.X + tileSize / 2,
+                screenPos.Y - tileSize / 2 + wallSize
+            );
+            handle.DrawRect(wallRect, wallColor);
+        }
+
+        if ((tileData & (1 << ((int)AtmosDirection.South + (int)NavMapChunkType.Wall))) != 0)
+        {
+            var wallRect = new UIBox2(
+                screenPos.X - tileSize / 2,
+                screenPos.Y + tileSize / 2 - wallSize,
+                screenPos.X + tileSize / 2,
+                screenPos.Y + tileSize / 2
+            );
+            handle.DrawRect(wallRect, wallColor);
+        }
+
+        if ((tileData & (1 << ((int)AtmosDirection.East + (int)NavMapChunkType.Wall))) != 0)
+        {
+            var wallRect = new UIBox2(
+                screenPos.X + tileSize / 2 - wallSize,
+                screenPos.Y - tileSize / 2,
+                screenPos.X + tileSize / 2,
+                screenPos.Y + tileSize / 2
+            );
+            handle.DrawRect(wallRect, wallColor);
+        }
+
+        if ((tileData & (1 << ((int)AtmosDirection.West + (int)NavMapChunkType.Wall))) != 0)
+        {
+            var wallRect = new UIBox2(
+                screenPos.X - tileSize / 2,
+                screenPos.Y - tileSize / 2,
+                screenPos.X - tileSize / 2 + wallSize,
+                screenPos.Y + tileSize / 2
+            );
+            handle.DrawRect(wallRect, wallColor);
+        }
+    }
+
+    private void DrawChildGrids(DrawingHandleScreen handle, Vector2 center)
+    {
+        if (!_mapUid.HasValue) return;
+
+        var scale = 4.0f * Zoom;
+
+        var query = _entityManager.EntityQueryEnumerator<NavMapComponent, TransformComponent>();
+        while (query.MoveNext(out var uid, out var navMap, out var transform))
+        {
+            if (uid == _mapUid.Value)
+                continue;
+
+            if (transform.ParentUid == _mapUid.Value)
+            {
+                if (_entityManager.TryGetComponent(uid, out MapGridComponent? gridComponent))
+                    DrawChildGridTiles(handle, center, navMap, gridComponent, scale);
+            }
+        }
+    }
+
+    private void DrawChildGridTiles(DrawingHandleScreen handle, Vector2 center, NavMapComponent navMap, MapGridComponent grid, float scale)
+    {
+        var tileSize = grid.TileSize;
+
+        foreach (var (_, chunk) in navMap.Chunks)
+        {
+            for (int i = 0; i < SharedNavMapSystem.ArraySize; i++)
+            {
+                var tileData = chunk.TileData[i];
+                if ((SharedNavMapSystem.FloorMask & tileData) == 0)
+                    continue;
+
+                var relativeTile = SharedNavMapSystem.GetTileFromIndex(i);
+                var tileWorldPos = (chunk.Origin * SharedNavMapSystem.ChunkSize + relativeTile) * tileSize;
+
+                var screenPos = WorldToScreen(tileWorldPos, center, scale);
+                var tileScreenSize = tileSize * scale;
+
+                if (tileScreenSize > 1.0f)
+                {
+                    var rect = new UIBox2(
+                        screenPos.X - tileScreenSize / 2,
+                        screenPos.Y - tileScreenSize / 2,
+                        screenPos.X + tileScreenSize / 2,
+                        screenPos.Y + tileScreenSize / 2
+                    );
+                    handle.DrawRect(rect, _childGridFloorColor);
+                }
+
+                if (Zoom > 1.0f)
+                {
+                    DrawChildTileWalls(handle, tileData, screenPos, tileScreenSize, _childGridWallColor);
+                }
+            }
+        }
+    }
+
+    private void DrawChildTileWalls(DrawingHandleScreen handle, int tileData, Vector2 screenPos, float tileSize, Color wallColor)
+    {
+        if (tileSize < 2.0f) return;
+        var wallSize = Math.Max(1.0f, tileSize * 0.15f);
 
         if ((tileData & (1 << ((int)AtmosDirection.North + (int)NavMapChunkType.Wall))) != 0)
         {

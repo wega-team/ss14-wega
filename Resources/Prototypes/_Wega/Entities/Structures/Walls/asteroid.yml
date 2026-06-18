@@ -302,3 +302,280 @@
     - state: gibtonite_inactive
       map: [ "enum.MiningScannerVisualLayers.Overlay", "gib" ]
       visible: false
+
+- type: entity
+  id: WallRockSnowIcemoonCoal
+  parent: WallRockSnow
+  suffix: Coal, Icemoon
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: OreCoal
+  - type: Sprite
+    layers:
+    - state: rock_snow
+    - map: [ "enum.EdgeLayer.South" ]
+      state: rock_snow_south
+    - map: [ "enum.EdgeLayer.East" ]
+      state: rock_snow_east
+    - map: [ "enum.EdgeLayer.North" ]
+      state: rock_snow_north
+    - map: [ "enum.EdgeLayer.West" ]
+      state: rock_snow_west
+    - state: rock_coal
+      map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+      visible: false
+
+- type: entity
+  id: WallRockSnowIcemoonGold
+  parent: WallRockSnow
+  suffix: Gold, Icemoon
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: OreGold
+  - type: Sprite
+    layers:
+    - state: rock_snow
+    - map: [ "enum.EdgeLayer.South" ]
+      state: rock_snow_south
+    - map: [ "enum.EdgeLayer.East" ]
+      state: rock_snow_east
+    - map: [ "enum.EdgeLayer.North" ]
+      state: rock_snow_north
+    - map: [ "enum.EdgeLayer.West" ]
+      state: rock_snow_west
+    - state: rock_gold
+      map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+      visible: false
+
+- type: entity
+  id: WallRockSnowIcemoonDiamond
+  parent: WallRockSnow
+  suffix: Diamond, Icemoon
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: OreDiamond
+  - type: Sprite
+    layers:
+    - state: rock_snow
+    - map: [ "enum.EdgeLayer.South" ]
+      state: rock_snow_south
+    - map: [ "enum.EdgeLayer.East" ]
+      state: rock_snow_east
+    - map: [ "enum.EdgeLayer.North" ]
+      state: rock_snow_north
+    - map: [ "enum.EdgeLayer.West" ]
+      state: rock_snow_west
+    - state: rock_diamond
+      map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+      visible: false
+
+- type: entity
+  id: WallRockSnowIcemoonPlasma
+  parent: WallRockSnow
+  suffix: Plasma, Icemoon
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: OrePlasma
+  - type: Sprite
+    layers:
+    - state: rock_snow
+    - map: [ "enum.EdgeLayer.South" ]
+      state: rock_snow_south
+    - map: [ "enum.EdgeLayer.East" ]
+      state: rock_snow_east
+    - map: [ "enum.EdgeLayer.North" ]
+      state: rock_snow_north
+    - map: [ "enum.EdgeLayer.West" ]
+      state: rock_snow_west
+    - state: rock_phoron
+      map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+      visible: false
+
+- type: entity
+  id: WallRockSnowIcemoonQuartz
+  parent: WallRockSnow
+  suffix: Quartz, Icemoon
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: OreSpaceQuartz
+  - type: Sprite
+    layers:
+    - state: rock_snow
+    - map: [ "enum.EdgeLayer.South" ]
+      state: rock_snow_south
+    - map: [ "enum.EdgeLayer.East" ]
+      state: rock_snow_east
+    - map: [ "enum.EdgeLayer.North" ]
+      state: rock_snow_north
+    - map: [ "enum.EdgeLayer.West" ]
+      state: rock_snow_west
+    - state: rock_quartz
+      map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+      visible: false
+
+- type: entity
+  id: WallRockSnowIcemoonSilver
+  parent: WallRockSnow
+  suffix: Silver, Icemoon
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: OreSilver
+  - type: Sprite
+    layers:
+    - state: rock_snow
+    - map: [ "enum.EdgeLayer.South" ]
+      state: rock_snow_south
+    - map: [ "enum.EdgeLayer.East" ]
+      state: rock_snow_east
+    - map: [ "enum.EdgeLayer.North" ]
+      state: rock_snow_north
+    - map: [ "enum.EdgeLayer.West" ]
+      state: rock_snow_west
+    - state: rock_silver
+      map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+      visible: false
+
+- type: entity
+  id: WallRockSnowIcemoonTin
+  parent: WallRockSnow
+  suffix: Iron, Icemoon
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: OreSteel
+  - type: Sprite
+    layers:
+    - state: rock_snow
+    - map: [ "enum.EdgeLayer.South" ]
+      state: rock_snow_south
+    - map: [ "enum.EdgeLayer.East" ]
+      state: rock_snow_east
+    - map: [ "enum.EdgeLayer.North" ]
+      state: rock_snow_north
+    - map: [ "enum.EdgeLayer.West" ]
+      state: rock_snow_west
+    - state: rock_tin
+      map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+      visible: false
+
+- type: entity
+  id: WallRockSnowIcemoonUranium
+  parent: WallRockSnow
+  suffix: Uranium, Icemoon
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: OreUranium
+  - type: Sprite
+    layers:
+    - state: rock_snow
+    - map: [ "enum.EdgeLayer.South" ]
+      state: rock_snow_south
+    - map: [ "enum.EdgeLayer.East" ]
+      state: rock_snow_east
+    - map: [ "enum.EdgeLayer.North" ]
+      state: rock_snow_north
+    - map: [ "enum.EdgeLayer.West" ]
+      state: rock_snow_west
+    - state: rock_uranium
+      map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+      visible: false
+
+- type: entity
+  id: WallRockSnowIcemoonBananium
+  parent: WallRockSnow
+  suffix: Bananium, Icemoon
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: OreBananium
+  - type: Sprite
+    layers:
+    - state: rock_snow
+    - map: [ "enum.EdgeLayer.South" ]
+      state: rock_snow_south
+    - map: [ "enum.EdgeLayer.East" ]
+      state: rock_snow_east
+    - map: [ "enum.EdgeLayer.North" ]
+      state: rock_snow_north
+    - map: [ "enum.EdgeLayer.West" ]
+      state: rock_snow_west
+    - state: rock_bananium
+      map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+      visible: false
+
+- type: entity
+  id: WallRockSnowIcemoonGems
+  parent: WallRockSnow
+  suffix: Gems, Icemoon
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    oreRarityPrototypeId: RandomGemsDistributionStandard
+  - type: Sprite
+    layers:
+    - state: rock_snow
+    - map: [ "enum.EdgeLayer.South" ]
+      state: rock_snow_south
+    - map: [ "enum.EdgeLayer.East" ]
+      state: rock_snow_east
+    - map: [ "enum.EdgeLayer.North" ]
+      state: rock_snow_north
+    - map: [ "enum.EdgeLayer.West" ]
+      state: rock_snow_west
+    - state: rock_gems
+      map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+      visible: false
+
+- type: entity
+  id: WallRockSnowIcemoonMagmite
+  parent: WallRockSnow
+  suffix: Magmite, Icemoon
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: OreMagmite
+  - type: Sprite
+    layers:
+    - state: rock_snow
+    - map: [ "enum.EdgeLayer.South" ]
+      state: rock_snow_south
+    - map: [ "enum.EdgeLayer.East" ]
+      state: rock_snow_east
+    - map: [ "enum.EdgeLayer.North" ]
+      state: rock_snow_north
+    - map: [ "enum.EdgeLayer.West" ]
+      state: rock_snow_west
+    - state: rock_magmite
+      map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+      visible: false
+
+- type: entity
+  parent: [ BaseRockGibtonite, AsteroidRock ]
+  id: WallRockSnowIcemoonGibtonite
+  suffix: Gibtonite, Icemoon
+  components:
+  - type: Icon
+    sprite: Structures/Walls/rock.rsi
+    state: rock_snow
+  - type: Sprite
+    sprite: Structures/Walls/rock.rsi
+    layers:
+    - state: rock_snow
+    - map: [ "enum.EdgeLayer.South" ]
+      state: rock_snow_south
+    - map: [ "enum.EdgeLayer.East" ]
+      state: rock_snow_east
+    - map: [ "enum.EdgeLayer.North" ]
+      state: rock_snow_north
+    - map: [ "enum.EdgeLayer.West" ]
+      state: rock_snow_west
+    - state: gibtonite_inactive
+      map: [ "enum.MiningScannerVisualLayers.Overlay", "gib" ]
+      visible: false

@@ -1,5 +1,7 @@
+using Content.Server.Pinpointer;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Lavaland.Components;
+using Content.Shared.Pinpointer;
 using Content.Shared.Popups;
 using Content.Shared.Timing;
 using Robust.Shared.EntitySerialization.Systems;
@@ -12,6 +14,7 @@ public sealed partial class HandCapsuleSystem : EntitySystem
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly UseDelaySystem _useDelay = default!;
+    [Dependency] private readonly NavMapSystem _navMap = default!;
 
     public override void Initialize()
     {
@@ -56,6 +59,9 @@ public sealed partial class HandCapsuleSystem : EntitySystem
             _useDelay.TryResetDelay(ent.Owner);
             return;
         }
+
+        var navMap = EnsureComp<NavMapComponent>(grid.Value);
+        _navMap.RefreshGridWithOffset(grid.Value.Owner, navMap, grid.Value.Comp, userTransform.Coordinates.Position);
 
         QueueDel(ent);
     }

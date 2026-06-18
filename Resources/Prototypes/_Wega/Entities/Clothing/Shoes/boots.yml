@@ -6,7 +6,7 @@
       sprite: _Wega/Clothing/Shoes/Boots/jackboots_blue.rsi
     - type: Clothing
       sprite: _Wega/Clothing/Shoes/Boots/jackboots_blue.rsi
-      
+
 - type: entity
   parent: [ClothingShoesBaseButcherable, BaseMinorContraband]
   id: ClothingShoesBootsForsaken
@@ -23,3 +23,20 @@
     maxContactSprintSlowdown: 0.7
     maxContactWalkSlowdown: 0.7
   - type: BloodCultEquipment
+
+- type: entity
+  parent: ClothingShoesBaseWinterBoots
+  id: ClothingShoesWinterIceBoots
+  name: ice boots
+  description: ""
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Shoes/Boots/ice_boots.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Shoes/Boots/ice_boots.rsi
+  - type: ClothingFrictionIgnore
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: BarestepCarpet
+      params:
+        variation: 0.8

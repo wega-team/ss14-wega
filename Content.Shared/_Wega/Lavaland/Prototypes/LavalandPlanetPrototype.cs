@@ -18,6 +18,12 @@ public sealed partial class LavalandPlanetPrototype : IPrototype
     public Color MapLightColor = Color.FromHex("#4D4033");
 
     [DataField]
+    public float MaxLightLevel = 3f;
+
+    [DataField]
+    public float MinLightLevel = 0.2f;
+
+    [DataField]
     public List<ProtoId<BiomeMarkerLayerPrototype>> BiomeLayers = new();
 
     [DataField("weather")]

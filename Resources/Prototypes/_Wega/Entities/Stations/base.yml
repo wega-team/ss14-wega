@@ -3,6 +3,6 @@
   abstract: true
   components:
     - type: StationLavaland
-      planets: [ Lavaland ]
+      planets: [ Icemoon ]
     - type: StationLavalandShuttle
     - type: StationLavalandPenalServitudeShuttle

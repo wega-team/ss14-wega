@@ -150,3 +150,19 @@
   - type: ConditionalSpawner
     prototypes:
     - MobHumanInhabitantTranslocatedVeterinarian
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobWhiteWolfIcemoon
+  name: White Wolf Spawner
+  suffix: Icemoon
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: base
+      sprite: _Wega/Mobs/Icemoon/wolf.rsi
+    - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+    - MobWhiteWolf

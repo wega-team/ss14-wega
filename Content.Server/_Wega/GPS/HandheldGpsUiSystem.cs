@@ -86,7 +86,7 @@ public sealed partial class HandheldGpsUiSystem : EntitySystem
             return;
 
         var transform = Transform(uid);
-        var mapCoords = _transform.GetMapCoordinates(uid, xform: transform);
+        var mapCoords = _transform.GetMapCoordinates(uid, transform);
         var currentCoords = ((int)mapCoords.X, (int)mapCoords.Y);
 
         string gpsName = string.Empty;
@@ -97,7 +97,8 @@ public sealed partial class HandheldGpsUiSystem : EntitySystem
             gpsDesc = gps.GPSDesc;
         }
 
-        var mapUid = GetNetEntity(Transform(uid).GridUid);
+        var gridUid = transform.GridUid ?? EntityUid.Invalid;
+        var mapUid = GetNetEntity(GetRootGridUid(gridUid));
         var otherGpsList = GetOtherGpsDevices(uid, mapCoords.MapId);
         var navBeacons = GetNavBeacons(uid, mapCoords.MapId);
         var lavaTiles = GetLavaTiles(uid);
@@ -114,6 +115,17 @@ public sealed partial class HandheldGpsUiSystem : EntitySystem
         );
 
         _ui.SetUiState(uid, GpsUiKey.Key, state);
+    }
+
+    private EntityUid GetRootGridUid(EntityUid gridUid)
+    {
+        if (!gridUid.IsValid()) return EntityUid.Invalid;
+
+        var parentUid = Transform(gridUid).ParentUid;
+        if (!parentUid.IsValid())
+            return gridUid;
+
+        return GetRootGridUid(parentUid);
     }
 
     private List<GpsDeviceInfo> GetOtherGpsDevices(EntityUid currentGps, MapId mapId)

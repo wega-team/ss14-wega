@@ -1,4 +1,4 @@
-# Basic Lavaland Weather
+# Lavaland Weather
 - type: lavalandWeather
   id: AshStormLight
   weatherPrototype: WeatherAshfallLight
@@ -39,7 +39,6 @@
 - type: lavalandWeather
   id: VolcanicActivity
   specialEffect: VolcanicActivity
-  damageMessage: lavaland-weather-damaged-default
   warningMessage: lavaland-weather-warning-volcanic-activity
   endMessage: lavaland-weather-end-volcanic-activity
 
@@ -47,6 +46,44 @@
   id: StormWind
   weight: 40
   specialEffect: StormWind
-  damageMessage: lavaland-weather-damaged-default
   warningMessage: lavaland-weather-warning-wind
   endMessage: lavaland-weather-end-wind
+
+# Icemoon Weather
+- type: lavalandWeather
+  id: HailStorm
+  weatherPrototype: WeatherHail
+  minDurationSeconds: 45
+  maxDurationSeconds: 90
+  damageIntervalSeconds: 2
+  weight: 20
+  damage:
+    types:
+      Blunt: 2.5
+  damageMessage: lavaland-weather-damaged-hail
+  warningMessage: lavaland-weather-warning-hail
+  endMessage: lavaland-weather-end-hail
+
+- type: lavalandWeather
+  id: SnowfallLight
+  weatherPrototype: WeatherSnowfallMedium
+  minDurationSeconds: 120
+  maxDurationSeconds: 240
+  damageIntervalSeconds: 8
+  weight: 20
+  damage:
+    types:
+      Cold: 2.5
+  damageMessage: lavaland-weather-damaged-snow-light
+  warningMessage: lavaland-weather-warning-snow-light
+  endMessage: lavaland-weather-end-snow-light
+
+- type: lavalandWeather
+  id: SnowfallHeavy
+  weatherPrototype: WeatherSnowfallHeavy
+  damage:
+    types:
+      Cold: 10
+  damageMessage: lavaland-weather-damaged-snow-heavy
+  warningMessage: lavaland-weather-warning-snow-heavy
+  endMessage: lavaland-weather-end-snow-heavy

@@ -4,6 +4,7 @@ using Content.Server.Atmos.EntitySystems;
 using Content.Server.Decals;
 using Content.Server.Lavaland.Components;
 using Content.Server.Parallax;
+using Content.Server.Pinpointer;
 using Content.Server.Power.Components;
 using Content.Server.Spawners.EntitySystems;
 using Content.Server.Station.Events;
@@ -13,6 +14,7 @@ using Content.Shared.Decals;
 using Content.Shared.Gravity;
 using Content.Shared.Lavaland;
 using Content.Shared.Lavaland.Components;
+using Content.Shared.Light.Components;
 using Content.Shared.Parallax.Biomes;
 using Content.Shared.Pinpointer;
 using Content.Shared.Radio.Components;
@@ -44,6 +46,7 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
     [Dependency] private readonly MapLoaderSystem _loader = default!;
     [Dependency] private readonly MapSystem _map = default!;
     [Dependency] private readonly MetaDataSystem _meta = default!;
+    [Dependency] private readonly NavMapSystem _navMap = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedShuttleSystem _iff = default!;
@@ -94,8 +97,10 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
         var avanpostComp = EnsureComp<LavalandAvanpostComponent>(avanpost.Value);
         EnsureComp<ActiveRadioComponent>(avanpost.Value).Channels.Add(avanpostComp.AnnouncementChannel);
         EnsureComp<ProtectedGridComponent>(avanpost.Value);
-        EnsureComp<ProtectedGridComponent>(mapUid);
+        var navMap = EnsureComp<NavMapComponent>(avanpost.Value);
+        _navMap.RefreshGridWithOffset(avanpost.Value.Owner, navMap, avanpost.Value.Comp, Vector2.Zero);
 
+        EnsureComp<ProtectedGridComponent>(mapUid);
         var grid = EnsureComp<MapGridComponent>(mapUid); // For build processing after creating planet
         EnsureComp<NavMapComponent>(mapUid);
 
@@ -105,6 +110,11 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
         GenerateBuildings(mapId, tempMapId, mapUid, planet, ref worldAABBs);
 
         _biome.EnsurePlanet(mapUid, _proto.Index(planet.Biome), ent.Comp.Seed, mapLight: planet.MapLightColor);
+        var lightCycle = EnsureComp<LightCycleComponent>(mapUid);
+        lightCycle.MaxLightLevel = planet.MaxLightLevel;
+        lightCycle.MinLightLevel = planet.MinLightLevel;
+        Dirty(mapUid, lightCycle);
+
         var biome = EnsureComp<BiomeComponent>(mapUid);
         foreach (var layer in planet.BiomeLayers)
         {
@@ -251,7 +261,8 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
             _iff.AddIFFFlag(buildingGrid.Value, IFFFlags.HideLabel);
             EnsureComp<GridLavalandWeatherProtectionComponent>(buildingGrid.Value);
             EnsureComp<ProtectedGridComponent>(buildingGrid.Value);
-            EnsureComp<NavMapComponent>(buildingGrid.Value);
+            var navMap = EnsureComp<NavMapComponent>(buildingGrid.Value);
+            _navMap.RefreshGridWithOffset(buildingGrid.Value.Owner, navMap, buildingGrid.Value.Comp, alignedPosition);
 
             _transform.SetCoordinates(buildingGrid.Value, new EntityCoordinates(mainGrid, position));
             worldAABBs.Add(buildingGrid.Value.Comp.LocalAABB.Translated(alignedPosition));

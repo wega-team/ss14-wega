@@ -11,7 +11,7 @@
       children:
       - id: SpawnMobWatcherLavaland
     - !type:GroupSelector
-      weight: 30  # Увеличил с 20 до 30
+      weight: 30
       children:
       - id: SpawnMobGoliathLavaland
     - !type:GroupSelector
@@ -71,3 +71,24 @@
   - type: EntityTableSpawner
     table: !type:NestedSelector
       tableId: LavalandAllMobs
+
+- type: entityTable
+  id: IcemoonAllMobs
+  table: !type:GroupSelector
+    children:
+    - !type:GroupSelector
+      weight: 30
+      children:
+      - id: SpawnMobWhiteWolfIcemoon
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnerRandomIcemoonMob
+  name: icemoon mob spawner
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+  - type: EntityTableSpawner
+    table: !type:NestedSelector
+      tableId: IcemoonAllMobs

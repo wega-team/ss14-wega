@@ -1,5 +1,6 @@
 - type: entity
   id: FallingRockEffect
+  categories: [ HideSpawnMenu ]
   components:
   - type: Transform
     anchored: True

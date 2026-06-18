@@ -20,3 +20,25 @@
   - OreSilverLavaland
   - OrePlasmaLavaland
   - OreUraniumLavaland
+
+- type: lavalandPlanet
+  id: Icemoon
+  biome: Icemoon
+  temperature: 271.15
+  gases: [14.022, 22.878]
+  mapLightColor: "#b0d4ff"
+  weather:
+  - HailStorm
+  - SnowfallLight
+  - SnowfallHeavy
+  biomeLayers:
+  - RandomNecropolisTendrils
+  - RandomIcemoonMob
+  # Ore Veins
+  - OreIronLavaland
+  - OreCoalLavaland
+  - OreQuartzLavaland
+  - OreGoldLavaland
+  - OreSilverLavaland
+  - OrePlasmaLavaland
+  - OreUraniumLavaland

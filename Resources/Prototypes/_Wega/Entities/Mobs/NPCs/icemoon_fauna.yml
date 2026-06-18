@@ -1,0 +1,157 @@
+- type: entity
+  id: BaseMobIcemoon
+  parent:
+  - BaseMob
+  - MobDamageable
+  - MobAtmosExposed
+  - MobCombat
+  suffix: AI
+  abstract: true
+  components:
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Radiation
+        damage: 15
+      behaviors:
+      - !type:PopupBehavior
+        popup: mouth-taste-metal
+        popupType: LargeCaution
+        targetOnly: true
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Radiation
+        damage: 40
+      behaviors:
+      - !type:VomitBehavior
+  - type: Reactive
+    groups:
+      Flammable: [Touch]
+      Extinguish: [Touch]
+      Acidic: [Touch, Ingestion]
+  - type: Climbing
+  - type: NameIdentifier
+    group: GenericNumber
+  - type: StatusEffects
+    allowed:
+    - Electrocution
+    - TemporaryBlindness
+    - RadiationProtection
+    - Adrenaline
+  - type: StandingState
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+    - StunImmune
+  - type: LavalandVisitor
+    immuneToStorm: true
+  - type: Unrevivable # If his dead - his is dead
+    analyzable: false
+  - type: NPCAggression
+  - type: NpcFactionMember
+    factions:
+    - IcemoonFauna
+
+#region White Wolf
+- type: entity
+  parent: [ BaseMobIcemoon, MobBloodstream ]
+  id: MobWhiteWolf
+  name: white wolf
+  description: ""
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Icemoon/wolf.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base", "movement"]
+      state: base
+    - map: ["enum.DamageStateVisualLayers.BaseUnshaded", "movement_eyes"]
+      shader: unshaded
+      state: eyes
+      color: Red
+  - type: SpriteMovement
+    movementLayers:
+      movement:
+        state: base_moving
+      movement_eyes:
+        state: eyes_moving
+    noMovementLayers:
+      movement:
+        state: base
+      movement_eyes:
+        state: eyes
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: wolf
+        BaseUnshaded: eyes
+      Dead:
+        Base: dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4.5
+    baseSprintSpeed: 4.5
+  - type: Bloodstream
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: Blood
+        Quantity: 300
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      150: Dead
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      100: 1.5
+  - type: MeleeWeapon
+    animation: WeaponArcBite
+    soundHit:
+      path: /Audio/Effects/bite.ogg
+    damage:
+      types:
+        Slash: 7.5
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+  - type: NoSlip
+  - type: Butcherable
+    spawned:
+    - id: FoodMeat
+      amount: 2
+    - id: MaterialSinew1
+      amount: 2
+    - id: MaterialBones1
+      amount: 2
+  # - type: TrophyHunter
+  #   trophy: TrophyLavalandGoliathTentacle
+#endregion
+
+#region Ice Demon
+- type: entity
+  parent: BaseMobIcemoon
+  id: MobIceDemon
+  name: ice demon
+  description: ""
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Icemoon/ice_demon.rsi
+    state: demon
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3.735
+    baseSprintSpeed: 3.735
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 20
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: GlassBreak
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          ShardCrystalPink:
+            min: 1
+            max: 1
+#endregion

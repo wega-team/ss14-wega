@@ -37,4 +37,25 @@
   - AllHostile
   - Vampire # Corvax-Wega-Vampire
   - BloodCult # Corvax-Wega-Blood-Cult
+  - IcemoonFauna # Corvax-Wega-Lavaland
+
+- type: npcFaction
+  id: IcemoonFauna
+  hostile:
+  - NanoTrasen
+  - Dragon
+  - Mouse
+  - Passive
+  - PetsNT
+  - SimpleHostile
+  - SimpleNeutral
+  - Syndicate
+  - Xeno
+  - Zombie
+  - Revolutionary
+  - Wizard
+  - Xenoborg
+  - AllHostile
+  - Vampire # Corvax-Wega-Vampire
+  - BloodCult # Corvax-Wega-Blood-Cult
   - LavalandFauna # Corvax-Wega-Lavaland
