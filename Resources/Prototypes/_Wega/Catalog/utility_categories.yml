@@ -54,7 +54,7 @@
   inventory:
     Pickaxe: 100
     WeaponGrapplingGun: 500
-    WeaponCrusher: 750
+    OtherCreshSelector: 750
     WeaponProtoKineticAccelerator: 750
     PKAUpgradeRange: 1000
     PKAUpgradeDamage: 1000
