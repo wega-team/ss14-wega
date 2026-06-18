@@ -4,10 +4,10 @@ using Content.Shared.Whitelist; // Corvax-Wega-Lavaland
 
 namespace Content.Shared.Trigger.Systems;
 
-public sealed class DamageOnTriggerSystem : XOnTriggerSystem<DamageOnTriggerComponent>
+public sealed partial class DamageOnTriggerSystem : XOnTriggerSystem<DamageOnTriggerComponent>
 {
-    [Dependency] private readonly Damage.Systems.DamageableSystem _damageableSystem = default!;
-    [Dependency] private readonly EntityWhitelistSystem _entityWhitelist = default!; // Corvax-Wega-Lavaland
+    [Dependency] private Damage.Systems.DamageableSystem _damageableSystem = default!;
+    [Dependency] private EntityWhitelistSystem _entityWhitelist = default!; // Corvax-Wega-Lavaland
 
     protected override void OnTrigger(Entity<DamageOnTriggerComponent> ent, EntityUid target, ref TriggerEvent args)
     {

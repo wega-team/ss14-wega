@@ -5,7 +5,7 @@ using Robust.Shared.Serialization;
 namespace Content.Shared.Genetics;
 
 [Serializable, NetSerializable]
-public sealed class DnaModifierUpdateEvent : EntityEventArgs
+public sealed partial class DnaModifierUpdateEvent : EntityEventArgs
 {
     public NetEntity Uid { get; }
 
@@ -16,7 +16,7 @@ public sealed class DnaModifierUpdateEvent : EntityEventArgs
 }
 
 [Serializable, NetSerializable]
-public sealed class DnaModifierConsoleEjectEvent : EntityEventArgs
+public sealed partial class DnaModifierConsoleEjectEvent : EntityEventArgs
 {
     public NetEntity Uid { get; }
 
@@ -27,7 +27,7 @@ public sealed class DnaModifierConsoleEjectEvent : EntityEventArgs
 }
 
 [Serializable, NetSerializable]
-public sealed class DnaModifierConsoleEjectRejuveEvent : EntityEventArgs
+public sealed partial class DnaModifierConsoleEjectRejuveEvent : EntityEventArgs
 {
     public NetEntity Uid { get; }
 
@@ -38,7 +38,7 @@ public sealed class DnaModifierConsoleEjectRejuveEvent : EntityEventArgs
 }
 
 [Serializable, NetSerializable]
-public sealed class DnaModifierConsoleReagentButtonEvent : EntityEventArgs
+public sealed partial class DnaModifierConsoleReagentButtonEvent : EntityEventArgs
 {
     public NetEntity Uid { get; }
     public DnaModifierReagentAmount Amount { get; }
@@ -53,7 +53,7 @@ public sealed class DnaModifierConsoleReagentButtonEvent : EntityEventArgs
 }
 
 [Serializable, NetSerializable]
-public sealed class DnaModifierConsoleSaveServerEvent : EntityEventArgs
+public sealed partial class DnaModifierConsoleSaveServerEvent : EntityEventArgs
 {
     public NetEntity Uid { get; }
     public int CurrentSection { get; }
@@ -68,7 +68,7 @@ public sealed class DnaModifierConsoleSaveServerEvent : EntityEventArgs
 }
 
 [Serializable, NetSerializable]
-public sealed class DnaModifierConsoleInjectorEvent : EntityEventArgs
+public sealed partial class DnaModifierConsoleInjectorEvent : EntityEventArgs
 {
     public NetEntity Uid { get; }
     public int Index { get; }
@@ -81,7 +81,7 @@ public sealed class DnaModifierConsoleInjectorEvent : EntityEventArgs
 }
 
 [Serializable, NetSerializable]
-public sealed class DnaModifierInjectBlockEvent : EntityEventArgs
+public sealed partial class DnaModifierInjectBlockEvent : EntityEventArgs
 {
     public NetEntity Uid { get; }
     public int Index { get; }
@@ -96,7 +96,7 @@ public sealed class DnaModifierInjectBlockEvent : EntityEventArgs
 }
 
 [Serializable, NetSerializable]
-public sealed class DnaModifierConsoleSubjectInjectEvent : EntityEventArgs
+public sealed partial class DnaModifierConsoleSubjectInjectEvent : EntityEventArgs
 {
     public NetEntity Uid { get; }
     public int Index { get; }
@@ -109,7 +109,7 @@ public sealed class DnaModifierConsoleSubjectInjectEvent : EntityEventArgs
 }
 
 [Serializable, NetSerializable]
-public sealed class DnaModifierConsoleClearBufferEvent : EntityEventArgs
+public sealed partial class DnaModifierConsoleClearBufferEvent : EntityEventArgs
 {
     public NetEntity Uid { get; }
     public int Index { get; }
@@ -122,7 +122,7 @@ public sealed class DnaModifierConsoleClearBufferEvent : EntityEventArgs
 }
 
 [Serializable, NetSerializable]
-public sealed class DnaModifierConsoleRenameBufferEvent : EntityEventArgs
+public sealed partial class DnaModifierConsoleRenameBufferEvent : EntityEventArgs
 {
     public NetEntity Console { get; }
     public NetEntity User { get; }
@@ -137,7 +137,7 @@ public sealed class DnaModifierConsoleRenameBufferEvent : EntityEventArgs
 }
 
 [Serializable, NetSerializable]
-public sealed class DnaModifierConsoleExportOnDiskEvent : EntityEventArgs
+public sealed partial class DnaModifierConsoleExportOnDiskEvent : EntityEventArgs
 {
     public NetEntity Uid { get; }
     public int Index { get; }
@@ -150,7 +150,7 @@ public sealed class DnaModifierConsoleExportOnDiskEvent : EntityEventArgs
 }
 
 [Serializable, NetSerializable]
-public sealed class DnaModifierConsoleExportFromDiskEvent : EntityEventArgs
+public sealed partial class DnaModifierConsoleExportFromDiskEvent : EntityEventArgs
 {
     public NetEntity Uid { get; }
     public int Index { get; }
@@ -163,7 +163,7 @@ public sealed class DnaModifierConsoleExportFromDiskEvent : EntityEventArgs
 }
 
 [Serializable, NetSerializable]
-public sealed class DnaModifierConsoleClearDiskEvent : EntityEventArgs
+public sealed partial class DnaModifierConsoleClearDiskEvent : EntityEventArgs
 {
     public NetEntity Uid { get; }
 
@@ -174,7 +174,7 @@ public sealed class DnaModifierConsoleClearDiskEvent : EntityEventArgs
 }
 
 [Serializable, NetSerializable]
-public sealed class DnaModifierConsoleReleverationEvent : EntityEventArgs
+public sealed partial class DnaModifierConsoleReleverationEvent : EntityEventArgs
 {
     public NetEntity Uid { get; }
     public int CurrentTab { get; }
@@ -193,7 +193,7 @@ public sealed class DnaModifierConsoleReleverationEvent : EntityEventArgs
 }
 
 [Serializable, NetSerializable]
-public sealed class DnaModifierConsoleReleverationsEvent : EntityEventArgs
+public sealed partial class DnaModifierConsoleReleverationsEvent : EntityEventArgs
 {
     public NetEntity Uid { get; }
     public int CurrentTab { get; }
@@ -209,7 +209,7 @@ public sealed class DnaModifierConsoleReleverationsEvent : EntityEventArgs
     }
 }
 
-public sealed class CureDnaDiseaseAttemptEvent : EntityEventArgs
+public sealed partial class CureDnaDiseaseAttemptEvent : EntityEventArgs
 {
     public float CureChance { get; }
 
@@ -219,7 +219,7 @@ public sealed class CureDnaDiseaseAttemptEvent : EntityEventArgs
     }
 }
 
-public sealed class MutateDnaAttemptEvent : EntityEventArgs
+public sealed partial class MutateDnaAttemptEvent : EntityEventArgs
 {
     public MutateDnaAttemptEvent()
     {

@@ -7,10 +7,10 @@ using Content.Shared.Vampire.Components;
 
 namespace Content.Server.Genetics.System;
 
-public sealed class SpeedUpGenSystem : EntitySystem
+public sealed partial class SpeedUpGenSystem : EntitySystem
 {
-    [Dependency] private readonly DamageableSystem _damageable = default!;
-    [Dependency] private readonly MovementSpeedModifierSystem _speed = default!;
+    [Dependency] private DamageableSystem _damageable = default!;
+    [Dependency] private MovementSpeedModifierSystem _speed = default!;
 
     public override void Initialize()
     {
@@ -49,11 +49,14 @@ public sealed class SpeedUpGenSystem : EntitySystem
 
     private void OnDamageChanged(Entity<SpeedUpGenComponent> ent, ref DamageChangedEvent args)
     {
-        if (args.DamageDelta is null || IsNegativeDamage(args.DamageDelta))
-            return;
+		if (ent.Comp.DamageBooster)		
+		{
+			if (args.DamageDelta is null || IsNegativeDamage(args.DamageDelta))
+				return;
 
-        var bonusDamage = args.DamageDelta * 0.2f;
-        _damageable.TryChangeDamage(ent.Owner, bonusDamage, true);
+			var bonusDamage = args.DamageDelta * 0.2f;
+			_damageable.TryChangeDamage(ent.Owner, bonusDamage, true);
+		}
     }
 
     private bool IsNegativeDamage(DamageSpecifier damage)

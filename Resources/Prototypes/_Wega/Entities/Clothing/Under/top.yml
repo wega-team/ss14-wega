@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ Clothing, ClothingUnderDamageableBase ]
+  parent: Clothing
   id: ClothingUnderTopBase
   abstract: true
   components:

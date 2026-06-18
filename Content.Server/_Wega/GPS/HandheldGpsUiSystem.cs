@@ -11,10 +11,10 @@ namespace Content.Server.GPS.Systems;
 
 public sealed partial class HandheldGpsUiSystem : EntitySystem
 {
-    [Dependency] private readonly EntityLookupSystem _lookupSystem = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly UserInterfaceSystem _ui = default!;
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
+    [Dependency] private EntityLookupSystem _lookupSystem = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private UserInterfaceSystem _ui = default!;
+    [Dependency] private IGameTiming _gameTiming = default!;
 
     private TimeSpan _lastUpdate = TimeSpan.Zero;
     private const float UpdateInterval = 1.5f;

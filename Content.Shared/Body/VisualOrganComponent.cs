@@ -14,7 +14,7 @@ public sealed partial class VisualOrganComponent : Component
     /// <summary>
     /// The sprite layer on the entity that this contributes to
     /// </summary>
-    [DataField(required: true)]
+    [DataField(required: true), AutoNetworkedField] // Corvax-Wega-changes
     public Enum Layer;
 
     /// <summary>

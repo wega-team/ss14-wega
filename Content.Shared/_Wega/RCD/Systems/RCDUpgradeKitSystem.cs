@@ -8,7 +8,7 @@ namespace Content.Shared.RCD.Systems;
 
 public sealed partial class RCDUpgradeKitSystem : EntitySystem
 {
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
 
     public override void Initialize()
     {

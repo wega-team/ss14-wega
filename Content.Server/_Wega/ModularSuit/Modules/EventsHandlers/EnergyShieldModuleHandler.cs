@@ -3,9 +3,9 @@ using Content.Shared.Modular.Suit;
 
 namespace Content.Server.Modular.Suit;
 
-public sealed class EnergyShieldModuleHandler : ModuleActionHandler
+public sealed partial class EnergyShieldModuleHandler : ModuleActionHandler
 {
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
 
     public override void Initialize()
     {

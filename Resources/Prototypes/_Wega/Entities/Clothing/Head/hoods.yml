@@ -193,3 +193,24 @@
     sprite: _Wega/Clothing/Head/Hoods/Coat/hoodblueshieldalt.rsi
   - type: Clothing
     sprite: _Wega/Clothing/Head/Hoods/Coat/hoodblueshieldalt.rsi
+
+- type: entity
+  parent: ClothingHeadHatHoodWinterBase
+  id: ClothingHeadHatHoodVeilCultRobes
+  categories: [ HideSpawnMenu ]
+  name: clockwork robe's hood
+  components:
+  - type: HideLayerClothing
+    slots:
+    - HeadTop
+  - type: Sprite
+    sprite: _Wega/Clothing/Head/Hoods/Coat/clockwork_hood.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Head/Hoods/Coat/clockwork_hood.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.8

@@ -35,6 +35,7 @@
 - type: entity
   parent: BaseSpeciesAppearance
   id: AppearanceDiona
+  categories: [ HideSpawnMenu ]
   name: diona appearance
   components:
   - type: Inventory
@@ -100,7 +101,7 @@
     bloodReferenceSolution:
       reagents:
       - ReagentId: Sap
-        Quantity: 300
+        Quantity: 600
   - type: Reactive
     groups:
       Flammable: [ Touch ]
@@ -161,7 +162,7 @@
     proto: diona
   - type: BodyEmotes
     soundsId: DionaBodyEmotes
-  - type: Pacified # Corvax-DionaPacifist
+  # - type: Pacified # Corvax-Wega no more DionaPacifist
   - type: IgnoreKudzu
   - type: IgniteOnHeatDamage
     fireStacks: 1
@@ -176,6 +177,10 @@
     upper: MobDiona
     lowest: MobDionaNymph
   # Corvax-Wega-Genetics-end
+  # Corvax-Wega-Start
+  - type: MindLink
+    channels: ["MindDiona"]
+  # Corvax-Wega-End
 
 - type: entity
   parent: OrganBase

@@ -28,7 +28,7 @@ teleport-rune-desc = Телепортирует объекты и людей н�
 empowering-rune = Руна Усиления
 empowering-rune-desc = Позволяет дополнительно подготовить 4 доступных заклинания и снижает время их подготовки.
 revive-rune = Руна Возрождения
-revive-rune-desc = Позволяет воскрешать павших культистов, используя глобальные заряды, накопленные при жертвоприношениях на руне предложения. Также можно пробуждать кататоников(ССД) новой душой.
+revive-rune-desc = Позволяет воскрешать павших культистов, используя глобальные заряды, накопленные при жертвоприношениях на руне предложения. Также можно пробуждать кататоников (ССД) новой душой.
 barrier-rune = Руна Барьера
 barrier-rune-desc = Создаёт защитный барьер с 100 здоровья, который можно активировать или деактивировать, но каждое использование наносит урон заклинателю.
 summoning-rune = Руна Призыва
@@ -39,6 +39,27 @@ spiritrealm-rune = Руна Царства Духов
 spiritrealm-rune-desc = Позволяет самому стать духом, чтобы координировать культ.
 ritual-dimensional-rending-rune = Ритуал Разрыва Измерений
 ritual-dimensional-rending-rune-desc = Вызывает Одно из божеств крови через пространственный разрыв.
+
+revive-offering-count = Принесено [color=#880000]{ $offerings }[/color] { $offerings ->
+    [one]жертва
+    [few]жертвы
+    *[other]жертв
+}.
+revive-alive-count = Возрождение доступно ещё [color=#880000]{ $alive }[/color] { $alive ->
+    [one]раз
+    [few]раза
+    *[other]раз
+}.
+blood-rites-count = Собрано [color=#880000]{ $blood }[/color] { $blood ->
+    [one]единица крови
+    [few]единицы крови
+    *[other]единиц крови
+}.
+revive-need-more = Нужно ещё [color=#880000]{ $needed }[/color] { $needed ->
+    [one]жертва
+    [few]жертвы
+    *[other]жертв
+}.
 
 # System
 blood-cultist-eyes-glow-examined = [color=red]Глаза {$name} созерцают неестественным цветом, это не к добру...[/color]
@@ -82,6 +103,7 @@ blood-cult-spell-failed = ничего не произошло
 
 rune-ritual-failed = ритуал не может быть начат
 rune-select-complete = надрезав свою руку вы начертали руну
+rune-cant-draw-in-locker = тут слишком мало места!
 ritual-activate-too-soon = РИТУАЛ МОЖНО БУДЕТ НАЧАТЬ ПОВТОРНО ЧЕРЕЗ { $time } СЕКУНД
 ritual-activate-failed = НЕВОЗМОЖНО НАЧАТЬ РИТУАЛ
 rune-activate-failed = невозможно активировать руну

@@ -6,11 +6,11 @@ using Robust.Shared.Network;
 
 namespace Content.Shared.Holosign;
 
-public sealed class HolosignSystem : EntitySystem
+public sealed partial class HolosignSystem : EntitySystem
 {
-    [Dependency] private readonly PowerCellSystem _powerCell = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!; // Corvax-Wega-Add
-    [Dependency] private readonly INetManager _net = default!;
+    [Dependency] private SharedTransformSystem _transform = default!; // Corvax-Wega-Add
+    [Dependency] private PowerCellSystem _powerCell = default!;
+    [Dependency] private INetManager _net = default!;
 
     public override void Initialize()
     {

@@ -1,0 +1,27 @@
+- type: entity
+  id: VeilCultSoulVessel
+  parent: BaseItem
+  name: soul vessel
+  description: A little box made of brass that contains somebody soul.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/VeilCult/soul_vessel.rsi
+    state: icon
+  - type: MindContainer
+  - type: BorgBrain
+  - type: BlockMovement
+  - type: GhostRole
+    allowMovement: false
+    allowSpeech: false
+    name: ghost-role-information-soul-vessel-name
+    description: ghost-role-information-soul-vessel-description
+    rules: ghost-role-information-familiar-rules
+    raffle:
+      settings: default
+  - type: GhostTakeoverAvailable
+  - type: SoulVessel
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - SoulStone
+    - SoulVessel

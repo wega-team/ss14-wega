@@ -9,10 +9,10 @@ using System.Linq;
 
 namespace Content.Server.Skrell;
 
-public sealed class SkrellSystem : EntitySystem
+public sealed partial class SkrellSystem : EntitySystem
 {
-    [Dependency] private readonly InventorySystem _inventorySystem = default!;
-    [Dependency] private readonly SharedVisualBodySystem _visualBody = default!;
+    [Dependency] private InventorySystem _inventorySystem = default!;
+    [Dependency] private SharedVisualBodySystem _visualBody = default!;
 
     public override void Initialize()
     {
@@ -27,7 +27,7 @@ public sealed class SkrellSystem : EntitySystem
         var slot = args.Slot;
         if (slot == "pocket3")
         {
-            var item = args.Equipee;
+            var item = args.EquipTarget;
             if (CheckCondition(entity))
             {
                 Timer.Spawn(1, () => _inventorySystem.TryUnequip(item, slot, force: true));

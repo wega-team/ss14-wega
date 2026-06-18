@@ -1,0 +1,80 @@
+- type: entity
+  id: MobSharkDragon
+  suffix: DragonBrood
+  parent: MobShark
+  components:
+    - type: GhostRole
+      allowMovement: true
+      allowSpeech: true
+      makeSentient: true
+      name: ghost-role-information-sentient-carp-name
+      description: ghost-role-information-sentient-carp-description
+      rules: ghost-role-information-space-dragon-summoned-carp-rules
+      mindRoles:
+      - MindRoleGhostRoleTeamAntagonistFlock
+    - type: GhostTakeoverAvailable
+    - type: HTN
+      rootTask:
+        task: DragonCarpCompound
+    - type: Flammable
+      damage:
+       types: {}
+    - type: Temperature
+    - type: TemperatureDamage
+      heatDamageThreshold: 1200
+    - type: FriendlyFaction # Corvax-Wega-Friendly
+      faction: Dragon # Corvax-Wega-Friendly
+      
+- type: entity
+  id: MobCarpRainbowDragon
+  suffix: DragonBrood
+  parent: MobCarpRainbow
+  components:
+    - type: GhostRole
+      allowMovement: true
+      allowSpeech: true
+      makeSentient: true
+      name: ghost-role-information-sentient-carp-name
+      description: ghost-role-information-sentient-carp-description
+      rules: ghost-role-information-space-dragon-summoned-carp-rules
+      mindRoles:
+      - MindRoleGhostRoleTeamAntagonistFlock
+    - type: GhostTakeoverAvailable
+    - type: HTN
+      rootTask:
+        task: DragonCarpCompound
+    - type: Flammable
+      damage:
+       types: {}
+    - type: Temperature
+    - type: TemperatureDamage
+      heatDamageThreshold: 1200
+    - type: FriendlyFaction # Corvax-Wega-Friendly
+      faction: Dragon # Corvax-Wega-Friendly
+      
+- type: entity
+  id: MobCarpHoloDragon
+  suffix: DragonBrood
+  parent: MobCarpHolo
+  components:
+    - type: GhostRole
+      allowMovement: true
+      allowSpeech: true
+      makeSentient: true
+      name: ghost-role-information-sentient-carp-name
+      description: ghost-role-information-sentient-carp-description
+      rules: ghost-role-information-space-dragon-summoned-carp-rules
+      mindRoles:
+      - MindRoleGhostRoleTeamAntagonistFlock
+    - type: GhostTakeoverAvailable
+    - type: HTN
+      rootTask:
+        task: DragonCarpCompound
+    - type: Flammable
+      damage:
+       types: {}
+    - type: Temperature
+    - type: TemperatureDamage
+      heatDamageThreshold: 1200
+    - type: FriendlyFaction # Corvax-Wega-Friendly
+      faction: Dragon # Corvax-Wega-Friendly

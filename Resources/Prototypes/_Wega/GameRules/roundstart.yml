@@ -6,11 +6,30 @@
   - type: LoadMapRule
     mapPath: /Maps/_Wega/wegabar.yml
 
+- type: entity
+  parent: BaseGameRule
+  id: SubGamemodesTraitVampRule
+  components:
+  - type: SubGamemodes
+    rules:
+    - id: SubWizard
+      prob: 0.05
+    - id: SubXenoborgs
+      prob: 0.25
+    - id: Thief
+      prob: 0.5
+
 # Rules
 - type: entity
   parent: BaseGameRule
   id: Vampire
   components:
+  # Corvax-Wega-SubGameRules-start
+  - type: SubGamemodes
+    rules:
+    - id: SubTraitor
+      prob: 0.5
+  # Corvax-Wega-SubGameRules-end
   - type: GameRule
     minPlayers: 5
   - type: VampireRule
@@ -25,61 +44,33 @@
     maxDifficulty: 5
   - type: AntagSelection
     agentName: vampire-round-end-name
-    definitions:
-      - prefRoles: [ Vampire ]
-        max: 4
-        playerRatio: 20
-        blacklist:
-          components:
-          - AntagImmune
-          - BibleUser
-          - Android
-          - Ipc
-        lateJoinAdditional: true
-        components:
-        - type: NpcFactionMember
-          factions:
-          - Vampire
-        mindRoles:
-        - MindRoleVampire
-        briefing:
-          sound: "/Audio/_Wega/Ambience/Antag/vampare_start.ogg"
+    lateJoinAdditional: true
+    antags:
+    - !type:LinearAntagCount
+      proto: Vampire
+      range:
+        min: 1
+        max: 8
 
 - type: entity
   parent: BaseGameRule
   id: BloodCult
   components:
   - type: GameRule
-    minPlayers: 30
+    minPlayers: 0
   - type: BloodCultRule
   - type: AntagObjectives
     objectives:
       - BloodCultRitualObjective
   - type: AntagSelection
-    definitions:
-      - prefRoles: [ BloodCultist ]
+    lateJoinAdditional: true
+    antags:
+    - !type:LinearAntagCount
+      proto: BloodCultist
+      playerRatio: 10
+      range:
+        min: 1
         max: 4
-        playerRatio: 10
-        blacklist:
-          components:
-          - AntagImmune
-          - BibleUser
-          - Android
-          - Ipc
-        lateJoinAdditional: true
-        components:
-        - type: BloodCultist
-        - type: MindLink
-          channels: ["MindBloodCult"]
-        - type: NpcFactionMember
-          factions:
-          - BloodCult
-        - type: FriendlyFaction
-          faction: BloodCult
-        mindRoles:
-        - MindRoleBloodCultist
-        briefing:
-          sound: "/Audio/_Wega/Ambience/Antag/bloodcult_start.ogg"
 
 - type: entity
   parent: BaseGameRule
@@ -95,15 +86,34 @@
       maxPicks: 3
   - type: AntagSelection
     agentName: blood-brother-round-end-name
-    definitions:
-      - prefRoles: [ BloodBrother ]
+    lateJoinAdditional: true
+    antags:
+    - !type:LinearAntagCount
+      proto: BloodBrother
+      playerRatio: 1
+      range:
         min: 2
         max: 8
-        playerRatio: 1
-        blacklist:
-          components:
-          - AntagImmune
-          - Pacified # Diona ha-ha-ha
+
+- type: entity
+  parent: BaseGameRule
+  id: VeilCult
+  components:
+  - type: GameRule
+    minPlayers: 30
+  - type: VeilCultRule
+  - type: AntagObjectives
+    objectives:
+      - VeilCultRitualObjective
+  - type: AntagSelection
+    lateJoinAdditional: true
+    antags:
+    - !type:LinearAntagCount
+      proto: VeilCultist
+      playerRatio: 10
+      range:
+        min: 1
+        max: 4
 
 # event schedulers
 

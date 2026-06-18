@@ -7,8 +7,8 @@ namespace Content.Server.Instruments;
 
 public sealed partial class InstrumentSystem
 {
-    [Dependency] private readonly SharedActionsSystem _action = default!;
-    [Dependency] private readonly ItemToggleSystem _toggle = default!;
+    [Dependency] private SharedActionsSystem _action = default!;
+    [Dependency] private ItemToggleSystem _toggle = default!;
 
     private void OnMapInit(EntityUid uid, InstrumentComponent component, ref MapInitEvent args)
     {

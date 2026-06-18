@@ -4,9 +4,9 @@ using Content.Shared.Modular.Suit;
 
 namespace Content.Server.Modular.Suit;
 
-public sealed class TanningModuleHandler : ModuleActionHandler
+public sealed partial class TanningModuleHandler : ModuleActionHandler
 {
-    [Dependency] private readonly SharedVisualBodySystem _visualBody = default!;
+    [Dependency] private SharedVisualBodySystem _visualBody = default!;
 
     private const float MinColorValue = 0.3f;
     private const float DarkenFactor = 0.85f;

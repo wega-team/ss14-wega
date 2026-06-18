@@ -5,11 +5,11 @@ using Content.Shared.Humanoid;
 
 namespace Content.Server.Genetics.System;
 
-public sealed class PolymorphismGenSystem : EntitySystem
+public sealed partial class PolymorphismGenSystem : EntitySystem
 {
-    [Dependency] private readonly SharedActionsSystem _action = default!;
-    [Dependency] private readonly DnaModifierSystem _dnaModifier = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private SharedActionsSystem _action = default!;
+    [Dependency] private DnaModifierSystem _dnaModifier = default!;
+    [Dependency] private SharedDoAfterSystem _doAfter = default!;
 
     public override void Initialize()
     {

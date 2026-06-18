@@ -21,13 +21,13 @@ namespace Content.Server.Modular.Suit;
 
 public sealed partial class ModularSuitSystem : SharedModularSuitSystem
 {
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
-    [Dependency] private readonly SharedPointLightSystem _light = default!;
-    [Dependency] private readonly LockSystem _lock = default!;
-    [Dependency] private readonly SharedToolSystem _tool = default!;
-    [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private SharedHandsSystem _hands = default!;
+    [Dependency] private SharedPointLightSystem _light = default!;
+    [Dependency] private LockSystem _lock = default!;
+    [Dependency] private SharedToolSystem _tool = default!;
+    [Dependency] private EntityWhitelistSystem _whitelist = default!;
 
     private const float ModuleExtractTime = 1.5f;
     private const float CoreExtractTime = 4.0f;

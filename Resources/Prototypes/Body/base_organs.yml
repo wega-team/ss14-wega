@@ -73,6 +73,12 @@
       - SnoutCover
       - HeadSide
       - HeadTop
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+    - BaseBodyPart
+    - Head
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   parent: OrganBase
@@ -92,6 +98,12 @@
     markingData:
       layers:
       - LArm
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+    - BaseBodyPart
+    - LeftArm
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   parent: OrganBase
@@ -111,6 +123,12 @@
     markingData:
       layers:
       - RArm
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+    - BaseBodyPart
+    - RightArm
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   parent: OrganBase
@@ -134,6 +152,12 @@
     markingData:
       layers:
       - LHand
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+    - BaseBodyPart
+    - LeftHand
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   parent: OrganBase
@@ -157,6 +181,12 @@
     markingData:
       layers:
       - RHand
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+    - BaseBodyPart
+    - RightHand
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   parent: OrganBase
@@ -176,6 +206,12 @@
     markingData:
       layers:
       - LLeg
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+    - BaseBodyPart
+    - LeftLeg
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   parent: OrganBase
@@ -195,6 +231,12 @@
     markingData:
       layers:
       - RLeg
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+    - BaseBodyPart
+    - RightLeg
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   parent: OrganBase
@@ -214,6 +256,12 @@
     markingData:
       layers:
       - LFoot
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+    - BaseBodyPart
+    - LeftFoot
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   parent: OrganBase
@@ -233,6 +281,12 @@
     markingData:
       layers:
       - RFoot
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+    - BaseBodyPart
+    - RightFoot
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   parent: OrganBase
@@ -259,6 +313,20 @@
     entries:
       Burger: Brain
       Taco: Brain
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+    - BaseOrgan
+    - Brain
+    - OrganicBrain
+  - type: Material
+  - type: Stack
+    stackType: PrinterBrain
+    count: 1
+  - type: PhysicalComposition
+    materialComposition:
+      PrintBrain: 100
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   parent: OrganBase
@@ -282,6 +350,12 @@
     markingData:
       layers:
       - Eyes
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+    - BaseOrgan
+    - Eyes
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   parent: OrganBase
@@ -334,17 +408,32 @@
   - type: Lung
   - type: Metabolizer
     stages: [ Respiration ]
-  - type: SolutionContainerManager
+  - type: SolutionManager
     solutions:
-      Lung:
-        maxVol: 100.0
-        canReact: false
+    - SolutionLungGas
   - type: Sprite
     layers:
     - state: lung-l
     - state: lung-r
   - type: Item
     heldPrefix: lungs
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+    - BaseOrgan
+    - Lungs
+  # Corvax-Wega-Surgery-end
+
+- type: entity
+  parent: Solution
+  id: SolutionLungGas # TODO: Metabolize directly from gasses :(
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Solution
+    id: Lung
+    solution:
+      maxVol: 100.0
+      canReact: false
 
 - type: entity
   parent: OrganBase
@@ -361,6 +450,12 @@
   - type: Metabolizer
     maxReagents: 2
     stages: [ Bloodstream ]
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+    - BaseOrgan
+    - Heart
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   parent: OrganBase
@@ -372,10 +467,9 @@
   - type: Organ
     category: Stomach
   - type: Stomach
-  - type: SolutionContainerManager
+  - type: SolutionManager
     solutions:
-      stomach:
-        maxVol: 50
+    - SolutionStomach
   - type: Metabolizer
     maxReagents: 3
     stages: [ Digestion ]
@@ -384,6 +478,22 @@
     - state: stomach
   - type: Item
     heldPrefix: stomach
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+    - BaseOrgan
+    - Stomach
+  # Corvax-Wega-Surgery-end
+
+- type: entity
+  parent: Solution
+  id: SolutionStomach
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Solution
+    id: stomach
+    solution:
+      maxVol: 150 # 1.25 liters which is average for a human
 
 - type: entity
   parent: OrganBase
@@ -402,6 +512,12 @@
   - type: Metabolizer
     maxReagents: 1
     stages: [ Metabolites ]
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+    - BaseOrgan
+    - Liver
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   parent: OrganBase
@@ -420,6 +536,12 @@
     heldPrefix: kidneys
   - type: Metabolizer
     maxReagents: 5
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+    - BaseOrgan
+    - Kidneys
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   id: OrganSpriteHumanInternal

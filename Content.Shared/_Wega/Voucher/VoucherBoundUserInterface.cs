@@ -11,7 +11,7 @@ public enum VoucherUiKey : byte
 }
 
 [Serializable, NetSerializable]
-public sealed class VoucherKitSelectionState : BoundUserInterfaceState
+public sealed partial class VoucherKitSelectionState : BoundUserInterfaceState
 {
     public readonly List<ProtoId<VoucherKitPrototype>> AvailableKits;
 
@@ -22,7 +22,7 @@ public sealed class VoucherKitSelectionState : BoundUserInterfaceState
 }
 
 [Serializable, NetSerializable]
-public sealed class VoucherKitSelectedMessage : BoundUserInterfaceMessage
+public sealed partial class VoucherKitSelectedMessage : BoundUserInterfaceMessage
 {
     public readonly NetEntity User;
     public readonly ProtoId<VoucherKitPrototype> KitId;

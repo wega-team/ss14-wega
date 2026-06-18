@@ -2,7 +2,7 @@ using Content.Shared.Modular.Suit;
 
 namespace Content.Server.Modular.Suit;
 
-public sealed class ModularSuitWearerEffectSystem : EntitySystem
+public sealed partial class ModularSuitWearerEffectSystem : EntitySystem
 {
     public override void Initialize()
     {

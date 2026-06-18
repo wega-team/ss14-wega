@@ -60,7 +60,7 @@
   color: "#FCDF03" # Corvax-Wega-Edit
   roles:
   - Captain
-  - IAA # Corvax-IAA
+  - IAA # Corvax-Wega-IAA
   - BlueShieldOfficer # Corvax-Wega-BlueShield
   - ChiefEngineer
   - ChiefMedicalOfficer

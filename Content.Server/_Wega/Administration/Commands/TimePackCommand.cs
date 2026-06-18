@@ -8,11 +8,11 @@ using Content.Server.Database;
 namespace Content.Server.Administration.Commands;
 
 [AdminCommand(AdminFlags.Permissions)]
-public sealed class TimePackCommand : IConsoleCommand
+public sealed partial class TimePackCommand : IConsoleCommand
 {
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly IServerDbManager _db = default!;
-    [Dependency] private readonly IPlayerLocator _locator = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
+    [Dependency] private IServerDbManager _db = default!;
+    [Dependency] private IPlayerLocator _locator = default!;
 
     public string Command => "timepack";
     public string Description => "Executes a set of commands based on the selected pack(s)";

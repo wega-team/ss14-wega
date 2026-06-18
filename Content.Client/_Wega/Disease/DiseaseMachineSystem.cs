@@ -7,7 +7,7 @@ namespace Content.Client.Disease
     /// Controls client-side visuals for the
     /// disease machines.
     /// </summary>
-    public sealed class DiseaseMachineSystem : VisualizerSystem<DiseaseMachineVisualsComponent>
+    public sealed partial class DiseaseMachineSystem : VisualizerSystem<DiseaseMachineVisualsComponent>
     {
         protected override void OnAppearanceChange(EntityUid uid, DiseaseMachineVisualsComponent component, ref AppearanceChangeEvent args)
         {

@@ -3,7 +3,7 @@ using Content.Shared.Stealth.Components;
 
 namespace Content.Server.Genetics.System;
 
-public sealed class ChameleonGenSystem : EntitySystem
+public sealed partial class ChameleonGenSystem : EntitySystem
 {
     public override void Initialize()
     {

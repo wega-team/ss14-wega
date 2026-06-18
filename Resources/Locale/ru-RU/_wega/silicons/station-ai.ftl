@@ -11,3 +11,6 @@ station-ai-hologram-tripleaffirmative = Тройник
 station-ai-icon-binary = Бинарная личность
 station-ai-icon-blue = Голубчик
 station-ai-icon-cat = Котик
+
+# silicon-other
+gps-slot-name = слот GPS

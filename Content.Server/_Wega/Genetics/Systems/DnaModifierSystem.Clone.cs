@@ -11,7 +11,7 @@ namespace Content.Server.Genetics.System;
 
 public sealed partial class DnaModifierSystem
 {
-    [Dependency] private readonly SharedVisualBodySystem _visualBody = default!;
+    [Dependency] private SharedVisualBodySystem _visualBody = default!;
 
     public bool TryCloneHumanoid(Entity<DnaModifierComponent> entity, Entity<DnaModifierComponent> target)
     {

@@ -50,3 +50,55 @@
     range: 10
     volume: -10
     enabled: true
+
+- type: entity
+  name: Borgi
+  parent: [ MobSiliconBase, FlyingMobBase ] # чтоб не улетал
+  id: Borgi
+  description: PAI is still walking now! Unbelievable!
+  components:
+  - type: Sprite
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: borgi
+      sprite: _Wega/Mobs/Silicon/borgi.rsi
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: borgi
+      Dead:
+        Base: borgi-dead
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      150: Dead
+  - type: InteractionPopup
+    interactSuccessString: petting-success-dog
+    interactFailureString: petting-failure-generic
+    interactSuccessSpawn: EffectHearts
+    interactSuccessSound:
+      path: /Audio/Ambience/Objects/periodic_beep.ogg
+  - type: MeleeWeapon
+    altDisarm: false
+    hidden: true
+    animation: WeaponArcSlash
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+    attackRate: 1
+    damage:
+      types:
+        Structural: 12 # если застрял
+        Slash: 11
+  - type: CombatMode
+    combatToggleAction: ActionCombatModeToggle
+  - type: Puller
+    needsHands: false
+  - type: Prying
+    pryPowered: true
+    force: true
+    speedModifier: 1
+    useSound:
+      path: /Audio/Items/crowbar.ogg
+  - type: NpcFactionMember
+    factions:
+    - Passive

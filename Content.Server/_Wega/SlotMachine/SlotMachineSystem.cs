@@ -18,18 +18,18 @@ using Robust.Shared.Timing;
 
 namespace Content.Server.Economy.SlotMachine;
 
-public sealed class SlotMachineSystem : EntitySystem
+public sealed partial class SlotMachineSystem : EntitySystem
 {
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly ChatSystem _chat = default!;
-    [Dependency] private readonly DamageableSystem _damage = default!;
-    [Dependency] private readonly DestructibleSystem _destructible = default!;
-    [Dependency] private readonly HandsSystem _hands = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly StackSystem _stack = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private ChatSystem _chat = default!;
+    [Dependency] private DamageableSystem _damage = default!;
+    [Dependency] private DestructibleSystem _destructible = default!;
+    [Dependency] private HandsSystem _hands = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private StackSystem _stack = default!;
+    [Dependency] private IGameTiming _timing = default!;
 
     private static readonly string[] AllSymbols = { "♥", "★", "♠", "♦", "♣", "♡" };
     private static readonly string[] CursedSymbols = { "☠", "🩸", "☢", "☣" };

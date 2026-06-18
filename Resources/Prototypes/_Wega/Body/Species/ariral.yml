@@ -140,8 +140,9 @@
       types:
         Piercing: 6
   - type: Damageable
-    damageContainer: Biological
     damageModifierSet: Ariral
+  - type: Injurable
+    damageContainer: Biological
   - type: Bloodstream
     bloodReferenceSolution:
       reagents:

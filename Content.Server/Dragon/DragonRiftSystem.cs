@@ -13,20 +13,24 @@ using Content.Shared.Damage.Components;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.GameStates;
 using Robust.Shared.Utility;
+using Robust.Shared.Random; // Corvax-Wega-Add
+using Robust.Shared.Prototypes; // Corvax-Wega-Add
+using System.Linq; // Corvax-Wega-Add
 
 namespace Content.Server.Dragon;
 
 /// <summary>
 /// Handles events for rift entities and rift updating.
 /// </summary>
-public sealed class DragonRiftSystem : EntitySystem
+public sealed partial class DragonRiftSystem : EntitySystem
 {
-    [Dependency] private readonly ChatSystem _chat = default!;
-    [Dependency] private readonly DragonSystem _dragon = default!;
-    [Dependency] private readonly ISerializationManager _serManager = default!;
-    [Dependency] private readonly NavMapSystem _navMap = default!;
-    [Dependency] private readonly NPCSystem _npc = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private ChatSystem _chat = default!;
+    [Dependency] private DragonSystem _dragon = default!;
+    [Dependency] private ISerializationManager _serManager = default!;
+    [Dependency] private NavMapSystem _navMap = default!;
+    [Dependency] private NPCSystem _npc = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private IRobustRandom _random = default!; // Corvax-Wega-Add
 
     public override void Initialize()
     {
@@ -88,7 +92,7 @@ public sealed class DragonRiftSystem : EntitySystem
             if (comp.SpawnAccumulator > comp.SpawnCooldown)
             {
                 comp.SpawnAccumulator -= comp.SpawnCooldown;
-                var ent = Spawn(comp.SpawnPrototype, xform.Coordinates);
+                var ent = Spawn(GetWeightedRandom(comp.SpawnWeights), xform.Coordinates); // Corvax-Wega-Add
 
                 // Update their look to match the leader.
                 if (TryComp<RandomSpriteComponent>(comp.Dragon, out var randomSprite))
@@ -103,7 +107,23 @@ public sealed class DragonRiftSystem : EntitySystem
             }
         }
     }
+ // Corvax-Wega-Start
+    private EntProtoId GetWeightedRandom(Dictionary<EntProtoId, float> weights)
+    {
+        var current = 0f;
+        var totalWeight = weights.Values.Sum();
+        var randomValue = _random.NextFloat(0, totalWeight);
 
+        foreach (var (prototype, weight) in weights)
+        {
+            current += weight;
+            if (randomValue <= current)
+                return prototype;
+        }
+
+        return weights.Keys.First();
+    }
+ // Corvax-Wega-End
     private void OnExamined(EntityUid uid, DragonRiftComponent component, ExaminedEvent args)
     {
         args.PushMarkup(Loc.GetString("carp-rift-examine", ("percentage", MathF.Round(component.Accumulator / component.MaxAccumulator * 100))));

@@ -26,17 +26,17 @@ namespace Content.Server.Strangulation
 {
     public sealed partial class StrangulationSystem : SharedStrangulationSystem
     {
-        [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
-        [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
-        [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
-        [Dependency] private readonly VirtualItemSystem _virtualItemSystem = default!;
-        [Dependency] private readonly SharedTransformSystem _transform = default!;
-        [Dependency] private readonly SharedHandsSystem _hands = default!;
-        [Dependency] private readonly PullingSystem _pulling = default!;
-        [Dependency] private readonly AlertsSystem _alerts = default!;
-        [Dependency] private readonly SharedStutteringSystem _stutteringSystem = default!;
-        [Dependency] private readonly SharedCombatModeSystem _combatModeSystem = default!;
-        [Dependency] private readonly StatusEffectsSystem _statusEffect = default!;
+        [Dependency] private SharedDoAfterSystem _doAfterSystem = default!;
+        [Dependency] private SharedPopupSystem _popupSystem = default!;
+        [Dependency] private MobStateSystem _mobStateSystem = default!;
+        [Dependency] private VirtualItemSystem _virtualItemSystem = default!;
+        [Dependency] private SharedTransformSystem _transform = default!;
+        [Dependency] private SharedHandsSystem _hands = default!;
+        [Dependency] private PullingSystem _pulling = default!;
+        [Dependency] private AlertsSystem _alerts = default!;
+        [Dependency] private SharedStutteringSystem _stutteringSystem = default!;
+        [Dependency] private SharedCombatModeSystem _combatModeSystem = default!;
+        [Dependency] private StatusEffectsSystem _statusEffect = default!;
 
         public override void Initialize()
         {

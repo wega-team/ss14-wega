@@ -28,6 +28,7 @@
   - type: MobState
   - type: CombatMode
   - type: Damageable
+  - type: Injurable
     damageContainer: Biological
   - type: Megafauna
   - type: NPCAggression
@@ -182,8 +183,9 @@
         layer:
         - FlyingMobLayer
   - type: Damageable
-    damageContainer: Inorganic
     damageModifierSet: Hierophant
+  - type: Injurable
+    damageContainer: Inorganic
   - type: Sprite
     sprite: _Wega/Mobs/Lavaland/hierophant.rsi
     state: hierophant

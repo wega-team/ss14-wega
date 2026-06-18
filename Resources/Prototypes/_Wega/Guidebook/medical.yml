@@ -2,3 +2,8 @@
   id: Genetic
   name: guide-entry-genetic
   text: "/ServerInfo/_Wega/Guidebook/Medical/Genetic.xml"
+
+- type: guideEntry
+  id: Surgery
+  name: guide-entry-surgery
+  text: "/ServerInfo/_Wega/Guidebook/Medical/Surgery.xml"

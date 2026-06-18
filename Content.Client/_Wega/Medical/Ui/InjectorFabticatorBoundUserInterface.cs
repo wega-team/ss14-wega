@@ -4,7 +4,7 @@ using JetBrains.Annotations;
 namespace Content.Client._Wega.Medical.Ui;
 
 [UsedImplicitly]
-public sealed class InjectorFabticatorBoundUserInterface : BoundUserInterface
+public sealed partial class InjectorFabticatorBoundUserInterface : BoundUserInterface
 {
     [ViewVariables]
     private InjectorFabticatorWindow? _window;

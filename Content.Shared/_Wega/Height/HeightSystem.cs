@@ -2,7 +2,7 @@ using Content.Shared.Humanoid;
 
 namespace Content.Shared.Height;
 
-public sealed class HeightSystem : EntitySystem
+public sealed partial class HeightSystem : EntitySystem
 {
     public override void Initialize()
     {

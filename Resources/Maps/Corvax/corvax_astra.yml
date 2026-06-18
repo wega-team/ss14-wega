@@ -1,11 +1,11 @@
 meta:
   format: 7
   category: Map
-  engineVersion: 268.0.0
+  engineVersion: 275.2.0
   forkId: ""
   forkVersion: ""
-  time: 12/11/2025 08:13:29
-  entityCount: 41135
+  time: 04/18/2026 14:29:51
+  entityCount: 41133
 maps:
 - 1
 grids:
@@ -60,7 +60,6 @@ tilemap:
   52: FloorGrassLight
   53: FloorGrayConcrete
   54: FloorGrayConcreteMono
-  87: FloorGrayConcreteOutside
   55: FloorGrayConcreteSmooth
   56: FloorGreenCircuit
   57: FloorGym
@@ -246,7 +245,7 @@ entities:
           version: 7
         4,0:
           ind: 4,0
-          tiles: cAAAAAAAACkAAAAAAAApAAAAAAAAfgAAAAAAAB8AAAAAAAAXAAAAAAAAHwAAAAAAAH4AAAAAAAB+AAAAAAAAfgAAAAAAAH4AAAAAAAB+AAAAAAAAfgAAAAAAAF0AAAAAAABdAAAAAAAAXQAAAAAAAHAAAAAAAAApAAAAAAAAKQAAAAAAAH4AAAAAAAAfAAAAAAAAHwAAAAAAAB8AAAAAAAAfAAAAAAAAfgAAAAAAAGQAAAAAAABkAAAAAAAAZAAAAAAAAH4AAAAAAABdAAAAAAAAXQAAAAAAAF0AAAAAAAB+AAAAAAAAfgAAAAAAAH4AAAAAAAB+AAAAAAAAHwAAAAAAAB8AAAAAAAAfAAAAAAAAHwAAAAAAAH4AAAAAAAB+AAAAAAAAHwAAAAAAAH4AAAAAAAB+AAAAAAAAfgAAAAAAAH4AAAAAAAB+AAAAAAAAHwAAAAAAAB8AAAAAAAB+AAAAAAAAHwAAAAAAAB8AAAAAAAAfAAAAAAAAHwAAAAAAAB8AAAAAAAAfAAAAAAAAHwAAAAAAAB8AAAAAAAAfAAAAAAAAfgAAAAAAADUAAAAAAAA1AAAAAAAANQAAAAAAAB8AAAAAAAAfAAAAAAAAHwAAAAAAAB8AAAAAAAAfAAAAAAAAHwAAAAAAAB8AAAAAAAAfAAAAAAAAFwAAAAAAAB8AAAAAAAAvAAAAAAAAHwAAAAAAABcAAAAAAAA1AAAAAAAANQAAAAAAADUAAAAAAAAfAAAAAAAAHwAAAAAAAH4AAAAAAAAfAAAAAAAAHwAAAAAAAB8AAAAAAAAfAAAAAAAAHwAAAAAAAH4AAAAAAAAfAAAAAAAAFwAAAAAAAB8AAAAAAAB+AAAAAAAANQAAAAAAADUAAAAAAAA1AAAAAAAAfgAAAAAAAH4AAAAAAAB+AAAAAAAAfgAAAAAAAH4AAAAAAAB+AAAAAAAAHwAAAAAAAB8AAAAAAAB+AAAAAAAAHwAAAAAAAC8AAAAAAAAfAAAAAAAAfgAAAAAAADUAAAAAAAA1AAAAAAAANQAAAAAAADYAAAAAAAA2AAAAAAAAfgAAAAAAADcAAAAAAAA3AAAAAAAAfgAAAAAAAH4AAAAAAAB+AAAAAAAAfgAAAAAAAB8AAAAAAAAfAAAAAAAAHwAAAAAAAH4AAAAAAAB+AAAAAAAAfgAAAAAAAH4AAAAAAAA2AAAAAAAANgAAAAAAADYAAAAAAAA3AAAAAAAANwAAAAAAAH4AAAAAAAB9AAAAAAAAfQAAAAAAAH4AAAAAAAB+AAAAAAAAHwAAAAAAAH4AAAAAAAB+AAAAAAAAfQAAAAAAAH0AAAAAAAB9AAAAAAAANgAAAAAAADYAAAAAAAA2AAAAAAAANwAAAAAAADcAAAAAAAB+AAAAAAAAfQAAAAAAAH0AAAAAAAB9AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfQAAAAAAAH0AAAAAAAB9AAAAAAAAfQAAAAAAADYAAAAAAAA2AAAAAAAANgAAAAAAADcAAAAAAAA3AAAAAAAAfgAAAAAAAH0AAAAAAAAAAAAAAAAAfQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA2AAAAAAAANgAAAAAAAH4AAAAAAAA3AAAAAAAANwAAAAAAAH4AAAAAAAB9AAAAAAAAAAAAAAAAAH0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB9AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfgAAAAAAAH4AAAAAAAB+AAAAAAAAfgAAAAAAAH4AAAAAAAB+AAAAAAAAfQAAAAAAAH0AAAAAAAB9AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFcAAAAAAABXAAAAAAAAVwAAAAAAAH4AAAAAAABsAAAAAAAAfgAAAAAAAH0AAAAAAAB9AAAAAAAAfQAAAAAAAH0AAAAAAAAAAAAAAAAAfQAAAAAAAH0AAAAAAAB9AAAAAAAAfQAAAAAAAH0AAAAAAABPAAAAAAAATwAAAAAAAE8AAAAAAABsAAAAAAAAbAAAAAAAAH4AAAAAAAB9AAAAAAAAfQAAAAAAAH0AAAAAAAB9AAAAAAAAfQAAAAAAAH0AAAAAAAB9AAAAAAAAAAAAAAAAAAAAAAAAAAB9AAAAAAAAVwAAAAAAAFcAAAAAAABXAAAAAAAAfgAAAAAAAGwAAAAAAAB+AAAAAAAAfQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+          tiles: cAAAAAAAACkAAAAAAAApAAAAAAAAfgAAAAAAAB8AAAAAAAAXAAAAAAAAHwAAAAAAAH4AAAAAAAB+AAAAAAAAfgAAAAAAAH4AAAAAAAB+AAAAAAAAfgAAAAAAAF0AAAAAAABdAAAAAAAAXQAAAAAAAHAAAAAAAAApAAAAAAAAKQAAAAAAAH4AAAAAAAAfAAAAAAAAHwAAAAAAAB8AAAAAAAAfAAAAAAAAfgAAAAAAAGQAAAAAAABkAAAAAAAAZAAAAAAAAH4AAAAAAABdAAAAAAAAXQAAAAAAAF0AAAAAAAB+AAAAAAAAfgAAAAAAAH4AAAAAAAB+AAAAAAAAHwAAAAAAAB8AAAAAAAAfAAAAAAAAHwAAAAAAAH4AAAAAAAB+AAAAAAAAHwAAAAAAAH4AAAAAAAB+AAAAAAAAfgAAAAAAAH4AAAAAAAB+AAAAAAAAHwAAAAAAAB8AAAAAAAB+AAAAAAAAHwAAAAAAAB8AAAAAAAAfAAAAAAAAHwAAAAAAAB8AAAAAAAAfAAAAAAAAHwAAAAAAAB8AAAAAAAAfAAAAAAAAfgAAAAAAADUAAAAAAAA1AAAAAAAANQAAAAAAAB8AAAAAAAAfAAAAAAAAHwAAAAAAAB8AAAAAAAAfAAAAAAAAHwAAAAAAAB8AAAAAAAAfAAAAAAAAFwAAAAAAAB8AAAAAAAAvAAAAAAAAHwAAAAAAABcAAAAAAAA1AAAAAAAANQAAAAAAADUAAAAAAAAfAAAAAAAAHwAAAAAAAH4AAAAAAAAfAAAAAAAAHwAAAAAAAB8AAAAAAAAfAAAAAAAAHwAAAAAAAH4AAAAAAAAfAAAAAAAAFwAAAAAAAB8AAAAAAAB+AAAAAAAANQAAAAAAADUAAAAAAAA1AAAAAAAAfgAAAAAAAH4AAAAAAAB+AAAAAAAAfgAAAAAAAH4AAAAAAAB+AAAAAAAAHwAAAAAAAB8AAAAAAAB+AAAAAAAAHwAAAAAAAC8AAAAAAAAfAAAAAAAAfgAAAAAAADUAAAAAAAA1AAAAAAAANQAAAAAAADYAAAAAAAA2AAAAAAAAfgAAAAAAADcAAAAAAAA3AAAAAAAAfgAAAAAAAH4AAAAAAAB+AAAAAAAAfgAAAAAAAB8AAAAAAAAfAAAAAAAAHwAAAAAAAH4AAAAAAAB+AAAAAAAAfgAAAAAAAH4AAAAAAAA2AAAAAAAANgAAAAAAADYAAAAAAAA3AAAAAAAANwAAAAAAAH4AAAAAAAB9AAAAAAAAfQAAAAAAAH4AAAAAAAB+AAAAAAAAHwAAAAAAAH4AAAAAAAB+AAAAAAAAfQAAAAAAAH0AAAAAAAB9AAAAAAAANgAAAAAAADYAAAAAAAA2AAAAAAAANwAAAAAAADcAAAAAAAB+AAAAAAAAfQAAAAAAAH0AAAAAAAB9AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfQAAAAAAAH0AAAAAAAB9AAAAAAAAfQAAAAAAADYAAAAAAAA2AAAAAAAANgAAAAAAADcAAAAAAAA3AAAAAAAAfgAAAAAAAH0AAAAAAAAAAAAAAAAAfQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA2AAAAAAAANgAAAAAAAH4AAAAAAAA3AAAAAAAANwAAAAAAAH4AAAAAAAB9AAAAAAAAAAAAAAAAAH0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB9AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfgAAAAAAAH4AAAAAAAB+AAAAAAAAfgAAAAAAAH4AAAAAAAB+AAAAAAAAfQAAAAAAAH0AAAAAAAB9AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADUAAAAAAAA1AAAAAAAANQAAAAAAAH4AAAAAAABsAAAAAAAAfgAAAAAAAH0AAAAAAAB9AAAAAAAAfQAAAAAAAH0AAAAAAAAAAAAAAAAAfQAAAAAAAH0AAAAAAAB9AAAAAAAAfQAAAAAAAH0AAAAAAABPAAAAAAAATwAAAAAAAE8AAAAAAABsAAAAAAAAbAAAAAAAAH4AAAAAAAB9AAAAAAAAfQAAAAAAAH0AAAAAAAB9AAAAAAAAfQAAAAAAAH0AAAAAAAB9AAAAAAAAAAAAAAAAAAAAAAAAAAB9AAAAAAAANQAAAAAAADUAAAAAAAA1AAAAAAAAfgAAAAAAAGwAAAAAAAB+AAAAAAAAfQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
           version: 7
         5,-1:
           ind: 5,-1
@@ -19417,6 +19416,9 @@ entities:
       id: Astra
     - type: NavMap
     - type: ImplicitRoof
+    - type: TileHistory
+      chunkHistory: {}
+    - type: ExplosionAirtightGrid
   - uid: 4
     components:
     - type: MetaData
@@ -20262,6 +20264,9 @@ entities:
         chunkSize: 4
     - type: GasTileOverlay
     - type: ImplicitRoof
+    - type: TileHistory
+      chunkHistory: {}
+    - type: ExplosionAirtightGrid
 - proto: AccessConfigurator
   entities:
   - uid: 156
@@ -33453,18 +33458,6 @@ entities:
     components:
     - type: Transform
       pos: -2.5,-53.5
-      parent: 2
-- proto: BaseChemistryEmptyVial
-  entities:
-  - uid: 1953
-    components:
-    - type: Transform
-      pos: -37.747562,-34.233185
-      parent: 2
-  - uid: 1954
-    components:
-    - type: Transform
-      pos: -37.888187,-34.326935
       parent: 2
 - proto: BaseComputer
   entities:
@@ -103328,6 +103321,18 @@ entities:
       parent: 1965
     - type: Physics
       canCollide: False
+- proto: ChemistryEmptyVial
+  entities:
+  - uid: 1953
+    components:
+    - type: Transform
+      pos: -37.747562,-34.233185
+      parent: 2
+  - uid: 1954
+    components:
+    - type: Transform
+      pos: -37.888187,-34.326935
+      parent: 2
 - proto: ChemistryHotplate
   entities:
   - uid: 15563
@@ -106182,8 +106187,8 @@ entities:
     - type: Transform
       parent: 159
     - type: Clothing
-      inSlotFlag: HEAD
       inSlot: head
+      inSlotFlag: HEAD
     - type: HandheldLight
       toggleActionEntity: 161
     - type: ContainerContainer
@@ -106675,8 +106680,8 @@ entities:
     - type: Transform
       parent: 16099
     - type: Clothing
-      inSlotFlag: MASK
       inSlot: mask
+      inSlotFlag: MASK
     - type: Physics
       canCollide: False
 - proto: ClothingMaskGasAtmos
@@ -106686,8 +106691,8 @@ entities:
     - type: Transform
       parent: 159
     - type: Clothing
-      inSlotFlag: MASK
       inSlot: mask
+      inSlotFlag: MASK
     - type: Physics
       canCollide: False
   - uid: 16102
@@ -106788,8 +106793,8 @@ entities:
     - type: TypingIndicatorClothing
       gotEquippedTime: 5513.9278194
     - type: Clothing
-      inSlotFlag: NECK
       inSlot: neck
+      inSlotFlag: NECK
     - type: Physics
       canCollide: False
 - proto: ClothingNeckCloakNanotrasen
@@ -108012,8 +108017,8 @@ entities:
     - type: Transform
       parent: 16099
     - type: Clothing
-      inSlotFlag: INNERCLOTHING
       inSlot: jumpsuit
+      inSlotFlag: INNERCLOTHING
     - type: Physics
       canCollide: False
 - proto: ClothingUniformJumpsuitRepairmanNT
@@ -108023,8 +108028,8 @@ entities:
     - type: Transform
       parent: 159
     - type: Clothing
-      inSlotFlag: INNERCLOTHING
       inSlot: jumpsuit
+      inSlotFlag: INNERCLOTHING
     - type: Physics
       canCollide: False
 - proto: ClothingUniformJumpsuitSafari
@@ -110062,8 +110067,8 @@ entities:
           restitution: 0
           friction: 0.4
     - type: EntityStorage
-      open: True
       removedMasks: 20
+      open: True
     - type: PlaceableSurface
       isPlaceable: True
   - uid: 16561
@@ -110539,8 +110544,8 @@ entities:
           restitution: 0
           friction: 0.4
     - type: EntityStorage
-      open: True
       removedMasks: 20
+      open: True
     - type: PlaceableSurface
       isPlaceable: True
 - proto: CrateHydroponics
@@ -110605,8 +110610,8 @@ entities:
           restitution: 0
           friction: 0.4
     - type: EntityStorage
-      open: True
       removedMasks: 20
+      open: True
     - type: PlaceableSurface
       isPlaceable: True
 - proto: CrateHydroSecure
@@ -110788,8 +110793,8 @@ entities:
       pos: 29.5,21.5
       parent: 2
     - type: EntityStorage
-      open: True
       removedMasks: 28
+      open: True
     - type: Fixtures
       fixtures:
         fix1:
@@ -111076,8 +111081,8 @@ entities:
           restitution: 0
           friction: 0.4
     - type: EntityStorage
-      open: True
       removedMasks: 20
+      open: True
     - type: PlaceableSurface
       isPlaceable: True
 - proto: CrateSecgear
@@ -111111,8 +111116,8 @@ entities:
           restitution: 0
           friction: 0.4
     - type: EntityStorage
-      open: True
       removedMasks: 20
+      open: True
     - type: PlaceableSurface
       isPlaceable: True
   - uid: 16653
@@ -111396,8 +111401,8 @@ entities:
         immutable: False
         temperature: 293.147
         moles: {}
-      open: True
       removedMasks: 20
+      open: True
     - type: Fixtures
       fixtures:
         fix1:
@@ -111943,7 +111948,6 @@ entities:
       desc: Это плиткорез. ПЛИТКОРЕЗ. Придайте разнообразия полу вашей станции с помощью интересных узоров! Не засовывайте внутрь пальцы.
       name: плиткорез
     - type: Transform
-      rot: 3.141592653589793 rad
       pos: 49.5,-46.5
       parent: 2
   - uid: 16761
@@ -111952,7 +111956,6 @@ entities:
       desc: Это плиткорез. ПЛИТКОРЕЗ. Придайте разнообразия полу вашей станции с помощью интересных узоров! Не засовывайте внутрь пальцы.
       name: плиткорез
     - type: Transform
-      rot: 3.141592653589793 rad
       pos: 104.5,-20.5
       parent: 2
 - proto: d10Dice
@@ -128127,7 +128130,7 @@ entities:
       tags:
       - DrinkBottle
     - type: PressurizedSolution
-      sprayFizzinessThresholdRoll: 0.06604335
+      sprayFizzinessThresholdRoll: 0.0485634
     - type: SolutionContainerManager
       solutions: null
       containers:
@@ -130223,13 +130226,6 @@ entities:
       parent: 2
     - type: FaxMachine
       name: Офис Капитана
-- proto: FigureSpawner
-  entities:
-  - uid: 19862
-    components:
-    - type: Transform
-      pos: -29.5,13.5
-      parent: 2
 - proto: filingCabinet
   entities:
   - uid: 2452
@@ -174755,7 +174751,14 @@ entities:
     - type: Transform
       pos: 17.5,16.5
       parent: 2
-- proto: GlowstickBase
+- proto: GlowstickBlue
+  entities:
+  - uid: 25479
+    components:
+    - type: Transform
+      pos: -47.2452,-100.72763
+      parent: 2
+- proto: GlowstickGreen
   entities:
   - uid: 25475
     components:
@@ -174777,13 +174780,6 @@ entities:
     components:
     - type: Transform
       pos: -74.14946,-7.76694
-      parent: 2
-- proto: GlowstickBlue
-  entities:
-  - uid: 25479
-    components:
-    - type: Transform
-      pos: -47.2452,-100.72763
       parent: 2
 - proto: GlowstickPurple
   entities:
@@ -183900,8 +183896,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -6.3343987,19.591106
       parent: 2
-- proto: HandheldHealthAnalyzerUnpowered
-  entities:
   - uid: 27105
     components:
     - type: Transform
@@ -184003,37 +183997,6 @@ entities:
     components:
     - type: Transform
       pos: 31.546932,4.9642363
-      parent: 2
-- proto: HeadArachnid
-  entities:
-  - uid: 27123
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -5.0829196,-42.402122
-      parent: 2
-- proto: HeadMoth
-  entities:
-  - uid: 27124
-    components:
-    - type: Transform
-      pos: 65.5,-50.5
-      parent: 2
-- proto: HeadReptilian
-  entities:
-  - uid: 27125
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -64.8308,-32.5277
-      parent: 2
-- proto: HeadVox
-  entities:
-  - uid: 27126
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 42.36527,-109.73952
       parent: 2
 - proto: HeatExchanger
   entities:
@@ -186598,66 +186561,6 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
-- proto: LeftArmSkeleton
-  entities:
-  - uid: 27489
-    components:
-    - type: Transform
-      pos: 65.5,-50.5
-      parent: 2
-- proto: LeftFootMoth
-  entities:
-  - uid: 27490
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 107.40406,-71.27681
-      parent: 2
-- proto: LeftFootSkeleton
-  entities:
-  - uid: 27491
-    components:
-    - type: Transform
-      pos: 65.5,-50.5
-      parent: 2
-- proto: LeftHandArachnid
-  entities:
-  - uid: 27492
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -4.9422946,-42.714622
-      parent: 2
-- proto: LeftHandSkeleton
-  entities:
-  - uid: 27493
-    components:
-    - type: Transform
-      pos: 65.5,-50.5
-      parent: 2
-- proto: LeftLegArachnid
-  entities:
-  - uid: 27494
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -4.2079196,-41.839622
-      parent: 2
-- proto: LeftLegReptilian
-  entities:
-  - uid: 27495
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -63.578598,-33.43395
-      parent: 2
-- proto: LeftLegSkeleton
-  entities:
-  - uid: 27496
-    components:
-    - type: Transform
-      pos: 65.5,-50.5
-      parent: 2
 - proto: LegionnaireBonfire
   entities:
   - uid: 27497
@@ -190903,6 +190806,13 @@ entities:
     - type: Transform
       pos: -14.487654,-43.432667
       parent: 2
+- proto: MechFigurineSpawner50
+  entities:
+  - uid: 19862
+    components:
+    - type: Transform
+      pos: -29.5,13.5
+      parent: 2
 - proto: MedalCase
   entities:
   - uid: 27942
@@ -192985,6 +192895,22 @@ entities:
     - type: Transform
       pos: -15.5,-36.5
       parent: 2
+- proto: OrganArachnidHandLeft
+  entities:
+  - uid: 27492
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -4.9422946,-42.714622
+      parent: 2
+- proto: OrganArachnidHead
+  entities:
+  - uid: 27123
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -5.0829196,-42.402122
+      parent: 2
 - proto: OrganArachnidHeart
   entities:
   - uid: 16610
@@ -193009,6 +192935,14 @@ entities:
     - type: Transform
       pos: -14.375384,-30.439037
       parent: 2
+- proto: OrganArachnidLegLeft
+  entities:
+  - uid: 27494
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -4.2079196,-41.839622
+      parent: 2
 - proto: OrganArachnidTongue
   entities:
   - uid: 16611
@@ -193018,6 +192952,14 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
+- proto: OrganArachnidTorso
+  entities:
+  - uid: 33991
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -4.0985446,-42.652122
+      parent: 2
 - proto: OrganDionaEyes
   entities:
   - uid: 28156
@@ -193105,6 +193047,121 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
+- proto: OrganMothFootLeft
+  entities:
+  - uid: 27490
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 107.40406,-71.27681
+      parent: 2
+- proto: OrganMothHead
+  entities:
+  - uid: 27124
+    components:
+    - type: Transform
+      pos: 65.5,-50.5
+      parent: 2
+- proto: OrganReptilianHead
+  entities:
+  - uid: 27125
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -64.8308,-32.5277
+      parent: 2
+- proto: OrganReptilianLegLeft
+  entities:
+  - uid: 27495
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -63.578598,-33.43395
+      parent: 2
+- proto: OrganReptilianLegRight
+  entities:
+  - uid: 31197
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -64.73485,-33.68395
+      parent: 2
+- proto: OrganSkeletonPersonArmLeft
+  entities:
+  - uid: 27489
+    components:
+    - type: Transform
+      pos: 65.5,-50.5
+      parent: 2
+- proto: OrganSkeletonPersonArmRight
+  entities:
+  - uid: 31194
+    components:
+    - type: Transform
+      pos: 65.5,-50.5
+      parent: 2
+- proto: OrganSkeletonPersonFootLeft
+  entities:
+  - uid: 27491
+    components:
+    - type: Transform
+      pos: 65.5,-50.5
+      parent: 2
+- proto: OrganSkeletonPersonFootRight
+  entities:
+  - uid: 31195
+    components:
+    - type: Transform
+      pos: 65.5,-50.5
+      parent: 2
+- proto: OrganSkeletonPersonHandLeft
+  entities:
+  - uid: 27493
+    components:
+    - type: Transform
+      pos: 65.5,-50.5
+      parent: 2
+- proto: OrganSkeletonPersonHandRight
+  entities:
+  - uid: 31196
+    components:
+    - type: Transform
+      pos: 65.5,-50.5
+      parent: 2
+- proto: OrganSkeletonPersonLegLeft
+  entities:
+  - uid: 27496
+    components:
+    - type: Transform
+      pos: 65.5,-50.5
+      parent: 2
+- proto: OrganSkeletonPersonLegRight
+  entities:
+  - uid: 31198
+    components:
+    - type: Transform
+      pos: 65.5,-50.5
+      parent: 2
+- proto: OrganSkeletonPersonTorso
+  entities:
+  - uid: 33992
+    components:
+    - type: Transform
+      pos: 65.5,-50.5
+      parent: 2
+  - uid: 33993
+    components:
+    - type: Transform
+      pos: 10.016842,-39.05978
+      parent: 2
+- proto: OrganVoxHead
+  entities:
+  - uid: 27126
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 42.36527,-109.73952
+      parent: 2
 - proto: OxygenCanister
   entities:
   - uid: 28165
@@ -199227,6 +199284,43 @@ entities:
     components:
     - type: Transform
       pos: -36.339783,-86.55919
+      parent: 2
+- proto: PlushieSpawner50
+  entities:
+  - uid: 34049
+    components:
+    - type: Transform
+      pos: -40.5,6.5
+      parent: 2
+  - uid: 34050
+    components:
+    - type: Transform
+      pos: -58.5,-9.5
+      parent: 2
+  - uid: 34051
+    components:
+    - type: Transform
+      pos: 56.5,-29.5
+      parent: 2
+  - uid: 34052
+    components:
+    - type: Transform
+      pos: -66.5,-12.5
+      parent: 2
+  - uid: 34053
+    components:
+    - type: Transform
+      pos: -48.5,-114.5
+      parent: 2
+  - uid: 34054
+    components:
+    - type: Transform
+      pos: -84.5,2.5
+      parent: 2
+  - uid: 34055
+    components:
+    - type: Transform
+      pos: -51.5,-49.5
       parent: 2
 - proto: PlushieXeno
   entities:
@@ -215290,42 +215384,6 @@ entities:
     - type: Transform
       pos: -71.338974,-2.4210052
       parent: 2
-- proto: RightArmSkeleton
-  entities:
-  - uid: 31194
-    components:
-    - type: Transform
-      pos: 65.5,-50.5
-      parent: 2
-- proto: RightFootSkeleton
-  entities:
-  - uid: 31195
-    components:
-    - type: Transform
-      pos: 65.5,-50.5
-      parent: 2
-- proto: RightHandSkeleton
-  entities:
-  - uid: 31196
-    components:
-    - type: Transform
-      pos: 65.5,-50.5
-      parent: 2
-- proto: RightLegReptilian
-  entities:
-  - uid: 31197
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -64.73485,-33.68395
-      parent: 2
-- proto: RightLegSkeleton
-  entities:
-  - uid: 31198
-    components:
-    - type: Transform
-      pos: 65.5,-50.5
-      parent: 2
 - proto: RiotShield
   entities:
   - uid: 31199
@@ -224405,7 +224463,7 @@ entities:
     - type: Transform
       pos: 16.554049,-31.147774
       parent: 2
-- proto: SpacemenFigureSpawner
+- proto: SpacemenFigurineSpawner90
   entities:
   - uid: 32323
     components:
@@ -224818,13 +224876,6 @@ entities:
     components:
     - type: Transform
       pos: 36.5,17.5
-      parent: 2
-- proto: SpawnPointBoxer
-  entities:
-  - uid: 32382
-    components:
-    - type: Transform
-      pos: -22.5,-86.5
       parent: 2
 - proto: SpawnPointBrigmedic
   entities:
@@ -225429,13 +225480,6 @@ entities:
     components:
     - type: Transform
       pos: 52.5,-22.5
-      parent: 2
-- proto: SpawnPointZookeeper
-  entities:
-  - uid: 32487
-    components:
-    - type: Transform
-      pos: -66.5,-48.5
       parent: 2
 - proto: SpeedLoaderMagnum
   entities:
@@ -235228,26 +235272,6 @@ entities:
     - type: Transform
       pos: 109.50452,-22.239302
       parent: 2
-- proto: TorsoArachnid
-  entities:
-  - uid: 33991
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -4.0985446,-42.652122
-      parent: 2
-- proto: TorsoSkeleton
-  entities:
-  - uid: 33992
-    components:
-    - type: Transform
-      pos: 65.5,-50.5
-      parent: 2
-  - uid: 33993
-    components:
-    - type: Transform
-      pos: 10.016842,-39.05978
-      parent: 2
 - proto: TowelColorNT
   entities:
   - uid: 1859
@@ -235637,43 +235661,6 @@ entities:
     components:
     - type: Transform
       pos: -13.961909,-76.64306
-      parent: 2
-- proto: ToySpawner
-  entities:
-  - uid: 34049
-    components:
-    - type: Transform
-      pos: -40.5,6.5
-      parent: 2
-  - uid: 34050
-    components:
-    - type: Transform
-      pos: -58.5,-9.5
-      parent: 2
-  - uid: 34051
-    components:
-    - type: Transform
-      pos: 56.5,-29.5
-      parent: 2
-  - uid: 34052
-    components:
-    - type: Transform
-      pos: -66.5,-12.5
-      parent: 2
-  - uid: 34053
-    components:
-    - type: Transform
-      pos: -48.5,-114.5
-      parent: 2
-  - uid: 34054
-    components:
-    - type: Transform
-      pos: -84.5,2.5
-      parent: 2
-  - uid: 34055
-    components:
-    - type: Transform
-      pos: -51.5,-49.5
       parent: 2
 - proto: TrackingImplanter
   entities:

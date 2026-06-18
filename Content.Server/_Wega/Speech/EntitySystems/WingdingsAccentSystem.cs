@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Content.Server.Speech.EntitySystems
 {
-    public sealed class WingdingsSpeechSystem : EntitySystem
+    public sealed partial class WingdingsSpeechSystem : EntitySystem
     {
         public override void Initialize()
         {

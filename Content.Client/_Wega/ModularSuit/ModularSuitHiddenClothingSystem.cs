@@ -5,7 +5,7 @@ namespace Content.Client.Modular.Suit;
 /// <summary>
 /// idk.
 /// </summary>
-public sealed class ModularSuitHiddenClothingSystem : SharedModularSuitHiddenClothingSystem
+public sealed partial class ModularSuitHiddenClothingSystem : SharedModularSuitHiddenClothingSystem
 {
 
 }

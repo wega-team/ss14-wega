@@ -5,7 +5,7 @@ using Robust.Client.UserInterface;
 namespace Content.Client._Wega.BloodCult.Ui;
 
 [UsedImplicitly]
-public sealed class RunesMenuBoundUserInterface : BoundUserInterface
+public sealed partial class RunesMenuBoundUserInterface : BoundUserInterface
 {
     [ViewVariables]
     private RunesMenu? _menu;

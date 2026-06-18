@@ -5,7 +5,7 @@ using Robust.Client.UserInterface;
 namespace Content.Client._Wega.Surgery.Ui
 {
     [UsedImplicitly]
-    public sealed class BodyScannerBoundUserInterface : BoundUserInterface
+    public sealed partial class BodyScannerBoundUserInterface : BoundUserInterface
     {
         [ViewVariables]
         private BodyScannerWindow? _window;

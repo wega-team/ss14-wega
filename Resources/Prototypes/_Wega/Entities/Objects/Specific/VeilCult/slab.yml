@@ -1,0 +1,133 @@
+- type: entity
+  id: VeilCultClockworkSlab
+  parent: BaseEnchantable
+  name: clockwork slab
+  description: A heavy slab with intricate clockwork mechanisms. It hums with a strange energy.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/VeilCult/clockwork_slab.rsi
+    state: clock_slab
+  - type: Tool
+    qualities:
+      - VeilCultClockworkSlab
+    useSound:
+      path: /Audio/_Wega/Effects/cult_spell.ogg
+      params:
+        volume: 0.5
+  - type: MeleeWeapon
+    attackRate: 1
+    damage:
+      types:
+        Blunt: 0
+  - type: Enchantable
+    enchants:
+    - VeilCultClockworkSlabStun
+    - VeilCultClockworkSlabTeleportation
+    # - VeilCultClockworkSlabTerraform пока что нет
+    - VeilCultClockworkSlabForcePassage
+    - VeilCultClockworkSlabSealWounds
+    - VeilCultClockworkSlabHidingsClock
+  # - type: Tag
+  #   tags:
+  #   - StrangeShard
+  
+# ENCHANTS
+
+- type: entity
+  id: VeilCultClockworkSlabStun
+  parent: VeilCultClockworkSlab
+  suffix: Stun
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/VeilCult/clockwork_slab.rsi
+    layers:
+    - state: clock_slab
+    - state: stun
+      shader: unshaded
+      visible: true
+  - type: Enchanted
+  - type: StunEnchant
+    knockout: true
+    stunTime: 4
+  
+- type: entity
+  id: VeilCultClockworkSlabTeleportation
+  parent: VeilCultClockworkSlab
+  suffix: Teleportation
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/VeilCult/clockwork_slab.rsi
+    layers:
+    - state: clock_slab
+    - state: teleportation
+      shader: unshaded
+      visible: true
+  - type: Enchanted
+  - type: TeleportationEnchant
+  - type: UserInterface
+    interfaces:
+      enum.TeleportEnchantUiKey.Key:
+        type: TeleportEnchantBoundUserInterface
+  - type: ActivatableUI
+    singleUser: true
+    key: enum.TeleportEnchantUiKey.Key
+  
+- type: entity
+  id: VeilCultClockworkSlabTerraform
+  parent: VeilCultClockworkSlab
+  suffix: Terraform
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/VeilCult/clockwork_slab.rsi
+    layers:
+    - state: clock_slab
+    - state: terraform
+      shader: unshaded
+      visible: true
+  - type: Enchanted
+  - type: TerraformEnchant
+  
+- type: entity
+  id: VeilCultClockworkSlabForcePassage
+  parent: VeilCultClockworkSlab
+  suffix: Force Passage
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/VeilCult/clockwork_slab.rsi
+    layers:
+    - state: clock_slab
+    - state: forcepassage
+      shader: unshaded
+      visible: true
+  - type: Enchanted
+  - type: ForcePassageEnchant
+  
+- type: entity
+  id: VeilCultClockworkSlabHidingsClock
+  parent: VeilCultClockworkSlab
+  suffix: Hidings Clock
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/VeilCult/clockwork_slab.rsi
+    layers:
+    - state: clock_slab
+    - state: hidingsclock
+      shader: unshaded
+      visible: true
+  - type: Enchanted
+  - type: HidingsClockEnchant
+  
+- type: entity
+  id: VeilCultClockworkSlabSealWounds
+  parent: VeilCultClockworkSlab
+  suffix: Seal Wounds
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/VeilCult/clockwork_slab.rsi
+    layers:
+    - state: clock_slab
+    - state: sealwounds
+      shader: unshaded
+      visible: true
+  - type: Enchanted
+  - type: SealWoundsEnchant

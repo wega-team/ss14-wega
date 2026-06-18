@@ -3,9 +3,9 @@ using Content.Shared.Projectiles;
 
 namespace Content.Server.Projectiles;
 
-public sealed class ProjectilePressureSystem : EntitySystem
+public sealed partial class ProjectilePressureSystem : EntitySystem
 {
-    [Dependency] private readonly AtmosphereSystem _atmos = default!;
+    [Dependency] private AtmosphereSystem _atmos = default!;
 
     private const float NORMALPRESSURE = 101.325f;
 
@@ -35,7 +35,10 @@ public sealed class ProjectilePressureSystem : EntitySystem
             pressureModifier = Math.Max(0.5f, 2 - pressureRatio);
         }
 
-        var bonus = ev.Damage * (pressureModifier - 1);
+        
+        var bonus = component.Ignore 
+            ? ev.Damage * component.DamageMultiplier 
+            : ev.Damage * (pressureModifier - 1);
         ev.Damage += bonus;
     }
 }

@@ -22,18 +22,18 @@ using Robust.Shared.Utility;
 
 namespace Content.Server.Genetics.System;
 
-public sealed class MatterEaterSystem : EntitySystem
+public sealed partial class MatterEaterSystem : EntitySystem
 {
-    [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
-    [Dependency] private readonly InventorySystem _inventory = default!;
-    [Dependency] private readonly PopupSystem _popup = default!;
-    [Dependency] private readonly HungerSystem _hunger = default!;
-    [Dependency] private readonly SharedInteractionSystem _interaction = default!;
-    [Dependency] private readonly StackSystem _stack = default!;
-    [Dependency] private readonly MobStateSystem _mobState = default!;
-    [Dependency] private readonly SharedContainerSystem _container = default!;
+    [Dependency] private ISharedAdminLogManager _adminLogger = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private InventorySystem _inventory = default!;
+    [Dependency] private PopupSystem _popup = default!;
+    [Dependency] private HungerSystem _hunger = default!;
+    [Dependency] private SharedInteractionSystem _interaction = default!;
+    [Dependency] private StackSystem _stack = default!;
+    [Dependency] private MobStateSystem _mobState = default!;
+    [Dependency] private SharedContainerSystem _container = default!;
 
     public override void Initialize()
     {

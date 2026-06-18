@@ -7,14 +7,14 @@ using Content.Shared.Xenobiology.UI;
 
 namespace Content.Shared.Xenobiology.Systems.Machines;
 
-public sealed class CellularFusionSystem : EntitySystem
+public sealed partial class CellularFusionSystem : EntitySystem
 {
-    [Dependency] private readonly CellClientSystem _cellClient = default!;
-    [Dependency] private readonly CellServerSystem _cellServer = default!;
+    [Dependency] private CellClientSystem _cellClient = default!;
+    [Dependency] private CellServerSystem _cellServer = default!;
 
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SharedUserInterfaceSystem _userInterface = default!;
-    [Dependency] private readonly SharedMaterialStorageSystem _materialStorage = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SharedUserInterfaceSystem _userInterface = default!;
+    [Dependency] private SharedMaterialStorageSystem _materialStorage = default!;
 
     public override void Initialize()
     {

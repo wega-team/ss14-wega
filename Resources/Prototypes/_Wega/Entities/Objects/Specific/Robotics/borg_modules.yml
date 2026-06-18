@@ -140,6 +140,7 @@
         whitelist:
           tags:
           - ConstructionMaterial
+          - PowerCell
           - CableCoil
     - hand:
         emptyRepresentative: ScientistIcon # Corvax-Wega-Robot
@@ -250,6 +251,7 @@
         whitelist:
           components:
           - Flash
+          - HandheldGPS
           tags:
           - CableCoil
     - hand:
@@ -265,12 +267,12 @@
         whitelist:
           components:
           - BorgModule
-    # - hand:
-    #     emptyRepresentative: LeftArmSyntheticPry
-    #     emptyLabel: borg-slot-bodypart-empty
-    #     whitelist:
-    #       tags:
-    #       - BaseBodyPart
+    - hand:
+        emptyRepresentative: ArmSyntheticPry
+        emptyLabel: borg-slot-bodypart-empty
+        whitelist:
+          tags:
+          - BaseBodyPart
     - hand:
         emptyRepresentative: PowerCellSmall
         emptyLabel: borg-slot-powercell-empty
@@ -460,6 +462,7 @@
         whitelist:
           tags:
           - ConstructionMaterial
+          - PowerCell
     - hand:
         emptyRepresentative: DoorElectronics
         emptyLabel: borg-slot-circuitboards-empty
@@ -511,9 +514,10 @@
     layers:
     - state: generic
     - state: icon-speed
-  - type: ItemBorgModule
-    hands:
-    - item: SpeedModeDevice
+  - type: ComponentBorgModule
+    components:
+    - type: SpeedUpGen
+      damageBooster: false
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: speed }
 
@@ -569,7 +573,7 @@
 
 - type: entity
   id: BorgModuleCommonRepeir
-  parent: [ BaseBorgModule ]
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
   name: repeir module
   description: Everyone can heal your action!
   components:
@@ -578,6 +582,15 @@
     layers:
     - state: generic
     - state: icon-repeir
+  - type: ItemBorgModule
+    hands:
+    - hand:
+        emptyRepresentative: Nanopast
+        emptyLabel: borg-slot-nanopasta-empty
+        whitelist:
+          tags:
+          - Nanopast
+    - item: BorgGeneratorNanopast
   - type: ComponentBorgModule
     components:
     - type: PassiveDamage
@@ -587,21 +600,12 @@
       - Dead
       damage:
         types:
-          Blunt: -0.1
-          Slash: -0.1
-          Piercing: -0.1
-          Heat: -0.1
-    # hands:
-    # - item: RepeirModeDevice
-    # - hand:
-        # emptyRepresentative: Nanopast
-        # emptyLabel: borg-slot-nanopasta-empty
-        # whitelist:
-          # tags:
-          # - Nanopast
-    # - item: BorgGeneratorNanopast
-  # - type: BorgModuleIcon
-    # icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: repeir-module }
+          Blunt: -0.25
+          Slash: -0.25
+          Piercing: -0.25
+          Heat: -0.25
+  - type: BorgModuleIcon
+    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: repeir-module }
 
 - type: entity
   id: BorgModuleNightVison
@@ -860,7 +864,6 @@
     - state: icon-sheild
   - type: ItemBorgModule
     hands:
-    - item: TelescopicShieldBorg
     - hand:
         emptyRepresentative: Nanopast
         emptyLabel: borg-slot-nanopasta-empty
@@ -868,6 +871,11 @@
           tags:
           - Nanopast
     - item: BorgGeneratorNanopast
+  - type: ComponentBorgModule
+    components:
+    - type: TelekinesisGen
+      itemPrototype: TelescopicShieldBorg
+      handPos: Left
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: sheild-module }
 
@@ -887,19 +895,25 @@
     - item: WeaponHandGranadeGun
     - hand:
         emptyLabel: borg-slot-granade-empty
-        emptyRepresentative: ModularGrenade
+        emptyRepresentative: GrenIcon
         whitelist:
           tags:
           - HandGrenade
           - Payload
           - VoiceTrigger
-    - item: BoxBorgGranade
+          components:
+          - PayloadCase
+          - PayloadTrigger
     - hand:
-        emptyLabel: borg-slot-cabeldet-empty
-        emptyRepresentative: CableDetStack
+        emptyLabel: borg-slot-granade-empty
+        emptyRepresentative: BolaIcon
         whitelist:
           tags:
-          - Payload
+          - CableCoil
+          - Bola
+          components:
+          - Ensnaring
+    - item: BoxBorgGranade
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: grenade-module }
 
@@ -925,14 +939,6 @@
         whitelist:
           components:
           - Flash
-    - item: RiotBulletShield
-      hand:
-        emptyLabel: borg-slot-shield-empty
-        emptyRepresentative: RiotBulletShieldBorg
-        whitelist:
-          tags:
-          - Sheild
-    - item: RefuelingWelder
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: gun-module }
 ## Rare
@@ -980,7 +986,6 @@
         whitelist:
           tags:
           - Itemborg
-    - item: TelescopicShieldBorg
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: lethal-rare }
 
@@ -1101,6 +1106,7 @@
   - type: ItemBorgModule
     hands:
     - item: RCDCombatRecharging
+    - item: AccessConfiguratorAllAccses
     - item: BorgGeneratorMaterialRod
     - item: BorgGeneratorTile
     - item: BorgGeneratorMaterialSteal
@@ -1294,6 +1300,12 @@
     - item: WeaponPistolDesertEagleBorg
     - item: PinpointerSyndicateNuclear
     - item: PinpointerUniversal # Corvax-Wega-Robot-add
+  - type: ComponentBorgModule
+    components:
+    - type: Reflect
+      reflectProb: 1
+      reflects:
+        - Energy
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: sniper-module }
 
@@ -1314,6 +1326,15 @@
     - item: CyborgEnergySword
     - item: PinpointerSyndicateNuclear
     - item: PinpointerUniversal # Corvax-Wega-Robot-add
+  - type: ComponentBorgModule
+    components:
+    - type: TelekinesisGen
+      itemPrototype: TelescopicShieldBorgSyndCr20
+      handPos: Left
+    - type: Reflect
+      reflectProb: 0.5
+      reflects:
+        - Energy
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: syndicate-c20r-module }
 
@@ -1352,10 +1373,10 @@
       - Critical
       damage:
         types:
-          Blunt: -0.3
-          Slash: -0.3
-          Piercing: -0.3
-          Heat: -0.3
+          Blunt: -1
+          Slash: -1
+          Piercing: -1
+          Heat: -1
 ## Xenoborg
 - type: entity
   id: BorgModuleXenoConstruction
@@ -1369,19 +1390,23 @@
   - type: ItemBorgModule
     hands:
     - hand:
-        emptyRepresentative: BorgModuleConstructionMaterialPlaceholder
+        emptyRepresentative: ConstrukAndCabel
         emptyLabel: borg-slot-construction-empty
         whitelist:
           tags:
           - ConstructionMaterial
+          - PowerCell
+          - CableCoil
     - hand:
-        emptyRepresentative: BorgModuleConstructionMaterialPlaceholder
+        emptyRepresentative: ConstrukAndCabel
         emptyLabel: borg-slot-construction-empty
         whitelist:
           tags:
           - ConstructionMaterial
+          - PowerCell
+          - CableCoil
     - hand:
-        emptyRepresentative: FloorTileItemSteel
+        emptyRepresentative: FloorTileItemXenoborg
         emptyLabel: borg-slot-tiles-empty
         whitelist:
           components:
@@ -1393,12 +1418,6 @@
         whitelist:
           components:
           - Circuitboard
-    - hand:
-        emptyRepresentative: CableApcStack10
-        emptyLabel: borg-slot-construction-empty
-        whitelist:
-          tags:
-          - CableCoil
     - hand:
         emptyRepresentative: SpaceHeaterFlatpack
         emptyLabel: borg-slot-flatpacks-empty
@@ -1434,7 +1453,7 @@
 
 - type: entity
   id: XenoborgModuleCommonRepeir
-  parent: [ BaseXenoborgModuleGeneric, BaseXenoborgContraband ]
+  parent: [ BaseXenoborgModuleGeneric, BaseProviderBorgModule, BaseXenoborgContraband ]
   name: repeir xenoborg module
   description: Everyone can heal your action!
   components:
@@ -1443,6 +1462,15 @@
     layers:
     - state: xenoborg_generic
     - state: icon-repeir
+  - type: ItemBorgModule
+    hands:
+    - hand:
+        emptyRepresentative: Nanopast
+        emptyLabel: borg-slot-nanopasta-empty
+        whitelist:
+          tags:
+          - Nanopast
+    - item: BorgGeneratorNanopast
   - type: ComponentBorgModule
     components:
     - type: PassiveDamage
@@ -1452,15 +1480,12 @@
       - Dead
       damage:
         types:
-          Blunt: -0.3
-          Slash: -0.3
-          Piercing: -0.3
-          Heat: -0.3
-  # - type: ItemBorgModule
-    # hands:
-    # - item: RepeirModeDeviceXenoborg
-  # - type: BorgModuleIcon
-    # icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: repeir-xenoborg-module }
+          Blunt: -0.5
+          Slash: -0.5
+          Piercing: -0.5
+          Heat: -0.5
+  - type: BorgModuleIcon
+    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: repeir-xenoborg-module }
 
 - type: entity
   id: BorgModuleNightVisoXenoborg
@@ -1489,9 +1514,10 @@
     layers:
     - state: xenoborg_generic
     - state: icon-speed
-  - type: ItemBorgModule
-    hands:
-    - item: SpeedModeDevice
+  - type: ComponentBorgModule
+    components:
+    - type: SpeedUpGen
+      damageBooster: false
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: speed_xenoborg }
 
@@ -1532,3 +1558,60 @@
     - item: XenoborgHoloprojectorEMPTrap
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: emp-module }
+
+- type: entity
+  parent: [ BaseXenoborgModuleEngi, BaseProviderBorgModule, BaseXenoborgContraband ]
+  id: ModuleXenoborgModule
+  name: borgmodule module
+  description: A module that helps the mothership borg brains and install other modules.
+  components:
+  - type: Sprite
+    layers:
+    - state: xenoborg_generic
+    - state: icon-xenoborg-basic
+  - type: ItemBorgModule
+    hands:
+    - hand:
+        emptyRepresentative: MMIFilled
+        emptyLabel: borg-slot-mmi-and-head-brains-empty # Corvax-Wega-Add
+        whitelist:
+          components:
+          - Brain
+          - BorgBrain
+          - ChameleonClothing # Corvax-Wega-Add
+    - hand:
+        emptyRepresentative: XenoborgModuleBasic
+        emptyLabel: borg-slot-modules-empty
+        whitelist:
+          components:
+          - BorgModule
+    - hand:
+        emptyRepresentative: PowerCellHigh
+        emptyLabel: borg-slot-powercell-empty
+        whitelist:
+          components:
+          - PowerCell
+    - item: TurboItemRechargerXenoborg
+    - item: XenoborgModuleBag
+  - type: BorgModuleIcon
+    icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-module-module }
+
+  # Clockwork
+  
+- type: entity
+  id: BorgModuleClockwork
+  parent: [ BaseBorgModule, BaseProviderBorgModule, BaseSyndicateContraband ]
+  name: clockwork cyborg module
+  description: A module, made of brass by Rathvar cult members.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: clockwork
+  - type: ItemBorgModule
+    hands:
+    - item: JawsOfLife
+    - item: VeilCultClockworkSlab
+    - item: WeaponClockworkSwordBorg
+  - type: BorgModuleIcon
+    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: clockwork-module }

@@ -5,7 +5,7 @@ using Robust.Client.UserInterface;
 namespace Content.Client._Wega.Xenobiology.UI;
 
 [UsedImplicitly]
-public sealed class SlimeAnalyzerBoundUserInterface : BoundUserInterface
+public sealed partial class SlimeAnalyzerBoundUserInterface : BoundUserInterface
 {
     [ViewVariables]
     private SlimeAnalyzerWindow? _window;

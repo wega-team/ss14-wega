@@ -9,6 +9,7 @@ using Content.Shared.Administration.Systems;
 using Content.Shared.Atmos.Components;
 using Content.Shared.Blood.Cult;
 using Content.Shared.Blood.Cult.Components;
+using Content.Shared.Veil.Cult.Components;
 using Content.Shared.Body;
 using Content.Shared.Body.Components;
 using Content.Shared.Chat;
@@ -18,6 +19,7 @@ using Content.Shared.DoAfter;
 using Content.Shared.Examine;
 using Content.Shared.Ghost;
 using Content.Shared.Gibbing;
+using Content.Shared.Storage.Components;
 using Content.Shared.Humanoid;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
@@ -44,13 +46,13 @@ namespace Content.Server.Blood.Cult;
 
 public sealed partial class BloodCultSystem
 {
-    [Dependency] private readonly FlammableSystem _flammable = default!;
-    [Dependency] private readonly GibbingSystem _gibbing = default!;
-    [Dependency] private readonly IConsoleHost _consoleHost = default!;
-    [Dependency] private readonly IMapManager _mapMan = default!;
-    [Dependency] private readonly NavMapSystem _navMap = default!;
-    [Dependency] private readonly RejuvenateSystem _rejuvenate = default!;
-    [Dependency] private readonly SharedGhostSystem _ghost = default!;
+    [Dependency] private FlammableSystem _flammable = default!;
+    [Dependency] private GibbingSystem _gibbing = default!;
+    [Dependency] private IConsoleHost _consoleHost = default!;
+    [Dependency] private IMapManager _mapMan = default!;
+    [Dependency] private NavMapSystem _navMap = default!;
+    [Dependency] private RejuvenateSystem _rejuvenate = default!;
+    [Dependency] private SharedGhostSystem _ghost = default!;
 
     private static readonly EntProtoId BloodCultObserver = "MobObserverIfrit";
 
@@ -74,8 +76,22 @@ public sealed partial class BloodCultSystem
 
     #region Runes
 
+    private bool IsInsideClosedLocker(EntityUid entity)
+    {
+        if (!_container.TryGetContainingContainer(entity, out var container))
+            return false;
+
+        if (TryComp<EntityStorageComponent>(container.Owner, out var storage))
+            return !storage.Open;
+
+        return false;
+    }
+
     private void AfterRuneSelect(Entity<BloodDaggerComponent> rune, ref SelectBloodRuneMessage args)
     {
+        if (IsInsideClosedLocker(args.Actor))
+            return;
+
         if (!HasComp<BloodCultistComponent>(args.Actor) || IsInSpace(args.Actor))
             return;
 
@@ -149,6 +165,13 @@ public sealed partial class BloodCultSystem
             return;
         }
 
+        if (IsInsideClosedLocker(cultist))
+        {
+            _popup.PopupEntity(Loc.GetString("rune-cant-draw-in-locker"), cultist, cultist, PopupType.MediumCaution);
+            QueueDel(GetEntity(args.Rune));
+            return;
+        }
+
         var rune = SpawnFinalRune(cultist, args.SelectedRune);
         if (args.SelectedRune == "BloodRuneRitualDimensionalRending")
             AnnounceRitualRune(rune);
@@ -190,7 +213,24 @@ public sealed partial class BloodCultSystem
         if (!args.IsInDetailsRange || !HasComp<BloodCultistComponent>(args.Examiner))
             return;
 
+        var cult = _bloodCult.GetActiveRule();
+        if (cult == null)
+            return;
+
         args.PushMarkup(component.LocDesc);
+
+        if (component.RuneType == BloodCultRune.Revive)
+        {
+            var o = cult.Offerings;
+            var revives = o / 3;
+            var need = 3 - o % 3;
+
+            args.PushMarkup(revives > 0
+                ? Loc.GetString("revive-alive-count", ("alive", revives))
+                : Loc.GetString("revive-need-more", ("needed", need)), -1);
+
+            args.PushMarkup(Loc.GetString("revive-offering-count", ("offerings", o)), -2);
+        }
     }
 
     private void OnRitualInteract(EntityUid rune, BloodRitualDimensionalRendingComponent component, InteractHandEvent args)
@@ -339,21 +379,24 @@ public sealed partial class BloodCultSystem
     {
         return HasComp<MindShieldComponent>(target)
             || HasComp<BibleUserComponent>(target)
-            || HasComp<BloodCultObjectComponent>(target);
+            || HasComp<BloodCultObjectComponent>(target)
+            || HasComp<VeilCultistComponent>(target);
     }
 
     private bool IsConvertibleTarget(EntityUid target)
     {
         return !HasComp<MindShieldComponent>(target)
             && !HasComp<BibleUserComponent>(target)
-            && !HasComp<SyntheticOperatedComponent>(target);
+            && !HasComp<SyntheticOperatedComponent>(target)
+            && !HasComp<VeilCultistComponent>(target);
     }
 
     private bool IsRegularTarget(EntityUid target)
     {
         return !HasComp<MindShieldComponent>(target)
             && !HasComp<BibleUserComponent>(target)
-            && !HasComp<SyntheticOperatedComponent>(target);
+            && !HasComp<SyntheticOperatedComponent>(target)
+            && !HasComp<VeilCultistComponent>(target);
     }
 
     private void HandleSpecialSacrifice(EntityUid target, EntityUid cultist, MapCoordinates coords, BloodRuneComponent runeComp)
@@ -821,7 +864,7 @@ public sealed partial class BloodCultSystem
 
         Spawn(GetGodPrototype(), coords);
 
-        RaiseLocalEvent(new GodCalledEvent());
+        RaiseLocalEvent(new BloodGodCalledEvent());
         TransformNearbyCultists(coords);
     }
 

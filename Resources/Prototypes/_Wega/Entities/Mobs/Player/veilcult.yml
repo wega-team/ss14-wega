@@ -1,0 +1,167 @@
+- type: entity
+  name: clockwork defender
+  parent: BaseMobLavaland
+  id: MobClockworkMarouder
+  description: A traitorous clockwork knight who live on, defending it creators.
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Wega/Mobs/Lavaland/clockwork_defender.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: base
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: base
+      Dead:
+        Base: dead
+  - type: MeleeWeapon
+    damage:
+      types:
+        Slash: 14
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      160: Dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4
+    baseSprintSpeed: 4
+  - type: Butcherable
+    spawned:
+    - id: SheetBrass1 # временная заглушка
+      amount: 3
+      prob: 0.5
+  - type: NoSlip
+  - type: IgnoreSpiderWeb
+  - type: AntiGravityClothing
+  - type: CombatMode
+  - type: VeilCultConstruct
+  - type: MindContainer
+  - type: PressureImmunity
+  - type: ActiveRadio
+    channels:
+    - Binary
+
+  # Cogscarab
+
+- type: entity
+  name: cogscarab
+  parent: SimpleMobBase
+  id: MobCogscarab
+  description: Drone made from brass.
+  components:
+  - type: Sprite
+    drawdepth: SmallMobs
+    sprite: _Wega/Mobs/Demons/VeilCult/cogscarab.rsi
+    layers:
+    - state: cogscarab
+    - state: eyes
+      shader: unshaded
+  - type: Item
+    size: Normal
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.2
+        density: 100
+        mask:
+        - SmallMobMask
+        layer:
+        - SmallMobLayer
+  - type: Hands
+    hands:
+      hand_right:
+        location: Right
+        whitelist:
+          components:
+          - Tool
+          - Material
+          tags:
+          - InteractionCog
+      hand_left:
+        location: Left
+        whitelist:
+          components:
+          - Tool
+          - Material
+          tags:
+          - InteractionCog
+    sortedHands:
+    - hand_right
+    - hand_left
+  - type: ComplexInteraction
+  - type: Puller
+    needsHands: false
+  - type: MobState
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      50: Dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed : 2.5
+    baseSprintSpeed : 5
+  - type: MeleeWeapon
+    damage:
+      types:
+        Piercing: 5
+  - type: StaminaDamageOnHit
+    damage: 15
+  - type: Damageable
+    damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: VentCrawler # Corvax-Wega-VentCrawling
+  - type: CriminalRecordsConsole
+  - type: UserInterface
+    interfaces:
+      enum.CriminalRecordsConsoleKey.Key:
+        type: CriminalRecordsConsoleBoundUserInterface
+  - type: IntrinsicUI
+    uis:
+      enum.CriminalRecordsConsoleKey.Key:
+        toggleAction: ActionAGhostShowCriminalRecords
+  - type: Loadout
+    prototypes: [ MobCogscarabGear ]
+  - type: NoSlip
+  - type: Cogscarab
+  - type: VeilCultConstruct
+  - type: GhostRole
+    allowMovement: true
+    allowSpeech: false
+    name: ghost-role-information-cogscarab-name
+    description: ghost-role-information-cogscarab-description
+    rules: ghost-role-information-familiar-rules
+    raffle:
+      settings: default
+  - type: GhostTakeoverAvailable
+  - type: PressureImmunity
+  - type: IntrinsicRadioReceiver
+  - type: ActiveRadio
+    channels:
+    - Binary
+
+- type: startingGear
+  id: MobCogscarabGear
+  inhand:
+  - OmnitoolUnremovable
+
+
+- type: entity
+  name: omnitool
+  parent: Omnitool
+  id: OmnitoolUnremovable
+  description: A drone's best friend.
+  components:
+  - type: Unremoveable

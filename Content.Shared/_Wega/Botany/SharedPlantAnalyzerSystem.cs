@@ -9,7 +9,7 @@ namespace Content.Shared.Botany.Systems;
 
 public abstract partial class SharedPlantAnalyzerSystem : EntitySystem
 {
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
 
     #region Loc
 

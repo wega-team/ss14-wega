@@ -3,7 +3,7 @@ using Content.Shared.Genetics;
 
 namespace Content.Server.Genetics.System;
 
-public sealed class NoBreathingGenSystem : EntitySystem
+public sealed partial class NoBreathingGenSystem : EntitySystem
 {
     public override void Initialize()
     {

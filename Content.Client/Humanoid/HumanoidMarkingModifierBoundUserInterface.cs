@@ -47,5 +47,3 @@ public sealed class HumanoidMarkingModifierBoundUserInterface : BoundUserInterfa
         SendMessage(new HumanoidMarkingModifierMarkingSetMessage(_markingsModel.Markings));
     }
 }
-
-

@@ -62,3 +62,10 @@
   description: achievements-springlock-desc
   key: Springlock
   icon: { sprite: _Wega/Interface/achievements.rsi, state: springlock }
+  
+- type: achievement
+  id: VeilCult
+  name: achievements-veilcult-name
+  description: achievements-veilcult-desc
+  key: VeilCult
+  icon: { sprite: _Wega/Interface/achievements.rsi, state: veilcult }

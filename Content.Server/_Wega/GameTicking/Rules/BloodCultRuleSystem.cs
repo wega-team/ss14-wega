@@ -39,27 +39,27 @@ using Robust.Shared.Random;
 
 namespace Content.Server.GameTicking.Rules
 {
-    public sealed class BloodCultRuleSystem : GameRuleSystem<BloodCultRuleComponent>
+    public sealed partial class BloodCultRuleSystem : GameRuleSystem<BloodCultRuleComponent>
     {
-        [Dependency] private readonly SharedAchievementsSystem _achievement = default!;
-        [Dependency] private readonly ActionsSystem _action = default!;
-        [Dependency] private readonly AntagSelectionSystem _antag = default!;
-        [Dependency] private readonly IEntityManager _entityManager = default!;
-        [Dependency] private readonly ISharedPlayerManager _player = default!;
-        [Dependency] private readonly IAdminLogManager _adminLogManager = default!;
-        [Dependency] private readonly MetabolizerSystem _metabolism = default!;
-        [Dependency] private readonly MindSystem _mind = default!;
-        [Dependency] private readonly NpcFactionSystem _npcFaction = default!;
-        [Dependency] private readonly RoleSystem _role = default!;
-        [Dependency] private readonly SharedHandsSystem _hands = default!;
-        [Dependency] private readonly RoundEndSystem _roundEndSystem = default!;
-        [Dependency] private readonly IRobustRandom _random = default!;
-        [Dependency] private readonly SharedAudioSystem _audio = default!;
-        [Dependency] private readonly SharedPopupSystem _popup = default!;
-        [Dependency] private readonly SharedVisualBodySystem _visualBody = default!;
-        [Dependency] private readonly ObjectivesSystem _objectives = default!;
-        [Dependency] private readonly TargetObjectiveSystem _target = default!;
-        [Dependency] private readonly MetaDataSystem _meta = default!;
+        [Dependency] private SharedAchievementsSystem _achievement = default!;
+        [Dependency] private ActionsSystem _action = default!;
+        [Dependency] private AntagSelectionSystem _antag = default!;
+        [Dependency] private IEntityManager _entityManager = default!;
+        [Dependency] private ISharedPlayerManager _player = default!;
+        [Dependency] private IAdminLogManager _adminLogManager = default!;
+        [Dependency] private MetabolizerSystem _metabolism = default!;
+        [Dependency] private MindSystem _mind = default!;
+        [Dependency] private NpcFactionSystem _npcFaction = default!;
+        [Dependency] private RoleSystem _role = default!;
+        [Dependency] private SharedHandsSystem _hands = default!;
+        [Dependency] private RoundEndSystem _roundEndSystem = default!;
+        [Dependency] private IRobustRandom _random = default!;
+        [Dependency] private SharedAudioSystem _audio = default!;
+        [Dependency] private SharedPopupSystem _popup = default!;
+        [Dependency] private SharedVisualBodySystem _visualBody = default!;
+        [Dependency] private ObjectivesSystem _objectives = default!;
+        [Dependency] private TargetObjectiveSystem _target = default!;
+        [Dependency] private MetaDataSystem _meta = default!;
 
         public readonly ProtoId<NpcFactionPrototype> BloodCultNpcFaction = "BloodCult";
 
@@ -75,8 +75,8 @@ namespace Content.Server.GameTicking.Rules
             SubscribeLocalEvent<BloodCultObjectComponent, ComponentShutdown>(OnBloodCultObjectShutdown);
             SubscribeLocalEvent<BloodCultObjectComponent, CryostorageEnterEvent>(OnCryostorageEnter);
 
-            SubscribeLocalEvent<GodCalledEvent>(OnGodCalled);
-            SubscribeLocalEvent<RitualConductedEvent>(OnRitualConducted);
+            SubscribeLocalEvent<BloodGodCalledEvent>(OnGodCalled);
+            SubscribeLocalEvent<BloodRitualConductedEvent>(OnRitualConducted);
 
             SubscribeLocalEvent<AutoCultistComponent, ComponentStartup>(OnAutoCultistAdded);
             SubscribeLocalEvent<BloodCultistComponent, ComponentRemove>(OnComponentRemove);
@@ -361,7 +361,7 @@ namespace Content.Server.GameTicking.Rules
             {
                 CheckStage();
                 if (cult.SelectedTargets.Count == 0)
-                    RaiseLocalEvent(new RitualConductedEvent());
+                    RaiseLocalEvent(new BloodRitualConductedEvent());
                 return;
             }
 
@@ -523,7 +523,7 @@ namespace Content.Server.GameTicking.Rules
             return null;
         }
 
-        private void OnGodCalled(GodCalledEvent ev)
+        private void OnGodCalled(BloodGodCalledEvent ev)
         {
             var cult = GetActiveRule();
             if (cult == null)
@@ -549,7 +549,7 @@ namespace Content.Server.GameTicking.Rules
             }
         }
 
-        private void OnRitualConducted(RitualConductedEvent ev)
+        private void OnRitualConducted(BloodRitualConductedEvent ev)
         {
             var cult = GetActiveRule();
             if (cult == null)

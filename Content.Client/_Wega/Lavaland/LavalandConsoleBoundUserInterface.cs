@@ -3,7 +3,7 @@ using Robust.Client.UserInterface;
 
 namespace Content.Client._Wega.Lavaland;
 
-public sealed class LavalandConsoleBoundUserInterface : BoundUserInterface
+public sealed partial class LavalandConsoleBoundUserInterface : BoundUserInterface
 {
     [ViewVariables]
     private LavalandConsoleWindow? _window;

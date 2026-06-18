@@ -54,9 +54,9 @@
   productEntity: Garrotte
   discountCategory: usualDiscounts
   discountDownTo:
-    Telecrystal: 2
+    Telecrystal: 1
   cost:
-    Telecrystal: 3
+    Telecrystal: 2
   categories:
   - UplinkWeaponry
 
@@ -101,7 +101,7 @@
   discountDownTo:
     Telecrystal: 2
   cost:
-    Telecrystal: 3
+    Telecrystal: 4
   categories:
   - UplinkWeaponry
 
@@ -123,10 +123,10 @@
 
 - type: listing
   id: UplinkXC67BundleAgent
-  name: uplink-xc67-name
-  description: uplink-xc67-desc
+  name: uplink-xc67-agent-name
+  description: uplink-xc67-agent-desc
   icon: { sprite: /Textures/_Wega/Objects/Weapons/Guns/Rifles/xc67.rsi, state: icon}
-  productEntity: ClothingBackpackDuffelSyndicateFilledXC67
+  productEntity: BriefcaseWeaponXc67Filled
   discountCategory: veryRareDiscounts
   discountDownTo:
     Telecrystal: 13
@@ -139,7 +139,6 @@
       blacklist:
         tags:
           - NukeOpsUplink
-
 
 - type: listing
   id: UplinkXC67Bundle
@@ -252,22 +251,6 @@
     stock: 1
 
 - type: listing
-  id: UplinkC20RBundleNuke
-  name: uplink-c20r-bundle-name
-  description: uplink-c20r-bundle-desc
-  icon: { sprite: /Textures/Objects/Weapons/Guns/SMGs/c20r.rsi, state: icon }
-  productEntity: ClothingBackpackDuffelSyndicateFilledSMG
-  cost:
-    Telecrystal: 17
-  categories:
-  - UplinkWeaponry
-  conditions:
-  - !type:StoreWhitelistCondition
-    whitelist:
-      tags:
-      - NukeOpsUplink
-
-- type: listing
   id: UplinkEstocBundleNuke
   name: uplink-estoc-bundle-name
   description: uplink-estoc-bundle-desc
@@ -293,6 +276,27 @@
     Telecrystal: 8
   categories:
   - UplinkWeaponry
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - NukeOpsUplink
+      
+- type: listing
+  id: UplinkDesertEagleAgent
+  name: uplink-desert-eagle-name
+  description: uplink-desert-eagle-desc
+  icon: { sprite: _Wega/Objects/Weapons/Guns/Pistols/deserteagle.rsi, state: icon }
+  productEntity: WeaponPistolDesertEagle
+  cost:
+    Telecrystal: 6
+  categories:
+  - UplinkWeaponry
+  conditions:
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - NukeOpsUplink
 
 - type: listing
   id: UplinkMagazineEagle
@@ -318,29 +322,13 @@
   - UplinkAmmo
 
 - type: listing
-  id: UplinkBulldogBundleNuke
-  name: uplink-buldog-bundle-name
-  description: uplink-buldog-bundle-desc
-  icon: { sprite: /Textures/Objects/Weapons/Guns/Shotguns/bulldog.rsi, state: icon }
-  productEntity: ClothingBackpackDuffelSyndicateFilledShotgun
-  cost:
-    Telecrystal: 17
-  categories:
-  - UplinkWeaponry
-  conditions:
-  - !type:StoreWhitelistCondition
-    whitelist:
-      tags:
-      - NukeOpsUplink
-
-- type: listing
-  id: UplinAmmoSniper
+  id: UplinkAmmoSniper
   name: uplink-ammo-sniper-name
   description: uplink-ammo-sniper-desc
   icon: { sprite: _Wega/Objects/Weapons/Guns/Ammunition/Magazine/Sniper/snipers.rsi, state: mag-1 }
   productEntity: MagazineHristovAdvanced
   cost:
-    Telecrystal: 2
+    Telecrystal: 1
   categories:
   - UplinkAmmo
 
@@ -439,25 +427,6 @@
       - NukeOpsUplink
 
 - type: listing
-  id: UplinkHardsuitSyndieNukeOps
-  name: uplink-hardsuit-syndie-name
-  description: uplink-hardsuit-syndie-desc
-  icon: { sprite: /Textures/_Wega/Clothing/Modular/Syndicate/control.rsi, state: icon }
-  productEntity: ClothingBackpackDuffelSyndicateControllerBundle
-  discountCategory: veryRareDiscounts
-  discountDownTo:
-    Telecrystal: 4
-  cost:
-    Telecrystal: 8
-  categories:
-  - UplinkWearables
-  conditions:
-  - !type:StoreWhitelistCondition
-    whitelist:
-      tags:
-      - NukeOpsUplink
-
-- type: listing
   id: UplinkEnergyShieldModuleBundle
   name: uplink-energy-shield-module-bundle-name
   description: uplink-energy-shield-module-bundle-desc
@@ -473,5 +442,186 @@
   conditions:
   - !type:StoreWhitelistCondition
     whitelist:
+      tags:
+      - NukeOpsUplink
+      
+- type: listing
+  id: UplinkNightVision
+  name: uplink-nightvision-name
+  description: uplink-nightvision-desc
+  productEntity: ClothingEyesGlassesNightVision
+  discountCategory: usualDiscounts
+  discountDownTo:
+    Telecrystal: 2
+  cost:
+    Telecrystal: 3
+  categories:
+  - UplinkWearables
+
+- type: listing
+  id: UplinkLoyaltyImplant
+  name: uplink-loyalty-implant-name
+  description: uplink-loyalty-implant-desc
+  icon: { sprite: Objects/Specific/Medical/syndi_implanter.rsi, state: implanter1 }
+  productEntity: LoyaltyImplanter
+  categories:
+  - UplinkImplants
+  discountDownTo:
+    Telecrystal: 3
+  cost:
+    Telecrystal: 5
+    
+- type: listing
+  id: UplinkSmokeImplant
+  name: uplink-smoke-implant-name
+  description: uplink-smoke-implant-desc
+  icon: { sprite: Objects/Weapons/Grenades/smoke.rsi, state: icon }
+  productEntity: SmokeImplanter
+  categories:
+  - UplinkImplants
+  discountCategory: usualDiscounts
+  discountDownTo:
+    Telecrystal: 1
+  cost:
+    Telecrystal: 2
+
+- type: listing
+  id: UplinkHomerunBat
+  name: uplink-homerun-bat-name
+  description: uplink-homerun-bat-desc
+  productEntity: HomerunBat
+  discountCategory: veryRareDiscounts
+  discountDownTo:
+    Telecrystal: 3
+  cost:
+    Telecrystal: 5
+  categories:
+    - UplinkWeaponry
+    
+- type: listing
+  id: UplinkContractorBaton
+  name: uplink-contractor-baton-name
+  description: uplink-contractor-baton-desc
+  productEntity: ContractorBaton
+  discountCategory: veryRareDiscounts
+  discountDownTo:
+    Telecrystal: 5
+  cost:
+    Telecrystal: 7
+  categories:
+    - UplinkWeaponry
+  conditions:
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - NukeOpsUplink
+     
+- type: listing
+  id: UplinkHypopenAgent
+  name: uplink-hypopen-name
+  description: uplink-hypopen-desc
+  icon: { sprite: /Textures/Objects/Misc/pens.rsi, state: pen }
+  productEntity: HypopenBox
+  discountCategory: rareDiscounts
+  discountDownTo:
+    Telecrystal: 3
+  cost:
+    Telecrystal: 4
+  categories:
+  - UplinkChemicals
+  conditions:
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - NukeOpsUplink
+      
+- type: listing
+  id: UplinkClothingOuterVestWebAgent
+  name: uplink-clothing-outer-vest-web-name
+  description: uplink-clothing-outer-vest-web-desc
+  productEntity: ClothingOuterVestWeb
+  discountCategory: usualDiscounts
+  discountDownTo:
+    Telecrystal: 2
+  cost:
+    Telecrystal: 3
+  categories:
+  - UplinkWearables
+  conditions:
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - NukeOpsUplink
+
+- type: listing
+  id: UplinkClothingOuterVestWebEliteAgent
+  name: uplink-clothing-outer-vest-web-elite-name
+  description: uplink-clothing-outer-vest-web-elite-desc
+  productEntity: ClothingOuterVestWebElite
+  discountCategory: usualDiscounts
+  discountDownTo:
+    Telecrystal: 2
+  cost:
+    Telecrystal: 3
+  categories:
+  - UplinkWearables
+  conditions:
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - NukeOpsUplink
+
+- type: listing
+  id: UplinkThievingGloves
+  name: uplink-thieving-name
+  description: uplink-thieving-desc
+  icon: { sprite: Clothing/Hands/Gloves/combat.rsi, state: icon }
+  productEntity: ThievingGloves
+  discountCategory: rareDiscounts
+  discountDownTo:
+    Telecrystal: 8
+  cost:
+    Telecrystal: 12 # Pretty useful thing, that needs a good price
+  categories:
+  - UplinkWearables
+  conditions:
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - NukeOpsUplink
+      
+- type: listing
+  id: UplinkPressureUpgrade
+  name: uplink-pressure-upgrade-name
+  description: uplink-pressure-upgrade-desc
+  productEntity: PKAUpgradePressure
+  discountCategory: usualDiscounts
+  discountDownTo:
+    Telecrystal: 4
+  cost:
+    Telecrystal: 5
+  categories:
+  - UplinkJob
+  conditions:
+  - !type:BuyerJobCondition
+    whitelist:
+    - ShaftMiner
+    - SalvageSpecialist
+    
+- type: listing
+  id: UplinkJumpsuitVentCrawler
+  name: uplink-jumpsuit-ventcrawler-name
+  description: uplink-jumpsuit-ventcrawler-desc
+  productEntity: ClothingUniformJumpsuitVentCrawler
+  discountCategory: rareDiscounts
+  discountDownTo:
+    Telecrystal: 4
+  cost:
+    Telecrystal: 6
+  categories:
+  - UplinkWearables
+  conditions:
+  - !type:StoreWhitelistCondition
+    blacklist:
       tags:
       - NukeOpsUplink

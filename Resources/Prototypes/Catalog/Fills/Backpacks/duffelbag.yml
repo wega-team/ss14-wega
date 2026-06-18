@@ -49,13 +49,9 @@
       storagebase: !type:AllSelector
         children:
         - id: JugBicaridine
-        - id: JugPuncturase
-        - id: JugDermaline
-        - id: JugDylovene
-        - id: JugHyronalin
-        - id: JugSaline
-        - id: JugDexalinPlus
-        - id: JugTranexamicAcid
+        - id: JugPunctTranex
+        - id: JugPyraDerma
+        - id: JugDexPlusSaline
 
 - type: entity
   parent: ClothingBackpackDuffelSyndicateBundle
@@ -326,7 +322,7 @@
     containers:
       storagebase: !type:AllSelector
         children:
-        - id: ClothingOuterHardsuitSyndie
+        - id: HardsuitOperSelector # Corvax-Wega-Edit
         - !type:NestedSelector
           tableId: SyndicateHardsuitExtrasEntityTable
 
@@ -340,10 +336,9 @@
     containers:
       storagebase: !type:AllSelector
         children:
-        - id: ClothingModularControllerElitePreassembled # Corvax-Wega-ModularSuits-Edit
+        - id: HardsuitEliteSelector # Corvax-Wega-Edit
         - !type:NestedSelector
           tableId: SyndicateHardsuitExtrasEntityTable
-
 - type: entity
   parent: ClothingBackpackDuffelSyndicateBundle
   id: ClothingBackpackDuffelSyndicateHardsuitExtrasBundle

@@ -36,6 +36,8 @@
   id: AppearanceSkrell
   name: skrell appearance
   components:
+  - type: Inventory
+    templateId: skrell
   - type: InitialBody
     organs:
       Torso: OrganSkrellTorso
@@ -74,8 +76,9 @@
     baseDecayRate: 0.15
   - type: SolutionScanner
   - type: Damageable
-    damageContainer: Biological
     damageModifierSet: Skrell
+  - type: Injurable
+    damageContainer: Biological
   - type: Reactive
     groups:
       Flammable: [ Touch ]

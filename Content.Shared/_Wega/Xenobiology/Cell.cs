@@ -25,7 +25,7 @@ namespace Content.Shared.Xenobiology;
 /// <seealso cref="CellContainerComponent"/>
 /// <seealso cref="SharedCellSystem"/>
 [Serializable, NetSerializable]
-public sealed class Cell : IEquatable<Cell>
+public sealed partial class Cell : IEquatable<Cell>
 {
     /// <summary>
     /// Reflects the prototype on which the cell is based,

@@ -11,7 +11,7 @@ public enum PlantAnalyzerUiKey : byte
 }
 
 [Serializable, NetSerializable]
-public sealed class PlantAnalyzerScannedUserMessage(NetEntity? targetEntity, bool? scanMode, PlantAnalyzerPlantData? plantData, PlantAnalyzerTrayData? trayData, PlantAnalyzerTolerancesData? tolerancesData, PlantAnalyzerProduceData? produceData, TimeSpan? printReadyAt) : BoundUserInterfaceMessage
+public sealed partial class PlantAnalyzerScannedUserMessage(NetEntity? targetEntity, bool? scanMode, PlantAnalyzerPlantData? plantData, PlantAnalyzerTrayData? trayData, PlantAnalyzerTolerancesData? tolerancesData, PlantAnalyzerProduceData? produceData, TimeSpan? printReadyAt) : BoundUserInterfaceMessage
 {
     public readonly NetEntity? TargetEntity = targetEntity;
     public bool? ScanMode = scanMode;
@@ -26,7 +26,7 @@ public sealed class PlantAnalyzerScannedUserMessage(NetEntity? targetEntity, boo
 /// Everything that is kept independent of a given plant/seed.
 /// </summary>
 [Serializable, NetSerializable]
-public sealed class PlantAnalyzerTrayData(float waterLevel, float nutritionLevel, float toxins, float pestLevel, float weedLevel, List<string>? chemicals)
+public sealed partial class PlantAnalyzerTrayData(float waterLevel, float nutritionLevel, float toxins, float pestLevel, float weedLevel, List<string>? chemicals)
 {
     public float WaterLevel = waterLevel;
     public float NutritionLevel = nutritionLevel;
@@ -41,7 +41,7 @@ public sealed class PlantAnalyzerTrayData(float waterLevel, float nutritionLevel
 /// Which is most of the "Tolerances" region plus the gases it may need.
 /// </summary>
 [Serializable, NetSerializable]
-public sealed class PlantAnalyzerTolerancesData(float waterConsumption, float nutrientConsumption, float toxinsTolerance, float pestTolerance, float weedTolerance, float lowPressureTolerance, float highPressureTolerance, float idealHeat, float heatTolerance, float idealLight, float lightTolerance, List<Gas> consumeGasses)
+public sealed partial class PlantAnalyzerTolerancesData(float waterConsumption, float nutrientConsumption, float toxinsTolerance, float pestTolerance, float weedTolerance, float lowPressureTolerance, float highPressureTolerance, float idealHeat, float heatTolerance, float idealLight, float lightTolerance, List<Gas> consumeGasses)
 {
     public float WaterConsumption = waterConsumption;
     public float NutrientConsumption = nutrientConsumption;
@@ -61,7 +61,7 @@ public sealed class PlantAnalyzerTolerancesData(float waterConsumption, float nu
 /// Information about the plant inside the tray.
 /// </summary>
 [Serializable, NetSerializable]
-public sealed class PlantAnalyzerPlantData(string seedDisplayName, float health, float endurance, float age, float lifespan, float maturation, bool dead, bool viable, bool mutating, bool kudzu)
+public sealed partial class PlantAnalyzerPlantData(string seedDisplayName, float health, float endurance, float age, float lifespan, float maturation, bool dead, bool viable, bool mutating, bool kudzu)
 {
     public string SeedDisplayName = seedDisplayName;
     public float Health = health;
@@ -79,7 +79,7 @@ public sealed class PlantAnalyzerPlantData(string seedDisplayName, float health,
 /// Information about the output of a plant (produce and gas).
 /// </summary>
 [Serializable, NetSerializable]
-public sealed class PlantAnalyzerProduceData(int yield, float potency, List<string> chemicals, List<EntProtoId> produce, List<Gas> exudeGasses, bool seedless)
+public sealed partial class PlantAnalyzerProduceData(int yield, float potency, List<string> chemicals, List<EntProtoId> produce, List<Gas> exudeGasses, bool seedless)
 {
     public int Yield = yield;
     public string Potency = ObscurePotency(potency);
@@ -109,6 +109,6 @@ public sealed class PlantAnalyzerProduceData(int yield, float potency, List<stri
 }
 
 [Serializable, NetSerializable]
-public sealed class PlantAnalyzerPrintMessage : BoundUserInterfaceMessage
+public sealed partial class PlantAnalyzerPrintMessage : BoundUserInterfaceMessage
 {
 }

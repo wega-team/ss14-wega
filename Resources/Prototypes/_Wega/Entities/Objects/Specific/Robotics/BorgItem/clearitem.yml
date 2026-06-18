@@ -1,5 +1,5 @@
 - type: entity
-  parent: BaseItem
+  parent: [SolutionMopLarge,BaseItem]
   name: mop
   id: BorgMopItem
   suffix: Cyborg
@@ -73,13 +73,11 @@
     - type: Absorbent
       pickupAmount: 100
     - type: SolutionRegeneration
-      solution: absorbed
       generated:
         reagents:
         - ReagentId: Water
           Quantity: 5
     - type: SolutionPurge
-      solution: absorbed
       preserve:
       - Water
       quantity: 10

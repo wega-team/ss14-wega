@@ -1,6 +1,6 @@
 - type: entity
   name: BasePistol
-  parent: BaseItem
+  parent: [ BaseItem, BaseGunMeleeLarge ] # COrvax-Wega-Edit
   id: BaseWeaponPistol
   description: A rooty tooty point and shooty.
   abstract: true
@@ -38,6 +38,7 @@
     soundRack:
       path: /Audio/Weapons/Guns/Cock/pistol_cock.ogg
   - type: ItemSlots
+    disableSmartEquipEject: true # Corvax-Wega-Add
     slots:
       gun_magazine:
         name: Magazine

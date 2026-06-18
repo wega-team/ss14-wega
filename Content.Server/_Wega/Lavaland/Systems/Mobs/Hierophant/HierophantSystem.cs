@@ -23,15 +23,15 @@ namespace Content.Server.Lavaland.Mobs;
 /// </summary>
 public sealed partial class HierophantSystem : EntitySystem
 {
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly DamageableSystem _damage = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly SharedMapSystem _map = default!;
-    [Dependency] private readonly NPCUseActionsOnTargetSystem _npcActions = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly TurfSystem _turf = default!;
-    [Dependency] private readonly MobThresholdSystem _threshold = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private DamageableSystem _damage = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private SharedMapSystem _map = default!;
+    [Dependency] private NPCUseActionsOnTargetSystem _npcActions = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private TurfSystem _turf = default!;
+    [Dependency] private MobThresholdSystem _threshold = default!;
 
     private const float LowHealthThreshold = 0.5f;
     private static readonly EntProtoId SpawnPrototype = "EffectHierophantSquare";

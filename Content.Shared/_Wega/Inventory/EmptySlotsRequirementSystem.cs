@@ -6,8 +6,8 @@ namespace Content.Shared.Inventory;
 
 public sealed partial class EmptySlotsRequirementSystem : EntitySystem
 {
-    [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
-    [Dependency] private readonly InventorySystem _inventory = default!;
+    [Dependency] private EntityWhitelistSystem _whitelist = default!;
+    [Dependency] private InventorySystem _inventory = default!;
 
     public override void Initialize()
     {

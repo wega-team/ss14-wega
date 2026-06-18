@@ -6,7 +6,7 @@ namespace Content.Client.Overlays;
 
 public sealed partial class RaveOverlaySystem : EquipmentHudSystem<RaveOverlayComponent>
 {
-    [Dependency] private readonly IOverlayManager _overlayMan = default!;
+    [Dependency] private IOverlayManager _overlayMan = default!;
 
     private RaveOverlay _overlay = default!;
 

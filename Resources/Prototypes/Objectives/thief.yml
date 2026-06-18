@@ -221,16 +221,18 @@
   - type: Objective
     difficulty: 1
 
-- type: entity                                      #Medical subgroup
-  parent: BaseThiefStealObjective
-  id: ClothingOuterHardsuitVoidParamedStealObjective
-  components:
-  - type: NotJobRequirement
-    jobs: [ MedicalDoctor, Paramedic, Chemist, Psychologist ]
-  - type: StealCondition
-    stealGroup: ClothingOuterHardsuitVoidParamed
-  - type: Objective
-    difficulty: 1
+# Corvax-Wega-Edit-start
+# - type: entity                                      #Medical subgroup
+#   parent: BaseThiefStealObjective
+#   id: ClothingOuterHardsuitVoidParamedStealObjective
+#   components:
+#   - type: NotJobRequirement
+#     jobs: [ MedicalDoctor, Paramedic, Chemist, Psychologist ]
+#   - type: StealCondition
+#     stealGroup: ClothingOuterHardsuitVoidParamed
+#   - type: Objective
+#     difficulty: 1
+# Corvax-Wega-Edit-end
 
 - type: entity
   parent: BaseThiefStealObjective

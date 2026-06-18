@@ -7,21 +7,21 @@ using Content.Shared.Access.Components; // Corvax-Wega-Record
 using Content.Shared.Inventory; // Corvax-Wega-Record
 using Content.Shared.PDA; // Corvax-Wega-Record
 using Content.Shared.StationRecords;
-using Robust.Server.Audio; // Corvax-Wega-Record
 using Robust.Server.GameObjects;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Timing; // Corvax-Wega-Record
 
 namespace Content.Server.StationRecords.Systems;
 
-public sealed class GeneralStationRecordConsoleSystem : EntitySystem
+public sealed partial class GeneralStationRecordConsoleSystem : EntitySystem
 {
-    [Dependency] private readonly AudioSystem _audio = default!;
-    [Dependency] private readonly UserInterfaceSystem _ui = default!;
-    [Dependency] private readonly StationSystem _station = default!;
-    [Dependency] private readonly StationRecordsSystem _stationRecords = default!;
-    [Dependency] private readonly StationJobsSystem _stationJobsSystem = default!; // Corvax-Wega-Record
-    [Dependency] private readonly PopupSystem _popup = default!; // Corvax-Wega-Record
-    [Dependency] private readonly InventorySystem _inventory = default!; // Corvax-Wega-Record
+    [Dependency] private UserInterfaceSystem _ui = default!;
+    [Dependency] private StationSystem _station = default!;
+    [Dependency] private StationRecordsSystem _stationRecords = default!;
+    [Dependency] private SharedAudioSystem _audio = default!; // Corvax-Wega-Record
+    [Dependency] private StationJobsSystem _stationJobsSystem = default!; // Corvax-Wega-Record
+    [Dependency] private PopupSystem _popup = default!; // Corvax-Wega-Record
+    [Dependency] private InventorySystem _inventory = default!; // Corvax-Wega-Record
 
     private readonly HashSet<string> _requiredAccessLevels = new HashSet<string> { "Captain", "HeadOfPersonnel" }; // Corvax-Wega-Record
     private bool _war = false; // Corvax-Wega-Record

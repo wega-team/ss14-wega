@@ -44,7 +44,7 @@
     sprite: _Wega/Clothing/Back/Duffels/big_backpack.rsi
   - type: Storage
     grid:
-    - 0,0,6,6
+    - 0,0,5,6
     maxItemSize: Huge
   - type: Construction
     graph: BigBag

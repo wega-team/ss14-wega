@@ -44,7 +44,7 @@
   - PowerCellHigh
   - TurboItemRechargerCircuitboard
   - SMESAdvancedMachineCircuitboard
-  # - ArmSyntheticCharger # Corvax-Wega-Androids
+  - ArmSyntheticCharger # Corvax-Wega-Androids
 
 - type: technology
   id: MechanicalCompression
@@ -193,6 +193,8 @@
     - WeaponIndustrialFanPlasmaCutter # Corvax-Wega-Lavaland
     - BorgModuleAdvancedMining
     - SalvageExpeditionsComputerCircuitboard # Corvax-Cringe
+  technologyPrerequisites: # Corvax-Wega-Add
+  - SalvageEquipment # Corvax-Wega-add
 
 # Tier 3
 

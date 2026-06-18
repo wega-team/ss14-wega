@@ -66,7 +66,20 @@
 
 - type: entity
   abstract: true
-  parent: [ClothingOuterStorageBase, ClothingOuterDamageableBase, BaseFoldable] # Corvax-Wega-Clothing
+  parent: [SolutionFood, SolutionNormal, ClothingOuterStorageBase]
+  id: ClothingOuterStorageEdible
+  components:
+  - type: Edible
+    requiresSpecialDigestion: true
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Fiber
+        Quantity: 60
+
+- type: entity
+  abstract: true
+  parent: [ClothingOuterStorageBase, BaseFoldable]
   id: ClothingOuterStorageFoldableBase
   components:
   - type: Appearance

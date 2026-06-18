@@ -10,23 +10,29 @@ using Content.Shared.Emp;
 using Content.Shared.Popups;
 using Content.Shared.Power;
 using Content.Shared.Rounding;
+using Content.Shared.Containers.ItemSlots;
+using Content.Shared.Wires;
+using Content.Shared.Veil.Cult.Components; // Corvax-Wega-VeilCult
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Timing;
+using Robust.Shared.Containers; // Corvax-Wega-VeilCult
 
 namespace Content.Server.Power.EntitySystems;
 
-public sealed class ApcSystem : EntitySystem
+public sealed partial class ApcSystem : EntitySystem
 {
-    [Dependency] private readonly AccessReaderSystem _accessReader = default!;
-    [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
-    [Dependency] private readonly EmagSystem _emag = default!;
-    [Dependency] private readonly PopupSystem _popup = default!;
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly UserInterfaceSystem _ui = default!;
+    [Dependency] private AccessReaderSystem _accessReader = default!;
+    [Dependency] private ISharedAdminLogManager _adminLogger = default!;
+    [Dependency] private IGameTiming _gameTiming = default!;
+    [Dependency] private EmagSystem _emag = default!;
+    [Dependency] private PopupSystem _popup = default!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private UserInterfaceSystem _ui = default!;
+    [Dependency] private SharedContainerSystem _container = default!; // Corvax-Wega-VeilCult
+    [Dependency] private ItemSlotsSystem _itemSlots = default!; // Corvax-Wega-VeilCult
 
     public override void Initialize()
     {
@@ -41,6 +47,11 @@ public sealed class ApcSystem : EntitySystem
         SubscribeLocalEvent<ApcComponent, GotEmaggedEvent>(OnEmagged);
 
         SubscribeLocalEvent<ApcComponent, EmpPulseEvent>(OnEmpPulse);
+
+        SubscribeLocalEvent<ApcComponent, ItemSlotInsertAttemptEvent>(OnItemSlotInsertAttempt); // Corvax-Wega-VeilCult
+        SubscribeLocalEvent<ApcComponent, ItemSlotEjectAttemptEvent>(OnItemSlotEjectAttempt); // Corvax-Wega-VeilCult
+        SubscribeLocalEvent<ApcComponent, EntInsertedIntoContainerMessage>(OnInserted); // Corvax-Wega-VeilCult
+        SubscribeLocalEvent<ApcComponent, EntRemovedFromContainerMessage>(OnRemoved); // Corvax-Wega-VeilCult
     }
 
     public override void Update(float deltaTime)
@@ -91,11 +102,18 @@ public sealed class ApcSystem : EntitySystem
         component.NeedStateUpdate = true;
     }
 
-    private static void OnApcStartup(EntityUid uid, ApcComponent component, ComponentStartup args)
+    private void OnApcStartup(EntityUid uid, ApcComponent component, ComponentStartup args)
     {
         // We cannot update immediately, as various network/battery state is not valid yet.
         // Defer until the next tick.
         component.NeedStateUpdate = true;
+
+        // Corvax-Wega-VeilCult-Start
+        if (!TryComp<ContainerManagerComponent>(uid, out var containerManager))
+            return;
+
+        component.CogSlot = _container.EnsureContainer<ContainerSlot>(uid, component.CogSlotId, containerManager);
+        // Corvax-Wega-VeilCult-End
     }
 
     private void OnBoundUiOpen(EntityUid uid, ApcComponent component, BoundUIOpenedEvent args)
@@ -260,6 +278,53 @@ public sealed class ApcSystem : EntitySystem
             ApcToggleBreaker(uid, component);
         }
     }
+
+    // Corvax-Wega-VeilCult-Start
+    private void OnItemSlotInsertAttempt(Entity<ApcComponent> uid, ref ItemSlotInsertAttemptEvent args)
+    {
+        if (args.Cancelled)
+            return;
+
+        if (!TryComp<WiresPanelComponent>(uid, out var panel))
+            return;
+
+        if (!_itemSlots.TryGetSlot(uid.Owner, uid.Comp.CogSlotId, out var cogSlot) || cogSlot != args.Slot)
+            return;
+
+        if (!panel.Open || args.User == uid.Owner)
+            args.Cancelled = true;
+    }
+
+    private void OnItemSlotEjectAttempt(Entity<ApcComponent> uid, ref ItemSlotEjectAttemptEvent args)
+    {
+        if (args.Cancelled)
+            return;
+
+        if (!TryComp<WiresPanelComponent>(uid, out var panel))
+            return;
+
+        if (!_itemSlots.TryGetSlot(uid.Owner, uid.Comp.CogSlotId, out var cogSlot) || cogSlot != args.Slot)
+            return;
+
+        if (!panel.Open || args.User == uid.Owner)
+            args.Cancelled = true;
+    }
+
+    private void OnInserted(Entity<ApcComponent> uid, ref EntInsertedIntoContainerMessage args)
+    {
+
+        if (args.Container == uid.Comp.CogSlot)
+            EnsureComp<InteractionCogInfectedComponent>(uid);
+    }
+
+    private void OnRemoved(Entity<ApcComponent> uid, ref EntRemovedFromContainerMessage args)
+    {
+
+        if (args.Container == uid.Comp.CogSlot && HasComp<InteractionCogInfectedComponent>(uid))
+            RemComp<InteractionCogInfectedComponent>(uid);
+    }
+    // Corvax-Wega-VeilCult-End
+
 }
 
 [ByRefEvent]

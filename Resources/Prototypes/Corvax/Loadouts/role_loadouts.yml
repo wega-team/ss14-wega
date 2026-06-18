@@ -16,6 +16,20 @@
   - Socks
   # Corvax-Wega-end
 
+#Law
+
+- type: roleLoadout
+  id: JobMagistrate
+  groups:
+  - Inventory # Corvax-Loadouts
+  - MagistrateHead
+  - MagistrateJumpsuit
+  - MagistrateOuterClothing
+  - CommonBackpack
+  - Survival
+  - Trinkets
+  - GroupSpeciesBreathTool
+
 # Engineering
 - type: roleLoadout
   id: JobSeniorEngineer

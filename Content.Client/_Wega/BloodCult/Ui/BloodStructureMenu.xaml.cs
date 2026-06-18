@@ -11,7 +11,7 @@ namespace Content.Client._Wega.BloodCult.Ui;
 [GenerateTypedNameReferences]
 public sealed partial class BloodStructureMenu : RadialMenu
 {
-    [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
 
     public event Action<string>? OnSelectItem;
 

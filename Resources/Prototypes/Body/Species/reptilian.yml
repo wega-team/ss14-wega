@@ -4,7 +4,7 @@
   onlyGroupWhitelisted: true
   limits:
     enum.HumanoidVisualLayers.Hair:
-      limit: 0
+      limit: 1 #Corvax-Wega-Edit
       required: false
     enum.HumanoidVisualLayers.FacialHair:
       limit: 0
@@ -24,7 +24,7 @@
       limit: 2
       required: false
     enum.HumanoidVisualLayers.HeadSide:
-      limit: 1
+      limit: 2 # Corvax-Wega-Edit
       required: false
     enum.HumanoidVisualLayers.LArm:
       limit: 1
@@ -54,6 +54,7 @@
 - type: entity
   parent: BaseSpeciesAppearance
   id: AppearanceReptilian
+  categories: [ HideSpawnMenu ]
   name: reptilian appearance
   components:
   - type: Inventory
@@ -167,6 +168,10 @@
     allowedEmotes: ['Thump']
   - type: TypingIndicator
     proto: lizard
+  - type: CreamPied
+    sprite:
+      sprite: Effects/creampie.rsi
+      state: creampie_lizard
   - type: Vocal
     sounds:
       Male: MaleReptilian

@@ -44,11 +44,88 @@
   # should be changed to nukie playtime when thats tracked (wyci)
   guides: [ NuclearOperatives ]
 
+- type: antagSpecifier
+  abstract: true
+  parent: RestrictedAntag
+  id: BaseNukeops
+  prefRoles:
+  - GenericTeamAntagonist # For antag ban purposes
+  roleLoadout:
+  - RoleSurvivalNukie
+  components:
+  - type: NukeOperative
+  - type: SurgicalSkill # Corvax-Wega-Surgery
+  - type: NpcFactionMember
+    factions:
+    - Syndicate
+
+- type: antagSpecifier
+  parent: BaseNukeops
+  id: NukeopsCommander
+  prefRoles:
+  - NukeopsCommander
+  spawnerPrototype: SpawnPointNukeopsCommander
+  startingGear: SyndicateCommanderGearFull
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - NamesSyndicateElite
+    nameFormat: name-format-nukie-commander
+  mindRoles:
+  - MindRoleNukeopsCommander
+
+- type: antagSpecifier
+  parent: BaseNukeops
+  id: NukeopsMedic
+  prefRoles:
+  - NukeopsMedic
+  spawnerPrototype: SpawnPointNukeopsMedic
+  startingGear: SyndicateOperativeMedicFull
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - NamesSyndicateNormal
+    nameFormat: name-format-nukie-agent
+  - type: SurgicalSkill # Corvax-Wega-Surgery
+    modifier: 0.4 # Corvax-Wega-Surgery
+  mindRoles:
+  - MindRoleNukeopsMedic
+
+- type: antagSpecifier
+  parent: BaseNukeops
+  id: NukeopsOperative
+  prefRoles:
+  - Nukeops
+  spawnerPrototype: SpawnPointNukeopsOperative
+  startingGear: SyndicateOperativeGearFull
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - NamesSyndicateNormal
+    nameFormat: name-format-nukie-operator
+  mindRoles:
+  - MindRoleNukeops
+
+- type: antagSpecifier
+  parent: BaseNukeops
+  id: LoneOp
+  spawnerPrototype: SpawnPointLoneNukeOperative
+  pickPlayer: false
+  startingGear: SyndicateLoneOperativeGearFull
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - NamesSyndicatePrefix
+    - NamesSyndicateNormal
+    nameFormat: name-format-nukie-generic
+  mindRoles:
+  - MindRoleLoneops
+
 - type: startingGear
   id: SyndicateOperativeGearFullNoUplink
   equipment:
     jumpsuit: ClothingUniformJumpsuitOperative
-    back: ClothingModularControllerSyndicatePreassembled # Corvax-Wega-ModularSuits-Edit
+    back: ClothingBackpackDuffelSyndicate
     mask: ClothingMaskGasSyndicate
     eyes: ClothingEyesHudSyndicate
     ears: ClothingHeadsetAltSyndicate
@@ -64,6 +141,7 @@
     - WeaponPistolViper
     - PinpointerSyndicateNuclear
     - DeathAcidifierImplanter
+    - HardsuitOperSelector # Corvax-Wega-ModularSuits-Edit
 
 #Nuclear Operative Gear
 - type: startingGear
@@ -88,8 +166,15 @@
   equipment:
     id: SyndiCommanderPDA
     neck: SyndicateWhistle
-    back: ClothingModularControllerElitePreassembled # Corvax-Wega-ModularSuits-Edit
-    # outerClothing: ClothingOuterHardsuitSyndieCommander # Corvax-Wega-ModularSuits-Edit
+    back: ClothingBackpackDuffelSyndicate
+    outerClothing: ClothingOuterHardsuitSyndieCommander
+ # Corvax-Wega-start
+  storage:
+    back:
+    - WeaponPistolViper
+    - PinpointerSyndicateNuclear
+    - DeathAcidifierImplanter
+ # Corvax-Wega-End
   inhand:
   - NukeOpsDeclarationOfWar
 
@@ -117,14 +202,15 @@
     - SyndiHypo
     # - SawAdvanced # Corvax-Wega-Surgery
     # - Cautery # Corvax-Wega-Surgery
-    - CombatKnife
+    # - CombatKnife # Corvax-Wega-edit
     - WeaponPistolViper
     - PinpointerSyndicateNuclear
-    - HandheldHealthAnalyzer
+    # - HandheldHealthAnalyzer # Corvax-Wega-edit
     - CombatMedipen
     - DeathAcidifierImplanter
   inhand: # Corvax-Wega-Surgery
   - SurgerykitFilledSyndie # Corvax-Wega-Surgery
+  - HardsuitOperMedSelector # Corvax-Wega-ModularSuits-Edit
 
 - type: chameleonOutfit
   id: NukeopsMedicOutfit

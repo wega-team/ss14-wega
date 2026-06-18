@@ -8,7 +8,7 @@ namespace Content.Server.Modular.Suit;
 /// <summary>
 /// Use this if you need to transfer effects from clothing hidden under a suit. (Server-side)
 /// </summary>
-public sealed class ModularSuitHiddenClothingSystem : SharedModularSuitHiddenClothingSystem
+public sealed partial class ModularSuitHiddenClothingSystem : SharedModularSuitHiddenClothingSystem
 {
     public override void Initialize()
     {

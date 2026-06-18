@@ -82,7 +82,7 @@
   - type: EmagSiliconLaw
     stunTime: 5
   - type: SiliconLawProvider
-    laws: NTDefault # Corvax-NTDefault
+    laws: NTDefaultBorgs # Corvax-Wega-edit NTDefault Corvax-NTDefault
   - type: IonStormTarget
   - type: Inventory
     templateId: borg
@@ -168,6 +168,7 @@
     - enum.BorgUiKey.Key
   - type: LockedWiresPanel
   - type: Damageable
+  - type: Injurable
     damageContainer: Silicon
   - type: Destructible
     thresholds:
@@ -258,6 +259,7 @@
   - type: OfferGiver # Corvax-Wega-Offer
   - type: SpeechSynthesis # Corvax-Wega-Barks
     voice: BarksCitadelSynthetic2 # Corvax-Wega-Barks
+  - type: StatusIcon
 
 - type: entity
   abstract: true

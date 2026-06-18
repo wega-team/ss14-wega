@@ -6,7 +6,7 @@ namespace Content.Server.Modular.Suit;
 
 public sealed partial class ModularSuitSystem
 {
-    [Dependency] private readonly UserInterfaceSystem _ui = default!;
+    [Dependency] private UserInterfaceSystem _ui = default!;
 
     private void InitializeUi()
     {

@@ -1,0 +1,211 @@
+# SWORD
+- type: entity
+  id: WeaponClockworkSwordSwordsmen
+  parent: WeaponClockworkSword
+  suffix: Swordsmen
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/clockwork_sword.rsi
+    layers:
+    - state: icon
+    - state: swordsmen
+      shader: unshaded
+      visible: true
+  - type: Enchanted
+  - type: SwordsmenEnchant
+  - type: ActionGrant
+    actions:
+    - ActionVeilCultActivateSwordsmen
+  - type: ItemActionGrant
+    actions:
+    - ActionVeilCultActivateSwordsmen
+    activeIfWorn: false
+    
+- type: entity
+  id: WeaponClockworkSwordBloodshed
+  parent: WeaponClockworkSword
+  suffix: Bloodshed
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/clockwork_sword.rsi
+    layers:
+    - state: icon
+    - state: bloodshed
+      shader: unshaded
+      visible: true
+  - type: Enchanted
+  - type: ActionGrant
+    actions:
+    - ActionVeilCultActivateBloodshed
+  - type: ItemActionGrant
+    actions: 
+    - ActionVeilCultActivateBloodshed
+    activeIfWorn: false
+    
+# SPEAR
+   
+- type: entity
+  parent: WeaponRatvarianSpear
+  id: WeaponRatvarianSpearConfusion
+  suffix: Confusion
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/clock_spear.rsi
+    layers:
+    - state: icon
+    - state: confusion
+      shader: unshaded
+      visible: true
+  - type: Enchanted
+  - type: ActionGrant
+    actions:
+    - ActionVeilCultActivateConfusion
+  - type: ItemActionGrant
+    actions: 
+    - ActionVeilCultActivateConfusion
+    activeIfWorn: false
+    
+- type: entity
+  parent: WeaponRatvarianSpear
+  id: WeaponRatvarianSpearElectricalTouch
+  suffix: Electrical Touch
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/clock_spear.rsi
+    layers:
+    - state: icon
+    - state: electricaltouch
+      shader: unshaded
+      visible: true
+  - type: Enchanted
+  - type: ElectricalTouchEnchant
+    
+# HAMMER
+    
+- type: entity
+  id: WeaponClockHammerKnockback
+  parent: WeaponClockHammer
+  suffix: Knockback
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/clock_hammer.rsi
+    layers:
+    - state: icon
+    - state: knockback
+      shader: unshaded
+      visible: true
+  - type: Enchanted
+  - type: KnockbackEnchant
+  - type: ActionGrant
+    actions:
+    - ActionVeilCultActivateKnockback
+  - type: ItemActionGrant
+    actions: 
+    - ActionVeilCultActivateKnockback
+    activeIfWorn: false
+    
+- type: entity
+  id: WeaponClockHammerCrusher
+  parent: WeaponClockHammer
+  suffix: Crusher
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/clock_hammer.rsi
+    layers:
+    - state: icon
+    - state: crusher
+      shader: unshaded
+      visible: true
+  - type: Enchanted
+  - type: ActionGrant
+    actions:
+    - ActionVeilCultActivateCrusher
+  - type: ItemActionGrant
+    actions: 
+    - ActionVeilCultActivateCrusher
+    activeIfWorn: false
+    
+- type: entity
+  id: WeaponClockHammerDismantling
+  parent: WeaponClockHammer
+  suffix: Dismantling
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/clock_hammer.rsi
+    layers:
+    - state: icon
+    - state: dismantling
+      shader: unshaded
+      visible: true
+  - type: Enchanted
+  - type: ActionGrant
+    actions:
+    - ActionVeilCultActivateDismantling
+  - type: ItemActionGrant
+    actions: 
+    - ActionVeilCultActivateDismantling
+    activeIfWorn: false
+    
+# GLOVES
+    
+- type: entity
+  parent: ClothingHandsClockworkGauntlets
+  id: ClothingHandsClockworkGauntletsNorthStar
+  suffix: North Star
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Hands/clockwork_gauntlets.rsi
+    layers:
+    - state: icon
+    - state: northstar
+      shader: unshaded
+      visible: true
+  - type: Enchanted
+  - type: NorthStarEnchant
+  - type: ActionGrant
+    actions:
+    - ActionVeilCultActivateNorthStar
+  - type: ItemActionGrant
+    actions: 
+    - ActionVeilCultActivateNorthStar
+    activeIfWorn: true
+    
+- type: entity
+  parent: ClothingHandsClockworkGauntlets
+  id: ClothingHandsClockworkGauntletsRedFlame
+  suffix: Red Flame
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Hands/clockwork_gauntlets.rsi
+    layers:
+    - state: icon
+    - state: redflame
+      shader: unshaded
+      visible: true
+  - type: Enchanted
+  - type: RedFlameEnchant
+  - type: ActionGrant
+    actions:
+    - ActionVeilCultActivateRedFlame
+  - type: ItemActionGrant
+    actions: 
+    - ActionVeilCultActivateRedFlame
+    activeIfWorn: true
+    
+- type: entity
+  parent: ClothingHandsClockworkGauntlets
+  id: ClothingHandsClockworkGauntletsStun
+  suffix: Stun
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Hands/clockwork_gauntlets.rsi
+    layers:
+    - state: icon
+    - state: stun
+      shader: unshaded
+      visible: true
+  - type: Enchanted
+  - type: StunEnchant
+    mute: false
+    empBorgs: false
+    stunTime: 2

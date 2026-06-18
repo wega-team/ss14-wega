@@ -17,11 +17,13 @@
     layers:
     - map: [ "enum.AlertVisualLayers.Base" ]
     - map: [ "enum.VampireVisualLayers.Digit1" ]
-      offset: 0.2, 0.25
+      offset: 0.16, 0.25
     - map: [ "enum.VampireVisualLayers.Digit2" ]
-      offset: 0.325, 0.25
+      offset: 0.28, 0.25
     - map: [ "enum.VampireVisualLayers.Digit3" ]
-      offset: 0.45, 0.25
+      offset: 0.40, 0.25
+    - map: [ "enum.VampireVisualLayers.Digit4" ]
+      offset: 0.52, 0.25
 
 - type: alert
   id: AlertBloodRite
@@ -34,7 +36,7 @@
   description: alerts-bloodrite-desc
   minSeverity: 0
   maxSeverity: 1
-  
+
 - type: alert
   id: AlertEternalDarkness
   icons:

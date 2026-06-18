@@ -9,6 +9,15 @@
     damage:
       types:
         Heat: 17
+  - type: Fixtures
+    fixtures:
+      projectile:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.1,-0.1,0.1,0.1"
+        hard: false
+        mask:
+        - Opaque
 
 - type: entity
   parent: BasicHitscan
@@ -40,10 +49,12 @@
   - type: HitscanBasicDamage
     damage:
       types:
-        Shock: 10
+        Shock: 25
   - type: HitscanEMP
     range: 0.25
-    energyConsumption: 720
+    energyConsumption: 1800
+  - type: HitscanReflect
+    reflectiveType: None
 
 - type: entity
   name: pulsar shot
@@ -82,3 +93,59 @@
     radius: 1.5
     energy: 4.6
     color: "#ffffff"
+
+- type: entity
+  name: pulse bolt
+  id: BulletPulse
+  parent: BaseBullet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Reflective
+    reflective:
+    - Energy
+  - type: FlyBySound
+    sound:
+      collection: EnergyMiss
+      params:
+        volume: 5
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles_tg.rsi
+    layers:
+    - state: omnilaser
+      shader: unshaded
+  - type: Physics
+  - type: Ammo
+  - type: Projectile
+    impactEffect: BulletImpactEffectDisabler
+    damage:
+      types:
+        Heat: 21
+
+- type: entity
+  id: BulletPulseSpread
+  categories: [ HideSpawnMenu ]
+  parent: BulletPulse
+  components:
+  - type: ProjectileSpread
+    proto: BulletPulse
+    count: 6
+    spread: 10
+    
+- type: entity
+  parent: BasicHitscan
+  id: PulseSniper
+  components:
+  - type: HitscanBasicDamage
+    damage:
+      types:
+        Heat: 90
+  - type: HitscanBasicVisuals
+    muzzleFlash:
+      sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+      state: muzzle_blue
+    travelFlash:
+      sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+      state: beam_blue
+    impactFlash:
+      sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+      state: impact_blue

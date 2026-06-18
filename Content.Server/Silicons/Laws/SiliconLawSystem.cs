@@ -14,6 +14,7 @@ using Content.Shared.Roles;
 using Content.Shared.Roles.Components;
 using Content.Shared.Silicons.Laws;
 using Content.Shared.Silicons.Laws.Components;
+using Content.Shared.Veil.Cult; // Corvax-Wega-VeilCult
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Containers;
@@ -24,15 +25,15 @@ using Robust.Shared.Toolshed;
 namespace Content.Server.Silicons.Laws;
 
 /// <inheritdoc/>
-public sealed class SiliconLawSystem : SharedSiliconLawSystem
+public sealed partial class SiliconLawSystem : SharedSiliconLawSystem
 {
-    [Dependency] private readonly IChatManager _chatManager = default!;
-    [Dependency] private readonly SharedMindSystem _mind = default!;
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
-    [Dependency] private readonly SharedRoleSystem _roles = default!;
-    [Dependency] private readonly StationSystem _station = default!;
-    [Dependency] private readonly UserInterfaceSystem _userInterface = default!;
-    [Dependency] private readonly EmagSystem _emag = default!;
+    [Dependency] private IChatManager _chatManager = default!;
+    [Dependency] private SharedMindSystem _mind = default!;
+    [Dependency] private IPrototypeManager _prototype = default!;
+    [Dependency] private SharedRoleSystem _roles = default!;
+    [Dependency] private StationSystem _station = default!;
+    [Dependency] private UserInterfaceSystem _userInterface = default!;
+    [Dependency] private EmagSystem _emag = default!;
 
     private static readonly ProtoId<SiliconLawsetPrototype> DefaultCrewLawset = "Crewsimov";
 
@@ -52,6 +53,7 @@ public sealed class SiliconLawSystem : SharedSiliconLawSystem
         SubscribeLocalEvent<SiliconLawProviderComponent, MindAddedMessage>(OnLawProviderMindAdded);
         SubscribeLocalEvent<SiliconLawProviderComponent, MindRemovedMessage>(OnLawProviderMindRemoved);
         SubscribeLocalEvent<SiliconLawProviderComponent, SiliconEmaggedEvent>(OnEmagLawsAdded);
+        SubscribeLocalEvent<SiliconLawProviderComponent, SiliconVeilCultHackedEvent>(OnMidasTouchLawsAdded);
     }
 
     private void OnMapInit(EntityUid uid, SiliconLawBoundComponent component, MapInitEvent args)
@@ -88,10 +90,10 @@ public sealed class SiliconLawSystem : SharedSiliconLawSystem
 
     private void OnLawProviderMindRemoved(Entity<SiliconLawProviderComponent> ent, ref MindRemovedMessage args)
     {
-        if (!ent.Comp.Subverted)
+        if (!ent.Comp.Subverted || args.TransferEntity == null)
             return;
-        RemoveSubvertedSiliconRole(args.Mind);
 
+        RemoveSubvertedSiliconRole(args.Mind);
     }
 
 
@@ -314,6 +316,28 @@ public sealed class SiliconLawSystem : SharedSiliconLawSystem
             SetLaws(lawset.Laws, update, provider.LawUploadSound);
         }
     }
+	
+	// Corvax-Wega-Veil-Cult-Start
+    private void OnMidasTouchLawsAdded(EntityUid uid, SiliconLawProviderComponent component, ref SiliconVeilCultHackedEvent args)
+    {
+        if (component.Lawset == null)
+            component.Lawset = GetLawset(component.Laws);
+        component.Subverted = true;
+
+        component.Lawset?.Laws.Insert(0, new SiliconLaw
+        {
+            LawString = Loc.GetString("law-midastouched-custom"),
+            Order = 0
+        });
+
+        component.Lawset?.Laws.Add(new SiliconLaw
+        {
+            LawString = Loc.GetString("law-midastouched-secrecy"),
+            Order = component.Lawset.Laws.Max(law => law.Order) + 1
+        });
+        NotifyLawsChanged(uid, new SoundPathSpecifier("/Audio/Misc/ratvar_reveal.ogg"));
+    }
+	// Corvax-Wega-Veil-Cult-End
 }
 
 [ToolshedCommand, AdminCommand(AdminFlags.Admin)]

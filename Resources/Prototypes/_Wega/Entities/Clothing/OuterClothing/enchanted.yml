@@ -1,0 +1,136 @@
+# VEIL CULT ROBE
+
+- type: entity
+  parent: ClothingOuterVeilCultRobes
+  id: ClothingOuterVeilCultRobesHaste
+  suffix: Haste
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Coats/clockrobe.rsi
+    layers:
+    - state: icon
+    - state: haste
+      shader: unshaded
+      visible: true
+  - type: Enchanted
+  - type: HasteEnchant
+  - type: ActionGrant
+    actions:
+    - ActionVeilCultActivateHaste
+  - type: ItemActionGrant
+    actions: 
+    - ActionVeilCultActivateHaste
+    activeIfWorn: true
+    
+- type: entity
+  parent: ClothingOuterVeilCultRobes
+  id: ClothingOuterVeilCultRobesCamouflage
+  suffix: Camouflage
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Coats/clockrobe.rsi
+    layers:
+    - state: icon
+    - state: camouflage
+      shader: unshaded
+      visible: true
+  - type: Enchanted
+  - type: CamouflageEnchant
+  - type: ActionGrant
+    actions:
+    - ActionVeilCultActivateCamouflage
+  - type: ItemActionGrant
+    actions: 
+    - ActionVeilCultActivateCamouflage
+    activeIfWorn: true
+    
+# VEIL CULT CUIRASS
+
+- type: entity
+  parent: VeilCultBrassCuirass
+  id: VeilCultBrassCuirassSmoke
+  suffix: Smoke
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Armor/cuirass.rsi
+    layers:
+    - state: icon
+    - state: flash
+      shader: unshaded
+      visible: true
+  - type: Enchanted
+  - type: SmokeEnchant
+  - type: ActionGrant
+    actions:
+    - ActionVeilCultActivateSmoke
+  - type: ItemActionGrant
+    actions: 
+    - ActionVeilCultActivateSmoke
+    activeIfWorn: true
+    
+- type: entity
+  parent: VeilCultBrassCuirass
+  id: VeilCultBrassCuirassAbsorb
+  suffix: Absorb
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Armor/cuirass.rsi
+    layers:
+    - state: icon
+    - state: absorb
+      shader: unshaded
+      visible: true
+  - type: Enchanted
+  - type: AbsorbEnchant
+  - type: ActionGrant
+    actions:
+    - ActionVeilCultActivateAbsorb
+  - type: ItemActionGrant
+    actions: 
+    - ActionVeilCultActivateAbsorb
+    activeIfWorn: true
+    
+- type: entity
+  parent: VeilCultBrassCuirass
+  id: VeilCultBrassCuirassReflection
+  suffix: Reflection
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Armor/cuirass.rsi
+    layers:
+    - state: icon
+    - state: reflection
+      shader: unshaded
+      visible: true
+  - type: Enchanted
+  - type: ReflectionEnchant
+  - type: ActionGrant
+    actions:
+    - ActionVeilCultActivateReflection
+  - type: ItemActionGrant
+    actions: 
+    - ActionVeilCultActivateReflection
+    activeIfWorn: true
+    
+- type: entity
+  parent: VeilCultBrassCuirass
+  id: VeilCultBrassCuirassHardenPlates
+  suffix: Harden Plates
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Armor/cuirass.rsi
+    layers:
+    - state: icon
+    - state: hardenplates
+      shader: unshaded
+      visible: true
+  - type: Enchanted
+  - type: HardenPlatesEnchant
+  - type: ActionGrant
+    actions:
+    - ActionVeilCultActivateHardenPlates
+  - type: ItemActionGrant
+    actions: 
+    - ActionVeilCultActivateHardenPlates
+    activeIfWorn: true
+

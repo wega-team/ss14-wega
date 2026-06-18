@@ -3,7 +3,7 @@
   id: Demon
   limits:
     enum.HumanoidVisualLayers.Special:
-      limit: 1
+      limit: 2
       required: false
     enum.HumanoidVisualLayers.HeadTop:
       limit: 1
@@ -25,7 +25,7 @@
       required: true
       default: [ DemomTail ]
     enum.HumanoidVisualLayers.Chest:
-      limit: 1
+      limit: 2
       required: false
     enum.HumanoidVisualLayers.LArm:
       limit: 1
@@ -37,6 +37,9 @@
       limit: 1
       required: false
     enum.HumanoidVisualLayers.RLeg:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.TailOverlay:
       limit: 1
       required: false
 
@@ -82,8 +85,9 @@
     speechSounds: Lizard
   - type: Wagging
   - type: Damageable
-    damageContainer: Biological
     damageModifierSet: Demon
+  - type: Injurable
+    damageContainer: Biological
   - type: MeleeWeapon
     soundHit:
       path: /Audio/Weapons/pierce.ogg

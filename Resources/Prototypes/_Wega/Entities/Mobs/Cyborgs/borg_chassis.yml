@@ -27,6 +27,14 @@
       cell_slot:
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellMicroreactor
+      gps_slot:
+        name: gps-slot-name
+        insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
+        startingItem: HandheldGPSBasicBorgOn
+        whitelist:
+          components:
+          - HandheldGPS
   - type: ContainerFill
     containers:
       borg_module:
@@ -46,6 +54,14 @@
       cell_slot:
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellMicroreactor
+      gps_slot:
+        name: gps-slot-name
+        insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
+        startingItem: HandheldGPSBasicBorgOn
+        whitelist:
+          components:
+          - HandheldGPS
   - type: ContainerFill
     containers:
       borg_module:
@@ -64,6 +80,14 @@
       cell_slot:
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellMicroreactor
+      gps_slot:
+        name: gps-slot-name
+        insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
+        startingItem: HandheldGPSBasicBorgOn
+        whitelist:
+          components:
+          - HandheldGPS
   - type: ContainerFill
     containers:
       borg_module:
@@ -87,6 +111,14 @@
       cell_slot:
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellMicroreactor
+      gps_slot:
+        name: gps-slot-name
+        insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
+        startingItem: HandheldGPSBasicBorgOn
+        whitelist:
+          components:
+          - HandheldGPS
   - type: ContainerFill
     containers:
       borg_module:
@@ -104,6 +136,14 @@
       cell_slot:
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellMicroreactor
+      gps_slot:
+        name: gps-slot-name
+        insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
+        startingItem: HandheldGPSBasicBorgOn
+        whitelist:
+          components:
+          - HandheldGPS
   - type: ContainerFill
     containers:
       borg_module:
@@ -120,6 +160,14 @@
       cell_slot:
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellMicroreactor
+      gps_slot:
+        name: gps-slot-name
+        insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
+        startingItem: HandheldGPSBasicBorgOn
+        whitelist:
+          components:
+          - HandheldGPS
   - type: ContainerFill
     containers:
       borg_module:
@@ -136,6 +184,14 @@
       cell_slot:
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellMicroreactor
+      gps_slot:
+        name: gps-slot-name
+        insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
+        startingItem: HandheldGPSBasicBorgOn
+        whitelist:
+          components:
+          - HandheldGPS
   - type: ContainerFill
     containers:
       borg_module:
@@ -153,6 +209,14 @@
       cell_slot:
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellMicroreactor
+      gps_slot:
+        name: gps-slot-name
+        insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
+        startingItem: HandheldGPSBasicBorgOn
+        whitelist:
+          components:
+          - HandheldGPS
   - type: ContainerFill
     containers:
       borg_module:
@@ -161,11 +225,33 @@
       - BorgModuleGardening
       - BorgModuleServiceRare
 
-
-
-
-
-
-
-
-
+## Xenoborg proded
+- type: entity
+  parent: XenoborgScout
+  id: XenoborgAllmodule
+  suffix: All module
+  components:
+  - type: ContainerFill
+    containers:
+      borg_brain:
+      - MMI
+      borg_module:
+      - XenoborgModuleBasic
+      - XenoborgModuleTool
+      - XenoborgModuleEnergySword
+      - XenoborgModuleSpaceMovement
+      - XenoborgModuleDoorControl
+      - XenoborgModuleHeavyLaser
+      - XenoborgModuleEnergySword
+      - XenoborgModuleSuperCloakDevice
+      - XenoborgModuleCommonRepeir
+      - XenoborgModuleCommonSpeed
+      - XenoborgModuleEMP
+      - BorgModuleNightVisoXenoborg
+      - XenoborgModuleTileGun
+      - ModuleXenoborgModule
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMicroreactor

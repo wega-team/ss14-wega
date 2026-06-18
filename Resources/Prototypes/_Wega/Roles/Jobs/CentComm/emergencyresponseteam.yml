@@ -5,7 +5,7 @@
     back: ClothingBackpackERTLeader
     shoes: ClothingShoesBootsCombatFilled
     head: ClothingHeadHatERTLeaderBeret
-    eyes: ClothingEyesGlassesSecurity
+    eyes: ClothingERTHud
     neck: ClothingNeckMantleERTLeader
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmorBasicSlim
@@ -30,7 +30,7 @@
     back: ClothingBackpackERTLeader
     shoes: ClothingShoesBootsMagCombat
     head: ClothingHeadHatERTLeaderBeret
-    eyes: ClothingEyesGlassesSecurity
+    eyes: ClothingERTHud
     neck: ClothingNeckMantleERTLeader
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitERTLeader
@@ -54,7 +54,7 @@
     back: ClothingBackpackERTLeader
     shoes: ClothingShoesBootsMagCombat
     mask: ClothingMaskGasERT
-    eyes: ClothingEyesGlassesSecurity
+    eyes: ClothingERTHud
     neck: ClothingNeckMantleERTLeader
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitERTLeader
@@ -78,7 +78,7 @@
     back: ClothingBackpackERTLeader
     shoes: ClothingShoesBootsMagCombat
     mask: ClothingMaskGasERT
-    eyes: ClothingEyesGlassesSecurity
+    eyes: ClothingERTHud
     neck: ClothingNeckMantleERTLeader
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitERTLeader

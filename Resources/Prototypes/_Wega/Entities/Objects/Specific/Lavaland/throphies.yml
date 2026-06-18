@@ -209,6 +209,7 @@
   - type: Item
     size: Small
   - type: Damageable
+  - type: Injurable
     damageContainer: Clothing
   - type: Reactive
     groups:

@@ -36,23 +36,23 @@ using Robust.Shared.Timing;
 namespace Content.Server.Genetics.System
 {
     [UsedImplicitly]
-    public sealed class DnaModifierConsoleSystem : EntitySystem
+    public sealed partial class DnaModifierConsoleSystem : EntitySystem
     {
-        [Dependency] private readonly SharedAudioSystem _audio = default!;
-        [Dependency] private readonly SharedContainerSystem _container = default!;
-        [Dependency] private readonly DamageableSystem _damage = default!;
-        [Dependency] private readonly DeviceLinkSystem _signalSystem = default!;
-        [Dependency] private readonly DnaClientSystem _dnaClient = default!;
-        [Dependency] private readonly DnaModifierSystem _dnaModifier = default!;
-        [Dependency] private readonly IEntityManager _entManager = default!;
-        [Dependency] private readonly IGameTiming _timing = default!;
-        [Dependency] private readonly ItemSlotsSystem _itemSlotsSystem = default!;
-        [Dependency] private readonly PowerReceiverSystem _powerReceiverSystem = default!;
-        [Dependency] private readonly QuickDialogSystem _quickDialog = default!;
-        [Dependency] private readonly IRobustRandom _random = default!;
-        [Dependency] private readonly SharedSolutionContainerSystem _solutionContainerSystem = default!;
-        [Dependency] private readonly SharedTransformSystem _transform = default!;
-        [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
+        [Dependency] private SharedAudioSystem _audio = default!;
+        [Dependency] private SharedContainerSystem _container = default!;
+        [Dependency] private DamageableSystem _damage = default!;
+        [Dependency] private DeviceLinkSystem _signalSystem = default!;
+        [Dependency] private DnaClientSystem _dnaClient = default!;
+        [Dependency] private DnaModifierSystem _dnaModifier = default!;
+        [Dependency] private IEntityManager _entManager = default!;
+        [Dependency] private IGameTiming _timing = default!;
+        [Dependency] private ItemSlotsSystem _itemSlotsSystem = default!;
+        [Dependency] private PowerReceiverSystem _powerReceiverSystem = default!;
+        [Dependency] private QuickDialogSystem _quickDialog = default!;
+        [Dependency] private IRobustRandom _random = default!;
+        [Dependency] private SharedSolutionContainerSystem _solutionContainerSystem = default!;
+        [Dependency] private SharedTransformSystem _transform = default!;
+        [Dependency] private UserInterfaceSystem _uiSystem = default!;
 
         private static readonly EntProtoId Injector = "DnaInjector";
         private static readonly ProtoId<DamageTypePrototype> RadDamage = "Radiation";
@@ -412,16 +412,15 @@ namespace Content.Server.Genetics.System
                 return;
 
             if (!TryComp<MedicalScannerComponent>(console.GeneticScanner, out var scanner) || scanner.BodyContainer.ContainedEntity == null
-                || !_itemSlotsSystem.TryGetSlot(console.GeneticScanner.Value, SharedDnaModifier.InputSlotName, out var slot))
+                || !_itemSlotsSystem.TryGetSlot(console.GeneticScanner.Value, SharedDnaModifier.InputSlotName, out var slot)
+                || slot.Item == null)
                 return;
 
-            if (slot.Item == null || !HasComp<SolutionContainerManagerComponent>(slot.Item.Value)
-                || !_solutionContainerSystem.TryGetSolution(slot.Item.Value, SharedDnaModifier.SolutionSlotName, out var sourceSolution, out var sourceSolutionComp))
+            if (!_solutionContainerSystem.TryGetSolution(slot.Item.Value, SharedDnaModifier.SolutionSlotName, out var sourceSolution, out var sourceSolutionComp))
                 return;
 
             var targetEntity = scanner.BodyContainer.ContainedEntity.Value;
-            if (!HasComp<SolutionContainerManagerComponent>(targetEntity)
-                || !_solutionContainerSystem.TryGetInjectableSolution(targetEntity, out var targetSolution, out _))
+            if (!_solutionContainerSystem.TryGetInjectableSolution(targetEntity, out var targetSolution, out _))
                 return;
 
             FixedPoint2 transferAmount = args.Amount switch

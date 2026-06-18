@@ -14,15 +14,15 @@ using Robust.Shared.Timing;
 
 namespace Content.Server.Xenobiology;
 
-public sealed class SlimeHungerSystem : EntitySystem
+public sealed partial class SlimeHungerSystem : EntitySystem
 {
-    [Dependency] private readonly ChatSystem _chat = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly SlimeSocialSystem _social = default!;
-    [Dependency] private readonly SlimeGrowthSystem _growth = default!;
-    [Dependency] private readonly MobStateSystem _mobState = default!;
+    [Dependency] private ChatSystem _chat = default!;
+    [Dependency] private SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private IGameTiming _gameTiming = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private SlimeSocialSystem _social = default!;
+    [Dependency] private SlimeGrowthSystem _growth = default!;
+    [Dependency] private MobStateSystem _mobState = default!;
 
     private readonly Dictionary<SlimeBehaviorState, string[]> _slimePhrases = new()
     {

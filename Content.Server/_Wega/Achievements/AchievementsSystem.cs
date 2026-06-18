@@ -6,7 +6,7 @@ namespace Content.Server.Achievements;
 
 public sealed partial class AchievementsSystem : SharedAchievementsSystem
 {
-    [Dependency] private readonly IServerDbManager _db = default!;
+    [Dependency] private IServerDbManager _db = default!;
 
     public override void Initialize()
     {

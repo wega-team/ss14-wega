@@ -16,7 +16,7 @@ namespace Content.Shared.Xenobiology.Systems;
 [PublicAPI]
 public abstract partial class SharedCellSystem : EntitySystem
 {
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
+    [Dependency] private IPrototypeManager _prototype = default!;
 
     public override void Initialize()
     {

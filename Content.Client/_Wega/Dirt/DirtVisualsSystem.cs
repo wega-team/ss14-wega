@@ -8,11 +8,11 @@ using Robust.Shared.Utility;
 
 namespace Content.Client.DirtVisuals;
 
-public sealed class DirtVisualsSystem : EntitySystem
+public sealed partial class DirtVisualsSystem : EntitySystem
 {
-    [Dependency] private readonly AppearanceSystem _appearance = default!;
-    [Dependency] private readonly SpriteSystem _sprite = default!;
-    [Dependency] private readonly ClientClothingSystem _clothing = default!;
+    [Dependency] private AppearanceSystem _appearance = default!;
+    [Dependency] private SpriteSystem _sprite = default!;
+    [Dependency] private ClientClothingSystem _clothing = default!;
 
     public override void Initialize()
     {

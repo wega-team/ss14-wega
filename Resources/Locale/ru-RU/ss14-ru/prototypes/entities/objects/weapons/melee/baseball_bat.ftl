@@ -4,3 +4,5 @@ ent-IncompleteBaseBallBat = незаконченная бейсбольная б
     .desc = Несколько деревянных досок, скреплённых между собой.
 ent-WeaponMeleeKnockbackStick = палка отдачи
     .desc = И вдруг он засплифил.
+ent-HomerunBat = хоумран бита
+    .desc = Бонк!

@@ -8,12 +8,12 @@ using Robust.Shared.Timing;
 
 namespace Content.Client.Shaders.Systems;
 
-public sealed class NightVisionOverlay : Overlay
+public sealed partial class NightVisionOverlay : Overlay
 {
-    [Dependency] private readonly IEntityManager _entityManager = default!;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
+    [Dependency] private IEntityManager _entityManager = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IGameTiming _gameTiming = default!;
 
     private static readonly ProtoId<ShaderPrototype> NightVision = "NightVision";
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
@@ -32,28 +32,18 @@ public sealed class NightVisionOverlay : Overlay
         _baseShader = _prototypeManager.Index(NightVision).Instance();
     }
 
-    protected override bool BeforeDraw(in OverlayDrawArgs args)
-    {
-        if (_playerManager.LocalEntity is not { } player
-            || !_entityManager.TryGetComponent(player, out EyeComponent? eye)
-            || args.Viewport.Eye != eye.Eye)
-        {
-            return false;
-        }
+	protected override bool BeforeDraw(in OverlayDrawArgs args)
+	{
+		if (_playerManager.LocalEntity is not { } player
+			|| !_entityManager.TryGetComponent(player, out EyeComponent? eye)
+			|| args.Viewport.Eye != eye.Eye)
+		{
+			return false;
+		}
 
-        if (_entityManager.TryGetComponent<NightVisionComponent>(player, out var nv))
-        {
-            Brightness = nv.Brightness;
-            LuminanceThreshold = nv.LuminanceThreshold;
-            NoiseAmount = nv.NoiseAmount;
-            Tint = nv.Tint;
-
-            _currentShader = _baseShader.Duplicate();
-            return true;
-        }
-
-        return false;
-    }
+		_currentShader = _baseShader.Duplicate();
+		return true;
+	}
 
     protected override void Draw(in OverlayDrawArgs args)
     {

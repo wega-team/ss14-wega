@@ -8,17 +8,19 @@ using Robust.Shared.Containers;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
+using Content.Shared.Whitelist; // Corvax-Wega-Morgue-change
 
 namespace Content.Shared.Foldable;
 
 // TODO: This system could arguably be refactored into a general state system, as it is being utilized for a lot of different objects with various needs.
-public sealed class FoldableSystem : EntitySystem
+public sealed partial class FoldableSystem : EntitySystem
 {
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-    [Dependency] private readonly SharedBuckleSystem _buckle = default!;
-    [Dependency] private readonly SharedContainerSystem _container = default!;
-    [Dependency] private readonly AnchorableSystem _anchorable = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
+    [Dependency] private SharedBuckleSystem _buckle = default!;
+    [Dependency] private SharedContainerSystem _container = default!;
+    [Dependency] private AnchorableSystem _anchorable = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private EntityWhitelistSystem _whitelistSystem = default!; // Corvax-Wega-Morgue-change
 
     public override void Initialize()
     {
@@ -91,7 +93,7 @@ public sealed class FoldableSystem : EntitySystem
 
     private void OnInsertEvent(EntityUid uid, FoldableComponent component, ContainerGettingInsertedAttemptEvent args)
     {
-        if (!component.IsFolded && !component.CanFoldInsideContainer)
+        if (!component.IsFolded && !component.CanFoldInsideContainer && _whitelistSystem.IsWhitelistFailOrNull(component.DeployedContainerWhitelist, args.Container.Owner)) // Corvax-Wega-Morgue-change
             args.Cancel();
     }
 

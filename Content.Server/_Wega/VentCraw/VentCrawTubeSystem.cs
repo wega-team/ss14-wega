@@ -21,17 +21,17 @@ using Robust.Shared.Utility;
 
 namespace Content.Server.VentCraw;
 
-public sealed class VentCrawTubeSystem : EntitySystem
+public sealed partial class VentCrawTubeSystem : EntitySystem
 {
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
-    [Dependency] private readonly MapSystem _mapSystem = default!;
-    [Dependency] private readonly PopupSystem _popup = default!;
-    [Dependency] private readonly SharedAudioSystem _audioSystem = default!;
-    [Dependency] private readonly SharedContainerSystem _containerSystem = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
-    [Dependency] private readonly SharedMoverController _mover = default!;
-    [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
-    [Dependency] private readonly VentCrawableSystem _ventCrawableSystem = default!;
+    [Dependency] private IGameTiming _gameTiming = default!;
+    [Dependency] private MapSystem _mapSystem = default!;
+    [Dependency] private PopupSystem _popup = default!;
+    [Dependency] private SharedAudioSystem _audioSystem = default!;
+    [Dependency] private SharedContainerSystem _containerSystem = default!;
+    [Dependency] private SharedDoAfterSystem _doAfterSystem = default!;
+    [Dependency] private SharedMoverController _mover = default!;
+    [Dependency] private SharedTransformSystem _transformSystem = default!;
+    [Dependency] private VentCrawableSystem _ventCrawableSystem = default!;
 
     public override void Initialize()
     {

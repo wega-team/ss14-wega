@@ -12,9 +12,9 @@ namespace Content.Client._Wega.Genetics.Ui;
 [GenerateTypedNameReferences]
 public sealed partial class MindCommunicationPanel : DefaultWindow
 {
-    [Dependency] private readonly IEntityManager _entityManager = default!;
-    [Dependency] private readonly IEntityNetworkManager _entityNetworkManager = default!;
-    [Dependency] private readonly ISharedPlayerManager _playerManager = default!;
+    [Dependency] private IEntityManager _entityManager = default!;
+    [Dependency] private IEntityNetworkManager _entityNetworkManager = default!;
+    [Dependency] private ISharedPlayerManager _playerManager = default!;
 
     public MindCommunicationPanel()
     {

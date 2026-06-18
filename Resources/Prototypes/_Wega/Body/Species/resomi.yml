@@ -206,8 +206,9 @@
   - type: Puller
     needsHands: false
   - type: Damageable
-    damageContainer: Biological
     damageModifierSet: Resomi
+  - type: Injurable
+    damageContainer: Biological
   - type: Bloodstream
     bloodReferenceSolution:
       reagents:

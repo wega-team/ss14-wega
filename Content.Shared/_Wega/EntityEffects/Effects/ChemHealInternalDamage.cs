@@ -12,12 +12,12 @@ namespace Content.Shared.EntityEffects.Effects;
 /// <inheritdoc cref="EntityEffectSystem{T,TEffect}"/>
 public sealed partial class ChemHealInternalDamageEntityEffectSystem : EntityEffectSystem<OperatedComponent, ChemHealInternalDamage>
 {
-    [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private IRobustRandom _random = default!;
 
     protected override void Effect(Entity<OperatedComponent> entity, ref EntityEffectEvent<ChemHealInternalDamage> args)
     {
-        var scaledChance = args.Effect.HealChance * args.Scale;
         var damageTypes = args.Effect.DamageTypes;
+        var scaledChance = args.Effect.HealChance * args.Scale;
 
         foreach (var (damageId, bodyParts) in entity.Comp.InternalDamages)
         {

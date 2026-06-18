@@ -130,8 +130,6 @@
         enum.WiresUiKey.Key:
           type: WiresBoundUserInterface
   - type: RadarConsole
-  - type: WorldLoader
-    radius: 256
   - type: PointLight
     radius: 1.5
     energy: 4.0
@@ -201,8 +199,6 @@
       - Syndicate
   - type: RadarConsole
     maxRange: 384
-  - type: WorldLoader
-    radius: 1536
   - type: PointLight
     radius: 1.5
     energy: 4.0
@@ -701,8 +697,9 @@
     energy: 4.0
     color: "#3c5eb5"
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallicStrong
+  - type: Injurable
+    damageContainer: StructuralInorganic
 
 - type: entity
   parent: ComputerComms
@@ -896,6 +893,7 @@
       state: generic_panel_open
   - type: CargoOrderConsole
     removeLimitAccess: [ "Quartermaster" ]
+    allowedGroups: [ "market","SalvageJobReward2","SalvageJobReward3", "SalvageJobRewardMAX"]
   - type: ActiveRadio
     channels:
     - Supply
@@ -1051,6 +1049,7 @@
     announcementChannel: Security
     removeLimitAccess: [ "HeadOfSecurity" ]
     # mode: SendToPrimary # Corvax-Wega
+    allowedGroups: [ "market", "sec", "SalvageJobReward2","SalvageJobReward3", "SalvageJobRewardMAX"]
   - type: ActiveRadio
     channels:
     - Security
@@ -1216,8 +1215,9 @@
     speechVerb: Robotic
     speechSounds: Pai
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallicStrong
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: GuideHelp
     guides:
     - Cloning

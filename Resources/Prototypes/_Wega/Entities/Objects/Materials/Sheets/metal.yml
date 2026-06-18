@@ -2,7 +2,7 @@
   parent: SheetOtherBase
   id: SheetRuneMetal
   name: runemetal
-  suffix: Full, DO NOT MAPP
+  suffix: Full, DO NOT MAP
   components:
   - type: Material
   - type: PhysicalComposition
@@ -29,7 +29,7 @@
   parent: SheetRuneMetal
   id: SheetRuneMetal1
   name: runemetal
-  suffix: Single, DO NOT MAPP
+  suffix: Single, DO NOT MAP
   components:
   - type: Stack
     count: 1
@@ -69,6 +69,55 @@
   id: SheetMagmite1
   name: magmite
   suffix: Single
+  components:
+  - type: Stack
+    count: 1
+    
+- type: entity
+  parent: SheetChargedBrass
+  id: SheetChargedBrass6
+  name: charged brass
+  suffix: 6
+  components:
+  - type: Stack
+    count: 6
+
+- type: entity
+  parent: SheetOtherBase
+  id: SheetChargedBrass
+  name: chargedbrass
+  suffix: Full, DO NOT MAP
+  components:
+  - type: Material
+  - type: PhysicalComposition
+    materialComposition:
+      ChargedBrass: 100
+  - type: Stack
+    stackType: ChargedBrass
+    baseLayer: base
+    layerStates:
+    - chargedbrass
+    - chargedbrass_2
+    - chargedbrass_2
+  - type: Sprite
+    sprite: _Wega/Objects/Materials/Sheets/metal.rsi
+    state: chargedbrass_3
+    layers:
+    - state: chargedbrass_3
+      map: ["base"]
+  - type: Appearance
+  - type: Item
+    heldPrefix: chargedbrass
+  - type: Tag
+    tags:
+    - Brass
+    - ConstructionMaterial
+
+- type: entity
+  parent: SheetChargedBrass
+  id: SheetChargedBrass1
+  name: chargedbrass
+  suffix: Single, DO NOT MAP
   components:
   - type: Stack
     count: 1

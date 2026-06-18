@@ -13,7 +13,7 @@ public enum InjectorFabticatorUiKey : byte
 }
 
 [Serializable, NetSerializable]
-public sealed class InjectorFabticatorBoundUserInterfaceState : BoundUserInterfaceState
+public sealed partial class InjectorFabticatorBoundUserInterfaceState : BoundUserInterfaceState
 {
     public readonly bool IsProducing;
     public readonly bool CanProduce;
@@ -56,7 +56,7 @@ public sealed class InjectorFabticatorBoundUserInterfaceState : BoundUserInterfa
 }
 
 [Serializable, NetSerializable]
-public sealed class InjectorFabticatorTransferBufferToBeakerMessage : BoundUserInterfaceMessage
+public sealed partial class InjectorFabticatorTransferBufferToBeakerMessage : BoundUserInterfaceMessage
 {
     public readonly ReagentId ReagentId;
     public readonly FixedPoint2 Amount;
@@ -69,7 +69,7 @@ public sealed class InjectorFabticatorTransferBufferToBeakerMessage : BoundUserI
 }
 
 [Serializable, NetSerializable]
-public sealed class InjectorFabticatorTransferBeakerToBufferMessage : BoundUserInterfaceMessage
+public sealed partial class InjectorFabticatorTransferBeakerToBufferMessage : BoundUserInterfaceMessage
 {
     public readonly ReagentId ReagentId;
     public readonly FixedPoint2 Amount;
@@ -82,7 +82,7 @@ public sealed class InjectorFabticatorTransferBeakerToBufferMessage : BoundUserI
 }
 
 [Serializable, NetSerializable]
-public sealed class InjectorFabticatorSetReagentMessage : BoundUserInterfaceMessage
+public sealed partial class InjectorFabticatorSetReagentMessage : BoundUserInterfaceMessage
 {
     public readonly ReagentId ReagentId;
     public readonly FixedPoint2 Amount;
@@ -95,7 +95,7 @@ public sealed class InjectorFabticatorSetReagentMessage : BoundUserInterfaceMess
 }
 
 [Serializable, NetSerializable]
-public sealed class InjectorFabticatorRemoveReagentMessage : BoundUserInterfaceMessage
+public sealed partial class InjectorFabticatorRemoveReagentMessage : BoundUserInterfaceMessage
 {
     public readonly ReagentId ReagentId;
 
@@ -106,7 +106,7 @@ public sealed class InjectorFabticatorRemoveReagentMessage : BoundUserInterfaceM
 }
 
 [Serializable, NetSerializable]
-public sealed class InjectorFabticatorProduceMessage : BoundUserInterfaceMessage
+public sealed partial class InjectorFabticatorProduceMessage : BoundUserInterfaceMessage
 {
     public readonly int Amount;
     public readonly string? CustomName;
@@ -119,10 +119,10 @@ public sealed class InjectorFabticatorProduceMessage : BoundUserInterfaceMessage
 }
 
 [Serializable, NetSerializable]
-public sealed class InjectorFabticatorEjectMessage : BoundUserInterfaceMessage { }
+public sealed partial class InjectorFabticatorEjectMessage : BoundUserInterfaceMessage { }
 
 [Serializable, NetSerializable]
-public sealed class InjectorFabticatorSyncRecipeMessage : BoundUserInterfaceMessage
+public sealed partial class InjectorFabticatorSyncRecipeMessage : BoundUserInterfaceMessage
 {
     public readonly Dictionary<ReagentId, FixedPoint2>? Recipe;
 

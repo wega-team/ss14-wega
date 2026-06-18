@@ -9,7 +9,7 @@ public enum GpsUiKey : byte
 }
 
 [Serializable, NetSerializable]
-public sealed class GpsUpdateState : BoundUserInterfaceState
+public sealed partial class GpsUpdateState : BoundUserInterfaceState
 {
     public NetEntity? MapUid { get; }
     public string CurrentGpsName { get; }
@@ -42,7 +42,7 @@ public sealed class GpsUpdateState : BoundUserInterfaceState
 }
 
 [Serializable, NetSerializable]
-public sealed class UpdateGpsNameMessage : BoundUserInterfaceMessage
+public sealed partial class UpdateGpsNameMessage : BoundUserInterfaceMessage
 {
     public string NewName { get; }
 
@@ -53,7 +53,7 @@ public sealed class UpdateGpsNameMessage : BoundUserInterfaceMessage
 }
 
 [Serializable, NetSerializable]
-public sealed class UpdateGpsDescriptionMessage : BoundUserInterfaceMessage
+public sealed partial class UpdateGpsDescriptionMessage : BoundUserInterfaceMessage
 {
     public string NewDescription { get; }
 
@@ -64,7 +64,7 @@ public sealed class UpdateGpsDescriptionMessage : BoundUserInterfaceMessage
 }
 
 [Serializable, NetSerializable]
-public sealed class ToggleGpsBroadcastMessage : BoundUserInterfaceMessage
+public sealed partial class ToggleGpsBroadcastMessage : BoundUserInterfaceMessage
 {
     public bool Enabled { get; }
 
@@ -75,7 +75,7 @@ public sealed class ToggleGpsBroadcastMessage : BoundUserInterfaceMessage
 }
 
 [Serializable, NetSerializable]
-public sealed class GpsDeviceInfo
+public sealed partial class GpsDeviceInfo
 {
     public NetEntity EntityUid { get; }
     public string Name { get; }
@@ -99,7 +99,7 @@ public sealed class GpsDeviceInfo
 }
 
 [Serializable, NetSerializable]
-public sealed class NavBeaconInfo
+public sealed partial class NavBeaconInfo
 {
     public string Name { get; }
     public string Desc { get; }
@@ -126,7 +126,7 @@ public sealed class NavBeaconInfo
 }
 
 [Serializable, NetSerializable]
-public sealed class LavaTileInfo
+public sealed partial class LavaTileInfo
 {
     public (int X, int Y) Coordinates { get; }
     public Color Color { get; }

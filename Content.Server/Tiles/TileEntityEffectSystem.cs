@@ -4,10 +4,10 @@ using Content.Shared.Whitelist; // Corvax-Wega-Lavaland
 
 namespace Content.Server.Tiles;
 
-public sealed class TileEntityEffectSystem : EntitySystem
+public sealed partial class TileEntityEffectSystem : EntitySystem
 {
-    [Dependency] private readonly SharedEntityEffectsSystem _entityEffects = default!;
-    [Dependency] private readonly EntityWhitelistSystem _entityWhitelist = default!; // Corvax-Wega-Lavaland
+    [Dependency] private SharedEntityEffectsSystem _entityEffects = default!;
+    [Dependency] private EntityWhitelistSystem _entityWhitelist = default!; // Corvax-Wega-Lavaland
 
     public override void Initialize()
     {

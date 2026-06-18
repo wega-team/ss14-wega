@@ -5,7 +5,7 @@ using static Robust.Client.UserInterface.Controls.BaseButton; // Corvax-Wega-Rec
 
 namespace Content.Client.StationRecords;
 
-public sealed class GeneralStationRecordConsoleBoundUserInterface : BoundUserInterface
+public sealed partial class GeneralStationRecordConsoleBoundUserInterface : BoundUserInterface
 {
     [ViewVariables]
     private GeneralStationRecordConsoleWindow? _window = default!;
@@ -14,8 +14,8 @@ public sealed class GeneralStationRecordConsoleBoundUserInterface : BoundUserInt
     {
     }
 
-    [Dependency] private readonly IEntityManager _entityManager = default!; // Corvax-Wega-Record
-    [Dependency] private readonly ISharedPlayerManager _playerManager = default!; // Corvax-Wega-Record
+    [Dependency] private IEntityManager _entityManager = default!; // Corvax-Wega-Record
+    [Dependency] private ISharedPlayerManager _playerManager = default!; // Corvax-Wega-Record
 
     protected override void Open()
     {

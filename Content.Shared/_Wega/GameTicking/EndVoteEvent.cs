@@ -1,5 +1,5 @@
 namespace Content.Shared.GameTicking;
 
-public sealed class VoteRoundEndEvent : EntityEventArgs
+public sealed partial class VoteRoundEndEvent : EntityEventArgs
 {
 }

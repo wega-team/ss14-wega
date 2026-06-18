@@ -33,7 +33,7 @@ public sealed partial class DirtableComponent : Component
 }
 
 [Serializable, NetSerializable]
-public sealed class DirtableComponentState : ComponentState
+public sealed partial class DirtableComponentState : ComponentState
 {
     public FixedPoint2 CurrentDirtLevel;
     public Color DirtColor;

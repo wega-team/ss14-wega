@@ -1,6 +1,6 @@
 namespace Content.Shared.CartridgeLoader.Cartridges;
 
-public abstract class SharedNanoChatCartridgeSystem : EntitySystem
+public abstract partial class SharedNanoChatCartridgeSystem : EntitySystem
 {
     public override void Initialize()
     {

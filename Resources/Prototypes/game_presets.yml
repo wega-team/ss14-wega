@@ -146,7 +146,7 @@
   rules:
   - DummyNonAntagChance
   - Traitor
-  - SubGamemodesRuleNoWizard
+  - SubGamemodesTraitVampRule # Corvax-Wega-Edit
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler

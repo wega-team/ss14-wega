@@ -252,7 +252,7 @@ public sealed partial class GpsWindow : BaseWindow
     }
 }
 
-public sealed class GpsDeviceControl : PanelContainer
+public sealed partial class GpsDeviceControl : PanelContainer
 {
     public GpsDeviceControl(GpsDeviceInfo device)
     {
@@ -335,7 +335,7 @@ public sealed class GpsDeviceControl : PanelContainer
     }
 }
 
-public sealed class NavBeaconControl : PanelContainer
+public sealed partial class NavBeaconControl : PanelContainer
 {
     public NavBeaconControl(NavBeaconInfo beacon)
     {

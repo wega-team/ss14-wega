@@ -3,14 +3,18 @@ using Robust.Shared.GameStates;
 
 namespace Content.Shared.Posing;
 
+[Access(typeof(SharedPosingSystem))]
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true)]
 public sealed partial class PosingComponent : Component
 {
-    [ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
+    [ViewVariables(VVAccess.ReadOnly), AutoNetworkedField]
     public Vector2 CurrentOffset = Vector2.Zero;
 
-    [ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
+    [ViewVariables(VVAccess.ReadOnly), AutoNetworkedField]
     public Angle CurrentAngle = Angle.Zero;
+
+    [ViewVariables(VVAccess.ReadOnly), AutoNetworkedField]
+    public bool Posing = false;
 
     [DataField, AutoNetworkedField]
     public Vector2 OffsetLimits = new(0.3f, 0.3f);
@@ -18,10 +22,7 @@ public sealed partial class PosingComponent : Component
     [DataField, AutoNetworkedField]
     public float AngleLimits = 180f;
 
-    [ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
-    public bool Posing = false;
-
-    [DataField]
+    [DataField("defaultInput")]
     public string DefaultInputContext = "human";
 
     [DataField]

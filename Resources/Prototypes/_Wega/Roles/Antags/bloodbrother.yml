@@ -11,3 +11,19 @@
   - !type:DepartmentTimeRequirement
     department: Security
     time: 25h
+
+- type: antagSpecifier
+  parent: RestrictedAntag
+  id: BloodBrother
+  prefRoles:
+  - BloodBrother
+  allowNonHumans: true
+  multiAntagSetting: None
+  blacklist:
+    components:
+    - AntagImmune
+    - Pacified # Diona ha-ha-ha
+  mindRoles:
+  - MindRoleBloodBrother
+  briefing:
+    sound: "/Audio/Misc/thief_greeting.ogg"

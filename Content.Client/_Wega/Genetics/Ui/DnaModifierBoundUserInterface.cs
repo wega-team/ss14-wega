@@ -7,7 +7,7 @@ using Robust.Client.UserInterface;
 namespace Content.Client._Wega.Genetics.Ui;
 
 [UsedImplicitly]
-public sealed class DnaModifierBoundUserInterface : BoundUserInterface
+public sealed partial class DnaModifierBoundUserInterface : BoundUserInterface
 {
     [ViewVariables]
     private DnaModifierWindow? _window;

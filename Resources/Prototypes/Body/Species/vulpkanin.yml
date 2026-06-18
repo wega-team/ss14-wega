@@ -63,6 +63,7 @@
 - type: entity
   parent: BaseSpeciesAppearance
   id: AppearanceVulpkanin
+  categories: [ HideSpawnMenu ]
   name: vulpkanin appearance
   components:
   - type: InitialBody
@@ -202,6 +203,8 @@
     speechSounds: Vulpkanin
     speechVerb: Vulpkanin
     allowedEmotes: [ 'Bark', 'Snarl', 'Whine', 'Howl', 'Growl' ]
+  - type: TypingIndicator
+    proto: vulpkanin
   - type: Vocal
     sounds:
       Male: MaleVulpkanin
@@ -247,7 +250,11 @@
     bloodReferenceSolution:
       reagents:
       - ReagentId: SulfurBlood
-        Quantity: 300
+        Quantity: 600
+  - type: CreamPied
+    sprite:
+      sprite: Effects/creampie.rsi
+      state: creampie_vulpkanin
   # Corvax-Vulp_Port start
   - type: GrowlingAccent
   - type: Respirator
@@ -317,6 +324,14 @@
     dependentHidingLayers:
       enum.HumanoidVisualLayers.Snout:
       - enum.HumanoidVisualLayers.SnoutCover
+    # Corvax-Wega-Gradient-Start
+    # markingsDisplacement:
+    #   Hair:
+    #     sizeMaps:
+    #       32:
+    #         sprite: Mobs/Species/Vulpkanin/displacement.rsi
+    #         state: hair
+    # Corvax-Wega-Gradient-End
 
 - type: entity
   parent: [ OrganBaseArmLeft, OrganVulpkaninExternal ]

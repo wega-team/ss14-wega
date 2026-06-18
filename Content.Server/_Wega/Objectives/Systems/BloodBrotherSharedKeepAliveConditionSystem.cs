@@ -4,11 +4,11 @@ using Content.Shared.Objectives.Components;
 
 namespace Content.Server.Objectives.Systems;
 
-public sealed class BloodBrotherSharedKeepAliveConditionSystem : EntitySystem
+public sealed partial class BloodBrotherSharedKeepAliveConditionSystem : EntitySystem
 {
-    [Dependency] private readonly SharedMindSystem _mind = default!;
-    [Dependency] private readonly TargetObjectiveSystem _target = default!;
-    [Dependency] private readonly BloodBrotherSharedConditionSystem _sharedCondition = default!;
+    [Dependency] private SharedMindSystem _mind = default!;
+    [Dependency] private TargetObjectiveSystem _target = default!;
+    [Dependency] private BloodBrotherSharedConditionSystem _sharedCondition = default!;
 
     public override void Initialize()
     {
