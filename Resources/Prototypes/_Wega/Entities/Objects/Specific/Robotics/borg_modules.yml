@@ -585,7 +585,7 @@
         whitelist:
           tags:
           - Lollipops
-    - item: BorgDrinkSolutionWaterCommon
+    - item: BorgDrinkSolutionBase
     - item: BorgGeneratorCup
     - hand:
         emptyLabel: borg-slot-chemical-containers-empty
@@ -1184,20 +1184,8 @@
         blacklist:
           components:
           - Clothing
-    - item: BorgDrinkSolutionWater
-      hand:
-        emptyLabel: borg-slot-drinks-empty
-        emptyRepresentative: BorgDrinkSolutionWater
-        whitelist:
-          tags:
-          - Itemborg
-    - hand:
-        emptyLabel: borg-slot-drinks-empty
-        emptyRepresentative: BorgDrinkSolutionCoffe
-        whitelist:
-          tags:
-          - Itemborg
-    - item: BorgGeneratorDrinkGlass
+          - SolutionContainerVisuals
+    - item: BorgDrinkSolutionPro
     - hand:
         emptyLabel: borg-slot-chemical-containers-empty
         emptyRepresentative: DrinkGlass
@@ -1206,6 +1194,7 @@
           - FitsInDispenser
           tags:
           - ChemDispensable
+    - item: BorgGeneratorDrinkGlass
     - item: BoxFreezer
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: cook-rare }

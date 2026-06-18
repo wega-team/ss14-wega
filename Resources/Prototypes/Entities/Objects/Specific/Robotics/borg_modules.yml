@@ -1387,19 +1387,7 @@
           # components:
           # - FitsInDispenser
     # - item: BarSpoon
-    - item: BorgDrinkSolutionWaterBase
-      hand:
-        emptyLabel: borg-slot-drinks-empty
-        emptyRepresentative: BorgDrinkSolutionWaterBase
-        whitelist:
-          tags:
-          - Itemborg
-    - hand:
-        emptyLabel: borg-slot-drinks-empty
-        emptyRepresentative: BorgDrinkSolutionBeerBase
-        whitelist:
-          tags:
-          - Itemborg
+    - item: BorgDrinkSolutionBase
     - item: BorgGeneratorCup
     - hand:
         emptyLabel: borg-slot-chemical-containers-empty
