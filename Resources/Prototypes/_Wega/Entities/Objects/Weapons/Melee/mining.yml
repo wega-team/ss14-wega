@@ -111,13 +111,12 @@
     animation: WeaponArcThrust
     attackRate: 2
     wideAnimationRotation: -135
+    angle: 0
     damage:
       types:
         Piercing: 12
         Blunt: 2
         Slash: 2
-    angle: 0
-    animation: WeaponArcThrust
     soundHit:
       collection: MetalThud
   - type: Tag
