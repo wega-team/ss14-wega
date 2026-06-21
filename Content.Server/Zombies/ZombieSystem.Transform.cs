@@ -47,7 +47,6 @@ using Content.Shared.NPC.Prototypes;
 using Content.Shared.Roles;
 using Content.Shared.Temperature.Components;
 using Content.Server.NPC.Components; // Corvax-Wega-Zombie
-using Content.Server.Mind; // Corvax-wega-Zomnie
 using Content.Shared.Mind; // Corvax-wega-Zomnie
 using Robust.Shared.Utility;
 
