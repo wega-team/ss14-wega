@@ -11,6 +11,7 @@ using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
+using Content.Shared.Mind; // Corvax-wega-Zomnie
 
 namespace Content.Shared.Zombies;
 
@@ -84,6 +85,8 @@ public sealed partial class ZombieComponent : Component
 
     [DataField("zombieStatusIcon")]
     public ProtoId<FactionIconPrototype> StatusIcon { get; set; } = "ZombieFaction";
+
+    public ProtoId<MindChannelPrototype> MindChat { get; set; } = "MindZombie"; // Corvax-Wega-Add
 
     /// <summary>
     /// Healing each second
