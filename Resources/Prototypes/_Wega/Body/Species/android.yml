@@ -141,7 +141,7 @@
       LegRight: OrganAndroidLegRight
       FootLeft: OrganAndroidFootLeft
       FootRight: OrganAndroidFootRight
-      Brain: PositronicBrain
+      Brain: OrganAndroidBrain
       Eyes: OrganAndroidEyes
       Lungs: OrganAndroidGas
       Heart: OrganAndroidTyrium
@@ -521,6 +521,34 @@
     tags:
     - BaseBodyPart
     - RightFootSynthetic
+
+- type: entity
+  parent: [ OrganAndroidInternal ]
+  id: OrganAndroidBrain
+  name: advanced posibrain
+  description: A more complex and powerful positron brain.
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Android/parts.rsi
+    layers:
+      - state: posibrain
+  - type: BorgBrain
+  - type: Brain
+  - type: Organ
+    category: Brain
+  - type: GibbableOrgan
+  - type: InputMover
+  - type: Examiner
+  - type: BlockMovement
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - BaseOrgan
+    - BrainSynthetic
+  - type: PointLight
+    radius: 2
+    energy: 2
+    color: "#5290d2ff"
 
 - type: entity
   parent: [ OrganBaseLungs, OrganAndroidInternal, OrganAndroidMetabolizer ]
