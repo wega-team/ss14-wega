@@ -1327,7 +1327,7 @@
           components:
           - ResearchDisk
           - TechnologyDisk
-    - item: TechDiskBag
+    - item: TechDiskBagBorg
 # Corvax-Wega-end
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: anomaly-module } # Corvax-Wega-add

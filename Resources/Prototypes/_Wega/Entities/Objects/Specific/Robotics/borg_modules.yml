@@ -189,7 +189,7 @@
           components:
           - ResearchDisk
           - TechnologyDisk
-    - item: TechDiskBag
+    - item: TechDiskBagT3Borg
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: adv-anomaly-module }
 

@@ -176,6 +176,10 @@ ent-HolofanProjectorBorgSci = встроенный атмос голопроек
     .suffix = Борг НИО
 ent-HoloFanSci = { ent-HoloFan }
     .desc = { ent-HoloFan.desc }
+ent-TechDiskBagBorg = { ent-TechDiskBag }
+    .desc = { ent-TechDiskBag.desc }
+ent-TechDiskBagT3Borg = { ent-TechDiskBagT3 }
+    .desc = { ent-TechDiskBagT3.desc }
 
 # Синдикат
 ent-ModuleSyndiWeapon = модуль настройки оружия киборга
