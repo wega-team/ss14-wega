@@ -11,7 +11,7 @@
       path: /Audio/Misc/camera_snap.ogg
     range: 1
     slowTo: 1
-    duration: 0.5
+    aoeFlashDuration: 0.5
   - type: LimitedCharges
     maxCharges: 2
   - type: AutoRecharge
