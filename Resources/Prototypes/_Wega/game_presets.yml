@@ -110,4 +110,4 @@
   description: sectet-large-description
   showInVote: true
   rules:
-    - WegaSecretLarge
+    - SubSecretLarge
