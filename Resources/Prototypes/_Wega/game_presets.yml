@@ -91,3 +91,23 @@
     - MeteorSwarmScheduler
     - SpaceTrafficControlEventScheduler
     - BasicRoundstartVariation
+
+- type: gamePreset
+  id: SecretLight
+  alias:
+    - secretlight
+  name: sectet-light-title
+  description: sectet-light-description
+  showInVote: true
+  rules:
+    - SubSecretSmall
+
+- type: gamePreset
+  id: SecretLarge
+  alias:
+    - secretlarge
+  name: sectet-large-title
+  description: sectet-large-description
+  showInVote: true
+  rules:
+    - WegaSecretLarge
