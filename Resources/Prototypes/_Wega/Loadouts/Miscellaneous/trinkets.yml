@@ -167,6 +167,13 @@
   groupBy: "wegaSelector"
 
 - type: loadout
+  id: GlovesSelector
+  storage:
+    back:
+    - GlovesSelector
+  groupBy: "wegaSelector"
+
+- type: loadout
   id: ClothingMaskNeckGaiter
   storage:
     back:

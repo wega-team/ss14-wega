@@ -548,3 +548,6 @@
   
 - type: Tag
   id: BorgModuleSyndicateMedical
+
+- type: Tag
+  id: TechnologyDiskT3

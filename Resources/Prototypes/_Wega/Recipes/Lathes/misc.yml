@@ -43,7 +43,17 @@
   result: TechDiskBag
   categories:
   - Clothing
-  completetime: 5
+  completetime: 3
+  materials:
+    Cloth: 300
+    Durathread: 100
+    
+- type: latheRecipe
+  id: TechDiskBagT3
+  result: TechDiskBagT3
+  categories:
+  - Clothing
+  completetime: 3
   materials:
     Cloth: 300
     Durathread: 100
