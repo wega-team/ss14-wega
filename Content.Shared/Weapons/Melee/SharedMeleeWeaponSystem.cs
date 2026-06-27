@@ -494,7 +494,7 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
         // If I do not come back later to fix Light Attacks being Heavy Attacks you can throw me in the spider pit -Errant
         // Corvax-Wega-Edit-Start
         // var damage = GetDamage(meleeUid, user, component) * GetHeavyDamageModifier(meleeUid, user, component);
-        var damage = GetDamage(meleeUid, user, component) * 0.75f;
+        var damage = GetDamage(meleeUid, user, component) * 1.25f;
         // Corvax-Wega-Edit-End
         var target = GetEntity(ev.Target);
         var resistanceBypass = GetResistanceBypass(meleeUid, user, component);
