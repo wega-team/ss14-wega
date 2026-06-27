@@ -3,7 +3,7 @@
   id: Trinkets
   name: loadout-group-trinkets
   minLimit: 0
-  maxLimit: 4 # Corvax-Wega-Change 3
+  maxLimit: 4 # Corvax-Wega-Change
   loadouts:
   - SpaceLaw # Corvax-HyperLink
   - FlowerWreath

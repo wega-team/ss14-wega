@@ -119,7 +119,6 @@ public sealed partial class TechnologyDiskSystem : EntitySystem
 		// Corvax-Wega-start
         if (ent.Comp.Tier == 3)
 			_tagSystem.AddTag(ent, TechnologyDiskT3Tag);
-			return;
 		// Corvax-Wega-End
     }
 
