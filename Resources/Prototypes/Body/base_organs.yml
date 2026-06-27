@@ -21,6 +21,16 @@
   parent: BaseItem
   components:
   - type: Organ
+# Corvax-Wega-Edit-Start
+  - type: Extractable
+    grindableSolutionName: food
+  - type: Solution
+    id: food
+    solution:
+      reagents:
+      - ReagentId: UncookedAnimalProteins
+        Quantity: 5
+# Corvax-Wega-Edit-End
 
 - type: entity
   parent: OrganBase
