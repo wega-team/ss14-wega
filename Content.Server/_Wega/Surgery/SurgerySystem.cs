@@ -50,6 +50,8 @@ public sealed partial class SurgerySystem : EntitySystem
     private static readonly ProtoId<DamageTypePrototype> SlashDamage = "Slash";
     private static readonly ProtoId<DamageTypePrototype> PiercingDamage = "Piercing";
     private static readonly ProtoId<DamageTypePrototype> HeatDamage = "Heat";
+    private static readonly ProtoId<DamageTypePrototype> ColdDamage = "Cold";
+    private static readonly ProtoId<DamageTypePrototype> ShockDamage = "Shock";
 
     private static readonly List<ProtoId<ToolQualityPrototype>> SurgeryTools = new()
     {

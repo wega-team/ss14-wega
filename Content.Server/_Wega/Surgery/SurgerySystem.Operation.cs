@@ -22,6 +22,8 @@ using Content.Shared.Traits.Assorted;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Content.Shared.Veil.Cult;
+using Content.Shared.Veil.Cult.Components;
 
 namespace Content.Server.Surgery;
 
@@ -31,6 +33,7 @@ public sealed partial class SurgerySystem
     [Dependency] private SharedDirtSystem _dirt = default!;
     [Dependency] private SharedSubdermalImplantSystem _implant = default!;
     [Dependency] private SharedInternalStorageSystem _internal = default!;
+    [Dependency] private SharedVeilCultSystem _veilCult = default!;
 
     private void PerformSurgeryEffect(SurgeryActionType action, string? requiredPart, ProtoId<InternalDamagePrototype>? damageType, float successChance,
         List<SurgeryFailedType>? failureEffect, EntityUid patient, EntityUid? item)
@@ -83,6 +86,16 @@ public sealed partial class SurgerySystem
 
             case SurgeryActionType.RetrieveItems:
                 PerformRetrieveItems((patient, comp), requiredPart, successChance, failureEffect);
+                break;
+
+            case SurgeryActionType.VeilCultistDeconvertation:
+                PerformVeilCultistDeconvertation((patient, comp), successChance, failureEffect);
+                break;
+            case SurgeryActionType.BurnHeal:
+                PerformBurnHeal((patient, comp), successChance, failureEffect);
+                break;
+            case SurgeryActionType.BruteHeal:
+                PerformBruteHeal((patient, comp), successChance, failureEffect);
                 break;
             // Organic End
 
@@ -346,6 +359,50 @@ public sealed partial class SurgerySystem
         else
             _admin.Add(LogType.Action, LogImpact.Medium,
                 $"{ToPrettyString(patient.Comp.Surgeon.Value):user} retrieved items from {requiredPart} of {ToPrettyString(patient):target}");
+    }
+
+    private void PerformVeilCultistDeconvertation(Entity<OperatedComponent> patient, float successChance, List<SurgeryFailedType>? failureEffect)
+    {
+        if (patient.Comp.Surgeon == null || !HasComp<VeilCultistComponent>(patient))
+            return;
+
+        if (!RollSuccess(patient, patient.Comp.Surgeon.Value, successChance))
+            HandleFailure(patient, failureEffect);
+
+        if (HasComp<VeilCultistComponent>(patient))
+            _veilCult.CultistDeconvertation(patient);
+    }
+
+    private void PerformBurnHeal(Entity<OperatedComponent> patient, float successChance, List<SurgeryFailedType>? failureEffect)
+    {
+        if (patient.Comp.Surgeon == null)
+            return;
+
+        if (!RollSuccess(patient, patient.Comp.Surgeon.Value, successChance))
+            HandleFailure(patient, failureEffect);
+
+        var healAmount = new DamageSpecifier
+        {
+            DamageDict = { { HeatDamage, -50f }, { ColdDamage, -50f }, { ShockDamage, -50f } }
+        };
+
+        _damage.TryChangeDamage(patient.Owner, healAmount, true, false);
+    }
+
+    private void PerformBruteHeal(Entity<OperatedComponent> patient, float successChance, List<SurgeryFailedType>? failureEffect)
+    {
+        if (patient.Comp.Surgeon == null)
+            return;
+
+        if (!RollSuccess(patient, patient.Comp.Surgeon.Value, successChance))
+            HandleFailure(patient, failureEffect);
+
+        var healAmount = new DamageSpecifier
+        {
+            DamageDict = { { BluntDamage, -50f }, { PiercingDamage, -50f }, { SlashDamage, -50f } }
+        };
+
+        _damage.TryChangeDamage(patient.Owner, healAmount, true, false);
     }
 
     #endregion Organic

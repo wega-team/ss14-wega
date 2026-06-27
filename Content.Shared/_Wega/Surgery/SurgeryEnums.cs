@@ -14,6 +14,9 @@ public enum SurgeryActionType : byte
     RemoveImplant,
     StoreItem,
     RetrieveItems,
+    VeilCultistDeconvertation,
+    BurnHeal,
+    BruteHeal,
     // Synthetic
     Unscrew,
     Screw,
