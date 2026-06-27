@@ -18,8 +18,6 @@
   - !type:AddComponentSpecial
     components:
     - type: BibleUser #Lets them heal with bibles
-  - !type:AddImplantSpecial
-    implants: [ MindShieldImplant ] # Corvax-Wega-Edit
 
 - type: startingGear
   id: ChaplainGear
