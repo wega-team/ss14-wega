@@ -1,0 +1,36 @@
+- type: entity
+  parent: BaseStructure
+  id: HangedManStructure
+  name: noose
+  description: A grim noose of cables hanging from above. Drag someone onto it to hang them.
+  components:
+  - type: Sprite
+    noRot: true
+    sprite: _Wega/Clothing/Neck/Cloaks/hangedman.rsi
+    state: icon
+    scale: 0.8, 0.8
+  # Passable - you can walk through the noose.
+  - type: Fixtures
+    fixtures: {}
+  - type: HangedManStructure
+  - type: Tag
+    tags:
+    - Unstackable
+  - type: Construction
+    graph: HangedManStructure
+    node: hangedman
+  - type: Damageable
+    damageContainer: StructuralInorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          CableApcStack1:
+            min: 5
+            max: 10
