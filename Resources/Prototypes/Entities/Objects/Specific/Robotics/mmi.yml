@@ -68,6 +68,7 @@
   - type: Brain
   - type: Organ
     category: Brain
+  - type: GibbableOrgan
   - type: Tag
     tags:
     - CannotSuicide
@@ -165,6 +166,7 @@
     - type: Brain
     - type: Organ
       category: Brain
+    - type: GibbableOrgan
     - type: ItemSlots
       slots:
         gps_slot:
