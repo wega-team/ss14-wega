@@ -3,11 +3,6 @@
   graph: HangedManStructure
   startNode: start
   targetNode: hangedman
-  name: висельница
-  description: Зловещая петля из кабелей. Перетащите кого-нибудь на неё, чтобы повесить.
-  icon:
-    sprite: _Wega/Clothing/Neck/Cloaks/hangedman.rsi
-    state: icon
   category: construction-category-structures
   objectType: Structure
   placementMode: SnapgridCenter

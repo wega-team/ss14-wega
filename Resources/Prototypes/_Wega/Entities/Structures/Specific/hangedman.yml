@@ -20,6 +20,7 @@
     graph: HangedManStructure
     node: hangedman
   - type: Damageable
+  - type: Injurable
     damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:

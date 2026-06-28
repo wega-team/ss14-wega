@@ -58,7 +58,7 @@ public abstract class HangedManRopeOverlay : Overlay
         var query = _entManager.EntityQueryEnumerator<HangedManVictimComponent, TransformComponent>();
         while (query.MoveNext(out var uid, out var victim, out var xform))
         {
-            if (xform.MapID != _eye.CurrentMap)
+            if (xform.MapID != args.MapId)
                 continue;
 
             // Facing the viewer (north/away) -> rope on top; otherwise rope behind.
