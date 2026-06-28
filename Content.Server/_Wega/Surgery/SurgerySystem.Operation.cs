@@ -24,6 +24,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Content.Shared.Veil.Cult;
 using Content.Shared.Veil.Cult.Components;
+using Content.Shared.Medical.Healing;
 
 namespace Content.Server.Surgery;
 
@@ -91,11 +92,8 @@ public sealed partial class SurgerySystem
             case SurgeryActionType.VeilCultistDeconvertation:
                 PerformVeilCultistDeconvertation((patient, comp), successChance, failureEffect);
                 break;
-            case SurgeryActionType.BurnHeal:
-                PerformBurnHeal((patient, comp), successChance, failureEffect);
-                break;
-            case SurgeryActionType.BruteHeal:
-                PerformBruteHeal((patient, comp), successChance, failureEffect);
+            case SurgeryActionType.SurgicalHeal:
+                PerformSurgicalHeal((patient, comp), successChance, failureEffect, item);
                 break;
             // Organic End
 
@@ -373,7 +371,7 @@ public sealed partial class SurgerySystem
             _veilCult.CultistDeconvertation(patient);
     }
 
-    private void PerformBurnHeal(Entity<OperatedComponent> patient, float successChance, List<SurgeryFailedType>? failureEffect)
+    private void PerformSurgicalHeal(Entity<OperatedComponent> patient, float successChance, List<SurgeryFailedType>? failureEffect, EntityUid? item)
     {
         if (patient.Comp.Surgeon == null)
             return;
@@ -381,26 +379,10 @@ public sealed partial class SurgerySystem
         if (!RollSuccess(patient, patient.Comp.Surgeon.Value, successChance))
             HandleFailure(patient, failureEffect);
 
-        var healAmount = new DamageSpecifier
-        {
-            DamageDict = { { HeatDamage, -50f }, { ColdDamage, -50f }, { ShockDamage, -50f } }
-        };
-
-        _damage.TryChangeDamage(patient.Owner, healAmount, true, false);
-    }
-
-    private void PerformBruteHeal(Entity<OperatedComponent> patient, float successChance, List<SurgeryFailedType>? failureEffect)
-    {
-        if (patient.Comp.Surgeon == null)
+        if (!TryComp<HealingComponent>(item, out var healing))
             return;
 
-        if (!RollSuccess(patient, patient.Comp.Surgeon.Value, successChance))
-            HandleFailure(patient, failureEffect);
-
-        var healAmount = new DamageSpecifier
-        {
-            DamageDict = { { BluntDamage, -50f }, { PiercingDamage, -50f }, { SlashDamage, -50f } }
-        };
+        var healAmount = healing.Damage * 10;
 
         _damage.TryChangeDamage(patient.Owner, healAmount, true, false);
     }

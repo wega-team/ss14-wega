@@ -50,7 +50,7 @@
       steps:
         - tag: [ Brutepack ]
           entityPreview: Brutepack1
-          action: BruteHeal
+          action: SurgicalHeal
           sound:
             path: /Audio/Items/Medical/brutepack_end.ogg
           time: 8
@@ -64,7 +64,7 @@
           time: 4
         - tag: [ Brutepack ]
           entityPreview: Brutepack1
-          action: BruteHeal
+          action: SurgicalHeal
           sound:
             path: /Audio/Items/Medical/brutepack_end.ogg
           time: 8
@@ -78,7 +78,7 @@
           time: 4
         - tag: [ Brutepack ]
           entityPreview: Brutepack1
-          action: BruteHeal
+          action: SurgicalHeal
           sound:
             path: /Audio/Items/Medical/brutepack_end.ogg
           time: 8
@@ -168,7 +168,7 @@
       steps:
         - tag: [ Ointment ]
           entityPreview: Ointment1
-          action: BurnHeal
+          action: SurgicalHeal
           sound:
             path: /Audio/Items/Medical/ointment_end.ogg
           time: 6
@@ -183,7 +183,7 @@
           successChance: 0.95
         - tag: [ Ointment ]
           entityPreview: Ointment1
-          action: BurnHeal
+          action: SurgicalHeal
           sound:
             path: /Audio/Items/Medical/ointment_end.ogg
           time: 6
@@ -198,7 +198,7 @@
           successChance: 0.95
         - tag: [ Ointment ]
           entityPreview: Ointment1
-          action: BurnHeal
+          action: SurgicalHeal
           sound:
             path: /Audio/Items/Medical/ointment_end.ogg
           time: 6
@@ -291,7 +291,7 @@
       steps:
         - tag: [ Brutepack ]
           entityPreview: Brutepack1
-          action: BruteHeal
+          action: SurgicalHeal
           sound:
             path: /Audio/Items/Medical/brutepack_end.ogg
           time: 8
@@ -305,7 +305,7 @@
           time: 4
         - tag: [ Brutepack ]
           entityPreview: Brutepack1
-          action: BruteHeal
+          action: SurgicalHeal
           sound:
             path: /Audio/Items/Medical/brutepack_end.ogg
           time: 8
@@ -319,7 +319,7 @@
           time: 4
         - tag: [ Brutepack ]
           entityPreview: Brutepack1
-          action: BruteHeal
+          action: SurgicalHeal
           sound:
             path: /Audio/Items/Medical/brutepack_end.ogg
           time: 8
@@ -409,7 +409,7 @@
       steps:
         - tag: [ Ointment ]
           entityPreview: Ointment1
-          action: BurnHeal
+          action: SurgicalHeal
           sound:
             path: /Audio/Items/Medical/ointment_end.ogg
           time: 6
@@ -424,7 +424,7 @@
           successChance: 0.95
         - tag: [ Ointment ]
           entityPreview: Ointment1
-          action: BurnHeal
+          action: SurgicalHeal
           sound:
             path: /Audio/Items/Medical/ointment_end.ogg
           time: 6
@@ -439,7 +439,7 @@
           successChance: 0.95
         - tag: [ Ointment ]
           entityPreview: Ointment1
-          action: BurnHeal
+          action: SurgicalHeal
           sound:
             path: /Audio/Items/Medical/ointment_end.ogg
           time: 6
