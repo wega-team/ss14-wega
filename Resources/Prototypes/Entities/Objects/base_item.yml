@@ -45,6 +45,8 @@
   - type: Pullable
   - type: DamageExaminable
   - type: EdibleMatter # Corvax-Wega-Add
+  - type: BonusMeleeDamage
+    heavyDamageMultiplier: 1.2
 
 - type: entity
   name: "storage item"
