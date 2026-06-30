@@ -7,8 +7,6 @@ namespace Content.Shared.Surgery;
 [DataDefinition]
 public sealed partial class DamageCapCondition : SurgeryStepCondition
 {
-
-
     [DataField("damageCount", required: true)]
     public int DamageCap = 100;
 
