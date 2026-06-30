@@ -1485,15 +1485,12 @@
           - FitsInDispenser
           tags:
           - ChemDispensable
-    - item: Jug
-      hand:
-        emptyLabel: borg-slot-chemical-containers-empty
-        emptyRepresentative: Beaker
+    - hand:
+        emptyLabel: borg-slot-topicals-empty
+        emptyRepresentative: MedicalIcon
         whitelist:
           components:
-          - FitsInDispenser
-          tags:
-          - ChemDispensable
+          - Healing
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: chem-s-module }
  

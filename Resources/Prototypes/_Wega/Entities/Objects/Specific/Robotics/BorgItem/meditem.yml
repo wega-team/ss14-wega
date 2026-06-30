@@ -114,21 +114,23 @@
   - type: SolutionRegeneration
     generated:
       reagents:
-      - ReagentId: Tricordrazine
-        Quantity: 0.5
+      - ReagentId: Beer
+        Quantity: 0
   - type: ChangeableReagent
     reagents:
-    - generated:
-        reagents:
-        - ReagentId: Tricordrazine
-          Quantity: 0.5
+    - reagent:
+      - ReagentId: Beer
+        Quantity: 0
+      name: no-reagent
+    - reagent:
+      - ReagentId: Tricordrazine
+        Quantity: 1
       name: reagent-name-tricordrazine
-    - generated:
-        reagents:
-        - ReagentId: Epinephrine
-          Quantity: 0.5
+    - reagent:
+      - ReagentId: Epinephrine
+        Quantity: 1
       name: reagent-name-epinephrine
-      
+
 - type: entity
   parent: BaseBorgHypoGenerated
   id: BorgHypoGeneratedAdvensed
@@ -139,42 +141,39 @@
   - type: SolutionRegeneration
     generated:
       reagents:
-      - ReagentId: Tricordrazine
-        Quantity: 0.5
+      - ReagentId: Beer
+        Quantity: 0
   - type: ChangeableReagent
     reagents:
-    - generated:
-        reagents:
-        - ReagentId: Tricordrazine
-          Quantity: 0.5
+    - reagent:
+      - ReagentId: Beer
+        Quantity: 0
+      name: no-reagent
+    - reagent:
+      - ReagentId: Tricordrazine
+        Quantity: 1
       name: reagent-name-tricordrazine
-    - generated:
-        reagents:
-        - ReagentId: Epinephrine
-          Quantity: 0.5
+    - reagent:
+      - ReagentId: Epinephrine
+        Quantity: 1
       name: reagent-name-epinephrine
-    - generated:
-        reagents:
-        - ReagentId: Bicaridine
-          Quantity: 0.5
+    - reagent:
+      - ReagentId: Bicaridine
+        Quantity: 1
       name: reagent-name-bicaridine
-    - generated:
-        reagents:
-        - ReagentId: Dermaline
-          Quantity: 0.5
+    - reagent:
+      - ReagentId: Dermaline
+        Quantity: 1
       name: reagent-name-dermaline
-    - generated:
-        reagents:
-        - ReagentId: Dylovene
-          Quantity: 0.5
+    - reagent:
+      - ReagentId: Dylovene
+        Quantity: 1
       name: reagent-name-dylovene
-    - generated:
-        reagents:
-        - ReagentId: Hyronalin
-          Quantity: 0.5
+    - reagent:
+      - ReagentId: Hyronalin
+        Quantity: 1
       name: reagent-name-hyronalin
-    - generated:
-        reagents:
-        - ReagentId: Dexalin
-          Quantity: 0.5
+    - reagent:
+      - ReagentId: Dexalin
+        Quantity: 1
       name: reagent-name-dexalin

@@ -22,7 +22,7 @@
     damage:
       types:
         Structural: 75
-        Blunt: 12
+        Piercing: 9
 
 - type: entity
   parent: BaseItem
@@ -354,27 +354,27 @@
   - type: SolutionRegeneration
     generated:
       reagents:
-      - ReagentId: Omnizine
-        Quantity: 0.5
+      - ReagentId: Beer
+        Quantity: 0
   - type: ChangeableReagent
     reagents:
-    - generated:
-        reagents:
-        - ReagentId: Omnizine
-          Quantity: 0.5
+    - reagent:
+      - ReagentId: Beer
+        Quantity: 0
+      name: no-reagent
+    - reagent:
+      - ReagentId: Omnizine
+        Quantity: 1
       name: reagent-name-omnizine
-    - generated:
-        reagents:
-        - ReagentId: Stimulants
-          Quantity: 0.5
+    - reagent:
+      - ReagentId: Stimulants
+        Quantity: 1
       name: reagent-name-stimulants
-    - generated:
-        reagents:
-        - ReagentId: DexalinPlus
-          Quantity: 0.5
+    - reagent:
+      - ReagentId: DexalinPlus
+        Quantity: 1
       name: reagent-name-dexalin-plus
-    - generated:
-        reagents:
-        - ReagentId: Mutadon
-          Quantity: 0.5
+    - reagent:
+      - ReagentId: Mutadon
+        Quantity: 1
       name: reagent-name-mutadon

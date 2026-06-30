@@ -90,10 +90,11 @@ public sealed partial class ChangeableReagentSystem : EntitySystem
 
         if (user != null)
 			_popupSystem.PopupClient(Loc.GetString("set-reagent", ("reagent", Loc.GetString(Reagent.Name))), uid, user.Value);
-        
+		
 		if (TryComp(uid, out SolutionRegenerationComponent? reagenComp))
         {
-            _solutionrRagents.SetReagent((uid,reagenComp), Reagent.Generated);
+			var newSolution = new Solution(Reagent.Reagent);
+            _solutionrRagents.SetReagent((uid,reagenComp), newSolution);
         }
     }
 }

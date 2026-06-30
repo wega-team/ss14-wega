@@ -147,20 +147,17 @@
         Quantity: 0
   - type: ChangeableReagent
     reagents:
-    - generated:
-        reagents:
-        - ReagentId: Beer
-          Quantity: 0
-      name: bwoink-title-none-selected
-    - generated:
-        reagents:
-        - ReagentId: Water
-          Quantity: 5
+    - reagent:
+      - ReagentId: Beer
+        Quantity: 0
+      name: no-reagent
+    - reagent:
+      - ReagentId: Water
+        Quantity: 5
       name: reagent-name-water
-    - generated:
-        reagents:
-        - ReagentId: Beer
-          Quantity: 5
+    - reagent:
+      - ReagentId: Beer
+        Quantity: 5
       name: reagent-name-beer
 
 - type: entity
@@ -179,40 +176,33 @@
         Quantity: 0
   - type: ChangeableReagent
     reagents:
-    - generated:
-        reagents:
-        - ReagentId: Beer
-          Quantity: 0
-      name: bwoink-title-none-selected
-    - generated:
-        reagents:
-        - ReagentId: Water
-          Quantity: 5
+    - reagent:
+      - ReagentId: Beer
+        Quantity: 0
+      name: no-reagent
+    - reagent:
+      - ReagentId: Water
+        Quantity: 5
       name: reagent-name-water
-    - generated:
-        reagents:
-        - ReagentId: Beer
-          Quantity: 5
+    - reagent:
+      - ReagentId: Beer
+        Quantity: 5
       name: reagent-name-beer
-    - generated:
-        reagents:
-        - ReagentId: Wine
-          Quantity: 5
+    - reagent:
+      - ReagentId: Wine
+        Quantity: 5
       name: reagent-name-wine
-    - generated:
-        reagents:
-        - ReagentId: Coffee
-          Quantity: 5
+    - reagent:
+      - ReagentId: Coffee
+        Quantity: 5
       name: reagent-name-coffee
-    - generated:
-        reagents:
-        - ReagentId: Cola
-          Quantity: 5
+    - reagent:
+      - ReagentId: Cola
+        Quantity: 5
       name: reagent-name-cola
-    - generated:
-        reagents:
-        - ReagentId: Milk
-          Quantity: 5
+    - reagent:
+      - ReagentId: Milk
+        Quantity: 5
       name: reagent-name-milk
 
 #Garding
