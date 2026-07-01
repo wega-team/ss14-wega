@@ -21,7 +21,6 @@ using Content.Shared.Movement.Systems;
 using Content.Shared.NameModifier.EntitySystems;
 using Content.Shared.Nutrition;
 using Content.Shared.Overlays;
-using Content.Shared._Wega.ThermalVision;
 using Content.Shared.Projectiles;
 using Content.Shared.Radio;
 using Content.Shared.Slippery;

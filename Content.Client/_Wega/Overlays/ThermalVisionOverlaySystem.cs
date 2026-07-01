@@ -1,15 +1,16 @@
-using Content.Client.Overlays;
-using Content.Shared._Wega.ThermalVision;
 using Content.Shared.Inventory.Events;
+using Content.Shared.Overlays;
+using Content.Shared.Shaders;
 using Robust.Client.Graphics;
+using Robust.Shared.GameStates;
 
-namespace Content.Client._Wega.ThermalVision;
+namespace Content.Client.Overlays;
 
 /// <summary>
 /// Enables the <see cref="ThermalVisionOverlay"/> whenever the local player has a
 /// <see cref="ThermalVisionComponent"/>, either directly or on a worn item.
 /// </summary>
-public sealed partial class ThermalVisionOverlaySystem : EquipmentHudSystem<ThermalVisionComponent>
+public sealed partial class ThermalVisionSystem : ToggleableEquipmentHudSystem<ThermalVisionComponent>
 {
     [Dependency] private IOverlayManager _overlayMan = default!;
 
@@ -17,9 +18,14 @@ public sealed partial class ThermalVisionOverlaySystem : EquipmentHudSystem<Ther
 
     public override void Initialize()
     {
-        base.Initialize();
-
+		base.Initialize();
+		SubscribeLocalEvent<ThermalVisionComponent, AfterAutoHandleStateEvent>(OnHandleState);
         _overlay = new ThermalVisionOverlay(EntityManager);
+    }
+
+	public void OnHandleState(Entity<ThermalVisionComponent> ent, ref AfterAutoHandleStateEvent args)
+    {
+        RefreshOverlay();
     }
 
     protected override void UpdateInternal(RefreshEquipmentHudEvent<ThermalVisionComponent> component)

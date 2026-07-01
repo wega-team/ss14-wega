@@ -1,6 +1,6 @@
 using Robust.Shared.GameStates;
 
-namespace Content.Shared._Wega.ThermalVision;
+namespace Content.Shared._Wega.Implants.Components;
 
 /// <summary>
 /// Marks a subdermal implant that grants its holder <see cref="ThermalVisionComponent"/>
