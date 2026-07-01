@@ -3,7 +3,7 @@ using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Shared.Enums;
 
-namespace Content.Client._Wega.ThermalVision;
+namespace Content.Client.Overlays;
 
 /// <summary>
 /// Draws the sprite of every living creature (anything with a <see cref="MobStateComponent"/>)

@@ -21,7 +21,6 @@ using Content.Shared.Movement.Systems;
 using Content.Shared.NameModifier.EntitySystems;
 using Content.Shared.Nutrition;
 using Content.Shared.Overlays;
-using Content.Shared._Wega.ThermalVision;
 using Content.Shared.Projectiles;
 using Content.Shared.Radio;
 using Content.Shared.Slippery;
@@ -35,6 +34,7 @@ using Content.Shared.Wieldable;
 using Content.Shared.Zombies;
 using Content.Shared.Lavaland.Events; // Corvax-Wega-Lavaland
 using Content.Shared.Shaders; // Corvax-Wega-NightVision
+using Content.Shared.Overlay; //
 
 namespace Content.Shared.Inventory;
 

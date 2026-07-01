@@ -157,3 +157,8 @@
     slot: [eyes]
     default: ClothingEyesGlassesMeson
   - type: ThermalVision
+  - type: ItemToggle
+    soundActivate: /Audio/_Wega/Items/activate.ogg
+    soundDeactivate: /Audio/_Wega/Items/deactivate.ogg
+    onUse: false
+    onActivate: false

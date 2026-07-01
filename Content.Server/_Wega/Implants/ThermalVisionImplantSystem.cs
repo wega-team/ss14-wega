@@ -1,7 +1,8 @@
-using Content.Shared._Wega.ThermalVision;
+using Content.Shared._Wega.Implants.Components;
 using Content.Shared.Implants;
+using Content.Shared.Overlays;
 
-namespace Content.Server._Wega.ThermalVision;
+namespace Content.Server._Wega.Implants;
 
 /// <summary>
 /// Grants <see cref="ThermalVisionComponent"/> to whoever carries a

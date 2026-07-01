@@ -3,6 +3,7 @@ using Content.Shared.Item.ItemToggle;
 using Content.Shared.Overlays;
 using Content.Shared.Popups;
 using Content.Shared.PowerCell;
+using Content.Shared.Item.ItemToggle.Components;
 using Content.Shared.Toggleable;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Timing;
@@ -23,7 +24,8 @@ public abstract partial class SharedToggleableEquipmentHudSystem<T> : EntitySyst
     {
         base.Initialize();
         SubscribeLocalEvent<T, ToggleActionEvent>(OnToggleAction);
-        SubscribeLocalEvent<T, MapInitEvent>(OnMapInit);
+        SubscribeLocalEvent<T, ComponentInit>(OnInit);
+        SubscribeLocalEvent<T, ComponentShutdown>(OnShutdown);
         SubscribeLocalEvent<T, GetItemActionsEvent>(OnGetItemActions);
     }
 
@@ -50,9 +52,15 @@ public abstract partial class SharedToggleableEquipmentHudSystem<T> : EntitySyst
         }
     }
 
-    private void OnMapInit(Entity<T> ent, ref MapInitEvent args)
+    private void OnInit(Entity<T> ent, ref ComponentInit args)
     {
         _actionContainer.EnsureAction(ent, ref ent.Comp.ActionEntity, ent.Comp.ToggleAction);
+        _actions.AddAction(ent.Owner, ref ent.Comp.ActionEntity, null, container: ent.Owner);
+    }
+
+    private void OnShutdown(Entity<T> ent, ref ComponentShutdown args)
+    {
+        _actions.RemoveAction(ent.Owner, ent.Comp.ActionEntity);
     }
 
     private void OnGetItemActions(Entity<T> ent, ref GetItemActionsEvent args)
@@ -90,7 +98,7 @@ public abstract partial class SharedToggleableEquipmentHudSystem<T> : EntitySyst
 
     private bool TryActivate(Entity<T> ent)
     {
-        if (!_toggle.TryActivate(ent.Owner))
+        if (HasComp<ItemToggleComponent>(ent.Owner) && !_toggle.TryActivate(ent.Owner))
             return false;
 
         ent.Comp.Enabled = true;

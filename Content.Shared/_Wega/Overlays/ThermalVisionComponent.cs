@@ -1,6 +1,7 @@
+using Content.Shared.Overlay;
 using Robust.Shared.GameStates;
 
-namespace Content.Shared._Wega.ThermalVision;
+namespace Content.Shared.Overlays;
 
 /// <summary>
 /// Makes the entity see the heat signatures of living creatures: every entity with a
@@ -8,5 +9,5 @@ namespace Content.Shared._Wega.ThermalVision;
 /// walls and in the dark.
 /// When added to a clothing item it will also grant the wearer the same vision while worn.
 /// </summary>
-[RegisterComponent, NetworkedComponent]
-public sealed partial class ThermalVisionComponent : Component;
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true)]
+public sealed partial class ThermalVisionComponent : ToggleableHudComponent;

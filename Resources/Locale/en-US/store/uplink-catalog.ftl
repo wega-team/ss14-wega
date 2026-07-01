@@ -527,9 +527,3 @@ uplink-energycrossbow-desc = The go-to sidearm of any operative who prefers thei
 #Objective items
 uplink-hijack-beacon-name = Hijack Beacon
 uplink-hijack-beacon-desc = A syndicate-brand hijack beacon designed to get around the firewalls of Nanotrasen-brand Automated Trade Stations. They take 200 seconds to work and Trade Stations will announce they are being hacked, so prepare accordingly.
-
-# Thermal vision
-uplink-thermal-vision-glasses-name = Thermal Vision Goggles
-uplink-thermal-vision-glasses-desc = Goggles that reveal the heat signatures of living creatures through walls and darkness. Disguised as a standard pair of engineering goggles and fitted with chameleon technology to mimic any other eyewear.
-uplink-thermal-vision-implanter-name = Thermal Vision Implanter
-uplink-thermal-vision-implanter-desc = Implants thermal vision, letting the user see the heat signatures of living creatures through walls and darkness.
