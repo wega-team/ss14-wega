@@ -34,7 +34,6 @@ using Content.Shared.Wieldable;
 using Content.Shared.Zombies;
 using Content.Shared.Lavaland.Events; // Corvax-Wega-Lavaland
 using Content.Shared.Shaders; // Corvax-Wega-NightVision
-using Content.Shared.Overlay; //
 
 namespace Content.Shared.Inventory;
 
