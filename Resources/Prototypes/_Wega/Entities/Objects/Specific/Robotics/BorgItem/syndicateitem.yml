@@ -22,7 +22,7 @@
     damage:
       types:
         Structural: 75
-        Blunt: 12
+        Piercing: 9
 
 - type: entity
   parent: BaseItem
@@ -300,3 +300,81 @@
       activeBlockFraction: 0.99
       passiveBlockFraction: 0.8
 
+- type: entity
+  name: handheld crew monitor
+  parent: DefibrillatorSyndicate
+  id: DefibrillatorSyndicateCyborg
+  components:
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMicroreactor
+        disableEject: true
+        swap: false
+
+- type: entity
+  parent: BorgHypo
+  id: BaseBorgHypoSyndie
+  name: borghypo
+  description: A sterile injector for rapid administration of drugs to patients. This integrated model is specialized for use by medical borgs.
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Medical/hypospray.rsi
+    layers:
+    - state: borghypo_s
+      map: [ "enum.SolutionContainerLayers.Base" ]
+    - state: borghypo_fill1
+      map: [ "enum.SolutionContainerLayers.Fill" ]
+      visible: false
+
+- type: entity
+  parent: BaseBorgHypoGenerated
+  id: BaseBorgHypoGeneratedSyndie
+  name: borghypo
+  abstract: true
+  description: A sterile injector for rapid administration of drugs to patients. This integrated model is specialized for use by medical borgs.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Medical/hyno.rsi
+    layers:
+    - state: borghypo_s
+      map: [ "enum.SolutionContainerLayers.Base" ]
+    - state: borghypo_fill1
+      map: [ "enum.SolutionContainerLayers.Fill" ]
+      visible: false
+
+- type: entity
+  parent: BaseBorgHypoGeneratedSyndie
+  id: BorgHypoGeneratedSyndieGeneral
+  components:
+  - type: Solution
+    solution:
+      maxVol: 15
+  - type: SolutionRegeneration
+    generated:
+      reagents:
+      - ReagentId: Beer
+        Quantity: 0
+  - type: ChangeableReagent
+    reagents:
+    - reagent:
+      - ReagentId: Beer
+        Quantity: 0
+      name: no-reagent
+    - reagent:
+      - ReagentId: Omnizine
+        Quantity: 1
+      name: reagent-name-omnizine
+    - reagent:
+      - ReagentId: Stimulants
+        Quantity: 1
+      name: reagent-name-stimulants
+    - reagent:
+      - ReagentId: DexalinPlus
+        Quantity: 1
+      name: reagent-name-dexalin-plus
+    - reagent:
+      - ReagentId: Mutadon
+        Quantity: 1
+      name: reagent-name-mutadon

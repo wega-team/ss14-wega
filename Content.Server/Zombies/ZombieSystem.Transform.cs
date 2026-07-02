@@ -47,6 +47,7 @@ using Content.Shared.NPC.Prototypes;
 using Content.Shared.Roles;
 using Content.Shared.Temperature.Components;
 using Content.Server.NPC.Components; // Corvax-Wega-Zombie
+using Content.Shared.Mind; // Corvax-wega-Zomnie
 using Robust.Shared.Utility;
 
 namespace Content.Server.Zombies;
@@ -328,6 +329,8 @@ public sealed partial class ZombieSystem
             RemComp(target, handsComp);
         }
 
+        var mindLink = EnsureComp<MindLinkComponent>(target); // Corvax-wega-Zomnie
+        mindLink.Channels.Add(zombiecomp.MindChat); // Corvax-wega-Zomnie
         // Sloth: What the fuck?
         // How long until compregistry lmao.
         RemComp<PullerComponent>(target);

@@ -86,6 +86,10 @@
       interactFailureString: petting-failure-carp
       interactFailureSound:
         path: /Audio/Effects/bite.ogg
+# Corvax-Wega-Start
+    - type: MindLink
+      channels: ["MindCarp"]
+# Corvax-Wega-End
 
 - type: entity
   parent: BaseMobCarp

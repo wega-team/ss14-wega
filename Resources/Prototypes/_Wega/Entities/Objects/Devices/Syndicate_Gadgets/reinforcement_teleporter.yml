@@ -1,0 +1,18 @@
+- type: entity
+  parent: ReinforcementRadio
+  id: ReinforcementRadioSyndicateCyborgMedical # Reinforcement radio exclusive to nukeops uplink
+  name: syndicate assault cyborg reinforcement radio
+  description: Call in a well armed assault cyborg, instantly!
+  suffix: NukeOps
+  components:
+    - type: GhostRole
+      name: ghost-role-information-syndicate-cyborg-medical-name
+      description: ghost-role-information-syndicate-medical-description
+      rules: ghost-role-information-silicon-rules
+      mindRoles:
+      - MindRoleGhostRoleSilicon
+      raffle:
+        settings: default
+      job: Borg
+    - type: GhostRoleMobSpawner
+      prototype: PlayerBorgSyndicateMedicalBattery

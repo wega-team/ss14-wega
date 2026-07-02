@@ -55,6 +55,7 @@
   recipeUnlocks:
   - TechDiskComputerCircuitboard
   - TechDiskBag # Corvax-Wega-Add
+  - TechDiskBagT3 # Corvax-Wega-Add
 
 - type: technology
   id: MagnetsTech

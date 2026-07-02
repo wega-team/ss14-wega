@@ -127,6 +127,42 @@
       interactFailureString: petting-failure-syndicate-cyborg
       interactSuccessSound:
         path: /Audio/Ambience/Objects/periodic_beep.ogg
+# Corvax-Wega-Start
+    - type: Inventory
+      templateId: borgDutch
+    - type: EmpResistance
+      strengthMultiplier: 0
+    - type: MobThresholds # tankier
+      thresholds:
+        0: Alive
+        150: Critical
+        300: Dead # Same as destruction threshold. Borgs act exactly like crit when dead, except for ghosting on move
+    - type: Destructible
+      thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 125
+        behaviors:
+        - !type:PlaySoundBehavior
+          sound:
+            path: /Audio/Machines/warning_buzzer.ogg
+            params:
+              volume: 5
+      - trigger:
+          !type:DamageTrigger
+          damage: 300
+        behaviors:
+        - !type:PlaySoundBehavior
+          sound:
+            collection: MetalBreak
+        - !type:EmptyContainersBehaviour
+          containers:
+          - borg_brain
+          - borg_module
+          - cell_slot
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+# Corvax-Wega-End
 
 - type: entity
   id: BorgChassisSyndicateMedical
@@ -146,12 +182,13 @@
           map: ["light"]
           visible: false
     - type: BorgChassis
-      maxModules: 3
+      maxModules: 5 # Corvax-Wega-Add
       moduleWhitelist:
         tags:
           - BorgModuleGeneric
           - BorgModuleMedical
           - BorgModuleSyndicate
+          - BorgModuleSyndicateMedical # Corvax-Wega-add
       hasMindState: synd_medical_e
       noMindState: synd_medical
     - type: ShowHealthBars
@@ -166,6 +203,42 @@
         collection: FootstepHoverBorg
         params:
           volume: -6
+# Corvax-Wega-Start
+    - type: Inventory
+      templateId: borgDutch
+    - type: EmpResistance
+      strengthMultiplier: 0
+    - type: MobThresholds # tankier
+      thresholds:
+        0: Alive
+        125: Critical
+        300: Dead # Same as destruction threshold. Borgs act exactly like crit when dead, except for ghosting on move
+    - type: Destructible
+      thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 100
+        behaviors:
+        - !type:PlaySoundBehavior
+          sound:
+            path: /Audio/Machines/warning_buzzer.ogg
+            params:
+              volume: 5
+      - trigger:
+          !type:DamageTrigger
+          damage: 300
+        behaviors:
+        - !type:PlaySoundBehavior
+          sound:
+            collection: MetalBreak
+        - !type:EmptyContainersBehaviour
+          containers:
+          - borg_brain
+          - borg_module
+          - cell_slot
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+# Corvax-Wega-End
 
 - type: entity
   id: BorgChassisSyndicateSaboteur

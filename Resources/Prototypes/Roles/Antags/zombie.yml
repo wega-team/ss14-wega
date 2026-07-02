@@ -28,6 +28,10 @@
   - type: ZombifyOnDeath
   - type: IncurableZombie
   - type: InitialInfected
+# Corvax-Wega-Start
+  - type: MindLink
+    channels: ["MindZombie"]
+# Corvax-Wega-End
   mindRoles:
   - MindRoleInitialInfected
 

@@ -296,7 +296,7 @@
     steps: 3
   - type: Appearance
   - type: Gun
-    fireRate: 0.5
+    fireRate: 1
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
   - type: Item
@@ -307,10 +307,10 @@
     maxCharge: 1000
     startingCharge: 1000
   - type: BatterySelfRecharger
-    autoRechargeRate: 20
+    autoRechargeRate: 50
   - type: BatteryAmmoProvider
     proto: IonScan
-    fireCost: 500
+    fireCost: 250
 
 - type: entity
   name: energy carabine "Pulsar"

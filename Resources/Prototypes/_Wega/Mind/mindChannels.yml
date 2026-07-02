@@ -21,3 +21,15 @@
   name: diona-mind-channel
   keycode: 'д'
   color: "#4db542"
+
+- type: mindChannel
+  id: MindZombie
+  name: zomnie-mind-channel
+  keycode: 'з'
+  color: "#7e916e"
+  
+- type: mindChannel
+  id: MindCarp
+  name: carp-mind-channel
+  keycode: 'а'
+  color: "#ec1e00"
