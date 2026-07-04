@@ -55,7 +55,7 @@ public abstract partial class SharedToggleableEquipmentHudSystem<T> : EntitySyst
     private void OnInit(Entity<T> ent, ref ComponentInit args)
     {
         _actionContainer.EnsureAction(ent, ref ent.Comp.ActionEntity, ent.Comp.ToggleAction);
-        _actions.AddAction(ent.Owner, ref ent.Comp.ActionEntity, null, container: ent.Owner);
+        _actions.AddAction(ent.Owner, ref ent.Comp.ActionEntity, ent.Comp.ToggleAction);
     }
 
     private void OnShutdown(Entity<T> ent, ref ComponentShutdown args)
