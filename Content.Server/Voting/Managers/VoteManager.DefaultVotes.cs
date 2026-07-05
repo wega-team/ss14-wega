@@ -28,8 +28,6 @@ namespace Content.Server.Voting.Managers
         [Dependency] private ILogManager _logManager = default!;
         [Dependency] private IBanManager _bans = default!;
         [Dependency] private VoteWebhooks _voteWebhooks = default!;
-
-        private List<string> _lastPickedPresets = new(); // Corvax-Wega-Vote
         private List<string> _lastPickedMaps = new(); // Corvax-Wega-Vote
         private VotingSystem? _votingSystem;
         private RoleSystem? _roleSystem;
@@ -221,21 +219,12 @@ namespace Content.Server.Voting.Managers
         {
             var presets = GetGamePresets();
 
-            // Corvax-Wega-Vote-start
-            string? presetToExclude = null;
-            if (_lastPickedPresets.Count == 2 && _lastPickedPresets[0] == _lastPickedPresets[1])
-                presetToExclude = _lastPickedPresets[0];
-
+            var allowedPresets = new[] { "Secret", "Extended" }; // Corvax-Wega-Edit
+        //  var allowedPresets = new[] { "Secret", "Extended", SecretLight, SecretLarge }; // Corvax-Wega-Edit
             var filteredPresets = presets
-                .Where(p => p.Key != presetToExclude)
+                .Where(p => allowedPresets.Contains(p.Key)) // Corvax-Wega-Edit
                 .ToDictionary(p => p.Key, p => p.Value);
 
-            if (filteredPresets.Count == 0)
-            {
-                _lastPickedPresets.Clear();
-                filteredPresets = presets;
-            }
-            // Corvax-Wega-Vote-end
             var alone = _playerManager.PlayerCount == 1 && initiator != null;
             var options = new VoteOptions
             {
@@ -264,19 +253,15 @@ namespace Content.Server.Voting.Managers
                 {
                     picked = (string) _random.Pick(args.Winners);
                     _chatManager.DispatchServerAnnouncement(
-                        Loc.GetString("ui-vote-gamemode-tie", ("picked", Loc.GetString(presets[picked]))));
+                        Loc.GetString("ui-vote-gamemode-tie", ("picked", Loc.GetString(filteredPresets[picked])))); // Corvax-Wega-Edit
                 }
                 else
                 {
                     picked = (string) args.Winner;
                     _chatManager.DispatchServerAnnouncement(
-                        Loc.GetString("ui-vote-gamemode-win", ("winner", Loc.GetString(presets[picked]))));
+                        Loc.GetString("ui-vote-gamemode-win", ("winner", Loc.GetString(filteredPresets[picked]))));
                 }
-                // Corvax-Wega-Vote-start
-                _lastPickedPresets.Add(picked);
-                if (_lastPickedPresets.Count > 2)
-                    _lastPickedPresets.RemoveAt(0);
-                // Corvax-Wega-Vote-end
+
                 _adminLogger.Add(LogType.Vote, LogImpact.Medium, $"Preset vote finished: {picked}");
                 var ticker = _entityManager.EntitySysManager.GetEntitySystem<GameTicker>();
                 ticker.SetGamePreset(picked);
