@@ -9,6 +9,7 @@ using Content.Shared.Research.Components;
 using Content.Shared.Research.Prototypes;
 using Content.Shared.Research.Systems;
 using Content.Shared.Research.TechnologyDisk.Components;
+using Content.Shared.Tag; // Corvax-Wega-add
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Serialization;
@@ -24,6 +25,9 @@ public sealed partial class TechnologyDiskSystem : EntitySystem
     [Dependency] private SharedLatheSystem _lathe = default!;
     [Dependency] private SharedAppearanceSystem _appearance = default!;
     [Dependency] private NameModifierSystem _nameModifier = default!;
+    [Dependency] private TagSystem _tagSystem = default!; // Corvax-Wega-add
+
+    private static readonly ProtoId<TagPrototype> TechnologyDiskT3Tag = "TechnologyDiskT3"; // Corvax-Wega-add
 
     public override void Initialize()
     {
@@ -111,6 +115,11 @@ public sealed partial class TechnologyDiskSystem : EntitySystem
             return;
 
         _appearance.SetData(ent.Owner, TechDiskVisuals.Tier, tier);
+
+		// Corvax-Wega-start
+        if (ent.Comp.Tier == 3)
+			_tagSystem.AddTag(ent, TechnologyDiskT3Tag);
+		// Corvax-Wega-End
     }
 
     /// <summary>

@@ -26,12 +26,16 @@
   - Holoprojector
   - WetFloorSign
   - WireBrush
-  - CassetteTape # Corvax-Wega-Recorder
-  - TapeRecorder # Corvax-Wega-Recorder
-  - CassetteTapeLong # Corvax-Wega-Recorder
-  - PouchBase # Corvax-Wega-add
-  - PouchMaterial # Corvax-Wega-add
-  - CargoHoloprojectorField # Corvax-Wega-add
+# Corvax-Wega-Start
+  - CassetteTape
+  - TapeRecorder
+  - CassetteTapeLong
+  - PouchBase
+  - PouchMaterial
+  - CargoHoloprojectorField
+  - Binoculars
+  - TravelCameraCivilian
+# Corvax-Wega-End
 
 - type: latheRecipePack
   id: ServiceBoardsStatic

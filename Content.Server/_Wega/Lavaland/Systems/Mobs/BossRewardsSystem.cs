@@ -7,7 +7,7 @@ using Robust.Shared.Random;
 
 namespace Content.Server.Lavaland.Mobs;
 
-public sealed class BossRewardsSystem : EntitySystem
+public sealed partial class BossRewardsSystem : EntitySystem
 {
     [Dependency] private IRobustRandom _random = default!;
 

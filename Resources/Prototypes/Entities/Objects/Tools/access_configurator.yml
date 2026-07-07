@@ -74,6 +74,7 @@
       singleUser: true
       inHandsOnly: true
     - type: ItemSlots
+      disableSmartEquipEject: true # Corvax-Wega-Add
     - type: ContainerContainer
       containers:
         AccessOverrider-privilegedId: !type:ContainerSlot

@@ -170,6 +170,10 @@
       path: /Audio/Items/crowbar.ogg
   - type: NaturalNightVision # Corvax-Wega-NightVision
     tintColor: "#fb1e1e" # Corvax-Wega-NightVision
+# Corvax-Wega-start
+  - type: MindLink
+    channels: ["MindCarp"]
+# Corvax-Wega-End
 
 - type: entity
   parent: BaseMobDragon

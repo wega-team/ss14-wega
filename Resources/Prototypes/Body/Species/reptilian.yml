@@ -1,10 +1,10 @@
 - type: markingsGroup
   parent: None # Corvax-Wega-Edit
   id: Reptilian
-  onlyGroupWhitelisted: true
+  # onlyGroupWhitelisted: true Corvax-Wega-Edit
   limits:
     enum.HumanoidVisualLayers.Hair:
-      limit: 1 #Corvax-Wega-Edit
+      limit: 1 # Corvax-Wega-Edit
       required: false
     enum.HumanoidVisualLayers.FacialHair:
       limit: 0
@@ -165,7 +165,7 @@
   - type: Speech
     speechSounds: Lizard
     speechVerb: Reptilian
-    allowedEmotes: ['Thump']
+    allowedEmotes: ['Thump', 'Purr', 'FilinidHisses', 'Growl'] # Corvax-Wega-Edit
   - type: TypingIndicator
     proto: lizard
   - type: CreamPied
@@ -265,6 +265,7 @@
     - enum.HumanoidVisualLayers.Snout
     - enum.HumanoidVisualLayers.HeadTop
     - enum.HumanoidVisualLayers.HeadSide
+    - enum.HumanoidVisualLayers.Hair # Corvax-Wega-Add
 
 - type: entity
   parent: [ OrganBaseArmLeft, OrganReptilianExternal ]

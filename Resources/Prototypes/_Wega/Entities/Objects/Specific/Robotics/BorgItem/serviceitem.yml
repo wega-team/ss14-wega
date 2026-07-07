@@ -109,24 +109,101 @@
       path: /Audio/Machines/phasein.ogg
 
 - type: entity
-  parent: BorgDrinkSolutionWater
-  id: BorgDrinkSolutionWaterBase
-  suffix: Water, Base
+  parent: DrinkBase
+  id: BaseBorgDrinkSolution
+  name: water generation
+  abstract: true
+  description: The trusty mixing buddy of the bartender.
   components:
-  - type: ItemSelector
-    items:
-    - BorgDrinkSolutionWaterBase
-    - BorgDrinkSolutionBeerBase
+  - type: Sprite
+    sprite: /Textures/_Wega/Objects/Specific/Robotics/BorgItem/solition_generation.rsi
+    layers:
+    - state: icon
+  - type: Solution
+    solution:
+      maxVol: 60
+  - type: FitsInDispenser
+    solution: drink
+  - type: SolutionRegeneration
+    generated:
+      reagents:
+      - ReagentId: Water
+        Quantity: 5
+  - type: Unremoveable
 
 - type: entity
-  parent: BorgDrinkSolutionBeer
-  id: BorgDrinkSolutionBeerBase
-  suffix: Water, Base
+  parent: BaseBorgDrinkSolution
+  id: BorgDrinkSolutionBase
+  name: water generation
+  description: The trusty mixing buddy of the bartender.
   components:
-  - type: ItemSelector
-    items:
-    - BorgDrinkSolutionWaterBase
-    - BorgDrinkSolutionBeerBase
+  - type: Solution
+    solution:
+      maxVol: 30
+  - type: SolutionRegeneration
+    generated:
+      reagents:
+      - ReagentId: Water
+        Quantity: 0
+  - type: ChangeableReagent
+    reagents:
+    - reagent:
+      - ReagentId: Beer
+        Quantity: 0
+      name: no-reagent
+    - reagent:
+      - ReagentId: Water
+        Quantity: 5
+      name: reagent-name-water
+    - reagent:
+      - ReagentId: Beer
+        Quantity: 5
+      name: reagent-name-beer
+
+- type: entity
+  parent: BaseBorgDrinkSolution
+  id: BorgDrinkSolutionPro
+  name: water generation
+  description: The trusty mixing buddy of the bartender.
+  components:
+  - type: Solution
+    solution:
+      maxVol: 60
+  - type: SolutionRegeneration
+    generated:
+      reagents:
+      - ReagentId: Water
+        Quantity: 0
+  - type: ChangeableReagent
+    reagents:
+    - reagent:
+      - ReagentId: Beer
+        Quantity: 0
+      name: no-reagent
+    - reagent:
+      - ReagentId: Water
+        Quantity: 5
+      name: reagent-name-water
+    - reagent:
+      - ReagentId: Beer
+        Quantity: 5
+      name: reagent-name-beer
+    - reagent:
+      - ReagentId: Wine
+        Quantity: 5
+      name: reagent-name-wine
+    - reagent:
+      - ReagentId: Coffee
+        Quantity: 5
+      name: reagent-name-coffee
+    - reagent:
+      - ReagentId: Cola
+        Quantity: 5
+      name: reagent-name-cola
+    - reagent:
+      - ReagentId: Milk
+        Quantity: 5
+      name: reagent-name-milk
 
 #Garding
 - type: entity
@@ -263,301 +340,6 @@
     - Itemborg
 
 ## Service Rare
-
-- type: entity
-  parent: DrinkBase
-  id: BorgDrinkSolutionWater
-  name: water generation
-  suffix: Water
-  description: The trusty mixing buddy of the bartender.
-  components:
-  - type: Sprite
-    sprite: /Textures/_Wega/Objects/Specific/Robotics/BorgItem/solition_generation.rsi
-    layers:
-    - state: icon
-    - state: water
-  - type: Label
-    currentLabel: reagent-name-water
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 30
-        reagents:
-        - ReagentId: Water
-          Quantity: 0
-  - type: FitsInDispenser
-    solution: drink
-  - type: SolutionRegeneration
-    generated:
-      reagents:
-      - ReagentId: Water
-        Quantity: 1
-  - type: Unremoveable
-  - type: ItemSelector
-    items:
-    - BorgDrinkSolutionWater
-    - BorgDrinkSolutionCoffe
-    - BorgDrinkSolutionCola
-    - BorgDrinkSolutionMilk
-    - BorgDrinkSolutionBeer
-    - BorgDrinkSolutionWine
-  - type: ActivatableUI
-    key: enum.ItemSelectorUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.TransferAmountUiKey.Key:
-        type: TransferAmountBoundUserInterface
-      enum.ItemSelectorUiKey.Key:
-        type: ItemSelectorBoundUserInterface
-  - type: Tag
-    tags:
-    - Itemborg
-
-- type: entity
-  parent: DrinkBase
-  id: BorgDrinkSolutionBeer
-  name: beer generation
-  suffix: Beer
-  description: The trusty mixing buddy of the bartender.
-  components:
-  - type: Sprite
-    sprite: /Textures/_Wega/Objects/Specific/Robotics/BorgItem/solition_generation.rsi
-    layers:
-    - state: icon
-    - state: beer
-  - type: Label
-    currentLabel: reagent-name-beer
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 30
-        reagents:
-        - ReagentId: Beer
-          Quantity: 0
-  - type: FitsInDispenser
-    solution: drink
-  - type: SolutionRegeneration
-    generated:
-      reagents:
-      - ReagentId: Beer
-        Quantity: 1
-  - type: Unremoveable
-  - type: ItemSelector
-    items:
-    - BorgDrinkSolutionWater
-    - BorgDrinkSolutionCoffe
-    - BorgDrinkSolutionCola
-    - BorgDrinkSolutionMilk
-    - BorgDrinkSolutionBeer
-    - BorgDrinkSolutionWine
-  - type: ActivatableUI
-    key: enum.ItemSelectorUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.TransferAmountUiKey.Key:
-        type: TransferAmountBoundUserInterface
-      enum.ItemSelectorUiKey.Key:
-        type: ItemSelectorBoundUserInterface
-  - type: Tag
-    tags:
-    - Itemborg
-
-- type: entity
-  parent: DrinkBase
-  id: BorgDrinkSolutionWine
-  name: wine generation
-  suffix: Wine
-  description: The trusty mixing buddy of the bartender.
-  components:
-  - type: Sprite
-    sprite: /Textures/_Wega/Objects/Specific/Robotics/BorgItem/solition_generation.rsi
-    layers:
-    - state: icon
-    - state: wine
-  - type: Label
-    currentLabel: reagent-name-wine
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 30
-        reagents:
-        - ReagentId: Wine
-          Quantity: 0
-  - type: FitsInDispenser
-    solution: drink
-  - type: SolutionRegeneration
-    generated:
-      reagents:
-      - ReagentId: Wine
-        Quantity: 1
-  - type: Unremoveable
-  - type: ItemSelector
-    items:
-    - BorgDrinkSolutionWater
-    - BorgDrinkSolutionCoffe
-    - BorgDrinkSolutionCola
-    - BorgDrinkSolutionMilk
-    - BorgDrinkSolutionBeer
-    - BorgDrinkSolutionWine
-  - type: ActivatableUI
-    key: enum.ItemSelectorUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.TransferAmountUiKey.Key:
-        type: TransferAmountBoundUserInterface
-      enum.ItemSelectorUiKey.Key:
-        type: ItemSelectorBoundUserInterface
-  - type: Tag
-    tags:
-    - Itemborg
-
-- type: entity
-  parent: DrinkBase
-  id: BorgDrinkSolutionCoffe
-  name: coffee generation
-  suffix: Coffee
-  description: The trusty mixing buddy of the bartender.
-  components:
-  - type: Sprite
-    sprite: /Textures/_Wega/Objects/Specific/Robotics/BorgItem/solition_generation.rsi
-    layers:
-    - state: icon
-    - state: coffe
-  - type: Label
-    currentLabel: reagent-name-coffee
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 30
-        reagents:
-        - ReagentId: Coffee
-          Quantity: 0
-  - type: FitsInDispenser
-    solution: drink
-  - type: SolutionRegeneration
-    generated:
-      reagents:
-      - ReagentId: Coffee
-        Quantity: 1
-  - type: Unremoveable
-  - type: ItemSelector
-    items:
-    - BorgDrinkSolutionWater
-    - BorgDrinkSolutionCoffe
-    - BorgDrinkSolutionCola
-    - BorgDrinkSolutionMilk
-    - BorgDrinkSolutionBeer
-    - BorgDrinkSolutionWine
-  - type: ActivatableUI
-    key: enum.ItemSelectorUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.TransferAmountUiKey.Key:
-        type: TransferAmountBoundUserInterface
-      enum.ItemSelectorUiKey.Key:
-        type: ItemSelectorBoundUserInterface
-  - type: Tag
-    tags:
-    - Itemborg
-
-- type: entity
-  parent: DrinkBase
-  id: BorgDrinkSolutionCola
-  name: cola generation
-  suffix: Cola
-  description: The trusty mixing buddy of the bartender.
-  components:
-  - type: Sprite
-    sprite: /Textures/_Wega/Objects/Specific/Robotics/BorgItem/solition_generation.rsi
-    layers:
-    - state: icon
-    - state: cola
-  - type: Label
-    currentLabel: reagent-name-cola
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 30
-        reagents:
-        - ReagentId: Cola
-          Quantity: 0
-  - type: FitsInDispenser
-    solution: drink
-  - type: SolutionRegeneration
-    generated:
-      reagents:
-      - ReagentId: Cola
-        Quantity: 1
-  - type: Unremoveable
-  - type: ItemSelector
-    items:
-    - BorgDrinkSolutionWater
-    - BorgDrinkSolutionCoffe
-    - BorgDrinkSolutionCola
-    - BorgDrinkSolutionMilk
-    - BorgDrinkSolutionBeer
-    - BorgDrinkSolutionWine
-  - type: ActivatableUI
-    key: enum.ItemSelectorUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.TransferAmountUiKey.Key:
-        type: TransferAmountBoundUserInterface
-      enum.ItemSelectorUiKey.Key:
-        type: ItemSelectorBoundUserInterface
-  - type: Tag
-    tags:
-    - Itemborg
-
-- type: entity
-  parent: DrinkBase
-  id: BorgDrinkSolutionMilk
-  name: milk generation
-  suffix: Milk
-  description: The trusty mixing buddy of the bartender.
-  components:
-  - type: Sprite
-    sprite: /Textures/_Wega/Objects/Specific/Robotics/BorgItem/solition_generation.rsi
-    layers:
-    - state: icon
-    - state: milk
-  - type: Label
-    currentLabel: reagent-name-milk
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 30
-        reagents:
-        - ReagentId: Milk
-          Quantity: 0
-  - type: FitsInDispenser
-    solution: drink
-  - type: SolutionRegeneration
-    generated:
-      reagents:
-      - ReagentId: Milk
-        Quantity: 1
-  - type: Unremoveable
-  - type: ItemSelector
-    items:
-    - BorgDrinkSolutionWater
-    - BorgDrinkSolutionCoffe
-    - BorgDrinkSolutionCola
-    - BorgDrinkSolutionMilk
-    - BorgDrinkSolutionBeer
-    - BorgDrinkSolutionWine
-  - type: ActivatableUI
-    key: enum.ItemSelectorUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.TransferAmountUiKey.Key:
-        type: TransferAmountBoundUserInterface
-      enum.ItemSelectorUiKey.Key:
-        type: ItemSelectorBoundUserInterface
-  - type: Tag
-    tags:
-    - Itemborg
-
 - type: entity
   id: MicrowaveForBorg
   parent: [ BaseMachinePowered, SmallConstructibleMachine ]

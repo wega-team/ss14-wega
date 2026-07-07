@@ -71,7 +71,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      150: Dead
+      80: Dead
   - type: InteractionPopup
     interactSuccessString: petting-success-dog
     interactFailureString: petting-failure-generic

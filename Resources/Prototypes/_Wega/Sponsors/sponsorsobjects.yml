@@ -95,7 +95,7 @@
 # Head
 
 - type: entity
-  parent: ClothingHeadHatWizardBase
+  parent: ClothingHeadBase
   id: ClothingHeadHatMagic
   name: magic hat
   description: A strange-looking blue hat that most certainly belongs to a powerful magic-user.
