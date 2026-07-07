@@ -38,6 +38,7 @@
       weight: 2
       children:
       - id: SpawnMobWatcherIcewing
+    # Bosses
     - !type:GroupSelector
       weight: 0.8
       children:
@@ -80,6 +81,40 @@
       weight: 30
       children:
       - id: SpawnMobWhiteWolfIcemoon
+    - !type:GroupSelector
+      weight: 20
+      children:
+      - id: SpawnMobIceDemonIcemoon
+    - !type:GroupSelector
+      weight: 25
+      children:
+      - id: SpawnMobPolarBearIcemoon
+    - !type:GroupSelector
+      weight: 15
+      children:
+      - id: SpawnMobSnowLegionIcemoon
+    - !type:GroupSelector
+      weight: 10
+      children:
+      - id: SpawnMobIceWhelpIcemoon
+    - !type:GroupSelector
+      weight: 8
+      children:
+      - id: SpawnMobClockworkDefender
+    # Bosses
+    - !type:GroupSelector
+      weight: 0.2
+      children:
+      - id: SpawnMobWendigoIcemoon
+    - !type:GroupSelector
+      weight: 0.2
+      children:
+      - id: SpawnMobFrostMinerIcemoon
+    # He might be wandering around Icemoon too.
+    - !type:GroupSelector
+      weight: 0.2
+      children:
+      - id: SpawnInhabitantTranslocatedVeterinarian
 
 - type: entity
   parent: MarkerBase

@@ -7,6 +7,8 @@
   - type: Sprite
     sprite: _Wega/Objects/Misc/capsule.rsi
     state: capsule
+  - type: Item
+    storedRotation: -45
   - type: HandCapsule
     capsulePath: "/Maps/_Wega/Lavaland/capsule.yml"
   - type: UseDelay
@@ -29,5 +31,7 @@
   name: hand capsule bar
   description: "Your best friend in this world. I'm serious."
   components:
+  - type: Sprite
+    state: blue_capsule
   - type: HandCapsule
     capsulePath: "/Maps/_Wega/Lavaland/capsulebar.yml"

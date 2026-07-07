@@ -14,6 +14,9 @@ public sealed partial class LavalandPlanetPrototype : IPrototype
     [DataField(required: true)]
     public ProtoId<BiomeTemplatePrototype> Biome = default!;
 
+    // If null, its random
+    [DataField] public int? Seed = null;
+
     [DataField]
     public Color MapLightColor = Color.FromHex("#4D4033");
 
@@ -36,6 +39,9 @@ public sealed partial class LavalandPlanetPrototype : IPrototype
     public float[] GasesContent = new float[Atmospherics.TotalNumberOfGases];
 }
 
+/// <summary>
+/// Keys for weather phenomena that have unique effects from their activity.
+/// </summary>
 public enum LavalandWeatherType : byte
 {
     None = 0,

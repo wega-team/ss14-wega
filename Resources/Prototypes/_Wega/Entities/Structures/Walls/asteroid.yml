@@ -304,6 +304,34 @@
       visible: false
 
 - type: entity
+  parent: BaseWall
+  id: WallRockSnowIndestructible
+  suffix: Indestructible
+  components:
+  - type: Transform
+    noRot: true
+  - type: Icon
+    sprite: Structures/Walls/rock.rsi
+    state: rock_snow
+  - type: IconSmooth
+    key: walls
+    mode: NoSprite
+  - type: MiningScannerViewable
+  - type: SmoothEdge
+  - type: Sprite
+    sprite: Structures/Walls/rock.rsi
+    layers:
+    - state: rock_snow
+    - map: [ "enum.EdgeLayer.South" ]
+      state: rock_snow_south
+    - map: [ "enum.EdgeLayer.East" ]
+      state: rock_snow_east
+    - map: [ "enum.EdgeLayer.North" ]
+      state: rock_snow_north
+    - map: [ "enum.EdgeLayer.West" ]
+      state: rock_snow_west
+
+- type: entity
   id: WallRockSnowIcemoonCoal
   parent: WallRockSnow
   suffix: Coal, Icemoon

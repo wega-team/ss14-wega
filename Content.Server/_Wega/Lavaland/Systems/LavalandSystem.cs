@@ -31,6 +31,7 @@ using Robust.Shared.Map.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
+using Robust.Shared.Utility;
 
 namespace Content.Server.Lavaland.Systems;
 
@@ -84,22 +85,45 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
             return;
         }
 
+        var avanpostPath = GetAvanpostPath(ent, planetProto);
+
         var mapUid = _map.CreateMap(out var mapId);
-        if (!_loader.TryLoadGrid(mapId, ent.Comp.LavalandAvanpostPath, out var avanpost, offset: Vector2.Zero))
+        if (!_loader.TryLoadGrid(mapId, avanpostPath, out var avanpost, offset: Vector2.Zero))
         {
-            Log.Error($"Unable to load lavaland avanpost map {ent.Comp.LavalandAvanpostPath} for {ToPrettyString(ent)}");
+            Log.Error($"Unable to load lavaland avanpost map {avanpostPath} for {ToPrettyString(ent)}");
             _map.DeleteMap(mapId);
             return;
         }
 
         _meta.SetEntityName(mapUid, Loc.GetString($"{planet.ID.ToLower()}-map"));
         _meta.SetEntityName(avanpost.Value, Loc.GetString($"{planet.ID.ToLower()}-map-avanpost"));
-        var avanpostComp = EnsureComp<LavalandAvanpostComponent>(avanpost.Value);
-        EnsureComp<ActiveRadioComponent>(avanpost.Value).Channels.Add(avanpostComp.AnnouncementChannel);
-        EnsureComp<ProtectedGridComponent>(avanpost.Value);
-        var navMap = EnsureComp<NavMapComponent>(avanpost.Value);
-        _navMap.RefreshGridWithOffset(avanpost.Value.Owner, navMap, avanpost.Value.Comp, Vector2.Zero);
 
+        SetupAvanpost(avanpost.Value);
+        GenerateLavalandPlanet(mapUid, mapId, planet, avanpost.Value);
+    }
+
+    private ResPath GetAvanpostPath(Entity<StationLavalandComponent> ent, ProtoId<LavalandPlanetPrototype> planetProto)
+    {
+        if (ent.Comp.PlanetAvanposts.TryGetValue(planetProto, out var avanposts) && avanposts.Count > 0)
+            return _random.Pick(avanposts);
+
+        return ent.Comp.DefaultAvanpostPath;
+    }
+
+    private void SetupAvanpost(EntityUid avanpostUid)
+    {
+        var avanpostComp = EnsureComp<LavalandAvanpostComponent>(avanpostUid);
+        EnsureComp<ActiveRadioComponent>(avanpostUid).Channels.Add(avanpostComp.AnnouncementChannel);
+        EnsureComp<ProtectedGridComponent>(avanpostUid);
+        var navMap = EnsureComp<NavMapComponent>(avanpostUid);
+        _navMap.RefreshGridWithOffset(avanpostUid, navMap, Comp<MapGridComponent>(avanpostUid), Vector2.Zero);
+    }
+
+    /// <summary>
+    /// Generates a planet according to the Lavaland Procesing generation logic.
+    /// </summary>
+    public void GenerateLavalandPlanet(EntityUid mapUid, MapId mapId, LavalandPlanetPrototype planet, EntityUid? avanpostUid = null)
+    {
         EnsureComp<ProtectedGridComponent>(mapUid);
         var grid = EnsureComp<MapGridComponent>(mapUid); // For build processing after creating planet
         EnsureComp<NavMapComponent>(mapUid);
@@ -109,7 +133,7 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
         var worldAABBs = new HashSet<Box2>();
         GenerateBuildings(mapId, tempMapId, mapUid, planet, ref worldAABBs);
 
-        _biome.EnsurePlanet(mapUid, _proto.Index(planet.Biome), ent.Comp.Seed, mapLight: planet.MapLightColor);
+        _biome.EnsurePlanet(mapUid, _proto.Index(planet.Biome), planet.Seed, mapLight: planet.MapLightColor);
         var lightCycle = EnsureComp<LightCycleComponent>(mapUid);
         lightCycle.MaxLightLevel = planet.MaxLightLevel;
         lightCycle.MinLightLevel = planet.MinLightLevel;
@@ -121,7 +145,10 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
             _biome.AddMarkerLayer(mapUid, biome, layer);
         }
 
-        PreloadAvanpostArea(mapUid, avanpost.Value, biome, grid);
+        if (avanpostUid != null && Exists(avanpostUid.Value))
+        {
+            PreloadAvanpostArea(mapUid, avanpostUid.Value, biome, grid);
+        }
 
         // Pre-loading of tiles in merged grids
         foreach (var worldAABB in worldAABBs)
@@ -132,7 +159,7 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
 
         var lava = EnsureComp<LavalandComponent>(mapUid);
         lava.NextWeatherChange = _gameTiming.CurTime + TimeSpan.FromMinutes(_random.Next(5, 15));
-        lava.PlanetPrototype = planetProto;
+        lava.PlanetPrototype = planet;
 
         var moles = new float[Atmospherics.AdjustedNumberOfGases];
         for (var i = 0; i < Atmospherics.TotalNumberOfGases && i < planet.GasesContent.Count(); i++)

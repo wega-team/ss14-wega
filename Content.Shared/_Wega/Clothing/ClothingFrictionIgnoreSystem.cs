@@ -2,7 +2,7 @@ using Content.Shared.Inventory;
 
 namespace Content.Shared.Clothing;
 
-public sealed class ClothingFrictionIgnoreSystem : EntitySystem
+public sealed partial class ClothingFrictionIgnoreSystem : EntitySystem
 {
     public override void Initialize()
     {

@@ -9,6 +9,9 @@
     "states": [
         {
             "name": "landing"
+        },
+        {
+            "name": "target_largebox"
         }
     ]
 }

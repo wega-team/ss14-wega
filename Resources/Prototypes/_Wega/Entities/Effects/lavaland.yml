@@ -90,6 +90,80 @@
   - type: AnimationPlayer
 
 - type: entity
+  id: BabyGoliathTentacle
+  name: tentacle
+  components:
+  - type: Transform
+    anchored: True
+  - type: Physics
+    bodyType: Static
+    canCollide: true
+  - type: InteractionOutline
+  - type: Sprite
+    sprite: Mobs/Aliens/Asteroid/goliath.rsi
+    layers:
+    - state: goliath_tentacle_wiggle
+  - type: SlowdownOnContact
+    multiplier: 0.4
+    duration: 6
+    blacklist:
+      tags:
+      - Goliath
+  - type: Fixtures
+    fixtures:
+      fix:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        mask:
+        - Impassable
+        layer:
+        - Impassable
+        hard: false
+  - type: TimedDespawn
+    lifetime: 0.4
+  - type: SpawnOnDespawn
+    prototype: EffectBabyGoliathTentacleRetract
+
+- type: entity
+  id: BaseEffectBabyGoliathTentacleSpawn
+  categories: [ HideSpawnMenu ]
+  name: tentacle
+  abstract: true
+  components:
+  - type: Transform
+    anchored: True
+  - type: Physics
+    bodyType: Static
+    canCollide: false
+  - type: Sprite
+    sprite: Mobs/Aliens/Asteroid/goliath.rsi
+  - type: InteractionOutline
+  - type: TimedDespawn
+    lifetime: 0.7
+
+- type: entity
+  id: EffectBabyGoliathTentacleSpawn
+  parent: BaseEffectBabyGoliathTentacleSpawn
+  categories: [ HideSpawnMenu ]
+  name: tentacle
+  components:
+    - type: Sprite
+      state: goliath_tentacle_spawn
+    - type: SpawnOnDespawn
+      prototype: BabyGoliathTentacle
+
+- type: entity
+  id: EffectBabyGoliathTentacleRetract
+  parent: BaseEffectBabyGoliathTentacleSpawn
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    state: goliath_tentacle_retract
+  - type: EffectVisuals
+  - type: AnimationPlayer
+
+- type: entity
   id: EffectMegaFaunaMarker
   name: oh, no...
   categories: [ HideSpawnMenu ]
@@ -173,6 +247,26 @@
     blacklist:
       components:
       - HierophantBoss
+      - Pandora
+
+- type: entity
+  id: EffectHierophantBeacon
+  name: hierophant beacon
+  categories: [ HideSpawnMenu ]
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Wall
+  components:
+  - type: Sprite
+    sprite: _Wega/Effects/hierophant_effects.rsi
+    state: tele_on
+  - type: Transform
+    anchored: true
+  - type: TileEmission
+    color: "#9900FF"
+  - type: TimedDespawn
+    lifetime: 300
 
 # Ash Drake
 - type: entity
@@ -435,3 +529,70 @@
     fadeDuration: 2
   - type: TimedDespawn
     lifetime: 2
+
+- type: entity
+  id: EffectLegionnaireBoneFire
+  name: bonefire
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Structures/Specific/Lavaland/fireplace.rsi
+    state: active
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Transform
+    anchored: true
+  - type: Physics
+    bodyType: Static
+  - type: IgniteOnCollide
+    fixtureId: fix1
+    fireStacks: 1
+    count: 999
+  - type: DamageOnTrigger
+    targetUser: true
+    damage:
+      types:
+        Heat: 2.5
+    blacklist:
+      components:
+      - LegionFauna
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.25
+        layer:
+        - SlipLayer
+        mask:
+        - Impassable
+        density: 50
+        hard: false
+  - type: Damageable
+  - type: Injurable
+    damageContainer: StructuralInorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/break_stone.ogg
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+- type: entity
+  id: EffectHeraldDisappear
+  name: ""
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Lavaland/herald.rsi
+    state: disappear
+    noRot: true
+  - type: Transform
+    noRot: true
+  - type: TimedDespawn
+    lifetime: 1.1

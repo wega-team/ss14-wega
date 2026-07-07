@@ -480,11 +480,11 @@
       - !type:SpawnEntitiesBehavior
         spawn:
           MaterialWoodPlank1:
-            min: 10
-            max: 15
+            min: 5
+            max: 10
           MaterialGoliathHide1:
             min: 1
-            max: 4
+            max: 3
       - !type:DoActsBehavior
         acts: ["Destruction"]
       - !type:PlaySoundBehavior
@@ -506,7 +506,7 @@
     buckleOffset: "0.1, -0.05"
   - type: Construction
     graph: VehicleBoat
-    node: boat
+    node: goliath_boat
 
 - type: entity
   parent: VehicleBoat
@@ -518,6 +518,44 @@
     layers:
     - state: dragon_boat
       map: ["enum.VehicleVisualLayers.AutoAnimate"]
-    noRot: true
   - type: Boat
     requiredOal: false
+
+- type: entity
+  parent: VehicleBoat
+  id: VehicleBoatPolar
+  name: polar boat
+  description: "A boat crafted from wood and polar bear hide. It feels surprisingly warm and resilient against the cold."
+  components:
+  - type: Sprite
+    layers:
+    - state: ice_boat
+      map: ["enum.VehicleVisualLayers.AutoAnimate"]
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 600
+      behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          MaterialWoodPlank1:
+            min: 5
+            max: 10
+          MaterialPolarBearHide1:
+            min: 1
+            max: 3
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+  - type: Construction
+    graph: VehicleBoat
+    node: polar_boat

@@ -59,7 +59,7 @@
   weight: 20
   damage:
     types:
-      Blunt: 2.5
+      Blunt: 5
   damageMessage: lavaland-weather-damaged-hail
   warningMessage: lavaland-weather-warning-hail
   endMessage: lavaland-weather-end-hail
@@ -73,7 +73,7 @@
   weight: 20
   damage:
     types:
-      Cold: 2.5
+      Cold: 10
   damageMessage: lavaland-weather-damaged-snow-light
   warningMessage: lavaland-weather-warning-snow-light
   endMessage: lavaland-weather-end-snow-light
@@ -83,7 +83,7 @@
   weatherPrototype: WeatherSnowfallHeavy
   damage:
     types:
-      Cold: 10
+      Cold: 40
   damageMessage: lavaland-weather-damaged-snow-heavy
   warningMessage: lavaland-weather-warning-snow-heavy
   endMessage: lavaland-weather-end-snow-heavy

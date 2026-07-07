@@ -15,6 +15,7 @@ using Content.Shared.Maps;
 using Content.Shared.Popups;
 using Content.Shared.Stunnable;
 using Content.Shared.Weather;
+using JetBrains.Annotations;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
@@ -54,7 +55,7 @@ public sealed partial class LavalandSystem
         while (query.MoveNext(out var uid, out var comp))
         {
             if (comp.NextWeatherChange < _gameTiming.CurTime && !comp.WarningSent)
-                SendWeatherWarning(comp);
+                SendWeatherWarning(uid, comp);
 
             if (comp.WeatherStartTime < _gameTiming.CurTime && comp.WarningSent && comp.CurrentWeatherEntry == null)
                 StartWeather(uid, comp);
@@ -64,7 +65,7 @@ public sealed partial class LavalandSystem
         }
     }
 
-    private void SendWeatherWarning(LavalandComponent comp)
+    private void SendWeatherWarning(EntityUid uid, LavalandComponent comp)
     {
         var weatherEntry = GetRandomWeatherEntry(comp);
         if (weatherEntry == null)
@@ -74,7 +75,7 @@ public sealed partial class LavalandSystem
         comp.WeatherStartTime = _gameTiming.CurTime + TimeSpan.FromSeconds(60);
         comp.WarningSent = true;
 
-        SendWeatherAlert(weatherEntry);
+        SendWeatherAlert(uid, weatherEntry);
     }
 
     private void StartWeather(EntityUid uid, LavalandComponent comp)
@@ -144,7 +145,9 @@ public sealed partial class LavalandSystem
         }
 
         if (endedWeather != null)
-            SendWeatherEndAlert(endedWeather);
+        {
+            SendWeatherEndAlert(uid, endedWeather);
+        }
     }
 
     private LavalandWeatherEntryPrototype? GetRandomWeatherEntry(LavalandComponent comp)
@@ -219,6 +222,9 @@ public sealed partial class LavalandSystem
             var damage = comp.CurrentWeatherEntry.Damage;
             if (damage != null)
             {
+                if (!HasComp<DamageableComponent>(uid) || HasComp<GodmodeComponent>(uid))
+                    continue;
+
                 var ev = new AshProtectionAttemptEvent();
                 RaiseLocalEvent(uid, ref ev);
 
@@ -252,12 +258,15 @@ public sealed partial class LavalandSystem
         }
     }
 
-    private void SendWeatherAlert(LavalandWeatherEntryPrototype weatherEntry)
+    private void SendWeatherAlert(EntityUid planet, LavalandWeatherEntryPrototype weatherEntry)
     {
         Entity<LavalandAvanpostComponent>? sender = null;
-        var query = EntityQueryEnumerator<LavalandAvanpostComponent>();
-        while (query.MoveNext(out var uid, out var comp))
+        var query = EntityQueryEnumerator<LavalandAvanpostComponent, TransformComponent>();
+        while (query.MoveNext(out var uid, out var comp, out var transform))
         {
+            if (transform.MapUid != planet)
+                continue;
+
             sender = (uid, comp);
             break;
         }
@@ -269,12 +278,15 @@ public sealed partial class LavalandSystem
             sender.Value.Comp.AnnouncementChannel, sender.Value.Owner, escapeMarkup: false);
     }
 
-    private void SendWeatherEndAlert(LavalandWeatherEntryPrototype weatherEntry)
+    private void SendWeatherEndAlert(EntityUid planet, LavalandWeatherEntryPrototype weatherEntry)
     {
         Entity<LavalandAvanpostComponent>? sender = null;
-        var query = EntityQueryEnumerator<LavalandAvanpostComponent>();
-        while (query.MoveNext(out var uid, out var comp))
+        var query = EntityQueryEnumerator<LavalandAvanpostComponent, TransformComponent>();
+        while (query.MoveNext(out var uid, out var comp, out var transform))
         {
+            if (transform.MapUid != planet)
+                continue;
+
             sender = (uid, comp);
             break;
         }
@@ -284,6 +296,22 @@ public sealed partial class LavalandSystem
 
         _radio.SendRadioMessage(sender.Value.Owner, Loc.GetString(weatherEntry.EndMessage),
             sender.Value.Comp.AnnouncementChannel, sender.Value.Owner, escapeMarkup: false);
+    }
+
+    #endregion
+
+    #region Public API
+
+    [PublicAPI]
+    public void CancelWeather(EntityUid lavalandUid, LavalandComponent? comp = null)
+    {
+        if (!Resolve(lavalandUid, ref comp))
+            return;
+
+        if (comp.CurrentWeatherEntry == null)
+            return;
+
+        EndWeather(lavalandUid, comp);
     }
 
     #endregion

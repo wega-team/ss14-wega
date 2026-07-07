@@ -2,3 +2,13 @@
   parent: StatusEffectSlowdown
   id: BasicSlowdownStatusEffect
   name: basic slowdown
+
+- type: entity
+  parent: StatusEffectSlowdown
+  id: SpecialSlowdownStatusEffect
+  name: special slowdown
+
+- type: entity
+  parent: StatusEffectSlowdown
+  id: BasicSpeedUpStatusEffect
+  name: basic speed up

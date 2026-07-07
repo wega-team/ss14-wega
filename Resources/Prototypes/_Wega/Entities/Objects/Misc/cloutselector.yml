@@ -477,23 +477,3 @@
     interfaces:
       enum.ItemSelectorUiKey.Key:
         type: ItemSelectorBoundUserInterface
-
-- type: entity
-  parent: OtherModeSuitSelector
-  id: OtherCreshSelector
-  name: OtherSelector
-  description: What kind of crusher are you today?
-  components:
-  - type: Sprite
-    sprite: _Wega/Objects/Misc/vouchers.rsi
-    state: crash
-  - type: Item
-    size: Normal
-  - type: ItemSelector
-    items:
-    - WeaponCrusherGlaive
-    - WeaponCrusher
-    - WeaponCrusherHarpoon
-    - WeaponCrusherSword
-    - WeaponDaggerCrusher
-    - WeaponCrusherBlaster

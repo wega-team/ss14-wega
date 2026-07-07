@@ -17,6 +17,7 @@
     - id: PrinterDocFlatpack # Corvax-Printer
     - id: FundingAllocationComputerFlatpack # Corvax-Wega
     - id: AccessConfiguratorCargo # Corvax-Wega
+    - id: LandingDesignatorMining # Corvax-Wega-Lavaland
 
 - type: entity
   id: LockerQuarterMasterFilled

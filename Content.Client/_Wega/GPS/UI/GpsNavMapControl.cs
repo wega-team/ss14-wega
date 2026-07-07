@@ -9,6 +9,7 @@ using Robust.Client.ResourceManagement;
 using Robust.Client.UserInterface;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Timing;
+using Robust.Shared.Utility;
 
 namespace Content.Client._Wega.GPS.UI;
 
@@ -428,21 +429,77 @@ public sealed partial class GpsNavMapControl : Control
 
             var beaconColor = beacon.Color;
 
-            var rect = new UIBox2(
-                screenPos.X - markerSize,
-                screenPos.Y - markerSize,
-                screenPos.X + markerSize,
-                screenPos.Y + markerSize
-            );
-            handle.DrawRect(rect, beaconColor);
-
-            handle.DrawRect(rect, Color.White.WithAlpha(100));
+            if (beacon.IconPath != null)
+            {
+                DrawBeaconIcon(handle, screenPos, beacon.IconPath, beaconColor, markerSize);
+            }
+            else
+            {
+                var rect = new UIBox2(
+                    screenPos.X - markerSize,
+                    screenPos.Y - markerSize,
+                    screenPos.X + markerSize,
+                    screenPos.Y + markerSize
+                );
+                handle.DrawRect(rect, beaconColor);
+                handle.DrawRect(rect, Color.White.WithAlpha(100));
+            }
 
             if (_showBeaconLabels && !string.IsNullOrEmpty(beacon.Name))
             {
                 DrawLabel(handle, screenPos, beacon.Name, markerSize, beaconColor);
             }
         }
+    }
+
+    private void DrawBeaconIcon(DrawingHandleScreen handle, Vector2 screenPos, SpriteSpecifier spriteSpec, Color color, float size)
+    {
+        try
+        {
+            var texture = GetTextureFromSpriteSpec(spriteSpec);
+            if (texture == null)
+                return;
+
+            var iconSize = Math.Max(16f, size * 2.5f);
+            var halfSize = iconSize / 2;
+
+            handle.DrawTextureRect(texture, new UIBox2(
+                screenPos.X - halfSize,
+                screenPos.Y - halfSize,
+                screenPos.X + halfSize,
+                screenPos.Y + halfSize
+            ), color);
+        }
+        catch (Exception)
+        {
+            // Nothing
+        }
+    }
+
+    private Texture? GetTextureFromSpriteSpec(SpriteSpecifier spriteSpec)
+    {
+        if (spriteSpec is SpriteSpecifier.Rsi rsi)
+        {
+            var rsiPath = rsi.RsiPath.ToString();
+            var stateName = rsi.RsiState;
+            var rsiResource = _resourceCache.GetResource<RSIResource>(new ResPath(rsiPath));
+            if (rsiResource == null)
+                return null;
+
+            if (rsiResource.RSI.TryGetState(new RSI.StateId(stateName), out var state))
+                return state.Frame0;
+
+            return null;
+        }
+
+        if (spriteSpec is SpriteSpecifier.Texture textureSpec)
+        {
+            var path = textureSpec.TexturePath.ToString();
+            var textureResource = _resourceCache.GetResource<TextureResource>(new ResPath(path));
+            return textureResource;
+        }
+
+        return null;
     }
 
     private void DrawLabel(DrawingHandleScreen handle, Vector2 screenPos, string text, float markerSize, Color backgroundColor)

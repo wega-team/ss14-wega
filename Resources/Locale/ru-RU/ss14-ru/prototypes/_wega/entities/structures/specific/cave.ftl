@@ -1,0 +1,9 @@
+ent-BaseIcemoonCave = пещера
+    .desc = Ну, это не совсем дикая природа, но отличный её источник. Как ты думаешь, где волчата рождаются?!
+    .suffix = НЕ МАППИТЬ
+ent-WhiteWolfIcemoonCave = { ent-BaseIcemoonCave }
+    .desc = { ent-BaseIcemoonCave.desc }
+    .suffix = { ent-BaseIcemoonCave.suffix }
+ent-PolarBearIcemoonCave = { ent-BaseIcemoonCave }
+    .desc = { ent-BaseIcemoonCave.desc }
+    .suffix = { ent-BaseIcemoonCave.suffix }

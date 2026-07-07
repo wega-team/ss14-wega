@@ -1,0 +1,15 @@
+- type: entity
+  parent: BaseItem
+  id: LandingDesignatorMining
+  name: landing designator
+  description: "Portable device for calling an auxiliary base to the surface of planets. When activated, it sends a signal to orbit, triggering the landing procedure for the modular complex. Requires free space for deployment."
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Misc/designator.rsi
+    state: mining
+  - type: Item
+    storedRotation: -90
+  - type: AuxiliaryBaseLanding
+    basePath: "/Maps/_Wega/Lavaland/auxiliarybase.yml"
+  - type: UseDelay
+    delay: 15

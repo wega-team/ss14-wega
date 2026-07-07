@@ -1,11 +1,11 @@
 meta:
   format: 7
   category: Grid
-  engineVersion: 277.0.0
+  engineVersion: 275.0.0
   forkId: ""
   forkVersion: ""
-  time: 06/08/2026 19:34:54
-  entityCount: 208
+  time: 06/20/2026 19:25:47
+  entityCount: 211
 maps: []
 grids:
 - 1
@@ -114,6 +114,23 @@ entities:
     - type: GasTileOverlay
     - type: ExplosionAirtightGrid
     - type: RadiationGridResistance
+- proto: AdminInstantEffectSmoke3
+  entities:
+  - uid: 209
+    components:
+    - type: Transform
+      pos: 0.5625,-1.6318705
+      parent: 1
+  - uid: 210
+    components:
+    - type: Transform
+      pos: 0.609375,0.6025044
+      parent: 1
+  - uid: 211
+    components:
+    - type: Transform
+      pos: 0.71875,-0.47562063
+      parent: 1
 - proto: AirAlarm
   entities:
   - uid: 208

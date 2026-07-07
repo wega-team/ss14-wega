@@ -105,7 +105,11 @@
       - Sawing
     useSound:
       path: /Audio/Items/Culinary/chop.ogg
+  - type: WeaponHotswap
+    alternateForm: WeaponCleawingSawWide
+    isAlternate: false
   - type: MeleeWeapon
+    wideAnimationRotation: 175
     possibilityWideAtack: false
     attackRate: 2.25
     damage:
@@ -115,3 +119,23 @@
       path: /Audio/Weapons/bladeslice.ogg
   - type: DisarmMalus
     malus: 0
+  - type: ContainerContainer
+    containers:
+      hotswap-paired: !type:Container
+
+- type: entity
+  parent: WeaponCleawingSaw
+  id: WeaponCleawingSawWide
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Item
+    sprite: _Wega/Objects/Weapons/Melee/cleaving_saw64x64.rsi
+  - type: WeaponHotswap
+    alternateForm: WeaponCleawingSaw
+    isAlternate: true
+  - type: MeleeWeapon
+    possibilityWideAtack: true
+    attackRate: 0.75
+    damage:
+      types:
+        Slash: 24

@@ -97,3 +97,16 @@
         Slash: 0.9
         Piercing: 0.9
         Heat: 0.9
+
+- type: entity
+  parent: ClothingHeadHelmetHardsuitMaxim
+  id: ClothingHeadHelmetHardsuitFrostMiner
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: BreathMask
+  - type: Sprite
+    sprite: _Wega/Clothing/Head/Hardsuits/frostminer.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Head/Hardsuits/frostminer.rsi
+  - type: Unremoveable
+  - type: DeleteOnDrop

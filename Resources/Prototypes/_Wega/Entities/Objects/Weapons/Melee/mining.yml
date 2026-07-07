@@ -84,21 +84,31 @@
 - type: entity
   parent: WeaponCrusher
   id: WeaponCrusherHarpoon
-  name: harpoon
+  name: harpoon-crusher
   description: A handy harpoon for stabbing attacks.
   components:
   - type: Sprite
     sprite: _Wega/Objects/Weapons/Melee/harpoon.rsi
     state: icon
   - type: Item
-    size: Ginormous
     sprite: _Wega/Objects/Weapons/Melee/harpoon.rsi
+    size: Ginormous
   - type: Clothing
     sprite: _Wega/Objects/Weapons/Melee/harpoon.rsi
-    quickEquip: false
-    slots:
-    - back
-    - suitStorage
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape: !type:PolygonShape
+          vertices:
+            - -0.40,-0.30
+            - -0.30,-0.40
+            - 0.40,0.30
+            - 0.30,0.40
+        density: 20
+        mask:
+        - ItemMask
+        restitution: 0.3
+        friction: 0.2
   - type: UseDelay
     delay: 1.5
   - type: LeechOnMarker
@@ -106,7 +116,7 @@
       types:
         Blunt: -2
         Slash: -2
-        Piercing: -10
+        Piercing: -2
   - type: MeleeWeapon
     animation: WeaponArcThrust
     attackRate: 2
@@ -114,110 +124,184 @@
     angle: 0
     damage:
       types:
-        Piercing: 12
-        Blunt: 2
-        Slash: 2
+        Piercing: 8
+        Blunt: 1
+        Slash: 1
     soundHit:
-      collection: MetalThud
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Piercing: 25
+  - type: EmbeddableProjectile
+    offset: -0.15,0.0
+  - type: ThrowingAngle
+    angle: 225
+  - type: LandAtCursor
   - type: Tag
     tags:
-      - Pickaxe
-  - type: StaticPrice
-    price: 3000
+    - Pickaxe
+    - Spear
 
 - type: entity
-  parent: WeaponCrusherHarpoon
+  parent: WeaponCrusher
   id: WeaponCrusherSword
-  name: sword
+  name: sword-crusher
   description: A cutting sword for convenient attacks.
   components:
   - type: Sprite
     sprite: _Wega/Objects/Weapons/Melee/sword.rsi
     state: icon
   - type: Item
-    size: Ginormous
     sprite: _Wega/Objects/Weapons/Melee/sword.rsi
+    size: Ginormous
   - type: Clothing
     sprite: _Wega/Objects/Weapons/Melee/sword.rsi
-    quickEquip: false
-    slots:
-    - back
-    - suitStorage
   - type: MeleeWeapon
     attackRate: 2
     wideAnimationRotation: -1
     damage:
       types:
-        Piercing: 1
-        Blunt: 2
-        Slash: 13
+        Blunt: 1
+        Slash: 8
     soundHit:
-      collection: MetalThud
+      path: /Audio/Weapons/bladeslice.ogg
   - type: UseDelay
     delay: 1.8
   - type: LeechOnMarker
     leech:
       types:
         Blunt: -2
-        Slash: -10
+        Slash: -2
         Piercing: -2
   - type: Reflect # sword-cool
     reflectProb: 0.1
+    reflects:
+    - NonEnergy
+    slotFlags:
+    - NONE
 
 - type: entity
   parent: WeaponCrusherDagger
   id: WeaponDaggerCrusher
-  name: sword
-  description: A cutting sword for convenient attacks.
+  name: dagger-crusher
+  description: It's small, sharp, and very dangerous.
   components:
   - type: Sprite
     sprite: _Wega/Objects/Weapons/Melee/dagger.rsi
     state: icon
   - type: Item
+    storedRotation: -45
     size: Small
-    sprite: _Wega/Objects/Weapons/Melee/dagger.rsi
   - type: Clothing
     sprite: _Wega/Objects/Weapons/Melee/dagger.rsi
     quickEquip: false
     slots:
     - back
     - suitStorage
+  - type: WeaponHotswap
+    alternateForm: WeaponCrusherBlaster
+    isAlternate: false
+  - type: UseDelay
+    delay: 0.5
+  - type: TrophyHuntingTool
+  - type: UpgradeableCrusher
+    whitelist:
+      tags:
+      - CrusherUpgrade
+  - type: ContainerContainer
+    containers:
+      crusher_upgrades: !type:Container
+      hotswap-paired: !type:Container
   - type: LeechOnMarker
     leech:
       types:
         Blunt: -2
-        Slash: -5
+        Slash: -2
         Piercing: -2
 
 - type: entity
+  parent: BaseItem
   id: WeaponCrusherBlaster
-  parent: WeaponProtoKineticAcceleratorBase
   name: blaster-crusher
-  description:
+  description: "A blaster that shoots kinetic energy."
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _Wega/Objects/Weapons/Guns/Pistols/blaster.rsi
     state: icon
   - type: Item
-    sprite: _Wega/Objects/Weapons/Guns/Pistols/blaster.rsi
+    storedRotation: -90
     size: Small
-    shape:
-    - 0,0,2,1
   - type: Clothing
     sprite: _Wega/Objects/Weapons/Guns/Pistols/blaster.rsi
     quickEquip: false
     slots:
     - back
     - suitStorage
+  - type: WeaponHotswap
+    alternateForm: WeaponDaggerCrusher
+    isAlternate: true
+  - type: UseDelay
+    delay: 0.5
   - type: Gun
-    fireRate: 1
+    fireRate: 0.5
     selectedMode: SemiAuto
-    angleDecay: 0
-    minAngle: 0
-    maxAngle: 0
     availableModes:
     - SemiAuto
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/kinetic_accel.ogg
-    projectileSpeed: 15
+  - type: AmmoCounter
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 0.75
+    rechargeSound:
+      path: /Audio/Weapons/Guns/MagIn/kinetic_reload.ogg
+  - type: BasicEntityAmmoProvider
+    proto: BulletKineticCrusher
+    capacity: 1
+    count: 1
+  - type: UpgradeableGun
+    whitelist:
+      tags:
+      - PKAUpgrade
+  - type: ContainerContainer
+    containers:
+      upgrades: !type:Container
+      hotswap-paired: !type:Container
+
+- type: entity
+  parent: BaseItem
+  id: Jackhammer
+  name: sonic jackhammer
+  description: Cracks rocks with sonic blasts.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/jackhammer.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Wega/Objects/Weapons/Melee/jackhammer.rsi
+    slots:
+    - Belt
+  - type: Item
+    storedRotation: -90
+  - type: MeleeWeapon
+    autoAttack: true
+    angle: 0
+    wideAnimationRotation: -90
+    soundHit:
+      path: "/Audio/_Wega/Items/sonic_jackhammer.ogg"
+    attackRate: 8
+    damage:
+      types:
+        Piercing: 3
+        Structural: 15
+  - type: Tag
+    tags:
+    - Pickaxe
+
+- type: entity
+  parent: Jackhammer
+  id: JackhammerFrostMiner
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: DeleteOnDrop

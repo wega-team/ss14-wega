@@ -62,7 +62,6 @@ public sealed partial class BubblegumSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<BubblegumBossComponent, DamageChangedEvent>(OnDamageChanged);
-        SubscribeLocalEvent<BubblegumBossComponent, MegafaunaKilledEvent>(OnBubblegumKilled);
 
         SubscribeLocalEvent<BubblegumBossComponent, BubblegumRageActionEvent>(OnRageAction);
         SubscribeLocalEvent<BubblegumBossComponent, BubblegumBloodDiveActionEvent>(OnBloodDiveAction);
@@ -135,15 +134,6 @@ public sealed partial class BubblegumSystem : EntitySystem
         _npcActions.SetActionChance(uid,
             new EntProtoId<TargetActionComponent>("ActionBubblegumRage"),
             rageChance, npcActions);
-    }
-
-    private void OnBubblegumKilled(EntityUid uid, BubblegumBossComponent component, MegafaunaKilledEvent args)
-    {
-        var coords = Transform(uid).Coordinates;
-        foreach (var reward in component.RewardsProto)
-            Spawn(reward, coords);
-
-        QueueDel(uid);
     }
 
     #endregion

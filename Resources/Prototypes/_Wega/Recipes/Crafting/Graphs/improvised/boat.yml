@@ -4,15 +4,24 @@
   graph:
   - node: start
     edges:
-    - to: boat
+    - to: goliath_boat
       steps:
       - material: WoodPlank
-        amount: 30
+        amount: 20
         doAfter: 5
       - material: GoliathHide
-        amount: 8
+        amount: 3
         doAfter: 8
-  - node: boat
+    - to: polar_boat
+      steps:
+      - material: WoodPlank
+        amount: 20
+        doAfter: 5
+      - material: PolarBearHide
+        amount: 3
+        doAfter: 8
+
+  - node: goliath_boat
     entity: VehicleBoat
     edges:
       - to: start
@@ -22,9 +31,26 @@
         completed:
           - !type:SpawnPrototype
             prototype: MaterialWoodPlank1
-            amount: 30
+            amount: 20
           - !type:SpawnPrototype
             prototype: MaterialGoliathHide1
-            amount: 8
+            amount: 3
+          - !type:EmptyAllContainers
+          - !type:DeleteEntity
+
+  - node: polar_boat
+    entity: VehicleBoatPolar
+    edges:
+      - to: start
+        steps:
+          - tool: Prying
+            doAfter: 10
+        completed:
+          - !type:SpawnPrototype
+            prototype: MaterialWoodPlank1
+            amount: 20
+          - !type:SpawnPrototype
+            prototype: MaterialPolarBearHide1
+            amount: 3
           - !type:EmptyAllContainers
           - !type:DeleteEntity

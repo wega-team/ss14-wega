@@ -32,6 +32,15 @@
 			"name": "miner"
 		},
 		{
+			"name": "wendigo"
+		},
+		{
+			"name": "frostminer"
+		},
+		{
+			"name": "thething"
+		},
+		{
 			"name": "bloodcult"
 		},
 		{
@@ -39,6 +48,9 @@
 		},
 		{
 			"name": "springlock"
+		},
+		{
+			"name": "tendril"
 		}
 	]
 }

@@ -44,9 +44,9 @@
 
 - type: entity
   parent: ClothingShoesBaseWinterBoots
-  id: ClothingShoesWinterIceBoots
-  name: ice boots
-  description: ""
+  id: ClothingShoesWinterIceHikingBoots
+  name: ice hiking boots
+  description: "A pair of winter boots with special grips on the bottom, designed to prevent slipping on frozen surfaces."
   components:
   - type: Sprite
     sprite: _Wega/Clothing/Shoes/Boots/ice_boots.rsi
@@ -58,3 +58,12 @@
       collection: BarestepCarpet
       params:
         variation: 0.8
+
+- type: entity
+  parent: ClothingShoesWinterIceHikingBoots
+  id: ClothingShoesWinterCursedIceHikingBoots
+  name: cursed ice hiking boots
+  description: "These boots are firmly attached to the wearer's feet, as if they were part of their flesh."
+  components:
+  - type: Unremoveable
+  - type: NoSlip

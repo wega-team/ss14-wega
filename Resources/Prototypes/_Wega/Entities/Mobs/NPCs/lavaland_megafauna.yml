@@ -1,5 +1,5 @@
 - type: entity
-  id: BaseMobMegafauna
+  id: BaseMobLavalandMegafauna
   abstract: true
   components:
   - type: Sprite
@@ -13,7 +13,7 @@
         shape:
           !type:PhysShapeCircle
           radius: 0.75
-        density: 50
+        density: 250
         mask:
           - MobMask
         layer:
@@ -48,8 +48,8 @@
     - SlowImmune
 
 - type: entity
-  parent: BaseMobMegafauna
-  id: BaseMobMegafaunaMover
+  parent: BaseMobLavalandMegafauna
+  id: BaseMobLavalandMegafaunaMover
   abstract: true
   components:
   - type: InputMover
@@ -60,7 +60,7 @@
 
 #region Blood Drunk Miner
 - type: entity
-  parent: [ MobHuman, BaseMobMegafauna ]
+  parent: [ MobHuman, BaseMobLavalandMegafaunaMover ]
   id: MobBloodDrunkMiner
   name: unknown miner
   components:
@@ -89,14 +89,9 @@
       - !type:PlaySoundBehavior
         sound:
           collection: MeatLaserImpact
-  - type: NpcFactionMember
-    factions:
-      - AllHostile
   - type: Loadout
     prototypes:
       - BloodDrunkMinerGear
-  - type: InputMover
-  - type: MobMover
   - type: LavaWalking
   - type: ScaleVisuals
     scale: 1.172, 1.172
@@ -115,6 +110,9 @@
     maxSaturation: 8.0
     minSaturation: -4.0
     updateIntervalMultiplier: 0.8
+  - type: BossMusic
+    music:
+      collection: BDMMusic
   - type: BloodDrunkMiner
   - type: MegafaunaDamageContributor
     achievement: MinerBoss
@@ -124,9 +122,14 @@
       task: SimpleHumanoidHostileCompound
   - type: NPCUseActionOnTarget
     actionId: ActionBloodDrunkMinerDash
+  - type: NpcFactionMember
+    factions:
+    - AllHostile
   - type: DnaModifier
     upper: null
     lowest: null
+  - type: LegionReversible
+    canReversible: false
   - type: TrophyHunter
     trophy: TrophyLavalandBDMEye
     dropChance: 1 # Guaranteed, since it's the boss
@@ -138,6 +141,7 @@
   - type: NavMapBeacon
     defaultText: nav-map-beacon-lavaland-signal-bdm
     defaultDesc: nav-map-beacon-lavaland-signal-bdm-desc
+    beaconIcon: { sprite: /Textures/_Wega/Interface/Misc/beacon_screen.rsi, state: miner }
     color: "#a46106"
   - type: Tag
     tags:
@@ -166,7 +170,7 @@
 
 #region Hierophant
 - type: entity
-  parent: BaseMobMegafauna
+  parent: BaseMobLavalandMegafauna
   id: MobHierophant
   name: hierophant
   description: "A huge, mysterious scepter made of alien metal and seemingly endowed with its own intelligence. Perhaps its purpose is to defend the structure it resides in."
@@ -198,25 +202,20 @@
     thresholds:
       0: Alive
       2500: Dead
-  - type: AmbientSound
-    sound:
-      path: "/Audio/_Wega/Mobs/Lavaland/hiero_bgm.ogg"
-    enabled: false
-    volume: 2
-    range: 15
   - type: PointLight
     color: "#9900ff"
     castShadows: false
     softness: 1
     radius: 2.5
     energy: 2.5
-  - type: Megafauna
-    bossMusic:
-      path: "/Audio/_Wega/Mobs/Lavaland/hiero_bgm.ogg"
-  - type: HierophantBoss
+  - type: BossMusic
+    music:
+      collection: HierophantMusic
+  - type: BossRewards
     rewards:
     - HierophantClubRod
     - GemCompactedDilithium
+  - type: HierophantBoss
   - type: MegafaunaDamageContributor
     achievement: HierophantBoss
   - type: HTN
@@ -255,7 +254,7 @@
 
 #region Mega Legion
 - type: entity
-  parent: BaseMobMegafaunaMover
+  parent: BaseMobLavalandMegafaunaMover
   id: BaseMobMegaLegion
   name: legion
   description: A massive floating skull that watches over the necropolis.
@@ -295,16 +294,20 @@
   - type: NavMapBeacon
     defaultText: nav-map-beacon-lavaland-signal-mega-legion
     defaultDesc: nav-map-beacon-lavaland-signal-mega-legion-desc
+    beaconIcon: { sprite: /Textures/_Wega/Interface/Misc/beacon_screen.rsi, state: mega_legion }
     color: "#e8d9b0"
   - type: Megafauna
   - type: LegionFauna
+  - type: BossMusic
+    music:
+      collection: MegaLegionMusic
   - type: LegionBoss
+    rewards: # Specific
+    - StormStaffRod # Not CrowbarRed anymore
     lootPrototypes:
       MaterialBones1: 1
       CrateNecropolisFilled: 0.2
       LegionCore: 0.1
-    rewards:
-    - CrowbarRed
   - type: MegafaunaDamageContributor
     achievement: LegionBoss
   - type: TrophyHunter
@@ -416,10 +419,6 @@
     nextSplit: MobMegaLegionSplitSmall
   - type: LegionBoss
     summonCount: 1
-    lootPrototypes:
-      MaterialBones1: 1
-      CrateNecropolisFilled: 0.2
-      LegionCore: 0.1
 
 - type: entity
   parent: BaseMobMegaLegion
@@ -455,15 +454,11 @@
   - type: LegionSplit
   - type: LegionBoss
     summonCount: 1
-    lootPrototypes:
-      MaterialBones1: 1
-      CrateNecropolisFilled: 0.2
-      LegionCore: 0.1
 #endregion
 
 #region Colossus
 - type: entity
-  parent: BaseMobMegafaunaMover
+  parent: BaseMobLavalandMegafaunaMover
   id: MobColossus
   name: colossus
   description: "A fallen angel who wanders the wastelands of Lavaland, punishing all those he deems impure."
@@ -508,10 +503,15 @@
   - type: NavMapBeacon
     defaultText: nav-map-beacon-lavaland-signal-colossus
     defaultDesc: nav-map-beacon-lavaland-signal-colossus-desc
+    beaconIcon: { sprite: /Textures/_Wega/Interface/Misc/beacon_screen.rsi, state: colossus }
     color: "#4daaff"
-  - type: ColossusBoss
+  - type: BossMusic
+    music:
+      collection: ColossusMusic
+  - type: BossRewards
     rewards:
     - CrateNecropolisColossusFilled
+  - type: ColossusBoss
   - type: MegafaunaDamageContributor
     achievement: ColossusBoss
   - type: HTN
@@ -541,7 +541,7 @@
 
 #region Ash Drake
 - type: entity
-  parent: [ BaseMobMegafaunaMover, MobBloodstream ]
+  parent: [ BaseMobLavalandMegafaunaMover, MobBloodstream ]
   id: MobAshDrake
   name: ash drake
   description: "A winged monster, the revered guardian of the Necropolis. A horror in flesh, it roams the barren wasteland, spewing streams of deadly flame."
@@ -608,7 +608,11 @@
   - type: NavMapBeacon
     defaultText: nav-map-beacon-lavaland-signal-ashdrake
     defaultDesc: nav-map-beacon-lavaland-signal-ashdrake-desc
+    beaconIcon: { sprite: /Textures/_Wega/Interface/Misc/beacon_screen.rsi, state: dragon }
     color: "#a7000b"
+  - type: BossMusic
+    music:
+      collection: AshDrakeMusic
   - type: AshDrakeBoss
   - type: MegafaunaDamageContributor
     achievement: AshDrakeBoss
@@ -656,7 +660,7 @@
           False: {visible: true}
 
 - type: entity
-  parent: [ BaseMobMegafaunaMover, MobBloodstream ]
+  parent: [ BaseMobLavalandMegafaunaMover, MobBloodstream ]
   id: MobLowerAshDrake
   name: ash drake
   description: "A winged monster, the revered guardian of the Necropolis. A horror in flesh, it roams the barren wasteland, spewing streams of deadly flame."
@@ -724,7 +728,7 @@
 
 #region Bubblegum
 - type: entity
-  parent: BaseMobMegafaunaMover
+  parent: BaseMobLavalandMegafaunaMover
   id: MobBubblegum
   name: bubblegum
   description: "The king of all the slaughter demons."
@@ -754,10 +758,15 @@
   - type: NavMapBeacon
     defaultText: nav-map-beacon-lavaland-signal-bubblegum
     defaultDesc: nav-map-beacon-lavaland-signal-bubblegum-desc
+    beaconIcon: { sprite: /Textures/_Wega/Interface/Misc/beacon_screen.rsi, state: bubblegum }
     color: "#880000"
-  - type: BubblegumBoss
+  - type: BossMusic
+    music:
+      collection: BubblegumMusic
+  - type: BossRewards
     rewards:
     - CrateNecropolisBubblegumFilled
+  - type: BubblegumBoss
     phase1Actions:
     - ActionBubblegumRage
     - ActionBubblegumBloodDive

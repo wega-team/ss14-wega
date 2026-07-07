@@ -11,6 +11,7 @@
   - AcidRain
   biomeLayers:
   - RandomNecropolisTendrils
+  - PulsatingTumors
   - RandomLavalandMob
   # Ore Veins
   - OreIronLavaland
@@ -24,7 +25,7 @@
 - type: lavalandPlanet
   id: Icemoon
   biome: Icemoon
-  temperature: 271.15
+  temperature: 216.95
   gases: [14.022, 22.878]
   mapLightColor: "#b0d4ff"
   weather:
@@ -32,7 +33,8 @@
   - SnowfallLight
   - SnowfallHeavy
   biomeLayers:
-  - RandomNecropolisTendrils
+  - RandomIcemoonCaves
+  - RandomIcemoonDemonicPortals
   - RandomIcemoonMob
   # Ore Veins
   - OreIronLavaland

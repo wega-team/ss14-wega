@@ -12,13 +12,13 @@ public sealed partial class StationLavalandComponent : Component
     [DataField(required: true)]
     public List<ProtoId<LavalandPlanetPrototype>> Planets = new();
 
-    // If null, its random
-    [DataField] public int? Seed = null;
-
     [DataField] public bool Enabled = true;
 
-    [DataField("lavalandAvanpost", customTypeSerializer: typeof(ResPathSerializer))]
-    public ResPath LavalandAvanpostPath { get; set; } = new("/Maps/_Wega/Nonstations/base_lavalandavanpost.yml");
+    [DataField("avanposts")]
+    public Dictionary<ProtoId<LavalandPlanetPrototype>, List<ResPath>> PlanetAvanposts = new();
+
+    [DataField("defaultAvanpost", customTypeSerializer: typeof(ResPathSerializer))]
+    public ResPath DefaultAvanpostPath { get; set; } = new("/Maps/_Wega/Nonstations/base_lavalandavanpost.yml");
 }
 
 [RegisterComponent]

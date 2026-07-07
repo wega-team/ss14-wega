@@ -191,7 +191,8 @@ public sealed partial class HandheldGpsUiSystem : EntitySystem
                 ((int)beaconPos.X, (int)beaconPos.Y),
                 distance,
                 beacon.Color,
-                beacon.Enabled
+                beacon.Enabled,
+                beacon.BeaconIcon
             ));
         }
 

@@ -40,8 +40,6 @@ public sealed partial class HierophantSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<HierophantBossComponent, MegafaunaKilledEvent>(OnHierophantKilled);
-
         SubscribeLocalEvent<HierophantBossComponent, MapInitEvent>(OnHierophantMapInit);
         SubscribeLocalEvent<HierophantBossComponent, DamageChangedEvent>(OnHierophantDamage);
 
@@ -60,15 +58,6 @@ public sealed partial class HierophantSystem : EntitySystem
         UpdateChasers();
         UpdatePassiveMovement();
         UpdateReturnToBase();
-    }
-
-    private void OnHierophantKilled(EntityUid uid, HierophantBossComponent component, MegafaunaKilledEvent args)
-    {
-        var coords = Transform(uid).Coordinates;
-        foreach (var reward in component.RewardsProto)
-            Spawn(reward, coords);
-
-        QueueDel(uid);
     }
 
     #region Passive Movement
