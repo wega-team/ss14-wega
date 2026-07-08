@@ -65,10 +65,10 @@
   components:
   - type: MobSpawner
     spawnWeights:
-      MobSnowLegion: 1
+      MobSnowLegionIcemoon: 1
   - type: ConditionalSpawner
     prototypes:
-      - MobSnowLegion
+      - MobSnowLegionIcemoon
 
 - type: entity
   parent: BaseIcemoonDemonicPortal

@@ -110,7 +110,7 @@
 - type: polymorph
   id: WhiteWolf
   configuration:
-    entity: MobWhiteWolf
+    entity: MobWhiteWolfPolymorph
     transferName: true
     revertOnCrit: true
     revertOnDeath: true
@@ -118,7 +118,7 @@
 - type: polymorph
   id: PolarBear
   configuration:
-    entity: MobPolarBear
+    entity: MobPolarBearPolymorph
     transferName: true
     revertOnCrit: true
     revertOnDeath: true

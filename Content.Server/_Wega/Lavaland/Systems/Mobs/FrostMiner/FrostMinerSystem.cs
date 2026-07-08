@@ -4,6 +4,7 @@ using Content.Shared.Lavaland.Components;
 using Content.Shared.Lavaland.Events;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
+using Content.Shared.SSDIndicator;
 using Content.Shared.Weapons.Ranged.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -26,6 +27,7 @@ public sealed partial class FrostMinerSystem : EntitySystem
 
         SubscribeLocalEvent<FrostMinerIceOrbComponent, ComponentStartup>(OnOrbStartup);
 
+        SubscribeLocalEvent<FrostMinerBossComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<FrostMinerBossComponent, MobStateChangedEvent>(OnMobStateChanged);
 
         SubscribeLocalEvent<FrostMinerBossComponent, FrostMinerIceOrbsActionEvent>(OnIceOrbs);
@@ -75,6 +77,12 @@ public sealed partial class FrostMinerSystem : EntitySystem
     }
 
     #endregion
+
+    // I don't want to add 200+ fields from parents just to remove 1 component from the prototype.
+    private void OnMapInit(Entity<FrostMinerBossComponent> ent, ref MapInitEvent args)
+    {
+        RemComp<SSDIndicatorComponent>(ent);
+    }
 
     private void OnMobStateChanged(Entity<FrostMinerBossComponent> ent, ref MobStateChangedEvent args)
     {
@@ -198,7 +206,7 @@ public sealed partial class FrostMinerSystem : EntitySystem
 
         var snowball = Spawn(prototype, Transform(shooter).Coordinates);
         _gun.ShootProjectile(snowball, direction, Vector2.Zero, null, shooter,
-            SharedGunSystem.ProjectileSpeed * 0.2f);
+            SharedGunSystem.ProjectileSpeed * 0.15f);
     }
 
     private void ShootIceWave(EntityUid shooter, int shardCount, EntProtoId shardPrototype)
@@ -213,7 +221,7 @@ public sealed partial class FrostMinerSystem : EntitySystem
 
             var shard = Spawn(shardPrototype, Transform(shooter).Coordinates);
             _gun.ShootProjectile(shard, direction, Vector2.Zero, null, shooter,
-                SharedGunSystem.ProjectileSpeed * 0.2f);
+                SharedGunSystem.ProjectileSpeed * 0.15f);
         }
     }
 
@@ -263,7 +271,7 @@ public sealed partial class FrostMinerSystem : EntitySystem
                 var direction = new Vector2(MathF.Cos(angle), MathF.Sin(angle));
                 var shard = Spawn(prototype, Transform(shooter).Coordinates);
                 _gun.ShootProjectile(shard, direction, Vector2.Zero, null, shooter,
-                    SharedGunSystem.ProjectileSpeed * 0.2f);
+                    SharedGunSystem.ProjectileSpeed * 0.15f);
             }
             return;
         }
@@ -279,7 +287,7 @@ public sealed partial class FrostMinerSystem : EntitySystem
 
             var shard = Spawn(prototype, Transform(shooter).Coordinates);
             _gun.ShootProjectile(shard, direction, Vector2.Zero, null, shooter,
-                SharedGunSystem.ProjectileSpeed * 0.2f);
+                SharedGunSystem.ProjectileSpeed * 0.15f);
         }
     }
 }

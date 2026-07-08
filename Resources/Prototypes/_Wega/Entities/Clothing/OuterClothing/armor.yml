@@ -286,6 +286,9 @@
       reduction: 0.5
     - type: ClothingAshStormProtection
       modifier: 0.4
+    - type: ConditionalSpawner
+      prototypes: # lol
+        - ClothingHeadHelmetHostileEnv
 
 - type: entity
   parent: ClothingOuterArmorCult

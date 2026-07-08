@@ -161,7 +161,7 @@
     impactEffect: BulletImpactEffectKinetic
     damage:
       types:
-        Blunt: 6 # Corvax-Wega-Lavaland-Edit
+        Blunt: 6
         Structural: 15
   - type: DamageMarkerOnCollide
     whitelist:

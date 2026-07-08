@@ -18,3 +18,11 @@
     children:
     - id: WhiteWolfIcemoonCave
     - id: PolarBearIcemoonCave
+    - id: WhiteWolfIcemoonSilverCave
+    - id: PolarBearIcemoonSilverCave
+    - id: WhiteWolfIcemoonGoldCave
+    - id: PolarBearIcemoonGoldCave
+    - id: WhiteWolfIcemoonDiamondCave
+    - id: PolarBearIcemoonDiamondCave
+    - id: WhiteWolfIcemoonUraniumCave
+    - id: PolarBearIcemoonUraniumCave

@@ -510,7 +510,9 @@
       collection: ColossusMusic
   - type: BossRewards
     rewards:
-    - CrateNecropolisColossusFilled
+    - GemHollowCrystal
+    randomReward:
+    - DivineVocalCordsImplant
   - type: ColossusBoss
   - type: MegafaunaDamageContributor
     achievement: ColossusBoss
@@ -765,7 +767,10 @@
       collection: BubblegumMusic
   - type: BossRewards
     rewards:
-    - CrateNecropolisBubblegumFilled
+    - GemBloodStone
+    randomReward:
+    - WeaponSpellBlade
+    - ClothingOuterArmorHostileEnv
   - type: BubblegumBoss
     phase1Actions:
     - ActionBubblegumRage

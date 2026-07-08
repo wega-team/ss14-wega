@@ -118,7 +118,7 @@
     soundHit:
       path: /Audio/Weapons/bladeslice.ogg
   - type: DisarmMalus
-    malus: 0
+    malus: 1
   - type: ContainerContainer
     containers:
       hotswap-paired: !type:Container

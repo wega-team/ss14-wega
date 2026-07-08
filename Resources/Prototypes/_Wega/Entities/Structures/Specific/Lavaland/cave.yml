@@ -36,10 +36,98 @@
         sound:
           path: /Audio/_Wega/Effects/Planet/rumble.ogg
       - !type:SpawnEntitiesBehavior
-          spawn:
-            PulsatingTumorPopped:
-              min: 1
-              max: 1
+        spawn:
+          SteelOre1:
+            min: 4
+            max: 8
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+- type: entity
+  parent: BaseIcemoonCave
+  id: IcemoonSilverCave
+  abstract: true
+  components:
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/_Wega/Effects/Planet/rumble.ogg
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SilverOre1:
+            min: 4
+            max: 6
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+- type: entity
+  parent: BaseIcemoonCave
+  id: IcemoonGoldCave
+  abstract: true
+  components:
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/_Wega/Effects/Planet/rumble.ogg
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          GoldOre1:
+            min: 4
+            max: 6
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+- type: entity
+  parent: BaseIcemoonCave
+  id: IcemoonDiamondCave
+  abstract: true
+  components:
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/_Wega/Effects/Planet/rumble.ogg
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          DiamondOre1:
+            min: 2
+            max: 4
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+- type: entity
+  parent: BaseIcemoonCave
+  id: IcemoonUraniumCave
+  abstract: true
+  components:
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/_Wega/Effects/Planet/rumble.ogg
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          UraniumOre1:
+            min: 2
+            max: 4
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
 
@@ -66,3 +154,35 @@
   - type: ConditionalSpawner
     prototypes:
       - MobPolarBear
+
+- type: entity
+  parent: [ IcemoonSilverCave, WhiteWolfIcemoonCave ]
+  id: WhiteWolfIcemoonSilverCave
+
+- type: entity
+  parent: [ IcemoonSilverCave, PolarBearIcemoonCave ]
+  id: PolarBearIcemoonSilverCave
+
+- type: entity
+  parent: [ IcemoonGoldCave, WhiteWolfIcemoonCave ]
+  id: WhiteWolfIcemoonGoldCave
+
+- type: entity
+  parent: [ IcemoonGoldCave, PolarBearIcemoonCave ]
+  id: PolarBearIcemoonGoldCave
+
+- type: entity
+  parent: [ IcemoonDiamondCave, WhiteWolfIcemoonCave ]
+  id: WhiteWolfIcemoonDiamondCave
+
+- type: entity
+  parent: [ IcemoonDiamondCave, PolarBearIcemoonCave ]
+  id: PolarBearIcemoonDiamondCave
+
+- type: entity
+  parent: [ IcemoonUraniumCave, WhiteWolfIcemoonCave ]
+  id: WhiteWolfIcemoonUraniumCave
+
+- type: entity
+  parent: [ IcemoonUraniumCave, PolarBearIcemoonCave ]
+  id: PolarBearIcemoonUraniumCave
