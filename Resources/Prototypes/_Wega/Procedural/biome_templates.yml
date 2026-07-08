@@ -144,7 +144,7 @@
       allowedTiles:
         - FloorSnow
       divisions: 2
-      threshold: -0.50
+      threshold: -0.60
       noise:
         seed: 0
         noiseType: Cellular
@@ -164,7 +164,7 @@
       allowedTiles:
         - FloorSnow
       divisions: 1
-      threshold: -0.35
+      threshold: -0.25
       noise:
         seed: 0
         noiseType: Cellular
@@ -194,7 +194,7 @@
       allowedTiles:
         - FloorSnow
       divisions: 1
-      threshold: -0.0
+      threshold: -0.05
       noise:
         seed: 0
         noiseType: Cellular
@@ -220,13 +220,14 @@
         - FloorSnow
       entities:
         - FloraTreeSnow
+        - FloraTreeConifer
     # Rock formations
     - !type:BiomeEntityLayer
       allowedTiles:
         - FloorSnow
       threshold: -0.30
       noise:
-        seed: 0
+        seed: 5
         noiseType: Cellular
         frequency: 0.05
         lacunarity: 2
@@ -234,8 +235,20 @@
         octaves: 5
         cellularDistanceFunction: Euclidean
         cellularReturnType: Distance2
-      entities:
-        - WallRockSnow
+      entityWeights:
+        WallRockSnow: 0.647
+        WallRockSnowIcemoonTin: 0.04
+        WallRockSnowIcemoonCoal: 0.019
+        WallRockSnowIcemoonQuartz: 0.019
+        WallRockSnowIcemoonPlasma: 0.0098
+        WallRockSnowIcemoonSilver: 0.0098
+        WallRockSnowIcemoonGold: 0.0098
+        WallRockSnowIcemoonUranium: 0.00535
+        WallRockSnowIcemoonBananium: 0.00508
+        WallRockSnowIcemoonGems: 0.0015
+        WallRockSnowIcemoonMagmite: 0.0015
+        WallRockSnowIcemoonDiamond: 0.001
+        WallRockSnowIcemoonGibtonite: 0.0005
     # Ice tiles
     - !type:BiomeTileLayer
       tile: FloorIce

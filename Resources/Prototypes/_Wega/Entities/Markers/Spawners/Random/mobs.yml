@@ -98,7 +98,7 @@
       children:
       - id: SpawnMobIceWhelpIcemoon
     - !type:GroupSelector
-      weight: 8
+      weight: 0.8
       children:
       - id: SpawnMobClockworkDefender
     # Bosses
@@ -110,6 +110,15 @@
       weight: 0.2
       children:
       - id: SpawnMobFrostMinerIcemoon
+    # Aggressive towards everyone.
+    - !type:GroupSelector
+      weight: 0.2
+      children:
+      - id: SpawnColossusLavaland
+    - !type:GroupSelector
+      weight: 0.1
+      children:
+      - id: SpawnBubblegumLavaland
     # He might be wandering around Icemoon too.
     - !type:GroupSelector
       weight: 0.2
