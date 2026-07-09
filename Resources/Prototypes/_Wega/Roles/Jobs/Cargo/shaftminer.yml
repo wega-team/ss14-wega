@@ -8,7 +8,7 @@
       department: Cargo
       time: 3h
   startingGear: ShaftMinerGear
-  icon: "JobIconShaftMiner"
+  icon: "JobIconShaftMinerAlt"
   supervisors: job-supervisors-qm
   access:
   - Cargo

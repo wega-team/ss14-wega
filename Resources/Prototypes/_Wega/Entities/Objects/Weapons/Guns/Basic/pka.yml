@@ -1,8 +1,15 @@
 - type: entity
+  parent: BaseItem
   id: WeaponProtoKineticAcceleratorBDM
-  parent: WeaponProtoKineticAccelerator
   categories: [ HideSpawnMenu ]
   components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Basic/kinetic_accelerator.rsi
+    layers:
+    - state: icon
+    - state: animation-icon
+      visible: false
+      map: [ "empty-icon" ]
   - type: DeleteOnDrop
   - type: SpawnOnDelete
     prototype: WeaponProtoKineticAccelerator
@@ -17,8 +24,25 @@
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/kinetic_accel.ogg
     projectileSpeed: 25
-  - type: Wieldable
-    wielded: false
+  - type: AmmoCounter
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.AmmoVisuals.HasAmmo:
+        empty-icon:
+          True: { visible: False }
+          False: { visible: True }
+        #todo: add other 'empty' animations
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 0.75
+    rechargeSound:
+      path: /Audio/Weapons/Guns/MagIn/kinetic_reload.ogg
+  - type: BasicEntityAmmoProvider
+    proto: BulletKinetic
+    capacity: 1
+    count: 1
+  - type: DisarmMalus
+    malus: 1
 
 - type: entity
   name: magmite proto-kinetic accelerator

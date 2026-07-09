@@ -1,4 +1,3 @@
-using Content.Shared.Weather;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
 
@@ -21,16 +20,10 @@ public sealed partial class LavalandComponent : Component
     public TimeSpan CurrentWeatherEnd = TimeSpan.Zero;
 
     [DataField]
-    public LavalandWeatherType UpcomingWeatherType = LavalandWeatherType.None;
+    public LavalandWeatherEntryPrototype? CurrentWeatherEntry = null;
 
     [DataField]
-    public EntProtoId? UpcomingWeatherProto;
-
-    [DataField]
-    public LavalandWeatherType CurrentWeatherType = LavalandWeatherType.None;
-
-    [DataField]
-    public EntProtoId? CurrentWeatherProto;
+    public LavalandWeatherEntryPrototype? UpcomingWeatherEntry = null;
 
     [DataField]
     public bool WarningSent = false;

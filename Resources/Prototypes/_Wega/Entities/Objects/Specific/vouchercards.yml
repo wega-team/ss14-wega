@@ -3,6 +3,8 @@
   id: BaseVoucherCard
   abstract: true
   components:
+  - type: Item
+    storedRotation: 65
   - type: ActivatableUI
     key: enum.VoucherUiKey.Key
   - type: UserInterface

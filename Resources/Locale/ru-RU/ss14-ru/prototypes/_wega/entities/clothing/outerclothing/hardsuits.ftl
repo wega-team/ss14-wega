@@ -4,3 +4,5 @@ ent-ClothingOuterHardsuitVoidAdvanced = улучшенный пустотный 
     .desc = Усовершенствованная версия обычного пустотного скафандра.
 ent-ClothingOuterHardsuitBlueShield = скафандр офицера "Синий Щит"
     .desc = Специальный костюм, защищающий от воздействия опасных сред с низким давлением. С ним защищать головы стало ещё проще!
+ent-ClothingOuterHardsuitFrostMiner = { ent-ClothingOuterHardsuitMaxim }
+    .desc = { ent-ClothingOuterHardsuitMaxim.desc }

@@ -4,82 +4,54 @@ using Content.Server.Atmos.EntitySystems;
 using Content.Server.Decals;
 using Content.Server.Lavaland.Components;
 using Content.Server.Parallax;
+using Content.Server.Pinpointer;
 using Content.Server.Power.Components;
-using Content.Server.Radio.EntitySystems;
 using Content.Server.Spawners.EntitySystems;
 using Content.Server.Station.Events;
 using Content.Shared.Atmos;
-using Content.Shared.Camera;
 using Content.Shared.CCVar;
-using Content.Shared.Damage;
-using Content.Shared.Damage.Components;
-using Content.Shared.Damage.Prototypes;
-using Content.Shared.Damage.Systems;
 using Content.Shared.Decals;
 using Content.Shared.Gravity;
 using Content.Shared.Lavaland;
 using Content.Shared.Lavaland.Components;
-using Content.Shared.Lavaland.Events;
-using Content.Shared.Maps;
+using Content.Shared.Light.Components;
 using Content.Shared.Parallax.Biomes;
 using Content.Shared.Pinpointer;
-using Content.Shared.Popups;
 using Content.Shared.Radio.Components;
 using Content.Shared.Shuttles.Components;
 using Content.Shared.Shuttles.Systems;
-using Content.Shared.Stunnable;
 using Content.Shared.Tiles;
-using Content.Shared.Weather;
 using Robust.Server.GameObjects;
 using Robust.Server.Physics;
-using Robust.Shared.Audio;
-using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;
 using Robust.Shared.EntitySerialization;
 using Robust.Shared.EntitySerialization.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
-using Robust.Shared.Physics.Components;
-using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
+using Robust.Shared.Utility;
 
 namespace Content.Server.Lavaland.Systems;
 
-// TODO: До лучших времен доделать настройки планеты через прото под [TOP SECRET].
 public sealed partial class LavalandSystem : SharedLavalandSystem
 {
-    [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private AtmosphereSystem _atmos = default!;
     [Dependency] private BiomeSystem _biome = default!;
     [Dependency] private IConfigurationManager _cfg = default!;
-    [Dependency] private DamageableSystem _damage = default!;
     [Dependency] private DecalSystem _decals = default!;
     [Dependency] private SharedGravitySystem _gravity = default!;
-    [Dependency] private EntityLookupSystem _lookup = default!;
     [Dependency] private GridFixtureSystem _fixture = default!;
     [Dependency] private IGameTiming _gameTiming = default!;
     [Dependency] private MapLoaderSystem _loader = default!;
     [Dependency] private MapSystem _map = default!;
     [Dependency] private MetaDataSystem _meta = default!;
-    [Dependency] private PhysicsSystem _physics = default!;
+    [Dependency] private NavMapSystem _navMap = default!;
     [Dependency] private IPrototypeManager _proto = default!;
-    [Dependency] private SharedPopupSystem _popup = default!;
-    [Dependency] private RadioSystem _radio = default!;
     [Dependency] private IRobustRandom _random = default!;
-    [Dependency] private SharedCameraRecoilSystem _recoil = default!;
     [Dependency] private SharedShuttleSystem _iff = default!;
-    [Dependency] private SharedStunSystem _stun = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
-    [Dependency] private SharedWeatherSystem _weather = default!;
-    [Dependency] private TurfSystem _turf = default!;
-
-    private static readonly ProtoId<DamageTypePrototype> StructuralDamage = "Structural";
-    private static readonly ProtoId<DamageTypePrototype> CausticDamage = "Caustic";
-    private static readonly ProtoId<DamageTypePrototype> BluntDamage = "Blunt";
-    private static readonly ProtoId<DamageTypePrototype> HeatDamage = "Heat";
-    private static readonly EntProtoId FallingRock = "FallingRockEffect";
 
     public override void Initialize()
     {
@@ -87,581 +59,6 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
 
         SubscribeLocalEvent<StationLavalandComponent, StationPostInitEvent>(OnStationStartup, before: [typeof(ConditionalSpawnerSystem)]);
     }
-
-    #region Weather Procesing
-
-    public override void Update(float frameTime)
-    {
-        base.Update(frameTime);
-
-        var query = EntityQueryEnumerator<LavalandComponent>();
-        while (query.MoveNext(out var uid, out var comp))
-        {
-            if (comp.NextWeatherChange < _gameTiming.CurTime && !comp.WarningSent)
-                SendWeatherWarning(uid, comp);
-
-            if (comp.WeatherStartTime < _gameTiming.CurTime && comp.WarningSent && comp.CurrentWeatherType == LavalandWeatherType.None)
-                StartWeather(uid, comp);
-
-            if (comp.CurrentWeatherType != LavalandWeatherType.None)
-                ProcessWeather(uid, comp, frameTime);
-        }
-    }
-
-    private void SendWeatherWarning(EntityUid uid, LavalandComponent comp)
-    {
-        var weatherType = GetRandomWeatherType(comp);
-        var (weatherProto, _) = GetWeatherInfo(weatherType);
-
-        comp.UpcomingWeatherType = weatherType;
-        comp.UpcomingWeatherProto = weatherProto;
-        comp.WeatherStartTime = _gameTiming.CurTime + TimeSpan.FromSeconds(60);
-        comp.WarningSent = true;
-
-        SendWeatherAlert(weatherType);
-    }
-
-    private void StartWeather(EntityUid uid, LavalandComponent comp)
-    {
-        var mapId = Transform(uid).MapID;
-
-        comp.CurrentWeatherType = comp.UpcomingWeatherType;
-        comp.CurrentWeatherProto = comp.UpcomingWeatherProto;
-        comp.CurrentWeatherEnd = _gameTiming.CurTime + GetWeatherInfo(comp.CurrentWeatherType).duration;
-
-        comp.UpcomingWeatherType = LavalandWeatherType.None;
-        comp.UpcomingWeatherProto = null;
-        comp.WarningSent = false;
-
-        comp.NextWeatherChange = comp.CurrentWeatherEnd + TimeSpan.FromMinutes(_random.Next(5, 15));
-
-        if (comp.CurrentWeatherProto != null)
-        {
-            _weather.TrySetWeather(mapId, comp.CurrentWeatherProto.Value, out _, comp.CurrentWeatherEnd - _gameTiming.CurTime);
-        }
-    }
-
-    private void ProcessWeather(EntityUid uid, LavalandComponent comp, float frameTime)
-    {
-        if (comp.CurrentWeatherEnd < _gameTiming.CurTime)
-        {
-            EndWeather(uid, comp);
-            return;
-        }
-
-        comp.DamageTick -= frameTime;
-        if (comp.DamageTick <= 0f)
-        {
-            ApplyWeatherDamage(uid, comp);
-            comp.DamageTick = GetDamageInterval(comp.CurrentWeatherType);
-            if (comp.CurrentWeatherType == LavalandWeatherType.VolcanicActivity)
-                ApplyVolcanicActivity(comp);
-        }
-    }
-
-    private void EndWeather(EntityUid uid, LavalandComponent comp)
-    {
-        var endedWeather = comp.CurrentWeatherType;
-        var mapId = Transform(uid).MapID;
-
-        comp.CurrentWeatherType = LavalandWeatherType.None;
-        comp.CurrentWeatherProto = null;
-        comp.DamageTick = 0f;
-
-        _weather.TrySetWeather(mapId, null, out _);
-
-        SendWeatherEndAlert(endedWeather);
-    }
-
-    private LavalandWeatherType GetRandomWeatherType(LavalandComponent comp)
-    {
-        if (!_proto.TryIndex(comp.PlanetPrototype, out LavalandPlanetPrototype? planetProto))
-            return LavalandWeatherType.None;
-
-        var availableWeather = planetProto.AvailableWeather;
-        if (availableWeather.Count == 0)
-            return LavalandWeatherType.None;
-
-        var weatherWeights = new Dictionary<LavalandWeatherType, int>
-        {
-            { LavalandWeatherType.StormWind, 40 },
-            { LavalandWeatherType.AshStormLight, 30 },
-            { LavalandWeatherType.AshStormHeavy, 15 },
-            { LavalandWeatherType.VolcanicActivity, 10 },
-            { LavalandWeatherType.AcidRain, 5 }
-        };
-
-        var filteredWeights = weatherWeights
-            .Where(x => availableWeather.Contains(x.Key))
-            .ToList();
-
-        if (filteredWeights.Count == 0)
-            return LavalandWeatherType.None;
-
-        var totalWeight = filteredWeights.Sum(x => x.Value);
-        var roll = _random.Next(totalWeight);
-        var currentWeight = 0;
-
-        foreach (var (weather, weight) in filteredWeights)
-        {
-            currentWeight += weight;
-            if (roll < currentWeight)
-                return weather;
-        }
-
-        return filteredWeights.First().Key;
-    }
-
-    private (EntProtoId? proto, TimeSpan duration) GetWeatherInfo(LavalandWeatherType type)
-    {
-        // Yeeeeeeeeeeee, the fierce hardcore proved itself in one upstream, after which a refactor was planned!
-        return type switch
-        {
-            LavalandWeatherType.AshStormLight => ("WeatherAshfallLight", TimeSpan.FromSeconds(_random.Next(60, 120))),
-            LavalandWeatherType.AshStormHeavy => ("WeatherAshfallHeavy", TimeSpan.FromSeconds(_random.Next(90, 150))),
-            LavalandWeatherType.VolcanicActivity => (null, TimeSpan.FromSeconds(_random.Next(60, 120))),
-            LavalandWeatherType.AcidRain => ("WeatherAcidRain", TimeSpan.FromSeconds(_random.Next(60, 120))),
-            LavalandWeatherType.StormWind => (null, TimeSpan.FromSeconds(_random.Next(60, 120))),
-            _ => (null, TimeSpan.Zero)
-        };
-    }
-
-    private float GetDamageInterval(LavalandWeatherType type)
-    {
-        return type switch
-        {
-            LavalandWeatherType.AshStormLight => 5f,
-            LavalandWeatherType.AshStormHeavy => 3.33f,
-            LavalandWeatherType.AcidRain => 1.5f,
-            _ => 5f
-        };
-    }
-
-    private void ApplyWeatherDamage(EntityUid lavalandUid, LavalandComponent comp)
-    {
-        var query = EntityQueryEnumerator<LavalandVisitorComponent>();
-        while (query.MoveNext(out var uid, out var visitor))
-        {
-            if (visitor.ImmuneToStorm)
-                continue;
-
-            var transform = Transform(uid);
-            if (transform.MapUid != lavalandUid)
-                continue;
-
-            // Activity don't care about you or who you are.
-            if (comp.CurrentWeatherType != LavalandWeatherType.VolcanicActivity)
-            {
-                if (!_turf.TryGetTileRef(transform.Coordinates, out var tileRef))
-                    continue;
-
-                var tile = _turf.GetContentTileDefinition(tileRef.Value);
-                if (!tile.Weather)
-                    continue;
-            }
-
-            var damage = GetWeatherDamage(comp.CurrentWeatherType);
-            if (damage != null)
-            {
-                var ev = new AshProtectionAttemptEvent();
-                RaiseLocalEvent(uid, ref ev);
-
-                if (ev.Modifier < 1f)
-                {
-                    var damageReduction = 1f - ev.Modifier;
-                    _damage.TryChangeDamage(uid, damage * damageReduction, true);
-                    _popup.PopupEntity(Loc.GetString(GetWeatherDamageMessage(comp.CurrentWeatherType)),
-                        uid, uid);
-                }
-            }
-
-            ApplyWeatherEffects(uid, comp);
-        }
-    }
-
-    private DamageSpecifier? GetWeatherDamage(LavalandWeatherType type)
-    {
-        return type switch
-        {
-            LavalandWeatherType.AshStormLight => new DamageSpecifier { DamageDict = { { HeatDamage, 10 } } },
-            LavalandWeatherType.AshStormHeavy => new DamageSpecifier { DamageDict = { { HeatDamage, 40 } } },
-            LavalandWeatherType.AcidRain => new DamageSpecifier { DamageDict = { { CausticDamage, 10 } } },
-            _ => null
-        };
-    }
-
-    // More Cinema
-    private void ApplyWeatherEffects(EntityUid targetUid, LavalandComponent comp)
-    {
-        switch (comp.CurrentWeatherType)
-        {
-            case LavalandWeatherType.StormWind:
-                ApplyWindPush(targetUid);
-                break;
-
-            case LavalandWeatherType.VolcanicActivity:
-                ApplyVolcanicActivity(comp, targetUid);
-                break;
-        }
-    }
-
-    private void ApplyWindPush(EntityUid targetUid)
-    {
-        var windDirection = _random.NextAngle().ToVec();
-        var windForce = _random.NextFloat(500f, 1500f);
-
-        if (HasComp<PhysicsComponent>(targetUid))
-        {
-            _physics.ApplyLinearImpulse(targetUid, windDirection * windForce);
-        }
-    }
-
-    #region Volcanic Activity
-
-    private void ApplyVolcanicActivity(LavalandComponent comp, EntityUid? targetUid = null)
-    {
-        if (targetUid.HasValue)
-        {
-            ApplyEarthquakeToPlayer(targetUid.Value, comp.RumbleSound);
-            if (_random.Prob(0.1f))
-            {
-                SpawnEffectsNearPlayer(targetUid.Value, comp.RockFallSound);
-            }
-        }
-        else
-        {
-            var lavalandQuery = EntityQueryEnumerator<LavalandComponent>();
-            while (lavalandQuery.MoveNext(out var lavalandUid, out _))
-            {
-                var mapUid = Transform(lavalandUid).MapUid;
-                if (mapUid == null)
-                    continue;
-
-                var min = _cfg.GetCVar(WegaCVars.LavalandSpawnIntervalMin);
-                var max = _cfg.GetCVar(WegaCVars.LavalandSpawnIntervalMax);
-
-                int attempts = 0;
-                int maxAttempts = 3;
-                int spawnedCount = 0;
-                int maxSpawns = _random.Next(1, 3);
-
-                while (spawnedCount < maxSpawns && attempts < maxAttempts)
-                {
-                    attempts++;
-
-                    var angle = _random.NextAngle();
-                    var distance = _random.NextFloat(min, max);
-                    var spawnPos = angle.ToVec() * distance;
-
-                    var spawnCoords = new EntityCoordinates(mapUid.Value, spawnPos);
-                    if (_lookup.GetEntitiesInRange<ActorComponent>(spawnCoords, 1f).Any())
-                        continue;
-
-                    var protectedGrids = _lookup.GetEntitiesInRange<GridLavalandWeatherProtectionComponent>(spawnCoords, 10f);
-                    if (protectedGrids.Any())
-                        continue;
-
-                    var avanpost = _lookup.GetEntitiesInRange<LavalandAvanpostComponent>(spawnCoords, 16f);
-                    if (avanpost.Any())
-                        continue;
-
-                    var effectRoll = _random.Next(100);
-
-                    if (effectRoll < 70)
-                    {
-                        SpawnRockFormation(mapUid.Value, spawnPos);
-                        spawnedCount++;
-                    }
-                    else
-                    {
-                        SpawnLavaFormation(mapUid.Value, spawnPos);
-                        spawnedCount++;
-                    }
-                }
-            }
-        }
-    }
-
-    #region Player Effects
-
-    private void ApplyEarthquakeToPlayer(EntityUid playerUid, SoundSpecifier sound)
-    {
-        if (!TryComp<CameraRecoilComponent>(playerUid, out var recoil))
-            return;
-
-        var intensity = _random.NextFloat(0.3f, 0.7f);
-        ApplyCameraShake(playerUid, intensity, recoil);
-        _audio.PlayEntity(sound, playerUid, playerUid);
-
-        if (_random.Prob(0.3f))
-        {
-            ApplyStrongShake(playerUid, sound, recoil);
-        }
-    }
-
-    private void ApplyCameraShake(EntityUid playerUid, float intensity, CameraRecoilComponent recoil)
-    {
-        var direction = _random.NextAngle().ToVec();
-        var shakeMagnitude = intensity * 0.5f;
-
-        var kickback = direction * shakeMagnitude;
-        _recoil.KickCamera(playerUid, kickback, recoil);
-        if (_random.Prob(intensity * 0.5f))
-            TryKnockDown(playerUid);
-    }
-
-    private void ApplyStrongShake(EntityUid playerUid, SoundSpecifier sound, CameraRecoilComponent recoil)
-    {
-        var direction = _random.NextAngle().ToVec();
-        var strongKick = direction * _random.NextFloat(0.4f, 0.8f);
-
-        Timer.Spawn(TimeSpan.FromSeconds(_random.NextFloat(0.1f, 0.5f)),
-            () =>
-            {
-                _recoil.KickCamera(playerUid, strongKick, recoil);
-                _audio.PlayEntity(sound, playerUid, playerUid);
-            });
-    }
-
-    private void TryKnockDown(EntityUid playerUid)
-    {
-        var knockDirection = _random.NextAngle().ToVec();
-        var knockForce = _random.NextFloat(500f, 1500f);
-
-        if (HasComp<PhysicsComponent>(playerUid))
-        {
-            _physics.ApplyLinearImpulse(playerUid, knockDirection * knockForce);
-        }
-
-        if (_random.Prob(0.2f))
-        {
-            var time = TimeSpan.FromSeconds(_random.Next(1, 3));
-            _stun.TryKnockdown(playerUid, time);
-        }
-    }
-
-    private void SpawnEffectsNearPlayer(EntityUid playerUid, SoundSpecifier sound)
-    {
-        var playerPos = _transform.GetWorldPosition(playerUid);
-        var mapUid = Transform(playerUid).MapUid;
-
-        if (mapUid == null)
-            return;
-
-        var avanpost = _lookup.GetEntitiesInRange<LavalandAvanpostComponent>(Transform(playerUid).Coordinates, 48f);
-        if (avanpost.Count > 0)
-            return;
-
-        var gridnWeatherProtection = _lookup.GetEntitiesInRange<GridLavalandWeatherProtectionComponent>(Transform(playerUid).Coordinates, 48f);
-        if (gridnWeatherProtection.Count > 0)
-            return;
-
-        var direction = _random.NextAngle().ToVec();
-        var effectRoll = _random.Next(100);
-
-        if (effectRoll < 80)
-        {
-            var safeDistance = 6f;
-            var formationPos = playerPos + direction * safeDistance;
-
-            Spawn(FallingRock, new EntityCoordinates(mapUid.Value, formationPos));
-            Timer.Spawn(TimeSpan.FromSeconds(5f),
-            () =>
-            {
-                SpawnRockFormation(mapUid.Value, formationPos);
-                _audio.PlayPredicted(sound, new EntityCoordinates(mapUid.Value, formationPos), null);
-            });
-        }
-        else
-        {
-            var safeDistance = 8f;
-            var formationPos = playerPos + direction * safeDistance;
-            SpawnLavaFormation(mapUid.Value, formationPos);
-        }
-    }
-    #endregion
-
-    #region Formations
-    private void SpawnRockFormation(EntityUid mapUid, Vector2 centerPos)
-    {
-        var size = _random.Next(0, 2) == 0 ? 3 : 5;
-        for (int x = -size / 2; x <= size / 2; x++)
-        {
-            for (int y = -size / 2; y <= size / 2; y++)
-            {
-                if (_random.Prob(0.8f))
-                {
-                    var spawnPos = centerPos + new Vector2(x, y);
-                    var spawnCoords = new EntityCoordinates(mapUid, spawnPos);
-
-                    var swampeds = _lookup.GetEntitiesInRange<DamageableComponent>(spawnCoords, 1f);
-                    foreach (var swamped in swampeds)
-                    {
-                        var damage = new DamageSpecifier { DamageDict = { { BluntDamage, 200 }, { StructuralDamage, 200 } } };
-                        _damage.TryChangeDamage(swamped.Owner, damage);
-                    }
-
-                    var rockProto = GetRandomRockPrototype();
-                    Spawn(rockProto, spawnCoords);
-                }
-            }
-        }
-    }
-
-    private void SpawnLavaFormation(EntityUid mapUid, Vector2 centerPos)
-    {
-        var size = GetLavaFormationSize();
-        for (int x = -size / 2; x <= size / 2; x++)
-        {
-            for (int y = -size / 2; y <= size / 2; y++)
-            {
-                var spawnChance = GetLavaSpawnChance(x, y, size);
-
-                if (_random.Prob(spawnChance))
-                {
-                    var spawnPos = centerPos + new Vector2(x, y);
-                    var spawnCoords = new EntityCoordinates(mapUid, spawnPos);
-
-                    Spawn("FloorLavaEntity", spawnCoords);
-                }
-            }
-        }
-    }
-
-    private string GetRandomRockPrototype()
-    {
-        var rockWeights = new (string Prototype, int Weight)[]
-        {
-            ("WallRockBasalt", 50),
-            ("WallRockBasaltLavalandTin", 20),
-            ("WallRockBasaltLavalandCoal", 15),
-            ("WallRockBasaltLavalandPlasma", 8),
-            ("WallRockBasaltLavalandSilver", 4),
-            ("WallRockBasaltLavalandGold", 2),
-            ("WallRockBasaltLavalandUranium", 1),
-        };
-
-        var totalWeight = 0;
-        foreach (var (_, weight) in rockWeights)
-        {
-            totalWeight += weight;
-        }
-
-        var roll = _random.Next(totalWeight);
-        var currentWeight = 0;
-
-        foreach (var (prototype, weight) in rockWeights)
-        {
-            currentWeight += weight;
-            if (roll < currentWeight)
-                return prototype;
-        }
-
-        return "WallRockBasalt";
-    }
-
-    private int GetLavaFormationSize()
-    {
-        var roll = _random.Next(100);
-
-        return roll switch
-        {
-            < 50 => 3,
-            < 80 => 5,
-            < 95 => 7,
-            _ => 9
-        };
-    }
-
-    private float GetLavaSpawnChance(int x, int y, int size)
-    {
-        var distanceFromCenter = Math.Sqrt(x * x + y * y);
-        var maxDistance = size / 2f;
-
-        var centerChance = 0.9f;
-        var edgeChance = 0.6f;
-
-        var normalizedDistance = (float)distanceFromCenter / maxDistance;
-        return MathHelper.Lerp(centerChance, edgeChance, normalizedDistance);
-    }
-
-    #endregion
-    #endregion
-
-    private void SendWeatherAlert(LavalandWeatherType weatherType)
-    {
-        Entity<LavalandAvanpostComponent>? sender = null;
-        var query = EntityQueryEnumerator<LavalandAvanpostComponent>();
-        while (query.MoveNext(out var uid, out var comp))
-        {
-            sender = (uid, comp);
-            break;
-        }
-
-        if (sender == null)
-            return;
-
-        var alertMessage = GetWeatherWarningMessage(weatherType);
-        _radio.SendRadioMessage(sender.Value.Owner, alertMessage, sender.Value.Comp.AnnouncementChannel,
-            sender.Value.Owner, escapeMarkup: false);
-    }
-
-    private void SendWeatherEndAlert(LavalandWeatherType weatherType)
-    {
-        Entity<LavalandAvanpostComponent>? sender = null;
-        var query = EntityQueryEnumerator<LavalandAvanpostComponent>();
-        while (query.MoveNext(out var uid, out var comp))
-        {
-            sender = (uid, comp);
-            break;
-        }
-
-        if (sender == null)
-            return;
-
-        var alertMessage = GetWeatherEndMessage(weatherType);
-        _radio.SendRadioMessage(sender.Value.Owner, alertMessage, sender.Value.Comp.AnnouncementChannel,
-            sender.Value.Owner, escapeMarkup: false);
-    }
-
-    private string GetWeatherWarningMessage(LavalandWeatherType type)
-    {
-        return type switch
-        {
-            LavalandWeatherType.AshStormLight => Loc.GetString("lavaland-weather-warning-ash-storm-light"),
-            LavalandWeatherType.AshStormHeavy => Loc.GetString("lavaland-weather-warning-ash-storm-heavy"),
-            LavalandWeatherType.VolcanicActivity => Loc.GetString("lavaland-weather-warning-volcanic-activity"),
-            LavalandWeatherType.AcidRain => Loc.GetString("lavaland-weather-warning-acid-rain"),
-            LavalandWeatherType.StormWind => Loc.GetString("lavaland-weather-warning-wind"),
-            _ => Loc.GetString("lavaland-weather-warning-default")
-        };
-    }
-
-    private string GetWeatherEndMessage(LavalandWeatherType type)
-    {
-        return type switch
-        {
-            LavalandWeatherType.AshStormLight => Loc.GetString("lavaland-weather-end-ash-storm-light"),
-            LavalandWeatherType.AshStormHeavy => Loc.GetString("lavaland-weather-end-ash-storm-heavy"),
-            LavalandWeatherType.VolcanicActivity => Loc.GetString("lavaland-weather-end-volcanic-activity"),
-            LavalandWeatherType.AcidRain => Loc.GetString("lavaland-weather-end-acid-rain"),
-            LavalandWeatherType.StormWind => Loc.GetString("lavaland-weather-end-wind"),
-            _ => Loc.GetString("lavaland-weather-end-default")
-        };
-    }
-
-    private string GetWeatherDamageMessage(LavalandWeatherType type)
-    {
-        return type switch
-        {
-            LavalandWeatherType.AshStormLight => Loc.GetString("lavaland-weather-damaged-ash-storm-light"),
-            LavalandWeatherType.AshStormHeavy => Loc.GetString("lavaland-weather-damaged-ash-storm-heavy"),
-            LavalandWeatherType.AcidRain => Loc.GetString("lavaland-weather-damaged-acid-rain"),
-            _ => Loc.GetString("lavaland-weather-damaged-default")
-        };
-    }
-
-    #endregion
 
     #region Lavaland Procesing
     /*
@@ -688,37 +85,70 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
             return;
         }
 
+        var avanpostPath = GetAvanpostPath(ent, planetProto);
+
         var mapUid = _map.CreateMap(out var mapId);
-        if (!_loader.TryLoadGrid(mapId, ent.Comp.LavalandAvanpostPath, out var avanpost, offset: Vector2.Zero))
+        if (!_loader.TryLoadGrid(mapId, avanpostPath, out var avanpost, offset: Vector2.Zero))
         {
-            Log.Error($"Unable to load lavaland avanpost map {ent.Comp.LavalandAvanpostPath} for {ToPrettyString(ent)}");
+            Log.Error($"Unable to load lavaland avanpost map {avanpostPath} for {ToPrettyString(ent)}");
             _map.DeleteMap(mapId);
             return;
         }
 
-        _meta.SetEntityName(mapUid, Loc.GetString("lavaland-map"));
-        _meta.SetEntityName(avanpost.Value, Loc.GetString("lavaland-map-avanpost"));
-        var avanpostComp = EnsureComp<LavalandAvanpostComponent>(avanpost.Value);
-        EnsureComp<ActiveRadioComponent>(avanpost.Value).Channels.Add(avanpostComp.AnnouncementChannel);
-        EnsureComp<ProtectedGridComponent>(avanpost.Value);
-        EnsureComp<ProtectedGridComponent>(mapUid);
+        _meta.SetEntityName(mapUid, Loc.GetString($"{planet.ID.ToLower()}-map"));
+        _meta.SetEntityName(avanpost.Value, Loc.GetString($"{planet.ID.ToLower()}-map-avanpost"));
 
+        SetupAvanpost(avanpost.Value);
+        GenerateLavalandPlanet(mapUid, mapId, planet, avanpost.Value);
+    }
+
+    private ResPath GetAvanpostPath(Entity<StationLavalandComponent> ent, ProtoId<LavalandPlanetPrototype> planetProto)
+    {
+        if (ent.Comp.PlanetAvanposts.TryGetValue(planetProto, out var avanposts) && avanposts.Count > 0)
+            return _random.Pick(avanposts);
+
+        return ent.Comp.DefaultAvanpostPath;
+    }
+
+    private void SetupAvanpost(EntityUid avanpostUid)
+    {
+        var avanpostComp = EnsureComp<LavalandAvanpostComponent>(avanpostUid);
+        EnsureComp<ActiveRadioComponent>(avanpostUid).Channels.Add(avanpostComp.AnnouncementChannel);
+        EnsureComp<ProtectedGridComponent>(avanpostUid);
+        var navMap = EnsureComp<NavMapComponent>(avanpostUid);
+        _navMap.RefreshGridWithOffset(avanpostUid, navMap, Comp<MapGridComponent>(avanpostUid), Vector2.Zero);
+    }
+
+    /// <summary>
+    /// Generates a planet according to the Lavaland Procesing generation logic.
+    /// </summary>
+    public void GenerateLavalandPlanet(EntityUid mapUid, MapId mapId, LavalandPlanetPrototype planet, EntityUid? avanpostUid = null)
+    {
+        EnsureComp<ProtectedGridComponent>(mapUid);
         var grid = EnsureComp<MapGridComponent>(mapUid); // For build processing after creating planet
         EnsureComp<NavMapComponent>(mapUid);
 
         _map.CreateMap(out var tempMapId);
 
         var worldAABBs = new HashSet<Box2>();
-        GenerateBuildings(mapId, tempMapId, mapUid, ref worldAABBs);
+        GenerateBuildings(mapId, tempMapId, mapUid, planet, ref worldAABBs);
 
-        _biome.EnsurePlanet(mapUid, _proto.Index(planet.Biome), ent.Comp.Seed, mapLight: planet.MapLightColor);
+        _biome.EnsurePlanet(mapUid, _proto.Index(planet.Biome), planet.Seed, mapLight: planet.MapLightColor);
+        var lightCycle = EnsureComp<LightCycleComponent>(mapUid);
+        lightCycle.MaxLightLevel = planet.MaxLightLevel;
+        lightCycle.MinLightLevel = planet.MinLightLevel;
+        Dirty(mapUid, lightCycle);
+
         var biome = EnsureComp<BiomeComponent>(mapUid);
         foreach (var layer in planet.BiomeLayers)
         {
             _biome.AddMarkerLayer(mapUid, biome, layer);
         }
 
-        PreloadAvanpostArea(mapUid, avanpost.Value, biome, grid);
+        if (avanpostUid != null && Exists(avanpostUid.Value))
+        {
+            PreloadAvanpostArea(mapUid, avanpostUid.Value, biome, grid);
+        }
 
         // Pre-loading of tiles in merged grids
         foreach (var worldAABB in worldAABBs)
@@ -729,7 +159,7 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
 
         var lava = EnsureComp<LavalandComponent>(mapUid);
         lava.NextWeatherChange = _gameTiming.CurTime + TimeSpan.FromMinutes(_random.Next(5, 15));
-        lava.PlanetPrototype = planetProto;
+        lava.PlanetPrototype = planet;
 
         var moles = new float[Atmospherics.AdjustedNumberOfGases];
         for (var i = 0; i < Atmospherics.TotalNumberOfGases && i < planet.GasesContent.Count(); i++)
@@ -748,10 +178,11 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
         }
     }
 
-    public void GenerateBuildings(MapId mapId, MapId tempMapId, EntityUid mainGrid, ref HashSet<Box2> worldAABBs)
+    public void GenerateBuildings(MapId mapId, MapId tempMapId, EntityUid mainGrid, LavalandPlanetPrototype planet, ref HashSet<Box2> worldAABBs)
     {
         var buildings = _proto.EnumeratePrototypes<LavalandBuildingPrototype>();
-        var buildingList = buildings.Select(b => new { Building = b, RandomValue = _random.Next() })
+        var buildingList = buildings.Where(b => b.CurrentPlanet == planet.ID)
+            .Select(b => new { Building = b, RandomValue = _random.Next() })
             .OrderByDescending(x => x.Building.IgnoringCounting).ThenByDescending(x => x.Building.ExactPosition.HasValue)
             .ThenByDescending(x => x.Building.ApproximatePosition.HasValue).ThenBy(x => x.RandomValue)
             .Select(x => x.Building).ToList();
@@ -857,7 +288,8 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
             _iff.AddIFFFlag(buildingGrid.Value, IFFFlags.HideLabel);
             EnsureComp<GridLavalandWeatherProtectionComponent>(buildingGrid.Value);
             EnsureComp<ProtectedGridComponent>(buildingGrid.Value);
-            EnsureComp<NavMapComponent>(buildingGrid.Value);
+            var navMap = EnsureComp<NavMapComponent>(buildingGrid.Value);
+            _navMap.RefreshGridWithOffset(buildingGrid.Value.Owner, navMap, buildingGrid.Value.Comp, alignedPosition);
 
             _transform.SetCoordinates(buildingGrid.Value, new EntityCoordinates(mainGrid, position));
             worldAABBs.Add(buildingGrid.Value.Comp.LocalAABB.Translated(alignedPosition));

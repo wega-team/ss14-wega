@@ -18,7 +18,7 @@
         - type: StationEmergencyShuttle
           emergencyShuttlePath: /Maps/_Wega/Shuttles/emergency_tuhoba.yml
         - type: StationLavaland
-          planets: [ Lavaland ]
+          planets: [ Icemoon ]
           enabled: false
         - type: StationJobs
           availableJobs:

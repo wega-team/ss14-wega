@@ -1,0 +1,25 @@
+- type: constructionGraph
+  id: GodslayerArmour
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: armour
+      steps:
+      - tag: WendigoSkull
+        icon:
+          sprite: _Wega/Objects/Specific/Lavaland/trophies.rsi
+          state: wendigo_skull
+        name: construction-graph-tag-wendigo-skull
+        doAfter: 10
+      - tag: IceCrystal
+        icon:
+          sprite: _Wega/Objects/Specific/Lavaland/trophies.rsi
+          state: ice_crystal
+        name: construction-graph-tag-ice-crystal
+        doAfter: 10
+      - material: ConsecratedIngot
+        amount: 2
+        doAfter: 10
+  - node: armour
+    entity: ClothingOuterArmorGodslayer

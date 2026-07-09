@@ -2,6 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
 using Content.Shared.ActionBlocker;
 using Content.Shared.CCVar;
+using Content.Shared.Clothing; // Corvax-Wega-Add
 using Content.Shared.Friction;
 using Content.Shared.Gravity;
 using Content.Shared.Inventory;
@@ -284,19 +285,29 @@ public abstract partial class SharedMoverController : VirtualController
 
             wishDir = AssertValidWish(mover, walkSpeed, sprintSpeed);
 
+            // Corvax-Wega-Add-start
+            var frictionModifier = tileDef?.MobFriction ?? tileDef?.Friction ?? 1f;
+            var accelerationModifier = tileDef?.MobAcceleration ?? 1f;
+
+            var clothingEv = new ClothingFrictionModifierEvent(frictionModifier, accelerationModifier);
+            RaiseLocalEvent(uid, ref clothingEv);
+            frictionModifier = clothingEv.FrictionModifier;
+            accelerationModifier = clothingEv.AccelerationModifier;
+            // Corvax-Wega-Add-end
+
             if (wishDir != Vector2.Zero)
             {
                 friction = moveSpeedComponent?.Friction ?? MovementSpeedModifierComponent.DefaultFriction;
-                friction *= tileDef?.MobFriction ?? tileDef?.Friction ?? 1f;
+                friction *= frictionModifier; // Corvax-Wega-Edit
             }
             else
             {
                 friction = moveSpeedComponent?.FrictionNoInput ?? MovementSpeedModifierComponent.DefaultFrictionNoInput;
-                friction *= tileDef?.Friction ?? 1f;
+                friction *= frictionModifier; // Corvax-Wega-Edit
             }
 
             accel = moveSpeedComponent?.Acceleration ?? MovementSpeedModifierComponent.DefaultAcceleration;
-            accel *= tileDef?.MobAcceleration ?? 1f;
+            accel *= accelerationModifier; // Corvax-Wega-Edit
         }
 
         // This way friction never exceeds acceleration when you're trying to move.

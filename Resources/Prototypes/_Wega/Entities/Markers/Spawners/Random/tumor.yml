@@ -1,0 +1,22 @@
+- type: entity
+  parent: MarkerBase
+  id: SpawnerRandomPulsatingTumorMob
+  name: random tumor mob
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+    - sprite: _Wega/Structures/Specific/Lavaland/tumor.rsi
+      state: base
+  - type: EntityTableSpawner
+    table: !type:NestedSelector
+      tableId: RandomPulsatingTumorMob
+
+- type: entityTable
+  id: RandomPulsatingTumorMob
+  table: !type:GroupSelector
+    children:
+    - id: MobBroodmother
+    - id: MobPandora
+    - id: MobLegionnaire
+    - id: MobHerald

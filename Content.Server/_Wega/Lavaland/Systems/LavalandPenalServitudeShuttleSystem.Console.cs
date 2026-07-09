@@ -14,6 +14,14 @@ public sealed partial class LavalandPenalServitudeShuttleSystem
 
     private void OnConsoleInit(EntityUid uid, PenalServitudeShuttleConsoleComponent component, MapInitEvent args)
     {
+        var query = EntityQueryEnumerator<LavalandComponent>();
+        while (query.MoveNext(out var planetUid, out var _))
+        {
+            var meta = MetaData(planetUid);
+            component.CurrentPlanet = meta.EntityName;
+            break;
+        }
+
         UpdateLocation(uid, component);
     }
 
@@ -163,6 +171,7 @@ public sealed partial class LavalandPenalServitudeShuttleSystem
             status,
             component.Location,
             launchTime,
+            component.CurrentPlanet,
             canCall
         );
 

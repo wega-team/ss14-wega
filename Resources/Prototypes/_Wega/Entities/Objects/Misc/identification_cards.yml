@@ -163,7 +163,7 @@
       color: "#b18644"
     - state: stripe_bottom
       color: "#5b4523"
-    - sprite: Interface/Misc/job_icons.rsi
+    - sprite: *wega-icon-rsi
       offset: *wega-icon-offset
       state: ShaftMiner
   - type: PresetIdCard

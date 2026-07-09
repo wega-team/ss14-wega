@@ -17,3 +17,4 @@ ent-BaseEffectBubblegumHandSpawn = спавн лапы Бубльгума
     .desc = БЕРЕГИСЬ!
 ent-EffectBubblegumDashTrail = "..."
     .desc = "..."
+ent-EffectLegionnaireBoneFire = костяной костёр

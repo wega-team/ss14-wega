@@ -52,7 +52,7 @@ public sealed partial class PolymorphSystem : EntitySystem
         SubscribeLocalEvent<PolymorphableComponent, ComponentStartup>(OnComponentStartup);
         SubscribeLocalEvent<PolymorphedEntityComponent, MapInitEvent>(OnMapInit);
 
-        SubscribeLocalEvent<PolymorphableComponent, PolymorphActionEvent>(OnPolymorphActionEvent);
+        SubscribeLocalEvent<PolymorphActionEvent>(OnPolymorphActionEvent); // Corvax-Wega-Edit
         SubscribeLocalEvent<PolymorphedEntityComponent, RevertPolymorphActionEvent>(OnRevertPolymorphActionEvent);
 
         SubscribeLocalEvent<PolymorphedEntityComponent, BeforeFullySlicedEvent>(OnBeforeFullySliced);
@@ -112,12 +112,12 @@ public sealed partial class PolymorphSystem : EntitySystem
         }
     }
 
-    private void OnPolymorphActionEvent(Entity<PolymorphableComponent> ent, ref PolymorphActionEvent args)
+    private void OnPolymorphActionEvent(PolymorphActionEvent args) // Corvax-Wega-Edit
     {
         if (!_proto.Resolve(args.ProtoId, out var prototype) || args.Handled)
             return;
 
-        PolymorphEntity(ent, prototype.Configuration);
+        PolymorphEntity(args.Performer, prototype.Configuration); // Corvax-Wega-Edit
 
         args.Handled = true;
     }

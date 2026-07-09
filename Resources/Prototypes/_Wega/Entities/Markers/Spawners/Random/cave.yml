@@ -1,0 +1,28 @@
+- type: entity
+  parent: MarkerBase
+  id: SpawnerRandomIcemoonCave
+  name: random cave spawner
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+    - sprite: _Wega/Structures/Specific/Lavaland/cave.rsi
+      state: cave
+  - type: EntityTableSpawner
+    table: !type:NestedSelector
+      tableId: IcemoonCaves
+
+- type: entityTable
+  id: IcemoonCaves
+  table: !type:GroupSelector
+    children:
+    - id: WhiteWolfIcemoonCave
+    - id: PolarBearIcemoonCave
+    - id: WhiteWolfIcemoonSilverCave
+    - id: PolarBearIcemoonSilverCave
+    - id: WhiteWolfIcemoonGoldCave
+    - id: PolarBearIcemoonGoldCave
+    - id: WhiteWolfIcemoonDiamondCave
+    - id: PolarBearIcemoonDiamondCave
+    - id: WhiteWolfIcemoonUraniumCave
+    - id: PolarBearIcemoonUraniumCave

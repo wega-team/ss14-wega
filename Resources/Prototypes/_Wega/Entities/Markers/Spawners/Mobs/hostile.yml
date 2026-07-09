@@ -150,3 +150,83 @@
   - type: ConditionalSpawner
     prototypes:
     - MobHumanInhabitantTranslocatedVeterinarian
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobWhiteWolfIcemoon
+  name: White Wolf Spawner
+  suffix: Icemoon
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: base
+      sprite: _Wega/Mobs/Icemoon/wolf.rsi
+    - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+    - MobWhiteWolf
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobIceDemonIcemoon
+  name: Ice Demon Spawner
+  suffix: Icemoon
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: demon
+      sprite: _Wega/Mobs/Icemoon/ice_demon.rsi
+    - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+    - MobIceDemon
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobPolarBearIcemoon
+  name: Polar Bear Spawner
+  suffix: Icemoon
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: bear
+      sprite: _Wega/Mobs/Icemoon/polar_bear.rsi
+    - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+    - MobPolarBear
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobSnowLegionIcemoon
+  name: Snow Legion Spawner
+  suffix: Icemoon
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: legion
+      sprite: _Wega/Mobs/Icemoon/legion.rsi
+    - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+    - MobSnowLegionIcemoon
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobIceWhelpIcemoon
+  name: Ice Whelp Spawner
+  suffix: Icemoon
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: base
+      sprite: _Wega/Mobs/Icemoon/whelp.rsi
+    - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+    - MobIceWhelp

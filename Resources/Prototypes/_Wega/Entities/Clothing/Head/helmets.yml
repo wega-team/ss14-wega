@@ -64,3 +64,25 @@
         Heat: 0.6
   - type: ExplosionResistance
     damageCoefficient: 0.8
+
+- type: entity
+  parent: ClothingHeadHelmetBasic
+  id: ClothingHeadHelmetGodslayer
+  name: godslayer helm
+  description: The horns and skull of a wendigo, held together by the remaining icy energy of a demonic miner.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Head/Helmets/godslayer.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Head/Helmets/godslayer.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.95
+        Cold: 0.95
+  - type: ExplosionResistance
+    damageCoefficient: 0.9

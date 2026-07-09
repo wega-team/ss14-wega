@@ -1,0 +1,82 @@
+- type: entity
+  parent: BaseStructure
+  id: BaseIcemoonDemonicPortal
+  name: demonic portal
+  description: "No, it's not a hallucination. This is indeed a portal of the purest evil! These otherworldly distortions are the source of all these hideous demonic guards, snow legions, and ice whelps."
+  suffix: DO NOT MAP
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Wega/Effects/portal.rsi
+    state: demonic_portal
+    noRot: true
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.48,0.25,0.48"
+        mask:
+        - MachineMask
+        layer:
+        - BulletImpassable
+        - MidImpassable
+        - LowImpassable
+        density: 1000
+  - type: PointLight
+    color: OrangeRed
+    radius: 3
+    energy: 1
+    netsync: false
+  - type: Damageable
+  - type: Injurable
+    damageContainer: StructuralInorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/demon_dies.ogg
+      - !type:SpawnEntitiesBehavior
+          spawn:
+            SpawnerRandomDemonicPortalLoot:
+              min: 1
+              max: 1
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+- type: entity
+  parent: BaseIcemoonDemonicPortal
+  id: IceDemonIcemoonDemonicPortal
+  components:
+  - type: MobSpawner
+    spawnWeights:
+      MobIceDemon: 1
+  - type: ConditionalSpawner
+    prototypes:
+      - MobIceDemon
+
+- type: entity
+  parent: BaseIcemoonDemonicPortal
+  id: SnowLegionIcemoonDemonicPortal
+  components:
+  - type: MobSpawner
+    spawnWeights:
+      MobSnowLegionIcemoon: 1
+  - type: ConditionalSpawner
+    prototypes:
+      - MobSnowLegionIcemoon
+
+- type: entity
+  parent: BaseIcemoonDemonicPortal
+  id: IceWhelpIcemoonDemonicPortal
+  components:
+  - type: MobSpawner
+    spawnWeights:
+      MobIceWhelp: 1
+  - type: ConditionalSpawner
+    prototypes:
+      - MobIceWhelp
