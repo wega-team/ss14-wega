@@ -31,7 +31,7 @@
   gridPath: /Maps/_Wega/Lavaland/golemsshuttle.yml
   merge: false
 
-# Other
+# Always presents
 - type: lavalandBuilding
   id: Necropolis
   gridPath: /Maps/_Wega/Lavaland/necropolis.yml
@@ -63,11 +63,18 @@
   ignoring: true
 
 - type: lavalandBuilding
+  id: ClockworkDefender
+  gridPath: /Maps/_Wega/Lavaland/clockworkdefender.yml
+  approximate: [150, 300]
+  ignoring: true
+
+- type: lavalandBuilding
   id: WorldForge
   gridPath: /Maps/_Wega/Lavaland/worldforge.yml
   approximate: [150, 150]
   ignoring: true
 
+# Other
 - type: lavalandBuilding
   id: Envy
   gridPath: /Maps/_Wega/Lavaland/Envy.yml

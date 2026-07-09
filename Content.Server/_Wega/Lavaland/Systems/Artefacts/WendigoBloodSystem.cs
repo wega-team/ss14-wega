@@ -24,7 +24,7 @@ public sealed partial class WendigoBloodSystem : EntitySystem
 
     private void OnUseInHand(Entity<WendigoBloodComponent> ent, ref UseInHandEvent args)
     {
-        var ev = new DragonBloodDoAfterEvent();
+        var ev = new WendigoBloodDoAfterEvent();
         _doAfter.TryStartDoAfter(new DoAfterArgs(EntityManager, args.User, TimeSpan.FromSeconds(5), ev, ent)
         {
             BreakOnMove = true,

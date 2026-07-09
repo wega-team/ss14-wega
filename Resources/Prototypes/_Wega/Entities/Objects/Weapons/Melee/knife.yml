@@ -108,6 +108,9 @@
   - type: WeaponHotswap
     alternateForm: WeaponCleawingSawWide
     isAlternate: false
+  - type: ContainerContainer
+    containers:
+      hotswap-paired: !type:Container
   - type: MeleeWeapon
     wideAnimationRotation: 175
     possibilityWideAtack: false
@@ -119,9 +122,6 @@
       path: /Audio/Weapons/bladeslice.ogg
   - type: DisarmMalus
     malus: 1
-  - type: ContainerContainer
-    containers:
-      hotswap-paired: !type:Container
 
 - type: entity
   parent: WeaponCleawingSaw

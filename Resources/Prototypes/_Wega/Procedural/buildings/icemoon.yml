@@ -1,3 +1,4 @@
+# Always presents
 - type: lavalandBuilding
   id: BioHazard
   planet: Icemoon
@@ -17,6 +18,20 @@
   planet: Icemoon
   gridPath: /Maps/_Wega/Icemoon/wendigocave.yml
   approximate: [150, 400]
+  ignoring: true
+
+- type: lavalandBuilding
+  id: ClockworkDefenderIcemoon
+  planet: Icemoon
+  gridPath: /Maps/_Wega/Lavaland/clockworkdefender.yml
+  approximate: [150, 300]
+  ignoring: true
+
+- type: lavalandBuilding
+  id: IcemoonWorldForge
+  planet: Icemoon
+  gridPath: /Maps/_Wega/Icemoon/worldforge.yml
+  approximate: [150, 150]
   ignoring: true
 
 # Other

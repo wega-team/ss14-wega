@@ -54,11 +54,11 @@ public sealed partial class WeaponHotswapSystem : EntitySystem
         if (_net.IsClient)
             return;
 
-        if (ent.Comp.IsAlternate)
-            return;
-
         var container = _container.EnsureContainer<Container>(ent.Owner, WeaponHotswapComponent.PairedWeaponContainerId);
         if (container.ContainedEntities.Count > 0)
+            return;
+
+        if (ent.Comp.IsAlternate)
             return;
 
         var alternate = Spawn(ent.Comp.AlternateForm, Transform(ent.Owner).Coordinates);

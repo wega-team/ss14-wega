@@ -5,6 +5,8 @@ lavaland-map-avanpost = Аванпост Лаваленда
 icemoon-map-avanpost = Аванпост Айсмуна
 
 lavaland-shuttle-status = Статус шаттла:
+lavaland-shuttle-current-planet = Планета:
+lavaland-shuttle-no-planet = Не найдена
 lavaland-shuttle-status-docked-station = Пристыкован к станции
 lavaland-shuttle-status-docked-outpost = Пристыкован к аванпосту
 lavaland-shuttle-status-enroute-station = В пути на станцию
@@ -26,6 +28,8 @@ lavaland-shuttle-info-ready = Система готова к транспорт�
 
 prison-shuttle-status = Статус шаттла:
 prison-shuttle-current-location = Ваше местоположение:
+prison-shuttle-current-planet = Планета:
+prison-shuttle-no-planet = Не найдена
 prison-shuttle-status-docked-station = Пристыкован к станции
 prison-shuttle-status-docked-prison = Пристыкован к каторге
 prison-shuttle-status-enroute-station = Направляется на станцию

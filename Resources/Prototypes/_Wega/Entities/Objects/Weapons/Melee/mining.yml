@@ -132,9 +132,7 @@
   - type: DamageOtherOnHit
     damage:
       types:
-        Piercing: 25
-  - type: EmbeddableProjectile
-    offset: -0.15,0.0
+        Piercing: 20
   - type: ThrowingAngle
     angle: 225
   - type: LandAtCursor

@@ -7,6 +7,7 @@ using Content.Shared.Lavaland.Artefacts.Components;
 using Content.Shared.Lavaland.Components;
 using Content.Shared.Lavaland.Events;
 using Content.Shared.Mobs;
+using Content.Shared.Mobs.Components;
 using Content.Shared.Pinpointer;
 using Content.Shared.Popups;
 using Robust.Shared.Audio.Systems;
@@ -85,7 +86,7 @@ public sealed partial class ResurrectionCrystalSystem : EntitySystem
             if (xform.MapID != playerTransform.MapID)
                 continue;
 
-            if (HasComp<MegafaunaComponent>(beaconUid))
+            if (HasComp<MegafaunaComponent>(beaconUid) || HasComp<MobStateComponent>(beaconUid))
                 continue;
 
             var beaconPos = xform.Coordinates.Position;
