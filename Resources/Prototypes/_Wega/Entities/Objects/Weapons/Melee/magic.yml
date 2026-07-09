@@ -410,7 +410,7 @@
     ignoreResistances: true
     damage:
       types:
-        Blunt:
+        Blunt: 5
   - type: Tool
     qualities:
     - Slicing

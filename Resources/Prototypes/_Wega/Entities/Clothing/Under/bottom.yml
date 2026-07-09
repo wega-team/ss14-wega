@@ -28,7 +28,6 @@
   - type: UseDelay
     delay: 0.5
   - type: Butcherable
-    butcheringType: Knife
     spawned:
     - id: MaterialCloth1
       amount: 2

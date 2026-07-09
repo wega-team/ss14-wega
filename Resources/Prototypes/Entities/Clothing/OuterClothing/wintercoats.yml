@@ -300,17 +300,9 @@
   id: ClothingOuterWinterJani
   name: janitorial winter coat
   components:
-  - type: Sprite
-    sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
-    layers:
-    - state: JANI-icon
-  - type: Item
-    inhandVisuals:
-      left:
-      - state: JANI-inhand-left
-      right:
-      - state: JANI-inhand-right
   # Corvax-Wega-start
+  - type: Sprite
+    sprite: Clothing/OuterClothing/WinterCoats/coat/janicoat.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/WinterCoats/coat/janicoat.rsi
   # Corvax-Wega-end

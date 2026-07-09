@@ -4,7 +4,7 @@
   id: BaseVampireObjective
   components:
   - type: Objective
-    issuer: objective-issuer-vampire
+    issuer: Vampire
   - type: RoleRequirement
     roles:
     - VampireRole

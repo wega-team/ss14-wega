@@ -53,19 +53,17 @@
     ears: ClothingHeadsetIAA
     pocket1: RubberStampIAA
     pocket2: BookSpaceLaw
+  # Corvax-Wega-Edit-start
   storage:
     back:
     - Flash
-  inhand:
-    - BriefcaseIAAFilled
-  # Corvax-Wega-Recorder-start
-  storage:
-    back:
     - TapeRecorder
     - CassetteTape
     - CassetteTapeLong
-    - Telescopicbaton #Corvax Wega
-  # Corvax-Wega-Recorder-end
+    - Telescopicbaton
+  # Corvax-Wega-Edit-end
+  inhand:
+    - BriefcaseIAAFilled
 
 - type: chameleonOutfit
   id: IAAChameleonOutfit
