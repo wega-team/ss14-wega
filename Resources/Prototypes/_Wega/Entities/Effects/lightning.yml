@@ -26,6 +26,7 @@
     - type: TimedDespawn
       lifetime: 1.5
 
+- type: entity
   parent: BaseLightning
   id: LightningStormStaff
   name: ""
