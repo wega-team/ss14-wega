@@ -88,7 +88,9 @@
     sprite: Objects/Weapons/Melee/energykatana.rsi
     layers:
     - state: icon-green
-  - type: Sharp
+  - type: Tool
+    qualities:
+    - Slicing
   - type: MeleeWeapon
     attackRate: 1.0
     damage:
