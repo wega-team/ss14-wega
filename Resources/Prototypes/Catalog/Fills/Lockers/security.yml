@@ -28,7 +28,6 @@
     children:
     - id: FlashlightSeclite
     - id: WeaponDisabler
-    # - id: WeaponTaser # Corvax-Wega-Edit
     - id: ClothingBeltSecurityFilled
     - id: Flash
     - id: ClothingEyesGlassesSecurity
@@ -80,7 +79,6 @@
     - id: FlashlightSeclite
       prob: 0.8
     - id: WeaponDisabler
-    # - id: WeaponTaser # Corvax-Wega-Edit
     - id: ClothingUniformJumpsuitSecGrey
       prob: 0.3
     - id: ClothingHeadHelmetBasic
@@ -125,8 +123,7 @@
   id: FillLockerBrigmedic
   table: !type:AllSelector
     children:
-    - id: ClothingEyesGlassesMedSecSunglasses
-    # - id: WeaponTaser # Corvax-Wega-Edit
+    - id: ClothingEyesGlassesSecurity
     - id: WeaponDisabler
     - id: TrackingImplanter
       amount: 2

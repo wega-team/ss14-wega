@@ -218,7 +218,6 @@
   name: blood blade
   description: The red formation of liquid blood in the shape of a sword is a very mysterious sight.
   components:
-  - type: Sharp
   - type: Sprite
     sprite: _Wega/Objects/Weapons/Melee/blood_blade.rsi
     state: icon
@@ -247,6 +246,9 @@
     deconstructionTarget: null
     graph: BloodCultWeapons
     node: blood
+  - type: Tool
+    qualities:
+    - Slicing
 
 - type: entity
   id: WeaponDeathBlade
@@ -254,7 +256,6 @@
   name: death blade
   description: A scythe-like weapon, very sharp...
   components:
-  - type: Sharp
   - type: Sprite
     sprite: _Wega/Objects/Weapons/Melee/death_blade.rsi
     state: icon
@@ -284,6 +285,9 @@
     deconstructionTarget: null
     graph: BloodCultWeapons
     node: death
+  - type: Tool
+    qualities:
+    - Slicing
 
 - type: entity
   id: WeaponHellBlade
@@ -291,7 +295,6 @@
   name: hell blade
   description: A blazing axe of agony, straight from the underworld.
   components:
-  - type: Sharp
   - type: Sprite
     sprite: _Wega/Objects/Weapons/Melee/hell_blade.rsi
     state: icon
@@ -321,6 +324,9 @@
     deconstructionTarget: null
     graph: BloodCultWeapons
     node: hell
+  - type: Tool
+    qualities:
+    - Slicing
 
 - type: entity
   parent: BaseItem
@@ -345,7 +351,6 @@
         - ItemMask
         restitution: 0.3
         friction: 0.2
-  - type: Sharp
   - type: Sprite
     sprite: _Wega/Objects/Weapons/Melee/blood_spear.rsi
     state: icon
@@ -405,7 +410,10 @@
     ignoreResistances: true
     damage:
       types:
-        Blunt: 5
+        Blunt:
+  - type: Tool
+    qualities:
+    - Slicing
 
 - type: entity
   parent: BaseItem
@@ -582,7 +590,6 @@
   name: clockwork sword
   description: A sword with a large winding gear on the hilt. Weapon of the righteous Ratvar.
   components:
-  - type: Sharp
   - type: Sprite
     sprite: _Wega/Objects/Weapons/Melee/clockwork_sword.rsi
     state: icon
@@ -609,6 +616,9 @@
     enchants:
     - WeaponClockworkSwordSwordsmen
     - WeaponClockworkSwordBloodshed
+  - type: Tool
+    qualities:
+    - Slicing
 
 - type: entity
   id: WeaponClockworkSwordBorg
@@ -616,7 +626,6 @@
   name: clockwork sword
   description: A sword with a large winding gear on the hilt. Weapon of the righteous Ratvar.
   components:
-  - type: Sharp
   - type: Sprite
     sprite: _Wega/Objects/Weapons/Melee/clockwork_sword.rsi
     state: icon
@@ -640,6 +649,9 @@
     soundHit:
         path: /Audio/Weapons/bladeslice.ogg
   - type: DisarmMalus
+  - type: Tool
+    qualities:
+    - Slicing
 
 - type: entity
   id: WeaponClockHammer
@@ -720,7 +732,6 @@
         - ItemMask
         restitution: 0.3
         friction: 0.2
-  - type: Sharp
   - type: Sprite
     sprite: _Wega/Objects/Weapons/Melee/clock_spear.rsi
     state: icon
@@ -766,6 +777,9 @@
     enchants:
     - WeaponRatvarianSpearElectricalTouch
     - WeaponRatvarianSpearConfusion
+  - type: Tool
+    qualities:
+    - Slicing
 
 - type: entity
   parent: BaseItem

@@ -40,6 +40,7 @@
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterDefault
     slot: head
+    verbText: toggle-clothing-verb-hood
   - type: ContainerContainer
     containers:
       toggleable-clothing: !type:ContainerSlot {}
@@ -299,9 +300,17 @@
   id: ClothingOuterWinterJani
   name: janitorial winter coat
   components:
-  # Corvax-Wega-start
   - type: Sprite
-    sprite: Clothing/OuterClothing/WinterCoats/coat/janicoat.rsi
+    sprite: Clothing/OuterClothing/WinterCoats/coat.rsi
+    layers:
+    - state: JANI-icon
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: JANI-inhand-left
+      right:
+      - state: JANI-inhand-right
+  # Corvax-Wega-start
   - type: Clothing
     sprite: Clothing/OuterClothing/WinterCoats/coat/janicoat.rsi
   # Corvax-Wega-end
@@ -586,7 +595,7 @@
   # Corvax-Wega-end
 
 - type: entity
-  parent: ClothingOuterWinterCoatToggleable
+  parent: [ClothingOuterWinterCoatToggleable, BaseSlicingRefinable]
   id: ClothingOuterWinterWeb
   name: web winter coat
   description: Feels like the inside of a cocoon, not that this would make you less afraid of being in one.
@@ -600,8 +609,8 @@
   - type: Construction
     graph: WebObjects
     node: coat
-  - type: Butcherable
-    spawned:
+  - type: ToolRefinable
+    refineResult:
     - id: MaterialWebSilk1
       amount: 5
   - type: FlavorProfile
