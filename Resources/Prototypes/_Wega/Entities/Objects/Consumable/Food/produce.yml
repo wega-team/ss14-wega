@@ -173,11 +173,11 @@
         solution: food
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-  - type: SliceableFood
-    count: 5
-    slice: FoodDemonicWatermelonSlice
+  - type: ToolRefinable
+    refineResult:
+    - id: FoodDemonicWatermelonSlice
+      amount: 5
   - type: Butcherable
-    butcheringType: Knife
     spawned:
     - id: ClothingHeadHatDemonicWatermelon
     - id: ClothingNeckWingsTail
@@ -386,7 +386,7 @@
     heldPrefix: produce
   - type: FlavorProfile
     flavors:
-      - Potato
+      - potatoes
   - type: SolutionContainerManager
     solutions:
       food:
@@ -904,9 +904,10 @@
         solution: food
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-  - type: SliceableFood
-    count: 5
-    slice: FoodMelonSlice
+  - type: ToolRefinable
+    refineResult:
+    - id: FoodMelonSlice
+      amount: 5
   - type: Tag
     tags:
     - Fruit
@@ -998,11 +999,11 @@
         solution: food
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-  - type: SliceableFood
-    count: 5
-    slice: FoodCatMelonSlice
+  - type: ToolRefinable
+    refineResult:
+    - id: FoodCatMelonSlice
+      amount: 5
   - type: Butcherable
-    butcheringType: Knife
     spawned:
     - id: ClothingHeadHatCatEarsMelon
   - type: Tag

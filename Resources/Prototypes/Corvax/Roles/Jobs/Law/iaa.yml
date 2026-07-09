@@ -51,17 +51,19 @@
     id: IAAPDA
     eyes: ClothingEyesGlassesSunglasses
     ears: ClothingHeadsetIAA
+    pocket1: RubberStampIAA
     pocket2: BookSpaceLaw
-  inhand:
-    - BriefcaseIAAFilled
-  # Corvax-Wega-Recorder-start
+  # Corvax-Wega-Edit-start
   storage:
     back:
+    - Flash
     - TapeRecorder
     - CassetteTape
     - CassetteTapeLong
-    - Telescopicbaton #Corvax Wega
-  # Corvax-Wega-Recorder-end
+    - Telescopicbaton
+  # Corvax-Wega-Edit-end
+  inhand:
+    - BriefcaseIAAFilled
 
 - type: chameleonOutfit
   id: IAAChameleonOutfit

@@ -174,7 +174,6 @@
         messages: [ "slime-hurt-by-water-popup" ]
         probability: 0.25
   - type: Butcherable
-    butcheringType: Spike
     spawned:
     - id: FoodMeatSlime
       amount: 5
@@ -200,7 +199,7 @@
   # Corvax-Wega-Disease-end
 
 - type: entity
-  parent: OrganBase
+  parent: OrganBaseOrganic
   id: OrganSlimePerson
   abstract: true
   suffix: slime person
