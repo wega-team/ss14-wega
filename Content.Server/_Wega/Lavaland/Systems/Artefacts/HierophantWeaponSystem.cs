@@ -2,6 +2,7 @@ using System.Numerics;
 using Content.Server.Lavaland.Mobs.Components;
 using Content.Shared.Interaction;
 using Content.Shared.Lavaland.Artefacts.Components;
+using Content.Shared.Lavaland.Events;
 using Content.Shared.Maps;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Physics;
@@ -18,6 +19,7 @@ public sealed partial class HierophantClubSystem : EntitySystem
     [Dependency] private SharedMapSystem _map = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private TurfSystem _turf = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
     [Dependency] private UseDelaySystem _delay = default!;
 
     public override void Initialize()
@@ -25,6 +27,7 @@ public sealed partial class HierophantClubSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<HierophantClubComponent, AfterInteractEvent>(OnWeaponAfterInteract);
+        SubscribeLocalEvent<HierophantClubComponent, HierophantBeaconActionEvent>(OnBeacon);
     }
 
     private void OnWeaponAfterInteract(EntityUid uid, HierophantClubComponent component, AfterInteractEvent args)
@@ -76,6 +79,68 @@ public sealed partial class HierophantClubSystem : EntitySystem
                 }
             }
         }
+    }
+
+    private void OnBeacon(Entity<HierophantClubComponent> ent, ref HierophantBeaconActionEvent args)
+    {
+        if (_delay.IsDelayed(ent.Owner))
+            return;
+
+        _delay.TryResetDelay(ent.Owner);
+        args.Handled = true;
+
+        EntityUid? existingBeacon = null;
+        var beaconQuery = EntityQueryEnumerator<HierophantBeaconComponent>();
+        while (beaconQuery.MoveNext(out var uid, out var beaconComp))
+        {
+            if (beaconComp.ClubEntity == ent.Owner)
+            {
+                existingBeacon = uid;
+                break;
+            }
+        }
+
+        if (existingBeacon == null)
+        {
+            var userCoords = Transform(args.Performer).Coordinates;
+            var beacon = Spawn(ent.Comp.BeaconPrototype, userCoords);
+            var beaconComp = EnsureComp<HierophantBeaconComponent>(beacon);
+            beaconComp.ClubEntity = ent.Owner;
+
+            return;
+        }
+
+        var beaconUid = existingBeacon.Value;
+        var beaconCoords = Transform(beaconUid).Coordinates;
+        var performerCoords = Transform(args.Performer).Coordinates;
+
+        Spawn3x3Area(ent.Comp, performerCoords);
+
+        var entities = _lookup.GetEntitiesInRange<MobStateComponent>(performerCoords, 1.5f, LookupFlags.Uncontained);
+        foreach (var entity in entities)
+        {
+            var offset = new Vector2(
+                _random.NextFloat(-0.3f, 0.3f),
+                _random.NextFloat(-0.3f, 0.3f)
+            );
+
+            var targetCoords = beaconCoords.Offset(offset);
+            if (CanSpawnAt(targetCoords))
+            {
+                _transform.SetCoordinates(entity.Owner, targetCoords);
+            }
+            else
+            {
+                var safePos = FindSpawnPositionNear(beaconCoords, 1.5f);
+                if (safePos != null)
+                {
+                    _transform.SetCoordinates(entity.Owner, safePos.Value);
+                }
+            }
+        }
+
+        Spawn3x3Area(ent.Comp, beaconCoords);
+        QueueDel(beaconUid);
     }
 
     private void PerformCrossAttack(HierophantClubComponent component, EntityCoordinates targetCoords)

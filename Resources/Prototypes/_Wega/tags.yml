@@ -310,7 +310,7 @@
 
 - type: Tag
   id: GunUpgradeAoE
-  
+
 - type: Tag
   id: GunUpgradePressure
 
@@ -342,6 +342,15 @@
   id: CrusherUpgradeFrostbiteWeaverFrostGland
 
 - type: Tag
+  id: CrusherUpgradeWhiteWolfEar
+
+- type: Tag
+  id: CrusherUpgradeIceDemonCube
+
+- type: Tag
+  id: CrusherUpgradePolarBearPaw
+
+- type: Tag
   id: CrusherUpgradeBDM
 
 - type: Tag
@@ -357,6 +366,21 @@
   id: CrusherUpgradeHierophant
 
 - type: Tag
+  id: CrusherUpgradeBroodmother
+
+- type: Tag
+  id: CrusherUpgradeLegionnaire
+
+- type: Tag
+  id: CrusherUpgradeWendigo
+
+- type: Tag
+  id: CrusherUpgradeFrostMiner
+
+- type: Tag
+  id: CrusherUpgradeTheThing
+
+- type: Tag
   id: MaterialsThrophy
 
 - type: Tag
@@ -369,6 +393,9 @@
   id: DragonHide
 
 - type: Tag
+  id: PolarBearHide
+
+- type: Tag
   id: ExplorerSuit
 
 - type: Tag
@@ -378,6 +405,12 @@
   id: GoliathCloak
 
 - type: Tag
+  id: WendigoSkull
+
+- type: Tag
+  id: IceCrystal
+
+- type: Tag
   id: UniformUpgrade
 
 - type: Tag
@@ -385,6 +418,9 @@
 
 - type: Tag
   id: SkullCodpieceUpgrade
+
+- type: Tag
+  id: PandoraHopeUpgrade
 
 - type: Tag
   id: MagmiteAlloy
@@ -517,26 +553,26 @@
 
 - type: Tag
   id: Saw
-  
+
   # Veil Cult Tags Start
-  
+
 - type: Tag
   id: InteractionCog
-  
+
 - type: Tag
   id: StrangeShard
-  
+
 - type: Tag
   id: SoulVessel
-  
+
 - type: Tag
   id: Brass
-  
+
 - type: Tag
   id: ChargedBrass
-  
+
   # Veil Cult Tags End
-  
+
 - type: Tag
   id: OrganicBrain
 

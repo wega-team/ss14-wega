@@ -23,10 +23,11 @@ public enum AchievementsEnum : byte
     ColossusBoss = 5,
     AshDrakeBoss = 6,
     BubblegumBoss = 7,
-    /*
-        8, 9, 10 - Reserved for new types of bosses
-    */
+    WendigoBoss = 8,
+    FrostMinerBoss = 9,
+    TheThingBoss = 10,
     BloodCult = 11,
     Springlock = 12,
     VeilCult = 13,
+    NecropolisTendril = 14,
 }

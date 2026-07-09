@@ -19,6 +19,7 @@
   - type: NavMapBeacon
     defaultText: nav-map-beacon-lavaland-signal-hierophant
     defaultDesc: nav-map-beacon-lavaland-signal-hierophant-desc
+    beaconIcon: { sprite: /Textures/_Wega/Interface/Misc/beacon_screen.rsi, state: hierophant }
     color: "#9900ff"
 
 - type: entity

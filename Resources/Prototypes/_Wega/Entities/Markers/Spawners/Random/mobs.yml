@@ -11,7 +11,7 @@
       children:
       - id: SpawnMobWatcherLavaland
     - !type:GroupSelector
-      weight: 30  # Увеличил с 20 до 30
+      weight: 30
       children:
       - id: SpawnMobGoliathLavaland
     - !type:GroupSelector
@@ -38,6 +38,7 @@
       weight: 2
       children:
       - id: SpawnMobWatcherIcewing
+    # Bosses
     - !type:GroupSelector
       weight: 0.8
       children:
@@ -71,3 +72,67 @@
   - type: EntityTableSpawner
     table: !type:NestedSelector
       tableId: LavalandAllMobs
+
+- type: entityTable
+  id: IcemoonAllMobs
+  table: !type:GroupSelector
+    children:
+    - !type:GroupSelector
+      weight: 30
+      children:
+      - id: SpawnMobWhiteWolfIcemoon
+    - !type:GroupSelector
+      weight: 20
+      children:
+      - id: SpawnMobIceDemonIcemoon
+    - !type:GroupSelector
+      weight: 25
+      children:
+      - id: SpawnMobPolarBearIcemoon
+    - !type:GroupSelector
+      weight: 15
+      children:
+      - id: SpawnMobSnowLegionIcemoon
+    - !type:GroupSelector
+      weight: 10
+      children:
+      - id: SpawnMobIceWhelpIcemoon
+    - !type:GroupSelector
+      weight: 0.8
+      children:
+      - id: SpawnMobClockworkDefender
+    # Bosses
+    - !type:GroupSelector
+      weight: 0.2
+      children:
+      - id: SpawnMobWendigoIcemoon
+    - !type:GroupSelector
+      weight: 0.2
+      children:
+      - id: SpawnMobFrostMinerIcemoon
+    # Aggressive towards everyone.
+    - !type:GroupSelector
+      weight: 0.2
+      children:
+      - id: SpawnColossusLavaland
+    - !type:GroupSelector
+      weight: 0.1
+      children:
+      - id: SpawnBubblegumLavaland
+    # He might be wandering around Icemoon too.
+    - !type:GroupSelector
+      weight: 0.2
+      children:
+      - id: SpawnInhabitantTranslocatedVeterinarian
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnerRandomIcemoonMob
+  name: icemoon mob spawner
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+  - type: EntityTableSpawner
+    table: !type:NestedSelector
+      tableId: IcemoonAllMobs

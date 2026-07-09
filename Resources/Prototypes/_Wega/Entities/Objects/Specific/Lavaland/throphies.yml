@@ -124,6 +124,71 @@
 
 - type: entity
   parent: BaseTrophyLavaland
+  id: TrophyLavalandBroodmotherTongue
+  name: broodmother Tongue
+  description: "A long, slimy organ that vaguely resembles a tongue. It still twitches, as if trying to smell its prey. When touched, it causes an unpleasant tingling sensation."
+  components:
+  - type: Sprite
+    state: tongue
+  - type: CrusherUpgrade
+    tags: [ CrusherUpgradeBroodmother ]
+    examineText: crusher-upgrade-examine-text-broodmother
+  - type: CrusherBroodmotherTongueUpgrade
+
+- type: entity
+  parent: BaseTrophyLavaland
+  id: TrophyLavalandLegionnaireSpine
+  name: legionnaire spine
+  description: "A twisted spine, covered in centuries-old dust. Each vertebra glows with a dim red light, as if it still holds a spark of life."
+  components:
+  - type: Sprite
+    state: spine
+  - type: CrusherUpgrade
+    tags: [ CrusherUpgradeLegionnaire ]
+    examineText: crusher-upgrade-examine-text-legionnaire
+  - type: CrusherLegionnaireSpineUpgrade
+
+- type: entity
+  parent: BaseTrophyLavaland
+  id: TrophyIcemoonWhiteWolfEar
+  name: wolf ear
+  description: "The sharp, slightly torn ear of a white wolf, still retaining some residual mobility. It seems that it listens to something, even when it is cut off."
+  components:
+  - type: Sprite
+    state: wolf_ear
+  - type: CrusherUpgrade
+    tags: [ CrusherUpgradeWhiteWolfEar ]
+    examineText: crusher-upgrade-examine-text-white-wolf-ear
+  - type: CrusherWhiteWolfEarUpgrade
+
+- type: entity
+  parent: BaseTrophyLavaland
+  id: TrophyIcemoonIceDemonCube
+  name: ice cube
+  description: "A perfectly smooth cube of pure ice, with a dark shape shimmering inside. It pulsates with cold energy, and when touched, it leaves a light frost on the skin."
+  components:
+  - type: Sprite
+    state: cube
+  - type: CrusherUpgrade
+    tags: [ CrusherUpgradeIceDemonCube ]
+    examineText: crusher-upgrade-examine-text-ice-demon-cube
+  - type: CrusherIceDemonCubeUpgrade
+
+- type: entity
+  parent: BaseTrophyLavaland
+  id: TrophyIcemoonPolarBearPaw
+  name: bear paw
+  description: "The huge paw of a polar bear with claws as sharp as ice. Even when separated from her body, she inspires fear by her very appearance, and her weight feels like a load of primal rage."
+  components:
+  - type: Sprite
+    state: paw
+  - type: CrusherUpgrade
+    tags: [ CrusherUpgradePolarBearPaw ]
+    examineText: crusher-upgrade-examine-text-polar-bear-paw
+  - type: CrusherPolarBearPawUpgrade
+
+- type: entity
+  parent: BaseTrophyLavaland
   id: TrophyLavalandBDMEye
   name: eye of the blood drunk miner
   description: "A cloudy, blood-red eye, with a look of insane rage in its depths. It felt wet and uncomfortably warm to the touch."
@@ -196,6 +261,45 @@
     radius: 1.2
 
 - type: entity
+  parent: BaseTrophyLavaland
+  id: TrophyIcemoonWendigoHorn
+  name: wendigo horn
+  description: "A curved horn covered with a frost pattern, broken in a deadly battle. Even separated from its owner, it still exudes an aura of hunger and cold that makes one's skin crawl."
+  components:
+  - type: Sprite
+    state: horn
+  - type: CrusherUpgrade
+    tags: [ CrusherUpgradeWendigo ]
+    examineText: crusher-upgrade-examine-text-wendigo
+  - type: CrusherWendigoHornUpgrade
+
+- type: entity
+  parent: BaseTrophyLavaland
+  id: TrophyIcemoonFrostMinerBlock
+  name: ice block
+  description: "A crystal clear ice cube with a dark spot inside. It maintains a constant negative temperature even in the hottest place. When touched, the skin instantly goes numb."
+  components:
+  - type: Sprite
+    state: ice_block
+  - type: CrusherUpgrade
+    tags: [ CrusherUpgradeFrostMiner ]
+    examineText: crusher-upgrade-examine-text-frost-miner
+  - type: CrusherFrostMinerBlockUpgrade
+
+- type: entity
+  parent: BaseTrophyLavaland
+  id: TrophyIcemoonTheThingGlob
+  name: glob of shifting flesh
+  description: "A fluttering piece of meat covered in sticky slime. It is still shrinking, as if alive, shimmering between shapes and colors in an attempt to mimic the environment. A shiver runs through your hand at the touch, and an obsessive feeling arises in your head that you are being watched."
+  components:
+  - type: Sprite
+    state: glob
+  - type: CrusherUpgrade
+    tags: [ CrusherUpgradeTheThing ]
+    examineText: crusher-upgrade-examine-text-the-thing
+  - type: CrusherTheThingGlobUpgrade
+
+- type: entity
   parent: BaseItem
   id: LegionCore
   name: legion core
@@ -232,3 +336,37 @@
           False: {state: icon_base}
   - type: StaticPrice
     price: 250
+
+- type: entity
+  parent: BaseItem
+  id: WendigoSkull
+  name: wendigo skull
+  description: "The massive skull of the legendary monster, covered with a layer of permafrost. The eye sockets still glow dimly, and the jaws seem to be trying to close in the last death bite."
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Lavaland/trophies.rsi
+    state: wendigo_skull
+  - type: StaticPrice
+    price: 2500
+  - type: Tag
+    tags:
+    - WendigoSkull
+
+- type: entity
+  parent: BaseItem
+  id: IceCrystal
+  name: ice energy crystal
+  description: "A crystal that is painfully cold and emits a pale blue glow. It feels like eternity itself is frozen within, and touching it sends a chilling shiver down your spine."
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Lavaland/trophies.rsi
+    state: ice_crystal
+  - type: PointLight
+    color: "#00ceff"
+    energy: 16
+    radius: 1.2
+  - type: StaticPrice
+    price: 2500
+  - type: Tag
+    tags:
+    - IceCrystal

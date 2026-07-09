@@ -87,7 +87,41 @@
   id: LowerAshDrakePolymorph
   configuration:
     entity: MobLowerAshDrake
+
+#Icemoon
+- type: polymorph
+  id: SnowLegionPolymorph
+  configuration:
+    entity: MobSnowLegion
     forced: true
+    transferDamage: false
+    transferName: true
+    revertOnDeath: true
+
+- type: polymorph
+  id: SnowLegionDwarfPolymorph
+  configuration:
+    entity: MobSnowLegionDwarf
+    forced: true
+    transferDamage: false
+    transferName: true
+    revertOnDeath: true
+
+- type: polymorph
+  id: WhiteWolf
+  configuration:
+    entity: MobWhiteWolfPolymorph
+    transferName: true
+    revertOnCrit: true
+    revertOnDeath: true
+
+- type: polymorph
+  id: PolarBear
+  configuration:
+    entity: MobPolarBearPolymorph
+    transferName: true
+    revertOnCrit: true
+    revertOnDeath: true
 
 #Other
 - type: polymorph

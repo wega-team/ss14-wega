@@ -126,4 +126,19 @@
   - type: HeldSpeedModifier
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitBlueShield
-  
+
+- type: entity
+  parent: ClothingOuterHardsuitMaxim
+  id: ClothingOuterHardsuitFrostMiner
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Hardsuits/frostminer.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/OuterClothing/Hardsuits/frostminer.rsi
+  - type: ClothingSpeedModifier
+    walkModifier: 0.4
+    sprintModifier: 0.4
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitFrostMiner
+  - type: Unremoveable
+  - type: DeleteOnDrop

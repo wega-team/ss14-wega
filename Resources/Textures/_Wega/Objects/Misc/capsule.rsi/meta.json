@@ -11,6 +11,9 @@
             "name": "capsule"
         },
         {
+            "name": "blue_capsule"
+        },
+        {
             "name": "gold_capsule"
         }
     ]

@@ -155,20 +155,17 @@ public sealed partial class SpraySystem : SharedSpraySystem
             _appearance.SetData(vapor, VaporVisuals.State, true, appearance);
         }
 
-        if (!_solutionContainer.TryGetSolution(vapor, entity.Comp.Solution, out var vaporSoln, out _))
-            return;
-
-        _solutionContainer.TryAddSolution(vaporSoln.Value, selfSolution);
-
         var vaporComponent = Comp<VaporComponent>(vapor);
         var ent = (vapor, vaporComponent);
 
-        var query = AllComps<SolutionComponent>(vapor);
-        foreach (var solnComp in query)
+        if (!TryComp<SolutionComponent>(vapor, out var vaporSolutionComp))
         {
-            var solutionToReact = solnComp.Solution;
-            _reactive.DoEntityReaction(user, solutionToReact, ReactionMethod.Touch);
+            vaporSolutionComp = AddComp<SolutionComponent>(vapor);
+            vaporSolutionComp.Solution.MaxVolume = 100;
         }
+
+        _solutionContainer.ForceAddSolution((vapor, vaporSolutionComp), selfSolution);
+        _reactive.DoEntityReaction(user, vaporSolutionComp.Solution, ReactionMethod.Touch);
 
         var target = userMapPos.Offset(new Vector2(0, 0.5f));
         var time = 0.5f / entity.Comp.SprayVelocity;

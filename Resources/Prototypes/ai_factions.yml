@@ -34,6 +34,7 @@
   - Vampire # Corvax-Wega-Vampire
   - BloodCult # Corvax-Wega-Blood-Cult
   - LavalandFauna # Corvax-Wega-Lavaland
+  - IcemoonFauna # Corvax-Wega-Lavaland
 
 - type: npcFaction
   id: NanoTrasen
@@ -51,6 +52,7 @@
   - Vampire # Corvax-Wega-Vampire
   - BloodCult # Corvax-Wega-Blood-Cult
   - LavalandFauna # Corvax-Wega-Lavaland
+  - IcemoonFauna # Corvax-Wega-Lavaland
 
 - type: npcFaction
   id: Mouse
@@ -93,6 +95,7 @@
   - Vampire # Corvax-Wega-Vampire
   - BloodCult # Corvax-Wega-Blood-Cult
   - LavalandFauna # Corvax-Wega-Lavaland
+  - IcemoonFauna # Corvax-Wega-Lavaland
 
 - type: npcFaction
   id: SimpleNeutral
@@ -113,6 +116,7 @@
   - Vampire # Corvax-Wega-Vampire
   - BloodCult # Corvax-Wega-Blood-Cult
   - LavalandFauna # Corvax-Wega-Lavaland
+  - IcemoonFauna # Corvax-Wega-Lavaland
 
 - type: npcFaction
   id: Xeno
@@ -131,6 +135,7 @@
   - Vampire # Corvax-Wega-Vampire
   - BloodCult # Corvax-Wega-Blood-Cult
   - LavalandFauna # Corvax-Wega-Lavaland
+  - IcemoonFauna # Corvax-Wega-Lavaland
 
 - type: npcFaction
   id: Zombie
@@ -150,6 +155,7 @@
   - Vampire # Corvax-Wega-Vampire
   - BloodCult # Corvax-Wega-Blood-Cult
   - LavalandFauna # Corvax-Wega-Lavaland
+  - IcemoonFauna # Corvax-Wega-Lavaland
 
 - type: npcFaction
   id: Revolutionary
@@ -165,6 +171,7 @@
   - Vampire # Corvax-Wega-Vampire
   - BloodCult # Corvax-Wega-Blood-Cult
   - LavalandFauna # Corvax-Wega-Lavaland
+  - IcemoonFauna # Corvax-Wega-Lavaland
 
 - type: npcFaction
   id: AllHostile
@@ -186,6 +193,7 @@
   - Vampire # Corvax-Wega-Vampire
   - BloodCult # Corvax-Wega-Blood-Cult
   - LavalandFauna # Corvax-Wega-Lavaland
+  - IcemoonFauna # Corvax-Wega-Lavaland
 
 - type: npcFaction
   id: Wizard
@@ -207,6 +215,7 @@
   - Vampire # Corvax-Wega-Vampire
   - BloodCult # Corvax-Wega-Blood-Cult
   - LavalandFauna # Corvax-Wega-Lavaland
+  - IcemoonFauna # Corvax-Wega-Lavaland
 
 - type: npcFaction
   id: Xenoborg
@@ -227,3 +236,4 @@
   - SimpleHostile
   - AllHostile
   - LavalandFauna # Corvax-Wega-Lavaland
+  - IcemoonFauna # Corvax-Wega-Lavaland

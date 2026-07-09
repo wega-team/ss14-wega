@@ -28,11 +28,14 @@
       damageType: Blunt
       amount: 500
     # Corvax-Wega-Vehicles-end
-    # Corvax-Wega-Lavaland-start
+  # Corvax-Wega-Lavaland-start
     blacklist:
       components:
       - LavaWalking
-    # Corvax-Wega-Lavaland-end
+  - type: SpeedModifierContacts
+    walkSpeedModifier: 0.4
+    sprintSpeedModifier: 0.4
+  # Corvax-Wega-Lavaland-end
   - type: Transform
     anchored: true
   - type: SyncSprite
@@ -66,4 +69,4 @@
   - type: Tag
     tags:
     - HideContextMenu
-    - CanSwim
+    - CanSwim # Corvax-Wega-Lavaland

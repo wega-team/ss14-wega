@@ -1,10 +1,9 @@
 using System.Linq;
 using System.Numerics;
 using Content.Server.Lavaland.Components;
+using Content.Shared.Achievements;
 using Content.Shared.Destructible;
 using Content.Shared.Ghost;
-using Content.Shared.Lavaland.Components;
-using Content.Shared.Mobs.Systems;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Player;
@@ -16,50 +15,15 @@ namespace Content.Server.Lavaland.Systems;
 
 public sealed partial class NecropolisTendrilSystem : EntitySystem
 {
+    [Dependency] private SharedAchievementsSystem _achievement = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
-    [Dependency] private IGameTiming _timing = default!;
-    [Dependency] private IRobustRandom _random = default!;
     [Dependency] private EntityLookupSystem _lookup = default!;
-    [Dependency] private MobStateSystem _mobState = default!;
+    [Dependency] private IRobustRandom _random = default!;
 
     public override void Initialize()
     {
         base.Initialize();
         SubscribeLocalEvent<NecropolisTendrilComponent, DestructionEventArgs>(OnDestruction);
-    }
-
-    public override void Update(float frameTime)
-    {
-        base.Update(frameTime);
-
-        var curTime = _timing.CurTime;
-        var query = EntityQueryEnumerator<NecropolisTendrilComponent>();
-
-        while (query.MoveNext(out var uid, out var tendril))
-        {
-            if (!tendril.IsActive && HasPlayersInRange(uid, tendril.ActivationRadius))
-            {
-                tendril.IsActive = true;
-                tendril.NextSpawnTime = curTime + tendril.SpawnInterval;
-            }
-
-            foreach (var mob in tendril.SpawnedMobs)
-            {
-                if (_mobState.IsIncapacitated(mob) || !Exists(mob))
-                    tendril.SpawnedMobs.Remove(mob);
-            }
-
-            if (!tendril.IsActive || tendril.SpawnedMobs.Count >= tendril.MaxSpawns)
-                continue;
-
-            if (tendril.NextSpawnTime > curTime)
-                continue;
-
-            var newMob = SpawnMonster(uid, tendril);
-            if (newMob != null) tendril.SpawnedMobs.Add(newMob.Value);
-
-            tendril.NextSpawnTime = curTime + tendril.SpawnInterval;
-        }
     }
 
     private void OnDestruction(Entity<NecropolisTendrilComponent> ent, ref DestructionEventArgs args)
@@ -74,55 +38,18 @@ public sealed partial class NecropolisTendrilSystem : EntitySystem
         });
     }
 
-    private EntityUid? SpawnMonster(EntityUid uid, NecropolisTendrilComponent component)
-    {
-        if (component.SpawnWeights.Count == 0)
-            return null;
-
-        var monsterProto = GetWeightedRandom(component.SpawnWeights);
-
-        var coordinates = Transform(uid).Coordinates;
-        var spawnPos = coordinates.Offset(_random.NextVector2(component.SpawnRadius));
-
-        return SpawnAtPosition(monsterProto, spawnPos);
-    }
-
-    private EntProtoId GetWeightedRandom(Dictionary<EntProtoId, float> weights)
-    {
-        var current = 0f;
-        var totalWeight = weights.Values.Sum();
-        var randomValue = _random.NextFloat(0, totalWeight);
-
-        foreach (var (prototype, weight) in weights)
-        {
-            current += weight;
-            if (randomValue <= current)
-                return prototype;
-        }
-
-        return weights.Keys.First();
-    }
-
-    private bool HasPlayersInRange(EntityUid uid, float radius)
-    {
-        var coordinates = Transform(uid).Coordinates;
-        var query = _lookup.GetEntitiesInRange<ActorComponent>(coordinates, radius);
-        foreach (var (actorUid, _) in query)
-        {
-            if (HasComp<GhostComponent>(actorUid) || TryComp(actorUid, out LavalandVisitorComponent? visitor)
-                && visitor.ImmuneToStorm)
-                continue;
-
-            return true;
-        }
-
-        return false;
-    }
-
     private void CreateChasms(EntityCoordinates coordinates, EntProtoId chasmProto)
     {
         if (!coordinates.IsValid(EntityManager))
             return;
+
+        var actorsNearby = _lookup.GetEntitiesInRange<ActorComponent>(coordinates, 6f, flags: LookupFlags.Uncontained)
+            .Where(a => !HasComp<GhostComponent>(a)).ToList();
+
+        foreach (var player in actorsNearby)
+        {
+            _achievement.QueueAchievement(player, AchievementsEnum.NecropolisTendril);
+        }
 
         for (var x = -1; x <= 1; x++)
         {

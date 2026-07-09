@@ -34,6 +34,7 @@ using Content.Shared.Wieldable;
 using Content.Shared.Zombies;
 using Content.Shared.Lavaland.Events; // Corvax-Wega-Lavaland
 using Content.Shared._Wega.NinjaVisor;
+using Content.Shared.Clothing; // Corvax-Wega-Add
 using Content.Shared.Shaders; // Corvax-Wega-NightVision
 
 namespace Content.Shared.Inventory;
@@ -88,6 +89,7 @@ public partial class InventorySystem
         SubscribeLocalEvent<InventoryComponent, UnwieldAttemptEvent>(RefRelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, IngestionAttemptEvent>(RefRelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, AshProtectionAttemptEvent>(RefRelayInventoryEvent); // Corvax-Wega-Lavaland
+        SubscribeLocalEvent<InventoryComponent, ClothingFrictionModifierEvent>(RefRelayInventoryEvent); // Corvax-Wega-Add
 
         // Eye/vision events
         SubscribeLocalEvent<InventoryComponent, CanSeeAttemptEvent>(RelayInventoryEvent);
@@ -108,10 +110,10 @@ public partial class InventorySystem
         SubscribeLocalEvent<InventoryComponent, RefreshEquipmentHudEvent<BlackAndWhiteOverlayComponent>>(RefRelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, RefreshEquipmentHudEvent<NoirOverlayComponent>>(RefRelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, RefreshEquipmentHudEvent<ThermalSightComponent>>(RefRelayInventoryEvent);
+        SubscribeLocalEvent<InventoryComponent, RefreshEquipmentHudEvent<ThermalVisionComponent>>(RefRelayInventoryEvent); // Corvax-Wega-Add
         SubscribeLocalEvent<InventoryComponent, RefreshEquipmentHudEvent<RaveOverlayComponent>>(RefRelayInventoryEvent); // Corvax-Wega-Add
         SubscribeLocalEvent<InventoryComponent, RefreshEquipmentHudEvent<NinjaVisorComponent>>(RefRelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, RefreshEquipmentHudEvent<NightVisionComponent>>(RefRelayInventoryEvent); // Corvax-Wega-Add
-
         SubscribeLocalEvent<InventoryComponent, GetVerbsEvent<EquipmentVerb>>(OnGetEquipmentVerbs);
         SubscribeLocalEvent<InventoryComponent, GetVerbsEvent<InnateVerb>>(OnGetInnateVerbs);
 
