@@ -61,7 +61,7 @@
 
 #region Wendigo
 - type: entity
-  parent: [ BaseMobIcemoonMegafaunaMover, MobBloodstream ]
+  parent: [ BaseMobIcemoonMegafaunaMover, MobBloodstream, BaseMobIcemoonButcherable ]
   id: MobWendigo
   name: wendigo
   description: "A mythical humanoid monster that devours flesh and souls. His icy gaze pierces to the bone, and his roar announces his imminent death. They say that the one who hears his cry is no longer a tenant."
@@ -135,8 +135,9 @@
   - type: TrophyHunter
     trophy: TrophyIcemoonWendigoHorn
     dropChance: 1 # Guaranteed, since it's the boss
-  - type: Butcherable
-    spawned:
+  - type: ToolRefinable
+    refineTime: 10
+    refineResult:
     - id: WendigoSkull
     - id: BottleWendigoBlood
     - id: CrateNecropolisFilled
