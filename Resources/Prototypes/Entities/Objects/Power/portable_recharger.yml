@@ -19,6 +19,7 @@
     quickEquip: false
     slots:
     - suitStorage
+    - belt # Corvax-Wega-Edit
   - type: Charger
     slotId: charger_slot
     portable: true
@@ -37,3 +38,4 @@
         whitelist:
           components:
           - BatteryAmmoProvider
+          - PowerCell # Corvax-Wega-Edit

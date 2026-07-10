@@ -163,6 +163,38 @@
     sprite: _Wega/Clothing/Head/Hoods/Coat/explorerhood_khaki_reinf.rsi
 
 - type: entity
+  parent: ClothingHeadHatHoodExplorer
+  id: ClothingHeadHatHoodExplorerPolar
+  name: polar explorer hood
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Head/Hoods/Coat/explorerhood_polar.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Wega/Clothing/Head/Hoods/Coat/explorerhood_polar.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.75
+        Slash: 0.75
+        Piercing: 0.85
+        Heat: 0.8
+        Cold: 0.8
+        Caustic: 0.5
+
+- type: entity
+  parent: ClothingHeadHatHoodExplorerPolar
+  id: ClothingHeadHatHoodExplorerKhakiPolar
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Head/Hoods/Coat/explorerhood_khaki_polar.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Wega/Clothing/Head/Hoods/Coat/explorerhood_khaki_polar.rsi
+
+- type: entity
   parent: ClothingHeadHatHoodWinterBase
   id: ClothingHeadHatHoodPathfinder
   name: pathfinder hood
@@ -214,3 +246,15 @@
         Slash: 0.9
         Piercing: 0.9
         Heat: 0.8
+
+- type: entity
+  parent: ClothingHeadHatHoodWinterBase
+  id: ClothingHeadHatHoodWolfCoat
+  categories: [ HideSpawnMenu ]
+  name: wolf pelt hood
+  description: A hood made of wolf fur.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Head/Hoods/Coat/wolfcoat.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Head/Hoods/Coat/wolfcoat.rsi

@@ -28,21 +28,10 @@ public sealed partial class ColossusSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<ColossusBossComponent, MegafaunaKilledEvent>(OnColossusKilled);
-
         SubscribeLocalEvent<ColossusBossComponent, ColossusFractionActionEvent>(OnFractionAction);
         SubscribeLocalEvent<ColossusBossComponent, ColossusCrossActionEvent>(OnCrossAction);
         SubscribeLocalEvent<ColossusBossComponent, ColossusSpiralActionEvent>(OnSpiralAction);
         SubscribeLocalEvent<ColossusBossComponent, ColossusTripleFractionActionEvent>(OnTripleFractionAction);
-    }
-
-    private void OnColossusKilled(EntityUid uid, ColossusBossComponent component, MegafaunaKilledEvent args)
-    {
-        var coords = Transform(uid).Coordinates;
-        foreach (var reward in component.RewardsProto)
-            Spawn(reward, coords);
-
-        QueueDel(uid);
     }
 
     private void OnFractionAction(Entity<ColossusBossComponent> ent, ref ColossusFractionActionEvent args)

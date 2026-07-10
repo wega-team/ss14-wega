@@ -1,4 +1,5 @@
 using Robust.Shared.Serialization;
+using Robust.Shared.Utility;
 
 namespace Content.Shared.GPS;
 
@@ -107,6 +108,7 @@ public sealed partial class NavBeaconInfo
     public float Distance { get; }
     public Color Color { get; }
     public bool Enabled { get; }
+    public SpriteSpecifier? IconPath { get; }
 
     public NavBeaconInfo(
         string name,
@@ -114,7 +116,8 @@ public sealed partial class NavBeaconInfo
         (int X, int Y) coordinates,
         float distance,
         Color color,
-        bool enabled)
+        bool enabled,
+        SpriteSpecifier? iconPath = null)
     {
         Name = name;
         Desc = desc;
@@ -122,6 +125,7 @@ public sealed partial class NavBeaconInfo
         Distance = distance;
         Color = color;
         Enabled = enabled;
+        IconPath = iconPath;
     }
 }
 

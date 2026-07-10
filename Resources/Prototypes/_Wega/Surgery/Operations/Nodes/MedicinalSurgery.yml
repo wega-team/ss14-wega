@@ -1,0 +1,27 @@
+﻿- type: surgeryNode
+  id: BruteHealingOperation
+  description: Лечение механических травм
+  transitions:
+    - PerformBruteHealingTransition
+    - EndBruteHealingTransition
+
+- type: surgeryNode
+  id: BurnHealingOperation
+  description: Лечение физических травм
+  transitions:
+    - PerformBurnHealingTransition
+    - EndBurnHealingTransition
+
+- type: surgeryNode
+  id: SlimeBruteHealingOperation
+  description: Лечение механических травм
+  transitions:
+    - SlimePerformBruteHealingTransition
+    - SlimeEndBruteHealingTransition
+
+- type: surgeryNode
+  id: SlimeBurnHealingOperation
+  description: Лечение физических травм
+  transitions:
+    - SlimePerformBurnHealingTransition
+    - SlimeEndBurnHealingTransition

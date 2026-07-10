@@ -2,7 +2,6 @@ using Content.Server.Lavaland.Mobs.Components;
 using Content.Server.NPC.HTN;
 using Content.Server.NPC.Systems;
 using Content.Shared.Achievements;
-using Content.Shared.Audio;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Lavaland.Components;
 using Content.Shared.Lavaland.Events;
@@ -15,7 +14,6 @@ namespace Content.Server.Lavaland.Mobs;
 public sealed partial class MegafaunaSystem : EntitySystem
 {
     [Dependency] private SharedAchievementsSystem _achievement = default!;
-    [Dependency] private SharedAmbientSoundSystem _ambient = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private DamageableSystem _damage = default!;
     [Dependency] private NPCSystem _npc = default!;
@@ -75,12 +73,6 @@ public sealed partial class MegafaunaSystem : EntitySystem
             _audio.PlayGlobal(component.AggroSound, Filter.Pvs(uid), false);
         }
 
-        if (component.BossMusic != null)
-        {
-            _ambient.SetSound(uid, component.BossMusic);
-            _ambient.SetAmbience(uid, true);
-        }
-
         _npc.WakeNPC(uid);
     }
 
@@ -119,13 +111,7 @@ public sealed partial class MegafaunaSystem : EntitySystem
 
     private void HandleDeath(EntityUid uid, MobStateChangedEvent args)
     {
-        _ambient.SetAmbience(uid, false);
-
-        var killedEvent = new MegafaunaKilledEvent
-        {
-            Megafauna = uid,
-            Killer = args.Origin
-        };
+        var killedEvent = new MegafaunaKilledEvent(uid, args.Origin);
         RaiseLocalEvent(uid, ref killedEvent);
     }
 }

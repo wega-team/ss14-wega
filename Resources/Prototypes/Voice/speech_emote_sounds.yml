@@ -114,6 +114,22 @@
       collection: MaleGasp
     DefaultDeathgasp:
       collection: DeathGasp
+    # Corvax-Wega-Start
+    Purr:
+      collection: ReptilianPurr 
+    FilinidHisses:
+      collection: ReptilianHiss
+    Growl:
+      collection: ReptilianGrowl
+    Sigh:
+      collection: MaleSigh
+    Sneeze:
+      collection: MaleSneezes
+    Cough:
+      collection: MaleCoughs
+    Snore:
+      collection: Snores
+    # Corvax-Wega-End
 
 - type: emoteSounds
   id: FemaleReptilian
@@ -138,6 +154,22 @@
       collection: FemaleGasp
     DefaultDeathgasp:
       collection: FemaleDeathGasp
+    # Corvax-Wega-Start
+    Purr:
+      collection: ReptilianPurr 
+    FilinidHisses:
+      collection: ReptilianHiss
+    Growl:
+      collection: ReptilianGrowl
+    Sigh:
+      collection: FemaleSigh
+    Sneeze:
+      collection: FemaleSneezes
+    Cough:
+      collection: FemaleCoughs
+    Snore:
+      collection: Snores
+    # Corvax-Wega-End
 
 - type: emoteSounds
   id: MaleSlime
@@ -724,6 +756,20 @@
     path: /Audio/Animals/goat_bah.ogg
     params:
       variation: 0.125
+
+- type: emoteSounds
+  id: Sheep
+  sound:
+    collection: Sheep
+    params:
+      variation: 0.05
+
+- type: emoteSounds
+  id: SheepSpace
+  sound:
+    collection: SheepSpace
+    params:
+      variation: 0.05
 
 - type: emoteSounds
   id: Scurret

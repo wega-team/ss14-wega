@@ -77,12 +77,6 @@
   parent: BaseToolSurgery
   description: A surgical tool used to make incisions into flesh.
   components:
-  - type: Tag  # Corvax-Wega-Slot_for_scalpel_in_milboots
-    tags:  # Corvax-Wega-Slot_for_scalpel_in_milboots
-    - Scalpel  # Corvax-Wega-Slot_for_scalpel_in_milboots
-    - SurgeryTool
-  - type: Sharp
-    butcherDelayModifier: 1.5 # Butchering with a scalpel, regardless of the type, will take 50% longer
   - type: Tool
     qualities:
     - Scalpel # Corvax-Wega-Surgery
@@ -106,6 +100,12 @@
         Slash: 8
     soundHit:
       path: /Audio/Weapons/bladeslice.ogg
+  # Corvax-Wega-Add-start
+  - type: Tag
+    tags:
+    - Scalpel
+    - SurgeryTool
+  # Corvax-Wega-Add-end
 
 - type: entity
   name: shiv
@@ -220,7 +220,6 @@
   parent: BaseToolSurgery
   description: For cutting wood and other objects to pieces. Or sawing bones, in case of emergency.
   components:
-  - type: Sharp
   - type: Utensil
     types:
       - Knife
@@ -233,7 +232,8 @@
     storedRotation: 90
   - type: Tool
     qualities:
-      - Sawing
+    - Sawing
+    - Slicing
 # No melee for regular saw because have you ever seen someone use a band saw as a weapon? It's dumb.
 
 - type: entity

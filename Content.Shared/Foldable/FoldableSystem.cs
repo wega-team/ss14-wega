@@ -8,6 +8,7 @@ using Robust.Shared.Containers;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
+using Content.Shared.Whitelist; // Corvax-Wega-Morgue-change
 
 namespace Content.Shared.Foldable;
 
@@ -19,6 +20,7 @@ public sealed partial class FoldableSystem : EntitySystem
     [Dependency] private SharedContainerSystem _container = default!;
     [Dependency] private AnchorableSystem _anchorable = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private EntityWhitelistSystem _whitelistSystem = default!; // Corvax-Wega-Morgue-change
 
     public override void Initialize()
     {
@@ -91,7 +93,7 @@ public sealed partial class FoldableSystem : EntitySystem
 
     private void OnInsertEvent(EntityUid uid, FoldableComponent component, ContainerGettingInsertedAttemptEvent args)
     {
-        if (!component.IsFolded && !component.CanFoldInsideContainer)
+        if (!component.IsFolded && !component.CanFoldInsideContainer && _whitelistSystem.IsWhitelistFailOrNull(component.DeployedContainerWhitelist, args.Container.Owner)) // Corvax-Wega-Morgue-change
             args.Cancel();
     }
 

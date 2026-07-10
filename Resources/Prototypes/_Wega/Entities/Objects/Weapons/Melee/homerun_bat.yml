@@ -19,10 +19,10 @@
   - type: IncreaseDamageOnWield
     damage:
       types:
-        Blunt: 5
+        Blunt: 9
         Structural: 10
   - type: StaminaDamageOnHit
-    damage: 20
+    damage: 25
   - type: MeleeThrowOnHit
     speed: 15
     distance: 7

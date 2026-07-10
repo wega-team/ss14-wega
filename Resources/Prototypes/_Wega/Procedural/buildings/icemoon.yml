@@ -1,0 +1,114 @@
+# Always presents
+- type: lavalandBuilding
+  id: BioHazard
+  planet: Icemoon
+  gridPath: /Maps/_Wega/Icemoon/biohazard.yml
+  approximate: [200, 400]
+  ignoring: true
+
+- type: lavalandBuilding
+  id: FrostMinerCave
+  planet: Icemoon
+  gridPath: /Maps/_Wega/Icemoon/frostminercave.yml
+  approximate: [150, 400]
+  ignoring: true
+
+- type: lavalandBuilding
+  id: WendigoCave
+  planet: Icemoon
+  gridPath: /Maps/_Wega/Icemoon/wendigocave.yml
+  approximate: [150, 400]
+  ignoring: true
+
+- type: lavalandBuilding
+  id: ClockworkDefenderIcemoon
+  planet: Icemoon
+  gridPath: /Maps/_Wega/Lavaland/clockworkdefender.yml
+  approximate: [150, 300]
+  ignoring: true
+
+- type: lavalandBuilding
+  id: IcemoonWorldForge
+  planet: Icemoon
+  gridPath: /Maps/_Wega/Icemoon/worldforge.yml
+  approximate: [150, 150]
+  ignoring: true
+
+# Other
+- type: lavalandBuilding
+  id: Atmospheric
+  planet: Icemoon
+  gridPath: /Maps/_Wega/Icemoon/atmospheric.yml
+
+- type: lavalandBuilding
+  id: BearWithit
+  planet: Icemoon
+  gridPath: /Maps/_Wega/Icemoon/bearwithit.yml
+
+- type: lavalandBuilding
+  id: Cafe
+  planet: Icemoon
+  gridPath: /Maps/_Wega/Icemoon/cafe.yml
+
+- type: lavalandBuilding
+  id: Fireplace
+  planet: Icemoon
+  gridPath: /Maps/_Wega/Icemoon/fireplace.yml
+
+- type: lavalandBuilding
+  id: FireplaceBroken
+  planet: Icemoon
+  gridPath: /Maps/_Wega/Icemoon/fireplacebroken.yml
+
+- type: lavalandBuilding
+  id: GasStation
+  planet: Icemoon
+  gridPath: /Maps/_Wega/Icemoon/gasstation.yml
+
+- type: lavalandBuilding
+  id: Gorilla
+  planet: Icemoon
+  gridPath: /Maps/_Wega/Icemoon/gorilla.yml
+  preloading: false
+
+- type: lavalandBuilding
+  id: Holopad
+  planet: Icemoon
+  gridPath: /Maps/_Wega/Icemoon/holopad.yml
+
+- type: lavalandBuilding
+  id: Hotspring
+  planet: Icemoon
+  gridPath: /Maps/_Wega/Icemoon/hotspring.yml
+
+- type: lavalandBuilding
+  id: IceCave
+  planet: Icemoon
+  gridPath: /Maps/_Wega/Icemoon/icecave.yml
+
+- type: lavalandBuilding
+  id: Library
+  planet: Icemoon
+  gridPath: /Maps/_Wega/Icemoon/library.yml
+
+- type: lavalandBuilding
+  id: ShuttleCrashCave
+  planet: Icemoon
+  gridPath: /Maps/_Wega/Icemoon/shuttlecrashcave.yml
+  preloading: false
+
+- type: lavalandBuilding
+  id: Smoking
+  planet: Icemoon
+  gridPath: /Maps/_Wega/Icemoon/smoking.yml
+
+- type: lavalandBuilding
+  id: Surgeon
+  planet: Icemoon
+  gridPath: /Maps/_Wega/Icemoon/surgeon.yml
+
+- type: lavalandBuilding
+  id: SyndicateChasm
+  planet: Icemoon
+  gridPath: /Maps/_Wega/Icemoon/syndicatechasm.yml
+  approximate: [200, 400]

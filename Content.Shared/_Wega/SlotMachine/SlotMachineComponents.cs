@@ -17,18 +17,18 @@ public sealed partial class SlotMachineComponent : Component
     public string[] Slots = { "?", "?", "?" };
 
     [DataField]
-    public int SpinCost = 10;
+    public int SpinCost = 300;
 
     [DataField]
     public EntityUid? User;
 
     public TimeSpan? SpinFinishTime;
 
-    [ViewVariables(VVAccess.ReadOnly)] public int JackpotPrize = 50000;
+    [ViewVariables(VVAccess.ReadOnly)] public int JackpotPrize = 65000;
     [ViewVariables(VVAccess.ReadOnly)] public int BigWinPrize = 2500;
-    [ViewVariables(VVAccess.ReadOnly)] public int MediumWinPrize = 1250;
-    [ViewVariables(VVAccess.ReadOnly)] public int SmallWinPrize = 50;
-    [ViewVariables(VVAccess.ReadOnly)] public int TinyWinPrize = 10;
+    [ViewVariables(VVAccess.ReadOnly)] public int MediumWinPrize = 1000;
+    [ViewVariables(VVAccess.ReadOnly)] public int SmallWinPrize = 200;
+    [ViewVariables(VVAccess.ReadOnly)] public int TinyWinPrize = 150;
 
     // Sounds
     public SoundSpecifier CoinSound = new SoundCollectionSpecifier("CoinDrop", AudioParams.Default.WithVolume(-4));

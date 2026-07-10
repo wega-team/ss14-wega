@@ -20,16 +20,16 @@
       limit: 1
       required: true
       default: [ HarpyChestDefault ]
-    enum.HumanoidVisualLayers.RArm:
-      limit: 1
-      required: true
-      default: [ HarpyWingDefaultHuescale ]
     enum.HumanoidVisualLayers.LLeg:
       limit: 1
       required: false
     enum.HumanoidVisualLayers.RLeg:
       limit: 1
       required: false
+    enum.HumanoidVisualLayers.TailOverlay:
+      limit: 1
+      required: true
+      default: [ HarpyWingDefaultHuescale ]
 
 - type: entity
   parent: BaseSpeciesAppearance
@@ -113,8 +113,10 @@
     allowPercussion: false
     program: 52
   - type: FlyAbility
-    staminaDamage: 5
-    cooldown: 20
+    staminaDamage: 3
+    cooldown: 10
+    sound:
+      collection: FootstepHarpyFly
   - type: MovementSpeedModifier
     baseWeightlessAcceleration: 1.25
     baseWeightlessFriction: 1

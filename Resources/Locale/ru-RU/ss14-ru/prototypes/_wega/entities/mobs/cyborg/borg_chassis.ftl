@@ -26,3 +26,6 @@ ent-BorgChassisMedicalPlayer = { ent-BorgChassisMedical }
 ent-BorgChassisServicePlayer = { ent-BorgChassisService }
     .desc = { ent-BorgChassisSelectable.desc }
     .suffix = Официант, Батарея, Все модули, НЕ МАППИТЬ
+ent-XenoborgAllmodule = { ent-XenoborgScoutPrinted }
+    .desc = { ent-XenoborgScoutPrinted.desc }
+    .suffix = Ксеноборг, Все модули, НЕ МАППИТЬ

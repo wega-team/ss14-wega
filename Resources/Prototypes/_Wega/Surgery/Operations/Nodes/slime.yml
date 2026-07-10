@@ -16,6 +16,8 @@
   packages:
     - SlimeTorsoImplantPackage
     - HealingSlimeTorsoPackage
+    - SlimeDeconvertationPackage
+    - SlimeMedicinalSurgeryPackage
   transitions:
     - SlimeOrganManipulationTransition
     - InternalTorsoTransition
@@ -27,6 +29,8 @@
   packages:
     - SlimeTorsoImplantPackage
     - HealingSlimeTorsoPackage
+    - SlimeDeconvertationPackage
+    - SlimeMedicinalSurgeryPackage
   transitions:
     - SlimeOrganManipulationTransition
     - InternalTorsoTransition
@@ -38,6 +42,8 @@
   packages:
     - SlimeTorsoImplantPackage
     - HealingSlimeTorsoPackage
+    - SlimeDeconvertationPackage
+    - SlimeMedicinalSurgeryPackage
   transitions:
     - SlimeOrganManipulationTransition
     - InternalTorsoTransition
@@ -50,6 +56,8 @@
   packages:
     - SlimeTorsoImplantPackage
     - HealingSlimeTorsoPackage
+    - SlimeDeconvertationPackage
+    - SlimeMedicinalSurgeryPackage
   transitions:
     - SlimeOrganManipulationTransition
     - InternalTorsoTransition
@@ -62,6 +70,7 @@
   packages:
     - SlimeTorsoImplantPackage
     - HealingSlimeTorsoPackage
+    - SlimeDeconvertationPackage
   transitions:
     - SlimeOrganManipulationTransition
     - InternalTorsoTransition

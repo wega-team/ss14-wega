@@ -99,7 +99,15 @@
   - type: HandheldGpsUi
     broadcastEnabled: false
   # Corvax-Wega-Lavaland-end
-  
+ 
+- type: entity #why does this exist? Well, "global positioning system" is too long to fit in the cyborg's hand slot.
+  parent: HandheldGPSBasic
+  id: HandheldGPSBasicBorgOn
+  suffix: Borg
+  components:
+  - type: HandheldGPS
+    gPSName: Киборг
+
 - type: entity
   parent: AccessConfigurator
   id: AccessConfiguratorCargo
@@ -107,9 +115,7 @@
   description: A modified access configurator used by the cargo.
   components:
   - type: Item
-    size: Normal
-    shape:
-    - 0,0,0,1
+    size: Small
   - type: Sprite
     sprite: _Wega/Objects/Tools/cargo_access_configurator.rsi
   - type: Clothing
@@ -119,6 +125,7 @@
     accessLevels:
     - Cargo
     - Salvage
+    - LavalandAvanpost
     - Quartermaster
     privilegedIdSlot:
       name: id-card-console-privileged-id
@@ -142,9 +149,7 @@
   description: A modified access configurator used by the cargo.
   components:
   - type: Item
-    size: Normal
-    shape:
-    - 0,0,0,1
+    size: Small
   - type: Sprite
     sprite: _Wega/Objects/Tools/sci_access_configurator.rsi
   - type: Clothing
@@ -153,9 +158,10 @@
     showPrivilegedId: false
     accessLevels:
     - Research
+    - ResearchDirector
     privilegedIdSlot:
       name: id-card-console-privileged-id
-      startingItem: ResearchIDCard
+      startingItem: RDIDCard
       ejectSound: /Audio/Machines/id_swipe.ogg
       insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
       ejectOnBreak: true
@@ -167,7 +173,7 @@
     denialSound:
       path: /Audio/Machines/custom_deny.ogg
     doAfter: 0.5
-    
+
 - type: entity
   parent: AccessConfigurator
   id: AccessConfiguratorAllAccses
@@ -175,9 +181,7 @@
   description: A modified access configurator used by the cargo.
   components:
   - type: Item
-    size: Normal
-    shape:
-    - 0,0,0,1
+    size: Small
   - type: AccessOverrider
     showPrivilegedId: false
     privilegedIdSlot:

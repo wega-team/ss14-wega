@@ -1,0 +1,507 @@
+- type: entity
+  id: BaseMobIcemoonMegafauna
+  abstract: true
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+  - type: Physics
+    bodyType: KinematicController
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.75
+        density: 250
+        mask:
+          - MobMask
+        layer:
+          - MobLayer
+  - type: RequireProjectileTarget
+    active: false
+  - type: Actions
+  - type: Clickable
+  - type: InteractionOutline
+  - type: LagCompensation
+  - type: NoSlip
+  - type: MobState
+  - type: CombatMode
+  - type: Damageable
+  - type: Injurable
+    damageContainer: Biological
+  - type: Megafauna
+  - type: NPCAggression
+  - type: NPCIgnoringOptimize
+  - type: NpcFactionMember
+    factions:
+    - IcemoonFauna
+  - type: LavalandVisitor
+    immuneToStorm: true
+  - type: Unrevivable
+    analyzable: false
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - DoorBumpOpener
+    - StunImmune
+    - SlowImmune
+
+- type: entity
+  parent: BaseMobIcemoonMegafauna
+  id: BaseMobIcemoonMegafaunaMover
+  abstract: true
+  components:
+  - type: InputMover
+  - type: Input
+    context: "human"
+  - type: MobMover
+  - type: MovementSpeedModifier
+    baseFriction: 50 # No affected by ice
+
+#region Wendigo
+- type: entity
+  parent: [ BaseMobIcemoonMegafaunaMover, MobBloodstream ]
+  id: MobWendigo
+  name: wendigo
+  description: "A mythical humanoid monster that devours flesh and souls. His icy gaze pierces to the bone, and his roar announces his imminent death. They say that the one who hears his cry is no longer a tenant."
+  components:
+  - type: Physics
+    bodyType: KinematicController
+    canCollide: false
+  - type: Sprite
+    sprite: _Wega/Mobs/Icemoon/wendigo.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: wendigo
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: wendigo
+      Dead:
+        Base: wendigo_dead
+  - type: MeleeWeapon
+    ignoreAttempted: true
+    altDisarm: false
+    angle: 0
+    animation: WeaponArcClaw
+    soundHit:
+      path: /Audio/Effects/demon_attack1.ogg
+      params:
+        volume: -2 # Too loud
+    attackRate: 0.4
+    damage:
+     types:
+       Blunt: 40
+  - type: Pullable
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2.75
+    baseSprintSpeed: 2.75
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      2500: Dead
+  - type: Bloodstream
+    bloodlossDamage:
+      types:
+        Bloodloss: 0
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: Blood
+        Quantity: 500
+  - type: NavMapBeacon
+    defaultText: nav-map-beacon-icemoon-signal-wendigo
+    defaultDesc: nav-map-beacon-icemoon-signal-wendigo-desc
+    beaconIcon: { sprite: /Textures/_Wega/Interface/Misc/beacon_screen.rsi, state: wendigo }
+    color: "#800020"
+  - type: BossMusic
+    music:
+      collection: WendigoMusic
+  - type: WendigoBoss
+  - type: MegafaunaDamageContributor
+    achievement: WendigoBoss
+  - type: HTN
+    rootTask:
+      task: MegafaunaBehaviorCompound
+  - type: NPCUseActionsOnTarget
+    actionIds:
+    - ActionWendigoStomp
+    - ActionWendigoTeleport
+    - ActionWendigoScream
+    actionChances:
+      ActionWendigoStomp: 0.5
+      ActionWendigoTeleport: 0.2
+      ActionWendigoScream: 0.3
+  - type: TrophyHunter
+    trophy: TrophyIcemoonWendigoHorn
+    dropChance: 1 # Guaranteed, since it's the boss
+  - type: Butcherable
+    spawned:
+    - id: WendigoSkull
+    - id: BottleWendigoBlood
+    - id: CrateNecropolisFilled
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+     enum.VisualLayers.Enabled:
+        enum.DamageStateVisualLayers.Base:
+          True: {state: wendigo_blood}
+          False: {state: wendigo}
+#endregion
+
+#region Frost Miner
+- type: entity
+  parent: [ MobHuman, BaseMobIcemoonMegafaunaMover ]
+  id: MobFrostMiner
+  name: frost miner
+  components:
+  - type: RandomHumanoidAppearance
+    randomizeName: false
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Heat
+        damage: 5000
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawnInContainer: true
+        spawn:
+          Ash:
+            min: 1
+            max: 1
+      - !type:BurnBodyBehavior { }
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MeatLaserImpact
+  - type: Loadout
+    prototypes:
+      - FrostMinerGear
+  - type: LavaWalking
+  - type: ScaleVisuals
+    scale: 1.172, 1.172
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      1125: Critical
+  - type: Respirator
+    saturation: 8.0
+    suffocationThreshold: -6.0
+    maxSaturation: 8.0
+    minSaturation: -4.0
+    updateIntervalMultiplier: 0.8
+  - type: BossMusic
+    music:
+      collection: BDMMusic
+  - type: FrostMinerBoss
+  - type: MegafaunaDamageContributor
+    achievement: FrostMinerBoss
+  - type: HTN
+    rootTask:
+      task: SimpleHumanoidHostileCompound
+    blackboard:
+      VisionRadius: !type:Single
+        18
+      AggroVisionRadius: !type:Single
+        18
+  - type: NPCUseActionsOnTarget
+    actionIds:
+    - ActionFrostMinerIceOrbsEasy
+    - ActionFrostMinerSnowballEasy
+    - ActionFrostMinerShotgunEasy
+    - ActionFrostMinerIceOrbsHard
+    - ActionFrostMinerSnowballHard
+    - ActionFrostMinerShotgunHard
+    actionChances:
+      ActionFrostMinerIceOrbsEasy: 0.8
+      ActionFrostMinerSnowballEasy: 0.8
+      ActionFrostMinerShotgunEasy: 0.8
+      ActionFrostMinerIceOrbsHard: 0.2
+      ActionFrostMinerSnowballHard: 0.2
+      ActionFrostMinerShotgunHard: 0.2
+  - type: NpcFactionMember
+    factions:
+    - AllHostile
+  - type: DnaModifier
+    upper: null
+    lowest: null
+  - type: LegionReversible
+    canReversible: false
+  - type: NavMapBeacon
+    defaultText: nav-map-beacon-lavaland-signal-frost-miner
+    defaultDesc: nav-map-beacon-lavaland-signal-frost-miner-desc
+    beaconIcon: { sprite: /Textures/_Wega/Interface/Misc/beacon_screen.rsi, state: frostminer }
+    color: "#cc51a9"
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - DoorBumpOpener
+    - StunImmune
+    - SlowImmune
+
+- type: startingGear
+  id: FrostMinerGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitExplorer
+    ears: ClothingHeadsetCargo
+    eyes: ClothingEyesGlassesMeson
+    mask: ClothingMaskGasExplorer
+    gloves: ClothingHandsGlovesCombat
+    shoes: ClothingShoesBootsSalvage
+    underwearbottom: ClothingUnderBottomGrey
+    head: ClothingHeadHelmetHardsuitFrostMiner
+    outerClothing: ClothingOuterHardsuitFrostMiner
+  inhand:
+    - JackhammerFrostMiner
+
+- type: entity
+  parent: BaseMobIcemoonMegafaunaMover
+  id: MobFrostMinerDemonic
+  name: demonic frost miner
+  description: "The true essence behind the man's mask. An icy rage bursting out is ready to destroy anyone who dares to stand in its way."
+  categories: [ HideSpawnMenu ] # You obviously don't need the second part of it, it will appear later on its own.
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Icemoon/frost_miner.rsi
+    state: demonic_miner
+  - type: ScaleVisuals
+    scale: 1.172, 1.172
+  - type: Fixtures
+    fixtures: # TODO: This needs a second fixture just for mob collisions.
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.4
+        density: 185
+        restitution: 0.0
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: MeleeWeapon
+    ignoreAttempted: true
+    altDisarm: false
+    angle: 0
+    damage:
+     types:
+       Blunt: 10
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2
+    baseSprintSpeed: 2
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      1500: Dead
+  - type: NavMapBeacon
+    defaultText: nav-map-beacon-lavaland-signal-frost-miner
+    defaultDesc: nav-map-beacon-lavaland-signal-frost-miner-desc
+    beaconIcon: { sprite: /Textures/_Wega/Interface/Misc/beacon_screen.rsi, state: frostminer }
+    color: "#cc51a9"
+  - type: BossMusic
+    music:
+      collection: BDMMusic
+  - type: BossRewards
+    rewards:
+    - IceCrystal
+    randomReward:
+    - ResurrectionCrystal
+    - ClothingShoesWinterCursedIceHikingBoots
+    - DemonicJackhammer
+  - type: FrostMinerBoss
+    isTransitioning: true
+  - type: MegafaunaDamageContributor
+    achievement: FrostMinerBoss
+  - type: HTN
+    rootTask:
+      task: MegafaunaBehaviorCompound
+    blackboard:
+      VisionRadius: !type:Single
+        18
+      AggroVisionRadius: !type:Single
+        18
+  - type: NPCUseActionsOnTarget
+    actionIds:
+    - ActionFrostMinerIceOrbsEasy
+    - ActionFrostMinerSnowballEasy
+    - ActionFrostMinerShotgunEasy
+    - ActionFrostMinerIceOrbsHard
+    - ActionFrostMinerSnowballHard
+    - ActionFrostMinerShotgunHard
+    actionChances:
+      ActionFrostMinerIceOrbsEasy: 0.4
+      ActionFrostMinerSnowballEasy: 0.4
+      ActionFrostMinerShotgunEasy: 0.4
+      ActionFrostMinerIceOrbsHard: 0.6
+      ActionFrostMinerSnowballHard: 0.6
+      ActionFrostMinerShotgunHard: 0.6
+  - type: NpcFactionMember
+    factions:
+    - AllHostile
+  - type: TrophyHunter
+    trophy: TrophyIcemoonFrostMinerBlock
+    dropChance: 1 # Guaranteed, since it's the boss
+#endregion
+
+#region The Thing
+- type: entity
+  parent: BaseMobIcemoonMegafaunaMover
+  id: MobTheThingBase
+  name: unknown
+  description: "A human figure standing motionless. There's something unnatural about her posture."
+  abstract: true
+  components:
+  - type: Physics
+    bodyType: KinematicController
+    canCollide: false
+  - type: Sprite
+    sprite: _Wega/Mobs/Icemoon/thething32x32.rsi
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 185
+        restitution: 0.0
+        mask: # Like so it doesn't hit its own thorns.
+        - FlyingMobMask
+        layer:
+        - FlyingMobLayer
+  - type: MeleeWeapon
+    altDisarm: false
+    soundHit:
+      collection: AlienClaw
+    damage:
+      types:
+        Slash: 15
+        Piercing: 15
+        Structural: 20
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Blunt: 20
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2.75
+    baseSprintSpeed: 2.75
+  - type: NavMapBeacon
+    defaultText: nav-map-beacon-icemoon-signal-the-thing
+    defaultDesc: nav-map-beacon-icemoon-signal-the-thing-desc
+    beaconIcon: { sprite: /Textures/_Wega/Interface/Misc/beacon_screen.rsi, state: thething }
+    color: "#28e114"
+  - type: BossMusic
+    music: # Idk what to put here for him.
+      collection: BDMMusic
+  - type: MegafaunaDamageContributor
+    achievement: TheThingBoss
+  - type: HTN
+    rootTask:
+      task: MegafaunaBehaviorCompound
+
+- type: entity
+  parent: MobTheThingBase
+  id: MobTheThingPhase1
+  components:
+  - type: Sprite
+    state: phase1
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      600: Critical
+  - type: TheThingBoss
+    nextStage: MobTheThingPhase2
+  - type: NPCUseActionsOnTarget
+    actionIds:
+    - ActionTheThingCharge
+    - ActionTheThingDecimate
+    actionChances:
+      ActionTheThingCharge: 0.5
+      ActionTheThingDecimate: 0.5
+
+- type: entity
+  parent: MobTheThingBase
+  id: MobTheThingPhase2
+  name: unknown
+  description: "The figure begins to distort, the limbs lengthen, the back bends at an unnatural angle."
+  categories: [ HideSpawnMenu ] # This is a gradual boss, you don't need to spawn a big version of it.
+  components:
+  - type: Sprite
+    state: phase2
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      600: Critical
+  - type: TheThingBoss
+    nextStage: MobTheThingPhase3
+  - type: NPCUseActionsOnTarget
+    actionIds:
+    - ActionTheThingCharge
+    - ActionTheThingDecimate
+    - ActionTheThingShriek
+    - ActionTheThingSquareTendrils
+    - ActionTheThingCardinalTendrils
+    actionChances:
+      ActionTheThingCharge: 0.25
+      ActionTheThingDecimate: 0.2
+      ActionTheThingShriek: 0.2
+      ActionTheThingSquareTendrils: 0.2
+      ActionTheThingCardinalTendrils: 0.15
+
+- type: entity
+  parent: MobTheThingBase
+  id: MobTheThingPhase3
+  name: the thing
+  description: "Aww... A fluttering lump of flesh, pulsating like a living organism trying to imitate something familiar, but failing over and over again."
+  categories: [ HideSpawnMenu ] # NO!
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Icemoon/thething32x64.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: phase3
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.75
+        density: 185
+        restitution: 0.0
+        mask: # Like so it doesn't hit its own thorns.
+        - FlyingMobMask
+        layer:
+        - FlyingMobLayer
+  - type: Appearance
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: phase3
+      Dead:
+        Base: dead
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      1800: Dead
+  - type: BossRewards
+    deleteAfter: false
+    rewards:
+    - CrowbarRed
+  - type: TheThingBoss
+  - type: NPCUseActionsOnTarget
+    actionIds:
+    - ActionTheThingCharge
+    - ActionTheThingDecimate
+    - ActionTheThingShriek
+    - ActionTheThingSquareTendrils
+    - ActionTheThingCardinalTendrils
+    - ActionTheThingAcidShower
+    actionChances:
+      ActionTheThingCharge: 0.2
+      ActionTheThingDecimate: 0.15
+      ActionTheThingShriek: 0.15
+      ActionTheThingSquareTendrils: 0.2
+      ActionTheThingCardinalTendrils: 0.15
+      ActionTheThingAcidShower: 0.15
+  - type: TrophyHunter
+    trophy: TrophyIcemoonTheThingGlob
+    dropChance: 1 # Guaranteed, since it's the boss
+#endregion

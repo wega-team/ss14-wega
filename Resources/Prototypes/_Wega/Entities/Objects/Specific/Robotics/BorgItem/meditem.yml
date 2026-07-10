@@ -59,386 +59,121 @@
         swap: false
 
 - type: entity
-  parent: BorgHypoTricordrazine
-  suffix: tricordrazine
-  id: BorgHypoTricordrazineBase
-  components:
-  - type: ItemSelector
-    items:
-    - BorgHypoTricordrazineBase
-    - BorgHypoEpinephrineBase
-
-- type: entity
-  parent: BorgHypoEpinephrine
-  suffix: epinephrine
-  id: BorgHypoEpinephrineBase
-  components:
-  - type: ItemSelector
-    items:
-    - BorgHypoTricordrazineBase
-    - BorgHypoEpinephrineBase
-
-- type: entity
-  parent: Syringe
-  id: BorgSyringe
-  suffix: Cyborg
-  components:
-  - type: Unremoveable
-  - type: ItemSelector
-    items:
-    - BorgSyringe
-    - BorgAdvancedJetInjector
-  - type: ActivatableUI
-    key: enum.ItemSelectorUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.ItemSelectorUiKey.Key:
-        type: ItemSelectorBoundUserInterface
-  - type: Tag
-    tags:
-    - Syringe
-    - Trash
-    - Itemborg
-
-- type: entity
-  parent: AdvancedJetInjector
-  id: BorgAdvancedJetInjector
-  suffix: Cyborg
-  components:
-  - type: Unremoveable
-  - type: ItemSelector
-    items:
-    - BorgSyringe
-    - BorgAdvancedJetInjector
-  - type: ActivatableUI
-    key: enum.ItemSelectorUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.ItemSelectorUiKey.Key:
-        type: ItemSelectorBoundUserInterface
-  - type: Tag
-    tags:
-    - Itemborg
-
-## Doctor rare
-- type: entity
-  parent: BorgHypo
-  suffix: tricordrazine
-  id: BorgHypoTricordrazine
+  parent: [BorgHypo,SolutionHyposprayTiny]
+  id: BaseBorgHypoGenerated
+  abstract: true
   components:
   - type: Sprite
-    sprite: /Textures/_Wega/Objects/Specific/Medical/hyno.rsi
+    sprite: _Wega/Objects/Specific/Medical/hyno.rsi
     layers:
     - state: borghypo
-    - state: borghypo_trico
+      map: [ "enum.SolutionContainerLayers.Base" ]
+    - state: borghypo_fill1
+      map: [ "enum.SolutionContainerLayers.Fill" ]
+      visible: false
+  - type: SolutionContainerVisuals
+    maxFillLevels: 1
+    fillBaseName: borghypo_fill
+    solutionName: hypospray
   - type: Item
-    sprite: /Textures/_Wega/Objects/Specific/Medical/hyno.rsi
-  - type: Label
-    currentLabel: reagent-name-tricordrazine
-  - type: SolutionContainerManager
-    solutions:
-      hypospray:
-        maxVol: 10
-        reagents:
-        - ReagentId: Tricordrazine
-          Quantity: 0
+    sprite: _Wega/Objects/Specific/Medical/hyno.rsi
   - type: SolutionRegeneration
     generated:
       reagents:
       - ReagentId: Tricordrazine
         Quantity: 0.5
-  - type: Unremoveable
-  - type: ItemSelector
-    items:
-    - BorgHypoTricordrazine
-    - BorgHypoBicaridine
-    - BorgHypoDermaline
-    - BorgHypoDylovene
-    - BorgHypoHyronalin
-    - BorgHypoDexalin
-    - BorgHypoEpinephrine
-  - type: ActivatableUI
-    key: enum.ItemSelectorUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.ItemSelectorUiKey.Key:
-        type: ItemSelectorBoundUserInterface
-  - type: Tag
-    tags:
-    - Itemborg
-
-- type: entity
-  parent: BorgHypo
-  suffix: bicaridine
-  id: BorgHypoBicaridine
-  components:
-  - type: Sprite
-    sprite: /Textures/_Wega/Objects/Specific/Medical/hyno.rsi
-    layers:
-    - state: borghypo
-    - state: borghypo_bicka
-  - type: Item
-    sprite: /Textures/_Wega/Objects/Specific/Medical/hyno.rsi
-  - type: Label
-    currentLabel: reagent-name-bicaridine
-  - type: SolutionContainerManager
-    solutions:
-      hypospray:
-        maxVol: 10
+  - type: Injector
+    currentTransferAmount: null
+    activeModeProtoId: HyposprayInjectMode
+    allowedModes:
+    - HyposprayInjectMode
+  - type: ChangeableReagent
+    reagents:
+    - generated:
         reagents:
         - ReagentId: Bicaridine
-          Quantity: 0
-  - type: SolutionRegeneration
-    generated:
-      reagents:
-      - ReagentId: Bicaridine
-        Quantity: 0.5
+          Quantity: 0.5
+      name: Water
+    - generated:
+        reagents:
+        - ReagentId: Tricordrazine
+          Quantity: 0.5
+      name: Bica
   - type: Unremoveable
-  - type: ItemSelector
-    items:
-    - BorgHypoTricordrazine
-    - BorgHypoBicaridine
-    - BorgHypoDermaline
-    - BorgHypoDylovene
-    - BorgHypoHyronalin
-    - BorgHypoDexalin
-    - BorgHypoEpinephrine
-  - type: ActivatableUI
-    key: enum.ItemSelectorUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.ItemSelectorUiKey.Key:
-        type: ItemSelectorBoundUserInterface
   - type: Tag
     tags:
     - Itemborg
 
 - type: entity
-  parent: BorgHypo
-  suffix: dermaline
-  id: BorgHypoDermaline
+  parent: BaseBorgHypoGenerated
+  id: BorgHypoGeneratedGeneral
   components:
-  - type: Sprite
-    sprite: /Textures/_Wega/Objects/Specific/Medical/hyno.rsi
-    layers:
-    - state: borghypo
-    - state: borghypo_derma
-  - type: Item
-    sprite: /Textures/_Wega/Objects/Specific/Medical/hyno.rsi
-  - type: Label
-    currentLabel: reagent-name-dermaline
-  - type: SolutionContainerManager
-    solutions:
-      hypospray:
-        maxVol: 10
-        reagents:
-        - ReagentId: Dermaline
-          Quantity: 0
+  - type: Solution
+    solution:
+      maxVol: 10
   - type: SolutionRegeneration
     generated:
       reagents:
-      - ReagentId: Dermaline
-        Quantity: 0.5
-  - type: Unremoveable
-  - type: ItemSelector
-    items:
-    - BorgHypoTricordrazine
-    - BorgHypoBicaridine
-    - BorgHypoDermaline
-    - BorgHypoDylovene
-    - BorgHypoHyronalin
-    - BorgHypoDexalin
-    - BorgHypoEpinephrine
-  - type: ActivatableUI
-    key: enum.ItemSelectorUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.ItemSelectorUiKey.Key:
-        type: ItemSelectorBoundUserInterface
-  - type: Tag
-    tags:
-    - Itemborg
-
-- type: entity
-  parent: BorgHypo
-  suffix: dylovene
-  id: BorgHypoDylovene
-  components:
-  - type: Sprite
-    sprite: /Textures/_Wega/Objects/Specific/Medical/hyno.rsi
-    layers:
-    - state: borghypo
-    - state: borghypo_dylov
-  - type: Item
-    sprite: /Textures/_Wega/Objects/Specific/Medical/hyno.rsi
-  - type: Label
-    currentLabel: reagent-name-dylovene
-  - type: SolutionContainerManager
-    solutions:
-      hypospray:
-        maxVol: 10
-        reagents:
-        - ReagentId: Dylovene
-          Quantity: 0
-  - type: SolutionRegeneration
-    generated:
-      reagents:
-      - ReagentId: Dylovene
-        Quantity: 0.5
-  - type: Unremoveable
-  - type: ItemSelector
-    items:
-    - BorgHypoTricordrazine
-    - BorgHypoBicaridine
-    - BorgHypoDermaline
-    - BorgHypoDylovene
-    - BorgHypoHyronalin
-    - BorgHypoDexalin
-    - BorgHypoEpinephrine
-  - type: ActivatableUI
-    key: enum.ItemSelectorUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.ItemSelectorUiKey.Key:
-        type: ItemSelectorBoundUserInterface
-  - type: Tag
-    tags:
-    - Itemborg
-
-- type: entity
-  parent: BorgHypo
-  suffix: hyronalin
-  id: BorgHypoHyronalin
-  components:
-  - type: Sprite
-    sprite: /Textures/_Wega/Objects/Specific/Medical/hyno.rsi
-    layers:
-    - state: borghypo
-    - state: borghypo_hyro
-  - type: Item
-    sprite: /Textures/_Wega/Objects/Specific/Medical/hyno.rsi
-  - type: Label
-    currentLabel: reagent-name-hyronalin
-  - type: SolutionContainerManager
-    solutions:
-      hypospray:
-        maxVol: 10
-        reagents:
-        - ReagentId: Hyronalin
-          Quantity: 0
-  - type: SolutionRegeneration
-    generated:
-      reagents:
-      - ReagentId: Hyronalin
-        Quantity: 0.5
-  - type: Unremoveable
-  - type: ItemSelector
-    items:
-    - BorgHypoTricordrazine
-    - BorgHypoBicaridine
-    - BorgHypoDermaline
-    - BorgHypoDylovene
-    - BorgHypoHyronalin
-    - BorgHypoDexalin
-    - BorgHypoEpinephrine
-  - type: ActivatableUI
-    key: enum.ItemSelectorUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.ItemSelectorUiKey.Key:
-        type: ItemSelectorBoundUserInterface
-  - type: Tag
-    tags:
-    - Itemborg
-
-- type: entity
-  parent: BorgHypo
-  suffix: dexalin
-  id: BorgHypoDexalin
-  components:
-  - type: Sprite
-    sprite: /Textures/_Wega/Objects/Specific/Medical/hyno.rsi
-    layers:
-    - state: borghypo
-    - state: borghypo_dexal
-  - type: Item
-    sprite: /Textures/_Wega/Objects/Specific/Medical/hyno.rsi
-  - type: Label
-    currentLabel: reagent-name-dexalin
-  - type: SolutionContainerManager
-    solutions:
-      hypospray:
-        maxVol: 10
-        reagents:
-        - ReagentId: Dexalin
-          Quantity: 0
-  - type: SolutionRegeneration
-    generated:
-      reagents:
-      - ReagentId: Dexalin
-        Quantity: 0.5
-  - type: Unremoveable
-  - type: ItemSelector
-    items:
-    - BorgHypoTricordrazine
-    - BorgHypoBicaridine
-    - BorgHypoDermaline
-    - BorgHypoDylovene
-    - BorgHypoHyronalin
-    - BorgHypoDexalin
-    - BorgHypoEpinephrine
-  - type: ActivatableUI
-    key: enum.ItemSelectorUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.ItemSelectorUiKey.Key:
-        type: ItemSelectorBoundUserInterface
-  - type: Tag
-    tags:
-    - Itemborg
-
-- type: entity
-  parent: BorgHypo
-  suffix: epinephrine
-  id: BorgHypoEpinephrine
-  components:
-  - type: Sprite
-    sprite: /Textures/_Wega/Objects/Specific/Medical/hyno.rsi
-    layers:
-    - state: borghypo
-    - state: borghypo_epi
-  - type: Item
-    sprite: /Textures/_Wega/Objects/Specific/Medical/hyno.rsi
-  - type: Label
-    currentLabel: reagent-name-epinephrine
-  - type: SolutionContainerManager
-    solutions:
-      hypospray:
-        maxVol: 10
-        reagents:
-        - ReagentId: Epinephrine
-          Quantity: 0
-  - type: SolutionRegeneration
-    generated:
-      reagents:
+      - ReagentId: Beer
+        Quantity: 0
+  - type: ChangeableReagent
+    reagents:
+    - reagent:
+      - ReagentId: Beer
+        Quantity: 0
+      name: no-reagent
+    - reagent:
+      - ReagentId: Tricordrazine
+        Quantity: 1
+      name: reagent-name-tricordrazine
+    - reagent:
       - ReagentId: Epinephrine
-        Quantity: 0.5
-  - type: Unremoveable
-  - type: ItemSelector
-    items:
-    - BorgHypoTricordrazine
-    - BorgHypoBicaridine
-    - BorgHypoDermaline
-    - BorgHypoDylovene
-    - BorgHypoHyronalin
-    - BorgHypoDexalin
-    - BorgHypoEpinephrine
-  - type: ActivatableUI
-    key: enum.ItemSelectorUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.ItemSelectorUiKey.Key:
-        type: ItemSelectorBoundUserInterface
-  - type: Tag
-    tags:
-    - Itemborg
+        Quantity: 1
+      name: reagent-name-epinephrine
+
+- type: entity
+  parent: BaseBorgHypoGenerated
+  id: BorgHypoGeneratedAdvensed
+  components:
+  - type: Solution
+    solution:
+      maxVol: 15
+  - type: SolutionRegeneration
+    generated:
+      reagents:
+      - ReagentId: Beer
+        Quantity: 0
+  - type: ChangeableReagent
+    reagents:
+    - reagent:
+      - ReagentId: Beer
+        Quantity: 0
+      name: no-reagent
+    - reagent:
+      - ReagentId: Tricordrazine
+        Quantity: 1
+      name: reagent-name-tricordrazine
+    - reagent:
+      - ReagentId: Epinephrine
+        Quantity: 1
+      name: reagent-name-epinephrine
+    - reagent:
+      - ReagentId: Bicaridine
+        Quantity: 1
+      name: reagent-name-bicaridine
+    - reagent:
+      - ReagentId: Dermaline
+        Quantity: 1
+      name: reagent-name-dermaline
+    - reagent:
+      - ReagentId: Dylovene
+        Quantity: 1
+      name: reagent-name-dylovene
+    - reagent:
+      - ReagentId: Hyronalin
+        Quantity: 1
+      name: reagent-name-hyronalin
+    - reagent:
+      - ReagentId: Dexalin
+        Quantity: 1
+      name: reagent-name-dexalin

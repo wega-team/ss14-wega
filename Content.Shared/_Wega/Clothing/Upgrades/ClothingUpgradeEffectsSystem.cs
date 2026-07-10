@@ -1,4 +1,5 @@
 using Content.Shared.Armor;
+using Content.Shared.Atmos;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Systems;
 
@@ -12,6 +13,8 @@ public sealed partial class ClothingUpgradeEffectsSystem : EntitySystem
 
         SubscribeLocalEvent<ClothingAccessoriesProtectionComponent, CoefficientQueryEvent>(OnCoefficientQuery);
         SubscribeLocalEvent<ClothingAccessoriesProtectionComponent, DamageModifyEvent>(OnDamageModify);
+
+        SubscribeLocalEvent<ClothingAccessoriesFireProtectionComponent, GetFireProtectionEvent>(OnGetFireProtection);
     }
 
     private void OnCoefficientQuery(Entity<ClothingAccessoriesProtectionComponent> ent, ref CoefficientQueryEvent args)
@@ -28,5 +31,10 @@ public sealed partial class ClothingUpgradeEffectsSystem : EntitySystem
     private void OnDamageModify(Entity<ClothingAccessoriesProtectionComponent> ent, ref DamageModifyEvent args)
     {
         args.Damage = DamageSpecifier.ApplyModifierSet(args.Damage, ent.Comp.Modifiers);
+    }
+
+    private void OnGetFireProtection(Entity<ClothingAccessoriesFireProtectionComponent> ent, ref GetFireProtectionEvent args)
+    {
+        args.Reduce(ent.Comp.Reduction);
     }
 }

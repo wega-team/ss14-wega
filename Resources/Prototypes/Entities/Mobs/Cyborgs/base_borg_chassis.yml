@@ -171,6 +171,7 @@
   - type: Injurable
     damageContainer: Silicon
   - type: Destructible
+    generateOverkillThreshold: false
     thresholds:
     - trigger:
         !type:DamageTrigger
@@ -259,6 +260,7 @@
   - type: OfferGiver # Corvax-Wega-Offer
   - type: SpeechSynthesis # Corvax-Wega-Barks
     voice: BarksCitadelSynthetic2 # Corvax-Wega-Barks
+  - type: StatusIcon
 
 - type: entity
   abstract: true

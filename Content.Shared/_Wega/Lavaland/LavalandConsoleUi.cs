@@ -20,13 +20,16 @@ public sealed partial class LavalandShuttleConsoleState : BoundUserInterfaceStat
     public ShuttleStatus Status;
     public DockLocation Location;
     public TimeSpan? NextLaunchTime;
+    public string? CurrentPlanet;
     public bool CanCallShuttle;
 
-    public LavalandShuttleConsoleState(ShuttleStatus status, DockLocation location, TimeSpan? nextLaunchTime, bool canCall)
+    public LavalandShuttleConsoleState(ShuttleStatus status, DockLocation location,
+        TimeSpan? nextLaunchTime, string? currentPlanet, bool canCall)
     {
         Status = status;
         Location = location;
         NextLaunchTime = nextLaunchTime;
+        CurrentPlanet = currentPlanet;
         CanCallShuttle = canCall;
     }
 }
@@ -37,13 +40,16 @@ public sealed partial class PenalServitudeLavalandShuttleConsoleState : BoundUse
     public PenalServitudeLavalandShuttleStatus Status;
     public PenalServitudeLavalandDockLocation Location;
     public TimeSpan? NextLaunchTime;
+    public string? CurrentPlanet;
     public bool CanCallShuttle;
 
-    public PenalServitudeLavalandShuttleConsoleState(PenalServitudeLavalandShuttleStatus status, PenalServitudeLavalandDockLocation location, TimeSpan? nextLaunchTime, bool canCall)
+    public PenalServitudeLavalandShuttleConsoleState(PenalServitudeLavalandShuttleStatus status, PenalServitudeLavalandDockLocation location,
+        TimeSpan? nextLaunchTime, string? currentPlanet, bool canCall)
     {
         Status = status;
         Location = location;
         NextLaunchTime = nextLaunchTime;
+        CurrentPlanet = currentPlanet;
         CanCallShuttle = canCall;
     }
 }

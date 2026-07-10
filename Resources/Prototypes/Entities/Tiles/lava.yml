@@ -28,7 +28,7 @@
       damageType: Blunt
       amount: 500
     # Corvax-Wega-Vehicles-end
-    # Corvax-Wega-Lavaland-start
+  # Corvax-Wega-Lavaland-start
     blacklist:
       components:
       - LavaWalking

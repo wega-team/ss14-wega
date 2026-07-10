@@ -1,0 +1,83 @@
+- type: entity
+  parent: BaseStorageItem
+  id: ConstructionBag
+  name: сonstruction bag
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Devices/construction_bag.rsi
+    state: icon
+  - type: Item
+    size: Ginormous
+    storedRotation: -90
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - belt
+  - type: Storage
+    grid:
+    - 0,0,7,5
+    maxItemSize: Normal
+    quickInsert: true
+    areaInsert: true
+    whitelist:
+      components:
+        - Battery
+        - Circuitboard
+        - FloorTile
+      tags:
+        - ConstructionMaterial
+  - type: Dumpable
+  
+- type: entity
+  parent: BaseStorageItem
+  id: TechDiskBag
+  name: technology disk bag
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Devices/bag_diski.rsi
+    state: icon
+  - type: Item
+    size: Ginormous
+    storedRotation: -90
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - belt
+  - type: Storage
+    grid:
+    - 0,0,19,9
+    maxItemSize: Normal
+    quickInsert: true
+    areaInsert: true
+    whitelist:
+      components:
+        - TechnologyDisk
+  - type: Dumpable
+  - type: MagnetPickup
+  
+- type: entity
+  parent: BaseStorageItem
+  id: TechDiskBagT3
+  name: technology t3 disk bag
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Devices/bag_diski_t3.rsi
+    state: icon
+  - type: Item
+    size: Ginormous
+    storedRotation: -90
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - belt
+  - type: Storage
+    grid:
+    - 0,0,4,3
+    maxItemSize: Normal
+    quickInsert: true
+    areaInsert: true
+    whitelist:
+      tags:
+        - TechnologyDiskT3
+  - type: Dumpable
+  - type: MagnetPickup

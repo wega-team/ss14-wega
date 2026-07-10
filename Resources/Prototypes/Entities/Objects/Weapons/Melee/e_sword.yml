@@ -14,7 +14,9 @@
       path: /Audio/Weapons/ebladehum.ogg
   - type: ComponentToggler
     components:
-    - type: Sharp
+    - type: Tool
+      qualities:
+      - Slicing
     - type: DisarmMalus
       malus: 0.6
     - type: Execution
@@ -41,9 +43,9 @@
         variation: 0.125
     activatedDamage:
       types:
-        Slash: 15
-        Heat: 15
-        Structural: 20
+        Slash: 18 # Corvax-Wega-Edit
+        Heat: 18 # Corvax-Wega-Edit 4 hits to crit
+        Structural: 25 # Corvax-Wega-Edit
   - type: MeleeWeapon
     wideAnimationRotation: -135
     attackRate: 1
@@ -127,7 +129,9 @@
         volume: -3
   - type: ComponentToggler
     components:
-    - type: Sharp
+    - type: Tool
+      qualities:
+      - Slicing
     - type: DisarmMalus
       malus: 0.4
     - type: Execution
@@ -193,7 +197,9 @@
     deactivatedSecret: true
   - type: ComponentToggler
     components:
-    - type: Sharp
+    - type: Tool
+      qualities:
+      - Slicing
     - type: DisarmMalus
       malus: 0.4
     - type: Execution
@@ -307,8 +313,8 @@
         variation: 0.250
     activatedDamage:
         types:
-            Slash: 12
-            Heat: 12
+            Slash: 15 # Corvax-Wega-Edit
+            Heat: 15 # Corvax-Wega-Edit
             Structural: 15
   - type: ItemToggleActiveSound
     activeSound:
@@ -317,12 +323,14 @@
         volume: 3
   - type: ComponentToggler
     components:
-    - type: Sharp
     - type: DisarmMalus
       malus: 0.7
     - type: Execution
       doAfterDuration: 4.0
       canGunExecute: false # Corvax-Wega-Suicide
+    - type: Tool
+      qualities:
+      - Slicing
   - type: Wieldable
     wieldSound: null # esword light sound instead
   - type: MeleeWeapon

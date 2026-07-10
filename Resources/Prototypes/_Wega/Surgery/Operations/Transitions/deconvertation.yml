@@ -1,0 +1,267 @@
+﻿### VeilCult
+- type: surgeryTransition
+  id: VeilCultistDeconvertationTransition
+  target: VeilCultistDeconvertationOperation
+  label: "Извлечь латунную шестерню"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+        - !type:WhitelistCondition
+          whitelist:
+            components:
+            - VeilCultist
+      steps:
+        - tool: [ Drilling ]
+          tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
+          action: DrillThrough
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/Items/drill_use.ogg
+          time: 6
+          successChance: 0.95
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          sound:
+            collection: Scalpel
+          time: 2
+          successChance: 0.95
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+          successChance: 0.95
+        - tool: [ Sawing ]
+          tag: [ BotanyHatchet, FireAxe ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/saw.ogg
+          time: 6
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: SlimeVeilCultistDeconvertationTransition
+  target: SlimeVeilCultistDeconvertationOperation
+  label: "Извлечь латунную шестерню"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+        - !type:WhitelistCondition
+          whitelist:
+            components:
+            - VeilCultist
+      steps:
+        - tool: [ Drilling ]
+          tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
+          action: DrillThrough
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/Items/drill_use.ogg
+          time: 6
+          successChance: 0.95
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          sound:
+            collection: Scalpel
+          time: 2
+          successChance: 0.95
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+          successChance: 0.95
+        - tool: [ Sawing ]
+          tag: [ BotanyHatchet, FireAxe ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/saw.ogg
+          time: 6
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: PerformVeilCultistDeconvertationTransition
+  target: Default
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      parallel: true
+      steps:
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: VeilCultistDeconvertation
+          failureEffect: [ Bleeding ]
+          sound:
+            collection: Retractor
+          time: 6
+
+- type: surgeryTransition
+  id: EndVeilCultistDeconvertationTransition
+  target: TorsoOpen
+  label: "Завершить"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cautery ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 2
+
+- type: surgeryTransition
+  id: EndSlimeVeilCultistDeconvertationTransition
+  target: SlimeTorsoOpen
+  label: "Завершить"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Cautery ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 2
+
+# Android
+
+- type: surgeryTransition
+  id: AndroidVeilCultistDeconvertationTransition
+  target: AndroidVeilCultistDeconvertationOperation
+  label: "Извлечь латунную шестерню"
+  stepGroups:
+    - conditions:
+        - !type:WhitelistCondition
+          whitelist:
+            components:
+            - VeilCultist
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: EndAndroidVeilCultistDeconvertationTransition
+  target: AndroidTorsoOpen
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Anchoring ]
+          tag: [ Wirecutter, Pipe ]
+          action: Unanchor
+          sound:
+            path: /Audio/Items/ratchet.ogg
+          time: 2
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 6
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: VeilCultistDeconvertation
+          sound:
+            path: /Audio/Items/wirecutter.ogg
+          time: 4
+
+- type: surgeryTransition
+  id: IpcVeilCultistDeconvertationTransition
+  target: IpcVeilCultistDeconvertationOperation
+  label: "Извлечь латунную шестерню"
+  stepGroups:
+    - conditions:
+        - !type:WhitelistCondition
+          whitelist:
+            components:
+            - VeilCultist
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: EndIpcVeilCultistDeconvertationTransition
+  target: IpcTorsoOpen
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Anchoring ]
+          tag: [ Wirecutter, Pipe ]
+          action: Unanchor
+          sound:
+            path: /Audio/Items/ratchet.ogg
+          time: 2
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 6
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: VeilCultistDeconvertation
+          sound:
+            path: /Audio/Items/wirecutter.ogg
+          time: 4

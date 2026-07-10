@@ -8,9 +8,6 @@ public sealed partial class MegafaunaComponent : Component
     [ViewVariables]
     public bool IsActive = true;
 
-    [DataField("bossMusic")]
-    public SoundSpecifier? BossMusic;
-
     [DataField("aggroSound")]
     public SoundSpecifier? AggroSound;
 

@@ -28,9 +28,10 @@
   description: Toggles HUD of your cloth.
   components:
   - type: Action
-    itemIconStyle: BigItem
+    itemIconStyle: BigAction
     priority: -20
     useDelay: 1
+    icon: Interface/Actions/eyeopen.png
   - type: InstantAction
     event: !type:ToggleActionEvent
     
@@ -50,3 +51,15 @@
       state: bluespace_lifeline
   - type: InstantAction
     event: !type:ActivateImplantEvent
+    
+- type: entity
+  parent: BaseImplantAction
+  id: ActionActivateSmoke
+  name: Activate Smoke Implant
+  description: Releases a cloud of smoke.
+  components:
+  - type: Action
+    useDelay: 40
+    icon:
+      sprite: Objects/Weapons/Grenades/smoke.rsi
+      state: icon

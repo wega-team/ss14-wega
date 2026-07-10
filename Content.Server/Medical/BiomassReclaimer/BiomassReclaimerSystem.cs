@@ -5,6 +5,7 @@ using Content.Server.Materials;
 using Content.Server.Power.Components;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Audio;
+using Content.Shared.Android; // Corvax-Wega-Edit
 using Content.Shared.Body.Components;
 using Content.Shared.CCVar;
 using Content.Shared.Chemistry.EntitySystems;
@@ -26,6 +27,7 @@ using Content.Shared.Nutrition.Components;
 using Content.Shared.Popups;
 using Content.Shared.Power;
 using Content.Shared.Throwing;
+using Content.Shared.Tools.Components;
 using Robust.Server.Player;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;
@@ -213,9 +215,13 @@ namespace Content.Server.Medical.BiomassReclaimer
                 component.BloodReagents = solution.Clone();
                 component.BloodReagents.ScaleSolution(50 / component.BloodReagents.Volume);
             }
-            if (TryComp<ButcherableComponent>(toProcess, out var butcherableComponent))
+            if (TryComp<ToolRefinableComponent>(toProcess, out var refinable))
             {
-                component.SpawnedEntities = butcherableComponent.SpawnedEntities;
+                component.SpawnedEntities = refinable.RefineResult;
+            }
+            else
+            {
+                component.SpawnedEntities = new();
             }
 
             var expectedYield = physics.FixturesMass * component.YieldPerUnitMass;
@@ -242,6 +248,9 @@ namespace Content.Server.Medical.BiomassReclaimer
             bool isPlant = HasComp<ProduceComponent>(dragged);
             if (!isPlant && !HasComp<MobStateComponent>(dragged))
                 return false;
+
+            if (HasComp<AndroidComponent>(dragged)) // Corvax-Wega-Check
+                return false; // Corvax-Wega-Check
 
             if (!Transform(reclaimer).Anchored)
                 return false;

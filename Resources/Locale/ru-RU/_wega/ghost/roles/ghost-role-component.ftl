@@ -43,3 +43,12 @@ ghost-role-information-cogscarab-name = Латунный скарабей
 ghost-role-information-cogscarab-description = Маленький лучший друг праведников, следите, чтобы ваш механизм был достаточно заведен, чтобы не умереть в случайный момент.
 ghost-role-information-ratvar = Ратвар
 ghost-role-information-ratvar-desc = Дальше - больше...
+
+ghost-role-information-ash-guardian-name = Пепельный страж
+ghost-role-information-ash-guardian-description = Слушайте своего хозяина. Не танкуйте урон. Сильно бейте людей.
+
+ghost-role-information-sentient-carpshark-name = Карпоакула
+ghost-role-information-sentient-golocarp-name = Голокарп
+ghost-role-information-sentient-rainbowcarp-name = Радужный карп
+
+ghost-role-information-syndicate-cyborg-medical-name = Медицинский киборг Синдиката

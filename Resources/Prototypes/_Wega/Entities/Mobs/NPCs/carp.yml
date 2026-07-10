@@ -7,7 +7,7 @@
       allowMovement: true
       allowSpeech: true
       makeSentient: true
-      name: ghost-role-information-sentient-carp-name
+      name: ghost-role-information-sentient-carpshark-name
       description: ghost-role-information-sentient-carp-description
       rules: ghost-role-information-space-dragon-summoned-carp-rules
       mindRoles:
@@ -21,7 +21,7 @@
        types: {}
     - type: Temperature
     - type: TemperatureDamage
-      heatDamageThreshold: 1200
+      heatDamageThreshold: 3600
     - type: FriendlyFaction # Corvax-Wega-Friendly
       faction: Dragon # Corvax-Wega-Friendly
       
@@ -34,7 +34,7 @@
       allowMovement: true
       allowSpeech: true
       makeSentient: true
-      name: ghost-role-information-sentient-carp-name
+      name: ghost-role-information-sentient-rainbowcarp-name
       description: ghost-role-information-sentient-carp-description
       rules: ghost-role-information-space-dragon-summoned-carp-rules
       mindRoles:
@@ -48,7 +48,7 @@
        types: {}
     - type: Temperature
     - type: TemperatureDamage
-      heatDamageThreshold: 1200
+      heatDamageThreshold: 3600
     - type: FriendlyFaction # Corvax-Wega-Friendly
       faction: Dragon # Corvax-Wega-Friendly
       
@@ -61,7 +61,7 @@
       allowMovement: true
       allowSpeech: true
       makeSentient: true
-      name: ghost-role-information-sentient-carp-name
+      name: ghost-role-information-sentient-golocarp-name
       description: ghost-role-information-sentient-carp-description
       rules: ghost-role-information-space-dragon-summoned-carp-rules
       mindRoles:
@@ -75,6 +75,6 @@
        types: {}
     - type: Temperature
     - type: TemperatureDamage
-      heatDamageThreshold: 1200
+      heatDamageThreshold: 3600
     - type: FriendlyFaction # Corvax-Wega-Friendly
       faction: Dragon # Corvax-Wega-Friendly
