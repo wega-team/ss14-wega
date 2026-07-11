@@ -50,6 +50,7 @@
   recipeUnlocks:
   - WeaponLaserCarbine
   - PortableRecharger # Corvax-Wega-Arsenal
+  - WeaponDominator # Corvax-Wega-Arsenal
 
 - type: technology
   id: NonlethalAmmunition
@@ -231,7 +232,7 @@
   cost: 15000
   recipeUnlocks:
   - WeaponAdvancedLaser
-  - WeaponTemperatureGun # Corvax-Wega-Arsenal
+  - BorgModuleSecRare # Corvax-Wega-Arsenal
   - PortableRechargerTurboBag # Corvax-Wega-Arsenal
 
 # Corvax-Wega-Arsenal-start

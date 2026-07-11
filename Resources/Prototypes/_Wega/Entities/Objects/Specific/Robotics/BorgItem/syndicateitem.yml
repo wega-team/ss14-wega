@@ -304,6 +304,7 @@
   name: handheld crew monitor
   parent: DefibrillatorSyndicate
   id: DefibrillatorSyndicateCyborg
+  categories: [ HideSpawnMenu ]
   components:
   - type: ItemSlots
     slots:

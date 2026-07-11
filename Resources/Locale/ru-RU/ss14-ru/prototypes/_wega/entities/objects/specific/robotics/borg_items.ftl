@@ -254,6 +254,8 @@ ent-TurboItemRechargerXenoborg = { ent-TurboItemRecharger }
     .desc = { ent-TurboItemRecharger.desc }
 ent-ClothingHeadHatChameleonXenoborg = проекция головного убора
     .desc = Дешевый элемент индивидуальности органиков, правда прибор очень хрупкий.
+ent-WeaponIonCarabineXenoborg = { ent-WeaponIonCarabine }
+    .desc = { ent-WeaponIonCarabine.desc }
 
 ent-WeaponClockworkSwordBorg = { ent-WeaponClockworkSword }
     .desc = { ent-WeaponClockworkSword.desc }

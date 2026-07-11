@@ -24,7 +24,9 @@
     startingCharge: 750
   - type: Clothing
     sprite: _Wega/Objects/Weapons/Melee/batonBS.rsi
-    
+  - type: BonusMeleeDamage
+    heavyDamageMultiplier: 1.3
+
 - type: entity
   name: contractor baton
   parent: [BaseItem, BaseSyndicateContraband]

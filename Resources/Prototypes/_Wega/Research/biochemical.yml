@@ -89,8 +89,8 @@
   id: MechanizedTreatment
   name: research-technology-mechanized-treatment-wega
   icon:
-    sprite: Mobs/Silicon/chassis.rsi
-    state: medical
+    sprite: Objects/Specific/Medical/advanced_jetinjector.rsi
+    state: jetinjector_base
   discipline: Biochemical
   tier: 2
   cost: 12500
@@ -176,6 +176,18 @@
   recipeUnlocks:
   - BluespaceBeaker
   - SyringeBluespace
+
+- type: technology
+  id: BorgModuleT3Biochemical
+  name: research-technology-biochemical-chemistry
+  icon:
+    sprite: Mobs/Silicon/chassis.rsi
+    state: medical
+  discipline: Biochemical
+  tier: 3
+  cost: 10000
+  recipeUnlocks:
+  - BorgModuleMedicalRare
 
 # look into revisiting this later once medical isn't a hellhole
 #- type: technology

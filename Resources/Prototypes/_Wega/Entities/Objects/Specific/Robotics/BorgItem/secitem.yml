@@ -105,6 +105,7 @@
 # SEC Dec
 - type: entity
   parent: BaseSecurityPDA
+  categories: [ HideSpawnMenu ]
   id: DetectivePDABorg
   name: borg sec PDA
   description: Smells like rain... pouring down the rooftops...
@@ -167,7 +168,6 @@
       fireCost: 250
     - proto: TearGasGrenadeProject
       fireCost: 500
-
 
 - type: entity
   name: box granade

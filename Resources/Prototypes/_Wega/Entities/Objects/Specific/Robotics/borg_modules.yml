@@ -1675,7 +1675,7 @@
     - state: icon-emp
   - type: ItemBorgModule
     hands:
-    - item: WeaponIonCarabine
+    - item: WeaponIonCarabineXenoborg
     - item: XenoborgHoloprojectorEMPTrap
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: emp-module }
@@ -1736,3 +1736,32 @@
     - item: WeaponClockworkSwordBorg
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: clockwork-module }
+
+- type: entity
+  parent: BaseItem
+  id: ModuleCommand
+  name: Module support
+  description: "An obsidian rod that strikes paranormal things."
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: command
+  - type: Item
+    size: Small
+  - type: ItemSelector
+    items:
+    - BorgModuleCommonHand
+    - BorgModuleSecRare
+    - BorgModuleCargoRare
+    - BorgModuleEngenerRare
+    - BorgModuleCleanerRare
+    - BorgModuleMedicalRare
+    - BorgModuleServiceRare
+    - BorgModuleScienceRND
+  - type: ActivatableUI
+    key: enum.ItemSelectorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.ItemSelectorUiKey.Key:
+        type: ItemSelectorBoundUserInterface

@@ -13,8 +13,8 @@
     layers:
     - state: blood_tendril
   - type: SlowdownOnContact
-    multiplier: 0.4
-    duration: 6
+    multiplier: 0
+    duration: 8
     blacklist:
       components:
       - Vampire
@@ -30,7 +30,7 @@
         - Impassable
         hard: false
   - type: TimedDespawn
-    lifetime: 0.4
+    lifetime: 6
   - type: SpawnOnDespawn
     prototype: EffectBloodTentacleRetract
 
@@ -49,7 +49,7 @@
     sprite: _Wega/Effects/bloodtentacle.rsi
   - type: InteractionOutline
   - type: TimedDespawn
-    lifetime: 0.7
+    lifetime: 0.1
 
 - type: entity
   id: EffectBloodTentacleSpawn
@@ -128,6 +128,33 @@
     state: trap
   - type: Stealth
     lastVisibility: 0.1
+  - type: FlashOnTrigger
+  - type: TimedDespawn
+    lifetime: 1
+  - type: SpawnOnDespawn
+    prototype: ShadowTrapTrue
+  - type: EmitSoundOnSpawn
+    sound: 
+      path: /Audio/Items/Handcuffs/cuff_end.ogg
+      params:
+        variation: 0.3
+  - type: Photophobia
+    applyShadowWeakness: true
+    damagePerLight: 5
+    speedModifier: 1
+    interval: 0.5
+
+- type: entity
+  parent: [ CollideFloorTrap, BaseShadow ]
+  id: ShadowTrapTrue
+  categories: [ HideSpawnMenu ]
+  name: shadow trap
+  components:
+  - type: Sprite
+    sprite: _Wega/Effects/shadowtrap.rsi
+    state: trap
+  - type: Stealth
+    lastVisibility: 0.1
   - type: TriggerOnCollide
     fixtureID: floortrap
     maxTriggers: 1
@@ -143,10 +170,15 @@
       - Vampire
   - type: StunOnContact
     fixtureId: floortrap
-    duration: 3
+    duration: 2
     blacklist:
       components:
       - Vampire
+  - type: Photophobia
+    applyShadowWeakness: true
+    damagePerLight: 5
+    speedModifier: 1
+    interval: 0.5
 
 - type: entity
   parent: BaseStructure

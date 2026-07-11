@@ -55,3 +55,16 @@
     - ConstructorSuitModule
   technologyPrerequisites:
   - IndustrialModifier
+  
+- type: technology
+  id: BorgModuleT3Indastrial
+  name: research-technology-indastrial-t3-borgmodule
+  icon:
+    sprite: Mobs/Silicon/chassis.rsi
+    state: engineer
+  discipline: Industrial
+  tier: 3
+  cost: 15000
+  recipeUnlocks:
+  - BorgModuleEngenerRare
+  - BorgModuleCargoRare

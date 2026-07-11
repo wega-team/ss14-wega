@@ -278,7 +278,7 @@
 
 - type: entity
   name: ion carabine
-  parent: BaseWeaponBatterySmall
+  parent: [BaseWeaponBattery, BaseSecurityContraband, BaseGunWieldable]
   id: WeaponIonCarabine
   description: A good mining tool that can help to break through the rocks really fast
   components:
@@ -306,8 +306,6 @@
   - type: Battery
     maxCharge: 1000
     startingCharge: 1000
-  - type: BatterySelfRecharger
-    autoRechargeRate: 50
   - type: BatteryAmmoProvider
     proto: IonScan
     fireCost: 250

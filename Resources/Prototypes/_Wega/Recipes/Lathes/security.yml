@@ -21,10 +21,22 @@
   completetime: 8
   materials:
     Steel: 850
-    Plastic: 850
+    Plastic: 500
     Glass: 300
     Gold: 400
     Silver: 200
+    
+- type: latheRecipe
+  id: WeaponIonCarabine
+  result: WeaponIonCarabine
+  categories:
+  - Weapons
+  completetime: 8
+  materials:
+    Steel: 1500
+    Plastic: 300
+    Glass: 300
+    Gold: 200
 # Clothing
 
 - type: latheRecipe
@@ -96,6 +108,20 @@
     Plasma: 50
     Gold: 50
     Silver: 50
+    
+- type: latheRecipe
+  id: ClothingEyesGlassesNightVision
+  result: ClothingEyesGlassesNightVision
+  categories:
+  - Clothing
+  completetime: 6
+  materials:
+    Steel: 700
+    Plastic: 200
+    Glass: 150
+    Silver: 50
+    Plasma: 50
+    Diamond: 50
 # Tools
 
 - type: latheRecipe

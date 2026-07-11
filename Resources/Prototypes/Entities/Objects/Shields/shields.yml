@@ -562,6 +562,7 @@
       graph: EnergySheild
       node: bluesheildfinished
     - type: Repairable # Negative values represent healing
+      damageValue: -2 # 10 seconds to repair from crit
       qualityNeeded: Pulsing
       fuelCost: 0 # 1/2 of a Welder for a full repair
       doAfterDelay: 1

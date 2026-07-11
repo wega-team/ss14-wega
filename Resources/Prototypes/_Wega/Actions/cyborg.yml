@@ -5,7 +5,7 @@
   description: Teleport to the clicked location.
   components:
   - type: Action
-    useDelay: 10
+    useDelay: 45
     itemIconStyle: BigAction
     sound: !type:SoundPathSpecifier
       path: "/Audio/Effects/teleport_arrival.ogg"

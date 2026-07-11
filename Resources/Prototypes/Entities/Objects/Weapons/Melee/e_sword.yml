@@ -75,6 +75,10 @@
   - type: Reflect
   - type: IgnitionSource
     temperature: 700
+# Corvax-Wega-Start
+  - type: BonusMeleeDamage
+    heavyDamageMultiplier: 1.5
+# Corvax-Wega-End
 
 - type: entity
   name: energy sword
@@ -207,6 +211,10 @@
       canGunExecute: false # Corvax-Wega-Suicide
     - type: Contraband
       severity: Syndicate
+    # Corvax-Wega-Start
+    - type: BonusMeleeDamage
+      heavyDamageMultiplier: 1.5
+# Corvax-Wega-End
   - type: Sprite
     sprite: Objects/Weapons/Melee/e_dagger.rsi
     layers:
@@ -245,6 +253,10 @@
   - type: Tag
     tags:
     - Write
+# Corvax-Wega-Start
+  - type: BonusMeleeDamage
+    heavyDamageMultiplier: 1
+# Corvax-Wega-End
 
 - type: entity
   parent: [BaseItem, BaseSyndicateContraband]

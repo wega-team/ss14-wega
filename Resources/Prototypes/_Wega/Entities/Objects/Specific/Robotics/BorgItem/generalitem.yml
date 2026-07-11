@@ -144,6 +144,7 @@
 - type: entity
   name: pickaxe
   parent: BaseItem
+  categories: [ HideSpawnMenu ]
   id: PickaxeBorg
   description: Notched to perfection, for jamming it into rocks.
   components:
@@ -270,34 +271,3 @@
   - type: Sprite
     layers:
       - state: box_of_doom_big
-
-- type: entity
-  parent: BaseItem
-  id: ModuleCommand
-  name: Module support
-  description: "An obsidian rod that strikes paranormal things."
-  components:
-  - type: Sprite
-    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
-    layers:
-    - state: command
-  - type: Item
-    size: Small
-  - type: ItemSelector
-    items:
-    - BorgModuleCommonHand
-    - BorgModuleSecRare
-    - BorgModuleCargoRare
-    - BorgModuleEngenerRare
-    - BorgModuleCleanerRare
-    - BorgModuleMedicalRare
-    - BorgModuleServiceRare
-    - BorgModuleScienceRND
-  - type: ActivatableUI
-    key: enum.ItemSelectorUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.ItemSelectorUiKey.Key:
-        type: ItemSelectorBoundUserInterface
-
-

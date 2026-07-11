@@ -42,6 +42,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using ItemToggleMeleeWeaponComponent = Content.Shared.Item.ItemToggle.Components.ItemToggleMeleeWeaponComponent;
+using Content.Shared.Examine; // Corvax-Wega-Add
 
 namespace Content.Shared.Weapons.Melee;
 
@@ -101,6 +102,7 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
         SubscribeAllEvent<LightAttackEvent>(OnLightAttack);
         SubscribeAllEvent<DisarmAttackEvent>(OnDisarmAttack);
         SubscribeAllEvent<StopAttackEvent>(OnStopAttack);
+		SubscribeLocalEvent<BonusMeleeDamageComponent, ExaminedEvent>(OnExamine); 	// Corvax-Wega-Add
 
 #if DEBUG
         SubscribeLocalEvent<MeleeWeaponComponent, MapInitEvent>(OnMapInit);
@@ -1068,4 +1070,17 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
             }
         }
     }
+	// Corvax-Wega-Start
+     private void OnExamine(EntityUid uid, BonusMeleeDamageComponent component, ExaminedEvent args)
+    {
+        if (component.HeavyDamageMultiplier == 1)
+            return;
+
+		var myFloat = component.HeavyDamageMultiplier;
+		string booster = myFloat.ToString();
+		
+        args.PushMarkup(Loc.GetString("damage-booster",
+                ("booster", booster)));
+    }
+	// Corvax-Wega-End
 }
