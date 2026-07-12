@@ -24,7 +24,7 @@
 # Blood
 - type: entity
   parent: BaseVampireObjective
-  id: VampireBloodObjective
+  id: VampireBloodObjectiveBase
   name: Steal blood
   components:
   - type: Objective
@@ -33,6 +33,69 @@
       sprite: _Wega/Interface/Actions/actions_vampire.rsi
       state: blood
   - type: BloodCondition
+    targetMin: 200
+    targetMax: 300
+  - type: ObjectiveBlacklistRequirement
+    blacklist:
+      tags:
+      - Tear2
+      - Tear3
+  - type: Tag
+    tags:
+    - Tear1
+
+- type: entity
+  parent: VampireBloodObjectiveBase
+  id: VampireBloodObjectiveMedium
+  name: Steal blood
+  components:
+  - type: BloodCondition
+    targetMin: 500
+    targetMax: 700
+  - type: ObjectiveBlacklistRequirement
+    blacklist:
+      tags:
+      - Tear1
+      - Tear3
+  - type: Tag
+    tags:
+    - Tear2
+
+- type: entity
+  parent: BaseVampireObjective
+  id: VampireBloodObjectiveLarge
+  name: Steal blood
+  components:
+  - type: Objective
+    difficulty: 1
+    icon:
+      sprite: _Wega/Interface/Actions/actions_vampire.rsi
+      state: blood
+  - type: BloodCondition
+    targetMin: 1000
+    targetMax: 1200
+  - type: ObjectiveBlacklistRequirement
+    blacklist:
+      tags:
+      - Tear2
+      - Tear1
+  - type: Tag
+    tags:
+    - Tear3
+
+- type: entity
+  parent: BaseVampireObjective
+  id: VampireBloodDilebry
+  name: Dilebry
+  components:
+  - type: Objective
+    difficulty: 1
+    icon:
+      sprite: _Wega/Interface/Actions/actions_vampire.rsi
+      state: blood
+  - type: VampireDilebry
+  - type: ObjectiveLimit
+    limit: 1
 
 # Escape
 - type: entity
@@ -201,3 +264,78 @@
   - type: StealCondition
     stealGroup: WeaponBlueLaserPistol
     owner: job-name-bso
+
+## Kill
+- type: entity
+  parent: [BaseVampireObjective, BaseKillObjective]
+  id: VampireKillRandomPersonObjective
+  description: Do it however you like, just make sure they don't get off the station.
+  components:
+  - type: Objective
+    difficulty: 1.75
+    unique: false
+  - type: TargetObjective
+    title: objective-condition-maroon-person-title
+  - type: PickRandomPerson
+    filters:
+    # Can't have multiple objectives to kill the same person.
+    - !type:TargetObjectiveMindFilter
+      blacklist:
+        components:
+        - KillPersonCondition
+  - type: KillPersonCondition
+    requireMaroon: true
+
+- type: entity
+  parent: [BaseVampireObjective, BaseKillObjective]
+  id: VampireKillRandomHeadObjective
+  description: We need this head gone and you probably know why. Make sure they don't make it to CentComm, even if they're dead. Good luck, agent.
+  components:
+  - type: Objective
+    # technically its still possible for KillRandomPersonObjective to roll a head but this is guaranteed, so higher difficulty
+    difficulty: 3.0
+    # killing 1 head is enough
+    unique: true
+  - type: TargetObjective
+    title: objective-condition-kill-maroon-title
+  - type: PickRandomPerson
+    filters:
+    - !type:BodyMindFilter
+      whitelist:
+        components:
+        - CommandStaff
+    # Can't have multiple objectives to kill the same person.
+    - !type:TargetObjectiveMindFilter
+      blacklist:
+        components:
+        - KillPersonCondition
+  - type: KillPersonCondition
+    # don't count missing evac as killing as heads are higher profile, so you really need to do the dirty work
+    # if ce flies a shittle to centcom you better find a way onto it
+    requireDead: true
+    requireMaroon: true
+
+- type: entity
+  parent: [BaseVampireObjective, BaseKillObjective]
+  id: VampireKillStationAiObjective
+  description: Nanotrasen proudly boasts about their state of the art artificial intelligence. Remind them it's just another toy that can be broken.
+  components:
+  - type: Objective
+    difficulty: 3.0
+    # there's probably only one AI
+    unique: true
+    icon:
+      sprite: Mobs/Silicon/station_ai.rsi
+      state: ai_dead # TODO: Change this to broken when we have a better objectives UI, broken sprite is currently too big!
+  - type: TargetObjective
+    title: objective-condition-kill-station-ai
+  - type: PickRandomPerson
+    pool: !type:AliveAiPool
+    filters:
+    # Can't have multiple objectives to kill the same person.
+    - !type:TargetObjectiveMindFilter
+      blacklist:
+        components:
+        - KillPersonCondition
+  - type: KillPersonCondition
+    requireDead: true

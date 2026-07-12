@@ -59,9 +59,7 @@ public sealed partial class VampireSystem
             if (!HasComp<BloodstreamComponent>(hitEnt))
                 continue;
 
-            var groupsHeal = _damage.CreateWeightedHealFromGroups(args.User, ent.Comp.HealGroups);
-
-            _damage.TryChangeDamage(ent.Owner, groupsHeal, true, false, origin: ent);
+            _damage.TryChangeDamage(args.User, ent.Comp.Damage, true, false, origin: ent);
             _stamina.TakeStaminaDamage(ent, ent.Comp.StaminaMod, visual: false);
 
             AddBloodEssence(args.User, ent.Comp.BloodStealAmount);

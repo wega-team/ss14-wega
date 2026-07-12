@@ -4,7 +4,6 @@ using Content.Shared.Shadow.Components;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
 using Content.Shared.DoAfter;
-using Content.Shared.Emp;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Movement.Components;
 using Content.Shared.NullRod.Components;
@@ -21,8 +20,6 @@ namespace Content.Server.Vampire;
 public sealed partial class VampireSystem
 {
     [Dependency] private AtmosphereSystem _atmosphere = default!;
-    [Dependency] private SharedEmpSystem _emp = default!;
-
     private void InitializeUmbrae()
     {
         SubscribeLocalEvent<VampireComponent, VampireCloakOfDarknessActionEvent>(OnCloakOfDarkness);
@@ -202,7 +199,6 @@ public sealed partial class VampireSystem
         }
 
         DamageLightsInRange(ent, 15f, args.Damage);
-        _emp.EmpPulse(Transform(ent).Coordinates, 4, 5000, TimeSpan.FromSeconds(30), ent);
 
         SubtractBloodEssence(ent.Owner, args.BloodCost);
         args.Handled = true;

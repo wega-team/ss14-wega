@@ -5,7 +5,7 @@ using Robust.Shared.Random;
 
 namespace Content.Server.Objectives.Systems;
 
-public sealed partial class BloodConditionSystem : EntitySystem
+public sealed partial class VampireDilebrySystem : EntitySystem
 {
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private MetaDataSystem _metaData = default!;
@@ -14,31 +14,31 @@ public sealed partial class BloodConditionSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<BloodConditionComponent, ObjectiveGetProgressEvent>(OnGetProgress);
-        SubscribeLocalEvent<BloodConditionComponent, ObjectiveAssignedEvent>(OnAssigned);
-        SubscribeLocalEvent<BloodConditionComponent, ObjectiveAfterAssignEvent>(OnAfterAssign);
+        SubscribeLocalEvent<VampireDilebryComponent, ObjectiveGetProgressEvent>(OnGetProgress);
+        SubscribeLocalEvent<VampireDilebryComponent, ObjectiveAssignedEvent>(OnAssigned);
+        SubscribeLocalEvent<VampireDilebryComponent, ObjectiveAfterAssignEvent>(OnAfterAssign);
     }
 
-    private void OnAssigned(EntityUid uid, BloodConditionComponent comp, ref ObjectiveAssignedEvent args)
+    private void OnAssigned(EntityUid uid, VampireDilebryComponent comp, ref ObjectiveAssignedEvent args)
     {
         if (args.Mind.OwnedEntity.HasValue)
         {
             var ownedEntity = args.Mind.OwnedEntity.Value;
-            comp.BloodTargets[ownedEntity] = _random.Next(comp.TargetMin, comp.TargetMax);
+            comp.BloodTargets[ownedEntity] = _random.Next(1, 2);
         }
     }
 
-    private void OnAfterAssign(EntityUid uid, BloodConditionComponent comp, ref ObjectiveAfterAssignEvent args)
+    private void OnAfterAssign(EntityUid uid, VampireDilebryComponent comp, ref ObjectiveAfterAssignEvent args)
     {
         if (args.Mind.OwnedEntity.HasValue)
         {
             var ownedEntity = args.Mind.OwnedEntity.Value;
-            var description = Loc.GetString("objective-condition-blood-description", ("condition", comp.BloodTargets[ownedEntity]));
+            var description = Loc.GetString("objective-dilebry-description", ("condition", comp.BloodTargets[ownedEntity]));
             _metaData.SetEntityDescription(uid, description, args.Meta);
         }
     }
 
-    private void OnGetProgress(EntityUid uid, BloodConditionComponent comp, ref ObjectiveGetProgressEvent args)
+    private void OnGetProgress(EntityUid uid, VampireDilebryComponent comp, ref ObjectiveGetProgressEvent args)
     {
         if (args.Mind.OwnedEntity.HasValue)
         {
@@ -47,13 +47,13 @@ public sealed partial class BloodConditionSystem : EntitySystem
         }
     }
 
-    private float GetProgress(EntityUid uid, BloodConditionComponent comp)
+    private float GetProgress(EntityUid uid, VampireDilebryComponent comp)
     {
-        if (!TryComp<VampireComponent>(uid, out var vampireComponent))
+        if (!TryComp<VampireDiablerieComponent>(uid, out var vampireComponent))
             return 0f;
 
         float targetBlood = comp.BloodTargets.GetValueOrDefault(uid, 0);
-        float bloodDrank = vampireComponent.TotalBloodDrank;
+        float bloodDrank = vampireComponent.DiablerieLevel;
 
         return bloodDrank >= targetBlood ? 1f : bloodDrank / targetBlood;
     }
