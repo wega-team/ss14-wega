@@ -106,7 +106,7 @@
 - type: entity
   parent: BaseComputerAiAccess
   id: LavalandShuttleConsole
-  name: lavaland shuttle console
+  name: avanpost shuttle console
   description: "Use this terminal to call a shuttle to Lavaland, where the real adventure begins."
   components:
   - type: Sprite
@@ -146,7 +146,7 @@
 - type: entity
   parent: BaseComputerAiAccess
   id: PenalServitudeLavalandShuttleConsole
-  name: penal servitude lavaland shuttle console
+  name: penal servitude avanpost shuttle console
   description: "Use this terminal to call a shuttle to Lavaland, where the real adventure begins."
   components:
   - type: Sprite

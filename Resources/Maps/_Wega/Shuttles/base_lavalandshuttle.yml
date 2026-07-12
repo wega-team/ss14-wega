@@ -23,7 +23,7 @@ entities:
   - uid: 1
     components:
     - type: MetaData
-      name: Экспидиционный шаттл Лавалэнда
+      name: Экспидиционный шаттл Аванпоста
     - type: Transform
       pos: -0.5,-0.4375
       parent: invalid

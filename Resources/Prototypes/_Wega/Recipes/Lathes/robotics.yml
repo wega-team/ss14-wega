@@ -35,6 +35,11 @@
 
 - type: latheRecipe
   parent: BaseBorgModuleRecipe
+  id: BorgModuleFulton
+  result: BorgModuleFulton
+
+- type: latheRecipe
+  parent: BaseBorgModuleRecipe
   id: BorgModuleRobotics
   result: BorgModuleRobotics
 

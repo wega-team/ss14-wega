@@ -31,7 +31,7 @@
           shader: unshaded
           map: [ "shield" ]
     - type: Item
-      size: Normal
+      size: Small
       sprite: _Wega/Objects/Shields/blueshieldshield.rsi
     - type: UseDelay
       delay: 0.5

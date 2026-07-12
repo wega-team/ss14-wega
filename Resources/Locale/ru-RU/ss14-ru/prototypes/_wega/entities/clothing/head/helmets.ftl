@@ -4,3 +4,5 @@ ent-ClothingHeadHelmetBlueShield = шлем офицера "Синий Щит"
     .desc = Крепкий шлем , для тех кто готов подставить голову ради NanoTrasen.
 ent-ClothingHeadHelmetClockworkCuirass = латунный шлем
     .desc = Крепкий шлем из латуни, защищающий владельца от ударов.
+ent-ClothingHeadHelmetGodslayer = шлем убийцы богов
+    .desc = Рога и череп вендиго, скрепленные остатками ледяной энергии демонического шахтёра.

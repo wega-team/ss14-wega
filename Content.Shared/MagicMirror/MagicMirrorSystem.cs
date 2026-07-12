@@ -100,8 +100,8 @@ public sealed partial class MagicMirrorSystem : EntitySystem
             _popup.PopupEntity(Loc.GetString("magic-mirror-change-slot-target", ("user", Identity.Entity(args.Actor, EntityManager))), target, target, PopupType.Medium);
         }
 
-        ent.Comp.DoAfter = doAfterId?.Index;
         _audio.PlayPredicted(ent.Comp.ChangeHairSound, ent, args.Actor);
+        ent.Comp.DoAfter = doAfterId?.Index;
     }
 
     private void OnSelectSlotDoAfter(Entity<MagicMirrorComponent> ent, ref MagicMirrorSelectDoAfterEvent args)
@@ -113,6 +113,9 @@ public sealed partial class MagicMirrorSystem : EntitySystem
 
         if (ent.Comp.Target != args.Target)
             return;
+
+        // what plays the audio
+        _audio.PlayPredicted(ent.Comp.ChangeHairSound, args.Target.Value, args.User);
 
         foreach (var (organ, markings) in args.Markings)
         {

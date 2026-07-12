@@ -287,6 +287,7 @@
   components:
     # Corvax-Wega-gun-start
   - type: Gun
+    fireRate: 3
     availableModes:
       - SemiAuto
       - FullAuto
@@ -302,6 +303,7 @@
     price: 300
     # Corvax-Wega-gun-start
   - type: Gun
+    fireRate: 3
     availableModes:
       - SemiAuto
       - FullAuto

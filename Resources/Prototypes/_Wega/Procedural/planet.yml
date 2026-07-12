@@ -3,9 +3,39 @@
   biome: Lavaland
   temperature: 299.15
   gases: [14.022, 22.878]
+  weather:
+  - StormWind
+  - AshStormLight
+  - AshStormHeavy
+  - VolcanicActivity
+  - AcidRain
   biomeLayers:
   - RandomNecropolisTendrils
+  - PulsatingTumors
   - RandomLavalandMob
+  # Ore Veins
+  - OreIronLavaland
+  - OreCoalLavaland
+  - OreQuartzLavaland
+  - OreGoldLavaland
+  - OreSilverLavaland
+  - OrePlasmaLavaland
+  - OreUraniumLavaland
+
+- type: lavalandPlanet
+  id: Icemoon
+  biome: Icemoon
+  temperature: 216.95
+  gases: [14.022, 22.878]
+  mapLightColor: "#b0d4ff"
+  weather:
+  - HailStorm
+  - SnowfallLight
+  - SnowfallHeavy
+  biomeLayers:
+  - RandomIcemoonCaves
+  - RandomIcemoonDemonicPortals
+  - RandomIcemoonMob
   # Ore Veins
   - OreIronLavaland
   - OreCoalLavaland

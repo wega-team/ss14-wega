@@ -27,6 +27,7 @@
     ClothingBackpackDuffelSalvageBaseKit: 2000
     JetpackMiningFilled: 2000
     ClothingShoesBootsJump: 2500
+    ClothingShoesWinterIceHikingBoots: 2500
     ClothingModularControllerMiningPreassembled: 2500
 
 - type: utilityVendorCategory
@@ -46,6 +47,7 @@
     HandCapsule: 700
     ChemistryBottleStabilizingSerumP: 600
     SurvivalMedipen: 800
+    LuxuriousSurvivalMedipen: 1600
 
 - type: utilityVendorCategory
   id: UtilityDiggingTools
@@ -54,7 +56,7 @@
   inventory:
     Pickaxe: 100
     WeaponGrapplingGun: 500
-    WeaponCrusher: 750
+    OtherCrashSelector: 750
     WeaponProtoKineticAccelerator: 750
     PKAUpgradeRange: 1000
     PKAUpgradeDamage: 1000
@@ -71,6 +73,7 @@
     Cigar: 100
     ClothingEyesGlassesGar: 500
     HandLuxuriousCapsule: 3000
+    HandCapsuleBar: 10000
     Soap: 200
     SpaceCash1000: 2000
     DrinkWhiskeyBottleFull: 500

@@ -5,7 +5,7 @@
     xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
     xmlns:humanoid="clr-namespace:Content.Client.Humanoid"
     xmlns:profile="clr-namespace:Content.Client.Lobby.UI.ProfileEditorControls"
-    SetSize="740 700" MouseFilter="Stop">
+    SetSize="740 740" MouseFilter="Stop">
 
     <PanelContainer Name="Background" StyleClasses="PdaBackgroundRect" ModulateSelfOverride="#212124"/>
     <PanelContainer Name="Border" StyleClasses="PdaBorderRect" Modulate="#2d3047"/>

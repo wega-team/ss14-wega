@@ -1,0 +1,20 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA 3.0",
+    "copyright": "Taken from https://github.com/tgstation/tgstation/",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "thingspike"
+        },
+        {
+            "name": "acidic",
+            "delays": [
+                [ 0.1, 0.2, 0.1, 0.2, 0.1, 0.2 ]
+            ]
+        }
+    ]
+}

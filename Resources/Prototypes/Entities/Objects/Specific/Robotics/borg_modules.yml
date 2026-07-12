@@ -814,6 +814,8 @@
         emptyRepresentative: ConstrukAndBattery # Corvax-Wega-add
         emptyLabel: borg-slot-construction-empty
         whitelist:
+          components: # Corvax-Wega-Add
+          - PowerCell # Corvax-Wega-Add
           tags:
           - ConstructionMaterial
           - PowerCell # Corvax-Wega-robots
@@ -821,7 +823,9 @@
         emptyRepresentative: ConstrukAndBattery # Corvax-Wega-Add
         emptyLabel: borg-slot-construction-empty
         whitelist:
-          tags:
+          components: # Corvax-Wega-Add
+          - PowerCell # Corvax-Wega-Add
+          tags: 
           - ConstructionMaterial
           - PowerCell # Corvax-Wega-robots
 # Corvax-Wega-Robot-Start
@@ -1039,19 +1043,7 @@
     - item: HandheldHealthAnalyzer
     # - item: AdvancedJetInjector Corvax-Wega-Robot
 # Corvax-Wega-Robot-Start
-    - item: BorgHypoTricordrazineBase
-      hand:
-        emptyLabel: borg-slot-hypo-empty
-        emptyRepresentative: BorgHypoTricordrazineBase
-        whitelist:
-          tags:
-          - Itemborg
-    - hand:
-        emptyLabel: borg-slot-hypo-empty
-        emptyRepresentative: BorgHypoEpinephrineBase
-        whitelist:
-          tags:
-          - Itemborg
+    - item: BorgHypoGeneratedGeneral
 # Corvax-Wega-Robot-End
     - item: Gauze
       hand:
@@ -1306,6 +1298,8 @@
         emptyRepresentative: ConstrukAndCabel # Corvax-Wega-Robot
         emptyLabel: borg-slot-construction-empty
         whitelist:
+          components: # Corvax-Wega-Add
+          - PowerCell # Corvax-Wega-Add
           tags:
           - ConstructionMaterial
           - PowerCell # Corvax-Wega-Add
@@ -1318,12 +1312,22 @@
           # tags:
           # - ConstructionMaterial
     - hand:
+        emptyRepresentative: DoorElectronics
+        emptyLabel: borg-slot-circuitboards-empty
+        whitelist:
+          components:
+          - Circuitboard
+        blacklist:
+          components:
+          - SiliconLawProvider
+    - hand:
         emptyRepresentative: ScientistIcon # Corvax-Wega-Robot
         emptyLabel: borg-slot-diski-empty
         whitelist:
           components:
           - ResearchDisk
           - TechnologyDisk
+    - item: TechDiskBagBorg
 # Corvax-Wega-end
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: anomaly-module } # Corvax-Wega-add
@@ -1389,19 +1393,7 @@
           # components:
           # - FitsInDispenser
     # - item: BarSpoon
-    - item: BorgDrinkSolutionWaterBase
-      hand:
-        emptyLabel: borg-slot-drinks-empty
-        emptyRepresentative: BorgDrinkSolutionWaterBase
-        whitelist:
-          tags:
-          - Itemborg
-    - hand:
-        emptyLabel: borg-slot-drinks-empty
-        emptyRepresentative: BorgDrinkSolutionBeerBase
-        whitelist:
-          tags:
-          - Itemborg
+    - item: BorgDrinkSolutionBase
     - item: BorgGeneratorCup
     - hand:
         emptyLabel: borg-slot-chemical-containers-empty
@@ -1637,6 +1629,12 @@
       # - item: Emag
       - item: AccessBreaker
       - item: SyndicateDrill
+      - hand:
+          emptyRepresentative: NukeDisk
+          emptyLabel: borg-slot-nukedisk-empty # Corvax-Wega-Add
+          whitelist:
+            components:
+            - NukeDisk
       # Corvax-Wega-Robot-End
       - item: PinpointerSyndicateNuclear
       - item: PinpointerUniversal # Corvax-Wega-Robot-add
@@ -1795,6 +1793,8 @@
           - ConstructionMaterial
 # Corvax-Wega-Start
           - PowerCell 
+          components:
+          - PowerCell
     # - hand:
         # emptyRepresentative: PowerCellHigh
         # emptyLabel: borg-slot-powercell-empty

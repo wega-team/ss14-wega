@@ -2,6 +2,7 @@ using Content.Shared.Damage;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Projectiles;
 using Content.Shared.Weapons.Melee.Events;
+using Content.Shared.Weapons.Misc.Components; // Corvax-Wega-Lavaland
 using Content.Shared.Whitelist;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
@@ -69,10 +70,19 @@ public abstract partial class SharedDamageMarkerSystem : EntitySystem
             return;
         }
 
+        // Corvax-Wega-Lavaland-start
+        var weapon = projectile.Weapon.Value;
+        if (TryComp<WeaponHotswapComponent>(weapon, out var hotswap))
+        {
+            if (hotswap.IsAlternate && hotswap.PairedWeapon != null)
+                weapon = hotswap.PairedWeapon.Value;
+        }
+        // Corvax-Wega-Lavaland-end
+
         // Markers are exclusive, deal with it.
         var marker = EnsureComp<DamageMarkerComponent>(args.OtherEntity);
         marker.Damage = new DamageSpecifier(component.Damage);
-        marker.Marker = projectile.Weapon.Value;
+        marker.Marker = weapon; // Corvax-Wega-Lavaland-Edit
         marker.EndTime = _timing.CurTime + component.Duration;
         // Corvax-Wega-Lavaland-start
         if (component.Weakening)

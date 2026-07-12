@@ -606,7 +606,6 @@ public sealed partial class VampireSystem : SharedVampireSystem
             return;
 
         vampire.Comp.BloodConsumedFromVictim[target] = amount;
-        Dirty(vampire, vampire.Comp);
     }
 
     #endregion

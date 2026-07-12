@@ -1,0 +1,364 @@
+- type: entity
+  parent: BaseActionPolymorph
+  id: ActionPolymorphWhiteWolf
+  name: Wolf Polymorph
+  description: "Turns you into a White wolf."
+  components:
+  - type: Action
+    icon:
+      sprite: _Wega/Mobs/Icemoon/wolf.rsi
+      state: base
+  - type: InstantAction
+    event: !type:PolymorphActionEvent
+      protoId: WhiteWolf
+
+- type: entity
+  parent: BaseActionPolymorph
+  id: ActionPolymorphPolarBear
+  name: Polar Bear
+  description: "Turns you into a Polar bear."
+  components:
+  - type: Action
+    icon:
+      sprite: _Wega/Mobs/Icemoon/polar_bear.rsi
+      state: bear
+  - type: InstantAction
+    event: !type:PolymorphActionEvent
+      protoId: PolarBear
+
+- type: entity
+  parent: BaseAction
+  id: ActionSnowLegionSummon
+  name: Summon Skull
+  description: "Summons the skull of the snow Legion."
+  components:
+  - type: Action
+    raiseOnUser: true
+    icon:
+      sprite: _Wega/Mobs/Icemoon/legionskull.rsi
+      state: head
+    itemIconStyle: BigAction
+    useDelay: 5
+  - type: TargetAction
+    range: 10
+  - type: EntityTargetAction
+    event: !type:LegionSummonSkullAction
+      entityId: MobSnowLegionSkull
+
+- type: entity
+  parent: BaseAction
+  id: ActionIceDemonShot
+  name: Ice Shot
+  description: Fires a slow ice bolt that deals cold damage and slows the target.
+  components:
+  - type: Action
+    icon:
+      sprite: _Wega/Objects/Weapons/Guns/Projectiles/magic.rsi
+      state: icebeam
+    useDelay: 2
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    event: !type:IceDemonIceShotActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionIceDemonTeleport
+  name: Teleport
+  description: Teleports to a random location near the target.
+  components:
+  - type: Action
+    icon:
+      sprite: _Wega/Mobs/Icemoon/ice_demon.rsi
+      state: demon
+    useDelay: 3
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    event: !type:IceDemonTeleportActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionIceWhelpLineBreath
+  name: Line Breath
+  description: Breathes a line of ice projectiles at the target.
+  components:
+  - type: Action
+    icon:
+      sprite: _Wega/Objects/Weapons/Guns/Projectiles/magic.rsi
+      state: icebeam
+    useDelay: 3
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    event: !type:IceWhelpLineBreathActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionIceWhelpCircleBreath
+  name: Circle Breath
+  description: Breathes ice projectiles in all directions around itself.
+  components:
+  - type: Action
+    icon:
+      sprite: _Wega/Objects/Weapons/Guns/Projectiles/magic.rsi
+      state: icebeam
+    useDelay: 4
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    event: !type:IceWhelpCircleBreathActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionWendigoStomp
+  name: Heavy Stomp
+  description: Slams the ground, releasing a shockwave that damages and knocks back targets.
+  components:
+  - type: Action
+    icon:
+      sprite: _Wega/Objects/Weapons/Guns/Projectiles/magic.rsi
+      state: icebeam
+    useDelay: 4
+    sound:
+      path: "/Audio/_Wega/Effects/bamf.ogg"
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    event: !type:WendigoStompActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionWendigoTeleport
+  name: Teleport
+  description: Teleports near the target.
+  components:
+  - type: Action
+    icon:
+      sprite: _Wega/Objects/Weapons/Guns/Projectiles/magic.rsi
+      state: icebeam
+    useDelay: 3
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    event: !type:WendigoTeleportActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionWendigoScream
+  name: Shockwave Scream
+  description: Shakes and screams, firing death bolts in various patterns.
+  components:
+  - type: Action
+    icon:
+      sprite: _Wega/Objects/Weapons/Guns/Projectiles/magic.rsi
+      state: icebeam
+    useDelay: 5
+    sound:
+      path: "/Audio/Effects/demon_dies.ogg"
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    event: !type:WendigoScreamActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionFrostMinerIceOrbsEasy
+  name: Ice Orbs (Easy)
+  description: Fires ice orbs that explode into shards.
+  components:
+  - type: Action
+    icon:
+      sprite: _Wega/Objects/Weapons/Guns/Projectiles/magic.rsi
+      state: iceorb
+    useDelay: 6
+  - type: TargetAction
+    range: 18
+  - type: EntityTargetAction
+    event: !type:FrostMinerIceOrbsActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionFrostMinerIceOrbsHard
+  name: Ice Orbs (Hard)
+  description: Fires ice orbs that explode into shards.
+  components:
+  - type: Action
+    icon:
+      sprite: _Wega/Objects/Weapons/Guns/Projectiles/magic.rsi
+      state: iceorb
+    useDelay: 6
+  - type: TargetAction
+    range: 18
+  - type: EntityTargetAction
+    event: !type:FrostMinerIceOrbsActionEvent
+      count: 16
+      explodeDelay: 5.0
+
+- type: entity
+  parent: BaseAction
+  id: ActionFrostMinerSnowballEasy
+  name: Snowball Machine Gun (Easy)
+  description: Fires a barrage of snowballs.
+  components:
+  - type: Action
+    icon:
+      sprite: _Wega/Objects/Weapons/Guns/Projectiles/magic.rsi
+      state: snowball
+    useDelay: 8
+  - type: TargetAction
+    range: 18
+  - type: EntityTargetAction
+    event: !type:FrostMinerSnowballActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionFrostMinerSnowballHard
+  name: Snowball Machine Gun (Hard)
+  description: Fires a barrage of snowballs with ice waves.
+  components:
+  - type: Action
+    icon:
+      sprite: _Wega/Objects/Weapons/Guns/Projectiles/magic.rsi
+      state: snowball
+    useDelay: 8
+  - type: TargetAction
+    range: 18
+  - type: EntityTargetAction
+    event: !type:FrostMinerSnowballActionEvent
+      count: 40
+      spread: 10
+      waveCount: 5
+      waveShards: 9
+
+- type: entity
+  parent: BaseAction
+  id: ActionFrostMinerShotgunEasy
+  name: Ice Shotgun (Easy)
+  description: Fires waves of ice shards.
+  components:
+  - type: Action
+    icon:
+      sprite: _Wega/Objects/Weapons/Guns/Projectiles/magic.rsi
+      state: icebeam
+    useDelay: 6
+  - type: TargetAction
+    range: 18
+  - type: EntityTargetAction
+    event: !type:FrostMinerShotgunActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionFrostMinerShotgunHard
+  name: Ice Shotgun (Hard)
+  description: Fires waves of ice shards.
+  components:
+  - type: Action
+    icon:
+      sprite: _Wega/Objects/Weapons/Guns/Projectiles/magic.rsi
+      state: icebeam
+    useDelay: 6
+  - type: TargetAction
+    range: 18
+  - type: EntityTargetAction
+    event: !type:FrostMinerShotgunActionEvent
+      waveCount: 12
+      spread: 360
+
+- type: entity
+  parent: BaseAction
+  id: ActionTheThingCharge
+  name: Charge
+  description: Charges forward, dealing heavy damage.
+  components:
+  - type: Action
+    icon:
+      sprite: _Wega/Effects/thething.rsi
+      state: thingspike
+    useDelay: 8
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    event: !type:TheThingChargeActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionTheThingDecimate
+  name: Decimate
+  description: Summons spikes in a 5x5 area.
+  components:
+  - type: Action
+    icon:
+      sprite: _Wega/Effects/thething.rsi
+      state: thingspike
+    useDelay: 10
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    event: !type:TheThingDecimateActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionTheThingShriek
+  name: Shriek
+  description: Shrieks, confusing and disarming targets.
+  components:
+  - type: Action
+    icon:
+      sprite: _Wega/Effects/thething.rsi
+      state: thingspike
+    useDelay: 10
+    sound:
+      path: "/Audio/Effects/demon_dies.ogg"
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    event: !type:TheThingShriekActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionTheThingSquareTendrils
+  name: Square Tendrils
+  description: Summons spikes in a 5x5 area at target.
+  components:
+  - type: Action
+    icon:
+      sprite: _Wega/Effects/thething.rsi
+      state: thingspike
+    useDelay: 5
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    event: !type:TheThingSquareTendrilsActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionTheThingCardinalTendrils
+  name: Cardinal Tendrils
+  description: Summons spikes vertically and horizontally.
+  components:
+  - type: Action
+    icon:
+      sprite: _Wega/Effects/thething.rsi
+      state: thingspike
+    useDelay: 10
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    event: !type:TheThingCardinalTendrilsActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionTheThingAcidShower
+  name: Acid Shower
+  description: Spits acid into the air, raining down.
+  components:
+  - type: Action
+    icon:
+      sprite: _Wega/Effects/thething.rsi
+      state: acidic
+    useDelay: 10
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    event: !type:TheThingAcidShowerActionEvent

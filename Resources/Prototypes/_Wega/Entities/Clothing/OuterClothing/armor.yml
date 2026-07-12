@@ -213,6 +213,57 @@
     node: explorerSuit
 
 - type: entity
+  parent: ClothingOuterArmorExplorerSuit
+  id: ClothingOuterArmorExplorerSuitPolar
+  name: polar explorer suit
+  description: A self-improved version of regular armor. Gives its user more room for error.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Armor/explorer_suit_polar.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Wega/Clothing/OuterClothing/Armor/explorer_suit_polar.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.8
+        Heat: 0.6
+        Cold: 0.8
+        Caustic: 0.75
+  - type: ExplosionResistance
+    damageCoefficient: 0.6
+  - type: FireProtection
+    reduction: 0.5
+  - type: TemperatureProtection
+    heatingCoefficient: 0.6
+    coolingCoefficient: 0.4
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHatHoodExplorerPolar
+  - type: Construction
+    graph: ExplorerSuitPolar
+    node: explorerSuit
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+
+- type: entity
+  parent: ClothingOuterArmorExplorerSuitPolar
+  id: ClothingOuterArmorExplorerSuitKhakiPolar
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Armor/explorer_suit_khaki_polar.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Wega/Clothing/OuterClothing/Armor/explorer_suit_khaki_polar.rsi
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHatHoodExplorerKhakiPolar
+  - type: Construction
+    graph: ExplorerSuitKhakiPolar
+    node: explorerSuit
+
+- type: entity
   parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing]
   id: ClothingOuterArmorHostileEnv
   name: H.E.C.K. suit
@@ -235,6 +286,9 @@
       reduction: 0.5
     - type: ClothingAshStormProtection
       modifier: 0.4
+    - type: ConditionalSpawner
+      prototypes: # lol
+        - ClothingHeadHelmetHostileEnv
 
 - type: entity
   parent: ClothingOuterArmorCult
@@ -304,3 +358,45 @@
     - VeilCultBrassCuirassReflection
     - VeilCultBrassCuirassAbsorb
     - VeilCultBrassCuirassSmoke
+
+- type: entity
+  parent: [ ClothingOuterBaseLarge, AllowSuitStorageClothing ]
+  id: ClothingOuterArmorGodslayer
+  name: godslayer armour
+  description: A suit of armour fashioned from the remnants of a knight's armor, and parts of a wendigo.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Armor/godslayer.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/OuterClothing/Armor/godslayer.rsi
+  - type: GodslayerArmour
+    healAmount:
+      groups:
+        Brute: -200
+        Burn: -200
+        Airloss: -100
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.75
+        Heat: 0.75
+        Cold: 0.75
+        Caustic: 0
+  - type: ExplosionResistance
+    damageCoefficient: 0.5
+  - type: FireProtection
+    reduction: 0
+  - type: TemperatureProtection
+    heatingCoefficient: 0.6
+    coolingCoefficient: 0.4
+  - type: ZombificationResistance
+    zombificationResistanceCoefficient: 0.5
+  - type: ClothingAshStormProtection
+    modifier: 1
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetGodslayer
+  - type: Construction
+    graph: GodslayerArmour
+    node: armour

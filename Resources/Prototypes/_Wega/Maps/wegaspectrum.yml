@@ -15,8 +15,12 @@
         - type: StationEmergencyShuttle
           emergencyShuttlePath: /Maps/Shuttles/emergency_box.yml
         - type: StationLavaland
-          lavalandAvanpost: "/Maps/_Wega/Nonstations/cyberiadavanpost.yml"
-          planets: [ Lavaland ]
+          planets: [ Lavaland, Icemoon ]
+          avanposts:
+            Lavaland:
+            - "/Maps/_Wega/Nonstations/cyberiadavanpost.yml"
+            Icemoon:
+            - "/Maps/_Wega/Nonstations/cyberiadavanpostalt.yml"
         - type: StationJobs
           availableJobs:
             #service

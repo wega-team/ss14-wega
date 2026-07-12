@@ -9,6 +9,7 @@ using Robust.Client.ResourceManagement;
 using Robust.Client.UserInterface;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Timing;
+using Robust.Shared.Utility;
 
 namespace Content.Client._Wega.GPS.UI;
 
@@ -34,6 +35,8 @@ public sealed partial class GpsNavMapControl : Control
     private readonly Color _currentPosColor = new(255, 71, 87);
     private readonly Color _gridColor = new(100, 100, 100, 50);
     private readonly Color _lavaDefaultColor = new(255, 69, 0);
+    private readonly Color _childGridWallColor = new(66, 135, 245, 220);
+    private readonly Color _childGridFloorColor = new(66, 135, 245, 120);
 
     private bool _showBeaconLabels = true;
     private float _updateTimer;
@@ -111,6 +114,7 @@ public sealed partial class GpsNavMapControl : Control
         DrawGrid(handle, center, size);
         DrawLavaTiles(handle, center);
         DrawMapTiles(handle, navMap, center);
+        DrawChildGrids(handle, center);
         DrawGpsDevices(handle, center);
         DrawNavBeacons(handle, center);
         DrawCurrentPosition(handle, center);
@@ -274,6 +278,113 @@ public sealed partial class GpsNavMapControl : Control
         }
     }
 
+    private void DrawChildGrids(DrawingHandleScreen handle, Vector2 center)
+    {
+        if (!_mapUid.HasValue) return;
+
+        var scale = 4.0f * Zoom;
+
+        var query = _entityManager.EntityQueryEnumerator<NavMapComponent, TransformComponent>();
+        while (query.MoveNext(out var uid, out var navMap, out var transform))
+        {
+            if (uid == _mapUid.Value)
+                continue;
+
+            if (transform.ParentUid == _mapUid.Value)
+            {
+                if (_entityManager.TryGetComponent(uid, out MapGridComponent? gridComponent))
+                    DrawChildGridTiles(handle, center, navMap, gridComponent, scale);
+            }
+        }
+    }
+
+    private void DrawChildGridTiles(DrawingHandleScreen handle, Vector2 center, NavMapComponent navMap, MapGridComponent grid, float scale)
+    {
+        var tileSize = grid.TileSize;
+
+        foreach (var (_, chunk) in navMap.Chunks)
+        {
+            for (int i = 0; i < SharedNavMapSystem.ArraySize; i++)
+            {
+                var tileData = chunk.TileData[i];
+                if ((SharedNavMapSystem.FloorMask & tileData) == 0)
+                    continue;
+
+                var relativeTile = SharedNavMapSystem.GetTileFromIndex(i);
+                var tileWorldPos = (chunk.Origin * SharedNavMapSystem.ChunkSize + relativeTile) * tileSize;
+
+                var screenPos = WorldToScreen(tileWorldPos, center, scale);
+                var tileScreenSize = tileSize * scale;
+
+                if (tileScreenSize > 1.0f)
+                {
+                    var rect = new UIBox2(
+                        screenPos.X - tileScreenSize / 2,
+                        screenPos.Y - tileScreenSize / 2,
+                        screenPos.X + tileScreenSize / 2,
+                        screenPos.Y + tileScreenSize / 2
+                    );
+                    handle.DrawRect(rect, _childGridFloorColor);
+                }
+
+                if (Zoom > 1.0f)
+                {
+                    DrawChildTileWalls(handle, tileData, screenPos, tileScreenSize, _childGridWallColor);
+                }
+            }
+        }
+    }
+
+    private void DrawChildTileWalls(DrawingHandleScreen handle, int tileData, Vector2 screenPos, float tileSize, Color wallColor)
+    {
+        if (tileSize < 2.0f) return;
+        var wallSize = Math.Max(1.0f, tileSize * 0.15f);
+
+        if ((tileData & (1 << ((int)AtmosDirection.North + (int)NavMapChunkType.Wall))) != 0)
+        {
+            var wallRect = new UIBox2(
+                screenPos.X - tileSize / 2,
+                screenPos.Y - tileSize / 2,
+                screenPos.X + tileSize / 2,
+                screenPos.Y - tileSize / 2 + wallSize
+            );
+            handle.DrawRect(wallRect, wallColor);
+        }
+
+        if ((tileData & (1 << ((int)AtmosDirection.South + (int)NavMapChunkType.Wall))) != 0)
+        {
+            var wallRect = new UIBox2(
+                screenPos.X - tileSize / 2,
+                screenPos.Y + tileSize / 2 - wallSize,
+                screenPos.X + tileSize / 2,
+                screenPos.Y + tileSize / 2
+            );
+            handle.DrawRect(wallRect, wallColor);
+        }
+
+        if ((tileData & (1 << ((int)AtmosDirection.East + (int)NavMapChunkType.Wall))) != 0)
+        {
+            var wallRect = new UIBox2(
+                screenPos.X + tileSize / 2 - wallSize,
+                screenPos.Y - tileSize / 2,
+                screenPos.X + tileSize / 2,
+                screenPos.Y + tileSize / 2
+            );
+            handle.DrawRect(wallRect, wallColor);
+        }
+
+        if ((tileData & (1 << ((int)AtmosDirection.West + (int)NavMapChunkType.Wall))) != 0)
+        {
+            var wallRect = new UIBox2(
+                screenPos.X - tileSize / 2,
+                screenPos.Y - tileSize / 2,
+                screenPos.X - tileSize / 2 + wallSize,
+                screenPos.Y + tileSize / 2
+            );
+            handle.DrawRect(wallRect, wallColor);
+        }
+    }
+
     private void DrawGpsDevices(DrawingHandleScreen handle, Vector2 center)
     {
         if (_gpsDevices.Count == 0) return;
@@ -318,21 +429,77 @@ public sealed partial class GpsNavMapControl : Control
 
             var beaconColor = beacon.Color;
 
-            var rect = new UIBox2(
-                screenPos.X - markerSize,
-                screenPos.Y - markerSize,
-                screenPos.X + markerSize,
-                screenPos.Y + markerSize
-            );
-            handle.DrawRect(rect, beaconColor);
-
-            handle.DrawRect(rect, Color.White.WithAlpha(100));
+            if (beacon.IconPath != null)
+            {
+                DrawBeaconIcon(handle, screenPos, beacon.IconPath, beaconColor, markerSize);
+            }
+            else
+            {
+                var rect = new UIBox2(
+                    screenPos.X - markerSize,
+                    screenPos.Y - markerSize,
+                    screenPos.X + markerSize,
+                    screenPos.Y + markerSize
+                );
+                handle.DrawRect(rect, beaconColor);
+                handle.DrawRect(rect, Color.White.WithAlpha(100));
+            }
 
             if (_showBeaconLabels && !string.IsNullOrEmpty(beacon.Name))
             {
                 DrawLabel(handle, screenPos, beacon.Name, markerSize, beaconColor);
             }
         }
+    }
+
+    private void DrawBeaconIcon(DrawingHandleScreen handle, Vector2 screenPos, SpriteSpecifier spriteSpec, Color color, float size)
+    {
+        try
+        {
+            var texture = GetTextureFromSpriteSpec(spriteSpec);
+            if (texture == null)
+                return;
+
+            var iconSize = Math.Max(16f, size * 2.5f);
+            var halfSize = iconSize / 2;
+
+            handle.DrawTextureRect(texture, new UIBox2(
+                screenPos.X - halfSize,
+                screenPos.Y - halfSize,
+                screenPos.X + halfSize,
+                screenPos.Y + halfSize
+            ), color);
+        }
+        catch (Exception)
+        {
+            // Nothing
+        }
+    }
+
+    private Texture? GetTextureFromSpriteSpec(SpriteSpecifier spriteSpec)
+    {
+        if (spriteSpec is SpriteSpecifier.Rsi rsi)
+        {
+            var rsiPath = rsi.RsiPath.ToString();
+            var stateName = rsi.RsiState;
+            var rsiResource = _resourceCache.GetResource<RSIResource>(new ResPath(rsiPath));
+            if (rsiResource == null)
+                return null;
+
+            if (rsiResource.RSI.TryGetState(new RSI.StateId(stateName), out var state))
+                return state.Frame0;
+
+            return null;
+        }
+
+        if (spriteSpec is SpriteSpecifier.Texture textureSpec)
+        {
+            var path = textureSpec.TexturePath.ToString();
+            var textureResource = _resourceCache.GetResource<TextureResource>(new ResPath(path));
+            return textureResource;
+        }
+
+        return null;
     }
 
     private void DrawLabel(DrawingHandleScreen handle, Vector2 screenPos, string text, float markerSize, Color backgroundColor)

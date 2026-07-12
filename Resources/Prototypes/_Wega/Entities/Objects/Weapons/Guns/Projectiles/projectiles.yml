@@ -130,7 +130,7 @@
     proto: BulletPulse
     count: 6
     spread: 10
-    
+
 - type: entity
   parent: BasicHitscan
   id: PulseSniper
@@ -149,3 +149,25 @@
     impactFlash:
       sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
       state: impact_blue
+
+- type: entity
+  parent: BulletKinetic
+  id: BulletKineticCrusher
+  name: kinetic bolt
+  description: Not too bad, but you still don't want to get hit by it.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Projectile
+    impactEffect: BulletImpactEffectKinetic
+    damage:
+      types:
+        Blunt: 6
+        Structural: 15
+  - type: DamageMarkerOnCollide
+    whitelist:
+      components:
+        - MobState
+    damage:
+      types:
+        Blunt: 18
+        Slash: 4

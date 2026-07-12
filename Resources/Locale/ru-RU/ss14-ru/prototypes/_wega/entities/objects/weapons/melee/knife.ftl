@@ -4,5 +4,7 @@ ent-ArrhythmicKnife = нож аритмии
     .desc =  	Говорят что страх убивает разум, но втыкание ножа в голову тоже работает.
 ent-WeaponCleawingSaw = боевой секач
     .desc = Быстрая разновидность пилы сделанная из очень старого и ржавого металла.
+ent-WeaponCleawingSawWide = { ent-WeaponCleawingSaw }
+    .desc = { ent-WeaponCleawingSaw.desc }
 ent-ChainsawGreen = зеленая бензопила
     .desc = Опасная острая пила, как она здесь оказалась?

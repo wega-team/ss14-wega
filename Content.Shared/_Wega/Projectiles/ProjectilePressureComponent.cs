@@ -4,6 +4,6 @@ namespace Content.Shared.Projectiles;
 public sealed partial class ProjectilePressureComponent : Component
 {
     public bool Ignore = false;
-    
+
     [DataField] public float DamageMultiplier = 3f;
 }

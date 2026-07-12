@@ -7,5 +7,8 @@ public sealed partial class PenalServitudeShuttleConsoleComponent : Component
     public EntityUid? ConnectedShuttle;
 
     [ViewVariables]
+    public string? CurrentPlanet;
+
+    [ViewVariables]
     public PenalServitudeLavalandDockLocation Location = PenalServitudeLavalandDockLocation.Station;
 }
