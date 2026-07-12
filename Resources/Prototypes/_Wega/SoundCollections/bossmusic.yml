@@ -1,0 +1,49 @@
+- type: soundCollection
+  id: RandomBossMusic
+  files:
+    - /Audio/_Wega/Mobs/Lavaland/BossMusic/bdm_boss1.ogg
+    - /Audio/_Wega/Mobs/Lavaland/BossMusic/bdm_boss2.ogg
+    - /Audio/StationEvents/running_out.ogg
+    - /Audio/StationEvents/countdown.ogg
+    - /Audio/StationEvents/sound_station_14.ogg
+    - /Audio/StationEvents/blatantly_nuclear.ogg
+    - /Audio/Corvax/StationEvents/level.ogg # Corvax-NukeMusic
+    - /Audio/_Wega/StationEvents/tear_of_veil.ogg
+
+- type: soundCollection
+  id: BDMMusic
+  files:
+    - /Audio/_Wega/Mobs/Lavaland/BossMusic/bdm_boss1.ogg
+    - /Audio/_Wega/Mobs/Lavaland/BossMusic/bdm_boss2.ogg
+
+- type: soundCollection
+  id: HierophantMusic
+  files:
+    - /Audio/_Wega/Mobs/Lavaland/BossMusic/hiero_bgm.ogg
+    - /Audio/_Wega/Mobs/Lavaland/BossMusic/hiero_boss1.ogg
+    - /Audio/_Wega/Mobs/Lavaland/BossMusic/hiero_boss2.ogg
+
+- type: soundCollection
+  id: MegaLegionMusic
+  files:
+    - /Audio/_Wega/Mobs/Lavaland/BossMusic/legion_boss1.ogg
+
+- type: soundCollection
+  id: ColossusMusic
+  files:
+    - /Audio/_Wega/Mobs/Lavaland/BossMusic/colossus_boss1.ogg
+
+- type: soundCollection
+  id: AshDrakeMusic
+  files:
+    - /Audio/_Wega/Mobs/Lavaland/BossMusic/dragon_boss1.ogg
+
+- type: soundCollection
+  id: BubblegumMusic
+  files:
+    - /Audio/_Wega/Mobs/Lavaland/BossMusic/bubblegum_boss1.ogg
+
+- type: soundCollection
+  id: WendigoMusic
+  files:
+    - /Audio/_Wega/Mobs/Lavaland/BossMusic/wendigo_boss1.ogg

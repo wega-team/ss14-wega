@@ -1,0 +1,188 @@
+- type: entity
+  parent: BaseStructure
+  id: BaseIcemoonCave
+  name: cave
+  description: "Well, it's not exactly wildlife, but it's a great source of it. Where do you think the cubs are born?!"
+  suffix: DO NOT MAP
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Wega/Structures/Specific/Lavaland/cave.rsi
+    state: cave
+    noRot: true
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        mask:
+        - MachineMask
+        layer:
+        - BulletImpassable
+        - MidImpassable
+        - LowImpassable
+        density: 1000
+  - type: Damageable
+  - type: Injurable
+    damageContainer: StructuralInorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/_Wega/Effects/Planet/rumble.ogg
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SteelOre1:
+            min: 4
+            max: 8
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+- type: entity
+  parent: BaseIcemoonCave
+  id: IcemoonSilverCave
+  abstract: true
+  components:
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/_Wega/Effects/Planet/rumble.ogg
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SilverOre1:
+            min: 4
+            max: 6
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+- type: entity
+  parent: BaseIcemoonCave
+  id: IcemoonGoldCave
+  abstract: true
+  components:
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/_Wega/Effects/Planet/rumble.ogg
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          GoldOre1:
+            min: 4
+            max: 6
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+- type: entity
+  parent: BaseIcemoonCave
+  id: IcemoonDiamondCave
+  abstract: true
+  components:
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/_Wega/Effects/Planet/rumble.ogg
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          DiamondOre1:
+            min: 2
+            max: 4
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+- type: entity
+  parent: BaseIcemoonCave
+  id: IcemoonUraniumCave
+  abstract: true
+  components:
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/_Wega/Effects/Planet/rumble.ogg
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          UraniumOre1:
+            min: 2
+            max: 4
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+- type: entity
+  parent: BaseIcemoonCave
+  id: WhiteWolfIcemoonCave
+  components:
+  - type: MobSpawner
+    spawnWeights:
+      MobWhiteWolf: 1
+  - type: ConditionalSpawner
+    prototypes:
+      - MobWhiteWolf
+
+- type: entity
+  parent: BaseIcemoonCave
+  id: PolarBearIcemoonCave
+  components:
+  - type: MobSpawner
+    spawnInterval: 60.0
+    maxSpawns: 1
+    spawnWeights:
+      MobPolarBear: 1
+  - type: ConditionalSpawner
+    prototypes:
+      - MobPolarBear
+
+- type: entity
+  parent: [ IcemoonSilverCave, WhiteWolfIcemoonCave ]
+  id: WhiteWolfIcemoonSilverCave
+
+- type: entity
+  parent: [ IcemoonSilverCave, PolarBearIcemoonCave ]
+  id: PolarBearIcemoonSilverCave
+
+- type: entity
+  parent: [ IcemoonGoldCave, WhiteWolfIcemoonCave ]
+  id: WhiteWolfIcemoonGoldCave
+
+- type: entity
+  parent: [ IcemoonGoldCave, PolarBearIcemoonCave ]
+  id: PolarBearIcemoonGoldCave
+
+- type: entity
+  parent: [ IcemoonDiamondCave, WhiteWolfIcemoonCave ]
+  id: WhiteWolfIcemoonDiamondCave
+
+- type: entity
+  parent: [ IcemoonDiamondCave, PolarBearIcemoonCave ]
+  id: PolarBearIcemoonDiamondCave
+
+- type: entity
+  parent: [ IcemoonUraniumCave, WhiteWolfIcemoonCave ]
+  id: WhiteWolfIcemoonUraniumCave
+
+- type: entity
+  parent: [ IcemoonUraniumCave, PolarBearIcemoonCave ]
+  id: PolarBearIcemoonUraniumCave

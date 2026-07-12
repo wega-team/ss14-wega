@@ -53,10 +53,22 @@ stack-dragon-hide =
         [4] кожи дракона
        *[other] кож дракона
     }
+stack-polar-bear-hide =
+    { $amount ->
+        [1] шкура полярного медведя
+        [2] шкуры полярного медведя
+        [3] шкуры полярного медведя
+        [4] шкуры полярного медведя
+       *[other] шкур полярного медведя
+    }
 stak-magmite = магмит
 magmite-ore = магмитовая руда
 
-consecrated-ingot = священная сталь
+consecrated-ingot =
+    { $amount ->
+        [1] священная сталь
+       *[other] священной стали
+    }
 
 stak-brain = мозги
 

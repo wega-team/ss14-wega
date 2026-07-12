@@ -6,6 +6,19 @@
   name:  Base scarf
   description: Just base scarf...
   abstract: true
+  components:
+    - type: ToolRefinable
+      qualityNeeded: Slicing
+      refineResult:
+      - id: MaterialCloth1
+        amount: 3
+    - type: SolutionContainerManager
+      solutions:
+        food:
+          maxVol: 15
+          reagents:
+          - ReagentId: Fiber
+            Quantity: 15
 
 - type: entity
   parent: ClothingNeckScarfBase
@@ -41,18 +54,6 @@
       sprite: _Wega/Clothing/Neck/Scarfs/White_long_scarf.rsi
     - type: Clothing
       sprite: _Wega/Clothing/Neck/Scarfs/White_long_scarf.rsi
-    - type: Butcherable
-      butcheringType: Knife
-      spawned:
-      - id: MaterialCloth1
-        amount: 3
-    - type: SolutionContainerManager
-      solutions:
-        food:
-          maxVol: 15
-          reagents:
-          - ReagentId: Fiber
-            Quantity: 15
 
 - type: entity
   parent: ClothingNeckScarfBase
@@ -64,18 +65,6 @@
       sprite: _Wega/Clothing/Neck/Scarfs/Purple_long_scarf.rsi
     - type: Clothing
       sprite: _Wega/Clothing/Neck/Scarfs/Purple_long_scarf.rsi
-    - type: Butcherable
-      butcheringType: Knife
-      spawned:
-      - id: MaterialCloth1
-        amount: 3
-    - type: SolutionContainerManager
-      solutions:
-        food:
-          maxVol: 15
-          reagents:
-          - ReagentId: Fiber
-            Quantity: 15
 
 - type: entity
   parent: ClothingNeckScarfBase
@@ -87,18 +76,6 @@
       sprite: _Wega/Clothing/Neck/Scarfs/Green_long_scarf.rsi
     - type: Clothing
       sprite: _Wega/Clothing/Neck/Scarfs/Green_long_scarf.rsi
-    - type: Butcherable
-      butcheringType: Knife
-      spawned:
-      - id: MaterialCloth1
-        amount: 3
-    - type: SolutionContainerManager
-      solutions:
-        food:
-          maxVol: 15
-          reagents:
-          - ReagentId: Fiber
-            Quantity: 15
 
 - type: entity
   parent: ClothingNeckScarfBase
@@ -110,18 +87,6 @@
       sprite: _Wega/Clothing/Neck/Scarfs/Orange_long_scarf.rsi
     - type: Clothing
       sprite: _Wega/Clothing/Neck/Scarfs/Orange_long_scarf.rsi
-    - type: Butcherable
-      butcheringType: Knife
-      spawned:
-      - id: MaterialCloth1
-        amount: 3
-    - type: SolutionContainerManager
-      solutions:
-        food:
-          maxVol: 15
-          reagents:
-          - ReagentId: Fiber
-            Quantity: 15
 
 - type: entity
   parent: ClothingNeckScarfBase
@@ -133,18 +98,6 @@
       sprite: _Wega/Clothing/Neck/Scarfs/Yellow_long_scarf.rsi
     - type: Clothing
       sprite: _Wega/Clothing/Neck/Scarfs/Yellow_long_scarf.rsi
-    - type: Butcherable
-      butcheringType: Knife
-      spawned:
-      - id: MaterialCloth1
-        amount: 3
-    - type: SolutionContainerManager
-      solutions:
-        food:
-          maxVol: 15
-          reagents:
-          - ReagentId: Fiber
-            Quantity: 15
 
 - type: entity
   parent: ClothingNeckScarfBase
@@ -156,18 +109,6 @@
       sprite: _Wega/Clothing/Neck/Scarfs/Red_long_scarf.rsi
     - type: Clothing
       sprite: _Wega/Clothing/Neck/Scarfs/Red_long_scarf.rsi
-    - type: Butcherable
-      butcheringType: Knife
-      spawned:
-      - id: MaterialCloth1
-        amount: 3
-    - type: SolutionContainerManager
-      solutions:
-        food:
-          maxVol: 15
-          reagents:
-          - ReagentId: Fiber
-            Quantity: 15
 
 - type: entity
   parent: ClothingNeckScarfBase
@@ -179,18 +120,6 @@
       sprite: _Wega/Clothing/Neck/Scarfs/Blue_long_scarf.rsi
     - type: Clothing
       sprite: _Wega/Clothing/Neck/Scarfs/Blue_long_scarf.rsi
-    - type: Butcherable
-      butcheringType: Knife
-      spawned:
-      - id: MaterialCloth1
-        amount: 3
-    - type: SolutionContainerManager
-      solutions:
-        food:
-          maxVol: 15
-          reagents:
-          - ReagentId: Fiber
-            Quantity: 15
 
 - type: entity
   parent: ClothingNeckScarfBase
@@ -202,18 +131,6 @@
       sprite: _Wega/Clothing/Neck/Scarfs/Pink_long_scarf.rsi
     - type: Clothing
       sprite: _Wega/Clothing/Neck/Scarfs/Pink_long_scarf.rsi
-    - type: Butcherable
-      butcheringType: Knife
-      spawned:
-      - id: MaterialCloth1
-        amount: 3
-    - type: SolutionContainerManager
-      solutions:
-        food:
-          maxVol: 15
-          reagents:
-          - ReagentId: Fiber
-            Quantity: 15
 
 - type: entity
   parent: ClothingNeckScarfBase
@@ -225,18 +142,6 @@
       sprite: _Wega/Clothing/Neck/Scarfs/Black_long_scarf.rsi
     - type: Clothing
       sprite: _Wega/Clothing/Neck/Scarfs/Black_long_scarf.rsi
-    - type: Butcherable
-      butcheringType: Knife
-      spawned:
-      - id: MaterialCloth1
-        amount: 3
-    - type: SolutionContainerManager
-      solutions:
-        food:
-          maxVol: 15
-          reagents:
-          - ReagentId: Fiber
-            Quantity: 15
 
 - type: entity
   parent: ClothingScarfBase

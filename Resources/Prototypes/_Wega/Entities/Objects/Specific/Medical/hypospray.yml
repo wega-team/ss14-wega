@@ -51,16 +51,13 @@
     layers:
     - state: stimpen
       map: ["enum.SolutionContainerLayers.Fill"]
-  - type: SolutionContainerManager
-    solutions:
-      pen:
-        maxVol: 30
+  - type: Solution
+    solution:
+      maxVol: 30
   - type: SolutionContainerVisuals
     maxFillLevels: 1
     changeColor: false
     emptySpriteName: stimpen_empty
-  - type: Injector
-    solutionName: pen
 
 - type: entity
   parent: ChemicalMedipen
@@ -80,6 +77,7 @@
     emptySpriteName: bluepen_empty
   - type: Solution
     solution:
+      maxVol: 40
       reagents:
       - ReagentId: Leporazine
         Quantity: 10
@@ -89,12 +87,39 @@
         Quantity: 10
       - ReagentId: Omnizine
         Quantity: 5
-  - type: Injector
-    solutionName: pen
-    currentTransferAmount: null
-    activeModeProtoId: HyposprayInjectMode
-    allowedModes:
-    - HyposprayInjectMode
+
+- type: entity
+  parent: ChemicalMedipen
+  id: LuxuriousSurvivalMedipen
+  name: luxurious medipen
+  description: "Advanced bluespace technology allowed Nanotrasen to pack 60 units of chemicals into one medipen. It contains rare and powerful substances necessary for survival in the harshest conditions. As long as the drug is effective, you can stay on your feet even in critical condition."
+  components:
+  - type: Sprite
+    sprite: /Textures/_Wega/Objects/Specific/Medical/medipen.rsi
+    layers:
+    - state: luxpen
+      map: [ "enum.SolutionContainerLayers.Fill" ]
+  - type: Appearance
+  - type: SolutionContainerVisuals
+    maxFillLevels: 1
+    changeColor: false
+    emptySpriteName: luxpen_empty
+  - type: Solution
+    solution:
+      maxVol: 60
+      reagents:
+      - ReagentId: Leporazine
+        Quantity: 10
+      - ReagentId: LavalandSerum
+        Quantity: 10
+      - ReagentId: Pyrazine
+        Quantity: 10
+      - ReagentId: DexalinPlus
+        Quantity: 10
+      - ReagentId: TranexamicAcid
+        Quantity: 10
+      - ReagentId: Omnizine
+        Quantity: 10
 
 - type: entity
   name: stimpank
@@ -125,14 +150,9 @@
     emptySpriteName: ertpen_empty
   - type: Solution
     solution:
+      maxVol: 30
       reagents:
       - ReagentId: Stimulants
         Quantity: 30
-  - type: Injector
-    solutionName: pen
-    currentTransferAmount: null
-    activeModeProtoId: HyposprayInjectMode
-    allowedModes:
-    - HyposprayInjectMode
   - type: StaticPrice
     price: 1500

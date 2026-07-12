@@ -1,0 +1,238 @@
+# Wendigo
+- type: entity
+  id: EffectWendigoSmoke
+  name: smoke
+  categories: [ HideSpawnMenu ]
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Wall
+  components:
+  - type: Sprite
+    sprite: _Wega/Effects/smoke.rsi
+    state: smoke
+  - type: Transform
+    anchored: true
+  - type: TimedDespawn
+    lifetime: 0.4
+  - type: SpawnOnDespawn
+    prototype: EffectWendigoSmokeDamage
+
+- type: entity
+  id: EffectWendigoSmokeDamage
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Effects/smoke.rsi
+    state: smoke
+  - type: Transform
+    anchored: true
+  - type: TimedDespawn
+    lifetime: 0.1
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,0.5"
+        layer:
+          - SlipLayer
+        mask:
+          - ItemMask
+        density: 1000
+        hard: false
+  - type: TriggerOnCollide
+    fixtureID: fix1
+    maxTriggers: 1
+  - type: DamageOnTrigger
+    targetUser: true
+    damage:
+      types:
+        Blunt: 20
+    blacklist:
+      components:
+      - WendigoBoss
+
+# The Thing
+- type: entity
+  id: EffectTheThingSpawnBase
+  name: "!!!"
+  categories: [ HideSpawnMenu ]
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Wall
+  components:
+  - type: Sprite
+    sprite: _Wega/Effects/telegraph.rsi
+    state: exclamation
+  - type: Transform
+    anchored: true
+  - type: TimedDespawn
+    lifetime: 0.9
+  - type: SpawnOnDespawn
+    prototype: EffectTheThingSpikeDamageBarrier
+
+- type: entity
+  id: EffectTheThingSpikeDamage
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Effects/thething.rsi
+    state: thingspike
+  - type: Transform
+    anchored: true
+  - type: TimedDespawn
+    lifetime: 0.5
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,0.5"
+        layer:
+          - SlipLayer
+        mask:
+          - ItemMask
+        density: 1000
+        hard: false
+  - type: TriggerOnCollide
+    fixtureID: fix1
+    maxTriggers: 1
+  - type: DeleteOnTrigger
+  - type: DamageOnTrigger
+    targetUser: true
+    damage:
+      types:
+        Slash: 10
+    blacklist:
+      components:
+      - TheThingBoss
+
+- type: entity
+  parent: EffectTheThingSpikeDamage
+  id: EffectTheThingSpikeDamageBarrier
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TimedDespawn
+    lifetime: 0.05
+  - type: SpawnOnDespawn
+    prototype: EffectTheThingSpikeTempBarrier
+
+- type: entity
+  id: EffectTheThingSpikeTempBarrier
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Effects/thething.rsi
+    state: thingspike
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        mask: # So that it can pass through its own thorns.
+        - TableMask
+        layer:
+        - TableLayer
+  - type: Airtight
+  - type: Damageable
+  - type: Injurable
+    damageContainer: Biological
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 25
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: TimedDespawn
+    lifetime: 5
+  - type: Tag
+    tags:
+      - Wall
+
+- type: entity
+  id: EffectTheThingBigWarning
+  name: "!!!"
+  categories: [ HideSpawnMenu ]
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Transform
+    anchored: True
+  - type: Physics
+    bodyType: Static
+  - type: InteractionOutline
+  - type: Sprite
+    noRot: true
+    sprite: _Wega/Effects/effects96x96.rsi
+    state: target_largebox
+  - type: TimedDespawn
+    lifetime: 2.5
+
+- type: entity
+  id: EffectTheThingAcidSpawn
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Transform
+    anchored: True
+  - type: Physics
+    bodyType: Static
+  - type: Sprite
+    sprite: _Wega/Effects/thething.rsi
+    state: acidic
+  - type: Fade
+    fadeDuration: 1
+    startColor: "#FFFFFF00"
+    targetColor: "#FFFFFFFF"
+  - type: TimedDespawn
+    lifetime: 1
+  - type: SpawnOnDespawn
+    prototype: EffectTheThingAcid
+
+- type: entity
+  id: EffectTheThingAcid
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Effects/thething.rsi
+    state: acidic
+  - type: Transform
+    anchored: true
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        layer:
+          - SlipLayer
+        mask:
+          - ItemMask
+        density: 1000
+        hard: false
+  - type: TriggerOnCollide
+    fixtureID: fix1
+    maxTriggers: 1
+  - type: DeleteOnTrigger
+  - type: DamageOnTrigger
+    targetUser: true
+    damage:
+      types:
+        Caustic: 5
+    blacklist:
+      components:
+      - TheThingBoss
+  - type: TimedDespawn
+    lifetime: 3.5

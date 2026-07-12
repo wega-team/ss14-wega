@@ -42,8 +42,9 @@
   - type: TemperatureDamage
     heatDamageThreshold: 360
     coldDamageThreshold: -150
-  - type: Butcherable
-    spawned:
+  - type: ToolRefinable
+    qualityNeeded: Slicing
+    refineResult:
     - id: FoodMeatXeno
       amount: 1
   - type: Facehugger

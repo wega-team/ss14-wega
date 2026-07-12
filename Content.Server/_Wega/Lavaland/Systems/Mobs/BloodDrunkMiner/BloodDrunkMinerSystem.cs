@@ -1,13 +1,11 @@
 using Content.Server.Lavaland.Mobs.Components;
 using Content.Shared.Lavaland.Events;
 using Content.Shared.SSDIndicator;
-using Robust.Shared.Audio.Systems;
 
 namespace Content.Server.Lavaland.Mobs;
 
 public sealed partial class BloodDrunkMinerSystem : EntitySystem
 {
-    [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
 
     public override void Initialize()
@@ -15,7 +13,6 @@ public sealed partial class BloodDrunkMinerSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<BloodDrunkMinerComponent, MapInitEvent>(OnMapInit);
-
         SubscribeLocalEvent<BloodDrunkMinerComponent, BloodDrunkMinerDashAction>(OnDash);
     }
 
@@ -29,6 +26,5 @@ public sealed partial class BloodDrunkMinerSystem : EntitySystem
     {
         args.Handled = true;
         _transform.SetCoordinates(ent, args.Target);
-        _audio.PlayPvs(args.DashSound, ent);
     }
 }

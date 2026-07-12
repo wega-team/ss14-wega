@@ -111,3 +111,38 @@
      sprite: _Wega/Clothing/Neck/Cloaks/BSmantle.rsi
    - type: Clothing
      sprite: _Wega/Clothing/Neck/Cloaks/BSmantle.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckWolfCoat
+  name: wolf pelt cloak
+  description: "A cloak made of very lively wolf fur, feels warm to touch."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Neck/Cloaks/wolfcoat.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Neck/Cloaks/wolfcoat.rsi
+  - type: TemperatureProtection
+    heatingCoefficient: 1.1
+    coolingCoefficient: 0.1
+  - type: ClothingAction
+    action: ActionPolymorphWhiteWolf
+    slot: neck
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHatHoodWolfCoat
+    requiredSlot:
+    - neck
+    slot: head
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckProphetCloak
+  name: cloak of the prophet
+  description: "A light crimson cloak embroidered with golden threads in a barely visible pattern resembling ancient writing. When touched, the fabric seems to pulse as if it were alive. It is said that it can deflect attacks by releasing deadly bolts in all directions."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Neck/Cloaks/prophet.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Neck/Cloaks/prophet.rsi
+  - type: ProphetClothing
+    bulletProto: BulletHerald

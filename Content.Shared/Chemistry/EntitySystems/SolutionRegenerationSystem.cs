@@ -52,4 +52,11 @@ public sealed partial class SolutionRegenerationSystem : EntitySystem
             _solutionContainer.TryAddSolution((uid, solution), generated);
         }
     }
+	
+	// Corvax-Wega-Start
+    public void SetReagent(Entity<SolutionRegenerationComponent> ent, Solution reagent)
+    {
+        ent.Comp.Generated = reagent;
+    }
+	// Corvax-Wega-End
 }

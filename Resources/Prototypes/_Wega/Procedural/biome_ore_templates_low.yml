@@ -7,7 +7,7 @@
     WallRockBasalt: WallRockBasaltLavalandTin
     WallRockChromite: WallRockChromiteTin
     WallRockSand: WallRockSandTin
-    WallRockSnow: WallRockSnowTin
+    WallRockSnow: WallRockSnowIcemoonTin
   maxCount: 30
   minGroupSize: 10
   maxGroupSize: 15
@@ -20,7 +20,7 @@
     WallRock: WallRockQuartz
     WallRockBasalt: WallRockBasaltLavalandQuartz
     WallRockChromite: WallRockChromiteQuartz
-    WallRockSnow: WallRockSnowQuartz
+    WallRockSnow: WallRockSnowIcemoonQuartz
   maxCount: 30
   minGroupSize: 10
   maxGroupSize: 15
@@ -34,7 +34,7 @@
     WallRockBasalt: WallRockBasaltLavalandCoal
     WallRockChromite: WallRockChromiteCoal
     WallRockSand: WallRockSandCoal
-    WallRockSnow: WallRockSnowCoal
+    WallRockSnow: WallRockSnowIcemoonCoal
   maxCount: 30
   minGroupSize: 8
   maxGroupSize: 12
@@ -50,7 +50,7 @@
     WallRockBasalt: WallRockBasaltLavalandGold
     WallRockChromite: WallRockChromiteGold
     WallRockSand: WallRockSandGold
-    WallRockSnow: WallRockSnowGold
+    WallRockSnow: WallRockSnowIcemoonGold
   maxCount: 20
   minGroupSize: 5
   maxGroupSize: 10
@@ -65,7 +65,7 @@
     WallRockBasalt: WallRockBasaltLavalandSilver
     WallRockChromite: WallRockChromiteSilver
     WallRockSand: WallRockSandSilver
-    WallRockSnow: WallRockSnowSilver
+    WallRockSnow: WallRockSnowIcemoonSilver
   maxCount: 20
   minGroupSize: 5
   maxGroupSize: 10
@@ -81,7 +81,7 @@
     WallRockBasalt: WallRockBasaltLavalandPlasma
     WallRockChromite: WallRockChromitePlasma
     WallRockSand: WallRockSandPlasma
-    WallRockSnow: WallRockSnowPlasma
+    WallRockSnow: WallRockSnowIcemoonPlasma
   maxCount: 12
   minGroupSize: 4
   maxGroupSize: 8
@@ -96,7 +96,7 @@
     WallRockBasalt: WallRockBasaltLavalandUranium
     WallRockChromite: WallRockChromiteUranium
     WallRockSand: WallRockSandUranium
-    WallRockSnow: WallRockSnowUranium
+    WallRockSnow: WallRockSnowIcemoonUranium
   maxCount: 15
   minGroupSize: 4
   maxGroupSize: 8
@@ -110,7 +110,7 @@
     WallRockBasalt: WallRockBasaltLavalandDiamond
     WallRockChromite: WallRockChromiteDiamond
     WallRockSand: WallRockSandDiamond
-    WallRockSnow: WallRockSnowDiamond
+    WallRockSnow: WallRockSnowIcemoonDiamond
   maxCount: 6
   minGroupSize: 1
   maxGroupSize: 2

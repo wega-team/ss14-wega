@@ -1,6 +1,6 @@
 - type: entity
   name: BaseWeaponShotgun
-  parent: BaseItem
+  parent: [ BaseItem, BaseGunMeleeLarge ] # Corvax-Wega-Edit
   id: BaseWeaponShotgun
   description: A rooty tooty point and shooty.
   abstract: true
@@ -43,11 +43,11 @@
         ents: []
   - type: StaticPrice
     price: 500
-  # Corvax-Wega-Suicide-start
+  # Corvax-Wega-Suicide-Start
   - type: Execution
     doAfterDuration: 5.0
     canMeleeExecute: false
-  # Corvax-Wega-Suicide-end
+  # Corvax-Wega-Suicide-End
 
 - type: entity
   name: Bulldog

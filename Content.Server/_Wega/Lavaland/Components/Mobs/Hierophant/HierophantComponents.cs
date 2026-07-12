@@ -26,9 +26,6 @@ public sealed partial class HierophantBossComponent : Component
     public EntityCoordinates HomePosition;
     public bool NeedComeBack;
 
-    [DataField("rewards")]
-    public List<EntProtoId> RewardsProto = new();
-
     [DataField] public SoundSpecifier BlinkSound = new SoundPathSpecifier("/Audio/Magic/blink.ogg");
 }
 

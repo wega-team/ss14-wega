@@ -131,6 +131,12 @@
       types:
         Blunt: 10
   - type: HierophantClub
+  - type: ActionGrant
+    actions:
+    - ActionHierophantBeacon
+  - type: ItemActionGrant
+    actions:
+    - ActionHierophantBeacon
   - type: StaticPrice
     price: 5000
 
@@ -253,3 +259,73 @@
     spread: 90
   - type: DisarmMalus
   - type: CultAllowedGun # Corvax-Wega-Cult
+
+- type: entity
+  parent: BaseItem
+  id: StormStaffRod
+  name: staff of storm
+  description: "A powerful artifact that crackles with hidden electrical energy. It can summon lightning from the heavens or calm the storms themselves."
+  suffix: DO NOT MAP
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Lavaland/stormstaff.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Wega/Objects/Specific/Lavaland/stormstaff.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - SuitStorage
+  - type: Item
+    size: Normal
+    storedRotation: -45
+  - type: MeleeWeapon
+    attackRate: 0.5
+    damage:
+      types:
+        Heat: 15
+  - type: UseDelay
+    delay: 6
+  - type: StormStaff
+
+- type: entity
+  parent: BaseItem
+  id: BottleWendigoBlood
+  name: bottle of wendigo blood
+  description: "You're not really going to drink that, are you?"
+  suffix: DO NOT MAP
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Lavaland/vial.rsi
+    state: icon
+  - type: WendigoBlood
+
+- type: entity
+  parent: BaseItem
+  id: ResurrectionCrystal
+  name: resurrection crystal
+  description: "A shimmering red crystal with a warm light pulsating inside. It is said to be able to save its owner from death itself."
+  suffix: DO NOT MAP
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tools/upgrade.rsi
+    state: modkit_crystal
+  - type: ResurrectionCrystal
+
+- type: entity
+  parent: Jackhammer
+  id: DemonicJackhammer
+  name: demonic jackhammer
+  description: "Cracks rocks at an inhuman speed, as well as being enhanced for combat purposes."
+  suffix: DO NOT MAP
+  components:
+  - type: MeleeThrowOnHit
+    speed: 5
+    distance: 2
+  - type: LeechMeleeWeapon
+    healGroups:
+      groups:
+        Brute: -1
+        Burn: -1
+        Airloss: -1
+        Toxin: -1

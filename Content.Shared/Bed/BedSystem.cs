@@ -157,6 +157,16 @@ public sealed partial class BedSystem : EntitySystem
                     damage *= bedComponent.SleepMultiplier;
 
                 _damageableSystem.TryChangeDamage(healedEntity, damage, true, origin: uid);
+
+                // Corvax-Wega-Edit-Start
+                if (!_sleepingQuery.HasComp(healedEntity))
+                {
+                    if (bedComponent.SleepAction != null)
+                        _actionsSystem.RemoveAction(healedEntity, bedComponent.SleepAction);
+
+                    _actionsSystem.AddAction(healedEntity, ref bedComponent.SleepAction, SleepingSystem.SleepActionId, uid);
+                }
+                // Corvax-Wega-Edit-End
             }
         }
     }

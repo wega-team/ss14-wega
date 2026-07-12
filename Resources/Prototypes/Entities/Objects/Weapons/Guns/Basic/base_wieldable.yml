@@ -1,5 +1,6 @@
 # A basic inheritable template for a gun that is wieldable and has the standard inaccuracy.
 - type: entity
+  parent: BaseGunMeleeLarge #Corvax-Wega-Melee-Edit
   id: BaseGunWieldable
   abstract: true
   components:

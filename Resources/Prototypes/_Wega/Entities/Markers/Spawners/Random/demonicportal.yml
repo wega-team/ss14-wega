@@ -1,0 +1,47 @@
+- type: entity
+  parent: MarkerBase
+  id: SpawnerRandomIcemoonDemonicPortal
+  name: random demonic portal
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+    - sprite: _Wega/Effects/portal.rsi
+      state: demonic_portal
+  - type: EntityTableSpawner
+    table: !type:NestedSelector
+      tableId: IcemoonDemonicPortals
+
+- type: entityTable
+  id: IcemoonDemonicPortals
+  table: !type:GroupSelector
+    children:
+    - id: IceDemonIcemoonDemonicPortal
+    - id: SnowLegionIcemoonDemonicPortal
+    - id: IceWhelpIcemoonDemonicPortal
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnerRandomDemonicPortalLoot
+  name: random demonic portal loot
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+  - type: EntityTableSpawner
+    table: !type:NestedSelector
+      tableId: IcemoonDemonicPortalLoot
+
+- type: entityTable
+  id: IcemoonDemonicPortalLoot
+  table: !type:GroupSelector
+    children:
+    - id: CrateNecropolisFilled
+    - id: ClothingNeckWolfCoat
+    - id: MobBloodDrunkMiner
+    - id: MaterialSlimeExtractAdamantine
+    - id: RefuelingWelder
+    - id: PulsatingTumor
+    - id: ClothingShoesWinterIceHikingBoots
+    - id: FireSelfSpellbook
+    - id: PlushieLizard # it's funny

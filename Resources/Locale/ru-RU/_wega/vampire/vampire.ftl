@@ -8,7 +8,7 @@ select-class-bestia = Бестия
 
 # System
 vampire-holy-point = СВЯТАЯ СИЛА ВОСПЛАМЕНЯЕТ ВАШУ КОЖУ!
-vampire-blooddrink-countion = Клыки { $vampire } впиваются в вашу шею
+vampire-blooddrink-countion = { CAPITALIZE($vampire) } впивается клыками в вашу шею
 vampire-blooddrink-self = Вы не можете пить свою кровь
 vampire-blooddrink-rotted = { $target } гниет!
 vampire-blooddrink-not-thrall = Вы не можете испить кровь тралла

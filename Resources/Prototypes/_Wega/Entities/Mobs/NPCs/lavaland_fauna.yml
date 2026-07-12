@@ -52,6 +52,15 @@
     factions:
     - LavalandFauna
 
+- type: entity
+  id: BaseMobLavalandButcherable
+  abstract: true
+  components:
+  - type: ToolRefinable
+    qualityNeeded: Slicing
+    refineResult: []
+    refineTime: 4
+
 #region Goldgrub
 # ///
 #endregion
@@ -59,7 +68,7 @@
 #region Goliath
 - type: entity
   id: BaseMobGoliath
-  parent: [ BaseMobLavaland, MobBloodstream ]
+  parent: [ BaseMobLavaland, MobBloodstream, BaseMobLavalandButcherable ]
   name: goliath
   description: A massive beast that uses long tentacles to ensnare its prey, threatening them is not advised under any conditions.
   abstract: true
@@ -119,8 +128,8 @@
     - FootstepSound
     - StunImmune
   - type: NoSlip
-  - type: Butcherable
-    spawned:
+  - type: ToolRefinable
+    refineResult:
     - id: FoodMeatGoliath
       amount: 2
     - id: MaterialGoliathHide1
@@ -141,6 +150,45 @@
       - enum.DamageStateVisualLayers.Base:
           goliath1: ""
           goliath2: ""
+
+- type: entity
+  id: MobGoliathBaby
+  parent: BaseMobGoliath
+  name: baby goliath
+  description: "A smaller, slower juvenile goliath. Despite its size, it can still summon tentacles to ensnare prey."
+  components:
+  - type: Sprite
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: goliathbaby
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: goliathbaby
+      Dead:
+        Base: goliathbaby_dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 1.6
+    baseSprintSpeed: 1.6
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      30: Dead
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      20: 0.75
+  - type: MeleeWeapon
+    damage:
+      types:
+        Slash: 5
+  - type: NPCUseActionOnTarget
+    actionId: ActionGoliathBabyTentacle
+  - type: ToolRefinable
+    refineResult:
+    - id: FoodMeatGoliath
+      amount: 1
+    - id: MaterialGoliathHide1
+      amount: 1
 
 - type: entity
   id: MobAncientGoliath
@@ -180,6 +228,7 @@
   id: MobLegion
   name: legion
   description: "A terrible creature covered in dusty skulls with burning red eyes."
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _Wega/Mobs/Lavaland/legion.rsi
@@ -215,8 +264,6 @@
 - type: entity
   parent: MobLegion
   id: MobLegionLavaland
-  name: legion
-  description: "A terrible creature covered in dusty skulls with burning red eyes."
   components:
   - type: Destructible
     thresholds:
@@ -310,7 +357,7 @@
 - type: entity
   name: watcher
   id: MobWatcherBase
-  parent: [ BaseMobLavaland, FlyingMobBase ]
+  parent: [ BaseMobLavaland, FlyingMobBase, BaseMobLavalandButcherable ]
   abstract: true
   description: It's like it's staring right through you.
   components:
@@ -357,8 +404,8 @@
   - type: SlowOnDamage
     speedModifierThresholds:
       125: 0.75
-  - type: Butcherable
-    spawned:
+  - type: ToolRefinable
+    refineResult:
     - id: DiamondOre1
       amount: 2
     - id: MaterialBones1
@@ -434,8 +481,8 @@
   - type: SlowOnDamage
     speedModifierThresholds:
       95: 0.75
-  - type: Butcherable
-    spawned:
+  - type: ToolRefinable
+    refineResult:
     - id: DiamondOre1
       amount: 5
     - id: MaterialBones1
@@ -493,7 +540,7 @@
 
 #region Weavers
 - type: entity
-  parent: BaseMobLavaland
+  parent: [ BaseMobLavaland, BaseMobLavalandButcherable ]
   id: MobMarrowWeaverLavaland
   name: marrow weaver
   description: "A disgusting giant spider with venom dripping from its jaws and purple chitin."
@@ -537,8 +584,8 @@
   - type: SlowOnDamage
     speedModifierThresholds:
       150: 0.75
-  - type: Butcherable
-    spawned:
+  - type: ToolRefinable
+    refineResult:
     - id: UraniumOre1
       amount: 2
     - id: MaterialSinew1
@@ -604,11 +651,11 @@
     trophy: TrophyLavalandFrostbiteWeaverFrostGland
 #endregion
 
-#region-Golem
+#region Golem
 - type: entity
-  name: clockwork defender
-  parent: BaseMobLavaland
+  parent: [ BaseMobLavaland, BaseMobLavalandButcherable ]
   id: MobClockworkDefender
+  name: clockwork defender
   description: A traitorous clockwork knight who lived on, despite its creators destruction.
   components:
   - type: Sprite
@@ -617,6 +664,17 @@
     layers:
     - map: [ "enum.DamageStateVisualLayers.Base" ]
       state: base
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 50
+        mask:
+        - FlyingMobMask
+        layer:
+        - FlyingMobLayer
   - type: DamageStateVisuals
     states:
       Alive:
@@ -630,14 +688,21 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      140: Dead
+      300: Dead
   - type: MovementSpeedModifier
     baseWalkSpeed: 4
     baseSprintSpeed: 4
-  - type: Butcherable
-    spawned:
-    - id: SheetBrass1 # временная заглушка
-      amount: 3
+  - type: NavMapBeacon
+    defaultText: nav-map-beacon-lavaland-signal-clockwork-defender
+    defaultDesc: nav-map-beacon-lavaland-signal-clockwork-defender-desc
+    beaconIcon: { sprite: /Textures/_Wega/Interface/Misc/beacon_screen.rsi, state: clockwork_defender }
+    color: "#db9620"
+  - type: ToolRefinable
+    refineResult:
+    - id: MaterialConsecratedIngot1
+      amount: 1
+    - id: MaterialConsecratedIngot1
+      amount: 1
       prob: 0.5
   - type: HTN
     rootTask:
@@ -648,7 +713,4 @@
       AggroVisionRadius: !type:Single
         12
   - type: NoSlip
-  - type: IgnoreSpiderWeb
-  - type: AntiGravityClothing
-  - type: CombatMode
-#end-region-Golem
+#endregion

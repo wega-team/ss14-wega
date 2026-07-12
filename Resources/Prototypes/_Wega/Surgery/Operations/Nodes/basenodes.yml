@@ -32,6 +32,8 @@
   packages:
     - TorsoImplantPackage
     - HealingTorsoPackage
+    - DeconvertationPackage
+    - MedicinalSurgeryPackage
   transitions:
     - OrganManipulationTransition
     - InternalTorsoTransition

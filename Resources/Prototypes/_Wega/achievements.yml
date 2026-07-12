@@ -47,6 +47,27 @@
   description: achievements-bubblegumboss-desc
   key: BubblegumBoss
   icon: { sprite: _Wega/Interface/achievements.rsi, state: bbgum }
+
+- type: achievement
+  id: Wendigo
+  name: achievements-wendigoboss-name
+  description: achievements-wendigoboss-desc
+  key: WendigoBoss
+  icon: { sprite: _Wega/Interface/achievements.rsi, state: wendigo }
+
+- type: achievement
+  id: FrostMiner
+  name: achievements-frostminerboss-name
+  description: achievements-frostminerboss-desc
+  key: FrostMinerBoss
+  icon: { sprite: _Wega/Interface/achievements.rsi, state: frostminer }
+
+- type: achievement
+  id: TheThing
+  name: achievements-thethingboss-name
+  description: achievements-thethingboss-desc
+  key: TheThingBoss
+  icon: { sprite: _Wega/Interface/achievements.rsi, state: thething }
 #endregion Boss Block
 
 - type: achievement
@@ -62,10 +83,17 @@
   description: achievements-springlock-desc
   key: Springlock
   icon: { sprite: _Wega/Interface/achievements.rsi, state: springlock }
-  
+
 - type: achievement
   id: VeilCult
   name: achievements-veilcult-name
   description: achievements-veilcult-desc
   key: VeilCult
   icon: { sprite: _Wega/Interface/achievements.rsi, state: veilcult }
+
+- type: achievement
+  id: NecropolisTendril
+  name: achievements-necropolistendril-name
+  description: achievements-necropolistendril-desc
+  key: NecropolisTendril
+  icon: { sprite: _Wega/Interface/achievements.rsi, state: tendril }

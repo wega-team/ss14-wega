@@ -113,6 +113,11 @@ ent-BorgModuleRepiarSyndi = боевой модуль саморемонта
     .desc = Модуль боевых нанороботов, которые в три раза эффективнее востанавливают корпус, чистое зло!
 ent-BorgModuleClockwork = модуль заводного улучшения
     .desc = Модуль, созданный из латуни верными Праведниками Ратвара.
+ent-BorgModuleSurgerySyndicate = хирургический модуль синдиката
+    .desc = Модуль для хирургических операций, вытаскивайте пули по злому, без уд
+ent-BorgModuleChemSyndicate = модуль боевых химикатов
+    .desc = Модуль для генерации боевых химикатов для ваших оперативников.
+
 
 
 borg-slot-biomaterials-empty = Органы и протезы
@@ -168,6 +173,7 @@ borg-slot-swap-empty = Вакцина и палочки
 borg-slot-swap-only-empty = Стерильные палочки
 borg-slot-spray-empty = Спреи
 borg-slot-mmi-and-head-brains-empty = Мозги и шляпы
+borg-slot-nukedisk-empty = Диск ядерной аутентификации
 
 ent-ActionBlinkBorg = Блюспейс прыжок
     .desc = Бесконечность не предел!

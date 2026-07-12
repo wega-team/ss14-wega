@@ -25,9 +25,6 @@ public sealed partial class DragonBloodSystem : EntitySystem
         base.Initialize();
         SubscribeLocalEvent<DragonBloodComponent, UseInHandEvent>(OnUseInHand);
         SubscribeLocalEvent<DragonBloodComponent, DragonBloodDoAfterEvent>(OnDoAfter);
-
-        SubscribeLocalEvent<BecomeToDrakeActionEvent>(OnBecomeToDrake);
-        SubscribeLocalEvent<DrakeReturnBackActionEvent>(OnReturnBack);
     }
 
     private void OnUseInHand(Entity<DragonBloodComponent> ent, ref UseInHandEvent args)
@@ -66,21 +63,5 @@ public sealed partial class DragonBloodSystem : EntitySystem
         _popup.PopupEntity(Loc.GetString($"dragon-blood-effect-{i}"), args.User, args.User);
         args.Handled = true;
         Del(ent);
-    }
-
-    private void OnBecomeToDrake(BecomeToDrakeActionEvent args)
-    {
-        var polymorph = _polymorph.PolymorphEntity(args.Performer, args.LowerDrake);
-        if (polymorph == null)
-            return;
-
-        _action.AddAction(polymorph.Value, args.ReturnBack);
-        args.Handled = true;
-    }
-
-    private void OnReturnBack(DrakeReturnBackActionEvent args)
-    {
-        _action.RemoveAction(args.Performer, args.Action.Owner);
-        _polymorph.Revert(args.Performer);
     }
 }

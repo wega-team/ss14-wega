@@ -1,8 +1,11 @@
 ent-DefaultStationBeaconCargoLavalandAvanpost = { ent-DefaultStationBeaconSupply }
     .desc = { ent-DefaultStationBeaconSupply.desc }
-    .suffix = Аванпост Лаваленда
+    .suffix = Аванпост
 ent-DefaultStationBeaconSecurityPenalServitude = { ent-DefaultStationBeaconSecurity }
     .desc = { ent-DefaultStationBeaconSecurity.desc }
     .suffix = Каторга
+ent-DefaultStationBeaconCargoLavalandAuxiliaryBase = { ent-DefaultStationBeaconSecurity }
+    .desc = { ent-DefaultStationBeaconSecurity.desc }
+    .suffix = Вспомогательная База
 ent-HandheldBeacon = ручной маячок
     .desc = Маленький передатчик сигнала, необходимо развернуть для работы.

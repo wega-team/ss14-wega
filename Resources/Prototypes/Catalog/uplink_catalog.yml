@@ -2367,3 +2367,7 @@
     whitelist:
       components:
       - HijackTradeStationCondition
+  - !type:BuyerWhitelistCondition
+    blacklist:
+      components:
+      - SurplusBundle

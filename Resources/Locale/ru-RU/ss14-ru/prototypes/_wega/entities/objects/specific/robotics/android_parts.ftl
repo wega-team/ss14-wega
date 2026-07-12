@@ -3,22 +3,28 @@ ent-AndroidBodyPart = часть андроида
 
 ent-ArmSyntheticPry = гидравлическая рука
     .desc = Мощная гидравлическая рука, способная вскрывать запитанные шлюзы. Используйте отвёртку чтобы сменить тип.
+    .suffix = { ent-OrganAndroidExternal.suffix }
 
 ent-ArmSyntheticDefib = рука дефибриллятор
     .desc = Рука со встроенным дефибриллятором, идеально для андроида медика. Используйте отвёртку чтобы сменить тип.
+    .suffix = { ent-OrganAndroidExternal.suffix }
 ent-DefibrillatorArmImplant = встроенный дефибриллятор
     .desc = ЧИСТО! РАЗРЯД!
 
 ent-ArmSyntheticProtoKinetic = рука протокинетик
     .desc = Превратите свою руку в протокинетический ускоритель! Используйте отвёртку чтобы сменить тип.
+    .suffix = { ent-OrganAndroidExternal.suffix }
 ent-WeaponArmProtoKinetic = встроенный протокинетический ускоритель
     .desc = Стреляет кинетическими зарядами с низким уроном на короткое расстояние.
 
 ent-ArmSyntheticCharger = рука зарядник
     .desc = Рука со встроенным зарядником, заряжайтесь от предметов или заряжайте их. Используйте отвёртку чтобы сменить тип.
+    .suffix = { ent-OrganAndroidExternal.suffix }
 
 ent-LegSyntheticMagboots = магнитная нога
     .desc = Нога со встроенными электромагнитами. Используйте отвёртку чтобы сменить тип.
+    .suffix = { ent-OrganAndroidExternal.suffix }
 
 ent-LegSyntheticJump = прыжковая нога
     .desc = Нога с установленным реактивным двигателем для коротких прыжков. Используйте отвёртку чтобы сменить тип.
+    .suffix = { ent-OrganAndroidExternal.suffix }

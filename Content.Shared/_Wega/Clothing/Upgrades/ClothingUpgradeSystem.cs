@@ -1,6 +1,8 @@
 using System.Linq;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Armor;
+using Content.Shared.Atmos;
+using Content.Shared.Clothing.EntitySystems;
 using Content.Shared.Clothing.Upgrades.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Database;
@@ -33,6 +35,9 @@ public sealed partial class ClothingUpgradeSystem : EntitySystem
             after: [typeof(SharedArmorSystem)]);
         SubscribeLocalEvent<UpgradeableClothingComponent, InventoryRelayedEvent<DamageModifyEvent>>(RelayInventoryEvent,
             after: [typeof(SharedArmorSystem)]);
+
+        SubscribeLocalEvent<UpgradeableClothingComponent, InventoryRelayedEvent<GetFireProtectionEvent>>(RelayInventoryEvent,
+            after: [typeof(FireProtectionSystem)]);
 
         SubscribeLocalEvent<UpgradeableClothingComponent, ComponentInit>(OnInit);
         SubscribeLocalEvent<UpgradeableClothingComponent, AfterInteractUsingEvent>(OnAfterInteractUsing);

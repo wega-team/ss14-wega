@@ -3,7 +3,7 @@
   id: Trinkets
   name: loadout-group-trinkets
   minLimit: 0
-  maxLimit: 3
+  maxLimit: 4 # Corvax-Wega-Change
   loadouts:
   - SpaceLaw # Corvax-HyperLink
   - FlowerWreath
@@ -15,6 +15,7 @@
   - OtherClouthSelector
   - ScarfSelector
   - ChoeckerSelector
+  - GlovesSelector
   - PlushieLizard
   - PlushieSpaceLizard
   - PlushieVulpa
@@ -82,6 +83,7 @@
   - BrasletSearch
   - BrasletBite
   - BrasletSex
+  - BrasletRape
   # Corvax-Wega-end
   - TowelColorWhite
   # Corvax-Wega-Sponsors-start

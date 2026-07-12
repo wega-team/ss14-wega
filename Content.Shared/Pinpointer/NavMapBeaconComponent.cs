@@ -1,4 +1,5 @@
 using Robust.Shared.GameStates;
+using Robust.Shared.Utility;
 
 namespace Content.Shared.Pinpointer;
 
@@ -25,6 +26,9 @@ public sealed partial class NavMapBeaconComponent : Component
     // Corvax-Wega-Lavaland-start
     [DataField]
     public LocId DefaultDesc = "nav-map-beacon-default-desc";
+
+    [DataField]
+    public SpriteSpecifier? BeaconIcon { get; private set; }
     // Corvax-Wega-Lavaland-end
 
     [DataField, AutoNetworkedField]

@@ -15,6 +15,7 @@
   bodyPart: torso
   packages:
     - AndroidTorsoImplantPackage
+    - AndroidDeconvertationPackage
   transitions:
     - AndroidOrganManipulationTransition
     - AndroidCloseTorsoTransition
@@ -393,7 +394,7 @@
 
 - type: surgeryNode
   id: AndroidAmputateRightFootProcess
-  description: Отсоединение правой стопы 
+  description: Отсоединение правой стопы
   bodyPart: right_foot
   transitions:
     - AndroidAmputateRightFootProcessTransition
