@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Made with love by Melissandra",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "icon-base"
+    },
+    {
+      "name": "icon-cloac_2"
+    },
+    {
+      "name": "icon-cloac_3"
+    },
+    {
+      "name": "icon-plaque"
+    },
+    {
+      "name": "equipped-NECK_cloak_base",
+      "directions": 4
+    },
+    {
+      "name": "equipped-NECK_cloak_2",
+      "directions": 4
+    },
+    {
+      "name": "equipped-NECK_cloak_3",
+      "directions": 4
+    },
+    {
+      "name": "equipped-NECK_plaque",
+      "directions": 4
+    }
+  ]
+}
