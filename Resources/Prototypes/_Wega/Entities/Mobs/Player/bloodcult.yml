@@ -561,7 +561,6 @@
   - type: BallisticAmmoProvider
     proto: ProjectileBloodBolt
     capacity: 5
-    count: 5
   - type: Gun
     fireRate: 2
     useKey: false
@@ -578,11 +577,11 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      100: Dead
+      50: Dead
   - type: SlowOnDamage
     speedModifierThresholds:
-      70: 0.8
-      85: 0.5
+      35: 0.8
+      45: 0.5
   - type: Stamina
     baseCritThreshold: 100
   - type: MovementSpeedModifier
@@ -599,12 +598,12 @@
       shader: unshaded
   - type: Item
     size: Normal
-  - type: Clothing
-    quickEquip: false
-    sprite: _Wega/Mobs/Demons/bloodcultmobs.rsi
-    equippedPrefix: 0
-    slots:
-    - HEAD
+  # - type: Clothing на время, пока не будет натуральных термал, чтоб не передавать зрение носителю
+    # quickEquip: false
+    # sprite: _Wega/Mobs/Demons/bloodcultmobs.rsi
+    # equippedPrefix: 0
+    # slots:
+    # - HEAD
   - type: GhostRole
     name: ghost-role-information-idol-name
     description: ghost-role-information-idol-description
@@ -649,3 +648,6 @@
   - type: ShowHealthBars
     damageContainers:
     - Biological
+  - type: CanEscapeInventory
+    baseResistTime: 1
+  - type: VentCrawler
