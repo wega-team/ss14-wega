@@ -494,7 +494,10 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
     private void OnConstructInteract(Entity<ConstructComponent> construct, ref InteractHandEvent args)
     {
         var user = args.User;
-        if (args.Handled || !HasComp<BloodCultistComponent>(user))
+        if (args.Handled)
+            return;
+
+        if (!HasComp<BloodCultistComponent>(user) && !HasComp<BloodCultConstructComponent>(user))
             return;
 
         if (TryComp<ItemSlotsComponent>(construct, out var itemSlotsComponent))

@@ -463,10 +463,13 @@
     canBeStripped: true
     activeHandId: Right
     hands:
-      Right:
+      hand_right:
         location: Right
-      Left:
+      hand_left:
         location: Left
+    sortedHands:
+    - hand_right
+    - hand_left
   - type: Inventory
     templateId: bots
   - type: OfferGiver

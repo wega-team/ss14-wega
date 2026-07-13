@@ -133,6 +133,17 @@
     duration: 120
 
 - type: polymorph
+  id: FantomJaunt
+  configuration:
+    entity: FantomJaunt
+    transferName: true
+    forced: true
+    duration: 5
+    allowRepeatedMorphs: false
+    polymorphSound: /Audio/Magic/ethereal_enter.ogg
+    exitPolymorphSound: /Audio/Magic/ethereal_exit.ogg
+
+- type: polymorph
   id: PaiBorgi
   configuration:
     entity: Borgi

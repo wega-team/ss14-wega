@@ -255,13 +255,12 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    useDelay: 20
+    useDelay: 25
     itemIconStyle: BigAction
     icon: { sprite: _Wega/Interface/Actions/actions_bloodcult.rsi, state: "wraith_teleport" }
-  - type: TargetAction
-    range: 100
-  - type: WorldTargetAction
-    event: !type:TeleportSpellEvent
+  - type: InstantAction
+    event: !type:PolymorphActionEvent
+      protoId: FantomJaunt
 
 - type: entity
   id: WallBuildConstructSpell
