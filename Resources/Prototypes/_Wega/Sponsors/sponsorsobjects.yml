@@ -408,7 +408,7 @@
 - type: entity
   parent: ClothingOuterBase
   id: ClothingOuterCyberJacket
-  name: "cyber jacket"
+  name: cyber jacket
   description: "I Really Want to Stay at Your House." 
   suffix: Sponsor
   components:
@@ -417,11 +417,11 @@
   - type: Clothing
     clothingVisuals:
       outerClothing:
-      - sprite: _Wega/Sponsors/Clothing/OuterClothing/devid.rsi
-        state: equipped-OUTERCLOTHING
-      - sprite: _Wega/Sponsors/Clothing/OuterClothing/devid.rsi
-        state: unshaded-0
+      - state: equipped-OUTERCLOTHING
+      - state: unshaded-0
         shader: unshaded
+  - type: Tag
+    tags: []
 
 ## UNIFORM
 
