@@ -45,6 +45,18 @@ public sealed partial class WegaCVars
         CVarDef.Create("wega.night_light_enabled", false, CVar.SERVER | CVar.REPLICATED | CVar.ARCHIVE);
 
     /// <summary>
+    /// Hour when night mode starts (0-23). Default is 22 (10 PM).
+    /// </summary>
+    public static readonly CVarDef<int> NightStartHour =
+        CVarDef.Create("wega.night_start_hour", 22, CVar.SERVER | CVar.REPLICATED | CVar.ARCHIVE);
+
+    /// <summary>
+    /// Hour when night mode ends (0-23). Default is 8 (8 AM).
+    /// </summary>
+    public static readonly CVarDef<int> NightEndHour =
+        CVarDef.Create("wega.night_end_hour", 8, CVar.SERVER | CVar.REPLICATED | CVar.ARCHIVE);
+
+    /// <summary>
     /// Switching adjusts all the lamps to the holiday mode according to the logic of updating the night lighting.
     /// </summary>
     public static readonly CVarDef<bool> PartyEnabled =

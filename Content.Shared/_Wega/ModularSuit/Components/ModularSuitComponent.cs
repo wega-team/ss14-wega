@@ -35,14 +35,17 @@ public sealed partial class ModularSuitComponent : Component
     [ViewVariables]
     public TimeSpan NextUpdate;
 
-    [DataField, AutoNetworkedField]
+    [ViewVariables, AutoNetworkedField]
     public bool Deployed;
 
-    [DataField, AutoNetworkedField]
+    [ViewVariables, AutoNetworkedField]
     public bool Assembled;
 
-    [DataField, AutoNetworkedField]
+    [ViewVariables, AutoNetworkedField]
     public bool Active;
+
+    [DataField("autoActivate")]
+    public bool AutoActivateOnAssemble = true;
 
     [DataField("activeComponents")]
     public Dictionary<string, ComponentRegistry>? SlotActiveComponents { get; set; }
@@ -66,13 +69,13 @@ public sealed partial class ModularSuitComponent : Component
     public SoundSpecifier InsertSound = new SoundPathSpecifier("/Audio/Weapons/Guns/MagIn/revolver_magin.ogg");
 
     [DataField]
-    public SoundSpecifier LowPowerSound = new SoundPathSpecifier("/Audio/_Wega/Effects/Modsuit/lowpower.ogg", AudioParams.Default.WithVolume(2));
+    public SoundSpecifier LowPowerSound = new SoundPathSpecifier("/Audio/_Wega/Effects/Modsuit/lowpower.ogg", AudioParams.Default.WithVolume(4));
 
     [DataField]
-    public SoundSpecifier CriticalDamageSound = new SoundPathSpecifier("/Audio/_Wega/Effects/Modsuit/critnano.ogg");
+    public SoundSpecifier CriticalDamageSound = new SoundPathSpecifier("/Audio/_Wega/Effects/Modsuit/critnano.ogg", AudioParams.Default.WithVolume(4));
 
     [DataField]
-    public SoundSpecifier CriticalDestroySound = new SoundPathSpecifier("/Audio/_Wega/Effects/Modsuit/critdestr.ogg", AudioParams.Default.WithVolume(2));
+    public SoundSpecifier CriticalDestroySound = new SoundPathSpecifier("/Audio/_Wega/Effects/Modsuit/critdestr.ogg", AudioParams.Default.WithVolume(4));
 
     [DataField]
     public SoundSpecifier NominalSound = new SoundPathSpecifier("/Audio/_Wega/Effects/Modsuit/nominal.ogg", AudioParams.Default.WithVolume(-2));
