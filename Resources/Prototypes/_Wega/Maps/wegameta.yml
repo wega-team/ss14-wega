@@ -1,27 +1,22 @@
 - type: gameMap
-  id: Meta
+  id: WegaMeta
   mapName: 'Meta Station'
-  mapPath: /Maps/_Wega/wegameta.yml #Corvax-Wega-Maps
-  # Corvax-start
-  minPlayers: 25
-  maxPlayers: 55
-  # Corvax-end
+  mapPath: /Maps/_Wega/wegameta.yml
+  minPlayers: 0
+  maxPlayers: 40
   stations:
     Meta:
       stationProto: StandardNanotrasenStation
       components:
         - type: StationNameSetup
-          mapNameTemplate: '{0} Meta Station {1}'
+          mapNameTemplate: '{0} Мета {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: 'TG'
         - type: StationEmergencyShuttle
           emergencyShuttlePath: /Maps/Shuttles/emergency_meta.yml
-        # Corvax-Wega-Lavalabd-start
         - type: StationLavaland
-          planets: [ Lavaland ]
-          enabled: false
-        # Corvax-Wega-Lavalabd-end
+          planets: [ Icemoon ]
         - type: StationJobs
           availableJobs:
             #service (18)
@@ -60,7 +55,8 @@
             #Lawyer: [ 2, 2 ] # Corvax-IAA
             #supply (10)
             Quartermaster: [ 1, 1 ]
-            SalvageSpecialist: [ 3, 3 ]
+            SalvageSpecialist: [ 1, 1 ]
+            ShaftMiner: [ 2, 2 ]
             CargoTechnician: [ 4, 6 ]
             #civilian (3+)
             Passenger: [ -1, -1 ]

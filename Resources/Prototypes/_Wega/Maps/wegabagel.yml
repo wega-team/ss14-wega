@@ -1,69 +1,68 @@
 - type: gameMap
-  id: WegaFland
-  mapName: 'Fland Installation'
-  mapPath: /Maps/_Wega/wegafland.yml # Corvax-Wega-Maps
-  minPlayers: 55 # Corvax
+  id: WegaBagel
+  mapName: 'Bagel Station'
+  mapPath: /Maps/_Wega/wegabagel.yml
+  minPlayers: 25
+  maxPlayers: 65
   stations:
-    Fland:
+    Bagel:
       stationProto: StandardNanotrasenStation
       components:
         - type: StationNameSetup
-          mapNameTemplate: '{0} Fland Installation {1}'
+          mapNameTemplate: '{0} Багель {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
-            prefixCreator: 'B'
+            prefixCreator: '14'
         - type: StationEmergencyShuttle
-          emergencyShuttlePath: /Maps/Shuttles/emergency_delta.yml
-        - type: StationCargoShuttle
-          path: /Maps/Shuttles/cargo_fland.yml
-        - type: StationLavaland
-          planets: [ Lavaland ]
-          enabled: false
+          emergencyShuttlePath: /Maps/Shuttles/emergency_lox.yml
         - type: StationJobs
-          availableJobs:
-            #service
+          availableJobs: # 60 jobs total w/o latejoins & interns, 77 jobs total w/ latejoins & interns
+            #command (7)
             Captain: [ 1, 1 ]
             IAA: [ 1, 1 ] # Corvax-IAA
+            #service
             HeadOfPersonnel: [ 1, 1 ]
-            Bartender: [ 2, 2 ]
-            Botanist: [ 3, 3 ]
+            Bartender: [ 1, 2 ]
+            Botanist: [ 2, 2 ]
             Chef: [ 2, 2 ]
-            Janitor: [ 4, 4 ]
+            Janitor: [ 2, 2 ]
             Chaplain: [ 1, 1 ]
             Librarian: [ 1, 1 ]
             ServiceWorker: [ 2, 2 ]
-            Reporter: [ 2, 2 ]
             #engineering
             ChiefEngineer: [ 1, 1 ]
             AtmosphericTechnician: [ 3, 3 ]
-            StationEngineer: [ 6, 6 ]
+            StationEngineer: [ 4, 4 ]
             TechnicalAssistant: [ 4, 4 ]
             #medical
             ChiefMedicalOfficer: [ 1, 1 ]
-            Chemist: [ 3, 3 ]
-            MedicalDoctor: [ 6, 6 ]
-            Paramedic: [ 2, 2 ]
+            Chemist: [ 2, 2 ]
+            Surgeon: [ 1, 1 ]
+            MedicalDoctor: [ 3, 3 ]
+            Paramedic: [ 1, 1 ]
             MedicalIntern: [ 4, 4 ]
             #science
             ResearchDirector: [ 1, 1 ]
             Scientist: [ 5, 5 ]
-            ResearchAssistant: [ 6, 6 ]
-            #security
+            ResearchAssistant: [ 4, 4 ] #intern, not counted
+            #security (10)
             HeadOfSecurity: [ 1, 1 ]
             Warden: [ 1, 1 ]
             SecurityOfficer: [ 6, 6 ]
             Detective: [ 1, 1 ]
-            SecurityCadet: [ 3, 3 ]
+            SecurityCadet: [ 4, 4 ]
             #Lawyer: [ 2, 2 ] # Corvax-IAA
             #supply
             Quartermaster: [ 1, 1 ]
-            SalvageSpecialist: [ 3, 3 ]
-            CargoTechnician: [ 6, 6 ]
+            ShaftMiner: [ 3, 3 ]
+            ShaftMinerMedic: [ 1, 1 ]
+            CargoTechnician: [ 3, 3 ]
             #civilian
             Passenger: [ -1, -1 ]
             Clown: [ 1, 1 ]
             Mime: [ 1, 1 ]
             Musician: [ 1, 1 ]
+            Reporter: [ 2, 2 ]
             #silicon
             StationAi: [ 1, 1 ]
-            Borg: [ 5, 5 ]
+            Borg: [ 2, 2 ]

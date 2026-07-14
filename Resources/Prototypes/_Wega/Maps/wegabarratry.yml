@@ -1,5 +1,5 @@
 - type: gameMap
-  id: Barratry
+  id: WegaBarratry
   mapName: 'Barratry'
   mapPath: /Maps/_Wega/wegabarratry.yml
   minPlayers: 30
@@ -9,15 +9,12 @@
       stationProto: StandardNanotrasenStation
       components:
         - type: StationNameSetup
-          mapNameTemplate: '{0} Barratry {1}'
+          mapNameTemplate: '{0} Барратри {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
         - type: StationEmergencyShuttle
           emergencyShuttlePath: /Maps/Shuttles/emergency_raven.yml
-        - type: StationLavaland
-          planets: [ Lavaland ]
-          enabled: false
         - type: StationJobs
           availableJobs:
             #service
@@ -54,7 +51,8 @@
             SecurityCadet: [ 2, 4 ]
             #supply
             Quartermaster: [ 1, 1 ]
-            SalvageSpecialist: [ 3, 3 ]
+            ShaftMiner: [ 3, 3 ]
+            ShaftMinerMedic: [ 1, 1 ]
             CargoTechnician: [ 2, 2 ]
             #civillian
             Passenger: [ -1, -1 ]

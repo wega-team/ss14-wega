@@ -1809,7 +1809,6 @@ entities:
     - type: RadiationGridResistance
     - type: ProtectedGrid
       baseIndices: {}
-    - type: NightLightning
     - type: ImplicitRoof
     - type: ExplosionAirtightGrid
 - proto: ActionToggleLight

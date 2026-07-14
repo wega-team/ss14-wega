@@ -1,7 +1,7 @@
 - type: gameMap
   id: Marathon
   mapName: 'Marathon Station'
-  mapPath: /Maps/_Wega/wegamarathon.yml #Corvax-Wega-Maps
+  mapPath: /Maps/marathon.yml
   # Corvax-start
   minPlayers: 25
   maxPlayers: 55
@@ -17,11 +17,6 @@
             prefixCreator: '14'
         - type: StationEmergencyShuttle
           emergencyShuttlePath: /Maps/Shuttles/emergency_rod.yml
-        # Corvax-Wega-Lavalabd-start
-        - type: StationLavaland
-          planets: [ Lavaland ]
-          enabled: false
-        # Corvax-Wega-Lavalabd-end
         - type: StationJobs
           availableJobs:
             #service

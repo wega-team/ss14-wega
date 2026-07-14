@@ -1,28 +1,23 @@
 
 - type: gameMap
-  id: Packed
+  id: WegaPacked
   mapName: 'Packed'
-  mapPath: /Maps/_Wega/wegapacked.yml #Corvax-Wega-Maps
-  # Corvax-start
+  mapPath: /Maps/_Wega/wegapacked.yml
   minPlayers: 0
-  maxPlayers: 25
-  # Corvax-end
+  maxPlayers: 40
   stations:
     Packed:
       stationProto: StandardNanotrasenStation
       components:
         - type: StationNameSetup
-          mapNameTemplate: '{0} Пакет {1}' # Corvax
+          mapNameTemplate: '{0} Пакет {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: 'VG'
         - type: StationEmergencyShuttle
           emergencyShuttlePath: /Maps/Shuttles/emergency_crimson.yml
-        # Corvax-Wega-Lavalabd-start
         - type: StationLavaland
-          planets: [ Lavaland ]
-          enabled: false
-        # Corvax-Wega-Lavalabd-end
+          planets: [ Icemoon ]
         - type: StationJobs
           availableJobs:
             #service
@@ -60,7 +55,7 @@
             #Lawyer: [ 1, 1 ] # Corvax-IAA
             #supply
             Quartermaster: [ 1, 1 ]
-            SalvageSpecialist: [ 2, 2 ]
+            ShaftMiner: [ 2, 2 ]
             CargoTechnician: [ 2, 2 ]
             #civilian
             Passenger: [ -1, -1 ]
