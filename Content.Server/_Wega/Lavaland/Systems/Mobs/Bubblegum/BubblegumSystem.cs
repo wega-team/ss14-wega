@@ -1079,16 +1079,13 @@ public sealed partial class BubblegumSystem : EntitySystem
         if (!TryComp<PuddleComponent>(uid, out var puddle))
             return false;
 
-        if (!TryComp(uid, out ContainerManagerComponent? containerManager))
+        if (!TryComp<SolutionComponent>(uid, out var solutionComp))
             return false;
 
-        if (!containerManager.Containers.TryGetValue("solution@puddle", out var container))
-            return false;
+        var solution = solutionComp.Solution;
 
-        return container.ContainedEntities.Any(containedEntity =>
-            TryComp(containedEntity, out SolutionComponent? solutionComponent) &&
-            solutionComponent.Solution.Contents.Any(r =>
-                r.Reagent.Prototype == "Blood" || r.Reagent.Prototype == "CopperBlood"));
+        return solution.Contents.Any(r =>
+            r.Reagent.Prototype == "Blood" || r.Reagent.Prototype == "CopperBlood");
     }
 
     #endregion

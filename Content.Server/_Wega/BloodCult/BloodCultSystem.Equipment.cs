@@ -6,7 +6,6 @@ using Content.Shared.Blood.Cult.Components;
 using Content.Shared.Blood.Cult;
 using Content.Shared.Veil.Cult.Components;
 using Content.Shared.Weapons.Melee.Events;
-using Robust.Shared.Random;
 
 namespace Content.Server.Blood.Cult;
 
@@ -32,6 +31,7 @@ public sealed partial class BloodCultSystem
 
         if (HasComp<AllowCultEquipmentComponent>(args.EquipTarget))
             return;
+
         _transform.SetCoordinates(ent, Transform(args.EquipTarget).Coordinates);
         _transform.AttachToGridOrMap(ent);
         _throwing.TryThrow(ent, _random.NextVector2(), 1);

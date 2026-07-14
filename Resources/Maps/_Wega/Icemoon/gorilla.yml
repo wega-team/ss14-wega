@@ -12822,13 +12822,6 @@ entities:
     - type: Transform
       pos: 39.5,-17.5
       parent: 1
-- proto: SpawnMobTheThingIcemoon
-  entities:
-  - uid: 1990
-    components:
-    - type: Transform
-      pos: 40.5,-27.5
-      parent: 1
 - proto: SprayBottleSpaceCleaner
   entities:
   - uid: 1356

@@ -55,9 +55,18 @@
     factions:
     - IcemoonFauna
 
+- type: entity
+  id: BaseMobIcemoonButcherable
+  abstract: true
+  components:
+  - type: ToolRefinable
+    qualityNeeded: Slicing
+    refineResult: []
+    refineTime: 4
+
 #region White Wolf
 - type: entity
-  parent: [ BaseMobIcemoon, MobBloodstream ]
+  parent: [ BaseMobIcemoon, MobBloodstream, BaseMobIcemoonButcherable ]
   id: MobWhiteWolf
   name: white wolf
   description: "A cunning predator hunting in a pack. Despite its weak bite, it becomes dangerously fast when wounded, preferring to retreat and regroup."
@@ -114,8 +123,8 @@
   - type: HTN
     rootTask:
       task: SimpleHostileCompound
-  - type: Butcherable
-    spawned:
+  - type: ToolRefinable
+    refineResult:
     - id: FoodMeat
       amount: 2
     - id: MaterialSinew1
@@ -225,7 +234,7 @@
 
 #region Polar Bear
 - type: entity
-  parent: [ BaseMobIcemoon, MobBloodstream ]
+  parent: [ BaseMobIcemoon, MobBloodstream, BaseMobIcemoonButcherable ]
   id: MobPolarBear
   name: polar bear
   description: "A massive beast driven by pure rage and hunger. It charges without mercy, and when wounded, its fury only intensifies its attacks become twice as fast, leaving little room for error."
@@ -279,8 +288,8 @@
     interactFailureString: petting-failure-bear
     interactSuccessSound:
       path: /Audio/Animals/sloth_squeak.ogg
-  - type: Butcherable
-    spawned:
+  - type: ToolRefinable
+    refineResult:
     - id: FoodMeatBear
       amount: 3
     - id: MaterialBones1
@@ -309,6 +318,7 @@
   id: MobSnowLegion
   name: snow legion
   description: "A wretched amalgamation of frozen souls and drifting snow. It refuses to fight fair, always retreating while summoning lesser copies to do its bidding. Those who fall to its minions become part of the legion themselves."
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _Wega/Mobs/Icemoon/legion.rsi
@@ -431,7 +441,7 @@
 
 #region Ice Whelp
 - type: entity
-  parent: BaseMobIcemoon
+  parent: [ BaseMobIcemoon, BaseMobIcemoonButcherable ]
   id: MobIceWhelp
   name: ice whelp
   description: "A young ice drake with a chilling breath. It freezes its prey in place before closing in for the kill. Its attacks are telegraphed, giving victims a brief moment to dodge — but one mistake means becoming its next meal."
@@ -475,8 +485,8 @@
     actionChances:
       ActionIceWhelpLineBreath: 0.75
       ActionIceWhelpCircleBreath: 0.25
-  - type: Butcherable
-    spawned:
+  - type: ToolRefinable
+    refineResult:
     - id: DiamondOre1
       amount: 3
     - id: MaterialSinew1
