@@ -2,7 +2,7 @@
   id: WegaKerberos
   mapName: 'Kerberos Station'
   mapPath: /Maps/_Wega/wegakerberos.yml
-  minPlayers: 60
+  minPlayers: 65
   stations:
     Kerberos:
       stationProto: StandardNanotrasenStation

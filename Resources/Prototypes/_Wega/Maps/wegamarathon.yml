@@ -1,66 +1,56 @@
 - type: gameMap
-  id: WegaKilo
-  mapName: 'Kilo'
-  mapPath: /Maps/_Wega/wegakilostation.yml
+  id: WegaMarathon
+  mapName: 'Marathon Station'
+  mapPath: /Maps/_Wega/wegamarathon.yml
   minPlayers: 25
   maxPlayers: 65
   stations:
-    Kilo:
+    Marathon:
       stationProto: StandardNanotrasenStation
       components:
         - type: StationNameSetup
-          mapNameTemplate: '{0} Кило {1}'
+          mapNameTemplate: '{0} Марафон {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
-            prefixCreator: 'TZ'
+            prefixCreator: '14'
         - type: StationEmergencyShuttle
-          emergencyShuttlePath: /Maps/Shuttles/emergency_amber.yml
-        - type: StationCargoShuttle
-          path: /Maps/_Wega/Shuttles/cargo_kilo.yml
+          emergencyShuttlePath: /Maps/Shuttles/emergency_rod.yml
         - type: StationJobs
           availableJobs:
             #service
             Captain: [ 1, 1 ]
-            BlueShieldOfficer: [ 1, 1 ]
             IAA: [ 1, 1 ] # Corvax-IAA
             HeadOfPersonnel: [ 1, 1 ]
-            Bartender: [ 1, 1 ]
-            Botanist: [ 2, 2 ]
+            Bartender: [ 2, 2 ]
+            Botanist: [ 2, 3 ]
             Chef: [ 2, 2 ]
-            Janitor: [ 2, 2 ]
+            Janitor: [ 1, 2 ]
             Chaplain: [ 1, 1 ]
             Librarian: [ 1, 1 ]
             ServiceWorker: [ 2, 2 ]
             #engineering
             ChiefEngineer: [ 1, 1 ]
-            SeniorEngineer: [ 1, 1 ]
-            AtmosphericTechnician: [ 2, 2 ]
-            StationEngineer: [ 3, 3 ]
-            TechnicalAssistant: [ 2, 2 ]
+            AtmosphericTechnician: [ 3, 3 ]
+            StationEngineer: [ 4, 4 ]
+            TechnicalAssistant: [ 3, 3 ]
             #medical
             ChiefMedicalOfficer: [ 1, 1 ]
-            Geneticist: [ 2, 2 ]
             Chemist: [ 2, 2 ]
-            Surgeon: [ 2, 2 ]
-            SeniorPhysician: [ 1, 1 ]
-            MedicalDoctor: [ 3, 3 ]
-            Paramedic: [ 1, 1 ]
-            MedicalIntern: [ 2, 2 ]
+            Surgeon: [ 1, 1 ]
+            MedicalDoctor: [ 4, 4 ]
+            MedicalIntern: [ 3, 3 ]
             Psychologist: [ 1, 1 ]
+            Paramedic: [ 1, 1 ]
             #science
             ResearchDirector: [ 1, 1 ]
-            SeniorResearcher: [ 1, 1 ]
-            Scientist: [ 3, 3 ]
-            ResearchAssistant: [ 2, 2 ]
+            Scientist: [ 4, 4 ]
+            ResearchAssistant: [ 3, 3 ]
             #security
             HeadOfSecurity: [ 1, 1 ]
             Warden: [ 1, 1 ]
-            WardenHelper: [ 1, 1 ]
-            SeniorOfficer: [ 1, 1 ]
-            SecurityOfficer: [ 3, 3 ]
+            SecurityOfficer: [ 8, 8 ]
             Detective: [ 1, 1 ]
-            SecurityCadet: [ 2, 2 ]
-            Pilot: [ 1, 1 ]
+            SecurityCadet: [ 4, 4 ]
             Brigmedic: [ 1, 1 ]
             #Lawyer: [ 2, 2 ] # Corvax-IAA
             #supply
@@ -73,6 +63,6 @@
             Clown: [ 1, 1 ]
             Mime: [ 1, 1 ]
             Musician: [ 1, 1 ]
-            # silicon
+            #silicon
             StationAi: [ 1, 1 ]
             Borg: [ 2, 2 ]
