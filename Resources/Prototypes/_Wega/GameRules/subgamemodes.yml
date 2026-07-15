@@ -3,17 +3,19 @@
   id: SubVampire
   components:
   - type: GameRule
-    minPlayers: 15
+    minPlayers: 20
   - type: AntagSelection
     agentName: vampire-round-end-name
     lateJoinAdditional: true
     antags:
     - !type:LinearAntagCount
       proto: Vampire
-      playerRatio: 15
+      playerRatio: 20
       range:
         min: 1
         max: 4
+  - type: SubGamemodes
+    rules: []
 
 - type: entity
   parent: BloodBrothers
@@ -35,17 +37,19 @@
   id: SubTraitor
   components:
   - type: GameRule
-    minPlayers: 15
+    minPlayers: 20
   - type: AntagSelection
     agentName: traitor-round-end-agent-name
     lateJoinAdditional: true
     antags:
     - !type:LinearAntagCount
       proto: Traitor
-      playerRatio: 15
+      playerRatio: 20
       range:
         min: 1
         max: 4
+  - type: SubGamemodes
+    rules: []
 
 # Extended testing
 - type: entity
