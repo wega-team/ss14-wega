@@ -12,8 +12,8 @@
     context: "ghost"
   - type: Spectral
   - type: MovementSpeedModifier
-    baseWalkSpeed: 6
-    baseSprintSpeed: 6
+    baseWalkSpeed: 6 # Corvax-wega-edit
+    baseSprintSpeed: 8 # Corvax-wega-edit
   - type: Sprite
     sprite: Mobs/Ghosts/revenant.rsi
     layers:
@@ -93,3 +93,8 @@
     tags:
     - SlowImmune
     - KnockdownImmune
+# Corvax-Wega-Start
+  - type: NaturalNightVision # Corvax-Wega-NightVision
+    tintColor: "#b366ff"
+    visible: true
+# Corvax-Wega-End

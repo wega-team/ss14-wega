@@ -50,5 +50,5 @@
   storage:
     back:
     #- Flash
-    - ExmFlash# BookRandomRevolution # Corvax-Wega-Revolutionary
+    - ExmFlash # BookRandomRevolution # Corvax-Wega-Revolutionary
     - ClothingEyesGlassesSunglasses
