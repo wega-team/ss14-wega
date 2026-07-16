@@ -1700,6 +1700,8 @@
           - Brain
           - BorgBrain
           - ChameleonClothing # Corvax-Wega-Add
+          tags:
+          - UpgradeKitBrain
     - hand:
         emptyRepresentative: XenoborgModuleBasic
         emptyLabel: borg-slot-modules-empty
@@ -1714,6 +1716,10 @@
           - PowerCell
     - item: TurboItemRechargerXenoborg
     - item: XenoborgModuleBag
+  - type: ComponentBorgModule
+    components:
+    - type: EmpResistance
+      strengthMultiplier: 0
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-module-module }
 

@@ -549,6 +549,9 @@
     radius: 2
     energy: 2
     color: "#5290d2ff"
+  - type: Construction
+    graph: UpgradeKitBrain
+    node: start
 
 - type: entity
   parent: [ OrganBaseLungs, OrganAndroidInternal, OrganAndroidMetabolizer ]

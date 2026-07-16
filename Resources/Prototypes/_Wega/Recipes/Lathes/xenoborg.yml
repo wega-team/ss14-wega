@@ -61,9 +61,8 @@
   categories:
   - Robotics
   id: XPositronicBrain
-  result: PositronicBrain
+  result: UpgradeKitBrain
   materials:
-    PrintBrain: 100
     Steel: 1500
 
 - type: latheRecipe

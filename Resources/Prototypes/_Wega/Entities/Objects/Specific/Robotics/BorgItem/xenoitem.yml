@@ -416,3 +416,41 @@
   - type: BatteryAmmoProvider
     proto: IonScan
     fireCost: 250
+    
+- type: entity
+  name: upgradebrain
+  parent: BaseItem
+  id: UpgradeKitBrain
+  description: An experimental upgrade kit for the C.H.I.M.P.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Materials/xenomater.rsi
+    state: icon
+  - type: Item
+    size: Small
+  - type: Tag
+    tags:
+    - UpgradeKitBrain
+
+- type: entity
+  parent: ClothingBackpack
+  id: XenoborgTitleBag
+  name: silicon storage square
+  description: A knockoff version of a bluespace bag, can vacumn up select materials, unfit for use by humanoids due to harmful emissions.
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Robotics/silicon_storage_cube.rsi
+    state: xenoborg
+  - type: MagnetPickup
+    slotFlags: null
+    range: 1.5
+    requireActiveHand: true
+  - type: Dumpable
+  - type: Storage
+    grid:
+    - 0,0,1,1
+    quickInsert: true
+    areaInsert: true
+    whitelist:
+      components:
+        - FloorTile

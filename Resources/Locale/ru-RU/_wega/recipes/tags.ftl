@@ -10,3 +10,4 @@ construction-graph-tag-goliath-cloak = плащ голиафа
 construction-graph-tag-android-part = часть андроида
 construction-graph-tag-ice-crystal = кристалл ледяной энергии
 construction-graph-tag-wendigo-skull = череп вендиго
+construction-graph-tag-brain-upgraded = апгрейдер мозгов
