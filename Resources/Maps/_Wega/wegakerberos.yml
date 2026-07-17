@@ -148843,7 +148843,6 @@ entities:
     - type: RadiationSource
       intensity: 8
     missingComponents:
-    - SliceableFood
     - Item
     - SlimeFood
     - Pullable

@@ -543,7 +543,7 @@
 
 #region Ash Drake
 - type: entity
-  parent: [ BaseMobLavalandMegafaunaMover, MobBloodstream ]
+  parent: [ BaseMobLavalandMegafaunaMover, MobBloodstream, BaseMobLavalandButcherable ]
   id: MobAshDrake
   name: ash drake
   description: "A winged monster, the revered guardian of the Necropolis. A horror in flesh, it roams the barren wasteland, spewing streams of deadly flame."
@@ -639,8 +639,9 @@
   - type: TrophyHunter
     trophy: TrophyLavalandAshDrakeSpike
     dropChance: 1 # Guaranteed, since it's the boss
-  - type: Butcherable
-    spawned:
+  - type: ToolRefinable
+    refineTime: 10
+    refineResult:
     - id: FoodMeatDragon
       amount: 3
     - id: DiamondOre1

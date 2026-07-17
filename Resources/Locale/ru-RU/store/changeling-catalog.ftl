@@ -3,3 +3,24 @@ changeling-catalog-arm-blade-desc = Превратите свою руку в у
 
 changeling-catalog-flesh-clothing-name = Одежда из плоти
 changeling-catalog-flesh-clothing-desc = Поверхность вашего тела адаптируется, отражая одежду любого человека, в которого вы превращаетесь. Однако эти предметы одежды не функциональны и позволят легко раскрыть вас как генокрада, если кто-то попытается их снять. Можно переключать.
+
+changeling-catalog-voice-mimic-name = Подражание голоса
+changeling-catalog-voice-mimic-desc = Меняйте голосовые связки по своему желанию, чтобы имитировать существующих (и воображаемых) членов экипажа. Идеально подходит для заманивания добычи.
+
+changeling-catalog-biodegrade-name = Биоразложение
+changeling-catalog-biodegrade-desc = Вы научитесь использовать кислотные железы в своем организме, чтобы извергать кислоту на оковы, освобождаясь от них.
+
+changeling-catalog-sting-dna-name = Извлечение ДНК
+changeling-catalog-sting-dna-desc = Научитесь использовать свое жало, чтобы поглотить личность ни о чём не подозревающих жертв. Не предоставляет ДНК для новых способностей или достижения целей.
+
+changeling-catalog-blind-sting-name = Ослепляющее жало
+changeling-catalog-blind-sting-desc = Вызывает временную слепоту у цели. Хорошо подходит для побега или начала драки. Может быть использовано на себе.
+
+changeling-catalog-cryogenic-sting-name = Охлаждающее жало
+changeling-catalog-cryogenic-sting-desc = Вызывает замедление движения у цели. Идеально подходит для предотвращения побега добычи. Может быть использовано на себе.
+
+changeling-catalog-lethal-sting-name = Отравляющее жало
+changeling-catalog-lethal-sting-desc = Со временем наносит урон цели. Бесполезен в бою, но гарантирует, что им потребуется медицинская помощь. Может быть использовано на себе.
+
+changeling-catalog-hallucinogenic-sting-name = Галлюциногенное жало
+changeling-catalog-hallucinogenic-sting-desc = Вызывает у жертвы состояние эйфории и затруднения в речи. Вызывает растерянность среди экипажа. Может быть использовано на себе.

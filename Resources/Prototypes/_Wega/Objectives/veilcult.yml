@@ -4,11 +4,11 @@
   id: BaseVeilCultObjective
   components:
   - type: Objective
-    issuer: objective-issuer-veil-god
+    issuer: VeilCultGod
   - type: RoleRequirement
     roles:
     - VeilCultistRole
-    
+
 # Kill
 - type: entity
   parent: BaseVeilCultObjective

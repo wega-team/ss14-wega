@@ -27,9 +27,9 @@
         type: StorageBoundUserInterface
   - type: UseDelay
     delay: 0.5
-  - type: Butcherable
-    butcheringType: Knife
-    spawned:
+  - type: ToolRefinable
+    qualityNeeded: Slicing
+    refineResult:
     - id: MaterialCloth1
       amount: 2
   - type: Edible

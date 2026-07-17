@@ -208,7 +208,7 @@
   components:
   - type: Sprite
     state: spike
-  - type: Sharp
+
   - type: CrusherUpgrade
     tags: [ CrusherUpgradeAshDrake ]
     examineText: crusher-upgrade-examine-text-ash-drake

@@ -6,7 +6,6 @@
   - type: Tag
     tags:
     - Knife
-  - type: Sharp
   - type: Execution
     doAfterDuration: 4.0
     canGunExecute: false # Corvax-Wega-Suicide
@@ -25,7 +24,7 @@
     size: Small
   - type: Tool
     qualities:
-      - Slicing
+    - Slicing
     useSound:
       path: /Audio/Items/Culinary/chop.ogg
 
@@ -392,7 +391,6 @@
     - type: Execution
       doAfterDuration: 4.0
       canGunExecute: false # Corvax-Wega-Suicide
-    - type: Sharp
     - type: Utensil
       types:
       - Knife

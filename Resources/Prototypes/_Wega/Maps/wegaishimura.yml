@@ -2,14 +2,14 @@
   id: WegaIshimura
   mapName: 'USG Ishimura'
   mapPath: /Maps/_Wega/wegaishimura.yml
-  minPlayers: 20
-  maxPlayers: 50
+  minPlayers: 25
+  maxPlayers: 65
   stations:
     Ishimura:
       stationProto: StandardNanotrasenStation
       components:
         - type: StationNameSetup
-          mapNameTemplate: '{0} USG Ishimura {1}'
+          mapNameTemplate: '{0} USG Ишимура {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: 'TZ'

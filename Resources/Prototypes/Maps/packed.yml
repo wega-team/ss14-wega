@@ -2,7 +2,7 @@
 - type: gameMap
   id: Packed
   mapName: 'Packed'
-  mapPath: /Maps/_Wega/wegapacked.yml #Corvax-Wega-Maps
+  mapPath: /Maps/packed.yml
   # Corvax-start
   minPlayers: 0
   maxPlayers: 25
@@ -18,11 +18,6 @@
             prefixCreator: 'VG'
         - type: StationEmergencyShuttle
           emergencyShuttlePath: /Maps/Shuttles/emergency_crimson.yml
-        # Corvax-Wega-Lavalabd-start
-        - type: StationLavaland
-          planets: [ Lavaland ]
-          enabled: false
-        # Corvax-Wega-Lavalabd-end
         - type: StationJobs
           availableJobs:
             #service

@@ -1,14 +1,17 @@
 using System.Linq;
 using Content.Shared.Buckle.Components;
 using Content.Shared.Interaction;
-using Content.Shared.Kitchen.Components;
 using Content.Shared.Surgery;
 using Content.Shared.Surgery.Components;
+using Content.Shared.Tools;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.Surgery;
 
 public sealed partial class SurgerySystem
 {
+    private static readonly ProtoId<ToolQualityPrototype> SharpQuality = "Slicing";
+
     private void UiInitialize()
     {
         SubscribeLocalEvent<OperatedComponent, AfterInteractUsingEvent>(OnInteractUsing);
@@ -21,7 +24,7 @@ public sealed partial class SurgerySystem
         var used = args.Used;
 
         var hasSpecialTool = comp.SpecialTool != null && _tool.HasQuality(used, comp.SpecialTool);
-        var hasDefaultTool = comp.SpecialTool == null && HasComp<SharpComponent>(used);
+        var hasDefaultTool = comp.SpecialTool == null && _tool.HasQuality(used, SharpQuality);
         if (!hasSpecialTool && !hasDefaultTool)
             return;
 
