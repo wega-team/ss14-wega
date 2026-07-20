@@ -1,0 +1,10 @@
+- type: entity
+  parent: BaseItem
+  id: ShardCrystalRandomKostsl
+  name: random crystal shard
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: SpawnOnDespawn
+    prototype: ShardCrystalRandom
+  - type: TimedDespawn
+    lifetime: 0
