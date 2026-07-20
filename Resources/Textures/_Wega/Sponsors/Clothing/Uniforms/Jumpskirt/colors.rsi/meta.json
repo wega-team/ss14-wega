@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Made with love by Melissandra",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "icon-bottom"
+    },
+    {
+      "name": "icon-belt"
+    },
+    {
+      "name": "icon-top"
+    },
+    {
+      "name": "equipped-INNERCLOTHING-bottom",
+      "directions": 4
+    },
+    {
+      "name": "equipped-INNERCLOTHING-belt",
+      "directions": 4
+    },
+    {
+      "name": "equipped-INNERCLOTHING-top",
+      "directions": 4
+    }
+  ]
+}

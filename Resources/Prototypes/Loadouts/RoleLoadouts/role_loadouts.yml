@@ -114,6 +114,7 @@
   # Corvax-Wega-Sponsors-start
   - SponsorHead
   - SponsorNeck
+  - SponsorOuterClothing
   # Corvax-Wega-Sponsors-end
   - BartenderJumpsuit
   - CommonBackpack
@@ -162,6 +163,7 @@
   # Corvax-Wega-Sponsors-start
   - SponsorHead
   - SponsorNeck
+  - SponsorOuterClothing
   # Corvax-Wega-Sponsors-end
   - LibrarianJumpsuit
   - CommonBackpack
@@ -449,6 +451,7 @@
   - GroupTankHarness
   # Corvax-Wega-Sponsors-start
   - SponsorNeck
+  - SponsorOuterClothing
   # Corvax-Wega-Sponsors-end
   - TechnicalAssistantJumpsuit
   - StationEngineerBackpack
@@ -567,6 +570,7 @@
   - SponsorHead
   - SponsorNeck
   - SponsorGloves
+  - SponsorOuterClothing
   # Corvax-Wega-Sponsors-end
   - ResearchAssistantJumpsuit
   - ScientistBackpack
@@ -714,6 +718,7 @@
   # Corvax-Wega-Sponsors-start
   - SponsorHead
   - SponsorNeck
+  - SponsorOuterClothing
   # Corvax-Wega-Sponsors-end
   - PsychologistJumpsuit
   - MedicalBackpack
