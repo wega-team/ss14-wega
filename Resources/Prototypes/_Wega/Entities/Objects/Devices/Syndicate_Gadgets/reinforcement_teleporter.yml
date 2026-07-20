@@ -7,7 +7,7 @@
   components:
     - type: GhostRole
       name: ghost-role-information-syndicate-cyborg-medical-name
-      description: ghost-role-information-syndicate-medical-description
+      description: ghost-role-information-syndicate-cyborg-description
       rules: ghost-role-information-silicon-rules
       mindRoles:
       - MindRoleGhostRoleSilicon
