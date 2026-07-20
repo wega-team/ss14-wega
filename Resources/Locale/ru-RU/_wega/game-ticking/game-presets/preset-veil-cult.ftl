@@ -28,7 +28,7 @@ veil-cult-break-control =
        *[neuter] оно приходит в себя.
     }
 
-veil-cultist-list-start = Культистами были:
+veil-cultist-list-start = Культистами Ратвара были:
 veil-cultist-list-name-user = - [color=White]{ $name }[/color] ([color=gray]{ $user }[/color])
 veil-cult-first-warning = Культ набрал умеренное количество сил, ваши руки покрываются латунью.
 veil-cult-second-warning = Культ набрал большое количество сил, над вашей головой возвышается нимб.

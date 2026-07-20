@@ -288,6 +288,7 @@ namespace Content.Server.GameTicking.Rules
         {
             string selectedGod = "";
             var query = QueryActiveRules();
+			
             while (query.MoveNext(out _, out _, out var cult, out _))
             {
                 selectedGod = cult.SelectedGod switch
@@ -495,6 +496,9 @@ namespace Content.Server.GameTicking.Rules
             GameRuleComponent gameRule,
             ref RoundEndTextAppendEvent args)
         {
+            string selectedGod = "";
+            var query = QueryActiveRules();
+			
             var winText = Loc.GetString($"blood-cult-{component.WinType.ToString().ToLower()}");
             args.AddLine(winText);
 
@@ -504,7 +508,19 @@ namespace Content.Server.GameTicking.Rules
                 args.AddLine(text);
             }
 
-            args.AddLine(Loc.GetString("blood-cultist-list-start"));
+            while (query.MoveNext(out _, out _, out var cult, out _))
+            {
+                selectedGod = cult.SelectedGod switch
+                {
+                    BloodCultGod.NarSi => Loc.GetString("current-god-narsie"),
+                    BloodCultGod.Reaper => Loc.GetString("current-god-reaper-list"),
+                    BloodCultGod.Kharin => Loc.GetString("current-god-kharin-list"),
+                    _ => Loc.GetString("current-god-narsie")
+                };
+                break;
+            }
+
+            args.AddLine(Loc.GetString("blood-cultist-list-start", ("god", selectedGod)));
 
             var antags = _antag.GetAntagIdentifiers(uid);
             foreach (var (_, sessionData, name) in antags)
