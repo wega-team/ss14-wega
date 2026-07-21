@@ -652,3 +652,43 @@
     blacklist:
       tags:
       - NukeOpsUplink
+
+- type: listing
+  id: UplinkSyndiShaker
+  name: uplink-syndi-shaker-name
+  description: uplink-syndi-shaker-desc
+  productEntity: DrinkShakerSyndi
+  cost:
+    Telecrystal: 1
+  categories:
+    - UplinkChemicals
+
+- type: listing
+  id: UplinkSyndiBarmenKit
+  name: uplink-syndi-barmen-name
+  description: uplink-syndi-barmen-desc
+  productEntity: SyndiBarmenKit
+  cost:
+    Telecrystal: 4
+  categories:
+    - UplinkChemicals
+  conditions:
+    - !type:StoreWhitelistCondition
+      whitelist:
+        tags:
+          - NukeOpsUplink
+
+- type: listing
+  id: UplinkSwatHelmet
+  name: uplink-swat-helmet-name
+  description: uplink-swat-helmet-desc
+  productEntity: ClothingHeadHelmetSwatSyndicate
+  cost:
+    Telecrystal: 1
+  categories:
+  - UplinkWearables
+  conditions:
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - NukeOpsUplink

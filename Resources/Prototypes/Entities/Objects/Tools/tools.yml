@@ -399,6 +399,41 @@
     price: 60
 
 - type: entity
+  id: RPD
+  parent: RCD
+  name: RPD
+  description: The rapid piping device allows for the quick placement and removal of atmospheric-related buildings requires compressive matter to use.
+  components:
+  - type: RCD
+    isRpd: true
+    availablePrototypes:
+    - PipeFourway
+    - PipeStraight
+    - PipeBend
+    - PipeTJunction
+    - OutletInjector
+    - ManualValve
+    - VolumetricPump
+    - PressurePump
+    - VentScrubber
+    - PressureValve
+    - DualPortVent
+    - VentGas
+    - VentPassive
+    - MixerGas
+    - Radiator
+    - RadiatorBend
+    - SignalValve
+    - CanisterPort
+    - FilterGas
+    - PipeManifold
+    - PressureRegulator
+  - type: LimitedCharges
+    maxCharges: 90
+  - type: Sprite
+    sprite: Objects/Tools/rpd.rsi
+
+- type: entity
   name: omnitool
   parent: BaseItem
   id: Omnitool
