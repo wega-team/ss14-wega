@@ -277,7 +277,7 @@ public sealed partial class SlimeHungerSystem : EntitySystem
 
         var modifierSol = 1f;
         var setVolume = sol.Solution.Volume / 5;
-		if (setVolume > 1);
+		if (setVolume.Float() > 1);
 			modifierSol *= setVolume.Float();
 
         var baseValue = (physics.Mass * modifierPh * modifierSol) * hunger.ModifierFood;
