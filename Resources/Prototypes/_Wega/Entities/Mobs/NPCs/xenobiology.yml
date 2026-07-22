@@ -63,6 +63,11 @@
   id: MobXenoSlimeGray
   parent: MobXenoSlimes
   description: "It looks so much like jelly. I wonder what it tastes like?"
+  components:
+  - type: SlimeHunger
+    modifierFood: 3
+
+## Level 1
 
 - type: entity
   name: blue slime
@@ -80,6 +85,8 @@
         Base: blue_baby_dead
   - type: SlimeGrowth
     slimeType: Blue
+  - type: SlimeHunger
+    modifierFood: 2.5
 
 - type: entity
   name: purple slime
@@ -98,6 +105,8 @@
   - type: SlimeGrowth
     slimeType: Purple
   - type: Appearance
+  - type: SlimeHunger
+    modifierFood: 2.5
 
 - type: entity
   name: orange slime
@@ -115,6 +124,8 @@
         Base: orange_baby_dead
   - type: SlimeGrowth
     slimeType: Orange
+  - type: SlimeHunger
+    modifierFood: 2.5
 
 - type: entity
   name: metallic slime
@@ -132,6 +143,10 @@
         Base: metallic_baby_dead
   - type: SlimeGrowth
     slimeType: Metallic
+  - type: SlimeHunger
+    modifierFood: 2.5
+
+## Level 2
 
 - type: entity
   name: dark-purple slime
@@ -149,23 +164,8 @@
         Base: darkpurple_baby_dead
   - type: SlimeGrowth
     slimeType: DarkPurple
-
-- type: entity
-  name: green slime
-  id: MobXenoSlimeGreen
-  parent: MobXenoSlimes
-  description: "It looks so much like jelly. I wonder what it tastes like?"
-  components:
-  - type: Sprite
-    state: green_baby_slime
-  - type: DamageStateVisuals
-    states:
-      Alive:
-        Base: green_baby_slime
-      Dead:
-        Base: green_baby_dead
-  - type: SlimeGrowth
-    slimeType: Green
+  - type: SlimeHunger
+    modifierFood: 2
 
 - type: entity
   name: dark-blue slime
@@ -183,40 +183,8 @@
         Base: darkblue_baby_dead
   - type: SlimeGrowth
     slimeType: DarkBlue
-
-- type: entity
-  name: pink slime
-  id: MobXenoSlimePink
-  parent: MobXenoSlimes
-  description: "It looks so much like jelly. I wonder what it tastes like?"
-  components:
-  - type: Sprite
-    state: pink_baby_slime
-  - type: DamageStateVisuals
-    states:
-      Alive:
-        Base: pink_baby_slime
-      Dead:
-        Base: pink_baby_dead
-  - type: SlimeGrowth
-    slimeType: Pink
-
-- type: entity
-  name: red slime
-  id: MobXenoSlimeRed
-  parent: MobXenoSlimes
-  description: "It looks so much like jelly. I wonder what it tastes like?"
-  components:
-  - type: Sprite
-    state: red_baby_slime
-  - type: DamageStateVisuals
-    states:
-      Alive:
-        Base: red_baby_slime
-      Dead:
-        Base: red_baby_dead
-  - type: SlimeGrowth
-    slimeType: Red
+  - type: SlimeHunger
+    modifierFood: 2
 
 - type: entity
   name: yellow slime
@@ -234,23 +202,8 @@
         Base: yellow_baby_dead
   - type: SlimeGrowth
     slimeType: Yellow
-
-- type: entity
-  name: gold slime
-  id: MobXenoSlimeGold
-  parent: MobXenoSlimes
-  description: "It looks so much like jelly. I wonder what it tastes like?"
-  components:
-  - type: Sprite
-    state: gold_baby_slime
-  - type: DamageStateVisuals
-    states:
-      Alive:
-        Base: gold_baby_slime
-      Dead:
-        Base: gold_baby_dead
-  - type: SlimeGrowth
-    slimeType: Gold
+  - type: SlimeHunger
+    modifierFood: 2
 
 - type: entity
   name: silver slime
@@ -268,6 +221,166 @@
         Base: silver_baby_dead
   - type: SlimeGrowth
     slimeType: Silver
+  - type: SlimeHunger
+    modifierFood: 2
+
+# Level 2.5
+
+- type: entity
+  name: sepia slime
+  id: MobXenoSlimeSepia
+  parent: MobXenoSlimes
+  description: "It looks so much like jelly. I wonder what it tastes like?"
+  components:
+  - type: Sprite
+    state: sepia_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: sepia_baby_slime
+      Dead:
+        Base: sepia_baby_dead
+  - type: SlimeGrowth
+    slimeType: Sepia
+  - type: SlimeHunger
+    modifierFood: 1.75
+
+- type: entity
+  name: bluespace slime
+  id: MobXenoSlimeBluespace
+  parent: MobXenoSlimes
+  description: "It looks so much like jelly. I wonder what it tastes like?"
+  components:
+  - type: Sprite
+    state: bluespace_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: bluespace_baby_slime
+      Dead:
+        Base: bluespace_baby_dead
+  - type: SlimeGrowth
+    slimeType: Bluespace
+  - type: SlimeHunger
+    modifierFood: 1.75
+
+- type: entity
+  name: pyrite slime
+  id: MobXenoSlimePyrite
+  parent: MobXenoSlimes
+  description: "It looks so much like jelly. I wonder what it tastes like?"
+  components:
+  - type: Sprite
+    state: pyrite_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: pyrite_baby_slime
+      Dead:
+        Base: pyrite_baby_dead
+  - type: SlimeGrowth
+    slimeType: Pyrite
+  - type: SlimeHunger
+    modifierFood: 1.75
+
+- type: entity
+  name: azure slime
+  id: MobXenoSlimeAzure
+  parent: MobXenoSlimes
+  description: "It looks so much like jelly. I wonder what it tastes like?"
+  components:
+  - type: Sprite
+    state: azure_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: azure_baby_slime
+      Dead:
+        Base: azure_baby_dead
+  - type: SlimeGrowth
+    slimeType: Azure
+  - type: SlimeHunger
+    modifierFood: 1.75
+
+# Level 3
+
+- type: entity
+  name: green slime
+  id: MobXenoSlimeGreen
+  parent: MobXenoSlimes
+  description: "It looks so much like jelly. I wonder what it tastes like?"
+  components:
+  - type: Sprite
+    state: green_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: green_baby_slime
+      Dead:
+        Base: green_baby_dead
+  - type: SlimeGrowth
+    slimeType: Green
+  - type: SlimeHunger
+    modifierFood: 1.5
+
+- type: entity
+  name: pink slime
+  id: MobXenoSlimePink
+  parent: MobXenoSlimes
+  description: "It looks so much like jelly. I wonder what it tastes like?"
+  components:
+  - type: Sprite
+    state: pink_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: pink_baby_slime
+      Dead:
+        Base: pink_baby_dead
+  - type: SlimeGrowth
+    slimeType: Pink
+  - type: SlimeHunger
+    modifierFood: 1.5
+
+- type: entity
+  name: red slime
+  id: MobXenoSlimeRed
+  parent: MobXenoSlimes
+  description: "It looks so much like jelly. I wonder what it tastes like?"
+  components:
+  - type: Sprite
+    state: red_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: red_baby_slime
+      Dead:
+        Base: red_baby_dead
+  - type: SlimeGrowth
+    slimeType: Red
+  - type: SlimeHunger
+    modifierFood: 1.5
+
+- type: entity
+  name: gold slime
+  id: MobXenoSlimeGold
+  parent: MobXenoSlimes
+  description: "It looks so much like jelly. I wonder what it tastes like?"
+  components:
+  - type: Sprite
+    state: gold_baby_slime
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: gold_baby_slime
+      Dead:
+        Base: gold_baby_dead
+  - type: SlimeGrowth
+    slimeType: Gold
+  - type: SlimeHunger
+    modifierFood: 1.5
+
+## Level 4
 
 - type: entity
   name: black slime
@@ -287,23 +400,6 @@
     slimeType: Black
 
 - type: entity
-  name: sepia slime
-  id: MobXenoSlimeSepia
-  parent: MobXenoSlimes
-  description: "It looks so much like jelly. I wonder what it tastes like?"
-  components:
-  - type: Sprite
-    state: sepia_baby_slime
-  - type: DamageStateVisuals
-    states:
-      Alive:
-        Base: sepia_baby_slime
-      Dead:
-        Base: sepia_baby_dead
-  - type: SlimeGrowth
-    slimeType: Sepia
-
-- type: entity
   name: oil slime
   id: MobXenoSlimeOil
   parent: MobXenoSlimes
@@ -319,23 +415,6 @@
         Base: oil_baby_dead
   - type: SlimeGrowth
     slimeType: Oil
-
-- type: entity
-  name: bluespace slime
-  id: MobXenoSlimeBluespace
-  parent: MobXenoSlimes
-  description: "It looks so much like jelly. I wonder what it tastes like?"
-  components:
-  - type: Sprite
-    state: bluespace_baby_slime
-  - type: DamageStateVisuals
-    states:
-      Alive:
-        Base: bluespace_baby_slime
-      Dead:
-        Base: bluespace_baby_dead
-  - type: SlimeGrowth
-    slimeType: Bluespace
 
 - type: entity
   name: adamantine slime
@@ -355,40 +434,6 @@
     slimeType: Adamantine
 
 - type: entity
-  name: pyrite slime
-  id: MobXenoSlimePyrite
-  parent: MobXenoSlimes
-  description: "It looks so much like jelly. I wonder what it tastes like?"
-  components:
-  - type: Sprite
-    state: pyrite_baby_slime
-  - type: DamageStateVisuals
-    states:
-      Alive:
-        Base: pyrite_baby_slime
-      Dead:
-        Base: pyrite_baby_dead
-  - type: SlimeGrowth
-    slimeType: Pyrite
-
-- type: entity
-  name: azure slime
-  id: MobXenoSlimeAzure
-  parent: MobXenoSlimes
-  description: "It looks so much like jelly. I wonder what it tastes like?"
-  components:
-  - type: Sprite
-    state: azure_baby_slime
-  - type: DamageStateVisuals
-    states:
-      Alive:
-        Base: azure_baby_slime
-      Dead:
-        Base: azure_baby_dead
-  - type: SlimeGrowth
-    slimeType: Azure
-
-- type: entity
   name: light-pink slime
   id: MobXenoSlimeLightPink
   parent: MobXenoSlimes
@@ -404,6 +449,8 @@
         Base: lightpink_baby_dead
   - type: SlimeGrowth
     slimeType: LightPink
+
+# Level 5
 
 - type: entity
   name: rainbow slime
@@ -421,3 +468,5 @@
         Base: rainbow_baby_dead
   - type: SlimeGrowth
     slimeType: Rainbow
+  - type: SlimeHunger
+    modifierFood: 0.5

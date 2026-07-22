@@ -5,6 +5,8 @@ using Content.Shared.Chat;
 using Content.Shared.DoAfter;
 using Content.Shared.Interaction;
 using Content.Shared.Mobs.Systems;
+using Content.Shared.Chemistry.Components;
+using Content.Shared.FixedPoint;
 using Content.Shared.Xenobiology;
 using Content.Shared.Xenobiology.Components;
 using Content.Shared.Xenobiology.Events;
@@ -198,7 +200,7 @@ public sealed partial class SlimeHungerSystem : EntitySystem
 
         float hungerFood = CalculateFoodValue(food, slime);
 
-        var doAfterDelay = TimeSpan.FromSeconds(4);
+        var doAfterDelay = TimeSpan.FromSeconds(1);
         var doAfterEventArgs = new DoAfterArgs(EntityManager, user, doAfterDelay, new SlimeFeedDoAfterEvent() { Hunger = hungerFood }, user, target: slime, used: food)
         {
             BreakOnMove = true,
@@ -218,9 +220,16 @@ public sealed partial class SlimeHungerSystem : EntitySystem
         if (!Resolve(slime, ref hunger) || !HasComp<SlimeFoodComponent>(food))
             return false;
 
+        if (!TryComp<SlimeHungerComponent>(slime, out var hung))
+            return false;
+
+		var time = 1;
+		if (hung.CurrentState == SlimeBehaviorState.Passive)
+            time = 4;
+
         float hungerFood = CalculateFoodValue(food, slime);
 
-        var doAfterDelay = TimeSpan.FromSeconds(4);
+        var doAfterDelay = TimeSpan.FromSeconds(time);
         var doAfterEventArgs = new DoAfterArgs(EntityManager, slime, doAfterDelay, new SlimeFeedDoAfterEvent() { Hunger = hungerFood }, slime, target: slime, used: food)
         {
             BreakOnMove = true,
@@ -257,11 +266,22 @@ public sealed partial class SlimeHungerSystem : EntitySystem
         if (!TryComp<PhysicsComponent>(food, out var physics))
             return 0f;
 
-        var modifier = 1f;
-        if (physics.Mass == 0.25)
-            modifier = 20f; // For meat
+        if (!TryComp<SolutionComponent>(food, out var sol))
+            return 0f;
 
-        var baseValue = (physics.Mass * modifier) * 3.0f;
+        if (!TryComp<SlimeHungerComponent>(slime, out var hunger))
+            return 0f;
+
+        var modifierPh = 1f;
+        if (physics.Mass == 0.25)
+            modifierPh = 20f; // For meat
+
+        var modifierSol = 1f;
+        var setVolume = sol.Solution.Volume / 5;
+		if (setVolume > 1);
+			modifierSol *= setVolume.Float();
+
+        var baseValue = (physics.Mass * modifierPh * modifierSol) * hunger.ModifierFood;
         if (TryComp<SlimeGrowthComponent>(slime, out var growth) && growth.CurrentStage == SlimeStage.Young)
             baseValue *= 1.5f;
 

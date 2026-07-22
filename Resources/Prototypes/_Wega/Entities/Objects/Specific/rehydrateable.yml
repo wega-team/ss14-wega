@@ -120,3 +120,12 @@
   - type: Rehydratable
     possibleSpawns:
     - MobDionaNymph
+    
+- type: entity
+  parent: RehydratableAnimalCube
+  id: HeadcrabCube
+  name: lamar cube
+  components:
+  - type: Rehydratable
+    possibleSpawns:
+    - MobXenomorphLammar
