@@ -15,3 +15,5 @@ ent-AccessConfiguratorAllAccses = настроенный конфигурато�
 ent-HandheldGPSBasicBorgOn = { ent-HandheldGPSBasic }
     .desc = { ent-HandheldGPSBasic.desc }
     .suffix = Борговский
+ent-RPD = РФУ
+    .desc = Ручное устройство для быстрой установки атмосферных труб и прочей утилиты. Требует сжатой материи для использования.

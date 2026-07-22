@@ -270,4 +270,4 @@
   - type: Armor
     modifiers:
       coefficients:
-        Heat: 0.85
+        Heat: 0.9

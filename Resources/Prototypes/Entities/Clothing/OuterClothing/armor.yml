@@ -169,7 +169,7 @@
         Slash: 0.6
         Piercing: 0.3
         Heat: 0.9
-  - type: StaminaResistance
+  - type: StaminaResistance # Corvax-Wega-Change
     damageCoefficient: 0.75
   - type: StaticPrice
     price: 1500
@@ -199,7 +199,7 @@
         Caustic: 0.5
   - type: FireProtection
     reduction: 0.85
-  - type: StaminaResistance
+  - type: StaminaResistance # Corvax-Wega-Change
     damageCoefficient: 0.6
   - type: StaticPrice
     price: 2500
