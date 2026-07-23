@@ -61,9 +61,12 @@ public sealed partial class VampireSystem
 
             _damage.TryChangeDamage(args.User, ent.Comp.Damage, true, false, origin: ent);
             _stamina.TakeStaminaDamage(ent, ent.Comp.StaminaMod, visual: false);
-
-            AddBloodEssence(args.User, ent.Comp.BloodStealAmount);
-            _blood.TryModifyBleedAmount(hitEnt, -ent.Comp.BloodStealAmount.Float() * 2);
+			
+			if (!_mobState.IsDead(hitEnt))
+			{
+				AddBloodEssence(args.User, ent.Comp.BloodStealAmount);
+				_blood.TryModifyBleedAmount(hitEnt, -ent.Comp.BloodStealAmount.Float() * 2);
+			}
         }
     }
 
