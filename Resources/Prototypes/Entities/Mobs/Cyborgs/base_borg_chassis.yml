@@ -336,6 +336,7 @@
     - AllAccess
     tags:
     - Borg
+    - BlueShieldOfficer # Corvax-Wega-BSO-Access
   - type: AccessReader
     access: [["Command"], ["Research"]]
   - type: ShowJobIcons
@@ -394,6 +395,8 @@
   - type: Access
     groups:
     - AllAccess #Randomized access would be fun. AllAccess is the best i can think of right now that does make it too hard for it to enter the station or navigate it..
+    tags:
+    - BlueShieldOfficer # Corvax-Wega-BSO-Access
   - type: AccessReader
     access: [["Command"], ["Research"]]
   - type: StartIonStormed

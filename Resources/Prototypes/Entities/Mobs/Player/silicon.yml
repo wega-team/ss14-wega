@@ -444,6 +444,7 @@
     groups:
     - AllAccess
     - Silicon
+    - BlueShieldOfficer # Corvax-Wega-BSO-Access
   - type: Eye
     drawFov: false
   - type: Examiner
