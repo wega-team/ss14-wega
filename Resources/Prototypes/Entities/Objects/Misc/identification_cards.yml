@@ -1327,6 +1327,7 @@
     - SyndicateAgent
     - Wizard
     - Xenoborg
+    - BlueShieldOfficer # Corwax-Wega-BSO-Access
   - type: Tag #  Ignore Chameleon tags
     tags:
     - DoorBumpOpener

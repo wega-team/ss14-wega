@@ -59,3 +59,21 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsLavalandAvanpost ]
+
+- type: entity
+  parent: AirlockCommand
+  id: AirlockBlueShieldOfficerLocked
+  suffix: BlueShieldOfficer, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsBlueShieldOfficer ]
+
+- type: entity
+  parent: AirlockCommandGlass
+  id: AirlockBlueShieldOfficerGlassLocked
+  suffix: BlueShieldOfficer, Locked, Glass
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsBlueShieldOfficer ]

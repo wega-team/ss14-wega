@@ -315,18 +315,3 @@
   - type: BloodBrotherSharedStealCondition
     stealGroup: GlovesKravMaga
     owner: job-name-warden
-
-## Blue Shield Officer
-
-- type: entity
-  parent: BaseBloodBrotherStealObjective
-  id: BloodBrotherSharedBlueLaserPistolStealObjective
-  components:
-  - type: Objective
-    difficulty: 3
-  - type: NotJobRequirement
-    jobs: [ BlueShieldOfficer ]
-  - type: BloodBrotherSharedStealCondition
-    verifyMapExistence: true
-    stealGroup: WeaponBlueLaserPistol
-    owner: job-name-bso

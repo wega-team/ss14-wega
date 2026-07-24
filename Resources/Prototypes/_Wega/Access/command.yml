@@ -1,0 +1,4 @@
+- type: accessLevel
+  id: BlueShieldOfficer
+  name: id-card-access-level-blue-shield-officer
+  consoleAvaible: false
