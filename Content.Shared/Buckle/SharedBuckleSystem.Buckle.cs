@@ -16,7 +16,7 @@ using Content.Shared.Standing;
 using Content.Shared.Storage.Components;
 using Content.Shared.Stunnable;
 using Content.Shared.Throwing;
-using Content.Shared.Vehicle.Components; // Corvax-Wega-Vehicles
+using Content.Shared.Vehicle.Components;
 using Content.Shared.Whitelist;
 using Robust.Shared.Containers;
 using Robust.Shared.Map;
@@ -547,9 +547,6 @@ public abstract partial class SharedBuckleSystem
         RaiseLocalEvent(buckle, ref unbuckleAttempt);
         if (unbuckleAttempt.Cancelled)
             return false;
-
-        if (TryComp<VehicleComponent>(strapUid, out var vehicle) && vehicle.Rider != user && !_mobState.IsIncapacitated(buckle)) // Corvax-Wega-Vehicles
-            return false; // Corvax-Wega-Vehicles
 
         var unstrapAttempt = new UnstrapAttemptEvent(strap, buckle!, user, popup);
         RaiseLocalEvent(strap, ref unstrapAttempt);

@@ -16,7 +16,6 @@ using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Rejuvenate;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
 
@@ -28,7 +27,6 @@ namespace Content.Server.Disease
     /// </summary>
     public sealed partial class DiseaseSystem : SharedDiseaseSystem
     {
-        [Dependency] private IPrototypeManager _prototypeManager = default!;
         [Dependency] private IRobustRandom _random = default!;
         [Dependency] private SharedDoAfterSystem _doAfterSystem = default!;
         [Dependency] private PopupSystem _popupSystem = default!;
@@ -152,7 +150,7 @@ namespace Content.Server.Disease
 
             foreach (var immunity in component.NaturalImmunities)
             {
-                if (_prototypeManager.TryIndex<DiseasePrototype>(immunity, out var disease))
+                if (ProtoMan.TryIndex<DiseasePrototype>(immunity, out var disease))
                     component.PastDiseases.Add(disease);
                 else
                 {
@@ -359,7 +357,7 @@ namespace Content.Server.Disease
 
         public void TryInfect(EntityUid uid, DiseaseCarrierComponent carrier, string? disease, float chance = 0.7f, bool forced = false)
         {
-            if (disease == null || !_prototypeManager.TryIndex<DiseasePrototype>(disease, out var d))
+            if (disease == null || !ProtoMan.TryIndex<DiseasePrototype>(disease, out var d))
                 return;
 
             TryInfect(uid, carrier, d, chance, forced);

@@ -1,6 +1,5 @@
 using Content.Server.Chat.Systems;
 using Content.Server.Hands.Systems;
-using Content.Server.Speech;
 using Content.Server.Speech.Components;
 using Content.Shared.Chat;
 using Content.Shared.Paper;
@@ -8,7 +7,6 @@ using Content.Shared.Speech;
 using Content.Shared.TapeRecorder;
 using Content.Shared.TapeRecorder.Components;
 using Content.Shared.TapeRecorder.Events;
-using Robust.Shared.Prototypes;
 using System.Text;
 
 namespace Content.Server.TapeRecorder;
@@ -17,7 +15,6 @@ public sealed partial class TapeRecorderSystem : SharedTapeRecorderSystem
 {
     [Dependency] private ChatSystem _chat = default!;
     [Dependency] private HandsSystem _hands = default!;
-    [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private PaperSystem _paper = default!;
 
     public override void Initialize()
@@ -46,7 +43,7 @@ public sealed partial class TapeRecorderSystem : SharedTapeRecorderSystem
             voice.NameOverride = message.Name ?? ent.Comp.DefaultName;
             // TODO: mimic the exact string chosen when the message was recorded
             var verb = message.Verb ?? SharedChatSystem.DefaultSpeechVerb;
-            speech.SpeechVerb = _proto.Index(verb);
+            speech.SpeechVerb = ProtoMan.Index(verb);
             //Play the message
             _chat.TrySendInGameICMessage(ent, message.Message, InGameICChatType.Speak, false);
         }

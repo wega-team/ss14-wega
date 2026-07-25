@@ -4,7 +4,6 @@ using Content.Shared.Speech.Synthesis.Components;
 using Robust.Server.Audio;
 using Robust.Shared.Audio;
 using Robust.Shared.Configuration;
-using Robust.Shared.Prototypes;
 using Content.Shared.Chat;
 
 namespace Content.Server.Speech.Synthesis.System;
@@ -15,7 +14,6 @@ namespace Content.Server.Speech.Synthesis.System;
 public sealed partial class BarkSystem : EntitySystem
 {
     [Dependency] private AudioSystem _audio = default!;
-    [Dependency] private IPrototypeManager _prototypeManager = default!;
     [Dependency] private IConfigurationManager _configurationManager = default!;
     [Dependency] private IEntityManager _entityManager = default!;
 
@@ -29,7 +27,7 @@ public sealed partial class BarkSystem : EntitySystem
     private void OnEntitySpoke(EntityUid uid, SpeechSynthesisComponent comp, EntitySpokeEvent args)
     {
         if (comp.VoicePrototypeId is null ||
-            !_prototypeManager.TryIndex<BarkPrototype>(comp.VoicePrototypeId, out var barkProto) ||
+            !ProtoMan.TryIndex<BarkPrototype>(comp.VoicePrototypeId, out var barkProto) ||
             !_configurationManager.GetCVar(WegaCVars.BarksEnabled))
             return;
 
@@ -41,7 +39,7 @@ public sealed partial class BarkSystem : EntitySystem
 
     private async void OnRequestPreviewBark(RequestPreviewBarkEvent ev, EntitySessionEventArgs args)
     {
-        if (string.IsNullOrEmpty(ev.BarkVoiceId) || !_prototypeManager.TryIndex<BarkPrototype>(ev.BarkVoiceId, out var barkProto)
+        if (string.IsNullOrEmpty(ev.BarkVoiceId) || !ProtoMan.TryIndex<BarkPrototype>(ev.BarkVoiceId, out var barkProto)
             || !_configurationManager.GetCVar(WegaCVars.BarksEnabled))
             return;
 

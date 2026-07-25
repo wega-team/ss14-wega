@@ -1,15 +1,12 @@
 using System.Linq;
-using System.Text.Json;
 using System.Threading.Tasks;
 using Content.Server.Administration.Logs;
 using Content.Server.Chat.Systems;
 using Content.Server.Inventory;
 using Content.Server.Prayer;
-using Content.Shared.Body;
 using Content.Shared.Buckle;
 using Content.Shared.Chat.Prototypes;
 using Content.Shared.Damage;
-using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Database;
 using Content.Shared.Forensics.Components;
@@ -48,7 +45,6 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
     [Dependency] private MobThresholdSystem _mobThreshold = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private PrayerSystem _prayerSystem = default!;
-    [Dependency] private IPrototypeManager _prototype = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
 
@@ -111,7 +107,7 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
         var diseaseEnzymes = dnaModifier.EnzymesPrototypes
             .Where(enzyme =>
             {
-                if (!_prototype.TryIndex<StructuralEnzymesPrototype>(enzyme.EnzymesPrototypeId, out var enzymePrototype))
+                if (!ProtoMan.TryIndex<StructuralEnzymesPrototype>(enzyme.EnzymesPrototypeId, out var enzymePrototype))
                     return false;
 
                 return enzymePrototype.TypeDeviation == EnzymesType.Disease;
@@ -182,7 +178,7 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
         };
 
         var markingPrototypes = _markingIndexer.GetAllMarkingPrototypes();
-        var speciesProto = _prototype.Index<SpeciesPrototype>(humanoid.Species);
+        var speciesProto = ProtoMan.Index<SpeciesPrototype>(humanoid.Species);
 
         var empty = new[] { "0", "0", "0" };
 
@@ -277,7 +273,7 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
         }
 
         // Skin color or fur color
-        var skinColorationProto = _prototype.Index<SkinColorationPrototype>(speciesProto.SkinColoration);
+        var skinColorationProto = ProtoMan.Index<SkinColorationPrototype>(speciesProto.SkinColoration);
         switch (skinColorationProto.Strategy.InputType)
         {
             case SkinColorationStrategyInput.Unary:
@@ -526,7 +522,7 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
         int totalInstability = component.Instability;
         foreach (var enzyme in component.EnzymesPrototypes)
         {
-            if (!_prototype.TryIndex<StructuralEnzymesPrototype>(enzyme.EnzymesPrototypeId, out var enzymePrototype))
+            if (!ProtoMan.TryIndex<StructuralEnzymesPrototype>(enzyme.EnzymesPrototypeId, out var enzymePrototype))
                 continue;
 
             bool hasComponent = enzymePrototype.AddComponent != null && enzymePrototype.AddComponent
@@ -617,7 +613,7 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
 
             _damage.TryChangeDamage(uid, damage, true);
 
-            _chat.TryEmoteWithoutChat(uid, _prototype.Index(Scream), true);
+            _chat.TryEmoteWithoutChat(uid, ProtoMan.Index(Scream), true);
             _popup.PopupEntity(Loc.GetString("dna-instability-stage-two"), uid, uid, PopupType.SmallCaution);
         }
     }
@@ -630,7 +626,7 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
 
             _damage.TryChangeDamage(uid, damage, true);
 
-            _chat.TryEmoteWithoutChat(uid, _prototype.Index(Scream), true);
+            _chat.TryEmoteWithoutChat(uid, ProtoMan.Index(Scream), true);
             _popup.PopupEntity(Loc.GetString("dna-instability-stage-three"), uid, uid, PopupType.LargeCaution);
         }
     }
@@ -683,8 +679,8 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
 
     private void UpdateSkin(Entity<HumanoidProfileComponent> humanoid, UniqueIdentifiersData uniqueIdentifiers)
     {
-        var speciesProto = _prototype.Index(humanoid.Comp.Species);
-        var skinColorationProto = _prototype.Index(speciesProto.SkinColoration);
+        var speciesProto = ProtoMan.Index(humanoid.Comp.Species);
+        var skinColorationProto = ProtoMan.Index(speciesProto.SkinColoration);
 
         Color newSkinColor;
         switch (skinColorationProto.Strategy.InputType)
@@ -813,7 +809,7 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
                 continue;
             }
 
-            if (!_prototype.TryIndex<StructuralEnzymesPrototype>(enzyme.EnzymesPrototypeId, out var enzymePrototype))
+            if (!ProtoMan.TryIndex<StructuralEnzymesPrototype>(enzyme.EnzymesPrototypeId, out var enzymePrototype))
                 continue;
 
             bool meetsCondition = CheckHexCodeCondition(enzyme.HexCode, enzymePrototype.TypeDeviation);
@@ -1070,7 +1066,7 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
 
         foreach (var enzyme in component.EnzymesPrototypes)
         {
-            if (!_prototype.TryIndex<StructuralEnzymesPrototype>(enzyme.EnzymesPrototypeId, out var enzymePrototype))
+            if (!ProtoMan.TryIndex<StructuralEnzymesPrototype>(enzyme.EnzymesPrototypeId, out var enzymePrototype))
                 continue;
 
             if (enzymePrototype.TypeDeviation == EnzymesType.Disease)
@@ -1101,7 +1097,7 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
                 continue;
             }
 
-            if (!_prototype.TryIndex<StructuralEnzymesPrototype>(enzyme.EnzymesPrototypeId, out var enzymePrototype))
+            if (!ProtoMan.TryIndex<StructuralEnzymesPrototype>(enzyme.EnzymesPrototypeId, out var enzymePrototype))
                 continue;
 
             if (enzymePrototype.TypeDeviation == EnzymesType.Disease)
@@ -1135,7 +1131,7 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
             var diseaseEnzymes = component.EnzymesPrototypes
                 .Where(enzyme =>
                 {
-                    if (!_prototype.TryIndex<StructuralEnzymesPrototype>(enzyme.EnzymesPrototypeId, out var enzymePrototype))
+                    if (!ProtoMan.TryIndex<StructuralEnzymesPrototype>(enzyme.EnzymesPrototypeId, out var enzymePrototype))
                         return false;
 
                     return enzymePrototype.TypeDeviation == EnzymesType.Disease;

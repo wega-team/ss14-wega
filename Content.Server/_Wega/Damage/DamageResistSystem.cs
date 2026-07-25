@@ -2,7 +2,6 @@ using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Damage.Systems;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
 namespace Content.Server.Damage;
@@ -11,7 +10,6 @@ public sealed partial class DamageResistSystem : EntitySystem
 {
     [Dependency] private DamageableSystem _damageable = default!;
     [Dependency] private IGameTiming _gameTiming = default!;
-    [Dependency] private IPrototypeManager _prototype = default!;
 
     public override void Initialize()
     {
@@ -54,7 +52,7 @@ public sealed partial class DamageResistSystem : EntitySystem
         var healing = new DamageSpecifier();
         foreach (var (type, delta) in args.DamageDelta.DamageDict)
         {
-            if (!_prototype.TryIndex<DamageTypePrototype>(type, out var damageProto))
+            if (!ProtoMan.TryIndex(type, out var damageProto))
                 continue;
 
             if (ent.Comp.Resistances.TryGetValue(damageProto, out var resist))

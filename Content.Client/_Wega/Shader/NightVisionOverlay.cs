@@ -32,18 +32,18 @@ public sealed partial class NightVisionOverlay : Overlay
         _baseShader = _prototypeManager.Index(NightVision).Instance();
     }
 
-	protected override bool BeforeDraw(in OverlayDrawArgs args)
-	{
-		if (_playerManager.LocalEntity is not { } player
-			|| !_entityManager.TryGetComponent(player, out EyeComponent? eye)
-			|| args.Viewport.Eye != eye.Eye)
-		{
-			return false;
-		}
+    protected override bool BeforeDraw(in OverlayDrawArgs args)
+    {
+        if (_playerManager.LocalEntity is not { } player
+            || !_entityManager.TryGetComponent(player, out EyeComponent? eye)
+            || args.Viewport.Eye != eye.Eye)
+        {
+            return false;
+        }
 
-		_currentShader = _baseShader.Duplicate();
-		return true;
-	}
+        _currentShader = _baseShader.Duplicate();
+        return true;
+    }
 
     protected override void Draw(in OverlayDrawArgs args)
     {

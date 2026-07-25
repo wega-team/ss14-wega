@@ -96,7 +96,7 @@ public abstract partial class SharedChatSystem : EntitySystem
     // Corvax-Wega-MindChat-start
     private void CacheMindChannels()
     {
-        _mindKeyCodes = _prototypeManager.EnumeratePrototypes<MindChannelPrototype>()
+        _mindKeyCodes = ProtoMan.EnumeratePrototypes<MindChannelPrototype>()
             .ToFrozenDictionary(x => x.KeyCode);
     }
     // Corvax-Wega-MindChat-end

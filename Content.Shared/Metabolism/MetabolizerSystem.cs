@@ -312,7 +312,7 @@ public sealed partial class MetabolizerSystem : EntitySystem
     // Corvax-Wega-Vampire-start
     public bool TryAddMetabolizerType(MetabolizerComponent component, string metabolizerType)
     {
-        if (!_prototypeManager.HasIndex<MetabolizerTypePrototype>(metabolizerType))
+        if (!ProtoMan.HasIndex<MetabolizerTypePrototype>(metabolizerType))
             return false;
 
         if (component.MetabolizerTypes == null)

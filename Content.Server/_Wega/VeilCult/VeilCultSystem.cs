@@ -44,7 +44,6 @@ public sealed partial class VeilCultSystem : SharedVeilCultSystem
 {
     [Dependency] private AudioSystem _audio = default!;
     [Dependency] private VeilCultRuleSystem _veilCult = default!;
-    [Dependency] private IPrototypeManager _prototypeManager = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private MobStateSystem _mobState = default!;
     [Dependency] private ServerGlobalSoundSystem _sound = default!;

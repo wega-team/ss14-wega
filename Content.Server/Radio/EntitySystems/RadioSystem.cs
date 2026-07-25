@@ -210,7 +210,7 @@ public sealed partial class RadioSystem : EntitySystem
 
         foreach (var departmentProtoId in idCard.JobDepartments)
         {
-            if (_prototype.TryIndex(departmentProtoId, out DepartmentPrototype? department))
+            if (ProtoMan.TryIndex(departmentProtoId, out DepartmentPrototype? department))
                 return department.Color;
         }
         return null;

@@ -629,34 +629,34 @@ namespace Content.Server.Ghost
                 if (TryComp<FlammableComponent>(spawnedMob, out var flame))
                     _entityManager.RemoveComponent<FlammableComponent>(spawnedMob);
 
-				foreach (var traitId in profile.TraitPreferences)
-				{
-					if (!_prototypeManager.TryIndex<TraitPrototype>(traitId, out var traitPrototype))
-					{
-						Log.Error($"No trait found with ID {traitId}!");
-						return;
-					}
+                foreach (var traitId in profile.TraitPreferences)
+                {
+                    if (!ProtoMan.TryIndex(traitId, out var traitPrototype))
+                    {
+                        Log.Error($"No trait found with ID {traitId}!");
+                        return;
+                    }
 
-					if (_whitelistSystem.IsWhitelistFail(traitPrototype.Whitelist, spawnedMob) ||
-						_whitelistSystem.IsWhitelistPass(traitPrototype.Blacklist, spawnedMob))
-						continue;
+                    if (_whitelistSystem.IsWhitelistFail(traitPrototype.Whitelist, spawnedMob) ||
+                        _whitelistSystem.IsWhitelistPass(traitPrototype.Blacklist, spawnedMob))
+                        continue;
 
-					// Add all components required by the prototype
-					_entityManager.AddComponents(spawnedMob, traitPrototype.Components, false);
+                    // Add all components required by the prototype
+                    _entityManager.AddComponents(spawnedMob, traitPrototype.Components, false);
 
-					// Add item required by the trait
-					if (traitPrototype.TraitGear == null)
-						continue;
+                    // Add item required by the trait
+                    if (traitPrototype.TraitGear == null)
+                        continue;
 
-					if (!TryComp<HandsComponent>(spawnedMob, out var handsComponent))
-						continue;
+                    if (!TryComp<HandsComponent>(spawnedMob, out var handsComponent))
+                        continue;
 
-					var inhandEntity = Spawn(traitPrototype.TraitGear, coords);
-					_sharedHandsSystem.TryPickup(spawnedMob,
-					inhandEntity,
-					checkActionBlocker: false,
-					handsComp: handsComponent);
-				}
+                    var inhandEntity = Spawn(traitPrototype.TraitGear, coords);
+                    _sharedHandsSystem.TryPickup(spawnedMob,
+                    inhandEntity,
+                    checkActionBlocker: false,
+                    handsComp: handsComponent);
+                }
 
                 if (targetMind != null)
                 {
