@@ -15,7 +15,7 @@ namespace Content.Server.Database.Migrations.Sqlite
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "10.0.0");
+            modelBuilder.HasAnnotation("ProductVersion", "10.0.6");
 
             modelBuilder.Entity("Content.Server.Database.Achievement", b =>
                 {
@@ -1206,8 +1206,12 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasColumnType("TEXT")
                         .HasColumnName("tags_flavor_text");
 
-                    b.Property<string>("Voice")
+                    b.Property<string>("TTSVoice")  // Corvax-TTS
                         .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("ttsvoice");
+
+                    b.Property<string>("Voice")
                         .HasColumnType("TEXT")
                         .HasColumnName("voice");
 

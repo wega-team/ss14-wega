@@ -7,6 +7,7 @@ using Content.Shared.Database;
 using Content.Shared.DoAfter;
 using Content.Shared.Hands.Components;
 using Content.Shared.IdentityManagement;
+using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Events;
 using Content.Shared.Movement.Pulling.Events;
 using Content.Shared.Popups;
@@ -188,7 +189,11 @@ public abstract partial class SharedBuckleSystem
 
     private void OnBuckleUpdateCanMove(EntityUid uid, BuckleComponent component, UpdateCanMoveEvent args)
     {
-        if (component.Buckled && !HasComp<VehicleComponent>(component.BuckledTo)) // Corvax-Wega-Vehicles-Edit
+        // If we're relaying then don't cancel.
+        if (HasComp<RelayInputMoverComponent>(uid))
+            return;
+
+        if (component.Buckled)
             args.Cancel();
     }
 
@@ -250,8 +255,8 @@ public abstract partial class SharedBuckleSystem
         if (_whitelistSystem.IsWhitelistFail(strapComp.Whitelist, buckleUid) ||
             _whitelistSystem.IsWhitelistPass(strapComp.Blacklist, buckleUid))
         {
-            if (popup)
-                _popup.PopupClient(Loc.GetString("buckle-component-cannot-fit-message"), user, PopupType.Medium);
+            if (popup && user != null)
+                _popup.PopupEntity(Loc.GetString("buckle-component-cannot-fit-message"), user.Value, user, PopupType.Medium);
 
             return false;
         }
@@ -271,21 +276,21 @@ public abstract partial class SharedBuckleSystem
         if (user != null && !HasComp<HandsComponent>(user))
         {
             if (popup)
-                _popup.PopupClient(Loc.GetString("buckle-component-no-hands-message"), user);
+                _popup.PopupEntity(Loc.GetString("buckle-component-no-hands-message"), user.Value, user);
 
             return false;
         }
 
         if (buckleComp.Buckled && !TryUnbuckle(buckleUid, user, buckleComp))
         {
-            if (popup)
+            if (popup && user != null)
             {
                 var message = Loc.GetString(buckleUid == user
                     ? "buckle-component-already-buckled-message"
                     : "buckle-component-other-already-buckled-message",
                 ("owner", Identity.Entity(buckleUid, EntityManager)));
 
-                _popup.PopupClient(message, user);
+                _popup.PopupEntity(message, user.Value, user);
             }
 
             return false;
@@ -308,7 +313,8 @@ public abstract partial class SharedBuckleSystem
                     : "buckle-component-other-cannot-buckle-message",
                 ("owner", Identity.Entity(buckleUid, EntityManager)));
 
-                _popup.PopupClient(message, user);
+                if (user != null)
+                    _popup.PopupEntity(message, user.Value, user);
             }
 
             return false;
@@ -323,7 +329,8 @@ public abstract partial class SharedBuckleSystem
                     : "buckle-component-other-cannot-buckle-message",
                 ("owner", Identity.Entity(buckleUid, EntityManager)));
 
-                _popup.PopupClient(message, user);
+                if (user != null)
+                    _popup.PopupEntity(message, user.Value, user);
             }
 
             return false;
