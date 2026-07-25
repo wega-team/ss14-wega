@@ -135,7 +135,7 @@ public sealed partial class WegaCVars
         Lavaland CVars
     */
     public static readonly CVarDef<bool> LavalandEnabled =
-        CVarDef.Create("lavaland.enabled", true, CVar.SERVERONLY);
+        CVarDef.Create("lavaland.enabled", false, CVar.SERVERONLY);
 
     public static readonly CVarDef<int> LavalandMaxBuildings =
         CVarDef.Create("lavaland.max_buildings", 128, CVar.SERVER | CVar.REPLICATED);

@@ -58,6 +58,3 @@ pg_port = 5432
 pg_database = "ss14"
 pg_username = "postgres"
 pg_password = "postgres"
-
-[lavaland]
-enabled = false
