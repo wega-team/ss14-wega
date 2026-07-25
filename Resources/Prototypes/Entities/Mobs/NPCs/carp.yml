@@ -89,6 +89,15 @@
 # Corvax-Wega-Start
     - type: MindLink
       channels: ["MindCarp"]
+    - type: NaturalNightVision
+      tintColor: "#fb1e1e"
+    - type: LeechMeleeWeapon
+      heal:
+        types:
+          Heat: -5
+          Blunt: -5
+          Slash: -5
+          Piercing: -5
 # Corvax-Wega-End
 
 - type: entity

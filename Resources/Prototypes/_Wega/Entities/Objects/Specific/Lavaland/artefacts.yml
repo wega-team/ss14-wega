@@ -329,3 +329,7 @@
         Burn: -1
         Airloss: -1
         Toxin: -1
+    whitelist:
+      components:
+      - MobState
+      - MiningScannerViewable

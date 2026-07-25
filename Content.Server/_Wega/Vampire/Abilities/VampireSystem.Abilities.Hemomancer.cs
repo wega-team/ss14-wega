@@ -59,8 +59,12 @@ public sealed partial class VampireSystem
             if (!HasComp<BloodstreamComponent>(hitEnt))
                 continue;
 
+			TryComp<BloodstreamComponent>(args.User, out var bloodstream);
+
             _damage.TryChangeDamage(args.User, ent.Comp.Damage, true, false, origin: ent);
             _stamina.TakeStaminaDamage(ent, ent.Comp.StaminaMod, visual: false);
+            _blood.TryModifyBloodLevel((args.User, bloodstream), ent.Comp.ModifyBloodLevel);
+            _blood.TryModifyBleedAmount((args.User, bloodstream), ent.Comp.BloodlossModifier);
 			
 			if (!_mobState.IsDead(hitEnt))
 			{

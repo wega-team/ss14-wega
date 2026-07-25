@@ -13,5 +13,11 @@ public sealed partial class VampireClawsComponent : Component
     public DamageSpecifier Damage = default!;
 
     [DataField]
+    public float ModifyBloodLevel = 15.0f;
+
+    [DataField]
+    public float BloodlossModifier = -2.5f;
+
+    [DataField]
     public float StaminaMod = -10f;
 }

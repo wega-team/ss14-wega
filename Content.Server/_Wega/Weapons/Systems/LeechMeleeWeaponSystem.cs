@@ -4,6 +4,8 @@ using Content.Shared.Damage.Systems;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Whitelist;
+using Content.Shared.Body.Components;
+using Content.Shared.Body.Systems;
 
 namespace Content.Server.Weapons.Marker;
 
@@ -12,6 +14,7 @@ public sealed partial class LeechMeleeWeaponSystem : EntitySystem
     [Dependency] private EntityWhitelistSystem _entityWhitelist = default!;
     [Dependency] private DamageableSystem _damageable = default!;
     [Dependency] private MobStateSystem _mobState = default!;
+    [Dependency] private SharedBloodstreamSystem _bloodstreamSystem = default!;
 
     public override void Initialize()
     {
@@ -58,7 +61,10 @@ public sealed partial class LeechMeleeWeaponSystem : EntitySystem
             if (_mobState.IsDead(hitEnt))
                 continue;
 
+			TryComp<BloodstreamComponent>(args.User, out var bloodstream);
             _damageable.TryChangeDamage(args.User, heal, true, false, origin: args.Weapon);
+            _bloodstreamSystem.TryModifyBloodLevel((args.User, bloodstream), component.ModifyBloodLevel);
+            _bloodstreamSystem.TryModifyBleedAmount((args.User, bloodstream), component.BloodlossModifier);
         }
     }
 }

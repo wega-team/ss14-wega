@@ -2827,6 +2827,16 @@
   - type: NaturalNightVision # Corvax-Wega-NightVision
     tintColor: "#931a32"
     visible: true
+  - type: LeechMeleeWeapon
+    heal:
+      types:
+        Heat: -5
+        Blunt: -5
+        Slash: -5
+        Piercing: -5
+        Bloodloss: -2
+    bloodlossModifier: -2
+    modifyBloodLevel: 10
   # Corvax-Wega-end
 
 - type: entity
