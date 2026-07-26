@@ -69,7 +69,6 @@ public sealed partial class VampireSystem
 			if (!_mobState.IsDead(hitEnt))
 			{
 				AddBloodEssence(args.User, ent.Comp.BloodStealAmount);
-				_blood.TryModifyBleedAmount(hitEnt, -ent.Comp.BloodStealAmount.Float() * 2);
 			}
         }
     }
