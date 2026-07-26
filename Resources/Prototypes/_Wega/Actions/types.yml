@@ -59,6 +59,8 @@
   description: Releases a cloud of smoke.
   components:
   - type: Action
+    itemIconStyle: BigAction
+    priority: -20
     useDelay: 40
     icon:
       sprite: Objects/Weapons/Grenades/smoke.rsi

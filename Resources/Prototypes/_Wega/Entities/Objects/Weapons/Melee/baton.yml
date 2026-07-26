@@ -51,7 +51,7 @@
     damage: 75
   - type: KnockdownOnHit
   - type: Item
-    sprite: Objects/Weapons/Melee/contractor_baton.rsi
+    sprite: _Wega/Objects/Weapons/Melee/contractor_baton.rsi
     size: Normal
     shape:
     - 0,0,2,3

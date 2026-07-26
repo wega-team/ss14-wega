@@ -20,7 +20,6 @@ namespace Content.Shared.Clothing.EntitySystems;
 
 public abstract partial class SharedChameleonClothingSystem : EntitySystem
 {
-    [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private ClothingSystem _clothingSystem = default!;
     [Dependency] private ContrabandSystem _contraband = default!;
     [Dependency] private MetaDataSystem _metaData = default!;
@@ -90,7 +89,7 @@ public abstract partial class SharedChameleonClothingSystem : EntitySystem
     protected void UpdateVisuals(EntityUid uid, ChameleonClothingComponent component)
     {
         if (string.IsNullOrEmpty(component.Default) ||
-            !_proto.Resolve(component.Default, out EntityPrototype? proto))
+            !ProtoMan.Resolve(component.Default, out EntityPrototype? proto))
             return;
 
         // world sprite icon
@@ -106,14 +105,14 @@ public abstract partial class SharedChameleonClothingSystem : EntitySystem
 
         // item sprite logic
         if (TryComp(uid, out ItemComponent? item) &&
-            proto.TryGetComponent(out ItemComponent? otherItem, Factory))
+            proto.TryComp(out ItemComponent? otherItem, Factory))
         {
             _itemSystem.CopyVisuals(uid, otherItem, item);
         }
 
         // clothing sprite logic
         if (TryComp(uid, out ClothingComponent? clothing) &&
-            proto.TryGetComponent(out ClothingComponent? otherClothing, Factory))
+            proto.TryComp(out ClothingComponent? otherClothing, Factory))
         {
             _clothingSystem.CopyVisuals(uid, otherClothing, clothing);
         }
@@ -133,14 +132,14 @@ public abstract partial class SharedChameleonClothingSystem : EntitySystem
 
         // appearance data logic
         if (TryComp(uid, out AppearanceComponent? appearance) &&
-            proto.TryGetComponent(out AppearanceComponent? appearanceOther, Factory))
+            proto.TryComp(out AppearanceComponent? appearanceOther, Factory))
         {
             _appearance.AppendData(appearanceOther, uid);
             Dirty(uid, appearance);
         }
 
         // properly mark contraband
-        if (proto.TryGetComponent(out ContrabandComponent? contra, Factory))
+        if (proto.TryComp(out ContrabandComponent? contra, Factory))
         {
             EnsureComp<ContrabandComponent>(uid, out var current);
             _contraband.CopyDetails(uid, contra, current);
@@ -200,14 +199,14 @@ public abstract partial class SharedChameleonClothingSystem : EntitySystem
             return false;
 
         // check if it is marked as valid chameleon target
-        if (!proto.TryGetComponent(out TagComponent? tag, Factory) || !_tag.HasTag(tag, WhitelistChameleonTag))
+        if (!proto.TryComp(out TagComponent? tag, Factory) || !_tag.HasTag(tag, WhitelistChameleonTag))
             return false;
 
         if (requiredTag != null && !_tag.HasTag(tag, requiredTag))
             return false;
 
         // check if it's valid clothing
-        if (!proto.TryGetComponent(out ClothingComponent? clothing, Factory))
+        if (!proto.TryComp(out ClothingComponent? clothing, Factory))
             return false;
 
         if (!clothing.Slots.HasFlag(chameleonSlot))
@@ -226,7 +225,7 @@ public abstract partial class SharedChameleonClothingSystem : EntitySystem
         {
             foreach (var proto in _data[slot])
             {
-                if (IsValidTarget(_proto.Index(proto), slot, tag))
+                if (IsValidTarget(ProtoMan.Index(proto), slot, tag))
                     validTargets.Add(proto);
             }
         }
@@ -249,14 +248,14 @@ public abstract partial class SharedChameleonClothingSystem : EntitySystem
     protected void PrepareAllVariants()
     {
         _data.Clear();
-        var prototypes = _proto.EnumeratePrototypes<EntityPrototype>();
+        var prototypes = ProtoMan.EnumeratePrototypes<EntityPrototype>();
 
         foreach (var proto in prototypes)
         {
             // check if this is valid clothing
             if (!IsValidTarget(proto))
                 continue;
-            if (!proto.TryGetComponent(out ClothingComponent? item, Factory))
+            if (!proto.TryComp(out ClothingComponent? item, Factory))
                 continue;
 
             // sort item by their slot flags

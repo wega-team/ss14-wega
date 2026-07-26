@@ -1,5 +1,23 @@
 # Miscellaneous
 - type: loadoutGroup
+  id: Glasses
+  name: loadout-group-glasses
+  minLimit: 0
+  loadouts:
+  - Glasses
+  - GlassesJamjar
+  - GlassesJensen
+  # Corvax-Wega-start
+  - ClothingEyesGlassesMonocle
+  - ClothingEyesGlassesCheapSunglasses
+  - ClothingEyesSalesman
+  - ClothingEyesEyepatch
+  # Corvax-Wega-end
+  # Corvax-Wega-Sponsors-start
+  - ClothingEyesGlassesHeroX
+  # Corvax-Wega-Sponsors-end
+
+- type: loadoutGroup
   id: Trinkets
   name: loadout-group-trinkets
   minLimit: 0
@@ -59,6 +77,14 @@
   - ClothingNeckTransPin
   - ClothingNeckAutismPin
   - ClothingNeckGoldAutismPin
+  - TowelColorWhite
+
+- type: loadoutGroup
+  id: AssistiveItems
+  name: loadout-group-assistive-items
+  minLimit: 0
+  maxLimit: 1 # Increase this limit in the future once there's more assistive items than just canes!
+  loadouts:
   - OffsetCane
   - OffsetCaneWood
   - OffsetCaneClown
@@ -78,32 +104,10 @@
   - ClothingNeckVoidPin
   - ClothingNeckWhiteListPin
   # Corvax-Loadouts-End
-  # Corvax-Wega-start
-  - BrasletHarmless
-  - BrasletSearch
-  - BrasletBite
-  - BrasletSex
-  - BrasletRape
-  # Corvax-Wega-end
-  - TowelColorWhite
   # Corvax-Wega-Sponsors-start
   - PetCarrierMars
+  - FoodInfiniteCub
   # Corvax-Wega-Sponsors-end
-
-- type: loadoutGroup
-  id: Glasses
-  name: loadout-group-glasses
-  minLimit: 0
-  loadouts:
-  - Glasses
-  - GlassesJamjar
-  - GlassesJensen
-  # Corvax-Wega-start
-  - ClothingEyesGlassesMonocle
-  - ClothingEyesGlassesCheapSunglasses
-  - ClothingEyesSalesman
-  - ClothingEyesEyepatch
-  # Corvax-Wega-end
 
 - type: loadoutGroup
   id: GroupTankHarness
@@ -199,6 +203,11 @@
   - CaptainMantle
   # Corvax-Wega-Sponsors-start
   - ClothingNeckCloakManly
+  - ClothingNeckCloakMagic
+  - ClothingNeckCloakSponsorRed
+  - ClothingNeckCloakSponsorBlac
+  - ClothingNeckCloakSponsorWithe
+  - ClothingNeckCloakSponsorBlue
   # Corvax-Wega-Sponsors-end
 # Corvax-Wega-start
   - ClothingNeckCaptainWide
@@ -241,6 +250,9 @@
 #  minLimit: 0
 #  loadouts: []
 
+  # Corvax-Wega-Sponsors-start
+  - ClothingOuterCyberJacket
+  # Corvax-Wega-Sponsors-end
 - type: loadoutGroup
   id: HoPHead
   name: loadout-group-hop-head
@@ -276,6 +288,11 @@
   # Corvax-Wega-Sponsors-start
   - ClothingNeckCloakManly
   - ClothingNeckCloakMagic
+  - ClothingNeckCloakSponsorRed
+  - ClothingNeckCloakSponsorBlac
+  - ClothingNeckCloakSponsorWithe
+  - ClothingNeckCloakSponsorBlue
+  - ClothingNeckChocerMoo
   # Corvax-Wega-Sponsors-end
 
 - type: loadoutGroup
@@ -302,6 +319,9 @@
 #  loadouts: []
 
 # Civilian
+  # Corvax-Wega-Sponsors-start
+  - ClothingOuterCyberJacket
+  # Corvax-Wega-Sponsors-end
 - type: loadoutGroup
   id: PassengerJumpsuit
   name: loadout-group-passenger-jumpsuit
@@ -323,6 +343,15 @@
   - ClothingUniformJumpsuitStylishShirt
   - ClothingUniformJumpsuitManlyPants
   - ClothingUniformJumpsuitBeautifulSweater
+  - ClothingUniformJumpskirtElegantShortRed
+  - ClothingUniformJumpskirtElegantColorRed
+  - ClothingUniformJumpskirtElegantColorBlack
+  - ClothingUniformJumpskirtElegantColorBlue
+  - ClothingUniformJumpskirtElegantColorPink
+  - ClothingUniformJumpskirtElegantColorGrey
+  - ClothingUniformJumpskirtElegantColorGreen
+  - ClothingUniformJumpskirtElegantColorWhite
+  - ClothingUniformJumpsuitStylishWithe
   # Corvax-Wega-Sponsors-end
 # Corvax-Wega-add-start
   - JumpsuitColorWhite
@@ -493,6 +522,11 @@
   # Corvax-Wega-Sponsors-start
   - ClothingNeckCloakManly
   - ClothingNeckCloakMagic
+  - ClothingNeckCloakSponsorRed
+  - ClothingNeckCloakSponsorBlac
+  - ClothingNeckCloakSponsorWithe
+  - ClothingNeckCloakSponsorBlue
+  - ClothingNeckChocerMoo
   # Corvax-Wega-Sponsors-end
 
 - type: loadoutGroup
@@ -502,6 +536,9 @@
   loadouts:
   - PassengerWintercoat
 
+  # Corvax-Wega-Sponsors-start
+  - ClothingOuterCyberJacket
+  # Corvax-Wega-Sponsors-end
 - type: loadoutGroup
   id: PassengerShoes
   name: loadout-group-passenger-shoes
@@ -532,6 +569,7 @@
   - ClothingShoesWizard
   - ClothingShoesTourist
   - ClothingShoesLeather
+  - ClothingShoesStylishWhite
  # Corvax-Wega-Shoes-End
 
 #- type: loadoutGroup
@@ -572,6 +610,15 @@
   - ClothingUniformJumpsuitStylishShirt
   - ClothingUniformJumpsuitManlyPants
   - ClothingUniformJumpsuitBeautifulSweater
+  - ClothingUniformJumpskirtElegantShortRed
+  - ClothingUniformJumpskirtElegantColorRed
+  - ClothingUniformJumpskirtElegantColorBlack
+  - ClothingUniformJumpskirtElegantColorBlue
+  - ClothingUniformJumpskirtElegantColorPink
+  - ClothingUniformJumpskirtElegantColorGrey
+  - ClothingUniformJumpskirtElegantColorGreen
+  - ClothingUniformJumpskirtElegantColorWhite
+  - ClothingUniformJumpsuitStylishWithe
   # Corvax-Wega-Sponsors-end
 # Corvax-Wega-add-start
   - ClothingUniformJumpsuitBartenderVestGreen
@@ -722,6 +769,9 @@
   - BartenderApron
   - BartenderWintercoat
 
+  # Corvax-Wega-Sponsors-start
+  - ClothingOuterCyberJacket
+  # Corvax-Wega-Sponsors-end
 - type: loadoutGroup
   id: BartenderJobTrinkets
   name: loadout-group-jobtrinkets
@@ -772,6 +822,15 @@
   - ClothingUniformJumpskirtElegantTacticalmaid
   - ClothingUniformJumpsuitManlyPants
   - ClothingUniformJumpsuitBeautifulSweater
+  - ClothingUniformJumpskirtElegantShortRed
+  - ClothingUniformJumpskirtElegantColorRed
+  - ClothingUniformJumpskirtElegantColorBlack
+  - ClothingUniformJumpskirtElegantColorBlue
+  - ClothingUniformJumpskirtElegantColorPink
+  - ClothingUniformJumpskirtElegantColorGrey
+  - ClothingUniformJumpskirtElegantColorGreen
+  - ClothingUniformJumpskirtElegantColorWhite
+  - ClothingUniformJumpsuitStylishWithe
   # Corvax-Wega-Sponsors-end
 # Corvax-Wega-add-start
   - JumpsuitColorWhite
@@ -923,6 +982,9 @@
 #  minLimit: 0
 #  loadouts:
 
+  # Corvax-Wega-Sponsors-start
+  - ClothingOuterCyberJacket
+  # Corvax-Wega-Sponsors-end
 - type: loadoutGroup
   id: LibrarianJumpsuit
   name: loadout-group-librarian-jumpsuit
@@ -943,6 +1005,15 @@
   - ClothingUniformJumpsuitStylishShirt
   - ClothingUniformJumpsuitManlyPants
   - ClothingUniformJumpsuitBeautifulSweater
+  - ClothingUniformJumpskirtElegantShortRed
+  - ClothingUniformJumpskirtElegantColorRed
+  - ClothingUniformJumpskirtElegantColorBlack
+  - ClothingUniformJumpskirtElegantColorBlue
+  - ClothingUniformJumpskirtElegantColorPink
+  - ClothingUniformJumpskirtElegantColorGrey
+  - ClothingUniformJumpskirtElegantColorGreen
+  - ClothingUniformJumpskirtElegantColorWhite
+  - ClothingUniformJumpsuitStylishWithe
   # Corvax-Wega-Sponsors-end
 # Corvax-Wega-add-start
   - JumpsuitColorWhite
@@ -1109,6 +1180,11 @@
   # Corvax-Wega-Sponsors-start
   - ClothingNeckCloakManly
   - ClothingNeckCloakMagic
+  - ClothingNeckCloakSponsorRed
+  - ClothingNeckCloakSponsorBlac
+  - ClothingNeckCloakSponsorWithe
+  - ClothingNeckCloakSponsorBlue
+  - ClothingNeckChocerMoo
   # Corvax-Wega-Sponsors-end
 
 #- type: loadoutGroup
@@ -1161,6 +1237,15 @@
   - ClothingUniformJumpsuitStylishShirt
   - ClothingUniformJumpsuitManlyPants
   - ClothingUniformJumpsuitBeautifulSweater
+  - ClothingUniformJumpskirtElegantShortRed
+  - ClothingUniformJumpskirtElegantColorRed
+  - ClothingUniformJumpskirtElegantColorBlack
+  - ClothingUniformJumpskirtElegantColorBlue
+  - ClothingUniformJumpskirtElegantColorPink
+  - ClothingUniformJumpskirtElegantColorGrey
+  - ClothingUniformJumpskirtElegantColorGreen
+  - ClothingUniformJumpskirtElegantColorWhite
+  - ClothingUniformJumpsuitStylishWithe
   # Corvax-Wega-Sponsors-end
 # Corvax-Wega-add-start
   - JumpsuitColorWhite
@@ -1308,6 +1393,9 @@
   - ChaplainBlackHoodie
   - ChaplainHoodie
 
+  # Corvax-Wega-Sponsors-start
+  - ClothingOuterCyberJacket
+  # Corvax-Wega-Sponsors-end
 - type: loadoutGroup
   id: ChaplainNeck
   name: loadout-group-chaplain-neck
@@ -1315,8 +1403,13 @@
   loadouts:
   - ChaplainNeck
   # Corvax-Wega-Sponsors-start
-  - ClothingNeckCloakMagic
   - ClothingNeckCloakManly
+  - ClothingNeckCloakMagic
+  - ClothingNeckCloakSponsorRed
+  - ClothingNeckCloakSponsorBlac
+  - ClothingNeckCloakSponsorWithe
+  - ClothingNeckCloakSponsorBlue
+  - ClothingNeckChocerMoo
   # Corvax-Wega-Sponsors-end
 
 #- type: loadoutGroup
@@ -1370,6 +1463,15 @@
   - ClothingUniformJumpsuitStylishShirt
   - ClothingUniformJumpsuitManlyPants
   - ClothingUniformJumpsuitBeautifulSweater
+  - ClothingUniformJumpskirtElegantShortRed
+  - ClothingUniformJumpskirtElegantColorRed
+  - ClothingUniformJumpskirtElegantColorBlack
+  - ClothingUniformJumpskirtElegantColorBlue
+  - ClothingUniformJumpskirtElegantColorPink
+  - ClothingUniformJumpskirtElegantColorGrey
+  - ClothingUniformJumpskirtElegantColorGreen
+  - ClothingUniformJumpskirtElegantColorWhite
+  - ClothingUniformJumpsuitStylishWithe
   # Corvax-Wega-Sponsors-end
 # Corvax-Wega-add-start
   - JumpsuitColorWhite
@@ -1525,6 +1627,9 @@
   loadouts:
   - JanitorWintercoat
 
+  # Corvax-Wega-Sponsors-start
+  - ClothingOuterCyberJacket
+  # Corvax-Wega-Sponsors-end
 - type: loadoutGroup
   id: JanitorJobTrinkets
   name: loadout-group-jobtrinkets
@@ -1564,6 +1669,15 @@
   - ClothingUniformJumpsuitStylishShirt
   - ClothingUniformJumpsuitManlyPants
   - ClothingUniformJumpsuitBeautifulSweater
+  - ClothingUniformJumpskirtElegantShortRed
+  - ClothingUniformJumpskirtElegantColorRed
+  - ClothingUniformJumpskirtElegantColorBlack
+  - ClothingUniformJumpskirtElegantColorBlue
+  - ClothingUniformJumpskirtElegantColorPink
+  - ClothingUniformJumpskirtElegantColorGrey
+  - ClothingUniformJumpskirtElegantColorGreen
+  - ClothingUniformJumpskirtElegantColorWhite
+  - ClothingUniformJumpsuitStylishWithe
   # Corvax-Wega-Sponsors-end
 # Corvax-Wega-add-start
   - JumpsuitColorWhite
@@ -1722,6 +1836,9 @@
 #  minLimit: 0
 #  loadouts:
 
+  # Corvax-Wega-Sponsors-start
+  - ClothingOuterCyberJacket
+  # Corvax-Wega-Sponsors-end
 - type: loadoutGroup
   id: ClownHead
   name: loadout-group-clown-head
@@ -1757,6 +1874,15 @@
   - ClothingUniformJumpsuitStylishShirt
   - ClothingUniformJumpsuitManlyPants
   - ClothingUniformJumpsuitBeautifulSweater
+  - ClothingUniformJumpskirtElegantShortRed
+  - ClothingUniformJumpskirtElegantColorRed
+  - ClothingUniformJumpskirtElegantColorBlack
+  - ClothingUniformJumpskirtElegantColorBlue
+  - ClothingUniformJumpskirtElegantColorPink
+  - ClothingUniformJumpskirtElegantColorGrey
+  - ClothingUniformJumpskirtElegantColorGreen
+  - ClothingUniformJumpskirtElegantColorWhite
+  - ClothingUniformJumpsuitStylishWithe
   # Corvax-Wega-Sponsors-end
 # Corvax-Wega-add-start
   - JumpsuitColorWhite
@@ -1909,6 +2035,9 @@
   - ClownRobes
   - ClownWintercoat
 
+  # Corvax-Wega-Sponsors-start
+  - ClothingOuterCyberJacket
+  # Corvax-Wega-Sponsors-end
 - type: loadoutGroup
   id: ClownShoes
   name: loadout-group-clown-shoes
@@ -1980,6 +2109,15 @@
   - ClothingUniformJumpsuitStylishShirt
   - ClothingUniformJumpsuitManlyPants
   - ClothingUniformJumpsuitBeautifulSweater
+  - ClothingUniformJumpskirtElegantShortRed
+  - ClothingUniformJumpskirtElegantColorRed
+  - ClothingUniformJumpskirtElegantColorBlack
+  - ClothingUniformJumpskirtElegantColorBlue
+  - ClothingUniformJumpskirtElegantColorPink
+  - ClothingUniformJumpskirtElegantColorGrey
+  - ClothingUniformJumpskirtElegantColorGreen
+  - ClothingUniformJumpskirtElegantColorWhite
+  - ClothingUniformJumpsuitStylishWithe
   # Corvax-Wega-Sponsors-end
 # Corvax-Wega-add-start
   - JumpsuitColorWhite
@@ -2131,6 +2269,9 @@
   loadouts:
   - MimeWintercoat
 
+  # Corvax-Wega-Sponsors-start
+  - ClothingOuterCyberJacket
+  # Corvax-Wega-Sponsors-end
 - type: loadoutGroup
   id: MimeBelt
   name: loadout-group-mime-belt
@@ -2174,6 +2315,15 @@
   - ClothingUniformJumpsuitStylishShirt
   - ClothingUniformJumpsuitManlyPants
   - ClothingUniformJumpsuitBeautifulSweater
+  - ClothingUniformJumpskirtElegantShortRed
+  - ClothingUniformJumpskirtElegantColorRed
+  - ClothingUniformJumpskirtElegantColorBlack
+  - ClothingUniformJumpskirtElegantColorBlue
+  - ClothingUniformJumpskirtElegantColorPink
+  - ClothingUniformJumpskirtElegantColorGrey
+  - ClothingUniformJumpskirtElegantColorGreen
+  - ClothingUniformJumpskirtElegantColorWhite
+  - ClothingUniformJumpsuitStylishWithe
   # Corvax-Wega-Sponsors-end
 # Corvax-Wega-add-start
   - JumpsuitColorWhite
@@ -2317,6 +2467,9 @@
   loadouts:
   - MusicianWintercoat
 
+  # Corvax-Wega-Sponsors-start
+  - ClothingOuterCyberJacket
+  # Corvax-Wega-Sponsors-end
 - type: loadoutGroup
   id: Instruments
   name: loadout-group-instruments
@@ -2395,6 +2548,11 @@
   # Corvax-Wega-Sponsors-start
   - ClothingNeckCloakManly
   - ClothingNeckCloakMagic
+  - ClothingNeckCloakSponsorRed
+  - ClothingNeckCloakSponsorBlac
+  - ClothingNeckCloakSponsorWithe
+  - ClothingNeckCloakSponsorBlue
+  - ClothingNeckChocerMoo
   # Corvax-Wega-Sponsors-end
 
 - type: loadoutGroup
@@ -2404,6 +2562,9 @@
   loadouts:
   - QuartermasterWintercoat
 
+  # Corvax-Wega-Sponsors-start
+  - ClothingOuterCyberJacket
+  # Corvax-Wega-Sponsors-end
 - type: loadoutGroup
   id: QuartermasterShoes
   name: loadout-group-quartermaster-shoes
@@ -2434,6 +2595,7 @@
   - ClothingShoesWizard
   - ClothingShoesTourist
   - ClothingShoesLeather
+  - ClothingShoesStylishWhite
  # Corvax-Wega-Shoes-End
 
 #- type: loadoutGroup
@@ -2472,6 +2634,15 @@
   - ClothingUniformJumpsuitStylishShirt
   - ClothingUniformJumpsuitManlyPants
   - ClothingUniformJumpsuitBeautifulSweater
+  - ClothingUniformJumpskirtElegantShortRed
+  - ClothingUniformJumpskirtElegantColorRed
+  - ClothingUniformJumpskirtElegantColorBlack
+  - ClothingUniformJumpskirtElegantColorBlue
+  - ClothingUniformJumpskirtElegantColorPink
+  - ClothingUniformJumpskirtElegantColorGrey
+  - ClothingUniformJumpskirtElegantColorGreen
+  - ClothingUniformJumpskirtElegantColorWhite
+  - ClothingUniformJumpsuitStylishWithe
   # Corvax-Wega-Sponsors-end
 # Corvax-Wega-add-start
   - JumpsuitColorWhite
@@ -2623,6 +2794,9 @@
   loadouts:
   - CargoTechnicianWintercoat
 
+  # Corvax-Wega-Sponsors-start
+  - ClothingOuterCyberJacket
+  # Corvax-Wega-Sponsors-end
 - type: loadoutGroup
   id: CargoTechnicianShoes
   name: loadout-group-cargo-technician-shoes
@@ -2653,6 +2827,7 @@
   - ClothingShoesWizard
   - ClothingShoesTourist
   - ClothingShoesLeather
+  - ClothingShoesStylishWhite
  # Corvax-Wega-Shoes-End
 
 - type: loadoutGroup
@@ -2683,6 +2858,9 @@
   loadouts:
   - SalvageSpecialistWintercoat
 
+  # Corvax-Wega-Sponsors-start
+  - ClothingOuterCyberJacket
+  # Corvax-Wega-Sponsors-end
 - type: loadoutGroup
   id: SalvageSpecialistShoes
   name: loadout-group-salvage-specialist-shoes
@@ -2728,6 +2906,11 @@
   # Corvax-Wega-Sponsors-start
   - ClothingNeckCloakManly
   - ClothingNeckCloakMagic
+  - ClothingNeckCloakSponsorRed
+  - ClothingNeckCloakSponsorBlac
+  - ClothingNeckCloakSponsorWithe
+  - ClothingNeckCloakSponsorBlue
+  - ClothingNeckChocerMoo
   # Corvax-Wega-Sponsors-end
 
 - type: loadoutGroup
@@ -2737,6 +2920,9 @@
   loadouts:
   - ChiefEngineerWintercoat
 
+  # Corvax-Wega-Sponsors-start
+  - ClothingOuterCyberJacket
+  # Corvax-Wega-Sponsors-end
 - type: loadoutGroup
   id: ChiefEngineerShoes
   name: loadout-group-chief-engineer-shoes
@@ -2767,6 +2953,7 @@
   - ClothingShoesWizard
   - ClothingShoesTourist
   - ClothingShoesLeather
+  - ClothingShoesStylishWhite
  # Corvax-Wega-Shoes-End
 
 # Corvax-Wega-Edit-start
@@ -2796,6 +2983,15 @@
   - ClothingUniformJumpsuitStylishShirt
   - ClothingUniformJumpsuitManlyPants
   - ClothingUniformJumpsuitBeautifulSweater
+  - ClothingUniformJumpskirtElegantShortRed
+  - ClothingUniformJumpskirtElegantColorRed
+  - ClothingUniformJumpskirtElegantColorBlack
+  - ClothingUniformJumpskirtElegantColorBlue
+  - ClothingUniformJumpskirtElegantColorPink
+  - ClothingUniformJumpskirtElegantColorGrey
+  - ClothingUniformJumpskirtElegantColorGreen
+  - ClothingUniformJumpskirtElegantColorWhite
+  - ClothingUniformJumpsuitStylishWithe
   # Corvax-Wega-Sponsors-end
 # Corvax-Wega-add-start
   - JumpsuitColorWhite
@@ -2977,6 +3173,15 @@
   - ClothingUniformJumpsuitStylishShirt
   - ClothingUniformJumpsuitManlyPants
   - ClothingUniformJumpsuitBeautifulSweater
+  - ClothingUniformJumpskirtElegantShortRed
+  - ClothingUniformJumpskirtElegantColorRed
+  - ClothingUniformJumpskirtElegantColorBlack
+  - ClothingUniformJumpskirtElegantColorBlue
+  - ClothingUniformJumpskirtElegantColorPink
+  - ClothingUniformJumpskirtElegantColorGrey
+  - ClothingUniformJumpskirtElegantColorGreen
+  - ClothingUniformJumpskirtElegantColorWhite
+  - ClothingUniformJumpsuitStylishWithe
   # Corvax-Wega-Sponsors-end
 # Corvax-Wega-add-start
   - JumpsuitColorWhite
@@ -3129,6 +3334,9 @@
   - StationEngineerOuterVest
   - StationEngineerWintercoat
 
+  # Corvax-Wega-Sponsors-start
+  - ClothingOuterCyberJacket
+  # Corvax-Wega-Sponsors-end
 - type: loadoutGroup
   id: StationEngineerShoes
   name: loadout-group-station-engineer-shoes
@@ -3159,6 +3367,7 @@
   - ClothingShoesWizard
   - ClothingShoesTourist
   - ClothingShoesLeather
+  - ClothingShoesStylishWhite
  # Corvax-Wega-Shoes-End
 
 - type: loadoutGroup
@@ -3196,6 +3405,15 @@
   - ClothingUniformJumpsuitStylishShirt
   - ClothingUniformJumpsuitManlyPants
   - ClothingUniformJumpsuitBeautifulSweater
+  - ClothingUniformJumpskirtElegantShortRed
+  - ClothingUniformJumpskirtElegantColorRed
+  - ClothingUniformJumpskirtElegantColorBlack
+  - ClothingUniformJumpskirtElegantColorBlue
+  - ClothingUniformJumpskirtElegantColorPink
+  - ClothingUniformJumpskirtElegantColorGrey
+  - ClothingUniformJumpskirtElegantColorGreen
+  - ClothingUniformJumpskirtElegantColorWhite
+  - ClothingUniformJumpsuitStylishWithe
   # Corvax-Wega-Sponsors-end
 # Corvax-Wega-add-start
   - JumpsuitColorWhite
@@ -3340,6 +3558,9 @@
   - AtmosphericTechnicianWintercoat
   - AtmosphericsOveralls # CorvaxAtmosFashion
 
+  # Corvax-Wega-Sponsors-start
+  - ClothingOuterCyberJacket
+  # Corvax-Wega-Sponsors-end
 - type: loadoutGroup
   id: AtmosphericTechnicianBackpack
   name: loadout-group-atmospheric-technician-backpack
@@ -3378,6 +3599,7 @@
   - ClothingShoesWizard
   - ClothingShoesTourist
   - ClothingShoesLeather
+  - ClothingShoesStylishWhite
  # Corvax-Wega-Shoes-End
 
 # Corvax-Wega-Edit-start
@@ -3420,6 +3642,11 @@
   - ResearchDirectorCloak
   # Corvax-Wega-Sponsors-start
   - ClothingNeckCloakMagic
+  - ClothingNeckCloakManly
+  - ClothingNeckCloakSponsorRed
+  - ClothingNeckCloakSponsorBlac
+  - ClothingNeckCloakSponsorWithe
+  - ClothingNeckCloakSponsorBlue
   # Corvax-Wega-Sponsors-end
 
 - type: loadoutGroup
@@ -3444,6 +3671,9 @@
   - ResearchDirectorLabCoat
   - ResearchDirectorWintercoat
 
+  # Corvax-Wega-Sponsors-start
+  - ClothingOuterCyberJacket
+  # Corvax-Wega-Sponsors-end
 - type: loadoutGroup
   id: ResearchDirectorShoes
   name: loadout-group-research-director-shoes
@@ -3474,6 +3704,7 @@
   - ClothingShoesWizard
   - ClothingShoesTourist
   - ClothingShoesLeather
+  - ClothingShoesStylishWhite
  # Corvax-Wega-Shoes-End
 
 #- type: loadoutGroup
@@ -3505,6 +3736,11 @@
   # Corvax-Wega-Sponsors-start
   - ClothingNeckCloakManly
   - ClothingNeckCloakMagic
+  - ClothingNeckCloakSponsorRed
+  - ClothingNeckCloakSponsorBlac
+  - ClothingNeckCloakSponsorWithe
+  - ClothingNeckCloakSponsorBlue
+  - ClothingNeckChocerMoo
   # Corvax-Wega-Sponsors-end
 
 - type: loadoutGroup
@@ -3529,6 +3765,15 @@
   - ClothingUniformJumpsuitStylishShirt
   - ClothingUniformJumpsuitManlyPants
   - ClothingUniformJumpsuitBeautifulSweater
+  - ClothingUniformJumpskirtElegantShortRed
+  - ClothingUniformJumpskirtElegantColorRed
+  - ClothingUniformJumpskirtElegantColorBlack
+  - ClothingUniformJumpskirtElegantColorBlue
+  - ClothingUniformJumpskirtElegantColorPink
+  - ClothingUniformJumpskirtElegantColorGrey
+  - ClothingUniformJumpskirtElegantColorGreen
+  - ClothingUniformJumpskirtElegantColorWhite
+  - ClothingUniformJumpsuitStylishWithe
   # Corvax-Wega-Sponsors-end
 # Corvax-Wega-add-start
   - JumpsuitColorWhite
@@ -3685,6 +3930,9 @@
   - RoboticistWintercoat
   - SeniorResearcherLabCoat
 
+  # Corvax-Wega-Sponsors-start
+  - ClothingOuterCyberJacket
+  # Corvax-Wega-Sponsors-end
 - type: loadoutGroup
   id: ScientistShoes
   name: loadout-group-scientist-shoes
@@ -3716,6 +3964,7 @@
   - ClothingShoesWizard
   - ClothingShoesTourist
   - ClothingShoesLeather
+  - ClothingShoesStylishWhite
  # Corvax-Wega-Shoes-End
 
 - type: loadoutGroup
@@ -3761,6 +4010,15 @@
   - ClothingUniformJumpsuitStylishShirt
   - ClothingUniformJumpsuitManlyPants
   - ClothingUniformJumpsuitBeautifulSweater
+  - ClothingUniformJumpskirtElegantShortRed
+  - ClothingUniformJumpskirtElegantColorRed
+  - ClothingUniformJumpskirtElegantColorBlack
+  - ClothingUniformJumpskirtElegantColorBlue
+  - ClothingUniformJumpskirtElegantColorPink
+  - ClothingUniformJumpskirtElegantColorGrey
+  - ClothingUniformJumpskirtElegantColorGreen
+  - ClothingUniformJumpskirtElegantColorWhite
+  - ClothingUniformJumpsuitStylishWithe
   # Corvax-Wega-Sponsors-end
 # Corvax-Wega-add-start
   - JumpsuitColorWhite
@@ -3944,6 +4202,11 @@
   - HeadofSecurityShoulderMantle # Corvax-Loadouts
   # Corvax-Wega-Sponsors-start
   - ClothingNeckCloakManly
+  - ClothingNeckCloakMagic
+  - ClothingNeckCloakSponsorRed
+  - ClothingNeckCloakSponsorBlac
+  - ClothingNeckCloakSponsorWithe
+  - ClothingNeckCloakSponsorBlue
   # Corvax-Wega-Sponsors-end
 
 - type: loadoutGroup
@@ -3953,6 +4216,9 @@
   - HeadofSecurityCoat
   - HeadofSecurityWinterCoat
 
+  # Corvax-Wega-Sponsors-start
+  - ClothingOuterCyberJacket
+  # Corvax-Wega-Sponsors-end
 - type: loadoutGroup
   id: HeadofSecurityJobTrinkets
   name: loadout-group-jobtrinkets
@@ -3988,6 +4254,9 @@
   - WardenCoat
   - WardenArmoredWinterCoat
 
+  # Corvax-Wega-Sponsors-start
+  - ClothingOuterCyberJacket
+  # Corvax-Wega-Sponsors-end
 - type: loadoutGroup
   id: WardenJobTrinkets
   name: loadout-group-jobtrinkets
@@ -4056,6 +4325,9 @@
   - SecurityOfficerOvercoat # Corvax
   - SecurityOfficerWintercoat
 
+  # Corvax-Wega-Sponsors-start
+  - ClothingOuterCyberJacket
+  # Corvax-Wega-Sponsors-end
 - type: loadoutGroup
   id: SecurityShoes
   name: loadout-group-security-shoes
@@ -4111,6 +4383,9 @@
   - DetectiveCoatGrey
   - SecurityOfficerWintercoat
 
+  # Corvax-Wega-Sponsors-start
+  - ClothingOuterCyberJacket
+  # Corvax-Wega-Sponsors-end
 - type: loadoutGroup
   id: DetectiveJobTrinkets
   name: loadout-group-jobtrinkets
@@ -4172,6 +4447,15 @@
   - ClothingUniformJumpsuitStylishShirt
   - ClothingUniformJumpsuitManlyPants
   - ClothingUniformJumpsuitBeautifulSweater
+  - ClothingUniformJumpskirtElegantShortRed
+  - ClothingUniformJumpskirtElegantColorRed
+  - ClothingUniformJumpskirtElegantColorBlack
+  - ClothingUniformJumpskirtElegantColorBlue
+  - ClothingUniformJumpskirtElegantColorPink
+  - ClothingUniformJumpskirtElegantColorGrey
+  - ClothingUniformJumpskirtElegantColorGreen
+  - ClothingUniformJumpskirtElegantColorWhite
+  - ClothingUniformJumpsuitStylishWithe
   # Corvax-Wega-Sponsors-end
 # Corvax-Wega-add-start
   - JumpsuitColorWhite
@@ -4328,6 +4612,9 @@
 #  minLimit: 0
 #  loadouts:
 
+  # Corvax-Wega-Sponsors-start
+  - ClothingOuterCyberJacket
+  # Corvax-Wega-Sponsors-end
 - type: loadoutGroup
   id: PsychologistJumpsuit
   name: loadout-group-psychologist-jumpsuit
@@ -4346,6 +4633,15 @@
   - ClothingUniformJumpsuitStylishShirt
   - ClothingUniformJumpsuitManlyPants
   - ClothingUniformJumpsuitBeautifulSweater
+  - ClothingUniformJumpskirtElegantShortRed
+  - ClothingUniformJumpskirtElegantColorRed
+  - ClothingUniformJumpskirtElegantColorBlack
+  - ClothingUniformJumpskirtElegantColorBlue
+  - ClothingUniformJumpskirtElegantColorPink
+  - ClothingUniformJumpskirtElegantColorGrey
+  - ClothingUniformJumpskirtElegantColorGreen
+  - ClothingUniformJumpskirtElegantColorWhite
+  - ClothingUniformJumpsuitStylishWithe
   # Corvax-Wega-Sponsors-end
 # Corvax-Wega-add-start
   - JumpsuitColorWhite

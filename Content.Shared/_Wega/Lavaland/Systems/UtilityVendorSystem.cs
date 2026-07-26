@@ -10,7 +10,6 @@ namespace Content.Shared.Lavaland;
 
 public sealed partial class UtilityVendorSystem : EntitySystem
 {
-    [Dependency] private IPrototypeManager _prototype = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private ItemSlotsSystem _itemSlots = default!;
     [Dependency] private SharedUserInterfaceSystem _ui = default!;
@@ -76,7 +75,7 @@ public sealed partial class UtilityVendorSystem : EntitySystem
     {
         foreach (var categoryId in component.Categories)
         {
-            if (!_prototype.TryIndex(categoryId, out var category))
+            if (!ProtoMan.TryIndex(categoryId, out var category))
                 continue;
 
             if (category.InventoryTemplate.TryGetValue(itemId, out var price))
@@ -94,7 +93,7 @@ public sealed partial class UtilityVendorSystem : EntitySystem
         var categoriesData = new List<CategoryData>();
         foreach (var categoryId in component.Categories)
         {
-            if (!_prototype.TryIndex(categoryId, out var category))
+            if (!ProtoMan.TryIndex(categoryId, out var category))
                 continue;
 
             categoriesData.Add(new CategoryData(

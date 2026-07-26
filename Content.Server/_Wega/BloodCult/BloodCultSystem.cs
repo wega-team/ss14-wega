@@ -19,7 +19,6 @@ using Content.Shared.FixedPoint;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
-using Content.Shared.Interaction.Components;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Mind;
@@ -37,7 +36,6 @@ using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
-using Content.Shared.Clothing;
 using Content.Shared.IdentityManagement.Components;
 using Content.Shared.Inventory;
 
@@ -49,7 +47,6 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
     [Dependency] private AudioSystem _audio = default!;
     [Dependency] private BloodCultRuleSystem _bloodCult = default!;
     [Dependency] private IGameTiming _gameTiming = default!;
-    [Dependency] private IPrototypeManager _prototypeManager = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private MetaDataSystem _meta = default!;
     [Dependency] private MobStateSystem _mobState = default!;

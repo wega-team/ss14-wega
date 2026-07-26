@@ -27,9 +27,9 @@
   - type: MovementSpeedModifier
     baseWalkSpeed: 4
     baseSprintSpeed: 4
-  - type: Butcherable
-    spawned:
-    - id: SheetBrass1 # временная заглушка
+  - type: ToolRefinable
+    refineResult:
+    - id: SheetBrass1
       amount: 3
       prob: 0.5
   - type: NoSlip

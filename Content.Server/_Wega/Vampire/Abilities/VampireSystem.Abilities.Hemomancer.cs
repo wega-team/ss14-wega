@@ -229,12 +229,14 @@ public sealed partial class VampireSystem
         }
 
         var puddlesInRange = _entityLookup.GetEntitiesInRange<PuddleComponent>(Transform(ent).Coordinates, 4f)
-            .Where(puddle => TryComp(puddle.Owner, out ContainerManagerComponent? containerManager)
-                && containerManager.Containers.TryGetValue("solution@puddle", out var container)
-                && container.ContainedEntities.Any(containedEntity =>
-                    TryComp(containedEntity, out SolutionComponent? solutionComponent)
-                    && solutionComponent.Solution.Contents.Any(r =>
-                        BloodProto.Contains(r.Reagent.Prototype))))
+            .Where(puddle =>
+            {
+                if (TryComp<SolutionComponent>(puddle.Owner, out var solutionComp))
+                {
+                    return solutionComp.Solution.Contents.Any(r => BloodProto.Contains(r.Reagent.Prototype));
+                }
+                return false;
+            })
             .ToList();
 
         foreach (var puddleEntity in puddlesInRange)
@@ -326,6 +328,9 @@ public sealed partial class VampireSystem
 
             foreach (var entity in nearbyEntities)
             {
+                if (HasComp<VampireComponent>(entity.Owner))
+                    continue;
+
                 if (HasComp<NullRodOwnerComponent>(entity.Owner) && !HasTruePower(ent))
                     continue;
 

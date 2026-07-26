@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ MobSiliconBase, BaseVehicle]
+  parent: [ MobSiliconBase, BaseVehicleStrap]
   id: MobSiliconBaseVehicle # for vehicles
   abstract: true
   components:
@@ -23,9 +23,7 @@
   components:
   - type: Sprite
     sprite: Mobs/Silicon/Bots/taxibot.rsi
-    layers:
-    - state: taxibot
-      map: ["enum.VehicleVisualLayers.AutoAnimate"]
+    state: taxibot
   - type: GhostRole
     name: ghost-role-information-taxibot-name
     description: ghost-role-information-taxibot-description

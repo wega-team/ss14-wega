@@ -387,7 +387,7 @@
     maxAngle: -32
     # Corvax-Wega-gun-end
   - type: Gun
-    selectedMode: SemiAuto
+    selectedMode: FullAuto
     fireRate: 2 # Corvax-Wega-Change 3
     availableModes:
       - SemiAuto

@@ -16,8 +16,6 @@ namespace Content.Shared.Xenobiology.Systems;
 [PublicAPI]
 public abstract partial class SharedCellSystem : EntitySystem
 {
-    [Dependency] private IPrototypeManager _prototype = default!;
-
     public override void Initialize()
     {
         base.Initialize();
@@ -49,7 +47,7 @@ public abstract partial class SharedCellSystem : EntitySystem
     public bool AddCell(Entity<CellContainerComponent?> ent, ProtoId<CellPrototype> cellId)
     {
         // Check the availability of the component and the prototype we need
-        if (!Resolve(ent, ref ent.Comp) || !_prototype.TryIndex(cellId, out var cellPrototype))
+        if (!Resolve(ent, ref ent.Comp) || !ProtoMan.TryIndex(cellId, out var cellPrototype))
             return false;
 
         return AddCell(ent, new Cell(cellPrototype));

@@ -1,11 +1,9 @@
 using Content.Shared.Xenobiology.Components;
-using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Xenobiology;
 
 public abstract partial class SharedSlimeVisualSystem : EntitySystem
 {
-    [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private MetaDataSystem _metaData = default!;
     [Dependency] private SharedAppearanceSystem _appearance = default!;
 
@@ -42,7 +40,7 @@ public abstract partial class SharedSlimeVisualSystem : EntitySystem
             ? typeProto
             : component.DefaultVisuals;
 
-        if (protoId == null || !_proto.TryIndex(protoId, out var proto))
+        if (protoId == null || !ProtoMan.TryIndex(protoId, out var proto))
             return;
 
         _metaData.SetEntityName(uid, proto.Name);

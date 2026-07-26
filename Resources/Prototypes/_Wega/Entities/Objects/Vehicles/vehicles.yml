@@ -1,0 +1,313 @@
+- type: entity
+  id: VehicleSecway
+  parent: BaseVehicleStrap
+  name: secway
+  description: The future of transportation. Popularized by St. James, the patron saint of security officers and internet forum moderators.
+  components:
+  - type: Sprite
+    sprite: Objects/Vehicles/secway.rsi
+    state: vehicle
+  - type: Strap
+    buckleOffset: "0.15, -0.05"
+  - type: Vehicle
+  - type: StrapVehicle
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4.5
+    baseSprintSpeed: 6
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.8
+        Slash: 0.6
+        Piercing: 0.85
+  - type: GenericKeyedVehicle
+    containerId: key_slot
+    keyWhitelist:
+      tags:
+      - SecwayKeys
+  - type: ContainerContainer
+    containers:
+      key_slot: !type:ContainerSlot
+  - type: ItemSlots
+    slots:
+      key_slot:
+        name: vehicle-slot-component-slot-name-keys
+        insertSound:
+          path: /Audio/Effects/Vehicle/vehiclestartup.ogg
+          params:
+            volume: -3
+
+- type: entity
+  id: VehicleATV
+  parent: BaseVehicleStrap
+  name: ATV
+  description: All-Tile Vehicle.
+  components:
+  - type: Sprite
+    sprite: Objects/Vehicles/atv.rsi
+    state: vehicle
+  - type: Strap
+    buckleOffset: "0.1, -0.05"
+  - type: Vehicle
+  - type: StrapVehicle
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4.5
+    baseSprintSpeed: 7
+  - type: UnpoweredFlashlight
+  - type: PointLight
+    enabled: false
+    radius: 3.5
+    softness: 2
+    mask: /Textures/Effects/LightMasks/cone.png
+    autoRot: true
+  - type: GenericKeyedVehicle
+    containerId: key_slot
+    keyWhitelist:
+      tags:
+      - ATVKeys
+  - type: ContainerContainer
+    containers:
+      key_slot: !type:ContainerSlot
+  - type: ItemSlots
+    slots:
+      key_slot:
+        name: vehicle-slot-component-slot-name-keys
+        insertSound:
+          path: /Audio/Effects/Vehicle/vehiclestartup.ogg
+          params:
+            volume: -3
+
+- type: entity
+  id: VehicleSyndicateSegway
+  parent: BaseVehicleStrap
+  name: syndicate segway
+  description: Be an enemy of the corporation, in style.
+  components:
+  - type: Sprite
+    sprite: Objects/Vehicles/syndicatesegway.rsi
+    state: vehicle
+  - type: Strap
+    buckleOffset: "0.15, -0.05"
+  - type: Vehicle
+  - type: StrapVehicle
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.8
+        Slash: 0.6
+        Piercing: 0.85
+  - type: GenericKeyedVehicle
+    containerId: key_slot
+    keyWhitelist:
+      tags:
+      - SyndicateSegwayKeys
+  - type: ContainerContainer
+    containers:
+      key_slot: !type:ContainerSlot
+  - type: ItemSlots
+    slots:
+      key_slot:
+        name: vehicle-slot-component-slot-name-keys
+        insertSound:
+          path: /Audio/Effects/Vehicle/vehiclestartup.ogg
+          params:
+            volume: -3
+
+- type: entity
+  id: VehicleSkeletonMotorcycle
+  parent: BaseVehicleStrap
+  name: skeleton motorcycle
+  description: Bad to the Bone.
+  components:
+  - type: Sprite
+    sprite: Objects/Vehicles/motorbike.rsi
+    state: vehicle
+  - type: Strap
+    buckleOffset: "0.1, -0.05"
+  - type: Vehicle
+  - type: StrapVehicle
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4.5
+    baseSprintSpeed: 7
+  - type: UnpoweredFlashlight
+  - type: PointLight
+    enabled: false
+    radius: 3.5
+    softness: 2
+    mask: /Textures/Effects/LightMasks/cone.png
+    autoRot: true
+  - type: GenericKeyedVehicle
+    containerId: key_slot
+    keyWhitelist:
+      tags:
+      - SkeletonMotorcycleKeys
+  - type: ContainerContainer
+    containers:
+      key_slot: !type:ContainerSlot
+  - type: ItemSlots
+    slots:
+      key_slot:
+        name: vehicle-slot-component-slot-name-keys
+        insertSound:
+          path: /Audio/Effects/Vehicle/vehiclestartup.ogg
+          params:
+            volume: -3
+
+- type: entity
+  id: VehicleUnicycle
+  parent: [BaseVehicleStrap, BaseFoldable, BaseItem]
+  name: unicycle
+  description: It only has one wheel!
+  components:
+  - type: Sprite
+    sprite: Objects/Vehicles/unicycle.rsi
+    layers:
+    - state: vehicle
+      map: ["unfoldedLayer"]
+    - state: vehicle_folded
+      map: ["foldedLayer"]
+      visible: false
+  - type: Strap
+    buckleOffset: "0.1, -0.05"
+  - type: Vehicle
+  - type: StrapVehicle
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3.5
+    baseSprintSpeed: 4.3
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 240
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+
+- type: entity
+  id: VehicleUnicycleFolded
+  parent: VehicleUnicycle
+  suffix: folded
+  components:
+  - type: Foldable
+    folded: true
+
+- type: entity
+  parent: VehicleWheelchair
+  id: VehicleWheelchairFolded
+  suffix: folded
+  components:
+  - type: Foldable
+    folded: true
+
+- type: entity
+  id: VehicleJanicartDestroyed
+  parent: MachineFrameDestroyed
+  name: destroyed janicart
+  components:
+  - type: Sprite
+    sprite: Objects/Vehicles/janicart.rsi
+    state: destroyed
+
+- type: entity
+  parent: BaseVehicleStrap
+  id: VehicleBoat
+  name: goliath boat
+  description: "A boat made of wood and goliath's skin. You need an oar to use it."
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Vehicles/boat.rsi
+    drawdepth: Mobs
+    state: boat
+    noRot: true
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 600
+      behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          MaterialWoodPlank1:
+            min: 5
+            max: 10
+          MaterialGoliathHide1:
+            min: 1
+            max: 3
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+  - type: Boat
+  - type: Vehicle
+  - type: MovementSpeedModifier
+    baseAcceleration: 1
+    baseFriction: 1
+    baseWalkSpeed: 4.5
+    baseSprintSpeed: 7
+  - type: Construction
+    graph: VehicleBoat
+    node: goliath_boat
+
+- type: entity
+  parent: VehicleBoat
+  id: VehicleDragonBoat
+  name: dragon boat
+  description: "A mysterious vessel that can glide effortlessly through molten lava. It requires no oars and seems to move of its own accord."
+  components:
+  - type: Sprite
+    state: dragon_boat
+  - type: Boat
+    requiredOal: false
+
+- type: entity
+  parent: VehicleBoat
+  id: VehicleBoatPolar
+  name: polar boat
+  description: "A boat crafted from wood and polar bear hide. It feels surprisingly warm and resilient against the cold."
+  components:
+  - type: Sprite
+    state: ice_boat
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 600
+      behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          MaterialWoodPlank1:
+            min: 5
+            max: 10
+          MaterialPolarBearHide1:
+            min: 1
+            max: 3
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+  - type: Construction
+    graph: VehicleBoat
+    node: polar_boat

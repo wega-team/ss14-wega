@@ -15,6 +15,7 @@
   - CaptainBottom
   - CaptainSocks
   # Corvax-Wega-end
+  - AssistiveItems
   - Survival
   - Trinkets
   #- CaptainJobTrinkets
@@ -37,6 +38,7 @@
   - HoPSocks
   # Corvax-Wega-end
   - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   #- HoPJobTrinkets
@@ -71,6 +73,7 @@
   - PassengerOuterClothing
   - PassengerShoes
   - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   #- PassengerJobTrinkets
@@ -96,6 +99,7 @@
   - BartenderOuterClothing
   - Glasses
   - BaseShoose # Corvax-Wega-Add
+  - AssistiveItems
   - Survival
   - Trinkets
   - BartenderJobTrinkets
@@ -114,11 +118,13 @@
   # Corvax-Wega-Sponsors-start
   - SponsorHead
   - SponsorNeck
+  - SponsorOuterClothing
   # Corvax-Wega-Sponsors-end
   - BartenderJumpsuit
   - CommonBackpack
   - Glasses
   - BaseShoose # Corvax-Wega-Add
+  - AssistiveItems
   - Survival
   - Trinkets
   #- ServiceWorkerJobTrinkets
@@ -144,6 +150,7 @@
   - ChefOuterClothing
   - Glasses
   - BaseShoose # Corvax-Wega-Add
+  - AssistiveItems
   - Survival
   - Trinkets
   #- ChefJobTrinkets
@@ -162,11 +169,13 @@
   # Corvax-Wega-Sponsors-start
   - SponsorHead
   - SponsorNeck
+  - SponsorOuterClothing
   # Corvax-Wega-Sponsors-end
   - LibrarianJumpsuit
   - CommonBackpack
   - Glasses
   - BaseShoose # Corvax-Wega-Add
+  - AssistiveItems
   - Survival
   - Trinkets
   #- LibrarianJobTrinkets
@@ -187,6 +196,7 @@
   - CommonBackpack
   - Glasses
   - BaseShoose # Corvax-Wega-Add
+  - AssistiveItems
   - Survival
   - Trinkets
   #- LawyerJobTrinkets
@@ -212,6 +222,7 @@
   - ChaplainBible
   - Glasses
   - BaseShoose # Corvax-Wega-Add
+  - AssistiveItems
   - Survival
   - Trinkets
   #- ChaplainJobTrinkets
@@ -233,6 +244,7 @@
   - CommonBackpack
   - JanitorOuterClothing
   - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   - JanitorJobTrinkets
@@ -258,6 +270,7 @@
   - BotanistOuterClothing
   - Glasses
   - BaseShoose # Corvax-Wega-Add
+  - AssistiveItems
   - Survival
   - Trinkets
   #- BotanistJobTrinkets
@@ -285,6 +298,7 @@
   - ClownOuterClothing
   - ClownShoes
   - Glasses
+  - AssistiveItems
   - SurvivalClown
   - Trinkets
   - ClownJobTrinkets
@@ -311,6 +325,7 @@
   - MimeBelt
   - Glasses
   - BaseShoose # Corvax-Wega-Add
+  - AssistiveItems
   - SurvivalMime
   - Trinkets
   #- MimeJobTrinkets
@@ -334,12 +349,13 @@
   - MusicianJumpsuit
   - CommonBackpack
   - MusicianOuterClothing
+  - Instruments
   - Glasses
   - BaseShoose # Corvax-Wega-Add
+  - AssistiveItems
   - Survival
   - Trinkets
   #- MusicianJobTrinkets
-  - Instruments
   - GroupSpeciesBreathTool
   # Corvax-Wega-start
   - Top
@@ -365,6 +381,7 @@
   - QuartermasterSocks
   # Corvax-Wega-end
   - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   #- QuartermasterJobTrinkets
@@ -386,6 +403,7 @@
   - CargoTechnicianShoes
   - CargoTechnicianID
   - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   #- CargoTechnicianJobTrinkets
@@ -410,6 +428,7 @@
   - SalvageSpecialistOuterClothing
   - SalvageSpecialistShoes
   - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   #- SalvageSpecialistJobTrinkets
@@ -437,6 +456,7 @@
   - ChiefEngineerBottom
   - ChiefEngineerSocks
   # Corvax-Wega-end
+  - AssistiveItems
   - SurvivalExtended
   - Trinkets
   #- ChiefEngineerJobTrinkets
@@ -449,10 +469,12 @@
   - GroupTankHarness
   # Corvax-Wega-Sponsors-start
   - SponsorNeck
+  - SponsorOuterClothing
   # Corvax-Wega-Sponsors-end
   - TechnicalAssistantJumpsuit
   - StationEngineerBackpack
   - StationEngineerShoes # Corvax-Add
+  - AssistiveItems
   - SurvivalExtended
   - Trinkets
   #- TechnicalAssistantJobTrinkets
@@ -477,6 +499,7 @@
   - StationEngineerOuterClothing
   - StationEngineerShoes
   - StationEngineerID
+  - AssistiveItems
   - SurvivalExtended
   - Trinkets
   #- StationEngineerJobTrinkets
@@ -500,6 +523,7 @@
   - AtmosphericTechnicianBackpack
   - AtmosphericTechnicianOuterClothing
   - AtmosphericTechnicianShoes
+  - AssistiveItems
   - SurvivalExtended
   - Trinkets
   #- AtmosphericTechnicianJobTrinkets
@@ -529,6 +553,7 @@
   - ResearchDirectorSocks
   # Corvax-Wega-end
   - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   #- ResearchDirectorJobTrinkets
@@ -548,6 +573,7 @@
   - ScientistShoes
   - ScientistPDA
   - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   #- ScientistJobTrinkets
@@ -567,10 +593,12 @@
   - SponsorHead
   - SponsorNeck
   - SponsorGloves
+  - SponsorOuterClothing
   # Corvax-Wega-Sponsors-end
   - ResearchAssistantJumpsuit
   - ScientistBackpack
   - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   #- ResearchAssistantJobTrinkets
@@ -598,6 +626,7 @@
   - HeadofSecurityBottom
   - HeadofSecuritySocks
   # Corvax-Wega-end
+  - AssistiveItems
   - SurvivalSecurity
   - Trinkets
   - HeadofSecurityJobTrinkets
@@ -613,6 +642,7 @@
   - SecurityBelt
   - WardenOuterClothing
   - SecurityShoes
+  - AssistiveItems
   - SurvivalSecurity
   - Trinkets
   - WardenJobTrinkets
@@ -634,6 +664,7 @@
   - SecurityShoes
   - SecurityPDA
   - SecurityBelt
+  - AssistiveItems
   - SurvivalSecurity
   - Trinkets
   - SecurityJobTrinkets
@@ -654,6 +685,7 @@
   - SecurityBackpack
   - DetectiveOuterClothing
   - SecurityShoes
+  - AssistiveItems
   - SurvivalSecurity
   - Trinkets
   - DetectiveJobTrinkets
@@ -670,6 +702,7 @@
   - Inventory # Corvax-Loadouts
   - SecurityCadetJumpsuit
   - SecurityBackpack
+  - AssistiveItems
   - SurvivalSecurity
   - Trinkets
   #- SecurityCadetJobTrinkets
@@ -696,6 +729,7 @@
   - CommonBackpack
   - Glasses
   - BaseShoose # Corvax-Wega-Add
+  - AssistiveItems
   - Survival
   - Trinkets
   #- ReporterJobTrinkets
@@ -714,11 +748,13 @@
   # Corvax-Wega-Sponsors-start
   - SponsorHead
   - SponsorNeck
+  - SponsorOuterClothing
   # Corvax-Wega-Sponsors-end
   - PsychologistJumpsuit
   - MedicalBackpack
   - Glasses
   - BaseShoose # Corvax-Wega-Add
+  - AssistiveItems
   - Survival
   - Trinkets
   #- PsychologistJobTrinkets

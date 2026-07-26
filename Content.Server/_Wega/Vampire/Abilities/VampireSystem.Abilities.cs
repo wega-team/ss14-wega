@@ -26,7 +26,6 @@ namespace Content.Server.Vampire;
 
 public sealed partial class VampireSystem
 {
-    [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private MobThresholdSystem _threshold = default!;
     [Dependency] private MovementSpeedModifierSystem _speed = default!;
     [Dependency] private SharedStaminaSystem _stamina = default!;
@@ -85,7 +84,7 @@ public sealed partial class VampireSystem
         if (HasComp<BibleUserComponent>(target) && !HasTruePower(ent))
         {
             _stun.TryUpdateParalyzeDuration(args.Performer, TimeSpan.FromSeconds(5f));
-            _chat.TryEmoteWithoutChat(args.Performer, _proto.Index(Scream), true);
+            _chat.TryEmoteWithoutChat(args.Performer, ProtoMan.Index(Scream), true);
             _damage.TryChangeDamage(args.Performer, ent.Comp.HolyDamage);
             return;
         }

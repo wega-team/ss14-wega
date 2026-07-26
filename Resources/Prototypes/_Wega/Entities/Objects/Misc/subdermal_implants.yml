@@ -76,8 +76,10 @@
   id: SmokeImplant
   name: smoke implant
   description: This implant releases smoke clouds.
-  categories: [ HideSpawnMenu ]
   components:
+    - type: Sprite
+      sprite: _Wega/Objects/Specific/Medical/Surgery/implants.rsi
+      state: syndicate
     - type: SubdermalImplant
       implantAction: ActionActivateSmoke
     - type: TriggerOnActivateImplant

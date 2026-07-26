@@ -195,6 +195,7 @@
   - type: StationEvent
     weight: 5
     duration: 1
+    occursDuringRoundEnd: false
     minimumPlayers: 10
   - type: RandomEntityStorageSpawnRule
     prototype: MobSkeletonCloset
@@ -209,6 +210,7 @@
     reoccurrenceDelay: 30 # Corvax-MRP # 20
     minimumPlayers: 20
     duration: null
+    occursDuringRoundEnd: false
   - type: SpaceSpawnRule
     spawnDistance: 0
   - type: AntagSpawner
@@ -233,6 +235,7 @@
   - type: StationEvent
     weight: 4 # Corvax-Wega-Edit
     duration: null
+    occursDuringRoundEnd: false
     earliestStart: 30
     reoccurrenceDelay: 20
     minimumPlayers: 30
@@ -261,6 +264,7 @@
   - type: StationEvent
     weight: 5
     duration: null
+    occursDuringRoundEnd: false
     earliestStart: 20
     reoccurrenceDelay: 20
     minimumPlayers: 15
@@ -288,12 +292,13 @@
   - type: StationEvent
     weight: 4 # Corvax-Wega-Edit
     duration: 1
+    occursDuringRoundEnd: false
     earliestStart: 45
     minimumPlayers: 30 # Corvax-MRP # 20
   - type: RandomSpawnRule
     prototype: MobRevenant
 
-# Corvax-Wega-Edit / Пшел нахуй
+# Corvax-Wega-Edit-start / Пшел нахуй
 # - type: entity
 #   parent: [ BaseAntagGhostRoleRule, BaseWizardRule ]
 #   id: WizardSpawn
@@ -301,9 +306,11 @@
 #   - type: StationEvent
 #     weight: 1 # rare
 #     duration: null
+#     occursDuringRoundEnd: false
 #     earliestStart: 30
 #     reoccurrenceDelay: 60
 #     minimumPlayers: 30
+# Corvax-Wega-Edit-end
 
 # disabled until event is rewritten to be more interesting
 #- type: entity
@@ -518,6 +525,7 @@
     weight: 3 # Corvax-Wega-Edit
     minimumPlayers: 20
     duration: null # LoneOpsSpawn needs an infinite duration so that it inherits the NukeOpsRule things of an actually appropriate end screen (not always "Neutral outcome!") and... ending the game if the station is nuked.
+    occursDuringRoundEnd: false
   - type: RuleGrids
   - type: LoadMapRule
     gridPath: /Maps/Shuttles/ShuttleEvent/striker.yml
@@ -624,6 +632,7 @@
     reoccurrenceDelay: 20
     minimumPlayers: 4
     duration: null
+    occursDuringRoundEnd: false
   - type: SpaceSpawnRule
     spawnDistance: 0
 

@@ -119,15 +119,17 @@
     borderColor: "#774705"
   - type: Icon
     state: pda-detective
-  - type: CartridgeLoader
-    preinstalled:
-    - CrewManifestCartridge
-    - NotekeeperCartridge
-    - NanoTaskCartridge
-    - NewsReaderCartridge
-    - NanoChatCartridge
-    - WantedListCartridge
-    - LogProbeCartridge
+  - type: EntityTableContainerFill
+    containers:
+      preinstalled-program-container: !type:AllSelector
+        children:
+        - id: CrewManifestCartridge
+        - id: NotekeeperCartridge
+        - id: NanoTaskCartridge
+        - id: NewsReaderCartridge
+        - id: NanoChatCartridge
+        - id: WantedListCartridge
+        - id: LogProbeCartridge
 
 # SEC Granader
 - type: entity
@@ -299,8 +301,8 @@
         type: ItemSelectorBoundUserInterface
   - type: Tag
     tags:
-    - Itemborg 
- 
+    - Itemborg
+
 - type: entity
   name: turel laser pistol
   parent: BaseItem

@@ -1,15 +1,15 @@
 - type: gameMap
-  id: Core
+  id: WegaCore
   mapName: 'Core'
   mapPath: /Maps/_Wega/wegacore.yml
-  minPlayers: 35
-  maxPlayers: 70
+  minPlayers: 25
+  maxPlayers: 65
   stations:
     Core:
       stationProto: StandardNanotrasenStation
       components:
         - type: StationNameSetup
-          mapNameTemplate: '{0} Core {1}'
+          mapNameTemplate: '{0} Кор {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
@@ -49,6 +49,7 @@
             HeadOfSecurity: [ 1, 1 ]
             SecurityOfficer: [ 4, 4 ]
             Warden: [ 1, 1 ]
+            WardenHelper: [ 1, 1 ]
             Lawyer: [ 1, 1 ]
             SecurityCadet: [ 1, 1 ]
             Detective: [ 1, 1 ]

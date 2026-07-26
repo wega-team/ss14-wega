@@ -93,8 +93,10 @@
     tags:
     - SlowImmune
     - KnockdownImmune
+    - AllowPortalTraversal
 # Corvax-Wega-Start
   - type: NaturalNightVision # Corvax-Wega-NightVision
     tintColor: "#b366ff"
     visible: true
 # Corvax-Wega-End
+=======

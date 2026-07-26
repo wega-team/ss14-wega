@@ -1,0 +1,26 @@
+[admin]
+admins_count_in_playercount = true
+
+[afk]
+time = 1600
+confirm_timeout = 120
+
+[movement]
+mob_pushing = false
+
+[infolinks]
+discord = "https://discord.gg/bJrgSmKf3a"
+wiki = "https://station14.ru"
+appeal = "https://discord.gg/bJrgSmKf3a"
+website = "https://ss14.ru"
+patreon = "https://boosty.to/corvaxwega"
+
+[viewport]
+maximum_width = 26
+
+[atmos]
+max_explosion_range = 5
+space_wind = true
+
+[lavaland]
+enabled = true

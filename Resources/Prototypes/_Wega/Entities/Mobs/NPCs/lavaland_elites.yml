@@ -59,7 +59,7 @@
 
 #region Broodmother
 - type: entity
-  parent: BaseMobElitesMover
+  parent: [ BaseMobElitesMover, BaseMobLavalandButcherable ]
   id: MobBroodmother
   name: broodmother
   description: "A massive and ferocious Goliath matriarch, whose body is scarred from countless battles. This massive individual can summon tentacles from the ground, become enraged, and spawn hordes of offspring that can take even the most experienced miner by surprise."
@@ -102,6 +102,9 @@
     thresholds:
       0: Alive
       1000: Dead
+  - type: BossMusic
+    music:
+      collection: RandomBossMusic
   - type: Broodmother
   - type: HTN
     rootTask:
@@ -128,8 +131,9 @@
   - type: TrophyHunter
     trophy: TrophyLavalandBroodmotherTongue
     dropChance: 0.5
-  - type: Butcherable
-    spawned:
+  - type: ToolRefinable
+    refineTime: 6
+    refineResult:
     - id: FoodMeatGoliath
       amount: 8
     - id: MaterialGoliathHide1
@@ -156,7 +160,7 @@
 
 #region Pandora
 - type: entity
-  parent: BaseMobElites
+  parent: [ BaseMobElites, BaseMobLavalandButcherable ]
   id: MobPandora
   name: pandora
   description: "A large magic box, whose design and power are strikingly reminiscent of the Hierophant. When this ancient mechanism opens, it is almost impossible to close it, and it will methodically destroy everything around it until only ashes remain."
@@ -202,6 +206,9 @@
     softness: 1
     radius: 2.5
     energy: 2.5
+  - type: BossMusic
+    music:
+      collection: HierophantMusic
   - type: Pandora
   - type: HTN
     rootTask:
@@ -222,15 +229,16 @@
     dropChance: 0.5
     collectSound:
       path: "/Audio/Effects/singularity_collapse.ogg" # More Cinema
-  - type: Butcherable
-    spawned:
+  - type: ToolRefinable
+    refineTime: 6
+    refineResult:
     - id: CrateNecropolisFilled
   - type: Appearance
 #endregion
 
 #region Legionnaire
 - type: entity
-  parent: BaseMobElitesMover
+  parent: [ BaseMobElitesMover, BaseMobLavalandButcherable ]
   id: MobLegionnaire
   name: legionnaire
   description: "A massive skeleton that embodies the terrifying power of the Legion. Its flaming red eyes pierce the darkness, and every step is accompanied by the dull thud of its bones. Even when it is disassembled, it continues to fight."
@@ -268,6 +276,9 @@
   - type: MovementSpeedModifier
     baseWalkSpeed: 4.5
     baseSprintSpeed: 4.5
+  - type: BossMusic
+    music:
+      collection: RandomBossMusic
   - type: LegionFauna
   - type: Legionnaire
   - type: HTN
@@ -293,8 +304,9 @@
   - type: TrophyHunter
     trophy: TrophyLavalandLegionnaireSpine
     dropChance: 0.5
-  - type: Butcherable
-    spawned:
+  - type: ToolRefinable
+    refineTime: 6
+    refineResult:
     - id: MaterialBones1
       amount: 20
     - id: LegionCore
@@ -416,6 +428,9 @@
             max: 1
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+  - type: BossMusic
+    music:
+      collection: RandomBossMusic
   - type: Herald
   - type: HTN
     rootTask:

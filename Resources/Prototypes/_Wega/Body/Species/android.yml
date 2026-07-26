@@ -167,10 +167,7 @@
     speechVerb: Robotic
     speechSounds: Borg
   - type: Vocal
-    sounds:
-      Male: MaleAndroid
-      Female: FemaleAndroid
-      Unsexed: MaleAndroid
+    emoteSounds: MaleAndroid
   - type: Damageable
   - type: Injurable
     damageContainer: Android

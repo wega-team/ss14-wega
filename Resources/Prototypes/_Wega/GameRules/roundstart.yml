@@ -4,7 +4,7 @@
   id: BaseStationEventGhostBarSpawn
   components:
   - type: LoadMapRule
-    mapPath: /Maps/_Wega/wegabar.yml
+    mapPath: /Maps/_Wega/Nonstations/wegabar.yml
 
 - type: entity
   parent: BaseGameRule
@@ -55,7 +55,7 @@
   id: BloodCult
   components:
   - type: GameRule
-    minPlayers: 0
+    minPlayers: 30
   - type: BloodCultRule
   - type: AntagObjectives
     objectives:
@@ -67,7 +67,7 @@
       proto: BloodCultist
       playerRatio: 10
       range:
-        min: 1
+        min: 2 # Minimum 2 required for work gamerule
         max: 4
 
 - type: entity
@@ -110,7 +110,7 @@
       proto: VeilCultist
       playerRatio: 10
       range:
-        min: 1
+        min: 2 # Minimum 2 required for work gamerule
         max: 4
 
 # event schedulers

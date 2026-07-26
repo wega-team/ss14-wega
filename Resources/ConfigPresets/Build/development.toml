@@ -6,6 +6,7 @@ map = "Dev"
 role_timers = false
 admin_job_tracking = true
 role_loadout_timers = false
+new_character_jobs = "Passenger, Captain"
 
 [events]
 enabled = false
@@ -59,5 +60,6 @@ pg_database = "ss14"
 pg_username = "postgres"
 pg_password = "postgres"
 
-[lavaland]
-enabled = false
+[net]
+max_rapid_connections = 413
+max_ip_connections = 413
