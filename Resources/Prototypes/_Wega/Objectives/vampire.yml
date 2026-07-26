@@ -292,7 +292,7 @@
   - type: TargetObjective
     title: objective-condition-kill-maroon-title
   - type: PickRandomPerson
-    filters:
+    conditions:
     - !type:BodyMindFilter
       whitelist:
         components:
@@ -324,11 +324,5 @@
     title: objective-condition-kill-station-ai
   - type: PickRandomPerson
     pool: !type:AliveAiPool
-    filters:
-    # Can't have multiple objectives to kill the same person.
-    - !type:TargetObjectiveMindFilter
-      blacklist:
-        components:
-        - KillPersonCondition
   - type: KillPersonCondition
     requireDead: true
