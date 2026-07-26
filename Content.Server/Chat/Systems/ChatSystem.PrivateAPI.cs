@@ -44,7 +44,7 @@ public sealed partial class ChatSystem
             RaiseLocalEvent(source, nameEv);
             name = nameEv.VoiceName;
             // Check for a speech verb override
-            if (nameEv.SpeechVerb != null && _prototypeManager.Resolve(nameEv.SpeechVerb, out var proto))
+            if (nameEv.SpeechVerb != null && ProtoMan.Resolve(nameEv.SpeechVerb, out var proto))
                 speech = proto;
         }
 
@@ -259,6 +259,9 @@ public sealed partial class ChatSystem
 
     private void SendDeadChat(EntityUid source, ICommonSession player, string message, bool hideChat)
     {
+        if (!_adminManager.IsAdmin(player) && !_deadChatEnabled)
+            return;
+
         if (HasComp<BloodCultGhostComponent>(source)) // Corvax-Wega-Blood-Cult-Add
             return; // Corvax-Wega-Blood-Cult-Add
 

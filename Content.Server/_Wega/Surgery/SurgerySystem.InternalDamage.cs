@@ -199,7 +199,7 @@ public sealed partial class SurgerySystem
 
         _audio.PlayPvs(GibSound, patient);
         if (!_mobState.IsDead(patient) && !HasComp<PainNumbnessStatusEffectComponent>(patient) && !HasComp<SyntheticOperatedComponent>(patient))
-            _chat.TryEmoteWithoutChat(patient, _proto.Index(Scream), true);
+            _chat.TryEmoteWithoutChat(patient, ProtoMan.Index(Scream), true);
 
         _pain.AdjustPain(patient, "Physical", 250f);
         if (HasComp<BloodstreamComponent>(patient))
@@ -296,7 +296,7 @@ public sealed partial class SurgerySystem
 
             _audio.PlayPvs(GibSound, patient);
             if (!_mobState.IsDead(patient) && !HasComp<PainNumbnessStatusEffectComponent>(patient) && !HasComp<SyntheticOperatedComponent>(patient))
-                _chat.TryEmoteWithoutChat(patient, _proto.Index(Scream), true);
+                _chat.TryEmoteWithoutChat(patient, ProtoMan.Index(Scream), true);
 
             _transform.SetCoordinates(limbToRemove, Transform(patient).Coordinates);
             _physics.ApplyLinearImpulse(limbToRemove, _random.NextVector2() * (50f + (float)damage));
@@ -307,7 +307,7 @@ public sealed partial class SurgerySystem
 
     private List<InternalDamagePrototype> GetMatchingDamagePrototypes(string id)
     {
-        return _proto.EnumeratePrototypes<InternalDamagePrototype>()
+        return ProtoMan.EnumeratePrototypes<InternalDamagePrototype>()
             .Where(p => p.SupportedTypes.Contains(id)).ToList();
     }
 
@@ -370,7 +370,7 @@ public sealed partial class SurgerySystem
         if (!Resolve(target, ref component))
             return false;
 
-        if (!_proto.TryIndex<InternalDamagePrototype>(damageId, out var damageProto))
+        if (!ProtoMan.TryIndex<InternalDamagePrototype>(damageId, out var damageProto))
             return false;
 
         if (!TryComp<HumanoidProfileComponent>(target, out var humanoidAppearance) || damageProto.BlacklistSpecies != null
@@ -452,7 +452,7 @@ public sealed partial class SurgerySystem
             var message = new StringBuilder();
             foreach (var (damageProtoId, _) in entity.Comp.InternalDamages)
             {
-                if (!_proto.TryIndex(damageProtoId, out InternalDamagePrototype? damageProto))
+                if (!ProtoMan.TryIndex(damageProtoId, out InternalDamagePrototype? damageProto))
                     continue;
 
                 if (!string.IsNullOrEmpty(damageProto.BodyVisuals))
@@ -477,7 +477,7 @@ public sealed partial class SurgerySystem
         var damagesToRemove = new List<(ProtoId<InternalDamagePrototype> DamageId, string? BodyPart)>();
         foreach (var (damageId, bodyParts) in operated.InternalDamages)
         {
-            if (!_proto.TryIndex(damageId, out var damageProto))
+            if (!ProtoMan.TryIndex(damageId, out var damageProto))
                 continue;
 
             if (damageProto.Category is DamageCategory.PhysicalTrauma or DamageCategory.Burns)

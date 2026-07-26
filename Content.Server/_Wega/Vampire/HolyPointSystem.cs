@@ -13,7 +13,6 @@ public sealed partial class HolyPointSystem : EntitySystem
     [Dependency] private ChatSystem _chat = default!;
     [Dependency] private EntityLookupSystem _entityLookup = default!;
     [Dependency] private FlammableSystem _flammable = default!;
-    [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
 
     private static readonly ProtoId<EmotePrototype> Scream = "Scream";
@@ -40,7 +39,7 @@ public sealed partial class HolyPointSystem : EntitySystem
                         flammable.FireStacks += FireStackCount;
                         _flammable.Ignite(vampire.Owner, uid);
 
-                        _chat.TryEmoteWithoutChat(vampire, _proto.Index(Scream), true);
+                        _chat.TryEmoteWithoutChat(vampire, ProtoMan.Index(Scream), true);
                         _popup.PopupEntity(Loc.GetString("vampire-holy-point"), vampire.Owner, vampire.Owner, PopupType.LargeCaution);
                     }
                 }

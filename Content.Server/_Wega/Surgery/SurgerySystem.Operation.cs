@@ -147,7 +147,7 @@ public sealed partial class SurgerySystem
         // Any action without anesthesia will cause pain.
         if (!HasComp<SleepingComponent>(patient) && !HasComp<PainNumbnessStatusEffectComponent>(patient) && !comp.OperatedPart
             && !_mobState.IsDead(patient) && !HasComp<SyntheticOperatedComponent>(patient))
-            _chat.TryEmoteWithoutChat(patient, _proto.Index(Scream), true);
+            _chat.TryEmoteWithoutChat(patient, ProtoMan.Index(Scream), true);
     }
 
     #region Organic
@@ -527,7 +527,7 @@ public sealed partial class SurgerySystem
             {
                 if (!HasComp<SleepingComponent>(patient) && !HasComp<PainNumbnessStatusEffectComponent>(patient)
                     && !patient.Comp.OperatedPart && !_mobState.IsDead(patient) && !HasComp<SyntheticOperatedComponent>(patient))
-                    _chat.TryEmoteWithoutChat(patient, _proto.Index(Scream), true);
+                    _chat.TryEmoteWithoutChat(patient, ProtoMan.Index(Scream), true);
 
                 _jittering.DoJitter(patient, TimeSpan.FromSeconds(4), true);
             }
@@ -546,7 +546,7 @@ public sealed partial class SurgerySystem
         {
             if (!HasComp<SleepingComponent>(patient) && !HasComp<PainNumbnessStatusEffectComponent>(patient)
                 && !patient.Comp.OperatedPart && !_mobState.IsDead(patient) && !HasComp<SyntheticOperatedComponent>(patient))
-                _chat.TryEmoteWithoutChat(patient, _proto.Index(Scream), true);
+                _chat.TryEmoteWithoutChat(patient, ProtoMan.Index(Scream), true);
 
             _jittering.DoJitter(patient, TimeSpan.FromSeconds(6), true);
         }
@@ -602,7 +602,7 @@ public sealed partial class SurgerySystem
                 {
                     if (!HasComp<SleepingComponent>(patient) && !HasComp<PainNumbnessStatusEffectComponent>(patient) && !patient.Comp.OperatedPart
                         && !_mobState.IsDead(patient) && !HasComp<SyntheticOperatedComponent>(patient))
-                        _chat.TryEmoteWithoutChat(patient, _proto.Index(Scream), true);
+                        _chat.TryEmoteWithoutChat(patient, ProtoMan.Index(Scream), true);
 
                     _jittering.DoJitter(patient, TimeSpan.FromSeconds(5), true);
                     break;

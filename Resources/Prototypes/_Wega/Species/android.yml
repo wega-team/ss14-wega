@@ -9,3 +9,10 @@
   maleFirstNames: NamesAI
   femaleFirstNames: NamesAI
   naming: First
+  defaultSoundsBySex:
+  - MaleAndroid
+  - FemaleAndroid
+  - MaleAndroid
+  voices:
+  - MaleAndroid
+  - FemaleAndroid

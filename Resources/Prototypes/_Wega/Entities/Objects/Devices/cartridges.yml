@@ -1,5 +1,5 @@
 - type: entity
-  parent: BaseItem
+  parent: BasePDACartridge
   id: NanoChatCartridge
   name: NanoChat cartridge
   description: "A program for conducting personal correspondence."

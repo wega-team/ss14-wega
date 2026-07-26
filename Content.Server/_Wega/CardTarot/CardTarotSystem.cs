@@ -5,7 +5,6 @@ using Content.Server.Cargo.Components;
 using Content.Server.Chat.Systems;
 using Content.Server.Dice;
 using Content.Server.Economy.SlotMachine;
-using Content.Server.Guardian;
 using Content.Server.Hallucinations;
 using Content.Server.Polymorph.Systems;
 using Content.Server.Revolutionary.Components;
@@ -32,6 +31,7 @@ using Content.Shared.EnergyShield;
 using Content.Shared.FixedPoint;
 using Content.Shared.Ghost;
 using Content.Shared.Gravity;
+using Content.Shared.Guardian.Components;
 using Content.Shared.Humanoid;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
@@ -86,7 +86,7 @@ public sealed partial class CardTarotSystem : EntitySystem
     [Dependency] private MetaDataSystem _meta = default!;
     [Dependency] private PolymorphSystem _polymorph = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
-    [Dependency] private IMapManager _mapManager = default!;
+    [Dependency] private SharedMapSystem _map = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private RejuvenateSystem _rejuvenate = default!;
     [Dependency] private SlotMachineSystem _slotMachine = default!;
@@ -856,7 +856,7 @@ public sealed partial class CardTarotSystem : EntitySystem
         }
         else
         {
-            var grids = _mapManager.GetAllGrids(Transform(target).MapID)
+            var grids = _map.GetAllGrids(Transform(target).MapID)
                 .Where(g => !HasComp<BecomesStationComponent>(g) && !HasComp<ProtectedGridComponent>(g)).ToList();
 
             if (grids.Count == 0)

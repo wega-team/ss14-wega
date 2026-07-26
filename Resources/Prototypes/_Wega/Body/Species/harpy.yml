@@ -95,10 +95,7 @@
     speechSounds: Alto
     allowedEmotes: ['CatHisses', 'CatMeow', 'Growl', 'Purr', 'Beep', 'Click']
   - type: Vocal
-    sounds:
-      Male: MaleHarpy
-      Female: FemaleHarpy
-      Unsexed: MaleHarpy
+    emoteSounds: MaleHarpy
   - type: UserInterface
     interfaces:
       enum.HumanoidMarkingModifierKey.Key:
