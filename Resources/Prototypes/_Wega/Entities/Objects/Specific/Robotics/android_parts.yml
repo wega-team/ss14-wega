@@ -37,7 +37,7 @@
         tags:
         - BaseBodyPart
         - LeftArmSynthetic
-      arm-right: 
+      arm-right:
       - type: Organ
         category: ArmRight
       - type: VisualOrgan
@@ -57,7 +57,7 @@
 - type: entity
   id: LegSyntheticImplant
   parent: [ OrganAndroidLegLeft ]
-  abstract: true  
+  abstract: true
   components:
   - type: BodyPartImplant
     configurations:
@@ -77,7 +77,7 @@
         tags:
         - BaseBodyPart
         - LeftLegSynthetic
-      leg-right: 
+      leg-right:
       - type: Organ
         category: LegRight
       - type: VisualOrgan
@@ -134,10 +134,10 @@
   - type: BodyPartImplant
     key: defib
     implantComponents:
-      - type: ExtendHandItemImplant
-        items:
-          - prototype: DefibrillatorArmImplant
-            toggleAction: ActionToggleBodyPartImplantDefib
+    - type: ExtendHandItemImplant
+      items:
+      - itemPrototype: DefibrillatorArmImplant
+        toggleActionPrototype: ActionToggleBodyPartImplantDefib
 
 - type: entity
   id: DefibrillatorArmImplant
@@ -159,10 +159,10 @@
   - type: BodyPartImplant
     key: protokinetic
     implantComponents:
-      - type: ExtendHandItemImplant
-        items:
-          - prototype: WeaponArmProtoKinetic
-            toggleAction: ActionToggleBodyPartImplantKinetic
+    - type: ExtendHandItemImplant
+      items:
+      - itemPrototype: WeaponArmProtoKinetic
+        toggleActionPrototype: ActionToggleBodyPartImplantKinetic
 
 - type: entity
   id: WeaponArmProtoKinetic

@@ -1,0 +1,25 @@
+ent-VehicleJanicartDestroyed = уничтоженная тележка уборщика
+    .desc = { ent-MachineFrameDestroyed.desc }
+ent-VehicleSecway = секвей
+    .desc =  Будущее транспорта. Популяризирован святым Иаковом, покровителем сотрудников службы безопасности и модераторов интернет-форумов.
+ent-VehicleATV = квадроцикл
+    .desc = Универсальное транспортное средство.
+ent-VehicleSyndicateSegway = сигвей синдиката
+    .desc = Стань врагом корпорации в стиле.
+ent-VehicleSkeletonMotorcycle = скелецикл
+    .desc = Bad to the Bone.
+ent-VehicleWheelchairFolded = { ent-VehicleWheelchair }
+    .desc = { ent-VehicleWheelchair.desc }
+    .suffix = Сложенное
+ent-VehicleUnicycle = моноцикл
+    .desc = У него всего одно колесо!
+ent-VehicleUnicycleFolded = { ent-VehicleUnicycle }
+    .desc = { ent-VehicleUnicycle.desc }
+    .suffix = Сложенное
+
+ent-VehicleBoat = лодка голиафа
+    .desc = Собранная из дерева и шкур голиафа лодка. Нужно весло для использования.
+ent-VehicleDragonBoat = лодка дракон
+    .desc = Таинственное судно, способное бесследно скользить по раскалённой лаве. Не требует вёсел и, кажется, движется по собственной воле.
+ent-VehicleBoatPolar = полярная лодка
+    .desc = Собранная из дерева и шкуры белого медведя лодка. На ощупь она удивительно теплая и устойчивая к холоду.

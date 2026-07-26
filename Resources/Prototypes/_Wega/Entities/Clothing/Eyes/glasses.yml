@@ -116,7 +116,7 @@
     - WhitelistChameleon
   - type: IdentityBlocker
     coverage: EYES
-  - type: NightVision
+  - type: ClothingNightVision
     tint: "#c242bb00"
     brightness: 0.5
     luminanceThreshold: 0.05

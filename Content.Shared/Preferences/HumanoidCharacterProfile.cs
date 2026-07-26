@@ -431,8 +431,6 @@ namespace Content.Shared.Preferences
         {
             var gender = Gender.Epicene;
 
-            var status = Status.No; // Corvax-Wega
-
             switch (sex)
             {
                 case Sex.Male:

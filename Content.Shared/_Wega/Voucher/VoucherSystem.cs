@@ -44,7 +44,7 @@ public sealed partial class VoucherSystem : EntitySystem
         foreach (var item in kit.Items)
         {
             for (var i = 0; i < item.Amount; i++)
-                Spawn(item.EntityId, coords);
+                Spawn(item.Id, coords);
         }
 
         QueueDel(args.Used);
