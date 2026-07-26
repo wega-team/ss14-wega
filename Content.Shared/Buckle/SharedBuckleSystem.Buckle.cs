@@ -111,9 +111,6 @@ public abstract partial class SharedBuckleSystem
 
     private void OnBuckleMove(Entity<BuckleComponent> ent, ref MoveEvent ev)
     {
-        if (HasComp<VehicleComponent>(ent.Comp.BuckledTo)) // Corvax-Wega-Vehicles
-            return; // Corvax-Wega-Vehicles
-
         BuckleTransformCheck(ent, ev.Component);
     }
 
@@ -168,15 +165,6 @@ public abstract partial class SharedBuckleSystem
 
     private void OnBuckleStandAttempt(EntityUid uid, BuckleComponent component, StandAttemptEvent args)
     {
-        // Corvax-Wega-Vehicles-start
-        if (component.BuckledTo != null)
-        {
-            var buckle = component.BuckledTo;
-            if (HasComp<VehicleComponent>(buckle))
-                return;
-        }
-        // Corvax-Wega-Vehicles-end
-
         if (component.Buckled)
             args.Cancel();
     }

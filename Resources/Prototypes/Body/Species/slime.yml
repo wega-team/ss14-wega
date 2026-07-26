@@ -80,7 +80,6 @@
       Brain: OrganSlimePersonCore
       Eyes: OrganSlimePersonEyes
       Lungs: OrganSlimePersonLungs
-      Eyes: OrganSlimePersonEyes # Corvax-Wega-Add
   - type: HumanoidProfile
     species: SlimePerson
 

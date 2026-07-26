@@ -162,8 +162,8 @@
     sprite: _Wega/Clothing/Head/Hats/catmelon_erars.rsi
   - type: Clothing
     sprite: _Wega/Clothing/Head/Hats/catmelon_erars.rsi
-  - type: AddAccentClothing
-    accent: OwOAccent
+  - type: OwOAccent
+    relayAccent: true
 
 - type: entity
   parent: ClothingHeadBase

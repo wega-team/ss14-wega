@@ -538,7 +538,6 @@
     accentHColor: "#8900c9" # Corvax-Wega-Lavaland-Edit
   - type: Icon
     state: pda-salvage-specialist # Corvax-Wega-Lavaland-Edit
-    state: pda-miner
   - type: EntityTableContainerFill
     containers:
       preinstalled-program-container: !type:AllSelector

@@ -177,12 +177,6 @@
 # Synthetic Surgery end
 
 - type: Tag
-  id: JanicartKeys
-
-- type: Tag
-  id: VehicleKey
-
-- type: Tag
   id: CapacitorStockPart
 
 - type: Tag

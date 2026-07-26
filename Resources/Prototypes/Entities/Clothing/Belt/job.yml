@@ -140,7 +140,7 @@
       - WireBrush
       - LightReplacer
       - CleanerGrenade
-      - JanicartKeys # Corvax-Wega-Vehicles
+      - JanicartKeys
   - type: ItemMapper
     sprite: *BeltOverlay
     mapLayers:
