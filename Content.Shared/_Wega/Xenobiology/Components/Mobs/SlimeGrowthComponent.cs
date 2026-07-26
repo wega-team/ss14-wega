@@ -20,6 +20,9 @@ public sealed partial class SlimeGrowthComponent : Component
     [DataField("rainbowChance")]
     public float RainbowChance = 0.01f;
 
+    [DataField("points")]
+    public int Points = 0;
+
     public bool Stabilized = false;
 
     public bool Reinforced = false;

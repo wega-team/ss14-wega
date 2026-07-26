@@ -1,4 +1,5 @@
 using System.Numerics;
+using Content.Server.Research.Systems;
 using Content.Server.Power.Components;
 using Content.Shared.Interaction;
 using Robust.Shared.Physics.Components;
@@ -15,6 +16,9 @@ using Content.Shared.Throwing;
 using Robust.Shared.Random;
 using Content.Shared.Climbing.Events;
 using Content.Shared.Inventory;
+using Content.Shared.Research;
+using Content.Server.Chat.Systems;
+using Content.Shared.Chat;
 using Content.Shared.Construction.Components;
 using Content.Shared.Xenobiology;
 using Content.Shared.Mobs.Systems;
@@ -36,6 +40,8 @@ namespace Content.Server.Xenobiology
         [Dependency] private InventorySystem _inventory = default!;
         [Dependency] private SharedTransformSystem _transform = default!;
         [Dependency] private SharedAmbientSoundSystem _ambient = default!;
+		[Dependency] private ResearchSystem _research = default!;
+		[Dependency] private ChatSystem _chat = default!;
 
         public const string SlimeExtractPrefix = "MaterialSlimeExtract";
 
@@ -191,6 +197,14 @@ namespace Content.Server.Xenobiology
             if (!TryComp<PhysicsComponent>(slime, out var physics) || !TryComp<SlimeGrowthComponent>(slime, out var slimeGrowth))
                 return;
 
+			if (!_research.TryGetClientServer(extractor, out var server, out var serverComp))
+            {
+				string ms;
+				ms = Loc.GetString("no-choose-server");
+				_chat.TrySendInGameICMessage(extractor.Owner, ms, InGameICChatType.Speak, true);
+                return;
+			}
+
             var component = extractor.Comp;
             component.IsActive = true;
             component.ProcessingTimer = physics.FixturesMass * component.ProcessingTimePerUnitMass;
@@ -199,6 +213,7 @@ namespace Content.Server.Xenobiology
             component.SlimeType = slimeGrowth.SlimeType.ToString();
             component.SlimeStage = slimeGrowth.CurrentStage;
             component.Reinforced = slimeGrowth.Reinforced;
+            component.Points = slimeGrowth.Points;
 
             _jittering.AddJitter(extractor, -10, 100);
             _audio.PlayPvs(new SoundPathSpecifier("/Audio/Machines/reclaimer_startup.ogg"), extractor);
@@ -217,7 +232,15 @@ namespace Content.Server.Xenobiology
             {
                 _transform.DropNextTo(item, extractor.Owner);
             }
-
+			
+			if (component.Points != 0)
+			{
+				_research.ModifyServerPoints(server.Value, component.Points, serverComp);
+				string message;
+				message = Loc.GetString("extrator-point-get", ("points", component.Points));
+				_chat.TrySendInGameICMessage(extractor.Owner, message, InGameICChatType.Speak, true);
+			}
+			
             QueueDel(slime);
             Dirty(extractor, component);
         }

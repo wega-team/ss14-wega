@@ -24,6 +24,9 @@ public sealed partial class SlimeExtractorComponent : Component
     public string? SlimeType;
 
     [ViewVariables]
+    public int Points;
+
+    [ViewVariables]
     public SlimeStage? SlimeStage;
 
     public bool Reinforced = false;
