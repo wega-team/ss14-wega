@@ -37,7 +37,7 @@
   - type: Construction
     graph: GlassesMedSec
     node: medsecGlasses
-    
+
 - type: entity
   parent: [ClothingEyesBase, BaseHighlyIllegalContraband]
   id: ClothingEyesGlassesNightVision
@@ -56,7 +56,7 @@
     - WhitelistChameleon
   - type: IdentityBlocker
     coverage: EYES
-  - type: NightVision
+  - type: ClothingNightVision
     tint: "#00800000"
   - type: ItemToggle
     soundActivate: /Audio/_Wega/Items/activate.ogg
@@ -78,7 +78,7 @@
   description: a pair of goggles that allows you to see through dark.
   components:
   - type: FlashImmunity
-  
+
 # ADT
 
 - type: entity
@@ -96,7 +96,7 @@
     - WhitelistChameleon
   - type: IdentityBlocker
     coverage: EYES
-    
+
 # VeilCults
 - type: entity
   parent: ClothingEyesBase
@@ -116,7 +116,7 @@
     - WhitelistChameleon
   - type: IdentityBlocker
     coverage: EYES
-  - type: NightVision
+  - type: ClothingNightVision
     tint: "#c242bb00"
     brightness: 0.5
     luminanceThreshold: 0.05

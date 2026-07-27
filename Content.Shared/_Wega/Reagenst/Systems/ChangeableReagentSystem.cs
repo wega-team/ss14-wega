@@ -1,19 +1,16 @@
 using Robust.Shared.Prototypes;
 using Content.Shared.Verbs;
-using Content.Shared.Access.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Database;
 using Content.Shared.Examine;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Components;
-using Content.Shared.Chemistry.Reagent;
 using Content.Shared.ChangeableReagent.Components;
 
 namespace Content.Shared.ChangeableReagent;
 
 public sealed partial class ChangeableReagentSystem : EntitySystem
 {
-    [Dependency] private IPrototypeManager _prototypeManager = default!;
     [Dependency] private SharedPopupSystem _popupSystem = default!;
     [Dependency] private SolutionRegenerationSystem _solutionrRagents = default!;
 
@@ -90,7 +87,7 @@ public sealed partial class ChangeableReagentSystem : EntitySystem
 
         if (user != null)
 			_popupSystem.PopupClient(Loc.GetString("set-reagent", ("reagent", Loc.GetString(Reagent.Name))), uid, user.Value);
-		
+
 		if (TryComp(uid, out SolutionRegenerationComponent? reagenComp))
         {
 			var newSolution = new Solution(Reagent.Reagent);

@@ -10,7 +10,6 @@ namespace Content.Shared.Voucher;
 public sealed partial class VoucherSystem : EntitySystem
 {
     [Dependency] private SharedAudioSystem _audio = default!;
-    [Dependency] private IPrototypeManager _prototype = default!;
     [Dependency] private SharedUserInterfaceSystem _ui = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
 
@@ -38,14 +37,14 @@ public sealed partial class VoucherSystem : EntitySystem
             return;
         }
 
-        if (!_prototype.TryIndex(cardComp.CurrentKit.Value, out var kit))
+        if (!ProtoMan.TryIndex(cardComp.CurrentKit.Value, out var kit))
             return;
 
         var coords = Transform(entity).Coordinates;
         foreach (var item in kit.Items)
         {
             for (var i = 0; i < item.Amount; i++)
-                Spawn(item.EntityId, coords);
+                Spawn(item.Id, coords);
         }
 
         QueueDel(args.Used);
@@ -67,7 +66,7 @@ public sealed partial class VoucherSystem : EntitySystem
     {
         component.CurrentKit = args.KitId;
 
-        _popup.PopupClient(Loc.GetString("voucher-kit-selected", ("kitName", Loc.GetString(_prototype.Index(args.KitId).Name))), uid, uid);
+        _popup.PopupClient(Loc.GetString("voucher-kit-selected", ("kitName", Loc.GetString(ProtoMan.Index(args.KitId).Name))), uid, uid);
     }
 
     private void OpenKitSelectionUI(EntityUid card, VoucherCardComponent component, EntityUid user)
@@ -76,7 +75,7 @@ public sealed partial class VoucherSystem : EntitySystem
 
         foreach (var kitId in component.Kits)
         {
-            if (_prototype.TryIndex(kitId, out var kit))
+            if (ProtoMan.TryIndex(kitId, out var kit))
                 availableKits.Add(kit);
         }
 

@@ -90,15 +90,9 @@
   #   baseRadialAcceleration: 6
   #   maxRange: 8
   # Corvax-Wega-Edit-End
-  - type: Tag
-    tags:
-    - GhostOnlyWarp
   - type: WarpPoint
     follow: true
     location: Ratvar
-    blacklist:
-      tags:
-      - GhostOnlyWarp
   # Corvax-Wega-Veil-Cult-start
   - type: Godmode
   - type: Eye

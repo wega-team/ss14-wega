@@ -59,3 +59,6 @@ preload_grids = false
 random_characters = true
 random_species_weights = ""
 ssd_sleep_time = 3600
+
+[lavaland]
+enabled = false

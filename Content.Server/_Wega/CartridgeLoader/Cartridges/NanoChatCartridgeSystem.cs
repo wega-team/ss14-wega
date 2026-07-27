@@ -28,6 +28,7 @@ public sealed partial class NanoChatCartridgeSystem : SharedNanoChatCartridgeSys
 
     private readonly Dictionary<string, EntityUid> _activeChats = new();
     private readonly Dictionary<string, ChatGroupData> _groups = new();
+    private const string ProgramContainer = "preinstalled-program-container";
     private const int MessageRange = 2000;
 
     public override void Initialize()
@@ -51,7 +52,7 @@ public sealed partial class NanoChatCartridgeSystem : SharedNanoChatCartridgeSys
 
     private void OnOwnerNameChanged(Entity<PdaComponent> ent, ref OwnerNameChangedEvent args)
     {
-        var container = _container.GetContainer(ent, "program-container");
+        var container = _container.GetContainer(ent, ProgramContainer);
         if (container.ContainedEntities.Count == 0)
             return;
 

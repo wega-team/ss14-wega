@@ -68,6 +68,9 @@ public abstract partial class SharedGasTankSystem : GasMaxPressureSystem<GasTank
         if (component.ToggleAction == null) // Corvax-Wega-Add
             return; // Corvax-Wega-Add
 
+        if (!HasComp<InternalsComponent>(args.User))
+            return;
+
         args.AddAction(ref component.ToggleActionEntity, component.ToggleAction);
         Dirty(uid, component);
     }

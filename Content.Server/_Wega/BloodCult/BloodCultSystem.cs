@@ -47,7 +47,6 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
     [Dependency] private AudioSystem _audio = default!;
     [Dependency] private BloodCultRuleSystem _bloodCult = default!;
     [Dependency] private IGameTiming _gameTiming = default!;
-    [Dependency] private IPrototypeManager _prototypeManager = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private MetaDataSystem _meta = default!;
     [Dependency] private MobStateSystem _mobState = default!;

@@ -359,12 +359,13 @@ namespace Content.Server.Database
         // Corvax-Wega-Graphomancy-Extended-end
         public int Age { get; set; }
         public string Sex { get; set; } = null!;
+        public string? Voice { get; set; } = null!; // If null, the voice gets defaulted to the sex associated value
         public string Gender { get; set; } = null!;
         public string Species { get; set; } = null!;
-        public string Voice { get; set; } = null!; // Corvax-TTS
         public string BarkVoice { get; set; } = null!; // Corvax-Wega-Barks
         public string Status { get; set; } = null!; // Corvax-Wega
         public float Height { get; set; } // Corvax-Wega-Height
+        [Column("ttsvoice")] public string TTSVoice { get; set; } = null!; // Corvax-TTS
         [Column(TypeName = "jsonb")] public JsonDocument? OrganMarkings { get; set; } = null!;
         [Column(TypeName = "jsonb")] public JsonDocument? Markings { get; set; } = null!;
         public string HairName { get; set; } = null!;

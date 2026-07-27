@@ -244,10 +244,7 @@
   - type: Speech
     speechSounds: Resomi
   - type: Vocal
-    sounds:
-      Male: MaleResomi
-      Female: FemaleResomi
-      Unsexed: MaleResomi
+    emoteSounds: MaleResomi
   - type: Respirator
     damage:
       types:

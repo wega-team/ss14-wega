@@ -268,8 +268,8 @@
     storedRotation: -45
     size: Normal
     shape:
-    - 0,0,1,0
-    - 0,2,0,1
+    - 0,0,1,2
+    - 0,0,2,1
   - type: CultWeapon
     cult: Blood
   - type: MeleeWeapon
@@ -308,7 +308,7 @@
     size: Normal
     shape:
     - 0,0,2,1
-    - 1,2,1,1
+    - 1,0,2,1
   - type: CultWeapon
     cult: Blood
   - type: MeleeWeapon

@@ -4,7 +4,7 @@ using Content.Shared.Overlays;
 namespace Content.Shared.Shaders;
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true)]
-public sealed partial class NightVisionComponent : ToggleableHudComponent
+public sealed partial class ClothingNightVisionComponent : ToggleableHudComponent
 {
     [DataField("brightness"), AutoNetworkedField]
     public float Brightness = 1f;

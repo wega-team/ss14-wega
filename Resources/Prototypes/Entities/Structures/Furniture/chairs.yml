@@ -80,9 +80,7 @@
     rotateWhileAnchored: true
   # Corvax-Wega-Start
   - type: Vehicle
-    hasKey: true
-    useHand: false
-    hornSound: null
+  - type: StrapVehicle
   - type: MovementSpeedModifier
     weightlessModifier: 0
     baseAcceleration: 2

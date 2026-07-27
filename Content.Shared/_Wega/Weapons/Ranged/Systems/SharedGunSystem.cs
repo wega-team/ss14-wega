@@ -207,7 +207,7 @@ public abstract partial class SharedGunSystem
             // Play empty gun sounds if relevant
             if (shots > 0)
             {
-                PopupSystem.PopupCursor(ev.Reason ?? Loc.GetString("gun-magazine-fired-empty"));
+                PopupSystem.PopupCursor(ev.Reason ?? Loc.GetString("gun-magazine-fired-empty"), user);
                 Audio.PlayPredicted(gun.SoundEmpty, gunUid, user);
                 return false;
             }

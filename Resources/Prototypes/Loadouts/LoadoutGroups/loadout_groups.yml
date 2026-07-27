@@ -1,5 +1,23 @@
 # Miscellaneous
 - type: loadoutGroup
+  id: Glasses
+  name: loadout-group-glasses
+  minLimit: 0
+  loadouts:
+  - Glasses
+  - GlassesJamjar
+  - GlassesJensen
+  # Corvax-Wega-start
+  - ClothingEyesGlassesMonocle
+  - ClothingEyesGlassesCheapSunglasses
+  - ClothingEyesSalesman
+  - ClothingEyesEyepatch
+  # Corvax-Wega-end
+  # Corvax-Wega-Sponsors-start
+  - ClothingEyesGlassesHeroX
+  # Corvax-Wega-Sponsors-end
+
+- type: loadoutGroup
   id: Trinkets
   name: loadout-group-trinkets
   minLimit: 0
@@ -59,6 +77,14 @@
   - ClothingNeckTransPin
   - ClothingNeckAutismPin
   - ClothingNeckGoldAutismPin
+  - TowelColorWhite
+
+- type: loadoutGroup
+  id: AssistiveItems
+  name: loadout-group-assistive-items
+  minLimit: 0
+  maxLimit: 1 # Increase this limit in the future once there's more assistive items than just canes!
+  loadouts:
   - OffsetCane
   - OffsetCaneWood
   - OffsetCaneClown
@@ -78,35 +104,9 @@
   - ClothingNeckVoidPin
   - ClothingNeckWhiteListPin
   # Corvax-Loadouts-End
-  # Corvax-Wega-start
-  - BrasletHarmless
-  - BrasletSearch
-  - BrasletBite
-  - BrasletSex
-  - BrasletRape
-  # Corvax-Wega-end
-  - TowelColorWhite
   # Corvax-Wega-Sponsors-start
   - PetCarrierMars
   - FoodInfiniteCub
-  # Corvax-Wega-Sponsors-end
-
-- type: loadoutGroup
-  id: Glasses
-  name: loadout-group-glasses
-  minLimit: 0
-  loadouts:
-  - Glasses
-  - GlassesJamjar
-  - GlassesJensen
-  # Corvax-Wega-start
-  - ClothingEyesGlassesMonocle
-  - ClothingEyesGlassesCheapSunglasses
-  - ClothingEyesSalesman
-  - ClothingEyesEyepatch
-  # Corvax-Wega-end
-  # Corvax-Wega-Sponsors-start
-  - ClothingEyesGlassesHeroX
   # Corvax-Wega-Sponsors-end
 
 - type: loadoutGroup

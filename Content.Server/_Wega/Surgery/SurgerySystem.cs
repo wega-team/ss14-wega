@@ -42,7 +42,6 @@ public sealed partial class SurgerySystem : EntitySystem
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private MobStateSystem _mobState = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
-    [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private InventorySystem _inventory = default!;
 
     private static readonly ProtoId<EmotePrototype> Scream = "Scream";
