@@ -169,9 +169,10 @@
       prob: 0.15
     - id: ClothingBeltChiefEngineerFilled
     - id: ClothingEyesGlassesMeson
-    - id: ClothingHandsGlovesColorYellow
+    - id: ClothingHandsGlovesAtmos # Corvax-Wega
     - id: ClothingHeadsetAltEngineering
     - id: DoorRemoteEngineering
+    - id: RPD # Corvax-Wega
     # Covrax-Wega-CombatRCD-Start
     - id: CombatRCD
     - id: RCDAmmo
