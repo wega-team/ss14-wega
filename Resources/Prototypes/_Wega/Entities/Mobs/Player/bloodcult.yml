@@ -598,7 +598,7 @@
       shader: unshaded
   - type: Item
     size: Normal
-  # - type: Clothing на время, пока не будет натуральных термал, чтоб не передавать зрение носителю
+  # - type: Clothing
     # quickEquip: false
     # sprite: _Wega/Mobs/Demons/bloodcultmobs.rsi
     # equippedPrefix: 0

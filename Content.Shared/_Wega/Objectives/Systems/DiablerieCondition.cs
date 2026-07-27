@@ -5,7 +5,7 @@ using Robust.Shared.Random;
 
 namespace Content.Server.Objectives.Systems;
 
-public sealed partial class VampireDilebrySystem : EntitySystem
+public sealed partial class DiablerieConditionSystem : EntitySystem
 {
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private MetaDataSystem _metaData = default!;
@@ -14,12 +14,12 @@ public sealed partial class VampireDilebrySystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<VampireDilebryComponent, ObjectiveGetProgressEvent>(OnGetProgress);
-        SubscribeLocalEvent<VampireDilebryComponent, ObjectiveAssignedEvent>(OnAssigned);
-        SubscribeLocalEvent<VampireDilebryComponent, ObjectiveAfterAssignEvent>(OnAfterAssign);
+        SubscribeLocalEvent<DiablerieConditionComponent, ObjectiveGetProgressEvent>(OnGetProgress);
+        SubscribeLocalEvent<DiablerieConditionComponent, ObjectiveAssignedEvent>(OnAssigned);
+        SubscribeLocalEvent<DiablerieConditionComponent, ObjectiveAfterAssignEvent>(OnAfterAssign);
     }
 
-    private void OnAssigned(EntityUid uid, VampireDilebryComponent comp, ref ObjectiveAssignedEvent args)
+    private void OnAssigned(EntityUid uid, DiablerieConditionComponent comp, ref ObjectiveAssignedEvent args)
     {
         if (args.Mind.OwnedEntity.HasValue)
         {
@@ -28,7 +28,7 @@ public sealed partial class VampireDilebrySystem : EntitySystem
         }
     }
 
-    private void OnAfterAssign(EntityUid uid, VampireDilebryComponent comp, ref ObjectiveAfterAssignEvent args)
+    private void OnAfterAssign(EntityUid uid, DiablerieConditionComponent comp, ref ObjectiveAfterAssignEvent args)
     {
         if (args.Mind.OwnedEntity.HasValue)
         {
@@ -38,7 +38,7 @@ public sealed partial class VampireDilebrySystem : EntitySystem
         }
     }
 
-    private void OnGetProgress(EntityUid uid, VampireDilebryComponent comp, ref ObjectiveGetProgressEvent args)
+    private void OnGetProgress(EntityUid uid, DiablerieConditionComponent comp, ref ObjectiveGetProgressEvent args)
     {
         if (args.Mind.OwnedEntity.HasValue)
         {
@@ -47,7 +47,7 @@ public sealed partial class VampireDilebrySystem : EntitySystem
         }
     }
 
-    private float GetProgress(EntityUid uid, VampireDilebryComponent comp)
+    private float GetProgress(EntityUid uid, DiablerieConditionComponent comp)
     {
         if (!TryComp<VampireDiablerieComponent>(uid, out var vampireComponent))
             return 0f;

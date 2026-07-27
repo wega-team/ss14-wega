@@ -1,6 +1,5 @@
 using System.Linq;
-using Content.Server.Atmos.EntitySystems;
-using Content.Shared.Shadow.Components;
+using Content.Server.Atmos.EntitySystems;	
 using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
 using Content.Shared.DoAfter;
@@ -41,13 +40,6 @@ public sealed partial class VampireSystem
             _stealth.SetEnabled(ent, false, stealth);
         }
 
-        if (!TryComp<PhotophobiaComponent>(ent, out var photo))
-        {
-            photo = EnsureComp<PhotophobiaComponent>(ent);
-            photo.DamagePerLight = 0f;
-			photo.Interval = 1f;
-        }
-
         if (TryComp(ent, out MovementSpeedModifierComponent? speedmodComponent))
         {
             var originalWalkSpeed = speedmodComponent.BaseWalkSpeed;
@@ -56,8 +48,6 @@ public sealed partial class VampireSystem
             if (stealth.Enabled)
             {
                 _stealth.SetEnabled(ent, false, stealth);
-				photo.DamagePerLight = 0f;
-				photo.Interval = 1f;
                 _speed.ChangeBaseSpeed(ent, originalWalkSpeed / args.SpeedMod, originalSprintSpeed / args.SpeedMod, speedmodComponent.Acceleration);
                 _popup.PopupEntity(Loc.GetString("vampire-stealth-disabled"), ent, ent, PopupType.Small);
             }
@@ -70,8 +60,6 @@ public sealed partial class VampireSystem
                 }
 
                 _stealth.SetEnabled(ent, true, stealth);
-				photo.DamagePerLight = 1f;
-				photo.Interval = 1f;
                 _speed.ChangeBaseSpeed(ent, originalWalkSpeed * args.SpeedMod, originalSprintSpeed * args.SpeedMod, speedmodComponent.Acceleration);
                 _popup.PopupEntity(Loc.GetString("vampire-stealth-enabled"), ent, ent, PopupType.Small);
                 SubtractBloodEssence(ent.Owner, args.BloodCost);

@@ -93,7 +93,7 @@
     icon:
       sprite: _Wega/Interface/Actions/actions_vampire.rsi
       state: blood
-  - type: VampireDilebry
+  - type: DiablerieCondition
   - type: ObjectiveLimit
     limit: 1
 
