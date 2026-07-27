@@ -40,6 +40,7 @@ rcd-component-airlocks = Шлюзы
 rcd-component-electrical = Электроприборы
 rcd-component-lighting = Освещение
 
+
 ### Prototype names (note: constructable items will be puralized)
 
 rcd-component-deconstruct = демонтаж
