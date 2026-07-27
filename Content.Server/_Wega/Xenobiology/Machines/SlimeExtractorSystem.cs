@@ -150,6 +150,8 @@ namespace Content.Server.Xenobiology
             {
                 component.ProcessingTimer = 0;
                 component.IsActive = false;
+				RemComp<JitteringComponent>(uid);
+				_ambient.SetAmbience(uid, false);
                 Dirty(uid, component);
             }
         }
@@ -199,8 +201,7 @@ namespace Content.Server.Xenobiology
 
 			if (!_research.TryGetClientServer(extractor, out var server, out var serverComp))
             {
-				string ms;
-				ms = Loc.GetString("no-choose-server");
+				var ms = Loc.GetString("no-choose-server");
 				_chat.TrySendInGameICMessage(extractor.Owner, ms, InGameICChatType.Speak, true);
                 return;
 			}
@@ -236,8 +237,7 @@ namespace Content.Server.Xenobiology
 			if (component.Points != 0)
 			{
 				_research.ModifyServerPoints(server.Value, component.Points, serverComp);
-				string message;
-				message = Loc.GetString("extrator-point-get", ("points", component.Points));
+				var message = Loc.GetString("extrator-point-get", ("points", component.Points));
 				_chat.TrySendInGameICMessage(extractor.Owner, message, InGameICChatType.Speak, true);
 			}
 			
