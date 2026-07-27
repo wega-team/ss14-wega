@@ -8,7 +8,6 @@ using Content.Shared.Surgery;
 using Content.Shared.Surgery.Components;
 using Content.Shared.UserInterface;
 using Robust.Server.GameObjects;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
 namespace Content.Server.Medical.Surgery
@@ -16,7 +15,6 @@ namespace Content.Server.Medical.Surgery
     public sealed partial class BodyScannerConsoleSystem : EntitySystem
     {
         [Dependency] private UserInterfaceSystem _uiSystem = default!;
-        [Dependency] private IPrototypeManager _prototypeManager = default!;
         [Dependency] private IGameTiming _timing = default!;
         [Dependency] private SharedDeviceLinkSystem _deviceLink = default!;
 
@@ -139,7 +137,7 @@ namespace Content.Server.Medical.Surgery
             var damages = new List<BodyScannerDamageInfo>();
             foreach (var (damageId, bodyParts) in operated.InternalDamages)
             {
-                if (!_prototypeManager.TryIndex(damageId, out var damageProto))
+                if (!ProtoMan.TryIndex(damageId, out var damageProto))
                     continue;
 
                 damages.Add(new BodyScannerDamageInfo(

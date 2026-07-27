@@ -118,7 +118,7 @@ public sealed partial class TTSTab : Control
             var selectButton = new Button
             {
                 Text = displayName,
-                ToolTip = canSelectVoice ? voice.ID : Loc.GetString("humanoid-profile-editor-voice-tooltip-sponsoronly"),
+                ToolTip = canSelectVoice ? voice.ID : GetSponsorOnlyTooltip(voice.ID),
                 HorizontalExpand = true,
                 Disabled = !canSelectVoice,
                 StyleClasses = { StyleClass.ButtonOpenRight }
@@ -160,6 +160,17 @@ public sealed partial class TTSTab : Control
             ("filtered", _filteredVoices.Count), ("all", _allVoices.Count));
     }
 
+    private string GetSponsorOnlyTooltip(string voiceId)
+    {
+        var sponsorsManager = IoCManager.Resolve<ISharedSponsorsManager>();
+        if (sponsorsManager?.TryGetTierNameForPrototype(voiceId, out var tier) == true)
+        {
+            return Loc.GetString("humanoid-profile-editor-voice-tooltip-sponsoronly-tier", ("tier", tier));
+        }
+
+        return Loc.GetString("humanoid-profile-editor-voice-tooltip-sponsoronly");
+    }
+
     private bool CanUseVoice(TTSVoicePrototype voice)
     {
         if (!voice.SponsorOnly)
@@ -174,7 +185,7 @@ public sealed partial class TTSTab : Control
         if (profile == null)
             return;
 
-        _selectedVoiceId = profile.Voice;
+        _selectedVoiceId = profile.TTSVoice;
 
         _allVoices = _prototypeManager
             .EnumeratePrototypes<TTSVoicePrototype>()

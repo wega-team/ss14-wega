@@ -42,7 +42,7 @@ public sealed partial class DiseaseOutbreakRule : StationEventSystem<DiseaseOutb
 
         var diseaseName = RobustRandom.Pick(component.NotTooSeriousDiseases);
 
-        if (!PrototypeManager.TryIndex(diseaseName, out DiseasePrototype? disease))
+        if (!ProtoMan.TryIndex(diseaseName, out DiseasePrototype? disease))
             return;
 
         // Now we give it to people in the list of living disease carriers earlier

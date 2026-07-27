@@ -85,19 +85,20 @@
   - type: TargetObjective
     title: objective-condition-keep-alive-title
   - type: PickRandomPerson
-    filters:
-    - !type:HasRoleMindFilter
+    conditions:
+    - !type:RoleCondition
       inverted: true
       whitelist:
         components:
         - BloodBrotherRole
-    - !type:BodyMindFilter
+    - !type:BodyWhitelistCondition
       inverted: true
       whitelist:
         components:
         - CommandStaff
-    - !type:TargetObjectiveMindFilter
-      blacklist:
+    - !type:ObjectiveTargetCondition
+      inverted: true
+      whitelist:
         components:
         - BloodBrotherSharedKillCondition
         - BloodBrotherSharedKeepAliveCondition
@@ -112,14 +113,15 @@
   description: Ensure the target does not escape the station alive together with your blood brother. You can eliminate or capture them - the choice is yours.
   components:
   - type: PickRandomPerson
-    filters:
-    - !type:HasRoleMindFilter
+    conditions:
+    - !type:RoleCondition
       inverted: true
       whitelist:
         components:
         - BloodBrotherRole
-    - !type:TargetObjectiveMindFilter
-      blacklist:
+    - !type:ObjectiveTargetCondition
+      inverted: true
+      whitelist:
         components:
         - BloodBrotherSharedKillCondition
 
@@ -131,14 +133,15 @@
   - type: TargetObjective
     title: objective-condition-kill-title
   - type: PickRandomPerson
-    filters:
-    - !type:HasRoleMindFilter
+    conditions:
+    - !type:RoleCondition
       inverted: true
       whitelist:
         components:
         - BloodBrotherRole
-    - !type:TargetObjectiveMindFilter
-      blacklist:
+    - !type:ObjectiveTargetCondition
+      inverted: true
+      whitelist:
         components:
         - BloodBrotherSharedKillCondition
   - type: BloodBrotherSharedKillCondition
@@ -155,18 +158,19 @@
   - type: TargetObjective
     title: objective-condition-kill-title
   - type: PickRandomPerson
-    filters:
-    - !type:HasRoleMindFilter
+    conditions:
+    - !type:RoleCondition
       inverted: true
       whitelist:
         components:
         - BloodBrotherRole
-    - !type:BodyMindFilter
+    - !type:BodyWhitelistCondition
       whitelist:
         components:
         - CommandStaff
-    - !type:TargetObjectiveMindFilter
-      blacklist:
+    - !type:ObjectiveTargetCondition
+      inverted: true
+      whitelist:
         components:
         - BloodBrotherSharedKillCondition
   - type: BloodBrotherSharedKillCondition

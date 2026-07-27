@@ -11,3 +11,10 @@
   skinColoration: Hues
   minHeight: 140
   maxHeight: 160
+  defaultSoundsBySex:
+  - MaleResomi
+  - FemaleResomi
+  - MaleResomi
+  voices:
+  - MaleResomi
+  - FemaleResomi

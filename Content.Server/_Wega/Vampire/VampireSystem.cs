@@ -72,7 +72,6 @@ public sealed partial class VampireSystem : SharedVampireSystem
     [Dependency] private EuiManager _euiMan = default!;
     [Dependency] private IAdminLogManager _admin = default!;
     [Dependency] private IComponentFactory _componentFactory = default!;
-    [Dependency] private IMapManager _mapMan = default!;
     [Dependency] private InventorySystem _inventory = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private ISharedPlayerManager _player = default!;
@@ -719,7 +718,7 @@ public sealed partial class VampireSystem : SharedVampireSystem
     private bool IsInSpace(EntityUid vampireUid)
     {
         var vampirePosition = _transform.GetMapCoordinates(Transform(vampireUid));
-        if (!_mapMan.TryFindGridAt(vampirePosition, out var gridUid, out var grid))
+        if (!_map.TryFindGridAt(vampirePosition, out var gridUid, out var grid))
             return true;
 
         if (!_map.TryGetTileRef(gridUid, grid, vampirePosition.Position, out var tileRef))

@@ -7,3 +7,10 @@
   skinColoration: HumanToned
   minHeight: 160
   maxHeight: 220 # ...
+  defaultSoundsBySex:
+  - MaleHarpy
+  - FemaleHarpy
+  - MaleHarpy
+  voices:
+  - MaleHarpy
+  - FemaleHarpy
