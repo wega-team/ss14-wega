@@ -174,11 +174,6 @@
     blacklist:
       components:
       - Vampire
-  - type: Photophobia
-    applyShadowWeakness: true
-    damagePerLight: 5
-    speedModifier: 1
-    interval: 0.5
 
 - type: entity
   parent: BaseStructure
