@@ -65,6 +65,8 @@
   id: AirlockBlueShieldOfficerLocked
   suffix: BlueShieldOfficer, Locked
   components:
+  - type: Sprite
+    sprite: _Wega/Structures/Doors/Airlocks/Standard/blueshield.rsi # Corvax-Wega-Doors-Sprite
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsBlueShieldOfficer ]
@@ -74,6 +76,8 @@
   id: AirlockBlueShieldOfficerGlassLocked
   suffix: BlueShieldOfficer, Locked, Glass
   components:
+  - type: Sprite
+    sprite: _Wega/Structures/Doors/Airlocks/Glass/blueshield.rsi # Corvax-Wega-Doors-Sprite
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsBlueShieldOfficer ]

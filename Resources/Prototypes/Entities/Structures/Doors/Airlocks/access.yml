@@ -326,6 +326,8 @@
   id: AirlockCaptainLocked
   suffix: Captain, Locked
   components:
+  - type: Sprite
+    sprite: _Wega/Structures/Doors/Airlocks/Standard/cap.rsi # Corvax-Wega-Doors-Sprite
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsCaptain ]
@@ -335,6 +337,8 @@
   id: AirlockChiefMedicalOfficerLocked
   suffix: ChiefMedicalOfficer, Locked
   components:
+  - type: Sprite
+    sprite: _Wega/Structures/Doors/Airlocks/Standard/cmo.rsi # Corvax-Wega-Doors-Sprite
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsChiefMedicalOfficer ]
@@ -344,6 +348,8 @@
   id: AirlockChiefEngineerLocked
   suffix: ChiefEngineer, Locked
   components:
+  - type: Sprite
+    sprite: _Wega/Structures/Doors/Airlocks/Standard/ce.rsi # Corvax-Wega-Doors-Sprite
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsChiefEngineer ]
@@ -353,6 +359,8 @@
   id: AirlockHeadOfSecurityLocked
   suffix: HeadOfSecurity, Locked
   components:
+  - type: Sprite
+    sprite: _Wega/Structures/Doors/Airlocks/Standard/hos.rsi # Corvax-Wega-Doors-Sprite
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsHeadOfSecurity ]
@@ -362,6 +370,8 @@
   id: AirlockResearchDirectorLocked
   suffix: ResearchDirector, Locked
   components:
+  - type: Sprite
+    sprite: _Wega/Structures/Doors/Airlocks/Standard/rd.rsi # Corvax-Wega-Doors-Sprite
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsResearchDirector ]
@@ -371,6 +381,8 @@
   id: AirlockHeadOfPersonnelLocked
   suffix: HeadOfPersonnel, Locked
   components:
+  - type: Sprite
+    sprite: _Wega/Structures/Doors/Airlocks/Standard/hop.rsi # Corvax-Wega-Doors-Sprite
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsHeadOfPersonnel ]
@@ -380,6 +392,8 @@
   id: AirlockQuartermasterLocked
   suffix: Quartermaster, Locked
   components:
+  - type: Sprite
+    sprite: _Wega/Structures/Doors/Airlocks/Standard/qm.rsi # Corvax-Wega-Doors-Sprite
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsQuartermaster ]
@@ -749,6 +763,8 @@
   id: AirlockChiefMedicalOfficerGlassLocked
   suffix: ChiefMedicalOfficer, Locked
   components:
+  - type: Sprite
+    sprite: _Wega/Structures/Doors/Airlocks/Glass/cmo.rsi # Corvax-Wega-Doors-Sprite
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsChiefMedicalOfficer ]
@@ -758,6 +774,8 @@
   id: AirlockChiefEngineerGlassLocked
   suffix: ChiefEngineer, Locked
   components:
+  - type: Sprite
+    sprite: _Wega/Structures/Doors/Airlocks/Glass/ce.rsi # Corvax-Wega-Doors-Sprite
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsChiefEngineer ]
@@ -767,6 +785,8 @@
   id: AirlockHeadOfSecurityGlassLocked
   suffix: HeadOfSecurity, Locked
   components:
+  - type: Sprite
+    sprite: _Wega/Structures/Doors/Airlocks/Glass/hos.rsi # Corvax-Wega-Doors-Sprite
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsHeadOfSecurity ]
@@ -776,6 +796,8 @@
   id: AirlockResearchDirectorGlassLocked
   suffix: ResearchDirector, Locked
   components:
+  - type: Sprite
+    sprite: _Wega/Structures/Doors/Airlocks/Glass/rd.rsi # Corvax-Wega-Doors-Sprite
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsResearchDirector ]
@@ -794,6 +816,8 @@
   id: AirlockQuartermasterGlassLocked
   suffix: Quartermaster, Locked
   components:
+  - type: Sprite
+    sprite: _Wega/Structures/Doors/Airlocks/Glass/qm.rsi # Corvax-Wega-Doors-Sprite
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsQuartermaster ]

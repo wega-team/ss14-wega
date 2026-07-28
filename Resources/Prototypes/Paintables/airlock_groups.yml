@@ -18,6 +18,15 @@
     science: AirlockScience
     security: AirlockSecurity
     virology: AirlockVirology
+    captain: AirlockCaptainLocked # Corvax-Wega-Door-Sprite
+    headofpersonal: AirlockHeadOfPersonnelLocked # Corvax-Wega-Door-Sprite
+    headofsecurity: AirlockHeadOfSecurityLocked # Corvax-Wega-Door-Sprite
+    chiefmedicalofficer: AirlockChiefMedicalOfficerLocked # Corvax-Wega-Door-Sprite
+    chiefengineer: AirlockChiefEngineerLocked # Corvax-Wega-Door-Sprite
+    researchdirector: AirlockResearchDirectorLocked # Corvax-Wega-Door-Sprite
+    quartermaster: AirlockQuartermasterLocked # Corvax-Wega-Door-Sprite
+    blueshield: AirlockBlueShieldOfficerLocked # Corvax-Wega-Door-Sprite
+
 
 - type: paintableGroup
   id: AirlockGlass
@@ -38,3 +47,11 @@
     science: AirlockScienceGlass
     security: AirlockSecurityGlass
     virology: AirlockVirologyGlass
+    captain: AirlockCommandGlass # Corvax-Wega-Door-Sprite
+    headofpersonal: AirlockCommandGlass # Corvax-Wega-Door-Sprite
+    headofsecurity: AirlockHeadOfSecurityGlassLocked # Corvax-Wega-Door-Sprite
+    chiefmedicalofficer: AirlockChiefMedicalOfficerGlassLocked # Corvax-Wega-Door-Sprite
+    chiefengineer: AirlockChiefEngineerGlassLocked # Corvax-Wega-Door-Sprite
+    researchdirector: AirlockResearchDirectorGlassLocked # Corvax-Wega-Door-Sprite
+    quartermaster: AirlockQuartermasterGlassLocked # Corvax-Wega-Door-Sprite
+    blueshield: AirlockBlueShieldOfficerGlassLocked # Corvax-Wega-Door-Sprite
