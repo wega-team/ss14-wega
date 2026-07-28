@@ -303,8 +303,11 @@
   id: OrganAriralLungs
 
 - type: entity
-  parent: [ OrganBaseHeart, OrganAriralInternal, OrganAriralMetabolizer ]
+  parent: [ OrganBaseHeart, OrganAriralInternal]
   id: OrganAriralHeart
+  components:
+  - type: Metabolizer
+    metabolizerTypes: [ Ariral ]
 
 - type: entity
   parent: [ OrganBaseStomach, OrganAriralInternal ]
