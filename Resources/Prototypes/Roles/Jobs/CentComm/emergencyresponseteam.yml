@@ -524,17 +524,33 @@
     underwearbottom: ClothingUnderBottomHearts # Corvax-Wega
   storage:
     back:
-    - LightReplacerBorg # Corvax-Wega
-    - BoxTrashbag # Corvax-Wega
-    - CombatCrowbar # Corvax-Wega-CombatCrowbar
-    - WeaponLauncherHydra
-    - GrenadeCleanade # Corvax-Wega
-    - GrenadeCleanade # Corvax-Wega
-    - GrenadeCleanade # Corvax-Wega
-    - GrenadeCleanade # Corvax-Wega
-    - GrenadeCleanade # Corvax-Wega
-    - GrenadeCleanade # Corvax-Wega
-    - AdvMopItem
+      # Corvax-Wega-ERT-Janitor-start
+      - LightReplacerBorg # Corvax-Wega
+      - BoxTrashbag # Corvax-Wega
+      - CombatCrowbar # Corvax-Wega-CombatCrowbar
+      - WeaponLauncherHydra
+      - GrenadeCleanade # Corvax-Wega
+      - GrenadeCleanade # Corvax-Wega
+      - GrenadeCleanade # Corvax-Wega
+      - GrenadeCleanade # Corvax-Wega
+      - GrenadeCleanade # Corvax-Wega
+      - GrenadeCleanade # Corvax-Wega
+      - AdvMopItem
+      # - SoapNT
+      # - Plunger
+      # - Screwdriver
+      # Corvax-Wega-ERT-Janitor-end
+    belt:
+      - MegaSprayBottleSpaceCleaner
+      - Holoprojector
+      - LightReplacer
+      - WireBrush
+      - CrowbarRed
+      - WeaponPistolMk58
+      - MagazinePistol
+      - EmergencyMedipen
+    inhand:
+      - TrashBag
 
 - type: chameleonOutfit
   id: ERTJanitorChameleonOutfit

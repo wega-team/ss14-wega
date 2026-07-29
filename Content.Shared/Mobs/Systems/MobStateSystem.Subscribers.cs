@@ -1,3 +1,4 @@
+using Content.Shared.Actions.Events;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Buckle.Components;
 using Content.Shared.CombatMode.Pacification;
@@ -19,6 +20,7 @@ using Content.Shared.Standing;
 using Content.Shared.Strip.Components;
 using Content.Shared.Throwing;
 using Content.Shared.Tools.Systems;
+using System.Linq;
 
 namespace Content.Shared.Mobs.Systems;
 
@@ -51,6 +53,9 @@ public partial class MobStateSystem
         SubscribeLocalEvent<MobStateComponent, AttemptSneezeCoughEvent>(OnSneezeAttempt); // Corvax-Wega-Disease
 
         SubscribeLocalEvent<MobStateComponent, UnbuckleAttemptEvent>(OnUnbuckleAttempt);
+
+        // Actions
+        SubscribeLocalEvent<ActionRequireMobStateComponent, ActionAttemptEvent>(OnMobStateActionAttempt);
     }
 
     private void OnUnbuckleAttempt(Entity<MobStateComponent> ent, ref UnbuckleAttemptEvent args)
@@ -244,6 +249,23 @@ public partial class MobStateSystem
     private void OnDamageModify(Entity<MobStateComponent> ent, ref DamageModifyEvent args)
     {
         args.Damage *= _damageable.UniversalMobDamageModifier;
+    }
+
+    private void OnMobStateActionAttempt(Entity<ActionRequireMobStateComponent> ent, ref ActionAttemptEvent args)
+    {
+        if (_mobStateQuery.TryComp(args.User, out var mobState) &&
+            ent.Comp.States.Contains(mobState.CurrentState))
+        {
+            return;
+        }
+
+        if (ent.Comp.Popup is { } popup)
+        {
+            var states = string.Join(", ", ent.Comp.States.Order().Select(s => Loc.GetString($"mob-state-{s}")));
+            _popup.PopupEntity(Loc.GetString("mob-state-action-requires-state", ("states", states)), args.User, args.User, popup);
+        }
+
+        args.Cancelled = true;
     }
 
     #endregion

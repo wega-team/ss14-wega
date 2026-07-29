@@ -97,7 +97,7 @@
   # Corvax-Wega-Blood-Cult-end
   - type: WarpPoint
     follow: true
-    location: Nar'Sie
+    location: location-nar-sie
   # Corvax-Wega-Blood-Cult-start
   - type: TimedSpawner
     prototypes:
