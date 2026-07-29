@@ -23,3 +23,5 @@ ent-ClothingHandsClockworkGauntletsRedFlame = { ent-ClothingHandsClockworkGauntl
 ent-ClothingHandsClockworkGauntletsNorthStar = { ent-ClothingHandsClockworkGauntlets }
     .desc = { ent-ClothingHandsClockworkGauntlets.desc }
     .suffix = Северная зведа
+ent-ClothingHandsGlovesAtmos = перчатки атмосферного техника
+    .desc = Эти перчатки сделаны специально для Атмосферных техников, покрыты более жаростойким и огнеупорным слоем.

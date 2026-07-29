@@ -1,9 +1,10 @@
 - type: entity
-  parent: LockerBaseSecure
+  parent: LockerBase
   id: LockerBlueShieldOfficer
   name: blue shield locker
   description: Standard Nanotrasen storage.
   components:
+  - type: Appearance
   - type: EntityStorageVisuals
     stateBaseClosed: blueshield
     stateDoorOpen: blueshield_open

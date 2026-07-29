@@ -1,4 +1,3 @@
-using Robust.Shared.Prototypes;
 using Content.Shared.Verbs;
 using Content.Shared.Access.Systems;
 using Content.Shared.Popups;
@@ -54,7 +53,7 @@ public sealed partial class ChangeableCargoAccountSystem : EntitySystem
         for (var i = 0; i < component.Accounts.Count; i++)
         {
             var account = component.Accounts[i];
-            var proto = ProtoMan.Index<CargoAccountPrototype>(account.Account);
+            var proto = ProtoMan.Index(account.Account);
             var index = i;
 
             var v = new Verb
@@ -94,10 +93,10 @@ public sealed partial class ChangeableCargoAccountSystem : EntitySystem
         component.CurrentAccount = index;
         Dirty(uid, component);
 
-        if (ProtoMan.TryIndex<CargoAccountPrototype>(account.Account, out var prototype))
+        if (ProtoMan.TryIndex(account.Account, out var prototype))
         {
             if (user != null)
-                _popupSystem.PopupClient(Loc.GetString("console-set-account", ("account", Loc.GetString(prototype.Name))), uid, user.Value);
+                _popupSystem.PopupEntity(Loc.GetString("console-set-account", ("account", Loc.GetString(prototype.Name))), uid, user.Value);
         }
 
         if (TryComp(uid, out CargoOrderConsoleComponent? consoleComp))

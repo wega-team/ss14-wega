@@ -3,11 +3,9 @@
   parent: PuddleTemporary
   suffix: Cum
   components:
-  - type: SolutionContainerManager
-    solutions:
-      puddle:
-        maxVol: 1000
-        reagents:
+  - type: Solution
+    solution:
+      reagents:
         - ReagentId: Cum
           Quantity: 1.5
 

@@ -32,7 +32,10 @@ public sealed partial class OreProcessorPointsSystem : EntitySystem
 
     private void OnMaterialInserted(EntityUid uid, OreProcessorPointsComponent component, ref MaterialEntityInsertedEvent args)
     {
+#pragma warning disable CS0618 // It drives me crazy
         var stackEntity = args.MaterialComp.Owner;
+#pragma warning restore CS0618
+
         if (!TryComp<StackComponent>(stackEntity, out var stack))
             return;
 
@@ -98,7 +101,7 @@ public sealed partial class OreProcessorPointsSystem : EntitySystem
 
         var points = entity.Comp.Points;
         pointsCard.Points += points;
-        _popup.PopupClient(Loc.GetString("points-capital-add-points", ("points", points)), args.User, args.User);
+        _popup.PopupEntity(Loc.GetString("points-capital-add-points", ("points", points)), args.User, args.User);
         Del(entity);
     }
 }

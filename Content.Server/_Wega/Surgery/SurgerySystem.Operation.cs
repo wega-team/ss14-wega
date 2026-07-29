@@ -610,8 +610,8 @@ public sealed partial class SurgerySystem
         }
 
         if (effect != SurgeryFailedType.Empty && !_mobState.IsDead(patient))
-            _popup.PopupPredicted(Loc.GetString($"surgery-handle-failed-{effect.ToString().ToLower()}", ("patient", Identity.Entity(patient, EntityManager))),
-                patient, null, PopupType.MediumCaution);
+            _popup.PopupEntity(Loc.GetString($"surgery-handle-failed-{effect.ToString().ToLower()}", ("patient", Identity.Entity(patient, EntityManager))),
+                patient, PopupType.MediumCaution);
     }
 
     #endregion

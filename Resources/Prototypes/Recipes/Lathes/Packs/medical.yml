@@ -28,23 +28,17 @@
   - ChemistryEmptyBottle01
   - ClothingEyesGlassesChemical
 
-- type: latheRecipePack
-  id: SurgeryStatic
-  recipes:
-  - Scalpel
-  - Retractor
-  - Cautery
-  - Drill
-  - Saw
-  - Hemostat
-    # Corvax-Wega-Surgery-start
-  - FixOVein
-  - BoneSetter
-  - BoneGel
-  - ScalpelLaser
-  - Hemrevein
-  - Bonesaw
-    # Corvax-Wega-Surgery-end
+# Corvax-Wega-Edit-start
+# - type: latheRecipePack
+#   id: SurgeryStatic
+#   recipes:
+#   - Scalpel
+#   - Retractor
+#   - Cautery
+#   - Drill
+#   - Saw
+#   - Hemostat
+# Corvax-Wega-Edit-end
 
 - type: latheRecipePack
   id: MedicalStatic

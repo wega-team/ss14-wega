@@ -79,8 +79,6 @@
   components:
   - type: FlashImmunity
 
-# ADT
-
 - type: entity
   parent: ClothingEyesBase
   id: ClothingEyesGlassesMonocle

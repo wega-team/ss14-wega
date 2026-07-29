@@ -34,7 +34,7 @@ public sealed partial class NPCOptimizationSystem : EntitySystem
 
         Subs.CVar(_configuration, CCVars.NPCEnabled, value => Enabled = value, true);
         Subs.CVar(_configuration, CCVars.ViewportMaximumWidth, value => _activationRadius = value, true);
-        SubscribeLocalEvent<HTNComponent, DamageChangedEvent>(OnDamageChanged);
+        SubscribeLocalEvent<HTNComponent, DamageDealtEvent>(OnDamageChanged);
     }
 
     public override void Update(float frameTime)
@@ -74,7 +74,7 @@ public sealed partial class NPCOptimizationSystem : EntitySystem
         }
     }
 
-    private void OnDamageChanged(EntityUid uid, HTNComponent component, DamageChangedEvent args)
+    private void OnDamageChanged(EntityUid uid, HTNComponent component, DamageDealtEvent args)
     {
         if (_mobState.IsIncapacitated(uid) || HasComp<ActorComponent>(uid) || args.Origin == null)
             return;

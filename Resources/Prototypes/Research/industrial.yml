@@ -155,7 +155,7 @@
   - PortableScrubberMachineCircuitBoard
   - HolofanProjector
   - AtmosPlating # Corvax-Wega-Add
-  # - TemperatureRegulatorSuitModule # Corvax-Wega-add
+  - TemperatureRegulatorSuitModule # Corvax-Wega-add
   technologyPrerequisites:
   - AtmosphericTech
 
@@ -228,6 +228,6 @@
   recipeUnlocks:
   - PowerCellMicroreactor
   - PowerCellHyper
-  # - ModularSuitCoreInfinite # Corvax-Wega-Add
+  - ModularSuitCoreInfinite # Corvax-Wega-Add
   technologyPrerequisites:
   - AdvancedPowercells

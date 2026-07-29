@@ -20,11 +20,18 @@ jobs:
         os: [ubuntu-latest]
 
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 30
+    timeout-minutes: 60 # Corvax-Wega-Edit | More time is needed for Check
 
     steps:
     - name: Checkout Master
       uses: actions/checkout@v7
+
+    # Corvax-Wega-Specific-start
+    - name: Delete sponsor secrets content
+      run: |
+        rm -f Resources/Prototypes/_Wega/Sponsors/sponsor-tiers.yml
+        rm -f Resources/Prototypes/_Wega/Sponsors/sponsorghosts.yml
+    # Corvax-Wega-Specific-end
 
     - name: Setup Submodule
       run: |

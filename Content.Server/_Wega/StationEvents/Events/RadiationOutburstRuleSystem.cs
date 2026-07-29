@@ -91,8 +91,6 @@ public sealed partial class RadiationOutburstRuleSystem : StationEventSystem<Rad
     private void SetRadiation(EntityUid target, float rads)
     {
         var radiationComp = EnsureComp<RadiationSourceComponent>(target);
-        Dirty(target, radiationComp);
-
         Log.Debug($"RadiationOutburst: {target} теперь излучает +{rads} (всего: {radiationComp.Intensity})");
     }
 }

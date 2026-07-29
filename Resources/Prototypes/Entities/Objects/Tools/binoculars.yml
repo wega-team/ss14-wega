@@ -23,7 +23,7 @@
     pvsIncrease: 0.5
   - type: PhysicalComposition
     materialComposition:
-      Steel: 100
-      Glass: 50
+      Steel: 50 # Corvax-Wega-Edit
+      Glass: 25 # Corvax-Wega-Edit
   - type: StaticPrice
     price: 100

@@ -1,7 +1,7 @@
 - type: entity
   abstract: true
   parent: BaseItem
-  id: GasPipeSansLayers
+  id: GasPipeSansLayersIndestructible
   name: gas pipe
   description: Holds gas.
   placement:
@@ -13,15 +13,46 @@
     size: Normal
   - type: Transform
     anchored: true
-  - type: Damageable
-    damageModifierSet: Metallic
-  - type: Injurable
-    damageContainer: StructuralInorganic
   - type: SubFloorHide
   - type: CollideOnAnchor
   - type: Anchorable
   - type: Rotatable
     increment: 90
+  - type: Sprite
+    sprite: Structures/Piping/Atmospherics/pipe.rsi
+    drawdepth: ThinPipe
+    visible: false
+  - type: Appearance
+  - type: PipeAppearance
+  - type: PipeColorVisuals
+  - type: NodeContainer
+  - type: PipeRestrictOverlap
+  - type: AtmosUnsafeUnanchor
+  - type: AtmosPipeColor
+  - type: AtmosMonitoringConsoleDevice
+  # Corvax-Wega-VentCrawling-start
+  - type: ContainerContainer
+    containers:
+      VentCrawTube: !type:Container
+  # Corvax-Wega-VentCrawling-end
+  - type: Tag
+    tags:
+    - Pipe
+  - type: Physics
+    canCollide: false
+    bodyType: static
+  - type: StaticPrice
+    price: 30
+
+- type: entity
+  abstract: true
+  parent: GasPipeSansLayersIndestructible
+  id: GasPipeSansLayers
+  components:
+  - type: Damageable
+    damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger: # for nukes
@@ -47,36 +78,10 @@
         offset: 0
       - !type:DoActsBehavior
         acts: ["Breakage"]
-  - type: Sprite
-    sprite: Structures/Piping/Atmospherics/pipe.rsi
-    drawdepth: ThinPipe
-    visible: false
-  - type: Appearance
-  - type: PipeAppearance
-  - type: PipeColorVisuals
-  - type: NodeContainer
-  - type: PipeRestrictOverlap
-  - type: AtmosUnsafeUnanchor
-  - type: AtmosPipeColor
-  - type: AtmosMonitoringConsoleDevice
-  - type: Tag
-    tags:
-    - Pipe
-  - type: Physics
-    canCollide: false
-    bodyType: static
-  - type: StaticPrice
-    price: 30
-  # Corvax-Wega-VentCrawling-start
-  - type: ContainerContainer
-    containers:
-      VentCrawTube: !type:Container
-  # Corvax-Wega-VentCrawling-end
 
 - type: entity
   abstract: true
-  parent: GasPipeSansLayers
-  id: GasPipeBase
+  id: BaseGasPipeLayers
   components:
   - type: AtmosPipeLayers
     spriteLayersRsiPaths:
@@ -84,6 +89,11 @@
         Primary: Structures/Piping/Atmospherics/pipe.rsi
         Secondary: Structures/Piping/Atmospherics/pipe_alt1.rsi
         Tertiary: Structures/Piping/Atmospherics/pipe_alt2.rsi
+
+- type: entity
+  abstract: true
+  parent: [ GasPipeSansLayers, BaseGasPipeLayers ]
+  id: GasPipeBase
 
 #Note: The PipeDirection of the PipeNode should be the south-facing version, because the entity starts at an angle of 0 (south)
 
@@ -347,7 +357,7 @@
 
 - type: entity
   id: GasPipeBroken
-  parent: GasPipeBase
+  parent: [ GasPipeSansLayersIndestructible, BaseGasPipeLayers ]
   name: broken pipe
   description: It used to hold gas.
   components:
@@ -365,8 +375,12 @@
     node: broken
   - type: Item
     size: Small
+  - type: Damageable
+    damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
-    thresholds: # override parent to avoid recursive destruction
+    thresholds:
     - trigger:
         !type:DamageTrigger
         damage: 100

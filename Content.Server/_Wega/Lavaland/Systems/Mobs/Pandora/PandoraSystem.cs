@@ -34,7 +34,7 @@ public sealed partial class PandoraSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<PandoraComponent, MapInitEvent>(OnPandoraMapInit);
-        SubscribeLocalEvent<PandoraComponent, DamageChangedEvent>(OnPandoraDamage);
+        SubscribeLocalEvent<PandoraComponent, DamageDealtEvent>(OnPandoraDamage);
 
         SubscribeLocalEvent<PandoraComponent, PandoraBlastLineActionEvent>(OnBlastLine);
         SubscribeLocalEvent<PandoraComponent, PandoraMagicBoxActionEvent>(OnMagicBox);
@@ -53,9 +53,9 @@ public sealed partial class PandoraSystem : EntitySystem
         ent.Comp.NextPassiveMoveTime = _timing.CurTime + TimeSpan.FromSeconds(ent.Comp.PassiveMoveInterval);
     }
 
-    private void OnPandoraDamage(Entity<PandoraComponent> ent, ref DamageChangedEvent args)
+    private void OnPandoraDamage(Entity<PandoraComponent> ent, ref DamageDealtEvent args)
     {
-        if (!args.DamageIncreased)
+        if (args.Damage.GetTotal() < 0)
             return;
 
         UpdateAttackSpeed(ent);

@@ -1,5 +1,4 @@
 using System.Diagnostics.CodeAnalysis;
-using Robust.Shared.Serialization;
 
 namespace Content.Shared.Genetics.Systems;
 
@@ -11,10 +10,10 @@ public sealed partial class DnaClientSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<DnaClientComponent, ComponentInit>(OnInit);
+        SubscribeLocalEvent<DnaClientComponent, MapInitEvent>(OnInit);
     }
 
-    private void OnInit(Entity<DnaClientComponent> ent, ref ComponentInit args)
+    private void OnInit(Entity<DnaClientComponent> ent, ref MapInitEvent args)
     {
         foreach (var server in _dnaServer.GetServers())
         {

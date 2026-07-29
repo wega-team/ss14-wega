@@ -12,8 +12,10 @@
   components:
   - type: Action
     useDelay: 15
-    icon: Interface/Actions/defile.png
     itemIconStyle: BigAction
+  - type: Sprite
+    layers:
+    - texture: Interface/Actions/defile.png
   - type: InstantAction
     event: !type:RevenantDefileActionEvent
 
@@ -24,9 +26,11 @@
   description: Costs 40 Essence.
   components:
   - type: Action
-    icon: Interface/Actions/overloadlight.png
     useDelay: 20
     itemIconStyle: BigAction
+  - type: Sprite
+    layers:
+    - texture: Interface/Actions/overloadlight.png
   - type: InstantAction
     event: !type:RevenantOverloadLightsActionEvent
 
@@ -37,9 +41,11 @@
   description: Costs 50 Essence.
   components:
   - type: Action
-    icon: Interface/Actions/blight.png
     itemIconStyle: BigAction
     useDelay: 20
+  - type: Sprite
+    layers:
+    - texture: Interface/Actions/blight.png
   - type: InstantAction
     event: !type:RevenantBlightActionEvent
 # Corvax-Wega-Disease-end
@@ -51,8 +57,10 @@
   description: Costs 60 Essence.
   components:
   - type: Action
-    icon: Interface/Actions/malfunction.png
     useDelay: 20
     itemIconStyle: BigAction
+  - type: Sprite
+    layers:
+    - texture: Interface/Actions/malfunction.png
   - type: InstantAction
     event: !type:RevenantMalfunctionActionEvent

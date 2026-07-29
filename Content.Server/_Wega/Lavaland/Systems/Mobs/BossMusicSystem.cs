@@ -29,7 +29,7 @@ public sealed partial class BossMusicSystem : EntitySystem
 
         Subs.CVar(_cfg, CCVars.ViewportMaximumWidth, value => _maxDistance = value, true);
 
-        SubscribeLocalEvent<BossMusicComponent, DamageChangedEvent>(OnDamageChanged);
+        SubscribeLocalEvent<BossMusicComponent, DamageDealtEvent>(OnDamageChanged);
         SubscribeLocalEvent<BossMusicComponent, MegafaunaKilledEvent>(OnBossKilled,
             after: [typeof(LegionSystem)]);
 
@@ -49,7 +49,7 @@ public sealed partial class BossMusicSystem : EntitySystem
             UpdateTracker(uid, tracker, frameTime);
     }
 
-    private void OnDamageChanged(Entity<BossMusicComponent> boss, ref DamageChangedEvent args)
+    private void OnDamageChanged(Entity<BossMusicComponent> boss, ref DamageDealtEvent args)
     {
         if (args.Origin == null || !HasComp<ActorComponent>(args.Origin))
             return;

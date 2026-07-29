@@ -46,3 +46,14 @@
     - MagazinePistol
     - WeaponPistolMk58
     - BlueSheildSheild
+
+- type: chameleonOutfit
+  id: BlueShieldOfficerChameleonOutfit
+  job: BlueShieldOfficer
+  equipment:
+    head: ClothingHeadHatBeretBlueShield
+    eyes: ClothingERTHud
+    mask: ClothingMaskGasERTBlueSheild
+    outerClothing: ClothingOuterArmorBlueShield
+    neck: ClothingNeckScarfStripedBlue
+    gloves: ClothingHandsGlovesCombatBlueShield

@@ -6,6 +6,8 @@
   abstract: true
   parent: SeatBase
   description: Multiple seats spanning a single object. Truly a marvel of science.
+  placement:
+    mode: SnapgridCenter
   components:
   - type: Physics
     bodyType: Static

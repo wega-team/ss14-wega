@@ -9,7 +9,6 @@
     layers:
       - state: icon
   - type: Item
-    sprite: _Wega/Clothing/Back/Specific/Pouch/base.rsi
     size: Small
     shape:
     - 0,0,2,2
@@ -32,8 +31,6 @@
   description: A specialized medical pouch that holds all the necessary equipment. It replaces a belt.
   components:
   - type: Sprite
-    sprite: _Wega/Clothing/Back/Specific/Pouch/medical.rsi
-  - type: Item
     sprite: _Wega/Clothing/Back/Specific/Pouch/medical.rsi
   - type: Storage
     maxItemSize: Small
@@ -66,8 +63,6 @@
   description: A specialized pouch for security personnel that fits all standard equipment. Replaces a belt.
   components:
   - type: Sprite
-    sprite: _Wega/Clothing/Back/Specific/Pouch/sec.rsi
-  - type: Item
     sprite: _Wega/Clothing/Back/Specific/Pouch/sec.rsi
   - type: Storage
     maxItemSize: Small
@@ -106,7 +101,7 @@
   - type: Sprite
     sprite: _Wega/Clothing/Back/Specific/Pouch/base.rsi
   - type: Item
-    sprite: _Wega/Clothing/Back/Specific/Pouch/base.rsi
+    size: Normal
   - type: ExplosionResistance
     damageCoefficient: 0.1
   - type: Storage
@@ -121,8 +116,6 @@
   description: A reinforced pouch for storing resources, including ingots and compressed matter charges.
   components:
   - type: Sprite
-    sprite: _Wega/Clothing/Back/Specific/Pouch/ing.rsi
-  - type: Item
     sprite: _Wega/Clothing/Back/Specific/Pouch/ing.rsi
   - type: Storage
     maxItemSize: Normal

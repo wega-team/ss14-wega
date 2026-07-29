@@ -197,6 +197,8 @@
   parent: VehicleUnicycle
   suffix: folded
   components:
+  - type: Strap
+    enabled: False
   - type: Foldable
     folded: true
 
@@ -205,6 +207,8 @@
   id: VehicleWheelchairFolded
   suffix: folded
   components:
+  - type: Strap
+    enabled: False
   - type: Foldable
     folded: true
 

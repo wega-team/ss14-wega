@@ -490,57 +490,47 @@
   equipment:
     shoes: ClothingShoesGaloshes
     head: ClothingHeadHelmetERTJanitor
-    gloves: ClothingHandsGlovesColorPurple # Corvax-Wega
-    outerClothing: ClothingOuterArmorBasicSlim # Corvax-Wega
-    id: ERTJanitorPDA # Corvax-Wega
-    ears: ClothingHeadsetAltCentCom # Corvax-Wega
-    belt: ClothingBeltJanitorFilled # Corvax-Wega
-    pocket1: WeaponPistolMk58 # Corvax-Wega
-    pocket2: Holoprojector # Corvax-Wega
-    underwearbottom: ClothingUnderBottomHearts # Corvax-Wega
-  storage:
-    back:
-    - LightReplacerBorg # Corvax-Wega
-    - BoxTrashbag # Corvax-Wega
-    - CombatCrowbar # Corvax-Wega-CombatCrowbar
-    - WeaponLauncherHydra
-    - GrenadeCleanade # Corvax-Wega
-    - GrenadeCleanade # Corvax-Wega
-    - GrenadeCleanade # Corvax-Wega
-    - GrenadeCleanade # Corvax-Wega
-    - GrenadeCleanade # Corvax-Wega
-    - GrenadeCleanade # Corvax-Wega
-    - AdvMopItem
+    outerClothing: ClothingOuterArmorBasic
+    pocket2: FlashlightSeclite
 
 - type: startingGear
   id: ERTJanitorGearEVA
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTJanitor
     back: ClothingBackpackERTJanitor
-    shoes: ClothingShoesBootsMagCombat # Corvax-Wega-MagCombat
+    shoes: ClothingShoesBootsMagERT
     mask: ClothingMaskGasERT
-    eyes: ClothingERTHud # Corvax-Wega-ERT
+    eyes: ClothingEyesGlassesChemical
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitERTJanitor
     id: ERTJanitorPDA
     ears: ClothingHeadsetAltCentCom
-    belt: ClothingBeltJanitorFilled # Corvax-Wega
-    pocket1: WeaponPistolMk58 # Corvax-Wega
-    pocket2: Holoprojector # Corvax-Wega
-    underwearbottom: ClothingUnderBottomHearts # Corvax-Wega
+    belt: ClothingBeltMilitaryWebbingERT
+    pocket2: CombatKnife
+    suitstorage: WeaponLauncherHydra
   storage:
     back:
-    - LightReplacerBorg # Corvax-Wega
-    - BoxTrashbag # Corvax-Wega
-    - CombatCrowbar # Corvax-Wega-CombatCrowbar
-    - WeaponLauncherHydra
-    - GrenadeCleanade # Corvax-Wega
-    - GrenadeCleanade # Corvax-Wega
-    - GrenadeCleanade # Corvax-Wega
-    - GrenadeCleanade # Corvax-Wega
-    - GrenadeCleanade # Corvax-Wega
-    - GrenadeCleanade # Corvax-Wega
+    - SoapNT
+    - Plunger
+    - Screwdriver
     - AdvMopItem
+    - GrenadeCleanade
+    - GrenadeCleanade # End of first line
+    - GrenadeCleanade
+    - GrenadeCleanade
+    - GrenadeCleanade
+    - GrenadeCleanade
+    belt:
+    - MegaSprayBottleSpaceCleaner
+    - Holoprojector
+    - LightReplacer
+    - WireBrush
+    - CrowbarRed
+    - WeaponPistolMk58
+    - MagazinePistol
+    - EmergencyMedipen
+  inhand:
+    - TrashBag
 
 - type: chameleonOutfit
   id: ERTJanitorChameleonOutfit

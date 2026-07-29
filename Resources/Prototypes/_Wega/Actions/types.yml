@@ -5,8 +5,14 @@
   description: Take off, passing small obstacles and chasms
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_harpy.rsi, state: "FlyOff" }
-    iconOn: { sprite: _Wega/Interface/Actions/actions_harpy.rsi, state: "FlyOn" }
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_harpy.rsi
+    layers:
+    - state: FlyOff
+      map: ["enum.ActionVisuals.Icon"]
+    - state: FlyOn
+      map: ["enum.ActionVisuals.IconToggled"]
+      visible: false
   - type: InstantAction
     event: !type:FlyAbilityEvent
 
@@ -17,7 +23,11 @@
   description: "Your second wind, your second chance"
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/action_demon.rsi, state: "instant_regeneration" }
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/action_demon.rsi
+    layers:
+    - state: instant_regeneration
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:DamageOnActionEvent
 
@@ -28,13 +38,15 @@
   description: Toggles HUD of your cloth.
   components:
   - type: Action
-    itemIconStyle: BigAction
     priority: -20
     useDelay: 1
-    icon: Interface/Actions/eyeopen.png
+  - type: Sprite
+    layers:
+    - texture: Interface/Actions/eyeopen.png
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:ToggleActionEvent
-    
+
 - type: entity
   parent: BaseSuicideAction
   id: ActionActivateBluespaceLifeline
@@ -46,12 +58,14 @@
     checkConsciousness: false
     itemIconStyle: BigAction
     priority: -20
-    icon:
-      sprite: _Wega/Effects/bluespace_lifeline.rsi
-      state: bluespace_lifeline
+  - type: Sprite
+    sprite: _Wega/Effects/bluespace_lifeline.rsi
+    layers:
+    - state: bluespace_lifeline
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:ActivateImplantEvent
-    
+
 - type: entity
   parent: BaseImplantAction
   id: ActionActivateSmoke
@@ -62,6 +76,10 @@
     itemIconStyle: BigAction
     priority: -20
     useDelay: 40
-    icon:
-      sprite: Objects/Weapons/Grenades/smoke.rsi
-      state: icon
+  - type: Sprite
+    sprite: Objects/Weapons/Grenades/smoke.rsi
+    layers:
+    - state: icon
+      map: ["enum.ActionVisuals.Icon"]
+  - type: InstantAction
+    event: !type:ActivateImplantEvent

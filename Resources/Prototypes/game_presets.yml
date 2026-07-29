@@ -83,7 +83,6 @@
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
-  - SubThiefExtended # Corvax-Wega-Testing
 
 - type: gamePreset
   id: Greenshift

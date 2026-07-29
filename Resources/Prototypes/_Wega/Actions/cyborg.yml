@@ -11,9 +11,11 @@
       path: "/Audio/Effects/teleport_arrival.ogg"
       params:
         volume: 3
-    icon:
-      sprite: _Wega/Interface/Actions/actions_borg.rsi
-      state: blink_borg
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_borg.rsi
+    layers:
+    - state: blink_borg
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 16 # default examine-range.
     # ^ should probably add better validation that the clicked location is on the users screen somewhere,

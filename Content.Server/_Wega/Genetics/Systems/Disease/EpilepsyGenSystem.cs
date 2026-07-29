@@ -33,7 +33,7 @@ public sealed partial class EpilepsySystem : EntitySystem
                 {
                     _stun.TryUpdateParalyzeDuration(uid, TimeSpan.FromSeconds(15));
                     _jitteringSystem.DoJitter(uid, TimeSpan.FromSeconds(15), true);
-                    _popup.PopupClient(Loc.GetString("disease-epilepsy-massage"), uid, PopupType.Medium);
+                    _popup.PopupEntity(Loc.GetString("disease-epilepsy-massage"), uid, PopupType.Medium);
                     _chat.TryEmoteWithoutChat(uid, ProtoMan.Index(Scream), true);
                 }
             }

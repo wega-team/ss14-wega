@@ -4,6 +4,7 @@ using Content.Shared.ActionBlocker;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Hands.Components;
+using Content.Shared.Interaction.Events;
 using Content.Shared.Interaction.Components;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Events;
@@ -76,6 +77,29 @@ public sealed partial class VehicleSystem : EntitySystem
     }
 
     [SubscribeLocalEvent]
+    private void OnOperatorCanAttackFromContainer(Entity<VehicleOperatorComponent> ent, ref CanAttackFromContainerEvent args)
+    {
+        if (ent.Comp.Vehicle is not { } vehicleUid ||
+            !_vehicleQuery.TryComp(vehicleUid, out var vehicle) ||
+            !vehicle.CanAttack)
+            return;
+
+        args.CanAttack = true;
+    }
+
+    [SubscribeLocalEvent]
+    private void OnOperatorAttackAttempt(Entity<VehicleOperatorComponent> ent, ref AttackAttemptEvent args)
+    {
+        if (ent.Comp.Vehicle is not { } vehicleUid ||
+            !_vehicleQuery.TryComp(vehicleUid, out var vehicle) ||
+            !vehicle.CanAttack ||
+            args.Target != vehicleUid)
+            return;
+
+        args.Cancel();
+    }
+
+    [SubscribeLocalEvent]
     private void OnVehicleShutdown(Entity<VehicleComponent> ent, ref ComponentShutdown args)
     {
         if (_timing.ApplyingState)
@@ -137,6 +161,7 @@ public sealed partial class VehicleSystem : EntitySystem
             Dirty(operatorUid, vehicleOperator);
         }
 
+        EnsureComp<InputMoverComponent>(entity); // Corvax-Wega-CHAIR-BLYAT
         _mover.SetRelay(operatorUid, entity);
 
         var enterEvent = new OnVehicleEnteredEvent(entity, operatorUid);
@@ -301,7 +326,7 @@ public sealed partial class VehicleSystem : EntitySystem
         if (TerminatingOrDeleted(entity))
             return;
 
-        if (!Resolve(entity, ref entity.Comp))
+        if (!Resolve(entity, ref entity.Comp, false))
             return;
 
         _actionBlocker.UpdateCanMove(entity);

@@ -1,7 +1,9 @@
+using System.Linq;
 using Content.Server.Chat.Systems;
 using Content.Server.Popups;
 using Content.Shared.Body.Events;
 using Content.Shared.Chat;
+using Content.Shared.Chat.Prototypes;
 using Content.Shared.Clothing.Components;
 using Content.Shared.Disease;
 using Content.Shared.Disease.Components;
@@ -16,6 +18,7 @@ using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Rejuvenate;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
 
@@ -35,6 +38,8 @@ namespace Content.Server.Disease
         [Dependency] private InventorySystem _inventorySystem = default!;
         [Dependency] private MobStateSystem _mobStateSystem = default!;
         [Dependency] private ChatSystem _chatSystem = default!;
+
+        private static readonly ProtoId<EmotePrototype> CougheId = "Cough";
 
         public override void Initialize()
         {
@@ -64,7 +69,9 @@ namespace Content.Server.Disease
         public override void Update(float frameTime)
         {
             base.Update(frameTime);
-            foreach (var entity in AddQueue)
+
+            var toProcess = AddQueue.Where(e => !TerminatingOrDeleted(e)).ToList();
+            foreach (var entity in toProcess)
             {
                 EnsureComp<DiseasedComponent>(entity);
             }
@@ -259,7 +266,7 @@ namespace Content.Server.Disease
         {
             if (TryComp<DiseaseCarrierComponent>(uid, out var carrier))
             {
-                SneezeCough(uid, _random.Pick(carrier.Diseases), string.Empty);
+                SneezeCough(uid, _random.Pick(carrier.Diseases), CougheId);
             }
         }
 

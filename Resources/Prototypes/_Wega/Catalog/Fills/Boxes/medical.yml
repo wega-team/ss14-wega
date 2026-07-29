@@ -1,200 +1,206 @@
 - type: entity
-  name: pill canister box
-  suffix: mech
   parent: BoxCardboard
   id: BoxPillCanisterMech
   description: A box full of pill canisters.
+  name: pill canister box
+  suffix: mech
   components:
   - type: Sprite
     layers:
       - state: box_of_doom # Corvax-Resprite
       - state: pillbox
-  - type: Label
-    currentLabel: mech
-  - type: StorageFill
-    contents:
-      - id: PillCanisterBicaridine
-      - id: PillCanisterPuncturase
-      - id: PillCanisterLacerinol
-      - id: PillCanisterBruzin
-      
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: PillCanisterBicaridine
+        - id: PillCanisterPuncturase
+        - id: PillCanisterLacerinol
+        - id: PillCanisterBruzin
+
 - type: entity
-  name: pill canister box
-  suffix: burn
   parent: BoxCardboard
   id: BoxPillCanisterBurn
   description: A box full of pill canisters.
+  name: pill canister box
+  suffix: burn
   components:
   - type: Sprite
     layers:
       - state: box_hug # Corvax-Resprite
       - state: pillbox
-  - type: Label
-    currentLabel: burn
-  - type: StorageFill
-    contents:
-      - id: PillCanisterDermaline
-      - id: PillCanisterKelotane
-      - id: PillCanisterPyrazine
-      - id: PillCanisterLeporazine
-      - id: PillCanisterInsuzine
-      
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: PillCanisterDermaline
+        - id: PillCanisterKelotane
+        - id: PillCanisterPyrazine
+        - id: PillCanisterLeporazine
+        - id: PillCanisterInsuzine
+
 - type: entity
-  name: pill canister box
-  suffix: toxin
   parent: BoxCardboard
   id: BoxPillCanisterToxin
   description: A box full of pill canisters.
+  name: pill canister box
+  suffix: toxin
   components:
   - type: Sprite
     layers:
       - state: box_science # Corvax-Resprite
       - state: pillbox
-  - type: Label
-    currentLabel: toxin
-  - type: StorageFill
-    contents:
-      - id: PillCanisterDylovene
-      - id: PillCanisterArithrazine
-      - id: PillCanisterPhalanximine
-      - id: PillCanisterMutadon      
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: PillCanisterDylovene
+        - id: PillCanisterArithrazine
+        - id: PillCanisterPhalanximine
+        - id: PillCanisterMutadon
 
 - type: entity
-  name: pill canister box
-  suffix: oxyg
   parent: BoxCardboard
   id: BoxPillCanisterOxyg
   description: A box full of pill canisters.
+  name: pill canister box
+  suffix: oxyg
   components:
   - type: Sprite
     layers:
       - state: internals # Corvax-Resprite
       - state: pillbox
-  - type: Label
-    currentLabel: oxyg
-  - type: StorageFill
-    contents:
-      - id: PillCanisterDexalinPlus
-      - id: PillCanisterSaline
-      - id: PillCanisterDexalin
-      
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: PillCanisterDexalinPlus
+        - id: PillCanisterSaline
+        - id: PillCanisterDexalin
+
 - type: entity
-  name: pill canister box
-  suffix: all
   parent: BoxCardboard
   id: BoxPillCanisterAll
   description: A box full of pill canisters.
+  name: pill canister box
+  suffix: all
   components:
   - type: Sprite
     layers:
       - state: box # Corvax-Resprite
       - state: pillbox
-  - type: Label
-    currentLabel: all
-  - type: StorageFill
-    contents:
-      - id: PillCanisterBicaridine
-      - id: PillCanisterDermaline
-      - id: PillCanisterDylovene
-      - id: PillCanisterDexalin
-      - id: PillCanisterHyronalin
-      
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: PillCanisterBicaridine
+        - id: PillCanisterDermaline
+        - id: PillCanisterDylovene
+        - id: PillCanisterDexalin
+        - id: PillCanisterHyronalin
+
 - type: entity
-  name: pill canister box
-  suffix: pro
   parent: BoxCardboard
   id: BoxPillCanisterPro
   description: A box full of pill canisters.
+  name: pill canister box
+  suffix: pro
   components:
   - type: Sprite
     layers:
       - state: boxwidetoy # Corvax-Resprite
       - state: pillbox
-  - type: Label
-    currentLabel: cool (sunglasses)
-  - type: StorageFill
-    contents:
-      - id: PillCanisterOmnizine
-      - id: PillCanisterSigynate
-      - id: PillCanisterDiphenhydramine
-      - id: PillCanisterFresium
-      
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: PillCanisterOmnizine
+        - id: PillCanisterSigynate
+        - id: PillCanisterDiphenhydramine
+        - id: PillCanisterFresium
+
 - type: entity
+  parent: BoxCardboard
+  id: BoxPillCanisterSecurity
+  description: A box full of pill canisters.
   name: pill canister box
   suffix: sec
-  parent: BoxCardboard
-  id: BoxPillCanisterSB
-  description: A box full of pill canisters.
   components:
   - type: Sprite
     layers:
       - state: box_security # Corvax-Resprite
       - state: pillbox
-  - type: Label
-    currentLabel: sec
-  - type: StorageFill
-    contents:
-      - id: PillCanisterExMedipen
-      - id: PillCanisterDylomet
-      
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: PillCanisterExMedipen
+        - id: PillCanisterDylomet
+
 - type: entity
-  name: autoInjector all
   parent: BoxCardboard
-  suffix: All
   id: BoxAutoInjectorAll
+  name: autoInjector all
   description: A box full of pill canisters.
+  suffix: all
   components:
   - type: Sprite
     sprite: _Wega/Objects/Storage/box_icons.rsi
     layers:
       - state: box # Corvax-Resprite
       - state: medipen
-  - type: StorageFill
-    contents:
-      - id: AirlossAutoInjector
-        amount: 2
-      - id: BruteAutoInjector
-        amount: 2
-      - id: BurnAutoInjector
-        amount: 2
-      - id: EmergencyMedipen
-      - id: RadAutoInjector
-      - id: AntiPoisonMedipen
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: AirlossAutoInjector
+          amount: 2
+        - id: BruteAutoInjector
+          amount: 2
+        - id: BurnAutoInjector
+          amount: 2
+        - id: EmergencyMedipen
+        - id: RadAutoInjector
+        - id: AntiPoisonMedipen
 
 - type: entity
-  name: autoInjector box
   parent: BoxCardboard
-  suffix: Mech
   id: BoxAutoInjectorMech
+  name: autoInjector box
   description: A box full of pill canisters.
+  suffix: mech
   components:
   - type: Sprite
     sprite: _Wega/Objects/Storage/box_icons.rsi
     layers:
       - state: box_of_doom # Corvax-Resprite
       - state: medipen
-  - type: StorageFill
-    contents:
-      - id: PunctAutoInjector
-        amount: 6
-      - id: BruteAutoInjector
-        amount: 3
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: PunctAutoInjector
+          amount: 6
+        - id: BruteAutoInjector
+          amount: 3
 
 - type: entity
-  name: autoInjector box
   parent: BoxCardboard
   id: BoxAutoInjectorBurn
-  suffix: Burn
+  name: autoInjector box
   description: A box full of pill canisters.
+  suffix: burn
   components:
   - type: Sprite
     sprite: _Wega/Objects/Storage/box_icons.rsi
     layers:
       - state: box_hug # Corvax-Resprite
       - state: medipen
-  - type: StorageFill
-    contents:
-      - id: PyraAutoInjector
-        amount: 6
-      - id: BurnAutoInjector
-        amount: 3
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: PyraAutoInjector
+          amount: 6
+        - id: BurnAutoInjector
+          amount: 3

@@ -7,8 +7,12 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "select_class" }
     useDelay: 5
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: select_class
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:VampireSelectClassActionEvent
       bloodCost: 150
@@ -21,10 +25,15 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "bite" }
-    iconOn: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "bite-on" }
-    backgroundOn: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "bg_vampire" }
     priority: -2
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: bite
+      map: ["enum.ActionVisuals.Icon"]
+    - state: bite-on
+      map: ["enum.ActionVisuals.IconToggled"]
+      visible: false
   - type: TargetAction
   - type: EntityTargetAction
     event: !type:VampireDrinkingBloodActionEvent
@@ -37,11 +46,15 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "rejuvenate" }
     checkCanInteract: false
     checkConsciousness: false
     useDelay: 5
     priority: 1
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: rejuvenate
+      map: ["enum.ActionVisuals.Icon"]
   - type: LimitedCharges
     maxCharges: 1
   - type: AutoRecharge
@@ -66,13 +79,17 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "glare" }
     itemIconStyle: BigAction
     sound: !type:SoundPathSpecifier
       path: /Audio/_Wega/Effects/Vampire/glare.ogg
     checkCanInteract: false
     useDelay: 3
     priority: 1
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: glare
+      map: ["enum.ActionVisuals.Icon"]
   - type: LimitedCharges
     maxCharges: 2
   - type: AutoRecharge
@@ -90,10 +107,14 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "revive" }
     itemIconStyle: BigAction
     useDelay: 300
     priority: -1
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: revive
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
   - type: EntityTargetAction
     event: !type:VampireSacramentInitiationActionEvent
@@ -109,9 +130,13 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "claws" }
     itemIconStyle: BigAction
     useDelay: 15
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: claws
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:VampireClawsActionEvent
       bloodCost: 20
@@ -124,10 +149,14 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "tendrils" }
     itemIconStyle: BigAction
     raiseOnUser: true
     useDelay: 10
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: tendrils
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 10
   - type: WorldTargetAction
@@ -142,10 +171,14 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "barrier" }
     itemIconStyle: BigAction
     raiseOnUser: true
     useDelay: 30
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: barrier
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 10
   - type: WorldTargetAction
@@ -160,9 +193,13 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "bloodpool" }
     itemIconStyle: BigAction
     useDelay: 25
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: bloodpool
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:VampireSanguinePoolActionEvent
       bloodCost: 30
@@ -175,9 +212,13 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "predator_sense" }
     itemIconStyle: BigAction
     useDelay: 10
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: predator_sense
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:VampirePredatorSensesActionEvent
       sound:
@@ -191,9 +232,13 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "spikes" }
     itemIconStyle: BigAction
     useDelay: 60
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: spikes
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:VampireBloodEruptionActionEvent
       bloodCost: 50
@@ -209,9 +254,13 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "bringers_rite" }
     itemIconStyle: BigAction
     useDelay: 10
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: bringers_rite
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:VampireBloodBringersRiteActionEvent
       bloodCost: 5
@@ -234,9 +283,13 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "cloak" }
     itemIconStyle: BigAction
     useDelay: 2
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: cloak
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:VampireCloakOfDarknessActionEvent
       bloodCost: 10
@@ -249,10 +302,14 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "shadow_snare" }
     itemIconStyle: BigAction
     raiseOnUser: true
     useDelay: 10
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: shadow_snare
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 2
   - type: WorldTargetAction
@@ -267,9 +324,13 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "anchor" }
     itemIconStyle: BigAction
     useDelay: 130
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: anchor
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:VampireSoulAnchorActionEvent
       bloodCost: 30
@@ -282,9 +343,13 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "dark_passage" }
     itemIconStyle: BigAction
     useDelay: 15
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: dark_passage
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 4
     checkCanAccess: false
@@ -300,9 +365,13 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "extinguish" }
     itemIconStyle: BigAction
     useDelay: 30
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: extinguish
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:VampireExtinguishActionEvent
       bloodCost: 20
@@ -318,9 +387,13 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "shadow_boxing" }
     itemIconStyle: BigAction
     useDelay: 30
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: shadow_boxing
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 5
   - type: EntityTargetAction
@@ -335,9 +408,13 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "eternal_darkness" }
     itemIconStyle: BigAction
     useDelay: 10
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: eternal_darkness
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:VampireEternalDarknessActionEvent
       bloodCost: 5
@@ -355,11 +432,15 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "rejuvenate" }
     checkCanInteract: false
     checkConsciousness: false
     useDelay: 5
     priority: 1
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: rejuvenate
+      map: ["enum.ActionVisuals.Icon"]
   - type: LimitedCharges
     maxCharges: 1
   - type: AutoRecharge
@@ -385,9 +466,13 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "swell" }
     itemIconStyle: BigAction
     useDelay: 40
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: swell
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:VampireBloodSwellActionEvent
       bloodCost: 30
@@ -400,9 +485,13 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "rush" }
     itemIconStyle: BigAction
     useDelay: 30
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: rush
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:VampireBloodRushActionEvent
       bloodCost: 15
@@ -415,9 +504,13 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "seismic_stomp" }
     itemIconStyle: BigAction
     useDelay: 30
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: seismic_stomp
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:VampireSeismicStompActionEvent
       bloodCost: 25
@@ -432,9 +525,13 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "swell" }
     itemIconStyle: BigAction
     useDelay: 40
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: swell
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:VampireBloodSwellActionEvent
       bloodCost: 30
@@ -448,9 +545,13 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "overwhelming_force" }
     itemIconStyle: BigAction
     useDelay: 2
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: overwhelming_force
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:VampireOverwhelmingForceActionEvent
       bloodCost: 80
@@ -463,9 +564,13 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "demonic_grasp" }
     itemIconStyle: BigAction
     useDelay: 15
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: demonic_grasp
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 16
   - type: EntityTargetAction
@@ -480,9 +585,13 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "charge" }
     itemIconStyle: BigAction
     useDelay: 30
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: charge
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     checkCanAccess: false
     range: 16
@@ -508,9 +617,13 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "enthrall" }
     itemIconStyle: BigAction
     useDelay: 2
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: enthrall
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
   - type: EntityTargetAction
     event: !type:VampireEnthrallActionEvent
@@ -524,9 +637,13 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "communication" }
     itemIconStyle: BigAction
     useDelay: 2
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: communication
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:VampireCommuneActionEvent
 
@@ -538,9 +655,13 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "pacify" }
     itemIconStyle: BigAction
     useDelay: 10
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: pacify
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 7
   - type: EntityTargetAction
@@ -555,9 +676,13 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "subspace_swap" }
     itemIconStyle: BigAction
     useDelay: 5
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: subspace_swap
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 16
   - type: EntityTargetAction
@@ -572,9 +697,13 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "decoy" }
     itemIconStyle: BigAction
     useDelay: 20
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: decoy
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:VampireDeployDecoyActionEvent
       bloodCost: 30
@@ -602,9 +731,13 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "thralls_up" }
     itemIconStyle: BigAction
     useDelay: 30
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: thralls_up
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:VampireRallyThrallsActionEvent
       bloodCost: 40
@@ -617,9 +750,13 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "blood_bond" }
     itemIconStyle: BigAction
     useDelay: 2
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: blood_bond
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:VampireBloodBondActionEvent
       bloodCost: 5
@@ -632,9 +769,13 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "thrallheal" }
     itemIconStyle: BigAction
     useDelay: 90
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: thrallheal
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:VampireThrallHealActionEvent
       bloodCost: 50
@@ -655,9 +796,13 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "hysteria" }
     itemIconStyle: BigAction
     useDelay: 60
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: hysteria
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:VampireMassHysteriaActionEvent
       bloodCost: 40
@@ -670,9 +815,13 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "pacifynearby" }
     itemIconStyle: BigAction
     useDelay: 40
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: pacifynearby
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:VampirePacifyNearbyActionEvent
       bloodCost: 50
@@ -687,8 +836,12 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "rush" }
     useDelay: 1
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: rush
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:VampireCheckTrophiesActionEvent
 
@@ -700,9 +853,13 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "claws" }
     itemIconStyle: BigAction
     useDelay: 5
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: claws
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
   - type: EntityTargetAction
     event: !type:VampireDissectActionEvent
@@ -716,9 +873,13 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "infected_trophy" }
     itemIconStyle: BigAction
     useDelay: 10
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: infected_trophy
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 8
   - type: EntityTargetAction
@@ -733,9 +894,13 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "charge" }
     itemIconStyle: BigAction
     useDelay: 5
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: charge
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     checkCanAccess: false
     range: 11
@@ -751,9 +916,13 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "predator_sense" }
     itemIconStyle: BigAction
     useDelay: 20
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: predator_sense
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 8
   - type: EntityTargetAction
@@ -768,8 +937,12 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "meta_bats" }
     useDelay: 30
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: meta_bats
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:VampireMetamorphosisBatsActionEvent
       bloodCost: 45
@@ -782,8 +955,12 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "coffin" }
     useDelay: 180
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: coffin
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:VampireAnabiosisActionEvent
       bloodCost: 70
@@ -796,8 +973,12 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "bats" }
     useDelay: 30
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: bats
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:VampireSummonBatsActionEvent
       bloodCost: 50
@@ -812,8 +993,12 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "blood_hound" }
     useDelay: 30
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: blood_hound
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:VampireMetamorphosisHoundActionEvent
       bloodCost: 60
@@ -827,8 +1012,12 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "shriek" }
     useDelay: 20
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: shriek
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:VampireResonantShriekActionEvent
       bloodCost: 40
@@ -846,8 +1035,12 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_vampire.rsi, state: "lunge_finale" }
     useDelay: 20
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: lunge_finale
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:VampireLungeFinaleActionEvent
       bloodCost: 80

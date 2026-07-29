@@ -1467,25 +1467,21 @@ entities:
   - uid: 29
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
       pos: 0.5,7.5
       parent: 1
   - uid: 52
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
       pos: -0.5,7.5
       parent: 1
   - uid: 53
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
       pos: -2.5,7.5
       parent: 1
   - uid: 54
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
       pos: -1.5,7.5
       parent: 1
   - uid: 84
@@ -1521,7 +1517,6 @@ entities:
   - uid: 96
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
       pos: -4.5,5.5
       parent: 1
   - uid: 97
@@ -1547,25 +1542,21 @@ entities:
   - uid: 119
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
       pos: 1.5,7.5
       parent: 1
   - uid: 120
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
       pos: 2.5,7.5
       parent: 1
   - uid: 121
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
       pos: 3.5,7.5
       parent: 1
   - uid: 122
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
       pos: 5.5,5.5
       parent: 1
 - proto: HospitalCurtainsOpen

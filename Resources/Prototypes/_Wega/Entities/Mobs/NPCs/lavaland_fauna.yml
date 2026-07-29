@@ -568,15 +568,12 @@
     damage:
       types:
         Slash: 13
-  - type: SolutionContainerManager
+  - type: SolutionManager
     solutions:
-      melee:
-        reagents:
-        - ReagentId: Mechanotoxin
-          Quantity: 80
+    - SolutionVenomSpider
   - type: MeleeChemicalInjector
-    solution: melee
     transferAmount: 1.5
+    solution: melee
   - type: MobThresholds
     thresholds:
       0: Alive
@@ -638,14 +635,22 @@
         Base: weaver_ice
       Dead:
         Base: weaver_ice_dead
-  - type: SolutionContainerManager
+  - type: SolutionManager
     solutions:
-      melee:
-        reagents:
-        - ReagentId: Cryoxadone
-          Quantity: 80
+    - SolutionFrostbiteSpider
   - type: TrophyHunter
     trophy: TrophyLavalandFrostbiteWeaverFrostGland
+
+- type: entity
+  parent: [SolutionWeapon, SolutionTiny]
+  id: SolutionFrostbiteSpider
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: SolutionRegeneration
+    generated:
+      reagents:
+      - ReagentId: Cryoxadone
+        Quantity: 1
 #endregion
 
 #region Golem

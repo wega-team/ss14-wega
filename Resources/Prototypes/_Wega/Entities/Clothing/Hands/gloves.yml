@@ -252,3 +252,22 @@
     - ClothingHandsClockworkGauntletsRedFlame
     - ClothingHandsClockworkGauntletsStun
     - ClothingHandsClockworkGauntletsNorthStar
+  
+- type: entity
+  parent: [ ClothingHandsGlovesColorYellow, BaseEngineeringContraband ]
+  id: ClothingHandsGlovesAtmos
+  name: atmospheric technician gloves
+  description: Insulated gloves for atmospheric technicians, covered with a more fire-resistant and heat-resistant layer.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Hands/Gloves/atmosinsuls.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Hands/Gloves/atmosinsuls.rsi
+  - type: Insulated
+  - type: Fiber
+    fiberMaterial: fibers-insulative
+    fiberColor: fibers-yellow
+  - type: Armor
+    modifiers:
+      coefficients:
+        Heat: 0.9

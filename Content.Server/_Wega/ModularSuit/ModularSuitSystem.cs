@@ -40,7 +40,6 @@ public sealed partial class ModularSuitSystem : SharedModularSuitSystem
         InitializePower();
         InitializeUi();
 
-        SubscribeLocalEvent<ModularSuitComponent, ComponentInit>(OnSuitInit);
         SubscribeLocalEvent<ModularSuitComponent, GetVerbsEvent<Verb>>(OnGetVerbs);
         SubscribeLocalEvent<ModularSuitComponent, GetVerbsEvent<AlternativeVerb>>(OnGetVerbs);
         SubscribeLocalEvent<ModularSuitComponent, ModularSuitExtractDoAfterEvent>(OnDoAfterComplete);
@@ -50,14 +49,6 @@ public sealed partial class ModularSuitSystem : SharedModularSuitSystem
 
         SubscribeLocalEvent<ModularSuitPartComponent, GetVerbsEvent<Verb>>(OnGetPartVerbs);
         SubscribeLocalEvent<ModularSuitPartComponent, ModularSuitPartSealDoAfterEvent>(OnPartDoAfterComplete);
-    }
-
-    private void OnSuitInit(Entity<ModularSuitComponent> ent, ref ComponentInit args)
-    {
-        Container.EnsureContainer<ContainerSlot>(ent, CoreContainer);
-        Container.EnsureContainer<Container>(ent, PartContainer);
-        Container.EnsureContainer<Container>(ent, ModuleContainer);
-        Container.EnsureContainer<Container>(ent, HiddenClothingContainer);
     }
 
     private void OnGetVerbs(Entity<ModularSuitComponent> suit, ref GetVerbsEvent<Verb> args)

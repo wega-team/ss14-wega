@@ -7,9 +7,13 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_bloodcult.rsi, state: "blood_magic" }
     useDelay: 15
     priority: 1
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_bloodcult.rsi
+    layers:
+    - state: blood_magic
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:BloodCultBloodMagicActionEvent
 
@@ -21,8 +25,12 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_bloodcult.rsi, state: "recall_dagger" }
     useDelay: 5
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_bloodcult.rsi
+    layers:
+    - state: recall_dagger
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:RecallBloodDaggerEvent
 
@@ -35,8 +43,12 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_bloodcult.rsi, state: "stun" }
     useDelay: 5
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_bloodcult.rsi
+    layers:
+    - state: stun
+      map: ["enum.ActionVisuals.Icon"]
   - type: LimitedCharges
     maxCharges: 1
   - type: InstantAction
@@ -50,8 +62,12 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_bloodcult.rsi, state: "teleport" }
     useDelay: 5
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_bloodcult.rsi
+    layers:
+    - state: teleport
+      map: ["enum.ActionVisuals.Icon"]
   - type: LimitedCharges
     maxCharges: 1
   - type: InstantAction
@@ -65,8 +81,12 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_bloodcult.rsi, state: "electromagneticpulse" }
     useDelay: 5
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_bloodcult.rsi
+    layers:
+    - state: electromagneticpulse
+      map: ["enum.ActionVisuals.Icon"]
   - type: LimitedCharges
     maxCharges: 1
   - type: InstantAction
@@ -80,8 +100,12 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_bloodcult.rsi, state: "shadowshackles" }
     useDelay: 20
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_bloodcult.rsi
+    layers:
+    - state: shadowshackles
+      map: ["enum.ActionVisuals.Icon"]
   - type: LimitedCharges
     maxCharges: 4
   - type: InstantAction
@@ -95,8 +119,12 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_bloodcult.rsi, state: "twistedconstruction" }
     useDelay: 5
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_bloodcult.rsi
+    layers:
+    - state: twistedconstruction
+      map: ["enum.ActionVisuals.Icon"]
   - type: LimitedCharges
     maxCharges: 1
   - type: InstantAction
@@ -110,8 +138,12 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_bloodcult.rsi, state: "summonequipment" }
     useDelay: 5
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_bloodcult.rsi
+    layers:
+    - state: summonequipment
+      map: ["enum.ActionVisuals.Icon"]
   - type: LimitedCharges
     maxCharges: 1
   - type: InstantAction
@@ -125,8 +157,12 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_bloodcult.rsi, state: "dagger" }
     useDelay: 5
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_bloodcult.rsi
+    layers:
+    - state: dagger
+      map: ["enum.ActionVisuals.Icon"]
   - type: LimitedCharges
     maxCharges: 1
   - type: InstantAction
@@ -140,9 +176,13 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_bloodcult.rsi, state: "hallucinations" }
     itemIconStyle: BigAction
     useDelay: 20
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_bloodcult.rsi
+    layers:
+    - state: hallucinations
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 6
   - type: LimitedCharges
@@ -158,8 +198,12 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_bloodcult.rsi, state: "concealpresence" }
     useDelay: 5
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_bloodcult.rsi
+    layers:
+    - state: concealpresence
+      map: ["enum.ActionVisuals.Icon"]
   - type: LimitedCharges
     maxCharges: 10
   - type: InstantAction
@@ -173,8 +217,12 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_bloodcult.rsi, state: "blood_rites" }
     useDelay: 15
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_bloodcult.rsi
+    layers:
+    - state: blood_rites
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:BloodCultBloodRitesActionEvent
 
@@ -187,8 +235,12 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_bloodcult.rsi, state: "orb" }
     useDelay: 5
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_bloodcult.rsi
+    layers:
+    - state: orb
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:BloodCultBloodOrbActionEvent
 
@@ -200,9 +252,13 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_bloodcult.rsi, state: "recharge" }
     itemIconStyle: BigAction
     useDelay: 5
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_bloodcult.rsi
+    layers:
+    - state: recharge
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
   - type: EntityTargetAction
     event: !type:BloodCultBloodRechargeActionEvent
@@ -215,8 +271,12 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_bloodcult.rsi, state: "spear" }
     useDelay: 5
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_bloodcult.rsi
+    layers:
+    - state: spear
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:BloodCultBloodSpearActionEvent
 
@@ -228,8 +288,12 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_bloodcult.rsi, state: "recall_spear" }
     useDelay: 5
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_bloodcult.rsi
+    layers:
+    - state: recall_spear
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:RecallBloodSpearEvent
 
@@ -241,8 +305,12 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_bloodcult.rsi, state: "barrage" }
     useDelay: 5
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_bloodcult.rsi
+    layers:
+    - state: barrage
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:BloodCultBloodBoltBarrageActionEvent
 
@@ -251,13 +319,17 @@
   id: TeleportConstructSpell
   parent: BaseAction
   name: Disembodied
-  description: "An ability that allows you to  descri pass through the visible and invisible."
+  description: "An ability that allows you to descri pass through the visible and invisible."
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
     useDelay: 20
     itemIconStyle: BigAction
-    icon: { sprite: _Wega/Interface/Actions/actions_bloodcult.rsi, state: "wraith_teleport" }
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_bloodcult.rsi
+    layers:
+    - state: wraith_teleport
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 100
   - type: WorldTargetAction
@@ -270,9 +342,13 @@
   description: "Build a wall."
   components:
   - type: Action
-    icon: { sprite: Structures/Walls/cult.rsi, state: "full" }
     itemIconStyle: BigAction
     useDelay: 60
+  - type: Sprite
+    sprite: Structures/Walls/cult.rsi
+    layers:
+    - state: full
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     checkCanAccess: false
     range: 3
@@ -290,9 +366,13 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Structures/Specific/bloodcult_structures.rsi, state: "construct-cult" }
     itemIconStyle: BigAction
     useDelay: 180
+  - type: Sprite
+    sprite: _Wega/Structures/Specific/bloodcult_structures.rsi
+    layers:
+    - state: construct-cult
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 3
   - type: WorldTargetAction
@@ -309,9 +389,13 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Objects/Specific/BloodCult/stone.rsi, state: "stone" }
     itemIconStyle: BigAction
     useDelay: 300
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/BloodCult/stone.rsi
+    layers:
+    - state: stone
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 3
   - type: WorldTargetAction
@@ -328,10 +412,14 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_bloodcult.rsi, state: "harvester_clone" }
     itemIconStyle: BigAction
     startDelay: true
     useDelay: 60
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_bloodcult.rsi
+    layers:
+    - state: harvester_clone
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 9
   - type: WorldTargetAction

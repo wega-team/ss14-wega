@@ -26,11 +26,11 @@
         Heat: 10
     # Corvax-Wega-Vampire-start
     damageOnUnholyUse: ## What an unholy creature takes when picking up the bible
-      groups:
-        Burn: 30
+      types:
+        Heat: 30
     damageUnholy: ## What damage is dealt when a chaplain hits an unholy creature
-      groups:
-        Burn: 20
+      types:
+        Heat: 20
     # Corvax-Wega-Vampire-end
   - type: MeleeWeapon
     soundHit:
@@ -42,7 +42,7 @@
   - type: Prayable
     bibleUserOnly: true
   - type: Summonable
-    specialItem: SpawnPointGhostRemilia
+    summonEntity: SpawnPointGhostRemilia
   - type: ReactionMixer
     mixMessage: "bible-mixing-success"
     reactionTypes:
@@ -97,11 +97,14 @@
         Caustic: 20
     # Corvax-Wega-Vampire-end
     failChance: 0
-    locPrefix: "necro"
+    healFailOthersText: necro-heal-fail-others
+    healFailSelfText: necro-heal-fail-self
+    healSuccessOthersText: necro-heal-success-others
+    healSuccessSelfText: necro-heal-success-self
     healSound: "/Audio/Effects/lightburn.ogg"
     healingLightEffect: EvilLightEffect
   - type: Summonable
-    specialItem: SpawnPointGhostCerberus
+    summonEntity: SpawnPointGhostCerberus
     respawnTime: 300
   - type: Sprite
     sprite: Objects/Specific/Chapel/necronomicon.rsi
@@ -115,8 +118,11 @@
   description: Summon a familiar that will aid you and gain humanlike intelligence once inhabited by a soul.
   components:
   - type: Action
-    icon: { sprite: Clothing/Head/Hats/witch.rsi, state: icon }
     useDelay: 1
+  - type: Sprite
+    sprite: Clothing/Head/Hats/witch.rsi
+    layers:
+    - state: icon
   - type: InstantAction
     event: !type:SummonActionEvent
 

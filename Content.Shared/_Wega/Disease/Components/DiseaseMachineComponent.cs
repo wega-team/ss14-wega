@@ -1,4 +1,3 @@
-using Content.Shared.Disease;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 

@@ -14,16 +14,16 @@ public sealed partial class VampireSystem
 {
     private void InitializeThralls()
     {
-        SubscribeLocalEvent<ThrallOwnerComponent, DamageChangedEvent>(OnVampireDamageChanged);
-        SubscribeLocalEvent<ThrallComponent, DamageChangedEvent>(OnThrallDamageChanged);
+        SubscribeLocalEvent<ThrallOwnerComponent, DamageDealtEvent>(OnVampireDamageChanged);
+        SubscribeLocalEvent<ThrallComponent, DamageDealtEvent>(OnThrallDamageChanged);
         SubscribeLocalEvent<MindShieldComponent, ComponentStartup>(MindShieldImplanted); // TODO: Replace this with a specific event
     }
 
     #region Damage Sharing Logic
 
-    private void OnVampireDamageChanged(EntityUid uid, ThrallOwnerComponent component, ref DamageChangedEvent args)
+    private void OnVampireDamageChanged(EntityUid uid, ThrallOwnerComponent component, ref DamageDealtEvent args)
     {
-        if (args.DamageDelta is null || !args.DamageIncreased)
+        if (args.Damage.GetTotal() <= 0)
             return;
 
         if (!TryComp<ThrallOwnerComponent>(uid, out var thrallOwner) || !thrallOwner.DamageSharing)
@@ -33,13 +33,13 @@ public sealed partial class VampireSystem
         if (aliveThralls.Count == 0)
             return;
 
-        _damage.TryChangeDamage(uid, -args.DamageDelta, true, false);
-        DistributeDamage(uid, args.DamageDelta, aliveThralls);
+        _damage.TryChangeDamage(uid, -args.Damage, true, false);
+        DistributeDamage(uid, args.Damage, aliveThralls);
     }
 
-    private void OnThrallDamageChanged(EntityUid uid, ThrallComponent component, ref DamageChangedEvent args)
+    private void OnThrallDamageChanged(EntityUid uid, ThrallComponent component, ref DamageDealtEvent args)
     {
-        if (args.DamageDelta is null || !args.DamageIncreased)
+        if (args.Damage.GetTotal() <= 0)
             return;
 
         if (component.VampireOwner is not { } vampireOwner)
@@ -52,8 +52,8 @@ public sealed partial class VampireSystem
         if (aliveThralls.Count == 0)
             return;
 
-        _damage.TryChangeDamage(uid, -args.DamageDelta, true, false);
-        DistributeDamage(vampireOwner, args.DamageDelta, aliveThralls);
+        _damage.TryChangeDamage(uid, -args.Damage, true, false);
+        DistributeDamage(vampireOwner, args.Damage, aliveThralls);
     }
 
     private void DistributeDamage(EntityUid vampireUid, DamageSpecifier originalDamage, List<EntityUid> aliveThralls)

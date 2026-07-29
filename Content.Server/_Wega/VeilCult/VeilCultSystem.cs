@@ -2,7 +2,6 @@ using System.Linq;
 using Content.Server.Audio;
 using Content.Server.GameTicking.Rules;
 using Content.Server.Pinpointer;
-using Content.Server.Bible.Components;
 using Content.Shared.Veil.Cult;
 using Content.Shared.Veil.Cult.UI;
 using Content.Shared.Veil.Cult.Components;
@@ -36,6 +35,7 @@ using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Robust.Shared.Spawners;
 using Robust.Shared.Utility;
+using Content.Shared.Bible.Components;
 
 
 namespace Content.Server.Veil.Cult;
@@ -65,7 +65,7 @@ public sealed partial class VeilCultSystem : SharedVeilCultSystem
 
         SubscribeLocalEvent<VeilCultistComponent, ShotAttemptedEvent>(OnShotAttempted);
         SubscribeLocalEvent<VeilCultistHandsComponent, ExaminedEvent>(OnCultistHandsExamined);
-        SubscribeLocalEvent<VeilCultBeaconComponent, ComponentInit>(OnInit);
+        SubscribeLocalEvent<VeilCultBeaconComponent, MapInitEvent>(OnInit);
 
         SubscribeLocalEvent<VeilCultAltarComponent, VeilAltarSelectEnergyMessage>(OnSelectEnergy);
         SubscribeLocalEvent<VeilCultAltarComponent, VeilAltarSelectOfferMessage>(OnSelectOffer);
@@ -202,7 +202,7 @@ public sealed partial class VeilCultSystem : SharedVeilCultSystem
         }
     }
 
-    private void OnInit(EntityUid uid, VeilCultBeaconComponent component, ComponentInit args)
+    private void OnInit(EntityUid uid, VeilCultBeaconComponent component, MapInitEvent args)
     {
         var beacons = _entityLookup.GetEntitiesInRange<VeilCultBeaconComponent>(
             Transform(uid).Coordinates, 10f);

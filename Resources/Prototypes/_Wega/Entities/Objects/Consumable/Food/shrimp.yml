@@ -13,15 +13,13 @@
   - type: Tag
     tags:
     - Shrimp
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 5
-        reagents:
-          - ReagentId: Shrimp
-            Quantity: 4
-          - ReagentId: Omnizine
-            Quantity: 1
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Shrimp
+        Quantity: 4
+      - ReagentId: Omnizine
+        Quantity: 1
   - type: FlavorProfile
     flavors:
       - shrimp

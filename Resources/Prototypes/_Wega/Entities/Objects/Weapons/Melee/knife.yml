@@ -1,6 +1,6 @@
 - type: entity
   name: combat crowbar
-  parent: [BaseKnife, BaseRestrictedContraband]
+  parent: [BaseKnife, BaseCentcommContraband]
   id: CombatCrowbar
   description: A deadly knife designed for close combat. Thanks to the improved handle, it also works as a crowbar.
   components:
