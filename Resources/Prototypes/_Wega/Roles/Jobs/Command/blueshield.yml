@@ -25,9 +25,10 @@
   access:
   - EmergencyShuttleRepealAll
   - Armory
+  - BlueShieldOfficer # Corwax-Wega-BSO-Access
   special:
   - !type:AddImplantSpecial
-    implants: [ MindShieldImplant ]
+    implants: [ MindShieldImplant, BluespaceLifelineImplant ]
 
 - type: startingGear
   id: BlueShieldOfficerGear

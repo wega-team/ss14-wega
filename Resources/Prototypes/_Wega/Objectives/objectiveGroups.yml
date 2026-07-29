@@ -19,7 +19,6 @@
     VampireCaptainJetpackStealObjective: 0.5
     VampireCaptainGunStealObjective: 0.5
     VampireGlovesKravMagaStealObjective: 0.5
-    VampireBlueLaserPistolStealObjective: 0.5
 
 # BloodBrother
 
@@ -57,7 +56,6 @@
     BloodBrotherSharedCaptainGunStealObjective: 0.5
     BloodBrotherSharedEnergyMagnumStealObjective: 0.5
     BloodBrotherSharedGlovesKravMagaStealObjective: 0.5
-    BloodBrotherSharedBlueLaserPistolStealObjective: 0.5
 
 - type: weightedRandom
   id: BloodBrotherSharedHijackObjectiveGroup

@@ -438,6 +438,8 @@
     groups:
     - AllAccess
     - Silicon
+    tags:
+    - BlueShieldOfficer # Corvax-Wega-BSO-Access
   - type: Eye
     drawFov: false
   - type: Examiner

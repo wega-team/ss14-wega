@@ -59,3 +59,25 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsLavalandAvanpost ]
+
+- type: entity
+  parent: AirlockCommand
+  id: AirlockBlueShieldOfficerLocked
+  suffix: BlueShieldOfficer, Locked
+  components:
+  - type: Sprite
+    sprite: _Wega/Structures/Doors/Airlocks/Standard/blueshield.rsi
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsBlueShieldOfficer ]
+
+- type: entity
+  parent: AirlockCommandGlass
+  id: AirlockBlueShieldOfficerGlassLocked
+  suffix: BlueShieldOfficer, Locked, Glass
+  components:
+  - type: Sprite
+    sprite: _Wega/Structures/Doors/Airlocks/Glass/blueshield.rsi
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsBlueShieldOfficer ]
