@@ -267,7 +267,7 @@
 
 ## Kill
 - type: entity
-  parent: [BaseVampireObjective, BaseKillObjective]
+  parent: [BaseVampireObjective, BaseKillRandomObjective]
   id: VampireKillRandomPersonObjective
   description: Do it however you like, just make sure they don't get off the station.
   components:
@@ -280,7 +280,7 @@
     requireMaroon: true
 
 - type: entity
-  parent: [BaseVampireObjective, BaseKillObjective]
+  parent: [BaseVampireObjective, BaseKillRandomObjective]
   id: VampireKillRandomHeadObjective
   description: We need this head gone and you probably know why. Make sure they don't make it to CentComm, even if they're dead. Good luck, agent.
   components:
@@ -304,7 +304,7 @@
     requireMaroon: true
 
 - type: entity
-  parent: [BaseVampireObjective, BaseKillObjective]
+  parent: [BaseVampireObjective, BaseKillRandomObjective]
   id: VampireKillStationAiObjective
   description: Nanotrasen proudly boasts about their state of the art artificial intelligence. Remind them it's just another toy that can be broken.
   components:
