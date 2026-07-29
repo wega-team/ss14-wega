@@ -96,3 +96,8 @@
   id: RevolutionSupport
   name: store-category-support
   priority: 1
+
+#spai
+- type: storeCategory
+  id: SPAIAbilities
+  name: store-category-spai-syndicate

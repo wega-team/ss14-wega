@@ -51,4 +51,10 @@ public sealed partial class CriminalRecordsConsoleComponent : Component
     /// </summary>
     [DataField]
     public uint MaxStringLength = 256;
+
+    /// <summary>
+    /// If true, no radio message is sent when the criminal status is changed.
+    /// </summary>
+    [DataField]
+    public bool SuppressStatusRadio = false;
 }

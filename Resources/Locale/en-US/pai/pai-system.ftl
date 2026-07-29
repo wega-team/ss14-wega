@@ -23,3 +23,21 @@ pai-system-pai-name-raw = {$name}'s pAI
 
 pai-system-brick-popup = The pAI's circuits loudly pop and fizzle out!
 pai-system-scramble-popup = The pAI's circuits are overloaded with electricity!
+
+spai-system-role-name = Syndicate Personal AI
+spai-system-role-description = Be someone's advanced Syndicate Personal AI with access to surveillance and hacking tools! (Memories *not* included.)
+
+spai-thermal-vision-on = Thermal vision activated.
+spai-thermal-vision-off = Thermal vision deactivated.
+
+spai-sec-hud-on = Security HUD activated.
+spai-sec-hud-off = Security HUD deactivated.
+
+spai-chem-injector-installed = Chemical injector installed and ready.
+spai-weak-ai-installed = Weakened AI capabilities activated.
+
+spai-inject-no-carrier = No carrier to inject into.
+spai-inject-no-energy = Not enough energy to inject!
+spai-inject-no-bloodstream = The carrier has no bloodstream.
+spai-inject-success = Injection administered.
+spai-inject-fail = Injection failed.

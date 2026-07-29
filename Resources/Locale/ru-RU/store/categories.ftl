@@ -18,6 +18,9 @@ store-discounted-items = Скидки
 # Revenant
 store-category-abilities = Способности
 
+# SPAI
+store-category-spai-syndicate = Синдикат
+
 # Wizard
 store-caregory-spellbook-offensive = Атакующие заклинания
 store-caregory-spellbook-defensive = Защитные заклинания

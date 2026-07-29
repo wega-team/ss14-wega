@@ -1,0 +1,82 @@
+# Синдикатский Персональный ИИ — каталог модулей
+# Валюта: SiliconMemory. Стартовый баланс: 120.
+#
+# Закрытый канал связи — загружен изначально (через компонент ActiveRadio на сущности).
+
+- type: listing
+  id: SPAICameraAccess
+  name: spai-camera-access-name
+  description: spai-camera-access-desc
+  productAction: ActionSPAICameraAccess
+  cost:
+    SiliconMemory: 30
+  categories:
+  - SPAIAbilities
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: SPAISecurityHUD
+  name: spai-security-hud-name
+  description: spai-security-hud-desc
+  productAction: ActionSPAISecurityHUD
+  cost:
+    SiliconMemory: 20
+  categories:
+  - SPAIAbilities
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: SPAISecurityRecords
+  name: spai-security-records-name
+  description: spai-security-records-desc
+  productAction: ActionSPAISecurityRecords
+  cost:
+    SiliconMemory: 25
+  categories:
+  - SPAIAbilities
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: SPAIThermalVision
+  name: spai-thermal-vision-name
+  description: spai-thermal-vision-desc
+  productAction: ActionSPAIThermalVision
+  cost:
+    SiliconMemory: 35
+  categories:
+  - SPAIAbilities
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: SPAIChemInjector
+  name: spai-chem-injector-name
+  description: spai-chem-injector-desc
+  productAction: ActionSPAIChemInjectorInstall
+  cost:
+    SiliconMemory: 60
+  categories:
+  - SPAIAbilities
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: SPAIWeakAI
+  name: spai-weak-ai-name
+  description: spai-weak-ai-desc
+  productAction: ActionSPAIWeakAIInstall
+  cost:
+    SiliconMemory: 60
+  categories:
+  - SPAIAbilities
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
