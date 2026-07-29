@@ -6,10 +6,12 @@
   components:
   - type: Action
     itemIconStyle: NoItem
-    icon:
-      sprite: _Wega/Interface/Actions/actions_android.rsi
-      state: toggle-lock
     useDelay: 1
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_android.rsi
+    layers:
+    - state: toggle-lock
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:ToggleLockActionEvent
 
@@ -21,8 +23,14 @@
   components:
   - type: Action
     useDelay: 1
-    icon: { sprite: _Wega/Interface/Actions/actions_android.rsi, state: light-off }
-    iconOn: { sprite: _Wega/Interface/Actions/actions_android.rsi, state: light-on }
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_android.rsi
+    layers:
+    - state: light-off
+      map: ["enum.ActionVisuals.Icon"]
+    - state: light-on
+      map: ["enum.ActionVisuals.IconToggled"]
+      visible: false
 
 - type: entity
   parent: BaseToggleAction
@@ -32,8 +40,14 @@
   components:
   - type: Action
     useDelay: 5
-    icon: { sprite: _Wega/Interface/Actions/actions_android.rsi, state: kinetic-off }
-    iconOn: { sprite: _Wega/Interface/Actions/actions_android.rsi, state: kinetic-on }
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_android.rsi
+    layers:
+    - state: kinetic-off
+      map: ["enum.ActionVisuals.Icon"]
+    - state: kinetic-on
+      map: ["enum.ActionVisuals.IconToggled"]
+      visible: false
 
 - type: entity
   parent: BaseToggleAction
@@ -43,8 +57,14 @@
   components:
   - type: Action
     useDelay: 3
-    icon: { sprite: _Wega/Interface/Actions/actions_android.rsi, state: defib-off }
-    iconOn: { sprite: _Wega/Interface/Actions/actions_android.rsi, state: defib-on }
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_android.rsi
+    layers:
+    - state: defib-off
+      map: ["enum.ActionVisuals.Icon"]
+    - state: defib-on
+      map: ["enum.ActionVisuals.IconToggled"]
+      visible: false
 
 - type: entity
   parent: BaseToggleAction
@@ -54,8 +74,14 @@
   components:
   - type: Action
     useDelay: 1
-    icon: { sprite: _Wega/Interface/Actions/actions_android.rsi, state: magboots-off }
-    iconOn: { sprite: _Wega/Interface/Actions/actions_android.rsi, state: magboots-on }
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_android.rsi
+    layers:
+    - state: magboots-off
+      map: ["enum.ActionVisuals.Icon"]
+    - state: magboots-on
+      map: ["enum.ActionVisuals.IconToggled"]
+      visible: false
 
 - type: entity
   parent: BaseAction
@@ -65,9 +91,11 @@
   components:
   - type: Action
     useDelay: 6
-    icon:
-      sprite: _Wega/Interface/Actions/actions_android.rsi
-      state: jump-action
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_android.rsi
+    layers:
+    - state: jump-action
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:GravityJumpEvent {}
 
@@ -79,9 +107,11 @@
   components:
   - type: Action
     useDelay: 10
-    icon:
-      sprite: _Wega/Interface/Actions/actions_android.rsi
-      state: charge-action
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_android.rsi
+    layers:
+    - state: charge-action
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:BatteryChargeActionEvent {}
 
@@ -93,8 +123,10 @@
   components:
   - type: Action
     useDelay: 10
-    icon:
-      sprite: _Wega/Interface/Actions/actions_android.rsi
-      state: discharge-action
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_android.rsi
+    layers:
+    - state: discharge-action
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:BatteryDischargeActionEvent {}

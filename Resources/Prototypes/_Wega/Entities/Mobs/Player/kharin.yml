@@ -84,7 +84,7 @@
   - type: CanMoveInAir
   - type: WarpPoint
     follow: true
-    location: Kha'rin
+    location: location-kha-rin
   - type: TimedSpawner
     prototypes:
     - MobConstructHarvester

@@ -10,9 +10,6 @@
         children:
         - id: ClothingMaskBreath
         - id: EmergencyNitrogenTankFilled
-        - id: Flare
-        - id: Tyriumpack3
-        - id: WelderMini
   - type: Sprite
     layers:
     - state: internals
@@ -32,9 +29,6 @@
         children:
         - id: ClothingMaskBreath
         - id: ExtendedEmergencyNitrogenTankFilled
-        - id: Flare
-        - id: Tyriumpack3
-        - id: WelderMini
 
 - type: entity
   parent: BoxSurvivalAndroid
@@ -47,9 +41,6 @@
         children:
         - id: ClothingMaskBreathMedical
         - id: EmergencyNitrogenTankFilled
-        - id: Flare
-        - id: Tyriumpack3
-        - id: WelderMini
 
 - type: entity
   parent: BoxSurvivalAndroid
@@ -62,9 +53,6 @@
         children:
         - id: ClothingMaskGasSecurity
         - id: DoubleEmergencyNitrogenTankFilled
-        - id: Flare
-        - id: Tyriumpack3
-        - id: WelderMini
 
 - type: entity
   parent: BoxHug
@@ -77,27 +65,8 @@
         children:
         - id: ClothingMaskBreath
         - id: EmergencyNitrogenTankFilled
-        - id: Flare
-        - id: Tyriumpack3
-        - id: WelderMini
   - type: Label
     localizedLabel: reagent-name-nitrogen
-
-- type: entity
-  parent: BoxSurvivalAndroid
-  id: BoxAndroidMime
-  suffix: Mime Android
-  components:
-  - type: EntityTableContainerFill
-    containers:
-      storagebase: !type:AllSelector
-        children:
-        - id: ClothingMaskBreath
-        - id: EmergencyNitrogenTankFilled
-        - id: Flare
-        - id: Tyriumpack3
-        - id: WelderMini
-        - id: FoodBreadNutriBatard
 
 - type: entity
   parent: BoxSurvivalAndroid
@@ -110,9 +79,6 @@
         children:
         - id: ClothingMaskGasBlueShield
         - id: ExtendedEmergencyNitrogenTankFilled
-        - id: Flare
-        - id: Tyriumpack3
-        - id: WelderMini
 
 - type: entity
   parent: BoxSurvivalAndroid
@@ -125,9 +91,6 @@
         children:
         - id: ClothingMaskGasSyndicate
         - id: ExtendedEmergencyNitrogenTankFilled
-        - id: Flare
-        - id: Tyriumpack3
-        - id: WelderMini
 
 # BlueShield
 - type: entity
@@ -142,9 +105,6 @@
     - id: ClothingMaskGasBlueShield
     - id: DoubleEmergencyOxygenTankFilled
     - id: EmergencyMedipen
-    - id: Flare
-    - id: FoodSnackNutribrick
-    - id: DrinkWaterBottleFull
   - type: Sprite
     layers:
     - state: internals
@@ -160,9 +120,6 @@
     - id: ClothingMaskGasBlueShield
     - id: DoubleEmergencyNitrogenTankFilled
     - id: EmergencyMedipen
-    - id: Flare
-    - id: FoodSnackNutribrick
-    - id: DrinkWaterBottleFull
   - type: Sprite
     layers:
     - state: internals

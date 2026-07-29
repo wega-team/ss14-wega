@@ -172,7 +172,7 @@
         shader: unshaded
 
 - type: entity
-  parent: ClothingHeadHelmetBasic
+  parent: ClothingHeadHelmetBase
   id: ClothingHeadHelmetGarGigaSponsor
   name: true giga gar helmet
   description: We evolve past the person we were a minute before. Little by little we advance with each turn. That's how a drill works!

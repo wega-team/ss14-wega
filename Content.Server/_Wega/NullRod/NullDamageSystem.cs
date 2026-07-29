@@ -1,5 +1,4 @@
 using Content.Server.Administration.Logs;
-using Content.Server.Bible.Components;
 using Content.Shared.Database;
 using Content.Shared.FixedPoint;
 using Content.Shared.NullRod.Components;
@@ -7,6 +6,7 @@ using Content.Shared.Hands.EntitySystems;
 using Robust.Shared.Timing;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Rejuvenate;
+using Content.Shared.Bible.Components;
 
 namespace Content.Server.NullRod;
 

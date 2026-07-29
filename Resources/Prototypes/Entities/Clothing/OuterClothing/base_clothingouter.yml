@@ -82,7 +82,6 @@
   parent: [ClothingOuterStorageBase, BaseFoldable]
   id: ClothingOuterStorageFoldableBase
   components:
-  - type: Appearance
   - type: Foldable
     canFoldInsideContainer: true
     unfoldVerbText: fold-zip-verb
@@ -154,6 +153,8 @@
   - type: HeldSpeedModifier
   - type: Item
     size: Ginormous
+    shape:
+    - 0,0,4,5
   - type: Armor
     modifiers:
       coefficients:

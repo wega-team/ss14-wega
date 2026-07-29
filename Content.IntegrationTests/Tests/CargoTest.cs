@@ -57,10 +57,18 @@ public sealed class CargoTest : GameTest
                         continue;
 
                     var ent = entManager.SpawnEntity(proto.Product, testMap.MapCoords);
-                    var price = pricing.GetPrice(ent);
-
-                    Assert.That(price, Is.AtMost(proto.Cost), $"Found arbitrage on {proto.ID} cargo product! Cost is {proto.Cost} but sell is {price}!");
-                    SDeleteNow(ent);
+                    // Corvax-Wega-Заебалоблять-start
+                    try
+                    {
+                        var price = pricing.GetPrice(ent);
+                        Assert.That(price, Is.AtMost(proto.Cost),
+                            $"Found arbitrage on {proto.ID} cargo product! Cost is {proto.Cost} but sell is {price}!");
+                    }
+                    finally
+                    {
+                        entManager.DeleteEntity(ent);
+                    }
+                    // Corvax-Wega-Заебалоблять-end
                 }
             });
         });
