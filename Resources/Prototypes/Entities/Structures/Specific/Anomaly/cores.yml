@@ -190,6 +190,19 @@
   id: AnomalyCoreLiquid
   suffix: Liquid
   components:
+  - type: Sprite
+    sprite: Structures/Specific/Anomalies/Cores/liquid_core.rsi
+    noRot: true
+    layers:
+    - state: core
+    - state: pulse
+      map: ["decay"]
+  - type: PointLight
+    radius: 1.5
+    energy: 3.5
+    color: "#ffffff"
+    castShadows: false
+  # Corvax-Wega-Add-start
   - type: Solution
     solution:
       maxVol: 10
@@ -200,15 +213,6 @@
     allowedModes:
     - HyposprayDynamicMode
     - HyposprayInjectMode
-  - type: Spillable
-    solution: hypospray
-  - type: ExaminableSolution
-    solution: hypospray
-    exactVolume: true
-  - type: SolutionContainerManager
-    solutions:
-      hypospray:
-        maxVol: 10
   - type: Appearance
   - type: GenericVisualizer
     visuals:
@@ -223,26 +227,15 @@
       collection: RadiationPulse
   - type: UseDelay
     delay: 2
-  - type: Tag
-    tags:
-    - ForceableFollow
-    - AnomalyCore # Corvax-Wega-add
   - type: AnomalyCore
     timeToDecay: 600
     startPrice: 10000
     endPrice: 200
-  - type: Sprite
-    sprite: Structures/Specific/Anomalies/Cores/liquid_core.rsi
-    noRot: true
-    layers:
-    - state: core
-    - state: pulse
-      map: ["decay"]
-  - type: PointLight
-    radius: 1.5
-    energy: 3.5
-    color: "#ffffff"
-    castShadows: false
+  - type: Tag
+    tags:
+    - ForceableFollow
+    - AnomalyCore
+  # Corvax-Wega-Add-end
 
 - type: entity
   parent: BaseAnomalyCore
@@ -596,7 +589,11 @@
     containers:
       storagebase: !type:Container
   - type: Item
-    size: Tiny
+    # Corvax-Wega-Edit-start
+    size: Normal
+    shape:
+    - 0,0,0,0
+    # Corvax-Wega-Edit-end
   - type: Storage
     maxItemSize: Normal
     grid:

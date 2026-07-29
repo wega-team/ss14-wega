@@ -2410,22 +2410,9 @@ entities:
   entities:
   - uid: 366
     components:
-    - type: MetaData
-      name: blood cooler
     - type: Transform
       pos: 0.5,-10.5
       parent: 1
-    - type: SolutionContainerManager
-      solutions:
-        tank:
-          temperature: 293.15
-          canReact: True
-          maxVol: 500
-          name: null
-          reagents:
-          - data: []
-            ReagentId: Blood
-            Quantity: 500
 - proto: WeaponBloodDagger
   entities:
   - uid: 347

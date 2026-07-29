@@ -348,6 +348,9 @@
     heatingCoefficient: 0.6
     coolingCoefficient: 0.8
   - type: GroupExamine
+  - type: ContainerContainer
+    containers:
+      toggleable-clothing: !type:ContainerSlot {}
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetClockworkCuirass
   - type: CultEquipment
@@ -395,6 +398,9 @@
     zombificationResistanceCoefficient: 0.5
   - type: ClothingAshStormProtection
     modifier: 1
+  - type: ContainerContainer
+    containers:
+      toggleable-clothing: !type:ContainerSlot {}
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetGodslayer
   - type: Construction

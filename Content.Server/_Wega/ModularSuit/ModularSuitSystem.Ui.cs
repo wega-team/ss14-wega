@@ -33,7 +33,7 @@ public sealed partial class ModularSuitSystem
     {
         if (!ent.Comp.Active)
         {
-            Popup.PopupPredicted(Loc.GetString("modsuit-not-active"), ent, null);
+            Popup.PopupEntity(Loc.GetString("modsuit-not-active"), ent);
             UpdateUiState(ent);
             return;
         }

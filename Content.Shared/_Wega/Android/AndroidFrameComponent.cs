@@ -15,6 +15,7 @@ public sealed partial class AndroidFrameComponent : Component
 
     [DataField]
     public string BatterySlot = "battery";
+
     [DataField]
     public string BrainSlot = "brain";
 

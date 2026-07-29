@@ -2,7 +2,6 @@ using Content.Server.Antag;
 using Content.Server.Objectives;
 using Content.Server.Popups;
 using Content.Shared._Wega.Implants.Components;
-using Content.Shared.Bed.Sleep;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Emp;

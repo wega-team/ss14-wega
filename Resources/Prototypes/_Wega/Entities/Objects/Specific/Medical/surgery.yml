@@ -50,15 +50,13 @@
   parent: SprayBottle
   suffix: Ethanol
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 100
-        reagents:
-        - ReagentId: Ethanol
-          Quantity: 100
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Ethanol
+        Quantity: 60
   - type: Label
-    currentLabel: ethanol
+    localizedLabel: reagent-name-ethanol
   - type: Tag
     tags:
       - Spray
@@ -104,7 +102,8 @@
     qualities:
       - FixOVein
     speedModifier: 1.5
-    useSound: /Audio/Items/drill_use.ogg
+    useSound:
+      path: /Audio/_Wega/Medical/Surgery/retractor2.ogg
   - type: MultipleTool
     statusShowBehavior: true
     entries:

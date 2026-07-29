@@ -1,3 +1,4 @@
+using System.Linq;
 using Content.Server.Chat.Systems;
 using Content.Server.Popups;
 using Content.Shared.Body.Events;
@@ -64,7 +65,9 @@ namespace Content.Server.Disease
         public override void Update(float frameTime)
         {
             base.Update(frameTime);
-            foreach (var entity in AddQueue)
+
+            var toProcess = AddQueue.Where(e => !TerminatingOrDeleted(e)).ToList();
+            foreach (var entity in toProcess)
             {
                 EnsureComp<DiseasedComponent>(entity);
             }

@@ -146,6 +146,10 @@
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitSalvage
   # Corvax-Wega-Salvage-start
+  - type: ContainerContainer
+    containers:
+      toggleable-clothing: !type:ContainerSlot {}
+      item: !type:ContainerSlot {}
   - type: ItemSlots
     slots:
       item:
@@ -195,6 +199,10 @@
     graph: HardsuitGoliath
     node: hardsuitGoliath
   # Corvax-Wega-Salvage-start
+  - type: ContainerContainer
+    containers:
+      toggleable-clothing: !type:ContainerSlot {}
+      item: !type:ContainerSlot {}
   - type: ItemSlots
     slots:
       item:
@@ -242,6 +250,10 @@
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitMaxim
   # Corvax-Wega-Salvage-start
+  - type: ContainerContainer
+    containers:
+      toggleable-clothing: !type:ContainerSlot {}
+      item: !type:ContainerSlot {}
   - type: ItemSlots
     slots:
       item:

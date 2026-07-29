@@ -31,6 +31,10 @@
     sprite: _Wega/Clothing/OuterClothing/Coats/cultrobesalt.rsi
   - type: Clothing
     sprite: _Wega/Clothing/OuterClothing/Coats/cultrobesalt.rsi
+  - type: ContainerContainer
+    containers:
+      toggleable-clothing: !type:ContainerSlot {}
+      storagebase: !type:Container {}
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodCultrobesAlt
   - type: Armor
@@ -55,6 +59,10 @@
     sprite: _Wega/Clothing/OuterClothing/Coats/flagellantrobe.rsi
   - type: Clothing
     sprite: _Wega/Clothing/OuterClothing/Coats/flagellantrobe.rsi
+  - type: ContainerContainer
+    containers:
+      toggleable-clothing: !type:ContainerSlot {}
+      storagebase: !type:Container {}
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodFlagellantHood
   - type: Armor
@@ -82,6 +90,10 @@
     sprite: _Wega/Clothing/OuterClothing/Coats/postman.rsi
   - type: Clothing
     sprite: _Wega/Clothing/OuterClothing/Coats/postman.rsi
+  - type: ContainerContainer
+    containers:
+      toggleable-clothing: !type:ContainerSlot {}
+      storagebase: !type:Container {}
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodPostman
 
@@ -227,6 +239,10 @@
     sprite: _Wega/Clothing/OuterClothing/Coats/clockrobe.rsi
   - type: Clothing
     sprite: _Wega/Clothing/OuterClothing/Coats/clockrobe.rsi
+  - type: ContainerContainer
+    containers:
+      toggleable-clothing: !type:ContainerSlot {}
+      storagebase: !type:Container {}
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodVeilCultRobes
   - type: Armor

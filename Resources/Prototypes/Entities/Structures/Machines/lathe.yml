@@ -201,12 +201,10 @@
     runningState: building
     unlitIdleState: unlit
     unlitRunningState: unlit-building
-    # staticPacks:
-    # - ChemistryStatic
-    # - SurgeryStatic
+    staticPacks:
+    - ChemistryStatic
+    # - SurgeryStatic # Corvax-Wega-Edit
     dynamicPacks:
-    # Corvax-Wega-Edit
-    - ChemistryStatic # Corvax-Wega-Edit
     - AdvancedTools
     - ScienceEquipment
     - ScienceExplosives
@@ -318,7 +316,7 @@
     staticPacks:
     - RoboticsStatic
     - BorgModulesStatic
-    - BorgLimbsStatic 
+    - BorgLimbsStatic
     - ModesuitPartStatic # Corvax-Wega-Edit
     - ModesuitModuleStatic # Corvax-Wega-Edit
     dynamicPacks:
@@ -495,16 +493,18 @@
     unlitRunningState: unlit-building
     staticPacks:
     - TopicalsStatic
+    - ChemistryStatic
     - MedicalStatic
     - RollerBedsStatic
     - MedicalClothingStatic
     - EmptyMedkitsStatic
+    # - SurgeryStatic # Corvax-Wega-Edit
     dynamicPacks:
-    - ChemistryStatic # Corvax-Wega-Edit
-    - SurgeryStatic # Corvax-Wega-Edit
     - Chemistry
-    - AdvencedMed # Corvax-Wega-Edit
-    - ImplantMed # Corvax-Wega-Edit
+    # Corvax-Wega-Add-start
+    - AdvencedMed
+    - ImplantMed
+    # Corvax-Wega-Add-end
   - type: Machine
     board: MedicalTechFabCircuitboard
   - type: StealTarget

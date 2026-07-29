@@ -83,17 +83,16 @@
     flavors:
       - sweet
   - type: Edible
-    solution: food
+    requiresSpecialDigestion: true
     transferAmount: 0.05
     delay: 1
     destroyOnEmpty: false
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 5
-        reagents:
-        - ReagentId: Sugar
-          Quantity: 5
+  - type: Solution
+    solution:
+      maxVol: 5
+      reagents:
+      - ReagentId: Sugar
+        Quantity: 5
   - type: Clothing
     sprite: _Wega/Sponsors/Objects/Fun/cud.rsi
 
@@ -409,7 +408,7 @@
   parent: ClothingOuterBase
   id: ClothingOuterCyberJacket
   name: cyber jacket
-  description: "I Really Want to Stay at Your House." 
+  description: "I Really Want to Stay at Your House."
   suffix: Sponsor
   components:
   - type: Sprite

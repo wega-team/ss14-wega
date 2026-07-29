@@ -6,6 +6,7 @@
     anchored: True
   - type: Physics
     bodyType: Static
+    canCollide: False
   - type: Sprite
     sprite: _Wega/Effects/falling.rsi
     state: falling_rock
@@ -174,6 +175,7 @@
     anchored: True
   - type: Physics
     bodyType: Static
+    canCollide: False
   - type: InteractionOutline
   - type: Sprite
     noRot: true
@@ -217,6 +219,7 @@
     lifetime: 0.325
   - type: Physics
     bodyType: Static
+    canCollide: False
   - type: Fixtures
     fixtures:
       fix1:
@@ -356,7 +359,7 @@
     anchored: True
   - type: Physics
     bodyType: Static
-    canCollide: true
+    canCollide: False
   - type: InteractionOutline
   - type: Sprite
     noRot: true
@@ -378,6 +381,7 @@
     anchored: True
   - type: Physics
     bodyType: Static
+    canCollide: False
   - type: InteractionOutline
   - type: Sprite
     noRot: true
@@ -544,6 +548,7 @@
     anchored: true
   - type: Physics
     bodyType: Static
+    canCollide: False
   - type: IgniteOnCollide
     fixtureId: fix1
     fireStacks: 1

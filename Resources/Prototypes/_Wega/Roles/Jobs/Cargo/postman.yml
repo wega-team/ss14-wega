@@ -25,3 +25,14 @@
   storage:
     back:
     - CrowbarRed
+
+- type: chameleonOutfit
+  id: PostmanChameleonOutfit
+  job: Postman
+  equipment:
+    head: ClothingHeadHatPostmansoft
+    eyes: ClothingEyesGlassesCheapSunglasses
+    mask: ClothingMaskBreath
+    outerClothing: ClothingOuterCoatPostman
+    neck: ClothingNeckScarfStripedBrown
+    gloves: ClothingHandsGlovesColorBlack

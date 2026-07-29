@@ -39,7 +39,7 @@ public sealed partial class ClothingUpgradeSystem : EntitySystem
         SubscribeLocalEvent<UpgradeableClothingComponent, InventoryRelayedEvent<GetFireProtectionEvent>>(RelayInventoryEvent,
             after: [typeof(FireProtectionSystem)]);
 
-        SubscribeLocalEvent<UpgradeableClothingComponent, ComponentInit>(OnInit);
+        SubscribeLocalEvent<UpgradeableClothingComponent, MapInitEvent>(OnInit);
         SubscribeLocalEvent<UpgradeableClothingComponent, AfterInteractUsingEvent>(OnAfterInteractUsing);
         SubscribeLocalEvent<UpgradeableClothingComponent, ExaminedEvent>(OnExamine);
         SubscribeLocalEvent<UpgradeableClothingComponent, GetVerbsEvent<Verb>>(OnGetVerb);
@@ -51,7 +51,7 @@ public sealed partial class ClothingUpgradeSystem : EntitySystem
             RaiseLocalEvent(upgrade, ref args.Args);
     }
 
-    private void OnInit(Entity<UpgradeableClothingComponent> ent, ref ComponentInit args)
+    private void OnInit(Entity<UpgradeableClothingComponent> ent, ref MapInitEvent args)
     {
         _container.EnsureContainer<Container>(ent, ent.Comp.UpgradesContainerId);
     }
@@ -63,7 +63,7 @@ public sealed partial class ClothingUpgradeSystem : EntitySystem
 
         if (GetCurrentUpgrades(ent).Count >= ent.Comp.MaxUpgradeCount)
         {
-            _popup.PopupPredicted(Loc.GetString("upgradeable-clothing-popup-upgrade-limit"), ent, args.User);
+            _popup.PopupEntity(Loc.GetString("upgradeable-clothing-popup-upgrade-limit"), ent, args.User);
             return;
         }
 
@@ -72,11 +72,11 @@ public sealed partial class ClothingUpgradeSystem : EntitySystem
 
         if (GetCurrentUpgradeTags(ent).ToHashSet().IsSupersetOf(upgradeComponent.Tags))
         {
-            _popup.PopupPredicted(Loc.GetString("upgradeable-clothing-popup-already-present"), ent, args.User);
+            _popup.PopupEntity(Loc.GetString("upgradeable-clothing-popup-already-present"), ent, args.User);
             return;
         }
 
-        _popup.PopupClient(Loc.GetString("clothing-upgrade-popup-insert",
+        _popup.PopupEntity(Loc.GetString("clothing-upgrade-popup-insert",
             ("upgrade", args.Used), ("clothing", ent.Owner)), args.User);
 
         args.Handled = _container.Insert(args.Used, _container.GetContainer(ent, ent.Comp.UpgradesContainerId));
@@ -143,7 +143,7 @@ public sealed partial class ClothingUpgradeSystem : EntitySystem
 
         if (_container.Remove(upgrade, container))
         {
-            _popup.PopupPredicted(Loc.GetString("clothing-upgrade-popup-remove", ("upgrade", upgrade)), ent, user);
+            _popup.PopupEntity(Loc.GetString("clothing-upgrade-popup-remove", ("upgrade", upgrade)), ent, user);
             _adminLog.Add(LogType.Action, LogImpact.Low,
                 $"{ToPrettyString(user):player} removed clothing upgrade {ToPrettyString(upgrade)} from {ToPrettyString(ent.Owner)}.");
 

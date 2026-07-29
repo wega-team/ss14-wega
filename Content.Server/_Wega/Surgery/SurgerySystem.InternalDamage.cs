@@ -39,7 +39,7 @@ public sealed partial class SurgerySystem
     private void InternalDamageInitialize()
     {
         SubscribeLocalEvent<OperatedComponent, OrganRemovedFromEvent>(OnOrganRemoved);
-        SubscribeLocalEvent<OperatedComponent, DamageChangedEvent>(OnDamage);
+        SubscribeLocalEvent<OperatedComponent, DamageDealtEvent>(OnDamage);
         SubscribeLocalEvent<OperatedComponent, ExaminedEvent>(OnOperatedExamined);
     }
 
@@ -47,7 +47,8 @@ public sealed partial class SurgerySystem
 
     private void OnOrganRemoved(Entity<OperatedComponent> ent, ref OrganRemovedFromEvent args)
     {
-        if (!TryComp<OrganComponent>(args.Organ, out var organComp))
+        if (TerminatingOrDeleted(ent.Owner) || !TryComp<OrganComponent>(args.Organ, out var organComp)
+            || !HasComp<BodyComponent>(ent))
             return;
 
         var categoryId = organComp.Category?.Id;
@@ -61,12 +62,6 @@ public sealed partial class SurgerySystem
             else if (categoryId.Contains("Leg"))
             {
                 RemoveDependentOrgan(ent, args.Organ, "Foot");
-            }
-
-            if (categoryId.Contains("Leg"))
-            {
-                if (!HasComp<BodyComponent>(ent))
-                    return;
                 _stun.TryKnockdown(ent.Owner, TimeSpan.FromSeconds(2f), true, false);
             }
         }
@@ -115,17 +110,16 @@ public sealed partial class SurgerySystem
         _physics.ApplyLinearImpulse(dependentOrgan.Value, _random.NextVector2() * 15f);
     }
 
-    private void OnDamage(Entity<OperatedComponent> ent, ref DamageChangedEvent args)
+    private void OnDamage(Entity<OperatedComponent> ent, ref DamageDealtEvent args)
     {
         if (HasComp<GodmodeComponent>(ent) || HasComp<ZombieComponent>(ent))
             return;
 
-        if (args.DamageDelta == null || args.DamageDelta.Empty || !args.DamageIncreased
-            || args.Origin == null)
+        if (args.Damage.GetTotal() <= 0 || args.Origin == null)
             return;
 
-        ProcessDamageTypes(ent, args.DamageDelta);
-        if (args.DamageDelta.DamageDict.TryGetValue(SlashDamage, out var slashDamage))
+        ProcessDamageTypes(ent, args.Damage);
+        if (args.Damage.DamageDict.TryGetValue(SlashDamage, out var slashDamage))
             TryLoseRandomOrgan(ent, args.Origin.Value, slashDamage.Float());
     }
 

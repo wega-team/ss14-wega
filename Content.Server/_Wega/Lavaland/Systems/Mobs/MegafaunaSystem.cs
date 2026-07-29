@@ -22,7 +22,7 @@ public sealed partial class MegafaunaSystem : EntitySystem
     {
         base.Initialize();
         SubscribeLocalEvent<MegafaunaComponent, MapInitEvent>(OnMapInit);
-        SubscribeLocalEvent<MegafaunaComponent, DamageChangedEvent>(OnDamageChanged);
+        SubscribeLocalEvent<MegafaunaComponent, DamageDealtEvent>(OnDamageChanged);
         SubscribeLocalEvent<MegafaunaComponent, MobStateChangedEvent>(OnMobStateChanged);
     }
 
@@ -32,7 +32,7 @@ public sealed partial class MegafaunaSystem : EntitySystem
             _npc.SleepNPC(uid);
     }
 
-    private void OnDamageChanged(EntityUid uid, MegafaunaComponent component, DamageChangedEvent args)
+    private void OnDamageChanged(EntityUid uid, MegafaunaComponent component, DamageDealtEvent args)
     {
         var totalDamage = _damage.GetTotalDamage(uid);
         if (!component.IsActive && totalDamage > 0)
@@ -42,7 +42,7 @@ public sealed partial class MegafaunaSystem : EntitySystem
         {
             var damageContributor = EnsureComp<MegafaunaDamageContributorComponent>(uid);
 
-            var damageDelta = args.DamageDelta?.GetTotal() ?? 0f;
+            var damageDelta = args.Damage?.GetTotal() ?? 0f;
             if (damageDelta > 0)
             {
                 damageContributor.Contributors.TryGetValue(args.Origin.Value, out var current);

@@ -61,7 +61,7 @@ public sealed partial class BubblegumSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<BubblegumBossComponent, DamageChangedEvent>(OnDamageChanged);
+        SubscribeLocalEvent<BubblegumBossComponent, DamageDealtEvent>(OnDamageChanged);
 
         SubscribeLocalEvent<BubblegumBossComponent, BubblegumRageActionEvent>(OnRageAction);
         SubscribeLocalEvent<BubblegumBossComponent, BubblegumBloodDiveActionEvent>(OnBloodDiveAction);
@@ -81,9 +81,9 @@ public sealed partial class BubblegumSystem : EntitySystem
 
     #region Event Handlers
 
-    private void OnDamageChanged(EntityUid uid, BubblegumBossComponent component, DamageChangedEvent args)
+    private void OnDamageChanged(EntityUid uid, BubblegumBossComponent component, DamageDealtEvent args)
     {
-        if (!args.DamageIncreased)
+        if (args.Damage.GetTotal() < 0)
             return;
 
         var healthRatio = GetHealthRatio(uid);

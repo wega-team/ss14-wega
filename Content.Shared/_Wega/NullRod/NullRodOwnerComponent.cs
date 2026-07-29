@@ -1,5 +1,3 @@
-using Content.Shared.FixedPoint;
-
 namespace Content.Shared.NullRod.Components;
 
 [RegisterComponent]

@@ -18,12 +18,12 @@ public sealed partial class ThermalVisionSystem : ToggleableEquipmentHudSystem<T
 
     public override void Initialize()
     {
-		base.Initialize();
-		SubscribeLocalEvent<ThermalVisionComponent, AfterAutoHandleStateEvent>(OnHandleState);
+        base.Initialize();
+        SubscribeLocalEvent<ThermalVisionComponent, AfterAutoHandleStateEvent>(OnHandleState);
         _overlay = new ThermalVisionOverlay(EntityManager);
     }
 
-	public void OnHandleState(Entity<ThermalVisionComponent> ent, ref AfterAutoHandleStateEvent args)
+    public void OnHandleState(Entity<ThermalVisionComponent> ent, ref AfterAutoHandleStateEvent args)
     {
         RefreshOverlay();
     }

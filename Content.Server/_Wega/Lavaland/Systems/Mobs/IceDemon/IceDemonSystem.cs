@@ -32,7 +32,7 @@ public sealed partial class IceDemonSystem : EntitySystem
 
         SubscribeLocalEvent<IceDemonComponent, IceDemonIceShotActionEvent>(OnIceShot);
         SubscribeLocalEvent<IceDemonComponent, IceDemonTeleportActionEvent>(OnTeleport);
-        SubscribeLocalEvent<IceDemonComponent, DamageChangedEvent>(OnDamage);
+        SubscribeLocalEvent<IceDemonComponent, DamageDealtEvent>(OnDamage);
     }
 
     private void OnIceShot(Entity<IceDemonComponent> ent, ref IceDemonIceShotActionEvent args)
@@ -76,9 +76,9 @@ public sealed partial class IceDemonSystem : EntitySystem
         _transform.SetCoordinates(demon, teleportPos.Value);
     }
 
-    private void OnDamage(Entity<IceDemonComponent> ent, ref DamageChangedEvent args)
+    private void OnDamage(Entity<IceDemonComponent> ent, ref DamageDealtEvent args)
     {
-        if (!args.DamageIncreased)
+        if (args.Damage.GetTotal() < 0)
             return;
 
         if (ent.Comp.AfterimagesSpawned)

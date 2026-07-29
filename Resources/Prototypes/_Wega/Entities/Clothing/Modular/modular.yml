@@ -411,6 +411,14 @@
     sprite: _Wega/Clothing/Modular/Asteroid/control.rsi
   - type: Clothing
     sprite: _Wega/Clothing/Modular/Asteroid/control.rsi
+  - type: ContainerContainer
+    containers:
+      item: !type:ContainerSlot { }
+      cell_slot: !type:ContainerSlot { }
+      suit_core: !type:ContainerSlot { }
+      suit_module: !type:Container { }
+      suit_part: !type:Container { }
+      suit_hidden: !type:Container { }
   - type: ContainerFill
     containers:
       suit_core: *core-slot

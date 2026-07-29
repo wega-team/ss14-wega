@@ -19,9 +19,8 @@
   id: DrinkUnholyFlaskFull
   suffix: Full
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        reagents:
-        - ReagentId: Unholywater
-          Quantity: 50
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Unholywater
+        Quantity: 60

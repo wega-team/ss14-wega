@@ -26,6 +26,13 @@ jobs:
     - name: Checkout Master
       uses: actions/checkout@v7
 
+    # Corvax-Wega-Specific-start
+    - name: Delete sponsor secrets content
+      run: |
+        rm -f Resources/Prototypes/_Wega/Sponsors/sponsor-tiers.yml
+        rm -f Resources/Prototypes/_Wega/Sponsors/sponsorghosts.yml
+    # Corvax-Wega-Specific-end
+
     - name: Setup Submodule
       run: |
         git submodule update --init --recursive

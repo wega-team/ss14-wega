@@ -243,6 +243,8 @@
     bleedReductionAmount: 0
     bloodRefreshAmount: 0
   - type: DisableMetabolismEffects
+    allowed:
+    - !type:Oxygenate
   - type: Android
   - type: UserInterface
     interfaces:

@@ -1,4 +1,3 @@
-using Content.Server.Temperature.Components;
 using Content.Shared.Disease;
 using Content.Shared.Temperature.Components;
 
