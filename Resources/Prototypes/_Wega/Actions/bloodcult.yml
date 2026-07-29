@@ -257,7 +257,11 @@
   - type: Action
     useDelay: 25
     itemIconStyle: BigAction
-    icon: { sprite: _Wega/Interface/Actions/actions_bloodcult.rsi, state: "wraith_teleport" }
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_bloodcult.rsi
+    layers:
+    - state: wraith_teleport
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:PolymorphActionEvent
       protoId: FantomJaunt
