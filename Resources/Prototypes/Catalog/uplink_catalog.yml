@@ -82,12 +82,6 @@
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 1
-# Corvax-Wega-start
-  - !type:StoreWhitelistCondition
-    blacklist:
-      tags:
-        - NukeOpsUplink
-# Corvax-Wega-end
 
 - type: listing
   id: UplinkThrowingKnivesKit
@@ -1337,7 +1331,7 @@
   productEntity: BorgKit # ReinforcementRadioSyndicateCyborgAssault Corvax-Wega-Syndi
   icon: { sprite: Objects/Devices/communication.rsi, state: old-radio-borg-assault }
   cost:
-    Telecrystal: 40 # Corvax-Wega-Edit
+    Telecrystal: 60
   categories:
     - UplinkAllies
   conditions:
