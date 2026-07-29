@@ -81,6 +81,12 @@
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 1
+  # Corvax-Wega-Syndi-start
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+        - NukeOpsUplink
+  # Corvax-Wega-Syndi-end
 
 - type: listing
   id: UplinkThrowingKnivesKit
@@ -280,11 +286,13 @@
     Telecrystal: 9 # Corvax-Wega-Syndi
   categories:
   - UplinkWeaponry
+# Corvax-Wega-Syndi-start
   conditions:
   - !type:StoreWhitelistCondition
-    whitelist:
+    blacklist:
       tags:
       - NukeOpsUplink
+# Corvax-Wega-Syndi-End
 
 - type: listing
   id: UplinkGrenadeLauncher
