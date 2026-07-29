@@ -84,7 +84,7 @@
   - type: CanMoveInAir
   - type: WarpPoint
     follow: true
-    location: Reaper
+    location: location-reaper
   - type: TimedSpawner
     prototypes:
     - MobConstructHarvester

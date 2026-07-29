@@ -59,7 +59,7 @@
       sprite: _Wega/Clothing/Head/Hats/beret_blueshield.rsi
 
 - type: entity
-  parent: ClothingHeadHelmetBasic
+  parent: ClothingHeadHelmetArmoredBase
   id: ClothingHeadHelmetFlash
   name: flash halmet
   description: A high-tech helmet equipped with an on-the-go flash device.
@@ -91,14 +91,16 @@
   components:
   - type: Action
     useDelay: 10
-    icon:
-      sprite: Objects/Weapons/Melee/flash.rsi
-      state: flash
     sound:
       path: /Audio/Weapons/flash.ogg
       params:
         volume: 5
     itemIconStyle: BigItem
+  - type: Sprite
+    sprite: Objects/Weapons/Melee/flash.rsi
+    layers:
+    - state: flash
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:MaskFlashActionEvent
 

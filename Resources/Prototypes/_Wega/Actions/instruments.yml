@@ -5,8 +5,11 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: _Wega/Interface/Actions/play.png
     checkCanInteract: false
+  - type: Sprite
+    layers:
+    - texture: _Wega/Interface/Actions/play.png
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:OpenUiActionEvent
       key: enum.InstrumentUiKey.Key

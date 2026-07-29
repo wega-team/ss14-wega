@@ -24,7 +24,7 @@
     sprite: Clothing/Head/Helmets/eva_large.rsi
     state: icon
   product: CrateEmergencyEVA
-  cost: 1000
+  cost: 1200 # Corvax-Wega-Edit
   category: cargoproduct-category-name-emergency
   group: market
 

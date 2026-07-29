@@ -234,22 +234,6 @@
   - type: InstantAction
     event: !type:DragonSpawnRiftActionEvent
 
-# Corvax-Wega-DragonPushSkill-start
-- type: entity
-  id: ActionPush
-  name: Push
-  description: Push away nearby creatures
-  components:
-  - type: Action
-    icon:
-      sprite: _Wega/Interface/Actions/actions_dragon.rsi
-      state: repulse
-    useDelay: 120
-    priority: 4
-  - type: InstantAction
-    event: !type:DragonPushActionEvent
-# Corvax-Wega-DragonPushSkill-end
-
 - type: entity
   parent: BaseAction
   id: ActionDevour

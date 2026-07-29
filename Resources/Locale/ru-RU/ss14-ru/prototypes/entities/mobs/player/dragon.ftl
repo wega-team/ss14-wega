@@ -16,5 +16,3 @@ ent-ActionDragonsBreath = [color=orange]Дыхание дракона[/color]
     .desc = Извергайте пламя на всех, кто поимеет глупость напасть на вас!
 ent-BloodSmoke = smoke
     .desc = { ent-Smoke.desc }
-ent-ActionPush = Оттолкнуть
-    .desc = Отталкивает находящихся рядом существ

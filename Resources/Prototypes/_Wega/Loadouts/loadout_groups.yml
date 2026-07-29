@@ -459,6 +459,7 @@
   - EmergencyOxygenBlueShield
   - LoadoutSpeciesVoxNitrogen
   - EmergencyAndroidBlueShield # Corvax-Wega-Android
+  - EmergencyAndroidPack # Corvax-Wega-Android
 
 #HoP
 - type: loadoutGroup

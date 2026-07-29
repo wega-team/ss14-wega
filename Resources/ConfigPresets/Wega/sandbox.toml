@@ -21,9 +21,6 @@ enabled = false
 role_time = 0.5
 quick_lottery = true
 
-[gateway]
-generator_enabled = false
-
 [physics]
 # Makes mapping annoying
 grid_splitting = false

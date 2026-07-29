@@ -26,11 +26,11 @@
         Heat: 10
     # Corvax-Wega-Vampire-start
     damageOnUnholyUse: ## What an unholy creature takes when picking up the bible
-      groups:
-        Burn: 30
+      types:
+        Heat: 30
     damageUnholy: ## What damage is dealt when a chaplain hits an unholy creature
-      groups:
-        Burn: 20
+      types:
+        Heat: 20
     # Corvax-Wega-Vampire-end
   - type: MeleeWeapon
     soundHit:

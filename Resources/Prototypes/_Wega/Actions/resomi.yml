@@ -5,8 +5,13 @@
   description: Switching agility
   components:
   - type: Action
-    icon: _Wega/Mobs/Species/Resomi/Abilities/Agility/AgilityOff.png
-    iconOn: _Wega/Mobs/Species/Resomi/Abilities/Agility/AgilityOn.png
+  - type: Sprite
+    layers:
+    - texture: _Wega/Mobs/Species/Resomi/Abilities/Agility/AgilityOff.png
+      map: ["enum.ActionVisuals.Icon"]
+    - texture: _Wega/Mobs/Species/Resomi/Abilities/Agility/AgilityOn.png
+      map: ["enum.ActionVisuals.IconToggled"]
+      visible: false
   - type: InstantAction
     event: !type:SwitchAgillityActionEvent
 
@@ -17,7 +22,12 @@
   description: Listen up
   components:
   - type: Action
-    icon: _Wega/Mobs/Species/Resomi/Abilities/ListenUp/EarsDown.png
-    iconOn: _Wega/Mobs/Species/Resomi/Abilities/ListenUp/EarsUp.png
+  - type: Sprite
+    layers:
+    - texture: _Wega/Mobs/Species/Resomi/Abilities/ListenUp/EarsDown.png
+      map: ["enum.ActionVisuals.Icon"]
+    - texture: _Wega/Mobs/Species/Resomi/Abilities/ListenUp/EarsUp.png
+      map: ["enum.ActionVisuals.IconToggled"]
+      visible: false
   - type: InstantAction
     event: !type:ListenUpActionEvent

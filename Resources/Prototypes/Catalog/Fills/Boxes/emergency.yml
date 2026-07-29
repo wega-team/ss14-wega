@@ -15,6 +15,11 @@
     layers:
     - state: internals
     - state: emergencytank
+  # Corvax-Wega-Survival-start
+  - type: Storage
+    grid:
+    - 0,0,2,1
+  # Corvax-Wega-Survival-end
 
 - type: entity
   parent: BoxSurvival

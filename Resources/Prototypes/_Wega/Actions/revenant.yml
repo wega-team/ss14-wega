@@ -5,9 +5,12 @@
   description: Cheat to please yourself.
   components:
   - type: Action
-    icon: _Wega/Interface/Actions/transmit.png
     itemIconStyle: BigAction
     useDelay: 5
+  - type: Sprite
+    layers:
+    - texture: _Wega/Interface/Actions/transmit.png
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
   - type: EntityTargetAction
     event: !type:RevenantTransmitActionEvent
@@ -19,9 +22,12 @@
   description: Costs 50 Essence.
   components:
   - type: Action
-    icon: _Wega/Interface/Actions/haunt.png
     itemIconStyle: BigAction
     useDelay: 60
+  - type: Sprite
+    layers:
+    - texture: _Wega/Interface/Actions/haunt.png
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:RevenantHauntActionEvent
 
@@ -32,8 +38,11 @@
   description: Costs 25 Essence.
   components:
   - type: Action
-    icon: _Wega/Interface/Actions/hallucination.png
     itemIconStyle: BigAction
     useDelay: 15
+  - type: Sprite
+    layers:
+    - texture: _Wega/Interface/Actions/hallucination.png
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:RevenantHallucinationActionEvent

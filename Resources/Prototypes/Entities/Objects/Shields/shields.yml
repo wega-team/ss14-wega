@@ -324,8 +324,8 @@
             - !type:SpawnEntitiesBehavior
               spawn:
                 SheetBrass1:
-                  min: 5
-                  max: 5
+                  min: 2
+                  max: 2
     - type: StaminaDamageOnCollide
       damage: 30
     - type: Reflect

@@ -127,6 +127,7 @@
   - EmergencyOxygen
   - LoadoutSpeciesVoxNitrogen
   - EmergencyAndroid # Corvax-Wega-Android
+  - EmergencyAndroidPack # Corvax-Wega-Android
 
 # nitrogen or oxygen tank, depending on what your species needs
 - type: loadoutGroup
@@ -2056,6 +2057,7 @@
   - EmergencyOxygenClown
   - LoadoutSpeciesVoxNitrogen
   - EmergencyAndroidClown # Corvax-Wega-Android
+  - EmergencyAndroidPack # Corvax-Wega-Android
 
 - type: loadoutGroup
   id: ClownJobTrinkets
@@ -3609,6 +3611,7 @@
   - EmergencyOxygenExtended
   - LoadoutSpeciesVoxNitrogen
   - EmergencyAndroidExtended # Corvax-Wega-Android
+  - EmergencyAndroidPack # Corvax-Wega-Android
 
 # Science
 - type: loadoutGroup
@@ -4415,6 +4418,7 @@
   - EmergencyOxygenSecurity
   - LoadoutSpeciesVoxNitrogen
   - EmergencyAndroidSecurity # Corvax-Wega-Android
+  - EmergencyAndroidPack # Corvax-Wega-Android
 
 # Wildcards
 - type: loadoutGroup
@@ -4794,6 +4798,7 @@
   - EmergencyOxygenSyndicate
   - LoadoutSpeciesVoxNitrogen
   - EmergencyAndroidSyndicate # Corvax-Wega-Android
+  - EmergencyAndroidPack # Corvax-Wega-Android
 
 - type: loadoutGroup
   id: SurvivalMilitaryDouble # Survival box mostly used by ERT/deathsquad
