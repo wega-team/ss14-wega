@@ -68,9 +68,6 @@ public sealed partial class WeaponHotswapSystem : EntitySystem
 
         _container.Insert(alternate, container);
         ent.Comp.PairedWeapon = alternate;
-
-        Dirty(ent.Owner, ent.Comp);
-        Dirty(alternate, altHotswap);
     }
 
     private void OnUseInHand(Entity<WeaponHotswapComponent> ent, ref UseInHandEvent args)

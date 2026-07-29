@@ -10,7 +10,6 @@ using Content.Shared.Damage.Components;
 using Content.Shared.Doors.Components;
 using Content.Shared.EnergyShield;
 using Content.Shared.Humanoid;
-using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Inventory;
 using Content.Shared.Weapons.Melee.Events;
@@ -21,7 +20,6 @@ using Content.Shared.Administration;
 using Content.Shared.Weapons.Reflect;
 using Content.Shared.Weapons.Melee;
 using Content.Shared.Stealth.Components;
-using Content.Shared.Flash.Components;
 using Content.Shared.Armor;
 using Content.Server.Atmos.Components;
 using Content.Shared.Weapons.Melee.Components;
@@ -235,7 +233,7 @@ public sealed partial class VeilCultSystem
     {
         var effect = _random.Prob(0.75f) ? "AdminInstantEffectSmoke3" : "AdminInstantEffectSmoke10";
         Spawn(effect, Transform(uid).Coordinates);
-        
+
         RemComp<SmokeEnchantComponent>(uid);
         RemComp<EnchantedComponent>(uid);
 
@@ -334,7 +332,7 @@ public sealed partial class VeilCultSystem
             }
         }
     }
-    
+
     private void DismantlingOnMeleeHit(EntityUid uid, DismantlingEnchantComponent comp, MeleeHitEvent args)
     {
         if (TryComp<WieldableComponent>(uid, out var wield))
@@ -624,7 +622,7 @@ public sealed partial class VeilCultSystem
             {
                 if (!HasComp<VeilCultistComponent>(target))
                     continue;
-                
+
                 var damage = new DamageSpecifier { DamageDict = { { "Blunt", -10 }, { "Slash", -10 }, { "Piercing", -15 }, { "Heat", -20 } } };
                 _damage.TryChangeDamage(target, damage, true);
 

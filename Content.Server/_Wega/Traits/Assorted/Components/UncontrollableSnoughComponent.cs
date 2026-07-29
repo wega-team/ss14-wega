@@ -14,7 +14,7 @@ public sealed partial class UncontrollableSnoughComponent : Component
     /// Emote to play when snoughing
     /// </summary>
     [DataField("emote", required: true, customTypeSerializer: typeof(PrototypeIdSerializer<EmotePrototype>))]
-    public string EmoteId = String.Empty;
+    public string EmoteId = string.Empty;
 
     /// <summary>
     /// The random time between incidents, (min, max).

@@ -38,8 +38,6 @@ namespace Content.Server.Disease.Cures
         }
 
         public override string CureText()
-        {
-            return (Loc.GetString("diagnoser-cure-bedrest", ("time", MaxLength), ("sleep", (MaxLength / SleepMultiplier))));
-        }
+            => Loc.GetString("diagnoser-cure-bedrest", ("time", MaxLength), ("sleep", (MaxLength / SleepMultiplier)));
     }
 }

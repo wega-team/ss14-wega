@@ -13,6 +13,7 @@ namespace Content.Server.Disease.Effects
         /// How many units of thirst to add each time we vomit
         [DataField("thirstAmount")]
         public float ThirstAmount = -40f;
+
         /// How many units of hunger to add each time we vomit
         [DataField("hungerAmount")]
         public float HungerAmount = -40f;

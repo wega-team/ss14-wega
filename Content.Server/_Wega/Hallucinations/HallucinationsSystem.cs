@@ -78,8 +78,10 @@ public sealed partial class HallucinationsSystem : EntitySystem
     {
         if (proto == null)
             return false;
+
         if (!ProtoMan.TryIndex<HallucinationsPrototype>(proto, out var prototype))
             return false;
+
         if (!_status.TryAddStatusEffect<HallucinationsComponent>(target, key, time, refresh))
             return false;
 

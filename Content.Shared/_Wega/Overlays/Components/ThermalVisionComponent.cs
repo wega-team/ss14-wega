@@ -1,4 +1,3 @@
-using Content.Shared.Overlay;
 using Robust.Shared.GameStates;
 
 namespace Content.Shared.Overlays;

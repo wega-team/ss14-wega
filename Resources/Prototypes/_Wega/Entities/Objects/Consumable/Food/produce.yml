@@ -107,12 +107,11 @@
   components:
   - type: Sprite
     sprite: _Wega/Objects/Specific/Hydroponics/moneycabbage.rsi
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        reagents:
-        - ReagentId: Monenium
-          Quantity: 10
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Monenium
+        Quantity: 10
   - type: Item
     heldPrefix: produce
   - type: Produce
@@ -132,17 +131,15 @@
   - type: FlavorProfile
     flavors:
       - demonicwatermelon
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 25
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 10
-        - ReagentId: Vitamin
-          Quantity: 5
-        - ReagentId: Unholywater
-          Quantity: 10
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+      - ReagentId: Vitamin
+        Quantity: 5
+      - ReagentId: Unholywater
+        Quantity: 10
   - type: Sprite
     sprite: _Wega/Objects/Specific/Hydroponics/demonicwatermelon.rsi
   - type: Produce
@@ -198,17 +195,15 @@
       - demonicwatermelon
   - type: Sprite
     sprite: _Wega/Objects/Specific/Hydroponics/demonicwatermelon.rsi
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 5
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 2
-        - ReagentId: Vitamin
-          Quantity: 1
-        - ReagentId: Unholywater
-          Quantity: 2
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 2
+      - ReagentId: Vitamin
+        Quantity: 1
+      - ReagentId: Unholywater
+        Quantity: 2
   - type: Extractable
     juiceSolution:
       reagents:
@@ -233,15 +228,13 @@
   - type: Edible
     trash:
     - TrashBlueSpaceBananaPeel
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 6
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 4
-        - ReagentId: Vitamin
-          Quantity: 2
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 4
+      - ReagentId: Vitamin
+        Quantity: 2
   - type: Sprite
     sprite: _Wega/Objects/Specific/Hydroponics/blue_space_banana.rsi
   - type: Produce
@@ -257,7 +250,7 @@
 
 - type: entity
   name: blue space banana peel
-  parent: BaseItem
+  parent: [ BaseItem, SolutionFood, SolutionVeryTiny ]
   id: TrashBlueSpaceBananaPeel
   description: "The pinnacle of the art of humor."
   components:
@@ -299,13 +292,11 @@
       - Recyclable
       - Trash
       - BananaPeel
-    - type: SolutionContainerManager
-      solutions:
-        food:
-          maxVol: 10
-          reagents:
-          - ReagentId: PulpedBananaPeel
-            Quantity: 10
+    - type: Solution
+      solution:
+        reagents:
+        - ReagentId: PulpedBananaPeel
+          Quantity: 10
     - type: Extractable
       grindableSolutionName: food
     - type: SpaceGarbage
@@ -319,15 +310,13 @@
   id: FoodRadioactiveBerries
   description: "They look so delicious! But for some reason it's hard to look at them."
   components:
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 10
-        reagents:
-        - ReagentId: Radium
-          Quantity: 5
-        - ReagentId: Uranium
-          Quantity: 5
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Radium
+        Quantity: 5
+      - ReagentId: Uranium
+        Quantity: 5
   - type: Sprite
     sprite: _Wega/Objects/Specific/Hydroponics/radioactive_berry.rsi
   - type: Produce
@@ -355,13 +344,11 @@
   id: FoodAlienBerries
   description: "They look like very small pieces of alien artifacts."
   components:
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 5
-        reagents:
-        - ReagentId: Artifexium
-          Quantity: 5
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Artifexium
+        Quantity: 5
   - type: Sprite
     sprite: _Wega/Objects/Specific/Hydroponics/alien_berry.rsi
   - type: Produce
@@ -387,15 +374,13 @@
   - type: FlavorProfile
     flavors:
       - potatoes
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 24
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 9
-        - ReagentId: Licoxide
-          Quantity: 15
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 9
+      - ReagentId: Licoxide
+        Quantity: 15
   - type: Sprite
     sprite: _Wega/Objects/Specific/Hydroponics/energy_potato.rsi
   - type: Produce
@@ -414,12 +399,11 @@
   components:
   - type: Sprite
     sprite: _Wega/Objects/Specific/Hydroponics/relaxing_tea.rsi
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        reagents:
-        - ReagentId: RelaxingTeaAdust
-          Quantity: 10
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: RelaxingTeaAdust
+        Quantity: 10
   - type: Produce
     seedId: treeTeaPlant
 
@@ -434,15 +418,13 @@
   - type: FlavorProfile
     flavors:
       - grape
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 4
-        reagents:
-        - ReagentId: GrapeJuiceInvisible
-          Quantity: 2
-        - ReagentId: Nothing
-          Quantity: 2
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: GrapeJuiceInvisible
+        Quantity: 2
+      - ReagentId: Nothing
+        Quantity: 2
   - type: Sprite
     sprite: _Wega/Objects/Specific/Hydroponics/Invisiblgrape.rsi
   - type: Produce
@@ -465,15 +447,13 @@
   - type: FlavorProfile
     flavors:
       - sweet
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 5
-        reagents:
-        - ReagentId: Sugar
-          Quantity: 4
-        - ReagentId: Vitamin
-          Quantity: 1
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Sugar
+        Quantity: 4
+      - ReagentId: Vitamin
+        Quantity: 1
   - type: Sprite
     sprite: _Wega/Objects/Specific/Hydroponics/candytree.rsi
   - type: Produce
@@ -497,15 +477,13 @@
   - type: FlavorProfile
     flavors:
       - sweet
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 5
-        reagents:
-        - ReagentId: Sugar
-          Quantity: 4
-        - ReagentId: UnstableMutagen
-          Quantity: 1
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Sugar
+        Quantity: 4
+      - ReagentId: UnstableMutagen
+        Quantity: 1
   - type: Sprite
     sprite: _Wega/Objects/Specific/Hydroponics/candytreerandom.rsi
   - type: Produce
@@ -529,15 +507,13 @@
   - type: FlavorProfile
     flavors:
       - sweet
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 5
-        reagents:
-        - ReagentId: Sugar
-          Quantity: 4
-        - ReagentId: UnstableMutagen
-          Quantity: 1
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Sugar
+        Quantity: 4
+      - ReagentId: UnstableMutagen
+        Quantity: 1
   - type: Sprite
     sprite: _Wega/Objects/Specific/Hydroponics/candytreerandom.rsi
   - type: SpawnItemsOnUse
@@ -559,15 +535,13 @@
   - type: FlavorProfile
     flavors:
       - sweet
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 5
-        reagents:
-        - ReagentId: Sugar
-          Quantity: 4
-        - ReagentId: UnstableMutagen
-          Quantity: 1
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Sugar
+        Quantity: 4
+      - ReagentId: UnstableMutagen
+        Quantity: 1
   - type: Sprite
     sprite: _Wega/Objects/Specific/Hydroponics/candytreerandom.rsi
   - type: SpawnItemsOnUse
@@ -592,15 +566,13 @@
   - type: FlavorProfile
     flavors:
       - tangerine
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 5
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 3
-        - ReagentId: Vitamin
-          Quantity: 2
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 3
+      - ReagentId: Vitamin
+        Quantity: 2
   - type: Extractable
     juiceSolution:
       reagents:
@@ -629,15 +601,13 @@
   - type: FlavorProfile
     flavors:
       - tangerine
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 5
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 3
-        - ReagentId: Vitamin
-          Quantity: 2
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 3
+      - ReagentId: Vitamin
+        Quantity: 2
   - type: Extractable
     juiceSolution:
       reagents:
@@ -651,7 +621,7 @@
     - Fruit
 
 - type: entity
-  parent: BaseItem
+  parent: [ BaseItem, SolutionFood, SolutionVeryTiny ]
   name: tangerine peel
   id: FoodProduceTangerineTrash
   description: It smells strongly of tangerine!
@@ -670,13 +640,11 @@
   - type: SpaceGarbage
   - type: StaticPrice
     price: 0
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 7
-        reagents:
-        - ReagentId: Vitamin
-          Quantity: 7
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Vitamin
+        Quantity: 7
   - type: Edible
     requiresSpecialDigestion: true
   - type: Extractable
@@ -691,15 +659,13 @@
   - type: FlavorProfile
     flavors:
       - tangerine
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 5
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 3
-        - ReagentId: Vitamin
-          Quantity: 2
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 3
+      - ReagentId: Vitamin
+        Quantity: 2
   - type: Sprite
     sprite: _Wega/Objects/Specific/Hydroponics/festive_tangerine.rsi
   - type: Produce
@@ -823,7 +789,7 @@
 
 - type: entity
   name: gift wrapping
-  parent: BaseItem
+  parent: [ BaseItem, SolutionFood, SolutionVeryTiny ]
   id: FoodProduceFestiveTangerineTrash
   description: This is rubbish.
   components:
@@ -841,15 +807,15 @@
   - type: SpaceGarbage
   - type: StaticPrice
     price: 0
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 10
-        reagents:
-        - ReagentId: ToxinTrash
-          Quantity: 5
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: ToxinTrash
+        Quantity: 5
   - type: Edible
     requiresSpecialDigestion: true
+  - type: Extractable
+    grindableSolutionName: food
 
 - type: entity
   name: melon
@@ -863,17 +829,15 @@
   - type: FlavorProfile
     flavors:
       - melon
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 25
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 10
-        - ReagentId: Vitamin
-          Quantity: 10
-        - ReagentId: Water
-          Quantity: 5
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+      - ReagentId: Vitamin
+        Quantity: 10
+      - ReagentId: Water
+        Quantity: 5
   - type: Sprite
     sprite: _Wega/Objects/Specific/Hydroponics/melon.rsi
   - type: Produce
@@ -925,17 +889,15 @@
       - melon
   - type: Sprite
     sprite: _Wega/Objects/Specific/Hydroponics/melon.rsi
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 5
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 2
-        - ReagentId: Vitamin
-          Quantity: 2
-        - ReagentId: Water
-          Quantity: 1
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 2
+      - ReagentId: Vitamin
+        Quantity: 2
+      - ReagentId: Water
+        Quantity: 1
   - type: Extractable
     juiceSolution:
       reagents:
@@ -958,17 +920,15 @@
   - type: FlavorProfile
     flavors:
       - melon
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 25
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 10
-        - ReagentId: Vitamin
-          Quantity: 10
-        - ReagentId: CatMelonJuice
-          Quantity: 5
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+      - ReagentId: Vitamin
+        Quantity: 10
+      - ReagentId: CatMelonJuice
+        Quantity: 5
   - type: Sprite
     sprite: _Wega/Objects/Specific/Hydroponics/catmelon.rsi
   - type: Produce
@@ -1023,17 +983,15 @@
       - melon
   - type: Sprite
     sprite: _Wega/Objects/Specific/Hydroponics/catmelon.rsi
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 5
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 2
-        - ReagentId: Vitamin
-          Quantity: 2
-        - ReagentId: CatMelonJuice
-          Quantity: 1
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 2
+      - ReagentId: Vitamin
+        Quantity: 2
+      - ReagentId: CatMelonJuice
+        Quantity: 1
   - type: Extractable
     juiceSolution:
       reagents:

@@ -54,7 +54,6 @@ using Content.Shared.Vampire;
 using Content.Shared.Vampire.Components;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
-using Robust.Shared.Map;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -166,6 +165,9 @@ public sealed partial class VampireSystem : SharedVampireSystem
 
     private void OnRemove(Entity<VampireComponent> vampire, ref ComponentRemove args)
     {
+        if (TerminatingOrDeleted(vampire.Owner))
+            return;
+
         if (HasComp<PolymorphedEntityComponent>(vampire))
             return;
 

@@ -3,7 +3,6 @@ using Content.Shared.Movement.Components;
 using Content.Shared.Slippery;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
-using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Movement.Systems;
 

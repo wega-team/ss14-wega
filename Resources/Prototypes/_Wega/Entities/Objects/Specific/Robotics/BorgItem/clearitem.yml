@@ -1,5 +1,5 @@
 - type: entity
-  parent: [SolutionMopLarge,BaseItem]
+  parent: [ SolutionMopLarge, BaseItem ]
   name: mop
   id: BorgMopItem
   suffix: Cyborg
@@ -35,10 +35,6 @@
     sprite: Objects/Specific/Janitorial/mop.rsi
   - type: Absorbent
     useAbsorberSolution: true
-  - type: SolutionContainerManager
-    solutions:
-      absorbed:
-        maxVol: 100
   - type: UseDelay
     delay: 1
   - type: PhysicalComposition

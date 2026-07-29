@@ -50,7 +50,8 @@ namespace Content.Server.Disease.Cures
             var prototypeMan = IoCManager.Resolve<IPrototypeManager>();
             if (Reagent == null || !prototypeMan.TryIndex<ReagentPrototype>(Reagent, out var reagentProt))
                 return string.Empty;
-            return (Loc.GetString("diagnoser-cure-reagent", ("units", Min), ("reagent", reagentProt.LocalizedName)));
+
+            return Loc.GetString("diagnoser-cure-reagent", ("units", Min), ("reagent", reagentProt.LocalizedName));
         }
     }
 }

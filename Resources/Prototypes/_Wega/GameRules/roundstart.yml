@@ -24,12 +24,6 @@
   parent: BaseGameRule
   id: Vampire
   components:
-  # Corvax-Wega-SubGameRules-start
-  - type: SubGamemodes
-    rules:
-    - id: SubTraitor
-      prob: 0.5
-  # Corvax-Wega-SubGameRules-end
   - type: GameRule
     minPlayers: 5
   - type: VampireRule

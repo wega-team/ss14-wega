@@ -18,10 +18,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+      # Corvax-Wega-Specific-start
       - name: Delete sponsor secrets content
         run: |
           rm -f Resources/Prototypes/_Wega/Sponsors/sponsor-tiers.yml
           rm -f Resources/Prototypes/_Wega/Sponsors/sponsorghosts.yml
+      # Corvax-Wega-Specific-end
       - name: Setup submodule
         run: |
           git submodule update --init --recursive

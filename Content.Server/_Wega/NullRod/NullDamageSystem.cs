@@ -20,7 +20,7 @@ public sealed partial class NullDamageSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<UnholyComponent, DamageChangedEvent>(OnUnholyDamageTaken);
+        SubscribeLocalEvent<UnholyComponent, DamageDealtEvent>(OnUnholyDamageTaken);
         SubscribeLocalEvent<NullDamageComponent, RejuvenateEvent>(OnRejuvenate);
     }
 
@@ -56,7 +56,7 @@ public sealed partial class NullDamageSystem : EntitySystem
 
     #region Null Damage Logic
 
-    private void OnUnholyDamageTaken(EntityUid uid, UnholyComponent component, ref DamageChangedEvent args)
+    private void OnUnholyDamageTaken(EntityUid uid, UnholyComponent component, ref DamageDealtEvent args)
     {
         if (!args.Origin.HasValue || !HasComp<BibleUserComponent>(args.Origin.Value))
             return;

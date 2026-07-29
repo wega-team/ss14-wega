@@ -26,7 +26,7 @@
             Janitor: [ 2, 2 ]
             Chaplain: [ 1, 1 ]
             Librarian: [ 1, 1 ]
-            Lawyer: [ 2, 2 ]
+            #Lawyer: [ 2, 2 ]
             ServiceWorker: [ 1, 2 ]
             #engineering
             ChiefEngineer: [ 1, 1 ]
@@ -61,4 +61,3 @@
             Musician: [ 1, 1 ]
             # silicon
             StationAi: [ 1, 1 ]
-            Borg: [ 1, 1 ]

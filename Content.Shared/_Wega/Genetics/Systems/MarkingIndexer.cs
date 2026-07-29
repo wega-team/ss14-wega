@@ -1,7 +1,6 @@
 using System.Linq;
 using Content.Shared.GameTicking;
 using Content.Shared.Humanoid.Markings;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
 namespace Content.Shared.Genetics.Systems

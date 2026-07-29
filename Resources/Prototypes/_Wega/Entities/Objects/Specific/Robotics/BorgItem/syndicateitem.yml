@@ -49,6 +49,9 @@
       path: /Audio/Weapons/Guns/Gunshots/sniper.ogg
     soundEmpty:
       path: /Audio/Weapons/Guns/Empty/empty.ogg
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
   - type: BallisticAmmoProvider
     whitelist:
       tags:
@@ -174,6 +177,9 @@
       path: /Audio/_Wega/Weapons/Guns/Gunshots/deserteagle.ogg
       params:
         volume: 2
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
   - type: BallisticAmmoProvider
     whitelist:
       tags:

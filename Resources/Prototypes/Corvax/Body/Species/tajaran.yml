@@ -298,23 +298,6 @@
 - type: entity
   parent: [ OrganBaseStomach, OrganTajaranInternal, OrganTajaranMetabolizer ]
   id: OrganTajaranStomach
-  components:
-  - type: SolutionManager
-    solutions:
-    - SolutionStomach
-    - SolutionTajaranFood
-
-- type: entity
-  parent: SolutionFood
-  id: SolutionTajaranFood
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Solution
-    solution:
-      maxVol: 5
-      reagents:
-      - ReagentId: UncookedAnimalProteins
-        Quantity: 5
 
 - type: entity
   parent: [ OrganBaseLiver, OrganSpriteHumanInternal, OrganTajaranInternal, OrganTajaranMetabolizer ]

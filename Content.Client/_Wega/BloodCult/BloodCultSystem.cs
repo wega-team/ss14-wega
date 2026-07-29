@@ -4,7 +4,6 @@ using Content.Shared.Blood.Cult;
 using Content.Shared.Blood.Cult.Components;
 using Content.Shared.StatusIcon.Components;
 using Robust.Client.GameObjects;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
 namespace Content.Client.Blood.Cult

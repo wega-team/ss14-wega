@@ -73,7 +73,7 @@
     containers:
       storagebase: !type:AllSelector
         children:
-        - id: ClothingModularControllerSyndicatePreassembled
+        - id: HardsuitOperSelector
         - !type:NestedSelector
           tableId: SyndicateHardsuitExtrasEntityTable
 

@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Text;
+using Content.Server.Administration;
 using Content.Server.Database;
 using Content.Shared.Achievements;
 using Content.Shared.Administration;
@@ -7,7 +8,7 @@ using Robust.Server.Player;
 using Robust.Shared.Console;
 using Robust.Shared.Prototypes;
 
-namespace Content.Server.Administration.Commands;
+namespace Content.Server.Achievements.Commands;
 
 /// What are you looking at here?
 

@@ -26,6 +26,9 @@ public sealed partial class NoPrintsGenSystem : EntitySystem
 
     private void OnShutdown(Entity<NoPrintsGenComponent> ent, ref ComponentShutdown args)
     {
+        if (TerminatingOrDeleted(ent))
+            return;
+
         EnsureComp<FingerprintComponent>(ent).Fingerprint = ent.Comp.OldPrints;
     }
 }

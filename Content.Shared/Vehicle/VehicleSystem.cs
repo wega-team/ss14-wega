@@ -137,6 +137,7 @@ public sealed partial class VehicleSystem : EntitySystem
             Dirty(operatorUid, vehicleOperator);
         }
 
+        EnsureComp<InputMoverComponent>(entity); // Corvax-Wega-CHAIR-BLYAT
         _mover.SetRelay(operatorUid, entity);
 
         var enterEvent = new OnVehicleEnteredEvent(entity, operatorUid);

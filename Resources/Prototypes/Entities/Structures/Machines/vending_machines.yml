@@ -1517,6 +1517,9 @@
       - UtilityConsumables
       - UtilityDiggingTools
       - UtilityMisc
+  - type: ContainerContainer
+    containers:
+      vendor_card: !type:ContainerSlot {}
   - type: ItemSlots
     slots:
       vendor_card:

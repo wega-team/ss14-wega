@@ -22,7 +22,7 @@
       multiplierOnExisting: 0.75
     - !type:Ignite
     # Corvax-Wega-Vehicles-start
-    - !type:Damage
+    - !type:EntityDamage
       requiredComponent: Vehicle
       blacklistedComponent: Boat
       damageType: Blunt

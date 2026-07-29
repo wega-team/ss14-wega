@@ -19,7 +19,7 @@
     - sprite: _Wega/Objects/Storage/box_icons.rsi
       state: tyriumpack
   - type: Label
-    currentLabel: reagent-name-nitrogen
+    localizedLabel: reagent-name-nitrogen
 
 - type: entity
   parent: BoxSurvivalAndroid
@@ -81,7 +81,7 @@
         - id: Tyriumpack3
         - id: WelderMini
   - type: Label
-    currentLabel: reagent-name-nitrogen
+    localizedLabel: reagent-name-nitrogen
 
 - type: entity
   parent: BoxSurvivalAndroid
@@ -168,4 +168,4 @@
     - state: internals
     - state: nitrogentank
   - type: Label
-    currentLabel: reagent-name-nitrogen
+    localizedLabel: reagent-name-nitrogen

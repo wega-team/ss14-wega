@@ -1,4 +1,3 @@
-using Robust.Shared.Prototypes;
 using Content.Shared.Verbs;
 using Content.Shared.Popups;
 using Content.Shared.Database;
@@ -28,7 +27,7 @@ public sealed partial class ChangeableReagentSystem : EntitySystem
             return;
 
         var account = GetReagent(component);
-		var name = account.Name;
+        var name = account.Name;
 
         args.PushMarkup(Loc.GetString("set-reagent", ("reagent", Loc.GetString(name))));
     }
@@ -48,14 +47,14 @@ public sealed partial class ChangeableReagentSystem : EntitySystem
 
         for (var i = 0; i < component.Reagents.Count; i++)
         {
-            var Reagent = component.Reagents[i];
+            var reagent = component.Reagents[i];
             var index = i;
 
             var v = new Verb
             {
                 Priority = 1,
                 Category = VerbCategory.ReagentChange,
-                Text = Loc.GetString(Reagent.Name),
+                Text = Loc.GetString(reagent.Name),
                 Disabled = i == component.CurrentReagent,
                 Impact = LogImpact.Low,
                 DoContactInteraction = true,
@@ -75,23 +74,30 @@ public sealed partial class ChangeableReagentSystem : EntitySystem
             return false;
 
         SetReagent(uid, component, index, user);
-
         return true;
     }
 
     private void SetReagent(EntityUid uid, ChangeableReagentComponent component, int index, EntityUid? user = null)
     {
-        var Reagent = component.Reagents[index];
+        var reagent = component.Reagents[index];
         component.CurrentReagent = index;
-        Dirty(uid, component);
 
         if (user != null)
-			_popupSystem.PopupClient(Loc.GetString("set-reagent", ("reagent", Loc.GetString(Reagent.Name))), uid, user.Value);
-
-		if (TryComp(uid, out SolutionRegenerationComponent? reagenComp))
         {
-			var newSolution = new Solution(Reagent.Reagent);
-            _solutionrRagents.SetReagent((uid,reagenComp), newSolution);
+            _popupSystem.PopupEntity(Loc.GetString("set-reagent", ("reagent", Loc.GetString(reagent.Name))),
+                uid, user.Value);
+        }
+
+        if (TryComp<SolutionRegenerationComponent>(uid, out var regenComp))
+        {
+            var newSolution = new Solution();
+            if (reagent.Reagent.Count > 0)
+            {
+                var firstReagent = reagent.Reagent[0];
+                newSolution.AddReagent(firstReagent.Reagent.Prototype, firstReagent.Quantity);
+            }
+
+            _solutionrRagents.SetReagent((uid, regenComp), newSolution);
         }
     }
 }
