@@ -5,9 +5,12 @@
   description: Go to the GhostBar!
   components:
   - type: Action
-    icon: _Wega/Interface/Actions/ghostbar.png
     checkCanInteract: false
     startDelay: true
     useDelay: 30
+  - type: Sprite
+    layers:
+    - texture: _Wega/Interface/Actions/ghostbar.png
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:ToggleGhostBarEvent

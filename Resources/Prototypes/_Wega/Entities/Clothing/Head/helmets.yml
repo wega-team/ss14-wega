@@ -1,5 +1,5 @@
 - type: entity
-  parent: ClothingHeadHelmetBase
+  parent: ClothingHeadHelmetArmoredBase
   id: ClothingHeadHelmetHostileEnv
   name: H.E.C.K. helmet
   description: "Experimental Kinetic Protective Sheathed Helmet: a helmet specifically designed to protect against a wide range of Lasis hazards. Apparently, its previous owner didn't have enough."
@@ -26,7 +26,7 @@
     - WhitelistChameleon
 
 - type: entity
-  parent: ClothingHeadHelmetBasic
+  parent: ClothingHeadHelmetArmoredBase
   id: ClothingHeadHelmetBlueShield
   name: blue shield's helmet
   description: default helmet
@@ -46,7 +46,7 @@
     damageCoefficient: 0.9
 
 - type: entity
-  parent: [ ClothingHeadHelmetBasic, BaseMajorContraband, AllowSuitStorageClothing ]
+  parent: [ ClothingHeadHelmetArmoredBase, BaseMajorContraband, AllowSuitStorageClothing ]
   id: ClothingHeadHelmetClockworkCuirass
   categories: [ HideSpawnMenu ]
   name: cuirass helmet
@@ -66,7 +66,7 @@
     damageCoefficient: 0.8
 
 - type: entity
-  parent: ClothingHeadHelmetBasic
+  parent: ClothingHeadHelmetArmoredBase
   id: ClothingHeadHelmetGodslayer
   name: godslayer helm
   description: The horns and skull of a wendigo, held together by the remaining icy energy of a demonic miner.

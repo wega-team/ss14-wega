@@ -150,3 +150,27 @@
     transferName: true
     revertOnDeath: true
     transferDamage: false
+
+- type: polymorph
+  id: PolymorphDiona
+  configuration:
+    entity: MobDionaReformed
+    forced: true
+    transferName: true
+    transferHumanoidAppearance: false
+    inventory: Transfer
+    revertOnDeath: true
+    revertOnCrit: false
+    cooldown: 160
+
+- type: polymorph
+  id: PolymorphGingerbread
+  configuration:
+    entity: MobGingerbreadReformed
+    forced: true
+    transferName: true
+    transferHumanoidAppearance: false
+    inventory: Transfer
+    revertOnDeath: true
+    revertOnCrit: true
+    cooldown: 160

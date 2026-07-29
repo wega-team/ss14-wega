@@ -179,6 +179,7 @@
   - MobAtmosStandard
   - MobFlammable
   - BaseSpeciesMob
+  - BaseMobDestructible
   id: BaseSpeciesMobOrganic
   save: false
   components:

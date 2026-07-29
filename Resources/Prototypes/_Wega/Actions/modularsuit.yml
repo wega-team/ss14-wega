@@ -7,9 +7,15 @@
   components:
   - type: Action
     useDelay: 1.5
-    icon: { sprite: _Wega/Interface/Actions/actions_modules.rsi, state: activate }
-    iconOn: { sprite: _Wega/Interface/Actions/actions_modules.rsi, state: activate-ready }
     itemIconStyle: BigAction
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_modules.rsi
+    layers:
+    - state: activate
+      map: ["enum.ActionVisuals.Icon"]
+    - state: activate-ready
+      map: ["enum.ActionVisuals.IconToggled"]
+      visible: false
   - type: InstantAction
     event: !type:ToggleDeploySuitActionEvent
 
@@ -21,7 +27,11 @@
   components:
   - type: Action
     useDelay: 2
-    icon: { sprite: _Wega/Interface/Actions/actions_modules.rsi, state: panel }
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_modules.rsi
+    layers:
+    - state: panel
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:ToggleSuitUiActionEvent
 
@@ -34,8 +44,14 @@
   components:
   - type: Action
     useDelay: 1
-    icon: { sprite: _Wega/Interface/Actions/actions_modules.rsi, state: light-off }
-    iconOn: { sprite: _Wega/Interface/Actions/actions_modules.rsi, state: light-on }
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_modules.rsi
+    layers:
+    - state: light-off
+      map: ["enum.ActionVisuals.Icon"]
+    - state: light-on
+      map: ["enum.ActionVisuals.IconToggled"]
+      visible: false
   - type: InstantAction
     event: !type:ToggleLightModuleEvent
 
@@ -49,7 +65,11 @@
   - type: Action
     startDelay: true
     useDelay: 20
-    icon: { sprite: _Wega/Interface/Actions/actions_modules.rsi, state: teleporter }
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_modules.rsi
+    layers:
+    - state: teleporter
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:ActivateTeleporterModuleEvent
 
@@ -63,8 +83,14 @@
   - type: Action
     startDelay: true
     useDelay: 10
-    icon: { sprite: _Wega/Interface/Actions/actions_modules.rsi, state: holster-in }
-    iconOn: { sprite: _Wega/Interface/Actions/actions_modules.rsi, state: holster-out }
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_modules.rsi
+    layers:
+    - state: holster-in
+      map: ["enum.ActionVisuals.Icon"]
+    - state: holster-out
+      map: ["enum.ActionVisuals.IconToggled"]
+      visible: false
   - type: InstantAction
     event: !type:ToggleHolsterModuleEvent
 
@@ -78,7 +104,11 @@
   - type: Action
     startDelay: true
     useDelay: 30
-    icon: { sprite: _Wega/Interface/Actions/actions_modules.rsi, state: paper }
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_modules.rsi
+    layers:
+    - state: paper
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:ActivateDispenserModuleEvent
       spawnedProto:
@@ -97,7 +127,11 @@
   - type: Action
     startDelay: true
     useDelay: 60
-    icon: { sprite: _Wega/Interface/Actions/actions_modules.rsi, state: energyshield }
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_modules.rsi
+    layers:
+    - state: energyshield
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:ActivateEnergyShieldModuleEvent
 
@@ -111,7 +145,11 @@
   - type: Action
     startDelay: true
     useDelay: 120
-    icon: { sprite: _Wega/Interface/Actions/actions_modules.rsi, state: dispenser }
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_modules.rsi
+    layers:
+    - state: dispenser
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:ActivateDispenserModuleEvent
       spawnedProto:
@@ -156,7 +194,11 @@
   - type: Action
     startDelay: true
     useDelay: 30
-    icon: { sprite: _Wega/Interface/Actions/actions_modules.rsi, state: tanning }
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_modules.rsi
+    layers:
+    - state: tanning
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:ActivateTanningModuleEvent
 
@@ -170,6 +212,10 @@
   - type: Action
     startDelay: true
     useDelay: 300
-    icon: { sprite: _Wega/Interface/Actions/actions_modules.rsi, state: atrocinator }
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_modules.rsi
+    layers:
+    - state: atrocinator
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:ActivateAtrocinatorModuleEvent

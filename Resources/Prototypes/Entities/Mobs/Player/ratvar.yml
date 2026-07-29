@@ -92,7 +92,7 @@
   # Corvax-Wega-Edit-End
   - type: WarpPoint
     follow: true
-    location: Ratvar
+    location: location-ratvar
   # Corvax-Wega-Veil-Cult-start
   - type: Godmode
   - type: Eye
