@@ -4,7 +4,6 @@ using Content.Shared.Blood.Cult;
 using Content.Shared.Blood.Cult.Components;
 using Content.Shared.StatusIcon.Components;
 using Robust.Client.GameObjects;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
 namespace Content.Client.Blood.Cult
@@ -12,7 +11,6 @@ namespace Content.Client.Blood.Cult
     public sealed partial class BloodCultSystem : SharedBloodCultSystem
     {
         [Dependency] private AppearanceSystem _appearance = default!;
-        [Dependency] private IPrototypeManager _prototype = default!;
         [Dependency] private IRobustRandom _random = default!;
         [Dependency] private SpriteSystem _sprite = default!;
 
@@ -45,7 +43,7 @@ namespace Content.Client.Blood.Cult
 
         private void GetCultistIcons(Entity<BloodCultistComponent> ent, ref GetStatusIconsEvent args)
         {
-            var iconPrototype = _prototype.Index(ent.Comp.StatusIcon);
+            var iconPrototype = ProtoMan.Index(ent.Comp.StatusIcon);
             args.StatusIcons.Add(iconPrototype);
         }
 

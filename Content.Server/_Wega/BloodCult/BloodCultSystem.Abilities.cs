@@ -746,7 +746,7 @@ public sealed partial class BloodCultSystem
 
     private void TransformMaterial(Entity<BloodSpellComponent> spell, EntityUid user, EntityUid material, StackComponent stack)
     {
-        if (!_prototypeManager.TryIndex(stack.StackTypeId, out var stackPrototype))
+        if (!ProtoMan.TryIndex(stack.StackTypeId, out var stackPrototype))
             return;
 
         if (stackPrototype.ID is not ("Steel" or "Plasteel"))

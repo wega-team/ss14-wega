@@ -152,7 +152,7 @@ public sealed partial class LavalandSystem
 
     private LavalandWeatherEntryPrototype? GetRandomWeatherEntry(LavalandComponent comp)
     {
-        if (!_proto.TryIndex(comp.PlanetPrototype, out LavalandPlanetPrototype? planetProto))
+        if (!ProtoMan.TryIndex(comp.PlanetPrototype, out LavalandPlanetPrototype? planetProto))
             return null;
 
         var availableWeather = planetProto.AvailableWeather;
@@ -164,7 +164,7 @@ public sealed partial class LavalandSystem
 
         foreach (var weatherId in availableWeather)
         {
-            if (!_proto.TryIndex(weatherId, out LavalandWeatherEntryPrototype? weatherEntry))
+            if (!ProtoMan.TryIndex(weatherId, out LavalandWeatherEntryPrototype? weatherEntry))
                 continue;
 
             weatherEntries.Add(weatherEntry);

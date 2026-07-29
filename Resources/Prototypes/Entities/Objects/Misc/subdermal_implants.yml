@@ -142,6 +142,8 @@
       whitelist:
         components:
         - Hands # no use giving a mouse a storage implant, but a monkey is another story...
+    - type: Item # Corvax-Wega-Syndi
+      size: Small # Corvax-Wega-Syndi
     - type: Storage
       maxItemSize: Small # Corvax-Wega-Syndi
       grid:
@@ -308,6 +310,11 @@
   description: This implant allows you to change your identity at will.
   categories: [ HideSpawnMenu ]
   components:
+  # Corvax-Wega-Surgery-start
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Medical/Surgery/implants.rsi
+    state: syndicate
+  # Corvax-Wega-Surgery-end
   - type: SubdermalImplant
     implantAction: ActionChangeVoiceMaskImplant
   - type: VoiceMask

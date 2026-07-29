@@ -12,7 +12,7 @@
     - neck
     sprite: _Wega/Objects/Misc/emenegrcy_id.rsi
   - type: Label
-    currentLabel: ancillary-access-group
+    localizedLabel: ancillary-access-group
   - type: Item
     size: Small
     heldPrefix:

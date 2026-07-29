@@ -8,7 +8,6 @@ using Content.Shared.Popups;
 using Content.Shared.Verbs;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
 namespace Content.Shared.Interaction;
@@ -17,7 +16,6 @@ public sealed partial class InteractionActionSystem : EntitySystem
 {
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private INetManager _net = default!;
-    [Dependency] private IPrototypeManager _prototype = default!;
     [Dependency] private SharedChatSystem _chat = default!;
     [Dependency] private SharedDoAfterSystem _doAfter = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
@@ -53,7 +51,7 @@ public sealed partial class InteractionActionSystem : EntitySystem
         if (args.Cancelled || args.Handled)
             return;
 
-        if (!_prototype.TryIndex(args.ActionId, out var actionProto))
+        if (!ProtoMan.TryIndex(args.ActionId, out var actionProto))
             return;
 
         args.Handled = true;
@@ -68,7 +66,7 @@ public sealed partial class InteractionActionSystem : EntitySystem
         var available = new List<InteractionActionPrototype>();
         var cooldowns = target.Comp.Cooldowns;
 
-        var actions = _prototype.EnumeratePrototypes<InteractionActionPrototype>().Where(a => !a.Abstract);
+        var actions = ProtoMan.EnumeratePrototypes<InteractionActionPrototype>().Where(a => !a.Abstract);
         foreach (var actionProto in actions)
         {
             if (actionProto.OnlyInteractSelf && user != target.Owner)

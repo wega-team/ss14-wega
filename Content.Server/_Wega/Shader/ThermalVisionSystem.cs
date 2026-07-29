@@ -1,4 +1,3 @@
-using Content.Shared.Shaders;
 using Content.Shared.Overlays;
 using Content.Shared.Overlay;
 

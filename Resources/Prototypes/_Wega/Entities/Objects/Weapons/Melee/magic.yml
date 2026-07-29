@@ -39,7 +39,7 @@
         Blunt: 15
 
 - type: entity
-  parent: BaseItem
+  parent: [ BaseItem, SolutionWelder ]
   id: WeaponHandOfGod
   name: hand of god
   description: "Your hand is now glowing amazingly!"
@@ -70,13 +70,12 @@
     animation: WeaponArcClaw
   - type: IgniteOnMeleeHit
     fireStacks: 1
-  - type: SolutionContainerManager
-    solutions:
-      Welder:
-        reagents:
-        - ReagentId: WeldingFuel
-          Quantity: 4
-        maxVol: 4
+  - type: Solution
+    solution:
+      maxVol: 4
+      reagents:
+      - ReagentId: WeldingFuel
+        Quantity: 4
   - type: SolutionRegeneration
     generated:
       reagents:
@@ -268,8 +267,8 @@
     storedRotation: -45
     size: Normal
     shape:
-    - 0,0,1,0
-    - 0,2,0,1
+    - 0,0,1,2
+    - 0,0,2,1
   - type: CultWeapon
     cult: Blood
   - type: MeleeWeapon
@@ -308,7 +307,7 @@
     size: Normal
     shape:
     - 0,0,2,1
-    - 1,2,1,1
+    - 1,0,2,1
   - type: CultWeapon
     cult: Blood
   - type: MeleeWeapon
@@ -574,6 +573,9 @@
       right:
       - state: inhand-right
         color: "#ff0000"
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container {}
   - type: Gun
     fireRate: 2
     soundGunshot:

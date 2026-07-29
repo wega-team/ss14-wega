@@ -45,6 +45,9 @@
   description: This implant grants access to the Centcomm channel without a headset. Only authorized for Centcomm employees.
   categories: [ HideSpawnMenu ]
   components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Medical/Surgery/implants.rsi
+    state: empty
   - type: MindControlImplant
 
 - type: entity
@@ -70,7 +73,7 @@
   components:
   - type: Implanter
     implant: ThermalVisionImplant
-  
+
 - type: entity
   parent: BaseSubdermalImplant
   id: SmokeImplant

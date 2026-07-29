@@ -39,7 +39,7 @@ public sealed partial class SurgerySystem
     private void InternalDamageInitialize()
     {
         SubscribeLocalEvent<OperatedComponent, OrganRemovedFromEvent>(OnOrganRemoved);
-        SubscribeLocalEvent<OperatedComponent, DamageChangedEvent>(OnDamage);
+        SubscribeLocalEvent<OperatedComponent, DamageDealtEvent>(OnDamage);
         SubscribeLocalEvent<OperatedComponent, ExaminedEvent>(OnOperatedExamined);
     }
 
@@ -47,7 +47,8 @@ public sealed partial class SurgerySystem
 
     private void OnOrganRemoved(Entity<OperatedComponent> ent, ref OrganRemovedFromEvent args)
     {
-        if (!TryComp<OrganComponent>(args.Organ, out var organComp))
+        if (TerminatingOrDeleted(ent.Owner) || !TryComp<OrganComponent>(args.Organ, out var organComp)
+            || !HasComp<BodyComponent>(ent))
             return;
 
         var categoryId = organComp.Category?.Id;
@@ -61,12 +62,6 @@ public sealed partial class SurgerySystem
             else if (categoryId.Contains("Leg"))
             {
                 RemoveDependentOrgan(ent, args.Organ, "Foot");
-            }
-
-            if (categoryId.Contains("Leg"))
-            {
-                if (!HasComp<BodyComponent>(ent))
-                    return;
                 _stun.TryKnockdown(ent.Owner, TimeSpan.FromSeconds(2f), true, false);
             }
         }
@@ -115,17 +110,16 @@ public sealed partial class SurgerySystem
         _physics.ApplyLinearImpulse(dependentOrgan.Value, _random.NextVector2() * 15f);
     }
 
-    private void OnDamage(Entity<OperatedComponent> ent, ref DamageChangedEvent args)
+    private void OnDamage(Entity<OperatedComponent> ent, ref DamageDealtEvent args)
     {
         if (HasComp<GodmodeComponent>(ent) || HasComp<ZombieComponent>(ent))
             return;
 
-        if (args.DamageDelta == null || args.DamageDelta.Empty || !args.DamageIncreased
-            || args.Origin == null)
+        if (args.Damage.GetTotal() <= 0 || args.Origin == null)
             return;
 
-        ProcessDamageTypes(ent, args.DamageDelta);
-        if (args.DamageDelta.DamageDict.TryGetValue(SlashDamage, out var slashDamage))
+        ProcessDamageTypes(ent, args.Damage);
+        if (args.Damage.DamageDict.TryGetValue(SlashDamage, out var slashDamage))
             TryLoseRandomOrgan(ent, args.Origin.Value, slashDamage.Float());
     }
 
@@ -199,7 +193,7 @@ public sealed partial class SurgerySystem
 
         _audio.PlayPvs(GibSound, patient);
         if (!_mobState.IsDead(patient) && !HasComp<PainNumbnessStatusEffectComponent>(patient) && !HasComp<SyntheticOperatedComponent>(patient))
-            _chat.TryEmoteWithoutChat(patient, _proto.Index(Scream), true);
+            _chat.TryEmoteWithoutChat(patient, ProtoMan.Index(Scream), true);
 
         _pain.AdjustPain(patient, "Physical", 250f);
         if (HasComp<BloodstreamComponent>(patient))
@@ -296,7 +290,7 @@ public sealed partial class SurgerySystem
 
             _audio.PlayPvs(GibSound, patient);
             if (!_mobState.IsDead(patient) && !HasComp<PainNumbnessStatusEffectComponent>(patient) && !HasComp<SyntheticOperatedComponent>(patient))
-                _chat.TryEmoteWithoutChat(patient, _proto.Index(Scream), true);
+                _chat.TryEmoteWithoutChat(patient, ProtoMan.Index(Scream), true);
 
             _transform.SetCoordinates(limbToRemove, Transform(patient).Coordinates);
             _physics.ApplyLinearImpulse(limbToRemove, _random.NextVector2() * (50f + (float)damage));
@@ -307,7 +301,7 @@ public sealed partial class SurgerySystem
 
     private List<InternalDamagePrototype> GetMatchingDamagePrototypes(string id)
     {
-        return _proto.EnumeratePrototypes<InternalDamagePrototype>()
+        return ProtoMan.EnumeratePrototypes<InternalDamagePrototype>()
             .Where(p => p.SupportedTypes.Contains(id)).ToList();
     }
 
@@ -370,7 +364,7 @@ public sealed partial class SurgerySystem
         if (!Resolve(target, ref component))
             return false;
 
-        if (!_proto.TryIndex<InternalDamagePrototype>(damageId, out var damageProto))
+        if (!ProtoMan.TryIndex<InternalDamagePrototype>(damageId, out var damageProto))
             return false;
 
         if (!TryComp<HumanoidProfileComponent>(target, out var humanoidAppearance) || damageProto.BlacklistSpecies != null
@@ -452,7 +446,7 @@ public sealed partial class SurgerySystem
             var message = new StringBuilder();
             foreach (var (damageProtoId, _) in entity.Comp.InternalDamages)
             {
-                if (!_proto.TryIndex(damageProtoId, out InternalDamagePrototype? damageProto))
+                if (!ProtoMan.TryIndex(damageProtoId, out InternalDamagePrototype? damageProto))
                     continue;
 
                 if (!string.IsNullOrEmpty(damageProto.BodyVisuals))
@@ -477,7 +471,7 @@ public sealed partial class SurgerySystem
         var damagesToRemove = new List<(ProtoId<InternalDamagePrototype> DamageId, string? BodyPart)>();
         foreach (var (damageId, bodyParts) in operated.InternalDamages)
         {
-            if (!_proto.TryIndex(damageId, out var damageProto))
+            if (!ProtoMan.TryIndex(damageId, out var damageProto))
                 continue;
 
             if (damageProto.Category is DamageCategory.PhysicalTrauma or DamageCategory.Burns)

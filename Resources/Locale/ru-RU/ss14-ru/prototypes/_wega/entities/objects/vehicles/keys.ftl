@@ -1,5 +1,3 @@
-ent-VehicleKeyJanicart = ключ от тележки уборщика
-    .desc = Интересный дизайн.
 ent-VehicleKeySecway = ключ от секвея
     .desc = Ключи к будущему.
 ent-VehicleKeyATV = ключи от квадроцикла

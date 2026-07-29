@@ -101,8 +101,7 @@
         - WrappedParcel
   - type: Polymorphable #Corvax-Wega-Edit
   - type: Vocal
-    sounds:
-      Unsexed: UnisexSilicon
+    emoteSounds: UnisexSilicon
   - type: Tag
     tags:
     - SiliconEmotes
@@ -147,8 +146,7 @@
   - type: StaticPrice
     price: 500
   - type: Vocal
-    sounds:
-      Unsexed: UnisexSiliconSyndicate
+    emoteSounds: UnisexSiliconSyndicate
     # Corvax-Wega-Edit-Start
   - type: StationAiVision
     range: -1 # don`t show nuke/traitor

@@ -14,9 +14,9 @@
     slots: [mask]
   - type: IngestionBlocker
   - type: Blindfold
-  - type: AddAccentClothing
-    accent: ReplacementAccent
-    replacement: mumble
+  - type: ReplacementAccent
+    relayAccent: true
+    accent: mumble
   - type: CanEscapeInventory
     baseResistTime: 4.5 # баланс, чтоб вечно не мог усыплять, если на нём будет игрок.
   - type: VentCrawler
@@ -53,8 +53,6 @@
   - type: NpcFactionMember
     factions:
     - Xeno
-  - type: Physics
-    bodyType: Dynamic
   - type: CollisionWake
     enabled: false
   - type: RequireProjectileTarget

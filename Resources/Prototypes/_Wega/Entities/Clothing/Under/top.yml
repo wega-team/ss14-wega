@@ -1,35 +1,4 @@
 - type: entity
-  parent: Clothing
-  id: ClothingUnderTopBase
-  abstract: true
-  components:
-  - type: Item
-    size: Small
-  - type: Clothing
-    equipSound: /Audio/Items/jumpsuit_equip.ogg
-    equipDelay: 2
-    unequipDelay: 2
-    quickEquip: false
-    slots:
-    - underweartop
-  - type: Sprite
-    state: icon
-  - type: ToolRefinable
-    qualityNeeded: Slicing
-    refineResult:
-    - id: MaterialCloth1
-      amount: 2
-  - type: Edible
-    requiresSpecialDigestion: true
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 10
-        reagents:
-        - ReagentId: Fiber
-          Quantity: 10
-
-- type: entity
   parent: ClothingUnderTopBase
   id: ClothingUnderTopBraGrey
   name: grey bra

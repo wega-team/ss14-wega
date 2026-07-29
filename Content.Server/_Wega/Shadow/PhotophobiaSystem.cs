@@ -44,7 +44,7 @@ public sealed partial class PhotophobiaSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<PhotophobiaComponent, EntityUnpausedEvent>(OnUnpaused);
-        SubscribeLocalEvent<PhotophobiaComponent, DamageChangedEvent>(OnDamageChanged);
+        SubscribeLocalEvent<PhotophobiaComponent, DamageDealtEvent>(OnDamageChanged);
         SubscribeLocalEvent<PhotophobiaComponent, RefreshMovementSpeedModifiersEvent>(OnRefreshMovementSpeedModifiers);
     }
 
@@ -257,22 +257,15 @@ public sealed partial class PhotophobiaSystem : EntitySystem
             args.ModifySpeed(ent.Comp.SpeedModifier, ent.Comp.SpeedModifier);
     }
 
-    private void OnDamageChanged(Entity<PhotophobiaComponent> ent, ref DamageChangedEvent args)
+    private void OnDamageChanged(Entity<PhotophobiaComponent> ent, ref DamageDealtEvent args)
     {
-        if (!ent.Comp.ShadowWeakness || args.DamageDelta is null || IsNegativeDamage(args.DamageDelta))
+        if (!ent.Comp.ShadowWeakness)
             return;
 
-        var bonusDamage = args.DamageDelta * ent.Comp.DamageModfier;
-        _damageable.TryChangeDamage(ent.Owner, bonusDamage, true);
-    }
+        if (args.Damage.GetTotal() <= 0)
+            return;
 
-    private bool IsNegativeDamage(DamageSpecifier damage)
-    {
-        foreach (var type in damage.DamageDict)
-        {
-            if (type.Value > 0)
-                return false;
-        }
-        return true;
+        var bonusDamage = args.Damage * ent.Comp.DamageModfier;
+        _damageable.TryChangeDamage(ent.Owner, bonusDamage, true);
     }
 }

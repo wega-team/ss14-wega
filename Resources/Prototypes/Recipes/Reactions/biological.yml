@@ -13,20 +13,20 @@
     CarbonDioxide: 3
     Protein: 4
 
-- type: reaction
-  id: InsectBloodBreakdown
-  source: true
-  requiredMixerCategories:
-  - Centrifuge
-  reactants:
-    InsectBlood:
-      amount: 30
-  products:
-    Water: 14
-    Sodium: 3
-    Chlorine: 1.5
-    CarbonDioxide: 5.5
-    Protein: 6
+# - type: reaction
+#   id: InsectBloodBreakdown
+#   source: true
+#   requiredMixerCategories:
+#   - Centrifuge
+#   reactants:
+#     InsectBlood:
+#       amount: 30
+#   products:
+#     Water: 14
+#     Sodium: 3
+#     Chlorine: 1.5
+#     CarbonDioxide: 5.5
+#     Protein: 6
 
 - type: reaction
   id: SlimeBloodBreakdown
@@ -108,3 +108,27 @@
     Mold: 2
     Protein: 1
     Toxin: 1
+
+- type: reaction
+  id: CognizineCreateSlime
+  quantized: true
+  reactants:
+    Cognizine:
+      amount: 5
+    Slime:
+      amount: 15
+  effects:
+  - !type:SpawnEntity
+    entity: MobAdultSlimesGreen
+
+- type: reaction
+  id: VestineCreateSlime
+  quantized: true
+  reactants:
+    Vestine:
+      amount: 5
+    Slime:
+      amount: 15
+  effects:
+  - !type:SpawnEntity
+    entity: MobAdultSlimesGreenAngry

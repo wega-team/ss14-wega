@@ -16,7 +16,6 @@
 
 - type: entity
   id: ArmSyntheticImplant
-  parent: [ OrganAndroidArmLeft ]
   abstract: true
   components:
   - type: BodyPartImplant
@@ -37,7 +36,7 @@
         tags:
         - BaseBodyPart
         - LeftArmSynthetic
-      arm-right: 
+      arm-right:
       - type: Organ
         category: ArmRight
       - type: VisualOrgan
@@ -56,8 +55,7 @@
 
 - type: entity
   id: LegSyntheticImplant
-  parent: [ OrganAndroidLegLeft ]
-  abstract: true  
+  abstract: true
   components:
   - type: BodyPartImplant
     configurations:
@@ -77,7 +75,7 @@
         tags:
         - BaseBodyPart
         - LeftLegSynthetic
-      leg-right: 
+      leg-right:
       - type: Organ
         category: LegRight
       - type: VisualOrgan
@@ -98,7 +96,7 @@
 
 - type: entity
   id: ArmSyntheticPry
-  parent: [ ArmSyntheticImplant ]
+  parent: ArmSyntheticImplant
   name: "hydraulic arm"
   description: "A powerful hydraulic arm for opening powered airlocks. Use a screwdriver to change it symmetry."
   components:
@@ -124,7 +122,7 @@
 
 - type: entity
   id: ArmSyntheticDefib
-  parent: [ ArmSyntheticImplant ]
+  parent: ArmSyntheticImplant
   name: "defibrillator arm"
   description: "An arm with a built-in defibrillator! Use a screwdriver to change it symmetry."
   components:
@@ -134,10 +132,10 @@
   - type: BodyPartImplant
     key: defib
     implantComponents:
-      - type: ExtendHandItemImplant
-        items:
-          - prototype: DefibrillatorArmImplant
-            toggleAction: ActionToggleBodyPartImplantDefib
+    - type: ExtendHandItemImplant
+      items:
+      - itemPrototype: DefibrillatorArmImplant
+        toggleActionPrototype: ActionToggleBodyPartImplantDefib
 
 - type: entity
   id: DefibrillatorArmImplant
@@ -149,7 +147,7 @@
 
 - type: entity
   id: ArmSyntheticProtoKinetic
-  parent: [ ArmSyntheticImplant ]
+  parent: ArmSyntheticImplant
   name: "proto-kinetic arm"
   description: "Turn your hand into Proto-kinetic accelerator. Now it is left, use a screwdriver to change it."
   components:
@@ -159,10 +157,10 @@
   - type: BodyPartImplant
     key: protokinetic
     implantComponents:
-      - type: ExtendHandItemImplant
-        items:
-          - prototype: WeaponArmProtoKinetic
-            toggleAction: ActionToggleBodyPartImplantKinetic
+    - type: ExtendHandItemImplant
+      items:
+      - itemPrototype: WeaponArmProtoKinetic
+        toggleActionPrototype: ActionToggleBodyPartImplantKinetic
 
 - type: entity
   id: WeaponArmProtoKinetic
@@ -212,7 +210,7 @@
 
 - type: entity
   id: ArmSyntheticCharger
-  parent: [ ArmSyntheticImplant ]
+  parent: ArmSyntheticImplant
   name: "charger arm"
   components:
   - type: Sprite
@@ -227,7 +225,7 @@
 
 - type: entity
   id: LegSyntheticMagboots
-  parent: [ LegSyntheticImplant ]
+  parent: LegSyntheticImplant
   name: "magnet leg"
   components:
   - type: Sprite
@@ -242,7 +240,7 @@
 
 - type: entity
   id: LegSyntheticJump
-  parent: [ LegSyntheticImplant ]
+  parent: LegSyntheticImplant
   name: "jump leg"
   components:
   - type: Sprite

@@ -44,7 +44,6 @@ public sealed partial class VeilCultSystem : SharedVeilCultSystem
 {
     [Dependency] private AudioSystem _audio = default!;
     [Dependency] private VeilCultRuleSystem _veilCult = default!;
-    [Dependency] private IPrototypeManager _prototypeManager = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private MobStateSystem _mobState = default!;
     [Dependency] private ServerGlobalSoundSystem _sound = default!;
@@ -66,7 +65,7 @@ public sealed partial class VeilCultSystem : SharedVeilCultSystem
 
         SubscribeLocalEvent<VeilCultistComponent, ShotAttemptedEvent>(OnShotAttempted);
         SubscribeLocalEvent<VeilCultistHandsComponent, ExaminedEvent>(OnCultistHandsExamined);
-        SubscribeLocalEvent<VeilCultBeaconComponent, ComponentInit>(OnInit);
+        SubscribeLocalEvent<VeilCultBeaconComponent, MapInitEvent>(OnInit);
 
         SubscribeLocalEvent<VeilCultAltarComponent, VeilAltarSelectEnergyMessage>(OnSelectEnergy);
         SubscribeLocalEvent<VeilCultAltarComponent, VeilAltarSelectOfferMessage>(OnSelectOffer);
@@ -203,7 +202,7 @@ public sealed partial class VeilCultSystem : SharedVeilCultSystem
         }
     }
 
-    private void OnInit(EntityUid uid, VeilCultBeaconComponent component, ComponentInit args)
+    private void OnInit(EntityUid uid, VeilCultBeaconComponent component, MapInitEvent args)
     {
         var beacons = _entityLookup.GetEntitiesInRange<VeilCultBeaconComponent>(
             Transform(uid).Coordinates, 10f);

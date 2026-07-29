@@ -24,6 +24,9 @@
   components:
   - type: Sprite
     sprite: _Wega/Clothing/Neck/Cloaks/voidcap.rsi
+  - type: ContainerContainer
+    containers:
+      toggleable-clothing: !type:ContainerSlot {}
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodVoidCap
     requiredSlot:
@@ -125,6 +128,10 @@
   - type: TemperatureProtection
     heatingCoefficient: 1.1
     coolingCoefficient: 0.1
+  - type: ContainerContainer
+    containers:
+      toggleable-clothing: !type:ContainerSlot {}
+      actions: !type:Container {}
   - type: ClothingAction
     action: ActionPolymorphWhiteWolf
     slot: neck

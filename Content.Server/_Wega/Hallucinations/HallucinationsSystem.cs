@@ -3,7 +3,6 @@ using Content.Shared.Database;
 using Content.Shared.Hallucinations;
 using Content.Shared.StatusEffect;
 using Robust.Server.GameObjects;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
@@ -14,7 +13,6 @@ public sealed partial class HallucinationsSystem : EntitySystem
 {
     [Dependency] private IEntityManager _entityManager = default!;
     [Dependency] private IGameTiming _timing = default!;
-    [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private ISharedAdminLogManager _adminLogger = default!;
     [Dependency] private SharedEyeSystem _eye = default!;
@@ -80,8 +78,10 @@ public sealed partial class HallucinationsSystem : EntitySystem
     {
         if (proto == null)
             return false;
-        if (!_proto.TryIndex<HallucinationsPrototype>(proto, out var prototype))
+
+        if (!ProtoMan.TryIndex<HallucinationsPrototype>(proto, out var prototype))
             return false;
+
         if (!_status.TryAddStatusEffect<HallucinationsComponent>(target, key, time, refresh))
             return false;
 

@@ -4,6 +4,12 @@
   name: loadout-group-top
   minLimit: 0
   loadouts:
+  - ClothingUnderTopCuteMooo
+  - ClothingUnderTopGold
+  - ClothingUnderTopCuteBlue
+  - ClothingUnderTopCuteRed
+  - ClothingUnderTopCuteGreen
+  - ClothingUnderTopCutePink
   - ClothingUnderTopBraGrey # default
   - ClothingUnderTopBraAssblastusa
   - ClothingUnderTopBikini
@@ -27,6 +33,19 @@
   id: Bottom
   name: loadout-group-bottom
   loadouts:
+  - ClothingUnderBottomEroWhith
+  - ClothingUnderBottomEroPink
+  - ClothingUnderBottomEroBlack
+  - ClothingUnderBottomEroOrange
+  - ClothingUnderBottomEroRed
+  - ClothingUnderBottomEroYellow
+  - ClothingUnderBottomEroGreen
+  - ClothingUnderBottomCuteMooo
+  - ClothingUnderBottomGold
+  - ClothingUnderBottomCuteBlue
+  - ClothingUnderBottomCuteRed
+  - ClothingUnderBottomCuteGreen
+  - ClothingUnderBottomCutePink
   - ClothingUnderBottomGrey # default
   - ClothingUnderBottomBabydoll
   - ClothingUnderBottomBoxers
@@ -68,6 +87,8 @@
   name: loadout-group-socks
   minLimit: 0
   loadouts:
+  - ClothingUnderSocksHighMoo
+  - ClothingUnderSocksMoo
   - ClothingUnderSocksBeeKnee
   - ClothingUnderSocksBee
   - ClothingUnderSocksBlackKnee
@@ -128,6 +149,7 @@
   - ClothingShoesWizard
   - ClothingShoesTourist
   - ClothingShoesLeather
+  - ClothingShoesStylishWhite
 # Heads
 
 #Captain
@@ -135,6 +157,12 @@
   id: CaptainTop
   name: loadout-group-captain-top
   loadouts:
+  - ClothingUnderTopCuteMooo
+  - ClothingUnderTopGold
+  - ClothingUnderTopCuteBlue
+  - ClothingUnderTopCuteRed
+  - ClothingUnderTopCuteGreen
+  - ClothingUnderTopCutePink
   - ClothingUnderTopBraCap # default
   - ClothingUnderTopBraCapW
   - ClothingUnderTopBraCapS
@@ -161,6 +189,19 @@
   id: CaptainBottom
   name: loadout-group-captain-bottom
   loadouts:
+  - ClothingUnderBottomEroWhith
+  - ClothingUnderBottomEroPink
+  - ClothingUnderBottomEroBlack
+  - ClothingUnderBottomEroOrange
+  - ClothingUnderBottomEroRed
+  - ClothingUnderBottomEroYellow
+  - ClothingUnderBottomEroGreen
+  - ClothingUnderBottomCuteMooo
+  - ClothingUnderBottomGold
+  - ClothingUnderBottomCuteBlue
+  - ClothingUnderBottomCuteRed
+  - ClothingUnderBottomCuteGreen
+  - ClothingUnderBottomCutePink
   - ClothingUnderBottomMCaptain # default
   - ClothingUnderBottomFCaptain
   - ClothingUnderBottomMCaptainS
@@ -208,6 +249,8 @@
   name: loadout-group-captain-socks
   minLimit: 0
   loadouts:
+  - ClothingUnderSocksHighMoo
+  - ClothingUnderSocksMoo
   - ClothingUnderSocksCapKnee
   - ClothingUnderSocksCapNorm
   - ClothingUnderSocksCapShort
@@ -285,6 +328,12 @@
   id: BlueShieldTop
   name: loadout-group-blue-shield-top
   loadouts:
+  - ClothingUnderTopCuteMooo
+  - ClothingUnderTopGold
+  - ClothingUnderTopCuteBlue
+  - ClothingUnderTopCuteRed
+  - ClothingUnderTopCuteGreen
+  - ClothingUnderTopCutePink
   - ClothingUnderTopBraBso # default
   - ClothingUnderTopBraGrey
   - ClothingUnderTopBraAssblastusa
@@ -309,6 +358,19 @@
   id: BlueShieldBottom
   name: loadout-group-blue-shield-bottom
   loadouts:
+  - ClothingUnderBottomEroWhith
+  - ClothingUnderBottomEroPink
+  - ClothingUnderBottomEroBlack
+  - ClothingUnderBottomEroOrange
+  - ClothingUnderBottomEroRed
+  - ClothingUnderBottomEroYellow
+  - ClothingUnderBottomEroGreen
+  - ClothingUnderBottomCuteMooo
+  - ClothingUnderBottomGold
+  - ClothingUnderBottomCuteBlue
+  - ClothingUnderBottomCuteRed
+  - ClothingUnderBottomCuteGreen
+  - ClothingUnderBottomCutePink
   - ClothingUnderBottomMBso # default
   - ClothingUnderBottomFBso
   - ClothingUnderBottomGrey
@@ -352,6 +414,8 @@
   name: loadout-group-blue-shield-socks
   minLimit: 0
   loadouts:
+  - ClothingUnderSocksHighMoo
+  - ClothingUnderSocksMoo
   - ClothingUnderSocksBeeKnee
   - ClothingUnderSocksBee
   - ClothingUnderSocksBlackKnee
@@ -401,6 +465,12 @@
   id: HoPTop
   name: loadout-group-hop-top
   loadouts:
+  - ClothingUnderTopCuteMooo
+  - ClothingUnderTopGold
+  - ClothingUnderTopCuteBlue
+  - ClothingUnderTopCuteRed
+  - ClothingUnderTopCuteGreen
+  - ClothingUnderTopCutePink
   - ClothingUnderTopBraHop # default
   - ClothingUnderTopBraGrey
   - ClothingUnderTopBraAssblastusa
@@ -425,6 +495,19 @@
   id: HoPBottom
   name: loadout-group-hop-bottom
   loadouts:
+  - ClothingUnderBottomEroWhith
+  - ClothingUnderBottomEroPink
+  - ClothingUnderBottomEroBlack
+  - ClothingUnderBottomEroOrange
+  - ClothingUnderBottomEroRed
+  - ClothingUnderBottomEroYellow
+  - ClothingUnderBottomEroGreen
+  - ClothingUnderBottomCuteMooo
+  - ClothingUnderBottomGold
+  - ClothingUnderBottomCuteBlue
+  - ClothingUnderBottomCuteRed
+  - ClothingUnderBottomCuteGreen
+  - ClothingUnderBottomCutePink
   - ClothingUnderBottomMHop # default
   - ClothingUnderBottomFHop
   - ClothingUnderBottomGrey
@@ -468,6 +551,8 @@
   name: loadout-group-hop-socks
   minLimit: 0
   loadouts:
+  - ClothingUnderSocksHighMoo
+  - ClothingUnderSocksMoo
   - ClothingUnderSocksHopKnee
   - ClothingUnderSocksHopNorm
   - ClothingUnderSocksHopShort
@@ -510,6 +595,12 @@
   id: QuartermasterTop
   name: loadout-group-quartermaster-top
   loadouts:
+  - ClothingUnderTopCuteMooo
+  - ClothingUnderTopGold
+  - ClothingUnderTopCuteBlue
+  - ClothingUnderTopCuteRed
+  - ClothingUnderTopCuteGreen
+  - ClothingUnderTopCutePink
   - ClothingUnderTopBraQm # default
   - ClothingUnderTopBraGrey
   - ClothingUnderTopBraAssblastusa
@@ -534,6 +625,19 @@
   id: QuartermasterBottom
   name: loadout-group-quartermaster-bottom
   loadouts:
+  - ClothingUnderBottomEroWhith
+  - ClothingUnderBottomEroPink
+  - ClothingUnderBottomEroBlack
+  - ClothingUnderBottomEroOrange
+  - ClothingUnderBottomEroRed
+  - ClothingUnderBottomEroYellow
+  - ClothingUnderBottomEroGreen
+  - ClothingUnderBottomCuteMooo
+  - ClothingUnderBottomGold
+  - ClothingUnderBottomCuteBlue
+  - ClothingUnderBottomCuteRed
+  - ClothingUnderBottomCuteGreen
+  - ClothingUnderBottomCutePink
   - ClothingUnderBottomMQm # default
   - ClothingUnderBottomFQm
   - ClothingUnderBottomGrey
@@ -577,6 +681,8 @@
   name: loadout-group-quartermaster-socks
   minLimit: 0
   loadouts:
+  - ClothingUnderSocksHighMoo
+  - ClothingUnderSocksMoo
   - ClothingUnderSocksQmKnee
   - ClothingUnderSocksQmNorm
   - ClothingUnderSocksQmShort
@@ -619,6 +725,12 @@
   id: ChiefEngineerTop
   name: loadout-group-chief-engineer-top
   loadouts:
+  - ClothingUnderTopCuteMooo
+  - ClothingUnderTopGold
+  - ClothingUnderTopCuteBlue
+  - ClothingUnderTopCuteRed
+  - ClothingUnderTopCuteGreen
+  - ClothingUnderTopCutePink
   - ClothingUnderTopBraCe # default
   - ClothingUnderTopBraGrey
   - ClothingUnderTopBraAssblastusa
@@ -643,6 +755,19 @@
   id: ChiefEngineerBottom
   name: loadout-group-chief-engineer-bottom
   loadouts:
+  - ClothingUnderBottomEroWhith
+  - ClothingUnderBottomEroPink
+  - ClothingUnderBottomEroBlack
+  - ClothingUnderBottomEroOrange
+  - ClothingUnderBottomEroRed
+  - ClothingUnderBottomEroYellow
+  - ClothingUnderBottomEroGreen
+  - ClothingUnderBottomCuteMooo
+  - ClothingUnderBottomGold
+  - ClothingUnderBottomCuteBlue
+  - ClothingUnderBottomCuteRed
+  - ClothingUnderBottomCuteGreen
+  - ClothingUnderBottomCutePink
   - ClothingUnderBottomMCe # default
   - ClothingUnderBottomFCe
   - ClothingUnderBottomGrey
@@ -686,6 +811,8 @@
   name: loadout-group-chief-engineer-socks
   minLimit: 0
   loadouts:
+  - ClothingUnderSocksHighMoo
+  - ClothingUnderSocksMoo
   - ClothingUnderSocksCeKnee
   - ClothingUnderSocksCeNorm
   - ClothingUnderSocksCeShort
@@ -728,6 +855,12 @@
   id: ResearchDirectorTop
   name: loadout-group-research-director-top
   loadouts:
+  - ClothingUnderTopCuteMooo
+  - ClothingUnderTopGold
+  - ClothingUnderTopCuteBlue
+  - ClothingUnderTopCuteRed
+  - ClothingUnderTopCuteGreen
+  - ClothingUnderTopCutePink
   - ClothingUnderTopBraRd # default
   - ClothingUnderTopBraGrey
   - ClothingUnderTopBraAssblastusa
@@ -752,6 +885,19 @@
   id: ResearchDirectorBottom
   name: loadout-group-research-director-bottom
   loadouts:
+  - ClothingUnderBottomEroWhith
+  - ClothingUnderBottomEroPink
+  - ClothingUnderBottomEroBlack
+  - ClothingUnderBottomEroOrange
+  - ClothingUnderBottomEroRed
+  - ClothingUnderBottomEroYellow
+  - ClothingUnderBottomEroGreen
+  - ClothingUnderBottomCuteMooo
+  - ClothingUnderBottomGold
+  - ClothingUnderBottomCuteBlue
+  - ClothingUnderBottomCuteRed
+  - ClothingUnderBottomCuteGreen
+  - ClothingUnderBottomCutePink
   - ClothingUnderBottomMRd # default
   - ClothingUnderBottomFRd
   - ClothingUnderBottomGrey
@@ -795,6 +941,8 @@
   name: loadout-group-research-director-socks
   minLimit: 0
   loadouts:
+  - ClothingUnderSocksHighMoo
+  - ClothingUnderSocksMoo
   - ClothingUnderSocksRdKnee
   - ClothingUnderSocksRdNorm
   - ClothingUnderSocksRdShort
@@ -837,6 +985,12 @@
   id: HeadofSecurityTop
   name: loadout-group-head-of-security-top
   loadouts:
+  - ClothingUnderTopCuteMooo
+  - ClothingUnderTopGold
+  - ClothingUnderTopCuteBlue
+  - ClothingUnderTopCuteRed
+  - ClothingUnderTopCuteGreen
+  - ClothingUnderTopCutePink
   - ClothingUnderTopBraHos # default
   - ClothingUnderTopBraGrey
   - ClothingUnderTopBraAssblastusa
@@ -861,6 +1015,19 @@
   id: HeadofSecurityBottom
   name: loadout-group-head-of-security-bottom
   loadouts:
+  - ClothingUnderBottomEroWhith
+  - ClothingUnderBottomEroPink
+  - ClothingUnderBottomEroBlack
+  - ClothingUnderBottomEroOrange
+  - ClothingUnderBottomEroRed
+  - ClothingUnderBottomEroYellow
+  - ClothingUnderBottomEroGreen
+  - ClothingUnderBottomCuteMooo
+  - ClothingUnderBottomGold
+  - ClothingUnderBottomCuteBlue
+  - ClothingUnderBottomCuteRed
+  - ClothingUnderBottomCuteGreen
+  - ClothingUnderBottomCutePink
   - ClothingUnderBottomMHos # default
   - ClothingUnderBottomFHos
   - ClothingUnderBottomGrey
@@ -904,6 +1071,8 @@
   name: loadout-group-head-of-security-socks
   minLimit: 0
   loadouts:
+  - ClothingUnderSocksHighMoo
+  - ClothingUnderSocksMoo
   - ClothingUnderSocksHosKnee
   - ClothingUnderSocksHosNorm
   - ClothingUnderSocksHosShort
@@ -946,6 +1115,12 @@
   id: ChiefMedicalOfficerTop
   name: loadout-group-chief-medical-officer-top
   loadouts:
+  - ClothingUnderTopCuteMooo
+  - ClothingUnderTopGold
+  - ClothingUnderTopCuteBlue
+  - ClothingUnderTopCuteRed
+  - ClothingUnderTopCuteGreen
+  - ClothingUnderTopCutePink
   - ClothingUnderTopBraCmo # default
   - ClothingUnderTopBraGrey
   - ClothingUnderTopBraAssblastusa
@@ -970,6 +1145,19 @@
   id: ChiefMedicalOfficerBottom
   name: loadout-group-chief-medical-officer-bottom
   loadouts:
+  - ClothingUnderBottomEroWhith
+  - ClothingUnderBottomEroPink
+  - ClothingUnderBottomEroBlack
+  - ClothingUnderBottomEroOrange
+  - ClothingUnderBottomEroRed
+  - ClothingUnderBottomEroYellow
+  - ClothingUnderBottomEroGreen
+  - ClothingUnderBottomCuteMooo
+  - ClothingUnderBottomGold
+  - ClothingUnderBottomCuteBlue
+  - ClothingUnderBottomCuteRed
+  - ClothingUnderBottomCuteGreen
+  - ClothingUnderBottomCutePink
   - ClothingUnderBottomMCmo # default
   - ClothingUnderBottomFCmo
   - ClothingUnderBottomGrey
@@ -1013,6 +1201,8 @@
   name: loadout-group-chief-medical-officer-socks
   minLimit: 0
   loadouts:
+  - ClothingUnderSocksHighMoo
+  - ClothingUnderSocksMoo
   - ClothingUnderSocksCmoKnee
   - ClothingUnderSocksCmoNorm
   - ClothingUnderSocksCmoShort
@@ -1493,6 +1683,12 @@
   id: TopSecurity
   name: loadout-group-top
   loadouts:
+  - ClothingUnderTopCuteMooo
+  - ClothingUnderTopGold
+  - ClothingUnderTopCuteBlue
+  - ClothingUnderTopCuteRed
+  - ClothingUnderTopCuteGreen
+  - ClothingUnderTopCutePink
   - ClothingUnderTopBraSecurity # default
   - ClothingUnderTopBraGrey
   - ClothingUnderTopBraAssblastusa
@@ -1517,6 +1713,19 @@
   id: BottomSecurity
   name: loadout-group-bottom
   loadouts:
+  - ClothingUnderBottomEroWhith
+  - ClothingUnderBottomEroPink
+  - ClothingUnderBottomEroBlack
+  - ClothingUnderBottomEroOrange
+  - ClothingUnderBottomEroRed
+  - ClothingUnderBottomEroYellow
+  - ClothingUnderBottomEroGreen
+  - ClothingUnderBottomCuteMooo
+  - ClothingUnderBottomGold
+  - ClothingUnderBottomCuteBlue
+  - ClothingUnderBottomCuteRed
+  - ClothingUnderBottomCuteGreen
+  - ClothingUnderBottomCutePink
   - ClothingUnderBottomSecurity # default
   - ClothingUnderBottomGrey
   - ClothingUnderBottomBabydoll

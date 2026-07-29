@@ -68,29 +68,52 @@
     size: Small
     sprite: _Wega/Sponsors/Objects/Fun/big_red_rubber_hammer_inhand.rsi
 
+- type: entity
+  parent: [FoodProduceBase, ClothingMaskBase]
+  id: FoodInfiniteCub
+  name: cub
+  description: It seems like you can chew it forever.
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Objects/Fun/cud.rsi
+    state: icon
+  - type: Item
+    size: Small
+  - type: FlavorProfile
+    flavors:
+      - sweet
+  - type: Edible
+    requiresSpecialDigestion: true
+    transferAmount: 0.05
+    delay: 1
+    destroyOnEmpty: false
+  - type: Solution
+    solution:
+      maxVol: 5
+      reagents:
+      - ReagentId: Sugar
+        Quantity: 5
+  - type: Clothing
+    sprite: _Wega/Sponsors/Objects/Fun/cud.rsi
+
 ## SPONSOR LOADOUT WEGA
 
 # Eyes
 
-#- type: entity
-#  parent: ClothingEyesBase
-#  id: ClothingEyesGlassesGarGigaSponsor
-#  name: true giga gar glasses
-#  description: We evolve past the person we were a minute before. Little by little we advance with each turn. That's how a drill works!
-#  suffix: Sponsor
-#  components:
-#  - type: Sprite
-#    sprite: _Wega/Sponsors/Clothing/Eyes/Glasses/true_manly_glasses.rsi
-#    state: icon
-#  - type: Clothing
-#    sprite: _Wega/Sponsors/Clothing/Eyes/Glasses/true_manly_glasses.rsi
-#    clothingVisuals:
-#      eyes:
-#      - state: equipped-EYES
-#      - state: glitter
-#        shader: unshaded
-#  - type: Tag
-#    tags: []
+- type: entity
+  parent: ClothingEyesBase
+  id: ClothingEyesGlassesHeroX
+  name: stylish glasses
+  description: Stylish glasses.
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Eyes/Glasses/herox.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Eyes/Glasses/herox.rsi
+  - type: Tag
+    tags: []
 
 # Head
 
@@ -203,7 +226,33 @@
   - type: Tag
     tags: []
 
+# Shoes
+
+- type: entity
+  parent: ClothingShoesBase
+  id: ClothingShoesStylishWhite
+  name: stylish white shoes
+  description: They may have lost some of their lustre over the years, but these green lizardskin shoes fit you perfectly.
+  suffix: Sponsor
+  components:
+    - type: Sprite
+      sprite: _Wega/Sponsors/Clothing/Shoes/herox.rsi
+    - type: Clothing
+      sprite: _Wega/Sponsors/Clothing/Shoes/herox.rsi
+
 # neck
+
+- type: entity
+  parent: ClothingNeckChokerBase
+  id: ClothingNeckChocerMoo
+  name: choker with a bell
+  description: Suitable for you if you want to look like a cow.
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Neck/Misc/moocokers.rsi
+  - type: Tag
+    tags: []
 
 - type: entity
   parent: ClothingNeckBase
@@ -226,6 +275,150 @@
   components:
   - type: Sprite
     sprite: _Wega/Sponsors/Clothing/Neck/Cloak/manly_cloak.rsi
+  - type: Tag
+    tags: []
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckCloakSponsorRed
+  name: shoulder cloak
+  description: Comfortable stylish cloak
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Neck/Cloak/misk.rsi
+    layers:
+    - state: icon-base
+      color: "#ff3333"
+    - state: icon-cloac_2
+      color: "#fdf4e3"
+    - state: icon-cloac_3
+      color: "#b9bfcf"
+    - state: icon-plaque
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Neck/Cloak/misk.rsi
+    clothingVisuals:
+      neck:
+      - state: equipped-NECK_cloak_base
+        color: "#ff3333"
+      - state: equipped-NECK_cloak_2
+        color: "#fdf4e3"
+      - state: equipped-NECK_cloak_3
+        color: "#b9bfcf"
+      - state: equipped-NECK_plaque
+  - type: Tag
+    tags: []
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckCloakSponsorBlac
+  name: shoulder cloak blac
+  description: Comfortable stylish cloak
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Neck/Cloak/misk.rsi
+    layers:
+    - state: icon-base
+      color: "#3c3c58"
+    - state: icon-cloac_2
+      color: "#3c3c58"
+    - state: icon-cloac_3
+      color: "#e42134"
+    - state: icon-plaque
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Neck/Cloak/misk.rsi
+    clothingVisuals:
+      neck:
+      - state: equipped-NECK_cloak_base
+        color: "#3c3c58"
+      - state: equipped-NECK_cloak_2
+        color: "#3c3c58"
+      - state: equipped-NECK_cloak_3
+        color: "#e42134"
+      - state: equipped-NECK_plaque
+  - type: Tag
+    tags: []
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckCloakSponsorWithe
+  name: shoulder cloak withe
+  description: Comfortable stylish cloak
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Neck/Cloak/misk.rsi
+    layers:
+    - state: icon-base
+      color: "#ffede0"
+    - state: icon-cloac_2
+      color: "#ffede0"
+    - state: icon-cloac_3
+      color: "#6a6c8a"
+    - state: icon-plaque
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Neck/Cloak/misk.rsi
+    clothingVisuals:
+      neck:
+      - state: equipped-NECK_cloak_base
+        color: "#ffede0"
+      - state: equipped-NECK_cloak_2
+        color: "#ffede0"
+      - state: equipped-NECK_cloak_3
+        color: "#6a6c8a"
+      - state: equipped-NECK_plaque
+  - type: Tag
+    tags: []
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckCloakSponsorBlue
+  name: shoulder cloak Blue
+  description: Comfortable stylish cloak
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Neck/Cloak/misk.rsi
+    layers:
+    - state: icon-base
+      color: "#6a68ca"
+    - state: icon-cloac_2
+      color: "#f2a92c"
+    - state: icon-cloac_3
+      color: "#c21440"
+    - state: icon-plaque
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Neck/Cloak/misk.rsi
+    clothingVisuals:
+      neck:
+      - state: equipped-NECK_cloak_base
+        color: "#6a68ca"
+      - state: equipped-NECK_cloak_2
+        color: "#f2a92c"
+      - state: equipped-NECK_cloak_3
+        color: "#c21440"
+      - state: equipped-NECK_plaque
+  - type: Tag
+    tags: []
+
+# OuterClothing
+
+- type: entity
+  parent: ClothingOuterBase
+  id: ClothingOuterCyberJacket
+  name: cyber jacket
+  description: "I Really Want to Stay at Your House."
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/OuterClothing/devid.rsi
+  - type: Clothing
+    clothingVisuals:
+      outerClothing:
+      - state: equipped-OUTERCLOTHING
+      - state: unshaded-0
+        shader: unshaded
   - type: Tag
     tags: []
 
@@ -499,6 +692,205 @@
   - type: Tag
     tags: []
 
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtElegantShortRed
+  name: elegant dress red
+  description: High-quality dress produced by the syndicate.
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/helltaker.rsi
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/helltaker.rsi
+  - type: Tag
+    tags: []
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtElegantColorRed
+  name: short sikrt red
+  description: Comfortable stylish skirt.
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/colors.rsi
+    layers:
+    - state: icon-bottom
+      color: "#72727e"
+    - state: icon-top
+      color: "#ff3333"
+    - state: icon-belt
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/colors.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-bottom
+        color: "#72727e"
+      - state: equipped-INNERCLOTHING-top
+        color: "#ff3333"
+      - state: equipped-INNERCLOTHING-belt
+  - type: Tag
+    tags: []
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtElegantColorBlack
+  name: short sikrt black
+  description: Comfortable stylish skirt.
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/colors.rsi
+    layers:
+    - state: icon-bottom
+      color: "#3b3d5e"
+    - state: icon-top
+      color: "#302d39"
+    - state: icon-belt
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/colors.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-bottom
+        color: "#3b3d5e"
+      - state: equipped-INNERCLOTHING-top
+        color: "#302d39"
+      - state: equipped-INNERCLOTHING-belt
+  - type: Tag
+    tags: []
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtElegantColorBlue
+  name: short sikrt blue
+  description: Comfortable stylish skirt.
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/colors.rsi
+    layers:
+    - state: icon-bottom
+      color: "#816392"
+    - state: icon-top
+      color: "#4e62f9"
+    - state: icon-belt
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/colors.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-bottom
+        color: "#816392"
+      - state: equipped-INNERCLOTHING-top
+        color: "#4e62f9"
+      - state: equipped-INNERCLOTHING-belt
+  - type: Tag
+    tags: []
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtElegantColorPink
+  name: short sikrt pink
+  description: Comfortable stylish skirt.
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/colors.rsi
+    layers:
+    - state: icon-bottom
+      color: "#8483ce"
+    - state: icon-top
+      color: "#f686fe"
+    - state: icon-belt
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/colors.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-bottom
+        color: "#8483ce"
+      - state: equipped-INNERCLOTHING-top
+        color: "#f686fe"
+      - state: equipped-INNERCLOTHING-belt
+  - type: Tag
+    tags: []
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtElegantColorGrey
+  name: short sikrt grey
+  description: Comfortable stylish skirt.
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/colors.rsi
+    layers:
+    - state: icon-bottom
+      color: "#72727e"
+    - state: icon-top
+      color: "#8483ceff"
+    - state: icon-belt
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/colors.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-bottom
+        color: "#72727e"
+      - state: equipped-INNERCLOTHING-top
+        color: "#8483ceff"
+      - state: equipped-INNERCLOTHING-belt
+  - type: Tag
+    tags: []
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtElegantColorGreen
+  name: short sikrt green
+  description: Comfortable stylish skirt.
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/colors.rsi
+    layers:
+    - state: icon-bottom
+      color: "#935c6d"
+    - state: icon-top
+      color: "#41b975"
+    - state: icon-belt
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/colors.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-bottom
+        color: "#935c6d"
+      - state: equipped-INNERCLOTHING-top
+        color: "#41b975"
+      - state: equipped-INNERCLOTHING-belt
+  - type: Tag
+    tags: []
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtElegantColorWhite
+  name: short sikrt white
+  description: Comfortable stylish skirt.
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/colors.rsi
+    layers:
+    - state: icon-bottom
+    - state: icon-top
+    - state: icon-belt
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpskirt/colors.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-bottom
+      - state: equipped-INNERCLOTHING-top
+      - state: equipped-INNERCLOTHING-belt
+  - type: Tag
+    tags: []
+
 # Jumpsuit
 
 - type: entity
@@ -531,6 +923,20 @@
 
 - type: entity
   parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitStylishWithe
+  name: stylish white suit
+  description: A man in a suit who claimed the title of X in the blink of an eye.
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpsuit/herox.rsi
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Uniforms/Jumpsuit/herox.rsi
+  - type: Tag
+    tags: []
+
+- type: entity
+  parent: ClothingUniformBase
   id: ClothingUniformJumpsuitBeautifulSweater
   name: beautiful sweater
   description: A nice and tidy uniform. Shame about the bar though.
@@ -556,3 +962,304 @@
     sprite: _Wega/Sponsors/Clothing/Under/Bottom/elegant_vampire_swimsuit.rsi
   - type: Clothing
     sprite: _Wega/Sponsors/Clothing/Under/Bottom/elegant_vampire_swimsuit.rsi
+
+- type: entity
+  parent: ClothingUnderBottomBase
+  id: ClothingUnderBottomEroWhith
+  name: white revealing swimsuit
+  description: "A swimsuit for the boldest."
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Under/Bottom/colors.rsi
+    layers:
+    - state: icon
+      color: "#f0f8ff"
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Under/Bottom/colors.rsi
+    clothingVisuals:
+      underwearbottom:
+      - state: equipped-UNDERWEARBOTTOM
+        color: "#f0f8ff"
+
+- type: entity
+  parent: ClothingUnderBottomBase
+  id: ClothingUnderBottomEroPink
+  name: pink revealing swimsuit
+  description: "A swimsuit for the boldest."
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Under/Bottom/colors.rsi
+    layers:
+    - state: icon
+      color: "#c53dff"
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Under/Bottom/colors.rsi
+    clothingVisuals:
+      underwearbottom:
+      - state: equipped-UNDERWEARBOTTOM
+        color: "#c53dff"
+
+- type: entity
+  parent: ClothingUnderBottomBase
+  id: ClothingUnderBottomEroBlack
+  name: black revealing swimsuit
+  description: "A swimsuit for the boldest."
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Under/Bottom/colors.rsi
+    layers:
+    - state: icon
+      color: "#33313a"
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Under/Bottom/colors.rsi
+    clothingVisuals:
+      underwearbottom:
+      - state: equipped-UNDERWEARBOTTOM
+        color: "#33313a"
+
+- type: entity
+  parent: ClothingUnderBottomBase
+  id: ClothingUnderBottomEroOrange
+  name: orange revealing swimsuit
+  description: "A swimsuit for the boldest."
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Under/Bottom/colors.rsi
+    layers:
+    - state: icon
+      color: "#ffa000"
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Under/Bottom/colors.rsi
+    clothingVisuals:
+      underwearbottom:
+      - state: equipped-UNDERWEARBOTTOM
+        color: "#ffa000"
+
+- type: entity
+  parent: ClothingUnderBottomBase
+  id: ClothingUnderBottomEroRed
+  name: red revealing swimsuit
+  description: "A swimsuit for the boldest."
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Under/Bottom/colors.rsi
+    layers:
+    - state: icon
+      color: "#ec0535"
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Under/Bottom/colors.rsi
+    clothingVisuals:
+      underwearbottom:
+      - state: equipped-UNDERWEARBOTTOM
+        color: "#ec0535"
+
+- type: entity
+  parent: ClothingUnderBottomBase
+  id: ClothingUnderBottomEroYellow
+  name: yellow revealing swimsuit
+  description: "A swimsuit for the boldest."
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Under/Bottom/colors.rsi
+    layers:
+    - state: icon
+      color: "#ffcc00"
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Under/Bottom/colors.rsi
+    clothingVisuals:
+      underwearbottom:
+      - state: equipped-UNDERWEARBOTTOM
+        color: "#ffcc00"
+
+- type: entity
+  parent: ClothingUnderBottomBase
+  id: ClothingUnderBottomEroGreen
+  name: green revealing swimsuit
+  description: "A swimsuit for the boldest."
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Under/Bottom/colors.rsi
+    layers:
+    - state: icon
+      color: "#00fa9a"
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Under/Bottom/colors.rsi
+    clothingVisuals:
+      underwearbottom:
+      - state: equipped-UNDERWEARBOTTOM
+        color: "#00fa9a"
+
+- type: entity
+  parent: ClothingUnderBottomBase
+  id: ClothingUnderBottomCuteMooo
+  name: spotted panties
+  description: "Reminds me of ladybug spots."
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Under/Bottom/moo.rsi
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Under/Bottom/moo.rsi
+
+- type: entity
+  parent: ClothingUnderTopBase
+  id: ClothingUnderTopCuteMooo
+  name: spotted bra
+  description: "Reminds me of ladybug spots."
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Under/Top/moo.rsi
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Under/Top/moo.rsi
+
+- type: entity
+  parent: ClothingUnderSocksBase
+  id: ClothingUnderSocksHighMoo
+  name: spotted stockings
+  description: "Reminds me of ladybug spots."
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Under/Socks/moohigh.rsi
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Under/Socks/moohigh.rsi
+
+- type: entity
+  parent: ClothingUnderSocksBase
+  id: ClothingUnderSocksMoo
+  name: spotted socks
+  description: "Reminds me of ladybug spots."
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Under/Socks/moosocks.rsi
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Under/Socks/moosocks.rsi
+
+- type: entity
+  parent: ClothingUnderBottomBase
+  id: ClothingUnderBottomGold
+  name: gold panties
+  description: "Reminds me of ladybug spots."
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Under/Bottom/gold.rsi
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Under/Bottom/gold.rsi
+
+- type: entity
+  parent: ClothingUnderTopBase
+  id: ClothingUnderTopGold
+  name: gold bra
+  description: "Reminds me of ladybug spots."
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Under/Top/gold.rsi
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Under/Top/gold.rsi
+
+- type: entity
+  parent: ClothingUnderBottomBase
+  id: ClothingUnderBottomCuteBlue
+  name: blue bikini bottoms
+  description: "A stylish swimsuit in a vibrant blue color."
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Under/Bottom/cute_blue.rsi
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Under/Bottom/cute_blue.rsi
+
+- type: entity
+  parent: ClothingUnderTopBase
+  id: ClothingUnderTopCuteBlue
+  name: blue bikini top
+  description: "A stylish swimsuit in a vibrant blue color."
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Under/Top/cute_blue.rsi
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Under/Top/cute_blue.rsi
+
+- type: entity
+  parent: ClothingUnderBottomBase
+  id: ClothingUnderBottomCuteRed
+  name: red bikini bottoms
+  description: "A stylish swimsuit in a vibrant red color."
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Under/Bottom/cute_red.rsi
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Under/Bottom/cute_red.rsi
+
+- type: entity
+  parent: ClothingUnderTopBase
+  id: ClothingUnderTopCuteRed
+  name: red bikini top
+  description: "A stylish swimsuit in a vibrant red color."
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Under/Top/cute_red.rsi
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Under/Top/cute_red.rsi
+
+- type: entity
+  parent: ClothingUnderBottomBase
+  id: ClothingUnderBottomCuteGreen
+  name: green bikini bottoms
+  description: "A stylish swimsuit in a vibrant green color."
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Under/Bottom/cute_green.rsi
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Under/Bottom/cute_green.rsi
+
+- type: entity
+  parent: ClothingUnderTopBase
+  id: ClothingUnderTopCuteGreen
+  name: green bikini top
+  description: "A stylish swimsuit in a vibrant green color."
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Under/Top/cute_green.rsi
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Under/Top/cute_green.rsi
+
+- type: entity
+  parent: ClothingUnderBottomBase
+  id: ClothingUnderBottomCutePink
+  name: pink bikini bottoms
+  description: "A stylish swimsuit in a vibrant pink color."
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Under/Bottom/cute_pink.rsi
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Under/Bottom/cute_pink.rsi
+
+- type: entity
+  parent: ClothingUnderTopBase
+  id: ClothingUnderTopCutePink
+  name: pink bikini top
+  description: "A stylish swimsuit in a vibrant pink color."
+  suffix: Sponsor
+  components:
+  - type: Sprite
+    sprite: _Wega/Sponsors/Clothing/Under/Top/cute_pink.rsi
+  - type: Clothing
+    sprite: _Wega/Sponsors/Clothing/Under/Top/cute_pink.rsi

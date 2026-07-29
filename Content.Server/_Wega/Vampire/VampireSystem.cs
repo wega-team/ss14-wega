@@ -54,7 +54,6 @@ using Content.Shared.Vampire;
 using Content.Shared.Vampire.Components;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
-using Robust.Shared.Map;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -72,7 +71,6 @@ public sealed partial class VampireSystem : SharedVampireSystem
     [Dependency] private EuiManager _euiMan = default!;
     [Dependency] private IAdminLogManager _admin = default!;
     [Dependency] private IComponentFactory _componentFactory = default!;
-    [Dependency] private IMapManager _mapMan = default!;
     [Dependency] private InventorySystem _inventory = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private ISharedPlayerManager _player = default!;
@@ -167,6 +165,9 @@ public sealed partial class VampireSystem : SharedVampireSystem
 
     private void OnRemove(Entity<VampireComponent> vampire, ref ComponentRemove args)
     {
+        if (TerminatingOrDeleted(vampire.Owner))
+            return;
+
         if (HasComp<PolymorphedEntityComponent>(vampire))
             return;
 
@@ -719,7 +720,7 @@ public sealed partial class VampireSystem : SharedVampireSystem
     private bool IsInSpace(EntityUid vampireUid)
     {
         var vampirePosition = _transform.GetMapCoordinates(Transform(vampireUid));
-        if (!_mapMan.TryFindGridAt(vampirePosition, out var gridUid, out var grid))
+        if (!_map.TryFindGridAt(vampirePosition, out var gridUid, out var grid))
             return true;
 
         if (!_map.TryGetTileRef(gridUid, grid, vampirePosition.Position, out var tileRef))

@@ -5,6 +5,9 @@
     enum.HumanoidVisualLayers.Head:
       limit: 1
       required: false
+    enum.HumanoidVisualLayers.HeadTop:
+      limit: 1
+      required: false
     enum.HumanoidVisualLayers.Hair:
       limit: 1
       required: false
@@ -167,10 +170,7 @@
     speechVerb: Robotic
     speechSounds: Borg
   - type: Vocal
-    sounds:
-      Male: MaleAndroid
-      Female: FemaleAndroid
-      Unsexed: MaleAndroid
+    emoteSounds: MaleAndroid
   - type: Damageable
   - type: Injurable
     damageContainer: Android
@@ -246,6 +246,8 @@
     bleedReductionAmount: 0
     bloodRefreshAmount: 0
   - type: DisableMetabolismEffects
+    allowed:
+    - !type:Oxygenate
   - type: Android
   - type: UserInterface
     interfaces:

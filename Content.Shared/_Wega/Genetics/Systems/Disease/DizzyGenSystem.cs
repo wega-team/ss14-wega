@@ -1,5 +1,6 @@
 using Content.Shared.Drunk;
 using Content.Shared.StatusEffect;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
 namespace Content.Shared.Genetics.Systems;
@@ -10,8 +11,7 @@ public sealed partial class DizzySystem : EntitySystem
     [Dependency] private StatusEffectsSystem _statusEffectsSystem = default!;
     [Dependency] private IGameTiming _gameTiming = default!;
 
-    [ValidatePrototypeId<StatusEffectPrototype>]
-    public const string DizzyKey = "Dizzy";
+    public static ProtoId<StatusEffectPrototype> DizzyKey = "Dizzy";
 
     public override void Initialize()
     {

@@ -5,7 +5,7 @@
     enum.HumanoidVisualLayers.Special:
       limit: 1
       required: false
-    enum.HumanoidVisualLayers.HeadTop:
+    enum.HumanoidVisualLayers.HeadSide:
       limit: 1
       required: true
       default: [ AriralEars ]
@@ -176,10 +176,7 @@
   - type: Speech
     speechSounds: Ariral
   - type: Vocal
-    sounds:
-      Male: MaleAriral
-      Female: FemaleAriral
-      Unsexed: MaleAriral
+    emoteSounds: MaleAriral
   - type: DnaModifier
   - type: Wagging
   - type: NaturalNightVision

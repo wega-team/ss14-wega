@@ -23,7 +23,7 @@ public sealed partial class ShowHealthBarsSystem : EquipmentHudSystem<ShowHealth
 
         SubscribeLocalEvent<ShowHealthBarsComponent, AfterAutoHandleStateEvent>(OnHandleState);
 
-        _overlay = new(EntityManager, _prototype, _playerManager);
+        _overlay = new(EntityManager, ProtoMan);
     }
 
     private void OnHandleState(Entity<ShowHealthBarsComponent> ent, ref AfterAutoHandleStateEvent args)

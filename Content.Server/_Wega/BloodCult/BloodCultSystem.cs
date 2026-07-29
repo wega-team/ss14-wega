@@ -33,7 +33,6 @@ using Content.Shared.Veil.Cult.Components;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Content.Shared.IdentityManagement.Components;
@@ -47,7 +46,6 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
     [Dependency] private AudioSystem _audio = default!;
     [Dependency] private BloodCultRuleSystem _bloodCult = default!;
     [Dependency] private IGameTiming _gameTiming = default!;
-    [Dependency] private IPrototypeManager _prototypeManager = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private MetaDataSystem _meta = default!;
     [Dependency] private MobStateSystem _mobState = default!;
@@ -77,7 +75,7 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
         SubscribeLocalEvent<CultWeaponComponent, AttemptMeleeEvent>(OnAttemptMelee);
         SubscribeLocalEvent<BloodDaggerComponent, AfterInteractEvent>(OnInteract);
 
-        SubscribeLocalEvent<StoneSoulComponent, ComponentInit>(OnComponentInit);
+        SubscribeLocalEvent<StoneSoulComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<StoneSoulComponent, ComponentShutdown>(OnShutdown);
         SubscribeLocalEvent<StoneSoulComponent, UseInHandEvent>(OnUseInHand);
         SubscribeLocalEvent<StoneSoulComponent, MindAddedMessage>(OnSoulStoneMindAdded);
@@ -305,9 +303,9 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
     #endregion
 
     #region Soul Stone
-    private void OnComponentInit(EntityUid uid, StoneSoulComponent component, ComponentInit args)
+    private void OnMapInit(EntityUid uid, StoneSoulComponent component, MapInitEvent args)
     {
-        component.SoulContainer = _container.EnsureContainer<ContainerSlot>(uid, "SoulContainer");
+        component.SoulContainer = _container.EnsureContainer<ContainerSlot>(uid, StoneSoulComponent.SoulContainerId);
     }
 
     private void OnShutdown(EntityUid uid, StoneSoulComponent component, ComponentShutdown args)

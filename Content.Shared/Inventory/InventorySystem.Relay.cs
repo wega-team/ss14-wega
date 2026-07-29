@@ -12,18 +12,22 @@ using Content.Shared.Electrocution;
 using Content.Shared.Explosion;
 using Content.Shared.Eye.Blinding.Systems;
 using Content.Shared.Flash;
+using Content.Shared.Glue;
 using Content.Shared.Gravity;
 using Content.Shared.IdentityManagement.Components;
 using Content.Shared.Implants;
 using Content.Shared.Inventory.Events;
+using Content.Shared.Lube;
 using Content.Shared.Movement.Events;
 using Content.Shared.Movement.Systems;
 using Content.Shared.NameModifier.EntitySystems;
+using Content.Shared.NightVision;
 using Content.Shared.Nutrition;
 using Content.Shared.Overlays;
 using Content.Shared.Projectiles;
 using Content.Shared.Radio;
 using Content.Shared.Slippery;
+using Content.Shared.Speech;
 using Content.Shared.Standing;
 using Content.Shared.Strip.Components;
 using Content.Shared.Temperature;
@@ -68,6 +72,7 @@ public partial class InventorySystem
         SubscribeLocalEvent<InventoryComponent, BeforeEmoteEvent>(RelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, StoodEvent>(RelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, DownedEvent>(RelayInventoryEvent);
+        SubscribeLocalEvent<InventoryComponent, AccentGetEvent>(RelayInventoryEvent);
 
         // Corvax-TTS
         SubscribeLocalEvent<InventoryComponent, TransformSpeakerVoiceEvent>(RelayInventoryEvent);
@@ -88,6 +93,9 @@ public partial class InventorySystem
         SubscribeLocalEvent<InventoryComponent, WieldAttemptEvent>(RefRelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, UnwieldAttemptEvent>(RefRelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, IngestionAttemptEvent>(RefRelayInventoryEvent);
+        SubscribeLocalEvent<InventoryComponent, RefreshNightVisionEvent>(RefRelayInventoryEvent);
+        SubscribeLocalEvent<InventoryComponent, GluedEffectAttemptEvent>(RefRelayInventoryEvent);
+        SubscribeLocalEvent<InventoryComponent, LubedEffectAttemptEvent>(RefRelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, AshProtectionAttemptEvent>(RefRelayInventoryEvent); // Corvax-Wega-Lavaland
         SubscribeLocalEvent<InventoryComponent, ClothingFrictionModifierEvent>(RefRelayInventoryEvent); // Corvax-Wega-Add
 
@@ -114,6 +122,8 @@ public partial class InventorySystem
         SubscribeLocalEvent<InventoryComponent, RefreshEquipmentHudEvent<RaveOverlayComponent>>(RefRelayInventoryEvent); // Corvax-Wega-Add
         SubscribeLocalEvent<InventoryComponent, RefreshEquipmentHudEvent<NinjaVisorComponent>>(RefRelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, RefreshEquipmentHudEvent<NightVisionComponent>>(RefRelayInventoryEvent); // Corvax-Wega-Add
+        SubscribeLocalEvent<InventoryComponent, RefreshEquipmentHudEvent<ClothingNightVisionComponent>>(RefRelayInventoryEvent); // Corvax-Wega-Add
+
         SubscribeLocalEvent<InventoryComponent, GetVerbsEvent<EquipmentVerb>>(OnGetEquipmentVerbs);
         SubscribeLocalEvent<InventoryComponent, GetVerbsEvent<InnateVerb>>(OnGetInnateVerbs);
 

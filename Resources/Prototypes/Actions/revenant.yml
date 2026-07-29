@@ -13,7 +13,7 @@
   - type: Action
     useDelay: 15
     icon: Interface/Actions/defile.png
-    itemIconStyle: BigAction # Corvax-Wega-Revenant
+    itemIconStyle: BigAction
   - type: InstantAction
     event: !type:RevenantDefileActionEvent
 
@@ -25,8 +25,8 @@
   components:
   - type: Action
     icon: Interface/Actions/overloadlight.png
-    itemIconStyle: BigAction # Corvax-Wega-Revenant
     useDelay: 20
+    itemIconStyle: BigAction
   - type: InstantAction
     event: !type:RevenantOverloadLightsActionEvent
 
@@ -52,7 +52,7 @@
   components:
   - type: Action
     icon: Interface/Actions/malfunction.png
-    itemIconStyle: BigAction # Corvax-Wega-Revenant
     useDelay: 20
+    itemIconStyle: BigAction
   - type: InstantAction
     event: !type:RevenantMalfunctionActionEvent

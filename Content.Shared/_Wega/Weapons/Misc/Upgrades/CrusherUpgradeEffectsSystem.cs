@@ -524,8 +524,8 @@ public sealed partial class CrusherUpgradeEffectsSystem : EntitySystem
 
             var barrier = Spawn(ent.Comp.SpawnProto, spawnCoords);
             var barrierTransform = Transform(barrier);
-            barrierTransform.LocalRotation = perpendicularDirection.ToAngle();
 
+            _transform.SetLocalRotation(barrier, perpendicularDirection.ToAngle(), barrierTransform);
             EnsureComp<PreventCollideComponent>(barrier).Uid = user;
         }
     }

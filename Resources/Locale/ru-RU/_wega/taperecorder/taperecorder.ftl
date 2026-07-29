@@ -26,3 +26,5 @@ tape-recorder-menu-cassette-unnamed = Название не установлен
 tape-recorder-print-start-text = [bold]Начало записи расшифровки[/bold]
 tape-recorder-print-message-text = [bold][{$time}] {$source}: [/bold] {$message}
 tape-recorder-print-end-text = [bold]Конец записи расшифровки[/bold]
+
+tape-label-interview-garry-smosh = Интервью с Гарри Смошем
