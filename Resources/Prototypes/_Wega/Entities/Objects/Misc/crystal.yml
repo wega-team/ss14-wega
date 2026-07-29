@@ -2,8 +2,13 @@
   parent: BaseItem
   id: ShardCrystalRandomKostsl
   name: random crystal shard
-  categories: [ HideSpawnMenu ]
+  categories: [ HideSpawnMenu, Spawner ]
   components:
+  - type: Transform
+    anchored: True
+  - type: Physics
+    bodyType: Static
+    canCollide: false
   - type: SpawnOnDespawn
     prototype: ShardCrystalRandom
   - type: TimedDespawn
