@@ -24,3 +24,19 @@
       reagents:
       - ReagentId: Unholywater
         Quantity: 60
+
+- type: entity
+  parent: DrinkShaker
+  id: DrinkShakerSyndi
+  name: syndi-shaker
+  description: A high-strength and explosion-proof shaker with increased capacity in the Syndicate's signature color scheme.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Consumable/Drinks/shaker_syndi.rsi
+  - type: Item
+    sprite: _Wega/Objects/Consumable/Drinks/shaker_syndi.rsi
+  - type: Solution
+    solution:
+      maxVol: 240
+  - type: ExplosionResistance
+    damageCoefficient: 0
