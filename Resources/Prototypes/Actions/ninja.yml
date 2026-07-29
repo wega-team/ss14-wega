@@ -18,11 +18,12 @@
   components:
   - type: Action
     useDelay: 0.5
-    icon:
-      sprite: Objects/Weapons/Throwable/throwing_star.rsi
-      state: icon
     itemIconStyle: NoItem
     priority: -10
+  - type: Sprite
+    sprite: Objects/Weapons/Throwable/throwing_star.rsi
+    layers:
+    - state: icon
   - type: InstantAction
     event: !type:CreateItemEvent {}
   - type: NinjaAbilityBackground
@@ -40,6 +41,10 @@
       state: icon-green
     itemIconStyle: NoItem
     priority: -11
+  - type: Sprite
+    sprite: Objects/Weapons/Melee/energykatana.rsi
+    layers:
+    - state: icon
   - type: InstantAction
     event: !type:RecallKatanaEvent {}
   - type: NinjaAbilityBackground
@@ -51,11 +56,12 @@
   description: Disable any nearby technology with an electro-magnetic pulse. Costs 180 charge.
   components:
   - type: Action
-    icon:
-      sprite: Objects/Weapons/Grenades/empgrenade.rsi
-      state: icon
     itemIconStyle: BigAction
     priority: -13
+  - type: Sprite
+    sprite: Objects/Weapons/Grenades/empgrenade.rsi
+    layers:
+    - state: icon
   - type: InstantAction
     event: !type:NinjaEmpEvent {}
   - type: NinjaAbilityBackground
@@ -321,6 +327,10 @@
       params:
         volume: 5
     priority: -12
+  - type: Sprite
+    sprite: Objects/Magic/magicactions.rsi
+    layers:
+    - state: blink
   - type: TargetAction
     checkCanAccess: false
     range: 0

@@ -4,7 +4,6 @@ using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
-using Robust.Shared.Utility;
 
 namespace Content.Shared.Actions.Components;
 
@@ -83,7 +82,7 @@ public sealed partial class ActionComponent : Component
     public bool Enabled = true;
 
     /// <summary>
-    ///     The toggle state of this action. Toggling switches the currently displayed icon, see <see cref="Icon"/> and <see cref="IconOn"/>.
+    ///     The toggle state of this action. Toggling switches the currently displayed icon layer.
     /// </summary>
     /// <remarks>
     ///     The toggle can set directly via <see cref="SharedActionsSystem.SetToggled"/>, but it will also be

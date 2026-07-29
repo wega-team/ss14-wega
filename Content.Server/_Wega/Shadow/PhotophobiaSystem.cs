@@ -212,15 +212,8 @@ public sealed partial class PhotophobiaSystem : EntitySystem
 
     public bool IsTargetInsideCone(EntityUid targetUid, EntityUid lightUid)
     {
-        if (!TryComp<PointLightComponent>(lightUid, out var lightComp))
+        if (!HasComp<PointLightComponent>(lightUid))
             return true;
-
-        // TODO: Избавится от этого ужаса.
-        if (lightComp.MaskPath == "/Textures/Effects/LightMasks/double_cone.png")
-            return true;
-
-        if (lightComp.MaskPath == null)
-            return false;
 
         var tXform = Transform(targetUid);
         var lXform = Transform(lightUid);

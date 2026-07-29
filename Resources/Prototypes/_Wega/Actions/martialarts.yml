@@ -7,9 +7,13 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: Clothing/Hands/Gloves/Boxing/boxingblue.rsi, state: "icon" }
     itemIconStyle: BigAction
     useDelay: 2
+  - type: Sprite
+    sprite: Clothing/Hands/Gloves/Boxing/boxingblue.rsi
+    layers:
+    - state: icon
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:BoxingJabActionEvent
 
@@ -21,9 +25,13 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: Clothing/Hands/Gloves/Boxing/boxingblue.rsi, state: "icon" }
     itemIconStyle: BigAction
     useDelay: 40
+  - type: Sprite
+    sprite: Clothing/Hands/Gloves/Boxing/boxingblue.rsi
+    layers:
+    - state: icon
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:BoxingHookActionEvent
 
@@ -35,11 +43,16 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: Clothing/Hands/Gloves/Boxing/boxingblue.rsi, state: "icon" }
     itemIconStyle: BigAction
     useDelay: 30
+  - type: Sprite
+    sprite: Clothing/Hands/Gloves/Boxing/boxingblue.rsi
+    layers:
+    - state: icon
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:BoxingDodgeActionEvent
+#endregion
 
 #region KravMaga
 - type: entity
@@ -50,9 +63,13 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_kravmaga.rsi, state: "legsweep" }
     itemIconStyle: BigAction
     useDelay: 4
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_kravmaga.rsi
+    layers:
+    - state: legsweep
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:KravMagaLegSweepActionEvent
 
@@ -64,9 +81,13 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_kravmaga.rsi, state: "neckchop" }
     itemIconStyle: BigAction
     useDelay: 4
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_kravmaga.rsi
+    layers:
+    - state: neckchop
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:KravMagaNeckChopActionEvent
 
@@ -78,8 +99,13 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_kravmaga.rsi, state: "lungpunch" }
     itemIconStyle: BigAction
     useDelay: 4
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_kravmaga.rsi
+    layers:
+    - state: lungpunch
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:KravMagaLungPunchActionEvent
+#endregion

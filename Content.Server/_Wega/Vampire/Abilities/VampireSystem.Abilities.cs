@@ -8,7 +8,6 @@ using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Prototypes;
 using Content.Shared.Flash.Components;
-using Content.Server.Bible.Components;
 using Robust.Shared.Timing;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Damage.Systems;
@@ -22,6 +21,7 @@ using Content.Shared.Stealth;
 using Content.Server.Polymorph.Systems;
 using Content.Server.Surgery;
 using Content.Shared.Surgery;
+using Content.Shared.Bible.Components;
 
 namespace Content.Server.Vampire;
 

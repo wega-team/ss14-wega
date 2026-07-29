@@ -1,10 +1,10 @@
 using System.Linq;
 using Content.Shared._Wega.Ninja;
 using Content.Server.Administration;
-using Content.Server.Bible.Components;
 using Content.Server.Cloning;
 using Content.Server.Hallucinations;
 using Content.Server.Prayer;
+using Content.Shared.Bible.Components;
 using Content.Shared.Body;
 using Content.Shared.CombatMode.Pacification;
 using Content.Shared.DoAfter;

@@ -5,9 +5,15 @@
   description: View a Criminal Records Interface.
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/adminactions.rsi, state: Criminal } # Corvax-Resprite
-    iconOn: { sprite: _Wega/Interface/adminactions.rsi, state: Criminal }
     keywords: [ "AI", "console", "interface" ]
     priority: -7
+  - type: Sprite
+    sprite: _Wega/Interface/adminactions.rsi
+    layers:
+    - state: Criminal
+      map: ["enum.ActionVisuals.Icon"]
+    - state: Criminal
+      map: ["enum.ActionVisuals.IconToggled"]
+      visible: false
   - type: InstantAction
     event: !type:ToggleIntrinsicUIEvent { key: enum.CriminalRecordsConsoleKey.Key }

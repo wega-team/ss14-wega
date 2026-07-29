@@ -14,6 +14,7 @@ using System.Numerics;
 using Content.Shared.Fluids.EntitySystems;
 using Content.Shared.Fluids.Components;
 using Robust.Server.Containers;
+using Robust.Shared.Audio;
 using Robust.Shared.Map;
 // Corvax-Wega-Add-start
 using Content.Shared.Item;
@@ -288,7 +289,9 @@ public sealed partial class SpraySystem : SharedSpraySystem
             }
         }
 
-        _audio.PlayPvs(entity.Comp.SpraySound, entity, entity.Comp.SpraySound.Params.WithVariation(0.125f));
+        var audioParams = entity.Comp.SpraySound?.Params ?? AudioParams.Default;
+        audioParams = audioParams.WithVariation(0.125f);
+        _audio.PlayPvs(entity.Comp.SpraySound, entity, audioParams);
 
         _useDelay.TryResetDelay(entity);
     }
