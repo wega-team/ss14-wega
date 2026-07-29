@@ -1,5 +1,4 @@
 - type: entity
-  parent: BaseItem
   id: ShardCrystalRandomKostsl
   name: random crystal shard
   categories: [ HideSpawnMenu, Spawner ]
