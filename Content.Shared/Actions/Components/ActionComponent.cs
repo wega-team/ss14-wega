@@ -16,39 +16,6 @@ namespace Content.Shared.Actions.Components;
 public sealed partial class ActionComponent : Component
 {
     /// <summary>
-    ///     Icon representing this action in the UI.
-    /// </summary>
-    [DataField, AutoNetworkedField]
-    public SpriteSpecifier? Icon;
-
-    /// <summary>
-    ///     For toggle actions only, icon to show when toggled on. If omitted, the action will simply be highlighted
-    ///     when turned on.
-    /// </summary>
-    [DataField, AutoNetworkedField]
-    public SpriteSpecifier? IconOn;
-
-    /// <summary>
-    ///     For toggle actions only, background to show when toggled on.
-    /// </summary>
-    [DataField]
-    public SpriteSpecifier? BackgroundOn;
-
-    /// <summary>
-    ///     Static background shown behind the action icon when the action is on cooldown.
-    ///     If <see cref="BackgroundReady"/> is not set, this is shown at all times instead of the default slot background.
-    /// </summary>
-    [DataField]
-    public SpriteSpecifier? Background;
-
-    /// <summary>
-    ///     Animated background shown behind the action icon when the action is available (not on cooldown).
-    ///     Falls back to <see cref="Background"/> while on cooldown.
-    /// </summary>
-    [DataField]
-    public SpriteSpecifier? BackgroundReady;
-
-    /// <summary>
     ///     If not null, this color will modulate the action icon color.
     /// </summary>
     /// <remarks>
