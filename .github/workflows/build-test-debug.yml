@@ -20,7 +20,7 @@ jobs:
         os: [ubuntu-latest]
 
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 60
+    timeout-minutes: 60 # Corvax-Wega-Edit | More time is needed for Check
 
     steps:
     - name: Checkout Master
