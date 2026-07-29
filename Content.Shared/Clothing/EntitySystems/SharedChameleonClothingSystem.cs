@@ -119,18 +119,6 @@ public abstract partial class SharedChameleonClothingSystem : EntitySystem
             _clothingSystem.CopyVisuals(uid, otherClothing, clothing);
         }
 
-        // Update contraband status even when skipAppearance is true so the ninja's
-        // equipment reflects the target's contraband classification during a disguise.
-        if (proto.TryGetComponent(out ContrabandComponent? contra, Factory))
-        {
-            EnsureComp<ContrabandComponent>(uid, out var current);
-            _contraband.CopyDetails(uid, contra, current);
-        }
-        else
-        {
-            RemComp<ContrabandComponent>(uid);
-        }
-
         if (skipAppearance)
             return;
 
