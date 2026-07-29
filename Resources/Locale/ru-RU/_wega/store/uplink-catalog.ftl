@@ -114,3 +114,9 @@ uplink-thermal-vision-glasses-desc = Очки, показывающие тепл
 
 uplink-thermal-vision-implanter-name = Имплантер теплового зрения
 uplink-thermal-vision-implanter-desc = Имплантирует тепловое зрение, позволяя видеть тепловые сигнатуры живых существ сквозь стены и темноту.
+
+uplink-loyalty-implant-name = Имплантер лояльности
+uplink-loyalty-implant-desc = Заведи себе верную прислугу, пусть она поможет вам в ваших целях, выбирайте с умом (эффект не обратим).
+
+uplink-syndicate-segway-crate-name = Ящик с сигвеем
+uplink-syndicate-segway-crate-desc = Ящик с двухколесным транспортным средством, которое поможет вам скрыться от сотрудников службы безопасности. Или нет.
