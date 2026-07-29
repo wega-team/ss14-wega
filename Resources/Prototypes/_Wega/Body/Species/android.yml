@@ -5,6 +5,9 @@
     enum.HumanoidVisualLayers.Head:
       limit: 1
       required: false
+    enum.HumanoidVisualLayers.HeadTop:
+      limit: 1
+      required: false
     enum.HumanoidVisualLayers.Hair:
       limit: 1
       required: false
