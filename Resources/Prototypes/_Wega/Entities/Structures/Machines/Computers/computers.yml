@@ -31,8 +31,6 @@
         type: DnaModifierBoundUserInterface
       enum.WiresUiKey.Key:
         type: WiresBoundUserInterface
-  - type: ApcPowerReceiver
-    powerLoad: 250
   - type: Computer
     board: DnaModifierComputerCircuitboard
   - type: DeviceLinkSource
@@ -92,8 +90,6 @@
         type: MiningConsoleBoundInterface
       enum.WiresUiKey.Key:
         type: WiresBoundUserInterface
-  - type: ApcPowerReceiver
-    powerLoad: 250
   - type: Computer
     board: MiningMonitoringComputerCircuitboard
   - type: AccessReader
@@ -132,8 +128,6 @@
         type: LavalandConsoleBoundUserInterface
       enum.WiresUiKey.Key:
         type: WiresBoundUserInterface
-  - type: ApcPowerReceiver
-    powerLoad: 250
   - type: Computer
     board: LavalandShuttleComputerCircuitboard
   - type: AccessReader
@@ -172,8 +166,6 @@
         type: LavalandPenalServitudeConsoleBoundUserInterface
       enum.WiresUiKey.Key:
         type: WiresBoundUserInterface
-  - type: ApcPowerReceiver
-    powerLoad: 250
   - type: Computer
     board: LavalandPenalServitudeShuttleComputerCircuitboard
   - type: AccessReader

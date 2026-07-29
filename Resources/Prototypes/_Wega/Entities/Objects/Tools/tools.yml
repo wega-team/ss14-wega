@@ -200,3 +200,38 @@
     denialSound:
       path: /Audio/Machines/custom_deny.ogg
     doAfter: 0.5
+
+- type: entity
+  id: RPD
+  parent: RCD
+  name: RPD
+  description: The rapid piping device allows for the quick placement and removal of atmospheric-related buildings requires compressive matter to use.
+  components:
+  - type: RCD
+    availablePrototypes:
+    - PipeFourway
+    - PipeStraight
+    - PipeBend
+    - PipeTJunction
+    - PipeManifold
+    - OutletInjector
+    - ManualValve
+    - VolumetricPump
+    - PressurePump
+    - PressureRegulator
+    - VentScrubber
+    - PressureValve
+    - DualPortVent
+    - VentGas
+    - VentPassive
+    - MixerGas
+    - Radiator
+    - RadiatorBend
+    - SignalValve
+    - CanisterPort
+    - FilterGas
+  - type: LimitedCharges
+    maxCharges: 90
+  - type: Sprite
+    sprite: _Wega/Objects/Tools/rpd.rsi
+    

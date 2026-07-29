@@ -27,13 +27,13 @@ public sealed partial class VoucherSystem : EntitySystem
     {
         if (!TryComp<VoucherCardComponent>(args.Used, out var cardComp) || cardComp.CurrentKit == null)
         {
-            _popup.PopupClient(Loc.GetString("voucher-need-card"), args.User, args.User);
+            _popup.PopupEntity(Loc.GetString("voucher-need-card"), args.User, args.User);
             return;
         }
 
         if (entity.Comp.TypeVoucher != cardComp.TypeVoucher)
         {
-            _popup.PopupClient(Loc.GetString("voucher-wrong-type"), args.User, args.User);
+            _popup.PopupEntity(Loc.GetString("voucher-wrong-type"), args.User, args.User);
             return;
         }
 
@@ -49,7 +49,7 @@ public sealed partial class VoucherSystem : EntitySystem
 
         QueueDel(args.Used);
 
-        _popup.PopupClient(Loc.GetString("voucher-kit-activated", ("kitName", Loc.GetString(kit.Name))), args.User, args.User);
+        _popup.PopupEntity(Loc.GetString("voucher-kit-activated", ("kitName", Loc.GetString(kit.Name))), args.User, args.User);
         _audio.PlayPvs(entity.Comp.SoundVend, entity);
     }
 
@@ -65,8 +65,7 @@ public sealed partial class VoucherSystem : EntitySystem
     private void OnKitSelected(EntityUid uid, VoucherCardComponent component, VoucherKitSelectedMessage args)
     {
         component.CurrentKit = args.KitId;
-
-        _popup.PopupClient(Loc.GetString("voucher-kit-selected", ("kitName", Loc.GetString(ProtoMan.Index(args.KitId).Name))), uid, uid);
+        _popup.PopupEntity(Loc.GetString("voucher-kit-selected", ("kitName", Loc.GetString(ProtoMan.Index(args.KitId).Name))), uid, uid);
     }
 
     private void OpenKitSelectionUI(EntityUid card, VoucherCardComponent component, EntityUid user)

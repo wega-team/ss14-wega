@@ -166,16 +166,6 @@
     RainbowSky: 5
 
 - type: reaction
-  id: ThreeMileIslandIcedTea
-  reactants:
-    LongIslandIcedTea:
-      amount: 10
-    Uranium:
-      amount: 1
-  products:
-    ThreeMileIslandIcedTea: 10
-
-- type: reaction
   id: BlackBlood
   reactants:
     BlueCuracao:

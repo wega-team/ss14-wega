@@ -52,7 +52,8 @@ public sealed partial class GhostRespawnCommand : IConsoleCommand
             shell.WriteLine("You have no mind.");
             return;
         }
-        var time = (_gameTiming.CurTime - ghost.TimeOfDeath);
+
+        var time = _gameTiming.CurTime - ghost.TimeOfDeath;
         var respawnTime = _configurationManager.GetCVar(WegaCVars.GhostRespawnTime);
 
         if (respawnTime > time.TotalSeconds)

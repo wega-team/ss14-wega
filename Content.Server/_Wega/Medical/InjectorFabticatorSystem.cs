@@ -10,7 +10,6 @@ using Content.Shared.FixedPoint;
 using Content.Shared.Injector.Fabticator;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
-using Robust.Shared.Prototypes;
 
 namespace Content.Server.Injector.Fabticator;
 
@@ -18,7 +17,7 @@ public sealed partial class InjectorFabticatorSystem : EntitySystem
 {
     [Dependency] private SharedAmbientSoundSystem _ambient = default!;
     [Dependency] private SharedSolutionContainerSystem _solutionSystem = default!;
-    [Dependency] private ItemSlotsSystem _itemSlotsSystem = default!;
+    [Dependency] private ItemSlotsSystem _itemSlots = default!;
     [Dependency] private UserInterfaceSystem _uiSystem = default!;
     [Dependency] private SharedAppearanceSystem _appearance = default!;
     [Dependency] private MetaDataSystem _metaData = default!;
@@ -77,7 +76,10 @@ public sealed partial class InjectorFabticatorSystem : EntitySystem
 
     private void OnComponentInit(EntityUid uid, InjectorFabticatorComponent component, ComponentInit args)
     {
-        _itemSlotsSystem.AddItemSlot(uid, InjectorFabticatorComponent.BeakerSlotId, component.BeakerSlot);
+        if (!_itemSlots.TryGetSlot(uid, InjectorFabticatorComponent.BeakerSlotId, out _))
+        {
+            _itemSlots.AddItemSlot(uid, InjectorFabticatorComponent.BeakerSlotId, component.BeakerSlot);
+        }
     }
 
     private void OnMapInit(EntityUid uid, InjectorFabticatorComponent component, MapInitEvent args)
@@ -271,7 +273,7 @@ public sealed partial class InjectorFabticatorSystem : EntitySystem
         if (component.IsProducing)
             return;
 
-        _itemSlotsSystem.TryEject(uid, component.BeakerSlot, null, out var _, true);
+        _itemSlots.TryEject(uid, component.BeakerSlot, null, out var _, true);
     }
 
     private void OnSyncRecipeMessage(EntityUid uid, InjectorFabticatorComponent component, InjectorFabticatorSyncRecipeMessage args)

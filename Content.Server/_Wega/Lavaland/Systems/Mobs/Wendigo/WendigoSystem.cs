@@ -38,16 +38,16 @@ public sealed partial class WendigoSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<WendigoBossComponent, DamageChangedEvent>(OnWendigoDamage);
+        SubscribeLocalEvent<WendigoBossComponent, DamageDealtEvent>(OnWendigoDamage);
 
         SubscribeLocalEvent<WendigoBossComponent, WendigoStompActionEvent>(OnStomp);
         SubscribeLocalEvent<WendigoBossComponent, WendigoTeleportActionEvent>(OnTeleport);
         SubscribeLocalEvent<WendigoBossComponent, WendigoScreamActionEvent>(OnScream);
     }
 
-    private void OnWendigoDamage(Entity<WendigoBossComponent> ent, ref DamageChangedEvent args)
+    private void OnWendigoDamage(Entity<WendigoBossComponent> ent, ref DamageDealtEvent args)
     {
-        if (!args.DamageIncreased)
+        if (args.Damage.GetTotal() < 0)
             return;
 
         if (ent.Comp.IsEnraged)

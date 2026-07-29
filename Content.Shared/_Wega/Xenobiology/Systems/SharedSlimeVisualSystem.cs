@@ -46,12 +46,10 @@ public abstract partial class SharedSlimeVisualSystem : EntitySystem
         _metaData.SetEntityName(uid, proto.Name);
         _metaData.SetEntityDescription(uid, proto.Description);
 
-        if (TryComp<AppearanceComponent>(uid, out var appearance) &&
-            proto.TryGetComponent("Appearance", out AppearanceComponent? appearanceOther))
+        if (TryComp<AppearanceComponent>(uid, out var appearance))
         {
             _appearance.SetData(uid, SlimeVisualLayers.Type, growth.SlimeType, appearance);
             _appearance.SetData(uid, SlimeVisualLayers.Stage, growth.CurrentStage, appearance);
-            _appearance.AppendData(appearanceOther, uid);
             Dirty(uid, appearance);
         }
     }

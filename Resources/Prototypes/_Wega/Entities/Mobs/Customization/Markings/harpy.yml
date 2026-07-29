@@ -1,6 +1,6 @@
 - type: marking
   id: HarpyEarsDefault
-  bodyPart: Head
+  bodyPart: HeadTop
   groupWhitelist: [Harpy]
   coloring:
     default:
@@ -173,7 +173,7 @@
 
 - type: marking
   id: HarpyEarsLarge
-  bodyPart: Head
+  bodyPart: HeadTop
   groupWhitelist: [Harpy]
   coloring:
     default:

@@ -179,11 +179,11 @@
   parent: BaseStructure
   id: BeaconSoul
   name: beacon soul
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _Wega/Effects/soulbeacon.rsi
     state: beacon
-  - type: BeaconSoul
   - type: TimedDespawn
     lifetime: 250.0 # 130s CD + 120s action
   - type: Fixtures

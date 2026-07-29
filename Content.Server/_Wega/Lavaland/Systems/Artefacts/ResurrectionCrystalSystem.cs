@@ -67,8 +67,8 @@ public sealed partial class ResurrectionCrystalSystem : EntitySystem
 
         _rejuvenate.PerformRejuvenate(ent);
 
-        _popup.PopupPredicted(Loc.GetString("resurrection-crystal-revive-effect", ("name", Identity.Name(ent.Owner, EntityManager))),
-            ent.Owner, null, PopupType.LargeCaution);
+        _popup.PopupEntity(Loc.GetString("resurrection-crystal-revive-effect", ("name", Identity.Name(ent.Owner, EntityManager))),
+            ent.Owner, PopupType.LargeCaution);
         _transform.SetCoordinates(ent.Owner, targetCoords.Value);
 
         RemComp<ResurrectionCrystalAffectedComponent>(ent);

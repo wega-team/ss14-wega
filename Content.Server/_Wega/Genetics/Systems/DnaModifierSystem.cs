@@ -63,7 +63,7 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
         SubscribeLocalEvent<DnaModifierComponent, CureDnaDiseaseAttemptEvent>(OnTryCureDnaDisease);
         SubscribeLocalEvent<DnaModifierComponent, MutateDnaAttemptEvent>(OnTryMutateDna);
 
-        SubscribeLocalEvent<DnaModifierComponent, DamageChangedEvent>(OnDamageChanged);
+        SubscribeLocalEvent<DnaModifierComponent, DamageDealtEvent>(OnDamageChanged);
     }
 
     public override void Update(float frameTime)
@@ -1112,12 +1112,14 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
     }
     #endregion
 
-    private void OnDamageChanged(EntityUid uid, DnaModifierComponent component, DamageChangedEvent args)
+    private void OnDamageChanged(EntityUid uid, DnaModifierComponent component, DamageDealtEvent args)
     {
-        if (args.DamageDelta == null || !args.DamageIncreased || !args.DamageDelta.DamageDict.ContainsKey("Radiation"))
+        if (args.Damage.GetTotal() <= 0)
             return;
 
-        var radiationDamage = args.DamageDelta.DamageDict["Radiation"];
+        if (!args.Damage.DamageDict.TryGetValue("Radiation", out var radiationDamage))
+            return;
+
         if (radiationDamage < 1.5f)
             return;
 

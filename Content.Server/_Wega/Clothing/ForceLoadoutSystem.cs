@@ -26,7 +26,9 @@ public sealed partial class ForceLoadoutSystem : EntitySystem
     public void Equip(EntityUid uid, List<ProtoId<StartingGearPrototype>>? startingGear)
     {
         if (startingGear != null && startingGear.Count > 0)
-            _outfitSystem.SetOutfit(uid, _random.Pick(startingGear));
+        {
+            _outfitSystem.SetOutfit(uid, _random.Pick(startingGear), spawnInHands: false);
+        }
 
         GearEquipped(uid);
     }

@@ -316,7 +316,7 @@
                 collection: GlassBreak
             - !type:SpawnEntitiesBehavior
               spawn:
-                SheetBrass:
+                SheetBrass1:
                   min: 5
                   max: 5
     - type: StaminaDamageOnCollide
@@ -339,6 +339,8 @@
           Blunt: 5
       soundHit:
         collection: MetalThud
+    - type: StaticPrice
+      price: 200
     # Corvax-Wega-VeilCult-End
 
 - type: entity

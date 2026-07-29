@@ -5,7 +5,7 @@
     enum.HumanoidVisualLayers.Special:
       limit: 1
       required: false
-    enum.HumanoidVisualLayers.HeadTop:
+    enum.HumanoidVisualLayers.HeadSide:
       limit: 1
       required: true
       default: [ AriralEars ]

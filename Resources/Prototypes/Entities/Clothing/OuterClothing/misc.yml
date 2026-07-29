@@ -111,7 +111,7 @@
     - WhitelistChameleon
 
 - type: entity
-  parent: [ ClothingOuterBaseToggleable ]
+  parent: ClothingOuterBaseToggleable
   id: ClothingOuterHoodieChaplain
   name: chaplain's hoodie
   description: Black and strict chaplain hoodie.

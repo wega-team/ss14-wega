@@ -4,8 +4,9 @@ using Robust.Shared.Audio;
 
 namespace Content.Shared.Overlays;
 
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true)]
-public abstract partial class ToggleableHudComponent : Component
+[RegisterComponent, NetworkedComponent]
+[Virtual, AutoGenerateComponentState(true)]
+public partial class ToggleableHudComponent : Component
 {
     [DataField]
     public EntProtoId ToggleAction = "ActionToggleHud";

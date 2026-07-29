@@ -30,7 +30,7 @@ public abstract partial class SharedCellSystem : EntitySystem
         // it's better to warn the developer about it
         if (!TryComp<CellContainerComponent>(ent, out var container))
         {
-            Log.Error($"Can't ensure cells to {ent} without {nameof(CellContainerComponent)}!");
+            Log.Warning($"Can't ensure cells to {ent} without {nameof(CellContainerComponent)}!");
             return;
         }
 

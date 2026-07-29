@@ -29,3 +29,14 @@
     - SalvageVoucherCard
     - SurvivalMedipen
     - SurvivalKnife
+
+- type: chameleonOutfit
+  id: ShaftMinerChameleonOutfit
+  job: ShaftMiner
+  equipment:
+    head: ClothingHeadHatCargosoft
+    eyes: ClothingEyesGlassesCheapSunglasses
+    mask: ClothingMaskGasExplorer
+    outerClothing: ClothingOuterArmorExplorerSuit
+    neck: ClothingNeckScarfStripedBrown
+    gloves: ClothingHandsGlovesColorBlack

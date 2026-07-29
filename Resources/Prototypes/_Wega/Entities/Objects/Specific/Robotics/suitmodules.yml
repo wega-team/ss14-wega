@@ -13,6 +13,8 @@
   id: BaseStorageSuitModule
   abstract: true
   components:
+  - type: Item
+    size: Huge
   - type: ModularSuitStorageModule
   - type: ModularSuitModule
     tags: [ StorageSuitModule ]
@@ -47,10 +49,14 @@
   components:
   - type: Sprite
     state: storage
+  - type: Item
+    size: Normal
   - type: ModularSuitModule
     verbIcon:
       sprite: *modules-rsi
       state: storage
+  - type: Storage
+    maxItemSize: Normal
 
 - type: entity
   parent: BaseStorageSuitModule

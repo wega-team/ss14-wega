@@ -4,7 +4,7 @@ namespace Content.Shared.Genetics;
 public sealed partial class SpeedUpGenComponent : Component
 {
     public float SpeedModifier = 1.25f;
-	
-	[DataField]
+
+    [DataField]
     public bool DamageBooster = true;
 }

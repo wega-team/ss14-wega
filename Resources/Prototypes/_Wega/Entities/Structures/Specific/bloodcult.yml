@@ -17,6 +17,7 @@
         "#ff0000"
   - type: Physics
     bodyType: Static
+    canCollide: False
   - type: UseDelay
     delay: 5
 
@@ -80,9 +81,6 @@
   components:
   - type: Sprite
     state: barrier
-  - type: Physics
-    bodyType: Dynamic
-    canCollide: false
   - type: Fixtures
     fixtures:
       barrier:
@@ -165,8 +163,8 @@
     enabled: true
 
 - type: entity
-  id: BloodCultConstruct
   parent: BaseStructure
+  id: BloodCultConstruct
   name: construct
   description: A strange floating structure in the air.
   suffix: DO NOT MAP
@@ -174,8 +172,6 @@
   - type: Sprite
     sprite: _Wega/Structures/Specific/bloodcult_structures.rsi
     state: construct-cult
-  - type: Physics
-    bodyType: Dynamic
   - type: Construct
   - type: Damageable
     damageModifierSet: StructuralMetallic
@@ -225,8 +221,6 @@
   components:
   - type: Anchorable
     tool: BloodDagger
-  - type: Physics
-    bodyType: Dynamic
   - type: InteractionOutline
   - type: BloodStructure
     fixture: fix1
@@ -407,8 +401,6 @@
   - type: Sprite
     sprite: _Wega/Structures/Specific/bloodcult_structures.rsi
     state: pylon
-  - type: Physics
-    bodyType: Dynamic
   - type: BloodPylon
   - type: BloodStructure
     fixture: fix1

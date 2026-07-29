@@ -95,26 +95,22 @@
   id: MiniSyringePax
   suffix: Pax
   components:
-  - type: SolutionContainerManager
-    solutions:
-      injector:
-        maxVol: 7.5
-        reagents:
-        - ReagentId: Pax
-          Quantity: 7.5
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Pax
+        Quantity: 7.5
 
 - type: entity
   parent: MiniSyringe
   id: MiniSyringeImpedrezene
   suffix: Impedrezene
   components:
-  - type: SolutionContainerManager
-    solutions:
-      injector:
-        maxVol: 7.5
-        reagents:
-        - ReagentId: ImpedrezeneNoDamage
-          Quantity: 7.5
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: ImpedrezeneNoDamage
+        Quantity: 7.5
 
 - type: entity
   parent: BaseItem
@@ -303,7 +299,7 @@
       - Screwing
     useSound:
       collection: Screwdriver
-      
+
 - type: entity
   parent: BaseItemRecharger
   id: TurboItemRechargerXenoborg
@@ -454,3 +450,4 @@
     whitelist:
       components:
         - FloorTile
+

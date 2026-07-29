@@ -23,9 +23,10 @@ public abstract partial class SharedToggleableEquipmentHudSystem<T> : EntitySyst
     public override void Initialize()
     {
         base.Initialize();
-        SubscribeLocalEvent<T, ToggleActionEvent>(OnToggleAction);
-        SubscribeLocalEvent<T, ComponentInit>(OnInit);
+
+        SubscribeLocalEvent<T, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<T, ComponentShutdown>(OnShutdown);
+        SubscribeLocalEvent<T, ToggleActionEvent>(OnToggleAction);
         SubscribeLocalEvent<T, GetItemActionsEvent>(OnGetItemActions);
     }
 
@@ -52,7 +53,7 @@ public abstract partial class SharedToggleableEquipmentHudSystem<T> : EntitySyst
         }
     }
 
-    private void OnInit(Entity<T> ent, ref ComponentInit args)
+    private void OnMapInit(Entity<T> ent, ref MapInitEvent args)
     {
         _actionContainer.EnsureAction(ent, ref ent.Comp.ActionEntity, ent.Comp.ToggleAction);
         _actions.AddAction(ent.Owner, ref ent.Comp.ActionEntity, ent.Comp.ToggleAction);

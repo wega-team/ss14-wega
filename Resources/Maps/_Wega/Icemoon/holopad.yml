@@ -135,8 +135,6 @@ entities:
       pos: 0.5,-0.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 3
 - proto: HolopadLongRange

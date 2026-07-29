@@ -54,7 +54,7 @@ public sealed partial class AtrocinatorModuleHandler : ModuleActionHandler
 
         Audio.PlayPvs(args.ActivationSound, user);
         ModularSuit.UseCoreCharge(ent.Owner, moduleComp.PowerInstanceUsage);
-        Popup.PopupPredicted(Loc.GetString("modsuit-atrocinator-used"), user, null);
+        Popup.PopupEntity(Loc.GetString("modsuit-atrocinator-used"), user);
 
         args.Handled = true;
     }

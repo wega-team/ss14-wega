@@ -3,8 +3,6 @@ using Content.Server.Actions;
 using Content.Server.Administration.Logs;
 using Content.Server.Antag;
 using Content.Server.Bed.Cryostorage;
-using Content.Server.Body.Components;
-using Content.Server.Body.Systems;
 using Content.Server.GameTicking.Rules.Components;
 using Content.Server.Mind;
 using Content.Server.Objectives;
@@ -67,7 +65,6 @@ namespace Content.Server.GameTicking.Rules
         {
             base.Initialize();
 
-            SubscribeLocalEvent<BloodCultRuleComponent, ComponentStartup>(OnRuleStartup);
             SubscribeLocalEvent<BloodCultRuleComponent, AfterAntagEntitySelectedEvent>(OnCultistSelected);
 
             SubscribeLocalEvent<BloodCultistComponent, ComponentStartup>((_, _, _) => CheckStage());
@@ -84,8 +81,10 @@ namespace Content.Server.GameTicking.Rules
             SubscribeLocalEvent<BloodCultistComponent, EntityZombifiedEvent>(OnCultistZombified);
         }
 
-        private void OnRuleStartup(EntityUid uid, BloodCultRuleComponent component, ComponentStartup args)
+        protected override void Started(EntityUid uid, BloodCultRuleComponent component,
+            GameRuleComponent gameRule, GameRuleStartedEvent args)
         {
+            base.Started(uid, component, gameRule, args);
             component.SelectedGod = (BloodCultGod)_random.Next(0, 3);
         }
 

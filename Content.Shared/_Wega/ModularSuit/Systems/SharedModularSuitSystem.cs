@@ -51,6 +51,11 @@ public abstract partial class SharedModularSuitSystem : EntitySystem
 
     private void OnMapInit(Entity<ModularSuitComponent> ent, ref MapInitEvent args)
     {
+        Container.EnsureContainer<ContainerSlot>(ent, CoreContainer);
+        Container.EnsureContainer<Container>(ent, PartContainer);
+        Container.EnsureContainer<Container>(ent, ModuleContainer);
+        Container.EnsureContainer<Container>(ent, HiddenClothingContainer);
+
         _actionContainer.EnsureAction(ent, ref ent.Comp.ToggleDeployActionEntity, ent.Comp.ToggleDeployAction);
         _actionContainer.EnsureAction(ent, ref ent.Comp.ToggleUiActionEntity, ent.Comp.ToggleUiAction);
 

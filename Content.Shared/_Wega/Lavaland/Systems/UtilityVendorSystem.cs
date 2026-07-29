@@ -4,7 +4,6 @@ using Content.Shared.Lavaland.Components;
 using Content.Shared.Whitelist;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
-using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Lavaland;
 
@@ -18,22 +17,26 @@ public sealed partial class UtilityVendorSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<UtilityVendorComponent, ComponentInit>(OnComponentInit);
+        SubscribeLocalEvent<UtilityVendorComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<UtilityVendorComponent, BoundUIOpenedEvent>(UpdateUiState);
         SubscribeLocalEvent<UtilityVendorComponent, EntInsertedIntoContainerMessage>(UpdateUiState);
         SubscribeLocalEvent<UtilityVendorComponent, EntRemovedFromContainerMessage>(UpdateUiState);
         SubscribeLocalEvent<UtilityVendorComponent, UtilityVendorPurchaseMessage>(OnPurchaseMessage);
     }
 
-    private void OnComponentInit(EntityUid uid, UtilityVendorComponent component, ComponentInit args)
+    private void OnMapInit(EntityUid uid, UtilityVendorComponent component, MapInitEvent args)
     {
-        if (!_itemSlots.TryGetSlot(uid, "vendor_card", out var slot))
-            return;
-
-        slot.Whitelist = new EntityWhitelist
+        var itemSlots = EnsureComp<ItemSlotsComponent>(uid);
+        if (!_itemSlots.TryGetSlot(uid, UtilityVendorComponent.VendorSlotId, out var slot, itemSlots))
         {
-            Components = new[] { "PointsCard" }
-        };
+            slot = new ItemSlot();
+            _itemSlots.AddItemSlot(uid, UtilityVendorComponent.VendorSlotId, slot, itemSlots);
+
+            slot.Whitelist = new EntityWhitelist
+            {
+                Components = new[] { "PointsCard" }
+            };
+        }
 
         component.CardSlot = slot;
     }

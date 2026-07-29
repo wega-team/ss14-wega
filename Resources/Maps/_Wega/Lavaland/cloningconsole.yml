@@ -654,7 +654,6 @@ entities:
   - uid: 45
     components:
     - type: Transform
-      rot: -1.5707963267948966 rad
       pos: 1.5,3.5
       parent: 1
 - proto: GrilleBroken
@@ -662,7 +661,6 @@ entities:
   - uid: 50
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
       pos: 0.5,4.5
       parent: 1
 - proto: GrilleDiagonal

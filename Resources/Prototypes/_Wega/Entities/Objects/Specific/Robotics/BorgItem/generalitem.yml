@@ -231,7 +231,7 @@
       path: /Audio/Machines/phasein.ogg
 
 - type: entity
-  parent: DrinkBase
+  parent: [ DrinkBase, SolutionToolSmall ]
   id: BorgDrinkSolutionWaterCommon
   name: water generation
   suffix: Water
@@ -243,14 +243,7 @@
     - state: icon
     - state: water
   - type: Label
-    currentLabel: reagent-name-water
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 30
-        reagents:
-        - ReagentId: Water
-          Quantity: 0
+    localizedLabel: reagent-name-water
   - type: FitsInDispenser
     solution: drink
   - type: SolutionRegeneration

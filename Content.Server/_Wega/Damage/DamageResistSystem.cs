@@ -15,7 +15,7 @@ public sealed partial class DamageResistSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<DamageResistComponent, DamageChangedEvent>(OnDamageChanged);
+        SubscribeLocalEvent<DamageResistComponent, DamageDealtEvent>(OnDamageChanged);
     }
 
     public override void Update(float frameTime)
@@ -44,26 +44,26 @@ public sealed partial class DamageResistSystem : EntitySystem
         }
     }
 
-    private void OnDamageChanged(Entity<DamageResistComponent> ent, ref DamageChangedEvent args)
+    private void OnDamageChanged(Entity<DamageResistComponent> ent, ref DamageDealtEvent args)
     {
-        if (args.DamageDelta is null || IsHealing(args.DamageDelta))
+        if (args.Damage.GetTotal() <= 0)
             return;
 
         var healing = new DamageSpecifier();
-        foreach (var (type, delta) in args.DamageDelta.DamageDict)
+        foreach (var (type, amount) in args.Damage.DamageDict)
         {
             if (!ProtoMan.TryIndex(type, out var damageProto))
                 continue;
 
             if (ent.Comp.Resistances.TryGetValue(damageProto, out var resist))
             {
-                var healAmount = delta * resist.ResistFactor;
+                var healAmount = amount * resist.ResistFactor;
                 healing.DamageDict.Add(damageProto.ID, -healAmount);
             }
         }
 
         if (healing.DamageDict.Count > 0)
-            _damageable.TryChangeDamage(ent.Owner, healing, true);
+            _damageable.TryChangeDamage(ent.Owner, healing, true, false);
     }
 
     private bool IsHealing(DamageSpecifier damage)

@@ -27,7 +27,8 @@ public sealed partial class OutfitSystem : EntitySystem
     [Dependency] private ItemSlotsSystem _itemSlotsSystem = default!;
     [Dependency] private StorageSystem _storageSystem = default!;
 
-    public bool SetOutfit(EntityUid target, string gear, Action<EntityUid, EntityUid>? onEquipped = null, bool unremovable = false)
+    public bool SetOutfit(EntityUid target, string gear, Action<EntityUid, EntityUid>? onEquipped = null, bool unremovable = false,
+        bool spawnInHands = true) // Corvax-Wega-Force-Loadout-Edit
     {
         if (!TryComp(target, out InventoryComponent? inventoryComponent))
             return false;
@@ -98,7 +99,7 @@ public sealed partial class OutfitSystem : EntitySystem
             }
         }
 
-        if (TryComp(target, out HandsComponent? handsComponent))
+        if (TryComp(target, out HandsComponent? handsComponent) && spawnInHands) // Corvax-Wega-Force-Loadout-Edit
         {
             foreach (var prototype in startingGear.Inhand)
             {

@@ -21,6 +21,9 @@ public sealed partial class NoBreathingGenSystem : EntitySystem
 
     private void OnShutdown(Entity<NoBreathingGenComponent> ent, ref ComponentShutdown args)
     {
+        if (TerminatingOrDeleted(ent))
+            return;
+
         EnsureComp<RespiratorComponent>(ent);
     }
 }
