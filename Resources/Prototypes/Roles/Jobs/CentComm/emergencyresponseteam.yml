@@ -12,6 +12,7 @@
   - AllAccess
   access:
   - CentralCommand
+  - BlueShieldOfficer # Corwax-Wega-BSO-Access
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, DeathRattleImplantCentcomm, BluespaceLifelineImplant ] # Corvax-Wega-Add
@@ -100,6 +101,7 @@
   - AllAccess
   access:
   - CentralCommand
+  - BlueShieldOfficer # Corwax-Wega-BSO-Access
   special:
   - !type:AddComponentSpecial
     components:
@@ -198,6 +200,7 @@
   - AllAccess
   access:
   - CentralCommand
+  - BlueShieldOfficer # Corwax-Wega-BSO-Access
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, DeathRattleImplantCentcomm, BluespaceLifelineImplant ] # Corvax-Wega-Add
@@ -303,6 +306,7 @@
   - AllAccess
   access:
   - CentralCommand
+  - BlueShieldOfficer # Corwax-Wega-BSO-Access
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, DeathRattleImplantCentcomm, BluespaceLifelineImplant ] # Corvax-Wega-Add
@@ -397,6 +401,7 @@
   - AllAccess
   access:
   - CentralCommand
+  - BlueShieldOfficer # Corwax-Wega-BSO-Access
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, DeathRattleImplantCentcomm, BluespaceLifelineImplant ] # Corvax-Wega-Add
@@ -474,6 +479,7 @@
   - AllAccess
   access:
   - CentralCommand
+  - BlueShieldOfficer # Corwax-Wega-BSO-Access
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, DeathRattleImplantCentcomm, BluespaceLifelineImplant ] # Corvax-Wega-Add

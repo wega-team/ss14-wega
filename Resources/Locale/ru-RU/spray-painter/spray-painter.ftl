@@ -82,6 +82,14 @@ spray-painter-style-airlockstandard-salvage = Утилизаторский
 spray-painter-style-airlockstandard-science = Научный
 spray-painter-style-airlockstandard-security = Служба безопасности
 spray-painter-style-airlockstandard-virology = Вирусология
+spray-painter-style-airlockstandard-captain = Капитан
+spray-painter-style-airlockstandard-headofpersonal = ГП
+spray-painter-style-airlockstandard-headofsecurity = ГСБ
+spray-painter-style-airlockstandard-chiefmedicalofficer = ГВ
+spray-painter-style-airlockstandard-chiefengineer = СИ
+spray-painter-style-airlockstandard-researchdirector = НР
+spray-painter-style-airlockstandard-quartermaster = Квартирмейстер
+spray-painter-style-airlockstandard-blueshield = ОСЩ
 
 spray-painter-style-airlockglass-atmospherics = Атмос
 spray-painter-style-airlockglass-basic = Обычный
@@ -96,6 +104,14 @@ spray-painter-style-airlockglass-salvage = Утилизаторский
 spray-painter-style-airlockglass-science = Научный
 spray-painter-style-airlockglass-security = Служба безопасности
 spray-painter-style-airlockglass-virology = Вирусология
+spray-painter-style-airlockglass-captain = Капитан
+spray-painter-style-airlockglass-headofpersonal = ГП
+spray-painter-style-airlockglass-headofsecurity = ГСБ
+spray-painter-style-airlockglass-chiefmedicalofficer = ГВ
+spray-painter-style-airlockglass-chiefengineer = СИ
+spray-painter-style-airlockglass-researchdirector = НР
+spray-painter-style-airlockglass-quartermaster = Квартирмейстер
+spray-painter-style-airlockglass-blueshield = ОСЩ
 
 # Lockers
 spray-painter-style-locker-atmospherics = Атмос
@@ -123,6 +139,7 @@ spray-painter-style-locker-salvage = Утилизатор
 spray-painter-style-locker-scientist = Научный
 spray-painter-style-locker-security = Служба безопасности
 spray-painter-style-locker-welding = Сварочный
+spray-painter-style-locker-blueshield = ОСЩ
 
 spray-painter-style-closet-basic = Обычный
 spray-painter-style-closet-biohazard = Биологическая опасность

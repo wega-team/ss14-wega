@@ -10,4 +10,4 @@
     stateDoorOpen: blueshield_open
     stateDoorClosed: blueshield_door
   - type: AccessReader
-    access: [["Command"]]
+    access: [["BlueShieldOfficer"]]

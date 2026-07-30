@@ -5,6 +5,6 @@ namespace Content.Shared._Wega.Metabolism;
 [RegisterComponent]
 public sealed partial class DisableMetabolismEffectsComponent : Component
 {
-    [DataField("allowed")]
-    public List<EntityEffect> AllowedEffects = new();
+    [DataField("allowed", required: true)]
+    public List<EntityEffect> AllowedEffects = default!;
 }
