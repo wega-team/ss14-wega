@@ -1350,6 +1350,11 @@
           type: SurveillanceCameraMonitorBoundUserInterface
         enum.WiresUiKey.Key:
           type: WiresBoundUserInterface
+# Corvax-Wega-Start
+  - type: Speech
+    speechVerb: Robotic
+  - type: SurveillanceCameraSpeaker
+# Corvax-Wega-End
 
 - type: entity
   parent: BaseComputer

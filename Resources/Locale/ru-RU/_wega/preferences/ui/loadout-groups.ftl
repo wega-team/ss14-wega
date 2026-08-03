@@ -3,6 +3,7 @@ loadout-group-top = Верхнее белье
 loadout-group-bottom = Нижнее белье
 loadout-group-socks = Носки
 loadout-group-base-shoes = Обувь, базовая
+loadout-group-sec-badge = СБ, жетоны
 
 # Heads
 loadout-group-sponsor-head = Спонсор, голова

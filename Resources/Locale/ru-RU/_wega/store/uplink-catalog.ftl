@@ -120,3 +120,6 @@ uplink-loyalty-implant-desc = Заведи себе верную прислуг�
 
 uplink-syndicate-segway-crate-name = Ящик с сигвеем
 uplink-syndicate-segway-crate-desc = Ящик с двухколесным транспортным средством, которое поможет вам скрыться от сотрудников службы безопасности. Или нет.
+
+uplink-casebadge-name = Кейс для жетонов
+uplink-casebadge-desc = Маленькая сумка для хранения трофеев с поверженных СБ.

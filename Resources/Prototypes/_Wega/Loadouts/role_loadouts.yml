@@ -27,6 +27,7 @@
   - BrigmedicJumpsuit
   - BrigmedicBackpack
   - BrigmedicOuterClothing
+  - WegaBrigmedBadge
   - AssistiveItems
   - SurvivalMedical
   - Trinkets
@@ -179,6 +180,7 @@
   - SecurityBackpack
   - SecurityBelt
   - WardenOuterClothing
+  - WegaDefoltBadge
   - SecurityShoes
   - AssistiveItems
   - SurvivalSecurity

@@ -581,3 +581,9 @@
 
 - type: Tag
   id: TechnologyDiskT3
+
+- type: Tag
+  id: Badge
+
+- type: Tag
+  id: Camera
