@@ -89,7 +89,7 @@
 - type: entity
   name: wiretapping camera alpha
   description: A small camera that clearly isn't watching you. Don't forget to set it up before installing.
-  parent: [ BaseItem, Clothing ]
+  parent: BaseClothingAccessories
   id: WiretappingCameraAlpha
   components:
     - type: Sprite
@@ -100,10 +100,9 @@
       deviceNetId: Wired
       receiveFrequencyId: SurveillanceCameraAlpha
       transmitFrequencyId: SurveillanceCamera
-    - type: Clothing
-      quickEquip: true
-      slots:
-      - neck
+    - type: ClothingUpgrade
+      tags: [ Camera ]
+      examineText: clothing-upgrade-examine-text-bodycam
     - type: SurveillanceCamera
       networkSet: true
     - type: WirelessNetworkConnection
@@ -116,12 +115,24 @@
           type: SurveillanceCameraSetupBoundUi
     - type: Item
       size: Tiny
+    - type: SurveillanceCameraMicrophone
+      blacklist:
+        components:
+          - SurveillanceCamera
+          - SurveillanceCameraMonitor
+          - RadioSpeaker
+    - type: ActiveListener
+      range: 10
     - type: Construction
       deconstructionTarget: null
       graph: Bodycam
       node: alt
     - type: StationAiVision
       range: 2
+    - type: Tag
+      tags:
+      - UniformUpgrade
+      - Camera
 
 - type: entity
   parent: WiretappingCameraAlpha
@@ -136,23 +147,27 @@
 - type: entity
   name: wiretapping camera alpha off
   description: A small camera that clearly isn't watching you. Don't forget to set it up before installing.
-  parent: [ BaseItem, Clothing ]
+  parent: BaseClothingAccessories
   id: WiretappingCameraAlphaOff
   components:
     - type: Sprite
       sprite: _Wega/Objects/Devices/wiretapping.rsi
       layers:
       - state: wiretapping_camera-off
-    - type: Clothing
-      quickEquip: true
-      slots:
-      - neck
+    - type: ClothingUpgrade
+      tags: [ Camera ]
+      examineText: clothing-upgrade-examine-text-bodycam
     - type: Item
       size: Tiny
     - type: Construction
       deconstructionTarget: null
       graph: Bodycam
       node: off
+    - type: Tag
+      tags:
+      - UniformUpgrade
+      - Camera
+
 # - type: entity
   # name: wiretapping camera beta
   # parent: WiretappingCameraAlpha

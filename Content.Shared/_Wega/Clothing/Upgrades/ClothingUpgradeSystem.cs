@@ -2,8 +2,10 @@ using System.Linq;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Armor;
 using Content.Shared.Atmos;
+using Content.Shared.ActionBlocker;
 using Content.Shared.Clothing.EntitySystems;
 using Content.Shared.Clothing.Upgrades.Components;
+using Content.Shared.Clothing;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Database;
 using Content.Shared.Examine;
@@ -21,6 +23,7 @@ namespace Content.Shared.Clothing.Upgrades;
 
 public sealed partial class ClothingUpgradeSystem : EntitySystem
 {
+    [Dependency] private ActionBlockerSystem _actionBlocker = default!;
     [Dependency] private ISharedAdminLogManager _adminLog = default!;
     [Dependency] private SharedContainerSystem _container = default!;
     [Dependency] private EntityWhitelistSystem _entityWhitelist = default!;
@@ -39,6 +42,8 @@ public sealed partial class ClothingUpgradeSystem : EntitySystem
         SubscribeLocalEvent<UpgradeableClothingComponent, InventoryRelayedEvent<GetFireProtectionEvent>>(RelayInventoryEvent,
             after: [typeof(FireProtectionSystem)]);
 
+        SubscribeLocalEvent<UpgradeableClothingComponent, ClothingGotEquippedEvent>(OnEquipped);
+        SubscribeLocalEvent<UpgradeableClothingComponent, ClothingGotUnequippedEvent>(OnUnequipped);
         SubscribeLocalEvent<UpgradeableClothingComponent, MapInitEvent>(OnInit);
         SubscribeLocalEvent<UpgradeableClothingComponent, AfterInteractUsingEvent>(OnAfterInteractUsing);
         SubscribeLocalEvent<UpgradeableClothingComponent, ExaminedEvent>(OnExamine);
@@ -54,6 +59,18 @@ public sealed partial class ClothingUpgradeSystem : EntitySystem
     private void OnInit(Entity<UpgradeableClothingComponent> ent, ref MapInitEvent args)
     {
         _container.EnsureContainer<Container>(ent, ent.Comp.UpgradesContainerId);
+    }
+
+    private void OnEquipped(Entity<UpgradeableClothingComponent> ent, ref ClothingGotEquippedEvent args)
+    {
+        ent.Comp.User = args.Wearer;
+        Dirty(ent);
+    }
+
+    private void OnUnequipped(Entity<UpgradeableClothingComponent> ent, ref ClothingGotUnequippedEvent args)
+    {
+        ent.Comp.User = null;
+        Dirty(ent);
     }
 
     private void OnAfterInteractUsing(Entity<UpgradeableClothingComponent> ent, ref AfterInteractUsingEvent args)
@@ -106,7 +123,10 @@ public sealed partial class ClothingUpgradeSystem : EntitySystem
 
     private void OnGetVerb(Entity<UpgradeableClothingComponent> ent, ref GetVerbsEvent<Verb> args)
     {
-        if (!args.CanAccess || !args.CanInteract || !args.CanComplexInteract)
+        if (!args.CanInteract || args.Hands == null)
+            return;
+
+        if (ent.Comp.User != null && args.User != ent.Comp.User && _actionBlocker.CanInteract(ent.Comp.User.Value, null))
             return;
 
         var upgrades = GetCurrentUpgrades(ent);

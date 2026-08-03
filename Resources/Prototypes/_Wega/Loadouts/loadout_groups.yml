@@ -1824,3 +1824,47 @@
   - ClothingHandsGlovesCaptain
   - ClothingHandsGlovesSheriff
   - ClothingHandsGlovesCaptainWhite
+
+- type: loadoutGroup
+  id: WegaDefoltBadge
+  name: loadout-group-sec-badge
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - AccessoriesBadgeSecT0
+  - AccessoriesBadgeSecT1
+  - AccessoriesBadgeSecT2
+  - AccessoriesBadgeSecT3
+  - AccessoriesBadgeComT1
+  - AccessoriesBadgeComT2
+  - AccessoriesBadgeComT3
+
+- type: loadoutGroup
+  id: WegaDecBadge
+  name: loadout-group-sec-badge
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - AccessoriesBadgeDec
+  - AccessoriesBadgeSecT0
+  - AccessoriesBadgeSecT1
+  - AccessoriesBadgeSecT2
+  - AccessoriesBadgeSecT3
+  - AccessoriesBadgeComT1
+  - AccessoriesBadgeComT2
+  - AccessoriesBadgeComT3
+  
+- type: loadoutGroup
+  id: WegaBrigmedBadge
+  name: loadout-group-sec-badge
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - AccessoriesBadgeBrigmed
+  - AccessoriesBadgeSecT0
+  - AccessoriesBadgeSecT1
+  - AccessoriesBadgeSecT2
+  - AccessoriesBadgeSecT3
+  - AccessoriesBadgeComT1
+  - AccessoriesBadgeComT2
+  - AccessoriesBadgeComT3

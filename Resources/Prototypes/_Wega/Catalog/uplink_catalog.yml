@@ -697,3 +697,14 @@
     blacklist:
       tags:
       - NukeOpsUplink
+
+- type: listing
+  id: uplinkCaseBadge
+  name: uplink-casebadge-name
+  description: uplink-casebadge-desc
+  productEntity: BadgeCase
+  categories:
+  - UplinkPointless
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1

@@ -15,7 +15,10 @@ public sealed partial class SlimeHungerComponent : Component
     public float MaxHunger = 200f;
 
     [DataField("feedCooldown")]
-    public float FeedCooldown = 4f;
+    public float FeedCooldown = 1f;
+
+    [DataField("modifierFood")]
+    public float ModifierFood = 1f;
 
     [ViewVariables(VVAccess.ReadWrite)]
     public TimeSpan LastFeedTime;

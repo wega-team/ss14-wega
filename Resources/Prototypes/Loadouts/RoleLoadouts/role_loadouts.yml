@@ -620,6 +620,7 @@
   - SecurityBackpack
   - SecurityBelt
   - HeadofSecurityOuterClothing
+  - WegaDefoltBadge # Corvax-Wega-Add
   - SecurityShoes
   # Corvax-Wega-start
   - HeadofSecurityTop
@@ -641,6 +642,7 @@
   - SecurityBackpack
   - SecurityBelt
   - WardenOuterClothing
+  - WegaDefoltBadge # Corvax-Wega-Add
   - SecurityShoes
   - AssistiveItems
   - SurvivalSecurity
@@ -661,6 +663,7 @@
   - SecurityJumpsuit
   - SecurityBackpack
   - SecurityOuterClothing
+  - WegaDefoltBadge # Corvax-Wega-Add
   - SecurityShoes
   - SecurityPDA
   - SecurityBelt
@@ -684,6 +687,7 @@
   - DetectiveJumpsuit
   - SecurityBackpack
   - DetectiveOuterClothing
+  - WegaDecBadge # Corvax-Wega-Add
   - SecurityShoes
   - AssistiveItems
   - SurvivalSecurity
@@ -701,6 +705,7 @@
   groups:
   - Inventory # Corvax-Loadouts
   - SecurityCadetJumpsuit
+  - WegaDefoltBadge # Corvax-Wega-Add
   - SecurityBackpack
   - AssistiveItems
   - SurvivalSecurity
