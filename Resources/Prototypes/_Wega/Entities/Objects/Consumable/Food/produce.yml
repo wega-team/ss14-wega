@@ -121,7 +121,7 @@
 
 - type: entity
   name: demonic watermelon
-  parent: [FoodProduceBase, ItemHeftyBase]
+  parent: [FoodProduceBase, ItemHeftyBase, BaseSlicingRefinable]
   id: FoodDemonicWatermelon
   description: "Who would have thought that the main symbol of evil would be a watermelon?"
   components:
@@ -819,7 +819,7 @@
 
 - type: entity
   name: melon
-  parent: [FoodProduceBase, ItemHeftyBase]
+  parent: [FoodProduceBase, ItemHeftyBase, BaseSlicingRefinable]
   id: FoodMelon
   description: "A fruit that charges with solar energy!"
   components:
@@ -910,7 +910,7 @@
 
 - type: entity
   name: catmelon
-  parent: [FoodProduceBase, ItemHeftyBase]
+  parent: [FoodProduceBase, ItemHeftyBase, BaseSlicingRefinable]
   id: FoodCatMelon
   description: "Melon with cat ears???"
   components:
@@ -963,9 +963,8 @@
     refineResult:
     - id: FoodCatMelonSlice
       amount: 5
-  - type: Butcherable
-    spawned:
     - id: ClothingHeadHatCatEarsMelon
+      amount: 1
   - type: Tag
     tags:
     - Fruit

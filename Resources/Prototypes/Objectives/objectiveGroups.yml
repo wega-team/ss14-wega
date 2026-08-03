@@ -27,7 +27,6 @@
     HandTeleporterStealObjective: 0.5
     EnergyMagnumStealObjective: 0.5
     GlovesKravMagaStealObjective: 0.5 # corvax-wega-krav-maga
-    BadgeSecStealObjective: 0.5 # corvax-wega-krav-maga
     CombatRCDStealObjective: 1 # corvax-wega-combatRCD
 
 - type: weightedRandom

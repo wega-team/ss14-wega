@@ -40,20 +40,17 @@
   weights:
     BloodBrotherSharedKillRandomPersonObjective: 1.0
     BloodBrotherSharedEliminateRandomPersonObjective: 1.0
-    BloodBrotherSharedEliminateRandomHeadObjective: 0.25
+    BloodBrotherSharedEliminateRandomHeadObjective: 0.5
+    BloodBrotherKillStationAiObjective: 0.5
+    
 
 - type: weightedRandom
   id: BloodBrotherSharedStealObjectiveGroup
   weights:
-    BloodBrotherSharedCMOHyposprayStealObjective: 1
-    BloodBrotherSharedCMOCrewMonitorStealObjective: 1
-    BloodBrotherSharedRDHardsuitStealObjective: 1
-    BloodBrotherSharedMagbootsStealObjective: 1
-    BloodBrotherSharedClipboardStealObjective: 1
+    BloodBrotherBadgeSecStealObjective: 1
     BloodBrotherSharedCaptainIDStealObjective: 1
-    BloodBrotherSharedHandTeleporterStealObjective: 0.5
-    BloodBrotherSharedCaptainJetpackStealObjective: 0.5
     BloodBrotherSharedCaptainGunStealObjective: 0.5
+    BloodBrotherSharedCaptainDiskStealObjective: 0.5
     BloodBrotherSharedEnergyMagnumStealObjective: 0.5
     BloodBrotherSharedGlovesKravMagaStealObjective: 0.5
 
