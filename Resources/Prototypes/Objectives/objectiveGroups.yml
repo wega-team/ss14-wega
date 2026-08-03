@@ -6,7 +6,7 @@
     TraitorObjectiveGroupKill: 1
     TraitorObjectiveGroupState: 1 #As in, something about your character. Alive, dead, arrested, gained an ability...
     TraitorObjectiveGroupSocial: 1 #Involves helping/harming others without killing them or stealing their stuff
-    TraitorObjectiveGroupSabotage: 0.5 # Corvax
+    # TraitorObjectiveGroupSabotage: 0.5 # Corvax Corvax-Wega
     TraitorObjectiveGroupOther: 1
     TraitorObjectiveGroupNukieDisk: 0.05  #Corvax
 
@@ -27,6 +27,7 @@
     HandTeleporterStealObjective: 0.5
     EnergyMagnumStealObjective: 0.5
     GlovesKravMagaStealObjective: 0.5 # corvax-wega-krav-maga
+    BadgeSecStealObjective: 0.5 # corvax-wega-krav-maga
     CombatRCDStealObjective: 1 # corvax-wega-combatRCD
 
 - type: weightedRandom
@@ -59,7 +60,8 @@
   id: TraitorObjectiveGroupOther
   weights:
     HijackTradeStationObjective: 1
-    MailFraudObjective: 1
+    # MailFraudObjective: 1 # Corvax-Wega-Add
+    SupercritAnomaliesObjective: 1
 
 
 #Thief groups

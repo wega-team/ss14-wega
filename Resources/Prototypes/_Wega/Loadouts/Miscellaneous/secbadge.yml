@@ -1,0 +1,207 @@
+# Effect times
+- type: loadoutEffectGroup
+  id: SecBadgeSecT0
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Security
+      time: 10h
+      inverted: true
+
+- type: loadoutEffectGroup
+  id: SecBadgeSecT1
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Security
+      time: 10h
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Security
+      time: 20h
+      inverted: true
+
+- type: loadoutEffectGroup
+  id: SecBadgeSecT2
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Security
+      time: 20h
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Security
+      time: 50h
+      inverted: true
+
+- type: loadoutEffectGroup
+  id: SecBadgeSecT3
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Security
+      time: 50h
+
+- type: loadoutEffectGroup
+  id: SecBadgeComT1
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Security
+      time: 100h
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobWarden
+      time: 10h
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobHeadOfSecurity
+      time: 10h
+
+- type: loadoutEffectGroup
+  id: SecBadgeComT2
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Security
+      time: 200h
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobWarden
+      time: 20h
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobHeadOfSecurity
+      time: 20h
+
+- type: loadoutEffectGroup
+  id: SecBadgeComT3
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Security
+      time: 300h
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobWarden
+      time: 50h
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobHeadOfSecurity
+      time: 50h
+
+- type: loadoutEffectGroup
+  id: SecBadgeDec
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobDetective
+      time: 2h
+
+- type: loadoutEffectGroup
+  id: SecBadgeBrigMed
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobBrigmedic
+      time: 50h
+
+# item
+
+- type: loadout
+  id: AccessoriesBadgeSecT0
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SecBadgeSecT0
+  storage:
+    back:
+    - AccessoriesBadgeSecT0
+    
+- type: loadout
+  id: AccessoriesBadgeSecT1
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SecBadgeSecT1
+  storage:
+    back:
+    - AccessoriesBadgeSecT1
+
+- type: loadout
+  id: AccessoriesBadgeSecT2
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SecBadgeSecT2
+  storage:
+    back:
+    - AccessoriesBadgeSecT2
+
+- type: loadout
+  id: AccessoriesBadgeSecT3
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SecBadgeSecT3
+  storage:
+    back:
+    - AccessoriesBadgeSecT3
+
+- type: loadout
+  id: AccessoriesBadgeComT1
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SecBadgeComT1
+  storage:
+    back:
+    - AccessoriesBadgeComT1
+
+- type: loadout
+  id: AccessoriesBadgeComT2
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SecBadgeComT2
+  storage:
+    back:
+    - AccessoriesBadgeComT2
+
+- type: loadout
+  id: AccessoriesBadgeComT3
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SecBadgeComT3
+  storage:
+    back:
+    - AccessoriesBadgeComT3
+
+- type: loadout
+  id: AccessoriesBadgeDec
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SecBadgeDec
+  storage:
+    back:
+    - AccessoriesBadgeDec
+
+- type: loadout
+  id: AccessoriesBadgeBrigmed
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SecBadgeBrigMed
+  storage:
+    back:
+    - AccessoriesBadgeBrigmed

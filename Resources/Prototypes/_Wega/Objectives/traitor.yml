@@ -22,3 +22,15 @@
   - type: StealCondition
     stealGroup: CombatRCD
     owner: job-name-ce
+
+# BadgeSec
+- type: entity
+  parent: BaseTraitorStealObjective
+  id: BadgeSecStealObjective
+  components:
+  - type: NotJobRequirement
+    jobs: [ SecurityOfficer, HeadOfSecurity, Detective, Warden ]
+  - type: StealCondition
+    stealGroup: BadgeSec
+    minCollectionSize: 3
+    maxCollectionSize: 4
