@@ -1,4 +1,4 @@
-using Content.Server._WL.MetaData.Components;
+using Content.Server.Wega.MetaData.Components;
 using Content.Server.Administration;
 using Content.Server.Charges;
 using Content.Server.Popups;
@@ -8,7 +8,7 @@ using Robust.Shared.Player;
 using Robust.Shared.Utility;
 using System.Linq;
 
-namespace Content.Server._WL.MetaData.Systems;
+namespace Content.Server.Wega.MetaData.Systems;
 
 public sealed partial class RedescribeableSystem : EntitySystem
 {

@@ -1,6 +1,6 @@
 using Robust.Shared.Utility;
 
-namespace Content.Server._WL.MetaData.Components;
+namespace Content.Server.Wega.MetaData.Components;
 
 /// <summary>
 /// Component that allows an entity to be renamed through interaction.
