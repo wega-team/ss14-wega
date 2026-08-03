@@ -32,3 +32,13 @@
           False: { visible: false }
   - type: Machine
     board: SlimeExtractorMachineCircuitboard
+  - type: ResearchClient
+  - type: ActivatableUI
+    key: enum.ResearchClientUiKey.Key
+  - type: ActivatableUIRequiresPower
+  - type: UserInterface
+    interfaces:
+      enum.ResearchClientUiKey.Key:
+        type: ResearchClientBoundUserInterface
+  - type: Speech
+    speechSounds: Pai # it just sounds better
