@@ -199,7 +199,7 @@
   abstract: true
   components:
   - type: Metabolizer
-    metabolizerTypes: [ Human ]
+    metabolizerTypes: [ Ariral ]
 
 - type: entity
   parent: OrganAriral
@@ -299,27 +299,21 @@
   id: OrganAriralEars
 
 - type: entity
-  parent: [ OrganBaseLungs, OrganAriralInternal, OrganAriralMetabolizer ]
+  parent: [ OrganBaseLungs, OrganAriralInternal, OrganHumanMetabolizer ]
   id: OrganAriralLungs
 
 - type: entity
-  parent: [ OrganBaseHeart, OrganAriralInternal]
+  parent: [ OrganBaseHeart, OrganAriralInternal, OrganAriralMetabolizer ]
   id: OrganAriralHeart
-  components:
-  - type: Metabolizer
-    metabolizerTypes: [ Ariral ]
 
 - type: entity
-  parent: [ OrganBaseStomach, OrganAriralInternal ]
+  parent: [ OrganBaseStomach, OrganAriralInternal, OrganAriralMetabolizer ]
   id: OrganAriralStomach
-  components:
-  - type: Metabolizer
-    metabolizerTypes: [ Ariral ]
 
 - type: entity
-  parent: [ OrganBaseLiver, OrganAriralInternal, OrganAriralMetabolizer ]
+  parent: [ OrganBaseLiver, OrganAriralInternal ]
   id: OrganAriralLiver
 
 - type: entity
-  parent: [ OrganBaseKidneys, OrganAriralInternal, OrganAriralMetabolizer ]
+  parent: [ OrganBaseKidneys, OrganAriralInternal ]
   id: OrganAriralKidneys
