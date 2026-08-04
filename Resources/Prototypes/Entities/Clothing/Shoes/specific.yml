@@ -137,8 +137,9 @@
     equippedDirtState: equipped-shoes
   # Corvax-Wega-Dirtable-end
 
+# Не наследует ClothingShoesBaseButcherable — нано-ботинки ниндзи нельзя разделать ножом на ткань.
 - type: entity
-  parent: [ClothingShoesBaseButcherable, BaseHighlyIllegalContraband]
+  parent: [ClothingShoesBase, BaseHighlyIllegalContraband]
   id: ClothingShoesSpaceNinja
   name: space ninja shoes
   description: A pair of nano-enhanced boots with built-in magnetic suction cups.
@@ -150,12 +151,6 @@
   - type: NoSlip
   - type: Magboots # always have gravity because le suction cups
     disabledAutoOff: true # Corvax-Wega-AdvMagboots
-  - type: ClothingSpeedModifier
-    # ninja are masters of sneaking around relatively quickly, won't break cloak
-    walkModifier: 1.3
-    sprintModifier: 1.3
-  - type: FootstepModifier
-    footstepSoundCollection: null
 
 - type: entity
   parent: ClothingShoesBaseButcherable

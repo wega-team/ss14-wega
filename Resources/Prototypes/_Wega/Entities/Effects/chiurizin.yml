@@ -1,0 +1,12 @@
+- type: entity
+  id: ChiurizinStasisVisual
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Effects/rift.rsi
+    state: green_rift
+    drawdepth: Overlays
+  - type: PointLight
+    radius: 2.5
+    energy: 3
+    color: "#55ff00"

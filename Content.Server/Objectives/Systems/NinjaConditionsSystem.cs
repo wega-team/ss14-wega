@@ -1,4 +1,5 @@
 using Content.Server.Objectives.Components;
+using Content.Server.Station.Systems;
 using Content.Shared.Objectives.Components;
 using Content.Shared.Roles;
 using Content.Shared.Roles.Components;
@@ -19,6 +20,7 @@ public sealed partial class NinjaConditionsSystem : EntitySystem
     [Dependency] private NumberObjectiveSystem _number = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private SharedRoleSystem _roles = default!;
+    [Dependency] private StationSystem _station = default!;
 
     public override void Initialize()
     {

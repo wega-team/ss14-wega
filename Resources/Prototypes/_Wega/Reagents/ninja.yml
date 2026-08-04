@@ -1,0 +1,24 @@
+# Inert dye reagents used to tint ninja smoke screen by suit color.
+- type: reagent
+  id: NinjaSmokeRed
+  name: reagent-name-ninja-smoke-red
+  group: Other
+  desc: reagent-desc-ninja-smoke-red
+  physicalDesc: reagent-physical-desc-gaseous
+  color: "#FF2222"
+
+- type: reagent
+  id: NinjaSmokeBlue
+  name: reagent-name-ninja-smoke-blue
+  group: Other
+  desc: reagent-desc-ninja-smoke-blue
+  physicalDesc: reagent-physical-desc-gaseous
+  color: "#2222FF"
+
+- type: reagent
+  id: NinjaSmokeGreen
+  name: reagent-name-ninja-smoke-green
+  group: Other
+  desc: reagent-desc-ninja-smoke-green
+  physicalDesc: reagent-physical-desc-gaseous
+  color: "#22FF22"

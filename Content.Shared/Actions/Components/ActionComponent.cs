@@ -16,6 +16,27 @@ namespace Content.Shared.Actions.Components;
 public sealed partial class ActionComponent : Component
 {
     /// <summary>
+    ///     If not null, this color will modulate the action icon color.
+    /// </summary>
+    /// <remarks>
+    ///     This currently only exists for decal-placement actions, so that the action icons correspond to the color of
+    ///     the decal. But this is probably useful for other actions, including maybe changing color on toggle.
+    /// </remarks>
+    [DataField, AutoNetworkedField]
+    public Color IconColor = Color.White;
+
+    /// <summary>
+    ///     The original <see cref="IconColor"/> this action was.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public Color OriginalIconColor;
+
+    /// <summary>
+    ///     The color the action should turn to when disabled
+    /// </summary>
+    [DataField] public Color DisabledIconColor = Color.DimGray;
+
+    /// <summary>
     ///     Keywords that can be used to search for this action in the action menu.
     /// </summary>
     [DataField, AutoNetworkedField]

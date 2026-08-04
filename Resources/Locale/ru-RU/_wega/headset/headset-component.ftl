@@ -6,3 +6,4 @@ chat-radio-secsquad-four = Дельта
 chat-radio-secsquad-five = Эпсилон
 chat-radio-secsquad-six = Дзета
 chat-radio-seccommand = Командование СБ
+chat-radio-ninja = Ниндзя

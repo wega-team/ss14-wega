@@ -1,0 +1,46 @@
+- type: entity
+  parent: [BaseSimpleMob, MobCombat]
+  id: MobNinjaEnergyClone
+  name: energy clone
+  description: A spectral duplicate of a ninja, assembled from pure energy.
+  categories: [HideSpawnMenu]
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+  - type: NpcFactionMember
+    factions:
+    - SimpleHostile
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+  - type: CombatMode
+  - type: MeleeWeapon
+    attackRate: 0.4
+    angle: 0
+    animation: WeaponArcSlash
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+    damage:
+      types:
+        Slash: 7.5
+  - type: MobState
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      25: Dead
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 80
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3
+    baseSprintSpeed: 4
+  - type: TimedDespawn
+    lifetime: 10

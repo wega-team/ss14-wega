@@ -1,4 +1,5 @@
 using Content.Shared.Damage.Components;
+using Content.Shared._Wega.Ninja;
 using Content.Shared.Physics;
 using Content.Shared.Popups;
 using Content.Shared.Vampire;
@@ -78,7 +79,7 @@ public sealed partial class VampireSystem
     private void OnVampireGlare(Entity<VampireComponent> ent, ref VampireGlareActionEvent args)
     {
         var target = args.Target;
-        if (HasComp<VampireComponent>(target) || HasComp<FlashImmunityComponent>(target))
+        if (HasComp<VampireComponent>(target) || HasComp<FlashImmunityComponent>(target) || HasComp<NinjaVampireProtectionComponent>(target))
             return;
 
         if (HasComp<BibleUserComponent>(target) && !HasTruePower(ent))

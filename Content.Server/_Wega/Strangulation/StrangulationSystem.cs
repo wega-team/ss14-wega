@@ -1,5 +1,6 @@
 using Content.Server.Body.Components;
 using Content.Shared.DoAfter;
+using Content.Shared.Ninja.Components;
 using Content.Shared.Verbs;
 using Content.Shared.Strangulation;
 using Content.Shared.Mobs.Systems;
@@ -13,6 +14,7 @@ using Content.Shared.Movement.Pulling.Systems;
 using Content.Shared.Standing;
 using Content.Shared.Alert;
 using Content.Shared.Speech.EntitySystems;
+using Content.Shared.Speech.Muting;
 using Content.Shared.CombatMode;
 using Robust.Shared.Input.Binding;
 using Content.Shared.Input;
@@ -20,7 +22,7 @@ using Robust.Shared.Map;
 using Robust.Shared.Player;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Hands.EntitySystems;
-using Content.Shared.StatusEffectNew;
+using Content.Shared.StatusEffect;
 
 namespace Content.Server.Strangulation
 {
@@ -107,7 +109,7 @@ namespace Content.Server.Strangulation
                 return;
 
             var target = args.Target ?? default;
-            _statusEffect.TryAddStatusEffectDuration(target, "Muted", TimeSpan.FromSeconds(3f));
+            _statusEffect.TryAddStatusEffect<MutedComponent>(target, "Muted", TimeSpan.FromSeconds(3f), true);
 
             if (args.Cancelled)
             {
@@ -181,6 +183,9 @@ namespace Content.Server.Strangulation
                 return false;
 
             if (HasComp<StrangulationComponent>(target)) //чтобы удушение не мог начать второй душитель во время идущего процесса
+                return false;
+
+            if (HasComp<EnergyNettedComponent>(target))
                 return false;
 
             if (!_mobStateSystem.IsAlive(strangler))

@@ -2,9 +2,18 @@
   id: SpaceNinja
   name: roles-antag-space-ninja-name
   antagonist: true
-  setPreference: false
+  setPreference: true
   objective: roles-antag-space-ninja-objective
   guides: [ SpaceNinja ]
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 10h
+  - !type:DepartmentTimeRequirement
+    department: Security
+    time: 5h
+  - !type:DepartmentTimeRequirement
+    department: Science
+    time: 5h
 
 - type: antagSpecifier
   parent: RestrictedAntag
@@ -23,9 +32,35 @@
   - type: NpcFactionMember
     factions:
     - Syndicate
-  - type: AutoImplant
-    implants:
-    - DeathAcidifierImplant
+  - type: AutoDust
+  - type: RandomMetadata
+    nameSegments:
+    - NamesNinjaTitle
+    - NamesNinja
+    nameFormat: name-format-ninja
+  mindRoles:
+  - MindRoleNinja
+
+# Corvax-Wega: roundstart ninja variant (SubNinja presets) — picks a living player (pickPlayer), unlike the event ghost-role SpaceNinja (pickPlayer: false).
+- type: antagSpecifier
+  parent: RestrictedAntag
+  id: SpaceNinjaRoundstart
+  prefRoles:
+  - SpaceNinja
+  spawnerPrototype: SpawnPointGhostSpaceNinja
+  startingGear: SpaceNinjaGear
+  roleLoadout:
+  - RoleSurvivalSpaceNinja
+  briefing:
+    text: ninja-role-greeting
+    color: Green
+    sound: /Audio/Misc/ninja_greeting.ogg
+  components:
+  - type: SpaceNinja
+  - type: NpcFactionMember
+    factions:
+    - Syndicate
+  - type: AutoDust
   - type: RandomMetadata
     nameSegments:
     - NamesNinjaTitle
@@ -42,7 +77,7 @@
     back: ClothingBackpackSatchelNinja
     mask: ClothingMaskNinja
     head: ClothingHeadHelmetSpaceNinja
-    eyes: ClothingEyesGlassesNightVisionNinja # Corvax-Wega-Edit
+    eyes: ClothingEyesVisorNinja # Corvax-Wega-Edit: родной ниндзя-визор вместо ПНВ
     gloves: ClothingHandsGlovesSpaceNinja
     outerClothing: ClothingOuterSuitSpaceNinja
     shoes: ClothingShoesSpaceNinja
@@ -52,8 +87,8 @@
     pocket2: PinpointerStation
     belt: EnergyKatana
     underwearbottom: ClothingUnderBottomNinja # Corvax-Wega
-  inhand:
-    - JetpackBlackFilled
+ #  inhand:
+ #    - JetpackBlackFilled # Corvax-Wega-Edit
   storage:
     back: # belt holds katana so satchel has the tools for sabotaging things
     - Crowbar
@@ -66,6 +101,26 @@
     - Flare
     - FoodSnackNutribrick
     - DrinkWaterBottleFull
+
+# Corvax-Wega-Edit-Start
+- type: startingGear
+  id: SpaceNinjaGearRespawn
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitNinja
+    back: ClothingBackpackSatchelNinja
+    mask: ClothingMaskNinja
+    head: ClothingHeadHelmetSpaceNinja
+    eyes: ClothingEyesVisorNinja
+    gloves: ClothingHandsGlovesSpaceNinja
+    outerClothing: ClothingOuterSuitSpaceNinja
+    shoes: ClothingShoesSpaceNinja
+    id: NinjaPDA
+    ears: ClothingHeadsetNinja
+    pocket1: SpiderCharge
+    pocket2: PinpointerStation
+    belt: EnergyKatana
+    underwearbottom: ClothingUnderBottomNinja
+# Corvax-Wega-Edit-End
 
 - type: chameleonOutfit
   id: NinjaChameleonOutfit

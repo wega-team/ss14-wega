@@ -8,10 +8,58 @@
   },
   "states": [
     {
-      "name": "icon"
+      "name": "icon_classic",
+      "delays": [
+        [
+          0.5,
+          0.35,
+          0.3,
+          0.3,
+          0.35
+        ]
+      ]
     },
     {
-      "name": "equipped-EARS",
+      "name": "icon_headset_new_green",
+      "delays": [
+        [
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "icon_headset_new_red",
+      "delays": [
+        [
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "icon_headset_new_blue",
+      "delays": [
+        [
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "equipped_classic-EARS",
       "directions": 4
     }
   ]

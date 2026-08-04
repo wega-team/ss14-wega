@@ -9,10 +9,45 @@
   },
   "states": [
     {
-      "name": "icon"
+      "name": "icon_ninja_mask_new_green"
     },
     {
-      "name": "equipped-MASK",
+      "name": "icon_ninja_mask_new_blue"
+    },
+    {
+      "name": "icon_ninja_mask_new_red"
+    },
+    {
+      "name": "icon_ninja_mask_classic_green"
+    },
+    {
+      "name": "icon_ninja_mask_classic_blue"
+    },
+    {
+      "name": "icon_ninja_mask_classic_red"
+    },
+    {
+      "name": "equipped-ninja_mask_new_green",
+      "directions": 4
+    },
+    {
+      "name": "equipped-ninja_mask_new_blue",
+      "directions": 4
+    },
+    {
+      "name": "equipped-ninja_mask_new_red",
+      "directions": 4
+    },
+    {
+      "name": "equipped-ninja_mask_classic_green",
+      "directions": 4
+    },
+    {
+      "name": "equipped-ninja_mask_classic_blue",
+      "directions": 4
+    },
+    {
+      "name": "equipped-ninja_mask_classic_red",
       "directions": 4
     },
     {

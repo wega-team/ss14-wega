@@ -10,6 +10,27 @@
   - AllHostile
   - Wizard
   - Xenoborg
+  - Ninja
+  - Vampire # Corvax-Wega-Vampire
+  - BloodCult # Corvax-Wega-Blood-Cult
+  - LavalandFauna # Corvax-Wega-Lavaland
+
+- type: npcFaction
+  id: Ninja
+  hostile:
+  - NanoTrasen
+  - Dragon
+  - Mouse
+  - Passive
+  - PetsNT
+  - SimpleHostile
+  - SimpleNeutral
+  - Syndicate
+  - Xeno
+  - Zombie
+  - Revolutionary
+  - Wizard
+  - Xenoborg
   - Vampire # Corvax-Wega-Vampire
   - BloodCult # Corvax-Wega-Blood-Cult
   - LavalandFauna # Corvax-Wega-Lavaland
@@ -27,6 +48,7 @@
   - AllHostile
   - Wizard
   - Xenoborg
+  - Ninja
   - Vampire # Corvax-Wega-Vampire
   - BloodCult # Corvax-Wega-Blood-Cult
   - LavalandFauna # Corvax-Wega-Lavaland
@@ -57,6 +79,7 @@
 - type: npcFaction
   id: SimpleHostile
   hostile:
+  - Ninja
   - NanoTrasen
   - Syndicate
   - Passive
@@ -80,6 +103,7 @@
 - type: npcFaction
   id: Syndicate
   hostile:
+  - Ninja
   - NanoTrasen
   - SimpleHostile
   - Xeno
@@ -97,6 +121,7 @@
 - type: npcFaction
   id: Xeno
   hostile:
+  - Ninja
   - NanoTrasen
   - Syndicate
   - Passive
@@ -115,6 +140,7 @@
 - type: npcFaction
   id: Zombie
   hostile:
+  - Ninja
   - NanoTrasen
   - SimpleNeutral
   - SimpleHostile
@@ -134,6 +160,7 @@
 - type: npcFaction
   id: Revolutionary
   hostile:
+  - Ninja
   - NanoTrasen
   - Zombie
   - SimpleHostile
@@ -149,6 +176,7 @@
 - type: npcFaction
   id: AllHostile
   hostile:
+  - Ninja
   - NanoTrasen
   - Dragon
   - Mouse
@@ -170,6 +198,7 @@
 - type: npcFaction
   id: Wizard
   hostile:
+  - Ninja
   - NanoTrasen
   - Dragon
   - Mouse
@@ -191,6 +220,7 @@
 - type: npcFaction
   id: Xenoborg
   hostile:
+  - Ninja
   # they have brains
   - NanoTrasen
   - Syndicate

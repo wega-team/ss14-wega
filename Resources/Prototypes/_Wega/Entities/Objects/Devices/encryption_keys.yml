@@ -1,4 +1,13 @@
 - type: entity
+  id: EncryptionKeyNinja
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: EncryptionKey
+    channels:
+    - Ninja
+    - Binary
+
+- type: entity
   parent: [ EncryptionKey, BaseSecurityLawyerContraband ]
   id: EncryptionKeySecurityRadio
   name: security encryption key

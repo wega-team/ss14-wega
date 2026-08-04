@@ -1,0 +1,24 @@
+<controls:FancyWindow xmlns="https://spacestation14.io"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+                      Title="{Loc 'spider-os-confirm-title'}"
+                      Resizable="False">
+    <BoxContainer Orientation="Vertical" SetWidth="380">
+        <RichTextLabel Name="WarningLabel"
+                       Text="{Loc 'spider-os-confirm-text'}"
+                       Margin="20 16 20 16"
+                       HorizontalAlignment="Center"
+                       HorizontalExpand="True" />
+        <BoxContainer HorizontalExpand="True">
+            <Button Name="ConfirmButton"
+                    Text="{Loc 'spider-os-confirm-yes'}"
+                    SetWidth="150"
+                    Margin="20 0 0 16" />
+            <Control HorizontalExpand="True" />
+            <Button Name="CancelButton"
+                    Text="{Loc 'spider-os-confirm-no'}"
+                    SetWidth="150"
+                    Margin="0 0 20 16" />
+        </BoxContainer>
+    </BoxContainer>
+</controls:FancyWindow>

@@ -30,6 +30,7 @@ using Content.Shared.Weapons.Melee.Components;
 using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Events;
+using Content.Shared.Throwing;
 using Content.Shared.Weapons.Ranged.Systems;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
@@ -67,6 +68,7 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
     [Dependency] private SharedStaminaSystem _stamina = default!;
     [Dependency] private DamageExamineSystem _damageExamine = default!;
     [Dependency] private SharedDirtSystem _dirt = default!; // Corvax-Wega-Dirtable
+    [Dependency] private ThrowingSystem _throwing = default!;
 
     [Dependency] private EntityQuery<DamageableComponent> _damageQuery = default!;
 
@@ -861,11 +863,6 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
         }
 
 
-        if (MobState.IsIncapacitated(target.Value))
-        {
-            return false;
-        }
-
         if (!TryComp<CombatModeComponent>(user, out var combatMode) ||
             combatMode.CanDisarm != true)
         {
@@ -910,8 +907,6 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
         if (attemptEvent.Cancelled)
             return false;
 
-        var chance = CalculateDisarmChance(user, target.Value, inTargetHand, combatMode);
-
         // At this point we diverge
         if (_netMan.IsClient)
         {
@@ -920,12 +915,8 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
             return true;
         }
 
-        if (_random.Prob(chance))
-        {
-            return false;
-        }
-
-        var eventArgs = new DisarmedEvent(target.Value, user, 1 - chance);
+        var disarmFailChance = CalculateDisarmChance(user, target.Value, inTargetHand, combatMode);
+        var eventArgs = new DisarmedEvent(target.Value, user, 1f - disarmFailChance);
         RaiseLocalEvent(target.Value, ref eventArgs);
 
         // Nothing handled it so abort.
@@ -933,6 +924,15 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
         {
             return false;
         }
+
+        _stamina.TakeStaminaDamage(target.Value, 2f, visual: true, source: user);
+
+        var fromPos   = TransformSystem.GetWorldPosition(user);
+        var targetPos = TransformSystem.GetWorldPosition(target.Value);
+        var pushDir   = targetPos - fromPos;
+        if (pushDir == Vector2.Zero) pushDir = Vector2.UnitY;
+        else pushDir = Vector2.Normalize(pushDir);
+        _throwing.TryThrow(target.Value, pushDir * 0.5f, 3f, user, pushbackRatio: 0f, recoil: false);
 
         Interaction.DoContactInteraction(user, target);
         AdminLogger.Add(LogType.DisarmedAction, $"{ToPrettyString(user):user} used disarm on {ToPrettyString(target):target}");

@@ -197,4 +197,189 @@ public abstract partial class SharedVisualBodySystem
         var profileEvt = new ApplyOrganProfileDataEvent(null, profiles);
         RaiseLocalEvent(ent, ref profileEvt);
     }
+
+    /// <summary>
+    /// Clears all markings from every <see cref="VisualOrganMarkingsComponent"/> organ in the body.
+    /// Call this before <see cref="ApplyProfileTo"/> when restoring a body to its original appearance
+    /// so that species-specific markings from a previous disguise don't bleed through.
+    /// </summary>
+    [PublicAPI]
+    public void ClearAllMarkings(Entity<VisualBodyComponent?> ent)
+    {
+        if (!Resolve(ent, ref ent.Comp, false))
+            return;
+
+        var organContainer = _container.EnsureContainer<Container>(ent, BodyComponent.ContainerID);
+        foreach (var organ in organContainer.ContainedEntities)
+        {
+            if (TryComp<VisualOrganMarkingsComponent>(organ, out var markingsComp))
+                SetOrganMarkings((organ, markingsComp), new Dictionary<HumanoidVisualLayers, List<Marking>>());
+        }
+    }
+
+    /// <summary>
+    /// Captures the current <see cref="PrototypeLayerData"/> reference for every
+    /// <see cref="VisualOrganComponent"/> organ in the body.
+    /// Store the result and pass it to <see cref="RestoreOrganAppearances"/> to undo any
+    /// RSI / state changes that <c>CopyAppearanceFrom</c> applies during a disguise.
+    /// </summary>
+    [PublicAPI]
+    public Dictionary<EntityUid, PrototypeLayerData> SaveOrganAppearances(Entity<VisualBodyComponent?> ent)
+    {
+        var saved = new Dictionary<EntityUid, PrototypeLayerData>();
+        if (!Resolve(ent, ref ent.Comp, false))
+            return saved;
+
+        var organContainer = _container.EnsureContainer<Container>(ent, BodyComponent.ContainerID);
+        foreach (var organ in organContainer.ContainedEntities)
+        {
+            if (TryComp<VisualOrganComponent>(organ, out var visualOrgan))
+                saved[organ] = visualOrgan.Data;
+        }
+
+        return saved;
+    }
+
+    /// <summary>
+    /// Re-applies the <see cref="PrototypeLayerData"/> references saved by
+    /// <see cref="SaveOrganAppearances"/>, restoring each organ's RSI path and state.
+    /// Call this before <see cref="ApplyProfileTo"/> on revert so that
+    /// <c>SexStateOverrides</c> are resolved against the correct species RSI.
+    /// </summary>
+    [PublicAPI]
+    public void RestoreOrganAppearances(Dictionary<EntityUid, PrototypeLayerData> saved)
+    {
+        foreach (var (organ, data) in saved)
+        {
+            if (TryComp<VisualOrganComponent>(organ, out var visualOrgan))
+                SetOrganAppearance((organ, visualOrgan), data);
+        }
+    }
+
+    /// <summary>
+    /// Captures the current markings for every <see cref="VisualOrganMarkingsComponent"/> organ.
+    /// Pass the result to <see cref="RestoreOrganMarkings"/> to undo markings copied by a disguise.
+    /// </summary>
+    [PublicAPI]
+    public Dictionary<EntityUid, Dictionary<HumanoidVisualLayers, List<Marking>>> SaveOrganMarkings(Entity<VisualBodyComponent?> ent)
+    {
+        var saved = new Dictionary<EntityUid, Dictionary<HumanoidVisualLayers, List<Marking>>>();
+        if (!Resolve(ent, ref ent.Comp, false))
+            return saved;
+
+        var organContainer = _container.EnsureContainer<Container>(ent, BodyComponent.ContainerID);
+        foreach (var organ in organContainer.ContainedEntities)
+        {
+            if (!TryComp<VisualOrganMarkingsComponent>(organ, out var markingsComp))
+                continue;
+
+            var copy = new Dictionary<HumanoidVisualLayers, List<Marking>>();
+            foreach (var (layer, marks) in markingsComp.Markings)
+                copy[layer] = new List<Marking>(marks);
+            saved[organ] = copy;
+        }
+        return saved;
+    }
+
+    /// <summary>
+    /// Restores organ markings previously captured by <see cref="SaveOrganMarkings"/>.
+    /// Organs not present in <paramref name="saved"/> are cleared.
+    /// </summary>
+    [PublicAPI]
+    public void RestoreOrganMarkings(Entity<VisualBodyComponent?> ent, Dictionary<EntityUid, Dictionary<HumanoidVisualLayers, List<Marking>>> saved)
+    {
+        if (!Resolve(ent, ref ent.Comp, false))
+            return;
+
+        var organContainer = _container.EnsureContainer<Container>(ent, BodyComponent.ContainerID);
+        foreach (var organ in organContainer.ContainedEntities)
+        {
+            if (!TryComp<VisualOrganMarkingsComponent>(organ, out var markingsComp))
+                continue;
+
+            var markings = saved.TryGetValue(organ, out var data)
+                ? data
+                : new Dictionary<HumanoidVisualLayers, List<Marking>>();
+            SetOrganMarkings((organ, markingsComp), markings);
+        }
+    }
+
+    /// <summary>
+    /// Captures each organ's <see cref="OrganProfileData"/> (skin/eye colour, sex) keyed by organ.
+    /// Pass to <see cref="RestoreOrganProfiles"/> to undo a disguise's colour changes.
+    /// </summary>
+    [PublicAPI]
+    public Dictionary<EntityUid, OrganProfileData> SaveOrganProfiles(Entity<VisualBodyComponent?> ent)
+    {
+        var saved = new Dictionary<EntityUid, OrganProfileData>();
+        if (!Resolve(ent, ref ent.Comp, false))
+            return saved;
+
+        var organContainer = _container.EnsureContainer<Container>(ent, BodyComponent.ContainerID);
+        foreach (var organ in organContainer.ContainedEntities)
+        {
+            if (TryComp<VisualOrganComponent>(organ, out var visualOrgan))
+                saved[organ] = visualOrgan.Profile;
+        }
+        return saved;
+    }
+
+    /// <summary>
+    /// Restores organ profiles previously captured by <see cref="SaveOrganProfiles"/>.
+    /// </summary>
+    [PublicAPI]
+    public void RestoreOrganProfiles(Dictionary<EntityUid, OrganProfileData> saved)
+    {
+        foreach (var (organ, profile) in saved)
+        {
+            if (TryComp<VisualOrganComponent>(organ, out var visualOrgan))
+                SetOrganProfile((organ, visualOrgan), profile);
+        }
+    }
+
+    /// <summary>
+    /// Copies each matching organ's <see cref="OrganProfileData"/> (skin/eye colour, sex) from
+    /// <paramref name="source"/> to <paramref name="target"/>, matched by organ layer.
+    /// </summary>
+    [PublicAPI]
+    public void CopyOrganProfilesFrom(Entity<BodyComponent?> source, Entity<BodyComponent?> target)
+    {
+        if (!Resolve(source, ref source.Comp) || !Resolve(target, ref target.Comp))
+            return;
+
+        var sourceContainer = _container.EnsureContainer<Container>(source, BodyComponent.ContainerID);
+        var targetContainer = _container.EnsureContainer<Container>(target, BodyComponent.ContainerID);
+
+        foreach (var targetOrgan in targetContainer.ContainedEntities)
+        {
+            if (!TryComp<VisualOrganComponent>(targetOrgan, out var targetVisual))
+                continue;
+
+            foreach (var sourceOrgan in sourceContainer.ContainedEntities)
+            {
+                if (!TryComp<VisualOrganComponent>(sourceOrgan, out var sourceVisual))
+                    continue;
+                if (!sourceVisual.Layer.Equals(targetVisual.Layer))
+                    continue;
+
+                SetOrganProfile((targetOrgan, targetVisual), sourceVisual.Profile);
+                break;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Sets an organ's <see cref="OrganProfileData"/> and re-applies its colour, mirroring
+    /// the logic in OnVisualOrganApplyProfile but for a single explicit organ.
+    /// </summary>
+    private void SetOrganProfile(Entity<VisualOrganComponent> ent, OrganProfileData profile)
+    {
+        ent.Comp.Profile = profile;
+        Dirty(ent);
+
+        if (ent.Comp.Layer.Equals(HumanoidVisualLayers.Eyes))
+            SetOrganColor(ent, profile.EyeColor);
+        else
+            SetOrganColor(ent, profile.SkinColor);
+    }
 }

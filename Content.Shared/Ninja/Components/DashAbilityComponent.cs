@@ -2,6 +2,7 @@ using Content.Shared.Actions;
 using Content.Shared.Actions.Components;
 using Content.Shared.Ninja.Systems;
 using Robust.Shared.GameStates;
+using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Ninja.Components;
@@ -24,3 +25,10 @@ public sealed partial class DashAbilityComponent : Component
 }
 
 public sealed partial class DashEvent : WorldTargetActionEvent;
+
+/// <summary>
+/// Raised on the katana after a successful dash, before Handled is set.
+/// Origin is the user's map position before teleporting.
+/// </summary>
+[ByRefEvent]
+public record struct AfterDashEvent(EntityUid User, MapCoordinates Origin, EntityCoordinates Destination);

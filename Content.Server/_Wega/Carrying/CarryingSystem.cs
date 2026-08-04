@@ -25,6 +25,8 @@ using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Pulling.Components;
 using Content.Shared.Movement.Pulling.Events;
 using Content.Shared.Movement.Pulling.Systems;
+using Content.Shared.Ninja.Components;
+using Content.Server._Wega.Chemistry.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Components;
@@ -337,6 +339,12 @@ namespace Content.Server.Carrying
                 return false;
 
             if (HasComp<BeingCarriedComponent>(carrier) || HasComp<BeingCarriedComponent>(carried))
+                return false;
+
+            if (HasComp<EnergyNettedComponent>(carried))
+                return false;
+
+            if (HasComp<ChiurizinStasisComponent>(carried))
                 return false;
 
             if (_hands.CountFreeHands(carrier) < carriedComp.FreeHandsRequired)

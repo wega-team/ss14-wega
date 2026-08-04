@@ -7,14 +7,17 @@ using Content.Shared.Atmos.Components;
 using Content.Shared.Disposal.Tube;
 using Content.Shared.Input;
 using Content.Shared.Inventory;
+using Content.Shared.Ninja.Components;
 using Content.Shared.SubFloor;
 using Robust.Client.Animations;
 using Robust.Client.GameObjects;
 using Robust.Client.Input;
 using Robust.Client.Player;
+using Robust.Shared.Map;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Timing;
+using System.Numerics;
 
 namespace Content.Client.SubFloor;
 
@@ -35,6 +38,8 @@ public sealed partial class TrayScannerSystem : SharedTrayScannerSystem
 
     private const string TRayAnimationKey = "trays";
     private const double AnimationLength = 0.3;
+
+    private readonly HashSet<EntityUid> _revealedNinjas = new();
 
     public const LookupFlags Flags = LookupFlags.Static | LookupFlags.Sundries | LookupFlags.Approximate;
 
@@ -96,6 +101,8 @@ public sealed partial class TrayScannerSystem : SharedTrayScannerSystem
                     EnsureComp<TrayRevealedComponent>(uid);
             }
         }
+
+        UpdateNinjaReveal(player, playerMap, playerPos, range, canSee);
 
         var revealedQuery = AllEntityQuery<TrayRevealedComponent, SpriteComponent>();
 
@@ -177,6 +184,39 @@ public sealed partial class TrayScannerSystem : SharedTrayScannerSystem
     private void SetRevealed(EntityUid uid, bool value)
     {
         _appearance.SetData(uid, SubFloorVisuals.ScannerRevealed, value);
+    }
+
+    private void UpdateNinjaReveal(EntityUid? player, MapId playerMap, Vector2 playerPos, float range, bool canSee)
+    {
+        var prevRevealed = new HashSet<EntityUid>(_revealedNinjas);
+        _revealedNinjas.Clear();
+
+        if (canSee && range > 0f)
+        {
+            var query = EntityQueryEnumerator<NinjaCloakActiveComponent, SpriteComponent, TransformComponent>();
+            while (query.MoveNext(out var uid, out _, out var sprite, out var xform))
+            {
+                if (uid == player)
+                    continue;
+                if (xform.MapID != playerMap)
+                    continue;
+                var pos = _transform.GetWorldPosition(xform);
+                if ((pos - playerPos).Length() > range)
+                    continue;
+
+                _sprite.SetColor((uid, sprite), Color.OrangeRed.WithAlpha(0.6f));
+                _revealedNinjas.Add(uid);
+            }
+        }
+
+        // Restore transparency for ninjas that left the scan zone
+        foreach (var uid in prevRevealed)
+        {
+            if (_revealedNinjas.Contains(uid))
+                continue;
+            if (HasComp<NinjaCloakActiveComponent>(uid) && TryComp<SpriteComponent>(uid, out var sprite))
+                _sprite.SetColor((uid, sprite), Color.Transparent);
+        }
     }
 
     private bool MatchesMode(EntityUid uid, TrayScannerMode mode)

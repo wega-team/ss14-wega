@@ -141,7 +141,7 @@ public abstract partial class SharedStaminaSystem : EntitySystem
         if (component.Critical)
             return;
 
-        var damage = args.PushProbability * component.CritThreshold;
+        var damage = args.PushProbability * 40f;
         TakeStaminaDamage(uid, damage, component, source: args.Source);
 
         args.PopupPrefix = "disarm-action-shove-";

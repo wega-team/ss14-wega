@@ -92,7 +92,7 @@ public sealed partial class VocalSystem : EntitySystem
             return;
 
         _chat.TryEmoteWithChat(uid, args.Emote);
-        args.Handled = true;
+<        args.Handled = true;
     }
 
     private bool TryPlayScreamSound(EntityUid uid, VocalComponent component)
@@ -110,6 +110,17 @@ public sealed partial class VocalSystem : EntitySystem
     }
 
     /// <summary>
+    /// Re-resolves <see cref="VocalComponent.EmoteSounds"/> from the component's current Sounds + sex.
+    /// Call after manually changing Sounds/ScreamId so the actually-played emote sounds update.
+    /// </summary>
+    public void ReloadEmoteSounds(EntityUid uid, VocalComponent? component = null)
+    {
+        if (!Resolve(uid, ref component, false))
+            return;
+        LoadSounds(uid, component);
+        Dirty(uid, component);
+    }
+
     /// This only works on Humanoids. Mobs should have emoteSounds on <see cref="VocalComponent"/> set directly instead.
     /// </summary>
     private void LoadSounds(EntityUid uid, VocalComponent component, ProtoId<EmoteSoundsPrototype>? protoId = null)

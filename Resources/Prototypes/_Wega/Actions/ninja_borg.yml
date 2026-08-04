@@ -1,0 +1,14 @@
+- type: entity
+  parent: BaseAction
+  id: ActionNinjaBorgToggleChameleon
+  name: Toggle Disguise
+  description: Switch between ninja appearance and a service borg disguise.
+  components:
+  - type: Action
+    useDelay: 2
+    itemIconStyle: BigAction
+    icon:
+      sprite: _Wega/Actions/ninja.rsi
+      state: chameleon
+  - type: InstantAction
+    event: !type:NinjaBorgToggleChameleonEvent {}

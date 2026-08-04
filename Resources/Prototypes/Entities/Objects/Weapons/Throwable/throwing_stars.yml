@@ -51,3 +51,39 @@
   # also limits the crew's use
   - type: TimedDespawn
     lifetime: 30
+  - type: NinjaShuriken
+
+- type: entity
+  parent: BaseItem
+  id: ChainKunaiNinja
+  name: chain kunai
+  description: A kunai attached to a chain. Used to pull targets toward you.
+  categories: [ DoNotMap ]
+  components:
+  - type: Sprite
+    noRot: false
+    sprite: Objects/Weapons/Throwable/kunai.rsi
+    layers:
+    - state: icon
+      shader: unshaded
+  - type: Physics
+    bodyType: Dynamic
+  - type: TileFrictionModifier
+    modifier: 0
+  - type: Fixtures
+    fixtures:
+      projectile:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.10,-0.10,0.10,0.10"
+        hard: false
+        mask:
+        - Impassable
+        - BulletImpassable
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 5
+  - type: ChainKunaiProjectile
+  - type: TimedDespawn
+    lifetime: 0.1

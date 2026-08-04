@@ -7,10 +7,12 @@ using Content.Shared.Actions;
 using Content.Shared.Actions.Components;
 using Content.Shared.Charges.Systems;
 using Content.Shared.Examine;
+using Content.Shared.Ninja.Components;
 using Robust.Client.GameObjects;
 using Robust.Client.Player;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
+using Robust.Shared.Graphics.RSI;
 using Robust.Shared.Input;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
@@ -25,6 +27,8 @@ public sealed class ActionButton : Control, IEntityControl
 
     private IEntityManager _entities;
     private IPlayerManager _player;
+    private IGameTiming _gameTiming;
+    private SpriteSystem? _spriteSys;
     private ActionsSystem? _actionsSys;
     private ActionUIController? _controller;
     private bool _beingHovered;
@@ -54,6 +58,16 @@ public sealed class ActionButton : Control, IEntityControl
     private readonly SpriteView _smallItemSpriteView;
     private readonly SpriteView _bigItemSpriteView;
 
+    private Texture? _buttonBackgroundTexture;
+
+    private IRsiStateLike? _bgReadyState;
+    private int _bgReadyCurFrame;
+    private float _bgReadyCurFrameTime;
+
+    // Ninja-suit dynamic color (NinjaAbilityBackgroundComponent)
+    private IRsiStateLike? _ninjaBgStaticState;
+    private int _ninjaLastColor = -1;
+
     public Entity<ActionComponent>? Action { get; private set; }
     public bool Locked { get; set; }
 
@@ -67,6 +81,8 @@ public sealed class ActionButton : Control, IEntityControl
 
         _entities = entities;
         _player = IoCManager.Resolve<IPlayerManager>();
+        _gameTiming = IoCManager.Resolve<IGameTiming>();
+        _spriteSys = spriteSys;
         _controller = controller;
 
         MouseFilter = MouseFilterMode.Pass;
@@ -282,6 +298,71 @@ public sealed class ActionButton : Control, IEntityControl
         UpdateItemIcon();
         UpdateActionIcon();
         UpdateBackground();
+
+        if (Action is not {} action)
+        {
+            SetActionIcon(null);
+            _bgReadyState = null;
+            _ninjaBgStaticState = null;
+            _ninjaLastColor = -1;
+            return;
+        }
+
+        _controller ??= UserInterfaceManager.GetUIController<ActionUIController>();
+        _spriteSys ??= _entities.System<SpriteSystem>();
+        var icon = action.Comp.Icon;
+        if (_controller.SelectingTargetFor == action || action.Comp.Toggled)
+        {
+            _bgReadyState = null;
+
+            if (action.Comp.IconOn is {} iconOn)
+                icon = iconOn;
+
+            // For ninja actions keep the last animated frame during target selection
+            if (!_entities.HasComponent<NinjaAbilityBackgroundComponent>(action.Owner))
+            {
+                if (action.Comp.BackgroundOn is {} bgOn)
+                    _buttonBackgroundTexture = _spriteSys.Frame0(bgOn);
+                else if (action.Comp.Background is {} bg)
+                    _buttonBackgroundTexture = _spriteSys.Frame0(bg);
+                else
+                    _buttonBackgroundTexture = Theme.ResolveTexture("SlotBackground");
+            }
+        }
+        else
+        {
+            if (_entities.HasComponent<NinjaAbilityBackgroundComponent>(action.Owner))
+            {
+                // Ninja dynamic color: TickBackgroundAnimation handles RSI init and updates each frame
+                _bgReadyState = null;
+                _ninjaBgStaticState = null;
+                _ninjaLastColor = -1;
+                _buttonBackgroundTexture = Theme.ResolveTexture("SlotBackground");
+            }
+            else
+            {
+                // Cache the ready-state RSI for per-frame animation
+                _bgReadyState = action.Comp.BackgroundReady != null
+                    ? _spriteSys.RsiStateLike(action.Comp.BackgroundReady)
+                    : null;
+                if (_bgReadyState?.IsAnimated == true)
+                {
+                    _bgReadyCurFrame = 0;
+                    _bgReadyCurFrameTime = _bgReadyState.GetDelay(0);
+                }
+
+                // Initial background — FrameUpdate will keep it current each tick
+                var isReady = action.Comp.Cooldown == null;
+                if (isReady && _bgReadyState != null)
+                    _buttonBackgroundTexture = _bgReadyState.GetFrame(RsiDirection.South, 0);
+                else if (action.Comp.Background is {} bg)
+                    _buttonBackgroundTexture = _spriteSys.Frame0(bg);
+                else
+                    _buttonBackgroundTexture = Theme.ResolveTexture("SlotBackground");
+            }
+        }
+
+        SetActionIcon(icon != null ? _spriteSys.Frame0(icon) : null);
     }
 
     public void UpdateBackground()
@@ -328,6 +409,15 @@ public sealed class ActionButton : Control, IEntityControl
     {
         base.FrameUpdate(args);
 
+        // Advance background animation before UpdateBackground reads _buttonBackgroundTexture
+        _controller ??= UserInterfaceManager.GetUIController<ActionUIController>();
+        if (Action?.Comp is {} frameAction &&
+            !frameAction.Toggled &&
+            _controller.SelectingTargetFor != Action?.Owner)
+        {
+            TickBackgroundAnimation(frameAction, args.DeltaSeconds);
+        }
+
         UpdateBackground();
 
         Cooldown.Visible = Action?.Comp.Cooldown != null;
@@ -339,6 +429,92 @@ public sealed class ActionButton : Control, IEntityControl
 
         if (_toggled != action.Toggled)
             _toggled = action.Toggled;
+    }
+
+    private void TickBackgroundAnimation(ActionComponent action, float deltaSeconds)
+    {
+        _spriteSys ??= _entities.System<SpriteSystem>();
+
+        // Dynamic ninja suit color: NinjaAbilityBackgroundComponent marker present
+        if (Action.HasValue && _entities.HasComponent<NinjaAbilityBackgroundComponent>(Action.Value.Owner))
+        {
+            var color = -1;
+            if (_entities.TryGetComponent(action.AttachedEntity, out SpaceNinjaComponent? ninja) &&
+                ninja.Suit.HasValue &&
+                _entities.TryGetComponent(ninja.Suit.Value, out SpiderOSComponent? spiderOS))
+            {
+                color = spiderOS.SuitColor;
+            }
+
+            if (color == -1)
+            {
+                _buttonBackgroundTexture = Theme.ResolveTexture("SlotBackground");
+                return;
+            }
+
+            if (color != _ninjaLastColor)
+            {
+                _ninjaLastColor = color;
+                var colorStr = color switch { 0 => "red", 1 => "blue", _ => "green" };
+                var bgSpec      = new SpriteSpecifier.Rsi(new ResPath("_Wega/Actions/ninja.rsi"), $"background_{colorStr}");
+                var bgReadySpec = new SpriteSpecifier.Rsi(new ResPath("_Wega/Actions/ninja.rsi"), $"background_{colorStr}_active");
+                _ninjaBgStaticState = _spriteSys.RsiStateLike(bgSpec);
+                _bgReadyState       = _spriteSys.RsiStateLike(bgReadySpec);
+                if (_bgReadyState.IsAnimated)
+                {
+                    _bgReadyCurFrame = 0;
+                    _bgReadyCurFrameTime = _bgReadyState.GetDelay(0);
+                }
+            }
+
+            var isReadyNinja = action.Cooldown == null || _gameTiming.CurTime >= action.Cooldown.Value.End;
+            if (isReadyNinja && _bgReadyState != null)
+            {
+                if (_bgReadyState.IsAnimated)
+                {
+                    _bgReadyCurFrameTime -= deltaSeconds;
+                    while (_bgReadyCurFrameTime <= 0)
+                    {
+                        _bgReadyCurFrame = (_bgReadyCurFrame + 1) % _bgReadyState.AnimationFrameCount;
+                        _bgReadyCurFrameTime += _bgReadyState.GetDelay(_bgReadyCurFrame);
+                    }
+                }
+                _buttonBackgroundTexture = _bgReadyState.GetFrame(RsiDirection.South, _bgReadyCurFrame);
+            }
+            else if (_ninjaBgStaticState != null)
+            {
+                _buttonBackgroundTexture = _ninjaBgStaticState.GetFrame(RsiDirection.South, 0);
+            }
+            return;
+        }
+
+        // Generic static background from ActionComponent
+        if (action.Background == null && action.BackgroundReady == null)
+            return;
+
+        var isReady = action.Cooldown == null || _gameTiming.CurTime >= action.Cooldown.Value.End;
+
+        if (isReady && _bgReadyState != null)
+        {
+            if (_bgReadyState.IsAnimated)
+            {
+                _bgReadyCurFrameTime -= deltaSeconds;
+                while (_bgReadyCurFrameTime <= 0)
+                {
+                    _bgReadyCurFrame = (_bgReadyCurFrame + 1) % _bgReadyState.AnimationFrameCount;
+                    _bgReadyCurFrameTime += _bgReadyState.GetDelay(_bgReadyCurFrame);
+                }
+            }
+            _buttonBackgroundTexture = _bgReadyState.GetFrame(RsiDirection.South, _bgReadyCurFrame);
+        }
+        else if (action.Background is {} bg)
+        {
+            _buttonBackgroundTexture = _spriteSys.Frame0(bg);
+        }
+        else
+        {
+            _buttonBackgroundTexture = Theme.ResolveTexture("SlotBackground");
+        }
     }
 
     protected override void MouseEntered()

@@ -1,0 +1,18 @@
+- type: reagent
+  id: Chiurizin
+  name: reagent-name-chiurizin
+  group: Medicine
+  desc: reagent-desc-chiurizin
+  physicalDesc: reagent-physical-desc-chiurizin
+  flavor: medicine
+  color: "#8A2BE2"
+  metabolisms:
+    Bloodstream:
+      metabolismRate: 0.1
+      effects:
+      - !type:Chiurizin
+      - !type:ChiurizinOverdose
+        conditions:
+        - !type:ReagentCondition
+          reagent: Chiurizin
+          min: 30

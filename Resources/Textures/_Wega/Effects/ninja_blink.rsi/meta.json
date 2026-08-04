@@ -1,0 +1,25 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Taken from Paradise at https://github.com/ss220-space/Paradise/blob/5178ae93a0d769893839e35f91aa23e0ea65bd0e/icons/effects/beam.dmi",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "ninja_blink",
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        }
+    ]
+}

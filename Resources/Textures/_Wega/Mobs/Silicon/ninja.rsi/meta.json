@@ -1,0 +1,19 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Taken from Paradise at https://github.com/ss220-space/Paradise/blob/ed66bfa6215099ad14a70be48e9ed5496bcd6a38/icons/mob/robots.dmi",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "ninja",
+            "directions": 4
+        },
+        {
+            "name": "ninja_e",
+            "directions": 4
+        }
+    ]
+}

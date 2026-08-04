@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Shared._Wega.Ninja;
 using Content.Server.Administration;
 using Content.Server.Cloning;
 using Content.Server.Hallucinations;
@@ -58,7 +59,7 @@ public sealed partial class VampireSystem
         }
 
         if (HasComp<VampireComponent>(target) || HasComp<MindShieldComponent>(target) || HasComp<BibleUserComponent>(target)
-            || HasComp<SyntheticOperatedComponent>(target))
+            || HasComp<SyntheticOperatedComponent>(target) || HasComp<NinjaVampireProtectionComponent>(target))
         {
             _popup.PopupEntity(Loc.GetString("vampire-enthall-failed", ("target", Identity.Name(target, EntityManager))), ent, ent);
             return;

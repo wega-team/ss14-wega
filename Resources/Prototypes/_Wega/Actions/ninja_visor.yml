@@ -1,0 +1,13 @@
+- type: entity
+  id: ActionCycleNinjaVisor
+  parent: BaseAction
+  name: switch visor mode
+  description: "Cycle through the ninja visor's modes: off, flash protection, night vision, thermal sight."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    icon: Interface/Actions/eyeopen.png
+    priority: -4
+  - type: InstantAction
+    event: !type:CycleNinjaVisorEvent
+  - type: NinjaAbilityBackground

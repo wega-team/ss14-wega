@@ -1,6 +1,8 @@
 using Content.Shared.Inventory.Events;
 using Content.Shared.Overlays;
 using Robust.Client.Graphics;
+using Robust.Client.Player;
+using Robust.Shared.Prototypes;
 
 namespace Content.Client.Overlays;
 
@@ -10,6 +12,8 @@ namespace Content.Client.Overlays;
 public sealed partial class ShowHealthBarsSystem : EquipmentHudSystem<ShowHealthBarsComponent>
 {
     [Dependency] private IOverlayManager _overlayMan = default!;
+    [Dependency] private IPrototypeManager _prototype = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
 
     private EntityHealthBarOverlay _overlay = default!;
 

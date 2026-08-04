@@ -5,7 +5,7 @@
   keycode: ')'
   color: "#ff0000"
   longRange: true
-  
+
 - type: radioChannel
   id: SecSquadTwo
   name: chat-radio-secsquad-two
@@ -13,15 +13,15 @@
   keycode: '('
   color: "#d62b2b"
   longRange: true
-  
+
 - type: radioChannel
   id: SecSquadThree
   name: chat-radio-secsquad-three
   frequency: 1253
-  keycode: '*'
+  keycode: '!'
   color: "#ff3333"
-  longRange: true  
-  
+  longRange: true
+
 - type: radioChannel
   id: SecSquadFour
   name: chat-radio-secsquad-four
@@ -45,11 +45,19 @@
   keycode: '^'
   color: "#df2d2d"
   longRange: true
-  
+
 - type: radioChannel
   id: SecSquadCommand
   name: chat-radio-seccommand
   frequency: 1257
   keycode: '%'
   color: "#c22727"
+  longRange: true
+
+- type: radioChannel
+  id: Ninja
+  name: chat-radio-ninja
+  keycode: '*'
+  frequency: 1415
+  color: "#008000"
   longRange: true

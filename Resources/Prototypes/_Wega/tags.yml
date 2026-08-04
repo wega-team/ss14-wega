@@ -577,6 +577,9 @@
   id: Morgue
 
 - type: Tag
+  id: BorgModuleNinja # Cyborg module category for ninja borgs
+  
+- type: Tag
   id: BorgModuleSyndicateMedical
 
 - type: Tag

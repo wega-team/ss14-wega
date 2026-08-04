@@ -266,16 +266,31 @@
     sprite: Clothing/Hands/Gloves/spaceninja.rsi
     layers:
     - state: icon
-      map: [ "enum.ToggleableVisuals.Layer" ]
+      map: ["enum.ToggleableVisuals.Layer"]
+    - state: icon_ninja_gloves_classic_green
+      map: ["enum.Content.Shared.Ninja.NinjaColorLayer.GlovesBase"]
+      visible: false
   - type: Clothing
     sprite: Clothing/Hands/Gloves/spaceninja.rsi
+    equippedState: equipped_ninja_gloves_classic_green
   - type: Appearance
   - type: GenericVisualizer
     visuals:
       enum.ToggleableVisuals.Enabled:
         enum.ToggleableVisuals.Layer:
-          True: {state: icon-green}
-          False: {state: icon}
+          True: {visible: false}
+          False: {visible: true}
+        enum.Content.Shared.Ninja.NinjaColorLayer.GlovesBase:
+          True: {visible: true}
+          False: {visible: false}
+      enum.Content.Shared.Ninja.NinjaColorVisuals.GlovesVariant:
+        enum.Content.Shared.Ninja.NinjaColorLayer.GlovesBase:
+          0: {state: icon_ninja_gloves_classic_red}
+          1: {state: icon_ninja_gloves_classic_blue}
+          2: {state: icon_ninja_gloves_classic_green}
+          3: {state: icon_ninja_gloves_new_red}
+          4: {state: icon_ninja_gloves_new_blue}
+          5: {state: icon_ninja_gloves_new_green}
   - type: Insulated
   - type: Fiber
     fiberMaterial: fibers-nanomachines
@@ -290,12 +305,7 @@
     abilities:
     - components:
       - type: BatteryDrainer
-      - type: StunProvider
-        cooldown: 10
-        noPowerPopup: ninja-no-power
-        whitelist:
-          components:
-          - Stamina
+      - type: NinjaGloveElectric
       - type: EmagProvider
         whitelist:
           components:
@@ -310,6 +320,15 @@
     - objective: MassArrestObjective
       components:
       - type: CriminalRecordsHacker
+    - objective: CargoHackObjective
+      components:
+      - type: CargoHacker
+    - objective: StealBorgObjective
+      components:
+      - type: NinjaBorgStealer
+    - objective: AiSabotageObjective
+      components:
+      - type: AiLawHacker
 
 - type: entity
   parent: [ ClothingHandsGlovesColorBlack, BaseSecurityEngineeringContraband ]

@@ -86,7 +86,9 @@ public abstract partial class SharedChameleonClothingSystem : EntitySystem
     // This function is called on a server after user selected new outfit.
     // And after that on a client after state was updated.
     // This 100% makes sure that server and client have exactly same data.
-    protected void UpdateVisuals(EntityUid uid, ChameleonClothingComponent component)
+    // skipAppearance: skip AppendData and contraband/dirtable to prevent GenericVisualizer
+    // conflicts when the item's own appearance system doesn't match the target prototype.
+    protected void UpdateVisuals(EntityUid uid, ChameleonClothingComponent component, bool skipAppearance = false)
     {
         if (string.IsNullOrEmpty(component.Default) ||
             !ProtoMan.Resolve(component.Default, out EntityPrototype? proto))
@@ -116,6 +118,9 @@ public abstract partial class SharedChameleonClothingSystem : EntitySystem
         {
             _clothingSystem.CopyVisuals(uid, otherClothing, clothing);
         }
+
+        if (skipAppearance)
+            return;
 
         // Corvax-Wega-Dirtable-start
         // dirtable logic
@@ -286,4 +291,43 @@ public abstract partial class SharedChameleonClothingSystem : EntitySystem
     public virtual void SetSelectedPrototype(EntityUid uid, string? protoId, bool forceUpdate = false, bool validate = true,
         ChameleonClothingComponent? component = null)
     { }
+
+    /// <summary>
+    /// Forces <paramref name="uid"/> to display visuals from <paramref name="protoId"/> without
+    /// WhitelistChameleon validation. Used by the ninja disguise system.
+    /// Skips appearance/contraband/dirtable updates to avoid GenericVisualizer RSI conflicts.
+    /// </summary>
+    public void ForceApplyPrototype(EntityUid uid, string protoId, SlotFlags slot)
+    {
+        var comp = EnsureComp<ChameleonClothingComponent>(uid);
+        comp.Slot = slot;
+        comp.Default = protoId;
+        comp.ShowVerb = false;
+        UpdateVisuals(uid, comp, skipAppearance: true);
+        Dirty(uid, comp);
+    }
+
+    /// <summary>
+    /// Restores <paramref name="uid"/> to its original prototype visuals.
+    /// Keeps <see cref="ChameleonClothingComponent"/> on the entity so the client-side
+    /// <c>HandleState</c> → <c>UpdateVisuals</c> path can atomically restore both the world sprite
+    /// and the equipped sprite without a same-tick RemComp race condition.
+    /// </summary>
+    public void ForceRemovePrototype(EntityUid uid)
+    {
+        if (!TryComp<ChameleonClothingComponent>(uid, out var comp))
+            return;
+
+        var protoId = MetaData(uid).EntityPrototype?.ID;
+        if (protoId == null)
+            return;
+
+        comp.Default = protoId;
+        UpdateVisuals(uid, comp, skipAppearance: true);
+        Dirty(uid, comp);
+        // Component is intentionally kept — removing it in the same tick as Dirty
+        // causes the client to receive a removal before HandleState fires, which
+        // prevents sprite.CopyFrom from running.  The OnVerb check suppresses the
+        // chameleon UI for items that weren't originally chameleon items.
+    }
 }

@@ -1,0 +1,53 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Taken from Paradise at https://github.com/ss220-space/Paradise/blob/3039c1c7cf6b083b054c98417d4b6f6f8e493490/icons/mob/screen_64x64.dmi",
+    "size": {
+        "x": 64,
+        "y": 64
+    },
+    "states": [
+        {
+            "name": "ninja_energy_display_blue"
+        },
+        {
+            "name": "ninja_energy_display_green"
+        },
+        {
+            "name": "ninja_energy_display_red"
+        },
+        {
+            "name": "ninja_energy_display_blue_warning",
+            "delays": [
+                [
+                    0.15,
+                    0.15,
+                    0.15,
+                    0.15
+                ]
+            ]
+        },
+        {
+            "name": "ninja_energy_display_green_warning",
+            "delays": [
+                [
+                    0.15,
+                    0.15,
+                    0.15,
+                    0.15
+                ]
+            ]
+        },
+        {
+            "name": "ninja_energy_display_red_warning",
+            "delays": [
+                [
+                    0.15,
+                    0.15,
+                    0.15,
+                    0.15
+                ]
+            ]
+        }
+    ]
+}
