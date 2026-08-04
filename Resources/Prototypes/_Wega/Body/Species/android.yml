@@ -204,7 +204,6 @@
         Asphyxiation: -10
   - type: AtmosExposed
   - type: Temperature
-    currentTemperature: 310.15
     specificHeat: 42
   - type: TemperatureDamage
     heatDamageThreshold: 403.15
@@ -547,6 +546,7 @@
   - type: Brain
   - type: Organ
     category: Brain
+  - type: ChildOrgan
   - type: GibbableOrgan
   - type: InputMover
   - type: Examiner

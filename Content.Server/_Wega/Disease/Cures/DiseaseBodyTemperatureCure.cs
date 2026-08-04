@@ -18,7 +18,7 @@ namespace Content.Server.Disease.Cures
             if (!args.EntityManager.TryGetComponent(args.DiseasedEntity, out TemperatureComponent? temp))
                 return false;
 
-            return temp.CurrentTemperature > Min && temp.CurrentTemperature < float.MaxValue;
+            return temp.Temperature > Min && temp.Temperature < Max;
         }
 
         public override string CureText()

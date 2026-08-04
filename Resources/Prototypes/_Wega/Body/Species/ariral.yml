@@ -156,7 +156,6 @@
         Bloodloss: -1
     bleedReductionAmount: 0.2
   - type: Temperature
-    currentTemperature: 310.15
     specificHeat: 46
   - type: TemperatureDamage
     heatDamageThreshold: 325

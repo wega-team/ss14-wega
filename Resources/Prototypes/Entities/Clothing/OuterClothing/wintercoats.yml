@@ -1,5 +1,5 @@
 - type: entity
-  parent: ClothingOuterStorageEdible
+  parent: [ TemperatureProtection, ClothingOuterJacketBase ]
   id: ClothingOuterWinterCoat
   name: winter coat
   description: A heavy jacket made from 'synthetic' animal furs.
@@ -10,11 +10,6 @@
   - type: Clothing
     sprite: Clothing/OuterClothing/WinterCoats/coat/coat.rsi
   # Corvax-Wega-end
-  - type: TemperatureProtection
-    heatingCoefficient: 1.1
-    coolingCoefficient: 0.1
-  - type: Item
-    size: Normal
   - type: Armor
     modifiers:
       coefficients:

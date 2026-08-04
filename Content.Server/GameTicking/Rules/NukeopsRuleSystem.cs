@@ -12,7 +12,7 @@ using Content.Server.Shuttles.Systems;
 using Content.Server.Station.Components;
 using Content.Server.Store.Systems;
 //Corvax-Wega-War-Start
-using Content.Server.AlertLevel;
+using Content.Shared.AlertLevel;
 using Robust.Shared.Timing;
 //Corvax-Wega-War-End
 using Content.Shared.Access.Systems;

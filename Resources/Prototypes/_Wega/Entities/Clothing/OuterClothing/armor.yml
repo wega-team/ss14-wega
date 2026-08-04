@@ -86,7 +86,7 @@
   - type: FireProtection
     reduction: 0.4
   - type: TemperatureProtection
-    heatingCoefficient: 0.5
+    coefficient: 0.5
   - type: ClothingAshStormProtection
     modifier: 0.2
   - type: ToggleableClothing
@@ -187,7 +187,7 @@
   - type: FireProtection
     reduction: 0.5
   - type: TemperatureProtection
-    heatingCoefficient: 0.4
+    coefficient: 0.4
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodExplorerReinforced
   - type: Construction
@@ -237,8 +237,7 @@
   - type: FireProtection
     reduction: 0.5
   - type: TemperatureProtection
-    heatingCoefficient: 0.6
-    coolingCoefficient: 0.4
+    coefficient: 0.5
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodExplorerPolar
   - type: Construction
@@ -345,8 +344,7 @@
   - type: FireProtection
     reduction: 0.65
   - type: TemperatureProtection
-    heatingCoefficient: 0.6
-    coolingCoefficient: 0.8
+    coefficient: 0.5
   - type: GroupExamine
   - type: ContainerContainer
     containers:
@@ -392,8 +390,7 @@
   - type: FireProtection
     reduction: 0
   - type: TemperatureProtection
-    heatingCoefficient: 0.6
-    coolingCoefficient: 0.4
+    coefficient: 0.5
   - type: ZombificationResistance
     zombificationResistanceCoefficient: 0.5
   - type: ClothingAshStormProtection

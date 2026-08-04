@@ -224,7 +224,7 @@
   - type: FireProtection
     reduction: 0.95
   - type: TemperatureProtection
-    heatingCoefficient: 0.9
+    coefficient: 0.9
   - type: Sprite
     sprite: _Wega/Clothing/Hands/clockwork_gauntlets.rsi
     state: icon
@@ -252,7 +252,7 @@
     - ClothingHandsClockworkGauntletsRedFlame
     - ClothingHandsClockworkGauntletsStun
     - ClothingHandsClockworkGauntletsNorthStar
-  
+
 - type: entity
   parent: [ ClothingHandsGlovesColorYellow, BaseEngineeringContraband ]
   id: ClothingHandsGlovesAtmos
