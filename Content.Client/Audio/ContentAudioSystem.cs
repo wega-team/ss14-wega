@@ -30,7 +30,6 @@ public sealed partial class ContentAudioSystem : SharedContentAudioSystem
     public const float LobbyMultiplier = 3f;
     public const float InterfaceMultiplier = 2f;
     public const float BarksMultiplier = 3f; // Corvax-Wega-Barks
-    public const float TtsMultiplier = 3f; // Corvax-TTS
 
     public override void Initialize()
     {
