@@ -1,0 +1,9 @@
+- type: reaction
+  id: shrimpCooking
+  impact: Low
+  minTemp: 347
+  reactants:
+    Shrimp:
+      amount: 0.5
+  products:
+    CookedShrimp: 0.5

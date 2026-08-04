@@ -364,6 +364,11 @@
       - Pill
       - Crayon
       - Paper
+      # Corvax-Wega-start
+      - Salad 
+      - Vegetable
+      - Soup
+      # Corvax-Wega-end
 
 - type: entity
   parent: [ OrganBaseLiver, OrganSpriteHumanInternal, OrganReptilianInternal, OrganReptilianMetabolizer ]
