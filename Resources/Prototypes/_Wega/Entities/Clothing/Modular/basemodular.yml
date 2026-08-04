@@ -63,15 +63,13 @@
           highPressureMultiplier: 0.3
           lowPressureMultiplier: 1000
         - type: TemperatureProtection
-          heatingCoefficient: 0.1
-          coolingCoefficient: 0.1
+          coefficient: 0.1
       outerClothing:
         - type: PressureProtection
           highPressureMultiplier: 0.3
           lowPressureMultiplier: 1000
         - type: TemperatureProtection
-          heatingCoefficient: 0.01
-          coolingCoefficient: 0.01
+          coefficient: 0.01
   - type: UserInterface
     interfaces:
       enum.ModularSuitUiKey.Key:

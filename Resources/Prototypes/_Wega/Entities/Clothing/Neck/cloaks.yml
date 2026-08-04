@@ -126,8 +126,7 @@
   - type: Clothing
     sprite: _Wega/Clothing/Neck/Cloaks/wolfcoat.rsi
   - type: TemperatureProtection
-    heatingCoefficient: 1.1
-    coolingCoefficient: 0.1
+    coefficient: 0.1
   - type: ContainerContainer
     containers:
       toggleable-clothing: !type:ContainerSlot {}

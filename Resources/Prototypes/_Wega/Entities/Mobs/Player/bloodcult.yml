@@ -109,8 +109,7 @@
         - FlyingMobLayer
   - type: MovementAlwaysTouching
   - type: TemperatureProtection
-    heatingCoefficient: 0.001
-    coolingCoefficient: 0.001
+    coefficient: 0.001
   - type: FlashImmunity
   - type: PressureImmunity
   - type: ZombieImmune

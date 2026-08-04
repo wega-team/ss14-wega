@@ -1,4 +1,5 @@
-using Content.Server.Speech.Components;
+using Content.Shared.Speech.Components;
+using Content.Shared.Speech.EntitySystems;
 using Content.Shared.Xenobiology;
 using Content.Shared.Xenobiology.Components;
 using Content.Shared.Xenobiology.Systems;
@@ -10,6 +11,7 @@ namespace Content.Server.Xenobiology;
 
 public sealed partial class SlimeGrowthSystem : SharedSlimeGrowthSystem
 {
+    [Dependency] private ReplacementAccentSystem _accent = default!;
     [Dependency] private IRobustRandom _random = default!;
 
     private static readonly EntProtoId DefaultSlime = "MobXenoSlimeGray";
@@ -91,8 +93,7 @@ public sealed partial class SlimeGrowthSystem : SharedSlimeGrowthSystem
         growth.CurrentStage = SlimeStage.Young;
         growth.NextStageHungerThreshold = GetBaseHungerThreshold(growth.CurrentStage);
 
-        var accent = EnsureComp<ReplacementAccentComponent>(offspring);
-        accent.Accent = "slimes";
+        _accent.ApplyAccent(offspring, "slimes");
 
         growth.MutationChance = parentGrowth.MutationChance;
         if (_random.Prob(0.3f))
@@ -126,8 +127,7 @@ public sealed partial class SlimeGrowthSystem : SharedSlimeGrowthSystem
     {
         if (stage == SlimeStage.Young)
         {
-            var accent = EnsureComp<ReplacementAccentComponent>(uid);
-            accent.Accent = "slimes";
+            _accent.ApplyAccent(uid, "slimes");
         }
         else
         {

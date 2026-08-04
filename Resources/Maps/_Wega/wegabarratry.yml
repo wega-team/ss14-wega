@@ -43018,8 +43018,7 @@ entities:
       parent: 14065
     - type: InsideEntityStorage
     - type: TemperatureProtection
-      heatingCoefficient: 1
-      coolingCoefficient: 1
+      coefficient: 1
     - type: GroupExamine
       group:
       - title: null
