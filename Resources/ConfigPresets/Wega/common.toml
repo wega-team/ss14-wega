@@ -1,3 +1,6 @@
+[game]
+contraband_examine = false
+
 [admin]
 admins_count_in_playercount = true
 
