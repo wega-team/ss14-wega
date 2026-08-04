@@ -198,3 +198,16 @@
     - ClothingModularControllerSyndicatePreassembled
     - ClothingOuterHardsuitSyndieMedic
 
+- type: entity
+  parent: BaseHardsuitSelector
+  id: HardsuitAsteroidSelector
+  name: asteroid hardsuit selector
+  description: "An obsidian rod that strikes paranormal things."
+  suffix: Selector
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Misc/HardsuitSelector/asteroid.rsi
+  - type: ItemSelector
+    items:
+    - ClothingModularControllerAsteroidPreassembled
+    - ClothingOuterHardsuitSalvage
