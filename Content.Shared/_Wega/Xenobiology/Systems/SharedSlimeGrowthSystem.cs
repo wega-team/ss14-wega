@@ -112,6 +112,43 @@ public abstract partial class SharedSlimeGrowthSystem : EntitySystem
             .ToList()
     };
 
+    public static readonly Dictionary<SlimeType, (SlimeType Type, int Point, float ModifierFood)> ParametrTable = new()
+    {
+		[SlimeType.Gray] = (SlimeType.Gray, 0, 3f),
+    
+    // lvl 1
+		[SlimeType.Purple] = (SlimeType.Purple, 5000, 2.5f),
+		[SlimeType.Orange] = (SlimeType.Orange, 5000, 2.5f),
+		[SlimeType.Metallic] = (SlimeType.Metallic, 5000, 2.5f),
+		[SlimeType.Blue] = (SlimeType.Blue, 5000, 2.5f),
+    
+    // lvl 2
+		[SlimeType.DarkPurple] = (SlimeType.DarkPurple, 7500, 2f),
+		[SlimeType.Yellow] = (SlimeType.Yellow, 7500, 2f),
+		[SlimeType.DarkBlue] = (SlimeType.DarkBlue, 7500, 2f),
+		[SlimeType.Silver] = (SlimeType.Silver, 7500, 2f),
+    
+    // lvl 2.5
+		[SlimeType.Bluespace] = (SlimeType.Bluespace, 10000, 1.75f),
+		[SlimeType.Pyrite] = (SlimeType.Pyrite, 10000, 1.75f),
+		[SlimeType.Azure] = (SlimeType.Azure, 10000, 1.75f),
+		[SlimeType.Sepia] = (SlimeType.Sepia, 10000, 1.75f),
+    
+    // lvl 3
+		[SlimeType.Pink] = (SlimeType.Pink, 15000, 1.5f),
+		[SlimeType.Red] = (SlimeType.Red, 15000, 1.5f),
+		[SlimeType.Green] = (SlimeType.Green, 15000, 1.5f),
+		[SlimeType.Gold] = (SlimeType.Gold, 15000, 1.5f),
+    
+    // lvl 4
+		[SlimeType.Black] = (SlimeType.Black, 25000, 1f),
+		[SlimeType.Oil] = (SlimeType.Oil, 25000, 1f),
+		[SlimeType.Adamantine] = (SlimeType.Adamantine, 25000, 1f),
+		[SlimeType.LightPink] = (SlimeType.LightPink, 25000, 1f),
+
+		[SlimeType.Rainbow] = (SlimeType.Rainbow, 1000000, 0.5f),
+    };
+
     public SlimeType? GetMutationInternal(SlimeType currentType, float rainbowChance)
     {
         if (currentType != SlimeType.Rainbow && _random.Prob(rainbowChance))
@@ -134,4 +171,28 @@ public abstract partial class SharedSlimeGrowthSystem : EntitySystem
 
         return currentType;
     }
+	
+	public (float Point, float ModifierFood)? GetSlimeParameters(SlimeType slimeType)
+	{
+		if (ParametrTable.TryGetValue(slimeType, out var parameters))
+			return (parameters.Point, parameters.ModifierFood);
+    
+		return null;
+	}
+
+	public int GetPoint(SlimeType slimeType)
+	{
+		if (ParametrTable.TryGetValue(slimeType, out var parameters))
+			return parameters.Point;
+    
+		return 0;
+	}
+
+	public float GetModifier(SlimeType slimeType)
+	{
+		if (ParametrTable.TryGetValue(slimeType, out var parameters))
+			return parameters.ModifierFood;
+    
+		return 1f;
+	}
 }
