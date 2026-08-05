@@ -93,6 +93,7 @@
 - type: entity #why does this exist? Well, "global positioning system" is too long to fit in the cyborg's hand slot.
   parent: HandheldGPSBasic
   id: HandheldGPSBasicOff
+  categories: [ HideSpawnMenu ]
   suffix: Off
   components:
   # Corvax-Wega-Lavaland-start
@@ -102,6 +103,7 @@
  
 - type: entity #why does this exist? Well, "global positioning system" is too long to fit in the cyborg's hand slot.
   parent: HandheldGPSBasic
+  categories: [ HideSpawnMenu ]
   id: HandheldGPSBasicBorgOn
   suffix: Borg
   components:

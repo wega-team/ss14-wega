@@ -1778,7 +1778,11 @@
           components:
           - Brain
           - BorgBrain
+# Corvax-Wega-start
           - ChameleonClothing
+          tags:
+          - UpgradeKitBrain
+# Corvax-Wega-End
     - hand:
         emptyRepresentative: XenoborgModuleBasic
         emptyLabel: borg-slot-modules-empty
@@ -1922,6 +1926,7 @@
   - type: ItemBorgModule
     hands:
     - item: WeaponTileGun
+    - item: XenoborgTitleBag # Corvax-Wega-Add
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-tile-module }
 

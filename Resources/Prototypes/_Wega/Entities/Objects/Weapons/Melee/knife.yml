@@ -80,6 +80,10 @@
     walkModifier: 1.1
     sprintModifier: 1.1
   - type: HeldSpeedModifier
+# Corvax-Wega-Start
+  - type: BonusMeleeDamage
+    heavyDamageMultiplier: 1
+# Corvax-Wega-End
 
 - type: entity
   parent: BaseItem

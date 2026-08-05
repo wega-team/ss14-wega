@@ -208,6 +208,7 @@
 #Garding
 - type: entity
   parent: HydroponicsToolMiniHoe
+  categories: [ HideSpawnMenu ]
   suffix: Cyborg
   id: BorgHydroponicsToolMiniHoe
   components:
@@ -233,6 +234,7 @@
 
 - type: entity
   parent: HydroponicsToolSpade
+  categories: [ HideSpawnMenu ]
   suffix: Cyborg
   id: BorgHydroponicsToolSpade
   components:
@@ -257,6 +259,7 @@
 
 - type: entity
   parent: HydroponicsToolClippers
+  categories: [ HideSpawnMenu ]
   suffix: Cyborg
   id: BorgHydroponicsToolClippers
   components:
@@ -282,6 +285,7 @@
 - type: entity
   parent: BaseItem
   suffix: Cyborg
+  categories: [ HideSpawnMenu ]
   id: BorgHydroponicsToolScythe
   name: scythe
   description: A sharp and curved blade on a long fibremetal handle, this tool makes it easy to reap what you sow.
@@ -321,6 +325,7 @@
   parent: HydroponicsToolHatchet
   suffix: Cyborg
   id: BorgHydroponicsToolHatchet
+  categories: [ HideSpawnMenu ]
   components:
   - type: Unremoveable
   - type: ItemSelector
@@ -344,6 +349,7 @@
 ## Service Rare
 - type: entity
   id: MicrowaveForBorg
+  categories: [ HideSpawnMenu ]
   parent: [ BaseMachinePowered, SmallConstructibleMachine ]
   name: microwave
   description: It's magic.

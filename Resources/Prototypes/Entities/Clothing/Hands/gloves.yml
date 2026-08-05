@@ -579,6 +579,10 @@
     - Kangaroo
   - type: StealTarget
     stealGroup: ClothingHandsKnuckleDustersQM
+# Corvax-Wega-Start
+  - type: BonusMeleeDamage
+    heavyDamageMultiplier: 1.5
+# Corvax-Wega-End
 
 - type: entity
   parent: [ClothingHandsBase, BaseSyndicateContraband]
@@ -607,6 +611,10 @@
     - Kangaroo
   - type: StaticPrice
     price: 2000
+# Corvax-Wega-Start
+  - type: BonusMeleeDamage
+    heavyDamageMultiplier: 1.5
+# Corvax-Wega-End
 
 - type: entity
   name: stun knuckle dusters

@@ -70,6 +70,7 @@
   - HoloprojectorSecurity
   - PortableRecharger
 # Corvax-Wega-Arsenal-start
+  - WeaponIonCarabine
   - WeaponDominator
   - WeaponTaser
   - PortableRechargerBag
@@ -77,6 +78,7 @@
   - PortableRechargerTurboBag
   - ClothingHeadHelmetFlash
   - ClothingNeckFlashNeck
+  - ClothingEyesGlassesNightVision
   - ExmFlash
 # Corvax-Wega-Arsenal-end
   - PowerCageHigh

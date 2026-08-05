@@ -51,7 +51,6 @@
       - Sheet
       - RawMaterial
       - Ingot
-      - OrganicBrain # Corvax-Wega
   - type: PointLight
     color: "#0033ff"
     enabled: true

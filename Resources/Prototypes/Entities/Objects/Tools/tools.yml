@@ -156,6 +156,10 @@
   - type: Tool
     qualities:
       - Pulsing
+# Corvax-Wega-Start
+    useSound:
+      path: /Audio/Effects/multitool_pulse.ogg
+# Corvax-Wega-End
   - type: NetworkConfigurator
   - type: ActivatableUI
     key: enum.NetworkConfiguratorUiKey.List

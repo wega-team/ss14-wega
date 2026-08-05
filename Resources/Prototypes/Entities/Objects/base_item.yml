@@ -48,8 +48,6 @@
     increment: 30
   # Corvax-Wega-Add-start
   - type: EdibleMatter
-  - type: BonusMeleeDamage
-    heavyDamageMultiplier: 1.2
   # Corvax-Wega-Add-end
 
 - type: entity

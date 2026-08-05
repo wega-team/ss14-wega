@@ -27,6 +27,10 @@
     - Slicing
     useSound:
       path: /Audio/Items/Culinary/chop.ogg
+# Corvax-Wega-Start
+  - type: BonusMeleeDamage
+    heavyDamageMultiplier: 1.25
+# Corvax-Wega-End
 
 - type: entity
   parent: BaseKnife

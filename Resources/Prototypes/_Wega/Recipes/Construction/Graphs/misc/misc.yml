@@ -41,3 +41,19 @@
           doAfter: 20     
     - node: bluesheildfinished
       entity: EnergyShield
+
+## Brain for xenoborgs
+- type: constructionGraph
+  id: UpgradeKitBrain
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: upgraded
+          steps:
+            - tag: UpgradeKitBrain
+              name: construction-graph-tag-brain-upgraded
+              doAfter: 2
+
+    - node: upgraded
+      entity: PositronicBrain

@@ -156,7 +156,7 @@
       amount: 5
   effects:
     - !type:SpawnEntity
-      entity: ShardCrystalRandom
+      entity: ShardCrystalRandomKostsl # Corvax-Wega-fix
 
 - type: reaction
   id: Gunpowder

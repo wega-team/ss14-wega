@@ -317,23 +317,20 @@
 # Construct
 - type: entity
   id: TeleportConstructSpell
-  parent: BaseAction
+  parent: BaseActionPolymorph
   name: Disembodied
   description: "An ability that allows you to descri pass through the visible and invisible."
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    useDelay: 20
-    itemIconStyle: BigAction
   - type: Sprite
     sprite: _Wega/Interface/Actions/actions_bloodcult.rsi
     layers:
     - state: wraith_teleport
       map: ["enum.ActionVisuals.Icon"]
-  - type: TargetAction
-    range: 100
-  - type: WorldTargetAction
-    event: !type:TeleportSpellEvent
+  - type: InstantAction
+    event: !type:PolymorphActionEvent
+      protoId: FantomJaunt
 
 - type: entity
   id: WallBuildConstructSpell

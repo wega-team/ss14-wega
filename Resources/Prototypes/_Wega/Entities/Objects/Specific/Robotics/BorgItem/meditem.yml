@@ -27,6 +27,7 @@
 - type: entity
   name: handheld crew monitor
   parent: BaseHandheldComputer
+  categories: [ HideSpawnMenu ]
   id: HandheldCrewMonitorBorg
   description: A hand-held crew monitor displaying the status of suit sensors.
   components:

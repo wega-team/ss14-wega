@@ -273,6 +273,7 @@
           Brute: -2.5
           Burn: -2.5
           Airloss: -5
+          Toxin: -5 # Corvax-Wega-Add
       - !type:ModifyBloodLevel
         amount: 1
         conditions:
