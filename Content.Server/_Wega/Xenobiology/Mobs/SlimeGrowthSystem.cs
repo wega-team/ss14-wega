@@ -89,6 +89,8 @@ public sealed partial class SlimeGrowthSystem : SharedSlimeGrowthSystem
         var offspring = Spawn(DefaultSlime, spawnPos.Offset(_random.NextVector2(1f)));
         if (!TryComp<SlimeGrowthComponent>(offspring, out var growth))
             return;
+        if (!TryComp<SlimeHungerComponent>(offspring, out var hunger))
+            return;
 
         growth.CurrentStage = SlimeStage.Young;
         growth.NextStageHungerThreshold = GetBaseHungerThreshold(growth.CurrentStage);
@@ -113,8 +115,12 @@ public sealed partial class SlimeGrowthSystem : SharedSlimeGrowthSystem
             growth.SlimeType = parentGrowth.SlimeType;
         }
 
+		growth.Points = GetPoint(growth.SlimeType);
+		hunger.ModifierFood = GetModifier(growth.SlimeType);
+		
         Dirty(offspring, growth);
         ApplySlimeType(offspring);
+		
     }
 
     private void ApplySlimeType(EntityUid uid)
