@@ -238,10 +238,8 @@
       reagents:
       - ReagentId: Silicon
         Quantity: 5
-      - ReagentId: Zinc
-        Quantity: 1.65
-      - ReagentId: Copper
-        Quantity: 3.35
+      - ReagentId: Brass
+        Quantity: 5
   - type: Tag
     tags:
       - BasicGlassShard # Corvax-Wega-Surgery
