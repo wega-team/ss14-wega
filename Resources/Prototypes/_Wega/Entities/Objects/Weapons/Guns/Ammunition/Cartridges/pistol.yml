@@ -16,3 +16,22 @@
     tags:
       - CartridgePistolFoam
       - Cartridge
+
+- type: entity
+  id: CartridgePistolFrozen
+  name: cartridge (frozen)
+  description: Arguably the most popular caliber on the market, used by all manner of pistols and submachine guns. Frozen ammunition lowers body temperature when it hits an opponent.
+  parent: BaseCartridgePistol
+  components:
+  - type: CartridgeAmmo
+    proto: BulletPistolFrozen
+  -  type: Sprite
+     layers:
+       - state: base
+         map: [ "enum.AmmoVisualLayers.Base" ]
+       - state: tip
+         map: [ "enum.AmmoVisualLayers.Tip" ]
+         color: "#18a2d5ff"
+  - type: Tag
+    tags:
+      - CartridgePistol

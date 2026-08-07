@@ -88,7 +88,7 @@ uplink-thieving-desc = Позволяет вам незаметно красть
 uplink-pressure-upgrade-name = модкит ПКУ (давление)
 uplink-pressure-upgrade-desc = Модкит, который отключает защитные механизмы ПКУ и заставляет его всегда работать на всю!
 
-uplink-smoke-implant-name = Имплант "Дым"
+uplink-smoke-implant-name = Имплантер "Дым"
 uplink-smoke-implant-desc = Имплант, который даст вам возможность выпустить облако дыма, очень полезен при отступлении или побеге.
 
 uplink-jumpsuit-ventcrawler-name = комбинезон лазальщика
@@ -112,10 +112,10 @@ uplink-homerun-bat-desc = Бита с невероятными балистич�
 uplink-thermal-vision-glasses-name = Очки теплового зрения
 uplink-thermal-vision-glasses-desc = Очки, показывающие тепловые сигнатуры живых существ сквозь стены и темноту. Замаскированы под обычные инженерные очки и оснащены технологией хамелеона, позволяющей имитировать любые другие очки.
 
-uplink-thermal-vision-implanter-name = Имплантер теплового зрения
+uplink-thermal-vision-implanter-name = Имплантер "Тепловое зрение"
 uplink-thermal-vision-implanter-desc = Имплантирует тепловое зрение, позволяя видеть тепловые сигнатуры живых существ сквозь стены и темноту.
 
-uplink-loyalty-implant-name = Имплантер лояльности
+uplink-loyalty-implant-name = Имплантер "Лояльность"
 uplink-loyalty-implant-desc = Заведи себе верную прислугу, пусть она поможет вам в ваших целях, выбирайте с умом (эффект не обратим).
 
 uplink-syndicate-segway-crate-name = Ящик с сигвеем
@@ -123,3 +123,15 @@ uplink-syndicate-segway-crate-desc = Ящик с двухколесным тра
 
 uplink-casebadge-name = Кейс для жетонов
 uplink-casebadge-desc = Маленькая сумка для хранения трофеев с поверженных СБ.
+
+uplink-ext-magazine-pistol-submachinegun-name = Расширенный магазин ПП (.35 авто)
+uplink-ext-magazine-pistol-submachinegun-desc = Расширенный магазин на 60 патронов под патрон .35 авто. Совместим с C-20r.
+
+uplink-magazine-pistol-submachinegun-frozen-name = Магазин ПП (.35 морозный)
+uplink-magazine-pistol-submachinegun-frozen-desc = Магазин ПП на 30 морозных патронов. Совместим с C-20r.
+
+uplink-magazine-rifle-frozen-name = Винтовочный магазин (.20 морозный)
+uplink-magazine-rifle-frozen-desc = Винтовочный магазин на 25 морозных патронов. Совместим с марксманской винтовкой Эсток.
+
+uplink-free-pistol-magazine-name = Пистолетный магазин (.35 авто)
+uplink-free-pistol-magazine-desc = Пистолетный магазин на 10 патронов. Совместим с "Гадюкой".

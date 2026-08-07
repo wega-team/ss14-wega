@@ -219,7 +219,7 @@
   name: uplink-syndicate-rapier-name
   description: uplink-syndicate-rapier-desc
   icon: { sprite: _Wega/Objects/Weapons/Melee/syndicate_rapier.rsi, state: icon }
-  productEntity: BeltSheathSyndieFilledBox
+  productEntity: ClothingBeltSheathSyndicateFilled
   cost:
     Telecrystal: 8
   categories:
@@ -242,11 +242,10 @@
   - !type:ListingLimitedStockCondition
     stock: 1
 
-# For the Python
 - type: listing
   id: UplinkPistol9mmMagazineFree
-  name: uplink-pistol-magazine-name
-  description: uplink-pistol-magazine-desc
+  name: uplink-free-pistol-magazine-name
+  description: uplink-free-pistol-magazine-desc
   icon: { sprite: /Textures/Objects/Weapons/Guns/Ammunition/Magazine/Pistol/pistol_mag.rsi, state: red-icon }
   productEntity: MagazinePistol
   categories:
@@ -467,7 +466,7 @@
   id: UplinkLoyaltyImplant
   name: uplink-loyalty-implant-name
   description: uplink-loyalty-implant-desc
-  icon: { sprite: Objects/Specific/Medical/syndi_implanter.rsi, state: implanter1 }
+  icon: { sprite: _Wega/Clothing/Neck/Misc/chokers.rsi, state: spike }
   productEntity: LoyaltyImplanter
   categories:
   - UplinkImplants
@@ -475,6 +474,11 @@
     Telecrystal: 3
   cost:
     Telecrystal: 5
+  conditions:
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - NukeOpsUplink
     
 - type: listing
   id: UplinkSmokeImplant
@@ -565,9 +569,9 @@
   productEntity: ClothingOuterVestWebElite
   discountCategory: usualDiscounts
   discountDownTo:
-    Telecrystal: 3 # Corwax-Wega-Stamin-Resistace
+    Telecrystal: 3
   cost:
-    Telecrystal: 5 # Corwax-Wega-Stamin-Resistace
+    Telecrystal: 5
   categories:
   - UplinkWearables
   conditions:
@@ -628,7 +632,7 @@
   id: UplinkThermalVisionImplanter
   name: uplink-thermal-vision-implanter-name
   description: uplink-thermal-vision-implanter-desc
-  icon: { sprite: /Textures/Objects/Specific/Medical/implanter.rsi, state: implanter0 }
+  icon: { sprite: /Textures/Clothing/Eyes/Glasses/thermal.rsi, state: icon }
   productEntity: ThermalVisionImplanter
   cost:
     Telecrystal: 8
@@ -708,3 +712,67 @@
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 1
+
+- type: listing
+  id: UplinkMagazinePistolSubMachineGunFrozen
+  name: uplink-magazine-pistol-submachinegun-frozen-name
+  description: uplink-magazine-pistol-submachinegun-frozen-desc
+  icon: { sprite: Objects/Weapons/Guns/Ammunition/Magazine/Pistol/smg_mag.rsi, state: blue-icon }
+  productEntity: MagazinePistolSubMachineGunFrozen
+  categories:
+  - UplinkAmmo
+  cost:
+    Telecrystal: 1
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - NukeOpsUplink
+
+- type: listing
+  id: UplinkMagazineRifleFrozen
+  name: uplink-magazine-rifle-frozen-name
+  description: uplink-magazine-rifle-frozen-desc
+  icon: { sprite: Objects/Weapons/Guns/Ammunition/Magazine/Rifle/rifle_mag.rsi, state: blue-icon }
+  productEntity: MagazineRifleFrozen
+  categories:
+  - UplinkAmmo
+  cost:
+    Telecrystal: 1
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - NukeOpsUplink
+
+- type: listing
+  id: UplinkExtMagazinePistolSubMachineGun
+  name: uplink-ext-magazine-pistol-submachinegun-name
+  description: uplink-ext-magazine-pistol-submachinegun-desc
+  icon: { sprite: _Wega/Objects/Weapons/Guns/Ammunition/Magazine/Pistol/smg_mag_ext.rsi, state: red-icon }
+  productEntity: ExtMagazinePistolSubMachineGun
+  categories:
+  - UplinkAmmo
+  cost:
+    Telecrystal: 1
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - NukeOpsUplink
+
+- type: listing
+  id: UplinkMagazinePistolSubMachineGun
+  name: uplink-pistol-magazine-c20r-name
+  description: uplink-pistol-magazine-c20r-desc
+  icon: { sprite: /Textures/Objects/Weapons/Guns/Ammunition/Magazine/Pistol/smg_mag.rsi, state: red-icon }
+  productEntity: MagazinePistolSubMachineGun
+  cost:
+    Telecrystal: 1
+  categories:
+  - UplinkAmmo
+  conditions:
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - NukeOpsUplink

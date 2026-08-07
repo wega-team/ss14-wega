@@ -208,6 +208,7 @@
     # - HandheldHealthAnalyzer # Corvax-Wega-edit
     - CombatMedipen
     - DeathAcidifierImplanter
+    - SyndicateLauncherSyringe
   inhand: # Corvax-Wega-Surgery
   - SurgerykitFilledSyndie # Corvax-Wega-Surgery
   - HardsuitOperMedSelector # Corvax-Wega-ModularSuits-Edit
